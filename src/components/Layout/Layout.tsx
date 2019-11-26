@@ -6,7 +6,6 @@ import { ReactComponent as HomeIcon } from "../../icons/home.svg"
 import { ReactComponent as ProductIcon } from "../../icons/product.svg"
 import { ReactComponent as InventoryIcon } from "../../icons/inventory.svg"
 import { ReactComponent as SettingsIcon } from "../../icons/settings.svg"
-import { ReactComponent as PhoneIcon } from "../../icons/phone.svg"
 import { ReactComponent as LightModeIcon } from "../../icons/light-mode.svg"
 import { ReactComponent as DarkModeIcon } from "../../icons/dark-mode.svg"
 import NavigationItem from "../NavigationItem/NavigationItem"
@@ -15,6 +14,7 @@ import Spacer from "../Spacer/Spacer"
 import Icon from "../Icon/Icon"
 import Box from "../Box/Box"
 import Flex, { FlexProps } from "../Flex/Flex"
+import "../layout.css"
 
 /** Top level component that encapsulate every page and provides navigation and
  * everything */
@@ -74,12 +74,6 @@ const MainSidebar: FC<{
         to="/inventory"
         text="inventory"
         icon={InventoryIcon}
-      />
-      <NavigationItem
-        onClick={closeSidebar}
-        to="/pos"
-        text="pos"
-        icon={PhoneIcon}
       />
       <Spacer />
       <NavigationItem
