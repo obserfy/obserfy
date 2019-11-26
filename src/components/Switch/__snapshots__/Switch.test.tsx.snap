@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Switch should render correctly 1`] = `
+.emotion-2 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 16px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-2 {
+    font-size: 20px;
+  }
+}
+
+.emotion-1 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  width: 40px;
+  height: 24px;
+  color: var(--theme-ui-colors-primary,#6E55C6);
+  background-color: transparent;
+  border: 1px solid;
+  border-color: var(--theme-ui-colors-primary,#6E55C6);
+  border-radius: 9999px;
+}
+
+.emotion-1[aria-checked=true] {
+  background-color: var(--theme-ui-colors-primary,#6E55C6);
+}
+
+.emotion-1:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px;
+}
+
+.emotion-0 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-top: -1px;
+  margin-left: -1px;
+  width: 24px;
+  height: 24px;
+  border-radius: 9999px;
+  border: 1px solid;
+  border-color: var(--theme-ui-colors-primary,#6E55C6);
+  background-color: var(--theme-ui-colors-background,#F7F8FA);
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+  -webkit-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+}
+
+<div>
+  <div
+    class="emotion-2"
+  >
+    <button
+      class="emotion-1"
+      role="switch"
+      type="button"
+    >
+      <div
+        aria-hidden="true"
+        class="emotion-0"
+        style="transform: translateX(0);"
+      />
+    </button>
+  </div>
+</div>
+`;

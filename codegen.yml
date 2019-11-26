@@ -1,0 +1,21 @@
+# This is used by https://graphql-code-generator.com/
+# to generate typescript typings from our graphql queries
+overwrite: true
+generates:
+  ./src/graphqlTypes.ts:
+    schema: schema.graphql
+    documents:
+      - ./src/**/*.{ts,tsx}
+      - ./node_modules/gatsby-*/**/*.js
+    plugins:
+      - typescript
+      - typescript-operations
+hooks:
+  afterOneFileWrite:
+    - eslint --fix
+config:
+  namingConvention:
+    enumValues: keep
+  scalars:
+    Time: string
+    File: File

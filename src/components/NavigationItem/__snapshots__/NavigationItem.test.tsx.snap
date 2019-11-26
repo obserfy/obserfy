@@ -1,0 +1,236 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavigationItem should render correctly 1`] = `
+.emotion-7 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 16px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-7 {
+    font-size: 20px;
+  }
+}
+
+.emotion-3 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  max-width: 360px;
+  min-width: 230px;
+  position: fixed;
+  -webkit-transform: translateX(0%);
+  -ms-transform: translateX(0%);
+  transform: translateX(0%);
+  box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
+  -webkit-transition: -webkit-transform 250ms cubic-bezier(0.0,0.0,0.2,1);
+  -webkit-transition: transform 250ms cubic-bezier(0.0,0.0,0.2,1);
+  transition: transform 250ms cubic-bezier(0.0,0.0,0.2,1);
+  top: 0;
+  left: 0;
+  z-index: 100;
+  border-right-style: solid;
+  border-right-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-right-width: 1px;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  background-color: var(--theme-ui-colors-background,#F7F8FA);
+  width: 82%;
+  height: calc(100% + 57px);
+  padding-bottom: 65px;
+  overflow-y: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-3 {
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
+    box-shadow: none;
+    z-index: 0;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .emotion-3 {
+    width: 230px;
+  }
+}
+
+.emotion-2 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  border-radius: 6px;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin: 8px;
+  margin-top: 16px;
+  margin-bottom: 0;
+  padding-left: 8px;
+  background-color: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-2:hover {
+  background-color: var(--theme-ui-colors-primaryLightest,rgba(161,130,250,0.05));
+}
+
+.emotion-0 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
+  margin: 16px;
+  height: 20px;
+  width: 20px;
+  margin-left: 0;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.emotion-1 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  font-size: 16px;
+  margin-bottom: 3rem;
+  font-weight: normal;
+  margin: 0;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-1 {
+    font-size: 14px;
+  }
+}
+
+.emotion-4 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  cursor: pointer;
+  display: inherit;
+  pointer-events: inherit;
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-height: 100vh;
+  z-index: 82;
+  -webkit-transition: background 250ms cubic-bezier(0.0,0.0,0.2,1);
+  transition: background 250ms cubic-bezier(0.0,0.0,0.2,1);
+  background-color: var(--theme-ui-colors-overlay,rgba(0,0,0,.6));
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-4 {
+    display: none;
+  }
+}
+
+.emotion-6 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  cursor: pointer;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 150;
+  height: 57px;
+  width: 18vw;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-6 {
+    display: none;
+  }
+}
+
+.emotion-5 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  fill: var(--theme-ui-colors-onOverlay,#fff);
+  width: 36px;
+  height: 36px;
+}
+
+<div>
+  <div
+    class="emotion-7"
+  >
+    <nav
+      class="emotion-3"
+      data-cy="sidebar"
+    >
+      <a
+        href="/somewhere"
+      >
+        <div
+          class="emotion-2"
+        >
+          <div
+            alt="home icon"
+            class="emotion-0"
+          />
+          <p
+            class="emotion-1"
+          >
+            home
+          </p>
+        </div>
+      </a>
+    </nav>
+    <div
+      class="emotion-4"
+      data-cy="outsideSidebar"
+    />
+    <div
+      class="emotion-6"
+    >
+      <div
+        class="emotion-5"
+      />
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,186 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Typography should render correctly all correctly 1`] = `
+.emotion-7 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 16px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-7 {
+    font-size: 20px;
+  }
+}
+
+.emotion-0 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 24px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 300;
+  line-height: heading;
+  font-size: 6.103515625rem;
+  line-height: 9rem;
+  -webkit-letter-spacing: 0;
+  -moz-letter-spacing: 0;
+  -ms-letter-spacing: 0;
+  letter-spacing: 0;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  margin-bottom: 3rem;
+}
+
+.emotion-1 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 24px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 300;
+  line-height: heading;
+  font-size: 4.8828125rem;
+  line-height: 6rem;
+  -webkit-letter-spacing: 0;
+  -moz-letter-spacing: 0;
+  -ms-letter-spacing: 0;
+  letter-spacing: 0;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  margin-bottom: 3rem;
+}
+
+.emotion-2 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 24px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 300;
+  line-height: heading;
+  font-size: 3.90625rem;
+  line-height: 6rem;
+  -webkit-letter-spacing: 0;
+  -moz-letter-spacing: 0;
+  -ms-letter-spacing: 0;
+  letter-spacing: 0;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  margin-bottom: 3rem;
+}
+
+.emotion-3 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 24px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 300;
+  line-height: heading;
+  font-size: 3.125rem;
+  line-height: 6rem;
+  -webkit-letter-spacing: 0;
+  -moz-letter-spacing: 0;
+  -ms-letter-spacing: 0;
+  letter-spacing: 0;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  margin-bottom: 3rem;
+}
+
+.emotion-4 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 24px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 300;
+  line-height: heading;
+  font-size: 2.5rem;
+  line-height: 3rem;
+  -webkit-letter-spacing: 0;
+  -moz-letter-spacing: 0;
+  -ms-letter-spacing: 0;
+  letter-spacing: 0;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  margin-bottom: 3rem;
+}
+
+.emotion-5 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 24px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 300;
+  line-height: heading;
+  font-size: 2rem;
+  line-height: 3rem;
+  -webkit-letter-spacing: 0;
+  -moz-letter-spacing: 0;
+  -ms-letter-spacing: 0;
+  letter-spacing: 0;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  margin-bottom: 3rem;
+}
+
+.emotion-6 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  font-size: 16px;
+  margin-bottom: 3rem;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-6 {
+    font-size: 14px;
+  }
+}
+
+<div>
+  <div
+    class="emotion-7"
+  >
+    <h1
+      class="emotion-0"
+    >
+      Welcome Jonathan
+    </h1>
+    <h2
+      class="emotion-1"
+    >
+      Wake Up
+    </h2>
+    <h3
+      class="emotion-2"
+    >
+      We got a city to burn
+    </h3>
+    <h4
+      class="emotion-3"
+    >
+      No Way
+    </h4>
+    <h5
+      class="emotion-4"
+    >
+      Jose
+    </h5>
+    <h6
+      class="emotion-5"
+    >
+      Heading 6
+    </h6>
+    <p
+      class="emotion-6"
+    >
+      It is not politic in the commonwealth of nature to preserve virginity. Loss of virginity is rational increase, and there was never virgin got till virginity was first lost. That you were made of is metal to make virgins. Virginity by being once lost may be ten times found; by being ever kept is ever lost. Tis too cold a companion.
+    </p>
+  </div>
+</div>
+`;

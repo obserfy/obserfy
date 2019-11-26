@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Avatar should render correctly 1`] = `
+.emotion-1 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 16px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-1 {
+    font-size: 20px;
+  }
+}
+
+.emotion-0 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 99999px;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-width: 1px;
+  border-style: solid;
+  overflow: hidden;
+  width: 32px;
+  height: 32px;
+}
+
+<div>
+  <div
+    class="emotion-1"
+  >
+    <img
+      class="emotion-0"
+    />
+  </div>
+</div>
+`;

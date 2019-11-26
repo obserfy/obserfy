@@ -1,0 +1,16 @@
+{
+  "name": "Silverhand Gatsby Graphql Schema",
+  "schemaPath": "schema.graphql",
+  "includes": ["./**/*.ts", "./**/*.js"],
+  "extensions": {
+    "endpoints": {
+      "Default GraphQL Endpoint": {
+        "url": "http://localhost:8000/___graphql",
+        "headers": {
+          "user-agent": "JS GraphQL"
+        },
+        "introspect": false
+      }
+    }
+  }
+}

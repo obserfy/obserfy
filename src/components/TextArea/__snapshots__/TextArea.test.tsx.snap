@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextArea should render correctly 1`] = `
+.emotion-2 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 16px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-2 {
+    font-size: 20px;
+  }
+}
+
+.emotion-1 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  width: 100%;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  as: label;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-0 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: block;
+  width: 100%;
+  padding: 8px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: inherit;
+  line-height: inherit;
+  border: 1px solid;
+  border-radius: 6px;
+  color: inherit;
+  background-color: transparent;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface,#fff);
+  font-size: 14px;
+  padding: 16px;
+  height: 180px;
+  resize: vertical;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+}
+
+.emotion-0:hover,
+.emotion-0:focus {
+  border-color: var(--theme-ui-colors-primary,#6E55C6);
+  outline: none;
+}
+
+.emotion-0::-webkit-input-placeholder {
+  font-style: italic;
+  line-height: 2rem;
+}
+
+.emotion-0::-moz-placeholder {
+  font-style: italic;
+  line-height: 2rem;
+}
+
+.emotion-0:-ms-input-placeholder {
+  font-style: italic;
+  line-height: 2rem;
+}
+
+.emotion-0::placeholder {
+  font-style: italic;
+  line-height: 2rem;
+}
+
+<div>
+  <div
+    class="emotion-2"
+  >
+    <label
+      class="emotion-1"
+    >
+      <textarea
+        class="emotion-0"
+      />
+    </label>
+  </div>
+</div>
+`;

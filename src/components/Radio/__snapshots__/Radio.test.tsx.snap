@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Radio should render correctly 1`] = `
+.emotion-4 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 16px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-4 {
+    font-size: 20px;
+  }
+}
+
+.emotion-3 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+}
+
+.emotion-0 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.emotion-1 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: none;
+  width: 24px;
+  height: 24px;
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-right: 8px;
+  border-radius: 9999px;
+  color: var(--theme-ui-colors-gray,#dddddf);
+}
+
+input:checked ~ .emotion-1 {
+  display: block;
+}
+
+input:checked ~ .emotion-1 {
+  color: var(--theme-ui-colors-primary,#6E55C6);
+}
+
+input:focus ~ .emotion-1 {
+  background-color: var(--theme-ui-colors-highlight,hsla(205,100%,40%,0.125));
+}
+
+.emotion-2 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: block;
+  width: 24px;
+  height: 24px;
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-right: 8px;
+  border-radius: 9999px;
+  color: var(--theme-ui-colors-gray,#dddddf);
+}
+
+input:checked ~ .emotion-2 {
+  display: none;
+}
+
+input:checked ~ .emotion-2 {
+  color: var(--theme-ui-colors-primary,#6E55C6);
+}
+
+input:focus ~ .emotion-2 {
+  background-color: var(--theme-ui-colors-highlight,hsla(205,100%,40%,0.125));
+}
+
+<div>
+  <div
+    class="emotion-4"
+  >
+    <div
+      class="emotion-3"
+    >
+      <input
+        class="emotion-0"
+        type="radio"
+      />
+      <svg
+        aria-hidden="true"
+        class="emotion-1"
+        fill="currentcolor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+        />
+      </svg>
+      <svg
+        aria-hidden="true"
+        class="emotion-2"
+        fill="currentcolor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+`;
