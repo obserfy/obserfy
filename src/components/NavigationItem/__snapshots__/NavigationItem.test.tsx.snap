@@ -116,7 +116,6 @@ exports[`NavigationItem should render correctly 1`] = `
   line-height: 3rem;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   font-size: 16px;
-  margin-bottom: 3rem;
   font-weight: normal;
   margin: 0;
 }

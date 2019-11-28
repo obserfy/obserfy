@@ -84,9 +84,9 @@ exports[`Tab should render correctly 1`] = `
   -ms-user-select: none;
   user-select: none;
   color: var(--theme-ui-colors-primaryDark,#3A2B95);
-  margin-bottom: 0;
   margin-left: 16px;
   margin-right: 16px;
+  margin-bottom: 0;
 }
 
 .emotion-0:after {
@@ -133,9 +133,9 @@ exports[`Tab should render correctly 1`] = `
   -ms-user-select: none;
   user-select: none;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
-  margin-bottom: 0;
   margin-left: 16px;
   margin-right: 16px;
+  margin-bottom: 0;
 }
 
 .emotion-1:after {

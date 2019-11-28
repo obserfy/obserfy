@@ -76,7 +76,6 @@ exports[`ToggleButton should render correctly 1`] = `
   text-align: center;
   color: var(--theme-ui-colors-primaryDark,#3A2B95);
   font-size: 16px;
-  margin-bottom: 3rem;
   margin: 0;
 }
 
@@ -126,7 +125,6 @@ exports[`ToggleButton should render correctly 1`] = `
   text-align: center;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   font-size: 16px;
-  margin-bottom: 3rem;
   margin: 0;
 }
 

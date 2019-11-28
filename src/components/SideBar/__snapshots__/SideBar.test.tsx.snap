@@ -98,7 +98,6 @@ exports[`SideBar should render correctly 1`] = `
   -ms-letter-spacing: 0;
   letter-spacing: 0;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
-  margin-bottom: 3rem;
 }
 
 .emotion-3 {

@@ -35,8 +35,6 @@ exports[`SearchBar should render correctly 1`] = `
   display: -ms-flexbox;
   display: flex;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  margin-top: 16px;
-  margin-bottom: 16px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

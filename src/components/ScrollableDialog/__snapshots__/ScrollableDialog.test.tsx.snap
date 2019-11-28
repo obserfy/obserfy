@@ -177,8 +177,6 @@ exports[`ScrollableDialog should render correctly 1`] = `
   display: -ms-flexbox;
   display: flex;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  margin-top: 16px;
-  margin-bottom: 16px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -265,8 +263,8 @@ exports[`ScrollableDialog should render correctly 1`] = `
   line-height: 3rem;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   font-size: 16px;
-  margin-bottom: 0;
   padding: 16px;
+  margin-bottom: 0;
 }
 
 @media screen and (min-width:40em) {

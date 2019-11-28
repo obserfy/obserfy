@@ -1,0 +1,17 @@
+import React, { FC } from "react"
+import PageEditStudent from "./PageEditStudent"
+import Layout from "../Layout/Layout"
+
+export default {
+  title: "Core|PageEditStudent",
+  component: PageEditStudent,
+  parameters: {
+    componentSubtitle: "Just a simple PageEditStudent",
+  },
+}
+
+export const Basic: FC = () => (
+  <Layout pageTitle="Home">
+    <PageEditStudent name="Poe Damoron"/>
+  </Layout>
+)

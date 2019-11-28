@@ -4,7 +4,6 @@ import { BoxProps } from "../Box/Box"
 import { Image } from "../Image/Image"
 
 interface Props extends BoxProps {
-  size?: number
   source?: string
   fixed?: FixedObject
 }

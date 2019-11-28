@@ -7,10 +7,10 @@ import Button from "../Button/Button"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import { Typography } from "../Typography/Typography"
 import Card from "../Card/Card"
-import Avatar from "../Avatar/Avatar"
 import ScrollableDialog from "../ScrollableDialog/ScrollableDialog"
 import Input from "../Input/Input"
 import { Link } from "gatsby"
+import MockAvatar from "../mockAvatar"
 
 export const PageHome: FC = () => {
   const [showStudentInputDialog, setShowStudentInputDialog] = useState(false)
@@ -81,13 +81,10 @@ const ChildrenList: FC<{ students: string[] }> = ({ students }) => {
     <Box>
       {students.map(student => {
         return (
-          <Link to={`/edit?name=${student}`}>
+          <Link to={`/students/edit?name=${student}`}>
             <Card p={3} mx={3} mb={3}>
               <Flex>
-                <Avatar
-                  src="https://images.unsplash.com/photo-1571942727532-a67a4bf9845a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-                  mr={3}
-                />
+                <MockAvatar />
                 <Typography.H6>{student}</Typography.H6>
               </Flex>
             </Card>
