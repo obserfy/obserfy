@@ -61,7 +61,7 @@ export const StoreName: FC<FlexProps> = ({ ...props }) => (
   <Flex height="appbar" {...props}>
     <Icon as={StorefrontIcon} size={24} alt="Store Icon" />
     <Typography.Body as="div" ml="-4px" mb={0} sx={{ whiteSpace: "nowrap" }}>
-      School Name
+      Joyful Montessori
     </Typography.Body>
   </Flex>
 )

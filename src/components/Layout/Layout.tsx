@@ -3,8 +3,6 @@ import { useColorMode } from "theme-ui"
 import AppBar, { StoreName } from "../AppBar/AppBar"
 import SideBar from "../SideBar/SideBar"
 import { ReactComponent as HomeIcon } from "../../icons/home.svg"
-import { ReactComponent as ProductIcon } from "../../icons/product.svg"
-import { ReactComponent as InventoryIcon } from "../../icons/inventory.svg"
 import { ReactComponent as SettingsIcon } from "../../icons/settings.svg"
 import { ReactComponent as LightModeIcon } from "../../icons/light-mode.svg"
 import { ReactComponent as DarkModeIcon } from "../../icons/dark-mode.svg"
@@ -60,20 +58,8 @@ const MainSidebar: FC<{
       <NavigationItem
         onClick={closeSidebar}
         to="/"
-        text="home"
+        text="Home"
         icon={HomeIcon}
-      />
-      <NavigationItem
-        onClick={closeSidebar}
-        to="/items"
-        text="items"
-        icon={ProductIcon}
-      />
-      <NavigationItem
-        onClick={closeSidebar}
-        to="/inventory"
-        text="inventory"
-        icon={InventoryIcon}
       />
       <Spacer />
       <NavigationItem

@@ -9,7 +9,6 @@ interface Props extends BoxProps {
 export const SearchBar: FC<Props> = props => (
   <Input
     name="name"
-    my={3}
     width="100%"
     placeholder="Search"
     icon={SearchIcon}

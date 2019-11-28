@@ -16,6 +16,7 @@ interface Props extends BoxProps {
   onNegativeClick?: () => void
   onPositiveClick?: () => void
   subtext?: string
+  disablePositiveButton?: boolean
 }
 export const ScrollableDialog: FC<Props> = ({
   positiveText,
@@ -26,6 +27,7 @@ export const ScrollableDialog: FC<Props> = ({
   onNegativeClick,
   children,
   subtext,
+  disablePositiveButton,
   ...props
 }) => (
   <Dialog {...props}>
@@ -75,7 +77,7 @@ export const ScrollableDialog: FC<Props> = ({
         <Button mr={3} variant="outline" onClick={onNegativeClick}>
           {negativeText}
         </Button>
-        <Button variant="primary" onClick={onPositiveClick}>
+        <Button variant="primary" onClick={onPositiveClick} disabled={disablePositiveButton}>
           {positiveText}
         </Button>
       </Flex>

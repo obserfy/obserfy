@@ -22,28 +22,27 @@ interface Typography {
  */
 export const Typography: Typography = {
   H1: props => (
-    <Heading color="text" mb="3rem" as="h1" variant="h1" {...props} />
+    <Heading color="text" as="h1" variant="h1" {...props} />
   ),
   H2: props => (
-    <Heading color="text" mb="3rem" as="h2" variant="h2" {...props} />
+    <Heading color="text" as="h2" variant="h2" {...props} />
   ),
   H3: props => (
-    <Heading color="text" mb="3rem" as="h3" variant="h3" {...props} />
+    <Heading color="text" as="h3" variant="h3" {...props} />
   ),
   H4: props => (
-    <Heading color="text" mb="3rem" as="h4" variant="h4" {...props} />
+    <Heading color="text" as="h4" variant="h4" {...props} />
   ),
   H5: props => (
-    <Heading color="text" mb="3rem" as="h5" variant="h5" {...props} />
+    <Heading color="text" as="h5" variant="h5" {...props} />
   ),
   H6: props => (
-    <Heading color="text" mb="3rem" as="h6" variant="h6" {...props} />
+    <Heading color="text" as="h6" variant="h6" {...props} />
   ),
   Body: props => (
     <Text
       color="text"
       fontSize={[2, 1]}
-      mb="3rem"
       as="p"
       variant="body"
       {...props}
