@@ -38,10 +38,10 @@ func main() {
 		r.Route("/v1", func(r chi.Router) {
 			r.Route("/students", func(r chi.Router) {
 				r.Get("/", getAllStudents(env))
-				r.Get("/:id", getStudentById(env))
+				r.Get("/{id}", getStudentById(env))
 				r.Post("/", createNewStudent(env))
-				r.Delete("/:id", deleteStudent(env))
-				r.Patch("/:id", updateStudent(env))
+				r.Delete("/{id}", deleteStudent(env))
+				r.Put("/{id}", replaceStudent(env))
 			})
 		})
 	})
@@ -73,14 +73,12 @@ func getAllStudents(env Env) func(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-type StudentPostBody struct {
-	Name string `json:"name"`
-}
-
 func createNewStudent(env Env) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		var requestBody StudentPostBody
-		err := json.NewDecoder(r.Body).Decode(&requestBody)
+		var requestBody struct {
+			Name string `json:"name"`
+		}
+		err := json.NewDecoder(r.Body).Decode(requestBody)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusBadRequest)
 			return
@@ -99,19 +97,58 @@ func createNewStudent(env Env) func(w http.ResponseWriter, r *http.Request) {
 
 func deleteStudent(env Env) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-
+		deletedId := chi.URLParam(r, "id") // from a route like /users/{userID}
+		student := Student{Id: deletedId}
+		err := env.db.Delete(&student)
+		if err != nil {
+			env.logger.Error("Failed deleting student", zap.Error(err))
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+		}
 	}
 }
 
-func updateStudent(env Env) func(w http.ResponseWriter, r *http.Request) {
+func replaceStudent(env Env) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
+		idToReplace := chi.URLParam(r, "id") // from a route like /users/{userID}
+		var requestBody struct {
+			Name string `json:"name"`
+		}
+		err := json.NewDecoder(r.Body).Decode(requestBody)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusBadRequest)
+			return
+		}
 
+		student := Student{
+			Id:   idToReplace,
+			Name: requestBody.Name,
+		}
+		err = env.db.Update(&student)
+		if err != nil {
+			env.logger.Error("Failed creating new student", zap.Error(err))
+		}
 	}
 }
 
 func getStudentById(env Env) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
+		id := chi.URLParam(r, "id") // from a route like /users/{userID}
+		var student Student
+		err := env.db.Model(&student).Where("id = ?", id).Select()
+		if err != nil {
+			env.logger.Error("Failed deleting student", zap.Error(err))
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+		}
 
+		res, err := json.Marshal(student)
+		if err != nil {
+			env.logger.Error("Error marshaling student", zap.Error(err))
+		}
+
+		_, err = w.Write(res)
+		if err != nil {
+			env.logger.Error("Error writing response", zap.Error(err))
+		}
 	}
 }
 
