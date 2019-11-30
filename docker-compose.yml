@@ -8,6 +8,7 @@ services:
     depends_on:
       - db
     environment:
+      SITE_URL: localhost:8080
       DB_USERNAME: postgres
       DB_PASSWORD: developmentonly
       DB_HOST: vor-postgres
