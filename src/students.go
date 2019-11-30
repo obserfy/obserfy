@@ -54,8 +54,13 @@ func createNewStudent(env Env) func(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
+		id, err := uuid.NewRandom()
+		if err != nil {
+			env.logger.Error("Failed to generate new uuid", zap.Error(err))
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+		}
 		student := Student{
-			Id:   uuid.New().String(),
+			Id:   id.String(),
 			Name: requestBody.Name,
 		}
 		err = env.db.Insert(&student)

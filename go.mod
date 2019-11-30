@@ -7,6 +7,7 @@ require (
 	github.com/go-pg/pg/v9 v9.0.3
 	github.com/google/uuid v1.1.1
 	github.com/gorilla/sessions v1.2.0 // indirect
+	github.com/jmoiron/sqlx v1.2.0 // indirect
 	github.com/volatiletech/authboss v2.3.0+incompatible
 	github.com/volatiletech/authboss-clientstate v0.0.0-20190912194043-b5b6e0f4355e // indirect
 	go.uber.org/atomic v1.5.1 // indirect

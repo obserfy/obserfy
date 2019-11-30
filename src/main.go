@@ -3,7 +3,6 @@ package main
 import (
 	"github.com/go-chi/chi"
 	"github.com/go-pg/pg/v9"
-	_ "github.com/volatiletech/authboss/register"
 	"go.uber.org/zap"
 	"net/http"
 )
@@ -12,6 +11,10 @@ type Env struct {
 	db     *pg.DB
 	logger *zap.Logger
 }
+
+const (
+	BCryptCost = 10
+)
 
 func main() {
 
@@ -26,14 +29,14 @@ func main() {
 	createSchema(env)
 
 	r := chi.NewRouter()
-	frontendFileServer := http.FileServer(http.Dir("frontend/public")).ServeHTTP
-	authboss, authSubroute := setupAuthboss("/auth", env)
 
-	r.Use(authboss.LoadClientStateMiddleware)
-	r.Mount("/auth", authSubroute)
 	r.Route("/api/v1", func(r chi.Router) {
+		r.Use(createAuthMiddleware(env))
 		r.Mount("/students", getStudentsSubroute(env))
 	})
+	r.Mount("/auth", getAuthSubroute(env))
+
+	frontendFileServer := http.FileServer(http.Dir("frontend/public")).ServeHTTP
 	r.Get("/*", frontendFileServer)
 
 	runServer(r, env)

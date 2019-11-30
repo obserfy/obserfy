@@ -1,76 +1,154 @@
 package main
 
 import (
-	"context"
-	"github.com/volatiletech/authboss"
-	"github.com/volatiletech/authboss/defaults"
+	"github.com/go-chi/chi"
+	"github.com/google/uuid"
 	"go.uber.org/zap"
+	"golang.org/x/crypto/bcrypt"
 	"net/http"
 	"os"
+	"time"
 )
 
-func setupAuthboss(authUrl string, env Env) (*authboss.Authboss, http.Handler) {
-	ab := authboss.New()
-	ab.Config.Paths.Mount = authUrl
-	ab.Config.Paths.RootURL = os.Getenv("SITE_URL")
-	ab.Config.Storage.Server = &PostgresStorer{}
-	defaults.SetCore(&ab.Config, true, false)
-	if err := ab.Init(); err != nil {
-		env.logger.Error("Authboss error", zap.Error(err))
-	}
-	//return ab.Config.Core.Router
-	return ab, http.StripPrefix(authUrl, ab.Config.Core.Router)
-}
-
 type User struct {
-	authboss.User
 	Id       string `json:"id" pg:",type:uuid"`
 	Email    string
-	Password string
+	Password []byte
 }
 
-func (user *User) GetPID() string {
-	return user.Email
+type Session struct {
+	Token string
 }
 
-func (user *User) PutPID(id string) {
-	user.Email = id
+func getAuthSubroute(env Env) *chi.Mux {
+	r := chi.NewRouter()
+	r.Post("/register", register(env))
+	r.Post("/login", login(env))
+	return r
 }
 
-type PostgresStorer struct {
-	authboss.ServerStorer
-	authboss.CreatingServerStorer
-	env Env
-}
+func register(env Env) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		id, err := uuid.NewRandom()
+		if err != nil {
+			env.logger.Error("Failed to generate new uuid", zap.Error(err))
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+		}
 
-func (storer PostgresStorer) Load(ctx context.Context, key string) (authboss.User, error) {
-	var user User
-	err := storer.env.db.Model(&user).Where("id = ?", key).Select()
-	if err != nil {
-		storer.env.logger.Error("Error querying user", zap.Error(err))
+		// TODO: add better email validation
+		email := r.FormValue("email")
+		if email == "" {
+			http.Error(w, "Email is required", http.StatusBadRequest)
+			return
+		}
+
+		// TODO: add better password validation
+		password := r.FormValue("password")
+		if password == "" {
+			http.Error(w, "Password is required", http.StatusBadRequest)
+			return
+		}
+		hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), BCryptCost)
+		if err != nil {
+			env.logger.Error("Failed to hash password", zap.Error(err))
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+		}
+
+		requestBody := User{
+			Id:       id.String(),
+			Email:    email,
+			Password: hashedPassword,
+		}
+
+		err = env.db.Insert(&requestBody)
+		if err != nil {
+			env.logger.Error("Failed to insert to db", zap.Error(err))
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+		}
 	}
-	return &user, err
 }
 
-func (storer PostgresStorer) Save(ctx context.Context, user authboss.User) error {
-	var userToSave User
-	userToSave.PutPID(user.GetPID())
-	err := storer.env.db.Insert(&user)
-	if err != nil {
-		storer.env.logger.Error("Error saving auth user", zap.Error(err))
+func login(env Env) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		// TODO: add better email validation
+		email := r.FormValue("email")
+		if email == "" {
+			http.Error(w, "Email is required", http.StatusBadRequest)
+			return
+		}
+
+		// TODO: add better password validation
+		password := r.FormValue("password")
+		if password == "" {
+			http.Error(w, "Password is required", http.StatusBadRequest)
+			return
+		}
+
+		var user User
+		err := env.db.Model(&user).Where("email=?", email).First()
+		if err != nil {
+			http.Error(w, "Invalid Credential", http.StatusUnauthorized)
+			return
+		}
+		err = bcrypt.CompareHashAndPassword(user.Password, []byte(password))
+		if err != nil {
+			http.Error(w, "Invalid Credential", http.StatusUnauthorized)
+			return
+		}
+
+		token, err := uuid.NewRandom()
+		if err != nil {
+			http.Error(w, "Something went wrong", http.StatusInternalServerError)
+			env.logger.Error("Failed creating token", zap.Error(err))
+			return
+		}
+		session := Session{
+			Token: token.String(),
+		}
+		err = env.db.Insert(&session)
+		if err != nil {
+			http.Error(w, "Something went wrong", http.StatusInternalServerError)
+			env.logger.Error("Failed saving token to db", zap.Error(err))
+			return
+		}
+
+		// TODO: Confirm cookie is correctly created
+		cookie := http.Cookie{
+			Name:       "session",
+			Value:      session.Token,
+			Path:       "/*",
+			Domain:     os.Getenv("SITE_URL"),
+			Expires:    time.Time{},
+			RawExpires: "",
+			MaxAge:     0,
+			Secure:     true,
+			HttpOnly:   false,
+			SameSite:   1,
+			Raw:        "",
+			Unparsed:   nil,
+		}
+		http.SetCookie(w, &cookie)
 	}
-	return err
 }
 
-func (storer PostgresStorer) New(ctx context.Context) authboss.User {
-	return &User{}
-}
-
-func (storer PostgresStorer) Create(ctx context.Context, user authboss.User) error {
-	var existingUser User
-	err := storer.env.db.Model(&existingUser).Where("email=?", user.GetPID()).Select()
-	if err != nil {
-		storer.env.logger.Error("Failed creating user", zap.Error(err))
+func createAuthMiddleware(env Env) func(next http.Handler) http.Handler {
+	return func(next http.Handler) http.Handler {
+		fn := func(w http.ResponseWriter, r *http.Request) {
+			token, err := r.Cookie("session")
+			if err != nil {
+				env.logger.Error("Error getting session cookie", zap.Error(err))
+				http.Error(w, "Unauthorized", http.StatusUnauthorized)
+				return
+			}
+			var session Session
+			err = env.db.Model(&session).Where("token=?", token.Value).Select()
+			if err != nil {
+				env.logger.Error("Error querying session", zap.Error(err))
+				http.Error(w, "Unauthorized", http.StatusUnauthorized)
+				return
+			}
+			next.ServeHTTP(w, r)
+		}
+		return http.HandlerFunc(fn)
 	}
-	return err
 }
