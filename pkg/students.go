@@ -13,7 +13,7 @@ type Student struct {
 	Name string `json:"name"`
 }
 
-func getStudentsSubroute(env Env) *chi.Mux {
+func createStudentsSubroute(env Env) *chi.Mux {
 	r := chi.NewRouter()
 	r.Get("/", getAllStudents(env))
 	r.Get("/{id}", getStudentById(env))

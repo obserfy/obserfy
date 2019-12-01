@@ -17,7 +17,6 @@ const (
 )
 
 func main() {
-
 	logger := createLogger()
 	defer syncLogger(logger)
 
@@ -32,12 +31,10 @@ func main() {
 
 	r.Route("/api/v1", func(r chi.Router) {
 		r.Use(createAuthMiddleware(env))
-		r.Mount("/students", getStudentsSubroute(env))
+		r.Mount("/students", createStudentsSubroute(env))
 	})
-	r.Mount("/auth", getAuthSubroute(env))
-
-	frontendFileServer := http.FileServer(http.Dir("frontend/public")).ServeHTTP
-	r.Get("/*", frontendFileServer)
+	r.Mount("/auth", createAuthSubroute(env))
+	r.Get("/*", createFrontendFileServer())
 
 	runServer(r, env)
 }
@@ -47,4 +44,8 @@ func runServer(r *chi.Mux, env Env) {
 	if err != nil {
 		env.logger.Error("Failed serving router", zap.Error(err))
 	}
+}
+
+func createFrontendFileServer() func(w http.ResponseWriter, r *http.Request) {
+	return http.FileServer(http.Dir("frontend/public")).ServeHTTP
 }

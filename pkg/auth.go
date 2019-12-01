@@ -20,7 +20,7 @@ type Session struct {
 	Token string
 }
 
-func getAuthSubroute(env Env) *chi.Mux {
+func createAuthSubroute(env Env) *chi.Mux {
 	r := chi.NewRouter()
 	r.Post("/register", register(env))
 	r.Post("/login", login(env))
