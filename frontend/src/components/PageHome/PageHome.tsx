@@ -11,12 +11,15 @@ import Card from "../Card/Card"
 import ScrollableDialog from "../ScrollableDialog/ScrollableDialog"
 import Input from "../Input/Input"
 import MockAvatar from "../mockAvatar"
-import { Student, useStudentNames } from "../../hooks/students/useStudentNames"
+import {
+  Student,
+  useQueryAllStudents,
+} from "../../hooks/students/useQueryAllStudents"
 
 export const PageHome: FC = () => {
   const [showStudentInputDialog, setShowStudentInputDialog] = useState(false)
   const [searchTerm, setSearchTerm] = useState("")
-  const [names, setAsOutdated] = useStudentNames()
+  const [students, setStudentsAsOutdated] = useQueryAllStudents()
 
   async function submitNewStudent(name: string): Promise<void> {
     const baseUrl = "/api/v1"
@@ -30,7 +33,7 @@ export const PageHome: FC = () => {
     })
 
     setShowStudentInputDialog(false)
-    setAsOutdated()
+    setStudentsAsOutdated()
   }
 
   return (
@@ -50,8 +53,8 @@ export const PageHome: FC = () => {
             <Icon as={PlusIcon} m={0} />
           </Button>
         </Flex>
-        {names.length > 0 && <ChildrenList students={names} />}
-        {names.length === 0 && searchTerm !== "" && (
+        {students.length > 0 && <ChildrenList students={students} />}
+        {students.length === 0 && searchTerm !== "" && (
           <Flex
             mt={3}
             alignItems="center"
@@ -64,7 +67,7 @@ export const PageHome: FC = () => {
             </Typography.H6>
           </Flex>
         )}
-        {names.length === 0 && (
+        {students.length === 0 && (
           <Flex
             mt={3}
             alignItems="center"

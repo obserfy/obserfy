@@ -12,6 +12,7 @@ import Input from "../Input/Input"
 import TextArea from "../TextArea/TextArea"
 import Card from "../Card/Card"
 import Spacer from "../Spacer/Spacer"
+import { useQueryStudentDetails } from "../../hooks/students/useQueryStudentDetails"
 
 interface Props {
   id: string
@@ -20,43 +21,25 @@ export const PageEditStudent: FC<Props> = ({ id }) => {
   const [showAddObservationDialog, setShowObservationDialog] = useState(false)
   const [observations, setObservations] = useState<Observation[]>([])
   const [editObservations, setEditObservations] = useState()
+  const [details] = useQueryStudentDetails(id)
 
   return (
     <>
       <Box>
-        <Flex
-          alignItems="center"
-          px={3}
-          py={2}
-          sx={{
-            borderBottomWidth: 1,
-            borderBottomStyle: "solid",
-            borderBottomColor: "border",
-          }}
-        >
-          <Typography.Body color="textMediumEmphasis" pr={3}>
-            Recent
-          </Typography.Body>
-          <MockAvatar size={24} mr={3} opacity={0.8} />
-          <MockAvatar size={24} mr={3} opacity={0.8} />
-          <MockAvatar size={24} mr={3} opacity={0.8} />
-          <MockAvatar size={24} mr={3} opacity={0.8} />
-          <MockAvatar size={24} mr={3} opacity={0.8} />
-        </Flex>
         <Flex alignItems="center" p={3}>
           <MockAvatar size={60} />
-          <Typography.H3>{id}</Typography.H3>
+          <Typography.H3>{details?.name}</Typography.H3>
         </Flex>
         <Box p={3}>
           <Typography.H4 color="textMediumEmphasis" mb={2}>
             Observations
           </Typography.H4>
-          {observations.map(({ details, shortDesc }) => (
+          {observations.map(({ longDesc, shortDesc }) => (
             <Card
               p={3}
               mb={3}
               onClick={() => {
-                setEditObservations({ details, shortDesc })
+                setEditObservations({ longDesc, shortDesc })
                 setShowObservationDialog(true)
               }}
             >
@@ -98,7 +81,7 @@ export const PageEditStudent: FC<Props> = ({ id }) => {
 
 interface Observation {
   shortDesc: string
-  details: string
+  longDesc: string
 }
 interface NewStudentDialogProps {
   defaultValue?: Observation
@@ -111,13 +94,13 @@ const AddObservationDialog: FC<NewStudentDialogProps> = ({
   onCancel,
 }) => {
   const [shortDesc, setShortDesc] = useState(defaultValue?.shortDesc ?? "")
-  const [details, setDetails] = useState(defaultValue?.details ?? "")
+  const [details, setDetails] = useState(defaultValue?.longDesc ?? "")
   return (
     <ScrollableDialog
       title={defaultValue ? "Edit Observation" : "New Observation"}
       positiveText={defaultValue ? "Save" : "Add"}
       negativeText="Cancel"
-      onPositiveClick={() => onConfirm({ details, shortDesc })}
+      onPositiveClick={() => onConfirm({ longDesc: details, shortDesc })}
       onDismiss={onCancel}
       onNegativeClick={onCancel}
       disablePositiveButton={shortDesc === ""}
