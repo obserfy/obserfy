@@ -16,7 +16,7 @@ import { Student, useStudentNames } from "../../hooks/students/useStudentNames"
 export const PageHome: FC = () => {
   const [showStudentInputDialog, setShowStudentInputDialog] = useState(false)
   const [searchTerm, setSearchTerm] = useState("")
-  const students = useStudentNames()
+  const [names, setAsOutdated] = useStudentNames()
 
   async function submitNewStudent(name: string): Promise<void> {
     const baseUrl = "/api/v1"
@@ -30,6 +30,7 @@ export const PageHome: FC = () => {
     })
 
     setShowStudentInputDialog(false)
+    setAsOutdated()
   }
 
   return (
@@ -49,8 +50,8 @@ export const PageHome: FC = () => {
             <Icon as={PlusIcon} m={0} />
           </Button>
         </Flex>
-        {students.length > 0 && <ChildrenList students={students} />}
-        {students.length === 0 && searchTerm !== "" && (
+        {names.length > 0 && <ChildrenList students={names} />}
+        {names.length === 0 && searchTerm !== "" && (
           <Flex
             mt={3}
             alignItems="center"
@@ -63,7 +64,7 @@ export const PageHome: FC = () => {
             </Typography.H6>
           </Flex>
         )}
-        {students.length === 0 && (
+        {names.length === 0 && (
           <Flex
             mt={3}
             alignItems="center"

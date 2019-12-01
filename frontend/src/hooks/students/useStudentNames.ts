@@ -4,6 +4,7 @@ export interface Student {
   id: string
   name: string
 }
-export const useStudentNames = (): Student[] => {
-  return useApi<Student[]>("/students") ?? []
+export const useStudentNames = (): [Student[], () => void] => {
+  const [names, setAsOutdated] = useApi<Student[]>("/students")
+  return [names ?? [], setAsOutdated]
 }
