@@ -2,7 +2,7 @@
 # to generate typescript typings from our graphql queries
 overwrite: true
 generates:
-  ./src/graphqlTypes.ts:
+  ./src/gatsbyGql.d.ts:
     schema: schema.graphql
     documents:
       - ./src/**/*.{ts,tsx}

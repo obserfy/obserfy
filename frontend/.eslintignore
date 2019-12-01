@@ -6,3 +6,4 @@
 **/*.graphql
 **/graphqlTypes.ts
 public/**/*
+**/*.d.ts
