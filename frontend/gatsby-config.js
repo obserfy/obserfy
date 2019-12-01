@@ -1,3 +1,5 @@
+const proxy = require("http-proxy-middleware")
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -32,11 +34,11 @@ module.exports = {
     {
       resolve: "gatsby-plugin-svgr",
       options: {
-        prettier: true,         // use prettier to format JS code output (default)
-        svgo: true,             // use svgo to optimize SVGs (default)
+        prettier: true, // use prettier to format JS code output (default)
+        svgo: true, // use svgo to optimize SVGs (default)
         svgoConfig: {
           removeViewBox: true, // remove viewBox when possible (default)
-          cleanupIDs: true,    // remove unused IDs and minify remaining IDs (default)
+          cleanupIDs: true, // remove unused IDs and minify remaining IDs (default)
         },
       },
     },
@@ -49,10 +51,14 @@ module.exports = {
         fonts: [
           {
             family: `Open Sans`,
-            variants: [`300`, `400`]
-          }
-        ]
-      }
+            variants: [`300`, `400`],
+          },
+        ],
+      },
     },
   ],
+  developMiddleware: app => {
+    app.use("/api", proxy({ target: "http://localhost:8080" }))
+    app.use("/auth", proxy({ target: "http://localhost:8080" }))
+  },
 }

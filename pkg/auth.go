@@ -7,7 +7,6 @@ import (
 	"golang.org/x/crypto/bcrypt"
 	"net/http"
 	"os"
-	"time"
 )
 
 type User struct {
@@ -114,18 +113,16 @@ func login(env Env) func(w http.ResponseWriter, r *http.Request) {
 
 		// TODO: Confirm cookie is correctly created
 		cookie := http.Cookie{
-			Name:       "session",
-			Value:      session.Token,
-			Path:       "/*",
-			Domain:     os.Getenv("SITE_URL"),
-			Expires:    time.Time{},
-			RawExpires: "",
-			MaxAge:     0,
-			Secure:     true,
-			HttpOnly:   false,
-			SameSite:   1,
-			Raw:        "",
-			Unparsed:   nil,
+			Name:   "session",
+			Value:  session.Token,
+			Path:   "/",
+			Domain: os.Getenv("SITE_URL"),
+			//RawExpires: "",
+			//MaxAge:     0,
+			Secure: true,
+			//HttpOnly:   false,
+			//Raw:        "",
+			//Unparsed:   nil,
 		}
 		http.SetCookie(w, &cookie)
 	}

@@ -122,7 +122,6 @@ exports[`Input should render correctly 1`] = `
       >
         <input
           class="emotion-0"
-          type="text"
           value=""
         />
       </div>

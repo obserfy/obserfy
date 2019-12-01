@@ -18,13 +18,7 @@ interface Props {
 }
 export const PageEditStudent: FC<Props> = ({ name }) => {
   const [showAddObservationDialog, setShowObservationDialog] = useState(false)
-  const [observations, setObservations] = useState<Observation[]>([
-    {
-      shortDesc: "This is that",
-      details:
-        "Elon Reeve Musk FRS is a technology entrepreneur, investor, and engineer. He holds South African, Canadian, and U.S. citizenship and is the founder, CEO, and chief engineer/designer of SpaceX; co-founder",
-    },
-  ])
+  const [observations, setObservations] = useState<Observation[]>([])
   const [editObservations, setEditObservations] = useState()
 
   return (

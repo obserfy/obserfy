@@ -15,6 +15,7 @@ interface Props extends BoxProps {
 export const Input: FC<Props> = ({
   small,
   sx,
+  type,
   icon,
   disabled,
   onEnterPressed,
@@ -32,7 +33,7 @@ export const Input: FC<Props> = ({
       backgroundSize: 24,
       backgroundPosition: "center",
       backgroundPositionX: 16,
-      pl: 52
+      pl: 52,
     })
   }
   return (
@@ -56,6 +57,7 @@ export const Input: FC<Props> = ({
           onKeyUp={e => {
             if (onEnterPressed && e.keyCode === 13) onEnterPressed()
           }}
+          type={type}
           disabled={disabled}
           py={small ? 2 : undefined}
           sx={withIconStyle}

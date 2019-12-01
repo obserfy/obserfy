@@ -124,7 +124,6 @@ exports[`SearchBar should render correctly 1`] = `
         <input
           class="emotion-0"
           placeholder="Search"
-          type="text"
           value=""
         />
       </div>

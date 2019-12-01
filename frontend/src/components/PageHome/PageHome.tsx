@@ -1,4 +1,5 @@
 import React, { FC, useState } from "react"
+import { Link } from "gatsby"
 import { Box } from "../Box/Box"
 import SearchBar from "../SearchBar/SearchBar"
 import { Flex } from "../Flex/Flex"
@@ -9,17 +10,14 @@ import { Typography } from "../Typography/Typography"
 import Card from "../Card/Card"
 import ScrollableDialog from "../ScrollableDialog/ScrollableDialog"
 import Input from "../Input/Input"
-import { Link } from "gatsby"
 import MockAvatar from "../mockAvatar"
+import { Student, useStudentNames } from "../../api"
 
 export const PageHome: FC = () => {
   const [showStudentInputDialog, setShowStudentInputDialog] = useState(false)
   const [searchTerm, setSearchTerm] = useState("")
-  const [students, setStudents] = useState<string[]>(["Poe Dameron"])
+  const [students] = useStudentNames()
 
-  const matchedStudent = students.filter(student =>
-    student.includes(searchTerm)
-  )
   return (
     <>
       <Box>
@@ -37,10 +35,8 @@ export const PageHome: FC = () => {
             <Icon as={PlusIcon} m={0} />
           </Button>
         </Flex>
-        {matchedStudent.length > 0 && (
-          <ChildrenList students={matchedStudent} />
-        )}
-        {matchedStudent.length === 0 && searchTerm !== "" && (
+        {students.length > 0 && <ChildrenList students={students} />}
+        {students.length === 0 && searchTerm !== "" && (
           <Flex
             mt={3}
             alignItems="center"
@@ -48,7 +44,8 @@ export const PageHome: FC = () => {
             height="100%"
           >
             <Typography.H6 textAlign="center" maxWidth="80vw">
-              The term <i>"{searchTerm}"</i> does not match any student
+              The term <i>&quot;{searchTerm}&quot;</i> does not match any
+              student
             </Typography.H6>
           </Flex>
         )}
@@ -66,8 +63,9 @@ export const PageHome: FC = () => {
       {showStudentInputDialog && (
         <NewStudentDialog
           onCancel={() => setShowStudentInputDialog(false)}
-          onConfirm={name => {
-            setStudents([...students, name])
+          onConfirm={() => {
+            // TODO: implement proper create new student
+            // setStudents([...students, name])
             setShowStudentInputDialog(false)
           }}
         />
@@ -76,16 +74,16 @@ export const PageHome: FC = () => {
   )
 }
 
-const ChildrenList: FC<{ students: string[] }> = ({ students }) => {
+const ChildrenList: FC<{ students: Student[] }> = ({ students }) => {
   return (
     <Box>
-      {students.map(student => {
+      {students.map(({ name, id }) => {
         return (
-          <Link to={`/students/edit?name=${student}`}>
+          <Link to={`/students/edit?name=${id}`} key={id}>
             <Card p={3} mx={3} mb={3}>
               <Flex>
                 <MockAvatar />
-                <Typography.H6>{student}</Typography.H6>
+                <Typography.H6>{name}</Typography.H6>
               </Flex>
             </Card>
           </Link>
@@ -99,6 +97,7 @@ interface NewStudentDialogProps {
   onCancel: () => void
   onConfirm: (name: string) => void
 }
+
 const NewStudentDialog: FC<NewStudentDialogProps> = ({
   onConfirm,
   onCancel,

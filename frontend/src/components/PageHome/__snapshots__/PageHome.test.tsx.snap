@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageHome should render correctly 1`] = `
-.emotion-42 {
+.emotion-39 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,7 +9,7 @@ exports[`PageHome should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-42 {
+  .emotion-39 {
     font-size: 20px;
   }
 }
@@ -515,7 +515,7 @@ exports[`PageHome should render correctly 1`] = `
   height: 36px;
 }
 
-.emotion-41 {
+.emotion-38 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -526,12 +526,12 @@ exports[`PageHome should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-41 {
+  .emotion-38 {
     padding-left: 230px;
   }
 }
 
-.emotion-39 {
+.emotion-37 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -728,26 +728,20 @@ exports[`PageHome should render correctly 1`] = `
   width: 20px;
 }
 
-.emotion-38 {
+.emotion-36 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  padding: 8px;
-  background-color: var(--theme-ui-colors-background,#F7F8FA);
-  border-radius: 6px;
-  box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
-  padding: 16px;
-  background-color: var(--theme-ui-colors-surface,#fff);
-  overflow: hidden;
-  margin-left: 16px;
-  margin-right: 16px;
-  margin-bottom: 16px;
-}
-
-.emotion-37 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
+  margin-top: 16px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 100%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -755,24 +749,6 @@ exports[`PageHome should render correctly 1`] = `
 }
 
 .emotion-35 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  max-width: 100%;
-  height: auto;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 99999px;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  border-width: 1px;
-  border-style: solid;
-  overflow: hidden;
-  width: 32px;
-  height: 32px;
-  margin-right: 16px;
-}
-
-.emotion-36 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -838,7 +814,7 @@ exports[`PageHome should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-42"
+    class="emotion-39"
   >
     <header
       class="emotion-11"
@@ -1016,10 +992,10 @@ exports[`PageHome should render correctly 1`] = `
       />
     </div>
     <main
-      class="emotion-41"
+      class="emotion-38"
     >
       <div
-        class="emotion-39"
+        class="emotion-37"
       >
         <div
           class="emotion-34"
@@ -1034,7 +1010,6 @@ exports[`PageHome should render correctly 1`] = `
               <input
                 class="emotion-29"
                 placeholder="Search students"
-                type="text"
                 value=""
               />
             </div>
@@ -1048,29 +1023,13 @@ exports[`PageHome should render correctly 1`] = `
           </button>
         </div>
         <div
-          class="emotion-39"
+          class="emotion-36"
         >
-          <a
-            href="/students/edit?name=Poe Dameron"
+          <h6
+            class="emotion-35"
           >
-            <div
-              class="emotion-38"
-            >
-              <div
-                class="emotion-37"
-              >
-                <img
-                  class="emotion-35"
-                  src="https://images.unsplash.com/photo-1571942727532-a67a4bf9845a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-                />
-                <h6
-                  class="emotion-36"
-                >
-                  Poe Dameron
-                </h6>
-              </div>
-            </div>
-          </a>
+            You have no one enrolled
+          </h6>
         </div>
       </div>
     </main>

@@ -81,20 +81,20 @@ const themeUiTheme = {
         onOverlay: "#fff",
 
         warning: "#ffd600",
-        onWarning: "rgba(0,0,0,0.87)"
-      }
-    }
+        onWarning: "rgba(0,0,0,0.87)",
+      },
+    },
   },
   fonts: {
     body:
       "Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif ",
     heading:
-      "Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif "
+      "Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif ",
   },
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 96],
   fontWeights: {
     heading: 300,
-    body: 400
+    body: 400,
   },
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   sizes: {
@@ -102,26 +102,26 @@ const themeUiTheme = {
     appbar: 57,
     sidebar: {
       mobile: 360,
-      desktop: 230
+      desktop: 230,
     },
     icon: 20,
     table: {
       row: 60,
-      header: 70
+      header: 70,
     },
     maxWidth: {
       sm: 640,
       md: 700,
-      lg: 900
-    }
+      lg: 900,
+    },
   },
   radii: {
     default: 6,
-    circle: 99999
+    circle: 99999,
   },
   shadows: {
-    low: "rgba(0, 0, 0, 0.1) 0px 0px 1px, rgba(0, 0, 0, 0.27) 0px 2px 4px -2px"
-  }
+    low: "rgba(0, 0, 0, 0.1) 0px 0px 1px, rgba(0, 0, 0, 0.27) 0px 2px 4px -2px",
+  },
 }
 
 const rebassVariants = {
@@ -132,67 +132,67 @@ const rebassVariants = {
       fontFamily: "heading",
       fontWeight: "light",
       marginBottom: "3rem",
-      letterSpacing: "0em"
+      letterSpacing: "0em",
     },
     h1: {
       variant: "heading",
       fontSize: "6.103515625rem",
       lineHeight: "9rem",
-      letterSpacing: 0
+      letterSpacing: 0,
     },
     h2: {
       variant: "heading",
       fontSize: "4.8828125rem",
       lineHeight: "6rem",
-      letterSpacing: 0
+      letterSpacing: 0,
     },
     h3: {
       variant: "heading",
       fontSize: "3.90625rem",
       lineHeight: "6rem",
-      letterSpacing: 0
+      letterSpacing: 0,
     },
     h4: {
       variant: "heading",
       fontSize: "3.125rem",
       lineHeight: "6rem",
-      letterSpacing: 0
+      letterSpacing: 0,
     },
     h5: {
       variant: "heading",
       fontSize: "2.5rem",
       lineHeight: "3rem",
-      letterSpacing: 0
+      letterSpacing: 0,
     },
     h6: {
       variant: "heading",
       fontSize: "2rem",
       lineHeight: "3rem",
-      letterSpacing: 0
+      letterSpacing: 0,
     },
     body: {
       color: "rgba(0,0,0,0.88)",
       fontSize: "1.6rem",
       fontFamily: "body",
       fontWeight: "body",
-      lineHeight: "3rem"
-    }
+      lineHeight: "3rem",
+    },
   },
   variants: {
     avatar: {
       width: "avatar",
       height: "avatar",
-      borderRadius: "circle"
+      borderRadius: "circle",
     },
     card: {
       p: 2,
       bg: "background",
       borderRadius: "default",
       boxShadow:
-        "rgba(0, 0, 0, 0.1) 0px 0px 1px, rgba(0, 0, 0, 0.27) 0px 2px 4px -2px"
+        "rgba(0, 0, 0, 0.1) 0px 0px 1px, rgba(0, 0, 0, 0.27) 0px 2px 4px -2px",
     },
     link: {
-      color: "primary"
+      color: "primary",
     },
     nav: {
       fontSize: 1,
@@ -202,9 +202,9 @@ const rebassVariants = {
       color: "inherit",
       textDecoration: "none",
       ":hover,:focus,.active": {
-        color: "primary"
-      }
-    }
+        color: "primary",
+      },
+    },
   },
   buttons: {
     primary: {
@@ -223,19 +223,19 @@ const rebassVariants = {
       whiteSpace: "nowrap",
       "&:disabled": {
         opacity: 0.38,
-        cursor: "auto"
+        cursor: "auto",
       },
       "&:hover, &:focus": {
         backgroundColor: "primaryDark",
         outline: "none",
         "&:disabled": {
-          backgroundColor: "primary"
-        }
-      }
+          backgroundColor: "primary",
+        },
+      },
     },
     primaryBig: {
       variant: "buttons.primary",
-      py: 3
+      py: 3,
     },
     secondary: {
       variant: "buttons.primary",
@@ -244,12 +244,12 @@ const rebassVariants = {
       "&:hover, &:focus": {
         backgroundColor: "primaryLighter",
         borderColor: "primary",
-        outline: "none"
-      }
+        outline: "none",
+      },
     },
     secondaryBig: {
       variant: "buttons.secondary",
-      py: 3
+      py: 3,
     },
     outline: {
       variant: "buttons.secondary",
@@ -261,21 +261,21 @@ const rebassVariants = {
         outline: "none",
         "&:disabled": {
           backgroundColor: "transparent",
-          borderColor: "border"
-        }
-      }
+          borderColor: "border",
+        },
+      },
     },
     outlineBig: {
       variant: "buttons.outline",
-      py: 3
-    }
+      py: 3,
+    },
   },
   styles: {
     root: {
       fontFamily: "body",
       fontWeight: "body",
-      lineHeight: "body"
-    }
+      lineHeight: "body",
+    },
   },
   forms: {
     input: {
@@ -288,16 +288,16 @@ const rebassVariants = {
       color: "text",
       "&:hover, &:focus": {
         borderColor: "primary",
-        outline: "none"
+        outline: "none",
       },
       "&::placeholder": {
-        fontStyle: "italic"
+        fontStyle: "italic",
       },
       "&:disabled": {
         opacity: 0.38,
         borderColor: "border",
-        color: "textDisabled"
-      }
+        color: "textDisabled",
+      },
     },
     select: {
       color: "text",
@@ -308,8 +308,8 @@ const rebassVariants = {
       p: 3,
       "&:hover, &:focus": {
         borderColor: "primary",
-        outline: "none"
-      }
+        outline: "none",
+      },
     },
     textarea: {
       fontFamily: "body",
@@ -322,31 +322,31 @@ const rebassVariants = {
       color: "text",
       "&:hover, &:focus": {
         borderColor: "primary",
-        outline: "none"
+        outline: "none",
       },
       "&::placeholder": {
         fontStyle: "italic",
-        lineHeight: "2rem"
-      }
-    }
+        lineHeight: "2rem",
+      },
+    },
   },
   label: {
     color: "textMediumEmphasis",
     as: "label",
     fontFamily: "body",
     fontSize: 1,
-    userSelect: "none"
+    userSelect: "none",
   },
   loadingPlaceholder: {
     text: {
-      height: "1em"
-    }
-  }
+      height: "1em",
+    },
+  },
 }
 
 const Theme = {
   ...themeUiTheme,
-  ...rebassVariants
+  ...rebassVariants,
 }
 
 export type Theme = typeof Theme
