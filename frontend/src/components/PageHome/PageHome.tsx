@@ -11,12 +11,26 @@ import Card from "../Card/Card"
 import ScrollableDialog from "../ScrollableDialog/ScrollableDialog"
 import Input from "../Input/Input"
 import MockAvatar from "../mockAvatar"
-import { Student, useStudentNames } from "../../api"
+import { Student, useStudentNames } from "../../hooks/students/useStudentNames"
 
 export const PageHome: FC = () => {
   const [showStudentInputDialog, setShowStudentInputDialog] = useState(false)
   const [searchTerm, setSearchTerm] = useState("")
-  const [students] = useStudentNames()
+  const students = useStudentNames()
+
+  async function submitNewStudent(name: string): Promise<void> {
+    const baseUrl = "/api/v1"
+    const newStudent = { name }
+
+    await fetch(`${baseUrl}/students`, {
+      credentials: "same-origin",
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newStudent),
+    })
+
+    setShowStudentInputDialog(false)
+  }
 
   return (
     <>
@@ -63,11 +77,7 @@ export const PageHome: FC = () => {
       {showStudentInputDialog && (
         <NewStudentDialog
           onCancel={() => setShowStudentInputDialog(false)}
-          onConfirm={() => {
-            // TODO: implement proper create new student
-            // setStudents([...students, name])
-            setShowStudentInputDialog(false)
-          }}
+          onConfirm={submitNewStudent}
         />
       )}
     </>

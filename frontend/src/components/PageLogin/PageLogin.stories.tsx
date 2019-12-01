@@ -5,8 +5,8 @@ export default {
   title: "Core|PageLogin",
   component: PageLogin,
   parameters: {
-    componentSubtitle: "Just a simple PageLogin"
-  }
+    componentSubtitle: "Just a simple PageLogin",
+  },
 }
 
 export const Basic: FC = () => <PageLogin />

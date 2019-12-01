@@ -6,33 +6,29 @@ import Button from "../Button/Button"
 import Flex from "../Flex/Flex"
 import { Typography } from "../Typography/Typography"
 
+async function submitLoginForm(email: string, password: string): Promise<void> {
+  const credentials = new FormData()
+  credentials.append("email", email)
+  credentials.append("password", password)
+  const response = await fetch("/auth/login", {
+    method: "POST",
+    credentials: "same-origin",
+    body: credentials,
+  })
+  if (response.status === 200) navigate("/")
+}
+
 export const PageLogin: FC = () => {
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
 
   function handleSubmit(e: FormEvent): void {
-    const f = async (): Promise<void> => {
-      const credentials = new FormData()
-      credentials.append("email", email)
-      credentials.append("password", password)
-      const response = await fetch("/auth/login", {
-        method: "POST",
-        credentials: "same-origin",
-        body: credentials,
-      })
-      if (response.status === 200) navigate("/")
-    }
-    f()
+    submitLoginForm(email, password)
     e.preventDefault()
   }
 
   return (
-    <Flex
-      alignItems={["", "center"]}
-      justifyContent="center"
-      minHeight="100vh"
-      minWidth="100vw"
-    >
+    <Flex justifyContent="center" minHeight="100vh" minWidth="100vw" pt={6}>
       <Box
         as="form"
         p={3}
@@ -40,7 +36,7 @@ export const PageLogin: FC = () => {
         width="100%"
         onSubmit={handleSubmit}
       >
-        <Typography.H1 my={[5, 3]}>Welcome</Typography.H1>
+        <Typography.H1 my={3}>Welcome</Typography.H1>
         <Input
           width="100%"
           label="Email"

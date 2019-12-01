@@ -3,13 +3,14 @@ import { navigate } from "gatsby"
 
 const baseUrl = "/api/v1"
 
-function useApi<T>(url: string): any {
+function useApi<T>(url: string, fetchOptions?: RequestInit): T | undefined {
   const [response, setResponse] = useState<T | undefined>()
 
   useEffect(() => {
     async function f(): Promise<void> {
       const result = await fetch(`${baseUrl}${url}`, {
         credentials: "same-origin",
+        ...fetchOptions,
       })
       if (result.status === 401) {
         // throw new UnauthorizedError()
@@ -19,17 +20,9 @@ function useApi<T>(url: string): any {
       setResponse(data)
     }
     f()
-  }, [url])
+  }, [fetchOptions, url])
 
   return response
 }
 
-export interface Student {
-  id: string
-  name: string
-}
-export const useStudentNames = (): [Student[], (name: string) => void] => {
-  const names = useApi<Student>("/students")
-
-  return [names ?? [], () => {}]
-}
+export default useApi

@@ -24,19 +24,11 @@ exports[`PageLogin should render correctly 1`] = `
   justify-content: center;
   min-height: 100vh;
   min-width: 100vw;
+  padding-top: 128px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-11 {
-    -webkit-align-items: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-  }
 }
 
 .emotion-10 {
@@ -63,15 +55,8 @@ exports[`PageLogin should render correctly 1`] = `
   -ms-letter-spacing: 0;
   letter-spacing: 0;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
-  margin-top: 64px;
-  margin-bottom: 64px;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-0 {
-    margin-top: 16px;
-    margin-bottom: 16px;
-  }
+  margin-top: 16px;
+  margin-bottom: 16px;
 }
 
 .emotion-4 {
