@@ -14,9 +14,9 @@ import Card from "../Card/Card"
 import Spacer from "../Spacer/Spacer"
 
 interface Props {
-  name: string
+  id: string
 }
-export const PageEditStudent: FC<Props> = ({ name }) => {
+export const PageEditStudent: FC<Props> = ({ id }) => {
   const [showAddObservationDialog, setShowObservationDialog] = useState(false)
   const [observations, setObservations] = useState<Observation[]>([])
   const [editObservations, setEditObservations] = useState()
@@ -45,7 +45,7 @@ export const PageEditStudent: FC<Props> = ({ name }) => {
         </Flex>
         <Flex alignItems="center" p={3}>
           <MockAvatar size={60} />
-          <Typography.H3>{name}</Typography.H3>
+          <Typography.H3>{id}</Typography.H3>
         </Flex>
         <Box p={3}>
           <Typography.H4 color="textMediumEmphasis" mb={2}>
@@ -63,7 +63,7 @@ export const PageEditStudent: FC<Props> = ({ name }) => {
               <Flex alignItems="center">
                 <Box>
                   <Typography.Body fontSize={1} color="textMediumEmphasis">
-                    Monday, 26 Dec '19
+                    Monday, 26 Dec &amp;19
                   </Typography.Body>
                   <Typography.H5>{shortDesc}</Typography.H5>
                 </Box>

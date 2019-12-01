@@ -1029,9 +1029,7 @@ exports[`PageEditStudent should render correctly 1`] = `
           />
           <h3
             class="emotion-37"
-          >
-            Poe Damoron
-          </h3>
+          />
         </div>
         <div
           class="emotion-40"

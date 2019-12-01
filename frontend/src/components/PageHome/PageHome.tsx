@@ -90,7 +90,7 @@ const ChildrenList: FC<{ students: Student[] }> = ({ students }) => {
     <Box>
       {students.map(({ name, id }) => {
         return (
-          <Link to={`/students/edit?name=${id}`} key={id}>
+          <Link to={`/students/edit?id=${id}`} key={id}>
             <Card p={3} mx={3} mb={3}>
               <Flex>
                 <MockAvatar />
