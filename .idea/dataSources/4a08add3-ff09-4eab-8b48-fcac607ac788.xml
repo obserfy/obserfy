@@ -3,18 +3,18 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.16">
     <root id="1">
       <ServerVersion>11.5</ServerVersion>
-      <StartupTime>1575221508</StartupTime>
+      <StartupTime>1575305046</StartupTime>
     </root>
     <database id="2" parent="1" name="main">
       <ObjectId>16384</ObjectId>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>936</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1027</IntrospectionStateNumber>
     </database>
     <database id="3" parent="1" name="postgres">
       <ObjectId>13067</ObjectId>
       <Comment>default administrative connection database</Comment>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>934</IntrospectionStateNumber>
+      <IntrospectionStateNumber>959</IntrospectionStateNumber>
       <Current>1</Current>
     </database>
     <role id="4" parent="1" name="pg_execute_server_program">
@@ -66,7 +66,7 @@
       <Comment>standard public schema</Comment>
       <StateNumber>360</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>937</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1028</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <access-method id="16" parent="2" name="btree">
@@ -141,7 +141,7 @@
       <Comment>standard public schema</Comment>
       <StateNumber>360</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>935</IntrospectionStateNumber>
+      <IntrospectionStateNumber>960</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <access-method id="26" parent="3" name="btree">
@@ -200,93 +200,143 @@
       <SchemaName>pg_catalog</SchemaName>
       <SchemaId>11</SchemaId>
     </extension>
-    <table id="33" parent="15" name="sessions">
-      <ObjectId>41021</ObjectId>
+    <table id="33" parent="15" name="observations">
+      <ObjectId>49286</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>816</StateNumber>
+      <StateNumber>1021</StateNumber>
     </table>
-    <table id="34" parent="15" name="students">
-      <ObjectId>41010</ObjectId>
+    <table id="34" parent="15" name="sessions">
+      <ObjectId>49310</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>809</StateNumber>
+      <StateNumber>1024</StateNumber>
     </table>
-    <table id="35" parent="15" name="users">
-      <ObjectId>41002</ObjectId>
+    <table id="35" parent="15" name="students">
+      <ObjectId>49302</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>808</StateNumber>
+      <StateNumber>1023</StateNumber>
     </table>
-    <table id="36" parent="25" name="students">
+    <table id="36" parent="15" name="users">
+      <ObjectId>49294</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>1022</StateNumber>
+    </table>
+    <table id="37" parent="25" name="students">
       <ObjectId>16388</ObjectId>
       <Owner>postgres</Owner>
       <StateNumber>588</StateNumber>
     </table>
-    <column id="37" parent="33" name="token">
+    <column id="38" parent="33" name="id">
       <Position>1</Position>
       <DataType>text|0s</DataType>
-      <StateNumber>816</StateNumber>
+      <NotNull>1</NotNull>
+      <StateNumber>1021</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <column id="38" parent="34" name="id">
-      <Position>1</Position>
-      <DataType>uuid|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>809</StateNumber>
-      <TypeId>2950</TypeId>
-    </column>
-    <column id="39" parent="34" name="name">
+    <column id="39" parent="33" name="student_id">
       <Position>2</Position>
       <DataType>text|0s</DataType>
-      <StateNumber>809</StateNumber>
+      <StateNumber>1021</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <index id="40" parent="34" name="students_pkey">
-      <ObjectId>41016</ObjectId>
-      <StateNumber>809</StateNumber>
+    <column id="40" parent="33" name="short_desc">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+      <StateNumber>1021</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="41" parent="33" name="long_desc">
+      <Position>4</Position>
+      <DataType>text|0s</DataType>
+      <StateNumber>1021</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="42" parent="33" name="created_date">
+      <Position>5</Position>
+      <DataType>timestamp with time zone|0s</DataType>
+      <StateNumber>1021</StateNumber>
+      <TypeId>1184</TypeId>
+    </column>
+    <index id="43" parent="33" name="observations_pkey">
+      <ObjectId>49292</ObjectId>
+      <StateNumber>1021</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <key id="41" parent="34" name="students_pkey">
-      <ObjectId>41017</ObjectId>
-      <StateNumber>809</StateNumber>
+    <key id="44" parent="33" name="observations_pkey">
+      <ObjectId>49293</ObjectId>
+      <StateNumber>1021</StateNumber>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>observations_pkey</UnderlyingIndexName>
+    </key>
+    <column id="45" parent="34" name="token">
+      <Position>1</Position>
+      <DataType>text|0s</DataType>
+      <StateNumber>1024</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="46" parent="35" name="id">
+      <Position>1</Position>
+      <DataType>uuid|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1023</StateNumber>
+      <TypeId>2950</TypeId>
+    </column>
+    <column id="47" parent="35" name="name">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+      <StateNumber>1023</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <index id="48" parent="35" name="students_pkey">
+      <ObjectId>49308</ObjectId>
+      <StateNumber>1023</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+    </index>
+    <key id="49" parent="35" name="students_pkey">
+      <ObjectId>49309</ObjectId>
+      <StateNumber>1023</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>students_pkey</UnderlyingIndexName>
     </key>
-    <column id="42" parent="35" name="id">
+    <column id="50" parent="36" name="id">
       <Position>1</Position>
       <DataType>uuid|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>808</StateNumber>
+      <StateNumber>1022</StateNumber>
       <TypeId>2950</TypeId>
     </column>
-    <column id="43" parent="35" name="email">
+    <column id="51" parent="36" name="email">
       <Position>2</Position>
       <DataType>text|0s</DataType>
-      <StateNumber>808</StateNumber>
+      <StateNumber>1022</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <column id="44" parent="35" name="password">
+    <column id="52" parent="36" name="password">
       <Position>3</Position>
       <DataType>bytea|0s</DataType>
-      <StateNumber>808</StateNumber>
+      <StateNumber>1022</StateNumber>
       <TypeId>17</TypeId>
     </column>
-    <index id="45" parent="35" name="users_pkey">
-      <ObjectId>41008</ObjectId>
-      <StateNumber>808</StateNumber>
+    <index id="53" parent="36" name="users_pkey">
+      <ObjectId>49300</ObjectId>
+      <StateNumber>1022</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <key id="46" parent="35" name="users_pkey">
-      <ObjectId>41009</ObjectId>
-      <StateNumber>808</StateNumber>
+    <key id="54" parent="36" name="users_pkey">
+      <ObjectId>49301</ObjectId>
+      <StateNumber>1022</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>users_pkey</UnderlyingIndexName>
     </key>
-    <column id="47" parent="36" name="name">
+    <column id="55" parent="37" name="name">
       <Position>1</Position>
       <DataType>text|0s</DataType>
       <StateNumber>588</StateNumber>

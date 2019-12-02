@@ -17,7 +17,7 @@ func getDBConnection() *pg.DB {
 }
 
 func createSchema(env Env) {
-	for _, model := range []interface{}{(*User)(nil), (*Student)(nil), (*Session)(nil)} {
+	for _, model := range []interface{}{(*Observation)(nil), (*User)(nil), (*Student)(nil), (*Session)(nil)} {
 		err := env.db.CreateTable(model, &orm.CreateTableOptions{})
 		if err != nil {
 			env.logger.Error("Failed creating table", zap.Error(err))

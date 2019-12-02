@@ -32,6 +32,7 @@ func main() {
 	r.Route("/api/v1", func(r chi.Router) {
 		r.Use(createAuthMiddleware(env))
 		r.Mount("/students", createStudentsSubroute(env))
+		r.Mount("/observations", createObservationsSubroute(env))
 	})
 	r.Mount("/auth", createAuthSubroute(env))
 	r.Get("/*", createFrontendFileServer())
