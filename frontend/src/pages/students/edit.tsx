@@ -14,7 +14,7 @@ const EditStudent: FC<PageRendererProps> = ({ location }) => {
   }
 
   return (
-    <Layout pageTitle="Home">
+    <Layout pageTitle="Edit student">
       <PageEditStudent id={id} />
     </Layout>
   )

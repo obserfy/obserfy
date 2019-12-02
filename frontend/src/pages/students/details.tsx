@@ -14,7 +14,7 @@ const StudentDetails: FC<PageRendererProps> = ({ location }) => {
   }
 
   return (
-    <Layout pageTitle="Home">
+    <Layout pageTitle="Details">
       <PageStudentDetails id={id} />
     </Layout>
   )

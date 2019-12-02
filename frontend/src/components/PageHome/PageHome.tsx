@@ -8,7 +8,6 @@ import Button from "../Button/Button"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import { Typography } from "../Typography/Typography"
 import Card from "../Card/Card"
-import MockAvatar from "../mockAvatar"
 import { useQueryAllStudents } from "../../hooks/students/useQueryAllStudents"
 import NewStudentDialog from "../NewStudentDialog/NewStudentDialog"
 import EmptyListPlaceholder from "../EmptyListPlaceholder/EmptyListPlaceholder"
@@ -17,6 +16,10 @@ export const PageHome: FC = () => {
   const [showStudentInputDialog, setShowStudentInputDialog] = useState(false)
   const [searchTerm, setSearchTerm] = useState("")
   const [students, setStudentsAsOutdated] = useQueryAllStudents()
+
+  const matchedStudent = students.filter(student =>
+    student.name.includes(searchTerm)
+  )
 
   async function submitNewStudent(name: string): Promise<void> {
     const baseUrl = "/api/v1"
@@ -33,16 +36,25 @@ export const PageHome: FC = () => {
     setStudentsAsOutdated()
   }
 
-  const studentList = students.map(({ name, id }) => (
+  const studentList = matchedStudent.map(({ name, id }) => (
     <Link to={`/students/details?id=${id}`} key={id}>
       <Card p={3} mx={3} mb={2}>
         <Flex>
-          <MockAvatar />
           <Typography.H6>{name}</Typography.H6>
         </Flex>
       </Card>
     </Link>
   ))
+
+  const emptyStudentListPlaceholder = students.length === 0 && (
+    <Box mx={3}>
+      <EmptyListPlaceholder
+        text="You have no one enrolled"
+        callToActionText="New student"
+        onActionClick={() => setShowStudentInputDialog(true)}
+      />
+    </Box>
+  )
 
   return (
     <>
@@ -62,7 +74,7 @@ export const PageHome: FC = () => {
           </Button>
         </Flex>
         {students.length > 0 && studentList}
-        {students.length === 0 && searchTerm !== "" && (
+        {matchedStudent.length === 0 && searchTerm !== "" && (
           <Flex
             mt={3}
             alignItems="center"
@@ -75,13 +87,7 @@ export const PageHome: FC = () => {
             </Typography.H6>
           </Flex>
         )}
-        {students.length === 0 && (
-          <EmptyListPlaceholder
-            text="You have no one enrolled"
-            callToActionText="New student"
-            onActionClick={() => setShowStudentInputDialog(true)}
-          />
-        )}
+        {emptyStudentListPlaceholder}
       </Box>
       {showStudentInputDialog && (
         <NewStudentDialog

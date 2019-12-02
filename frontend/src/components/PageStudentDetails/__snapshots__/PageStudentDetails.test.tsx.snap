@@ -1,7 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageStudentDetails should render correctly 1`] = `
-.emotion-14 {
+@keyframes animation-0 {
+  0% {
+    background-color: rgba(165,165,165,0.05);
+  }
+
+  50% {
+    background-color: rgba(165,165,165,0.1);
+  }
+
+  100% {
+    background-color: rgba(165,165,165,0.05);
+  }
+}
+
+.emotion-17 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,12 +23,12 @@ exports[`PageStudentDetails should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-14 {
+  .emotion-17 {
     font-size: 20px;
   }
 }
 
-.emotion-11 {
+.emotion-14 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -28,7 +42,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 16px;
+  margin-left: -8px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -41,19 +55,51 @@ exports[`PageStudentDetails should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 99999px;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  border-width: 1px;
-  border-style: solid;
-  overflow: hidden;
-  width: 60px;
-  height: 60px;
-  margin-right: 16px;
+  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
+  margin: 16px;
+  height: 24px;
+  width: 24px;
+  margin-right: 4px;
 }
 
 .emotion-1 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  font-size: 16px;
+  margin-bottom: 0;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-1 {
+    font-size: 14px;
+  }
+}
+
+.emotion-5 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-bottom: 16px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -71,6 +117,17 @@ exports[`PageStudentDetails should render correctly 1`] = `
 }
 
 .emotion-3 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  border-radius: 6px;
+  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
+  animation: 1s ease-in-out 0s infinite animation-0;
+  width: 24rem;
+  height: 60px;
+}
+
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -124,32 +181,32 @@ exports[`PageStudentDetails should render correctly 1`] = `
   margin-left: 16px;
 }
 
-.emotion-3:disabled {
+.emotion-6:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-3:hover,
-.emotion-3:focus {
+.emotion-6:hover,
+.emotion-6:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(161,130,250,0.12));
   border-color: var(--theme-ui-colors-primary,#6E55C6);
   outline: none;
 }
 
-.emotion-3:hover:disabled,
-.emotion-3:focus:disabled {
+.emotion-6:hover:disabled,
+.emotion-6:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-10 {
+.emotion-13 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   padding: 16px;
 }
 
-.emotion-4 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -167,7 +224,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   margin-bottom: 8px;
 }
 
-.emotion-9 {
+.emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -180,7 +237,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   overflow: hidden;
 }
 
-.emotion-8 {
+.emotion-11 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -203,7 +260,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-5 {
+.emotion-8 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -221,7 +278,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   margin-bottom: 16px;
 }
 
-.emotion-7 {
+.emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -274,25 +331,25 @@ exports[`PageStudentDetails should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-7:disabled {
+.emotion-10:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-7:hover,
-.emotion-7:focus {
+.emotion-10:hover,
+.emotion-10:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(161,130,250,0.12));
   border-color: var(--theme-ui-colors-primary,#6E55C6);
   outline: none;
 }
 
-.emotion-7:hover:disabled,
-.emotion-7:focus:disabled {
+.emotion-10:hover:disabled,
+.emotion-10:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-6 {
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -305,7 +362,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   margin-right: 8px;
 }
 
-.emotion-13 {
+.emotion-16 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -364,23 +421,23 @@ exports[`PageStudentDetails should render correctly 1`] = `
   margin: 16px;
 }
 
-.emotion-13:disabled {
+.emotion-16:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-13:hover,
-.emotion-13:focus {
+.emotion-16:hover,
+.emotion-16:focus {
   background-color: var(--theme-ui-colors-primaryDark,#3A2B95);
   outline: none;
 }
 
-.emotion-13:hover:disabled,
-.emotion-13:focus:disabled {
+.emotion-16:hover:disabled,
+.emotion-16:focus:disabled {
   background-color: var(--theme-ui-colors-primary,#6E55C6);
 }
 
-.emotion-12 {
+.emotion-15 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -395,51 +452,69 @@ exports[`PageStudentDetails should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-14"
+    class="emotion-17"
   >
     <div
-      class="emotion-11"
+      class="emotion-14"
     >
-      <div
-        class="emotion-2"
+      <a
+        aria-current="page"
+        class=""
+        href="/"
       >
-        <img
-          class="emotion-0"
-          src="https://images.unsplash.com/photo-1571942727532-a67a4bf9845a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-        />
+        <div
+          class="emotion-2"
+        >
+          <div
+            class="emotion-0"
+          />
+          <p
+            class="emotion-1"
+          >
+            Home
+          </p>
+        </div>
+      </a>
+      <div
+        class="emotion-5"
+      >
         <h3
-          class="emotion-1"
-        />
+          class="emotion-4"
+        >
+          <div
+            class="emotion-3"
+          />
+        </h3>
       </div>
       <button
-        class="emotion-3"
+        class="emotion-6"
       >
         Edit student
       </button>
       <div
-        class="emotion-10"
+        class="emotion-13"
       >
         <h4
-          class="emotion-4"
+          class="emotion-7"
         >
           Observations
         </h4>
         <div
-          class="emotion-9"
+          class="emotion-12"
         >
           <div
-            class="emotion-8"
+            class="emotion-11"
           >
             <h6
-              class="emotion-5"
+              class="emotion-8"
             >
               What did you observe?
             </h6>
             <button
-              class="emotion-7"
+              class="emotion-10"
             >
               <div
-                class="emotion-6"
+                class="emotion-9"
               />
               add observation
             </button>
@@ -448,10 +523,10 @@ exports[`PageStudentDetails should render correctly 1`] = `
       </div>
     </div>
     <button
-      class="emotion-13"
+      class="emotion-16"
     >
       <div
-        class="emotion-12"
+        class="emotion-15"
       />
        New observation
     </button>

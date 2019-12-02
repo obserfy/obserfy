@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageHome should render correctly 1`] = `
-.emotion-42 {
+.emotion-43 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,7 +9,7 @@ exports[`PageHome should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-42 {
+  .emotion-43 {
     font-size: 20px;
   }
 }
@@ -515,7 +515,7 @@ exports[`PageHome should render correctly 1`] = `
   height: 36px;
 }
 
-.emotion-41 {
+.emotion-42 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -526,12 +526,12 @@ exports[`PageHome should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-41 {
+  .emotion-42 {
     padding-left: 230px;
   }
 }
 
-.emotion-40 {
+.emotion-41 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -728,6 +728,14 @@ exports[`PageHome should render correctly 1`] = `
   width: 20px;
 }
 
+.emotion-40 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
 .emotion-39 {
   box-sizing: border-box;
   margin: 0;
@@ -844,7 +852,7 @@ exports[`PageHome should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-42"
+    class="emotion-43"
   >
     <header
       class="emotion-11"
@@ -1022,10 +1030,10 @@ exports[`PageHome should render correctly 1`] = `
       />
     </div>
     <main
-      class="emotion-41"
+      class="emotion-42"
     >
       <div
-        class="emotion-40"
+        class="emotion-41"
       >
         <div
           class="emotion-34"
@@ -1053,24 +1061,28 @@ exports[`PageHome should render correctly 1`] = `
           </button>
         </div>
         <div
-          class="emotion-39"
+          class="emotion-40"
         >
           <div
-            class="emotion-38"
+            class="emotion-39"
           >
-            <h6
-              class="emotion-35"
+            <div
+              class="emotion-38"
             >
-              You have no one enrolled
-            </h6>
-            <button
-              class="emotion-33"
-            >
-              <div
-                class="emotion-36"
-              />
-              New student
-            </button>
+              <h6
+                class="emotion-35"
+              >
+                You have no one enrolled
+              </h6>
+              <button
+                class="emotion-33"
+              >
+                <div
+                  class="emotion-36"
+                />
+                New student
+              </button>
+            </div>
           </div>
         </div>
       </div>

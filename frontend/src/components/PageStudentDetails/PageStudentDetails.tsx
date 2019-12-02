@@ -10,10 +10,11 @@ import Icon from "../Icon/Icon"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import EmptyListPlaceholder from "../EmptyListPlaceholder/EmptyListPlaceholder"
 import AddObservationDialog from "../AddObservationDialog/AddObservationDialog"
-import MockAvatar from "../mockAvatar"
 import Button from "../Button/Button"
 import FloatingActionButton from "../FloatingActionButton/FloatingActionButton"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
+import { BackNavigation } from "../BackNavigation/BackNavigation"
+import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 
 export interface Observation {
   shortDesc: string
@@ -77,9 +78,11 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
   return (
     <>
       <Box>
-        <Flex alignItems="center" p={3}>
-          <MockAvatar size={60} />
-          <Typography.H3>{details?.name}</Typography.H3>
+        <BackNavigation text="Home" to="/" />
+        <Flex alignItems="center" mx={3} mb={3}>
+          <Typography.H3>
+            {details?.name || <LoadingPlaceholder width="24rem" height={60} />}
+          </Typography.H3>
         </Flex>
         <Button
           ml={3}
