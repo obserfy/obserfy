@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageEditStudent should render correctly 1`] = `
-.emotion-45 {
+.emotion-30 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,7 +9,7 @@ exports[`PageEditStudent should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-45 {
+  .emotion-30 {
     font-size: 20px;
   }
 }
@@ -515,7 +515,7 @@ exports[`PageEditStudent should render correctly 1`] = `
   height: 36px;
 }
 
-.emotion-44 {
+.emotion-29 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -526,237 +526,9 @@ exports[`PageEditStudent should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-44 {
+  .emotion-29 {
     padding-left: 230px;
   }
-}
-
-.emotion-41 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-}
-
-.emotion-35 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-bottom-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.emotion-29 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  color: rgba(0,0,0,0.88);
-  font-size: 1.6rem;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 400;
-  line-height: 3rem;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  font-size: 16px;
-  padding-right: 16px;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-29 {
-    font-size: 14px;
-  }
-}
-
-.emotion-30 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  max-width: 100%;
-  height: auto;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 99999px;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  border-width: 1px;
-  border-style: solid;
-  overflow: hidden;
-  width: 24px;
-  height: 24px;
-  margin-right: 16px;
-  opacity: 0.8;
-}
-
-.emotion-38 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  padding: 16px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.emotion-36 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  max-width: 100%;
-  height: auto;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 99999px;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  border-width: 1px;
-  border-style: solid;
-  overflow: hidden;
-  width: 60px;
-  height: 60px;
-  margin-right: 16px;
-}
-
-.emotion-37 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  font-size: 24px;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 300;
-  line-height: heading;
-  font-size: 3.90625rem;
-  line-height: 6rem;
-  -webkit-letter-spacing: 0;
-  -moz-letter-spacing: 0;
-  -ms-letter-spacing: 0;
-  letter-spacing: 0;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
-}
-
-.emotion-40 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  padding: 16px;
-}
-
-.emotion-39 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  font-size: 24px;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 300;
-  line-height: heading;
-  font-size: 3.125rem;
-  line-height: 6rem;
-  -webkit-letter-spacing: 0;
-  -moz-letter-spacing: 0;
-  -ms-letter-spacing: 0;
-  letter-spacing: 0;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  margin-bottom: 8px;
-}
-
-.emotion-43 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  display: inline-block;
-  text-align: center;
-  line-height: inherit;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  font-size: inherit;
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  color: white;
-  background-color: var(--theme-ui-colors-primary,#6E55C6);
-  border: 0;
-  border-radius: 4px;
-  cursor: pointer;
-  text-transform: capitalize;
-  box-sizing: border-box;
-  font-size: 14px;
-  font-weight: bold;
-  color: var(--theme-ui-colors-onPrimary,#fff);
-  background-color: var(--theme-ui-colors-primary,#6E55C6);
-  border-radius: 6px;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 16px;
-  padding-right: 16px;
-  white-space: nowrap;
-  box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  border-radius: 99999px;
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  min-width: 60px;
-  min-height: 60px;
-  margin: 16px;
-}
-
-.emotion-43:disabled {
-  opacity: 0.38;
-  cursor: auto;
-}
-
-.emotion-43:hover,
-.emotion-43:focus {
-  background-color: var(--theme-ui-colors-primaryDark,#3A2B95);
-  outline: none;
-}
-
-.emotion-43:hover:disabled,
-.emotion-43:focus:disabled {
-  background-color: var(--theme-ui-colors-primary,#6E55C6);
-}
-
-.emotion-42 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  max-width: 100%;
-  height: auto;
-  fill: var(--theme-ui-colors-onPrimary,#fff);
-  margin: 0;
-  height: 20px;
-  width: 20px;
 }
 
 .emotion-17 {
@@ -808,7 +580,7 @@ exports[`PageEditStudent should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-45"
+    class="emotion-30"
   >
     <header
       class="emotion-11"
@@ -986,69 +758,8 @@ exports[`PageEditStudent should render correctly 1`] = `
       />
     </div>
     <main
-      class="emotion-44"
-    >
-      <div
-        class="emotion-41"
-      >
-        <div
-          class="emotion-35"
-        >
-          <p
-            class="emotion-29"
-          >
-            Recent
-          </p>
-          <img
-            class="emotion-30"
-            src="https://images.unsplash.com/photo-1571942727532-a67a4bf9845a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-          />
-          <img
-            class="emotion-30"
-            src="https://images.unsplash.com/photo-1571942727532-a67a4bf9845a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-          />
-          <img
-            class="emotion-30"
-            src="https://images.unsplash.com/photo-1571942727532-a67a4bf9845a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-          />
-          <img
-            class="emotion-30"
-            src="https://images.unsplash.com/photo-1571942727532-a67a4bf9845a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-          />
-          <img
-            class="emotion-30"
-            src="https://images.unsplash.com/photo-1571942727532-a67a4bf9845a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-          />
-        </div>
-        <div
-          class="emotion-38"
-        >
-          <img
-            class="emotion-36"
-            src="https://images.unsplash.com/photo-1571942727532-a67a4bf9845a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-          />
-          <h3
-            class="emotion-37"
-          />
-        </div>
-        <div
-          class="emotion-40"
-        >
-          <h4
-            class="emotion-39"
-          >
-            Observations
-          </h4>
-        </div>
-      </div>
-      <button
-        class="emotion-43"
-      >
-        <div
-          class="emotion-42"
-        />
-      </button>
-    </main>
+      class="emotion-29"
+    />
   </div>
 </div>
 `;

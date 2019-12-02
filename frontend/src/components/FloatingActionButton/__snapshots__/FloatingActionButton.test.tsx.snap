@@ -68,8 +68,8 @@ exports[`FloatingActionButton should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  min-width: 60px;
-  min-height: 60px;
+  min-width: 50px;
+  min-height: 50px;
   margin: 16px;
 }
 

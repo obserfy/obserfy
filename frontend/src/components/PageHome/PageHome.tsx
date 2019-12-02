@@ -34,7 +34,7 @@ export const PageHome: FC = () => {
   }
 
   const studentList = students.map(({ name, id }) => (
-    <Link to={`/students/edit?id=${id}`} key={id}>
+    <Link to={`/students/details?id=${id}`} key={id}>
       <Card p={3} mx={3} mb={2}>
         <Flex>
           <MockAvatar />
@@ -76,7 +76,11 @@ export const PageHome: FC = () => {
           </Flex>
         )}
         {students.length === 0 && (
-          <EmptyListPlaceholder text="You have no one enrolled" />
+          <EmptyListPlaceholder
+            text="You have no one enrolled"
+            callToActionText="New student"
+            onActionClick={() => setShowStudentInputDialog(true)}
+          />
         )}
       </Box>
       {showStudentInputDialog && (

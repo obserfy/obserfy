@@ -4,8 +4,8 @@ import Button, { ButtonProps } from "../Button/Button"
 export const FloatingActionButton: FC<ButtonProps> = props => (
   <Button
     display="flex"
-    minWidth={60}
-    minHeight={60}
+    minWidth={50}
+    minHeight={50}
     sx={{
       boxShadow:
         "rgba(0, 0, 0, 0.1) 0px 0px 1px, rgba(0, 0, 0, 0.27) 0px 2px 4px -2px",
