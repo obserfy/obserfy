@@ -8,7 +8,7 @@ import (
 )
 
 type Observation struct {
-	Id          string    `json:"id"`
+	Id          string    `json:"id" pg:",type:uuid"`
 	StudentId   string    `json:"student_id"`
 	ShortDesc   string    `json:"short_desc"`
 	LongDesc    string    `json:"long_desc"`

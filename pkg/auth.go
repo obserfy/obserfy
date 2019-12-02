@@ -16,7 +16,7 @@ type User struct {
 }
 
 type Session struct {
-	Token string
+	Token string `pg:",pk"`
 }
 
 func createAuthSubroute(env Env) *chi.Mux {
