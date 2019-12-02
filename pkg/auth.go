@@ -23,6 +23,7 @@ func createAuthSubroute(env Env) *chi.Mux {
 	r := chi.NewRouter()
 	r.Post("/register", register(env))
 	r.Post("/login", login(env))
+	r.Post("/logout", logout(env))
 	return r
 }
 
@@ -125,6 +126,24 @@ func login(env Env) func(w http.ResponseWriter, r *http.Request) {
 			//Unparsed:   nil,
 		}
 		http.SetCookie(w, &cookie)
+	}
+}
+
+func logout(env Env) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		tokenCookie, err := r.Cookie("session")
+		if err != nil {
+			env.logger.Error("Error getting session cookie", zap.Error(err))
+			http.Error(w, "Unauthorized", http.StatusUnauthorized)
+			return
+		}
+
+		session := Session{Token: tokenCookie.Value}
+		err = env.db.Delete(&session)
+		if err != nil {
+			env.logger.Error("Error removing session", zap.Error(err))
+			http.Error(w, "Something went wrong", http.StatusInternalServerError)
+		}
 	}
 }
 
