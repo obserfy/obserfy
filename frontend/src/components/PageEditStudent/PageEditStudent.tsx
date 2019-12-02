@@ -12,6 +12,7 @@ interface Props {
   id: string
 }
 export const PageEditStudent: FC<Props> = ({ id }) => {
+  const studentDetailUrl = `/students/details?id=${id}`
   const [details] = useQueryStudentDetails(id)
   const [name, setName] = useState()
 
@@ -32,9 +33,25 @@ export const PageEditStudent: FC<Props> = ({ id }) => {
     }
   }
 
+  async function updateStudent(): Promise<void> {
+    const baseUrl = "/api/v1"
+    const data = { name }
+
+    const response = await fetch(`${baseUrl}/students/${id}`, {
+      credentials: "same-origin",
+      method: "PUT",
+      body: JSON.stringify(data),
+      headers: { "Content-Type": "application/json" },
+    })
+
+    if (response.status === 200) {
+      navigate(studentDetailUrl)
+    }
+  }
+
   return (
     <Box>
-      <BackNavigation to={`/students/details?id=${id}`} text="Details" />
+      <BackNavigation to={studentDetailUrl} text="Details" />
       <Box mx={3}>
         {details?.name ? (
           <Input
@@ -53,7 +70,7 @@ export const PageEditStudent: FC<Props> = ({ id }) => {
         <Button mr={3} variant="outline" color="danger" onClick={deleteStudent}>
           Delete
         </Button>
-        <Button>Save</Button>
+        <Button onClick={updateStudent}>Save</Button>
       </Flex>
     </Box>
   )

@@ -110,7 +110,7 @@ func replaceStudent(env Env) func(w http.ResponseWriter, r *http.Request) {
 		var requestBody struct {
 			Name string `json:"name"`
 		}
-		err := json.NewDecoder(r.Body).Decode(requestBody)
+		err := json.NewDecoder(r.Body).Decode(&requestBody)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusBadRequest)
 			return
@@ -123,6 +123,20 @@ func replaceStudent(env Env) func(w http.ResponseWriter, r *http.Request) {
 		err = env.db.Update(&student)
 		if err != nil {
 			env.logger.Error("Failed creating new student", zap.Error(err))
+		}
+
+		res, err := json.Marshal(student)
+		if err != nil {
+			env.logger.Error("Fail marshalling student", zap.Error(err))
+			http.Error(w, "Something went wrong", http.StatusInternalServerError)
+			return
+		}
+		w.Header().Add("Content-Type", "application/json")
+		_, err = w.Write(res)
+		if err != nil {
+			env.logger.Error("Fail writing response for getting all student", zap.Error(err))
+			http.Error(w, "Something went wrong", http.StatusInternalServerError)
+			return
 		}
 	}
 }
