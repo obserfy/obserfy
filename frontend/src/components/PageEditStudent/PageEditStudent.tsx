@@ -44,7 +44,9 @@ export const PageEditStudent: FC<Props> = ({ id }) => {
             onChange={e => setName(e.target.value)}
           />
         ) : (
-          <LoadingPlaceholder width="100%" height={60} />
+          <Box pt={24}>
+            <LoadingPlaceholder width="100%" height={56} />
+          </Box>
         )}
       </Box>
       <Flex m={3}>
