@@ -1,5 +1,6 @@
 import React, { FC, MouseEventHandler, useRef, useState } from "react"
 import GatsbyImage from "gatsby-image"
+import { navigate } from "gatsby"
 import Typography from "../Typography/Typography"
 import { ReactComponent as StorefrontIcon } from "../../icons/storefront.svg"
 import { ReactComponent as LogoutIcon } from "../../icons/logout.svg"
@@ -71,7 +72,7 @@ const UserAvatar: FC = () => {
   const element = useRef<HTMLElement>(null)
   const avatar = useAvatarPlaceholder()
   useOutsideClick(element, () => setIsShowingOption(false))
-  let name = "Charlize Theron"
+  const name = "Charlize Theron"
 
   return (
     <Flex
@@ -117,23 +118,34 @@ const UserAvatar: FC = () => {
   )
 }
 
-const SignOutCard: FC = () => (
-  <Card
-    sx={{
-      top: 52,
-      right: 3,
-      position: "fixed",
-      boxShadow: "low",
-      borderRadius: "default",
-    }}
-  >
-    <a href="/logout">
+const SignOutCard: FC = () => {
+  async function logout(): Promise<void> {
+    const response = await fetch("/auth/logout", {
+      method: "POST",
+      credentials: "same-origin",
+    })
+    if (response.status === 200) {
+      navigate("/login")
+    }
+  }
+
+  return (
+    <Card
+      onClick={logout}
+      sx={{
+        top: 52,
+        right: 3,
+        position: "fixed",
+        boxShadow: "low",
+        borderRadius: "default",
+      }}
+    >
       <Flex alignItems="center" width={140}>
         <Icon as={LogoutIcon} size={20} />
         <Typography.Body m={0}>Log out</Typography.Body>
       </Flex>
-    </a>
-  </Card>
-)
+    </Card>
+  )
+}
 
 export default AppBar
