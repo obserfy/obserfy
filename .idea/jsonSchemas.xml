@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JsonSchemaMappingsProjectConfiguration">
+    <state>
+      <map>
+        <entry key="Openapi 3.0.0">
+          <value>
+            <SchemaInfo>
+              <option name="name" value="Openapi 3.0.0" />
+              <option name="relativePathToSchema" value="$APPLICATION_HOME_DIR$/plugins/swagger/lib/swagger.jar!/schema/openapi_3_0_0.json" />
+              <option name="applicationDefined" value="true" />
+              <option name="patterns">
+                <list>
+                  <Item>
+                    <option name="path" value="spec/openapi-spec.yml" />
+                  </Item>
+                </list>
+              </option>
+            </SchemaInfo>
+          </value>
+        </entry>
+      </map>
+    </state>
+  </component>
+</project>
