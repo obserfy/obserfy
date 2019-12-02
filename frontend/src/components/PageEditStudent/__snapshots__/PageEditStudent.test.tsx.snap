@@ -15,7 +15,7 @@ exports[`PageEditStudent should render correctly 1`] = `
   }
 }
 
-.emotion-39 {
+.emotion-40 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -23,7 +23,7 @@ exports[`PageEditStudent should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-39 {
+  .emotion-40 {
     font-size: 20px;
   }
 }
@@ -529,7 +529,7 @@ exports[`PageEditStudent should render correctly 1`] = `
   height: 36px;
 }
 
-.emotion-38 {
+.emotion-39 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -540,12 +540,12 @@ exports[`PageEditStudent should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-38 {
+  .emotion-39 {
     padding-left: 230px;
   }
 }
 
-.emotion-37 {
+.emotion-38 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -599,12 +599,19 @@ exports[`PageEditStudent should render correctly 1`] = `
   }
 }
 
-.emotion-33 {
+.emotion-34 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   margin-left: 16px;
   margin-right: 16px;
+}
+
+.emotion-33 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding-top: 24px;
 }
 
 .emotion-32 {
@@ -615,10 +622,10 @@ exports[`PageEditStudent should render correctly 1`] = `
   -webkit-animation: 1s ease-in-out 0s infinite animation-0;
   animation: 1s ease-in-out 0s infinite animation-0;
   width: 100%;
-  height: 60px;
+  height: 56px;
 }
 
-.emotion-36 {
+.emotion-37 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -629,7 +636,7 @@ exports[`PageEditStudent should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-34 {
+.emotion-35 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -684,25 +691,25 @@ exports[`PageEditStudent should render correctly 1`] = `
   color: var(--theme-ui-colors-danger,#d50000);
 }
 
-.emotion-34:disabled {
+.emotion-35:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-34:hover,
-.emotion-34:focus {
+.emotion-35:hover,
+.emotion-35:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(161,130,250,0.12));
   border-color: var(--theme-ui-colors-primary,#6E55C6);
   outline: none;
 }
 
-.emotion-34:hover:disabled,
-.emotion-34:focus:disabled {
+.emotion-35:hover:disabled,
+.emotion-35:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-35 {
+.emotion-36 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -753,19 +760,19 @@ exports[`PageEditStudent should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-35:disabled {
+.emotion-36:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-35:hover,
-.emotion-35:focus {
+.emotion-36:hover,
+.emotion-36:focus {
   background-color: var(--theme-ui-colors-primaryDark,#3A2B95);
   outline: none;
 }
 
-.emotion-35:hover:disabled,
-.emotion-35:focus:disabled {
+.emotion-36:hover:disabled,
+.emotion-36:focus:disabled {
   background-color: var(--theme-ui-colors-primary,#6E55C6);
 }
 
@@ -818,7 +825,7 @@ exports[`PageEditStudent should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-39"
+    class="emotion-40"
   >
     <header
       class="emotion-11"
@@ -996,10 +1003,10 @@ exports[`PageEditStudent should render correctly 1`] = `
       />
     </div>
     <main
-      class="emotion-38"
+      class="emotion-39"
     >
       <div
-        class="emotion-37"
+        class="emotion-38"
       >
         <a
           href="/students/details?id=undefined"
@@ -1018,22 +1025,26 @@ exports[`PageEditStudent should render correctly 1`] = `
           </div>
         </a>
         <div
-          class="emotion-33"
+          class="emotion-34"
         >
           <div
-            class="emotion-32"
-          />
+            class="emotion-33"
+          >
+            <div
+              class="emotion-32"
+            />
+          </div>
         </div>
         <div
-          class="emotion-36"
+          class="emotion-37"
         >
           <button
-            class="emotion-34"
+            class="emotion-35"
           >
             Delete
           </button>
           <button
-            class="emotion-35"
+            class="emotion-36"
           >
             Save
           </button>
