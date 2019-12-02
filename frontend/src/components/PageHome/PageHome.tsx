@@ -8,13 +8,10 @@ import Button from "../Button/Button"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import { Typography } from "../Typography/Typography"
 import Card from "../Card/Card"
-import ScrollableDialog from "../ScrollableDialog/ScrollableDialog"
-import Input from "../Input/Input"
 import MockAvatar from "../mockAvatar"
-import {
-  Student,
-  useQueryAllStudents,
-} from "../../hooks/students/useQueryAllStudents"
+import { useQueryAllStudents } from "../../hooks/students/useQueryAllStudents"
+import NewStudentDialog from "../NewStudentDialog/NewStudentDialog"
+import EmptyListPlaceholder from "../EmptyListPlaceholder/EmptyListPlaceholder"
 
 export const PageHome: FC = () => {
   const [showStudentInputDialog, setShowStudentInputDialog] = useState(false)
@@ -36,6 +33,17 @@ export const PageHome: FC = () => {
     setStudentsAsOutdated()
   }
 
+  const studentList = students.map(({ name, id }) => (
+    <Link to={`/students/edit?id=${id}`} key={id}>
+      <Card p={3} mx={3} mb={2}>
+        <Flex>
+          <MockAvatar />
+          <Typography.H6>{name}</Typography.H6>
+        </Flex>
+      </Card>
+    </Link>
+  ))
+
   return (
     <>
       <Box>
@@ -53,7 +61,7 @@ export const PageHome: FC = () => {
             <Icon as={PlusIcon} m={0} />
           </Button>
         </Flex>
-        {students.length > 0 && <ChildrenList students={students} />}
+        {students.length > 0 && studentList}
         {students.length === 0 && searchTerm !== "" && (
           <Flex
             mt={3}
@@ -68,14 +76,7 @@ export const PageHome: FC = () => {
           </Flex>
         )}
         {students.length === 0 && (
-          <Flex
-            mt={3}
-            alignItems="center"
-            justifyContent="center"
-            height="100%"
-          >
-            <Typography.H6>You have no one enrolled</Typography.H6>
-          </Flex>
+          <EmptyListPlaceholder text="You have no one enrolled" />
         )}
       </Box>
       {showStudentInputDialog && (
@@ -85,59 +86,6 @@ export const PageHome: FC = () => {
         />
       )}
     </>
-  )
-}
-
-const ChildrenList: FC<{ students: Student[] }> = ({ students }) => {
-  return (
-    <Box>
-      {students.map(({ name, id }) => {
-        return (
-          <Link to={`/students/edit?id=${id}`} key={id}>
-            <Card p={3} mx={3} mb={3}>
-              <Flex>
-                <MockAvatar />
-                <Typography.H6>{name}</Typography.H6>
-              </Flex>
-            </Card>
-          </Link>
-        )
-      })}
-    </Box>
-  )
-}
-
-interface NewStudentDialogProps {
-  onCancel: () => void
-  onConfirm: (name: string) => void
-}
-
-const NewStudentDialog: FC<NewStudentDialogProps> = ({
-  onConfirm,
-  onCancel,
-}) => {
-  const [name, setName] = useState("")
-  return (
-    <ScrollableDialog
-      title="New Student"
-      positiveText="Add student"
-      negativeText="Cancel"
-      onPositiveClick={() => onConfirm(name)}
-      onDismiss={onCancel}
-      onNegativeClick={onCancel}
-      disablePositiveButton={name === ""}
-    >
-      <Box p={3}>
-        <Input
-          label="Full Name"
-          width="100%"
-          placeholder="Erica Sterling"
-          onChange={e => setName(e.target.value)}
-          value={name}
-          onEnterPressed={() => onConfirm(name)}
-        />
-      </Box>
-    </ScrollableDialog>
   )
 }
 
