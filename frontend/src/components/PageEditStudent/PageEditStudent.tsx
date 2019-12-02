@@ -1,4 +1,5 @@
 import React, { FC, useEffect, useState } from "react"
+import { navigate } from "gatsby"
 import Box from "../Box/Box"
 import { useQueryStudentDetails } from "../../hooks/students/useQueryStudentDetails"
 import Input from "../Input/Input"
@@ -18,6 +19,19 @@ export const PageEditStudent: FC<Props> = ({ id }) => {
     setName(details?.name)
   }, [details])
 
+  async function deleteStudent(): Promise<void> {
+    const baseUrl = "/api/v1"
+
+    const response = await fetch(`${baseUrl}/students/${id}`, {
+      credentials: "same-origin",
+      method: "DELETE",
+    })
+
+    if (response.status === 200) {
+      navigate("/")
+    }
+  }
+
   return (
     <Box>
       <BackNavigation to={`/students/details?id=${id}`} text="Details" />
@@ -34,7 +48,7 @@ export const PageEditStudent: FC<Props> = ({ id }) => {
         )}
       </Box>
       <Flex m={3}>
-        <Button mr={3} variant="outline" color="danger">
+        <Button mr={3} variant="outline" color="danger" onClick={deleteStudent}>
           Delete
         </Button>
         <Button>Save</Button>
