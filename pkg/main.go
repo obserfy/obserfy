@@ -33,6 +33,8 @@ func main() {
 		r.Use(createAuthMiddleware(env))
 		r.Mount("/students", createStudentsSubroute(env))
 		r.Mount("/observations", createObservationsSubroute(env))
+		r.Mount("/schools", createSchoolsSubroute(env))
+		r.Mount("/user", createUserSubroute(env))
 	})
 	r.Mount("/auth", createAuthSubroute(env))
 	r.Get("/*", createFrontendFileServer())
