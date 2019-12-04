@@ -15,7 +15,7 @@ async function submitLoginForm(email: string, password: string): Promise<void> {
     credentials: "same-origin",
     body: credentials,
   })
-  if (response.status === 200) navigate("/")
+  if (response.status === 200) navigate("/choose-school")
 }
 
 export const PageLogin: FC = () => {

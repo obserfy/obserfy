@@ -10,8 +10,9 @@ import (
 )
 
 type Student struct {
-	Id   string `json:"id" pg:",type:uuid"`
-	Name string `json:"name"`
+	Id       string `json:"id" pg:",type:uuid"`
+	Name     string `json:"name"`
+	SchoolId string
 }
 
 func createStudentsSubroute(env Env) *chi.Mux {
@@ -67,8 +68,9 @@ func createNewStudent(env Env) func(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		student := Student{
-			Id:   id.String(),
-			Name: requestBody.Name,
+			Id:       id.String(),
+			Name:     requestBody.Name,
+			SchoolId: "",
 		}
 		err = env.db.Insert(&student)
 		if err != nil {
