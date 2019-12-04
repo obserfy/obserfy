@@ -1040,13 +1040,13 @@ exports[`PageHome should render correctly 1`] = `
         >
           <label
             class="emotion-31"
-            name="name"
           >
             <div
               class="emotion-30"
             >
               <input
                 class="emotion-29"
+                name="name"
                 placeholder="Search students"
                 value=""
               />

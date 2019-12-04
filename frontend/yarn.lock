@@ -8341,6 +8341,13 @@ gatsby-plugin-react-helmet@^3.1.16:
   dependencies:
     "@babel/runtime" "^7.7.4"
 
+gatsby-plugin-remove-trailing-slashes@^2.1.15:
+  version "2.1.15"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-remove-trailing-slashes/-/gatsby-plugin-remove-trailing-slashes-2.1.15.tgz#2117c7b33b9359fe3aeb8ec815dfc4814fa29be8"
+  integrity sha512-IMuubnIdsgRyEGWYZZD5QhynO3Mw3rf+cM5uBk594I97MR/BcqYVjXVhVKp4zGpip2HQNzPPgHWODS8tn6n30g==
+  dependencies:
+    "@babel/runtime" "^7.7.4"
+
 gatsby-plugin-sharp@^2.3.4:
   version "2.3.4"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-sharp/-/gatsby-plugin-sharp-2.3.4.tgz#1b9e21b56145413b4f1807c685574956a2efba7d"

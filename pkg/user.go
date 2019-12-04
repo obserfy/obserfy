@@ -19,7 +19,6 @@ func createUserSubroute(env Env) *chi.Mux {
 	r := chi.NewRouter()
 	r.Get("/", getUserDetails(env))
 	r.Get("/schools", getUserSchools(env))
-	r.Patch("/email", updateEmail(env))
 	return r
 }
 
@@ -102,17 +101,15 @@ func getUserSchools(env Env) func(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		w.Header().Add("Content-Type", "application/json")
-		_, err = w.Write(res)
+		if user.Schools == nil {
+			_, err = w.Write([]byte("[]"))
+		} else {
+			_, err = w.Write(res)
+		}
 		if err != nil {
 			env.logger.Error("Fail writing response for getting user detail", zap.Error(err))
 			http.Error(w, "Something went wrong", http.StatusInternalServerError)
 			return
 		}
-	}
-}
-
-func updateEmail(env Env) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-
 	}
 }

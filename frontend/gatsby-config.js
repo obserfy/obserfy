@@ -33,6 +33,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-offline`,
+    `gatsby-plugin-remove-trailing-slashes`,
     `gatsby-plugin-emotion`,
     {
       resolve: "gatsby-plugin-svgr",

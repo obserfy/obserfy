@@ -10,9 +10,8 @@ import (
 )
 
 type Session struct {
-	Token     string `pg:",pk" pg:",type:uuid"`
-	UserId    string
-	CompanyId string
+	Token  string `pg:",pk" pg:",type:uuid"`
+	UserId string
 }
 
 func createAuthSubroute(env Env) *chi.Mux {
@@ -99,9 +98,8 @@ func login(env Env) func(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		session := Session{
-			Token:     token.String(),
-			UserId:    user.Id,
-			CompanyId: "",
+			Token:  token.String(),
+			UserId: user.Id,
 		}
 		err = env.db.Insert(&session)
 		if err != nil {

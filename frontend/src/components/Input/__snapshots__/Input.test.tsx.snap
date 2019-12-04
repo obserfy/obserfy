@@ -115,13 +115,13 @@ exports[`Input should render correctly 1`] = `
     <label
       aria-label="email"
       class="emotion-2"
-      name="name"
     >
       <div
         class="emotion-1"
       >
         <input
           class="emotion-0"
+          name="name"
           value=""
         />
       </div>

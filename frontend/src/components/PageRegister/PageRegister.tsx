@@ -1,29 +1,35 @@
 import React, { FC, FormEvent, useState } from "react"
 import { navigate } from "gatsby"
+import Flex from "../Flex/Flex"
 import Box from "../Box/Box"
+import { Typography } from "../Typography/Typography"
 import Input from "../Input/Input"
 import Button from "../Button/Button"
-import Flex from "../Flex/Flex"
-import { Typography } from "../Typography/Typography"
 
-async function submitLoginForm(email: string, password: string): Promise<void> {
+async function submitRegisterForm(
+  email: string,
+  password: string,
+  name: string
+): Promise<void> {
   const credentials = new FormData()
   credentials.append("email", email)
   credentials.append("password", password)
-  const response = await fetch("/auth/login", {
+  credentials.append("name", name)
+  const response = await fetch("/auth/register", {
     method: "POST",
     credentials: "same-origin",
     body: credentials,
   })
-  if (response.status === 200) navigate("/")
+  if (response.status === 200) navigate("/choose-school")
 }
 
-export const PageLogin: FC = () => {
-  const [email, setEmail] = useState()
-  const [password, setPassword] = useState()
+export const PageRegister: FC = () => {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [name, setName] = useState("")
 
   function handleSubmit(e: FormEvent): void {
-    submitLoginForm(email, password)
+    submitRegisterForm(email, password, name)
     e.preventDefault()
   }
 
@@ -37,8 +43,10 @@ export const PageLogin: FC = () => {
         onSubmit={handleSubmit}
         mt={-5}
       >
-        <Typography.H2 my={3}>Welcome</Typography.H2>
+        <Typography.H2 my={3}>Register</Typography.H2>
         <Input
+          type="email"
+          name="email"
           width="100%"
           label="Email"
           value={email}
@@ -47,7 +55,17 @@ export const PageLogin: FC = () => {
           mb={2}
         />
         <Input
+          width="100%"
+          name="name"
+          label="Name"
+          value={name}
+          onChange={e => setName(e.target.value)}
+          required
+          mb={2}
+        />
+        <Input
           type="password"
+          name="password"
           width="100%"
           label="Password"
           value={password}
@@ -61,12 +79,12 @@ export const PageLogin: FC = () => {
             variant="outline"
             width="100%"
             mr={3}
-            onClick={() => navigate("/register")}
+            onClick={() => navigate("/login")}
           >
-            Sign Up
+            Log In
           </Button>
           <Button variant="primaryBig" width="100%">
-            Login
+            Sign Up
           </Button>
         </Flex>
       </Box>
@@ -74,4 +92,4 @@ export const PageLogin: FC = () => {
   )
 }
 
-export default PageLogin
+export default PageRegister

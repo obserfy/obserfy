@@ -493,13 +493,13 @@ exports[`ScrollableDialog should render correctly 1`] = `
             >
               <label
                 class="emotion-5"
-                name="name"
               >
                 <div
                   class="emotion-4"
                 >
                   <input
                     class="emotion-3"
+                    name="name"
                     placeholder="Search"
                     value=""
                   />

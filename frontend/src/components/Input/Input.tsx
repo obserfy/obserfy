@@ -10,9 +10,11 @@ interface Props extends BoxProps {
   icon?: FC
   small?: boolean
   onChange?: ChangeEventHandler<HTMLInputElement>
-  onEnterPressed?: () => void
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  onEnterPressed?: (event?: any) => void
 }
 export const Input: FC<Props> = ({
+  name,
   small,
   sx,
   type,
@@ -54,6 +56,7 @@ export const Input: FC<Props> = ({
           <Icon as={icon} m={0} mr={-40} size={24} sx={{ zIndex: 2 }} ml={3} />
         )}
         <BaseInput
+          name={name}
           onKeyUp={e => {
             if (onEnterPressed && e.keyCode === 13) onEnterPressed()
           }}

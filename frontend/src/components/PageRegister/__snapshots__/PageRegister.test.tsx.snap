@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PageLogin should render correctly 1`] = `
-.emotion-14 {
+exports[`PageRegister should render correctly 1`] = `
+.emotion-18 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,12 +9,12 @@ exports[`PageLogin should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-14 {
+  .emotion-18 {
     font-size: 20px;
   }
 }
 
-.emotion-13 {
+.emotion-17 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -31,7 +31,7 @@ exports[`PageLogin should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-12 {
+.emotion-16 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -164,7 +164,7 @@ exports[`PageLogin should render correctly 1`] = `
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
-.emotion-8 {
+.emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -192,7 +192,7 @@ exports[`PageLogin should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-11 {
+.emotion-15 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -202,7 +202,7 @@ exports[`PageLogin should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-9 {
+.emotion-13 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -257,25 +257,25 @@ exports[`PageLogin should render correctly 1`] = `
   margin-right: 16px;
 }
 
-.emotion-9:disabled {
+.emotion-13:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-9:hover,
-.emotion-9:focus {
+.emotion-13:hover,
+.emotion-13:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(161,130,250,0.12));
   border-color: var(--theme-ui-colors-primary,#6E55C6);
   outline: none;
 }
 
-.emotion-9:hover:disabled,
-.emotion-9:focus:disabled {
+.emotion-13:hover:disabled,
+.emotion-13:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-10 {
+.emotion-14 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -327,36 +327,36 @@ exports[`PageLogin should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-10:disabled {
+.emotion-14:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-10:hover,
-.emotion-10:focus {
+.emotion-14:hover,
+.emotion-14:focus {
   background-color: var(--theme-ui-colors-primaryDark,#3A2B95);
   outline: none;
 }
 
-.emotion-10:hover:disabled,
-.emotion-10:focus:disabled {
+.emotion-14:hover:disabled,
+.emotion-14:focus:disabled {
   background-color: var(--theme-ui-colors-primary,#6E55C6);
 }
 
 <div>
   <div
-    class="emotion-14"
+    class="emotion-18"
   >
     <div
-      class="emotion-13"
+      class="emotion-17"
     >
       <form
-        class="emotion-12"
+        class="emotion-16"
       >
         <h2
           class="emotion-0"
         >
-          Welcome
+          Register
         </h2>
         <label
           class="emotion-4"
@@ -372,12 +372,33 @@ exports[`PageLogin should render correctly 1`] = `
           >
             <input
               class="emotion-2"
+              name="email"
+              type="email"
               value=""
             />
           </div>
         </label>
         <label
-          class="emotion-8"
+          class="emotion-4"
+          required=""
+        >
+          <div
+            class="emotion-1"
+          >
+            Name
+          </div>
+          <div
+            class="emotion-3"
+          >
+            <input
+              class="emotion-2"
+              name="name"
+              value=""
+            />
+          </div>
+        </label>
+        <label
+          class="emotion-12"
           required=""
         >
           <div
@@ -390,24 +411,25 @@ exports[`PageLogin should render correctly 1`] = `
           >
             <input
               class="emotion-2"
+              name="password"
               type="password"
               value=""
             />
           </div>
         </label>
         <div
-          class="emotion-11"
+          class="emotion-15"
         >
           <button
-            class="emotion-9"
+            class="emotion-13"
             type="button"
           >
-            Sign Up
+            Log In
           </button>
           <button
-            class="emotion-10"
+            class="emotion-14"
           >
-            Login
+            Sign Up
           </button>
         </div>
       </form>
