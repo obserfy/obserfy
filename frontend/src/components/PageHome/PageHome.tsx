@@ -11,11 +11,13 @@ import Card from "../Card/Card"
 import { useQueryAllStudents } from "../../hooks/students/useQueryAllStudents"
 import NewStudentDialog from "../NewStudentDialog/NewStudentDialog"
 import EmptyListPlaceholder from "../EmptyListPlaceholder/EmptyListPlaceholder"
+import { getSchoolId } from "../../hooks/schoolIdState"
 
 export const PageHome: FC = () => {
+  const schoolId = getSchoolId()
   const [showStudentInputDialog, setShowStudentInputDialog] = useState(false)
   const [searchTerm, setSearchTerm] = useState("")
-  const [students, setStudentsAsOutdated] = useQueryAllStudents()
+  const [students, setStudentsAsOutdated] = useQueryAllStudents(schoolId)
 
   const matchedStudent = students.filter(student =>
     student.name.includes(searchTerm)
@@ -25,7 +27,7 @@ export const PageHome: FC = () => {
     const baseUrl = "/api/v1"
     const newStudent = { name }
 
-    await fetch(`${baseUrl}/students`, {
+    await fetch(`${baseUrl}/schools/${schoolId}/students`, {
       credentials: "same-origin",
       method: "POST",
       headers: { "Content-Type": "application/json" },

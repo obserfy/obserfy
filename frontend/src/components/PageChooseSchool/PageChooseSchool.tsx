@@ -10,12 +10,13 @@ import { ReactComponent as ArrowNextIcon } from "../../icons/next-arrow.svg"
 import Spacer from "../Spacer/Spacer"
 import { Button } from "../Button/Button"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
+import { setSchoolIdState } from "../../hooks/schoolIdState"
 
 export const PageChooseSchool: FC = () => {
   const [schools] = useQueryAllSchools()
 
   function saveSelectedSchool(schoolId: string): void {
-    localStorage.setItem("selectedSchool", schoolId)
+    setSchoolIdState(schoolId)
     navigate("/")
   }
 
@@ -39,7 +40,7 @@ export const PageChooseSchool: FC = () => {
 
   const emptySchoolPlaceholder = schools.length === 0 && (
     <Typography.H6 mb={4} mt={4}>
-      Yout haven't added any school yet
+      You have not added any school yet
     </Typography.H6>
   )
 

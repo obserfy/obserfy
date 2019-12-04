@@ -1,5 +1,6 @@
 import React, { FC, useState } from "react"
 import { useColorMode } from "theme-ui"
+import { navigate } from "gatsby"
 import AppBar, { StoreName } from "../AppBar/AppBar"
 import SideBar from "../SideBar/SideBar"
 import { ReactComponent as HomeIcon } from "../../icons/home.svg"
@@ -13,6 +14,7 @@ import Icon from "../Icon/Icon"
 import Box from "../Box/Box"
 import Flex, { FlexProps } from "../Flex/Flex"
 import "../layout.css"
+import { getSchoolId } from "../../hooks/schoolIdState"
 
 /** Top level component that encapsulate every page and provides navigation and
  * everything */
@@ -21,8 +23,14 @@ interface Props {
 }
 
 export const Layout: FC<Props> = ({ pageTitle, children }) => {
+  const schoolId = getSchoolId()
+  if (schoolId === null) {
+    navigate("/choose-school")
+  }
+
   const [isSidebarShown, setShowSidebar] = useState(false)
   const toggleSidebar = (): void => setShowSidebar(!isSidebarShown)
+
   return (
     <>
       <AppBar title={pageTitle} onMenuClick={toggleSidebar} position="fixed" />
