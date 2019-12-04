@@ -27,7 +27,7 @@ func deleteObservation(env Env) func(w http.ResponseWriter, r *http.Request) {
 		observation := Observation{Id: id}
 		err := env.db.Delete(&observation)
 		if err != nil {
-			env.logger.Error("Failed deleting student", zap.Error(err))
+			env.logger.Error("Failed deleting observation", zap.Error(err))
 			http.Error(w, "Something went wrong", http.StatusInternalServerError)
 		}
 	}

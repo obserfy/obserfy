@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/go-chi/chi"
 	"github.com/go-pg/pg/v9"
+	_ "github.com/joho/godotenv/autoload"
 	"go.uber.org/zap"
 	"net/http"
 )

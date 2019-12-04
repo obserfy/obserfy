@@ -13,7 +13,6 @@ services:
       DB_PASSWORD: developmentonly
       DB_HOST: vor-postgres
       DB_PORT: 5432
-      SESSION_KEY: jaf89432hfuqi3ncq4398fhq93vniuq34hf8923nuivn3984fh8943nf4
     # allow debugging
     security_opt:
       - "apparmor=unconfined"
