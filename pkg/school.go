@@ -21,7 +21,77 @@ type UserToSchool struct {
 func createSchoolsSubroute(env Env) *chi.Mux {
 	r := chi.NewRouter()
 	r.Post("/", createNewSchool(env))
+	r.Get("/{schoolId}/students", getAllStudentsOfSchool(env))
+	r.Post("/{schoolId}/students", createNewStudentForSchool(env))
 	return r
+}
+
+func createNewStudentForSchool(env Env) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		schoolId := chi.URLParam(r, "schoolId")
+		var requestBody struct {
+			Name string `json:"name"`
+		}
+		err := json.NewDecoder(r.Body).Decode(&requestBody)
+		if err != nil {
+			env.logger.Error("Failed to decode request body", zap.Error(err))
+			http.Error(w, "Invalid request body", http.StatusBadRequest)
+			return
+		}
+
+		id, err := uuid.NewRandom()
+		if err != nil {
+			env.logger.Error("Failed to generate new uuid", zap.Error(err))
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+		student := Student{
+			Id:       id.String(),
+			Name:     requestBody.Name,
+			SchoolId: schoolId,
+		}
+		err = env.db.Insert(&student)
+		if err != nil {
+			env.logger.Error("Failed creating new student", zap.Error(err))
+		}
+
+		res, err := json.Marshal(student)
+		if err != nil {
+			env.logger.Error("Fail marshalling student", zap.Error(err))
+			http.Error(w, "Something went wrong", http.StatusInternalServerError)
+			return
+		}
+		w.Header().Add("Content-Type", "application/json")
+		w.WriteHeader(http.StatusCreated)
+		_, err = w.Write(res)
+		if err != nil {
+			env.logger.Error("Fail writing response for getting all student", zap.Error(err))
+			http.Error(w, "Something went wrong", http.StatusInternalServerError)
+			return
+		}
+	}
+}
+
+func getAllStudentsOfSchool(env Env) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		schoolId := chi.URLParam(r, "schoolId")
+		var students []Student
+		err := env.db.Model(&students).Where("school_id=?", schoolId).Select()
+		if err != nil {
+			env.logger.Error("Error getting all students", zap.Error(err))
+		}
+
+		res, err := json.Marshal(students)
+		if err != nil {
+			env.logger.Error("Error marshaling students", zap.Error(err))
+		}
+
+		w.Header().Add("Content-Type", "application/json")
+		_, err = w.Write(res)
+		if err != nil {
+			env.logger.Error("Error writing response", zap.Error(err))
+		}
+	}
 }
 
 func createNewSchool(env Env) func(w http.ResponseWriter, r *http.Request) {

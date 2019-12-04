@@ -8,7 +8,7 @@
     <database id="2" parent="1" name="main">
       <ObjectId>16384</ObjectId>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>1356</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1391</IntrospectionStateNumber>
     </database>
     <database id="3" parent="1" name="postgres">
       <ObjectId>13067</ObjectId>
@@ -66,7 +66,7 @@
       <Comment>standard public schema</Comment>
       <StateNumber>360</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>1357</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1392</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <access-method id="16" parent="2" name="btree">
@@ -201,34 +201,34 @@
       <SchemaId>11</SchemaId>
     </extension>
     <table id="33" parent="15" name="observations">
-      <ObjectId>49405</ObjectId>
+      <ObjectId>49448</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>1350</StateNumber>
+      <StateNumber>1385</StateNumber>
     </table>
     <table id="34" parent="15" name="schools">
-      <ObjectId>49437</ObjectId>
+      <ObjectId>49480</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>1354</StateNumber>
+      <StateNumber>1389</StateNumber>
     </table>
     <table id="35" parent="15" name="sessions">
-      <ObjectId>49429</ObjectId>
+      <ObjectId>49472</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>1353</StateNumber>
+      <StateNumber>1388</StateNumber>
     </table>
     <table id="36" parent="15" name="students">
-      <ObjectId>49421</ObjectId>
+      <ObjectId>49464</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>1352</StateNumber>
+      <StateNumber>1387</StateNumber>
     </table>
     <table id="37" parent="15" name="user_to_schools">
-      <ObjectId>49445</ObjectId>
+      <ObjectId>49488</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>1355</StateNumber>
+      <StateNumber>1390</StateNumber>
     </table>
     <table id="38" parent="15" name="users">
-      <ObjectId>49413</ObjectId>
+      <ObjectId>49456</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>1351</StateNumber>
+      <StateNumber>1386</StateNumber>
     </table>
     <table id="39" parent="25" name="students">
       <ObjectId>16388</ObjectId>
@@ -239,43 +239,43 @@
       <Position>1</Position>
       <DataType>uuid|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1350</StateNumber>
+      <StateNumber>1385</StateNumber>
       <TypeId>2950</TypeId>
     </column>
     <column id="41" parent="33" name="student_id">
       <Position>2</Position>
       <DataType>text|0s</DataType>
-      <StateNumber>1350</StateNumber>
+      <StateNumber>1385</StateNumber>
       <TypeId>25</TypeId>
     </column>
     <column id="42" parent="33" name="short_desc">
       <Position>3</Position>
       <DataType>text|0s</DataType>
-      <StateNumber>1350</StateNumber>
+      <StateNumber>1385</StateNumber>
       <TypeId>25</TypeId>
     </column>
     <column id="43" parent="33" name="long_desc">
       <Position>4</Position>
       <DataType>text|0s</DataType>
-      <StateNumber>1350</StateNumber>
+      <StateNumber>1385</StateNumber>
       <TypeId>25</TypeId>
     </column>
     <column id="44" parent="33" name="created_date">
       <Position>5</Position>
       <DataType>timestamp with time zone|0s</DataType>
-      <StateNumber>1350</StateNumber>
+      <StateNumber>1385</StateNumber>
       <TypeId>1184</TypeId>
     </column>
     <index id="45" parent="33" name="observations_pkey">
-      <ObjectId>49411</ObjectId>
-      <StateNumber>1350</StateNumber>
+      <ObjectId>49454</ObjectId>
+      <StateNumber>1385</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
     <key id="46" parent="33" name="observations_pkey">
-      <ObjectId>49412</ObjectId>
-      <StateNumber>1350</StateNumber>
+      <ObjectId>49455</ObjectId>
+      <StateNumber>1385</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>observations_pkey</UnderlyingIndexName>
@@ -284,25 +284,25 @@
       <Position>1</Position>
       <DataType>uuid|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1354</StateNumber>
+      <StateNumber>1389</StateNumber>
       <TypeId>2950</TypeId>
     </column>
     <column id="48" parent="34" name="name">
       <Position>2</Position>
       <DataType>text|0s</DataType>
-      <StateNumber>1354</StateNumber>
+      <StateNumber>1389</StateNumber>
       <TypeId>25</TypeId>
     </column>
     <index id="49" parent="34" name="schools_pkey">
-      <ObjectId>49443</ObjectId>
-      <StateNumber>1354</StateNumber>
+      <ObjectId>49486</ObjectId>
+      <StateNumber>1389</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
     <key id="50" parent="34" name="schools_pkey">
-      <ObjectId>49444</ObjectId>
-      <StateNumber>1354</StateNumber>
+      <ObjectId>49487</ObjectId>
+      <StateNumber>1389</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>schools_pkey</UnderlyingIndexName>
@@ -311,58 +311,58 @@
       <Position>1</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1353</StateNumber>
+      <StateNumber>1388</StateNumber>
       <TypeId>25</TypeId>
     </column>
     <column id="52" parent="35" name="user_id">
       <Position>2</Position>
       <DataType>text|0s</DataType>
-      <StateNumber>1353</StateNumber>
+      <StateNumber>1388</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <column id="53" parent="35" name="school_id">
-      <Position>3</Position>
-      <DataType>text|0s</DataType>
-      <StateNumber>1353</StateNumber>
-      <TypeId>25</TypeId>
-    </column>
-    <index id="54" parent="35" name="sessions_pkey">
-      <ObjectId>49435</ObjectId>
-      <StateNumber>1353</StateNumber>
+    <index id="53" parent="35" name="sessions_pkey">
+      <ObjectId>49478</ObjectId>
+      <StateNumber>1388</StateNumber>
       <ColNames>token</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <key id="55" parent="35" name="sessions_pkey">
-      <ObjectId>49436</ObjectId>
-      <StateNumber>1353</StateNumber>
+    <key id="54" parent="35" name="sessions_pkey">
+      <ObjectId>49479</ObjectId>
+      <StateNumber>1388</StateNumber>
       <ColNames>token</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>sessions_pkey</UnderlyingIndexName>
     </key>
-    <column id="56" parent="36" name="id">
+    <column id="55" parent="36" name="id">
       <Position>1</Position>
       <DataType>uuid|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1352</StateNumber>
+      <StateNumber>1387</StateNumber>
       <TypeId>2950</TypeId>
     </column>
-    <column id="57" parent="36" name="name">
+    <column id="56" parent="36" name="name">
       <Position>2</Position>
       <DataType>text|0s</DataType>
-      <StateNumber>1352</StateNumber>
+      <StateNumber>1387</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="57" parent="36" name="school_id">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+      <StateNumber>1387</StateNumber>
       <TypeId>25</TypeId>
     </column>
     <index id="58" parent="36" name="students_pkey">
-      <ObjectId>49427</ObjectId>
-      <StateNumber>1352</StateNumber>
+      <ObjectId>49470</ObjectId>
+      <StateNumber>1387</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
     <key id="59" parent="36" name="students_pkey">
-      <ObjectId>49428</ObjectId>
-      <StateNumber>1352</StateNumber>
+      <ObjectId>49471</ObjectId>
+      <StateNumber>1387</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>students_pkey</UnderlyingIndexName>
@@ -370,50 +370,50 @@
     <column id="60" parent="37" name="school_id">
       <Position>1</Position>
       <DataType>uuid|0s</DataType>
-      <StateNumber>1355</StateNumber>
+      <StateNumber>1390</StateNumber>
       <TypeId>2950</TypeId>
     </column>
     <column id="61" parent="37" name="user_id">
       <Position>2</Position>
       <DataType>uuid|0s</DataType>
-      <StateNumber>1355</StateNumber>
+      <StateNumber>1390</StateNumber>
       <TypeId>2950</TypeId>
     </column>
     <column id="62" parent="38" name="id">
       <Position>1</Position>
       <DataType>uuid|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1351</StateNumber>
+      <StateNumber>1386</StateNumber>
       <TypeId>2950</TypeId>
     </column>
     <column id="63" parent="38" name="email">
       <Position>2</Position>
       <DataType>text|0s</DataType>
-      <StateNumber>1351</StateNumber>
+      <StateNumber>1386</StateNumber>
       <TypeId>25</TypeId>
     </column>
     <column id="64" parent="38" name="name">
       <Position>3</Position>
       <DataType>text|0s</DataType>
-      <StateNumber>1351</StateNumber>
+      <StateNumber>1386</StateNumber>
       <TypeId>25</TypeId>
     </column>
     <column id="65" parent="38" name="password">
       <Position>4</Position>
       <DataType>bytea|0s</DataType>
-      <StateNumber>1351</StateNumber>
+      <StateNumber>1386</StateNumber>
       <TypeId>17</TypeId>
     </column>
     <index id="66" parent="38" name="users_pkey">
-      <ObjectId>49419</ObjectId>
-      <StateNumber>1351</StateNumber>
+      <ObjectId>49462</ObjectId>
+      <StateNumber>1386</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
     <key id="67" parent="38" name="users_pkey">
-      <ObjectId>49420</ObjectId>
-      <StateNumber>1351</StateNumber>
+      <ObjectId>49463</ObjectId>
+      <StateNumber>1386</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>users_pkey</UnderlyingIndexName>
