@@ -50,27 +50,34 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
     setObservationsAsOutdated()
   }
 
-  const listOfObservations = observations?.map(({ longDesc, shortDesc }) => (
-    <Card
-      p={3}
-      mb={3}
-      onClick={() => {
-        setEditObservations({ longDesc, shortDesc })
-        setShowObservationDialog(true)
-      }}
-    >
-      <Flex alignItems="center">
-        <Box>
-          <Typography.Body fontSize={1} color="textMediumEmphasis">
-            Thursday, 26 Dec &amp;19
-          </Typography.Body>
-          <Typography.H5>{shortDesc}</Typography.H5>
-        </Box>
-        <Spacer />
-        <Icon as={NextIcon} m={0} />
-      </Flex>
-    </Card>
-  ))
+  const listOfObservations = observations
+    ?.reverse()
+    ?.map(({ longDesc, shortDesc }) => (
+      <Card
+        mb={3}
+        onClick={() => {
+          setEditObservations({ longDesc, shortDesc })
+          setShowObservationDialog(true)
+        }}
+      >
+        <Flex
+          p={3}
+          alignItems="center"
+          sx={{
+            borderBottomWidth: 1,
+            borderBottomColor: "border",
+            borderBottomStyle: "solid",
+          }}
+        >
+          <Box>
+            <Typography.H5>{shortDesc}</Typography.H5>
+          </Box>
+          <Spacer />
+          <Icon as={NextIcon} m={0} />
+        </Flex>
+        <Typography.Body p={3}>{longDesc}</Typography.Body>
+      </Card>
+    ))
 
   const emptyObservationPlaceholder = observations?.length &&
     observations.length < 1 && (

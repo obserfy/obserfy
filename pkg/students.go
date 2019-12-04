@@ -153,7 +153,7 @@ func getAllStudentObservations(env Env) func(w http.ResponseWriter, r *http.Requ
 	return func(w http.ResponseWriter, r *http.Request) {
 		id := chi.URLParam(r, "id")
 		var observations []Observation
-		err := env.db.Model(&observations).Where("student_id=?", id).Select()
+		err := env.db.Model(&observations).Where("student_id=?", id).Order("created_date").Select()
 		if err != nil {
 			env.logger.Error("Fail querying observations for students", zap.Error(err))
 			http.Error(w, "Something went wrong", http.StatusInternalServerError)

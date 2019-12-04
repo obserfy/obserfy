@@ -76,7 +76,7 @@ func getAllStudentsOfSchool(env Env) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		schoolId := chi.URLParam(r, "schoolId")
 		var students []Student
-		err := env.db.Model(&students).Where("school_id=?", schoolId).Select()
+		err := env.db.Model(&students).Where("school_id=?", schoolId).Order("name").Select()
 		if err != nil {
 			env.logger.Error("Error getting all students", zap.Error(err))
 		}
