@@ -102,8 +102,8 @@ func getStudentById(env Env) func(w http.ResponseWriter, r *http.Request) {
 func addObservationToStudent(env Env) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		var requestBody struct {
-			ShortDesc string `json:"short_desc"`
-			LongDesc  string `json:"long_desc"`
+			ShortDesc string `json:"shortDesc"`
+			LongDesc  string `json:"longDesc"`
 		}
 		err := json.NewDecoder(r.Body).Decode(&requestBody)
 		if err != nil {

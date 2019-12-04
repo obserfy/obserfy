@@ -9,10 +9,10 @@ import (
 
 type Observation struct {
 	Id          string    `json:"id" pg:",type:uuid"`
-	StudentId   string    `json:"student_id"`
-	ShortDesc   string    `json:"short_desc"`
-	LongDesc    string    `json:"long_desc"`
-	CreatedDate time.Time `json:"created_date"`
+	StudentId   string    `json:"studentId"`
+	ShortDesc   string    `json:"shortDesc"`
+	LongDesc    string    `json:"longDesc"`
+	CreatedDate time.Time `json:"createdDate"`
 }
 
 func createObservationsSubroute(env Env) *chi.Mux {

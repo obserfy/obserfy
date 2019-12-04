@@ -15,26 +15,42 @@ import FloatingActionButton from "../FloatingActionButton/FloatingActionButton"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import { BackNavigation } from "../BackNavigation/BackNavigation"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
+import {
+  Observation,
+  useQueryStudentObservations,
+} from "../../hooks/students/useQueryStudentObservations"
 
-export interface Observation {
-  shortDesc: string
-  longDesc: string
-}
 interface Props {
   id: string
 }
 export const PageStudentDetails: FC<Props> = ({ id }) => {
   const [showAddObservationDialog, setShowObservationDialog] = useState(false)
-  const [observations, setObservations] = useState<Observation[]>([])
   const [editObservations, setEditObservations] = useState()
   const [details] = useQueryStudentDetails(id)
+  const [observations, setObservationsAsOutdated] = useQueryStudentObservations(
+    id
+  )
 
   function addObservation(): void {
     setEditObservations(undefined)
     setShowObservationDialog(true)
   }
 
-  const listOfObservations = observations.map(({ longDesc, shortDesc }) => (
+  async function submitNewObservation(observation: Observation): Promise<void> {
+    const baseUrl = "/api/v1"
+
+    await fetch(`${baseUrl}/students/${id}/observations`, {
+      credentials: "same-origin",
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(observation),
+    })
+
+    setShowObservationDialog(false)
+    setObservationsAsOutdated()
+  }
+
+  const listOfObservations = observations?.map(({ longDesc, shortDesc }) => (
     <Card
       p={3}
       mb={3}
@@ -56,20 +72,21 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
     </Card>
   ))
 
-  const emptyObservationPlaceholder = observations.length === 0 && (
-    <EmptyListPlaceholder
-      text="What did you observe?"
-      callToActionText="add observation"
-      onActionClick={addObservation}
-    />
-  )
+  const emptyObservationPlaceholder = observations?.length &&
+    observations.length < 1 && (
+      <EmptyListPlaceholder
+        text="What did you observe?"
+        callToActionText="add observation"
+        onActionClick={addObservation}
+      />
+    )
 
   const addObservationDialog = showAddObservationDialog && (
     <AddObservationDialog
       defaultValue={editObservations}
       onCancel={() => setShowObservationDialog(false)}
-      onConfirm={name => {
-        setObservations([...observations, name])
+      onConfirm={observation => {
+        submitNewObservation(observation)
         setShowObservationDialog(false)
       }}
     />

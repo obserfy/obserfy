@@ -182,7 +182,7 @@ exports[`PageChooseSchool should render correctly 1`] = `
         <h6
           class="emotion-1"
         >
-          Yout haven't added any school yet
+          You have not added any school yet
         </h6>
         <button
           class="emotion-3"
