@@ -10,8 +10,9 @@ import (
 )
 
 type Session struct {
-	Token  string `pg:",pk" pg:",type:uuid"`
-	UserId string
+	Token    string `pg:",pk" pg:",type:uuid"`
+	UserId   string
+	SchoolId string
 }
 
 func createAuthSubroute(env Env) *chi.Mux {
@@ -80,7 +81,7 @@ func login(env Env) func(w http.ResponseWriter, r *http.Request) {
 		}
 
 		var user User
-		err := env.db.Model(&user).Where("email=?", email).First()
+		err := env.db.Model(&user).Where("email=?", email).Relation("Schools").First()
 		if err != nil {
 			http.Error(w, "Invalid Credential", http.StatusUnauthorized)
 			return
@@ -97,9 +98,15 @@ func login(env Env) func(w http.ResponseWriter, r *http.Request) {
 			env.logger.Error("Failed creating token", zap.Error(err))
 			return
 		}
+		schoolId := ""
+		if len(user.Schools) > 0 {
+			schoolId = user.Schools[0].Id
+		}
+
 		session := Session{
-			Token:  token.String(),
-			UserId: user.Id,
+			Token:    token.String(),
+			UserId:   user.Id,
+			SchoolId: schoolId,
 		}
 		err = env.db.Insert(&session)
 		if err != nil {
