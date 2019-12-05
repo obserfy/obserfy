@@ -31,7 +31,7 @@ services:
     depends_on:
       - app
     ports:
-      - "8000:8000"
+      - "8000:80"
 
   db:
     image: postgres:11.5
