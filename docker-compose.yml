@@ -24,6 +24,15 @@ services:
       - "40000:40000"
       - "8080:8080"
 
+  nginx:
+    build:
+      context: .
+      dockerfile: docker/nginx/dev.dockerfile
+    depends_on:
+      - app
+    ports:
+      - "8000:8000"
+
   db:
     image: postgres:11.5
     container_name: vor-postgres

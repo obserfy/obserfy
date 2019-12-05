@@ -62,7 +62,7 @@ module.exports = {
     },
   ],
   developMiddleware: app => {
-    app.use("/api", proxy({ target: "http://localhost:8080" }))
-    app.use("/auth", proxy({ target: "http://localhost:8080" }))
+    app.use("/api", proxy({ target: "http://localhost:8000" }))
+    app.use("/auth", proxy({ target: "http://localhost:8000" }))
   },
 }
