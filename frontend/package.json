@@ -33,7 +33,10 @@
     "react-helmet": "^5.2.1",
     "rebass": "^4.0.7",
     "theme-ui": "^0.2.49",
-    "typescript": "^3.7.2"
+    "typescript": "^3.7.2",
+    "http-proxy-middleware": "^0.20.0",
+    "gatsby-plugin-theme-ui": "^0.2.43",
+    "gatsby-plugin-typescript": "^2.1.20"
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",
@@ -77,9 +80,6 @@
     "eslint-plugin-react-hooks": "^2.2.0",
     "faker": "^4.1.0",
     "fork-ts-checker-webpack-plugin": "^3.1.1",
-    "gatsby-plugin-theme-ui": "^0.2.43",
-    "gatsby-plugin-typescript": "^2.1.20",
-    "http-proxy-middleware": "^0.20.0",
     "hygen": "^5.0.3",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.9.0",

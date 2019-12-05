@@ -1,7 +1,7 @@
 FROM node:12 AS frontend-builder
 ADD . /usr/src/vor
 WORKDIR /usr/src/vor/frontend
-RUN yarn
+RUN yarn install --production=true --network-timeout 100000
 RUN yarn build
 
 FROM golang:1.13 AS api-builder
