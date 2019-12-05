@@ -12,7 +12,7 @@ func getDBConnection() *pg.DB {
 		User:     os.Getenv("DB_USERNAME"),
 		Password: os.Getenv("DB_PASSWORD"),
 		Addr:     os.Getenv("DB_HOST") + ":" + os.Getenv("DB_PORT"),
-		Database: "main",
+		Database: "defaultdb",
 	})
 }
 

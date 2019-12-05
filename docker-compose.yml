@@ -1,7 +1,6 @@
 version: "3"
 services:
   app:
-    image: chrsep/vor:0.0.1
     build:
       context: .
       dockerfile: docker/vor/dev.dockerfile
@@ -30,7 +29,7 @@ services:
     container_name: vor-postgres
     environment:
       POSTGRES_PASSWORD: developmentonly
-      POSTGRES_DB: main
+      POSTGRES_DB: defaultdb
     volumes:
       - vor:/var/lib/postgresql/data
     ports:
