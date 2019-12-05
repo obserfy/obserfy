@@ -1,6 +1,7 @@
 package main
 
 import (
+	"crypto/tls"
 	"github.com/go-pg/pg/v9"
 	"github.com/go-pg/pg/v9/orm"
 	"go.uber.org/zap"
@@ -9,10 +10,11 @@ import (
 
 func getDBConnection() *pg.DB {
 	return pg.Connect(&pg.Options{
-		User:     os.Getenv("DB_USERNAME"),
-		Password: os.Getenv("DB_PASSWORD"),
-		Addr:     os.Getenv("DB_HOST") + ":" + os.Getenv("DB_PORT"),
-		Database: "defaultdb",
+		User:      os.Getenv("DB_USERNAME"),
+		Password:  os.Getenv("DB_PASSWORD"),
+		Addr:      os.Getenv("DB_HOST") + ":" + os.Getenv("DB_PORT"),
+		Database:  "defaultdb",
+		TLSConfig: &tls.Config{InsecureSkipVerify: true},
 	})
 }
 
