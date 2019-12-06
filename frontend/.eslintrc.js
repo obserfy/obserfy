@@ -91,7 +91,7 @@ module.exports = {
     // Force eslint to analyse tsx (it analyse only js by default
     "import/resolver": {
       node: {
-        extensions: [".js", ".jsx", ".ts", ".tsx"]
+        extensions: [".js", ".jsx", ".ts", ".tsx", ".d.ts"]
       }
     },
     "import/ignore": [".svg$"]
