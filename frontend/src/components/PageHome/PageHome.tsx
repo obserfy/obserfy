@@ -60,7 +60,7 @@ export const PageHome: FC = () => {
 
   return (
     <>
-      <Box>
+      <Box sx={{ maxWidth: 100 }}>
         <Flex p={3}>
           <SearchBar
             mr={3}
