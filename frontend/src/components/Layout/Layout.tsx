@@ -13,7 +13,6 @@ import Spacer from "../Spacer/Spacer"
 import Icon from "../Icon/Icon"
 import Box from "../Box/Box"
 import Flex, { FlexProps } from "../Flex/Flex"
-import "../layout.css"
 import { getSchoolId } from "../../hooks/schoolIdState"
 
 /** Top level component that encapsulate every page and provides navigation and
