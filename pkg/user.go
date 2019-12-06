@@ -24,23 +24,16 @@ func createUserSubroute(env Env) *chi.Mux {
 
 func getUserDetails(env Env) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		tokenCookie, err := r.Cookie("session")
-		if err != nil {
-			env.logger.Error("Error getting session cookie", zap.Error(err))
-			http.Error(w, "Unauthorized", http.StatusUnauthorized)
-			return
-		}
-
-		var session Session
-		err = env.db.Model(&session).Where("token=?", tokenCookie.Value).Select()
-		if err != nil {
-			env.logger.Error("Failed querying session", zap.Error(err))
+		ctx := r.Context()
+		session, ok := ctx.Value(CTX_SESSION).(Session)
+		if !ok {
+			env.logger.Error("Failed to retrieve session")
 			http.Error(w, "Something went wrong", http.StatusInternalServerError)
 			return
 		}
 
 		var user User
-		err = env.db.Model(&user).Column("email", "name").Where("id=?", session.UserId).Select()
+		err := env.db.Model(&user).Column("email", "name").Where("id=?", session.UserId).Select()
 		if err != nil {
 			env.logger.Error("Failed getting user data", zap.Error(err))
 			http.Error(w, "Something went wrong", http.StatusInternalServerError)
@@ -71,23 +64,16 @@ func getUserDetails(env Env) func(w http.ResponseWriter, r *http.Request) {
 
 func getUserSchools(env Env) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		tokenCookie, err := r.Cookie("session")
-		if err != nil {
-			env.logger.Error("Error getting session cookie", zap.Error(err))
-			http.Error(w, "Unauthorized", http.StatusUnauthorized)
-			return
-		}
-
-		var session Session
-		err = env.db.Model(&session).Where("token=?", tokenCookie.Value).Select()
-		if err != nil {
-			env.logger.Error("Failed querying session", zap.Error(err))
+		ctx := r.Context()
+		session, ok := ctx.Value(CTX_SESSION).(Session)
+		if !ok {
+			env.logger.Error("Failed to retrieve session")
 			http.Error(w, "Something went wrong", http.StatusInternalServerError)
 			return
 		}
 
 		var user User
-		err = env.db.Model(&user).Where("id=?", session.UserId).Relation("Schools").Select()
+		err := env.db.Model(&user).Where("id=?", session.UserId).Relation("Schools").Select()
 		if err != nil {
 			env.logger.Error("Failed getting user data", zap.Error(err))
 			http.Error(w, "Something went wrong", http.StatusInternalServerError)

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"github.com/go-chi/chi"
 	"github.com/google/uuid"
 	"go.uber.org/zap"
@@ -8,6 +9,8 @@ import (
 	"net/http"
 	"os"
 )
+
+const CTX_SESSION = "session"
 
 type Session struct {
 	Token  string `pg:",pk" pg:",type:uuid"`
@@ -114,12 +117,7 @@ func login(env Env) func(w http.ResponseWriter, r *http.Request) {
 			Value:  session.Token,
 			Path:   "/",
 			Domain: os.Getenv("SITE_URL"),
-			//RawExpires: "",
-			//MaxAge:     0,
 			Secure: true,
-			//HttpOnly:   false,
-			//Raw:        "",
-			//Unparsed:   nil,
 		}
 		http.SetCookie(w, &cookie)
 	}
@@ -152,6 +150,7 @@ func createAuthMiddleware(env Env) func(next http.Handler) http.Handler {
 				http.Error(w, "Unauthorized", http.StatusUnauthorized)
 				return
 			}
+
 			var session Session
 			err = env.db.Model(&session).Where("token=?", token.Value).Select()
 			if err != nil {
@@ -159,7 +158,9 @@ func createAuthMiddleware(env Env) func(next http.Handler) http.Handler {
 				http.Error(w, "Unauthorized", http.StatusUnauthorized)
 				return
 			}
-			next.ServeHTTP(w, r)
+
+			ctx := context.WithValue(r.Context(), CTX_SESSION, session)
+			next.ServeHTTP(w, r.WithContext(ctx))
 		}
 		return http.HandlerFunc(fn)
 	}
