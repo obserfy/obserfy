@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"github.com/go-chi/chi"
 	"go.uber.org/zap"
 	"net/http"
@@ -24,11 +23,8 @@ func createUserSubroute(env Env) *chi.Mux {
 
 func getUserDetails(env Env) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		ctx := r.Context()
-		session, ok := ctx.Value(CTX_SESSION).(Session)
+		session, ok := getSessionFromCtx(w, r, env.logger)
 		if !ok {
-			env.logger.Error("Failed to retrieve session")
-			http.Error(w, "Something went wrong", http.StatusInternalServerError)
 			return
 		}
 
@@ -40,35 +36,20 @@ func getUserDetails(env Env) func(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		res, err := json.Marshal(&struct {
+		err = writeJsonResponse(w, &struct {
 			Email string
 			Name  string
 		}{
 			Email: user.Email,
 			Name:  user.Name,
-		})
-		if err != nil {
-			env.logger.Error("Failed marshalling user data", zap.Error(err))
-			http.Error(w, "Something went wrong", http.StatusInternalServerError)
-			return
-		}
-		w.Header().Add("Content-Type", "application/json")
-		_, err = w.Write(res)
-		if err != nil {
-			env.logger.Error("Fail writing response for getting user detail", zap.Error(err))
-			http.Error(w, "Something went wrong", http.StatusInternalServerError)
-			return
-		}
+		}, env.logger)
 	}
 }
 
 func getUserSchools(env Env) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		ctx := r.Context()
-		session, ok := ctx.Value(CTX_SESSION).(Session)
+		session, ok := getSessionFromCtx(w, r, env.logger)
 		if !ok {
-			env.logger.Error("Failed to retrieve session")
-			http.Error(w, "Something went wrong", http.StatusInternalServerError)
 			return
 		}
 
@@ -80,22 +61,6 @@ func getUserSchools(env Env) func(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		res, err := json.Marshal(&user.Schools)
-		if err != nil {
-			env.logger.Error("Failed marshalling user data", zap.Error(err))
-			http.Error(w, "Something went wrong", http.StatusInternalServerError)
-			return
-		}
-		w.Header().Add("Content-Type", "application/json")
-		if user.Schools == nil {
-			_, err = w.Write([]byte("[]"))
-		} else {
-			_, err = w.Write(res)
-		}
-		if err != nil {
-			env.logger.Error("Fail writing response for getting user detail", zap.Error(err))
-			http.Error(w, "Something went wrong", http.StatusInternalServerError)
-			return
-		}
+		err = writeJsonResponse(w, &user.Schools, env.logger)
 	}
 }

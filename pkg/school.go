@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"github.com/go-chi/chi"
 	"github.com/google/uuid"
 	"go.uber.org/zap"
@@ -29,20 +28,17 @@ func createSchoolsSubroute(env Env) *chi.Mux {
 func createNewStudentForSchool(env Env) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		schoolId := chi.URLParam(r, "schoolId")
+
 		var requestBody struct {
 			Name string `json:"name"`
 		}
-		err := json.NewDecoder(r.Body).Decode(&requestBody)
-		if err != nil {
-			env.logger.Error("Failed to decode request body", zap.Error(err))
-			http.Error(w, "Invalid request body", http.StatusBadRequest)
+		if ok := parseJsonRequestBody(w, r, &requestBody, env.logger); !ok {
 			return
 		}
 
 		id, err := uuid.NewRandom()
 		if err != nil {
-			env.logger.Error("Failed to generate new uuid", zap.Error(err))
-			http.Error(w, err.Error(), http.StatusInternalServerError)
+			returnInternalServerError("Failed to generate new uuid", w, err, env.logger)
 			return
 		}
 		student := Student{
@@ -55,64 +51,37 @@ func createNewStudentForSchool(env Env) http.HandlerFunc {
 			env.logger.Error("Failed creating new student", zap.Error(err))
 		}
 
-		res, err := json.Marshal(student)
-		if err != nil {
-			env.logger.Error("Fail marshalling student", zap.Error(err))
-			http.Error(w, "Something went wrong", http.StatusInternalServerError)
-			return
-		}
-		w.Header().Add("Content-Type", "application/json")
 		w.WriteHeader(http.StatusCreated)
-		_, err = w.Write(res)
-		if err != nil {
-			env.logger.Error("Fail writing response for getting all student", zap.Error(err))
-			http.Error(w, "Something went wrong", http.StatusInternalServerError)
-			return
-		}
+		err = writeJsonResponse(w, student, env.logger)
 	}
 }
 
 func getAllStudentsOfSchool(env Env) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		schoolId := chi.URLParam(r, "schoolId")
+
 		var students []Student
-		err := env.db.Model(&students).Where("school_id=?", schoolId).Order("name").Select()
+		err := env.db.Model(&students).
+			Where("school_id=?", schoolId).
+			Order("name").
+			Select()
 		if err != nil {
 			env.logger.Error("Error getting all students", zap.Error(err))
 		}
 
-		res, err := json.Marshal(students)
-		if err != nil {
-			env.logger.Error("Error marshaling students", zap.Error(err))
-		}
-
-		w.Header().Add("Content-Type", "application/json")
-		_, err = w.Write(res)
-		if err != nil {
-			env.logger.Error("Error writing response", zap.Error(err))
-		}
+		err = writeJsonResponse(w, students, env.logger)
 	}
 }
 
 func createNewSchool(env Env) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		tokenCookie, err := r.Cookie("session")
-		if err != nil {
-			env.logger.Error("Error getting session cookie", zap.Error(err))
-			http.Error(w, "Unauthorized", http.StatusUnauthorized)
-			return
-		}
-
-		var session Session
-		err = env.db.Model(&session).Where("token=?", tokenCookie.Value).Select()
-		if err != nil {
-			env.logger.Error("Failed querying session", zap.Error(err))
-			http.Error(w, "Something went wrong", http.StatusInternalServerError)
+		session, ok := getSessionFromCtx(w, r, env.logger)
+		if !ok {
 			return
 		}
 
 		var user User
-		err = env.db.Model(&user).Where("id=?", session.UserId).Select()
+		err := env.db.Model(&user).Where("id=?", session.UserId).Select()
 		if err != nil {
 			env.logger.Error("Failed getting user data", zap.Error(err))
 			http.Error(w, "Something went wrong", http.StatusInternalServerError)
@@ -122,10 +91,7 @@ func createNewSchool(env Env) func(w http.ResponseWriter, r *http.Request) {
 		var requestBody struct {
 			Name string
 		}
-		err = json.NewDecoder(r.Body).Decode(&requestBody)
-		if err != nil {
-			env.logger.Error("Failed decoding new school request body", zap.Error(err))
-			http.Error(w, "Invalid format", http.StatusBadRequest)
+		if ok := parseJsonRequestBody(w, r, &requestBody, env.logger); !ok {
 			return
 		}
 
@@ -156,5 +122,8 @@ func createNewSchool(env Env) func(w http.ResponseWriter, r *http.Request) {
 			http.Error(w, "Something went wrong", http.StatusInternalServerError)
 			return
 		}
+
+		w.WriteHeader(http.StatusCreated)
+		err = writeJsonResponse(w, school, env.logger)
 	}
 }

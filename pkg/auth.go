@@ -165,3 +165,13 @@ func createAuthMiddleware(env Env) func(next http.Handler) http.Handler {
 		return http.HandlerFunc(fn)
 	}
 }
+
+func getSessionFromCtx(w http.ResponseWriter, r *http.Request, logger *zap.Logger) (Session, bool) {
+	ctx := r.Context()
+	session, ok := ctx.Value(CTX_SESSION).(Session)
+	if !ok {
+		logger.Error("Failed to retrieve session")
+		http.Error(w, "Something went wrong", http.StatusInternalServerError)
+	}
+	return session, ok
+}
