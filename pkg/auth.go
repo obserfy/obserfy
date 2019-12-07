@@ -52,17 +52,27 @@ func register(env Env) func(w http.ResponseWriter, r *http.Request) {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 		}
 
-		requestBody := User{
-			Id:       id.String(),
-			Email:    email,
-			Password: hashedPassword,
+		// TODO: add better password validation
+		name := r.FormValue("name")
+		if name == "" {
+			http.Error(w, "Name is required", http.StatusBadRequest)
+			return
 		}
 
-		err = env.db.Insert(&requestBody)
+		user := User{
+			Id:       id.String(),
+			Email:    email,
+			Name:     name,
+			Password: hashedPassword,
+			Schools:  nil,
+		}
+		err = env.db.Insert(&user)
 		if err != nil {
 			env.logger.Error("Failed to insert to db", zap.Error(err))
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 		}
+
+		createNewSession(w, env, user.Id)
 	}
 }
 
@@ -94,32 +104,7 @@ func login(env Env) func(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		token, err := uuid.NewRandom()
-		if err != nil {
-			http.Error(w, "Something went wrong", http.StatusInternalServerError)
-			env.logger.Error("Failed creating token", zap.Error(err))
-			return
-		}
-		session := Session{
-			Token:  token.String(),
-			UserId: user.Id,
-		}
-		err = env.db.Insert(&session)
-		if err != nil {
-			http.Error(w, "Something went wrong", http.StatusInternalServerError)
-			env.logger.Error("Failed saving token to db", zap.Error(err))
-			return
-		}
-
-		// TODO: Confirm cookie is correctly created
-		cookie := http.Cookie{
-			Name:   "session",
-			Value:  session.Token,
-			Path:   "/",
-			Domain: os.Getenv("SITE_URL"),
-			Secure: true,
-		}
-		http.SetCookie(w, &cookie)
+		createNewSession(w, env, user.Id)
 	}
 }
 
@@ -174,4 +159,33 @@ func getSessionFromCtx(w http.ResponseWriter, r *http.Request, logger *zap.Logge
 		http.Error(w, "Something went wrong", http.StatusInternalServerError)
 	}
 	return session, ok
+}
+
+func createNewSession(w http.ResponseWriter, env Env, userId string) {
+	token, err := uuid.NewRandom()
+	if err != nil {
+		http.Error(w, "Something went wrong", http.StatusInternalServerError)
+		env.logger.Error("Failed creating token", zap.Error(err))
+		return
+	}
+	session := Session{
+		Token:  token.String(),
+		UserId: userId,
+	}
+	err = env.db.Insert(&session)
+	if err != nil {
+		http.Error(w, "Something went wrong", http.StatusInternalServerError)
+		env.logger.Error("Failed saving token to db", zap.Error(err))
+		return
+	}
+
+	// TODO: Confirm cookie is correctly created
+	cookie := http.Cookie{
+		Name:   "session",
+		Value:  session.Token,
+		Path:   "/",
+		Domain: os.Getenv("SITE_URL"),
+		Secure: true,
+	}
+	http.SetCookie(w, &cookie)
 }

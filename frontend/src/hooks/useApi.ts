@@ -24,6 +24,7 @@ function useApi<T>(
       if (result.status === 401) {
         // throw new UnauthorizedError()
         navigate("/login")
+        return
       }
       const data = await result.json()
       setIsOutdated(false)

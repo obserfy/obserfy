@@ -1,0 +1,6 @@
+{
+  "compilerOptions": {
+    "baseUrl": "../node_modules"
+    // needed if your tests import npm modules
+  }
+}
