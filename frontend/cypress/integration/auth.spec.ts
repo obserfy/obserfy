@@ -1,4 +1,4 @@
-describe("FormVariantAttribute component test", () => {
+describe("auth flow test", () => {
   const email = "johnny@gmail.com"
   const username = "Johnny Silverstone"
   const password = "justatest"
@@ -23,7 +23,7 @@ describe("FormVariantAttribute component test", () => {
     cy.url().should("include", "/choose-school")
   })
 
-  it("should be able to log in", () => {
+  it("should be able to log in then logout", () => {
     cy.request({
       method: "POST",
       form: true,
@@ -42,5 +42,23 @@ describe("FormVariantAttribute component test", () => {
       .type(password)
     cy.contains("Login").click()
     cy.url().should("include", "/choose-school")
+
+    cy.get("[data-cy=newSchool]").click()
+    cy.contains("Name")
+      .click()
+      .type("Ad Astra")
+
+    cy.contains("Save").click()
+    cy.url().should("include", "/")
+    cy.contains("Ad Astra").click()
+    cy.url().should("eq", "https://localhost:8001/")
+
+    cy.get("[data-cy=schoolName]").click()
+    cy.contains("Log out").click()
+    cy.url().should("eq", "https://localhost:8001/login")
+
+    // Make sure we can't access home after logging out
+    cy.visit("https://localhost:8001/")
+    cy.url().should("eq", "https://localhost:8001/login")
   })
 })

@@ -1,6 +1,8 @@
 {
-  "compilerOptions": {
-    "baseUrl": "../node_modules"
-    // needed if your tests import npm modules
-  }
+  "extends": "../tsconfig.json",
+  "include": [
+    "../node_modules/cypress",
+    "global.d.ts",
+    "*/*.ts"
+  ]
 }

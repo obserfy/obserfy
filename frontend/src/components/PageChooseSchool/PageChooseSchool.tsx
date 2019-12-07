@@ -22,6 +22,7 @@ export const PageChooseSchool: FC = () => {
 
   const availableSchools = schools?.map(({ id, name }) => (
     <Card
+      key={id}
       onClick={() => saveSelectedSchool(id)}
       px={4}
       py={3}
@@ -29,6 +30,7 @@ export const PageChooseSchool: FC = () => {
       sx={{
         cursor: "pointer",
       }}
+      data-cy="school_item"
     >
       <Flex alignItems="center">
         <Typography.H5 textAlign="center">{name}</Typography.H5>
@@ -55,6 +57,7 @@ export const PageChooseSchool: FC = () => {
           variant="outlineBig"
           width="100%"
           onClick={() => navigate("/new-school")}
+          data-cy="newSchool"
         >
           <Icon as={PlusIcon} m={0} mr={2} />
           New school

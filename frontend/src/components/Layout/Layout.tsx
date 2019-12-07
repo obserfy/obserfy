@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react"
 import { useColorMode } from "theme-ui"
 import { navigate } from "gatsby"
-import AppBar, { StoreName } from "../AppBar/AppBar"
+import AppBar, { SchoolName } from "../AppBar/AppBar"
 import SideBar from "../SideBar/SideBar"
 import { ReactComponent as HomeIcon } from "../../icons/home.svg"
 import { ReactComponent as SettingsIcon } from "../../icons/settings.svg"
@@ -54,7 +54,7 @@ const MainSidebar: FC<{
   const [colorMode, setColorMode] = useColorMode()
   return (
     <SideBar isShown={isShown} onOutsideClick={closeSidebar}>
-      <StoreName
+      <SchoolName
         backgroundColor="surface"
         mb={3}
         alignItems="center"

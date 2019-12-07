@@ -7,5 +7,8 @@ module.exports = {
     "prettier/@typescript-eslint",
     "plugin:prettier/recommended", // Enables eslint-plugin-prettier and displays prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
   ],
-  rules: { "jest/expect-expect": 0 }
+  rules: {
+    "jest/valid-expect-in-promise": 0,
+    "jest/expect-expect": 0
+  }
 }

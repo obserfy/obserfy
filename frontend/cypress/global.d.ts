@@ -12,3 +12,6 @@ declare namespace Cypress {
     waitForRouteChange(): Chainable<any>
   }
 }
+
+declare type UserFixture = typeof import("./fixtures/user.json")
+declare type SchoolFixture = typeof import("./fixtures/school.json")

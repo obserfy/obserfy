@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react"
-import { Link } from "gatsby"
+import { navigate } from "gatsby"
 import { Box } from "../Box/Box"
 import SearchBar from "../SearchBar/SearchBar"
 import { Flex } from "../Flex/Flex"
@@ -39,13 +39,17 @@ export const PageHome: FC = () => {
   }
 
   const studentList = matchedStudent.map(({ name, id }) => (
-    <Link to={`/students/details?id=${id}`} key={id}>
-      <Card p={3} mx={3} mb={2}>
-        <Flex>
-          <Typography.H6>{name}</Typography.H6>
-        </Flex>
-      </Card>
-    </Link>
+    <Card
+      p={3}
+      mx={3}
+      mb={2}
+      key={id}
+      onClick={() => navigate(`/students/details?id=${id}`)}
+    >
+      <Flex>
+        <Typography.H6>{name}</Typography.H6>
+      </Flex>
+    </Card>
   ))
 
   const emptyStudentListPlaceholder = students.length === 0 && (
@@ -60,7 +64,7 @@ export const PageHome: FC = () => {
 
   return (
     <>
-      <Box sx={{ maxWidth: 100 }}>
+      <Box maxWidth="maxWidth.lg" margin="auto">
         <Flex p={3}>
           <SearchBar
             mr={3}
@@ -71,6 +75,7 @@ export const PageHome: FC = () => {
           <Button
             variant="outline"
             onClick={() => setShowStudentInputDialog(true)}
+            data-cy="addStudent"
           >
             <Icon as={PlusIcon} m={0} />
           </Button>

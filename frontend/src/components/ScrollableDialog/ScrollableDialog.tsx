@@ -38,7 +38,7 @@ export const ScrollableDialog: FC<Props> = ({
         sx={{
           borderBottomWidth: 1,
           borderBottomStyle: "solid",
-          borderBottomColor: "border"
+          borderBottomColor: "border",
         }}
       >
         <Typography.H6
@@ -67,7 +67,7 @@ export const ScrollableDialog: FC<Props> = ({
         sx={{
           borderTopWidth: 1,
           borderTopStyle: "solid",
-          borderTopColor: "border"
+          borderTopColor: "border",
         }}
       >
         <Typography.Body mb={0} color="textMediumEmphasis">
@@ -77,7 +77,12 @@ export const ScrollableDialog: FC<Props> = ({
         <Button mr={3} variant="outline" onClick={onNegativeClick}>
           {negativeText}
         </Button>
-        <Button variant="primary" onClick={onPositiveClick} disabled={disablePositiveButton}>
+        <Button
+          variant="primary"
+          onClick={onPositiveClick}
+          disabled={disablePositiveButton}
+          data-cy="dialogPositiveAction"
+        >
           {positiveText}
         </Button>
       </Flex>

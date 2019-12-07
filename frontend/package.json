@@ -47,6 +47,7 @@
     "@babel/preset-env": "^7.7.1",
     "@babel/preset-react": "^7.7.0",
     "@babel/preset-typescript": "^7.7.2",
+    "@bahmutov/add-typescript-to-cypress": "^2.1.2",
     "@cypress/code-coverage": "^1.10.2",
     "@graphql-codegen/cli": "^1.9.1",
     "@graphql-codegen/typescript": "^1.9.1",

@@ -14,7 +14,7 @@ async function submitNewSchoolForm(name: string): Promise<void> {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   })
-  if (response.status === 200) navigate("/choose-school")
+  if (response.status === 201) navigate("/choose-school")
 }
 
 export const PageNewSchool: FC = () => {

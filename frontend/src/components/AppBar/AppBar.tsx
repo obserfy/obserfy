@@ -42,7 +42,7 @@ export const AppBar: FC<Props> = ({
         position,
       }}
     >
-      <StoreName
+      <SchoolName
         alignItems="center"
         height={57}
         width={[0, "auto"]}
@@ -58,7 +58,7 @@ export const AppBar: FC<Props> = ({
   )
 }
 
-export const StoreName: FC<FlexProps> = ({ ...props }) => (
+export const SchoolName: FC<FlexProps> = ({ ...props }) => (
   <Flex height="appbar" {...props}>
     <Icon as={StorefrontIcon} size={24} alt="Store Icon" />
     <Typography.Body as="div" ml="-4px" mb={0} sx={{ whiteSpace: "nowrap" }}>
@@ -72,7 +72,6 @@ const UserAvatar: FC = () => {
   const element = useRef<HTMLElement>(null)
   const avatar = useAvatarPlaceholder()
   useOutsideClick(element, () => setIsShowingOption(false))
-  const name = "Charlize Theron"
 
   return (
     <Flex
@@ -80,6 +79,7 @@ const UserAvatar: FC = () => {
       mx={3}
       p={1}
       alignItems="center"
+      onClick={() => setIsShowingOption(!isShowingOption)}
       sx={{
         borderStyle: "solid",
         borderRadius: "circle",
@@ -91,7 +91,7 @@ const UserAvatar: FC = () => {
           backgroundColor: "muted",
         },
       }}
-      onClick={() => setIsShowingOption(!isShowingOption)}
+      data-cy="schoolName"
     >
       <Avatar as={Box}>
         <GatsbyImage fixed={avatar} alt="avatar" />
