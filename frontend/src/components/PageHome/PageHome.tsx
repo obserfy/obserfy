@@ -12,12 +12,17 @@ import { useQueryAllStudents } from "../../hooks/students/useQueryAllStudents"
 import NewStudentDialog from "../NewStudentDialog/NewStudentDialog"
 import EmptyListPlaceholder from "../EmptyListPlaceholder/EmptyListPlaceholder"
 import { getSchoolId } from "../../hooks/schoolIdState"
+import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 
 export const PageHome: FC = () => {
   const schoolId = getSchoolId()
   const [showStudentInputDialog, setShowStudentInputDialog] = useState(false)
   const [searchTerm, setSearchTerm] = useState("")
-  const [students, setStudentsAsOutdated] = useQueryAllStudents(schoolId)
+  const [
+    students,
+    setStudentsAsOutdated,
+    studentsIsLoading,
+  ] = useQueryAllStudents(schoolId)
 
   const matchedStudent = students.filter(student =>
     student.name.includes(searchTerm)
@@ -62,6 +67,14 @@ export const PageHome: FC = () => {
     </Box>
   )
 
+  const emptyResultInfo = matchedStudent.length === 0 && searchTerm !== "" && (
+    <Flex mt={3} alignItems="center" justifyContent="center" height="100%">
+      <Typography.H6 textAlign="center" maxWidth="80vw">
+        The term <i>&quot;{searchTerm}&quot;</i> does not match any student
+      </Typography.H6>
+    </Flex>
+  )
+
   return (
     <>
       <Box maxWidth="maxWidth.lg" margin="auto">
@@ -80,21 +93,10 @@ export const PageHome: FC = () => {
             <Icon as={PlusIcon} m={0} />
           </Button>
         </Flex>
-        {students.length > 0 && studentList}
-        {matchedStudent.length === 0 && searchTerm !== "" && (
-          <Flex
-            mt={3}
-            alignItems="center"
-            justifyContent="center"
-            height="100%"
-          >
-            <Typography.H6 textAlign="center" maxWidth="80vw">
-              The term <i>&quot;{searchTerm}&quot;</i> does not match any
-              student
-            </Typography.H6>
-          </Flex>
-        )}
-        {emptyStudentListPlaceholder}
+        {!studentsIsLoading && students.length > 0 && studentList}
+        {!studentsIsLoading && emptyResultInfo}
+        {!studentsIsLoading && emptyStudentListPlaceholder}
+        {studentsIsLoading && <StudentListLoadingPlaceholder />}
       </Box>
       {showStudentInputDialog && (
         <NewStudentDialog
@@ -105,5 +107,16 @@ export const PageHome: FC = () => {
     </>
   )
 }
+
+const StudentListLoadingPlaceholder: FC = () => (
+  <Box px={3}>
+    <LoadingPlaceholder width="100%" height={62} mb={2} />
+    <LoadingPlaceholder width="100%" height={62} mb={2} />
+    <LoadingPlaceholder width="100%" height={62} mb={2} />
+    <LoadingPlaceholder width="100%" height={62} mb={2} />
+    <LoadingPlaceholder width="100%" height={62} mb={2} />
+    <LoadingPlaceholder width="100%" height={62} mb={2} />
+  </Box>
+)
 
 export default PageHome
