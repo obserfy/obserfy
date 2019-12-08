@@ -512,6 +512,7 @@ exports[`NewStudentDialog should render correctly 1`] = `
             </button>
             <button
               class="emotion-12"
+              data-cy="dialogPositiveAction"
               disabled=""
             >
               Add student

@@ -24,8 +24,7 @@ export const PageChooseSchool: FC = () => {
     <Card
       key={id}
       onClick={() => saveSelectedSchool(id)}
-      px={4}
-      py={3}
+      p={3}
       mb={2}
       sx={{
         cursor: "pointer",
@@ -33,7 +32,7 @@ export const PageChooseSchool: FC = () => {
       data-cy="school_item"
     >
       <Flex alignItems="center">
-        <Typography.H5 textAlign="center">{name}</Typography.H5>
+        <Typography.H6 textAlign="left">{name}</Typography.H6>
         <Spacer />
         <Icon as={ArrowNextIcon} />
       </Flex>

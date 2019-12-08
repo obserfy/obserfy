@@ -862,6 +862,7 @@ exports[`PageEditStudent should render correctly 1`] = `
       />
       <div
         class="emotion-10"
+        data-cy="schoolName"
       >
         <div
           class="emotion-7"
@@ -913,7 +914,7 @@ exports[`PageEditStudent should render correctly 1`] = `
         <div
           class="emotion-8"
         >
-          Charlize Theron
+          nodejs
         </div>
         <div
           alt="Store Icon"

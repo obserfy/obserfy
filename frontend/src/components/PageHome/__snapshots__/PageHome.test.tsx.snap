@@ -535,6 +535,8 @@ exports[`PageHome should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  max-width: 900px;
+  margin: auto;
 }
 
 .emotion-34 {
@@ -889,6 +891,7 @@ exports[`PageHome should render correctly 1`] = `
       />
       <div
         class="emotion-10"
+        data-cy="schoolName"
       >
         <div
           class="emotion-7"
@@ -940,7 +943,7 @@ exports[`PageHome should render correctly 1`] = `
         <div
           class="emotion-8"
         >
-          Charlize Theron
+          nodejs
         </div>
         <div
           alt="Store Icon"
@@ -1054,6 +1057,7 @@ exports[`PageHome should render correctly 1`] = `
           </label>
           <button
             class="emotion-33"
+            data-cy="addStudent"
           >
             <div
               class="emotion-32"

@@ -5,6 +5,7 @@ import (
 	"github.com/google/uuid"
 	"go.uber.org/zap"
 	"net/http"
+	"os"
 )
 
 type School struct {
@@ -31,9 +32,9 @@ func createSchoolsSubroute(env Env) *chi.Mux {
 
 func getSchoolInfo(env Env) http.HandlerFunc {
 	type responseUserField struct {
-		Name  string `json:"name"`
-		Email string `json:"email"`
-		IsYou bool   `json:"isYou"`
+		Name          string `json:"name"`
+		Email         string `json:"email"`
+		IsCurrentUser bool   `json:"isCurrentUser"`
 	}
 
 	type response struct {
@@ -65,11 +66,11 @@ func getSchoolInfo(env Env) http.HandlerFunc {
 		for i, user := range school.Users {
 			users[i].Email = user.Email
 			users[i].Name = user.Name
-			users[i].IsYou = user.Id == session.UserId
+			users[i].IsCurrentUser = user.Id == session.UserId
 		}
 		response := response{
 			Name:       school.Name,
-			InviteLink: "/login?inviteCode=" + school.InviteCode,
+			InviteLink: os.Getenv("SITE_URL") + "/login?inviteCode=" + school.InviteCode,
 			Users:      users,
 		}
 		_ = writeJsonResponse(w, response, env.logger)
