@@ -26,7 +26,6 @@ func createSchema(env Env) {
 		(*Session)(nil),
 		(*School)(nil),
 		(*UserToSchool)(nil),
-		(*Invitation)(nil),
 	} {
 		err := env.db.CreateTable(model, &orm.CreateTableOptions{})
 		if err != nil {

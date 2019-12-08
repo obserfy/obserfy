@@ -36,7 +36,6 @@ func main() {
 		r.Mount("/observations", createObservationsSubroute(env))
 		r.Mount("/schools", createSchoolsSubroute(env))
 		r.Mount("/user", createUserSubroute(env))
-		r.Mount("/invitation", createInvitationSubroute(env))
 	})
 	r.Mount("/auth", createAuthSubroute(env))
 	r.Get("/*", createFrontendFileServer())

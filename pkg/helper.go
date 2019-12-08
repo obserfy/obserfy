@@ -33,7 +33,7 @@ func parseJsonRequestBody(w http.ResponseWriter, r *http.Request, requestBody in
 	return true
 }
 
-func returnInternalServerError(message string, w http.ResponseWriter, err error, logger *zap.Logger) {
+func writeInternalServerError(message string, w http.ResponseWriter, err error, logger *zap.Logger) {
 	logger.Error(message, zap.Error(err))
 	http.Error(w, "Something went wrong", http.StatusInternalServerError)
 }

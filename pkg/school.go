@@ -8,8 +8,9 @@ import (
 )
 
 type School struct {
-	Id   string `json:"id" pg:",type:uuid"`
-	Name string `json:"name"`
+	Id         string `json:"id" pg:",type:uuid"`
+	Name       string `json:"name"`
+	InviteCode string `json:"inviteCode"`
 }
 
 type UserToSchool struct {
@@ -22,12 +23,21 @@ func createSchoolsSubroute(env Env) *chi.Mux {
 	r.Post("/", createNewSchool(env))
 	r.Get("/{schoolId}/students", getAllStudentsOfSchool(env))
 	r.Post("/{schoolId}/students", createNewStudentForSchool(env))
+	r.Post("/{schoolId}/invite-code", generateNewInviteCode(env))
 	return r
 }
 
 func createNewStudentForSchool(env Env) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		schoolId := chi.URLParam(r, "schoolId")
+		session, ok := getSessionFromCtx(w, r, env.logger)
+		if !ok {
+			return
+		}
+
+		if ok := checkUserIsAuthorized(w, session.UserId, schoolId, env); !ok {
+			return
+		}
 
 		var requestBody struct {
 			Name string `json:"name"`
@@ -38,7 +48,7 @@ func createNewStudentForSchool(env Env) http.HandlerFunc {
 
 		id, err := uuid.NewRandom()
 		if err != nil {
-			returnInternalServerError("Failed to generate new uuid", w, err, env.logger)
+			writeInternalServerError("Failed to generate new uuid", w, err, env.logger)
 			return
 		}
 		student := Student{
@@ -48,7 +58,8 @@ func createNewStudentForSchool(env Env) http.HandlerFunc {
 		}
 		err = env.db.Insert(&student)
 		if err != nil {
-			env.logger.Error("Failed creating new student", zap.Error(err))
+			writeInternalServerError("Failed saving new student", w, err, env.logger)
+			return
 		}
 
 		w.WriteHeader(http.StatusCreated)
@@ -59,6 +70,14 @@ func createNewStudentForSchool(env Env) http.HandlerFunc {
 func getAllStudentsOfSchool(env Env) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		schoolId := chi.URLParam(r, "schoolId")
+		session, ok := getSessionFromCtx(w, r, env.logger)
+		if !ok {
+			return
+		}
+
+		if ok := checkUserIsAuthorized(w, session.UserId, schoolId, env); !ok {
+			return
+		}
 
 		var students []Student
 		err := env.db.Model(&students).
@@ -101,9 +120,16 @@ func createNewSchool(env Env) func(w http.ResponseWriter, r *http.Request) {
 			http.Error(w, "Something went wrong", http.StatusInternalServerError)
 			return
 		}
+		inviteCode, err := uuid.NewRandom()
+		if err != nil {
+			env.logger.Error("Error creating invite code", zap.Error(err))
+			http.Error(w, "Something went wrong", http.StatusInternalServerError)
+			return
+		}
 		school := School{
-			Id:   id.String(),
-			Name: requestBody.Name,
+			Id:         id.String(),
+			Name:       requestBody.Name,
+			InviteCode: inviteCode.String(),
 		}
 		userToSchoolRelation := UserToSchool{
 			SchoolId: id.String(),
@@ -126,4 +152,69 @@ func createNewSchool(env Env) func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusCreated)
 		err = writeJsonResponse(w, school, env.logger)
 	}
+}
+
+func generateNewInviteCode(env Env) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		schoolId := chi.URLParam(r, "schoolId")
+		session, ok := getSessionFromCtx(w, r, env.logger)
+		if !ok {
+			return
+		}
+
+		if ok := checkUserIsAuthorized(w, session.UserId, schoolId, env); !ok {
+			return
+		}
+
+		// update the generated invite code
+		newInviteCode, err := uuid.NewRandom()
+		if err != nil {
+			env.logger.Error("Error creating invite code", zap.Error(err))
+			http.Error(w, "Something went wrong", http.StatusInternalServerError)
+			return
+		}
+		var school School
+		err = env.db.Model(&school).Where("id=?", schoolId).Select()
+		if err != nil {
+			writeInternalServerError("Failed fetching school info", w, err, env.logger)
+			return
+		}
+		school.InviteCode = newInviteCode.String()
+		err = env.db.Update(&school)
+		if err != nil {
+			writeInternalServerError("Failed updating school invite code", w, err, env.logger)
+			return
+		}
+
+		_ = writeJsonResponse(w, school, env.logger)
+	}
+}
+
+func checkUserIsAuthorized(w http.ResponseWriter, userId string, schoolId string, env Env) bool {
+	// check if user have permission
+	var user User
+	err := env.db.Model(&user).
+		Where("id=?", userId).
+		Relation("Schools").
+		Select()
+	if err != nil {
+		writeInternalServerError("Failed getting user data", w, err, env.logger)
+		return false
+	}
+	userHasAccess := false
+	for _, school := range user.Schools {
+		if school.Id == schoolId {
+			userHasAccess = true
+			break
+		}
+	}
+	if !userHasAccess {
+		env.logger.Warn("Unauthorized user tries to change invite code of a school",
+			zap.String("userId", user.Id),
+			zap.String("schoolId", schoolId),
+		)
+		http.Error(w, "Unauthorized", http.StatusUnauthorized)
+		return false
+	}
+	return true
 }
