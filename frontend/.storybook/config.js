@@ -4,7 +4,7 @@ import { ThemeProvider } from "theme-ui"
 import { create } from "@storybook/theming"
 import Theme from "../src/gatsby-plugin-theme-ui"
 import { Box } from "../src/components/Box/Box"
-import "../src/layout.css"
+import "../src/global.css"
 
 
 // Setup Custom theme and storybook options

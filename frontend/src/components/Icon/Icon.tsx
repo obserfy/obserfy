@@ -7,7 +7,7 @@ interface Props extends ImageProps {
 export const Icon: FC<Props> = ({ fill, sx, ...props }) => {
   let customSx = sx
   customSx = Object.assign(customSx || {}, {
-    fill: fill || "icon"
+    fill: fill || "icon",
   })
   return <Image m={3} height="icon" width="icon" sx={customSx} {...props} />
 }

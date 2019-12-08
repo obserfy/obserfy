@@ -54,6 +54,8 @@ const themeUiTheme = {
 
     danger: "#d50000",
     onDanger: "#FFFFFF",
+
+    tintYellow: "rgba(255,199,1,0.2)",
     modes: {
       dark: {
         text: "rgba(255,255,255, 0.87)",
