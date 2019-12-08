@@ -79,14 +79,13 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
       </Card>
     ))
 
-  const emptyObservationPlaceholder = observations?.length &&
-    observations.length < 1 && (
-      <EmptyListPlaceholder
-        text="What did you observe?"
-        callToActionText="add observation"
-        onActionClick={addObservation}
-      />
-    )
+  const emptyObservationPlaceholder = (observations ?? []).length === 0 && (
+    <EmptyListPlaceholder
+      text="No observation have been added"
+      callToActionText="add observation"
+      onActionClick={addObservation}
+    />
+  )
 
   const addObservationDialog = showAddObservationDialog && (
     <AddObservationDialog
