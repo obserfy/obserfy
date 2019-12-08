@@ -37,7 +37,6 @@ export const PageNewSchool: FC = () => {
       >
         <Typography.H2 my={3}>New School</Typography.H2>
         <Input
-          onEnterPressed={handleSubmit}
           width="100%"
           label="School Name"
           value={name}
