@@ -40,6 +40,7 @@ func getSchoolInfo(env Env) http.HandlerFunc {
 	type response struct {
 		Name       string              `json:"name"`
 		InviteLink string              `json:"inviteLink"`
+		InviteCode string              `json:"inviteCode"`
 		Users      []responseUserField `json:"users"`
 	}
 
@@ -70,7 +71,8 @@ func getSchoolInfo(env Env) http.HandlerFunc {
 		}
 		response := response{
 			Name:       school.Name,
-			InviteLink: os.Getenv("SITE_URL") + "/login?inviteCode=" + school.InviteCode,
+			InviteLink: os.Getenv("SITE_URL") + "/register?inviteCode=" + school.InviteCode,
+			InviteCode: school.InviteCode,
 			Users:      users,
 		}
 		_ = writeJsonResponse(w, response, env.logger)

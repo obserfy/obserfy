@@ -50,7 +50,7 @@ export const PageHome: FC = () => {
       mb={2}
       key={id}
       onClick={() => navigate(`/students/details?id=${id}`)}
-      sx={{cursor: "pointer"}}
+      sx={{ cursor: "pointer" }}
     >
       <Flex>
         <Typography.H6>{name}</Typography.H6>

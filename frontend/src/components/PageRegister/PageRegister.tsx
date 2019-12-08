@@ -1,20 +1,23 @@
-import React, { FC, FormEvent, useState } from "react"
+import React, { FC, FormEvent, useEffect, useState } from "react"
 import { navigate } from "gatsby"
 import Flex from "../Flex/Flex"
 import Box from "../Box/Box"
 import { Typography } from "../Typography/Typography"
 import Input from "../Input/Input"
 import Button from "../Button/Button"
+import Card from "../Card/Card"
 
 async function submitRegisterForm(
   email: string,
   password: string,
-  name: string
+  name: string,
+  inviteCode?: string
 ): Promise<void> {
   const credentials = new FormData()
   credentials.append("email", email)
   credentials.append("password", password)
   credentials.append("name", name)
+  credentials.append("inviteCode", inviteCode ?? "")
   const response = await fetch("/auth/register", {
     method: "POST",
     credentials: "same-origin",
@@ -23,26 +26,60 @@ async function submitRegisterForm(
   if (response.status === 200) navigate("/choose-school")
 }
 
-export const PageRegister: FC = () => {
+interface Props {
+  inviteCode?: string
+}
+export const PageRegister: FC<Props> = ({ inviteCode }) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [name, setName] = useState("")
+  const [inviter, setSchoolInviter] = useState<string>()
+
+  useEffect(() => {
+    const f = async (): Promise<void> => {
+      const response = await fetch(`/auth/invite-code/${inviteCode}`)
+      if (response.status === 200) {
+        const schoolData = await response.json()
+        setSchoolInviter(schoolData.schoolName)
+      }
+    }
+    f()
+  }, [inviteCode])
 
   function handleSubmit(e: FormEvent): void {
-    submitRegisterForm(email, password, name)
+    submitRegisterForm(email, password, name, inviteCode)
     e.preventDefault()
   }
 
   return (
-    <Flex justifyContent="center" minHeight="100vh" minWidth="100vw" pt={6}>
+    <Flex
+      justifyContent="center"
+      minHeight="100vh"
+      minWidth="100vw"
+      pt={[0, 6]}
+    >
       <Box
         as="form"
         p={3}
         maxWidth="maxWidth.sm"
         width="100%"
         onSubmit={handleSubmit}
-        mt={-5}
+        mt={[0, -5]}
       >
+        {inviter && (
+          <Card
+            p={3}
+            mb={4}
+            sx={{
+              borderBottomColor: "green",
+              borderBottomStyle: "solid",
+              borderBottomWidth: 2,
+            }}
+          >
+            <Typography.Body>You've been invited to join</Typography.Body>
+            <Typography.H4>{inviter} 🎊 🎉</Typography.H4>
+          </Card>
+        )}
         <Typography.H2 my={3}>Register</Typography.H2>
         <Input
           type="email"

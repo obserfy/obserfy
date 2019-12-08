@@ -22,7 +22,27 @@ func createAuthSubroute(env Env) *chi.Mux {
 	r.Post("/register", register(env))
 	r.Post("/login", login(env))
 	r.Post("/logout", logout(env))
+	r.Get("/invite-code/{inviteCodeId}", getInviteCodeInformation(env))
 	return r
+}
+
+func getInviteCodeInformation(env Env) http.HandlerFunc {
+	type response struct {
+		SchoolName string `json:"schoolName"`
+	}
+	return func(w http.ResponseWriter, r *http.Request) {
+		inviteCodeId := chi.URLParam(r, "inviteCodeId")
+		var school School
+		err := env.db.Model(&school).Where("invite_code=?", inviteCodeId).Select()
+		if err != nil {
+			http.NotFound(w, r)
+			return
+		}
+		response := response{
+			SchoolName: school.Name,
+		}
+		_ = writeJsonResponse(w, response, env.logger)
+	}
 }
 
 func register(env Env) func(w http.ResponseWriter, r *http.Request) {
@@ -31,11 +51,13 @@ func register(env Env) func(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			env.logger.Error("Failed to generate new uuid", zap.Error(err))
 			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
 		}
 
 		// TODO: add better email validation
 		email := r.FormValue("email")
 		if email == "" {
+			env.logger.Info("Failed to hash password")
 			http.Error(w, "Email is required", http.StatusBadRequest)
 			return
 		}
@@ -43,18 +65,21 @@ func register(env Env) func(w http.ResponseWriter, r *http.Request) {
 		// TODO: add better password validation
 		password := r.FormValue("password")
 		if password == "" {
+			env.logger.Info("Failed to hash password")
 			http.Error(w, "Password is required", http.StatusBadRequest)
 			return
 		}
 		hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), BCryptCost)
 		if err != nil {
-			env.logger.Error("Failed to hash password", zap.Error(err))
-			http.Error(w, err.Error(), http.StatusInternalServerError)
+			env.logger.Info("Failed to hash password", zap.Error(err))
+			http.Error(w, "Something went wrong", http.StatusInternalServerError)
+			return
 		}
 
 		// TODO: add better password validation
 		name := r.FormValue("name")
 		if name == "" {
+			env.logger.Info("Failed to hash password")
 			http.Error(w, "Name is required", http.StatusBadRequest)
 			return
 		}
@@ -64,15 +89,34 @@ func register(env Env) func(w http.ResponseWriter, r *http.Request) {
 			Email:    email,
 			Name:     name,
 			Password: hashedPassword,
-			Schools:  nil,
 		}
 		err = env.db.Insert(&user)
 		if err != nil {
 			env.logger.Error("Failed to insert to db", zap.Error(err))
-			http.Error(w, err.Error(), http.StatusInternalServerError)
+			http.Error(w, "Something went wrong", http.StatusInternalServerError)
+			return
 		}
 
-		createNewSession(w, env, user.Id)
+		inviteCode := r.FormValue("inviteCode")
+		if inviteCode != "" {
+			var school School
+			err := env.db.Model(&school).Where("invite_code=?", inviteCode).Select()
+			if err != nil {
+				http.NotFound(w, r)
+				return
+			}
+			userSchoolRelation := UserToSchool{
+				SchoolId: school.Id,
+				UserId:   user.Id,
+			}
+			err = env.db.Insert(&userSchoolRelation)
+			if err != nil {
+				writeInternalServerError("Failed saving user relation to school", w, err, env.logger)
+				return
+			}
+		}
+
+		giveNewSession(w, env, user.Id)
 	}
 }
 
@@ -81,6 +125,7 @@ func login(env Env) func(w http.ResponseWriter, r *http.Request) {
 		// TODO: add better email validation
 		email := r.FormValue("email")
 		if email == "" {
+			env.logger.Info("Failed to hash password")
 			http.Error(w, "Email is required", http.StatusBadRequest)
 			return
 		}
@@ -88,6 +133,7 @@ func login(env Env) func(w http.ResponseWriter, r *http.Request) {
 		// TODO: add better password validation
 		password := r.FormValue("password")
 		if password == "" {
+			env.logger.Info("Failed to hash password")
 			http.Error(w, "Password is required", http.StatusBadRequest)
 			return
 		}
@@ -95,16 +141,18 @@ func login(env Env) func(w http.ResponseWriter, r *http.Request) {
 		var user User
 		err := env.db.Model(&user).Where("email=?", email).First()
 		if err != nil {
+			env.logger.Info("Failed to hash password", zap.Error(err))
 			http.Error(w, "Invalid Credential", http.StatusUnauthorized)
 			return
 		}
 		err = bcrypt.CompareHashAndPassword(user.Password, []byte(password))
 		if err != nil {
+			env.logger.Info("Failed to hash password", zap.Error(err))
 			http.Error(w, "Invalid Credential", http.StatusUnauthorized)
 			return
 		}
 
-		createNewSession(w, env, user.Id)
+		giveNewSession(w, env, user.Id)
 	}
 }
 
@@ -161,7 +209,7 @@ func getSessionFromCtx(w http.ResponseWriter, r *http.Request, logger *zap.Logge
 	return session, ok
 }
 
-func createNewSession(w http.ResponseWriter, env Env, userId string) {
+func giveNewSession(w http.ResponseWriter, env Env, userId string) {
 	token, err := uuid.NewRandom()
 	if err != nil {
 		http.Error(w, "Something went wrong", http.StatusInternalServerError)

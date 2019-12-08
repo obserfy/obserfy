@@ -8,7 +8,7 @@ import (
 
 type User struct {
 	Id       string `json:"id" pg:",type:uuid"`
-	Email    string
+	Email    string `pg:",unique"`
 	Name     string
 	Password []byte
 	Schools  []School `pg:"many2many:user_to_schools,joinFK:school_id"`
