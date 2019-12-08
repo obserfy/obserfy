@@ -54,7 +54,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
     ?.reverse()
     ?.map(({ longDesc, shortDesc }) => (
       <Card
-        mb={3}
+        mb={2}
         onClick={() => {
           setEditObservations({ longDesc, shortDesc })
           setShowObservationDialog(true)
@@ -64,6 +64,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
           p={3}
           alignItems="center"
           sx={{
+            cursor: "pointer",
             borderBottomWidth: 1,
             borderBottomColor: "border",
             borderBottomStyle: "solid",
@@ -79,14 +80,13 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
       </Card>
     ))
 
-  const emptyObservationPlaceholder = observations?.length &&
-    observations.length < 1 && (
-      <EmptyListPlaceholder
-        text="What did you observe?"
-        callToActionText="add observation"
-        onActionClick={addObservation}
-      />
-    )
+  const emptyObservationPlaceholder = (observations ?? []).length === 0 && (
+    <EmptyListPlaceholder
+      text="No observation have been added"
+      callToActionText="add observation"
+      onActionClick={addObservation}
+    />
+  )
 
   const addObservationDialog = showAddObservationDialog && (
     <AddObservationDialog
@@ -101,7 +101,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
 
   return (
     <>
-      <Box>
+      <Box maxWidth="maxWidth.sm" margin="auto">
         <BackNavigation text="Home" to="/" />
         <Flex alignItems="center" mx={3} mb={3}>
           <Typography.H3>

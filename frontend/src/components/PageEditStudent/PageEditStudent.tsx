@@ -50,7 +50,7 @@ export const PageEditStudent: FC<Props> = ({ id }) => {
   }
 
   return (
-    <Box>
+    <Box maxWidth="maxWidth.sm" margin="auto">
       <BackNavigation to={studentDetailUrl} text="Details" />
       <Box mx={3}>
         {details?.name ? (

@@ -1,14 +1,14 @@
 version: "3"
 services:
-  app:
+  vor_app:
     build:
       context: .
       dockerfile: docker/vor/dev.dockerfile
-    container_name: app
+    container_name: vor_app
     depends_on:
       - db
     environment:
-      SITE_URL: localhost
+      SITE_URL: https://localhost:8001
       DB_USERNAME: postgres
       DB_PASSWORD: developmentonly
       DB_HOST: vor-postgres
@@ -29,18 +29,23 @@ services:
       context: .
       dockerfile: docker/nginx/dev.dockerfile
     depends_on:
-      - app
+      - vor_app
     ports:
       - "8000:80"
 
   db:
-    image: postgres:11.5
+    build:
+      context: ./docker/postgres/
+      dockerfile: dev.dockerfile
     container_name: vor-postgres
     environment:
       POSTGRES_PASSWORD: developmentonly
       POSTGRES_DB: defaultdb
     volumes:
       - vor:/var/lib/postgresql/data
+#      - ./docker/postgres/ssl:/ssl
+#      - ./docker/postgres/pga_hba.conf:/var/lib/postgresql/data/pga_hba.conf
+#      - ./docker/postgres/postgresql.conf:/var/lib/postgresql/data/postgresql.conf
     ports:
       - "5432:5432"
 

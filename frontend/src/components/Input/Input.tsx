@@ -10,8 +10,7 @@ interface Props extends BoxProps {
   icon?: FC
   small?: boolean
   onChange?: ChangeEventHandler<HTMLInputElement>
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  onEnterPressed?: (event?: any) => void
+  onEnterPressed?: () => void
 }
 export const Input: FC<Props> = ({
   name,

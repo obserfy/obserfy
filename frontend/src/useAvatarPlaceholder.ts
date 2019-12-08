@@ -1,6 +1,6 @@
 import { graphql, useStaticQuery } from "gatsby"
 import { FixedObject } from "gatsby-image"
-import { AvatarPlaceholderQuery } from "./graphqlTypes"
+import { AvatarPlaceholderQuery } from "./gatsbyGql"
 
 export const useAvatarPlaceholder = (): FixedObject | undefined => {
   const data = useStaticQuery<AvatarPlaceholderQuery>(graphql`

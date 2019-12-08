@@ -606,6 +606,7 @@ exports[`AddObservationDialog should render correctly 1`] = `
             </button>
             <button
               class="emotion-15"
+              data-cy="dialogPositiveAction"
               disabled=""
             >
               Add

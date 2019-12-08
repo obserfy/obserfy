@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"github.com/go-chi/chi"
 	"github.com/google/uuid"
 	"go.uber.org/zap"
@@ -41,12 +40,11 @@ func deleteStudent(env Env) func(w http.ResponseWriter, r *http.Request) {
 func replaceStudent(env Env) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		targetId := chi.URLParam(r, "id") // from a route like /users/{userID}
+
 		var requestBody struct {
 			Name string `json:"name"`
 		}
-		err := json.NewDecoder(r.Body).Decode(&requestBody)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusBadRequest)
+		if ok := parseJsonRequestBody(w, r, &requestBody, env.logger); !ok {
 			return
 		}
 
@@ -54,24 +52,12 @@ func replaceStudent(env Env) func(w http.ResponseWriter, r *http.Request) {
 			Id:   targetId,
 			Name: requestBody.Name,
 		}
-		err = env.db.Update(&student)
+		err := env.db.Update(&student)
 		if err != nil {
 			env.logger.Error("Failed creating new student", zap.Error(err))
 		}
 
-		res, err := json.Marshal(student)
-		if err != nil {
-			env.logger.Error("Fail marshalling student", zap.Error(err))
-			http.Error(w, "Something went wrong", http.StatusInternalServerError)
-			return
-		}
-		w.Header().Add("Content-Type", "application/json")
-		_, err = w.Write(res)
-		if err != nil {
-			env.logger.Error("Fail writing response for getting all student", zap.Error(err))
-			http.Error(w, "Something went wrong", http.StatusInternalServerError)
-			return
-		}
+		err = writeJsonResponse(w, student, env.logger)
 	}
 }
 
@@ -86,16 +72,7 @@ func getStudentById(env Env) func(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		res, err := json.Marshal(student)
-		if err != nil {
-			env.logger.Error("Error marshaling student", zap.Error(err))
-		}
-
-		w.Header().Add("Content-Type", "application/json")
-		_, err = w.Write(res)
-		if err != nil {
-			env.logger.Error("Error writing response", zap.Error(err))
-		}
+		err = writeJsonResponse(w, student, env.logger)
 	}
 }
 
@@ -105,10 +82,7 @@ func addObservationToStudent(env Env) func(w http.ResponseWriter, r *http.Reques
 			ShortDesc string `json:"shortDesc"`
 			LongDesc  string `json:"longDesc"`
 		}
-		err := json.NewDecoder(r.Body).Decode(&requestBody)
-		if err != nil {
-			env.logger.Error("Error getting request body", zap.Error(err))
-			http.Error(w, "Invalid request body", http.StatusBadRequest)
+		if ok := parseJsonRequestBody(w, r, &requestBody, env.logger); !ok {
 			return
 		}
 
@@ -133,25 +107,15 @@ func addObservationToStudent(env Env) func(w http.ResponseWriter, r *http.Reques
 			return
 		}
 
-		res, err := json.Marshal(observation)
-		if err != nil {
-			env.logger.Error("Error marshalling created observation", zap.Error(err))
-			http.Error(w, "Something went wrong", http.StatusInternalServerError)
-			return
-		}
-		w.Header().Add("Content-Type", "application/json")
 		w.WriteHeader(http.StatusCreated)
-		_, err = w.Write(res)
-		if err != nil {
-			env.logger.Error("Error returning created observation to client", zap.Error(err))
-			http.Error(w, "Something went wrong", http.StatusInternalServerError)
-		}
+		err = writeJsonResponse(w, observation, env.logger)
 	}
 }
 
 func getAllStudentObservations(env Env) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		id := chi.URLParam(r, "id")
+
 		var observations []Observation
 		err := env.db.Model(&observations).Where("student_id=?", id).Order("created_date").Select()
 		if err != nil {
@@ -160,13 +124,6 @@ func getAllStudentObservations(env Env) func(w http.ResponseWriter, r *http.Requ
 			return
 		}
 
-		res, err := json.Marshal(observations)
-		w.Header().Add("Content-Type", "application/json")
-		_, err = w.Write(res)
-		if err != nil {
-			env.logger.Error("Fail writing response for getting all student", zap.Error(err))
-			http.Error(w, "Something went wrong", http.StatusInternalServerError)
-			return
-		}
+		err = writeJsonResponse(w, observations, env.logger)
 	}
 }

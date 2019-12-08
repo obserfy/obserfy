@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pill should render correctly 1`] = `
+.emotion-2 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 16px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-2 {
+    font-size: 20px;
+  }
+}
+
+.emotion-1 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  border-radius: 99999px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.emotion-0 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  font-size: 12px;
+  line-height: 1em;
+}
+
+<div>
+  <div
+    class="emotion-2"
+  >
+    <div
+      class="emotion-1"
+    >
+      <p
+        class="emotion-0"
+      >
+        You
+      </p>
+    </div>
+  </div>
+</div>
+`;

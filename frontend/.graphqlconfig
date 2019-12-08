@@ -1,7 +1,7 @@
 {
   "name": "Silverhand Gatsby Graphql Schema",
   "schemaPath": "schema.graphql",
-  "includes": ["./**/*.ts", "./**/*.js"],
+  "includes": ["./**/*.ts", "./**/*.js", "./.cache/**/*.js"],
   "extensions": {
     "endpoints": {
       "Default GraphQL Endpoint": {

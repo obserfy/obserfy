@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"github.com/go-chi/chi"
 	"go.uber.org/zap"
 	"net/http"
@@ -9,7 +8,7 @@ import (
 
 type User struct {
 	Id       string `json:"id" pg:",type:uuid"`
-	Email    string
+	Email    string `pg:",unique"`
 	Name     string
 	Password []byte
 	Schools  []School `pg:"many2many:user_to_schools,joinFK:school_id"`
@@ -24,92 +23,44 @@ func createUserSubroute(env Env) *chi.Mux {
 
 func getUserDetails(env Env) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		tokenCookie, err := r.Cookie("session")
-		if err != nil {
-			env.logger.Error("Error getting session cookie", zap.Error(err))
-			http.Error(w, "Unauthorized", http.StatusUnauthorized)
-			return
-		}
-
-		var session Session
-		err = env.db.Model(&session).Where("token=?", tokenCookie.Value).Select()
-		if err != nil {
-			env.logger.Error("Failed querying session", zap.Error(err))
-			http.Error(w, "Something went wrong", http.StatusInternalServerError)
+		session, ok := getSessionFromCtx(w, r, env.logger)
+		if !ok {
 			return
 		}
 
 		var user User
-		err = env.db.Model(&user).Column("email", "name").Where("id=?", session.UserId).Select()
+		err := env.db.Model(&user).Column("email", "name").Where("id=?", session.UserId).Select()
 		if err != nil {
 			env.logger.Error("Failed getting user data", zap.Error(err))
 			http.Error(w, "Something went wrong", http.StatusInternalServerError)
 			return
 		}
 
-		res, err := json.Marshal(&struct {
+		err = writeJsonResponse(w, &struct {
 			Email string
 			Name  string
 		}{
 			Email: user.Email,
 			Name:  user.Name,
-		})
-		if err != nil {
-			env.logger.Error("Failed marshalling user data", zap.Error(err))
-			http.Error(w, "Something went wrong", http.StatusInternalServerError)
-			return
-		}
-		w.Header().Add("Content-Type", "application/json")
-		_, err = w.Write(res)
-		if err != nil {
-			env.logger.Error("Fail writing response for getting user detail", zap.Error(err))
-			http.Error(w, "Something went wrong", http.StatusInternalServerError)
-			return
-		}
+		}, env.logger)
 	}
 }
 
 func getUserSchools(env Env) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		tokenCookie, err := r.Cookie("session")
-		if err != nil {
-			env.logger.Error("Error getting session cookie", zap.Error(err))
-			http.Error(w, "Unauthorized", http.StatusUnauthorized)
-			return
-		}
-
-		var session Session
-		err = env.db.Model(&session).Where("token=?", tokenCookie.Value).Select()
-		if err != nil {
-			env.logger.Error("Failed querying session", zap.Error(err))
-			http.Error(w, "Something went wrong", http.StatusInternalServerError)
+		session, ok := getSessionFromCtx(w, r, env.logger)
+		if !ok {
 			return
 		}
 
 		var user User
-		err = env.db.Model(&user).Where("id=?", session.UserId).Relation("Schools").Select()
+		err := env.db.Model(&user).Where("id=?", session.UserId).Relation("Schools").Select()
 		if err != nil {
 			env.logger.Error("Failed getting user data", zap.Error(err))
 			http.Error(w, "Something went wrong", http.StatusInternalServerError)
 			return
 		}
 
-		res, err := json.Marshal(&user.Schools)
-		if err != nil {
-			env.logger.Error("Failed marshalling user data", zap.Error(err))
-			http.Error(w, "Something went wrong", http.StatusInternalServerError)
-			return
-		}
-		w.Header().Add("Content-Type", "application/json")
-		if user.Schools == nil {
-			_, err = w.Write([]byte("[]"))
-		} else {
-			_, err = w.Write(res)
-		}
-		if err != nil {
-			env.logger.Error("Fail writing response for getting user detail", zap.Error(err))
-			http.Error(w, "Something went wrong", http.StatusInternalServerError)
-			return
-		}
+		err = writeJsonResponse(w, &user.Schools, env.logger)
 	}
 }

@@ -563,6 +563,7 @@ exports[`ScrollableDialog should render correctly 1`] = `
             </button>
             <button
               class="emotion-19"
+              data-cy="dialogPositiveAction"
             >
               Confirm
             </button>

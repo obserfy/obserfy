@@ -186,6 +186,7 @@ exports[`PageChooseSchool should render correctly 1`] = `
         </h6>
         <button
           class="emotion-3"
+          data-cy="newSchool"
         >
           <div
             class="emotion-2"

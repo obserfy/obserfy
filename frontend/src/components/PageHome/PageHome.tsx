@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react"
-import { Link } from "gatsby"
+import { navigate } from "gatsby"
 import { Box } from "../Box/Box"
 import SearchBar from "../SearchBar/SearchBar"
 import { Flex } from "../Flex/Flex"
@@ -12,12 +12,17 @@ import { useQueryAllStudents } from "../../hooks/students/useQueryAllStudents"
 import NewStudentDialog from "../NewStudentDialog/NewStudentDialog"
 import EmptyListPlaceholder from "../EmptyListPlaceholder/EmptyListPlaceholder"
 import { getSchoolId } from "../../hooks/schoolIdState"
+import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 
 export const PageHome: FC = () => {
   const schoolId = getSchoolId()
   const [showStudentInputDialog, setShowStudentInputDialog] = useState(false)
   const [searchTerm, setSearchTerm] = useState("")
-  const [students, setStudentsAsOutdated] = useQueryAllStudents(schoolId)
+  const [
+    students,
+    setStudentsAsOutdated,
+    studentsIsLoading,
+  ] = useQueryAllStudents(schoolId)
 
   const matchedStudent = students.filter(student =>
     student.name.includes(searchTerm)
@@ -39,13 +44,18 @@ export const PageHome: FC = () => {
   }
 
   const studentList = matchedStudent.map(({ name, id }) => (
-    <Link to={`/students/details?id=${id}`} key={id}>
-      <Card p={3} mx={3} mb={2}>
-        <Flex>
-          <Typography.H6>{name}</Typography.H6>
-        </Flex>
-      </Card>
-    </Link>
+    <Card
+      p={3}
+      mx={3}
+      mb={2}
+      key={id}
+      onClick={() => navigate(`/students/details?id=${id}`)}
+      sx={{ cursor: "pointer" }}
+    >
+      <Flex>
+        <Typography.H6>{name}</Typography.H6>
+      </Flex>
+    </Card>
   ))
 
   const emptyStudentListPlaceholder = students.length === 0 && (
@@ -58,9 +68,17 @@ export const PageHome: FC = () => {
     </Box>
   )
 
+  const emptyResultInfo = matchedStudent.length === 0 && searchTerm !== "" && (
+    <Flex mt={3} alignItems="center" justifyContent="center" height="100%">
+      <Typography.H6 textAlign="center" maxWidth="80vw">
+        The term <i>&quot;{searchTerm}&quot;</i> does not match any student
+      </Typography.H6>
+    </Flex>
+  )
+
   return (
     <>
-      <Box>
+      <Box maxWidth="maxWidth.sm" margin="auto">
         <Flex p={3}>
           <SearchBar
             mr={3}
@@ -71,25 +89,15 @@ export const PageHome: FC = () => {
           <Button
             variant="outline"
             onClick={() => setShowStudentInputDialog(true)}
+            data-cy="addStudent"
           >
             <Icon as={PlusIcon} m={0} />
           </Button>
         </Flex>
-        {students.length > 0 && studentList}
-        {matchedStudent.length === 0 && searchTerm !== "" && (
-          <Flex
-            mt={3}
-            alignItems="center"
-            justifyContent="center"
-            height="100%"
-          >
-            <Typography.H6 textAlign="center" maxWidth="80vw">
-              The term <i>&quot;{searchTerm}&quot;</i> does not match any
-              student
-            </Typography.H6>
-          </Flex>
-        )}
-        {emptyStudentListPlaceholder}
+        {!studentsIsLoading && students.length > 0 && studentList}
+        {!studentsIsLoading && emptyResultInfo}
+        {!studentsIsLoading && emptyStudentListPlaceholder}
+        {studentsIsLoading && <StudentListLoadingPlaceholder />}
       </Box>
       {showStudentInputDialog && (
         <NewStudentDialog
@@ -100,5 +108,16 @@ export const PageHome: FC = () => {
     </>
   )
 }
+
+const StudentListLoadingPlaceholder: FC = () => (
+  <Box px={3}>
+    <LoadingPlaceholder width="100%" height={62} mb={2} />
+    <LoadingPlaceholder width="100%" height={62} mb={2} />
+    <LoadingPlaceholder width="100%" height={62} mb={2} />
+    <LoadingPlaceholder width="100%" height={62} mb={2} />
+    <LoadingPlaceholder width="100%" height={62} mb={2} />
+    <LoadingPlaceholder width="100%" height={62} mb={2} />
+  </Box>
+)
 
 export default PageHome
