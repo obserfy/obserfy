@@ -102,9 +102,7 @@ const UserAvatar: FC = () => {
         mr={1}
         my={0}
         display={["none", "block"]}
-      >
-        {name}
-      </Typography.Body>
+      />
       <Icon
         as={ArrowDownIcon}
         alt="Store Icon"
