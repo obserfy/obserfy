@@ -11,6 +11,7 @@ type School struct {
 	Id         string `json:"id" pg:",type:uuid"`
 	Name       string `json:"name"`
 	InviteCode string `json:"inviteCode"`
+	Users      []User `pg:"many2many:user_to_schools,joinFK:user_id"`
 }
 
 type UserToSchool struct {
@@ -21,10 +22,58 @@ type UserToSchool struct {
 func createSchoolsSubroute(env Env) *chi.Mux {
 	r := chi.NewRouter()
 	r.Post("/", createNewSchool(env))
+	r.Get("/{schoolId}", getSchoolInfo(env))
 	r.Get("/{schoolId}/students", getAllStudentsOfSchool(env))
 	r.Post("/{schoolId}/students", createNewStudentForSchool(env))
 	r.Post("/{schoolId}/invite-code", generateNewInviteCode(env))
 	return r
+}
+
+func getSchoolInfo(env Env) http.HandlerFunc {
+	type responseUserField struct {
+		Name  string `json:"name"`
+		Email string `json:"email"`
+		IsYou bool   `json:"isYou"`
+	}
+
+	type response struct {
+		Name       string              `json:"name"`
+		InviteLink string              `json:"inviteLink"`
+		Users      []responseUserField `json:"users"`
+	}
+
+	return func(w http.ResponseWriter, r *http.Request) {
+		schoolId := chi.URLParam(r, "schoolId")
+		session, ok := getSessionFromCtx(w, r, env.logger)
+		if !ok {
+			return
+		}
+		if ok := checkUserIsAuthorized(w, session.UserId, schoolId, env); !ok {
+			return
+		}
+
+		var school School
+		err := env.db.Model(&school).
+			Relation("Users").
+			Where("id=?", schoolId).
+			Select()
+		if err != nil {
+			writeInternalServerError("Failed getting school data", w, err, env.logger)
+			return
+		}
+		users := make([]responseUserField, len(school.Users))
+		for i, user := range school.Users {
+			users[i].Email = user.Email
+			users[i].Name = user.Name
+			users[i].IsYou = user.Id == session.UserId
+		}
+		response := response{
+			Name:       school.Name,
+			InviteLink: "/login?inviteCode=" + school.InviteCode,
+			Users:      users,
+		}
+		_ = writeJsonResponse(w, response, env.logger)
+	}
 }
 
 func createNewStudentForSchool(env Env) http.HandlerFunc {

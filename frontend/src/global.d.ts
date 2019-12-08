@@ -45,3 +45,7 @@ declare module "@rebass/forms" {
   export const Switch: FC<BoxProps>
   export const Input: FC<BoxProps>
 }
+
+interface Navigator {
+  share: any
+}

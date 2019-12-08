@@ -7,15 +7,16 @@ import Flex from "../Flex/Flex"
 import Icon from "../Icon/Icon"
 import Spacer from "../Spacer/Spacer"
 import { ReactComponent as ShareIcon } from "../../icons/share.svg"
+import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
 import Button from "../Button/Button"
 
 export const PageSettings: FC = () => {
   function shareLink(): void {
     if (navigator.share) {
       navigator.share({
-        title: "web.dev",
-        text: "Check out web.dev.",
-        url: "https://web.dev/",
+        title: "Vor Invitation",
+        text: "Check out vor. Manage your student data.",
+        url: "https://vor.chrsep.dev/",
       })
     }
   }
@@ -74,7 +75,7 @@ export const PageSettings: FC = () => {
               </Typography.Body>
             </Box>
             <Spacer />
-            <Icon m={0} />
+            <Icon as={TrashIcon} m={0} mr={2} fill="danger" />
           </Flex>
         </Card>
         <Card p={3} mt={2}>
@@ -86,7 +87,7 @@ export const PageSettings: FC = () => {
               </Typography.Body>
             </Box>
             <Spacer />
-            <Icon m={0} />
+            <Icon as={TrashIcon} m={0} mr={2} fill="danger" />
           </Flex>
         </Card>
       </Box>
