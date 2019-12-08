@@ -50,6 +50,7 @@ export const PageHome: FC = () => {
       mb={2}
       key={id}
       onClick={() => navigate(`/students/details?id=${id}`)}
+      sx={{cursor: "pointer"}}
     >
       <Flex>
         <Typography.H6>{name}</Typography.H6>
@@ -77,7 +78,7 @@ export const PageHome: FC = () => {
 
   return (
     <>
-      <Box maxWidth="maxWidth.lg" margin="auto">
+      <Box maxWidth="maxWidth.sm" margin="auto">
         <Flex p={3}>
           <SearchBar
             mr={3}

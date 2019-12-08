@@ -549,6 +549,8 @@ exports[`PageEditStudent should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  max-width: 640px;
+  margin: auto;
 }
 
 .emotion-31 {
