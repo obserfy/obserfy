@@ -15,11 +15,20 @@ import UserCard from "../UserCard/UserCard"
 export const PageSettings: FC = () => {
   const schoolId = getSchoolId()
   const [schoolName, setSchoolName] = useState("")
+
   // Todo: Type this correctly when we start using restful react.
-  const [schoolDetail] = useApi(`/schools/${schoolId}`)
+  const [schoolDetail] = useApi<{
+    name: string
+    inviteLink: string
+    users: {
+      name: string
+      email: string
+      isCurrentUser: boolean
+    }[]
+  }>(`/schools/${schoolId}`)
 
   useEffect(() => {
-    setSchoolName(schoolDetail?.name)
+    setSchoolName(schoolDetail?.name ?? "")
   }, [schoolDetail])
 
   const userCards = schoolDetail?.users?.map(

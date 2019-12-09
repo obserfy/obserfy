@@ -3,11 +3,13 @@ package main
 import (
 	"context"
 	"github.com/go-chi/chi"
+	"github.com/go-pg/pg/v9"
 	"github.com/google/uuid"
 	"go.uber.org/zap"
 	"golang.org/x/crypto/bcrypt"
 	"net/http"
 	"os"
+	"strings"
 )
 
 const CTX_SESSION = "session"
@@ -84,6 +86,31 @@ func register(env Env) func(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
+		// Validate invite code if exists
+		inviteCode := r.FormValue("inviteCode")
+		var school School
+		if inviteCode != "" {
+			_, err := uuid.Parse(inviteCode)
+			if err != nil {
+				http.Error(w, "Invalid invite code", http.StatusBadRequest)
+				env.logger.Info("Invalid invite code", zap.String("inviteCode", inviteCode))
+				return
+			}
+
+			// Search for school associated with invite code
+			err = env.db.Model(&school).Where("invite_code=?", inviteCode).Select()
+			if err == pg.ErrNoRows {
+				env.logger.Warn("Cannot find invitation code school info", zap.String("invitation code", inviteCode))
+				http.Error(w, "Invitation code owner not found", http.StatusNotFound)
+				return
+			}
+			if err != nil {
+				writeInternalServerError("Failed getting school data", w, err, env.logger)
+				return
+			}
+
+		}
+
 		user := User{
 			Id:       id.String(),
 			Email:    email,
@@ -92,19 +119,18 @@ func register(env Env) func(w http.ResponseWriter, r *http.Request) {
 		}
 		err = env.db.Insert(&user)
 		if err != nil {
+			if strings.Contains(err.Error(), "#23505") {
+				http.Error(w, "This email has already been used", http.StatusConflict)
+				env.logger.Info("Someone tries to login with existing email", zap.String("email", email))
+				return
+			}
 			env.logger.Error("Failed to insert to db", zap.Error(err))
 			http.Error(w, "Something went wrong", http.StatusInternalServerError)
 			return
 		}
 
-		inviteCode := r.FormValue("inviteCode")
 		if inviteCode != "" {
-			var school School
-			err := env.db.Model(&school).Where("invite_code=?", inviteCode).Select()
-			if err != nil {
-				http.NotFound(w, r)
-				return
-			}
+			// Create relation between user and associated school
 			userSchoolRelation := UserToSchool{
 				SchoolId: school.Id,
 				UserId:   user.Id,
