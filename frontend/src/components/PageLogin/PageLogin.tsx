@@ -6,24 +6,29 @@ import Button from "../Button/Button"
 import Flex from "../Flex/Flex"
 import { Typography } from "../Typography/Typography"
 
-async function submitLoginForm(email: string, password: string): Promise<void> {
-  const credentials = new FormData()
-  credentials.append("email", email)
-  credentials.append("password", password)
-  const response = await fetch("/auth/login", {
-    method: "POST",
-    credentials: "same-origin",
-    body: credentials,
-  })
-  if (response.status === 200) navigate("/choose-school")
-}
-
 export const PageLogin: FC = () => {
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
+  const [error, setError] = useState("")
+
+  async function submitLoginForm(): Promise<void> {
+    const credentials = new FormData()
+    credentials.append("email", email)
+    credentials.append("password", password)
+    const response = await fetch("/auth/login", {
+      method: "POST",
+      credentials: "same-origin",
+      body: credentials,
+    })
+    if (response.status === 200) {
+      navigate("/choose-school")
+    } else {
+      setError("Wrong email or password")
+    }
+  }
 
   function handleSubmit(e: FormEvent): void {
-    submitLoginForm(email, password)
+    submitLoginForm()
     e.preventDefault()
   }
 
@@ -55,6 +60,15 @@ export const PageLogin: FC = () => {
           required
           mb={3}
         />
+        <Typography.Body
+          mb={3}
+          width="100%"
+          textAlign="center"
+          color="danger"
+          fontWeight="bold"
+        >
+          {error}
+        </Typography.Body>
         <Flex>
           <Button
             type="button"

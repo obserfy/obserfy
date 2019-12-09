@@ -7,25 +7,6 @@ import Input from "../Input/Input"
 import Button from "../Button/Button"
 import Card from "../Card/Card"
 
-async function submitRegisterForm(
-  email: string,
-  password: string,
-  name: string,
-  inviteCode?: string
-): Promise<void> {
-  const credentials = new FormData()
-  credentials.append("email", email)
-  credentials.append("password", password)
-  credentials.append("name", name)
-  credentials.append("inviteCode", inviteCode ?? "")
-  const response = await fetch("/auth/register", {
-    method: "POST",
-    credentials: "same-origin",
-    body: credentials,
-  })
-  if (response.status === 200) navigate("/choose-school")
-}
-
 interface Props {
   inviteCode?: string
 }
@@ -34,6 +15,7 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
   const [password, setPassword] = useState("")
   const [name, setName] = useState("")
   const [inviter, setSchoolInviter] = useState<string>()
+  const [error, setError] = useState("")
 
   useEffect(() => {
     const f = async (): Promise<void> => {
@@ -46,8 +28,26 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
     f()
   }, [inviteCode])
 
+  async function submitRegisterForm(): Promise<void> {
+    const credentials = new FormData()
+    credentials.append("email", email)
+    credentials.append("password", password)
+    credentials.append("name", name)
+    credentials.append("inviteCode", inviteCode ?? "")
+    const response = await fetch("/auth/register", {
+      method: "POST",
+      credentials: "same-origin",
+      body: credentials,
+    })
+    if (response.status === 200) {
+      navigate("/choose-school")
+    } else if (response.status === 409) {
+      setError("Email has already been used to register")
+    }
+  }
+
   function handleSubmit(e: FormEvent): void {
-    submitRegisterForm(email, password, name, inviteCode)
+    submitRegisterForm()
     e.preventDefault()
   }
 
@@ -76,8 +76,14 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
               borderBottomWidth: 2,
             }}
           >
-            <Typography.Body>You've been invited to join</Typography.Body>
-            <Typography.H4>{inviter} 🎊 🎉</Typography.H4>
+            <Typography.Body>You&apos;ve been invited to join</Typography.Body>
+            <Typography.H4>
+              {inviter}
+              <span role="img" aria-label="Party emoji">
+                {" "}
+                🎊 🎉
+              </span>
+            </Typography.H4>
           </Card>
         )}
         <Typography.H2 my={3}>Register</Typography.H2>
@@ -110,6 +116,15 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
           required
           mb={3}
         />
+        <Typography.Body
+          mb={3}
+          width="100%"
+          textAlign="center"
+          color="danger"
+          fontWeight="bold"
+        >
+          {error}
+        </Typography.Body>
         <Flex>
           <Button
             type="button"
