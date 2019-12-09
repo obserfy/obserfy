@@ -1,11 +1,14 @@
 package main
 
 import (
+	"github.com/getsentry/sentry-go"
+	sentryhttp "github.com/getsentry/sentry-go/http"
 	"github.com/go-chi/chi"
 	"github.com/go-pg/pg/v9"
 	_ "github.com/joho/godotenv/autoload"
 	"go.uber.org/zap"
 	"net/http"
+	"os"
 )
 
 type Env struct {
@@ -26,10 +29,20 @@ func main() {
 
 	env := Env{db: db, logger: logger}
 
+	// initialize sentry
+	if err := sentry.Init(sentry.ClientOptions{
+		Dsn: os.Getenv("SENTRY_DSN"),
+	}); err != nil {
+		env.logger.Error("Failed sentry init", zap.Error(err))
+	}
+	// Create an instance of sentryhttp
+	sentryHandler := sentryhttp.New(sentryhttp.Options{})
+
 	createSchema(env)
 
 	r := chi.NewRouter()
 
+	r.Use(sentryHandler.Handle)
 	r.Route("/api/v1", func(r chi.Router) {
 		r.Use(createAuthMiddleware(env))
 		r.Mount("/students", createStudentsSubroute(env))

@@ -16,5 +16,7 @@ COPY --from=frontend-builder /usr/src/vor/frontend/public /usr/src/vor/frontend/
 COPY --from=api-builder /usr/src/vor/app /usr/src/vor/app
 RUN chmod u+x app
 
+ENV ENV=production
+
 EXPOSE 8080
 CMD ./app
