@@ -3,6 +3,7 @@ import { PageRendererProps } from "gatsby"
 import queryString from "query-string"
 import PageEditStudent from "../../components/PageEditStudent/PageEditStudent"
 import Layout from "../../components/Layout/Layout"
+import SEO from "../../components/seo"
 
 const EditStudent: FC<PageRendererProps> = ({ location }) => {
   const query = queryString.parse(location.search)
@@ -15,6 +16,7 @@ const EditStudent: FC<PageRendererProps> = ({ location }) => {
 
   return (
     <Layout pageTitle="Edit student">
+      <SEO title="Edit Student" />
       <PageEditStudent id={id} />
     </Layout>
   )
