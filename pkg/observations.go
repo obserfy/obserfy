@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/go-chi/chi"
+	"github.com/go-pg/pg/v9"
 	"go.uber.org/zap"
 	"net/http"
 	"time"
@@ -35,6 +36,10 @@ func updateObservation(env Env) http.HandlerFunc {
 		// Query the requested observation
 		var observation Observation
 		err := env.db.Model(&observation).Where("id=?", id).Select()
+		if err == pg.ErrNoRows {
+			http.NotFound(w, r)
+			return
+		}
 		if err != nil {
 			writeInternalServerError("Failed finding observation id", w, err, env.logger)
 			return
