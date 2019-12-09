@@ -12,6 +12,7 @@ type Observation struct {
 	StudentId   string    `json:"studentId"`
 	ShortDesc   string    `json:"shortDesc"`
 	LongDesc    string    `json:"longDesc"`
+	CategoryId  string    `json:"categoryId"`
 	CreatedDate time.Time `json:"createdDate"`
 }
 

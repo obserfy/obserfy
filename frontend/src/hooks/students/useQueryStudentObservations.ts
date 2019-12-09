@@ -5,6 +5,7 @@ export interface Observation {
   studentId?: string
   shortDesc: string
   longDesc: string
+  categoryId: string
   createdDate?: string
 }
 export const useQueryStudentObservations = (

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AddObservationDialog should render correctly 1`] = `
-.emotion-20 {
+.emotion-25 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,12 +9,12 @@ exports[`AddObservationDialog should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-20 {
+  .emotion-25 {
     font-size: 20px;
   }
 }
 
-.emotion-19 {
+.emotion-24 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -36,7 +36,7 @@ exports[`AddObservationDialog should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-19 {
+  .emotion-24 {
     -webkit-align-items: center;
     -webkit-box-align: center;
     -ms-flex-align: center;
@@ -49,7 +49,7 @@ exports[`AddObservationDialog should render correctly 1`] = `
   }
 }
 
-.emotion-18 {
+.emotion-23 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -66,12 +66,12 @@ exports[`AddObservationDialog should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-18 {
+  .emotion-23 {
     border-radius: 6px;
   }
 }
 
-.emotion-17 {
+.emotion-22 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -140,7 +140,7 @@ exports[`AddObservationDialog should render correctly 1`] = `
   width: 32px;
 }
 
-.emotion-11 {
+.emotion-16 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -148,14 +148,102 @@ exports[`AddObservationDialog should render correctly 1`] = `
   background-color: var(--theme-ui-colors-background,#F7F8FA);
 }
 
-.emotion-10 {
+.emotion-15 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   padding: 16px;
 }
 
+.emotion-7 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  width: 100%;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  as: label;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 16px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-3 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding-bottom: 4px;
+  padding-left: 4px;
+}
+
 .emotion-6 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-4 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: block;
+  width: 100%;
+  padding: 8px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: inherit;
+  line-height: inherit;
+  border: 1px solid;
+  border-radius: 6px;
+  color: inherit;
+  background-color: transparent;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface,#fff);
+  font-size: 16px;
+  padding: 16px;
+}
+
+.emotion-4:hover,
+.emotion-4:focus {
+  border-color: var(--theme-ui-colors-primary,#6E55C6);
+  outline: none;
+}
+
+.emotion-5 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-left: -28px;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  pointer-events: none;
+  width: 24px;
+  height: 24px;
+}
+
+.emotion-11 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -183,7 +271,7 @@ exports[`AddObservationDialog should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-3 {
+.emotion-8 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -191,7 +279,7 @@ exports[`AddObservationDialog should render correctly 1`] = `
   padding-bottom: 4px;
 }
 
-.emotion-5 {
+.emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -205,7 +293,7 @@ exports[`AddObservationDialog should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-4 {
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -231,35 +319,35 @@ exports[`AddObservationDialog should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-4:hover,
-.emotion-4:focus {
+.emotion-9:hover,
+.emotion-9:focus {
   border-color: var(--theme-ui-colors-primary,#6E55C6);
   outline: none;
 }
 
-.emotion-4::-webkit-input-placeholder {
+.emotion-9::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-4::-moz-placeholder {
+.emotion-9::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-4:-ms-input-placeholder {
+.emotion-9:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-4::placeholder {
+.emotion-9::placeholder {
   font-style: italic;
 }
 
-.emotion-4:disabled {
+.emotion-9:disabled {
   opacity: 0.38;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
-.emotion-9 {
+.emotion-14 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -285,7 +373,7 @@ exports[`AddObservationDialog should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-8 {
+.emotion-13 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -313,33 +401,33 @@ exports[`AddObservationDialog should render correctly 1`] = `
   font-size: 16px;
 }
 
-.emotion-8:hover,
-.emotion-8:focus {
+.emotion-13:hover,
+.emotion-13:focus {
   border-color: var(--theme-ui-colors-primary,#6E55C6);
   outline: none;
 }
 
-.emotion-8::-webkit-input-placeholder {
+.emotion-13::-webkit-input-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-8::-moz-placeholder {
+.emotion-13::-moz-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-8:-ms-input-placeholder {
+.emotion-13:-ms-input-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-8::placeholder {
+.emotion-13::placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-16 {
+.emotion-21 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -357,7 +445,7 @@ exports[`AddObservationDialog should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-12 {
+.emotion-17 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -372,12 +460,12 @@ exports[`AddObservationDialog should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-12 {
+  .emotion-17 {
     font-size: 14px;
   }
 }
 
-.emotion-13 {
+.emotion-18 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -387,7 +475,7 @@ exports[`AddObservationDialog should render correctly 1`] = `
   flex: 1;
 }
 
-.emotion-14 {
+.emotion-19 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -441,25 +529,25 @@ exports[`AddObservationDialog should render correctly 1`] = `
   margin-right: 16px;
 }
 
-.emotion-14:disabled {
+.emotion-19:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-14:hover,
-.emotion-14:focus {
+.emotion-19:hover,
+.emotion-19:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(161,130,250,0.12));
   border-color: var(--theme-ui-colors-primary,#6E55C6);
   outline: none;
 }
 
-.emotion-14:hover:disabled,
-.emotion-14:focus:disabled {
+.emotion-19:hover:disabled,
+.emotion-19:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-15 {
+.emotion-20 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -510,34 +598,34 @@ exports[`AddObservationDialog should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-15:disabled {
+.emotion-20:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-15:hover,
-.emotion-15:focus {
+.emotion-20:hover,
+.emotion-20:focus {
   background-color: var(--theme-ui-colors-primaryDark,#3A2B95);
   outline: none;
 }
 
-.emotion-15:hover:disabled,
-.emotion-15:focus:disabled {
+.emotion-20:hover:disabled,
+.emotion-20:focus:disabled {
   background-color: var(--theme-ui-colors-primary,#6E55C6);
 }
 
 <div>
   <div
-    class="emotion-20"
+    class="emotion-25"
   >
     <div
-      class="emotion-19"
+      class="emotion-24"
     >
       <div
-        class="emotion-18"
+        class="emotion-23"
       >
         <div
-          class="emotion-17"
+          class="emotion-22"
         >
           <div
             class="emotion-2"
@@ -552,60 +640,119 @@ exports[`AddObservationDialog should render correctly 1`] = `
             />
           </div>
           <div
-            class="emotion-11"
+            class="emotion-16"
           >
             <div
-              class="emotion-10"
+              class="emotion-15"
             >
               <label
-                class="emotion-6"
+                class="emotion-7"
+                value="0"
               >
                 <div
                   class="emotion-3"
                 >
+                  Category
+                </div>
+                <div
+                  class="emotion-6"
+                >
+                  <select
+                    aria-label="Category"
+                    class="emotion-4"
+                  >
+                    <option
+                      value="0"
+                    >
+                      Others
+                    </option>
+                    <option
+                      value="1"
+                    >
+                      Cultural
+                    </option>
+                    <option
+                      value="2"
+                    >
+                      Language
+                    </option>
+                    <option
+                      value="3"
+                    >
+                      Mathematics
+                    </option>
+                    <option
+                      value="4"
+                    >
+                      Practical Life
+                    </option>
+                    <option
+                      value="5"
+                    >
+                      Sensorial
+                    </option>
+                  </select>
+                  <svg
+                    class="emotion-5"
+                    fill="currentcolor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M7 10l5 5 5-5z"
+                    />
+                  </svg>
+                </div>
+              </label>
+              <label
+                class="emotion-11"
+              >
+                <div
+                  class="emotion-8"
+                >
                   Short Description
                 </div>
                 <div
-                  class="emotion-5"
+                  class="emotion-10"
                 >
                   <input
-                    class="emotion-4"
+                    class="emotion-9"
                     placeholder="What have you find?"
                     value=""
                   />
                 </div>
               </label>
               <label
-                class="emotion-9"
+                class="emotion-14"
               >
                 <div
-                  class="emotion-3"
+                  class="emotion-8"
                 >
                   Details
                 </div>
                 <textarea
-                  class="emotion-8"
+                  class="emotion-13"
                   placeholder="Tell us about what you observed"
                 />
               </label>
             </div>
           </div>
           <div
-            class="emotion-16"
+            class="emotion-21"
           >
             <p
-              class="emotion-12"
+              class="emotion-17"
             />
             <div
-              class="emotion-13"
+              class="emotion-18"
             />
             <button
-              class="emotion-14"
+              class="emotion-19"
             >
               Cancel
             </button>
             <button
-              class="emotion-15"
+              class="emotion-20"
               data-cy="dialogPositiveAction"
               disabled=""
             >

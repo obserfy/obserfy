@@ -4,6 +4,8 @@ import Box from "../Box/Box"
 import Input from "../Input/Input"
 import TextArea from "../TextArea/TextArea"
 import { Observation } from "../../hooks/students/useQueryStudentObservations"
+import Select from "../Select/Select"
+import { categories } from "../../categories"
 
 interface Props {
   defaultValue?: Observation
@@ -17,17 +19,31 @@ export const AddObservationDialog: FC<Props> = ({
 }) => {
   const [shortDesc, setShortDesc] = useState(defaultValue?.shortDesc ?? "")
   const [details, setDetails] = useState(defaultValue?.longDesc ?? "")
+  const [category, setCategory] = useState(categories[0].id)
+
   return (
     <ScrollableDialog
       title={defaultValue ? "Edit Observation" : "New Observation"}
       positiveText={defaultValue ? "Save" : "Add"}
       negativeText="Cancel"
-      onPositiveClick={() => onConfirm({ longDesc: details, shortDesc })}
+      onPositiveClick={() =>
+        onConfirm({ longDesc: details, shortDesc, categoryId: category })
+      }
       onDismiss={onCancel}
       onNegativeClick={onCancel}
       disablePositiveButton={shortDesc === ""}
     >
       <Box p={3}>
+        <Select
+          mb={3}
+          label="Category"
+          value={category}
+          onChange={e => setCategory(e.target.value)}
+        >
+          {categories.map(({ id, name }) => (
+            <option value={id}>{name}</option>
+          ))}
+        </Select>
         <Input
           label="Short Description"
           width="100%"

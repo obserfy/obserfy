@@ -79,8 +79,9 @@ func getStudentById(env Env) func(w http.ResponseWriter, r *http.Request) {
 func addObservationToStudent(env Env) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		var requestBody struct {
-			ShortDesc string `json:"shortDesc"`
-			LongDesc  string `json:"longDesc"`
+			ShortDesc  string `json:"shortDesc"`
+			LongDesc   string `json:"longDesc"`
+			CategoryId string `json:"categoryId"`
 		}
 		if ok := parseJsonRequestBody(w, r, &requestBody, env.logger); !ok {
 			return
@@ -98,6 +99,7 @@ func addObservationToStudent(env Env) func(w http.ResponseWriter, r *http.Reques
 			StudentId:   id,
 			ShortDesc:   requestBody.ShortDesc,
 			LongDesc:    requestBody.LongDesc,
+			CategoryId:  requestBody.CategoryId,
 			CreatedDate: time.Now(),
 		}
 		err = env.db.Insert(&observation)

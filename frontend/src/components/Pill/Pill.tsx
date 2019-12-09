@@ -5,9 +5,9 @@ import Typography from "../Typography/Typography"
 interface Props extends BoxProps {
   text: string
 }
-export const Pill: FC<Props> = ({ text, ...props }) => (
+export const Pill: FC<Props> = ({ color, text, ...props }) => (
   <Box py={1} px={2} sx={{ borderRadius: "circle" }} {...props}>
-    <Typography.Body lineHeight="1em" fontSize={0}>
+    <Typography.Body lineHeight="1em" fontSize={0} color={color}>
       {text}
     </Typography.Body>
   </Box>

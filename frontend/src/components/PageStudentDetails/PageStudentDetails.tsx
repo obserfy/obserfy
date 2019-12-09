@@ -19,6 +19,8 @@ import {
   Observation,
   useQueryStudentObservations,
 } from "../../hooks/students/useQueryStudentObservations"
+import Pill from "../Pill/Pill"
+import { categories } from "../../categories"
 
 interface Props {
   id: string
@@ -52,33 +54,44 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
 
   const listOfObservations = observations
     ?.reverse()
-    ?.map(({ longDesc, shortDesc }) => (
-      <Card
-        mb={2}
-        onClick={() => {
-          setEditObservations({ longDesc, shortDesc })
-          setShowObservationDialog(true)
-        }}
-      >
-        <Flex
-          p={3}
-          alignItems="center"
-          sx={{
-            cursor: "pointer",
-            borderBottomWidth: 1,
-            borderBottomColor: "border",
-            borderBottomStyle: "solid",
+    ?.map(({ categoryId, longDesc, shortDesc }) => {
+      const category = categories[parseInt(categoryId, 10)]
+      return (
+        <Card
+          mb={2}
+          onClick={() => {
+            setEditObservations({ longDesc, shortDesc })
+            setShowObservationDialog(true)
           }}
         >
-          <Box>
-            <Typography.H5>{shortDesc}</Typography.H5>
-          </Box>
-          <Spacer />
-          <Icon as={NextIcon} m={0} />
-        </Flex>
-        <Typography.Body p={3}>{longDesc}</Typography.Body>
-      </Card>
-    ))
+          <Flex
+            p={3}
+            alignItems="center"
+            sx={{
+              cursor: "pointer",
+              borderBottomWidth: 1,
+              borderBottomColor: "border",
+              borderBottomStyle: "solid",
+            }}
+          >
+            <Flex flexDirection="column" alignItems="start">
+              <Pill
+                backgroundColor={category.color}
+                text={category.name}
+                mb={1}
+                color={category.onColor}
+              />
+              <Typography.H6>{shortDesc}</Typography.H6>
+            </Flex>
+            <Spacer />
+            <Icon as={NextIcon} m={0} />
+          </Flex>
+          <Typography.Body fontSize={1} p={3}>
+            {longDesc}
+          </Typography.Body>
+        </Card>
+      )
+    })
 
   const emptyObservationPlaceholder = (observations ?? []).length === 0 && (
     <EmptyListPlaceholder
