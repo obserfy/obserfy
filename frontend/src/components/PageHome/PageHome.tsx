@@ -68,13 +68,15 @@ export const PageHome: FC = () => {
     </Box>
   )
 
-  const emptyResultInfo = matchedStudent.length === 0 && searchTerm !== "" && (
-    <Flex mt={3} alignItems="center" justifyContent="center" height="100%">
-      <Typography.H6 textAlign="center" maxWidth="80vw">
-        The term <i>&quot;{searchTerm}&quot;</i> does not match any student
-      </Typography.H6>
-    </Flex>
-  )
+  const emptyResultInfo = students.length > 0 &&
+    matchedStudent.length === 0 &&
+    searchTerm !== "" && (
+      <Flex mt={3} alignItems="center" justifyContent="center" height="100%">
+        <Typography.H6 textAlign="center" maxWidth="80vw">
+          The term <i>&quot;{searchTerm}&quot;</i> does not match any student
+        </Typography.H6>
+      </Flex>
+    )
 
   return (
     <>

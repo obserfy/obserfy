@@ -46,7 +46,9 @@ export const EditObservationDialog: FC<Props> = ({
           onChange={e => setCategory(e.target.value)}
         >
           {categories.map(({ id, name }) => (
-            <option value={id}>{name}</option>
+            <option key={id} value={id}>
+              {name}
+            </option>
           ))}
         </Select>
         <Input
