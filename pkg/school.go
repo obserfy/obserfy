@@ -46,6 +46,13 @@ func getSchoolInfo(env Env) http.HandlerFunc {
 
 	return func(w http.ResponseWriter, r *http.Request) {
 		schoolId := chi.URLParam(r, "schoolId")
+		_, err := uuid.Parse(schoolId)
+		if err != nil {
+			env.logger.Warn("Invalid School ID received", zap.Error(err))
+			http.Error(w, "Invalid ID received", http.StatusBadRequest)
+			return
+		}
+
 		session, ok := getSessionFromCtx(w, r, env.logger)
 		if !ok {
 			return
@@ -55,7 +62,7 @@ func getSchoolInfo(env Env) http.HandlerFunc {
 		}
 
 		var school School
-		err := env.db.Model(&school).
+		err = env.db.Model(&school).
 			Relation("Users").
 			Where("id=?", schoolId).
 			Select()
@@ -82,6 +89,13 @@ func getSchoolInfo(env Env) http.HandlerFunc {
 func createNewStudentForSchool(env Env) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		schoolId := chi.URLParam(r, "schoolId")
+		_, err := uuid.Parse(schoolId)
+		if err != nil {
+			env.logger.Warn("Invalid School ID received", zap.Error(err))
+			http.Error(w, "Invalid ID received", http.StatusBadRequest)
+			return
+		}
+
 		session, ok := getSessionFromCtx(w, r, env.logger)
 		if !ok {
 			return
@@ -122,6 +136,13 @@ func createNewStudentForSchool(env Env) http.HandlerFunc {
 func getAllStudentsOfSchool(env Env) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		schoolId := chi.URLParam(r, "schoolId")
+		_, err := uuid.Parse(schoolId)
+		if err != nil {
+			env.logger.Warn("Invalid School ID received", zap.Error(err))
+			http.Error(w, "Invalid ID received", http.StatusBadRequest)
+			return
+		}
+
 		session, ok := getSessionFromCtx(w, r, env.logger)
 		if !ok {
 			return
@@ -132,7 +153,7 @@ func getAllStudentsOfSchool(env Env) http.HandlerFunc {
 		}
 
 		var students []Student
-		err := env.db.Model(&students).
+		err = env.db.Model(&students).
 			Where("school_id=?", schoolId).
 			Order("name").
 			Select()
@@ -209,6 +230,13 @@ func createNewSchool(env Env) func(w http.ResponseWriter, r *http.Request) {
 func generateNewInviteCode(env Env) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		schoolId := chi.URLParam(r, "schoolId")
+		_, err := uuid.Parse(schoolId)
+		if err != nil {
+			env.logger.Warn("Invalid School ID received", zap.Error(err))
+			http.Error(w, "Invalid ID received", http.StatusBadRequest)
+			return
+		}
+
 		session, ok := getSessionFromCtx(w, r, env.logger)
 		if !ok {
 			return

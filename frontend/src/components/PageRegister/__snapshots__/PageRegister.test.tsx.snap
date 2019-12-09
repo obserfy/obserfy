@@ -24,11 +24,17 @@ exports[`PageRegister should render correctly 1`] = `
   justify-content: center;
   min-height: 100vh;
   min-width: 100vw;
-  padding-top: 128px;
+  padding-top: 0;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-17 {
+    padding-top: 128px;
+  }
 }
 
 .emotion-16 {
@@ -38,7 +44,13 @@ exports[`PageRegister should render correctly 1`] = `
   padding: 16px;
   max-width: 640px;
   width: 100%;
-  margin-top: -64px;
+  margin-top: 0;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-16 {
+    margin-top: -64px;
+  }
 }
 
 .emotion-0 {

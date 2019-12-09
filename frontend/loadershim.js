@@ -12,6 +12,8 @@ global.___loader = {
     enqueue: jest.fn()
 }
 
+global.___navigate = jest.fn()
+
 // Pollyfil fetch
 const fetchPolyfill = require('whatwg-fetch')
 global.fetch = fetchPolyfill.fetch

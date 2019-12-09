@@ -13,7 +13,10 @@ import Spacer from "../Spacer/Spacer"
 import Icon from "../Icon/Icon"
 import Box from "../Box/Box"
 import Flex, { FlexProps } from "../Flex/Flex"
-import { getSchoolId } from "../../hooks/schoolIdState"
+import {
+  SCHOOL_ID_UNDEFINED_PLACEHOLDER,
+  getSchoolId,
+} from "../../hooks/schoolIdState"
 
 /** Top level component that encapsulate every page and provides navigation and
  * everything */
@@ -22,13 +25,13 @@ interface Props {
 }
 
 export const Layout: FC<Props> = ({ pageTitle, children }) => {
-  const schoolId = getSchoolId()
-  if (schoolId === null) {
-    navigate("/choose-school")
-  }
-
   const [isSidebarShown, setShowSidebar] = useState(false)
   const toggleSidebar = (): void => setShowSidebar(!isSidebarShown)
+
+  const schoolId = getSchoolId()
+  if (schoolId === SCHOOL_ID_UNDEFINED_PLACEHOLDER) {
+    navigate("/choose-school")
+  }
 
   return (
     <>

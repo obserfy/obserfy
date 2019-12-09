@@ -361,9 +361,7 @@ exports[`AppBar should render correctly 1`] = `
         </div>
         <div
           class="emotion-8"
-        >
-          nodejs
-        </div>
+        />
         <div
           alt="Store Icon"
           class="emotion-9"
