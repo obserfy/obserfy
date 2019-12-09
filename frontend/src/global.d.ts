@@ -49,3 +49,7 @@ declare module "@rebass/forms" {
 interface Navigator {
   share: any
 }
+
+declare type window = {
+  analytics?: SegmentAnalytics.AnalyticsJS
+}

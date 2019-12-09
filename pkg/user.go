@@ -22,6 +22,11 @@ func createUserSubroute(env Env) *chi.Mux {
 }
 
 func getUserDetails(env Env) func(w http.ResponseWriter, r *http.Request) {
+	type response struct {
+		Id    string `json:"id"`
+		Email string `json:"email"`
+		Name  string `json:"name"`
+	}
 	return func(w http.ResponseWriter, r *http.Request) {
 		session, ok := getSessionFromCtx(w, r, env.logger)
 		if !ok {
@@ -36,10 +41,8 @@ func getUserDetails(env Env) func(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		err = writeJsonResponse(w, &struct {
-			Email string
-			Name  string
-		}{
+		err = writeJsonResponse(w, response{
+			Id:    user.Id,
 			Email: user.Email,
 			Name:  user.Name,
 		}, env.logger)

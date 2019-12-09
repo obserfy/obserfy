@@ -2,6 +2,7 @@ import React, { FC } from "react"
 import queryString from "query-string"
 import { PageRendererProps } from "gatsby"
 import PageRegister from "../components/PageRegister/PageRegister"
+import SEO from "../components/seo"
 
 export const Register: FC<PageRendererProps> = ({ location }) => {
   const query = queryString.parse(location.search)
@@ -12,7 +13,12 @@ export const Register: FC<PageRendererProps> = ({ location }) => {
     inviteCode = query?.inviteCode ?? ""
   }
 
-  return <PageRegister inviteCode={inviteCode} />
+  return (
+    <>
+      <SEO title="Sign Up" />
+      <PageRegister inviteCode={inviteCode} />
+    </>
+  )
 }
 
 export default Register

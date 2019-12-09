@@ -531,7 +531,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
       <div
         class="emotion-15"
       />
-       New observation
+       Add observation
     </button>
   </div>
 </div>

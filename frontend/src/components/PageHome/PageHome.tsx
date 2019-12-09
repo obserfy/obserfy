@@ -32,7 +32,7 @@ export const PageHome: FC = () => {
     const baseUrl = "/api/v1"
     const newStudent = { name }
 
-    await fetch(`${baseUrl}/schools/${schoolId}/students`, {
+    const response = await fetch(`${baseUrl}/schools/${schoolId}/students`, {
       credentials: "same-origin",
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -41,6 +41,10 @@ export const PageHome: FC = () => {
 
     setShowStudentInputDialog(false)
     setStudentsAsOutdated()
+    window?.analytics.track("Student Created", {
+      responseStatus: response.status,
+      studentName: name,
+    })
   }
 
   const studentList = matchedStudent.map(({ name, id }) => (
@@ -68,13 +72,15 @@ export const PageHome: FC = () => {
     </Box>
   )
 
-  const emptyResultInfo = matchedStudent.length === 0 && searchTerm !== "" && (
-    <Flex mt={3} alignItems="center" justifyContent="center" height="100%">
-      <Typography.H6 textAlign="center" maxWidth="80vw">
-        The term <i>&quot;{searchTerm}&quot;</i> does not match any student
-      </Typography.H6>
-    </Flex>
-  )
+  const emptyResultInfo = students.length > 0 &&
+    matchedStudent.length === 0 &&
+    searchTerm !== "" && (
+      <Flex mt={3} alignItems="center" justifyContent="center" height="100%">
+        <Typography.H6 textAlign="center" maxWidth="80vw">
+          The term <i>&quot;{searchTerm}&quot;</i> does not match any student
+        </Typography.H6>
+      </Flex>
+    )
 
   return (
     <>

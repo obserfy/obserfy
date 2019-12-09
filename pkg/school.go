@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/go-chi/chi"
+	"github.com/go-pg/pg/v9"
 	"github.com/google/uuid"
 	"go.uber.org/zap"
 	"net/http"
@@ -277,6 +278,11 @@ func checkUserIsAuthorized(w http.ResponseWriter, userId string, schoolId string
 		Where("id=?", userId).
 		Relation("Schools").
 		Select()
+	// if we found no associated school, user is definitely unauthorized
+	if err == pg.ErrNoRows {
+		http.Error(w, "Unauthorized", http.StatusUnauthorized)
+		return false
+	}
 	if err != nil {
 		writeInternalServerError("Failed getting user data", w, err, env.logger)
 		return false

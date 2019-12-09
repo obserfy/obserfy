@@ -82,7 +82,9 @@ module.exports = {
     // on .d.ts files
     "no-useless-constructor": "off",
     "@typescript-eslint/no-useless-constructor": "error",
-    "import/prefer-default-export": 0
+    "import/prefer-default-export": 0,
+    "no-unused-expressions": "off",
+    "mdx/no-unused-expressions": "off",
   },
   settings: {
     react: {

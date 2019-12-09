@@ -28,7 +28,7 @@ module.exports = {
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
-        display: `minimal-ui`,
+        display: `standalone`,
         icon: `src/images/icon.svg`, // This path is relative to the root of the site.
       },
     },
@@ -42,6 +42,7 @@ module.exports = {
         // your segment write key for your production environment
         // when process.env.NODE_ENV === 'production'
         // required; non-empty string
+        // TODO: Do not hardcode this, use env variables.
         prodKey: `a2pLn3x1wfkoSpgCxAb1sHiMRPraq6hW`,
 
         // boolean (defaults to false) on whether you want
@@ -63,7 +64,7 @@ module.exports = {
         // GIF: https://github.com/benjaminhoffman/gatsby-plugin-segment-js/pull/19#issuecomment-559569483
         // TTI: https://github.com/GoogleChrome/lighthouse/blob/master/docs/scoring.md#performance
         // Problem/solution: https://marketingexamples.com/seo/performance
-        delayLoad: true,
+        delayLoad: false,
 
         // number (default to 1000); time to wait after scroll or route change
         // To be used when `delayLoad` is set to `true`

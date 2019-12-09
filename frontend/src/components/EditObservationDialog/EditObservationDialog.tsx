@@ -1,28 +1,38 @@
 import React, { FC, useState } from "react"
+import { categories } from "../../categories"
 import ScrollableDialog from "../ScrollableDialog/ScrollableDialog"
 import Box from "../Box/Box"
+import Select from "../Select/Select"
 import Input from "../Input/Input"
 import TextArea from "../TextArea/TextArea"
 import { Observation } from "../../hooks/students/useQueryStudentObservations"
-import Select from "../Select/Select"
-import { categories } from "../../categories"
 
 interface Props {
+  defaultValue?: Observation
   onCancel: () => void
   onConfirm: (observations: Observation) => void
 }
-export const AddObservationDialog: FC<Props> = ({ onConfirm, onCancel }) => {
-  const [shortDesc, setShortDesc] = useState("")
-  const [details, setDetails] = useState("")
+export const EditObservationDialog: FC<Props> = ({
+  defaultValue,
+  onConfirm,
+  onCancel,
+}) => {
+  const [shortDesc, setShortDesc] = useState(defaultValue?.shortDesc ?? "")
+  const [details, setDetails] = useState(defaultValue?.longDesc ?? "")
   const [category, setCategory] = useState(categories[0].id)
 
   return (
     <ScrollableDialog
-      title="New Observation"
-      positiveText="Add"
+      title="Edit Observation"
+      positiveText="Save"
       negativeText="Cancel"
       onPositiveClick={() =>
-        onConfirm({ longDesc: details, shortDesc, categoryId: category })
+        onConfirm({
+          ...defaultValue,
+          longDesc: details,
+          shortDesc,
+          categoryId: category,
+        })
       }
       onDismiss={onCancel}
       onNegativeClick={onCancel}
@@ -62,4 +72,4 @@ export const AddObservationDialog: FC<Props> = ({ onConfirm, onCancel }) => {
   )
 }
 
-export default AddObservationDialog
+export default EditObservationDialog

@@ -7,7 +7,6 @@ import Box from "../Box/Box"
 import Typography from "../Typography/Typography"
 import Spacer from "../Spacer/Spacer"
 import Icon from "../Icon/Icon"
-import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import EmptyListPlaceholder from "../EmptyListPlaceholder/EmptyListPlaceholder"
 import AddObservationDialog from "../AddObservationDialog/AddObservationDialog"
 import Button from "../Button/Button"
@@ -21,77 +20,137 @@ import {
 } from "../../hooks/students/useQueryStudentObservations"
 import Pill from "../Pill/Pill"
 import { categories } from "../../categories"
+import EditObservationDialog from "../EditObservationDialog/EditObservationDialog"
+import DeleteObservationDialog from "../DeleteObservationDialog/DeleteObservationDialog"
 
 interface Props {
   id: string
 }
 export const PageStudentDetails: FC<Props> = ({ id }) => {
-  const [showAddObservationDialog, setShowObservationDialog] = useState(false)
-  const [editObservations, setEditObservations] = useState()
+  const [isAddingObservation, setIsAddingObservation] = useState(false)
+  const [isEditingObservation, setIsEditingObservation] = useState(false)
+  const [isDeletingObservation, setIsDeletingObservation] = useState(false)
+  const [targetObservation, setTargetObservation] = useState()
   const [details] = useQueryStudentDetails(id)
   const [observations, setObservationsAsOutdated] = useQueryStudentObservations(
     id
   )
 
   function addObservation(): void {
-    setEditObservations(undefined)
-    setShowObservationDialog(true)
+    setTargetObservation(undefined)
+    setIsAddingObservation(true)
   }
-
-  async function submitNewObservation(observation: Observation): Promise<void> {
+  async function submitAddObservation(observation: Observation): Promise<void> {
     const baseUrl = "/api/v1"
-
-    await fetch(`${baseUrl}/students/${id}/observations`, {
+    const response = await fetch(`${baseUrl}/students/${id}/observations`, {
       credentials: "same-origin",
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(observation),
     })
-
-    setShowObservationDialog(false)
+    setIsAddingObservation(false)
     setObservationsAsOutdated()
+
+    window?.analytics.track("Observation Created", {
+      responseStatus: response.status,
+      observationId: observation.id,
+    })
+  }
+  async function submitEditObservation(
+    observation: Observation
+  ): Promise<void> {
+    const baseUrl = "/api/v1"
+    const response = await fetch(`${baseUrl}/observations/${observation.id}`, {
+      credentials: "same-origin",
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(observation),
+    })
+    setIsAddingObservation(false)
+    setObservationsAsOutdated()
+    window?.analytics.track("Observation Updated", {
+      responseStatus: response.status,
+      observationId: observation.id,
+    })
+  }
+  async function submitDeleteObservation(
+    observation: Observation
+  ): Promise<void> {
+    const baseUrl = "/api/v1"
+    const response = await fetch(`${baseUrl}/observations/${observation.id}`, {
+      credentials: "same-origin",
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    })
+    setObservationsAsOutdated()
+    setIsDeletingObservation(false)
+    window?.analytics.track("Observation Deleted", {
+      responseStatus: response.status,
+      observationId: observation.id,
+    })
   }
 
-  const listOfObservations = observations
-    ?.reverse()
-    ?.map(({ categoryId, longDesc, shortDesc }) => {
-      const category = categories[parseInt(categoryId, 10)]
-      return (
-        <Card
-          mb={2}
-          onClick={() => {
-            setEditObservations({ longDesc, shortDesc })
-            setShowObservationDialog(true)
+  const listOfObservations = observations?.reverse()?.map(observation => {
+    const category = categories[parseInt(observation.categoryId, 10)]
+    return (
+      <Card mb={2}>
+        <Flex
+          p={3}
+          alignItems="center"
+          sx={{
+            cursor: "pointer",
+            borderBottomWidth: 1,
+            borderBottomColor: "border",
+            borderBottomStyle: "solid",
           }}
         >
-          <Flex
-            p={3}
-            alignItems="center"
-            sx={{
-              cursor: "pointer",
-              borderBottomWidth: 1,
-              borderBottomColor: "border",
-              borderBottomStyle: "solid",
+          <Flex flexDirection="column" alignItems="start">
+            <Typography.H6 mb={2}>{observation.shortDesc}</Typography.H6>
+            <Pill
+              backgroundColor={category.color}
+              text={category.name}
+              color={category.onColor}
+            />
+          </Flex>
+        </Flex>
+        <Typography.Body fontSize={1} p={3}>
+          {observation.longDesc}
+        </Typography.Body>
+        <Flex
+          p={3}
+          alignItems="center"
+          sx={{
+            borderTopWidth: 1,
+            borderTopStyle: "solid",
+            borderTopColor: "border",
+          }}
+        >
+          <Spacer />
+          <Button
+            mr={3}
+            variant="outline"
+            color="danger"
+            onClick={() => {
+              setTargetObservation(observation)
+              setIsDeletingObservation(true)
             }}
           >
-            <Flex flexDirection="column" alignItems="start">
-              <Pill
-                backgroundColor={category.color}
-                text={category.name}
-                mb={1}
-                color={category.onColor}
-              />
-              <Typography.H6>{shortDesc}</Typography.H6>
-            </Flex>
-            <Spacer />
-            <Icon as={NextIcon} m={0} />
-          </Flex>
-          <Typography.Body fontSize={1} p={3}>
-            {longDesc}
-          </Typography.Body>
-        </Card>
-      )
-    })
+            delete
+          </Button>
+          <Button
+            variant="outline"
+            data-cy="dialogPositiveAction"
+            onClick={() => {
+              setTargetObservation(observation)
+              setIsEditingObservation(true)
+            }}
+          >
+            Edit
+          </Button>
+        </Flex>
+      </Card>
+    )
+  })
 
   const emptyObservationPlaceholder = (observations ?? []).length === 0 && (
     <EmptyListPlaceholder
@@ -101,14 +160,32 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
     />
   )
 
-  const addObservationDialog = showAddObservationDialog && (
+  const addObservationDialog = isAddingObservation && (
     <AddObservationDialog
-      defaultValue={editObservations}
-      onCancel={() => setShowObservationDialog(false)}
+      onCancel={() => setIsAddingObservation(false)}
       onConfirm={observation => {
-        submitNewObservation(observation)
-        setShowObservationDialog(false)
+        submitAddObservation(observation)
+        setIsAddingObservation(false)
       }}
+    />
+  )
+
+  const editObservationDialog = isEditingObservation && (
+    <EditObservationDialog
+      defaultValue={targetObservation}
+      onCancel={() => setIsEditingObservation(false)}
+      onConfirm={observation => {
+        submitEditObservation(observation)
+        setIsEditingObservation(false)
+      }}
+    />
+  )
+
+  const deleteObservationDialog = isDeletingObservation && (
+    <DeleteObservationDialog
+      observation={targetObservation}
+      onConfirm={target => submitDeleteObservation(target)}
+      onCancel={() => setIsDeletingObservation(false)}
     />
   )
 
@@ -137,9 +214,11 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
         </Box>
       </Box>
       <FloatingActionButton onClick={addObservation}>
-        <Icon as={PlusIcon} m={0} mr={2} fill="onPrimary" /> New observation
+        <Icon as={PlusIcon} m={0} mr={2} fill="onPrimary" /> Add observation
       </FloatingActionButton>
       {addObservationDialog}
+      {editObservationDialog}
+      {deleteObservationDialog}
     </>
   )
 }

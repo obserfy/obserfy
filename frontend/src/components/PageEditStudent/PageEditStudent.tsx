@@ -31,6 +31,11 @@ export const PageEditStudent: FC<Props> = ({ id }) => {
     if (response.status === 200) {
       navigate("/")
     }
+
+    window?.analytics.track("Student Deleted", {
+      responseStatus: response.status,
+      studentName: name,
+    })
   }
 
   async function updateStudent(): Promise<void> {
@@ -47,6 +52,11 @@ export const PageEditStudent: FC<Props> = ({ id }) => {
     if (response.status === 200) {
       navigate(studentDetailUrl)
     }
+
+    window?.analytics.track("Student Updated", {
+      responseStatus: response.status,
+      studentName: name,
+    })
   }
 
   return (

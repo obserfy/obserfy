@@ -10,6 +10,7 @@
     "@svgr/webpack": "^4.3.3",
     "@types/react-helmet": "^5.0.14",
     "@types/rebass": "4.0.1",
+    "@types/segment-analytics": "^0.0.32",
     "@types/theme-ui": "^0.2.5",
     "gatsby": "^2.18.5",
     "gatsby-image": "^2.2.34",

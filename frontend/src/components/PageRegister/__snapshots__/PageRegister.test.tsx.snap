@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageRegister should render correctly 1`] = `
-.emotion-18 {
+.emotion-19 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,12 +9,12 @@ exports[`PageRegister should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-18 {
+  .emotion-19 {
     font-size: 20px;
   }
 }
 
-.emotion-17 {
+.emotion-18 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -32,12 +32,12 @@ exports[`PageRegister should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-17 {
+  .emotion-18 {
     padding-top: 128px;
   }
 }
 
-.emotion-16 {
+.emotion-17 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -48,7 +48,7 @@ exports[`PageRegister should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-16 {
+  .emotion-17 {
     margin-top: -64px;
   }
 }
@@ -204,7 +204,30 @@ exports[`PageRegister should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-15 {
+.emotion-13 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  color: var(--theme-ui-colors-danger,#d50000);
+  font-size: 16px;
+  margin-bottom: 16px;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-13 {
+    font-size: 14px;
+  }
+}
+
+.emotion-16 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -214,7 +237,7 @@ exports[`PageRegister should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-13 {
+.emotion-14 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -269,25 +292,25 @@ exports[`PageRegister should render correctly 1`] = `
   margin-right: 16px;
 }
 
-.emotion-13:disabled {
+.emotion-14:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-13:hover,
-.emotion-13:focus {
+.emotion-14:hover,
+.emotion-14:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(161,130,250,0.12));
   border-color: var(--theme-ui-colors-primary,#6E55C6);
   outline: none;
 }
 
-.emotion-13:hover:disabled,
-.emotion-13:focus:disabled {
+.emotion-14:hover:disabled,
+.emotion-14:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-14 {
+.emotion-15 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -339,31 +362,31 @@ exports[`PageRegister should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-14:disabled {
+.emotion-15:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-14:hover,
-.emotion-14:focus {
+.emotion-15:hover,
+.emotion-15:focus {
   background-color: var(--theme-ui-colors-primaryDark,#3A2B95);
   outline: none;
 }
 
-.emotion-14:hover:disabled,
-.emotion-14:focus:disabled {
+.emotion-15:hover:disabled,
+.emotion-15:focus:disabled {
   background-color: var(--theme-ui-colors-primary,#6E55C6);
 }
 
 <div>
   <div
-    class="emotion-18"
+    class="emotion-19"
   >
     <div
-      class="emotion-17"
+      class="emotion-18"
     >
       <form
-        class="emotion-16"
+        class="emotion-17"
       >
         <h2
           class="emotion-0"
@@ -429,17 +452,20 @@ exports[`PageRegister should render correctly 1`] = `
             />
           </div>
         </label>
+        <p
+          class="emotion-13"
+        />
         <div
-          class="emotion-15"
+          class="emotion-16"
         >
           <button
-            class="emotion-13"
+            class="emotion-14"
             type="button"
           >
             Log In
           </button>
           <button
-            class="emotion-14"
+            class="emotion-15"
           >
             Sign Up
           </button>
