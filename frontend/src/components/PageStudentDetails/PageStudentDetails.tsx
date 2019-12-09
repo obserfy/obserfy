@@ -137,7 +137,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
         </Box>
       </Box>
       <FloatingActionButton onClick={addObservation}>
-        <Icon as={PlusIcon} m={0} mr={2} fill="onPrimary" /> New observation
+        <Icon as={PlusIcon} m={0} mr={2} fill="onPrimary" /> Add observation
       </FloatingActionButton>
       {addObservationDialog}
     </>
