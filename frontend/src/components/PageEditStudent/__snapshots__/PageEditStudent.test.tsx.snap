@@ -841,9 +841,7 @@ exports[`PageEditStudent should render correctly 1`] = `
         />
         <div
           class="emotion-1"
-        >
-          Joyful Montessori
-        </div>
+        />
       </div>
       <div
         class="emotion-4"
@@ -935,9 +933,7 @@ exports[`PageEditStudent should render correctly 1`] = `
         />
         <div
           class="emotion-1"
-        >
-          Joyful Montessori
-        </div>
+        />
       </div>
       <a
         aria-current="page"

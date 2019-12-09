@@ -1,4 +1,10 @@
-import React, { FC, MouseEventHandler, useRef, useState } from "react"
+import React, {
+  FC,
+  MouseEventHandler,
+  useEffect,
+  useRef,
+  useState,
+} from "react"
 import GatsbyImage from "gatsby-image"
 import { navigate } from "gatsby"
 import Typography from "../Typography/Typography"
@@ -14,6 +20,8 @@ import MenuIcon from "./MenuIcon"
 import Flex, { FlexProps } from "../Flex/Flex"
 import Box from "../Box/Box"
 import { useAvatarPlaceholder } from "../../useAvatarPlaceholder"
+import useApi from "../../hooks/useApi"
+import { getSchoolId } from "../../hooks/schoolIdState"
 
 interface Props {
   onMenuClick?: MouseEventHandler<HTMLImageElement>
@@ -58,20 +66,47 @@ export const AppBar: FC<Props> = ({
   )
 }
 
-export const SchoolName: FC<FlexProps> = ({ ...props }) => (
-  <Flex height="appbar" {...props}>
-    <Icon as={StorefrontIcon} size={24} alt="Store Icon" />
-    <Typography.Body as="div" ml="-4px" mb={0} sx={{ whiteSpace: "nowrap" }}>
-      Joyful Montessori
-    </Typography.Body>
-  </Flex>
-)
+export const SchoolName: FC<FlexProps> = ({ ...props }) => {
+  const schoolId = getSchoolId()
+  const [school] = useApi<{ name: string }>(`/schools/${schoolId}`)
+
+  useEffect(() => {
+    if (school) {
+      window?.analytics?.identify({
+        schoolName: school.name,
+      })
+    }
+  }, [school])
+
+  return (
+    <Flex height="appbar" {...props}>
+      <Icon as={StorefrontIcon} size={24} alt="Store Icon" />
+      <Typography.Body as="div" ml="-4px" mb={0} sx={{ whiteSpace: "nowrap" }}>
+        {school?.name}
+      </Typography.Body>
+    </Flex>
+  )
+}
 
 const UserAvatar: FC = () => {
   const [isShowingOption, setIsShowingOption] = useState(false)
   const element = useRef<HTMLElement>(null)
   const avatar = useAvatarPlaceholder()
   useOutsideClick(element, () => setIsShowingOption(false))
+  const [userData] = useApi<{
+    id: string
+    name: string
+    email: string
+  }>("/user")
+
+  useEffect(() => {
+    if (userData) {
+      window?.analytics?.identify(userData.id, {
+        name: userData.name,
+        email: userData.email,
+      })
+    }
+  }, [userData])
 
   return (
     <Flex
@@ -102,7 +137,9 @@ const UserAvatar: FC = () => {
         mr={1}
         my={0}
         display={["none", "block"]}
-      />
+      >
+        {userData?.name}
+      </Typography.Body>
       <Icon
         as={ArrowDownIcon}
         alt="Store Icon"
