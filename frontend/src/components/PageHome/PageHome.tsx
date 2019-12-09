@@ -32,7 +32,7 @@ export const PageHome: FC = () => {
     const baseUrl = "/api/v1"
     const newStudent = { name }
 
-    await fetch(`${baseUrl}/schools/${schoolId}/students`, {
+    const response = await fetch(`${baseUrl}/schools/${schoolId}/students`, {
       credentials: "same-origin",
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -41,6 +41,10 @@ export const PageHome: FC = () => {
 
     setShowStudentInputDialog(false)
     setStudentsAsOutdated()
+    window?.analytics.track("Student Created", {
+      responseStatus: response.status,
+      studentName: name,
+    })
   }
 
   const studentList = matchedStudent.map(({ name, id }) => (

@@ -12,6 +12,7 @@ export const PageLogin: FC = () => {
   const [error, setError] = useState("")
 
   async function submitLoginForm(): Promise<void> {
+    window?.analytics.track("User Login")
     const credentials = new FormData()
     credentials.append("email", email)
     credentials.append("password", password)
@@ -22,7 +23,11 @@ export const PageLogin: FC = () => {
     })
     if (response.status === 200) {
       navigate("/choose-school")
+      window?.analytics.track("User Login Success")
     } else {
+      window?.analytics.track("User Login Failed", {
+        status: response.status,
+      })
       setError("Wrong email or password")
     }
   }

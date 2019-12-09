@@ -50,6 +50,6 @@ interface Navigator {
   share: any
 }
 
-declare type window ={
-  analytics: SegmentAnalytics.AnalyticsJS
+declare type window = {
+  analytics?: SegmentAnalytics.AnalyticsJS
 }

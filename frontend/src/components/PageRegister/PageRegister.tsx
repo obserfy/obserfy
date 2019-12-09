@@ -29,6 +29,7 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
   }, [inviteCode])
 
   async function submitRegisterForm(): Promise<void> {
+    window?.analytics.track("User Register")
     const credentials = new FormData()
     credentials.append("email", email)
     credentials.append("password", password)
@@ -40,8 +41,12 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
       body: credentials,
     })
     if (response.status === 200) {
+      window?.analytics.track("User Register Success")
       navigate("/choose-school")
     } else if (response.status === 409) {
+      window?.analytics.track("User Register Failed", {
+        status: response.status,
+      })
       setError("Email has already been used to register")
     }
   }

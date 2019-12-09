@@ -42,7 +42,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
   }
   async function submitAddObservation(observation: Observation): Promise<void> {
     const baseUrl = "/api/v1"
-    await fetch(`${baseUrl}/students/${id}/observations`, {
+    const response = await fetch(`${baseUrl}/students/${id}/observations`, {
       credentials: "same-origin",
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -50,12 +50,17 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
     })
     setIsAddingObservation(false)
     setObservationsAsOutdated()
+
+    window?.analytics.track("Observation Created", {
+      responseStatus: response.status,
+      observationId: observation.id,
+    })
   }
   async function submitEditObservation(
     observation: Observation
   ): Promise<void> {
     const baseUrl = "/api/v1"
-    await fetch(`${baseUrl}/observations/${observation.id}`, {
+    const response = await fetch(`${baseUrl}/observations/${observation.id}`, {
       credentials: "same-origin",
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -63,18 +68,26 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
     })
     setIsAddingObservation(false)
     setObservationsAsOutdated()
+    window?.analytics.track("Observation Updated", {
+      responseStatus: response.status,
+      observationId: observation.id,
+    })
   }
   async function submitDeleteObservation(
     observation: Observation
   ): Promise<void> {
     const baseUrl = "/api/v1"
-    await fetch(`${baseUrl}/observations/${observation.id}`, {
+    const response = await fetch(`${baseUrl}/observations/${observation.id}`, {
       credentials: "same-origin",
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     })
     setObservationsAsOutdated()
     setIsDeletingObservation(false)
+    window?.analytics.track("Observation Deleted", {
+      responseStatus: response.status,
+      observationId: observation.id,
+    })
   }
 
   const listOfObservations = observations?.reverse()?.map(observation => {
