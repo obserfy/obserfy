@@ -100,6 +100,7 @@
     "hygen": "^5.0.3",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.9.0",
+    "jest-date-mock": "^1.0.7",
     "jest-emotion": "^10.0.26",
     "prettier": "^1.19.1",
     "react-docgen-typescript-loader": "^3.6.0",
