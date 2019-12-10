@@ -1,10 +1,10 @@
 import React, { FC } from "react"
 import { Card as BaseCard, BoxProps } from "rebass"
 
-interface Props extends Omit<BoxProps, "css"> {
+export interface CardProps extends Omit<BoxProps, "css"> {
   borderRadius?: string | number | Array<string | number>
 }
-export const Card: FC<Props> = ({
+export const Card: FC<CardProps> = ({
   sx,
   borderRadius,
   maxWidth = "",

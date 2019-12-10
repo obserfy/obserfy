@@ -105,7 +105,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   align-items: start;
   margin-left: 16px;
   margin-right: 16px;
-  margin-bottom: 0;
+  margin-bottom: 16px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -253,6 +253,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  margin-bottom: 16px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -267,8 +268,8 @@ exports[`PageStudentDetails should render correctly 1`] = `
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 300;
   line-height: heading;
-  font-size: 3.125rem;
-  line-height: 6rem;
+  font-size: 2.5rem;
+  line-height: 3rem;
   -webkit-letter-spacing: 0;
   -moz-letter-spacing: 0;
   -ms-letter-spacing: 0;
@@ -389,20 +390,22 @@ exports[`PageStudentDetails should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  font-size: 24px;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 300;
-  line-height: heading;
-  font-size: 2rem;
+  font-weight: 400;
   line-height: 3rem;
-  -webkit-letter-spacing: 0;
-  -moz-letter-spacing: 0;
-  -ms-letter-spacing: 0;
-  letter-spacing: 0;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
-  margin-bottom: 16px;
-  margin-top: 8px;
+  font-size: 16px;
+  margin-bottom: 32px;
+  margin-top: 16px;
   text-align: center;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-14 {
+    font-size: 14px;
+  }
 }
 
 .emotion-15 {
@@ -472,11 +475,11 @@ exports[`PageStudentDetails should render correctly 1`] = `
         <div
           class="emotion-13"
         >
-          <h4
+          <h5
             class="emotion-10"
           >
             Observations
-          </h4>
+          </h5>
           <div
             class="emotion-6"
           />
@@ -492,11 +495,11 @@ exports[`PageStudentDetails should render correctly 1`] = `
           <div
             class="emotion-17"
           >
-            <h6
+            <p
               class="emotion-14"
             >
               No observation have been added
-            </h6>
+            </p>
             <button
               class="emotion-12"
             >

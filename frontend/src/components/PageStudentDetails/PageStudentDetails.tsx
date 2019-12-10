@@ -146,7 +146,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
         <Flex>
           <BackNavigation text="Home" to="/" />
         </Flex>
-        <Flex alignItems="start" mx={3} mb={0}>
+        <Flex alignItems="start" mx={3} mb={3}>
           <Typography.H3 sx={{ wordWrap: "break-word" }}>
             {details?.name || <LoadingPlaceholder width="24rem" height={60} />}
           </Typography.H3>
@@ -163,10 +163,10 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
         </Flex>
 
         <Box p={3}>
-          <Flex alignItems="center">
-            <Typography.H4 color="textMediumEmphasis">
+          <Flex alignItems="center" mb={3}>
+            <Typography.H5 color="textMediumEmphasis">
               Observations
-            </Typography.H4>
+            </Typography.H5>
             <Spacer />
             <Button variant="outline" onClick={addObservation}>
               New

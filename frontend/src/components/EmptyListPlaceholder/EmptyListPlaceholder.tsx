@@ -1,12 +1,12 @@
 import React, { FC } from "react"
 import { Typography } from "../Typography/Typography"
 import { Flex } from "../Flex/Flex"
-import Card from "../Card/Card"
+import { Card, CardProps } from "../Card/Card"
 import Button from "../Button/Button"
 import Icon from "../Icon/Icon"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 
-interface Props {
+interface Props extends CardProps {
   text: string
   callToActionText: string
   onActionClick: () => void
@@ -15,8 +15,9 @@ export const EmptyListPlaceholder: FC<Props> = ({
   text,
   callToActionText,
   onActionClick,
+  ...props
 }) => (
-  <Card>
+  <Card {...props}>
     <Flex
       m={3}
       px={4}
@@ -25,9 +26,9 @@ export const EmptyListPlaceholder: FC<Props> = ({
       justifyContent="center"
       height="100%"
     >
-      <Typography.H6 mb={3} mt={2} textAlign="center">
+      <Typography.Body mb={4} mt={3} textAlign="center">
         {text}
-      </Typography.H6>
+      </Typography.Body>
       <Button variant="outline" onClick={onActionClick}>
         <Icon as={PlusIcon} m={0} mr={2} />
         {callToActionText}
