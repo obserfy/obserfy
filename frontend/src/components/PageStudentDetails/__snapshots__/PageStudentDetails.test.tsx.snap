@@ -148,7 +148,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary,#6E55C6);
+  background-color: var(--theme-ui-colors-primary,#33691e);
   border: 0;
   border-radius: 4px;
   cursor: pointer;
@@ -156,7 +156,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   box-sizing: border-box;
   font-size: 14px;
   font-weight: bold;
-  color: var(--theme-ui-colors-textPrimary,#3A2B95);
+  color: var(--theme-ui-colors-textPrimary,#003d00);
   background-color: transparent;
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -191,8 +191,8 @@ exports[`PageStudentDetails should render correctly 1`] = `
 
 .emotion-6:hover,
 .emotion-6:focus {
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(161,130,250,0.12));
-  border-color: var(--theme-ui-colors-primary,#6E55C6);
+  background-color: var(--theme-ui-colors-primaryLighter,rgba(98,151,73,0.12));
+  border-color: var(--theme-ui-colors-primary,#33691e);
   outline: none;
 }
 
@@ -300,7 +300,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary,#6E55C6);
+  background-color: var(--theme-ui-colors-primary,#33691e);
   border: 0;
   border-radius: 4px;
   cursor: pointer;
@@ -308,7 +308,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   box-sizing: border-box;
   font-size: 14px;
   font-weight: bold;
-  color: var(--theme-ui-colors-textPrimary,#3A2B95);
+  color: var(--theme-ui-colors-textPrimary,#003d00);
   background-color: transparent;
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -342,8 +342,8 @@ exports[`PageStudentDetails should render correctly 1`] = `
 
 .emotion-10:hover,
 .emotion-10:focus {
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(161,130,250,0.12));
-  border-color: var(--theme-ui-colors-primary,#6E55C6);
+  background-color: var(--theme-ui-colors-primaryLighter,rgba(98,151,73,0.12));
+  border-color: var(--theme-ui-colors-primary,#33691e);
   outline: none;
 }
 
@@ -384,7 +384,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary,#6E55C6);
+  background-color: var(--theme-ui-colors-primary,#33691e);
   border: 0;
   border-radius: 4px;
   cursor: pointer;
@@ -393,7 +393,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   font-size: 14px;
   font-weight: bold;
   color: var(--theme-ui-colors-onPrimary,#fff);
-  background-color: var(--theme-ui-colors-primary,#6E55C6);
+  background-color: var(--theme-ui-colors-primary,#33691e);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
@@ -432,13 +432,13 @@ exports[`PageStudentDetails should render correctly 1`] = `
 
 .emotion-16:hover,
 .emotion-16:focus {
-  background-color: var(--theme-ui-colors-primaryDark,#3A2B95);
+  background-color: var(--theme-ui-colors-primaryDark,#003d00);
   outline: none;
 }
 
 .emotion-16:hover:disabled,
 .emotion-16:focus:disabled {
-  background-color: var(--theme-ui-colors-primary,#6E55C6);
+  background-color: var(--theme-ui-colors-primary,#33691e);
 }
 
 .emotion-15 {

@@ -371,7 +371,7 @@ exports[`Layout should render correctly 1`] = `
 }
 
 .emotion-17:hover {
-  background-color: var(--theme-ui-colors-primaryLightest,rgba(161,130,250,0.05));
+  background-color: var(--theme-ui-colors-primaryLightest,rgba(98,151,73,0.05));
 }
 
 .emotion-15 {
@@ -433,7 +433,7 @@ exports[`Layout should render correctly 1`] = `
 }
 
 .emotion-21:hover {
-  background-color: var(--theme-ui-colors-primaryLightest,rgba(161,130,250,0.05));
+  background-color: var(--theme-ui-colors-primaryLightest,rgba(98,151,73,0.05));
 }
 
 .emotion-24 {
@@ -461,7 +461,7 @@ exports[`Layout should render correctly 1`] = `
 }
 
 .emotion-24:hover {
-  background-color: var(--theme-ui-colors-primaryLightest,rgba(161,130,250,0.05));
+  background-color: var(--theme-ui-colors-primaryLightest,rgba(98,151,73,0.05));
 }
 
 .emotion-23 {

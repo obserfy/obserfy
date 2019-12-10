@@ -52,7 +52,7 @@ input:checked ~ .emotion-1 {
 }
 
 input:checked ~ .emotion-1 {
-  color: var(--theme-ui-colors-primary,#6E55C6);
+  color: var(--theme-ui-colors-primary,#33691e);
 }
 
 input:focus ~ .emotion-1 {
@@ -79,7 +79,7 @@ input:checked ~ .emotion-2 {
 }
 
 input:checked ~ .emotion-2 {
-  color: var(--theme-ui-colors-primary,#6E55C6);
+  color: var(--theme-ui-colors-primary,#33691e);
 }
 
 input:focus ~ .emotion-2 {

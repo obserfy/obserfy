@@ -34,7 +34,7 @@ exports[`Slider should render correctly 1`] = `
 
 .emotion-0:focus {
   outline: none;
-  color: var(--theme-ui-colors-primary,#6E55C6);
+  color: var(--theme-ui-colors-primary,#33691e);
 }
 
 .emotion-0::-webkit-slider-thumb {
