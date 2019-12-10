@@ -23,6 +23,7 @@ import { useAvatarPlaceholder } from "../../useAvatarPlaceholder"
 import useApi from "../../hooks/useApi"
 import { getSchoolId } from "../../hooks/schoolIdState"
 import { getAnalytics } from "../../analytics"
+import { setCrispEmail, setCrispNickName } from "../../crisp"
 
 interface Props {
   onMenuClick?: MouseEventHandler<HTMLImageElement>
@@ -106,6 +107,8 @@ const UserAvatar: FC = () => {
         name: userData.name,
         email: userData.email,
       })
+      setCrispEmail(userData.email)
+      setCrispNickName(userData.name.split(" ")[0])
     }
   }, [userData])
 
