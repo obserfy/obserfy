@@ -22,6 +22,7 @@ import Pill from "../Pill/Pill"
 import { categories } from "../../categories"
 import EditObservationDialog from "../EditObservationDialog/EditObservationDialog"
 import DeleteObservationDialog from "../DeleteObservationDialog/DeleteObservationDialog"
+import { getAnalytics } from "../../analytics"
 
 interface Props {
   id: string
@@ -51,7 +52,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
     setIsAddingObservation(false)
     setObservationsAsOutdated()
 
-    window?.analytics.track("Observation Created", {
+    getAnalytics()?.track("Observation Created", {
       responseStatus: response.status,
       observationId: observation.id,
     })
@@ -68,7 +69,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
     })
     setIsAddingObservation(false)
     setObservationsAsOutdated()
-    window?.analytics.track("Observation Updated", {
+    getAnalytics()?.track("Observation Updated", {
       responseStatus: response.status,
       observationId: observation.id,
     })
@@ -84,7 +85,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
     })
     setObservationsAsOutdated()
     setIsDeletingObservation(false)
-    window?.analytics.track("Observation Deleted", {
+    getAnalytics()?.track("Observation Deleted", {
       responseStatus: response.status,
       observationId: observation.id,
     })

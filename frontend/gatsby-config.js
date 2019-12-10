@@ -64,7 +64,7 @@ module.exports = {
         // GIF: https://github.com/benjaminhoffman/gatsby-plugin-segment-js/pull/19#issuecomment-559569483
         // TTI: https://github.com/GoogleChrome/lighthouse/blob/master/docs/scoring.md#performance
         // Problem/solution: https://marketingexamples.com/seo/performance
-        delayLoad: false,
+        delayLoad: true,
 
         // number (default to 1000); time to wait after scroll or route change
         // To be used when `delayLoad` is set to `true`

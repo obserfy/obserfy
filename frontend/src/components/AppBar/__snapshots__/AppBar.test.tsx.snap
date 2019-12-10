@@ -282,7 +282,7 @@ exports[`AppBar should render correctly 1`] = `
         class="emotion-2"
       >
         <div
-          alt="Store Icon"
+          alt="School Icon"
           class="emotion-0"
         />
         <div

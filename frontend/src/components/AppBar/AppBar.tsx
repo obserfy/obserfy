@@ -22,6 +22,7 @@ import Box from "../Box/Box"
 import { useAvatarPlaceholder } from "../../useAvatarPlaceholder"
 import useApi from "../../hooks/useApi"
 import { getSchoolId } from "../../hooks/schoolIdState"
+import { getAnalytics } from "../../analytics"
 
 interface Props {
   onMenuClick?: MouseEventHandler<HTMLImageElement>
@@ -72,7 +73,7 @@ export const SchoolName: FC<FlexProps> = ({ ...props }) => {
 
   useEffect(() => {
     if (school) {
-      window?.analytics?.identify({
+      getAnalytics()?.identify({
         schoolName: school.name,
       })
     }
@@ -101,7 +102,7 @@ const UserAvatar: FC = () => {
 
   useEffect(() => {
     if (userData) {
-      window?.analytics?.identify(userData.id, {
+      getAnalytics()?.identify(userData.id, {
         name: userData.name,
         email: userData.email,
       })
