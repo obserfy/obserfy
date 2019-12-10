@@ -13,7 +13,7 @@ export const Dialog: FC<BoxProps> = props => (
     width="100%"
     height="100%"
     p={[0, 3]}
-    sx={{ top: 0, left: 0, zIndex: 200, position: "fixed" }}
+    sx={{ top: 0, left: 0, zIndex: 1000001, position: "fixed" }}
   >
     <Card
       backgroundColor="surface"

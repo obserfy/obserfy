@@ -34,7 +34,7 @@ export const ObservationCard: FC<Props> = ({
   )
 
   return (
-    <Card mb={2} key={observation.id}>
+    <Card mb={3} key={observation.id}>
       <Flex
         p={3}
         alignItems="center"
@@ -45,7 +45,7 @@ export const ObservationCard: FC<Props> = ({
         }}
       >
         <Flex flexDirection="column" alignItems="start">
-          <Typography.H6 mb={2}>{observation.shortDesc}</Typography.H6>
+          <Typography.H6 mb={3}>{observation.shortDesc}</Typography.H6>
           <Flex>
             <Pill
               backgroundColor={category.color}
@@ -75,15 +75,14 @@ export const ObservationCard: FC<Props> = ({
       >
         <Spacer />
         <Button
-          mr={3}
-          variant="outline"
+          variant="secondary"
           color="danger"
           onClick={() => onDelete(observation)}
         >
           delete
         </Button>
         <Button
-          variant="outline"
+          variant="secondary"
           data-cy="dialogPositiveAction"
           onClick={() => onEdit(observation)}
         >

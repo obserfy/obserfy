@@ -122,6 +122,7 @@ exports[`UserCard should render correctly 1`] = `
   font-weight: 400;
   line-height: 3rem;
   text-transform: capitalize;
+  color: var(--theme-ui-colors-onPrimary,#fff);
   font-size: 12px;
   line-height: 1em;
 }

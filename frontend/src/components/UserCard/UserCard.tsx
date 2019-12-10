@@ -20,7 +20,9 @@ export const UserCard: FC<Props> = ({ email, name, isCurrentUser }) => (
         </Typography.Body>
       </Flex>
       <Spacer />
-      {isCurrentUser && <Pill text="You" backgroundColor="primary" m={1} />}
+      {isCurrentUser && (
+        <Pill text="You" backgroundColor="primary" m={1} color="onPrimary" />
+      )}
     </Flex>
   </Card>
 )

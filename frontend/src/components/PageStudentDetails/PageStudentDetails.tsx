@@ -8,8 +8,7 @@ import Icon from "../Icon/Icon"
 import EmptyListPlaceholder from "../EmptyListPlaceholder/EmptyListPlaceholder"
 import AddObservationDialog from "../AddObservationDialog/AddObservationDialog"
 import Button from "../Button/Button"
-import FloatingActionButton from "../FloatingActionButton/FloatingActionButton"
-import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
+import { ReactComponent as EditIcon } from "../../icons/edit.svg"
 import { BackNavigation } from "../BackNavigation/BackNavigation"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import {
@@ -20,6 +19,7 @@ import EditObservationDialog from "../EditObservationDialog/EditObservationDialo
 import DeleteObservationDialog from "../DeleteObservationDialog/DeleteObservationDialog"
 import { getAnalytics } from "../../analytics"
 import ObservationCard from "../ObservationCard/ObservationCard"
+import Spacer from "../Spacer/Spacer"
 
 interface Props {
   id: string
@@ -106,7 +106,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
   const emptyObservationPlaceholder = (observations ?? []).length === 0 && (
     <EmptyListPlaceholder
       text="No observation have been added"
-      callToActionText="add observation"
+      callToActionText="new observation"
       onActionClick={addObservation}
     />
   )
@@ -143,30 +143,39 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
   return (
     <>
       <Box maxWidth="maxWidth.sm" margin="auto" pb={5}>
-        <BackNavigation text="Home" to="/" />
-        <Flex alignItems="center" mx={3} mb={3}>
-          <Typography.H3>
+        <Flex>
+          <BackNavigation text="Home" to="/" />
+        </Flex>
+        <Flex alignItems="start" mx={3} mb={0}>
+          <Typography.H3 sx={{ wordWrap: "break-word" }}>
             {details?.name || <LoadingPlaceholder width="24rem" height={60} />}
           </Typography.H3>
+          <Spacer />
+          <Button
+            mt={11}
+            ml={3}
+            minWidth={43}
+            variant="outline"
+            onClick={() => navigate(`/students/edit?id=${id}`)}
+          >
+            <Icon minWidth={20} as={EditIcon} m={0} />
+          </Button>
         </Flex>
-        <Button
-          ml={3}
-          variant="outline"
-          onClick={() => navigate(`/students/edit?id=${id}`)}
-        >
-          Edit student
-        </Button>
+
         <Box p={3}>
-          <Typography.H4 color="textMediumEmphasis" mb={2}>
-            Observations
-          </Typography.H4>
+          <Flex alignItems="center">
+            <Typography.H4 color="textMediumEmphasis">
+              Observations
+            </Typography.H4>
+            <Spacer />
+            <Button variant="outline" onClick={addObservation}>
+              New
+            </Button>
+          </Flex>
           {emptyObservationPlaceholder}
           {listOfObservations}
         </Box>
       </Box>
-      <FloatingActionButton onClick={addObservation}>
-        <Icon as={PlusIcon} m={0} mr={2} fill="onPrimary" /> Add observation
-      </FloatingActionButton>
       {addObservationDialog}
       {editObservationDialog}
       {deleteObservationDialog}

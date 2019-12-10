@@ -19,12 +19,15 @@ export const EmptyListPlaceholder: FC<Props> = ({
   <Card>
     <Flex
       m={3}
+      px={4}
       flexDirection="column"
       alignItems="center"
       justifyContent="center"
       height="100%"
     >
-      <Typography.H6 mb={4} mt={3}>{text}</Typography.H6>
+      <Typography.H6 mb={3} mt={2} textAlign="center">
+        {text}
+      </Typography.H6>
       <Button variant="outline" onClick={onActionClick}>
         <Icon as={PlusIcon} m={0} mr={2} />
         {callToActionText}
