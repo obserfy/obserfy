@@ -21,6 +21,7 @@ export const PageSettings: FC = () => {
     name: string
     inviteLink: string
     users: {
+      id: string
       name: string
       email: string
       isCurrentUser: boolean
@@ -32,8 +33,13 @@ export const PageSettings: FC = () => {
   }, [schoolDetail])
 
   const userCards = schoolDetail?.users?.map(
-    ({ name, email, isCurrentUser }) => (
-      <UserCard email={email} name={name} isCurrentUser={isCurrentUser} />
+    ({ id, name, email, isCurrentUser }) => (
+      <UserCard
+        key={id}
+        email={email}
+        name={name}
+        isCurrentUser={isCurrentUser}
+      />
     )
   )
 
