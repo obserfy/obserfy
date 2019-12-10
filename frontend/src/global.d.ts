@@ -61,3 +61,5 @@ declare module "gatsby-plugin-intl3" {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   export const Link: FC<GatsbyLinkProps<any> & { language?: string }>
 }
+
+declare const $crisp: any

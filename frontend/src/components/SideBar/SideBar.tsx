@@ -33,7 +33,7 @@ export const SideBar: FC<Props> = ({
         transition: "transform 250ms cubic-bezier(0.0, 0.0, 0.2, 1)",
         top: 0,
         left: 0,
-        zIndex: [1000000, 0],
+        zIndex: [1250000, 0],
         borderRightStyle: "solid",
         borderRightColor: "border",
         borderRightWidth: 1,
@@ -55,7 +55,7 @@ export const SideBar: FC<Props> = ({
         top: 0,
         left: 0,
         minHeight: "100vh",
-        zIndex: 82,
+        zIndex: 1000001,
         // Todo: Maybe migrate this to theme.ts to make it portable
         transition: "background 250ms cubic-bezier(0.0, 0.0, 0.2, 1)",
       }}
