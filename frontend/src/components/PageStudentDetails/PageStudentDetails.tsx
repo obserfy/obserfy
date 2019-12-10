@@ -1,27 +1,25 @@
 import React, { FC, useState } from "react"
 import { navigate } from "gatsby"
 import { useQueryStudentDetails } from "../../hooks/students/useQueryStudentDetails"
-import Card from "../Card/Card"
 import Flex from "../Flex/Flex"
 import Box from "../Box/Box"
 import Typography from "../Typography/Typography"
-import Spacer from "../Spacer/Spacer"
 import Icon from "../Icon/Icon"
 import EmptyListPlaceholder from "../EmptyListPlaceholder/EmptyListPlaceholder"
 import AddObservationDialog from "../AddObservationDialog/AddObservationDialog"
 import Button from "../Button/Button"
-import FloatingActionButton from "../FloatingActionButton/FloatingActionButton"
-import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
+import { ReactComponent as EditIcon } from "../../icons/edit.svg"
 import { BackNavigation } from "../BackNavigation/BackNavigation"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import {
   Observation,
   useQueryStudentObservations,
 } from "../../hooks/students/useQueryStudentObservations"
-import Pill from "../Pill/Pill"
-import { categories } from "../../categories"
 import EditObservationDialog from "../EditObservationDialog/EditObservationDialog"
 import DeleteObservationDialog from "../DeleteObservationDialog/DeleteObservationDialog"
+import { getAnalytics } from "../../analytics"
+import ObservationCard from "../ObservationCard/ObservationCard"
+import Spacer from "../Spacer/Spacer"
 
 interface Props {
   id: string
@@ -51,7 +49,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
     setIsAddingObservation(false)
     setObservationsAsOutdated()
 
-    window?.analytics.track("Observation Created", {
+    getAnalytics()?.track("Observation Created", {
       responseStatus: response.status,
       observationId: observation.id,
     })
@@ -68,7 +66,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
     })
     setIsAddingObservation(false)
     setObservationsAsOutdated()
-    window?.analytics.track("Observation Updated", {
+    getAnalytics()?.track("Observation Updated", {
       responseStatus: response.status,
       observationId: observation.id,
     })
@@ -84,78 +82,31 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
     })
     setObservationsAsOutdated()
     setIsDeletingObservation(false)
-    window?.analytics.track("Observation Deleted", {
+    getAnalytics()?.track("Observation Deleted", {
       responseStatus: response.status,
       observationId: observation.id,
     })
   }
 
-  const listOfObservations = observations?.reverse()?.map(observation => {
-    const category = categories[parseInt(observation.categoryId, 10)]
-    return (
-      <Card mb={2}>
-        <Flex
-          p={3}
-          alignItems="center"
-          sx={{
-            cursor: "pointer",
-            borderBottomWidth: 1,
-            borderBottomColor: "border",
-            borderBottomStyle: "solid",
-          }}
-        >
-          <Flex flexDirection="column" alignItems="start">
-            <Typography.H6 mb={2}>{observation.shortDesc}</Typography.H6>
-            <Pill
-              backgroundColor={category.color}
-              text={category.name}
-              color={category.onColor}
-            />
-          </Flex>
-        </Flex>
-        <Typography.Body fontSize={1} p={3}>
-          {observation.longDesc}
-        </Typography.Body>
-        <Flex
-          p={3}
-          alignItems="center"
-          sx={{
-            borderTopWidth: 1,
-            borderTopStyle: "solid",
-            borderTopColor: "border",
-          }}
-        >
-          <Spacer />
-          <Button
-            mr={3}
-            variant="outline"
-            color="danger"
-            onClick={() => {
-              setTargetObservation(observation)
-              setIsDeletingObservation(true)
-            }}
-          >
-            delete
-          </Button>
-          <Button
-            variant="outline"
-            data-cy="dialogPositiveAction"
-            onClick={() => {
-              setTargetObservation(observation)
-              setIsEditingObservation(true)
-            }}
-          >
-            Edit
-          </Button>
-        </Flex>
-      </Card>
-    )
-  })
+  const listOfObservations = observations?.reverse()?.map(observation => (
+    <ObservationCard
+      key={observation.id}
+      observation={observation}
+      onDelete={value => {
+        setTargetObservation(value)
+        setIsDeletingObservation(true)
+      }}
+      onEdit={value => {
+        setTargetObservation(value)
+        setIsEditingObservation(true)
+      }}
+    />
+  ))
 
   const emptyObservationPlaceholder = (observations ?? []).length === 0 && (
     <EmptyListPlaceholder
       text="No observation have been added"
-      callToActionText="add observation"
+      callToActionText="new observation"
       onActionClick={addObservation}
     />
   )
@@ -191,31 +142,40 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
 
   return (
     <>
-      <Box maxWidth="maxWidth.sm" margin="auto">
-        <BackNavigation text="Home" to="/" />
-        <Flex alignItems="center" mx={3} mb={3}>
-          <Typography.H3>
+      <Box maxWidth="maxWidth.sm" margin="auto" pb={5}>
+        <Flex>
+          <BackNavigation text="Home" to="/" />
+        </Flex>
+        <Flex alignItems="start" mx={3} mb={0}>
+          <Typography.H3 sx={{ wordWrap: "break-word" }}>
             {details?.name || <LoadingPlaceholder width="24rem" height={60} />}
           </Typography.H3>
+          <Spacer />
+          <Button
+            mt={11}
+            ml={3}
+            minWidth={43}
+            variant="outline"
+            onClick={() => navigate(`/students/edit?id=${id}`)}
+          >
+            <Icon minWidth={20} as={EditIcon} m={0} />
+          </Button>
         </Flex>
-        <Button
-          ml={3}
-          variant="outline"
-          onClick={() => navigate(`/students/edit?id=${id}`)}
-        >
-          Edit student
-        </Button>
+
         <Box p={3}>
-          <Typography.H4 color="textMediumEmphasis" mb={2}>
-            Observations
-          </Typography.H4>
+          <Flex alignItems="center">
+            <Typography.H4 color="textMediumEmphasis">
+              Observations
+            </Typography.H4>
+            <Spacer />
+            <Button variant="outline" onClick={addObservation}>
+              New
+            </Button>
+          </Flex>
           {emptyObservationPlaceholder}
           {listOfObservations}
         </Box>
       </Box>
-      <FloatingActionButton onClick={addObservation}>
-        <Icon as={PlusIcon} m={0} mr={2} fill="onPrimary" /> Add observation
-      </FloatingActionButton>
       {addObservationDialog}
       {editObservationDialog}
       {deleteObservationDialog}

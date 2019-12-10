@@ -108,7 +108,7 @@ exports[`UserCard should render correctly 1`] = `
   padding-bottom: 4px;
   padding-left: 8px;
   padding-right: 8px;
-  background-color: var(--theme-ui-colors-primary,#6E55C6);
+  background-color: var(--theme-ui-colors-primary,#33691e);
   margin: 4px;
 }
 
@@ -121,6 +121,8 @@ exports[`UserCard should render correctly 1`] = `
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 400;
   line-height: 3rem;
+  text-transform: capitalize;
+  color: var(--theme-ui-colors-onPrimary,#fff);
   font-size: 12px;
   line-height: 1em;
 }

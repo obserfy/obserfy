@@ -7,6 +7,7 @@ import Flex from "../Flex/Flex"
 import Button from "../Button/Button"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
+import { getAnalytics } from "../../analytics"
 
 interface Props {
   id: string
@@ -32,7 +33,7 @@ export const PageEditStudent: FC<Props> = ({ id }) => {
       navigate("/")
     }
 
-    window?.analytics.track("Student Deleted", {
+    getAnalytics()?.track("Student Deleted", {
       responseStatus: response.status,
       studentName: name,
     })
@@ -53,7 +54,7 @@ export const PageEditStudent: FC<Props> = ({ id }) => {
       navigate(studentDetailUrl)
     }
 
-    window?.analytics.track("Student Updated", {
+    getAnalytics()?.track("Student Updated", {
       responseStatus: response.status,
       studentName: name,
     })

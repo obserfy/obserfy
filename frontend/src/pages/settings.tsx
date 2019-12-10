@@ -1,13 +1,18 @@
-import React, { FC } from "react"
+import React, { FC, useContext } from "react"
 import PageSettings from "../components/PageSettings/PageSettings"
-import Layout from "../components/Layout/Layout"
 import SEO from "../components/seo"
+import { PageTitleContext } from "../layouts"
 
-const Settings: FC = () => (
-  <Layout pageTitle="Settings">
-    <SEO title="Settings" />
-    <PageSettings />
-  </Layout>
-)
+const Settings: FC = () => {
+  const pageTitle = useContext(PageTitleContext)
+  pageTitle.setTitle("Settings")
+
+  return (
+    <>
+      <SEO title="Settings" />
+      <PageSettings />
+    </>
+  )
+}
 
 export default Settings

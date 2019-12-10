@@ -5,6 +5,7 @@ import Input from "../Input/Input"
 import Button from "../Button/Button"
 import Flex from "../Flex/Flex"
 import { Typography } from "../Typography/Typography"
+import { getAnalytics } from "../../analytics"
 
 export const PageLogin: FC = () => {
   const [email, setEmail] = useState()
@@ -12,7 +13,7 @@ export const PageLogin: FC = () => {
   const [error, setError] = useState("")
 
   async function submitLoginForm(): Promise<void> {
-    window?.analytics.track("User Login")
+    getAnalytics()?.track("User Login")
     const credentials = new FormData()
     credentials.append("email", email)
     credentials.append("password", password)
@@ -23,9 +24,9 @@ export const PageLogin: FC = () => {
     })
     if (response.status === 200) {
       navigate("/choose-school")
-      window?.analytics.track("User Login Success")
+      getAnalytics()?.track("User Login Success")
     } else {
-      window?.analytics.track("User Login Failed", {
+      getAnalytics()?.track("User Login Failed", {
         status: response.status,
       })
       setError("Wrong email or password")

@@ -75,6 +75,7 @@ exports[`Layout should render correctly 1`] = `
   margin: 16px;
   height: 24px;
   width: 24px;
+  min-width: 24px;
 }
 
 .emotion-1 {
@@ -287,7 +288,7 @@ exports[`Layout should render correctly 1`] = `
   transition: transform 250ms cubic-bezier(0.0,0.0,0.2,1);
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 1000000;
   border-right-style: solid;
   border-right-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   border-right-width: 1px;
@@ -347,6 +348,32 @@ exports[`Layout should render correctly 1`] = `
   }
 }
 
+.emotion-17 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  border-radius: 6px;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin: 8px;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 8px;
+  background-color: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-17:hover {
+  background-color: var(--theme-ui-colors-primaryLightest,rgba(98,151,73,0.05));
+}
+
 .emotion-15 {
   box-sizing: border-box;
   margin: 0;
@@ -362,7 +389,7 @@ exports[`Layout should render correctly 1`] = `
   margin-bottom: 8px;
 }
 
-.emotion-20 {
+.emotion-16 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -378,7 +405,7 @@ exports[`Layout should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-20 {
+  .emotion-16 {
     font-size: 14px;
   }
 }
@@ -406,7 +433,7 @@ exports[`Layout should render correctly 1`] = `
 }
 
 .emotion-21:hover {
-  background-color: var(--theme-ui-colors-primaryLightest,rgba(161,130,250,0.05));
+  background-color: var(--theme-ui-colors-primaryLightest,rgba(98,151,73,0.05));
 }
 
 .emotion-24 {
@@ -434,7 +461,7 @@ exports[`Layout should render correctly 1`] = `
 }
 
 .emotion-24:hover {
-  background-color: var(--theme-ui-colors-primaryLightest,rgba(161,130,250,0.05));
+  background-color: var(--theme-ui-colors-primaryLightest,rgba(98,151,73,0.05));
 }
 
 .emotion-23 {
@@ -492,7 +519,7 @@ exports[`Layout should render correctly 1`] = `
   position: fixed;
   top: 0;
   right: 0;
-  z-index: 150;
+  z-index: 1500000;
   height: 57px;
   width: 18vw;
   display: none;
@@ -531,53 +558,6 @@ exports[`Layout should render correctly 1`] = `
   }
 }
 
-.emotion-17 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  border-radius: 6px;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin: 8px;
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-left: 8px;
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(161,130,250,0.12));
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.emotion-17:hover {
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(161,130,250,0.12));
-}
-
-.emotion-16 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  color: rgba(0,0,0,0.88);
-  font-size: 1.6rem;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 400;
-  line-height: 3rem;
-  color: var(--theme-ui-colors-primaryDark,#3A2B95);
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-16 {
-    font-size: 14px;
-  }
-}
-
 <div>
   <div
     class="emotion-30"
@@ -589,7 +569,7 @@ exports[`Layout should render correctly 1`] = `
         class="emotion-2"
       >
         <div
-          alt="Store Icon"
+          alt="School Icon"
           class="emotion-0"
         />
         <div
@@ -631,36 +611,36 @@ exports[`Layout should render correctly 1`] = `
             />
             <picture>
               <source
-                srcset="/static/d765df87b7164d5d26f62ef45d04c06f/1bf60/avatar.webp 1x,
-/static/d765df87b7164d5d26f62ef45d04c06f/46586/avatar.webp 1.5x,
-/static/d765df87b7164d5d26f62ef45d04c06f/fdeef/avatar.webp 2x"
+                srcset="/static/d765df87b7164d5d26f62ef45d04c06f/62cc5/avatar.webp 1x,
+/static/d765df87b7164d5d26f62ef45d04c06f/0b7e8/avatar.webp 1.5x,
+/static/d765df87b7164d5d26f62ef45d04c06f/adbdf/avatar.webp 2x"
                 type="image/webp"
               />
               <source
-                srcset="/static/d765df87b7164d5d26f62ef45d04c06f/e381a/avatar.png 1x,
-/static/d765df87b7164d5d26f62ef45d04c06f/1eb56/avatar.png 1.5x,
-/static/d765df87b7164d5d26f62ef45d04c06f/cbd14/avatar.png 2x"
+                srcset="/static/d765df87b7164d5d26f62ef45d04c06f/fa1da/avatar.png 1x,
+/static/d765df87b7164d5d26f62ef45d04c06f/984fe/avatar.png 1.5x,
+/static/d765df87b7164d5d26f62ef45d04c06f/b067b/avatar.png 2x"
               />
               <img
                 alt="avatar"
                 height="32"
                 loading="lazy"
-                src="/static/d765df87b7164d5d26f62ef45d04c06f/e381a/avatar.png"
-                srcset="/static/d765df87b7164d5d26f62ef45d04c06f/e381a/avatar.png 1x,
-/static/d765df87b7164d5d26f62ef45d04c06f/1eb56/avatar.png 1.5x,
-/static/d765df87b7164d5d26f62ef45d04c06f/cbd14/avatar.png 2x"
+                src="/static/d765df87b7164d5d26f62ef45d04c06f/fa1da/avatar.png"
+                srcset="/static/d765df87b7164d5d26f62ef45d04c06f/fa1da/avatar.png 1x,
+/static/d765df87b7164d5d26f62ef45d04c06f/984fe/avatar.png 1.5x,
+/static/d765df87b7164d5d26f62ef45d04c06f/b067b/avatar.png 2x"
                 style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0; transition: opacity 500ms;"
                 width="32"
               />
             </picture>
             <noscript>
-              &lt;picture&gt;&lt;source type='image/webp' srcset="/static/d765df87b7164d5d26f62ef45d04c06f/1bf60/avatar.webp 1x,
-/static/d765df87b7164d5d26f62ef45d04c06f/46586/avatar.webp 1.5x,
-/static/d765df87b7164d5d26f62ef45d04c06f/fdeef/avatar.webp 2x" /&gt;&lt;source srcset="/static/d765df87b7164d5d26f62ef45d04c06f/e381a/avatar.png 1x,
-/static/d765df87b7164d5d26f62ef45d04c06f/1eb56/avatar.png 1.5x,
-/static/d765df87b7164d5d26f62ef45d04c06f/cbd14/avatar.png 2x" /&gt;&lt;img loading="lazy" width="32" height="32" srcset="/static/d765df87b7164d5d26f62ef45d04c06f/e381a/avatar.png 1x,
-/static/d765df87b7164d5d26f62ef45d04c06f/1eb56/avatar.png 1.5x,
-/static/d765df87b7164d5d26f62ef45d04c06f/cbd14/avatar.png 2x" src="/static/d765df87b7164d5d26f62ef45d04c06f/e381a/avatar.png" alt="avatar" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/&gt;&lt;/picture&gt;
+              &lt;picture&gt;&lt;source type='image/webp' srcset="/static/d765df87b7164d5d26f62ef45d04c06f/62cc5/avatar.webp 1x,
+/static/d765df87b7164d5d26f62ef45d04c06f/0b7e8/avatar.webp 1.5x,
+/static/d765df87b7164d5d26f62ef45d04c06f/adbdf/avatar.webp 2x" /&gt;&lt;source srcset="/static/d765df87b7164d5d26f62ef45d04c06f/fa1da/avatar.png 1x,
+/static/d765df87b7164d5d26f62ef45d04c06f/984fe/avatar.png 1.5x,
+/static/d765df87b7164d5d26f62ef45d04c06f/b067b/avatar.png 2x" /&gt;&lt;img loading="lazy" width="32" height="32" srcset="/static/d765df87b7164d5d26f62ef45d04c06f/fa1da/avatar.png 1x,
+/static/d765df87b7164d5d26f62ef45d04c06f/984fe/avatar.png 1.5x,
+/static/d765df87b7164d5d26f62ef45d04c06f/b067b/avatar.png 2x" src="/static/d765df87b7164d5d26f62ef45d04c06f/fa1da/avatar.png" alt="avatar" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/&gt;&lt;/picture&gt;
             </noscript>
           </div>
         </div>
@@ -681,7 +661,7 @@ exports[`Layout should render correctly 1`] = `
         class="emotion-14"
       >
         <div
-          alt="Store Icon"
+          alt="School Icon"
           class="emotion-0"
         />
         <div
@@ -689,7 +669,6 @@ exports[`Layout should render correctly 1`] = `
         />
       </div>
       <a
-        aria-current="page"
         href="/"
       >
         <div
@@ -720,7 +699,7 @@ exports[`Layout should render correctly 1`] = `
             class="emotion-15"
           />
           <p
-            class="emotion-20"
+            class="emotion-16"
           >
             settings
           </p>

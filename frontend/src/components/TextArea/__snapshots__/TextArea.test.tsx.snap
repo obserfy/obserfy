@@ -68,7 +68,7 @@ exports[`TextArea should render correctly 1`] = `
 
 .emotion-0:hover,
 .emotion-0:focus {
-  border-color: var(--theme-ui-colors-primary,#6E55C6);
+  border-color: var(--theme-ui-colors-primary,#33691e);
   outline: none;
 }
 

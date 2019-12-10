@@ -6,6 +6,7 @@ import { Typography } from "../Typography/Typography"
 import Input from "../Input/Input"
 import Button from "../Button/Button"
 import Card from "../Card/Card"
+import { getAnalytics } from "../../analytics"
 
 interface Props {
   inviteCode?: string
@@ -29,7 +30,7 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
   }, [inviteCode])
 
   async function submitRegisterForm(): Promise<void> {
-    window?.analytics.track("User Register")
+    getAnalytics()?.track("User Register")
     const credentials = new FormData()
     credentials.append("email", email)
     credentials.append("password", password)
@@ -41,10 +42,10 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
       body: credentials,
     })
     if (response.status === 200) {
-      window?.analytics.track("User Register Success")
+      getAnalytics()?.track("User Register Success")
       navigate("/choose-school")
     } else if (response.status === 409) {
-      window?.analytics.track("User Register Failed", {
+      getAnalytics()?.track("User Register Failed", {
         status: response.status,
       })
       setError("Email has already been used to register")

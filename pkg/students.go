@@ -38,26 +38,33 @@ func deleteStudent(env Env) func(w http.ResponseWriter, r *http.Request) {
 }
 
 func replaceStudent(env Env) func(w http.ResponseWriter, r *http.Request) {
+	type requestBody struct {
+		Name string `json:"name"`
+	}
 	return func(w http.ResponseWriter, r *http.Request) {
 		targetId := chi.URLParam(r, "id") // from a route like /users/{userID}
 
-		var requestBody struct {
-			Name string `json:"name"`
-		}
+		var requestBody requestBody
 		if ok := parseJsonRequestBody(w, r, &requestBody, env.logger); !ok {
 			return
 		}
 
-		student := Student{
-			Id:   targetId,
-			Name: requestBody.Name,
-		}
-		err := env.db.Update(&student)
+		var oldStudent Student
+		err := env.db.Model(&oldStudent).Where("id=?", targetId).Select()
 		if err != nil {
-			env.logger.Error("Failed creating new student", zap.Error(err))
+			writeInternalServerError("Failed querying old student data", w, err, env.logger)
+			return
 		}
 
-		err = writeJsonResponse(w, student, env.logger)
+		newStudent := oldStudent
+		newStudent.Name = requestBody.Name
+		err = env.db.Update(&newStudent)
+		if err != nil {
+			writeInternalServerError("Failed update student", w, err, env.logger)
+			return
+		}
+
+		err = writeJsonResponse(w, newStudent, env.logger)
 	}
 }
 

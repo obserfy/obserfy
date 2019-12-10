@@ -21,6 +21,7 @@ export const PageSettings: FC = () => {
     name: string
     inviteLink: string
     users: {
+      id: string
       name: string
       email: string
       isCurrentUser: boolean
@@ -32,8 +33,13 @@ export const PageSettings: FC = () => {
   }, [schoolDetail])
 
   const userCards = schoolDetail?.users?.map(
-    ({ name, email, isCurrentUser }) => (
-      <UserCard email={email} name={name} isCurrentUser={isCurrentUser} />
+    ({ id, name, email, isCurrentUser }) => (
+      <UserCard
+        key={id}
+        email={email}
+        name={name}
+        isCurrentUser={isCurrentUser}
+      />
     )
   )
 
@@ -48,7 +54,12 @@ export const PageSettings: FC = () => {
   }
 
   return (
-    <Box maxWidth="maxWidth.sm" margin="auto" p={3} pt={[3, 3, 4]}>
+    <Box
+      maxWidth="maxWidth.sm"
+      margin="auto"
+      p={3}
+      pt={[3, 3, 4]}
+    >
       <Card p={3} mb={3}>
         <Typography.H5 mb={3}>Invite your co-workers</Typography.H5>
         <Typography.Body
@@ -95,7 +106,7 @@ export const PageSettings: FC = () => {
         {userCards}
       </Box>
       <Box pt={4}>
-        <Typography.H5 mb={3}>School Info</Typography.H5>
+        <Typography.H5 mb={3}>Other Details</Typography.H5>
         <Input
           width="100%"
           label="School Name"

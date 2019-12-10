@@ -67,8 +67,6 @@ exports[`BackNavigation should render correctly 1`] = `
     class="emotion-3"
   >
     <a
-      aria-current="page"
-      class=""
       href="/"
     >
       <div

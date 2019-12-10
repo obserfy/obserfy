@@ -47,7 +47,7 @@ module.exports = {
     "react/prop-types": 0,
     "react/style-prop-object": 0,
     "react/jsx-props-no-spreading": 0,
-    "react/jsx-filename-extension": [1, { extensions: [".tsx"] }],
+    "react/jsx-filename-extension": [1, { extensions: [".tsx", "js"] }],
     "jest/no-mocks-import": 0,
 
     // Needed cause, https://github.com/typescript-eslint/typescript-eslint/issues/493
@@ -84,7 +84,7 @@ module.exports = {
     "@typescript-eslint/no-useless-constructor": "error",
     "import/prefer-default-export": 0,
     "no-unused-expressions": "off",
-    "mdx/no-unused-expressions": "off",
+    "mdx/no-unused-expressions": "off"
   },
   settings: {
     react: {

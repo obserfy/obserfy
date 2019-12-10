@@ -2,11 +2,12 @@ const proxy = require("http-proxy-middleware")
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Vor`,
+    description: `Vor`,
+    author: `@chrsep`,
   },
   plugins: [
+    `gatsby-plugin-layout`,
     `gatsby-plugin-typescript`,
     "gatsby-plugin-theme-ui",
     `gatsby-plugin-react-helmet`,
@@ -26,8 +27,8 @@ module.exports = {
         name: `Vör`,
         short_name: `Vör`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#33691e`,
+        theme_color: `#33691e`,
         display: `standalone`,
         icon: `src/images/icon.svg`, // This path is relative to the root of the site.
       },
@@ -45,6 +46,7 @@ module.exports = {
         // TODO: Do not hardcode this, use env variables.
         prodKey: `a2pLn3x1wfkoSpgCxAb1sHiMRPraq6hW`,
 
+        devKey: `mmWAsCJqhsbHOArCtFhRCUvtAkr8WkzR`,
         // boolean (defaults to false) on whether you want
         // to include analytics.page() automatically
         // if false, see below on how to track pageviews manually
@@ -64,7 +66,7 @@ module.exports = {
         // GIF: https://github.com/benjaminhoffman/gatsby-plugin-segment-js/pull/19#issuecomment-559569483
         // TTI: https://github.com/GoogleChrome/lighthouse/blob/master/docs/scoring.md#performance
         // Problem/solution: https://marketingexamples.com/seo/performance
-        delayLoad: false,
+        delayLoad: true,
 
         // number (default to 1000); time to wait after scroll or route change
         // To be used when `delayLoad` is set to `true`
@@ -94,6 +96,28 @@ module.exports = {
             variants: [`300`, `400`],
           },
         ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-intl3`,
+      options: {
+        // language JSON resource path
+        path: `${__dirname}/src/intl`,
+        // supported language
+        languages: [`en`],
+        // language file path
+        defaultLanguage: `en`,
+        // option to redirect to `/ko` when connecting `/`
+        redirect: false,
+      },
+    },
+    // DEVTOOLS ================================================================
+    {
+      resolve: "gatsby-plugin-webpack-bundle-analyzer",
+      options: {
+        analyzerPort: 3000,
+        production: true,
+        disable: true,
       },
     },
   ],

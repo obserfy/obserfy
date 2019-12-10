@@ -18,8 +18,12 @@ import {
   getSchoolId,
 } from "../../hooks/schoolIdState"
 
-/** Top level component that encapsulate every page and provides navigation and
- * everything */
+/** Top level component which encapsulate most pages. Provides Appbar and Sidebar for navigation.
+ *
+ * We only apply this component to core protected pages such as Home page. It is applied using
+ * gatsby-plugin-layout, which loads this component dynamically using the LayoutManager located
+ * in src/layouts/index.tsx.
+ * */
 interface Props {
   pageTitle: string
 }

@@ -28,7 +28,7 @@ exports[`Container should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   width: 100%;
-  background-color: var(--theme-ui-colors-primary,#6E55C6);
+  background-color: var(--theme-ui-colors-primary,#33691e);
   height: 10rem;
 }
 

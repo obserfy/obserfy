@@ -13,6 +13,7 @@ import NewStudentDialog from "../NewStudentDialog/NewStudentDialog"
 import EmptyListPlaceholder from "../EmptyListPlaceholder/EmptyListPlaceholder"
 import { getSchoolId } from "../../hooks/schoolIdState"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
+import { getAnalytics } from "../../analytics"
 
 export const PageHome: FC = () => {
   const schoolId = getSchoolId()
@@ -41,7 +42,7 @@ export const PageHome: FC = () => {
 
     setShowStudentInputDialog(false)
     setStudentsAsOutdated()
-    window?.analytics.track("Student Created", {
+    getAnalytics()?.track("Student Created", {
       responseStatus: response.status,
       studentName: name,
     })

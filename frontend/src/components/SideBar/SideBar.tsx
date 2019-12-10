@@ -11,7 +11,7 @@ interface Props {
 export const SideBar: FC<Props> = ({
   isShown = true,
   onOutsideClick,
-  children
+  children,
 }) => (
   <>
     <Flex
@@ -33,10 +33,10 @@ export const SideBar: FC<Props> = ({
         transition: "transform 250ms cubic-bezier(0.0, 0.0, 0.2, 1)",
         top: 0,
         left: 0,
-        zIndex: [100, 0],
+        zIndex: [1000000, 0],
         borderRightStyle: "solid",
         borderRightColor: "border",
-        borderRightWidth: 1
+        borderRightWidth: 1,
       }}
     >
       {children}
@@ -57,7 +57,7 @@ export const SideBar: FC<Props> = ({
         minHeight: "100vh",
         zIndex: 82,
         // Todo: Maybe migrate this to theme.ts to make it portable
-        transition: "background 250ms cubic-bezier(0.0, 0.0, 0.2, 1)"
+        transition: "background 250ms cubic-bezier(0.0, 0.0, 0.2, 1)",
       }}
     />
     <Box
@@ -71,7 +71,7 @@ export const SideBar: FC<Props> = ({
         position: "fixed",
         top: 0,
         right: 0,
-        zIndex: 150
+        zIndex: 1500000,
       }}
       onClick={onOutsideClick}
     >

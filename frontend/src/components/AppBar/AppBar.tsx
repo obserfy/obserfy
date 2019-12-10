@@ -8,7 +8,7 @@ import React, {
 import GatsbyImage from "gatsby-image"
 import { navigate } from "gatsby"
 import Typography from "../Typography/Typography"
-import { ReactComponent as StorefrontIcon } from "../../icons/storefront.svg"
+import { ReactComponent as BookIcon } from "../../icons/book.svg"
 import { ReactComponent as LogoutIcon } from "../../icons/logout.svg"
 import Avatar from "../Avatar/Avatar"
 import Icon from "../Icon/Icon"
@@ -22,6 +22,7 @@ import Box from "../Box/Box"
 import { useAvatarPlaceholder } from "../../useAvatarPlaceholder"
 import useApi from "../../hooks/useApi"
 import { getSchoolId } from "../../hooks/schoolIdState"
+import { getAnalytics } from "../../analytics"
 
 interface Props {
   onMenuClick?: MouseEventHandler<HTMLImageElement>
@@ -72,7 +73,7 @@ export const SchoolName: FC<FlexProps> = ({ ...props }) => {
 
   useEffect(() => {
     if (school) {
-      window?.analytics?.identify({
+      getAnalytics()?.identify({
         schoolName: school.name,
       })
     }
@@ -80,7 +81,7 @@ export const SchoolName: FC<FlexProps> = ({ ...props }) => {
 
   return (
     <Flex height="appbar" {...props}>
-      <Icon as={StorefrontIcon} size={24} alt="Store Icon" />
+      <Icon as={BookIcon} minWidth={24} size={24} alt="School Icon" />
       <Typography.Body as="div" ml="-4px" mb={0} sx={{ whiteSpace: "nowrap" }}>
         {school?.name}
       </Typography.Body>
@@ -101,7 +102,7 @@ const UserAvatar: FC = () => {
 
   useEffect(() => {
     if (userData) {
-      window?.analytics?.identify(userData.id, {
+      getAnalytics()?.identify(userData.id, {
         name: userData.name,
         email: userData.email,
       })

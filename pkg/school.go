@@ -33,6 +33,7 @@ func createSchoolsSubroute(env Env) *chi.Mux {
 
 func getSchoolInfo(env Env) http.HandlerFunc {
 	type responseUserField struct {
+		Id            string `json:"id"`
 		Name          string `json:"name"`
 		Email         string `json:"email"`
 		IsCurrentUser bool   `json:"isCurrentUser"`
@@ -73,6 +74,7 @@ func getSchoolInfo(env Env) http.HandlerFunc {
 		}
 		users := make([]responseUserField, len(school.Users))
 		for i, user := range school.Users {
+			users[i].Id = user.Id
 			users[i].Email = user.Email
 			users[i].Name = user.Name
 			users[i].IsCurrentUser = user.Id == session.UserId
