@@ -1,8 +1,9 @@
-import React, { FC } from "react"
+import React, { FC, useContext } from "react"
 import { PageRendererProps } from "gatsby"
 import queryString from "query-string"
 import PageEditStudent from "../../components/PageEditStudent/PageEditStudent"
 import SEO from "../../components/seo"
+import { PageTitleContext } from "../../layouts"
 
 const EditStudent: FC<PageRendererProps> = ({ location }) => {
   const query = queryString.parse(location.search)
@@ -12,6 +13,9 @@ const EditStudent: FC<PageRendererProps> = ({ location }) => {
   } else {
     id = query?.id ?? ""
   }
+
+  const pageTitle = useContext(PageTitleContext)
+  pageTitle.setTitle("Edit Student")
 
   return (
     <>

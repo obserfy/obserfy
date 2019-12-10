@@ -34,6 +34,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   min-width: 0;
   max-width: 640px;
   margin: auto;
+  padding-bottom: 64px;
 }
 
 .emotion-2 {

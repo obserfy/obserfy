@@ -89,6 +89,7 @@ exports[`PageHome should render correctly 1`] = `
   margin: 16px;
   height: 24px;
   width: 24px;
+  min-width: 24px;
 }
 
 .emotion-1 {

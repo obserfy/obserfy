@@ -142,7 +142,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
 
   return (
     <>
-      <Box maxWidth="maxWidth.sm" margin="auto">
+      <Box maxWidth="maxWidth.sm" margin="auto" pb={5}>
         <BackNavigation text="Home" to="/" />
         <Flex alignItems="center" mx={3} mb={3}>
           <Typography.H3>

@@ -54,7 +54,12 @@ export const PageSettings: FC = () => {
   }
 
   return (
-    <Box maxWidth="maxWidth.sm" margin="auto" p={3} pt={[3, 3, 4]}>
+    <Box
+      maxWidth="maxWidth.sm"
+      margin="auto"
+      p={3}
+      pt={[3, 3, 4]}
+    >
       <Card p={3} mb={3}>
         <Typography.H5 mb={3}>Invite your co-workers</Typography.H5>
         <Typography.Body

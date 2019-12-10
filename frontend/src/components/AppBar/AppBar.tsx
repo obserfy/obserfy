@@ -81,7 +81,7 @@ export const SchoolName: FC<FlexProps> = ({ ...props }) => {
 
   return (
     <Flex height="appbar" {...props}>
-      <Icon as={BookIcon} size={24} alt="School Icon" />
+      <Icon as={BookIcon} minWidth={24} size={24} alt="School Icon" />
       <Typography.Body as="div" ml="-4px" mb={0} sx={{ whiteSpace: "nowrap" }}>
         {school?.name}
       </Typography.Body>
