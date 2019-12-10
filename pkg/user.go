@@ -34,7 +34,7 @@ func getUserDetails(env Env) func(w http.ResponseWriter, r *http.Request) {
 		}
 
 		var user User
-		err := env.db.Model(&user).Column("email", "name").Where("id=?", session.UserId).Select()
+		err := env.db.Model(&user).Column("id", "email", "name").Where("id=?", session.UserId).Select()
 		if err != nil {
 			env.logger.Error("Failed getting user data", zap.Error(err))
 			http.Error(w, "Something went wrong", http.StatusInternalServerError)
