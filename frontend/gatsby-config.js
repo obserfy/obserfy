@@ -109,6 +109,15 @@ module.exports = {
         redirect: false,
       },
     },
+    // DEVTOOLS ================================================================
+    {
+      resolve: "gatsby-plugin-webpack-bundle-analyzer",
+      options: {
+        analyzerPort: 3000,
+        production: true,
+        disable: true,
+      },
+    },
   ],
   developMiddleware: app => {
     app.use("/api", proxy({ target: "http://localhost:8000" }))
