@@ -7,6 +7,7 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
+    `gatsby-plugin-layout`,
     `gatsby-plugin-typescript`,
     "gatsby-plugin-theme-ui",
     `gatsby-plugin-react-helmet`,
@@ -45,6 +46,7 @@ module.exports = {
         // TODO: Do not hardcode this, use env variables.
         prodKey: `a2pLn3x1wfkoSpgCxAb1sHiMRPraq6hW`,
 
+        devKey: `mmWAsCJqhsbHOArCtFhRCUvtAkr8WkzR`,
         // boolean (defaults to false) on whether you want
         // to include analytics.page() automatically
         // if false, see below on how to track pageviews manually

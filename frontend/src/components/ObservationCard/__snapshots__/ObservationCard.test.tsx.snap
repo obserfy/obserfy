@@ -112,6 +112,7 @@ exports[`ObservationCard should render correctly 1`] = `
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 400;
   line-height: 3rem;
+  text-transform: capitalize;
   color: rgba(0,0,0,0.87);
   font-size: 12px;
   line-height: 1em;
@@ -350,7 +351,7 @@ exports[`ObservationCard should render correctly 1`] = `
               <p
                 class="emotion-1"
               >
-                today
+                yesterday
               </p>
             </div>
           </div>

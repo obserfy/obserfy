@@ -23,8 +23,8 @@ export const ObservationCard: FC<Props> = ({
   const category = categories[parseInt(observation.categoryId, 10)]
 
   const createdDateDifference = differenceInBusinessDays(
-    Date.now(),
-    Date.parse(observation.createdDate ?? "")
+    Date.parse(observation.createdDate ?? ""),
+    Date.now()
   )
 
   const relativeCreatedDate = useFormatRelativeTime(

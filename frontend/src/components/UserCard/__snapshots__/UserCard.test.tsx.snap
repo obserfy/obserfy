@@ -121,6 +121,7 @@ exports[`UserCard should render correctly 1`] = `
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 400;
   line-height: 3rem;
+  text-transform: capitalize;
   font-size: 12px;
   line-height: 1em;
 }

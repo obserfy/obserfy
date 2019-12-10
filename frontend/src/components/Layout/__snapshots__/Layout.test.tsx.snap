@@ -610,36 +610,36 @@ exports[`Layout should render correctly 1`] = `
             />
             <picture>
               <source
-                srcset="/static/d765df87b7164d5d26f62ef45d04c06f/1bf60/avatar.webp 1x,
-/static/d765df87b7164d5d26f62ef45d04c06f/46586/avatar.webp 1.5x,
-/static/d765df87b7164d5d26f62ef45d04c06f/fdeef/avatar.webp 2x"
+                srcset="/static/d765df87b7164d5d26f62ef45d04c06f/62cc5/avatar.webp 1x,
+/static/d765df87b7164d5d26f62ef45d04c06f/0b7e8/avatar.webp 1.5x,
+/static/d765df87b7164d5d26f62ef45d04c06f/adbdf/avatar.webp 2x"
                 type="image/webp"
               />
               <source
-                srcset="/static/d765df87b7164d5d26f62ef45d04c06f/e381a/avatar.png 1x,
-/static/d765df87b7164d5d26f62ef45d04c06f/1eb56/avatar.png 1.5x,
-/static/d765df87b7164d5d26f62ef45d04c06f/cbd14/avatar.png 2x"
+                srcset="/static/d765df87b7164d5d26f62ef45d04c06f/fa1da/avatar.png 1x,
+/static/d765df87b7164d5d26f62ef45d04c06f/984fe/avatar.png 1.5x,
+/static/d765df87b7164d5d26f62ef45d04c06f/b067b/avatar.png 2x"
               />
               <img
                 alt="avatar"
                 height="32"
                 loading="lazy"
-                src="/static/d765df87b7164d5d26f62ef45d04c06f/e381a/avatar.png"
-                srcset="/static/d765df87b7164d5d26f62ef45d04c06f/e381a/avatar.png 1x,
-/static/d765df87b7164d5d26f62ef45d04c06f/1eb56/avatar.png 1.5x,
-/static/d765df87b7164d5d26f62ef45d04c06f/cbd14/avatar.png 2x"
+                src="/static/d765df87b7164d5d26f62ef45d04c06f/fa1da/avatar.png"
+                srcset="/static/d765df87b7164d5d26f62ef45d04c06f/fa1da/avatar.png 1x,
+/static/d765df87b7164d5d26f62ef45d04c06f/984fe/avatar.png 1.5x,
+/static/d765df87b7164d5d26f62ef45d04c06f/b067b/avatar.png 2x"
                 style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0; transition: opacity 500ms;"
                 width="32"
               />
             </picture>
             <noscript>
-              &lt;picture&gt;&lt;source type='image/webp' srcset="/static/d765df87b7164d5d26f62ef45d04c06f/1bf60/avatar.webp 1x,
-/static/d765df87b7164d5d26f62ef45d04c06f/46586/avatar.webp 1.5x,
-/static/d765df87b7164d5d26f62ef45d04c06f/fdeef/avatar.webp 2x" /&gt;&lt;source srcset="/static/d765df87b7164d5d26f62ef45d04c06f/e381a/avatar.png 1x,
-/static/d765df87b7164d5d26f62ef45d04c06f/1eb56/avatar.png 1.5x,
-/static/d765df87b7164d5d26f62ef45d04c06f/cbd14/avatar.png 2x" /&gt;&lt;img loading="lazy" width="32" height="32" srcset="/static/d765df87b7164d5d26f62ef45d04c06f/e381a/avatar.png 1x,
-/static/d765df87b7164d5d26f62ef45d04c06f/1eb56/avatar.png 1.5x,
-/static/d765df87b7164d5d26f62ef45d04c06f/cbd14/avatar.png 2x" src="/static/d765df87b7164d5d26f62ef45d04c06f/e381a/avatar.png" alt="avatar" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/&gt;&lt;/picture&gt;
+              &lt;picture&gt;&lt;source type='image/webp' srcset="/static/d765df87b7164d5d26f62ef45d04c06f/62cc5/avatar.webp 1x,
+/static/d765df87b7164d5d26f62ef45d04c06f/0b7e8/avatar.webp 1.5x,
+/static/d765df87b7164d5d26f62ef45d04c06f/adbdf/avatar.webp 2x" /&gt;&lt;source srcset="/static/d765df87b7164d5d26f62ef45d04c06f/fa1da/avatar.png 1x,
+/static/d765df87b7164d5d26f62ef45d04c06f/984fe/avatar.png 1.5x,
+/static/d765df87b7164d5d26f62ef45d04c06f/b067b/avatar.png 2x" /&gt;&lt;img loading="lazy" width="32" height="32" srcset="/static/d765df87b7164d5d26f62ef45d04c06f/fa1da/avatar.png 1x,
+/static/d765df87b7164d5d26f62ef45d04c06f/984fe/avatar.png 1.5x,
+/static/d765df87b7164d5d26f62ef45d04c06f/b067b/avatar.png 2x" src="/static/d765df87b7164d5d26f62ef45d04c06f/fa1da/avatar.png" alt="avatar" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/&gt;&lt;/picture&gt;
             </noscript>
           </div>
         </div>

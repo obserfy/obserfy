@@ -95,7 +95,7 @@ export const PageSettings: FC = () => {
         {userCards}
       </Box>
       <Box pt={4}>
-        <Typography.H5 mb={3}>School Info</Typography.H5>
+        <Typography.H5 mb={3}>Other Details</Typography.H5>
         <Input
           width="100%"
           label="School Name"

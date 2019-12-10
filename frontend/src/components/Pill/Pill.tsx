@@ -7,7 +7,12 @@ interface Props extends BoxProps {
 }
 export const Pill: FC<Props> = ({ color, text, ...props }) => (
   <Box py={1} px={2} sx={{ borderRadius: "circle" }} {...props}>
-    <Typography.Body lineHeight="1em" fontSize={0} color={color}>
+    <Typography.Body
+      lineHeight="1em"
+      fontSize={0}
+      color={color}
+      sx={{ textTransform: "capitalize" }}
+    >
       {text}
     </Typography.Body>
   </Box>

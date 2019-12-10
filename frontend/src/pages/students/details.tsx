@@ -1,7 +1,6 @@
 import React, { FC } from "react"
 import { PageRendererProps } from "gatsby"
 import queryString from "query-string"
-import Layout from "../../components/Layout/Layout"
 import PageStudentDetails from "../../components/PageStudentDetails/PageStudentDetails"
 import SEO from "../../components/seo"
 
@@ -15,10 +14,10 @@ const StudentDetails: FC<PageRendererProps> = ({ location }) => {
   }
 
   return (
-    <Layout pageTitle="Details">
+    <>
       <SEO title="Student Details" />
       <PageStudentDetails id={id} />
-    </Layout>
+    </>
   )
 }
 export default StudentDetails
