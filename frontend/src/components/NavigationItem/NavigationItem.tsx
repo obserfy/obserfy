@@ -2,7 +2,7 @@ import React, { FC, useState } from "react"
 import Typography from "../Typography/Typography"
 import Icon from "../Icon/Icon"
 import Flex, { FlexProps } from "../Flex/Flex"
-import { Link } from "gatsby"
+import { Link } from "gatsby-plugin-intl3"
 
 interface Props extends FlexProps {
   text: string

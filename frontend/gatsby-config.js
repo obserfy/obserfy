@@ -96,6 +96,19 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: `gatsby-plugin-intl3`,
+      options: {
+        // language JSON resource path
+        path: `${__dirname}/src/intl`,
+        // supported language
+        languages: [`en`],
+        // language file path
+        defaultLanguage: `en`,
+        // option to redirect to `/ko` when connecting `/`
+        redirect: false,
+      },
+    },
   ],
   developMiddleware: app => {
     app.use("/api", proxy({ target: "http://localhost:8000" }))

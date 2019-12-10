@@ -347,6 +347,32 @@ exports[`Layout should render correctly 1`] = `
   }
 }
 
+.emotion-17 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  border-radius: 6px;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin: 8px;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 8px;
+  background-color: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-17:hover {
+  background-color: var(--theme-ui-colors-primaryLightest,rgba(161,130,250,0.05));
+}
+
 .emotion-15 {
   box-sizing: border-box;
   margin: 0;
@@ -362,7 +388,7 @@ exports[`Layout should render correctly 1`] = `
   margin-bottom: 8px;
 }
 
-.emotion-20 {
+.emotion-16 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -378,7 +404,7 @@ exports[`Layout should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-20 {
+  .emotion-16 {
     font-size: 14px;
   }
 }
@@ -531,53 +557,6 @@ exports[`Layout should render correctly 1`] = `
   }
 }
 
-.emotion-17 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  border-radius: 6px;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin: 8px;
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-left: 8px;
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(161,130,250,0.12));
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.emotion-17:hover {
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(161,130,250,0.12));
-}
-
-.emotion-16 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  color: rgba(0,0,0,0.88);
-  font-size: 1.6rem;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 400;
-  line-height: 3rem;
-  color: var(--theme-ui-colors-primaryDark,#3A2B95);
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-16 {
-    font-size: 14px;
-  }
-}
-
 <div>
   <div
     class="emotion-30"
@@ -689,7 +668,6 @@ exports[`Layout should render correctly 1`] = `
         />
       </div>
       <a
-        aria-current="page"
         href="/"
       >
         <div
@@ -720,7 +698,7 @@ exports[`Layout should render correctly 1`] = `
             class="emotion-15"
           />
           <p
-            class="emotion-20"
+            class="emotion-16"
           >
             settings
           </p>

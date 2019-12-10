@@ -461,8 +461,6 @@ exports[`PageStudentDetails should render correctly 1`] = `
       class="emotion-14"
     >
       <a
-        aria-current="page"
-        class=""
         href="/"
       >
         <div

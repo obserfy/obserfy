@@ -1,4 +1,4 @@
-import { Link } from "gatsby"
+import { Link } from "gatsby-plugin-intl3"
 import React, { FC } from "react"
 
 interface Props {

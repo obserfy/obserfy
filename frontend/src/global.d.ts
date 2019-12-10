@@ -49,3 +49,15 @@ declare module "@rebass/forms" {
 interface Navigator {
   share: any
 }
+
+declare module "gatsby-plugin-intl3" {
+  // eslint-disable-next-line import/no-duplicates
+  import { FC } from "react"
+  import { navigate as gatsbyNavigate, GatsbyLinkProps } from "gatsby"
+
+  export * from "react-intl"
+  export const changeLocale: (locale: string) => void
+  export const navigate: typeof gatsbyNavigate
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  export const Link: FC<GatsbyLinkProps<any> & { language?: string }>
+}
