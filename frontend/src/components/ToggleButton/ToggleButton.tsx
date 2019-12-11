@@ -27,11 +27,11 @@ export const ToggleButton: FC<Props> = ({
         backgroundColor: isSelected ? "primaryLighter" : "surface",
         borderStyle: "solid",
         borderRadius: 0,
-        borderWidth: "1px",
-        borderColor: "border",
-        borderLeftStyle: "none",
+        borderWidth: 1,
+        borderColor: isSelected ? "primaryLight" : "border",
+        borderLeftStyle: isSelected ? "primaryLight" : "none",
         flex: itemFlexProp || ["inherit"],
-        transition: "background-color 100ms cubic-bezier(0.0, 0.0, 0.2, 1)"
+        transition: "background-color 100ms cubic-bezier(0.0, 0.0, 0.2, 1)",
       }
       if (index === 0) {
         // First item
@@ -49,18 +49,17 @@ export const ToggleButton: FC<Props> = ({
             if (onItemClick !== undefined) onItemClick(index)
           }}
           key={value}
-          py={1}
           px={3}
           sx={styleProps}
         >
           <Typography.Body
             m={0}
             color={isSelected ? "primaryDark" : "text"}
-            // fontWeight={selectedValues === value ? "bold" : "normal"}
+            fontSize={1}
             sx={{
               transition: "color 100ms cubic-bezier(0.0, 0.0, 0.2, 1)",
               userSelect: "none",
-              textAlign: "center"
+              textAlign: "center",
             }}
           >
             {value}

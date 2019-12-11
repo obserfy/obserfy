@@ -1,5 +1,7 @@
 import React, { FC, useState } from "react"
 import { navigate } from "gatsby"
+import isThisWeek from "date-fns/isThisWeek"
+import isToday from "date-fns/isToday"
 import { useQueryStudentDetails } from "../../hooks/students/useQueryStudentDetails"
 import Flex from "../Flex/Flex"
 import Box from "../Box/Box"
@@ -20,11 +22,36 @@ import DeleteObservationDialog from "../DeleteObservationDialog/DeleteObservatio
 import { getAnalytics } from "../../analytics"
 import ObservationCard from "../ObservationCard/ObservationCard"
 import Spacer from "../Spacer/Spacer"
+import ToggleButton from "../ToggleButton/ToggleButton"
 
+enum ObservationFilterType {
+  TODAY,
+  THIS_WEEK,
+  ALL,
+}
+function filterObservation(
+  filterType: ObservationFilterType,
+  observation: Observation
+): boolean {
+  const creationDate = observation.createdDate ?? ""
+  switch (filterType) {
+    case ObservationFilterType.ALL:
+      return true
+    case ObservationFilterType.THIS_WEEK:
+      return isThisWeek(Date.parse(creationDate))
+    case ObservationFilterType.TODAY:
+      return isToday(Date.parse(creationDate))
+    default:
+      return false
+  }
+}
 interface Props {
   id: string
 }
 export const PageStudentDetails: FC<Props> = ({ id }) => {
+  const [observationFilterType, setObservationFilterType] = useState(
+    ObservationFilterType.TODAY
+  )
   const [isAddingObservation, setIsAddingObservation] = useState(false)
   const [isEditingObservation, setIsEditingObservation] = useState(false)
   const [isDeletingObservation, setIsDeletingObservation] = useState(false)
@@ -33,6 +60,13 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
   const [observations, setObservationsAsOutdated] = useQueryStudentObservations(
     id
   )
+
+  const filteredObservation =
+    observationFilterType === ObservationFilterType.ALL
+      ? observations
+      : observations?.filter(observation =>
+          filterObservation(observationFilterType, observation)
+        )
 
   function addObservation(): void {
     setTargetObservation(undefined)
@@ -88,22 +122,25 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
     })
   }
 
-  const listOfObservations = observations?.reverse()?.map(observation => (
-    <ObservationCard
-      key={observation.id}
-      observation={observation}
-      onDelete={value => {
-        setTargetObservation(value)
-        setIsDeletingObservation(true)
-      }}
-      onEdit={value => {
-        setTargetObservation(value)
-        setIsEditingObservation(true)
-      }}
-    />
-  ))
+  const listOfObservations = filteredObservation
+    ?.reverse()
+    ?.map(observation => (
+      <ObservationCard
+        key={observation.id}
+        observation={observation}
+        onDelete={value => {
+          setTargetObservation(value)
+          setIsDeletingObservation(true)
+        }}
+        onEdit={value => {
+          setTargetObservation(value)
+          setIsEditingObservation(true)
+        }}
+      />
+    ))
 
-  const emptyObservationPlaceholder = (observations ?? []).length === 0 && (
+  const emptyObservationPlaceholder = (filteredObservation ?? []).length ===
+    0 && (
     <EmptyListPlaceholder
       text="No observation have been added"
       callToActionText="new observation"
@@ -146,7 +183,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
         <Flex>
           <BackNavigation text="Home" to="/" />
         </Flex>
-        <Flex alignItems="start" mx={3} mb={3}>
+        <Flex alignItems="start" mx={3} mb={4}>
           <Typography.H3 sx={{ wordWrap: "break-word" }}>
             {details?.name || <LoadingPlaceholder width="24rem" height={60} />}
           </Typography.H3>
@@ -161,17 +198,21 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
             <Icon minWidth={20} as={EditIcon} m={0} />
           </Button>
         </Flex>
-
         <Box p={3}>
           <Flex alignItems="center" mb={3}>
-            <Typography.H5 color="textMediumEmphasis">
-              Observations
-            </Typography.H5>
+            <SectionHeader>OBSERVATIONS</SectionHeader>
             <Spacer />
             <Button variant="outline" onClick={addObservation}>
               New
             </Button>
           </Flex>
+          <ToggleButton
+            itemFlexProp={[1]}
+            mb={3}
+            values={["Today", "This Week", "All"]}
+            selectedItemIdx={observationFilterType}
+            onItemClick={setObservationFilterType}
+          />
           {emptyObservationPlaceholder}
           {listOfObservations}
         </Box>
@@ -183,4 +224,12 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
   )
 }
 
+const SectionHeader: FC = props => (
+  <Typography.H5
+    fontWeight="bold"
+    color="textMediumEmphasis"
+    letterSpacing={3}
+    {...props}
+  />
+)
 export default PageStudentDetails

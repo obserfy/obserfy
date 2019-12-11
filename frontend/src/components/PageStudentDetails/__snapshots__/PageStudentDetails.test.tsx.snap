@@ -15,7 +15,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   }
 }
 
-.emotion-21 {
+.emotion-28 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -23,12 +23,12 @@ exports[`PageStudentDetails should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-21 {
+  .emotion-28 {
     font-size: 20px;
   }
 }
 
-.emotion-20 {
+.emotion-27 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -105,7 +105,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   align-items: start;
   margin-left: 16px;
   margin-right: 16px;
-  margin-bottom: 16px;
+  margin-bottom: 32px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -238,7 +238,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   min-width: 20px;
 }
 
-.emotion-19 {
+.emotion-26 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -275,6 +275,11 @@ exports[`PageStudentDetails should render correctly 1`] = `
   -ms-letter-spacing: 0;
   letter-spacing: 0;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  font-weight: bold;
+  -webkit-letter-spacing: 3px;
+  -moz-letter-spacing: 3px;
+  -ms-letter-spacing: 3px;
+  letter-spacing: 3px;
 }
 
 .emotion-12 {
@@ -348,7 +353,126 @@ exports[`PageStudentDetails should render correctly 1`] = `
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-18 {
+.emotion-20 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  border-radius: 6px;
+  background-color: var(--theme-ui-colors-surface,#fff);
+  margin-bottom: 16px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-15 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  cursor: pointer;
+  background-color: var(--theme-ui-colors-primaryLighter,rgba(98,151,73,0.12));
+  border-style: solid;
+  border-radius: 0;
+  border-width: 1px;
+  border-color: var(--theme-ui-colors-primaryLight,#629749);
+  border-left-style: solid;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-transition: background-color 100ms cubic-bezier(0.0,0.0,0.2,1);
+  transition: background-color 100ms cubic-bezier(0.0,0.0,0.2,1);
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.emotion-14 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  -webkit-transition: color 100ms cubic-bezier(0.0,0.0,0.2,1);
+  transition: color 100ms cubic-bezier(0.0,0.0,0.2,1);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  color: var(--theme-ui-colors-primaryDark,#003d00);
+  font-size: 14px;
+  margin: 0;
+}
+
+.emotion-17 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  cursor: pointer;
+  background-color: var(--theme-ui-colors-surface,#fff);
+  border-style: solid;
+  border-radius: 0;
+  border-width: 1px;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-left-style: none;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-transition: background-color 100ms cubic-bezier(0.0,0.0,0.2,1);
+  transition: background-color 100ms cubic-bezier(0.0,0.0,0.2,1);
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.emotion-16 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  -webkit-transition: color 100ms cubic-bezier(0.0,0.0,0.2,1);
+  transition: color 100ms cubic-bezier(0.0,0.0,0.2,1);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  font-size: 14px;
+  margin: 0;
+}
+
+.emotion-19 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  cursor: pointer;
+  background-color: var(--theme-ui-colors-surface,#fff);
+  border-style: solid;
+  border-radius: 0;
+  border-width: 1px;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-left-style: none;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-transition: background-color 100ms cubic-bezier(0.0,0.0,0.2,1);
+  transition: background-color 100ms cubic-bezier(0.0,0.0,0.2,1);
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.emotion-25 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -361,7 +485,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   overflow: hidden;
 }
 
-.emotion-17 {
+.emotion-24 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -386,7 +510,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-14 {
+.emotion-21 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -403,12 +527,12 @@ exports[`PageStudentDetails should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-14 {
+  .emotion-21 {
     font-size: 14px;
   }
 }
 
-.emotion-15 {
+.emotion-22 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -423,10 +547,10 @@ exports[`PageStudentDetails should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-21"
+    class="emotion-28"
   >
     <div
-      class="emotion-20"
+      class="emotion-27"
     >
       <div
         class="emotion-3"
@@ -470,7 +594,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
         </button>
       </div>
       <div
-        class="emotion-19"
+        class="emotion-26"
       >
         <div
           class="emotion-13"
@@ -478,7 +602,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
           <h5
             class="emotion-10"
           >
-            Observations
+            OBSERVATIONS
           </h5>
           <div
             class="emotion-6"
@@ -490,13 +614,44 @@ exports[`PageStudentDetails should render correctly 1`] = `
           </button>
         </div>
         <div
-          class="emotion-18"
+          class="emotion-20"
         >
+          <div
+            class="emotion-15"
+          >
+            <p
+              class="emotion-14"
+            >
+              Today
+            </p>
+          </div>
           <div
             class="emotion-17"
           >
             <p
-              class="emotion-14"
+              class="emotion-16"
+            >
+              This Week
+            </p>
+          </div>
+          <div
+            class="emotion-19"
+          >
+            <p
+              class="emotion-16"
+            >
+              All
+            </p>
+          </div>
+        </div>
+        <div
+          class="emotion-25"
+        >
+          <div
+            class="emotion-24"
+          >
+            <p
+              class="emotion-21"
             >
               No observation have been added
             </p>
@@ -504,7 +659,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
               class="emotion-12"
             >
               <div
-                class="emotion-15"
+                class="emotion-22"
               />
               new observation
             </button>

@@ -1,5 +1,5 @@
 import React, { FC } from "react"
-import differenceInBusinessDays from "date-fns/differenceInBusinessDays"
+import differenceInCalendarDays from "date-fns/differenceInCalendarDays"
 import Flex from "../Flex/Flex"
 import Typography from "../Typography/Typography"
 import Pill from "../Pill/Pill"
@@ -22,7 +22,7 @@ export const ObservationCard: FC<Props> = ({
 }) => {
   const category = categories[parseInt(observation.categoryId, 10)]
 
-  const createdDateDifference = differenceInBusinessDays(
+  const createdDateDifference = differenceInCalendarDays(
     Date.parse(observation.createdDate ?? ""),
     Date.now()
   )
