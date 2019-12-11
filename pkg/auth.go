@@ -255,11 +255,14 @@ func giveNewSession(w http.ResponseWriter, env Env, userId string) {
 
 	// TODO: Confirm cookie is correctly created
 	cookie := http.Cookie{
-		Name:   "session",
-		Value:  session.Token,
-		Path:   "/",
-		Domain: os.Getenv("SITE_URL"),
-		Secure: true,
+		Name:     "session",
+		Value:    session.Token,
+		Path:     "/",
+		Domain:   os.Getenv("SITE_URL"),
+		Secure:   true,
+		HttpOnly: true,
+		MaxAge:   94608000,
+		SameSite: http.SameSiteLaxMode,
 	}
 	http.SetCookie(w, &cookie)
 }

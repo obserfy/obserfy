@@ -63,3 +63,7 @@ declare module "gatsby-plugin-intl3" {
 }
 
 declare const $crisp: any
+
+declare interface Window {
+  CRISP_TOKEN_ID?: string
+}
