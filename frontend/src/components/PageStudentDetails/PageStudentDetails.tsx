@@ -183,7 +183,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
         <Flex>
           <BackNavigation text="Home" to="/" />
         </Flex>
-        <Flex alignItems="start" mx={3} mb={4}>
+        <Flex alignItems="start" mx={3} mb={4} mt={3}>
           <Typography.H3 sx={{ wordWrap: "break-word" }}>
             {details?.name || <LoadingPlaceholder width="24rem" height={60} />}
           </Typography.H3>

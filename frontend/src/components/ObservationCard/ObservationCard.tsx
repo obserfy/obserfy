@@ -52,12 +52,7 @@ export const ObservationCard: FC<Props> = ({
               text={category.name}
               color={category.onColor}
             />
-            <Pill
-              ml={2}
-              backgroundColor={category.color}
-              text={relativeCreatedDate}
-              color={category.onColor}
-            />
+            <Pill ml={2} text={relativeCreatedDate} color="text" />
           </Flex>
         </Flex>
       </Flex>
