@@ -23,7 +23,12 @@ import { useAvatarPlaceholder } from "../../useAvatarPlaceholder"
 import useApi from "../../hooks/useApi"
 import { getSchoolId } from "../../hooks/schoolIdState"
 import { getAnalytics } from "../../analytics"
-import { setCrispEmail, setCrispNickName } from "../../crisp"
+import {
+  setCrispCompanyName,
+  setCrispEmail,
+  setCrispNickName,
+  setCrispToken,
+} from "../../crisp"
 
 interface Props {
   onMenuClick?: MouseEventHandler<HTMLImageElement>
@@ -77,6 +82,7 @@ export const SchoolName: FC<FlexProps> = ({ ...props }) => {
       getAnalytics()?.identify({
         schoolName: school.name,
       })
+      setCrispCompanyName(school.name)
     }
   }, [school])
 
@@ -107,6 +113,7 @@ const UserAvatar: FC = () => {
         name: userData.name,
         email: userData.email,
       })
+      setCrispToken(userData.id)
       setCrispEmail(userData.email)
       setCrispNickName(userData.name.split(" ")[0])
     }
