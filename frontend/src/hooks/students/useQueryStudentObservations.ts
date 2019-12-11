@@ -10,9 +10,9 @@ export interface Observation {
 }
 export const useQueryStudentObservations = (
   id: string
-): [Observation[] | undefined, () => void] => {
-  const [observations, setAsOutdated] = useApi<Observation[]>(
+): [Observation[] | undefined, () => void, boolean] => {
+  const [observations, setAsOutdated, loading] = useApi<Observation[]>(
     `/students/${id}/observations`
   )
-  return [observations, setAsOutdated]
+  return [observations, setAsOutdated, loading]
 }

@@ -57,9 +57,11 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
   const [isDeletingObservation, setIsDeletingObservation] = useState(false)
   const [targetObservation, setTargetObservation] = useState()
   const [details] = useQueryStudentDetails(id)
-  const [observations, setObservationsAsOutdated] = useQueryStudentObservations(
-    id
-  )
+  const [
+    observations,
+    setObservationsAsOutdated,
+    isObservationLoading,
+  ] = useQueryStudentObservations(id)
 
   const filteredObservation =
     observationFilterType === ObservationFilterType.ALL
@@ -213,7 +215,8 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
             selectedItemIdx={observationFilterType}
             onItemClick={setObservationFilterType}
           />
-          {emptyObservationPlaceholder}
+          {!isObservationLoading && emptyObservationPlaceholder}
+          {isObservationLoading && <ObservationLoadingPlaceholder />}
           {listOfObservations}
         </Box>
       </Box>
@@ -232,4 +235,13 @@ const SectionHeader: FC = props => (
     {...props}
   />
 )
+
+const ObservationLoadingPlaceholder: FC = () => (
+  <Box>
+    <LoadingPlaceholder width="100%" height={116} mb={3} />
+    <LoadingPlaceholder width="100%" height={116} mb={3} />
+    <LoadingPlaceholder width="100%" height={116} mb={3} />
+  </Box>
+)
+
 export default PageStudentDetails
