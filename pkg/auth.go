@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"os"
 	"strings"
+	"time"
 )
 
 const CTX_SESSION = "session"
@@ -258,6 +259,7 @@ func giveNewSession(w http.ResponseWriter, env Env, userId string) {
 		Name:     "session",
 		Value:    session.Token,
 		Path:     "/",
+		Expires:  time.Now().AddDate(1, 0, 0),
 		Domain:   os.Getenv("SITE_URL"),
 		Secure:   true,
 		HttpOnly: true,
