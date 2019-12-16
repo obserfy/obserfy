@@ -46,6 +46,7 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
       navigate("/choose-school")
     } else if (response.status === 409) {
       getAnalytics()?.track("User Register Failed", {
+        email,
         status: response.status,
       })
       setError("Email has already been used to register")

@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"os"
 	"strings"
+	"time"
 )
 
 const CTX_SESSION = "session"
@@ -253,16 +254,32 @@ func giveNewSession(w http.ResponseWriter, env Env, userId string) {
 		return
 	}
 
-	// TODO: Confirm cookie is correctly created
-	cookie := http.Cookie{
-		Name:     "session",
-		Value:    session.Token,
-		Path:     "/",
-		Domain:   os.Getenv("SITE_URL"),
-		Secure:   true,
-		HttpOnly: true,
-		MaxAge:   94608000,
-		SameSite: http.SameSiteLaxMode,
+	var cookie http.Cookie
+	if os.Getenv("env") == "production" {
+		cookie = http.Cookie{
+			Name:     "session",
+			Value:    session.Token,
+			Path:     "/",
+			Expires:  time.Now().AddDate(1, 0, 0),
+			Domain:   os.Getenv("SITE_URL"),
+			Secure:   true,
+			HttpOnly: true,
+			MaxAge:   94608000,
+			SameSite: http.SameSiteLaxMode,
+		}
+	} else {
+		cookie = http.Cookie{
+			Name:     "session",
+			Value:    session.Token,
+			Path:     "/",
+			Expires:  time.Now().AddDate(1, 0, 0),
+			Domain:   os.Getenv("SITE_URL"),
+			Secure:   false,
+			HttpOnly: true,
+			MaxAge:   94608000,
+			SameSite: http.SameSiteLaxMode,
+		}
 	}
+
 	http.SetCookie(w, &cookie)
 }

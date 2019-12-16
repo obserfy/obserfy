@@ -54,7 +54,7 @@ export const PageHome: FC = () => {
       mx={3}
       mb={2}
       key={id}
-      onClick={() => navigate(`/students/details?id=${id}`)}
+      onClick={() => navigate(`/dashboard/students/details?id=${id}`)}
       sx={{ cursor: "pointer" }}
     >
       <Flex>

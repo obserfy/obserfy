@@ -1,7 +1,7 @@
 import React, { FC, useContext } from "react"
-import PageSettings from "../components/PageSettings/PageSettings"
-import SEO from "../components/seo"
-import { PageTitleContext } from "../layouts"
+import PageSettings from "../../components/PageSettings/PageSettings"
+import SEO from "../../components/seo"
+import { PageTitleContext } from "../../layouts"
 
 const Settings: FC = () => {
   const pageTitle = useContext(PageTitleContext)

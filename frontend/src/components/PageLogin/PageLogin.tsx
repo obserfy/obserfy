@@ -27,6 +27,7 @@ export const PageLogin: FC = () => {
       getAnalytics()?.track("User Login Success")
     } else {
       getAnalytics()?.track("User Login Failed", {
+        email,
         status: response.status,
       })
       setError("Wrong email or password")

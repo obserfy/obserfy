@@ -516,7 +516,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
         class="emotion-3"
       >
         <a
-          href="/"
+          href="/dashboard/home"
         >
           <div
             class="emotion-2"
