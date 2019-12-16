@@ -71,14 +71,14 @@ const MainSidebar: FC<{
       />
       <NavigationItem
         onClick={closeSidebar}
-        to="/"
+        to="/dashboard/home"
         text="Home"
         icon={HomeIcon}
       />
       <Spacer />
       <NavigationItem
         onClick={closeSidebar}
-        to="/settings"
+        to="/dashboard/settings"
         text="settings"
         icon={SettingsIcon}
         mb={3}

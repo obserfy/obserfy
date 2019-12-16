@@ -902,7 +902,7 @@ exports[`PageHome should render correctly 1`] = `
         />
       </div>
       <a
-        href="/"
+        href="/dashboard/home"
       >
         <div
           class="emotion-17"
@@ -922,7 +922,7 @@ exports[`PageHome should render correctly 1`] = `
         class="emotion-6"
       />
       <a
-        href="/settings"
+        href="/dashboard/settings"
       >
         <div
           class="emotion-21"

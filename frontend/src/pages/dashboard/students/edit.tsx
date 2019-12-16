@@ -1,9 +1,9 @@
 import React, { FC, useContext } from "react"
 import { PageRendererProps } from "gatsby"
 import queryString from "query-string"
-import PageEditStudent from "../../components/PageEditStudent/PageEditStudent"
-import SEO from "../../components/seo"
-import { PageTitleContext } from "../../layouts"
+import PageEditStudent from "../../../components/PageEditStudent/PageEditStudent"
+import SEO from "../../../components/seo"
+import { PageTitleContext } from "../../../layouts"
 
 const EditStudent: FC<PageRendererProps> = ({ location }) => {
   const query = queryString.parse(location.search)

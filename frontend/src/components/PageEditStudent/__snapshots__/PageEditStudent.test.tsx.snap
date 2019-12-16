@@ -917,7 +917,7 @@ exports[`PageEditStudent should render correctly 1`] = `
         />
       </div>
       <a
-        href="/"
+        href="/dashboard/home"
       >
         <div
           class="emotion-17"
@@ -937,7 +937,7 @@ exports[`PageEditStudent should render correctly 1`] = `
         class="emotion-6"
       />
       <a
-        href="/settings"
+        href="/dashboard/settings"
       >
         <div
           class="emotion-21"
@@ -986,7 +986,7 @@ exports[`PageEditStudent should render correctly 1`] = `
         class="emotion-39"
       >
         <a
-          href="/students/details?id=undefined"
+          href="/dashboard/students/details?id=undefined"
         >
           <div
             class="emotion-31"

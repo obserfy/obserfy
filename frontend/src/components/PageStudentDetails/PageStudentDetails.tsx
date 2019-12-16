@@ -183,7 +183,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
     <>
       <Box maxWidth="maxWidth.sm" margin="auto" pb={5}>
         <Flex>
-          <BackNavigation text="Home" to="/" />
+          <BackNavigation text="Home" to="/dashboard/home" />
         </Flex>
         <Flex alignItems="start" mx={3} mb={4} mt={3}>
           <Typography.H3 sx={{ wordWrap: "break-word" }}>
@@ -195,7 +195,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
             ml={3}
             minWidth={43}
             variant="outline"
-            onClick={() => navigate(`/students/edit?id=${id}`)}
+            onClick={() => navigate(`/dashboard/students/edit?id=${id}`)}
           >
             <Icon minWidth={20} as={EditIcon} m={0} />
           </Button>

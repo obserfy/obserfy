@@ -9,6 +9,7 @@ import (
 	"go.uber.org/zap"
 	"net/http"
 	"os"
+	"strings"
 )
 
 type Env struct {
@@ -51,7 +52,10 @@ func main() {
 		r.Mount("/user", createUserSubroute(env))
 	})
 	r.Mount("/auth", createAuthSubroute(env))
-	r.Get("/*", createFrontendFileServer())
+	r.Group(func(r chi.Router) {
+		r.Use(createFrontendAuthMiddleware(env))
+		r.Get("/*", createFrontendFileServer())
+	})
 
 	runServer(r, env)
 }
@@ -65,4 +69,49 @@ func runServer(r *chi.Mux, env Env) {
 
 func createFrontendFileServer() func(w http.ResponseWriter, r *http.Request) {
 	return http.FileServer(http.Dir("frontend/public")).ServeHTTP
+}
+
+func createFrontendAuthMiddleware(env Env) func(next http.Handler) http.Handler {
+	return func(next http.Handler) http.Handler {
+		fn := func(w http.ResponseWriter, r *http.Request) {
+			path := r.URL.Path
+
+			// Make sure all request to path under dashboard has a valid session,
+			// else redirect to login.
+			if strings.HasPrefix(path, "/dashboard") || path == "/" {
+				token, err := r.Cookie("session")
+				if err != nil {
+					http.Redirect(w, r, "/login", http.StatusFound)
+					return
+				}
+
+				var session Session
+				err = env.db.Model(&session).Where("token=?", token.Value).Select()
+				if err != nil {
+					http.Redirect(w, r, "/login", http.StatusFound)
+					return
+				}
+			} else if strings.HasPrefix(path, "/login") || strings.HasPrefix(path, "/register") {
+				// If user already authenticated, jump to dashboard home.
+				token, err := r.Cookie("session")
+				if token != nil {
+					var session Session
+					err = env.db.Model(&session).Where("token=?", token.Value).Select()
+					if err == nil {
+						http.Redirect(w, r, "/dashboard/home", http.StatusFound)
+						return
+					}
+				}
+			}
+
+			// If trying to access root, redirect to dashboard.
+			if path == "/" || path == "/dashboard" || path == "/dashboard/" {
+				http.Redirect(w, r, "/dashboard/home", http.StatusFound)
+				return
+			}
+
+			next.ServeHTTP(w, r)
+		}
+		return http.HandlerFunc(fn)
+	}
 }

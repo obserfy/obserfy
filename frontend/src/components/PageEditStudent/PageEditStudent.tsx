@@ -15,7 +15,7 @@ interface Props {
   id: string
 }
 export const PageEditStudent: FC<Props> = ({ id }) => {
-  const studentDetailUrl = `/students/details?id=${id}`
+  const studentDetailUrl = `/dashboard/students/details?id=${id}`
   const [isDeletingStudent, setIsDeletingStudent] = useState(false)
   const [details] = useQueryStudentDetails(id)
   const [name, setName] = useState()
@@ -33,7 +33,7 @@ export const PageEditStudent: FC<Props> = ({ id }) => {
     })
 
     if (response.status === 200) {
-      navigate("/")
+      navigate("/dashboard/home")
     }
 
     getAnalytics()?.track("Student Deleted", {
