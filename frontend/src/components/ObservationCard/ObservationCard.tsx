@@ -56,15 +56,17 @@ export const ObservationCard: FC<Props> = ({
           </Flex>
         </Flex>
       </Flex>
-      <Typography.Body fontSize={1} p={3}>
-        {observation.longDesc}
-      </Typography.Body>
+      {observation.longDesc && (
+        <Typography.Body fontSize={1} p={3}>
+          {observation.longDesc}
+        </Typography.Body>
+      )}
       <Flex
-        p={3}
+        p={2}
         alignItems="center"
         sx={{
           borderTopWidth: 1,
-          borderTopStyle: "solid",
+          borderTopStyle: observation.longDesc ? "solid" : "none",
           borderTopColor: "border",
         }}
       >

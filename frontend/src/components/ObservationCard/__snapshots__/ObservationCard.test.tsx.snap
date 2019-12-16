@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ObservationCard should render correctly 1`] = `
-.emotion-14 {
+.emotion-13 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,12 +9,12 @@ exports[`ObservationCard should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-14 {
+  .emotion-13 {
     font-size: 20px;
   }
 }
 
-.emotion-13 {
+.emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -151,28 +151,14 @@ exports[`ObservationCard should render correctly 1`] = `
   line-height: 1em;
 }
 
-.emotion-8 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  color: rgba(0,0,0,0.88);
-  font-size: 1.6rem;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 400;
-  line-height: 3rem;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
-  font-size: 14px;
-  padding: 16px;
-}
-
-.emotion-12 {
+.emotion-11 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   border-top-width: 1px;
-  border-top-style: solid;
+  border-top-style: none;
   border-top-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  padding: 16px;
+  padding: 8px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -183,7 +169,7 @@ exports[`ObservationCard should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-9 {
+.emotion-8 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -193,7 +179,7 @@ exports[`ObservationCard should render correctly 1`] = `
   flex: 1;
 }
 
-.emotion-10 {
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -245,19 +231,19 @@ exports[`ObservationCard should render correctly 1`] = `
   color: var(--theme-ui-colors-danger,#d50000);
 }
 
-.emotion-10:disabled {
+.emotion-9:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-10:hover,
-.emotion-10:focus {
+.emotion-9:hover,
+.emotion-9:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(98,151,73,0.12));
   border-color: var(--theme-ui-colors-primary,#33691e);
   outline: none;
 }
 
-.emotion-11 {
+.emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -308,13 +294,13 @@ exports[`ObservationCard should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-11:disabled {
+.emotion-10:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-11:hover,
-.emotion-11:focus {
+.emotion-10:hover,
+.emotion-10:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(98,151,73,0.12));
   border-color: var(--theme-ui-colors-primary,#33691e);
   outline: none;
@@ -322,10 +308,10 @@ exports[`ObservationCard should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-14"
+    class="emotion-13"
   >
     <div
-      class="emotion-13"
+      class="emotion-12"
     >
       <div
         class="emotion-7"
@@ -360,22 +346,20 @@ exports[`ObservationCard should render correctly 1`] = `
           </div>
         </div>
       </div>
-      <p
-        class="emotion-8"
-      />
+      
       <div
-        class="emotion-12"
+        class="emotion-11"
       >
         <div
-          class="emotion-9"
+          class="emotion-8"
         />
         <button
-          class="emotion-10"
+          class="emotion-9"
         >
           delete
         </button>
         <button
-          class="emotion-11"
+          class="emotion-10"
           data-cy="dialogPositiveAction"
         >
           Edit
