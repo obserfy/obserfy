@@ -7,6 +7,7 @@ import React, {
 } from "react"
 import GatsbyImage from "gatsby-image"
 import { navigate } from "gatsby"
+import { Link } from "gatsby-plugin-intl3"
 import Typography from "../Typography/Typography"
 import { ReactComponent as BookIcon } from "../../icons/book.svg"
 import { ReactComponent as LogoutIcon } from "../../icons/logout.svg"
@@ -29,6 +30,7 @@ import {
   setCrispNickName,
   setCrispToken,
 } from "../../crisp"
+import Button from "../Button/Button"
 
 interface Props {
   onMenuClick?: MouseEventHandler<HTMLImageElement>
@@ -87,11 +89,27 @@ export const SchoolName: FC<FlexProps> = ({ ...props }) => {
   }, [school])
 
   return (
-    <Flex height="appbar" {...props}>
-      <Icon as={BookIcon} minWidth={24} size={24} alt="School Icon" />
-      <Typography.Body as="div" ml="-4px" mb={0} sx={{ whiteSpace: "nowrap" }}>
-        {school?.name}
-      </Typography.Body>
+    <Flex alignItems="center" height="appbar" {...props}>
+      <Link to="/choose-school">
+        <Button variant="secondary">
+          <Icon
+            as={BookIcon}
+            minWidth={24}
+            size={24}
+            m={0}
+            mr={3}
+            alt="School Icon"
+          />
+          <Typography.Body
+            as="div"
+            ml="-4px"
+            mb={0}
+            sx={{ whiteSpace: "nowrap" }}
+          >
+            {school?.name}
+          </Typography.Body>
+        </Button>
+      </Link>
     </Flex>
   )
 }
