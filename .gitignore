@@ -1,5 +1,4 @@
 .idea
 tmp
-!.idea
 docker/postgres/ssl/localhost.crt
 docker/postgres/ssl/localhost.key
