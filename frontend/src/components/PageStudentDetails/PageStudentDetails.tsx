@@ -125,7 +125,10 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
   }
 
   const listOfObservations = filteredObservation
-    ?.reverse()
+    ?.sort(
+      (a, b) =>
+        Date.parse(b.createdDate ?? "") - Date.parse(a.createdDate ?? "")
+    )
     ?.map(observation => (
       <ObservationCard
         key={observation.id}
@@ -229,7 +232,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
 
 const SectionHeader: FC = props => (
   <Typography.H5
-    fontWeight="bold"
+    fontWeight="normal"
     color="textMediumEmphasis"
     letterSpacing={3}
     {...props}

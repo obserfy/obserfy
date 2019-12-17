@@ -15,7 +15,7 @@ exports[`PageHome should render correctly 1`] = `
   }
 }
 
-.emotion-44 {
+.emotion-46 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -23,12 +23,12 @@ exports[`PageHome should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-44 {
+  .emotion-46 {
     font-size: 20px;
   }
 }
 
-.emotion-11 {
+.emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -56,15 +56,15 @@ exports[`PageHome should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-2 {
+.emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  height: 57px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  height: 57px;
   width: 0%;
   overflow: hidden;
   display: -webkit-box;
@@ -74,9 +74,72 @@ exports[`PageHome should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-2 {
+  .emotion-3 {
     width: auto;
   }
+}
+
+.emotion-2 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  text-align: center;
+  line-height: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: inherit;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: white;
+  background-color: var(--theme-ui-colors-primary,#33691e);
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  text-transform: capitalize;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--theme-ui-colors-textPrimary,#003d00);
+  background-color: transparent;
+  border-radius: 6px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  white-space: nowrap;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-2:disabled {
+  opacity: 0.38;
+  cursor: auto;
+}
+
+.emotion-2:hover,
+.emotion-2:focus {
+  background-color: var(--theme-ui-colors-primaryLighter,rgba(98,151,73,0.12));
+  border-color: var(--theme-ui-colors-primary,#33691e);
+  outline: none;
 }
 
 .emotion-0 {
@@ -86,10 +149,11 @@ exports[`PageHome should render correctly 1`] = `
   max-width: 100%;
   height: auto;
   fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
-  margin: 16px;
+  margin: 0;
   height: 24px;
   width: 24px;
   min-width: 24px;
+  margin-right: 16px;
 }
 
 .emotion-1 {
@@ -114,7 +178,7 @@ exports[`PageHome should render correctly 1`] = `
   }
 }
 
-.emotion-4 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -124,12 +188,12 @@ exports[`PageHome should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-4 {
+  .emotion-5 {
     pointer-events: none;
   }
 }
 
-.emotion-3 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -146,14 +210,14 @@ exports[`PageHome should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-3 {
+  .emotion-4 {
     width: 0%;
     margin-left: 100px;
     opacity: 0;
   }
 }
 
-.emotion-5 {
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -175,13 +239,13 @@ exports[`PageHome should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-5 {
+  .emotion-6 {
     opacity: 0;
     margin-left: 16px;
   }
 }
 
-.emotion-6 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -191,7 +255,7 @@ exports[`PageHome should render correctly 1`] = `
   flex: 1;
 }
 
-.emotion-10 {
+.emotion-11 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -215,11 +279,11 @@ exports[`PageHome should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-10:hover {
+.emotion-11:hover {
   background-color: var(--theme-ui-colors-muted,#f6f6f9);
 }
 
-.emotion-7 {
+.emotion-8 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -239,7 +303,7 @@ exports[`PageHome should render correctly 1`] = `
   height: 32px;
 }
 
-.emotion-8 {
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -258,13 +322,13 @@ exports[`PageHome should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-8 {
+  .emotion-9 {
     font-size: 14px;
     display: block;
   }
 }
 
-.emotion-9 {
+.emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -280,13 +344,13 @@ exports[`PageHome should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-9 {
+  .emotion-10 {
     margin-left: 0;
     margin-right: 4px;
   }
 }
 
-.emotion-25 {
+.emotion-27 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -321,7 +385,7 @@ exports[`PageHome should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-25 {
+  .emotion-27 {
     -webkit-transform: none;
     -ms-transform: none;
     transform: none;
@@ -331,23 +395,23 @@ exports[`PageHome should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-25 {
+  .emotion-27 {
     width: 230px;
   }
 }
 
-.emotion-14 {
+.emotion-16 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
-  height: 57px;
-  background-color: var(--theme-ui-colors-surface,#fff);
-  margin-bottom: 16px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  height: 57px;
+  background-color: var(--theme-ui-colors-surface,#fff);
+  margin-bottom: 16px;
   width: 100%;
   opacity: 1;
   display: -webkit-box;
@@ -357,12 +421,12 @@ exports[`PageHome should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-14 {
+  .emotion-16 {
     opacity: 0;
   }
 }
 
-.emotion-17 {
+.emotion-19 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -384,11 +448,11 @@ exports[`PageHome should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-17:hover {
+.emotion-19:hover {
   background-color: var(--theme-ui-colors-primaryLightest,rgba(98,151,73,0.05));
 }
 
-.emotion-15 {
+.emotion-17 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -403,7 +467,7 @@ exports[`PageHome should render correctly 1`] = `
   margin-bottom: 8px;
 }
 
-.emotion-16 {
+.emotion-18 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -419,12 +483,12 @@ exports[`PageHome should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-16 {
+  .emotion-18 {
     font-size: 14px;
   }
 }
 
-.emotion-21 {
+.emotion-23 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -446,11 +510,11 @@ exports[`PageHome should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-21:hover {
+.emotion-23:hover {
   background-color: var(--theme-ui-colors-primaryLightest,rgba(98,151,73,0.05));
 }
 
-.emotion-24 {
+.emotion-26 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -474,11 +538,11 @@ exports[`PageHome should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-24:hover {
+.emotion-26:hover {
   background-color: var(--theme-ui-colors-primaryLightest,rgba(98,151,73,0.05));
 }
 
-.emotion-23 {
+.emotion-25 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -492,7 +556,7 @@ exports[`PageHome should render correctly 1`] = `
   margin: 0;
 }
 
-.emotion-26 {
+.emotion-28 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -512,12 +576,12 @@ exports[`PageHome should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-26 {
+  .emotion-28 {
     display: none;
   }
 }
 
-.emotion-28 {
+.emotion-30 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -540,12 +604,12 @@ exports[`PageHome should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-28 {
+  .emotion-30 {
     display: none;
   }
 }
 
-.emotion-27 {
+.emotion-29 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -556,7 +620,7 @@ exports[`PageHome should render correctly 1`] = `
   height: 36px;
 }
 
-.emotion-43 {
+.emotion-45 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -567,12 +631,12 @@ exports[`PageHome should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-43 {
+  .emotion-45 {
     padding-left: 230px;
   }
 }
 
-.emotion-42 {
+.emotion-44 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -580,7 +644,7 @@ exports[`PageHome should render correctly 1`] = `
   margin: auto;
 }
 
-.emotion-34 {
+.emotion-36 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -591,7 +655,7 @@ exports[`PageHome should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-31 {
+.emotion-33 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -619,7 +683,7 @@ exports[`PageHome should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-30 {
+.emotion-32 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -633,7 +697,7 @@ exports[`PageHome should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-29 {
+.emotion-31 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -660,35 +724,35 @@ exports[`PageHome should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-29:hover,
-.emotion-29:focus {
+.emotion-31:hover,
+.emotion-31:focus {
   border-color: var(--theme-ui-colors-primary,#33691e);
   outline: none;
 }
 
-.emotion-29::-webkit-input-placeholder {
+.emotion-31::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-29::-moz-placeholder {
+.emotion-31::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-29:-ms-input-placeholder {
+.emotion-31:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-29::placeholder {
+.emotion-31::placeholder {
   font-style: italic;
 }
 
-.emotion-29:disabled {
+.emotion-31:disabled {
   opacity: 0.38;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
-.emotion-33 {
+.emotion-35 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -741,25 +805,25 @@ exports[`PageHome should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-33:disabled {
+.emotion-35:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-33:hover,
-.emotion-33:focus {
+.emotion-35:hover,
+.emotion-35:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(98,151,73,0.12));
   border-color: var(--theme-ui-colors-primary,#33691e);
   outline: none;
 }
 
-.emotion-33:hover:disabled,
-.emotion-33:focus:disabled {
+.emotion-35:hover:disabled,
+.emotion-35:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-32 {
+.emotion-34 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -771,7 +835,7 @@ exports[`PageHome should render correctly 1`] = `
   width: 20px;
 }
 
-.emotion-41 {
+.emotion-43 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -779,7 +843,7 @@ exports[`PageHome should render correctly 1`] = `
   padding-right: 16px;
 }
 
-.emotion-35 {
+.emotion-37 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -793,45 +857,53 @@ exports[`PageHome should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-44"
+    class="emotion-46"
   >
     <header
-      class="emotion-11"
+      class="emotion-12"
     >
       <div
-        class="emotion-2"
+        class="emotion-3"
       >
-        <div
-          alt="School Icon"
-          class="emotion-0"
-        />
-        <div
-          class="emotion-1"
-        />
+        <a
+          href="/choose-school"
+        >
+          <button
+            class="emotion-2"
+          >
+            <div
+              alt="School Icon"
+              class="emotion-0"
+            />
+            <div
+              class="emotion-1"
+            />
+          </button>
+        </a>
       </div>
       <div
-        class="emotion-4"
+        class="emotion-5"
       >
         <div
           alt="Menu"
-          class="emotion-3"
+          class="emotion-4"
           data-cy="menu"
         />
       </div>
       <h6
-        class="emotion-5"
+        class="emotion-6"
       >
         Home
       </h6>
       <div
-        class="emotion-6"
+        class="emotion-7"
       />
       <div
-        class="emotion-10"
+        class="emotion-11"
         data-cy="schoolName"
       >
         <div
-          class="emotion-7"
+          class="emotion-8"
         >
           <div
             class=" gatsby-image-wrapper"
@@ -878,109 +950,117 @@ exports[`PageHome should render correctly 1`] = `
           </div>
         </div>
         <div
-          class="emotion-8"
+          class="emotion-9"
         />
         <div
           alt="Store Icon"
-          class="emotion-9"
+          class="emotion-10"
         />
       </div>
     </header>
     <nav
-      class="emotion-25"
+      class="emotion-27"
       data-cy="sidebar"
     >
       <div
-        class="emotion-14"
+        class="emotion-16"
       >
-        <div
-          alt="School Icon"
-          class="emotion-0"
-        />
-        <div
-          class="emotion-1"
-        />
+        <a
+          href="/choose-school"
+        >
+          <button
+            class="emotion-2"
+          >
+            <div
+              alt="School Icon"
+              class="emotion-0"
+            />
+            <div
+              class="emotion-1"
+            />
+          </button>
+        </a>
       </div>
       <a
         href="/dashboard/home"
       >
         <div
-          class="emotion-17"
+          class="emotion-19"
         >
           <div
             alt="Home icon"
-            class="emotion-15"
+            class="emotion-17"
           />
           <p
-            class="emotion-16"
+            class="emotion-18"
           >
             Home
           </p>
         </div>
       </a>
       <div
-        class="emotion-6"
+        class="emotion-7"
       />
       <a
         href="/dashboard/settings"
       >
         <div
-          class="emotion-21"
+          class="emotion-23"
         >
           <div
             alt="settings icon"
-            class="emotion-15"
+            class="emotion-17"
           />
           <p
-            class="emotion-16"
+            class="emotion-18"
           >
             settings
           </p>
         </div>
       </a>
       <button
-        class="emotion-24"
+        class="emotion-26"
         data-cy="toggleTheme"
       >
         <div
           alt="Dark Mode icon"
-          class="emotion-15"
+          class="emotion-17"
         />
         <p
-          class="emotion-23"
+          class="emotion-25"
         >
           Dark Mode
         </p>
       </button>
     </nav>
     <div
-      class="emotion-26"
+      class="emotion-28"
       data-cy="outsideSidebar"
     />
     <div
-      class="emotion-28"
+      class="emotion-30"
     >
       <div
-        class="emotion-27"
+        class="emotion-29"
       />
     </div>
     <main
-      class="emotion-43"
+      class="emotion-45"
     >
       <div
-        class="emotion-42"
+        class="emotion-44"
       >
         <div
-          class="emotion-34"
+          class="emotion-36"
         >
           <label
-            class="emotion-31"
+            class="emotion-33"
           >
             <div
-              class="emotion-30"
+              class="emotion-32"
             >
               <input
-                class="emotion-29"
+                class="emotion-31"
                 name="name"
                 placeholder="Search students"
                 value=""
@@ -988,34 +1068,34 @@ exports[`PageHome should render correctly 1`] = `
             </div>
           </label>
           <button
-            class="emotion-33"
+            class="emotion-35"
             data-cy="addStudent"
           >
             <div
-              class="emotion-32"
+              class="emotion-34"
             />
           </button>
         </div>
         <div
-          class="emotion-41"
+          class="emotion-43"
         >
           <div
-            class="emotion-35"
+            class="emotion-37"
           />
           <div
-            class="emotion-35"
+            class="emotion-37"
           />
           <div
-            class="emotion-35"
+            class="emotion-37"
           />
           <div
-            class="emotion-35"
+            class="emotion-37"
           />
           <div
-            class="emotion-35"
+            class="emotion-37"
           />
           <div
-            class="emotion-35"
+            class="emotion-37"
           />
         </div>
       </div>

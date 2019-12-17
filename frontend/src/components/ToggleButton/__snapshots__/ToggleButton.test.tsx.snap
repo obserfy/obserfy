@@ -65,6 +65,7 @@ exports[`ToggleButton should render correctly 1`] = `
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 400;
   line-height: 3rem;
+  white-space: noWrap;
   -webkit-transition: color 100ms cubic-bezier(0.0,0.0,0.2,1);
   transition: color 100ms cubic-bezier(0.0,0.0,0.2,1);
   -webkit-user-select: none;
@@ -106,6 +107,7 @@ exports[`ToggleButton should render correctly 1`] = `
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 400;
   line-height: 3rem;
+  white-space: noWrap;
   -webkit-transition: color 100ms cubic-bezier(0.0,0.0,0.2,1);
   transition: color 100ms cubic-bezier(0.0,0.0,0.2,1);
   -webkit-user-select: none;

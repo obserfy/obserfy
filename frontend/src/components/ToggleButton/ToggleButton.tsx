@@ -57,6 +57,7 @@ export const ToggleButton: FC<Props> = ({
             color={isSelected ? "primaryDark" : "text"}
             fontSize={1}
             sx={{
+              whiteSpace: "noWrap",
               transition: "color 100ms cubic-bezier(0.0, 0.0, 0.2, 1)",
               userSelect: "none",
               textAlign: "center",
