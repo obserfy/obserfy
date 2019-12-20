@@ -1,10 +1,10 @@
-## Docker Compose for development
+# Docker compose for testing prod docker image
 version: "3"
 services:
   vor_app:
     build:
       context: .
-      dockerfile: docker/vor/dev.dockerfile
+      dockerfile: docker/vor/prod.dockerfile
     container_name: vor_app
     depends_on:
       - db
@@ -14,13 +14,6 @@ services:
       DB_PASSWORD: developmentonly
       DB_HOST: vor-postgres
       DB_PORT: 5432
-    # allow debugging
-    security_opt:
-      - "apparmor=unconfined"
-    cap_add:
-      - "SYS_PTRACE"
-    volumes:
-      - .:/usr/src/vor
     ports:
       - "40000:40000"
       - "8080:8080"
