@@ -3,7 +3,7 @@ module github.com/chrsep/vor
 go 1.13
 
 require (
-	github.com/getsentry/sentry-go v0.3.1 // indirect
+	github.com/getsentry/sentry-go v0.3.1
 	github.com/go-chi/chi v4.0.2+incompatible
 	github.com/go-pg/pg/v9 v9.0.3
 	github.com/google/uuid v1.1.1
