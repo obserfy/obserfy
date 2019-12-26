@@ -2,8 +2,8 @@ const proxy = require("http-proxy-middleware")
 
 module.exports = {
   siteMetadata: {
-    title: `Vor`,
-    description: `Vor`,
+    title: `Obserfy`,
+    description: `Obserfy`,
     author: `@chrsep`,
   },
   plugins: [
@@ -24,13 +24,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Vör`,
-        short_name: `Vör`,
+        name: `Obserfy`,
+        short_name: `Obserfy`,
         start_url: `/`,
         background_color: `#33691e`,
         theme_color: `#33691e`,
         display: `standalone`,
-        icon: `src/images/icon.svg`, // This path is relative to the root of the site.
+        icon: `src/images/icon.png`, // This path is relative to the root of the site.
       },
     },
     // `gatsby-plugin-offline`,
