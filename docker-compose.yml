@@ -2,13 +2,17 @@
 version: "3"
 services:
   vor_app:
-    build:
-      context: .
-      dockerfile: docker/vor/dev.dockerfile
+    image: chrsep/go-devtools:latest
     container_name: vor_app
     depends_on:
       - db
+
+    # Tell the container where to find the entry point to your app.
     environment:
+      # go-devtools docker specific env
+      SRC_ENTRYPOINT: /src/vor/pkg/*.go
+
+      # vor specific env
       SITE_URL: https://localhost:8001
       DB_USERNAME: postgres
       DB_PASSWORD: developmentonly
@@ -20,7 +24,7 @@ services:
     cap_add:
       - "SYS_PTRACE"
     volumes:
-      - .:/usr/src/vor
+      - .:/src/vor
     ports:
       - "40000:40000"
       - "8080:8080"
