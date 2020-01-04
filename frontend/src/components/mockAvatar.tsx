@@ -1,5 +1,5 @@
-import Avatar from "./Avatar/Avatar"
 import React, { FC } from "react"
+import Avatar from "./Avatar/Avatar"
 import { BoxProps } from "./Box/Box"
 
 const MockAvatar: FC<BoxProps> = props => (

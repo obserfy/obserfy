@@ -23,6 +23,7 @@ import { getAnalytics } from "../../analytics"
 import ObservationCard from "../ObservationCard/ObservationCard"
 import Spacer from "../Spacer/Spacer"
 import ToggleButton from "../ToggleButton/ToggleButton"
+import StudentProgressSummaryCard from "../StudentProgressSummaryCard/StudentProgressSummaryCard"
 
 enum ObservationFilterType {
   TODAY,
@@ -203,6 +204,10 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
             <Icon minWidth={20} as={EditIcon} m={0} />
           </Button>
         </Flex>
+        <Box p={3}>
+          <SectionHeader>PROGRESS</SectionHeader>
+          <StudentProgressSummaryCard />
+        </Box>
         <Box p={3}>
           <Flex alignItems="center" mb={3}>
             <SectionHeader>OBSERVATIONS</SectionHeader>

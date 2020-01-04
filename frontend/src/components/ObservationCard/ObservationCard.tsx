@@ -75,6 +75,7 @@ export const ObservationCard: FC<Props> = ({
           variant="secondary"
           color="danger"
           onClick={() => onDelete(observation)}
+          fontSize={0}
         >
           delete
         </Button>
@@ -82,6 +83,7 @@ export const ObservationCard: FC<Props> = ({
           variant="secondary"
           data-cy="dialogPositiveAction"
           onClick={() => onEdit(observation)}
+          fontSize={0}
         >
           Edit
         </Button>
