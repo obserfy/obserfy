@@ -51,7 +51,7 @@ const themeUiTheme = {
 
     warning: "#ff6d00",
     onWarning: "rgba(0,0,0,0.87)",
-    tintWarning: "rgba(255,199,1,0.08)",
+    tintWarning: "rgba(255,199,1,0.2)",
 
     danger: "#d50000",
     onDanger: "#FFFFFF",
@@ -89,6 +89,7 @@ const themeUiTheme = {
 
         warning: "#ffd600",
         onWarning: "rgba(0,0,0,0.87)",
+        tintWarning: "rgba(255,199,1,0.08)",
       },
     },
   },

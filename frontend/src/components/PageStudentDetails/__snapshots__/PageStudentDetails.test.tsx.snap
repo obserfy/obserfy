@@ -291,7 +291,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   border-radius: 6px;
   padding: 16px;
   margin-top: 16px;
-  background-color: var(--theme-ui-colors-tintWarning,rgba(255,199,1,0.08));
+  background-color: var(--theme-ui-colors-tintWarning,rgba(255,199,1,0.2));
 }
 
 .emotion-13 {
