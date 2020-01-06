@@ -720,7 +720,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
           <p
             class="emotion-14"
           >
-            Enable the curriculum feature to track student progress in your curriculum.
+             Enable the curriculum feature to track student progress in your curriculum.
           </p>
           <div
             class="emotion-3"
@@ -731,7 +731,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
             <button
               class="emotion-16"
             >
-              Go to Curriculum
+               Go to Curriculum 
             </button>
           </div>
         </div>

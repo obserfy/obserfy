@@ -15,9 +15,10 @@ export const Basic: FC = () => (
   <StudentMaterialProgressDialog
     onDismiss={action("dismiss")}
     progress={{
-      presentedDate: new Date(),
+      presentedDate: new Date(2020, 1, 2, 1, 1, 1),
       status: MaterialProgressStatus.UNTOUCHED,
-      name: "Globe",
+      areaName: "Some area",
+      materialName: "A material",
     }}
   />
 )

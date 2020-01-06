@@ -1,4 +1,5 @@
 import React, { FC, useState } from "react"
+import { navigate } from "gatsby-plugin-intl3"
 import Button from "../Button/Button"
 import Spacer from "../Spacer/Spacer"
 import Flex from "../Flex/Flex"
@@ -10,9 +11,9 @@ import StudentMaterialProgressDialog from "../StudentMaterialProgressDialog/Stud
 import Pill from "../Pill/Pill"
 import Icon from "../Icon/Icon"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
-import { ReactComponent as InfoIcon } from "../../icons/info.svg"
 import { addOnlyUniqueValues } from "../../arrayManipulation"
 import Box from "../Box/Box"
+import InformationalCard from "../InformationalCard/InformationalCard"
 
 export enum MaterialProgressStatus {
   UNTOUCHED,
@@ -20,7 +21,7 @@ export enum MaterialProgressStatus {
   PRACTICED,
   MASTERED,
 }
-interface ProgressSummary {
+export interface ProgressSummary {
   areaName: string
   materialName: string
   status: MaterialProgressStatus
@@ -48,7 +49,7 @@ export const StudentProgressSummaryCard: FC = () => {
       />
     ))
 
-  const materialProgressDialog = isEditingLesson && (
+  const materialProgressDialog = isEditingLesson && selectedSummary && (
     <StudentMaterialProgressDialog
       progress={selectedSummary}
       onDismiss={() => setIsEditingLesson(false)}
@@ -75,33 +76,13 @@ export const StudentProgressSummaryCard: FC = () => {
   return (
     <>
       {summaries.length === 0 ? (
-        <Box
-          p={3}
-          mt={3}
-          backgroundColor="tintWarning"
-          sx={{
-            borderWidth: 1,
-            borderColor: "warning",
-            borderRadius: "default",
+        <InformationalCard
+          message=" Enable the curriculum feature to track student progress in your curriculum."
+          buttonText=" Go to Curriculum "
+          onButtonClick={() => {
+            navigate("/dashboard/curriculum")
           }}
-        >
-          <Flex alignItems="center">
-            <Icon as={InfoIcon} m={0} fill="warning" />
-            <Typography.Body fontSize={1} ml={2} color="warning">
-              Info
-            </Typography.Body>
-          </Flex>
-          <Typography.Body fontSize={1} pb={2}>
-            Enable the curriculum feature to track student progress in your
-            curriculum.
-          </Typography.Body>
-          <Flex>
-            <Spacer />
-            <Button variant="outline" color="warning" fontSize={0}>
-              Go to Curriculum
-            </Button>
-          </Flex>
-        </Box>
+        />
       ) : (
         <Card my={3}>
           <Tab

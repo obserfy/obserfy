@@ -2,10 +2,10 @@ import React, { FC } from "react"
 import { FormattedDate } from "gatsby-plugin-intl3"
 import Typography from "../Typography/Typography"
 import ScrollableDialog from "../ScrollableDialog/ScrollableDialog"
-import { MaterialProgress } from "../StudentProgressSummaryCard/StudentProgressSummaryCard"
+import { ProgressSummary } from "../StudentProgressSummaryCard/StudentProgressSummaryCard"
 
 export const StudentMaterialProgressDialog: FC<{
-  progress: MaterialProgress
+  progress: ProgressSummary
   onDismiss: () => void
 }> = ({ progress, onDismiss }) => (
   <ScrollableDialog
