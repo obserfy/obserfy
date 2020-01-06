@@ -23,7 +23,7 @@ exports[`InformationalCard should render correctly 1`] = `
   border-radius: 6px;
   padding: 16px;
   margin-top: 16px;
-  background-color: var(--theme-ui-colors-tintWarning,rgba(255,199,1,0.08));
+  background-color: var(--theme-ui-colors-tintWarning,rgba(255,199,1,0.2));
 }
 
 .emotion-2 {
@@ -194,7 +194,9 @@ exports[`InformationalCard should render correctly 1`] = `
       </div>
       <p
         class="emotion-3"
-      />
+      >
+        This is very useful do this.
+      </p>
       <div
         class="emotion-6"
       >
@@ -203,7 +205,9 @@ exports[`InformationalCard should render correctly 1`] = `
         />
         <button
           class="emotion-5"
-        />
+        >
+          A button
+        </button>
       </div>
     </div>
   </div>
