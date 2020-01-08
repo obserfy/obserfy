@@ -19,7 +19,9 @@ export const EditObservationDialog: FC<Props> = ({
 }) => {
   const [shortDesc, setShortDesc] = useState(defaultValue?.shortDesc ?? "")
   const [details, setDetails] = useState(defaultValue?.longDesc ?? "")
-  const [category, setCategory] = useState(categories[0].id)
+  const [category, setCategory] = useState(
+    categories[defaultValue?.categoryId ?? 1].id
+  )
 
   return (
     <ScrollableDialog
@@ -42,11 +44,10 @@ export const EditObservationDialog: FC<Props> = ({
         <Select
           mb={3}
           label="Category"
-          value={category}
           onChange={e => setCategory(e.target.value)}
         >
           {categories.map(({ id, name }) => (
-            <option key={id} value={id}>
+            <option key={id} value={id} selected={category === id}>
               {name}
             </option>
           ))}

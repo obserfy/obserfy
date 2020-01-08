@@ -647,7 +647,6 @@ exports[`EditObservationDialog should render correctly 1`] = `
             >
               <label
                 class="emotion-7"
-                value="0"
               >
                 <div
                   class="emotion-3"
