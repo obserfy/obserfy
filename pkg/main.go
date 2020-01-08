@@ -104,7 +104,7 @@ func createFrontendAuthMiddleware(env Env) func(next http.Handler) http.Handler 
 				}
 			}
 
-			// If trying to access root, redirect to dashboard.
+			// If trying to access root, redirect to dashboard home.
 			if path == "/" || path == "/dashboard" || path == "/dashboard/" {
 				http.Redirect(w, r, "/dashboard/home", http.StatusFound)
 				return

@@ -273,7 +273,6 @@ func giveNewSession(w http.ResponseWriter, env Env, userId string) {
 			Value:    session.Token,
 			Path:     "/",
 			Expires:  time.Now().AddDate(1, 0, 0),
-			Domain:   os.Getenv("SITE_URL"),
 			Secure:   false,
 			HttpOnly: true,
 			MaxAge:   94608000,
