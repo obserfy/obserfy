@@ -14,7 +14,7 @@ type School struct {
 	Name         string `json:"name"`
 	InviteCode   string `json:"inviteCode"`
 	Users        []User `pg:"many2many:user_to_schools,joinFK:user_id"`
-	CurriculumId string `pg:",type:uuid"`
+	CurriculumId string `pg:",type:uuid,on_delete:SET NULL"`
 	Curriculum   Curriculum
 }
 
@@ -314,14 +314,8 @@ func checkUserIsAuthorized(w http.ResponseWriter, userId string, schoolId string
 
 func createNewCurriculum(env Env) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		// Check school id is valid
+		// Get school id
 		schoolId := chi.URLParam(r, "schoolId")
-		_, err := uuid.Parse(schoolId)
-		if err != nil {
-			env.logger.Warn("Invalid School ID received", zap.Error(err))
-			http.Error(w, "Invalid ID received", http.StatusBadRequest)
-			return
-		}
 
 		// check session is valid, and user has authorization to access the school.
 		session, ok := getSessionFromCtx(w, r, env.logger)
@@ -334,54 +328,19 @@ func createNewCurriculum(env Env) http.HandlerFunc {
 
 		// Return conflict error if school already has curriculum
 		var school School
-		err = env.db.Model(&school).
-			Where("id=?", schoolId).
-			Select()
-		if err != nil {
-			writeInternalServerError("Failed to log school data.", w, err, env.logger)
+		if err := env.db.Model(&school).Where("id=?", schoolId).Select(); err != nil {
+			writeInternalServerError("Failed to get school data.", w, err, env.logger)
 			return
 		}
-
 		if school.CurriculumId != "" {
 			env.logger.Warn("School already have curriculum, but tries to create new one", zap.String("schoolId", schoolId))
 			http.Error(w, "School already has curriculum", http.StatusConflict)
 			return
 		}
 
-		// Save curriculum
-		curriculum := createDefaultCurriculum()
-		err = env.db.Insert(&curriculum)
-		if err != nil {
+		// Save default curriculum using transaction
+		if err := env.db.RunInTransaction(insertFullCurriculum(school, createDefaultCurriculum())); err != nil {
 			writeInternalServerError("Failed saving curriculum", w, err, env.logger)
-			return
-		}
-		for _, area := range curriculum.Areas {
-			err = env.db.Insert(&area)
-			if err != nil {
-				writeInternalServerError("Failed saving areas", w, err, env.logger)
-				return
-			}
-			for _, subject := range area.Subjects {
-				err = env.db.Insert(&subject)
-				if err != nil {
-					writeInternalServerError("Failed saving areas", w, err, env.logger)
-					return
-				}
-				for _, material := range subject.Materials {
-					err = env.db.Insert(&material)
-					if err != nil {
-						writeInternalServerError("Failed saving areas", w, err, env.logger)
-						return
-					}
-				}
-			}
-		}
-
-		// Update the school with the new curriculum
-		school.CurriculumId = curriculum.Id
-		err = env.db.Update(&school)
-		if err != nil {
-			writeInternalServerError("Failed saving school with updated curriculum", w, err, env.logger)
 			return
 		}
 

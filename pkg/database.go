@@ -21,6 +21,7 @@ func getDBConnection() *pg.DB {
 func createSchema(env Env) {
 	for _, model := range []interface{}{
 		(*Student)(nil),
+
 		// Curriculum related tables
 		(*Curriculum)(nil),
 		(*Area)(nil),
@@ -28,10 +29,10 @@ func createSchema(env Env) {
 		(*Material)(nil),
 		(*StudentMaterialProgress)(nil),
 
+		(*School)(nil),
 		(*Observation)(nil),
 		(*User)(nil),
 		(*Session)(nil),
-		(*School)(nil),
 		(*UserToSchool)(nil),
 	} {
 		err := env.db.CreateTable(model, &orm.CreateTableOptions{IfNotExists: true, FKConstraints: true})

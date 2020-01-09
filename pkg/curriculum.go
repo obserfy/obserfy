@@ -1,6 +1,9 @@
 package main
 
-import "github.com/google/uuid"
+import (
+	"github.com/go-pg/pg/v9"
+	"github.com/google/uuid"
+)
 
 type Curriculum struct {
 	Id    string `pg:"type:uuid"`
@@ -10,7 +13,7 @@ type Curriculum struct {
 
 type Area struct {
 	Id           string `pg:"type:uuid"`
-	CurriculumId string `pg:"type:uuid"`
+	CurriculumId string `pg:"type:uuid,on_delete:CASCADE"`
 	Curriculum   Curriculum
 	Name         string
 	Subjects     []Subject `pg:"fk:area_id"`
@@ -18,7 +21,7 @@ type Area struct {
 
 type Subject struct {
 	Id        string `pg:"type:uuid"`
-	AreaId    string `pg:"type:uuid"`
+	AreaId    string `pg:"type:uuid,on_delete:CASCADE"`
 	Area      Area
 	Name      string
 	Materials []Material `pg:"fk:subject_id"`
@@ -27,16 +30,16 @@ type Subject struct {
 
 type Material struct {
 	Id        string `pg:"type:uuid"`
-	SubjectId string `pg:"type:uuid"`
+	SubjectId string `pg:"type:uuid,on_delete:CASCADE"`
 	Subject   Subject
 	Name      string
 	Order     int `pg:",use_zero"`
 }
 
 type StudentMaterialProgress struct {
-	MaterialId string `pg:"type:uuid"`
+	MaterialId string `pg:"type:uuid,on_delete:CASCADE"`
 	Material   Material
-	StudentId  string `pg:"type:uuid"`
+	StudentId  string `pg:"type:uuid,on_delete:CASCADE"`
 	Student    Student
 	Stage      int
 }
@@ -406,4 +409,35 @@ func createDefaultCurriculum() Curriculum {
 		cultural,
 	}
 	return curriculum
+}
+
+func insertFullCurriculum(school School, curriculum Curriculum) func(tx *pg.Tx) error {
+	return func(tx *pg.Tx) error {
+		// Save the curriculum tree.
+		if err := tx.Insert(&curriculum); err != nil {
+			return err
+		}
+		for _, area := range curriculum.Areas {
+			if err := tx.Insert(&area); err != nil {
+				return err
+			}
+			for _, subject := range area.Subjects {
+				if err := tx.Insert(&subject); err != nil {
+					return err
+				}
+				for _, material := range subject.Materials {
+					if err := tx.Insert(&material); err != nil {
+						return err
+					}
+				}
+			}
+		}
+
+		// Update the school with the new curriculum id
+		school.CurriculumId = curriculum.Id
+		if err := tx.Update(&school); err != nil {
+			return err
+		}
+		return nil
+	}
 }
