@@ -31,6 +31,7 @@ func createSchoolsSubroute(env Env) *chi.Mux {
 	r.Post("/{schoolId}/students", createNewStudentForSchool(env))
 	r.Post("/{schoolId}/invite-code", generateNewInviteCode(env))
 
+	r.Get("/{schoolId}/curriculum", getCurriculum(env))
 	r.Post("/{schoolId}/curriculum", createNewCurriculum(env))
 	r.Delete("/{schoolId}/curriculum", deleteCurriculum(env))
 	return r
@@ -385,6 +386,88 @@ func deleteCurriculum(env Env) http.HandlerFunc {
 		// Delete the whole curriculum tree.
 		if err = env.db.Delete(&(school.Curriculum)); err != nil {
 			writeInternalServerError("Failed deleting curriculum", w, err, env.logger)
+			return
+		}
+	}
+}
+
+func getCurriculum(env Env) http.HandlerFunc {
+	type material struct {
+		Name  string `json:"name"`
+		Order int    `json:"order"`
+	}
+	type subject struct {
+		Name      string     `json:"name"`
+		Materials []material `json:"materials"`
+		Order     int        `json:"order"`
+	}
+	type area struct {
+		Name     string    `json:"name"`
+		Subjects []subject `json:"subjects"`
+	}
+	type curriculum struct {
+		Name  string `json:"name"`
+		Areas []area `json:"areas"`
+	}
+	return func(w http.ResponseWriter, r *http.Request) {
+		// Get school id
+		schoolId := chi.URLParam(r, "schoolId")
+
+		// check session is valid, and user has authorization to access the school.
+		session, ok := getSessionFromCtx(w, r, env.logger)
+		if !ok {
+			return
+		}
+		if ok := checkUserIsAuthorized(w, session.UserId, schoolId, env); !ok {
+			return
+		}
+
+		// Get school data and check if curriculum exists
+		var school School
+		err := env.db.Model(&school).
+			Relation("Curriculum").
+			Relation("Curriculum.Areas").
+			Relation("Curriculum.Areas.Subjects").
+			Relation("Curriculum.Areas.Subjects.Materials").
+			Where("school.id=?", schoolId).
+			Select()
+		if err != nil {
+			writeInternalServerError("Failed to get school data.", w, err, env.logger)
+			return
+		}
+
+		// Don't do anything if school doesn't have curriculum yet
+		if school.CurriculumId == "" {
+			env.logger.Warn("School doesn't have a curriculum yet", zap.String("schoolId", schoolId))
+			http.Error(w, "School doesn't have a curriculum yet", http.StatusNotFound)
+			return
+		}
+
+		// Format queried result into response format.
+		response := curriculum{Name: school.Curriculum.Name}
+		for _, dbArea := range school.Curriculum.Areas {
+			simplifiedArea := area{Name: dbArea.Name, Subjects: []subject{}}
+			for _, dbSubject := range dbArea.Subjects {
+				simplifiedSubject := subject{
+					Name:      dbSubject.Name,
+					Order:     dbSubject.Order,
+					Materials: []material{},
+				}
+				for _, dbMaterial := range dbSubject.Materials {
+					simplifiedMaterial := material{
+						Name:  dbMaterial.Name,
+						Order: dbMaterial.Order,
+					}
+					simplifiedSubject.Materials = append(simplifiedSubject.Materials, simplifiedMaterial)
+				}
+				simplifiedArea.Subjects = append(simplifiedArea.Subjects, simplifiedSubject)
+			}
+			response.Areas = append(response.Areas, simplifiedArea)
+		}
+
+		err = writeJsonResponse(w, response, env.logger)
+		if err != nil {
+			writeInternalServerError("Fail to get json response", w, err, env.logger)
 			return
 		}
 	}
