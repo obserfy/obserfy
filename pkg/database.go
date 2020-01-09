@@ -20,6 +20,7 @@ func getDBConnection() *pg.DB {
 
 func createSchema(env Env) {
 	for _, model := range []interface{}{
+		(*Student)(nil),
 		// Curriculum related tables
 		(*Curriculum)(nil),
 		(*Area)(nil),
@@ -29,7 +30,6 @@ func createSchema(env Env) {
 
 		(*Observation)(nil),
 		(*User)(nil),
-		(*Student)(nil),
 		(*Session)(nil),
 		(*School)(nil),
 		(*UserToSchool)(nil),

@@ -11,6 +11,7 @@ type Curriculum struct {
 type Area struct {
 	Id           string `pg:"type:uuid"`
 	CurriculumId string `pg:"type:uuid"`
+	Curriculum   Curriculum
 	Name         string
 	Subjects     []Subject `pg:"fk:area_id"`
 }
@@ -18,6 +19,7 @@ type Area struct {
 type Subject struct {
 	Id        string `pg:"type:uuid"`
 	AreaId    string `pg:"type:uuid"`
+	Area      Area
 	Name      string
 	Materials []Material `pg:"fk:subject_id"`
 	Order     int        `pg:",use_zero"`
@@ -26,13 +28,16 @@ type Subject struct {
 type Material struct {
 	Id        string `pg:"type:uuid"`
 	SubjectId string `pg:"type:uuid"`
+	Subject   Subject
 	Name      string
 	Order     int `pg:",use_zero"`
 }
 
 type StudentMaterialProgress struct {
 	MaterialId string `pg:"type:uuid"`
+	Material   Material
 	StudentId  string `pg:"type:uuid"`
+	Student    Student
 	Stage      int
 }
 
