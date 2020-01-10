@@ -45,9 +45,10 @@ export const EditObservationDialog: FC<Props> = ({
           mb={3}
           label="Category"
           onChange={e => setCategory(e.target.value)}
+          value={category}
         >
           {categories.map(({ id, name }) => (
-            <option key={id} value={id} selected={category === id}>
+            <option key={id} value={id}>
               {name}
             </option>
           ))}
