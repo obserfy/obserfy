@@ -21,7 +21,7 @@ import MenuIcon from "./MenuIcon"
 import Flex, { FlexProps } from "../Flex/Flex"
 import Box from "../Box/Box"
 import { useAvatarPlaceholder } from "../../useAvatarPlaceholder"
-import useApi from "../../hooks/useApi"
+import useApi from "../../api/useApi"
 import { getSchoolId } from "../../hooks/schoolIdState"
 import { getAnalytics } from "../../analytics"
 import {

@@ -6,7 +6,7 @@ import Spacer from "../Spacer/Spacer"
 import Button from "../Button/Button"
 import { getAnalytics } from "../../analytics"
 import { getSchoolId } from "../../hooks/schoolIdState"
-import useApi from "../../hooks/useApi"
+import useApi from "../../api/useApi"
 
 export const PageCurriculumSettings: FC = () => {
   const [curriculum, setCurriculumOutdated] = useApi(

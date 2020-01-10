@@ -85,7 +85,7 @@ exports[`CardLink should render correctly 1`] = `
     class="emotion-5"
   >
     <a
-      href="/dashboard/settings/undefined"
+      href="/dashboard/settings//curriculum"
     >
       <div
         class="emotion-4"
@@ -95,7 +95,9 @@ exports[`CardLink should render correctly 1`] = `
         >
           <h6
             class="emotion-0"
-          />
+          >
+            Curriculum
+          </h6>
           <div
             class="emotion-1"
           />

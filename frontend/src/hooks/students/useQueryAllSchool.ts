@@ -1,4 +1,4 @@
-import useApi from "../useApi"
+import useApi from "../../api/useApi"
 
 export interface Schools {
   id: string
