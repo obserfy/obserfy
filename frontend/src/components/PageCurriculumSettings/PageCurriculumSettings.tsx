@@ -47,6 +47,7 @@ export const PageCurriculumSettings: FC = () => {
       <Typography.H3 py={3}>{curriculum.name}</Typography.H3>
       {curriculum.areas.map((area: any) => (
         <CardLink
+          key={area.id}
           name={area.name}
           to={`/dashboard/settings/curriculum/area?id=${area.id}`}
           mb={3}

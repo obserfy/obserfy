@@ -397,19 +397,23 @@ func deleteCurriculum(env Env) http.HandlerFunc {
 
 func getCurriculum(env Env) http.HandlerFunc {
 	type material struct {
+		Id    string `json:"id"`
 		Name  string `json:"name"`
 		Order int    `json:"order"`
 	}
 	type subject struct {
+		Id        string     `json:"id"`
 		Name      string     `json:"name"`
 		Materials []material `json:"materials"`
 		Order     int        `json:"order"`
 	}
 	type area struct {
+		Id       string    `json:"id"`
 		Name     string    `json:"name"`
 		Subjects []subject `json:"subjects"`
 	}
 	type curriculum struct {
+		Id    string `json:"id"`
 		Name  string `json:"name"`
 		Areas []area `json:"areas"`
 	}
@@ -452,15 +456,21 @@ func getCurriculum(env Env) http.HandlerFunc {
 		// Format queried result into response format.
 		response := curriculum{Name: school.Curriculum.Name}
 		for _, dbArea := range school.Curriculum.Areas {
-			simplifiedArea := area{Name: dbArea.Name, Subjects: []subject{}}
+			simplifiedArea := area{
+				Id:       dbArea.Id,
+				Name:     dbArea.Name,
+				Subjects: []subject{},
+			}
 			for _, dbSubject := range dbArea.Subjects {
 				simplifiedSubject := subject{
+					Id:        dbSubject.Id,
 					Name:      dbSubject.Name,
 					Order:     dbSubject.Order,
 					Materials: []material{},
 				}
 				for _, dbMaterial := range dbSubject.Materials {
 					simplifiedMaterial := material{
+						Id:    dbMaterial.Id,
 						Name:  dbMaterial.Name,
 						Order: dbMaterial.Order,
 					}
