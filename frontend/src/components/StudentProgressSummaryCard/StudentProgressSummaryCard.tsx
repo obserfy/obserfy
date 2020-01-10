@@ -80,7 +80,7 @@ export const StudentProgressSummaryCard: FC = () => {
           message=" Enable the curriculum feature to track student progress in your curriculum."
           buttonText=" Go to Curriculum "
           onButtonClick={() => {
-            navigate("/dashboard/curriculum")
+            navigate("/dashboard/settings/curriculum")
           }}
         />
       ) : (

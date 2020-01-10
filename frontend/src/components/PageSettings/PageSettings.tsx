@@ -1,9 +1,6 @@
 import React, { FC, useEffect, useState } from "react"
-import { Link } from "gatsby-plugin-intl3"
-import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import Box from "../Box/Box"
 import Input from "../Input/Input"
-import Card from "../Card/Card"
 import Typography from "../Typography/Typography"
 import Flex from "../Flex/Flex"
 import Icon from "../Icon/Icon"
@@ -13,6 +10,7 @@ import Button from "../Button/Button"
 import useApi from "../../hooks/useApi"
 import { getSchoolId } from "../../hooks/schoolIdState"
 import UserCard from "../UserCard/UserCard"
+import CardLink from "../CardLink/CardLink"
 
 export const PageSettings: FC = () => {
   const schoolId = getSchoolId()
@@ -81,7 +79,7 @@ export const PageSettings: FC = () => {
           </Flex>
         </Box>
       </Box>
-      <SettingLink name="Curriculum" to="curriculum" />
+      <CardLink name="Curriculum" to="curriculum" />
       <Box pt={4}>
         <Typography.H5 mb={3}>Users</Typography.H5>
         {userCards}
@@ -107,17 +105,5 @@ export const PageSettings: FC = () => {
     </Box>
   )
 }
-
-const SettingLink: FC<{ name: string; to: string }> = ({ name, to }) => (
-  <Link to={`/dashboard/settings/${to}`}>
-    <Card p={3}>
-      <Flex alignItems="center">
-        <Typography.H6>{name}</Typography.H6>
-        <Spacer />
-        <Icon as={NextIcon} m={0} />
-      </Flex>
-    </Card>
-  </Link>
-)
 
 export default PageSettings

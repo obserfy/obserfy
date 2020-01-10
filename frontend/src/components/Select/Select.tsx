@@ -14,6 +14,7 @@ export const Select: FC<SelectProps> = ({
   label,
   defaultValue,
   value,
+  onChange,
   ...props
 }) => (
   <Label display="flex" sx={{ flexDirection: "column" }} {...props}>
@@ -22,7 +23,12 @@ export const Select: FC<SelectProps> = ({
         {label}
       </Box>
     )}
-    <BaseSelect defaultValue={defaultValue} value={value} aria-label={label}>
+    <BaseSelect
+      onChange={onChange}
+      defaultValue={defaultValue}
+      value={value}
+      aria-label={label}
+    >
       {children}
     </BaseSelect>
   </Label>
