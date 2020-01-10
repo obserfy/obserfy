@@ -119,6 +119,21 @@ module.exports = {
         redirect: false,
       },
     },
+    {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl: `https://obserfy.com`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-nprogress`,
+      options: {
+        // Setting a color is optional.
+        color: `#33691e`,
+        // Disable the loading spinner.
+        showSpinner: false,
+      },
+    },
     // DEVTOOLS ================================================================
     {
       resolve: "gatsby-plugin-webpack-bundle-analyzer",
