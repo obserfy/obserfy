@@ -4,6 +4,7 @@ services:
   vor_app:
     image: chrsep/go-devtools:latest
     container_name: vor_app
+    working_dir: /src/vor
     depends_on:
       - db
 
