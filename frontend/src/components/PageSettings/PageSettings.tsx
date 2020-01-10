@@ -1,4 +1,6 @@
 import React, { FC, useEffect, useState } from "react"
+import { Link } from "gatsby-plugin-intl3"
+import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import Box from "../Box/Box"
 import Input from "../Input/Input"
 import Card from "../Card/Card"
@@ -54,23 +56,8 @@ export const PageSettings: FC = () => {
   }
 
   return (
-    <Box
-      maxWidth="maxWidth.sm"
-      margin="auto"
-      p={3}
-      pt={[3, 3, 4]}
-    >
-      <Card p={3} mb={3}>
-        <Typography.H5 mb={3}>Invite your co-workers</Typography.H5>
-        <Typography.Body
-          fontSize={1}
-          mb={3}
-          color="textMediumEmphasis"
-          lineHeight="2em"
-        >
-          Use this link to invite other school members, such as teachers. Using
-          this link would give them access to this school.
-        </Typography.Body>
+    <Box maxWidth="maxWidth.sm" margin="auto" p={3} pt={[3, 3, 4]}>
+      <Box mb={3}>
         <Box
           p={3}
           backgroundColor="tintYellow"
@@ -79,14 +66,7 @@ export const PageSettings: FC = () => {
         >
           <Flex alignItems="center">
             <Box>
-              <Typography.Body
-                fontSize={0}
-                lineHeight={1}
-                mb={3}
-                sx={{ userSelect: "none" }}
-              >
-                Invitation Link
-              </Typography.Body>
+              <Typography.H6 mb={3}>Invite your co-workers</Typography.H6>
               <Typography.Body
                 id="shareLink"
                 fontSize={1}
@@ -100,9 +80,10 @@ export const PageSettings: FC = () => {
             <Icon minWidth={24} size={24} as={ShareIcon} m={0} mx={3} />
           </Flex>
         </Box>
-      </Card>
-      <Box pt={3}>
-        <Typography.H5 mb={3}>Accounts Connected</Typography.H5>
+      </Box>
+      <SettingLink name="Curriculum" to="curriculum" />
+      <Box pt={4}>
+        <Typography.H5 mb={3}>Users</Typography.H5>
         {userCards}
       </Box>
       <Box pt={4}>
@@ -126,5 +107,17 @@ export const PageSettings: FC = () => {
     </Box>
   )
 }
+
+const SettingLink: FC<{ name: string; to: string }> = ({ name, to }) => (
+  <Link to={`/dashboard/settings/${to}`}>
+    <Card p={3}>
+      <Flex alignItems="center">
+        <Typography.H6>{name}</Typography.H6>
+        <Spacer />
+        <Icon as={NextIcon} m={0} />
+      </Flex>
+    </Card>
+  </Link>
+)
 
 export default PageSettings
