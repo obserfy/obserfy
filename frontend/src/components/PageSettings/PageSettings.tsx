@@ -79,7 +79,7 @@ export const PageSettings: FC = () => {
           </Flex>
         </Box>
       </Box>
-      <CardLink name="Curriculum" to="curriculum" />
+      <CardLink name="Curriculum" to="/dashboard/settings/curriculum" />
       <Box pt={4}>
         <Typography.H5 mb={3}>Users</Typography.H5>
         {userCards}

@@ -13,7 +13,7 @@ interface Props extends BoxProps {
   to: string
 }
 export const CardLink: FC<Props> = ({ name, to, ...props }) => (
-  <Link to={`/dashboard/settings/${to}`}>
+  <Link to={to}>
     <Card p={3} {...props}>
       <Flex alignItems="center">
         <Typography.H6>{name}</Typography.H6>
