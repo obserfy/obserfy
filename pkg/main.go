@@ -111,6 +111,12 @@ func createFrontendAuthMiddleware(env Env, folder string) func(next http.Handler
 				return
 			}
 
+			// Remove trailing slashes
+			if strings.HasSuffix(path, "/") {
+				http.Redirect(w, r, strings.TrimSuffix(path, "/"), http.StatusMovedPermanently)
+				return
+			}
+
 			// Workaround to prevent redirects on frontend pages
 			// which are caused by gatsby always generating pages as index.html inside
 			// folders, eg /home/index.html instead of /home.html.
