@@ -443,7 +443,7 @@ func getCurriculum(env Env) http.HandlerFunc {
 		// Don't do anything if school doesn't have curriculum yet
 		if school.CurriculumId == "" {
 			env.logger.Warn("School doesn't have a curriculum yet", zap.String("schoolId", schoolId))
-			w.WriteHeader(http.StatusConflict)
+			w.WriteHeader(http.StatusNotFound)
 			response := createErrorResponse("Conflict", "School already has curriculum")
 			_ = writeJsonResponse(w, response, env.logger)
 			return
