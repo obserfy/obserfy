@@ -336,7 +336,9 @@ func createNewCurriculum(env Env) http.HandlerFunc {
 		}
 		if school.CurriculumId != "" {
 			env.logger.Warn("School already have curriculum, but tries to create new one", zap.String("schoolId", schoolId))
-			http.Error(w, "School already has curriculum", http.StatusConflict)
+			w.WriteHeader(http.StatusConflict)
+			response := createErrorResponse("Conflict", "School already has curriculum")
+			_ = writeJsonResponse(w, response, env.logger)
 			return
 		}
 
@@ -379,7 +381,9 @@ func deleteCurriculum(env Env) http.HandlerFunc {
 		// Don't do anything if school doesn't have curriculum yet
 		if school.CurriculumId == "" {
 			env.logger.Warn("School doesn't have a curriculum yet", zap.String("schoolId", schoolId))
-			http.Error(w, "School doesn't have a curriculum yet", http.StatusNotFound)
+			w.WriteHeader(http.StatusNotFound)
+			response := createErrorResponse("NotFound", "School doesn't have any curriculum")
+			_ = writeJsonResponse(w, response, env.logger)
 			return
 		}
 
@@ -439,7 +443,9 @@ func getCurriculum(env Env) http.HandlerFunc {
 		// Don't do anything if school doesn't have curriculum yet
 		if school.CurriculumId == "" {
 			env.logger.Warn("School doesn't have a curriculum yet", zap.String("schoolId", schoolId))
-			http.Error(w, "School doesn't have a curriculum yet", http.StatusNotFound)
+			w.WriteHeader(http.StatusConflict)
+			response := createErrorResponse("Conflict", "School already has curriculum")
+			_ = writeJsonResponse(w, response, env.logger)
 			return
 		}
 
