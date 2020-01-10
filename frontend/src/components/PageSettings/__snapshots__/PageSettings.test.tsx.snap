@@ -40,7 +40,7 @@ exports[`PageSettings should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  margin-bottom: 16px;
+  margin-bottom: 32px;
 }
 
 .emotion-6 {

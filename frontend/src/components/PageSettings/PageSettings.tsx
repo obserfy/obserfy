@@ -55,7 +55,7 @@ export const PageSettings: FC = () => {
 
   return (
     <Box maxWidth="maxWidth.sm" margin="auto" p={3} pt={[3, 3, 4]}>
-      <Box mb={3}>
+      <Box mb={4}>
         <Box
           p={3}
           backgroundColor="tintYellow"
