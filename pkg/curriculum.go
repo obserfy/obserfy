@@ -505,13 +505,6 @@ func getAreaSubjects(env Env) http.HandlerFunc {
 		err := env.db.Model(&subjects).
 			Where("area_id=?", areaId).
 			Select()
-		if err == pg.ErrNoRows {
-			env.logger.Warn("Area not found", zap.String("areaId", areaId))
-			w.WriteHeader(http.StatusNotFound)
-			response := createErrorResponse("NotFound", "Can't find subject of the specified area")
-			_ = writeJsonResponse(w, response, env.logger)
-			return
-		}
 		if err != nil {
 			writeInternalServerError("Failed to get area data.", w, err, env.logger)
 			return
@@ -547,13 +540,6 @@ func getSubjectMaterials(env Env) http.HandlerFunc {
 		err := env.db.Model(&materials).
 			Where("subject_id=?", subjectId).
 			Select()
-		if err == pg.ErrNoRows {
-			env.logger.Warn("subject materials not found", zap.String("subjectId", subjectId))
-			w.WriteHeader(http.StatusNotFound)
-			response := createErrorResponse("NotFound", "Can't find materials for the specified subject")
-			_ = writeJsonResponse(w, response, env.logger)
-			return
-		}
 		if err != nil {
 			writeInternalServerError("Failed to get area data.", w, err, env.logger)
 			return

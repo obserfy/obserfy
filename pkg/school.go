@@ -34,7 +34,7 @@ func createSchoolsSubroute(env Env) *chi.Mux {
 	r.Post("/{schoolId}/curriculum", createNewCurriculum(env))
 	r.Delete("/{schoolId}/curriculum", deleteCurriculum(env))
 	r.Get("/{schoolId}/curriculum", getCurriculum(env))
-	r.Get("/{schoolId}/curriculum/areas/{areaId}", getArea(env))
+	r.Get("/{schoolId}/curriculum/areas", getCurriculumAreas(env))
 	return r
 }
 
@@ -397,26 +397,9 @@ func deleteCurriculum(env Env) http.HandlerFunc {
 }
 
 func getCurriculum(env Env) http.HandlerFunc {
-	type material struct {
-		Id    string `json:"id"`
-		Name  string `json:"name"`
-		Order int    `json:"order"`
-	}
-	type subject struct {
-		Id        string     `json:"id"`
-		Name      string     `json:"name"`
-		Materials []material `json:"materials"`
-		Order     int        `json:"order"`
-	}
-	type area struct {
-		Id       string    `json:"id"`
-		Name     string    `json:"name"`
-		Subjects []subject `json:"subjects"`
-	}
 	type curriculum struct {
-		Id    string `json:"id"`
-		Name  string `json:"name"`
-		Areas []area `json:"areas"`
+		Id   string `json:"id"`
+		Name string `json:"name"`
 	}
 	return func(w http.ResponseWriter, r *http.Request) {
 		// Get school id
@@ -435,10 +418,55 @@ func getCurriculum(env Env) http.HandlerFunc {
 		var school School
 		err := env.db.Model(&school).
 			Relation("Curriculum").
-			Relation("Curriculum.Areas").
-			Relation("Curriculum.Areas.Subjects").
-			Relation("Curriculum.Areas.Subjects.Materials").
 			Where("school.id=?", schoolId).
+			Select()
+		if err != nil {
+			writeInternalServerError("Failed to get school data.", w, err, env.logger)
+			return
+		}
+
+		// Don't do anything if school doesn't have curriculum yet
+		if school.CurriculumId == "" {
+			env.logger.Warn("School doesn't have a curriculum yet", zap.String("schoolId", schoolId))
+			w.WriteHeader(http.StatusNotFound)
+			response := createErrorResponse("NotFound", "School already has curriculum")
+			_ = writeJsonResponse(w, response, env.logger)
+			return
+		}
+
+		// Format queried result into response format.
+		response := curriculum{Id: school.CurriculumId, Name: school.Curriculum.Name}
+
+		err = writeJsonResponse(w, response, env.logger)
+		if err != nil {
+			writeInternalServerError("Fail to get json response", w, err, env.logger)
+			return
+		}
+	}
+}
+
+func getCurriculumAreas(env Env) http.HandlerFunc {
+	type simplifiedArea struct {
+		Id   string `json:"id"`
+		Name string `json:"name"`
+	}
+	return func(w http.ResponseWriter, r *http.Request) {
+		// Get school id
+		schoolId := chi.URLParam(r, "schoolId")
+
+		// check session is valid, and user has authorization to access the school.
+		session, ok := getSessionFromCtx(w, r, env.logger)
+		if !ok {
+			return
+		}
+		if ok := checkUserIsAuthorized(w, session.UserId, schoolId, env); !ok {
+			return
+		}
+
+		// Get school data and check if curriculum exists
+		var school School
+		err := env.db.Model(&school).
+			Where("id=?", schoolId).
 			Select()
 		if err != nil {
 			writeInternalServerError("Failed to get school data.", w, err, env.logger)
@@ -454,32 +482,22 @@ func getCurriculum(env Env) http.HandlerFunc {
 			return
 		}
 
+		var areas []Area
+		err = env.db.Model(&areas).
+			Where("curriculum_id=?", school.CurriculumId).
+			Select()
+		if err != nil {
+			writeInternalServerError("Failed to get school data.", w, err, env.logger)
+			return
+		}
+
 		// Format queried result into response format.
-		response := curriculum{Name: school.Curriculum.Name}
-		for _, dbArea := range school.Curriculum.Areas {
-			simplifiedArea := area{
-				Id:       dbArea.Id,
-				Name:     dbArea.Name,
-				Subjects: []subject{},
-			}
-			for _, dbSubject := range dbArea.Subjects {
-				simplifiedSubject := subject{
-					Id:        dbSubject.Id,
-					Name:      dbSubject.Name,
-					Order:     dbSubject.Order,
-					Materials: []material{},
-				}
-				for _, dbMaterial := range dbSubject.Materials {
-					simplifiedMaterial := material{
-						Id:    dbMaterial.Id,
-						Name:  dbMaterial.Name,
-						Order: dbMaterial.Order,
-					}
-					simplifiedSubject.Materials = append(simplifiedSubject.Materials, simplifiedMaterial)
-				}
-				simplifiedArea.Subjects = append(simplifiedArea.Subjects, simplifiedSubject)
-			}
-			response.Areas = append(response.Areas, simplifiedArea)
+		var response []simplifiedArea
+		for _, area := range areas {
+			response = append(response, simplifiedArea{
+				Id:   area.Id,
+				Name: area.Name,
+			})
 		}
 
 		err = writeJsonResponse(w, response, env.logger)

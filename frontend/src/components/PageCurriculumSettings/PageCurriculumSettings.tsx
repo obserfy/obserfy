@@ -11,9 +11,13 @@ import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import CardLink from "../CardLink/CardLink"
 
 export const PageCurriculumSettings: FC = () => {
-  const [curriculum, setCurriculumOutdated, loading] = useApi(
+  const [curriculum, setCurriculumOutdated, curriculumLoading] = useApi(
     `/schools/${getSchoolId()}/curriculum`
   )
+  const [areas, setAreasOutdated, areasLoading] = useApi(
+    `/schools/${getSchoolId()}/curriculum/areas`
+  )
+  const loading = curriculumLoading || areasLoading
 
   async function createNewDefaultCurriculum(): Promise<void> {
     const baseUrl = "/api/v1"
@@ -26,6 +30,7 @@ export const PageCurriculumSettings: FC = () => {
     )
     if (response.status === 201) {
       setCurriculumOutdated()
+      setAreasOutdated()
       getAnalytics()?.track("Default curriculum created", {
         responseStatus: response.status,
       })
@@ -45,7 +50,7 @@ export const PageCurriculumSettings: FC = () => {
   const curriculumList = curriculum && curriculum.error === undefined && (
     <Box m={3}>
       <Typography.H3 py={3}>{curriculum.name}</Typography.H3>
-      {curriculum.areas.map((area: any) => (
+      {areas?.map((area: any) => (
         <CardLink
           key={area.id}
           name={area.name}
