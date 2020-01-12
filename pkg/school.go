@@ -31,9 +31,10 @@ func createSchoolsSubroute(env Env) *chi.Mux {
 	r.Post("/{schoolId}/students", createNewStudentForSchool(env))
 	r.Post("/{schoolId}/invite-code", generateNewInviteCode(env))
 
-	r.Get("/{schoolId}/curriculum", getCurriculum(env))
 	r.Post("/{schoolId}/curriculum", createNewCurriculum(env))
 	r.Delete("/{schoolId}/curriculum", deleteCurriculum(env))
+	r.Get("/{schoolId}/curriculum", getCurriculum(env))
+	r.Get("/{schoolId}/curriculum/areas/{areaId}", getArea(env))
 	return r
 }
 
