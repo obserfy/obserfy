@@ -9,6 +9,7 @@ import { getSchoolId } from "../../hooks/schoolIdState"
 import useApi from "../../api/useApi"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import CardLink from "../CardLink/CardLink"
+import BackNavigation from "../BackNavigation/BackNavigation"
 
 export const PageCurriculumSettings: FC = () => {
   const [curriculum, setCurriculumOutdated, curriculumLoading] = useApi(
@@ -48,8 +49,8 @@ export const PageCurriculumSettings: FC = () => {
   )
 
   const curriculumList = curriculum && curriculum.error === undefined && (
-    <Box m={3}>
-      <Typography.H3 py={3}>{curriculum.name}</Typography.H3>
+    <Box mx={3}>
+      <Typography.H3 pb={3}>{curriculum.name}</Typography.H3>
       {areas?.map((area: any) => (
         <CardLink
           key={area.id}
@@ -63,6 +64,7 @@ export const PageCurriculumSettings: FC = () => {
 
   return (
     <Box maxWidth="maxWidth.sm" margin="auto">
+      <BackNavigation to="/dashboard/settings" text="Settings" />
       {loading && <LoadingState />}
       {setupCurriculum}
       {curriculumList}

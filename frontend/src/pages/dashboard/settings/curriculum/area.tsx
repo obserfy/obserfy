@@ -6,7 +6,7 @@ import { PageTitleContext } from "../../../../layouts"
 import PageCurriculumArea from "../../../../components/PageCurriculumArea/PageCurriculumArea"
 
 const Settings: FC<PageRendererProps> = ({ location }) => {
-  useContext(PageTitleContext).setTitle("Curriculum")
+  useContext(PageTitleContext).setTitle("Area")
 
   const query = queryString.parse(location.search)
   let id: string
