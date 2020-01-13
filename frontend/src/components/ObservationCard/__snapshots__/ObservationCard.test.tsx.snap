@@ -229,6 +229,7 @@ exports[`ObservationCard should render correctly 1`] = `
   display: -ms-flexbox;
   display: flex;
   color: var(--theme-ui-colors-danger,#d50000);
+  font-size: 12px;
 }
 
 .emotion-9:disabled {
@@ -292,6 +293,7 @@ exports[`ObservationCard should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  font-size: 12px;
 }
 
 .emotion-10:disabled {

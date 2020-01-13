@@ -6,6 +6,22 @@ import (
 	"net/http"
 )
 
+type ErrorResponse struct {
+	Error ErrorResponseMessage `json:"error"`
+}
+
+type ErrorResponseMessage struct {
+	Code    string `json:"code"`
+	Message string `json:"message"`
+}
+
+func createErrorResponse(code string, message string) ErrorResponse {
+	return ErrorResponse{ErrorResponseMessage{
+		Code:    code,
+		Message: message,
+	}}
+}
+
 func writeJsonResponse(w http.ResponseWriter, object interface{}, logger *zap.Logger) error {
 	res, err := json.Marshal(object)
 	if err != nil {
@@ -23,6 +39,7 @@ func writeJsonResponse(w http.ResponseWriter, object interface{}, logger *zap.Lo
 	return err
 }
 
+// TODO: Do not write a response, remove w.
 func parseJsonRequestBody(w http.ResponseWriter, r *http.Request, requestBody interface{}, logger *zap.Logger) bool {
 	err := json.NewDecoder(r.Body).Decode(requestBody)
 	if err != nil {

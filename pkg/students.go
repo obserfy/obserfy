@@ -22,6 +22,8 @@ func createStudentsSubroute(env Env) *chi.Mux {
 
 	r.Post("/{id}/observations", addObservationToStudent(env))
 	r.Get("/{id}/observations", getAllStudentObservations(env))
+	r.Get("/{id}/materialsProgress", getStudentProgress(env))
+	r.Put("/{id}/materialsProgress/{materialId}", updateMaterialProgress(env))
 	return r
 }
 
@@ -134,5 +136,77 @@ func getAllStudentObservations(env Env) func(w http.ResponseWriter, r *http.Requ
 		}
 
 		err = writeJsonResponse(w, observations, env.logger)
+	}
+}
+
+func getStudentProgress(env Env) http.HandlerFunc {
+	type responseBody struct {
+		AreaId       string    `json:"areaId"`
+		MaterialName string    `json:"materialName"`
+		MaterialId   string    `json:"materialId"`
+		Stage        int       `json:"stage"`
+		UpdatedAt    time.Time `json:"updatedAt"`
+	}
+	return func(w http.ResponseWriter, r *http.Request) {
+		studentId := chi.URLParam(r, "id")
+		//areaId := r.URL.Query().Get("areaId")
+
+		var progresses []StudentMaterialProgress
+		err := env.db.Model(&progresses).
+			Relation("Material").
+			Relation("Material.Subject").
+			Relation("Material.Subject.Area").
+			Where("student_id=?", studentId).
+			Select()
+
+		// return empty array when there is no data
+		if err != nil {
+			writeInternalServerError("Failed querying material", w, err, env.logger)
+			return
+		}
+
+		response := make([]responseBody, 0)
+		for _, progress := range progresses {
+			response = append(response, responseBody{
+				AreaId:       progress.Material.Subject.Area.Id,
+				MaterialName: progress.Material.Name,
+				MaterialId:   progress.MaterialId,
+				Stage:        progress.Stage,
+				UpdatedAt:    progress.UpdatedAt,
+			})
+		}
+
+		_ = writeJsonResponse(w, response, env.logger)
+	}
+}
+
+func updateMaterialProgress(env Env) http.HandlerFunc {
+	type requestBody struct {
+		Stage int `json:"stage"`
+	}
+	return func(w http.ResponseWriter, r *http.Request) {
+		studentId := chi.URLParam(r, "id")
+		materialId := chi.URLParam(r, "materialId")
+
+		var requestBody requestBody
+		if ok := parseJsonRequestBody(w, r, &requestBody, env.logger); !ok {
+			response := createErrorResponse("BadRequest", "Invalid request body.")
+			_ = writeJsonResponse(w, response, env.logger)
+			w.WriteHeader(http.StatusBadRequest)
+			return
+		}
+
+		progress := StudentMaterialProgress{
+			MaterialId: materialId,
+			StudentId:  studentId,
+			Stage:      requestBody.Stage,
+			UpdatedAt:  time.Now(),
+		}
+		_, err := env.db.Model(&progress).
+			OnConflict("(material_id, student_id) DO UPDATE").
+			Insert()
+		if err != nil {
+			writeInternalServerError("Failed updating student progress", w, err, env.logger)
+		}
 	}
 }

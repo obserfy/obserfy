@@ -84,6 +84,7 @@ exports[`Tab should render correctly 1`] = `
   -ms-user-select: none;
   user-select: none;
   color: var(--theme-ui-colors-primaryDark,#003d00);
+  font-weight: lighter;
   margin-left: 16px;
   margin-right: 16px;
   margin-bottom: 0;
@@ -133,6 +134,7 @@ exports[`Tab should render correctly 1`] = `
   -ms-user-select: none;
   user-select: none;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  font-weight: lighter;
   margin-left: 16px;
   margin-right: 16px;
   margin-bottom: 0;

@@ -1,6 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Debug frontend" type="JavascriptDebugType" uri="https://localhost:8000">
-    <mapping url="http://webpack:" local-file="$PROJECT_DIR$/frontend" />
-    <method v="2" />
-  </configuration>
-</component>

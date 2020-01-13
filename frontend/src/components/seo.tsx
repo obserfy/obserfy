@@ -5,7 +5,7 @@ interface Props {
   title: string
 }
 const SEO: FC<Props> = ({ title }) => {
-  const titleTemplate = `Vor | %s`
+  const titleTemplate = `Obserfy | %s`
 
   return (
     <Helmet title={title} titleTemplate={titleTemplate}>

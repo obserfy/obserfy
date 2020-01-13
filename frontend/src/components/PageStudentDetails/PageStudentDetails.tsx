@@ -203,6 +203,10 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
             <Icon minWidth={20} as={EditIcon} m={0} />
           </Button>
         </Flex>
+        {/* <Box p={3}> */}
+        {/*  <SectionHeader>PROGRESS</SectionHeader> */}
+        {/*  <StudentProgressSummaryCard studentId={id} /> */}
+        {/* </Box> */}
         <Box p={3}>
           <Flex alignItems="center" mb={3}>
             <SectionHeader>OBSERVATIONS</SectionHeader>

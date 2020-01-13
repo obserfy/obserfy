@@ -1,19 +1,19 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/b417b5c0753dab4a593e/maintainability)](https://codeclimate.com/github/chrsep/vor/maintainability)
 # (WIP) Vor
-A web-based tool for managing student information for Montessori Schools. Currently this tools focuses on pre-school's needs.
+Backend for obserfy. A web-based tool for managing student information for Montessori Schools. Currently this tools focuses on pre-school's needs.
 
 ## Early Access MVP
-Early access to the MVP is available on https://vor.chrsep.dev if you are curious to try. 
+Early access is available on https://obserfy.com if you are curious to try. 
 
-It's currently provided for free, and being tested at a single school. Keep in mind, this is a pre-alpha software. 
+It's currently provided for free and being tested at a single school. Keep in mind, this is a pre-alpha software. 
 
 If you were to try, We would love to hear any of your feedback through the chat, github issue, or email at
 chrsep@protonmail.com.
 
 ## Goals
-1. Make it easy for teachers to observe and understand their students.
+1. Make it easy for teachers to observe, track and understand their students.
 2. Speed up teacher on-boarding.
-3. Reduce teacher's paperwork burden so that they can focus more on their students.
+3. Reduce the teacher's paperwork burden so that they can focus on the most important thing, the students.
 
 ## Planned Features
 - [x] Record observations

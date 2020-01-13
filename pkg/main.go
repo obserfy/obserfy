@@ -50,11 +50,13 @@ func main() {
 		r.Mount("/observations", createObservationsSubroute(env))
 		r.Mount("/schools", createSchoolsSubroute(env))
 		r.Mount("/user", createUserSubroute(env))
+		r.Mount("/curriculum", createCurriculumSubroute(env))
 	})
 	r.Mount("/auth", createAuthSubroute(env))
 	r.Group(func(r chi.Router) {
-		r.Use(createFrontendAuthMiddleware(env))
-		r.Get("/*", createFrontendFileServer())
+		frontendFolder := "./frontend/public"
+		r.Use(createFrontendAuthMiddleware(env, frontendFolder))
+		r.Get("/*", createFrontendFileServer(frontendFolder))
 	})
 
 	runServer(r, env)
@@ -67,11 +69,11 @@ func runServer(r *chi.Mux, env Env) {
 	}
 }
 
-func createFrontendFileServer() func(w http.ResponseWriter, r *http.Request) {
-	return http.FileServer(http.Dir("frontend/public")).ServeHTTP
+func createFrontendFileServer(folder string) func(w http.ResponseWriter, r *http.Request) {
+	return http.FileServer(http.Dir(folder)).ServeHTTP
 }
 
-func createFrontendAuthMiddleware(env Env) func(next http.Handler) http.Handler {
+func createFrontendAuthMiddleware(env Env, folder string) func(next http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
 		fn := func(w http.ResponseWriter, r *http.Request) {
 			path := r.URL.Path
@@ -104,10 +106,31 @@ func createFrontendAuthMiddleware(env Env) func(next http.Handler) http.Handler 
 				}
 			}
 
-			// If trying to access root, redirect to dashboard.
+			// If trying to access root, redirect to dashboard home.
 			if path == "/" || path == "/dashboard" || path == "/dashboard/" {
 				http.Redirect(w, r, "/dashboard/home", http.StatusFound)
 				return
+			}
+
+			// Remove trailing slashes
+			if strings.HasSuffix(path, "/") {
+				http.Redirect(w, r, strings.TrimSuffix(path, "/"), http.StatusMovedPermanently)
+				return
+			}
+
+			// Workaround to prevent redirects on frontend pages
+			// which are caused by gatsby always generating pages as index.html inside
+			// folders, eg /home/index.html instead of /home.html.
+			if !strings.HasSuffix(path, ".js") ||
+				!strings.HasSuffix(path, ".css") ||
+				!strings.HasSuffix(path, ".json") {
+				file, err := os.Stat(folder + path)
+				if err == nil {
+					mode := file.Mode()
+					if mode.IsDir() {
+						r.URL.Path += "/"
+					}
+				}
 			}
 
 			next.ServeHTTP(w, r)

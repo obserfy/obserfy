@@ -20,14 +20,22 @@ func getDBConnection() *pg.DB {
 
 func createSchema(env Env) {
 	for _, model := range []interface{}{
+		(*Student)(nil),
+
+		// Curriculum related tables
+		(*Curriculum)(nil),
+		(*Area)(nil),
+		(*Subject)(nil),
+		(*Material)(nil),
+		(*StudentMaterialProgress)(nil),
+
+		(*School)(nil),
 		(*Observation)(nil),
 		(*User)(nil),
-		(*Student)(nil),
 		(*Session)(nil),
-		(*School)(nil),
 		(*UserToSchool)(nil),
 	} {
-		err := env.db.CreateTable(model, &orm.CreateTableOptions{})
+		err := env.db.CreateTable(model, &orm.CreateTableOptions{IfNotExists: true, FKConstraints: true})
 		if err != nil {
 			env.logger.Error("Failed creating table", zap.Error(err))
 		}

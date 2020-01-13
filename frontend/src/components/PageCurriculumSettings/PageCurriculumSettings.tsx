@@ -1,0 +1,85 @@
+import React, { FC } from "react"
+import Typography from "../Typography/Typography"
+import { Box } from "../Box/Box"
+import Flex from "../Flex/Flex"
+import Spacer from "../Spacer/Spacer"
+import Button from "../Button/Button"
+import { getAnalytics } from "../../analytics"
+import { getSchoolId } from "../../hooks/schoolIdState"
+import useApi from "../../api/useApi"
+import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
+import CardLink from "../CardLink/CardLink"
+import BackNavigation from "../BackNavigation/BackNavigation"
+
+export const PageCurriculumSettings: FC = () => {
+  const [curriculum, setCurriculumOutdated, curriculumLoading] = useApi(
+    `/schools/${getSchoolId()}/curriculum`
+  )
+  const [areas, setAreasOutdated, areasLoading] = useApi(
+    `/schools/${getSchoolId()}/curriculum/areas`
+  )
+  const loading = curriculumLoading || areasLoading
+
+  async function createNewDefaultCurriculum(): Promise<void> {
+    const baseUrl = "/api/v1"
+    const response = await fetch(
+      `${baseUrl}/schools/${getSchoolId()}/curriculum`,
+      {
+        credentials: "same-origin",
+        method: "POST",
+      }
+    )
+    if (response.status === 201) {
+      setCurriculumOutdated()
+      setAreasOutdated()
+      getAnalytics()?.track("Default curriculum created", {
+        responseStatus: response.status,
+      })
+    } else {
+      getAnalytics()?.track("Create curriculum failed", response.text())
+    }
+  }
+
+  const setupCurriculum = !loading && curriculum?.error && (
+    <Flex alignItems="center" p={3}>
+      <Typography.H6>Setup curriculum</Typography.H6>
+      <Spacer />
+      <Button onClick={createNewDefaultCurriculum}>Use default</Button>
+    </Flex>
+  )
+
+  const curriculumList = curriculum && curriculum.error === undefined && (
+    <Box mx={3}>
+      <Typography.H3 pb={3}>{curriculum.name}</Typography.H3>
+      {areas?.error === undefined &&
+        areas?.map((area: any) => (
+          <CardLink
+            key={area.id}
+            name={area.name}
+            to={`/dashboard/settings/curriculum/area?id=${area.id}`}
+            mb={3}
+          />
+        ))}
+    </Box>
+  )
+
+  return (
+    <Box maxWidth="maxWidth.sm" margin="auto">
+      <BackNavigation to="/dashboard/settings" text="Settings" />
+      {loading && <LoadingState />}
+      {setupCurriculum}
+      {curriculumList}
+    </Box>
+  )
+}
+
+const LoadingState: FC = () => (
+  <Box p={3}>
+    <LoadingPlaceholder width="100%" height="5rem" />
+    <LoadingPlaceholder width="100%" height="6rem" mt={3} />
+    <LoadingPlaceholder width="100%" height="6rem" mt={3} />
+    <LoadingPlaceholder width="100%" height="6rem" mt={3} />
+  </Box>
+)
+
+export default PageCurriculumSettings

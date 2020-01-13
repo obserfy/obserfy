@@ -10,10 +10,12 @@ import (
 )
 
 type School struct {
-	Id         string `json:"id" pg:",type:uuid"`
-	Name       string `json:"name"`
-	InviteCode string `json:"inviteCode"`
-	Users      []User `pg:"many2many:user_to_schools,joinFK:user_id"`
+	Id           string `json:"id" pg:",type:uuid"`
+	Name         string `json:"name"`
+	InviteCode   string `json:"inviteCode"`
+	Users        []User `pg:"many2many:user_to_schools,joinFK:user_id"`
+	CurriculumId string `pg:",type:uuid,on_delete:SET NULL"`
+	Curriculum   Curriculum
 }
 
 type UserToSchool struct {
@@ -28,6 +30,11 @@ func createSchoolsSubroute(env Env) *chi.Mux {
 	r.Get("/{schoolId}/students", getAllStudentsOfSchool(env))
 	r.Post("/{schoolId}/students", createNewStudentForSchool(env))
 	r.Post("/{schoolId}/invite-code", generateNewInviteCode(env))
+
+	r.Post("/{schoolId}/curriculum", createNewCurriculum(env))
+	r.Delete("/{schoolId}/curriculum", deleteCurriculum(env))
+	r.Get("/{schoolId}/curriculum", getCurriculum(env))
+	r.Get("/{schoolId}/curriculum/areas", getCurriculumAreas(env))
 	return r
 }
 
@@ -273,6 +280,7 @@ func generateNewInviteCode(env Env) http.HandlerFunc {
 	}
 }
 
+// TODO: refactor into middleware
 func checkUserIsAuthorized(w http.ResponseWriter, userId string, schoolId string, env Env) bool {
 	// check if user have permission
 	var user User
@@ -305,4 +313,197 @@ func checkUserIsAuthorized(w http.ResponseWriter, userId string, schoolId string
 		return false
 	}
 	return true
+}
+
+func createNewCurriculum(env Env) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		// Get school id
+		schoolId := chi.URLParam(r, "schoolId")
+
+		// check session is valid, and user has authorization to access the school.
+		session, ok := getSessionFromCtx(w, r, env.logger)
+		if !ok {
+			return
+		}
+		if ok := checkUserIsAuthorized(w, session.UserId, schoolId, env); !ok {
+			return
+		}
+
+		// Return conflict error if school already has curriculum
+		var school School
+		if err := env.db.Model(&school).Where("id=?", schoolId).Select(); err != nil {
+			writeInternalServerError("Failed to get school data.", w, err, env.logger)
+			return
+		}
+		if school.CurriculumId != "" {
+			env.logger.Warn("School already have curriculum, but tries to create new one", zap.String("schoolId", schoolId))
+			w.WriteHeader(http.StatusConflict)
+			response := createErrorResponse("Conflict", "School already has curriculum")
+			_ = writeJsonResponse(w, response, env.logger)
+			return
+		}
+
+		// Save default curriculum using transaction
+		if err := env.db.RunInTransaction(insertFullCurriculum(school, createDefaultCurriculum())); err != nil {
+			writeInternalServerError("Failed saving curriculum", w, err, env.logger)
+			return
+		}
+
+		// Return result
+		w.WriteHeader(http.StatusCreated)
+	}
+}
+
+func deleteCurriculum(env Env) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		// Get school id
+		schoolId := chi.URLParam(r, "schoolId")
+
+		// check session is valid, and user has authorization to access the school.
+		session, ok := getSessionFromCtx(w, r, env.logger)
+		if !ok {
+			return
+		}
+		if ok := checkUserIsAuthorized(w, session.UserId, schoolId, env); !ok {
+			return
+		}
+
+		// Get school data and check if curriculum exists
+		var school School
+		err := env.db.Model(&school).
+			Relation("Curriculum").
+			Where("school.id=?", schoolId).
+			Select()
+		if err != nil {
+			writeInternalServerError("Failed to get school data.", w, err, env.logger)
+			return
+		}
+
+		// Don't do anything if school doesn't have curriculum yet
+		if school.CurriculumId == "" {
+			env.logger.Warn("School doesn't have a curriculum yet", zap.String("schoolId", schoolId))
+			w.WriteHeader(http.StatusNotFound)
+			response := createErrorResponse("NotFound", "School doesn't have any curriculum")
+			_ = writeJsonResponse(w, response, env.logger)
+			return
+		}
+
+		// Delete the whole curriculum tree.
+		if err = env.db.Delete(&(school.Curriculum)); err != nil {
+			writeInternalServerError("Failed deleting curriculum", w, err, env.logger)
+			return
+		}
+	}
+}
+
+func getCurriculum(env Env) http.HandlerFunc {
+	type curriculum struct {
+		Id   string `json:"id"`
+		Name string `json:"name"`
+	}
+	return func(w http.ResponseWriter, r *http.Request) {
+		// Get school id
+		schoolId := chi.URLParam(r, "schoolId")
+
+		// check session is valid, and user has authorization to access the school.
+		session, ok := getSessionFromCtx(w, r, env.logger)
+		if !ok {
+			return
+		}
+		if ok := checkUserIsAuthorized(w, session.UserId, schoolId, env); !ok {
+			return
+		}
+
+		// Get school data and check if curriculum exists
+		var school School
+		err := env.db.Model(&school).
+			Relation("Curriculum").
+			Where("school.id=?", schoolId).
+			Select()
+		if err != nil {
+			writeInternalServerError("Failed to get school data.", w, err, env.logger)
+			return
+		}
+
+		// Don't do anything if school doesn't have curriculum yet
+		if school.CurriculumId == "" {
+			env.logger.Warn("School doesn't have a curriculum yet", zap.String("schoolId", schoolId))
+			w.WriteHeader(http.StatusNotFound)
+			response := createErrorResponse("NotFound", "School doesn't have curriculum yet")
+			_ = writeJsonResponse(w, response, env.logger)
+			return
+		}
+
+		// Format queried result into response format.
+		response := curriculum{Id: school.CurriculumId, Name: school.Curriculum.Name}
+
+		err = writeJsonResponse(w, response, env.logger)
+		if err != nil {
+			writeInternalServerError("Fail to get json response", w, err, env.logger)
+			return
+		}
+	}
+}
+
+func getCurriculumAreas(env Env) http.HandlerFunc {
+	type simplifiedArea struct {
+		Id   string `json:"id"`
+		Name string `json:"name"`
+	}
+	return func(w http.ResponseWriter, r *http.Request) {
+		// Get school id
+		schoolId := chi.URLParam(r, "schoolId")
+
+		// check session is valid, and user has authorization to access the school.
+		session, ok := getSessionFromCtx(w, r, env.logger)
+		if !ok {
+			return
+		}
+		if ok := checkUserIsAuthorized(w, session.UserId, schoolId, env); !ok {
+			return
+		}
+
+		// Get school data and check if curriculum exists
+		var school School
+		err := env.db.Model(&school).
+			Where("id=?", schoolId).
+			Select()
+		if err != nil {
+			writeInternalServerError("Failed to get school data.", w, err, env.logger)
+			return
+		}
+
+		// Don't do anything if school doesn't have curriculum yet
+		if school.CurriculumId == "" {
+			env.logger.Warn("School doesn't have a curriculum yet", zap.String("schoolId", schoolId))
+			w.WriteHeader(http.StatusNotFound)
+			response := createErrorResponse("NotFound", "School doesn't have any curriculum yet.")
+			_ = writeJsonResponse(w, response, env.logger)
+			return
+		}
+
+		var areas []Area
+		err = env.db.Model(&areas).
+			Where("curriculum_id=?", school.CurriculumId).
+			Select()
+		if err != nil {
+			writeInternalServerError("Failed to get school data.", w, err, env.logger)
+			return
+		}
+
+		// Format queried result into response format.
+		var response []simplifiedArea
+		for _, area := range areas {
+			response = append(response, simplifiedArea{
+				Id:   area.Id,
+				Name: area.Name,
+			})
+		}
+
+		err = writeJsonResponse(w, response, env.logger)
+		if err != nil {
+			writeInternalServerError("Fail to get json response", w, err, env.logger)
+			return
+		}
+	}
 }

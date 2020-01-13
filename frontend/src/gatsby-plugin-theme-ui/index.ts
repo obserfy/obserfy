@@ -51,11 +51,16 @@ const themeUiTheme = {
 
     warning: "#ff6d00",
     onWarning: "rgba(0,0,0,0.87)",
+    tintWarning: "rgba(255,199,1,0.2)",
 
     danger: "#d50000",
     onDanger: "#FFFFFF",
 
     tintYellow: "rgba(255,199,1,0.2)",
+
+    materialStatus: {
+      presented: "#ff6f00",
+    },
     modes: {
       dark: {
         text: "rgba(255,255,255, 0.87)",
@@ -84,6 +89,7 @@ const themeUiTheme = {
 
         warning: "#ffd600",
         onWarning: "rgba(0,0,0,0.87)",
+        tintWarning: "rgba(255,199,1,0.08)",
       },
     },
   },

@@ -77,7 +77,7 @@ module.exports = {
       resolve: "gatsby-plugin-crisp-chat",
       options: {
         websiteId: "d46cf62a-1614-4ccc-88b8-ef616bbc8fcd",
-        enableDuringDevelop: true, // Optional. Disables Crisp Chat during gatsby develop. Defaults to true.
+        enableDuringDevelop: false, // Optional. Disables Crisp Chat during gatsby develop. Defaults to true.
         defer: true, // Optional. Sets the Crisp loading script to defer instead of async. Defaults to false.
       },
     },
@@ -117,6 +117,21 @@ module.exports = {
         defaultLanguage: `en`,
         // option to redirect to `/ko` when connecting `/`
         redirect: false,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl: `https://obserfy.com`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-nprogress`,
+      options: {
+        // Setting a color is optional.
+        color: `#33691e`,
+        // Disable the loading spinner.
+        showSpinner: false,
       },
     },
     // DEVTOOLS ================================================================

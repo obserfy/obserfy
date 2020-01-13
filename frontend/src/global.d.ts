@@ -62,7 +62,7 @@ declare module "gatsby-plugin-intl3" {
   export const Link: FC<GatsbyLinkProps<any> & { language?: string }>
 }
 
-declare const $crisp: any
+declare const $crisp: any | undefined
 
 declare interface Window {
   CRISP_TOKEN_ID?: string
