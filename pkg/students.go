@@ -140,14 +140,22 @@ func getAllStudentObservations(env Env) func(w http.ResponseWriter, r *http.Requ
 }
 
 func getStudentProgress(env Env) http.HandlerFunc {
+	type responseBody struct {
+		AreaId       string    `json:"areaId"`
+		MaterialName string    `json:"materialName"`
+		MaterialId   string    `json:"materialId"`
+		Stage        int       `json:"stage"`
+		UpdatedAt    time.Time `json:"updatedAt"`
+	}
 	return func(w http.ResponseWriter, r *http.Request) {
 		studentId := chi.URLParam(r, "id")
 		//areaId := r.URL.Query().Get("areaId")
 
-		var progress []StudentMaterialProgress
-		err := env.db.Model(&progress).
+		var progresses []StudentMaterialProgress
+		err := env.db.Model(&progresses).
 			Relation("Material").
 			Relation("Material.Subject").
+			Relation("Material.Subject.Area").
 			Where("student_id=?", studentId).
 			Select()
 
@@ -156,11 +164,19 @@ func getStudentProgress(env Env) http.HandlerFunc {
 			writeInternalServerError("Failed querying material", w, err, env.logger)
 			return
 		}
-		if progress == nil {
-			progress = make([]StudentMaterialProgress, 0)
+
+		response := make([]responseBody, 0)
+		for _, progress := range progresses {
+			response = append(response, responseBody{
+				AreaId:       progress.Material.Subject.Area.Id,
+				MaterialName: progress.Material.Name,
+				MaterialId:   progress.MaterialId,
+				Stage:        progress.Stage,
+				UpdatedAt:    progress.UpdatedAt,
+			})
 		}
 
-		_ = writeJsonResponse(w, progress, env.logger)
+		_ = writeJsonResponse(w, response, env.logger)
 	}
 }
 
@@ -184,6 +200,7 @@ func updateMaterialProgress(env Env) http.HandlerFunc {
 			MaterialId: materialId,
 			StudentId:  studentId,
 			Stage:      requestBody.Stage,
+			UpdatedAt:  time.Now(),
 		}
 		_, err := env.db.Model(&progress).
 			OnConflict("(material_id, student_id) DO UPDATE").

@@ -6,6 +6,7 @@ import (
 	"github.com/google/uuid"
 	"go.uber.org/zap"
 	"net/http"
+	"time"
 )
 
 type Curriculum struct {
@@ -45,6 +46,7 @@ type StudentMaterialProgress struct {
 	StudentId  string `pg:",pk,type:uuid,on_delete:CASCADE"`
 	Student    Student
 	Stage      int
+	UpdatedAt  time.Time
 }
 
 func createArea(curriculumId string, areaName string) Area {
