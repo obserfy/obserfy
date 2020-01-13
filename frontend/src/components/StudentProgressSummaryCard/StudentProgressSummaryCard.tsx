@@ -11,9 +11,10 @@ import StudentMaterialProgressDialog from "../StudentMaterialProgressDialog/Stud
 import Pill from "../Pill/Pill"
 import Icon from "../Icon/Icon"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
-import { addOnlyUniqueValues } from "../../arrayManipulation"
 import Box from "../Box/Box"
 import InformationalCard from "../InformationalCard/InformationalCard"
+import useApi from "../../api/useApi"
+import { getSchoolId } from "../../hooks/schoolIdState"
 
 export enum MaterialProgressStatus {
   UNTOUCHED,
@@ -33,9 +34,9 @@ export const StudentProgressSummaryCard: FC = () => {
   const [selectedSummary, setSelectedSummary] = useState<ProgressSummary>()
   const [summaries] = useState<ProgressSummary[]>([])
 
-  const areas = summaries
-    .map(({ areaName }) => areaName)
-    .reduce<string[]>(addOnlyUniqueValues, [])
+  const [areas, setAreasOutdated, areasLoading] = useApi(
+    `/schools/${getSchoolId()}/curriculum/areas`
+  )
 
   const selectedAreaSummaryList = summaries
     .filter(({ areaName }) => areaName === areas[tab])
@@ -75,7 +76,7 @@ export const StudentProgressSummaryCard: FC = () => {
 
   return (
     <>
-      {summaries.length === 0 ? (
+      {(areas?.length ?? 0) < 1 ? (
         <InformationalCard
           message=" Enable the curriculum feature to track student progress in your curriculum."
           buttonText=" Go to Curriculum "
@@ -87,7 +88,7 @@ export const StudentProgressSummaryCard: FC = () => {
         <Card my={3}>
           <Tab
             small
-            items={areas}
+            items={areas.map(({ name }) => name)}
             onTabClick={value => setTab(value)}
             selectedItemIdx={tab}
           />

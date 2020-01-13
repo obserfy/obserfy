@@ -51,14 +51,15 @@ export const PageCurriculumSettings: FC = () => {
   const curriculumList = curriculum && curriculum.error === undefined && (
     <Box mx={3}>
       <Typography.H3 pb={3}>{curriculum.name}</Typography.H3>
-      {areas?.map((area: any) => (
-        <CardLink
-          key={area.id}
-          name={area.name}
-          to={`/dashboard/settings/curriculum/area?id=${area.id}`}
-          mb={3}
-        />
-      ))}
+      {areas?.error === undefined &&
+        areas?.map((area: any) => (
+          <CardLink
+            key={area.id}
+            name={area.name}
+            to={`/dashboard/settings/curriculum/area?id=${area.id}`}
+            mb={3}
+          />
+        ))}
     </Box>
   )
 
