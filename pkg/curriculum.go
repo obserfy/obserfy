@@ -40,9 +40,9 @@ type Material struct {
 }
 
 type StudentMaterialProgress struct {
-	MaterialId string `pg:"type:uuid,on_delete:CASCADE"`
+	MaterialId string `pg:",pk,type:uuid,on_delete:CASCADE"`
 	Material   Material
-	StudentId  string `pg:"type:uuid,on_delete:CASCADE"`
+	StudentId  string `pg:",pk,type:uuid,on_delete:CASCADE"`
 	Student    Student
 	Stage      int
 }

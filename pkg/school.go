@@ -429,7 +429,7 @@ func getCurriculum(env Env) http.HandlerFunc {
 		if school.CurriculumId == "" {
 			env.logger.Warn("School doesn't have a curriculum yet", zap.String("schoolId", schoolId))
 			w.WriteHeader(http.StatusNotFound)
-			response := createErrorResponse("NotFound", "School already has curriculum")
+			response := createErrorResponse("NotFound", "School doesn't have curriculum yet")
 			_ = writeJsonResponse(w, response, env.logger)
 			return
 		}
@@ -477,7 +477,7 @@ func getCurriculumAreas(env Env) http.HandlerFunc {
 		if school.CurriculumId == "" {
 			env.logger.Warn("School doesn't have a curriculum yet", zap.String("schoolId", schoolId))
 			w.WriteHeader(http.StatusNotFound)
-			response := createErrorResponse("Conflict", "School already has curriculum")
+			response := createErrorResponse("NotFound", "School doesn't have any curriculum yet.")
 			_ = writeJsonResponse(w, response, env.logger)
 			return
 		}

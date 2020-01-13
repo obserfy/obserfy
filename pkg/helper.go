@@ -39,6 +39,7 @@ func writeJsonResponse(w http.ResponseWriter, object interface{}, logger *zap.Lo
 	return err
 }
 
+// TODO: Do not write a response, remove w.
 func parseJsonRequestBody(w http.ResponseWriter, r *http.Request, requestBody interface{}, logger *zap.Logger) bool {
 	err := json.NewDecoder(r.Body).Decode(requestBody)
 	if err != nil {

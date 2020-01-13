@@ -22,6 +22,8 @@ func createStudentsSubroute(env Env) *chi.Mux {
 
 	r.Post("/{id}/observations", addObservationToStudent(env))
 	r.Get("/{id}/observations", getAllStudentObservations(env))
+	r.Get("/{id}/materialsProgress", getStudentProgress(env))
+	r.Put("/{id}/materialsProgress/{materialId}", updateMaterialProgress(env))
 	return r
 }
 
@@ -134,5 +136,60 @@ func getAllStudentObservations(env Env) func(w http.ResponseWriter, r *http.Requ
 		}
 
 		err = writeJsonResponse(w, observations, env.logger)
+	}
+}
+
+func getStudentProgress(env Env) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		studentId := chi.URLParam(r, "id")
+		//areaId := r.URL.Query().Get("areaId")
+
+		var progress []StudentMaterialProgress
+		err := env.db.Model(&progress).
+			Relation("Material").
+			Relation("Material.Subject").
+			Where("student_id=?", studentId).
+			Select()
+
+		// return empty array when there is no data
+		if err != nil {
+			writeInternalServerError("Failed querying material", w, err, env.logger)
+			return
+		}
+		if progress == nil {
+			progress = make([]StudentMaterialProgress, 0)
+		}
+
+		_ = writeJsonResponse(w, progress, env.logger)
+	}
+}
+
+func updateMaterialProgress(env Env) http.HandlerFunc {
+	type requestBody struct {
+		Stage int `json:"stage"`
+	}
+	return func(w http.ResponseWriter, r *http.Request) {
+		studentId := chi.URLParam(r, "id")
+		materialId := chi.URLParam(r, "materialId")
+
+		var requestBody requestBody
+		if ok := parseJsonRequestBody(w, r, &requestBody, env.logger); !ok {
+			response := createErrorResponse("BadRequest", "Invalid request body.")
+			_ = writeJsonResponse(w, response, env.logger)
+			w.WriteHeader(http.StatusBadRequest)
+			return
+		}
+
+		progress := StudentMaterialProgress{
+			MaterialId: materialId,
+			StudentId:  studentId,
+			Stage:      requestBody.Stage,
+		}
+		_, err := env.db.Model(&progress).
+			OnConflict("(material_id, student_id) DO UPDATE").
+			Insert()
+		if err != nil {
+			writeInternalServerError("Failed updating student progress", w, err, env.logger)
+		}
 	}
 }
