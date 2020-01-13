@@ -408,12 +408,12 @@ exports[`StudentMaterialProgressDialog should render correctly 1`] = `
             <p
               class="emotion-3"
             >
-              DATE PRESENTED
+              LAST UPDATED
             </p>
             <p
               class="emotion-4"
             >
-              Sunday, Feb 02
+              Monday, Jan 13
             </p>
           </div>
           <div

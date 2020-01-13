@@ -206,7 +206,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
         </Flex>
         <Box p={3}>
           <SectionHeader>PROGRESS</SectionHeader>
-          <StudentProgressSummaryCard />
+          <StudentProgressSummaryCard studentId={id} />
         </Box>
         <Box p={3}>
           <Flex alignItems="center" mb={3}>

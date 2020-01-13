@@ -15,31 +15,43 @@ import Box from "../Box/Box"
 import InformationalCard from "../InformationalCard/InformationalCard"
 import useApi from "../../api/useApi"
 import { getSchoolId } from "../../hooks/schoolIdState"
+import { Area } from "../PageCurriculumArea/PageCurriculumArea"
+import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 
-export enum MaterialProgressStatus {
+export enum MaterialProgressStage {
   UNTOUCHED,
   PRESENTED,
   PRACTICED,
   MASTERED,
 }
-export interface ProgressSummary {
-  areaName: string
+export interface StudentMaterialProgress {
+  areaId: string
   materialName: string
-  status: MaterialProgressStatus
-  presentedDate: Date
+  materialId: string
+  stage: MaterialProgressStage
+  lastUpdated: Date
 }
-export const StudentProgressSummaryCard: FC = () => {
+interface Props {
+  studentId: string
+}
+export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
   const [tab, setTab] = useState(0)
   const [isEditingLesson, setIsEditingLesson] = useState(false)
-  const [selectedSummary, setSelectedSummary] = useState<ProgressSummary>()
-  const [summaries] = useState<ProgressSummary[]>([])
+  const [selectedSummary, setSelectedSummary] = useState<
+    StudentMaterialProgress
+  >()
 
-  const [areas, setAreasOutdated, areasLoading] = useApi(
+  const [areas, setAreasOutdated, areasLoading] = useApi<Area[]>(
     `/schools/${getSchoolId()}/curriculum/areas`
   )
+  const [progress, setProgressOutdated, progressLoading] = useApi<
+    StudentMaterialProgress[]
+  >(`/students/${studentId}/materialsProgress`)
 
-  const selectedAreaSummaryList = summaries
-    .filter(({ areaName }) => areaName === areas[tab])
+  const loading = areasLoading || progressLoading
+
+  const selectedAreaSummaryList = progress
+    ?.filter(({ areaId }) => areaId === areas?.[tab].id)
     .map(summary => (
       <SummaryListItem
         value={summary}
@@ -53,7 +65,11 @@ export const StudentProgressSummaryCard: FC = () => {
   const materialProgressDialog = isEditingLesson && selectedSummary && (
     <StudentMaterialProgressDialog
       progress={selectedSummary}
-      onDismiss={() => setIsEditingLesson(false)}
+      onDismiss={() => {
+        setAreasOutdated()
+        setProgressOutdated()
+        setIsEditingLesson(false)
+      }}
     />
   )
 
@@ -74,46 +90,68 @@ export const StudentProgressSummaryCard: FC = () => {
     </Flex>
   )
 
+  if (loading) {
+    return (
+      <Box mt={3}>
+        <LoadingPlaceholder width="100%" height="17rem" />
+      </Box>
+    )
+  }
+
+  const isCurriculumDisabled = (areas?.length ?? 0) < 1
+  if (isCurriculumDisabled) {
+    return (
+      <InformationalCard
+        message=" Enable the curriculum feature to track student progress in your curriculum."
+        buttonText=" Go to Curriculum "
+        onButtonClick={() => navigate("/dashboard/settings/curriculum")}
+      />
+    )
+  }
+
   return (
     <>
-      {(areas?.length ?? 0) < 1 ? (
-        <InformationalCard
-          message=" Enable the curriculum feature to track student progress in your curriculum."
-          buttonText=" Go to Curriculum "
-          onButtonClick={() => {
-            navigate("/dashboard/settings/curriculum")
-          }}
+      <Card my={3}>
+        <Tab
+          small
+          items={areas?.map(({ name }) => name) ?? []}
+          onTabClick={value => setTab(value)}
+          selectedItemIdx={tab}
         />
-      ) : (
-        <Card my={3}>
-          <Tab
-            small
-            items={areas.map(({ name }) => name)}
-            onTabClick={value => setTab(value)}
-            selectedItemIdx={tab}
-          />
-          <Box my={2}>{selectedAreaSummaryList}</Box>
-          {footer}
-        </Card>
-      )}
+        <Box my={2}>
+          {selectedAreaSummaryList}
+          {(progress?.length ?? 0) === 0 && (
+            <Typography.Body
+              width="100%"
+              my={4}
+              sx={{ textAlign: "center" }}
+              color="textMediumEmphasis"
+              fontSize={1}
+            >
+              No materials in progress yet.
+            </Typography.Body>
+          )}
+        </Box>
+        {footer}
+      </Card>
       {materialProgressDialog}
     </>
   )
 }
 
 const SummaryListItem: FC<{
-  value: ProgressSummary
+  value: StudentMaterialProgress
   onClick: () => void
 }> = ({ value, onClick }) => {
   let status: string
-  switch (value.status) {
-    case MaterialProgressStatus.MASTERED:
+  switch (value.stage) {
+    case MaterialProgressStage.MASTERED:
       status = "Mastered"
       break
-    case MaterialProgressStatus.PRACTICED:
+    case MaterialProgressStage.PRACTICED:
       status = "Practiced"
       break
-    case MaterialProgressStatus.PRESENTED:
+    case MaterialProgressStage.PRESENTED:
       status = "Presented"
       break
     default:

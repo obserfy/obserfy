@@ -10,7 +10,7 @@ import BackNavigation from "../BackNavigation/BackNavigation"
 interface Props {
   id: string
 }
-interface Area {
+export interface Area {
   id: string
   name: string
 }
