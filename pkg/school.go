@@ -7,6 +7,7 @@ import (
 	"go.uber.org/zap"
 	"net/http"
 	"os"
+	"time"
 )
 
 type School struct {
@@ -97,6 +98,15 @@ func getSchoolInfo(env Env) http.HandlerFunc {
 }
 
 func createNewStudentForSchool(env Env) http.HandlerFunc {
+	var requestBody struct {
+		Name        string     `json:"name"`
+		DateOfBirth *time.Time `json:"dateOfBirth"`
+	}
+	type responseBody struct {
+		Id          string     `json:"id"`
+		Name        string     `json:"name"`
+		DateOfBirth *time.Time `json:"dateOfBirth,omitempty"`
+	}
 	return func(w http.ResponseWriter, r *http.Request) {
 		schoolId := chi.URLParam(r, "schoolId")
 		_, err := uuid.Parse(schoolId)
@@ -110,27 +120,19 @@ func createNewStudentForSchool(env Env) http.HandlerFunc {
 		if !ok {
 			return
 		}
-
 		if ok := checkUserIsAuthorized(w, session.UserId, schoolId, env); !ok {
 			return
-		}
-
-		var requestBody struct {
-			Name string `json:"name"`
 		}
 		if ok := parseJsonRequestBody(w, r, &requestBody, env.logger); !ok {
 			return
 		}
 
-		id, err := uuid.NewRandom()
-		if err != nil {
-			writeInternalServerError("Failed to generate new uuid", w, err, env.logger)
-			return
-		}
+		id := uuid.New()
 		student := Student{
-			Id:       id.String(),
-			Name:     requestBody.Name,
-			SchoolId: schoolId,
+			Id:          id.String(),
+			Name:        requestBody.Name,
+			SchoolId:    schoolId,
+			DateOfBirth: requestBody.DateOfBirth,
 		}
 		err = env.db.Insert(&student)
 		if err != nil {
@@ -138,12 +140,22 @@ func createNewStudentForSchool(env Env) http.HandlerFunc {
 			return
 		}
 
+		response := responseBody{
+			Id:          student.Id,
+			Name:        student.Name,
+			DateOfBirth: student.DateOfBirth,
+		}
 		w.WriteHeader(http.StatusCreated)
-		err = writeJsonResponse(w, student, env.logger)
+		err = writeJsonResponse(w, response, env.logger)
 	}
 }
 
 func getAllStudentsOfSchool(env Env) http.HandlerFunc {
+	type responseBody struct {
+		Id          string     `json:"id"`
+		Name        string     `json:"name"`
+		DateOfBirth *time.Time `json:"dateOfBirth,omitempty"`
+	}
 	return func(w http.ResponseWriter, r *http.Request) {
 		schoolId := chi.URLParam(r, "schoolId")
 		_, err := uuid.Parse(schoolId)
@@ -171,7 +183,15 @@ func getAllStudentsOfSchool(env Env) http.HandlerFunc {
 			env.logger.Error("Error getting all students", zap.Error(err))
 		}
 
-		err = writeJsonResponse(w, students, env.logger)
+		response := make([]responseBody, 0)
+		for _, student := range students {
+			response = append(response, responseBody{
+				Id:          student.Id,
+				Name:        student.Name,
+				DateOfBirth: student.DateOfBirth,
+			})
+		}
+		err = writeJsonResponse(w, response, env.logger)
 	}
 }
 
