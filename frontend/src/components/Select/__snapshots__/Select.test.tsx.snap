@@ -63,7 +63,7 @@ exports[`Select should render correctly 1`] = `
   font-size: inherit;
   line-height: inherit;
   border: 1px solid;
-  border-radius: 6px;
+  border-radius: 8px;
   color: inherit;
   background-color: transparent;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));

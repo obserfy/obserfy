@@ -55,7 +55,7 @@ exports[`EditObservationDialog should render correctly 1`] = `
   min-width: 0;
   padding: 8px;
   background-color: var(--theme-ui-colors-background,#F7F8FA);
-  border-radius: 6px;
+  border-radius: 8px;
   box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
   border-radius: 0;
   padding: 0;
@@ -67,7 +67,7 @@ exports[`EditObservationDialog should render correctly 1`] = `
 
 @media screen and (min-width:40em) {
   .emotion-23 {
-    border-radius: 6px;
+    border-radius: 8px;
   }
 }
 
@@ -213,7 +213,7 @@ exports[`EditObservationDialog should render correctly 1`] = `
   font-size: inherit;
   line-height: inherit;
   border: 1px solid;
-  border-radius: 6px;
+  border-radius: 8px;
   color: inherit;
   background-color: transparent;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
@@ -306,7 +306,7 @@ exports[`EditObservationDialog should render correctly 1`] = `
   font-size: inherit;
   line-height: inherit;
   border: 1px solid;
-  border-radius: 6px;
+  border-radius: 8px;
   color: inherit;
   background-color: transparent;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -386,7 +386,7 @@ exports[`EditObservationDialog should render correctly 1`] = `
   font-size: inherit;
   line-height: inherit;
   border: 1px solid;
-  border-radius: 6px;
+  border-radius: 8px;
   color: inherit;
   background-color: transparent;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -503,7 +503,7 @@ exports[`EditObservationDialog should render correctly 1`] = `
   font-weight: bold;
   color: var(--theme-ui-colors-textPrimary,#003d00);
   background-color: transparent;
-  border-radius: 6px;
+  border-radius: 8px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
   transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
@@ -575,7 +575,7 @@ exports[`EditObservationDialog should render correctly 1`] = `
   font-weight: bold;
   color: var(--theme-ui-colors-onPrimary,#fff);
   background-color: var(--theme-ui-colors-primary,#33691e);
-  border-radius: 6px;
+  border-radius: 8px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
   transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);

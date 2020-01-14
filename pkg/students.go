@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/go-chi/chi"
+	"github.com/go-pg/pg/v9"
 	"github.com/google/uuid"
 	"go.uber.org/zap"
 	"net/http"
@@ -9,9 +10,11 @@ import (
 )
 
 type Student struct {
-	Id       string `json:"id" pg:",type:uuid"`
-	Name     string `json:"name"`
-	SchoolId string
+	Id          string `json:"id" pg:",type:uuid"`
+	Name        string `json:"name"`
+	SchoolId    string `pg:"type:uuid,on_delete:CASCADE"`
+	School      School
+	DateOfBirth *time.Time
 }
 
 func createStudentsSubroute(env Env) *chi.Mux {
@@ -22,6 +25,7 @@ func createStudentsSubroute(env Env) *chi.Mux {
 
 	r.Post("/{id}/observations", addObservationToStudent(env))
 	r.Get("/{id}/observations", getAllStudentObservations(env))
+
 	r.Get("/{id}/materialsProgress", getStudentProgress(env))
 	r.Put("/{id}/materialsProgress/{materialId}", updateMaterialProgress(env))
 	return r
@@ -41,7 +45,13 @@ func deleteStudent(env Env) func(w http.ResponseWriter, r *http.Request) {
 
 func replaceStudent(env Env) func(w http.ResponseWriter, r *http.Request) {
 	type requestBody struct {
-		Name string `json:"name"`
+		Name        string     `json:"name"`
+		DateOfBirth *time.Time `json:"dateOfBirth"`
+	}
+	type responseBody struct {
+		Id          string     `json:"id"`
+		Name        string     `json:"name"`
+		DateOfBirth *time.Time `json:"dateOfBirth,omitempty"`
 	}
 	return func(w http.ResponseWriter, r *http.Request) {
 		targetId := chi.URLParam(r, "id") // from a route like /users/{userID}
@@ -60,28 +70,51 @@ func replaceStudent(env Env) func(w http.ResponseWriter, r *http.Request) {
 
 		newStudent := oldStudent
 		newStudent.Name = requestBody.Name
+		newStudent.DateOfBirth = requestBody.DateOfBirth
 		err = env.db.Update(&newStudent)
 		if err != nil {
 			writeInternalServerError("Failed update student", w, err, env.logger)
 			return
 		}
 
-		err = writeJsonResponse(w, newStudent, env.logger)
+		response := responseBody{
+			Id:          newStudent.Id,
+			Name:        newStudent.Name,
+			DateOfBirth: newStudent.DateOfBirth,
+		}
+		err = writeJsonResponse(w, response, env.logger)
 	}
 }
 
 func getStudentById(env Env) func(w http.ResponseWriter, r *http.Request) {
+	type responseBody struct {
+		Id          string     `json:"id"`
+		Name        string     `json:"name"`
+		DateOfBirth *time.Time `json:"dateOfBirth,omitempty"`
+	}
 	return func(w http.ResponseWriter, r *http.Request) {
-		id := chi.URLParam(r, "id") // from a route like /users/{userID}
+		id := chi.URLParam(r, "id")
+
 		var student Student
 		err := env.db.Model(&student).Where("id = ?", id).Select()
+		if err == pg.ErrNoRows {
+			errorResponse := createErrorResponse("NotFound", "Can't find student with the specified id.")
+			w.WriteHeader(http.StatusNotFound)
+			_ = writeJsonResponse(w, errorResponse, env.logger)
+			return
+		}
 		if err != nil {
-			env.logger.Error("Failed deleting student", zap.Error(err))
-			http.Error(w, err.Error(), http.StatusInternalServerError)
+			env.logger.Error("Failed getting student data", zap.Error(err))
+			http.Error(w, "Something went wrong", http.StatusInternalServerError)
 			return
 		}
 
-		err = writeJsonResponse(w, student, env.logger)
+		response := responseBody{
+			Id:          student.Id,
+			Name:        student.Name,
+			DateOfBirth: student.DateOfBirth,
+		}
+		err = writeJsonResponse(w, response, env.logger)
 	}
 }
 
