@@ -1,5 +1,6 @@
 import React, { FC, useState } from "react"
 import { navigate } from "gatsby"
+import { Link } from "gatsby-plugin-intl3"
 import { Box } from "../Box/Box"
 import SearchBar from "../SearchBar/SearchBar"
 import { Flex } from "../Flex/Flex"
@@ -9,15 +10,12 @@ import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import { Typography } from "../Typography/Typography"
 import Card from "../Card/Card"
 import { useQueryAllStudents } from "../../hooks/students/useQueryAllStudents"
-import NewStudentDialog from "../NewStudentDialog/NewStudentDialog"
 import EmptyListPlaceholder from "../EmptyListPlaceholder/EmptyListPlaceholder"
 import { getSchoolId } from "../../hooks/schoolIdState"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
-import { getAnalytics } from "../../analytics"
 
 export const PageHome: FC = () => {
   const schoolId = getSchoolId()
-  const [showStudentInputDialog, setShowStudentInputDialog] = useState(false)
   const [searchTerm, setSearchTerm] = useState("")
   const [
     students,
@@ -28,25 +26,6 @@ export const PageHome: FC = () => {
   const matchedStudent = students.filter(student =>
     student.name.includes(searchTerm)
   )
-
-  async function submitNewStudent(name: string): Promise<void> {
-    const baseUrl = "/api/v1"
-    const newStudent = { name }
-
-    const response = await fetch(`${baseUrl}/schools/${schoolId}/students`, {
-      credentials: "same-origin",
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newStudent),
-    })
-
-    setShowStudentInputDialog(false)
-    setStudentsAsOutdated()
-    getAnalytics()?.track("Student Created", {
-      responseStatus: response.status,
-      studentName: name,
-    })
-  }
 
   const studentList = matchedStudent.map(({ name, id }) => (
     <Card
@@ -68,7 +47,7 @@ export const PageHome: FC = () => {
       <EmptyListPlaceholder
         text="You have no one enrolled"
         callToActionText="New student"
-        onActionClick={() => setShowStudentInputDialog(true)}
+        onActionClick={() => navigate("/dashboard/students/new")}
       />
     </Box>
   )
@@ -84,35 +63,25 @@ export const PageHome: FC = () => {
     )
 
   return (
-    <>
-      <Box maxWidth="maxWidth.sm" margin="auto">
-        <Flex p={3}>
-          <SearchBar
-            mr={3}
-            placeholder="Search students"
-            value={searchTerm}
-            onChange={e => setSearchTerm(e.target.value)}
-          />
-          <Button
-            variant="outline"
-            onClick={() => setShowStudentInputDialog(true)}
-            data-cy="addStudent"
-          >
+    <Box maxWidth="maxWidth.sm" margin="auto">
+      <Flex p={3}>
+        <SearchBar
+          mr={3}
+          placeholder="Search students"
+          value={searchTerm}
+          onChange={e => setSearchTerm(e.target.value)}
+        />
+        <Link to="/dashboard/students/new">
+          <Button variant="outline" data-cy="addStudent" height="100%">
             <Icon as={PlusIcon} m={0} />
           </Button>
-        </Flex>
-        {!studentsIsLoading && students.length > 0 && studentList}
-        {!studentsIsLoading && emptyResultInfo}
-        {!studentsIsLoading && emptyStudentListPlaceholder}
-        {studentsIsLoading && <StudentListLoadingPlaceholder />}
-      </Box>
-      {showStudentInputDialog && (
-        <NewStudentDialog
-          onCancel={() => setShowStudentInputDialog(false)}
-          onConfirm={submitNewStudent}
-        />
-      )}
-    </>
+        </Link>
+      </Flex>
+      {!studentsIsLoading && students.length > 0 && studentList}
+      {!studentsIsLoading && emptyResultInfo}
+      {!studentsIsLoading && emptyStudentListPlaceholder}
+      {studentsIsLoading && <StudentListLoadingPlaceholder />}
+    </Box>
   )
 }
 

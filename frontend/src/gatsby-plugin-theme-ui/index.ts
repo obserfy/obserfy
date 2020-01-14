@@ -124,7 +124,7 @@ const themeUiTheme = {
     },
   },
   radii: {
-    default: 6,
+    default: 8,
     circle: 99999,
   },
   shadows: {

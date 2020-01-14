@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PageRegister should render correctly 1`] = `
-.emotion-19 {
+exports[`PageNewStudent should render correctly 1`] = `
+.emotion-20 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,70 +9,77 @@ exports[`PageRegister should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-19 {
+  .emotion-20 {
     font-size: 20px;
   }
 }
 
-.emotion-18 {
+.emotion-19 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  min-height: 100vh;
-  min-width: 100vw;
-  padding-top: 0;
+  max-width: 640px;
+  margin: auto;
+}
+
+.emotion-2 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-left: -8px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-18 {
-    padding-top: 128px;
-  }
-}
-
-.emotion-17 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  padding: 16px;
-  max-width: 640px;
-  width: 100%;
-  margin-top: 0;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-17 {
-    margin-top: -64px;
-  }
-}
-
 .emotion-0 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  font-size: 24px;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 300;
-  line-height: heading;
-  font-size: 4.8828125rem;
-  line-height: 6rem;
-  -webkit-letter-spacing: 0;
-  -moz-letter-spacing: 0;
-  -ms-letter-spacing: 0;
-  letter-spacing: 0;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
-  margin-top: 16px;
-  margin-bottom: 16px;
+  max-width: 100%;
+  height: auto;
+  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
+  margin: 16px;
+  height: 24px;
+  width: 24px;
+  margin-right: 4px;
 }
 
-.emotion-4 {
+.emotion-1 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  font-size: 16px;
+  margin-bottom: 0;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-1 {
+    font-size: 14px;
+  }
+}
+
+.emotion-14 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-top: 16px;
+}
+
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -93,14 +100,13 @@ exports[`PageRegister should render correctly 1`] = `
   display: -ms-flexbox;
   display: flex;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  margin-bottom: 8px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.emotion-1 {
+.emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -108,7 +114,7 @@ exports[`PageRegister should render correctly 1`] = `
   padding-bottom: 4px;
 }
 
-.emotion-3 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -122,7 +128,7 @@ exports[`PageRegister should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-2 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -148,35 +154,46 @@ exports[`PageRegister should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-2:hover,
-.emotion-2:focus {
+.emotion-4:hover,
+.emotion-4:focus {
   border-color: var(--theme-ui-colors-primary,#33691e);
   outline: none;
 }
 
-.emotion-2::-webkit-input-placeholder {
+.emotion-4::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-2::-moz-placeholder {
+.emotion-4::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-2:-ms-input-placeholder {
+.emotion-4:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-2::placeholder {
+.emotion-4::placeholder {
   font-style: italic;
 }
 
-.emotion-2:disabled {
+.emotion-4:disabled {
   opacity: 0.38;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
-.emotion-12 {
+.emotion-13 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-top: 16px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -196,48 +213,170 @@ exports[`PageRegister should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  margin-bottom: 16px;
+  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.emotion-13 {
+.emotion-8 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: rgba(0,0,0,0.88);
-  font-size: 1.6rem;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 400;
-  line-height: 3rem;
-  color: var(--theme-ui-colors-danger,#d50000);
-  font-size: 16px;
-  margin-bottom: 16px;
+  display: block;
   width: 100%;
-  text-align: center;
-  font-weight: bold;
+  padding: 8px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: inherit;
+  line-height: inherit;
+  border: 1px solid;
+  border-radius: 8px;
+  color: inherit;
+  background-color: transparent;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  width: auto;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface,#fff);
+  font-size: 16px;
+  padding: 16px;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  opacity: 1!important;
+  width: 100%;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-13 {
-    font-size: 14px;
-  }
+.emotion-8:hover,
+.emotion-8:focus {
+  border-color: var(--theme-ui-colors-primary,#33691e);
+  outline: none;
+}
+
+.emotion-8::-webkit-input-placeholder {
+  font-style: italic;
+}
+
+.emotion-8::-moz-placeholder {
+  font-style: italic;
+}
+
+.emotion-8:-ms-input-placeholder {
+  font-style: italic;
+}
+
+.emotion-8::placeholder {
+  font-style: italic;
+}
+
+.emotion-8:disabled {
+  opacity: 0.38;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
+}
+
+.emotion-12 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  text-align: center;
+  line-height: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: inherit;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: white;
+  background-color: var(--theme-ui-colors-primary,#33691e);
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  text-transform: capitalize;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--theme-ui-colors-textPrimary,#003d00);
+  background-color: transparent;
+  border-radius: 8px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  white-space: nowrap;
+  border: 1px solid;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 23px;
+  margin-left: 16px;
+}
+
+.emotion-12:disabled {
+  opacity: 0.38;
+  cursor: auto;
+}
+
+.emotion-12:hover,
+.emotion-12:focus {
+  background-color: var(--theme-ui-colors-primaryLighter,rgba(98,151,73,0.12));
+  border-color: var(--theme-ui-colors-primary,#33691e);
+  outline: none;
+}
+
+.emotion-12:hover:disabled,
+.emotion-12:focus:disabled {
+  background-color: transparent;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+}
+
+.emotion-11 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
+  margin: 0;
+  height: 20px;
+  width: 20px;
+}
+
+.emotion-18 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin: 16px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-15 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  pointer-events: none;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
 }
 
 .emotion-16 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.emotion-14 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -288,29 +427,28 @@ exports[`PageRegister should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 100%;
-  margin-right: 16px;
+  margin-right: 8px;
 }
 
-.emotion-14:disabled {
+.emotion-16:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-14:hover,
-.emotion-14:focus {
+.emotion-16:hover,
+.emotion-16:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(98,151,73,0.12));
   border-color: var(--theme-ui-colors-primary,#33691e);
   outline: none;
 }
 
-.emotion-14:hover:disabled,
-.emotion-14:focus:disabled {
+.emotion-16:hover:disabled,
+.emotion-16:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-15 {
+.emotion-17 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -342,8 +480,8 @@ exports[`PageRegister should render correctly 1`] = `
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
   transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  padding-top: 16px;
-  padding-bottom: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   padding-left: 16px;
   padding-right: 16px;
   white-space: nowrap;
@@ -359,118 +497,120 @@ exports[`PageRegister should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 100%;
 }
 
-.emotion-15:disabled {
+.emotion-17:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-15:hover,
-.emotion-15:focus {
+.emotion-17:hover,
+.emotion-17:focus {
   background-color: var(--theme-ui-colors-primaryDark,#003d00);
   outline: none;
 }
 
-.emotion-15:hover:disabled,
-.emotion-15:focus:disabled {
+.emotion-17:hover:disabled,
+.emotion-17:focus:disabled {
   background-color: var(--theme-ui-colors-primary,#33691e);
 }
 
 <div>
   <div
-    class="emotion-19"
+    class="emotion-20"
   >
     <div
-      class="emotion-18"
+      class="emotion-19"
     >
-      <form
-        class="emotion-17"
+      <a
+        href="/dashboard/home"
       >
-        <h2
-          class="emotion-0"
-        >
-          Register
-        </h2>
-        <label
-          class="emotion-4"
-          required=""
+        <div
+          class="emotion-2"
         >
           <div
+            class="emotion-0"
+          />
+          <p
             class="emotion-1"
           >
-            Email
-          </div>
+            Home
+          </p>
+        </div>
+      </a>
+      <div
+        class="emotion-14"
+      >
+        <label
+          class="emotion-6"
+        >
           <div
             class="emotion-3"
-          >
-            <input
-              class="emotion-2"
-              name="email"
-              type="email"
-              value=""
-            />
-          </div>
-        </label>
-        <label
-          class="emotion-4"
-          required=""
-        >
-          <div
-            class="emotion-1"
           >
             Name
           </div>
           <div
-            class="emotion-3"
+            class="emotion-5"
           >
             <input
-              class="emotion-2"
-              name="name"
+              class="emotion-4"
               value=""
             />
           </div>
         </label>
-        <label
-          class="emotion-12"
-          required=""
-        >
-          <div
-            class="emotion-1"
-          >
-            Password
-          </div>
-          <div
-            class="emotion-3"
-          >
-            <input
-              class="emotion-2"
-              name="password"
-              type="password"
-              value=""
-            />
-          </div>
-        </label>
-        <p
-          class="emotion-13"
-        />
         <div
-          class="emotion-16"
+          class="emotion-13"
         >
-          <button
-            class="emotion-14"
-            type="button"
+          <label
+            class="emotion-10"
           >
-            Log In
-          </button>
+            <div
+              class="emotion-3"
+            >
+              Date of Birth
+            </div>
+            <div
+              class="emotion-5"
+            >
+              <input
+                class="emotion-8"
+                disabled=""
+                placeholder="Not set"
+                value=""
+              />
+            </div>
+          </label>
           <button
-            class="emotion-15"
+            class="emotion-12"
           >
-            Sign Up
+            <div
+              class="emotion-11"
+            />
           </button>
         </div>
-      </form>
+      </div>
+      <div
+        class="emotion-18"
+      >
+        <div
+          class="emotion-15"
+        />
+        <a
+          href="/dashboard/home"
+        >
+          <button
+            class="emotion-16"
+          >
+            Cancel
+          </button>
+        </a>
+        <button
+          class="emotion-17"
+          disabled=""
+        >
+          Save
+        </button>
+      </div>
     </div>
   </div>
 </div>

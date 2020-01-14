@@ -20,7 +20,7 @@ exports[`AppBar should render correctly 1`] = `
   min-width: 0;
   padding: 8px;
   background-color: var(--theme-ui-colors-background,#F7F8FA);
-  border-radius: 6px;
+  border-radius: 8px;
   box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -93,7 +93,7 @@ exports[`AppBar should render correctly 1`] = `
   font-weight: bold;
   color: var(--theme-ui-colors-textPrimary,#003d00);
   background-color: transparent;
-  border-radius: 6px;
+  border-radius: 8px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
   transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);

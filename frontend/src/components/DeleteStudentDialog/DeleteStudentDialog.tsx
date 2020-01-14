@@ -1,9 +1,8 @@
 import React, { FC } from "react"
 import AlertDialog from "../AlertDialog/AlertDialog"
-import { Student } from "../../hooks/students/useQueryStudentDetails"
 
 interface Props {
-  student: Student
+  student: { id: string; name: string }
   onConfirm: () => void
   onCancel: () => void
 }

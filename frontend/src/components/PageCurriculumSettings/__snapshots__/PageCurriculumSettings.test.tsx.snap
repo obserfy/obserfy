@@ -109,7 +109,7 @@ exports[`PageCurriculumSettings should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  border-radius: 6px;
+  border-radius: 8px;
   -webkit-animation: 1s ease-in-out 0s infinite animation-0;
   animation: 1s ease-in-out 0s infinite animation-0;
   width: 100%;
@@ -120,7 +120,7 @@ exports[`PageCurriculumSettings should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  border-radius: 6px;
+  border-radius: 8px;
   -webkit-animation: 1s ease-in-out 0s infinite animation-0;
   animation: 1s ease-in-out 0s infinite animation-0;
   width: 100%;

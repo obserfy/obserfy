@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useState } from "react"
 import { navigate } from "gatsby"
+import { useIntl } from "gatsby-plugin-intl3"
 import Box from "../Box/Box"
 import { useQueryStudentDetails } from "../../hooks/students/useQueryStudentDetails"
 import Input from "../Input/Input"
@@ -10,6 +11,11 @@ import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import { getAnalytics } from "../../analytics"
 import DeleteStudentDialog from "../DeleteStudentDialog/DeleteStudentDialog"
 import Spacer from "../Spacer/Spacer"
+import { deleteStudentApi } from "../../api/deleteStudentApi"
+import { updateStudentApi } from "../../api/updateStudentApi"
+import Icon from "../Icon/Icon"
+import { ReactComponent as CalendarIcon } from "../../icons/calendar.svg"
+import DatePickerDialog from "../DatePickerDialog/DatePickerDialog"
 
 interface Props {
   id: string
@@ -19,48 +25,37 @@ export const PageEditStudent: FC<Props> = ({ id }) => {
   const [isDeletingStudent, setIsDeletingStudent] = useState(false)
   const [details] = useQueryStudentDetails(id)
   const [name, setName] = useState()
+  const [dateOfBirth, setDateOfBirth] = useState()
+  const [showDatePicker, setShowDatePicker] = useState(false)
+  const intl = useIntl()
 
   useEffect(() => {
     setName(details?.name)
+    if (details?.dateOfBirth) {
+      setDateOfBirth(new Date(details?.dateOfBirth))
+    }
   }, [details])
 
   async function deleteStudent(): Promise<void> {
-    const baseUrl = "/api/v1"
-
-    const response = await fetch(`${baseUrl}/students/${id}`, {
-      credentials: "same-origin",
-      method: "DELETE",
-    })
-
-    if (response.status === 200) {
-      navigate("/dashboard/home")
-    }
-
+    const response = await deleteStudentApi(id)
     getAnalytics()?.track("Student Deleted", {
       responseStatus: response.status,
       studentName: name,
     })
+    if (response.status === 200) {
+      await navigate("/dashboard/home")
+    }
   }
 
   async function updateStudent(): Promise<void> {
-    const baseUrl = "/api/v1"
-    const data = { name }
-
-    const response = await fetch(`${baseUrl}/students/${id}`, {
-      credentials: "same-origin",
-      method: "PUT",
-      body: JSON.stringify(data),
-      headers: { "Content-Type": "application/json" },
-    })
-
-    if (response.status === 200) {
-      navigate(studentDetailUrl)
-    }
-
+    const response = await updateStudentApi({ id, name, dateOfBirth })
     getAnalytics()?.track("Student Updated", {
       responseStatus: response.status,
       studentName: name,
     })
+    if (response.status === 200) {
+      await navigate(studentDetailUrl)
+    }
   }
 
   const deleteStudentDialog = isDeletingStudent && (
@@ -71,18 +66,47 @@ export const PageEditStudent: FC<Props> = ({ id }) => {
     />
   )
 
+  const dobField = (
+    <Flex mt={3} onClick={() => setShowDatePicker(true)}>
+      <Input
+        label="Date of Birth"
+        width="100%"
+        value={
+          dateOfBirth
+            ? intl.formatDate(dateOfBirth, {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })
+            : ""
+        }
+        placeholder="Not set"
+        disabled
+        sx={{
+          opacity: "1!important",
+        }}
+      />
+      <Button mt={23} ml={3} variant="outline" sx={{ flexShrink: "0" }}>
+        <Icon as={CalendarIcon} m={0} />
+      </Button>
+    </Flex>
+  )
+
   return (
     <>
       <Box maxWidth="maxWidth.sm" margin="auto">
         <BackNavigation to={studentDetailUrl} text="Details" />
         <Box mx={3} mt={3}>
           {details?.name ? (
-            <Input
-              label="Name"
-              width="100%"
-              value={name}
-              onChange={e => setName(e.target.value)}
-            />
+            <>
+              <Input
+                label="Name"
+                width="100%"
+                value={name}
+                onChange={e => setName(e.target.value)}
+              />
+              {dobField}
+            </>
           ) : (
             <Box pt={24}>
               <LoadingPlaceholder width="100%" height={56} />
@@ -103,6 +127,16 @@ export const PageEditStudent: FC<Props> = ({ id }) => {
         </Flex>
       </Box>
       {deleteStudentDialog}
+      {showDatePicker && (
+        <DatePickerDialog
+          defaultDate={dateOfBirth}
+          onDismiss={() => setShowDatePicker(false)}
+          onConfirm={date => {
+            setDateOfBirth(date)
+            setShowDatePicker(false)
+          }}
+        />
+      )}
     </>
   )
 }
