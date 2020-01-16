@@ -10,7 +10,7 @@ export function generateFluidObject(url?: string): FluidObject {
     srcSetWebp: imageUrl,
     src: imageUrl,
     srcSet: imageUrl,
-    sizes: ""
+    sizes: "",
   }
 }
 
@@ -28,6 +28,6 @@ export function generateFixedObject(
     src: imageUrl,
     srcSet: imageUrl,
     width,
-    height
+    height,
   }
 }

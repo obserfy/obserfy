@@ -7,8 +7,8 @@ export default {
   title: "Core|Container",
   component: Container,
   parameters: {
-    componentSubtitle: "Container component with maxWidth set"
-  }
+    componentSubtitle: "Container component with maxWidth set",
+  },
 }
 
 export const Basic: FC = () => (

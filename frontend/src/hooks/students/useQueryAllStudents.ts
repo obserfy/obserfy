@@ -6,9 +6,9 @@ export interface Student {
 }
 export const useQueryAllStudents = (
   schoolId: string
-): [Student[], () => void, boolean] => {
-  const [students, setAsOutdated, isLoading] = useApi<Student[]>(
+): [Student[], boolean, () => void] => {
+  const [students, isLoading, setAsOutdated] = useApi<Student[]>(
     `/schools/${schoolId}/students`
   )
-  return [students ?? [], setAsOutdated, isLoading]
+  return [students ?? [], isLoading, setAsOutdated]
 }

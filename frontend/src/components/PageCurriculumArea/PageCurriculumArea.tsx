@@ -20,10 +20,10 @@ interface Subject {
   order: string
 }
 export const PageCurriculumArea: FC<Props> = ({ id }) => {
-  const [area, setAreaOutdated, areaLoading] = useApi<Area>(
+  const [area, areaLoading] = useApi<Area>(
     `/curriculum/areas/${id}`
   )
-  const [subjects, setSubjectsOutdated, subjectsLoading] = useApi<Subject[]>(
+  const [subjects, subjectsLoading] = useApi<Subject[]>(
     `/curriculum/areas/${id}/subjects`
   )
   const loading = areaLoading || subjectsLoading
@@ -61,7 +61,7 @@ interface Material {
   order: number
 }
 const SubjectMaterials: FC<SubjectProps> = ({ subject }) => {
-  const [materials, setMaterialsOutdated, loading] = useApi<Material[]>(
+  const [materials, loading] = useApi<Material[]>(
     `/curriculum/subjects/${subject.id}/materials`
   )
 

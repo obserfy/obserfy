@@ -5,8 +5,8 @@ export default {
   title: "Basic|Layout",
   component: Layout,
   parameters: {
-    componentSubtitle: "Just a simple Layout"
-  }
+    componentSubtitle: "Just a simple Layout",
+  },
 }
 
 export const Basic: FC = () => <Layout pageTitle="Home" />

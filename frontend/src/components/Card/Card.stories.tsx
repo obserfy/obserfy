@@ -9,8 +9,8 @@ export default {
   title: "Core|Card",
   component: Card,
   parameters: {
-    componentSubtitle: "Just a simple Card"
-  }
+    componentSubtitle: "Just a simple Card",
+  },
 }
 
 export const Basic: FC = () => (

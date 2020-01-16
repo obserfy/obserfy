@@ -59,8 +59,8 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
   const [details] = useQueryStudentDetails(id)
   const [
     observations,
-    setObservationsAsOutdated,
     isObservationLoading,
+    setObservationsAsOutdated,
   ] = useQueryStudentObservations(id)
 
   const filteredObservation =
@@ -156,10 +156,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
   const addObservationDialog = isAddingObservation && (
     <AddObservationDialog
       onCancel={() => setIsAddingObservation(false)}
-      onConfirm={observation => {
-        submitAddObservation(observation)
-        setIsAddingObservation(false)
-      }}
+      onConfirm={submitAddObservation}
     />
   )
 
@@ -167,17 +164,14 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
     <EditObservationDialog
       defaultValue={targetObservation}
       onCancel={() => setIsEditingObservation(false)}
-      onConfirm={observation => {
-        submitEditObservation(observation)
-        setIsEditingObservation(false)
-      }}
+      onConfirm={submitEditObservation}
     />
   )
 
   const deleteObservationDialog = isDeletingObservation && (
     <DeleteObservationDialog
       observation={targetObservation}
-      onConfirm={target => submitDeleteObservation(target)}
+      onConfirm={submitDeleteObservation}
       onCancel={() => setIsDeletingObservation(false)}
     />
   )

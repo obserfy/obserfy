@@ -10,8 +10,8 @@ export default {
   title: "Basic|Navigation/SideBar",
   component: SideBar,
   parameters: {
-    componentSubtitle: "Just a simple SideBar"
-  }
+    componentSubtitle: "Just a simple SideBar",
+  },
 }
 
 export const Basic: FC = () => (

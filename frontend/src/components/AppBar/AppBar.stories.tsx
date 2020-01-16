@@ -5,8 +5,8 @@ export default {
   title: "Complex|AppBar",
   component: AppBar,
   parameters: {
-    componentSubtitle: "Just a simple AppBar"
-  }
+    componentSubtitle: "Just a simple AppBar",
+  },
 }
 
 export const Basic: FC = () => {

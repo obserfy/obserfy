@@ -12,7 +12,7 @@ const MenuIcon: FC<Props> = ({ onMenuClick }) => (
     maxWidth={56}
     sx={{
       cursor: "pointer",
-      pointerEvents: ["inherit", "none"]
+      pointerEvents: ["inherit", "none"],
     }}
   >
     <Icon

@@ -5,8 +5,8 @@ export default {
   title: "Core|Forms/Switch",
   component: Switch,
   parameters: {
-    componentSubtitle: "Just a simple Switch"
-  }
+    componentSubtitle: "Just a simple Switch",
+  },
 }
 
 export const Basic: FC = () => <Switch />

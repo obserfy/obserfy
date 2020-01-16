@@ -5,8 +5,8 @@ export default {
   title: "Core|Box",
   component: Box,
   parameters: {
-    componentSubtitle: "Just a simple Box"
-  }
+    componentSubtitle: "Just a simple Box",
+  },
 }
 
 export const Basic: FC = () => <Box />

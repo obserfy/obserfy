@@ -5,8 +5,8 @@ export default {
   title: "Core|Image",
   component: Image,
   parameters: {
-    componentSubtitle: "Just a simple Image"
-  }
+    componentSubtitle: "Just a simple Image",
+  },
 }
 
 export const Basic: FC = () => <Image />

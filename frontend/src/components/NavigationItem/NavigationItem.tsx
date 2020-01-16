@@ -1,8 +1,8 @@
 import React, { FC, useState } from "react"
+import { Link } from "gatsby-plugin-intl3"
 import Typography from "../Typography/Typography"
 import Icon from "../Icon/Icon"
 import Flex, { FlexProps } from "../Flex/Flex"
-import { Link } from "gatsby-plugin-intl3"
 
 interface Props extends FlexProps {
   text: string
@@ -14,12 +14,7 @@ interface Props extends FlexProps {
  * on the sidebar. It uses Gatsby's link to render the ```<a></a>``` tag for creating
  * a link to other page on the app.
  * */
-export const NavigationItem: FC<Props> = ({
-  text,
-  icon,
-  to,
-  ...props
-}) => {
+export const NavigationItem: FC<Props> = ({ text, icon, to, ...props }) => {
   const [isActive, setIsActive] = useState(false)
   return (
     <Link
@@ -39,8 +34,8 @@ export const NavigationItem: FC<Props> = ({
           borderRadius: "default",
           textDecoration: "none",
           "&:hover": {
-            backgroundColor: isActive ? "primaryLighter" : "primaryLightest"
-          }
+            backgroundColor: isActive ? "primaryLighter" : "primaryLightest",
+          },
         }}
         {...props}
       >

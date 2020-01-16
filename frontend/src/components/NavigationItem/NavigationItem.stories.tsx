@@ -7,8 +7,8 @@ export default {
   title: "Basic|Navigation/NavigationItem",
   component: NavigationItem,
   parameters: {
-    componentSubtitle: "Component that acts as a navigation link"
-  }
+    componentSubtitle: "Component that acts as a navigation link",
+  },
 }
 
 export const Basic: FC = () => (

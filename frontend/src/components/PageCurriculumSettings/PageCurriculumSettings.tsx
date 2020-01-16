@@ -12,10 +12,10 @@ import CardLink from "../CardLink/CardLink"
 import BackNavigation from "../BackNavigation/BackNavigation"
 
 export const PageCurriculumSettings: FC = () => {
-  const [curriculum, setCurriculumOutdated, curriculumLoading] = useApi(
+  const [curriculum, curriculumLoading, setCurriculumOutdated] = useApi(
     `/schools/${getSchoolId()}/curriculum`
   )
-  const [areas, setAreasOutdated, areasLoading] = useApi(
+  const [areas, areasLoading, setAreasOutdated] = useApi(
     `/schools/${getSchoolId()}/curriculum/areas`
   )
   const loading = curriculumLoading || areasLoading

@@ -41,10 +41,10 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
     StudentMaterialProgress
   >()
 
-  const [areas, setAreasOutdated, areasLoading] = useApi<Area[]>(
+  const [areas, areasLoading, setAreasOutdated] = useApi<Area[]>(
     `/schools/${getSchoolId()}/curriculum/areas`
   )
-  const [progress, setProgressOutdated, progressLoading] = useApi<
+  const [progress, progressLoading, setProgressOutdated] = useApi<
     StudentMaterialProgress[]
   >(`/students/${studentId}/materialsProgress`)
 

@@ -6,8 +6,8 @@ export default {
   title: "Basic|Avatar",
   component: Avatar,
   parameters: {
-    componentSubtitle: "Just a simple Avatar"
-  }
+    componentSubtitle: "Just a simple Avatar",
+  },
 }
 
 export const Basic: FC = () => <Avatar source={generateFluidObject().src} />

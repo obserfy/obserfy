@@ -6,8 +6,8 @@ export default {
   title: "Basic|ToggleButton",
   component: ToggleButton,
   parameters: {
-    componentSubtitle: "Just a simple ToggleButton"
-  }
+    componentSubtitle: "Just a simple ToggleButton",
+  },
 }
 
 export const Basic: FC = () => (

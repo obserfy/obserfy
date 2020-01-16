@@ -8,8 +8,8 @@ export default {
   component: Button,
   parameters: {
     order: 2,
-    componentSubtitle: "Just a simple Button"
-  }
+    componentSubtitle: "Just a simple Button",
+  },
 }
 
 export const All: FC = () => (

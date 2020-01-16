@@ -5,8 +5,8 @@ export default {
   title: "Core|Forms/Checkbox",
   component: Checkbox,
   parameters: {
-    componentSubtitle: "Just a simple Checkbox"
-  }
+    componentSubtitle: "Just a simple Checkbox",
+  },
 }
 
 export const Basic: FC = () => <Checkbox />

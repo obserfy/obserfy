@@ -7,6 +7,6 @@ export interface Student {
 }
 export const useQueryStudentDetails = (
   id: string
-): [Student | undefined, () => void, boolean] => {
+): [Student | undefined, boolean, () => void] => {
   return useApi<Student>(`/students/${id}`)
 }
