@@ -1,4 +1,4 @@
-import useApi from "../../api/useApi"
+import useApi from "./useApi"
 
 export interface Observation {
   id?: string
@@ -8,8 +8,8 @@ export interface Observation {
   categoryId: string
   createdDate?: string
 }
-export const useQueryStudentObservations = (
-  id: string
+export const useGetObservations = (
+  studentId: string
 ): [Observation[] | undefined, boolean, () => void] => {
-  return useApi<Observation[]>(`/students/${id}/observations`)
+  return useApi<Observation[]>(`/students/${studentId}/observations`)
 }

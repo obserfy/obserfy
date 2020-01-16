@@ -7,7 +7,7 @@ import Spacer from "../Spacer/Spacer"
 import Button from "../Button/Button"
 import Card from "../Card/Card"
 import { categories } from "../../categories"
-import { Observation } from "../../hooks/students/useQueryStudentObservations"
+import { Observation } from "../../api/useGetObservations"
 import { useFormatRelativeTime } from "../../intl/useFormatDate"
 
 interface Props {

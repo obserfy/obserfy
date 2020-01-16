@@ -2,7 +2,7 @@ import React, { FC, useState } from "react"
 import { navigate } from "gatsby"
 import isThisWeek from "date-fns/isThisWeek"
 import isToday from "date-fns/isToday"
-import { useQueryStudentDetails } from "../../hooks/students/useQueryStudentDetails"
+import { useGetStudent } from "../../api/useGetStudent"
 import Flex from "../Flex/Flex"
 import Box from "../Box/Box"
 import Typography from "../Typography/Typography"
@@ -13,10 +13,7 @@ import Button from "../Button/Button"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
 import { BackNavigation } from "../BackNavigation/BackNavigation"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
-import {
-  Observation,
-  useQueryStudentObservations,
-} from "../../hooks/students/useQueryStudentObservations"
+import { Observation, useGetObservations } from "../../api/useGetObservations"
 import EditObservationDialog from "../EditObservationDialog/EditObservationDialog"
 import DeleteObservationDialog from "../DeleteObservationDialog/DeleteObservationDialog"
 import { getAnalytics } from "../../analytics"
@@ -56,12 +53,12 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
   const [isEditingObservation, setIsEditingObservation] = useState(false)
   const [isDeletingObservation, setIsDeletingObservation] = useState(false)
   const [targetObservation, setTargetObservation] = useState()
-  const [details] = useQueryStudentDetails(id)
+  const [details] = useGetStudent(id)
   const [
     observations,
     isObservationLoading,
     setObservationsAsOutdated,
-  ] = useQueryStudentObservations(id)
+  ] = useGetObservations(id)
 
   const filteredObservation =
     observationFilterType === ObservationFilterType.ALL

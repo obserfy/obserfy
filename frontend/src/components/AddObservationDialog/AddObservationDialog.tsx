@@ -3,7 +3,7 @@ import ScrollableDialog from "../ScrollableDialog/ScrollableDialog"
 import Box from "../Box/Box"
 import Input from "../Input/Input"
 import TextArea from "../TextArea/TextArea"
-import { Observation } from "../../hooks/students/useQueryStudentObservations"
+import { Observation } from "../../api/useGetObservations"
 import Select from "../Select/Select"
 import { categories } from "../../categories"
 

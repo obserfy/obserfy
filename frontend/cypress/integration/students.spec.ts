@@ -1,5 +1,5 @@
 import * as faker from "faker"
-import { Schools } from "../../src/hooks/students/useQueryAllSchool"
+import { Schools } from "../../src/api/useGetSchools"
 import { setSchoolIdState } from "../../src/hooks/schoolIdState"
 
 describe("Student management flow test", () => {

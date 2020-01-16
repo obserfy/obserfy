@@ -9,7 +9,7 @@ import Button from "../Button/Button"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import { Typography } from "../Typography/Typography"
 import Card from "../Card/Card"
-import { useQueryAllStudents } from "../../hooks/students/useQueryAllStudents"
+import { useGetStudents } from "../../api/useGetStudents"
 import EmptyListPlaceholder from "../EmptyListPlaceholder/EmptyListPlaceholder"
 import { getSchoolId } from "../../hooks/schoolIdState"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
@@ -17,7 +17,7 @@ import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 export const PageHome: FC = () => {
   const schoolId = getSchoolId()
   const [searchTerm, setSearchTerm] = useState("")
-  const [students, loading] = useQueryAllStudents(schoolId)
+  const [students, loading] = useGetStudents(schoolId)
   const matchedStudent = students.filter(student =>
     student.name.match(new RegExp(searchTerm, "i"))
   )
