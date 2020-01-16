@@ -9,7 +9,7 @@ import Button from "../Button/Button"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import { Typography } from "../Typography/Typography"
 import Card from "../Card/Card"
-import { useQueryAllStudents } from "../../hooks/students/useQueryAllStudents"
+import { useGetStudents } from "../../api/useGetStudents"
 import EmptyListPlaceholder from "../EmptyListPlaceholder/EmptyListPlaceholder"
 import { getSchoolId } from "../../hooks/schoolIdState"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
@@ -17,14 +17,9 @@ import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 export const PageHome: FC = () => {
   const schoolId = getSchoolId()
   const [searchTerm, setSearchTerm] = useState("")
-  const [
-    students,
-    setStudentsAsOutdated,
-    studentsIsLoading,
-  ] = useQueryAllStudents(schoolId)
-
+  const [students, loading] = useGetStudents(schoolId)
   const matchedStudent = students.filter(student =>
-    student.name.includes(searchTerm)
+    student.name.match(new RegExp(searchTerm, "i"))
   )
 
   const studentList = matchedStudent.map(({ name, id }) => (
@@ -77,10 +72,10 @@ export const PageHome: FC = () => {
           </Button>
         </Link>
       </Flex>
-      {!studentsIsLoading && students.length > 0 && studentList}
-      {!studentsIsLoading && emptyResultInfo}
-      {!studentsIsLoading && emptyStudentListPlaceholder}
-      {studentsIsLoading && <StudentListLoadingPlaceholder />}
+      {!loading && students.length > 0 && studentList}
+      {!loading && emptyResultInfo}
+      {!loading && emptyStudentListPlaceholder}
+      {loading && <StudentListLoadingPlaceholder />}
     </Box>
   )
 }

@@ -12,6 +12,6 @@ export default {
 
 export const Basic: FC = () => (
   <Box p={3}>
-    <StudentProgressSummaryCard />
+    <StudentProgressSummaryCard studentId="asdasdasd" />
   </Box>
 )

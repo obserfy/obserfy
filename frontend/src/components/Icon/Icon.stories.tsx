@@ -5,8 +5,8 @@ export default {
   title: "Core|Icon",
   component: Icon,
   parameters: {
-    componentSubtitle: "Just a simple Icon"
-  }
+    componentSubtitle: "Just a simple Icon",
+  },
 }
 
 export const Basic: FC = () => <Icon />

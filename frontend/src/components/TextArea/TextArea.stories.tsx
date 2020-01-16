@@ -5,8 +5,8 @@ export default {
   title: "Core|Forms/TextArea",
   component: TextArea,
   parameters: {
-    componentSubtitle: "Just a simple TextArea"
-  }
+    componentSubtitle: "Just a simple TextArea",
+  },
 }
 
 export const Basic: FC = () => <TextArea />

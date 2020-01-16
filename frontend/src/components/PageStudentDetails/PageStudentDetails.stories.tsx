@@ -5,8 +5,8 @@ export default {
   title: "Core|PageStudentDetails",
   component: PageStudentDetails,
   parameters: {
-    componentSubtitle: "Just a simple PageStudentDetails"
-  }
+    componentSubtitle: "Just a simple PageStudentDetails",
+  },
 }
 
-export const Basic: FC = () => <PageStudentDetails />
+export const Basic: FC = () => <PageStudentDetails id="asdfadsf" />

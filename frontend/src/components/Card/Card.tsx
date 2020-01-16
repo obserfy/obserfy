@@ -13,7 +13,7 @@ export const Card: FC<CardProps> = ({
   let sxStyle = sx
   if (borderRadius !== undefined) {
     sxStyle = Object.assign(sxStyle || {}, {
-      borderRadius
+      borderRadius,
     })
   }
   return (

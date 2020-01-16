@@ -7,8 +7,8 @@ export default {
   title: "Basic|Tab",
   component: Tab,
   parameters: {
-    componentSubtitle: "Just a simple Tab"
-  }
+    componentSubtitle: "Just a simple Tab",
+  },
 }
 
 export const Basic: FC = () => {

@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from "react"
 import { navigate } from "gatsby"
 import { useIntl } from "gatsby-plugin-intl3"
 import Box from "../Box/Box"
-import { useQueryStudentDetails } from "../../hooks/students/useQueryStudentDetails"
+import { useGetStudent } from "../../api/useGetStudent"
 import Input from "../Input/Input"
 import Flex from "../Flex/Flex"
 import Button from "../Button/Button"
@@ -23,7 +23,7 @@ interface Props {
 export const PageEditStudent: FC<Props> = ({ id }) => {
   const studentDetailUrl = `/dashboard/students/details?id=${id}`
   const [isDeletingStudent, setIsDeletingStudent] = useState(false)
-  const [details] = useQueryStudentDetails(id)
+  const [details] = useGetStudent(id)
   const [name, setName] = useState()
   const [dateOfBirth, setDateOfBirth] = useState()
   const [showDatePicker, setShowDatePicker] = useState(false)

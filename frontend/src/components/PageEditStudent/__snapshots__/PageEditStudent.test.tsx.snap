@@ -1066,7 +1066,7 @@ exports[`PageEditStudent should render correctly 1`] = `
         class="emotion-41"
       >
         <a
-          href="/dashboard/students/details?id=undefined"
+          href="/dashboard/students/details?id=jkasdfjaksjdfh"
         >
           <div
             class="emotion-33"

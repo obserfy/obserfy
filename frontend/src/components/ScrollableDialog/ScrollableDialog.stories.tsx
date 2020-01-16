@@ -8,8 +8,8 @@ export default {
   title: "Basic|Dialog/ScrollableDialog",
   component: ScrollableDialog,
   parameters: {
-    componentSubtitle: "Just a simple ScrollableDialog"
-  }
+    componentSubtitle: "Just a simple ScrollableDialog",
+  },
 }
 
 const locationList = [
@@ -20,7 +20,7 @@ const locationList = [
   "Ordinary",
   "Milan",
   "Paris",
-  "Svalbard"
+  "Svalbard",
 ]
 
 export const Basic: FC = () => {

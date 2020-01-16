@@ -170,13 +170,16 @@ exports[`EmptyListPlaceholder should render correctly 1`] = `
       >
         <p
           class="emotion-0"
-        />
+        >
+          List is still empty
+        </p>
         <button
           class="emotion-2"
         >
           <div
             class="emotion-1"
           />
+          Add new
         </button>
       </div>
     </div>

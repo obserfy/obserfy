@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 import AlertDialog from "../AlertDialog/AlertDialog"
-import { Observation } from "../../hooks/students/useQueryStudentObservations"
+import { Observation } from "../../api/useGetObservations"
 
 interface Props {
   observation: Observation

@@ -7,8 +7,8 @@ export default {
   title: "Basic|Dialog/AlertDialog",
   component: AlertDialog,
   parameters: {
-    componentSubtitle: "Just a simple AlertDialog"
-  }
+    componentSubtitle: "Just a simple AlertDialog",
+  },
 }
 
 export const Basic: FC = () => (

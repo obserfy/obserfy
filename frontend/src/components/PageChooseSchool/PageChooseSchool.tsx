@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import { navigate } from "gatsby"
 import Flex from "../Flex/Flex"
 import Box from "../Box/Box"
-import { useQueryAllSchools } from "../../hooks/students/useQueryAllSchool"
+import { useGetSchools } from "../../api/useGetSchools"
 import Card from "../Card/Card"
 import { Typography } from "../Typography/Typography"
 import Icon from "../Icon/Icon"
@@ -13,7 +13,7 @@ import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import { setSchoolIdState } from "../../hooks/schoolIdState"
 
 export const PageChooseSchool: FC = () => {
-  const [schools] = useQueryAllSchools()
+  const [schools] = useGetSchools()
 
   function saveSelectedSchool(schoolId: string): void {
     setSchoolIdState(schoolId)

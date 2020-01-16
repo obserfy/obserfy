@@ -8,7 +8,7 @@ export const Container: FC<BoxProps> = props => (
   <Box
     sx={{
       maxWidth: 1024,
-      mx: "auto"
+      mx: "auto",
     }}
     {...props}
   />

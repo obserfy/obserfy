@@ -5,8 +5,8 @@ export default {
   title: "Basic|SearchBar",
   component: SearchBar,
   parameters: {
-    componentSubtitle: "Just a simple SearchBar"
-  }
+    componentSubtitle: "Just a simple SearchBar",
+  },
 }
 
 export const Basic: FC = () => <SearchBar />

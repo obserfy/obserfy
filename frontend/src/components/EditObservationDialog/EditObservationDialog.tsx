@@ -5,7 +5,7 @@ import Box from "../Box/Box"
 import Select from "../Select/Select"
 import Input from "../Input/Input"
 import TextArea from "../TextArea/TextArea"
-import { Observation } from "../../hooks/students/useQueryStudentObservations"
+import { Observation } from "../../api/useGetObservations"
 
 interface Props {
   defaultValue?: Observation

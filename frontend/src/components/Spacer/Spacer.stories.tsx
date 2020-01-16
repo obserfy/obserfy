@@ -5,8 +5,8 @@ export default {
   title: "Core|Spacer",
   component: Spacer,
   parameters: {
-    componentSubtitle: "Just a simple Spacer"
-  }
+    componentSubtitle: "Just a simple Spacer",
+  },
 }
 
 export const Basic: FC = () => <Spacer />

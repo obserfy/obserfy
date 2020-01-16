@@ -12,6 +12,6 @@ export default {
 
 export const Basic: FC = () => (
   <Layout pageTitle="Home">
-    <PageEditStudent name="Poe Damoron"/>
+    <PageEditStudent id="jkasdfjaksjdfh" />
   </Layout>
 )

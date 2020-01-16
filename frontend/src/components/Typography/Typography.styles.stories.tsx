@@ -6,8 +6,8 @@ export default {
   component: Typography,
   parameters: {
     order: 1,
-    componentSubtitle: "Typography components"
-  }
+    componentSubtitle: "Typography components",
+  },
 }
 
 export const All: FC = () => {

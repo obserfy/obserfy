@@ -71,7 +71,8 @@ module.exports = {
           "**/*stories.tsx",
           "**/*.test.tsx",
           "**/*.test.ts",
-          "**/*.spec.js"
+          "**/*.spec.js",
+          "**/*.spec.ts"
         ]
       }
     ],

@@ -2,11 +2,10 @@ import { useEffect, useState } from "react"
 import { navigate } from "gatsby"
 
 const baseUrl = "/api/v1"
-
 function useApi<T>(
   url: string,
   fetchOptions?: RequestInit
-): [T | undefined, () => void, boolean] {
+): [T | undefined, boolean, () => void] {
   // We set isOutdated to true when we know that the data we
   // have from the api is outdated, example would be when we
   // just sent a new data to the server, rendering data that we fetch before
@@ -36,7 +35,7 @@ function useApi<T>(
     f()
   }, [fetchOptions, isOutdated, url])
 
-  return [response, () => setIsOutdated(true), loading]
+  return [response, loading, () => setIsOutdated(true)]
 }
 
 export default useApi

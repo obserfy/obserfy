@@ -18,7 +18,7 @@ export const Avatar: FC<Props> = props => {
         borderColor: "border",
         borderWidth: "1px",
         borderStyle: "solid",
-        overflow: "hidden"
+        overflow: "hidden",
       }}
       {...props}
     />

@@ -20,7 +20,7 @@ export const Checkbox: FC<Props> = ({
   withSx = Object.assign(withSx || {}, {
     alignItems: "center",
     cursor: "pointer",
-    userSelect: "none"
+    userSelect: "none",
   })
   return (
     <Label display="flex" sx={withSx} fontSize={2} {...props}>

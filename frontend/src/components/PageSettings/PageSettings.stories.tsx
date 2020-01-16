@@ -5,8 +5,8 @@ export default {
   title: "Core|PageSettings",
   component: PageSettings,
   parameters: {
-    componentSubtitle: "Just a simple PageSettings"
-  }
+    componentSubtitle: "Just a simple PageSettings",
+  },
 }
 
 export const Basic: FC = () => <PageSettings />

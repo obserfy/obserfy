@@ -34,7 +34,7 @@ export const AlertDialog: FC<Props> = ({
       sx={{
         borderBottomWidth: 1,
         borderBottomStyle: "solid",
-        borderBottomColor: "border"
+        borderBottomColor: "border",
       }}
     >
       <Typography.H6 mb={0} mr={3} fontWeight="bold" flex={1}>
@@ -56,7 +56,7 @@ export const AlertDialog: FC<Props> = ({
       sx={{
         borderTopWidth: 1,
         borderTopStyle: "solid",
-        borderTopColor: "border"
+        borderTopColor: "border",
       }}
     >
       <Spacer />

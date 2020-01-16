@@ -5,8 +5,8 @@ export default {
   title: "Basic|BackNavigation",
   component: BackNavigation,
   parameters: {
-    componentSubtitle: "Just a simple BackNavigation"
-  }
+    componentSubtitle: "Just a simple BackNavigation",
+  },
 }
 
-export const Basic: FC = () => <BackNavigation to="/" textIntlId="home" />
+export const Basic: FC = () => <BackNavigation to="/" text="Home" />

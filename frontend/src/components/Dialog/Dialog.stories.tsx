@@ -10,8 +10,8 @@ export default {
   title: "Basic|Dialog/Dialog",
   component: Dialog,
   parameters: {
-    componentSubtitle: "Just a simple Dialog"
-  }
+    componentSubtitle: "Just a simple Dialog",
+  },
 }
 
 export const Basic: FC = () => (

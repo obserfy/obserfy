@@ -7,6 +7,7 @@ import { Box } from "../src/components/Box/Box"
 import "../src/global.css"
 import { IntlProvider } from "gatsby-plugin-intl3"
 import { withI18n } from "storybook-addon-i18n"
+import { action } from "@storybook/addon-actions"
 
 // Setup Custom theme and storybook options
 const theme = create({
