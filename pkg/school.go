@@ -27,16 +27,82 @@ type UserToSchool struct {
 func createSchoolsSubroute(env Env) *chi.Mux {
 	r := chi.NewRouter()
 	r.Post("/", createNewSchool(env))
-	r.Get("/{schoolId}", getSchoolInfo(env))
-	r.Get("/{schoolId}/students", getAllStudentsOfSchool(env))
-	r.Post("/{schoolId}/students", createNewStudentForSchool(env))
-	r.Post("/{schoolId}/invite-code", generateNewInviteCode(env))
 
-	r.Post("/{schoolId}/curriculum", createNewCurriculum(env))
-	r.Delete("/{schoolId}/curriculum", deleteCurriculum(env))
-	r.Get("/{schoolId}/curriculum", getCurriculum(env))
-	r.Get("/{schoolId}/curriculum/areas", getCurriculumAreas(env))
+	r.Route("/{schoolId}", func(r chi.Router) {
+		r.Use(createSchoolAuthorizationCheckMiddleware(env))
+		r.Get("/", getSchoolInfo(env))
+		r.Get("/students", getAllStudentsOfSchool(env))
+		r.Post("/students", createNewStudentForSchool(env))
+		r.Post("/invite-code", generateNewInviteCode(env))
+
+		r.Post("/curriculum", createNewCurriculum(env))
+		r.Delete("/curriculum", deleteCurriculum(env))
+		r.Get("/curriculum", getCurriculum(env))
+		r.Get("/curriculum/areas", getCurriculumAreas(env))
+	})
 	return r
+}
+
+func createSchoolAuthorizationCheckMiddleware(env Env) func(next http.Handler) http.Handler {
+	return func(next http.Handler) http.Handler {
+		fn := func(w http.ResponseWriter, r *http.Request) {
+			// Verify school ID
+			schoolId := chi.URLParam(r, "schoolId")
+			_, err := uuid.Parse(schoolId)
+			if err != nil {
+				env.logger.Warn("Invalid School ID received", zap.Error(err))
+				http.Error(w, "Invalid ID received", http.StatusBadRequest)
+				return
+			}
+
+			// Verify use access to the school
+			session, ok := getSessionFromCtx(w, r, env.logger)
+			if !ok {
+				return
+			}
+			if ok := checkUserIsAuthorized(w, session.UserId, schoolId, env); !ok {
+				return
+			}
+			next.ServeHTTP(w, r)
+		}
+		return http.HandlerFunc(fn)
+	}
+}
+
+// TODO: refactor into middleware
+func checkUserIsAuthorized(w http.ResponseWriter, userId string, schoolId string, env Env) bool {
+	// check if user have permission
+	var user User
+	err := env.db.Model(&user).
+		Where("id=?", userId).
+		Relation("Schools").
+		Select()
+	// if we found no associated school, user is definitely unauthorized
+	if err == pg.ErrNoRows {
+		http.Error(w, "Unauthorized", http.StatusUnauthorized)
+		return false
+	}
+	if err != nil {
+		writeInternalServerError("Failed getting user data", w, err, env.logger)
+		return false
+	}
+	// TODO: This can be replaced with simple where SQL
+	userHasAccess := false
+	for _, school := range user.Schools {
+		if school.Id == schoolId {
+			userHasAccess = true
+			break
+		}
+	}
+	if !userHasAccess {
+		env.logger.Warn("Unauthorized user tries to change invite code of a school",
+			zap.String("userId", user.Id),
+			zap.String("schoolId", schoolId),
+		)
+		http.Error(w, "Unauthorized", http.StatusUnauthorized)
+		return false
+	}
+	return true
 }
 
 func getSchoolInfo(env Env) http.HandlerFunc {
@@ -56,23 +122,11 @@ func getSchoolInfo(env Env) http.HandlerFunc {
 
 	return func(w http.ResponseWriter, r *http.Request) {
 		schoolId := chi.URLParam(r, "schoolId")
-		_, err := uuid.Parse(schoolId)
-		if err != nil {
-			env.logger.Warn("Invalid School ID received", zap.Error(err))
-			http.Error(w, "Invalid ID received", http.StatusBadRequest)
-			return
-		}
+		session, _ := getSessionFromCtx(w, r, env.logger)
 
-		session, ok := getSessionFromCtx(w, r, env.logger)
-		if !ok {
-			return
-		}
-		if ok := checkUserIsAuthorized(w, session.UserId, schoolId, env); !ok {
-			return
-		}
-
+		// Get school data
 		var school School
-		err = env.db.Model(&school).
+		err := env.db.Model(&school).
 			Relation("Users").
 			Where("id=?", schoolId).
 			Select()
@@ -80,6 +134,7 @@ func getSchoolInfo(env Env) http.HandlerFunc {
 			writeInternalServerError("Failed getting school data", w, err, env.logger)
 			return
 		}
+
 		users := make([]responseUserField, len(school.Users))
 		for i, user := range school.Users {
 			users[i].Id = user.Id
@@ -109,20 +164,6 @@ func createNewStudentForSchool(env Env) http.HandlerFunc {
 	}
 	return func(w http.ResponseWriter, r *http.Request) {
 		schoolId := chi.URLParam(r, "schoolId")
-		_, err := uuid.Parse(schoolId)
-		if err != nil {
-			env.logger.Warn("Invalid School ID received", zap.Error(err))
-			http.Error(w, "Invalid ID received", http.StatusBadRequest)
-			return
-		}
-
-		session, ok := getSessionFromCtx(w, r, env.logger)
-		if !ok {
-			return
-		}
-		if ok := checkUserIsAuthorized(w, session.UserId, schoolId, env); !ok {
-			return
-		}
 		if ok := parseJsonRequestBody(w, r, &requestBody, env.logger); !ok {
 			return
 		}
@@ -134,7 +175,7 @@ func createNewStudentForSchool(env Env) http.HandlerFunc {
 			SchoolId:    schoolId,
 			DateOfBirth: requestBody.DateOfBirth,
 		}
-		err = env.db.Insert(&student)
+		err := env.db.Insert(&student)
 		if err != nil {
 			writeInternalServerError("Failed saving new student", w, err, env.logger)
 			return
@@ -158,24 +199,9 @@ func getAllStudentsOfSchool(env Env) http.HandlerFunc {
 	}
 	return func(w http.ResponseWriter, r *http.Request) {
 		schoolId := chi.URLParam(r, "schoolId")
-		_, err := uuid.Parse(schoolId)
-		if err != nil {
-			env.logger.Warn("Invalid School ID received", zap.Error(err))
-			http.Error(w, "Invalid ID received", http.StatusBadRequest)
-			return
-		}
-
-		session, ok := getSessionFromCtx(w, r, env.logger)
-		if !ok {
-			return
-		}
-
-		if ok := checkUserIsAuthorized(w, session.UserId, schoolId, env); !ok {
-			return
-		}
 
 		var students []Student
-		err = env.db.Model(&students).
+		err := env.db.Model(&students).
 			Where("school_id=?", schoolId).
 			Order("name").
 			Select()
@@ -196,39 +222,20 @@ func getAllStudentsOfSchool(env Env) http.HandlerFunc {
 }
 
 func createNewSchool(env Env) func(w http.ResponseWriter, r *http.Request) {
+	var requestBody struct {
+		Name string
+	}
 	return func(w http.ResponseWriter, r *http.Request) {
 		session, ok := getSessionFromCtx(w, r, env.logger)
 		if !ok {
 			return
 		}
-
-		var user User
-		err := env.db.Model(&user).Where("id=?", session.UserId).Select()
-		if err != nil {
-			env.logger.Error("Failed getting user data", zap.Error(err))
-			http.Error(w, "Something went wrong", http.StatusInternalServerError)
-			return
-		}
-
-		var requestBody struct {
-			Name string
-		}
 		if ok := parseJsonRequestBody(w, r, &requestBody, env.logger); !ok {
 			return
 		}
 
-		id, err := uuid.NewRandom()
-		if err != nil {
-			env.logger.Error("Error creating new id", zap.Error(err))
-			http.Error(w, "Something went wrong", http.StatusInternalServerError)
-			return
-		}
-		inviteCode, err := uuid.NewRandom()
-		if err != nil {
-			env.logger.Error("Error creating invite code", zap.Error(err))
-			http.Error(w, "Something went wrong", http.StatusInternalServerError)
-			return
-		}
+		id := uuid.New()
+		inviteCode := uuid.New()
 		school := School{
 			Id:         id.String(),
 			Name:       requestBody.Name,
@@ -236,10 +243,10 @@ func createNewSchool(env Env) func(w http.ResponseWriter, r *http.Request) {
 		}
 		userToSchoolRelation := UserToSchool{
 			SchoolId: id.String(),
-			UserId:   user.Id,
+			UserId:   session.UserId,
 		}
 
-		err = env.db.Insert(&school)
+		err := env.db.Insert(&school)
 		if err != nil {
 			env.logger.Error("Failed saving school data", zap.Error(err))
 			http.Error(w, "Something went wrong", http.StatusInternalServerError)
@@ -253,38 +260,18 @@ func createNewSchool(env Env) func(w http.ResponseWriter, r *http.Request) {
 		}
 
 		w.WriteHeader(http.StatusCreated)
-		err = writeJsonResponse(w, school, env.logger)
+		_ = writeJsonResponse(w, school, env.logger)
 	}
 }
 
 func generateNewInviteCode(env Env) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		schoolId := chi.URLParam(r, "schoolId")
-		_, err := uuid.Parse(schoolId)
-		if err != nil {
-			env.logger.Warn("Invalid School ID received", zap.Error(err))
-			http.Error(w, "Invalid ID received", http.StatusBadRequest)
-			return
-		}
-
-		session, ok := getSessionFromCtx(w, r, env.logger)
-		if !ok {
-			return
-		}
-
-		if ok := checkUserIsAuthorized(w, session.UserId, schoolId, env); !ok {
-			return
-		}
 
 		// update the generated invite code
-		newInviteCode, err := uuid.NewRandom()
-		if err != nil {
-			env.logger.Error("Error creating invite code", zap.Error(err))
-			http.Error(w, "Something went wrong", http.StatusInternalServerError)
-			return
-		}
+		newInviteCode := uuid.New()
 		var school School
-		err = env.db.Model(&school).Where("id=?", schoolId).Select()
+		err := env.db.Model(&school).Where("id=?", schoolId).Select()
 		if err != nil {
 			writeInternalServerError("Failed fetching school info", w, err, env.logger)
 			return
@@ -300,54 +287,10 @@ func generateNewInviteCode(env Env) http.HandlerFunc {
 	}
 }
 
-// TODO: refactor into middleware
-func checkUserIsAuthorized(w http.ResponseWriter, userId string, schoolId string, env Env) bool {
-	// check if user have permission
-	var user User
-	err := env.db.Model(&user).
-		Where("id=?", userId).
-		Relation("Schools").
-		Select()
-	// if we found no associated school, user is definitely unauthorized
-	if err == pg.ErrNoRows {
-		http.Error(w, "Unauthorized", http.StatusUnauthorized)
-		return false
-	}
-	if err != nil {
-		writeInternalServerError("Failed getting user data", w, err, env.logger)
-		return false
-	}
-	userHasAccess := false
-	for _, school := range user.Schools {
-		if school.Id == schoolId {
-			userHasAccess = true
-			break
-		}
-	}
-	if !userHasAccess {
-		env.logger.Warn("Unauthorized user tries to change invite code of a school",
-			zap.String("userId", user.Id),
-			zap.String("schoolId", schoolId),
-		)
-		http.Error(w, "Unauthorized", http.StatusUnauthorized)
-		return false
-	}
-	return true
-}
-
 func createNewCurriculum(env Env) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		// Get school id
 		schoolId := chi.URLParam(r, "schoolId")
-
-		// check session is valid, and user has authorization to access the school.
-		session, ok := getSessionFromCtx(w, r, env.logger)
-		if !ok {
-			return
-		}
-		if ok := checkUserIsAuthorized(w, session.UserId, schoolId, env); !ok {
-			return
-		}
 
 		// Return conflict error if school already has curriculum
 		var school School
@@ -379,15 +322,6 @@ func deleteCurriculum(env Env) http.HandlerFunc {
 		// Get school id
 		schoolId := chi.URLParam(r, "schoolId")
 
-		// check session is valid, and user has authorization to access the school.
-		session, ok := getSessionFromCtx(w, r, env.logger)
-		if !ok {
-			return
-		}
-		if ok := checkUserIsAuthorized(w, session.UserId, schoolId, env); !ok {
-			return
-		}
-
 		// Get school data and check if curriculum exists
 		var school School
 		err := env.db.Model(&school).
@@ -417,22 +351,13 @@ func deleteCurriculum(env Env) http.HandlerFunc {
 }
 
 func getCurriculum(env Env) http.HandlerFunc {
-	type curriculum struct {
+	type responseBody struct {
 		Id   string `json:"id"`
 		Name string `json:"name"`
 	}
 	return func(w http.ResponseWriter, r *http.Request) {
 		// Get school id
 		schoolId := chi.URLParam(r, "schoolId")
-
-		// check session is valid, and user has authorization to access the school.
-		session, ok := getSessionFromCtx(w, r, env.logger)
-		if !ok {
-			return
-		}
-		if ok := checkUserIsAuthorized(w, session.UserId, schoolId, env); !ok {
-			return
-		}
 
 		// Get school data and check if curriculum exists
 		var school School
@@ -455,8 +380,7 @@ func getCurriculum(env Env) http.HandlerFunc {
 		}
 
 		// Format queried result into response format.
-		response := curriculum{Id: school.CurriculumId, Name: school.Curriculum.Name}
-
+		response := responseBody{Id: school.CurriculumId, Name: school.Curriculum.Name}
 		err = writeJsonResponse(w, response, env.logger)
 		if err != nil {
 			writeInternalServerError("Fail to get json response", w, err, env.logger)
@@ -473,15 +397,6 @@ func getCurriculumAreas(env Env) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		// Get school id
 		schoolId := chi.URLParam(r, "schoolId")
-
-		// check session is valid, and user has authorization to access the school.
-		session, ok := getSessionFromCtx(w, r, env.logger)
-		if !ok {
-			return
-		}
-		if ok := checkUserIsAuthorized(w, session.UserId, schoolId, env); !ok {
-			return
-		}
 
 		// Get school data and check if curriculum exists
 		var school School

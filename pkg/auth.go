@@ -13,7 +13,7 @@ import (
 	"time"
 )
 
-const CTX_SESSION = "session"
+const SessionCtxKey = "session"
 
 type Session struct {
 	Token  string `pg:",pk" pg:",type:uuid"`
@@ -219,7 +219,7 @@ func createAuthMiddleware(env Env) func(next http.Handler) http.Handler {
 				return
 			}
 
-			ctx := context.WithValue(r.Context(), CTX_SESSION, session)
+			ctx := context.WithValue(r.Context(), SessionCtxKey, session)
 			next.ServeHTTP(w, r.WithContext(ctx))
 		}
 		return http.HandlerFunc(fn)
@@ -228,7 +228,7 @@ func createAuthMiddleware(env Env) func(next http.Handler) http.Handler {
 
 func getSessionFromCtx(w http.ResponseWriter, r *http.Request, logger *zap.Logger) (Session, bool) {
 	ctx := r.Context()
-	session, ok := ctx.Value(CTX_SESSION).(Session)
+	session, ok := ctx.Value(SessionCtxKey).(Session)
 	if !ok {
 		logger.Error("Failed to retrieve session")
 		http.Error(w, "Something went wrong", http.StatusInternalServerError)
