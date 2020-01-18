@@ -473,7 +473,7 @@ func getArea(env Env) http.HandlerFunc {
 			env.logger.Warn("Area not found", zap.String("areaId", areaId))
 			w.WriteHeader(http.StatusNotFound)
 			response := createErrorResponse("NotFound", "Can't find area with specified ID")
-			_ = writeJsonResponse(w, response, env.logger)
+			_ = writeJsonResponseOld(w, response, env.logger)
 			return
 		}
 		if err != nil {
@@ -486,7 +486,7 @@ func getArea(env Env) http.HandlerFunc {
 			Id:   dbArea.Id,
 			Name: dbArea.Name,
 		}
-		err = writeJsonResponse(w, response, env.logger)
+		err = writeJsonResponseOld(w, response, env.logger)
 		if err != nil {
 			writeInternalServerError("Fail to get json response", w, err, env.logger)
 			return
@@ -521,7 +521,7 @@ func getAreaSubjects(env Env) http.HandlerFunc {
 				Order: subject.Order,
 			})
 		}
-		err = writeJsonResponse(w, response, env.logger)
+		err = writeJsonResponseOld(w, response, env.logger)
 		if err != nil {
 			writeInternalServerError("Fail to get json response", w, err, env.logger)
 			return
@@ -556,7 +556,7 @@ func getSubjectMaterials(env Env) http.HandlerFunc {
 				Order: subject.Order,
 			})
 		}
-		err = writeJsonResponse(w, response, env.logger)
+		err = writeJsonResponseOld(w, response, env.logger)
 		if err != nil {
 			writeInternalServerError("Fail to get json response", w, err, env.logger)
 			return

@@ -28,7 +28,7 @@ func getUserDetails(env Env) func(w http.ResponseWriter, r *http.Request) {
 		Name  string `json:"name"`
 	}
 	return func(w http.ResponseWriter, r *http.Request) {
-		session, ok := getSessionFromCtx(w, r, env.logger)
+		session, ok := getSessionFromCtxOld(w, r, env.logger)
 		if !ok {
 			return
 		}
@@ -41,7 +41,7 @@ func getUserDetails(env Env) func(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		err = writeJsonResponse(w, response{
+		err = writeJsonResponseOld(w, response{
 			Id:    user.Id,
 			Email: user.Email,
 			Name:  user.Name,
@@ -51,7 +51,7 @@ func getUserDetails(env Env) func(w http.ResponseWriter, r *http.Request) {
 
 func getUserSchools(env Env) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		session, ok := getSessionFromCtx(w, r, env.logger)
+		session, ok := getSessionFromCtxOld(w, r, env.logger)
 		if !ok {
 			return
 		}
@@ -64,6 +64,6 @@ func getUserSchools(env Env) func(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		err = writeJsonResponse(w, &user.Schools, env.logger)
+		err = writeJsonResponseOld(w, &user.Schools, env.logger)
 	}
 }

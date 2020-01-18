@@ -82,7 +82,7 @@ func replaceStudent(env Env) func(w http.ResponseWriter, r *http.Request) {
 			Name:        newStudent.Name,
 			DateOfBirth: newStudent.DateOfBirth,
 		}
-		err = writeJsonResponse(w, response, env.logger)
+		err = writeJsonResponseOld(w, response, env.logger)
 	}
 }
 
@@ -100,7 +100,7 @@ func getStudentById(env Env) func(w http.ResponseWriter, r *http.Request) {
 		if err == pg.ErrNoRows {
 			errorResponse := createErrorResponse("NotFound", "Can't find student with the specified id.")
 			w.WriteHeader(http.StatusNotFound)
-			_ = writeJsonResponse(w, errorResponse, env.logger)
+			_ = writeJsonResponseOld(w, errorResponse, env.logger)
 			return
 		}
 		if err != nil {
@@ -114,7 +114,7 @@ func getStudentById(env Env) func(w http.ResponseWriter, r *http.Request) {
 			Name:        student.Name,
 			DateOfBirth: student.DateOfBirth,
 		}
-		err = writeJsonResponse(w, response, env.logger)
+		err = writeJsonResponseOld(w, response, env.logger)
 	}
 }
 
@@ -152,7 +152,7 @@ func addObservationToStudent(env Env) func(w http.ResponseWriter, r *http.Reques
 		}
 
 		w.WriteHeader(http.StatusCreated)
-		err = writeJsonResponse(w, observation, env.logger)
+		err = writeJsonResponseOld(w, observation, env.logger)
 	}
 }
 
@@ -168,7 +168,7 @@ func getAllStudentObservations(env Env) func(w http.ResponseWriter, r *http.Requ
 			return
 		}
 
-		err = writeJsonResponse(w, observations, env.logger)
+		err = writeJsonResponseOld(w, observations, env.logger)
 	}
 }
 
@@ -209,7 +209,7 @@ func getStudentProgress(env Env) http.HandlerFunc {
 			})
 		}
 
-		_ = writeJsonResponse(w, response, env.logger)
+		_ = writeJsonResponseOld(w, response, env.logger)
 	}
 }
 
@@ -224,7 +224,7 @@ func updateMaterialProgress(env Env) http.HandlerFunc {
 		var requestBody requestBody
 		if ok := parseJsonRequestBody(w, r, &requestBody, env.logger); !ok {
 			response := createErrorResponse("BadRequest", "Invalid request body.")
-			_ = writeJsonResponse(w, response, env.logger)
+			_ = writeJsonResponseOld(w, response, env.logger)
 			w.WriteHeader(http.StatusBadRequest)
 			return
 		}
