@@ -153,18 +153,17 @@ type AppHandler struct {
 func (a AppHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	// For centralized logging of error
 	if err := a.handler(w, r); err != nil {
+		w.WriteHeader(err.code)
 		if err.code >= http.StatusInternalServerError {
 			// Server error
 			a.env.logger.Error(err.message, zap.Error(err.error))
 			res := createErrorResponse("InternalError", "Something went wrong")
 			_ = writeJsonResponseOld(w, res, a.env.logger)
-			w.WriteHeader(err.code)
 		} else if err.code >= http.StatusBadRequest {
 			// User error
 			a.env.logger.Warn(err.message, zap.Error(err.error))
-			res := createErrorResponse(string(err.code), "Something went wrong")
+			res := createErrorResponse(string(err.code), err.message)
 			_ = writeJsonResponseOld(w, res, a.env.logger)
-			w.WriteHeader(err.code)
 		}
 	}
 }

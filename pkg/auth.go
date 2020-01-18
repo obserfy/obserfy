@@ -25,27 +25,30 @@ func createAuthSubroute(env Env) *chi.Mux {
 	r.Post("/register", register(env))
 	r.Post("/login", login(env))
 	r.Post("/logout", logout(env))
-	r.Get("/invite-code/{inviteCodeId}", getInviteCodeInformation(env))
+	r.Method("GET", "/invite-code/{inviteCodeId}", getInviteCodeInformation(env))
 	return r
 }
 
-func getInviteCodeInformation(env Env) http.HandlerFunc {
+func getInviteCodeInformation(env Env) AppHandler {
 	type response struct {
 		SchoolName string `json:"schoolName"`
 	}
-	return func(w http.ResponseWriter, r *http.Request) {
+	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
 		inviteCodeId := chi.URLParam(r, "inviteCodeId")
+
 		var school School
-		err := env.db.Model(&school).Where("invite_code=?", inviteCodeId).Select()
-		if err != nil {
-			http.NotFound(w, r)
-			return
+		if err := env.db.Model(&school).
+			Where("invite_code=?", inviteCodeId).
+			Select(); err != nil {
+			return &HTTPError{http.StatusNotFound, "Invite code not found", err}
 		}
-		response := response{
-			SchoolName: school.Name,
+
+		res := response{school.Name}
+		if err := writeJson(w, res); err != nil {
+			return createWriteJsonError(err)
 		}
-		_ = writeJsonResponseOld(w, response, env.logger)
-	}
+		return nil
+	}}
 }
 
 func register(env Env) func(w http.ResponseWriter, r *http.Request) {
