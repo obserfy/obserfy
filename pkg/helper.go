@@ -77,13 +77,13 @@ func writeInternalServerError(message string, w http.ResponseWriter, err error, 
 
 // Possible common errors
 func createParseJsonError(err error) *HTTPError {
-	return &HTTPError{err, "Failed parsing input", http.StatusBadRequest}
+	return &HTTPError{http.StatusBadRequest, "Failed parsing input", err}
 }
 
 func createGetSessionError() *HTTPError {
-	return &HTTPError{errors.New("session can't be found on context"), "Unauthorized", http.StatusUnauthorized}
+	return &HTTPError{http.StatusUnauthorized, "Unauthorized", errors.New("session can't be found on context")}
 }
 
 func createWriteJsonError(err error) *HTTPError {
-	return &HTTPError{err, "Failed writing json response", http.StatusInternalServerError}
+	return &HTTPError{http.StatusInternalServerError, "Failed writing json response", err}
 }
