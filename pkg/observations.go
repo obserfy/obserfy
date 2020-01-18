@@ -62,7 +62,7 @@ func updateObservation(env Env) http.HandlerFunc {
 		}
 
 		// Return the updated observation
-		_ = writeJsonResponse(w, observation, env.logger)
+		_ = writeJsonResponseOld(w, observation, env.logger)
 	}
 }
 

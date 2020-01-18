@@ -1,5 +1,4 @@
 import React, { FC } from "react"
-
 import Card from "../Card/Card"
 import { Flex } from "../Flex/Flex"
 import { BoxProps } from "../Box/Box"
