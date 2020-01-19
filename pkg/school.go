@@ -101,7 +101,10 @@ func getSchoolInfo(env Env) AppHandler {
 
 	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
 		schoolId := chi.URLParam(r, "schoolId")
-		session, _ := getSessionFromCtxOld(w, r, env.logger)
+		session, ok := getSessionFromCtx(r.Context())
+		if !ok {
+			return createGetSessionError()
+		}
 
 		// Get school data
 		var school School

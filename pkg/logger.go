@@ -16,8 +16,8 @@ func createLogger() *zap.Logger {
 		config = zap.NewDevelopmentConfig()
 		config.EncoderConfig.EncodeLevel = zapcore.CapitalColorLevelEncoder
 	}
-	logger, err := config.Build()
 
+	logger, err := config.Build()
 	if err != nil {
 		log.Print("Failed creating logger")
 	}

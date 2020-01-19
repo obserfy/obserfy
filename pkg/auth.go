@@ -6,7 +6,6 @@ import (
 	"github.com/go-chi/chi"
 	"github.com/go-pg/pg/v9"
 	"github.com/google/uuid"
-	"go.uber.org/zap"
 	"golang.org/x/crypto/bcrypt"
 	"net/http"
 	"os"
@@ -51,7 +50,6 @@ func getInviteCodeInformation(env Env) AppHandler {
 		return nil
 	}}
 }
-
 
 func register(env Env) AppHandler {
 	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
@@ -194,20 +192,13 @@ func createAuthMiddleware(env Env) func(next http.Handler) http.Handler {
 	}
 }
 
-// TODO: Replace this completely with getSessionFromCtx
-func getSessionFromCtxOld(w http.ResponseWriter, r *http.Request, logger *zap.Logger) (Session, bool) {
-	ctx := r.Context()
-	session, ok := ctx.Value(SessionCtxKey).(Session)
-	if !ok {
-		logger.Error("Failed to retrieve session")
-		http.Error(w, "Something went wrong", http.StatusInternalServerError)
-	}
-	return session, ok
-}
-
 func getSessionFromCtx(ctx context.Context) (Session, bool) {
 	session, ok := ctx.Value(SessionCtxKey).(Session)
 	return session, ok
+}
+
+func createGetSessionError() *HTTPError {
+	return &HTTPError{http.StatusUnauthorized, "Unauthorized", errors.New("session can't be found on context")}
 }
 
 func createAndSaveSessionCookie(db *pg.DB, userId string) (*http.Cookie, error) {

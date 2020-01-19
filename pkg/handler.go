@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/getsentry/sentry-go"
 	"go.uber.org/zap"
 	"net/http"
 )
@@ -22,13 +23,14 @@ func (a AppHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(err.code)
 		if err.code >= http.StatusInternalServerError {
 			// Server error
+			sentry.CaptureException(err.error)
 			a.env.logger.Error(err.message, zap.Error(err.error))
-			res := createErrorResponse("InternalError", "Something went wrong")
+			res := createErrorResponse("Something went wrong")
 			_ = writeJson(w, res)
 		} else if err.code >= http.StatusBadRequest {
 			// User error
 			a.env.logger.Warn(err.message, zap.Error(err.error))
-			res := createErrorResponse(string(err.code), err.message)
+			res := createErrorResponse(err.message)
 			_ = writeJson(w, res)
 		}
 	}
@@ -39,13 +41,11 @@ type ErrorResponse struct {
 }
 
 type ErrorResponseMessage struct {
-	Code    string `json:"code"`
 	Message string `json:"message"`
 }
 
-func createErrorResponse(code string, message string) ErrorResponse {
+func createErrorResponse(message string) ErrorResponse {
 	return ErrorResponse{ErrorResponseMessage{
-		Code:    code,
 		Message: message,
 	}}
 }

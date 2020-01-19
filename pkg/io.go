@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"errors"
 	"io"
 	"net/http"
 )
@@ -19,19 +18,14 @@ func writeJson(w http.ResponseWriter, object interface{}) error {
 	return nil
 }
 
+func createWriteJsonError(err error) *HTTPError {
+	return &HTTPError{http.StatusInternalServerError, "Failed writing json response", err}
+}
+
 func parseJson(input io.ReadCloser, result interface{}) error {
 	return json.NewDecoder(input).Decode(result)
 }
 
-// Possible common errors
 func createParseJsonError(err error) *HTTPError {
 	return &HTTPError{http.StatusBadRequest, "Failed parsing input", err}
-}
-
-func createGetSessionError() *HTTPError {
-	return &HTTPError{http.StatusUnauthorized, "Unauthorized", errors.New("session can't be found on context")}
-}
-
-func createWriteJsonError(err error) *HTTPError {
-	return &HTTPError{http.StatusInternalServerError, "Failed writing json response", err}
 }
