@@ -97,7 +97,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(observation),
     })
-    setIsAddingObservation(false)
+    setIsEditingObservation(false)
     setObservationsAsOutdated()
     getAnalytics()?.track("Observation Updated", {
       responseStatus: response.status,
