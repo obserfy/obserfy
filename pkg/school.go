@@ -126,7 +126,7 @@ func getSchoolInfo(env Env) AppHandler {
 			Users:      users,
 		}
 
-		if err := writeJsonResponseOld(w, response, env.logger); err != nil {
+		if err := writeJson(w, response); err != nil {
 			return &HTTPError{http.StatusInternalServerError, "Failed writing message", err}
 		}
 		return nil
