@@ -2,8 +2,8 @@ package main
 
 import (
 	"context"
+	"errors"
 	"github.com/go-chi/chi"
-	"github.com/go-pg/pg/v9"
 	"github.com/google/uuid"
 	"go.uber.org/zap"
 	"golang.org/x/crypto/bcrypt"
@@ -22,7 +22,7 @@ type Session struct {
 
 func createAuthSubroute(env Env) *chi.Mux {
 	r := chi.NewRouter()
-	r.Post("/register", register(env))
+	r.Method("POST", "/register", register(env))
 	r.Post("/login", login(env))
 	r.Post("/logout", logout(env))
 	r.Method("GET", "/invite-code/{inviteCodeId}", getInviteCodeInformation(env))
@@ -51,68 +51,30 @@ func getInviteCodeInformation(env Env) AppHandler {
 	}}
 }
 
-func register(env Env) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		id, err := uuid.NewRandom()
-		if err != nil {
-			env.logger.Error("Failed to generate new uuid", zap.Error(err))
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
+func register(env Env) AppHandler {
+	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
+		id := uuid.New()
 
 		// TODO: add better email validation
 		email := r.FormValue("email")
 		if email == "" {
-			env.logger.Info("Failed to hash password")
-			http.Error(w, "Email is required", http.StatusBadRequest)
-			return
+			return &HTTPError{http.StatusBadRequest, "Email is required", errors.New("email is empty")}
 		}
 
 		// TODO: add better password validation
 		password := r.FormValue("password")
 		if password == "" {
-			env.logger.Info("Failed to hash password")
-			http.Error(w, "Password is required", http.StatusBadRequest)
-			return
+			return &HTTPError{http.StatusBadRequest, "Password is required", errors.New("email is empty")}
 		}
 		hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), BCryptCost)
 		if err != nil {
-			env.logger.Info("Failed to hash password", zap.Error(err))
-			http.Error(w, "Something went wrong", http.StatusInternalServerError)
-			return
+			return &HTTPError{http.StatusInternalServerError, "Failed to hash password", err}
 		}
 
 		// TODO: add better password validation
 		name := r.FormValue("name")
 		if name == "" {
-			env.logger.Info("Failed to hash password")
-			http.Error(w, "Name is required", http.StatusBadRequest)
-			return
-		}
-
-		// Validate invite code if exists
-		inviteCode := r.FormValue("inviteCode")
-		var school School
-		if inviteCode != "" {
-			_, err := uuid.Parse(inviteCode)
-			if err != nil {
-				http.Error(w, "Invalid invite code", http.StatusBadRequest)
-				env.logger.Info("Invalid invite code", zap.String("inviteCode", inviteCode))
-				return
-			}
-
-			// Search for school associated with invite code
-			err = env.db.Model(&school).Where("invite_code=?", inviteCode).Select()
-			if err == pg.ErrNoRows {
-				env.logger.Warn("Cannot find invitation code school info", zap.String("invitation code", inviteCode))
-				http.Error(w, "Invitation code owner not found", http.StatusNotFound)
-				return
-			}
-			if err != nil {
-				writeInternalServerError("Failed getting school data", w, err, env.logger)
-				return
-			}
-
+			return &HTTPError{http.StatusInternalServerError, "Name is required", errors.New("name is empty ")}
 		}
 
 		user := User{
@@ -123,31 +85,37 @@ func register(env Env) func(w http.ResponseWriter, r *http.Request) {
 		}
 		err = env.db.Insert(&user)
 		if err != nil {
+			// TODO: Is there necessary?
 			if strings.Contains(err.Error(), "#23505") {
-				http.Error(w, "This email has already been used", http.StatusConflict)
-				env.logger.Info("Someone tries to login with existing email", zap.String("email", email))
-				return
+				return &HTTPError{http.StatusConflict, "Email already been used", err}
 			}
-			env.logger.Error("Failed to insert to db", zap.Error(err))
-			http.Error(w, "Something went wrong", http.StatusInternalServerError)
-			return
+			return &HTTPError{http.StatusInternalServerError, "Failed to insert user to db", err}
 		}
 
+		// Create relation between user and associated school if use has invite code
+		inviteCode := r.FormValue("inviteCode")
 		if inviteCode != "" {
-			// Create relation between user and associated school
+			var school School
+			// Search for school associated with invite code
+			if err := env.db.Model(&school).
+				Where("invite_code=?", inviteCode).
+				Select(); err != nil {
+				return &HTTPError{http.StatusNotFound, "Invitation code is invalid", err}
+			}
+
 			userSchoolRelation := UserToSchool{
 				SchoolId: school.Id,
 				UserId:   user.Id,
 			}
 			err = env.db.Insert(&userSchoolRelation)
 			if err != nil {
-				writeInternalServerError("Failed saving user relation to school", w, err, env.logger)
-				return
+				return &HTTPError{http.StatusInternalServerError, "Failed to insert user to db", err}
 			}
 		}
 
 		giveNewSession(w, env, user.Id)
-	}
+		return nil
+	}}
 }
 
 func login(env Env) func(w http.ResponseWriter, r *http.Request) {

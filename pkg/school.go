@@ -397,7 +397,6 @@ func getCurriculumAreas(env Env) AppHandler {
 		}
 
 		if err := writeJson(w, response); err != nil {
-			writeInternalServerError("Fail to get json response", w, err, env.logger)
 			return &HTTPError{http.StatusInternalServerError, "Failed to write json response", err}
 		}
 		return nil
