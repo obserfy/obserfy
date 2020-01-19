@@ -136,7 +136,7 @@ func getSchoolInfo(env Env) AppHandler {
 func createStudent(env Env) AppHandler {
 	var requestBody struct {
 		Name        string     `json:"name"`
-		DateOfBirth *time.Time `json:"dateOfBirth"`
+		DateOfBirth *time.Time `json:"dateOfBirth,omitempty"`
 	}
 	type responseBody struct {
 		Id          string     `json:"id"`
