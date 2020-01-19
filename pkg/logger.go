@@ -8,16 +8,16 @@ import (
 )
 
 func createLogger() *zap.Logger {
-	// TODO: User NewProduction when deployed to production
 	var config zap.Config
 	if os.Getenv("env") == "production" {
 		config = zap.NewProductionConfig()
+		config.Level.SetLevel(zap.InfoLevel)
 	} else {
 		config = zap.NewDevelopmentConfig()
 		config.EncoderConfig.EncodeLevel = zapcore.CapitalColorLevelEncoder
 	}
-	logger, err := config.Build()
 
+	logger, err := config.Build()
 	if err != nil {
 		log.Print("Failed creating logger")
 	}

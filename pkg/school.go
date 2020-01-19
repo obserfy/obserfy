@@ -45,11 +45,7 @@ func createSchoolsSubroute(env Env) *chi.Mux {
 func createSchoolAuthorizationCheckMiddleware(env Env) func(next http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
 		return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
-			// Verify school ID
 			schoolId := chi.URLParam(r, "schoolId")
-			if _, err := uuid.Parse(schoolId); err != nil {
-				return &HTTPError{http.StatusBadRequest, "Invalid school ID received", err}
-			}
 
 			// Verify use access to the school
 			session, ok := getSessionFromCtx(r.Context())
@@ -57,7 +53,7 @@ func createSchoolAuthorizationCheckMiddleware(env Env) func(next http.Handler) h
 				return createGetSessionError()
 			}
 			if err := checkUserIsAuthorized(session.UserId, schoolId, env); err != nil {
-				return &HTTPError{http.StatusUnauthorized, "Not authorized to access this school", err}
+				return &HTTPError{http.StatusUnauthorized, "You're not authorized to access this school", err}
 			}
 			next.ServeHTTP(w, r)
 			return nil
@@ -105,7 +101,10 @@ func getSchoolInfo(env Env) AppHandler {
 
 	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
 		schoolId := chi.URLParam(r, "schoolId")
-		session, _ := getSessionFromCtxOld(w, r, env.logger)
+		session, ok := getSessionFromCtx(r.Context())
+		if !ok {
+			return createGetSessionError()
+		}
 
 		// Get school data
 		var school School
@@ -130,7 +129,7 @@ func getSchoolInfo(env Env) AppHandler {
 			Users:      users,
 		}
 
-		if err := writeJsonResponseOld(w, response, env.logger); err != nil {
+		if err := writeJson(w, response); err != nil {
 			return &HTTPError{http.StatusInternalServerError, "Failed writing message", err}
 		}
 		return nil
@@ -140,7 +139,7 @@ func getSchoolInfo(env Env) AppHandler {
 func createStudent(env Env) AppHandler {
 	var requestBody struct {
 		Name        string     `json:"name"`
-		DateOfBirth *time.Time `json:"dateOfBirth"`
+		DateOfBirth *time.Time `json:"dateOfBirth,omitempty"`
 	}
 	type responseBody struct {
 		Id          string     `json:"id"`
@@ -169,10 +168,10 @@ func createStudent(env Env) AppHandler {
 			Name:        student.Name,
 			DateOfBirth: student.DateOfBirth,
 		}
+		w.WriteHeader(http.StatusCreated)
 		if err := writeJson(w, response); err != nil {
 			return &HTTPError{http.StatusInternalServerError, "Failed writing result", err}
 		}
-		w.WriteHeader(http.StatusCreated)
 		return nil
 	}}
 }
@@ -241,10 +240,10 @@ func createNewSchool(env Env) AppHandler {
 		if err := env.db.Insert(&userToSchoolRelation); err != nil {
 			return &HTTPError{http.StatusInternalServerError, "failed saving school relation", err}
 		}
+		w.WriteHeader(http.StatusCreated)
 		if err := writeJson(w, school); err != nil {
 			return createWriteJsonError(err)
 		}
-		w.WriteHeader(http.StatusCreated)
 		return nil
 	}}
 }
@@ -401,7 +400,6 @@ func getCurriculumAreas(env Env) AppHandler {
 		}
 
 		if err := writeJson(w, response); err != nil {
-			writeInternalServerError("Fail to get json response", w, err, env.logger)
 			return &HTTPError{http.StatusInternalServerError, "Failed to write json response", err}
 		}
 		return nil

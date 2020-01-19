@@ -4,7 +4,6 @@ import (
 	"github.com/go-chi/chi"
 	"github.com/go-pg/pg/v9"
 	"github.com/google/uuid"
-	"go.uber.org/zap"
 	"net/http"
 	"time"
 )
@@ -449,36 +448,27 @@ func insertFullCurriculum(school School, curriculum Curriculum) func(tx *pg.Tx) 
 
 func createCurriculumSubroute(env Env) *chi.Mux {
 	r := chi.NewRouter()
-	r.Get("/areas/{areaId}", getArea(env))
-	r.Get("/areas/{areaId}/subjects", getAreaSubjects(env))
-	r.Get("/subjects/{subjectId}/materials", getSubjectMaterials(env))
+	r.Method("GET", "/areas/{areaId}", getArea(env))
+	r.Method("GET", "/areas/{areaId}/subjects", getAreaSubjects(env))
+	r.Method("GET", "/subjects/{subjectId}/materials", getSubjectMaterials(env))
 	return r
 }
 
-func getArea(env Env) http.HandlerFunc {
+func getArea(env Env) AppHandler {
 	type responseBody struct {
 		Id   string `json:"id"`
 		Name string `json:"name"`
 	}
-	return func(w http.ResponseWriter, r *http.Request) {
+	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
 		areaId := chi.URLParam(r, "areaId")
 
 		// Get area
 		var dbArea Area
-		err := env.db.Model(&dbArea).
+		if err := env.db.Model(&dbArea).
 			Column("id", "name").
 			Where("id=?", areaId).
-			Select()
-		if err == pg.ErrNoRows {
-			env.logger.Warn("Area not found", zap.String("areaId", areaId))
-			w.WriteHeader(http.StatusNotFound)
-			response := createErrorResponse("NotFound", "Can't find area with specified ID")
-			_ = writeJsonResponseOld(w, response, env.logger)
-			return
-		}
-		if err != nil {
-			writeInternalServerError("Failed to get area data.", w, err, env.logger)
-			return
+			Select(); err != nil {
+			return &HTTPError{http.StatusNotFound, " Can't find area with specified ID", err}
 		}
 
 		// Write response
@@ -486,30 +476,27 @@ func getArea(env Env) http.HandlerFunc {
 			Id:   dbArea.Id,
 			Name: dbArea.Name,
 		}
-		err = writeJsonResponseOld(w, response, env.logger)
-		if err != nil {
-			writeInternalServerError("Fail to get json response", w, err, env.logger)
-			return
+		if err := writeJson(w, response); err != nil {
+			return createWriteJsonError(err)
 		}
-	}
+		return nil
+	}}
 }
 
-func getAreaSubjects(env Env) http.HandlerFunc {
+func getAreaSubjects(env Env) AppHandler {
 	type simplifiedSubject struct {
 		Id    string `json:"id"`
 		Name  string `json:"name"`
 		Order int    `json:"order"`
 	}
-	return func(w http.ResponseWriter, r *http.Request) {
+	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
 		areaId := chi.URLParam(r, "areaId")
 
 		var subjects []Subject
-		err := env.db.Model(&subjects).
+		if err := env.db.Model(&subjects).
 			Where("area_id=?", areaId).
-			Select()
-		if err != nil {
-			writeInternalServerError("Failed to get area data.", w, err, env.logger)
-			return
+			Select(); err != nil {
+			return &HTTPError{http.StatusNotFound, " Can't find subject with specified area ID", err}
 		}
 
 		// Write response
@@ -521,30 +508,27 @@ func getAreaSubjects(env Env) http.HandlerFunc {
 				Order: subject.Order,
 			})
 		}
-		err = writeJsonResponseOld(w, response, env.logger)
-		if err != nil {
-			writeInternalServerError("Fail to get json response", w, err, env.logger)
-			return
+		if err := writeJson(w, response); err != nil {
+			return createWriteJsonError(err)
 		}
-	}
+		return nil
+	}}
 }
 
-func getSubjectMaterials(env Env) http.HandlerFunc {
+func getSubjectMaterials(env Env) AppHandler {
 	type simplifiedMaterial struct {
 		Id    string `json:"id"`
 		Name  string `json:"name"`
 		Order int    `json:"order"`
 	}
-	return func(w http.ResponseWriter, r *http.Request) {
+	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
 		subjectId := chi.URLParam(r, "subjectId")
 
 		var materials []Material
-		err := env.db.Model(&materials).
+		if err := env.db.Model(&materials).
 			Where("subject_id=?", subjectId).
-			Select()
-		if err != nil {
-			writeInternalServerError("Failed to get area data.", w, err, env.logger)
-			return
+			Select(); err != nil {
+			return &HTTPError{http.StatusNotFound, " Can't find materials with the specified subject id", err}
 		}
 
 		// Write response
@@ -556,10 +540,9 @@ func getSubjectMaterials(env Env) http.HandlerFunc {
 				Order: subject.Order,
 			})
 		}
-		err = writeJsonResponseOld(w, response, env.logger)
-		if err != nil {
-			writeInternalServerError("Fail to get json response", w, err, env.logger)
-			return
+		if err := writeJson(w, response); err != nil {
+			return createWriteJsonError(err)
 		}
-	}
+		return nil
+	}}
 }

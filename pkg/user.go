@@ -1,8 +1,8 @@
 package main
 
 import (
+	"errors"
 	"github.com/go-chi/chi"
-	"go.uber.org/zap"
 	"net/http"
 )
 
@@ -16,54 +16,61 @@ type User struct {
 
 func createUserSubroute(env Env) *chi.Mux {
 	r := chi.NewRouter()
-	r.Get("/", getUserDetails(env))
-	r.Get("/schools", getUserSchools(env))
+	r.Method("GET", "/", getUserDetails(env))
+	r.Method("GET", "/schools", getUserSchools(env))
 	return r
 }
 
-func getUserDetails(env Env) func(w http.ResponseWriter, r *http.Request) {
+func getUserDetails(env Env) AppHandler {
 	type response struct {
 		Id    string `json:"id"`
 		Email string `json:"email"`
 		Name  string `json:"name"`
 	}
-	return func(w http.ResponseWriter, r *http.Request) {
-		session, ok := getSessionFromCtxOld(w, r, env.logger)
+	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
+		session, ok := getSessionFromCtx(r.Context())
 		if !ok {
-			return
+			return &HTTPError{http.StatusUnauthorized, "Invalid session", errors.New("can't get session from context")}
 		}
 
 		var user User
-		err := env.db.Model(&user).Column("id", "email", "name").Where("id=?", session.UserId).Select()
-		if err != nil {
-			env.logger.Error("Failed getting user data", zap.Error(err))
-			http.Error(w, "Something went wrong", http.StatusInternalServerError)
-			return
+		if err := env.db.Model(&user).
+			Column("id", "email", "name").
+			Where("id=?", session.UserId).
+			Select(); err != nil {
+			return &HTTPError{http.StatusInternalServerError, "Can't get user data", err}
 		}
 
-		err = writeJsonResponseOld(w, response{
+		if err := writeJson(w, response{
 			Id:    user.Id,
 			Email: user.Email,
 			Name:  user.Name,
-		}, env.logger)
-	}
+		}); err != nil {
+			return createWriteJsonError(err)
+		}
+		return nil
+	}}
 }
 
-func getUserSchools(env Env) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		session, ok := getSessionFromCtxOld(w, r, env.logger)
+func getUserSchools(env Env) AppHandler {
+	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
+		session, ok := getSessionFromCtx(r.Context())
 		if !ok {
-			return
+			return &HTTPError{http.StatusUnauthorized, "Invalid session", errors.New("can't get session from context")}
 		}
 
 		var user User
-		err := env.db.Model(&user).Where("id=?", session.UserId).Relation("Schools").Select()
-		if err != nil {
-			env.logger.Error("Failed getting user data", zap.Error(err))
-			http.Error(w, "Something went wrong", http.StatusInternalServerError)
-			return
+		if err := env.db.Model(&user).
+			Where("id=?", session.UserId).
+			Relation("Schools").
+			Select(); err != nil {
+			return &HTTPError{http.StatusInternalServerError, "Can't get user data", err}
 		}
 
-		err = writeJsonResponseOld(w, &user.Schools, env.logger)
-	}
+		// TODO: Don't return SQL objects
+		if err := writeJson(w, &user.Schools); err != nil {
+			return createWriteJsonError(err)
+		}
+		return nil
+	}}
 }

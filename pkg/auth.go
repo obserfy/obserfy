@@ -2,10 +2,10 @@ package main
 
 import (
 	"context"
+	"errors"
 	"github.com/go-chi/chi"
 	"github.com/go-pg/pg/v9"
 	"github.com/google/uuid"
-	"go.uber.org/zap"
 	"golang.org/x/crypto/bcrypt"
 	"net/http"
 	"os"
@@ -22,94 +22,59 @@ type Session struct {
 
 func createAuthSubroute(env Env) *chi.Mux {
 	r := chi.NewRouter()
-	r.Post("/register", register(env))
-	r.Post("/login", login(env))
-	r.Post("/logout", logout(env))
-	r.Get("/invite-code/{inviteCodeId}", getInviteCodeInformation(env))
+	r.Method("POST", "/register", register(env))
+	r.Method("POST", "/login", login(env))
+	r.Method("POST", "/logout", logout(env))
+	r.Method("GET", "/invite-code/{inviteCodeId}", getInviteCodeInformation(env))
 	return r
 }
 
-func getInviteCodeInformation(env Env) http.HandlerFunc {
+func getInviteCodeInformation(env Env) AppHandler {
 	type response struct {
 		SchoolName string `json:"schoolName"`
 	}
-	return func(w http.ResponseWriter, r *http.Request) {
+	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
 		inviteCodeId := chi.URLParam(r, "inviteCodeId")
+
 		var school School
-		err := env.db.Model(&school).Where("invite_code=?", inviteCodeId).Select()
-		if err != nil {
-			http.NotFound(w, r)
-			return
+		if err := env.db.Model(&school).
+			Where("invite_code=?", inviteCodeId).
+			Select(); err != nil {
+			return &HTTPError{http.StatusNotFound, "Invite code not found", err}
 		}
-		response := response{
-			SchoolName: school.Name,
+
+		res := response{school.Name}
+		if err := writeJson(w, res); err != nil {
+			return createWriteJsonError(err)
 		}
-		_ = writeJsonResponseOld(w, response, env.logger)
-	}
+		return nil
+	}}
 }
 
-func register(env Env) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		id, err := uuid.NewRandom()
-		if err != nil {
-			env.logger.Error("Failed to generate new uuid", zap.Error(err))
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
+func register(env Env) AppHandler {
+	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
+		id := uuid.New()
 
 		// TODO: add better email validation
 		email := r.FormValue("email")
 		if email == "" {
-			env.logger.Info("Failed to hash password")
-			http.Error(w, "Email is required", http.StatusBadRequest)
-			return
+			return &HTTPError{http.StatusBadRequest, "Email is required", errors.New("email is empty")}
 		}
 
 		// TODO: add better password validation
 		password := r.FormValue("password")
 		if password == "" {
-			env.logger.Info("Failed to hash password")
-			http.Error(w, "Password is required", http.StatusBadRequest)
-			return
+			return &HTTPError{http.StatusBadRequest, "Password is required", errors.New("email is empty")}
 		}
 		hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), BCryptCost)
 		if err != nil {
-			env.logger.Info("Failed to hash password", zap.Error(err))
-			http.Error(w, "Something went wrong", http.StatusInternalServerError)
-			return
+			return &HTTPError{http.StatusInternalServerError, "Failed to hash password", err}
 		}
 
 		// TODO: add better password validation
 		name := r.FormValue("name")
 		if name == "" {
-			env.logger.Info("Failed to hash password")
-			http.Error(w, "Name is required", http.StatusBadRequest)
-			return
-		}
-
-		// Validate invite code if exists
-		inviteCode := r.FormValue("inviteCode")
-		var school School
-		if inviteCode != "" {
-			_, err := uuid.Parse(inviteCode)
-			if err != nil {
-				http.Error(w, "Invalid invite code", http.StatusBadRequest)
-				env.logger.Info("Invalid invite code", zap.String("inviteCode", inviteCode))
-				return
-			}
-
-			// Search for school associated with invite code
-			err = env.db.Model(&school).Where("invite_code=?", inviteCode).Select()
-			if err == pg.ErrNoRows {
-				env.logger.Warn("Cannot find invitation code school info", zap.String("invitation code", inviteCode))
-				http.Error(w, "Invitation code owner not found", http.StatusNotFound)
-				return
-			}
-			if err != nil {
-				writeInternalServerError("Failed getting school data", w, err, env.logger)
-				return
-			}
-
+			return &HTTPError{http.StatusInternalServerError, "Name is required", errors.New("name is empty ")}
 		}
 
 		user := User{
@@ -120,121 +85,111 @@ func register(env Env) func(w http.ResponseWriter, r *http.Request) {
 		}
 		err = env.db.Insert(&user)
 		if err != nil {
+			// TODO: Is there necessary?
 			if strings.Contains(err.Error(), "#23505") {
-				http.Error(w, "This email has already been used", http.StatusConflict)
-				env.logger.Info("Someone tries to login with existing email", zap.String("email", email))
-				return
+				return &HTTPError{http.StatusConflict, "Email already been used", err}
 			}
-			env.logger.Error("Failed to insert to db", zap.Error(err))
-			http.Error(w, "Something went wrong", http.StatusInternalServerError)
-			return
+			return &HTTPError{http.StatusInternalServerError, "Failed to insert user to db", err}
 		}
 
+		// Create relation between user and associated school if use has invite code
+		inviteCode := r.FormValue("inviteCode")
 		if inviteCode != "" {
-			// Create relation between user and associated school
+			var school School
+			// Search for school associated with invite code
+			if err := env.db.Model(&school).
+				Where("invite_code=?", inviteCode).
+				Select(); err != nil {
+				return &HTTPError{http.StatusNotFound, "Invitation code is invalid", err}
+			}
+
 			userSchoolRelation := UserToSchool{
 				SchoolId: school.Id,
 				UserId:   user.Id,
 			}
 			err = env.db.Insert(&userSchoolRelation)
 			if err != nil {
-				writeInternalServerError("Failed saving user relation to school", w, err, env.logger)
-				return
+				return &HTTPError{http.StatusInternalServerError, "Failed to insert user to db", err}
 			}
 		}
 
-		giveNewSession(w, env, user.Id)
-	}
+		cookie, err := createAndSaveSessionCookie(env.db, user.Id)
+		if err != nil {
+			return &HTTPError{http.StatusInternalServerError, "Fail saving session", err}
+		}
+		http.SetCookie(w, cookie)
+		return nil
+	}}
 }
 
-func login(env Env) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
+func login(env Env) AppHandler {
+	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
 		// TODO: add better email validation
 		email := r.FormValue("email")
 		if email == "" {
-			env.logger.Info("Failed to hash password")
-			http.Error(w, "Email is required", http.StatusBadRequest)
-			return
+			return &HTTPError{http.StatusBadRequest, "Email is required", errors.New("email is empty")}
 		}
 
 		// TODO: add better password validation
 		password := r.FormValue("password")
 		if password == "" {
-			env.logger.Info("Failed to hash password")
-			http.Error(w, "Password is required", http.StatusBadRequest)
-			return
+			return &HTTPError{http.StatusBadRequest, "Password is required", errors.New("password is empty")}
 		}
 
 		var user User
-		err := env.db.Model(&user).Where("email=?", email).First()
-		if err != nil {
-			env.logger.Info("Failed to hash password", zap.Error(err))
-			http.Error(w, "Invalid Credential", http.StatusUnauthorized)
-			return
+		if err := env.db.Model(&user).
+			Where("email=?", email).
+			First(); err != nil {
+			return &HTTPError{http.StatusBadRequest, "Invalid email or password", err}
 		}
-		err = bcrypt.CompareHashAndPassword(user.Password, []byte(password))
-		if err != nil {
-			env.logger.Info("Failed to hash password", zap.Error(err))
-			http.Error(w, "Invalid Credential", http.StatusUnauthorized)
-			return
+		if err := bcrypt.CompareHashAndPassword(user.Password, []byte(password)); err != nil {
+			return &HTTPError{http.StatusBadRequest, "Invalid email or password", err}
 		}
 
-		giveNewSession(w, env, user.Id)
-	}
+		cookie, err := createAndSaveSessionCookie(env.db, user.Id)
+		if err != nil {
+			return &HTTPError{http.StatusInternalServerError, "Fail saving session", err}
+		}
+		http.SetCookie(w, cookie)
+		return nil
+	}}
 }
 
-func logout(env Env) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
+func logout(env Env) AppHandler {
+	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
 		tokenCookie, err := r.Cookie("session")
 		if err != nil {
-			env.logger.Error("Error getting session cookie", zap.Error(err))
-			http.Error(w, "Unauthorized", http.StatusUnauthorized)
-			return
+			return &HTTPError{http.StatusUnauthorized, "You're not logged in", err}
 		}
 
 		session := Session{Token: tokenCookie.Value}
-		err = env.db.Delete(&session)
-		if err != nil {
-			env.logger.Error("Error removing session", zap.Error(err))
-			http.Error(w, "Something went wrong", http.StatusInternalServerError)
+		if err = env.db.Delete(&session); err != nil {
+			return &HTTPError{http.StatusInternalServerError, "Failed deleting session", err}
 		}
-	}
+		return nil
+	}}
 }
 
 func createAuthMiddleware(env Env) func(next http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
-		fn := func(w http.ResponseWriter, r *http.Request) {
+		return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
 			token, err := r.Cookie("session")
 			if err != nil {
-				env.logger.Error("Error getting session cookie", zap.Error(err))
-				http.Error(w, "Unauthorized", http.StatusUnauthorized)
-				return
+				return &HTTPError{http.StatusUnauthorized, "Invalid session", err}
 			}
 
 			var session Session
-			err = env.db.Model(&session).Where("token=?", token.Value).Select()
-			if err != nil {
-				env.logger.Error("Error querying session", zap.Error(err))
-				http.Error(w, "Unauthorized", http.StatusUnauthorized)
-				return
+			if err = env.db.Model(&session).
+				Where("token=?", token.Value).
+				Select(); err != nil {
+				return &HTTPError{http.StatusUnauthorized, "Invalid session", err}
 			}
 
 			ctx := context.WithValue(r.Context(), SessionCtxKey, session)
 			next.ServeHTTP(w, r.WithContext(ctx))
-		}
-		return http.HandlerFunc(fn)
+			return nil
+		}}
 	}
-}
-
-// TODO: Replace this completely with getSessionFromCtx
-func getSessionFromCtxOld(w http.ResponseWriter, r *http.Request, logger *zap.Logger) (Session, bool) {
-	ctx := r.Context()
-	session, ok := ctx.Value(SessionCtxKey).(Session)
-	if !ok {
-		logger.Error("Failed to retrieve session")
-		http.Error(w, "Something went wrong", http.StatusInternalServerError)
-	}
-	return session, ok
 }
 
 func getSessionFromCtx(ctx context.Context) (Session, bool) {
@@ -242,22 +197,17 @@ func getSessionFromCtx(ctx context.Context) (Session, bool) {
 	return session, ok
 }
 
-func giveNewSession(w http.ResponseWriter, env Env, userId string) {
-	token, err := uuid.NewRandom()
-	if err != nil {
-		http.Error(w, "Something went wrong", http.StatusInternalServerError)
-		env.logger.Error("Failed creating token", zap.Error(err))
-		return
-	}
+func createGetSessionError() *HTTPError {
+	return &HTTPError{http.StatusUnauthorized, "Unauthorized", errors.New("session can't be found on context")}
+}
+
+func createAndSaveSessionCookie(db *pg.DB, userId string) (*http.Cookie, error) {
 	session := Session{
-		Token:  token.String(),
+		Token:  uuid.New().String(),
 		UserId: userId,
 	}
-	err = env.db.Insert(&session)
-	if err != nil {
-		http.Error(w, "Something went wrong", http.StatusInternalServerError)
-		env.logger.Error("Failed saving token to db", zap.Error(err))
-		return
+	if err := db.Insert(&session); err != nil {
+		return nil, err
 	}
 
 	var cookie http.Cookie
@@ -285,6 +235,5 @@ func giveNewSession(w http.ResponseWriter, env Env, userId string) {
 			SameSite: http.SameSiteLaxMode,
 		}
 	}
-
-	http.SetCookie(w, &cookie)
+	return &cookie, nil
 }
