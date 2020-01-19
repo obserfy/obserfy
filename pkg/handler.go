@@ -24,12 +24,28 @@ func (a AppHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			// Server error
 			a.env.logger.Error(err.message, zap.Error(err.error))
 			res := createErrorResponse("InternalError", "Something went wrong")
-			_ = writeJsonResponseOld(w, res, a.env.logger)
+			_ = writeJson(w, res)
 		} else if err.code >= http.StatusBadRequest {
 			// User error
 			a.env.logger.Warn(err.message, zap.Error(err.error))
 			res := createErrorResponse(string(err.code), err.message)
-			_ = writeJsonResponseOld(w, res, a.env.logger)
+			_ = writeJson(w, res)
 		}
 	}
+}
+
+type ErrorResponse struct {
+	Error ErrorResponseMessage `json:"error"`
+}
+
+type ErrorResponseMessage struct {
+	Code    string `json:"code"`
+	Message string `json:"message"`
+}
+
+func createErrorResponse(code string, message string) ErrorResponse {
+	return ErrorResponse{ErrorResponseMessage{
+		Code:    code,
+		Message: message,
+	}}
 }

@@ -8,22 +8,6 @@ import (
 	"net/http"
 )
 
-type ErrorResponse struct {
-	Error ErrorResponseMessage `json:"error"`
-}
-
-type ErrorResponseMessage struct {
-	Code    string `json:"code"`
-	Message string `json:"message"`
-}
-
-func createErrorResponse(code string, message string) ErrorResponse {
-	return ErrorResponse{ErrorResponseMessage{
-		Code:    code,
-		Message: message,
-	}}
-}
-
 // TODO: Remove writeJsonResponseOld
 func writeJsonResponseOld(w http.ResponseWriter, object interface{}, logger *zap.Logger) error {
 	res, err := json.Marshal(object)

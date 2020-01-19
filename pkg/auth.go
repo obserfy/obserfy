@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"github.com/go-chi/chi"
+	"github.com/go-pg/pg/v9"
 	"github.com/google/uuid"
 	"go.uber.org/zap"
 	"golang.org/x/crypto/bcrypt"
@@ -23,8 +24,8 @@ type Session struct {
 func createAuthSubroute(env Env) *chi.Mux {
 	r := chi.NewRouter()
 	r.Method("POST", "/register", register(env))
-	r.Post("/login", login(env))
-	r.Post("/logout", logout(env))
+	r.Method("POST", "/login", login(env))
+	r.Method("POST", "/logout", logout(env))
 	r.Method("GET", "/invite-code/{inviteCodeId}", getInviteCodeInformation(env))
 	return r
 }
@@ -50,6 +51,7 @@ func getInviteCodeInformation(env Env) AppHandler {
 		return nil
 	}}
 }
+
 
 func register(env Env) AppHandler {
 	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
@@ -113,87 +115,82 @@ func register(env Env) AppHandler {
 			}
 		}
 
-		giveNewSession(w, env, user.Id)
+		cookie, err := createAndSaveSessionCookie(env.db, user.Id)
+		if err != nil {
+			return &HTTPError{http.StatusInternalServerError, "Fail saving session", err}
+		}
+		http.SetCookie(w, cookie)
 		return nil
 	}}
 }
 
-func login(env Env) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
+func login(env Env) AppHandler {
+	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
 		// TODO: add better email validation
 		email := r.FormValue("email")
 		if email == "" {
-			env.logger.Info("Failed to hash password")
-			http.Error(w, "Email is required", http.StatusBadRequest)
-			return
+			return &HTTPError{http.StatusBadRequest, "Email is required", errors.New("email is empty")}
 		}
 
 		// TODO: add better password validation
 		password := r.FormValue("password")
 		if password == "" {
-			env.logger.Info("Failed to hash password")
-			http.Error(w, "Password is required", http.StatusBadRequest)
-			return
+			return &HTTPError{http.StatusBadRequest, "Password is required", errors.New("password is empty")}
 		}
 
 		var user User
-		err := env.db.Model(&user).Where("email=?", email).First()
-		if err != nil {
-			env.logger.Info("Failed to hash password", zap.Error(err))
-			http.Error(w, "Invalid Credential", http.StatusUnauthorized)
-			return
+		if err := env.db.Model(&user).
+			Where("email=?", email).
+			First(); err != nil {
+			return &HTTPError{http.StatusBadRequest, "Invalid email or password", err}
 		}
-		err = bcrypt.CompareHashAndPassword(user.Password, []byte(password))
-		if err != nil {
-			env.logger.Info("Failed to hash password", zap.Error(err))
-			http.Error(w, "Invalid Credential", http.StatusUnauthorized)
-			return
+		if err := bcrypt.CompareHashAndPassword(user.Password, []byte(password)); err != nil {
+			return &HTTPError{http.StatusBadRequest, "Invalid email or password", err}
 		}
 
-		giveNewSession(w, env, user.Id)
-	}
+		cookie, err := createAndSaveSessionCookie(env.db, user.Id)
+		if err != nil {
+			return &HTTPError{http.StatusInternalServerError, "Fail saving session", err}
+		}
+		http.SetCookie(w, cookie)
+		return nil
+	}}
 }
 
-func logout(env Env) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
+func logout(env Env) AppHandler {
+	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
 		tokenCookie, err := r.Cookie("session")
 		if err != nil {
-			env.logger.Error("Error getting session cookie", zap.Error(err))
-			http.Error(w, "Unauthorized", http.StatusUnauthorized)
-			return
+			return &HTTPError{http.StatusUnauthorized, "You're not logged in", err}
 		}
 
 		session := Session{Token: tokenCookie.Value}
-		err = env.db.Delete(&session)
-		if err != nil {
-			env.logger.Error("Error removing session", zap.Error(err))
-			http.Error(w, "Something went wrong", http.StatusInternalServerError)
+		if err = env.db.Delete(&session); err != nil {
+			return &HTTPError{http.StatusInternalServerError, "Failed deleting session", err}
 		}
-	}
+		return nil
+	}}
 }
 
 func createAuthMiddleware(env Env) func(next http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
-		fn := func(w http.ResponseWriter, r *http.Request) {
+		return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
 			token, err := r.Cookie("session")
 			if err != nil {
-				env.logger.Error("Error getting session cookie", zap.Error(err))
-				http.Error(w, "Unauthorized", http.StatusUnauthorized)
-				return
+				return &HTTPError{http.StatusUnauthorized, "Invalid session", err}
 			}
 
 			var session Session
-			err = env.db.Model(&session).Where("token=?", token.Value).Select()
-			if err != nil {
-				env.logger.Error("Error querying session", zap.Error(err))
-				http.Error(w, "Unauthorized", http.StatusUnauthorized)
-				return
+			if err = env.db.Model(&session).
+				Where("token=?", token.Value).
+				Select(); err != nil {
+				return &HTTPError{http.StatusUnauthorized, "Invalid session", err}
 			}
 
 			ctx := context.WithValue(r.Context(), SessionCtxKey, session)
 			next.ServeHTTP(w, r.WithContext(ctx))
-		}
-		return http.HandlerFunc(fn)
+			return nil
+		}}
 	}
 }
 
@@ -213,22 +210,13 @@ func getSessionFromCtx(ctx context.Context) (Session, bool) {
 	return session, ok
 }
 
-func giveNewSession(w http.ResponseWriter, env Env, userId string) {
-	token, err := uuid.NewRandom()
-	if err != nil {
-		http.Error(w, "Something went wrong", http.StatusInternalServerError)
-		env.logger.Error("Failed creating token", zap.Error(err))
-		return
-	}
+func createAndSaveSessionCookie(db *pg.DB, userId string) (*http.Cookie, error) {
 	session := Session{
-		Token:  token.String(),
+		Token:  uuid.New().String(),
 		UserId: userId,
 	}
-	err = env.db.Insert(&session)
-	if err != nil {
-		http.Error(w, "Something went wrong", http.StatusInternalServerError)
-		env.logger.Error("Failed saving token to db", zap.Error(err))
-		return
+	if err := db.Insert(&session); err != nil {
+		return nil, err
 	}
 
 	var cookie http.Cookie
@@ -256,6 +244,5 @@ func giveNewSession(w http.ResponseWriter, env Env, userId string) {
 			SameSite: http.SameSiteLaxMode,
 		}
 	}
-
-	http.SetCookie(w, &cookie)
+	return &cookie, nil
 }
