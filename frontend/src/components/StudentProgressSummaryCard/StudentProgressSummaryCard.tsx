@@ -1,9 +1,8 @@
 import React, { FC, useState } from "react"
-import { navigate } from "gatsby-plugin-intl3"
+import { Link, navigate } from "gatsby-plugin-intl3"
 import Button from "../Button/Button"
 import Spacer from "../Spacer/Spacer"
 import Flex from "../Flex/Flex"
-import { categories } from "../../categories"
 import Typography from "../Typography/Typography"
 import Card from "../Card/Card"
 import Tab from "../Tab/Tab"
@@ -13,24 +12,14 @@ import Icon from "../Icon/Icon"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import Box from "../Box/Box"
 import InformationalCard from "../InformationalCard/InformationalCard"
-import useApi from "../../api/useApi"
-import { getSchoolId } from "../../hooks/schoolIdState"
-import { Area } from "../PageCurriculumArea/PageCurriculumArea"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
+import { useGetCurriculumAreas } from "../../api/useGetCurriculumAreas"
+import {
+  materialStageToString,
+  StudentMaterialProgress,
+  useGetStudentMaterialProgress,
+} from "../../api/useGetStudentMaterialProgress"
 
-export enum MaterialProgressStage {
-  UNTOUCHED,
-  PRESENTED,
-  PRACTICED,
-  MASTERED,
-}
-export interface StudentMaterialProgress {
-  areaId: string
-  materialName: string
-  materialId: string
-  stage: MaterialProgressStage
-  lastUpdated: Date
-}
 interface Props {
   studentId: string
 }
@@ -40,20 +29,21 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
   const [selectedSummary, setSelectedSummary] = useState<
     StudentMaterialProgress
   >()
-
-  const [areas, areasLoading, setAreasOutdated] = useApi<Area[]>(
-    `/schools/${getSchoolId()}/curriculum/areas`
-  )
-  const [progress, progressLoading, setProgressOutdated] = useApi<
-    StudentMaterialProgress[]
-  >(`/students/${studentId}/materialsProgress`)
+  const [areas, areasLoading, setAreasOutdated] = useGetCurriculumAreas()
+  const [
+    progress,
+    progressLoading,
+    setProgressOutdated,
+  ] = useGetStudentMaterialProgress(studentId)
 
   const loading = areasLoading || progressLoading
 
-  const selectedAreaSummaryList = progress
-    ?.filter(({ areaId }) => areaId === areas?.[tab].id)
+  const selectedAreaId = areas?.[tab]?.id
+
+  const selectedAreaProgress = progress
+    ?.filter(({ areaId }) => areaId === selectedAreaId)
     .map(summary => (
-      <SummaryListItem
+      <ProgressList
         value={summary}
         onClick={() => {
           setSelectedSummary(summary)
@@ -84,9 +74,13 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
       }}
     >
       <Spacer />
-      <Button variant="secondary" fontSize={0}>
-        See All {categories[tab + 1].name} Progress
-      </Button>
+      <Link
+        to={`/dashboard/students/progress?studentId=${studentId}&areaId=${selectedAreaId}`}
+      >
+        <Button variant="secondary" fontSize={0}>
+          See All {areas[tab]?.name} Progress
+        </Button>
+      </Link>
     </Flex>
   )
 
@@ -119,7 +113,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
           selectedItemIdx={tab}
         />
         <Box my={2}>
-          {selectedAreaSummaryList}
+          {selectedAreaProgress}
           {(progress?.length ?? 0) === 0 && (
             <Typography.Body
               width="100%"
@@ -139,24 +133,12 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
   )
 }
 
-const SummaryListItem: FC<{
+const ProgressList: FC<{
   value: StudentMaterialProgress
   onClick: () => void
 }> = ({ value, onClick }) => {
-  let status: string
-  switch (value.stage) {
-    case MaterialProgressStage.MASTERED:
-      status = "Mastered"
-      break
-    case MaterialProgressStage.PRACTICED:
-      status = "Practiced"
-      break
-    case MaterialProgressStage.PRESENTED:
-      status = "Presented"
-      break
-    default:
-      status = "N/A"
-  }
+  const stage = materialStageToString(value.stage)
+
   return (
     <Flex
       px={3}
@@ -172,7 +154,7 @@ const SummaryListItem: FC<{
     >
       <Typography.Body fontSize={1}>{value.materialName}</Typography.Body>
       <Spacer />
-      <Pill backgroundColor="materialStatus.presented" text={status} mr={2} />
+      <Pill backgroundColor="materialStatus.presented" text={stage} mr={2} />
       <Icon as={NextIcon} m={0} />
     </Flex>
   )

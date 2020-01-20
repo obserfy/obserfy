@@ -1,31 +1,20 @@
 import React, { FC } from "react"
-import useApi from "../../api/useApi"
 import Box from "../Box/Box"
 import Typography from "../Typography/Typography"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import Card from "../Card/Card"
 import BackNavigation from "../BackNavigation/BackNavigation"
+import { useGetArea } from "../../api/useGetArea"
+import { Subject, useGetAreaSubjects } from "../../api/useGetAreaSubjects"
+import { useGetSubjectMaterials } from "../../api/useGetSubjectMaterials"
 
 // FIXME: Typescript any typing, and inconsistent loading state should be fixed.
 interface Props {
   id: string
 }
-export interface Area {
-  id: string
-  name: string
-}
-interface Subject {
-  id: string
-  name: string
-  order: string
-}
 export const PageCurriculumArea: FC<Props> = ({ id }) => {
-  const [area, areaLoading] = useApi<Area>(
-    `/curriculum/areas/${id}`
-  )
-  const [subjects, subjectsLoading] = useApi<Subject[]>(
-    `/curriculum/areas/${id}/subjects`
-  )
+  const [area, areaLoading] = useGetArea(id)
+  const [subjects, subjectsLoading] = useGetAreaSubjects(id)
   const loading = areaLoading || subjectsLoading
 
   const subjectList = subjects?.map(subject => (
@@ -55,15 +44,8 @@ const LoadingState: FC = () => (
 interface SubjectProps {
   subject: Subject
 }
-interface Material {
-  id: string
-  name: string
-  order: number
-}
 const SubjectMaterials: FC<SubjectProps> = ({ subject }) => {
-  const [materials, loading] = useApi<Material[]>(
-    `/curriculum/subjects/${subject.id}/materials`
-  )
+  const [materials, loading] = useGetSubjectMaterials(subject.id)
 
   const materialList = materials?.map(material => (
     <Box mx={3} my={2} key={material.id}>

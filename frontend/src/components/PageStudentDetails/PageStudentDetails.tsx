@@ -20,6 +20,7 @@ import { getAnalytics } from "../../analytics"
 import ObservationCard from "../ObservationCard/ObservationCard"
 import Spacer from "../Spacer/Spacer"
 import ToggleButton from "../ToggleButton/ToggleButton"
+import StudentProgressSummaryCard from "../StudentProgressSummaryCard/StudentProgressSummaryCard"
 
 enum ObservationFilterType {
   TODAY,
@@ -176,9 +177,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
   return (
     <>
       <Box maxWidth="maxWidth.sm" margin="auto" pb={5}>
-        <Flex>
-          <BackNavigation text="Home" to="/dashboard/home" />
-        </Flex>
+        <BackNavigation text="Home" to="/dashboard/home" />
         <Flex alignItems="start" mx={3} mb={4} mt={3}>
           <Typography.H3 sx={{ wordWrap: "break-word" }}>
             {details?.name || <LoadingPlaceholder width="24rem" height={60} />}
@@ -194,10 +193,10 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
             <Icon minWidth={20} as={EditIcon} m={0} />
           </Button>
         </Flex>
-        {/* <Box p={3}> */}
-        {/*  <SectionHeader>PROGRESS</SectionHeader> */}
-        {/*  <StudentProgressSummaryCard studentId={id} /> */}
-        {/* </Box> */}
+        <Box p={3}>
+          <SectionHeader>PROGRESS</SectionHeader>
+          <StudentProgressSummaryCard studentId={id} />
+        </Box>
         <Box p={3}>
           <Flex alignItems="center" mb={3}>
             <SectionHeader>OBSERVATIONS</SectionHeader>

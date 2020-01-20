@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`StudentMaterialProgressDialog should render correctly 1`] = `
-.emotion-14 {
+.emotion-18 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,12 +9,12 @@ exports[`StudentMaterialProgressDialog should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-14 {
+  .emotion-18 {
     font-size: 20px;
   }
 }
 
-.emotion-13 {
+.emotion-17 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -36,7 +36,7 @@ exports[`StudentMaterialProgressDialog should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-13 {
+  .emotion-17 {
     -webkit-align-items: center;
     -webkit-box-align: center;
     -ms-flex-align: center;
@@ -49,7 +49,7 @@ exports[`StudentMaterialProgressDialog should render correctly 1`] = `
   }
 }
 
-.emotion-12 {
+.emotion-16 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -66,12 +66,12 @@ exports[`StudentMaterialProgressDialog should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-12 {
+  .emotion-16 {
     border-radius: 8px;
   }
 }
 
-.emotion-11 {
+.emotion-15 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -140,7 +140,7 @@ exports[`StudentMaterialProgressDialog should render correctly 1`] = `
   width: 32px;
 }
 
-.emotion-5 {
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -148,49 +148,102 @@ exports[`StudentMaterialProgressDialog should render correctly 1`] = `
   background-color: var(--theme-ui-colors-background,#F7F8FA);
 }
 
+.emotion-8 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin: 16px;
+  margin-bottom: 32px;
+}
+
+.emotion-7 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  width: 100%;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  as: label;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: rgba(0,0,0,0.88);
-  font-size: 1.6rem;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 400;
-  line-height: 3rem;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
-  font-size: 12px;
-  margin-left: 16px;
-  margin-right: 16px;
-  margin-top: 16px;
-  -webkit-letter-spacing: 1.5px;
-  -moz-letter-spacing: 1.5px;
-  -ms-letter-spacing: 1.5px;
-  letter-spacing: 1.5px;
+  padding-bottom: 4px;
+  padding-left: 4px;
+}
+
+.emotion-6 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: rgba(0,0,0,0.88);
-  font-size: 1.6rem;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 400;
-  line-height: 3rem;
+  display: block;
+  width: 100%;
+  padding: 8px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: inherit;
+  line-height: inherit;
+  border: 1px solid;
+  border-radius: 8px;
+  color: inherit;
+  background-color: transparent;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface,#fff);
   font-size: 16px;
-  margin-left: 16px;
-  margin-right: 16px;
-  margin-bottom: 16px;
+  padding: 16px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-4 {
-    font-size: 14px;
-  }
+.emotion-4:hover,
+.emotion-4:focus {
+  border-color: var(--theme-ui-colors-primary,#33691e);
+  outline: none;
 }
 
-.emotion-10 {
+.emotion-5 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-left: -28px;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  pointer-events: none;
+  width: 24px;
+  height: 24px;
+}
+
+.emotion-14 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -208,7 +261,7 @@ exports[`StudentMaterialProgressDialog should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-6 {
+.emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -223,12 +276,12 @@ exports[`StudentMaterialProgressDialog should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-6 {
+  .emotion-10 {
     font-size: 14px;
   }
 }
 
-.emotion-7 {
+.emotion-11 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -238,7 +291,7 @@ exports[`StudentMaterialProgressDialog should render correctly 1`] = `
   flex: 1;
 }
 
-.emotion-8 {
+.emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -292,25 +345,25 @@ exports[`StudentMaterialProgressDialog should render correctly 1`] = `
   margin-right: 16px;
 }
 
-.emotion-8:disabled {
+.emotion-12:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-8:hover,
-.emotion-8:focus {
+.emotion-12:hover,
+.emotion-12:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(98,151,73,0.12));
   border-color: var(--theme-ui-colors-primary,#33691e);
   outline: none;
 }
 
-.emotion-8:hover:disabled,
-.emotion-8:focus:disabled {
+.emotion-12:hover:disabled,
+.emotion-12:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-9 {
+.emotion-13 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -361,80 +414,124 @@ exports[`StudentMaterialProgressDialog should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-9:disabled {
+.emotion-13:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-9:hover,
-.emotion-9:focus {
+.emotion-13:hover,
+.emotion-13:focus {
   background-color: var(--theme-ui-colors-primaryDark,#003d00);
   outline: none;
 }
 
-.emotion-9:hover:disabled,
-.emotion-9:focus:disabled {
+.emotion-13:hover:disabled,
+.emotion-13:focus:disabled {
   background-color: var(--theme-ui-colors-primary,#33691e);
 }
 
 <div>
   <div
-    class="emotion-14"
+    class="emotion-18"
   >
     <div
-      class="emotion-13"
+      class="emotion-17"
     >
       <div
-        class="emotion-12"
+        class="emotion-16"
       >
         <div
-          class="emotion-11"
+          class="emotion-15"
         >
           <div
             class="emotion-2"
           >
             <h6
               class="emotion-0"
-            >
-              Sandpaper Globe
-            </h6>
+            />
             <div
               class="emotion-1"
             />
           </div>
           <div
-            class="emotion-5"
+            class="emotion-9"
           >
-            <p
-              class="emotion-3"
-            >
-              LAST UPDATED
-            </p>
-            <p
-              class="emotion-4"
-            >
-              Sunday, Feb 02
-            </p>
-          </div>
-          <div
-            class="emotion-10"
-          >
-            <p
-              class="emotion-6"
-            />
             <div
-              class="emotion-7"
-            />
-            <button
               class="emotion-8"
             >
-              nothing
+              <label
+                class="emotion-7"
+              >
+                <div
+                  class="emotion-3"
+                >
+                  Progress
+                </div>
+                <div
+                  class="emotion-6"
+                >
+                  <select
+                    aria-label="Progress"
+                    class="emotion-4"
+                  >
+                    <option
+                      value="-1"
+                    >
+                      Not yet presented
+                    </option>
+                    <option
+                      value="0"
+                    >
+                      Presented
+                    </option>
+                    <option
+                      value="1"
+                    >
+                      Practiced
+                    </option>
+                    <option
+                      value="2"
+                    >
+                      Mastered
+                    </option>
+                  </select>
+                  <svg
+                    class="emotion-5"
+                    fill="currentcolor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M7 10l5 5 5-5z"
+                    />
+                  </svg>
+                </div>
+              </label>
+            </div>
+            Last updated: Sunday, Feb 02
+          </div>
+          <div
+            class="emotion-14"
+          >
+            <p
+              class="emotion-10"
+            >
+              Last updated: Sunday, Feb 02
+            </p>
+            <div
+              class="emotion-11"
+            />
+            <button
+              class="emotion-12"
+            >
+              Cancel
             </button>
             <button
-              class="emotion-9"
+              class="emotion-13"
               data-cy="dialogPositiveAction"
+              disabled=""
             >
-              Set as Mastered
+              Save changes
             </button>
           </div>
         </div>

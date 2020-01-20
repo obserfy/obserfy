@@ -29,7 +29,21 @@ exports[`PageStudentDetails should render correctly 1`] = `
   }
 }
 
-.emotion-27 {
+@keyframes animation-0 {
+  0% {
+    background-color: rgba(165,165,165,0.05);
+  }
+
+  50% {
+    background-color: rgba(165,165,165,0.1);
+  }
+
+  100% {
+    background-color: rgba(165,165,165,0.05);
+  }
+}
+
+.emotion-30 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -37,28 +51,18 @@ exports[`PageStudentDetails should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-27 {
+  .emotion-30 {
     font-size: 20px;
   }
 }
 
-.emotion-26 {
+.emotion-29 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   max-width: 640px;
   margin: auto;
   padding-bottom: 64px;
-}
-
-.emotion-3 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-2 {
@@ -109,7 +113,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   }
 }
 
-.emotion-9 {
+.emotion-8 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -127,7 +131,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-5 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -145,7 +149,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
 }
 
-.emotion-4 {
+.emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -156,7 +160,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   height: 60px;
 }
 
-.emotion-6 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -166,7 +170,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   flex: 1;
 }
 
-.emotion-8 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -222,25 +226,25 @@ exports[`PageStudentDetails should render correctly 1`] = `
   min-width: 43px;
 }
 
-.emotion-8:disabled {
+.emotion-7:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-8:hover,
-.emotion-8:focus {
+.emotion-7:hover,
+.emotion-7:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(98,151,73,0.12));
   border-color: var(--theme-ui-colors-primary,#33691e);
   outline: none;
 }
 
-.emotion-8:hover:disabled,
-.emotion-8:focus:disabled {
+.emotion-7:hover:disabled,
+.emotion-7:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-7 {
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -253,29 +257,14 @@ exports[`PageStudentDetails should render correctly 1`] = `
   min-width: 20px;
 }
 
-.emotion-25 {
+.emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   padding: 16px;
 }
 
-.emotion-13 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-bottom: 16px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.emotion-10 {
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -297,7 +286,40 @@ exports[`PageStudentDetails should render correctly 1`] = `
   letter-spacing: 3px;
 }
 
-.emotion-12 {
+.emotion-11 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-top: 16px;
+}
+
+.emotion-10 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  border-radius: 8px;
+  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
+  animation: 1s ease-in-out 0s infinite animation-0;
+  width: 100%;
+  height: 17rem;
+}
+
+.emotion-16 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 16px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-15 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -350,25 +372,25 @@ exports[`PageStudentDetails should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-12:disabled {
+.emotion-15:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-12:hover,
-.emotion-12:focus {
+.emotion-15:hover,
+.emotion-15:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(98,151,73,0.12));
   border-color: var(--theme-ui-colors-primary,#33691e);
   outline: none;
 }
 
-.emotion-12:hover:disabled,
-.emotion-12:focus:disabled {
+.emotion-15:hover:disabled,
+.emotion-15:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-20 {
+.emotion-23 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -381,7 +403,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-15 {
+.emotion-18 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -403,7 +425,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   padding-right: 16px;
 }
 
-.emotion-14 {
+.emotion-17 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -425,7 +447,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   margin: 0;
 }
 
-.emotion-17 {
+.emotion-20 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -445,7 +467,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   padding-right: 16px;
 }
 
-.emotion-16 {
+.emotion-19 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -467,7 +489,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   margin: 0;
 }
 
-.emotion-19 {
+.emotion-22 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -489,13 +511,13 @@ exports[`PageStudentDetails should render correctly 1`] = `
   padding-right: 16px;
 }
 
-.emotion-24 {
+.emotion-27 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
 }
 
-.emotion-21 {
+.emotion-24 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -509,114 +531,126 @@ exports[`PageStudentDetails should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-27"
+    class="emotion-30"
   >
     <div
-      class="emotion-26"
+      class="emotion-29"
     >
-      <div
-        class="emotion-3"
+      <a
+        href="/dashboard/home"
       >
-        <a
-          href="/dashboard/home"
+        <div
+          class="emotion-2"
         >
           <div
-            class="emotion-2"
+            class="emotion-0"
+          />
+          <p
+            class="emotion-1"
           >
-            <div
-              class="emotion-0"
-            />
-            <p
-              class="emotion-1"
-            >
-              Home
-            </p>
-          </div>
-        </a>
-      </div>
+            Home
+          </p>
+        </div>
+      </a>
       <div
-        class="emotion-9"
+        class="emotion-8"
       >
         <h3
-          class="emotion-5"
+          class="emotion-4"
         >
           <div
-            class="emotion-4"
+            class="emotion-3"
           />
         </h3>
         <div
-          class="emotion-6"
+          class="emotion-5"
         />
         <button
-          class="emotion-8"
+          class="emotion-7"
         >
           <div
-            class="emotion-7"
+            class="emotion-6"
           />
         </button>
       </div>
       <div
-        class="emotion-25"
+        class="emotion-12"
+      >
+        <h5
+          class="emotion-9"
+        >
+          PROGRESS
+        </h5>
+        <div
+          class="emotion-11"
+        >
+          <div
+            class="emotion-10"
+          />
+        </div>
+      </div>
+      <div
+        class="emotion-12"
       >
         <div
-          class="emotion-13"
+          class="emotion-16"
         >
           <h5
-            class="emotion-10"
+            class="emotion-9"
           >
             OBSERVATIONS
           </h5>
           <div
-            class="emotion-6"
+            class="emotion-5"
           />
           <button
-            class="emotion-12"
+            class="emotion-15"
           >
             New
           </button>
         </div>
         <div
-          class="emotion-20"
+          class="emotion-23"
         >
           <div
-            class="emotion-15"
+            class="emotion-18"
           >
             <p
-              class="emotion-14"
+              class="emotion-17"
             >
               Today
             </p>
           </div>
           <div
-            class="emotion-17"
+            class="emotion-20"
           >
             <p
-              class="emotion-16"
+              class="emotion-19"
             >
               This Week
             </p>
           </div>
           <div
-            class="emotion-19"
+            class="emotion-22"
           >
             <p
-              class="emotion-16"
+              class="emotion-19"
             >
               All
             </p>
           </div>
         </div>
         <div
-          class="emotion-24"
+          class="emotion-27"
         >
           <div
-            class="emotion-21"
+            class="emotion-24"
           />
           <div
-            class="emotion-21"
+            class="emotion-24"
           />
           <div
-            class="emotion-21"
+            class="emotion-24"
           />
         </div>
       </div>
