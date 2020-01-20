@@ -8,28 +8,45 @@ import ScrollableDialog from "../ScrollableDialog/ScrollableDialog"
 import { Material } from "../../api/useGetSubjectMaterials"
 import Select from "../Select/Select"
 import Box from "../Box/Box"
+import { updateStudentMaterialProgress } from "../../api/updateStudentMaterialProgress"
 
 export const StudentMaterialProgressDialog: FC<{
+  studentId: string
   progress?: StudentMaterialProgress
   material?: Material
   onDismiss: () => void
-}> = ({ progress, material, onDismiss }) => {
+  onSubmitted: () => void
+}> = ({ onSubmitted, studentId, progress, material, onDismiss }) => {
   const [selectedStage, setSelectedStage] = useState(progress?.stage)
   const intl = useIntl()
   const lastUpdated = progress
-    ? `Last updated: ${intl.formatDate(progress.lastUpdated, {
+    ? `Last updated ${intl.formatDate(progress.lastUpdated, {
         month: "short",
         day: "2-digit",
         weekday: "long",
       })}`
     : ""
 
+  async function submitProgressUpdate(): Promise<void> {
+    if (material === undefined || selectedStage === undefined) return
+    const response = await updateStudentMaterialProgress(
+      studentId,
+      material.id,
+      {
+        stage: selectedStage,
+      }
+    )
+    if (response.status === 200) {
+      onSubmitted()
+    }
+  }
+
   return (
     <ScrollableDialog
       title={material?.name ?? ""}
       positiveText="Save changes"
       onDismiss={onDismiss}
-      onPositiveClick={onDismiss}
+      onPositiveClick={submitProgressUpdate}
       negativeText="Cancel"
       onNegativeClick={onDismiss}
       subtext={lastUpdated}
@@ -47,7 +64,6 @@ export const StudentMaterialProgressDialog: FC<{
           <option value={MaterialProgressStage.MASTERED}>Mastered</option>
         </Select>
       </Box>
-      {lastUpdated}
     </ScrollableDialog>
   )
 }

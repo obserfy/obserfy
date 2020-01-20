@@ -70,7 +70,12 @@ export const ScrollableDialog: FC<Props> = ({
           borderTopColor: "border",
         }}
       >
-        <Typography.Body mb={0} color="textMediumEmphasis">
+        <Typography.Body
+          fontSize={1}
+          lineHeight={1.4}
+          mb={0}
+          color="textMediumEmphasis"
+        >
           {subtext}
         </Typography.Body>
         <Spacer />
@@ -82,6 +87,7 @@ export const ScrollableDialog: FC<Props> = ({
           onClick={onPositiveClick}
           disabled={disablePositiveButton}
           data-cy="dialogPositiveAction"
+          sx={{ flexShrink: 0 }}
         >
           {positiveText}
         </Button>

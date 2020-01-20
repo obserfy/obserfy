@@ -30,8 +30,12 @@ interface Props {
 export const PageStudentProgress: FC<Props> = ({ areaId, studentId }) => {
   const [student, studentLoading] = useGetStudent(studentId)
   const [area, areaLoading] = useGetArea(areaId)
+  const [
+    progress,
+    progressLoading,
+    setProgressOutdated,
+  ] = useGetStudentMaterialProgress(studentId)
   const [subjects, subjectsLoading] = useGetAreaSubjects(areaId)
-  const [progress, progressLoading] = useGetStudentMaterialProgress(studentId)
   const [isEditing, setIsEditing] = useState(false)
   const [selectedMaterial, setSelectedMaterial] = useState<Material>()
 
@@ -87,7 +91,12 @@ export const PageStudentProgress: FC<Props> = ({ areaId, studentId }) => {
       </Box>
       {isEditing && (
         <StudentMaterialProgressDialog
+          studentId={studentId}
           onDismiss={() => setIsEditing(false)}
+          onSubmitted={() => {
+            setProgressOutdated()
+            setIsEditing(false)
+          }}
           material={selectedMaterial}
           progress={progress.find(
             ({ materialId }) => materialId === selectedMaterial?.id
