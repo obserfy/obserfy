@@ -21,26 +21,46 @@ import {
 } from "../../api/useGetStudentMaterialProgress"
 import Pill from "../Pill/Pill"
 import StudentMaterialProgressDialog from "../StudentMaterialProgressDialog/StudentMaterialProgressDialog"
+import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 
 interface Props {
   studentId: string
   areaId: string
 }
 export const PageStudentProgress: FC<Props> = ({ areaId, studentId }) => {
-  const [student] = useGetStudent(studentId)
-  const [area] = useGetArea(areaId)
-  const [subjects] = useGetAreaSubjects(areaId)
-  const [progress] = useGetStudentMaterialProgress(studentId)
+  const [student, studentLoading] = useGetStudent(studentId)
+  const [area, areaLoading] = useGetArea(areaId)
+  const [subjects, subjectsLoading] = useGetAreaSubjects(areaId)
+  const [progress, progressLoading] = useGetStudentMaterialProgress(studentId)
   const [isEditing, setIsEditing] = useState(false)
   const [selectedMaterial, setSelectedMaterial] = useState<Material>()
+
+  const backNavigation = (
+    <BackNavigation
+      text="Student Details"
+      to={`/dashboard/students/details?id=${studentId}`}
+    />
+  )
+  const loading =
+    studentLoading || areaLoading || subjectsLoading || progressLoading
+  if (loading) {
+    return (
+      <Box m={3}>
+        {backNavigation}
+        <LoadingPlaceholder width="100%" height="6rem" mb={2} mt={4} />
+        <LoadingPlaceholder width="100%" height="6rem" mb={4} />
+        <LoadingPlaceholder width="100%" height="6rem" mb={2} />
+        <LoadingPlaceholder width="100%" height="6rem" mb={2} />
+        <LoadingPlaceholder width="100%" height="6rem" mb={2} />
+        <LoadingPlaceholder width="100%" height="6rem" mb={2} />
+      </Box>
+    )
+  }
 
   return (
     <>
       <Box maxWidth="maxWidth.sm" margin="auto" pb={5}>
-        <BackNavigation
-          text="Student Details"
-          to={`/dashboard/students/details?id=${studentId}`}
-        />
+        {backNavigation}
         <Box m={3} mb={4}>
           <Typography.H3 sx={{ wordWrap: "break-word" }}>
             <Box as="span" color="textDisabled">
@@ -83,7 +103,20 @@ const SubjectMaterials: FC<{
   progress: StudentMaterialProgress[]
   onMaterialClick: (material: Material) => void
 }> = ({ progress, subject, onMaterialClick }) => {
-  const [materials] = useGetSubjectMaterials(subject.id)
+  const [materials, loading] = useGetSubjectMaterials(subject.id)
+
+  if (loading) {
+    return (
+      <>
+        <LoadingPlaceholder width="100%" height="6rem" mb={2} />
+        <LoadingPlaceholder width="100%" height="6rem" mb={2} />
+        <LoadingPlaceholder width="100%" height="6rem" mb={2} />
+        <LoadingPlaceholder width="100%" height="6rem" mb={2} />
+        <LoadingPlaceholder width="100%" height="6rem" mb={2} />
+        <LoadingPlaceholder width="100%" height="6rem" mb={2} />
+      </>
+    )
+  }
 
   return (
     <>
