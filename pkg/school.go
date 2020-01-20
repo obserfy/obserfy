@@ -380,7 +380,10 @@ func getCurriculumAreas(env Env) AppHandler {
 
 		// Don't do anything if school doesn't have curriculum yet
 		if school.CurriculumId == "" {
-			return &HTTPError{http.StatusNotFound, "School doesn't have any curriculum.", errors.New("can't find curriculum")}
+			if err := writeJson(w, make([]simplifiedArea, 0)); err != nil {
+				return &HTTPError{http.StatusInternalServerError, "Failed to write json response", err}
+			}
+			return nil
 		}
 
 		var areas []Area
