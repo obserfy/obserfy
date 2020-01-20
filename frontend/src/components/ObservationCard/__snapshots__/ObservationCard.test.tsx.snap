@@ -99,6 +99,9 @@ exports[`ObservationCard should render correctly 1`] = `
   border-width: 1px;
   border-style: solid;
   border-radius: 99999px;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 8px;
@@ -129,6 +132,9 @@ exports[`ObservationCard should render correctly 1`] = `
   border-width: 1px;
   border-style: solid;
   border-radius: 99999px;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 8px;

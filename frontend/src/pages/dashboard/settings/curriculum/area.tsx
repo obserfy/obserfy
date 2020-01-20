@@ -5,6 +5,7 @@ import SEO from "../../../../components/seo"
 import { PageTitleContext } from "../../../../layouts"
 import PageCurriculumArea from "../../../../components/PageCurriculumArea/PageCurriculumArea"
 
+
 const Settings: FC<PageRendererProps> = ({ location }) => {
   useContext(PageTitleContext).setTitle("Area")
 

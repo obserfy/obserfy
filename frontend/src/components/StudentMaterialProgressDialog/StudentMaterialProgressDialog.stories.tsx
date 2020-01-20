@@ -1,7 +1,6 @@
 import React, { FC } from "react"
 import { action } from "@storybook/addon-actions"
 import StudentMaterialProgressDialog from "./StudentMaterialProgressDialog"
-import { MaterialProgressStage } from "../StudentProgressSummaryCard/StudentProgressSummaryCard"
 
 export default {
   title: "Core|StudentMaterialProgressDialog",
@@ -14,12 +13,9 @@ export default {
 export const Basic: FC = () => (
   <StudentMaterialProgressDialog
     onDismiss={action("dismiss")}
-    progress={{
-      lastUpdated: new Date(2020, 1, 2, 1, 1, 1),
-      stage: MaterialProgressStage.UNTOUCHED,
-      areaId: "Some area",
-      materialId: "asdfasfd",
-      materialName: "A material",
-    }}
+    materialId="asdfasdf"
+    materialName="Fancy Shoelaces"
+    studentId="asdfasdf"
+    onSubmitted={action("submit")}
   />
 )

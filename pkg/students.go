@@ -25,7 +25,7 @@ func createStudentsSubroute(env Env) *chi.Mux {
 	r.Method("GET", "/{id}/observations", getAllStudentObservations(env))
 
 	r.Method("GET", "/{id}/materialsProgress", getStudentProgress(env))
-	r.Method("PUT", "/{id}/materialsProgress/{materialId}", updateMaterialProgress(env))
+	r.Method("PATCH", "/{id}/materialsProgress/{materialId}", updateMaterialProgress(env))
 	return r
 }
 

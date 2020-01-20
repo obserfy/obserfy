@@ -149,6 +149,9 @@ exports[`PageHome should render correctly 1`] = `
   max-width: 100%;
   height: auto;
   fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   margin: 0;
   height: 24px;
   width: 24px;
@@ -202,6 +205,9 @@ exports[`PageHome should render correctly 1`] = `
   -webkit-transition: margin-left 250ms cubic-bezier(0.0,0.0,0.2,1);
   transition: margin-left 250ms cubic-bezier(0.0,0.0,0.2,1);
   fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   margin: 16px;
   height: 24px;
   width: 24px;
@@ -335,6 +341,9 @@ exports[`PageHome should render correctly 1`] = `
   max-width: 100%;
   height: auto;
   fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   margin: 0;
   height: 20px;
   width: 20px;
@@ -459,6 +468,9 @@ exports[`PageHome should render correctly 1`] = `
   max-width: 100%;
   height: auto;
   fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   margin: 16px;
   height: 20px;
   width: 20px;
@@ -831,6 +843,9 @@ exports[`PageHome should render correctly 1`] = `
   max-width: 100%;
   height: auto;
   fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   margin: 0;
   height: 20px;
   width: 20px;

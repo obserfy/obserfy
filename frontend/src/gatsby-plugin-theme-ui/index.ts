@@ -58,8 +58,15 @@ const themeUiTheme = {
 
     tintYellow: "rgba(255,199,1,0.2)",
 
-    materialStatus: {
-      presented: "#ff6f00",
+    materialStage: {
+      presented: "#dd2c00",
+      onPresented: "text",
+
+      practiced: "#ffab00",
+      onPracticed: "black",
+
+      mastered: "#00c853",
+      onMastered: "black",
     },
     modes: {
       dark: {
