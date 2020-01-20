@@ -5,17 +5,17 @@ export enum MaterialProgressStage {
   PRACTICED,
   MASTERED,
 }
-export interface StudentMaterialProgress {
+export interface MaterialProgress {
   areaId: string
   materialName: string
   materialId: string
   stage: MaterialProgressStage
-  lastUpdated: Date
+  updatedAt: string
 }
 export function useGetStudentMaterialProgress(
   studentId: string
-): [StudentMaterialProgress[], boolean, () => void] {
-  const [area, loading, setOutdated] = useApi<StudentMaterialProgress[]>(
+): [MaterialProgress[], boolean, () => void] {
+  const [area, loading, setOutdated] = useApi<MaterialProgress[]>(
     `/students/${studentId}/materialsProgress`
   )
   return [area ?? [], loading, setOutdated]

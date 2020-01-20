@@ -85,6 +85,9 @@ exports[`PageStudentProgress should render correctly 1`] = `
   max-width: 100%;
   height: auto;
   fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   margin: 16px;
   height: 24px;
   width: 24px;
@@ -156,7 +159,7 @@ exports[`PageStudentProgress should render correctly 1`] = `
       class="emotion-9"
     >
       <a
-        href="/dashboard/students/details?id=undefined"
+        href="/dashboard/students/details?id=asdfadsf"
       >
         <div
           class="emotion-2"

@@ -16,7 +16,7 @@ import Icon from "../Icon/Icon"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import {
   materialStageToString,
-  StudentMaterialProgress,
+  MaterialProgress,
   useGetStudentMaterialProgress,
 } from "../../api/useGetStudentMaterialProgress"
 import Pill from "../Pill/Pill"
@@ -30,14 +30,15 @@ interface Props {
 export const PageStudentProgress: FC<Props> = ({ areaId, studentId }) => {
   const [student, studentLoading] = useGetStudent(studentId)
   const [area, areaLoading] = useGetArea(areaId)
+  const [subjects, subjectsLoading] = useGetAreaSubjects(areaId)
+  const [isEditing, setIsEditing] = useState(false)
+  const [selectedMaterial, setSelectedMaterial] = useState<Material>()
   const [
     progress,
     progressLoading,
     setProgressOutdated,
   ] = useGetStudentMaterialProgress(studentId)
-  const [subjects, subjectsLoading] = useGetAreaSubjects(areaId)
-  const [isEditing, setIsEditing] = useState(false)
-  const [selectedMaterial, setSelectedMaterial] = useState<Material>()
+  const loading = studentLoading || areaLoading || subjectsLoading
 
   const backNavigation = (
     <BackNavigation
@@ -45,8 +46,7 @@ export const PageStudentProgress: FC<Props> = ({ areaId, studentId }) => {
       to={`/dashboard/students/details?id=${studentId}`}
     />
   )
-  const loading =
-    studentLoading || areaLoading || subjectsLoading || progressLoading
+
   if (loading) {
     return (
       <Box m={3}>
@@ -60,6 +60,10 @@ export const PageStudentProgress: FC<Props> = ({ areaId, studentId }) => {
       </Box>
     )
   }
+
+  const selectedProgress = progress.find(
+    ({ materialId }) => materialId === selectedMaterial?.id
+  )
 
   return (
     <>
@@ -75,7 +79,7 @@ export const PageStudentProgress: FC<Props> = ({ areaId, studentId }) => {
         </Box>
         <Box m={3}>
           {subjects?.map(subject => (
-            <Box mb={4}>
+            <Box mb={4} key={subject.id}>
               <Typography.H5 my={3}>{subject.name}</Typography.H5>
               <SubjectMaterials
                 subject={subject}
@@ -92,15 +96,15 @@ export const PageStudentProgress: FC<Props> = ({ areaId, studentId }) => {
       {isEditing && (
         <StudentMaterialProgressDialog
           studentId={studentId}
+          stage={selectedProgress?.stage}
+          lastUpdated={selectedProgress?.updatedAt}
+          materialName={selectedMaterial?.name ?? ""}
+          materialId={selectedMaterial?.id ?? ""}
           onDismiss={() => setIsEditing(false)}
           onSubmitted={() => {
             setProgressOutdated()
             setIsEditing(false)
           }}
-          material={selectedMaterial}
-          progress={progress.find(
-            ({ materialId }) => materialId === selectedMaterial?.id
-          )}
         />
       )}
     </>
@@ -109,7 +113,7 @@ export const PageStudentProgress: FC<Props> = ({ areaId, studentId }) => {
 
 const SubjectMaterials: FC<{
   subject: Subject
-  progress: StudentMaterialProgress[]
+  progress: MaterialProgress[]
   onMaterialClick: (material: Material) => void
 }> = ({ progress, subject, onMaterialClick }) => {
   const [materials, loading] = useGetSubjectMaterials(subject.id)
@@ -134,15 +138,25 @@ const SubjectMaterials: FC<{
         const stage = materialStageToString(match?.stage)
         return (
           <Card
+            key={material.id}
             my={2}
             p={3}
             sx={{ cursor: "pointer" }}
             onClick={() => onMaterialClick(material)}
           >
             <Flex alignItems="center">
-              <Typography.H6>{material.name}</Typography.H6>
+              <Flex flexDirection="column" alignItems="start">
+                <Typography.H6>{material.name}</Typography.H6>
+                {stage && (
+                  <Pill
+                    text={stage}
+                    color={`materialStage.on${stage}`}
+                    backgroundColor={`materialStage.${stage.toLocaleLowerCase()}`}
+                    mt={2}
+                  />
+                )}
+              </Flex>
               <Spacer />
-              {stage && <Pill text={stage} color="white" />}
               <Icon as={NextIcon} m={0} />
             </Flex>
           </Card>

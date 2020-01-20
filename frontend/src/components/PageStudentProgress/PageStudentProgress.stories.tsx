@@ -9,4 +9,6 @@ export default {
   },
 }
 
-export const Basic: FC = () => <PageStudentProgress />
+export const Basic: FC = () => (
+  <PageStudentProgress areaId="asdfasfd" studentId="asdfadsf" />
+)

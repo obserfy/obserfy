@@ -135,6 +135,9 @@ exports[`StudentMaterialProgressDialog should render correctly 1`] = `
   height: auto;
   cursor: pointer;
   fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   margin: 0;
   height: 32px;
   width: 32px;
@@ -438,7 +441,9 @@ exports[`StudentMaterialProgressDialog should render correctly 1`] = `
           >
             <h6
               class="emotion-0"
-            />
+            >
+              Fancy Shoelaces
+            </h6>
             <div
               class="emotion-1"
             />
@@ -505,7 +510,7 @@ exports[`StudentMaterialProgressDialog should render correctly 1`] = `
             <p
               class="emotion-10"
             >
-              Last updated Sunday, Feb 02
+              Last updated Monday, Jan 20
             </p>
             <div
               class="emotion-11"
