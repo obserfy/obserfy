@@ -12,8 +12,9 @@ import (
 )
 
 type Env struct {
-	db     *pg.DB
-	logger *zap.Logger
+	db           *pg.DB
+	logger       *zap.Logger
+	studentStore StudentStore
 }
 
 const (
@@ -29,7 +30,11 @@ func main() {
 	db := getDBConnection()
 	defer closeDB(db, logger)
 
-	env := Env{db: db, logger: logger}
+	env := Env{
+		db:           db,
+		logger:       logger,
+		studentStore: PgStudentStore{db},
+	}
 
 	// run the server
 	if err := runServer(env); err != nil {

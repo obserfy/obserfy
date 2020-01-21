@@ -2,18 +2,11 @@ package main
 
 import (
 	"github.com/go-chi/chi"
+	"github.com/go-pg/pg/v9"
 	"github.com/google/uuid"
 	"net/http"
 	"time"
 )
-
-type Student struct {
-	Id          string `json:"id" pg:",type:uuid"`
-	Name        string `json:"name"`
-	SchoolId    string `pg:"type:uuid,on_delete:CASCADE"`
-	School      School
-	DateOfBirth *time.Time
-}
 
 func createStudentsSubroute(env Env) *chi.Mux {
 	r := chi.NewRouter()
@@ -58,17 +51,15 @@ func replaceStudent(env Env) AppHandler {
 			return createParseJsonError(err)
 		}
 
-		var oldStudent Student
-		if err := env.db.Model(&oldStudent).
-			Where("id=?", targetId).
-			Select(); err != nil {
+		oldStudent, err := env.studentStore.get(targetId)
+		if err != nil {
 			return &HTTPError{http.StatusNotFound, "Can't find old student data", err}
 		}
 
 		newStudent := oldStudent
 		newStudent.Name = requestBody.Name
 		newStudent.DateOfBirth = requestBody.DateOfBirth
-		if err := env.db.Update(&newStudent); err != nil {
+		if err := env.studentStore.update(newStudent); err != nil {
 			return &HTTPError{http.StatusInternalServerError, "Failed updating old student data", err}
 		}
 
@@ -93,10 +84,8 @@ func getStudentById(env Env) AppHandler {
 	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
 		id := chi.URLParam(r, "id")
 
-		var student Student
-		if err := env.db.Model(&student).
-			Where("id = ?", id).
-			Select(); err != nil {
+		student, err := env.studentStore.get(id)
+		if err != nil {
 			return &HTTPError{http.StatusNotFound, "Can't find student with specified id", err}
 		}
 
@@ -233,4 +222,47 @@ func updateMaterialProgress(env Env) AppHandler {
 		}
 		return nil
 	}}
+}
+
+type Student struct {
+	Id          string `json:"id" pg:",type:uuid"`
+	Name        string `json:"name"`
+	SchoolId    string `pg:"type:uuid,on_delete:CASCADE"`
+	School      School
+	DateOfBirth *time.Time
+}
+
+type StudentStore interface {
+	get(string) (*Student, error)
+	update(*Student) error
+	delete(string) error
+}
+
+type PgStudentStore struct {
+	*pg.DB
+}
+
+func (s PgStudentStore) get(studentId string) (*Student, error) {
+	var student Student
+	if err := s.Model(&student).
+		Where("id=?", studentId).
+		Select(); err != nil {
+		return nil, err
+	}
+	return &student, nil
+}
+
+func (s PgStudentStore) update(student *Student) error {
+	if err := s.Update(student); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s PgStudentStore) delete(studentId string) error {
+	student := Student{Id: studentId}
+	if err := s.Delete(&student); err != nil {
+		return err
+	}
+	return nil
 }
