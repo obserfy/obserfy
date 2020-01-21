@@ -124,7 +124,7 @@ func getSchoolInfo(env Env) AppHandler {
 		}
 		response := response{
 			Name:       school.Name,
-			InviteLink: os.Getenv("SITE_URL") + "/register?inviteCode=" + school.InviteCode,
+			InviteLink: "https://" + os.Getenv("SITE_URL") + "/register?inviteCode=" + school.InviteCode,
 			InviteCode: school.InviteCode,
 			Users:      users,
 		}
