@@ -22,3 +22,9 @@ export function setCrispToken(id: string): void {
     resetCrispSession()
   }
 }
+
+export function openCrispChat(): void {
+  if (typeof $crisp !== "undefined") {
+    $crisp.push(["do", "chat:open"])
+  }
+}
