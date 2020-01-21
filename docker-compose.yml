@@ -14,7 +14,7 @@ services:
       SRC_ENTRYPOINT: /src/vor/pkg/*.go
 
       # vor specific env
-      SITE_URL: https://localhost:8001
+      SITE_URL: localhost:8001
       DB_USERNAME: postgres
       DB_PASSWORD: developmentonly
       DB_HOST: vor-postgres
