@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/chrsep/vor/pkg/postgres"
+	"github.com/chrsep/vor/pkg/rest"
 	"github.com/go-chi/chi"
 	"github.com/go-pg/pg/v9"
 	"github.com/google/uuid"
@@ -26,18 +27,18 @@ func createStudentsSubroute(env Env) *chi.Mux {
 	return r
 }
 
-func getStudentById(env Env) AppHandler {
+func getStudentById(env Env) rest.Handler {
 	type responseBody struct {
 		Id          string     `json:"id"`
 		Name        string     `json:"name"`
 		DateOfBirth *time.Time `json:"dateOfBirth,omitempty"`
 	}
-	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
+	return rest.Handler{env.logger, func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		id := chi.URLParam(r, "studentId")
 
 		student, err := env.studentStore.Get(id)
 		if err != nil {
-			return &HTTPError{http.StatusNotFound, "Can't find student with specified id", err}
+			return &rest.Error{http.StatusNotFound, "Can't find student with specified id", err}
 		}
 
 		response := responseBody{
@@ -45,24 +46,24 @@ func getStudentById(env Env) AppHandler {
 			Name:        student.Name,
 			DateOfBirth: student.DateOfBirth,
 		}
-		if err := writeJson(w, response); err != nil {
-			return createWriteJsonError(err)
+		if err := rest.WriteJson(w, response); err != nil {
+			return rest.NewWriteJsonError(err)
 		}
 		return nil
 	}}
 }
 
-func deleteStudent(env Env) AppHandler {
-	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
+func deleteStudent(env Env) rest.Handler {
+	return rest.Handler{env.logger, func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		studentId := chi.URLParam(r, "studentId") // from a route like /users/{userID}
 		if err := env.studentStore.Delete(studentId); err != nil {
-			return &HTTPError{http.StatusInternalServerError, "Failed deleting student", err}
+			return &rest.Error{http.StatusInternalServerError, "Failed deleting student", err}
 		}
 		return nil
 	}}
 }
 
-func replaceStudent(env Env) AppHandler {
+func replaceStudent(env Env) rest.Handler {
 	type requestBody struct {
 		Name        string     `json:"name"`
 		DateOfBirth *time.Time `json:"dateOfBirth"`
@@ -72,24 +73,24 @@ func replaceStudent(env Env) AppHandler {
 		Name        string     `json:"name"`
 		DateOfBirth *time.Time `json:"dateOfBirth,omitempty"`
 	}
-	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
+	return rest.Handler{env.logger, func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		targetId := chi.URLParam(r, "studentId") // from a route like /users/{userID}
 
 		var requestBody requestBody
-		if err := parseJson(r.Body, &requestBody); err != nil {
-			return createParseJsonError(err)
+		if err := rest.ParseJson(r.Body, &requestBody); err != nil {
+			return rest.NewParseJsonError(err)
 		}
 
 		oldStudent, err := env.studentStore.Get(targetId)
 		if err != nil {
-			return &HTTPError{http.StatusNotFound, "Can't find old student data", err}
+			return &rest.Error{http.StatusNotFound, "Can't find old student data", err}
 		}
 
 		newStudent := oldStudent
 		newStudent.Name = requestBody.Name
 		newStudent.DateOfBirth = requestBody.DateOfBirth
 		if err := env.studentStore.Update(newStudent); err != nil {
-			return &HTTPError{http.StatusInternalServerError, "Failed updating old student data", err}
+			return &rest.Error{http.StatusInternalServerError, "Failed updating old student data", err}
 		}
 
 		response := responseBody{
@@ -97,24 +98,24 @@ func replaceStudent(env Env) AppHandler {
 			Name:        newStudent.Name,
 			DateOfBirth: newStudent.DateOfBirth,
 		}
-		if err := writeJson(w, response); err != nil {
-			return createWriteJsonError(err)
+		if err := rest.WriteJson(w, response); err != nil {
+			return rest.NewWriteJsonError(err)
 		}
 		return nil
 	}}
 }
 
-func addObservationToStudent(env Env) AppHandler {
+func addObservationToStudent(env Env) rest.Handler {
 	var requestBody struct {
 		ShortDesc  string `json:"shortDesc"`
 		LongDesc   string `json:"longDesc"`
 		CategoryId string `json:"categoryId"`
 	}
-	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
+	return rest.Handler{env.logger, func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		id := chi.URLParam(r, "studentId")
 
-		if err := parseJson(r.Body, &requestBody); err != nil {
-			return createParseJsonError(err)
+		if err := rest.ParseJson(r.Body, &requestBody); err != nil {
+			return rest.NewParseJsonError(err)
 		}
 
 		observationId := uuid.New()
@@ -127,19 +128,19 @@ func addObservationToStudent(env Env) AppHandler {
 			CreatedDate: time.Now(),
 		}
 		if err := env.db.Insert(&observation); err != pg.ErrNoRows {
-			return &HTTPError{http.StatusInternalServerError, "Failed inserting observation", err}
+			return &rest.Error{http.StatusInternalServerError, "Failed inserting observation", err}
 		}
 
 		w.WriteHeader(http.StatusCreated)
-		if err := writeJson(w, observation); err != nil {
-			return createWriteJsonError(err)
+		if err := rest.WriteJson(w, observation); err != nil {
+			return rest.NewWriteJsonError(err)
 		}
 		return nil
 	}}
 }
 
-func getAllStudentObservations(env Env) AppHandler {
-	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
+func getAllStudentObservations(env Env) rest.Handler {
+	return rest.Handler{env.logger, func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		id := chi.URLParam(r, "studentId")
 
 		// TODO: Do not return SQL related observation model
@@ -148,17 +149,17 @@ func getAllStudentObservations(env Env) AppHandler {
 			Where("student_id=?", id).
 			Order("created_date").
 			Select(); err != nil {
-			return &HTTPError{http.StatusInternalServerError, "Fail to query students", err}
+			return &rest.Error{http.StatusInternalServerError, "Fail to query students", err}
 		}
 
-		if err := writeJson(w, observations); err != nil {
-			return createWriteJsonError(err)
+		if err := rest.WriteJson(w, observations); err != nil {
+			return rest.NewWriteJsonError(err)
 		}
 		return nil
 	}}
 }
 
-func getStudentProgress(env Env) AppHandler {
+func getStudentProgress(env Env) rest.Handler {
 	type responseBody struct {
 		AreaId       string    `json:"areaId"`
 		MaterialName string    `json:"materialName"`
@@ -166,7 +167,7 @@ func getStudentProgress(env Env) AppHandler {
 		Stage        int       `json:"stage"`
 		UpdatedAt    time.Time `json:"updatedAt"`
 	}
-	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
+	return rest.Handler{env.logger, func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		studentId := chi.URLParam(r, "studentId")
 		//areaId := r.URL.Query().Get("areaId")
 
@@ -177,7 +178,7 @@ func getStudentProgress(env Env) AppHandler {
 			Relation("Material.Subject.Area").
 			Where("student_id=?", studentId).
 			Select(); err != nil {
-			return &HTTPError{http.StatusInternalServerError, "Failed querying material", err}
+			return &rest.Error{http.StatusInternalServerError, "Failed querying material", err}
 		}
 
 		// return empty array when there is no data
@@ -192,24 +193,24 @@ func getStudentProgress(env Env) AppHandler {
 			})
 		}
 
-		if err := writeJson(w, response); err != nil {
-			return createWriteJsonError(err)
+		if err := rest.WriteJson(w, response); err != nil {
+			return rest.NewWriteJsonError(err)
 		}
 		return nil
 	}}
 }
 
-func updateMaterialProgress(env Env) AppHandler {
+func updateMaterialProgress(env Env) rest.Handler {
 	type requestBody struct {
 		Stage int `json:"stage"`
 	}
-	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
+	return rest.Handler{env.logger, func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		studentId := chi.URLParam(r, "studentId")
 		materialId := chi.URLParam(r, "materialId")
 
 		var requestBody requestBody
-		if err := parseJson(r.Body, &requestBody); err != nil {
-			return createParseJsonError(err)
+		if err := rest.ParseJson(r.Body, &requestBody); err != nil {
+			return rest.NewParseJsonError(err)
 		}
 
 		progress := postgres.StudentMaterialProgress{
@@ -221,7 +222,7 @@ func updateMaterialProgress(env Env) AppHandler {
 		if _, err := env.db.Model(&progress).
 			OnConflict("(material_id, student_id) DO UPDATE").
 			Insert(); err != nil {
-			return &HTTPError{http.StatusInternalServerError, "Failed updating progress", err}
+			return &rest.Error{http.StatusInternalServerError, "Failed updating progress", err}
 		}
 		return nil
 	}}

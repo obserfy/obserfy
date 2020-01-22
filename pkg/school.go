@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"github.com/chrsep/vor/pkg/postgres"
+	"github.com/chrsep/vor/pkg/rest"
 	"github.com/go-chi/chi"
 	"github.com/google/uuid"
 	"net/http"
@@ -31,7 +32,7 @@ func createSchoolsSubroute(env Env) *chi.Mux {
 
 func createSchoolAuthorizationCheckMiddleware(env Env) func(next http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
-		return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
+		return rest.Handler{env.logger, func(w http.ResponseWriter, r *http.Request) *rest.Error {
 			schoolId := chi.URLParam(r, "schoolId")
 
 			// Verify use access to the school
@@ -40,7 +41,7 @@ func createSchoolAuthorizationCheckMiddleware(env Env) func(next http.Handler) h
 				return createGetSessionError()
 			}
 			if err := checkUserIsAuthorized(session.UserId, schoolId, env); err != nil {
-				return &HTTPError{http.StatusUnauthorized, "You're not authorized to access this school", err}
+				return &rest.Error{http.StatusUnauthorized, "You're not authorized to access this school", err}
 			}
 			next.ServeHTTP(w, r)
 			return nil
@@ -71,7 +72,7 @@ func checkUserIsAuthorized(userId string, schoolId string, env Env) error {
 	return nil
 }
 
-func getSchoolInfo(env Env) AppHandler {
+func getSchoolInfo(env Env) rest.Handler {
 	type responseUserField struct {
 		Id            string `json:"id"`
 		Name          string `json:"name"`
@@ -86,7 +87,7 @@ func getSchoolInfo(env Env) AppHandler {
 		Users      []responseUserField `json:"users"`
 	}
 
-	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
+	return rest.Handler{env.logger, func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		schoolId := chi.URLParam(r, "schoolId")
 		session, ok := getSessionFromCtx(r.Context())
 		if !ok {
@@ -99,7 +100,7 @@ func getSchoolInfo(env Env) AppHandler {
 			Relation("Users").
 			Where("id=?", schoolId).
 			Select(); err != nil {
-			return &HTTPError{http.StatusInternalServerError, "Failed getting school data", err}
+			return &rest.Error{http.StatusInternalServerError, "Failed getting school data", err}
 		}
 
 		users := make([]responseUserField, len(school.Users))
@@ -116,14 +117,14 @@ func getSchoolInfo(env Env) AppHandler {
 			Users:      users,
 		}
 
-		if err := writeJson(w, response); err != nil {
-			return &HTTPError{http.StatusInternalServerError, "Failed writing message", err}
+		if err := rest.WriteJson(w, response); err != nil {
+			return &rest.Error{http.StatusInternalServerError, "Failed writing message", err}
 		}
 		return nil
 	}}
 }
 
-func createStudent(env Env) AppHandler {
+func createStudent(env Env) rest.Handler {
 	var requestBody struct {
 		Name        string     `json:"name"`
 		DateOfBirth *time.Time `json:"dateOfBirth,omitempty"`
@@ -133,10 +134,10 @@ func createStudent(env Env) AppHandler {
 		Name        string     `json:"name"`
 		DateOfBirth *time.Time `json:"dateOfBirth,omitempty"`
 	}
-	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
+	return rest.Handler{env.logger, func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		schoolId := chi.URLParam(r, "schoolId")
-		if err := parseJson(r.Body, &requestBody); err != nil {
-			return createParseJsonError(err)
+		if err := rest.ParseJson(r.Body, &requestBody); err != nil {
+			return rest.NewParseJsonError(err)
 		}
 
 		id := uuid.New()
@@ -147,7 +148,7 @@ func createStudent(env Env) AppHandler {
 			DateOfBirth: requestBody.DateOfBirth,
 		}
 		if err := env.db.Insert(&student); err != nil {
-			return &HTTPError{http.StatusInternalServerError, "Failed saving new student", err}
+			return &rest.Error{http.StatusInternalServerError, "Failed saving new student", err}
 		}
 
 		response := responseBody{
@@ -156,20 +157,20 @@ func createStudent(env Env) AppHandler {
 			DateOfBirth: student.DateOfBirth,
 		}
 		w.WriteHeader(http.StatusCreated)
-		if err := writeJson(w, response); err != nil {
-			return &HTTPError{http.StatusInternalServerError, "Failed writing result", err}
+		if err := rest.WriteJson(w, response); err != nil {
+			return &rest.Error{http.StatusInternalServerError, "Failed writing result", err}
 		}
 		return nil
 	}}
 }
 
-func getAllStudentsOfSchool(env Env) AppHandler {
+func getAllStudentsOfSchool(env Env) rest.Handler {
 	type responseBody struct {
 		Id          string     `json:"id"`
 		Name        string     `json:"name"`
 		DateOfBirth *time.Time `json:"dateOfBirth,omitempty"`
 	}
-	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
+	return rest.Handler{env.logger, func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		schoolId := chi.URLParam(r, "schoolId")
 
 		var students []postgres.Student
@@ -178,7 +179,7 @@ func getAllStudentsOfSchool(env Env) AppHandler {
 			Order("name").
 			Select()
 		if err != nil {
-			return &HTTPError{http.StatusInternalServerError, "Failed getting all students", err}
+			return &rest.Error{http.StatusInternalServerError, "Failed getting all students", err}
 		}
 
 		response := make([]responseBody, 0)
@@ -189,24 +190,24 @@ func getAllStudentsOfSchool(env Env) AppHandler {
 				DateOfBirth: student.DateOfBirth,
 			})
 		}
-		if err = writeJson(w, response); err != nil {
-			return createWriteJsonError(err)
+		if err = rest.WriteJson(w, response); err != nil {
+			return rest.NewWriteJsonError(err)
 		}
 		return nil
 	}}
 }
 
-func createNewSchool(env Env) AppHandler {
+func createNewSchool(env Env) rest.Handler {
 	var requestBody struct {
 		Name string
 	}
-	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
+	return rest.Handler{env.logger, func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		session, ok := getSessionFromCtx(r.Context())
 		if !ok {
 			return createGetSessionError()
 		}
-		if err := parseJson(r.Body, &requestBody); err != nil {
-			return createParseJsonError(err)
+		if err := rest.ParseJson(r.Body, &requestBody); err != nil {
+			return rest.NewParseJsonError(err)
 		}
 
 		id := uuid.New()
@@ -222,21 +223,21 @@ func createNewSchool(env Env) AppHandler {
 		}
 
 		if err := env.db.Insert(&school); err != nil {
-			return &HTTPError{http.StatusInternalServerError, "failed saving school data", err}
+			return &rest.Error{http.StatusInternalServerError, "failed saving school data", err}
 		}
 		if err := env.db.Insert(&userToSchoolRelation); err != nil {
-			return &HTTPError{http.StatusInternalServerError, "failed saving school relation", err}
+			return &rest.Error{http.StatusInternalServerError, "failed saving school relation", err}
 		}
 		w.WriteHeader(http.StatusCreated)
-		if err := writeJson(w, school); err != nil {
-			return createWriteJsonError(err)
+		if err := rest.WriteJson(w, school); err != nil {
+			return rest.NewWriteJsonError(err)
 		}
 		return nil
 	}}
 }
 
-func generateNewInviteCode(env Env) AppHandler {
-	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
+func generateNewInviteCode(env Env) rest.Handler {
+	return rest.Handler{env.logger, func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		schoolId := chi.URLParam(r, "schoolId")
 
 		// Get related school details
@@ -244,24 +245,24 @@ func generateNewInviteCode(env Env) AppHandler {
 		if err := env.db.Model(&school).
 			Where("id=?", schoolId).
 			Select(); err != nil {
-			return &HTTPError{http.StatusInternalServerError, "Failed getting school info", err}
+			return &rest.Error{http.StatusInternalServerError, "Failed getting school info", err}
 		}
 
 		// Update invite code
 		school.InviteCode = uuid.New().String()
 		if err := env.db.Update(&school); err != nil {
-			return &HTTPError{http.StatusInternalServerError, "Failed updating school invite code", err}
+			return &rest.Error{http.StatusInternalServerError, "Failed updating school invite code", err}
 		}
 
-		if err := writeJson(w, school); err != nil {
-			return createWriteJsonError(err)
+		if err := rest.WriteJson(w, school); err != nil {
+			return rest.NewWriteJsonError(err)
 		}
 		return nil
 	}}
 }
 
-func createNewCurriculum(env Env) AppHandler {
-	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
+func createNewCurriculum(env Env) rest.Handler {
+	return rest.Handler{env.logger, func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		// Get school id
 		schoolId := chi.URLParam(r, "schoolId")
 
@@ -270,15 +271,15 @@ func createNewCurriculum(env Env) AppHandler {
 		if err := env.db.Model(&school).
 			Where("id=?", schoolId).
 			Select(); err != nil {
-			return &HTTPError{http.StatusInternalServerError, "Failed to get school data", err}
+			return &rest.Error{http.StatusInternalServerError, "Failed to get school data", err}
 		}
 		if school.CurriculumId != "" {
-			return &HTTPError{http.StatusConflict, "School already have curriculum", errors.New("curriculum conflict")}
+			return &rest.Error{http.StatusConflict, "School already have curriculum", errors.New("curriculum conflict")}
 		}
 
 		// Save default curriculum using transaction
 		if err := env.db.RunInTransaction(insertFullCurriculum(school, createDefaultCurriculum())); err != nil {
-			return &HTTPError{http.StatusInternalServerError, "Failed saving newly created curriculum", err}
+			return &rest.Error{http.StatusInternalServerError, "Failed saving newly created curriculum", err}
 		}
 
 		// Return result
@@ -287,8 +288,8 @@ func createNewCurriculum(env Env) AppHandler {
 	}}
 }
 
-func deleteCurriculum(env Env) AppHandler {
-	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
+func deleteCurriculum(env Env) rest.Handler {
+	return rest.Handler{env.logger, func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		// Get school id
 		schoolId := chi.URLParam(r, "schoolId")
 
@@ -299,28 +300,28 @@ func deleteCurriculum(env Env) AppHandler {
 			Where("school.id=?", schoolId).
 			Select()
 		if err != nil {
-			return &HTTPError{http.StatusInternalServerError, "Failed to get student data", err}
+			return &rest.Error{http.StatusInternalServerError, "Failed to get student data", err}
 		}
 
 		// Don't do anything if school doesn't have curriculum yet
 		if school.CurriculumId == "" {
-			return &HTTPError{http.StatusNotFound, "School doesn't have curriculum", err}
+			return &rest.Error{http.StatusNotFound, "School doesn't have curriculum", err}
 		}
 
 		// Delete the whole curriculum tree.
 		if err = env.db.Delete(&(school.Curriculum)); err != nil {
-			return &HTTPError{http.StatusInternalServerError, "Failed to delete curriculum", err}
+			return &rest.Error{http.StatusInternalServerError, "Failed to delete curriculum", err}
 		}
 		return nil
 	}}
 }
 
-func getCurriculum(env Env) AppHandler {
+func getCurriculum(env Env) rest.Handler {
 	type responseBody struct {
 		Id   string `json:"id"`
 		Name string `json:"name"`
 	}
-	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
+	return rest.Handler{env.logger, func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		// Get school id
 		schoolId := chi.URLParam(r, "schoolId")
 
@@ -331,29 +332,29 @@ func getCurriculum(env Env) AppHandler {
 			Where("school.id=?", schoolId).
 			Select()
 		if err != nil {
-			return &HTTPError{http.StatusInternalServerError, "Failed to get school data", err}
+			return &rest.Error{http.StatusInternalServerError, "Failed to get school data", err}
 		}
 
 		// Don't do anything if school doesn't have curriculum yet
 		if school.CurriculumId == "" {
-			return &HTTPError{http.StatusNotFound, "School doesn't have curriculum yet", err}
+			return &rest.Error{http.StatusNotFound, "School doesn't have curriculum yet", err}
 		}
 
 		// Format queried result into response format.
 		response := responseBody{school.CurriculumId, school.Curriculum.Name}
-		if err = writeJson(w, response); err != nil {
-			return createWriteJsonError(err)
+		if err = rest.WriteJson(w, response); err != nil {
+			return rest.NewWriteJsonError(err)
 		}
 		return nil
 	}}
 }
 
-func getCurriculumAreas(env Env) AppHandler {
+func getCurriculumAreas(env Env) rest.Handler {
 	type simplifiedArea struct {
 		Id   string `json:"id"`
 		Name string `json:"name"`
 	}
-	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
+	return rest.Handler{env.logger, func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		// Get school id
 		schoolId := chi.URLParam(r, "schoolId")
 
@@ -362,13 +363,13 @@ func getCurriculumAreas(env Env) AppHandler {
 		if err := env.db.Model(&school).
 			Where("id=?", schoolId).
 			Select(); err != nil {
-			return &HTTPError{http.StatusInternalServerError, "Failed to get school data", err}
+			return &rest.Error{http.StatusInternalServerError, "Failed to get school data", err}
 		}
 
 		// Don't do anything if school doesn't have curriculum yet
 		if school.CurriculumId == "" {
-			if err := writeJson(w, make([]simplifiedArea, 0)); err != nil {
-				return &HTTPError{http.StatusInternalServerError, "Failed to write json response", err}
+			if err := rest.WriteJson(w, make([]simplifiedArea, 0)); err != nil {
+				return &rest.Error{http.StatusInternalServerError, "Failed to write json response", err}
 			}
 			return nil
 		}
@@ -377,7 +378,7 @@ func getCurriculumAreas(env Env) AppHandler {
 		if err := env.db.Model(&areas).
 			Where("curriculum_id=?", school.CurriculumId).
 			Select(); err != nil {
-			return &HTTPError{http.StatusInternalServerError, "Failed to get area data", err}
+			return &rest.Error{http.StatusInternalServerError, "Failed to get area data", err}
 		}
 
 		// Format queried result into response format.
@@ -389,8 +390,8 @@ func getCurriculumAreas(env Env) AppHandler {
 			})
 		}
 
-		if err := writeJson(w, response); err != nil {
-			return &HTTPError{http.StatusInternalServerError, "Failed to write json response", err}
+		if err := rest.WriteJson(w, response); err != nil {
+			return &rest.Error{http.StatusInternalServerError, "Failed to write json response", err}
 		}
 		return nil
 	}}

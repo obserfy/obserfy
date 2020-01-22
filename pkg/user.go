@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"github.com/chrsep/vor/pkg/postgres"
+	"github.com/chrsep/vor/pkg/rest"
 	"github.com/go-chi/chi"
 	"net/http"
 )
@@ -14,16 +15,16 @@ func createUserSubroute(env Env) *chi.Mux {
 	return r
 }
 
-func getUserDetails(env Env) AppHandler {
+func getUserDetails(env Env) rest.Handler {
 	type response struct {
 		Id    string `json:"id"`
 		Email string `json:"email"`
 		Name  string `json:"name"`
 	}
-	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
+	return rest.Handler{Logger: env.logger, Handler: func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		session, ok := getSessionFromCtx(r.Context())
 		if !ok {
-			return &HTTPError{http.StatusUnauthorized, "Invalid session", errors.New("can't get session from context")}
+			return &rest.Error{http.StatusUnauthorized, "Invalid session", errors.New("can't get session from context")}
 		}
 
 		var user postgres.User
@@ -31,25 +32,25 @@ func getUserDetails(env Env) AppHandler {
 			Column("id", "email", "name").
 			Where("id=?", session.UserId).
 			Select(); err != nil {
-			return &HTTPError{http.StatusInternalServerError, "Can't get user data", err}
+			return &rest.Error{http.StatusInternalServerError, "Can't get user data", err}
 		}
 
-		if err := writeJson(w, response{
+		if err := rest.WriteJson(w, response{
 			Id:    user.Id,
 			Email: user.Email,
 			Name:  user.Name,
 		}); err != nil {
-			return createWriteJsonError(err)
+			return rest.NewWriteJsonError(err)
 		}
 		return nil
 	}}
 }
 
-func getUserSchools(env Env) AppHandler {
-	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
+func getUserSchools(env Env) rest.Handler {
+	return rest.Handler{Logger: env.logger, Handler: func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		session, ok := getSessionFromCtx(r.Context())
 		if !ok {
-			return &HTTPError{http.StatusUnauthorized, "Invalid session", errors.New("can't get session from context")}
+			return &rest.Error{http.StatusUnauthorized, "Invalid session", errors.New("can't get session from context")}
 		}
 
 		var user postgres.User
@@ -57,12 +58,12 @@ func getUserSchools(env Env) AppHandler {
 			Where("id=?", session.UserId).
 			Relation("Schools").
 			Select(); err != nil {
-			return &HTTPError{http.StatusInternalServerError, "Can't get user data", err}
+			return &rest.Error{http.StatusInternalServerError, "Can't get user data", err}
 		}
 
 		// TODO: Don't return SQL objects
-		if err := writeJson(w, &user.Schools); err != nil {
-			return createWriteJsonError(err)
+		if err := rest.WriteJson(w, &user.Schools); err != nil {
+			return rest.NewWriteJsonError(err)
 		}
 		return nil
 	}}

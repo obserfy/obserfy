@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/chrsep/vor/pkg/postgres"
+	"github.com/chrsep/vor/pkg/rest"
 	"github.com/go-chi/chi"
 	"github.com/go-pg/pg/v9"
 	"github.com/google/uuid"
@@ -414,12 +415,12 @@ func createCurriculumSubroute(env Env) *chi.Mux {
 	return r
 }
 
-func getArea(env Env) AppHandler {
+func getArea(env Env) rest.Handler {
 	type responseBody struct {
 		Id   string `json:"id"`
 		Name string `json:"name"`
 	}
-	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
+	return rest.Handler{env.logger, func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		areaId := chi.URLParam(r, "areaId")
 
 		// Get area
@@ -428,7 +429,7 @@ func getArea(env Env) AppHandler {
 			Column("id", "name").
 			Where("id=?", areaId).
 			Select(); err != nil {
-			return &HTTPError{http.StatusNotFound, " Can't find area with specified ID", err}
+			return &rest.Error{http.StatusNotFound, " Can't find area with specified ID", err}
 		}
 
 		// Write response
@@ -436,27 +437,27 @@ func getArea(env Env) AppHandler {
 			Id:   dbArea.Id,
 			Name: dbArea.Name,
 		}
-		if err := writeJson(w, response); err != nil {
-			return createWriteJsonError(err)
+		if err := rest.WriteJson(w, response); err != nil {
+			return rest.NewWriteJsonError(err)
 		}
 		return nil
 	}}
 }
 
-func getAreaSubjects(env Env) AppHandler {
+func getAreaSubjects(env Env) rest.Handler {
 	type simplifiedSubject struct {
 		Id    string `json:"id"`
 		Name  string `json:"name"`
 		Order int    `json:"order"`
 	}
-	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
+	return rest.Handler{env.logger, func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		areaId := chi.URLParam(r, "areaId")
 
 		var subjects []postgres.Subject
 		if err := env.db.Model(&subjects).
 			Where("area_id=?", areaId).
 			Select(); err != nil {
-			return &HTTPError{http.StatusNotFound, " Can't find subject with specified area ID", err}
+			return &rest.Error{http.StatusNotFound, " Can't find subject with specified area ID", err}
 		}
 
 		// Write response
@@ -468,27 +469,27 @@ func getAreaSubjects(env Env) AppHandler {
 				Order: subject.Order,
 			})
 		}
-		if err := writeJson(w, response); err != nil {
-			return createWriteJsonError(err)
+		if err := rest.WriteJson(w, response); err != nil {
+			return rest.NewWriteJsonError(err)
 		}
 		return nil
 	}}
 }
 
-func getSubjectMaterials(env Env) AppHandler {
+func getSubjectMaterials(env Env) rest.Handler {
 	type simplifiedMaterial struct {
 		Id    string `json:"id"`
 		Name  string `json:"name"`
 		Order int    `json:"order"`
 	}
-	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
+	return rest.Handler{env.logger, func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		subjectId := chi.URLParam(r, "subjectId")
 
 		var materials []postgres.Material
 		if err := env.db.Model(&materials).
 			Where("subject_id=?", subjectId).
 			Select(); err != nil {
-			return &HTTPError{http.StatusNotFound, " Can't find materials with the specified subject id", err}
+			return &rest.Error{http.StatusNotFound, " Can't find materials with the specified subject id", err}
 		}
 
 		// Write response
@@ -500,8 +501,8 @@ func getSubjectMaterials(env Env) AppHandler {
 				Order: subject.Order,
 			})
 		}
-		if err := writeJson(w, response); err != nil {
-			return createWriteJsonError(err)
+		if err := rest.WriteJson(w, response); err != nil {
+			return rest.NewWriteJsonError(err)
 		}
 		return nil
 	}}
