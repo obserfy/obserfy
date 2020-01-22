@@ -3,6 +3,7 @@ package rest
 import (
 	"encoding/json"
 	"github.com/getsentry/sentry-go"
+	"github.com/go-pg/pg/v9"
 	"go.uber.org/zap"
 	"io"
 	"net/http"
@@ -74,4 +75,10 @@ func ParseJson(input io.ReadCloser, result interface{}) error {
 
 func NewParseJsonError(err error) *Error {
 	return &Error{http.StatusBadRequest, "Failed parsing input", err}
+}
+
+type Env struct {
+	db           *pg.DB
+	logger       *zap.Logger
+	studentStore StudentStore
 }
