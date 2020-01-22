@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/getsentry/sentry-go"
 	sentryhttp "github.com/getsentry/sentry-go/http"
 	"github.com/go-chi/chi"
@@ -27,8 +28,12 @@ func main() {
 	defer syncLogger(logger)
 
 	// Setup db connection
-	db := getDBConnection()
-	defer closeDB(db, logger)
+	db := postgres.Connect()
+	defer func() {
+		if err := postgres.Close(db); err != nil {
+			logger.Error("Failed closing db", zap.Error(err))
+		}
+	}()
 
 	env := Env{
 		db:           db,
@@ -44,7 +49,9 @@ func main() {
 
 func runServer(env Env) error {
 	// Initialize tables
-	createSchema(env)
+	if err := postgres.InitTables(env.db); err != nil {
+		return err
+	}
 
 	// Setup sentry
 	sentryOptions := sentry.ClientOptions{Dsn: os.Getenv("SENTRY_DSN")}
