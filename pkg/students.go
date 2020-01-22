@@ -10,23 +10,51 @@ import (
 
 func createStudentsSubroute(env Env) *chi.Mux {
 	r := chi.NewRouter()
-	r.Method("GET", "/{id}", getStudentById(env))
-	r.Method("DELETE", "/{id}", deleteStudent(env))
-	r.Method("PUT", "/{id}", replaceStudent(env))
+	r.Route("/{studentId}", func(r chi.Router) {
+		r.Method("GET", "/", getStudentById(env))
+		r.Method("DELETE", "/", deleteStudent(env))
+		r.Method("PUT", "/", replaceStudent(env))
 
-	r.Method("POST", "/{id}/observations", addObservationToStudent(env))
-	r.Method("GET", "/{id}/observations", getAllStudentObservations(env))
+		r.Method("POST", "/observations", addObservationToStudent(env))
+		r.Method("GET", "/observations", getAllStudentObservations(env))
 
-	r.Method("GET", "/{id}/materialsProgress", getStudentProgress(env))
-	r.Method("PATCH", "/{id}/materialsProgress/{materialId}", updateMaterialProgress(env))
+		r.Method("GET", "/materialsProgress", getStudentProgress(env))
+		r.Method("PATCH", "/materialsProgress/{materialId}", updateMaterialProgress(env))
+	})
+
 	return r
+}
+
+func getStudentById(env Env) AppHandler {
+	type responseBody struct {
+		Id          string     `json:"id"`
+		Name        string     `json:"name"`
+		DateOfBirth *time.Time `json:"dateOfBirth,omitempty"`
+	}
+	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
+		id := chi.URLParam(r, "studentId")
+
+		student, err := env.studentStore.Get(id)
+		if err != nil {
+			return &HTTPError{http.StatusNotFound, "Can't find student with specified id", err}
+		}
+
+		response := responseBody{
+			Id:          student.Id,
+			Name:        student.Name,
+			DateOfBirth: student.DateOfBirth,
+		}
+		if err := writeJson(w, response); err != nil {
+			return createWriteJsonError(err)
+		}
+		return nil
+	}}
 }
 
 func deleteStudent(env Env) AppHandler {
 	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
-		deletedId := chi.URLParam(r, "id") // from a route like /users/{userID}
-		student := Student{Id: deletedId}
-		if err := env.db.Delete(&student); err != nil {
+		studentId := chi.URLParam(r, "studentId") // from a route like /users/{userID}
+		if err := env.studentStore.Delete(studentId); err != nil {
 			return &HTTPError{http.StatusInternalServerError, "Failed deleting student", err}
 		}
 		return nil
@@ -44,14 +72,14 @@ func replaceStudent(env Env) AppHandler {
 		DateOfBirth *time.Time `json:"dateOfBirth,omitempty"`
 	}
 	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
-		targetId := chi.URLParam(r, "id") // from a route like /users/{userID}
+		targetId := chi.URLParam(r, "studentId") // from a route like /users/{userID}
 
 		var requestBody requestBody
 		if err := parseJson(r.Body, &requestBody); err != nil {
 			return createParseJsonError(err)
 		}
 
-		oldStudent, err := env.studentStore.get(targetId)
+		oldStudent, err := env.studentStore.Get(targetId)
 		if err != nil {
 			return &HTTPError{http.StatusNotFound, "Can't find old student data", err}
 		}
@@ -59,7 +87,7 @@ func replaceStudent(env Env) AppHandler {
 		newStudent := oldStudent
 		newStudent.Name = requestBody.Name
 		newStudent.DateOfBirth = requestBody.DateOfBirth
-		if err := env.studentStore.update(newStudent); err != nil {
+		if err := env.studentStore.Update(newStudent); err != nil {
 			return &HTTPError{http.StatusInternalServerError, "Failed updating old student data", err}
 		}
 
@@ -75,32 +103,6 @@ func replaceStudent(env Env) AppHandler {
 	}}
 }
 
-func getStudentById(env Env) AppHandler {
-	type responseBody struct {
-		Id          string     `json:"id"`
-		Name        string     `json:"name"`
-		DateOfBirth *time.Time `json:"dateOfBirth,omitempty"`
-	}
-	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
-		id := chi.URLParam(r, "id")
-
-		student, err := env.studentStore.get(id)
-		if err != nil {
-			return &HTTPError{http.StatusNotFound, "Can't find student with specified id", err}
-		}
-
-		response := responseBody{
-			Id:          student.Id,
-			Name:        student.Name,
-			DateOfBirth: student.DateOfBirth,
-		}
-		if err := writeJson(w, response); err != nil {
-			return createWriteJsonError(err)
-		}
-		return nil
-	}}
-}
-
 func addObservationToStudent(env Env) AppHandler {
 	var requestBody struct {
 		ShortDesc  string `json:"shortDesc"`
@@ -108,7 +110,7 @@ func addObservationToStudent(env Env) AppHandler {
 		CategoryId string `json:"categoryId"`
 	}
 	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
-		id := chi.URLParam(r, "id")
+		id := chi.URLParam(r, "studentId")
 
 		if err := parseJson(r.Body, &requestBody); err != nil {
 			return createParseJsonError(err)
@@ -123,7 +125,7 @@ func addObservationToStudent(env Env) AppHandler {
 			CategoryId:  requestBody.CategoryId,
 			CreatedDate: time.Now(),
 		}
-		if err := env.db.Insert(&observation); err != nil {
+		if err := env.db.Insert(&observation); err != pg.ErrNoRows {
 			return &HTTPError{http.StatusInternalServerError, "Failed inserting observation", err}
 		}
 
@@ -137,7 +139,7 @@ func addObservationToStudent(env Env) AppHandler {
 
 func getAllStudentObservations(env Env) AppHandler {
 	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
-		id := chi.URLParam(r, "id")
+		id := chi.URLParam(r, "studentId")
 
 		// TODO: Do not return SQL related observation model
 		var observations []Observation
@@ -164,7 +166,7 @@ func getStudentProgress(env Env) AppHandler {
 		UpdatedAt    time.Time `json:"updatedAt"`
 	}
 	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
-		studentId := chi.URLParam(r, "id")
+		studentId := chi.URLParam(r, "studentId")
 		//areaId := r.URL.Query().Get("areaId")
 
 		var progresses []StudentMaterialProgress
@@ -201,7 +203,7 @@ func updateMaterialProgress(env Env) AppHandler {
 		Stage int `json:"stage"`
 	}
 	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
-		studentId := chi.URLParam(r, "id")
+		studentId := chi.URLParam(r, "studentId")
 		materialId := chi.URLParam(r, "materialId")
 
 		var requestBody requestBody
@@ -233,18 +235,18 @@ type Student struct {
 }
 
 type StudentStore interface {
-	get(string) (*Student, error)
-	update(*Student) error
-	delete(string) error
+	Get(string) (*Student, error)
+	Update(*Student) error
+	Delete(string) error
 }
 
 type PgStudentStore struct {
-	*pg.DB
+	db *pg.DB
 }
 
-func (s PgStudentStore) get(studentId string) (*Student, error) {
+func (s PgStudentStore) Get(studentId string) (*Student, error) {
 	var student Student
-	if err := s.Model(&student).
+	if err := s.db.Model(&student).
 		Where("id=?", studentId).
 		Select(); err != nil {
 		return nil, err
@@ -252,17 +254,11 @@ func (s PgStudentStore) get(studentId string) (*Student, error) {
 	return &student, nil
 }
 
-func (s PgStudentStore) update(student *Student) error {
-	if err := s.Update(student); err != nil {
-		return err
-	}
-	return nil
+func (s PgStudentStore) Update(student *Student) error {
+	return s.db.Update(student)
 }
 
-func (s PgStudentStore) delete(studentId string) error {
+func (s PgStudentStore) Delete(studentId string) error {
 	student := Student{Id: studentId}
-	if err := s.Delete(&student); err != nil {
-		return err
-	}
-	return nil
+	return s.db.Delete(&student)
 }
