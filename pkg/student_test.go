@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/go-chi/chi"
 	"github.com/go-pg/pg/v9"
 	"github.com/google/uuid"
@@ -34,8 +35,8 @@ func createRoute(env Env) (*httptest.ResponseRecorder, *chi.Mux) {
 	return rr, r
 }
 
-func generateStudents() []Student {
-	return []Student{
+func generateStudents() []postgres.Student {
+	return []postgres.Student{
 		{Id: uuid.New().String()},
 		{Id: uuid.New().String()},
 		{Id: uuid.New().String()},
@@ -43,14 +44,14 @@ func generateStudents() []Student {
 }
 
 type FakeStudentStore struct {
-	students []Student
+	students []postgres.Student
 }
 
-func (m FakeStudentStore) Get(string) (*Student, error) {
+func (m FakeStudentStore) Get(string) (*postgres.Student, error) {
 	panic("implement me")
 }
 
-func (m FakeStudentStore) Update(*Student) error {
+func (m FakeStudentStore) Update(*postgres.Student) error {
 	panic("implement me")
 }
 

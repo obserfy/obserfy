@@ -1,55 +1,15 @@
 package main
 
 import (
+	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/go-chi/chi"
 	"github.com/go-pg/pg/v9"
 	"github.com/google/uuid"
 	"net/http"
-	"time"
 )
 
-type Curriculum struct {
-	Id    string `pg:"type:uuid"`
-	Name  string
-	Areas []Area `pg:"fk:curriculum_id"`
-}
-
-type Area struct {
-	Id           string `pg:"type:uuid"`
-	CurriculumId string `pg:"type:uuid,on_delete:CASCADE"`
-	Curriculum   Curriculum
-	Name         string
-	Subjects     []Subject `pg:"fk:area_id"`
-}
-
-type Subject struct {
-	Id        string `pg:"type:uuid"`
-	AreaId    string `pg:"type:uuid,on_delete:CASCADE"`
-	Area      Area
-	Name      string
-	Materials []Material `pg:"fk:subject_id"`
-	Order     int        `pg:",use_zero"`
-}
-
-type Material struct {
-	Id        string `pg:"type:uuid"`
-	SubjectId string `pg:"type:uuid,on_delete:CASCADE"`
-	Subject   Subject
-	Name      string
-	Order     int `pg:",use_zero"`
-}
-
-type StudentMaterialProgress struct {
-	MaterialId string `pg:",pk,type:uuid,on_delete:CASCADE"`
-	Material   Material
-	StudentId  string `pg:",pk,type:uuid,on_delete:CASCADE"`
-	Student    Student
-	Stage      int
-	UpdatedAt  time.Time
-}
-
-func createArea(curriculumId string, areaName string) Area {
-	return Area{
+func createArea(curriculumId string, areaName string) postgres.Area {
+	return postgres.Area{
 		Id:           uuid.New().String(),
 		CurriculumId: curriculumId,
 		Name:         areaName,
@@ -57,8 +17,8 @@ func createArea(curriculumId string, areaName string) Area {
 	}
 }
 
-func createSubject(areaId string, subjectName string, order int) Subject {
-	return Subject{
+func createSubject(areaId string, subjectName string, order int) postgres.Subject {
+	return postgres.Subject{
 		Id:        uuid.New().String(),
 		AreaId:    areaId,
 		Name:      subjectName,
@@ -67,11 +27,11 @@ func createSubject(areaId string, subjectName string, order int) Subject {
 	}
 }
 
-func createMaterials(subjectId string, materialNames []string) []Material {
-	var materials []Material
+func createMaterials(subjectId string, materialNames []string) []postgres.Material {
+	var materials []postgres.Material
 
 	for idx, name := range materialNames {
-		materials = append(materials, Material{
+		materials = append(materials, postgres.Material{
 			Id:        uuid.New().String(),
 			SubjectId: subjectId,
 			Name:      name,
@@ -82,7 +42,7 @@ func createMaterials(subjectId string, materialNames []string) []Material {
 	return materials
 }
 
-func createCulturalArea(curriculumId string) Area {
+func createCulturalArea(curriculumId string) postgres.Area {
 	cultural := createArea(curriculumId, "Cultural")
 	geography := createSubject(cultural.Id, "Geography", 0)
 	geography.Materials = createMaterials(geography.Id, []string{
@@ -145,11 +105,11 @@ func createCulturalArea(curriculumId string) Area {
 		"Raising Water Level with Washers",
 		"Mixing colors",
 	})
-	cultural.Subjects = []Subject{geography, history, zoology, botany, science}
+	cultural.Subjects = []postgres.Subject{geography, history, zoology, botany, science}
 	return cultural
 }
 
-func createLanguageArea(curriculumId string) Area {
+func createLanguageArea(curriculumId string) postgres.Area {
 	language := createArea(curriculumId, "Language")
 	oral := createSubject(language.Id, "Oral Language", 5)
 	oral.Materials = createMaterials(oral.Id, []string{
@@ -218,11 +178,11 @@ func createLanguageArea(curriculumId string) Area {
 		"Plural *",
 		"Early Grammar",
 	})
-	language.Subjects = []Subject{oral, written}
+	language.Subjects = []postgres.Subject{oral, written}
 	return language
 }
 
-func createMathArea(curriculumId string) Area {
+func createMathArea(curriculumId string) postgres.Area {
 	math := createArea(curriculumId, "Math")
 	toTen := createSubject(math.Id, "Counting Numbers through Ten", 0)
 	toTen.Materials = createMaterials(toTen.Id, []string{
@@ -257,11 +217,11 @@ func createMathArea(curriculumId string) Area {
 		"Word Problem",
 		"Fractions",
 	})
-	math.Subjects = []Subject{toTen, bankGame}
+	math.Subjects = []postgres.Subject{toTen, bankGame}
 	return math
 }
 
-func createPracticalLifeArea(curriculumId string) Area {
+func createPracticalLifeArea(curriculumId string) postgres.Area {
 	practicalLife := createArea(curriculumId, "Practical Life")
 	preliminaryExercise := createSubject(practicalLife.Id, "Preliminary Exercise", 0)
 	preliminaryExercise.Materials = createMaterials(preliminaryExercise.Id, []string{
@@ -327,7 +287,7 @@ func createPracticalLifeArea(curriculumId string) Area {
 		"Walking on the Line",
 		"Silence game",
 	})
-	practicalLife.Subjects = []Subject{
+	practicalLife.Subjects = []postgres.Subject{
 		preliminaryExercise,
 		careOfSelf,
 		careOfEnvironment,
@@ -338,7 +298,7 @@ func createPracticalLifeArea(curriculumId string) Area {
 	return practicalLife
 }
 
-func createSensorialArea(curriculumId string) Area {
+func createSensorialArea(curriculumId string) postgres.Area {
 	sensorial := createArea(curriculumId, "Sensorial")
 	visualSense := createSubject(sensorial.Id, "Visual Sense", 0)
 	visualSense.Materials = createMaterials(visualSense.Id, []string{
@@ -383,7 +343,7 @@ func createSensorialArea(curriculumId string) Area {
 	gustatory.Materials = createMaterials(gustatory.Id, []string{
 		"Tasting Jar",
 	})
-	sensorial.Subjects = []Subject{
+	sensorial.Subjects = []postgres.Subject{
 		visualSense,
 		tactileSense,
 		auditorySense,
@@ -393,8 +353,8 @@ func createSensorialArea(curriculumId string) Area {
 	return sensorial
 }
 
-func createDefaultCurriculum() Curriculum {
-	curriculum := Curriculum{
+func createDefaultCurriculum() postgres.Curriculum {
+	curriculum := postgres.Curriculum{
 		Id:    uuid.New().String(),
 		Name:  "Montessori",
 		Areas: nil,
@@ -405,7 +365,7 @@ func createDefaultCurriculum() Curriculum {
 	practicalLife := createPracticalLifeArea(curriculum.Id)
 	sensorial := createSensorialArea(curriculum.Id)
 
-	curriculum.Areas = []Area{
+	curriculum.Areas = []postgres.Area{
 		math,
 		practicalLife,
 		language,
@@ -415,7 +375,7 @@ func createDefaultCurriculum() Curriculum {
 	return curriculum
 }
 
-func insertFullCurriculum(school School, curriculum Curriculum) func(tx *pg.Tx) error {
+func insertFullCurriculum(school postgres.School, curriculum postgres.Curriculum) func(tx *pg.Tx) error {
 	return func(tx *pg.Tx) error {
 		// Save the curriculum tree.
 		if err := tx.Insert(&curriculum); err != nil {
@@ -463,7 +423,7 @@ func getArea(env Env) AppHandler {
 		areaId := chi.URLParam(r, "areaId")
 
 		// Get area
-		var dbArea Area
+		var dbArea postgres.Area
 		if err := env.db.Model(&dbArea).
 			Column("id", "name").
 			Where("id=?", areaId).
@@ -492,7 +452,7 @@ func getAreaSubjects(env Env) AppHandler {
 	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
 		areaId := chi.URLParam(r, "areaId")
 
-		var subjects []Subject
+		var subjects []postgres.Subject
 		if err := env.db.Model(&subjects).
 			Where("area_id=?", areaId).
 			Select(); err != nil {
@@ -524,7 +484,7 @@ func getSubjectMaterials(env Env) AppHandler {
 	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
 		subjectId := chi.URLParam(r, "subjectId")
 
-		var materials []Material
+		var materials []postgres.Material
 		if err := env.db.Model(&materials).
 			Where("subject_id=?", subjectId).
 			Select(); err != nil {

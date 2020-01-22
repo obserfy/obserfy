@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/go-chi/chi"
 	"github.com/go-pg/pg/v9"
 	"github.com/google/uuid"
@@ -117,7 +118,7 @@ func addObservationToStudent(env Env) AppHandler {
 		}
 
 		observationId := uuid.New()
-		observation := Observation{
+		observation := postgres.Observation{
 			Id:          observationId.String(),
 			StudentId:   id,
 			ShortDesc:   requestBody.ShortDesc,
@@ -142,7 +143,7 @@ func getAllStudentObservations(env Env) AppHandler {
 		id := chi.URLParam(r, "studentId")
 
 		// TODO: Do not return SQL related observation model
-		var observations []Observation
+		var observations []postgres.Observation
 		if err := env.db.Model(&observations).
 			Where("student_id=?", id).
 			Order("created_date").
@@ -169,7 +170,7 @@ func getStudentProgress(env Env) AppHandler {
 		studentId := chi.URLParam(r, "studentId")
 		//areaId := r.URL.Query().Get("areaId")
 
-		var progresses []StudentMaterialProgress
+		var progresses []postgres.StudentMaterialProgress
 		if err := env.db.Model(&progresses).
 			Relation("Material").
 			Relation("Material.Subject").
@@ -211,7 +212,7 @@ func updateMaterialProgress(env Env) AppHandler {
 			return createParseJsonError(err)
 		}
 
-		progress := StudentMaterialProgress{
+		progress := postgres.StudentMaterialProgress{
 			MaterialId: materialId,
 			StudentId:  studentId,
 			Stage:      requestBody.Stage,
@@ -226,17 +227,9 @@ func updateMaterialProgress(env Env) AppHandler {
 	}}
 }
 
-type Student struct {
-	Id          string `json:"id" pg:",type:uuid"`
-	Name        string `json:"name"`
-	SchoolId    string `pg:"type:uuid,on_delete:CASCADE"`
-	School      School
-	DateOfBirth *time.Time
-}
-
 type StudentStore interface {
-	Get(string) (*Student, error)
-	Update(*Student) error
+	Get(string) (*postgres.Student, error)
+	Update(*postgres.Student) error
 	Delete(string) error
 }
 
@@ -244,8 +237,8 @@ type PgStudentStore struct {
 	db *pg.DB
 }
 
-func (s PgStudentStore) Get(studentId string) (*Student, error) {
-	var student Student
+func (s PgStudentStore) Get(studentId string) (*postgres.Student, error) {
+	var student postgres.Student
 	if err := s.db.Model(&student).
 		Where("id=?", studentId).
 		Select(); err != nil {
@@ -254,11 +247,11 @@ func (s PgStudentStore) Get(studentId string) (*Student, error) {
 	return &student, nil
 }
 
-func (s PgStudentStore) Update(student *Student) error {
+func (s PgStudentStore) Update(student *postgres.Student) error {
 	return s.db.Update(student)
 }
 
 func (s PgStudentStore) Delete(studentId string) error {
-	student := Student{Id: studentId}
+	student := postgres.Student{Id: studentId}
 	return s.db.Delete(&student)
 }

@@ -2,17 +2,10 @@ package main
 
 import (
 	"errors"
+	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/go-chi/chi"
 	"net/http"
 )
-
-type User struct {
-	Id       string `json:"id" pg:",type:uuid"`
-	Email    string `pg:",unique"`
-	Name     string
-	Password []byte
-	Schools  []School `pg:"many2many:user_to_schools,joinFK:school_id"`
-}
 
 func createUserSubroute(env Env) *chi.Mux {
 	r := chi.NewRouter()
@@ -33,7 +26,7 @@ func getUserDetails(env Env) AppHandler {
 			return &HTTPError{http.StatusUnauthorized, "Invalid session", errors.New("can't get session from context")}
 		}
 
-		var user User
+		var user postgres.User
 		if err := env.db.Model(&user).
 			Column("id", "email", "name").
 			Where("id=?", session.UserId).
@@ -59,7 +52,7 @@ func getUserSchools(env Env) AppHandler {
 			return &HTTPError{http.StatusUnauthorized, "Invalid session", errors.New("can't get session from context")}
 		}
 
-		var user User
+		var user postgres.User
 		if err := env.db.Model(&user).
 			Where("id=?", session.UserId).
 			Relation("Schools").

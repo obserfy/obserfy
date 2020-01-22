@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"errors"
+	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/go-chi/chi"
 	"github.com/go-pg/pg/v9"
 	"github.com/google/uuid"
@@ -14,11 +15,6 @@ import (
 )
 
 const SessionCtxKey = "session"
-
-type Session struct {
-	Token  string `pg:",pk" pg:",type:uuid"`
-	UserId string
-}
 
 func createAuthSubroute(env Env) *chi.Mux {
 	r := chi.NewRouter()
@@ -36,7 +32,7 @@ func getInviteCodeInformation(env Env) AppHandler {
 	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
 		inviteCodeId := chi.URLParam(r, "inviteCodeId")
 
-		var school School
+		var school postgres.School
 		if err := env.db.Model(&school).
 			Where("invite_code=?", inviteCodeId).
 			Select(); err != nil {
@@ -77,7 +73,7 @@ func register(env Env) AppHandler {
 			return &HTTPError{http.StatusInternalServerError, "Name is required", errors.New("name is empty ")}
 		}
 
-		user := User{
+		user := postgres.User{
 			Id:       id.String(),
 			Email:    email,
 			Name:     name,
@@ -95,7 +91,7 @@ func register(env Env) AppHandler {
 		// Create relation between user and associated school if use has invite code
 		inviteCode := r.FormValue("inviteCode")
 		if inviteCode != "" {
-			var school School
+			var school postgres.School
 			// Search for school associated with invite code
 			if err := env.db.Model(&school).
 				Where("invite_code=?", inviteCode).
@@ -103,7 +99,7 @@ func register(env Env) AppHandler {
 				return &HTTPError{http.StatusNotFound, "Invitation code is invalid", err}
 			}
 
-			userSchoolRelation := UserToSchool{
+			userSchoolRelation := postgres.UserToSchool{
 				SchoolId: school.Id,
 				UserId:   user.Id,
 			}
@@ -136,7 +132,7 @@ func login(env Env) AppHandler {
 			return &HTTPError{http.StatusBadRequest, "Password is required", errors.New("password is empty")}
 		}
 
-		var user User
+		var user postgres.User
 		if err := env.db.Model(&user).
 			Where("email=?", email).
 			First(); err != nil {
@@ -162,7 +158,7 @@ func logout(env Env) AppHandler {
 			return &HTTPError{http.StatusUnauthorized, "You're not logged in", err}
 		}
 
-		session := Session{Token: tokenCookie.Value}
+		session := postgres.Session{Token: tokenCookie.Value}
 		if err = env.db.Delete(&session); err != nil {
 			return &HTTPError{http.StatusInternalServerError, "Failed deleting session", err}
 		}
@@ -178,7 +174,7 @@ func createAuthMiddleware(env Env) func(next http.Handler) http.Handler {
 				return &HTTPError{http.StatusUnauthorized, "Invalid session", err}
 			}
 
-			var session Session
+			var session postgres.Session
 			if err = env.db.Model(&session).
 				Where("token=?", token.Value).
 				Select(); err != nil {
@@ -192,8 +188,8 @@ func createAuthMiddleware(env Env) func(next http.Handler) http.Handler {
 	}
 }
 
-func getSessionFromCtx(ctx context.Context) (Session, bool) {
-	session, ok := ctx.Value(SessionCtxKey).(Session)
+func getSessionFromCtx(ctx context.Context) (postgres.Session, bool) {
+	session, ok := ctx.Value(SessionCtxKey).(postgres.Session)
 	return session, ok
 }
 
@@ -202,7 +198,7 @@ func createGetSessionError() *HTTPError {
 }
 
 func createAndSaveSessionCookie(db *pg.DB, userId string) (*http.Cookie, error) {
-	session := Session{
+	session := postgres.Session{
 		Token:  uuid.New().String(),
 		UserId: userId,
 	}

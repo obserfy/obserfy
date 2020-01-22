@@ -1,19 +1,10 @@
 package main
 
 import (
+	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/go-chi/chi"
 	"net/http"
-	"time"
 )
-
-type Observation struct {
-	Id          string    `json:"id" pg:",type:uuid"`
-	StudentId   string    `json:"studentId"`
-	ShortDesc   string    `json:"shortDesc"`
-	LongDesc    string    `json:"longDesc"`
-	CategoryId  string    `json:"categoryId"`
-	CreatedDate time.Time `json:"createdDate"`
-}
 
 func createObservationsSubroute(env Env) *chi.Mux {
 	r := chi.NewRouter()
@@ -33,7 +24,7 @@ func updateObservation(env Env) AppHandler {
 		id := chi.URLParam(r, "id")
 
 		// Query the requested observation
-		var observation Observation
+		var observation postgres.Observation
 		if err := env.db.Model(&observation).Where("id=?", id).Select(); err != nil {
 			return &HTTPError{http.StatusNotFound, "Can't find the specified observation", err}
 		}
@@ -63,7 +54,7 @@ func updateObservation(env Env) AppHandler {
 func deleteObservation(env Env) AppHandler {
 	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
 		id := chi.URLParam(r, "id")
-		observation := Observation{Id: id}
+		observation := postgres.Observation{Id: id}
 		if err := env.db.Delete(&observation); err != nil {
 			return &HTTPError{http.StatusInternalServerError, "Failed deleting observation", err}
 		}

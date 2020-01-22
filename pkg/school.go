@@ -2,26 +2,13 @@ package main
 
 import (
 	"errors"
+	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/go-chi/chi"
 	"github.com/google/uuid"
 	"net/http"
 	"os"
 	"time"
 )
-
-type School struct {
-	Id           string `json:"id" pg:",type:uuid"`
-	Name         string `json:"name"`
-	InviteCode   string `json:"inviteCode"`
-	Users        []User `pg:"many2many:user_to_schools,joinFK:user_id"`
-	CurriculumId string `pg:",type:uuid,on_delete:SET NULL"`
-	Curriculum   Curriculum
-}
-
-type UserToSchool struct {
-	SchoolId string `pg:",type:uuid"`
-	UserId   string `pg:",type:uuid"`
-}
 
 func createSchoolsSubroute(env Env) *chi.Mux {
 	r := chi.NewRouter()
@@ -64,7 +51,7 @@ func createSchoolAuthorizationCheckMiddleware(env Env) func(next http.Handler) h
 // TODO: refactor into middleware
 func checkUserIsAuthorized(userId string, schoolId string, env Env) error {
 	// check if user have permission
-	var user User
+	var user postgres.User
 	if err := env.db.Model(&user).
 		Where("id=?", userId).
 		Relation("Schools").
@@ -107,7 +94,7 @@ func getSchoolInfo(env Env) AppHandler {
 		}
 
 		// Get school data
-		var school School
+		var school postgres.School
 		if err := env.db.Model(&school).
 			Relation("Users").
 			Where("id=?", schoolId).
@@ -153,7 +140,7 @@ func createStudent(env Env) AppHandler {
 		}
 
 		id := uuid.New()
-		student := Student{
+		student := postgres.Student{
 			Id:          id.String(),
 			Name:        requestBody.Name,
 			SchoolId:    schoolId,
@@ -185,7 +172,7 @@ func getAllStudentsOfSchool(env Env) AppHandler {
 	return AppHandler{env, func(w http.ResponseWriter, r *http.Request) *HTTPError {
 		schoolId := chi.URLParam(r, "schoolId")
 
-		var students []Student
+		var students []postgres.Student
 		err := env.db.Model(&students).
 			Where("school_id=?", schoolId).
 			Order("name").
@@ -224,12 +211,12 @@ func createNewSchool(env Env) AppHandler {
 
 		id := uuid.New()
 		inviteCode := uuid.New()
-		school := School{
+		school := postgres.School{
 			Id:         id.String(),
 			Name:       requestBody.Name,
 			InviteCode: inviteCode.String(),
 		}
-		userToSchoolRelation := UserToSchool{
+		userToSchoolRelation := postgres.UserToSchool{
 			SchoolId: id.String(),
 			UserId:   session.UserId,
 		}
@@ -253,7 +240,7 @@ func generateNewInviteCode(env Env) AppHandler {
 		schoolId := chi.URLParam(r, "schoolId")
 
 		// Get related school details
-		var school School
+		var school postgres.School
 		if err := env.db.Model(&school).
 			Where("id=?", schoolId).
 			Select(); err != nil {
@@ -279,7 +266,7 @@ func createNewCurriculum(env Env) AppHandler {
 		schoolId := chi.URLParam(r, "schoolId")
 
 		// Return conflict error if school already has curriculum
-		var school School
+		var school postgres.School
 		if err := env.db.Model(&school).
 			Where("id=?", schoolId).
 			Select(); err != nil {
@@ -306,7 +293,7 @@ func deleteCurriculum(env Env) AppHandler {
 		schoolId := chi.URLParam(r, "schoolId")
 
 		// Get school data and check if curriculum exists
-		var school School
+		var school postgres.School
 		err := env.db.Model(&school).
 			Relation("Curriculum").
 			Where("school.id=?", schoolId).
@@ -338,7 +325,7 @@ func getCurriculum(env Env) AppHandler {
 		schoolId := chi.URLParam(r, "schoolId")
 
 		// Get school data and check if curriculum exists
-		var school School
+		var school postgres.School
 		err := env.db.Model(&school).
 			Relation("Curriculum").
 			Where("school.id=?", schoolId).
@@ -371,7 +358,7 @@ func getCurriculumAreas(env Env) AppHandler {
 		schoolId := chi.URLParam(r, "schoolId")
 
 		// Get school data and check if curriculum exists
-		var school School
+		var school postgres.School
 		if err := env.db.Model(&school).
 			Where("id=?", schoolId).
 			Select(); err != nil {
@@ -386,7 +373,7 @@ func getCurriculumAreas(env Env) AppHandler {
 			return nil
 		}
 
-		var areas []Area
+		var areas []postgres.Area
 		if err := env.db.Model(&areas).
 			Where("curriculum_id=?", school.CurriculumId).
 			Select(); err != nil {

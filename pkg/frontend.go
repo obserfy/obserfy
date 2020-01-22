@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/chrsep/vor/pkg/postgres"
 	"net/http"
 	"os"
 	"strings"
@@ -24,7 +25,7 @@ func createFrontendAuthMiddleware(env Env, folder string) func(next http.Handler
 					return
 				}
 
-				var session Session
+				var session postgres.Session
 				err = env.db.Model(&session).Where("token=?", token.Value).Select()
 				if err != nil {
 					http.Redirect(w, r, "/login", http.StatusFound)
@@ -34,7 +35,7 @@ func createFrontendAuthMiddleware(env Env, folder string) func(next http.Handler
 				// If user already authenticated, jump to dashboard home.
 				token, err := r.Cookie("session")
 				if token != nil {
-					var session Session
+					var session postgres.Session
 					err = env.db.Model(&session).Where("token=?", token.Value).Select()
 					if err == nil {
 						http.Redirect(w, r, "/dashboard/home", http.StatusFound)
