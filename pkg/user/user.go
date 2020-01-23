@@ -1,6 +1,7 @@
-package main
+package user
 
 import (
+	"context"
 	"errors"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/rest"
@@ -8,30 +9,46 @@ import (
 	"net/http"
 )
 
-func createUserSubroute(env Env) *chi.Mux {
+type Store interface {
+	GetUser(userId string) (*postgres.User, error)
+	GetSchools(userId string) ([]postgres.School, error)
+}
+
+type server struct {
+	rest.Server
+	store Store
+}
+
+func NewRouter(s rest.Server, store Store) *chi.Mux {
+	server := server{s, store}
 	r := chi.NewRouter()
-	r.Method("GET", "/", getUserDetails(env))
-	r.Method("GET", "/schools", getUserSchools(env))
+	r.Method("GET", "/", server.getUser())
+	r.Method("GET", "/schools", server.getSchools())
 	return r
 }
 
-func getUserDetails(env Env) rest.Handler {
+// TODO: This should not be here
+const SessionCtxKey = "session"
+
+func getSessionFromCtx(ctx context.Context) (postgres.Session, bool) {
+	session, ok := ctx.Value(SessionCtxKey).(postgres.Session)
+	return session, ok
+}
+
+func (s *server) getUser() rest.Handler {
 	type response struct {
 		Id    string `json:"id"`
 		Email string `json:"email"`
 		Name  string `json:"name"`
 	}
-	return rest.Handler{Logger: env.logger, Handler: func(w http.ResponseWriter, r *http.Request) *rest.Error {
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		session, ok := getSessionFromCtx(r.Context())
 		if !ok {
 			return &rest.Error{http.StatusUnauthorized, "Invalid session", errors.New("can't get session from context")}
 		}
 
-		var user postgres.User
-		if err := env.db.Model(&user).
-			Column("id", "email", "name").
-			Where("id=?", session.UserId).
-			Select(); err != nil {
+		user, err := s.store.GetUser(session.UserId)
+		if err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Can't get user data", err}
 		}
 
@@ -43,28 +60,25 @@ func getUserDetails(env Env) rest.Handler {
 			return rest.NewWriteJsonError(err)
 		}
 		return nil
-	}}
+	})
 }
 
-func getUserSchools(env Env) rest.Handler {
-	return rest.Handler{Logger: env.logger, Handler: func(w http.ResponseWriter, r *http.Request) *rest.Error {
+func (s *server) getSchools() rest.Handler {
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		session, ok := getSessionFromCtx(r.Context())
 		if !ok {
 			return &rest.Error{http.StatusUnauthorized, "Invalid session", errors.New("can't get session from context")}
 		}
 
-		var user postgres.User
-		if err := env.db.Model(&user).
-			Where("id=?", session.UserId).
-			Relation("Schools").
-			Select(); err != nil {
+		schools, err := s.store.GetSchools(session.UserId)
+		if err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Can't get user data", err}
 		}
 
 		// TODO: Don't return SQL objects
-		if err := rest.WriteJson(w, &user.Schools); err != nil {
+		if err := rest.WriteJson(w, schools); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
 		return nil
-	}}
+	})
 }
