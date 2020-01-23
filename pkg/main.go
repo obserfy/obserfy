@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/chrsep/vor/pkg/curriculum"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/rest"
 	"github.com/chrsep/vor/pkg/school"
@@ -71,7 +72,7 @@ func runServer(env Env) error {
 		r.Mount("/observations", createObservationsSubroute(env))
 		r.Mount("/schools", school.NewRouter(server, postgres.SchoolStore{env.db}))
 		r.Mount("/user", createUserSubroute(env))
-		r.Mount("/curriculum", createCurriculumSubroute(env))
+		r.Mount("/curriculum", curriculum.NewRouter(server, postgres.CurriculumStore{env.db}))
 	})
 	r.Mount("/auth", createAuthSubroute(env))
 	r.Group(func(r chi.Router) {
