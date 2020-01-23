@@ -4,7 +4,6 @@ import (
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/rest"
 	"github.com/go-chi/chi"
-	"github.com/google/uuid"
 	"net/http"
 	"time"
 )
@@ -123,16 +122,8 @@ func (s *server) handleAddObservation() http.Handler {
 			return rest.NewParseJsonError(err)
 		}
 
-		observationId := uuid.New()
-		observation := postgres.Observation{
-			Id:          observationId.String(),
-			StudentId:   id,
-			ShortDesc:   requestBody.ShortDesc,
-			LongDesc:    requestBody.LongDesc,
-			CategoryId:  requestBody.CategoryId,
-			CreatedDate: time.Now(),
-		}
-		if err := s.store.InsertObservation(observation); err != nil {
+		observation, err := s.store.InsertObservation(id, requestBody.ShortDesc, requestBody.LongDesc, requestBody.CategoryId)
+		if err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Failed inserting observation", err}
 		}
 

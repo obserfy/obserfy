@@ -2,14 +2,28 @@ package postgres
 
 import (
 	"github.com/go-pg/pg/v9"
+	"github.com/google/uuid"
+	"time"
 )
 
 type StudentStore struct {
 	*pg.DB
 }
 
-func (s StudentStore) InsertObservation(observation Observation) error {
-	return s.Insert(&observation)
+func (s StudentStore) InsertObservation(studentId string, longDesc string, shortDesc string, category string) (*Observation, error) {
+	observationId := uuid.New()
+	observation := Observation{
+		Id:          observationId.String(),
+		StudentId:   studentId,
+		ShortDesc:   shortDesc,
+		LongDesc:    longDesc,
+		CategoryId:  category,
+		CreatedDate: time.Now(),
+	}
+	if err := s.Insert(&observation); err != nil {
+		return nil, err
+	}
+	return &observation, nil
 }
 
 func (s StudentStore) GetObservations(studentId string) ([]Observation, error) {

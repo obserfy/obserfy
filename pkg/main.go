@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/rest"
+	"github.com/chrsep/vor/pkg/school"
 	"github.com/chrsep/vor/pkg/student"
 	"github.com/getsentry/sentry-go"
 	sentryhttp "github.com/getsentry/sentry-go/http"
@@ -68,7 +69,7 @@ func runServer(env Env) error {
 		r.Use(createAuthMiddleware(env))
 		r.Mount("/students", student.NewRouter(server, postgres.StudentStore{env.db}))
 		r.Mount("/observations", createObservationsSubroute(env))
-		r.Mount("/schools", createSchoolsSubroute(env))
+		r.Mount("/schools", school.NewRouter(server, postgres.SchoolStore{env.db}))
 		r.Mount("/user", createUserSubroute(env))
 		r.Mount("/curriculum", createCurriculumSubroute(env))
 	})
