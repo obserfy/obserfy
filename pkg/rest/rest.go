@@ -1,11 +1,8 @@
 package rest
 
 import (
-	"encoding/json"
 	"github.com/getsentry/sentry-go"
-	"github.com/go-pg/pg/v9"
 	"go.uber.org/zap"
-	"io"
 	"net/http"
 )
 
@@ -14,10 +11,11 @@ type Error struct {
 	Message string
 	Error   error
 }
+type HandlerFunc func(http.ResponseWriter, *http.Request) *Error
 
 type Handler struct {
 	Logger  *zap.Logger
-	Handler func(http.ResponseWriter, *http.Request) *Error
+	Handler HandlerFunc
 }
 
 func (a Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -39,46 +37,14 @@ func (a Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-type ErrorJson struct {
-	Error ErrorPayload `json:"Error"`
+type Server struct {
+	logger *zap.Logger
 }
 
-type ErrorPayload struct {
-	Message string `json:"message"`
+func (s *Server) NewHandler(handler HandlerFunc) Handler {
+	return Handler{s.logger, handler}
 }
 
-func NewErrorJson(message string) ErrorJson {
-	return ErrorJson{ErrorPayload{
-		Message: message,
-	}}
-}
-
-func WriteJson(w http.ResponseWriter, object interface{}) error {
-	res, err := json.Marshal(object)
-	if err != nil {
-		return err
-	}
-	if _, err = w.Write(res); err != nil {
-		return err
-	}
-	w.Header().Add("Content-Type", "application/json")
-	return nil
-}
-
-func NewWriteJsonError(err error) *Error {
-	return &Error{http.StatusInternalServerError, "Failed writing json response", err}
-}
-
-func ParseJson(input io.ReadCloser, result interface{}) error {
-	return json.NewDecoder(input).Decode(result)
-}
-
-func NewParseJsonError(err error) *Error {
-	return &Error{http.StatusBadRequest, "Failed parsing input", err}
-}
-
-type Env struct {
-	db           *pg.DB
-	logger       *zap.Logger
-	studentStore StudentStore
+func NewServer(logger *zap.Logger) Server {
+	return Server{logger}
 }

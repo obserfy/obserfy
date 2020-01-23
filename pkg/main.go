@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/chrsep/vor/pkg/postgres"
+	"github.com/chrsep/vor/pkg/rest"
 	"github.com/chrsep/vor/pkg/student"
 	"github.com/getsentry/sentry-go"
 	sentryhttp "github.com/getsentry/sentry-go/http"
@@ -14,9 +15,8 @@ import (
 )
 
 type Env struct {
-	db           *pg.DB
-	logger       *zap.Logger
-	studentStore student.Store
+	db     *pg.DB
+	logger *zap.Logger
 }
 
 const (
@@ -37,9 +37,8 @@ func main() {
 	}()
 
 	env := Env{
-		db:           db,
-		logger:       logger,
-		studentStore: postgres.StudentStore{db},
+		db:     db,
+		logger: logger,
 	}
 
 	// run the server
@@ -61,12 +60,13 @@ func runServer(env Env) error {
 	}
 	sentryHandler := sentryhttp.New(sentryhttp.Options{})
 
+	server := rest.NewServer(env.logger)
 	// Setup routing
 	r := chi.NewRouter()
 	r.Use(sentryHandler.Handle)
 	r.Route("/api/v1", func(r chi.Router) {
 		r.Use(createAuthMiddleware(env))
-		r.Mount("/students", student.NewRouter(env.logger, env.studentStore))
+		r.Mount("/students", student.NewRouter(server, postgres.StudentStore{env.db}))
 		r.Mount("/observations", createObservationsSubroute(env))
 		r.Mount("/schools", createSchoolsSubroute(env))
 		r.Mount("/user", createUserSubroute(env))
