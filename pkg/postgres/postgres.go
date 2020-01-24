@@ -4,6 +4,7 @@ import (
 	"crypto/tls"
 	"github.com/go-pg/pg/v9"
 	"github.com/go-pg/pg/v9/orm"
+	richErrors "github.com/pkg/errors"
 	"os"
 	"time"
 )
@@ -18,20 +19,15 @@ func Connect() *pg.DB {
 	})
 }
 
-func InitTables(db *pg.DB) (error interface {
-	Error() string
-}) {
+func InitTables(db *pg.DB) error {
 	for _, model := range []interface{}{
-		(*Student)(nil),
-
-		// Curriculum related tables
 		(*Curriculum)(nil),
 		(*Area)(nil),
 		(*Subject)(nil),
 		(*Material)(nil),
-		(*StudentMaterialProgress)(nil),
-
 		(*School)(nil),
+		(*Student)(nil),
+		(*StudentMaterialProgress)(nil),
 		(*Observation)(nil),
 		(*User)(nil),
 		(*Session)(nil),
@@ -39,7 +35,7 @@ func InitTables(db *pg.DB) (error interface {
 	} {
 		err := db.CreateTable(model, &orm.CreateTableOptions{IfNotExists: true, FKConstraints: true})
 		if err != nil {
-			return error
+			return richErrors.Wrap(err, "Error initializing db")
 		}
 	}
 	return nil
@@ -127,4 +123,3 @@ type User struct {
 	Password []byte
 	Schools  []School `pg:"many2many:user_to_schools,joinFK:school_id"`
 }
-

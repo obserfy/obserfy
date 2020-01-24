@@ -3,6 +3,7 @@ package postgres
 import (
 	"github.com/go-pg/pg/v9"
 	"github.com/google/uuid"
+	richErrors "github.com/pkg/errors"
 )
 
 type AuthStore struct {
@@ -14,7 +15,7 @@ func (a AuthStore) ResolveInviteCode(inviteCodeId string) (*School, error) {
 	if err := a.Model(&school).
 		Where("invite_code=?", inviteCodeId).
 		Select(); err != nil {
-		return nil, err
+		return nil, richErrors.Wrap(err, "invite code:"+inviteCodeId)
 	}
 	return &school, nil
 }
@@ -24,7 +25,7 @@ func (a AuthStore) GetUserByEmail(email string) (*User, error) {
 	if err := a.Model(&user).
 		Where("email=?", email).
 		First(); err != nil {
-		return nil, err
+		return nil, richErrors.Wrap(err, "email"+email)
 	}
 	return &user, nil
 }
@@ -32,7 +33,7 @@ func (a AuthStore) GetUserByEmail(email string) (*User, error) {
 func (a AuthStore) NewSession(userId string) (*Session, error) {
 	session := Session{uuid.New().String(), userId}
 	if err := a.Insert(&session); err != nil {
-		return nil, err
+		return nil, richErrors.Wrap(err, "user id:"+userId)
 	}
 	return &session, nil
 }
@@ -45,9 +46,10 @@ func (a AuthStore) NewUser(email string, hashedPassword []byte, name string, inv
 		Password: hashedPassword,
 	}
 	if err := a.Insert(&user); err != nil {
-		return nil, err
+		return nil, richErrors.Wrap(err, "email:"+email)
 	}
 
+	// TODO: This should be done in a transsaction
 	// Create relation between user and associated school if use has invite code
 	if inviteCode != "" {
 		var school School
@@ -55,12 +57,12 @@ func (a AuthStore) NewUser(email string, hashedPassword []byte, name string, inv
 		if err := a.Model(&school).
 			Where("invite_code=?", inviteCode).
 			Select(); err != nil {
-			return nil, err
+			return nil, richErrors.Wrap(err, "invite code:"+inviteCode)
 		}
 
 		userSchoolRelation := UserToSchool{school.Id, user.Id}
 		if err := a.Insert(&userSchoolRelation); err != nil {
-			return nil, err
+			return nil, richErrors.Wrap(err, "invite code:"+inviteCode)
 		}
 	}
 	return &user, nil
@@ -71,12 +73,15 @@ func (a AuthStore) GetSession(token string) (*Session, error) {
 	if err := a.Model(&session).
 		Where("token=?", token).
 		Select(); err != nil {
-		return nil, err
+		return nil, richErrors.Wrap(err, "Failed getting session")
 	}
 	return &session, nil
 }
 
 func (a AuthStore) DeleteSession(token string) error {
 	session := Session{Token: token}
-	return a.Delete(&session)
+	if err := a.Delete(&session); err != nil {
+		return richErrors.Wrap(err, "Failed deleting session")
+	}
+	return nil
 }

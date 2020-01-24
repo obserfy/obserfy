@@ -314,8 +314,13 @@ func (s *server) getCurriculumAreas() rest.Handler {
 		// Get school data and check if curriculum exists
 		areas, err := s.store.GetCurriculumAreas(schoolId)
 		if errors.Is(postgres.EmptyCurriculumError{}, err) {
-			return &rest.Error{http.StatusNotFound, "School doesn't have curriculum yet", err}
-		} else if err != nil {
+			emptyArray := make([]postgres.Area, 0)
+			if err = rest.WriteJson(w, emptyArray); err != nil {
+				return rest.NewWriteJsonError(err)
+			}
+			return nil
+		}
+		if err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Failed to get school data", err}
 		}
 
