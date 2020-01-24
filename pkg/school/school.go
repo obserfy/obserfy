@@ -1,8 +1,8 @@
 package school
 
 import (
-	"context"
 	"errors"
+	"github.com/chrsep/vor/pkg/auth"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/rest"
 	"github.com/go-chi/chi"
@@ -47,25 +47,14 @@ func NewRouter(s rest.Server, store Store) *chi.Mux {
 	return r
 }
 
-// TODO: this shouldn't be here
-const SessionCtxKey = "session"
-
-func getSessionFromCtx(ctx context.Context) (postgres.Session, bool) {
-	session, ok := ctx.Value(SessionCtxKey).(postgres.Session)
-	return session, ok
-}
-func createGetSessionError() *rest.Error {
-	return &rest.Error{http.StatusUnauthorized, "Unauthorized", errors.New("session can't be found on context")}
-}
-
 func (s *server) handleCreateSchool() rest.Handler {
 	var requestBody struct {
 		Name string
 	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
-		session, ok := getSessionFromCtx(r.Context())
+		session, ok := auth.GetSessionFromCtx(r.Context())
 		if !ok {
-			return createGetSessionError()
+			return auth.NewGetSessionError()
 		}
 		if err := rest.ParseJson(r.Body, &requestBody); err != nil {
 			return rest.NewParseJsonError(err)
@@ -89,9 +78,9 @@ func (s *server) authorizationMiddleware() func(next http.Handler) http.Handler 
 			schoolId := chi.URLParam(r, "schoolId")
 
 			// Verify use access to the school
-			session, ok := getSessionFromCtx(r.Context())
+			session, ok := auth.GetSessionFromCtx(r.Context())
 			if !ok {
-				return createGetSessionError()
+				return auth.NewGetSessionError()
 			}
 			school, err := s.store.GetSchool(schoolId)
 			if err != nil {
@@ -133,9 +122,9 @@ func (s *server) handleGetSchool() rest.Handler {
 
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		schoolId := chi.URLParam(r, "schoolId")
-		session, ok := getSessionFromCtx(r.Context())
+		session, ok := auth.GetSessionFromCtx(r.Context())
 		if !ok {
-			return createGetSessionError()
+			return auth.NewGetSessionError()
 		}
 
 		// Get school data

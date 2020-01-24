@@ -1,8 +1,7 @@
 package user
 
 import (
-	"context"
-	"errors"
+	"github.com/chrsep/vor/pkg/auth"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/rest"
 	"github.com/go-chi/chi"
@@ -27,14 +26,6 @@ func NewRouter(s rest.Server, store Store) *chi.Mux {
 	return r
 }
 
-// TODO: This should not be here
-const SessionCtxKey = "session"
-
-func getSessionFromCtx(ctx context.Context) (postgres.Session, bool) {
-	session, ok := ctx.Value(SessionCtxKey).(postgres.Session)
-	return session, ok
-}
-
 func (s *server) getUser() rest.Handler {
 	type response struct {
 		Id    string `json:"id"`
@@ -42,9 +33,9 @@ func (s *server) getUser() rest.Handler {
 		Name  string `json:"name"`
 	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
-		session, ok := getSessionFromCtx(r.Context())
+		session, ok := auth.GetSessionFromCtx(r.Context())
 		if !ok {
-			return &rest.Error{http.StatusUnauthorized, "Invalid session", errors.New("can't get session from context")}
+			return auth.NewGetSessionError()
 		}
 
 		user, err := s.store.GetUser(session.UserId)
@@ -65,9 +56,9 @@ func (s *server) getUser() rest.Handler {
 
 func (s *server) getSchools() rest.Handler {
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
-		session, ok := getSessionFromCtx(r.Context())
+		session, ok := auth.GetSessionFromCtx(r.Context())
 		if !ok {
-			return &rest.Error{http.StatusUnauthorized, "Invalid session", errors.New("can't get session from context")}
+			return auth.NewGetSessionError()
 		}
 
 		schools, err := s.store.GetSchools(session.UserId)

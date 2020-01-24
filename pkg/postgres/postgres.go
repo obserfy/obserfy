@@ -45,16 +45,6 @@ func InitTables(db *pg.DB) (error interface {
 	return nil
 }
 
-func Close(db *pg.DB) (error interface {
-	Error() string
-}) {
-	err := db.Close()
-	if err != nil {
-		return error
-	}
-	return nil
-}
-
 type Session struct {
 	Token  string `pg:",pk" pg:",type:uuid"`
 	UserId string

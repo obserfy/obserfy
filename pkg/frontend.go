@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/chrsep/vor/pkg/postgres"
+	"github.com/go-pg/pg/v9"
 	"net/http"
 	"os"
 	"strings"
@@ -11,7 +12,7 @@ func createFrontendFileServer(folder string) func(w http.ResponseWriter, r *http
 	return http.FileServer(http.Dir(folder)).ServeHTTP
 }
 
-func createFrontendAuthMiddleware(env Env, folder string) func(next http.Handler) http.Handler {
+func createFrontendAuthMiddleware(db *pg.DB, folder string) func(next http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
 		fn := func(w http.ResponseWriter, r *http.Request) {
 			path := r.URL.Path
@@ -26,7 +27,7 @@ func createFrontendAuthMiddleware(env Env, folder string) func(next http.Handler
 				}
 
 				var session postgres.Session
-				err = env.db.Model(&session).Where("token=?", token.Value).Select()
+				err = db.Model(&session).Where("token=?", token.Value).Select()
 				if err != nil {
 					http.Redirect(w, r, "/login", http.StatusFound)
 					return
@@ -36,7 +37,7 @@ func createFrontendAuthMiddleware(env Env, folder string) func(next http.Handler
 				token, err := r.Cookie("session")
 				if token != nil {
 					var session postgres.Session
-					err = env.db.Model(&session).Where("token=?", token.Value).Select()
+					err = db.Model(&session).Where("token=?", token.Value).Select()
 					if err == nil {
 						http.Redirect(w, r, "/dashboard/home", http.StatusFound)
 						return
