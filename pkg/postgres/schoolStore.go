@@ -1,7 +1,6 @@
 package postgres
 
 import (
-	"github.com/chrsep/vor/pkg/curriculum"
 	"github.com/go-pg/pg/v9"
 	"github.com/google/uuid"
 	"time"
@@ -97,7 +96,7 @@ func (s SchoolStore) NewDefaultCurriculum(schoolId string) error {
 		return err
 	}
 
-	c := curriculum.CreateDefault()
+	c := createDefault()
 	err = s.RunInTransaction(
 		func(tx *pg.Tx) error {
 			// Save the curriculum tree.

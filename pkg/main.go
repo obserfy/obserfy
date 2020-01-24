@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/chrsep/vor/pkg/curriculum"
+	"github.com/chrsep/vor/pkg/observation"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/rest"
 	"github.com/chrsep/vor/pkg/school"
@@ -70,7 +71,7 @@ func runServer(env Env) error {
 	r.Route("/api/v1", func(r chi.Router) {
 		r.Use(createAuthMiddleware(env))
 		r.Mount("/students", student.NewRouter(server, postgres.StudentStore{env.db}))
-		r.Mount("/observations", createObservationsSubroute(env))
+		r.Mount("/observations", observation.NewRouter(server, postgres.ObservationStore{env.db}))
 		r.Mount("/schools", school.NewRouter(server, postgres.SchoolStore{env.db}))
 		r.Mount("/user", user.NewRouter(server, postgres.UserStore{env.db}))
 		r.Mount("/curriculum", curriculum.NewRouter(server, postgres.CurriculumStore{env.db}))
