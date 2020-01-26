@@ -130,7 +130,8 @@
     "gen:component": "hygen component new --name",
     "gen:graphql-types": "graphql-codegen --config codegen.yml",
     "test": "jest --coverage --passWithNoTests",
-    "cy:open": "cypress open"
+    "cy:open": "cypress open",
+    "cy:run": "cypress run"
   },
   "repository": {
     "type": "git",

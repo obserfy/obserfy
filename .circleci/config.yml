@@ -1,9 +1,18 @@
 version: 2.1
 jobs:
   build:
-    machine:
-      image: ubuntu-1604:201903-01
+    docker:
+      - image: circleci/node:12
     working_directory: ~/repo
     steps:
       - checkout
-      - run: docker-compose -f docker-compose.prod.yml up --build -d
+      - run: |
+          cd ./docker/postgres/ssl
+          ./generate.sh
+          cd ../../../
+          docker-compose up -d
+      - run: |
+          cd frontend
+          yarn install
+          yarn build
+          yarn cy:run
