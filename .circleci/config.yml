@@ -14,7 +14,5 @@ jobs:
 
     steps:
       - checkout
-      - setup_remote_docker:
-          docker_layer_caching: true
 
       - run: docker-compose up -f docker-compose.prod.yml --build -d
