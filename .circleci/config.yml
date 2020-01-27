@@ -18,7 +18,7 @@ jobs:
           cd ./docker/postgres/ssl
           ./generate.sh
           cd ../../../
-          docker-compose up -d
+          docker-compose up -d --build
       - run: |
           cd frontend
           yarn install
