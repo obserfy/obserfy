@@ -121,7 +121,7 @@
   "scripts": {
     "build": "gatsby build",
     "build:cy": "CYPRESS_SUPPORT=y gatsby build",
-    "develop": "gatsby develop -H 0.0.0.0 -p 8001 --https",
+    "develop": "CYPRESS_SUPPORT=y gatsby develop -H 0.0.0.0 -p 8001 --https",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",

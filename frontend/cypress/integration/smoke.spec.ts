@@ -21,8 +21,9 @@ describe(" Smoke test on prod build", () => {
     // Register account
     cy.contains("Sign Up").click()
     cy.waitForRouteChange()
-      .contains("Email")
-      .type(email)
+      .url()
+      .should("contains", "register")
+    cy.contains("Email").type(email)
     cy.contains("Password").type(password)
     cy.contains("Name").type(name)
     cy.contains("Sign Up").click()
