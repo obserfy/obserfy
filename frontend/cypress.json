@@ -1,3 +1,4 @@
 {
-  "baseUrl": "https://localhost:8000"
+  "baseUrl": "https://localhost:8000",
+  "videoCompression": 0
 }

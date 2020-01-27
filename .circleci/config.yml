@@ -32,6 +32,8 @@ jobs:
           yarn cy:run
       - store_artifacts:
           path:  ~/repo/frontend/cypress/videos
+      - store_artifacts:
+          path:  ~/repo/frontend/cypress/screenshots
       - save_cache:
           name: Save Yarn Package Cache
           key: yarn-packages-{{ checksum "frontend/yarn.lock" }}
