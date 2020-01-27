@@ -7,7 +7,9 @@ jobs:
     steps:
       - checkout
       - run: |
+          sudo apt update
           sudo apt install nodejs
+          node -v
       - run: |
           curl -o- -L https://yarnpkg.com/install.sh | bash
       - run: |
