@@ -20,6 +20,7 @@ describe(" Smoke test on prod build", () => {
 
     // Register account
     cy.contains("Sign Up").click()
+    cy.url().should("eq", "http://localhost:8000/register")
     // TODO: This part seems to be flaky.
     cy.contains("Email").type(email)
     cy.contains("Password").type(password)
@@ -27,21 +28,25 @@ describe(" Smoke test on prod build", () => {
     cy.contains("Sign Up").click()
 
     // Create School
+    cy.url().should("contains", "school")
     cy.contains("New").click()
     cy.contains("Name").type(schoolName)
     cy.contains("Save").click()
     cy.contains(schoolName).click()
 
     // Logout
+    cy.url().should("contains", "dashboard")
     cy.contains(name).click()
     cy.contains("Log out").click()
 
     // Login
+    cy.url().should("contains", "login")
     cy.contains("Email").type(email)
     cy.contains("Password").type(password)
     cy.contains("Login").click()
 
     // Choose school
+    cy.url().should("contains", "school")
     cy.contains(schoolName).click()
 
     // Change theme
@@ -50,9 +55,10 @@ describe(" Smoke test on prod build", () => {
 
     // Check sidebar links
     cy.contains(/settings/i).click()
+    cy.url().should("contains", "settings")
     // TODO: this is flaky, sometimes work sometimes don't, so we doubled it.
     cy.contains(/Home/i).click()
-    cy.contains(/Home/i).click()
+    cy.url().should("contains", "home")
 
     // Create student
     const studentName = "Carol"
