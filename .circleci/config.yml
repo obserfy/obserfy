@@ -8,7 +8,9 @@ jobs:
       - checkout
       - run: |
           sudo apt update
-          sudo apt install nodejs
+          sudo apt -y install curl dirmngr apt-transport-https lsb-release ca-certificates
+          curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+          sudo apt -y install nodejs
           node -v
       - run: |
           curl -o- -L https://yarnpkg.com/install.sh | bash
