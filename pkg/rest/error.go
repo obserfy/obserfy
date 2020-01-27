@@ -1,7 +1,7 @@
 package rest
 
 type ErrorJson struct {
-	Error ErrorPayload `json:"Error"`
+	Error ErrorPayload `json:"error"`
 }
 
 type ErrorPayload struct {
