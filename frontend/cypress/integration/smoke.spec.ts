@@ -11,6 +11,7 @@ describe(" Smoke test on prod build", () => {
     const schoolName = faker.company.companyName()
 
     cy.visit("http://localhost:8000")
+    cy.waitForRouteChange()
 
     // Try logging in and fail
     cy.contains("Email").type(email)
@@ -60,13 +61,13 @@ describe(" Smoke test on prod build", () => {
       .click()
       .waitForRouteChange()
     cy.url().should("contains", "settings")
-    cy.contains(/Home/i)
+    cy.get("[data-cy=home-nav]")
       .click()
       .waitForRouteChange()
     cy.url().should("contains", "home")
 
     // Create student
-    const studentName = "Carol"
+    let studentName = "Carol"
     cy.contains(/New Student/i).click()
     cy.contains("Save").should("be.disabled")
     cy.contains("Name").type(studentName)
@@ -97,11 +98,12 @@ describe(" Smoke test on prod build", () => {
     cy.contains(details).should("be.visible")
 
     // Change student name
+    studentName = "Jane Doe"
     cy.get("[data-cy=edit]").click()
     cy.contains("Name")
       .find("input")
       .clear()
-      .type("Jane Doe")
+      .type(studentName)
     cy.contains("Save").click()
 
     // Change student dob
@@ -133,17 +135,54 @@ describe(" Smoke test on prod build", () => {
 
     // Go to curriculum
     cy.contains("Go to Curriculum").click()
+
     // Go to settings
     // Go back to curriculum
     // Create default curriculum TODO: This test will be flaky.
+    cy.contains("default").click()
+    cy.contains("Math").should("exist")
+
     // Go to a student
+    cy.contains(/Home/i)
+      .click()
+      .waitForRouteChange()
+    cy.url().should("contains", "home")
+    cy.contains(studentName)
+      .click()
+      .waitForRouteChange()
+
     // Click on tabs
+    cy.contains("Math").click()
+
     // Open all progress
+    cy.contains("See All ")
+      .click()
+      .waitForRouteChange()
+
     // Change something to Practiced
+    cy.contains("Number Rods").click()
+    cy.contains("Save changes").should("be.disabled")
+    cy.get("[aria-label=Progress]").select("1")
+    cy.contains("Save changes").click()
+
     // Go back and see if it shows up
+    cy.contains("Practiced").should("be.visible")
+    cy.contains("Student Details")
+      .click({ force: true })
+      .waitForRouteChange()
+
     // Change to master
+    cy.contains("See All Math").should("be.visible")
+    cy.contains("Practiced")
+      .should("be.visible")
+      .click()
+
+    cy.get("[aria-label=Progress]").select("2")
+    cy.contains("Save changes").click()
+
     // Make sure it shows up
-    // Go to all progress, and set it to not practiced
-    // Go back make sure gon.
+    cy.contains("Mastered").should("be.visible")
+    cy.contains("Practical Life").click()
+    cy.contains("Mastered").should("not.be.visible")
   })
 })

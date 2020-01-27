@@ -120,7 +120,7 @@ func (s *server) login() rest.Handler {
 
 		user, err := s.store.GetUserByEmail(email)
 		if err != nil {
-			return &rest.Error{Code: http.StatusInternalServerError, Message: "Failed querying user", Error: err}
+			return &rest.Error{Code: http.StatusUnauthorized, Message: "Wrong credentials", Error: err}
 		}
 
 		//  Compare hash and password

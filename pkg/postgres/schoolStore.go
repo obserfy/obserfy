@@ -3,6 +3,7 @@ package postgres
 import (
 	"github.com/go-pg/pg/v9"
 	"github.com/google/uuid"
+	richErrors "github.com/pkg/errors"
 	"time"
 )
 
@@ -93,7 +94,7 @@ func (s SchoolStore) RefreshInviteCode(schoolId string) (*School, error) {
 func (s SchoolStore) NewDefaultCurriculum(schoolId string) error {
 	school, err := s.GetSchool(schoolId)
 	if err != nil {
-		return err
+		return richErrors.Wrap(err, "Failed saving school")
 	}
 
 	c := createDefault()
@@ -121,7 +122,7 @@ func (s SchoolStore) NewDefaultCurriculum(schoolId string) error {
 
 			// Update the school with the new curriculum id
 			school.CurriculumId = c.Id
-			if err := tx.Update(&school); err != nil {
+			if err := tx.Update(school); err != nil {
 				return err
 			}
 			return nil
