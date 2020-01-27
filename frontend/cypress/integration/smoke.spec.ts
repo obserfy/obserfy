@@ -22,7 +22,9 @@ describe(" Smoke test on prod build", () => {
     cy.contains("Sign Up").click()
     cy.url().should("eq", "http://localhost:8000/register")
     // TODO: This part seems to be flaky.
-    cy.contains("Email").type(email)
+    cy.contains("Email")
+      .should("be.visible")
+      .type(email)
     cy.contains("Password").type(password)
     cy.contains("Name").type(name)
     cy.contains("Sign Up").click()
