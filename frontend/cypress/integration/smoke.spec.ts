@@ -118,13 +118,13 @@ describe(" Smoke test on prod build", () => {
     cy.waitForRouteChange()
       .url()
       .should("contains", "students")
-    cy.contains("Edit").click()
+    cy.get("[data-cy=edit-observation]").click()
     cy.get("[aria-label=Details]").type("Some additional text")
     cy.contains("Save").click()
     cy.contains("Some additional text").should("be.visible")
 
     // Delete observation
-    cy.contains("delete").click()
+    cy.get("[data-cy=delete-observation]").click()
     cy.contains("Yes,").click()
     cy.contains(shortDesc).should("not.be.visible")
 
