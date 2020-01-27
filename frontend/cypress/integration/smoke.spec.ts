@@ -56,14 +56,14 @@ describe(" Smoke test on prod build", () => {
     cy.contains("Light Mode").click()
 
     // Check sidebar links
-    cy.contains(/settings/i).click()
-    cy.waitForRouteChange()
-      .url()
-      .should("contains", "settings")
-    cy.contains(/Home/i).click()
-    cy.waitForRouteChange()
-      .url()
-      .should("contains", "home")
+    cy.contains(/settings/i)
+      .click()
+      .waitForRouteChange()
+    cy.url().should("contains", "settings")
+    cy.contains(/Home/i)
+      .click()
+      .waitForRouteChange()
+    cy.url().should("contains", "home")
 
     // Create student
     const studentName = "Carol"
