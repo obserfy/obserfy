@@ -10,7 +10,7 @@ describe(" Smoke test on prod build", () => {
 
     const schoolName = faker.company.companyName()
 
-    cy.visit("http://localhost:8000")
+    cy.visit("https://localhost:8001")
 
     // Try logging in and fail
     cy.contains("Email").type(email)
