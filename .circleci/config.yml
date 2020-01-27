@@ -22,5 +22,5 @@ jobs:
       - run: |
           cd frontend
           yarn install
-          yarn develop
+          yarn build
           yarn cy:run
