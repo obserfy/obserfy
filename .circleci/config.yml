@@ -35,6 +35,7 @@ jobs:
       - store_artifacts:
           path:  ~/repo/frontend/cypress/screenshots
       - save_cache:
+          when: always
           name: Save Yarn Package Cache
           key: yarn-packages-{{ checksum "frontend/yarn.lock" }}
           paths:
