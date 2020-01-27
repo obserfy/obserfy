@@ -10,6 +10,7 @@ jobs:
           sudo apt update
           sudo apt -y install curl dirmngr apt-transport-https lsb-release ca-certificates
           curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+          sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 78BD65473CB3BD13
           sudo apt update
           sudo apt -y install nodejs
           curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
