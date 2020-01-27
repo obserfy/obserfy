@@ -40,4 +40,5 @@ jobs:
           key: yarn-packages-{{ checksum "frontend/yarn.lock" }}
           paths:
             - ~/.cache/yarn
+            - ./frontend/node_modules
             - ~/.cache/Cypress
