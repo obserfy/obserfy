@@ -20,18 +20,17 @@ describe(" Smoke test on prod build", () => {
 
     // Register account
     cy.contains("Sign Up").click()
-    cy.url().should("eq", "http://localhost:8000/register")
-    // TODO: This part seems to be flaky.
-    cy.contains("Email").should("be.visible")
-    cy.contains("Email").click()
-    cy.type(email)
+    cy.waitForRouteChange()
+      .contains("Email")
+      .type(email)
     cy.contains("Password").type(password)
     cy.contains("Name").type(name)
     cy.contains("Sign Up").click()
 
     // Create School
-    cy.url().should("contains", "school")
-    cy.contains("New").click()
+    cy.waitForRouteChange()
+      .contains("New")
+      .click()
     cy.contains("Name").type(schoolName)
     cy.contains("Save").click()
     cy.contains(schoolName).click()

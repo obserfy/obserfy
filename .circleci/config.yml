@@ -9,7 +9,7 @@ jobs:
       - restore_cache:
           name: Restore Yarn Package Cache
           keys:
-            - yarn-packages-{{ checksum "frontend/yarn.lock" }}
+            - yarn-{{ checksum "frontend/yarn.lock" }}
       - run: |
             echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
             echo ' [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
@@ -28,7 +28,7 @@ jobs:
           yarn install --frozen-lockfile
       - run: |
           cd frontend
-          yarn build
+          yarn build:cy
           yarn cy:run
       - store_artifacts:
           path:  ~/repo/frontend/cypress/videos
@@ -37,7 +37,7 @@ jobs:
       - save_cache:
           when: always
           name: Save Yarn Package Cache
-          key: yarn-packages-{{ checksum "frontend/yarn.lock" }}
+          key: yarn-{{ checksum "frontend/yarn.lock" }}
           paths:
             - ~/.cache/yarn
             - ./frontend/node_modules
