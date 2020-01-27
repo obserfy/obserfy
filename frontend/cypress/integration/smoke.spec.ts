@@ -115,6 +115,9 @@ describe(" Smoke test on prod build", () => {
     cy.contains("Save").click()
 
     // Edit observation
+    cy.waitForRouteChange()
+      .url()
+      .should("contains", "students")
     cy.contains("Edit").click()
     cy.get("[aria-label=Details]").type("Some additional text")
     cy.contains("Save").click()
