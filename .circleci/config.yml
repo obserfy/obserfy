@@ -9,7 +9,7 @@ jobs:
       - restore_cache:
           name: Restore Yarn Package Cache
           keys:
-            - node-{{ checksum "frontend/yarn.lock" }}
+            - yarn-cypress-{{ checksum "frontend/yarn.lock" }}
       - run: |
           echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
           echo ' [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
@@ -37,11 +37,8 @@ jobs:
       - save_cache:
           when: always
           name: Save Yarn Package Cache
-          key: node-{{ checksum "frontend/yarn.lock" }}
+          key: yarn-cypress-{{ checksum "frontend/yarn.lock" }}
           paths:
-            # Caching node_modules only is faster but might cause some build problems
-            # when running different commands or different node/yarn version.
-            # Cache .cache when troubles emerge.
-            #- ~/.cache/yarn
+            - ~/.cache/yarn
             - ~/.cache/Cypress
             - ./frontend/node_modules

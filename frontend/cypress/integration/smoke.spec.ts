@@ -57,10 +57,13 @@ describe(" Smoke test on prod build", () => {
 
     // Check sidebar links
     cy.contains(/settings/i).click()
-    cy.url().should("contains", "settings")
-    // TODO: this is flaky, sometimes work sometimes don't, so we doubled it.
+    cy.waitForRouteChange()
+      .url()
+      .should("contains", "settings")
     cy.contains(/Home/i).click()
-    cy.url().should("contains", "home")
+    cy.waitForRouteChange()
+      .url()
+      .should("contains", "home")
 
     // Create student
     const studentName = "Carol"
