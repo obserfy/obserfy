@@ -7,15 +7,15 @@ jobs:
     steps:
       - checkout
       - run: |
-          sudo apt update
-          sudo apt -y install curl dirmngr apt-transport-https lsb-release ca-certificates
-          curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
-          sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 78BD65473CB3BD13
-          sudo apt update
-          sudo apt -y install nodejs
-          curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-          echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-          sudo apt-get update && sudo apt-get install yarn
+            echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
+            echo ' [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
+      - run: |
+          node -v
+      - run: |
+          nvm install v10
+          node -v
+          nvm alias default v10
+      - run: |
           node -v
       - run: |
           cd ./docker/postgres/ssl
