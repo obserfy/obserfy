@@ -1,4 +1,5 @@
 {
   "baseUrl": "https://localhost:8000",
-  "videoCompression": 0
+  "videoCompression": false,
+  "defaultCommandTimeout": 10000
 }
