@@ -23,7 +23,7 @@ describe(" Smoke test on prod build", () => {
     cy.waitForRouteChange()
       .url()
       .should("contains", "register")
-    cy.contains("Email").type(email)
+    cy.get("[data-cy=register-email]").type(email)
     cy.contains("Password").type(password)
     cy.contains("Name").type(name)
     cy.contains("Sign Up").click()
