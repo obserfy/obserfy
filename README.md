@@ -1,4 +1,5 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/b417b5c0753dab4a593e/maintainability)](https://codeclimate.com/github/chrsep/vor/maintainability)
+[![CircleCI](https://circleci.com/gh/chrsep/vor.svg?style=svg)](https://circleci.com/gh/chrsep/vor)
 # (WIP) Vor
 Backend for obserfy. A web-based tool for managing student information for Montessori Schools. Currently this tools focuses on pre-school's needs.
 
