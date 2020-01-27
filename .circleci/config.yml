@@ -6,6 +6,10 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
       - run: |
             echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
             echo ' [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
@@ -18,9 +22,18 @@ jobs:
           cd ./docker/postgres/ssl
           ./generate.sh
           cd ../../../
-          docker-compose up -d --build
+          docker-compose up -d
       - run: |
           cd frontend
-          yarn install
+          yarn install --frozen-lockfile
+      - run: |
           yarn build
           yarn cy:run
+      - store_artifacts:
+          path:  ~/repo/frontend/cypress/videos
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+            - ~/.cache/Cypress
