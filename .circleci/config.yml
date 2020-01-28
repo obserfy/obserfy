@@ -71,7 +71,7 @@ jobs:
           yarn install
       - run: |
           cd frontend
-          yarn build && yarn jest
+          yarn build && yarn jest -w 1
       - run: bash <(curl -s https://codecov.io/bash)
       - store_test_results:
           path: coverage/
