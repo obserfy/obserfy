@@ -184,6 +184,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
           </Typography.H3>
           <Spacer />
           <Button
+            data-cy="edit"
             mt={11}
             ml={3}
             minWidth={43}

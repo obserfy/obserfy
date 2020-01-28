@@ -5,10 +5,6 @@ services:
     image: chrsep/go-devtools:latest
     container_name: vor_app
     working_dir: /src/vor
-    depends_on:
-      - db
-
-    # Tell the container where to find the entry point to your app.
     environment:
       # go-devtools docker specific env
       SRC_ENTRYPOINT: /src/vor/pkg/*.go
@@ -29,11 +25,14 @@ services:
     ports:
       - "40000:40000"
       - "8080:8080"
+    depends_on:
+      - db
 
   nginx:
     build:
       context: .
       dockerfile: docker/nginx/dev.dockerfile
+    restart: unless-stopped
     depends_on:
       - vor_app
     ports:
@@ -47,13 +46,10 @@ services:
     environment:
       POSTGRES_PASSWORD: developmentonly
       POSTGRES_DB: defaultdb
-    volumes:
-      - vor:/var/lib/postgresql/data
-#      - ./docker/postgres/ssl:/ssl
-#      - ./docker/postgres/pga_hba.conf:/var/lib/postgresql/data/pga_hba.conf
-#      - ./docker/postgres/postgresql.conf:/var/lib/postgresql/data/postgresql.conf
     ports:
       - "5432:5432"
+#    volumes:
+#       - vor:/var/lib/postgresql/data
 
-volumes:
-  ? vor
+#volumes:
+#  ? vor

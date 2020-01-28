@@ -35,13 +35,13 @@ services:
     environment:
       POSTGRES_PASSWORD: developmentonly
       POSTGRES_DB: defaultdb
-    volumes:
-      - vor:/var/lib/postgresql/data
+#    volumes:
+#      - vor:/var/lib/postgresql/data
 #      - ./docker/postgres/ssl:/ssl
 #      - ./docker/postgres/pga_hba.conf:/var/lib/postgresql/data/pga_hba.conf
 #      - ./docker/postgres/postgresql.conf:/var/lib/postgresql/data/postgresql.conf
     ports:
       - "5432:5432"
 
-volumes:
-  ? vor
+#volumes:
+#  ? vor

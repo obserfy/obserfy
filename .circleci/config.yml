@@ -1,0 +1,92 @@
+version: 2.1
+jobs:
+  e2e:
+    machine:
+      image: ubuntu-1604:201903-01
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-cypress-{{ checksum "frontend/yarn.lock" }}
+      - run: |
+          echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
+          echo ' [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
+      - run: |
+          nvm install v12
+          node -v
+          nvm alias default v12
+      - run: npm install -g yarn wait-on
+      - run: |
+          cd ./docker/postgres/ssl
+          ./generate.sh
+          cd ../../../
+          docker-compose up -d
+      - run: |
+          cd frontend
+          yarn install --production --frozen-lockfile
+      - run: |
+          cd frontend
+          yarn cy:ci
+      - run:  bash <(curl -s https://codecov.io/bash)
+      - store_test_results:
+          path: frontend/coverage/clover.xml
+      - store_artifacts:
+          path:  ~/repo/frontend/cypress/videos
+      - store_artifacts:
+          path:  ~/repo/frontend/cypress/screenshots
+      - save_cache:
+          when: always
+          name: Save Yarn Package Cache
+          key: yarn-cypress-{{ checksum "frontend/yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+            - ~/.cache/Cypress
+            - ./frontend/node_modules
+
+  backend_unit:
+    docker:
+      - image: golang:1.13
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: go test ./... -coverprofile=coverage.txt -covermode=atomic
+      - run:  bash <(curl -s https://codecov.io/bash)
+      - store_test_results:
+          path: coverage.txt
+
+  frontend_unit:
+    docker:
+      - image: node:12
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-jest-{{ checksum "frontend/yarn.lock" }}
+      - run: |
+          cd frontend
+          yarn install
+      - run: |
+          cd frontend
+          yarn build && yarn test -w 1
+      - run: bash <(curl -s https://codecov.io/bash)
+      - store_test_results:
+          path: frontend/coverage/clover.xml
+      - save_cache:
+          when: always
+          name: Save Yarn Package Cache
+          key: yarn-jest-{{ checksum "frontend/yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+            - ~/.cache/Cypress
+            - ./frontend/node_modules
+
+workflows:
+  test:
+    jobs:
+      - e2e
+      - backend_unit
+      - frontend_unit

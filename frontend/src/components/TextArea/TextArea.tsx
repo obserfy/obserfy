@@ -14,7 +14,7 @@ export const TextArea: FC<Props> = ({ label, ...props }) => (
         {label}
       </Box>
     )}
-    <BaseTextArea {...props} />
+    <BaseTextArea aria-label={label} {...props} />
   </Label>
 )
 

@@ -95,6 +95,7 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
         )}
         <Typography.H2 my={3}>Register</Typography.H2>
         <Input
+          data-cy="register-email"
           type="email"
           name="email"
           width="100%"
