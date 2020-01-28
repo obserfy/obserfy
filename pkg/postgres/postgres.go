@@ -2,6 +2,7 @@ package postgres
 
 import (
 	"crypto/tls"
+	"fmt"
 	"github.com/go-pg/pg/v9"
 	"github.com/go-pg/pg/v9/orm"
 	richErrors "github.com/pkg/errors"
@@ -10,13 +11,25 @@ import (
 )
 
 func Connect() *pg.DB {
-	return pg.Connect(&pg.Options{
+	db := pg.Connect(&pg.Options{
 		User:      os.Getenv("DB_USERNAME"),
 		Password:  os.Getenv("DB_PASSWORD"),
 		Addr:      os.Getenv("DB_HOST") + ":" + os.Getenv("DB_PORT"),
 		Database:  "defaultdb",
 		TLSConfig: &tls.Config{InsecureSkipVerify: true},
 	})
+
+	// Wait until connection is healthy
+	for {
+		_, err := db.Exec("SELECT 1")
+		if err == nil {
+			break
+		} else {
+			fmt.Println("Error: PostgreSQL is down")
+			time.Sleep(1000 * time.Millisecond)
+		}
+	}
+	return db
 }
 
 func InitTables(db *pg.DB) error {
