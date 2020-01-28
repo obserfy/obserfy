@@ -136,7 +136,7 @@
     "build-storybook": "build-storybook",
     "gen:component": "hygen component new --name",
     "gen:graphql-types": "graphql-codegen --config codegen.yml",
-    "test": "jest --coverage --passWithNoTests",
+    "test": "jest --coverage --passWithNoTests --coverageReporters json clover",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "cy:ci": "start-server-and-test develop 8001 cy:run"

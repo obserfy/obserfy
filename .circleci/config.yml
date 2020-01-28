@@ -72,11 +72,9 @@ jobs:
       - run: |
           cd frontend
           yarn build && yarn jest -w 1
-      - run: |
-          cd frontend
-          bash <(curl -s https://codecov.io/bash)
+      - run: bash <(curl -s https://codecov.io/bash)
       - store_test_results:
-          path: frontend/coverage/
+          path: frontend/coverage/clover.xml
       - save_cache:
           when: always
           name: Save Yarn Package Cache
