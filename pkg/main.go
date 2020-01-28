@@ -12,6 +12,7 @@ import (
 	"github.com/getsentry/sentry-go"
 	sentryhttp "github.com/getsentry/sentry-go/http"
 	"github.com/go-chi/chi"
+	"github.com/go-chi/chi/middleware"
 	_ "github.com/joho/godotenv/autoload"
 	"go.uber.org/zap"
 	"log"
@@ -61,6 +62,8 @@ func runServer() error {
 
 	// Setup routing
 	r := chi.NewRouter()
+	r.Use(middleware.Heartbeat("/ping"))
+	r.Use(middleware.GetHead)
 	r.Use(sentryHandler.Handle)
 	r.Mount("/auth", auth.NewRouter(server, authStore))
 	r.Route("/api/v1", func(r chi.Router) {

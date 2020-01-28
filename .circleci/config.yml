@@ -29,7 +29,7 @@ jobs:
       - run: |
           cd frontend
           yarn build:cy
-          wait-on http://localhost:8080
+          wait-on http://localhost:8000
           yarn cy:run
       - store_artifacts:
           path:  ~/repo/frontend/cypress/videos
