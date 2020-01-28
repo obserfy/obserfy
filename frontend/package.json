@@ -17,6 +17,7 @@
     "@emotion/core": "^10.0.22",
     "@formatjs/intl-pluralrules": "^1.5.0",
     "@formatjs/intl-relativetimeformat": "^4.5.7",
+    "@istanbuljs/nyc-config-typescript": "^1.0.1",
     "@mdx-js/react": "^1.5.4",
     "@rebass/forms": "^4.0.6",
     "@svgr/webpack": "^5.0.1",
@@ -24,6 +25,7 @@
     "axe-core": "^3.4.1",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
+    "babel-plugin-istanbul": "^6.0.0",
     "babel-plugin-remove-graphql-queries": "^2.7.22",
     "babel-preset-gatsby": "^0.2.27",
     "core-js": "2.0.0",
@@ -62,6 +64,7 @@
     "jest": "^24.9.0",
     "jest-date-mock": "^1.0.8",
     "jest-emotion": "^10.0.27",
+    "nyc": "^15.0.0",
     "preact": "^10.2.1",
     "prop-types": "^15.7.2",
     "query-string": "^6.9.0",
@@ -69,9 +72,11 @@
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
     "rebass": "^4.0.7",
+    "source-map-support": "^0.5.16",
     "start-server-and-test": "^1.10.8",
     "theme-ui": "^0.2.52",
     "ts-loader": "^6.2.1",
+    "ts-node": "^8.6.2",
     "typescript": "^3.7.4",
     "url-loader": "^3.0.0",
     "webpack": "^4.41.5",
@@ -142,5 +147,9 @@
   },
   "bugs": {
     "url": "https://github.com/chrsep/vor/issues"
+  },
+  "nyc": {
+    "extends": "@istanbuljs/nyc-config-typescript",
+    "all": true
   }
 }

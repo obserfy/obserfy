@@ -29,6 +29,7 @@ jobs:
       - run: |
           cd frontend
           yarn cy:ci
+      - run:  bash <(curl -s https://codecov.io/bash)
       - store_artifacts:
           path:  ~/repo/frontend/cypress/videos
       - store_artifacts:
