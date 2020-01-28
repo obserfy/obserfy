@@ -28,8 +28,7 @@ jobs:
           yarn install --production --frozen-lockfile
       - run: |
           cd frontend
-          yarn build:cy
-          yarn cy:run
+          yarn cy:ci
       - store_artifacts:
           path:  ~/repo/frontend/cypress/videos
       - store_artifacts:
