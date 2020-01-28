@@ -130,7 +130,7 @@ describe(" Smoke test on prod build", () => {
 
     // Delete observation
     cy.get("[data-cy=delete-observation]").click()
-    cy.contains("Yes,").click()
+    cy.contains("Yes, please").click()
     cy.contains(shortDesc).should("not.be.visible")
 
     // Go to curriculum
