@@ -28,8 +28,8 @@ services:
       context: .
       dockerfile: docker/nginx/dev.dockerfile
     restart: unless-stopped
-#    depends_on:
-#      - vor_app
+    depends_on:
+      - vor_app
     ports:
       - "8000:80"
 
