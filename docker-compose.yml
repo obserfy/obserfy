@@ -43,8 +43,8 @@ services:
       POSTGRES_DB: defaultdb
     ports:
       - "5432:5432"
-    # volumes:
-    #   - vor:/var/lib/postgresql/data
+     volumes:
+       - vor:/var/lib/postgresql/data
 
-#volumes:
-#  ? vor
+volumes:
+  ? vor
