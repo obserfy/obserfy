@@ -72,9 +72,11 @@ jobs:
       - run: |
           cd frontend
           yarn build && yarn jest -w 1
-      - run: bash <(curl -s https://codecov.io/bash)
+      - run: |
+          cd frontend
+          bash <(curl -s https://codecov.io/bash)
       - store_test_results:
-          path: coverage/
+          path: frontend/coverage/
       - save_cache:
           when: always
           name: Save Yarn Package Cache
