@@ -1,4 +1,4 @@
-FROM nginx
+FROM nginx:stable-alpine
 
 ENV TARGET_HOST vor_app
 ENV TARGET_PORT 8080

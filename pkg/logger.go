@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-func createLogger() *zap.Logger {
+func NewLogger() *zap.Logger {
 	var config zap.Config
 	if os.Getenv("env") == "production" {
 		config = zap.NewProductionConfig()
@@ -19,12 +19,12 @@ func createLogger() *zap.Logger {
 
 	logger, err := config.Build()
 	if err != nil {
-		log.Print("Failed creating logger")
+		log.Print("Error: Failed creating logger")
 	}
 	return logger
 }
 
-func syncLogger(logger *zap.Logger) {
+func SyncLogger(logger *zap.Logger) {
 	err := logger.Sync()
 	if err != nil {
 		logger.Error("Failed logger sync: %s", zap.Error(err))

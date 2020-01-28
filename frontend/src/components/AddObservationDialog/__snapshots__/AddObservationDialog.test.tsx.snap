@@ -723,6 +723,7 @@ exports[`AddObservationDialog should render correctly 1`] = `
                   Details
                 </div>
                 <textarea
+                  aria-label="Details"
                   class="emotion-13"
                   placeholder="Tell us about what you observed"
                 />

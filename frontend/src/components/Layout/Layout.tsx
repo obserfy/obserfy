@@ -70,6 +70,7 @@ const MainSidebar: FC<{
         sx={{ boxShadow: "low" }}
       />
       <NavigationItem
+        data-cy="home-nav"
         onClick={closeSidebar}
         to="/dashboard/home"
         text="Home"

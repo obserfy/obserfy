@@ -1002,6 +1002,7 @@ exports[`PageHome should render correctly 1`] = `
       >
         <div
           class="emotion-19"
+          data-cy="home-nav"
         >
           <div
             alt="Home icon"
