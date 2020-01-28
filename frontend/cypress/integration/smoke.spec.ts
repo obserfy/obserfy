@@ -183,10 +183,5 @@ describe(" Smoke test on prod build", () => {
     // Make sure it shows up
     cy.contains("Mastered")
       .should("be.visible")
-      .waitForRouteChange()
-    cy.contains("Practical Life")
-      .should("be.visible")
-      .click()
-    cy.contains("Mastered").should("not.be.visible")
   })
 })
