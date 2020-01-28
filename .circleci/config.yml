@@ -58,10 +58,14 @@ jobs:
 
   frontend_unit:
     docker:
-      - image: node:12-alpine
+      - image: node:12
     working_directory: ~/repo
     steps:
       - checkout
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-jest-{{ checksum "frontend/yarn.lock" }}
       - run: |
           cd frontend
           yarn install
@@ -71,6 +75,14 @@ jobs:
       - run: bash <(curl -s https://codecov.io/bash)
       - store_test_results:
           path: coverage/
+      - save_cache:
+          when: always
+          name: Save Yarn Package Cache
+          key: yarn-jest-{{ checksum "frontend/yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+            - ~/.cache/Cypress
+            - ./frontend/node_modules
 
 workflows:
   test:
