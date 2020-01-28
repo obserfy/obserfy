@@ -130,7 +130,10 @@ describe(" Smoke test on prod build", () => {
 
     // Delete observation
     cy.get("[data-cy=delete-observation]").should("be.visible")
+    // TODO: This part is really flaky, try fixing it later.
+    cy.wait(1000)
     cy.get("[data-cy=delete-observation]").click()
+    cy.wait(1000)
     cy.contains("Yes, please").click()
     cy.contains(shortDesc).should("not.be.visible")
 
