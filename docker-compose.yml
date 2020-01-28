@@ -15,6 +15,11 @@ services:
       DB_PASSWORD: developmentonly
       DB_HOST: vor-postgres
       DB_PORT: 5432
+    # allow debugging
+    security_opt:
+      - "apparmor=unconfined"
+    cap_add:
+      - "SYS_PTRACE"
     volumes:
       - .:/src/vor
     ports:
