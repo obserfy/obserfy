@@ -573,6 +573,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
         />
         <button
           class="emotion-7"
+          data-cy="edit"
         >
           <div
             class="emotion-6"

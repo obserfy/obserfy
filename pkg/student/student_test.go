@@ -2,7 +2,7 @@ package student
 
 // delete an existing student should return 200 ok
 //func TestDeleteExistingStudent(t *testing.T) {
-//	students := generateStudents()
+//	students := NewRouter(server, )
 //	env := env{store: FakeStudentStore{students}}
 //
 //	rr, r := createRoute(env)

@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  build:
+  e2e:
     machine:
       image: ubuntu-1604:201903-01
     working_directory: ~/repo
@@ -31,7 +31,7 @@ jobs:
           yarn cy:ci
       - run:  bash <(curl -s https://codecov.io/bash)
       - store_test_results:
-          path: coverage/clover.xml
+          path: frontend/coverage/clover.xml
       - store_artifacts:
           path:  ~/repo/frontend/cypress/videos
       - store_artifacts:
@@ -44,3 +44,31 @@ jobs:
             - ~/.cache/yarn
             - ~/.cache/Cypress
             - ./frontend/node_modules
+  backend_unit:
+    docker:
+      - image: golang:1.13-alpine
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: go test ./... -coverprofile=coverage.txt -covermode=atomic
+      - run:  bash <(curl -s https://codecov.io/bash)
+      - store_test_results:
+          path: coverage.txt
+  frontend_unit:
+    docker:
+      - image: node:12-alpine
+    working_directory: ~/repo/frontend
+    steps:
+      - checkout
+      - run: yarn install
+      - run: yarn build && yarn jest
+      - run: bash <(curl -s https://codecov.io/bash)
+      - store_test_results:
+          path: coverage/
+
+workflows:
+  test:
+    jobs:
+      - e2e
+      - backend_unit
+      - frontend_unit

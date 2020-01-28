@@ -395,6 +395,7 @@ exports[`PageRegister should render correctly 1`] = `
         </h2>
         <label
           class="emotion-4"
+          data-cy="register-email"
           required=""
         >
           <div

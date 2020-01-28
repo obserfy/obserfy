@@ -182,7 +182,6 @@ describe(" Smoke test on prod build", () => {
     cy.contains("Save changes").click()
 
     // Make sure it shows up
-    cy.contains("Mastered")
-      .should("be.visible")
+    cy.contains("Mastered").should("be.visible")
   })
 })

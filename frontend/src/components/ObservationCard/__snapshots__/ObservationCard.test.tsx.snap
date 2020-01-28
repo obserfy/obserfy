@@ -363,12 +363,13 @@ exports[`ObservationCard should render correctly 1`] = `
         />
         <button
           class="emotion-9"
+          data-cy="delete-observation"
         >
           delete
         </button>
         <button
           class="emotion-10"
-          data-cy="dialogPositiveAction"
+          data-cy="edit-observation"
         >
           Edit
         </button>
