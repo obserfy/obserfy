@@ -44,9 +44,10 @@ jobs:
             - ~/.cache/yarn
             - ~/.cache/Cypress
             - ./frontend/node_modules
+
   backend_unit:
     docker:
-      - image: golang:1.13-alpine
+      - image: golang:1.13
     working_directory: ~/repo
     steps:
       - checkout
@@ -54,14 +55,19 @@ jobs:
       - run:  bash <(curl -s https://codecov.io/bash)
       - store_test_results:
           path: coverage.txt
+
   frontend_unit:
     docker:
       - image: node:12-alpine
-    working_directory: ~/repo/frontend
+    working_directory: ~/repo
     steps:
       - checkout
-      - run: yarn install
-      - run: yarn build && yarn jest
+      - run: |
+          cd frontend
+          yarn install
+      - run: |
+          cd frontend
+          yarn build && yarn jest
       - run: bash <(curl -s https://codecov.io/bash)
       - store_test_results:
           path: coverage/
