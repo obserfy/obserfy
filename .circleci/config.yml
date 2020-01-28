@@ -25,7 +25,7 @@ jobs:
           docker-compose up -d
       - run: |
           cd frontend
-          yarn install --frozen-lockfile
+          yarn install --production --frozen-lockfile
       - run: |
           cd frontend
           yarn build:cy
