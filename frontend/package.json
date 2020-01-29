@@ -15,7 +15,7 @@
     "@cypress/code-coverage": "^1.10.4",
     "@cypress/webpack-preprocessor": "^4.1.1",
     "@emotion/core": "^10.0.22",
-    "@formatjs/intl-pluralrules": "^1.5.0",
+    "@formatjs/intl-pluralrules": "^1.5.2",
     "@formatjs/intl-relativetimeformat": "^4.5.7",
     "@istanbuljs/nyc-config-typescript": "^1.0.1",
     "@mdx-js/react": "^1.5.4",
