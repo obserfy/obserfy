@@ -12,7 +12,7 @@ services:
       # vor specific env
       SITE_URL: localhost:8001
       DB_USERNAME: postgres
-      DB_PASSWORD: developmentonly
+      DB_PASSWORD: postgres
       DB_HOST: vor-postgres
       DB_PORT: 5432
     # allow debugging
@@ -44,7 +44,7 @@ services:
       dockerfile: dev.dockerfile
     container_name: vor-postgres
     environment:
-      POSTGRES_PASSWORD: developmentonly
+      POSTGRES_PASSWORD: postgres
       POSTGRES_DB: defaultdb
     ports:
       - "5432:5432"

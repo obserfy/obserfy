@@ -4,6 +4,7 @@ import (
 	"crypto/tls"
 	"github.com/chrsep/vor/pkg/auth"
 	"github.com/chrsep/vor/pkg/curriculum"
+	"github.com/chrsep/vor/pkg/logger"
 	"github.com/chrsep/vor/pkg/observation"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/rest"
@@ -29,8 +30,8 @@ func main() {
 
 func runServer() error {
 	// Setup uber zap logger
-	logger := NewLogger()
-	defer SyncLogger(logger)
+	l := logger.New()
+	defer logger.Sync(l)
 
 	// Setup db connection
 	db := postgres.Connect(
@@ -41,7 +42,7 @@ func runServer() error {
 	)
 	defer func() {
 		if err := db.Close(); err != nil {
-			logger.Error("Failed closing db", zap.Error(err))
+			l.Error("Failed closing db", zap.Error(err))
 		}
 	}()
 
@@ -58,7 +59,7 @@ func runServer() error {
 	sentryHandler := sentryhttp.New(sentryhttp.Options{})
 
 	// Setup server and stores
-	server := rest.NewServer(logger)
+	server := rest.NewServer(l)
 	studentStore := postgres.StudentStore{db}
 	observationStore := postgres.ObservationStore{db}
 	schoolStore := postgres.SchoolStore{db}

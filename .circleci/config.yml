@@ -1,4 +1,4 @@
-version: 2.1
+version: 2
 jobs:
   e2e:
     machine:
@@ -51,7 +51,7 @@ jobs:
       - image: circleci/postgres:11
         environment:
           POSTGRES_USER: postgres
-          POSTGRES_DB:  developmentonly
+          POSTGRES_DB:  defaultdb
     working_directory: ~/repo
     steps:
       - checkout
@@ -63,10 +63,12 @@ jobs:
       - run:
           name: Wait for db
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
-      - run: go test ./... -coverprofile=coverage.txt -covermode=atomic
+      - run: |
+          go get -u github.com/jstemmer/go-junit-report
+          go test ./... -v -coverprofile=coverage.txt -covermode=atomic 2>&1 | go-junit-report > report.xml
       - run:  bash <(curl -s https://codecov.io/bash)
       - store_test_results:
-          path: coverage.txt
+          path: report.xml
 
   frontend_unit:
     docker:
