@@ -39,6 +39,7 @@ func NewRouter(s rest.Server, store Store) *chi.Mux {
 		r.Method("POST", "/students", server.handleCreateStudent())
 		r.Method("POST", "/invite-code", server.handleRefreshInviteCode())
 
+		// TODO: This might fit better in curriculum package, revisit later
 		r.Method("POST", "/curriculum", server.handleCreateNewCurriculum())
 		r.Method("DELETE", "/curriculum", server.deleteCurriculum())
 		r.Method("GET", "/curriculum", server.getCurriculum())
@@ -77,7 +78,7 @@ func (s *server) authorizationMiddleware() func(next http.Handler) http.Handler 
 		return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 			schoolId := chi.URLParam(r, "schoolId")
 
-			// Verify use access to the school
+			// Verify user access to the school
 			session, ok := auth.GetSessionFromCtx(r.Context())
 			if !ok {
 				return auth.NewGetSessionError()

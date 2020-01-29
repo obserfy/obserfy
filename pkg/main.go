@@ -1,6 +1,7 @@
 package main
 
 import (
+	"crypto/tls"
 	"github.com/chrsep/vor/pkg/auth"
 	"github.com/chrsep/vor/pkg/curriculum"
 	"github.com/chrsep/vor/pkg/observation"
@@ -32,7 +33,12 @@ func runServer() error {
 	defer SyncLogger(logger)
 
 	// Setup db connection
-	db := postgres.Connect()
+	db := postgres.Connect(
+		os.Getenv("DB_USERNAME"),
+		os.Getenv("DB_PASSWORD"),
+		os.Getenv("DB_HOST")+":"+os.Getenv("DB_PORT"),
+		&tls.Config{InsecureSkipVerify: true},
+	)
 	defer func() {
 		if err := db.Close(); err != nil {
 			logger.Error("Failed closing db", zap.Error(err))
