@@ -1,4 +1,4 @@
-version: 2.1
+version: 2
 jobs:
   e2e:
     machine:
@@ -64,11 +64,14 @@ jobs:
           name: Wait for db
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
       - run: |
-          go get -u github.com/jstemmer/go-junit-report
-          go test ./... -v -coverprofile=coverage.txt -covermode=atomic 2>&1 | go-junit-report > report.xml
+          mkdir test_result
+          mkdir test_result/go
+          go get gotest.tools/gotestsum
+          PACKAGE_NAMES=$(go list ./... | circleci tests split --split-by=timings --timings-type=classname)
+          gotestsum --junitfile test_result/go/gotestsum-report.xml -- $PACKAGE_NAMES -v -coverprofile=coverage.txt -covermode=atomic
       - run:  bash <(curl -s https://codecov.io/bash)
       - store_test_results:
-          path: report.xml
+          path: test_result
 
   frontend_unit:
     docker:
