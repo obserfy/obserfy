@@ -122,7 +122,7 @@ func (s *server) handleAddObservation() http.Handler {
 			return rest.NewParseJsonError(err)
 		}
 
-		observation, err := s.store.InsertObservation(id, requestBody.ShortDesc, requestBody.LongDesc, requestBody.CategoryId)
+		observation, err := s.store.InsertObservation(id, requestBody.LongDesc, requestBody.ShortDesc, requestBody.CategoryId)
 		if err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Failed inserting observation", err}
 		}

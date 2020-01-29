@@ -94,8 +94,12 @@ describe(" Smoke test on prod build", () => {
     cy.contains("Short Description").type(shortDesc)
     cy.get("[aria-label=Details]").type(details)
     cy.contains("Add").click()
-    cy.contains(shortDesc).should("be.visible")
-    cy.contains(details).should("be.visible")
+    cy.get("[data-cy=observation-short-desc]")
+      .contains(shortDesc)
+      .should("be.visible")
+    cy.get("[data-cy=observation-long-desc]")
+      .contains(details)
+      .should("be.visible")
 
     // Change student name
     studentName = "Jane Doe"

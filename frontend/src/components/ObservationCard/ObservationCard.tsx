@@ -45,7 +45,9 @@ export const ObservationCard: FC<Props> = ({
         }}
       >
         <Flex flexDirection="column" alignItems="start">
-          <Typography.H6 mb={3}>{observation.shortDesc}</Typography.H6>
+          <Typography.H6 mb={3} data-cy="observation-short-desc">
+            {observation.shortDesc}
+          </Typography.H6>
           <Flex>
             <Pill
               backgroundColor={category.color}
@@ -57,7 +59,7 @@ export const ObservationCard: FC<Props> = ({
         </Flex>
       </Flex>
       {observation.longDesc && (
-        <Typography.Body fontSize={1} p={3}>
+        <Typography.Body fontSize={1} p={3} data-cy="observation-long-desc">
           {observation.longDesc}
         </Typography.Body>
       )}
