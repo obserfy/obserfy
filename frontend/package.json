@@ -53,7 +53,7 @@
     "gatsby-plugin-segment-js": "^3.1.0",
     "gatsby-plugin-sharp": "^2.3.13",
     "gatsby-plugin-svgr": "^2.0.2",
-    "gatsby-plugin-theme-ui": "^0.2.53",
+    "gatsby-plugin-theme-ui": "^0.3.0",
     "gatsby-plugin-typescript": "^2.1.26",
     "gatsby-plugin-webpack-bundle-analyzer": "^1.0.5",
     "gatsby-source-filesystem": "^2.1.46",
