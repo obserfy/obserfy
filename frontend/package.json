@@ -85,7 +85,7 @@
   "devDependencies": {
     "@graphql-codegen/cli": "^1.11.2",
     "@graphql-codegen/typescript": "^1.11.2",
-    "@graphql-codegen/typescript-operations": "^1.11.2",
+    "@graphql-codegen/typescript-operations": "^1.12.1",
     "@storybook/addon-actions": "^5.3.4",
     "@storybook/addon-docs": "^5.3.4",
     "@storybook/addon-knobs": "^5.3.4",
