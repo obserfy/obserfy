@@ -48,13 +48,30 @@ jobs:
   backend_unit:
     docker:
       - image: golang:1.13
+      - image: circleci/postgres:11
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_DB:  defaultdb
     working_directory: ~/repo
     steps:
       - checkout
-      - run: go test ./... -coverprofile=coverage.txt -covermode=atomic
+      - run:
+          name: install dockerize
+          command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+          environment:
+            DOCKERIZE_VERSION: v0.3.0
+      - run:
+          name: Wait for db
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run: |
+          mkdir test_result
+          mkdir test_result/go
+          go get gotest.tools/gotestsum
+          PACKAGE_NAMES=$(go list ./... | circleci tests split --split-by=timings --timings-type=classname)
+          gotestsum --junitfile test_result/go/gotestsum-report.xml -- $PACKAGE_NAMES -v -coverprofile=coverage.txt -covermode=atomic
       - run:  bash <(curl -s https://codecov.io/bash)
       - store_test_results:
-          path: coverage.txt
+          path: test_result
 
   frontend_unit:
     docker:

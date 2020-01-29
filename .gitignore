@@ -4,3 +4,5 @@ docker/postgres/ssl/localhost.crt
 docker/postgres/ssl/localhost.key
 frontend/cypress/videos
 frontend/cypress/screenshots
+coverage.txt
+test_result

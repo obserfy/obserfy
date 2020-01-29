@@ -329,6 +329,7 @@ exports[`ObservationCard should render correctly 1`] = `
         >
           <h6
             class="emotion-0"
+            data-cy="observation-short-desc"
           />
           <div
             class="emotion-5"

@@ -6,17 +6,16 @@ import (
 	"github.com/go-pg/pg/v9"
 	"github.com/go-pg/pg/v9/orm"
 	richErrors "github.com/pkg/errors"
-	"os"
 	"time"
 )
 
-func Connect() *pg.DB {
+func Connect(user string, password string, addr string, tlsConfig *tls.Config) *pg.DB {
 	db := pg.Connect(&pg.Options{
-		User:      os.Getenv("DB_USERNAME"),
-		Password:  os.Getenv("DB_PASSWORD"),
-		Addr:      os.Getenv("DB_HOST") + ":" + os.Getenv("DB_PORT"),
+		User:      user,
+		Password:  password,
+		Addr:      addr,
 		Database:  "defaultdb",
-		TLSConfig: &tls.Config{InsecureSkipVerify: true},
+		TLSConfig: tlsConfig,
 	})
 
 	// Wait until connection is healthy

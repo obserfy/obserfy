@@ -1,4 +1,4 @@
-package main
+package logger
 
 import (
 	"go.uber.org/zap"
@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-func NewLogger() *zap.Logger {
+func New() *zap.Logger {
 	var config zap.Config
 	if os.Getenv("env") == "production" {
 		config = zap.NewProductionConfig()
@@ -24,7 +24,7 @@ func NewLogger() *zap.Logger {
 	return logger
 }
 
-func SyncLogger(logger *zap.Logger) {
+func Sync(logger *zap.Logger) {
 	err := logger.Sync()
 	if err != nil {
 		logger.Error("Failed logger sync: %s", zap.Error(err))
