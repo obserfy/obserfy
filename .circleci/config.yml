@@ -9,7 +9,7 @@ jobs:
       - restore_cache:
           name: Restore Yarn Package Cache
           keys:
-            - yarn-cypress-{{ checksum "frontend/yarn.lock" }}
+            - frontend-{{ checksum "frontend/yarn.lock" }}
       - run: |
           echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
           echo ' [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
@@ -39,11 +39,10 @@ jobs:
       - save_cache:
           when: always
           name: Save Yarn Package Cache
-          key: yarn-cypress-{{ checksum "frontend/yarn.lock" }}
+          key: frontend-{{ checksum "frontend/yarn.lock" }}
           paths:
             - ~/.cache/yarn
             - ~/.cache/Cypress
-            - ./frontend/node_modules
 
   backend_unit:
     docker:
@@ -82,7 +81,7 @@ jobs:
       - restore_cache:
           name: Restore Yarn Package Cache
           keys:
-            - yarn-jest-{{ checksum "frontend/yarn.lock" }}
+            - frontend-{{ checksum "frontend/yarn.lock" }}
       - run: |
           cd frontend
           yarn install
@@ -95,11 +94,10 @@ jobs:
       - save_cache:
           when: always
           name: Save Yarn Package Cache
-          key: yarn-jest-{{ checksum "frontend/yarn.lock" }}
+          key: frontend-{{ checksum "frontend/yarn.lock" }}
           paths:
             - ~/.cache/yarn
             - ~/.cache/Cypress
-            - ./frontend/node_modules
 
   frontend_lint:
     docker:
@@ -110,7 +108,7 @@ jobs:
       - restore_cache:
           name: Restore Yarn Package Cache
           keys:
-            - yarn-jest-{{ checksum "frontend/yarn.lock" }}
+            - frontend-{{ checksum "frontend/yarn.lock" }}
       - run: |
           cd frontend
           yarn install
@@ -120,11 +118,10 @@ jobs:
       - save_cache:
           when: always
           name: Save Yarn Package Cache
-          key: yarn-jest-{{ checksum "frontend/yarn.lock" }}
+          key: frontend-{{ checksum "frontend/yarn.lock" }}
           paths:
             - ~/.cache/yarn
             - ~/.cache/Cypress
-            - ./frontend/node_modules
 
   frontend_typecheck:
     docker:
@@ -135,7 +132,7 @@ jobs:
       - restore_cache:
           name: Restore Yarn Package Cache
           keys:
-            - yarn-jest-{{ checksum "frontend/yarn.lock" }}
+            - frontend-{{ checksum "frontend/yarn.lock" }}
       - run: |
           cd frontend
           yarn install
@@ -145,11 +142,10 @@ jobs:
       - save_cache:
           when: always
           name: Save Yarn Package Cache
-          key: yarn-jest-{{ checksum "frontend/yarn.lock" }}
+          key: frontend-{{ checksum "frontend/yarn.lock" }}
           paths:
             - ~/.cache/yarn
             - ~/.cache/Cypress
-            - ./frontend/node_modules
 
 workflows:
   test:
