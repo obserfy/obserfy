@@ -9,7 +9,7 @@ import (
 
 func New() *zap.Logger {
 	var config zap.Config
-	if os.Getenv("env") == "production" {
+	if os.Getenv("ENV") == "production" {
 		config = zap.NewProductionConfig()
 		config.Level.SetLevel(zap.InfoLevel)
 	} else {

@@ -134,3 +134,5 @@ func (suite *AreaTestSuite) TestCreateAreaWithNoName() {
 	// Should get 403
 	assert.EqualValues(t, http.StatusBadRequest, suite.w.Code)
 }
+
+
