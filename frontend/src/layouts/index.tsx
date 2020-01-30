@@ -6,6 +6,7 @@ import Box from "../components/Box/Box"
 
 export const PageTitleContext = React.createContext({
   title: "",
+  // eslint-disable-next-line no-unused-vars,@typescript-eslint/no-empty-function
   setTitle: (title: string) => {},
 })
 

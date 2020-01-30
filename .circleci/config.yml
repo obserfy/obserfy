@@ -101,9 +101,61 @@ jobs:
             - ~/.cache/Cypress
             - ./frontend/node_modules
 
+  frontend_lint:
+    docker:
+      - image: node:12
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-jest-{{ checksum "frontend/yarn.lock" }}
+      - run: |
+          cd frontend
+          yarn install
+      - run: |
+          cd frontend
+          yarn lint
+      - save_cache:
+          when: always
+          name: Save Yarn Package Cache
+          key: yarn-jest-{{ checksum "frontend/yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+            - ~/.cache/Cypress
+            - ./frontend/node_modules
+
+  frontend_typecheck:
+    docker:
+      - image: node:12
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-jest-{{ checksum "frontend/yarn.lock" }}
+      - run: |
+          cd frontend
+          yarn install
+      - run: |
+          cd frontend
+          yarn typecheck
+      - save_cache:
+          when: always
+          name: Save Yarn Package Cache
+          key: yarn-jest-{{ checksum "frontend/yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+            - ~/.cache/Cypress
+            - ./frontend/node_modules
+
 workflows:
   test:
     jobs:
       - e2e
       - backend_unit
       - frontend_unit
+      - frontend_lint
+      - frontend_typecheck
