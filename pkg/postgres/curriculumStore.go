@@ -2,10 +2,24 @@ package postgres
 
 import (
 	"github.com/go-pg/pg/v9"
+	"github.com/google/uuid"
 )
 
 type CurriculumStore struct {
 	*pg.DB
+}
+
+func (c CurriculumStore) NewArea(name string, curriculumId string) (string, error) {
+	id := uuid.New().String()
+	area := Area{
+		Id:           id,
+		CurriculumId: curriculumId,
+		Name:         name,
+	}
+	if err := c.Insert(&area); err != nil {
+		return "", err
+	}
+	return id, nil
 }
 
 func (c CurriculumStore) GetArea(areaId string) (*Area, error) {
