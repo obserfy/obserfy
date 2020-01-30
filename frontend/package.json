@@ -44,7 +44,7 @@
     "gatsby-plugin-layout": "^1.1.21",
     "gatsby-plugin-manifest": "^2.2.37",
     "gatsby-plugin-nprogress": "^2.1.18",
-    "gatsby-plugin-offline": "^3.0.32",
+    "gatsby-plugin-offline": "^3.0.33",
     "gatsby-plugin-preact": "^3.1.25",
     "gatsby-plugin-prefetch-google-fonts": "^1.4.3",
     "gatsby-plugin-react-helmet": "^3.1.21",
