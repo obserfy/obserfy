@@ -9,6 +9,45 @@ type CurriculumStore struct {
 	*pg.DB
 }
 
+func (c CurriculumStore) UpdateSubject(subject *Subject) error {
+	if err := c.DB.Update(subject); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (c CurriculumStore) GetSubject(id string) (*Subject, error) {
+	var subject Subject
+	if err := c.DB.Model(&subject).
+		Where("id=?", id).
+		Select(); err != nil {
+		return nil, err
+	}
+	return &subject, nil
+}
+
+func (c CurriculumStore) NewSubject(name string, areaId string) (*Subject, error) {
+	var biggestOrder int
+	if _, err := c.DB.Model((*Subject)(nil)).
+		Where("area_id=?", areaId).
+		QueryOne(pg.Scan(&biggestOrder), `
+		SELECT MAX("order") FROM ?TableName
+		WHERE area_id=?
+	`, areaId); err != nil {
+		return nil, err
+	}
+	subject := Subject{
+		Id:     uuid.New().String(),
+		AreaId: areaId,
+		Name:   name,
+		Order:  biggestOrder + 1,
+	}
+	if err := c.DB.Insert(&subject); err != nil {
+		return nil, err
+	}
+	return &subject, nil
+}
+
 func (c CurriculumStore) NewArea(name string, curriculumId string) (string, error) {
 	id := uuid.New().String()
 	area := Area{
