@@ -52,7 +52,7 @@ export const PageNewStudent: FC = () => {
           opacity: "1!important",
         }}
       />
-      <Button mt={23} ml={3} variant="outline" sx={{ flexShrink: "0" }}>
+      <Button mt={23} ml={3} variant="outline" sx={{ flexShrink: 0 }}>
         <Icon as={CalendarIcon} m={0} />
       </Button>
     </Flex>
