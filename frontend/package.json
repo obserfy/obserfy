@@ -51,7 +51,7 @@
     "gatsby-plugin-remove-serviceworker": "^1.0.0",
     "gatsby-plugin-remove-trailing-slashes": "^2.1.20",
     "gatsby-plugin-segment-js": "^3.1.0",
-    "gatsby-plugin-sharp": "^2.3.13",
+    "gatsby-plugin-sharp": "^2.4.4",
     "gatsby-plugin-svgr": "^2.0.2",
     "gatsby-plugin-theme-ui": "^0.3.0",
     "gatsby-plugin-typescript": "^2.1.26",
