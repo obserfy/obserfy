@@ -2024,17 +2024,7 @@
     "@emotion/babel-plugin-jsx-pragmatic" "^0.1.4"
     babel-plugin-emotion "^10.0.23"
 
-"@emotion/cache@^10.0.17", "@emotion/cache@^10.0.9":
-  version "10.0.19"
-  resolved "https://registry.yarnpkg.com/@emotion/cache/-/cache-10.0.19.tgz#d258d94d9c707dcadaf1558def968b86bb87ad71"
-  integrity sha512-BoiLlk4vEsGBg2dAqGSJu0vJl/PgVtCYLBFJaEO8RmQzPugXewQCXZJNXTDFaRlfCs0W+quesayav4fvaif5WQ==
-  dependencies:
-    "@emotion/sheet" "0.9.3"
-    "@emotion/stylis" "0.8.4"
-    "@emotion/utils" "0.11.2"
-    "@emotion/weak-memoize" "0.2.4"
-
-"@emotion/cache@^10.0.27":
+"@emotion/cache@^10.0.27", "@emotion/cache@^10.0.9":
   version "10.0.27"
   resolved "https://registry.yarnpkg.com/@emotion/cache/-/cache-10.0.27.tgz#7895db204e2c1a991ae33d51262a3a44f6737303"
   integrity sha512-Zp8BEpbMunFsTcqAK4D7YTm3MvCp1SekflSLJH8lze2fCcSZ/yMkXHo8kb3t1/1Tdd3hAqf3Fb7z9VZ+FMiC9w==
@@ -2044,19 +2034,7 @@
     "@emotion/utils" "0.11.3"
     "@emotion/weak-memoize" "0.2.5"
 
-"@emotion/core@^10.0.0", "@emotion/core@^10.0.22", "@emotion/core@^10.0.9":
-  version "10.0.22"
-  resolved "https://registry.yarnpkg.com/@emotion/core/-/core-10.0.22.tgz#2ac7bcf9b99a1979ab5b0a876fbf37ab0688b177"
-  integrity sha512-7eoP6KQVUyOjAkE6y4fdlxbZRA4ILs7dqkkm6oZUJmihtHv0UBq98VgPirq9T8F9K2gKu0J/au/TpKryKMinaA==
-  dependencies:
-    "@babel/runtime" "^7.5.5"
-    "@emotion/cache" "^10.0.17"
-    "@emotion/css" "^10.0.22"
-    "@emotion/serialize" "^0.11.12"
-    "@emotion/sheet" "0.9.3"
-    "@emotion/utils" "0.11.2"
-
-"@emotion/core@^10.0.20":
+"@emotion/core@^10.0.0", "@emotion/core@^10.0.20", "@emotion/core@^10.0.27", "@emotion/core@^10.0.9":
   version "10.0.27"
   resolved "https://registry.yarnpkg.com/@emotion/core/-/core-10.0.27.tgz#7c3f78be681ab2273f3bf11ca3e2edc4a9dd1fdc"
   integrity sha512-XbD5R36pVbohQMnKfajHv43g8EbN4NHdF6Zh9zg/C0nr0jqwOw3gYnC07Xj3yG43OYSRyrGsoQ5qPwc8ycvLZw==
@@ -2068,16 +2046,7 @@
     "@emotion/sheet" "0.9.4"
     "@emotion/utils" "0.11.3"
 
-"@emotion/css@^10.0.22", "@emotion/css@^10.0.9":
-  version "10.0.22"
-  resolved "https://registry.yarnpkg.com/@emotion/css/-/css-10.0.22.tgz#37b1abb6826759fe8ac0af0ac0034d27de6d1793"
-  integrity sha512-8phfa5mC/OadBTmGpMpwykIVH0gFCbUoO684LUkyixPq4F1Wwri7fK5Xlm8lURNBrd2TuvTbPUGxFsGxF9UacA==
-  dependencies:
-    "@emotion/serialize" "^0.11.12"
-    "@emotion/utils" "0.11.2"
-    babel-plugin-emotion "^10.0.22"
-
-"@emotion/css@^10.0.27":
+"@emotion/css@^10.0.27", "@emotion/css@^10.0.9":
   version "10.0.27"
   resolved "https://registry.yarnpkg.com/@emotion/css/-/css-10.0.27.tgz#3a7458198fbbebb53b01b2b87f64e5e21241e14c"
   integrity sha512-6wZjsvYeBhyZQYNrGoR5yPMYbMBNEnanDrqmsqS1mzDm1cOTu12shvl2j4QHNS36UaTE0USIJawCH9C8oW34Zw==
@@ -2120,18 +2089,7 @@
   resolved "https://registry.yarnpkg.com/@emotion/memoize/-/memoize-0.7.4.tgz#19bf0f5af19149111c40d98bb0cf82119f5d9eeb"
   integrity sha512-Ja/Vfqe3HpuzRsG1oBtWTHk2PGZ7GR+2Vz5iYGelAw8dx32K0y7PjVuxK6z1nMpZOqAFsRUPCkK1YjJ56qJlgw==
 
-"@emotion/serialize@^0.11.12", "@emotion/serialize@^0.11.14":
-  version "0.11.14"
-  resolved "https://registry.yarnpkg.com/@emotion/serialize/-/serialize-0.11.14.tgz#56a6d8d04d837cc5b0126788b2134c51353c6488"
-  integrity sha512-6hTsySIuQTbDbv00AnUO6O6Xafdwo5GswRlMZ5hHqiFx+4pZ7uGWXUQFW46Kc2taGhP89uXMXn/lWQkdyTosPA==
-  dependencies:
-    "@emotion/hash" "0.7.3"
-    "@emotion/memoize" "0.7.3"
-    "@emotion/unitless" "0.7.4"
-    "@emotion/utils" "0.11.2"
-    csstype "^2.5.7"
-
-"@emotion/serialize@^0.11.15":
+"@emotion/serialize@^0.11.14", "@emotion/serialize@^0.11.15":
   version "0.11.15"
   resolved "https://registry.yarnpkg.com/@emotion/serialize/-/serialize-0.11.15.tgz#9a0f5873fb458d87d4f23e034413c12ed60a705a"
   integrity sha512-YE+qnrmGwyR+XB5j7Bi+0GT1JWsdcjM/d4POu+TXkcnrRs4RFCCsi3d/Ebf+wSStHqAlTT2+dfd+b9N9EO2KBg==
@@ -2141,11 +2099,6 @@
     "@emotion/unitless" "0.7.5"
     "@emotion/utils" "0.11.3"
     csstype "^2.5.7"
-
-"@emotion/sheet@0.9.3":
-  version "0.9.3"
-  resolved "https://registry.yarnpkg.com/@emotion/sheet/-/sheet-0.9.3.tgz#689f135ecf87d3c650ed0c4f5ddcbe579883564a"
-  integrity sha512-c3Q6V7Df7jfwSq5AzQWbXHa5soeE4F5cbqi40xn0CzXxWW9/6Mxq48WJEtqfWzbZtW9odZdnRAkwCQwN12ob4A==
 
 "@emotion/sheet@0.9.4":
   version "0.9.4"
@@ -2188,20 +2141,10 @@
     "@emotion/styled-base" "^10.0.27"
     babel-plugin-emotion "^10.0.27"
 
-"@emotion/stylis@0.8.4":
-  version "0.8.4"
-  resolved "https://registry.yarnpkg.com/@emotion/stylis/-/stylis-0.8.4.tgz#6c51afdf1dd0d73666ba09d2eb6c25c220d6fe4c"
-  integrity sha512-TLmkCVm8f8gH0oLv+HWKiu7e8xmBIaokhxcEKPh1m8pXiV/akCiq50FvYgOwY42rjejck8nsdQxZlXZ7pmyBUQ==
-
 "@emotion/stylis@0.8.5":
   version "0.8.5"
   resolved "https://registry.yarnpkg.com/@emotion/stylis/-/stylis-0.8.5.tgz#deacb389bd6ee77d1e7fcaccce9e16c5c7e78e04"
   integrity sha512-h6KtPihKFn3T9fuIrwvXXUOwlx3rfUvfZIcP5a6rh8Y7zjE3O06hT5Ss4S/YI1AYhuZ1kjaE/5EaOOI2NqSylQ==
-
-"@emotion/unitless@0.7.4":
-  version "0.7.4"
-  resolved "https://registry.yarnpkg.com/@emotion/unitless/-/unitless-0.7.4.tgz#a87b4b04e5ae14a88d48ebef15015f6b7d1f5677"
-  integrity sha512-kBa+cDHOR9jpRJ+kcGMsysrls0leukrm68DmFQoMIWQcXdr2cZvyvypWuGYT7U+9kAExUE7+T7r6G3C3A6L8MQ==
 
 "@emotion/unitless@0.7.5":
   version "0.7.5"
@@ -2217,11 +2160,6 @@
   version "0.11.3"
   resolved "https://registry.yarnpkg.com/@emotion/utils/-/utils-0.11.3.tgz#a759863867befa7e583400d322652a3f44820924"
   integrity sha512-0o4l6pZC+hI88+bzuaX/6BgOvQVhbt2PfmxauVaYOGgbsAw14wdKyvMCZXnsnsHys94iadcF+RG/wZyx6+ZZBw==
-
-"@emotion/weak-memoize@0.2.4":
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.4.tgz#622a72bebd1e3f48d921563b4b60a762295a81fc"
-  integrity sha512-6PYY5DVdAY1ifaQW6XYTnOMihmBVT27elqSjEoodchsGjzYlEsTQMcEhSud99kVawatyTZRTiVkJ/c6lwbQ7nA==
 
 "@emotion/weak-memoize@0.2.5":
   version "0.2.5"
@@ -5839,7 +5777,7 @@ babel-plugin-emotion@^10.0.20, babel-plugin-emotion@^10.0.27:
     find-root "^1.1.0"
     source-map "^0.5.7"
 
-babel-plugin-emotion@^10.0.22, babel-plugin-emotion@^10.0.23:
+babel-plugin-emotion@^10.0.23:
   version "10.0.23"
   resolved "https://registry.yarnpkg.com/babel-plugin-emotion/-/babel-plugin-emotion-10.0.23.tgz#040d40bf61dcab6d31dd6043d10e180240b8515b"
   integrity sha512-1JiCyXU0t5S2xCbItejCduLGGcKmF3POT0Ujbexog2MI4IlRcIn/kWjkYwCUZlxpON0O5FC635yPl/3slr7cKQ==
