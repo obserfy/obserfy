@@ -20,7 +20,7 @@
     "@istanbuljs/nyc-config-typescript": "^1.0.1",
     "@mdx-js/react": "^1.5.5",
     "@rebass/forms": "^4.0.6",
-    "@svgr/webpack": "^5.0.1",
+    "@svgr/webpack": "^5.1.0",
     "@testing-library/react": "^9.4.0",
     "axe-core": "^3.4.1",
     "babel-jest": "^24.9.0",
