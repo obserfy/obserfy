@@ -14,6 +14,6 @@ export const Basic: FC = () => (
   <DatePickerDialog
     onConfirm={action("confirm")}
     onDismiss={action("dismiss")}
-    defaultDate={new Date()}
+    defaultDate={new Date(2012, 2, 1)}
   />
 )
