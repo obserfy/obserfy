@@ -268,18 +268,18 @@ exports[`PageError should render correctly 1`] = `
               type="image/webp"
             />
             <source
-              srcset="/static/9cf0a1adee34b11d10d8c8d2e3e53438/0c8ef/astronaut.png 1x,
-/static/9cf0a1adee34b11d10d8c8d2e3e53438/af7bc/astronaut.png 1.5x,
-/static/9cf0a1adee34b11d10d8c8d2e3e53438/88424/astronaut.png 2x"
+              srcset="/static/9cf0a1adee34b11d10d8c8d2e3e53438/d8216/astronaut.png 1x,
+/static/9cf0a1adee34b11d10d8c8d2e3e53438/9cb01/astronaut.png 1.5x,
+/static/9cf0a1adee34b11d10d8c8d2e3e53438/6e29c/astronaut.png 2x"
             />
             <img
               alt=""
               height="180"
               loading="lazy"
-              src="/static/9cf0a1adee34b11d10d8c8d2e3e53438/0c8ef/astronaut.png"
-              srcset="/static/9cf0a1adee34b11d10d8c8d2e3e53438/0c8ef/astronaut.png 1x,
-/static/9cf0a1adee34b11d10d8c8d2e3e53438/af7bc/astronaut.png 1.5x,
-/static/9cf0a1adee34b11d10d8c8d2e3e53438/88424/astronaut.png 2x"
+              src="/static/9cf0a1adee34b11d10d8c8d2e3e53438/d8216/astronaut.png"
+              srcset="/static/9cf0a1adee34b11d10d8c8d2e3e53438/d8216/astronaut.png 1x,
+/static/9cf0a1adee34b11d10d8c8d2e3e53438/9cb01/astronaut.png 1.5x,
+/static/9cf0a1adee34b11d10d8c8d2e3e53438/6e29c/astronaut.png 2x"
               style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0; transition: opacity 500ms;"
               width="180"
             />
@@ -287,11 +287,11 @@ exports[`PageError should render correctly 1`] = `
           <noscript>
             &lt;picture&gt;&lt;source type='image/webp' srcset="/static/9cf0a1adee34b11d10d8c8d2e3e53438/88812/astronaut.webp 1x,
 /static/9cf0a1adee34b11d10d8c8d2e3e53438/3ee92/astronaut.webp 1.5x,
-/static/9cf0a1adee34b11d10d8c8d2e3e53438/72d08/astronaut.webp 2x" /&gt;&lt;source srcset="/static/9cf0a1adee34b11d10d8c8d2e3e53438/0c8ef/astronaut.png 1x,
-/static/9cf0a1adee34b11d10d8c8d2e3e53438/af7bc/astronaut.png 1.5x,
-/static/9cf0a1adee34b11d10d8c8d2e3e53438/88424/astronaut.png 2x" /&gt;&lt;img loading="lazy" width="180" height="180" srcset="/static/9cf0a1adee34b11d10d8c8d2e3e53438/0c8ef/astronaut.png 1x,
-/static/9cf0a1adee34b11d10d8c8d2e3e53438/af7bc/astronaut.png 1.5x,
-/static/9cf0a1adee34b11d10d8c8d2e3e53438/88424/astronaut.png 2x" src="/static/9cf0a1adee34b11d10d8c8d2e3e53438/0c8ef/astronaut.png" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/&gt;&lt;/picture&gt;
+/static/9cf0a1adee34b11d10d8c8d2e3e53438/72d08/astronaut.webp 2x" /&gt;&lt;source srcset="/static/9cf0a1adee34b11d10d8c8d2e3e53438/d8216/astronaut.png 1x,
+/static/9cf0a1adee34b11d10d8c8d2e3e53438/9cb01/astronaut.png 1.5x,
+/static/9cf0a1adee34b11d10d8c8d2e3e53438/6e29c/astronaut.png 2x" /&gt;&lt;img loading="lazy" width="180" height="180" srcset="/static/9cf0a1adee34b11d10d8c8d2e3e53438/d8216/astronaut.png 1x,
+/static/9cf0a1adee34b11d10d8c8d2e3e53438/9cb01/astronaut.png 1.5x,
+/static/9cf0a1adee34b11d10d8c8d2e3e53438/6e29c/astronaut.png 2x" src="/static/9cf0a1adee34b11d10d8c8d2e3e53438/d8216/astronaut.png" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/&gt;&lt;/picture&gt;
           </noscript>
         </div>
         <h3
