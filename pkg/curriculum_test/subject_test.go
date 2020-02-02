@@ -1,15 +1,12 @@
 package curriculum_test
 
 import (
-	"bytes"
-	"encoding/json"
 	"github.com/chrsep/vor/pkg/curriculum"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
 	"net/http"
-	"net/http/httptest"
 	"testing"
 )
 
@@ -142,42 +139,3 @@ func (s *SubjectTestSuite) TestUpdateName() {
 	assert.Equal(t, original.AreaId, updated.AreaId)
 }
 
-/////////////////////////////////
-// Helper functions
-/////////////////////////////////
-func (s *SubjectTestSuite) saveNewSubject() postgres.Subject {
-	// Save area
-	area := s.saveNewArea()
-
-	// save subject
-	originalSubject := postgres.Subject{
-		Id:     uuid.New().String(),
-		Name:   uuid.New().String(),
-		AreaId: area.Id,
-		Area:   area,
-	}
-	err := s.db.Insert(&originalSubject)
-	assert.NoError(s.T(), err)
-	return originalSubject
-}
-
-func (s *SubjectTestSuite) saveNewArea() postgres.Area {
-	area := postgres.Area{
-		Id:           uuid.New().String(),
-		CurriculumId: "",
-		Curriculum:   postgres.Curriculum{},
-		Name:         "",
-		Subjects:     nil,
-	}
-	err := s.db.Insert(&area)
-	assert.NoError(s.T(), err)
-	return area
-}
-
-func (s *SubjectTestSuite) testRequest(method string, path string, bodyJson interface{}) {
-	body, err := json.Marshal(bodyJson)
-	assert.NoError(s.T(), err)
-
-	req := httptest.NewRequest(method, path, bytes.NewBuffer(body))
-	s.handler(s.w, req)
-}
