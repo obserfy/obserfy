@@ -15,11 +15,6 @@ services:
       DB_PASSWORD: postgres
       DB_HOST: vor-postgres
       DB_PORT: 5432
-    # allow debugging
-    security_opt:
-      - "apparmor=unconfined"
-    cap_add:
-      - "SYS_PTRACE"
     volumes:
       - .:/src/vor
     ports:
@@ -27,6 +22,12 @@ services:
       - "8080:8080"
     depends_on:
       - db
+    # Might not be necessary for all projects, but these
+    # fixes delve crash on circleci
+    security_opt:
+      - "apparmor=unconfined"
+    cap_add:
+      - "SYS_PTRACE"
 
   nginx:
     build:

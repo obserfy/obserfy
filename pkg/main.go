@@ -69,13 +69,13 @@ func runServer() error {
 
 	// Setup routing
 	r := chi.NewRouter()
+	r.Use(middleware.Heartbeat("/ping")) // Used by load balancer to check service health
 	r.Use(middleware.RequestID)          // Add requestID for easy debugging on log
 	r.Use(middleware.RealIP)             // log the real IP of user
 	r.Use(middleware.Logger)             // Log stuff out for every request
-	r.Use(middleware.Heartbeat("/ping")) // Used by load balancer to check service health
 	r.Use(middleware.GetHead)            // Redirect HEAD request to GET handlers
 	r.Use(middleware.Recoverer)          // Catches panic, recover and return 500
-	r.Use(sentryHandler.Handle)          // Panic goes to sentry first, who catch it than repanics
+	r.Use(sentryHandler.Handle)          // Panic goes to sentry first, who catch it than epanics
 	r.Mount("/auth", auth.NewRouter(server, authStore))
 	r.Route("/api/v1", func(r chi.Router) {
 		r.Use(auth.NewMiddleware(server, authStore))

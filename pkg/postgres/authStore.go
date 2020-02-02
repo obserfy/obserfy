@@ -25,7 +25,7 @@ func (a AuthStore) GetUserByEmail(email string) (*User, error) {
 	if err := a.Model(&user).
 		Where("email=?", email).
 		First(); err != nil {
-		return nil, richErrors.Wrap(err, "email"+email)
+		return nil, richErrors.Wrap(err, "email: "+email)
 	}
 	return &user, nil
 }
