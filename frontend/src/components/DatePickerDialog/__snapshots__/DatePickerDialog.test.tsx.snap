@@ -567,7 +567,7 @@ exports[`DatePickerDialog should render correctly 1`] = `
               <input
                 class="emotion-4"
                 type="number"
-                value="2020"
+                value="2012"
               />
             </div>
           </label>

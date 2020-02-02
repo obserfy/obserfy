@@ -19,6 +19,7 @@ export class ErrorBoundary extends Component<Props, State> {
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
+    localStorage?.clear()
     getAnalytics()?.track("Javsacript Error", {
       error,
       errorInfo,

@@ -6,6 +6,7 @@ import (
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/rest"
 	"github.com/go-chi/chi"
+	"github.com/go-pg/pg/v9"
 	"net/http"
 	"os"
 	"time"
@@ -84,7 +85,9 @@ func (s *server) authorizationMiddleware() func(next http.Handler) http.Handler 
 				return auth.NewGetSessionError()
 			}
 			school, err := s.store.GetSchool(schoolId)
-			if err != nil {
+			if err == pg.ErrNoRows {
+				return &rest.Error{http.StatusNotFound, "We can't find the specified school", err}
+			} else if err != nil {
 				return &rest.Error{http.StatusInternalServerError, "Failed getting school", err}
 			}
 

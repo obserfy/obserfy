@@ -35,10 +35,12 @@ export const PageStudentProgress: FC<Props> = ({ areaId, studentId }) => {
   const [selectedMaterial, setSelectedMaterial] = useState<Material>()
   const [
     progress,
+    // eslint-disable-next-line no-unused-vars
     progressLoading,
     setProgressOutdated,
   ] = useGetStudentMaterialProgress(studentId)
-  const loading = studentLoading || areaLoading || subjectsLoading
+  const loading =
+    studentLoading || areaLoading || subjectsLoading || progressLoading
 
   const backNavigation = (
     <BackNavigation

@@ -12,6 +12,7 @@ export default {
 
 export const Basic: FC = () => (
   <StudentMaterialProgressDialog
+    lastUpdated={new Date(2018, 5, 27, 0, 0, 0).toISOString()}
     onDismiss={action("dismiss")}
     materialId="asdfasdf"
     materialName="Fancy Shoelaces"

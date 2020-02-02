@@ -55,8 +55,10 @@ func (s SchoolStore) GetStudents(schoolId string) ([]Student, error) {
 	if err := s.Model(&students).
 		Where("school_id=?", schoolId).
 		Order("name").
-		Select(); err != nil {
-		return nil, err
+		Select(); err == pg.ErrNoRows {
+		return make([]Student, 0), nil
+	} else if err != nil {
+		return nil, richErrors.Wrap(err, "Failed querying student")
 	}
 	return students, nil
 }

@@ -56,9 +56,9 @@ func runServer() error {
 	if err := sentry.Init(sentryOptions); err != nil {
 		return err
 	}
-	sentryHandler := sentryhttp.New(sentryhttp.Options{})
+	sentryHandler := sentryhttp.New(sentryhttp.Options{Repanic: true})
 
-	// Setup server and stores
+	// Setup server and data stores
 	server := rest.NewServer(l)
 	studentStore := postgres.StudentStore{db}
 	observationStore := postgres.ObservationStore{db}
@@ -69,9 +69,13 @@ func runServer() error {
 
 	// Setup routing
 	r := chi.NewRouter()
-	r.Use(middleware.Heartbeat("/ping"))
-	r.Use(middleware.GetHead)
-	r.Use(sentryHandler.Handle)
+	r.Use(middleware.RequestID)          // Add requestID for easy debugging on log
+	r.Use(middleware.RealIP)             // log the real IP of user
+	r.Use(middleware.Logger)             // Log stuff out for every request
+	r.Use(middleware.Heartbeat("/ping")) // Used by load balancer to check service health
+	r.Use(middleware.GetHead)            // Redirect HEAD request to GET handlers
+	r.Use(middleware.Recoverer)          // Catches panic, recover and return 500
+	r.Use(sentryHandler.Handle)          // Panic goes to sentry first, who catch it than repanics
 	r.Mount("/auth", auth.NewRouter(server, authStore))
 	r.Route("/api/v1", func(r chi.Router) {
 		r.Use(auth.NewMiddleware(server, authStore))
@@ -81,6 +85,7 @@ func runServer() error {
 		r.Mount("/user", user.NewRouter(server, userStore))
 		r.Mount("/curriculum", curriculum.NewRouter(server, curriculumStore))
 	})
+	// Serve gatsby static frontend assets
 	r.Group(func(r chi.Router) {
 		frontendFolder := "./frontend/public"
 		r.Use(createFrontendAuthMiddleware(db, frontendFolder))
