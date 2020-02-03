@@ -13,9 +13,9 @@ interface Props {
   id: string
 }
 export const PageCurriculumArea: FC<Props> = ({ id }) => {
-  const [area, areaLoading] = useGetArea(id)
+  const area = useGetArea(id)
   const [subjects, subjectsLoading] = useGetAreaSubjects(id)
-  const loading = areaLoading || subjectsLoading
+  const loading = area.loading || subjectsLoading
 
   const subjectList = subjects?.map(subject => (
     <Box m={3} key={subject.id}>
@@ -28,7 +28,7 @@ export const PageCurriculumArea: FC<Props> = ({ id }) => {
       <BackNavigation to="/dashboard/settings/curriculum" text="Curriculum" />
       {loading && <LoadingState />}
       <Typography.H3 p={3} lineHeight={1}>
-        {area?.name}
+        {area.data?.name}
       </Typography.H3>
       {!loading && subjectList}
     </Box>

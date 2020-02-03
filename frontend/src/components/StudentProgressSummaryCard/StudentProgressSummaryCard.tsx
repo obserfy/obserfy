@@ -25,7 +25,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
   const [tab, setTab] = useState(0)
   const [isEditing, setIsEditing] = useState(false)
   const [selected, setSelected] = useState<MaterialProgress>()
-  const [areas, areasLoading] = useGetCurriculumAreas()
+  const areas = useGetCurriculumAreas()
   const [
     progress,
     progressLoading,
@@ -33,7 +33,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
   ] = useGetStudentMaterialProgress(studentId)
 
   // Derived state
-  const selectedAreaId = areas[tab]?.id
+  const selectedAreaId = areas.data?.[tab]?.id
   const inSelectedArea = progress.filter(p => p.areaId === selectedAreaId)
   const inProgress = inSelectedArea.filter(
     ({ stage }) =>
@@ -45,7 +45,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
   )
 
   // Loading view
-  if (areasLoading || progressLoading) {
+  if (areas.loading || progressLoading) {
     return (
       <Box mt={3}>
         <LoadingPlaceholder width="100%" height="17rem" />
@@ -54,10 +54,10 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
   }
 
   // Disabled curriculum view
-  if (areas.length < 1) {
+  if ((areas.data?.length ?? 0) < 1) {
     return (
       <InformationalCard
-        message=" Enable the curriculum feature to track student progress in your curriculum."
+        message="You can enable the curriculum feature to track student progress in your curriculum."
         buttonText=" Go to Curriculum "
         onButtonClick={() => navigate("/dashboard/settings/curriculum")}
       />
@@ -116,7 +116,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
         to={`/dashboard/students/progress?studentId=${studentId}&areaId=${selectedAreaId}`}
       >
         <Button variant="secondary" fontSize={0}>
-          See All {areas[tab]?.name} Progress
+          See All {areas.data?.[tab]?.name} Progress
         </Button>
       </Link>
     </Flex>
@@ -142,7 +142,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
       <Card my={3}>
         <Tab
           small
-          items={areas.map(({ name }) => name)}
+          items={areas.data?.map(({ name }) => name) ?? []}
           onTabClick={setTab}
           selectedItemIdx={tab}
         />

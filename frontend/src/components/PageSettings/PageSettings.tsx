@@ -7,7 +7,7 @@ import Icon from "../Icon/Icon"
 import Spacer from "../Spacer/Spacer"
 import { ReactComponent as ShareIcon } from "../../icons/share.svg"
 import Button from "../Button/Button"
-import useApi from "../../api/useApi"
+import useOldApiHook from "../../api/useOldApiHook"
 import { getSchoolId } from "../../hooks/schoolIdState"
 import UserCard from "../UserCard/UserCard"
 import CardLink from "../CardLink/CardLink"
@@ -17,7 +17,7 @@ export const PageSettings: FC = () => {
   const [schoolName, setSchoolName] = useState("")
 
   // Todo: Type this correctly when we start using restful react.
-  const [schoolDetail] = useApi<{
+  const [schoolDetail] = useOldApiHook<{
     name: string
     inviteLink: string
     users: {

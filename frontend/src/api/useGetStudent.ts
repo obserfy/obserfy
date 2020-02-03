@@ -1,4 +1,4 @@
-import useApi from "./useApi"
+import useOldApiHook from "./useOldApiHook"
 
 export interface Student {
   id: string
@@ -8,5 +8,5 @@ export interface Student {
 export const useGetStudent = (
   studentId: string
 ): [Student | undefined, boolean, () => void] => {
-  return useApi<Student>(`/students/${studentId}`)
+  return useOldApiHook<Student>(`/students/${studentId}`)
 }
