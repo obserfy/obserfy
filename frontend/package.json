@@ -28,7 +28,7 @@
     "babel-plugin-istanbul": "^6.0.0",
     "babel-plugin-remove-graphql-queries": "^2.7.22",
     "babel-preset-gatsby": "^0.2.27",
-    "core-js": "2.6.3",
+    "core-js": "3.6.4",
     "cypress": "^3.8.3",
     "cypress-axe": "^0.5.3",
     "date-fns": "^2.9.0",
