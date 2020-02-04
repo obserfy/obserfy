@@ -1,4 +1,4 @@
-import 'jest-fetch-mock'
+/// <reference types="jest-fetch-mock" />
 
 declare module "*.svg" {
   // eslint-disable-next-line import/no-duplicates
