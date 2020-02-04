@@ -3,7 +3,10 @@ import Card from "../Card/Card"
 import { Flex } from "../Flex/Flex"
 import { BoxProps } from "../Box/Box"
 
-export const Dialog: FC<BoxProps> = props => (
+interface Props extends BoxProps {
+  visible?: boolean
+}
+export const Dialog: FC<Props> = props => (
   <Flex
     flexDirection="column-reverse"
     alignItems={["", "center"]}

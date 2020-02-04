@@ -55,6 +55,10 @@ const CurriculumOverview: FC<{ name?: string; areas?: Area[] }> = ({
 }) => (
   <Box mx={3}>
     <Typography.H3 pb={3}>{name}</Typography.H3>
+    <Button variant="outline" mb={2} width="100%">
+      <Icon as={PlusIcon} m={0} mr={2} />
+      New Area
+    </Button>
     {areas?.map(area => (
       <CardLink
         key={area.id}
@@ -63,10 +67,6 @@ const CurriculumOverview: FC<{ name?: string; areas?: Area[] }> = ({
         mb={2}
       />
     ))}
-    <Button variant="outline" mb={3} width="100%">
-      <Icon as={PlusIcon} m={0} mr={2} />
-      New Area
-    </Button>
   </Box>
 )
 
