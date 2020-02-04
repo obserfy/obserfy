@@ -98,7 +98,7 @@
     "@types/faker": "^4.1.9",
     "@types/jest": "^25.1.1",
     "@types/react-helmet": "^5.0.15",
-    "@types/rebass": "4.0.1",
+    "@types/rebass": "4.0.4",
     "@types/segment-analytics": "^0.0.32",
     "@types/theme-ui": "^0.3.0",
     "@typescript-eslint/eslint-plugin": "^2.16.0",
