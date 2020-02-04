@@ -1,3 +1,5 @@
+import 'jest-fetch-mock'
+
 declare module "*.svg" {
   // eslint-disable-next-line import/no-duplicates
   import { FC } from "react"
@@ -67,3 +69,4 @@ declare const $crisp: any | undefined
 declare interface Window {
   CRISP_TOKEN_ID?: string
 }
+
