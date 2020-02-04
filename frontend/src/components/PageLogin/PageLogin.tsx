@@ -14,6 +14,7 @@ export const PageLogin: FC = () => {
 
   async function submitLoginForm(): Promise<void> {
     getAnalytics()?.track("User Login")
+    setError("")
     const credentials = new FormData()
     credentials.append("email", email)
     credentials.append("password", password)

@@ -1,6 +1,5 @@
 import React, { FC } from "react"
 import PageHome from "./PageHome"
-import { Layout } from "../Layout/Layout"
 
 export default {
   title: "Core|PageHome",
@@ -10,8 +9,4 @@ export default {
   },
 }
 
-export const Basic: FC = () => (
-  <Layout pageTitle="Home">
-    <PageHome />
-  </Layout>
-)
+export const Basic: FC = () => <PageHome />

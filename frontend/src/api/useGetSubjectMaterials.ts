@@ -1,4 +1,4 @@
-import useApi from "./useApi"
+import useOldApiHook from "./useOldApiHook"
 
 export interface Material {
   id: string
@@ -8,7 +8,7 @@ export interface Material {
 export function useGetSubjectMaterials(
   subjectId: string
 ): [Material[], boolean, () => void] {
-  const [material, loading, setOutdated] = useApi<Material[]>(
+  const [material, loading, setOutdated] = useOldApiHook<Material[]>(
     `/curriculum/subjects/${subjectId}/materials`
   )
   return [material ?? [], loading, setOutdated]

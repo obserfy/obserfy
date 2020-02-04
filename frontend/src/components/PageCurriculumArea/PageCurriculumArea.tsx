@@ -13,12 +13,12 @@ interface Props {
   id: string
 }
 export const PageCurriculumArea: FC<Props> = ({ id }) => {
-  const [area, areaLoading] = useGetArea(id)
+  const area = useGetArea(id)
   const [subjects, subjectsLoading] = useGetAreaSubjects(id)
-  const loading = areaLoading || subjectsLoading
+  const loading = area.loading || subjectsLoading
 
   const subjectList = subjects?.map(subject => (
-    <Box m={3} key={subject.id}>
+    <Box key={subject.id}>
       <SubjectMaterials subject={subject} />
     </Box>
   ))
@@ -28,7 +28,7 @@ export const PageCurriculumArea: FC<Props> = ({ id }) => {
       <BackNavigation to="/dashboard/settings/curriculum" text="Curriculum" />
       {loading && <LoadingState />}
       <Typography.H3 p={3} lineHeight={1}>
-        {area?.name}
+        {area.data?.name}
       </Typography.H3>
       {!loading && subjectList}
     </Box>
@@ -48,9 +48,9 @@ const SubjectMaterials: FC<SubjectProps> = ({ subject }) => {
   const [materials, loading] = useGetSubjectMaterials(subject.id)
 
   const materialList = materials?.map(material => (
-    <Box mx={3} my={2} key={material.id}>
-      <Typography.Body>{material.name}</Typography.Body>
-    </Box>
+    <Card mx={3} my={2} p={3} key={material.id}>
+      <Typography.H6>{material.name}</Typography.H6>
+    </Card>
   ))
 
   const loadingPlaceholder = loading && (
@@ -64,13 +64,13 @@ const SubjectMaterials: FC<SubjectProps> = ({ subject }) => {
   )
 
   return (
-    <Card mb={3} pb={2}>
-      <Typography.H5 m={3} mb={4}>
+    <Box mb={3} pb={2}>
+      <Typography.H4 m={3} mb={2}>
         {subject.name}
-      </Typography.H5>
+      </Typography.H4>
       {loadingPlaceholder}
       {materialList}
-    </Card>
+    </Box>
   )
 }
 

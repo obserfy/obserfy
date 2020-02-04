@@ -15,7 +15,7 @@ module.exports = {
     __PATH_PREFIX__: ``,
   },
   testURL: `http://localhost`,
-  setupFiles: [`<rootDir>/loadershim.js`, `jest-date-mock`],
+  setupFiles: [`<rootDir>/loadershim.ts`, `jest-date-mock`],
   snapshotSerializers: ["jest-emotion"],
   // setupFilesAfterEnv: ["@testing-library/react/cleanup-after-each"]
 }

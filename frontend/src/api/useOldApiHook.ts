@@ -3,22 +3,21 @@ import { navigate } from "gatsby"
 
 const baseUrl = "/api/v1"
 
-export interface Error {
-  error?: {
-    message: string
-  }
-}
-
-export interface Api<T> extends Error {
-  loading: boolean
-  setOutdated: () => void
-  data?: T
-}
-
-function useApi<T>(url: string, fetchOptions?: RequestInit): Api<T> {
+/** @deprecated Use the new useApi instead
+ * @param url
+ * @param fetchOptions
+ */
+function useOldApiHook<T>(
+  url: string,
+  fetchOptions?: RequestInit
+): [T | undefined, boolean, () => void] {
+  // We set isOutdated to true when we know that the data we
+  // have from the api is outdated, example would be when we
+  // just sent a new data to the server, rendering data that we fetch before
+  // outdated.
   const [isOutdated, setIsOutdated] = useState(true)
+  const [response, setResponse] = useState<T | undefined>()
   const [loading, setLoading] = useState(true)
-  const [response, setResponse] = useState<T & Error>()
 
   useEffect(() => {
     async function f(): Promise<void> {
@@ -28,30 +27,20 @@ function useApi<T>(url: string, fetchOptions?: RequestInit): Api<T> {
         credentials: "same-origin",
         ...fetchOptions,
       })
-
-      // Throw user to login when something gets 401
       if (result.status === 401) {
-        await navigate("/login")
+        // throw new UnauthorizedError()
+        navigate("/login")
         return
       }
-
-      // Parse json
       const data = await result.json()
-      setResponse(data)
-
-      // Reset the state
       setIsOutdated(false)
+      setResponse(data)
       setLoading(false)
     }
     f()
   }, [fetchOptions, isOutdated, url])
 
-  return {
-    loading,
-    data: response,
-    error: response?.error,
-    setOutdated: () => setIsOutdated(true),
-  }
+  return [response, loading, () => setIsOutdated(true)]
 }
 
-export default useApi
+export default useOldApiHook

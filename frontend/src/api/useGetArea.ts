@@ -1,14 +1,9 @@
-import useApi from "./useApi"
+import useApi, { Api } from "./useApi"
 
 export interface Area {
   id: string
   name: string
 }
-export function useGetArea(
-  areaId: string
-): [Area | undefined, boolean, () => void] {
-  const [area, loading, setOutdated] = useApi<Area>(
-    `/curriculum/areas/${areaId}`
-  )
-  return [area, loading, setOutdated]
+export function useGetArea(areaId: string): Api<Area> {
+  return useApi<Area>(`/curriculum/areas/${areaId}`)
 }

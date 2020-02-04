@@ -1,10 +1,7 @@
-import useApi from "./useApi"
 import { getSchoolId } from "../hooks/schoolIdState"
 import { Area } from "./useGetArea"
+import useApi, { Api } from "./useApi"
 
-export function useGetCurriculumAreas(): [Area[], boolean, () => void] {
-  const [area, loading, setOutdated] = useApi<Area[]>(
-    `/schools/${getSchoolId()}/curriculum/areas`
-  )
-  return [area ?? [], loading, setOutdated]
+export function useGetCurriculumAreas(): Api<Area[]> {
+  return useApi<Area[]>(`/schools/${getSchoolId()}/curriculum/areas`)
 }
