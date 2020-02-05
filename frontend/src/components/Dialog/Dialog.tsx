@@ -6,7 +6,7 @@ import { BoxProps } from "../Box/Box"
 interface Props extends BoxProps {
   visible?: boolean
 }
-export const Dialog: FC<Props> = props => (
+export const Dialog: FC<Props> = ({ sx, ...props }) => (
   <Flex
     flexDirection="column-reverse"
     alignItems={["", "center"]}
@@ -21,7 +21,13 @@ export const Dialog: FC<Props> = props => (
       backgroundColor="surface"
       maxWidth="maxWidth.sm"
       width="100%"
-      borderRadius={[0, "default"]}
+      sx={{
+        ...sx,
+        borderTopLeftRadius: "default",
+        borderTopRightRadius: "default",
+        borderBottomLeftRadius: [0, "default"],
+        borderBottomRightRadius: [0, "default"],
+      }}
       {...props}
     />
   </Flex>

@@ -57,7 +57,10 @@ exports[`DeleteObservationDialog should render correctly 1`] = `
   background-color: var(--theme-ui-colors-background,#F7F8FA);
   border-radius: 8px;
   box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
-  border-radius: 0;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
   padding: 0;
   background-color: var(--theme-ui-colors-surface,#fff);
   max-width: 640px;
@@ -67,7 +70,8 @@ exports[`DeleteObservationDialog should render correctly 1`] = `
 
 @media screen and (min-width:40em) {
   .emotion-8 {
-    border-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
   }
 }
 

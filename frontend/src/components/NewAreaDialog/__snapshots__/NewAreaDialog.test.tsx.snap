@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NewAreaDialog should render correctly 1`] = `
-.emotion-12 {
+.emotion-13 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,12 +9,12 @@ exports[`NewAreaDialog should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-12 {
+  .emotion-13 {
     font-size: 20px;
   }
 }
 
-.emotion-11 {
+.emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -36,7 +36,7 @@ exports[`NewAreaDialog should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-11 {
+  .emotion-12 {
     -webkit-align-items: center;
     -webkit-box-align: center;
     -ms-flex-align: center;
@@ -49,7 +49,7 @@ exports[`NewAreaDialog should render correctly 1`] = `
   }
 }
 
-.emotion-10 {
+.emotion-11 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -57,7 +57,10 @@ exports[`NewAreaDialog should render correctly 1`] = `
   background-color: var(--theme-ui-colors-background,#F7F8FA);
   border-radius: 8px;
   box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
-  border-radius: 0;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
   padding: 0;
   background-color: var(--theme-ui-colors-background,#F7F8FA);
   max-width: 640px;
@@ -66,12 +69,13 @@ exports[`NewAreaDialog should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-10 {
-    border-radius: 8px;
+  .emotion-11 {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
   }
 }
 
-.emotion-9 {
+.emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -84,17 +88,14 @@ exports[`NewAreaDialog should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-3 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  position: relative;
   border-bottom-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   border-bottom-width: 1px;
   border-bottom-style: solid;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 8px;
-  padding-right: 8px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -107,6 +108,30 @@ exports[`NewAreaDialog should render correctly 1`] = `
 }
 
 .emotion-0 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 24px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 300;
+  line-height: heading;
+  font-size: 2rem;
+  line-height: 3rem;
+  -webkit-letter-spacing: 0;
+  -moz-letter-spacing: 0;
+  -ms-letter-spacing: 0;
+  letter-spacing: 0;
+  position: absolute;
+  pointer-events: none;
+  text-align: center;
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  width: 100%;
+}
+
+.emotion-1 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -158,46 +183,38 @@ exports[`NewAreaDialog should render correctly 1`] = `
   display: -ms-flexbox;
   display: flex;
   color: var(--theme-ui-colors-danger,#d50000);
+  margin: 8px;
 }
 
-.emotion-0:disabled {
+.emotion-1:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-0:hover,
-.emotion-0:focus {
+.emotion-1:hover,
+.emotion-1:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(98,151,73,0.12));
   border-color: var(--theme-ui-colors-primary,#33691e);
   outline: none;
 }
 
-.emotion-0:hover:disabled,
-.emotion-0:focus:disabled {
+.emotion-1:hover:disabled,
+.emotion-1:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-1 {
+.emotion-2 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  font-size: 24px;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 300;
-  line-height: heading;
-  font-size: 2rem;
-  line-height: 3rem;
-  -webkit-letter-spacing: 0;
-  -moz-letter-spacing: 0;
-  -ms-letter-spacing: 0;
-  letter-spacing: 0;
-  text-align: center;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
-  width: 100%;
+  pointer-events: none;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
 }
 
-.emotion-2 {
+.emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -246,32 +263,36 @@ exports[`NewAreaDialog should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  margin: 8px;
 }
 
-.emotion-2:disabled {
+.emotion-3:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-2:hover,
-.emotion-2:focus {
+.emotion-3:hover,
+.emotion-3:focus {
   background-color: var(--theme-ui-colors-primaryDark,#003d00);
   outline: none;
 }
 
-.emotion-2:hover:disabled,
-.emotion-2:focus:disabled {
+.emotion-3:hover:disabled,
+.emotion-3:focus:disabled {
   background-color: var(--theme-ui-colors-primary,#33691e);
 }
 
-.emotion-8 {
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  padding: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 32px;
+  padding-top: 16px;
 }
 
-.emotion-7 {
+.emotion-8 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -298,7 +319,7 @@ exports[`NewAreaDialog should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-4 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -306,7 +327,7 @@ exports[`NewAreaDialog should render correctly 1`] = `
   padding-bottom: 4px;
 }
 
-.emotion-6 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -320,7 +341,7 @@ exports[`NewAreaDialog should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-5 {
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -346,29 +367,29 @@ exports[`NewAreaDialog should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-5:hover,
-.emotion-5:focus {
+.emotion-6:hover,
+.emotion-6:focus {
   border-color: var(--theme-ui-colors-primary,#33691e);
   outline: none;
 }
 
-.emotion-5::-webkit-input-placeholder {
+.emotion-6::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-5::-moz-placeholder {
+.emotion-6::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-5:-ms-input-placeholder {
+.emotion-6:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-5::placeholder {
+.emotion-6::placeholder {
   font-style: italic;
 }
 
-.emotion-5:disabled {
+.emotion-6:disabled {
   opacity: 0.38;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
@@ -376,52 +397,55 @@ exports[`NewAreaDialog should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-12"
+    class="emotion-13"
   >
     <div
-      class="emotion-11"
+      class="emotion-12"
     >
       <div
-        class="emotion-10"
+        class="emotion-11"
       >
         <div
-          class="emotion-9"
+          class="emotion-10"
         >
           <div
-            class="emotion-3"
+            class="emotion-4"
           >
-            <button
-              class="emotion-0"
-            >
-              Cancel
-            </button>
             <h6
-              class="emotion-1"
+              class="emotion-0"
             >
               New Area
             </h6>
             <button
+              class="emotion-1"
+            >
+              Cancel
+            </button>
+            <div
               class="emotion-2"
+            />
+            <button
+              class="emotion-3"
             >
               Save
             </button>
           </div>
           <div
-            class="emotion-8"
+            class="emotion-9"
           >
             <label
-              class="emotion-7"
+              class="emotion-8"
             >
               <div
-                class="emotion-4"
+                class="emotion-5"
               >
                 Area Name
               </div>
               <div
-                class="emotion-6"
+                class="emotion-7"
               >
                 <input
-                  class="emotion-5"
+                  class="emotion-6"
                   value=""
                 />
               </div>

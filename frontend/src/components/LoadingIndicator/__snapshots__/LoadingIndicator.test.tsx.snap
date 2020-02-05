@@ -1,0 +1,132 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoadingIndicator should render correctly 1`] = `
+@keyframes animation-0 {
+  0% {
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0);
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes animation-1 {
+  0% {
+    -webkit-transform: translate(0,0);
+    -ms-transform: translate(0,0);
+    transform: translate(0,0);
+  }
+
+  100% {
+    -webkit-transform: translate(6px,0);
+    -ms-transform: translate(6px,0);
+    transform: translate(6px,0);
+  }
+}
+
+@keyframes animation-1 {
+  0% {
+    -webkit-transform: translate(0,0);
+    -ms-transform: translate(0,0);
+    transform: translate(0,0);
+  }
+
+  100% {
+    -webkit-transform: translate(6px,0);
+    -ms-transform: translate(6px,0);
+    transform: translate(6px,0);
+  }
+}
+
+@keyframes animation-2 {
+  0% {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+  }
+
+  100% {
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0);
+  }
+}
+
+.emotion-1 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 16px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-1 {
+    font-size: 20px;
+  }
+}
+
+.emotion-0 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: inline-block;
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.emotion-0 div {
+  position: absolute;
+  top: 10px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: black;
+  -webkit-animation-timing-function: cubic-bezier(0,1,1,0);
+  animation-timing-function: cubic-bezier(0,1,1,0);
+}
+
+.emotion-0 div:nth-child(1) {
+  left: 2px;
+  -webkit-animation: animation-0 0.6s infinite;
+  animation: animation-0 0.6s infinite;
+}
+
+.emotion-0 div:nth-child(2) {
+  left: 2px;
+  -webkit-animation: animation-1 0.6s infinite;
+  animation: animation-1 0.6s infinite;
+}
+
+.emotion-0 div:nth-child(3) {
+  left: 8px;
+  -webkit-animation: animation-1 0.6s infinite;
+  animation: animation-1 0.6s infinite;
+}
+
+.emotion-0 div:nth-child(4) {
+  left: 14px;
+  -webkit-animation: animation-2 0.6s infinite;
+  animation: animation-2 0.6s infinite;
+}
+
+<div>
+  <div
+    class="emotion-1"
+  >
+    <div
+      class="emotion-0"
+    >
+      <div />
+      <div />
+      <div />
+      <div />
+    </div>
+  </div>
+</div>
+`;
