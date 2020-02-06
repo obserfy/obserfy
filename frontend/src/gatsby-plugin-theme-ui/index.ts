@@ -309,7 +309,7 @@ const rebassVariants = {
         fontStyle: "italic",
       },
       "&:disabled": {
-        opacity: 0.38,
+        opacity: 0.68,
         borderColor: "border",
         color: "textDisabled",
       },

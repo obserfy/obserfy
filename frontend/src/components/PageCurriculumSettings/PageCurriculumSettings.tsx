@@ -48,10 +48,14 @@ export const PageCurriculumSettings: FC = () => {
           />
         )}
       </Box>
-      {showNewAreaDialog && (
+      {showNewAreaDialog && curriculum.data && (
         <NewAreaDialog
+          curriculumId={curriculum.data.id}
           onDismiss={closeNewAreaDialog}
-          onSaved={closeNewAreaDialog}
+          onSaved={() => {
+            closeNewAreaDialog()
+            areas.setOutdated()
+          }}
         />
       )}
     </>

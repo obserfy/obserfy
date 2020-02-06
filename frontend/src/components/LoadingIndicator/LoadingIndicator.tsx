@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 import { keyframes } from "@emotion/core"
-import Box from "../Box/Box"
+import Box, { BoxProps } from "../Box/Box"
 
 const ellipsis1 = keyframes(`
  0% {
@@ -30,15 +30,20 @@ const ellipsis3 = keyframes(`
   }
 `)
 
-interface Props {
-  size: number
+interface Props extends BoxProps {
+  size?: number
 }
-export const LoadingIndicator: FC<Props> = ({ size = 80 }) => {
+export const LoadingIndicator: FC<Props> = ({
+  color = "white",
+  size = 20,
+  ...props
+}) => {
   const ballSize = Math.round(size / 6)
   const gapSize = Math.round(size / 10)
 
   return (
     <Box
+      mr={1}
       sx={{
         display: "inline-block",
         position: "relative",
@@ -50,7 +55,7 @@ export const LoadingIndicator: FC<Props> = ({ size = 80 }) => {
           width: `${ballSize}px`,
           height: `${ballSize}px`,
           borderRadius: "50%",
-          background: "black",
+          background: color,
           animationTimingFunction: "cubic-bezier(0, 1, 1, 0)",
           "&:nth-child(1)": {
             left: `${gapSize}px`,
@@ -70,6 +75,7 @@ export const LoadingIndicator: FC<Props> = ({ size = 80 }) => {
           },
         },
       }}
+      {...props}
     >
       <div />
       <div />
