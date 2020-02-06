@@ -7,6 +7,12 @@ import BackNavigation from "../BackNavigation/BackNavigation"
 import { useGetArea } from "../../api/useGetArea"
 import { Subject, useGetAreaSubjects } from "../../api/useGetAreaSubjects"
 import { useGetSubjectMaterials } from "../../api/useGetSubjectMaterials"
+import Flex from "../Flex/Flex"
+import Button from "../Button/Button"
+import Spacer from "../Spacer/Spacer"
+import { ReactComponent as EditIcon } from "../../icons/edit.svg"
+import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
+import Icon from "../Icon/Icon"
 
 // FIXME: Typescript any typing, and inconsistent loading state should be fixed.
 interface Props {
@@ -27,9 +33,15 @@ export const PageCurriculumArea: FC<Props> = ({ id }) => {
     <Box maxWidth="maxWidth.sm" margin="auto">
       <BackNavigation to="/dashboard/settings/curriculum" text="Curriculum" />
       {loading && <LoadingState />}
-      <Typography.H3 p={3} lineHeight={1}>
+      <Typography.H3 p={3} pb={2} lineHeight={1}>
         {area.data?.name}
       </Typography.H3>
+      <Box m={3} mb={4}>
+        <Button variant="outline" width="100%">
+          <Icon as={PlusIcon} m={0} mr={2} />
+          New Subject
+        </Button>
+      </Box>
       {!loading && subjectList}
     </Box>
   )
@@ -65,9 +77,16 @@ const SubjectMaterials: FC<SubjectProps> = ({ subject }) => {
 
   return (
     <Box mb={3} pb={2}>
-      <Typography.H4 m={3} mb={2}>
-        {subject.name}
-      </Typography.H4>
+      <Flex alignItems="flex-start" m={3}>
+        <Typography.H4 lineHeight={1.5}>{subject.name}</Typography.H4>
+        <Spacer />
+        <Flex height="46px" alignItems="center" sx={{ flexShrink: 0 }}>
+          <Button sx={{ flexShrink: 0 }} variant="outline">
+            <Icon as={EditIcon} m={0} mr={2} />
+            Edit
+          </Button>
+        </Flex>
+      </Flex>
       {loadingPlaceholder}
       {materialList}
     </Box>
