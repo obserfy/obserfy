@@ -22,7 +22,6 @@ export const PageCurriculumSettings: FC = () => {
   const areas = useGetCurriculumAreas()
 
   const loading = curriculum.loading || areas.loading
-  const hasCurriculum = !loading && !curriculum.error
 
   function closeNewAreaDialog(): void {
     setShowNewAreaDialog(false)
@@ -33,13 +32,14 @@ export const PageCurriculumSettings: FC = () => {
       <Box maxWidth="maxWidth.sm" margin="auto">
         <BackNavigation to="/dashboard/settings" text="Settings" />
         {loading && <LoadingState />}
-        {hasCurriculum ? (
+        {!loading && !curriculum.error && (
           <CurriculumOverview
             newAreaClick={() => setShowNewAreaDialog(true)}
             name={curriculum.data?.name}
             areas={areas.data}
           />
-        ) : (
+        )}
+        {!loading && curriculum.error && (
           <SetupCurriculum
             onCreated={() => {
               curriculum.setOutdated()
