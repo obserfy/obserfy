@@ -17,6 +17,7 @@ import NewAreaDialog from "../NewAreaDialog/NewAreaDialog"
 
 export const PageCurriculumSettings: FC = () => {
   const [showNewAreaDialog, setShowNewAreaDialog] = useState(false)
+
   const curriculum = useGetCurriculum()
   const areas = useGetCurriculumAreas()
 

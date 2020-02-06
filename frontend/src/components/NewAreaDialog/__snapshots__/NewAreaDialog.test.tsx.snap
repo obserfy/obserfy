@@ -399,7 +399,7 @@ exports[`NewAreaDialog should render correctly 1`] = `
   <div
     class="emotion-13"
   >
-    <div
+    <dialog
       class="emotion-12"
     >
       <div
@@ -426,6 +426,7 @@ exports[`NewAreaDialog should render correctly 1`] = `
             />
             <button
               class="emotion-3"
+              disabled=""
             >
               Save
             </button>
@@ -453,7 +454,7 @@ exports[`NewAreaDialog should render correctly 1`] = `
           </div>
         </div>
       </div>
-    </div>
+    </dialog>
   </div>
 </div>
 `;

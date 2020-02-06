@@ -334,7 +334,7 @@ exports[`AlertDialog should render correctly 1`] = `
     <div
       class="emotion-10"
     >
-      <div
+      <dialog
         class="emotion-9"
       >
         <div
@@ -375,7 +375,7 @@ exports[`AlertDialog should render correctly 1`] = `
             </button>
           </div>
         </div>
-      </div>
+      </dialog>
     </div>
   </div>
 </div>

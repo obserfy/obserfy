@@ -461,7 +461,7 @@ exports[`ScrollableDialog should render correctly 1`] = `
   <div
     class="emotion-24"
   >
-    <div
+    <dialog
       class="emotion-23"
     >
       <div
@@ -567,7 +567,7 @@ exports[`ScrollableDialog should render correctly 1`] = `
           </div>
         </div>
       </div>
-    </div>
+    </dialog>
   </div>
 </div>
 `;

@@ -8,6 +8,7 @@ interface Props extends BoxProps {
 }
 export const Dialog: FC<Props> = ({ sx, ...props }) => (
   <Flex
+    as="dialog"
     flexDirection="column-reverse"
     alignItems={["", "center"]}
     justifyContent={["", "center"]}

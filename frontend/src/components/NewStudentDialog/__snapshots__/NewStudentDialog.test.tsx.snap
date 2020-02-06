@@ -446,7 +446,7 @@ exports[`NewStudentDialog should render correctly 1`] = `
   <div
     class="emotion-17"
   >
-    <div
+    <dialog
       class="emotion-16"
     >
       <div
@@ -517,7 +517,7 @@ exports[`NewStudentDialog should render correctly 1`] = `
           </div>
         </div>
       </div>
-    </div>
+    </dialog>
   </div>
 </div>
 `;

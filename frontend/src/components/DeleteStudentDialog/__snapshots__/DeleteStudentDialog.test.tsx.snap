@@ -320,7 +320,7 @@ exports[`DeleteStudentDialog should render correctly 1`] = `
   <div
     class="emotion-10"
   >
-    <div
+    <dialog
       class="emotion-9"
     >
       <div
@@ -361,7 +361,7 @@ exports[`DeleteStudentDialog should render correctly 1`] = `
           </button>
         </div>
       </div>
-    </div>
+    </dialog>
   </div>
 </div>
 `;

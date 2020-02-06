@@ -431,7 +431,7 @@ exports[`StudentMaterialProgressDialog should render correctly 1`] = `
   <div
     class="emotion-18"
   >
-    <div
+    <dialog
       class="emotion-17"
     >
       <div
@@ -534,7 +534,7 @@ exports[`StudentMaterialProgressDialog should render correctly 1`] = `
           </div>
         </div>
       </div>
-    </div>
+    </dialog>
   </div>
 </div>
 `;
