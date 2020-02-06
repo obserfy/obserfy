@@ -65,7 +65,7 @@
     "jest-date-mock": "^1.0.8",
     "jest-emotion": "^10.0.27",
     "nyc": "^15.0.0",
-    "preact": "^10.3.0",
+    "preact": "^10.3.1",
     "prop-types": "^15.7.2",
     "query-string": "^6.10.1",
     "react": "^16.12.0",
