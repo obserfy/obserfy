@@ -11,7 +11,7 @@ module.exports = {
     `gatsby-plugin-typescript`,
     "gatsby-plugin-theme-ui",
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-preact`,
+    // `gatsby-plugin-preact`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -34,7 +34,7 @@ module.exports = {
       },
     },
     // `gatsby-plugin-offline`,
-    `gatsby-plugin-remove-serviceworker`,
+    // `gatsby-plugin-remove-serviceworker`,
     `gatsby-plugin-remove-trailing-slashes`,
     `gatsby-plugin-emotion`,
     {
@@ -73,14 +73,14 @@ module.exports = {
         delayLoadTime: 1000,
       },
     },
-    {
-      resolve: "gatsby-plugin-crisp-chat",
-      options: {
-        websiteId: "d46cf62a-1614-4ccc-88b8-ef616bbc8fcd",
-        enableDuringDevelop: false, // Optional. Disables Crisp Chat during gatsby develop. Defaults to true.
-        defer: true, // Optional. Sets the Crisp loading script to defer instead of async. Defaults to false.
-      },
-    },
+    // {
+    //   resolve: "gatsby-plugin-crisp-chat",
+    //   options: {
+    //     websiteId: "d46cf62a-1614-4ccc-88b8-ef616bbc8fcd",
+    //     enableDuringDevelop: false, // Optional. Disables Crisp Chat during gatsby develop. Defaults to true.
+    //     defer: true, // Optional. Sets the Crisp loading script to defer instead of async. Defaults to false.
+    //   },
+    // },
     {
       resolve: "gatsby-plugin-svgr",
       options: {

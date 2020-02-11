@@ -1,6 +1,5 @@
-import React, { FC, useRef, useState } from "react"
-import { animated, interpolate, UseSpringProps, useSprings } from "react-spring"
-import { useDrag } from "react-use-gesture"
+import React, { FC, MouseEventHandler, useRef, useState } from "react"
+import { motion, useDragControls, useMotionValue } from "framer-motion"
 import Dialog from "../Dialog/Dialog"
 import Typography from "../Typography/Typography"
 import Button from "../Button/Button"
@@ -91,95 +90,117 @@ export const NewSubjectDialog: FC<Props> = ({ onDismiss }) => {
 }
 
 const ITEM_HEIGHT = 48
-interface SpringProps {
-  y: number
-  zIndex: number
-}
-
-const calculateItemStyle = (
-  materials: Material[],
-  selectedId = "",
-  delta = 0
-) => (index: number): UseSpringProps<SpringProps> => {
-  if (materials[index].id !== selectedId) {
-    return { y: index * ITEM_HEIGHT, immediate: false, zIndex: 1 }
-  }
-  return {
-    y: index * ITEM_HEIGHT + delta,
-    immediate: true,
-    zIndex: 10,
-  }
-}
-
 const MaterialList: FC = () => {
-  const materials = useRef<Material[]>([
-    { id: "a", name: "Detroit", order: 1 },
+  const [materials, setMaterials] = useState<Material[]>([
     { id: "b", name: "Michigan", order: 2 },
     { id: "c", name: "Test", order: 3 },
-    { id: "d", name: "Strotum", order: 4 },
+    { id: "a", name: "Detroit", order: 1 },
     { id: "e", name: "Silly", order: 5 },
+    { id: "d", name: "Strotum", order: 4 },
   ])
 
-  const [springs, setSprings] = useSprings<SpringProps>(
-    materials.current.length,
-    calculateItemStyle(materials.current)
-  )
-
-  const bind = useDrag(({ args: [material], down, movement: [, y] }) => {
-    if (!down) {
-      setSprings(calculateItemStyle(materials.current, "", y) as any)
-    } else {
-      setSprings(calculateItemStyle(materials.current, material.id, y) as any)
-    }
-  })
-
-  const list = springs.map(({ zIndex, y }, i) => {
-    const material = materials.current[i]
+  materials.sort((a, b) => a.order - b.order)
+  const list = materials.map((material, i) => {
     return (
-      <animated.div
-        {...bind(materials.current[i])}
+      <MaterialListItem
         key={material.id}
-        style={{
-          zIndex,
-          touchAction: "none",
-          position: "absolute",
-          width: "100%",
-          transform: interpolate([y], ys => `translateY(${ys}px)`),
+        material={material}
+        moveItem={(order, offset, originalOrder) => {
+          let position = 0
+          if (offset < 0) {
+            position = Math.ceil((offset - ITEM_HEIGHT / 2) / ITEM_HEIGHT)
+          } else {
+            position = Math.floor((offset + ITEM_HEIGHT / 2) / ITEM_HEIGHT)
+          }
+          if (originalOrder + position > order) {
+            const newMaterial = materials.slice(0)
+            const nextItemIndex = Math.min(i + 1, materials.length - 1)
+            newMaterial[i].order += 1
+            newMaterial[nextItemIndex].order -= 1
+            setMaterials(newMaterial)
+          }
+          if (originalOrder + position < order) {
+            const newMaterial = materials.slice(0)
+            const previousItemIndex = Math.max(i - 1, 0)
+            newMaterial[i].order -= 1
+            newMaterial[previousItemIndex].order += 1
+            setMaterials(newMaterial)
+          }
         }}
-      >
-        <MaterialListItem material={material} />
-      </animated.div>
+      />
     )
   })
 
-  return (
-    <Box
-      height={materials.current.length * ITEM_HEIGHT}
-      width="100%"
-      sx={{ position: "relative" }}
-    >
-      {list}
-    </Box>
-  )
+  return <Box width="100%">{list}</Box>
 }
 
-const MaterialListItem: FC<{ material: Material }> = ({ material }) => (
-  <Flex
-    alignItems="center"
-    px={3}
-    py={2}
-    height={ITEM_HEIGHT}
-    backgroundColor="background"
-    sx={{
-      userSelect: "none",
-      borderBottomColor: "border",
-      borderBottomWidth: 1,
-      borderBottomStyle: "solid",
-    }}
-  >
-    <Icon as={GridIcon} m={0} mr={2} size={24} sx={{ cursor: "move" }} />
-    <Typography.Body fontSize={1}>{material.name}</Typography.Body>
-  </Flex>
-)
+const MaterialListItem: FC<{
+  material: Material
+  moveItem: (order: number, offset: number, originalOrder: number) => void
+}> = ({ moveItem, material }) => {
+  const originalOrder = useRef(0)
+  const [isDragging, setIsDragging] = useState(false)
+  const dragControls = useDragControls()
+  const dragOriginY = useMotionValue(0)
+
+  const startDrag: MouseEventHandler = event => {
+    dragControls.start(event, { snapToCursor: true })
+  }
+
+  return (
+    <motion.li
+      drag="y"
+      dragElastic={1}
+      initial={false}
+      dragConstraints={{ top: 0, bottom: 0 }}
+      dragOriginY={dragOriginY}
+      dragControls={dragControls}
+      onDragEnd={() => setIsDragging(false)}
+      onDragStart={() => {
+        setIsDragging(true)
+        originalOrder.current = material.order
+      }}
+      animate={
+        isDragging ? { zIndex: 1 } : { zIndex: 0, transition: { delay: 0.3 } }
+      }
+      positionTransition={({ delta }) => {
+        if (isDragging) {
+          dragOriginY.set(dragOriginY.get() + delta.y)
+          return !isDragging
+        }
+        return {}
+      }}
+      style={{
+        position: "relative",
+        listStyle: "none",
+        zIndex: isDragging ? 100 : 0,
+      }}
+      onDrag={(event, { velocity, offset: { y } }) => {
+        if (velocity.y !== 0) {
+          moveItem(material.order, y, originalOrder.current)
+        }
+      }}
+    >
+      <Flex
+        alignItems="center"
+        height={ITEM_HEIGHT}
+        backgroundColor={isDragging ? "surface" : "background"}
+        sx={{
+          userSelect: "none",
+          borderBottomColor: "border",
+          borderBottomWidth: 1,
+          borderBottomStyle: "solid",
+          boxShadow: isDragging ? "low" : undefined,
+          transition: "background-color .1s ease-in, box-shadow .1s ease-in",
+        }}
+      >
+        <Box pl={3} py={2} onMouseDown={startDrag}>
+          <Icon as={GridIcon} m={0} mr={2} size={24} sx={{ cursor: "move" }} />
+        </Box>
+        <Typography.Body fontSize={1}>{material.name}</Typography.Body>
+      </Flex>
+    </motion.li>
+  )
+}
 
 export default NewSubjectDialog
