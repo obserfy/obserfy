@@ -129,8 +129,9 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  margin: 16px;
-  margin-bottom: 32px;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-top: 16px;
 }
 
 .emotion-7 {

@@ -33,7 +33,7 @@ export const PageCurriculumSettings: FC = () => {
         <BackNavigation to="/dashboard/settings" text="Settings" />
         {loading && <LoadingState />}
         {!loading && !curriculum.error && (
-          <CurriculumOverview
+          <CurriculumAreas
             newAreaClick={() => setShowNewAreaDialog(true)}
             name={curriculum.data?.name}
             areas={areas.data}
@@ -72,7 +72,7 @@ const SetupCurriculum: FC<{ onCreated: () => void }> = ({ onCreated }) => (
   </Flex>
 )
 
-const CurriculumOverview: FC<{
+const CurriculumAreas: FC<{
   newAreaClick: () => void
   name?: string
   areas?: Area[]

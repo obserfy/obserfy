@@ -7,5 +7,3 @@ type ErrorJson struct {
 type ErrorPayload struct {
 	Message string `json:"message"`
 }
-
-
