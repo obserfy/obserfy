@@ -61,6 +61,10 @@ exports[`EditObservationDialog should render correctly 1`] = `
   border-top-right-radius: 8px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+  max-height: 100vh;
+  position: fixed;
+  bottom: 0;
+  left: 0;
   padding: 0;
   background-color: var(--theme-ui-colors-surface,#fff);
   max-width: 640px;
@@ -72,6 +76,8 @@ exports[`EditObservationDialog should render correctly 1`] = `
   .emotion-23 {
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
+    bottom: auto;
+    left: auto;
   }
 }
 

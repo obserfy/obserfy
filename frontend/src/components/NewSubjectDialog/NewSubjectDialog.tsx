@@ -1,5 +1,6 @@
-import React, { FC, MouseEventHandler, useRef, useState } from "react"
+import React, { ChangeEventHandler, FC, memo, useRef, useState } from "react"
 import { motion, useDragControls, useMotionValue } from "framer-motion"
+import nanoid from "nanoid"
 import Dialog from "../Dialog/Dialog"
 import Typography from "../Typography/Typography"
 import Button from "../Button/Button"
@@ -9,10 +10,12 @@ import Flex from "../Flex/Flex"
 import Box from "../Box/Box"
 import { ReactComponent as GridIcon } from "../../icons/grid.svg"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
+import { ReactComponent as DeleteIcon } from "../../icons/trash.svg"
 import Icon from "../Icon/Icon"
 import Input from "../Input/Input"
 import { Material } from "../../api/useGetSubjectMaterials"
 
+const ITEM_HEIGHT = 48
 interface Props {
   /** Called when cancel is clicked */
   onDismiss?: () => void
@@ -21,44 +24,108 @@ interface Props {
 }
 export const NewSubjectDialog: FC<Props> = ({ onDismiss }) => {
   const [loading] = useState(false)
+  const [subjectName, setSubjectName] = useState("")
+  const [materials, setMaterials] = useState<Material[]>([])
+
+  const isValid =
+    materials.every(material => material.name !== "") && subjectName !== ""
+
+  materials.sort((a, b) => a.order - b.order)
+  const list = materials.map((material, i) => (
+    <MaterialListItem
+      key={material.id}
+      material={material}
+      onNameChange={e => {
+        const newMaterial = [...materials]
+        newMaterial[newMaterial.indexOf(material)].name = e.target.value
+        setMaterials(newMaterial)
+      }}
+      onDelete={() => {
+        const newMaterial = materials
+          .filter(({ id }) => id !== material.id) // Remove material
+          .map(current =>
+            // Fix order number so none is skip
+            current.order > material.order
+              ? { ...current, order: current.order - 1 }
+              : current
+          )
+        setMaterials(newMaterial)
+      }}
+      moveItem={(order, offset, originalOrder) => {
+        // Calculate position inside the list while being dragged
+        let position: number
+        if (offset < 0) {
+          position = Math.ceil((offset - ITEM_HEIGHT / 2) / ITEM_HEIGHT)
+        } else {
+          position = Math.floor((offset + ITEM_HEIGHT / 2) / ITEM_HEIGHT)
+        }
+
+        // Reorder list to reflect position after dragging
+        if (originalOrder + position > order) {
+          const newMaterial = materials.slice(0)
+          const nextItemIndex = Math.min(i + 1, materials.length - 1)
+          newMaterial[i].order += 1
+          newMaterial[nextItemIndex].order -= 1
+          setMaterials(newMaterial)
+        }
+        if (originalOrder + position < order) {
+          const newMaterial = materials.slice(0)
+          const previousItemIndex = Math.max(i - 1, 0)
+          newMaterial[i].order -= 1
+          newMaterial[previousItemIndex].order += 1
+          setMaterials(newMaterial)
+        }
+      }}
+    />
+  ))
+
+  const header = (
+    <Flex
+      alignItems="center"
+      backgroundColor="surface"
+      sx={{
+        flexShrink: 0,
+        position: "relative",
+        borderBottomColor: "border",
+        borderBottomWidth: 1,
+        borderBottomStyle: "solid",
+      }}
+    >
+      <Typography.H6
+        width="100%"
+        sx={{
+          position: "absolute",
+          pointerEvents: "none",
+          textAlign: "center",
+          alignContent: "center",
+        }}
+      >
+        New Subject
+      </Typography.H6>
+      <Button variant="outline" color="danger" m={2} onClick={onDismiss}>
+        Cancel
+      </Button>
+      <Spacer />
+      <Button m={2} disabled={!isValid}>
+        {loading && <LoadingIndicator />}
+        Save
+      </Button>
+    </Flex>
+  )
 
   return (
     <Dialog>
-      <Flex flexDirection="column" maxHeight="100%">
-        <Flex
-          alignItems="center"
-          backgroundColor="surface"
-          sx={{
-            position: "relative",
-            borderBottomColor: "border",
-            borderBottomWidth: 1,
-            borderBottomStyle: "solid",
-          }}
-        >
-          <Typography.H6
-            width="100%"
-            sx={{
-              position: "absolute",
-              pointerEvents: "none",
-              textAlign: "center",
-              alignContent: "center",
-            }}
-          >
-            New Subject
-          </Typography.H6>
-          <Button variant="outline" color="danger" m={2} onClick={onDismiss}>
-            Cancel
-          </Button>
-          <Spacer />
-          <Button m={2}>
-            {loading && <LoadingIndicator />}
-            Save
-          </Button>
-        </Flex>
-        <Box backgroundColor="background" overflowY="auto">
+      <Flex flexDirection="column" maxHeight="100vh">
+        {header}
+        <Box backgroundColor="background" overflowY="auto" maxHeight="100%">
           <Box>
             <Box px={3} py={2}>
-              <Input width="100%" label="Subject name" />
+              <Input
+                width="100%"
+                label="Subject name"
+                value={subjectName}
+                onChange={e => setSubjectName(e.target.value)}
+              />
             </Box>
             <Typography.Body
               px={3}
@@ -68,16 +135,31 @@ export const NewSubjectDialog: FC<Props> = ({ onDismiss }) => {
             >
               Materials
             </Typography.Body>
-            <MaterialList />
-            <Flex px={3} py={2} alignItems="center">
-              <Icon
-                as={PlusIcon}
-                m={0}
-                mr={2}
-                width={24}
-                fill="primary"
-                sx={{ cursor: "pointer" }}
-              />
+            <Box width="100%" overflow="hidden">
+              {list}
+            </Box>
+            <Flex
+              px={3}
+              py={2}
+              alignItems="center"
+              backgroundColor="background"
+              onClick={() => {
+                setMaterials([
+                  ...materials,
+                  {
+                    id: nanoid(),
+                    name: "",
+                    order: materials.length + 1,
+                  },
+                ])
+              }}
+              sx={{
+                cursor: "pointer",
+                position: "relative",
+                userSelect: "none",
+              }}
+            >
+              <Icon as={PlusIcon} m={0} mr={2} width={24} fill="primary" />
               <Typography.Body color="textMediumEmphasis" fontSize={1}>
                 Add material
               </Typography.Body>
@@ -89,75 +171,54 @@ export const NewSubjectDialog: FC<Props> = ({ onDismiss }) => {
   )
 }
 
-const ITEM_HEIGHT = 48
-const MaterialList: FC = () => {
-  const [materials, setMaterials] = useState<Material[]>([
-    { id: "b", name: "Michigan", order: 2 },
-    { id: "c", name: "Test", order: 3 },
-    { id: "a", name: "Detroit", order: 1 },
-    { id: "e", name: "Silly", order: 5 },
-    { id: "d", name: "Strotum", order: 4 },
-  ])
-
-  materials.sort((a, b) => a.order - b.order)
-  const list = materials.map((material, i) => {
-    return (
-      <MaterialListItem
-        key={material.id}
-        material={material}
-        moveItem={(order, offset, originalOrder) => {
-          let position = 0
-          if (offset < 0) {
-            position = Math.ceil((offset - ITEM_HEIGHT / 2) / ITEM_HEIGHT)
-          } else {
-            position = Math.floor((offset + ITEM_HEIGHT / 2) / ITEM_HEIGHT)
-          }
-          if (originalOrder + position > order) {
-            const newMaterial = materials.slice(0)
-            const nextItemIndex = Math.min(i + 1, materials.length - 1)
-            newMaterial[i].order += 1
-            newMaterial[nextItemIndex].order -= 1
-            setMaterials(newMaterial)
-          }
-          if (originalOrder + position < order) {
-            const newMaterial = materials.slice(0)
-            const previousItemIndex = Math.max(i - 1, 0)
-            newMaterial[i].order -= 1
-            newMaterial[previousItemIndex].order += 1
-            setMaterials(newMaterial)
-          }
-        }}
-      />
-    )
-  })
-
-  return <Box width="100%">{list}</Box>
-}
-
-const MaterialListItem: FC<{
+const MaterialListItem = memo<{
   material: Material
   moveItem: (order: number, offset: number, originalOrder: number) => void
-}> = ({ moveItem, material }) => {
+  onDelete: () => void
+  onNameChange: ChangeEventHandler<HTMLInputElement>
+}>(({ material, moveItem, onDelete, onNameChange }) => (
+  <Draggable material={material} moveItem={moveItem}>
+    <Input
+      placeholder="Material name"
+      p={0}
+      width="100%"
+      value={material.name}
+      onChange={onNameChange}
+      backgroundColor="transparent"
+      sx={{
+        fontSize: [2, 1],
+        p: 0,
+        pl: 2,
+        border: "none",
+        height: "100%",
+      }}
+    />
+    <Button mr={2} variant="secondary" onClick={onDelete}>
+      <Icon as={DeleteIcon} m={0} />
+    </Button>
+  </Draggable>
+))
+
+const Draggable: FC<{
+  material: Material
+  moveItem: (order: number, offset: number, originalOrder: number) => void
+}> = ({ moveItem, material, children }) => {
   const originalOrder = useRef(0)
   const [isDragging, setIsDragging] = useState(false)
-  const dragControls = useDragControls()
   const dragOriginY = useMotionValue(0)
-
-  const startDrag: MouseEventHandler = event => {
-    dragControls.start(event, { snapToCursor: true })
-  }
+  const dragControls = useDragControls()
 
   return (
     <motion.li
       drag="y"
-      dragElastic={1}
       initial={false}
+      dragListener={false}
+      dragElastic={1}
       dragConstraints={{ top: 0, bottom: 0 }}
       dragOriginY={dragOriginY}
       dragControls={dragControls}
       onDragEnd={() => setIsDragging(false)}
       onDragStart={() => {
-        setIsDragging(true)
         originalOrder.current = material.order
       }}
       animate={
@@ -171,6 +232,7 @@ const MaterialListItem: FC<{
         return {}
       }}
       style={{
+        willChange: "height, transform",
         position: "relative",
         listStyle: "none",
         zIndex: isDragging ? 100 : 0,
@@ -186,7 +248,6 @@ const MaterialListItem: FC<{
         height={ITEM_HEIGHT}
         backgroundColor={isDragging ? "surface" : "background"}
         sx={{
-          userSelect: "none",
           borderBottomColor: "border",
           borderBottomWidth: 1,
           borderBottomStyle: "solid",
@@ -194,10 +255,28 @@ const MaterialListItem: FC<{
           transition: "background-color .1s ease-in, box-shadow .1s ease-in",
         }}
       >
-        <Box pl={3} py={2} onMouseDown={startDrag}>
-          <Icon as={GridIcon} m={0} mr={2} size={24} sx={{ cursor: "move" }} />
+        <Box
+          pl={3}
+          py={2}
+          sx={{ cursor: "move" }}
+          onTouchEnd={() => {
+            if (isDragging) setIsDragging(false)
+          }}
+          onMouseUp={() => {
+            if (isDragging) setIsDragging(false)
+          }}
+          onTouchStart={e => {
+            setIsDragging(true)
+            dragControls.start(e)
+          }}
+          onMouseDown={e => {
+            setIsDragging(true)
+            dragControls.start(e)
+          }}
+        >
+          <Icon as={GridIcon} m={0} mr={2} size={24} />
         </Box>
-        <Typography.Body fontSize={1}>{material.name}</Typography.Body>
+        {children}
       </Flex>
     </motion.li>
   )

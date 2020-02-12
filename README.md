@@ -5,17 +5,17 @@
 Backend for obserfy. A web-based tool for managing student information for Montessori Schools. Currently this tools focuses on pre-school's needs.
 
 ## Early Access MVP
-Early access is available on https://obserfy.com if you are curious to try. 
+Hosted version is available on https://obserfy.com for you to try. It is currently 
+provided for free until we consider it as feature complete. Keep in mind that the software is currently still in 
+early preview.
 
-It's currently provided for free and being tested at a single school. Keep in mind, this is a pre-alpha software. 
-
-If you were to try, We would love to hear any of your feedback through the chat, github issue, or email at
+If you were to try, we would love to hear any of your feedback through the chat, github issue, or email at
 chrsep@protonmail.com.
 
 ## Goals
 1. Make it easy for teachers to observe, track and understand their students.
 2. Speed up teacher on-boarding.
-3. Reduce the teacher's paperwork burden so that they can focus on the most important thing, the students.
+3. Reduce the teacher's paperwork burden so that they can focus on the more important things.
 
 ## Planned Features
 - [x] Record observations

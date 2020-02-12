@@ -28,6 +28,10 @@ export const Dialog: FC<Props> = ({ sx, ...props }) => (
         borderTopRightRadius: "default",
         borderBottomLeftRadius: [0, "default"],
         borderBottomRightRadius: [0, "default"],
+        maxHeight: "100vh",
+        position: "fixed",
+        bottom: [0, "auto"],
+        left: [0, "auto"],
       }}
       {...props}
     />
