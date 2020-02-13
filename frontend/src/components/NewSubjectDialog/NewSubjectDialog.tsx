@@ -14,6 +14,8 @@ import { ReactComponent as DeleteIcon } from "../../icons/trash.svg"
 import Icon from "../Icon/Icon"
 import Input from "../Input/Input"
 import { Material } from "../../api/useGetSubjectMaterials"
+import { getAnalytics } from "../../analytics"
+import { createSubjectApi } from "../../api/createSubjectApi"
 
 const ITEM_HEIGHT = 48
 interface Props {
@@ -23,13 +25,35 @@ interface Props {
   onSaved?: () => void
   areaId: string
 }
-export const NewSubjectDialog: FC<Props> = ({ onDismiss }) => {
-  const [loading] = useState(false)
+export const NewSubjectDialog: FC<Props> = ({ onSaved, areaId, onDismiss }) => {
+  const [loading, setLoading] = useState(false)
   const [subjectName, setSubjectName] = useState("")
   const [materials, setMaterials] = useState<Material[]>([])
 
   const isValid =
     materials.every(material => material.name !== "") && subjectName !== ""
+
+  async function createSubject(): Promise<void> {
+    setLoading(true)
+    const response = await createSubjectApi(areaId, {
+      name: subjectName,
+      materials: materials.map(({ order, name }) => ({
+        order,
+        name,
+      })),
+    })
+
+    if (response.status === 201) {
+      getAnalytics()?.track("Subject Created", {
+        responseStatus: response.status,
+        studentName: subjectName,
+      })
+    }
+    setLoading(false)
+    if (onSaved) {
+      onSaved()
+    }
+  }
 
   materials.sort((a, b) => a.order - b.order)
   const list = materials.map((material, i) => (
@@ -108,7 +132,7 @@ export const NewSubjectDialog: FC<Props> = ({ onDismiss }) => {
         Cancel
       </Button>
       <Spacer />
-      <Button m={2} disabled={!isValid}>
+      <Button m={2} disabled={!isValid} onClick={createSubject}>
         {loading && <LoadingIndicator />}
         Save
       </Button>

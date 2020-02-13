@@ -22,15 +22,19 @@ interface Props {
 }
 export const PageCurriculumArea: FC<Props> = ({ id }) => {
   const area = useGetArea(id)
-  const [subjects, subjectsLoading] = useGetAreaSubjects(id)
+  const [subjects, subjectsLoading, setSubjectsOutdated] = useGetAreaSubjects(
+    id
+  )
   const [showNewSubjectDialog, setShowNewSubjectDialog] = useState(false)
   const loading = area.loading || subjectsLoading
 
-  const subjectList = subjects?.map(subject => (
-    <Box key={subject.id}>
-      <SubjectMaterials subject={subject} />
-    </Box>
-  ))
+  const subjectList = subjects
+    ?.sort((a, b) => b.order - a.order)
+    .map(subject => (
+      <Box key={subject.id}>
+        <SubjectMaterials subject={subject} />
+      </Box>
+    ))
 
   return (
     <>
@@ -83,6 +87,10 @@ export const PageCurriculumArea: FC<Props> = ({ id }) => {
         <NewSubjectDialog
           areaId={id}
           onDismiss={() => setShowNewSubjectDialog(false)}
+          onSaved={() => {
+            setShowNewSubjectDialog(false)
+            setSubjectsOutdated()
+          }}
         />
       )}
     </>

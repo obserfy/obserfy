@@ -6,7 +6,7 @@ import Input from "../Input/Input"
 import Flex from "../Flex/Flex"
 import Spacer from "../Spacer/Spacer"
 import Button from "../Button/Button"
-import { submitNewStudent } from "../../api/createStudentApi"
+import { createStudentApi } from "../../api/createStudentApi"
 import { getSchoolId } from "../../hooks/schoolIdState"
 import Icon from "../Icon/Icon"
 import { ReactComponent as CalendarIcon } from "../../icons/calendar.svg"
@@ -21,7 +21,7 @@ export const PageNewStudent: FC = () => {
   const intl = useIntl()
 
   async function createNewStudent(): Promise<void> {
-    const response = await submitNewStudent(getSchoolId(), {
+    const response = await createStudentApi(getSchoolId(), {
       name,
       dateOfBirth,
     })

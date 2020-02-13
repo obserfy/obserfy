@@ -3,7 +3,7 @@ import useOldApiHook from "./useOldApiHook"
 export interface Subject {
   id: string
   name: string
-  order: string
+  order: number
 }
 export function useGetAreaSubjects(
   areaId: string
