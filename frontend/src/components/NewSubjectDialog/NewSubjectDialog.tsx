@@ -117,7 +117,7 @@ export const NewSubjectDialog: FC<Props> = ({ onDismiss }) => {
 
   return (
     <Dialog>
-      <Flex flexDirection="column" maxHeight="100vh">
+      <Flex flexDirection="column" maxHeight="100%">
         {header}
         <Box backgroundColor="background" overflowY="auto" maxHeight="100%">
           <Box>
