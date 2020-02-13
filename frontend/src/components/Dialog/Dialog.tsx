@@ -16,7 +16,7 @@ export const Dialog: FC<Props> = ({ sx, ...props }) => (
     width="100%"
     height="100%"
     p={[0, 3]}
-    sx={{ top: 0, left: 0, zIndex: 1000001, position: "fixed" }}
+    sx={{ border: "none", top: 0, left: 0, zIndex: 1000001, position: "fixed" }}
   >
     <Card
       backgroundColor="surface"

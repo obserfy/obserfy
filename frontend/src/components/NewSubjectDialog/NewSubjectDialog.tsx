@@ -35,6 +35,7 @@ export const NewSubjectDialog: FC<Props> = ({ onDismiss }) => {
     <MaterialListItem
       key={material.id}
       material={material}
+      autofocus={material.order === materials.length}
       onNameChange={e => {
         const newMaterial = [...materials]
         newMaterial[newMaterial.indexOf(material)].name = e.target.value
@@ -176,7 +177,8 @@ const MaterialListItem = memo<{
   moveItem: (order: number, offset: number, originalOrder: number) => void
   onDelete: () => void
   onNameChange: ChangeEventHandler<HTMLInputElement>
-}>(({ material, moveItem, onDelete, onNameChange }) => (
+  autofocus: boolean
+}>(({ material, moveItem, onDelete, onNameChange, autofocus }) => (
   <Draggable material={material} moveItem={moveItem}>
     <Input
       placeholder="Material name"
@@ -185,6 +187,7 @@ const MaterialListItem = memo<{
       value={material.name}
       onChange={onNameChange}
       backgroundColor="transparent"
+      autoFocus={autofocus}
       sx={{
         fontSize: [2, 1],
         p: 0,
