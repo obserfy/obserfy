@@ -17,7 +17,7 @@ type Store interface {
 	GetSubjectMaterials(subjectId string) ([]postgres.Material, error)
 	GetMaterial(materialId string) (*postgres.Material, error)
 	NewArea(name string, curriculumId string) (string, error)
-	NewSubject(name string, areaId string) (*postgres.Subject, error)
+	NewSubject(name string, areaId string, materials []postgres.Material) (*postgres.Subject, error)
 	NewMaterial(name string, subjectId string) (*postgres.Material, error)
 	GetSubject(id string) (*postgres.Subject, error)
 	UpdateSubject(subject *postgres.Subject) error
@@ -29,6 +29,7 @@ type server struct {
 	store Store
 }
 
+// TODO: Consider removing AreaJson and SubjectJson. It complicates things.
 type AreaJson struct {
 	Name         string `json:"name"`
 	CurriculumId string `json:"curriculumId"`
@@ -137,21 +138,45 @@ func (s *server) createArea() rest.Handler {
 
 func (s *server) createSubject() http.Handler {
 	type requestBody struct {
-		Name string `json:"name"`
+		Name      string `json:"name"`
+		Materials []struct {
+			Name  string `json:"name"`
+			Order int    `json:"order"`
+		} `json:"materials"`
 	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		areaId := chi.URLParam(r, "areaId")
 
+		// Parse request
 		var requestBody requestBody
 		if err := rest.ParseJson(r.Body, &requestBody); err != nil {
 			return rest.NewParseJsonError(err)
 		}
-
 		if requestBody.Name == "" {
 			return &rest.Error{http.StatusBadRequest, "Name cannot be empty", richErrors.New("name can't be empty")}
 		}
 
-		subject, err := s.store.NewSubject(requestBody.Name, areaId)
+		// Convert Material into proper form
+		var materials []postgres.Material
+		orderingNumbers := make(map[int]bool)
+		for _, material := range requestBody.Materials {
+			// Check for duplicated order number
+			orderingNumbers[material.Order] = true
+
+			materials = append(materials, postgres.Material{
+				Id:    uuid.New().String(),
+				Name:  material.Name,
+				Order: material.Order,
+			})
+		}
+		// Make sure no order number is repeated.
+		if len(orderingNumbers) != len(materials) {
+			return &rest.Error{
+				http.StatusUnprocessableEntity,
+				"Material order number can't be repeated",
+				richErrors.New("Repeatd order number in list of materials")}
+		}
+		subject, err := s.store.NewSubject(requestBody.Name, areaId, materials)
 		if err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Failed saving subject", err}
 		}

@@ -21,6 +21,7 @@ interface Props {
   onDismiss?: () => void
   /** Called when new subject is successfully saved */
   onSaved?: () => void
+  areaId: string
 }
 export const NewSubjectDialog: FC<Props> = ({ onDismiss }) => {
   const [loading] = useState(false)

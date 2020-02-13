@@ -139,3 +139,76 @@ func (s *SubjectTestSuite) TestUpdateName() {
 	assert.Equal(t, original.AreaId, updated.AreaId)
 }
 
+func (s *SubjectTestSuite) TestCreateNewSubjectWithMaterials() {
+	t := s.T()
+	area := s.saveNewArea()
+
+	type materialPayload struct {
+		Name  string `json:"name"`
+		Order int    `json:"order"`
+	}
+	type subjectPayload struct {
+		Name      string `json:"name"`
+		Materials []materialPayload
+	}
+	payload := subjectPayload{
+		Name: uuid.New().String(),
+		Materials: []materialPayload{
+			{Name: "Test", Order: 1},
+			{Name: "Test", Order: 2},
+		},
+	}
+	s.testRequest("POST", "/areas/"+area.Id+"/subjects", payload)
+	assert.Equal(t, http.StatusCreated, s.w.Code)
+
+	// get subject
+	var savedSubject postgres.Subject
+	err := s.db.
+		Model(&savedSubject).
+		Where("name=?", payload.Name).
+		Relation("Materials").
+		Select()
+	assert.NoError(t, err)
+	assert.Equal(t, payload.Name, savedSubject.Name)
+	assert.Equal(t, area.Id, savedSubject.AreaId)
+	assert.Equal(t, 1, savedSubject.Order)
+	assert.Equal(t, len(payload.Materials), len(savedSubject.Materials))
+
+}
+
+func (s *SubjectTestSuite) TestCreateNewSubjectWithMaterialsWithRepeatedOrder() {
+	t := s.T()
+	area := s.saveNewArea()
+
+	type materialPayload struct {
+		Name  string `json:"name"`
+		Order int    `json:"order"`
+	}
+	type subjectPayload struct {
+		Name      string `json:"name"`
+		Materials []materialPayload
+	}
+	payload := subjectPayload{
+		Name: uuid.New().String(),
+		Materials: []materialPayload{
+			{Name: "Test", Order: 1},
+			{Name: "Test", Order: 1},
+		},
+	}
+	s.testRequest("POST", "/areas/"+area.Id+"/subjects", payload)
+	// Don't allow repeated order number
+	assert.Equal(t, http.StatusUnprocessableEntity, s.w.Code)
+
+	// Verify subject is not saved
+	var savedSubject postgres.Subject
+	err := s.db.
+		Model(&savedSubject).
+		Where("name=?", payload.Name).
+		Relation("Materials").
+		Select()
+	assert.Error(t, err)
+	//assert.Equal(t, payload.Name, savedSubject.Name)
+	//assert.Equal(t, area.Id, savedSubject.AreaId)
+	//assert.Equal(t, 1, savedSubject.Order)
+	//assert.Equal(t, len(payload.Materials), len(savedSubject.Materials))
+}

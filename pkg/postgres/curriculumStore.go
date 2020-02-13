@@ -92,7 +92,7 @@ func (c CurriculumStore) GetSubject(id string) (*Subject, error) {
 	return &subject, nil
 }
 
-func (c CurriculumStore) NewSubject(name string, areaId string) (*Subject, error) {
+func (c CurriculumStore) NewSubject(name string, areaId string, materials []Material) (*Subject, error) {
 	var biggestOrder int
 	if _, err := c.DB.Model((*Subject)(nil)).
 		Where("area_id=?", areaId).
@@ -109,7 +109,20 @@ func (c CurriculumStore) NewSubject(name string, areaId string) (*Subject, error
 		Name:   name,
 		Order:  biggestOrder + 1,
 	}
-	if err := c.DB.Insert(&subject); err != nil {
+	for i := range materials {
+		materials[i].SubjectId = subject.Id
+	}
+	if err := c.DB.RunInTransaction(func(tx *pg.Tx) error {
+		if err := c.DB.Insert(&subject); err != nil {
+			return err
+		}
+		if len(materials) != 0 {
+			if err := c.DB.Insert(&materials); err != nil {
+				return err
+			}
+		}
+		return nil
+	}); err != nil {
 		return nil, err
 	}
 	return &subject, nil

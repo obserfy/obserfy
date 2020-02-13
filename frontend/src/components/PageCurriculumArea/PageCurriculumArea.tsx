@@ -12,6 +12,7 @@ import Button from "../Button/Button"
 import Spacer from "../Spacer/Spacer"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
+import { ReactComponent as DeleteIcon } from "../../icons/trash.svg"
 import Icon from "../Icon/Icon"
 import NewSubjectDialog from "../NewSubjectDialog/NewSubjectDialog"
 
@@ -39,20 +40,50 @@ export const PageCurriculumArea: FC<Props> = ({ id }) => {
         <Typography.H3 p={3} pb={2} lineHeight={1}>
           {area.data?.name}
         </Typography.H3>
-        <Box mx={3} mt={3}>
+        <Flex mx={3} mt={3}>
           <Button
             variant="outline"
-            width="100%"
+            onClick={() => setShowNewSubjectDialog(true)}
+            color="danger"
+            sx={{ flexShrink: 0 }}
+          >
+            <Icon as={DeleteIcon} m={0} fill="danger" mr={2} />
+            Delete
+          </Button>
+          <Button
+            variant="outline"
+            onClick={() => setShowNewSubjectDialog(true)}
+            mx={2}
+            sx={{ flexShrink: 0 }}
+          >
+            <Icon as={EditIcon} m={0} mr={2} />
+            Edit
+          </Button>
+        </Flex>
+        <Flex alignItems="center" mx={3} mt={4}>
+          <Typography.H5
+            fontWeight="normal"
+            color="textMediumEmphasis"
+            letterSpacing={3}
+          >
+            SUBJECTS
+          </Typography.H5>
+          <Spacer />
+          <Button
+            variant="outline"
             onClick={() => setShowNewSubjectDialog(true)}
           >
             <Icon as={PlusIcon} m={0} mr={2} />
-            New Subject
+            Add
           </Button>
-        </Box>
+        </Flex>
         {!loading && subjectList}
       </Box>
       {showNewSubjectDialog && (
-        <NewSubjectDialog onDismiss={() => setShowNewSubjectDialog(false)} />
+        <NewSubjectDialog
+          areaId={id}
+          onDismiss={() => setShowNewSubjectDialog(false)}
+        />
       )}
     </>
   )
@@ -99,13 +130,16 @@ const SubjectMaterials: FC<SubjectProps> = ({ subject }) => {
   return (
     <Box py={3} px={[0, 3]}>
       <Card borderRadius={[0, "default"]}>
-        <Flex alignItems="center" m={3}>
+        <Flex alignItems="center" m={3} mr={2}>
           <Typography.Body fontSize={3} mr={3}>
             {subject.name}
           </Typography.Body>
           <Spacer />
-          <Flex height="46px" alignItems="center" sx={{ flexShrink: 0 }}>
-            <Button sx={{ flexShrink: 0 }} variant="outline">
+          <Flex alignItems="center" sx={{ flexShrink: 0 }}>
+            <Button sx={{ flexShrink: 0 }} variant="secondary">
+              <Icon as={DeleteIcon} m={0} fill="danger" />
+            </Button>
+            <Button sx={{ flexShrink: 0 }} variant="secondary">
               <Icon as={EditIcon} m={0} fill="textPrimary" />
             </Button>
           </Flex>

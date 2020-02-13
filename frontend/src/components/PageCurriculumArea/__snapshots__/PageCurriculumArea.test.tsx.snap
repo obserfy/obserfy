@@ -15,7 +15,7 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   }
 }
 
-.emotion-10 {
+.emotion-17 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -23,12 +23,12 @@ exports[`PageCurriculumArea should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-10 {
+  .emotion-17 {
     font-size: 20px;
   }
 }
 
-.emotion-9 {
+.emotion-16 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -125,16 +125,236 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   line-height: 1;
 }
 
-.emotion-8 {
+.emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   margin-left: 16px;
   margin-right: 16px;
   margin-top: 16px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .emotion-7 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  text-align: center;
+  line-height: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: inherit;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: white;
+  background-color: var(--theme-ui-colors-primary,#33691e);
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  text-transform: capitalize;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--theme-ui-colors-textPrimary,#003d00);
+  background-color: transparent;
+  border-radius: 8px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  white-space: nowrap;
+  border: 1px solid;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: var(--theme-ui-colors-danger,#d50000);
+}
+
+.emotion-7:disabled {
+  opacity: 0.38;
+  cursor: auto;
+}
+
+.emotion-7:hover,
+.emotion-7:focus {
+  background-color: var(--theme-ui-colors-primaryLighter,rgba(98,151,73,0.12));
+  border-color: var(--theme-ui-colors-primary,#33691e);
+  outline: none;
+}
+
+.emotion-7:hover:disabled,
+.emotion-7:focus:disabled {
+  background-color: transparent;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+}
+
+.emotion-6 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  fill: var(--theme-ui-colors-danger,#d50000);
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  margin: 0;
+  height: 20px;
+  width: 20px;
+  margin-right: 8px;
+}
+
+.emotion-9 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  text-align: center;
+  line-height: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: inherit;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: white;
+  background-color: var(--theme-ui-colors-primary,#33691e);
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  text-transform: capitalize;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--theme-ui-colors-textPrimary,#003d00);
+  background-color: transparent;
+  border-radius: 8px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  white-space: nowrap;
+  border: 1px solid;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.emotion-9:disabled {
+  opacity: 0.38;
+  cursor: auto;
+}
+
+.emotion-9:hover,
+.emotion-9:focus {
+  background-color: var(--theme-ui-colors-primaryLighter,rgba(98,151,73,0.12));
+  border-color: var(--theme-ui-colors-primary,#33691e);
+  outline: none;
+}
+
+.emotion-9:hover:disabled,
+.emotion-9:focus:disabled {
+  background-color: transparent;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+}
+
+.emotion-8 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  margin: 0;
+  height: 20px;
+  width: 20px;
+  margin-right: 8px;
+}
+
+.emotion-15 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-top: 32px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-11 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 24px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 300;
+  line-height: heading;
+  font-size: 2.5rem;
+  line-height: 3rem;
+  -webkit-letter-spacing: 0;
+  -moz-letter-spacing: 0;
+  -ms-letter-spacing: 0;
+  letter-spacing: 0;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  font-weight: normal;
+  -webkit-letter-spacing: 3px;
+  -moz-letter-spacing: 3px;
+  -ms-letter-spacing: 3px;
+  letter-spacing: 3px;
+}
+
+.emotion-12 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  pointer-events: none;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.emotion-14 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -185,49 +405,32 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 100%;
 }
 
-.emotion-7:disabled {
+.emotion-14:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-7:hover,
-.emotion-7:focus {
+.emotion-14:hover,
+.emotion-14:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(98,151,73,0.12));
   border-color: var(--theme-ui-colors-primary,#33691e);
   outline: none;
 }
 
-.emotion-7:hover:disabled,
-.emotion-7:focus:disabled {
+.emotion-14:hover:disabled,
+.emotion-14:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-6 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  max-width: 100%;
-  height: auto;
-  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  margin: 0;
-  height: 20px;
-  width: 20px;
-  margin-right: 8px;
-}
-
 <div>
   <div
-    class="emotion-10"
+    class="emotion-17"
   >
     <div
-      class="emotion-9"
+      class="emotion-16"
     >
       <a
         href="/dashboard/settings/curriculum"
@@ -256,7 +459,7 @@ exports[`PageCurriculumArea should render correctly 1`] = `
         class="emotion-5"
       />
       <div
-        class="emotion-8"
+        class="emotion-10"
       >
         <button
           class="emotion-7"
@@ -264,7 +467,35 @@ exports[`PageCurriculumArea should render correctly 1`] = `
           <div
             class="emotion-6"
           />
-          New Subject
+          Delete
+        </button>
+        <button
+          class="emotion-9"
+        >
+          <div
+            class="emotion-8"
+          />
+          Edit
+        </button>
+      </div>
+      <div
+        class="emotion-15"
+      >
+        <h5
+          class="emotion-11"
+        >
+          SUBJECTS
+        </h5>
+        <div
+          class="emotion-12"
+        />
+        <button
+          class="emotion-14"
+        >
+          <div
+            class="emotion-8"
+          />
+          Add
         </button>
       </div>
     </div>
