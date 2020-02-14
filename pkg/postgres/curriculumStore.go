@@ -170,3 +170,19 @@ func (c CurriculumStore) GetSubjectMaterials(subjectId string) ([]Material, erro
 	}
 	return materials, nil
 }
+
+func (c CurriculumStore) DeleteArea(id string) error {
+	area := Area{Id: id}
+	if err := c.DB.Delete(&area); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (c CurriculumStore) DeleteSubject(id string) error {
+	subject := Subject{Id: id}
+	if err := c.DB.Delete(&subject); err != nil {
+		return err
+	}
+	return nil
+}

@@ -207,8 +207,23 @@ func (s *SubjectTestSuite) TestCreateNewSubjectWithMaterialsWithRepeatedOrder() 
 		Relation("Materials").
 		Select()
 	assert.Error(t, err)
-	//assert.Equal(t, payload.Name, savedSubject.Name)
-	//assert.Equal(t, area.Id, savedSubject.AreaId)
-	//assert.Equal(t, 1, savedSubject.Order)
-	//assert.Equal(t, len(payload.Materials), len(savedSubject.Materials))
+}
+
+func (s *SubjectTestSuite) TestDeleteSubject() {
+	t := s.T()
+	subject := s.saveNewSubject()
+	response := s.testRequest("DELETE", "/subjects/"+subject.Id, nil)
+	assert.Equal(t, http.StatusOK, response.Code)
+	var savedSubject postgres.Subject
+	err := s.db.Model(&savedSubject).
+		Where("id=?", subject.Id).
+		Select()
+	assert.Error(t, err)
+}
+
+func (s *SubjectTestSuite) TestDeleteUnknownSubject() {
+	t := s.T()
+	subjectId := uuid.New().String()
+	response := s.testRequest("DELETE", "/subjects/"+subjectId, nil)
+	assert.Equal(t, http.StatusNotFound, response.Code)
 }

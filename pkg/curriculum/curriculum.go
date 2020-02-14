@@ -22,6 +22,8 @@ type Store interface {
 	GetSubject(id string) (*postgres.Subject, error)
 	UpdateSubject(subject *postgres.Subject) error
 	UpdateMaterial(material *postgres.Material, order *int) error
+	DeleteArea(id string) error
+	DeleteSubject(id string) error
 }
 
 type server struct {
@@ -45,10 +47,12 @@ func NewRouter(s rest.Server, store Store) *chi.Mux {
 	r := chi.NewRouter()
 	r.Method("POST", "/areas", server.createArea())
 	r.Method("GET", "/areas/{areaId}", server.getArea())
+	r.Method("DELETE", "/areas/{areaId}", server.deleteArea())
 	r.Method("GET", "/areas/{areaId}/subjects", server.getAreaSubjects())
 	r.Method("POST", "/areas/{areaId}/subjects", server.createSubject())
 
 	r.Method("PATCH", "/subjects/{subjectId}", server.updateSubject())
+	r.Method("DELETE", "/subjects/{subjectId}", server.deleteSubject())
 	r.Method("GET", "/subjects/{subjectId}/materials", server.getSubjectMaterials())
 	r.Method("POST", "/subjects/{subjectId}/materials", server.createNewMaterial())
 
@@ -350,6 +354,37 @@ func (s *server) updateMaterial() http.Handler {
 			return &rest.Error{http.StatusInternalServerError, "Failed updating material", err}
 		}
 		w.WriteHeader(http.StatusNoContent)
+		return nil
+	})
+}
+
+func (s *server) deleteSubject() http.Handler {
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		subjectId := chi.URLParam(r, "subjectId")
+
+		if err := s.store.DeleteSubject(subjectId); err != nil {
+			return &rest.Error{
+				http.StatusNotFound,
+				"Can't find the specified subject",
+				err,
+			}
+		}
+		return nil
+	})
+}
+
+func (s *server) deleteArea() http.Handler {
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		areaId := chi.URLParam(r, "areaId")
+
+		if err := s.store.DeleteArea(areaId); err != nil {
+			return &rest.Error{
+				http.StatusNotFound,
+				"Can't find the specified subject",
+				err,
+			}
+		}
+
 		return nil
 	})
 }

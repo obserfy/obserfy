@@ -102,11 +102,14 @@ func (s *baseCurriculumTestSuite) saveNewArea() postgres.Area {
 	return area
 }
 
-func (s *baseCurriculumTestSuite) testRequest(method string, path string, bodyJson interface{}) {
+func (s *baseCurriculumTestSuite) testRequest(method string, path string, bodyJson interface{}) *httptest.ResponseRecorder {
+	// TODO: Don't make test recorder a global state
 	s.w = httptest.NewRecorder()
 	body, err := json.Marshal(bodyJson)
 	assert.NoError(s.T(), err)
 
 	req := httptest.NewRequest(method, path, bytes.NewBuffer(body))
 	s.handler(s.w, req)
+	return s.w
 }
+

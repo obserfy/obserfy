@@ -111,3 +111,22 @@ func (s *AreaTestSuite) TestCreateAreaWithNoName() {
 	// Should get 403
 	assert.EqualValues(t, http.StatusBadRequest, s.w.Code)
 }
+
+func (s *AreaTestSuite) TestDeleteArea() {
+	t := s.T()
+	area := s.saveNewArea()
+	response := s.testRequest("DELETE", "/areas/"+area.Id, nil)
+	assert.Equal(t, http.StatusOK, response.Code)
+	var savedArea postgres.Area
+	err := s.db.Model(&savedArea).
+		Where("id=?", area.Id).
+		Select()
+	assert.Error(t, err)
+}
+
+func (s *AreaTestSuite) TestDeleteUnknownArea() {
+	t := s.T()
+	areaId := uuid.New().String()
+	response := s.testRequest("DELETE", "/areas/"+areaId, nil)
+	assert.Equal(t, http.StatusNotFound, response.Code)
+}
