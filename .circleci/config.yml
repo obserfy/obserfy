@@ -17,7 +17,6 @@ jobs:
           nvm install v12
           node -v
           nvm alias default v12
-      - run: npm install -g yarn wait-on
       - run: |
           cd ./docker/postgres/ssl
           ./generate.sh
