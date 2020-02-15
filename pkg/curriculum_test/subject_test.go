@@ -227,3 +227,110 @@ func (s *SubjectTestSuite) TestDeleteUnknownSubject() {
 	response := s.testRequest("DELETE", "/subjects/"+subjectId, nil)
 	assert.Equal(t, http.StatusNotFound, response.Code)
 }
+
+func (s *SubjectTestSuite) TestPutSubjectWithRemovedMaterial() {
+	t := s.T()
+	material := s.saveNewMaterial()
+
+	type materialPayload struct {
+		Name  string `json:"name"`
+		Order int    `json:"order"`
+	}
+	type subjectPayload struct {
+		Name      string `json:"name"`
+		Order     int    `json:"order"`
+		AreaId    string `json:"areaId"`
+		Materials []materialPayload
+	}
+	newSubject := subjectPayload{
+		Name:   uuid.New().String(),
+		Order:  0,
+		AreaId: material.Subject.Area.Id,
+	}
+	response := s.testRequest("PUT", "/subjects/"+material.Subject.Id, newSubject)
+	assert.Equal(t, http.StatusOK, response.Code)
+
+	var savedSubject postgres.Subject
+	err := s.db.Model(&savedSubject).
+		Where("id=?", material.Subject.Id).
+		Relation("Materials").
+		Select()
+	assert.NoError(t, err)
+	assert.Equal(t, newSubject.Name, savedSubject.Name)
+	assert.Equal(t, len(newSubject.Materials), len(savedSubject.Materials))
+}
+
+func (s *SubjectTestSuite) TestPutSubjectWithNewMaterial() {
+	t := s.T()
+	material := s.saveNewMaterial()
+
+	type materialPayload struct {
+		Id    string `json:"id"`
+		Name  string `json:"name"`
+		Order int    `json:"order"`
+	}
+	type subjectPayload struct {
+		Name      string `json:"name"`
+		Order     int    `json:"order"`
+		AreaId    string `json:"areaId"`
+		Materials []materialPayload
+	}
+	newSubject := subjectPayload{
+		Name:   uuid.New().String(),
+		Order:  0,
+		AreaId: material.Subject.Area.Id,
+		Materials: []materialPayload{
+			{material.Id, material.Name, material.Order},
+			{uuid.New().String(), uuid.New().String(), material.Order + 1},
+			{uuid.New().String(), uuid.New().String(), material.Order + 2},
+			{uuid.New().String(), uuid.New().String(), material.Order + 3},
+		},
+	}
+	response := s.testRequest("PUT", "/subjects/"+material.Subject.Id, newSubject)
+	assert.Equal(t, http.StatusOK, response.Code)
+
+	var savedSubject postgres.Subject
+	err := s.db.Model(&savedSubject).
+		Where("id=?", material.Subject.Id).
+		Relation("Materials").
+		Select()
+	assert.NoError(t, err)
+	assert.Equal(t, newSubject.Name, savedSubject.Name)
+	assert.Equal(t, len(newSubject.Materials), len(savedSubject.Materials))
+}
+
+func (s *SubjectTestSuite) TestPutSubjectWithUpdatedMaterial() {
+	t := s.T()
+	material := s.saveNewMaterial()
+
+	type materialPayload struct {
+		Id    string `json:"id"`
+		Name  string `json:"name"`
+		Order int    `json:"order"`
+	}
+	type subjectPayload struct {
+		Name      string `json:"name"`
+		Order     int    `json:"order"`
+		AreaId    string `json:"areaId"`
+		Materials []materialPayload
+	}
+	newSubject := subjectPayload{
+		Name:   uuid.New().String(),
+		Order:  0,
+		AreaId: material.Subject.Area.Id,
+		Materials: []materialPayload{
+			{material.Id, uuid.New().String(), material.Order},
+		},
+	}
+	response := s.testRequest("PUT", "/subjects/"+material.Subject.Id, newSubject)
+	assert.Equal(t, http.StatusOK, response.Code)
+
+	var savedSubject postgres.Subject
+	err := s.db.Model(&savedSubject).
+		Where("id=?", material.Subject.Id).
+		Relation("Materials").
+		Select()
+	assert.NoError(t, err)
+	assert.Equal(t, newSubject.Name, savedSubject.Name)
+	assert.Equal(t, len(newSubject.Materials), len(savedSubject.Materials))
+}

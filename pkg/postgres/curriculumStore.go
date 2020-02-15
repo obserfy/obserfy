@@ -3,10 +3,45 @@ package postgres
 import (
 	"github.com/go-pg/pg/v9"
 	"github.com/google/uuid"
+	richErrors "github.com/pkg/errors"
 )
 
 type CurriculumStore struct {
 	*pg.DB
+}
+
+func (c CurriculumStore) ReplaceSubject(newSubject Subject) error {
+	var materialsToKeep []string
+	for _, material := range newSubject.Materials {
+		materialsToKeep = append(materialsToKeep, material.Id)
+	}
+	if err := c.DB.RunInTransaction(func(tx *pg.Tx) error {
+		if err := tx.Update(&newSubject); err != nil {
+			return richErrors.Wrap(err, "Failed updating subject")
+		}
+		if len(materialsToKeep) > 0 {
+			if _, err := tx.Model(&newSubject.Materials).
+				OnConflict("(id) DO UPDATE").
+				Insert(); err != nil {
+				return richErrors.Wrap(err, "Failed updating materials")
+			}
+			if _, err := tx.Model((*Material)(nil)).
+				Where("subject_id=? AND id NOT IN (?)", newSubject.Id, pg.In(materialsToKeep)).
+				Delete(); err != nil {
+				return richErrors.Wrap(err, "Failed deleting removed materials")
+			}
+		} else {
+			if _, err := tx.Model((*Material)(nil)).
+				Where("subject_id=?", newSubject.Id).
+				Delete(); err != nil {
+				return richErrors.Wrap(err, "Failed deleting removed materials")
+			}
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (c CurriculumStore) GetMaterial(materialId string) (*Material, error) {

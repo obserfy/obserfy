@@ -24,6 +24,7 @@ type Store interface {
 	UpdateMaterial(material *postgres.Material, order *int) error
 	DeleteArea(id string) error
 	DeleteSubject(id string) error
+	ReplaceSubject(subject postgres.Subject) error
 }
 
 type server struct {
@@ -51,6 +52,7 @@ func NewRouter(s rest.Server, store Store) *chi.Mux {
 	r.Method("GET", "/areas/{areaId}/subjects", server.getAreaSubjects())
 	r.Method("POST", "/areas/{areaId}/subjects", server.createSubject())
 
+	r.Method("PUT", "/subjects/{subjectId}", server.replaceSubject())
 	r.Method("PATCH", "/subjects/{subjectId}", server.updateSubject())
 	r.Method("DELETE", "/subjects/{subjectId}", server.deleteSubject())
 	r.Method("GET", "/subjects/{subjectId}/materials", server.getSubjectMaterials())
@@ -164,7 +166,7 @@ func (s *server) createSubject() http.Handler {
 		var materials []postgres.Material
 		orderingNumbers := make(map[int]bool)
 		for _, material := range requestBody.Materials {
-			// Check for duplicated order number
+			// For checking duplicated order later
 			orderingNumbers[material.Order] = true
 
 			materials = append(materials, postgres.Material{
@@ -385,6 +387,89 @@ func (s *server) deleteArea() http.Handler {
 			}
 		}
 
+		return nil
+	})
+}
+
+func (s *server) replaceSubject() http.Handler {
+	type requestBody struct {
+		Name      string `json:"name"`
+		Order     int    `json:"order"`
+		AreaId    string `json:"areaId"`
+		Materials []struct {
+			Id    string `json:"id"`
+			Name  string `json:"name"`
+			Order int    `json:"order"`
+		} `json:"materials"`
+	}
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		subjectId := chi.URLParam(r, "subjectId")
+		// Parse Body
+		var body requestBody
+		if err := rest.ParseJson(r.Body, &body); err != nil {
+			return rest.NewParseJsonError(err)
+		}
+
+		// Validate that request body is valid
+		if body.Name == "" {
+			return &rest.Error{
+				http.StatusBadRequest,
+				"Name cannot be empty",
+				richErrors.New("empty subject name"),
+			}
+		}
+		newSubject := postgres.Subject{
+			Id:        subjectId,
+			AreaId:    body.AreaId,
+			Name:      body.Name,
+			Materials: make([]postgres.Material, 0),
+			Order:     body.Order,
+		}
+		materialOrderNumbers := make(map[int]bool)
+		for _, material := range body.Materials {
+			if material.Name == "" {
+				return &rest.Error{
+					http.StatusBadRequest,
+					"Material name cannot be empty",
+					richErrors.New("empty material name"),
+				}
+			}
+			newSubject.Materials = append(newSubject.Materials, postgres.Material{
+				Id:        material.Id,
+				SubjectId: subjectId,
+				Subject:   newSubject,
+				Name:      material.Name,
+				Order:     material.Order,
+			})
+			materialOrderNumbers[material.Order] = true
+		}
+		// Make sure no order are repeated
+		if len(materialOrderNumbers) != len(body.Materials) {
+			return &rest.Error{
+				http.StatusBadRequest,
+				"Material order number can't be repeated",
+				richErrors.New("Repeated order number"),
+			}
+		}
+
+		// Make sure area referenced exists
+		_, err := s.store.GetArea(body.AreaId)
+		if err != nil {
+			return &rest.Error{
+				http.StatusBadRequest,
+				"Can't find the specified area",
+				err,
+			}
+		}
+
+		// Replace subject
+		if err := s.store.ReplaceSubject(newSubject); err != nil {
+			return &rest.Error{
+				http.StatusInternalServerError,
+				"Failed replacing subject",
+				err,
+			}
+		}
 		return nil
 	})
 }
