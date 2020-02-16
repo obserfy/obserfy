@@ -17,6 +17,7 @@ import { ReactComponent as DeleteIcon } from "../../icons/trash.svg"
 import Icon from "../Icon/Icon"
 import NewSubjectDialog from "../NewSubjectDialog/NewSubjectDialog"
 import DeleteAreaDialog from "../DeleteAreaDialog/DeleteAreaDialog"
+import DeleteSubjectDialog from "../DeleteSubjectDialog/DeleteSubjectDialog"
 
 // FIXME: Typescript any typing, and inconsistent loading state should be fixed.
 interface Props {
@@ -29,13 +30,21 @@ export const PageCurriculumArea: FC<Props> = ({ id }) => {
   )
   const [showNewSubjectDialog, setShowNewSubjectDialog] = useState(false)
   const [showDeleteAreaDialog, setShowDeleteAreaDialog] = useState(false)
+  const [showDeleteSubjectDialog, setShowDeleteSubjectDialog] = useState(false)
+  const [subjectToDelete, setSubjectToDelete] = useState<Subject>()
   const loading = area.loading || subjectsLoading
 
   const subjectList = subjects
     ?.sort((a, b) => b.order - a.order)
     .map(subject => (
       <Box key={subject.id}>
-        <SubjectMaterials subject={subject} />
+        <SubjectListItem
+          subject={subject}
+          onDeleteClick={() => {
+            setSubjectToDelete(subject)
+            setShowDeleteSubjectDialog(true)
+          }}
+        />
       </Box>
     ))
 
@@ -104,6 +113,17 @@ export const PageCurriculumArea: FC<Props> = ({ id }) => {
           areaId={id}
         />
       )}
+      {showDeleteSubjectDialog && subjectToDelete && (
+        <DeleteSubjectDialog
+          subjectId={subjectToDelete.id}
+          name={subjectToDelete.name}
+          onDismiss={() => setShowDeleteSubjectDialog(false)}
+          onDeleted={() => {
+            setSubjectsOutdated()
+            setShowDeleteSubjectDialog(false)
+          }}
+        />
+      )}
     </>
   )
 }
@@ -114,10 +134,14 @@ const LoadingState: FC = () => (
   </Box>
 )
 
-interface SubjectProps {
+interface SubjectListItemProps {
   subject: Subject
+  onDeleteClick: () => void
 }
-const SubjectMaterials: FC<SubjectProps> = ({ subject }) => {
+const SubjectListItem: FC<SubjectListItemProps> = ({
+  subject,
+  onDeleteClick,
+}) => {
   const [materials, loading] = useGetSubjectMaterials(subject.id)
 
   const materialList = materials?.map(material => (
@@ -155,7 +179,11 @@ const SubjectMaterials: FC<SubjectProps> = ({ subject }) => {
           </Typography.Body>
           <Spacer />
           <Flex alignItems="center" sx={{ flexShrink: 0 }}>
-            <Button sx={{ flexShrink: 0 }} variant="secondary">
+            <Button
+              sx={{ flexShrink: 0 }}
+              variant="secondary"
+              onClick={onDeleteClick}
+            >
               <Icon as={DeleteIcon} m={0} fill="danger" />
             </Button>
             <Button sx={{ flexShrink: 0 }} variant="secondary">
