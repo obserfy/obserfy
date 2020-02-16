@@ -1,4 +1,5 @@
 import React, { FC, useState } from "react"
+import { navigate } from "gatsby-plugin-intl3"
 import Box from "../Box/Box"
 import Typography from "../Typography/Typography"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
@@ -15,6 +16,7 @@ import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import { ReactComponent as DeleteIcon } from "../../icons/trash.svg"
 import Icon from "../Icon/Icon"
 import NewSubjectDialog from "../NewSubjectDialog/NewSubjectDialog"
+import DeleteAreaDialog from "../DeleteAreaDialog/DeleteAreaDialog"
 
 // FIXME: Typescript any typing, and inconsistent loading state should be fixed.
 interface Props {
@@ -26,6 +28,7 @@ export const PageCurriculumArea: FC<Props> = ({ id }) => {
     id
   )
   const [showNewSubjectDialog, setShowNewSubjectDialog] = useState(false)
+  const [showDeleteAreaDialog, setShowDeleteAreaDialog] = useState(false)
   const loading = area.loading || subjectsLoading
 
   const subjectList = subjects
@@ -47,7 +50,7 @@ export const PageCurriculumArea: FC<Props> = ({ id }) => {
         <Flex mx={3} mt={3}>
           <Button
             variant="outline"
-            onClick={() => setShowNewSubjectDialog(true)}
+            onClick={() => setShowDeleteAreaDialog(true)}
             color="danger"
             sx={{ flexShrink: 0 }}
           >
@@ -91,6 +94,14 @@ export const PageCurriculumArea: FC<Props> = ({ id }) => {
             setShowNewSubjectDialog(false)
             setSubjectsOutdated()
           }}
+        />
+      )}
+      {showDeleteAreaDialog && (
+        <DeleteAreaDialog
+          name={area.data?.name ?? ""}
+          onDismiss={() => setShowDeleteAreaDialog(false)}
+          onDeleted={() => navigate("/dashboard/settings/curriculum")}
+          areaId={id}
         />
       )}
     </>
