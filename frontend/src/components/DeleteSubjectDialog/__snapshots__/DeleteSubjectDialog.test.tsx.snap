@@ -329,7 +329,7 @@ exports[`DeleteSubjectDialog should render correctly 1`] = `
           <h6
             class="emotion-0"
           >
-            Delete subject?
+            Delete Subject?
           </h6>
         </div>
         <p
@@ -340,7 +340,7 @@ exports[`DeleteSubjectDialog should render correctly 1`] = `
             Bank Game
             "
           </i>
-           and every data associated with it (student progress, materials, etc...) will be permanently deleted. Are you sure?
+           and student data related to it will be permanently deleted. Are you sure?
         </p>
         <div
           class="emotion-6"

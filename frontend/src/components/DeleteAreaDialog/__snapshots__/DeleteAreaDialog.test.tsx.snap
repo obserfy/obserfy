@@ -340,7 +340,7 @@ exports[`DeleteAreaDialog should render correctly 1`] = `
             Practical Life
             "
           </i>
-           and every data associated with it (student progress, materials, etc...) will be permanently deleted. Are you sure?
+           and student data related to it will be permanently deleted. Are you sure?
         </p>
         <div
           class="emotion-6"

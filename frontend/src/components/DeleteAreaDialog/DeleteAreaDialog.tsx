@@ -37,33 +37,29 @@ export const DeleteAreaDialog: FC<Props> = ({
     setLoading(false)
   }
 
-  const header = (
-    <Flex
-      backgroundColor="surface"
-      justifyContent="center"
-      p={3}
-      sx={{
-        flexShrink: 0,
-        position: "relative",
-        borderBottomColor: "border",
-        borderBottomWidth: 1,
-        borderBottomStyle: "solid",
-      }}
-    >
-      <Typography.H6
-        sx={{
-          pointerEvents: "none",
-          alignContent: "center",
-        }}
-      >
-        Delete area?
-      </Typography.H6>
-    </Flex>
-  )
-
   return (
     <Dialog maxWidth={["", "maxWidth.xsm"]}>
-      {header}
+      <Flex
+        backgroundColor="surface"
+        justifyContent="center"
+        p={3}
+        sx={{
+          flexShrink: 0,
+          position: "relative",
+          borderBottomColor: "border",
+          borderBottomWidth: 1,
+          borderBottomStyle: "solid",
+        }}
+      >
+        <Typography.H6
+          sx={{
+            pointerEvents: "none",
+            alignContent: "center",
+          }}
+        >
+          Delete area?
+        </Typography.H6>
+      </Flex>
       <Typography.Body
         p={3}
         sx={{
@@ -72,8 +68,8 @@ export const DeleteAreaDialog: FC<Props> = ({
           borderBottomStyle: "solid",
         }}
       >
-        <i>&quot;{name}&quot;</i> and every data associated with it (student
-        progress, materials, etc...) will be permanently deleted. Are you sure?
+        <i>&quot;{name}&quot;</i> and student data related to it will be
+        permanently deleted. Are you sure?
       </Typography.Body>
       <Flex alignItems="center">
         <Spacer />
