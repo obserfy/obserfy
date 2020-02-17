@@ -18,6 +18,7 @@ exports[`AddObservationDialog should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  border: none;
   top: 0;
   left: 0;
   z-index: 1000001;
@@ -57,7 +58,10 @@ exports[`AddObservationDialog should render correctly 1`] = `
   background-color: var(--theme-ui-colors-background,#F7F8FA);
   border-radius: 8px;
   box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
-  border-radius: 0;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
   padding: 0;
   background-color: var(--theme-ui-colors-surface,#fff);
   max-width: 640px;
@@ -67,7 +71,8 @@ exports[`AddObservationDialog should render correctly 1`] = `
 
 @media screen and (min-width:40em) {
   .emotion-23 {
-    border-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
   }
 }
 
@@ -345,7 +350,7 @@ exports[`AddObservationDialog should render correctly 1`] = `
 }
 
 .emotion-9:disabled {
-  opacity: 0.38;
+  opacity: 0.68;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
@@ -611,7 +616,7 @@ exports[`AddObservationDialog should render correctly 1`] = `
   <div
     class="emotion-25"
   >
-    <div
+    <dialog
       class="emotion-24"
     >
       <div
@@ -754,7 +759,7 @@ exports[`AddObservationDialog should render correctly 1`] = `
           </div>
         </div>
       </div>
-    </div>
+    </dialog>
   </div>
 </div>
 `;

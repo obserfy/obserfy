@@ -1,4 +1,4 @@
-import useApi from "./useApi"
+import useOldApiHook from "./useOldApiHook"
 
 export enum MaterialProgressStage {
   PRESENTED,
@@ -15,7 +15,7 @@ export interface MaterialProgress {
 export function useGetStudentMaterialProgress(
   studentId: string
 ): [MaterialProgress[], boolean, () => void] {
-  const [area, loading, setOutdated] = useApi<MaterialProgress[]>(
+  const [area, loading, setOutdated] = useOldApiHook<MaterialProgress[]>(
     `/students/${studentId}/materialsProgress`
   )
   return [area ?? [], loading, setOutdated]

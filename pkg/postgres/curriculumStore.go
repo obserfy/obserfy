@@ -3,10 +3,56 @@ package postgres
 import (
 	"github.com/go-pg/pg/v9"
 	"github.com/google/uuid"
+	richErrors "github.com/pkg/errors"
 )
 
 type CurriculumStore struct {
 	*pg.DB
+}
+
+func (c CurriculumStore) UpdateArea(areaId string, name string) error {
+	area := Area{Id: areaId, Name: name}
+	if _, err := c.DB.Model(&area).
+		Column("name").
+		Where("id=?", areaId).
+		Update(); err != nil {
+		return richErrors.Wrap(err, "Failed updating area")
+	}
+	return nil
+}
+
+func (c CurriculumStore) ReplaceSubject(newSubject Subject) error {
+	var materialsToKeep []string
+	for _, material := range newSubject.Materials {
+		materialsToKeep = append(materialsToKeep, material.Id)
+	}
+	if err := c.DB.RunInTransaction(func(tx *pg.Tx) error {
+		if err := tx.Update(&newSubject); err != nil {
+			return richErrors.Wrap(err, "Failed updating subject")
+		}
+		if len(materialsToKeep) > 0 {
+			if _, err := tx.Model(&newSubject.Materials).
+				OnConflict("(id) DO UPDATE").
+				Insert(); err != nil {
+				return richErrors.Wrap(err, "Failed updating materials")
+			}
+			if _, err := tx.Model((*Material)(nil)).
+				Where("subject_id=? AND id NOT IN (?)", newSubject.Id, pg.In(materialsToKeep)).
+				Delete(); err != nil {
+				return richErrors.Wrap(err, "Failed deleting removed materials")
+			}
+		} else {
+			if _, err := tx.Model((*Material)(nil)).
+				Where("subject_id=?", newSubject.Id).
+				Delete(); err != nil {
+				return richErrors.Wrap(err, "Failed deleting removed materials")
+			}
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (c CurriculumStore) GetMaterial(materialId string) (*Material, error) {
@@ -92,7 +138,7 @@ func (c CurriculumStore) GetSubject(id string) (*Subject, error) {
 	return &subject, nil
 }
 
-func (c CurriculumStore) NewSubject(name string, areaId string) (*Subject, error) {
+func (c CurriculumStore) NewSubject(name string, areaId string, materials []Material) (*Subject, error) {
 	var biggestOrder int
 	if _, err := c.DB.Model((*Subject)(nil)).
 		Where("area_id=?", areaId).
@@ -109,7 +155,20 @@ func (c CurriculumStore) NewSubject(name string, areaId string) (*Subject, error
 		Name:   name,
 		Order:  biggestOrder + 1,
 	}
-	if err := c.DB.Insert(&subject); err != nil {
+	for i := range materials {
+		materials[i].SubjectId = subject.Id
+	}
+	if err := c.DB.RunInTransaction(func(tx *pg.Tx) error {
+		if err := c.DB.Insert(&subject); err != nil {
+			return err
+		}
+		if len(materials) != 0 {
+			if err := c.DB.Insert(&materials); err != nil {
+				return err
+			}
+		}
+		return nil
+	}); err != nil {
 		return nil, err
 	}
 	return &subject, nil
@@ -156,4 +215,20 @@ func (c CurriculumStore) GetSubjectMaterials(subjectId string) ([]Material, erro
 		return nil, err
 	}
 	return materials, nil
+}
+
+func (c CurriculumStore) DeleteArea(id string) error {
+	area := Area{Id: id}
+	if err := c.DB.Delete(&area); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (c CurriculumStore) DeleteSubject(id string) error {
+	subject := Subject{Id: id}
+	if err := c.DB.Delete(&subject); err != nil {
+		return err
+	}
+	return nil
 }

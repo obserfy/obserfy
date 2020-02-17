@@ -28,8 +28,8 @@ interface Props {
   areaId: string
 }
 export const PageStudentProgress: FC<Props> = ({ areaId, studentId }) => {
+  const area = useGetArea(areaId)
   const [student, studentLoading] = useGetStudent(studentId)
-  const [area, areaLoading] = useGetArea(areaId)
   const [subjects, subjectsLoading] = useGetAreaSubjects(areaId)
   const [isEditing, setIsEditing] = useState(false)
   const [selectedMaterial, setSelectedMaterial] = useState<Material>()
@@ -40,7 +40,7 @@ export const PageStudentProgress: FC<Props> = ({ areaId, studentId }) => {
     setProgressOutdated,
   ] = useGetStudentMaterialProgress(studentId)
   const loading =
-    studentLoading || areaLoading || subjectsLoading || progressLoading
+    studentLoading || area.loading || subjectsLoading || progressLoading
 
   const backNavigation = (
     <BackNavigation
@@ -76,7 +76,7 @@ export const PageStudentProgress: FC<Props> = ({ areaId, studentId }) => {
             <Box as="span" color="textDisabled">
               {student?.name}
             </Box>
-            {` ${area?.name} Progress`}
+            {` ${area.data?.name} Progress`}
           </Typography.H3>
         </Box>
         <Box m={3}>

@@ -125,6 +125,7 @@ const themeUiTheme = {
       header: 70,
     },
     maxWidth: {
+      xsm: 500,
       sm: 640,
       md: 700,
       lg: 900,
@@ -309,7 +310,7 @@ const rebassVariants = {
         fontStyle: "italic",
       },
       "&:disabled": {
-        opacity: 0.38,
+        opacity: 0.68,
         borderColor: "border",
         color: "textDisabled",
       },

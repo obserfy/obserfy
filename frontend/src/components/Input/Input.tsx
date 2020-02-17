@@ -13,6 +13,7 @@ interface Props extends BoxProps {
   onEnterPressed?: () => void
 }
 export const Input: FC<Props> = ({
+  autoFocus,
   name,
   small,
   sx,
@@ -55,6 +56,7 @@ export const Input: FC<Props> = ({
           <Icon as={icon} m={0} mr={-40} size={24} sx={{ zIndex: 2 }} ml={3} />
         )}
         <BaseInput
+          autoFocus={autoFocus}
           name={name}
           onKeyUp={e => {
             if (onEnterPressed && e.keyCode === 13) onEnterPressed()
@@ -63,7 +65,7 @@ export const Input: FC<Props> = ({
           disabled={disabled}
           py={small ? 2 : undefined}
           sx={withIconStyle}
-          fontSize={small ? 0 : undefined}
+          fontSize={small ? 1 : undefined}
           backgroundColor={backgroundColor}
           placeholder={placeholder}
           width={width}

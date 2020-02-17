@@ -1,77 +1,98 @@
-import React, { FC } from "react"
+import React, { FC, useState } from "react"
 import Typography from "../Typography/Typography"
 import { Box } from "../Box/Box"
 import Flex from "../Flex/Flex"
 import Spacer from "../Spacer/Spacer"
 import Button from "../Button/Button"
-import { getAnalytics } from "../../analytics"
-import { getSchoolId } from "../../hooks/schoolIdState"
-import useApi from "../../api/useApi"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import CardLink from "../CardLink/CardLink"
 import BackNavigation from "../BackNavigation/BackNavigation"
+import { useGetCurriculum } from "../../api/useGetCurriculum"
+import { useGetCurriculumAreas } from "../../api/useGetCurriculumAreas"
+import { createDefaultCurriculum } from "../../api/createDefaultCurriculum"
+import { Area } from "../../api/useGetArea"
+import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
+import Icon from "../Icon/Icon"
+import NewAreaDialog from "../NewAreaDialog/NewAreaDialog"
 
 export const PageCurriculumSettings: FC = () => {
-  const [curriculum, curriculumLoading, setCurriculumOutdated] = useApi(
-    `/schools/${getSchoolId()}/curriculum`
-  )
-  const [areas, areasLoading, setAreasOutdated] = useApi(
-    `/schools/${getSchoolId()}/curriculum/areas`
-  )
-  const loading = curriculumLoading || areasLoading
+  const [showNewAreaDialog, setShowNewAreaDialog] = useState(false)
 
-  async function createNewDefaultCurriculum(): Promise<void> {
-    const baseUrl = "/api/v1"
-    const response = await fetch(
-      `${baseUrl}/schools/${getSchoolId()}/curriculum`,
-      {
-        credentials: "same-origin",
-        method: "POST",
-      }
-    )
-    if (response.status === 201) {
-      setCurriculumOutdated()
-      setAreasOutdated()
-      getAnalytics()?.track("Default curriculum created", {
-        responseStatus: response.status,
-      })
-    } else {
-      getAnalytics()?.track("Create curriculum failed", response.text())
-    }
+  const curriculum = useGetCurriculum()
+  const areas = useGetCurriculumAreas()
+
+  const loading = curriculum.loading || areas.loading
+
+  function closeNewAreaDialog(): void {
+    setShowNewAreaDialog(false)
   }
 
-  const setupCurriculum = !loading && curriculum?.error && (
-    <Flex alignItems="center" p={3}>
-      <Typography.H6>Setup curriculum</Typography.H6>
-      <Spacer />
-      <Button onClick={createNewDefaultCurriculum}>Use default</Button>
-    </Flex>
-  )
-
-  const curriculumList = curriculum && curriculum.error === undefined && (
-    <Box mx={3}>
-      <Typography.H3 pb={3}>{curriculum.name}</Typography.H3>
-      {areas?.error === undefined &&
-        areas?.map((area: any) => (
-          <CardLink
-            key={area.id}
-            name={area.name}
-            to={`/dashboard/settings/curriculum/area?id=${area.id}`}
-            mb={3}
-          />
-        ))}
-    </Box>
-  )
-
   return (
-    <Box maxWidth="maxWidth.sm" margin="auto">
-      <BackNavigation to="/dashboard/settings" text="Settings" />
-      {loading && <LoadingState />}
-      {setupCurriculum}
-      {curriculumList}
-    </Box>
+    <>
+      <Box maxWidth="maxWidth.sm" margin="auto">
+        <BackNavigation to="/dashboard/settings" text="Settings" />
+        {loading && <LoadingState />}
+        {!loading && !curriculum.error && (
+          <CurriculumAreas
+            newAreaClick={() => setShowNewAreaDialog(true)}
+            name={curriculum.data?.name}
+            areas={areas.data}
+          />
+        )}
+        {!loading && curriculum.error && (
+          <SetupCurriculum
+            onCreated={() => {
+              curriculum.setOutdated()
+              areas.setOutdated()
+            }}
+          />
+        )}
+      </Box>
+      {showNewAreaDialog && curriculum.data && (
+        <NewAreaDialog
+          curriculumId={curriculum.data.id}
+          onDismiss={closeNewAreaDialog}
+          onSaved={() => {
+            closeNewAreaDialog()
+            areas.setOutdated()
+          }}
+        />
+      )}
+    </>
   )
 }
+
+const SetupCurriculum: FC<{ onCreated: () => void }> = ({ onCreated }) => (
+  <Flex alignItems="center" p={3}>
+    <Typography.H6>Setup curriculum</Typography.H6>
+    <Spacer />
+    <Button onClick={() => createDefaultCurriculum(onCreated)}>
+      Use default
+    </Button>
+  </Flex>
+)
+
+const CurriculumAreas: FC<{
+  newAreaClick: () => void
+  name?: string
+  areas?: Area[]
+}> = ({ newAreaClick, name, areas }) => (
+  <Box mx={3}>
+    <Typography.H3 pb={3}>{name}</Typography.H3>
+    <Button variant="outline" mb={2} width="100%" onClick={newAreaClick}>
+      <Icon as={PlusIcon} m={0} mr={2} />
+      New Area
+    </Button>
+    {areas?.map(area => (
+      <CardLink
+        key={area.id}
+        name={area.name}
+        to={`/dashboard/settings/curriculum/area?id=${area.id}`}
+        mb={2}
+      />
+    ))}
+  </Box>
+)
 
 const LoadingState: FC = () => (
   <Box p={3}>

@@ -2,7 +2,7 @@ export interface NewStudent {
   name: string
   dateOfBirth?: Date
 }
-export function submitNewStudent(
+export function createStudentApi(
   schoolId: string,
   student: NewStudent
 ): Promise<Response> {

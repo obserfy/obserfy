@@ -288,7 +288,7 @@ exports[`PageSettings should render correctly 1`] = `
 }
 
 .emotion-17:disabled {
-  opacity: 0.38;
+  opacity: 0.68;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }

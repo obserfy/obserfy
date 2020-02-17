@@ -21,7 +21,7 @@ import MenuIcon from "./MenuIcon"
 import Flex, { FlexProps } from "../Flex/Flex"
 import Box from "../Box/Box"
 import { useAvatarPlaceholder } from "../../useAvatarPlaceholder"
-import useApi from "../../api/useApi"
+import useOldApiHook from "../../api/useOldApiHook"
 import { getSchoolId } from "../../hooks/schoolIdState"
 import { getAnalytics } from "../../analytics"
 import {
@@ -77,7 +77,7 @@ export const AppBar: FC<Props> = ({
 
 export const SchoolName: FC<FlexProps> = ({ ...props }) => {
   const schoolId = getSchoolId()
-  const [school] = useApi<{ name: string }>(`/schools/${schoolId}`)
+  const [school] = useOldApiHook<{ name: string }>(`/schools/${schoolId}`)
 
   useEffect(() => {
     if (school) {
@@ -119,7 +119,7 @@ const UserAvatar: FC = () => {
   const element = useRef<HTMLElement>(null)
   const avatar = useAvatarPlaceholder()
   useOutsideClick(element, () => setIsShowingOption(false))
-  const [userData] = useApi<{
+  const [userData] = useOldApiHook<{
     id: string
     name: string
     email: string

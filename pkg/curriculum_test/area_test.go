@@ -111,3 +111,70 @@ func (s *AreaTestSuite) TestCreateAreaWithNoName() {
 	// Should get 403
 	assert.EqualValues(t, http.StatusBadRequest, s.w.Code)
 }
+
+func (s *AreaTestSuite) TestDeleteArea() {
+	t := s.T()
+	area := s.saveNewArea()
+	response := s.testRequest("DELETE", "/areas/"+area.Id, nil)
+	assert.Equal(t, http.StatusOK, response.Code)
+	var savedArea postgres.Area
+	err := s.db.Model(&savedArea).
+		Where("id=?", area.Id).
+		Select()
+	assert.Error(t, err)
+}
+
+func (s *AreaTestSuite) TestDeleteUnknownArea() {
+	t := s.T()
+	areaId := uuid.New().String()
+	response := s.testRequest("DELETE", "/areas/"+areaId, nil)
+	assert.Equal(t, http.StatusNotFound, response.Code)
+}
+
+func (s *AreaTestSuite) TestUpdateAreaName() {
+	t := s.T()
+	area := s.saveNewArea()
+
+	type payload struct {
+		Name string `json:"name"`
+	}
+	newArea := payload{
+		Name: uuid.New().String(),
+	}
+
+	response := s.testRequest("PATCH", "/areas/"+area.Id, newArea)
+	assert.Equal(t, http.StatusOK, response.Code)
+
+	var savedArea postgres.Area
+	err := s.db.Model(&savedArea).
+		Where("id=?", area.Id).
+		Select()
+	assert.NoError(t, err)
+
+	assert.Equal(t, newArea.Name, savedArea.Name)
+	assert.Equal(t, area.CurriculumId, savedArea.CurriculumId)
+}
+
+func (s *AreaTestSuite) TestUpdateInvalidAreaName() {
+	t := s.T()
+	area := s.saveNewArea()
+
+	type payload struct {
+		Name string `json:"name"`
+	}
+	newArea := payload{
+		Name: "",
+	}
+
+	response := s.testRequest("PATCH", "/areas/"+area.Id, newArea)
+	assert.Equal(t, http.StatusBadRequest, response.Code)
+
+	var savedArea postgres.Area
+	err := s.db.Model(&savedArea).
+		Where("id=?", area.Id).
+		Select()
+	assert.NoError(t, err)
+
+	assert.Equal(t, area.Name, savedArea.Name)
+	assert.Equal(t, area.CurriculumId, savedArea.CurriculumId)
+}
