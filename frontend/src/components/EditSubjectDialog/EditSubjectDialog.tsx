@@ -1,44 +1,49 @@
 import React, { FC, useState } from "react"
 import nanoid from "nanoid"
-import Dialog from "../Dialog/Dialog"
+import { Material } from "../../api/useGetSubjectMaterials"
+import { getAnalytics } from "../../analytics"
+import DraggableMaterialListItem from "../DraggableMaterialListItem/DraggableMaterialListItem"
+import Flex from "../Flex/Flex"
 import Typography from "../Typography/Typography"
 import Button from "../Button/Button"
 import Spacer from "../Spacer/Spacer"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
-import Flex from "../Flex/Flex"
+import Dialog from "../Dialog/Dialog"
 import Box from "../Box/Box"
-import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
-import Icon from "../Icon/Icon"
 import Input from "../Input/Input"
-import { Material } from "../../api/useGetSubjectMaterials"
-import { getAnalytics } from "../../analytics"
-import { createSubjectApi } from "../../api/createSubjectApi"
-import DraggableMaterialListItem from "../DraggableMaterialListItem/DraggableMaterialListItem"
+import Icon from "../Icon/Icon"
+import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
+import { Subject } from "../../api/useGetAreaSubjects"
+import { updateSubjectApi } from "../../api/updateSubjectApi"
 
 const ITEM_HEIGHT = 48
+
 interface Props {
-  /** Called when cancel is clicked */
   onDismiss?: () => void
-  /** Called when new subject is successfully saved */
   onSaved?: () => void
+  subject: Subject & { materials: Material[] }
   areaId: string
 }
-export const NewSubjectDialog: FC<Props> = ({ onSaved, areaId, onDismiss }) => {
+export const EditSubjectDialog: FC<Props> = ({
+  onSaved,
+  onDismiss,
+  subject,
+  areaId,
+}) => {
   const [loading, setLoading] = useState(false)
-  const [subjectName, setSubjectName] = useState("")
-  const [materials, setMaterials] = useState<Material[]>([])
+  const [subjectName, setSubjectName] = useState(subject.name)
+  const [materials, setMaterials] = useState<Material[]>(subject.materials)
 
   const isValid =
     materials.every(material => material.name !== "") && subjectName !== ""
 
   async function createSubject(): Promise<void> {
     setLoading(true)
-    const response = await createSubjectApi(areaId, {
+    const response = await updateSubjectApi({
+      ...subject,
       name: subjectName,
-      materials: materials.map(({ order, name }) => ({
-        order,
-        name,
-      })),
+      materials,
+      areaId,
     })
 
     if (response.status === 201) {
@@ -196,4 +201,4 @@ export const NewSubjectDialog: FC<Props> = ({ onSaved, areaId, onDismiss }) => {
   )
 }
 
-export default NewSubjectDialog
+export default EditSubjectDialog

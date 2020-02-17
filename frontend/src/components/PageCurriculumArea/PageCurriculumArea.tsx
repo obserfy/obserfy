@@ -7,7 +7,10 @@ import Card from "../Card/Card"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { useGetArea } from "../../api/useGetArea"
 import { Subject, useGetAreaSubjects } from "../../api/useGetAreaSubjects"
-import { useGetSubjectMaterials } from "../../api/useGetSubjectMaterials"
+import {
+  Material,
+  useGetSubjectMaterials,
+} from "../../api/useGetSubjectMaterials"
 import Flex from "../Flex/Flex"
 import Button from "../Button/Button"
 import Spacer from "../Spacer/Spacer"
@@ -19,6 +22,7 @@ import NewSubjectDialog from "../NewSubjectDialog/NewSubjectDialog"
 import DeleteAreaDialog from "../DeleteAreaDialog/DeleteAreaDialog"
 import DeleteSubjectDialog from "../DeleteSubjectDialog/DeleteSubjectDialog"
 import EditAreaDialog from "../EditAreaDialog/EditAreaDialog"
+import EditSubjectDialog from "../EditSubjectDialog/EditSubjectDialog"
 
 // FIXME: Typescript any typing, and inconsistent loading state should be fixed.
 interface Props {
@@ -33,6 +37,12 @@ export const PageCurriculumArea: FC<Props> = ({ id }) => {
   const [showDeleteAreaDialog, setShowDeleteAreaDialog] = useState(false)
   const [showDeleteSubjectDialog, setShowDeleteSubjectDialog] = useState(false)
   const [showEditAreaDialog, setShowEditAreaDialog] = useState(false)
+
+  const [showEditSubjectDialog, setShowEditSubjectDialog] = useState(false)
+  const [editedSubject, setEditedSubject] = useState<
+    Subject & { materials: Material[] }
+  >()
+
   const [subjectToDelete, setSubjectToDelete] = useState<Subject>()
   const loading = area.loading || subjectsLoading
 
@@ -42,6 +52,10 @@ export const PageCurriculumArea: FC<Props> = ({ id }) => {
       <Box key={subject.id}>
         <SubjectListItem
           subject={subject}
+          onEditClick={target => {
+            setEditedSubject(target)
+            setShowEditSubjectDialog(true)
+          }}
           onDeleteClick={() => {
             setSubjectToDelete(subject)
             setShowDeleteSubjectDialog(true)
@@ -137,6 +151,17 @@ export const PageCurriculumArea: FC<Props> = ({ id }) => {
           }}
         />
       )}
+      {showEditSubjectDialog && editedSubject && (
+        <EditSubjectDialog
+          areaId={id}
+          subject={editedSubject}
+          onDismiss={() => setShowEditSubjectDialog(false)}
+          onSaved={() => {
+            setSubjectsOutdated()
+            setShowEditSubjectDialog(false)
+          }}
+        />
+      )}
     </>
   )
 }
@@ -150,10 +175,12 @@ const LoadingState: FC = () => (
 interface SubjectListItemProps {
   subject: Subject
   onDeleteClick: () => void
+  onEditClick: (subject: Subject & { materials: Material[] }) => void
 }
 const SubjectListItem: FC<SubjectListItemProps> = ({
   subject,
   onDeleteClick,
+  onEditClick,
 }) => {
   const [materials, loading] = useGetSubjectMaterials(subject.id)
 
@@ -199,7 +226,13 @@ const SubjectListItem: FC<SubjectListItemProps> = ({
             >
               <Icon as={DeleteIcon} m={0} fill="danger" />
             </Button>
-            <Button sx={{ flexShrink: 0 }} variant="secondary">
+            <Button
+              sx={{ flexShrink: 0 }}
+              variant="secondary"
+              onClick={() => {
+                onEditClick({ ...subject, materials })
+              }}
+            >
               <Icon as={EditIcon} m={0} fill="textPrimary" />
             </Button>
           </Flex>
