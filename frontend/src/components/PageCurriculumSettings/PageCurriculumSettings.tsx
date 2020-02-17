@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import React, { FC, useState } from "react"
 import Typography from "../Typography/Typography"
 import { Box } from "../Box/Box"
 import Flex from "../Flex/Flex"
@@ -13,29 +13,52 @@ import { createDefaultCurriculum } from "../../api/createDefaultCurriculum"
 import { Area } from "../../api/useGetArea"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import Icon from "../Icon/Icon"
+import NewAreaDialog from "../NewAreaDialog/NewAreaDialog"
 
 export const PageCurriculumSettings: FC = () => {
+  const [showNewAreaDialog, setShowNewAreaDialog] = useState(false)
+
   const curriculum = useGetCurriculum()
   const areas = useGetCurriculumAreas()
 
   const loading = curriculum.loading || areas.loading
-  const hasCurriculum = !loading && !curriculum.error
+
+  function closeNewAreaDialog(): void {
+    setShowNewAreaDialog(false)
+  }
 
   return (
-    <Box maxWidth="maxWidth.sm" margin="auto">
-      <BackNavigation to="/dashboard/settings" text="Settings" />
-      {loading && <LoadingState />}
-      {hasCurriculum ? (
-        <CurriculumOverview name={curriculum.data?.name} areas={areas.data} />
-      ) : (
-        <SetupCurriculum
-          onCreated={() => {
-            curriculum.setOutdated()
+    <>
+      <Box maxWidth="maxWidth.sm" margin="auto">
+        <BackNavigation to="/dashboard/settings" text="Settings" />
+        {loading && <LoadingState />}
+        {!loading && !curriculum.error && (
+          <CurriculumAreas
+            newAreaClick={() => setShowNewAreaDialog(true)}
+            name={curriculum.data?.name}
+            areas={areas.data}
+          />
+        )}
+        {!loading && curriculum.error && (
+          <SetupCurriculum
+            onCreated={() => {
+              curriculum.setOutdated()
+              areas.setOutdated()
+            }}
+          />
+        )}
+      </Box>
+      {showNewAreaDialog && curriculum.data && (
+        <NewAreaDialog
+          curriculumId={curriculum.data.id}
+          onDismiss={closeNewAreaDialog}
+          onSaved={() => {
+            closeNewAreaDialog()
             areas.setOutdated()
           }}
         />
       )}
-    </Box>
+    </>
   )
 }
 
@@ -49,13 +72,14 @@ const SetupCurriculum: FC<{ onCreated: () => void }> = ({ onCreated }) => (
   </Flex>
 )
 
-const CurriculumOverview: FC<{ name?: string; areas?: Area[] }> = ({
-  name,
-  areas,
-}) => (
+const CurriculumAreas: FC<{
+  newAreaClick: () => void
+  name?: string
+  areas?: Area[]
+}> = ({ newAreaClick, name, areas }) => (
   <Box mx={3}>
     <Typography.H3 pb={3}>{name}</Typography.H3>
-    <Button variant="outline" mb={2} width="100%">
+    <Button variant="outline" mb={2} width="100%" onClick={newAreaClick}>
       <Icon as={PlusIcon} m={0} mr={2} />
       New Area
     </Button>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { navigate } from "gatsby"
 
-const baseUrl = "/api/v1"
+export const BASE_URL = "/api/v1"
 
 export interface Error {
   error?: {
@@ -24,7 +24,7 @@ function useApi<T>(url: string, fetchOptions?: RequestInit): Api<T> {
     async function f(): Promise<void> {
       if (!isOutdated) return
       setLoading(true)
-      const result = await fetch(`${baseUrl}${url}`, {
+      const result = await fetch(`${BASE_URL}${url}`, {
         credentials: "same-origin",
         ...fetchOptions,
       })
