@@ -73,7 +73,7 @@ jobs:
           mkdir test_result/go
           go get gotest.tools/gotestsum
           PACKAGE_NAMES=$(go list ./... | circleci tests split --split-by=timings --timings-type=classname)
-          gotestsum --junitfile test_result/go/gotestsum-report.xml -- $PACKAGE_NAMES -v -coverprofile=coverage.txt -covermode=atomic
+          gotestsum --junitfile test_result/go/gotestsum-report.xml -- $PACKAGE_NAMES -v -coverprofile=coverage.txt -covermode=atomic -coverpkg ./...
       - run:  bash <(curl -s https://codecov.io/bash)
       - store_test_results:
           path: test_result
