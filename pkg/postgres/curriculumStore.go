@@ -10,6 +10,17 @@ type CurriculumStore struct {
 	*pg.DB
 }
 
+func (c CurriculumStore) UpdateArea(areaId string, name string) error {
+	area := Area{Id: areaId, Name: name}
+	if _, err := c.DB.Model(&area).
+		Column("name").
+		Where("id=?", areaId).
+		Update(); err != nil {
+		return richErrors.Wrap(err, "Failed updating area")
+	}
+	return nil
+}
+
 func (c CurriculumStore) ReplaceSubject(newSubject Subject) error {
 	var materialsToKeep []string
 	for _, material := range newSubject.Materials {

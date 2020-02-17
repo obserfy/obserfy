@@ -18,6 +18,7 @@ import Icon from "../Icon/Icon"
 import NewSubjectDialog from "../NewSubjectDialog/NewSubjectDialog"
 import DeleteAreaDialog from "../DeleteAreaDialog/DeleteAreaDialog"
 import DeleteSubjectDialog from "../DeleteSubjectDialog/DeleteSubjectDialog"
+import EditAreaDialog from "../EditAreaDialog/EditAreaDialog"
 
 // FIXME: Typescript any typing, and inconsistent loading state should be fixed.
 interface Props {
@@ -31,6 +32,7 @@ export const PageCurriculumArea: FC<Props> = ({ id }) => {
   const [showNewSubjectDialog, setShowNewSubjectDialog] = useState(false)
   const [showDeleteAreaDialog, setShowDeleteAreaDialog] = useState(false)
   const [showDeleteSubjectDialog, setShowDeleteSubjectDialog] = useState(false)
+  const [showEditAreaDialog, setShowEditAreaDialog] = useState(false)
   const [subjectToDelete, setSubjectToDelete] = useState<Subject>()
   const loading = area.loading || subjectsLoading
 
@@ -68,7 +70,7 @@ export const PageCurriculumArea: FC<Props> = ({ id }) => {
           </Button>
           <Button
             variant="outline"
-            onClick={() => setShowNewSubjectDialog(true)}
+            onClick={() => setShowEditAreaDialog(true)}
             mx={2}
             sx={{ flexShrink: 0 }}
           >
@@ -121,6 +123,17 @@ export const PageCurriculumArea: FC<Props> = ({ id }) => {
           onDeleted={() => {
             setSubjectsOutdated()
             setShowDeleteSubjectDialog(false)
+          }}
+        />
+      )}
+      {showEditAreaDialog && area.data && (
+        <EditAreaDialog
+          areaId={id}
+          originalName={area.data.name}
+          onDismiss={() => setShowEditAreaDialog(false)}
+          onSaved={() => {
+            area.setOutdated()
+            setShowEditAreaDialog(false)
           }}
         />
       )}

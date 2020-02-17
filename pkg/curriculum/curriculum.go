@@ -25,6 +25,7 @@ type Store interface {
 	DeleteArea(id string) error
 	DeleteSubject(id string) error
 	ReplaceSubject(subject postgres.Subject) error
+	UpdateArea(areaId string, name string) error
 }
 
 type server struct {
@@ -47,6 +48,7 @@ func NewRouter(s rest.Server, store Store) *chi.Mux {
 	server := server{s, store}
 	r := chi.NewRouter()
 	r.Method("POST", "/areas", server.createArea())
+	r.Method("PATCH", "/areas/{areaId}", server.patchArea())
 	r.Method("GET", "/areas/{areaId}", server.getArea())
 	r.Method("DELETE", "/areas/{areaId}", server.deleteArea())
 	r.Method("GET", "/areas/{areaId}/subjects", server.getAreaSubjects())
@@ -470,6 +472,37 @@ func (s *server) replaceSubject() http.Handler {
 				err,
 			}
 		}
+		return nil
+	})
+}
+
+func (s *server) patchArea() http.Handler {
+	type requestBody struct {
+		Name string `json:"name"`
+	}
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		areaId := chi.URLParam(r, "areaId")
+
+		var body requestBody
+		if err := rest.ParseJson(r.Body, &body); err != nil {
+			return rest.NewParseJsonError(err)
+		}
+		if body.Name == "" {
+			return &rest.Error{
+				http.StatusBadRequest,
+				"Name can't be empty",
+				richErrors.New("Empty name field"),
+			}
+		}
+
+		if err := s.store.UpdateArea(areaId, body.Name); err != nil {
+			return &rest.Error{
+				http.StatusInternalServerError,
+				"Failed updating area",
+				err,
+			}
+		}
+
 		return nil
 	})
 }
