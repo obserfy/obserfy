@@ -121,31 +121,33 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
           </Flex>
           {!isObservationLoading && emptyObservationPlaceholder}
           {isObservationLoading && <ObservationLoadingPlaceholder />}
-          <Flex mb={3} alignItems="center">
-            <Button
-              disabled={selectedDate >= dates.length - 1}
-              onClick={() => setSelectedDate(selectedDate + 1)}
-              variant="outline"
-            >
-              <Icon as={PrevIcon} m={0} />
-            </Button>
-            <Typography.Body flex={1} textAlign="center">
-              <FormattedDate
-                value={dates[selectedDate]}
-                month="short"
-                year="numeric"
-                weekday="short"
-                day="2-digit"
-              />
-            </Typography.Body>
-            <Button
-              disabled={selectedDate < 1}
-              onClick={() => setSelectedDate(selectedDate - 1)}
-              variant="outline"
-            >
-              <Icon as={NextIcon} m={0} />
-            </Button>
-          </Flex>
+          {!isObservationLoading && observations && (
+            <Flex mb={3} alignItems="center">
+              <Button
+                disabled={selectedDate >= dates.length - 1}
+                onClick={() => setSelectedDate(selectedDate + 1)}
+                variant="outline"
+              >
+                <Icon as={PrevIcon} m={0} />
+              </Button>
+              <Typography.Body flex={1} textAlign="center">
+                <FormattedDate
+                  value={dates[selectedDate]}
+                  month="short"
+                  year="numeric"
+                  weekday="short"
+                  day="2-digit"
+                />
+              </Typography.Body>
+              <Button
+                disabled={selectedDate < 1}
+                onClick={() => setSelectedDate(selectedDate - 1)}
+                variant="outline"
+              >
+                <Icon as={NextIcon} m={0} />
+              </Button>
+            </Flex>
+          )}
           {listOfObservations}
         </Box>
       </Box>

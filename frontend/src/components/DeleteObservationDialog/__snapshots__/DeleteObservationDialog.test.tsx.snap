@@ -355,6 +355,7 @@ exports[`DeleteObservationDialog should render correctly 1`] = `
           </button>
           <button
             class="emotion-5"
+            data-cy="confirm-delete"
           >
             Yes
           </button>

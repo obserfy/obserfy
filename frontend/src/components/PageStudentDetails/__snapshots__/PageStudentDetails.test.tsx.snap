@@ -43,7 +43,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   }
 }
 
-.emotion-32 {
+.emotion-26 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -51,12 +51,12 @@ exports[`PageStudentDetails should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-32 {
+  .emotion-26 {
     font-size: 20px;
   }
 }
 
-.emotion-31 {
+.emotion-25 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -509,65 +509,12 @@ exports[`PageStudentDetails should render correctly 1`] = `
   margin-bottom: 16px;
 }
 
-.emotion-29 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  margin-bottom: 16px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.emotion-24 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  max-width: 100%;
-  height: auto;
-  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  margin: 0;
-  height: 20px;
-  width: 20px;
-}
-
-.emotion-26 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  color: rgba(0,0,0,0.88);
-  font-size: 1.6rem;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 400;
-  line-height: 3rem;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
-  font-size: 16px;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  text-align: center;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-26 {
-    font-size: 14px;
-  }
-}
-
 <div>
   <div
-    class="emotion-32"
+    class="emotion-26"
   >
     <div
-      class="emotion-31"
+      class="emotion-25"
     >
       <a
         href="/dashboard/home"
@@ -675,31 +622,6 @@ exports[`PageStudentDetails should render correctly 1`] = `
           <div
             class="emotion-20"
           />
-        </div>
-        <div
-          class="emotion-29"
-        >
-          <button
-            class="emotion-18"
-            disabled=""
-          >
-            <div
-              class="emotion-24"
-            />
-          </button>
-          <p
-            class="emotion-26"
-          >
-            Tue, Feb 18, 2020
-          </p>
-          <button
-            class="emotion-18"
-            disabled=""
-          >
-            <div
-              class="emotion-24"
-            />
-          </button>
         </div>
       </div>
     </div>

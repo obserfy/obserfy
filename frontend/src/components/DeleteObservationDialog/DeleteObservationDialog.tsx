@@ -76,7 +76,12 @@ export const DeleteObservationDialog: FC<Props> = ({
         <Button variant="outline" m={2} onClick={onDismiss}>
           Cancel
         </Button>
-        <Button m={2} backgroundColor="danger" onClick={deleteObservation}>
+        <Button
+          m={2}
+          backgroundColor="danger"
+          onClick={deleteObservation}
+          data-cy="confirm-delete"
+        >
           {loading && <LoadingIndicator />}
           Yes
         </Button>
