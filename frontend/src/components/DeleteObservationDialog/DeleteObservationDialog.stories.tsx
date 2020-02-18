@@ -12,15 +12,9 @@ export default {
 
 export const Basic: FC = () => (
   <DeleteObservationDialog
-    observation={{
-      shortDesc: "He so smart",
-      id: "",
-      categoryId: "",
-      createdDate: "",
-      longDesc: "He just so smart, nuff said",
-      studentId: "",
-    }}
-    onCancel={action("cancel")}
-    onConfirm={action("confirm")}
+    onDismiss={action("dismiss")}
+    onDeleted={action("deleted")}
+    observationId="sadfasdf"
+    shortDesc="adsfasdfadsf"
   />
 )

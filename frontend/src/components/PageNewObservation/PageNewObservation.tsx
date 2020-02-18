@@ -43,8 +43,8 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
       getAnalytics()?.track("Create Observation Failed", {
         responseStatus: response.status,
       })
+      setSubmitting(false)
     }
-    setSubmitting(false)
   }
 
   return (

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EditObservationDialog should render correctly 1`] = `
-.emotion-25 {
+.emotion-21 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,12 +9,12 @@ exports[`EditObservationDialog should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-25 {
+  .emotion-21 {
     font-size: 20px;
   }
 }
 
-.emotion-24 {
+.emotion-20 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -37,7 +37,7 @@ exports[`EditObservationDialog should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-24 {
+  .emotion-20 {
     -webkit-align-items: center;
     -webkit-box-align: center;
     -ms-flex-align: center;
@@ -50,7 +50,7 @@ exports[`EditObservationDialog should render correctly 1`] = `
   }
 }
 
-.emotion-23 {
+.emotion-19 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -70,13 +70,13 @@ exports[`EditObservationDialog should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-23 {
+  .emotion-19 {
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
   }
 }
 
-.emotion-22 {
+.emotion-18 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -90,18 +90,19 @@ exports[`EditObservationDialog should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-2 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  position: relative;
+  border-bottom-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   border-bottom-width: 1px;
   border-bottom-style: solid;
-  border-bottom-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 16px;
+  background-color: var(--theme-ui-colors-surface,#fff);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -122,354 +123,17 @@ exports[`EditObservationDialog should render correctly 1`] = `
   -moz-letter-spacing: 0;
   -ms-letter-spacing: 0;
   letter-spacing: 0;
+  position: absolute;
+  pointer-events: none;
+  text-align: center;
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
-  margin-bottom: 0;
-  margin-right: 16px;
-  font-weight: bold;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  overflow-y: auto;
+  width: 100%;
 }
 
 .emotion-1 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  max-width: 100%;
-  height: auto;
-  cursor: pointer;
-  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  margin: 0;
-  height: 32px;
-  width: 32px;
-}
-
-.emotion-16 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  overflow-y: auto;
-  background-color: var(--theme-ui-colors-background,#F7F8FA);
-}
-
-.emotion-15 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  padding: 16px;
-}
-
-.emotion-7 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  width: 100%;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  as: label;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-size: 14px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-bottom: 16px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.emotion-3 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  padding-bottom: 4px;
-}
-
-.emotion-6 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.emotion-4 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  display: block;
-  width: 100%;
-  padding: 8px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  font-size: inherit;
-  line-height: inherit;
-  border: 1px solid;
-  border-radius: 8px;
-  color: inherit;
-  background-color: transparent;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface,#fff);
-  font-size: 16px;
-  padding: 16px;
-}
-
-.emotion-4:hover,
-.emotion-4:focus {
-  border-color: var(--theme-ui-colors-primary,#33691e);
-  outline: none;
-}
-
-.emotion-5 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  margin-left: -28px;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
-  pointer-events: none;
-  width: 24px;
-  height: 24px;
-}
-
-.emotion-11 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  width: 100%;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  as: label;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-size: 14px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  margin-bottom: 16px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.emotion-10 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.emotion-9 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  display: block;
-  width: 100%;
-  padding: 8px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  font-size: inherit;
-  line-height: inherit;
-  border: 1px solid;
-  border-radius: 8px;
-  color: inherit;
-  background-color: transparent;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  width: auto;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface,#fff);
-  font-size: 16px;
-  padding: 16px;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
-  width: 100%;
-}
-
-.emotion-9:hover,
-.emotion-9:focus {
-  border-color: var(--theme-ui-colors-primary,#33691e);
-  outline: none;
-}
-
-.emotion-9::-webkit-input-placeholder {
-  font-style: italic;
-}
-
-.emotion-9::-moz-placeholder {
-  font-style: italic;
-}
-
-.emotion-9:-ms-input-placeholder {
-  font-style: italic;
-}
-
-.emotion-9::placeholder {
-  font-style: italic;
-}
-
-.emotion-9:disabled {
-  opacity: 0.68;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
-}
-
-.emotion-14 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  width: 100%;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  as: label;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-size: 14px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.emotion-13 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  display: block;
-  width: 100%;
-  padding: 8px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  font-size: inherit;
-  line-height: inherit;
-  border: 1px solid;
-  border-radius: 8px;
-  color: inherit;
-  background-color: transparent;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface,#fff);
-  font-size: 14px;
-  padding: 16px;
-  height: 180px;
-  resize: vertical;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
-  width: 100%;
-  font-size: 16px;
-}
-
-.emotion-13:hover,
-.emotion-13:focus {
-  border-color: var(--theme-ui-colors-primary,#33691e);
-  outline: none;
-}
-
-.emotion-13::-webkit-input-placeholder {
-  font-style: italic;
-  line-height: 2rem;
-}
-
-.emotion-13::-moz-placeholder {
-  font-style: italic;
-  line-height: 2rem;
-}
-
-.emotion-13:-ms-input-placeholder {
-  font-style: italic;
-  line-height: 2rem;
-}
-
-.emotion-13::placeholder {
-  font-style: italic;
-  line-height: 2rem;
-}
-
-.emotion-21 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  border-top-width: 1px;
-  border-top-style: solid;
-  border-top-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  padding: 16px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.emotion-17 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  color: rgba(0,0,0,0.88);
-  font-size: 1.6rem;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 400;
-  line-height: 3rem;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  font-size: 14px;
-  line-height: 1.4;
-  margin-bottom: 0;
-}
-
-.emotion-18 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  pointer-events: none;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-}
-
-.emotion-19 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -520,28 +184,39 @@ exports[`EditObservationDialog should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin-right: 16px;
+  color: var(--theme-ui-colors-danger,#d50000);
+  margin: 8px;
 }
 
-.emotion-19:disabled {
+.emotion-1:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-19:hover,
-.emotion-19:focus {
+.emotion-1:hover,
+.emotion-1:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(98,151,73,0.12));
   border-color: var(--theme-ui-colors-primary,#33691e);
   outline: none;
 }
 
-.emotion-19:hover:disabled,
-.emotion-19:focus:disabled {
+.emotion-1:hover:disabled,
+.emotion-1:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-20 {
+.emotion-2 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  pointer-events: none;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -578,175 +253,414 @@ exports[`EditObservationDialog should render correctly 1`] = `
   padding-left: 16px;
   padding-right: 16px;
   white-space: nowrap;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 8px;
+}
+
+.emotion-3:disabled {
+  opacity: 0.38;
+  cursor: auto;
+}
+
+.emotion-3:hover,
+.emotion-3:focus {
+  background-color: var(--theme-ui-colors-primaryDark,#003d00);
+  outline: none;
+}
+
+.emotion-3:hover:disabled,
+.emotion-3:focus:disabled {
+  background-color: var(--theme-ui-colors-primary,#33691e);
+}
+
+.emotion-17 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding: 16px;
+  background-color: var(--theme-ui-colors-background,#F7F8FA);
+  overflow-y: auto;
+  max-height: 100%;
+}
+
+.emotion-8 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  width: 100%;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  as: label;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  margin-bottom: 16px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.emotion-20:disabled {
-  opacity: 0.38;
-  cursor: auto;
+.emotion-5 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding-bottom: 4px;
 }
 
-.emotion-20:hover,
-.emotion-20:focus {
-  background-color: var(--theme-ui-colors-primaryDark,#003d00);
+.emotion-7 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-6 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: block;
+  width: 100%;
+  padding: 8px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: inherit;
+  line-height: inherit;
+  border: 1px solid;
+  border-radius: 8px;
+  color: inherit;
+  background-color: transparent;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  width: auto;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface,#fff);
+  font-size: 16px;
+  padding: 16px;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  width: 100%;
+}
+
+.emotion-6:hover,
+.emotion-6:focus {
+  border-color: var(--theme-ui-colors-primary,#33691e);
   outline: none;
 }
 
-.emotion-20:hover:disabled,
-.emotion-20:focus:disabled {
-  background-color: var(--theme-ui-colors-primary,#33691e);
+.emotion-6::-webkit-input-placeholder {
+  font-style: italic;
+}
+
+.emotion-6::-moz-placeholder {
+  font-style: italic;
+}
+
+.emotion-6:-ms-input-placeholder {
+  font-style: italic;
+}
+
+.emotion-6::placeholder {
+  font-style: italic;
+}
+
+.emotion-6:disabled {
+  opacity: 0.68;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
+}
+
+.emotion-11 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  width: 100%;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  as: label;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-10 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: block;
+  width: 100%;
+  padding: 8px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: inherit;
+  line-height: inherit;
+  border: 1px solid;
+  border-radius: 8px;
+  color: inherit;
+  background-color: transparent;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface,#fff);
+  font-size: 14px;
+  padding: 16px;
+  height: 180px;
+  resize: vertical;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  width: 100%;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.emotion-10:hover,
+.emotion-10:focus {
+  border-color: var(--theme-ui-colors-primary,#33691e);
+  outline: none;
+}
+
+.emotion-10::-webkit-input-placeholder {
+  font-style: italic;
+  line-height: 2rem;
+}
+
+.emotion-10::-moz-placeholder {
+  font-style: italic;
+  line-height: 2rem;
+}
+
+.emotion-10:-ms-input-placeholder {
+  font-style: italic;
+  line-height: 2rem;
+}
+
+.emotion-10::placeholder {
+  font-style: italic;
+  line-height: 2rem;
+}
+
+.emotion-15 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-13 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: block;
+  width: 100%;
+  padding: 8px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: inherit;
+  line-height: inherit;
+  border: 1px solid;
+  border-radius: 8px;
+  color: inherit;
+  background-color: transparent;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface,#fff);
+  font-size: 16px;
+  padding: 16px;
+}
+
+.emotion-13:hover,
+.emotion-13:focus {
+  border-color: var(--theme-ui-colors-primary,#33691e);
+  outline: none;
+}
+
+.emotion-14 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-left: -28px;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  pointer-events: none;
+  width: 24px;
+  height: 24px;
 }
 
 <div>
   <div
-    class="emotion-25"
+    class="emotion-21"
   >
     <dialog
-      class="emotion-24"
+      class="emotion-20"
     >
       <div
-        class="emotion-23"
+        class="emotion-19"
+        title="Edit Observation"
       >
         <div
-          class="emotion-22"
+          class="emotion-18"
         >
           <div
-            class="emotion-2"
+            class="emotion-4"
           >
             <h6
               class="emotion-0"
             >
               Edit Observation
             </h6>
-            <div
-              class="emotion-1"
-            />
-          </div>
-          <div
-            class="emotion-16"
-          >
-            <div
-              class="emotion-15"
-            >
-              <label
-                class="emotion-7"
-              >
-                <div
-                  class="emotion-3"
-                >
-                  Category
-                </div>
-                <div
-                  class="emotion-6"
-                >
-                  <select
-                    aria-label="Category"
-                    class="emotion-4"
-                  >
-                    <option
-                      value="0"
-                    >
-                      Others
-                    </option>
-                    <option
-                      value="1"
-                    >
-                      Cultural
-                    </option>
-                    <option
-                      value="2"
-                    >
-                      Language
-                    </option>
-                    <option
-                      value="3"
-                    >
-                      Mathematics
-                    </option>
-                    <option
-                      value="4"
-                    >
-                      Practical Life
-                    </option>
-                    <option
-                      value="5"
-                    >
-                      Sensorial
-                    </option>
-                  </select>
-                  <svg
-                    class="emotion-5"
-                    fill="currentcolor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M7 10l5 5 5-5z"
-                    />
-                  </svg>
-                </div>
-              </label>
-              <label
-                class="emotion-11"
-              >
-                <div
-                  class="emotion-3"
-                >
-                  Short Description
-                </div>
-                <div
-                  class="emotion-10"
-                >
-                  <input
-                    class="emotion-9"
-                    placeholder="What have you find?"
-                    value=""
-                  />
-                </div>
-              </label>
-              <label
-                class="emotion-14"
-              >
-                <div
-                  class="emotion-3"
-                >
-                  Details
-                </div>
-                <textarea
-                  aria-label="Details"
-                  class="emotion-13"
-                  placeholder="Tell us about what you observed"
-                />
-              </label>
-            </div>
-          </div>
-          <div
-            class="emotion-21"
-          >
-            <p
-              class="emotion-17"
-            />
-            <div
-              class="emotion-18"
-            />
             <button
-              class="emotion-19"
+              class="emotion-1"
             >
               Cancel
             </button>
+            <div
+              class="emotion-2"
+            />
             <button
-              class="emotion-20"
-              data-cy="dialogPositiveAction"
+              class="emotion-3"
               disabled=""
             >
               Save
             </button>
+          </div>
+          <div
+            class="emotion-17"
+          >
+            <label
+              class="emotion-8"
+            >
+              <div
+                class="emotion-5"
+              >
+                Short Description
+              </div>
+              <div
+                class="emotion-7"
+              >
+                <input
+                  class="emotion-6"
+                  placeholder="What have you find?"
+                  value=""
+                />
+              </div>
+            </label>
+            <label
+              class="emotion-11"
+            >
+              <div
+                class="emotion-5"
+              >
+                Details
+              </div>
+              <textarea
+                aria-label="Details"
+                class="emotion-10"
+                placeholder="Tell us about what you observed"
+              />
+            </label>
+            <label
+              class="emotion-11"
+            >
+              <div
+                class="emotion-5"
+              >
+                Category
+              </div>
+              <div
+                class="emotion-15"
+              >
+                <select
+                  aria-label="Category"
+                  class="emotion-13"
+                >
+                  <option
+                    value="0"
+                  >
+                    Others
+                  </option>
+                  <option
+                    value="1"
+                  >
+                    Cultural
+                  </option>
+                  <option
+                    value="2"
+                  >
+                    Language
+                  </option>
+                  <option
+                    value="3"
+                  >
+                    Mathematics
+                  </option>
+                  <option
+                    value="4"
+                  >
+                    Practical Life
+                  </option>
+                  <option
+                    value="5"
+                  >
+                    Sensorial
+                  </option>
+                </select>
+                <svg
+                  class="emotion-14"
+                  fill="currentcolor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M7 10l5 5 5-5z"
+                  />
+                </svg>
+              </div>
+            </label>
           </div>
         </div>
       </div>

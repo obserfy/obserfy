@@ -1,6 +1,9 @@
 import React, { FC, useState } from "react"
 import { navigate } from "gatsby"
-import { Link } from "gatsby-plugin-intl3"
+import { FormattedDate, Link } from "gatsby-plugin-intl3"
+import isSameDay from "date-fns/isSameDay"
+import startOfDay from "date-fns/startOfDay"
+import differenceInDays from "date-fns/differenceInDays"
 import { useGetStudent } from "../../api/useGetStudent"
 import Flex from "../Flex/Flex"
 import Box from "../Box/Box"
@@ -14,10 +17,12 @@ import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import { Observation, useGetObservations } from "../../api/useGetObservations"
 import EditObservationDialog from "../EditObservationDialog/EditObservationDialog"
 import DeleteObservationDialog from "../DeleteObservationDialog/DeleteObservationDialog"
-import { getAnalytics } from "../../analytics"
 import ObservationCard from "../ObservationCard/ObservationCard"
 import Spacer from "../Spacer/Spacer"
 import StudentProgressSummaryCard from "../StudentProgressSummaryCard/StudentProgressSummaryCard"
+import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
+import { ReactComponent as PrevIcon } from "../../icons/arrow-back.svg"
+import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 
 interface Props {
   id: string
@@ -25,55 +30,29 @@ interface Props {
 export const PageStudentDetails: FC<Props> = ({ id }) => {
   const [isEditingObservation, setIsEditingObservation] = useState(false)
   const [isDeletingObservation, setIsDeletingObservation] = useState(false)
-  const [targetObservation, setTargetObservation] = useState()
-  const [details] = useGetStudent(id)
+  const [targetObservation, setTargetObservation] = useState<Observation>()
+  const [selectedDate, setSelectedDate] = useState(0)
+  const [student] = useGetStudent(id)
   const [
     observations,
     isObservationLoading,
     setObservationsAsOutdated,
   ] = useGetObservations(id)
 
-  const filteredObservation = observations
+  const dates = [
+    ...new Set(
+      observations?.map(({ createdDate }) =>
+        startOfDay(Date.parse(createdDate ?? "")).toISOString()
+      )
+    ),
+  ]?.sort((a, b) => differenceInDays(Date.parse(b), Date.parse(a)))
 
-  async function submitEditObservation(
-    observation: Observation
-  ): Promise<void> {
-    const baseUrl = "/api/v1"
-    const response = await fetch(`${baseUrl}/observations/${observation.id}`, {
-      credentials: "same-origin",
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(observation),
-    })
-    setIsEditingObservation(false)
-    setObservationsAsOutdated()
-    getAnalytics()?.track("Observation Updated", {
-      responseStatus: response.status,
-      observationId: observation.id,
-    })
-  }
-
-  async function submitDeleteObservation(
-    observation: Observation
-  ): Promise<void> {
-    const baseUrl = "/api/v1"
-    const response = await fetch(`${baseUrl}/observations/${observation.id}`, {
-      credentials: "same-origin",
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-    })
-    setObservationsAsOutdated()
-    setIsDeletingObservation(false)
-    getAnalytics()?.track("Observation Deleted", {
-      responseStatus: response.status,
-      observationId: observation.id,
-    })
-  }
-
-  const listOfObservations = filteredObservation
-    ?.sort(
-      (a, b) =>
-        Date.parse(b.createdDate ?? "") - Date.parse(a.createdDate ?? "")
+  const listOfObservations = observations
+    ?.filter(observation =>
+      isSameDay(
+        Date.parse(observation.createdDate ?? ""),
+        Date.parse(dates[selectedDate])
+      )
     )
     ?.map(observation => (
       <ObservationCard
@@ -90,8 +69,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
       />
     ))
 
-  const emptyObservationPlaceholder = (filteredObservation ?? []).length ===
-    0 && (
+  const emptyObservationPlaceholder = (observations ?? []).length === 0 && (
     <EmptyListPlaceholder
       text="No observation have been added"
       callToActionText="new observation"
@@ -107,7 +85,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
         <BackNavigation text="Home" to="/dashboard/home" />
         <Flex alignItems="start" mx={3} mb={4} mt={3}>
           <Typography.H3 sx={{ wordWrap: "break-word" }}>
-            {details?.name || <LoadingPlaceholder width="24rem" height={60} />}
+            {student?.name || <LoadingPlaceholder width="24rem" height={60} />}
           </Typography.H3>
           <Spacer />
           <Button
@@ -121,6 +99,14 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
             <Icon minWidth={20} as={EditIcon} m={0} />
           </Button>
         </Flex>
+        <Box m={3}>
+          <Link to={`/dashboard/students/observations/new?studentId=${id}`}>
+            <Button variant="outline" width="100%">
+              <Icon as={PlusIcon} m={0} mr={2} />
+              Add Observation
+            </Button>
+          </Link>
+        </Box>
         <Box p={3}>
           <SectionHeader>PROGRESS</SectionHeader>
           <StudentProgressSummaryCard studentId={id} />
@@ -135,21 +121,53 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
           </Flex>
           {!isObservationLoading && emptyObservationPlaceholder}
           {isObservationLoading && <ObservationLoadingPlaceholder />}
+          <Flex mb={3} alignItems="center">
+            <Button
+              disabled={selectedDate >= dates.length - 1}
+              onClick={() => setSelectedDate(selectedDate + 1)}
+              variant="outline"
+            >
+              <Icon as={PrevIcon} m={0} />
+            </Button>
+            <Typography.Body flex={1} textAlign="center">
+              <FormattedDate
+                value={dates[selectedDate]}
+                month="short"
+                year="numeric"
+                weekday="short"
+                day="2-digit"
+              />
+            </Typography.Body>
+            <Button
+              disabled={selectedDate < 1}
+              onClick={() => setSelectedDate(selectedDate - 1)}
+              variant="outline"
+            >
+              <Icon as={NextIcon} m={0} />
+            </Button>
+          </Flex>
           {listOfObservations}
         </Box>
       </Box>
       {isEditingObservation && (
         <EditObservationDialog
           defaultValue={targetObservation}
-          onCancel={() => setIsEditingObservation(false)}
-          onConfirm={submitEditObservation}
+          onDismiss={() => setIsEditingObservation(false)}
+          onSaved={() => {
+            setIsEditingObservation(false)
+            setObservationsAsOutdated()
+          }}
         />
       )}
-      {isDeletingObservation && (
+      {isDeletingObservation && targetObservation && (
         <DeleteObservationDialog
-          observation={targetObservation}
-          onConfirm={submitDeleteObservation}
-          onCancel={() => setIsDeletingObservation(false)}
+          observationId={targetObservation.id ?? ""}
+          shortDesc={targetObservation?.shortDesc}
+          onDismiss={() => setIsDeletingObservation(false)}
+          onDeleted={() => {
+            setObservationsAsOutdated()
+            setIsDeletingObservation(false)
+          }}
         />
       )}
     </>

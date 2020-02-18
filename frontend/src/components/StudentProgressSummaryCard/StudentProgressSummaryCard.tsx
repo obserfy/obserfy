@@ -79,6 +79,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
 
   const listOfInProgress = inProgress.map(item => (
     <MaterialProgressItem
+      key={item.materialId}
       value={item}
       onClick={() => {
         setSelected(item)
