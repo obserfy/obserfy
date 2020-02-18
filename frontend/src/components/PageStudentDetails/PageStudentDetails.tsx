@@ -1,12 +1,12 @@
 import React, { FC, useState } from "react"
 import { navigate } from "gatsby"
+import { Link } from "gatsby-plugin-intl3"
 import { useGetStudent } from "../../api/useGetStudent"
 import Flex from "../Flex/Flex"
 import Box from "../Box/Box"
 import Typography from "../Typography/Typography"
 import Icon from "../Icon/Icon"
 import EmptyListPlaceholder from "../EmptyListPlaceholder/EmptyListPlaceholder"
-import AddObservationDialog from "../AddObservationDialog/AddObservationDialog"
 import Button from "../Button/Button"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
 import { BackNavigation } from "../BackNavigation/BackNavigation"
@@ -23,7 +23,6 @@ interface Props {
   id: string
 }
 export const PageStudentDetails: FC<Props> = ({ id }) => {
-  const [isAddingObservation, setIsAddingObservation] = useState(false)
   const [isEditingObservation, setIsEditingObservation] = useState(false)
   const [isDeletingObservation, setIsDeletingObservation] = useState(false)
   const [targetObservation, setTargetObservation] = useState()
@@ -36,26 +35,6 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
 
   const filteredObservation = observations
 
-  function addObservation(): void {
-    setTargetObservation(undefined)
-    setIsAddingObservation(true)
-  }
-  async function submitAddObservation(observation: Observation): Promise<void> {
-    const baseUrl = "/api/v1"
-    const response = await fetch(`${baseUrl}/students/${id}/observations`, {
-      credentials: "same-origin",
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(observation),
-    })
-    setIsAddingObservation(false)
-    setObservationsAsOutdated()
-
-    getAnalytics()?.track("Observation Created", {
-      responseStatus: response.status,
-      observationId: observation.id,
-    })
-  }
   async function submitEditObservation(
     observation: Observation
   ): Promise<void> {
@@ -73,6 +52,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
       observationId: observation.id,
     })
   }
+
   async function submitDeleteObservation(
     observation: Observation
   ): Promise<void> {
@@ -115,30 +95,9 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
     <EmptyListPlaceholder
       text="No observation have been added"
       callToActionText="new observation"
-      onActionClick={addObservation}
-    />
-  )
-
-  const addObservationDialog = isAddingObservation && (
-    <AddObservationDialog
-      onCancel={() => setIsAddingObservation(false)}
-      onConfirm={submitAddObservation}
-    />
-  )
-
-  const editObservationDialog = isEditingObservation && (
-    <EditObservationDialog
-      defaultValue={targetObservation}
-      onCancel={() => setIsEditingObservation(false)}
-      onConfirm={submitEditObservation}
-    />
-  )
-
-  const deleteObservationDialog = isDeletingObservation && (
-    <DeleteObservationDialog
-      observation={targetObservation}
-      onConfirm={submitDeleteObservation}
-      onCancel={() => setIsDeletingObservation(false)}
+      onActionClick={() =>
+        navigate(`/dashboard/students/observations/new?studentId=${id}`)
+      }
     />
   )
 
@@ -170,18 +129,29 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
           <Flex alignItems="center" mb={3}>
             <SectionHeader>OBSERVATIONS</SectionHeader>
             <Spacer />
-            <Button variant="outline" onClick={addObservation}>
-              New
-            </Button>
+            <Link to={`/dashboard/students/observations/new?studentId=${id}`}>
+              <Button variant="outline">New</Button>
+            </Link>
           </Flex>
           {!isObservationLoading && emptyObservationPlaceholder}
           {isObservationLoading && <ObservationLoadingPlaceholder />}
           {listOfObservations}
         </Box>
       </Box>
-      {addObservationDialog}
-      {editObservationDialog}
-      {deleteObservationDialog}
+      {isEditingObservation && (
+        <EditObservationDialog
+          defaultValue={targetObservation}
+          onCancel={() => setIsEditingObservation(false)}
+          onConfirm={submitEditObservation}
+        />
+      )}
+      {isDeletingObservation && (
+        <DeleteObservationDialog
+          observation={targetObservation}
+          onConfirm={submitDeleteObservation}
+          onCancel={() => setIsDeletingObservation(false)}
+        />
+      )}
     </>
   )
 }

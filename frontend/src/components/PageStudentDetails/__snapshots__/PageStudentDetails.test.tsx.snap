@@ -489,11 +489,15 @@ exports[`PageStudentDetails should render correctly 1`] = `
           <div
             class="emotion-5"
           />
-          <button
-            class="emotion-15"
+          <a
+            href="/dashboard/students/observations/new?studentId=asdfadsf"
           >
-            New
-          </button>
+            <button
+              class="emotion-15"
+            >
+              New
+            </button>
+          </a>
         </div>
         <div
           class="emotion-20"

@@ -46,11 +46,7 @@ export const Input: FC<Props> = ({
       fontSize={small ? 0 : undefined}
       {...props}
     >
-      {label && (
-        <Box pl={1} pb={small ? 2 : 1}>
-          {label}
-        </Box>
-      )}
+      {label && <Box pb={small ? 2 : 1}>{label}</Box>}
       <Flex alignItems="center">
         {icon && (
           <Icon as={icon} m={0} mr={-40} size={24} sx={{ zIndex: 2 }} ml={3} />
