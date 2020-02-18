@@ -1,7 +1,5 @@
 import React, { FC, useState } from "react"
 import { navigate } from "gatsby"
-import isThisWeek from "date-fns/isThisWeek"
-import isToday from "date-fns/isToday"
 import { useGetStudent } from "../../api/useGetStudent"
 import Flex from "../Flex/Flex"
 import Box from "../Box/Box"
@@ -19,37 +17,12 @@ import DeleteObservationDialog from "../DeleteObservationDialog/DeleteObservatio
 import { getAnalytics } from "../../analytics"
 import ObservationCard from "../ObservationCard/ObservationCard"
 import Spacer from "../Spacer/Spacer"
-import ToggleButton from "../ToggleButton/ToggleButton"
 import StudentProgressSummaryCard from "../StudentProgressSummaryCard/StudentProgressSummaryCard"
 
-enum ObservationFilterType {
-  TODAY,
-  THIS_WEEK,
-  ALL,
-}
-function filterObservation(
-  filterType: ObservationFilterType,
-  observation: Observation
-): boolean {
-  const creationDate = observation.createdDate ?? ""
-  switch (filterType) {
-    case ObservationFilterType.ALL:
-      return true
-    case ObservationFilterType.THIS_WEEK:
-      return isThisWeek(Date.parse(creationDate))
-    case ObservationFilterType.TODAY:
-      return isToday(Date.parse(creationDate))
-    default:
-      return false
-  }
-}
 interface Props {
   id: string
 }
 export const PageStudentDetails: FC<Props> = ({ id }) => {
-  const [observationFilterType, setObservationFilterType] = useState(
-    ObservationFilterType.TODAY
-  )
   const [isAddingObservation, setIsAddingObservation] = useState(false)
   const [isEditingObservation, setIsEditingObservation] = useState(false)
   const [isDeletingObservation, setIsDeletingObservation] = useState(false)
@@ -61,12 +34,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
     setObservationsAsOutdated,
   ] = useGetObservations(id)
 
-  const filteredObservation =
-    observationFilterType === ObservationFilterType.ALL
-      ? observations
-      : observations?.filter(observation =>
-          filterObservation(observationFilterType, observation)
-        )
+  const filteredObservation = observations
 
   function addObservation(): void {
     setTargetObservation(undefined)
@@ -206,13 +174,6 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
               New
             </Button>
           </Flex>
-          <ToggleButton
-            itemFlexProp={[1]}
-            mb={3}
-            values={["Today", "This Week", "All"]}
-            selectedItemIdx={observationFilterType}
-            onItemClick={setObservationFilterType}
-          />
           {!isObservationLoading && emptyObservationPlaceholder}
           {isObservationLoading && <ObservationLoadingPlaceholder />}
           {listOfObservations}
