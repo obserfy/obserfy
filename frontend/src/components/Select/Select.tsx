@@ -18,11 +18,7 @@ export const Select: FC<SelectProps> = ({
   ...props
 }) => (
   <Label display="flex" sx={{ flexDirection: "column" }} {...props}>
-    {label && !hideLabel && (
-      <Box pb={1} pl={1}>
-        {label}
-      </Box>
-    )}
+    {label && !hideLabel && <Box pb={1}>{label}</Box>}
     <BaseSelect
       onChange={onChange}
       defaultValue={defaultValue}

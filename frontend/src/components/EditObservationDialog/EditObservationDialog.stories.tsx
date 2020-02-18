@@ -12,7 +12,7 @@ export default {
 
 export const Basic: FC = () => (
   <EditObservationDialog
-    onCancel={action("cancel")}
-    onConfirm={action("confirm")}
+    onDismiss={action("dismiss")}
+    onSaved={action("saved")}
   />
 )

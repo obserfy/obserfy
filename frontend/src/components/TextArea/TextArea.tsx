@@ -9,11 +9,7 @@ interface Props extends BoxProps {
 }
 export const TextArea: FC<Props> = ({ label, ...props }) => (
   <Label display="flex" sx={{ flexDirection: "column" }}>
-    {label && (
-      <Box pl={1} pb={1}>
-        {label}
-      </Box>
-    )}
+    {label && <Box pb={1}>{label}</Box>}
     <BaseTextArea aria-label={label} {...props} />
   </Label>
 )

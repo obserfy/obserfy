@@ -178,7 +178,6 @@ exports[`DatePickerDialog should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  padding-left: 4px;
   padding-bottom: 4px;
 }
 
@@ -275,14 +274,6 @@ exports[`DatePickerDialog should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.emotion-7 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  padding-bottom: 4px;
-  padding-left: 4px;
 }
 
 .emotion-10 {
@@ -580,7 +571,7 @@ exports[`DatePickerDialog should render correctly 1`] = `
             class="emotion-11"
           >
             <div
-              class="emotion-7"
+              class="emotion-3"
             >
               Month
             </div>
@@ -668,7 +659,7 @@ exports[`DatePickerDialog should render correctly 1`] = `
             class="emotion-16"
           >
             <div
-              class="emotion-7"
+              class="emotion-3"
             >
               Date
             </div>

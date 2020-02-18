@@ -1,14 +1,15 @@
 import React, { FC, useState } from "react"
 import { navigate } from "gatsby"
-import isThisWeek from "date-fns/isThisWeek"
-import isToday from "date-fns/isToday"
+import { FormattedDate, Link } from "gatsby-plugin-intl3"
+import isSameDay from "date-fns/isSameDay"
+import startOfDay from "date-fns/startOfDay"
+import differenceInDays from "date-fns/differenceInDays"
 import { useGetStudent } from "../../api/useGetStudent"
 import Flex from "../Flex/Flex"
 import Box from "../Box/Box"
 import Typography from "../Typography/Typography"
 import Icon from "../Icon/Icon"
 import EmptyListPlaceholder from "../EmptyListPlaceholder/EmptyListPlaceholder"
-import AddObservationDialog from "../AddObservationDialog/AddObservationDialog"
 import Button from "../Button/Button"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
 import { BackNavigation } from "../BackNavigation/BackNavigation"
@@ -16,116 +17,42 @@ import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import { Observation, useGetObservations } from "../../api/useGetObservations"
 import EditObservationDialog from "../EditObservationDialog/EditObservationDialog"
 import DeleteObservationDialog from "../DeleteObservationDialog/DeleteObservationDialog"
-import { getAnalytics } from "../../analytics"
 import ObservationCard from "../ObservationCard/ObservationCard"
 import Spacer from "../Spacer/Spacer"
-import ToggleButton from "../ToggleButton/ToggleButton"
 import StudentProgressSummaryCard from "../StudentProgressSummaryCard/StudentProgressSummaryCard"
+import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
+import { ReactComponent as PrevIcon } from "../../icons/arrow-back.svg"
+import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 
-enum ObservationFilterType {
-  TODAY,
-  THIS_WEEK,
-  ALL,
-}
-function filterObservation(
-  filterType: ObservationFilterType,
-  observation: Observation
-): boolean {
-  const creationDate = observation.createdDate ?? ""
-  switch (filterType) {
-    case ObservationFilterType.ALL:
-      return true
-    case ObservationFilterType.THIS_WEEK:
-      return isThisWeek(Date.parse(creationDate))
-    case ObservationFilterType.TODAY:
-      return isToday(Date.parse(creationDate))
-    default:
-      return false
-  }
-}
 interface Props {
   id: string
 }
 export const PageStudentDetails: FC<Props> = ({ id }) => {
-  const [observationFilterType, setObservationFilterType] = useState(
-    ObservationFilterType.TODAY
-  )
-  const [isAddingObservation, setIsAddingObservation] = useState(false)
   const [isEditingObservation, setIsEditingObservation] = useState(false)
   const [isDeletingObservation, setIsDeletingObservation] = useState(false)
-  const [targetObservation, setTargetObservation] = useState()
-  const [details] = useGetStudent(id)
+  const [targetObservation, setTargetObservation] = useState<Observation>()
+  const [selectedDate, setSelectedDate] = useState(0)
+  const [student] = useGetStudent(id)
   const [
     observations,
     isObservationLoading,
     setObservationsAsOutdated,
   ] = useGetObservations(id)
 
-  const filteredObservation =
-    observationFilterType === ObservationFilterType.ALL
-      ? observations
-      : observations?.filter(observation =>
-          filterObservation(observationFilterType, observation)
-        )
+  const dates = [
+    ...new Set(
+      observations?.map(({ createdDate }) =>
+        startOfDay(Date.parse(createdDate ?? "")).toISOString()
+      )
+    ),
+  ]?.sort((a, b) => differenceInDays(Date.parse(b), Date.parse(a)))
 
-  function addObservation(): void {
-    setTargetObservation(undefined)
-    setIsAddingObservation(true)
-  }
-  async function submitAddObservation(observation: Observation): Promise<void> {
-    const baseUrl = "/api/v1"
-    const response = await fetch(`${baseUrl}/students/${id}/observations`, {
-      credentials: "same-origin",
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(observation),
-    })
-    setIsAddingObservation(false)
-    setObservationsAsOutdated()
-
-    getAnalytics()?.track("Observation Created", {
-      responseStatus: response.status,
-      observationId: observation.id,
-    })
-  }
-  async function submitEditObservation(
-    observation: Observation
-  ): Promise<void> {
-    const baseUrl = "/api/v1"
-    const response = await fetch(`${baseUrl}/observations/${observation.id}`, {
-      credentials: "same-origin",
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(observation),
-    })
-    setIsEditingObservation(false)
-    setObservationsAsOutdated()
-    getAnalytics()?.track("Observation Updated", {
-      responseStatus: response.status,
-      observationId: observation.id,
-    })
-  }
-  async function submitDeleteObservation(
-    observation: Observation
-  ): Promise<void> {
-    const baseUrl = "/api/v1"
-    const response = await fetch(`${baseUrl}/observations/${observation.id}`, {
-      credentials: "same-origin",
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-    })
-    setObservationsAsOutdated()
-    setIsDeletingObservation(false)
-    getAnalytics()?.track("Observation Deleted", {
-      responseStatus: response.status,
-      observationId: observation.id,
-    })
-  }
-
-  const listOfObservations = filteredObservation
-    ?.sort(
-      (a, b) =>
-        Date.parse(b.createdDate ?? "") - Date.parse(a.createdDate ?? "")
+  const listOfObservations = observations
+    ?.filter(observation =>
+      isSameDay(
+        Date.parse(observation.createdDate ?? ""),
+        Date.parse(dates[selectedDate])
+      )
     )
     ?.map(observation => (
       <ObservationCard
@@ -142,35 +69,13 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
       />
     ))
 
-  const emptyObservationPlaceholder = (filteredObservation ?? []).length ===
-    0 && (
+  const emptyObservationPlaceholder = (observations ?? []).length === 0 && (
     <EmptyListPlaceholder
       text="No observation have been added"
       callToActionText="new observation"
-      onActionClick={addObservation}
-    />
-  )
-
-  const addObservationDialog = isAddingObservation && (
-    <AddObservationDialog
-      onCancel={() => setIsAddingObservation(false)}
-      onConfirm={submitAddObservation}
-    />
-  )
-
-  const editObservationDialog = isEditingObservation && (
-    <EditObservationDialog
-      defaultValue={targetObservation}
-      onCancel={() => setIsEditingObservation(false)}
-      onConfirm={submitEditObservation}
-    />
-  )
-
-  const deleteObservationDialog = isDeletingObservation && (
-    <DeleteObservationDialog
-      observation={targetObservation}
-      onConfirm={submitDeleteObservation}
-      onCancel={() => setIsDeletingObservation(false)}
+      onActionClick={() =>
+        navigate(`/dashboard/students/observations/new?studentId=${id}`)
+      }
     />
   )
 
@@ -180,7 +85,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
         <BackNavigation text="Home" to="/dashboard/home" />
         <Flex alignItems="start" mx={3} mb={4} mt={3}>
           <Typography.H3 sx={{ wordWrap: "break-word" }}>
-            {details?.name || <LoadingPlaceholder width="24rem" height={60} />}
+            {student?.name || <LoadingPlaceholder width="24rem" height={60} />}
           </Typography.H3>
           <Spacer />
           <Button
@@ -194,6 +99,14 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
             <Icon minWidth={20} as={EditIcon} m={0} />
           </Button>
         </Flex>
+        <Box m={3}>
+          <Link to={`/dashboard/students/observations/new?studentId=${id}`}>
+            <Button variant="outline" width="100%">
+              <Icon as={PlusIcon} m={0} mr={2} />
+              Add Observation
+            </Button>
+          </Link>
+        </Box>
         <Box p={3}>
           <SectionHeader>PROGRESS</SectionHeader>
           <StudentProgressSummaryCard studentId={id} />
@@ -202,25 +115,63 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
           <Flex alignItems="center" mb={3}>
             <SectionHeader>OBSERVATIONS</SectionHeader>
             <Spacer />
-            <Button variant="outline" onClick={addObservation}>
-              New
-            </Button>
+            <Link to={`/dashboard/students/observations/new?studentId=${id}`}>
+              <Button variant="outline">New</Button>
+            </Link>
           </Flex>
-          <ToggleButton
-            itemFlexProp={[1]}
-            mb={3}
-            values={["Today", "This Week", "All"]}
-            selectedItemIdx={observationFilterType}
-            onItemClick={setObservationFilterType}
-          />
           {!isObservationLoading && emptyObservationPlaceholder}
           {isObservationLoading && <ObservationLoadingPlaceholder />}
+          {!isObservationLoading && observations && (
+            <Flex mb={3} alignItems="center">
+              <Button
+                disabled={selectedDate >= dates.length - 1}
+                onClick={() => setSelectedDate(selectedDate + 1)}
+                variant="outline"
+              >
+                <Icon as={PrevIcon} m={0} />
+              </Button>
+              <Typography.Body flex={1} textAlign="center">
+                <FormattedDate
+                  value={dates[selectedDate]}
+                  month="short"
+                  year="numeric"
+                  weekday="short"
+                  day="2-digit"
+                />
+              </Typography.Body>
+              <Button
+                disabled={selectedDate < 1}
+                onClick={() => setSelectedDate(selectedDate - 1)}
+                variant="outline"
+              >
+                <Icon as={NextIcon} m={0} />
+              </Button>
+            </Flex>
+          )}
           {listOfObservations}
         </Box>
       </Box>
-      {addObservationDialog}
-      {editObservationDialog}
-      {deleteObservationDialog}
+      {isEditingObservation && (
+        <EditObservationDialog
+          defaultValue={targetObservation}
+          onDismiss={() => setIsEditingObservation(false)}
+          onSaved={() => {
+            setIsEditingObservation(false)
+            setObservationsAsOutdated()
+          }}
+        />
+      )}
+      {isDeletingObservation && targetObservation && (
+        <DeleteObservationDialog
+          observationId={targetObservation.id ?? ""}
+          shortDesc={targetObservation?.shortDesc}
+          onDismiss={() => setIsDeletingObservation(false)}
+          onDeleted={() => {
+            setObservationsAsOutdated()
+            setIsDeletingObservation(false)
+          }}
+        />
+      )}
     </>
   )
 }

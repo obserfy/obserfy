@@ -1,7 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PageNewStudent should render correctly 1`] = `
-.emotion-20 {
+exports[`PageNewObservation should render correctly 1`] = `
+@keyframes animation-0 {
+  0% {
+    background-color: rgba(165,165,165,0.05);
+  }
+
+  50% {
+    background-color: rgba(165,165,165,0.1);
+  }
+
+  100% {
+    background-color: rgba(165,165,165,0.05);
+  }
+}
+
+.emotion-22 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,17 +23,18 @@ exports[`PageNewStudent should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-20 {
+  .emotion-22 {
     font-size: 20px;
   }
 }
 
-.emotion-19 {
+.emotion-21 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   max-width: 640px;
   margin: auto;
+  padding-bottom: 32px;
 }
 
 .emotion-2 {
@@ -73,16 +88,36 @@ exports[`PageNewStudent should render correctly 1`] = `
   }
 }
 
-.emotion-14 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  margin-left: 16px;
-  margin-right: 16px;
-  margin-top: 16px;
+  padding-bottom: 32px;
+  padding-top: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
-.emotion-6 {
+.emotion-3 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  border-radius: 8px;
+  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
+  animation: 1s ease-in-out 0s infinite animation-0;
+  width: 100%;
+  height: 4rem;
+}
+
+.emotion-20 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.emotion-8 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -103,20 +138,21 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: -ms-flexbox;
   display: flex;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  margin-bottom: 16px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.emotion-3 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   padding-bottom: 4px;
 }
 
-.emotion-5 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -130,7 +166,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-4 {
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -156,39 +192,54 @@ exports[`PageNewStudent should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-4:hover,
-.emotion-4:focus {
+.emotion-6:hover,
+.emotion-6:focus {
   border-color: var(--theme-ui-colors-primary,#33691e);
   outline: none;
 }
 
-.emotion-4::-webkit-input-placeholder {
+.emotion-6::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-4::-moz-placeholder {
+.emotion-6::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-4:-ms-input-placeholder {
+.emotion-6:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-4::placeholder {
+.emotion-6::placeholder {
   font-style: italic;
 }
 
-.emotion-4:disabled {
+.emotion-6:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
-.emotion-13 {
+.emotion-11 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  margin-top: 16px;
+  width: 100%;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  as: label;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -199,30 +250,69 @@ exports[`PageNewStudent should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  display: block;
   width: 100%;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  as: label;
+  padding: 8px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: inherit;
+  line-height: inherit;
+  border: 1px solid;
+  border-radius: 8px;
+  color: inherit;
+  background-color: transparent;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface,#fff);
   font-size: 14px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
+  padding: 16px;
+  height: 180px;
+  resize: vertical;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  height: 150px;
+  width: 100%;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.emotion-10:hover,
+.emotion-10:focus {
+  border-color: var(--theme-ui-colors-primary,#33691e);
+  outline: none;
+}
+
+.emotion-10::-webkit-input-placeholder {
+  font-style: italic;
+  line-height: 2rem;
+}
+
+.emotion-10::-moz-placeholder {
+  font-style: italic;
+  line-height: 2rem;
+}
+
+.emotion-10:-ms-input-placeholder {
+  font-style: italic;
+  line-height: 2rem;
+}
+
+.emotion-10::placeholder {
+  font-style: italic;
+  line-height: 2rem;
+}
+
+.emotion-15 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.emotion-8 {
+.emotion-13 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -238,140 +328,45 @@ exports[`PageNewStudent should render correctly 1`] = `
   border-radius: 8px;
   color: inherit;
   background-color: transparent;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  width: auto;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   background-color: var(--theme-ui-colors-surface,#fff);
   font-size: 16px;
   padding: 16px;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
-  opacity: 1!important;
-  width: 100%;
 }
 
-.emotion-8:hover,
-.emotion-8:focus {
+.emotion-13:hover,
+.emotion-13:focus {
   border-color: var(--theme-ui-colors-primary,#33691e);
   outline: none;
 }
 
-.emotion-8::-webkit-input-placeholder {
-  font-style: italic;
-}
-
-.emotion-8::-moz-placeholder {
-  font-style: italic;
-}
-
-.emotion-8:-ms-input-placeholder {
-  font-style: italic;
-}
-
-.emotion-8::placeholder {
-  font-style: italic;
-}
-
-.emotion-8:disabled {
-  opacity: 0.68;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
-}
-
-.emotion-12 {
+.emotion-14 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  display: inline-block;
-  text-align: center;
-  line-height: inherit;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  font-size: inherit;
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  color: white;
-  background-color: var(--theme-ui-colors-primary,#33691e);
-  border: 0;
-  border-radius: 4px;
-  cursor: pointer;
-  text-transform: capitalize;
-  box-sizing: border-box;
-  font-size: 14px;
-  font-weight: bold;
-  color: var(--theme-ui-colors-textPrimary,#003d00);
-  background-color: transparent;
-  border-radius: 8px;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 16px;
-  padding-right: 16px;
-  white-space: nowrap;
-  border: 1px solid;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-top: 23px;
-  margin-left: 16px;
+  margin-left: -28px;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  pointer-events: none;
+  width: 24px;
+  height: 24px;
 }
 
-.emotion-12:disabled {
-  opacity: 0.38;
-  cursor: auto;
-}
-
-.emotion-12:hover,
-.emotion-12:focus {
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(98,151,73,0.12));
-  border-color: var(--theme-ui-colors-primary,#33691e);
-  outline: none;
-}
-
-.emotion-12:hover:disabled,
-.emotion-12:focus:disabled {
-  background-color: transparent;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-}
-
-.emotion-11 {
+.emotion-19 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  max-width: 100%;
-  height: auto;
-  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  margin: 0;
-  height: 20px;
-  width: 20px;
-}
-
-.emotion-18 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  margin: 16px;
+  padding-top: 16px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.emotion-15 {
+.emotion-17 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -381,79 +376,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   flex: 1;
 }
 
-.emotion-16 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  display: inline-block;
-  text-align: center;
-  line-height: inherit;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  font-size: inherit;
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  color: white;
-  background-color: var(--theme-ui-colors-primary,#33691e);
-  border: 0;
-  border-radius: 4px;
-  cursor: pointer;
-  text-transform: capitalize;
-  box-sizing: border-box;
-  font-size: 14px;
-  font-weight: bold;
-  color: var(--theme-ui-colors-textPrimary,#003d00);
-  background-color: transparent;
-  border-radius: 8px;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 16px;
-  padding-right: 16px;
-  white-space: nowrap;
-  border: 1px solid;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-right: 8px;
-}
-
-.emotion-16:disabled {
-  opacity: 0.38;
-  cursor: auto;
-}
-
-.emotion-16:hover,
-.emotion-16:focus {
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(98,151,73,0.12));
-  border-color: var(--theme-ui-colors-primary,#33691e);
-  outline: none;
-}
-
-.emotion-16:hover:disabled,
-.emotion-16:focus:disabled {
-  background-color: transparent;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-}
-
-.emotion-17 {
+.emotion-18 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -504,31 +427,31 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-17:disabled {
+.emotion-18:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-17:hover,
-.emotion-17:focus {
+.emotion-18:hover,
+.emotion-18:focus {
   background-color: var(--theme-ui-colors-primaryDark,#003d00);
   outline: none;
 }
 
-.emotion-17:hover:disabled,
-.emotion-17:focus:disabled {
+.emotion-18:hover:disabled,
+.emotion-18:focus:disabled {
   background-color: var(--theme-ui-colors-primary,#33691e);
 }
 
 <div>
   <div
-    class="emotion-20"
+    class="emotion-22"
   >
     <div
-      class="emotion-19"
+      class="emotion-21"
     >
       <a
-        href="/dashboard/home"
+        href="/dashboard/students/details?id="
       >
         <div
           class="emotion-2"
@@ -539,83 +462,124 @@ exports[`PageNewStudent should render correctly 1`] = `
           <p
             class="emotion-1"
           >
-            Home
+            Student Detail
           </p>
         </div>
       </a>
       <div
-        class="emotion-14"
+        class="emotion-4"
+      >
+        <div
+          class="emotion-3"
+        />
+      </div>
+      <form
+        class="emotion-20"
       >
         <label
-          class="emotion-6"
+          class="emotion-8"
         >
-          <div
-            class="emotion-3"
-          >
-            Name
-          </div>
           <div
             class="emotion-5"
           >
+            Short Description
+          </div>
+          <div
+            class="emotion-7"
+          >
             <input
-              class="emotion-4"
+              class="emotion-6"
+              placeholder="What have you found?"
               value=""
             />
           </div>
         </label>
-        <div
-          class="emotion-13"
+        <label
+          class="emotion-11"
         >
-          <label
+          <div
+            class="emotion-5"
+          >
+            Details
+          </div>
+          <textarea
+            aria-label="Details"
             class="emotion-10"
+            placeholder="Tell us what you observed"
+          />
+        </label>
+        <label
+          class="emotion-11"
+        >
+          <div
+            class="emotion-5"
           >
-            <div
-              class="emotion-3"
+            Category
+          </div>
+          <div
+            class="emotion-15"
+          >
+            <select
+              aria-label="Category"
+              class="emotion-13"
             >
-              Date of Birth
-            </div>
-            <div
-              class="emotion-5"
+              <option
+                value="0"
+              >
+                Others
+              </option>
+              <option
+                value="1"
+              >
+                Cultural
+              </option>
+              <option
+                value="2"
+              >
+                Language
+              </option>
+              <option
+                value="3"
+              >
+                Mathematics
+              </option>
+              <option
+                value="4"
+              >
+                Practical Life
+              </option>
+              <option
+                value="5"
+              >
+                Sensorial
+              </option>
+            </select>
+            <svg
+              class="emotion-14"
+              fill="currentcolor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <input
-                class="emotion-8"
-                disabled=""
-                placeholder="Not set"
-                value=""
+              <path
+                d="M7 10l5 5 5-5z"
               />
-            </div>
-          </label>
+            </svg>
+          </div>
+        </label>
+        <div
+          class="emotion-19"
+        >
+          <div
+            class="emotion-17"
+          />
           <button
-            class="emotion-12"
+            class="emotion-18"
+            disabled=""
           >
-            <div
-              class="emotion-11"
-            />
+            Add
           </button>
         </div>
-      </div>
-      <div
-        class="emotion-18"
-      >
-        <div
-          class="emotion-15"
-        />
-        <a
-          href="/dashboard/home"
-        >
-          <button
-            class="emotion-16"
-          >
-            Cancel
-          </button>
-        </a>
-        <button
-          class="emotion-17"
-          disabled=""
-        >
-          Save
-        </button>
-      </div>
+      </form>
     </div>
   </div>
 </div>

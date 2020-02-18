@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DeleteObservationDialog should render correctly 1`] = `
-.emotion-10 {
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,12 +9,12 @@ exports[`DeleteObservationDialog should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-10 {
+  .emotion-9 {
     font-size: 20px;
   }
 }
 
-.emotion-9 {
+.emotion-8 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -37,7 +37,7 @@ exports[`DeleteObservationDialog should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-9 {
+  .emotion-8 {
     -webkit-align-items: center;
     -webkit-box-align: center;
     -ms-flex-align: center;
@@ -50,7 +50,7 @@ exports[`DeleteObservationDialog should render correctly 1`] = `
   }
 }
 
-.emotion-8 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -64,29 +64,39 @@ exports[`DeleteObservationDialog should render correctly 1`] = `
   border-bottom-right-radius: 0;
   padding: 0;
   background-color: var(--theme-ui-colors-surface,#fff);
-  max-width: 640px;
   overflow: hidden;
   width: 100%;
 }
 
 @media screen and (min-width:40em) {
-  .emotion-8 {
+  .emotion-7 {
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
   }
 }
 
-.emotion-2 {
+@media screen and (min-width:40em) {
+  .emotion-7 {
+    max-width: 500px;
+  }
+}
+
+.emotion-1 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  position: relative;
+  border-bottom-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   border-bottom-width: 1px;
   border-bottom-style: solid;
-  border-bottom-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+  background-color: var(--theme-ui-colors-surface,#fff);
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   padding: 16px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -108,32 +118,14 @@ exports[`DeleteObservationDialog should render correctly 1`] = `
   -moz-letter-spacing: 0;
   -ms-letter-spacing: 0;
   letter-spacing: 0;
+  pointer-events: none;
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
-  margin-bottom: 0;
-  margin-right: 16px;
-  font-weight: bold;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
 }
 
-.emotion-1 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  max-width: 100%;
-  height: auto;
-  cursor: pointer;
-  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  margin: 0;
-  height: 32px;
-  width: 32px;
-}
-
-.emotion-3 {
+.emotion-2 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -142,33 +134,35 @@ exports[`DeleteObservationDialog should render correctly 1`] = `
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 400;
   line-height: 3rem;
+  border-bottom-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   font-size: 16px;
   padding: 16px;
-  margin: 0;
 }
 
 @media screen and (min-width:40em) {
-  .emotion-3 {
+  .emotion-2 {
     font-size: 14px;
   }
 }
 
-.emotion-7 {
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  border-top-width: 1px;
-  border-top-style: solid;
-  border-top-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  padding: 16px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.emotion-4 {
+.emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -178,7 +172,7 @@ exports[`DeleteObservationDialog should render correctly 1`] = `
   flex: 1;
 }
 
-.emotion-5 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -229,28 +223,28 @@ exports[`DeleteObservationDialog should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin-right: 16px;
+  margin: 8px;
 }
 
-.emotion-5:disabled {
+.emotion-4:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-5:hover,
-.emotion-5:focus {
+.emotion-4:hover,
+.emotion-4:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(98,151,73,0.12));
   border-color: var(--theme-ui-colors-primary,#33691e);
   outline: none;
 }
 
-.emotion-5:hover:disabled,
-.emotion-5:focus:disabled {
+.emotion-4:hover:disabled,
+.emotion-4:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-6 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -299,66 +293,71 @@ exports[`DeleteObservationDialog should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  margin: 8px;
+  background-color: var(--theme-ui-colors-danger,#d50000);
 }
 
-.emotion-6:disabled {
+.emotion-5:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-6:hover,
-.emotion-6:focus {
+.emotion-5:hover,
+.emotion-5:focus {
   background-color: var(--theme-ui-colors-primaryDark,#003d00);
   outline: none;
 }
 
-.emotion-6:hover:disabled,
-.emotion-6:focus:disabled {
+.emotion-5:hover:disabled,
+.emotion-5:focus:disabled {
   background-color: var(--theme-ui-colors-primary,#33691e);
 }
 
 <div>
   <div
-    class="emotion-10"
+    class="emotion-9"
   >
     <dialog
-      class="emotion-9"
+      class="emotion-8"
     >
       <div
-        class="emotion-8"
+        class="emotion-7"
       >
         <div
-          class="emotion-2"
+          class="emotion-1"
         >
           <h6
             class="emotion-0"
           >
-            Delete observation?
+            Delete Observation?
           </h6>
-          <div
-            class="emotion-1"
-          />
         </div>
         <p
-          class="emotion-3"
+          class="emotion-2"
         >
-          "He so smart" will be permanently deleted.
+          <i>
+            "
+            adsfasdfadsf
+            "
+          </i>
+           will be permanently deleted. Are you sure?
         </p>
         <div
-          class="emotion-7"
+          class="emotion-6"
         >
           <div
-            class="emotion-4"
+            class="emotion-3"
           />
           <button
-            class="emotion-5"
+            class="emotion-4"
           >
-            NO, DON'T!
+            Cancel
           </button>
           <button
-            class="emotion-6"
+            class="emotion-5"
+            data-cy="confirm-delete"
           >
-            Yes, please
+            Yes
           </button>
         </div>
       </div>

@@ -24,7 +24,9 @@ const MaterialProgressItem: FC<Props> = ({ value, onClick }) => {
       alignItems="center"
       sx={{ cursor: "pointer" }}
     >
-      <Typography.Body>{value.materialName}</Typography.Body>
+      <Typography.Body fontSize={1} lineHeight={1.8}>
+        {value.materialName}
+      </Typography.Body>
       <Spacer />
       <Pill
         backgroundColor={`materialStage.${stage.toLowerCase()}`}

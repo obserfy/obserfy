@@ -1,9 +1,11 @@
 import React from "react"
 import { render } from "../../test-utils"
-import { Basic } from "./AddObservationDialog.stories"
+import { Basic } from "./PageNewObservation.stories"
 
-describe("AddObservationDialog", () => {
+describe("PageNewObservation", () => {
   it("should render correctly", () => {
+    const response: string[] = []
+    fetchMock.mockResponse(JSON.stringify(response))
     const { container } = render(<Basic />)
     expect(container).toMatchSnapshot()
   })

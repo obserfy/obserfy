@@ -195,7 +195,6 @@ exports[`StudentMaterialProgressDialog should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   padding-bottom: 4px;
-  padding-left: 4px;
 }
 
 .emotion-6 {
