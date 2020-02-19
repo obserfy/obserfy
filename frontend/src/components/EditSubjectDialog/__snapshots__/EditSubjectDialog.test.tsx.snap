@@ -154,7 +154,7 @@ exports[`EditSubjectDialog should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary,#33691e);
+  background-color: var(--theme-ui-colors-primary,#00e399);
   border: 0;
   border-radius: 4px;
   cursor: pointer;
@@ -162,7 +162,7 @@ exports[`EditSubjectDialog should render correctly 1`] = `
   box-sizing: border-box;
   font-size: 14px;
   font-weight: bold;
-  color: var(--theme-ui-colors-textPrimary,#003d00);
+  color: var(--theme-ui-colors-textPrimary,#00664a);
   background-color: transparent;
   border-radius: 8px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -198,8 +198,8 @@ exports[`EditSubjectDialog should render correctly 1`] = `
 
 .emotion-1:hover,
 .emotion-1:focus {
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(98,151,73,0.12));
-  border-color: var(--theme-ui-colors-primary,#33691e);
+  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
+  border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
@@ -237,7 +237,7 @@ exports[`EditSubjectDialog should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary,#33691e);
+  background-color: var(--theme-ui-colors-primary,#00e399);
   border: 0;
   border-radius: 4px;
   cursor: pointer;
@@ -245,8 +245,8 @@ exports[`EditSubjectDialog should render correctly 1`] = `
   box-sizing: border-box;
   font-size: 14px;
   font-weight: bold;
-  color: var(--theme-ui-colors-onPrimary,#fff);
-  background-color: var(--theme-ui-colors-primary,#33691e);
+  color: var(--theme-ui-colors-onPrimary,#000);
+  background-color: var(--theme-ui-colors-primary,#00e399);
   border-radius: 8px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
@@ -278,13 +278,13 @@ exports[`EditSubjectDialog should render correctly 1`] = `
 
 .emotion-3:hover,
 .emotion-3:focus {
-  background-color: var(--theme-ui-colors-primaryDark,#003d00);
+  background-color: var(--theme-ui-colors-primaryDark,#00a06d);
   outline: none;
 }
 
 .emotion-3:hover:disabled,
 .emotion-3:focus:disabled {
-  background-color: var(--theme-ui-colors-primary,#33691e);
+  background-color: var(--theme-ui-colors-primary,#00e399);
 }
 
 .emotion-16 {
@@ -388,7 +388,7 @@ exports[`EditSubjectDialog should render correctly 1`] = `
 
 .emotion-6:hover,
 .emotion-6:focus {
-  border-color: var(--theme-ui-colors-primary,#33691e);
+  border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
@@ -469,7 +469,7 @@ exports[`EditSubjectDialog should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
-  fill: var(--theme-ui-colors-primary,#33691e);
+  fill: var(--theme-ui-colors-primary,#00e399);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;

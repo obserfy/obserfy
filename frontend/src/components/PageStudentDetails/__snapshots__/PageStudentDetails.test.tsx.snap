@@ -191,7 +191,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary,#33691e);
+  background-color: var(--theme-ui-colors-primary,#00e399);
   border: 0;
   border-radius: 4px;
   cursor: pointer;
@@ -199,7 +199,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   box-sizing: border-box;
   font-size: 14px;
   font-weight: bold;
-  color: var(--theme-ui-colors-textPrimary,#003d00);
+  color: var(--theme-ui-colors-textPrimary,#00664a);
   background-color: transparent;
   border-radius: 8px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -236,8 +236,8 @@ exports[`PageStudentDetails should render correctly 1`] = `
 
 .emotion-7:hover,
 .emotion-7:focus {
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(98,151,73,0.12));
-  border-color: var(--theme-ui-colors-primary,#33691e);
+  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
+  border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
@@ -288,7 +288,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary,#33691e);
+  background-color: var(--theme-ui-colors-primary,#00e399);
   border: 0;
   border-radius: 4px;
   cursor: pointer;
@@ -296,7 +296,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   box-sizing: border-box;
   font-size: 14px;
   font-weight: bold;
-  color: var(--theme-ui-colors-textPrimary,#003d00);
+  color: var(--theme-ui-colors-textPrimary,#00664a);
   background-color: transparent;
   border-radius: 8px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -331,8 +331,8 @@ exports[`PageStudentDetails should render correctly 1`] = `
 
 .emotion-10:hover,
 .emotion-10:focus {
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(98,151,73,0.12));
-  border-color: var(--theme-ui-colors-primary,#33691e);
+  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
+  border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
@@ -438,7 +438,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary,#33691e);
+  background-color: var(--theme-ui-colors-primary,#00e399);
   border: 0;
   border-radius: 4px;
   cursor: pointer;
@@ -446,7 +446,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   box-sizing: border-box;
   font-size: 14px;
   font-weight: bold;
-  color: var(--theme-ui-colors-textPrimary,#003d00);
+  color: var(--theme-ui-colors-textPrimary,#00664a);
   background-color: transparent;
   border-radius: 8px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -480,8 +480,8 @@ exports[`PageStudentDetails should render correctly 1`] = `
 
 .emotion-18:hover,
 .emotion-18:focus {
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(98,151,73,0.12));
-  border-color: var(--theme-ui-colors-primary,#33691e);
+  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
+  border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 

@@ -57,7 +57,7 @@ const TabItem: FC<TabItemProps> = ({ isSelected, onClick, ...props }) => (
     onClick={onClick}
     mx={3}
     mb={0}
-    color={isSelected ? "primaryDark" : "text"}
+    color={isSelected ? "textPrimary" : "text"}
     sx={{
       whiteSpace: "nowrap",
       cursor: "pointer",

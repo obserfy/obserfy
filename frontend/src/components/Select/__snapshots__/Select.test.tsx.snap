@@ -76,7 +76,7 @@ exports[`Select should render correctly 1`] = `
 
 .emotion-0:hover,
 .emotion-0:focus {
-  border-color: var(--theme-ui-colors-primary,#33691e);
+  border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 

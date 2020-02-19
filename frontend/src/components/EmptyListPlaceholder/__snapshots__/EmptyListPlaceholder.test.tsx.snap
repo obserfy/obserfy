@@ -92,7 +92,7 @@ exports[`EmptyListPlaceholder should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary,#33691e);
+  background-color: var(--theme-ui-colors-primary,#00e399);
   border: 0;
   border-radius: 4px;
   cursor: pointer;
@@ -100,7 +100,7 @@ exports[`EmptyListPlaceholder should render correctly 1`] = `
   box-sizing: border-box;
   font-size: 14px;
   font-weight: bold;
-  color: var(--theme-ui-colors-textPrimary,#003d00);
+  color: var(--theme-ui-colors-textPrimary,#00664a);
   background-color: transparent;
   border-radius: 8px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -134,8 +134,8 @@ exports[`EmptyListPlaceholder should render correctly 1`] = `
 
 .emotion-2:hover,
 .emotion-2:focus {
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(98,151,73,0.12));
-  border-color: var(--theme-ui-colors-primary,#33691e);
+  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
+  border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 

@@ -27,8 +27,8 @@ module.exports = {
         name: `Obserfy`,
         short_name: `Obserfy`,
         start_url: `/`,
-        background_color: `#33691e`,
-        theme_color: `#33691e`,
+        background_color: `#121212`,
+        theme_color: `#121212`,
         display: `standalone`,
         icon: `src/images/icon.png`, // This path is relative to the root of the site.
       },
