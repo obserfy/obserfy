@@ -1,5 +1,6 @@
 import React, { FC, FormEvent, useState } from "react"
 import { navigate } from "gatsby"
+import { Link } from "gatsby-plugin-intl3"
 import Box from "../Box/Box"
 import Input from "../Input/Input"
 import Button from "../Button/Button"
@@ -66,17 +67,16 @@ export const PageLogin: FC = () => {
           value={password}
           onChange={e => setPassword(e.target.value)}
           required
-          mb={3}
         />
-        <Typography.Body
-          mb={3}
-          width="100%"
-          textAlign="center"
-          color="danger"
-          fontWeight="bold"
-        >
-          {error}
-        </Typography.Body>
+        <Link to="/forgot-password">
+          <Typography.Body
+            fontSize={1}
+            my={2}
+            sx={{ textDecoration: "underline" }}
+          >
+            Forgot password?
+          </Typography.Body>
+        </Link>
         <Flex>
           <Button
             type="button"
@@ -85,12 +85,22 @@ export const PageLogin: FC = () => {
             mr={3}
             onClick={() => navigate("/register")}
           >
-            Sign Up
+            Register
           </Button>
           <Button variant="primaryBig" width="100%">
             Login
           </Button>
         </Flex>
+        <Typography.Body
+          my={3}
+          width="100%"
+          textAlign="center"
+          color="danger"
+          fontSize={1}
+          fontWeight="bold"
+        >
+          {error}
+        </Typography.Body>
       </Box>
     </Flex>
   )

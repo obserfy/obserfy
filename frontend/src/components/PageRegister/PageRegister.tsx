@@ -143,8 +143,8 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
           >
             Log In
           </Button>
-          <Button variant="primaryBig" width="100%">
-            Sign Up
+          <Button variant="primaryBig" width="100%" data-cy="register-button">
+            Register
           </Button>
         </Flex>
       </Box>

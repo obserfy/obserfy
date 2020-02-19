@@ -5,25 +5,25 @@ const themeUiTheme = {
     text: "rgba(0,0,0,0.87)",
     textMediumEmphasis: "rgba(0,0,0, 0.60)",
     textDisabled: "rgba(0,0,0, 0.38)",
-    textPrimary: "#003d00",
+    textPrimary: "#00664a",
 
     background: "#F7F8FA",
     onBackground: "rgba(0,0,0,0.87)",
 
     // Primary Color
-    primary: "#33691e",
-    onPrimary: "#fff",
+    primary: "#00e399",
+    onPrimary: "#000",
 
-    primaryDark: "#003d00",
+    primaryDark: "#00a06d",
     onPrimaryDark: "#fff",
 
     primaryLight: "#629749",
     onPrimaryLight: "text",
 
-    primaryLighter: "rgba(98,151,73,0.12)",
+    primaryLighter: "rgba(0,120,86,0.12)",
     onPrimaryLighter: "text",
 
-    primaryLightest: "rgba(98,151,73,0.05)",
+    primaryLightest: "rgba(0,120,86,0.05)",
     onPrimaryLightest: "text",
 
     secondary: "#30c",
@@ -73,7 +73,10 @@ const themeUiTheme = {
         text: "rgba(255,255,255, 0.87)",
         textMediumEmphasis: "rgba(255,255,255, 0.60)",
         textDisabled: "rgba(255,255,255, 0.38)",
-        textPrimary: "#629749",
+        textPrimary: "#00a875",
+
+        primary: "#00a875",
+        onPrimary: "#000",
 
         background: "#121212",
         onBackground: "rgba(255,255,255, 0.87)",
@@ -81,7 +84,7 @@ const themeUiTheme = {
         surface: "#1d1d1d",
         onSurface: "rgba(255,255,255, 0.87)",
 
-        primaryDark: "#629749",
+        primaryDark: "#009c6e",
         onPrimaryDark: "rgba(255,255,255, 0.87)",
 
         icon: "#979797",

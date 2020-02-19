@@ -20,14 +20,14 @@ describe(" Smoke test on prod build", () => {
     cy.contains("Wrong").should("be.visible")
 
     // Register account
-    cy.contains("Sign Up").click()
+    cy.contains("Register").click()
     cy.waitForRouteChange()
       .url()
       .should("contains", "register")
     cy.get("[data-cy=register-email]").type(email)
     cy.contains("Password").type(password)
     cy.contains("Name").type(name)
-    cy.contains("Sign Up").click()
+    cy.get("[data-cy=register-button]").click()
 
     // Create School
     cy.waitForRouteChange()
@@ -80,7 +80,7 @@ describe(" Smoke test on prod build", () => {
       .find("select")
       .select("4")
     cy.get("[aria-label=Date]").select("11")
-    cy.contains("Set").click()
+    cy.get("[data-cy=set-button]").click()
     cy.contains("Save").click()
     cy.contains(studentName).should("be.visible")
 
@@ -120,7 +120,7 @@ describe(" Smoke test on prod build", () => {
     cy.contains("Month")
       .find("select")
       .select("6")
-    cy.contains("Set").click()
+    cy.get("[data-cy=set-button]").click()
     cy.contains("Save").click()
 
     // Edit observation

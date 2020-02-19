@@ -80,7 +80,7 @@ const MainSidebar: FC<{
       <NavigationItem
         onClick={closeSidebar}
         to="/dashboard/settings"
-        text="settings"
+        text="Settings"
         icon={SettingsIcon}
         mb={3}
       />

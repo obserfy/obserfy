@@ -83,7 +83,7 @@ exports[`Tab should render correctly 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: var(--theme-ui-colors-primaryDark,#003d00);
+  color: var(--theme-ui-colors-textPrimary,#00664a);
   font-weight: lighter;
   margin-left: 16px;
   margin-right: 16px;
@@ -91,7 +91,7 @@ exports[`Tab should render correctly 1`] = `
 }
 
 .emotion-0:after {
-  background-color: var(--theme-ui-colors-primary,#33691e);
+  background-color: var(--theme-ui-colors-primary,#00e399);
   border-radius: 10px 10px 0 0;
   width: 125%;
   height: 3px;
@@ -141,7 +141,7 @@ exports[`Tab should render correctly 1`] = `
 }
 
 .emotion-1:after {
-  background-color: var(--theme-ui-colors-primary,#33691e);
+  background-color: var(--theme-ui-colors-primary,#00e399);
   border-radius: 10px 10px 0 0;
   width: 0%;
   height: 3px;

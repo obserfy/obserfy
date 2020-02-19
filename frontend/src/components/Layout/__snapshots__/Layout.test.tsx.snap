@@ -83,7 +83,7 @@ exports[`Layout should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary,#33691e);
+  background-color: var(--theme-ui-colors-primary,#00e399);
   border: 0;
   border-radius: 4px;
   cursor: pointer;
@@ -91,7 +91,7 @@ exports[`Layout should render correctly 1`] = `
   box-sizing: border-box;
   font-size: 14px;
   font-weight: bold;
-  color: var(--theme-ui-colors-textPrimary,#003d00);
+  color: var(--theme-ui-colors-textPrimary,#00664a);
   background-color: transparent;
   border-radius: 8px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -123,8 +123,8 @@ exports[`Layout should render correctly 1`] = `
 
 .emotion-2:hover,
 .emotion-2:focus {
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(98,151,73,0.12));
-  border-color: var(--theme-ui-colors-primary,#33691e);
+  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
+  border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
@@ -444,7 +444,7 @@ exports[`Layout should render correctly 1`] = `
 }
 
 .emotion-19:hover {
-  background-color: var(--theme-ui-colors-primaryLightest,rgba(98,151,73,0.05));
+  background-color: var(--theme-ui-colors-primaryLightest,rgba(0,120,86,0.05));
 }
 
 .emotion-17 {
@@ -509,7 +509,7 @@ exports[`Layout should render correctly 1`] = `
 }
 
 .emotion-23:hover {
-  background-color: var(--theme-ui-colors-primaryLightest,rgba(98,151,73,0.05));
+  background-color: var(--theme-ui-colors-primaryLightest,rgba(0,120,86,0.05));
 }
 
 .emotion-26 {
@@ -537,7 +537,7 @@ exports[`Layout should render correctly 1`] = `
 }
 
 .emotion-26:hover {
-  background-color: var(--theme-ui-colors-primaryLightest,rgba(98,151,73,0.05));
+  background-color: var(--theme-ui-colors-primaryLightest,rgba(0,120,86,0.05));
 }
 
 .emotion-25 {
@@ -789,13 +789,13 @@ exports[`Layout should render correctly 1`] = `
           class="emotion-23"
         >
           <div
-            alt="settings icon"
+            alt="Settings icon"
             class="emotion-17"
           />
           <p
             class="emotion-18"
           >
-            settings
+            Settings
           </p>
         </div>
       </a>

@@ -25,15 +25,15 @@ exports[`Switch should render correctly 1`] = `
   padding: 0;
   width: 40px;
   height: 24px;
-  color: var(--theme-ui-colors-primary,#33691e);
+  color: var(--theme-ui-colors-primary,#00e399);
   background-color: transparent;
   border: 1px solid;
-  border-color: var(--theme-ui-colors-primary,#33691e);
+  border-color: var(--theme-ui-colors-primary,#00e399);
   border-radius: 9999px;
 }
 
 .emotion-1[aria-checked=true] {
-  background-color: var(--theme-ui-colors-primary,#33691e);
+  background-color: var(--theme-ui-colors-primary,#00e399);
 }
 
 .emotion-1:focus {
@@ -51,7 +51,7 @@ exports[`Switch should render correctly 1`] = `
   height: 24px;
   border-radius: 9999px;
   border: 1px solid;
-  border-color: var(--theme-ui-colors-primary,#33691e);
+  border-color: var(--theme-ui-colors-primary,#00e399);
   background-color: var(--theme-ui-colors-background,#F7F8FA);
   -webkit-transition-property: -webkit-transform;
   -webkit-transition-property: transform;

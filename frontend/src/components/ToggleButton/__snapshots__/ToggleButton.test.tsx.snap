@@ -39,7 +39,7 @@ exports[`ToggleButton should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   cursor: pointer;
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(98,151,73,0.12));
+  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-style: solid;
   border-radius: 0;
   border-width: 1px;
@@ -73,7 +73,7 @@ exports[`ToggleButton should render correctly 1`] = `
   -ms-user-select: none;
   user-select: none;
   text-align: center;
-  color: var(--theme-ui-colors-primaryDark,#003d00);
+  color: var(--theme-ui-colors-primaryDark,#00a06d);
   font-size: 14px;
   margin: 0;
 }

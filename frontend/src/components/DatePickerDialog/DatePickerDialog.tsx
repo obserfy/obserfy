@@ -74,7 +74,7 @@ export const DatePickerDialog: FC<Props> = ({
       </Button>
       <Button
         variant="primary"
-        data-cy="dialogPositiveAction"
+        data-cy="set-button"
         onClick={() => onConfirm(generatedDate)}
       >
         Set
