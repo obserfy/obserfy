@@ -8,6 +8,13 @@ module.exports = {
     author: `@chrsep`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-versioning`,
+      options: {
+        variableName: "OBSERFY_VERSION",
+        value: require("git-rev-sync").short(),
+      },
+    },
     `gatsby-plugin-layout`,
     `gatsby-plugin-typescript`,
     "gatsby-plugin-theme-ui",

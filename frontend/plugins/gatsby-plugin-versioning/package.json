@@ -1,0 +1,7 @@
+{
+  "name": "gatsby-plugin-versioning",
+  "version": "1.0.0",
+  "description": "Add version in global variable.",
+  "main": "index.js",
+  "license": "MIT"
+}
