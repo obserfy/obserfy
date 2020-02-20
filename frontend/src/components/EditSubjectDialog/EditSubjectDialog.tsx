@@ -1,8 +1,12 @@
 import React, { FC, useState } from "react"
 import nanoid from "nanoid"
+import { produce } from "immer"
+import { useImmer } from "use-immer"
 import { Material } from "../../api/useGetSubjectMaterials"
 import { getAnalytics } from "../../analytics"
-import DraggableMaterialListItem from "../DraggableMaterialListItem/DraggableMaterialListItem"
+import DraggableMaterialListItem, {
+  removeMaterial,
+} from "../DraggableMaterialListItem/DraggableMaterialListItem"
 import Flex from "../Flex/Flex"
 import Typography from "../Typography/Typography"
 import Button from "../Button/Button"
@@ -32,12 +36,16 @@ export const EditSubjectDialog: FC<Props> = ({
 }) => {
   const [loading, setLoading] = useState(false)
   const [subjectName, setSubjectName] = useState(subject.name)
-  const [materials, setMaterials] = useState<Material[]>(subject.materials)
+  const [materials, setMaterials] = useImmer<Material[]>(
+    produce(subject.materials, draft => {
+      draft.sort((a, b) => a.order - b.order)
+    })
+  )
 
   const isValid =
-    materials.every(material => material.name !== "") && subjectName !== ""
+    materials.every(({ name }) => name !== "") && subjectName !== ""
 
-  async function createSubject(): Promise<void> {
+  async function updateSubject(): Promise<void> {
     setLoading(true)
     const response = await updateSubjectApi({
       ...subject,
@@ -58,7 +66,6 @@ export const EditSubjectDialog: FC<Props> = ({
     }
   }
 
-  materials.sort((a, b) => a.order - b.order)
   const list = materials.map((material, i) => (
     <DraggableMaterialListItem
       height={ITEM_HEIGHT}
@@ -66,21 +73,12 @@ export const EditSubjectDialog: FC<Props> = ({
       material={material}
       autofocus={material.order === materials.length}
       onNameChange={e => {
-        const newMaterial = [...materials]
-        newMaterial[newMaterial.indexOf(material)].name = e.target.value
-        setMaterials(newMaterial)
+        const name = e.target.value
+        setMaterials(draft => {
+          draft[i].name = name
+        })
       }}
-      onDelete={() => {
-        const newMaterial = materials
-          .filter(({ id }) => id !== material.id) // Remove material
-          .map(current =>
-            // Fix order number so none is skip
-            current.order > material.order
-              ? { ...current, order: current.order - 1 }
-              : current
-          )
-        setMaterials(newMaterial)
-      }}
+      onDelete={() => setMaterials(removeMaterial(material.id, material.order))}
       moveItem={(order, offset, originalOrder) => {
         // Calculate position inside the list while being dragged
         let position: number
@@ -90,20 +88,23 @@ export const EditSubjectDialog: FC<Props> = ({
           position = Math.floor((offset + ITEM_HEIGHT / 2) / ITEM_HEIGHT)
         }
 
+        // console.log(originalOrder + position)
         // Reorder list to reflect position after dragging
         if (originalOrder + position > order) {
-          const newMaterial = materials.slice(0)
-          const nextItemIndex = Math.min(i + 1, materials.length - 1)
-          newMaterial[i].order += 1
-          newMaterial[nextItemIndex].order -= 1
-          setMaterials(newMaterial)
+          setMaterials(draft => {
+            const nextItemIndex = Math.min(i + 1, materials.length - 1)
+            draft[i].order += 1
+            draft[nextItemIndex].order -= 1
+            draft.sort((a, b) => a.order - b.order)
+          })
         }
         if (originalOrder + position < order) {
-          const newMaterial = materials.slice(0)
-          const previousItemIndex = Math.max(i - 1, 0)
-          newMaterial[i].order -= 1
-          newMaterial[previousItemIndex].order += 1
-          setMaterials(newMaterial)
+          setMaterials(draft => {
+            const previousItemIndex = Math.max(i - 1, 0)
+            draft[i].order -= 1
+            draft[previousItemIndex].order += 1
+            draft.sort((a, b) => a.order - b.order)
+          })
         }
       }}
     />
@@ -130,13 +131,13 @@ export const EditSubjectDialog: FC<Props> = ({
           alignContent: "center",
         }}
       >
-        New Subject
+        Edit Subject
       </Typography.H6>
       <Button variant="outline" color="danger" m={2} onClick={onDismiss}>
         Cancel
       </Button>
       <Spacer />
-      <Button m={2} disabled={!isValid} onClick={createSubject}>
+      <Button m={2} disabled={!isValid} onClick={updateSubject}>
         {loading && <LoadingIndicator />}
         Save
       </Button>
@@ -174,14 +175,13 @@ export const EditSubjectDialog: FC<Props> = ({
               alignItems="center"
               backgroundColor="background"
               onClick={() => {
-                setMaterials([
-                  ...materials,
-                  {
+                setMaterials(draft => {
+                  draft.push({
                     id: nanoid(),
                     name: "",
                     order: materials.length + 1,
-                  },
-                ])
+                  })
+                })
               }}
               sx={{
                 cursor: "pointer",

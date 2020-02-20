@@ -45,4 +45,19 @@ export const DraggableMaterialListItem: FC<Props> = ({
   </DraggableListItem>
 )
 
+export const removeMaterial = (targetId: string, targetOrder: number) => (
+  draft: Material[]
+): Material[] => {
+  const newMaterial = draft
+    .filter(({ id }) => id !== targetId) // Remove material
+    .map(current =>
+      // Fix order number so none is skip
+      current.order > targetOrder
+        ? { ...current, order: current.order - 1 }
+        : current
+    )
+  newMaterial.sort((a, b) => a.order - b.order)
+  return newMaterial
+}
+
 export default DraggableMaterialListItem
