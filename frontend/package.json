@@ -61,7 +61,7 @@
     "gatsby-source-filesystem": "^2.1.48",
     "gatsby-transformer-sharp": "^2.3.14",
     "graphql": "^14.6.0",
-    "http-proxy-middleware": "^0.21.0",
+    "http-proxy-middleware": "^1.0.0",
     "identity-obj-proxy": "^3.0.0",
     "immer": "^5.3.6",
     "jest": "^25.1.0",
