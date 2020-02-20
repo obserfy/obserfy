@@ -1,4 +1,5 @@
-const proxy = require("http-proxy-middleware")
+/* eslint-disable @typescript-eslint/camelcase */
+const { createProxyMiddleware } = require("http-proxy-middleware")
 
 module.exports = {
   siteMetadata: {
@@ -7,6 +8,13 @@ module.exports = {
     author: `@chrsep`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-versioning`,
+      options: {
+        variableName: "OBSERFY_VERSION",
+        value: require("git-rev-sync").short(),
+      },
+    },
     `gatsby-plugin-layout`,
     `gatsby-plugin-typescript`,
     "gatsby-plugin-theme-ui",
@@ -134,6 +142,24 @@ module.exports = {
         showSpinner: false,
       },
     },
+    {
+      resolve: "gatsby-plugin-guess-js",
+      options: {
+        // Find the view id in the GA admin in a section labeled "views"
+        GAViewID: `211863061`,
+        // Add a JWT to get data from GA
+        jwt: {
+          private_key: process.env.GA_PRIVATE_KEY.replace(/\\n/g, "\n"),
+          client_email: process.env.GA_CLIENT_EMAIL,
+        },
+        minimumThreshold: 0.03,
+        // The "period" for fetching analytic data.
+        period: {
+          startDate: new Date("2020-1-1"),
+          endDate: new Date(),
+        },
+      },
+    },
     // DEVTOOLS ================================================================
     {
       resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
@@ -143,7 +169,7 @@ module.exports = {
     },
   ],
   developMiddleware: app => {
-    app.use("/api", proxy({ target: "http://localhost:8000" }))
-    app.use("/auth", proxy({ target: "http://localhost:8000" }))
+    app.use("/api", createProxyMiddleware({ target: "http://localhost:8000" }))
+    app.use("/auth", createProxyMiddleware({ target: "http://localhost:8000" }))
   },
 }

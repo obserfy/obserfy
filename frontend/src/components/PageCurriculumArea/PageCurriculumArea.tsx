@@ -1,5 +1,6 @@
 import React, { FC, useState } from "react"
 import { navigate } from "gatsby-plugin-intl3"
+import { useImmer } from "use-immer"
 import Box from "../Box/Box"
 import Typography from "../Typography/Typography"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
@@ -37,12 +38,10 @@ export const PageCurriculumArea: FC<Props> = ({ id }) => {
   const [showDeleteAreaDialog, setShowDeleteAreaDialog] = useState(false)
   const [showDeleteSubjectDialog, setShowDeleteSubjectDialog] = useState(false)
   const [showEditAreaDialog, setShowEditAreaDialog] = useState(false)
-
   const [showEditSubjectDialog, setShowEditSubjectDialog] = useState(false)
-  const [editedSubject, setEditedSubject] = useState<
-    Subject & { materials: Material[] }
-  >()
-
+  const [editedSubject, setEditedSubject] = useImmer<
+    (Subject & { materials: Material[] }) | undefined
+  >(undefined)
   const [subjectToDelete, setSubjectToDelete] = useState<Subject>()
   const loading = area.loading || subjectsLoading
 
@@ -53,7 +52,7 @@ export const PageCurriculumArea: FC<Props> = ({ id }) => {
         <SubjectListItem
           subject={subject}
           onEditClick={target => {
-            setEditedSubject(target)
+            setEditedSubject(() => target)
             setShowEditSubjectDialog(true)
           }}
           onDeleteClick={() => {

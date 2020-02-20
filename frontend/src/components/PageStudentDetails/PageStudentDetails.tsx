@@ -7,7 +7,7 @@ import differenceInDays from "date-fns/differenceInDays"
 import { useGetStudent } from "../../api/useGetStudent"
 import Flex from "../Flex/Flex"
 import Box from "../Box/Box"
-import Typography from "../Typography/Typography"
+import Typography, { TextProps } from "../Typography/Typography"
 import Icon from "../Icon/Icon"
 import EmptyListPlaceholder from "../EmptyListPlaceholder/EmptyListPlaceholder"
 import Button from "../Button/Button"
@@ -83,7 +83,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
     <>
       <Box maxWidth="maxWidth.sm" margin="auto" pb={5}>
         <BackNavigation text="Home" to="/dashboard/home" />
-        <Flex alignItems="start" mx={3} mb={4} mt={3}>
+        <Flex alignItems="start" mx={3} mb={4} mt={0}>
           <Typography.H3 sx={{ wordWrap: "break-word" }}>
             {student?.name || <LoadingPlaceholder width="24rem" height={60} />}
           </Typography.H3>
@@ -99,7 +99,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
             <Icon minWidth={20} as={EditIcon} m={0} />
           </Button>
         </Flex>
-        <Box m={3}>
+        <Box m={3} mb={2}>
           <Link to={`/dashboard/students/observations/new?studentId=${id}`}>
             <Button variant="outline" width="100%">
               <Icon as={PlusIcon} m={0} mr={2} />
@@ -107,12 +107,14 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
             </Button>
           </Link>
         </Box>
-        <Box p={3}>
-          <SectionHeader>PROGRESS</SectionHeader>
+        <Box p={3} mb={1}>
+          <Box my={3}>
+            <SectionHeader>PROGRESS</SectionHeader>
+          </Box>
           <StudentProgressSummaryCard studentId={id} />
         </Box>
         <Box p={3}>
-          <Flex alignItems="center" mb={3}>
+          <Flex mb={3} alignItems="center">
             <SectionHeader>OBSERVATIONS</SectionHeader>
             <Spacer />
             <Link to={`/dashboard/students/observations/new?studentId=${id}`}>
@@ -124,13 +126,19 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
           {!isObservationLoading && observations && (
             <Flex mb={3} alignItems="center">
               <Button
+                backgroundColor="surface"
                 disabled={selectedDate >= dates.length - 1}
                 onClick={() => setSelectedDate(selectedDate + 1)}
                 variant="outline"
               >
                 <Icon as={PrevIcon} m={0} />
               </Button>
-              <Typography.Body flex={1} textAlign="center">
+              <Typography.Body
+                flex={1}
+                textAlign="center"
+                fontSize={2}
+                color="textMediumEmphasis"
+              >
                 <FormattedDate
                   value={dates[selectedDate]}
                   month="short"
@@ -140,6 +148,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
                 />
               </Typography.Body>
               <Button
+                backgroundColor="surface"
                 disabled={selectedDate < 1}
                 onClick={() => setSelectedDate(selectedDate - 1)}
                 variant="outline"
@@ -176,7 +185,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
   )
 }
 
-const SectionHeader: FC = props => (
+const SectionHeader: FC<TextProps> = props => (
   <Typography.H5
     fontWeight="normal"
     color="textMediumEmphasis"

@@ -49,7 +49,8 @@ module.exports = {
     "react/jsx-props-no-spreading": 0,
     "react/jsx-filename-extension": [1, { extensions: [".tsx", "js"] }],
     "jest/no-mocks-import": 0,
-
+    // Recommended for immer.
+    'no-param-reassign': ['error', { props: true, ignorePropertyModificationsFor: ['draft'] }],
     // Needed cause, https://github.com/typescript-eslint/typescript-eslint/issues/493
     // TODO: Remove on typescript-eslint 2.0
     "@typescript-eslint/explicit-function-return-type": [

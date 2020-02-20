@@ -511,7 +511,7 @@ exports[`EditSubjectDialog should render correctly 1`] = `
             <h6
               class="emotion-0"
             >
-              New Subject
+              Edit Subject
             </h6>
             <button
               class="emotion-1"

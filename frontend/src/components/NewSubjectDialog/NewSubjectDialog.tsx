@@ -1,5 +1,6 @@
 import React, { FC, useState } from "react"
 import nanoid from "nanoid"
+import { useImmer } from "use-immer"
 import Dialog from "../Dialog/Dialog"
 import Typography from "../Typography/Typography"
 import Button from "../Button/Button"
@@ -13,7 +14,9 @@ import Input from "../Input/Input"
 import { Material } from "../../api/useGetSubjectMaterials"
 import { getAnalytics } from "../../analytics"
 import { createSubjectApi } from "../../api/createSubjectApi"
-import DraggableMaterialListItem from "../DraggableMaterialListItem/DraggableMaterialListItem"
+import DraggableMaterialListItem, {
+  removeMaterial,
+} from "../DraggableMaterialListItem/DraggableMaterialListItem"
 
 const ITEM_HEIGHT = 48
 interface Props {
@@ -26,7 +29,7 @@ interface Props {
 export const NewSubjectDialog: FC<Props> = ({ onSaved, areaId, onDismiss }) => {
   const [loading, setLoading] = useState(false)
   const [subjectName, setSubjectName] = useState("")
-  const [materials, setMaterials] = useState<Material[]>([])
+  const [materials, setMaterials] = useImmer<Material[]>([])
 
   const isValid =
     materials.every(material => material.name !== "") && subjectName !== ""
@@ -53,7 +56,6 @@ export const NewSubjectDialog: FC<Props> = ({ onSaved, areaId, onDismiss }) => {
     }
   }
 
-  materials.sort((a, b) => a.order - b.order)
   const list = materials.map((material, i) => (
     <DraggableMaterialListItem
       height={ITEM_HEIGHT}
@@ -61,21 +63,12 @@ export const NewSubjectDialog: FC<Props> = ({ onSaved, areaId, onDismiss }) => {
       material={material}
       autofocus={material.order === materials.length}
       onNameChange={e => {
-        const newMaterial = [...materials]
-        newMaterial[newMaterial.indexOf(material)].name = e.target.value
-        setMaterials(newMaterial)
+        const name = e.target.value
+        setMaterials(draft => {
+          draft[i].name = name
+        })
       }}
-      onDelete={() => {
-        const newMaterial = materials
-          .filter(({ id }) => id !== material.id) // Remove material
-          .map(current =>
-            // Fix order number so none is skip
-            current.order > material.order
-              ? { ...current, order: current.order - 1 }
-              : current
-          )
-        setMaterials(newMaterial)
-      }}
+      onDelete={() => setMaterials(removeMaterial(material.id, material.order))}
       moveItem={(order, offset, originalOrder) => {
         // Calculate position inside the list while being dragged
         let position: number
@@ -85,20 +78,23 @@ export const NewSubjectDialog: FC<Props> = ({ onSaved, areaId, onDismiss }) => {
           position = Math.floor((offset + ITEM_HEIGHT / 2) / ITEM_HEIGHT)
         }
 
+        // console.log(originalOrder + position)
         // Reorder list to reflect position after dragging
         if (originalOrder + position > order) {
-          const newMaterial = materials.slice(0)
-          const nextItemIndex = Math.min(i + 1, materials.length - 1)
-          newMaterial[i].order += 1
-          newMaterial[nextItemIndex].order -= 1
-          setMaterials(newMaterial)
+          setMaterials(draft => {
+            const nextItemIndex = Math.min(i + 1, materials.length - 1)
+            draft[i].order += 1
+            draft[nextItemIndex].order -= 1
+            draft.sort((a, b) => a.order - b.order)
+          })
         }
         if (originalOrder + position < order) {
-          const newMaterial = materials.slice(0)
-          const previousItemIndex = Math.max(i - 1, 0)
-          newMaterial[i].order -= 1
-          newMaterial[previousItemIndex].order += 1
-          setMaterials(newMaterial)
+          setMaterials(draft => {
+            const previousItemIndex = Math.max(i - 1, 0)
+            draft[i].order -= 1
+            draft[previousItemIndex].order += 1
+            draft.sort((a, b) => a.order - b.order)
+          })
         }
       }}
     />
@@ -169,14 +165,13 @@ export const NewSubjectDialog: FC<Props> = ({ onSaved, areaId, onDismiss }) => {
               alignItems="center"
               backgroundColor="background"
               onClick={() => {
-                setMaterials([
-                  ...materials,
-                  {
+                setMaterials(draft => {
+                  draft.push({
                     id: nanoid(),
                     name: "",
                     order: materials.length + 1,
-                  },
-                ])
+                  })
+                })
               }}
               sx={{
                 cursor: "pointer",
