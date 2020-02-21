@@ -182,3 +182,4 @@ workflows:
       - frontend_unit
       - frontend_lint
       - frontend_typecheck
+      - docker_build
