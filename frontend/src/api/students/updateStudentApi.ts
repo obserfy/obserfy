@@ -1,7 +1,7 @@
 interface UpdateStudentRequestBody {
   id: string
-  name: string
-  dateOfBirth: Date
+  name?: string
+  dateOfBirth?: Date
 }
 export function updateStudentApi(
   student: UpdateStudentRequestBody

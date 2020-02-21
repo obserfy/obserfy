@@ -11,8 +11,8 @@ import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import { getAnalytics } from "../../analytics"
 import DeleteStudentDialog from "../DeleteStudentDialog/DeleteStudentDialog"
 import Spacer from "../Spacer/Spacer"
-import { deleteStudentApi } from "../../api/deleteStudentApi"
-import { updateStudentApi } from "../../api/updateStudentApi"
+import { deleteStudentApi } from "../../api/students/deleteStudentApi"
+import { updateStudentApi } from "../../api/students/updateStudentApi"
 import Icon from "../Icon/Icon"
 import { ReactComponent as CalendarIcon } from "../../icons/calendar.svg"
 import DatePickerDialog from "../DatePickerDialog/DatePickerDialog"
@@ -24,13 +24,13 @@ export const PageEditStudent: FC<Props> = ({ id }) => {
   const studentDetailUrl = `/dashboard/students/details?id=${id}`
   const [isDeletingStudent, setIsDeletingStudent] = useState(false)
   const [details] = useGetStudent(id)
-  const [name, setName] = useState()
-  const [dateOfBirth, setDateOfBirth] = useState()
+  const [name, setName] = useState<string>()
+  const [dateOfBirth, setDateOfBirth] = useState<Date>()
   const [showDatePicker, setShowDatePicker] = useState(false)
   const intl = useIntl()
 
   useEffect(() => {
-    setName(details?.name)
+    setName(details?.name ?? "")
     if (details?.dateOfBirth) {
       setDateOfBirth(new Date(details?.dateOfBirth))
     }
@@ -60,7 +60,7 @@ export const PageEditStudent: FC<Props> = ({ id }) => {
 
   const deleteStudentDialog = isDeletingStudent && (
     <DeleteStudentDialog
-      student={{ id, name }}
+      student={{ id, name: name ?? "" }}
       onConfirm={deleteStudent}
       onCancel={() => setIsDeletingStudent(false)}
     />
