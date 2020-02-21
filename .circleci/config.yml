@@ -7,6 +7,8 @@ jobs:
     steps:
       - checkout
       - run: |
+          sudo apt update && sudo apt install docker-ce
+      - run: |
           cd frontend
           echo "GA_CLIENT_EMAIL=$GA_CLIENT_EMAIL" >> .env
           echo "GA_PRIVATE_KEY=$GA_PRIVATE_KEY" >> .env
