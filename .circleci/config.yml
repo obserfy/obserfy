@@ -15,7 +15,7 @@ jobs:
       - run : |
           DOCKER_BUILDKIT=1 docker build -t "chrsep/vor:latest" -f  docker/vor/prod.dockerfile . --secret id=env,src=./frontend/.env
       - run: |
-          echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+          echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_LOGIN" --password-stdin
           docker push chrsep/vor:latest
   e2e:
     machine:
@@ -187,4 +187,14 @@ workflows:
       - frontend_unit
       - frontend_lint
       - frontend_typecheck
-      - deploy
+      - deploy:
+          filters:
+            branches:
+              only:
+                - master
+          requires:
+            - e2e
+            - backend_unit
+            - frontend_unit
+            - frontend_lint
+            - frontend_typecheck
