@@ -1,5 +1,8 @@
-/* eslint-disable @typescript-eslint/camelcase */
+/* eslint-disable @typescript-eslint/camelcase,@typescript-eslint/no-var-requires,global-require */
 const { createProxyMiddleware } = require("http-proxy-middleware")
+require("dotenv").config({
+  path: `.env`,
+})
 
 module.exports = {
   siteMetadata: {
