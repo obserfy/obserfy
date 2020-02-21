@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  docker_build:
+  deploy:
     machine:
       image: ubuntu-1604:201903-01
     working_directory: ~/repo
@@ -14,6 +14,9 @@ jobs:
           echo "GA_PRIVATE_KEY=$GA_PRIVATE_KEY" >> .env
       - run : |
           DOCKER_BUILDKIT=1 docker build -t "chrsep/vor:latest" -f  docker/vor/prod.dockerfile . --secret id=env,src=./frontend/.env
+      - run: |
+          echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+          docker push chrsep/vor:latest
   e2e:
     machine:
       image: ubuntu-1604:201903-01
@@ -184,4 +187,4 @@ workflows:
       - frontend_unit
       - frontend_lint
       - frontend_typecheck
-      - docker_build
+      - deploy
