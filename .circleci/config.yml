@@ -1,5 +1,17 @@
 version: 2.1
 jobs:
+  docker_build:
+    machine:
+      image: ubuntu-1604:201903-01
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: |
+          cd frontend
+          echo "GA_CLIENT_EMAIL=$GA_CLIENT_EMAIL" >> .env
+          echo "GA_PRIVATE_KEY=$GA_PRIVATE_KEY" >> .env
+      - run : |
+          DOCKER_BUILDKIT=1 docker build -t "chrsep/vor:latest" -f  docker/vor/prod.dockerfile . --secret id=env,src=./frontend/.env
   e2e:
     machine:
       image: ubuntu-1604:201903-01
