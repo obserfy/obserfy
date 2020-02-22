@@ -213,6 +213,7 @@ workflows:
       - frontend_unit
       - frontend_lint
       - frontend_typecheck
+      - frontend_build
       - deploy:
           filters:
             branches:
