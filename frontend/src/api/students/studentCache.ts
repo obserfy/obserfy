@@ -25,14 +25,20 @@ export function useStudentsCache(
     let cancelled = false
     get<StudentCache[]>(key).then(cachedData => {
       if (cachedData?.length > 0 && !cancelled) {
-        setStudents(cachedData)
+        setStudents(
+          cachedData.filter(cache => {
+            return cache.schoolId === schoolId
+          })
+        )
       }
     })
     return () => {
       cancelled = true
     }
-  }, [key])
+  }, [key, schoolId])
 
+  // TODO: This currently overwrites the whole cache whenever user changes schoolId
+  //  revamp later
   // Update cached content
   useEffect(() => {
     let cancelled = false
