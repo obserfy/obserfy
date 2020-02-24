@@ -55,7 +55,7 @@ export const LoadingIndicator: FC<Props> = ({
           width: `${ballSize}px`,
           height: `${ballSize}px`,
           borderRadius: "50%",
-          background: color,
+          backgroundColor: color,
           animationTimingFunction: "cubic-bezier(0, 1, 1, 0)",
           "&:nth-child(1)": {
             left: `${gapSize}px`,

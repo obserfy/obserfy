@@ -9,15 +9,17 @@ import Button from "../Button/Button"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import { Typography } from "../Typography/Typography"
 import Card from "../Card/Card"
-import { useGetStudents } from "../../api/useGetStudents"
+import { useGetStudents } from "../../api/students/useGetStudents"
 import EmptyListPlaceholder from "../EmptyListPlaceholder/EmptyListPlaceholder"
 import { getSchoolId } from "../../hooks/schoolIdState"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
+import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 
 export const PageHome: FC = () => {
   const schoolId = getSchoolId()
   const [searchTerm, setSearchTerm] = useState("")
-  const [students, loading] = useGetStudents(schoolId)
+  const { data, loading } = useGetStudents(schoolId)
+  const students = data ?? []
   const matchedStudent = students.filter(student =>
     student.name.match(new RegExp(searchTerm, "i"))
   )
@@ -48,7 +50,7 @@ export const PageHome: FC = () => {
   )
 
   const emptyResultInfo = students.length > 0 &&
-    matchedStudent.length === 0 &&
+    matchedStudent?.length === 0 &&
     searchTerm !== "" && (
       <Flex mt={3} alignItems="center" justifyContent="center" height="100%">
         <Typography.H6 textAlign="center" maxWidth="80vw">
@@ -72,10 +74,15 @@ export const PageHome: FC = () => {
           </Button>
         </Link>
       </Flex>
-      {!loading && students.length > 0 && studentList}
+      {loading && students.length > 0 && (
+        <Flex justifyContent="center" mt={-3}>
+          <LoadingIndicator size={48} color="primary" />
+        </Flex>
+      )}
+      {(!loading || students.length > 0) && studentList}
       {!loading && emptyResultInfo}
       {!loading && emptyStudentListPlaceholder}
-      {loading && <StudentListLoadingPlaceholder />}
+      {loading && students.length === 0 && <StudentListLoadingPlaceholder />}
     </Box>
   )
 }

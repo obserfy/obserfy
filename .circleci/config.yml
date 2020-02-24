@@ -1,5 +1,48 @@
 version: 2.1
 jobs:
+  frontend_build:
+    docker:
+      - image: node:12
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - build-{{ checksum "frontend/yarn.lock" }}
+      - run: |
+          cd frontend
+          yarn install
+      - run: |
+          cd frontend
+          yarn build
+      - save_cache:
+          when: always
+          name: Save Yarn Package Cache
+          key: build-{{ checksum "frontend/yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+            - ~/.cache/Cypress
+            - ./frontend/node_modules
+      - store_artifacts:
+          path: ./frontend/public
+  deploy:
+    machine:
+      image: ubuntu-1604:201903-01
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: |
+          sudo apt update && sudo apt install docker-ce
+      - run: |
+          cd frontend
+          echo "GA_CLIENT_EMAIL=$GA_CLIENT_EMAIL" >> .env
+          echo "GA_PRIVATE_KEY=$GA_PRIVATE_KEY" >> .env
+      - run : |
+          DOCKER_BUILDKIT=1 docker build -t "chrsep/vor:latest" -f  docker/vor/prod.dockerfile . --secret id=env,src=./frontend/.env
+      - run: |
+          echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_LOGIN" --password-stdin
+          docker push chrsep/vor:latest
   e2e:
     machine:
       image: ubuntu-1604:201903-01
@@ -170,3 +213,15 @@ workflows:
       - frontend_unit
       - frontend_lint
       - frontend_typecheck
+      - frontend_build
+      - deploy:
+          filters:
+            branches:
+              only:
+                - master
+          requires:
+            - e2e
+            - backend_unit
+            - frontend_unit
+            - frontend_lint
+            - frontend_typecheck

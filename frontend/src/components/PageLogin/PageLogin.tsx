@@ -9,8 +9,8 @@ import { Typography } from "../Typography/Typography"
 import { getAnalytics } from "../../analytics"
 
 export const PageLogin: FC = () => {
-  const [email, setEmail] = useState()
-  const [password, setPassword] = useState()
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
   const [error, setError] = useState("")
 
   async function submitLoginForm(): Promise<void> {

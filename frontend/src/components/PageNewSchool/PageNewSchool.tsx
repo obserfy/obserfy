@@ -18,7 +18,7 @@ async function submitNewSchoolForm(name: string): Promise<void> {
 }
 
 export const PageNewSchool: FC = () => {
-  const [name, setName] = useState()
+  const [name, setName] = useState("")
 
   function handleSubmit(e: FormEvent): void {
     submitNewSchoolForm(name)

@@ -87,7 +87,7 @@ exports[`LoadingIndicator should render correctly 1`] = `
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: white;
+  background-color: white;
   -webkit-animation-timing-function: cubic-bezier(0,1,1,0);
   animation-timing-function: cubic-bezier(0,1,1,0);
 }

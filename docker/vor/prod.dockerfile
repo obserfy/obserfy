@@ -1,15 +1,18 @@
+# syntax=docker/dockerfile:experimental
 ####################################
 # Build the gatsby powered frontend
 ####################################
-FROM node:12 AS frontend-builder
+FROM node:13 AS frontend-builder
 WORKDIR /usr/src/vor/frontend
 # Get dependencies first, so it can be cached independently
+COPY ./frontend/*.tgz /usr/src/vor/frontend/
 COPY ./frontend/package.json /usr/src/vor/frontend/package.json
 COPY ./frontend/yarn.lock /usr/src/vor/frontend/yarn.lock
-COPY ./frontend/*.tgz /usr/src/vor/frontend/
-RUN yarn install --production --network-timeout 100000
+RUN yarn install --production --frozen-lockfile --network-timeout 100000
 # Build the project
+COPY ./.git /usr/src/vor/.git
 ADD ./frontend /usr/src/vor/frontend
+RUN --mount=type=secret,id=env,dst=/usr/src/vor/frontend/.env
 RUN yarn build
 # Move the build artifact so its easier to be copied
 # on the final build
@@ -26,7 +29,7 @@ COPY ./go.mod /usr/src/vor/go.mod
 COPY ./go.sum /usr/src/vor/go.sum
 RUN go mod download
 # Build the project
-ADD . /usr/src/vor
+ADD ./pkg /usr/src/vor/pkg
 RUN go build -o ./app pkg/*.go
 
 ####################################
