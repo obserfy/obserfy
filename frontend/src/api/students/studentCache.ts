@@ -4,25 +4,61 @@ import { Student } from "./useGetStudents"
 
 const CACHE_VERSION = 1
 
-export function useStudentsCache(url: string, data?: Student[]): Student[] {
-  const [students, setStudents] = useState<Student[]>([])
+const createCacheKey = (): string => `${CACHE_VERSION}:/schools/students`
+
+// This is the shape of data we save on cache
+interface StudentCache {
+  id: string
+  name: string
+  schoolId: string
+}
+export function useStudentsCache(
+  schoolId: string,
+  data?: Student[]
+): StudentCache[] {
+  const [students, setStudents] = useState<StudentCache[]>([])
+  const key = createCacheKey()
+  const dataWithSchoolId = data?.map(student => ({ ...student, schoolId }))
 
   // Get cache content just once
   useEffect(() => {
-    get<Student[]>(`${CACHE_VERSION}:${url}`).then(cachedData => {
-      if (cachedData?.length > 0) {
+    let cancelled = false
+    get<StudentCache[]>(key).then(cachedData => {
+      if (cachedData?.length > 0 && !cancelled) {
         setStudents(cachedData)
       }
     })
-  }, [url])
+    return () => {
+      cancelled = true
+    }
+  }, [key])
 
   // Update cached content
   useEffect(() => {
-    if (data === undefined) return
-    set(`${CACHE_VERSION}:${url}`, data).then(() => {
-      setStudents(data ?? [])
-    })
-  }, [data, url])
+    let cancelled = false
+    if (dataWithSchoolId !== undefined) {
+      set(key, dataWithSchoolId).then(() => {
+        if (!cancelled) {
+          setStudents(dataWithSchoolId ?? [])
+        }
+      })
+    }
+    return () => {
+      cancelled = true
+    }
+  }, [key, dataWithSchoolId, schoolId])
 
   return students
+}
+
+export async function deleteStudentFromCache(
+  schoolId: string,
+  studentId: string
+): Promise<void> {
+  const key = createCacheKey()
+  const students = await get<Student[]>(key)
+  await set(
+    key,
+    students.filter(({ id }) => id !== studentId)
+  )
 }
