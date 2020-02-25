@@ -26,23 +26,7 @@ jobs:
             - ./frontend/node_modules
       - store_artifacts:
           path: ./frontend/public
-  deploy:
-    machine:
-      image: ubuntu-1604:201903-01
-    working_directory: ~/repo
-    steps:
-      - checkout
-      - run: |
-          sudo apt update && sudo apt install docker-ce
-      - run: |
-          cd frontend
-          echo "GA_CLIENT_EMAIL=$GA_CLIENT_EMAIL" >> .env
-          echo "GA_PRIVATE_KEY=$GA_PRIVATE_KEY" >> .env
-      - run : |
-          DOCKER_BUILDKIT=1 docker build -t "chrsep/vor:latest" -f  docker/vor/prod.dockerfile . --secret id=env,src=./frontend/.env
-      - run: |
-          echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_LOGIN" --password-stdin
-          docker push chrsep/vor:latest
+
   e2e:
     machine:
       image: ubuntu-1604:201903-01
@@ -72,13 +56,13 @@ jobs:
       - run: |
           cd frontend
           yarn cy:ci
-      - run:  bash <(curl -s https://codecov.io/bash)
+      - run: bash <(curl -s https://codecov.io/bash)
       - store_test_results:
           path: frontend/coverage/clover.xml
       - store_artifacts:
-          path:  ~/repo/frontend/cypress/videos
+          path: ~/repo/frontend/cypress/videos
       - store_artifacts:
-          path:  ~/repo/frontend/cypress/screenshots
+          path: ~/repo/frontend/cypress/screenshots
       - save_cache:
           when: always
           name: Save Yarn Package Cache
@@ -95,7 +79,7 @@ jobs:
         environment:
           POSTGRES_PASSWORD: postgres
           POSTGRES_USER: postgres
-          POSTGRES_DB:  defaultdb
+          POSTGRES_DB: defaultdb
     working_directory: ~/repo
     steps:
       - checkout
@@ -117,7 +101,7 @@ jobs:
           go get gotest.tools/gotestsum
           PACKAGE_NAMES=$(go list ./... | circleci tests split --split-by=timings --timings-type=classname)
           gotestsum --junitfile test_result/go/gotestsum-report.xml -- $PACKAGE_NAMES -v -coverprofile=coverage.txt -covermode=atomic -coverpkg $(go list ./... | grep -v "test" | paste -s -d",")
-      - run:  bash <(curl -s https://codecov.io/bash)
+      - run: bash <(curl -s https://codecov.io/bash)
       - store_test_results:
           path: test_result
       - save_cache:
@@ -205,6 +189,34 @@ jobs:
             - ~/.cache/Cypress
             - ./frontend/node_modules
 
+  deploy:
+    machine:
+      image: ubuntu-1604:201903-01
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: |
+          sudo apt update && sudo apt install docker-ce
+      - run: |
+          cd frontend
+          echo "GA_CLIENT_EMAIL=$GA_CLIENT_EMAIL" >> .env
+          echo "GA_PRIVATE_KEY=$GA_PRIVATE_KEY" >> .env
+      - run: |
+          DOCKER_BUILDKIT=1 docker build -t "chrsep/vor:latest" -f  docker/vor/prod.dockerfile . --secret id=env,src=./frontend/.env
+      - run: |
+          echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_LOGIN" --password-stdin
+          docker push chrsep/vor:latest
+
+  sentry_release:
+    docker:
+      - image: getsentry/sentry-cli:latest
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: |
+          VERSION=$(sentry-cli releases propose-version)
+          sentry-cli releases set-commits --auto $VERSION
+
 workflows:
   test:
     jobs:
@@ -225,3 +237,7 @@ workflows:
             - frontend_unit
             - frontend_lint
             - frontend_typecheck
+
+      - sentry_release:
+          requires:
+            - deploy
