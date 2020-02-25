@@ -8,13 +8,6 @@ services:
     environment:
       # go-devtools docker specific env
       SRC_ENTRYPOINT: /src/vor/pkg/*.go
-
-      # vor specific env
-      SITE_URL: localhost:8001
-      DB_USERNAME: postgres
-      DB_PASSWORD: postgres
-      DB_HOST: vor-postgres
-      DB_PORT: 5432
     volumes:
       - .:/src/vor
     ports:

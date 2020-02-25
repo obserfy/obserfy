@@ -5,6 +5,7 @@ import (
 	"github.com/chrsep/vor/pkg/auth"
 	"github.com/chrsep/vor/pkg/curriculum"
 	"github.com/chrsep/vor/pkg/logger"
+	"github.com/chrsep/vor/pkg/mailgun"
 	"github.com/chrsep/vor/pkg/observation"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/rest"
@@ -66,6 +67,7 @@ func runServer() error {
 	userStore := postgres.UserStore{db}
 	curriculumStore := postgres.CurriculumStore{db}
 	authStore := postgres.AuthStore{db}
+	mailService := mailgun.NewService()
 
 	// Setup routing
 	r := chi.NewRouter()
@@ -76,7 +78,7 @@ func runServer() error {
 	r.Use(middleware.GetHead)            // Redirect HEAD request to GET handlers
 	r.Use(middleware.Recoverer)          // Catches panic, recover and return 500
 	r.Use(sentryHandler.Handle)          // Panic goes to sentry first, who catch it than epanics
-	r.Mount("/auth", auth.NewRouter(server, authStore))
+	r.Mount("/auth", auth.NewRouter(server, authStore, mailService))
 	r.Route("/api/v1", func(r chi.Router) {
 		r.Use(auth.NewMiddleware(server, authStore))
 		r.Mount("/students", student.NewRouter(server, studentStore))
