@@ -2,10 +2,10 @@ package auth
 
 import (
 	"context"
-	"errors"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/rest"
 	"github.com/go-chi/chi"
+	"github.com/go-playground/validator/v10"
 	richErrors "github.com/pkg/errors"
 	"golang.org/x/crypto/bcrypt"
 	"net/http"
@@ -62,7 +62,7 @@ func GetSessionFromCtx(ctx context.Context) (*postgres.Session, bool) {
 }
 
 func NewGetSessionError() *rest.Error {
-	return &rest.Error{http.StatusUnauthorized, "Unauthorized", errors.New("session can't be found on context")}
+	return &rest.Error{http.StatusUnauthorized, "Unauthorized", richErrors.New("session can't be found on context")}
 }
 
 func NewRouter(s rest.Server, store postgres.AuthStore, email MailService) *chi.Mux {
@@ -102,12 +102,12 @@ func register(s *server) rest.Handler {
 		// TODO: add better mail validation
 		email := r.FormValue("mail")
 		if email == "" {
-			return &rest.Error{Code: http.StatusBadRequest, Message: "MailService is required", Error: errors.New("mail is empty")}
+			return &rest.Error{Code: http.StatusBadRequest, Message: "Email field is required", Error: richErrors.New("email is empty")}
 		}
 		// TODO: add better password validation
 		password := r.FormValue("password")
 		if password == "" {
-			return &rest.Error{http.StatusBadRequest, "Password is required", errors.New("mail is empty")}
+			return &rest.Error{http.StatusBadRequest, "Password is required", richErrors.New("mail is empty")}
 		}
 		hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), BCryptCost)
 		if err != nil {
@@ -116,7 +116,7 @@ func register(s *server) rest.Handler {
 		// TODO: add better password validation
 		name := r.FormValue("name")
 		if name == "" {
-			return &rest.Error{http.StatusInternalServerError, "Name is required", errors.New("name is empty ")}
+			return &rest.Error{http.StatusInternalServerError, "Name is required", richErrors.New("name is empty ")}
 		}
 		inviteCode := r.FormValue("inviteCode")
 
@@ -125,7 +125,7 @@ func register(s *server) rest.Handler {
 		if err != nil {
 			// TODO: Is there necessary?
 			if strings.Contains(err.Error(), "#23505") {
-				return &rest.Error{Code: http.StatusConflict, Message: "MailService already been used", Error: err}
+				return &rest.Error{Code: http.StatusConflict, Message: "Email already been used", Error: err}
 			}
 			return &rest.Error{Code: http.StatusInternalServerError, Message: "Failed to insert user to db", Error: err}
 		}
@@ -146,15 +146,15 @@ func register(s *server) rest.Handler {
 func login(s *server) rest.Handler {
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		// TODO: add better mail validation
-		email := r.FormValue("mail")
+		email := r.FormValue("email")
 		if email == "" {
-			return &rest.Error{Code: http.StatusBadRequest, Message: "MailService is required", Error: errors.New("mail is empty")}
+			return &rest.Error{Code: http.StatusBadRequest, Message: "Email is required", Error: richErrors.New("mail is empty")}
 		}
 
 		// TODO: add better password validation
 		password := r.FormValue("password")
 		if password == "" {
-			return &rest.Error{http.StatusBadRequest, "Password is required", errors.New("password is empty")}
+			return &rest.Error{http.StatusBadRequest, "Password is required", richErrors.New("password is empty")}
 		}
 
 		user, err := s.store.GetUserByEmail(email)
@@ -200,16 +200,17 @@ func logout(s *server) rest.Handler {
 
 func resetPassword(s *server) http.Handler {
 	type requestBody struct {
-		Email string `json:"email"`
+		Email string `json:"email" validate:"required,email"`
 	}
+	validate := validator.New()
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		var body requestBody
 		if err := rest.ParseJson(r.Body, &body); err != nil {
 			return rest.NewParseJsonError(err)
 		}
 
-		if body.Email == "" {
-			return &rest.Error{http.StatusBadRequest, "Email field can't be empty", richErrors.New("empty email field")}
+		if err := validate.Struct(body); err != nil {
+			return &rest.Error{http.StatusBadRequest, "Invalid email address", richErrors.Wrap(err, "Invalid email")}
 		}
 		if err := s.mail.SendResetPassword(body.Email); err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Failed to send forget password email", err}
