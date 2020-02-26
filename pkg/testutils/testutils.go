@@ -47,7 +47,7 @@ func connectTestDB() (*pg.DB, error) {
 	return db, nil
 }
 
-func (s *BaseTestSuite) TestRequest(method string, path string, bodyJson interface{}) *httptest.ResponseRecorder {
+func (s *BaseTestSuite) CreateRequest(method string, path string, bodyJson interface{}) *httptest.ResponseRecorder {
 	w := httptest.NewRecorder()
 	body, err := json.Marshal(bodyJson)
 	assert.NoError(s.T(), err)

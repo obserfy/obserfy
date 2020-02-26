@@ -3,6 +3,7 @@ module github.com/chrsep/vor
 go 1.13
 
 require (
+	github.com/brianvoe/gofakeit/v4 v4.2.3
 	github.com/getsentry/sentry-go v0.3.1
 	github.com/go-chi/chi v4.0.2+incompatible
 	github.com/go-pg/pg/v9 v9.0.3

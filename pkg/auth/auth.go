@@ -15,16 +15,11 @@ import (
 )
 
 const (
-	BCryptCost    = 10
 	SessionCtxKey = "session"
 )
 
 type MailService interface {
 	SendResetPassword(email string) error
-}
-
-type Store interface {
-	ResolveInviteCode(inviteCodeId string) (*postgres.School, error)
 }
 
 type server struct {
@@ -100,7 +95,7 @@ func register(s *server) rest.Handler {
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		// Validate
 		// TODO: add better mail validation
-		email := r.FormValue("mail")
+		email := r.FormValue("email")
 		if email == "" {
 			return &rest.Error{Code: http.StatusBadRequest, Message: "Email field is required", Error: richErrors.New("email is empty")}
 		}
@@ -109,10 +104,7 @@ func register(s *server) rest.Handler {
 		if password == "" {
 			return &rest.Error{http.StatusBadRequest, "Password is required", richErrors.New("mail is empty")}
 		}
-		hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), BCryptCost)
-		if err != nil {
-			return &rest.Error{Code: http.StatusInternalServerError, Message: "Failed to hash password", Error: err}
-		}
+
 		// TODO: add better password validation
 		name := r.FormValue("name")
 		if name == "" {
@@ -121,7 +113,7 @@ func register(s *server) rest.Handler {
 		inviteCode := r.FormValue("inviteCode")
 
 		// Create new user
-		user, err := s.store.NewUser(email, hashedPassword, name, inviteCode)
+		user, err := s.store.NewUser(email, password, name, inviteCode)
 		if err != nil {
 			// TODO: Is there necessary?
 			if strings.Contains(err.Error(), "#23505") {
@@ -159,7 +151,18 @@ func login(s *server) rest.Handler {
 
 		user, err := s.store.GetUserByEmail(email)
 		if err != nil {
-			return &rest.Error{Code: http.StatusUnauthorized, Message: "Wrong credentials", Error: err}
+			return &rest.Error{
+				http.StatusInternalServerError,
+				"Failed getting user data",
+				err,
+			}
+		}
+		if user == nil {
+			return &rest.Error{
+				http.StatusUnauthorized,
+				"Wrong credentials",
+				err,
+			}
 		}
 
 		//  Compare hash and password
@@ -210,12 +213,34 @@ func resetPassword(s *server) http.Handler {
 		}
 
 		if err := validate.Struct(body); err != nil {
-			return &rest.Error{http.StatusBadRequest, "Invalid email address", richErrors.Wrap(err, "Invalid email")}
-		}
-		if err := s.mail.SendResetPassword(body.Email); err != nil {
-			return &rest.Error{http.StatusInternalServerError, "Failed to send forget password email", err}
+			return &rest.Error{
+				http.StatusBadRequest,
+				"Invalid email address",
+				richErrors.Wrap(err, "Invalid email"),
+			}
 		}
 
+		// Check if user exists
+		user, err := s.store.GetUserByEmail(body.Email)
+		if err != nil {
+			return &rest.Error{
+				http.StatusInternalServerError,
+				"Failed getting user by email",
+				err,
+			}
+		}
+		if user == nil {
+			// Return ok when email does not exist on db, but don't send email.
+			return nil
+		}
+
+		if err := s.mail.SendResetPassword(body.Email); err != nil {
+			return &rest.Error{
+				http.StatusInternalServerError,
+				"Failed to send forget password email",
+				err,
+			}
+		}
 		return nil
 	})
 }
