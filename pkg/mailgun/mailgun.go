@@ -20,7 +20,8 @@ func (s Service) SendResetPassword(email string, token string) error {
 		return richErrors.Wrap(err, "Failed parsing reset-password.html")
 	}
 	body := new(bytes.Buffer)
-	if err := t.Execute(body, struct{ Message string }{"Reset your password"}); err != nil {
+	url := "https://" + os.Getenv("SITE_URL") + "/reset-password?token=" + token
+	if err := t.Execute(body, struct{ Url string }{url}); err != nil {
 		return richErrors.Wrap(err, "Failed executing template")
 	}
 
