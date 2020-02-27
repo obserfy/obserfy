@@ -25,6 +25,7 @@ func Connect(user string, password string, addr string, tlsConfig *tls.Config) *
 			break
 		} else {
 			fmt.Println("Error: PostgreSQL is down")
+			fmt.Println(err)
 			time.Sleep(1000 * time.Millisecond)
 		}
 	}
@@ -44,6 +45,7 @@ func InitTables(db *pg.DB) error {
 		(*User)(nil),
 		(*Session)(nil),
 		(*UserToSchool)(nil),
+		(*PasswordResetToken)(nil),
 	} {
 		err := db.CreateTable(model, &orm.CreateTableOptions{IfNotExists: true, FKConstraints: true})
 		if err != nil {
@@ -134,4 +136,12 @@ type User struct {
 	Name     string
 	Password []byte
 	Schools  []School `pg:"many2many:user_to_schools,joinFK:school_id"`
+}
+
+type PasswordResetToken struct {
+	Token     string    `pg:",pk,type:uuid"`
+	CreatedAt time.Time `pg:",notnull"`
+	ExpiredAt time.Time `pg:",notnull"`
+	UserId    string    `pg:",type:uuid,on_delete:CASCADE,notnull"`
+	User      User
 }
