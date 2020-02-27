@@ -10,7 +10,7 @@ describe(" Smoke test on prod build", () => {
 
     const schoolName = faker.company.companyName()
 
-    cy.visit("http://localhost:8001/login")
+    cy.visit("http://localhost:8001")
     cy.waitForRouteChange()
 
     // Try logging in and fail
