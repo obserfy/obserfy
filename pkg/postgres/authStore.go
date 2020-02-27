@@ -5,6 +5,7 @@ import (
 	"github.com/google/uuid"
 	richErrors "github.com/pkg/errors"
 	"golang.org/x/crypto/bcrypt"
+	"time"
 )
 
 const (
@@ -95,4 +96,18 @@ func (a AuthStore) DeleteSession(token string) error {
 		return richErrors.Wrap(err, "Failed deleting session")
 	}
 	return nil
+}
+
+func (a AuthStore) InsertNewToken(userId string) (*PasswordResetToken, error) {
+	currentTime := time.Now()
+	token := PasswordResetToken{
+		Token:     uuid.New().String(),
+		CreatedAt: currentTime,
+		ExpiredAt: currentTime.Add(time.Hour),
+		UserId:    userId,
+	}
+	if err := a.DB.Insert(&token); err != nil {
+		return nil, richErrors.Wrap(err, "Failed inserting new token")
+	}
+	return &token, nil
 }

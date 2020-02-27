@@ -14,7 +14,7 @@ type Service struct {
 	mailgun mailgun.Mailgun
 }
 
-func (s Service) SendResetPassword(email string) error {
+func (s Service) SendResetPassword(email string, token string) error {
 	t, err := template.ParseFiles("pkg/mailgun/reset-password.html")
 	if err != nil {
 		return richErrors.Wrap(err, "Failed parsing reset-password.html")

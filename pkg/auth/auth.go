@@ -5,7 +5,6 @@ import (
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/rest"
 	"github.com/go-chi/chi"
-	"github.com/go-playground/validator/v10"
 	richErrors "github.com/pkg/errors"
 	"golang.org/x/crypto/bcrypt"
 	"net/http"
@@ -19,7 +18,7 @@ const (
 )
 
 type MailService interface {
-	SendResetPassword(email string) error
+	SendResetPassword(email string, token string) error
 }
 
 type server struct {
@@ -201,49 +200,6 @@ func logout(s *server) rest.Handler {
 	})
 }
 
-func resetPassword(s *server) http.Handler {
-	type requestBody struct {
-		Email string `json:"email" validate:"required,email"`
-	}
-	validate := validator.New()
-	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
-		var body requestBody
-		if err := rest.ParseJson(r.Body, &body); err != nil {
-			return rest.NewParseJsonError(err)
-		}
-
-		if err := validate.Struct(body); err != nil {
-			return &rest.Error{
-				http.StatusBadRequest,
-				"Invalid email address",
-				richErrors.Wrap(err, "Invalid email"),
-			}
-		}
-
-		// Check if user exists
-		user, err := s.store.GetUserByEmail(body.Email)
-		if err != nil {
-			return &rest.Error{
-				http.StatusInternalServerError,
-				"Failed getting user by email",
-				err,
-			}
-		}
-		if user == nil {
-			// Return ok when email does not exist on db, but don't send email.
-			return nil
-		}
-
-		if err := s.mail.SendResetPassword(body.Email); err != nil {
-			return &rest.Error{
-				http.StatusInternalServerError,
-				"Failed to send forget password email",
-				err,
-			}
-		}
-		return nil
-	})
-}
 
 func createCookie(token string) *http.Cookie {
 	cookie := http.Cookie{

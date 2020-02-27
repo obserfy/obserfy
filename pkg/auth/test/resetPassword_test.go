@@ -1,6 +1,7 @@
 package auth_test
 
 import (
+	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 	"net/http"
@@ -36,33 +37,43 @@ func (s *AuthTestSuite) TestInvalidResetPassword() {
 }
 
 func (s *AuthTestSuite) TestValidResetPassword() {
+	s.mailService.On("SendResetPassword", mock.Anything).Return(nil)
 	t := s.T()
 
 	user, err := s.SaveNewUser()
 	assert.NoError(t, err)
 
-	tests := []struct {
-		name      string
-		email     string
-		emailSent bool
-	}{
-		{"valid existing email", user.Email, true},
-		{"valid non existent email", "michigafdf@ngmail.com", false},
-	}
-	for _, test := range tests {
-		t.Run(test.name, func(t *testing.T) {
-			s.mailService.On("SendResetPassword", mock.Anything).Return(nil)
-			payload := struct {
-				Email string `json:"email"`
-			}{test.email}
-			w := s.CreateRequest("POST", "/reset-password", payload)
+	payload := struct {
+		Email string `json:"email"`
+	}{user.Email}
+	w := s.CreateRequest("POST", "/reset-password", payload)
 
-			assert.Equal(t, http.StatusOK, w.Code, w.Body)
-			if test.emailSent {
-				s.mailService.AssertCalled(t, "SendResetPassword", payload.Email)
-			} else {
-				s.mailService.AssertNotCalled(t, "SendResetPassword", payload.Email)
-			}
-		})
-	}
+	assert.Equal(t, http.StatusOK, w.Code, w.Body)
+	s.mailService.AssertCalled(t, "SendResetPassword", payload.Email)
+	var token postgres.PasswordResetToken
+	err = s.DB.Model(&token).
+		Where("user_id=?", user.Id).
+		Select()
+	assert.NoError(t, err)
+}
+
+func (s *AuthTestSuite) TestResetPasswordNonExistentEmail() {
+	s.mailService.On("SendResetPassword", mock.Anything).Return(nil)
+	t := s.T()
+
+	user, err := s.SaveNewUser()
+	assert.NoError(t, err)
+
+	payload := struct {
+		Email string `json:"email"`
+	}{"asfadskjfhklash@gmail.com"}
+	w := s.CreateRequest("POST", "/reset-password", payload)
+
+	assert.Equal(t, http.StatusOK, w.Code, w.Body)
+	s.mailService.AssertNotCalled(t, "SendResetPassword", payload.Email)
+	var token postgres.PasswordResetToken
+	err = s.DB.Model(&token).
+		Where("user_id=?", user.Id).
+		Select()
+	assert.Error(t, err)
 }
