@@ -59,7 +59,6 @@ export const PageResetPassword: FC<Props> = ({ token }) => {
       getAnalytics()?.track("Password reset success")
     } else {
       const body = await response.json()
-      console.log(body)
       setError(body?.error?.message ?? "Something went wrong, please try again")
       getAnalytics()?.track("Password reset failed")
     }
