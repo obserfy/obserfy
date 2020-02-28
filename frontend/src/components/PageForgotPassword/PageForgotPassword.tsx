@@ -5,12 +5,12 @@ import { Typography } from "../Typography/Typography"
 import Input from "../Input/Input"
 import Flex from "../Flex/Flex"
 import Button from "../Button/Button"
-import { resetPasswordApi } from "../../api/resetPasswordApi"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import { ReactComponent as CheckmarkIcon } from "../../icons/checkmark.svg"
 import { ReactComponent as BackIcon } from "../../icons/arrow-back.svg"
 import { ReactComponent as AlertIcon } from "../../icons/alert.svg"
 import Icon from "../Icon/Icon"
+import { mailPasswordResetApi } from "../../api/mailPasswordResetApi"
 
 function validateEmail(email: string): boolean {
   return email !== ""
@@ -37,7 +37,7 @@ export const PageForgotPassword: FC = () => {
     setError("")
 
     // Make the request
-    const response = await resetPasswordApi(email)
+    const response = await mailPasswordResetApi(email)
     if (response.status === 200) {
       setSuccess(true)
     } else {
@@ -69,6 +69,7 @@ export const PageForgotPassword: FC = () => {
           required
           mb={3}
           disabled={success}
+          type="email"
         />
         {error && (
           <Flex

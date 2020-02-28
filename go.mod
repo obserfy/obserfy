@@ -3,6 +3,7 @@ module github.com/chrsep/vor
 go 1.13
 
 require (
+	github.com/benbjohnson/clock v1.0.0
 	github.com/brianvoe/gofakeit/v4 v4.2.3
 	github.com/getsentry/sentry-go v0.3.1
 	github.com/go-chi/chi v4.0.2+incompatible

@@ -2,11 +2,11 @@ import React, { FC } from "react"
 import SEO from "../components/seo"
 import PageForgotPassword from "../components/PageForgotPassword/PageForgotPassword"
 
-export const Login: FC = () => (
+export const ForgotPassword: FC = () => (
   <>
-    <SEO title="Login" />
+    <SEO title="Forgot Password" />
     <PageForgotPassword />
   </>
 )
 
-export default Login
+export default ForgotPassword

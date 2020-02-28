@@ -111,3 +111,49 @@ func (a AuthStore) InsertNewToken(userId string) (*PasswordResetToken, error) {
 	}
 	return &token, nil
 }
+
+func (a AuthStore) GetToken(token string) (*PasswordResetToken, error) {
+	var result PasswordResetToken
+	if err := a.DB.Model(&result).
+		Where("token=?", token).
+		Relation("User").
+		Select(); err == pg.ErrNoRows {
+		return nil, nil
+	} else if err != nil {
+		return nil, richErrors.Wrap(err, "Failed getting the token")
+	}
+	return &result, nil
+}
+
+func (a AuthStore) UpdatePassword(userId string, newPassword string) error {
+	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(newPassword), BCryptCost)
+	if err != nil {
+		return richErrors.Wrap(err, "Failed hashing password")
+	}
+	user := User{Id: userId, Password: hashedPassword}
+	if _, err := a.DB.Model(&user).
+		Set("password = ?password").
+		Where("id = ?id").
+		Update(); err != nil {
+		return richErrors.Wrap(err, "Failed updating user password")
+	}
+	return nil
+}
+
+func (a AuthStore) DeleteToken(token string) error {
+	if _, err := a.DB.Model((*PasswordResetToken)(nil)).
+		Where("token=?", token).
+		Delete(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (a AuthStore) ClearUserSession(userId string) error {
+	if _, err := a.DB.Model((*Session)(nil)).
+		Where("user_id=?", userId).
+		Delete(); err != nil {
+		return err
+	}
+	return nil
+}

@@ -1,6 +1,7 @@
 package auth_test
 
 import (
+	"github.com/benbjohnson/clock"
 	"github.com/brianvoe/gofakeit/v4"
 	"github.com/chrsep/vor/pkg/auth"
 	"github.com/chrsep/vor/pkg/postgres"
@@ -13,14 +14,17 @@ import (
 
 type AuthTestSuite struct {
 	testutils.BaseTestSuite
+
 	mailService mailServiceMock
 	store       postgres.AuthStore
+	Clock       *clock.Mock
 }
 
 func (s *AuthTestSuite) SetupTest() {
 	s.store = postgres.AuthStore{s.DB}
 	s.mailService = mailServiceMock{}
-	s.Handler = auth.NewRouter(s.Server, s.store, &s.mailService).ServeHTTP
+	s.Clock = clock.NewMock()
+	s.Handler = auth.NewRouter(s.Server, s.store, &s.mailService, s.Clock).ServeHTTP
 }
 
 func TestAuth(t *testing.T) {
@@ -48,4 +52,17 @@ func (s *AuthTestSuite) SaveNewUser() (*postgres.User, error) {
 		return nil, err
 	}
 	return user, nil
+}
+
+func (s *AuthTestSuite) SaveNewToken() (*postgres.PasswordResetToken, error) {
+	user, err := s.SaveNewUser()
+	if err != nil {
+		return nil, err
+	}
+	token, err := s.store.InsertNewToken(user.Id)
+	if err != nil {
+		return nil, err
+	}
+	token.User = *user
+	return token, nil
 }

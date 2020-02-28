@@ -2,6 +2,7 @@ package main
 
 import (
 	"crypto/tls"
+	"github.com/benbjohnson/clock"
 	"github.com/chrsep/vor/pkg/auth"
 	"github.com/chrsep/vor/pkg/curriculum"
 	"github.com/chrsep/vor/pkg/logger"
@@ -78,7 +79,7 @@ func runServer() error {
 	r.Use(middleware.GetHead)            // Redirect HEAD request to GET handlers
 	r.Use(middleware.Recoverer)          // Catches panic, recover and return 500
 	r.Use(sentryHandler.Handle)          // Panic goes to sentry first, who catch it than epanics
-	r.Mount("/auth", auth.NewRouter(server, authStore, mailService))
+	r.Mount("/auth", auth.NewRouter(server, authStore, mailService, clock.New()))
 	r.Route("/api/v1", func(r chi.Router) {
 		r.Use(auth.NewMiddleware(server, authStore))
 		r.Mount("/students", student.NewRouter(server, studentStore))

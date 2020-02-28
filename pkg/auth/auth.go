@@ -1,10 +1,11 @@
 package auth
 
 import (
-	"context"
+	"github.com/benbjohnson/clock"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/rest"
 	"github.com/go-chi/chi"
+	"github.com/go-playground/validator/v10"
 	richErrors "github.com/pkg/errors"
 	"golang.org/x/crypto/bcrypt"
 	"net/http"
@@ -25,47 +26,18 @@ type server struct {
 	rest.Server
 	store postgres.AuthStore
 	mail  MailService
+	// Used for mocking time during test
+	clock clock.Clock
 }
 
-func NewMiddleware(s rest.Server, store postgres.AuthStore) func(next http.Handler) http.Handler {
-	return func(next http.Handler) http.Handler {
-		return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
-			// Get session cookie
-			cookie, err := r.Cookie("session")
-			if err != nil {
-				return &rest.Error{Code: http.StatusUnauthorized, Message: "Invalid session", Error: err}
-			}
-
-			// Get related session
-			session, err := store.GetSession(cookie.Value)
-			if err != nil {
-				return &rest.Error{Code: http.StatusUnauthorized, Message: "Invalid session", Error: err}
-			}
-
-			// Attach session object to context for further use on other handlers
-			ctx := context.WithValue(r.Context(), SessionCtxKey, session)
-			next.ServeHTTP(w, r.WithContext(ctx))
-			return nil
-		})
-	}
-}
-
-func GetSessionFromCtx(ctx context.Context) (*postgres.Session, bool) {
-	session, ok := ctx.Value(SessionCtxKey).(*postgres.Session)
-	return session, ok
-}
-
-func NewGetSessionError() *rest.Error {
-	return &rest.Error{http.StatusUnauthorized, "Unauthorized", richErrors.New("session can't be found on context")}
-}
-
-func NewRouter(s rest.Server, store postgres.AuthStore, email MailService) *chi.Mux {
-	server := server{s, store, email}
+func NewRouter(s rest.Server, store postgres.AuthStore, email MailService, clock clock.Clock) *chi.Mux {
+	server := server{s, store, email, clock}
 	r := chi.NewRouter()
 	r.Method("POST", "/register", register(&server))
 	r.Method("POST", "/login", login(&server))
 	r.Method("POST", "/logout", logout(&server))
-	r.Method("POST", "/reset-password", resetPassword(&server))
+	r.Method("POST", "/mailPasswordReset", mailPasswordReset(&server))
+	r.Method("POST", "/doPasswordReset", doPasswordReset(&server))
 	r.Method("GET", "/invite-code/{inviteCodeId}", resolveInviteCode(&server))
 	return r
 }
@@ -135,50 +107,65 @@ func register(s *server) rest.Handler {
 }
 
 func login(s *server) rest.Handler {
+	type requestBody struct {
+		Password string `json:"password" validate:"required"`
+		Email    string `json:"email" validate:"required,email"`
+	}
+	validate := validator.New()
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
-		// TODO: add better mail validation
-		email := r.FormValue("email")
-		if email == "" {
-			return &rest.Error{Code: http.StatusBadRequest, Message: "Email is required", Error: richErrors.New("mail is empty")}
+		var body requestBody
+		if err := rest.ParseJson(r.Body, &body); err != nil {
+			return rest.NewParseJsonError(
+				richErrors.Wrap(err, "Failed parsing input"),
+			)
 		}
 
-		// TODO: add better password validation
-		password := r.FormValue("password")
-		if password == "" {
-			return &rest.Error{http.StatusBadRequest, "Password is required", richErrors.New("password is empty")}
+		// Validate input
+		if err := validate.Struct(body); err != nil {
+			return &rest.Error{
+				http.StatusBadRequest,
+				"Email and Password are required",
+				richErrors.Wrap(err, "Invalid request body"),
+			}
 		}
 
-		user, err := s.store.GetUserByEmail(email)
+		user, err := s.store.GetUserByEmail(body.Email)
 		if err != nil {
 			return &rest.Error{
 				http.StatusInternalServerError,
 				"Failed getting user data",
-				err,
+				richErrors.Wrap(err, "Failed querying user data"),
 			}
 		}
 		if user == nil {
 			return &rest.Error{
 				http.StatusUnauthorized,
-				"Wrong credentials",
-				err,
+				"Invalid mail or password",
+				richErrors.New("Can't find the given email owner"),
 			}
 		}
 
 		//  Compare hash and password
-		err = bcrypt.CompareHashAndPassword(user.Password, []byte(password))
-		if err != nil {
-			return &rest.Error{Code: http.StatusBadRequest, Message: "Invalid mail or password", Error: err}
+		if err := bcrypt.CompareHashAndPassword(user.Password, []byte(body.Password)); err != nil {
+			return &rest.Error{
+				http.StatusUnauthorized,
+				"Invalid mail or password",
+				richErrors.Wrap(err, "Hash and password doesn't match."),
+			}
 		}
 
 		// Create new session
 		session, err := s.store.NewSession(user.Id)
 		if err != nil {
-			return &rest.Error{Code: http.StatusInternalServerError, Message: "Failed creating new session", Error: err}
+			return &rest.Error{
+				http.StatusInternalServerError,
+				"Failed creating new session",
+				err,
+			}
 		}
 
 		// Send session token to client
-		cookie := createCookie(session.Token)
-		http.SetCookie(w, cookie)
+		http.SetCookie(w, createCookie(session.Token))
 		return nil
 	})
 }
@@ -199,7 +186,6 @@ func logout(s *server) rest.Handler {
 		return nil
 	})
 }
-
 
 func createCookie(token string) *http.Cookie {
 	cookie := http.Cookie{

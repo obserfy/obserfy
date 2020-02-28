@@ -1,5 +1,5 @@
-export function resetPasswordApi(email: string): Promise<Response> {
-  return fetch(`/auth/reset-password`, {
+export function mailPasswordResetApi(email: string): Promise<Response> {
+  return fetch(`/auth/mailPasswordReset`, {
     credentials: "same-origin",
     method: "POST",
     headers: { "Content-Type": "application/json" },
