@@ -161,6 +161,8 @@ func (s *AuthTestSuite) TestInvalidTokenDoPasswordReset() {
 
 // Test reuse token should fail
 func (s *AuthTestSuite) TestDoPasswordResetTwiceShouldFailed() {
+	s.mailService.On("SendPasswordResetSuccessful", mock.Anything).
+		Return(nil)
 	t := s.T()
 	token, err := s.SaveNewToken()
 	assert.NoError(t, err)
