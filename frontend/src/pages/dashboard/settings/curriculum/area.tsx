@@ -1,12 +1,12 @@
-import React, { FC, useContext } from "react"
+import React, { FC } from "react"
 import queryString from "query-string"
 import { PageRendererProps } from "gatsby"
 import SEO from "../../../../components/seo"
-import { PageTitleContext } from "../../../../layouts"
 import PageCurriculumArea from "../../../../components/PageCurriculumArea/PageCurriculumArea"
+import { useTitle } from "../../../../hooks/useTitle"
 
 const Settings: FC<PageRendererProps> = ({ location }) => {
-  useContext(PageTitleContext).setTitle("Area")
+  useTitle("Area")
 
   const query = queryString.parse(location.search)
   let id: string

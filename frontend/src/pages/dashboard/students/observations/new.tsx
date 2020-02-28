@@ -1,13 +1,11 @@
-import React, { FC, useContext } from "react"
+import React, { FC } from "react"
 import { PageRendererProps } from "gatsby"
 import queryString from "query-string"
 import SEO from "../../../../components/seo"
-import { PageTitleContext } from "../../../../layouts"
 import PageNewObservation from "../../../../components/PageNewObservation/PageNewObservation"
+import { useTitle } from "../../../../hooks/useTitle"
 
 const NewStudent: FC<PageRendererProps> = ({ location }) => {
-  useContext(PageTitleContext).setTitle("New Observation")
-
   const query = queryString.parse(location.search)
   let studentId: string
   if (Array.isArray(query?.studentId)) {
@@ -15,6 +13,8 @@ const NewStudent: FC<PageRendererProps> = ({ location }) => {
   } else {
     studentId = query?.studentId ?? ""
   }
+
+  useTitle("New Observation")
 
   return (
     <>

@@ -21,7 +21,7 @@ module.exports = {
     `gatsby-plugin-layout`,
     `gatsby-plugin-typescript`,
     "gatsby-plugin-theme-ui",
-    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-react-helmet-async`,
     // `gatsby-plugin-preact`,
     {
       resolve: `gatsby-source-filesystem`,
