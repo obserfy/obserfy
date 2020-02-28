@@ -216,7 +216,14 @@ jobs:
       - checkout
       - run: |
           VERSION=$(sentry-cli releases propose-version)
-          sentry-cli releases set-commits --auto $VERSION
+          sentry-cli releases -p frontend new $VERSION
+          sentry-cli releases -p frontend set-commits --auto $VERSION
+          sentry-cli releases -p frontend finalize $VERSION
+    - run: |
+        VERSION=$(sentry-cli releases propose-version)
+        sentry-cli releases -p backend new $VERSION
+        sentry-cli releases -p backend set-commits --auto $VERSION
+        sentry-cli releases -p backend finalize $VERSION
 
 workflows:
   test:

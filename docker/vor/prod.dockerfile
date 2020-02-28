@@ -29,6 +29,7 @@ COPY ./go.mod /usr/src/vor/go.mod
 COPY ./go.sum /usr/src/vor/go.sum
 RUN go mod download
 # Build the project
+ADD ./pkg /usr/src/vor/mailTemplates
 ADD ./pkg /usr/src/vor/pkg
 RUN go build -o ./app pkg/*.go
 
@@ -39,6 +40,7 @@ FROM gcr.io/distroless/base
 WORKDIR /usr/src/vor
 COPY --from=frontend-builder /frontend ./frontend
 COPY --from=api-builder /usr/src/vor/app ./app
+COPY --from=api-builder /usr/src/vor/mailTemplates ./mailTemplates
 
 ENV ENV=production
 
