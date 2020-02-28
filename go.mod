@@ -3,12 +3,15 @@ module github.com/chrsep/vor
 go 1.13
 
 require (
+	github.com/benbjohnson/clock v1.0.0
+	github.com/brianvoe/gofakeit/v4 v4.2.3
 	github.com/getsentry/sentry-go v0.3.1
 	github.com/go-chi/chi v4.0.2+incompatible
 	github.com/go-pg/pg/v9 v9.0.3
+	github.com/go-playground/validator/v10 v10.2.0
 	github.com/google/uuid v1.1.1
 	github.com/joho/godotenv v1.3.0
-	github.com/jstemmer/go-junit-report v0.9.1 // indirect
+	github.com/mailgun/mailgun-go/v4 v4.0.0
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.4.0
 	go.uber.org/atomic v1.5.1 // indirect

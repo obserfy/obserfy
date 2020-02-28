@@ -2,7 +2,6 @@ import nanoid from "nanoid"
 import { name } from "faker"
 import { renderHook } from "@testing-library/react-hooks"
 import { get, keys } from "idb-keyval"
-import isEqual from "lodash/isEqual"
 import { Student } from "../useGetStudent"
 import { useStudentsCache } from "./studentCache"
 
@@ -53,7 +52,7 @@ describe("Student Cache", () => {
       schoolId,
     }))
     await waitForValueToChange(() => {
-      return isEqual(result.current, studentsWithSchoolId)
+      return result.current.length === studentsWithSchoolId.length
     })
     expect(result.current).toEqual(studentsWithSchoolId)
     const idbKeys = await keys()

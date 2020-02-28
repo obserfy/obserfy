@@ -2,6 +2,7 @@ package rest
 
 import (
 	"encoding/json"
+	richErrors "github.com/pkg/errors"
 	"io"
 	"net/http"
 )
@@ -25,7 +26,11 @@ func WriteJson(w http.ResponseWriter, object interface{}) error {
 }
 
 func NewWriteJsonError(err error) *Error {
-	return &Error{http.StatusInternalServerError, "Failed writing json response", err}
+	return &Error{
+		http.StatusInternalServerError,
+		"Failed writing json response",
+		richErrors.Wrap(err, "Failed parsing input"),
+	}
 }
 
 func ParseJson(input io.ReadCloser, result interface{}) error {
@@ -33,5 +38,9 @@ func ParseJson(input io.ReadCloser, result interface{}) error {
 }
 
 func NewParseJsonError(err error) *Error {
-	return &Error{http.StatusBadRequest, "Failed parsing input", err}
+	return &Error{
+		http.StatusBadRequest,
+		"Failed parsing input",
+		richErrors.Wrap(err, "Failed parsing input"),
+	}
 }

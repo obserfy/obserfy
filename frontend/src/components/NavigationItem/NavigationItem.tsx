@@ -1,5 +1,6 @@
-import React, { FC, useState } from "react"
+import React, { FC } from "react"
 import { Link } from "gatsby-plugin-intl3"
+import { useMatch } from "@reach/router"
 import Typography from "../Typography/Typography"
 import Icon from "../Icon/Icon"
 import Flex, { FlexProps } from "../Flex/Flex"
@@ -15,15 +16,11 @@ interface Props extends FlexProps {
  * a link to other page on the app.
  * */
 export const NavigationItem: FC<Props> = ({ text, icon, to, ...props }) => {
-  const [isActive, setIsActive] = useState(false)
+  // const [isActive, setIsActive] = useState(false)
+  const isActive = useMatch(to)
+
   return (
-    <Link
-      to={to}
-      getProps={({ isCurrent, isPartiallyCurrent }) => {
-        setIsActive(to === "/" ? isCurrent : isPartiallyCurrent)
-        return {} // for satisfying types request, no idea why tho....
-      }}
-    >
+    <Link to={to}>
       <Flex
         alignItems="center"
         m={2}

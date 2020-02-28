@@ -21,7 +21,7 @@ module.exports = {
     `gatsby-plugin-layout`,
     `gatsby-plugin-typescript`,
     "gatsby-plugin-theme-ui",
-    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-react-helmet-async`,
     // `gatsby-plugin-preact`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -140,7 +140,7 @@ module.exports = {
       resolve: `gatsby-plugin-nprogress`,
       options: {
         // Setting a color is optional.
-        color: `#33691e`,
+        color: `#00a06d`,
         // Disable the loading spinner.
         showSpinner: false,
       },

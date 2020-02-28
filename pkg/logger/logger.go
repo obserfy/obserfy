@@ -12,6 +12,7 @@ func New() *zap.Logger {
 	if os.Getenv("ENV") == "production" {
 		config = zap.NewProductionConfig()
 		config.Level.SetLevel(zap.InfoLevel)
+		config.DisableStacktrace = true
 	} else {
 		config = zap.NewDevelopmentConfig()
 		config.EncoderConfig.EncodeLevel = zapcore.CapitalColorLevelEncoder

@@ -14,25 +14,21 @@ export const PageLogin: FC = () => {
   const [error, setError] = useState("")
 
   async function submitLoginForm(): Promise<void> {
-    getAnalytics()?.track("User Login")
     setError("")
-    const credentials = new FormData()
-    credentials.append("email", email)
-    credentials.append("password", password)
     const response = await fetch("/auth/login", {
       method: "POST",
       credentials: "same-origin",
-      body: credentials,
+      body: JSON.stringify({ email, password }),
     })
     if (response.status === 200) {
-      navigate("/choose-school")
+      await navigate("/choose-school")
       getAnalytics()?.track("User Login Success")
     } else {
+      setError("Wrong email or password")
       getAnalytics()?.track("User Login Failed", {
         email,
         status: response.status,
       })
-      setError("Wrong email or password")
     }
   }
 

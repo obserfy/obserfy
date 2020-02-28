@@ -1,10 +1,10 @@
-import React, { FC, useContext } from "react"
+import React, { FC } from "react"
 import SEO from "../../../../components/seo"
-import { PageTitleContext } from "../../../../layouts"
 import PageCurriculumSettings from "../../../../components/PageCurriculumSettings/PageCurriculumSettings"
+import { useTitle } from "../../../../hooks/useTitle"
 
 const Settings: FC = () => {
-  useContext(PageTitleContext).setTitle("Curriculum")
+  useTitle("Curriculum")
 
   return (
     <>

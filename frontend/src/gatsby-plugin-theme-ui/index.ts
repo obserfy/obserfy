@@ -57,6 +57,10 @@ const themeUiTheme = {
     onDanger: "#FFFFFF",
 
     tintYellow: "rgba(255,199,1,0.2)",
+    onTintYellow: "yellow",
+
+    tintError: "rgba(213,0,0,0.08)",
+    onTintError: "#c40000",
 
     materialStage: {
       presented: "#dd2c00",
@@ -100,6 +104,9 @@ const themeUiTheme = {
         warning: "#ffd600",
         onWarning: "rgba(0,0,0,0.87)",
         tintWarning: "rgba(255,199,1,0.08)",
+
+        tintError: "rgba(213,0,0,0.08)",
+        onTintError: "#ff0000",
       },
     },
   },

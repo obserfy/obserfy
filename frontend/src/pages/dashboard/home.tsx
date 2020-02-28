@@ -1,11 +1,11 @@
-import React, { FC, useContext } from "react"
+import React, { FC } from "react"
 import PageHome from "../../components/PageHome/PageHome"
 import SEO from "../../components/seo"
-import { PageTitleContext } from "../../layouts"
+import { useTitle } from "../../hooks/useTitle"
 
 const IndexPage: FC = () => {
-  const pageTitle = useContext(PageTitleContext)
-  pageTitle.setTitle("Home")
+  useTitle("Home")
+
   return (
     <>
       <SEO title="Home" />
