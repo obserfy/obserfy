@@ -29,7 +29,7 @@ COPY ./go.mod /usr/src/vor/go.mod
 COPY ./go.sum /usr/src/vor/go.sum
 RUN go mod download
 # Build the project
-ADD ./pkg /usr/src/vor/mailTemplates
+ADD ./mailTemplates /usr/src/vor/mailTemplates
 ADD ./pkg /usr/src/vor/pkg
 RUN go build -o ./app pkg/*.go
 
