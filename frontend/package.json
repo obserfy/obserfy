@@ -32,7 +32,7 @@
     "babel-plugin-remove-graphql-queries": "^2.7.22",
     "babel-preset-gatsby": "^0.2.29",
     "core-js": "2.6.3",
-    "cypress": "^4.0.2",
+    "cypress": "^4.1.0",
     "cypress-axe": "^0.5.3",
     "date-fns": "^2.10.0",
     "dotenv": "^8.2.0",
