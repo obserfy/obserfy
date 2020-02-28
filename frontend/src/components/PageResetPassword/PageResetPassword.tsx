@@ -22,12 +22,9 @@ export const PageResetPassword: FC<Props> = ({ token }) => {
   const [retypePassword, setRetypePassword] = useState("")
   const [success, setSuccess] = useState(false)
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(
-    token === "" ? "Invalid password reset token" : ""
-  )
+  const [error, setError] = useState("")
 
-  const tokenInvalid = token === ""
-  const isFormDisabled = success || loading || tokenInvalid
+  const isFormDisabled = success || loading
 
   async function handleSubmit(e: FormEvent): Promise<void> {
     e.preventDefault()
