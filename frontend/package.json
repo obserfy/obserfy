@@ -113,7 +113,7 @@
     "@types/segment-analytics": "^0.0.32",
     "@types/theme-ui": "^0.3.0",
     "@typescript-eslint/eslint-plugin": "^2.20.0",
-    "@typescript-eslint/parser": "^2.20.0",
+    "@typescript-eslint/parser": "^2.21.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.10.0",
