@@ -80,27 +80,10 @@ func (s *AuthTestSuite) TestMailPasswordResetNonExistentEmail() {
 	assert.Error(t, err)
 }
 
-//func (s *AuthTestSuite) TestDoValidPasswordReset(t *testing.T) {
-//	token, err := s.SaveNewToken()
-//	assert.NoError(err)
-//	tests := []struct {
-//		name     string
-//		token    string
-//		password string
-//	}{
-//		{"valid token", token.Token, "NewPassword"},
-//		{"invalid token", token.Token, "NewPassword"},
-//		{"invalid password", token.Token, "NewPassword"},
-//	}
-//	for _, test := range tests {
-//		t.Run(test.name, func(t *testing.T) {
-//
-//		})
-//	}
-//}
-
 // Valid token and password
 func (s *AuthTestSuite) TestValidDoPasswordReset() {
+	s.mailService.On("SendPasswordResetSuccessful", mock.Anything).
+		Return(nil)
 	t := s.T()
 	token, err := s.SaveNewToken()
 	assert.NoError(t, err)
@@ -122,6 +105,7 @@ func (s *AuthTestSuite) TestValidDoPasswordReset() {
 	}{token.User.Email, password}
 	loginResult := s.CreateRequest("POST", "/login", loginPayload)
 	assert.Equal(t, http.StatusOK, loginResult.Code)
+	s.mailService.AssertCalled(t, "SendPasswordResetSuccessful", token.User.Email)
 
 	return
 }

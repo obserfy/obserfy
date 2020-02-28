@@ -35,6 +35,11 @@ type mailServiceMock struct {
 	mock.Mock
 }
 
+func (m *mailServiceMock) SendPasswordResetSuccessful(email string) error {
+	args := m.Called(email)
+	return args.Error(0)
+}
+
 func (m *mailServiceMock) SendResetPassword(email string, token string) error {
 	args := m.Called(email)
 	return args.Error(0)

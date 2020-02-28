@@ -125,35 +125,40 @@ func (a AuthStore) GetToken(token string) (*PasswordResetToken, error) {
 	return &result, nil
 }
 
-func (a AuthStore) UpdatePassword(userId string, newPassword string) error {
+func (a AuthStore) DoPasswordReset(userId string, newPassword string, token string) error {
 	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(newPassword), BCryptCost)
 	if err != nil {
 		return richErrors.Wrap(err, "Failed hashing password")
 	}
+
 	user := User{Id: userId, Password: hashedPassword}
-	if _, err := a.DB.Model(&user).
-		Set("password = ?password").
-		Where("id = ?id").
-		Update(); err != nil {
-		return richErrors.Wrap(err, "Failed updating user password")
-	}
-	return nil
-}
+	if err := a.DB.RunInTransaction(func(tx *pg.Tx) error {
+		// Delete the token being used
+		if _, err := a.DB.Model((*PasswordResetToken)(nil)).
+			Where("token=?", token).
+			Delete(); err != nil {
+			return richErrors.Wrap(err, "Failed to delete token")
+		}
 
-func (a AuthStore) DeleteToken(token string) error {
-	if _, err := a.DB.Model((*PasswordResetToken)(nil)).
-		Where("token=?", token).
-		Delete(); err != nil {
+		// Delete all user sessions
+		if _, err := a.DB.Model((*Session)(nil)).
+			Where("user_id=?", userId).
+			Delete(); err != nil {
+			return richErrors.Wrap(err, "Failed to delete Sessions")
+		}
+
+		// Update user's password
+		if _, err := a.DB.Model(&user).
+			Set("password = ?password").
+			Where("id = ?id").
+			Update(); err != nil {
+			return richErrors.Wrap(err, "Failed updating user password")
+		}
+
+		return nil
+	}); err != nil {
 		return err
 	}
-	return nil
-}
 
-func (a AuthStore) ClearUserSession(userId string) error {
-	if _, err := a.DB.Model((*Session)(nil)).
-		Where("user_id=?", userId).
-		Delete(); err != nil {
-		return err
-	}
 	return nil
 }

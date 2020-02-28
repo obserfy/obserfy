@@ -112,8 +112,8 @@ func doPasswordReset(s *server) http.Handler {
 			}
 		}
 
-		// Update the user password
-		if err := s.store.UpdatePassword(token.UserId, body.Password); err != nil {
+		// Update the user password && Delete all the user session && delete token
+		if err := s.store.DoPasswordReset(token.UserId, body.Password, token.Token); err != nil {
 			return &rest.Error{
 				http.StatusInternalServerError,
 				"Failed updating password",
@@ -121,15 +121,12 @@ func doPasswordReset(s *server) http.Handler {
 			}
 		}
 
-		// Delete all the user session
 		// Send email to user notifying password has been updated.
-
-		// Delete the token
-		if err := s.store.DeleteToken(token.Token); err != nil {
+		if err := s.mail.SendPasswordResetSuccessful(token.User.Email); err != nil {
 			return &rest.Error{
 				http.StatusInternalServerError,
-				"Failed to delete token",
-				err,
+				"Failed sending password reset success email",
+				richErrors.Wrap(err, "Failed sending password reset success mail"),
 			}
 		}
 

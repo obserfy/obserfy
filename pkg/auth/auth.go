@@ -20,6 +20,7 @@ const (
 
 type MailService interface {
 	SendResetPassword(email string, token string) error
+	SendPasswordResetSuccessful(email string) error
 }
 
 type server struct {

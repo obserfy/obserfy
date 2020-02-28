@@ -126,7 +126,7 @@ export const PageResetPassword: FC<Props> = ({ token }) => {
           </>
         )}
 
-        {!isFormDisabled && (
+        {!success && (
           <>
             <Input
               width="100%"

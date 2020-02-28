@@ -221,12 +221,14 @@ jobs:
 workflows:
   test:
     jobs:
-      - e2e
+      - frontend_build
       - backend_unit
       - frontend_unit
       - frontend_lint
       - frontend_typecheck
-      - frontend_build
+      - e2e:
+          requires:
+            - frontend_build
       - deploy:
           filters:
             branches:

@@ -14,6 +14,35 @@ type Service struct {
 	mailgun mailgun.Mailgun
 }
 
+func (s Service) SendPasswordResetSuccessful(email string) error {
+	t, err := template.ParseFiles("pkg/mailgun/reset-password-success.html")
+	if err != nil {
+		return richErrors.Wrap(err, "Failed parsing reset-password.html")
+	}
+	body := new(bytes.Buffer)
+	if err := t.Execute(body, nil); err != nil {
+		return richErrors.Wrap(err, "Failed executing template")
+	}
+
+	m := s.mailgun.NewMessage(
+		"Obserfy <noreply@mail.obserfy.com>",
+		"Your password has been changed",
+		"",
+		email,
+	)
+	m.SetHtml(body.String())
+
+	// The entire operation should not take longer than 30 seconds
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second*30)
+	defer cancel()
+
+	_, _, err = s.mailgun.Send(ctx, m)
+	if err != nil {
+		return richErrors.Wrap(err, "Failed sending email with mailgun")
+	}
+	return nil
+}
+
 func (s Service) SendResetPassword(email string, token string) error {
 	t, err := template.ParseFiles("pkg/mailgun/reset-password.html")
 	if err != nil {
