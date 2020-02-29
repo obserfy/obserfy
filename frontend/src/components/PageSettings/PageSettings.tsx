@@ -1,6 +1,7 @@
-import React, { FC, useEffect, useState } from "react"
+import React, { FC } from "react"
+import { navigate } from "gatsby"
+import { useColorMode } from "theme-ui"
 import Box from "../Box/Box"
-import Input from "../Input/Input"
 import Typography from "../Typography/Typography"
 import Flex from "../Flex/Flex"
 import Icon from "../Icon/Icon"
@@ -11,10 +12,11 @@ import useOldApiHook from "../../api/useOldApiHook"
 import { getSchoolId } from "../../hooks/schoolIdState"
 import UserCard from "../UserCard/UserCard"
 import CardLink from "../CardLink/CardLink"
+import { ReactComponent as LightModeIcon } from "../../icons/light-mode.svg"
+import { ReactComponent as DarkModeIcon } from "../../icons/dark-mode.svg"
 
 export const PageSettings: FC = () => {
   const schoolId = getSchoolId()
-  const [schoolName, setSchoolName] = useState("")
 
   // Todo: Type this correctly when we start using restful react.
   const [schoolDetail] = useOldApiHook<{
@@ -27,10 +29,6 @@ export const PageSettings: FC = () => {
       isCurrentUser: boolean
     }[]
   }>(`/schools/${schoolId}`)
-
-  useEffect(() => {
-    setSchoolName(schoolDetail?.name ?? "")
-  }, [schoolDetail])
 
   const userCards = schoolDetail?.users?.map(
     ({ id, name, email, isCurrentUser }) => (
@@ -50,6 +48,16 @@ export const PageSettings: FC = () => {
         text: "Check out vor. Manage your student data.",
         url: schoolDetail?.inviteLink,
       })
+    }
+  }
+
+  async function logout(): Promise<void> {
+    const response = await fetch("/auth/logout", {
+      method: "POST",
+      credentials: "same-origin",
+    })
+    if (response.status === 200) {
+      await navigate("/login")
     }
   }
 
@@ -80,29 +88,48 @@ export const PageSettings: FC = () => {
         </Box>
       </Box>
       <CardLink name="Curriculum" to="/dashboard/settings/curriculum" />
-      <Box pt={4}>
+      <Box pt={4} mb={4}>
         <Typography.H5 mb={3}>Users</Typography.H5>
         {userCards}
       </Box>
-      <Box pt={4}>
-        <Typography.H5 mb={3}>Other Details</Typography.H5>
-        <Input
-          width="100%"
-          label="School Name"
-          mb={3}
-          value={schoolName}
-          onChange={e => setSchoolName(e.target.value)}
-          disabled
-        />
-        <Flex>
-          <Spacer />
-          <Button disabled variant="outline" mr={2}>
-            Reset
-          </Button>
-          <Button disabled>Save</Button>
-        </Flex>
-      </Box>
+      <ThemeModeButton />
+      <Button
+        variant="outline"
+        my={3}
+        width="100%"
+        color="danger"
+        py={3}
+        onClick={logout}
+      >
+        Log Out
+      </Button>
     </Box>
+  )
+}
+
+const ThemeModeButton: FC = () => {
+  const [colorMode, setColorMode] = useColorMode()
+  return (
+    <Button
+      variant="outline"
+      my={3}
+      width="100%"
+      color="textMediumEmphasis"
+      py={3}
+      onClick={() => setColorMode(colorMode === "dark" ? "default" : "dark")}
+    >
+      {colorMode === "dark" ? (
+        <>
+          <Icon as={LightModeIcon} m={0} mr={2} />
+          Light Mode
+        </>
+      ) : (
+        <>
+          <Icon as={DarkModeIcon} m={0} mr={2} />
+          Dark Mode
+        </>
+      )}
+    </Button>
   )
 }
 
