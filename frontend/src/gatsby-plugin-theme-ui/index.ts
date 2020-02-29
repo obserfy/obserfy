@@ -310,7 +310,7 @@ const rebassVariants = {
       borderColor: "border",
       backgroundColor: "surface",
       fontSize: 2,
-      p: 3,
+      p: 12,
       color: "text",
       "&:hover, &:focus": {
         borderColor: "primary",
@@ -331,7 +331,7 @@ const rebassVariants = {
       borderColor: "border",
       backgroundColor: "surface",
       fontSize: 2,
-      p: 3,
+      p: 12,
       "&:hover, &:focus": {
         borderColor: "primary",
         outline: "none",

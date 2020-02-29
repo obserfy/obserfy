@@ -364,7 +364,7 @@ exports[`EditObservationDialog should render correctly 1`] = `
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   background-color: var(--theme-ui-colors-surface,#fff);
   font-size: 16px;
-  padding: 16px;
+  padding: 12px;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   width: 100%;
 }
@@ -509,7 +509,7 @@ exports[`EditObservationDialog should render correctly 1`] = `
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   background-color: var(--theme-ui-colors-surface,#fff);
   font-size: 16px;
-  padding: 16px;
+  padding: 12px;
 }
 
 .emotion-13:hover,
