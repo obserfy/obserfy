@@ -1,22 +1,19 @@
-import React, { FC, useState } from "react"
-import { useColorMode } from "theme-ui"
+import React, { FC, FunctionComponent, useEffect, useState } from "react"
 import { navigate } from "gatsby"
-import AppBar, { SchoolName } from "../AppBar/AppBar"
-import SideBar from "../SideBar/SideBar"
-import { ReactComponent as HomeIcon } from "../../icons/home.svg"
-import { ReactComponent as SettingsIcon } from "../../icons/settings.svg"
-import { ReactComponent as LightModeIcon } from "../../icons/light-mode.svg"
-import { ReactComponent as DarkModeIcon } from "../../icons/dark-mode.svg"
-import NavigationItem from "../NavigationItem/NavigationItem"
+import { Link } from "gatsby-plugin-intl3"
+import { useMatch } from "@reach/router"
 import { Typography } from "../Typography/Typography"
-import Spacer from "../Spacer/Spacer"
 import Icon from "../Icon/Icon"
 import Box from "../Box/Box"
 import Flex, { FlexProps } from "../Flex/Flex"
+import { ReactComponent as SettingsIcon } from "../../icons/settings.svg"
+import { ReactComponent as EditIcon } from "../../icons/edit2.svg"
+import { ReactComponent as BookIcon } from "../../icons/book.svg"
 import {
-  SCHOOL_ID_UNDEFINED_PLACEHOLDER,
   getSchoolId,
+  SCHOOL_ID_UNDEFINED_PLACEHOLDER,
 } from "../../hooks/schoolIdState"
+import Card from "../Card/Card"
 
 /** Top level component which encapsulate most pages. Provides Appbar and Sidebar for navigation.
  *
@@ -24,28 +21,19 @@ import {
  * gatsby-plugin-layout, which loads this component dynamically using the LayoutManager located
  * in src/layouts/index.tsx.
  * */
-interface Props {
-  pageTitle: string
-}
-
-export const Layout: FC<Props> = ({ pageTitle, children }) => {
-  const [isSidebarShown, setShowSidebar] = useState(false)
-  const toggleSidebar = (): void => setShowSidebar(!isSidebarShown)
-
-  const schoolId = getSchoolId()
-  if (schoolId === SCHOOL_ID_UNDEFINED_PLACEHOLDER) {
+export const Layout: FC = ({ children }) => {
+  if (getSchoolId() === SCHOOL_ID_UNDEFINED_PLACEHOLDER) {
     navigate("/choose-school")
   }
 
   return (
     <>
-      <AppBar title={pageTitle} onMenuClick={toggleSidebar} position="fixed" />
-      <MainSidebar closeSidebar={toggleSidebar} isShown={isSidebarShown} />
+      <NavBar />
       <Box
         as="main"
         width="100%"
-        mt="57px"
-        pl={[0, 230]}
+        pl={[0, 80]}
+        pb={[48, 0]}
         backgroundColor="background"
       >
         {children}
@@ -54,45 +42,124 @@ export const Layout: FC<Props> = ({ pageTitle, children }) => {
   )
 }
 
-const MainSidebar: FC<{
-  closeSidebar: () => void
-  isShown: boolean
-}> = ({ closeSidebar, isShown }) => {
-  const [colorMode, setColorMode] = useColorMode()
+const NavBar: FC = () => {
+  const [keyboardShown, setKeyboardShown] = useState(false)
+  const [lastVh, setLastVh] = useState(0)
+
+  useEffect(() => {
+    const listener: EventListener = () => {
+      const vh = Math.max(
+        document.documentElement.clientHeight,
+        window.innerHeight || 0
+      )
+      if (vh === lastVh) return
+      if (vh < 400) {
+        setKeyboardShown(true)
+        setLastVh(vh)
+      } else {
+        setKeyboardShown(false)
+        setLastVh(vh)
+      }
+    }
+    window.addEventListener("resize", listener)
+    return () => {
+      window.removeEventListener("resize", listener)
+    }
+  })
   return (
-    <SideBar isShown={isShown} onOutsideClick={closeSidebar}>
-      <SchoolName
-        backgroundColor="surface"
-        mb={3}
+    <Card
+      display={[keyboardShown ? "none" : "block", "block"]}
+      as="nav"
+      borderRadius={0}
+      height={["auto", "100%"]}
+      width={["100%", 70]}
+      backgroundColor="surfaceTransparent"
+      sx={{
+        // backdropFilter: "saturate(180%) blur(20px)",
+        zIndex: 5,
+        top: ["auto", 0],
+        bottom: [0, "auto"],
+        left: 0,
+        position: "fixed",
+        borderTopStyle: "solid",
+        borderTopWidth: 1,
+        borderTopColor: "border",
+      }}
+      pt={[0, 2]}
+    >
+      <Flex
+        flexDirection={["row", "column"]}
+        justifyContent={["space-evenly"]}
+        height={["auto", "100%"]}
+      >
+        <Box height={70} width={70} display={["none", "block"]} />
+        <NavBarItem title="Observe" icon={EditIcon} to="/dashboard/home" />
+        <NavBarItem title="Analyze" icon={BookIcon} to="/dashboard/analyze" />
+        <Box height="100%" display={["none", "block"]} />
+        <NavBarItem
+          title="Settings"
+          icon={SettingsIcon}
+          to="/dashboard/settings"
+        />
+      </Flex>
+    </Card>
+  )
+}
+
+const NavBarItem: FC<{
+  title: string
+  icon: FunctionComponent
+  to: string
+}> = ({ title, icon, to }) => {
+  const match = useMatch(`${to}/*`)
+
+  return (
+    <Link
+      to={to}
+      style={{
+        outline: "none",
+        WebkitTapHighlightColor: "transparent",
+      }}
+    >
+      <Flex
+        flexDirection="column"
         alignItems="center"
-        width="100%"
-        opacity={[1, 0]}
-        sx={{ boxShadow: "low" }}
-      />
-      <NavigationItem
-        data-cy="home-nav"
-        onClick={closeSidebar}
-        to="/dashboard/home"
-        text="Home"
-        icon={HomeIcon}
-      />
-      <Spacer />
-      <NavigationItem
-        onClick={closeSidebar}
-        to="/dashboard/settings"
-        text="Settings"
-        icon={SettingsIcon}
-        mb={3}
-      />
-      <SidebarToggleItem
-        onClick={() => {
-          setColorMode(colorMode === "dark" ? "default" : "dark")
+        justifyContent="space-around"
+        height={[48, 60]}
+        mb={[0, 2]}
+        width={[60, 70]}
+        py={1}
+        sx={{
+          position: "relative",
+          "&:after": {
+            top: [0, "inherit"],
+            right: ["inherit", 0],
+            position: "absolute",
+            backgroundColor: "textPrimary",
+            borderRadius: ["0 0 10px 10px", "10px 0 0 10px"],
+            width: [match ? "100%" : "0%", 2],
+            height: [2, match ? "100%" : "0%"],
+            content: "''",
+            transition: "width 100ms cubic-bezier(0.0, 0.0, 0.2, 1)",
+          },
         }}
-        text={colorMode === "dark" ? "Light Mode" : "Dark Mode"}
-        icon={colorMode === "dark" ? LightModeIcon : DarkModeIcon}
-        data-cy="toggleTheme"
-      />
-    </SideBar>
+      >
+        <Icon
+          as={icon}
+          m={0}
+          size={24}
+          fill={match ? "textPrimary" : "textDisabled"}
+        />
+        <Typography.Body
+          lineHeight={1}
+          fontSize={["10px", 0]}
+          color={match ? "textPrimary" : "textMediumEmphasis"}
+          fontWeight={match ? "bold" : "normal"}
+        >
+          {title}
+        </Typography.Body>
+      </Flex>
+    </Link>
   )
 }
 

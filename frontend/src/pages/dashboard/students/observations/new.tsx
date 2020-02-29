@@ -3,7 +3,6 @@ import { PageRendererProps } from "gatsby"
 import queryString from "query-string"
 import SEO from "../../../../components/seo"
 import PageNewObservation from "../../../../components/PageNewObservation/PageNewObservation"
-import { useTitle } from "../../../../hooks/useTitle"
 
 const NewStudent: FC<PageRendererProps> = ({ location }) => {
   const query = queryString.parse(location.search)
@@ -13,8 +12,6 @@ const NewStudent: FC<PageRendererProps> = ({ location }) => {
   } else {
     studentId = query?.studentId ?? ""
   }
-
-  useTitle("New Observation")
 
   return (
     <>

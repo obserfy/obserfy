@@ -3,7 +3,6 @@ import { PageRendererProps } from "gatsby"
 import queryString from "query-string"
 import SEO from "../../../components/seo"
 import PageStudentProgress from "../../../components/PageStudentProgress/PageStudentProgress"
-import { useTitle } from "../../../hooks/useTitle"
 
 function getQueryAsString(query: string, key: string): string {
   const parsedQuery = queryString.parse(query)
@@ -14,8 +13,6 @@ function getQueryAsString(query: string, key: string): string {
 }
 
 const StudentProgress: FC<PageRendererProps> = ({ location }) => {
-  useTitle("Student Progress")
-
   const studentId = getQueryAsString(location.search, "studentId")
   const areaId = getQueryAsString(location.search, "areaId")
 

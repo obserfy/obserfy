@@ -63,8 +63,8 @@ export const PageSettings: FC = () => {
           </Button>
         </Link>
       </Box>
-      <CardLink mb={3} name="Curriculum" to="/dashboard/settings/curriculum" />
-      <CardLink mb={3} name="Users" to="/dashboard/settings/users" />
+      <CardLink mb={2} name="Curriculum" to="/dashboard/settings/curriculum" />
+      <CardLink mb={2} name="Users" to="/dashboard/settings/users" />
       <Box mb={4}>
         <Card p={3} onClick={shareLink}>
           <Flex alignItems="center">
@@ -85,7 +85,7 @@ export const PageSettings: FC = () => {
       <ThemeModeButton />
       <Button
         variant="outline"
-        my={3}
+        my={2}
         width="100%"
         color="danger"
         py={3}
@@ -102,7 +102,7 @@ const ThemeModeButton: FC = () => {
   return (
     <Button
       variant="outline"
-      my={3}
+      my={2}
       width="100%"
       color="textMediumEmphasis"
       py={3}

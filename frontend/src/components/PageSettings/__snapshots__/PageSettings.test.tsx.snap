@@ -161,7 +161,7 @@ exports[`PageSettings should render correctly 1`] = `
   padding: 16px;
   background-color: var(--theme-ui-colors-surface,#fff);
   overflow: hidden;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
 
 .emotion-7 {
@@ -330,8 +330,8 @@ exports[`PageSettings should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin-top: 16px;
-  margin-bottom: 16px;
+  margin-top: 8px;
+  margin-bottom: 8px;
   width: 100%;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   padding-top: 16px;
@@ -407,8 +407,8 @@ exports[`PageSettings should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin-top: 16px;
-  margin-bottom: 16px;
+  margin-top: 8px;
+  margin-bottom: 8px;
   width: 100%;
   color: var(--theme-ui-colors-danger,#d50000);
   padding-top: 16px;

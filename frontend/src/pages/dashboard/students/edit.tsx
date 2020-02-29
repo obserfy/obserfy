@@ -3,7 +3,6 @@ import { PageRendererProps } from "gatsby"
 import queryString from "query-string"
 import PageEditStudent from "../../../components/PageEditStudent/PageEditStudent"
 import SEO from "../../../components/seo"
-import { useTitle } from "../../../hooks/useTitle"
 
 const EditStudent: FC<PageRendererProps> = ({ location }) => {
   const query = queryString.parse(location.search)
@@ -13,8 +12,6 @@ const EditStudent: FC<PageRendererProps> = ({ location }) => {
   } else {
     id = query?.id ?? ""
   }
-
-  useTitle("Edit Student")
 
   return (
     <>

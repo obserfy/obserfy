@@ -2,14 +2,11 @@ import React, { Component, ReactNode } from "react"
 import { getAnalytics } from "../../analytics"
 import PageError from "../PageError/PageError"
 
-interface Props {
-  title: string
-}
 interface State {
   hasError: boolean
 }
-export class ErrorBoundary extends Component<Props, State> {
-  constructor(props: Props) {
+export class ErrorBoundary extends Component<{}, State> {
+  constructor(props: {}) {
     super(props)
     this.state = { hasError: false }
   }
