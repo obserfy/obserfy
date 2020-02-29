@@ -1,0 +1,40 @@
+import React, { FC } from "react"
+import useOldApiHook from "../../api/useOldApiHook"
+import { getSchoolId } from "../../hooks/schoolIdState"
+import UserCard from "../UserCard/UserCard"
+import Box from "../Box/Box"
+import BackNavigation from "../BackNavigation/BackNavigation"
+
+export const PageUsers: FC = () => {
+  // Todo: Type this correctly when we start using restful react.
+  const [schoolDetail] = useOldApiHook<{
+    name: string
+    inviteLink: string
+    users: {
+      id: string
+      name: string
+      email: string
+      isCurrentUser: boolean
+    }[]
+  }>(`/schools/${getSchoolId()}`)
+
+  const userCards = schoolDetail?.users?.map(
+    ({ id, name, email, isCurrentUser }) => (
+      <UserCard
+        key={id}
+        email={email}
+        name={name}
+        isCurrentUser={isCurrentUser}
+      />
+    )
+  )
+
+  return (
+    <>
+      <BackNavigation to="/dashboard/settings" text="Settings" />
+      <Box px={2}>{userCards}</Box>
+    </>
+  )
+}
+
+export default PageUsers

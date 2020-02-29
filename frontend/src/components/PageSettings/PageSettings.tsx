@@ -1,19 +1,19 @@
 import React, { FC } from "react"
 import { navigate } from "gatsby"
 import { useColorMode } from "theme-ui"
+import { Link } from "gatsby-plugin-intl3"
 import Box from "../Box/Box"
 import Typography from "../Typography/Typography"
 import Flex from "../Flex/Flex"
 import Icon from "../Icon/Icon"
-import Spacer from "../Spacer/Spacer"
-import { ReactComponent as ShareIcon } from "../../icons/share.svg"
 import Button from "../Button/Button"
 import useOldApiHook from "../../api/useOldApiHook"
 import { getSchoolId } from "../../hooks/schoolIdState"
-import UserCard from "../UserCard/UserCard"
 import CardLink from "../CardLink/CardLink"
 import { ReactComponent as LightModeIcon } from "../../icons/light-mode.svg"
 import { ReactComponent as DarkModeIcon } from "../../icons/dark-mode.svg"
+import { ReactComponent as FlipIcon } from "../../icons/flip.svg"
+import Card from "../Card/Card"
 
 export const PageSettings: FC = () => {
   const schoolId = getSchoolId()
@@ -29,17 +29,6 @@ export const PageSettings: FC = () => {
       isCurrentUser: boolean
     }[]
   }>(`/schools/${schoolId}`)
-
-  const userCards = schoolDetail?.users?.map(
-    ({ id, name, email, isCurrentUser }) => (
-      <UserCard
-        key={id}
-        email={email}
-        name={name}
-        isCurrentUser={isCurrentUser}
-      />
-    )
-  )
 
   function shareLink(): void {
     if (navigator.share) {
@@ -63,13 +52,21 @@ export const PageSettings: FC = () => {
 
   return (
     <Box maxWidth="maxWidth.sm" margin="auto" p={3} pt={[3, 3, 4]}>
+      <Box width="100%" mb={4}>
+        <Typography.H3 mb={3} ml={1}>
+          {schoolDetail?.name}
+        </Typography.H3>
+        <Link to="/choose-school">
+          <Button variant="outline">
+            <Icon as={FlipIcon} m={0} mr={2} />
+            Switch School
+          </Button>
+        </Link>
+      </Box>
+      <CardLink mb={3} name="Curriculum" to="/dashboard/settings/curriculum" />
+      <CardLink mb={3} name="Users" to="/dashboard/settings/users" />
       <Box mb={4}>
-        <Box
-          p={3}
-          backgroundColor="tintYellow"
-          sx={{ borderRadius: "default" }}
-          onClick={shareLink}
-        >
+        <Card p={3} onClick={shareLink}>
           <Flex alignItems="center">
             <Box>
               <Typography.H6 mb={3}>Invite your co-workers</Typography.H6>
@@ -82,15 +79,8 @@ export const PageSettings: FC = () => {
                 {schoolDetail?.inviteLink}
               </Typography.Body>
             </Box>
-            <Spacer />
-            <Icon minWidth={24} size={24} as={ShareIcon} m={0} mx={3} />
           </Flex>
-        </Box>
-      </Box>
-      <CardLink name="Curriculum" to="/dashboard/settings/curriculum" />
-      <Box pt={4} mb={4}>
-        <Typography.H5 mb={3}>Users</Typography.H5>
-        {userCards}
+        </Card>
       </Box>
       <ThemeModeButton />
       <Button
