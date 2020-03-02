@@ -29,7 +29,7 @@ export const PageNewStudent: FC = () => {
       responseStatus: response.status,
       studentName: name,
     })
-    if (response.status === 201) navigate("/dashboard/home")
+    if (response.status === 201) navigate("/dashboard/observe")
   }
 
   const dobField = (
@@ -61,7 +61,7 @@ export const PageNewStudent: FC = () => {
   return (
     <>
       <Box maxWidth="maxWidth.sm" margin="auto">
-        <BackNavigation to="/dashboard/home" text="Home" />
+        <BackNavigation to="/dashboard/observe" text="Home" />
         <Box mx={3} mt={3}>
           <Input
             label="Name"
@@ -73,7 +73,7 @@ export const PageNewStudent: FC = () => {
         </Box>
         <Flex m={3}>
           <Spacer />
-          <Link to="/dashboard/home">
+          <Link to="/dashboard/observe">
             <Button variant="outline" mr={2}>
               Cancel
             </Button>

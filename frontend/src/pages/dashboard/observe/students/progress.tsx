@@ -1,8 +1,8 @@
 import React, { FC } from "react"
 import { PageRendererProps } from "gatsby"
 import queryString from "query-string"
-import SEO from "../../../components/seo"
-import PageStudentProgress from "../../../components/PageStudentProgress/PageStudentProgress"
+import SEO from "../../../../components/seo"
+import PageStudentProgress from "../../../../components/PageStudentProgress/PageStudentProgress"
 
 function getQueryAsString(query: string, key: string): string {
   const parsedQuery = queryString.parse(query)

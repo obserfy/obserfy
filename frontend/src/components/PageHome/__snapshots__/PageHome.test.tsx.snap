@@ -276,7 +276,7 @@ exports[`PageHome should render correctly 1`] = `
           </div>
         </label>
         <a
-          href="/dashboard/students/new"
+          href="/dashboard/observe/students/new"
         >
           <button
             class="emotion-4"

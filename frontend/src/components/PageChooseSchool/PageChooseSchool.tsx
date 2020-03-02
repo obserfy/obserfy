@@ -17,7 +17,7 @@ export const PageChooseSchool: FC = () => {
 
   function saveSelectedSchool(schoolId: string): void {
     setSchoolIdState(schoolId)
-    navigate("/dashboard/home")
+    navigate("/dashboard/observe")
   }
 
   const availableSchools = schools?.map(({ id, name }) => (

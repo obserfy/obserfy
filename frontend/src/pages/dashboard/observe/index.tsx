@@ -1,6 +1,6 @@
 import React, { FC } from "react"
-import PageHome from "../../components/PageHome/PageHome"
-import SEO from "../../components/seo"
+import PageHome from "../../../components/PageHome/PageHome"
+import SEO from "../../../components/seo"
 
 const IndexPage: FC = () => {
   return (

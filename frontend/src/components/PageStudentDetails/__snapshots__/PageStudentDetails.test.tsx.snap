@@ -534,7 +534,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
       class="emotion-26"
     >
       <a
-        href="/dashboard/home"
+        href="/dashboard/observe"
       >
         <div
           class="emotion-2"
@@ -575,7 +575,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
         class="emotion-11"
       >
         <a
-          href="/dashboard/students/observations/new?studentId=asdfadsf"
+          href="/dashboard/observe/students/observations/new?studentId=asdfadsf"
         >
           <button
             class="emotion-10"
@@ -622,7 +622,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
             class="emotion-5"
           />
           <a
-            href="/dashboard/students/observations/new?studentId=asdfadsf"
+            href="/dashboard/observe/students/observations/new?studentId=asdfadsf"
           >
             <button
               class="emotion-19"

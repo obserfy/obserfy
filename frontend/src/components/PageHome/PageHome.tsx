@@ -30,7 +30,7 @@ export const PageHome: FC = () => {
       mx={3}
       mb={2}
       key={id}
-      onClick={() => navigate(`/dashboard/students/details?id=${id}`)}
+      onClick={() => navigate(`/dashboard/observe/students/details?id=${id}`)}
       sx={{ cursor: "pointer" }}
     >
       <Flex>
@@ -44,7 +44,7 @@ export const PageHome: FC = () => {
       <EmptyListPlaceholder
         text="You have no one enrolled"
         callToActionText="New student"
-        onActionClick={() => navigate("/dashboard/students/new")}
+        onActionClick={() => navigate("/dashboard/observe/students/new")}
       />
     </Box>
   )
@@ -68,7 +68,7 @@ export const PageHome: FC = () => {
           value={searchTerm}
           onChange={e => setSearchTerm(e.target.value)}
         />
-        <Link to="/dashboard/students/new">
+        <Link to="/dashboard/observe/students/new">
           <Button variant="outline" data-cy="addStudent" height="100%">
             <Icon as={PlusIcon} m={0} />
           </Button>

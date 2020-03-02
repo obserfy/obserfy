@@ -50,7 +50,7 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
   return (
     <Box maxWidth="maxWidth.sm" margin="auto" pb={4}>
       <BackNavigation
-        to={`/dashboard/students/details?id=${studentId}`}
+        to={`/dashboard/observe/students/details?id=${studentId}`}
         text="Student Detail"
       />
       {studentLoading ? (

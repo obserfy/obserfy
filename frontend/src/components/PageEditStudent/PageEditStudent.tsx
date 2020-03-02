@@ -21,7 +21,7 @@ interface Props {
   id: string
 }
 export const PageEditStudent: FC<Props> = ({ id }) => {
-  const studentDetailUrl = `/dashboard/students/details?id=${id}`
+  const studentDetailUrl = `/dashboard/observe/students/details?id=${id}`
   const [isDeletingStudent, setIsDeletingStudent] = useState(false)
   const [details] = useGetStudent(id)
   const [name, setName] = useState<string>()
@@ -43,7 +43,7 @@ export const PageEditStudent: FC<Props> = ({ id }) => {
       studentName: name,
     })
     if (response.status === 200) {
-      await navigate("/dashboard/home")
+      await navigate("/dashboard/observe")
     }
   }
 

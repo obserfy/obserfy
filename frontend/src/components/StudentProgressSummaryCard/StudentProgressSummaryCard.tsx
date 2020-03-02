@@ -114,7 +114,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
     >
       <Spacer />
       <Link
-        to={`/dashboard/students/progress?studentId=${studentId}&areaId=${selectedAreaId}`}
+        to={`/dashboard/observe/students/progress?studentId=${studentId}&areaId=${selectedAreaId}`}
       >
         <Button variant="secondary" fontSize={0}>
           See All {areas.data?.[tab]?.name} Progress

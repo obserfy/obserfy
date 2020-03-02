@@ -1,8 +1,8 @@
 import React, { FC } from "react"
 import { PageRendererProps } from "gatsby"
 import queryString from "query-string"
-import SEO from "../../../../components/seo"
-import PageNewObservation from "../../../../components/PageNewObservation/PageNewObservation"
+import SEO from "../../../../../components/seo"
+import PageNewObservation from "../../../../../components/PageNewObservation/PageNewObservation"
 
 const NewStudent: FC<PageRendererProps> = ({ location }) => {
   const query = queryString.parse(location.search)

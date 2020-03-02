@@ -39,8 +39,8 @@ describe(" Smoke test on prod build", () => {
 
     // Logout
     cy.url().should("contains", "dashboard")
-    cy.contains(name).click()
-    cy.contains("Log out").click()
+    cy.contains("Settings").click()
+    cy.contains("Log Out").click()
 
     // Login
     cy.url().should("contains", "login")
@@ -53,18 +53,16 @@ describe(" Smoke test on prod build", () => {
     cy.contains(schoolName).click()
 
     // Change theme
+    cy.contains("Settings").click()
     cy.contains("Dark Mode").click()
     cy.contains("Light Mode").click()
 
     // Check sidebar links
-    cy.contains(/settings/i)
-      .click()
-      .waitForRouteChange()
     cy.url().should("contains", "settings")
-    cy.get("[data-cy=home-nav]")
+    cy.contains("Observe")
       .click()
       .waitForRouteChange()
-    cy.url().should("contains", "home")
+    cy.url().should("contains", "observe")
 
     // Create student
     let studentName = "Carol"
@@ -151,10 +149,10 @@ describe(" Smoke test on prod build", () => {
     cy.contains("Math").should("exist")
 
     // Go to a student
-    cy.contains(/Home/i)
+    cy.contains(/Observe/i)
       .click()
       .waitForRouteChange()
-    cy.url().should("contains", "home")
+    cy.url().should("contains", "observe")
     cy.contains(studentName)
       .click()
       .waitForRouteChange()

@@ -74,7 +74,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
       text="No observation have been added"
       callToActionText="new observation"
       onActionClick={() =>
-        navigate(`/dashboard/students/observations/new?studentId=${id}`)
+        navigate(`/dashboard/observe/students/observations/new?studentId=${id}`)
       }
     />
   )
@@ -82,7 +82,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
   return (
     <>
       <Box maxWidth="maxWidth.sm" margin="auto" pb={5}>
-        <BackNavigation text="Home" to="/dashboard/home" />
+        <BackNavigation text="Home" to="/dashboard/observe" />
         <Flex alignItems="start" mx={3} mb={4} mt={0}>
           <Typography.H3 sx={{ wordWrap: "break-word" }}>
             {student?.name || <LoadingPlaceholder width="24rem" height={60} />}
@@ -94,13 +94,17 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
             ml={3}
             minWidth={43}
             variant="outline"
-            onClick={() => navigate(`/dashboard/students/edit?id=${id}`)}
+            onClick={() =>
+              navigate(`/dashboard/observe/students/edit?id=${id}`)
+            }
           >
             <Icon minWidth={20} as={EditIcon} m={0} />
           </Button>
         </Flex>
         <Box m={3} mb={2}>
-          <Link to={`/dashboard/students/observations/new?studentId=${id}`}>
+          <Link
+            to={`/dashboard/observe/students/observations/new?studentId=${id}`}
+          >
             <Button variant="outline" width="100%">
               <Icon as={PlusIcon} m={0} mr={2} />
               Add Observation
@@ -117,7 +121,9 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
           <Flex mb={3} alignItems="center">
             <SectionHeader>OBSERVATIONS</SectionHeader>
             <Spacer />
-            <Link to={`/dashboard/students/observations/new?studentId=${id}`}>
+            <Link
+              to={`/dashboard/observe/students/observations/new?studentId=${id}`}
+            >
               <Button variant="outline">New</Button>
             </Link>
           </Flex>

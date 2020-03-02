@@ -232,7 +232,7 @@ exports[`PageEditStudent should render correctly 1`] = `
 
 @media screen and (min-width:40em) {
   .emotion-24 {
-    padding-left: 80px;
+    padding-left: 70px;
     padding-bottom: 0;
   }
 }
@@ -498,7 +498,7 @@ exports[`PageEditStudent should render correctly 1`] = `
           class="emotion-0"
         />
         <a
-          href="/dashboard/home"
+          href="/dashboard/observe"
           style="outline: none;"
         >
           <div
@@ -560,7 +560,7 @@ exports[`PageEditStudent should render correctly 1`] = `
         class="emotion-23"
       >
         <a
-          href="/dashboard/students/details?id=jkasdfjaksjdfh"
+          href="/dashboard/observe/students/details?id=jkasdfjaksjdfh"
         >
           <div
             class="emotion-15"

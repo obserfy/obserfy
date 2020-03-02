@@ -45,7 +45,7 @@ export const PageStudentProgress: FC<Props> = ({ areaId, studentId }) => {
   const backNavigation = (
     <BackNavigation
       text="Student Details"
-      to={`/dashboard/students/details?id=${studentId}`}
+      to={`/dashboard/observe/students/details?id=${studentId}`}
     />
   )
 

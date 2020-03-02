@@ -4,7 +4,7 @@ import { navigate } from "gatsby-plugin-intl3"
 
 const IndexPage: FC<PageRendererProps> = ({ location }) => {
   if (location.pathname === "/") {
-    navigate("/dashboard/home")
+    navigate("/dashboard/observe")
   }
   return <div />
 }

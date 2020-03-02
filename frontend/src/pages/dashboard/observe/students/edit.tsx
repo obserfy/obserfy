@@ -1,10 +1,10 @@
 import React, { FC } from "react"
 import { PageRendererProps } from "gatsby"
 import queryString from "query-string"
-import PageStudentDetails from "../../../components/PageStudentDetails/PageStudentDetails"
-import SEO from "../../../components/seo"
+import PageEditStudent from "../../../../components/PageEditStudent/PageEditStudent"
+import SEO from "../../../../components/seo"
 
-const StudentDetails: FC<PageRendererProps> = ({ location }) => {
+const EditStudent: FC<PageRendererProps> = ({ location }) => {
   const query = queryString.parse(location.search)
   let id: string
   if (Array.isArray(query?.id)) {
@@ -15,9 +15,9 @@ const StudentDetails: FC<PageRendererProps> = ({ location }) => {
 
   return (
     <>
-      <SEO title="Student Details" />
-      <PageStudentDetails id={id} />
+      <SEO title="Edit Student" />
+      <PageEditStudent id={id} />
     </>
   )
 }
-export default StudentDetails
+export default EditStudent
