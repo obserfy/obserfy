@@ -1,21 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageHome should render correctly 1`] = `
-@keyframes animation-0 {
-  0% {
-    background-color: rgba(165,165,165,0.05);
-  }
-
-  50% {
-    background-color: rgba(165,165,165,0.1);
-  }
-
-  100% {
-    background-color: rgba(165,165,165,0.05);
-  }
-}
-
-.emotion-14 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -23,12 +9,12 @@ exports[`PageHome should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-14 {
+  .emotion-7 {
     font-size: 20px;
   }
 }
 
-.emotion-13 {
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -231,32 +217,12 @@ exports[`PageHome should render correctly 1`] = `
   width: 20px;
 }
 
-.emotion-12 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  padding-left: 16px;
-  padding-right: 16px;
-}
-
-.emotion-6 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  border-radius: 8px;
-  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
-  animation: 1s ease-in-out 0s infinite animation-0;
-  width: 100%;
-  height: 62px;
-  margin-bottom: 8px;
-}
-
 <div>
   <div
-    class="emotion-14"
+    class="emotion-7"
   >
     <div
-      class="emotion-13"
+      class="emotion-6"
     >
       <div
         class="emotion-5"
@@ -287,28 +253,6 @@ exports[`PageHome should render correctly 1`] = `
             />
           </button>
         </a>
-      </div>
-      <div
-        class="emotion-12"
-      >
-        <div
-          class="emotion-6"
-        />
-        <div
-          class="emotion-6"
-        />
-        <div
-          class="emotion-6"
-        />
-        <div
-          class="emotion-6"
-        />
-        <div
-          class="emotion-6"
-        />
-        <div
-          class="emotion-6"
-        />
       </div>
     </div>
   </div>

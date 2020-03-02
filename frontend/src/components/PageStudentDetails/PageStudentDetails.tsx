@@ -32,22 +32,18 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
   const [isDeletingObservation, setIsDeletingObservation] = useState(false)
   const [targetObservation, setTargetObservation] = useState<Observation>()
   const [selectedDate, setSelectedDate] = useState(0)
-  const [student] = useGetStudent(id)
-  const [
-    observations,
-    isObservationLoading,
-    setObservationsAsOutdated,
-  ] = useGetObservations(id)
+  const student = useGetStudent(id)
+  const observations = useGetObservations(id)
 
   const dates = [
     ...new Set(
-      observations?.map(({ createdDate }) =>
+      observations.data?.map(({ createdDate }) =>
         startOfDay(Date.parse(createdDate ?? "")).toISOString()
       )
     ),
   ]?.sort((a, b) => differenceInDays(Date.parse(b), Date.parse(a)))
 
-  const listOfObservations = observations
+  const listOfObservations = observations.data
     ?.filter(observation =>
       isSameDay(
         Date.parse(observation.createdDate ?? ""),
@@ -69,7 +65,8 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
       />
     ))
 
-  const emptyObservationPlaceholder = (observations ?? []).length === 0 && (
+  const emptyObservationPlaceholder = (observations.data ?? []).length ===
+    0 && (
     <EmptyListPlaceholder
       text="No observation have been added"
       callToActionText="new observation"
@@ -85,7 +82,9 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
         <BackNavigation text="Home" to="/dashboard/observe" />
         <Flex alignItems="start" mx={3} mb={4} mt={0}>
           <Typography.H3 sx={{ wordWrap: "break-word" }}>
-            {student?.name || <LoadingPlaceholder width="24rem" height={60} />}
+            {student.data?.name || (
+              <LoadingPlaceholder width="24rem" height={60} />
+            )}
           </Typography.H3>
           <Spacer />
           <Button
@@ -127,9 +126,9 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
               <Button variant="outline">New</Button>
             </Link>
           </Flex>
-          {!isObservationLoading && emptyObservationPlaceholder}
-          {isObservationLoading && <ObservationLoadingPlaceholder />}
-          {!isObservationLoading && observations && (
+          {!observations.isLoading && emptyObservationPlaceholder}
+          {observations.isLoading && <ObservationLoadingPlaceholder />}
+          {!observations.isLoading && observations && (
             <Flex mb={3} alignItems="center">
               <Button
                 backgroundColor="surface"
@@ -172,7 +171,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
           onDismiss={() => setIsEditingObservation(false)}
           onSaved={() => {
             setIsEditingObservation(false)
-            setObservationsAsOutdated()
+            observations.refetch()
           }}
         />
       )}
@@ -182,7 +181,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
           shortDesc={targetObservation?.shortDesc}
           onDismiss={() => setIsDeletingObservation(false)}
           onDeleted={() => {
-            setObservationsAsOutdated()
+            observations.refetch()
             setIsDeletingObservation(false)
           }}
         />

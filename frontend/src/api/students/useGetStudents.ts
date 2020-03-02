@@ -1,14 +1,28 @@
-import useApi, { Api } from "../useApi"
+import { QueryResult, useQuery } from "react-query"
+import { navigate } from "gatsby"
+import { BASE_URL } from "../useApi"
+import { getSchoolId } from "../../hooks/schoolIdState"
 
 export interface Student {
   id: string
   name: string
 }
-export const useGetStudents = (schoolId: string): Api<Student[]> => {
-  const url = `/schools/${schoolId}/students`
-  const api = useApi<Student[]>(url)
-  // Disabled coz this creates extremely weird rerender
-  // const cachedStudents = useStudentsCache(schoolId, api?.data)
 
-  return { ...api, data: api?.data ?? [] }
+async function fetchStudents(): Promise<Student[]> {
+  const url = `/schools/${getSchoolId()}/students`
+  const result = await fetch(`${BASE_URL}${url}`, {
+    credentials: "same-origin",
+  })
+
+  // Throw user to login when something gets 401
+  if (result.status === 401) {
+    await navigate("/login")
+    return []
+  }
+
+  return result.json()
+}
+
+export const useGetStudents = (): QueryResult<Student[], {}> => {
+  return useQuery<Student[], {}>("students", fetchStudents)
 }

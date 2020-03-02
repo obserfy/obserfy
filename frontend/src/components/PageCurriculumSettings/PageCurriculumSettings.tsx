@@ -21,7 +21,7 @@ export const PageCurriculumSettings: FC = () => {
   const curriculum = useGetCurriculum()
   const areas = useGetCurriculumAreas()
 
-  const loading = curriculum.loading || areas.loading
+  const loading = curriculum.loading || areas.isLoading
 
   function closeNewAreaDialog(): void {
     setShowNewAreaDialog(false)
@@ -36,14 +36,14 @@ export const PageCurriculumSettings: FC = () => {
           <CurriculumAreas
             newAreaClick={() => setShowNewAreaDialog(true)}
             name={curriculum.data?.name}
-            areas={areas.data}
+            areas={areas.data ?? []}
           />
         )}
         {!loading && curriculum.error && (
           <SetupCurriculum
             onCreated={() => {
               curriculum.setOutdated()
-              areas.setOutdated()
+              areas.refetch()
             }}
           />
         )}
@@ -54,7 +54,7 @@ export const PageCurriculumSettings: FC = () => {
           onDismiss={closeNewAreaDialog}
           onSaved={() => {
             closeNewAreaDialog()
-            areas.setOutdated()
+            areas.refetch()
           }}
         />
       )}

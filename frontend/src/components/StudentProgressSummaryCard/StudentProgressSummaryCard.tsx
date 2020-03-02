@@ -26,26 +26,22 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
   const [isEditing, setIsEditing] = useState(false)
   const [selected, setSelected] = useState<MaterialProgress>()
   const areas = useGetCurriculumAreas()
-  const [
-    progress,
-    progressLoading,
-    setProgressOutdated,
-  ] = useGetStudentMaterialProgress(studentId)
+  const progress = useGetStudentMaterialProgress(studentId)
 
   // Derived state
   const selectedAreaId = areas.data?.[tab]?.id
-  const inSelectedArea = progress.filter(p => p.areaId === selectedAreaId)
-  const inProgress = inSelectedArea.filter(
+  const inSelectedArea = progress.data?.filter(p => p.areaId === selectedAreaId)
+  const inProgress = inSelectedArea?.filter(
     ({ stage }) =>
       stage >= MaterialProgressStage.PRESENTED &&
       stage < MaterialProgressStage.MASTERED
   )
-  const recentlyMastered = inSelectedArea.filter(
+  const recentlyMastered = inSelectedArea?.filter(
     ({ stage }) => stage === MaterialProgressStage.MASTERED
   )
 
   // Loading view
-  if (areas.loading || progressLoading) {
+  if (areas.isLoading || progress.isLoading) {
     return (
       <Box mt={3}>
         <LoadingPlaceholder width="100%" height="17rem" />
@@ -65,7 +61,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
   }
 
   // Fully functional view
-  const emptyProgressPlaceholder = inProgress.length === 0 && (
+  const emptyProgressPlaceholder = inProgress?.length === 0 && (
     <Typography.Body
       width="100%"
       my={4}
@@ -77,7 +73,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
     </Typography.Body>
   )
 
-  const listOfInProgress = inProgress.map(item => (
+  const listOfInProgress = inProgress?.map(item => (
     <MaterialProgressItem
       key={item.materialId}
       value={item}
@@ -89,7 +85,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
   ))
 
   const listOfMastered = recentlyMastered
-    .slice(0, 3)
+    ?.slice(0, 3)
     .sort((a, b) => Date.parse(b.updatedAt) - Date.parse(a.updatedAt))
     .map(item => (
       <MaterialProgressItem
@@ -132,7 +128,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
       materialId={selected?.materialId}
       onDismiss={() => setIsEditing(false)}
       onSubmitted={() => {
-        setProgressOutdated()
+        progress.refetch()
         setIsEditing(false)
       }}
     />
@@ -148,7 +144,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
           selectedItemIdx={tab}
         />
         <Box my={2}>
-          {inProgress.length > 0 && (
+          {(inProgress?.length ?? 0) > 0 && (
             <Typography.Body
               fontSize={0}
               mt={3}
@@ -160,7 +156,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
           )}
           {listOfInProgress}
           {emptyProgressPlaceholder}
-          {listOfMastered.length > 0 && (
+          {(listOfMastered?.length ?? 0) > 0 && (
             <Typography.Body
               fontSize={0}
               mt={3}
