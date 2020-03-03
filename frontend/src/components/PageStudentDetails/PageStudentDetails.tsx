@@ -65,16 +65,18 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
       />
     ))
 
-  const emptyObservationPlaceholder = (observations.data ?? []).length ===
-    0 && (
-    <EmptyListPlaceholder
-      text="No observation have been added"
-      callToActionText="new observation"
-      onActionClick={() =>
-        navigate(`/dashboard/observe/students/observations/new?studentId=${id}`)
-      }
-    />
-  )
+  const emptyObservationPlaceholder = !observations.isFetching &&
+    (observations.data ?? []).length === 0 && (
+      <EmptyListPlaceholder
+        text="No observation have been added"
+        callToActionText="new observation"
+        onActionClick={() =>
+          navigate(
+            `/dashboard/observe/students/observations/new?studentId=${id}`
+          )
+        }
+      />
+    )
 
   return (
     <>
@@ -126,15 +128,19 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
               <Button variant="outline">New</Button>
             </Link>
           </Flex>
-          {!observations.isLoading && emptyObservationPlaceholder}
-          {observations.isLoading && <ObservationLoadingPlaceholder />}
-          {!observations.isLoading && observations.data && (
+          {emptyObservationPlaceholder}
+          {observations.isFetching && !observations.data && (
+            <ObservationLoadingPlaceholder />
+          )}
+          {observations.data && (
             <Flex mb={3} alignItems="center">
               <Button
                 backgroundColor="surface"
                 disabled={selectedDate >= dates.length - 1}
                 onClick={() => setSelectedDate(selectedDate + 1)}
                 variant="outline"
+                py={1}
+                px={2}
               >
                 <Icon as={PrevIcon} m={0} />
               </Button>
@@ -157,6 +163,8 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
                 disabled={selectedDate < 1}
                 onClick={() => setSelectedDate(selectedDate - 1)}
                 variant="outline"
+                py={1}
+                px={2}
               >
                 <Icon as={NextIcon} m={0} />
               </Button>

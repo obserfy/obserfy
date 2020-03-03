@@ -21,6 +21,7 @@ import { useGetObservations } from "../../api/useGetObservations"
 import Dialog from "../Dialog/Dialog"
 import { categories } from "../../categories"
 
+// TODO: This page is removed for now. We'll need to rethink how to implement this
 export const PageAnalyze: FC = () => {
   const [selectedStudentIdx, setSelectedStudentIdx] = useState(0)
   const [selectedAreaId, setSelectedAreaId] = useState("")
@@ -53,6 +54,8 @@ export const PageAnalyze: FC = () => {
             value={students.data?.[selectedStudentIdx]?.name ?? ""}
             mr={2}
             onClick={() => setShowStudentSelector(true)}
+            disabled
+            sx={{ "&:disabled": { opacity: 1 } }}
           />
           <Button
             variant="outline"
@@ -61,14 +64,14 @@ export const PageAnalyze: FC = () => {
             <Icon as={FlipIcon} m={0} />
           </Button>
         </Flex>
-        <Flex pl={3} pr={2} py={3} sx={{ float: "left" }} flexWrap="wrap">
+        <Flex pl={3} pr={2} py={3} flexWrap="wrap">
           {areas.data?.map(area => {
             const isActive = area.id === selectedAreaId
             return (
               <Box
                 key={area.id}
                 onClick={() => setSelectedAreaId(area.id)}
-                backgroundColor={isActive ? "primary" : "transparent"}
+                backgroundColor={isActive ? "primary" : "surface"}
                 mr={2}
                 mb={2}
                 px={2}
@@ -142,7 +145,7 @@ const MaterialProgressCard: FC<{ studentId: string; areaId: string }> = ({
   if (areaProgress.error) return <Box />
 
   const selectedAreaProgress = areaProgress.data?.filter(
-    area => area.areaId === areaId
+    area => area.areaId === areaId && area.stage !== -1
   )
 
   if (!selectedAreaProgress?.length) return <Box />
@@ -158,6 +161,7 @@ const MaterialProgressCard: FC<{ studentId: string; areaId: string }> = ({
             const stage = materialStageToString(progress.stage)
             return (
               <Box
+                key={progress.materialId}
                 px={3}
                 py={2}
                 pr={1}
@@ -202,13 +206,12 @@ const ObservationCard: FC<{ studentId: string; areaName: string }> = ({
 
   return (
     <>
-      <Box m={3} mb={2}>
-        <Typography.H6>OBSERVATIONS</Typography.H6>
-      </Box>
+      <Typography.H6 p={3}>OBSERVATIONS</Typography.H6>
       <Card borderRadius={[0, "default"]} width="100%">
         {filteredObservation?.map(observation => {
           return (
             <Box
+              key={observation.id}
               p={3}
               sx={{
                 borderBottomColor: "border",
@@ -217,7 +220,9 @@ const ObservationCard: FC<{ studentId: string; areaName: string }> = ({
               }}
             >
               <Typography.H6 mb={2}>{observation.shortDesc}</Typography.H6>
-              <Typography.Body>{observation.longDesc}</Typography.Body>
+              <Typography.Body fontSize={1}>
+                {observation.longDesc}
+              </Typography.Body>
             </Box>
           )
         })}
@@ -238,43 +243,47 @@ const SelectStudentDialog: FC<{
     student.name.match(new RegExp(search, "i"))
   )
 
-  return (
-    <Dialog>
-      <Flex
-        alignItems="center"
-        backgroundColor="surface"
+  const header = (
+    <Flex
+      alignItems="center"
+      backgroundColor="surface"
+      sx={{
+        flexShrink: 0,
+        position: "relative",
+        borderBottomColor: "border",
+        borderBottomWidth: 1,
+        borderBottomStyle: "solid",
+      }}
+    >
+      <Typography.H6
+        width="100%"
         sx={{
-          flexShrink: 0,
-          position: "relative",
-          borderBottomColor: "border",
-          borderBottomWidth: 1,
-          borderBottomStyle: "solid",
+          position: "absolute",
+          pointerEvents: "none",
+          textAlign: "center",
+          alignContent: "center",
         }}
       >
-        <Typography.H6
-          width="100%"
-          sx={{
-            position: "absolute",
-            pointerEvents: "none",
-            textAlign: "center",
-            alignContent: "center",
-          }}
-        >
-          Select a Student
-        </Typography.H6>
-        <Button variant="outline" color="danger" m={2} onClick={onDismiss}>
-          Cancel
-        </Button>
-        <Spacer />
-        <Button
-          m={2}
-          disabled={selectedIdx === undefined}
-          onClick={() => onSelected(selectedIdx ?? 0)}
-        >
-          Select
-        </Button>
-      </Flex>
-      <Flex flexDirection="column" maxHeight="100%">
+        Select a Student
+      </Typography.H6>
+      <Button variant="outline" color="danger" m={2} onClick={onDismiss}>
+        Cancel
+      </Button>
+      <Spacer />
+      <Button
+        m={2}
+        disabled={selectedIdx === undefined}
+        onClick={() => onSelected(selectedIdx ?? 0)}
+      >
+        Select
+      </Button>
+    </Flex>
+  )
+
+  return (
+    <Dialog>
+      {header}
+      <Flex flexDirection="column" maxHeight="100vh">
         <Box backgroundColor="background" overflowY="auto" maxHeight="100%">
           <Box>
             <Box px={3} py={2}>
@@ -285,12 +294,15 @@ const SelectStudentDialog: FC<{
                 onChange={e => setSearch(e.target.value)}
               />
             </Box>
-            <Box>
-              {matchedStudent.map((student, idx) => {
-                const isActive = selectedIdx === idx
+            <Box mb={200}>
+              {matchedStudent.map(student => {
+                const studentIdx = students.findIndex(
+                  ({ id }) => id === student.id
+                )
+                const isActive = selectedIdx === studentIdx
                 return (
                   <Box
-                    onClick={() => setSelectedIdx(idx)}
+                    onClick={() => setSelectedIdx(studentIdx)}
                     key={student.id}
                     sx={{
                       userSelect: "none",

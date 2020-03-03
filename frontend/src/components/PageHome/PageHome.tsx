@@ -12,18 +12,17 @@ import Card from "../Card/Card"
 import { useGetStudents } from "../../api/students/useGetStudents"
 import EmptyListPlaceholder from "../EmptyListPlaceholder/EmptyListPlaceholder"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
-import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 
 export const PageHome: FC = () => {
   const [searchTerm, setSearchTerm] = useState("")
-  const { data, isFetching, isLoading } = useGetStudents()
+  const { data, isFetching } = useGetStudents()
   const students = data ?? []
   const matchedStudent = students.filter(student =>
     student.name.match(new RegExp(searchTerm, "i"))
   )
 
   const studentList =
-    (!isLoading || students.length > 0) &&
+    (!isFetching || students.length > 0) &&
     matchedStudent.map(({ name, id }) => (
       <Card
         p={3}
@@ -39,19 +38,17 @@ export const PageHome: FC = () => {
       </Card>
     ))
 
-  const emptyStudentListPlaceholder = !isLoading &&
-    !isFetching &&
-    students.length === 0 && (
-      <Box mx={3}>
-        <EmptyListPlaceholder
-          text="You have no one enrolled"
-          callToActionText="New student"
-          onActionClick={() => navigate("/dashboard/observe/students/new")}
-        />
-      </Box>
-    )
+  const emptyStudentListPlaceholder = !isFetching && students.length === 0 && (
+    <Box mx={3}>
+      <EmptyListPlaceholder
+        text="You have no one enrolled"
+        callToActionText="New student"
+        onActionClick={() => navigate("/dashboard/observe/students/new")}
+      />
+    </Box>
+  )
 
-  const emptySearchResultInfo = !isLoading &&
+  const emptySearchResultInfo = !isFetching &&
     students.length > 0 &&
     matchedStudent?.length === 0 &&
     searchTerm !== "" && (
@@ -77,15 +74,10 @@ export const PageHome: FC = () => {
           </Button>
         </Link>
       </Flex>
-      {isLoading && students.length > 0 && (
-        <Flex justifyContent="center" mt={-3}>
-          <LoadingIndicator size={48} color="primary" />
-        </Flex>
-      )}
       {studentList}
       {emptySearchResultInfo}
       {emptyStudentListPlaceholder}
-      {isLoading && students.length === 0 && <StudentListLoadingPlaceholder />}
+      {isFetching && students.length === 0 && <StudentListLoadingPlaceholder />}
     </Box>
   )
 }

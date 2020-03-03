@@ -52,7 +52,7 @@ exports[`PageAnalyze should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
   margin-right: 8px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -126,6 +126,10 @@ exports[`PageAnalyze should render correctly 1`] = `
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
+}
+
+.emotion-0:disabled {
+  opacity: 1;
 }
 
 .emotion-4 {
@@ -218,7 +222,6 @@ exports[`PageAnalyze should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  float: left;
   padding-left: 16px;
   padding-right: 8px;
   padding-top: 16px;
@@ -250,6 +253,7 @@ exports[`PageAnalyze should render correctly 1`] = `
           >
             <input
               class="emotion-0"
+              disabled=""
               value=""
             />
           </div>

@@ -1,7 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageNewObservation should render correctly 1`] = `
-.emotion-21 {
+@keyframes animation-0 {
+  0% {
+    background-color: rgba(165,165,165,0.05);
+  }
+
+  50% {
+    background-color: rgba(165,165,165,0.1);
+  }
+
+  100% {
+    background-color: rgba(165,165,165,0.05);
+  }
+}
+
+.emotion-22 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,12 +23,12 @@ exports[`PageNewObservation should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-21 {
+  .emotion-22 {
     font-size: 20px;
   }
 }
 
-.emotion-20 {
+.emotion-21 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -74,28 +88,28 @@ exports[`PageNewObservation should render correctly 1`] = `
   }
 }
 
-.emotion-3 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  font-size: 24px;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 300;
-  line-height: heading;
-  font-size: 2rem;
-  line-height: 3rem;
-  -webkit-letter-spacing: 0;
-  -moz-letter-spacing: 0;
-  -ms-letter-spacing: 0;
-  letter-spacing: 0;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   padding-bottom: 32px;
   padding-top: 16px;
   padding-left: 16px;
   padding-right: 16px;
 }
 
-.emotion-19 {
+.emotion-3 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  border-radius: 8px;
+  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
+  animation: 1s ease-in-out 0s infinite animation-0;
+  width: 100%;
+  height: 4rem;
+}
+
+.emotion-20 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -103,7 +117,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   padding-right: 16px;
 }
 
-.emotion-7 {
+.emotion-8 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -131,14 +145,14 @@ exports[`PageNewObservation should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-4 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   padding-bottom: 4px;
 }
 
-.emotion-6 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -152,7 +166,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-5 {
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -178,35 +192,35 @@ exports[`PageNewObservation should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-5:hover,
-.emotion-5:focus {
+.emotion-6:hover,
+.emotion-6:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-5::-webkit-input-placeholder {
+.emotion-6::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-5::-moz-placeholder {
+.emotion-6::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-5:-ms-input-placeholder {
+.emotion-6:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-5::placeholder {
+.emotion-6::placeholder {
   font-style: italic;
 }
 
-.emotion-5:disabled {
+.emotion-6:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
-.emotion-10 {
+.emotion-11 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -232,7 +246,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-9 {
+.emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -262,33 +276,33 @@ exports[`PageNewObservation should render correctly 1`] = `
   margin-bottom: 16px;
 }
 
-.emotion-9:hover,
-.emotion-9:focus {
+.emotion-10:hover,
+.emotion-10:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-9::-webkit-input-placeholder {
+.emotion-10::-webkit-input-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-9::-moz-placeholder {
+.emotion-10::-moz-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-9:-ms-input-placeholder {
+.emotion-10:-ms-input-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-9::placeholder {
+.emotion-10::placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-14 {
+.emotion-15 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -298,7 +312,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-12 {
+.emotion-13 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -322,13 +336,13 @@ exports[`PageNewObservation should render correctly 1`] = `
   padding: 12px;
 }
 
-.emotion-12:hover,
-.emotion-12:focus {
+.emotion-13:hover,
+.emotion-13:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-13 {
+.emotion-14 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -341,7 +355,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   height: 24px;
 }
 
-.emotion-18 {
+.emotion-19 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -352,7 +366,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-16 {
+.emotion-17 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -362,7 +376,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   flex: 1;
 }
 
-.emotion-17 {
+.emotion-18 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -413,28 +427,28 @@ exports[`PageNewObservation should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-17:disabled {
+.emotion-18:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-17:hover,
-.emotion-17:focus {
+.emotion-18:hover,
+.emotion-18:focus {
   background-color: var(--theme-ui-colors-primaryDark,#00a06d);
   outline: none;
 }
 
-.emotion-17:hover:disabled,
-.emotion-17:focus:disabled {
+.emotion-18:hover:disabled,
+.emotion-18:focus:disabled {
   background-color: var(--theme-ui-colors-primary,#00e399);
 }
 
 <div>
   <div
-    class="emotion-21"
+    class="emotion-22"
   >
     <div
-      class="emotion-20"
+      class="emotion-21"
     >
       <a
         href="/dashboard/observe/students/details?id="
@@ -452,58 +466,62 @@ exports[`PageNewObservation should render correctly 1`] = `
           </p>
         </div>
       </a>
-      <h6
-        class="emotion-3"
-      />
+      <div
+        class="emotion-4"
+      >
+        <div
+          class="emotion-3"
+        />
+      </div>
       <form
-        class="emotion-19"
+        class="emotion-20"
       >
         <label
-          class="emotion-7"
+          class="emotion-8"
         >
           <div
-            class="emotion-4"
+            class="emotion-5"
           >
             Short Description
           </div>
           <div
-            class="emotion-6"
+            class="emotion-7"
           >
             <input
-              class="emotion-5"
+              class="emotion-6"
               placeholder="What have you found?"
               value=""
             />
           </div>
         </label>
         <label
-          class="emotion-10"
+          class="emotion-11"
         >
           <div
-            class="emotion-4"
+            class="emotion-5"
           >
             Details
           </div>
           <textarea
             aria-label="Details"
-            class="emotion-9"
+            class="emotion-10"
             placeholder="Tell us what you observed"
           />
         </label>
         <label
-          class="emotion-10"
+          class="emotion-11"
         >
           <div
-            class="emotion-4"
+            class="emotion-5"
           >
             Category
           </div>
           <div
-            class="emotion-14"
+            class="emotion-15"
           >
             <select
               aria-label="Category"
-              class="emotion-12"
+              class="emotion-13"
             >
               <option
                 value="0"
@@ -537,7 +555,7 @@ exports[`PageNewObservation should render correctly 1`] = `
               </option>
             </select>
             <svg
-              class="emotion-13"
+              class="emotion-14"
               fill="currentcolor"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
@@ -549,13 +567,13 @@ exports[`PageNewObservation should render correctly 1`] = `
           </div>
         </label>
         <div
-          class="emotion-18"
+          class="emotion-19"
         >
           <div
-            class="emotion-16"
+            class="emotion-17"
           />
           <button
-            class="emotion-17"
+            class="emotion-18"
             disabled=""
           >
             Add

@@ -40,8 +40,12 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
     ({ stage }) => stage === MaterialProgressStage.MASTERED
   )
 
+  const isFetchingData = areas.isFetching || progress.isFetching
+  const isAreaEmpty = (areas.data?.length ?? 0) < 1
+  const isProgressEmpty = (inProgress?.length ?? 0) === 0
+
   // Loading view
-  if (areas.isLoading || progress.isLoading) {
+  if (isFetchingData && isAreaEmpty) {
     return (
       <Box mt={3}>
         <LoadingPlaceholder width="100%" height="17rem" />
@@ -50,7 +54,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
   }
 
   // Disabled curriculum view
-  if ((areas.data?.length ?? 0) < 1) {
+  if (!isFetchingData && isAreaEmpty) {
     return (
       <InformationalCard
         message="You can enable the curriculum feature to track student progress in your curriculum."
@@ -61,7 +65,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
   }
 
   // Fully functional view
-  const emptyProgressPlaceholder = inProgress?.length === 0 && (
+  const emptyProgressPlaceholder = isProgressEmpty && (
     <Typography.Body
       width="100%"
       my={4}

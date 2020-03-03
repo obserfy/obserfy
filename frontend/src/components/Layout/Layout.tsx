@@ -8,7 +8,6 @@ import Box from "../Box/Box"
 import Flex, { FlexProps } from "../Flex/Flex"
 import { ReactComponent as SettingsIcon } from "../../icons/settings.svg"
 import { ReactComponent as EditIcon } from "../../icons/edit2.svg"
-import { ReactComponent as PieChartIcon } from "../../icons/pie-chart.svg"
 import {
   getSchoolId,
   SCHOOL_ID_UNDEFINED_PLACEHOLDER,
@@ -94,11 +93,11 @@ const NavBar: FC = () => {
       >
         <Box height={70} width={70} display={["none", "block"]} />
         <NavBarItem title="Observe" icon={EditIcon} to="/dashboard/observe" />
-        <NavBarItem
-          title="Analyze"
-          icon={PieChartIcon}
-          to="/dashboard/analyze"
-        />
+        {/* <NavBarItem */}
+        {/*  title="Analyze" */}
+        {/*  icon={PieChartIcon} */}
+        {/*  to="/dashboard/analyze" */}
+        {/* /> */}
         <Box height="100%" display={["none", "block"]} />
         <NavBarItem
           title="Settings"

@@ -15,7 +15,7 @@ exports[`PageEditStudent should render correctly 1`] = `
   }
 }
 
-.emotion-25 {
+.emotion-22 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -23,12 +23,12 @@ exports[`PageEditStudent should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-25 {
+  .emotion-22 {
     font-size: 20px;
   }
 }
 
-.emotion-12 {
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -55,14 +55,14 @@ exports[`PageEditStudent should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-12 {
+  .emotion-9 {
     top: 0;
     bottom: auto;
   }
 }
 
 @media screen and (min-width:40em) {
-  .emotion-12 {
+  .emotion-9 {
     display: block;
     height: 100%;
     width: 70px;
@@ -70,7 +70,7 @@ exports[`PageEditStudent should render correctly 1`] = `
   }
 }
 
-.emotion-11 {
+.emotion-8 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -89,7 +89,7 @@ exports[`PageEditStudent should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-11 {
+  .emotion-8 {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -206,7 +206,7 @@ exports[`PageEditStudent should render correctly 1`] = `
   }
 }
 
-.emotion-7 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -215,12 +215,12 @@ exports[`PageEditStudent should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-7 {
+  .emotion-4 {
     display: block;
   }
 }
 
-.emotion-24 {
+.emotion-21 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -231,13 +231,13 @@ exports[`PageEditStudent should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-24 {
+  .emotion-21 {
     padding-left: 70px;
     padding-bottom: 0;
   }
 }
 
-.emotion-23 {
+.emotion-20 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -245,7 +245,7 @@ exports[`PageEditStudent should render correctly 1`] = `
   margin: auto;
 }
 
-.emotion-15 {
+.emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -260,7 +260,7 @@ exports[`PageEditStudent should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-13 {
+.emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -276,7 +276,7 @@ exports[`PageEditStudent should render correctly 1`] = `
   margin-right: 4px;
 }
 
-.emotion-14 {
+.emotion-11 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -291,12 +291,12 @@ exports[`PageEditStudent should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-14 {
+  .emotion-11 {
     font-size: 14px;
   }
 }
 
-.emotion-18 {
+.emotion-15 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -305,14 +305,14 @@ exports[`PageEditStudent should render correctly 1`] = `
   margin-top: 16px;
 }
 
-.emotion-17 {
+.emotion-14 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   padding-top: 24px;
 }
 
-.emotion-16 {
+.emotion-13 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -323,7 +323,7 @@ exports[`PageEditStudent should render correctly 1`] = `
   height: 56px;
 }
 
-.emotion-22 {
+.emotion-19 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -334,7 +334,7 @@ exports[`PageEditStudent should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-19 {
+.emotion-16 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -344,7 +344,7 @@ exports[`PageEditStudent should render correctly 1`] = `
   flex: 1;
 }
 
-.emotion-20 {
+.emotion-17 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -399,25 +399,25 @@ exports[`PageEditStudent should render correctly 1`] = `
   color: var(--theme-ui-colors-danger,#d50000);
 }
 
-.emotion-20:disabled {
+.emotion-17:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-20:hover,
-.emotion-20:focus {
+.emotion-17:hover,
+.emotion-17:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-20:hover:disabled,
-.emotion-20:focus:disabled {
+.emotion-17:hover:disabled,
+.emotion-17:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-21 {
+.emotion-18 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -468,31 +468,31 @@ exports[`PageEditStudent should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-21:disabled {
+.emotion-18:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-21:hover,
-.emotion-21:focus {
+.emotion-18:hover,
+.emotion-18:focus {
   background-color: var(--theme-ui-colors-primaryDark,#00a06d);
   outline: none;
 }
 
-.emotion-21:hover:disabled,
-.emotion-21:focus:disabled {
+.emotion-18:hover:disabled,
+.emotion-18:focus:disabled {
   background-color: var(--theme-ui-colors-primary,#00e399);
 }
 
 <div>
   <div
-    class="emotion-25"
+    class="emotion-22"
   >
     <nav
-      class="emotion-12"
+      class="emotion-9"
     >
       <div
-        class="emotion-11"
+        class="emotion-8"
       >
         <div
           class="emotion-0"
@@ -514,25 +514,8 @@ exports[`PageEditStudent should render correctly 1`] = `
             </p>
           </div>
         </a>
-        <a
-          href="/dashboard/analyze"
-          style="outline: none;"
-        >
-          <div
-            class="emotion-3"
-          >
-            <div
-              class="emotion-1"
-            />
-            <p
-              class="emotion-2"
-            >
-              Analyze
-            </p>
-          </div>
-        </a>
         <div
-          class="emotion-7"
+          class="emotion-4"
         />
         <a
           href="/dashboard/settings"
@@ -554,51 +537,51 @@ exports[`PageEditStudent should render correctly 1`] = `
       </div>
     </nav>
     <main
-      class="emotion-24"
+      class="emotion-21"
     >
       <div
-        class="emotion-23"
+        class="emotion-20"
       >
         <a
           href="/dashboard/observe/students/details?id=jkasdfjaksjdfh"
         >
           <div
-            class="emotion-15"
+            class="emotion-12"
           >
             <div
-              class="emotion-13"
+              class="emotion-10"
             />
             <p
-              class="emotion-14"
+              class="emotion-11"
             >
               Details
             </p>
           </div>
         </a>
         <div
-          class="emotion-18"
+          class="emotion-15"
         >
           <div
-            class="emotion-17"
+            class="emotion-14"
           >
             <div
-              class="emotion-16"
+              class="emotion-13"
             />
           </div>
         </div>
         <div
-          class="emotion-22"
+          class="emotion-19"
         >
           <div
-            class="emotion-19"
+            class="emotion-16"
           />
           <button
-            class="emotion-20"
+            class="emotion-17"
           >
             Delete
           </button>
           <button
-            class="emotion-21"
+            class="emotion-18"
           >
             Save
           </button>
