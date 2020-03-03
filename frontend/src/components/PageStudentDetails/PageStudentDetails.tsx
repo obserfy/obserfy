@@ -128,7 +128,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
           </Flex>
           {!observations.isLoading && emptyObservationPlaceholder}
           {observations.isLoading && <ObservationLoadingPlaceholder />}
-          {!observations.isLoading && observations && (
+          {!observations.isLoading && observations.data && (
             <Flex mb={3} alignItems="center">
               <Button
                 backgroundColor="surface"

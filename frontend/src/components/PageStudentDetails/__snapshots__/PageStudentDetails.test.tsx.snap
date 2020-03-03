@@ -15,7 +15,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   }
 }
 
-.emotion-40 {
+.emotion-34 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -23,12 +23,12 @@ exports[`PageStudentDetails should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-40 {
+  .emotion-34 {
     font-size: 20px;
   }
 }
 
-.emotion-39 {
+.emotion-33 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -521,7 +521,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-38 {
+.emotion-32 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -674,116 +674,12 @@ exports[`PageStudentDetails should render correctly 1`] = `
   }
 }
 
-.emotion-33 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  display: inline-block;
-  text-align: center;
-  line-height: inherit;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  font-size: inherit;
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  color: white;
-  background-color: var(--theme-ui-colors-primary,#00e399);
-  border: 0;
-  border-radius: 4px;
-  cursor: pointer;
-  text-transform: capitalize;
-  box-sizing: border-box;
-  font-size: 14px;
-  font-weight: bold;
-  color: var(--theme-ui-colors-textPrimary,#00664a);
-  background-color: transparent;
-  border-radius: 8px;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 16px;
-  padding-right: 16px;
-  white-space: nowrap;
-  border: 1px solid;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  background-color: var(--theme-ui-colors-surface,#fff);
-}
-
-.emotion-33:disabled {
-  opacity: 0.38;
-  cursor: auto;
-}
-
-.emotion-33:hover,
-.emotion-33:focus {
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
-  border-color: var(--theme-ui-colors-primary,#00e399);
-  outline: none;
-}
-
-.emotion-33:hover:disabled,
-.emotion-33:focus:disabled {
-  background-color: transparent;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-}
-
-.emotion-32 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  max-width: 100%;
-  height: auto;
-  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  margin: 0;
-  height: 20px;
-  width: 20px;
-}
-
-.emotion-34 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  color: rgba(0,0,0,0.88);
-  font-size: 1.6rem;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 400;
-  line-height: 3rem;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  font-size: 16px;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  text-align: center;
-}
-
 <div>
   <div
-    class="emotion-40"
+    class="emotion-34"
   >
     <div
-      class="emotion-39"
+      class="emotion-33"
     >
       <a
         href="/dashboard/observe"
@@ -886,7 +782,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
         </div>
       </div>
       <div
-        class="emotion-38"
+        class="emotion-32"
       >
         <div
           class="emotion-26"
@@ -929,31 +825,6 @@ exports[`PageStudentDetails should render correctly 1`] = `
               new observation
             </button>
           </div>
-        </div>
-        <div
-          class="emotion-26"
-        >
-          <button
-            class="emotion-33"
-            disabled=""
-          >
-            <div
-              class="emotion-32"
-            />
-          </button>
-          <p
-            class="emotion-34"
-          >
-            Tue, Mar 03, 2020
-          </p>
-          <button
-            class="emotion-33"
-            disabled=""
-          >
-            <div
-              class="emotion-32"
-            />
-          </button>
         </div>
       </div>
     </div>
