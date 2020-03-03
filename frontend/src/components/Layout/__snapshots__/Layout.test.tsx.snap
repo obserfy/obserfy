@@ -51,7 +51,7 @@ exports[`Layout should render correctly 1`] = `
   .emotion-9 {
     display: block;
     height: 100%;
-    width: 70px;
+    width: auto;
     padding-top: 8px;
   }
 }
@@ -68,6 +68,8 @@ exports[`Layout should render correctly 1`] = `
   -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
   height: auto;
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -80,6 +82,7 @@ exports[`Layout should render correctly 1`] = `
     -ms-flex-direction: column;
     flex-direction: column;
     height: 100%;
+    padding-bottom: 0;
   }
 }
 
@@ -214,6 +217,7 @@ exports[`Layout should render correctly 1`] = `
   padding-left: 0;
   padding-bottom: 48px;
   background-color: var(--theme-ui-colors-background,#F7F8FA);
+  margin-bottom: env(safe-area-inset-bottom);
 }
 
 @media screen and (min-width:40em) {
