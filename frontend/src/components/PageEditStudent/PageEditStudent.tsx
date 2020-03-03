@@ -34,7 +34,7 @@ export const PageEditStudent: FC<Props> = ({ id }) => {
     if (student.data?.dateOfBirth) {
       setDateOfBirth(new Date(student.data?.dateOfBirth))
     }
-  }, [student])
+  }, [student.data])
 
   async function deleteStudent(): Promise<void> {
     const response = await deleteStudentApi(id)

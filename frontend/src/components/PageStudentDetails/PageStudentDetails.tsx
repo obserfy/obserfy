@@ -145,7 +145,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
                 color="textMediumEmphasis"
               >
                 <FormattedDate
-                  value={dates[selectedDate]}
+                  value={dates?.[selectedDate]}
                   month="short"
                   year="numeric"
                   weekday="short"
