@@ -23,6 +23,7 @@ import StudentProgressSummaryCard from "../StudentProgressSummaryCard/StudentPro
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import { ReactComponent as PrevIcon } from "../../icons/arrow-back.svg"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
+import { ALL_OBSERVATIONS_PAGE_URL } from "../../pages/dashboard/observe/students/observations/all"
 
 interface Props {
   id: string
@@ -120,12 +121,10 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
         </Box>
         <Box p={3}>
           <Flex mb={3} alignItems="center">
-            <SectionHeader>OBSERVATIONS</SectionHeader>
+            <SectionHeader lineHeight={1}>OBSERVATIONS</SectionHeader>
             <Spacer />
-            <Link
-              to={`/dashboard/observe/students/observations/new?studentId=${id}`}
-            >
-              <Button variant="outline">New</Button>
+            <Link to={ALL_OBSERVATIONS_PAGE_URL(id)}>
+              <Button variant="outline">All</Button>
             </Link>
           </Flex>
           {emptyObservationPlaceholder}

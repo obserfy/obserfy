@@ -437,6 +437,29 @@ exports[`PageStudentDetails should render correctly 1`] = `
   display: flex;
 }
 
+.emotion-17 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 24px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 300;
+  line-height: heading;
+  font-size: 2.5rem;
+  line-height: 3rem;
+  -webkit-letter-spacing: 0;
+  -moz-letter-spacing: 0;
+  -ms-letter-spacing: 0;
+  letter-spacing: 0;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  font-weight: normal;
+  -webkit-letter-spacing: 3px;
+  -moz-letter-spacing: 3px;
+  -ms-letter-spacing: 3px;
+  letter-spacing: 3px;
+  line-height: 1;
+}
+
 .emotion-19 {
   box-sizing: border-box;
   margin: 0;
@@ -614,7 +637,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
           class="emotion-20"
         >
           <h5
-            class="emotion-12"
+            class="emotion-17"
           >
             OBSERVATIONS
           </h5>
@@ -622,12 +645,12 @@ exports[`PageStudentDetails should render correctly 1`] = `
             class="emotion-5"
           />
           <a
-            href="/dashboard/observe/students/observations/new?studentId=asdfadsf"
+            href="/dashboard/observe/students/observations/all?studentId=asdfadsf"
           >
             <button
               class="emotion-19"
             >
-              New
+              All
             </button>
           </a>
         </div>

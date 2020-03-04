@@ -85,7 +85,7 @@ const themeUiTheme = {
         primary: "#00a875",
         onPrimary: "#000",
 
-        background: "#121212",
+        background: "#101010",
         onBackground: "rgba(255,255,255, 0.87)",
 
         surface: "#1d1d1d",

@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Chip should render correctly 1`] = `
+.emotion-2 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 16px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-2 {
+    font-size: 20px;
+  }
+}
+
+.emotion-1 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  border-radius: 8px;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-width: 1px;
+  border-style: solid;
+  white-space: nowrap;
+  background-color: var(--theme-ui-colors-surface,#fff);
+  margin-right: 8px;
+  margin-bottom: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.emotion-1:hover {
+  background-color: var(--theme-ui-colors-primaryLightest,rgba(0,120,86,0.05));
+}
+
+.emotion-0 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  font-size: 14px;
+}
+
+<div>
+  <div
+    class="emotion-2"
+  >
+    <div
+      class="emotion-1"
+    >
+      <p
+        class="emotion-0"
+      />
+    </div>
+  </div>
+</div>
+`;
