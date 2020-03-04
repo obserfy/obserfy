@@ -28,7 +28,7 @@ exports[`Chip should render correctly 1`] = `
   border-width: 1px;
   border-style: solid;
   white-space: nowrap;
-  background-color: var(--theme-ui-colors-surface,#fff);
+  background-color: var(--theme-ui-colors-primary,#00e399);
   margin-right: 8px;
   margin-bottom: 8px;
   padding-left: 8px;
@@ -36,7 +36,7 @@ exports[`Chip should render correctly 1`] = `
 }
 
 .emotion-1:hover {
-  background-color: var(--theme-ui-colors-primaryLightest,rgba(0,120,86,0.05));
+  background-color: var(--theme-ui-colors-primary,#00e399);
 }
 
 .emotion-0 {
@@ -48,7 +48,7 @@ exports[`Chip should render correctly 1`] = `
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 400;
   line-height: 3rem;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-onPrimary,#000);
   font-size: 14px;
 }
 
@@ -61,7 +61,9 @@ exports[`Chip should render correctly 1`] = `
     >
       <p
         class="emotion-0"
-      />
+      >
+        Help
+      </p>
     </div>
   </div>
 </div>

@@ -311,7 +311,7 @@ exports[`PageAllObservations should render correctly 1`] = `
       class="emotion-31"
     >
       <a
-        href="/dashboard/observe/students/details?id=undefined"
+        href="/dashboard/observe/students/details?id=sadfasdf"
       >
         <div
           class="emotion-2"
