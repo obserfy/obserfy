@@ -9,4 +9,4 @@ export default {
   },
 }
 
-export const Basic: FC = () => <Layout pageTitle="Home" />
+export const Basic: FC = () => <Layout />

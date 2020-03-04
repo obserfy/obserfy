@@ -1,4 +1,6 @@
-import useOldApiHook from "./useOldApiHook"
+import { QueryResult, useQuery } from "react-query"
+import { navigate } from "gatsby"
+import { BASE_URL } from "./useApi"
 
 export enum MaterialProgressStage {
   PRESENTED,
@@ -12,13 +14,28 @@ export interface MaterialProgress {
   stage: MaterialProgressStage
   updatedAt: string
 }
+
+const fetchMaterialProgress = (studentId: string) => async (): Promise<
+  MaterialProgress[]
+> => {
+  const result = await fetch(
+    `${BASE_URL}/students/${studentId}/materialsProgress`,
+    { credentials: "same-origin" }
+  )
+  if (result.status === 401) {
+    navigate("/login")
+    return []
+  }
+  return result.json()
+}
+
 export function useGetStudentMaterialProgress(
   studentId: string
-): [MaterialProgress[], boolean, () => void] {
-  const [area, loading, setOutdated] = useOldApiHook<MaterialProgress[]>(
-    `/students/${studentId}/materialsProgress`
+): QueryResult<MaterialProgress[], object> {
+  return useQuery<MaterialProgress[], {}>(
+    ["studentCurriculumProgress", studentId],
+    fetchMaterialProgress(studentId)
   )
-  return [area ?? [], loading, setOutdated]
 }
 
 export function materialStageToString(stage?: MaterialProgressStage): string {

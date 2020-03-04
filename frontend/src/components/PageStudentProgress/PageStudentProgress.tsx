@@ -15,8 +15,8 @@ import Spacer from "../Spacer/Spacer"
 import Icon from "../Icon/Icon"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import {
-  materialStageToString,
   MaterialProgress,
+  materialStageToString,
   useGetStudentMaterialProgress,
 } from "../../api/useGetStudentMaterialProgress"
 import Pill from "../Pill/Pill"
@@ -29,23 +29,18 @@ interface Props {
 }
 export const PageStudentProgress: FC<Props> = ({ areaId, studentId }) => {
   const area = useGetArea(areaId)
-  const [student, studentLoading] = useGetStudent(studentId)
+  const student = useGetStudent(studentId)
   const [subjects, subjectsLoading] = useGetAreaSubjects(areaId)
   const [isEditing, setIsEditing] = useState(false)
   const [selectedMaterial, setSelectedMaterial] = useState<Material>()
-  const [
-    progress,
-    // eslint-disable-next-line no-unused-vars
-    progressLoading,
-    setProgressOutdated,
-  ] = useGetStudentMaterialProgress(studentId)
+  const progress = useGetStudentMaterialProgress(studentId)
   const loading =
-    studentLoading || area.loading || subjectsLoading || progressLoading
+    student.isLoading || area.loading || subjectsLoading || progress.isLoading
 
   const backNavigation = (
     <BackNavigation
       text="Student Details"
-      to={`/dashboard/students/details?id=${studentId}`}
+      to={`/dashboard/observe/students/details?id=${studentId}`}
     />
   )
 
@@ -63,7 +58,7 @@ export const PageStudentProgress: FC<Props> = ({ areaId, studentId }) => {
     )
   }
 
-  const selectedProgress = progress.find(
+  const selectedProgress = progress.data?.find(
     ({ materialId }) => materialId === selectedMaterial?.id
   )
 
@@ -74,7 +69,7 @@ export const PageStudentProgress: FC<Props> = ({ areaId, studentId }) => {
         <Box m={3} mb={4}>
           <Typography.H3 sx={{ wordWrap: "break-word" }}>
             <Box as="span" color="textDisabled">
-              {student?.name}
+              {student.data?.name}
             </Box>
             {` ${area.data?.name} Progress`}
           </Typography.H3>
@@ -85,7 +80,7 @@ export const PageStudentProgress: FC<Props> = ({ areaId, studentId }) => {
               <Typography.H5 my={3}>{subject.name}</Typography.H5>
               <SubjectMaterials
                 subject={subject}
-                progress={progress}
+                progress={progress.data ?? []}
                 onMaterialClick={material => {
                   setSelectedMaterial(material)
                   setIsEditing(true)
@@ -104,7 +99,7 @@ export const PageStudentProgress: FC<Props> = ({ areaId, studentId }) => {
           materialId={selectedMaterial?.id ?? ""}
           onDismiss={() => setIsEditing(false)}
           onSubmitted={() => {
-            setProgressOutdated()
+            progress.refetch()
             setIsEditing(false)
           }}
         />

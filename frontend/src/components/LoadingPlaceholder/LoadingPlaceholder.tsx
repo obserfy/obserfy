@@ -22,11 +22,12 @@ interface Props extends BoxProps {
   width: number | string
   m?: number
 }
-export const LoadingPlaceholder: FC<Props> = props => (
+export const LoadingPlaceholder: FC<Props> = ({ sx, ...props }) => (
   <Box
     sx={{
       borderRadius: "default",
       animation: `1s ease-in-out 0s infinite ${fading}`,
+      ...sx,
     }}
     {...props}
   />

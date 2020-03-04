@@ -151,7 +151,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   background-color: var(--theme-ui-colors-surface,#fff);
   font-size: 16px;
-  padding: 16px;
+  padding: 12px;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   width: 100%;
 }
@@ -243,7 +243,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   background-color: var(--theme-ui-colors-surface,#fff);
   font-size: 16px;
-  padding: 16px;
+  padding: 12px;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   opacity: 1!important;
   width: 100%;
@@ -528,7 +528,7 @@ exports[`PageNewStudent should render correctly 1`] = `
       class="emotion-19"
     >
       <a
-        href="/dashboard/home"
+        href="/dashboard/observe"
       >
         <div
           class="emotion-2"
@@ -601,7 +601,7 @@ exports[`PageNewStudent should render correctly 1`] = `
           class="emotion-15"
         />
         <a
-          href="/dashboard/home"
+          href="/dashboard/observe"
         >
           <button
             class="emotion-16"

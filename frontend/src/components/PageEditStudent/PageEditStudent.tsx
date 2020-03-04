@@ -21,20 +21,20 @@ interface Props {
   id: string
 }
 export const PageEditStudent: FC<Props> = ({ id }) => {
-  const studentDetailUrl = `/dashboard/students/details?id=${id}`
+  const studentDetailUrl = `/dashboard/observe/students/details?id=${id}`
   const [isDeletingStudent, setIsDeletingStudent] = useState(false)
-  const [details] = useGetStudent(id)
   const [name, setName] = useState<string>()
   const [dateOfBirth, setDateOfBirth] = useState<Date>()
   const [showDatePicker, setShowDatePicker] = useState(false)
   const intl = useIntl()
+  const student = useGetStudent(id)
 
   useEffect(() => {
-    setName(details?.name ?? "")
-    if (details?.dateOfBirth) {
-      setDateOfBirth(new Date(details?.dateOfBirth))
+    setName(student.data?.name ?? "")
+    if (student.data?.dateOfBirth) {
+      setDateOfBirth(new Date(student.data?.dateOfBirth))
     }
-  }, [details])
+  }, [student.data])
 
   async function deleteStudent(): Promise<void> {
     const response = await deleteStudentApi(id)
@@ -43,7 +43,7 @@ export const PageEditStudent: FC<Props> = ({ id }) => {
       studentName: name,
     })
     if (response.status === 200) {
-      await navigate("/dashboard/home")
+      await navigate("/dashboard/observe")
     }
   }
 
@@ -97,7 +97,7 @@ export const PageEditStudent: FC<Props> = ({ id }) => {
       <Box maxWidth="maxWidth.sm" margin="auto">
         <BackNavigation to={studentDetailUrl} text="Details" />
         <Box mx={3} mt={3}>
-          {details?.name ? (
+          {student.data?.name ? (
             <>
               <Input
                 label="Name"

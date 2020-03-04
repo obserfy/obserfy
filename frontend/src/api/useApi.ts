@@ -3,13 +3,13 @@ import { navigate } from "gatsby"
 
 export const BASE_URL = "/api/v1"
 
-export interface Error {
+export interface ApiError {
   error?: {
     message: string
   }
 }
 
-export interface Api<T> extends Error {
+export interface Api<T> extends ApiError {
   loading: boolean
   setOutdated: () => void
   data?: T
@@ -18,7 +18,7 @@ export interface Api<T> extends Error {
 function useApi<T>(url: string, fetchOptions?: RequestInit): Api<T> {
   const [isOutdated, setIsOutdated] = useState(true)
   const [loading, setLoading] = useState(true)
-  const [response, setResponse] = useState<T & Error>()
+  const [response, setResponse] = useState<T & ApiError>()
 
   useEffect(() => {
     async function f(): Promise<void> {

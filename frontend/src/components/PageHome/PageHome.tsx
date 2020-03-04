@@ -11,45 +11,45 @@ import { Typography } from "../Typography/Typography"
 import Card from "../Card/Card"
 import { useGetStudents } from "../../api/students/useGetStudents"
 import EmptyListPlaceholder from "../EmptyListPlaceholder/EmptyListPlaceholder"
-import { getSchoolId } from "../../hooks/schoolIdState"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
-import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 
 export const PageHome: FC = () => {
-  const schoolId = getSchoolId()
   const [searchTerm, setSearchTerm] = useState("")
-  const { data, loading } = useGetStudents(schoolId)
+  const { data, isFetching } = useGetStudents()
   const students = data ?? []
   const matchedStudent = students.filter(student =>
     student.name.match(new RegExp(searchTerm, "i"))
   )
 
-  const studentList = matchedStudent.map(({ name, id }) => (
-    <Card
-      p={3}
-      mx={3}
-      mb={2}
-      key={id}
-      onClick={() => navigate(`/dashboard/students/details?id=${id}`)}
-      sx={{ cursor: "pointer" }}
-    >
-      <Flex>
-        <Typography.H6>{name}</Typography.H6>
-      </Flex>
-    </Card>
-  ))
+  const studentList =
+    (!isFetching || students.length > 0) &&
+    matchedStudent.map(({ name, id }) => (
+      <Card
+        p={3}
+        mx={3}
+        mb={2}
+        key={id}
+        onClick={() => navigate(`/dashboard/observe/students/details?id=${id}`)}
+        sx={{ cursor: "pointer" }}
+      >
+        <Flex>
+          <Typography.H6>{name}</Typography.H6>
+        </Flex>
+      </Card>
+    ))
 
-  const emptyStudentListPlaceholder = students.length === 0 && (
+  const emptyStudentListPlaceholder = !isFetching && students.length === 0 && (
     <Box mx={3}>
       <EmptyListPlaceholder
         text="You have no one enrolled"
         callToActionText="New student"
-        onActionClick={() => navigate("/dashboard/students/new")}
+        onActionClick={() => navigate("/dashboard/observe/students/new")}
       />
     </Box>
   )
 
-  const emptyResultInfo = students.length > 0 &&
+  const emptySearchResultInfo = !isFetching &&
+    students.length > 0 &&
     matchedStudent?.length === 0 &&
     searchTerm !== "" && (
       <Flex mt={3} alignItems="center" justifyContent="center" height="100%">
@@ -68,21 +68,16 @@ export const PageHome: FC = () => {
           value={searchTerm}
           onChange={e => setSearchTerm(e.target.value)}
         />
-        <Link to="/dashboard/students/new">
+        <Link to="/dashboard/observe/students/new">
           <Button variant="outline" data-cy="addStudent" height="100%">
             <Icon as={PlusIcon} m={0} />
           </Button>
         </Link>
       </Flex>
-      {loading && students.length > 0 && (
-        <Flex justifyContent="center" mt={-3}>
-          <LoadingIndicator size={48} color="primary" />
-        </Flex>
-      )}
-      {(!loading || students.length > 0) && studentList}
-      {!loading && emptyResultInfo}
-      {!loading && emptyStudentListPlaceholder}
-      {loading && students.length === 0 && <StudentListLoadingPlaceholder />}
+      {studentList}
+      {emptySearchResultInfo}
+      {emptyStudentListPlaceholder}
+      {isFetching && students.length === 0 && <StudentListLoadingPlaceholder />}
     </Box>
   )
 }

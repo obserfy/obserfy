@@ -11,7 +11,7 @@ export default {
 }
 
 export const Basic: FC = () => (
-  <ErrorBoundary title="tset">
+  <ErrorBoundary>
     <Box>This is rendering something</Box>
   </ErrorBoundary>
 )

@@ -10,6 +10,10 @@ const SEO: FC<Props> = ({ title }) => {
   return (
     <Helmet title={title} titleTemplate={titleTemplate}>
       <html lang="en" />
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover"
+      />
     </Helmet>
   )
 }

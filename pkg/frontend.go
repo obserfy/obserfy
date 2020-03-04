@@ -33,21 +33,21 @@ func createFrontendAuthMiddleware(db *pg.DB, folder string) func(next http.Handl
 					return
 				}
 			} else if strings.HasPrefix(path, "/login") || strings.HasPrefix(path, "/register") {
-				// If user already authenticated, jump to dashboard home.
+				// If user already authenticated, jump to dashboard observe.
 				token, err := r.Cookie("session")
 				if token != nil {
 					var session postgres.Session
 					err = db.Model(&session).Where("token=?", token.Value).Select()
 					if err == nil {
-						http.Redirect(w, r, "/dashboard/home", http.StatusFound)
+						http.Redirect(w, r, "/dashboard/observe", http.StatusFound)
 						return
 					}
 				}
 			}
 
-			// If trying to access root, redirect to dashboard home.
-			if path == "/" || path == "/dashboard" || path == "/dashboard/" {
-				http.Redirect(w, r, "/dashboard/home", http.StatusFound)
+			// If trying to access root, redirect to dashboard observe.
+			if path == "/" || path == "/dashboard" || path == "/dashboard/" || path == "/dashboard/home" {
+				http.Redirect(w, r, "/dashboard/observe", http.StatusFound)
 				return
 			}
 
@@ -59,7 +59,7 @@ func createFrontendAuthMiddleware(db *pg.DB, folder string) func(next http.Handl
 
 			// Workaround to prevent redirects on frontend pages
 			// which are caused by gatsby always generating pages as index.html inside
-			// folders, eg /home/index.html instead of /home.html.
+			// folders, eg /observe/index.html instead of /observe.html.
 			if !strings.HasSuffix(path, ".js") ||
 				!strings.HasSuffix(path, ".css") ||
 				!strings.HasSuffix(path, ".json") {

@@ -14,9 +14,7 @@ import Input from "../Input/Input"
 import { Material } from "../../api/useGetSubjectMaterials"
 import { getAnalytics } from "../../analytics"
 import { createSubjectApi } from "../../api/createSubjectApi"
-import DraggableMaterialListItem, {
-  removeMaterial,
-} from "../DraggableMaterialListItem/DraggableMaterialListItem"
+import DraggableMaterialListItem from "../DraggableMaterialListItem/DraggableMaterialListItem"
 
 const ITEM_HEIGHT = 48
 interface Props {
@@ -58,45 +56,13 @@ export const NewSubjectDialog: FC<Props> = ({ onSaved, areaId, onDismiss }) => {
 
   const list = materials.map((material, i) => (
     <DraggableMaterialListItem
-      height={ITEM_HEIGHT}
       key={material.id}
+      height={ITEM_HEIGHT}
       material={material}
+      setMaterials={setMaterials}
       autofocus={material.order === materials.length}
-      onNameChange={e => {
-        const name = e.target.value
-        setMaterials(draft => {
-          draft[i].name = name
-        })
-      }}
-      onDelete={() => setMaterials(removeMaterial(material.id, material.order))}
-      moveItem={(order, offset, originalOrder) => {
-        // Calculate position inside the list while being dragged
-        let position: number
-        if (offset < 0) {
-          position = Math.ceil((offset - ITEM_HEIGHT / 2) / ITEM_HEIGHT)
-        } else {
-          position = Math.floor((offset + ITEM_HEIGHT / 2) / ITEM_HEIGHT)
-        }
-
-        // console.log(originalOrder + position)
-        // Reorder list to reflect position after dragging
-        if (originalOrder + position > order) {
-          setMaterials(draft => {
-            const nextItemIndex = Math.min(i + 1, materials.length - 1)
-            draft[i].order += 1
-            draft[nextItemIndex].order -= 1
-            draft.sort((a, b) => a.order - b.order)
-          })
-        }
-        if (originalOrder + position < order) {
-          setMaterials(draft => {
-            const previousItemIndex = Math.max(i - 1, 0)
-            draft[i].order -= 1
-            draft[previousItemIndex].order += 1
-            draft.sort((a, b) => a.order - b.order)
-          })
-        }
-      }}
+      length={materials.length}
+      i={i}
     />
   ))
 
@@ -136,10 +102,10 @@ export const NewSubjectDialog: FC<Props> = ({ onSaved, areaId, onDismiss }) => {
 
   return (
     <Dialog>
-      <Flex flexDirection="column" maxHeight="100%">
+      <Flex flexDirection="column" maxHeight="100vh">
         {header}
         <Box backgroundColor="background" overflowY="auto" maxHeight="100%">
-          <Box>
+          <Box pb={100}>
             <Box px={3} py={2}>
               <Input
                 width="100%"

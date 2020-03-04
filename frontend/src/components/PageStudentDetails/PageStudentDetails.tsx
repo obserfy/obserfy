@@ -23,6 +23,7 @@ import StudentProgressSummaryCard from "../StudentProgressSummaryCard/StudentPro
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import { ReactComponent as PrevIcon } from "../../icons/arrow-back.svg"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
+import { ALL_OBSERVATIONS_PAGE_URL } from "../../pages/dashboard/observe/students/observations/all"
 
 interface Props {
   id: string
@@ -32,22 +33,18 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
   const [isDeletingObservation, setIsDeletingObservation] = useState(false)
   const [targetObservation, setTargetObservation] = useState<Observation>()
   const [selectedDate, setSelectedDate] = useState(0)
-  const [student] = useGetStudent(id)
-  const [
-    observations,
-    isObservationLoading,
-    setObservationsAsOutdated,
-  ] = useGetObservations(id)
+  const student = useGetStudent(id)
+  const observations = useGetObservations(id)
 
   const dates = [
     ...new Set(
-      observations?.map(({ createdDate }) =>
+      observations.data?.map(({ createdDate }) =>
         startOfDay(Date.parse(createdDate ?? "")).toISOString()
       )
     ),
   ]?.sort((a, b) => differenceInDays(Date.parse(b), Date.parse(a)))
 
-  const listOfObservations = observations
+  const listOfObservations = observations.data
     ?.filter(observation =>
       isSameDay(
         Date.parse(observation.createdDate ?? ""),
@@ -69,23 +66,28 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
       />
     ))
 
-  const emptyObservationPlaceholder = (observations ?? []).length === 0 && (
-    <EmptyListPlaceholder
-      text="No observation have been added"
-      callToActionText="new observation"
-      onActionClick={() =>
-        navigate(`/dashboard/students/observations/new?studentId=${id}`)
-      }
-    />
-  )
+  const emptyObservationPlaceholder = !observations.isFetching &&
+    (observations.data ?? []).length === 0 && (
+      <EmptyListPlaceholder
+        text="No observation have been added"
+        callToActionText="new observation"
+        onActionClick={() =>
+          navigate(
+            `/dashboard/observe/students/observations/new?studentId=${id}`
+          )
+        }
+      />
+    )
 
   return (
     <>
       <Box maxWidth="maxWidth.sm" margin="auto" pb={5}>
-        <BackNavigation text="Home" to="/dashboard/home" />
+        <BackNavigation text="Home" to="/dashboard/observe" />
         <Flex alignItems="start" mx={3} mb={4} mt={0}>
           <Typography.H3 sx={{ wordWrap: "break-word" }}>
-            {student?.name || <LoadingPlaceholder width="24rem" height={60} />}
+            {student.data?.name || (
+              <LoadingPlaceholder width="24rem" height={60} />
+            )}
           </Typography.H3>
           <Spacer />
           <Button
@@ -94,13 +96,17 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
             ml={3}
             minWidth={43}
             variant="outline"
-            onClick={() => navigate(`/dashboard/students/edit?id=${id}`)}
+            onClick={() =>
+              navigate(`/dashboard/observe/students/edit?id=${id}`)
+            }
           >
             <Icon minWidth={20} as={EditIcon} m={0} />
           </Button>
         </Flex>
         <Box m={3} mb={2}>
-          <Link to={`/dashboard/students/observations/new?studentId=${id}`}>
+          <Link
+            to={`/dashboard/observe/students/observations/new?studentId=${id}`}
+          >
             <Button variant="outline" width="100%">
               <Icon as={PlusIcon} m={0} mr={2} />
               Add Observation
@@ -115,21 +121,25 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
         </Box>
         <Box p={3}>
           <Flex mb={3} alignItems="center">
-            <SectionHeader>OBSERVATIONS</SectionHeader>
+            <SectionHeader lineHeight={1}>OBSERVATIONS</SectionHeader>
             <Spacer />
-            <Link to={`/dashboard/students/observations/new?studentId=${id}`}>
-              <Button variant="outline">New</Button>
+            <Link to={ALL_OBSERVATIONS_PAGE_URL(id)}>
+              <Button variant="outline">All</Button>
             </Link>
           </Flex>
-          {!isObservationLoading && emptyObservationPlaceholder}
-          {isObservationLoading && <ObservationLoadingPlaceholder />}
-          {!isObservationLoading && observations && (
+          {emptyObservationPlaceholder}
+          {observations.isFetching && !observations.data && (
+            <ObservationLoadingPlaceholder />
+          )}
+          {observations.data && (
             <Flex mb={3} alignItems="center">
               <Button
                 backgroundColor="surface"
                 disabled={selectedDate >= dates.length - 1}
                 onClick={() => setSelectedDate(selectedDate + 1)}
                 variant="outline"
+                py={1}
+                px={2}
               >
                 <Icon as={PrevIcon} m={0} />
               </Button>
@@ -140,7 +150,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
                 color="textMediumEmphasis"
               >
                 <FormattedDate
-                  value={dates[selectedDate]}
+                  value={dates?.[selectedDate]}
                   month="short"
                   year="numeric"
                   weekday="short"
@@ -152,6 +162,8 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
                 disabled={selectedDate < 1}
                 onClick={() => setSelectedDate(selectedDate - 1)}
                 variant="outline"
+                py={1}
+                px={2}
               >
                 <Icon as={NextIcon} m={0} />
               </Button>
@@ -166,7 +178,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
           onDismiss={() => setIsEditingObservation(false)}
           onSaved={() => {
             setIsEditingObservation(false)
-            setObservationsAsOutdated()
+            observations.refetch()
           }}
         />
       )}
@@ -176,7 +188,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
           shortDesc={targetObservation?.shortDesc}
           onDismiss={() => setIsDeletingObservation(false)}
           onDeleted={() => {
-            setObservationsAsOutdated()
+            observations.refetch()
             setIsDeletingObservation(false)
           }}
         />

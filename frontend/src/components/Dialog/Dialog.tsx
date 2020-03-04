@@ -22,6 +22,7 @@ export const Dialog: FC<Props> = ({ sx, ...props }) => (
       backgroundColor="surface"
       maxWidth="maxWidth.sm"
       width="100%"
+      maxHeight="100vh"
       sx={{
         ...sx,
         borderTopLeftRadius: "default",

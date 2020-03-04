@@ -22,8 +22,8 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
   const [shortDesc, setShortDesc] = useState("")
   const [longDesc, setDetails] = useState("")
   const [category, setCategory] = useState(categories[0].id)
-  const [student, studentLoading] = useGetStudent(studentId)
   const [submitting, setSubmitting] = useState(false)
+  const student = useGetStudent(studentId)
 
   async function submit(e: FormEvent): Promise<void> {
     e.preventDefault()
@@ -50,16 +50,16 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
   return (
     <Box maxWidth="maxWidth.sm" margin="auto" pb={4}>
       <BackNavigation
-        to={`/dashboard/students/details?id=${studentId}`}
+        to={`/dashboard/observe/students/details?id=${studentId}`}
         text="Student Detail"
       />
-      {studentLoading ? (
+      {student.isFetching && student.data === undefined ? (
         <Box pb={4} pt={3} px={3}>
           <LoadingPlaceholder width="100%" height="4rem" />
         </Box>
       ) : (
         <Typography.H6 pb={4} pt={3} px={3}>
-          {student?.name}
+          {student.data?.name}
         </Typography.H6>
       )}
       <Box as="form" px={3} onSubmit={submit}>

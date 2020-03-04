@@ -32,6 +32,9 @@ const themeUiTheme = {
     surface: "#fff",
     onSurface: "#87000000",
 
+    surfaceTransparent: "rgba(255,255,255,0.965)",
+    onSurfaceTransparent: "#87000000",
+
     border: "rgba(0,0,0,.1)",
     borderEmphasized: "#cfcfd3",
 
@@ -82,11 +85,14 @@ const themeUiTheme = {
         primary: "#00a875",
         onPrimary: "#000",
 
-        background: "#121212",
+        background: "#101010",
         onBackground: "rgba(255,255,255, 0.87)",
 
         surface: "#1d1d1d",
         onSurface: "rgba(255,255,255, 0.87)",
+
+        surfaceTransparent: "rgba(29,29,29,0.975)",
+        onSurfaceTransparent: "rgba(255,255,255, 0.87)",
 
         primaryDark: "#009c6e",
         onPrimaryDark: "rgba(255,255,255, 0.87)",
@@ -310,7 +316,7 @@ const rebassVariants = {
       borderColor: "border",
       backgroundColor: "surface",
       fontSize: 2,
-      p: 3,
+      p: 12,
       color: "text",
       "&:hover, &:focus": {
         borderColor: "primary",
@@ -331,7 +337,7 @@ const rebassVariants = {
       borderColor: "border",
       backgroundColor: "surface",
       fontSize: 2,
-      p: 3,
+      p: 12,
       "&:hover, &:focus": {
         borderColor: "primary",
         outline: "none",

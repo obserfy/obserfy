@@ -68,7 +68,7 @@ const TabItem: FC<TabItemProps> = ({ isSelected, onClick, ...props }) => (
       userSelect: "none",
       "&:after": {
         backgroundColor: "primary",
-        borderRadius: "10px 10px 0 0",
+        borderRadius: "2px 2px 0 0",
         width: isSelected ? "125%" : "0%",
         height: 3,
         content: "''",
