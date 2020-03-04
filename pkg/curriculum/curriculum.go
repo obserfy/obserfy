@@ -436,6 +436,14 @@ func (s *server) replaceSubject() http.Handler {
 					richErrors.New("empty material name"),
 				}
 			}
+			// Validate that the id is a valid uuid since we get this from client
+			// If its invalid (which probably means that the client had created a new material,
+			// and assign some random ID to it), we give it a new uuid so it can be save by postgres.
+			// TODO: May be its better to use go-pg's type:uuid default uuid_generate_v4() instead of
+			// 	generating ids our-self most of the time.
+			if _, err := uuid.Parse(material.Id); err != nil {
+				material.Id = uuid.New().String()
+			}
 			newSubject.Materials = append(newSubject.Materials, postgres.Material{
 				Id:        material.Id,
 				SubjectId: subjectId,
