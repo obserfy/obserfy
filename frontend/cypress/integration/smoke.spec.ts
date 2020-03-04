@@ -86,7 +86,7 @@ describe(" Smoke test on prod build", () => {
     const details =
       "Bla bla black sheep have you any war. Yes shire yes shire tea bag fool"
     cy.contains(studentName).click()
-    cy.contains("New").click()
+    cy.contains("Add Observation").click()
     cy.get("[aria-label=Category]").select("2")
     cy.contains("Short Description").type(shortDesc)
     cy.get("[aria-label=Details]").type(details)
