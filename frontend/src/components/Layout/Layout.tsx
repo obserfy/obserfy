@@ -34,6 +34,7 @@ export const Layout: FC = ({ children }) => {
         pl={[0, 70]}
         pb={[48, 0]}
         backgroundColor="background"
+        mb="env(safe-area-inset-bottom)"
       >
         {children}
       </Box>
@@ -71,7 +72,7 @@ const NavBar: FC = () => {
       as="nav"
       borderRadius={0}
       height={["auto", "100%"]}
-      width={["100%", 70]}
+      width={["100%", "auto"]}
       backgroundColor="surfaceTransparent"
       sx={{
         // backdropFilter: "saturate(180%) blur(20px)",
@@ -90,6 +91,8 @@ const NavBar: FC = () => {
         flexDirection={["row", "column"]}
         justifyContent={["space-evenly"]}
         height={["auto", "100%"]}
+        pb={["env(safe-area-inset-bottom)", 0]}
+        pl="env(safe-area-inset-left)"
       >
         <Box height={70} width={70} display={["none", "block"]} />
         <NavBarItem title="Observe" icon={EditIcon} to="/dashboard/observe" />

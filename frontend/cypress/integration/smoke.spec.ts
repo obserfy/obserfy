@@ -11,7 +11,7 @@ describe(" Smoke test on prod build", () => {
     const schoolName = faker.company.companyName()
 
     cy.visit("http://localhost:8001")
-    cy.waitForRouteChange()
+    // cy.waitForRouteChange()
 
     // Try logging in and fail
     cy.contains("Email").type(email)
@@ -20,8 +20,9 @@ describe(" Smoke test on prod build", () => {
     cy.contains("Wrong").should("be.visible")
 
     // Register account
-    cy.contains("Register").click()
-    cy.waitForRouteChange()
+    cy.contains("Register")
+      .click()
+      // cy.waitForRouteChange()
       .url()
       .should("contains", "register")
     cy.get("[data-cy=register-email]").type(email)
@@ -30,9 +31,8 @@ describe(" Smoke test on prod build", () => {
     cy.get("[data-cy=register-button]").click()
 
     // Create School
-    cy.waitForRouteChange()
-      .contains("New")
-      .click()
+    // cy.waitForRouteChange()
+    cy.contains("New").click()
     cy.contains("Name").type(schoolName)
     cy.contains("Save").click()
     cy.contains(schoolName).click()
@@ -59,9 +59,8 @@ describe(" Smoke test on prod build", () => {
 
     // Check sidebar links
     cy.url().should("contains", "settings")
-    cy.contains("Observe")
-      .click()
-      .waitForRouteChange()
+    cy.contains("Observe").click()
+    // .waitForRouteChange()
     cy.url().should("contains", "observe")
 
     // Create student
@@ -122,9 +121,7 @@ describe(" Smoke test on prod build", () => {
     cy.contains("Save").click()
 
     // Edit observation
-    cy.waitForRouteChange()
-      .url()
-      .should("contains", "students")
+    cy.url().should("contains", "students")
     cy.get("[data-cy=edit-observation]").click()
     cy.get("[aria-label=Details]").type("Some additional text")
     cy.contains("Save").click()
@@ -149,21 +146,18 @@ describe(" Smoke test on prod build", () => {
     cy.contains("Math").should("exist")
 
     // Go to a student
-    cy.contains(/Observe/i)
-      .click()
-      .waitForRouteChange()
+    cy.contains(/Observe/i).click()
+    // .waitForRouteChange()
     cy.url().should("contains", "observe")
-    cy.contains(studentName)
-      .click()
-      .waitForRouteChange()
+    cy.contains(studentName).click()
+    // .waitForRouteChange()
 
     // Click on tabs
     cy.contains("Math").click()
 
     // Open all progress
-    cy.contains("See All ")
-      .click()
-      .waitForRouteChange()
+    cy.contains("See All ").click()
+    // .waitForRouteChange()
 
     // Change something to Practiced
     cy.contains("Number Rods").click()
@@ -173,9 +167,8 @@ describe(" Smoke test on prod build", () => {
 
     // Go back and see if it shows up
     cy.contains("Practiced").should("be.visible")
-    cy.contains("Student Details")
-      .click({ force: true })
-      .waitForRouteChange()
+    cy.contains("Student Details").click({ force: true })
+    // .waitForRouteChange()
 
     // Change to master
     cy.contains("See All Math").should("be.visible")

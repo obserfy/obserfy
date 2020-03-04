@@ -274,7 +274,7 @@ exports[`DraggableMaterialListItem should render correctly 1`] = `
             <input
               class="emotion-2"
               placeholder="Material name"
-              value="Eyafallajokul"
+              value="Johnny"
             />
           </div>
         </label>
