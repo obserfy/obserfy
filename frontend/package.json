@@ -40,7 +40,7 @@
     "faker": "^4.1.0",
     "fork-ts-checker-webpack-plugin": "^4.0.5",
     "framer-motion": "^1.9.0",
-    "gatsby": "^2.19.23",
+    "gatsby": "^2.19.29",
     "gatsby-cypress": "^0.2.22",
     "gatsby-image": "^2.2.42",
     "gatsby-link": "^2.2.29",
