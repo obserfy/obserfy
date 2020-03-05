@@ -90,7 +90,7 @@
     "typescript": "^3.8.3",
     "url-loader": "^3.0.0",
     "use-immer": "^0.3.5",
-    "webpack": "^4.41.6",
+    "webpack": "^4.42.0",
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
