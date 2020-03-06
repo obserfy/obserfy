@@ -107,8 +107,8 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
           <Link
             to={`/dashboard/observe/students/observations/new?studentId=${id}`}
           >
-            <Button variant="outline" width="100%">
-              <Icon as={PlusIcon} m={0} mr={2} />
+            <Button width="100%">
+              <Icon as={PlusIcon} m={0} mr={2} fill="onPrimary" />
               Add Observation
             </Button>
           </Link>

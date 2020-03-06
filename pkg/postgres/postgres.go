@@ -41,8 +41,8 @@ func InitTables(db *pg.DB) error {
 		(*School)(nil),
 		(*Student)(nil),
 		(*StudentMaterialProgress)(nil),
-		(*Observation)(nil),
 		(*User)(nil),
+		(*Observation)(nil),
 		(*Session)(nil),
 		(*UserToSchool)(nil),
 		(*PasswordResetToken)(nil),
@@ -108,12 +108,16 @@ type Student struct {
 }
 
 type Observation struct {
-	Id          string    `json:"id" pg:",type:uuid"`
-	StudentId   string    `json:"studentId"`
+	Id          string `json:"id" pg:",type:uuid"`
+	StudentId   string `pg:",type:uuid,on_delete:CASCADE"`
+	Student     *Student
 	ShortDesc   string    `json:"shortDesc"`
 	LongDesc    string    `json:"longDesc"`
 	CategoryId  string    `json:"categoryId"`
 	CreatedDate time.Time `json:"createdDate"`
+	EventTime   *time.Time
+	CreatorId   string `pg:",type:uuid,on_delete:SET NULL"`
+	Creator     *User
 }
 
 type School struct {

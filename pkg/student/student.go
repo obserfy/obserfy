@@ -1,37 +1,33 @@
 package student
 
 import (
+	"github.com/chrsep/vor/pkg/auth"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/rest"
 	"github.com/go-chi/chi"
+	richErrors "github.com/pkg/errors"
 	"net/http"
 	"time"
 )
 
-func NewRouter(s rest.Server, store Store) *chi.Mux {
-	server := server{s, store}
+func NewRouter(s rest.Server, store postgres.StudentStore) *chi.Mux {
 	r := chi.NewRouter()
 	r.Route("/{studentId}", func(r chi.Router) {
-		r.Method("GET", "/", server.handleGetStudent())
-		r.Method("DELETE", "/", server.handleDeleteStudent())
+		r.Method("GET", "/", getStudent(s, store))
+		r.Method("DELETE", "/", deleteStudent(s, store))
 		// TODO:Use PATCH instead of PUT, and implement UPSERT
-		r.Method("PUT", "/", server.handleUpsertStudent())
+		r.Method("PUT", "/", putStudent(s, store))
 
-		r.Method("POST", "/observations", server.handleAddObservation())
-		r.Method("GET", "/observations", server.handleGetObservation())
+		r.Method("POST", "/observations", postObservation(s, store))
+		r.Method("GET", "/observations", getObservation(s, store))
 
-		r.Method("GET", "/materialsProgress", server.handleGetProgress())
-		r.Method("PATCH", "/materialsProgress/{materialId}", server.handleUpsertProgress())
+		r.Method("GET", "/materialsProgress", getMaterialProgress(s, store))
+		r.Method("PATCH", "/materialsProgress/{materialId}", upsertMaterialProgress(s, store))
 	})
 	return r
 }
 
-type server struct {
-	rest.Server
-	store Store
-}
-
-func (s *server) handleGetStudent() http.Handler {
+func getStudent(s rest.Server, store postgres.StudentStore) http.Handler {
 	type responseBody struct {
 		Id          string     `json:"id"`
 		Name        string     `json:"name"`
@@ -40,7 +36,7 @@ func (s *server) handleGetStudent() http.Handler {
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		id := chi.URLParam(r, "studentId")
 
-		student, err := s.store.Get(id)
+		student, err := store.Get(id)
 		if err != nil {
 			return &rest.Error{http.StatusNotFound, "Can't find student with specified id", err}
 		}
@@ -57,17 +53,17 @@ func (s *server) handleGetStudent() http.Handler {
 	})
 }
 
-func (s *server) handleDeleteStudent() http.Handler {
+func deleteStudent(s rest.Server, store postgres.StudentStore) http.Handler {
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		studentId := chi.URLParam(r, "studentId") // from a route like /users/{userID}
-		if err := s.store.Delete(studentId); err != nil {
+		if err := store.Delete(studentId); err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Failed deleting student", err}
 		}
 		return nil
 	})
 }
 
-func (s *server) handleUpsertStudent() http.Handler {
+func putStudent(s rest.Server, store postgres.StudentStore) http.Handler {
 	type requestBody struct {
 		Name        string     `json:"name"`
 		DateOfBirth *time.Time `json:"dateOfBirth"`
@@ -85,7 +81,7 @@ func (s *server) handleUpsertStudent() http.Handler {
 			return rest.NewParseJsonError(err)
 		}
 
-		oldStudent, err := s.store.Get(targetId)
+		oldStudent, err := store.Get(targetId)
 		if err != nil {
 			return &rest.Error{http.StatusNotFound, "Can't find old student data", err}
 		}
@@ -93,7 +89,7 @@ func (s *server) handleUpsertStudent() http.Handler {
 		newStudent := oldStudent
 		newStudent.Name = requestBody.Name
 		newStudent.DateOfBirth = requestBody.DateOfBirth
-		if err := s.store.Update(newStudent); err != nil {
+		if err := store.Update(newStudent); err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Failed updating old student data", err}
 		}
 
@@ -109,22 +105,49 @@ func (s *server) handleUpsertStudent() http.Handler {
 	})
 }
 
-func (s *server) handleAddObservation() http.Handler {
-	var requestBody struct {
-		ShortDesc  string `json:"shortDesc"`
-		LongDesc   string `json:"longDesc"`
-		CategoryId string `json:"categoryId"`
+func postObservation(s rest.Server, store postgres.StudentStore) http.Handler {
+	type requestBody struct {
+		ShortDesc  string     `json:"shortDesc"`
+		LongDesc   string     `json:"longDesc"`
+		CategoryId string     `json:"categoryId"`
+		EventTime  *time.Time `json:"eventTime"`
 	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		id := chi.URLParam(r, "studentId")
+		session, ok := auth.GetSessionFromCtx(r.Context())
+		if !ok {
+			return &rest.Error{
+				http.StatusUnauthorized,
+				"You don't have access to this student",
+				richErrors.New("user is not authorized to add observation."),
+			}
+		}
 
-		if err := rest.ParseJson(r.Body, &requestBody); err != nil {
+		var body requestBody
+		if err := rest.ParseJson(r.Body, &body); err != nil {
 			return rest.NewParseJsonError(err)
 		}
 
-		observation, err := s.store.InsertObservation(id, requestBody.LongDesc, requestBody.ShortDesc, requestBody.CategoryId)
+		var eventTime *time.Time
+		if body.EventTime == nil {
+			currentTime := time.Now()
+			eventTime = &currentTime
+		} else {
+			eventTime = body.EventTime
+		}
+		observation, err := store.InsertObservation(id,
+			session.UserId,
+			body.LongDesc,
+			body.ShortDesc,
+			body.CategoryId,
+			eventTime,
+		)
 		if err != nil {
-			return &rest.Error{http.StatusInternalServerError, "Failed inserting observation", err}
+			return &rest.Error{
+				http.StatusInternalServerError,
+				"Failed inserting observation",
+				err,
+			}
 		}
 
 		w.WriteHeader(http.StatusCreated)
@@ -135,14 +158,18 @@ func (s *server) handleAddObservation() http.Handler {
 	})
 }
 
-func (s *server) handleGetObservation() http.Handler {
+func getObservation(s rest.Server, store postgres.StudentStore) http.Handler {
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		id := chi.URLParam(r, "studentId")
 
 		// TODO: Do not return SQL related observation model
-		observations, err := s.store.GetObservations(id)
+		observations, err := store.GetObservations(id)
 		if err != nil {
-			return &rest.Error{http.StatusInternalServerError, "Fail to query students", err}
+			return &rest.Error{
+				http.StatusInternalServerError,
+				"Fail to query students",
+				err,
+			}
 		}
 
 		if err := rest.WriteJson(w, observations); err != nil {
@@ -152,7 +179,7 @@ func (s *server) handleGetObservation() http.Handler {
 	})
 }
 
-func (s *server) handleGetProgress() http.Handler {
+func getMaterialProgress(s rest.Server, store postgres.StudentStore) http.Handler {
 	type responseBody struct {
 		AreaId       string    `json:"areaId"`
 		MaterialName string    `json:"materialName"`
@@ -164,7 +191,7 @@ func (s *server) handleGetProgress() http.Handler {
 		studentId := chi.URLParam(r, "studentId")
 		//areaId := r.URL.Query().Get("areaId")
 
-		progress, err := s.store.GetProgress(studentId)
+		progress, err := store.GetProgress(studentId)
 		if err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Failed querying material", err}
 		}
@@ -188,7 +215,7 @@ func (s *server) handleGetProgress() http.Handler {
 	})
 }
 
-func (s *server) handleUpsertProgress() http.Handler {
+func upsertMaterialProgress(s rest.Server, store postgres.StudentStore) http.Handler {
 	type requestBody struct {
 		Stage int `json:"stage"`
 	}
@@ -207,7 +234,7 @@ func (s *server) handleUpsertProgress() http.Handler {
 			Stage:      requestBody.Stage,
 			UpdatedAt:  time.Now(),
 		}
-		if _, err := s.store.UpdateProgress(progress); err != nil {
+		if _, err := store.UpdateProgress(progress); err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Failed updating progress", err}
 		}
 		return nil

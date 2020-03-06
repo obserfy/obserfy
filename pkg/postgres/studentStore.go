@@ -10,7 +10,14 @@ type StudentStore struct {
 	*pg.DB
 }
 
-func (s StudentStore) InsertObservation(studentId string, longDesc string, shortDesc string, category string) (*Observation, error) {
+func (s StudentStore) InsertObservation(
+	studentId string,
+	creatorId string,
+	longDesc string,
+	shortDesc string,
+	category string,
+	eventTime *time.Time,
+) (*Observation, error) {
 	observationId := uuid.New()
 	observation := Observation{
 		Id:          observationId.String(),
@@ -18,7 +25,9 @@ func (s StudentStore) InsertObservation(studentId string, longDesc string, short
 		ShortDesc:   shortDesc,
 		LongDesc:    longDesc,
 		CategoryId:  category,
+		CreatorId:   creatorId,
 		CreatedDate: time.Now(),
+		EventTime:   eventTime,
 	}
 	if err := s.Insert(&observation); err != nil {
 		return nil, err

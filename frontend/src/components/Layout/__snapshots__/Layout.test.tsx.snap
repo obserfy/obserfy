@@ -47,6 +47,14 @@ exports[`Layout should render correctly 1`] = `
   }
 }
 
+@supports (-webkit-backdrop-filter:blur(20px)) or (backdrop-filter:blur(20px)) {
+  .emotion-9 {
+    background-color: var(--theme-ui-colors-surfaceBlurTransparent,rgba(255,255,255,0.6));
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+  }
+}
+
 @media screen and (min-width:40em) {
   .emotion-9 {
     display: block;

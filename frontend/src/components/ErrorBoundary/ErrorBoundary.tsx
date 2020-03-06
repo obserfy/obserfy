@@ -16,8 +16,7 @@ export class ErrorBoundary extends Component<{}, State> {
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
-    localStorage?.clear()
-    getAnalytics()?.track("Javsacript Error", {
+    getAnalytics()?.track("Javascript Error", {
       error,
       errorInfo,
     })

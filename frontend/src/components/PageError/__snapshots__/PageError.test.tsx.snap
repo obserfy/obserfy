@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageError should render correctly 1`] = `
-.emotion-7 {
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,12 +9,12 @@ exports[`PageError should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-7 {
+  .emotion-9 {
     font-size: 20px;
   }
 }
 
-.emotion-6 {
+.emotion-8 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -34,7 +34,7 @@ exports[`PageError should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-5 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -91,7 +91,7 @@ exports[`PageError should render correctly 1`] = `
   margin-bottom: 32px;
 }
 
-.emotion-4 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -172,6 +172,13 @@ exports[`PageError should render correctly 1`] = `
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
+.emotion-4 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-left: 16px;
+}
+
 .emotion-3 {
   box-sizing: border-box;
   margin: 0;
@@ -221,7 +228,6 @@ exports[`PageError should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin-left: 16px;
 }
 
 .emotion-3:disabled {
@@ -240,15 +246,33 @@ exports[`PageError should render correctly 1`] = `
   background-color: var(--theme-ui-colors-primary,#00e399);
 }
 
+.emotion-6 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  font-size: 14px;
+  margin: 16px;
+  margin-top: 32px;
+  max-width: 250px;
+  text-align: center;
+  line-height: 1.5;
+}
+
 <div>
   <div
-    class="emotion-7"
+    class="emotion-9"
   >
     <div
-      class="emotion-6"
+      class="emotion-8"
     >
       <div
-        class="emotion-5"
+        class="emotion-7"
       >
         <div
           class=" gatsby-image-wrapper"
@@ -305,19 +329,33 @@ exports[`PageError should render correctly 1`] = `
           Try reloading the page, sorry
         </h6>
         <div
-          class="emotion-4"
+          class="emotion-5"
         >
-          <button
-            class="emotion-2"
+          <a
+            href="https://github.com/chrsep/vor/issues/new?assignees=&labels=&template=bug_report.md&title="
           >
-            Report Bug
-          </button>
-          <button
-            class="emotion-3"
+            <button
+              class="emotion-2"
+            >
+              Report Bug
+            </button>
+          </a>
+          <a
+            class="emotion-4"
+            href="/dashboard/observe"
           >
-            Reload Page
-          </button>
+            <button
+              class="emotion-3"
+            >
+              Go to Home
+            </button>
+          </a>
         </div>
+        <p
+          class="emotion-6"
+        >
+          Just a heads up, you'll need a Github account to report a bug.
+        </p>
       </div>
     </div>
   </div>

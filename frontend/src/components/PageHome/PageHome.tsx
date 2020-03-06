@@ -10,7 +10,6 @@ import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import { Typography } from "../Typography/Typography"
 import Card from "../Card/Card"
 import { useGetStudents } from "../../api/students/useGetStudents"
-import EmptyListPlaceholder from "../EmptyListPlaceholder/EmptyListPlaceholder"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 
 export const PageHome: FC = () => {
@@ -39,13 +38,26 @@ export const PageHome: FC = () => {
     ))
 
   const emptyStudentListPlaceholder = !isFetching && students.length === 0 && (
-    <Box mx={3}>
-      <EmptyListPlaceholder
-        text="You have no one enrolled"
-        callToActionText="New student"
-        onActionClick={() => navigate("/dashboard/observe/students/new")}
-      />
-    </Box>
+    <Card mx={3}>
+      <Flex
+        m={3}
+        px={4}
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        height="100%"
+      >
+        <Typography.Body mb={4} mt={3} textAlign="center">
+          You have no student enrolled yet
+        </Typography.Body>
+        <Link to="/dashboard/observe/students/new" data-cy="new-student-button">
+          <Button variant="outline">
+            <Icon as={PlusIcon} m={0} mr={2} />
+            New Student
+          </Button>
+        </Link>
+      </Flex>
+    </Card>
   )
 
   const emptySearchResultInfo = !isFetching &&

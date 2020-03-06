@@ -2,7 +2,7 @@
 ####################################
 # Build the gatsby powered frontend
 ####################################
-FROM node:13 AS frontend-builder
+FROM node:12 AS frontend-builder
 WORKDIR /usr/src/vor/frontend
 # Get dependencies first, so it can be cached independently
 COPY ./frontend/*.tgz /usr/src/vor/frontend/
