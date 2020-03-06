@@ -65,7 +65,7 @@ describe(" Smoke test on prod build", () => {
 
     // Create student
     let studentName = "Carol"
-    cy.wait(100)
+    cy.wait(500)
     cy.get("[data-cy=new-student-button]").click()
     cy.contains("Save").should("be.disabled")
     cy.contains("Name").type(studentName)
@@ -131,9 +131,9 @@ describe(" Smoke test on prod build", () => {
     // Delete observation
     cy.get("[data-cy=delete-observation]").should("be.visible")
     // TODO: This part is really flaky, try fixing it later.
-    cy.wait(100)
+    cy.wait(500)
     cy.get("[data-cy=delete-observation]").click()
-    cy.wait(100)
+    cy.wait(500)
     cy.get("[data-cy=confirm-delete]").click()
     cy.contains(shortDesc).should("not.be.visible")
 
