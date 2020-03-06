@@ -1,9 +1,13 @@
 import { BASE_URL } from "./useApi"
-import { Observation } from "./useGetObservations"
 
+interface CreateObservationPayload {
+  categoryId: string
+  longDesc: string
+  shortDesc: string
+}
 export function createObservationApi(
   studentId: string,
-  observation: Observation
+  observation: CreateObservationPayload
 ): Promise<Response> {
   return fetch(`${BASE_URL}/students/${studentId}/observations`, {
     credentials: "same-origin",

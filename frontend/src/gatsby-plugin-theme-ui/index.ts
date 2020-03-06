@@ -35,6 +35,9 @@ const themeUiTheme = {
     surfaceTransparent: "rgba(255,255,255,0.965)",
     onSurfaceTransparent: "#87000000",
 
+    surfaceBlurTransparent: "rgba(255,255,255,0.6)",
+    onSurfaceBlurTransparent: "#87000000",
+
     border: "rgba(0,0,0,.1)",
     borderEmphasized: "#cfcfd3",
 
@@ -93,6 +96,9 @@ const themeUiTheme = {
 
         surfaceTransparent: "rgba(29,29,29,0.975)",
         onSurfaceTransparent: "rgba(255,255,255, 0.87)",
+
+        surfaceBlurTransparent: "rgba(29,29,29,0.6)",
+        onSurfaceBlurTransparent: "rgba(255,255,255, 0.87)",
 
         primaryDark: "#009c6e",
         onPrimaryDark: "rgba(255,255,255, 0.87)",

@@ -1,5 +1,4 @@
 import React, { FC } from "react"
-import differenceInCalendarDays from "date-fns/differenceInCalendarDays"
 import Flex from "../Flex/Flex"
 import Typography from "../Typography/Typography"
 import Pill from "../Pill/Pill"
@@ -8,7 +7,6 @@ import Button from "../Button/Button"
 import Card from "../Card/Card"
 import { categories } from "../../categories"
 import { Observation } from "../../api/useGetObservations"
-import { useFormatRelativeTime } from "../../intl/useFormatDate"
 
 interface Props {
   observation: Observation
@@ -22,49 +20,30 @@ export const ObservationCard: FC<Props> = ({
 }) => {
   const category = categories[parseInt(observation.categoryId, 10)]
 
-  const createdDateDifference = differenceInCalendarDays(
-    Date.parse(observation.createdDate ?? ""),
-    Date.now()
-  )
-
-  const relativeCreatedDate = useFormatRelativeTime(
-    createdDateDifference,
-    "day",
-    { numeric: "auto" }
-  )
-
   return (
-    <Card mb={3} key={observation.id}>
-      <Flex
-        p={3}
-        alignItems="center"
-        sx={{
-          borderBottomWidth: 1,
-          borderBottomColor: "border",
-          borderBottomStyle: "solid",
-        }}
+    <Card mb={2} key={observation.id} borderRadius={[0, "default"]}>
+      <Typography.H6
+        mx={3}
+        mt={observation.longDesc ? 3 : 2}
+        mb={0}
+        data-cy="observation-short-desc"
       >
-        <Flex flexDirection="column" alignItems="start">
-          <Typography.H6 mb={3} data-cy="observation-short-desc">
-            {observation.shortDesc}
-          </Typography.H6>
-          <Flex>
-            <Pill
-              backgroundColor={category.color}
-              text={category.name}
-              color={category.onColor}
-            />
-            <Pill ml={2} text={relativeCreatedDate} color="text" />
-          </Flex>
-        </Flex>
-      </Flex>
+        {observation.shortDesc}
+      </Typography.H6>
       {observation.longDesc && (
-        <Typography.Body fontSize={1} p={3} data-cy="observation-long-desc">
+        <Typography.Body
+          fontSize={1}
+          mt={2}
+          mx={3}
+          mb={3}
+          data-cy="observation-long-desc"
+        >
           {observation.longDesc}
         </Typography.Body>
       )}
       <Flex
         p={2}
+        pb={0}
         alignItems="center"
         sx={{
           borderTopWidth: 1,
@@ -72,6 +51,23 @@ export const ObservationCard: FC<Props> = ({
           borderTopColor: "border",
         }}
       >
+        <Flex flexWrap="wrap">
+          <Pill
+            ml={2}
+            mb={2}
+            backgroundColor={category.color}
+            text={category.name}
+            color={category.onColor}
+          />
+          {observation.creatorName && (
+            <Pill
+              ml={2}
+              mb={2}
+              text={observation.creatorName.split(" ")[0]}
+              color="text"
+            />
+          )}
+        </Flex>
         <Spacer />
         <Button
           variant="secondary"
@@ -79,14 +75,16 @@ export const ObservationCard: FC<Props> = ({
           data-cy="delete-observation"
           onClick={() => onDelete(observation)}
           fontSize={0}
+          mb={2}
         >
           delete
         </Button>
         <Button
           variant="secondary"
           data-cy="edit-observation"
-          onClick={() => onEdit(observation)}
           fontSize={0}
+          onClick={() => onEdit(observation)}
+          mb={2}
         >
           Edit
         </Button>

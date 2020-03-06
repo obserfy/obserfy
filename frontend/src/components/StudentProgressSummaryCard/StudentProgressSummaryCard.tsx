@@ -140,7 +140,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
 
   return (
     <>
-      <Card overflow="inherit">
+      <Card overflow="inherit" borderRadius={[0, "default"]}>
         <Tab
           small
           items={areas.data?.map(({ name }) => name) ?? []}

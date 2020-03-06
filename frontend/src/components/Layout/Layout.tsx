@@ -1,7 +1,7 @@
 import React, { FC, FunctionComponent, useEffect, useState } from "react"
 import { navigate } from "gatsby"
 import { Link } from "gatsby-plugin-intl3"
-import { useMatch } from "@reach/router"
+import { useLocation, useMatch } from "@reach/router"
 import { Typography } from "../Typography/Typography"
 import Icon from "../Icon/Icon"
 import Box from "../Box/Box"
@@ -65,7 +65,7 @@ const NavBar: FC = () => {
     return () => {
       window.removeEventListener("resize", listener)
     }
-  })
+  }, [lastVh])
   return (
     <Card
       display={[keyboardShown ? "none" : "block", "block"]}
@@ -75,7 +75,6 @@ const NavBar: FC = () => {
       width={["100%", "auto"]}
       backgroundColor="surfaceTransparent"
       sx={{
-        // backdropFilter: "saturate(180%) blur(20px)",
         zIndex: 5,
         top: ["auto", 0],
         bottom: [0, "auto"],
@@ -84,6 +83,10 @@ const NavBar: FC = () => {
         borderTopStyle: "solid",
         borderTopWidth: 1,
         borderTopColor: "border",
+        "@supports (backdrop-filter: blur(20px))": {
+          backgroundColor: "surfaceBlurTransparent",
+          backdropFilter: "saturate(180%) blur(20px)",
+        },
       }}
       pt={[0, 2]}
     >
@@ -96,11 +99,6 @@ const NavBar: FC = () => {
       >
         <Box height={70} width={70} display={["none", "block"]} />
         <NavBarItem title="Observe" icon={EditIcon} to="/dashboard/observe" />
-        {/* <NavBarItem */}
-        {/*  title="Analyze" */}
-        {/*  icon={PieChartIcon} */}
-        {/*  to="/dashboard/analyze" */}
-        {/* /> */}
         <Box height="100%" display={["none", "block"]} />
         <NavBarItem
           title="Settings"
@@ -118,10 +116,21 @@ const NavBarItem: FC<{
   to: string
 }> = ({ title, icon, to }) => {
   const match = useMatch(`${to}/*`)
+  const [target, setTarget] = useState(to)
+  const location = useLocation()
+  const url = `${match?.uri}/${match?.["*"]}${location.search}` ?? ""
+
+  // Implement bottom navigation bar behaviour that follows patterns described
+  // on material.io
+  useEffect(() => {
+    if (match?.uri) {
+      setTarget(url)
+    }
+  }, [url, match])
 
   return (
     <Link
-      to={to}
+      to={url === target ? to : target}
       style={{
         outline: "none",
         WebkitTapHighlightColor: "transparent",
