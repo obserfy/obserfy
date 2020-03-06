@@ -11269,10 +11269,10 @@ gatsby-page-utils@^0.0.39:
     lodash "^4.17.15"
     micromatch "^3.1.10"
 
-gatsby-plugin-canonical-urls@^2.1.20:
-  version "2.1.20"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-canonical-urls/-/gatsby-plugin-canonical-urls-2.1.20.tgz#6fdd0000d42aa5d8f779c6dbf9c2c25282552136"
-  integrity sha512-CRmdX9ya4bpqnR9QaqsvHm4zMQ4ssEfpMCCbv+I4DaOYj6vnGxJs1eoAsVUaKIQdttrYeDysfzeX3MuKREhGIw==
+gatsby-plugin-canonical-urls@^2.1.21:
+  version "2.1.21"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-canonical-urls/-/gatsby-plugin-canonical-urls-2.1.21.tgz#6c068a67cb8bc2ca712be09a5abb60cf25fcdeca"
+  integrity sha512-B/v1HTOEn8e12Q1ayqoG5JVk2iwWK/tak8Hsiz++MXQ9h+TifIG7uRfOpgz1Bs/f+RB+H56gzQfsa7IxV9/dzg==
   dependencies:
     "@babel/runtime" "^7.7.6"
 
