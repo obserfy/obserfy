@@ -126,7 +126,7 @@
     "eslint-plugin-markdown": "^1.0.2",
     "eslint-plugin-mdx": "^1.6.8",
     "eslint-plugin-prettier": "^3.1.2",
-    "eslint-plugin-react": "^7.18.3",
+    "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.0",
     "husky": "^4.2.3",
     "hygen": "^5.0.3",
