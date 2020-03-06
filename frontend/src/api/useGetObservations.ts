@@ -5,10 +5,14 @@ import { BASE_URL } from "./useApi"
 export interface Observation {
   id?: string
   studentId?: string
+  studentName?: string
   shortDesc: string
   longDesc: string
   categoryId: string
   createdDate?: string
+  creatorId?: string
+  creatorName?: string
+  eventTime?: string
 }
 
 export const useGetObservations = (

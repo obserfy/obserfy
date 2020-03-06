@@ -14,6 +14,7 @@ export default {
 export const Basic: FC = () => (
   <ObservationCard
     observation={{
+      studentName: "Angelica",
       createdDate: text("date", "2019-12-10T11:53:02.050339Z"),
       id: "",
       studentId: "",

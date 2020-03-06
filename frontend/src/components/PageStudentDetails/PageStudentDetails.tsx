@@ -1,9 +1,10 @@
 import React, { FC, useState } from "react"
 import { navigate } from "gatsby"
-import { FormattedDate, Link } from "gatsby-plugin-intl3"
+import { FormattedRelativeTime, FormattedDate, Link } from "gatsby-plugin-intl3"
 import isSameDay from "date-fns/isSameDay"
 import startOfDay from "date-fns/startOfDay"
 import differenceInDays from "date-fns/differenceInDays"
+import differenceInCalendarDays from "date-fns/differenceInCalendarDays"
 import { useGetStudent } from "../../api/useGetStudent"
 import Flex from "../Flex/Flex"
 import Box from "../Box/Box"
@@ -44,6 +45,11 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
     ),
   ]?.sort((a, b) => differenceInDays(Date.parse(b), Date.parse(a)))
 
+  const selectedDateDifference = differenceInCalendarDays(
+    Date.parse(dates?.[selectedDate] ?? ""),
+    Date.now()
+  )
+
   const listOfObservations = observations.data
     ?.filter(observation =>
       isSameDay(
@@ -79,6 +85,54 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
       />
     )
 
+  const dateSelector = (observations.data?.length ?? 0) > 0 && (
+    <Flex alignItems="center">
+      <Button
+        backgroundColor="surface"
+        disabled={selectedDate >= dates.length - 1}
+        onClick={() => setSelectedDate(selectedDate + 1)}
+        variant="outline"
+        py={1}
+        px={2}
+      >
+        <Icon as={PrevIcon} m={0} />
+      </Button>
+      <Typography.Body
+        flex={1}
+        textAlign="center"
+        fontSize={2}
+        color="textMediumEmphasis"
+        sx={{ textTransform: "capitalize" }}
+      >
+        {selectedDateDifference < 3 ? (
+          <FormattedRelativeTime
+            value={selectedDateDifference}
+            unit="day"
+            numeric="auto"
+          />
+        ) : (
+          <FormattedDate
+            value={dates?.[selectedDate]}
+            month="short"
+            year="numeric"
+            weekday="short"
+            day="2-digit"
+          />
+        )}
+      </Typography.Body>
+      <Button
+        backgroundColor="surface"
+        disabled={selectedDate < 1}
+        onClick={() => setSelectedDate(selectedDate - 1)}
+        variant="outline"
+        py={1}
+        px={2}
+      >
+        <Icon as={NextIcon} m={0} />
+      </Button>
+    </Flex>
+  )
+
   return (
     <>
       <Box maxWidth="maxWidth.sm" margin="auto" pb={5}>
@@ -113,11 +167,13 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
             </Button>
           </Link>
         </Box>
-        <Box p={3} mb={1}>
-          <Box my={3}>
+        <Box py={3} mb={1}>
+          <Box m={3}>
             <SectionHeader>PROGRESS</SectionHeader>
           </Box>
-          <StudentProgressSummaryCard studentId={id} />
+          <Box mx={[0, 3]}>
+            <StudentProgressSummaryCard studentId={id} />
+          </Box>
         </Box>
         <Box p={3}>
           <Flex mb={3} alignItems="center">
@@ -131,44 +187,9 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
           {observations.isFetching && !observations.data && (
             <ObservationLoadingPlaceholder />
           )}
-          {observations.data && (
-            <Flex mb={3} alignItems="center">
-              <Button
-                backgroundColor="surface"
-                disabled={selectedDate >= dates.length - 1}
-                onClick={() => setSelectedDate(selectedDate + 1)}
-                variant="outline"
-                py={1}
-                px={2}
-              >
-                <Icon as={PrevIcon} m={0} />
-              </Button>
-              <Typography.Body
-                flex={1}
-                textAlign="center"
-                fontSize={2}
-                color="textMediumEmphasis"
-              >
-                <FormattedDate
-                  value={dates?.[selectedDate]}
-                  month="short"
-                  year="numeric"
-                  weekday="short"
-                  day="2-digit"
-                />
-              </Typography.Body>
-              <Button
-                backgroundColor="surface"
-                disabled={selectedDate < 1}
-                onClick={() => setSelectedDate(selectedDate - 1)}
-                variant="outline"
-                py={1}
-                px={2}
-              >
-                <Icon as={NextIcon} m={0} />
-              </Button>
-            </Flex>
-          )}
+          {dateSelector}
+        </Box>
+        <Box mx={[0, 3]} mb={3}>
           {listOfObservations}
         </Box>
       </Box>

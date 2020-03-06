@@ -39,6 +39,8 @@ func (s StudentStore) GetObservations(studentId string) ([]Observation, error) {
 	var observations []Observation
 	if err := s.Model(&observations).
 		Where("student_id=?", studentId).
+		Relation("Student").
+		Relation("Creator").
 		Order("created_date").
 		Select(); err != nil {
 		return nil, err

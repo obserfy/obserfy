@@ -11,14 +11,11 @@ import { categories } from "../../categories"
 import Flex from "../Flex/Flex"
 import Chip from "../Chip/Chip"
 import Typography from "../Typography/Typography"
-import Pill from "../Pill/Pill"
-import Spacer from "../Spacer/Spacer"
-import Button from "../Button/Button"
-import Card from "../Card/Card"
 import { useGetStudent } from "../../api/useGetStudent"
 import EditObservationDialog from "../EditObservationDialog/EditObservationDialog"
 import DeleteObservationDialog from "../DeleteObservationDialog/DeleteObservationDialog"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
+import ObservationCard from "../ObservationCard/ObservationCard"
 
 const allCategory = {
   id: "-1",
@@ -183,7 +180,7 @@ const ObservationList: FC<{
               )
               .map(observation => {
                 return (
-                  <CompactObservationCard
+                  <ObservationCard
                     key={observation.id}
                     observation={observation}
                     onDelete={showDeleteDialog}
@@ -195,67 +192,6 @@ const ObservationList: FC<{
         )
       })}
     </Box>
-  )
-})
-
-const CompactObservationCard: FC<{
-  observation: Observation
-  onDelete: (value: Observation) => void
-  onEdit: (value: Observation) => void
-}> = memo(({ observation, onEdit, onDelete }) => {
-  const category = categories[parseInt(observation.categoryId, 10)]
-
-  return (
-    <Card mb={2} key={observation.id} borderRadius={[0, "default"]}>
-      <Typography.H6 mx={3} mt={3} mb={0} data-cy="observation-short-desc">
-        {observation.shortDesc}
-      </Typography.H6>
-      {observation.longDesc && (
-        <Typography.Body
-          fontSize={1}
-          mt={2}
-          mx={3}
-          mb={3}
-          data-cy="observation-long-desc"
-        >
-          {observation.longDesc}
-        </Typography.Body>
-      )}
-      <Flex
-        p={2}
-        alignItems="center"
-        sx={{
-          borderTopWidth: 1,
-          borderTopStyle: observation.longDesc ? "solid" : "none",
-          borderTopColor: "border",
-        }}
-      >
-        <Pill
-          ml={2}
-          backgroundColor={category.color}
-          text={category.name}
-          color={category.onColor}
-        />
-        <Spacer />
-        <Button
-          variant="secondary"
-          color="danger"
-          data-cy="delete-observation"
-          onClick={() => onDelete(observation)}
-          fontSize={0}
-        >
-          delete
-        </Button>
-        <Button
-          variant="secondary"
-          data-cy="edit-observation"
-          fontSize={0}
-          onClick={() => onEdit(observation)}
-        >
-          Edit
-        </Button>
-      </Flex>
-    </Card>
   )
 })
 

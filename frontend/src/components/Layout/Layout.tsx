@@ -118,17 +118,19 @@ const NavBarItem: FC<{
   const match = useMatch(`${to}/*`)
   const [target, setTarget] = useState(to)
   const location = useLocation()
+  const url = `${match?.uri}/${match?.["*"]}${location.search}` ?? ""
 
+  // Implement bottom navigation bar behaviour that follows patterns described
+  // on material.io
   useEffect(() => {
-    const url = `${match?.uri}/${match?.["*"]}`
     if (match?.uri) {
-      setTarget(url + location.search ?? "")
+      setTarget(url)
     }
-  }, [location, match, to])
+  }, [url, match])
 
   return (
     <Link
-      to={target}
+      to={url === target ? to : target}
       style={{
         outline: "none",
         WebkitTapHighlightColor: "transparent",

@@ -159,10 +159,20 @@ func postObservation(s rest.Server, store postgres.StudentStore) http.Handler {
 }
 
 func getObservation(s rest.Server, store postgres.StudentStore) http.Handler {
+	type observation struct {
+		Id          string     `json:"id"`
+		StudentName string     `json:"studentName"`
+		CategoryId  string     `json:"categoryId"`
+		CreatorId   string     `json:"creatorId,omitempty"`
+		CreatorName string     `json:"creatorName,omitempty"`
+		LongDesc    string     `json:"longDesc"`
+		ShortDesc   string     `json:"shortDesc"`
+		CreatedDate time.Time  `json:"createdDate"`
+		EventTime   *time.Time `json:"eventTime,omitempty"`
+	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		id := chi.URLParam(r, "studentId")
 
-		// TODO: Do not return SQL related observation model
 		observations, err := store.GetObservations(id)
 		if err != nil {
 			return &rest.Error{
@@ -172,7 +182,22 @@ func getObservation(s rest.Server, store postgres.StudentStore) http.Handler {
 			}
 		}
 
-		if err := rest.WriteJson(w, observations); err != nil {
+		responseBody := make([]observation, len(observations))
+		for i, o := range observations {
+			responseBody[i].Id = o.Id
+			responseBody[i].StudentName = o.Student.Name
+			responseBody[i].CategoryId = o.CategoryId
+			responseBody[i].LongDesc = o.LongDesc
+			responseBody[i].ShortDesc = o.ShortDesc
+			responseBody[i].EventTime = o.EventTime
+			responseBody[i].CreatedDate = o.CreatedDate
+			if o.CreatorId != "" {
+				responseBody[i].CreatorId = o.CreatorId
+				responseBody[i].CreatorName = o.Creator.Name
+			}
+		}
+
+		if err := rest.WriteJson(w, responseBody); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
 		return nil
