@@ -30,7 +30,7 @@
     "babel-loader": "^8.0.6",
     "babel-plugin-istanbul": "^6.0.0",
     "babel-plugin-remove-graphql-queries": "^2.7.22",
-    "babel-preset-gatsby": "^0.2.29",
+    "babel-preset-gatsby": "^0.2.33",
     "core-js": "2.6.3",
     "cypress": "^4.1.0",
     "cypress-axe": "^0.5.3",
