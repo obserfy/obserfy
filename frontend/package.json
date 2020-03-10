@@ -48,7 +48,7 @@
     "gatsby-plugin-emotion": "^4.1.23",
     "gatsby-plugin-guess-js": "^1.1.30",
     "gatsby-plugin-intl3": "./gatsby-plugin-intl3-v0.0.7.tgz",
-    "gatsby-plugin-layout": "^1.1.22",
+    "gatsby-plugin-layout": "^1.1.23",
     "gatsby-plugin-manifest": "^2.2.42",
     "gatsby-plugin-nprogress": "^2.1.19",
     "gatsby-plugin-offline": "^3.0.38",
