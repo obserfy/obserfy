@@ -37,45 +37,49 @@ export const DeleteSubjectDialog: FC<Props> = ({
     setLoading(false)
   }
 
+  const header = (
+    <Flex
+      alignItems="center"
+      backgroundColor="surface"
+      sx={{
+        flexShrink: 0,
+        position: "relative",
+      }}
+    >
+      <Typography.H6
+        width="100%"
+        sx={{
+          position: "absolute",
+          pointerEvents: "none",
+          textAlign: "center",
+          alignContent: "center",
+        }}
+      >
+        Delete Subject?
+      </Typography.H6>
+      <Button
+        variant="outline"
+        m={2}
+        onClick={onDismiss}
+        sx={{ flexShrink: 0 }}
+      >
+        Cancel
+      </Button>
+      <Spacer />
+      <Button m={2} backgroundColor="danger" onClick={deleteStudent}>
+        {loading && <LoadingIndicator />}
+        Yes
+      </Button>
+    </Flex>
+  )
+
   return (
     <Dialog maxWidth={["", "maxWidth.xsm"]}>
-      <Flex
-        backgroundColor="surface"
-        justifyContent="center"
-        p={3}
-        sx={{
-          flexShrink: 0,
-          position: "relative",
-          borderBottomColor: "border",
-          borderBottomWidth: 1,
-          borderBottomStyle: "solid",
-        }}
-      >
-        <Typography.H6 sx={{ pointerEvents: "none", alignContent: "center" }}>
-          Delete Subject?
-        </Typography.H6>
-      </Flex>
-      <Typography.Body
-        p={3}
-        sx={{
-          borderBottomColor: "border",
-          borderBottomWidth: 1,
-          borderBottomStyle: "solid",
-        }}
-      >
+      {header}
+      <Typography.Body p={3}>
         <i>&quot;{name}&quot;</i> and student data related to it will be
         permanently deleted. Are you sure?
       </Typography.Body>
-      <Flex alignItems="center">
-        <Spacer />
-        <Button variant="outline" m={2} onClick={onDismiss}>
-          Cancel
-        </Button>
-        <Button m={2} backgroundColor="danger" onClick={deleteStudent}>
-          {loading && <LoadingIndicator />}
-          Yes
-        </Button>
-      </Flex>
     </Dialog>
   )
 }

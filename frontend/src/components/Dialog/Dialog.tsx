@@ -1,4 +1,5 @@
 import React, { FC } from "react"
+import { Global } from "@emotion/core"
 import Card from "../Card/Card"
 import { Flex } from "../Flex/Flex"
 import { BoxProps } from "../Box/Box"
@@ -16,13 +17,20 @@ export const Dialog: FC<Props> = ({ sx, ...props }) => (
     width="100%"
     height="100%"
     p={[0, 3]}
-    sx={{ border: "none", top: 0, left: 0, zIndex: 1000001, position: "fixed" }}
+    sx={{
+      border: "none",
+      top: 0,
+      left: 0,
+      zIndex: 1000001,
+      position: "fixed",
+    }}
   >
     <Card
       backgroundColor="surface"
       maxWidth="maxWidth.sm"
       width="100%"
       maxHeight="100vh"
+      pb="env(safe-area-inset-bottom)"
       sx={{
         ...sx,
         borderTopLeftRadius: "default",
@@ -32,7 +40,12 @@ export const Dialog: FC<Props> = ({ sx, ...props }) => (
       }}
       {...props}
     />
+    <GlobalStyle />
   </Flex>
+)
+
+const GlobalStyle: FC = () => (
+  <Global styles={{ body: { overflow: "hidden" } }} />
 )
 
 export default Dialog
