@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import PageNewStudent from "./PageNewStudent"
 
 export default {
-  title: "Core|PageNewStudent",
+  title: "Page|PageNewStudent",
   component: PageNewStudent,
   parameters: {
     componentSubtitle: "Just a simple PageNewStudent",

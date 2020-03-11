@@ -3,7 +3,7 @@ import { action } from "@storybook/addon-actions"
 import DatePickerDialog from "./DatePickerDialog"
 
 export default {
-  title: "Core|DatePickerDialog",
+  title: "Basic|Dialog/DatePickerDialog",
   component: DatePickerDialog,
   parameters: {
     componentSubtitle: "Just a simple DatePickerDialog",

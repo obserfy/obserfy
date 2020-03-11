@@ -3,7 +3,7 @@ import { action } from "@storybook/addon-actions"
 import EditAreaDialog from "./EditAreaDialog"
 
 export default {
-  title: "Core|EditAreaDialog",
+  title: "Basic|Dialog/EditAreaDialog",
   component: EditAreaDialog,
   parameters: {
     componentSubtitle: "Just a simple EditAreaDialog",

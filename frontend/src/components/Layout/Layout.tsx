@@ -5,7 +5,7 @@ import { useLocation, useMatch } from "@reach/router"
 // TODO: Disable ts ignore when react-adptive-hooks typedef is available.
 // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
 // @ts-ignore
-import { useMemoryStatus } from "react-adaptive-hooks/dist"
+import { useMemoryStatus } from "react-adaptive-hooks/memory"
 import { Typography } from "../Typography/Typography"
 import Icon from "../Icon/Icon"
 import Box from "../Box/Box"

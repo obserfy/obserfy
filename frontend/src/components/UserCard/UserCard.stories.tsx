@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import UserCard from "./UserCard"
 
 export default {
-  title: "Core|UserCard",
+  title: "Basic|Card/UserCard",
   component: UserCard,
   parameters: {
     componentSubtitle: "Just a simple UserCard",

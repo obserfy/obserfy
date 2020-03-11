@@ -6,7 +6,8 @@ const babelOptions = {
     require.resolve("@babel/plugin-proposal-optional-chaining"),
     require.resolve("@babel/plugin-proposal-nullish-coalescing-operator"),
     require.resolve("@babel/plugin-proposal-numeric-separator"),
-    require.resolve("babel-plugin-remove-graphql-queries")
+    require.resolve("babel-plugin-remove-graphql-queries"),
+    require.resolve("babel-plugin-transform-default-import")
   ]
 }
 

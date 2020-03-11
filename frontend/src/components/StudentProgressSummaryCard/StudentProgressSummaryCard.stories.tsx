@@ -3,7 +3,7 @@ import StudentProgressSummaryCard from "./StudentProgressSummaryCard"
 import Box from "../Box/Box"
 
 export default {
-  title: "Core|StudentProgressSummaryCard",
+  title: "Basic|Card/StudentProgressSummaryCard",
   component: StudentProgressSummaryCard,
   parameters: {
     componentSubtitle: "Just a simple StudentProgressSummaryCard",

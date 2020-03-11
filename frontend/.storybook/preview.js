@@ -1,33 +1,29 @@
-import React from "react"
-import { addDecorator, addParameters, configure } from "@storybook/react"
 import { ThemeProvider } from "theme-ui"
-import { create } from "@storybook/theming"
 import Theme from "../src/gatsby-plugin-theme-ui"
 import { Box } from "../src/components/Box/Box"
-import "../src/global.css"
+import { addDecorator, addParameters } from "@storybook/react"
 import { IntlProvider } from "gatsby-plugin-intl3"
 import { withI18n } from "storybook-addon-i18n"
 import { action } from "@storybook/addon-actions"
+import React from "react"
+import { createHistory, createMemorySource, LocationProvider } from "@reach/router"
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
+import "../src/global.css"
+import { DocsPage } from "storybook-addon-deps/blocks"
 
-// Setup Custom theme and storybook options
-const theme = create({
-  base: "dark",
-  appBg: "#1d1d1d",
-  barBg: "#222222",
-  brandUrl: "https://obserfy.com",
-  brandName: "Obserfy",
-})
-
+const history = createHistory(createMemorySource("/"))
 const ThemeDecorator = story => (
-  <ThemeProvider theme={Theme}>
+  <LocationProvider history={history}>
+    <ThemeProvider theme={Theme}>
     <Box backgroundColor="background" fontSize={[16, 20]}>
       {story()}
     </Box>
   </ThemeProvider>
+  </LocationProvider>
 )
 addDecorator(ThemeDecorator)
 
-// React Intl
+// ================================ i18n ===============================================
 addParameters({
   i18n: {
     provider: IntlProvider,
@@ -38,6 +34,19 @@ addParameters({
 })
 addDecorator(withI18n)
 
+// ==================================== Viewports =======================================
+addParameters({
+  viewport: {
+    viewports: INITIAL_VIEWPORTS,
+  },
+});
+
+// ==================================== DocsPage =======================================
+addParameters({
+  docs: { page: DocsPage },
+});
+
+// ===================================== Gatsby ===========================================
 // Make gatsby components work on storybook.
 // Gatsby's Link overrides:
 // Gatsby defines a global called ___loader to prevent its method calls from creating console errors you override it here
@@ -51,6 +60,3 @@ global.__PATH_PREFIX__ = ""
 window.___navigate = pathname => {
   action("NavigateTo:")(pathname)
 }
-
-// automatically import all files ending in *.stories.js
-configure(require.context("../src", true, /\.stories\.tsx$/), module)

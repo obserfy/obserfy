@@ -3,7 +3,7 @@ import { action } from "@storybook/addon-actions"
 import EditObservationDialog from "./EditObservationDialog"
 
 export default {
-  title: "Core|EditObservationDialog",
+  title: "Basic|Dialog/EditObservationDialog",
   component: EditObservationDialog,
   parameters: {
     componentSubtitle: "Just a simple EditObservationDialog",

@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import PageAnalyze from "./PageAnalyze"
 
 export default {
-  title: "Core|PageAnalyze",
+  title: "Page|PageAnalyze",
   component: PageAnalyze,
   parameters: {
     componentSubtitle: "Just a simple PageAnalyze",
