@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react"
-import { navigate } from "gatsby-plugin-intl3"
+import { Link, navigate } from "gatsby-plugin-intl3"
 import { useImmer } from "use-immer"
 import Box from "../Box/Box"
 import Typography from "../Typography/Typography"
@@ -19,11 +19,11 @@ import { ReactComponent as EditIcon } from "../../icons/edit.svg"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import { ReactComponent as DeleteIcon } from "../../icons/trash.svg"
 import Icon from "../Icon/Icon"
-import NewSubjectDialog from "../NewSubjectDialog/NewSubjectDialog"
 import DeleteAreaDialog from "../DeleteAreaDialog/DeleteAreaDialog"
 import DeleteSubjectDialog from "../DeleteSubjectDialog/DeleteSubjectDialog"
 import EditAreaDialog from "../EditAreaDialog/EditAreaDialog"
 import EditSubjectDialog from "../EditSubjectDialog/EditSubjectDialog"
+import { NEW_SUBJECT_URL } from "../../pages/dashboard/settings/curriculum/subjects/new"
 
 // FIXME: Typescript any typing, and inconsistent loading state should be fixed.
 interface Props {
@@ -34,7 +34,6 @@ export const PageCurriculumArea: FC<Props> = ({ id }) => {
   const [subjects, subjectsLoading, setSubjectsOutdated] = useGetAreaSubjects(
     id
   )
-  const [showNewSubjectDialog, setShowNewSubjectDialog] = useState(false)
   const [showDeleteAreaDialog, setShowDeleteAreaDialog] = useState(false)
   const [showDeleteSubjectDialog, setShowDeleteSubjectDialog] = useState(false)
   const [showEditAreaDialog, setShowEditAreaDialog] = useState(false)
@@ -43,7 +42,7 @@ export const PageCurriculumArea: FC<Props> = ({ id }) => {
     (Subject & { materials: Material[] }) | undefined
   >(undefined)
   const [subjectToDelete, setSubjectToDelete] = useState<Subject>()
-  const loading = area.loading || subjectsLoading
+  const loading = area.isFetching || subjectsLoading
 
   const subjectList = subjects
     ?.sort((a, b) => b.order - a.order)
@@ -100,26 +99,15 @@ export const PageCurriculumArea: FC<Props> = ({ id }) => {
             SUBJECTS
           </Typography.H5>
           <Spacer />
-          <Button
-            variant="outline"
-            onClick={() => setShowNewSubjectDialog(true)}
-          >
-            <Icon as={PlusIcon} m={0} mr={2} />
-            Add
-          </Button>
+          <Link to={NEW_SUBJECT_URL(id)}>
+            <Button variant="outline">
+              <Icon as={PlusIcon} m={0} mr={2} />
+              New
+            </Button>
+          </Link>
         </Flex>
         {!loading && subjectList}
       </Box>
-      {showNewSubjectDialog && (
-        <NewSubjectDialog
-          areaId={id}
-          onDismiss={() => setShowNewSubjectDialog(false)}
-          onSaved={() => {
-            setShowNewSubjectDialog(false)
-            setSubjectsOutdated()
-          }}
-        />
-      )}
       {showDeleteAreaDialog && (
         <DeleteAreaDialog
           name={area.data?.name ?? ""}
@@ -145,7 +133,7 @@ export const PageCurriculumArea: FC<Props> = ({ id }) => {
           originalName={area.data.name}
           onDismiss={() => setShowEditAreaDialog(false)}
           onSaved={() => {
-            area.setOutdated()
+            area.refetch()
             setShowEditAreaDialog(false)
           }}
         />

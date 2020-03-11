@@ -35,7 +35,10 @@ export const PageStudentProgress: FC<Props> = ({ areaId, studentId }) => {
   const [selectedMaterial, setSelectedMaterial] = useState<Material>()
   const progress = useGetStudentMaterialProgress(studentId)
   const loading =
-    student.isLoading || area.loading || subjectsLoading || progress.isLoading
+    student.isFetching ||
+    area.isFetching ||
+    subjectsLoading ||
+    progress.isFetching
 
   const backNavigation = (
     <BackNavigation
