@@ -46,7 +46,7 @@ exports[`PageEditStudent should render correctly 1`] = `
   border-top-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   border-radius: 0;
   padding: 0;
-  background-color: var(--theme-ui-colors-surfaceTransparent,rgba(255,255,255,0.965));
+  background-color: var(--theme-ui-colors-surface,#fff);
   overflow: hidden;
   display: block;
   height: auto;
@@ -66,6 +66,10 @@ exports[`PageEditStudent should render correctly 1`] = `
     background-color: var(--theme-ui-colors-surfaceBlurTransparent,rgba(255,255,255,0.6));
     -webkit-backdrop-filter: saturate(180%) blur(20px);
     backdrop-filter: saturate(180%) blur(20px);
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: backdrop-filter;
   }
 }
 
