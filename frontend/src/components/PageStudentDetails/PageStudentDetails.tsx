@@ -104,7 +104,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
         color="textMediumEmphasis"
         sx={{ textTransform: "capitalize" }}
       >
-        {selectedDateDifference < 3 ? (
+        {selectedDateDifference > -3 ? (
           <FormattedRelativeTime
             value={selectedDateDifference}
             unit="day"
