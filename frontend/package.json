@@ -39,7 +39,7 @@
     "fake-indexeddb": "^3.0.0",
     "faker": "^4.1.0",
     "framer-motion": "^1.9.1",
-    "gatsby": "^2.19.34",
+    "gatsby": "^2.19.39",
     "gatsby-cypress": "^0.2.23",
     "gatsby-image": "^2.2.43",
     "gatsby-link": "^2.2.29",
