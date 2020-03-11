@@ -1,15 +1,14 @@
-import useOldApiHook from "./useOldApiHook"
+import { QueryResult, useQuery } from "react-query"
+import { fetchApi } from "./fetchApi"
 
 export interface Subject {
   id: string
   name: string
   order: number
 }
-export function useGetAreaSubjects(
-  areaId: string
-): [Subject[], boolean, () => void] {
-  const [subjects, loading, setOutdated] = useOldApiHook<Subject[]>(
+export function useGetAreaSubjects(areaId: string): QueryResult<Subject[], {}> {
+  const fetchAreaSubjects = fetchApi<Subject[]>(
     `/curriculum/areas/${areaId}/subjects`
   )
-  return [subjects ?? [], loading, setOutdated]
+  return useQuery<Subject[], {}>(["area_subjects", areaId], fetchAreaSubjects)
 }

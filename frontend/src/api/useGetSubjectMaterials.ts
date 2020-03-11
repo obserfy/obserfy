@@ -1,4 +1,5 @@
-import useOldApiHook from "./useOldApiHook"
+import { QueryResult, useQuery } from "react-query"
+import { fetchApi } from "./fetchApi"
 
 export interface Material {
   id: string
@@ -7,9 +8,12 @@ export interface Material {
 }
 export function useGetSubjectMaterials(
   subjectId: string
-): [Material[], boolean, () => void] {
-  const [material, loading, setOutdated] = useOldApiHook<Material[]>(
+): QueryResult<Material[], {}> {
+  const fetchSubjectMaterials = fetchApi<Material[]>(
     `/curriculum/subjects/${subjectId}/materials`
   )
-  return [material ?? [], loading, setOutdated]
+  return useQuery<Material[], {}>(
+    ["materials", subjectId],
+    fetchSubjectMaterials
+  )
 }

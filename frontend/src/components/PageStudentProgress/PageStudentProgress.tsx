@@ -30,14 +30,14 @@ interface Props {
 export const PageStudentProgress: FC<Props> = ({ areaId, studentId }) => {
   const area = useGetArea(areaId)
   const student = useGetStudent(studentId)
-  const [subjects, subjectsLoading] = useGetAreaSubjects(areaId)
+  const subjects = useGetAreaSubjects(areaId)
   const [isEditing, setIsEditing] = useState(false)
   const [selectedMaterial, setSelectedMaterial] = useState<Material>()
   const progress = useGetStudentMaterialProgress(studentId)
   const loading =
     student.isFetching ||
     area.isFetching ||
-    subjectsLoading ||
+    subjects.isFetching ||
     progress.isFetching
 
   const backNavigation = (
@@ -49,7 +49,7 @@ export const PageStudentProgress: FC<Props> = ({ areaId, studentId }) => {
 
   if (loading) {
     return (
-      <Box m={3}>
+      <Box maxWidth="maxWidth.sm" m={[3, "auto"]}>
         {backNavigation}
         <LoadingPlaceholder width="100%" height="6rem" mb={2} mt={4} />
         <LoadingPlaceholder width="100%" height="6rem" mb={4} />
@@ -78,7 +78,7 @@ export const PageStudentProgress: FC<Props> = ({ areaId, studentId }) => {
           </Typography.H3>
         </Box>
         <Box m={3}>
-          {subjects?.map(subject => (
+          {subjects.data?.map(subject => (
             <Box mb={4} key={subject.id}>
               <Typography.H5 my={3}>{subject.name}</Typography.H5>
               <SubjectMaterials
@@ -116,9 +116,9 @@ const SubjectMaterials: FC<{
   progress: MaterialProgress[]
   onMaterialClick: (material: Material) => void
 }> = ({ progress, subject, onMaterialClick }) => {
-  const [materials, loading] = useGetSubjectMaterials(subject.id)
+  const materials = useGetSubjectMaterials(subject.id)
 
-  if (loading) {
+  if (materials.isFetching) {
     return (
       <>
         <LoadingPlaceholder width="100%" height="6rem" mb={2} />
@@ -133,7 +133,7 @@ const SubjectMaterials: FC<{
 
   return (
     <>
-      {materials.map(material => {
+      {materials.data?.map(material => {
         const match = progress.find(item => item.materialId === material.id)
         const stage = materialStageToString(match?.stage)
         return (

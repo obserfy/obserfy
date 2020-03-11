@@ -54,6 +54,7 @@ func NewRouter(s rest.Server, store Store) *chi.Mux {
 	r.Method("GET", "/areas/{areaId}/subjects", server.getAreaSubjects())
 	r.Method("POST", "/areas/{areaId}/subjects", server.createSubject())
 
+	r.Method("GET", "/subjects/{subjectId}", server.getSubject())
 	r.Method("PUT", "/subjects/{subjectId}", server.replaceSubject())
 	r.Method("PATCH", "/subjects/{subjectId}", server.updateSubject())
 	r.Method("DELETE", "/subjects/{subjectId}", server.deleteSubject())
@@ -511,6 +512,34 @@ func (s *server) patchArea() http.Handler {
 			}
 		}
 
+		return nil
+	})
+}
+
+func (s *server) getSubject() http.Handler {
+	type responseBody struct {
+		Id    string `json:"id"`
+		Name  string `json:"name"`
+		Order int    `json:"order"`
+	}
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		subjectId := chi.URLParam(r, "subjectId")
+
+		subject, err := s.store.GetSubject(subjectId)
+		if err != nil {
+			return &rest.Error{http.StatusNotFound, " Can't find subject with specified area ID", err}
+		}
+
+		// Write response
+		response := responseBody{
+			Id:    subject.Id,
+			Name:  subject.Name,
+			Order: subject.Order,
+		}
+
+		if err := rest.WriteJson(w, response); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
 		return nil
 	})
 }
