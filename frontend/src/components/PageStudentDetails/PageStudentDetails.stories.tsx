@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import PageStudentDetails from "./PageStudentDetails"
 
 export default {
-  title: "Core|PageStudentDetails",
+  title: "Page|PageStudentDetails",
   component: PageStudentDetails,
   parameters: {
     componentSubtitle: "Just a simple PageStudentDetails",

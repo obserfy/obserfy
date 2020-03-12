@@ -3,7 +3,7 @@ import PageEditStudent from "./PageEditStudent"
 import Layout from "../Layout/Layout"
 
 export default {
-  title: "Core|PageEditStudent",
+  title: "Page|PageEditStudent",
   component: PageEditStudent,
   parameters: {
     componentSubtitle: "Just a simple PageEditStudent",

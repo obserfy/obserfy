@@ -3,7 +3,7 @@ import { action } from "@storybook/addon-actions"
 import InformationalCard from "./InformationalCard"
 
 export default {
-  title: "Core|InformationalCard",
+  title: "Basic|Card/InformationalCard",
   component: InformationalCard,
   parameters: {
     componentSubtitle: "Just a simple InformationalCard",

@@ -489,14 +489,18 @@ exports[`PageCurriculumArea should render correctly 1`] = `
         <div
           class="emotion-12"
         />
-        <button
-          class="emotion-14"
+        <a
+          href="/dashboard/settings/curriculum/subjects/new?areaId="
         >
-          <div
-            class="emotion-8"
-          />
-          Add
-        </button>
+          <button
+            class="emotion-14"
+          >
+            <div
+              class="emotion-8"
+            />
+            New
+          </button>
+        </a>
       </div>
     </div>
   </div>

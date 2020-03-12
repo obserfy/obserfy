@@ -60,7 +60,14 @@ exports[`PageStudentProgress should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  max-width: 640px;
   margin: 16px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-9 {
+    margin: auto;
+  }
 }
 
 .emotion-2 {

@@ -2,10 +2,14 @@ import React, { FC, FunctionComponent, useEffect, useState } from "react"
 import { navigate } from "gatsby"
 import { Link } from "gatsby-plugin-intl3"
 import { useLocation, useMatch } from "@reach/router"
+// TODO: Disable ts ignore when react-adptive-hooks typedef is available.
+// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+// @ts-ignore
+import { useMemoryStatus } from "react-adaptive-hooks/memory"
 import { Typography } from "../Typography/Typography"
 import Icon from "../Icon/Icon"
 import Box from "../Box/Box"
-import Flex, { FlexProps } from "../Flex/Flex"
+import Flex from "../Flex/Flex"
 import { ReactComponent as SettingsIcon } from "../../icons/settings.svg"
 import { ReactComponent as EditIcon } from "../../icons/edit2.svg"
 import {
@@ -45,6 +49,7 @@ export const Layout: FC = ({ children }) => {
 const NavBar: FC = () => {
   const [keyboardShown, setKeyboardShown] = useState(false)
   const [lastVh, setLastVh] = useState(0)
+  const { deviceMemory } = useMemoryStatus({ deviceMemory: 4 })
 
   useEffect(() => {
     const listener: EventListener = () => {
@@ -73,7 +78,7 @@ const NavBar: FC = () => {
       borderRadius={0}
       height={["auto", "100%"]}
       width={["100%", "auto"]}
-      backgroundColor="surfaceTransparent"
+      backgroundColor="surface"
       sx={{
         zIndex: 5,
         top: ["auto", 0],
@@ -83,10 +88,27 @@ const NavBar: FC = () => {
         borderTopStyle: "solid",
         borderTopWidth: 1,
         borderTopColor: "border",
-        "@supports (backdrop-filter: blur(20px))": {
-          backgroundColor: "surfaceBlurTransparent",
-          backdropFilter: "saturate(180%) blur(20px)",
-        },
+        "@supports (backdrop-filter: blur(20px))":
+          // Only enable on mid to hi end devices, blur is an expensive effect, turned on by default by devices that doesn't
+          // support navigator.deviceMemory.
+          // 1. On iOS <11 devices, this deviceMemory will always be 4 (the default value for the hooks)
+          //    because navigator.deviceMemory is not supported on iOS <11. And the blur effects works
+          //    really well on iOS.
+          // 2. On all firefox browser as of 11/03/2020, the blur effect will be ignored (not supported).
+          // 3. Chrome on android devices, which is where the majority of low end devices lies,
+          //    navigator.deviceMemory is supported. This effects will then be disabled on low end devices
+          //    with memory up-to 2GB, such as Galaxy S5, which performance got hit really bad with this effect,
+          // 4. This will always be turned on before js is loaded, since gatsby's build step will use the default value.
+          //    which means the initial html will always include the blur effect. But it doesn't matter, because at load,
+          //    the html content is pretty simple.
+          deviceMemory > 2
+            ? {
+                backgroundColor: "surfaceBlurTransparent",
+                backdropFilter: "saturate(180%) blur(20px)",
+                transform: "translateZ(0)",
+                willChange: "backdrop-filter",
+              }
+            : {},
       }}
       pt={[0, 2]}
     >
@@ -177,49 +199,4 @@ const NavBarItem: FC<{
     </Link>
   )
 }
-
-interface SidebarToggleItemProps extends FlexProps {
-  text: string
-  icon?: FC
-}
-
-export const SidebarToggleItem: FC<SidebarToggleItemProps> = ({
-  text,
-  icon,
-  ...props
-}) => {
-  return (
-    // eslint-disable-next-line react/jsx-no-undef
-    <Flex
-      as="button"
-      alignItems="center"
-      m={2}
-      my={0}
-      pl={2}
-      sx={{
-        borderStyle: "none",
-        cursor: "pointer",
-        borderRadius: "default",
-        textDecoration: "none",
-        backgroundColor: "transparent",
-        "&:hover": {
-          backgroundColor: "primaryLightest",
-        },
-      }}
-      {...props}
-    >
-      <Icon
-        alt={`${text} icon`}
-        ml={0}
-        my={2}
-        as={icon}
-        sx={{ fill: "textMediumEmphasis" }}
-      />
-      <Typography.Body m={0} fontSize={1} color="textMediumEmphasis">
-        {text}
-      </Typography.Body>
-    </Flex>
-  )
-}
-
 export default Layout

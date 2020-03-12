@@ -1,6 +1,5 @@
 const path = require("path")
 const webpack = require("webpack")
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 // 1. import default from the plugin module
 // const createStyledComponentsTransformer = require('typescript-plugin-styled-components').default;
 
@@ -22,10 +21,16 @@ module.exports = ({ config }) => {
           presets: [ "@babel/preset-typescript" ],
           plugins: [
             require.resolve("babel-plugin-remove-graphql-queries"),
-            require.resolve("babel-plugin-istanbul")
           ]
         }
       },
+    ]
+  })
+
+  config.module.rules.push({
+    test: /\.(ts|tsx)$/,
+    include: path.resolve(__dirname, "../src/components"),
+    use: [
       require.resolve("react-docgen-typescript-loader")
     ]
   })
@@ -51,12 +56,6 @@ module.exports = ({ config }) => {
     }, "url-loader"]
   })
 
-  config.plugins.push(new ForkTsCheckerWebpackPlugin({
-    compilerOptions: {
-      skipLibCheck: true
-    }
-  }))
-
   // Speed up storybook compilation===============================================
   config.optimization = {
     ...config.optimization,
@@ -68,7 +67,6 @@ module.exports = ({ config }) => {
     ...config.output,
     pathinfo: false
   }
-
   config.resolve.extensions.push(".ts", ".tsx")
 
   // Make Storybook plays well with gatsby =======================================

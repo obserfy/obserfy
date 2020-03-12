@@ -4,7 +4,7 @@ import { text } from "@storybook/addon-knobs"
 import ObservationCard from "./ObservationCard"
 
 export default {
-  title: "Core|ObservationCard",
+  title: "Basic|Card/ObservationCard",
   component: ObservationCard,
   parameters: {
     componentSubtitle: "Just a simple ObservationCard",

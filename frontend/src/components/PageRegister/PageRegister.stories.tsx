@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import PageRegister from "./PageRegister"
 
 export default {
-  title: "Core|PageRegister",
+  title: "Page|PageRegister",
   component: PageRegister,
   parameters: {
     componentSubtitle: "Just a simple PageRegister",

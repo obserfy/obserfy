@@ -1,8 +1,8 @@
 import React from "react"
 import { render } from "../../test-utils"
-import { Basic } from "./EditSubjectDialog.stories"
+import { Basic } from "./PageEditSubject.stories"
 
-describe("EditSubjectDialog", () => {
+describe("PageEditSubject", () => {
   it("should render correctly", () => {
     const { container } = render(<Basic />)
     expect(container).toMatchSnapshot()

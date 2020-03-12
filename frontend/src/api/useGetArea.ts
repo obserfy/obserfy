@@ -1,9 +1,11 @@
-import useApi, { Api } from "./useApi"
+import { QueryResult, useQuery } from "react-query"
+import { fetchApi } from "./fetchApi"
 
 export interface Area {
   id: string
   name: string
 }
-export function useGetArea(areaId: string): Api<Area> {
-  return useApi<Area>(`/curriculum/areas/${areaId}`)
+export function useGetArea(areaId: string): QueryResult<Area, {}> {
+  const fetchArea = fetchApi<Area>(`/curriculum/areas/${areaId}`)
+  return useQuery<Area, {}>(["areas", areaId], fetchArea)
 }

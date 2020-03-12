@@ -104,7 +104,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
         color="textMediumEmphasis"
         sx={{ textTransform: "capitalize" }}
       >
-        {selectedDateDifference < 3 ? (
+        {selectedDateDifference > -3 ? (
           <FormattedRelativeTime
             value={selectedDateDifference}
             unit="day"
@@ -184,22 +184,22 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
             </Link>
           </Flex>
           {emptyObservationPlaceholder}
-          {observations.isFetching && !observations.data && (
-            <ObservationLoadingPlaceholder />
-          )}
           {dateSelector}
         </Box>
         <Box mx={[0, 3]} mb={3}>
           {listOfObservations}
+          {observations.isFetching && !observations.data && (
+            <ObservationLoadingPlaceholder />
+          )}
         </Box>
       </Box>
       {isEditingObservation && (
         <EditObservationDialog
           defaultValue={targetObservation}
           onDismiss={() => setIsEditingObservation(false)}
-          onSaved={() => {
+          onSaved={async () => {
+            await observations.refetch()
             setIsEditingObservation(false)
-            observations.refetch()
           }}
         />
       )}
@@ -208,8 +208,8 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
           observationId={targetObservation.id ?? ""}
           shortDesc={targetObservation?.shortDesc}
           onDismiss={() => setIsDeletingObservation(false)}
-          onDeleted={() => {
-            observations.refetch()
+          onDeleted={async () => {
+            await observations.refetch()
             setIsDeletingObservation(false)
           }}
         />
@@ -229,9 +229,24 @@ const SectionHeader: FC<TextProps> = props => (
 
 const ObservationLoadingPlaceholder: FC = () => (
   <Box>
-    <LoadingPlaceholder width="100%" height={116} mb={3} />
-    <LoadingPlaceholder width="100%" height={116} mb={3} />
-    <LoadingPlaceholder width="100%" height={116} mb={3} />
+    <LoadingPlaceholder
+      width="100%"
+      height={116}
+      mb={2}
+      sx={{ borderRadius: [0, "default"] }}
+    />
+    <LoadingPlaceholder
+      width="100%"
+      height={116}
+      mb={2}
+      sx={{ borderRadius: [0, "default"] }}
+    />
+    <LoadingPlaceholder
+      width="100%"
+      height={116}
+      mb={2}
+      sx={{ borderRadius: [0, "default"] }}
+    />
   </Box>
 )
 

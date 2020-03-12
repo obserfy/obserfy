@@ -1,5 +1,5 @@
 import React, { FC } from "react"
-import { Card as BaseCard, BoxProps } from "rebass"
+import { BoxProps, Card as BaseCard } from "rebass"
 
 export interface CardProps extends Omit<BoxProps, "css"> {
   borderRadius?: string | number | Array<string | number>

@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import PageCurriculumArea from "./PageCurriculumArea"
 
 export default {
-  title: "Core|PageCurriculumArea",
+  title: "Page|PageCurriculumArea",
   component: PageCurriculumArea,
   parameters: {
     componentSubtitle: "Just a simple PageCurriculumArea",

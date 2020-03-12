@@ -16,6 +16,12 @@ jobs:
       - run: |
           cd frontend
           yarn build
+      - persist_to_workspace:
+          root: ../
+          paths:
+            - repo/frontend/node_modules
+            - repo/frontend/public
+            - .cache/Cypress
       - save_cache:
           when: always
           name: Save Yarn Package Cache
@@ -33,10 +39,8 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-      - restore_cache:
-          name: Restore Yarn Package Cache
-          keys:
-            - e2e-v2-{{ checksum "frontend/yarn.lock" }}
+      - attach_workspace:
+          at: ../
       - run: |
           echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
           echo ' [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
@@ -45,6 +49,7 @@ jobs:
           node -v
           nvm alias default v12
       - run: npm install -g yarn
+      - run: sudo apt-get update && sudo apt-get install libjpeg62 libpng16-16
       - run: cp .env.example .env
       - run: |
           cd ./docker/postgres/ssl
@@ -53,7 +58,7 @@ jobs:
           docker-compose up -d
       - run: |
           cd frontend
-          yarn install --production --frozen-lockfile
+          yarn install
       - run: |
           cd frontend
           yarn cy:ci
@@ -64,14 +69,6 @@ jobs:
           path: ~/repo/frontend/cypress/videos
       - store_artifacts:
           path: ~/repo/frontend/cypress/screenshots
-      - save_cache:
-          when: always
-          name: Save Yarn Package Cache
-          key: e2e-v2-{{ checksum "frontend/yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
-            - ~/.cache/Cypress
-            - ./frontend/node_modules
 
   backend_unit:
     docker:
@@ -118,27 +115,17 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-      - restore_cache:
-          name: Restore Yarn Package Cache
-          keys:
-            - frontend-{{ checksum "frontend/yarn.lock" }}
+      - attach_workspace:
+          at: ../
       - run: |
           cd frontend
           yarn install
       - run: |
           cd frontend
-          yarn build && yarn test -w 1
+          yarn test -w 1
       - run: bash <(curl -s https://codecov.io/bash)
       - store_test_results:
           path: frontend/coverage/clover.xml
-      - save_cache:
-          when: always
-          name: Save Yarn Package Cache
-          key: frontend-{{ checksum "frontend/yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
-            - ~/.cache/Cypress
-            - ./frontend/node_modules
 
   frontend_lint:
     docker:
@@ -146,24 +133,14 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-      - restore_cache:
-          name: Restore Yarn Package Cache
-          keys:
-            - lint-{{ checksum "frontend/yarn.lock" }}
+      - attach_workspace:
+          at: ../
       - run: |
           cd frontend
           yarn install
       - run: |
           cd frontend
           yarn lint
-      - save_cache:
-          when: always
-          name: Save Yarn Package Cache
-          key: lint-{{ checksum "frontend/yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
-            - ~/.cache/Cypress
-            - ./frontend/node_modules
 
   frontend_typecheck:
     docker:
@@ -171,24 +148,14 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-      - restore_cache:
-          name: Restore Yarn Package Cache
-          keys:
-            - typecheck-{{ checksum "frontend/yarn.lock" }}
+      - attach_workspace:
+          at: ../
       - run: |
           cd frontend
           yarn install
       - run: |
           cd frontend
           yarn typecheck
-      - save_cache:
-          when: always
-          name: Save Yarn Package Cache
-          key: typecheck-{{ checksum "frontend/yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
-            - ~/.cache/Cypress
-            - ./frontend/node_modules
 
   deploy:
     machine:
@@ -230,9 +197,15 @@ workflows:
     jobs:
       - frontend_build
       - backend_unit
-      - frontend_unit
-      - frontend_lint
-      - frontend_typecheck
+      - frontend_lint:
+          requires:
+            - frontend_build
+      - frontend_typecheck:
+          requires:
+            - frontend_build
+      - frontend_unit:
+          requires:
+            - frontend_build
       - e2e:
           requires:
             - frontend_build

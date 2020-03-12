@@ -1,6 +1,6 @@
 module.exports = {
   transform: {
-    "^.+\\.(ts|tsx)?$": `<rootDir>/jest-preprocess.js`,
+    "^.+\\.(js|ts|tsx)?$": `<rootDir>/jest-preprocess.js`,
     "^.+\\.(esm.js)?$": `<rootDir>/jest-preprocess.js`,
   },
   moduleNameMapper: {
@@ -9,7 +9,7 @@ module.exports = {
     ".+\\.(tsx)$": `<rootDir>/src/__mocks__/gatsby-plugin-intl3.js`,
   },
   testPathIgnorePatterns: [`node_modules`, `.cache`],
-  transformIgnorePatterns: [`node_modules/(?!(gatsby|frappe-charts)/)`],
+  transformIgnorePatterns: [`node_modules/(?!(gatsby|react-adaptive-hooks)/)`],
   testMatch: ["**/?(*.)+(test).[jt]s?(x)"],
   globals: {
     __PATH_PREFIX__: ``,
@@ -21,5 +21,4 @@ module.exports = {
     "fake-indexeddb/auto",
   ],
   snapshotSerializers: ["jest-emotion"],
-  // setupFilesAfterEnv: ["@testing-library/react/cleanup-after-each"]
 }

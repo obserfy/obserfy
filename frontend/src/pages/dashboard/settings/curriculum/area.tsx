@@ -4,6 +4,9 @@ import { PageRendererProps } from "gatsby"
 import SEO from "../../../../components/seo"
 import PageCurriculumArea from "../../../../components/PageCurriculumArea/PageCurriculumArea"
 
+export const CURRICULUM_AREA_URL = (areaId: string): string =>
+  `/dashboard/settings/curriculum/area?id=${areaId}`
+
 const Settings: FC<PageRendererProps> = ({ location }) => {
   const query = queryString.parse(location.search)
   let id: string

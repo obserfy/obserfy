@@ -48,7 +48,11 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
   if (isFetchingData && isAreaEmpty) {
     return (
       <Box mt={3}>
-        <LoadingPlaceholder width="100%" height="17rem" />
+        <LoadingPlaceholder
+          width="100%"
+          height="17rem"
+          sx={{ borderRadius: [0, "default"] }}
+        />
       </Box>
     )
   }
@@ -56,11 +60,13 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
   // Disabled curriculum view
   if (!isFetchingData && isAreaEmpty) {
     return (
-      <InformationalCard
-        message="You can enable the curriculum feature to track student progress in your curriculum."
-        buttonText=" Go to Curriculum "
-        onButtonClick={() => navigate("/dashboard/settings/curriculum")}
-      />
+      <Box m={[3, 0]}>
+        <InformationalCard
+          message="You can enable the curriculum feature to track student progress in your curriculum."
+          buttonText=" Go to Curriculum "
+          onButtonClick={() => navigate("/dashboard/settings/curriculum")}
+        />
+      </Box>
     )
   }
 

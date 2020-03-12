@@ -3,7 +3,7 @@ import { action } from "@storybook/addon-actions"
 import DeleteAreaDialog from "./DeleteAreaDialog"
 
 export default {
-  title: "Core|DeleteAreaDialog",
+  title: "Basic|Dialog/DeleteAreaDialog",
   component: DeleteAreaDialog,
   parameters: {
     componentSubtitle: "Just a simple DeleteAreaDialog",
