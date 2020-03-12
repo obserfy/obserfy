@@ -113,10 +113,8 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-      - restore_cache:
-          name: Restore Yarn Package Cache
-          keys:
-            - frontend-{{ checksum "frontend/yarn.lock" }}
+      - attach_workspace:
+          at: ../
       - run: |
           cd frontend
           yarn install
@@ -126,14 +124,6 @@ jobs:
       - run: bash <(curl -s https://codecov.io/bash)
       - store_test_results:
           path: frontend/coverage/clover.xml
-      - save_cache:
-          when: always
-          name: Save Yarn Package Cache
-          key: frontend-{{ checksum "frontend/yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
-            - ~/.cache/Cypress
-            - ./frontend/node_modules
 
   frontend_lint:
     docker:
@@ -141,24 +131,14 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-      - restore_cache:
-          name: Restore Yarn Package Cache
-          keys:
-            - lint-{{ checksum "frontend/yarn.lock" }}
+      - attach_workspace:
+          at: ../
       - run: |
           cd frontend
           yarn install
       - run: |
           cd frontend
           yarn lint
-      - save_cache:
-          when: always
-          name: Save Yarn Package Cache
-          key: lint-{{ checksum "frontend/yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
-            - ~/.cache/Cypress
-            - ./frontend/node_modules
 
   frontend_typecheck:
     docker:
@@ -166,24 +146,14 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-      - restore_cache:
-          name: Restore Yarn Package Cache
-          keys:
-            - typecheck-{{ checksum "frontend/yarn.lock" }}
+      - attach_workspace:
+          at: ../
       - run: |
           cd frontend
           yarn install
       - run: |
           cd frontend
           yarn typecheck
-      - save_cache:
-          when: always
-          name: Save Yarn Package Cache
-          key: typecheck-{{ checksum "frontend/yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
-            - ~/.cache/Cypress
-            - ./frontend/node_modules
 
   deploy:
     machine:
