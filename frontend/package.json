@@ -58,7 +58,7 @@
     "gatsby-plugin-sharp": "^2.4.5",
     "gatsby-plugin-svgr": "^2.0.2",
     "gatsby-plugin-theme-ui": "^0.3.0",
-    "gatsby-plugin-typescript": "^2.2.0",
+    "gatsby-plugin-typescript": "^2.2.2",
     "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.8",
     "gatsby-react-router-scroll": "^2.1.22",
     "gatsby-source-filesystem": "^2.1.51",
