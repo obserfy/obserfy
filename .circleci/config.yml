@@ -20,6 +20,7 @@ jobs:
           root: ../
           paths:
             - repo/frontend/node_modules
+            - repo/frontend/public
             - .cache/Cypress
       - save_cache:
           when: always
@@ -48,6 +49,7 @@ jobs:
           node -v
           nvm alias default v12
       - run: npm install -g yarn
+      - run: apt-get install libjpeg62:i386
       - run: cp .env.example .env
       - run: |
           cd ./docker/postgres/ssl
@@ -120,7 +122,7 @@ jobs:
           yarn install
       - run: |
           cd frontend
-          yarn build && yarn test -w 1
+          yarn test -w 1
       - run: bash <(curl -s https://codecov.io/bash)
       - store_test_results:
           path: frontend/coverage/clover.xml
