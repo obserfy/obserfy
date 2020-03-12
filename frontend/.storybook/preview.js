@@ -1,26 +1,39 @@
-import { ThemeProvider } from "theme-ui"
+import { ThemeProvider, useColorMode } from "theme-ui"
 import Theme from "../src/gatsby-plugin-theme-ui"
 import { Box } from "../src/components/Box/Box"
 import { addDecorator, addParameters } from "@storybook/react"
 import { IntlProvider } from "gatsby-plugin-intl3"
 import { withI18n } from "storybook-addon-i18n"
 import { action } from "@storybook/addon-actions"
-import React from "react"
+import React, { useEffect } from "react"
 import { createHistory, createMemorySource, LocationProvider } from "@reach/router"
-import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
+import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport"
 import "../src/global.css"
 import { DocsPage } from "storybook-addon-deps/blocks"
+import Flex from "../src/components/Flex/Flex"
+import { select } from "@storybook/addon-knobs"
 
 const history = createHistory(createMemorySource("/"))
-const ThemeDecorator = story => (
-  <LocationProvider history={history}>
-    <ThemeProvider theme={Theme}>
-    <Box backgroundColor="background" fontSize={[16, 20]}>
-      {story()}
-    </Box>
-  </ThemeProvider>
-  </LocationProvider>
-)
+const ThemeDecorator = story => {
+  return (
+    <LocationProvider history={history}>
+      <ThemeProvider theme={Theme}>
+        <ThemeSwitcher />
+        <Box backgroundColor="background">{story()}</Box>
+      </ThemeProvider>
+    </LocationProvider>
+  )
+}
+const ThemeSwitcher = () => {
+  const [, setColorMode] = useColorMode()
+  const theme = select("Theme", { dark: "dark", light: "default" }, "dark")
+
+  useEffect(() => {
+    setColorMode(theme)
+  }, [theme, setColorMode])
+
+  return <Flex m={2} sx={{ position: "fixed", right: 0, top: 0 }} />
+}
 addDecorator(ThemeDecorator)
 
 // ================================ i18n ===============================================
@@ -39,12 +52,12 @@ addParameters({
   viewport: {
     viewports: INITIAL_VIEWPORTS,
   },
-});
+})
 
 // ==================================== DocsPage =======================================
 addParameters({
   docs: { page: DocsPage },
-});
+})
 
 // ===================================== Gatsby ===========================================
 // Make gatsby components work on storybook.
