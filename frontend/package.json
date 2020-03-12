@@ -52,7 +52,7 @@
     "gatsby-plugin-nprogress": "^2.1.20",
     "gatsby-plugin-offline": "^3.0.38",
     "gatsby-plugin-prefetch-google-fonts": "^1.4.3",
-    "gatsby-plugin-react-helmet-async": "^1.0.15",
+    "gatsby-plugin-react-helmet-async": "^1.0.16",
     "gatsby-plugin-remove-trailing-slashes": "^2.1.21",
     "gatsby-plugin-segment-js": "^3.1.0",
     "gatsby-plugin-sharp": "^2.4.5",
