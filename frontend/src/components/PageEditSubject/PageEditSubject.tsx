@@ -21,6 +21,7 @@ import Button from "../Button/Button"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import { useGetSubject } from "../../api/useGetSubject"
 import { updateSubjectApi } from "../../api/updateSubjectApi"
+import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 
 const ITEM_HEIGHT = 48
 
@@ -29,12 +30,12 @@ interface Props {
   subjectId: string
 }
 export const PageEditSubject: FC<Props> = ({ areaId, subjectId }) => {
-  const area = useGetArea(areaId)
-  const subject = useGetSubject(subjectId)
   const startingMaterials = useGetSubjectMaterials(subjectId)
-  const [loading, setLoading] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
   const [subjectName, setSubjectName] = useState("")
   const [materials, setMaterials] = useImmer<Material[]>([])
+  const area = useGetArea(areaId)
+  const subject = useGetSubject(subjectId)
 
   useEffect(() => {
     if (startingMaterials.data && !startingMaterials.error) {
@@ -52,7 +53,7 @@ export const PageEditSubject: FC<Props> = ({ areaId, subjectId }) => {
     materials.every(material => material.name !== "") && subjectName !== ""
 
   async function updateSubject(): Promise<void> {
-    setLoading(true)
+    setSubmitting(true)
     if (subject.data === null) return
     const response = await updateSubjectApi({
       id: subject.data.id,
@@ -69,7 +70,7 @@ export const PageEditSubject: FC<Props> = ({ areaId, subjectId }) => {
       })
       navigate(CURRICULUM_AREA_URL(areaId))
     }
-    setLoading(false)
+    setSubmitting(false)
   }
 
   const list = materials.map((material, i) => (
@@ -84,8 +85,23 @@ export const PageEditSubject: FC<Props> = ({ areaId, subjectId }) => {
     />
   ))
 
+  if (area.isFetching && subject.isFetching) {
+    return (
+      <Box py={3} px={3} maxWidth="maxWidth.sm" margin="auto">
+        <LoadingPlaceholder width="20rem" height="3rem" mb={4} />
+        <LoadingPlaceholder width="20rem" height="3rem" mb={4} />
+        <LoadingPlaceholder width="100%" height="6rem" mb={3} />
+        <LoadingPlaceholder width="8rem" height="2rem" mb={2} />
+        <LoadingPlaceholder width="100%" height="4rem" mb={2} />
+        <LoadingPlaceholder width="100%" height="4rem" mb={2} />
+        <LoadingPlaceholder width="100%" height="4rem" mb={2} />
+        <LoadingPlaceholder width="100%" height="4rem" mb={2} />
+      </Box>
+    )
+  }
+
   return (
-    <Flex flexDirection="column" maxWidth="maxWidth.sm" margin="auto">
+    <Box maxWidth="maxWidth.sm" margin="auto">
       <BackNavigation
         to={CURRICULUM_AREA_URL(areaId)}
         text={area.data?.name ?? ""}
@@ -132,11 +148,11 @@ export const PageEditSubject: FC<Props> = ({ areaId, subjectId }) => {
       </Flex>
       <Flex justifyContent="flex-end" width="100%" p={3}>
         <Button disabled={!isValid} onClick={updateSubject}>
-          {loading && <LoadingIndicator />}
+          {submitting && <LoadingIndicator />}
           Save
         </Button>
       </Flex>
-    </Flex>
+    </Box>
   )
 }
 
