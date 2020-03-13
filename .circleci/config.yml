@@ -20,6 +20,7 @@ jobs:
           root: ../
           paths:
             - repo/frontend/node_modules
+            - repo/frontend/.cache
             - repo/frontend/public
             - .cache/Cypress
       - save_cache:
