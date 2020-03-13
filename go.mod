@@ -11,7 +11,7 @@ require (
 	github.com/go-playground/validator/v10 v10.2.0
 	github.com/google/uuid v1.1.1
 	github.com/joho/godotenv v1.3.0
-	github.com/mailgun/mailgun-go/v4 v4.0.0
+	github.com/mailgun/mailgun-go/v4 v4.0.1
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.4.0
 	go.uber.org/atomic v1.5.1 // indirect
