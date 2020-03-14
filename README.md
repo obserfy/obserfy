@@ -21,14 +21,13 @@
   </a>
 </p>
 
-
 ### Early Access
 
 Early access is available now on https://obserfy.com. It is currently
 provided for free but Keep in mind that the software is currently still in
 early preview.
 
-If you were to try, we would love to hear any of your feedback through github issue, 
+If you were to try, we would love to hear any of your feedback through github issue,
 or email at chrsep@protonmail.com.
 
 ### Goals

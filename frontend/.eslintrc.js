@@ -1,6 +1,6 @@
 module.exports = {
   parser: "@typescript-eslint/parser", // Specifies the ESLint parser
-  plugins: ["@typescript-eslint", "react-hooks", "jest", "prettier", "markdown"],
+  plugins: ["@typescript-eslint", "react-hooks", "jest", "prettier"],
   overrides: [
     {
       "files": ["*.md"],
