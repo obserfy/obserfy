@@ -1,6 +1,10 @@
 <h1 align="center">
-  vor
+  Obserfy
 </h1>
+
+<p align="center">
+    Record keeping and parent communication tool for Montessori based schools.
+</p>
 
 <p align="center">
   <a href="https://github.com/obserfy/vor/blob/master/LICENSE">
@@ -17,13 +21,10 @@
   </a>
 </p>
 
-# (WIP) Vor
-
-Backend for obserfy. A web-based tool for managing student information for Montessori Schools. Currently this tools focuses on pre-school's needs.
 
 ## Early Access MVP
 
-Hosted version is available on https://obserfy.com for you to try. It is currently
+A hosted version is available on https://obserfy.com for you to try. It is currently
 provided for free until we consider it as feature complete. Keep in mind that the software is currently still in
 early preview.
 
