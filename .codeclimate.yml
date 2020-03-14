@@ -1,5 +1,10 @@
 version: "2"
 plugins:
+   eslint:
+    enabled: true
+    channel: eslint-5
+    config:
+      config: frontend/.eslintrc.js
   govet:
     enabled: true
   gofmt:
