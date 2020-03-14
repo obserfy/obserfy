@@ -30,26 +30,26 @@ type server struct {
 }
 
 func NewRouter(s rest.Server, store Store) *chi.Mux {
-	server := server{s, store}
+	server := &server{s, store}
 	r := chi.NewRouter()
-	r.Method("POST", "/", server.handleCreateSchool())
+	r.Method("POST", "/", postNewSchool(server))
 	r.Route("/{schoolId}", func(r chi.Router) {
-		r.Use(server.authorizationMiddleware())
-		r.Method("GET", "/", server.handleGetSchool())
-		r.Method("GET", "/students", server.handleGetStudents())
-		r.Method("POST", "/students", server.handleCreateStudent())
-		r.Method("POST", "/invite-code", server.handleRefreshInviteCode())
+		r.Use(authorizationMiddleware(server))
+		r.Method("GET", "/", getSchool(server))
+		r.Method("GET", "/students", getStudents(server))
+		r.Method("POST", "/students", postNewStudent(server))
+		r.Method("POST", "/invite-code", refreshInviteCode(server))
 
 		// TODO: This might fit better in curriculum package, revisit later
-		r.Method("POST", "/curriculum", server.handleCreateNewCurriculum())
-		r.Method("DELETE", "/curriculum", server.deleteCurriculum())
-		r.Method("GET", "/curriculum", server.getCurriculum())
-		r.Method("GET", "/curriculum/areas", server.getCurriculumAreas())
+		r.Method("POST", "/curriculum", postNewCurriculum(server))
+		r.Method("DELETE", "/curriculum", deleteCurriculum(server))
+		r.Method("GET", "/curriculum", getCurriculum(server))
+		r.Method("GET", "/curriculum/areas", getCurriculumAreas(server))
 	})
 	return r
 }
 
-func (s *server) handleCreateSchool() rest.Handler {
+func postNewSchool(s *server) rest.Handler {
 	var requestBody struct {
 		Name string
 	}
@@ -74,7 +74,7 @@ func (s *server) handleCreateSchool() rest.Handler {
 	})
 }
 
-func (s *server) authorizationMiddleware() func(next http.Handler) http.Handler {
+func authorizationMiddleware(s *server) func(next http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
 		return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 			schoolId := chi.URLParam(r, "schoolId")
@@ -109,7 +109,7 @@ func (s *server) authorizationMiddleware() func(next http.Handler) http.Handler 
 	}
 }
 
-func (s *server) handleGetSchool() rest.Handler {
+func getSchool(s *server) rest.Handler {
 	type responseUserField struct {
 		Id            string `json:"id"`
 		Name          string `json:"name"`
@@ -158,7 +158,7 @@ func (s *server) handleGetSchool() rest.Handler {
 	})
 }
 
-func (s *server) handleGetStudents() rest.Handler {
+func getStudents(s *server) rest.Handler {
 	type responseBody struct {
 		Id          string     `json:"id"`
 		Name        string     `json:"name"`
@@ -187,7 +187,7 @@ func (s *server) handleGetStudents() rest.Handler {
 	})
 }
 
-func (s *server) handleCreateStudent() rest.Handler {
+func postNewStudent(s *server) rest.Handler {
 	var requestBody struct {
 		Name        string     `json:"name"`
 		DateOfBirth *time.Time `json:"dateOfBirth,omitempty"`
@@ -221,7 +221,7 @@ func (s *server) handleCreateStudent() rest.Handler {
 	})
 }
 
-func (s *server) handleRefreshInviteCode() http.Handler {
+func refreshInviteCode(s *server) http.Handler {
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		schoolId := chi.URLParam(r, "schoolId")
 
@@ -238,7 +238,7 @@ func (s *server) handleRefreshInviteCode() http.Handler {
 	})
 }
 
-func (s *server) handleCreateNewCurriculum() http.Handler {
+func postNewCurriculum(s *server) http.Handler {
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		// Get school id
 		schoolId := chi.URLParam(r, "schoolId")
@@ -263,7 +263,7 @@ func (s *server) handleCreateNewCurriculum() http.Handler {
 	})
 }
 
-func (s *server) deleteCurriculum() rest.Handler {
+func deleteCurriculum(s *server) rest.Handler {
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		// Get school id
 		schoolId := chi.URLParam(r, "schoolId")
@@ -280,7 +280,7 @@ func (s *server) deleteCurriculum() rest.Handler {
 	})
 }
 
-func (s *server) getCurriculum() rest.Handler {
+func getCurriculum(s *server) rest.Handler {
 	type responseBody struct {
 		Id   string `json:"id"`
 		Name string `json:"name"`
@@ -306,7 +306,7 @@ func (s *server) getCurriculum() rest.Handler {
 	})
 }
 
-func (s *server) getCurriculumAreas() rest.Handler {
+func getCurriculumAreas(s *server) rest.Handler {
 	type simplifiedArea struct {
 		Id   string `json:"id"`
 		Name string `json:"name"`
