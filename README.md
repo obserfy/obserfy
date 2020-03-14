@@ -1,42 +1,62 @@
-[![Maintainability](https://api.codeclimate.com/v1/badges/b417b5c0753dab4a593e/maintainability)](https://codeclimate.com/github/chrsep/vor/maintainability)
-[![CircleCI](https://circleci.com/gh/chrsep/vor.svg?style=svg)](https://circleci.com/gh/chrsep/vor)
-[![codecov](https://codecov.io/gh/chrsep/vor/branch/master/graph/badge.svg)](https://codecov.io/gh/chrsep/vor)
+<h1 align="center">
+  vor
+</h1>
+
+<p align="center">
+  <a href="https://github.com/obserfy/vor/blob/master/LICENSE">
+    <img src="https://img.shields.io/badge/license-GPL3-blue.svg" alt="Obserfy is released under the GPL-3 license." />
+  </a>
+  <a href="https://codeclimate.com/github/obserfy/vor/maintainability">
+    <img src="https://api.codeclimate.com/v1/badges/dc66ddec9ecb065464a3/maintainability" alt="Codeclimate maintainability score." />
+  </a>
+  <a href="https://circleci.com/gh/obserfy/vor">
+    <img src="https://circleci.com/gh/obserfy/vor.svg?style=svg" alt="Current npm package version." />
+  </a>
+  <a href="https://codecov.io/gh/chrsep/vor">
+    <img src="https://codecov.io/gh/obserfy/vor/branch/master/graph/badge.svg" alt="Downloads per month on npm." />
+  </a>
+</p>
+
 # (WIP) Vor
+
 Backend for obserfy. A web-based tool for managing student information for Montessori Schools. Currently this tools focuses on pre-school's needs.
 
 ## Early Access MVP
-Hosted version is available on https://obserfy.com for you to try. It is currently 
-provided for free until we consider it as feature complete. Keep in mind that the software is currently still in 
+
+Hosted version is available on https://obserfy.com for you to try. It is currently
+provided for free until we consider it as feature complete. Keep in mind that the software is currently still in
 early preview.
 
 If you were to try, we would love to hear any of your feedback through the chat, github issue, or email at
 chrsep@protonmail.com.
 
 ## Goals
+
 1. Make it easy for teachers to observe, track and understand their students.
 2. Speed up teacher on-boarding.
 3. Reduce the teacher's paperwork burden so that they can focus on the more important things.
 
 ## Planned Features
+
 - [x] Record observations
-- [ ] Track student progress on Montessori curriculum
-- [ ] Analyze data
+- [x] Track student progress on Montessori curriculum
+- [x] Analyze data
 - [ ] Prepare reports
 
 ## How to run
-1. generate ssl certificate for postgres 
-    - `cd docker/posgres/ssl`
-    - `./generate.sh`
+
+1. generate ssl certificate for postgres
+   - `cd docker/posgres/ssl`
+   - `./generate.sh`
 2. go back to project root and run docker compose, this will run the API server
-    - `cd ../../../`
-    - `docker-compose up -d`
+   - `cd ../../../`
+   - `docker-compose up -d`
 3. go to frontend, install dependencies and run gatsby.
-    - `cd frontend`
-    - `yarn`
-    - `yarn develop`
+   - `cd frontend`
+   - `yarn`
+   - `yarn develop`
 
-Gatsby would be running on https://localhost:8001, with the /api proxied to http://localhost:8000. 
+Gatsby would be running on https://localhost:8001, with the /api proxied to http://localhost:8000.
 
-You can import insomnia.json to insomnia to use Insomnia for debugging the API server running on http://localhost:8000. 
+You can import insomnia.json to insomnia to use Insomnia for debugging the API server running on http://localhost:8000.
 The API server runs inside a docker container complete with auto-reload on file changes and delve for debugging.
-
