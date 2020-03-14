@@ -22,18 +22,18 @@
 </p>
 
 
-### Early Access MVP
+### Early Access
 
-A hosted version is available on https://obserfy.com for you to try. It is currently
-provided for free until we consider it as feature complete. Keep in mind that the software is currently still in
+Early access is available now on https://obserfy.com. It is currently
+provided for free but Keep in mind that the software is currently still in
 early preview.
 
-If you were to try, we would love to hear any of your feedback through the chat, github issue, or email at
-chrsep@protonmail.com.
+If you were to try, we would love to hear any of your feedback through github issue, 
+or email at chrsep@protonmail.com.
 
 ### Goals
 
-1. Make it easy for teachers to observe, track and understand their students.
+1. Make it easy for teachers to observe, track and understand their students and plan their activities.
 2. Speed up teacher on-boarding.
 3. Reduce the teacher's paperwork burden so that they can focus on the more important things.
 

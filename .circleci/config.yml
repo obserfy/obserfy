@@ -82,10 +82,6 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-      - restore_cache:
-          name: Restore Yarn Package Cache
-          keys:
-            - backend-{{ checksum "go.sum" }}
       - run:
           name: install dockerize
           command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
@@ -94,6 +90,9 @@ jobs:
       - run:
           name: Wait for db
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - go/load-cache
+      - go/mod-download
+      - go/save-cache
       - run: |
           mkdir test_result
           mkdir test_result/go
@@ -103,12 +102,6 @@ jobs:
       - run: bash <(curl -s https://codecov.io/bash)
       - store_test_results:
           path: test_result
-      - save_cache:
-          when: always
-          name: Save Yarn Package Cache
-          key: backend-{{ checksum "go.sum" }}
-          paths:
-            - /go/pkg
 
   frontend_unit:
     docker:
@@ -192,6 +185,9 @@ jobs:
           sentry-cli releases -p backend new $VERSION
           sentry-cli releases -p backend set-commits --auto $VERSION
           sentry-cli releases -p backend finalize $VERSION
+
+orbs:
+  go: circleci/go@1.1.0
 
 workflows:
   test:
