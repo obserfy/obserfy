@@ -22,7 +22,7 @@
 </p>
 
 
-## Early Access MVP
+### Early Access MVP
 
 A hosted version is available on https://obserfy.com for you to try. It is currently
 provided for free until we consider it as feature complete. Keep in mind that the software is currently still in
@@ -31,20 +31,20 @@ early preview.
 If you were to try, we would love to hear any of your feedback through the chat, github issue, or email at
 chrsep@protonmail.com.
 
-## Goals
+### Goals
 
 1. Make it easy for teachers to observe, track and understand their students.
 2. Speed up teacher on-boarding.
 3. Reduce the teacher's paperwork burden so that they can focus on the more important things.
 
-## Planned Features
+### Planned Features
 
 - [x] Record observations
 - [x] Track student progress on Montessori curriculum
 - [x] Analyze data
 - [ ] Prepare reports
 
-## How to run
+### How to run
 
 1. generate ssl certificate for postgres
    - `cd docker/posgres/ssl`
