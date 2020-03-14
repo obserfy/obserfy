@@ -178,6 +178,21 @@ func (s SchoolStore) GetCurriculumAreas(schoolId string) ([]Area, error) {
 	return school.Curriculum.Areas, nil
 }
 
+func (s SchoolStore) NewClass(id string, name string, weekday []time.Weekday, startTime time.Time, endTime time.Time) error {
+	newClass := Class{
+		Id:        uuid.New().String(),
+		SchoolId:  id,
+		Name:      name,
+		StartTime: startTime,
+		EndTime:   endTime,
+		Weekdays:  weekday,
+	}
+	if err := s.DB.Insert(&newClass); err != nil {
+		return err
+	}
+	return nil
+}
+
 type EmptyCurriculumError struct{}
 
 func (e EmptyCurriculumError) Error() string {

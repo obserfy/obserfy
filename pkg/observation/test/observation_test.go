@@ -67,7 +67,7 @@ func (s *ObservationTestSuite) TestGetObservation() {
 	t := s.T()
 	o := s.SaveNewObservation()
 
-	w := s.CreateRequest("GET", "/"+o.Id, nil)
+	w := s.CreateRequest("GET", "/"+o.Id, nil, nil)
 	assert.Equal(t, http.StatusOK, w.Code)
 	var body struct {
 		Id          string     `json:"id"`
@@ -104,7 +104,7 @@ func (s *ObservationTestSuite) TestInvalidGetObservation() {
 	}
 	for _, test := range tests {
 		s.T().Run(test.name, func(t *testing.T) {
-			w := s.CreateRequest("GET", "/"+uuid.New().String(), nil)
+			w := s.CreateRequest("GET", "/"+uuid.New().String(), nil, nil)
 			assert.Equal(t, http.StatusNotFound, w.Code)
 		})
 	}
