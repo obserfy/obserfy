@@ -5,18 +5,18 @@ go 1.13
 require (
 	github.com/benbjohnson/clock v1.0.0
 	github.com/brianvoe/gofakeit/v4 v4.2.3
-	github.com/getsentry/sentry-go v0.3.1
-	github.com/go-chi/chi v4.0.2+incompatible
-	github.com/go-pg/pg/v9 v9.0.3
+	github.com/getsentry/sentry-go v0.5.1
+	github.com/go-chi/chi v4.0.3+incompatible
+	github.com/go-pg/pg/v9 v9.1.3
 	github.com/go-playground/validator/v10 v10.2.0
 	github.com/google/uuid v1.1.1
 	github.com/joho/godotenv v1.3.0
-	github.com/mailgun/mailgun-go/v4 v4.0.0
+	github.com/mailgun/mailgun-go/v4 v4.0.1
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.4.0
 	go.uber.org/atomic v1.5.1 // indirect
 	go.uber.org/multierr v1.4.0 // indirect
-	go.uber.org/zap v1.13.0
+	go.uber.org/zap v1.14.0
 	golang.org/x/crypto v0.0.0-20191128160524-b544559bb6d1
 	golang.org/x/lint v0.0.0-20191125180803-fdd1cda4f05f // indirect
 	golang.org/x/net v0.0.0-20191126235420-ef20fe5d7933 // indirect
