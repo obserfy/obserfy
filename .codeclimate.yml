@@ -1,6 +1,6 @@
 version: "2"
 plugins:
-   eslint:
+  eslint:
     enabled: true
     channel: eslint-5
     config:
