@@ -4,6 +4,31 @@ require("dotenv").config({
   path: `.env`,
 })
 
+// Conditionally load guess js
+const guessJsPlugin =
+  process.env.GA_PRIVATE_KEY && process.env.GA_CLIENT_EMAIL
+    ? [
+        {
+          resolve: "gatsby-plugin-guess-js",
+          options: {
+            // Find the view id in the GA admin in a section labeled "views"
+            GAViewID: `211863061`,
+            // Add a JWT to get data from GA
+            jwt: {
+              private_key: process.env.GA_PRIVATE_KEY.replace(/\\n/g, "\n"),
+              client_email: process.env.GA_CLIENT_EMAIL,
+            },
+            minimumThreshold: 0.03,
+            // The "period" for fetching analytic data.
+            period: {
+              startDate: new Date("2020-1-1"),
+              endDate: new Date(),
+            },
+          },
+        },
+      ]
+    : []
+
 module.exports = {
   siteMetadata: {
     title: `Obserfy`,
@@ -145,24 +170,7 @@ module.exports = {
         showSpinner: false,
       },
     },
-    {
-      resolve: "gatsby-plugin-guess-js",
-      options: {
-        // Find the view id in the GA admin in a section labeled "views"
-        GAViewID: `211863061`,
-        // Add a JWT to get data from GA
-        jwt: {
-          private_key: process.env.GA_PRIVATE_KEY.replace(/\\n/g, "\n"),
-          client_email: process.env.GA_CLIENT_EMAIL,
-        },
-        minimumThreshold: 0.03,
-        // The "period" for fetching analytic data.
-        period: {
-          startDate: new Date("2020-1-1"),
-          endDate: new Date(),
-        },
-      },
-    },
+    ...guessJsPlugin,
     // DEVTOOLS ================================================================
     {
       resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
