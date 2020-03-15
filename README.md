@@ -21,33 +21,65 @@
   </a>
 </p>
 
-### Early Access
+This is the main repo of [Obserfy](https://obserfy.com). This repo contains every code that you need to run Obserfy on your own. Obserfy is currently still on its early days. If you were to give it a try, we would love to hear any of your feedback through github issue, or email at chrsep@protonmail.com.
 
-Early access is available now on https://obserfy.com. It is currently
-provided for free but Keep in mind that the software is currently still in
-early preview.
+### Vision
 
-If you were to try, we would love to hear any of your feedback through github issue,
-or email at chrsep@protonmail.com.
+Scaling education is hard. Its an essential part of our society, but yet we are still struggling to deliver it evenly, in high-quality, on every part of the world. 
 
-### Goals
+**Obserfy aims to empower teachers and schools to provide high-quality education to more children by simplifying and automating as much of their works as possible.** Our software should be fast, simple, and accessible. It should get out of the way of the teachers, allowing them to focus on understanding and planning the education of their students.
 
-1. Make it easy for teachers to observe, track and understand their students and plan their activities.
-2. Speed up teacher on-boarding.
-3. Reduce the teacher's paperwork burden so that they can focus on the more important things.
+It is very hard to train enough people to provide high-quality education for everyone today, and not every type of education can be scaled through online learning. Because of this, we want focus on broadening the impact of individual teachers instead, by helping them do what they do today, better.
 
-### Planned Features
+### Codebase
 
-- [x] Record observations
-- [x] Track student progress on Montessori curriculum
-- [x] Analyze data
-- [ ] Prepare reports
+#### Technologies
 
-### How to run
+- **Golang**: For handling routing and API
+- **React**: For web frontend App
+- **Typescript**: Typesafe Javascript for frontend
+- **Postgres**: Database
 
-1. generate ssl certificate for postgres
-   - `cd docker/posgres/ssl`
-   - `./generate.sh`
+#### Folder structure
+
+```sh
+vor/
+|--docker           # Docker config files
+    |-- nginx       # Nginx that handles https and frontend caching (optional)
+    |-- postgres    # Postgres db for development only
+    |-- vor         # Docker image for running Obserfy
+|--frontend         # Frontend SPA built on Gatsby
+|--pkg              # Routing and APIs using go
+|--mailTemplates    # Templates for emails
+```
+
+#### Backend
+
+Below are a high level overview of the big dependencies that we use for our Go powered backend:
+
+- [**go-chi**](https://github.com/go-chi/chi): For handling routing and API
+- [**go-pg**](https://github.com/go-pg/pg): ORM for postgres
+- [**zap**](https://github.com/uber-go/zap): Fast logging solution
+- [**pkg/errors**](https://github.com/pkg/errors): For better error handling
+- [**playground/validators**](https://github.com/go-playground/validator): To validate structs
+- [**testify**](https://github.com/stretchr/testify): For building test suites
+
+#### Frontend
+
+Currently, we are focusing on building a great web experience with PWA support. Below are the tech stack we use for our frontend:
+
+- [**Gatsby**](https://www.gatsbyjs.org/): For building performance optimized SPA/PWA
+- [**React**](https://reactjs.org/)
+- [**Typescript**](https://www.typescriptlang.org/)
+- [**Storybook**](https://storybook.js.org/): For easier development and react component documentations
+- **Testing**
+  - [**Jest**](https://jestjs.io/): For snapshot and unit tests
+  - [**Cypress**](https://www.cypress.io/): For e2e test
+  
+  
+### First time setup
+#### Pre-requisite
+
 2. go back to project root and run docker compose, this will run the API server
    - `cd ../../../`
    - `docker-compose up -d`
@@ -60,3 +92,6 @@ Gatsby would be running on https://localhost:8001, with the /api proxied to http
 
 You can import insomnia.json to insomnia to use Insomnia for debugging the API server running on http://localhost:8000.
 The API server runs inside a docker container complete with auto-reload on file changes and delve for debugging.
+
+
+### Running for development
