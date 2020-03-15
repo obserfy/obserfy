@@ -33,18 +33,16 @@ This is the main repo of [Obserfy](https://obserfy.com). This repo contains ever
 
 It is very hard to train enough people to provide high-quality education for everyone today, and not every type of education can be scaled through online learning. Because of this, we want focus on broadening the impact of individual teachers instead, by helping them do what they do today, better.
 
-## Contributing
+## Codebase
 
-### Codebase
-
-#### Technologies
+### Technologies
 
 - **Golang**: For handling routing and API
 - **React**: For web frontend App
 - **Typescript**: Typesafe Javascript for frontend
 - **Postgres**: Database
 
-#### Folder structure
+### Folder structure
 
 ```sh
 vor/
@@ -57,7 +55,7 @@ vor/
 |--mailTemplates    # Templates for emails
 ```
 
-#### Backend
+### Backend
 
 Below are a high level overview of the big dependencies that we use for our Go powered backend:
 
@@ -68,7 +66,7 @@ Below are a high level overview of the big dependencies that we use for our Go p
 - [**playground/validators**](https://github.com/go-playground/validator): To validate structs
 - [**testify**](https://github.com/stretchr/testify): For building test suites
 
-#### Frontend
+### Frontend
 
 Currently, we are focusing on building a great web experience with PWA support for the client. Below are the tech stack we use for our frontend:
 
@@ -80,9 +78,9 @@ Currently, we are focusing on building a great web experience with PWA support f
   - [**Jest**](https://jestjs.io/): For snapshot and unit tests
   - [**Cypress**](https://www.cypress.io/): For e2e test
 
-### Initial setup
+## Initial setup
 
-#### Pre-requisite
+### Pre-requisite
 
 To run obserfy for development, you'll need the following tools:
 
@@ -90,7 +88,7 @@ To run obserfy for development, you'll need the following tools:
 - **Node:12**: Install node 12, we recommend [nvm](https://github.com/nvm-sh/nvm) to do this, so that you can have multiple node versions on you computer.
 - **Yarn V1**: See [yarn's documentation](https://classic.yarnpkg.com/lang/en/) on how to install.
 
-#### Setup env
+### Setup env
 
 Simply copy the .env.example into .env so that it will be read by docker-compose.
 
@@ -98,9 +96,9 @@ Simply copy the .env.example into .env so that it will be read by docker-compose
 cp .env.example .env
 ```
 
-### Running obserfy
+## Running obserfy
 
-#### Docker Compose
+### Docker compose
 
 You'll need to run docker-compose every backend service we need for development. Such as DB, nginx, the application server itself, etc. To run docker-compose simply run:
 
@@ -110,7 +108,7 @@ docker-compose up -d
 
 If you're only modifying the application server codes, this should be enough. It will run the application server code with live reload and debugging enabled via [go-delve](https://github.com/go-delve/delve) on port `40000`. The application server will be serving on `http://localhost:8000`.
 
-#### Gatsby development server
+### Gatsby development server
 
 To develop the web frontend, you'll need to start the gatsby development server. First go to the frontend folder.
 
