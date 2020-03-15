@@ -100,13 +100,13 @@ cp .env.example .env
 
 ### Docker compose
 
-You'll need to run docker-compose every backend service we need for development. Such as DB, nginx, the application server itself, etc. To run docker-compose simply run:
+You'll need to run docker-compose, it will start up every backend service we need for development, such as DB, Nginx, the application server itself, etc. To run docker-compose simply run:
 
 ```shell script
 docker-compose up -d
 ```
 
-If you're only modifying the application server codes, this should be enough. It will run the application server code with live reload and debugging enabled via [go-delve](https://github.com/go-delve/delve) on port `40000`. The application server will be serving on `http://localhost:8000`.
+If you're only modifying the application server codes, this should be enough. It will run the application server code with live reload. It also will run with debugging enabled via [go-delve](https://github.com/go-delve/delve) on port `40000`. The application server will be serving on `http://localhost:8000`.
 
 ### Gatsby development server
 
