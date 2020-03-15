@@ -25,8 +25,6 @@ This is the main repo of [Obserfy](https://obserfy.com). This repo contains ever
 
 ## Vision
 
-Scaling education is hard. Its an essential part of our society, but yet we are still struggling to deliver it evenly, in high-quality, on every part of the world.
-
 **Obserfy aims to empower teachers and schools to provide high-quality education to more children by simplifying and automating as much of their works as possible.** Our software should be fast, simple, and accessible. It should get out of the way of the teachers, allowing them to focus on understanding and planning the education of their students.
 
 It is very hard to train enough people to provide high-quality education for everyone today, and not every type of education can be scaled through online learning. Because of this, we want focus on broadening the impact of individual teachers instead, by helping them do what they do today, better.
@@ -100,13 +98,13 @@ cp .env.example .env
 
 #### Docker Compose
 
-You'll need to run docker-compose to start the application server on dev mode. docker-compose will run every service we need, such as DB, nginx, the application server itself, etc. To run docker-compose simply run:
+You'll need to run docker-compose every backend service we need for development. Such as DB, nginx, the application server itself, etc. To run docker-compose simply run:
 
 ```shell script
 docker-compose up -d
 ```
 
-If you're only modifying the applicatin server codes, this should be enough. It will run the backend code with live reload and debugging enabled via [go-delve](https://github.com/go-delve/delve) on port `40000`. The application server will be serving on `http://localhost:8000`.
+If you're only modifying the application server codes, this should be enough. It will run the application server code with live reload and debugging enabled via [go-delve](https://github.com/go-delve/delve) on port `40000`. The application server will be serving on `http://localhost:8000`.
 
 #### Gatsby development server
 
