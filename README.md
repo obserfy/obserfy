@@ -68,14 +68,13 @@ Below are a high level overview of the big dependencies that we use for our Go p
 
 #### Frontend
 
-Currently, we are focusing on building a great web experience with PWA support. Below are the tech stack we use for our frontend:
+Currently, we are focusing on building a great web experience with PWA support for the client. Below are the tech stack we use for our frontend:
 
 - [**Gatsby**](https://www.gatsbyjs.org/): For building performance optimized SPA/PWA
-- [**React**](https://reactjs.org/)
-- [**Typescript**](https://www.typescriptlang.org/)
+- [**React**](https://reactjs.org/): For the view layer
+- [**Typescript**](https://www.typescriptlang.org/): For type checking
 - [**Storybook**](https://storybook.js.org/): For easier development and react component documentations
 - **Testing**
-
   - [**Jest**](https://jestjs.io/): For snapshot and unit tests
   - [**Cypress**](https://www.cypress.io/): For e2e test
 
@@ -99,19 +98,17 @@ cp .env.example .env
 
 ### Running obserfy
 
-Running obserfy for development consist of two things:
+#### Docker Compose
 
-#### docker-compose
-
-You'll need to run docker-compose, which will run every service we need, such as DB, nginx, the application server, etc. To run docker-compose simply:
+You'll need to run docker-compose to start the application server on dev mode. docker-compose will run every service we need, such as DB, nginx, the application server itself, etc. To run docker-compose simply run:
 
 ```shell script
 docker-compose up -d
 ```
 
-If you're only modifying the backend codes, this should be enough. It will run the backend code with live reload and debugging enabled via [go-delve](https://github.com/go-delve/delve). The backend will be served on `http://localhost:8000`.
+If you're only modifying the applicatin server codes, this should be enough. It will run the backend code with live reload and debugging enabled via [go-delve](https://github.com/go-delve/delve) on port `40000`. The application server will be serving on `http://localhost:8000`.
 
-#### gatsby development server
+#### Gatsby development server
 
 To develop the web frontend, you'll need to start the gatsby development server. First go to the frontend folder.
 
@@ -131,4 +128,4 @@ Then you'll be able to run gatsby's development server.
 yarn develop
 ```
 
-This will start the development server on `http://localhost:8001`. It will proxy all request to its `/api` and to `/auth` to the backend server on `http://localhost:8000` automatically.
+This will start gatsby's development server on `http://localhost:8001`. It will proxy all request to its `/api` and `/auth` routes to the application server on `http://localhost:8000` automatically.
