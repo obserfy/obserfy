@@ -40,6 +40,7 @@ func InitTables(db *pg.DB) error {
 		(*Material)(nil),
 		(*School)(nil),
 		(*Class)(nil),
+		(*Weekday)(nil),
 		(*Student)(nil),
 		(*StudentMaterialProgress)(nil),
 		(*User)(nil),
@@ -160,5 +161,11 @@ type Class struct {
 	// Ignore other data
 	StartTime time.Time `pg:",notnull"`
 	EndTime   time.Time `pg:",notnull"`
-	Weekdays  []time.Weekday
+	Weekdays  []Weekday
+}
+
+type Weekday struct {
+	ClassId string       `pg:",pk,type:uuid"`
+	Day     time.Weekday `pg:",pk"`
+	Class   Class
 }

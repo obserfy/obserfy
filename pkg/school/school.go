@@ -39,7 +39,7 @@ func postNewClass(s rest.Server, store postgres.SchoolStore) http.Handler {
 		Name      string         `json:"name"`
 		StartTime time.Time      `json:"startTime"`
 		EndTime   time.Time      `json:"endTime"`
-		Weekday   []time.Weekday `json:"weekday"`
+		Weekdays  []time.Weekday `json:"weekdays"`
 	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		schoolId := chi.URLParam(r, "schoolId")
@@ -59,7 +59,7 @@ func postNewClass(s rest.Server, store postgres.SchoolStore) http.Handler {
 		err := store.NewClass(
 			schoolId,
 			body.Name,
-			body.Weekday,
+			body.Weekdays,
 			body.StartTime,
 			body.EndTime,
 		)

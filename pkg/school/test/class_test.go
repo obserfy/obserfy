@@ -18,7 +18,7 @@ func (s *SchoolTestSuite) TestValidCreateClass() {
 		Name      string         `json:"name"`
 		StartTime time.Time      `json:"startTime"`
 		EndTime   time.Time      `json:"endTime"`
-		Weekday   []time.Weekday `json:"weekday"`
+		Weekdays  []time.Weekday `json:"weekdays"`
 	}{
 		gofakeit.Company(),
 		time.Now(),
@@ -39,10 +39,12 @@ func (s *SchoolTestSuite) TestValidCreateClass() {
 
 	var class postgres.Class
 	err := s.DB.Model(&class).
+		Relation("Weekdays").
 		Where("name=?", payload.Name).
 		Select()
 	assert.NoError(t, err)
 	assert.Equal(t, payload.EndTime.Unix(), class.EndTime.Unix())
 	assert.Equal(t, payload.StartTime.Unix(), class.StartTime.Unix())
+	assert.Equal(t, len(payload.Weekdays), len(class.Weekdays))
 	assert.Equal(t, newSchool.Id, class.SchoolId)
 }
