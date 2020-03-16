@@ -66,9 +66,9 @@ func NewServer(logger *zap.Logger) Server {
 // This function aims to remove the older cookie when user gets a 400
 func invalidateOldSessionCookie() *http.Cookie {
 	cookie := http.Cookie{
-		Name:  "session",
-		Value: "",
-		Path:  "/",
+		Name:     "session",
+		Value:    "",
+		Path:     "/",
 		Secure:   true,
 		HttpOnly: true,
 		MaxAge:   0,
