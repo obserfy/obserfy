@@ -2,10 +2,12 @@ package observation
 
 import (
 	"github.com/chrsep/vor/pkg/postgres"
+	"github.com/chrsep/vor/pkg/auth"
 	"github.com/chrsep/vor/pkg/rest"
 	"github.com/go-chi/chi"
 	"github.com/go-playground/validator/v10"
 	"net/http"
+	"github.com/go-pg/pg/v9"
 	"time"
 )
 
@@ -17,13 +19,40 @@ type Store interface {
 
 func NewRouter(s rest.Server, store Store) *chi.Mux {
 	r := chi.NewRouter()
+	r.Use(authorizationMiddleware(s,store))
 	r.Method("DELETE", "/{observationId}", deleteObservation(s, store))
 	// TODO: Use patch with upsert instead of PUT.
 	r.Method("PUT", "/{observationId}", updateObservation(s, store))
 	r.Method("GET", "/{observationId}", getObservation(s, store))
 	return r
 }
+func  authorizationMiddleware(s rest.Server,store Store) func(next http.Handler) http.Handler {
+	return func(next http.Handler) http.Handler {
+		return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+			observationId := chi.URLParam(r, "observationId")
 
+			// Verify user access to the school
+			session, ok := auth.GetSessionFromCtx(r.Context())
+			if !ok {
+				return auth.NewGetSessionError()
+			}
+			observation, err := store.GetObservation(observationId)
+			if err == pg.ErrNoRows {
+				return &rest.Error{http.StatusNotFound, "We can't find the specified observation", err}
+			} else if err != nil {
+				return &rest.Error{http.StatusInternalServerError, "Failed getting observation", err}
+			}
+
+			// Check if user is related to the school
+			if session.UserId!=observation.CreatorId{
+				return &rest.Error{http.StatusUnauthorized, "You don't have access to this observation", err}
+			}
+
+			next.ServeHTTP(w, r)
+			return nil
+		})
+	}
+}
 func updateObservation(s rest.Server, store Store) rest.Handler {
 	type requestBody struct {
 		ShortDesc  string `json:"shortDesc"`

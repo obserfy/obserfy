@@ -6,13 +6,19 @@ import (
 	"github.com/chrsep/vor/pkg/rest"
 	"github.com/go-chi/chi"
 	richErrors "github.com/pkg/errors"
+	"github.com/go-pg/pg/v9"
 	"net/http"
 	"time"
 )
-
+// type server struct {
+// 	rest.Server
+// 	store Store
+// }
 func NewRouter(s rest.Server, store postgres.StudentStore) *chi.Mux {
+	// server := server{s, store}
 	r := chi.NewRouter()
 	r.Route("/{studentId}", func(r chi.Router) {
+		r.Use(authorizationMiddleware(s,store))
 		r.Method("GET", "/", getStudent(s, store))
 		r.Method("DELETE", "/", deleteStudent(s, store))
 		// TODO:Use PATCH instead of PUT, and implement UPSERT
@@ -26,7 +32,34 @@ func NewRouter(s rest.Server, store postgres.StudentStore) *chi.Mux {
 	})
 	return r
 }
+func  authorizationMiddleware(s rest.Server,store postgres.StudentStore) func(next http.Handler) http.Handler {
+	return func(next http.Handler) http.Handler {
+		return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+			studentId := chi.URLParam(r, "studentId")
 
+			// Verify user access to the school
+			session, ok := auth.GetSessionFromCtx(r.Context())
+			if !ok {
+				return auth.NewGetSessionError()
+			}
+			student, err := store.Get(studentId)
+			if err == pg.ErrNoRows {
+				return &rest.Error{http.StatusNotFound, "We can't find the specified student", err}
+			} else if err != nil {
+				return &rest.Error{http.StatusInternalServerError, "Failed getting student", err}
+			}
+
+			// Check if user is related to the school
+			userHasAccess,_ := store.CheckPermissions(student.SchoolId,session.UserId)
+			if !userHasAccess {
+				return &rest.Error{http.StatusUnauthorized, "You don't have access to this school", err}
+			}
+
+			next.ServeHTTP(w, r)
+			return nil
+		})
+	}
+}
 func getStudent(s rest.Server, store postgres.StudentStore) http.Handler {
 	type responseBody struct {
 		Id          string     `json:"id"`
