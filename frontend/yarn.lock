@@ -11128,12 +11128,12 @@ gatsby-plugin-emotion@^4.1.24:
     "@babel/runtime" "^7.7.6"
     "@emotion/babel-preset-css-prop" "^10.0.23"
 
-gatsby-plugin-guess-js@^1.1.31:
-  version "1.1.31"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-guess-js/-/gatsby-plugin-guess-js-1.1.31.tgz#1c97419f22db7a8acd859e3194929901f8efd20c"
-  integrity sha512-GJMG5K2jGOuoTrHcZDu8+dpsdsPJsK3bLJr1miXYm1mOEEUG2H6HAMpv1Qypsq9faD8koG48QztMq+MWZnDYUw==
+gatsby-plugin-guess-js@^1.1.32:
+  version "1.1.32"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-guess-js/-/gatsby-plugin-guess-js-1.1.32.tgz#091445f1cfa3414d50a314c8217ac4ca231d0126"
+  integrity sha512-1oJ3Hsp/aUfcA+rQDiOO511IRZp3md+da4CMOLjovxX7MZ9lBqrP+E+ifyCKMxEknE5oK8u9gZLWvyk9VZGcbw==
   dependencies:
-    "@babel/runtime" "^7.7.6"
+    "@babel/runtime" "^7.8.7"
     guess-webpack "~0.4.12"
 
 gatsby-plugin-intl3@./gatsby-plugin-intl3-v0.0.7.tgz:
