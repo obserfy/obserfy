@@ -61,7 +61,7 @@ func (s StudentStore) CheckPermissions(studentId string, userId string) (bool, e
 		Select(); err == pg.ErrNoRows {
 		return false, nil
 	} else if err != nil {
-		return false, err
+		return false, richErrors.Wrap(err, "failed checking user access to student")
 	}
 	if len(student.School.Users) > 0 {
 		return true, nil
