@@ -47,15 +47,15 @@ func (s StudentStore) GetObservations(studentId string) ([]Observation, error) {
 	}
 	return observations, nil
 }
-func (s StudentStore) CheckPermissions(schoolId string ,userId string) (bool,error){
+func (s StudentStore) CheckPermissions(schoolId string, userId string) (bool, error) {
 	var relation UserToSchool
 	// userHasAccess := false
-	if err:=s.Model(&relation).
-	Where("school_id=?",schoolId).
-	Where("user_id=?",userId).Select();err!=nil{
-		return false,err
+	if err := s.Model(&relation).
+		Where("school_id=?", schoolId).
+		Where("user_id=?", userId).Select(); err != nil {
+		return false, err
 	}
-	return true,nil
+	return true, nil
 }
 func (s StudentStore) GetProgress(studentId string) ([]StudentMaterialProgress, error) {
 	var progresses []StudentMaterialProgress
