@@ -3,6 +3,8 @@ package postgres
 import (
 	"time"
 
+	richErrors "github.com/pkg/errors"
+
 	"github.com/go-pg/pg/v9"
 	"github.com/go-pg/pg/v9/orm"
 	"github.com/google/uuid"
