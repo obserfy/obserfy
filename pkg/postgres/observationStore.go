@@ -36,7 +36,7 @@ func (s ObservationStore) CheckPermissions(observationId string, userId string) 
 		Select(); err == pg.ErrNoRows {
 		return false, nil
 	} else if err != nil {
-		return false, err
+		return false, richErrors.Wrap(err, "failed checking user access to observation")
 	}
 	// body, _ := json.Marshal(observation)
 	// fmt.Println(string(body))
