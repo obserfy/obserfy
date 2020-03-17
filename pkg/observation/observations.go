@@ -1,29 +1,33 @@
 package observation
 
 import (
+	"net/http"
+	"time"
+
 	"github.com/chrsep/vor/pkg/auth"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/rest"
 	"github.com/go-chi/chi"
-	"github.com/go-pg/pg/v9"
 	"github.com/go-playground/validator/v10"
-	"net/http"
-	"time"
 )
 
 type Store interface {
 	UpdateObservation(observationId string, shortDesc string, longDesc string, categoryId string) (*postgres.Observation, error)
 	DeleteObservation(observationId string) error
 	GetObservation(id string) (*postgres.Observation, error)
+	CheckPermissions(observationId string, userId string) (bool, error)
 }
 
 func NewRouter(s rest.Server, store Store) *chi.Mux {
 	r := chi.NewRouter()
-	r.Use(authorizationMiddleware(s, store))
-	r.Method("DELETE", "/{observationId}", deleteObservation(s, store))
-	// TODO: Use patch with upsert instead of PUT.
-	r.Method("PUT", "/{observationId}", updateObservation(s, store))
-	r.Method("GET", "/{observationId}", getObservation(s, store))
+	r.Route("/{observationId}", func(r chi.Router) {
+		r.Use(authorizationMiddleware(s, store))
+		r.Method("DELETE", "/", deleteObservation(s, store))
+		// TODO: Use patch with upsert instead of PUT.
+		r.Method("PUT", "/", updateObservation(s, store))
+		r.Method("GET", "/", getObservation(s, store))
+	})
+
 	return r
 }
 func authorizationMiddleware(s rest.Server, store Store) func(next http.Handler) http.Handler {
@@ -36,16 +40,11 @@ func authorizationMiddleware(s rest.Server, store Store) func(next http.Handler)
 			if !ok {
 				return auth.NewGetSessionError()
 			}
-			observation, err := store.GetObservation(observationId)
-			if err == pg.ErrNoRows {
-				return &rest.Error{http.StatusNotFound, "We can't find the specified observation", err}
-			} else if err != nil {
-				return &rest.Error{http.StatusInternalServerError, "Failed getting observation", err}
-			}
+			userHasAccess, err := store.CheckPermissions(observationId, session.UserId)
 
 			// Check if user is related to the school
-			if session.UserId != observation.CreatorId {
-				return &rest.Error{http.StatusUnauthorized, "You don't have access to this observation", err}
+			if !userHasAccess {
+				return &rest.Error{http.StatusNotFound, "Observation not found", err}
 			}
 
 			next.ServeHTTP(w, r)

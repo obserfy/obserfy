@@ -1,9 +1,11 @@
 package postgres
 
 import (
-	"github.com/go-pg/pg/v9"
-	"github.com/google/uuid"
 	"time"
+
+	"github.com/go-pg/pg/v9"
+	"github.com/go-pg/pg/v9/orm"
+	"github.com/google/uuid"
 )
 
 type StudentStore struct {
@@ -47,15 +49,26 @@ func (s StudentStore) GetObservations(studentId string) ([]Observation, error) {
 	}
 	return observations, nil
 }
-func (s StudentStore) CheckPermissions(schoolId string, userId string) (bool, error) {
-	var relation UserToSchool
-	// userHasAccess := false
-	if err := s.Model(&relation).
-		Where("school_id=?", schoolId).
-		Where("user_id=?", userId).Select(); err != nil {
+func (s StudentStore) CheckPermissions(studentId string, userId string) (bool, error) {
+	var student Student
+
+	if err := s.Model(&student).
+		Relation("School").
+		Relation("School.Users", func(q *orm.Query) (*orm.Query, error) {
+			return q.Where("user_id = ?", userId), nil
+		}).
+		Where("student.id=?", studentId).
+		Select(); err == pg.ErrNoRows {
+		return false, nil
+	} else if err != nil {
 		return false, err
 	}
-	return true, nil
+	if len(student.School.Users) > 0 {
+		return true, nil
+
+	} else {
+		return false, nil
+	}
 }
 func (s StudentStore) GetProgress(studentId string) ([]StudentMaterialProgress, error) {
 	var progresses []StudentMaterialProgress

@@ -1,20 +1,16 @@
 package student
 
 import (
+	"net/http"
+	"time"
+
 	"github.com/chrsep/vor/pkg/auth"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/rest"
 	"github.com/go-chi/chi"
-	"github.com/go-pg/pg/v9"
 	richErrors "github.com/pkg/errors"
-	"net/http"
-	"time"
 )
 
-// type server struct {
-// 	rest.Server
-// 	store Store
-// }
 func NewRouter(s rest.Server, store postgres.StudentStore) *chi.Mux {
 	// server := server{s, store}
 	r := chi.NewRouter()
@@ -43,17 +39,11 @@ func authorizationMiddleware(s rest.Server, store postgres.StudentStore) func(ne
 			if !ok {
 				return auth.NewGetSessionError()
 			}
-			student, err := store.Get(studentId)
-			if err == pg.ErrNoRows {
-				return &rest.Error{http.StatusNotFound, "We can't find the specified student", err}
-			} else if err != nil {
-				return &rest.Error{http.StatusInternalServerError, "Failed getting student", err}
-			}
 
 			// Check if user is related to the school
-			userHasAccess, _ := store.CheckPermissions(student.SchoolId, session.UserId)
+			userHasAccess, err := store.CheckPermissions(studentId, session.UserId)
 			if !userHasAccess {
-				return &rest.Error{http.StatusUnauthorized, "You don't have access to this school", err}
+				return &rest.Error{http.StatusNotFound, "We can't find the specified student", err}
 			}
 
 			next.ServeHTTP(w, r)
