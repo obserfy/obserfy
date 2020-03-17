@@ -9,6 +9,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
 	"testing"
+	"time"
 )
 
 type SchoolTestSuite struct {
@@ -28,6 +29,7 @@ func TestObservation(t *testing.T) {
 
 func (s *SchoolTestSuite) SaveNewSchool() *postgres.School {
 	t := s.T()
+	gofakeit.Seed(time.Now().UnixNano())
 	newUser := postgres.User{Id: uuid.New().String()}
 	newSchool := postgres.School{
 		Id:           uuid.New().String(),
