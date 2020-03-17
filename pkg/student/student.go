@@ -42,6 +42,10 @@ func authorizationMiddleware(s rest.Server, store postgres.StudentStore) func(ne
 
 			// Check if user is related to the school
 			userHasAccess, err := store.CheckPermissions(studentId, session.UserId)
+			if err != nil {
+				return &rest.Error{http.StatusInternalServerError, "Internal Server Error", err}
+
+			}
 			if !userHasAccess {
 				return &rest.Error{http.StatusNotFound, "We can't find the specified student", err}
 			}

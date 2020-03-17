@@ -41,7 +41,10 @@ func authorizationMiddleware(s rest.Server, store Store) func(next http.Handler)
 				return auth.NewGetSessionError()
 			}
 			userHasAccess, err := store.CheckPermissions(observationId, session.UserId)
+			if err != nil {
+				return &rest.Error{http.StatusInternalServerError, "Internal Server Error", err}
 
+			}
 			// Check if user is related to the school
 			if !userHasAccess {
 				return &rest.Error{http.StatusNotFound, "Observation not found", err}
