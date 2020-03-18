@@ -11,6 +11,52 @@ type ClassStore struct {
 	DB *pg.DB
 }
 
+func (s ClassStore) UpdateClass(id string, name string, weekdays []time.Weekday, startTime time.Time, endTime time.Time) (int, error) {
+	dbWeekdays := make([]Weekday, len(weekdays))
+	for i, weekday := range weekdays {
+		dbWeekdays[i] = Weekday{
+			ClassId: id,
+			Day:     weekday,
+		}
+	}
+	target := Class{
+		Id:        id,
+		Name:      name,
+		StartTime: startTime,
+		EndTime:   endTime,
+	}
+	var rowsEffected int
+	if err := s.DB.RunInTransaction(func(tx *pg.Tx) error {
+		result, err := s.DB.
+			Model(&target).
+			Where("id=?id").
+			UpdateNotZero()
+		if err != nil {
+			return richErrors.Wrap(err, "failed updating class")
+		}
+		rowsEffected = result.RowsAffected()
+		if weekdays != nil {
+			// Completely replace the weekdays with the new ones.
+			if _, err := s.DB.
+				Model((*Weekday)(nil)).
+				Where("class_id=? AND day NOT IN (?)", id, pg.In(weekdays)).
+				Delete(); err != nil {
+				return richErrors.Wrap(err, "failed deleting old not used weekdays")
+			}
+			if _, err := s.DB.
+				Model(&dbWeekdays).
+				OnConflict("DO NOTHING").
+				Insert(); err != nil {
+				return richErrors.Wrap(err, "failed inserting new weekdays")
+			}
+		}
+		return nil
+	}); err != nil {
+		return 0, err
+	}
+	return rowsEffected, nil
+}
+
 func (s ClassStore) GetClass(id string) (*class.Class, error) {
 	var target Class
 	if err := s.DB.Model(&target).

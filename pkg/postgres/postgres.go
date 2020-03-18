@@ -166,6 +166,6 @@ type Class struct {
 
 type Weekday struct {
 	ClassId string       `pg:",pk,type:uuid,on_delete:CASCADE"`
-	Day     time.Weekday `pg:",pk"`
+	Day     time.Weekday `pg:",pk,use_zero"`
 	Class   Class
 }
