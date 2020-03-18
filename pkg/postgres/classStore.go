@@ -19,7 +19,7 @@ func (s ClassStore) GetClass(id string) (*class.Class, error) {
 		Select(); err == pg.ErrNoRows {
 		return nil, nil
 	} else if err != nil {
-		return nil, richErrors.Wrap(err, "failed querying clsas")
+		return nil, richErrors.Wrap(err, "failed querying class")
 	}
 
 	days := make([]time.Weekday, len(target.Weekdays))

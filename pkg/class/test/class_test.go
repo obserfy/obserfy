@@ -110,3 +110,9 @@ func (s *ClassTestSuite) TestGetClass() {
 	assert.Equal(t, newClass.EndTime.Unix(), responseBody.EndTime.Unix())
 	assert.Equal(t, newClass.StartTime.Unix(), responseBody.StartTime.Unix())
 }
+
+func (s *ClassTestSuite) TestGetNonExistentClass() {
+	t := s.T()
+	result := s.CreateRequest("GET", "/"+uuid.New().String(), nil, nil)
+	assert.Equal(t, http.StatusNotFound, result.Code)
+}
