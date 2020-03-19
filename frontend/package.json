@@ -78,7 +78,7 @@
     "query-string": "^6.11.1",
     "react": "^16.13.0",
     "react-adaptive-hooks": "^0.0.8",
-    "react-dom": "^16.13.0",
+    "react-dom": "npm:@hot-loader/react-dom",
     "react-helmet-async": "^1.0.4",
     "react-query": "^1.0.26",
     "rebass": "^4.0.7",
