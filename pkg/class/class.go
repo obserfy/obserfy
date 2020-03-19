@@ -32,6 +32,25 @@ func authorizationMiddleware(s rest.Server, store Store) func(next http.Handler)
 				}
 			}
 
+			// TODO: Checking permission causes cyclic dependency, enable after
+			// 	refactor.
+			//session, ok := auth.GetSessionFromCtx(r.Context())
+			//if !ok {
+			//	return &rest.Error{
+			//		http.StatusUnauthorized,
+			//		"You're not logged in",
+			//		richErrors.New("no session found"),
+			//	}
+			//}
+			//authorized, err := store.CheckPermission(session.UserId, classId)
+			//if !authorized {
+			//	return &rest.Error{
+			//		Code:    http.StatusNotFound,
+			//		Message: "We can't find the given class",
+			//		Error:   err,
+			//	}
+			//}
+
 			next.ServeHTTP(w, r)
 			return nil
 		})

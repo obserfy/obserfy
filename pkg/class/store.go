@@ -14,4 +14,5 @@ type Store interface {
 	DeleteClass(id string) (int, error)
 	GetClass(id string) (*Class, error)
 	UpdateClass(id string, name string, weekdays []time.Weekday, startTime time.Time, endTime time.Time) (int, error)
+	CheckPermission(userId string, classId string) (bool, error)
 }

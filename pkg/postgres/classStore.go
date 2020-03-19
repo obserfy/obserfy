@@ -11,6 +11,21 @@ type ClassStore struct {
 	DB *pg.DB
 }
 
+func (s ClassStore) CheckPermission(userId string, classId string) (bool, error) {
+	var target Class
+	if err := s.DB.Model(&target).
+		Relation("School").
+		Relation("Users").
+		Where("id=?", classId).
+		Where("user.id=?", userId).
+		Select(); err == pg.ErrNoRows {
+		return false, nil
+	} else if err != nil {
+		return false, richErrors.Wrap(err, "failed getting user and class relationship")
+	}
+	return true, nil
+}
+
 func (s ClassStore) UpdateClass(id string, name string, weekdays []time.Weekday, startTime time.Time, endTime time.Time) (int, error) {
 	dbWeekdays := make([]Weekday, len(weekdays))
 	for i, weekday := range weekdays {
