@@ -36,13 +36,6 @@ module.exports = {
     author: `@chrsep`,
   },
   plugins: [
-    {
-      resolve: `gatsby-plugin-versioning`,
-      options: {
-        variableName: "OBSERFY_VERSION",
-        value: require("git-rev-sync").short(),
-      },
-    },
     `gatsby-plugin-layout`,
     `gatsby-plugin-typescript`,
     "gatsby-plugin-theme-ui",
@@ -168,6 +161,17 @@ module.exports = {
         color: `#00a06d`,
         // Disable the loading spinner.
         showSpinner: false,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-sentry",
+      options: {
+        dsn: "https://05a5ecaa1d8c4c01b96d2a7993fa9337@sentry.io/1852524",
+        // Optional settings, see https://docs.sentry.io/clients/node/config/#optional-settings
+        environment: process.env.NODE_ENV,
+        release: require("git-rev-sync").short(),
+        enabled: (() =>
+          ["production", "stage"].indexOf(process.env.NODE_ENV) !== -1)(),
       },
     },
     ...guessJsPlugin,

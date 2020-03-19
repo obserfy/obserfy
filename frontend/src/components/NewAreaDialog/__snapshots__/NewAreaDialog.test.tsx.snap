@@ -160,7 +160,7 @@ exports[`NewAreaDialog should render correctly 1`] = `
   box-sizing: border-box;
   font-size: 14px;
   font-weight: bold;
-  color: var(--theme-ui-colors-textPrimary,#00664a);
+  color: var(--theme-ui-colors-textPrimary,#027c5b);
   background-color: transparent;
   border-radius: 8px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;

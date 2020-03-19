@@ -1,7 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageSettings should render correctly 1`] = `
-.emotion-24 {
+@keyframes animation-0 {
+  0% {
+    background-color: rgba(165,165,165,0.05);
+  }
+
+  50% {
+    background-color: rgba(165,165,165,0.1);
+  }
+
+  100% {
+    background-color: rgba(165,165,165,0.05);
+  }
+}
+
+.emotion-31 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,12 +23,12 @@ exports[`PageSettings should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-24 {
+  .emotion-31 {
     font-size: 20px;
   }
 }
 
-.emotion-23 {
+.emotion-30 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -25,18 +39,18 @@ exports[`PageSettings should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-23 {
+  .emotion-30 {
     padding-top: 16px;
   }
 }
 
 @media screen and (min-width:52em) {
-  .emotion-23 {
+  .emotion-30 {
     padding-top: 32px;
   }
 }
 
-.emotion-3 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -45,6 +59,17 @@ exports[`PageSettings should render correctly 1`] = `
 }
 
 .emotion-0 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  border-radius: 8px;
+  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
+  animation: 1s ease-in-out 0s infinite animation-0;
+  width: 100%;
+  height: 60px;
+}
+
+.emotion-1 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -63,7 +88,7 @@ exports[`PageSettings should render correctly 1`] = `
   margin-left: 4px;
 }
 
-.emotion-2 {
+.emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -89,7 +114,7 @@ exports[`PageSettings should render correctly 1`] = `
   box-sizing: border-box;
   font-size: 14px;
   font-weight: bold;
-  color: var(--theme-ui-colors-textPrimary,#00664a);
+  color: var(--theme-ui-colors-textPrimary,#027c5b);
   background-color: transparent;
   border-radius: 8px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -116,25 +141,25 @@ exports[`PageSettings should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-2:disabled {
+.emotion-3:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-2:hover,
-.emotion-2:focus {
+.emotion-3:hover,
+.emotion-3:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-2:hover:disabled,
-.emotion-2:focus:disabled {
+.emotion-3:hover:disabled,
+.emotion-3:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-1 {
+.emotion-2 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -150,7 +175,7 @@ exports[`PageSettings should render correctly 1`] = `
   margin-right: 8px;
 }
 
-.emotion-8 {
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -164,7 +189,7 @@ exports[`PageSettings should render correctly 1`] = `
   margin-bottom: 8px;
 }
 
-.emotion-7 {
+.emotion-8 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -178,7 +203,7 @@ exports[`PageSettings should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-4 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -195,7 +220,7 @@ exports[`PageSettings should render correctly 1`] = `
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
 }
 
-.emotion-5 {
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -205,7 +230,7 @@ exports[`PageSettings should render correctly 1`] = `
   flex: 1;
 }
 
-.emotion-6 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -220,14 +245,14 @@ exports[`PageSettings should render correctly 1`] = `
   width: 20px;
 }
 
-.emotion-19 {
+.emotion-26 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   margin-bottom: 32px;
 }
 
-.emotion-18 {
+.emotion-25 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -240,13 +265,13 @@ exports[`PageSettings should render correctly 1`] = `
   overflow: hidden;
 }
 
-.emotion-16 {
+.emotion-23 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
 }
 
-.emotion-14 {
+.emotion-20 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -264,7 +289,7 @@ exports[`PageSettings should render correctly 1`] = `
   margin-bottom: 16px;
 }
 
-.emotion-15 {
+.emotion-22 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -279,7 +304,7 @@ exports[`PageSettings should render correctly 1`] = `
   line-height: 1.5em;
 }
 
-.emotion-21 {
+.emotion-28 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -305,7 +330,7 @@ exports[`PageSettings should render correctly 1`] = `
   box-sizing: border-box;
   font-size: 14px;
   font-weight: bold;
-  color: var(--theme-ui-colors-textPrimary,#00664a);
+  color: var(--theme-ui-colors-textPrimary,#027c5b);
   background-color: transparent;
   border-radius: 8px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -338,25 +363,25 @@ exports[`PageSettings should render correctly 1`] = `
   padding-bottom: 16px;
 }
 
-.emotion-21:disabled {
+.emotion-28:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-21:hover,
-.emotion-21:focus {
+.emotion-28:hover,
+.emotion-28:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-21:hover:disabled,
-.emotion-21:focus:disabled {
+.emotion-28:hover:disabled,
+.emotion-28:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-22 {
+.emotion-29 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -382,7 +407,7 @@ exports[`PageSettings should render correctly 1`] = `
   box-sizing: border-box;
   font-size: 14px;
   font-weight: bold;
-  color: var(--theme-ui-colors-textPrimary,#00664a);
+  color: var(--theme-ui-colors-textPrimary,#027c5b);
   background-color: transparent;
   border-radius: 8px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -415,45 +440,48 @@ exports[`PageSettings should render correctly 1`] = `
   padding-bottom: 16px;
 }
 
-.emotion-22:disabled {
+.emotion-29:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-22:hover,
-.emotion-22:focus {
+.emotion-29:hover,
+.emotion-29:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-22:hover:disabled,
-.emotion-22:focus:disabled {
+.emotion-29:hover:disabled,
+.emotion-29:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
 <div>
   <div
-    class="emotion-24"
+    class="emotion-31"
   >
     <div
-      class="emotion-23"
+      class="emotion-30"
     >
       <div
-        class="emotion-3"
+        class="emotion-4"
       >
-        <h3
+        <div
           class="emotion-0"
+        />
+        <h3
+          class="emotion-1"
         />
         <a
           href="/choose-school"
         >
           <button
-            class="emotion-2"
+            class="emotion-3"
           >
             <div
-              class="emotion-1"
+              class="emotion-2"
             />
             Switch School
           </button>
@@ -463,21 +491,21 @@ exports[`PageSettings should render correctly 1`] = `
         href="/dashboard/settings/curriculum"
       >
         <div
-          class="emotion-8"
+          class="emotion-9"
         >
           <div
-            class="emotion-7"
+            class="emotion-8"
           >
             <h6
-              class="emotion-4"
+              class="emotion-5"
             >
               Curriculum
             </h6>
             <div
-              class="emotion-5"
+              class="emotion-6"
             />
             <div
-              class="emotion-6"
+              class="emotion-7"
             />
           </div>
         </div>
@@ -486,44 +514,70 @@ exports[`PageSettings should render correctly 1`] = `
         href="/dashboard/settings/users"
       >
         <div
-          class="emotion-8"
+          class="emotion-9"
         >
           <div
-            class="emotion-7"
+            class="emotion-8"
           >
             <h6
-              class="emotion-4"
+              class="emotion-5"
             >
               Users
             </h6>
             <div
-              class="emotion-5"
+              class="emotion-6"
             />
             <div
+              class="emotion-7"
+            />
+          </div>
+        </div>
+      </a>
+      <a
+        href="/dashboard/settings/class"
+      >
+        <div
+          class="emotion-9"
+        >
+          <div
+            class="emotion-8"
+          >
+            <h6
+              class="emotion-5"
+            >
+              Class
+            </h6>
+            <div
               class="emotion-6"
+            />
+            <div
+              class="emotion-7"
             />
           </div>
         </div>
       </a>
       <div
-        class="emotion-19"
+        class="emotion-26"
       >
         <div
-          class="emotion-18"
+          class="emotion-25"
         >
           <div
-            class="emotion-7"
+            class="emotion-8"
           >
             <div
-              class="emotion-16"
+              class="emotion-23"
             >
               <h6
-                class="emotion-14"
+                class="emotion-20"
               >
                 Invite your co-workers
               </h6>
+              <div
+                class="emotion-0"
+              />
               <p
-                class="emotion-15"
+                class="emotion-22"
                 id="shareLink"
               />
             </div>
@@ -531,15 +585,15 @@ exports[`PageSettings should render correctly 1`] = `
         </div>
       </div>
       <button
-        class="emotion-21"
+        class="emotion-28"
       >
         <div
-          class="emotion-1"
+          class="emotion-2"
         />
         Dark Mode
       </button>
       <button
-        class="emotion-22"
+        class="emotion-29"
       >
         Log Out
       </button>
