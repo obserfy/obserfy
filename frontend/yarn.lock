@@ -18530,16 +18530,7 @@ react-docgen@^5.0.0:
     node-dir "^0.1.10"
     strip-indent "^3.0.0"
 
-react-dom@^0.0.0-experimental-355970aa4:
-  version "0.0.0-experimental-355970aa4"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-0.0.0-experimental-355970aa4.tgz#16becc077d20fd1e1a71acb4e806b0088b887878"
-  integrity sha512-jSz7J06cuTot4oPbaPHbjoqhlSvcLQV3Sth4s+IOq2F52eG0KFIW5w6IYBfDAUWx61Myma4/E60s58gv7YaCaA==
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-    scheduler "0.0.0-experimental-355970aa4"
-
-react-dom@^16.3.0:
+react-dom@^16.13.0, react-dom@^16.3.0:
   version "16.13.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.13.0.tgz#cdde54b48eb9e8a0ca1b3dc9943d9bb409b81866"
   integrity sha512-y09d2c4cG220DzdlFkPTnVvGTszVvNpC73v+AaLGLHbkpy3SSgvYq8x0rNwPJ/Rk/CicTNgk0hbHNw1gMEZAXg==
@@ -18873,15 +18864,7 @@ react-virtualized@^9.19.1:
     prop-types "^15.6.0"
     react-lifecycles-compat "^3.0.4"
 
-react@^0.0.0-experimental-355970aa4:
-  version "0.0.0-experimental-355970aa4"
-  resolved "https://registry.yarnpkg.com/react/-/react-0.0.0-experimental-355970aa4.tgz#71522be584f63345c3f0aedfbc59eb96669a7200"
-  integrity sha512-9Yj8j57ncXUEBHR3P+t1yvfu6J6HCsFo5GHvs/BZA5D2cH3/woCjkMdOF41InVBxVxDKw1svg5QgKkVBdy5xZA==
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-
-react@^16.3.0:
+react@^16.13.0, react@^16.3.0:
   version "16.13.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.13.0.tgz#d046eabcdf64e457bbeed1e792e235e1b9934cf7"
   integrity sha512-TSavZz2iSLkq5/oiE7gnFzmURKZMltmi193rm5HEoUDAXpzT9Kzw6oNZnGoai/4+fUnm7FqS5dwgUL34TujcWQ==
@@ -19873,14 +19856,6 @@ saxes@^3.1.9:
   integrity sha512-Ydydq3zC+WYDJK1+gRxRapLIED9PWeSuuS41wqyoRmzvhhh9nc+QQrVMKJYzJFULazeGhzSV0QleN2wD3boh2g==
   dependencies:
     xmlchars "^2.1.1"
-
-scheduler@0.0.0-experimental-355970aa4:
-  version "0.0.0-experimental-355970aa4"
-  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.0.0-experimental-355970aa4.tgz#f1914e195e9741d7d1800f7ea810f24a7a8a1852"
-  integrity sha512-G4xjLf2BY8adMlOXPSqMf2RjsNyaGvYGQC6m3rAPVDIO71ivadpTTgdpjKZgLVDb10T9cJhdfV7h1GKX12c6Og==
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
 
 scheduler@^0.18.0:
   version "0.18.0"
