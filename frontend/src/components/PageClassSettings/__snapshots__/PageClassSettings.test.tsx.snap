@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageClassSettings should render correctly 1`] = `
-.emotion-4 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,15 +9,25 @@ exports[`PageClassSettings should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-4 {
+  .emotion-7 {
     font-size: 20px;
   }
 }
 
-.emotion-3 {
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .emotion-2 {
@@ -71,12 +81,123 @@ exports[`PageClassSettings should render correctly 1`] = `
   }
 }
 
+.emotion-5 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin: 16px;
+  padding-top: 32px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-3 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  text-align: center;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  font-size: 16px;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  margin-left: 32px;
+  margin-right: 32px;
+  max-width: 300px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-3 {
+    font-size: 14px;
+  }
+}
+
+.emotion-4 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  text-align: center;
+  line-height: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: inherit;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: white;
+  background-color: var(--theme-ui-colors-primary,#00e399);
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  text-transform: capitalize;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--theme-ui-colors-onPrimary,#000);
+  background-color: var(--theme-ui-colors-primary,#00e399);
+  border-radius: 8px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  white-space: nowrap;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-4:disabled {
+  opacity: 0.38;
+  cursor: auto;
+}
+
+.emotion-4:hover,
+.emotion-4:focus {
+  background-color: var(--theme-ui-colors-primaryDark,#00a06d);
+  outline: none;
+}
+
+.emotion-4:hover:disabled,
+.emotion-4:focus:disabled {
+  background-color: var(--theme-ui-colors-primary,#00e399);
+}
+
 <div>
   <div
-    class="emotion-4"
+    class="emotion-7"
   >
     <div
-      class="emotion-3"
+      class="emotion-6"
     >
       <a
         href="/dashboard/settings"
@@ -94,6 +215,68 @@ exports[`PageClassSettings should render correctly 1`] = `
           </p>
         </div>
       </a>
+      <div
+        class="emotion-5"
+      >
+        <div
+          class=" gatsby-image-wrapper"
+          style="position: relative; overflow: hidden; display: inline-block; width: 230px; height: 230px;"
+        >
+          <img
+            alt=""
+            aria-hidden="true"
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAABCSAAAQkgGCRHbKAAAC70lEQVQ4y61SS09TQRS+RSJLoCtX7l34S4wuXBiNgoGAiTxMVGICC41BICxYGMOClRtd+AjRBGNcEJCXKCLlUaEUWvqAtrSU+2xvkd7PcwbmKkiUhZN8OWe+OfPNNydHCYfDzv+EEo1GcRQikcgf+8PcUVAMw3BM0xSwLMvRdd1RVZVyU+QMeZbP50Vk8D1N09wzCRZELpdzwXsqQiq9BYOiaehIplIIBoOIx2Kw7TwKhYKoIUFxx7Zt0GOCOyDIBbwedXSg7tJ57FoaTHsHoWAAw0NDmJ7xQdMN8Sg5F/XkSoi5gnwgD5mMx+OoqKxE782LcCwdmcA3JHyjWI4lEZkZg7YegmHRTw4J8iMM4ZBJ6ptw19LSAkVR8P5pJ5zQCFLjb6DlCkhMDyE1+Q66ur13eV+QzUjHDCHIPeDIq7W1TQjODbQBm6+gfnmGxNtepEnYMC0BKXJY0HUoe5DLWdjaNrE8+RxY6gZWemGsjmMrQL1jMcPcc7L/vSMFpdU9UIG1A6QG4Sx2C+SyyzAKgMZf3Rf7p0MXJKgaNuzoB3LYSehCfnMWmpGny+qBXv1NsMggoqgRbNMsDq+tOn0LH/HEP+GMJpIo0PCqmubWMTgnQTeXUZH9Y1g0iyjY6A9v4PJ02KlaWHd6QwkUaZiN3+bNrSeO5/d3jnuYliCH6R3LTA+uxbPVn+adRv/abutS1Emq2pahaRldNzKyltykNcHpGc4lz18uZ9CmfDWT9dLklLZ+/X6uZmoJDf4IbgWTeBCIXWA+lFW9XMfgOzS7FTKXUTlqXR3zPawlwfrpwOs70W3cmA9XKcddpOohdc9IZN3Tv5H1MHd93OevHvO9bLdwsmFh7UeTP3Kb+Z6V9VKuZfA9+rKby/jL1eelEhED6TNV47OR2onZU7wnwYGGuVA3502LsRPHdtre/0II3u97XHNvaOSa5BsX41eaw5kezuumFo8v6C1VhKC3rORumaKclXxLT+fpuub6ruPq/ATofaLgDBI6vwAAAABJRU5ErkJggg=="
+            style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 1; transition-delay: 500ms;"
+          />
+          <picture>
+            <source
+              srcset="/static/dc46d8a960f2f0c3eb06a2398132dc4b/39b14/calendar-colour.webp 1x,
+/static/dc46d8a960f2f0c3eb06a2398132dc4b/3507d/calendar-colour.webp 1.5x,
+/static/dc46d8a960f2f0c3eb06a2398132dc4b/2a7c4/calendar-colour.webp 2x"
+              type="image/webp"
+            />
+            <source
+              srcset="/static/dc46d8a960f2f0c3eb06a2398132dc4b/11870/calendar-colour.png 1x,
+/static/dc46d8a960f2f0c3eb06a2398132dc4b/03505/calendar-colour.png 1.5x,
+/static/dc46d8a960f2f0c3eb06a2398132dc4b/7523b/calendar-colour.png 2x"
+            />
+            <img
+              alt=""
+              height="230"
+              loading="lazy"
+              src="/static/dc46d8a960f2f0c3eb06a2398132dc4b/11870/calendar-colour.png"
+              srcset="/static/dc46d8a960f2f0c3eb06a2398132dc4b/11870/calendar-colour.png 1x,
+/static/dc46d8a960f2f0c3eb06a2398132dc4b/03505/calendar-colour.png 1.5x,
+/static/dc46d8a960f2f0c3eb06a2398132dc4b/7523b/calendar-colour.png 2x"
+              style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0; transition: opacity 500ms;"
+              width="230"
+            />
+          </picture>
+          <noscript>
+            &lt;picture&gt;&lt;source type='image/webp' srcset="/static/dc46d8a960f2f0c3eb06a2398132dc4b/39b14/calendar-colour.webp 1x,
+/static/dc46d8a960f2f0c3eb06a2398132dc4b/3507d/calendar-colour.webp 1.5x,
+/static/dc46d8a960f2f0c3eb06a2398132dc4b/2a7c4/calendar-colour.webp 2x" /&gt;&lt;source srcset="/static/dc46d8a960f2f0c3eb06a2398132dc4b/11870/calendar-colour.png 1x,
+/static/dc46d8a960f2f0c3eb06a2398132dc4b/03505/calendar-colour.png 1.5x,
+/static/dc46d8a960f2f0c3eb06a2398132dc4b/7523b/calendar-colour.png 2x" /&gt;&lt;img loading="lazy" width="230" height="230" srcset="/static/dc46d8a960f2f0c3eb06a2398132dc4b/11870/calendar-colour.png 1x,
+/static/dc46d8a960f2f0c3eb06a2398132dc4b/03505/calendar-colour.png 1.5x,
+/static/dc46d8a960f2f0c3eb06a2398132dc4b/7523b/calendar-colour.png 2x" src="/static/dc46d8a960f2f0c3eb06a2398132dc4b/11870/calendar-colour.png" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/&gt;&lt;/picture&gt;
+          </noscript>
+        </div>
+        <p
+          class="emotion-3"
+        >
+          Tell us about your classes, We'll help you track your students attendance.
+        </p>
+        <a
+          href="/dashboard/observe"
+        >
+          <button
+            class="emotion-4"
+          >
+            New Class
+          </button>
+        </a>
+      </div>
     </div>
   </div>
 </div>
