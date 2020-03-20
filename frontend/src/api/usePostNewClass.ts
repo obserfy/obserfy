@@ -1,4 +1,9 @@
-import { MutateFunction, MutationState, useMutation } from "react-query"
+import {
+  MutateFunction,
+  MutationState,
+  queryCache,
+  useMutation,
+} from "react-query"
 import { navigate } from "gatsby"
 import { ApiError, BASE_URL } from "./useApi"
 import { getSchoolId } from "../hooks/schoolIdState"
@@ -35,7 +40,11 @@ const usePostNewClass = (): [
     return result
   }
 
-  return useMutation<Response, Class>(fetchApi)
+  return useMutation<Response, Class>(fetchApi, {
+    onSuccess: async () => {
+      await queryCache.refetchQueries(["classes", schoolId])
+    },
+  })
 }
 
 export default usePostNewClass

@@ -6,6 +6,7 @@ import {
 } from "react-query"
 import { navigate } from "gatsby"
 import { ApiError, BASE_URL } from "./useApi"
+import { getSchoolId } from "../hooks/schoolIdState"
 
 interface Class {
   name: string
@@ -38,7 +39,10 @@ const usePatchClass = (
 
   return useMutation<Response, Class>(fetchApi, {
     onSuccess: async () => {
-      await queryCache.refetchQueries(["class", classId])
+      await Promise.all([
+        queryCache.refetchQueries(["class", classId]),
+        queryCache.refetchQueries(["classes", getSchoolId()]),
+      ])
     },
   })
 }
