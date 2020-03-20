@@ -20,6 +20,7 @@ jobs:
           root: ../
           paths:
             - repo/frontend/node_modules
+            - repo/frontend/.cache
             - repo/frontend/public
             - .cache/Cypress
       - save_cache:
@@ -37,6 +38,8 @@ jobs:
     machine:
       image: ubuntu-1604:201903-01
     working_directory: ~/repo
+    environment:
+      NODE_ENV: "staging"
     steps:
       - checkout
       - attach_workspace:

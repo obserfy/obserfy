@@ -55,7 +55,7 @@ interface Navigator {
 declare module "gatsby-plugin-intl3" {
   // eslint-disable-next-line import/no-duplicates
   import { FC } from "react"
-  import { navigate as gatsbyNavigate, GatsbyLinkProps } from "gatsby"
+  import { GatsbyLinkProps, navigate as gatsbyNavigate } from "gatsby"
 
   export * from "react-intl"
   export const changeLocale: (locale: string) => void
@@ -65,8 +65,8 @@ declare module "gatsby-plugin-intl3" {
 }
 
 declare const $crisp: any | undefined
+declare const Sentry: typeof import("@sentry/browser")
 
 declare interface Window {
   CRISP_TOKEN_ID?: string
 }
-

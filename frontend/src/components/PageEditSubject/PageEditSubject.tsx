@@ -54,7 +54,7 @@ export const PageEditSubject: FC<Props> = ({ areaId, subjectId }) => {
 
   async function updateSubject(): Promise<void> {
     setSubmitting(true)
-    if (subject.data === null) return
+    if (!subject.data) return
     const response = await updateSubjectApi({
       id: subject.data.id,
       order: subject.data.order,

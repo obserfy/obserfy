@@ -14,13 +14,21 @@ func NewMiddleware(s rest.Server, store postgres.AuthStore) func(next http.Handl
 			// Get session cookie
 			cookie, err := r.Cookie("session")
 			if err != nil {
-				return &rest.Error{Code: http.StatusUnauthorized, Message: "Invalid session", Error: err}
+				return &rest.Error{
+					Code:    http.StatusUnauthorized,
+					Message: "Invalid session",
+					Error:   err,
+				}
 			}
 
 			// Get related session
 			session, err := store.GetSession(cookie.Value)
 			if err != nil {
-				return &rest.Error{Code: http.StatusUnauthorized, Message: "Invalid session", Error: err}
+				return &rest.Error{
+					Code:    http.StatusUnauthorized,
+					Message: "Invalid session",
+					Error:   err,
+				}
 			}
 
 			// Attach session object to context for further use on other handlers

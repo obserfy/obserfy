@@ -112,4 +112,3 @@ func (s *baseCurriculumTestSuite) testRequest(method string, path string, bodyJs
 	s.handler(s.w, req)
 	return s.w
 }
-

@@ -2,7 +2,10 @@ package testutils
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
+	"fmt"
+	"github.com/chrsep/vor/pkg/auth"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/rest"
 	"github.com/go-pg/pg/v9"
@@ -11,6 +14,7 @@ import (
 	"go.uber.org/zap/zaptest"
 	"net/http"
 	"net/http/httptest"
+	"time"
 )
 
 type BaseTestSuite struct {
@@ -40,6 +44,19 @@ func connectTestDB() (*pg.DB, error) {
 		"localhost:5432",
 		nil,
 	)
+
+	// Wait until connection is healthy
+	for {
+		_, err := db.Exec("SELECT 1")
+		if err == nil {
+			break
+		} else {
+			fmt.Println("Error: PostgreSQL is down")
+			fmt.Println(err)
+			time.Sleep(1000 * time.Millisecond)
+		}
+	}
+
 	err := postgres.InitTables(db)
 	if err != nil {
 		return nil, err
@@ -47,12 +64,20 @@ func connectTestDB() (*pg.DB, error) {
 	return db, nil
 }
 
-func (s *BaseTestSuite) CreateRequest(method string, path string, bodyJson interface{}) *httptest.ResponseRecorder {
+func (s *BaseTestSuite) CreateRequest(method string, path string, bodyJson interface{}, session *postgres.Session) *httptest.ResponseRecorder {
 	w := httptest.NewRecorder()
 	body, err := json.Marshal(bodyJson)
 	assert.NoError(s.T(), err)
 
 	req := httptest.NewRequest(method, path, bytes.NewBuffer(body))
+	if session != nil {
+		err := s.DB.Insert(session)
+		assert.NoError(s.T(), err)
+		ctx := context.WithValue(req.Context(), auth.SessionCtxKey, session)
+		s.Handler(w, req.WithContext(ctx))
+		return w
+	}
+
 	s.Handler(w, req)
 	return w
 }

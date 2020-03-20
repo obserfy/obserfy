@@ -56,6 +56,7 @@ func NewRouter(s rest.Server, store Store) *chi.Mux {
 
 	r.Method("GET", "/subjects/{subjectId}", server.getSubject())
 	r.Method("PUT", "/subjects/{subjectId}", server.replaceSubject())
+	// TODO: This is not used, refactor after curriculum got e2e test.
 	r.Method("PATCH", "/subjects/{subjectId}", server.updateSubject())
 	r.Method("DELETE", "/subjects/{subjectId}", server.deleteSubject())
 	r.Method("GET", "/subjects/{subjectId}/materials", server.getSubjectMaterials())

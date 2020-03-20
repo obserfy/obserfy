@@ -5,7 +5,7 @@ const themeUiTheme = {
     text: "rgba(0,0,0,0.87)",
     textMediumEmphasis: "rgba(0,0,0, 0.60)",
     textDisabled: "rgba(0,0,0, 0.38)",
-    textPrimary: "#00664a",
+    textPrimary: "#027c5b",
 
     background: "#F7F8FA",
     onBackground: "rgba(0,0,0,0.87)",
@@ -119,6 +119,9 @@ const themeUiTheme = {
 
         tintError: "rgba(213,0,0,0.08)",
         onTintError: "#ff0000",
+
+        error: "#ff0000",
+        onError: "#000",
       },
     },
   },
