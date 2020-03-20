@@ -119,6 +119,9 @@ const themeUiTheme = {
 
         tintError: "rgba(213,0,0,0.08)",
         onTintError: "#ff0000",
+
+        error: "#ff0000",
+        onError: "#000",
       },
     },
   },

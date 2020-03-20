@@ -197,8 +197,10 @@ func (s SchoolStore) NewClass(id string, name string, weekdays []time.Weekday, s
 		if err := tx.Insert(&newClass); err != nil {
 			return richErrors.Wrap(err, "Failed saving new class")
 		}
-		if err := tx.Insert(&dbWeekdays); err != nil {
-			return richErrors.Wrap(err, "Failed saving weekdays")
+		if len(dbWeekdays) > 0 {
+			if err := tx.Insert(&dbWeekdays); err != nil {
+				return richErrors.Wrap(err, "Failed saving weekdays")
+			}
 		}
 		return nil
 	}); err != nil {
