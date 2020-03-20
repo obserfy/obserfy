@@ -16,6 +16,7 @@ import useGetClass from "../../api/useGetClass"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import usePatchClass from "../../api/usePatchClass"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
+import DeleteClassDialog from "../DeleteClassDialog/DeleteClassDialog"
 
 interface Props {
   classId: string
@@ -25,6 +26,7 @@ export const PageEditClass: FC<Props> = ({ classId }) => {
   const [startTime, setStartTime] = useState("09:00")
   const [endTime, setEndTime] = useState("10:00")
   const [weekdays, setWeekdays] = useImmer<number[]>([])
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false)
   const [mutate, { status, error }] = usePatchClass(classId)
   const classes = useGetClass(classId)
   const isLoaded = useRef(false)
@@ -55,75 +57,95 @@ export const PageEditClass: FC<Props> = ({ classId }) => {
   }
 
   return (
-    <Box maxWidth="maxWidth.sm" margin="auto">
-      <BackNavigation to={CLASS_SETTINGS_URL} text="Class" />
-      <Typography.H5 m={3}>Edit Class</Typography.H5>
-      {classes.status === "loading" && <LoadingState />}
-      {classes.status === "success" && (
-        <Box m={3}>
-          <Input
-            label="Name"
-            width="100%"
-            mb={3}
-            value={name}
-            onChange={e => setName(e.target.value)}
-          />
-          <Flex>
+    <>
+      <Box maxWidth="maxWidth.sm" margin="auto">
+        <BackNavigation to={CLASS_SETTINGS_URL} text="Class" />
+        <Typography.H5 m={3}>Edit Class</Typography.H5>
+        {classes.status === "loading" && <LoadingState />}
+        {classes.status === "success" && (
+          <Box m={3}>
             <Input
-              type="time"
-              value={startTime}
-              onChange={e => setStartTime(e.target.value)}
-              label="Start Time"
+              label="Name"
               width="100%"
               mb={3}
-              mr={3}
+              value={name}
+              onChange={e => setName(e.target.value)}
             />
-            <Input
-              type="time"
-              value={endTime}
-              onChange={e => setEndTime(e.target.value)}
-              label="End Time"
-              width="100%"
-              mb={3}
-            />
-          </Flex>
-          <Typography.Body mb={2} color="textMediumEmphasis">
-            Available every
-          </Typography.Body>
-          <Flex mb={3} flexWrap="wrap">
-            {WEEKDAYS.map((weekday, i) => (
-              <Chip
-                key={weekday}
-                text={weekday}
-                activeBackground="primary"
-                isActive={weekdays.includes(i)}
-                onClick={() =>
-                  setWeekdays(draft => {
-                    if (draft.includes(i)) {
-                      return draft.filter(item => item !== i)
-                    }
-                    return [...draft, i]
-                  })
-                }
+            <Flex>
+              <Input
+                type="time"
+                value={startTime}
+                onChange={e => setStartTime(e.target.value)}
+                label="Start Time"
+                width="100%"
+                mb={3}
+                mr={3}
               />
-            ))}
-          </Flex>
-          <Button
-            width="100%"
-            disabled={!valid || status === "loading"}
-            onClick={patchClass}
-          >
-            {status === "loading" && (
-              <LoadingIndicator mr={2} color="onPrimary" />
-            )}
-            Save
-          </Button>
-          <Typography.Body textAlign="center" m={3} color="error">
-            {error?.message}
-          </Typography.Body>
-        </Box>
+              <Input
+                type="time"
+                value={endTime}
+                onChange={e => setEndTime(e.target.value)}
+                label="End Time"
+                width="100%"
+                mb={3}
+              />
+            </Flex>
+            <Typography.Body mb={2} color="textMediumEmphasis">
+              Available every
+            </Typography.Body>
+            <Flex mb={3} flexWrap="wrap">
+              {WEEKDAYS.map((weekday, i) => (
+                <Chip
+                  key={weekday}
+                  text={weekday}
+                  activeBackground="primary"
+                  isActive={weekdays.includes(i)}
+                  onClick={() =>
+                    setWeekdays(draft => {
+                      if (draft.includes(i)) {
+                        return draft.filter(item => item !== i)
+                      }
+                      return [...draft, i]
+                    })
+                  }
+                />
+              ))}
+            </Flex>
+            <Flex>
+              <Button
+                variant="outline"
+                mr={3}
+                color="danger"
+                sx={{ flexShrink: 0 }}
+                onClick={() => setShowDeleteDialog(true)}
+              >
+                Delete
+              </Button>
+              <Button
+                width="100%"
+                disabled={!valid || status === "loading"}
+                onClick={patchClass}
+              >
+                {status === "loading" && (
+                  <LoadingIndicator mr={2} color="onPrimary" />
+                )}
+                Save
+              </Button>
+            </Flex>
+            <Typography.Body textAlign="center" m={3} color="error">
+              {error?.message}
+            </Typography.Body>
+          </Box>
+        )}
+      </Box>
+      {showDeleteDialog && (
+        <DeleteClassDialog
+          onDismiss={() => setShowDeleteDialog(false)}
+          classId={classId}
+          name={classes.data?.name ?? ""}
+        />
       )}
-    </Box>
+    </>
   )
 }
 
