@@ -1,7 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageClassSettings should render correctly 1`] = `
-.emotion-7 {
+@keyframes animation-0 {
+  0% {
+    background-color: rgba(165,165,165,0.05);
+  }
+
+  50% {
+    background-color: rgba(165,165,165,0.1);
+  }
+
+  100% {
+    background-color: rgba(165,165,165,0.05);
+  }
+}
+
+@keyframes animation-0 {
+  0% {
+    background-color: rgba(165,165,165,0.05);
+  }
+
+  50% {
+    background-color: rgba(165,165,165,0.1);
+  }
+
+  100% {
+    background-color: rgba(165,165,165,0.05);
+  }
+}
+
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,12 +37,12 @@ exports[`PageClassSettings should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-7 {
+  .emotion-9 {
     font-size: 20px;
   }
 }
 
-.emotion-6 {
+.emotion-8 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -81,123 +109,43 @@ exports[`PageClassSettings should render correctly 1`] = `
   }
 }
 
-.emotion-5 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
   margin: 16px;
-  padding-top: 32px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: rgba(0,0,0,0.88);
-  font-size: 1.6rem;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 400;
-  line-height: 3rem;
-  text-align: center;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
-  font-size: 16px;
-  margin-top: 32px;
-  margin-bottom: 32px;
-  margin-left: 32px;
-  margin-right: 32px;
-  max-width: 300px;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-3 {
-    font-size: 14px;
-  }
+  border-radius: 8px;
+  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
+  animation: 1s ease-in-out 0s infinite animation-0;
+  width: 20rem;
+  height: 48px;
+  margin-bottom: 16px;
 }
 
 .emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  display: inline-block;
-  text-align: center;
-  line-height: inherit;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  font-size: inherit;
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  color: white;
-  background-color: var(--theme-ui-colors-primary,#00e399);
-  border: 0;
-  border-radius: 4px;
-  cursor: pointer;
-  text-transform: capitalize;
-  box-sizing: border-box;
-  font-size: 14px;
-  font-weight: bold;
-  color: var(--theme-ui-colors-onPrimary,#000);
-  background-color: var(--theme-ui-colors-primary,#00e399);
   border-radius: 8px;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 16px;
-  padding-right: 16px;
-  white-space: nowrap;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.emotion-4:disabled {
-  opacity: 0.38;
-  cursor: auto;
-}
-
-.emotion-4:hover,
-.emotion-4:focus {
-  background-color: var(--theme-ui-colors-primaryDark,#00a06d);
-  outline: none;
-}
-
-.emotion-4:hover:disabled,
-.emotion-4:focus:disabled {
-  background-color: var(--theme-ui-colors-primary,#00e399);
+  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
+  animation: 1s ease-in-out 0s infinite animation-0;
+  width: 100%;
+  height: 62px;
+  margin-bottom: 8px;
 }
 
 <div>
   <div
-    class="emotion-7"
+    class="emotion-9"
   >
     <div
-      class="emotion-6"
+      class="emotion-8"
     >
       <a
         href="/dashboard/settings"
@@ -216,66 +164,20 @@ exports[`PageClassSettings should render correctly 1`] = `
         </div>
       </a>
       <div
-        class="emotion-5"
+        class="emotion-7"
       >
         <div
-          class=" gatsby-image-wrapper"
-          style="position: relative; overflow: hidden; display: inline-block; width: 230px; height: 230px;"
-        >
-          <img
-            alt=""
-            aria-hidden="true"
-            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAADu0lEQVQ4y5VTX0xTZxT/AAn/NJsyEx90iT7w4NP2ssTEF2Xqy9RlTolEKKy0tIIWSouKCtmm4ixUCdHFabdlYwEKhagpVYhGYwwmDChOJeoQ8E+hQTOFev/23rNzLr0NJurcl/xyzvl95/zu+b7vXMZaHcBanXOAcctbQPveGMh/E/eh72Bofvv+R4QMBMWLfNVhtBMLfdU6JjN91VPELWg/8BhzH3+AeZkdNWGMn1BM9bTHXsniLj4qHZqFfHhG5CtfcBFbFMAckQRrRBYtEqgmCaBEASjDnFrMrcW6CszDWPoOUY/8cbRHGACUIlyIOkQtqKodVCgJTb0wYWxEFE1MTO4ZCgZPjI+OenD/HHItCHtUkqi2IRafQuxmiqruRtQjGnhB2Ivkjq05OV1b1nw2AiCUYbx1+K9gdzA4CH39A0+xc8xXrFFFKcZ8m6qqdVjrQZxFVFOH1EmhLMtki+7cvVuelpoqnLJsnsG45PnNCz+EBq6O/P0krIwPXBeEsVtVyBtUJWoRRdGGvhtFPdQxwkqCu5BwcxxXif62tdnZAcYYeN22QRju7JkMnPaLmBO6cb4/fLnpkipyxdSEqipmFCxH34L1VmqGQILlSPyGmz+jX7Fu/YaO+WnJcDuwHyDih5e9noehpm+Hnl38ie7OQEWqopixRhcsQp/EzAQSpHvykCjafdMi5N+71tgHo8cBRk4K3O3Otn/6etwy3p2KBSQ222FcUPNjgiYSpK9ZtNajItk8CPl64aEb4EE9wHQ/TcAWkY84YoWmdwiaGQZ6gglUuRjvy6CMea/D+AmAsQZQwtdoHPJEgav434JCVCLSsO+Kx7+xqwrWXjoIjv72X2mUZvhXdj1Xz59zh3GejmyJvZQFp59ey7jJ19jNzpRo/2eW3/UnjVWE55z61egvi4IOvVbnSXA7AcntnCzl0iDvDPxymjWaIMFbCRltVc/vT08ZIaoU4jDnzsnPRcEivVbnSTCFgGRK99iddJxBtuSk7QvmNgL7owJY+174qKNmA/H+p8Ppc/N5nk/TfZ1nr63VLFGzxwxHNcEzpc2sqwaF7Tkan8cS2H8tVKWHYc7LzQnka8tVeI8dK/idRVqTWYsTElqcVqJXXKhNEhU5XiMIQtwnG6/Xlvub2a//aFnJXAWjiW7jYi1udnSxJvv3mt9ZlcTWf8rea20+lK8dd9OebcXL64xf63yitzI3OVCjCSa6CpLY+66sBelah8syUgs+xtPp/Of2r5Z+8uWqI+imUpw0792a/wLBvdoIFlHJFwAAAABJRU5ErkJggg=="
-            style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 1; transition-delay: 500ms;"
-          />
-          <picture>
-            <source
-              srcset="/static/dc46d8a960f2f0c3eb06a2398132dc4b/39b14/calendar-colour.webp 1x,
-/static/dc46d8a960f2f0c3eb06a2398132dc4b/3507d/calendar-colour.webp 1.5x,
-/static/dc46d8a960f2f0c3eb06a2398132dc4b/2a7c4/calendar-colour.webp 2x"
-              type="image/webp"
-            />
-            <source
-              srcset="/static/dc46d8a960f2f0c3eb06a2398132dc4b/11870/calendar-colour.png 1x,
-/static/dc46d8a960f2f0c3eb06a2398132dc4b/03505/calendar-colour.png 1.5x,
-/static/dc46d8a960f2f0c3eb06a2398132dc4b/7523b/calendar-colour.png 2x"
-            />
-            <img
-              alt=""
-              height="230"
-              loading="lazy"
-              src="/static/dc46d8a960f2f0c3eb06a2398132dc4b/11870/calendar-colour.png"
-              srcset="/static/dc46d8a960f2f0c3eb06a2398132dc4b/11870/calendar-colour.png 1x,
-/static/dc46d8a960f2f0c3eb06a2398132dc4b/03505/calendar-colour.png 1.5x,
-/static/dc46d8a960f2f0c3eb06a2398132dc4b/7523b/calendar-colour.png 2x"
-              style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0; transition: opacity 500ms;"
-              width="230"
-            />
-          </picture>
-          <noscript>
-            &lt;picture&gt;&lt;source type='image/webp' srcset="/static/dc46d8a960f2f0c3eb06a2398132dc4b/39b14/calendar-colour.webp 1x,
-/static/dc46d8a960f2f0c3eb06a2398132dc4b/3507d/calendar-colour.webp 1.5x,
-/static/dc46d8a960f2f0c3eb06a2398132dc4b/2a7c4/calendar-colour.webp 2x" /&gt;&lt;source srcset="/static/dc46d8a960f2f0c3eb06a2398132dc4b/11870/calendar-colour.png 1x,
-/static/dc46d8a960f2f0c3eb06a2398132dc4b/03505/calendar-colour.png 1.5x,
-/static/dc46d8a960f2f0c3eb06a2398132dc4b/7523b/calendar-colour.png 2x" /&gt;&lt;img loading="lazy" width="230" height="230" srcset="/static/dc46d8a960f2f0c3eb06a2398132dc4b/11870/calendar-colour.png 1x,
-/static/dc46d8a960f2f0c3eb06a2398132dc4b/03505/calendar-colour.png 1.5x,
-/static/dc46d8a960f2f0c3eb06a2398132dc4b/7523b/calendar-colour.png 2x" src="/static/dc46d8a960f2f0c3eb06a2398132dc4b/11870/calendar-colour.png" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/&gt;&lt;/picture&gt;
-          </noscript>
-        </div>
-        <p
           class="emotion-3"
-        >
-          Tell us about your classes, We'll help you track your students attendance.
-        </p>
-        <a
-          href="/dashboard/settings/class/new"
-        >
-          <button
-            class="emotion-4"
-          >
-            New Class
-          </button>
-        </a>
+        />
+        <div
+          class="emotion-4"
+        />
+        <div
+          class="emotion-4"
+        />
+        <div
+          class="emotion-4"
+        />
       </div>
     </div>
   </div>

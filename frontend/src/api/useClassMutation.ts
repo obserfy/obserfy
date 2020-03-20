@@ -1,4 +1,4 @@
-import { MutateFunction, MutationResult, useMutation } from "react-query"
+import { MutateFunction, MutationState, useMutation } from "react-query"
 import { navigate } from "gatsby"
 import { ApiError, BASE_URL } from "./useApi"
 import { getSchoolId } from "../hooks/schoolIdState"
@@ -12,7 +12,7 @@ interface Class {
 }
 const useClassMutation = (): [
   MutateFunction<Response, Class>,
-  MutationResult<Response>
+  MutationState<Response>
 ] => {
   const schoolId = getSchoolId()
   const fetchApi = async (newClass: Class): Promise<Response> => {
