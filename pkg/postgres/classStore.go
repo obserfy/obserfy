@@ -52,17 +52,26 @@ func (s ClassStore) UpdateClass(id string, name string, weekdays []time.Weekday,
 		rowsEffected = result.RowsAffected()
 		if weekdays != nil {
 			// Completely replace the weekdays with the new ones.
-			if _, err := s.DB.
-				Model((*Weekday)(nil)).
-				Where("class_id=? AND day NOT IN (?)", id, pg.In(weekdays)).
-				Delete(); err != nil {
-				return richErrors.Wrap(err, "failed deleting old not used weekdays")
-			}
-			if _, err := s.DB.
-				Model(&dbWeekdays).
-				OnConflict("DO NOTHING").
-				Insert(); err != nil {
-				return richErrors.Wrap(err, "failed inserting new weekdays")
+			if len(weekdays) > 0 {
+				if _, err := s.DB.
+					Model((*Weekday)(nil)).
+					Where("class_id=? AND day NOT IN (?)", id, pg.In(weekdays)).
+					Delete(); err != nil {
+					return richErrors.Wrap(err, "failed deleting old not used weekdays")
+				}
+				if _, err := s.DB.
+					Model(&dbWeekdays).
+					OnConflict("DO NOTHING").
+					Insert(); err != nil {
+					return richErrors.Wrap(err, "failed inserting new weekdays")
+				}
+			} else {
+				if _, err := s.DB.
+					Model((*Weekday)(nil)).
+					Where("class_id=?", id).
+					Delete(); err != nil {
+					return richErrors.Wrap(err, "failed deleting old not used weekdays")
+				}
 			}
 		}
 		return nil

@@ -8,13 +8,14 @@ import Flex from "../Flex/Flex"
 import Typography from "../Typography/Typography"
 import Button from "../Button/Button"
 import { NEW_CLASS_URL } from "../../pages/dashboard/settings/class/new"
-import useGetClassQuery from "../../api/useGetClassQuery"
+import useGetSchoolClasses from "../../api/useGetSchoolClasses"
 import Card from "../Card/Card"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import { Box } from "../Box/Box"
+import { EDIT_CLASS_URL } from "../../pages/dashboard/settings/class/edit"
 
 export const PageClassSettings: FC = () => {
-  const classes = useGetClassQuery()
+  const classes = useGetSchoolClasses()
 
   const haveNoClass = classes.status === "success" && classes.data?.length === 0
 
@@ -34,9 +35,11 @@ export const PageClassSettings: FC = () => {
         </Flex>
       )}
       {classes.data?.map(({ id, name }) => (
-        <Card key={id} mx={3} mb={2} p={3}>
-          <Typography.Body>{name}</Typography.Body>
-        </Card>
+        <Link key={id} to={EDIT_CLASS_URL(id)}>
+          <Card mx={3} mb={2} p={3}>
+            <Typography.Body>{name}</Typography.Body>
+          </Card>
+        </Link>
       ))}
     </Flex>
   )

@@ -10,9 +10,10 @@ import Flex from "../Flex/Flex"
 import Button from "../Button/Button"
 import { Typography } from "../Typography/Typography"
 import Chip from "../Chip/Chip"
-import useClassMutation from "../../api/useClassMutation"
+import usePostNewClass from "../../api/usePostNewClass"
+import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 
-const WEEKDAYS = [
+export const WEEKDAYS = [
   "Sunday",
   "Monday",
   "Tuesday",
@@ -27,7 +28,7 @@ export const PageNewClass: FC = () => {
   const [startTime, setStartTime] = useState("09:00")
   const [endTime, setEndTime] = useState("10:00")
   const [weekdays, setWeekdays] = useImmer<number[]>([])
-  const [mutate, { error }] = useClassMutation()
+  const [mutate, { status, error }] = usePostNewClass()
 
   const valid = name !== ""
 
@@ -95,7 +96,14 @@ export const PageNewClass: FC = () => {
             />
           ))}
         </Flex>
-        <Button width="100%" disabled={!valid} onClick={postNewClass}>
+        <Button
+          width="100%"
+          disabled={!valid || status === "loading"}
+          onClick={postNewClass}
+        >
+          {status === "loading" && (
+            <LoadingIndicator mr={2} color="onPrimary" />
+          )}
           Save
         </Button>
         <Typography.Body textAlign="center" m={3} color="error">

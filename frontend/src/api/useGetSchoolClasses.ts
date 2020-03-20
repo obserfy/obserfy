@@ -9,10 +9,10 @@ interface Class {
   endTime: Date
   weekdays: number[]
 }
-const useGetClassQuery = (): QueryState<Class[]> => {
+const useGetSchoolClasses = (): QueryState<Class[]> => {
   const schoolId = getSchoolId()
   const getClass = fetchApi<Class[]>(`/schools/${schoolId}/class`)
   return useQuery(["classes", schoolId], getClass)
 }
 
-export default useGetClassQuery
+export default useGetSchoolClasses
