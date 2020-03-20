@@ -209,6 +209,17 @@ func (s SchoolStore) NewClass(id string, name string, weekdays []time.Weekday, s
 	return nil
 }
 
+func (s SchoolStore) GetSchoolClasses(schoolId string) ([]Class, error) {
+	var classes []Class
+	if err := s.DB.Model(&classes).
+		Where("school_id=?", schoolId).
+		Relation("Weekdays").
+		Select(); err != nil {
+		return nil, err
+	}
+	return classes, nil
+}
+
 type EmptyCurriculumError struct{}
 
 func (e EmptyCurriculumError) Error() string {

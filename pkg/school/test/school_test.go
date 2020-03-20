@@ -58,3 +58,25 @@ func (s *SchoolTestSuite) SaveNewSchool() *postgres.School {
 	}
 	return &newSchool
 }
+
+func (s *SchoolTestSuite) SaveNewClass(school postgres.School) *postgres.Class {
+	t := s.T()
+	newClass := postgres.Class{
+		Id:        uuid.New().String(),
+		SchoolId:  school.Id,
+		School:    school,
+		Name:      gofakeit.Name(),
+		StartTime: time.Now(),
+		EndTime:   time.Now(),
+	}
+	newClass.Weekdays = []postgres.Weekday{
+		{newClass.Id, time.Sunday, newClass},
+		{newClass.Id, time.Thursday, newClass},
+		{newClass.Id, time.Friday, newClass},
+	}
+	err := s.DB.Insert(&newClass)
+	assert.NoError(t, err)
+	err = s.DB.Insert(&newClass.Weekdays)
+	assert.NoError(t, err)
+	return &newClass
+}

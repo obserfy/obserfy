@@ -30,8 +30,52 @@ func NewRouter(server rest.Server, store postgres.SchoolStore) *chi.Mux {
 		r.Method("GET", "/curriculum/areas", getCurriculumAreas(server, store))
 
 		r.Method("POST", "/class", postNewClass(server, store))
+		r.Method("GET", "/class", getClasses(server, store))
 	})
 	return r
+}
+
+func getClasses(server rest.Server, store postgres.SchoolStore) http.Handler {
+	type responseBody struct {
+		Id        string         `json:"id"`
+		Name      string         `json:"name"`
+		StartTime time.Time      `json:"startTime"`
+		EndTime   time.Time      `json:"endTime"`
+		Weekdays  []time.Weekday `json:"weekdays"`
+	}
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		schoolId := chi.URLParam(r, "schoolId")
+
+		classes, err := store.GetSchoolClasses(schoolId)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "failed querying classes",
+				Error:   err,
+			}
+		}
+
+		response := make([]responseBody, len(classes))
+		for i, class := range classes {
+			weekdays := make([]time.Weekday, len(class.Weekdays))
+			for f, weekday := range class.Weekdays {
+				weekdays[f] = weekday.Day
+			}
+			response[i] = responseBody{
+				Id:        class.Id,
+				Name:      class.Name,
+				StartTime: class.StartTime,
+				EndTime:   class.EndTime,
+				Weekdays:  weekdays,
+			}
+		}
+
+		if err := rest.WriteJson(w, response); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
+
+		return nil
+	})
 }
 
 func postNewClass(s rest.Server, store postgres.SchoolStore) http.Handler {
@@ -43,13 +87,6 @@ func postNewClass(s rest.Server, store postgres.SchoolStore) http.Handler {
 	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		schoolId := chi.URLParam(r, "schoolId")
-		if _, err := uuid.Parse(schoolId); err != nil {
-			return &rest.Error{
-				http.StatusNotFound,
-				"Can't find the given school",
-				err,
-			}
-		}
 
 		var body requestBody
 		if err := rest.ParseJson(r.Body, &body); err != nil {
@@ -105,6 +142,13 @@ func authorizationMiddleware(s rest.Server, store postgres.SchoolStore) func(nex
 	return func(next http.Handler) http.Handler {
 		return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 			schoolId := chi.URLParam(r, "schoolId")
+			if _, err := uuid.Parse(schoolId); err != nil {
+				return &rest.Error{
+					http.StatusNotFound,
+					"Can't find the given school",
+					err,
+				}
+			}
 
 			// Verify user access to the school
 			session, ok := auth.GetSessionFromCtx(r.Context())
