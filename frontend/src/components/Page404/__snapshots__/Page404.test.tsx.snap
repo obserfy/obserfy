@@ -1,0 +1,254 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Page404 should render correctly 1`] = `
+.emotion-6 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 16px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-6 {
+    font-size: 20px;
+  }
+}
+
+.emotion-5 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  padding-bottom: 32px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-4 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-0 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 24px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 300;
+  line-height: heading;
+  font-size: 6.103515625rem;
+  line-height: 9rem;
+  -webkit-letter-spacing: 0;
+  -moz-letter-spacing: 0;
+  -ms-letter-spacing: 0;
+  letter-spacing: 0;
+  text-align: center;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  line-height: 1.2;
+  margin: 16px;
+  margin-bottom: 32px;
+}
+
+.emotion-1 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-bottom: 32px;
+}
+
+.emotion-2 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  text-align: center;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  font-size: 16px;
+  margin-bottom: 32px;
+  margin-left: 64px;
+  margin-right: 64px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-2 {
+    font-size: 14px;
+  }
+}
+
+.emotion-3 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  text-align: center;
+  line-height: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: inherit;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: white;
+  background-color: var(--theme-ui-colors-primary,#00e399);
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  text-transform: capitalize;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--theme-ui-colors-onPrimary,#000);
+  background-color: var(--theme-ui-colors-primary,#00e399);
+  border-radius: 8px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  white-space: nowrap;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-3:disabled {
+  opacity: 0.38;
+  cursor: auto;
+}
+
+.emotion-3:hover,
+.emotion-3:focus {
+  background-color: var(--theme-ui-colors-primaryDark,#00a06d);
+  outline: none;
+}
+
+.emotion-3:hover:disabled,
+.emotion-3:focus:disabled {
+  background-color: var(--theme-ui-colors-primary,#00e399);
+}
+
+<div>
+  <div
+    class="emotion-6"
+  >
+    <div
+      class="emotion-5"
+    >
+      <div
+        class="emotion-4"
+      >
+        <h1
+          class="emotion-0"
+        >
+          404
+        </h1>
+        <div
+          class="emotion-1"
+        >
+          <div
+            class=" gatsby-image-wrapper"
+            style="position: relative; overflow: hidden; display: inline-block; width: 230px; height: 180px;"
+          >
+            <img
+              alt=""
+              aria-hidden="true"
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAAAsSAAALEgHS3X78AAADhUlEQVQ4y42Te0xTdxTHL4/ELPvLf0z2v0v2lwnGZJqQbDLB6SabEm17Ldy297a1UF6Rjq5FXsFBoRsKSNlSjWNuTNIxLaVII1BCeZWXUntLStkiD4s4x6MqgdLfsb+LBImYcJKb8zv3/M4n3/P7nR/hkkgIbCxNEzsZ21mz3++91R1cbJ0PLdkydtrTSpJb/lEYOM4wEfiHm6bVbomkZZymjT1UitFylm8daix7vjR3B1DgPqwutMF0ddFtZxL/olV4Xh0G/BL+rlv5/A9wvVUg2AC6xZJoDiiW6JeyMmHqwgVg5TJo5/HBYyyEZf/f6yv+ptDLicbQ/5pscElo6KQoGJVKoYXHa8a15tNnIjaVEqxMFsV5uYznpRnwMMzqCJWy1iJi1lXZxaHi6z+D2TMGVeZe1J2lDXYJeGsWklzB0E5lqhzXdijknChOob/1NhfMOyyKpyWF4CKFwfFkElVW/ArxVy3oS60RSh4CUg8iVGYaAZtQiMzfnl4fzlPDK9+gCNc+H7BFcS07KYp4fPMad4YTdT/ufVxbOTVTlAe90rRg6h9OJPqtH059X4Uq3YAqRtaRpu8F1Gv1a/0KBrx/3ugFgA0xXRbCutnycOwXxMKYnYM+pMT34K+bcLe5E5Lqh0DdMYdOaQ2Q9rsTav8BULb5UV27DwJ3bkFXZvp3uObBT6XR267dm68hHgnISLx2UaIclqJKfexAzRVzN2S2zYYK7M9QLKNBqubJkM4ZgI6hUUdPuqKx4WjCIVxjOnY8Iqx0+yx51DmcfztReNdZmt3+FKomIJhv/y90Tm8CaXUT0BT/CM5X+zyRm3vDl7IFc28Od9bG3BrKDXuwP6EzMedqrCA02JCiYRiY+j44LL208uHHMbE4/9HBuEgswCYWbVc3KhZvQeUy4ogggxujQ4J0Mk5ZBMcyiidjBOl9n6UWwPGsEhvOyZMYQqrUbHsp77WYZBUHPEBeTD6cdhlO5OobPhXl6mIzdZCgKjfh3N54SURi3hViV5ZRXBH1xp/MrzICXaDP+1ym/UZZVguUtsyAczkFP0SeVOl2B1xh7dxhLw+3xMD0KMDSv4k4fjHeA68mB7k+l70D0cRubXbItjHo9qYDgYmBVQhMH8TxIuuYQ342F6/RE3f012r97oDzD9o54FRv8ycvfYPPYG1+H44XWIcjOOPi5is4PRb1Ve67wNc6tOWC/xpPdwAAAABJRU5ErkJggg=="
+              style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 1; transition-delay: 500ms;"
+            />
+            <picture>
+              <source
+                srcset="/static/ebd5323449ed06c90dc97c14fb94e6c2/ebec7/not-found.webp 1x,
+/static/ebd5323449ed06c90dc97c14fb94e6c2/d2700/not-found.webp 1.5x,
+/static/ebd5323449ed06c90dc97c14fb94e6c2/18815/not-found.webp 2x"
+                type="image/webp"
+              />
+              <source
+                srcset="/static/ebd5323449ed06c90dc97c14fb94e6c2/4ee67/not-found.png 1x,
+/static/ebd5323449ed06c90dc97c14fb94e6c2/8bd8d/not-found.png 1.5x,
+/static/ebd5323449ed06c90dc97c14fb94e6c2/b6a90/not-found.png 2x"
+              />
+              <img
+                alt=""
+                height="180"
+                loading="lazy"
+                src="/static/ebd5323449ed06c90dc97c14fb94e6c2/4ee67/not-found.png"
+                srcset="/static/ebd5323449ed06c90dc97c14fb94e6c2/4ee67/not-found.png 1x,
+/static/ebd5323449ed06c90dc97c14fb94e6c2/8bd8d/not-found.png 1.5x,
+/static/ebd5323449ed06c90dc97c14fb94e6c2/b6a90/not-found.png 2x"
+                style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0; transition: opacity 500ms;"
+                width="230"
+              />
+            </picture>
+            <noscript>
+              &lt;picture&gt;&lt;source type='image/webp' srcset="/static/ebd5323449ed06c90dc97c14fb94e6c2/ebec7/not-found.webp 1x,
+/static/ebd5323449ed06c90dc97c14fb94e6c2/d2700/not-found.webp 1.5x,
+/static/ebd5323449ed06c90dc97c14fb94e6c2/18815/not-found.webp 2x" /&gt;&lt;source srcset="/static/ebd5323449ed06c90dc97c14fb94e6c2/4ee67/not-found.png 1x,
+/static/ebd5323449ed06c90dc97c14fb94e6c2/8bd8d/not-found.png 1.5x,
+/static/ebd5323449ed06c90dc97c14fb94e6c2/b6a90/not-found.png 2x" /&gt;&lt;img loading="lazy" width="230" height="180" srcset="/static/ebd5323449ed06c90dc97c14fb94e6c2/4ee67/not-found.png 1x,
+/static/ebd5323449ed06c90dc97c14fb94e6c2/8bd8d/not-found.png 1.5x,
+/static/ebd5323449ed06c90dc97c14fb94e6c2/b6a90/not-found.png 2x" src="/static/ebd5323449ed06c90dc97c14fb94e6c2/4ee67/not-found.png" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/&gt;&lt;/picture&gt;
+            </noscript>
+          </div>
+        </div>
+        <p
+          class="emotion-2"
+        >
+          Oops, we can't seem to find the page you are looking for.
+        </p>
+        <a
+          href="/dashboard/observe"
+        >
+          <button
+            class="emotion-3"
+          >
+            Go Back Home
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;

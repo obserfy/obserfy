@@ -134,7 +134,7 @@ const NavBar: FC = () => {
         pb={["env(safe-area-inset-bottom)", 0]}
         pl="env(safe-area-inset-left)"
       >
-        <Box mx="auto" my={3} display={["none", "block"]}>
+        <Box mx="auto" my={3} display={["none", "block"]} mb={4}>
           <GatsbyImage fixed={query.file.childImageSharp.fixed} />
         </Box>
         <NavBarItem title="Observe" icon={EditIcon} to="/dashboard/observe" />
@@ -191,7 +191,7 @@ const NavBarItem: FC<{
             position: "absolute",
             backgroundColor: "textPrimary",
             borderRadius: ["0 0 10px 10px", "10px 0 0 10px"],
-            width: [match ? "100%" : "0%", 0],
+            width: [match ? "100%" : "0%", 2],
             height: [2, match ? "100%" : "0%"],
             content: "''",
             transition: "width 100ms cubic-bezier(0.0, 0.0, 0.2, 1)",

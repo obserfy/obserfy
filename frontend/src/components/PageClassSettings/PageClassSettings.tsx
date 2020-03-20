@@ -7,7 +7,7 @@ import { SETTINGS_URL } from "../../pages/dashboard/settings"
 import Flex from "../Flex/Flex"
 import Typography from "../Typography/Typography"
 import Button from "../Button/Button"
-import { OBSERVE_PAGE_URL } from "../../pages/dashboard/observe"
+import { NEW_CLASS_URL } from "../../pages/dashboard/settings/class/new"
 
 export const PageClassSettings: FC = () => {
   const astronaut = useStaticQuery(graphql`
@@ -38,7 +38,7 @@ export const PageClassSettings: FC = () => {
           Tell us about your classes, We&apos;ll help you track your students
           attendance.
         </Typography.Body>
-        <Link to={OBSERVE_PAGE_URL}>
+        <Link to={NEW_CLASS_URL}>
           <Button>New Class</Button>
         </Link>
       </Flex>

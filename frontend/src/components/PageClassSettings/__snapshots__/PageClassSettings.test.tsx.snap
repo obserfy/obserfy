@@ -268,7 +268,7 @@ exports[`PageClassSettings should render correctly 1`] = `
           Tell us about your classes, We'll help you track your students attendance.
         </p>
         <a
-          href="/dashboard/observe"
+          href="/dashboard/settings/class/new"
         >
           <button
             class="emotion-4"
