@@ -45,7 +45,7 @@
     "gatsby-image": "^2.2.45",
     "gatsby-link": "^2.2.31",
     "gatsby-plugin-canonical-urls": "^2.1.22",
-    "gatsby-plugin-emotion": "^4.1.25",
+    "gatsby-plugin-emotion": "^4.2.0",
     "gatsby-plugin-guess-js": "^1.2.0",
     "gatsby-plugin-intl3": "./gatsby-plugin-intl3-v0.0.7.tgz",
     "gatsby-plugin-layout": "^1.1.24",
