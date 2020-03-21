@@ -30,10 +30,10 @@ export const PageUsers: FC = () => {
   )
 
   return (
-    <>
+    <Box maxWidth="maxWidth.sm" mx="auto">
       <BackNavigation to="/dashboard/settings" text="Settings" />
       <Box px={2}>{userCards}</Box>
-    </>
+    </Box>
   )
 }
 

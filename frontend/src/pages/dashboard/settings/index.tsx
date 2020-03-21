@@ -2,6 +2,8 @@ import React, { FC } from "react"
 import PageSettings from "../../../components/PageSettings/PageSettings"
 import SEO from "../../../components/seo"
 
+export const SETTINGS_URL = "/dashboard/settings"
+
 const Settings: FC = () => {
   return (
     <>

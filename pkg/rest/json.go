@@ -34,7 +34,8 @@ func NewWriteJsonError(err error) *Error {
 }
 
 func ParseJson(input io.ReadCloser, result interface{}) error {
-	return json.NewDecoder(input).Decode(result)
+	err := json.NewDecoder(input).Decode(result)
+	return richErrors.Wrap(err, "Failed parsing json")
 }
 
 func NewParseJsonError(err error) *Error {

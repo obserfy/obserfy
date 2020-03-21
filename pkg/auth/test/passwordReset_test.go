@@ -30,7 +30,7 @@ func (s *AuthTestSuite) TestInvalidMailPasswordReset() {
 			payload := struct {
 				Email string `json:"email"`
 			}{test.email}
-			w := s.CreateRequest("POST", "/mailPasswordReset", payload)
+			w := s.CreateRequest("POST", "/mailPasswordReset", payload, nil)
 
 			assert.Equal(t, http.StatusBadRequest, w.Code, w.Body)
 			s.mailService.AssertNotCalled(t, "SendResetPassword", mock.Anything, w.Body)
@@ -48,7 +48,7 @@ func (s *AuthTestSuite) TestValidMailPasswordReset() {
 	payload := struct {
 		Email string `json:"email"`
 	}{user.Email}
-	w := s.CreateRequest("POST", "/mailPasswordReset", payload)
+	w := s.CreateRequest("POST", "/mailPasswordReset", payload, nil)
 
 	assert.Equal(t, http.StatusOK, w.Code, w.Body)
 	s.mailService.AssertCalled(t, "SendResetPassword", payload.Email)
@@ -69,7 +69,7 @@ func (s *AuthTestSuite) TestMailPasswordResetNonExistentEmail() {
 	payload := struct {
 		Email string `json:"email"`
 	}{"asfadskjfhklash@gmail.com"}
-	w := s.CreateRequest("POST", "/mailPasswordReset", payload)
+	w := s.CreateRequest("POST", "/mailPasswordReset", payload, nil)
 
 	assert.Equal(t, http.StatusOK, w.Code, w.Body)
 	s.mailService.AssertNotCalled(t, "SendResetPassword", payload.Email)
@@ -95,7 +95,7 @@ func (s *AuthTestSuite) TestValidDoPasswordReset() {
 		Token    string `json:"token"`
 	}{password, token.Token}
 
-	resetResult := s.CreateRequest("POST", "/doPasswordReset", passwordResetPayload)
+	resetResult := s.CreateRequest("POST", "/doPasswordReset", passwordResetPayload, nil)
 	assert.Equal(t, http.StatusOK, resetResult.Code)
 
 	// make sure the new password can be used for login too
@@ -103,7 +103,7 @@ func (s *AuthTestSuite) TestValidDoPasswordReset() {
 		Email    string `json:"email"`
 		Password string `json:"password"`
 	}{token.User.Email, password}
-	loginResult := s.CreateRequest("POST", "/login", loginPayload)
+	loginResult := s.CreateRequest("POST", "/login", loginPayload, nil)
 	assert.Equal(t, http.StatusOK, loginResult.Code)
 	s.mailService.AssertCalled(t, "SendPasswordResetSuccessful", token.User.Email)
 
@@ -123,7 +123,7 @@ func (s *AuthTestSuite) TestEmptyPasswordDoPasswordReset() {
 		Token    string `json:"token"`
 	}{password, token.Token}
 
-	resetResult := s.CreateRequest("POST", "/doPasswordReset", passwordResetPayload)
+	resetResult := s.CreateRequest("POST", "/doPasswordReset", passwordResetPayload, nil)
 	assert.Equal(t, http.StatusBadRequest, resetResult.Code)
 	return
 }
@@ -153,7 +153,7 @@ func (s *AuthTestSuite) TestInvalidTokenDoPasswordReset() {
 				Token    string `json:"token"`
 			}{password, test.token}
 
-			resetResult := s.CreateRequest("POST", "/doPasswordReset", passwordResetPayload)
+			resetResult := s.CreateRequest("POST", "/doPasswordReset", passwordResetPayload, nil)
 			assert.Equal(t, test.code, resetResult.Code)
 		})
 	}
@@ -174,12 +174,12 @@ func (s *AuthTestSuite) TestDoPasswordResetTwiceShouldFailed() {
 		Token    string `json:"token"`
 	}
 	passwordResetPayload := PasswordReset{password, token.Token}
-	resetResult := s.CreateRequest("POST", "/doPasswordReset", passwordResetPayload)
+	resetResult := s.CreateRequest("POST", "/doPasswordReset", passwordResetPayload, nil)
 	assert.Equal(t, http.StatusOK, resetResult.Code)
 	// make sure the new password can be used for login too
 	password2 := uuid.New().String()
 	passwordResetPayload2 := PasswordReset{password2, token.Token}
-	secondPasswordResetResult := s.CreateRequest("POST", "/doPasswordReset", passwordResetPayload2)
+	secondPasswordResetResult := s.CreateRequest("POST", "/doPasswordReset", passwordResetPayload2, nil)
 	assert.Equal(t, http.StatusUnauthorized, secondPasswordResetResult.Code)
 
 	// make sure the password can be used for login
@@ -188,11 +188,11 @@ func (s *AuthTestSuite) TestDoPasswordResetTwiceShouldFailed() {
 		Password string `json:"password"`
 	}
 	loginPayload := LoginPayload{token.User.Email, password}
-	loginResult := s.CreateRequest("POST", "/login", loginPayload)
+	loginResult := s.CreateRequest("POST", "/login", loginPayload, nil)
 	assert.Equal(t, http.StatusOK, loginResult.Code)
 	// make sure the password can be used for login
 	loginPayload2 := LoginPayload{token.User.Email, password2}
-	loginResult2 := s.CreateRequest("POST", "/login", loginPayload2)
+	loginResult2 := s.CreateRequest("POST", "/login", loginPayload2, nil)
 	assert.Equal(t, http.StatusUnauthorized, loginResult2.Code)
 	return
 }
@@ -213,7 +213,7 @@ func (s *AuthTestSuite) TestExpiredTokenDoPasswordReset() {
 		Token    string `json:"token"`
 	}
 	passwordResetPayload := PasswordReset{password, token.Token}
-	resetResult := s.CreateRequest("POST", "/doPasswordReset", passwordResetPayload)
+	resetResult := s.CreateRequest("POST", "/doPasswordReset", passwordResetPayload, nil)
 	assert.Equal(t, http.StatusUnauthorized, resetResult.Code)
 
 	// Login should fail
@@ -222,6 +222,6 @@ func (s *AuthTestSuite) TestExpiredTokenDoPasswordReset() {
 		Password string `json:"password"`
 	}
 	loginPayload := LoginPayload{token.User.Email, password}
-	loginResult := s.CreateRequest("POST", "/login", loginPayload)
+	loginResult := s.CreateRequest("POST", "/login", loginPayload, nil)
 	assert.Equal(t, http.StatusUnauthorized, loginResult.Code)
 }

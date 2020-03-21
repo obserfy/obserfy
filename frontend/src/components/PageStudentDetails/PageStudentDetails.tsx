@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react"
 import { navigate } from "gatsby"
-import { FormattedRelativeTime, FormattedDate, Link } from "gatsby-plugin-intl3"
+import { FormattedDate, FormattedRelativeTime, Link } from "gatsby-plugin-intl3"
 import isSameDay from "date-fns/isSameDay"
 import startOfDay from "date-fns/startOfDay"
 import differenceInDays from "date-fns/differenceInDays"

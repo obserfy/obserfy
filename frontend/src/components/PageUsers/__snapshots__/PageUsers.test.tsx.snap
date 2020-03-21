@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageUsers should render correctly 1`] = `
-.emotion-4 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,9 +9,18 @@ exports[`PageUsers should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-4 {
+  .emotion-5 {
     font-size: 20px;
   }
+}
+
+.emotion-4 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .emotion-2 {
@@ -75,27 +84,31 @@ exports[`PageUsers should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-4"
+    class="emotion-5"
   >
-    <a
-      href="/dashboard/settings"
+    <div
+      class="emotion-4"
     >
-      <div
-        class="emotion-2"
+      <a
+        href="/dashboard/settings"
       >
         <div
-          class="emotion-0"
-        />
-        <p
-          class="emotion-1"
+          class="emotion-2"
         >
-          Settings
-        </p>
-      </div>
-    </a>
-    <div
-      class="emotion-3"
-    />
+          <div
+            class="emotion-0"
+          />
+          <p
+            class="emotion-1"
+          >
+            Settings
+          </p>
+        </div>
+      </a>
+      <div
+        class="emotion-3"
+      />
+    </div>
   </div>
 </div>
 `;

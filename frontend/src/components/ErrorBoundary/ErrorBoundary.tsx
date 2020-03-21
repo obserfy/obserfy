@@ -16,6 +16,12 @@ export class ErrorBoundary extends Component<{}, State> {
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
+    Sentry.configureScope(scope => {
+      Object.keys(errorInfo).forEach(key => {
+        scope.setExtra(key, errorInfo[key])
+      })
+    })
+    Sentry.captureException(error)
     getAnalytics()?.track("Javascript Error", {
       error,
       errorInfo,
