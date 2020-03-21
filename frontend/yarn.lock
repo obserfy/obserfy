@@ -11243,10 +11243,10 @@ gatsby-plugin-react-helmet-async@^1.0.16:
   resolved "https://registry.yarnpkg.com/gatsby-plugin-react-helmet-async/-/gatsby-plugin-react-helmet-async-1.0.16.tgz#dd2804d1fad56f6d4d10d47e4318cfb6f8c77563"
   integrity sha512-kLMoY/Bh9t4hIfGepXAms7fuByhLQehy/TTFT0qyLQGcY77y7thMIdM3V6wIVwGC7bbXHSgFcYlVTlarXTkKMw==
 
-gatsby-plugin-remove-trailing-slashes@^2.1.24:
-  version "2.1.24"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-remove-trailing-slashes/-/gatsby-plugin-remove-trailing-slashes-2.1.24.tgz#259cd7f604eb51bce7566180eb24f3e0e91d2a22"
-  integrity sha512-4YZ+7JdQCxiaEPuFtGPMXYsg8LHJ+BdTWNex+dGA82AniaF5yn2ZAcMLbNelD71MVTjw2IYtyPJjgLZz6f5W2A==
+gatsby-plugin-remove-trailing-slashes@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-remove-trailing-slashes/-/gatsby-plugin-remove-trailing-slashes-2.2.0.tgz#cc75bbd42d5e8699eb9841ca0f5bbc48f2c58753"
+  integrity sha512-gRdNv7BefbUAIiY6Od9asAfQMekqSexER0vHd0MZhCFY8vOQkMGZVXdnrQhHdUrooFoQ//w6aMozAAvWBlk1hA==
   dependencies:
     "@babel/runtime" "^7.8.7"
 
