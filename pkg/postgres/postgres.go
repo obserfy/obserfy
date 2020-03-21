@@ -39,6 +39,8 @@ func InitTables(db *pg.DB) error {
 		(*Subject)(nil),
 		(*Material)(nil),
 		(*School)(nil),
+		(*Class)(nil),
+		(*Weekday)(nil),
 		(*Student)(nil),
 		(*StudentMaterialProgress)(nil),
 		(*User)(nil),
@@ -148,4 +150,22 @@ type PasswordResetToken struct {
 	ExpiredAt time.Time `pg:",notnull"`
 	UserId    string    `pg:",type:uuid,on_delete:CASCADE,notnull"`
 	User      User
+}
+
+type Class struct {
+	Id       string `pg:"type:uuid"`
+	SchoolId string `pg:"type:uuid,on_delete:CASCADE"`
+	School   School
+	Name     string
+	// Only use the time of day and timezone (WIB 8.30AM).
+	// Ignore other data
+	StartTime time.Time `pg:",notnull"`
+	EndTime   time.Time `pg:",notnull"`
+	Weekdays  []Weekday
+}
+
+type Weekday struct {
+	ClassId string       `pg:",pk,type:uuid,on_delete:CASCADE"`
+	Day     time.Weekday `pg:",pk,use_zero"`
+	Class   Class
 }

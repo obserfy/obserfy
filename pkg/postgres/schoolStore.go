@@ -178,6 +178,48 @@ func (s SchoolStore) GetCurriculumAreas(schoolId string) ([]Area, error) {
 	return school.Curriculum.Areas, nil
 }
 
+func (s SchoolStore) NewClass(id string, name string, weekdays []time.Weekday, startTime time.Time, endTime time.Time) error {
+	newClass := Class{
+		Id:        uuid.New().String(),
+		SchoolId:  id,
+		Name:      name,
+		StartTime: startTime,
+		EndTime:   endTime,
+	}
+	var dbWeekdays []Weekday
+	for _, weekday := range weekdays {
+		dbWeekdays = append(dbWeekdays, Weekday{
+			ClassId: newClass.Id,
+			Day:     weekday,
+		})
+	}
+	if err := s.DB.RunInTransaction(func(tx *pg.Tx) error {
+		if err := tx.Insert(&newClass); err != nil {
+			return richErrors.Wrap(err, "Failed saving new class")
+		}
+		if len(dbWeekdays) > 0 {
+			if err := tx.Insert(&dbWeekdays); err != nil {
+				return richErrors.Wrap(err, "Failed saving weekdays")
+			}
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s SchoolStore) GetSchoolClasses(schoolId string) ([]Class, error) {
+	var classes []Class
+	if err := s.DB.Model(&classes).
+		Where("school_id=?", schoolId).
+		Relation("Weekdays").
+		Select(); err != nil {
+		return nil, err
+	}
+	return classes, nil
+}
+
 type EmptyCurriculumError struct{}
 
 func (e EmptyCurriculumError) Error() string {

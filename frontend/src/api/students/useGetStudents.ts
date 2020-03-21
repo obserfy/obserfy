@@ -1,4 +1,4 @@
-import { QueryResult, useQuery } from "react-query"
+import { QueryState, useQuery } from "react-query"
 import { navigate } from "gatsby"
 import { BASE_URL } from "../useApi"
 import { getSchoolId } from "../../hooks/schoolIdState"
@@ -23,6 +23,6 @@ async function fetchStudents(): Promise<Student[]> {
   return result.json()
 }
 
-export const useGetStudents = (): QueryResult<Student[], {}> => {
-  return useQuery<Student[], {}>("students", fetchStudents)
+export const useGetStudents = (): QueryState<Student[]> => {
+  return useQuery("students", fetchStudents)
 }
