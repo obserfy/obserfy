@@ -51,7 +51,7 @@
     "gatsby-plugin-layout": "^1.1.24",
     "gatsby-plugin-manifest": "^2.2.48",
     "gatsby-plugin-nprogress": "^2.2.0",
-    "gatsby-plugin-offline": "^3.0.42",
+    "gatsby-plugin-offline": "^3.1.0",
     "gatsby-plugin-prefetch-google-fonts": "^1.4.3",
     "gatsby-plugin-react-helmet-async": "^1.0.16",
     "gatsby-plugin-remove-trailing-slashes": "^2.2.0",
