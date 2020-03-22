@@ -70,9 +70,8 @@ func NewRouter(s rest.Server, store Store) *chi.Mux {
 		// TODO: This is not used, refactor after curriculum got e2e test.
 		//r.Method("PATCH", "/subjects/{subjectId}", server.updateSubject())
 		r.Method("DELETE", "/", server.deleteSubject())
-		// Unused routes
-		//r.Method("GET", "/materials", server.getSubjectMaterials())
-		//r.Method("POST", "/materials", server.createNewMaterial())
+		r.Method("GET", "/materials", server.getSubjectMaterials())
+		r.Method("POST", "/materials", server.createNewMaterial())
 
 		//Unused routes
 		//r.Method("PATCH", "/materials/{materialId}", server.updateMaterial())
