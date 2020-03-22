@@ -9,6 +9,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
 	"testing"
+	"time"
 )
 
 type SchoolTestSuite struct {
@@ -28,6 +29,7 @@ func TestObservation(t *testing.T) {
 
 func (s *SchoolTestSuite) SaveNewSchool() *postgres.School {
 	t := s.T()
+	gofakeit.Seed(time.Now().UnixNano())
 	newUser := postgres.User{Id: uuid.New().String()}
 	newSchool := postgres.School{
 		Id:           uuid.New().String(),
@@ -55,4 +57,26 @@ func (s *SchoolTestSuite) SaveNewSchool() *postgres.School {
 		return nil
 	}
 	return &newSchool
+}
+
+func (s *SchoolTestSuite) SaveNewClass(school postgres.School) *postgres.Class {
+	t := s.T()
+	newClass := postgres.Class{
+		Id:        uuid.New().String(),
+		SchoolId:  school.Id,
+		School:    school,
+		Name:      gofakeit.Name(),
+		StartTime: time.Now(),
+		EndTime:   time.Now(),
+	}
+	newClass.Weekdays = []postgres.Weekday{
+		{newClass.Id, time.Sunday, newClass},
+		{newClass.Id, time.Thursday, newClass},
+		{newClass.Id, time.Friday, newClass},
+	}
+	err := s.DB.Insert(&newClass)
+	assert.NoError(t, err)
+	err = s.DB.Insert(&newClass.Weekdays)
+	assert.NoError(t, err)
+	return &newClass
 }

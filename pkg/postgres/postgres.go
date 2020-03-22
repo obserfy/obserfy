@@ -154,7 +154,7 @@ type PasswordResetToken struct {
 
 type Class struct {
 	Id       string `pg:"type:uuid"`
-	SchoolId string `pg:"type:uuid"`
+	SchoolId string `pg:"type:uuid,on_delete:CASCADE"`
 	School   School
 	Name     string
 	// Only use the time of day and timezone (WIB 8.30AM).
@@ -165,7 +165,7 @@ type Class struct {
 }
 
 type Weekday struct {
-	ClassId string       `pg:",pk,type:uuid"`
-	Day     time.Weekday `pg:",pk"`
+	ClassId string       `pg:",pk,type:uuid,on_delete:CASCADE"`
+	Day     time.Weekday `pg:",pk,use_zero"`
 	Class   Class
 }

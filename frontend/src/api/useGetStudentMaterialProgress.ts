@@ -1,4 +1,4 @@
-import { QueryResult, useQuery } from "react-query"
+import { QueryState, useQuery } from "react-query"
 import { navigate } from "gatsby"
 import { BASE_URL } from "./useApi"
 
@@ -31,8 +31,8 @@ const fetchMaterialProgress = (studentId: string) => async (): Promise<
 
 export function useGetStudentMaterialProgress(
   studentId: string
-): QueryResult<MaterialProgress[], object> {
-  return useQuery<MaterialProgress[], {}>(
+): QueryState<MaterialProgress[]> {
+  return useQuery(
     ["studentCurriculumProgress", studentId],
     fetchMaterialProgress(studentId)
   )

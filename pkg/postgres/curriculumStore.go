@@ -21,6 +21,8 @@ func (c CurriculumStore) UpdateArea(areaId string, name string) error {
 	return nil
 }
 
+// updateSubject manually replace existing data with new ones completely. Without destroying its relationship with
+// existing data.
 func (c CurriculumStore) ReplaceSubject(newSubject Subject) error {
 	var materialsToKeep []string
 	for _, material := range newSubject.Materials {

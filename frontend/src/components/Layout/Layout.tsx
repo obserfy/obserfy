@@ -1,11 +1,12 @@
 import React, { FC, FunctionComponent, useEffect, useState } from "react"
-import { navigate } from "gatsby"
+import { graphql, navigate, useStaticQuery } from "gatsby"
 import { Link } from "gatsby-plugin-intl3"
 import { useLocation, useMatch } from "@reach/router"
 // TODO: Disable ts ignore when react-adptive-hooks typedef is available.
 // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
 // @ts-ignore
 import { useMemoryStatus } from "react-adaptive-hooks/memory"
+import GatsbyImage from "gatsby-image"
 import { Typography } from "../Typography/Typography"
 import Icon from "../Icon/Icon"
 import Box from "../Box/Box"
@@ -51,6 +52,20 @@ const NavBar: FC = () => {
   const [lastVh, setLastVh] = useState(0)
   const { deviceMemory } = useMemoryStatus({ deviceMemory: 4 })
 
+  const query = useStaticQuery(graphql`
+    query {
+      file(relativePath: { eq: "logo-transparent.png" }) {
+        childImageSharp {
+          # Specify the image processing specifications right in the query.
+          # Makes it trivial to update as your page's design changes.
+          fixed(width: 40, height: 40) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+    }
+  `)
+
   useEffect(() => {
     const listener: EventListener = () => {
       const vh = Math.max(
@@ -71,6 +86,7 @@ const NavBar: FC = () => {
       window.removeEventListener("resize", listener)
     }
   }, [lastVh])
+
   return (
     <Card
       display={[keyboardShown ? "none" : "block", "block"]}
@@ -110,7 +126,6 @@ const NavBar: FC = () => {
               }
             : {},
       }}
-      pt={[0, 2]}
     >
       <Flex
         flexDirection={["row", "column"]}
@@ -119,7 +134,9 @@ const NavBar: FC = () => {
         pb={["env(safe-area-inset-bottom)", 0]}
         pl="env(safe-area-inset-left)"
       >
-        <Box height={70} width={70} display={["none", "block"]} />
+        <Box mx="auto" my={3} display={["none", "block"]} mb={4}>
+          <GatsbyImage fixed={query.file.childImageSharp.fixed} />
+        </Box>
         <NavBarItem title="Observe" icon={EditIcon} to="/dashboard/observe" />
         <Box height="100%" display={["none", "block"]} />
         <NavBarItem

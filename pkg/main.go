@@ -4,6 +4,7 @@ import (
 	"crypto/tls"
 	"github.com/benbjohnson/clock"
 	"github.com/chrsep/vor/pkg/auth"
+	"github.com/chrsep/vor/pkg/class"
 	"github.com/chrsep/vor/pkg/curriculum"
 	"github.com/chrsep/vor/pkg/logger"
 	"github.com/chrsep/vor/pkg/mailgun"
@@ -69,6 +70,7 @@ func runServer() error {
 	userHandler := user.NewUserHandler(server, db)
 	curriculumStore := postgres.CurriculumStore{db}
 	authStore := postgres.AuthStore{db}
+	classStore := postgres.ClassStore{db}
 	mailService := mailgun.NewService()
 
 	// Setup routing
@@ -88,6 +90,7 @@ func runServer() error {
 		r.Mount("/schools", school.NewRouter(server, schoolStore))
 		r.Mount("/user", user.NewRouter(userHandler))
 		r.Mount("/curriculum", curriculum.NewRouter(server, curriculumStore))
+		r.Mount("/classes", class.NewRouter(server, classStore))
 	})
 	// Serve gatsby static frontend assets
 	r.Group(func(r chi.Router) {

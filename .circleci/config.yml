@@ -38,6 +38,8 @@ jobs:
     machine:
       image: ubuntu-1604:201903-01
     working_directory: ~/repo
+    environment:
+      NODE_ENV: "staging"
     steps:
       - checkout
       - attach_workspace:
