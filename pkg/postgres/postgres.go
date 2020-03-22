@@ -107,6 +107,17 @@ type Student struct {
 	SchoolId    string `pg:"type:uuid,on_delete:CASCADE"`
 	School      School
 	DateOfBirth *time.Time
+	Classes     []Class `pg:"many2many:student_to_class,joinFK:student_id"`
+	Gender      string
+	DateOfEntry *time.Time
+	Note        string
+	CustomId    string
+	Active      bool
+}
+
+type StudentToClass struct {
+	StudentId string `pg:"type:uuid,on_delete:CASCADE"`
+	ClassId   string `pg:"type:uuid,on_delete:CASCADE"`
 }
 
 type Observation struct {
@@ -162,6 +173,7 @@ type Class struct {
 	StartTime time.Time `pg:",notnull"`
 	EndTime   time.Time `pg:",notnull"`
 	Weekdays  []Weekday
+	Students  []Student `pg:"many2many:student_to_class,joinFK:class_id"`
 }
 
 type Weekday struct {
