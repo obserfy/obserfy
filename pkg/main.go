@@ -65,7 +65,8 @@ func runServer() error {
 	studentStore := postgres.StudentStore{db}
 	observationStore := postgres.ObservationStore{db}
 	schoolStore := postgres.SchoolStore{db}
-	userStore := postgres.UserStore{db}
+	// userStore := postgres.UserStore{db}
+	userHandler := user.NewUserHandler(server, db)
 	curriculumStore := postgres.CurriculumStore{db}
 	authStore := postgres.AuthStore{db}
 	mailService := mailgun.NewService()
@@ -85,7 +86,7 @@ func runServer() error {
 		r.Mount("/students", student.NewRouter(server, studentStore))
 		r.Mount("/observations", observation.NewRouter(server, observationStore))
 		r.Mount("/schools", school.NewRouter(server, schoolStore))
-		r.Mount("/user", user.NewRouter(server, userStore))
+		r.Mount("/user", user.NewRouter(userHandler))
 		r.Mount("/curriculum", curriculum.NewRouter(server, curriculumStore))
 	})
 	// Serve gatsby static frontend assets
