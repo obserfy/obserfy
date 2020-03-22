@@ -2,13 +2,15 @@ package curriculum
 
 import (
 	"errors"
+	"github.com/chrsep/vor/pkg/auth"
+	"net/http"
+
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/rest"
 	"github.com/go-chi/chi"
 	"github.com/go-pg/pg/v9"
 	"github.com/google/uuid"
 	richErrors "github.com/pkg/errors"
-	"net/http"
 )
 
 type Store interface {
@@ -26,6 +28,9 @@ type Store interface {
 	DeleteSubject(id string) error
 	ReplaceSubject(subject postgres.Subject) error
 	UpdateArea(areaId string, name string) error
+	CheckSubjectPermissions(subjectId string, userId string) (bool, error)
+	CheckAreaPermissions(subjectId string, userId string) (bool, error)
+
 }
 
 type server struct {
@@ -48,24 +53,75 @@ func NewRouter(s rest.Server, store Store) *chi.Mux {
 	server := server{s, store}
 	r := chi.NewRouter()
 	r.Method("POST", "/areas", server.createArea())
-	r.Method("PATCH", "/areas/{areaId}", server.patchArea())
-	r.Method("GET", "/areas/{areaId}", server.getArea())
-	r.Method("DELETE", "/areas/{areaId}", server.deleteArea())
-	r.Method("GET", "/areas/{areaId}/subjects", server.getAreaSubjects())
-	r.Method("POST", "/areas/{areaId}/subjects", server.createSubject())
+	r.Route("/areas/{areaId}", func(r chi.Router) {
+		r.Use(server.areaMiddleware())
+		r.Method("PATCH", "/", server.patchArea())
+		r.Method("GET", "/", server.getArea())
+		r.Method("DELETE", "/", server.deleteArea())
+		r.Method("GET", "/subjects", server.getAreaSubjects())
+		r.Method("POST", "/subjects", server.createSubject())
+	})
 
-	r.Method("GET", "/subjects/{subjectId}", server.getSubject())
-	r.Method("PUT", "/subjects/{subjectId}", server.replaceSubject())
-	// TODO: This is not used, refactor after curriculum got e2e test.
-	r.Method("PATCH", "/subjects/{subjectId}", server.updateSubject())
-	r.Method("DELETE", "/subjects/{subjectId}", server.deleteSubject())
-	r.Method("GET", "/subjects/{subjectId}/materials", server.getSubjectMaterials())
-	r.Method("POST", "/subjects/{subjectId}/materials", server.createNewMaterial())
 
-	r.Method("PATCH", "/materials/{materialId}", server.updateMaterial())
+	r.Route("/subjects/{subjectId}", func(r chi.Router) {
+		r.Use(server.subjectMiddleware())
+		r.Method("GET", "/", server.getSubject())
+		r.Method("PUT", "/", server.replaceSubject())
+		// TODO: This is not used, refactor after curriculum got e2e test.
+		//r.Method("PATCH", "/subjects/{subjectId}", server.updateSubject())
+		r.Method("DELETE", "/", server.deleteSubject())
+		r.Method("GET", "/materials", server.getSubjectMaterials())
+		r.Method("POST", "/materials", server.createNewMaterial())
+
+		r.Method("PATCH", "/materials/{materialId}", server.updateMaterial())
+	})
+
 	return r
 }
+func (s *server) subjectMiddleware() func(next http.Handler) http.Handler {
+	return func(next http.Handler) http.Handler {
+		return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+			session, ok := auth.GetSessionFromCtx(r.Context())
+			if !ok {
+				return auth.NewGetSessionError()
+			}
+			subjectId := chi.URLParam(r, "subjectId")
+			userHasAccess, err := s.store.CheckSubjectPermissions(subjectId, session.UserId)
+			if err != nil {
+				return &rest.Error{http.StatusInternalServerError, "Internal Server Error", err}
 
+			}
+			if !userHasAccess {
+				return &rest.Error{http.StatusNotFound, "Subject not found", err}
+			}
+			next.ServeHTTP(w, r)
+			return nil
+		})
+	}
+}
+func (s *server) areaMiddleware() func(next http.Handler) http.Handler {
+	return func(next http.Handler) http.Handler {
+		return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+			areaId := chi.URLParam(r, "areaId")
+			session, ok := auth.GetSessionFromCtx(r.Context())
+			if !ok {
+				return auth.NewGetSessionError()
+			}
+
+			userHasAccess, err := s.store.CheckAreaPermissions(areaId, session.UserId)
+			if err != nil {
+				return &rest.Error{http.StatusInternalServerError, "Internal Server Error", err}
+
+			}
+			if !userHasAccess {
+				return &rest.Error{http.StatusNotFound, "Area not found", err}
+			}
+
+			next.ServeHTTP(w, r)
+			return nil
+		})
+	}
+}
 func (s *server) getArea() rest.Handler {
 	type responseBody struct {
 		Id   string `json:"id"`

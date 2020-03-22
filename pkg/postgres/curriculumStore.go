@@ -23,6 +23,61 @@ func (c CurriculumStore) UpdateArea(areaId string, name string) error {
 
 // updateSubject manually replace existing data with new ones completely. Without destroying its relationship with
 // existing data.
+func (s CurriculumStore) CheckSubjectPermissions(subjectId string, userId string) (bool, error) {
+	var subject Subject
+	var user User
+	if err := s.Model(&subject).
+		Relation("Area").
+		Relation("Area.Curriculum").
+		Where("subject.id=?", subjectId).
+		Select(); err == pg.ErrNoRows {
+		return false, nil
+	} else if err != nil {
+		return false, richErrors.Wrap(err, "Failed getting subject")
+	}
+	if err := s.Model(&user).
+		Relation("Schools").
+		Where("id=?", userId).
+		Select(); err == pg.ErrNoRows {
+		return false, nil
+	} else if err != nil {
+		return false, richErrors.Wrap(err, "Failed getting user")
+	}
+	for _,school:=range user.Schools{
+		if(subject.Area.CurriculumId==school.CurriculumId){
+			return true,nil
+		}
+	}
+
+	return false, nil
+}
+func (s CurriculumStore) CheckAreaPermissions(areaId string, userId string) (bool, error) {
+	var area Area
+	var user User
+	if err := s.Model(&area).
+		Relation("Curriculum").
+		Where("area.id=?", areaId).
+		Select(); err == pg.ErrNoRows {
+		return false, nil
+	} else if err != nil {
+		return false, richErrors.Wrap(err, "Failed getting area")
+	}
+	if err := s.Model(&user).
+		Relation("Schools").
+		Where("id=?", userId).
+		Select(); err == pg.ErrNoRows {
+		return false, nil
+	} else if err != nil {
+		return false, richErrors.Wrap(err, "Failed getting user")
+	}
+	for _,school:=range user.Schools{
+		if(area.CurriculumId==school.CurriculumId){
+			return true,nil
+		}
+	}
+
+	return false, nil
+}
 func (c CurriculumStore) ReplaceSubject(newSubject Subject) error {
 	var materialsToKeep []string
 	for _, material := range newSubject.Materials {
