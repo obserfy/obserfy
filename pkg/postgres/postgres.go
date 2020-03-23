@@ -113,6 +113,7 @@ type Student struct {
 	Note        string
 	CustomId    string
 	Active      bool
+	ProfilePic  string
 }
 
 type StudentToClass struct {
