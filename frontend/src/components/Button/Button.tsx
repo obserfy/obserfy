@@ -13,13 +13,14 @@ export const Button: FC<ButtonProps> = ({
   onClick,
   children,
   icon,
+  sx,
   ...props
 }) => (
   <ButtonBase
     onClick={onClick}
     onMouseEnter={onMouseEnter}
     display="flex"
-    sx={{ alignItems: "center", justifyContent: "center" }}
+    sx={{ ...sx, alignItems: "center", justifyContent: "center" }}
     {...props}
   >
     {icon && <Icon as={icon} m={0} mr={2} />}

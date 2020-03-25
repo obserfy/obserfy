@@ -101,7 +101,7 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
           width="100%"
           label="Email"
           value={email}
-          onChange={e => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
           required
           mb={2}
         />
@@ -110,7 +110,7 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
           name="name"
           label="Name"
           value={name}
-          onChange={e => setName(e.target.value)}
+          onChange={(e) => setName(e.target.value)}
           required
           mb={2}
         />
@@ -120,7 +120,7 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
           width="100%"
           label="Password"
           value={password}
-          onChange={e => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
           required
           mb={3}
         />

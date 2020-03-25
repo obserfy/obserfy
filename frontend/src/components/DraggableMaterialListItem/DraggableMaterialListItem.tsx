@@ -23,9 +23,9 @@ export const DraggableMaterialListItem: FC<Props> = ({
   height,
 }) => {
   const onNameChange = useCallback(
-    e => {
+    (e) => {
       const name = e.target.value
-      setMaterials(draft => {
+      setMaterials((draft) => {
         draft[i].name = name
       })
     },
@@ -33,10 +33,10 @@ export const DraggableMaterialListItem: FC<Props> = ({
   )
 
   const onDelete = useCallback(() => {
-    setMaterials(draft => {
+    setMaterials((draft) => {
       const newMaterial = draft
         .filter(({ id }) => id !== material.id) // Remove material
-        .map(current =>
+        .map((current) =>
           // Fix order number so none are skipped (1,2,3,4 not 1,3,4,5)
           current.order > material.order
             ? { ...current, order: current.order - 1 }
@@ -61,7 +61,7 @@ export const DraggableMaterialListItem: FC<Props> = ({
       if (originalOrder + position > order) {
         const newPosition = Math.min(originalOrder + position, length - 1)
         if (material.order !== newPosition)
-          setMaterials(draft => {
+          setMaterials((draft) => {
             draft.forEach((item, idx) => {
               if (item.id === material.id) {
                 // eslint-disable-next-line no-param-reassign
@@ -79,7 +79,7 @@ export const DraggableMaterialListItem: FC<Props> = ({
       }
       if (originalOrder + position < order) {
         if (material.order !== originalOrder + position)
-          setMaterials(draft => {
+          setMaterials((draft) => {
             const newPosition = Math.max(originalOrder + position, 0)
             draft.forEach((item, idx) => {
               if (item.id === material.id) {

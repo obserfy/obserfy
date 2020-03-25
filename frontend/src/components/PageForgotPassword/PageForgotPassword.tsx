@@ -65,7 +65,7 @@ export const PageForgotPassword: FC = () => {
           width="100%"
           label="Email"
           value={email}
-          onChange={e => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
           required
           mb={3}
           disabled={success}

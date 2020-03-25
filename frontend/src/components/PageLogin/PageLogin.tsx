@@ -52,7 +52,7 @@ export const PageLogin: FC = () => {
           width="100%"
           label="Email"
           value={email}
-          onChange={e => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
           required
           mb={2}
         />
@@ -61,7 +61,7 @@ export const PageLogin: FC = () => {
           width="100%"
           label="Password"
           value={password}
-          onChange={e => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
           required
         />
         <Link to="/forgot-password">

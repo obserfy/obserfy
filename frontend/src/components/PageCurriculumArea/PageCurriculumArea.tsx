@@ -36,7 +36,7 @@ export const PageCurriculumArea: FC<Props> = ({ id }) => {
 
   const subjectList = subjects.data
     ?.sort((a, b) => b.order - a.order)
-    .map(subject => (
+    .map((subject) => (
       <SubjectListItem
         key={subject.id}
         subject={subject}
@@ -146,7 +146,7 @@ const SubjectListItem: FC<SubjectListItemProps> = ({
 }) => {
   const materials = useGetSubjectMaterials(subject.id)
 
-  const materialList = materials.data?.map(material => (
+  const materialList = materials.data?.map((material) => (
     <Box
       p={3}
       px={3}

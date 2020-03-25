@@ -7,7 +7,7 @@ interface Props extends BoxProps {
   source?: string
   fixed?: FixedObject
 }
-export const Avatar: FC<Props> = props => {
+export const Avatar: FC<Props> = (props) => {
   return (
     <Image
       size={32}

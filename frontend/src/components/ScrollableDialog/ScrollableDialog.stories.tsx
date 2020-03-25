@@ -32,10 +32,10 @@ export const Basic: FC = () => {
       title="Where do you want to live?"
     >
       <Box px={3}>
-        <SearchBar onChange={e => setFilter(e.target.value)} value={filter} />
+        <SearchBar onChange={(e) => setFilter(e.target.value)} value={filter} />
         {[...locationList]
-          .filter(location => location.includes(filter))
-          .map(location => (
+          .filter((location) => location.includes(filter))
+          .map((location) => (
             <Typography.Body p={3} mb={0} key={location}>
               {location}
             </Typography.Body>

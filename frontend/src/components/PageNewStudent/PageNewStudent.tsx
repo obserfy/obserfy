@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react"
-import { Link, navigate, useIntl } from "gatsby-plugin-intl3"
+import { Link, navigate } from "gatsby-plugin-intl3"
 import Box from "../Box/Box"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import Input from "../Input/Input"
@@ -8,17 +8,13 @@ import Spacer from "../Spacer/Spacer"
 import Button from "../Button/Button"
 import { createStudentApi } from "../../api/students/createStudentApi"
 import { getSchoolId } from "../../hooks/schoolIdState"
-import Icon from "../Icon/Icon"
-import { ReactComponent as CalendarIcon } from "../../icons/calendar.svg"
-import DatePickerDialog from "../DatePickerDialog/DatePickerDialog"
 import { getAnalytics } from "../../analytics"
+import DateInput from "../DateInput/DateInput"
 
 export const PageNewStudent: FC = () => {
   const [name, setName] = useState("")
   const [dateOfBirth, setDateOfBirth] = useState<Date>()
-  const [showDatePicker, setShowDatePicker] = useState(false)
   const isFormInvalid = name === ""
-  const intl = useIntl()
 
   async function createNewStudent(): Promise<void> {
     const response = await createStudentApi(getSchoolId(), {
@@ -32,32 +28,6 @@ export const PageNewStudent: FC = () => {
     if (response.status === 201) navigate("/dashboard/observe")
   }
 
-  const dobField = (
-    <Flex mt={3} onClick={() => setShowDatePicker(true)}>
-      <Input
-        label="Date of Birth"
-        width="100%"
-        value={
-          dateOfBirth
-            ? intl.formatDate(dateOfBirth, {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })
-            : ""
-        }
-        placeholder="Not set"
-        disabled
-        sx={{
-          opacity: "1!important",
-        }}
-      />
-      <Button mt={23} ml={3} variant="outline" sx={{ flexShrink: 0 }}>
-        <Icon as={CalendarIcon} m={0} />
-      </Button>
-    </Flex>
-  )
-
   return (
     <>
       <Box maxWidth="maxWidth.sm" margin="auto">
@@ -67,9 +37,9 @@ export const PageNewStudent: FC = () => {
             label="Name"
             width="100%"
             value={name}
-            onChange={e => setName(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
           />
-          {dobField}
+          <DateInput value={dateOfBirth} onChange={setDateOfBirth} />
         </Box>
         <Flex m={3}>
           <Spacer />
@@ -83,16 +53,7 @@ export const PageNewStudent: FC = () => {
           </Button>
         </Flex>
       </Box>
-      {showDatePicker && (
-        <DatePickerDialog
-          defaultDate={dateOfBirth}
-          onDismiss={() => setShowDatePicker(false)}
-          onConfirm={date => {
-            setDateOfBirth(date)
-            setShowDatePicker(false)
-          }}
-        />
-      )}
+      {}
     </>
   )
 }

@@ -16,7 +16,7 @@ export const PageHome: FC = () => {
   const [searchTerm, setSearchTerm] = useState("")
   const { data, isFetching } = useGetStudents()
   const students = data ?? []
-  const matchedStudent = students.filter(student =>
+  const matchedStudent = students.filter((student) =>
     student.name.match(new RegExp(searchTerm, "i"))
   )
 
@@ -78,7 +78,7 @@ export const PageHome: FC = () => {
           mr={3}
           placeholder="Search students"
           value={searchTerm}
-          onChange={e => setSearchTerm(e.target.value)}
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
         <Link to="/dashboard/observe/students/new">
           <Button variant="outline" data-cy="addStudent" height="100%">

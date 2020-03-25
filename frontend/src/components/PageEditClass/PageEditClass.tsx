@@ -69,13 +69,13 @@ export const PageEditClass: FC<Props> = ({ classId }) => {
               width="100%"
               mb={3}
               value={name}
-              onChange={e => setName(e.target.value)}
+              onChange={(e) => setName(e.target.value)}
             />
             <Flex>
               <Input
                 type="time"
                 value={startTime}
-                onChange={e => setStartTime(e.target.value)}
+                onChange={(e) => setStartTime(e.target.value)}
                 label="Start Time"
                 width="100%"
                 mb={3}
@@ -84,7 +84,7 @@ export const PageEditClass: FC<Props> = ({ classId }) => {
               <Input
                 type="time"
                 value={endTime}
-                onChange={e => setEndTime(e.target.value)}
+                onChange={(e) => setEndTime(e.target.value)}
                 label="End Time"
                 width="100%"
                 mb={3}
@@ -101,9 +101,9 @@ export const PageEditClass: FC<Props> = ({ classId }) => {
                   activeBackground="primary"
                   isActive={weekdays.includes(i)}
                   onClick={() =>
-                    setWeekdays(draft => {
+                    setWeekdays((draft) => {
                       if (draft.includes(i)) {
-                        return draft.filter(item => item !== i)
+                        return draft.filter((item) => item !== i)
                       }
                       return [...draft, i]
                     })

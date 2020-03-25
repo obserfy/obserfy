@@ -30,7 +30,9 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
 
   // Derived state
   const selectedAreaId = areas.data?.[tab]?.id
-  const inSelectedArea = progress.data?.filter(p => p.areaId === selectedAreaId)
+  const inSelectedArea = progress.data?.filter(
+    (p) => p.areaId === selectedAreaId
+  )
   const inProgress = inSelectedArea?.filter(
     ({ stage }) =>
       stage >= MaterialProgressStage.PRESENTED &&
@@ -83,7 +85,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
     </Typography.Body>
   )
 
-  const listOfInProgress = inProgress?.map(item => (
+  const listOfInProgress = inProgress?.map((item) => (
     <MaterialProgressItem
       key={item.materialId}
       value={item}
@@ -97,7 +99,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
   const listOfMastered = recentlyMastered
     ?.slice(0, 3)
     .sort((a, b) => Date.parse(b.updatedAt) - Date.parse(a.updatedAt))
-    .map(item => (
+    .map((item) => (
       <MaterialProgressItem
         key={item.materialId}
         value={item}

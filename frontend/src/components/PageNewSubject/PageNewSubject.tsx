@@ -30,7 +30,7 @@ export const PageNewSubject: FC<Props> = ({ areaId }) => {
   const area = useGetArea(areaId)
 
   const isValid =
-    materials.every(material => material.name !== "") && subjectName !== ""
+    materials.every((material) => material.name !== "") && subjectName !== ""
 
   async function createSubject(): Promise<void> {
     setLoading(true)
@@ -78,7 +78,7 @@ export const PageNewSubject: FC<Props> = ({ areaId }) => {
               width="100%"
               label="Subject name"
               value={subjectName}
-              onChange={e => setSubjectName(e.target.value)}
+              onChange={(e) => setSubjectName(e.target.value)}
             />
           </Box>
           <Typography.Body
@@ -98,7 +98,7 @@ export const PageNewSubject: FC<Props> = ({ areaId }) => {
             alignItems="center"
             backgroundColor="background"
             onClick={() => {
-              setMaterials(draft => {
+              setMaterials((draft) => {
                 draft.push({
                   id: nanoid(),
                   name: "",

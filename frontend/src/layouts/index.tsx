@@ -26,7 +26,7 @@ const LayoutManager: FC<any> = ({ children, pageContext }) => {
 
 const GlobalStyle: FC = () => (
   <Global
-    styles={theme => ({
+    styles={(theme) => ({
       body: {
         backgroundColor: theme.colors.background,
       },

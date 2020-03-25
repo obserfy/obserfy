@@ -1,6 +1,5 @@
 import React, { FC, useEffect, useState } from "react"
 import { navigate } from "gatsby"
-import { useIntl } from "gatsby-plugin-intl3"
 import Box from "../Box/Box"
 import { useGetStudent } from "../../api/useGetStudent"
 import Input from "../Input/Input"
@@ -13,9 +12,7 @@ import DeleteStudentDialog from "../DeleteStudentDialog/DeleteStudentDialog"
 import Spacer from "../Spacer/Spacer"
 import { deleteStudentApi } from "../../api/students/deleteStudentApi"
 import { updateStudentApi } from "../../api/students/updateStudentApi"
-import Icon from "../Icon/Icon"
-import { ReactComponent as CalendarIcon } from "../../icons/calendar.svg"
-import DatePickerDialog from "../DatePickerDialog/DatePickerDialog"
+import DateInput from "../DateInput/DateInput"
 
 interface Props {
   id: string
@@ -25,8 +22,6 @@ export const PageEditStudent: FC<Props> = ({ id }) => {
   const [isDeletingStudent, setIsDeletingStudent] = useState(false)
   const [name, setName] = useState<string>()
   const [dateOfBirth, setDateOfBirth] = useState<Date>()
-  const [showDatePicker, setShowDatePicker] = useState(false)
-  const intl = useIntl()
   const student = useGetStudent(id)
 
   useEffect(() => {
@@ -66,32 +61,6 @@ export const PageEditStudent: FC<Props> = ({ id }) => {
     />
   )
 
-  const dobField = (
-    <Flex mt={3} onClick={() => setShowDatePicker(true)}>
-      <Input
-        label="Date of Birth"
-        width="100%"
-        value={
-          dateOfBirth
-            ? intl.formatDate(dateOfBirth, {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })
-            : ""
-        }
-        placeholder="Not set"
-        disabled
-        sx={{
-          opacity: "1!important",
-        }}
-      />
-      <Button mt={23} ml={3} variant="outline">
-        <Icon as={CalendarIcon} m={0} sx={{ minWidth: 20 }} />
-      </Button>
-    </Flex>
-  )
-
   return (
     <>
       <Box maxWidth="maxWidth.sm" margin="auto">
@@ -103,9 +72,9 @@ export const PageEditStudent: FC<Props> = ({ id }) => {
                 label="Name"
                 width="100%"
                 value={name}
-                onChange={e => setName(e.target.value)}
+                onChange={(e) => setName(e.target.value)}
               />
-              {dobField}
+              <DateInput onChange={setDateOfBirth} value={dateOfBirth} />
             </>
           ) : (
             <Box pt={24}>
@@ -127,16 +96,6 @@ export const PageEditStudent: FC<Props> = ({ id }) => {
         </Flex>
       </Box>
       {deleteStudentDialog}
-      {showDatePicker && (
-        <DatePickerDialog
-          defaultDate={dateOfBirth}
-          onDismiss={() => setShowDatePicker(false)}
-          onConfirm={date => {
-            setDateOfBirth(date)
-            setShowDatePicker(false)
-          }}
-        />
-      )}
     </>
   )
 }
