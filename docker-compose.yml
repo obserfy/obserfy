@@ -21,6 +21,8 @@ services:
       - "apparmor=unconfined"
     cap_add:
       - "SYS_PTRACE"
+    env_file:
+      - .env
 
   nginx:
     build:
