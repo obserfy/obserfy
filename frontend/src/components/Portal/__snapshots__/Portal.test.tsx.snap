@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EditAreaDialog should render correctly 1`] = `
+exports[`Portal should render correctly 1`] = `
 .emotion-0 {
   box-sizing: border-box;
   margin: 0;

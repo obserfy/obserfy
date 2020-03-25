@@ -66,6 +66,7 @@ module.exports = {
     // `gatsby-plugin-remove-serviceworker`,
     `gatsby-plugin-remove-trailing-slashes`,
     `gatsby-plugin-emotion`,
+    `gatsby-plugin-portal`,
     {
       resolve: `gatsby-plugin-segment-js`,
       options: {
@@ -183,7 +184,7 @@ module.exports = {
       },
     },
   ],
-  developMiddleware: app => {
+  developMiddleware: (app) => {
     app.use("/api", createProxyMiddleware({ target: "http://localhost:8000" }))
     app.use("/auth", createProxyMiddleware({ target: "http://localhost:8000" }))
   },
