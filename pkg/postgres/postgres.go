@@ -42,6 +42,8 @@ func InitTables(db *pg.DB) error {
 		(*Class)(nil),
 		(*Weekday)(nil),
 		(*Student)(nil),
+		(*Guardian)(nil),
+		(*GuardianToStudent)(nil),
 		(*StudentMaterialProgress)(nil),
 		(*User)(nil),
 		(*Observation)(nil),
@@ -114,6 +116,30 @@ type Student struct {
 	CustomId    string
 	Active      bool
 	ProfilePic  string
+	Guardians   []Guardian `pg:"many2many:guardian_to_student,joinFK:student_id"`
+}
+
+type Guardian struct {
+	Id       string `pg:"type:uuid"`
+	Name     string
+	Email    string
+	Phone    string
+	Note     string
+	Children []Student `pg:"many2many:guardian_to_student,joinFK:guardian_id"`
+}
+
+type GuardianRelationship int
+
+const (
+	Mother GuardianRelationship = iota
+	Father
+	Others
+)
+
+type GuardianToStudent struct {
+	StudentId    string               `pg:"type:uuid,on_delete:CASCADE"`
+	GuardianId   string               `pg:"type:uuid,on_delete:CASCADE"`
+	Relationship GuardianRelationship `pg:"type:int"`
 }
 
 type StudentToClass struct {
