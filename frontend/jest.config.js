@@ -15,10 +15,6 @@ module.exports = {
     __PATH_PREFIX__: ``,
   },
   testURL: `http://localhost`,
-  setupFiles: [
-    `<rootDir>/loadershim.ts`,
-    `jest-date-mock`,
-    "fake-indexeddb/auto",
-  ],
+  setupFiles: [`<rootDir>/loadershim.ts`, `jest-date-mock`],
   snapshotSerializers: ["jest-emotion"],
 }
