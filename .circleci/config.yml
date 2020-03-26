@@ -48,6 +48,9 @@ jobs:
       - attach_workspace:
           at: ../
       - run: |
+          cp .env.example .env
+          docker-compose up -d &
+      - run: |
           echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
           echo ' [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
       - run: |
@@ -55,13 +58,6 @@ jobs:
           node -v
           nvm alias default v12
       - run: npm install -g yarn
-      - run: sudo apt-get update && sudo apt-get install libjpeg62 libpng16-16
-      - run: cp .env.example .env
-      - run: |
-          cd ./docker/postgres/ssl
-          ./generate.sh
-          cd ../../../
-          docker-compose up -d
       - run: |
           cd frontend
           yarn install
@@ -73,8 +69,13 @@ jobs:
           path: frontend/coverage/clover.xml
       - store_artifacts:
           path: ~/repo/frontend/cypress/videos
+          destination: cypress-videos
       - store_artifacts:
           path: ~/repo/frontend/cypress/screenshots
+          destination: cypress-screenshots
+      - store_artifacts:
+          path: ~/repo/frontend/coverage
+          destination: coverage
 
   backend_unit:
     docker:
