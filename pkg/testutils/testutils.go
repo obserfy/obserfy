@@ -31,13 +31,12 @@ func (s *BaseTestSuite) TearDownSuite() {
 }
 
 func (s *BaseTestSuite) SetupSuite() {
-	db, err := connectTestDB()
-	assert.NoError(s.T(), err)
+	db := connectTestDB()
 	s.DB = db
 	s.Server = rest.NewServer(zaptest.NewLogger(s.T()))
 }
 
-func connectTestDB() (*pg.DB, error) {
+func connectTestDB() *pg.DB {
 	db := postgres.Connect(
 		"postgres",
 		"postgres",
@@ -59,9 +58,9 @@ func connectTestDB() (*pg.DB, error) {
 
 	err := postgres.InitTables(db)
 	if err != nil {
-		return nil, err
+		println(err)
 	}
-	return db, nil
+	return db
 }
 
 func (s *BaseTestSuite) CreateRequest(method string, path string, bodyJson interface{}, session *postgres.Session) *httptest.ResponseRecorder {
