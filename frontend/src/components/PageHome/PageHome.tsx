@@ -11,18 +11,21 @@ import { Typography } from "../Typography/Typography"
 import Card from "../Card/Card"
 import { useGetStudents } from "../../api/students/useGetStudents"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
+import { NEW_STUDENT_URL } from "../../pages/dashboard/observe/students/new"
 
 export const PageHome: FC = () => {
   const [searchTerm, setSearchTerm] = useState("")
-  const { data, isFetching } = useGetStudents()
-  const students = data ?? []
-  const matchedStudent = students.filter((student) =>
-    student.name.match(new RegExp(searchTerm, "i"))
-  )
+  const students = useGetStudents()
+
+  const matchedStudent = !students.error
+    ? students.data?.filter((student) => {
+        student.name.match(new RegExp(searchTerm, "i"))
+      })
+    : []
 
   const studentList =
-    (!isFetching || students.length > 0) &&
-    matchedStudent.map(({ name, id }) => (
+    students.status === "success" &&
+    matchedStudent?.map(({ name, id }) => (
       <Card
         p={3}
         mx={3}
@@ -37,39 +40,13 @@ export const PageHome: FC = () => {
       </Card>
     ))
 
-  const emptyStudentListPlaceholder = !isFetching && students.length === 0 && (
-    <Card mx={3}>
-      <Flex
-        m={3}
-        px={4}
-        flexDirection="column"
-        alignItems="center"
-        justifyContent="center"
-        height="100%"
-      >
-        <Typography.Body mb={4} mt={3} textAlign="center">
-          You have no student enrolled yet
-        </Typography.Body>
-        <Link to="/dashboard/observe/students/new" data-cy="new-student-button">
-          <Button variant="outline">
-            <Icon as={PlusIcon} m={0} mr={2} />
-            New Student
-          </Button>
-        </Link>
-      </Flex>
-    </Card>
-  )
+  const emptyData =
+    students.status === "success" && (students.data?.length ?? []) < 0
 
-  const emptySearchResultInfo = !isFetching &&
-    students.length > 0 &&
+  const emptySearchResult =
+    students.status === "success" &&
     matchedStudent?.length === 0 &&
-    searchTerm !== "" && (
-      <Flex mt={3} alignItems="center" justifyContent="center" height="100%">
-        <Typography.H6 textAlign="center" maxWidth="80vw">
-          The term <i>&quot;{searchTerm}&quot;</i> does not match any student
-        </Typography.H6>
-      </Flex>
-    )
+    searchTerm !== ""
 
   return (
     <Box maxWidth="maxWidth.sm" margin="auto">
@@ -80,25 +57,64 @@ export const PageHome: FC = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <Link to="/dashboard/observe/students/new">
+        <Link to={NEW_STUDENT_URL} style={{ flexShrink: 0 }}>
           <Button variant="outline" data-cy="addStudent" height="100%">
             <Icon as={PlusIcon} m={0} />
           </Button>
         </Link>
       </Flex>
       {studentList}
-      {emptySearchResultInfo}
-      {emptyStudentListPlaceholder}
-      {isFetching && students.length === 0 && <StudentListLoadingPlaceholder />}
+      {emptySearchResult && <EmptySearchResultPlaceholder term={searchTerm} />}
+      {emptyData && <NoStudentPlaceholder />}
+      {students.status === "loading" && <StudentLoadingPlaceholder />}
+      {students.status === "error" && (
+        <>
+          <Typography.Body textAlign="center" mx={4} mb={3}>
+            Oops, we fail to fetch new student data. Please try again in a
+            minute.
+          </Typography.Body>
+          <Button mx="auto" onClick={students.refetch}>
+            Try again
+          </Button>
+        </>
+      )}
     </Box>
   )
 }
 
-const StudentListLoadingPlaceholder: FC = () => (
+const EmptySearchResultPlaceholder: FC<{ term: string }> = ({ term }) => (
+  <Flex mt={3} alignItems="center" justifyContent="center" height="100%">
+    <Typography.H6 textAlign="center" maxWidth="80vw">
+      The term <i>&quot;{term}&quot;</i> does not match any student
+    </Typography.H6>
+  </Flex>
+)
+
+const NoStudentPlaceholder: FC = () => (
+  <Card mx={3}>
+    <Flex
+      m={3}
+      px={4}
+      flexDirection="column"
+      alignItems="center"
+      justifyContent="center"
+      height="100%"
+    >
+      <Typography.Body mb={4} mt={3} textAlign="center">
+        You have no student enrolled yet
+      </Typography.Body>
+      <Link to={NEW_STUDENT_URL} data-cy="new-student-button">
+        <Button variant="outline">
+          <Icon as={PlusIcon} m={0} mr={2} />
+          New Student
+        </Button>
+      </Link>
+    </Flex>
+  </Card>
+)
+
+const StudentLoadingPlaceholder: FC = () => (
   <Box px={3}>
-    <LoadingPlaceholder width="100%" height={62} mb={2} />
-    <LoadingPlaceholder width="100%" height={62} mb={2} />
-    <LoadingPlaceholder width="100%" height={62} mb={2} />
     <LoadingPlaceholder width="100%" height={62} mb={2} />
     <LoadingPlaceholder width="100%" height={62} mb={2} />
     <LoadingPlaceholder width="100%" height={62} mb={2} />

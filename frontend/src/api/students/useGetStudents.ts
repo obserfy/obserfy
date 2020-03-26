@@ -1,6 +1,6 @@
 import { QueryState, useQuery } from "react-query"
 import { navigate } from "gatsby"
-import { BASE_URL } from "../useApi"
+import { ApiError, BASE_URL } from "../useApi"
 import { getSchoolId } from "../../hooks/schoolIdState"
 
 export interface Student {
@@ -18,6 +18,11 @@ async function fetchStudents(): Promise<Student[]> {
   if (result.status === 401) {
     await navigate("/login")
     return []
+  }
+
+  if (result.status !== 200) {
+    const response: ApiError = await result.json()
+    throw Error(response.error?.message)
   }
 
   return result.json()
