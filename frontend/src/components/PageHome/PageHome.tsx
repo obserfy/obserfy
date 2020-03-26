@@ -17,11 +17,20 @@ export const PageHome: FC = () => {
   const [searchTerm, setSearchTerm] = useState("")
   const students = useGetStudents()
 
-  const matchedStudent = !students.error
-    ? students.data?.filter((student) => {
-        student.name.match(new RegExp(searchTerm, "i"))
-      })
-    : []
+  const matchedStudent =
+    students.error === null
+      ? students.data?.filter((student) => {
+          return student.name.match(new RegExp(searchTerm, "i"))
+        })
+      : []
+
+  const emptyData =
+    students.status === "success" && (students.data?.length ?? 0) === 0
+
+  const emptySearchResult =
+    students.status === "success" &&
+    matchedStudent?.length === 0 &&
+    searchTerm !== ""
 
   const studentList =
     students.status === "success" &&
@@ -39,14 +48,6 @@ export const PageHome: FC = () => {
         </Flex>
       </Card>
     ))
-
-  const emptyData =
-    students.status === "success" && (students.data?.length ?? 0) === 0
-
-  const emptySearchResult =
-    students.status === "success" &&
-    matchedStudent?.length === 0 &&
-    searchTerm !== ""
 
   return (
     <Box maxWidth="maxWidth.sm" margin="auto">
