@@ -41,7 +41,7 @@ export const PageHome: FC = () => {
     ))
 
   const emptyData =
-    students.status === "success" && (students.data?.length ?? []) < 0
+    students.status === "success" && (students.data?.length ?? 0) === 0
 
   const emptySearchResult =
     students.status === "success" &&
@@ -101,7 +101,7 @@ const NoStudentPlaceholder: FC = () => (
       height="100%"
     >
       <Typography.Body mb={4} mt={3} textAlign="center">
-        You have no student enrolled yet
+        You have no student enrolled
       </Typography.Body>
       <Link to={NEW_STUDENT_URL} data-cy="new-student-button">
         <Button variant="outline">

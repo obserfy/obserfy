@@ -20,6 +20,11 @@ async function fetchStudents(): Promise<Student[]> {
     return []
   }
 
+  if (result.status === 404) {
+    await navigate("/choose-school")
+    return []
+  }
+
   if (result.status !== 200) {
     const response: ApiError = await result.json()
     throw Error(response.error?.message)
