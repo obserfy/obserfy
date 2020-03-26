@@ -149,7 +149,7 @@
     "lint": "eslint --ext .tsx,.ts src/",
     "typecheck": "tsc --noemit",
     "build": "gatsby build",
-    "build:cy": "cross-env CYPRESS_SUPPORT=y gatsby build",
+    "build:ci": "cross-env CYPRESS_SUPPORT=y gatsby build",
     "develop": "cross-env CYPRESS_SUPPORT=y gatsby develop -H 0.0.0.0 -p 8001",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
@@ -163,7 +163,7 @@
     "test": "jest --coverage --passWithNoTests --coverageReporters json clover",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "cy:ci": "start-server-and-test develop 8001 cy:run"
+    "cy:ci": "yarn cy:run --config baseUrl=http://localhost:8000"
   },
   "repository": {
     "type": "git",

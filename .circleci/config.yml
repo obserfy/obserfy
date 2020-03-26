@@ -15,7 +15,10 @@ jobs:
           yarn install
       - run: |
           cd frontend
-          yarn build
+          mv .babelrc.ci.json .babelrc
+      - run: |
+          cd frontend
+          yarn build:ci
       - persist_to_workspace:
           root: ../
           paths:
