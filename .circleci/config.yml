@@ -48,9 +48,6 @@ jobs:
       - attach_workspace:
           at: ../
       - run: |
-          cp .env.example .env
-          docker-compose up &
-      - run: |
           echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
           echo ' [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
       - run: |
@@ -58,6 +55,9 @@ jobs:
           node -v
           nvm alias default v12
       - run: npm install -g yarn
+      - run: |
+          cp .env.example .env
+          docker-compose up -d
       - run: |
           cd frontend
           yarn cy:ci
