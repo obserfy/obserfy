@@ -66,8 +66,7 @@ func runServer() error {
 	studentStore := postgres.StudentStore{db}
 	observationStore := postgres.ObservationStore{db}
 	schoolStore := postgres.SchoolStore{db}
-	// userStore := postgres.UserStore{db}
-	userHandler := user.NewUserHandler(server, db)
+	userStore := postgres.UserStore{db}
 	curriculumStore := postgres.CurriculumStore{db}
 	authStore := postgres.AuthStore{db}
 	classStore := postgres.ClassStore{db}
@@ -88,7 +87,7 @@ func runServer() error {
 		r.Mount("/students", student.NewRouter(server, studentStore))
 		r.Mount("/observations", observation.NewRouter(server, observationStore))
 		r.Mount("/schools", school.NewRouter(server, schoolStore))
-		r.Mount("/user", user.NewRouter(userHandler))
+		r.Mount("/user", user.NewRouter(server, userStore))
 		r.Mount("/curriculum", curriculum.NewRouter(server, curriculumStore))
 		r.Mount("/classes", class.NewRouter(server, classStore))
 	})

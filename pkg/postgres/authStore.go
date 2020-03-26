@@ -1,11 +1,13 @@
 package postgres
 
 import (
+	"time"
 	"github.com/go-pg/pg/v9"
 	"github.com/google/uuid"
 	richErrors "github.com/pkg/errors"
 	"golang.org/x/crypto/bcrypt"
-	"time"
+
+	"github.com/chrsep/vor/pkg/auth"
 )
 
 const (
@@ -16,17 +18,20 @@ type AuthStore struct {
 	DB *pg.DB
 }
 
-func (a AuthStore) ResolveInviteCode(inviteCodeId string) (*School, error) {
+func (a AuthStore) ResolveInviteCode(inviteCodeId string) (*auth.School, error) {
 	var school School
 	if err := a.DB.Model(&school).
 		Where("invite_code=?", inviteCodeId).
 		Select(); err != nil {
 		return nil, richErrors.Wrap(err, "invite code:"+inviteCodeId)
 	}
-	return &school, nil
+
+	return &auth.School{
+		SchoolName: school.Name,
+	}, nil
 }
 
-func (a AuthStore) GetUserByEmail(email string) (*User, error) {
+func (a AuthStore) GetUserByEmail(email string) (*auth.User, error) {
 	var user User
 	if err := a.DB.Model(&user).
 		Where("email=?", email).
@@ -35,24 +40,33 @@ func (a AuthStore) GetUserByEmail(email string) (*User, error) {
 	} else if err != nil {
 		return nil, richErrors.Wrap(err, "email: "+email)
 	}
-	return &user, nil
+	return &auth.User{
+		Id:       user.Id,
+		Email:    user.Email,
+		Name:     user.Name,
+		Password: user.Password,
+	}, nil
 }
 
-func (a AuthStore) NewSession(userId string) (*Session, error) {
+func (a AuthStore) NewSession(userId string) (*auth.SessionData, error) {
 	session := Session{uuid.New().String(), userId}
 	if err := a.DB.Insert(&session); err != nil {
 		return nil, richErrors.Wrap(err, "user id:"+userId)
 	}
-	return &session, nil
+	return &auth.SessionData{
+		Token:  session.Token,
+		UserId: session.UserId,
+	}, nil
 }
 
-func (a AuthStore) NewUser(email string, password string, name string, inviteCode string) (*User, error) {
+func (a AuthStore) NewUser(email string, password string, name string, inviteCode string) (*auth.User, error) {
 	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), BCryptCost)
 	if err != nil {
 		return nil, richErrors.Wrap(err, "Failed hashing password")
 	}
+	userId := uuid.New().String()
 	user := User{
-		Id:       uuid.New().String(),
+		Id:       userId,
 		Email:    email,
 		Name:     name,
 		Password: hashedPassword,
@@ -77,17 +91,24 @@ func (a AuthStore) NewUser(email string, password string, name string, inviteCod
 			return nil, richErrors.Wrap(err, "invite code:"+inviteCode)
 		}
 	}
-	return &user, nil
+	return &auth.User{
+		Id:    userId,
+		Email: email,
+		Name:  name,
+	}, nil
 }
 
-func (a AuthStore) GetSession(token string) (*Session, error) {
+func (a AuthStore) GetSession(token string) (*auth.SessionData, error) {
 	var session Session
 	if err := a.DB.Model(&session).
 		Where("token=?", token).
 		Select(); err != nil {
 		return nil, richErrors.Wrap(err, "Failed getting session")
 	}
-	return &session, nil
+	return &auth.SessionData{
+		Token:  session.Token,
+		UserId: session.UserId,
+	}, nil
 }
 
 func (a AuthStore) DeleteSession(token string) error {
@@ -98,21 +119,27 @@ func (a AuthStore) DeleteSession(token string) error {
 	return nil
 }
 
-func (a AuthStore) InsertNewToken(userId string) (*PasswordResetToken, error) {
+func (a AuthStore) InsertNewToken(userId string) (*auth.SessionData, error) {
 	currentTime := time.Now()
+	expiredAt := currentTime.Add(time.Hour)
+	newToken := uuid.New().String()
 	token := PasswordResetToken{
 		Token:     uuid.New().String(),
 		CreatedAt: currentTime,
-		ExpiredAt: currentTime.Add(time.Hour),
+		ExpiredAt: expiredAt,
 		UserId:    userId,
 	}
 	if err := a.DB.Insert(&token); err != nil {
 		return nil, richErrors.Wrap(err, "Failed inserting new token")
 	}
-	return &token, nil
+	return &auth.SessionData{
+		Token:     newToken,
+		UserId:    userId,
+		ExpiredAt: expiredAt,
+	}, nil
 }
 
-func (a AuthStore) GetToken(token string) (*PasswordResetToken, error) {
+func (a AuthStore) GetToken(token string) (*auth.SessionData, error) {
 	var result PasswordResetToken
 	if err := a.DB.Model(&result).
 		Where("token=?", token).
@@ -122,7 +149,17 @@ func (a AuthStore) GetToken(token string) (*PasswordResetToken, error) {
 	} else if err != nil {
 		return nil, richErrors.Wrap(err, "Failed getting the token")
 	}
-	return &result, nil
+	return &auth.SessionData{
+		Token:     result.Token,
+		UserId:    result.UserId,
+		CreatedAt: result.CreatedAt,
+		ExpiredAt: result.ExpiredAt,
+		User:      auth.User{
+			Id:    result.User.Id,
+			Email: result.User.Email,
+			Name:  result.User.Name,
+		},
+	}, nil
 }
 
 func (a AuthStore) DoPasswordReset(userId string, newPassword string, token string) error {

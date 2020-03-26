@@ -2,13 +2,13 @@ package auth
 
 import (
 	"context"
-	"github.com/chrsep/vor/pkg/postgres"
-	"github.com/chrsep/vor/pkg/rest"
-	richErrors "github.com/pkg/errors"
 	"net/http"
+	richErrors "github.com/pkg/errors"
+
+	"github.com/chrsep/vor/pkg/rest"
 )
 
-func NewMiddleware(s rest.Server, store postgres.AuthStore) func(next http.Handler) http.Handler {
+func NewMiddleware(s rest.Server, store Store) func(next http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
 		return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 			// Get session cookie
@@ -39,8 +39,8 @@ func NewMiddleware(s rest.Server, store postgres.AuthStore) func(next http.Handl
 	}
 }
 
-func GetSessionFromCtx(ctx context.Context) (*postgres.Session, bool) {
-	session, ok := ctx.Value(SessionCtxKey).(*postgres.Session)
+func GetSessionFromCtx(ctx context.Context) (*SessionData, bool) {
+	session, ok := ctx.Value(SessionCtxKey).(*SessionData)
 	return session, ok
 }
 
