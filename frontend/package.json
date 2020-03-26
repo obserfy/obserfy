@@ -6,11 +6,8 @@
   "author": "Chrisando Eka Pramudhita <chrsep@protonmail.com>",
   "dependencies": {
     "@babel/core": "^7.8.7",
-    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.8.3",
     "@babel/plugin-proposal-numeric-separator": "^7.8.3",
-    "@babel/plugin-proposal-optional-chaining": "^7.8.3",
     "@babel/preset-env": "^7.8.7",
-    "@babel/preset-react": "^7.8.3",
     "@babel/preset-typescript": "^7.8.3",
     "@cypress/code-coverage": "^1.14.0",
     "@cypress/webpack-preprocessor": "^4.1.3",
@@ -37,7 +34,6 @@
     "cypress-axe": "^0.5.3",
     "date-fns": "^2.11.0",
     "dotenv": "^8.2.0",
-    "fake-indexeddb": "^3.0.0",
     "faker": "^4.1.0",
     "framer-motion": "^1.9.1",
     "gatsby": "^2.19.49",
@@ -85,7 +81,6 @@
     "react-query": "^1.0.29",
     "rebass": "^4.0.7",
     "source-map-support": "^0.5.16",
-    "start-server-and-test": "^1.10.11",
     "theme-ui": "^0.3.1",
     "ts-loader": "^6.2.1",
     "ts-node": "^8.7.0",
@@ -139,7 +134,8 @@
     "react-docgen-typescript-loader": "^3.7.1",
     "react-test-renderer": "^16.13.0",
     "storybook-addon-deps": "^1.0.12",
-    "storybook-addon-i18n": "^5.1.13"
+    "storybook-addon-i18n": "^5.1.13",
+    "wait-on": "^4.0.1"
   },
   "keywords": [
     "gatsby"
@@ -149,7 +145,7 @@
     "lint": "eslint --ext .tsx,.ts src/",
     "typecheck": "tsc --noemit",
     "build": "gatsby build",
-    "build:cy": "cross-env CYPRESS_SUPPORT=y gatsby build",
+    "build:ci": "cross-env CYPRESS_SUPPORT=y gatsby build",
     "develop": "cross-env CYPRESS_SUPPORT=y gatsby develop -H 0.0.0.0 -p 8001",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
@@ -163,7 +159,7 @@
     "test": "jest --coverage --passWithNoTests --coverageReporters json clover",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "cy:ci": "start-server-and-test develop 8001 cy:run"
+    "cy:ci": "yarn wait-on -lv http://localhost:8000/login && yarn cy:run --config baseUrl=http://localhost:8000"
   },
   "repository": {
     "type": "git",

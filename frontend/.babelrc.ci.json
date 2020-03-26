@@ -1,5 +1,5 @@
 {
-  "plugins": ["@babel/plugin-proposal-numeric-separator"],
+  "plugins": ["@babel/plugin-proposal-numeric-separator", "istanbul"],
   "presets": [
     [
       "babel-preset-gatsby",
