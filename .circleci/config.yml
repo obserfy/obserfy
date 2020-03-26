@@ -43,6 +43,9 @@ jobs:
       NODE_ENV: "staging"
     steps:
       - checkout
+      - run: |
+          cp .env.example .env
+          docker-compose up -d &
       - attach_workspace:
           at: ../
       - run: |
@@ -53,9 +56,6 @@ jobs:
           node -v
           nvm alias default v12
       - run: npm install -g yarn
-      - run: |
-          cp .env.example .env
-          docker-compose up -d
       - run: |
           cd frontend
           yarn cy:ci
