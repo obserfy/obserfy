@@ -45,7 +45,7 @@ func (m *mailServiceMock) SendResetPassword(email string, token string) error {
 	return args.Error(0)
 }
 
-func (s *AuthTestSuite) SaveNewUser() (*postgres.User, error) {
+func (s *AuthTestSuite) SaveNewUser() (*auth.User, error) {
 	gofakeit.Seed(time.Now().UnixNano())
 	user, err := s.store.NewUser(
 		gofakeit.Email(),
@@ -59,7 +59,7 @@ func (s *AuthTestSuite) SaveNewUser() (*postgres.User, error) {
 	return user, nil
 }
 
-func (s *AuthTestSuite) SaveNewToken() (*postgres.PasswordResetToken, error) {
+func (s *AuthTestSuite) SaveNewToken() (*auth.SessionData, error) {
 	user, err := s.SaveNewUser()
 	if err != nil {
 		return nil, err
