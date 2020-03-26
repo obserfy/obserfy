@@ -159,7 +159,7 @@
     "test": "jest --coverage --passWithNoTests --coverageReporters json clover",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "cy:ci": "yarn wait-on http://localhost:8000 && yarn cy:run --config baseUrl=http://localhost:8000"
+    "cy:ci": "yarn wait-on -lv http://localhost:8000 && yarn cy:run --config baseUrl=http://localhost:8000"
   },
   "repository": {
     "type": "git",
