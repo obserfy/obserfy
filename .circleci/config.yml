@@ -45,12 +45,10 @@ jobs:
       NODE_ENV: "staging"
     steps:
       - checkout
+      - run: cp .env.example .env
       - run:
-          command: |
-            cp .env.example .env
-            docker-compose up -d
+          command: docker-compose up
           background: true
-      - run:
       - attach_workspace:
           at: ../
       - run: |
