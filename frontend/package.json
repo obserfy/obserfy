@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "author": "Chrisando Eka Pramudhita <chrsep@protonmail.com>",
   "dependencies": {
-    "@babel/core": "^7.8.7",
+    "@babel/core": "^7.9.0",
     "@babel/plugin-proposal-numeric-separator": "^7.8.3",
     "@babel/preset-env": "^7.8.7",
     "@babel/preset-typescript": "^7.9.0",
