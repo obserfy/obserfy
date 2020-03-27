@@ -1,70 +1,51 @@
 package auth
 
 import (
-	"github.com/benbjohnson/clock"
-	"github.com/chrsep/vor/pkg/postgres"
-	"github.com/chrsep/vor/pkg/rest"
-	"github.com/go-chi/chi"
-	"github.com/go-playground/validator/v10"
-	richErrors "github.com/pkg/errors"
-	"golang.org/x/crypto/bcrypt"
 	"net/http"
 	"os"
 	"strings"
 	"time"
+	"github.com/benbjohnson/clock"
+	"github.com/go-chi/chi"
+	"github.com/go-playground/validator/v10"
+	richErrors "github.com/pkg/errors"
+	"golang.org/x/crypto/bcrypt"
+
+	"github.com/chrsep/vor/pkg/rest"
 )
 
 const (
 	SessionCtxKey = "session"
 )
-
-type MailService interface {
-	SendResetPassword(email string, token string) error
-	SendPasswordResetSuccessful(email string) error
-}
-
-type server struct {
-	rest.Server
-	store postgres.AuthStore
-	mail  MailService
-	// Used for mocking time during test
-	clock clock.Clock
-}
-
-func NewRouter(s rest.Server, store postgres.AuthStore, email MailService, clock clock.Clock) *chi.Mux {
-	server := server{s, store, email, clock}
+func NewRouter(s rest.Server, store Store, email MailService, clock clock.Clock) *chi.Mux {
 	r := chi.NewRouter()
-	r.Method("POST", "/register", register(&server))
-	r.Method("POST", "/login", login(&server))
-	r.Method("POST", "/logout", logout(&server))
-	r.Method("POST", "/mailPasswordReset", mailPasswordReset(&server))
-	r.Method("POST", "/doPasswordReset", doPasswordReset(&server))
-	r.Method("GET", "/invite-code/{inviteCodeId}", resolveInviteCode(&server))
+	r.Method("POST", "/register", register(s, store))
+	r.Method("POST", "/login", login(s, store))
+	r.Method("POST", "/logout", logout(s, store))
+	r.Method("POST", "/mailPasswordReset", mailPasswordReset(s, store, email))
+	r.Method("POST", "/doPasswordReset", doPasswordReset(s, store, email, clock))
+	r.Method("GET", "/invite-code/{inviteCodeId}", resolveInviteCode(s, store))
 	return r
 }
 
-func resolveInviteCode(s *server) rest.Handler {
-	type response struct {
-		SchoolName string `json:"schoolName"`
-	}
-	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+func resolveInviteCode(server rest.Server, store Store) rest.Handler {
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		inviteCodeId := chi.URLParam(r, "inviteCodeId")
 
-		school, err := s.store.ResolveInviteCode(inviteCodeId)
+		schoolName, err := store.ResolveInviteCode(inviteCodeId)
 		if err != nil {
 			return &rest.Error{http.StatusNotFound, "Invite code not found", err}
 		}
 
-		res := response{school.Name}
-		if err := rest.WriteJson(w, res); err != nil {
+		if err := rest.WriteJson(w, schoolName); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
 		return nil
 	})
 }
 
-func register(s *server) rest.Handler {
-	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+func register(server rest.Server, store Store) rest.Handler {
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		// Validate
 		// TODO: add better mail validation
 		email := r.FormValue("email")
@@ -85,7 +66,7 @@ func register(s *server) rest.Handler {
 		inviteCode := r.FormValue("inviteCode")
 
 		// Create new user
-		user, err := s.store.NewUser(email, password, name, inviteCode)
+		user, err := store.NewUser(email, password, name, inviteCode)
 		if err != nil {
 			// TODO: Is there necessary?
 			if strings.Contains(err.Error(), "#23505") {
@@ -95,7 +76,7 @@ func register(s *server) rest.Handler {
 		}
 
 		// Create new session
-		session, err := s.store.NewSession(user.Id)
+		session, err := store.NewSession(user.Id)
 		if err != nil {
 			return &rest.Error{Code: http.StatusInternalServerError, Message: "Failed creating new session", Error: err}
 		}
@@ -107,13 +88,13 @@ func register(s *server) rest.Handler {
 	})
 }
 
-func login(s *server) rest.Handler {
+func login(server rest.Server, store Store) rest.Handler {
 	type requestBody struct {
 		Password string `json:"password" validate:"required"`
 		Email    string `json:"email" validate:"required,email"`
 	}
 	validate := validator.New()
-	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		var body requestBody
 		if err := rest.ParseJson(r.Body, &body); err != nil {
 			return rest.NewParseJsonError(
@@ -130,7 +111,7 @@ func login(s *server) rest.Handler {
 			}
 		}
 
-		user, err := s.store.GetUserByEmail(body.Email)
+		user, err := store.GetUserByEmail(body.Email)
 		if err != nil {
 			return &rest.Error{
 				http.StatusInternalServerError,
@@ -156,7 +137,7 @@ func login(s *server) rest.Handler {
 		}
 
 		// Create new session
-		session, err := s.store.NewSession(user.Id)
+		session, err := store.NewSession(user.Id)
 		if err != nil {
 			return &rest.Error{
 				http.StatusInternalServerError,
@@ -171,8 +152,8 @@ func login(s *server) rest.Handler {
 	})
 }
 
-func logout(s *server) rest.Handler {
-	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+func logout(server rest.Server, store Store) rest.Handler {
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		// Get cookie
 		cookie, err := r.Cookie("session")
 		if err != nil {
@@ -180,7 +161,7 @@ func logout(s *server) rest.Handler {
 		}
 
 		// Delete session
-		err = s.store.DeleteSession(cookie.Value)
+		err = store.DeleteSession(cookie.Value)
 		if err != nil {
 			return &rest.Error{Code: http.StatusInternalServerError, Message: "Failed deleting session", Error: err}
 		}

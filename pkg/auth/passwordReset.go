@@ -1,18 +1,21 @@
 package auth
 
 import (
-	"github.com/chrsep/vor/pkg/rest"
+	"net/http"
+
+	"github.com/benbjohnson/clock"
 	"github.com/go-playground/validator/v10"
 	richErrors "github.com/pkg/errors"
-	"net/http"
+
+	"github.com/chrsep/vor/pkg/rest"
 )
 
-func mailPasswordReset(s *server) http.Handler {
+func mailPasswordReset(server rest.Server, store Store, mail MailService) http.Handler {
 	type requestBody struct {
 		Email string `json:"email" validate:"required,email"`
 	}
 	validate := validator.New()
-	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		var body requestBody
 		if err := rest.ParseJson(r.Body, &body); err != nil {
 			return rest.NewParseJsonError(err)
@@ -27,7 +30,7 @@ func mailPasswordReset(s *server) http.Handler {
 		}
 
 		// Check if user exists
-		user, err := s.store.GetUserByEmail(body.Email)
+		user, err := store.GetUserByEmail(body.Email)
 		if err != nil {
 			return &rest.Error{
 				http.StatusInternalServerError,
@@ -41,7 +44,7 @@ func mailPasswordReset(s *server) http.Handler {
 		}
 
 		// create and save token to db
-		token, err := s.store.InsertNewToken(user.Id)
+		token, err := store.NewPasswordResetToken(user.Id)
 		if err != nil {
 			return &rest.Error{
 				http.StatusInternalServerError,
@@ -51,7 +54,7 @@ func mailPasswordReset(s *server) http.Handler {
 		}
 
 		// attach token to email
-		if err := s.mail.SendResetPassword(body.Email, token.Token); err != nil {
+		if err := mail.SendResetPassword(body.Email, token.Token); err != nil {
 			return &rest.Error{
 				http.StatusInternalServerError,
 				"Failed to send forget password email",
@@ -62,13 +65,13 @@ func mailPasswordReset(s *server) http.Handler {
 	})
 }
 
-func doPasswordReset(s *server) http.Handler {
+func doPasswordReset(server rest.Server, store Store, mail MailService, clock clock.Clock) http.Handler {
 	type requestBody struct {
 		Token    string `json:"token" validate:"required,uuid4"`
 		Password string `json:"password" validate:"required"`
 	}
 	validate := validator.New()
-	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		var body requestBody
 		if err := rest.ParseJson(r.Body, &body); err != nil {
 			return rest.NewParseJsonError(
@@ -86,7 +89,7 @@ func doPasswordReset(s *server) http.Handler {
 		}
 
 		// Get the token from db
-		token, err := s.store.GetToken(body.Token)
+		token, err := store.GetPasswordResetToken(body.Token)
 		if err != nil {
 			return &rest.Error{
 				http.StatusInternalServerError,
@@ -103,7 +106,7 @@ func doPasswordReset(s *server) http.Handler {
 		}
 
 		// Validate that token is still valid
-		currentTime := s.clock.Now()
+		currentTime := clock.Now()
 		if currentTime.After(token.ExpiredAt) {
 			return &rest.Error{
 				http.StatusUnauthorized,
@@ -113,7 +116,7 @@ func doPasswordReset(s *server) http.Handler {
 		}
 
 		// Update the user password && Delete all the user session && delete token
-		if err := s.store.DoPasswordReset(token.UserId, body.Password, token.Token); err != nil {
+		if err := store.DoPasswordReset(token.UserId, body.Password, token.Token); err != nil {
 			return &rest.Error{
 				http.StatusInternalServerError,
 				"Failed updating password",
@@ -122,7 +125,7 @@ func doPasswordReset(s *server) http.Handler {
 		}
 
 		// Send email to user notifying password has been updated.
-		if err := s.mail.SendPasswordResetSuccessful(token.User.Email); err != nil {
+		if err := mail.SendPasswordResetSuccessful(token.User.Email); err != nil {
 			return &rest.Error{
 				http.StatusInternalServerError,
 				"Failed sending password reset success email",
