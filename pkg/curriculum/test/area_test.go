@@ -1,8 +1,6 @@
 package curriculum_test
 
 import (
-	"bytes"
-	"encoding/json"
 	"github.com/chrsep/vor/pkg/curriculum"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/go-pg/pg/v9"
@@ -10,7 +8,6 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
 	"net/http"
-	"net/http/httptest"
 	"testing"
 )
 
@@ -24,15 +21,15 @@ func TestAreaTestSuite(t *testing.T) {
 
 // Not existent area should return 404
 func (s *AreaTestSuite) TestGetExistingArea() {
-	area := postgres.Area{Id: uuid.New().String()}
-	err := s.db.Insert(&area)
-	assert.NoError(s.T(), err)
+	area := s.saveNewArea()
 
-	assert.HTTPSuccess(s.T(), s.handler, "GET", "/areas/"+area.Id, nil)
+	result := s.CreateRequest("GET", "/areas/"+area.Id, nil, nil)
+	assert.Equal(s.T(), http.StatusOK, result)
 }
 
 func (s *AreaTestSuite) TestGetNonExistentArea() {
-	assert.HTTPError(s.T(), s.handler, "GET", "/areas/"+uuid.New().String(), nil)
+	result := s.CreateRequest("GET", "/areas/"+uuid.New().String(), nil, nil)
+	assert.Equal(s.T(), http.StatusNotFound, result.Code)
 }
 
 // Area with complete data should be successful
@@ -40,85 +37,72 @@ func (s *AreaTestSuite) TestCreateValidArea() {
 	t := s.T()
 	// Save curriculum and use its id for request
 	c := postgres.Curriculum{Id: uuid.New().String()}
-	if err := s.db.Insert(&c); err != nil {
-		assert.NoError(t, err)
-	}
+	err := s.DB.Insert(&c)
+	assert.NoError(t, err)
 
 	// setup the area for test
 	area := curriculum.AreaJson{
 		Name:         uuid.New().String(),
 		CurriculumId: c.Id,
 	}
-	body, err := json.Marshal(area)
-	assert.NoError(t, err)
 
 	// Send request
-	req := httptest.NewRequest("POST", "/areas", bytes.NewBuffer(body))
-	s.handler.ServeHTTP(s.w, req)
+	result := s.CreateRequest("POST", "/areas", area, nil)
 
 	// Assert that area is saved
 	var savedArea postgres.Area
-	err = s.db.Model(&savedArea).
+	err = s.DB.Model(&savedArea).
 		Where("name=?", area.Name).
 		First()
 	assert.NoError(t, err)
 	assert.EqualValues(t, area.Name, savedArea.Name)
 	assert.EqualValues(t, area.CurriculumId, savedArea.CurriculumId)
-	assert.EqualValues(t, http.StatusCreated, s.w.Code)
+	assert.EqualValues(t, http.StatusCreated, result.Code)
 }
 
 // Area without curriculum should fail
 func (s *AreaTestSuite) TestCreateAreaWithNoCurriculum() {
 	t := s.T()
-	area := curriculum.AreaJson{Name: uuid.New().String()}
-	body, err := json.Marshal(area)
-	assert.NoError(t, err)
+	area := s.saveNewArea()
 
-	req := httptest.NewRequest("POST", "/areas", bytes.NewBuffer(body))
-	s.handler.ServeHTTP(s.w, req)
+	result := s.CreateRequest("POST", "/areas", area, nil)
 
 	var savedArea postgres.Area
-	err = s.db.Model(&savedArea).
+	err := s.DB.Model(&savedArea).
 		Where("name=?", area.Name).
 		Select()
 	assert.EqualError(t, err, pg.ErrNoRows.Error())
-	assert.EqualValues(t, http.StatusBadRequest, s.w.Code)
+	assert.EqualValues(t, http.StatusBadRequest, result.Code)
 }
 
 // Area without name should fail
 func (s *AreaTestSuite) TestCreateAreaWithNoName() {
 	t := s.T()
 	// Setup data
-	c := postgres.Curriculum{Id: uuid.New().String()}
-	if err := s.db.Insert(&c); err != nil {
-		assert.NoError(t, err)
-	}
 
-	area := curriculum.AreaJson{CurriculumId: c.Id}
-	body, err := json.Marshal(area)
+	area := s.saveNewArea()
 
 	// Send request
-	req := httptest.NewRequest("POST", "/areas", bytes.NewBuffer(body))
-	s.handler.ServeHTTP(s.w, req)
+	result := s.CreateRequest("POST", "/areas", area, nil)
 
 	// Assert that area is saved
 	var savedArea postgres.Area
-	err = s.db.Model(&savedArea).
+	err := s.DB.Model(&savedArea).
 		Where("name=?", area.Name).
 		Select()
 	// Should be unable to find area in db
 	assert.EqualError(t, err, pg.ErrNoRows.Error())
 	// Should get 403
-	assert.EqualValues(t, http.StatusBadRequest, s.w.Code)
+	assert.EqualValues(t, http.StatusBadRequest, result.Code)
 }
 
 func (s *AreaTestSuite) TestDeleteArea() {
 	t := s.T()
 	area := s.saveNewArea()
-	response := s.testRequest("DELETE", "/areas/"+area.Id, nil)
+	response := s.CreateRequest("DELETE", "/areas/"+area.Id, nil, nil)
 	assert.Equal(t, http.StatusOK, response.Code)
 	var savedArea postgres.Area
-	err := s.db.Model(&savedArea).
+	err := s.DB.Model(&savedArea).
 		Where("id=?", area.Id).
 		Select()
 	assert.Error(t, err)
@@ -127,7 +111,7 @@ func (s *AreaTestSuite) TestDeleteArea() {
 func (s *AreaTestSuite) TestDeleteUnknownArea() {
 	t := s.T()
 	areaId := uuid.New().String()
-	response := s.testRequest("DELETE", "/areas/"+areaId, nil)
+	response := s.CreateRequest("DELETE", "/areas/"+areaId, nil, nil)
 	assert.Equal(t, http.StatusNotFound, response.Code)
 }
 
@@ -142,11 +126,11 @@ func (s *AreaTestSuite) TestUpdateAreaName() {
 		Name: uuid.New().String(),
 	}
 
-	response := s.testRequest("PATCH", "/areas/"+area.Id, newArea)
+	response := s.CreateRequest("PATCH", "/areas/"+area.Id, newArea, nil)
 	assert.Equal(t, http.StatusOK, response.Code)
 
 	var savedArea postgres.Area
-	err := s.db.Model(&savedArea).
+	err := s.DB.Model(&savedArea).
 		Where("id=?", area.Id).
 		Select()
 	assert.NoError(t, err)
@@ -166,11 +150,11 @@ func (s *AreaTestSuite) TestUpdateInvalidAreaName() {
 		Name: "",
 	}
 
-	response := s.testRequest("PATCH", "/areas/"+area.Id, newArea)
+	response := s.CreateRequest("PATCH", "/areas/"+area.Id, newArea, nil)
 	assert.Equal(t, http.StatusBadRequest, response.Code)
 
 	var savedArea postgres.Area
-	err := s.db.Model(&savedArea).
+	err := s.DB.Model(&savedArea).
 		Where("id=?", area.Id).
 		Select()
 	assert.NoError(t, err)

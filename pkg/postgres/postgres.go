@@ -62,9 +62,10 @@ type Session struct {
 	UserId string
 }
 type Curriculum struct {
-	Id    string `pg:"type:uuid"`
-	Name  string
-	Areas []Area `pg:"fk:curriculum_id"`
+	Id     string `pg:"type:uuid"`
+	Name   string
+	Areas  []Area `pg:"fk:curriculum_id"`
+	School []School
 }
 
 type Area struct {

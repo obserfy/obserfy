@@ -69,6 +69,7 @@ func connectTestDB() (*pg.DB, error) {
 func (s *BaseTestSuite) SaveNewSchool() *postgres.School {
 	t := s.T()
 	gofakeit.Seed(time.Now().UnixNano())
+	curriculum := postgres.Curriculum{Id: uuid.New().String()}
 	newUser := postgres.User{
 		Id:    uuid.New().String(),
 		Email: gofakeit.Email(),
@@ -79,15 +80,20 @@ func (s *BaseTestSuite) SaveNewSchool() *postgres.School {
 		Name:         gofakeit.Name(),
 		InviteCode:   uuid.New().String(),
 		Users:        []postgres.User{},
-		CurriculumId: "",
+		CurriculumId: curriculum.Id,
 		Curriculum:   postgres.Curriculum{},
 	}
+	curriculum.School = []postgres.School{newSchool}
 	newSchool.Users = []postgres.User{newUser}
 	schoolUserRelation := postgres.UserToSchool{
 		SchoolId: newSchool.Id,
 		UserId:   newUser.Id,
 	}
 	if err := s.DB.Insert(&newUser); err != nil {
+		assert.NoError(t, err)
+		return nil
+	}
+	if err := s.DB.Insert(&curriculum); err != nil {
 		assert.NoError(t, err)
 		return nil
 	}

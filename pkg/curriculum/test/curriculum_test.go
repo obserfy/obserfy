@@ -1,58 +1,22 @@
 package curriculum_test
 
 import (
-	"bytes"
-	"encoding/json"
 	"github.com/chrsep/vor/pkg/curriculum"
 	"github.com/chrsep/vor/pkg/postgres"
-	"github.com/chrsep/vor/pkg/rest"
-	"github.com/go-pg/pg/v9"
+	"github.com/chrsep/vor/pkg/testutils"
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/suite"
-	"go.uber.org/zap/zaptest"
-	"net/http"
-	"net/http/httptest"
 )
-
-func connectTestDB() (*pg.DB, error) {
-	db := postgres.Connect(
-		"postgres",
-		"postgres",
-		"localhost:5432",
-		nil,
-	)
-	err := postgres.InitTables(db)
-	if err != nil {
-		return nil, err
-	}
-	return db, nil
-}
 
 // Test suite
 type baseCurriculumTestSuite struct {
-	suite.Suite
-	db      *pg.DB
-	store   curriculum.Store
-	server  rest.Server
-	handler http.HandlerFunc
-	w       *httptest.ResponseRecorder
-}
-
-func (s *baseCurriculumTestSuite) TearDownSuite() {
-	if err := s.db.Close(); err != nil {
-		assert.NoError(s.T(), err)
-	}
+	testutils.BaseTestSuite
+	store curriculum.Store
 }
 
 func (s *baseCurriculumTestSuite) SetupTest() {
-	db, err := connectTestDB()
-	assert.NoError(s.T(), err)
-	s.db = db
-	s.store = postgres.CurriculumStore{db}
-	s.server = rest.NewServer(zaptest.NewLogger(s.T()))
-	s.handler = curriculum.NewRouter(s.server, s.store).ServeHTTP
-	s.w = httptest.NewRecorder()
+	s.store = postgres.CurriculumStore{s.DB}
+	s.Handler = curriculum.NewRouter(s.Server, s.store).ServeHTTP
 }
 
 /////////////////////////////////
@@ -68,7 +32,7 @@ func (s *baseCurriculumTestSuite) saveNewMaterial() postgres.Material {
 		SubjectId: subject.Id,
 		Subject:   subject,
 	}
-	err := s.db.Insert(&material)
+	err := s.DB.Insert(&material)
 	assert.NoError(s.T(), err)
 	return material
 }
@@ -84,31 +48,21 @@ func (s *baseCurriculumTestSuite) saveNewSubject() postgres.Subject {
 		AreaId: area.Id,
 		Area:   area,
 	}
-	err := s.db.Insert(&originalSubject)
+	err := s.DB.Insert(&originalSubject)
 	assert.NoError(s.T(), err)
 	return originalSubject
 }
 
 func (s *baseCurriculumTestSuite) saveNewArea() postgres.Area {
+	school := s.SaveNewSchool()
 	area := postgres.Area{
 		Id:           uuid.New().String(),
-		CurriculumId: "",
-		Curriculum:   postgres.Curriculum{},
+		CurriculumId: school.CurriculumId,
+		Curriculum:   school.Curriculum,
 		Name:         "",
 		Subjects:     nil,
 	}
-	err := s.db.Insert(&area)
+	err := s.DB.Insert(&area)
 	assert.NoError(s.T(), err)
 	return area
-}
-
-func (s *baseCurriculumTestSuite) testRequest(method string, path string, bodyJson interface{}) *httptest.ResponseRecorder {
-	// TODO: Don't make test recorder a global state
-	s.w = httptest.NewRecorder()
-	body, err := json.Marshal(bodyJson)
-	assert.NoError(s.T(), err)
-
-	req := httptest.NewRequest(method, path, bytes.NewBuffer(body))
-	s.handler(s.w, req)
-	return s.w
 }
