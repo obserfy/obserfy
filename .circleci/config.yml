@@ -9,13 +9,16 @@ jobs:
       - restore_cache:
           name: Restore Yarn Package Cache
           keys:
-            - build-{{ checksum "frontend/yarn.lock" }}
+            - build-v2-{{ checksum "frontend/yarn.lock" }}
       - run: |
           cd frontend
           yarn install
       - run: |
           cd frontend
-          yarn build
+          mv .babelrc.ci.json .babelrc
+      - run: |
+          cd frontend
+          yarn build:ci
       - persist_to_workspace:
           root: ../
           paths:
@@ -26,7 +29,7 @@ jobs:
       - save_cache:
           when: always
           name: Save Yarn Package Cache
-          key: build-{{ checksum "frontend/yarn.lock" }}
+          key: build-v2-{{ checksum "frontend/yarn.lock" }}
           paths:
             - ~/.cache/yarn
             - ~/.cache/Cypress
@@ -42,6 +45,10 @@ jobs:
       NODE_ENV: "staging"
     steps:
       - checkout
+      - run: cp .env.example .env
+      - run:
+          command: docker-compose up
+          background: true
       - attach_workspace:
           at: ../
       - run: |
@@ -52,16 +59,6 @@ jobs:
           node -v
           nvm alias default v12
       - run: npm install -g yarn
-      - run: sudo apt-get update && sudo apt-get install libjpeg62 libpng16-16
-      - run: cp .env.example .env
-      - run: |
-          cd ./docker/postgres/ssl
-          ./generate.sh
-          cd ../../../
-          docker-compose up -d
-      - run: |
-          cd frontend
-          yarn install
       - run: |
           cd frontend
           yarn cy:ci
@@ -70,8 +67,13 @@ jobs:
           path: frontend/coverage/clover.xml
       - store_artifacts:
           path: ~/repo/frontend/cypress/videos
+          destination: cypress-videos
       - store_artifacts:
           path: ~/repo/frontend/cypress/screenshots
+          destination: cypress-screenshots
+      - store_artifacts:
+          path: ~/repo/frontend/coverage
+          destination: coverage
 
   backend_unit:
     docker:

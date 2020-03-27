@@ -171,7 +171,7 @@ module.exports = {
         environment: process.env.NODE_ENV,
         release: require("git-rev-sync").short(),
         enabled: (() =>
-          ["production", "stage"].indexOf(process.env.NODE_ENV) !== -1)(),
+          ["production", "test"].indexOf(process.env.NODE_ENV) !== -1)(),
       },
     },
     ...guessJsPlugin,
@@ -183,7 +183,7 @@ module.exports = {
       },
     },
   ],
-  developMiddleware: app => {
+  developMiddleware: (app) => {
     app.use("/api", createProxyMiddleware({ target: "http://localhost:8000" }))
     app.use("/auth", createProxyMiddleware({ target: "http://localhost:8000" }))
   },

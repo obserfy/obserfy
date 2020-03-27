@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"github.com/brianvoe/gofakeit/v4"
 	"github.com/chrsep/vor/pkg/postgres"
-	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	"net/http"
 	"time"
@@ -31,11 +30,7 @@ func (s *SchoolTestSuite) TestValidCreateClass() {
 		},
 	}
 
-	session := postgres.Session{
-		uuid.New().String(),
-		newSchool.Users[0].Id,
-	}
-	result := s.CreateRequest("POST", "/"+newSchool.Id+"/class", payload, &session)
+	result := s.CreateRequest("POST", "/"+newSchool.Id+"/class", payload, &newSchool.Users[0].Id)
 	assert.Equal(t, http.StatusCreated, result.Code)
 
 	var class postgres.Class
@@ -63,11 +58,7 @@ func (s *SchoolTestSuite) TestGetClass() {
 		s.SaveNewClass(*newSchool),
 	}
 
-	session := postgres.Session{
-		uuid.New().String(),
-		newSchool.Users[0].Id,
-	}
-	result := s.CreateRequest("GET", "/"+newSchool.Id+"/class", nil, &session)
+	result := s.CreateRequest("GET", "/"+newSchool.Id+"/class", nil, &newSchool.Users[0].Id)
 	var response []struct {
 		Id        string         `json:"id"`
 		Name      string         `json:"name"`
@@ -87,11 +78,7 @@ func (s *SchoolTestSuite) TestGetEmptyClass() {
 	gofakeit.Seed(time.Now().UnixNano())
 	newSchool := s.SaveNewSchool()
 
-	session := postgres.Session{
-		uuid.New().String(),
-		newSchool.Users[0].Id,
-	}
-	result := s.CreateRequest("GET", "/"+newSchool.Id+"/class", nil, &session)
+	result := s.CreateRequest("GET", "/"+newSchool.Id+"/class", nil, &newSchool.Users[0].Id)
 	var response []struct {
 		Id        string         `json:"id"`
 		Name      string         `json:"name"`
