@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react"
-import { Link, navigate } from "gatsby-plugin-intl3"
+import { Link } from "gatsby-plugin-intl3"
 import Button from "../Button/Button"
 import Spacer from "../Spacer/Spacer"
 import Flex from "../Flex/Flex"
@@ -62,13 +62,11 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
   // Disabled curriculum view
   if (!isFetchingData && isAreaEmpty) {
     return (
-      <Box m={[3, 0]}>
-        <InformationalCard
-          message="You can enable the curriculum feature to track student progress in your curriculum."
-          buttonText=" Go to Curriculum "
-          onButtonClick={() => navigate("/dashboard/settings/curriculum")}
-        />
-      </Box>
+      <InformationalCard
+        message="You can enable the curriculum feature to track student progress in your curriculum."
+        buttonText=" Go to Curriculum "
+        to="/dashboard/settings/curriculum"
+      />
     )
   }
 

@@ -26,6 +26,7 @@ export const Dialog: FC<Props> = ({ sx, ...props }) => {
     <Portal>
       <Flex
         as="dialog"
+        role="dialog"
         flexDirection="column-reverse"
         alignItems={["", "center"]}
         justifyContent={["", "center"]}
