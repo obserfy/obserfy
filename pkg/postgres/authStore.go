@@ -1,11 +1,11 @@
 package postgres
 
 import (
-	"time"
 	"github.com/go-pg/pg/v9"
 	"github.com/google/uuid"
 	richErrors "github.com/pkg/errors"
 	"golang.org/x/crypto/bcrypt"
+	"time"
 
 	"github.com/chrsep/vor/pkg/auth"
 )
@@ -124,7 +124,7 @@ func (a AuthStore) InsertNewToken(userId string) (*auth.SessionData, error) {
 	expiredAt := currentTime.Add(time.Hour)
 	newToken := uuid.New().String()
 	token := PasswordResetToken{
-		Token:     uuid.New().String(),
+		Token:     newToken,
 		CreatedAt: currentTime,
 		ExpiredAt: expiredAt,
 		UserId:    userId,
@@ -154,7 +154,7 @@ func (a AuthStore) GetToken(token string) (*auth.SessionData, error) {
 		UserId:    result.UserId,
 		CreatedAt: result.CreatedAt,
 		ExpiredAt: result.ExpiredAt,
-		User:      auth.User{
+		User: auth.User{
 			Id:    result.User.Id,
 			Email: result.User.Email,
 			Name:  result.User.Name,
