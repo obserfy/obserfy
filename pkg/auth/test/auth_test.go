@@ -59,15 +59,21 @@ func (s *AuthTestSuite) SaveNewUser() (*auth.User, error) {
 	return user, nil
 }
 
-func (s *AuthTestSuite) SaveNewToken() (*auth.SessionData, error) {
+func (s *AuthTestSuite) SaveNewToken() (*auth.PasswordResetToken, error) {
 	user, err := s.SaveNewUser()
 	if err != nil {
 		return nil, err
 	}
-	token, err := s.store.InsertNewToken(user.Id)
+	token, err := s.store.NewPasswordResetToken(user.Id)
 	if err != nil {
 		return nil, err
 	}
 	token.User = *user
-	return token, nil
+	return &auth.PasswordResetToken{
+		Token:     token.Token,
+		UserId:    token.UserId,
+		CreatedAt: token.CreatedAt,
+		ExpiredAt: token.ExpiredAt,
+		User:      token.User,
+	}, nil
 }

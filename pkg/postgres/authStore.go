@@ -48,12 +48,12 @@ func (a AuthStore) GetUserByEmail(email string) (*auth.User, error) {
 	}, nil
 }
 
-func (a AuthStore) NewSession(userId string) (*auth.SessionData, error) {
+func (a AuthStore) NewSession(userId string) (*auth.Session, error) {
 	session := Session{uuid.New().String(), userId}
 	if err := a.DB.Insert(&session); err != nil {
 		return nil, richErrors.Wrap(err, "user id:"+userId)
 	}
-	return &auth.SessionData{
+	return &auth.Session{
 		Token:  session.Token,
 		UserId: session.UserId,
 	}, nil
@@ -75,7 +75,7 @@ func (a AuthStore) NewUser(email string, password string, name string, inviteCod
 		return nil, richErrors.Wrap(err, "email:"+email)
 	}
 
-	// TODO: This should be done in a transsaction
+	// TODO: This should be done in a transaction
 	// Create relation between user and associated school if use has invite code
 	if inviteCode != "" {
 		var school School
@@ -98,14 +98,14 @@ func (a AuthStore) NewUser(email string, password string, name string, inviteCod
 	}, nil
 }
 
-func (a AuthStore) GetSession(token string) (*auth.SessionData, error) {
+func (a AuthStore) GetSession(token string) (*auth.Session, error) {
 	var session Session
 	if err := a.DB.Model(&session).
 		Where("token=?", token).
 		Select(); err != nil {
 		return nil, richErrors.Wrap(err, "Failed getting session")
 	}
-	return &auth.SessionData{
+	return &auth.Session{
 		Token:  session.Token,
 		UserId: session.UserId,
 	}, nil
@@ -119,7 +119,7 @@ func (a AuthStore) DeleteSession(token string) error {
 	return nil
 }
 
-func (a AuthStore) InsertNewToken(userId string) (*auth.SessionData, error) {
+func (a AuthStore) NewPasswordResetToken(userId string) (*auth.PasswordResetToken, error) {
 	currentTime := time.Now()
 	expiredAt := currentTime.Add(time.Hour)
 	newToken := uuid.New().String()
@@ -132,14 +132,14 @@ func (a AuthStore) InsertNewToken(userId string) (*auth.SessionData, error) {
 	if err := a.DB.Insert(&token); err != nil {
 		return nil, richErrors.Wrap(err, "Failed inserting new token")
 	}
-	return &auth.SessionData{
+	return &auth.PasswordResetToken{
 		Token:     newToken,
 		UserId:    userId,
 		ExpiredAt: expiredAt,
 	}, nil
 }
 
-func (a AuthStore) GetToken(token string) (*auth.SessionData, error) {
+func (a AuthStore) GetPasswordResetToken(token string) (*auth.PasswordResetToken, error) {
 	var result PasswordResetToken
 	if err := a.DB.Model(&result).
 		Where("token=?", token).
@@ -149,7 +149,7 @@ func (a AuthStore) GetToken(token string) (*auth.SessionData, error) {
 	} else if err != nil {
 		return nil, richErrors.Wrap(err, "Failed getting the token")
 	}
-	return &auth.SessionData{
+	return &auth.PasswordResetToken{
 		Token:     result.Token,
 		UserId:    result.UserId,
 		CreatedAt: result.CreatedAt,
@@ -157,7 +157,7 @@ func (a AuthStore) GetToken(token string) (*auth.SessionData, error) {
 		User: auth.User{
 			Id:    result.User.Id,
 			Email: result.User.Email,
-			Name:  result.User.Name,
+			Name:  result.User.Email,
 		},
 	}, nil
 }

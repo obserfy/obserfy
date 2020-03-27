@@ -44,7 +44,7 @@ func mailPasswordReset(server rest.Server, store Store, mail MailService) http.H
 		}
 
 		// create and save token to db
-		token, err := store.InsertNewToken(user.Id)
+		token, err := store.NewPasswordResetToken(user.Id)
 		if err != nil {
 			return &rest.Error{
 				http.StatusInternalServerError,
@@ -89,7 +89,7 @@ func doPasswordReset(server rest.Server, store Store, mail MailService, clock cl
 		}
 
 		// Get the token from db
-		token, err := store.GetToken(body.Token)
+		token, err := store.GetPasswordResetToken(body.Token)
 		if err != nil {
 			return &rest.Error{
 				http.StatusInternalServerError,

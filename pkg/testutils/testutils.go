@@ -82,7 +82,7 @@ func (s *BaseTestSuite) CreateRequest(method string, path string, bodyJson inter
 		assert.NoError(s.T(), err)
 
 		// Save session to context
-		ctx := context.WithValue(req.Context(), auth.SessionCtxKey, &auth.SessionData{
+		ctx := context.WithValue(req.Context(), auth.SessionCtxKey, &auth.Session{
 			Token:  sessionToken,
 			UserId: *userId,
 		})

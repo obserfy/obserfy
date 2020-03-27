@@ -14,7 +14,13 @@ type (
 		Password []byte `json:"password"`
 	}
 
-	SessionData struct {
+	Session struct {
+		Token  string `json:"token"`
+		UserId string `json:"user_id"`
+		User   User   `json:"user"`
+	}
+
+	PasswordResetToken struct {
 		Token     string    `json:"token"`
 		UserId    string    `json:"user_id"`
 		CreatedAt time.Time `json:"created_at"`
@@ -25,12 +31,12 @@ type (
 	Store interface {
 		ResolveInviteCode(inviteCodeId string) (*School, error)
 		GetUserByEmail(email string) (*User, error)
-		NewSession(userId string) (*SessionData, error)
+		NewSession(userId string) (*Session, error)
 		NewUser(email string, password string, name string, inviteCode string) (*User, error)
-		GetSession(token string) (*SessionData, error)
+		GetSession(token string) (*Session, error)
 		DeleteSession(token string) error
-		InsertNewToken(userId string) (*SessionData, error)
-		GetToken(token string) (*SessionData, error)
+		NewPasswordResetToken(userId string) (*PasswordResetToken, error)
+		GetPasswordResetToken(token string) (*PasswordResetToken, error)
 		DoPasswordReset(userId string, newPassword string, token string) error
 	}
 

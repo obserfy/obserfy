@@ -2,8 +2,8 @@ package auth
 
 import (
 	"context"
-	"net/http"
 	richErrors "github.com/pkg/errors"
+	"net/http"
 
 	"github.com/chrsep/vor/pkg/rest"
 )
@@ -39,8 +39,8 @@ func NewMiddleware(s rest.Server, store Store) func(next http.Handler) http.Hand
 	}
 }
 
-func GetSessionFromCtx(ctx context.Context) (*SessionData, bool) {
-	session, ok := ctx.Value(SessionCtxKey).(*SessionData)
+func GetSessionFromCtx(ctx context.Context) (*Session, bool) {
+	session, ok := ctx.Value(SessionCtxKey).(*Session)
 	return session, ok
 }
 
