@@ -17,12 +17,10 @@ async function fetchStudents(): Promise<Student[]> {
   // Throw user to login when something gets 401
   if (result.status === 401) {
     await navigate("/login")
-    return []
   }
 
   if (result.status === 404) {
     await navigate("/choose-school")
-    return []
   }
 
   if (result.status !== 200) {

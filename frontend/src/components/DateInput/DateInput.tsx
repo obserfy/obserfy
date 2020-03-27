@@ -6,20 +6,22 @@ import Icon from "../Icon/Icon"
 import { ReactComponent as CalendarIcon } from "../../icons/calendar.svg"
 import Flex from "../Flex/Flex"
 import DatePickerDialog from "../DatePickerDialog/DatePickerDialog"
+import { BoxProps } from "../Box/Box"
 
-interface Props {
+interface Props extends Omit<BoxProps, "value" | "onChange"> {
   value?: Date
+  label?: string
   onChange: (date: Date) => void
 }
-export const DateInput: FC<Props> = ({ value, onChange }) => {
+export const DateInput: FC<Props> = ({ label, value, onChange, ...props }) => {
   const [showDatePicker, setShowDatePicker] = useState(false)
   const intl = useIntl()
 
   return (
     <>
-      <Flex mt={3} onClick={() => setShowDatePicker(true)}>
+      <Flex onClick={() => setShowDatePicker(true)} {...props}>
         <Input
-          label="Date of Birth"
+          label={label}
           width="100%"
           value={
             !value

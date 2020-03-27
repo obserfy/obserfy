@@ -74,7 +74,11 @@ export const PageEditStudent: FC<Props> = ({ id }) => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
-              <DateInput onChange={setDateOfBirth} value={dateOfBirth} />
+              <DateInput
+                label="Date of Birth"
+                onChange={setDateOfBirth}
+                value={dateOfBirth}
+              />
             </>
           ) : (
             <Box pt={24}>

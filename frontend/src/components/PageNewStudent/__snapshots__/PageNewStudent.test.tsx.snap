@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageNewStudent should render correctly 1`] = `
-.emotion-20 {
+.emotion-40 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,17 +9,18 @@ exports[`PageNewStudent should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-20 {
+  .emotion-40 {
     font-size: 20px;
   }
 }
 
-.emotion-19 {
+.emotion-39 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   max-width: 640px;
   margin: auto;
+  padding-bottom: 32px;
 }
 
 .emotion-2 {
@@ -73,7 +74,25 @@ exports[`PageNewStudent should render correctly 1`] = `
   }
 }
 
-.emotion-14 {
+.emotion-3 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 24px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 300;
+  line-height: heading;
+  font-size: 3.125rem;
+  line-height: 6rem;
+  -webkit-letter-spacing: 0;
+  -moz-letter-spacing: 0;
+  -ms-letter-spacing: 0;
+  letter-spacing: 0;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  margin: 16px;
+}
+
+.emotion-34 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -82,7 +101,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   margin-top: 16px;
 }
 
-.emotion-6 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -103,20 +122,21 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: -ms-flexbox;
   display: flex;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  margin-bottom: 16px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.emotion-3 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   padding-bottom: 4px;
 }
 
-.emotion-5 {
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -130,7 +150,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-4 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -156,46 +176,46 @@ exports[`PageNewStudent should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-4:hover,
-.emotion-4:focus {
+.emotion-5:hover,
+.emotion-5:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-4::-webkit-input-placeholder {
+.emotion-5::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-4::-moz-placeholder {
+.emotion-5::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-4:-ms-input-placeholder {
+.emotion-5:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-4::placeholder {
+.emotion-5::placeholder {
   font-style: italic;
 }
 
-.emotion-4:disabled {
+.emotion-5:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
-.emotion-13 {
+.emotion-14 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  margin-top: 16px;
+  margin-bottom: 16px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.emotion-10 {
+.emotion-11 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -222,7 +242,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-8 {
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -249,35 +269,35 @@ exports[`PageNewStudent should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-8:hover,
-.emotion-8:focus {
+.emotion-9:hover,
+.emotion-9:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-8::-webkit-input-placeholder {
+.emotion-9::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-8::-moz-placeholder {
+.emotion-9::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-8:-ms-input-placeholder {
+.emotion-9:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-8::placeholder {
+.emotion-9::placeholder {
   font-style: italic;
 }
 
-.emotion-8:disabled {
+.emotion-9:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
-.emotion-12 {
+.emotion-13 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -335,25 +355,25 @@ exports[`PageNewStudent should render correctly 1`] = `
   margin-left: 16px;
 }
 
-.emotion-12:disabled {
+.emotion-13:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-12:hover,
-.emotion-12:focus {
+.emotion-13:hover,
+.emotion-13:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-12:hover:disabled,
-.emotion-12:focus:disabled {
+.emotion-13:hover:disabled,
+.emotion-13:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-11 {
+.emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -368,100 +388,191 @@ exports[`PageNewStudent should render correctly 1`] = `
   width: 20px;
 }
 
-.emotion-18 {
+.emotion-26 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  margin: 16px;
+  width: 100%;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  as: label;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 16px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.emotion-15 {
+.emotion-25 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  pointer-events: none;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
-.emotion-16 {
+.emotion-23 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  display: block;
+  width: 100%;
+  padding: 8px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  display: inline-block;
-  text-align: center;
-  line-height: inherit;
-  -webkit-text-decoration: none;
-  text-decoration: none;
   font-size: inherit;
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  color: white;
-  background-color: var(--theme-ui-colors-primary,#00e399);
-  border: 0;
-  border-radius: 4px;
-  cursor: pointer;
-  text-transform: capitalize;
-  box-sizing: border-box;
-  font-size: 14px;
-  font-weight: bold;
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
-  background-color: transparent;
-  border-radius: 8px;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 16px;
-  padding-right: 16px;
-  white-space: nowrap;
+  line-height: inherit;
   border: 1px solid;
+  border-radius: 8px;
+  color: inherit;
+  background-color: transparent;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-right: 8px;
+  background-color: var(--theme-ui-colors-surface,#fff);
+  font-size: 16px;
+  padding: 12px;
 }
 
-.emotion-16:disabled {
-  opacity: 0.38;
-  cursor: auto;
-}
-
-.emotion-16:hover,
-.emotion-16:focus {
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
+.emotion-23:hover,
+.emotion-23:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-16:hover:disabled,
-.emotion-16:focus:disabled {
-  background-color: transparent;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+.emotion-24 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-left: -28px;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  pointer-events: none;
+  width: 24px;
+  height: 24px;
 }
 
-.emotion-17 {
+.emotion-33 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  width: 100%;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  as: label;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-32 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: block;
+  width: 100%;
+  padding: 8px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: inherit;
+  line-height: inherit;
+  border: 1px solid;
+  border-radius: 8px;
+  color: inherit;
+  background-color: transparent;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface,#fff);
+  font-size: 14px;
+  padding: 16px;
+  height: 180px;
+  resize: vertical;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  height: 100px;
+}
+
+.emotion-32:hover,
+.emotion-32:focus {
+  border-color: var(--theme-ui-colors-primary,#00e399);
+  outline: none;
+}
+
+.emotion-32::-webkit-input-placeholder {
+  font-style: italic;
+  line-height: 2rem;
+}
+
+.emotion-32::-moz-placeholder {
+  font-style: italic;
+  line-height: 2rem;
+}
+
+.emotion-32:-ms-input-placeholder {
+  font-style: italic;
+  line-height: 2rem;
+}
+
+.emotion-32::placeholder {
+  font-style: italic;
+  line-height: 2rem;
+}
+
+.emotion-35 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 24px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 300;
+  line-height: heading;
+  font-size: 2.5rem;
+  line-height: 3rem;
+  -webkit-letter-spacing: 0;
+  -moz-letter-spacing: 0;
+  -ms-letter-spacing: 0;
+  letter-spacing: 0;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  margin: 16px;
+}
+
+.emotion-38 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding: 16px;
+}
+
+.emotion-37 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -510,30 +621,31 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  width: 100%;
 }
 
-.emotion-17:disabled {
+.emotion-37:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-17:hover,
-.emotion-17:focus {
+.emotion-37:hover,
+.emotion-37:focus {
   background-color: var(--theme-ui-colors-primaryDark,#00a06d);
   outline: none;
 }
 
-.emotion-17:hover:disabled,
-.emotion-17:focus:disabled {
+.emotion-37:hover:disabled,
+.emotion-37:focus:disabled {
   background-color: var(--theme-ui-colors-primary,#00e399);
 }
 
 <div>
   <div
-    class="emotion-20"
+    class="emotion-40"
   >
     <div
-      class="emotion-19"
+      class="emotion-39"
     >
       <a
         href="/dashboard/observe"
@@ -551,42 +663,47 @@ exports[`PageNewStudent should render correctly 1`] = `
           </p>
         </div>
       </a>
+      <h4
+        class="emotion-3"
+      >
+        New Student
+      </h4>
       <div
-        class="emotion-14"
+        class="emotion-34"
       >
         <label
-          class="emotion-6"
+          class="emotion-7"
         >
           <div
-            class="emotion-3"
+            class="emotion-4"
           >
-            Name
+            Name (Required)
           </div>
           <div
-            class="emotion-5"
+            class="emotion-6"
           >
             <input
-              class="emotion-4"
+              class="emotion-5"
               value=""
             />
           </div>
         </label>
         <div
-          class="emotion-13"
+          class="emotion-14"
         >
           <label
-            class="emotion-10"
+            class="emotion-11"
           >
             <div
-              class="emotion-3"
+              class="emotion-4"
             >
               Date of Birth
             </div>
             <div
-              class="emotion-5"
+              class="emotion-6"
             >
               <input
-                class="emotion-8"
+                class="emotion-9"
                 disabled=""
                 placeholder="Not set"
                 value=""
@@ -594,31 +711,126 @@ exports[`PageNewStudent should render correctly 1`] = `
             </div>
           </label>
           <button
-            class="emotion-12"
+            class="emotion-13"
           >
             <div
-              class="emotion-11"
+              class="emotion-12"
             />
           </button>
         </div>
-      </div>
-      <div
-        class="emotion-18"
-      >
         <div
-          class="emotion-15"
-        />
-        <a
-          href="/dashboard/observe"
+          class="emotion-14"
         >
-          <button
-            class="emotion-16"
+          <label
+            class="emotion-11"
           >
-            Cancel
+            <div
+              class="emotion-4"
+            >
+              Entry Date
+            </div>
+            <div
+              class="emotion-6"
+            >
+              <input
+                class="emotion-9"
+                disabled=""
+                placeholder="Not set"
+                value=""
+              />
+            </div>
+          </label>
+          <button
+            class="emotion-13"
+          >
+            <div
+              class="emotion-12"
+            />
           </button>
-        </a>
+        </div>
+        <label
+          class="emotion-26"
+        >
+          <div
+            class="emotion-4"
+          >
+            Gender
+          </div>
+          <div
+            class="emotion-25"
+          >
+            <select
+              aria-label="Gender"
+              class="emotion-23"
+            >
+              <option>
+                Not Set
+              </option>
+              <option>
+                Male
+              </option>
+              <option>
+                Female
+              </option>
+            </select>
+            <svg
+              class="emotion-24"
+              fill="currentcolor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+          </div>
+        </label>
+        <label
+          class="emotion-7"
+        >
+          <div
+            class="emotion-4"
+          >
+            Student ID
+          </div>
+          <div
+            class="emotion-6"
+          >
+            <input
+              class="emotion-5"
+              value=""
+            />
+          </div>
+        </label>
+        <label
+          class="emotion-33"
+        >
+          <div
+            class="emotion-4"
+          >
+            Notes
+          </div>
+          <textarea
+            aria-label="Notes"
+            class="emotion-32"
+          />
+        </label>
+      </div>
+      <h5
+        class="emotion-35"
+      >
+        Classes
+      </h5>
+      <h5
+        class="emotion-35"
+      >
+        Guardians
+      </h5>
+      <div
+        class="emotion-38"
+      >
         <button
-          class="emotion-17"
+          class="emotion-37"
           disabled=""
         >
           Save

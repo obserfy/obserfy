@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DateInput should render correctly 1`] = `
-.emotion-7 {
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,23 +9,22 @@ exports[`DateInput should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-7 {
+  .emotion-6 {
     font-size: 20px;
   }
 }
 
-.emotion-6 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  margin-top: 16px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.emotion-3 {
+.emotion-2 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -52,14 +51,7 @@ exports[`DateInput should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-0 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  padding-bottom: 4px;
-}
-
-.emotion-2 {
+.emotion-1 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -73,7 +65,7 @@ exports[`DateInput should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-1 {
+.emotion-0 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -100,35 +92,35 @@ exports[`DateInput should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-1:hover,
-.emotion-1:focus {
+.emotion-0:hover,
+.emotion-0:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-1::-webkit-input-placeholder {
+.emotion-0::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-1::-moz-placeholder {
+.emotion-0::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-1:-ms-input-placeholder {
+.emotion-0:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-1::placeholder {
+.emotion-0::placeholder {
   font-style: italic;
 }
 
-.emotion-1:disabled {
+.emotion-0:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
-.emotion-5 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -186,25 +178,25 @@ exports[`DateInput should render correctly 1`] = `
   margin-left: 16px;
 }
 
-.emotion-5:disabled {
+.emotion-4:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-5:hover,
-.emotion-5:focus {
+.emotion-4:hover,
+.emotion-4:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-5:hover:disabled,
-.emotion-5:focus:disabled {
+.emotion-4:hover:disabled,
+.emotion-4:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-4 {
+.emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -221,24 +213,19 @@ exports[`DateInput should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-7"
+    class="emotion-6"
   >
     <div
-      class="emotion-6"
+      class="emotion-5"
     >
       <label
-        class="emotion-3"
+        class="emotion-2"
       >
         <div
-          class="emotion-0"
-        >
-          Date of Birth
-        </div>
-        <div
-          class="emotion-2"
+          class="emotion-1"
         >
           <input
-            class="emotion-1"
+            class="emotion-0"
             disabled=""
             placeholder="Not set"
             value=""
@@ -246,10 +233,10 @@ exports[`DateInput should render correctly 1`] = `
         </div>
       </label>
       <button
-        class="emotion-5"
+        class="emotion-4"
       >
         <div
-          class="emotion-4"
+          class="emotion-3"
         />
       </button>
     </div>
