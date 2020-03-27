@@ -157,7 +157,7 @@ func (a AuthStore) GetPasswordResetToken(token string) (*auth.PasswordResetToken
 		User: auth.User{
 			Id:    result.User.Id,
 			Email: result.User.Email,
-			Name:  result.User.Email,
+			Name:  result.User.Name,
 		},
 	}, nil
 }
