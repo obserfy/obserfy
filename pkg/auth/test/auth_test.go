@@ -59,7 +59,7 @@ func (s *AuthTestSuite) SaveNewUser() (*auth.User, error) {
 	return user, nil
 }
 
-func (s *AuthTestSuite) SaveNewToken() (*auth.PasswordResetToken, error) {
+func (s *AuthTestSuite) SaveNewPasswordResetToken() (*auth.PasswordResetToken, error) {
 	user, err := s.SaveNewUser()
 	if err != nil {
 		return nil, err
