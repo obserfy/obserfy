@@ -4,7 +4,7 @@ import "time"
 
 type (
 	School struct {
-		SchoolName string `json:"school_name"`
+		SchoolName string `json:"schoolName"`
 	}
 
 	User struct {
@@ -16,15 +16,15 @@ type (
 
 	Session struct {
 		Token  string `json:"token"`
-		UserId string `json:"user_id"`
+		UserId string `json:"userId"`
 		User   User   `json:"user"`
 	}
 
 	PasswordResetToken struct {
 		Token     string    `json:"token"`
-		UserId    string    `json:"user_id"`
-		CreatedAt time.Time `json:"created_at"`
-		ExpiredAt time.Time `json:"expired_at"`
+		UserId    string    `json:"userId"`
+		CreatedAt time.Time `json:"createdAt"`
+		ExpiredAt time.Time `json:"expiredAt"`
 		User      User      `json:"user"`
 	}
 
