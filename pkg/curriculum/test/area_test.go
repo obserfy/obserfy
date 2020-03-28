@@ -1,7 +1,6 @@
 package curriculum_test
 
 import (
-	"github.com/chrsep/vor/pkg/curriculum"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/go-pg/pg/v9"
 	"github.com/google/uuid"
@@ -41,9 +40,9 @@ func (s *AreaTestSuite) TestCreateValidArea() {
 	school := s.SaveNewSchool()
 
 	// setup the area for test
-	area := curriculum.AreaJson{
-		Name: uuid.New().String(),
-	}
+	area := struct {
+		Name string `json:"name"`
+	}{Name: uuid.New().String()}
 
 	// Send request
 	result := s.CreateRequest("POST", "/"+school.CurriculumId+"/areas", area, &school.Users[0].Id)

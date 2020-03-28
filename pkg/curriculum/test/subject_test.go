@@ -1,7 +1,6 @@
 package curriculum_test
 
 import (
-	"github.com/chrsep/vor/pkg/curriculum"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
@@ -23,7 +22,10 @@ func (s *SubjectTestSuite) TestCreateSubject() {
 	t := s.T()
 	area, userId := s.saveNewArea()
 
-	payload := curriculum.SubjectJson{
+	payload := struct {
+		Name   string `json:"name"`
+		AreaId string `json:"areaId"`
+	}{
 		Name:   uuid.New().String(),
 		AreaId: area.Id,
 	}
@@ -41,7 +43,10 @@ func (s *SubjectTestSuite) TestCreateSubject() {
 	assert.Equal(t, payload.AreaId, savedSubject.AreaId)
 	assert.Equal(t, 1, savedSubject.Order)
 
-	secondPayload := curriculum.SubjectJson{
+	secondPayload := struct {
+		Name   string `json:"name"`
+		AreaId string `json:"areaId"`
+	}{
 		Name:   uuid.New().String(),
 		AreaId: area.Id,
 	}
@@ -64,7 +69,10 @@ func (s *SubjectTestSuite) TestCreateSubjectWithNoName() {
 	t := s.T()
 	area, userId := s.saveNewArea()
 
-	payload := curriculum.SubjectJson{AreaId: area.Id}
+	payload := struct {
+		Name   string `json:"name"`
+		AreaId string `json:"areaId"`
+	}{AreaId: area.Id}
 	result := s.CreateRequest("POST", "/areas/"+payload.AreaId+"/subjects", payload, &userId)
 	assert.EqualValues(t, http.StatusBadRequest, result.Code)
 }

@@ -12,17 +12,6 @@ import (
 	richErrors "github.com/pkg/errors"
 )
 
-// TODO: Consider removing AreaJson and SubjectJson. It complicates things.
-type AreaJson struct {
-	Name         string `json:"name"`
-	CurriculumId string `json:"curriculumId"`
-}
-
-type SubjectJson struct {
-	Name   string `json:"name"`
-	AreaId string `json:"areaId"`
-}
-
 func NewRouter(server rest.Server, store Store) *chi.Mux {
 	r := chi.NewRouter()
 
