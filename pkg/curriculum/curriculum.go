@@ -2,80 +2,60 @@ package curriculum
 
 import (
 	"errors"
+	"net/http"
+
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/rest"
 	"github.com/go-chi/chi"
 	"github.com/go-pg/pg/v9"
 	"github.com/google/uuid"
 	richErrors "github.com/pkg/errors"
-	"net/http"
 )
 
-type Store interface {
-	GetArea(areaId string) (*postgres.Area, error)
-	GetAreaSubjects(areaId string) ([]postgres.Subject, error)
-	GetSubjectMaterials(subjectId string) ([]postgres.Material, error)
-	GetMaterial(materialId string) (*postgres.Material, error)
-	NewArea(name string, curriculumId string) (string, error)
-	NewSubject(name string, areaId string, materials []postgres.Material) (*postgres.Subject, error)
-	NewMaterial(name string, subjectId string) (*postgres.Material, error)
-	GetSubject(id string) (*postgres.Subject, error)
-	UpdateSubject(subject *postgres.Subject) error
-	UpdateMaterial(material *postgres.Material, order *int) error
-	DeleteArea(id string) error
-	DeleteSubject(id string) error
-	ReplaceSubject(subject postgres.Subject) error
-	UpdateArea(areaId string, name string) error
-}
-
-type server struct {
-	rest.Server
-	store Store
-}
-
-// TODO: Consider removing AreaJson and SubjectJson. It complicates things.
-type AreaJson struct {
-	Name         string `json:"name"`
-	CurriculumId string `json:"curriculumId"`
-}
-
-type SubjectJson struct {
-	Name   string `json:"name"`
-	AreaId string `json:"areaId"`
-}
-
-func NewRouter(s rest.Server, store Store) *chi.Mux {
-	server := server{s, store}
+func NewRouter(server rest.Server, store Store) *chi.Mux {
 	r := chi.NewRouter()
-	r.Method("POST", "/areas", server.createArea())
-	r.Method("PATCH", "/areas/{areaId}", server.patchArea())
-	r.Method("GET", "/areas/{areaId}", server.getArea())
-	r.Method("DELETE", "/areas/{areaId}", server.deleteArea())
-	r.Method("GET", "/areas/{areaId}/subjects", server.getAreaSubjects())
-	r.Method("POST", "/areas/{areaId}/subjects", server.createSubject())
 
-	r.Method("GET", "/subjects/{subjectId}", server.getSubject())
-	r.Method("PUT", "/subjects/{subjectId}", server.replaceSubject())
-	// TODO: This is not used, refactor after curriculum got e2e test.
-	r.Method("PATCH", "/subjects/{subjectId}", server.updateSubject())
-	r.Method("DELETE", "/subjects/{subjectId}", server.deleteSubject())
-	r.Method("GET", "/subjects/{subjectId}/materials", server.getSubjectMaterials())
-	r.Method("POST", "/subjects/{subjectId}/materials", server.createNewMaterial())
+	r.Route("/{curriculumId}", func(r chi.Router) {
+		r.Use(curriculumAuthMiddleware(server, store))
+		r.Method("POST", "/areas", createArea(server, store))
+	})
 
-	r.Method("PATCH", "/materials/{materialId}", server.updateMaterial())
+	r.Route("/areas/{areaId}", func(r chi.Router) {
+		r.Use(areaAuthMiddleware(server, store))
+		r.Method("PATCH", "/", patchArea(server, store))
+		r.Method("GET", "/", getArea(server, store))
+		r.Method("DELETE", "/", deleteArea(server, store))
+		r.Method("GET", "/subjects", getAreaSubjects(server, store))
+		r.Method("POST", "/subjects", createSubject(server, store))
+	})
+
+	r.Route("/subjects/{subjectId}", func(r chi.Router) {
+		r.Use(subjectAuthMiddleware(server, store))
+		r.Method("GET", "/", getSubject(server, store))
+		r.Method("PUT", "/", replaceSubject(server, store))
+		r.Method("DELETE", "/", deleteSubject(server, store))
+		r.Method("GET", "/materials", getSubjectMaterials(server, store))
+		r.Method("POST", "/materials", createNewMaterial(server, store))
+	})
+
+	r.Route("/materials/{materialId}", func(r chi.Router) {
+		r.Use(materialAuthMiddleware(server, store))
+		r.Method("PATCH", "/", updateMaterial(server, store))
+	})
+
 	return r
 }
 
-func (s *server) getArea() rest.Handler {
+func getArea(server rest.Server, store Store) rest.Handler {
 	type responseBody struct {
 		Id   string `json:"id"`
 		Name string `json:"name"`
 	}
-	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		areaId := chi.URLParam(r, "areaId")
 
 		// Get area
-		area, err := s.store.GetArea(areaId)
+		area, err := store.GetArea(areaId)
 		if err != nil {
 			return &rest.Error{http.StatusNotFound, " Can't find area with specified ID", err}
 		}
@@ -89,16 +69,16 @@ func (s *server) getArea() rest.Handler {
 	})
 }
 
-func (s *server) getAreaSubjects() rest.Handler {
+func getAreaSubjects(server rest.Server, store Store) rest.Handler {
 	type simplifiedSubject struct {
 		Id    string `json:"id"`
 		Name  string `json:"name"`
 		Order int    `json:"order"`
 	}
-	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		areaId := chi.URLParam(r, "areaId")
 
-		subjects, err := s.store.GetAreaSubjects(areaId)
+		subjects, err := store.GetAreaSubjects(areaId)
 		if err != nil {
 			return &rest.Error{http.StatusNotFound, " Can't find subject with specified area ID", err}
 		}
@@ -119,26 +99,47 @@ func (s *server) getAreaSubjects() rest.Handler {
 	})
 }
 
-func (s *server) createArea() rest.Handler {
-	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
-		var requestBody AreaJson
-		if err := rest.ParseJson(r.Body, &requestBody); err != nil {
+func createArea(server rest.Server, store Store) rest.Handler {
+	type requestBody struct {
+		Name string `json:"name"`
+	}
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		curriculumId := chi.URLParam(r, "curriculumId")
+		if _, err := uuid.Parse(curriculumId); err != nil {
+			return &rest.Error{
+				http.StatusBadRequest,
+				"Invalid curriculum ID",
+				err,
+			}
+		}
+
+		var body requestBody
+		if err := rest.ParseJson(r.Body, &body); err != nil {
 			return rest.NewParseJsonError(err)
 		}
-		if _, err := uuid.Parse(requestBody.CurriculumId); err != nil {
-			return &rest.Error{http.StatusBadRequest, "Invalid curriculum ID", err}
+
+		if curriculumId == "" {
+			return &rest.Error{
+				http.StatusBadRequest,
+				"Curriculum ID is required",
+				errors.New("empty curriculum ID"),
+			}
+		}
+		if body.Name == "" {
+			return &rest.Error{
+				http.StatusBadRequest,
+				"Area needs a name",
+				errors.New("empty area name"),
+			}
 		}
 
-		if requestBody.CurriculumId == "" {
-			return &rest.Error{http.StatusBadRequest, "Curriculum ID is required", errors.New("empty curriculum ID")}
-		}
-		if requestBody.Name == "" {
-			return &rest.Error{http.StatusBadRequest, "Area needs a name", errors.New("empty area name")}
-		}
-
-		areaId, err := s.store.NewArea(requestBody.Name, requestBody.CurriculumId)
+		areaId, err := store.NewArea(body.Name, curriculumId)
 		if err != nil {
-			return &rest.Error{http.StatusInternalServerError, "Failed saving area", err}
+			return &rest.Error{
+				http.StatusInternalServerError,
+				"Failed saving area",
+				err,
+			}
 		}
 		w.WriteHeader(http.StatusCreated)
 		w.Header().Add("Location", r.URL.Path+"/"+areaId)
@@ -146,7 +147,7 @@ func (s *server) createArea() rest.Handler {
 	})
 }
 
-func (s *server) createSubject() http.Handler {
+func createSubject(server rest.Server, store Store) http.Handler {
 	type requestBody struct {
 		Name      string `json:"name"`
 		Materials []struct {
@@ -154,7 +155,7 @@ func (s *server) createSubject() http.Handler {
 			Order int    `json:"order"`
 		} `json:"materials"`
 	}
-	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		areaId := chi.URLParam(r, "areaId")
 
 		// Parse request
@@ -186,7 +187,7 @@ func (s *server) createSubject() http.Handler {
 				"Material order number can't be repeated",
 				richErrors.New("Repeatd order number in list of materials")}
 		}
-		subject, err := s.store.NewSubject(requestBody.Name, areaId, materials)
+		subject, err := store.NewSubject(requestBody.Name, areaId, materials)
 		if err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Failed saving subject", err}
 		}
@@ -197,52 +198,16 @@ func (s *server) createSubject() http.Handler {
 	})
 }
 
-func (s *server) updateSubject() http.Handler {
-	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
-		var requestBody SubjectJson
-		if err := rest.ParseJson(r.Body, &requestBody); err != nil {
-			return rest.NewParseJsonError(err)
-		}
-
-		subjectId := chi.URLParam(r, "subjectId")
-		subject, err := s.store.GetSubject(subjectId)
-		if err == pg.ErrNoRows {
-			return &rest.Error{http.StatusConflict, "Subject with specified ID does not exist", err}
-		} else if err != nil {
-			return &rest.Error{http.StatusInternalServerError, "Failed getting subject from db", err}
-		}
-
-		if requestBody.Name != "" {
-			subject.Name = requestBody.Name
-		}
-		if requestBody.AreaId != "" {
-			_, err := s.store.GetArea(requestBody.AreaId)
-			if err == pg.ErrNoRows {
-				return &rest.Error{http.StatusUnprocessableEntity, "Area ID does not exist", err}
-			} else if err != nil {
-				return &rest.Error{http.StatusUnprocessableEntity, "Invalid area.", err}
-			}
-			subject.AreaId = requestBody.AreaId
-		}
-		if err := s.store.UpdateSubject(subject); err != nil {
-			return &rest.Error{http.StatusInternalServerError, "Failed saving updated subject", err}
-		}
-
-		w.WriteHeader(http.StatusNoContent)
-		return nil
-	})
-}
-
-func (s *server) getSubjectMaterials() rest.Handler {
+func getSubjectMaterials(server rest.Server, store Store) rest.Handler {
 	type responseBody struct {
 		Id    string `json:"id"`
 		Name  string `json:"name"`
 		Order int    `json:"order"`
 	}
-	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		subjectId := chi.URLParam(r, "subjectId")
 
-		materials, err := s.store.GetSubjectMaterials(subjectId)
+		materials, err := store.GetSubjectMaterials(subjectId)
 		if err != nil {
 			return &rest.Error{http.StatusNotFound, " Can't find materials with the specified subject id", err}
 		}
@@ -263,11 +228,11 @@ func (s *server) getSubjectMaterials() rest.Handler {
 	})
 }
 
-func (s *server) createNewMaterial() http.Handler {
+func createNewMaterial(server rest.Server, store Store) http.Handler {
 	type requestBody struct {
 		Name string `json:"name"`
 	}
-	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		// Parse body, make sure it's valid
 		var body requestBody
 		if err := rest.ParseJson(r.Body, &body); err != nil {
@@ -288,7 +253,7 @@ func (s *server) createNewMaterial() http.Handler {
 		}
 
 		// Make sure subject exists
-		subject, err := s.store.GetSubject(subjectId)
+		subject, err := store.GetSubject(subjectId)
 		if err == pg.ErrNoRows {
 			return &rest.Error{http.StatusNotFound, "Can't find the specified subject", err}
 		} else if err != nil {
@@ -296,7 +261,7 @@ func (s *server) createNewMaterial() http.Handler {
 		}
 
 		// Create and save the requested material (default order is on the bottom of list.
-		material, err := s.store.NewMaterial(body.Name, subject.Id)
+		material, err := store.NewMaterial(body.Name, subject.Id)
 		if err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Failed saving new material", err}
 		}
@@ -307,13 +272,13 @@ func (s *server) createNewMaterial() http.Handler {
 	})
 }
 
-func (s *server) updateMaterial() http.Handler {
+func updateMaterial(server rest.Server, store Store) http.Handler {
 	type requestBody struct {
 		Name      *string `json:"name"`
 		Order     *int    `json:"order"`
 		SubjectId *string `json:"subjectId"`
 	}
-	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		var body requestBody
 		if err := rest.ParseJson(r.Body, &body); err != nil {
 			return rest.NewParseJsonError(err)
@@ -321,7 +286,7 @@ func (s *server) updateMaterial() http.Handler {
 
 		// Validate targeted material
 		materialId := chi.URLParam(r, "materialId")
-		material, err := s.store.GetMaterial(materialId)
+		material, err := store.GetMaterial(materialId)
 		if err == pg.ErrNoRows {
 			return &rest.Error{http.StatusNotFound, "Can' find material with the specified ID", err}
 		} else if err != nil {
@@ -341,7 +306,7 @@ func (s *server) updateMaterial() http.Handler {
 			if _, err := uuid.Parse(*body.SubjectId); err != nil {
 				return &rest.Error{http.StatusUnprocessableEntity, "Can't find the specified subject", errors.New("empty name field")}
 			}
-			subject, err := s.store.GetSubject(*body.SubjectId)
+			subject, err := store.GetSubject(*body.SubjectId)
 			if err == pg.ErrNoRows {
 				return &rest.Error{http.StatusUnprocessableEntity, "Can't find the specified subject", errors.New("empty name field")}
 			} else if err != nil {
@@ -356,7 +321,7 @@ func (s *server) updateMaterial() http.Handler {
 			newOrder = body.Order
 		}
 
-		if err := s.store.UpdateMaterial(material, newOrder); err != nil {
+		if err := store.UpdateMaterial(material, newOrder); err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Failed updating material", err}
 		}
 		w.WriteHeader(http.StatusNoContent)
@@ -364,11 +329,11 @@ func (s *server) updateMaterial() http.Handler {
 	})
 }
 
-func (s *server) deleteSubject() http.Handler {
-	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+func deleteSubject(server rest.Server, store Store) http.Handler {
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		subjectId := chi.URLParam(r, "subjectId")
 
-		if err := s.store.DeleteSubject(subjectId); err != nil {
+		if err := store.DeleteSubject(subjectId); err != nil {
 			return &rest.Error{
 				http.StatusNotFound,
 				"Can't find the specified subject",
@@ -379,11 +344,11 @@ func (s *server) deleteSubject() http.Handler {
 	})
 }
 
-func (s *server) deleteArea() http.Handler {
-	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+func deleteArea(server rest.Server, store Store) http.Handler {
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		areaId := chi.URLParam(r, "areaId")
 
-		if err := s.store.DeleteArea(areaId); err != nil {
+		if err := store.DeleteArea(areaId); err != nil {
 			return &rest.Error{
 				http.StatusNotFound,
 				"Can't find the specified subject",
@@ -395,7 +360,7 @@ func (s *server) deleteArea() http.Handler {
 	})
 }
 
-func (s *server) replaceSubject() http.Handler {
+func replaceSubject(server rest.Server, store Store) http.Handler {
 	type requestBody struct {
 		Name      string `json:"name"`
 		Order     int    `json:"order"`
@@ -406,7 +371,7 @@ func (s *server) replaceSubject() http.Handler {
 			Order int    `json:"order"`
 		} `json:"materials"`
 	}
-	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		subjectId := chi.URLParam(r, "subjectId")
 		// Parse Body
 		var body requestBody
@@ -465,7 +430,7 @@ func (s *server) replaceSubject() http.Handler {
 		}
 
 		// Make sure area referenced exists
-		_, err := s.store.GetArea(body.AreaId)
+		_, err := store.GetArea(body.AreaId)
 		if err != nil {
 			return &rest.Error{
 				http.StatusBadRequest,
@@ -475,7 +440,7 @@ func (s *server) replaceSubject() http.Handler {
 		}
 
 		// Replace subject
-		if err := s.store.ReplaceSubject(newSubject); err != nil {
+		if err := store.ReplaceSubject(newSubject); err != nil {
 			return &rest.Error{
 				http.StatusInternalServerError,
 				"Failed replacing subject",
@@ -486,11 +451,11 @@ func (s *server) replaceSubject() http.Handler {
 	})
 }
 
-func (s *server) patchArea() http.Handler {
+func patchArea(server rest.Server, store Store) http.Handler {
 	type requestBody struct {
 		Name string `json:"name"`
 	}
-	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		areaId := chi.URLParam(r, "areaId")
 
 		var body requestBody
@@ -505,7 +470,7 @@ func (s *server) patchArea() http.Handler {
 			}
 		}
 
-		if err := s.store.UpdateArea(areaId, body.Name); err != nil {
+		if err := store.UpdateArea(areaId, body.Name); err != nil {
 			return &rest.Error{
 				http.StatusInternalServerError,
 				"Failed updating area",
@@ -517,16 +482,16 @@ func (s *server) patchArea() http.Handler {
 	})
 }
 
-func (s *server) getSubject() http.Handler {
+func getSubject(server rest.Server, store Store) http.Handler {
 	type responseBody struct {
 		Id    string `json:"id"`
 		Name  string `json:"name"`
 		Order int    `json:"order"`
 	}
-	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		subjectId := chi.URLParam(r, "subjectId")
 
-		subject, err := s.store.GetSubject(subjectId)
+		subject, err := store.GetSubject(subjectId)
 		if err != nil {
 			return &rest.Error{http.StatusNotFound, " Can't find subject with specified area ID", err}
 		}

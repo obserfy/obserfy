@@ -10,9 +10,66 @@ type CurriculumStore struct {
 	*pg.DB
 }
 
-func (c CurriculumStore) UpdateArea(areaId string, name string) error {
+func (s CurriculumStore) CheckMaterialPermission(materialId string, userId string) (bool, error) {
+	var material Material
+	var user User
+	if err := s.Model(&material).
+		Relation("Subject").
+		Relation("Subject.Area").
+		Relation("Subject.Area.Curriculum").
+		Where("material.id=?", materialId).
+		Select(); err == pg.ErrNoRows {
+		return false, nil
+	} else if err != nil {
+		return false, richErrors.Wrap(err, "Failed getting subject")
+	}
+	if err := s.Model(&user).
+		Relation("Schools").
+		Where("id=?", userId).
+		Select(); err == pg.ErrNoRows {
+		return false, nil
+	} else if err != nil {
+		return false, richErrors.Wrap(err, "Failed getting user")
+	}
+	for _, school := range user.Schools {
+		if material.Subject.Area.CurriculumId == school.CurriculumId {
+			return true, nil
+		}
+	}
+
+	return false, nil
+}
+
+func (s CurriculumStore) CheckCurriculumPermission(curriculumId string, userId string) (bool, error) {
+	var c Curriculum
+	var user User
+	if err := s.Model(&c).
+		Where("id=?", curriculumId).
+		Select(); err == pg.ErrNoRows {
+		return false, nil
+	} else if err != nil {
+		return false, richErrors.Wrap(err, "Failed getting subject")
+	}
+	if err := s.Model(&user).
+		Relation("Schools").
+		Where("id=?", userId).
+		Select(); err == pg.ErrNoRows {
+		return false, nil
+	} else if err != nil {
+		return false, richErrors.Wrap(err, "Failed getting user")
+	}
+	for _, school := range user.Schools {
+		if c.Id == school.CurriculumId {
+			return true, nil
+		}
+	}
+
+	return false, nil
+}
+
+func (s CurriculumStore) UpdateArea(areaId string, name string) error {
 	area := Area{Id: areaId, Name: name}
-	if _, err := c.DB.Model(&area).
+	if _, err := s.DB.Model(&area).
 		Column("name").
 		Where("id=?", areaId).
 		Update(); err != nil {
@@ -23,12 +80,67 @@ func (c CurriculumStore) UpdateArea(areaId string, name string) error {
 
 // updateSubject manually replace existing data with new ones completely. Without destroying its relationship with
 // existing data.
-func (c CurriculumStore) ReplaceSubject(newSubject Subject) error {
+func (s CurriculumStore) CheckSubjectPermissions(subjectId string, userId string) (bool, error) {
+	var subject Subject
+	var user User
+	if err := s.Model(&subject).
+		Relation("Area").
+		Relation("Area.Curriculum").
+		Where("subject.id=?", subjectId).
+		Select(); err == pg.ErrNoRows {
+		return false, nil
+	} else if err != nil {
+		return false, richErrors.Wrap(err, "Failed getting subject")
+	}
+	if err := s.Model(&user).
+		Relation("Schools").
+		Where("id=?", userId).
+		Select(); err == pg.ErrNoRows {
+		return false, nil
+	} else if err != nil {
+		return false, richErrors.Wrap(err, "Failed getting user")
+	}
+	for _, school := range user.Schools {
+		if subject.Area.CurriculumId == school.CurriculumId {
+			return true, nil
+		}
+	}
+
+	return false, nil
+}
+func (s CurriculumStore) CheckAreaPermissions(areaId string, userId string) (bool, error) {
+	var area Area
+	var user User
+	if err := s.Model(&area).
+		Relation("Curriculum").
+		Where("area.id=?", areaId).
+		Select(); err == pg.ErrNoRows {
+		return false, nil
+	} else if err != nil {
+		return false, richErrors.Wrap(err, "Failed getting area")
+	}
+	if err := s.Model(&user).
+		Relation("Schools").
+		Where("id=?", userId).
+		Select(); err == pg.ErrNoRows {
+		return false, nil
+	} else if err != nil {
+		return false, richErrors.Wrap(err, "Failed getting user")
+	}
+	for _, school := range user.Schools {
+		if area.CurriculumId == school.CurriculumId {
+			return true, nil
+		}
+	}
+
+	return false, nil
+}
+func (s CurriculumStore) ReplaceSubject(newSubject Subject) error {
 	var materialsToKeep []string
 	for _, material := range newSubject.Materials {
 		materialsToKeep = append(materialsToKeep, material.Id)
 	}
-	if err := c.DB.RunInTransaction(func(tx *pg.Tx) error {
+	if err := s.DB.RunInTransaction(func(tx *pg.Tx) error {
 		if err := tx.Update(&newSubject); err != nil {
 			return richErrors.Wrap(err, "Failed updating subject")
 		}
@@ -57,9 +169,9 @@ func (c CurriculumStore) ReplaceSubject(newSubject Subject) error {
 	return nil
 }
 
-func (c CurriculumStore) GetMaterial(materialId string) (*Material, error) {
+func (s CurriculumStore) GetMaterial(materialId string) (*Material, error) {
 	var material Material
-	if err := c.DB.Model(&material).
+	if err := s.DB.Model(&material).
 		Where("id=?", materialId).
 		Select(); err != nil {
 		return nil, err
@@ -67,8 +179,8 @@ func (c CurriculumStore) GetMaterial(materialId string) (*Material, error) {
 	return &material, nil
 }
 
-func (c CurriculumStore) UpdateMaterial(material *Material, order *int) error {
-	if err := c.RunInTransaction(func(tx *pg.Tx) error {
+func (s CurriculumStore) UpdateMaterial(material *Material, order *int) error {
+	if err := s.RunInTransaction(func(tx *pg.Tx) error {
 		// Reorder the order of materials
 		if order != nil {
 			var err error
@@ -100,9 +212,9 @@ func (c CurriculumStore) UpdateMaterial(material *Material, order *int) error {
 	return nil
 }
 
-func (c CurriculumStore) NewMaterial(name string, subjectId string) (*Material, error) {
+func (s CurriculumStore) NewMaterial(name string, subjectId string) (*Material, error) {
 	var biggestOrder int
-	if _, err := c.DB.Model((*Material)(nil)).
+	if _, err := s.DB.Model((*Material)(nil)).
 		Where("subject_id=?", subjectId).
 		QueryOne(pg.Scan(&biggestOrder), `
 		SELECT MAX("order") FROM ?TableName
@@ -117,22 +229,15 @@ func (c CurriculumStore) NewMaterial(name string, subjectId string) (*Material, 
 		Name:      name,
 		Order:     biggestOrder + 1,
 	}
-	if err := c.DB.Insert(&material); err != nil {
+	if err := s.DB.Insert(&material); err != nil {
 		return nil, err
 	}
 	return &material, nil
 }
 
-func (c CurriculumStore) UpdateSubject(subject *Subject) error {
-	if err := c.DB.Update(subject); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (c CurriculumStore) GetSubject(id string) (*Subject, error) {
+func (s CurriculumStore) GetSubject(id string) (*Subject, error) {
 	var subject Subject
-	if err := c.DB.Model(&subject).
+	if err := s.DB.Model(&subject).
 		Where("id=?", id).
 		Select(); err != nil {
 		return nil, err
@@ -140,9 +245,9 @@ func (c CurriculumStore) GetSubject(id string) (*Subject, error) {
 	return &subject, nil
 }
 
-func (c CurriculumStore) NewSubject(name string, areaId string, materials []Material) (*Subject, error) {
+func (s CurriculumStore) NewSubject(name string, areaId string, materials []Material) (*Subject, error) {
 	var biggestOrder int
-	if _, err := c.DB.Model((*Subject)(nil)).
+	if _, err := s.DB.Model((*Subject)(nil)).
 		Where("area_id=?", areaId).
 		QueryOne(pg.Scan(&biggestOrder), `
 		SELECT MAX("order") FROM ?TableName
@@ -160,12 +265,12 @@ func (c CurriculumStore) NewSubject(name string, areaId string, materials []Mate
 	for i := range materials {
 		materials[i].SubjectId = subject.Id
 	}
-	if err := c.DB.RunInTransaction(func(tx *pg.Tx) error {
-		if err := c.DB.Insert(&subject); err != nil {
+	if err := s.DB.RunInTransaction(func(tx *pg.Tx) error {
+		if err := s.DB.Insert(&subject); err != nil {
 			return err
 		}
 		if len(materials) != 0 {
-			if err := c.DB.Insert(&materials); err != nil {
+			if err := s.DB.Insert(&materials); err != nil {
 				return err
 			}
 		}
@@ -176,22 +281,22 @@ func (c CurriculumStore) NewSubject(name string, areaId string, materials []Mate
 	return &subject, nil
 }
 
-func (c CurriculumStore) NewArea(name string, curriculumId string) (string, error) {
+func (s CurriculumStore) NewArea(name string, curriculumId string) (string, error) {
 	id := uuid.New().String()
 	area := Area{
 		Id:           id,
 		CurriculumId: curriculumId,
 		Name:         name,
 	}
-	if err := c.Insert(&area); err != nil {
+	if err := s.Insert(&area); err != nil {
 		return "", err
 	}
 	return id, nil
 }
 
-func (c CurriculumStore) GetArea(areaId string) (*Area, error) {
+func (s CurriculumStore) GetArea(areaId string) (*Area, error) {
 	var area Area
-	if err := c.Model(&area).
+	if err := s.Model(&area).
 		Where("id=?", areaId).
 		Select(); err != nil {
 		return nil, err
@@ -199,9 +304,9 @@ func (c CurriculumStore) GetArea(areaId string) (*Area, error) {
 	return &area, nil
 }
 
-func (c CurriculumStore) GetAreaSubjects(areaId string) ([]Subject, error) {
+func (s CurriculumStore) GetAreaSubjects(areaId string) ([]Subject, error) {
 	var subjects []Subject
-	if err := c.Model(&subjects).
+	if err := s.Model(&subjects).
 		Where("area_id=?", areaId).
 		Select(); err != nil {
 		return nil, err
@@ -209,9 +314,9 @@ func (c CurriculumStore) GetAreaSubjects(areaId string) ([]Subject, error) {
 	return subjects, nil
 }
 
-func (c CurriculumStore) GetSubjectMaterials(subjectId string) ([]Material, error) {
+func (s CurriculumStore) GetSubjectMaterials(subjectId string) ([]Material, error) {
 	var materials []Material
-	if err := c.Model(&materials).
+	if err := s.Model(&materials).
 		Where("subject_id=?", subjectId).
 		Select(); err != nil {
 		return nil, err
@@ -219,17 +324,17 @@ func (c CurriculumStore) GetSubjectMaterials(subjectId string) ([]Material, erro
 	return materials, nil
 }
 
-func (c CurriculumStore) DeleteArea(id string) error {
+func (s CurriculumStore) DeleteArea(id string) error {
 	area := Area{Id: id}
-	if err := c.DB.Delete(&area); err != nil {
+	if err := s.DB.Delete(&area); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (c CurriculumStore) DeleteSubject(id string) error {
+func (s CurriculumStore) DeleteSubject(id string) error {
 	subject := Subject{Id: id}
-	if err := c.DB.Delete(&subject); err != nil {
+	if err := s.DB.Delete(&subject); err != nil {
 		return err
 	}
 	return nil

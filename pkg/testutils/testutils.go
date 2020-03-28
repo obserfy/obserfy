@@ -5,6 +5,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"github.com/brianvoe/gofakeit/v4"
 	"github.com/chrsep/vor/pkg/auth"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/rest"
@@ -63,6 +64,48 @@ func connectTestDB() (*pg.DB, error) {
 		return nil, err
 	}
 	return db, nil
+}
+
+func (s *BaseTestSuite) SaveNewSchool() *postgres.School {
+	t := s.T()
+	gofakeit.Seed(time.Now().UnixNano())
+	curriculum := postgres.Curriculum{Id: uuid.New().String()}
+	newUser := postgres.User{
+		Id:    uuid.New().String(),
+		Email: gofakeit.Email(),
+		Name:  gofakeit.Name(),
+	}
+	newSchool := postgres.School{
+		Id:           uuid.New().String(),
+		Name:         gofakeit.Name(),
+		InviteCode:   uuid.New().String(),
+		Users:        []postgres.User{},
+		CurriculumId: curriculum.Id,
+	}
+	newSchool.Users = []postgres.User{newUser}
+	curriculum.Schools = []postgres.School{newSchool}
+	schoolUserRelation := postgres.UserToSchool{
+		SchoolId: newSchool.Id,
+		UserId:   newUser.Id,
+	}
+	newSchool.Curriculum = curriculum
+	if err := s.DB.Insert(&newUser); err != nil {
+		assert.NoError(t, err)
+		return nil
+	}
+	if err := s.DB.Insert(&curriculum); err != nil {
+		assert.NoError(t, err)
+		return nil
+	}
+	if err := s.DB.Insert(&newSchool); err != nil {
+		assert.NoError(t, err)
+		return nil
+	}
+	if err := s.DB.Insert(&schoolUserRelation); err != nil {
+		assert.NoError(t, err)
+		return nil
+	}
+	return &newSchool
 }
 
 func (s *BaseTestSuite) CreateRequest(method string, path string, bodyJson interface{}, userId *string) *httptest.ResponseRecorder {
