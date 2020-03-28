@@ -22,8 +22,8 @@ func (s *baseCurriculumTestSuite) SetupTest() {
 /////////////////////////////////
 // Helper functions
 /////////////////////////////////
-func (s *baseCurriculumTestSuite) saveNewMaterial() postgres.Material {
-	subject := s.saveNewSubject()
+func (s *baseCurriculumTestSuite) saveNewMaterial() (postgres.Material, string) {
+	subject, userId := s.saveNewSubject()
 
 	// save subject
 	material := postgres.Material{
@@ -34,12 +34,12 @@ func (s *baseCurriculumTestSuite) saveNewMaterial() postgres.Material {
 	}
 	err := s.DB.Insert(&material)
 	assert.NoError(s.T(), err)
-	return material
+	return material, userId
 }
 
-func (s *baseCurriculumTestSuite) saveNewSubject() postgres.Subject {
+func (s *baseCurriculumTestSuite) saveNewSubject() (postgres.Subject, string) {
 	// Save area
-	area := s.saveNewArea()
+	area, userId := s.saveNewArea()
 
 	// save subject
 	originalSubject := postgres.Subject{
@@ -50,10 +50,10 @@ func (s *baseCurriculumTestSuite) saveNewSubject() postgres.Subject {
 	}
 	err := s.DB.Insert(&originalSubject)
 	assert.NoError(s.T(), err)
-	return originalSubject
+	return originalSubject, userId
 }
 
-func (s *baseCurriculumTestSuite) saveNewArea() postgres.Area {
+func (s *baseCurriculumTestSuite) saveNewArea() (postgres.Area, string) {
 	school := s.SaveNewSchool()
 	area := postgres.Area{
 		Id:           uuid.New().String(),
@@ -64,5 +64,5 @@ func (s *baseCurriculumTestSuite) saveNewArea() postgres.Area {
 	}
 	err := s.DB.Insert(&area)
 	assert.NoError(s.T(), err)
-	return area
+	return area, school.Users[0].Id
 }

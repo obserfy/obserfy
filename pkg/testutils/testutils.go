@@ -81,14 +81,14 @@ func (s *BaseTestSuite) SaveNewSchool() *postgres.School {
 		InviteCode:   uuid.New().String(),
 		Users:        []postgres.User{},
 		CurriculumId: curriculum.Id,
-		Curriculum:   postgres.Curriculum{},
 	}
-	curriculum.School = []postgres.School{newSchool}
 	newSchool.Users = []postgres.User{newUser}
+	curriculum.Schools = []postgres.School{newSchool}
 	schoolUserRelation := postgres.UserToSchool{
 		SchoolId: newSchool.Id,
 		UserId:   newUser.Id,
 	}
+	newSchool.Curriculum = curriculum
 	if err := s.DB.Insert(&newUser); err != nil {
 		assert.NoError(t, err)
 		return nil

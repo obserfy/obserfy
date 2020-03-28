@@ -2,7 +2,6 @@ package curriculum
 
 import (
 	"errors"
-	"github.com/chrsep/vor/pkg/auth"
 	"net/http"
 
 	"github.com/chrsep/vor/pkg/postgres"
@@ -22,7 +21,6 @@ type Store interface {
 	NewSubject(name string, areaId string, materials []postgres.Material) (*postgres.Subject, error)
 	NewMaterial(name string, subjectId string) (*postgres.Material, error)
 	GetSubject(id string) (*postgres.Subject, error)
-	UpdateSubject(subject *postgres.Subject) error
 	UpdateMaterial(material *postgres.Material, order *int) error
 	DeleteArea(id string) error
 	DeleteSubject(id string) error
@@ -30,7 +28,8 @@ type Store interface {
 	UpdateArea(areaId string, name string) error
 	CheckSubjectPermissions(subjectId string, userId string) (bool, error)
 	CheckAreaPermissions(subjectId string, userId string) (bool, error)
-
+	CheckCurriculumPermission(curriculumId string, userId string) (bool, error)
+	CheckMaterialPermission(materialId string, userId string) (bool, error)
 }
 
 type server struct {
@@ -52,9 +51,14 @@ type SubjectJson struct {
 func NewRouter(s rest.Server, store Store) *chi.Mux {
 	server := server{s, store}
 	r := chi.NewRouter()
-	r.Method("POST", "/areas", server.createArea())
+
+	r.Route("/{curriculumId}", func(r chi.Router) {
+		r.Use(server.curriculumAuthMiddleware())
+		r.Method("POST", "/areas", server.createArea())
+	})
+
 	r.Route("/areas/{areaId}", func(r chi.Router) {
-		r.Use(server.areaMiddleware())
+		r.Use(server.areaAuthMiddleware())
 		r.Method("PATCH", "/", server.patchArea())
 		r.Method("GET", "/", server.getArea())
 		r.Method("DELETE", "/", server.deleteArea())
@@ -62,67 +66,23 @@ func NewRouter(s rest.Server, store Store) *chi.Mux {
 		r.Method("POST", "/subjects", server.createSubject())
 	})
 
-
 	r.Route("/subjects/{subjectId}", func(r chi.Router) {
-		r.Use(server.subjectMiddleware())
+		r.Use(server.subjectAuthMiddleware())
 		r.Method("GET", "/", server.getSubject())
 		r.Method("PUT", "/", server.replaceSubject())
-		// TODO: This is not used, refactor after curriculum got e2e test.
-		//r.Method("PATCH", "/subjects/{subjectId}", server.updateSubject())
 		r.Method("DELETE", "/", server.deleteSubject())
 		r.Method("GET", "/materials", server.getSubjectMaterials())
 		r.Method("POST", "/materials", server.createNewMaterial())
+	})
 
-		//Unused routes
-		//r.Method("PATCH", "/materials/{materialId}", server.updateMaterial())
+	r.Route("/materials/{materialId}", func(r chi.Router) {
+		r.Use(server.materialAuthMiddleware())
+		r.Method("PATCH", "/", server.updateMaterial())
 	})
 
 	return r
 }
-func (s *server) subjectMiddleware() func(next http.Handler) http.Handler {
-	return func(next http.Handler) http.Handler {
-		return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
-			session, ok := auth.GetSessionFromCtx(r.Context())
-			if !ok {
-				return auth.NewGetSessionError()
-			}
-			subjectId := chi.URLParam(r, "subjectId")
-			userHasAccess, err := s.store.CheckSubjectPermissions(subjectId, session.UserId)
-			if err != nil {
-				return &rest.Error{http.StatusInternalServerError, "Internal Server Error", err}
 
-			}
-			if !userHasAccess {
-				return &rest.Error{http.StatusNotFound, "Subject not found", err}
-			}
-			next.ServeHTTP(w, r)
-			return nil
-		})
-	}
-}
-func (s *server) areaMiddleware() func(next http.Handler) http.Handler {
-	return func(next http.Handler) http.Handler {
-		return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
-			areaId := chi.URLParam(r, "areaId")
-			session, ok := auth.GetSessionFromCtx(r.Context())
-			if !ok {
-				return auth.NewGetSessionError()
-			}
-
-			userHasAccess, err := s.store.CheckAreaPermissions(areaId, session.UserId)
-			if err != nil {
-				return &rest.Error{http.StatusInternalServerError, "Internal Server Error", err}
-
-			}
-			if !userHasAccess {
-				return &rest.Error{http.StatusNotFound, "Area not found", err}
-			}
-
-			next.ServeHTTP(w, r)
-			return nil
-		})
-	}
-}
 func (s *server) getArea() rest.Handler {
 	type responseBody struct {
 		Id   string `json:"id"`
@@ -177,25 +137,46 @@ func (s *server) getAreaSubjects() rest.Handler {
 }
 
 func (s *server) createArea() rest.Handler {
+	type requestBody struct {
+		Name string `json:"name"`
+	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
-		var requestBody AreaJson
-		if err := rest.ParseJson(r.Body, &requestBody); err != nil {
+		curriculumId := chi.URLParam(r, "curriculumId")
+		if _, err := uuid.Parse(curriculumId); err != nil {
+			return &rest.Error{
+				http.StatusBadRequest,
+				"Invalid curriculum ID",
+				err,
+			}
+		}
+
+		var body requestBody
+		if err := rest.ParseJson(r.Body, &body); err != nil {
 			return rest.NewParseJsonError(err)
 		}
-		if _, err := uuid.Parse(requestBody.CurriculumId); err != nil {
-			return &rest.Error{http.StatusBadRequest, "Invalid curriculum ID", err}
+
+		if curriculumId == "" {
+			return &rest.Error{
+				http.StatusBadRequest,
+				"Curriculum ID is required",
+				errors.New("empty curriculum ID"),
+			}
+		}
+		if body.Name == "" {
+			return &rest.Error{
+				http.StatusBadRequest,
+				"Area needs a name",
+				errors.New("empty area name"),
+			}
 		}
 
-		if requestBody.CurriculumId == "" {
-			return &rest.Error{http.StatusBadRequest, "Curriculum ID is required", errors.New("empty curriculum ID")}
-		}
-		if requestBody.Name == "" {
-			return &rest.Error{http.StatusBadRequest, "Area needs a name", errors.New("empty area name")}
-		}
-
-		areaId, err := s.store.NewArea(requestBody.Name, requestBody.CurriculumId)
+		areaId, err := s.store.NewArea(body.Name, curriculumId)
 		if err != nil {
-			return &rest.Error{http.StatusInternalServerError, "Failed saving area", err}
+			return &rest.Error{
+				http.StatusInternalServerError,
+				"Failed saving area",
+				err,
+			}
 		}
 		w.WriteHeader(http.StatusCreated)
 		w.Header().Add("Location", r.URL.Path+"/"+areaId)
@@ -250,42 +231,6 @@ func (s *server) createSubject() http.Handler {
 
 		w.WriteHeader(http.StatusCreated)
 		w.Header().Add("Location", r.URL.Path+"/"+subject.Id)
-		return nil
-	})
-}
-
-func (s *server) updateSubject() http.Handler {
-	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
-		var requestBody SubjectJson
-		if err := rest.ParseJson(r.Body, &requestBody); err != nil {
-			return rest.NewParseJsonError(err)
-		}
-
-		subjectId := chi.URLParam(r, "subjectId")
-		subject, err := s.store.GetSubject(subjectId)
-		if err == pg.ErrNoRows {
-			return &rest.Error{http.StatusConflict, "Subject with specified ID does not exist", err}
-		} else if err != nil {
-			return &rest.Error{http.StatusInternalServerError, "Failed getting subject from db", err}
-		}
-
-		if requestBody.Name != "" {
-			subject.Name = requestBody.Name
-		}
-		if requestBody.AreaId != "" {
-			_, err := s.store.GetArea(requestBody.AreaId)
-			if err == pg.ErrNoRows {
-				return &rest.Error{http.StatusUnprocessableEntity, "Area ID does not exist", err}
-			} else if err != nil {
-				return &rest.Error{http.StatusUnprocessableEntity, "Invalid area.", err}
-			}
-			subject.AreaId = requestBody.AreaId
-		}
-		if err := s.store.UpdateSubject(subject); err != nil {
-			return &rest.Error{http.StatusInternalServerError, "Failed saving updated subject", err}
-		}
-
-		w.WriteHeader(http.StatusNoContent)
 		return nil
 	})
 }
