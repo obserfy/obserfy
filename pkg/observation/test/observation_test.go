@@ -32,19 +32,14 @@ func TestObservation(t *testing.T) {
 func (s *ObservationTestSuite) SaveNewObservation() postgres.Observation {
 	currentTime := time.Now().Local()
 	gofakeit.Seed(time.Now().UnixNano())
-	user := postgres.User{
-		Id:    uuid.New().String(),
-		Email: gofakeit.Email(),
-		Name:  gofakeit.Name(),
-	}
-	_, err := s.DB.Model(&user).Insert()
-	assert.NoError(s.T(), err)
+	school := s.SaveNewSchool()
 	student := postgres.Student{
 		Id:          uuid.New().String(),
 		Name:        gofakeit.Name(),
 		DateOfBirth: &currentTime,
+		SchoolId:    school.Id,
 	}
-	_, err = s.DB.Model(&student).Insert()
+	_, err := s.DB.Model(&student).Insert()
 	assert.NoError(s.T(), err)
 	o := postgres.Observation{
 		Id:          uuid.New().String(),
@@ -55,8 +50,8 @@ func (s *ObservationTestSuite) SaveNewObservation() postgres.Observation {
 		EventTime:   &currentTime,
 		Student:     &student,
 		StudentId:   student.Id,
-		Creator:     &user,
-		CreatorId:   user.Id,
+		Creator:     &school.Users[0],
+		CreatorId:   school.Users[0].Id,
 	}
 	_, err = s.DB.Model(&o).Insert()
 	assert.NoError(s.T(), err)
@@ -67,7 +62,7 @@ func (s *ObservationTestSuite) TestGetObservation() {
 	t := s.T()
 	o := s.SaveNewObservation()
 
-	w := s.CreateRequest("GET", "/"+o.Id, nil, nil)
+	w := s.CreateRequest("GET", "/"+o.Id, nil, &o.CreatorId)
 	assert.Equal(t, http.StatusOK, w.Code)
 	var body struct {
 		Id          string     `json:"id"`
@@ -94,6 +89,7 @@ func (s *ObservationTestSuite) TestGetObservation() {
 }
 
 func (s *ObservationTestSuite) TestInvalidGetObservation() {
+	school := s.SaveNewSchool()
 	tests := []struct {
 		name          string
 		observationId string
@@ -104,7 +100,7 @@ func (s *ObservationTestSuite) TestInvalidGetObservation() {
 	}
 	for _, test := range tests {
 		s.T().Run(test.name, func(t *testing.T) {
-			w := s.CreateRequest("GET", "/"+uuid.New().String(), nil, nil)
+			w := s.CreateRequest("GET", "/"+uuid.New().String(), nil, &school.Users[0].Id)
 			assert.Equal(t, http.StatusNotFound, w.Code)
 		})
 	}

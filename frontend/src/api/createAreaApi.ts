@@ -4,10 +4,10 @@ export function createAreaApi(
   name: string,
   curriculumId: string
 ): Promise<Response> {
-  return fetch(`${BASE_URL}/curriculum/areas`, {
+  return fetch(`${BASE_URL}/curriculum/${curriculumId}/areas`, {
     credentials: "same-origin",
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, curriculumId }),
+    body: JSON.stringify({ name }),
   })
 }
