@@ -21,4 +21,5 @@ type Store interface {
 	Get(studentId string) (*postgres.Student, error)
 	Update(student *postgres.Student) error
 	Delete(studentId string) error
+	CheckPermissions(studentId string, userId string) (bool, error)
 }

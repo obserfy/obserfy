@@ -28,7 +28,7 @@ func NewRouter(s rest.Server, store Store) *chi.Mux {
 	})
 	return r
 }
-func authorizationMiddleware(s rest.Server, store postgres.StudentStore) func(next http.Handler) http.Handler {
+func authorizationMiddleware(s rest.Server, store Store) func(next http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
 		return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 			studentId := chi.URLParam(r, "studentId")
@@ -54,7 +54,7 @@ func authorizationMiddleware(s rest.Server, store postgres.StudentStore) func(ne
 		})
 	}
 }
-func getStudent(s rest.Server, store postgres.StudentStore) http.Handler {
+func getStudent(s rest.Server, store Store) http.Handler {
 	type responseBody struct {
 		Id          string     `json:"id"`
 		Name        string     `json:"name"`
