@@ -5,10 +5,12 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"github.com/brianvoe/gofakeit/v4"
 	"github.com/chrsep/vor/pkg/auth"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/rest"
 	"github.com/go-pg/pg/v9"
+	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
 	"go.uber.org/zap/zaptest"
@@ -63,16 +65,69 @@ func connectTestDB() *pg.DB {
 	return db
 }
 
-func (s *BaseTestSuite) CreateRequest(method string, path string, bodyJson interface{}, session *postgres.Session) *httptest.ResponseRecorder {
+func (s *BaseTestSuite) SaveNewSchool() *postgres.School {
+	t := s.T()
+	gofakeit.Seed(time.Now().UnixNano())
+	curriculum := postgres.Curriculum{Id: uuid.New().String()}
+	newUser := postgres.User{
+		Id:    uuid.New().String(),
+		Email: gofakeit.Email(),
+		Name:  gofakeit.Name(),
+	}
+	newSchool := postgres.School{
+		Id:           uuid.New().String(),
+		Name:         gofakeit.Name(),
+		InviteCode:   uuid.New().String(),
+		Users:        []postgres.User{},
+		CurriculumId: curriculum.Id,
+	}
+	newSchool.Users = []postgres.User{newUser}
+	curriculum.Schools = []postgres.School{newSchool}
+	schoolUserRelation := postgres.UserToSchool{
+		SchoolId: newSchool.Id,
+		UserId:   newUser.Id,
+	}
+	newSchool.Curriculum = curriculum
+	if err := s.DB.Insert(&newUser); err != nil {
+		assert.NoError(t, err)
+		return nil
+	}
+	if err := s.DB.Insert(&curriculum); err != nil {
+		assert.NoError(t, err)
+		return nil
+	}
+	if err := s.DB.Insert(&newSchool); err != nil {
+		assert.NoError(t, err)
+		return nil
+	}
+	if err := s.DB.Insert(&schoolUserRelation); err != nil {
+		assert.NoError(t, err)
+		return nil
+	}
+	return &newSchool
+}
+
+func (s *BaseTestSuite) CreateRequest(method string, path string, bodyJson interface{}, userId *string) *httptest.ResponseRecorder {
 	w := httptest.NewRecorder()
+
 	body, err := json.Marshal(bodyJson)
 	assert.NoError(s.T(), err)
 
 	req := httptest.NewRequest(method, path, bytes.NewBuffer(body))
-	if session != nil {
-		err := s.DB.Insert(session)
+	if userId != nil {
+		// Save session to DB
+		sessionToken := uuid.New().String()
+		err := s.DB.Insert(&postgres.Session{
+			Token:  sessionToken,
+			UserId: *userId,
+		})
 		assert.NoError(s.T(), err)
-		ctx := context.WithValue(req.Context(), auth.SessionCtxKey, session)
+
+		// Save session to context
+		ctx := context.WithValue(req.Context(), auth.SessionCtxKey, &auth.Session{
+			Token:  sessionToken,
+			UserId: *userId,
+		})
 		s.Handler(w, req.WithContext(ctx))
 		return w
 	}

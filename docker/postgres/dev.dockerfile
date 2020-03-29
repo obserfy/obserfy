@@ -6,5 +6,5 @@ COPY start.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod 777 /usr/local/bin/docker-entrypoint.sh
 COPY ./ssl /ssl
 RUN chown postgres:postgres -R /ssl
-RUN chmod 600  /ssl/localhost.crt
-RUN chmod 600  /ssl/localhost.key
+RUN chmod 600 /ssl/localhost.crt
+RUN chmod 600 /ssl/localhost.key

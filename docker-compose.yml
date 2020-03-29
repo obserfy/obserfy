@@ -90,5 +90,5 @@ services:
       - vor:/var/lib/postgresql/data
 
 volumes:
-  ? vor
-  ? vor-minio
+  vor:
+  vor-minio:

@@ -1,67 +1,48 @@
 package user
 
 import (
-	"github.com/chrsep/vor/pkg/auth"
-	"github.com/chrsep/vor/pkg/postgres"
-	"github.com/chrsep/vor/pkg/rest"
-	"github.com/go-chi/chi"
 	"net/http"
+	"github.com/go-chi/chi"
+
+	"github.com/chrsep/vor/pkg/auth"
+	"github.com/chrsep/vor/pkg/rest"
 )
 
-type Store interface {
-	GetUser(userId string) (*postgres.User, error)
-	GetSchools(userId string) ([]postgres.School, error)
-}
-
-type server struct {
-	rest.Server
-	store Store
-}
-
 func NewRouter(s rest.Server, store Store) *chi.Mux {
-	server := server{s, store}
 	r := chi.NewRouter()
-	r.Method("GET", "/", server.getUser())
-	r.Method("GET", "/schools", server.getSchools())
+	r.Method("GET", "/", getUser(s, store))
+	r.Method("GET", "/schools", getSchools(s, store))
+
 	return r
 }
 
-func (s *server) getUser() rest.Handler {
-	type response struct {
-		Id    string `json:"id"`
-		Email string `json:"email"`
-		Name  string `json:"name"`
-	}
-	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+func getUser(server rest.Server, store Store) rest.Handler {
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		session, ok := auth.GetSessionFromCtx(r.Context())
 		if !ok {
 			return auth.NewGetSessionError()
 		}
 
-		user, err := s.store.GetUser(session.UserId)
+		user, err := store.GetUser(session.UserId)
 		if err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Can't get user data", err}
 		}
 
-		if err := rest.WriteJson(w, response{
-			Id:    user.Id,
-			Email: user.Email,
-			Name:  user.Name,
-		}); err != nil {
+		if err := rest.WriteJson(w, user); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
 		return nil
 	})
 }
 
-func (s *server) getSchools() rest.Handler {
-	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+func getSchools(server rest.Server, store Store) rest.Handler {
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		session, ok := auth.GetSessionFromCtx(r.Context())
 		if !ok {
 			return auth.NewGetSessionError()
 		}
 
-		schools, err := s.store.GetSchools(session.UserId)
+		schools, err := store.GetSchools(session.UserId)
 		if err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Can't get user data", err}
 		}

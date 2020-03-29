@@ -7,7 +7,6 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
 	"net/http"
-	"net/http/httptest"
 	"testing"
 )
 
@@ -19,24 +18,25 @@ func TestMaterialTestSuite(t *testing.T) {
 	suite.Run(t, new(MaterialTestSuite))
 }
 
-func (suite *MaterialTestSuite) TestValidPost() {
-	t := suite.T()
-	subject := suite.saveNewSubject()
+func (s *MaterialTestSuite) TestValidPost() {
+	t := s.T()
+	subject, userId := s.saveNewSubject()
+
 	payload := struct {
 		Name string `json:"name"`
 	}{uuid.New().String()}
 
-	suite.testRequest("POST", "/subjects/"+subject.Id+"/materials", payload)
-	assert.Equal(t, http.StatusCreated, suite.w.Code)
+	result := s.CreateRequest("POST", "/subjects/"+subject.Id+"/materials", payload, &userId)
+	assert.Equal(t, http.StatusCreated, result.Code)
 
 	var savedMaterial postgres.Material
-	err := suite.db.Model(&savedMaterial).Where("name=?", payload.Name).Select()
+	err := s.DB.Model(&savedMaterial).Where("name=?", payload.Name).Select()
 	assert.NoError(t, err)
 }
 
-func (suite *MaterialTestSuite) TestOrderingOfInsert() {
-	t := suite.T()
-	subject := suite.saveNewSubject()
+func (s *MaterialTestSuite) TestOrderingOfInsert() {
+	t := s.T()
+	subject, userId := s.saveNewSubject()
 	tests := []struct {
 		name          string
 		materialName  string
@@ -52,11 +52,11 @@ func (suite *MaterialTestSuite) TestOrderingOfInsert() {
 				Name string `json:"name"`
 			}{test.materialName}
 
-			suite.testRequest("POST", "/subjects/"+subject.Id+"/materials", payload)
-			assert.Equal(t, http.StatusCreated, suite.w.Code)
+			result := s.CreateRequest("POST", "/subjects/"+subject.Id+"/materials", payload, &userId)
+			assert.Equal(t, http.StatusCreated, result.Code)
 
 			var savedMaterial postgres.Material
-			err := suite.db.
+			err := s.DB.
 				Model(&savedMaterial).
 				Where("name=?", payload.Name).
 				Select()
@@ -66,9 +66,9 @@ func (suite *MaterialTestSuite) TestOrderingOfInsert() {
 	}
 }
 
-func (suite *MaterialTestSuite) TestInvalidPost() {
-	t := suite.T()
-	subject := suite.saveNewSubject()
+func (s *MaterialTestSuite) TestInvalidCreateSubject() {
+	t := s.T()
+	subject, userId := s.saveNewSubject()
 	tests := []struct {
 		testName  string
 		name      string
@@ -80,17 +80,15 @@ func (suite *MaterialTestSuite) TestInvalidPost() {
 	}
 	for _, test := range tests {
 		t.Run(test.testName, func(t *testing.T) {
-			suite.w = httptest.NewRecorder()
-
 			payload := struct {
 				Name string `json:"name"`
 			}{test.name}
 
-			suite.testRequest("POST", "/subjects/"+test.subjectId+"/materials", payload)
-			assert.NotEqual(t, http.StatusCreated, suite.w.Code)
+			result := s.CreateRequest("POST", "/subjects/"+test.subjectId+"/materials", payload, &userId)
+			assert.NotEqual(t, http.StatusCreated, result.Code)
 
 			var savedMaterial postgres.Material
-			err := suite.db.Model(&savedMaterial).
+			err := s.DB.Model(&savedMaterial).
 				Where("name=?", payload.Name).
 				Select()
 			assert.EqualError(t, err, pg.ErrNoRows.Error())
@@ -98,9 +96,9 @@ func (suite *MaterialTestSuite) TestInvalidPost() {
 	}
 }
 
-func (suite *MaterialTestSuite) TestValidUpdate() {
-	t := suite.T()
-	subject := suite.saveNewSubject()
+func (s *MaterialTestSuite) TestValidUpdate() {
+	t := s.T()
+	subject, _ := s.saveNewSubject()
 
 	tests := []struct {
 		testName  string
@@ -112,19 +110,19 @@ func (suite *MaterialTestSuite) TestValidUpdate() {
 	}
 	for _, test := range tests {
 		t.Run(test.testName, func(t *testing.T) {
-			originalMaterial := suite.saveNewMaterial()
+			originalMaterial, userId := s.saveNewMaterial()
 
 			payload := struct {
 				Name      string `json:"name,omitempty"`
 				SubjectId string `json:"subjectId,omitempty"`
 			}{test.name, test.subjectId}
 
-			suite.testRequest("PATCH", "/materials/"+originalMaterial.Id, payload)
-			t.Log(suite.w.Body)
-			assert.Equal(t, http.StatusNoContent, suite.w.Code)
+			result := s.CreateRequest("PATCH", "/materials/"+originalMaterial.Id, payload, &userId)
+			t.Log(result.Body)
+			assert.Equal(t, http.StatusNoContent, result.Code)
 
 			var savedMaterial postgres.Material
-			err := suite.db.Model(&savedMaterial).
+			err := s.DB.Model(&savedMaterial).
 				Where("id=?", originalMaterial.Id).
 				Select()
 			assert.NoError(t, err)
@@ -146,9 +144,9 @@ func (suite *MaterialTestSuite) TestValidUpdate() {
 	}
 }
 
-func (suite *MaterialTestSuite) TestUpdateMaterialOrderBackward() {
-	t := suite.T()
-	subject := suite.saveNewSubject()
+func (s *MaterialTestSuite) TestUpdateMaterialOrderBackward() {
+	t := s.T()
+	subject, userId := s.saveNewSubject()
 	originalMaterials := []postgres.Material{
 		{Id: uuid.New().String(), Name: "Major", SubjectId: subject.Id, Order: 1},
 		{Id: uuid.New().String(), Name: "Tom", SubjectId: subject.Id, Order: 2},
@@ -156,7 +154,7 @@ func (suite *MaterialTestSuite) TestUpdateMaterialOrderBackward() {
 		{Id: uuid.New().String(), Name: "Ground Control", SubjectId: subject.Id, Order: 4},
 	}
 	for _, material := range originalMaterials {
-		err := suite.db.Insert(&material)
+		err := s.DB.Insert(&material)
 		assert.NoError(t, err)
 	}
 
@@ -164,11 +162,12 @@ func (suite *MaterialTestSuite) TestUpdateMaterialOrderBackward() {
 	type payload struct {
 		Order int `json:"order"`
 	}
-	suite.testRequest("PATCH", "/materials/"+originalMaterials[3].Id, payload{2})
+	result := s.CreateRequest("PATCH", "/materials/"+originalMaterials[3].Id, payload{2}, &userId)
+	assert.Equal(t, http.StatusNoContent, result.Code)
 
 	// Get materials, ordered by order column
 	var updatedMaterials []postgres.Material
-	err := suite.db.Model(&updatedMaterials).
+	err := s.DB.Model(&updatedMaterials).
 		Where("subject_id=?", subject.Id).
 		Order("order").
 		Select()
@@ -191,9 +190,9 @@ func (suite *MaterialTestSuite) TestUpdateMaterialOrderBackward() {
 	}
 }
 
-func (suite *MaterialTestSuite) TestUpdateMaterialOrderForward() {
-	t := suite.T()
-	subject := suite.saveNewSubject()
+func (s *MaterialTestSuite) TestUpdateMaterialOrderForward() {
+	t := s.T()
+	subject, userId := s.saveNewSubject()
 	originalMaterials := []postgres.Material{
 		{Id: uuid.New().String(), Name: "Major", SubjectId: subject.Id, Order: 1},
 		{Id: uuid.New().String(), Name: "Tom", SubjectId: subject.Id, Order: 2},
@@ -201,7 +200,7 @@ func (suite *MaterialTestSuite) TestUpdateMaterialOrderForward() {
 		{Id: uuid.New().String(), Name: "Ground Control", SubjectId: subject.Id, Order: 4},
 	}
 	for _, material := range originalMaterials {
-		err := suite.db.Insert(&material)
+		err := s.DB.Insert(&material)
 		assert.NoError(t, err)
 	}
 
@@ -209,11 +208,11 @@ func (suite *MaterialTestSuite) TestUpdateMaterialOrderForward() {
 	type payload struct {
 		Order int `json:"order"`
 	}
-	suite.testRequest("PATCH", "/materials/"+originalMaterials[0].Id, payload{3})
+	s.CreateRequest("PATCH", "/materials/"+originalMaterials[0].Id, payload{3}, &userId)
 
 	// Get materials, ordered by order column
 	var updatedMaterials []postgres.Material
-	err := suite.db.Model(&updatedMaterials).
+	err := s.DB.Model(&updatedMaterials).
 		Where("subject_id=?", subject.Id).
 		Order("order").
 		Select()
@@ -236,9 +235,9 @@ func (suite *MaterialTestSuite) TestUpdateMaterialOrderForward() {
 	}
 }
 
-func (suite *MaterialTestSuite) TestUpdateMaterialOrderRandomly() {
-	t := suite.T()
-	subject := suite.saveNewSubject()
+func (s *MaterialTestSuite) TestUpdateMaterialOrderRandomly() {
+	t := s.T()
+	subject, userId := s.saveNewSubject()
 	originalMaterials := []postgres.Material{
 		{Id: uuid.New().String(), Name: "Major", SubjectId: subject.Id, Order: 1},
 		{Id: uuid.New().String(), Name: "Tom", SubjectId: subject.Id, Order: 2},
@@ -246,7 +245,7 @@ func (suite *MaterialTestSuite) TestUpdateMaterialOrderRandomly() {
 		{Id: uuid.New().String(), Name: "Ground Control", SubjectId: subject.Id, Order: 4},
 	}
 	for _, material := range originalMaterials {
-		err := suite.db.Insert(&material)
+		err := s.DB.Insert(&material)
 		assert.NoError(t, err)
 	}
 
@@ -254,20 +253,20 @@ func (suite *MaterialTestSuite) TestUpdateMaterialOrderRandomly() {
 	type payload struct {
 		Order int `json:"order"`
 	}
-	suite.testRequest("PATCH", "/materials/"+originalMaterials[0].Id, payload{2})
-	assert.Equal(t, http.StatusNoContent, suite.w.Code)
-	suite.testRequest("PATCH", "/materials/"+originalMaterials[0].Id, payload{3})
-	assert.Equal(t, http.StatusNoContent, suite.w.Code)
-	suite.testRequest("PATCH", "/materials/"+originalMaterials[0].Id, payload{1})
-	assert.Equal(t, http.StatusNoContent, suite.w.Code)
-	suite.testRequest("PATCH", "/materials/"+originalMaterials[0].Id, payload{4})
-	assert.Equal(t, http.StatusNoContent, suite.w.Code)
-	suite.testRequest("PATCH", "/materials/"+originalMaterials[3].Id, payload{1})
-	assert.Equal(t, http.StatusNoContent, suite.w.Code)
+	result := s.CreateRequest("PATCH", "/materials/"+originalMaterials[0].Id, payload{2}, &userId)
+	assert.Equal(t, http.StatusNoContent, result.Code)
+	result = s.CreateRequest("PATCH", "/materials/"+originalMaterials[0].Id, payload{3}, &userId)
+	assert.Equal(t, http.StatusNoContent, result.Code)
+	result = s.CreateRequest("PATCH", "/materials/"+originalMaterials[0].Id, payload{1}, &userId)
+	assert.Equal(t, http.StatusNoContent, result.Code)
+	result = s.CreateRequest("PATCH", "/materials/"+originalMaterials[0].Id, payload{4}, &userId)
+	assert.Equal(t, http.StatusNoContent, result.Code)
+	result = s.CreateRequest("PATCH", "/materials/"+originalMaterials[3].Id, payload{1}, &userId)
+	assert.Equal(t, http.StatusNoContent, result.Code)
 
 	// Get materials, ordered by order column
 	var updatedMaterials []postgres.Material
-	err := suite.db.Model(&updatedMaterials).
+	err := s.DB.Model(&updatedMaterials).
 		Where("subject_id=?", subject.Id).
 		Order("order").
 		Select()

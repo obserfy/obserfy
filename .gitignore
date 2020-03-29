@@ -5,3 +5,4 @@ frontend/cypress/screenshots
 coverage.txt
 test_result
 .env
+*.iml

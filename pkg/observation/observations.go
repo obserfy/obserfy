@@ -1,29 +1,60 @@
 package observation
 
 import (
+	"net/http"
+	"time"
+
+	"github.com/chrsep/vor/pkg/auth"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/rest"
 	"github.com/go-chi/chi"
 	"github.com/go-playground/validator/v10"
-	"net/http"
-	"time"
 )
 
 type Store interface {
 	UpdateObservation(observationId string, shortDesc string, longDesc string, categoryId string) (*postgres.Observation, error)
 	DeleteObservation(observationId string) error
 	GetObservation(id string) (*postgres.Observation, error)
+	CheckPermissions(observationId string, userId string) (bool, error)
 }
 
 func NewRouter(s rest.Server, store Store) *chi.Mux {
 	r := chi.NewRouter()
-	r.Method("DELETE", "/{observationId}", deleteObservation(s, store))
-	// TODO: Use patch with upsert instead of PUT.
-	r.Method("PUT", "/{observationId}", updateObservation(s, store))
-	r.Method("GET", "/{observationId}", getObservation(s, store))
+	r.Route("/{observationId}", func(r chi.Router) {
+		r.Use(authorizationMiddleware(s, store))
+		r.Method("DELETE", "/", deleteObservation(s, store))
+		// TODO: Use patch with upsert instead of PUT.
+		r.Method("PUT", "/", updateObservation(s, store))
+		r.Method("GET", "/", getObservation(s, store))
+	})
+
 	return r
 }
+func authorizationMiddleware(s rest.Server, store Store) func(next http.Handler) http.Handler {
+	return func(next http.Handler) http.Handler {
+		return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+			observationId := chi.URLParam(r, "observationId")
 
+			// Verify user access to the school
+			session, ok := auth.GetSessionFromCtx(r.Context())
+			if !ok {
+				return auth.NewGetSessionError()
+			}
+			userHasAccess, err := store.CheckPermissions(observationId, session.UserId)
+			if err != nil {
+				return &rest.Error{http.StatusInternalServerError, "Internal Server Error", err}
+
+			}
+			// Check if user is related to the school
+			if !userHasAccess {
+				return &rest.Error{http.StatusNotFound, "Observation not found", err}
+			}
+
+			next.ServeHTTP(w, r)
+			return nil
+		})
+	}
+}
 func updateObservation(s rest.Server, store Store) rest.Handler {
 	type requestBody struct {
 		ShortDesc  string `json:"shortDesc"`

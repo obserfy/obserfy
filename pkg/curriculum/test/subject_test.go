@@ -1,7 +1,6 @@
 package curriculum_test
 
 import (
-	"github.com/chrsep/vor/pkg/curriculum"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
@@ -21,18 +20,21 @@ func TestSubjectTestSuite(t *testing.T) {
 
 func (s *SubjectTestSuite) TestCreateSubject() {
 	t := s.T()
-	area := s.saveNewArea()
+	area, userId := s.saveNewArea()
 
-	payload := curriculum.SubjectJson{
+	payload := struct {
+		Name   string `json:"name"`
+		AreaId string `json:"areaId"`
+	}{
 		Name:   uuid.New().String(),
 		AreaId: area.Id,
 	}
-	s.testRequest("POST", "/areas/"+payload.AreaId+"/subjects", payload)
-	assert.Equal(t, http.StatusCreated, s.w.Code)
+	result := s.CreateRequest("POST", "/areas/"+payload.AreaId+"/subjects", payload, &userId)
+	assert.Equal(t, http.StatusCreated, result.Code)
 
 	// get subject
 	var savedSubject postgres.Subject
-	err := s.db.
+	err := s.DB.
 		Model(&savedSubject).
 		Where("name=?", payload.Name).
 		Select()
@@ -41,15 +43,18 @@ func (s *SubjectTestSuite) TestCreateSubject() {
 	assert.Equal(t, payload.AreaId, savedSubject.AreaId)
 	assert.Equal(t, 1, savedSubject.Order)
 
-	secondPayload := curriculum.SubjectJson{
+	secondPayload := struct {
+		Name   string `json:"name"`
+		AreaId string `json:"areaId"`
+	}{
 		Name:   uuid.New().String(),
 		AreaId: area.Id,
 	}
-	s.testRequest("POST", "/areas/"+secondPayload.AreaId+"/subjects", secondPayload)
-	assert.Equal(t, http.StatusCreated, s.w.Code)
+	result = s.CreateRequest("POST", "/areas/"+secondPayload.AreaId+"/subjects", secondPayload, &userId)
+	assert.Equal(t, http.StatusCreated, result.Code)
 	// get subject
 	var secondSavedSubject postgres.Subject
-	err = s.db.
+	err = s.DB.
 		Model(&secondSavedSubject).
 		Where("name=?", secondPayload.Name).
 		Select()
@@ -59,89 +64,22 @@ func (s *SubjectTestSuite) TestCreateSubject() {
 	assert.Equal(t, 2, secondSavedSubject.Order)
 }
 
-func (s *SubjectTestSuite) TestUpdateSubject() {
-	t := s.T()
-	original := s.saveNewSubject()
-
-	// Try changing the name using the API
-	payload := curriculum.SubjectJson{Name: uuid.New().String()}
-	s.testRequest("PATCH", "/subjects/"+original.Id, payload)
-
-	// Get current data on db
-	var updated postgres.Subject
-	err := s.db.Model(&updated).
-		Where("id=?", original.Id).
-		Select()
-	assert.NoError(t, err)
-
-	assert.Equal(t, http.StatusNoContent, s.w.Code)
-	assert.EqualValues(t, payload.Name, updated.Name)      // Name should be updated
-	assert.EqualValues(t, original.AreaId, updated.AreaId) // Other values should stay the same
-}
-
 // AddSubject should have name
 func (s *SubjectTestSuite) TestCreateSubjectWithNoName() {
 	t := s.T()
-	area := s.saveNewArea()
+	area, userId := s.saveNewArea()
 
-	payload := curriculum.SubjectJson{AreaId: area.Id}
-	s.testRequest("POST", "/areas/"+payload.AreaId+"/subjects", payload)
-	assert.EqualValues(t, http.StatusBadRequest, s.w.Code)
-}
-
-func (s *SubjectTestSuite) TestUpdateNonexistentArea() {
-	t := s.T()
-	original := s.saveNewSubject()
-
-	payload := curriculum.SubjectJson{AreaId: uuid.New().String()}
-	s.testRequest("PATCH", "/subjects/"+original.Id, payload)
-	assert.EqualValues(t, http.StatusUnprocessableEntity, s.w.Code)
-
-	var updated postgres.Subject
-	err := s.db.Model(&updated).Where("id=?", original.Id).Select()
-	assert.NoError(t, err)
-
-	assert.Equal(t, original.AreaId, updated.AreaId)
-	assert.Equal(t, original.Name, updated.Name)
-}
-
-func (s *SubjectTestSuite) TestValidArea() {
-	t := s.T()
-	original := s.saveNewSubject()
-	newArea := s.saveNewArea()
-
-	payload := curriculum.SubjectJson{AreaId: newArea.Id}
-	s.testRequest("PATCH", "/subjects/"+original.Id, payload)
-	assert.EqualValues(t, http.StatusNoContent, s.w.Code)
-
-	var updated postgres.Subject
-	err := s.db.Model(&updated).Where("id=?", original.Id).Select()
-	assert.NoError(t, err)
-
-	assert.Equal(t, payload.AreaId, updated.AreaId)
-	assert.Equal(t, original.Name, updated.Name)
-}
-
-// AddSubject should have area
-func (s *SubjectTestSuite) TestUpdateName() {
-	t := s.T()
-	original := s.saveNewSubject()
-	payload := curriculum.SubjectJson{Name: uuid.New().String()}
-
-	s.testRequest("PATCH", "/subjects/"+original.Id, payload)
-	assert.EqualValues(t, http.StatusNoContent, s.w.Code)
-
-	var updated postgres.Subject
-	err := s.db.Model(&updated).Where("id=?", original.Id).Select()
-	assert.NoError(t, err)
-
-	assert.Equal(t, payload.Name, updated.Name)
-	assert.Equal(t, original.AreaId, updated.AreaId)
+	payload := struct {
+		Name   string `json:"name"`
+		AreaId string `json:"areaId"`
+	}{AreaId: area.Id}
+	result := s.CreateRequest("POST", "/areas/"+payload.AreaId+"/subjects", payload, &userId)
+	assert.EqualValues(t, http.StatusBadRequest, result.Code)
 }
 
 func (s *SubjectTestSuite) TestCreateNewSubjectWithMaterials() {
 	t := s.T()
-	area := s.saveNewArea()
+	area, userId := s.saveNewArea()
 
 	type materialPayload struct {
 		Name  string `json:"name"`
@@ -158,12 +96,12 @@ func (s *SubjectTestSuite) TestCreateNewSubjectWithMaterials() {
 			{Name: "Test", Order: 2},
 		},
 	}
-	s.testRequest("POST", "/areas/"+area.Id+"/subjects", payload)
-	assert.Equal(t, http.StatusCreated, s.w.Code)
+	result := s.CreateRequest("POST", "/areas/"+area.Id+"/subjects", payload, &userId)
+	assert.Equal(t, http.StatusCreated, result.Code)
 
 	// get subject
 	var savedSubject postgres.Subject
-	err := s.db.
+	err := s.DB.
 		Model(&savedSubject).
 		Where("name=?", payload.Name).
 		Relation("Materials").
@@ -178,7 +116,7 @@ func (s *SubjectTestSuite) TestCreateNewSubjectWithMaterials() {
 
 func (s *SubjectTestSuite) TestCreateNewSubjectWithMaterialsWithRepeatedOrder() {
 	t := s.T()
-	area := s.saveNewArea()
+	area, userId := s.saveNewArea()
 
 	type materialPayload struct {
 		Name  string `json:"name"`
@@ -195,13 +133,13 @@ func (s *SubjectTestSuite) TestCreateNewSubjectWithMaterialsWithRepeatedOrder() 
 			{Name: "Test", Order: 1},
 		},
 	}
-	s.testRequest("POST", "/areas/"+area.Id+"/subjects", payload)
+	result := s.CreateRequest("POST", "/areas/"+area.Id+"/subjects", payload, &userId)
 	// Don't allow repeated order number
-	assert.Equal(t, http.StatusUnprocessableEntity, s.w.Code)
+	assert.Equal(t, http.StatusUnprocessableEntity, result.Code)
 
 	// Verify subject is not saved
 	var savedSubject postgres.Subject
-	err := s.db.
+	err := s.DB.
 		Model(&savedSubject).
 		Where("name=?", payload.Name).
 		Relation("Materials").
@@ -211,11 +149,11 @@ func (s *SubjectTestSuite) TestCreateNewSubjectWithMaterialsWithRepeatedOrder() 
 
 func (s *SubjectTestSuite) TestDeleteSubject() {
 	t := s.T()
-	subject := s.saveNewSubject()
-	response := s.testRequest("DELETE", "/subjects/"+subject.Id, nil)
-	assert.Equal(t, http.StatusOK, response.Code)
+	subject, userId := s.saveNewSubject()
+	result := s.CreateRequest("DELETE", "/subjects/"+subject.Id, nil, &userId)
+	assert.Equal(t, http.StatusOK, result.Code)
 	var savedSubject postgres.Subject
-	err := s.db.Model(&savedSubject).
+	err := s.DB.Model(&savedSubject).
 		Where("id=?", subject.Id).
 		Select()
 	assert.Error(t, err)
@@ -223,14 +161,15 @@ func (s *SubjectTestSuite) TestDeleteSubject() {
 
 func (s *SubjectTestSuite) TestDeleteUnknownSubject() {
 	t := s.T()
+	school := s.SaveNewSchool()
 	subjectId := uuid.New().String()
-	response := s.testRequest("DELETE", "/subjects/"+subjectId, nil)
-	assert.Equal(t, http.StatusNotFound, response.Code)
+	result := s.CreateRequest("DELETE", "/subjects/"+subjectId, nil, &school.Users[0].Id)
+	assert.Equal(t, http.StatusNotFound, result.Code)
 }
 
 func (s *SubjectTestSuite) TestPutSubjectWithRemovedMaterial() {
 	t := s.T()
-	material := s.saveNewMaterial()
+	material, userId := s.saveNewMaterial()
 
 	type materialPayload struct {
 		Name  string `json:"name"`
@@ -247,11 +186,11 @@ func (s *SubjectTestSuite) TestPutSubjectWithRemovedMaterial() {
 		Order:  0,
 		AreaId: material.Subject.Area.Id,
 	}
-	response := s.testRequest("PUT", "/subjects/"+material.Subject.Id, newSubject)
-	assert.Equal(t, http.StatusOK, response.Code)
+	result := s.CreateRequest("PUT", "/subjects/"+material.Subject.Id, newSubject, &userId)
+	assert.Equal(t, http.StatusOK, result.Code)
 
 	var savedSubject postgres.Subject
-	err := s.db.Model(&savedSubject).
+	err := s.DB.Model(&savedSubject).
 		Where("id=?", material.Subject.Id).
 		Relation("Materials").
 		Select()
@@ -262,7 +201,7 @@ func (s *SubjectTestSuite) TestPutSubjectWithRemovedMaterial() {
 
 func (s *SubjectTestSuite) TestPutSubjectWithNewMaterial() {
 	t := s.T()
-	material := s.saveNewMaterial()
+	material, userId := s.saveNewMaterial()
 
 	type materialPayload struct {
 		Id    string `json:"id"`
@@ -286,11 +225,11 @@ func (s *SubjectTestSuite) TestPutSubjectWithNewMaterial() {
 			{uuid.New().String(), uuid.New().String(), material.Order + 3},
 		},
 	}
-	response := s.testRequest("PUT", "/subjects/"+material.Subject.Id, newSubject)
-	assert.Equal(t, http.StatusOK, response.Code)
+	result := s.CreateRequest("PUT", "/subjects/"+material.Subject.Id, newSubject, &userId)
+	assert.Equal(t, http.StatusOK, result.Code)
 
 	var savedSubject postgres.Subject
-	err := s.db.Model(&savedSubject).
+	err := s.DB.Model(&savedSubject).
 		Where("id=?", material.Subject.Id).
 		Relation("Materials").
 		Select()
@@ -301,7 +240,7 @@ func (s *SubjectTestSuite) TestPutSubjectWithNewMaterial() {
 
 func (s *SubjectTestSuite) TestPutSubjectWithUpdatedMaterial() {
 	t := s.T()
-	material := s.saveNewMaterial()
+	material, userId := s.saveNewMaterial()
 
 	type materialPayload struct {
 		Id    string `json:"id"`
@@ -322,11 +261,11 @@ func (s *SubjectTestSuite) TestPutSubjectWithUpdatedMaterial() {
 			{material.Id, uuid.New().String(), material.Order},
 		},
 	}
-	response := s.testRequest("PUT", "/subjects/"+material.Subject.Id, newSubject)
+	response := s.CreateRequest("PUT", "/subjects/"+material.Subject.Id, newSubject, &userId)
 	assert.Equal(t, http.StatusOK, response.Code)
 
 	var savedSubject postgres.Subject
-	err := s.db.Model(&savedSubject).
+	err := s.DB.Model(&savedSubject).
 		Where("id=?", material.Subject.Id).
 		Relation("Materials").
 		Select()

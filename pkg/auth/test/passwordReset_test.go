@@ -85,7 +85,7 @@ func (s *AuthTestSuite) TestValidDoPasswordReset() {
 	s.mailService.On("SendPasswordResetSuccessful", mock.Anything).
 		Return(nil)
 	t := s.T()
-	token, err := s.SaveNewToken()
+	token, err := s.SaveNewPasswordResetToken()
 	assert.NoError(t, err)
 
 	password := uuid.New().String()
@@ -113,7 +113,7 @@ func (s *AuthTestSuite) TestValidDoPasswordReset() {
 // Empty password
 func (s *AuthTestSuite) TestEmptyPasswordDoPasswordReset() {
 	t := s.T()
-	token, err := s.SaveNewToken()
+	token, err := s.SaveNewPasswordResetToken()
 	assert.NoError(t, err)
 
 	password := ""
@@ -132,7 +132,7 @@ func (s *AuthTestSuite) TestEmptyPasswordDoPasswordReset() {
 func (s *AuthTestSuite) TestInvalidTokenDoPasswordReset() {
 	t := s.T()
 
-	_, err := s.SaveNewToken()
+	_, err := s.SaveNewPasswordResetToken()
 	password := uuid.New().String()
 
 	assert.NoError(t, err)
@@ -164,7 +164,7 @@ func (s *AuthTestSuite) TestDoPasswordResetTwiceShouldFailed() {
 	s.mailService.On("SendPasswordResetSuccessful", mock.Anything).
 		Return(nil)
 	t := s.T()
-	token, err := s.SaveNewToken()
+	token, err := s.SaveNewPasswordResetToken()
 	assert.NoError(t, err)
 
 	password := uuid.New().String()
@@ -200,7 +200,7 @@ func (s *AuthTestSuite) TestDoPasswordResetTwiceShouldFailed() {
 // Test expired token should not be usable
 func (s *AuthTestSuite) TestExpiredTokenDoPasswordReset() {
 	t := s.T()
-	token, err := s.SaveNewToken()
+	token, err := s.SaveNewPasswordResetToken()
 	assert.NoError(t, err)
 
 	// Advance time by 1 hour
