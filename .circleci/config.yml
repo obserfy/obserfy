@@ -155,6 +155,17 @@ jobs:
           cd frontend
           yarn typecheck
 
+  versioning:
+    docker:
+      - image: node:12
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: |
+          npm i -g standard-version
+          npm run release --no-verify
+          npm publish
+
   deploy:
     machine:
       image: ubuntu-1604:201903-01
@@ -210,6 +221,17 @@ workflows:
       - e2e:
           requires:
             - frontend_build
+      - versioning:
+          filters:
+            branches:
+              only:
+                - master
+          requires:
+            - e2e
+            - backend_unit
+            - frontend_unit
+            - frontend_lint
+            - frontend_typecheck
       - deploy:
           filters:
             branches:
@@ -221,6 +243,7 @@ workflows:
             - frontend_unit
             - frontend_lint
             - frontend_typecheck
+            - versioning
 
       - sentry_release:
           requires:
