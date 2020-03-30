@@ -105,7 +105,7 @@
     "@storybook/theming": "^5.3.17",
     "@testing-library/react-hooks": "^3.2.1",
     "@types/date-fns": "^2.6.0",
-    "@types/faker": "^4.1.10",
+    "@types/faker": "^4.1.11",
     "@types/jest": "^25.1.4",
     "@types/react-helmet": "^5.0.15",
     "@types/react-query": "^0.3.9",
