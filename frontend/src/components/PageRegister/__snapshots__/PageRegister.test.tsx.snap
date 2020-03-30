@@ -394,6 +394,25 @@ exports[`PageRegister should render correctly 1`] = `
         </h2>
         <label
           class="emotion-4"
+          required=""
+        >
+          <div
+            class="emotion-1"
+          >
+            Name
+          </div>
+          <div
+            class="emotion-3"
+          >
+            <input
+              class="emotion-2"
+              name="name"
+              value=""
+            />
+          </div>
+        </label>
+        <label
+          class="emotion-4"
           data-cy="register-email"
           required=""
         >
@@ -409,25 +428,6 @@ exports[`PageRegister should render correctly 1`] = `
               class="emotion-2"
               name="email"
               type="email"
-              value=""
-            />
-          </div>
-        </label>
-        <label
-          class="emotion-4"
-          required=""
-        >
-          <div
-            class="emotion-1"
-          >
-            Name
-          </div>
-          <div
-            class="emotion-3"
-          >
-            <input
-              class="emotion-2"
-              name="name"
               value=""
             />
           </div>

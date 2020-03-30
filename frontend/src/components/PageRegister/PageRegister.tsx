@@ -95,6 +95,15 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
         )}
         <Typography.H2 my={3}>Register</Typography.H2>
         <Input
+          width="100%"
+          name="name"
+          label="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+          mb={2}
+        />
+        <Input
           data-cy="register-email"
           type="email"
           name="email"
@@ -102,15 +111,6 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
           label="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          required
-          mb={2}
-        />
-        <Input
-          width="100%"
-          name="name"
-          label="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
           required
           mb={2}
         />
