@@ -104,6 +104,14 @@ type StudentMaterialProgress struct {
 	UpdatedAt  time.Time
 }
 
+type Gender int
+
+const (
+	NotSet Gender = iota
+	Male
+	Female
+)
+
 type Student struct {
 	Id          string `json:"id" pg:",type:uuid"`
 	Name        string `json:"name"`
@@ -111,7 +119,7 @@ type Student struct {
 	School      School
 	DateOfBirth *time.Time
 	Classes     []Class `pg:"many2many:student_to_class,joinFK:student_id"`
-	Gender      string
+	Gender      Gender  `pg:"type:int"`
 	DateOfEntry *time.Time
 	Note        string
 	CustomId    string
@@ -132,9 +140,9 @@ type Guardian struct {
 type GuardianRelationship int
 
 const (
-	Mother GuardianRelationship = iota
+	Others GuardianRelationship = iota
+	Mother
 	Father
-	Others
 )
 
 type GuardianToStudent struct {
