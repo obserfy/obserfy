@@ -15,7 +15,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   }
 }
 
-.emotion-47 {
+.emotion-55 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -23,12 +23,12 @@ exports[`PageNewStudent should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-47 {
+  .emotion-55 {
     font-size: 20px;
   }
 }
 
-.emotion-46 {
+.emotion-54 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -88,6 +88,28 @@ exports[`PageNewStudent should render correctly 1`] = `
   }
 }
 
+.emotion-42 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.emotion-11 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .emotion-3 {
   box-sizing: border-box;
   margin: 0;
@@ -103,19 +125,162 @@ exports[`PageNewStudent should render correctly 1`] = `
   -ms-letter-spacing: 0;
   letter-spacing: 0;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
-  margin: 16px;
+  margin-bottom: 16px;
 }
 
-.emotion-34 {
+.emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  margin-left: 16px;
-  margin-right: 16px;
-  margin-top: 16px;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  margin-left: auto;
+  margin-bottom: 8px;
+}
+
+.emotion-9 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  width: 100%;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  as: label;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .emotion-7 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding: 8px;
+  background-color: var(--theme-ui-colors-background,#F7F8FA);
+  border-radius: 8px;
+  box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
+  padding: 0;
+  background-color: var(--theme-ui-colors-surface,#fff);
+  overflow: hidden;
+  height: 100px;
+  width: 100px;
+}
+
+.emotion-6 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  height: 100%;
+  width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding-top: 16px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-4 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  margin: 0;
+  height: 24px;
+  width: 24px;
+  margin-bottom: 4px;
+}
+
+.emotion-5 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  font-size: 12px;
+}
+
+.emotion-8 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: block;
+  width: 100%;
+  padding: 8px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: inherit;
+  line-height: inherit;
+  border: 1px solid;
+  border-radius: 8px;
+  color: inherit;
+  background-color: transparent;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  width: auto;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface,#fff);
+  font-size: 16px;
+  padding: 12px;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  display: none;
+}
+
+.emotion-8:hover,
+.emotion-8:focus {
+  border-color: var(--theme-ui-colors-primary,#00e399);
+  outline: none;
+}
+
+.emotion-8::-webkit-input-placeholder {
+  font-style: italic;
+}
+
+.emotion-8::-moz-placeholder {
+  font-style: italic;
+}
+
+.emotion-8:-ms-input-placeholder {
+  font-style: italic;
+}
+
+.emotion-8::placeholder {
+  font-style: italic;
+}
+
+.emotion-8:disabled {
+  opacity: 0.68;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
+}
+
+.emotion-15 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -143,14 +308,14 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-4 {
+.emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   padding-bottom: 4px;
 }
 
-.emotion-6 {
+.emotion-14 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -164,7 +329,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-5 {
+.emotion-13 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -190,35 +355,35 @@ exports[`PageNewStudent should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-5:hover,
-.emotion-5:focus {
+.emotion-13:hover,
+.emotion-13:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-5::-webkit-input-placeholder {
+.emotion-13::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-5::-moz-placeholder {
+.emotion-13::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-5:-ms-input-placeholder {
+.emotion-13:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-5::placeholder {
+.emotion-13::placeholder {
   font-style: italic;
 }
 
-.emotion-5:disabled {
+.emotion-13:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
-.emotion-14 {
+.emotion-22 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -229,7 +394,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-11 {
+.emotion-19 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -256,7 +421,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-9 {
+.emotion-17 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -283,35 +448,35 @@ exports[`PageNewStudent should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-9:hover,
-.emotion-9:focus {
+.emotion-17:hover,
+.emotion-17:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-9::-webkit-input-placeholder {
+.emotion-17::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-9::-moz-placeholder {
+.emotion-17::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-9:-ms-input-placeholder {
+.emotion-17:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-9::placeholder {
+.emotion-17::placeholder {
   font-style: italic;
 }
 
-.emotion-9:disabled {
+.emotion-17:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
-.emotion-13 {
+.emotion-21 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -369,25 +534,25 @@ exports[`PageNewStudent should render correctly 1`] = `
   margin-left: 16px;
 }
 
-.emotion-13:disabled {
+.emotion-21:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-13:hover,
-.emotion-13:focus {
+.emotion-21:hover,
+.emotion-21:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-13:hover:disabled,
-.emotion-13:focus:disabled {
+.emotion-21:hover:disabled,
+.emotion-21:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-12 {
+.emotion-20 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -402,7 +567,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   width: 20px;
 }
 
-.emotion-26 {
+.emotion-34 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -429,7 +594,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-25 {
+.emotion-33 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -439,7 +604,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-23 {
+.emotion-31 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -463,13 +628,13 @@ exports[`PageNewStudent should render correctly 1`] = `
   padding: 12px;
 }
 
-.emotion-23:hover,
-.emotion-23:focus {
+.emotion-31:hover,
+.emotion-31:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-24 {
+.emotion-32 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -482,7 +647,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   height: 24px;
 }
 
-.emotion-33 {
+.emotion-41 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -508,7 +673,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-32 {
+.emotion-40 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -535,33 +700,33 @@ exports[`PageNewStudent should render correctly 1`] = `
   height: 100px;
 }
 
-.emotion-32:hover,
-.emotion-32:focus {
+.emotion-40:hover,
+.emotion-40:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-32::-webkit-input-placeholder {
+.emotion-40::-webkit-input-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-32::-moz-placeholder {
+.emotion-40::-moz-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-32:-ms-input-placeholder {
+.emotion-40:-ms-input-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-32::placeholder {
+.emotion-40::placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-35 {
+.emotion-43 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -580,14 +745,14 @@ exports[`PageNewStudent should render correctly 1`] = `
   margin-top: 32px;
 }
 
-.emotion-37 {
+.emotion-45 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   margin: 16px;
 }
 
-.emotion-36 {
+.emotion-44 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -598,7 +763,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   height: 4rem;
 }
 
-.emotion-38 {
+.emotion-46 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -609,7 +774,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-41 {
+.emotion-49 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -624,7 +789,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-39 {
+.emotion-47 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -642,7 +807,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   margin: 16px;
 }
 
-.emotion-40 {
+.emotion-48 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -697,25 +862,25 @@ exports[`PageNewStudent should render correctly 1`] = `
   margin-right: 16px;
 }
 
-.emotion-40:disabled {
+.emotion-48:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-40:hover,
-.emotion-40:focus {
+.emotion-48:hover,
+.emotion-48:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-40:hover:disabled,
-.emotion-40:focus:disabled {
+.emotion-48:hover:disabled,
+.emotion-48:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-43 {
+.emotion-51 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -727,15 +892,22 @@ exports[`PageNewStudent should render correctly 1`] = `
   padding: 0;
   background-color: var(--theme-ui-colors-surface,#fff);
   overflow: hidden;
+  margin: 0;
 }
 
 @media screen and (min-width:40em) {
-  .emotion-43 {
+  .emotion-51 {
     border-radius: 8px;
   }
 }
 
-.emotion-42 {
+@media screen and (min-width:40em) {
+  .emotion-51 {
+    margin: 16px;
+  }
+}
+
+.emotion-50 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -750,12 +922,12 @@ exports[`PageNewStudent should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-42 {
+  .emotion-50 {
     font-size: 14px;
   }
 }
 
-.emotion-45 {
+.emotion-53 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -763,7 +935,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   margin-top: 16px;
 }
 
-.emotion-44 {
+.emotion-52 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -815,28 +987,28 @@ exports[`PageNewStudent should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-44:disabled {
+.emotion-52:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-44:hover,
-.emotion-44:focus {
+.emotion-52:hover,
+.emotion-52:focus {
   background-color: var(--theme-ui-colors-primaryDark,#00a06d);
   outline: none;
 }
 
-.emotion-44:hover:disabled,
-.emotion-44:focus:disabled {
+.emotion-52:hover:disabled,
+.emotion-52:focus:disabled {
   background-color: var(--theme-ui-colors-primary,#00e399);
 }
 
 <div>
   <div
-    class="emotion-47"
+    class="emotion-55"
   >
     <div
-      class="emotion-46"
+      class="emotion-54"
     >
       <a
         href="/dashboard/observe"
@@ -854,47 +1026,79 @@ exports[`PageNewStudent should render correctly 1`] = `
           </p>
         </div>
       </a>
-      <h4
-        class="emotion-3"
-      >
-        New Student
-      </h4>
       <div
-        class="emotion-34"
+        class="emotion-42"
       >
+        <div
+          class="emotion-11"
+        >
+          <h4
+            class="emotion-3"
+          >
+            New Student
+          </h4>
+          <div
+            class="emotion-10"
+          >
+            <label
+              class="emotion-9"
+            >
+              <div
+                class="emotion-7"
+              >
+                <div
+                  class="emotion-6"
+                >
+                  <div
+                    class="emotion-4"
+                  />
+                  <p
+                    class="emotion-5"
+                  >
+                    Add Picture
+                  </p>
+                </div>
+              </div>
+              <input
+                class="emotion-8"
+                type="file"
+              />
+            </label>
+          </div>
+        </div>
         <label
-          class="emotion-7"
+          class="emotion-15"
         >
           <div
-            class="emotion-4"
+            class="emotion-12"
           >
             Name (Required)
           </div>
           <div
-            class="emotion-6"
+            class="emotion-14"
           >
             <input
-              class="emotion-5"
+              class="emotion-13"
               value=""
             />
           </div>
         </label>
         <div
-          class="emotion-14"
+          class="emotion-22"
         >
           <label
-            class="emotion-11"
+            class="emotion-19"
           >
             <div
-              class="emotion-4"
+              class="emotion-12"
             >
               Date of Birth
             </div>
             <div
-              class="emotion-6"
+              class="emotion-14"
             >
               <input
-                class="emotion-9"
+                class="emotion-17"
                 disabled=""
                 placeholder="Not set"
                 value=""
@@ -902,29 +1106,29 @@ exports[`PageNewStudent should render correctly 1`] = `
             </div>
           </label>
           <button
-            class="emotion-13"
+            class="emotion-21"
           >
             <div
-              class="emotion-12"
+              class="emotion-20"
             />
           </button>
         </div>
         <div
-          class="emotion-14"
+          class="emotion-22"
         >
           <label
-            class="emotion-11"
+            class="emotion-19"
           >
             <div
-              class="emotion-4"
+              class="emotion-12"
             >
               Entry Date
             </div>
             <div
-              class="emotion-6"
+              class="emotion-14"
             >
               <input
-                class="emotion-9"
+                class="emotion-17"
                 disabled=""
                 placeholder="Not set"
                 value=""
@@ -932,27 +1136,27 @@ exports[`PageNewStudent should render correctly 1`] = `
             </div>
           </label>
           <button
-            class="emotion-13"
+            class="emotion-21"
           >
             <div
-              class="emotion-12"
+              class="emotion-20"
             />
           </button>
         </div>
         <label
-          class="emotion-26"
+          class="emotion-34"
         >
           <div
-            class="emotion-4"
+            class="emotion-12"
           >
             Gender
           </div>
           <div
-            class="emotion-25"
+            class="emotion-33"
           >
             <select
               aria-label="Gender"
-              class="emotion-23"
+              class="emotion-31"
             >
               <option
                 value="0"
@@ -971,7 +1175,7 @@ exports[`PageNewStudent should render correctly 1`] = `
               </option>
             </select>
             <svg
-              class="emotion-24"
+              class="emotion-32"
               fill="currentcolor"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
@@ -983,79 +1187,79 @@ exports[`PageNewStudent should render correctly 1`] = `
           </div>
         </label>
         <label
-          class="emotion-7"
+          class="emotion-15"
         >
           <div
-            class="emotion-4"
+            class="emotion-12"
           >
             Student ID
           </div>
           <div
-            class="emotion-6"
+            class="emotion-14"
           >
             <input
-              class="emotion-5"
+              class="emotion-13"
               value=""
             />
           </div>
         </label>
         <label
-          class="emotion-33"
+          class="emotion-41"
         >
           <div
-            class="emotion-4"
+            class="emotion-12"
           >
             Notes
           </div>
           <textarea
             aria-label="Notes"
-            class="emotion-32"
+            class="emotion-40"
           />
         </label>
       </div>
       <h5
-        class="emotion-35"
+        class="emotion-43"
       >
         CLASSES
       </h5>
       <div
-        class="emotion-37"
+        class="emotion-45"
       >
         <div
-          class="emotion-36"
+          class="emotion-44"
         />
       </div>
       <div
-        class="emotion-38"
+        class="emotion-46"
       />
       <div
-        class="emotion-41"
+        class="emotion-49"
       >
         <h5
-          class="emotion-39"
+          class="emotion-47"
         >
           GUARDIANS
         </h5>
         <button
-          class="emotion-40"
+          class="emotion-48"
         >
           Add
         </button>
       </div>
       <div
-        class="emotion-43"
+        class="emotion-51"
       >
         <p
-          class="emotion-42"
+          class="emotion-50"
         >
           This student doesn't have a guardian yet.
         </p>
       </div>
       <div
-        class="emotion-45"
+        class="emotion-53"
       >
         <button
-          class="emotion-44"
+          class="emotion-52"
           disabled=""
         >
           Save

@@ -23,6 +23,7 @@ import Card from "../Card/Card"
 import { Icon } from "../Icon/Icon"
 import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
 import WarningDialog from "../WarningDialog/WarningDialog"
+import ProfilePicker from "../ProfilePicker/ProfilePicker"
 
 enum GuardianRelationship {
   Other,
@@ -47,6 +48,7 @@ interface Guardian {
 
 export const PageNewStudent: FC = () => {
   const [name, setName] = useState("")
+  const [picture, setPicture] = useState<File>()
   const [studentId, setStudentId] = useState("")
   const [note, setNotes] = useState("")
   const [gender, setGender] = useState<Gender>(Gender.NotSet)
@@ -73,8 +75,16 @@ export const PageNewStudent: FC = () => {
     <>
       <Box maxWidth="maxWidth.sm" margin="auto" pb={4}>
         <BackNavigation to="/dashboard/observe" text="Home" />
-        <Typography.H4 m={3}>New Student</Typography.H4>
-        <Box mx={3} mt={3}>
+        <Box mx={3}>
+          <Flex alignItems="flex-end">
+            <Typography.H4 mb={3}>New Student</Typography.H4>
+            <ProfilePicker
+              ml="auto"
+              onChange={setPicture}
+              value={picture}
+              mb={2}
+            />
+          </Flex>
           <Input
             label="Name (Required)"
             width="100%"
@@ -176,7 +186,7 @@ export const PageNewStudent: FC = () => {
           </Button>
         </Flex>
         {guardians.length === 0 && (
-          <Card borderRadius={[0, "default"]}>
+          <Card borderRadius={[0, "default"]} m={[0, 3]}>
             <Typography.Body m={3} color="textMediumEmphasis">
               This student doesn&apos;t have a guardian yet.
             </Typography.Body>
@@ -219,11 +229,13 @@ const ClassesLoadingPlaceholder: FC = () => (
 )
 
 const EmptyClassDataPlaceholder: FC = () => (
-  <InformationalCard
-    buttonText="Go to Class Settings"
-    message="Create your first class to track your student's class enrollment."
-    to={CLASS_SETTINGS_URL}
-  />
+  <Box mx={[0, 3]}>
+    <InformationalCard
+      buttonText="Go to Class Settings"
+      message="Create your first class to track your student's class enrollment."
+      to={CLASS_SETTINGS_URL}
+    />
+  </Box>
 )
 
 const GuardianForm: FC<{
