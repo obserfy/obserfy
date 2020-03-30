@@ -131,7 +131,7 @@
     "husky": "^4.2.3",
     "hygen": "^5.0.3",
     "prettier": "^1.19.1",
-    "react-docgen-typescript-loader": "^3.7.1",
+    "react-docgen-typescript-loader": "^3.7.2",
     "react-test-renderer": "^16.13.0",
     "storybook-addon-deps": "^1.0.12",
     "storybook-addon-i18n": "^5.1.13",
