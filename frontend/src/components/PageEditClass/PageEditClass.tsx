@@ -17,6 +17,7 @@ import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import usePatchClass from "../../api/usePatchClass"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import DeleteClassDialog from "../DeleteClassDialog/DeleteClassDialog"
+import ErrorMessage from "../ErrorMessage/ErrorMessage"
 
 interface Props {
   classId: string
@@ -132,9 +133,7 @@ export const PageEditClass: FC<Props> = ({ classId }) => {
                 Save
               </Button>
             </Flex>
-            <Typography.Body textAlign="center" m={3} color="error">
-              {error?.message}
-            </Typography.Body>
+            <ErrorMessage error={error} />
           </Box>
         )}
       </Box>

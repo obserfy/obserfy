@@ -12,6 +12,7 @@ import { Typography } from "../Typography/Typography"
 import Chip from "../Chip/Chip"
 import usePostNewClass from "../../api/usePostNewClass"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
+import ErrorMessage from "../ErrorMessage/ErrorMessage"
 
 export const WEEKDAYS = [
   "Sunday",
@@ -106,9 +107,7 @@ export const PageNewClass: FC = () => {
           )}
           Save
         </Button>
-        <Typography.Body textAlign="center" m={3} color="error">
-          {error?.message}
-        </Typography.Body>
+        <ErrorMessage error={error} m={3} />
       </Box>
     </Box>
   )

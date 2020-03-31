@@ -4570,12 +4570,13 @@
     "@types/prop-types" "*"
     "@types/react" "*"
 
-"@types/react-query@^0.3.9":
-  version "0.3.9"
-  resolved "https://registry.yarnpkg.com/@types/react-query/-/react-query-0.3.9.tgz#44632be07f89b17129f0382d69ffaf7f0672a2ad"
-  integrity sha512-di5EVtAy/3q95AdtbZWk2jo2yjKw+9AJDWnEllUaS/s5Zctvh1wppiMOZ+cUs3yR2V4xY6qwD5rQ7pP+fUC6/A==
+"@types/react-query@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@types/react-query/-/react-query-1.1.0.tgz#bd22eb945193973265be65d433166fc3c2328cca"
+  integrity sha512-Ln3dan0wqBkqPr7aXHJXpSfVp3LorzgxqM9+WmENzE2oNAUyQ86Uqycr/e26bZpm+mdOLfGPIDQU3wF8TUid6A==
   dependencies:
     "@types/react" "*"
+    ts-toolbelt "*"
 
 "@types/react-syntax-highlighter@11.0.4":
   version "11.0.4"
@@ -4810,6 +4811,19 @@
     "@typescript-eslint/experimental-utils" "2.25.0"
     "@typescript-eslint/typescript-estree" "2.25.0"
     eslint-visitor-keys "^1.1.0"
+
+"@typescript-eslint/typescript-estree@2.21.0":
+  version "2.21.0"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/typescript-estree/-/typescript-estree-2.21.0.tgz#7e4be29f2e338195a2e8c818949ed0ff727cc943"
+  integrity sha512-NC/nogZNb9IK2MEFQqyDBAciOT8Lp8O3KgAfvHx2Skx6WBo+KmDqlU3R9KxHONaijfTIKtojRe3SZQyMjr3wBw==
+  dependencies:
+    debug "^4.1.1"
+    eslint-visitor-keys "^1.1.0"
+    glob "^7.1.6"
+    is-glob "^4.0.1"
+    lodash "^4.17.15"
+    semver "^6.3.0"
+    tsutils "^3.17.1"
 
 "@typescript-eslint/typescript-estree@2.25.0":
   version "2.25.0"
@@ -15707,6 +15721,11 @@ memory-fs@^0.5.0:
     errno "^0.1.3"
     readable-stream "^2.0.1"
 
+memorystream@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/memorystream/-/memorystream-0.3.1.tgz#86d7090b30ce455d63fbae12dda51a47ddcaf9b2"
+  integrity sha1-htcJCzDORV1j+64S3aUaR93K+bI=
+
 meow@^3.3.0:
   version "3.7.0"
   resolved "https://registry.yarnpkg.com/meow/-/meow-3.7.0.tgz#72cb668b425228290abbfa856892587308a801fb"
@@ -16465,6 +16484,21 @@ npm-packlist@^1.1.6:
   dependencies:
     ignore-walk "^3.0.1"
     npm-bundled "^1.0.1"
+
+npm-run-all@^4.1.5:
+  version "4.1.5"
+  resolved "https://registry.yarnpkg.com/npm-run-all/-/npm-run-all-4.1.5.tgz#04476202a15ee0e2e214080861bff12a51d98fba"
+  integrity sha512-Oo82gJDAVcaMdi3nuoKFavkIHBRVqQ1qvMb+9LHk/cF4P6B2m8aP04hGf7oL6wZ9BuGwX1onlLhpuoofSyoQDQ==
+  dependencies:
+    ansi-styles "^3.2.1"
+    chalk "^2.4.1"
+    cross-spawn "^6.0.5"
+    memorystream "^0.3.1"
+    minimatch "^3.0.4"
+    pidtree "^0.3.0"
+    read-pkg "^3.0.0"
+    shell-quote "^1.6.1"
+    string.prototype.padend "^3.0.0"
 
 npm-run-path@^2.0.0:
   version "2.0.2"
@@ -17414,6 +17448,11 @@ picomatch@^2.0.4, picomatch@^2.0.5, picomatch@^2.0.7:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.1.1.tgz#ecdfbea7704adb5fe6fb47f9866c4c0e15e905c5"
   integrity sha512-OYMyqkKzK7blWO/+XZYP6w8hH0LDvkBvdvKukti+7kqYFCiEAk+gI3DWnryapc0Dau05ugGTy0foQ6mqn4AHYA==
+
+pidtree@^0.3.0:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/pidtree/-/pidtree-0.3.1.tgz#ef09ac2cc0533df1f3250ccf2c4d366b0d12114a"
+  integrity sha512-qQbW94hLHEqCg7nhby4yRC7G2+jYHY4Rguc2bjw7Uug4GIJuu1tvf2uHaZv5Q8zdt+WKJ6qK1FOI6amaWUo5FA==
 
 pify@^2.0.0, pify@^2.2.0, pify@^2.3.0:
   version "2.3.0"
@@ -22074,6 +22113,11 @@ ts-pnp@^1.1.6:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/ts-pnp/-/ts-pnp-1.1.6.tgz#389a24396d425a0d3162e96d2b4638900fdc289a"
   integrity sha512-CrG5GqAAzMT7144Cl+UIFP7mz/iIhiy+xQ6GGcnjTezhALT02uPMRw7tgDSESgB5MsfKt55+GPWw4ir1kVtMIQ==
+
+ts-toolbelt@*:
+  version "6.3.6"
+  resolved "https://registry.yarnpkg.com/ts-toolbelt/-/ts-toolbelt-6.3.6.tgz#2bde29106c013ed520c32f30e1248daf8fd4f5f9"
+  integrity sha512-eVzym+LyQodOCfyVyQDQ6FGYbO2Xf9Nc4dGLRKlKSUpAs+8qQWHG+grDiA3ciEuNPNZ0qJnNIYkdqBW1rCWuUA==
 
 tslib@1.10.0:
   version "1.10.0"

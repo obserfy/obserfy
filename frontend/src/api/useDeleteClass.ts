@@ -1,6 +1,6 @@
 import {
   MutateFunction,
-  MutationState,
+  MutationResult,
   queryCache,
   useMutation,
 } from "react-query"
@@ -8,20 +8,13 @@ import { navigate } from "gatsby"
 import { ApiError, BASE_URL } from "./useApi"
 import { getSchoolId } from "../hooks/schoolIdState"
 
-interface Class {
-  name: string
-  startTime: Date
-  endTime: Date
-  weekdays: number[]
-}
 const useDeleteClass = (
   classId: string
-): [MutateFunction<Response, Class>, MutationState<Response>] => {
-  const fetchApi = async (newClass: Class): Promise<Response> => {
+): [MutateFunction<Response, undefined>, MutationResult<Response>] => {
+  const fetchApi = async (): Promise<Response> => {
     const result = await fetch(`${BASE_URL}/classes/${classId}`, {
       credentials: "same-origin",
       method: "DELETE",
-      body: JSON.stringify(newClass),
     })
 
     // Throw user to login when something gets 401
@@ -37,7 +30,7 @@ const useDeleteClass = (
     return result
   }
 
-  return useMutation<Response, Class>(fetchApi, {
+  return useMutation<Response>(fetchApi, {
     onSuccess: async () => {
       await queryCache.refetchQueries(["classes", getSchoolId()])
     },
