@@ -162,9 +162,11 @@ jobs:
     steps:
       - checkout
       - run: |
-          npm i -g standard-version
-          npm run release --no-verify
-          npm publish
+          yarn global add standard-version
+          standard-version release --no-verify
+      - run: |
+          yarn global add git
+          git push --follow-tags origin master
 
   deploy:
     machine:
@@ -238,11 +240,6 @@ workflows:
               only:
                 - master
           requires:
-            - e2e
-            - backend_unit
-            - frontend_unit
-            - frontend_lint
-            - frontend_typecheck
             - versioning
 
       - sentry_release:
