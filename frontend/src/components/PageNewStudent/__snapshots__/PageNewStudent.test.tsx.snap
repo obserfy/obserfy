@@ -1122,7 +1122,7 @@ exports[`PageNewStudent should render correctly 1`] = `
             <div
               class="emotion-12"
             >
-              Entry Date
+              Date of Entry
             </div>
             <div
               class="emotion-14"

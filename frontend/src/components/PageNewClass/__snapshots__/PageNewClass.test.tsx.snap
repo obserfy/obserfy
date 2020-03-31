@@ -391,8 +391,8 @@ exports[`PageNewClass should render correctly 1`] = `
   line-height: 3rem;
   color: var(--theme-ui-colors-error,#d50000);
   font-size: 16px;
-  text-align: center;
   margin: 16px;
+  text-align: center;
 }
 
 @media screen and (min-width:40em) {

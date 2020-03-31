@@ -1,14 +1,11 @@
 import React, { FC, useState } from "react"
-import { navigate } from "gatsby-plugin-intl3"
 import { useImmer } from "use-immer"
 import nanoid from "nanoid"
+import { navigate } from "gatsby-plugin-intl3"
 import Box from "../Box/Box"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import Input from "../Input/Input"
 import Button from "../Button/Button"
-import { createStudentApi } from "../../api/students/createStudentApi"
-import { getSchoolId } from "../../hooks/schoolIdState"
-import { getAnalytics } from "../../analytics"
 import DateInput from "../DateInput/DateInput"
 import TextArea from "../TextArea/TextArea"
 import { Typography } from "../Typography/Typography"
@@ -24,52 +21,25 @@ import { Icon } from "../Icon/Icon"
 import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
 import WarningDialog from "../WarningDialog/WarningDialog"
 import ProfilePicker from "../ProfilePicker/ProfilePicker"
-
-enum GuardianRelationship {
-  Other,
-  Mother,
-  Father,
-}
-
-enum Gender {
-  NotSet,
-  Male,
-  Female,
-}
-
-interface Guardian {
-  id: string
-  guardianName: string
-  email: string
-  phone: string
-  guardianNote: string
-  relationship: GuardianRelationship
-}
+import {
+  Gender,
+  GuardianRelationship,
+  usePostNewStudent,
+} from "../../api/students/usePostNewStudent"
 
 export const PageNewStudent: FC = () => {
+  const [mutate] = usePostNewStudent()
   const [name, setName] = useState("")
   const [picture, setPicture] = useState<File>()
-  const [studentId, setStudentId] = useState("")
+  const [customId, setCustomId] = useState("")
   const [note, setNotes] = useState("")
   const [gender, setGender] = useState<Gender>(Gender.NotSet)
   const [dateOfBirth, setDateOfBirth] = useState<Date>()
-  const [entryDate, setEntryDate] = useState<Date>()
+  const [dateOfEntry, setDateOfEntry] = useState<Date>()
   const [guardians, setGuardians] = useImmer<Guardian[]>([])
   const [selectedClasses, setSelectedClasses] = useImmer<string[]>([])
   const classes = useGetSchoolClasses()
   const isFormInvalid = name === ""
-
-  async function createNewStudent(): Promise<void> {
-    const response = await createStudentApi(getSchoolId(), {
-      name,
-      dateOfBirth,
-    })
-    getAnalytics()?.track("Student Created", {
-      responseStatus: response.status,
-      studentName: name,
-    })
-    if (response.status === 201) navigate("/dashboard/observe")
-  }
 
   return (
     <>
@@ -99,9 +69,9 @@ export const PageNewStudent: FC = () => {
             mb={3}
           />
           <DateInput
-            label="Entry Date"
-            value={entryDate}
-            onChange={setEntryDate}
+            label="Date of Entry"
+            value={dateOfEntry}
+            onChange={setDateOfEntry}
             mb={3}
           />
           <Select
@@ -115,8 +85,8 @@ export const PageNewStudent: FC = () => {
             <option value={Gender.Female}>Female</option>
           </Select>
           <Input
-            value={studentId}
-            onChange={(e) => setStudentId(e.target.value)}
+            value={customId}
+            onChange={(e) => setCustomId(e.target.value)}
             label="Student ID"
             width="100%"
             mb={3}
@@ -174,8 +144,8 @@ export const PageNewStudent: FC = () => {
                 draft.push({
                   id: nanoid(),
                   email: "",
-                  guardianName: "",
-                  guardianNote: "",
+                  name: "",
+                  note: "",
                   phone: "",
                   relationship: GuardianRelationship.Other,
                 })
@@ -211,8 +181,21 @@ export const PageNewStudent: FC = () => {
         <Box p={3} mt={3}>
           <Button
             width="100%"
-            onClick={createNewStudent}
             disabled={isFormInvalid}
+            onClick={async () => {
+              const result = await mutate({
+                classes: selectedClasses,
+                name,
+                customId,
+                dateOfBirth,
+                dateOfEntry,
+                guardians,
+                note,
+              })
+              if (result.status === 201) {
+                await navigate("/dashboard/observe")
+              }
+            }}
           >
             Save
           </Button>
@@ -238,6 +221,15 @@ const EmptyClassDataPlaceholder: FC = () => (
   </Box>
 )
 
+export interface Guardian {
+  id: string
+  name: string
+  email: string
+  phone: string
+  note: string
+  relationship: GuardianRelationship
+}
+
 const GuardianForm: FC<{
   value: Guardian
   onChange: (newValue: Guardian) => void
@@ -250,14 +242,14 @@ const GuardianForm: FC<{
       <Flex alignItems="flex-start" mb={4}>
         <Box pl={3} pr={0} width="100%">
           <Input
-            value={value.guardianName}
+            value={value.name}
             mb={2}
             label="Name"
             width="100%"
             onChange={(event) =>
               onChange({
                 ...value,
-                guardianName: event.target.value,
+                name: event.target.value,
               })
             }
           />
@@ -299,14 +291,14 @@ const GuardianForm: FC<{
             }
           />
           <TextArea
-            value={value.guardianNote}
+            value={value.note}
             label="Notes"
             width="100%"
             height={100}
             onChange={(event) =>
               onChange({
                 ...value,
-                guardianNote: event.target.value,
+                note: event.target.value,
               })
             }
           />
@@ -332,7 +324,7 @@ const GuardianForm: FC<{
             setShowDeleteDialog(false)
           }}
           description={`${
-            value.guardianName === "" ? "This guardian" : value.guardianName
+            value.name === "" ? "This guardian" : value.name
           } will be removed.`}
         />
       )}
