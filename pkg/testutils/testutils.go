@@ -61,9 +61,11 @@ func connectTestDB() (*pg.DB, error) {
 
 	err := postgres.InitTables(db)
 	if err != nil {
-		time.Sleep(time.Minute)
+		time.Sleep(time.Second)
 		err := postgres.InitTables(db)
-		return nil, err
+		if err != nil {
+			return nil, err
+		}
 	}
 	return db, nil
 }
