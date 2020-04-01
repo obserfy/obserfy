@@ -162,10 +162,10 @@ jobs:
     steps:
       - checkout
       - run: |
+          yarn global add git
           yarn global add standard-version
           standard-version release --no-verify
       - run: |
-          yarn global add git
           git config --global user.email "chrsep@protonmail.com"
           git config --global user.name "Chrisando Pramudhita"
           git push --follow-tags origin master
