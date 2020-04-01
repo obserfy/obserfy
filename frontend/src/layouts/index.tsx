@@ -5,24 +5,16 @@ import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary"
 import Box from "../components/Box/Box"
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const LayoutManager: FC<any> = ({ children, pageContext }) => {
-  if (pageContext.layout === "open") {
-    return (
-      <ErrorBoundary>
-        <GlobalStyle />
-        <Box backgroundColor="background">{children}</Box>
-      </ErrorBoundary>
-    )
-  }
-  return (
-    <>
-      <GlobalStyle />
-      <ErrorBoundary>
-        <Layout>{children}</Layout>
-      </ErrorBoundary>
-    </>
-  )
-}
+const LayoutManager: FC<any> = ({ children, pageContext }) => (
+  <ErrorBoundary>
+    <GlobalStyle />
+    {pageContext.layout === "open" ? (
+      <Box backgroundColor="background">{children}</Box>
+    ) : (
+      <Layout>{children}</Layout>
+    )}
+  </ErrorBoundary>
+)
 
 const GlobalStyle: FC = () => (
   <Global
