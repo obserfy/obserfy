@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react"
 import { useImmer } from "use-immer"
-import nanoid from "nanoid"
+import { nanoid } from "nanoid"
 import { navigate } from "gatsby-plugin-intl3"
 import { Material } from "../../api/useGetSubjectMaterials"
 import { createSubjectApi } from "../../api/createSubjectApi"

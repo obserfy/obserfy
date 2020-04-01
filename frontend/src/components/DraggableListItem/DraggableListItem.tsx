@@ -45,7 +45,7 @@ export const DraggableListItem: FC<Props> = ({
         return {}
       }}
       style={{
-        willChange: "height, transform",
+        willChange: "transform",
         position: "relative",
         listStyle: "none",
         zIndex: isDragging ? 100 : 0,
