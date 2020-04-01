@@ -166,6 +166,8 @@ jobs:
           standard-version release --no-verify
       - run: |
           yarn global add git
+          git config user.email "chrsep@protonmail.com"
+          git config user.name "Chrisando Pramudhita"
           git push --follow-tags origin master
 
   deploy:
@@ -224,10 +226,6 @@ workflows:
           requires:
             - frontend_build
       - versioning:
-          filters:
-            branches:
-              only:
-                - master
           requires:
             - e2e
             - backend_unit
