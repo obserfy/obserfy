@@ -166,8 +166,8 @@ jobs:
           standard-version release --no-verify
       - run: |
           yarn global add git
-          git config user.email "chrsep@protonmail.com"
-          git config user.name "Chrisando Pramudhita"
+          git config --global user.email "chrsep@protonmail.com"
+          git config --global user.name "Chrisando Pramudhita"
           git push --follow-tags origin master
 
   deploy:
