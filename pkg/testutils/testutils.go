@@ -33,12 +33,13 @@ func (s *BaseTestSuite) TearDownSuite() {
 }
 
 func (s *BaseTestSuite) SetupSuite() {
-	db := connectTestDB()
+	db, err := connectTestDB()
+	assert.NoError(s.T(), err)
 	s.DB = db
 	s.Server = rest.NewServer(zaptest.NewLogger(s.T()))
 }
 
-func connectTestDB() *pg.DB {
+func connectTestDB() (*pg.DB, error) {
 	db := postgres.Connect(
 		"postgres",
 		"postgres",
@@ -60,9 +61,11 @@ func connectTestDB() *pg.DB {
 
 	err := postgres.InitTables(db)
 	if err != nil {
-		println(err)
+		time.Sleep(time.Minute)
+		err := postgres.InitTables(db)
+		return nil, err
 	}
-	return db
+	return db, nil
 }
 
 func (s *BaseTestSuite) SaveNewSchool() *postgres.School {
