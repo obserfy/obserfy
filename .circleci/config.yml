@@ -167,7 +167,7 @@ jobs:
           git config --global user.name "Chrisando Pramudhita"
       - run: |
           yarn global add standard-version
-          standard-version release --no-verify
+          standard-version -m 'chore(release): %s' -m '[skip ci]' --no-verify
       - run: |
           git push --follow-tags origin master
 
@@ -227,6 +227,10 @@ workflows:
           requires:
             - frontend_build
       - versioning:
+          filters:
+            branches:
+              only:
+                - master
           requires:
             - e2e
             - backend_unit
