@@ -28,7 +28,6 @@ import {
 } from "../../api/students/usePostNewStudent"
 
 export const PageNewStudent: FC = () => {
-  const [mutate] = usePostNewStudent()
   const [name, setName] = useState("")
   const [picture, setPicture] = useState<File>()
   const [customId, setCustomId] = useState("")
@@ -38,6 +37,7 @@ export const PageNewStudent: FC = () => {
   const [dateOfEntry, setDateOfEntry] = useState<Date>()
   const [guardians, setGuardians] = useImmer<Guardian[]>([])
   const [selectedClasses, setSelectedClasses] = useImmer<string[]>([])
+  const [mutate] = usePostNewStudent()
   const classes = useGetSchoolClasses()
   const isFormInvalid = name === ""
 
@@ -184,13 +184,17 @@ export const PageNewStudent: FC = () => {
             disabled={isFormInvalid}
             onClick={async () => {
               const result = await mutate({
-                classes: selectedClasses,
-                name,
-                customId,
-                dateOfBirth,
-                dateOfEntry,
-                guardians,
-                note,
+                picture,
+                student: {
+                  classes: selectedClasses,
+                  name,
+                  customId,
+                  dateOfBirth,
+                  dateOfEntry,
+                  guardians,
+                  note,
+                  gender,
+                },
               })
               if (result.status === 201) {
                 await navigate("/dashboard/observe")

@@ -15,6 +15,7 @@ services:
       - "8080:8080"
     depends_on:
       - db
+      - minio
     # Might not be necessary for all projects, but these
     # fixes delve crash on circleci
     security_opt:
@@ -42,6 +43,7 @@ services:
     environment:
       MINIO_ACCESS_KEY: "${MINIO_ACCESS_KEY}"
       MINIO_SECRET_KEY: "${MINIO_SECRET_KEY}"
+      MINIO_HTTP_TRACE: "/dev/stdout"
     ports:
       - 9000:9000
     volumes:

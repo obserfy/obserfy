@@ -63,17 +63,14 @@ func (s SchoolStore) GetStudents(schoolId string) ([]Student, error) {
 	return students, nil
 }
 
-func (s SchoolStore) NewStudent(schoolId string, name string, dob *time.Time) (*Student, error) {
-	student := Student{
-		Id:          uuid.New().String(),
-		Name:        name,
-		SchoolId:    schoolId,
-		DateOfBirth: dob,
+func (s SchoolStore) NewStudent(student Student, classes []string, guardians []Guardian) error {
+	if student.Id == "" {
+		student.Id = uuid.New().String()
 	}
 	if err := s.Insert(&student); err != nil {
-		return nil, nil
+		return err
 	}
-	return &student, nil
+	return nil
 }
 
 func (s SchoolStore) RefreshInviteCode(schoolId string) (*School, error) {

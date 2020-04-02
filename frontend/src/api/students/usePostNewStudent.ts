@@ -22,6 +22,7 @@ interface NewStudent {
   customId: string
   classes: string[]
   note: string
+  gender: number
   guardians: Array<{
     name: string
     email: string
@@ -32,22 +33,36 @@ interface NewStudent {
 }
 
 export const usePostNewStudent = (): [
-  MutateFunction<Response, NewStudent>,
+  MutateFunction<Response, { student: NewStudent; picture?: File }>,
   MutationResult<Response>
 ] => {
-  const postNewStudent = async (newStudent: NewStudent): Promise<Response> => {
+  const postNewStudent = async (data: {
+    student: NewStudent
+    picture: File
+  }): Promise<Response> => {
+    const studentJson = JSON.stringify(data.student)
+    const payload = new FormData()
+    payload.append(
+      "student",
+      new Blob([studentJson], {
+        type: "application/json",
+      })
+    )
+    if (data.picture) {
+      payload.append("picture", data.picture)
+    }
+
     const result = await fetch(
       `${BASE_URL}/schools/${getSchoolId()}/students`,
       {
         credentials: "same-origin",
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newStudent),
+        body: payload,
       }
     )
     getAnalytics()?.track("Student Created", {
       responseStatus: result.status,
-      studentName: newStudent.name,
+      studentName: data.student.name,
     })
     return result
   }

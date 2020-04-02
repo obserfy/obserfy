@@ -28,6 +28,7 @@ func NewRouter(s rest.Server, store Store) *chi.Mux {
 	})
 	return r
 }
+
 func authorizationMiddleware(s rest.Server, store Store) func(next http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
 		return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
@@ -54,6 +55,7 @@ func authorizationMiddleware(s rest.Server, store Store) func(next http.Handler)
 		})
 	}
 }
+
 func getStudent(s rest.Server, store Store) http.Handler {
 	type responseBody struct {
 		Id          string     `json:"id"`

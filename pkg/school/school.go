@@ -3,24 +3,26 @@ package school
 import (
 	"errors"
 	"github.com/chrsep/vor/pkg/auth"
+	"github.com/chrsep/vor/pkg/minio"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/rest"
 	"github.com/go-chi/chi"
 	"github.com/go-pg/pg/v9"
 	"github.com/google/uuid"
+	richErrors "github.com/pkg/errors"
 	"net/http"
 	"os"
 	"time"
 )
 
-func NewRouter(server rest.Server, store postgres.SchoolStore) *chi.Mux {
+func NewRouter(server rest.Server, store postgres.SchoolStore, imageStorage StudentImageStorage) *chi.Mux {
 	r := chi.NewRouter()
 	r.Method("POST", "/", postNewSchool(server, store))
 	r.Route("/{schoolId}", func(r chi.Router) {
 		r.Use(authorizationMiddleware(server, store))
 		r.Method("GET", "/", getSchool(server, store))
 		r.Method("GET", "/students", getStudents(server, store))
-		r.Method("POST", "/students", postNewStudent(server, store))
+		r.Method("POST", "/students", postNewStudent(server, store, imageStorage))
 		r.Method("POST", "/invite-code", refreshInviteCode(server, store))
 
 		// TODO: This might fit better in curriculum package, revisit later
@@ -258,36 +260,118 @@ func getStudents(s rest.Server, store postgres.SchoolStore) rest.Handler {
 	})
 }
 
-func postNewStudent(s rest.Server, store postgres.SchoolStore) rest.Handler {
-	var requestBody struct {
-		Name        string     `json:"name"`
-		DateOfBirth *time.Time `json:"dateOfBirth,omitempty"`
+func postNewStudent(s rest.Server, store postgres.SchoolStore, storage StudentImageStorage) rest.Handler {
+	type studentField struct {
+		Name        string          `json:"name"`
+		DateOfBirth *time.Time      `json:"dateOfBirth"`
+		DateOfEntry *time.Time      `json:"dateOfEntry"`
+		CustomId    string          `json:"customId"`
+		Classes     []string        `json:"classes"`
+		Note        string          `json:"note"`
+		Gender      postgres.Gender `json:"gender"`
+		Guardians   []struct {
+			Name         string `json:"name"`
+			Email        string `json:"email"`
+			Phone        string `json:"phone"`
+			Note         string `json:"note"`
+			Relationship int    `json:"relationship"`
+		}
 	}
-	type responseBody struct {
-		Id          string     `json:"id"`
-		Name        string     `json:"name"`
-		DateOfBirth *time.Time `json:"dateOfBirth,omitempty"`
-	}
+
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		_, _ = minio.NewMinioImageStorage()
 		schoolId := chi.URLParam(r, "schoolId")
-		if err := rest.ParseJson(r.Body, &requestBody); err != nil {
+		if err := r.ParseMultipartForm(10 << 20); err != nil {
+			return &rest.Error{
+				Code:    http.StatusBadRequest,
+				Message: "failed to parse payload",
+				Error:   richErrors.Wrap(err, "failed to parse response body"),
+			}
+		}
+
+		newStudentId := uuid.New().String()
+		// Save student profile picture
+		picture, pictureFileHeader, err := r.FormFile("picture")
+		var profilePicPath string
+		if err == nil {
+
+			fileHeader := make([]byte, 512)
+			if _, err := picture.Read(fileHeader); err != nil {
+				return &rest.Error{
+					Code:    http.StatusInternalServerError,
+					Message: "failed to parse picture header",
+					Error:   richErrors.Wrap(err, "failed to parse picture header"),
+				}
+			}
+			mime := http.DetectContentType(fileHeader)
+			if mime != "image/png" {
+				return &rest.Error{
+					Code:    http.StatusBadRequest,
+					Message: "profile picture must be a png",
+					Error:   richErrors.New("invalid profile picture format"),
+				}
+			}
+			if _, err := picture.Seek(0, 0); err != nil {
+				return &rest.Error{
+					Code:    http.StatusInternalServerError,
+					Message: "failed moving picture buffer seeker to beginning",
+					Error:   richErrors.Wrap(err, "failed moving picture buffer seeker to beginning"),
+				}
+			}
+			profilePicPath, err = storage.SaveProfilePicture(newStudentId, picture, pictureFileHeader.Size)
+			if err != nil {
+				return &rest.Error{
+					Code:    http.StatusInternalServerError,
+					Message: "failed to save image",
+					Error:   richErrors.Wrap(err, "failed to save image"),
+				}
+			}
+		}
+
+		// save student data
+		student, _, err := r.FormFile("student")
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusBadRequest,
+				Message: "failed to parse student data",
+				Error:   richErrors.Wrap(err, "failed to parse student form field"),
+			}
+		}
+		var newStudent studentField
+		if err := rest.ParseJson(student, &newStudent); err != nil {
 			return rest.NewParseJsonError(err)
 		}
-
-		student, err := store.NewStudent(schoolId, requestBody.Name, requestBody.DateOfBirth)
+		guardians := make([]postgres.Guardian, len(newStudent.Guardians))
+		for i, guardian := range newStudent.Guardians {
+			guardians[i] = postgres.Guardian{
+				Id:    uuid.New().String(),
+				Name:  guardian.Name,
+				Email: guardian.Email,
+				Phone: guardian.Phone,
+				Note:  guardian.Note,
+			}
+		}
+		err = store.NewStudent(postgres.Student{
+			Id:          newStudentId,
+			Name:        newStudent.Name,
+			SchoolId:    schoolId,
+			DateOfBirth: newStudent.DateOfBirth,
+			Gender:      newStudent.Gender,
+			DateOfEntry: newStudent.DateOfEntry,
+			Note:        newStudent.Note,
+			CustomId:    newStudent.CustomId,
+			Active:      true,
+			ProfilePic:  profilePicPath,
+		}, newStudent.Classes, guardians)
 		if err != nil {
-			return &rest.Error{http.StatusInternalServerError, "Failed saving new student", err}
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "Failed saving new student",
+				Error:   err,
+			}
 		}
 
-		response := responseBody{
-			Id:          student.Id,
-			Name:        student.Name,
-			DateOfBirth: student.DateOfBirth,
-		}
 		w.WriteHeader(http.StatusCreated)
-		if err := rest.WriteJson(w, response); err != nil {
-			return &rest.Error{http.StatusInternalServerError, "Failed writing result", err}
-		}
 		return nil
 	})
 }
