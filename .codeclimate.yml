@@ -1,5 +1,21 @@
 version: "2"
+
+exclude_patterns:
+  - "**/*.snap"
+
+checks:
+  identical-code:
+    config:
+      threshold: 25
+  similar-code:
+    config:
+      threshold: 50
+
 plugins:
+  duplication:
+    enabled: true
+    config:
+      count_threshold: 4
   eslint:
     enabled: true
     channel: eslint-6
