@@ -227,6 +227,10 @@ workflows:
           requires:
             - frontend_build
       - versioning:
+          filters:
+            branches:
+              only:
+                - master
           requires:
             - e2e
             - backend_unit
