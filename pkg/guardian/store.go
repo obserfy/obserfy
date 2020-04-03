@@ -11,7 +11,7 @@ type (
 
 	Store interface {
 		CheckPermission(userId string, guardianId string) (bool, error)
-		GetGuardian(id string) (Guardian, error)
+		GetGuardian(id string) (*Guardian, error)
 		DeleteGuardian(id string) error
 		UpdateGuardian(guardian Guardian) error
 	}
