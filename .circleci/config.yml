@@ -167,7 +167,7 @@ jobs:
           git config --global user.name "Chrisando Pramudhita"
       - run: |
           yarn global add standard-version
-          standard-version -m 'chore(release): %s' -m '[skip ci]' --no-verify
+          standard-version -m 'chore(release): %s [skip ci]' --releaseCommitMessageFormat --no-verify
       - run: |
           git push --follow-tags origin master
 
