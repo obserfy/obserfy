@@ -168,8 +168,8 @@ jobs:
       - run: |
           yarn global add standard-version
           standard-version -m 'chore(release): %s [skip ci]' --releaseCommitMessageFormat --no-verify
-#      - run: |
-#          git push --follow-tags origin master
+      - run: |
+          git push --follow-tags origin master
 
   deploy:
     machine:
@@ -227,10 +227,10 @@ workflows:
           requires:
             - frontend_build
       - versioning:
-#          filters:
-#            branches:
-#              only:
-#                - master
+          filters:
+            branches:
+              only:
+                - master
           requires:
             - e2e
             - backend_unit
