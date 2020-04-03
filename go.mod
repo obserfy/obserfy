@@ -17,6 +17,7 @@ require (
 	github.com/minio/minio-go/v6 v6.0.50
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.5.1
+	github.com/vektra/mockery v0.0.0-20181123154057-e78b021dcbb5 // indirect
 	go.uber.org/zap v1.14.1
 	golang.org/x/crypto v0.0.0-20200221231518-2aa609cf4a9d
 	golang.org/x/lint v0.0.0-20191125180803-fdd1cda4f05f // indirect

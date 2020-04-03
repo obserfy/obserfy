@@ -63,11 +63,39 @@ func (s SchoolStore) GetStudents(schoolId string) ([]Student, error) {
 	return students, nil
 }
 
-func (s SchoolStore) NewStudent(student Student, classes []string, guardians []Guardian) error {
+func (s SchoolStore) NewStudent(student Student, classes []string, guardians map[string]int) error {
 	if student.Id == "" {
 		student.Id = uuid.New().String()
 	}
-	if err := s.Insert(&student); err != nil {
+	if err := s.RunInTransaction(func(tx *pg.Tx) error {
+		classRelations := make([]StudentToClass, len(classes))
+		for i, class := range classes {
+			classRelations[i] = StudentToClass{
+				StudentId: student.Id,
+				ClassId:   class,
+			}
+		}
+
+		guardianRelations := make([]GuardianToStudent, 0)
+		for id, guardian := range guardians {
+			guardianRelations = append(guardianRelations, GuardianToStudent{
+				StudentId:    student.Id,
+				GuardianId:   id,
+				Relationship: GuardianRelationship(guardian),
+			})
+		}
+
+		if err := tx.Insert(&student); err != nil {
+			return richErrors.Wrap(err, "failed to save new student")
+		}
+		if err := tx.Insert(&classRelations); err != nil {
+			return richErrors.Wrap(err, "failed to save student to class relation")
+		}
+		if err := tx.Insert(&guardianRelations); err != nil {
+			return richErrors.Wrap(err, "failed to save guardian to student relation")
+		}
+		return nil
+	}); err != nil {
 		return err
 	}
 	return nil

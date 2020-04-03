@@ -2,6 +2,7 @@ package school_test
 
 import (
 	"github.com/brianvoe/gofakeit/v4"
+	"github.com/chrsep/vor/pkg/mocks"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/school"
 	"github.com/chrsep/vor/pkg/testutils"
@@ -15,12 +16,14 @@ import (
 type SchoolTestSuite struct {
 	testutils.BaseTestSuite
 
-	store postgres.SchoolStore
+	StudentImageStorage mocks.StudentImageStorage
+	store               postgres.SchoolStore
 }
 
 func (s *SchoolTestSuite) SetupTest() {
 	s.store = postgres.SchoolStore{s.DB}
-	s.Handler = school.NewRouter(s.Server, s.store).ServeHTTP
+	s.StudentImageStorage = mocks.StudentImageStorage{}
+	s.Handler = school.NewRouter(s.Server, s.store, &s.StudentImageStorage).ServeHTTP
 }
 
 func TestObservation(t *testing.T) {

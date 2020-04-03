@@ -270,12 +270,9 @@ func postNewStudent(s rest.Server, store postgres.SchoolStore, storage StudentIm
 		Note        string          `json:"note"`
 		Gender      postgres.Gender `json:"gender"`
 		Guardians   []struct {
-			Name         string `json:"name"`
-			Email        string `json:"email"`
-			Phone        string `json:"phone"`
-			Note         string `json:"note"`
+			Id           string `json:"id"`
 			Relationship int    `json:"relationship"`
-		}
+		} `json:"guardians"`
 	}
 
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
@@ -294,7 +291,6 @@ func postNewStudent(s rest.Server, store postgres.SchoolStore, storage StudentIm
 		picture, pictureFileHeader, err := r.FormFile("picture")
 		var profilePicPath string
 		if err == nil {
-
 			fileHeader := make([]byte, 512)
 			if _, err := picture.Read(fileHeader); err != nil {
 				return &rest.Error{
@@ -341,15 +337,9 @@ func postNewStudent(s rest.Server, store postgres.SchoolStore, storage StudentIm
 		if err := rest.ParseJson(student, &newStudent); err != nil {
 			return rest.NewParseJsonError(err)
 		}
-		guardians := make([]postgres.Guardian, len(newStudent.Guardians))
-		for i, guardian := range newStudent.Guardians {
-			guardians[i] = postgres.Guardian{
-				Id:    uuid.New().String(),
-				Name:  guardian.Name,
-				Email: guardian.Email,
-				Phone: guardian.Phone,
-				Note:  guardian.Note,
-			}
+		guardians := make(map[string]int)
+		for _, guardian := range newStudent.Guardians {
+			guardians[guardian.Id] = guardian.Relationship
 		}
 		err = store.NewStudent(postgres.Student{
 			Id:          newStudentId,
