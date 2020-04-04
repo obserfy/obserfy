@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.4](https://github.com/obserfy/vor/compare/v1.1.3...v1.1.4) (2020-04-04)
+
+
+### Bug Fixes
+
+* ci ([2f73812](https://github.com/obserfy/vor/commit/2f7381209bb2ac88aa280deec7e8a531d8a5c4a1))
+
+### [1.1.4](https://github.com/obserfy/vor/compare/v1.1.3...v1.1.4) (2020-04-04)
+
+
+### Bug Fixes
+
+* ci ([2f73812](https://github.com/obserfy/vor/commit/2f7381209bb2ac88aa280deec7e8a531d8a5c4a1))
+
 ### [1.1.4](https://github.com/obserfy/vor/compare/v1.1.3...v1.1.4) (2020-04-03)
 
 ### [1.1.3](https://github.com/obserfy/vor/compare/v1.1.2...v1.1.3) (2020-04-03)
