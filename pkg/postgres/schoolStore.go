@@ -88,11 +88,15 @@ func (s SchoolStore) NewStudent(student Student, classes []string, guardians map
 		if err := tx.Insert(&student); err != nil {
 			return richErrors.Wrap(err, "failed to save new student")
 		}
-		if err := tx.Insert(&classRelations); err != nil {
-			return richErrors.Wrap(err, "failed to save student to class relation")
+		if len(classRelations) > 0 {
+			if err := tx.Insert(&classRelations); err != nil {
+				return richErrors.Wrap(err, "failed to save student to class relation")
+			}
 		}
-		if err := tx.Insert(&guardianRelations); err != nil {
-			return richErrors.Wrap(err, "failed to save guardian to student relation")
+		if len(guardianRelations) > 0 {
+			if err := tx.Insert(&guardianRelations); err != nil {
+				return richErrors.Wrap(err, "failed to save guardian to student relation")
+			}
 		}
 		return nil
 	}); err != nil {
