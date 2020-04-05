@@ -130,7 +130,7 @@ type Student struct {
 
 type Guardian struct {
 	Id       string `pg:"type:uuid"`
-	Name     string
+	Name     string `pg:",notnull"`
 	Email    string
 	Phone    string
 	Note     string

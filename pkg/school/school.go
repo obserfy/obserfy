@@ -8,6 +8,7 @@ import (
 	"github.com/chrsep/vor/pkg/rest"
 	"github.com/go-chi/chi"
 	"github.com/go-pg/pg/v9"
+	"github.com/go-playground/validator/v10"
 	"github.com/google/uuid"
 	richErrors "github.com/pkg/errors"
 	"net/http"
@@ -33,6 +34,9 @@ func NewRouter(server rest.Server, store postgres.SchoolStore, imageStorage Stud
 
 		r.Method("POST", "/class", postNewClass(server, store))
 		r.Method("GET", "/class", getClasses(server, store))
+
+		r.Method("POST", "/guardians", postNewGuardian(server, store))
+		r.Method("GET", "/guardians", getGuardians(server, store))
 	})
 	return r
 }
@@ -484,6 +488,85 @@ func getCurriculumAreas(s rest.Server, store postgres.SchoolStore) rest.Handler 
 
 		if err := rest.WriteJson(w, response); err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Failed to write json response", err}
+		}
+		return nil
+	})
+}
+
+func postNewGuardian(server rest.Server, store postgres.SchoolStore) http.Handler {
+	type requestBody struct {
+		Name  string `json:"name" validate:"required"`
+		Email string `json:"email"`
+		Phone string `json:"phone"`
+		Note  string `json:"note"`
+	}
+	validate := validator.New()
+
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		schoolId := chi.URLParam(r, "schoolId")
+
+		var body requestBody
+		if err := rest.ParseJson(r.Body, &body); err != nil {
+			return rest.NewParseJsonError(err)
+		}
+		if err := validate.Struct(body); err != nil {
+			return &rest.Error{
+				Code:    http.StatusBadRequest,
+				Message: err.Error(),
+				Error:   richErrors.Wrap(err, "invalid request body"),
+			}
+		}
+
+		if err := store.NewGuardian(
+			schoolId,
+			body.Name,
+			body.Email,
+			body.Phone,
+			body.Note,
+		); err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "failed to save guardian",
+				Error:   err,
+			}
+		}
+
+		w.WriteHeader(http.StatusCreated)
+		return nil
+	})
+}
+
+func getGuardians(server rest.Server, store postgres.SchoolStore) http.Handler {
+	type responseBody struct {
+		Name  string `json:"name"`
+		Email string `json:"email"`
+		Phone string `json:"phone"`
+		Note  string `json:"note"`
+	}
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		schoolId := chi.URLParam(r, "schoolId")
+
+		guardians, err := store.GetGuardians(schoolId)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "failed to query guardian",
+				Error:   err,
+			}
+		}
+
+		response := make([]responseBody, len(guardians))
+		for i, guardian := range guardians {
+			response[i] = responseBody{
+				Name:  guardian.Name,
+				Email: guardian.Email,
+				Phone: guardian.Phone,
+				Note:  guardian.Note,
+			}
+		}
+
+		if err := rest.WriteJson(w, &response); err != nil {
+			return rest.NewWriteJsonError(err)
 		}
 		return nil
 	})

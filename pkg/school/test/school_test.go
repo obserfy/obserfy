@@ -26,7 +26,7 @@ func (s *SchoolTestSuite) SetupTest() {
 	s.Handler = school.NewRouter(s.Server, s.store, &s.StudentImageStorage).ServeHTTP
 }
 
-func TestObservation(t *testing.T) {
+func TestSchool(t *testing.T) {
 	suite.Run(t, new(SchoolTestSuite))
 }
 
@@ -50,4 +50,22 @@ func (s *SchoolTestSuite) SaveNewClass(school postgres.School) *postgres.Class {
 	err = s.DB.Insert(&newClass.Weekdays)
 	assert.NoError(t, err)
 	return &newClass
+}
+
+func (s *SchoolTestSuite) SaveNewGuardian() (*postgres.Guardian, string) {
+	t := s.T()
+	gofakeit.Seed(time.Now().UnixNano())
+	newSchool := s.SaveNewSchool()
+	newGuardian := postgres.Guardian{
+		Id:       uuid.New().String(),
+		Name:     gofakeit.Name(),
+		Email:    gofakeit.Email(),
+		Phone:    gofakeit.Phone(),
+		Note:     gofakeit.Paragraph(1, 3, 20, " "),
+		SchoolId: newSchool.Id,
+		School:   *newSchool,
+	}
+	err := s.DB.Insert(&newGuardian)
+	assert.NoError(t, err)
+	return &newGuardian, newSchool.Users[0].Id
 }

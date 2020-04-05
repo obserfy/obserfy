@@ -245,6 +245,30 @@ func (s SchoolStore) GetSchoolClasses(schoolId string) ([]Class, error) {
 	return classes, nil
 }
 
+func (s SchoolStore) NewGuardian(schoolId string, name string, email string, phone string, note string) error {
+	guardian := Guardian{
+		Id:       uuid.New().String(),
+		Name:     name,
+		Email:    email,
+		Phone:    phone,
+		Note:     note,
+		SchoolId: schoolId,
+	}
+	_, err := s.Model(&guardian).Insert()
+	return err
+}
+
+func (s SchoolStore) GetGuardians(schoolId string) ([]Guardian, error) {
+	var guardian []Guardian
+
+	if err := s.DB.Model(&guardian).
+		Where("school_id=?", schoolId).
+		Select(); err != nil {
+		return nil, richErrors.Wrap(err, "failed to query school's guardians")
+	}
+	return guardian, nil
+}
+
 type EmptyCurriculumError struct{}
 
 func (e EmptyCurriculumError) Error() string {
