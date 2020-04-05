@@ -148,14 +148,18 @@ const (
 )
 
 type GuardianToStudent struct {
-	StudentId    string               `pg:"type:uuid,on_delete:CASCADE"`
-	GuardianId   string               `pg:"type:uuid,on_delete:CASCADE"`
+	StudentId    string `pg:"type:uuid,on_delete:CASCADE"`
+	Student      Student
+	GuardianId   string `pg:"type:uuid,on_delete:CASCADE"`
+	Guardian     Guardian
 	Relationship GuardianRelationship `pg:"type:int"`
 }
 
 type StudentToClass struct {
 	StudentId string `pg:"type:uuid,on_delete:CASCADE"`
+	Student   Student
 	ClassId   string `pg:"type:uuid,on_delete:CASCADE"`
+	Class     Class
 }
 
 type Observation struct {
@@ -178,11 +182,14 @@ type School struct {
 	Users        []User `pg:"many2many:user_to_schools,joinFK:user_id"`
 	CurriculumId string `pg:",type:uuid,on_delete:SET NULL"`
 	Curriculum   Curriculum
+	Guardian     []Guardian
 }
 
 type UserToSchool struct {
 	SchoolId string `pg:",type:uuid"`
+	School   School
 	UserId   string `pg:",type:uuid"`
+	User     User
 }
 
 type User struct {
