@@ -177,6 +177,7 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
+      - VERSION=`cat VERSION`
       - run: |
           sudo apt update && sudo apt install docker-ce
       - run: |
@@ -187,7 +188,7 @@ jobs:
           DOCKER_BUILDKIT=1 docker build -t "chrsep/vor:latest" -f  docker/vor/prod.dockerfile . --secret id=env,src=./frontend/.env
       - run: |
           echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_LOGIN" --password-stdin
-          docker push chrsep/vor:latest
+          docker push chrsep/vor:$VERSION
 
   sentry_release:
     docker:
@@ -227,10 +228,10 @@ workflows:
           requires:
             - frontend_build
       - versioning:
-#          filters:
-#            branches:
-#              only:
-#                - master
+          filters:
+            branches:
+              only:
+                - master
           requires:
             - e2e
             - backend_unit
