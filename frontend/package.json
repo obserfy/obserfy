@@ -74,7 +74,7 @@
     "nyc": "^15.0.0",
     "prop-types": "^15.7.2",
     "query-string": "^6.11.1",
-    "react": "^16.13.0",
+    "react": "^16.13.1",
     "react-adaptive-hooks": "^0.0.8",
     "react-dom": "npm:@hot-loader/react-dom",
     "react-helmet-async": "^1.0.4",
