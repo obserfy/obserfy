@@ -4,5 +4,11 @@
             "filename": "VERSION",
             "type": "plain-text"
         }
+    ],
+    "packageFiles": [
+        {
+            "filename": "VERSION",
+            "type": "plain-text"
+        }
     ]
 }
