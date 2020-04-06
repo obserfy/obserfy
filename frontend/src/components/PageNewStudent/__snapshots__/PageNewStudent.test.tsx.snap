@@ -805,6 +805,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   letter-spacing: 0;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   margin: 16px;
+  margin-right: auto;
 }
 
 .emotion-48 {
@@ -858,7 +859,6 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin-left: auto;
   margin-right: 16px;
 }
 
@@ -1240,11 +1240,15 @@ exports[`PageNewStudent should render correctly 1`] = `
         >
           GUARDIANS
         </h5>
-        <button
-          class="emotion-48"
+        <a
+          href="/dashboard/observe/students/guardians/pick"
         >
-          Add
-        </button>
+          <button
+            class="emotion-48"
+          >
+            Add
+          </button>
+        </a>
       </div>
       <div
         class="emotion-51"

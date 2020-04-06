@@ -23,13 +23,7 @@ interface NewStudent {
   classes: string[]
   note: string
   gender: number
-  guardians: Array<{
-    name: string
-    email: string
-    phone: string
-    note: string
-    relationship: GuardianRelationship
-  }>
+  guardians: string[]
 }
 
 export const usePostNewStudent = (): [

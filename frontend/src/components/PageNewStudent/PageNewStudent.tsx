@@ -1,7 +1,6 @@
 import React, { FC, useState } from "react"
 import { useImmer } from "use-immer"
-import { nanoid } from "nanoid"
-import { navigate } from "gatsby-plugin-intl3"
+import { Link, navigate } from "gatsby-plugin-intl3"
 import Box from "../Box/Box"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import Input from "../Input/Input"
@@ -17,15 +16,9 @@ import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import InformationalCard from "../InformationalCard/InformationalCard"
 import { CLASS_SETTINGS_URL } from "../../pages/dashboard/settings/class"
 import Card from "../Card/Card"
-import { Icon } from "../Icon/Icon"
-import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
-import WarningDialog from "../WarningDialog/WarningDialog"
 import ProfilePicker from "../ProfilePicker/ProfilePicker"
-import {
-  Gender,
-  GuardianRelationship,
-  usePostNewStudent,
-} from "../../api/students/usePostNewStudent"
+import { Gender, usePostNewStudent } from "../../api/students/usePostNewStudent"
+import { PICK_GUARDIAN_URL } from "../../pages/dashboard/observe/students/guardians/pick"
 
 export const PageNewStudent: FC = () => {
   const [name, setName] = useState("")
@@ -35,7 +28,7 @@ export const PageNewStudent: FC = () => {
   const [gender, setGender] = useState<Gender>(Gender.NotSet)
   const [dateOfBirth, setDateOfBirth] = useState<Date>()
   const [dateOfEntry, setDateOfEntry] = useState<Date>()
-  const [guardians, setGuardians] = useImmer<Guardian[]>([])
+  const [guardians] = useState<string[]>([])
   const [selectedClasses, setSelectedClasses] = useImmer<string[]>([])
   const [mutate] = usePostNewStudent()
   const classes = useGetSchoolClasses()
@@ -134,26 +127,14 @@ export const PageNewStudent: FC = () => {
           </Flex>
         )}
         <Flex alignItems="center" mt={3}>
-          <Typography.H5 m={3}>GUARDIANS</Typography.H5>
-          <Button
-            variant="outline"
-            ml="auto"
-            mr={3}
-            onClick={() =>
-              setGuardians((draft) => {
-                draft.push({
-                  id: nanoid(),
-                  email: "",
-                  name: "",
-                  note: "",
-                  phone: "",
-                  relationship: GuardianRelationship.Other,
-                })
-              })
-            }
-          >
-            Add
-          </Button>
+          <Typography.H5 m={3} mr="auto">
+            GUARDIANS
+          </Typography.H5>
+          <Link to={PICK_GUARDIAN_URL}>
+            <Button variant="outline" mr={3}>
+              Add
+            </Button>
+          </Link>
         </Flex>
         {guardians.length === 0 && (
           <Card borderRadius={[0, "default"]} m={[0, 3]}>
@@ -162,22 +143,6 @@ export const PageNewStudent: FC = () => {
             </Typography.Body>
           </Card>
         )}
-        {guardians.map((guardian, index) => (
-          <GuardianForm
-            key={guardian.id}
-            value={guardian}
-            onDelete={() => {
-              setGuardians((draft) => {
-                return draft.filter(({ id }) => id !== guardian.id)
-              })
-            }}
-            onChange={(newGuardian) => {
-              setGuardians((draft) => {
-                draft[index] = newGuardian
-              })
-            }}
-          />
-        ))}
         <Box p={3} mt={3}>
           <Button
             width="100%"
@@ -225,115 +190,115 @@ const EmptyClassDataPlaceholder: FC = () => (
   </Box>
 )
 
-export interface Guardian {
-  id: string
-  name: string
-  email: string
-  phone: string
-  note: string
-  relationship: GuardianRelationship
-}
+// export interface Guardian {
+//   id: string
+//   name: string
+//   email: string
+//   phone: string
+//   note: string
+//   relationship: GuardianRelationship
+// }
 
-const GuardianForm: FC<{
-  value: Guardian
-  onChange: (newValue: Guardian) => void
-  onDelete: (id: string) => void
-}> = ({ value, onChange, onDelete }) => {
-  const [showDeleteDialog, setShowDeleteDialog] = useState(false)
-
-  return (
-    <>
-      <Flex alignItems="flex-start" mb={4}>
-        <Box pl={3} pr={0} width="100%">
-          <Input
-            value={value.name}
-            mb={2}
-            label="Name"
-            width="100%"
-            onChange={(event) =>
-              onChange({
-                ...value,
-                name: event.target.value,
-              })
-            }
-          />
-          <Select
-            label="Relationship"
-            mb={2}
-            onChange={(e) =>
-              onChange({ ...value, relationship: parseInt(e.target.value, 10) })
-            }
-          >
-            <option value={GuardianRelationship.Other}>Other</option>
-            <option value={GuardianRelationship.Mother}>Mother</option>
-            <option value={GuardianRelationship.Father}>Father</option>
-          </Select>
-          <Input
-            type="email"
-            value={value.email}
-            mb={2}
-            label="Email"
-            width="100%"
-            onChange={(event) =>
-              onChange({
-                ...value,
-                email: event.target.value,
-              })
-            }
-          />
-          <Input
-            type="phone"
-            value={value.phone}
-            mb={2}
-            label="Phone"
-            width="100%"
-            onChange={(event) =>
-              onChange({
-                ...value,
-                phone: event.target.value,
-              })
-            }
-          />
-          <TextArea
-            value={value.note}
-            label="Notes"
-            width="100%"
-            height={100}
-            onChange={(event) =>
-              onChange({
-                ...value,
-                note: event.target.value,
-              })
-            }
-          />
-        </Box>
-
-        <Button
-          variant="secondary"
-          m={0}
-          p={0}
-          mt={22}
-          sx={{ flexShrink: 0 }}
-          onClick={() => setShowDeleteDialog(true)}
-        >
-          <Icon as={TrashIcon} fill="danger" />
-        </Button>
-      </Flex>
-      {showDeleteDialog && (
-        <WarningDialog
-          title="Delete Guardian?"
-          onDismiss={() => setShowDeleteDialog(false)}
-          onAccept={() => {
-            onDelete(value.id)
-            setShowDeleteDialog(false)
-          }}
-          description={`${
-            value.name === "" ? "This guardian" : value.name
-          } will be removed.`}
-        />
-      )}
-    </>
-  )
-}
+// const GuardianForm: FC<{
+//   value: Guardian
+//   onChange: (newValue: Guardian) => void
+//   onDelete: (id: string) => void
+// }> = ({ value, onChange, onDelete }) => {
+//   const [showDeleteDialog, setShowDeleteDialog] = useState(false)
+//
+//   return (
+//     <>
+//       <Flex alignItems="flex-start" mb={4}>
+//         <Box pl={3} pr={0} width="100%">
+//           <Input
+//             value={value.name}
+//             mb={2}
+//             label="Name"
+//             width="100%"
+//             onChange={(event) =>
+//               onChange({
+//                 ...value,
+//                 name: event.target.value,
+//               })
+//             }
+//           />
+//           <Select
+//             label="Relationship"
+//             mb={2}
+//             onChange={(e) =>
+//               onChange({ ...value, relationship: parseInt(e.target.value, 10) })
+//             }
+//           >
+//             <option value={GuardianRelationship.Other}>Other</option>
+//             <option value={GuardianRelationship.Mother}>Mother</option>
+//             <option value={GuardianRelationship.Father}>Father</option>
+//           </Select>
+//           <Input
+//             type="email"
+//             value={value.email}
+//             mb={2}
+//             label="Email"
+//             width="100%"
+//             onChange={(event) =>
+//               onChange({
+//                 ...value,
+//                 email: event.target.value,
+//               })
+//             }
+//           />
+//           <Input
+//             type="phone"
+//             value={value.phone}
+//             mb={2}
+//             label="Phone"
+//             width="100%"
+//             onChange={(event) =>
+//               onChange({
+//                 ...value,
+//                 phone: event.target.value,
+//               })
+//             }
+//           />
+//           <TextArea
+//             value={value.note}
+//             label="Notes"
+//             width="100%"
+//             height={100}
+//             onChange={(event) =>
+//               onChange({
+//                 ...value,
+//                 note: event.target.value,
+//               })
+//             }
+//           />
+//         </Box>
+//
+//         <Button
+//           variant="secondary"
+//           m={0}
+//           p={0}
+//           mt={22}
+//           sx={{ flexShrink: 0 }}
+//           onClick={() => setShowDeleteDialog(true)}
+//         >
+//           <Icon as={TrashIcon} fill="danger" />
+//         </Button>
+//       </Flex>
+//       {showDeleteDialog && (
+//         <WarningDialog
+//           title="Delete Guardian?"
+//           onDismiss={() => setShowDeleteDialog(false)}
+//           onAccept={() => {
+//             onDelete(value.id)
+//             setShowDeleteDialog(false)
+//           }}
+//           description={`${
+//             value.name === "" ? "This guardian" : value.name
+//           } will be removed.`}
+//         />
+//       )}
+//     </>
+//   )
+// }
 
 export default PageNewStudent
