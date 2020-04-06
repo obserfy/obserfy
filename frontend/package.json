@@ -108,7 +108,7 @@
     "@types/faker": "^4.1.11",
     "@types/jest": "^25.1.4",
     "@types/react-helmet": "^5.0.15",
-    "@types/react-query": "^0.3.9",
+    "@types/react-query": "^1.1.1",
     "@types/rebass": "4.0.4",
     "@types/segment-analytics": "^0.0.32",
     "@types/theme-ui": "^0.3.0",
