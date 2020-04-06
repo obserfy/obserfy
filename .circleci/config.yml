@@ -177,7 +177,6 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-      - run: VERSION=$(cat VERSION)
       - run: |
           sudo apt update && sudo apt install docker-ce
       - run: |
@@ -187,6 +186,7 @@ jobs:
       - run: |
           DOCKER_BUILDKIT=1 docker build -t "chrsep/vor:latest" -f  docker/vor/prod.dockerfile . --secret id=env,src=./frontend/.env
       - run: |
+          VERSION=$(cat VERSION)
           echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_LOGIN" --password-stdin
           docker push chrsep/vor:$VERSION
 
