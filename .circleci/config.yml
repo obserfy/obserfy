@@ -177,7 +177,7 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-      - VERSION=`cat VERSION`
+      - run: VERSION=$(cat VERSION)
       - run: |
           sudo apt update && sudo apt install docker-ce
       - run: |
