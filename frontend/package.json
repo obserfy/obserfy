@@ -53,7 +53,7 @@
     "gatsby-plugin-remove-trailing-slashes": "^2.2.0",
     "gatsby-plugin-segment-js": "^3.1.0",
     "gatsby-plugin-sentry": "^1.0.1",
-    "gatsby-plugin-sharp": "^2.5.3",
+    "gatsby-plugin-sharp": "^2.5.4",
     "gatsby-plugin-svgr": "^2.0.2",
     "gatsby-plugin-theme-ui": "^0.3.0",
     "gatsby-plugin-typescript": "^2.3.0",
