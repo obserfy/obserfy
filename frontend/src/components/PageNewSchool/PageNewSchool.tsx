@@ -40,7 +40,7 @@ export const PageNewSchool: FC = () => {
           width="100%"
           label="School Name"
           value={name}
-          onChange={e => setName(e.target.value)}
+          onChange={(e) => setName(e.target.value)}
           required
           mb={3}
         />

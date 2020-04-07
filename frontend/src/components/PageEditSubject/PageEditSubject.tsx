@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from "react"
 import { useImmer } from "use-immer"
 import { navigate } from "gatsby-plugin-intl3"
-import nanoid from "nanoid"
+import { nanoid } from "nanoid"
 import {
   Material,
   useGetSubjectMaterials,
@@ -50,7 +50,7 @@ export const PageEditSubject: FC<Props> = ({ areaId, subjectId }) => {
   }, [setSubjectName, subject.data, subject.error])
 
   const isValid =
-    materials.every(material => material.name !== "") && subjectName !== ""
+    materials.every((material) => material.name !== "") && subjectName !== ""
 
   async function updateSubject(): Promise<void> {
     setSubmitting(true)
@@ -112,7 +112,7 @@ export const PageEditSubject: FC<Props> = ({ areaId, subjectId }) => {
           width="100%"
           label="Subject name"
           value={subjectName}
-          onChange={e => setSubjectName(e.target.value)}
+          onChange={(e) => setSubjectName(e.target.value)}
         />
       </Box>
       <Typography.Body px={3} fontSize={1} color="textMediumEmphasis">
@@ -127,7 +127,7 @@ export const PageEditSubject: FC<Props> = ({ areaId, subjectId }) => {
         alignItems="center"
         backgroundColor="background"
         onClick={() => {
-          setMaterials(draft => {
+          setMaterials((draft) => {
             draft.push({
               id: nanoid(),
               name: "",

@@ -24,7 +24,7 @@ export const NewStudentDialog: FC<Props> = ({ onConfirm, onCancel }) => {
           label="Full Name"
           width="100%"
           placeholder="Erica Sterling"
-          onChange={e => setName(e.target.value)}
+          onChange={(e) => setName(e.target.value)}
           value={name}
           onEnterPressed={() => onConfirm(name)}
         />

@@ -17,7 +17,7 @@ interface Props {
 export const DeleteClassDialog: FC<Props> = ({ classId, onDismiss, name }) => {
   const [mutate, { status }] = useDeleteClass(classId)
 
-  async function deleteStudent(): Promise<void> {
+  async function deleteClass(): Promise<void> {
     const result = await mutate()
     if (result) {
       await navigate(CLASS_SETTINGS_URL)
@@ -53,7 +53,7 @@ export const DeleteClassDialog: FC<Props> = ({ classId, onDismiss, name }) => {
         Cancel
       </Button>
       <Spacer />
-      <Button m={2} backgroundColor="danger" onClick={deleteStudent}>
+      <Button m={2} backgroundColor="danger" onClick={deleteClass}>
         {status === "loading" && <LoadingIndicator />}
         Yes
       </Button>

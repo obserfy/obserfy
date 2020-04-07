@@ -78,13 +78,13 @@ export const PageStudentProgress: FC<Props> = ({ areaId, studentId }) => {
           </Typography.H3>
         </Box>
         <Box m={3}>
-          {subjects.data?.map(subject => (
+          {subjects.data?.map((subject) => (
             <Box mb={4} key={subject.id}>
               <Typography.H5 my={3}>{subject.name}</Typography.H5>
               <SubjectMaterials
                 subject={subject}
                 progress={progress.data ?? []}
-                onMaterialClick={material => {
+                onMaterialClick={(material) => {
                   setSelectedMaterial(material)
                   setIsEditing(true)
                 }}
@@ -133,8 +133,8 @@ const SubjectMaterials: FC<{
 
   return (
     <>
-      {materials.data?.map(material => {
-        const match = progress.find(item => item.materialId === material.id)
+      {materials.data?.map((material) => {
+        const match = progress.find((item) => item.materialId === material.id)
         const stage = materialStageToString(match?.stage)
         return (
           <Card

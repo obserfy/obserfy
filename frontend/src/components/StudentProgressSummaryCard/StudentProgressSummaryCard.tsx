@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react"
-import { Link, navigate } from "gatsby-plugin-intl3"
+import { Link } from "gatsby-plugin-intl3"
 import Button from "../Button/Button"
 import Spacer from "../Spacer/Spacer"
 import Flex from "../Flex/Flex"
@@ -30,7 +30,9 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
 
   // Derived state
   const selectedAreaId = areas.data?.[tab]?.id
-  const inSelectedArea = progress.data?.filter(p => p.areaId === selectedAreaId)
+  const inSelectedArea = progress.data?.filter(
+    (p) => p.areaId === selectedAreaId
+  )
   const inProgress = inSelectedArea?.filter(
     ({ stage }) =>
       stage >= MaterialProgressStage.PRESENTED &&
@@ -60,13 +62,11 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
   // Disabled curriculum view
   if (!isFetchingData && isAreaEmpty) {
     return (
-      <Box m={[3, 0]}>
-        <InformationalCard
-          message="You can enable the curriculum feature to track student progress in your curriculum."
-          buttonText=" Go to Curriculum "
-          onButtonClick={() => navigate("/dashboard/settings/curriculum")}
-        />
-      </Box>
+      <InformationalCard
+        message="You can enable the curriculum feature to track student progress in your curriculum."
+        buttonText=" Go to Curriculum "
+        to="/dashboard/settings/curriculum"
+      />
     )
   }
 
@@ -83,7 +83,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
     </Typography.Body>
   )
 
-  const listOfInProgress = inProgress?.map(item => (
+  const listOfInProgress = inProgress?.map((item) => (
     <MaterialProgressItem
       key={item.materialId}
       value={item}
@@ -97,7 +97,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
   const listOfMastered = recentlyMastered
     ?.slice(0, 3)
     .sort((a, b) => Date.parse(b.updatedAt) - Date.parse(a.updatedAt))
-    .map(item => (
+    .map((item) => (
       <MaterialProgressItem
         key={item.materialId}
         value={item}

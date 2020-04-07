@@ -6,7 +6,7 @@ import { BoxProps } from "../Box/Box"
 interface Props extends BoxProps {
   onChange?: ChangeEventHandler<HTMLInputElement>
 }
-export const SearchBar: FC<Props> = props => (
+export const SearchBar: FC<Props> = (props) => (
   <Input
     name="name"
     width="100%"

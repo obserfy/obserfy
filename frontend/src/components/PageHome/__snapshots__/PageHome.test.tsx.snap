@@ -15,7 +15,7 @@ exports[`PageHome should render correctly 1`] = `
   }
 }
 
-.emotion-14 {
+.emotion-11 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -23,12 +23,12 @@ exports[`PageHome should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-14 {
+  .emotion-11 {
     font-size: 20px;
   }
 }
 
-.emotion-13 {
+.emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -231,7 +231,7 @@ exports[`PageHome should render correctly 1`] = `
   width: 20px;
 }
 
-.emotion-12 {
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -253,10 +253,10 @@ exports[`PageHome should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-14"
+    class="emotion-11"
   >
     <div
-      class="emotion-13"
+      class="emotion-10"
     >
       <div
         class="emotion-5"
@@ -277,6 +277,7 @@ exports[`PageHome should render correctly 1`] = `
         </label>
         <a
           href="/dashboard/observe/students/new"
+          style="flex-shrink: 0;"
         >
           <button
             class="emotion-4"
@@ -289,17 +290,8 @@ exports[`PageHome should render correctly 1`] = `
         </a>
       </div>
       <div
-        class="emotion-12"
+        class="emotion-9"
       >
-        <div
-          class="emotion-6"
-        />
-        <div
-          class="emotion-6"
-        />
-        <div
-          class="emotion-6"
-        />
         <div
           class="emotion-6"
         />

@@ -8,6 +8,7 @@ import (
 	"github.com/chrsep/vor/pkg/curriculum"
 	"github.com/chrsep/vor/pkg/logger"
 	"github.com/chrsep/vor/pkg/mailgun"
+	"github.com/chrsep/vor/pkg/minio"
 	"github.com/chrsep/vor/pkg/observation"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/rest"
@@ -71,6 +72,11 @@ func runServer() error {
 	authStore := postgres.AuthStore{db}
 	classStore := postgres.ClassStore{db}
 	mailService := mailgun.NewService()
+	studentImageStorage, err := minio.NewMinioImageStorage()
+	if err != nil {
+		l.Error("failed connecting to minio", zap.Error(err))
+		return err
+	}
 
 	// Setup routing
 	r := chi.NewRouter()
@@ -80,13 +86,13 @@ func runServer() error {
 	r.Use(middleware.Logger)             // Log stuff out for every request
 	r.Use(middleware.GetHead)            // Redirect HEAD request to GET handlers
 	r.Use(middleware.Recoverer)          // Catches panic, recover and return 500
-	r.Use(sentryHandler.Handle)          // Panic goes to sentry first, who catch it than epanics
+	r.Use(sentryHandler.Handle)          // Panic goes to sentry first, who catch it than re-panics
 	r.Mount("/auth", auth.NewRouter(server, authStore, mailService, clock.New()))
 	r.Route("/api/v1", func(r chi.Router) {
 		r.Use(auth.NewMiddleware(server, authStore))
 		r.Mount("/students", student.NewRouter(server, studentStore))
 		r.Mount("/observations", observation.NewRouter(server, observationStore))
-		r.Mount("/schools", school.NewRouter(server, schoolStore))
+		r.Mount("/schools", school.NewRouter(server, schoolStore, studentImageStorage))
 		r.Mount("/user", user.NewRouter(server, userStore))
 		r.Mount("/curriculum", curriculum.NewRouter(server, curriculumStore))
 		r.Mount("/classes", class.NewRouter(server, classStore))

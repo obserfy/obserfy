@@ -1,5 +1,4 @@
 import React, { FC } from "react"
-import { action } from "@storybook/addon-actions"
 import InformationalCard from "./InformationalCard"
 
 export default {
@@ -13,7 +12,7 @@ export default {
 export const Basic: FC = () => (
   <InformationalCard
     buttonText="A button"
-    onButtonClick={action("action click")}
+    to="/"
     message="This is very useful do this."
   />
 )

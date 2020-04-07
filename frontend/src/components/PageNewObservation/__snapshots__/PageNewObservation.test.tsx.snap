@@ -265,7 +265,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   background-color: var(--theme-ui-colors-surface,#fff);
-  font-size: 14px;
+  font-size: 16px;
   padding: 16px;
   height: 180px;
   resize: vertical;

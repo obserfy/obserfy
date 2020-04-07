@@ -46,12 +46,12 @@ export const PageAllObservations: FC<Props> = ({ studentId }) => {
 
   // Group observations by dates
 
-  const showDeleteDialog = useCallback(observation => {
+  const showDeleteDialog = useCallback((observation) => {
     setIsDeletingObservation(true)
     setTargetObservation(observation)
   }, [])
 
-  const showEditDialog = useCallback(observation => {
+  const showEditDialog = useCallback((observation) => {
     setIsEditingObservation(true)
     setTargetObservation(observation)
   }, [])
@@ -78,7 +78,7 @@ export const PageAllObservations: FC<Props> = ({ studentId }) => {
           </Typography.H3>
         </Box>
         <Flex pl={3} pr={2} py={2} flexWrap="wrap">
-          {[allCategory, ...categories].map(category => {
+          {[allCategory, ...categories].map((category) => {
             let observationCount = 0
             if (category.id === allCategory.id) {
               observationCount = observations.data?.length ?? 0
@@ -157,7 +157,7 @@ const ObservationList: FC<{
 
   return (
     <Box m={[0, 3]}>
-      {dates.map(date => {
+      {dates.map((date) => {
         return (
           <Box>
             <Typography.Body
@@ -178,7 +178,7 @@ const ObservationList: FC<{
               .filter(({ createdDate }) =>
                 isSameDay(Date.parse(createdDate ?? ""), Date.parse(date))
               )
-              .map(observation => {
+              .map((observation) => {
                 return (
                   <ObservationCard
                     key={observation.id}

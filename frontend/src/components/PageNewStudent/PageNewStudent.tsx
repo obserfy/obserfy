@@ -1,100 +1,304 @@
 import React, { FC, useState } from "react"
-import { Link, navigate, useIntl } from "gatsby-plugin-intl3"
+import { useImmer } from "use-immer"
+import { Link, navigate } from "gatsby-plugin-intl3"
 import Box from "../Box/Box"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import Input from "../Input/Input"
-import Flex from "../Flex/Flex"
-import Spacer from "../Spacer/Spacer"
 import Button from "../Button/Button"
-import { createStudentApi } from "../../api/students/createStudentApi"
-import { getSchoolId } from "../../hooks/schoolIdState"
-import Icon from "../Icon/Icon"
-import { ReactComponent as CalendarIcon } from "../../icons/calendar.svg"
-import DatePickerDialog from "../DatePickerDialog/DatePickerDialog"
-import { getAnalytics } from "../../analytics"
+import DateInput from "../DateInput/DateInput"
+import TextArea from "../TextArea/TextArea"
+import { Typography } from "../Typography/Typography"
+import Select from "../Select/Select"
+import useGetSchoolClasses from "../../api/useGetSchoolClasses"
+import Chip from "../Chip/Chip"
+import { Flex } from "../Flex/Flex"
+import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
+import InformationalCard from "../InformationalCard/InformationalCard"
+import { CLASS_SETTINGS_URL } from "../../pages/dashboard/settings/class"
+import Card from "../Card/Card"
+import ProfilePicker from "../ProfilePicker/ProfilePicker"
+import { Gender, usePostNewStudent } from "../../api/students/usePostNewStudent"
+import { PICK_GUARDIAN_URL } from "../../pages/dashboard/observe/students/guardians/pick"
 
 export const PageNewStudent: FC = () => {
   const [name, setName] = useState("")
+  const [picture, setPicture] = useState<File>()
+  const [customId, setCustomId] = useState("")
+  const [note, setNotes] = useState("")
+  const [gender, setGender] = useState<Gender>(Gender.NotSet)
   const [dateOfBirth, setDateOfBirth] = useState<Date>()
-  const [showDatePicker, setShowDatePicker] = useState(false)
+  const [dateOfEntry, setDateOfEntry] = useState<Date>()
+  const [guardians] = useState<string[]>([])
+  const [selectedClasses, setSelectedClasses] = useImmer<string[]>([])
+  const [mutate] = usePostNewStudent()
+  const classes = useGetSchoolClasses()
   const isFormInvalid = name === ""
-  const intl = useIntl()
-
-  async function createNewStudent(): Promise<void> {
-    const response = await createStudentApi(getSchoolId(), {
-      name,
-      dateOfBirth,
-    })
-    getAnalytics()?.track("Student Created", {
-      responseStatus: response.status,
-      studentName: name,
-    })
-    if (response.status === 201) navigate("/dashboard/observe")
-  }
-
-  const dobField = (
-    <Flex mt={3} onClick={() => setShowDatePicker(true)}>
-      <Input
-        label="Date of Birth"
-        width="100%"
-        value={
-          dateOfBirth
-            ? intl.formatDate(dateOfBirth, {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })
-            : ""
-        }
-        placeholder="Not set"
-        disabled
-        sx={{
-          opacity: "1!important",
-        }}
-      />
-      <Button mt={23} ml={3} variant="outline" sx={{ flexShrink: 0 }}>
-        <Icon as={CalendarIcon} m={0} />
-      </Button>
-    </Flex>
-  )
 
   return (
     <>
-      <Box maxWidth="maxWidth.sm" margin="auto">
+      <Box maxWidth="maxWidth.sm" margin="auto" pb={4}>
         <BackNavigation to="/dashboard/observe" text="Home" />
-        <Box mx={3} mt={3}>
+        <Box mx={3}>
+          <Flex alignItems="flex-end">
+            <Typography.H4 mb={3}>New Student</Typography.H4>
+            <ProfilePicker
+              ml="auto"
+              onChange={setPicture}
+              value={picture}
+              mb={2}
+            />
+          </Flex>
           <Input
-            label="Name"
+            label="Name (Required)"
             width="100%"
             value={name}
-            onChange={e => setName(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
+            mb={3}
           />
-          {dobField}
+          <DateInput
+            label="Date of Birth"
+            value={dateOfBirth}
+            onChange={setDateOfBirth}
+            mb={3}
+          />
+          <DateInput
+            label="Date of Entry"
+            value={dateOfEntry}
+            onChange={setDateOfEntry}
+            mb={3}
+          />
+          <Select
+            label="Gender"
+            mb={3}
+            value={gender}
+            onChange={(e) => setGender(parseInt(e.target.value, 10))}
+          >
+            <option value={Gender.NotSet}>Not Set</option>
+            <option value={Gender.Male}>Male</option>
+            <option value={Gender.Female}>Female</option>
+          </Select>
+          <Input
+            value={customId}
+            onChange={(e) => setCustomId(e.target.value)}
+            label="Student ID"
+            width="100%"
+            mb={3}
+          />
+          <TextArea
+            value={note}
+            onChange={(e) => setNotes(e.target.value)}
+            label="Notes"
+            height={100}
+          />
         </Box>
-        <Flex m={3}>
-          <Spacer />
-          <Link to="/dashboard/observe">
-            <Button variant="outline" mr={2}>
-              Cancel
+        <Typography.H5 m={3} mt={4}>
+          CLASSES
+        </Typography.H5>
+        {classes.status === "success" && classes.data.length === 0 && (
+          <EmptyClassDataPlaceholder />
+        )}
+        {classes.status === "loading" && <ClassesLoadingPlaceholder />}
+        {classes.status !== "error" && (
+          <Flex m={3}>
+            {classes.data?.map((item) => {
+              const selected = selectedClasses.includes(item.id)
+              return (
+                <Chip
+                  key={item.id}
+                  text={item.name}
+                  activeBackground="primary"
+                  isActive={selected}
+                  onClick={() => {
+                    if (selected) {
+                      setSelectedClasses((draft) => {
+                        return draft.filter(
+                          (selection) => selection !== item.id
+                        )
+                      })
+                    } else {
+                      setSelectedClasses((draft) => {
+                        draft.push(item.id)
+                      })
+                    }
+                  }}
+                />
+              )
+            })}
+          </Flex>
+        )}
+        <Flex alignItems="center" mt={3}>
+          <Typography.H5 m={3} mr="auto">
+            GUARDIANS
+          </Typography.H5>
+          <Link to={PICK_GUARDIAN_URL}>
+            <Button variant="outline" mr={3}>
+              Add
             </Button>
           </Link>
-          <Button onClick={createNewStudent} disabled={isFormInvalid}>
+        </Flex>
+        {guardians.length === 0 && (
+          <Card borderRadius={[0, "default"]} m={[0, 3]}>
+            <Typography.Body m={3} color="textMediumEmphasis">
+              This student doesn&apos;t have a guardian yet.
+            </Typography.Body>
+          </Card>
+        )}
+        <Box p={3} mt={3}>
+          <Button
+            width="100%"
+            disabled={isFormInvalid}
+            onClick={async () => {
+              const result = await mutate({
+                picture,
+                student: {
+                  classes: selectedClasses,
+                  name,
+                  customId,
+                  dateOfBirth,
+                  dateOfEntry,
+                  guardians,
+                  note,
+                  gender,
+                },
+              })
+              if (result.status === 201) {
+                await navigate("/dashboard/observe")
+              }
+            }}
+          >
             Save
           </Button>
-        </Flex>
+        </Box>
       </Box>
-      {showDatePicker && (
-        <DatePickerDialog
-          defaultDate={dateOfBirth}
-          onDismiss={() => setShowDatePicker(false)}
-          onConfirm={date => {
-            setDateOfBirth(date)
-            setShowDatePicker(false)
-          }}
-        />
-      )}
     </>
   )
 }
+
+const ClassesLoadingPlaceholder: FC = () => (
+  <Box m={3}>
+    <LoadingPlaceholder width="100%" height="4rem" />
+  </Box>
+)
+
+const EmptyClassDataPlaceholder: FC = () => (
+  <Box mx={[0, 3]}>
+    <InformationalCard
+      buttonText="Go to Class Settings"
+      message="Create your first class to track your student's class enrollment."
+      to={CLASS_SETTINGS_URL}
+    />
+  </Box>
+)
+
+// export interface Guardian {
+//   id: string
+//   name: string
+//   email: string
+//   phone: string
+//   note: string
+//   relationship: GuardianRelationship
+// }
+
+// const GuardianForm: FC<{
+//   value: Guardian
+//   onChange: (newValue: Guardian) => void
+//   onDelete: (id: string) => void
+// }> = ({ value, onChange, onDelete }) => {
+//   const [showDeleteDialog, setShowDeleteDialog] = useState(false)
+//
+//   return (
+//     <>
+//       <Flex alignItems="flex-start" mb={4}>
+//         <Box pl={3} pr={0} width="100%">
+//           <Input
+//             value={value.name}
+//             mb={2}
+//             label="Name"
+//             width="100%"
+//             onChange={(event) =>
+//               onChange({
+//                 ...value,
+//                 name: event.target.value,
+//               })
+//             }
+//           />
+//           <Select
+//             label="Relationship"
+//             mb={2}
+//             onChange={(e) =>
+//               onChange({ ...value, relationship: parseInt(e.target.value, 10) })
+//             }
+//           >
+//             <option value={GuardianRelationship.Other}>Other</option>
+//             <option value={GuardianRelationship.Mother}>Mother</option>
+//             <option value={GuardianRelationship.Father}>Father</option>
+//           </Select>
+//           <Input
+//             type="email"
+//             value={value.email}
+//             mb={2}
+//             label="Email"
+//             width="100%"
+//             onChange={(event) =>
+//               onChange({
+//                 ...value,
+//                 email: event.target.value,
+//               })
+//             }
+//           />
+//           <Input
+//             type="phone"
+//             value={value.phone}
+//             mb={2}
+//             label="Phone"
+//             width="100%"
+//             onChange={(event) =>
+//               onChange({
+//                 ...value,
+//                 phone: event.target.value,
+//               })
+//             }
+//           />
+//           <TextArea
+//             value={value.note}
+//             label="Notes"
+//             width="100%"
+//             height={100}
+//             onChange={(event) =>
+//               onChange({
+//                 ...value,
+//                 note: event.target.value,
+//               })
+//             }
+//           />
+//         </Box>
+//
+//         <Button
+//           variant="secondary"
+//           m={0}
+//           p={0}
+//           mt={22}
+//           sx={{ flexShrink: 0 }}
+//           onClick={() => setShowDeleteDialog(true)}
+//         >
+//           <Icon as={TrashIcon} fill="danger" />
+//         </Button>
+//       </Flex>
+//       {showDeleteDialog && (
+//         <WarningDialog
+//           title="Delete Guardian?"
+//           onDismiss={() => setShowDeleteDialog(false)}
+//           onAccept={() => {
+//             onDelete(value.id)
+//             setShowDeleteDialog(false)
+//           }}
+//           description={`${
+//             value.name === "" ? "This guardian" : value.name
+//           } will be removed.`}
+//         />
+//       )}
+//     </>
+//   )
+// }
 
 export default PageNewStudent
