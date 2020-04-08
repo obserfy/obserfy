@@ -6,7 +6,7 @@ require (
 	github.com/benbjohnson/clock v1.0.0
 	github.com/brianvoe/gofakeit/v4 v4.3.0
 	github.com/getsentry/sentry-go v0.5.1
-	github.com/go-chi/chi v4.0.4+incompatible
+	github.com/go-chi/chi v4.1.0+incompatible
 	github.com/go-ini/ini v1.55.0 // indirect
 	github.com/go-pg/pg/v9 v9.1.5
 	github.com/go-playground/validator/v10 v10.2.0
@@ -23,6 +23,5 @@ require (
 	golang.org/x/lint v0.0.0-20191125180803-fdd1cda4f05f // indirect
 	golang.org/x/sys v0.0.0-20191128015809-6d18c012aee9 // indirect
 	golang.org/x/tools v0.0.0-20191127201027-ecd32218bd7f // indirect
-	google.golang.org/appengine v1.6.5
 	gopkg.in/yaml.v2 v2.2.7 // indirect
 )

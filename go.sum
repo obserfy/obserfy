@@ -48,7 +48,11 @@ github.com/gin-gonic/gin v1.4.0/go.mod h1:OW2EZn3DO8Ln9oIKOvM++LBO+5UPHJJDH72/q/
 github.com/go-check/check v0.0.0-20180628173108-788fd7840127/go.mod h1:9ES+weclKsC9YodN5RgxqK/VD9HM9JsCSh7rNhMZE98=
 github.com/go-chi/chi v4.0.0+incompatible/go.mod h1:eB3wogJHnLi3x/kFX2A+IbTBlXxmMeXJVKy9tTv1XzQ=
 github.com/go-chi/chi v4.0.4+incompatible h1:7fVnpr0gAXG15uDbtH+LwSeMztvIvlHrBNRkTzgphS0=
+github.com/go-chi/chi v4.0.4+incompatible h1:7fVnpr0gAXG15uDbtH+LwSeMztvIvlHrBNRkTzgphS0=
 github.com/go-chi/chi v4.0.4+incompatible/go.mod h1:eB3wogJHnLi3x/kFX2A+IbTBlXxmMeXJVKy9tTv1XzQ=
+github.com/go-chi/chi v4.0.4+incompatible/go.mod h1:eB3wogJHnLi3x/kFX2A+IbTBlXxmMeXJVKy9tTv1XzQ=
+github.com/go-chi/chi v4.1.0+incompatible h1:ETj3cggsVIY2Xao5ExCu6YhEh5MD6JTfcBzS37R260w=
+github.com/go-chi/chi v4.1.0+incompatible/go.mod h1:eB3wogJHnLi3x/kFX2A+IbTBlXxmMeXJVKy9tTv1XzQ=
 github.com/go-errors/errors v1.0.1 h1:LUHzmkK3GUKUrL/1gfBUxAHzcev3apQlezX/+O7ma6w=
 github.com/go-errors/errors v1.0.1/go.mod h1:f4zRHt4oKfwPJE5k8C9vpYG+aDHdBFUsgrm6/TyX73Q=
 github.com/go-ini/ini v1.55.0 h1:0wVcG9udk2C3TGgmdIGKK9ScOZHZB5nbG+gwji9fhhc=
@@ -58,6 +62,8 @@ github.com/go-pg/pg/v9 v9.0.0-beta.14/go.mod h1:T2Sr6bpTCOr2lUqOUMiXLMJqZHSUBKk1
 github.com/go-pg/pg/v9 v9.0.3 h1:dhOAOLlTJJpqeAfRpjZYTV6zf7dmUOnjCkZqjOBYmu0=
 github.com/go-pg/pg/v9 v9.0.3/go.mod h1:Tm/Q3Vt6gdQOH6TTN1H/xLlIXc+Qrka7TZ6uREtu/eA=
 github.com/go-pg/pg/v9 v9.1.5 h1:9BOm2A6WhzrQmjuaEbqlic6MBycIP1mutJegEDsIsWY=
+github.com/go-pg/pg/v9 v9.1.5 h1:9BOm2A6WhzrQmjuaEbqlic6MBycIP1mutJegEDsIsWY=
+github.com/go-pg/pg/v9 v9.1.5/go.mod h1:QM13HBLkdml4zcKOfUfGLymM6hb72aKTJLrmaH8rsFg=
 github.com/go-pg/pg/v9 v9.1.5/go.mod h1:QM13HBLkdml4zcKOfUfGLymM6hb72aKTJLrmaH8rsFg=
 github.com/go-pg/urlstruct v0.1.0/go.mod h1:2Nag+BIny6G/KYCkdt++ZnqU/VinzimGapKfs4kwlN0=
 github.com/go-pg/urlstruct v0.2.6 h1:TReWM/GETx98RSfxO1mOOVic8tJCeJC5SgdeDpIy0FY=
