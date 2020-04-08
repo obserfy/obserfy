@@ -538,6 +538,7 @@ func postNewGuardian(server rest.Server, store postgres.SchoolStore) http.Handle
 
 func getGuardians(server rest.Server, store postgres.SchoolStore) http.Handler {
 	type responseBody struct {
+		Id    string `json:"id"`
 		Name  string `json:"name"`
 		Email string `json:"email"`
 		Phone string `json:"phone"`
@@ -558,6 +559,7 @@ func getGuardians(server rest.Server, store postgres.SchoolStore) http.Handler {
 		response := make([]responseBody, len(guardians))
 		for i, guardian := range guardians {
 			response[i] = responseBody{
+				Id:    guardian.Id,
 				Name:  guardian.Name,
 				Email: guardian.Email,
 				Phone: guardian.Phone,

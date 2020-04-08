@@ -1,4 +1,5 @@
 import React, { FC, useState } from "react"
+import { Link, navigate } from "gatsby-plugin-intl3"
 import Box from "../Box/Box"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { NEW_STUDENT_URL } from "../../pages/dashboard/observe/students/new"
@@ -11,13 +12,19 @@ import Card from "../Card/Card"
 import Icon from "../Icon/Icon"
 import Button from "../Button/Button"
 import Flex from "../Flex/Flex"
+import { usePostNewGuardian } from "../../api/usePostNewGuardian"
+import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
+import { useGetGuardians } from "../../api/useGetGuardians"
 
 export const PagePickGuardian: FC = () => {
+  const guardians = useGetGuardians()
+
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [phone, setPhone] = useState("")
   const [relationship, setRelationship] = useState<GuardianRelationship>(0)
   const [createNew, setCreateNew] = useState(false)
+  const [mutate, { status }] = usePostNewGuardian()
 
   return (
     <Box maxWidth="maxWidth.sm" mx="auto">
@@ -67,7 +74,22 @@ export const PagePickGuardian: FC = () => {
               >
                 Cancel
               </Button>
-              <Button>Save</Button>
+              <Button
+                onClick={async () => {
+                  const result = await mutate({
+                    email,
+                    name,
+                    phone,
+                    relationship,
+                  })
+                  if (result.status === 201) {
+                    await navigate(NEW_STUDENT_URL)
+                  }
+                }}
+              >
+                {status === "loading" && <LoadingIndicator color="onPrimary" />}
+                Save
+              </Button>
             </Flex>
           </>
         )}
@@ -77,38 +99,47 @@ export const PagePickGuardian: FC = () => {
           <Typography.Body mx={3} mb={2} mt={4} color="textMediumEmphasis">
             Select a guardian or create one
           </Typography.Body>
-          {name === "" && (
-            <Card
-              p={3}
-              borderRadius={[0, "default"]}
-              display="flex"
-              sx={{ alignItems: "center" }}
-              mx={[0, 3]}
+          {guardians.data?.map((guardian) => (
+            <Link
+              to={NEW_STUDENT_URL}
+              state={{ guardianId: guardian.id, preserveScroll: true }}
+              key={guardian.id}
             >
-              <Typography.Body color="textMediumEmphasis">
-                Type a guardian name
-              </Typography.Body>
-            </Card>
-          )}
-          {name !== "" && (
-            <Card
-              p={3}
-              borderRadius={[0, "default"]}
-              display="flex"
-              mx={[0, 3]}
-              onClick={() => setCreateNew(true)}
-              sx={{
-                alignItems: "flex-start",
-                cursor: "pointer",
-                "&:hover": {
-                  backgroundColor: "primaryLightest",
-                },
-              }}
-            >
-              <Icon as={PlusIcon} m={0} mt="5px" mr={3} fill="primary" />
-              <Typography.Body>Create {name}</Typography.Body>
-            </Card>
-          )}
+              <Card
+                p={3}
+                borderRadius={[0, "default"]}
+                display="flex"
+                mx={[0, 3]}
+                mb={2}
+                sx={{
+                  alignItems: "flex-start",
+                  cursor: "pointer",
+                  "&:hover": {
+                    backgroundColor: "primaryLightest",
+                  },
+                }}
+              >
+                <Typography.Body>{guardian.name}</Typography.Body>
+              </Card>
+            </Link>
+          ))}
+          <Card
+            p={3}
+            borderRadius={[0, "default"]}
+            display="flex"
+            mx={[0, 3]}
+            onClick={() => setCreateNew(true)}
+            sx={{
+              alignItems: "flex-start",
+              cursor: "pointer",
+              "&:hover": {
+                backgroundColor: "primaryLightest",
+              },
+            }}
+          >
+            <Icon as={PlusIcon} m={0} mt="5px" mr={3} fill="primary" />
+            <Typography.Body>Create {name || "new guardian"}</Typography.Body>
+          </Card>
         </>
       )}
     </Box>
