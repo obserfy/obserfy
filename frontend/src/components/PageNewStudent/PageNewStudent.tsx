@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react"
+import React, { FC, useCallback, useState } from "react"
 import { useImmer } from "use-immer"
 import { Link, navigate } from "gatsby-plugin-intl3"
 import Box from "../Box/Box"
@@ -19,6 +19,34 @@ import Card from "../Card/Card"
 import ProfilePicker from "../ProfilePicker/ProfilePicker"
 import { Gender, usePostNewStudent } from "../../api/students/usePostNewStudent"
 import { PICK_GUARDIAN_URL } from "../../pages/dashboard/observe/students/guardians/pick"
+import {
+  useCacheNewStudentFormData,
+  useGetNewStudentFormCache,
+} from "./newStudentFormCache"
+
+export interface NewStudentFormData {
+  name: string
+  picture?: File
+  customId: string
+  note: string
+  gender: Gender
+  dateOfBirth?: Date
+  dateOfEntry?: Date
+  guardians: string[]
+  selectedClasses: string[]
+}
+
+const DEFAULT_FORM_STATE: NewStudentFormData = {
+  selectedClasses: [],
+  guardians: [],
+  dateOfEntry: undefined,
+  dateOfBirth: undefined,
+  gender: 0,
+  note: "",
+  customId: "",
+  picture: undefined,
+  name: "",
+}
 
 export const PageNewStudent: FC = () => {
   const [name, setName] = useState("")
@@ -28,11 +56,39 @@ export const PageNewStudent: FC = () => {
   const [gender, setGender] = useState<Gender>(Gender.NotSet)
   const [dateOfBirth, setDateOfBirth] = useState<Date>()
   const [dateOfEntry, setDateOfEntry] = useState<Date>()
-  const [guardians] = useState<string[]>([])
+  const [guardians, setGuardians] = useImmer<string[]>([])
   const [selectedClasses, setSelectedClasses] = useImmer<string[]>([])
   const [mutate] = usePostNewStudent()
   const classes = useGetSchoolClasses()
   const isFormInvalid = name === ""
+
+  useCacheNewStudentFormData({
+    name,
+    picture,
+    customId,
+    note,
+    gender,
+    dateOfBirth,
+    dateOfEntry,
+    guardians,
+    selectedClasses,
+  })
+
+  const updateAllFormState = useCallback(
+    (cachedData: NewStudentFormData) => {
+      setName(cachedData.name)
+      setPicture(cachedData.picture)
+      setCustomId(cachedData.customId)
+      setNotes(cachedData.note)
+      setGender(cachedData.gender)
+      setDateOfBirth(cachedData.dateOfBirth)
+      setDateOfEntry(cachedData.dateOfEntry)
+      setGuardians(() => cachedData.guardians)
+      setSelectedClasses(() => cachedData.selectedClasses)
+    },
+    [setGuardians, setSelectedClasses]
+  )
+  useGetNewStudentFormCache(updateAllFormState)
 
   return (
     <>
@@ -137,13 +193,24 @@ export const PageNewStudent: FC = () => {
           </Link>
         </Flex>
         {guardians.length === 0 && (
-          <Card borderRadius={[0, "default"]} m={[0, 3]}>
+          <Card borderRadius={[0, "default"]} mx={[0, 3]}>
             <Typography.Body m={3} color="textMediumEmphasis">
               This student doesn&apos;t have a guardian yet.
             </Typography.Body>
           </Card>
         )}
-        <Box p={3} mt={3}>
+        <Flex p={3} mt={3}>
+          <Button
+            variant="outline"
+            mr={3}
+            color="danger"
+            onClick={() => {
+              window.scrollTo(0, 0)
+              updateAllFormState(DEFAULT_FORM_STATE)
+            }}
+          >
+            Clear
+          </Button>
           <Button
             width="100%"
             disabled={isFormInvalid}
@@ -162,13 +229,14 @@ export const PageNewStudent: FC = () => {
                 },
               })
               if (result.status === 201) {
+                updateAllFormState(DEFAULT_FORM_STATE)
                 await navigate("/dashboard/observe")
               }
             }}
           >
             Save
           </Button>
-        </Box>
+        </Flex>
       </Box>
     </>
   )
