@@ -94,17 +94,17 @@ export const DatePickerDialog: FC<Props> = ({
           min="1"
           inputMode="numeric"
           value={year}
-          onChange={e => {
+          onChange={(e) => {
             setYear(e.target.value)
           }}
         />
         <Select
           label="Month"
           value={month}
-          onChange={e => setMonth(e.target.value)}
+          onChange={(e) => setMonth(e.target.value)}
           mr={3}
         >
-          {[...Array(12).keys()].map(item => (
+          {[...Array(12).keys()].map((item) => (
             <option value={item} key={item}>
               {intl.formatDate(new Date(1, item, 1), {
                 month: "long",
@@ -115,10 +115,10 @@ export const DatePickerDialog: FC<Props> = ({
         <Select
           label="Date"
           value={date}
-          onChange={e => setDate(e.target.value)}
+          onChange={(e) => setDate(e.target.value)}
         >
           {[...Array(lastDayOfMonth(generatedDate).getDate()).keys()].map(
-            item => (
+            (item) => (
               <option value={item + 1} key={item}>
                 {item + 1}
               </option>

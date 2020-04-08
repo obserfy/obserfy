@@ -155,12 +155,29 @@ jobs:
           cd frontend
           yarn typecheck
 
+  versioning:
+    docker:
+      - image: node:12
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: |
+          yarn global add git
+          git config --global user.email "chrsep@protonmail.com"
+          git config --global user.name "Chrisando Pramudhita"
+      - run: |
+          yarn global add standard-version
+          standard-version -m 'chore(release): %s [skip ci]' --releaseCommitMessageFormat --no-verify
+      - run: |
+          git push --follow-tags origin master
+
   deploy:
     machine:
       image: ubuntu-1604:201903-01
     working_directory: ~/repo
     steps:
       - checkout
+      - run: VERSION=$(cat VERSION)
       - run: |
           sudo apt update && sudo apt install docker-ce
       - run: |
@@ -168,10 +185,12 @@ jobs:
           echo "GA_CLIENT_EMAIL=$GA_CLIENT_EMAIL" >> .env
           echo "GA_PRIVATE_KEY=$GA_PRIVATE_KEY" >> .env
       - run: |
-          DOCKER_BUILDKIT=1 docker build -t "chrsep/vor:latest" -f  docker/vor/prod.dockerfile . --secret id=env,src=./frontend/.env
+          VERSION=$(cat VERSION)
+          DOCKER_BUILDKIT=1 docker build -t "chrsep/vor:$VERSION" -f  docker/vor/prod.dockerfile . --secret id=env,src=./frontend/.env
       - run: |
+          VERSION=$(cat VERSION)
           echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_LOGIN" --password-stdin
-          docker push chrsep/vor:latest
+          docker push chrsep/vor:$VERSION
 
   sentry_release:
     docker:
@@ -210,7 +229,7 @@ workflows:
       - e2e:
           requires:
             - frontend_build
-      - deploy:
+      - versioning:
           filters:
             branches:
               only:
@@ -221,6 +240,13 @@ workflows:
             - frontend_unit
             - frontend_lint
             - frontend_typecheck
+      - deploy:
+          filters:
+            branches:
+              only:
+                - master
+          requires:
+            - versioning
 
       - sentry_release:
           requires:

@@ -1,7 +1,7 @@
 import React, { FC } from "react"
 import Button, { ButtonProps } from "../Button/Button"
 
-export const FloatingActionButton: FC<ButtonProps> = props => (
+export const FloatingActionButton: FC<ButtonProps> = (props) => (
   <Button
     display="flex"
     minWidth={50}

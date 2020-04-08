@@ -42,6 +42,8 @@ func InitTables(db *pg.DB) error {
 		(*Class)(nil),
 		(*Weekday)(nil),
 		(*Student)(nil),
+		(*Guardian)(nil),
+		(*GuardianToStudent)(nil),
 		(*StudentMaterialProgress)(nil),
 		(*User)(nil),
 		(*Observation)(nil),
@@ -102,12 +104,62 @@ type StudentMaterialProgress struct {
 	UpdatedAt  time.Time
 }
 
+type Gender int
+
+const (
+	NotSet Gender = iota
+	Male
+	Female
+)
+
 type Student struct {
 	Id          string `json:"id" pg:",type:uuid"`
 	Name        string `json:"name"`
 	SchoolId    string `pg:"type:uuid,on_delete:CASCADE"`
 	School      School
 	DateOfBirth *time.Time
+	Classes     []Class `pg:"many2many:student_to_class,joinFK:student_id"`
+	Gender      Gender  `pg:"type:int"`
+	DateOfEntry *time.Time
+	Note        string
+	CustomId    string
+	Active      bool
+	ProfilePic  string
+	Guardians   []Guardian `pg:"many2many:guardian_to_student,joinFK:student_id"`
+}
+
+type Guardian struct {
+	Id       string `pg:"type:uuid"`
+	Name     string `pg:",notnull"`
+	Email    string
+	Phone    string
+	Note     string
+	SchoolId string `pg:"type:uuid"`
+	School   School
+	Children []Student `pg:"many2many:guardian_to_student,joinFK:guardian_id"`
+}
+
+type GuardianRelationship int
+
+const (
+	Others GuardianRelationship = iota
+	Mother
+	Father
+)
+
+type GuardianToStudent struct {
+	StudentId    string `pg:"type:uuid,on_delete:CASCADE"`
+	Student      Student
+	GuardianId   string `pg:"type:uuid,on_delete:CASCADE"`
+	Guardian     Guardian
+	Relationship GuardianRelationship `pg:"type:int"`
+}
+
+type StudentToClass struct {
+	StudentId string `pg:"type:uuid,on_delete:CASCADE"`
+	Student   Student
+	ClassId   string `pg:"type:uuid,on_delete:CASCADE"`
+	Class     Class
 }
 
 type Observation struct {
@@ -130,11 +182,14 @@ type School struct {
 	Users        []User `pg:"many2many:user_to_schools,joinFK:user_id"`
 	CurriculumId string `pg:",type:uuid,on_delete:SET NULL"`
 	Curriculum   Curriculum
+	Guardian     []Guardian
 }
 
 type UserToSchool struct {
 	SchoolId string `pg:",type:uuid"`
+	School   School
 	UserId   string `pg:",type:uuid"`
+	User     User
 }
 
 type User struct {
@@ -163,6 +218,7 @@ type Class struct {
 	StartTime time.Time `pg:",notnull"`
 	EndTime   time.Time `pg:",notnull"`
 	Weekdays  []Weekday
+	Students  []Student `pg:"many2many:student_to_class,joinFK:class_id"`
 }
 
 type Weekday struct {

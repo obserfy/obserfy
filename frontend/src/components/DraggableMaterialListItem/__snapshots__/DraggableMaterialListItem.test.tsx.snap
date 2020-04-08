@@ -253,7 +253,8 @@ exports[`DraggableMaterialListItem should render correctly 1`] = `
     class="emotion-8"
   >
     <li
-      style="will-change: height, transform; position: relative; list-style: none; z-index: 0;"
+      draggable="false"
+      style="will-change: transform; position: relative; list-style: none; z-index: 0; user-select: none;"
     >
       <div
         class="emotion-7"

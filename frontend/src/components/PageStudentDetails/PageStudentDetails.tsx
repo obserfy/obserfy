@@ -51,21 +51,21 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
   )
 
   const listOfObservations = observations.data
-    ?.filter(observation =>
+    ?.filter((observation) =>
       isSameDay(
         Date.parse(observation.createdDate ?? ""),
         Date.parse(dates[selectedDate])
       )
     )
-    ?.map(observation => (
+    ?.map((observation) => (
       <ObservationCard
         key={observation.id}
         observation={observation}
-        onDelete={value => {
+        onDelete={(value) => {
           setTargetObservation(value)
           setIsDeletingObservation(true)
         }}
-        onEdit={value => {
+        onEdit={(value) => {
           setTargetObservation(value)
           setIsEditingObservation(true)
         }}
@@ -218,7 +218,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
   )
 }
 
-const SectionHeader: FC<TextProps> = props => (
+const SectionHeader: FC<TextProps> = (props) => (
   <Typography.H5
     fontWeight="normal"
     color="textMediumEmphasis"

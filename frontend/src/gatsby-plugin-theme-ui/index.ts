@@ -356,7 +356,7 @@ const rebassVariants = {
       fontFamily: "body",
       borderColor: "border",
       backgroundColor: "surface",
-      fontSize: 1,
+      fontSize: 2,
       p: 3,
       height: 180,
       resize: "vertical",

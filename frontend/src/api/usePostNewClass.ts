@@ -1,6 +1,6 @@
 import {
   MutateFunction,
-  MutationState,
+  MutationResult,
   queryCache,
   useMutation,
 } from "react-query"
@@ -17,7 +17,7 @@ interface Class {
 }
 const usePostNewClass = (): [
   MutateFunction<Response, Class>,
-  MutationState<Response>
+  MutationResult<Response>
 ] => {
   const schoolId = getSchoolId()
   const fetchApi = async (newClass: Class): Promise<Response> => {

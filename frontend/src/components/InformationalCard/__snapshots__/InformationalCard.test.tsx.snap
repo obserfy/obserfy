@@ -20,10 +20,16 @@ exports[`InformationalCard should render correctly 1`] = `
   min-width: 0;
   border-width: 1px;
   border-color: var(--theme-ui-colors-warning,#ff6d00);
-  border-radius: 8px;
+  border-radius: 0;
   padding: 16px;
   margin-top: 16px;
   background-color: var(--theme-ui-colors-tintWarning,rgba(255,199,1,0.2));
+}
+
+@media screen and (min-width:40em) {
+  .emotion-7 {
+    border-radius: 8px;
+  }
 }
 
 .emotion-2 {
@@ -206,11 +212,15 @@ exports[`InformationalCard should render correctly 1`] = `
         <div
           class="emotion-4"
         />
-        <button
-          class="emotion-5"
+        <a
+          href="/"
         >
-          A button
-        </button>
+          <button
+            class="emotion-5"
+          >
+            A button
+          </button>
+        </a>
       </div>
     </div>
   </div>

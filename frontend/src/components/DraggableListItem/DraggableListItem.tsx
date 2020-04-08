@@ -45,7 +45,7 @@ export const DraggableListItem: FC<Props> = ({
         return {}
       }}
       style={{
-        willChange: "height, transform",
+        willChange: "transform",
         position: "relative",
         listStyle: "none",
         zIndex: isDragging ? 100 : 0,
@@ -78,11 +78,11 @@ export const DraggableListItem: FC<Props> = ({
           onMouseUp={() => {
             if (isDragging) setIsDragging(false)
           }}
-          onTouchStart={e => {
+          onTouchStart={(e) => {
             setIsDragging(true)
             dragControls.start(e)
           }}
-          onMouseDown={e => {
+          onMouseDown={(e) => {
             setIsDragging(true)
             dragControls.start(e)
           }}

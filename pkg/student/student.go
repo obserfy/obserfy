@@ -11,8 +11,7 @@ import (
 	richErrors "github.com/pkg/errors"
 )
 
-func NewRouter(s rest.Server, store postgres.StudentStore) *chi.Mux {
-	// server := server{s, store}
+func NewRouter(s rest.Server, store Store) *chi.Mux {
 	r := chi.NewRouter()
 	r.Route("/{studentId}", func(r chi.Router) {
 		r.Use(authorizationMiddleware(s, store))
@@ -29,7 +28,8 @@ func NewRouter(s rest.Server, store postgres.StudentStore) *chi.Mux {
 	})
 	return r
 }
-func authorizationMiddleware(s rest.Server, store postgres.StudentStore) func(next http.Handler) http.Handler {
+
+func authorizationMiddleware(s rest.Server, store Store) func(next http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
 		return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 			studentId := chi.URLParam(r, "studentId")
@@ -55,7 +55,8 @@ func authorizationMiddleware(s rest.Server, store postgres.StudentStore) func(ne
 		})
 	}
 }
-func getStudent(s rest.Server, store postgres.StudentStore) http.Handler {
+
+func getStudent(s rest.Server, store Store) http.Handler {
 	type responseBody struct {
 		Id          string     `json:"id"`
 		Name        string     `json:"name"`
@@ -81,7 +82,7 @@ func getStudent(s rest.Server, store postgres.StudentStore) http.Handler {
 	})
 }
 
-func deleteStudent(s rest.Server, store postgres.StudentStore) http.Handler {
+func deleteStudent(s rest.Server, store Store) http.Handler {
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		studentId := chi.URLParam(r, "studentId") // from a route like /users/{userID}
 		if err := store.Delete(studentId); err != nil {
@@ -91,7 +92,7 @@ func deleteStudent(s rest.Server, store postgres.StudentStore) http.Handler {
 	})
 }
 
-func putStudent(s rest.Server, store postgres.StudentStore) http.Handler {
+func putStudent(s rest.Server, store Store) http.Handler {
 	type requestBody struct {
 		Name        string     `json:"name"`
 		DateOfBirth *time.Time `json:"dateOfBirth"`
@@ -133,7 +134,7 @@ func putStudent(s rest.Server, store postgres.StudentStore) http.Handler {
 	})
 }
 
-func postObservation(s rest.Server, store postgres.StudentStore) http.Handler {
+func postObservation(s rest.Server, store Store) http.Handler {
 	type requestBody struct {
 		ShortDesc  string     `json:"shortDesc"`
 		LongDesc   string     `json:"longDesc"`
@@ -186,7 +187,7 @@ func postObservation(s rest.Server, store postgres.StudentStore) http.Handler {
 	})
 }
 
-func getObservation(s rest.Server, store postgres.StudentStore) http.Handler {
+func getObservation(s rest.Server, store Store) http.Handler {
 	type observation struct {
 		Id          string     `json:"id"`
 		StudentName string     `json:"studentName"`
@@ -232,7 +233,7 @@ func getObservation(s rest.Server, store postgres.StudentStore) http.Handler {
 	})
 }
 
-func getMaterialProgress(s rest.Server, store postgres.StudentStore) http.Handler {
+func getMaterialProgress(s rest.Server, store Store) http.Handler {
 	type responseBody struct {
 		AreaId       string    `json:"areaId"`
 		MaterialName string    `json:"materialName"`
@@ -268,7 +269,7 @@ func getMaterialProgress(s rest.Server, store postgres.StudentStore) http.Handle
 	})
 }
 
-func upsertMaterialProgress(s rest.Server, store postgres.StudentStore) http.Handler {
+func upsertMaterialProgress(s rest.Server, store Store) http.Handler {
 	type requestBody struct {
 		Stage int `json:"stage"`
 	}

@@ -65,7 +65,7 @@ export const PageAnalyze: FC = () => {
           </Button>
         </Flex>
         <Flex pl={3} pr={2} py={3} flexWrap="wrap">
-          {areas.data?.map(area => {
+          {areas.data?.map((area) => {
             const isActive = area.id === selectedAreaId
             return (
               <Box
@@ -107,7 +107,8 @@ export const PageAnalyze: FC = () => {
             <ObservationCard
               studentId={students.data?.[selectedStudentIdx]?.id ?? ""}
               areaName={
-                areas.data?.find(area => area.id === selectedAreaId)?.name ?? ""
+                areas.data?.find((area) => area.id === selectedAreaId)?.name ??
+                ""
               }
             />
           </Box>
@@ -117,7 +118,7 @@ export const PageAnalyze: FC = () => {
         <SelectStudentDialog
           onDismiss={() => setShowStudentSelector(false)}
           students={students.data ?? []}
-          onSelected={index => {
+          onSelected={(index) => {
             setSelectedStudentIdx(index)
             setShowStudentSelector(false)
           }}
@@ -145,7 +146,7 @@ const MaterialProgressCard: FC<{ studentId: string; areaId: string }> = ({
   if (areaProgress.error) return <Box />
 
   const selectedAreaProgress = areaProgress.data?.filter(
-    area => area.areaId === areaId && area.stage !== -1
+    (area) => area.areaId === areaId && area.stage !== -1
   )
 
   if (!selectedAreaProgress?.length) return <Box />
@@ -157,7 +158,7 @@ const MaterialProgressCard: FC<{ studentId: string; areaId: string }> = ({
       </Box>
       <Card borderRadius={[0, "default"]} mb={[4]} width="100%">
         <Box>
-          {selectedAreaProgress?.map(progress => {
+          {selectedAreaProgress?.map((progress) => {
             const stage = materialStageToString(progress.stage)
             return (
               <Box
@@ -197,7 +198,7 @@ const ObservationCard: FC<{ studentId: string; areaName: string }> = ({
 }) => {
   const observations = useGetObservations(studentId)
   const filteredObservation = observations.data?.filter(
-    observation =>
+    (observation) =>
       categories[observation.categoryId].name.toLowerCase() ===
       areaName.toLocaleLowerCase()
   )
@@ -208,7 +209,7 @@ const ObservationCard: FC<{ studentId: string; areaName: string }> = ({
     <>
       <Typography.H6 p={3}>OBSERVATIONS</Typography.H6>
       <Card borderRadius={[0, "default"]} width="100%">
-        {filteredObservation?.map(observation => {
+        {filteredObservation?.map((observation) => {
           return (
             <Box
               key={observation.id}
@@ -239,7 +240,7 @@ const SelectStudentDialog: FC<{
   const [search, setSearch] = useState("")
   const [selectedIdx, setSelectedIdx] = useState<number>()
 
-  const matchedStudent = students.filter(student =>
+  const matchedStudent = students.filter((student) =>
     student.name.match(new RegExp(search, "i"))
   )
 
@@ -291,11 +292,11 @@ const SelectStudentDialog: FC<{
                 width="100%"
                 label="Search"
                 value={search}
-                onChange={e => setSearch(e.target.value)}
+                onChange={(e) => setSearch(e.target.value)}
               />
             </Box>
             <Box mb={200}>
-              {matchedStudent.map(student => {
+              {matchedStudent.map((student) => {
                 const studentIdx = students.findIndex(
                   ({ id }) => id === student.id
                 )

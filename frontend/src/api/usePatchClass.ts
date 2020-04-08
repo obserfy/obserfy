@@ -1,6 +1,6 @@
 import {
   MutateFunction,
-  MutationState,
+  MutationResult,
   queryCache,
   useMutation,
 } from "react-query"
@@ -16,7 +16,7 @@ interface Class {
 }
 const usePatchClass = (
   classId: string
-): [MutateFunction<Response, Class>, MutationState<Response>] => {
+): [MutateFunction<Response, Class>, MutationResult<Response>] => {
   const fetchApi = async (newClass: Class): Promise<Response> => {
     const result = await fetch(`${BASE_URL}/classes/${classId}`, {
       credentials: "same-origin",
