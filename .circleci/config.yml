@@ -162,7 +162,10 @@ jobs:
     steps:
       - checkout
       - run: |
-          sudo apt update && sudo apt install docker-ce cargo nodejs
+          sudo apt update && sudo apt install docker-ce cargo
+          nvm install v12
+          node -v
+          nvm alias default v12
           npm install -g yarn
       - run: |
           yarn global add git
