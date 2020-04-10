@@ -83,6 +83,7 @@ export const PagePickGuardian: FC = () => {
                 Cancel
               </Button>
               <Button
+                disabled={name === ""}
                 onClick={async () => {
                   const result = await mutate({
                     email,
