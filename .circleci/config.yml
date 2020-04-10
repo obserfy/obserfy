@@ -155,12 +155,15 @@ jobs:
           cd frontend
           yarn typecheck
 
-  versioning:
-    docker:
-      - image: node:12
+  deploy:
+    machine:
+      image: ubuntu-1604:201903-01
     working_directory: ~/repo
     steps:
       - checkout
+      - run: |
+          sudo apt update && sudo apt install docker-ce cargo nodejs
+          npm install -g yarn
       - run: |
           yarn global add git
           git config --global user.email "chrsep@protonmail.com"
@@ -170,16 +173,6 @@ jobs:
           standard-version -m 'chore(release): %s [skip ci]' --releaseCommitMessageFormat --no-verify
       - run: |
           git push --follow-tags origin master
-
-  deploy:
-    machine:
-      image: ubuntu-1604:201903-01
-    working_directory: ~/repo
-    steps:
-      - checkout
-      - run: VERSION=$(cat VERSION)
-      - run: |
-          sudo apt update && sudo apt install docker-ce
       - run: |
           cd frontend
           echo "GA_CLIENT_EMAIL=$GA_CLIENT_EMAIL" >> .env
@@ -191,15 +184,11 @@ jobs:
           VERSION=$(cat VERSION)
           echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_LOGIN" --password-stdin
           docker push chrsep/vor:$VERSION
-
-  sentry_release:
-    docker:
-      - image: getsentry/sentry-cli:latest
-    working_directory: ~/repo
-    steps:
-      - checkout
       - run: |
-          VERSION=$(sentry-cli releases propose-version)
+          yarn global add @sentry/cli
+          cargo build
+      - run: |
+          VERSION=$(cat VERSION)
           sentry-cli releases -p frontend new $VERSION
           sentry-cli releases -p frontend set-commits --auto $VERSION
           sentry-cli releases -p frontend finalize $VERSION
@@ -229,7 +218,7 @@ workflows:
       - e2e:
           requires:
             - frontend_build
-      - versioning:
+      - deploy:
           filters:
             branches:
               only:
@@ -240,14 +229,3 @@ workflows:
             - frontend_unit
             - frontend_lint
             - frontend_typecheck
-      - deploy:
-          filters:
-            branches:
-              only:
-                - master
-          requires:
-            - versioning
-
-      - sentry_release:
-          requires:
-            - deploy

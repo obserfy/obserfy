@@ -22,7 +22,7 @@ func NewRouter(s rest.Server, store Store) *chi.Mux {
 		r.Method("POST","class",registerClass(s,store))
 		r.Method("POST", "/observations", postObservation(s, store))
 		r.Method("GET", "/observations", getObservation(s, store))
-
+r.Method("POST","/attendance",registerAttendance(s,store))
 		r.Method("GET", "/materialsProgress", getMaterialProgress(s, store))
 		r.Method("PATCH", "/materialsProgress/{materialId}", upsertMaterialProgress(s, store))
 	})
@@ -75,6 +75,26 @@ func registerClass(s rest.Server, store Store) http.Handler {
 			DateOfBirth: student.DateOfBirth,
 		}
 		if err := rest.WriteJson(w, response); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
+		return nil
+	})
+}
+func registerAttendance(s rest.Server, store Store) http.Handler {
+	type requestBody struct {
+		StudentId          string     `json:"studentId"`
+		ClassId        string     `json:"classId"`
+	}
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		var requestBody requestBody
+		if err := rest.ParseJson(r.Body, &requestBody); err != nil {
+			return rest.NewParseJsonError(err)
+		}
+		attendance, err := store.InsertAttendance(requestBody.StudentId,requestBody.ClassId)
+		if err != nil {
+			return &rest.Error{http.StatusNotFound, "Can't create attendance", err}
+		}
+		if err := rest.WriteJson(w, attendance); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
 		return nil
