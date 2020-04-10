@@ -164,6 +164,7 @@ jobs:
       - run: |
           sudo apt update && sudo apt install docker-ce cargo nodejs
           npm install -g yarn
+          npm upgrade -g yarn
       - run: |
           yarn global add git
           git config --global user.email "chrsep@protonmail.com"
