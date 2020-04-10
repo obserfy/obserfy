@@ -49,6 +49,7 @@ func InitTables(db *pg.DB) error {
 		(*Observation)(nil),
 		(*Session)(nil),
 		(*UserToSchool)(nil),
+		(*Attendance)(nil),
 		(*PasswordResetToken)(nil),
 	} {
 		err := db.CreateTable(model, &orm.CreateTableOptions{IfNotExists: true, FKConstraints: true})
@@ -184,7 +185,15 @@ type School struct {
 	Curriculum   Curriculum
 	Guardian     []Guardian
 }
+type Attendance struct {
+	Id string `json:"id" pg:",type:uuid"`
+	StudentId string `pg:"type:uuid,on_delete:CASCADE"`
+	Student   Student
+	ClassId   string `pg:"type:uuid,on_delete:CASCADE"`
+	Class     Class
+	Date time.Time `json:"date"`
 
+}
 type UserToSchool struct {
 	SchoolId string `pg:",type:uuid"`
 	School   School
