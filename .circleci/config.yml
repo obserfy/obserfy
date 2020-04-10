@@ -162,6 +162,9 @@ jobs:
     steps:
       - checkout
       - run: |
+          echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
+          echo ' [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
+      - run: |
           sudo apt update && sudo apt install docker-ce cargo
           nvm install v12
           node -v
