@@ -1,5 +1,4 @@
-import { get, set } from "idb-keyval"
-import { useEffect, useRef } from "react"
+import { useEffect, useMemo, useRef } from "react"
 import { NewStudentFormData } from "./PageNewStudent"
 
 const CACHE_KEY = "newStudentFormCache"
@@ -9,7 +8,7 @@ export const useCacheNewStudentFormData = (data: NewStudentFormData): void => {
 
   useEffect(() => {
     if (isMounted.current) {
-      set(CACHE_KEY, data)
+      window.localStorage.setItem(CACHE_KEY, JSON.stringify(data))
     } else {
       isMounted.current = true
     }
@@ -17,15 +16,13 @@ export const useCacheNewStudentFormData = (data: NewStudentFormData): void => {
 }
 
 export const useGetNewStudentFormCache = (
-  updateStateCallback: (data: NewStudentFormData) => void
-): void => {
-  useEffect(() => {
-    const getCache = async (): Promise<void> => {
-      const cache = await get<NewStudentFormData>(CACHE_KEY)
-      if (cache !== undefined) {
-        updateStateCallback(cache)
-      }
+  defaultValue: NewStudentFormData
+): NewStudentFormData => {
+  return useMemo((): NewStudentFormData => {
+    const cachedData = window.localStorage.getItem(CACHE_KEY)
+    if (cachedData) {
+      return JSON.parse(cachedData)
     }
-    getCache()
-  }, [updateStateCallback])
+    return defaultValue
+  }, [defaultValue])
 }

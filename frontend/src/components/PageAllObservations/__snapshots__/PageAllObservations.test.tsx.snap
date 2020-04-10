@@ -312,6 +312,7 @@ exports[`PageAllObservations should render correctly 1`] = `
     >
       <a
         href="/dashboard/observe/students/details?id=sadfasdf"
+        state="[object Object]"
       >
         <div
           class="emotion-2"

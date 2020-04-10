@@ -1091,6 +1091,7 @@ exports[`PageNewStudent should render correctly 1`] = `
     >
       <a
         href="/dashboard/observe"
+        state="[object Object]"
       >
         <div
           class="emotion-2"

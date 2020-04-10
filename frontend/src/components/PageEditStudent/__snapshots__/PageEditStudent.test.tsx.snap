@@ -599,6 +599,7 @@ exports[`PageEditStudent should render correctly 1`] = `
       >
         <a
           href="/dashboard/observe/students/details?id=jkasdfjaksjdfh"
+          state="[object Object]"
         >
           <div
             class="emotion-12"

@@ -294,6 +294,7 @@ exports[`PagePickGuardian should render correctly 1`] = `
     >
       <a
         href="/dashboard/observe/students/new"
+        state="[object Object]"
       >
         <div
           class="emotion-2"

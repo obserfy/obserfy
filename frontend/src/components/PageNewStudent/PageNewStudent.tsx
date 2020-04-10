@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useState } from "react"
+import React, { FC, useState } from "react"
 import { useImmer } from "use-immer"
 import { Link, navigate } from "gatsby-plugin-intl3"
 import { useGetGuardian } from "../../api/useGetGuardian"
@@ -69,17 +69,29 @@ interface Props {
 }
 
 export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
-  const [name, setName] = useState("")
-  const [picture, setPicture] = useState<File>()
-  const [customId, setCustomId] = useState("")
-  const [note, setNotes] = useState("")
-  const [gender, setGender] = useState<Gender>(Gender.NotSet)
-  const [dateOfBirth, setDateOfBirth] = useState<Date>()
-  const [dateOfEntry, setDateOfEntry] = useState<Date>()
+  const cachedData = useGetNewStudentFormCache(DEFAULT_FORM_STATE)
+
+  const [name, setName] = useState(cachedData.name)
+  const [picture, setPicture] = useState(cachedData.picture)
+  const [customId, setCustomId] = useState(cachedData.customId)
+  const [note, setNotes] = useState(cachedData.note)
+  const [gender, setGender] = useState<Gender>(cachedData.gender)
+  const [dateOfBirth, setDateOfBirth] = useState(cachedData.dateOfBirth)
+  const [dateOfEntry, setDateOfEntry] = useState(cachedData.dateOfEntry)
   const [guardians, setGuardians] = useImmer<NewStudentFormData["guardians"]>(
-    []
+    () => {
+      if (
+        newGuardian &&
+        !cachedData.guardians.map(({ id }) => id).includes(newGuardian.id)
+      ) {
+        cachedData.guardians.push(newGuardian)
+      }
+      return cachedData.guardians
+    }
   )
-  const [selectedClasses, setSelectedClasses] = useImmer<string[]>([])
+  const [selectedClasses, setSelectedClasses] = useImmer(
+    cachedData.selectedClasses
+  )
   const [mutate] = usePostNewStudent()
   const classes = useGetSchoolClasses()
   const isFormInvalid = name === ""
@@ -96,29 +108,17 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
     selectedClasses,
   })
 
-  const updateAllFormState = useCallback(
-    (cachedData: NewStudentFormData) => {
-      setName(cachedData.name)
-      setPicture(cachedData.picture)
-      setCustomId(cachedData.customId)
-      setNotes(cachedData.note)
-      setGender(cachedData.gender)
-      setDateOfBirth(cachedData.dateOfBirth)
-      setDateOfEntry(cachedData.dateOfEntry)
-      setSelectedClasses(() => cachedData.selectedClasses)
-      setGuardians(() => {
-        if (
-          newGuardian &&
-          !cachedData.guardians.map(({ id }) => id).includes(newGuardian.id)
-        ) {
-          cachedData.guardians.push(newGuardian)
-        }
-        return cachedData.guardians
-      })
-    },
-    [newGuardian, setGuardians, setSelectedClasses]
-  )
-  useGetNewStudentFormCache(updateAllFormState)
+  const updateAllFormState = (data: NewStudentFormData): void => {
+    setName(data.name)
+    setPicture(data.picture)
+    setCustomId(data.customId)
+    setNotes(data.note)
+    setGender(data.gender)
+    setDateOfBirth(data.dateOfBirth)
+    setDateOfEntry(data.dateOfEntry)
+    setSelectedClasses(() => data.selectedClasses)
+    setGuardians(() => data.guardians)
+  }
 
   return (
     <>
