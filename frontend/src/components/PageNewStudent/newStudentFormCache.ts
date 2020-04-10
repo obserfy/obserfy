@@ -1,25 +1,48 @@
 import { useEffect, useMemo, useRef } from "react"
+import { get, set } from "idb-keyval"
 import { NewStudentFormData } from "./PageNewStudent"
 
 const CACHE_KEY = "newStudentFormCache"
 
-export const useCacheNewStudentFormData = (data: NewStudentFormData): void => {
+export const useCacheNewStudentFormData = (
+  data: NewStudentFormData,
+  picture?: File
+): void => {
   const isMounted = useRef(false)
 
   useEffect(() => {
     if (isMounted.current) {
-      window.localStorage.setItem(CACHE_KEY, JSON.stringify(data))
+      localStorage.setItem(CACHE_KEY, JSON.stringify(data))
+      if (picture) {
+        set(CACHE_KEY, picture)
+      }
     } else {
       isMounted.current = true
     }
-  }, [data])
+  }, [picture, data])
 }
 
 export const useGetNewStudentFormCache = (
-  defaultValue: NewStudentFormData
+  defaultValue: NewStudentFormData,
+  pictureCallback: (file: File) => void
 ): NewStudentFormData => {
+  useEffect(() => {
+    let isCancelled = false
+    const loadPicture = async (): Promise<void> => {
+      const cachedPicture = await get<File>(CACHE_KEY)
+      if (!isCancelled) {
+        pictureCallback(cachedPicture)
+      }
+    }
+    loadPicture()
+    return () => {
+      isCancelled = true
+    }
+  }, [pictureCallback])
+
   return useMemo((): NewStudentFormData => {
-    const cachedData = window.localStorage.getItem(CACHE_KEY)
+    const cachedData =
+      typeof localStorage !== "undefined" && localStorage.getItem(CACHE_KEY)
     if (cachedData) {
       return JSON.parse(cachedData)
     }

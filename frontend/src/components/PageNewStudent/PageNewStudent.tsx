@@ -69,10 +69,10 @@ interface Props {
 }
 
 export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
-  const cachedData = useGetNewStudentFormCache(DEFAULT_FORM_STATE)
+  const [picture, setPicture] = useState<File>()
+  const cachedData = useGetNewStudentFormCache(DEFAULT_FORM_STATE, setPicture)
 
   const [name, setName] = useState(cachedData.name)
-  const [picture, setPicture] = useState(cachedData.picture)
   const [customId, setCustomId] = useState(cachedData.customId)
   const [note, setNotes] = useState(cachedData.note)
   const [gender, setGender] = useState<Gender>(cachedData.gender)
@@ -96,17 +96,19 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
   const classes = useGetSchoolClasses()
   const isFormInvalid = name === ""
 
-  useCacheNewStudentFormData({
-    name,
-    picture,
-    customId,
-    note,
-    gender,
-    dateOfBirth,
-    dateOfEntry,
-    guardians,
-    selectedClasses,
-  })
+  useCacheNewStudentFormData(
+    {
+      name,
+      customId,
+      note,
+      gender,
+      dateOfBirth,
+      dateOfEntry,
+      guardians,
+      selectedClasses,
+    },
+    picture
+  )
 
   const updateAllFormState = (data: NewStudentFormData): void => {
     setName(data.name)
