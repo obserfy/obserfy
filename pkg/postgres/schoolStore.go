@@ -249,7 +249,7 @@ func (s SchoolStore) GetSchoolClasses(schoolId string) ([]Class, error) {
 	return classes, nil
 }
 
-func (s SchoolStore) NewGuardian(schoolId string, name string, email string, phone string, note string) error {
+func (s SchoolStore) NewGuardian(schoolId string, name string, email string, phone string, note string) (Guardian, error) {
 	guardian := Guardian{
 		Id:       uuid.New().String(),
 		Name:     name,
@@ -259,7 +259,7 @@ func (s SchoolStore) NewGuardian(schoolId string, name string, email string, pho
 		SchoolId: schoolId,
 	}
 	_, err := s.Model(&guardian).Insert()
-	return err
+	return guardian, err
 }
 
 func (s SchoolStore) GetGuardians(schoolId string) ([]Guardian, error) {

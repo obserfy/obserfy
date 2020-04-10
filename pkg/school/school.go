@@ -500,6 +500,13 @@ func postNewGuardian(server rest.Server, store postgres.SchoolStore) http.Handle
 		Phone string `json:"phone"`
 		Note  string `json:"note"`
 	}
+	type responseBody struct {
+		Id    string `json:"id"`
+		Name  string `json:"name"`
+		Email string `json:"email"`
+		Phone string `json:"phone"`
+		Note  string `json:"note"`
+	}
 	validate := validator.New()
 
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
@@ -517,13 +524,14 @@ func postNewGuardian(server rest.Server, store postgres.SchoolStore) http.Handle
 			}
 		}
 
-		if err := store.NewGuardian(
+		newGuardian, err := store.NewGuardian(
 			schoolId,
 			body.Name,
 			body.Email,
 			body.Phone,
 			body.Note,
-		); err != nil {
+		)
+		if err != nil {
 			return &rest.Error{
 				Code:    http.StatusInternalServerError,
 				Message: "failed to save guardian",
@@ -532,6 +540,15 @@ func postNewGuardian(server rest.Server, store postgres.SchoolStore) http.Handle
 		}
 
 		w.WriteHeader(http.StatusCreated)
+		if err := rest.WriteJson(w, &responseBody{
+			Id:    newGuardian.Id,
+			Name:  newGuardian.Name,
+			Email: newGuardian.Email,
+			Phone: newGuardian.Phone,
+			Note:  newGuardian.Note,
+		}); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
 		return nil
 	})
 }

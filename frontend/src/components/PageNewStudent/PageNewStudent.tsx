@@ -1,6 +1,7 @@
 import React, { FC, useCallback, useState } from "react"
 import { useImmer } from "use-immer"
 import { Link, navigate } from "gatsby-plugin-intl3"
+import { useGetGuardian } from "../../api/useGetGuardian"
 import Box from "../Box/Box"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import Input from "../Input/Input"
@@ -17,12 +18,20 @@ import InformationalCard from "../InformationalCard/InformationalCard"
 import { CLASS_SETTINGS_URL } from "../../pages/dashboard/settings/class"
 import Card from "../Card/Card"
 import ProfilePicker from "../ProfilePicker/ProfilePicker"
-import { Gender, usePostNewStudent } from "../../api/students/usePostNewStudent"
+import {
+  Gender,
+  GuardianRelationship,
+  usePostNewStudent,
+} from "../../api/students/usePostNewStudent"
 import { PICK_GUARDIAN_URL } from "../../pages/dashboard/observe/students/guardians/pick"
+import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
 import {
   useCacheNewStudentFormData,
   useGetNewStudentFormCache,
 } from "./newStudentFormCache"
+import { NEW_STUDENT_URL } from "../../pages/dashboard/observe/students/new"
+import Icon from "../Icon/Icon"
+import Pill from "../Pill/Pill"
 
 export interface NewStudentFormData {
   name: string
@@ -32,7 +41,10 @@ export interface NewStudentFormData {
   gender: Gender
   dateOfBirth?: Date
   dateOfEntry?: Date
-  guardians: string[]
+  guardians: Array<{
+    id: string
+    relationship: GuardianRelationship
+  }>
   selectedClasses: string[]
 }
 
@@ -48,7 +60,14 @@ const DEFAULT_FORM_STATE: NewStudentFormData = {
   name: "",
 }
 
-export const PageNewStudent: FC = () => {
+interface Props {
+  newGuardianId?: {
+    id: string
+    relationship: GuardianRelationship
+  }
+}
+
+export const PageNewStudent: FC<Props> = ({ newGuardianId }) => {
   const [name, setName] = useState("")
   const [picture, setPicture] = useState<File>()
   const [customId, setCustomId] = useState("")
@@ -56,7 +75,9 @@ export const PageNewStudent: FC = () => {
   const [gender, setGender] = useState<Gender>(Gender.NotSet)
   const [dateOfBirth, setDateOfBirth] = useState<Date>()
   const [dateOfEntry, setDateOfEntry] = useState<Date>()
-  const [guardians, setGuardians] = useImmer<string[]>([])
+  const [guardians, setGuardians] = useImmer<NewStudentFormData["guardians"]>(
+    []
+  )
   const [selectedClasses, setSelectedClasses] = useImmer<string[]>([])
   const [mutate] = usePostNewStudent()
   const classes = useGetSchoolClasses()
@@ -83,10 +104,15 @@ export const PageNewStudent: FC = () => {
       setGender(cachedData.gender)
       setDateOfBirth(cachedData.dateOfBirth)
       setDateOfEntry(cachedData.dateOfEntry)
-      setGuardians(() => cachedData.guardians)
       setSelectedClasses(() => cachedData.selectedClasses)
+      setGuardians(() => {
+        if (newGuardianId && !cachedData.guardians.includes(newGuardianId)) {
+          cachedData.guardians.push(newGuardianId)
+        }
+        return cachedData.guardians
+      })
     },
-    [setGuardians, setSelectedClasses]
+    [newGuardianId, setGuardians, setSelectedClasses]
   )
   useGetNewStudentFormCache(updateAllFormState)
 
@@ -199,14 +225,21 @@ export const PageNewStudent: FC = () => {
             </Typography.Body>
           </Card>
         )}
+        {guardians.map((guardian) => (
+          <GuardianCard
+            key={guardian.id}
+            id={guardian.id}
+            relationship={guardian.relationship}
+          />
+        ))}
         <Flex p={3} mt={3}>
           <Button
             variant="outline"
             mr={3}
             color="danger"
             onClick={() => {
-              window.scrollTo(0, 0)
               updateAllFormState(DEFAULT_FORM_STATE)
+              navigate(NEW_STUDENT_URL)
             }}
           >
             Clear
@@ -258,115 +291,46 @@ const EmptyClassDataPlaceholder: FC = () => (
   </Box>
 )
 
-// export interface Guardian {
-//   id: string
-//   name: string
-//   email: string
-//   phone: string
-//   note: string
-//   relationship: GuardianRelationship
-// }
+const GuardianCard: FC<{ id: string; relationship: GuardianRelationship }> = ({
+  id,
+  relationship,
+}) => {
+  const guardian = useGetGuardian(id)
 
-// const GuardianForm: FC<{
-//   value: Guardian
-//   onChange: (newValue: Guardian) => void
-//   onDelete: (id: string) => void
-// }> = ({ value, onChange, onDelete }) => {
-//   const [showDeleteDialog, setShowDeleteDialog] = useState(false)
-//
-//   return (
-//     <>
-//       <Flex alignItems="flex-start" mb={4}>
-//         <Box pl={3} pr={0} width="100%">
-//           <Input
-//             value={value.name}
-//             mb={2}
-//             label="Name"
-//             width="100%"
-//             onChange={(event) =>
-//               onChange({
-//                 ...value,
-//                 name: event.target.value,
-//               })
-//             }
-//           />
-//           <Select
-//             label="Relationship"
-//             mb={2}
-//             onChange={(e) =>
-//               onChange({ ...value, relationship: parseInt(e.target.value, 10) })
-//             }
-//           >
-//             <option value={GuardianRelationship.Other}>Other</option>
-//             <option value={GuardianRelationship.Mother}>Mother</option>
-//             <option value={GuardianRelationship.Father}>Father</option>
-//           </Select>
-//           <Input
-//             type="email"
-//             value={value.email}
-//             mb={2}
-//             label="Email"
-//             width="100%"
-//             onChange={(event) =>
-//               onChange({
-//                 ...value,
-//                 email: event.target.value,
-//               })
-//             }
-//           />
-//           <Input
-//             type="phone"
-//             value={value.phone}
-//             mb={2}
-//             label="Phone"
-//             width="100%"
-//             onChange={(event) =>
-//               onChange({
-//                 ...value,
-//                 phone: event.target.value,
-//               })
-//             }
-//           />
-//           <TextArea
-//             value={value.note}
-//             label="Notes"
-//             width="100%"
-//             height={100}
-//             onChange={(event) =>
-//               onChange({
-//                 ...value,
-//                 note: event.target.value,
-//               })
-//             }
-//           />
-//         </Box>
-//
-//         <Button
-//           variant="secondary"
-//           m={0}
-//           p={0}
-//           mt={22}
-//           sx={{ flexShrink: 0 }}
-//           onClick={() => setShowDeleteDialog(true)}
-//         >
-//           <Icon as={TrashIcon} fill="danger" />
-//         </Button>
-//       </Flex>
-//       {showDeleteDialog && (
-//         <WarningDialog
-//           title="Delete Guardian?"
-//           onDismiss={() => setShowDeleteDialog(false)}
-//           onAccept={() => {
-//             onDelete(value.id)
-//             setShowDeleteDialog(false)
-//           }}
-//           description={`${
-//             value.name === "" ? "This guardian" : value.name
-//           } will be removed.`}
-//         />
-//       )}
-//     </>
-//   )
-// }
+  return (
+    <Card borderRadius={[0, 3]} p={3} pr={2} mb={2} display="flex">
+      <Flex alignItems="start" width="100%" flexDirection="column">
+        <Typography.Body lineHeight={1} mb={3}>
+          {guardian.data?.name}
+        </Typography.Body>
+        <Pill
+          {...(() => {
+            switch (relationship) {
+              case GuardianRelationship.Father:
+                return { text: "Father", backgroundColor: "orange" }
+              case GuardianRelationship.Mother:
+                return {
+                  text: "Mother",
+                  backgroundColor: "primary",
+                  color: "onPrimary",
+                }
+              case GuardianRelationship.Other:
+                return {
+                  text: "Other",
+                  backgroundColor: "",
+                  color: "onSurface",
+                }
+              default:
+                return { text: "N/A", backgroundColor: "", color: "onSurface" }
+            }
+          })()}
+        />
+      </Flex>
+      <Button variant="secondary" ml="auto">
+        <Icon as={TrashIcon} m={0} />
+      </Button>
+    </Card>
+  )
+}
 
 export default PageNewStudent

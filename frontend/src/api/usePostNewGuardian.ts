@@ -1,14 +1,13 @@
-import { useMutation, MutateFunction, MutationResult } from "react-query"
+import { MutateFunction, MutationResult, useMutation } from "react-query"
 import { navigate } from "gatsby"
-import { GuardianRelationship } from "./students/usePostNewStudent"
 import { ApiError, BASE_URL } from "./useApi"
 import { getSchoolId } from "../hooks/schoolIdState"
 
 interface NewGuardian {
   name: string
-  relationship: GuardianRelationship
   email: string
   phone: string
+  note: string
 }
 
 export const usePostNewGuardian = (): [

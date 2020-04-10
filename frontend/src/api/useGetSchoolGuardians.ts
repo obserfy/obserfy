@@ -9,10 +9,8 @@ interface Guardians {
   note: string
   phone: string
 }
-export const useGetGuardians = (): QueryResult<Guardians[]> => {
+export const useGetSchoolGuardians = (): QueryResult<Guardians[]> => {
   const schoolId = getSchoolId()
-  const fetchObservation = fetchApi<Guardians[]>(
-    `/schools/${schoolId}/guardians`
-  )
-  return useQuery(["guardians", { schoolId }], fetchObservation)
+  const fetchGuardians = fetchApi<Guardians[]>(`/schools/${schoolId}/guardians`)
+  return useQuery(["guardians", { schoolId }], fetchGuardians)
 }

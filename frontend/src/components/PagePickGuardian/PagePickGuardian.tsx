@@ -14,14 +14,16 @@ import Button from "../Button/Button"
 import Flex from "../Flex/Flex"
 import { usePostNewGuardian } from "../../api/usePostNewGuardian"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
-import { useGetGuardians } from "../../api/useGetGuardians"
+import { useGetSchoolGuardians } from "../../api/useGetSchoolGuardians"
+import TextArea from "../TextArea/TextArea"
 
 export const PagePickGuardian: FC = () => {
-  const guardians = useGetGuardians()
+  const guardians = useGetSchoolGuardians()
 
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [phone, setPhone] = useState("")
+  const [note, setNote] = useState("")
   const [relationship, setRelationship] = useState<GuardianRelationship>(0)
   const [createNew, setCreateNew] = useState(false)
   const [mutate, { status }] = usePostNewGuardian()
@@ -65,6 +67,12 @@ export const PagePickGuardian: FC = () => {
               width="100%"
               onChange={(event) => setPhone(event.target.value)}
             />
+            <TextArea
+              mb={3}
+              label="Note"
+              value={note}
+              onChange={(e) => setNote(e.target.value)}
+            />
             <Flex>
               <Button
                 ml="auto"
@@ -80,10 +88,19 @@ export const PagePickGuardian: FC = () => {
                     email,
                     name,
                     phone,
-                    relationship,
+                    note,
                   })
                   if (result.status === 201) {
-                    await navigate(NEW_STUDENT_URL)
+                    const resultJson = await result.json()
+                    await navigate(NEW_STUDENT_URL, {
+                      state: {
+                        guardian: {
+                          id: resultJson.id,
+                          relationship,
+                        },
+                        preserveScroll: true,
+                      },
+                    })
                   }
                 }}
               >
@@ -99,30 +116,42 @@ export const PagePickGuardian: FC = () => {
           <Typography.Body mx={3} mb={2} mt={4} color="textMediumEmphasis">
             Select a guardian or create one
           </Typography.Body>
-          {guardians.data?.map((guardian) => (
-            <Link
-              to={NEW_STUDENT_URL}
-              state={{ guardianId: guardian.id, preserveScroll: true }}
-              key={guardian.id}
-            >
-              <Card
-                p={3}
-                borderRadius={[0, "default"]}
-                display="flex"
-                mx={[0, 3]}
-                mb={2}
-                sx={{
-                  alignItems: "flex-start",
-                  cursor: "pointer",
-                  "&:hover": {
-                    backgroundColor: "primaryLightest",
+          {guardians.data
+            ?.filter((guardian) => {
+              return guardian.name
+                .toLowerCase()
+                .includes(name.toLocaleLowerCase())
+            })
+            ?.map((guardian) => (
+              <Link
+                to={NEW_STUDENT_URL}
+                state={{
+                  guardian: {
+                    id: guardian.id,
+                    relationship,
                   },
+                  preserveScroll: true,
                 }}
+                key={guardian.id}
               >
-                <Typography.Body>{guardian.name}</Typography.Body>
-              </Card>
-            </Link>
-          ))}
+                <Card
+                  p={3}
+                  borderRadius={[0, "default"]}
+                  display="flex"
+                  mx={[0, 3]}
+                  mb={2}
+                  sx={{
+                    alignItems: "flex-start",
+                    cursor: "pointer",
+                    "&:hover": {
+                      backgroundColor: "primaryLightest",
+                    },
+                  }}
+                >
+                  <Typography.Body>{guardian.name}</Typography.Body>
+                </Card>
+              </Link>
+            ))}
           <Card
             p={3}
             borderRadius={[0, "default"]}
