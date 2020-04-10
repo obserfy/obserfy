@@ -32,6 +32,7 @@ import {
 import { NEW_STUDENT_URL } from "../../pages/dashboard/observe/students/new"
 import Icon from "../Icon/Icon"
 import Pill from "../Pill/Pill"
+import WarningDialog from "../WarningDialog/WarningDialog"
 
 export interface NewStudentFormData {
   name: string
@@ -61,13 +62,13 @@ const DEFAULT_FORM_STATE: NewStudentFormData = {
 }
 
 interface Props {
-  newGuardianId?: {
+  newGuardian?: {
     id: string
     relationship: GuardianRelationship
   }
 }
 
-export const PageNewStudent: FC<Props> = ({ newGuardianId }) => {
+export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
   const [name, setName] = useState("")
   const [picture, setPicture] = useState<File>()
   const [customId, setCustomId] = useState("")
@@ -106,13 +107,16 @@ export const PageNewStudent: FC<Props> = ({ newGuardianId }) => {
       setDateOfEntry(cachedData.dateOfEntry)
       setSelectedClasses(() => cachedData.selectedClasses)
       setGuardians(() => {
-        if (newGuardianId && !cachedData.guardians.includes(newGuardianId)) {
-          cachedData.guardians.push(newGuardianId)
+        if (
+          newGuardian &&
+          !cachedData.guardians.map(({ id }) => id).includes(newGuardian.id)
+        ) {
+          cachedData.guardians.push(newGuardian)
         }
         return cachedData.guardians
       })
     },
-    [newGuardianId, setGuardians, setSelectedClasses]
+    [newGuardian, setGuardians, setSelectedClasses]
   )
   useGetNewStudentFormCache(updateAllFormState)
 
@@ -230,6 +234,11 @@ export const PageNewStudent: FC<Props> = ({ newGuardianId }) => {
             key={guardian.id}
             id={guardian.id}
             relationship={guardian.relationship}
+            onRemove={(id) => {
+              setGuardians((draft) => {
+                return draft.filter((item) => item.id !== id)
+              })
+            }}
           />
         ))}
         <Flex p={3} mt={3}>
@@ -291,19 +300,31 @@ const EmptyClassDataPlaceholder: FC = () => (
   </Box>
 )
 
-const GuardianCard: FC<{ id: string; relationship: GuardianRelationship }> = ({
-  id,
-  relationship,
-}) => {
+const GuardianCard: FC<{
+  id: string
+  relationship: GuardianRelationship
+  onRemove: (id: string) => void
+}> = ({ id, relationship, onRemove }) => {
   const guardian = useGetGuardian(id)
+  const [showRemoveDialog, setShowRemoveDialog] = useState(false)
 
   return (
-    <Card borderRadius={[0, 3]} p={3} pr={2} mb={2} display="flex">
+    <Card
+      borderRadius={[0, 3]}
+      py={3}
+      pr={2}
+      mb={2}
+      display="flex"
+      sx={{
+        alignItems: "center",
+      }}
+    >
       <Flex alignItems="start" width="100%" flexDirection="column">
-        <Typography.Body lineHeight={1} mb={3}>
+        <Typography.Body lineHeight={1} mb={3} ml={3}>
           {guardian.data?.name}
         </Typography.Body>
         <Pill
+          ml={3}
           {...(() => {
             switch (relationship) {
               case GuardianRelationship.Father:
@@ -319,16 +340,39 @@ const GuardianCard: FC<{ id: string; relationship: GuardianRelationship }> = ({
                   text: "Other",
                   backgroundColor: "",
                   color: "onSurface",
+                  ml: 2,
                 }
               default:
-                return { text: "N/A", backgroundColor: "", color: "onSurface" }
+                return {
+                  text: "N/A",
+                  backgroundColor: "",
+                  color: "onSurface",
+                  ml: 2,
+                }
             }
           })()}
         />
       </Flex>
-      <Button variant="secondary" ml="auto">
+      <Button
+        variant="secondary"
+        ml="auto"
+        onClick={() => setShowRemoveDialog(true)}
+      >
         <Icon as={TrashIcon} m={0} />
       </Button>
+      {showRemoveDialog && (
+        <WarningDialog
+          onDismiss={() => {
+            setShowRemoveDialog(false)
+          }}
+          onAccept={() => {
+            onRemove(id)
+            setShowRemoveDialog(false)
+          }}
+          title="Remove Guardian?"
+          description={`Are you sure you want to remove ${guardian.data?.name} from the list of guardians?`}
+        />
+      )}
     </Card>
   )
 }

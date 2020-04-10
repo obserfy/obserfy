@@ -9,7 +9,7 @@ const NewStudent: FC<PageRendererProps> = ({ location }) => {
   return (
     <>
       <SEO title="Edit Student" />
-      <PageNewStudent newGuardianId={location.state?.guardian} />
+      <PageNewStudent newGuardian={location.state?.guardian} />
     </>
   )
 }
