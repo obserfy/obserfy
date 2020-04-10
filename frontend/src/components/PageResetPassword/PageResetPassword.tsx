@@ -129,7 +129,7 @@ export const PageResetPassword: FC<Props> = ({ token }) => {
               width="100%"
               label="New Password"
               value={password}
-              onChange={e => setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
               required
               mb={2}
               type="password"
@@ -139,7 +139,7 @@ export const PageResetPassword: FC<Props> = ({ token }) => {
               width="100%"
               label="Retype New Password"
               value={retypePassword}
-              onChange={e => setRetypePassword(e.target.value)}
+              onChange={(e) => setRetypePassword(e.target.value)}
               required
               mb={3}
               type="password"

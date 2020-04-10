@@ -54,7 +54,7 @@ export const Input: FC<Props> = ({
         <BaseInput
           autoFocus={autoFocus}
           name={name}
-          onKeyUp={e => {
+          onKeyUp={(e) => {
             if (onEnterPressed && e.keyCode === 13) onEnterPressed()
           }}
           type={type}

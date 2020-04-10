@@ -83,7 +83,7 @@ const CurriculumAreas: FC<{
       <Icon as={PlusIcon} m={0} mr={2} />
       New Area
     </Button>
-    {areas?.map(area => (
+    {areas?.map((area) => (
       <CardLink
         key={area.id}
         name={area.name}

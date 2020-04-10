@@ -2,6 +2,7 @@ package school_test
 
 import (
 	"github.com/brianvoe/gofakeit/v4"
+	"github.com/chrsep/vor/pkg/mocks"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/school"
 	"github.com/chrsep/vor/pkg/testutils"
@@ -15,15 +16,17 @@ import (
 type SchoolTestSuite struct {
 	testutils.BaseTestSuite
 
-	store postgres.SchoolStore
+	StudentImageStorage mocks.StudentImageStorage
+	store               postgres.SchoolStore
 }
 
 func (s *SchoolTestSuite) SetupTest() {
 	s.store = postgres.SchoolStore{s.DB}
-	s.Handler = school.NewRouter(s.Server, s.store).ServeHTTP
+	s.StudentImageStorage = mocks.StudentImageStorage{}
+	s.Handler = school.NewRouter(s.Server, s.store, &s.StudentImageStorage).ServeHTTP
 }
 
-func TestObservation(t *testing.T) {
+func TestSchool(t *testing.T) {
 	suite.Run(t, new(SchoolTestSuite))
 }
 
@@ -47,4 +50,22 @@ func (s *SchoolTestSuite) SaveNewClass(school postgres.School) *postgres.Class {
 	err = s.DB.Insert(&newClass.Weekdays)
 	assert.NoError(t, err)
 	return &newClass
+}
+
+func (s *SchoolTestSuite) SaveNewGuardian() (*postgres.Guardian, string) {
+	t := s.T()
+	gofakeit.Seed(time.Now().UnixNano())
+	newSchool := s.SaveNewSchool()
+	newGuardian := postgres.Guardian{
+		Id:       uuid.New().String(),
+		Name:     gofakeit.Name(),
+		Email:    gofakeit.Email(),
+		Phone:    gofakeit.Phone(),
+		Note:     gofakeit.Paragraph(1, 3, 20, " "),
+		SchoolId: newSchool.Id,
+		School:   *newSchool,
+	}
+	err := s.DB.Insert(&newGuardian)
+	assert.NoError(t, err)
+	return &newGuardian, newSchool.Users[0].Id
 }

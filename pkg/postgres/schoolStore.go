@@ -63,17 +63,46 @@ func (s SchoolStore) GetStudents(schoolId string) ([]Student, error) {
 	return students, nil
 }
 
-func (s SchoolStore) NewStudent(schoolId string, name string, dob *time.Time) (*Student, error) {
-	student := Student{
-		Id:          uuid.New().String(),
-		Name:        name,
-		SchoolId:    schoolId,
-		DateOfBirth: dob,
+func (s SchoolStore) NewStudent(student Student, classes []string, guardians map[string]int) error {
+	if student.Id == "" {
+		student.Id = uuid.New().String()
 	}
-	if err := s.Insert(&student); err != nil {
-		return nil, nil
+	if err := s.RunInTransaction(func(tx *pg.Tx) error {
+		classRelations := make([]StudentToClass, len(classes))
+		for i, class := range classes {
+			classRelations[i] = StudentToClass{
+				StudentId: student.Id,
+				ClassId:   class,
+			}
+		}
+
+		guardianRelations := make([]GuardianToStudent, 0)
+		for id, guardian := range guardians {
+			guardianRelations = append(guardianRelations, GuardianToStudent{
+				StudentId:    student.Id,
+				GuardianId:   id,
+				Relationship: GuardianRelationship(guardian),
+			})
+		}
+
+		if err := tx.Insert(&student); err != nil {
+			return richErrors.Wrap(err, "failed to save new student")
+		}
+		if len(classRelations) > 0 {
+			if err := tx.Insert(&classRelations); err != nil {
+				return richErrors.Wrap(err, "failed to save student to class relation")
+			}
+		}
+		if len(guardianRelations) > 0 {
+			if err := tx.Insert(&guardianRelations); err != nil {
+				return richErrors.Wrap(err, "failed to save guardian to student relation")
+			}
+		}
+		return nil
+	}); err != nil {
+		return err
 	}
-	return &student, nil
+	return nil
 }
 
 func (s SchoolStore) RefreshInviteCode(schoolId string) (*School, error) {
@@ -218,6 +247,30 @@ func (s SchoolStore) GetSchoolClasses(schoolId string) ([]Class, error) {
 		return nil, err
 	}
 	return classes, nil
+}
+
+func (s SchoolStore) NewGuardian(schoolId string, name string, email string, phone string, note string) error {
+	guardian := Guardian{
+		Id:       uuid.New().String(),
+		Name:     name,
+		Email:    email,
+		Phone:    phone,
+		Note:     note,
+		SchoolId: schoolId,
+	}
+	_, err := s.Model(&guardian).Insert()
+	return err
+}
+
+func (s SchoolStore) GetGuardians(schoolId string) ([]Guardian, error) {
+	var guardian []Guardian
+
+	if err := s.DB.Model(&guardian).
+		Where("school_id=?", schoolId).
+		Select(); err != nil {
+		return nil, richErrors.Wrap(err, "failed to query school's guardians")
+	}
+	return guardian, nil
 }
 
 type EmptyCurriculumError struct{}

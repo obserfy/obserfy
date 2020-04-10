@@ -100,7 +100,7 @@ export const EditObservationDialog: FC<Props> = ({
             label="Short Description"
             width="100%"
             placeholder="What have you find?"
-            onChange={e => setShortDesc(e.target.value)}
+            onChange={(e) => setShortDesc(e.target.value)}
             value={shortDesc}
             mb={3}
           />
@@ -109,13 +109,13 @@ export const EditObservationDialog: FC<Props> = ({
             width="100%"
             fontSize={2}
             placeholder="Tell us about what you observed"
-            onChange={e => setDetails(e.target.value)}
+            onChange={(e) => setDetails(e.target.value)}
             value={details}
             mb={3}
           />
           <Select
             label="Category"
-            onChange={e => setCategory(e.target.value)}
+            onChange={(e) => setCategory(e.target.value)}
             value={category}
           >
             {categories.map(({ id, name }) => (

@@ -12,6 +12,11 @@ export const fetchApi = <T>(url: string) => async (): Promise<T> => {
     await navigate("/login")
   }
 
+  const json = await result.json()
+  if (json.error) {
+    throw Error(json.error.message)
+  }
+
   // Parse json
-  return result.json()
+  return json
 }

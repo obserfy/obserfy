@@ -70,13 +70,8 @@ describe(" Smoke test on prod build", () => {
     cy.contains("Save").should("be.disabled")
     cy.contains("Name").type(studentName)
     cy.contains("Date of Birth").click()
-    cy.contains("Year")
-      .find("input")
-      .clear()
-      .type("2010")
-    cy.contains("Month")
-      .find("select")
-      .select("4")
+    cy.contains("Year").find("input").clear().type("2010")
+    cy.contains("Month").find("select").select("4")
     cy.get("[aria-label=Date]").select("11")
     cy.get("[data-cy=set-button]").click()
     cy.contains("Save").click()
@@ -102,22 +97,14 @@ describe(" Smoke test on prod build", () => {
     // Change student name
     studentName = "Jane Doe"
     cy.get("[data-cy=edit]").click()
-    cy.contains("Name")
-      .find("input")
-      .clear()
-      .type(studentName)
+    cy.contains("Name").find("input").clear().type(studentName)
     cy.contains("Save").click()
 
     // Change student dob
     cy.get("[data-cy=edit]").click()
-    cy.contains("Name")
-      .find("input")
-      .clear()
-      .type("Jane Doe")
+    cy.contains("Name").find("input").clear().type("Jane Doe")
     cy.contains("Date of Birth").click()
-    cy.contains("Month")
-      .find("select")
-      .select("6")
+    cy.contains("Month").find("select").select("6")
     cy.get("[data-cy=set-button]").click()
     cy.contains("Save").click()
 
@@ -173,9 +160,7 @@ describe(" Smoke test on prod build", () => {
 
     // Change to master
     cy.contains("See All Math").should("be.visible")
-    cy.contains("Practiced")
-      .should("be.visible")
-      .click()
+    cy.contains("Practiced").should("be.visible").click()
 
     cy.get("[aria-label=Progress]").select("2")
     cy.contains("Save changes").click()

@@ -1,4 +1,4 @@
-import { QueryState, useQuery } from "react-query"
+import { QueryResult, useQuery } from "react-query"
 import { fetchApi } from "./fetchApi"
 import { getSchoolId } from "../hooks/schoolIdState"
 
@@ -12,7 +12,7 @@ interface School {
     isCurrentUser: boolean
   }[]
 }
-export const useGetSchool = (): QueryState<School> => {
+export const useGetSchool = (): QueryResult<School> => {
   const fetchSchool = fetchApi<School>(`/schools/${getSchoolId()}`)
   return useQuery("school", fetchSchool)
 }

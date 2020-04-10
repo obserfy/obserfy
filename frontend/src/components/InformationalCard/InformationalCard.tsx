@@ -1,4 +1,5 @@
 import React, { FC } from "react"
+import { Link } from "gatsby-plugin-intl3"
 import Flex from "../Flex/Flex"
 import Icon from "../Icon/Icon"
 import { ReactComponent as InfoIcon } from "../../icons/info.svg"
@@ -10,13 +11,9 @@ import Box from "../Box/Box"
 interface Props {
   message: string
   buttonText: string
-  onButtonClick: () => void
+  to: string
 }
-export const InformationalCard: FC<Props> = ({
-  message,
-  buttonText,
-  onButtonClick,
-}) => (
+export const InformationalCard: FC<Props> = ({ message, buttonText, to }) => (
   <Box
     p={3}
     mt={3}
@@ -24,7 +21,7 @@ export const InformationalCard: FC<Props> = ({
     sx={{
       borderWidth: 1,
       borderColor: "warning",
-      borderRadius: "default",
+      borderRadius: [0, "default"],
     }}
   >
     <Flex alignItems="center">
@@ -38,14 +35,11 @@ export const InformationalCard: FC<Props> = ({
     </Typography.Body>
     <Flex>
       <Spacer />
-      <Button
-        variant="outline"
-        color="warning"
-        fontSize={0}
-        onClick={onButtonClick}
-      >
-        {buttonText}
-      </Button>
+      <Link to={to}>
+        <Button variant="outline" color="warning" fontSize={0}>
+          {buttonText}
+        </Button>
+      </Link>
     </Flex>
   </Box>
 )

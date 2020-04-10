@@ -12,6 +12,7 @@ import { Typography } from "../Typography/Typography"
 import Chip from "../Chip/Chip"
 import usePostNewClass from "../../api/usePostNewClass"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
+import ErrorMessage from "../ErrorMessage/ErrorMessage"
 
 export const WEEKDAYS = [
   "Sunday",
@@ -54,13 +55,13 @@ export const PageNewClass: FC = () => {
           width="100%"
           mb={3}
           value={name}
-          onChange={e => setName(e.target.value)}
+          onChange={(e) => setName(e.target.value)}
         />
         <Flex>
           <Input
             type="time"
             value={startTime}
-            onChange={e => setStartTime(e.target.value)}
+            onChange={(e) => setStartTime(e.target.value)}
             label="Start Time"
             width="100%"
             mb={3}
@@ -69,7 +70,7 @@ export const PageNewClass: FC = () => {
           <Input
             type="time"
             value={endTime}
-            onChange={e => setEndTime(e.target.value)}
+            onChange={(e) => setEndTime(e.target.value)}
             label="End Time"
             width="100%"
             mb={3}
@@ -86,9 +87,9 @@ export const PageNewClass: FC = () => {
               activeBackground="primary"
               isActive={weekdays.includes(i)}
               onClick={() =>
-                setWeekdays(draft => {
+                setWeekdays((draft) => {
                   if (draft.includes(i)) {
-                    return draft.filter(item => item !== i)
+                    return draft.filter((item) => item !== i)
                   }
                   return [...draft, i]
                 })
@@ -106,9 +107,7 @@ export const PageNewClass: FC = () => {
           )}
           Save
         </Button>
-        <Typography.Body textAlign="center" m={3} color="error">
-          {error?.message}
-        </Typography.Body>
+        <ErrorMessage error={error} m={3} />
       </Box>
     </Box>
   )

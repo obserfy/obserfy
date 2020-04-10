@@ -1,9 +1,9 @@
-import { QueryState, useQuery } from "react-query"
+import { QueryResult, useQuery } from "react-query"
 import { getSchoolId } from "../hooks/schoolIdState"
 import { Area } from "./useGetArea"
 import { fetchApi } from "./fetchApi"
 
-export function useGetCurriculumAreas(): QueryState<Area[]> {
+export function useGetCurriculumAreas(): QueryResult<Area[]> {
   const fetchCurriculumAreas = fetchApi<Area[]>(
     `/schools/${getSchoolId()}/curriculum/areas`
   )

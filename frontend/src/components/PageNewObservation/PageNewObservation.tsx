@@ -68,7 +68,7 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
           label="Short Description"
           width="100%"
           placeholder="What have you found?"
-          onChange={e => setShortDesc(e.target.value)}
+          onChange={(e) => setShortDesc(e.target.value)}
           value={shortDesc}
           mb={3}
         />
@@ -78,14 +78,14 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
           width="100%"
           fontSize={2}
           placeholder="Tell us what you observed"
-          onChange={e => setDetails(e.target.value)}
+          onChange={(e) => setDetails(e.target.value)}
           value={longDesc}
           mb={3}
         />
         <Select
           label="Category"
           value={category}
-          onChange={e => setCategory(e.target.value)}
+          onChange={(e) => setCategory(e.target.value)}
         >
           {categories.map(({ id, name }) => (
             <option key={id} value={id}>

@@ -86,7 +86,7 @@ func (a AuthStore) NewUser(email string, password string, name string, inviteCod
 			return nil, richErrors.Wrap(err, "invite code:"+inviteCode)
 		}
 
-		userSchoolRelation := UserToSchool{school.Id, user.Id}
+		userSchoolRelation := UserToSchool{SchoolId: school.Id, UserId: user.Id}
 		if err := a.DB.Insert(&userSchoolRelation); err != nil {
 			return nil, richErrors.Wrap(err, "invite code:"+inviteCode)
 		}

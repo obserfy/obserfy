@@ -61,7 +61,7 @@ export const StudentMaterialProgressDialog: FC<{
         <Select
           label="Progress"
           value={selectedStage ?? -1}
-          onChange={e => setSelectedStage(parseInt(e.target.value, 10))}
+          onChange={(e) => setSelectedStage(parseInt(e.target.value, 10))}
         >
           <option value={-1}>Not yet presented</option>
           <option value={MaterialProgressStage.PRESENTED}>Presented</option>

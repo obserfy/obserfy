@@ -1,5 +1,5 @@
 import React, { FC } from "react"
-import nanoid from "nanoid"
+import { nanoid } from "nanoid"
 import { action } from "@storybook/addon-actions"
 import DraggableMaterialListItem from "./DraggableMaterialListItem"
 import { Material } from "../../api/useGetSubjectMaterials"
