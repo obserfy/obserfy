@@ -37,15 +37,17 @@ export const PageHome: FC = () => {
     matchedStudent?.map(({ name, id }) => (
       <Card
         p={3}
-        mx={3}
-        mb={2}
+        mx={[0, 3]}
+        borderRadius={[0, "default"]}
+        mb={[0, 2]}
         key={id}
         onClick={() => navigate(`/dashboard/observe/students/details?id=${id}`)}
-        sx={{ cursor: "pointer" }}
+        sx={{
+          cursor: "pointer",
+          boxShadow: ["none", "low"],
+        }}
       >
-        <Flex>
-          <Typography.H6>{name}</Typography.H6>
-        </Flex>
+        <Typography.Body>{name}</Typography.Body>
       </Card>
     ))
 
