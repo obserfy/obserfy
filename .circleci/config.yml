@@ -175,7 +175,7 @@ jobs:
           git config --global user.email "chrsep@protonmail.com"
           git config --global user.name "Chrisando Pramudhita"
       - run: |
-          yarn global add standard-version
+          npm install -g standard-version
           standard-version -m 'chore(release): %s [skip ci]' --releaseCommitMessageFormat --no-verify
       - run: |
           git push --follow-tags origin master
