@@ -337,7 +337,7 @@ const GuardianCard: FC<{
           {guardian.data?.name}
         </Typography.Body>
         <Pill
-          ml={3}
+          ml={2}
           {...(() => {
             switch (relationship) {
               case GuardianRelationship.Father:
@@ -353,14 +353,12 @@ const GuardianCard: FC<{
                   text: "Other",
                   backgroundColor: "",
                   color: "onSurface",
-                  ml: 2,
                 }
               default:
                 return {
                   text: "N/A",
                   backgroundColor: "",
                   color: "onSurface",
-                  ml: 2,
                 }
             }
           })()}
@@ -375,19 +373,18 @@ const GuardianCard: FC<{
       </Button>
       {showRemoveDialog && (
         <WarningDialog
-          onDismiss={() => {
-            setShowRemoveDialog(false)
-          }}
+          onDismiss={() => setShowRemoveDialog(false)}
+          title="Remove Guardian?"
+          description={`Are you sure you want to remove ${guardian.data?.name} from the list of guardians?`}
           onAccept={() => {
             onRemove()
             setShowRemoveDialog(false)
           }}
-          title="Remove Guardian?"
-          description={`Are you sure you want to remove ${guardian.data?.name} from the list of guardians?`}
         />
       )}
       {showRelationshipDialog && (
         <GuardianRelationshipPickerDialog
+          defaultValue={relationship}
           onAccept={(newRelationship) => {
             changeRelationship(newRelationship)
             setShowRelationShipDialog(false)

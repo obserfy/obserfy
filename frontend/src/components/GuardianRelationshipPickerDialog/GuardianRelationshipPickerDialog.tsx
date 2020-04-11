@@ -10,12 +10,16 @@ import Box from "../Box/Box"
 interface Props {
   onDismiss: () => void
   onAccept: (newRelationship: GuardianRelationship) => void
+  defaultValue?: GuardianRelationship
 }
 export const GuardianRelationshipPickerDialog: FC<Props> = ({
   onDismiss,
   onAccept,
+  defaultValue,
 }) => {
-  const [relationship, setRelationship] = useState(GuardianRelationship.Other)
+  const [relationship, setRelationship] = useState(
+    defaultValue ?? GuardianRelationship.Other
+  )
 
   return (
     <Dialog>

@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react"
-import { Link, navigate } from "gatsby-plugin-intl3"
+import { navigate } from "gatsby-plugin-intl3"
 import Box from "../Box/Box"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { NEW_STUDENT_URL } from "../../pages/dashboard/observe/students/new"
@@ -14,8 +14,12 @@ import Button from "../Button/Button"
 import Flex from "../Flex/Flex"
 import { usePostNewGuardian } from "../../api/usePostNewGuardian"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
-import { useGetSchoolGuardians } from "../../api/useGetSchoolGuardians"
+import {
+  Guardians,
+  useGetSchoolGuardians,
+} from "../../api/useGetSchoolGuardians"
 import TextArea from "../TextArea/TextArea"
+import GuardianRelationshipPickerDialog from "../GuardianRelationshipPickerDialog/GuardianRelationshipPickerDialog"
 
 export const PagePickGuardian: FC = () => {
   const guardians = useGetSchoolGuardians()
@@ -124,34 +128,7 @@ export const PagePickGuardian: FC = () => {
                 .includes(name.toLocaleLowerCase())
             })
             ?.map((guardian) => (
-              <Link
-                to={NEW_STUDENT_URL}
-                state={{
-                  guardian: {
-                    id: guardian.id,
-                    relationship,
-                  },
-                  preserveScroll: true,
-                }}
-                key={guardian.id}
-              >
-                <Card
-                  p={3}
-                  borderRadius={[0, "default"]}
-                  display="flex"
-                  mx={[0, 3]}
-                  mb={2}
-                  sx={{
-                    alignItems: "flex-start",
-                    cursor: "pointer",
-                    "&:hover": {
-                      backgroundColor: "primaryLightest",
-                    },
-                  }}
-                >
-                  <Typography.Body>{guardian.name}</Typography.Body>
-                </Card>
-              </Link>
+              <GuardianCard guardian={guardian} />
             ))}
           <Card
             p={3}
@@ -173,6 +150,48 @@ export const PagePickGuardian: FC = () => {
         </>
       )}
     </Box>
+  )
+}
+
+const GuardianCard: FC<{ guardian: Guardians }> = ({ guardian }) => {
+  const [showGuardianSelector, setShowGuardianSelector] = useState(false)
+
+  return (
+    <>
+      <Card
+        onClick={() => setShowGuardianSelector(true)}
+        p={3}
+        borderRadius={[0, "default"]}
+        display="flex"
+        mx={[0, 3]}
+        mb={2}
+        sx={{
+          alignItems: "flex-start",
+          cursor: "pointer",
+          "&:hover": {
+            backgroundColor: "primaryLightest",
+          },
+        }}
+      >
+        <Typography.Body>{guardian.name}</Typography.Body>
+      </Card>
+      {showGuardianSelector && (
+        <GuardianRelationshipPickerDialog
+          onDismiss={() => setShowGuardianSelector(false)}
+          onAccept={(relationship) => {
+            navigate(NEW_STUDENT_URL, {
+              state: {
+                guardian: {
+                  id: guardian.id,
+                  relationship,
+                },
+                preserveScroll: true,
+              },
+            })
+          }}
+        />
+      )}
+    </>
   )
 }
 
