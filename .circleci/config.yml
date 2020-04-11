@@ -165,7 +165,7 @@ jobs:
           echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
           echo ' [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
       - run: |
-          sudo apt update && sudo apt install docker-ce cargo
+          sudo apt update && sudo apt install docker-ce
           nvm install v12
           node -v
           nvm alias default v12
@@ -191,8 +191,7 @@ jobs:
           echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_LOGIN" --password-stdin
           docker push chrsep/vor:$VERSION
       - run: |
-          yarn global add @sentry/cli
-          cargo build
+          npm install -g @sentry/cli
       - run: |
           VERSION=$(cat VERSION)
           sentry-cli releases -p frontend new $VERSION
