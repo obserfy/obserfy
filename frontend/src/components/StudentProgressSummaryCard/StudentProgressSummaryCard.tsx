@@ -63,11 +63,13 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
   // Disabled curriculum view
   if (!isFetchingData && isAreaEmpty) {
     return (
-      <InformationalCard
-        message="You can enable the curriculum feature to track student progress in your curriculum."
-        buttonText=" Go to Curriculum "
-        to="/dashboard/settings/curriculum"
-      />
+      <Box mx={[0, 3]}>
+        <InformationalCard
+          message="You can enable the curriculum feature to track student progress in your curriculum."
+          buttonText=" Go to Curriculum "
+          to="/dashboard/settings/curriculum"
+        />
+      </Box>
     )
   }
 
