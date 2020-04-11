@@ -33,6 +33,7 @@ import { NEW_STUDENT_URL } from "../../pages/dashboard/observe/students/new"
 import Icon from "../Icon/Icon"
 import Pill from "../Pill/Pill"
 import WarningDialog from "../WarningDialog/WarningDialog"
+import GuardianRelationshipPickerDialog from "../GuardianRelationshipPickerDialog/GuardianRelationshipPickerDialog"
 
 export interface NewStudentFormData {
   name: string
@@ -231,14 +232,19 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
             </Typography.Body>
           </Card>
         )}
-        {guardians.map((guardian) => (
+        {guardians.map((guardian, idx) => (
           <GuardianCard
             key={guardian.id}
             id={guardian.id}
             relationship={guardian.relationship}
-            onRemove={(id) => {
+            changeRelationship={(relationship) => {
               setGuardians((draft) => {
-                return draft.filter((item) => item.id !== id)
+                draft[idx].relationship = relationship
+              })
+            }}
+            onRemove={() => {
+              setGuardians((draft) => {
+                draft.splice(idx, 1)
               })
             }}
           />
@@ -248,9 +254,9 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
             variant="outline"
             mr={3}
             color="danger"
-            onClick={() => {
+            onClick={async () => {
               updateAllFormState(DEFAULT_FORM_STATE)
-              navigate(NEW_STUDENT_URL)
+              await navigate(NEW_STUDENT_URL)
             }}
           >
             Clear
@@ -305,10 +311,12 @@ const EmptyClassDataPlaceholder: FC = () => (
 const GuardianCard: FC<{
   id: string
   relationship: GuardianRelationship
-  onRemove: (id: string) => void
-}> = ({ id, relationship, onRemove }) => {
+  changeRelationship: (relationship: GuardianRelationship) => void
+  onRemove: () => void
+}> = ({ id, relationship, onRemove, changeRelationship }) => {
   const guardian = useGetGuardian(id)
   const [showRemoveDialog, setShowRemoveDialog] = useState(false)
+  const [showRelationshipDialog, setShowRelationShipDialog] = useState(false)
 
   return (
     <Card
@@ -317,11 +325,14 @@ const GuardianCard: FC<{
       pr={2}
       mb={2}
       display="flex"
-      sx={{
-        alignItems: "center",
-      }}
+      sx={{ alignItems: "center" }}
     >
-      <Flex alignItems="start" width="100%" flexDirection="column">
+      <Flex
+        alignItems="start"
+        width="100%"
+        flexDirection="column"
+        onClick={() => setShowRelationShipDialog(true)}
+      >
         <Typography.Body lineHeight={1} mb={3} ml={3}>
           {guardian.data?.name}
         </Typography.Body>
@@ -368,11 +379,22 @@ const GuardianCard: FC<{
             setShowRemoveDialog(false)
           }}
           onAccept={() => {
-            onRemove(id)
+            onRemove()
             setShowRemoveDialog(false)
           }}
           title="Remove Guardian?"
           description={`Are you sure you want to remove ${guardian.data?.name} from the list of guardians?`}
+        />
+      )}
+      {showRelationshipDialog && (
+        <GuardianRelationshipPickerDialog
+          onAccept={(newRelationship) => {
+            changeRelationship(newRelationship)
+            setShowRelationShipDialog(false)
+          }}
+          onDismiss={() => {
+            setShowRelationShipDialog(false)
+          }}
         />
       )}
     </Card>

@@ -24,7 +24,7 @@ export const PagePickGuardian: FC = () => {
   const [email, setEmail] = useState("")
   const [phone, setPhone] = useState("")
   const [note, setNote] = useState("")
-  const [relationship, setRelationship] = useState<GuardianRelationship>(0)
+  const [relationship, setRelationship] = useState(GuardianRelationship.Other)
   const [createNew, setCreateNew] = useState(false)
   const [mutate, { status }] = usePostNewGuardian()
 

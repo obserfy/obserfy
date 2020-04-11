@@ -13,9 +13,7 @@ export const useCacheNewStudentFormData = (
   useEffect(() => {
     if (isMounted.current) {
       localStorage.setItem(CACHE_KEY, JSON.stringify(data))
-      if (picture) {
-        set(CACHE_KEY, picture)
-      }
+      set(CACHE_KEY, picture)
     } else {
       isMounted.current = true
     }
