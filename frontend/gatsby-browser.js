@@ -35,7 +35,7 @@ export const shouldUpdateScroll = ({
 
   // If state.preserveScroll is true, we'll use the last known
   // scroll position of the given pathname, and scroll to it.
-  if (routerProps.location.state.preserveScroll) {
+  if (routerProps.location.state?.preserveScroll) {
     const currentPosition = window.sessionStorage.getItem(
       `@@scroll|${routerProps.location.pathname}`
     )

@@ -75,7 +75,9 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
   const emptyObservationPlaceholder = observations.status !== "loading" &&
     (observations.data ?? []).length === 0 && (
       <EmptyListPlaceholder
-        text="No observation have been added"
+        mx={[0, 3]}
+        borderRadius={[0, "default"]}
+        text="No observation have been added yet"
         callToActionText="new observation"
         onActionClick={() =>
           navigate(
@@ -86,9 +88,8 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
     )
 
   const dateSelector = (observations.data?.length ?? 0) > 0 && (
-    <Flex alignItems="center">
+    <Flex alignItems="center" px={3} mb={3}>
       <Button
-        backgroundColor="surface"
         disabled={selectedDate >= dates.length - 1}
         onClick={() => setSelectedDate(selectedDate + 1)}
         variant="outline"
@@ -121,7 +122,6 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
         )}
       </Typography.Body>
       <Button
-        backgroundColor="surface"
         disabled={selectedDate < 1}
         onClick={() => setSelectedDate(selectedDate - 1)}
         variant="outline"
@@ -167,30 +167,25 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
             </Button>
           </Link>
         </Box>
-        <Box py={3} mb={1}>
-          <Box m={3}>
-            <SectionHeader>PROGRESS</SectionHeader>
-          </Box>
-          <Box mx={[0, 3]}>
-            <StudentProgressSummaryCard studentId={id} />
-          </Box>
-        </Box>
-        <Box p={3}>
-          <Flex mb={3} alignItems="center">
-            <SectionHeader lineHeight={1}>OBSERVATIONS</SectionHeader>
-            <Spacer />
-            <Link to={ALL_OBSERVATIONS_PAGE_URL(id)}>
-              <Button variant="outline">All</Button>
-            </Link>
-          </Flex>
-          {emptyObservationPlaceholder}
-          {dateSelector}
-        </Box>
+        <Flex pt={4} px={3} mb={3} alignItems="center">
+          <SectionHeader mr="auto" lineHeight={1}>
+            OBSERVATIONS
+          </SectionHeader>
+          <Link to={ALL_OBSERVATIONS_PAGE_URL(id)}>
+            <Button variant="outline">All</Button>
+          </Link>
+        </Flex>
+        {emptyObservationPlaceholder}
+        {dateSelector}
         <Box mx={[0, 3]} mb={3}>
           {listOfObservations}
           {observations.status === "loading" && !observations.data && (
             <ObservationLoadingPlaceholder />
           )}
+        </Box>
+        <Box py={3} mb={1}>
+          <SectionHeader m={3}>PROGRESS</SectionHeader>
+          <StudentProgressSummaryCard studentId={id} />
         </Box>
       </Box>
       {isEditingObservation && (
