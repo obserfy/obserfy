@@ -42,7 +42,8 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
     ({ stage }) => stage === MaterialProgressStage.MASTERED
   )
 
-  const isFetchingData = areas.isFetching || progress.isFetching
+  const isFetchingData =
+    areas.status === "loading" || progress.status === "loading"
   const isAreaEmpty = (areas.data?.length ?? 0) < 1
   const isProgressEmpty = (inProgress?.length ?? 0) === 0
 

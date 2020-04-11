@@ -42,7 +42,7 @@ export const PageSettings: FC = () => {
   return (
     <Box maxWidth="maxWidth.sm" margin="auto" p={3} pt={[3, 3, 4]}>
       <Box width="100%" mb={4}>
-        {schoolDetail.isFetching && !schoolDetail.data?.name && (
+        {schoolDetail.status === "loading" && !schoolDetail.data?.name && (
           <LoadingPlaceholder width="100%" height={60} />
         )}
         <Typography.H3 mb={3} ml={1}>
@@ -63,9 +63,10 @@ export const PageSettings: FC = () => {
           <Flex alignItems="center">
             <Box>
               <Typography.H6 mb={3}>Invite your co-workers</Typography.H6>
-              {schoolDetail.isFetching && !schoolDetail.data?.inviteLink && (
-                <LoadingPlaceholder width="100%" height={60} />
-              )}
+              {schoolDetail.status === "loading" &&
+                !schoolDetail.data?.inviteLink && (
+                  <LoadingPlaceholder width="100%" height={60} />
+                )}
               <Typography.Body
                 id="shareLink"
                 fontSize={1}

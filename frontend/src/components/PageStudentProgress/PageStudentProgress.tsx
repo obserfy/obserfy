@@ -35,10 +35,10 @@ export const PageStudentProgress: FC<Props> = ({ areaId, studentId }) => {
   const [selectedMaterial, setSelectedMaterial] = useState<Material>()
   const progress = useGetStudentMaterialProgress(studentId)
   const loading =
-    student.isFetching ||
-    area.isFetching ||
-    subjects.isFetching ||
-    progress.isFetching
+    student.status === "loading" ||
+    area.status === "loading" ||
+    subjects.status === "loading" ||
+    progress.status === "loading"
 
   const backNavigation = (
     <BackNavigation
@@ -118,7 +118,7 @@ const SubjectMaterials: FC<{
 }> = ({ progress, subject, onMaterialClick }) => {
   const materials = useGetSubjectMaterials(subject.id)
 
-  if (materials.isFetching) {
+  if (materials.status === "loading") {
     return (
       <>
         <LoadingPlaceholder width="100%" height="6rem" mb={2} />

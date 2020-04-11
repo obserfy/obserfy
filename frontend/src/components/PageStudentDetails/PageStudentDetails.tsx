@@ -72,7 +72,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
       />
     ))
 
-  const emptyObservationPlaceholder = !observations.isFetching &&
+  const emptyObservationPlaceholder = observations.status !== "loading" &&
     (observations.data ?? []).length === 0 && (
       <EmptyListPlaceholder
         text="No observation have been added"
@@ -188,7 +188,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
         </Box>
         <Box mx={[0, 3]} mb={3}>
           {listOfObservations}
-          {observations.isFetching && !observations.data && (
+          {observations.status === "loading" && !observations.data && (
             <ObservationLoadingPlaceholder />
           )}
         </Box>

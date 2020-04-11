@@ -53,7 +53,7 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
         to={`/dashboard/observe/students/details?id=${studentId}`}
         text="Student Detail"
       />
-      {student.isFetching && student.data === undefined ? (
+      {student.status === "loading" && student.data === undefined ? (
         <Box pb={4} pt={3} px={3}>
           <LoadingPlaceholder width="100%" height="4rem" />
         </Box>
