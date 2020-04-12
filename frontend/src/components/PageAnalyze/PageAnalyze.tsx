@@ -36,7 +36,7 @@ export const PageAnalyze: FC = () => {
     }
   }, [areas.error, areas.data])
 
-  if (students.isFetching) {
+  if (students.status === "loading") {
     return (
       <Flex m={3}>
         <LoadingPlaceholder width="100%" height={48} mr={2} />

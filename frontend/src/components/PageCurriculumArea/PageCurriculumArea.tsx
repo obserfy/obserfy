@@ -32,7 +32,7 @@ export const PageCurriculumArea: FC<Props> = ({ id }) => {
   const [showDeleteSubjectDialog, setShowDeleteSubjectDialog] = useState(false)
   const [showEditAreaDialog, setShowEditAreaDialog] = useState(false)
   const [subjectToDelete, setSubjectToDelete] = useState<Subject>()
-  const loading = area.isFetching || subjects.isFetching
+  const loading = area.status === "loading" || subjects.status === "loading"
 
   const subjectList = subjects.data
     ?.sort((a, b) => b.order - a.order)
@@ -162,7 +162,7 @@ const SubjectListItem: FC<SubjectListItemProps> = ({
     </Box>
   ))
 
-  const loadingPlaceholder = materials.isFetching && !materials.data && (
+  const loadingPlaceholder = materials.status === "loading" && !materials.data && (
     <Box m={3}>
       <LoadingPlaceholder width="100%" height="4rem" mb={3} />
       <LoadingPlaceholder width="100%" height="4rem" mb={3} />

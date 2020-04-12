@@ -44,7 +44,6 @@ func authorizationMiddleware(s rest.Server, store Store) func(next http.Handler)
 			userHasAccess, err := store.CheckPermissions(studentId, session.UserId)
 			if err != nil {
 				return &rest.Error{http.StatusInternalServerError, "Internal Server Error", err}
-
 			}
 			if !userHasAccess {
 				return &rest.Error{http.StatusNotFound, "We can't find the specified student", err}

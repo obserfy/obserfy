@@ -91,6 +91,7 @@ exports[`PageUsers should render correctly 1`] = `
     >
       <a
         href="/dashboard/settings"
+        state="[object Object]"
       >
         <div
           class="emotion-2"

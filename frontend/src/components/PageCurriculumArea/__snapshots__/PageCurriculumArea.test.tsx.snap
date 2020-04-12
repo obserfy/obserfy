@@ -450,6 +450,7 @@ exports[`PageCurriculumArea should render correctly 1`] = `
     >
       <a
         href="/dashboard/settings/curriculum"
+        state="[object Object]"
       >
         <div
           class="emotion-2"

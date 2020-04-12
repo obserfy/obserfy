@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StudentPicturePlaceholder should render correctly 1`] = `
+.emotion-1 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 16px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-1 {
+    font-size: 20px;
+  }
+}
+
+.emotion-0 {
+  border-radius: 99999px;
+}
+
+<div>
+  <div
+    class="emotion-1"
+  >
+    <div
+      class="emotion-0 gatsby-image-wrapper"
+      style="position: relative; overflow: hidden; display: inline-block; width: 32px; height: 32px;"
+    >
+      <img
+        alt=""
+        aria-hidden="true"
+        src="data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAUDBgT/xAAZAQABBQAAAAAAAAAAAAAAAAAEAAECAwX/2gAMAwEAAhADEAAAAdqXL10PVYAruR95qQqhgf/EABoQAAMBAAMAAAAAAAAAAAAAAAABAwIQESH/2gAIAQEAAQUCnQzrie+iexMRJifn/8QAGxEAAgEFAAAAAAAAAAAAAAAAAAECAxASEzH/2gAIAQMBAT8BUcGbIlTlv//EABgRAAMBAQAAAAAAAAAAAAAAAAABAxEQ/9oACAECAQE/AbajKD5//8QAFBABAAAAAAAAAAAAAAAAAAAAMP/aAAgBAQAGPwIf/8QAGBABAQEBAQAAAAAAAAAAAAAAAAERITH/2gAIAQEAAT8h2SsatTdxe1dXP//aAAwDAQACAAMAAAAQQzdA/8QAFxEBAAMAAAAAAAAAAAAAAAAAAQAQEf/aAAgBAwEBPxC6JXZ//8QAGBEAAwEBAAAAAAAAAAAAAAAAAAERITH/2gAIAQIBAT8QbiU2CpkR/8QAFxABAQEBAAAAAAAAAAAAAAAAAQARIf/aAAgBAQABPxAs9hHZojWxnbU9knEEY2X2/9k="
+        style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 1; transition-delay: 500ms;"
+      />
+      <picture>
+        <source
+          srcset="/static/80905386593735f8fe1b97babdc4e163/daaa8/1.jpg 1x,
+/static/80905386593735f8fe1b97babdc4e163/ffcc9/1.jpg 1.5x,
+/static/80905386593735f8fe1b97babdc4e163/cf62c/1.jpg 2x"
+        />
+        <img
+          alt=""
+          height="32"
+          loading="lazy"
+          src="/static/80905386593735f8fe1b97babdc4e163/daaa8/1.jpg"
+          srcset="/static/80905386593735f8fe1b97babdc4e163/daaa8/1.jpg 1x,
+/static/80905386593735f8fe1b97babdc4e163/ffcc9/1.jpg 1.5x,
+/static/80905386593735f8fe1b97babdc4e163/cf62c/1.jpg 2x"
+          style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0; transition: opacity 500ms;"
+          width="32"
+        />
+      </picture>
+      <noscript>
+        &lt;picture&gt;&lt;source srcset="/static/80905386593735f8fe1b97babdc4e163/daaa8/1.jpg 1x,
+/static/80905386593735f8fe1b97babdc4e163/ffcc9/1.jpg 1.5x,
+/static/80905386593735f8fe1b97babdc4e163/cf62c/1.jpg 2x" /&gt;&lt;img loading="lazy" width="32" height="32" srcset="/static/80905386593735f8fe1b97babdc4e163/daaa8/1.jpg 1x,
+/static/80905386593735f8fe1b97babdc4e163/ffcc9/1.jpg 1.5x,
+/static/80905386593735f8fe1b97babdc4e163/cf62c/1.jpg 2x" src="/static/80905386593735f8fe1b97babdc4e163/daaa8/1.jpg" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/&gt;&lt;/picture&gt;
+      </noscript>
+    </div>
+  </div>
+</div>
+`;

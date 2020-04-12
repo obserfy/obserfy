@@ -30,12 +30,19 @@ interface Props {
   subjectId: string
 }
 export const PageEditSubject: FC<Props> = ({ areaId, subjectId }) => {
-  const startingMaterials = useGetSubjectMaterials(subjectId)
   const [submitting, setSubmitting] = useState(false)
   const [subjectName, setSubjectName] = useState("")
   const [materials, setMaterials] = useImmer<Material[]>([])
-  const area = useGetArea(areaId)
-  const subject = useGetSubject(subjectId)
+
+  const startingMaterials = useGetSubjectMaterials(subjectId, {
+    refetchOnWindowFocus: false,
+  })
+  const area = useGetArea(areaId, {
+    refetchOnWindowFocus: false,
+  })
+  const subject = useGetSubject(subjectId, {
+    refetchOnWindowFocus: false,
+  })
 
   useEffect(() => {
     if (startingMaterials.data && !startingMaterials.error) {
@@ -85,7 +92,7 @@ export const PageEditSubject: FC<Props> = ({ areaId, subjectId }) => {
     />
   ))
 
-  if (area.isFetching && subject.isFetching) {
+  if (area.status === "loading" && subject.status === "loading") {
     return (
       <Box py={3} px={3} maxWidth="maxWidth.sm" margin="auto">
         <LoadingPlaceholder width="20rem" height="3rem" mb={4} />

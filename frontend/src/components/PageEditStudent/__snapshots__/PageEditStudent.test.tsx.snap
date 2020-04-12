@@ -552,6 +552,7 @@ exports[`PageEditStudent should render correctly 1`] = `
         </div>
         <a
           href="/dashboard/observe"
+          state="[object Object]"
           style="outline: none;"
         >
           <div
@@ -572,6 +573,7 @@ exports[`PageEditStudent should render correctly 1`] = `
         />
         <a
           href="/dashboard/settings"
+          state="[object Object]"
           style="outline: none;"
         >
           <div
@@ -597,6 +599,7 @@ exports[`PageEditStudent should render correctly 1`] = `
       >
         <a
           href="/dashboard/observe/students/details?id=jkasdfjaksjdfh"
+          state="[object Object]"
         >
           <div
             class="emotion-12"

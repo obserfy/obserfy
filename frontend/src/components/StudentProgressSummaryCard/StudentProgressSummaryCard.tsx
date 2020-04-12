@@ -42,7 +42,8 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
     ({ stage }) => stage === MaterialProgressStage.MASTERED
   )
 
-  const isFetchingData = areas.isFetching || progress.isFetching
+  const isFetchingData =
+    areas.status === "loading" || progress.status === "loading"
   const isAreaEmpty = (areas.data?.length ?? 0) < 1
   const isProgressEmpty = (inProgress?.length ?? 0) === 0
 
@@ -62,11 +63,13 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
   // Disabled curriculum view
   if (!isFetchingData && isAreaEmpty) {
     return (
-      <InformationalCard
-        message="You can enable the curriculum feature to track student progress in your curriculum."
-        buttonText=" Go to Curriculum "
-        to="/dashboard/settings/curriculum"
-      />
+      <Box mx={[0, 3]}>
+        <InformationalCard
+          message="You can enable the curriculum feature to track student progress in your curriculum."
+          buttonText=" Go to Curriculum "
+          to="/dashboard/settings/curriculum"
+        />
+      </Box>
     )
   }
 
@@ -146,7 +149,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
 
   return (
     <>
-      <Card overflow="inherit" borderRadius={[0, "default"]}>
+      <Card overflow="inherit" borderRadius={[0, "default"]} mx={[0, 3]}>
         <Tab
           small
           items={areas.data?.map(({ name }) => name) ?? []}

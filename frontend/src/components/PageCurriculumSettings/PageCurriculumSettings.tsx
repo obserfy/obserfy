@@ -21,7 +21,7 @@ export const PageCurriculumSettings: FC = () => {
   const curriculum = useGetCurriculum()
   const areas = useGetCurriculumAreas()
 
-  const loading = curriculum.loading || areas.isFetching
+  const loading = curriculum.loading || areas.status === "loading"
 
   function closeNewAreaDialog(): void {
     setShowNewAreaDialog(false)
