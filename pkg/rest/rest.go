@@ -1,11 +1,13 @@
 package rest
 
 import (
-	"github.com/getsentry/sentry-go"
-	"go.uber.org/zap"
+	"fmt"
 	"net/http"
 	"os"
 	"time"
+	"go.uber.org/zap"
+	"github.com/getsentry/sentry-go"
+	"github.com/go-chi/chi/middleware"
 )
 
 type Error struct {
@@ -23,6 +25,7 @@ type Handler struct {
 func (a Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	// For centralized logging of Error
 	if err := a.Handler(w, r); err != nil {
+		reqID := middleware.GetReqID(r.Context())
 		w.WriteHeader(err.Code)
 		if err.Code == http.StatusUnauthorized {
 			http.SetCookie(w, invalidateOldSessionCookie())
@@ -30,12 +33,14 @@ func (a Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		if err.Code >= http.StatusInternalServerError {
 			// Server Error
 			sentry.CaptureException(err.Error)
-			a.Logger.Error(err.Message, zap.Error(err.Error))
+			msg := fmt.Sprintf("%s: %s", reqID, err.Message)
+			a.Logger.Error(msg, zap.Error(err.Error))
 			res := NewErrorJson("Something went wrong")
 			_ = WriteJson(w, res)
 		} else if err.Code >= http.StatusBadRequest {
 			// User Error
-			a.Logger.Warn(err.Message, zap.Error(err.Error))
+			msg := fmt.Sprintf("%s: %s", reqID, err.Message)
+			a.Logger.Warn(msg, zap.Error(err.Error))
 			res := NewErrorJson(err.Message)
 			_ = WriteJson(w, res)
 		}
