@@ -101,7 +101,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
       <Typography.Body
         flex={1}
         textAlign="center"
-        fontSize={2}
+        fontSize={1}
         color="textMediumEmphasis"
         sx={{ textTransform: "capitalize" }}
       >

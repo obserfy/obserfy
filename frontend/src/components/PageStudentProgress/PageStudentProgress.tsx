@@ -151,17 +151,18 @@ const SubjectMaterials: FC<{
               borderTopStyle: "solid",
             }}
           >
-            <Flex flexDirection="column" alignItems="start" mb={2} ml={3}>
-              <Typography.Body fontSize={1}>{material.name}</Typography.Body>
-              {stage && (
-                <Pill
-                  text={stage}
-                  color={`materialStage.on${stage}`}
-                  backgroundColor={`materialStage.${stage.toLocaleLowerCase()}`}
-                />
-              )}
-            </Flex>
-            <Icon as={NextIcon} m={0} ml="auto" mr={3} />
+            <Typography.Body ml={3} fontSize={1} mr="auto">
+              {material.name}
+            </Typography.Body>
+            {stage && (
+              <Pill
+                mx={2}
+                text={stage}
+                color={`materialStage.on${stage}`}
+                backgroundColor={`materialStage.${stage.toLocaleLowerCase()}`}
+              />
+            )}
+            <Icon as={NextIcon} m={0} mr={3} />
           </Flex>
         )
       })}
