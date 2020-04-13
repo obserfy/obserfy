@@ -35,7 +35,7 @@
     "dotenv": "^8.2.0",
     "faker": "^4.1.0",
     "framer-motion": "^1.10.3",
-    "gatsby": "^2.20.13",
+    "gatsby": "^2.20.18",
     "gatsby-cypress": "^0.3.1",
     "gatsby-image": "^2.3.2",
     "gatsby-link": "^2.3.1",
