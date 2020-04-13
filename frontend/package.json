@@ -136,7 +136,7 @@
     "react-test-renderer": "^16.13.1",
     "storybook-addon-deps": "^2.0.0",
     "storybook-addon-i18n": "^5.1.13",
-    "wait-on": "^4.0.1"
+    "wait-on": "^4.0.2"
   },
   "keywords": [
     "gatsby"
