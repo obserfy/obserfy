@@ -4747,10 +4747,10 @@
     "@types/prop-types" "*"
     "@types/react" "*"
 
-"@types/react-query@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@types/react-query/-/react-query-1.1.1.tgz#1b4443877b7a3281d71f8ab9b3d25c6f3ce4ab71"
-  integrity sha512-6TQq19jJdsjodRmp4dyiDpbWcYer1TXGTXGOCD0lKdSPFWgA/Py6G8wnyQkFa1O2zVsOy31a4mGHmsLwlmiFBA==
+"@types/react-query@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@types/react-query/-/react-query-1.1.2.tgz#3d7f3c9457116d05ba4eabb9e7f882b6d496436c"
+  integrity sha512-/IuQs37kmUg7C417Rotu+uf/3LghR3Qv6RGHO2YU1P+wFx167Hy3WJ3r9Si0jOyJVTDtjF2Lt0xSeq+kJwokKw==
   dependencies:
     "@types/react" "*"
     ts-toolbelt "*"
