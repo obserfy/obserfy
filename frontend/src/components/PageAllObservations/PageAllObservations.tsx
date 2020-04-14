@@ -63,7 +63,7 @@ export const PageAllObservations: FC<Props> = ({ studentId }) => {
           to={STUDENT_DETAILS_PAGE_URL(studentId)}
           text="Student Details"
         />
-        {student.isFetching && !student.data && (
+        {student.status === "loading" && !student.data && (
           <Box m={3}>
             <LoadingPlaceholder width="100%" height="5rem" />
             <LoadingPlaceholder width="90%%" height="5rem" mt={2} />
@@ -98,7 +98,7 @@ export const PageAllObservations: FC<Props> = ({ studentId }) => {
             )
           })}
         </Flex>
-        {observations.isFetching && !observations.data && (
+        {observations.status === "loading" && !observations.data && (
           <Box mb={2}>
             <LoadingPlaceholder width="100%" height="20rem" mb={3} />
             <LoadingPlaceholder width="100%" height="20rem" mb={3} />

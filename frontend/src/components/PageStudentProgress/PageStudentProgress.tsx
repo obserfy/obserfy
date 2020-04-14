@@ -11,7 +11,6 @@ import {
 } from "../../api/useGetSubjectMaterials"
 import Card from "../Card/Card"
 import Flex from "../Flex/Flex"
-import Spacer from "../Spacer/Spacer"
 import Icon from "../Icon/Icon"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import {
@@ -35,10 +34,10 @@ export const PageStudentProgress: FC<Props> = ({ areaId, studentId }) => {
   const [selectedMaterial, setSelectedMaterial] = useState<Material>()
   const progress = useGetStudentMaterialProgress(studentId)
   const loading =
-    student.isFetching ||
-    area.isFetching ||
-    subjects.isFetching ||
-    progress.isFetching
+    student.status === "loading" ||
+    area.status === "loading" ||
+    subjects.status === "loading" ||
+    progress.status === "loading"
 
   const backNavigation = (
     <BackNavigation
@@ -77,21 +76,24 @@ export const PageStudentProgress: FC<Props> = ({ areaId, studentId }) => {
             {` ${area.data?.name} Progress`}
           </Typography.H3>
         </Box>
-        <Box m={3}>
-          {subjects.data?.map((subject) => (
-            <Box mb={4} key={subject.id}>
-              <Typography.H5 my={3}>{subject.name}</Typography.H5>
-              <SubjectMaterials
-                subject={subject}
-                progress={progress.data ?? []}
-                onMaterialClick={(material) => {
-                  setSelectedMaterial(material)
-                  setIsEditing(true)
-                }}
-              />
-            </Box>
-          ))}
-        </Box>
+        {subjects.data?.map((subject) => (
+          <Card
+            mb={4}
+            key={subject.id}
+            mx={[0, 3]}
+            borderRadius={[0, "default"]}
+          >
+            <Typography.H6 m={3}>{subject.name}</Typography.H6>
+            <SubjectMaterials
+              subject={subject}
+              progress={progress.data ?? []}
+              onMaterialClick={(material) => {
+                setSelectedMaterial(material)
+                setIsEditing(true)
+              }}
+            />
+          </Card>
+        ))}
       </Box>
       {isEditing && (
         <StudentMaterialProgressDialog
@@ -118,7 +120,7 @@ const SubjectMaterials: FC<{
 }> = ({ progress, subject, onMaterialClick }) => {
   const materials = useGetSubjectMaterials(subject.id)
 
-  if (materials.isFetching) {
+  if (materials.status === "loading") {
     return (
       <>
         <LoadingPlaceholder width="100%" height="6rem" mb={2} />
@@ -137,29 +139,31 @@ const SubjectMaterials: FC<{
         const match = progress.find((item) => item.materialId === material.id)
         const stage = materialStageToString(match?.stage)
         return (
-          <Card
+          <Flex
+            alignItems="center"
             key={material.id}
-            my={2}
-            p={3}
-            sx={{ cursor: "pointer" }}
+            py={2}
             onClick={() => onMaterialClick(material)}
+            sx={{
+              cursor: "pointer",
+              borderTopColor: "border",
+              borderTopWidth: 1,
+              borderTopStyle: "solid",
+            }}
           >
-            <Flex alignItems="center">
-              <Flex flexDirection="column" alignItems="start">
-                <Typography.H6>{material.name}</Typography.H6>
-                {stage && (
-                  <Pill
-                    text={stage}
-                    color={`materialStage.on${stage}`}
-                    backgroundColor={`materialStage.${stage.toLocaleLowerCase()}`}
-                    mt={2}
-                  />
-                )}
-              </Flex>
-              <Spacer />
-              <Icon as={NextIcon} m={0} />
-            </Flex>
-          </Card>
+            <Typography.Body ml={3} fontSize={1} mr="auto">
+              {material.name}
+            </Typography.Body>
+            {stage && (
+              <Pill
+                mx={2}
+                text={stage}
+                color={`materialStage.on${stage}`}
+                backgroundColor={`materialStage.${stage.toLocaleLowerCase()}`}
+              />
+            )}
+            <Icon as={NextIcon} m={0} mr={3} />
+          </Flex>
         )
       })}
     </>

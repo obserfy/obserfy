@@ -71,6 +71,7 @@ exports[`BackNavigation should render correctly 1`] = `
   >
     <a
       href="/"
+      state="[object Object]"
     >
       <div
         class="emotion-2"

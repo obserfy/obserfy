@@ -23,7 +23,10 @@ interface NewStudent {
   classes: string[]
   note: string
   gender: number
-  guardians: string[]
+  guardians: Array<{
+    id: string
+    relationship: GuardianRelationship
+  }>
 }
 
 export const usePostNewStudent = (): [

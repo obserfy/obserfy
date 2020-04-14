@@ -170,6 +170,7 @@ const NavBarItem: FC<{
   return (
     <Link
       to={url === target ? to : target}
+      state={{ preserveScroll: true }}
       style={{
         outline: "none",
         WebkitTapHighlightColor: "transparent",

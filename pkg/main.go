@@ -6,6 +6,7 @@ import (
 	"github.com/chrsep/vor/pkg/auth"
 	"github.com/chrsep/vor/pkg/class"
 	"github.com/chrsep/vor/pkg/curriculum"
+	"github.com/chrsep/vor/pkg/guardian"
 	"github.com/chrsep/vor/pkg/logger"
 	"github.com/chrsep/vor/pkg/mailgun"
 	"github.com/chrsep/vor/pkg/minio"
@@ -71,6 +72,7 @@ func runServer() error {
 	curriculumStore := postgres.CurriculumStore{db}
 	authStore := postgres.AuthStore{db}
 	classStore := postgres.ClassStore{db}
+	guardianStore := postgres.GuardianStore{db}
 	mailService := mailgun.NewService()
 	studentImageStorage, err := minio.NewMinioImageStorage()
 	if err != nil {
@@ -96,6 +98,7 @@ func runServer() error {
 		r.Mount("/user", user.NewRouter(server, userStore))
 		r.Mount("/curriculum", curriculum.NewRouter(server, curriculumStore))
 		r.Mount("/classes", class.NewRouter(server, classStore))
+		r.Mount("/guardians", guardian.NewRouter(server, guardianStore))
 	})
 	// Serve gatsby static frontend assets
 	r.Group(func(r chi.Router) {

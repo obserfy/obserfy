@@ -12,6 +12,7 @@ import Card from "../Card/Card"
 import { useGetStudents } from "../../api/students/useGetStudents"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import { NEW_STUDENT_URL } from "../../pages/dashboard/observe/students/new"
+import StudentPicturePlaceholder from "../StudentPicturePlaceholder/StudentPicturePlaceholder"
 
 export const PageHome: FC = () => {
   const [searchTerm, setSearchTerm] = useState("")
@@ -37,15 +38,20 @@ export const PageHome: FC = () => {
     matchedStudent?.map(({ name, id }) => (
       <Card
         p={3}
-        mx={3}
-        mb={2}
+        mx={[0, 3]}
+        borderRadius={[0, "default"]}
+        mb={[0, 2]}
         key={id}
         onClick={() => navigate(`/dashboard/observe/students/details?id=${id}`)}
-        sx={{ cursor: "pointer" }}
+        sx={{
+          cursor: "pointer",
+          boxShadow: ["none", "low"],
+          display: "flex",
+          alignItems: "center",
+        }}
       >
-        <Flex>
-          <Typography.H6>{name}</Typography.H6>
-        </Flex>
+        <StudentPicturePlaceholder />
+        <Typography.Body ml={3}>{name}</Typography.Body>
       </Card>
     ))
 
@@ -116,9 +122,10 @@ const NoStudentPlaceholder: FC = () => (
 
 const StudentLoadingPlaceholder: FC = () => (
   <Box px={3}>
-    <LoadingPlaceholder width="100%" height={62} mb={2} />
-    <LoadingPlaceholder width="100%" height={62} mb={2} />
-    <LoadingPlaceholder width="100%" height={62} mb={2} />
+    <LoadingPlaceholder width="50%" height={30} mb={3} />
+    <LoadingPlaceholder width="70%" height={30} mb={3} />
+    <LoadingPlaceholder width="40%" height={30} mb={3} />
+    <LoadingPlaceholder width="60%" height={30} mb={3} />
   </Box>
 )
 
