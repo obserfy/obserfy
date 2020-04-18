@@ -113,7 +113,7 @@
     "@types/rebass": "4.0.5",
     "@types/segment-analytics": "^0.0.32",
     "@types/theme-ui": "^0.3.1",
-    "@typescript-eslint/eslint-plugin": "^2.27.0",
+    "@typescript-eslint/eslint-plugin": "^2.28.0",
     "@typescript-eslint/parser": "^2.27.0",
     "babel-plugin-transform-default-import": "^1.0.0",
     "cross-env": "^7.0.2",
