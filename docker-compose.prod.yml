@@ -25,7 +25,7 @@ services:
     depends_on:
       - vor_app
     ports:
-      - "8000:80"
+      - "443:443"
 
   db:
     build:

@@ -4,6 +4,7 @@ ENV TARGET_HOST vor_app
 ENV TARGET_PORT 8080
 
 COPY ./ssl /ssl
+RUN ./generate.sh localhost
 RUN chmod 600 /ssl/localhost.crt
 RUN chmod 600 /ssl/localhost.key
 
