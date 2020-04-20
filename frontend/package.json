@@ -92,7 +92,7 @@
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "^1.13.2",
+    "@graphql-codegen/cli": "^1.13.3",
     "@graphql-codegen/typescript": "^1.13.2",
     "@graphql-codegen/typescript-operations": "^1.13.2",
     "@storybook/addon-a11y": "^5.3.18",
