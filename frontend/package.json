@@ -60,7 +60,7 @@
     "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.8",
     "gatsby-react-router-scroll": "^2.2.1",
     "gatsby-source-filesystem": "^2.2.2",
-    "gatsby-transformer-sharp": "^2.4.4",
+    "gatsby-transformer-sharp": "^2.4.6",
     "git-rev-sync": "^2.0.0",
     "graphql": "^15.0.0",
     "http-proxy-middleware": "^1.0.3",
