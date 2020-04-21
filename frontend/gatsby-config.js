@@ -170,7 +170,7 @@ module.exports = {
         dsn: "https://05a5ecaa1d8c4c01b96d2a7993fa9337@sentry.io/1852524",
         // Optional settings, see https://docs.sentry.io/clients/node/config/#optional-settings
         environment: process.env.NODE_ENV,
-        release: require("git-rev-sync").short(),
+        release: require("fs").readFileSync("../VERSION"),
         enabled: (() =>
           ["production", "test"].indexOf(process.env.NODE_ENV) !== -1)(),
       },
