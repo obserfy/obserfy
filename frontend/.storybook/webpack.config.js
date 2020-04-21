@@ -18,7 +18,7 @@ module.exports = ({ config }) => {
       {
         loader: "babel-loader",
         options: {
-          presets: ["@babel/preset-typescript"],
+          presets: ["@babel/preset-typescript", "babel-preset-gatsby"],
           plugins: [require.resolve("babel-plugin-remove-graphql-queries")],
         },
       },
