@@ -84,6 +84,7 @@ export const DraggableListItem: FC<Props> = ({
           }}
           onMouseDown={(e) => {
             setIsDragging(true)
+            // @ts-ignore TODO: Fix type mismatch later
             dragControls.start(e)
           }}
         >

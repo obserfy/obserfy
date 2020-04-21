@@ -4538,6 +4538,14 @@
     "@types/prop-types" "*"
     csstype "^2.2.0"
 
+"@types/react@^16.9.34":
+  version "16.9.34"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.34.tgz#f7d5e331c468f53affed17a8a4d488cd44ea9349"
+  integrity sha512-8AJlYMOfPe1KGLKyHpflCg5z46n0b5DbRfqDksxBLBTUpB75ypDBAO9eCUcjNwE6LCUslwTz00yyG/X9gaVtow==
+  dependencies:
+    "@types/prop-types" "*"
+    csstype "^2.2.0"
+
 "@types/rebass@4.0.5":
   version "4.0.5"
   resolved "https://registry.yarnpkg.com/@types/rebass/-/rebass-4.0.5.tgz#cd6bc6b71c7fe46c18c4692e68235ae7fc306d0d"
@@ -10954,7 +10962,7 @@ gatsby-image@^2.3.2:
     object-fit-images "^3.2.4"
     prop-types "^15.7.2"
 
-gatsby-link@^2.3.1, gatsby-link@^2.3.2:
+gatsby-link@^2.3.2:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/gatsby-link/-/gatsby-link-2.3.2.tgz#b0987dc63e54880afe20fa458ac6d14c2f4cc60c"
   integrity sha512-A4aC6EEux/zumpgWnMlqcLhDq80uwzuCVrYfPVBxs/fFifVzzrMIvsPFhqw5w3l5DHC3XkxP4Y3TZq+EhypJhA==
