@@ -14,7 +14,7 @@ type MinioImageStorage struct {
 }
 
 func NewMinioImageStorage() (*MinioImageStorage, error) {
-	endpoint := os.Getenv("MINIO_ENDPOINT") + ":9000"
+	endpoint := os.Getenv("MINIO_ENDPOINT")
 	accessKey := os.Getenv("MINIO_ACCESS_KEY")
 	secretKey := os.Getenv("MINIO_SECRET_KEY")
 	bucketName := os.Getenv("MINIO_BUCKET_NAME")
