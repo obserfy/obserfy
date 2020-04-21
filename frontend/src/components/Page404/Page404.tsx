@@ -1,7 +1,7 @@
 import React, { FC } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import GatsbyImage, { FixedObject } from "gatsby-image"
-import GatsbyLink from "gatsby-link"
+import { Link } from "gatsby-plugin-intl3"
 import Flex from "../Flex/Flex"
 import Typography from "../Typography/Typography"
 import Button from "../Button/Button"
@@ -46,9 +46,9 @@ export const Page404: FC = () => {
         <Typography.Body mb={4} mx={5} sx={{ textAlign: "center" }}>
           Oops, we can&apos;t seem to find the page you are looking for.
         </Typography.Body>
-        <GatsbyLink to={OBSERVE_PAGE_URL}>
+        <Link to={OBSERVE_PAGE_URL}>
           <Button>Go Back Home</Button>
-        </GatsbyLink>
+        </Link>
       </Flex>
     </Flex>
   )
