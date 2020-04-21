@@ -175,6 +175,13 @@ module.exports = {
           ["production", "test"].indexOf(process.env.NODE_ENV) !== -1)(),
       },
     },
+    {
+      resolve: `gatsby-plugin-graphql-codegen`,
+      options: {
+        fileName: `./graphql-types.ts`,
+        documentPaths: ["./src/**/*.{ts,tsx}"]
+      }
+    },
     ...guessJsPlugin,
     // DEVTOOLS ================================================================
     {
