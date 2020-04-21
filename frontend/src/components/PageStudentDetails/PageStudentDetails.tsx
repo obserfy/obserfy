@@ -1,10 +1,12 @@
 import React, { FC, useState } from "react"
 import { navigate } from "gatsby"
-import { FormattedDate, FormattedRelativeTime, Link } from "gatsby-plugin-intl3"
 import isSameDay from "date-fns/isSameDay"
 import startOfDay from "date-fns/startOfDay"
 import differenceInDays from "date-fns/differenceInDays"
 import differenceInCalendarDays from "date-fns/differenceInCalendarDays"
+import formatRelative from "date-fns/formatRelative"
+import lightFormat from "date-fns/lightFormat"
+import { Link } from "../Link/Link"
 import { useGetStudent } from "../../api/useGetStudent"
 import Flex from "../Flex/Flex"
 import Box from "../Box/Box"
@@ -105,21 +107,9 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
         color="textMediumEmphasis"
         sx={{ textTransform: "capitalize" }}
       >
-        {selectedDateDifference > -3 ? (
-          <FormattedRelativeTime
-            value={selectedDateDifference}
-            unit="day"
-            numeric="auto"
-          />
-        ) : (
-          <FormattedDate
-            value={dates?.[selectedDate]}
-            month="short"
-            year="numeric"
-            weekday="short"
-            day="2-digit"
-          />
-        )}
+        {selectedDateDifference > -3
+          ? formatRelative(Date.parse(dates?.[selectedDate] ?? ""), Date.now())
+          : lightFormat(Date.parse(dates?.[selectedDate] ?? ""), "mm YY")}
       </Typography.Body>
       <Button
         disabled={selectedDate < 1}

@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react"
 import { useImmer } from "use-immer"
-import { Link, navigate } from "gatsby-plugin-intl3"
+import { Link, navigate } from "../Link/Link"
 import { useGetGuardian } from "../../api/useGetGuardian"
 import Box from "../Box/Box"
 import BackNavigation from "../BackNavigation/BackNavigation"

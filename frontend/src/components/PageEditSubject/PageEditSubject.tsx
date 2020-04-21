@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from "react"
 import { useImmer } from "use-immer"
-import { navigate } from "gatsby-plugin-intl3"
 import { nanoid } from "nanoid"
+import { navigate } from "../Link/Link"
 import {
   Material,
   useGetSubjectMaterials,

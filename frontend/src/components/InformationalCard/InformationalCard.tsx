@@ -1,5 +1,5 @@
 import React, { FC } from "react"
-import { Link } from "gatsby-plugin-intl3"
+import { Link } from "../Link/Link"
 import Flex from "../Flex/Flex"
 import Icon from "../Icon/Icon"
 import { ReactComponent as InfoIcon } from "../../icons/info.svg"

@@ -1,8 +1,8 @@
 import React, { FC, memo, useCallback, useMemo, useState } from "react"
 import startOfDay from "date-fns/startOfDay"
-import { FormattedDate } from "gatsby-plugin-intl3"
 import differenceInDays from "date-fns/differenceInDays"
 import isSameDay from "date-fns/isSameDay"
+import lightFormat from "date-fns/lightFormat"
 import { Observation, useGetObservations } from "../../api/useGetObservations"
 import Box from "../Box/Box"
 import BackNavigation from "../BackNavigation/BackNavigation"
@@ -167,12 +167,7 @@ const ObservationList: FC<{
               width="100%"
               textAlign="center"
             >
-              <FormattedDate
-                value={date}
-                month="short"
-                year="2-digit"
-                day="2-digit"
-              />
+              {lightFormat(Date.parse(date), "MM YY DD")}
             </Typography.Body>
             {observations
               .filter(({ createdDate }) =>

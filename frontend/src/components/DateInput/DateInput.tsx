@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react"
-import { useIntl } from "gatsby-plugin-intl3"
+import lightFormat from "date-fns/lightFormat"
 import Input from "../Input/Input"
 import Button from "../Button/Button"
 import Icon from "../Icon/Icon"
@@ -15,7 +15,6 @@ interface Props extends Omit<BoxProps, "value" | "onChange"> {
 }
 export const DateInput: FC<Props> = ({ label, value, onChange, ...props }) => {
   const [showDatePicker, setShowDatePicker] = useState(false)
-  const intl = useIntl()
 
   return (
     <>
@@ -23,15 +22,7 @@ export const DateInput: FC<Props> = ({ label, value, onChange, ...props }) => {
         <Input
           label={label}
           width="100%"
-          value={
-            !value
-              ? ""
-              : intl.formatDate(value, {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })
-          }
+          value={!value ? "" : lightFormat(value, "YY MMMM dd")}
           placeholder="Not set"
           disabled
           sx={{

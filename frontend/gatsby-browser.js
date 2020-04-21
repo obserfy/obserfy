@@ -7,14 +7,6 @@
 // You can delete this file if you're not using it
 import "./src/global.css"
 
-if (!Intl.PluralRules) {
-  import("./src/polyfill/pluralRules")
-}
-
-if (!Intl.RelativeTimeFormat) {
-  import("./src/polyfill/relativeTimeFormat")
-}
-
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const shouldUpdateScroll = ({
   prevRouterProps: { location },

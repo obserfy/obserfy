@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react"
-import { useIntl } from "gatsby-plugin-intl3"
 import lastDayOfMonth from "date-fns/lastDayOfMonth"
+import lightFormat from "date-fns/lightFormat"
 import Dialog from "../Dialog/Dialog"
 import Select from "../Select/Select"
 import Flex from "../Flex/Flex"
@@ -32,8 +32,6 @@ export const DatePickerDialog: FC<Props> = ({
     parseInt(month, 10),
     parseInt(date, 10)
   )
-
-  const intl = useIntl()
 
   const title = (
     <Flex
@@ -106,9 +104,7 @@ export const DatePickerDialog: FC<Props> = ({
         >
           {[...Array(12).keys()].map((item) => (
             <option value={item} key={item}>
-              {intl.formatDate(new Date(1, item, 1), {
-                month: "long",
-              })}
+              {lightFormat(new Date(1, item, 1), "MMMM")}
             </option>
           ))}
         </Select>

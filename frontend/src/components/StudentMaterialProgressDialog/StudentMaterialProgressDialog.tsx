@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react"
-import { useIntl } from "gatsby-plugin-intl3"
+import lightFormat from "date-fns/lightFormat"
 import { MaterialProgressStage } from "../../api/useGetStudentMaterialProgress"
 import ScrollableDialog from "../ScrollableDialog/ScrollableDialog"
 import Select from "../Select/Select"
@@ -27,12 +27,9 @@ export const StudentMaterialProgressDialog: FC<{
   // progress,
 }) => {
   const [selectedStage, setSelectedStage] = useState(stage)
-  const intl = useIntl()
-  const subtext = `Last updated ${intl.formatDate(lastUpdated, {
-    month: "short",
-    day: "2-digit",
-    weekday: "long",
-  })}`
+  const subtext = lastUpdated
+    ? `Last updated ${lightFormat(Date.parse(lastUpdated), "MM dd")}`
+    : ""
 
   async function submitProgressUpdate(): Promise<void> {
     if (selectedStage === undefined) return

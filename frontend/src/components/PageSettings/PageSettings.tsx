@@ -1,7 +1,7 @@
 import React, { FC } from "react"
 import { navigate } from "gatsby"
 import { useColorMode } from "theme-ui"
-import { Link } from "gatsby-plugin-intl3"
+import { Link } from "../Link/Link"
 import Box from "../Box/Box"
 import Typography from "../Typography/Typography"
 import Flex from "../Flex/Flex"

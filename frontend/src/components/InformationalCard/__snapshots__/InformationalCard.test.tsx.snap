@@ -213,6 +213,8 @@ exports[`InformationalCard should render correctly 1`] = `
           class="emotion-4"
         />
         <a
+          aria-current="page"
+          class=""
           href="/"
         >
           <button

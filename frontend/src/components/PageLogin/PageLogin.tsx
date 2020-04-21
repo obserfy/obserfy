@@ -1,6 +1,6 @@
 import React, { FC, FormEvent, useState } from "react"
 import { navigate } from "gatsby"
-import { Link } from "gatsby-plugin-intl3"
+import { Link } from "../Link/Link"
 import Box from "../Box/Box"
 import Input from "../Input/Input"
 import Button from "../Button/Button"

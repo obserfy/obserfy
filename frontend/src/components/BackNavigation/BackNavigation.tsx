@@ -1,5 +1,5 @@
 import React, { FC } from "react"
-import { Link } from "gatsby-plugin-intl3"
+import { Link } from "../Link/Link"
 import Icon from "../Icon/Icon"
 import { ReactComponent as Arrow } from "../../icons/arrow-back.svg"
 import Typography from "../Typography/Typography"

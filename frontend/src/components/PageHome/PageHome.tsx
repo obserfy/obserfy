@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react"
 import { navigate } from "gatsby"
-import { Link } from "gatsby-plugin-intl3"
+import { Link } from "../Link/Link"
 import { Box } from "../Box/Box"
 import SearchBar from "../SearchBar/SearchBar"
 import { Flex } from "../Flex/Flex"

@@ -222,7 +222,6 @@ exports[`PageEditClass should render correctly 1`] = `
     >
       <a
         href="/dashboard/settings/class"
-        state="[object Object]"
       >
         <div
           class="emotion-2"
