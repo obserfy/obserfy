@@ -7,3 +7,5 @@
 **/graphqlTypes.ts
 public/**/*
 **/*.d.ts
+image-sharp-fragments.ts
+*.js

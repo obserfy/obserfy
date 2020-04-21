@@ -2,7 +2,6 @@
 const babelOptions = {
   presets: ["@babel/preset-typescript", "babel-preset-gatsby"],
   plugins: [
-    require.resolve("@babel/plugin-proposal-numeric-separator"),
     require.resolve("babel-plugin-remove-graphql-queries"),
   ],
 }

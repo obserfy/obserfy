@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/camelcase,@typescript-eslint/no-var-requires,global-require */
-const { createProxyMiddleware } = require("http-proxy-middleware")
 require("dotenv").config({
   path: `.env`,
 })
@@ -8,25 +7,25 @@ require("dotenv").config({
 const guessJsPlugin =
   process.env.GA_PRIVATE_KEY && process.env.GA_CLIENT_EMAIL
     ? [
-        {
-          resolve: "gatsby-plugin-guess-js",
-          options: {
-            // Find the view id in the GA admin in a section labeled "views"
-            GAViewID: `211863061`,
-            // Add a JWT to get data from GA
-            jwt: {
-              private_key: process.env.GA_PRIVATE_KEY.replace(/\\n/g, "\n"),
-              client_email: process.env.GA_CLIENT_EMAIL,
-            },
-            minimumThreshold: 0.03,
-            // The "period" for fetching analytic data.
-            period: {
-              startDate: new Date("2020-1-1"),
-              endDate: new Date(),
-            },
+      {
+        resolve: "gatsby-plugin-guess-js",
+        options: {
+          // Find the view id in the GA admin in a section labeled "views"
+          GAViewID: `211863061`,
+          // Add a JWT to get data from GA
+          jwt: {
+            private_key: process.env.GA_PRIVATE_KEY.replace(/\\n/g, "\n"),
+            client_email: process.env.GA_CLIENT_EMAIL,
+          },
+          minimumThreshold: 0.03,
+          // The "period" for fetching analytic data.
+          period: {
+            startDate: new Date("2020-1-1"),
+            endDate: new Date(),
           },
         },
-      ]
+      },
+    ]
     : []
 
 module.exports = {
@@ -170,9 +169,16 @@ module.exports = {
         dsn: "https://05a5ecaa1d8c4c01b96d2a7993fa9337@sentry.io/1852524",
         // Optional settings, see https://docs.sentry.io/clients/node/config/#optional-settings
         environment: process.env.NODE_ENV,
-        release: require("git-rev-sync").short(),
+        release: require("fs").readFileSync("../VERSION"),
         enabled: (() =>
           ["production", "test"].indexOf(process.env.NODE_ENV) !== -1)(),
+      },
+    },
+    {
+      resolve: `gatsby-plugin-graphql-codegen`,
+      options: {
+        fileName: `./graphql-types.ts`,
+        documentPaths: ["./src/**/*.{ts,tsx}"],
       },
     },
     ...guessJsPlugin,
@@ -185,7 +191,7 @@ module.exports = {
     },
   ],
   developMiddleware: (app) => {
-    app.use("/api", createProxyMiddleware({ target: "http://localhost:8000" }))
-    app.use("/auth", createProxyMiddleware({ target: "http://localhost:8000" }))
+    app.use("/api", require("http-proxy-middleware").createProxyMiddleware({ target: "http://localhost:8000" }))
+    app.use("/auth", require("http-proxy-middleware").createProxyMiddleware({ target: "http://localhost:8000" }))
   },
 }
