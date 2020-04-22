@@ -1,5 +1,6 @@
 import React, { FC, useState } from "react"
 import { useImmer } from "use-immer"
+import dayjs from "dayjs"
 import { navigate } from "../Link/Link"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { CLASS_SETTINGS_URL } from "../../pages/dashboard/settings/class"
@@ -36,8 +37,8 @@ export const PageNewClass: FC = () => {
     const result = await mutate({
       name,
       weekdays,
-      endTime: new Date(Date.parse(endTime)),
-      startTime: new Date(Date.parse(startTime)),
+      endTime: dayjs(endTime, "HH:mm").toDate(),
+      startTime: dayjs(startTime, "HH:mm").toDate(),
     })
     if (result) {
       await navigate(CLASS_SETTINGS_URL)

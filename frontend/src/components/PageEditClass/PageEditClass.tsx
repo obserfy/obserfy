@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useRef, useState } from "react"
 import { useImmer } from "use-immer"
-import lightFormat from "date-fns/lightFormat"
+import dayjs from "dayjs"
 import { navigate } from "../Link/Link"
 import { CLASS_SETTINGS_URL } from "../../pages/dashboard/settings/class"
 import { Box } from "../Box/Box"
@@ -38,8 +38,8 @@ export const PageEditClass: FC<Props> = ({ classId }) => {
     const start = Date.parse(target.startTime)
     const end = Date.parse(target.endTime)
     setName(target.name)
-    setStartTime(lightFormat(start, "HH:mm"))
-    setEndTime(lightFormat(end, "HH:mm"))
+    setStartTime(dayjs(start).format("HH:mm"))
+    setEndTime(dayjs(end).format("HH:mm"))
     setWeekdays(() => target.weekdays)
     isLoaded.current = true
   }, [classes.data, setWeekdays])
@@ -48,8 +48,8 @@ export const PageEditClass: FC<Props> = ({ classId }) => {
     const result = await mutate({
       name,
       weekdays,
-      endTime: new Date(Date.parse(endTime)),
-      startTime: new Date(Date.parse(startTime)),
+      endTime: dayjs(endTime, "HH:mm").toDate(),
+      startTime: dayjs(startTime, "HH:mm").toDate(),
     })
     if (result) {
       await navigate(CLASS_SETTINGS_URL)

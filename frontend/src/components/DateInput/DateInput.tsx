@@ -1,5 +1,4 @@
 import React, { FC, useState } from "react"
-import lightFormat from "date-fns/lightFormat"
 import Input from "../Input/Input"
 import Button from "../Button/Button"
 import Icon from "../Icon/Icon"
@@ -7,6 +6,7 @@ import { ReactComponent as CalendarIcon } from "../../icons/calendar.svg"
 import Flex from "../Flex/Flex"
 import DatePickerDialog from "../DatePickerDialog/DatePickerDialog"
 import { BoxProps } from "../Box/Box"
+import dayjs from "../../dayjs"
 
 interface Props extends Omit<BoxProps, "value" | "onChange"> {
   value?: Date
@@ -22,7 +22,7 @@ export const DateInput: FC<Props> = ({ label, value, onChange, ...props }) => {
         <Input
           label={label}
           width="100%"
-          value={!value ? "" : lightFormat(value, "YY MMMM dd")}
+          value={!value ? "" : dayjs(value).format("d MMMM 'YY")}
           placeholder="Not set"
           disabled
           sx={{

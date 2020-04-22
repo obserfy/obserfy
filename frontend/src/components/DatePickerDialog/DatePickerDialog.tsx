@@ -1,6 +1,4 @@
 import React, { FC, useState } from "react"
-import lastDayOfMonth from "date-fns/lastDayOfMonth"
-import lightFormat from "date-fns/lightFormat"
 import Dialog from "../Dialog/Dialog"
 import Select from "../Select/Select"
 import Flex from "../Flex/Flex"
@@ -10,6 +8,7 @@ import Icon from "../Icon/Icon"
 import { ReactComponent as CloseIcon } from "../../icons/close.svg"
 import Spacer from "../Spacer/Spacer"
 import Button from "../Button/Button"
+import dayjs from "../../dayjs"
 
 interface Props {
   defaultDate?: Date
@@ -104,7 +103,7 @@ export const DatePickerDialog: FC<Props> = ({
         >
           {[...Array(12).keys()].map((item) => (
             <option value={item} key={item}>
-              {lightFormat(new Date(1, item, 1), "MMMM")}
+              {dayjs(new Date(1, item, 1)).format("MMMM")}
             </option>
           ))}
         </Select>
@@ -113,7 +112,7 @@ export const DatePickerDialog: FC<Props> = ({
           value={date}
           onChange={(e) => setDate(e.target.value)}
         >
-          {[...Array(lastDayOfMonth(generatedDate).getDate()).keys()].map(
+          {[...Array(dayjs(generatedDate).endOf("month").date()).keys()].map(
             (item) => (
               <option value={item + 1} key={item}>
                 {item + 1}

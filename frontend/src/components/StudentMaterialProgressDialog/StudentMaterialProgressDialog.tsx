@@ -1,10 +1,10 @@
 import React, { FC, useState } from "react"
-import lightFormat from "date-fns/lightFormat"
 import { MaterialProgressStage } from "../../api/useGetStudentMaterialProgress"
 import ScrollableDialog from "../ScrollableDialog/ScrollableDialog"
 import Select from "../Select/Select"
 import Box from "../Box/Box"
 import { updateStudentMaterialProgress } from "../../api/updateStudentMaterialProgress"
+import dayjs from "../../dayjs"
 
 export const StudentMaterialProgressDialog: FC<{
   studentId: string
@@ -28,7 +28,7 @@ export const StudentMaterialProgressDialog: FC<{
 }) => {
   const [selectedStage, setSelectedStage] = useState(stage)
   const subtext = lastUpdated
-    ? `Last updated ${lightFormat(Date.parse(lastUpdated), "MM dd")}`
+    ? `Last updated ${dayjs(lastUpdated).format("d MMM 'YY")}`
     : ""
 
   async function submitProgressUpdate(): Promise<void> {
