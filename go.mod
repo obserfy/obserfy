@@ -5,7 +5,7 @@ go 1.13
 require (
 	github.com/benbjohnson/clock v1.0.0
 	github.com/brianvoe/gofakeit/v4 v4.3.0
-	github.com/getsentry/sentry-go v0.5.1
+	github.com/getsentry/sentry-go v0.6.0
 	github.com/go-chi/chi v4.1.1+incompatible
 	github.com/go-pg/pg/v9 v9.1.6
 	github.com/go-playground/validator/v10 v10.2.0
