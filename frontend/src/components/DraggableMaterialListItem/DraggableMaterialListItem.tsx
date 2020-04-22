@@ -95,7 +95,9 @@ export const DraggableMaterialListItem: FC<Props> = ({
             })
             draft.sort((a, b) => a.order - b.order)
           })
+        return -1
       }
+      return 0
     },
     [height, length, material.id, material.order, setMaterials]
   )

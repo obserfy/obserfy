@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DraggableListItem should render correctly 1`] = `
-.emotion-3 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,20 +9,40 @@ exports[`DraggableListItem should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-3 {
+  .emotion-4 {
     font-size: 20px;
   }
+}
+
+.emotion-3 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  height: 48px;
+  background-color: var(--theme-ui-colors-primaryLightest,rgba(0,120,86,0.05));
 }
 
 .emotion-2 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 100%;
+  max-width: 640px;
   border-bottom-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   border-bottom-width: 1px;
   border-bottom-style: solid;
   -webkit-transition: background-color .1s ease-in,box-shadow .1s ease-in;
   transition: background-color .1s ease-in,box-shadow .1s ease-in;
+  position: relative;
+  -webkit-transform: translateY(0px);
+  -ms-transform: translateY(0px);
+  transform: translateY(0px);
+  z-index: 1;
+  top: 0;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -63,11 +83,10 @@ exports[`DraggableListItem should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-3"
+    class="emotion-4"
   >
-    <li
-      draggable="false"
-      style="will-change: transform; position: relative; list-style: none; z-index: 0; user-select: none;"
+    <div
+      class="emotion-3"
     >
       <div
         class="emotion-2"
@@ -80,7 +99,7 @@ exports[`DraggableListItem should render correctly 1`] = `
           />
         </div>
       </div>
-    </li>
+    </div>
   </div>
 </div>
 `;
