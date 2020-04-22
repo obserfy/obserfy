@@ -1,9 +1,9 @@
 import { PageRendererProps } from "gatsby"
 import React, { FC } from "react"
-import { navigate } from "gatsby-plugin-intl3"
+import { navigate } from "../components/Link/Link"
 
 const IndexPage: FC<PageRendererProps> = ({ location }) => {
-  if (location.pathname === "/") {
+  if (typeof window !== "undefined" && location.pathname === "/") {
     navigate("/dashboard/observe")
   }
   return <div />

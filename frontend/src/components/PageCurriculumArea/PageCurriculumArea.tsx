@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react"
-import { Link, navigate } from "gatsby-plugin-intl3"
+import { Link, navigate } from "../Link/Link"
 import Box from "../Box/Box"
 import Typography from "../Typography/Typography"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"

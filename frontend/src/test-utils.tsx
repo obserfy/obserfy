@@ -2,7 +2,6 @@
 import React, { FC, ReactElement } from "react"
 import { ThemeProvider } from "theme-ui"
 import { render, RenderOptions, RenderResult } from "@testing-library/react"
-import { IntlProvider } from "gatsby-plugin-intl3"
 import {
   createHistory,
   createMemorySource,
@@ -10,7 +9,6 @@ import {
 } from "@reach/router"
 import Theme from "./gatsby-plugin-theme-ui"
 import Box from "./components/Box/Box"
-import en from "./intl/en.json"
 
 const AllProviders: FC = ({ children }) => {
   // TODO: Maybe this better be outside
@@ -18,9 +16,7 @@ const AllProviders: FC = ({ children }) => {
   return (
     <LocationProvider history={history}>
       <ThemeProvider theme={Theme}>
-        <IntlProvider locale="en" messages={en}>
-          <Box fontSize={[16, 20]}>{children}</Box>
-        </IntlProvider>
+        <Box fontSize={[16, 20]}>{children}</Box>
       </ThemeProvider>
     </LocationProvider>
   )

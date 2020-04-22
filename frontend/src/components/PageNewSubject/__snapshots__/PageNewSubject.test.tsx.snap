@@ -390,7 +390,6 @@ exports[`PageNewSubject should render correctly 1`] = `
     >
       <a
         href="/dashboard/settings/curriculum/area?id=sadf"
-        state="[object Object]"
       >
         <div
           class="emotion-2"
