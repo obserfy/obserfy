@@ -28,6 +28,10 @@ const guessJsPlugin =
       ]
     : []
 
+// Only use preact on prod. preact's dx on gatsby is still awful.
+const preact =
+  process.env.NODE_ENV === "production" ? [`gatsby-plugin-preact`] : []
+
 module.exports = {
   siteMetadata: {
     title: `Obserfy`,
@@ -39,7 +43,7 @@ module.exports = {
     `gatsby-plugin-typescript`,
     "gatsby-plugin-theme-ui",
     `gatsby-plugin-react-helmet-async`,
-    // `gatsby-plugin-preact`,
+    ...preact,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
