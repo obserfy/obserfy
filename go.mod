@@ -12,7 +12,7 @@ require (
 	github.com/google/uuid v1.1.1
 	github.com/joho/godotenv v1.3.0
 	github.com/mailgun/mailgun-go/v4 v4.0.1
-	github.com/minio/minio-go/v6 v6.0.52
+	github.com/minio/minio-go/v6 v6.0.53
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.5.1
 	go.uber.org/zap v1.14.1
