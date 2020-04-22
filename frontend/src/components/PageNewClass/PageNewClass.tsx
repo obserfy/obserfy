@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react"
 import { useImmer } from "use-immer"
-import { navigate } from "gatsby-plugin-intl3"
-import parse from "date-fns/parse"
+import dayjs from "dayjs"
+import { navigate } from "../Link/Link"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { CLASS_SETTINGS_URL } from "../../pages/dashboard/settings/class"
 import { Box } from "../Box/Box"
@@ -37,8 +37,8 @@ export const PageNewClass: FC = () => {
     const result = await mutate({
       name,
       weekdays,
-      endTime: parse(endTime, "HH:mm", new Date()),
-      startTime: parse(startTime, "HH:mm", new Date()),
+      endTime: dayjs(endTime, "HH:mm").toDate(),
+      startTime: dayjs(startTime, "HH:mm").toDate(),
     })
     if (result) {
       await navigate(CLASS_SETTINGS_URL)

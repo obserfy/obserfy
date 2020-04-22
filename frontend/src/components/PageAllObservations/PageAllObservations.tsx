@@ -1,8 +1,4 @@
 import React, { FC, memo, useCallback, useMemo, useState } from "react"
-import startOfDay from "date-fns/startOfDay"
-import { FormattedDate } from "gatsby-plugin-intl3"
-import differenceInDays from "date-fns/differenceInDays"
-import isSameDay from "date-fns/isSameDay"
 import { Observation, useGetObservations } from "../../api/useGetObservations"
 import Box from "../Box/Box"
 import BackNavigation from "../BackNavigation/BackNavigation"
@@ -16,6 +12,7 @@ import EditObservationDialog from "../EditObservationDialog/EditObservationDialo
 import DeleteObservationDialog from "../DeleteObservationDialog/DeleteObservationDialog"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import ObservationCard from "../ObservationCard/ObservationCard"
+import dayjs from "../../dayjs"
 
 const allCategory = {
   id: "-1",
@@ -148,10 +145,12 @@ const ObservationList: FC<{
       [
         ...new Set(
           observations.map(({ createdDate }) =>
-            startOfDay(Date.parse(createdDate ?? "")).toISOString()
+            dayjs(Date.parse(createdDate ?? ""))
+              .startOf("day")
+              .toISOString()
           )
         ),
-      ]?.sort((a, b) => differenceInDays(Date.parse(b), Date.parse(a))),
+      ]?.sort((a, b) => dayjs(b).diff(a)),
     [observations]
   )
 
@@ -167,16 +166,11 @@ const ObservationList: FC<{
               width="100%"
               textAlign="center"
             >
-              <FormattedDate
-                value={date}
-                month="short"
-                year="2-digit"
-                day="2-digit"
-              />
+              {dayjs(date).format("d MMMM 'YY")}
             </Typography.Body>
             {observations
               .filter(({ createdDate }) =>
-                isSameDay(Date.parse(createdDate ?? ""), Date.parse(date))
+                dayjs(createdDate ?? "").isSame(date, "day")
               )
               .map((observation) => {
                 return (

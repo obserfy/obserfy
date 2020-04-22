@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react"
-import { navigate } from "gatsby-plugin-intl3"
+import { navigate } from "../Link/Link"
 import Box from "../Box/Box"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { NEW_STUDENT_URL } from "../../pages/dashboard/observe/students/new"

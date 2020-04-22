@@ -1,7 +1,7 @@
 import React, { FC } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import GatsbyImage, { FixedObject } from "gatsby-image"
-import { Link } from "gatsby-plugin-intl3"
+import { Link } from "../Link/Link"
 import Flex from "../Flex/Flex"
 import Typography from "../Typography/Typography"
 import Button from "../Button/Button"

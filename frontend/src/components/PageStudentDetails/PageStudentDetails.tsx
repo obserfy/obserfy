@@ -1,10 +1,6 @@
 import React, { FC, useState } from "react"
 import { navigate } from "gatsby"
-import { FormattedDate, FormattedRelativeTime, Link } from "gatsby-plugin-intl3"
-import isSameDay from "date-fns/isSameDay"
-import startOfDay from "date-fns/startOfDay"
-import differenceInDays from "date-fns/differenceInDays"
-import differenceInCalendarDays from "date-fns/differenceInCalendarDays"
+import { Link } from "../Link/Link"
 import { useGetStudent } from "../../api/useGetStudent"
 import Flex from "../Flex/Flex"
 import Box from "../Box/Box"
@@ -25,6 +21,7 @@ import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import { ReactComponent as PrevIcon } from "../../icons/arrow-back.svg"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import { ALL_OBSERVATIONS_PAGE_URL } from "../../pages/dashboard/observe/students/observations/all"
+import dayjs from "../../dayjs"
 
 interface Props {
   id: string
@@ -40,22 +37,20 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
   const dates = [
     ...new Set(
       observations.data?.map(({ createdDate }) =>
-        startOfDay(Date.parse(createdDate ?? "")).toISOString()
+        dayjs(createdDate ?? "")
+          .startOf("day")
+          .toISOString()
       )
     ),
-  ]?.sort((a, b) => differenceInDays(Date.parse(b), Date.parse(a)))
+  ]?.sort((a, b) => dayjs(b).diff(a))
 
-  const selectedDateDifference = differenceInCalendarDays(
-    Date.parse(dates?.[selectedDate] ?? ""),
-    Date.now()
-  )
+  const selectedDateDifference = dayjs
+    .duration(dayjs(dates?.[selectedDate] ?? "").diff(dayjs()))
+    .days()
 
   const listOfObservations = observations.data
     ?.filter((observation) =>
-      isSameDay(
-        Date.parse(observation.createdDate ?? ""),
-        Date.parse(dates[selectedDate])
-      )
+      dayjs(observation.createdDate ?? "").isSame(dates[selectedDate], "day")
     )
     ?.map((observation) => (
       <ObservationCard
@@ -105,21 +100,12 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
         color="textMediumEmphasis"
         sx={{ textTransform: "capitalize" }}
       >
-        {selectedDateDifference > -3 ? (
-          <FormattedRelativeTime
-            value={selectedDateDifference}
-            unit="day"
-            numeric="auto"
-          />
-        ) : (
-          <FormattedDate
-            value={dates?.[selectedDate]}
-            month="short"
-            year="numeric"
-            weekday="short"
-            day="2-digit"
-          />
-        )}
+        {/* eslint-disable-next-line no-nested-ternary */}
+        {selectedDateDifference > -3
+          ? selectedDateDifference === -1
+            ? "Today"
+            : `${selectedDateDifference * -1} Days`
+          : dayjs(dates?.[selectedDate] ?? "").format("d MMMM 'YY")}
       </Typography.Body>
       <Button
         disabled={selectedDate < 1}

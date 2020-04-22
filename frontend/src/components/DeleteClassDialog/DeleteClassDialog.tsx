@@ -1,5 +1,5 @@
 import React, { FC } from "react"
-import { navigate } from "gatsby-plugin-intl3"
+import { navigate } from "../Link/Link"
 import Flex from "../Flex/Flex"
 import Typography from "../Typography/Typography"
 import Button from "../Button/Button"

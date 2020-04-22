@@ -92,13 +92,5 @@ module.exports = ({ config }) => {
   // Prefer Gatsby ES6 entrypoint (module) over commonjs (main) entrypoint
   config.resolve.mainFields = ["browser", "module", "main"]
 
-  // Mock gatsby-plugin-intl Link component.
-  config.plugins.push(
-    new webpack.NormalModuleReplacementPlugin(
-      /gatsby-plugin-intl3/,
-      path.resolve(__dirname, "./gatsby-plugin-intl3-mock.ts")
-    )
-  )
-
   return config
 }

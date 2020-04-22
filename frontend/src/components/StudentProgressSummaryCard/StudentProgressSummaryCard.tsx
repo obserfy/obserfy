@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react"
-import { Link } from "gatsby-plugin-intl3"
+import { Link } from "../Link/Link"
 import Button from "../Button/Button"
 import Spacer from "../Spacer/Spacer"
 import Flex from "../Flex/Flex"

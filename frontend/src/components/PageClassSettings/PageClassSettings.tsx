@@ -1,7 +1,7 @@
 import React, { FC } from "react"
 import GatsbyImage, { FixedObject } from "gatsby-image"
 import { graphql, useStaticQuery } from "gatsby"
-import { Link } from "gatsby-plugin-intl3"
+import { Link } from "../Link/Link"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { SETTINGS_URL } from "../../pages/dashboard/settings"
 import Flex from "../Flex/Flex"

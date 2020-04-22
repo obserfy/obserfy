@@ -1,5 +1,5 @@
 import React, { FC, FormEvent, useState } from "react"
-import { Link } from "gatsby-plugin-intl3"
+import { Link } from "../Link/Link"
 import Flex from "../Flex/Flex"
 import Box from "../Box/Box"
 import { Typography } from "../Typography/Typography"

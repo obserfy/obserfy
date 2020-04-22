@@ -1,12 +1,12 @@
 import React, { FC, FunctionComponent, useEffect, useState } from "react"
 import { graphql, navigate, useStaticQuery } from "gatsby"
-import { Link } from "gatsby-plugin-intl3"
 import { useLocation, useMatch } from "@reach/router"
 // TODO: Disable ts ignore when react-adptive-hooks typedef is available.
 // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
 // @ts-ignore
 import { useMemoryStatus } from "react-adaptive-hooks/memory"
 import GatsbyImage from "gatsby-image"
+import { Link } from "../Link/Link"
 import { Typography } from "../Typography/Typography"
 import Icon from "../Icon/Icon"
 import Box from "../Box/Box"
