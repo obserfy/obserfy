@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react"
 import { navigate } from "gatsby"
-import { Link } from "gatsby-plugin-intl3"
+import { Link } from "../Link/Link"
 import { Box } from "../Box/Box"
 import SearchBar from "../SearchBar/SearchBar"
 import { Flex } from "../Flex/Flex"
@@ -11,7 +11,7 @@ import { Typography } from "../Typography/Typography"
 import Card from "../Card/Card"
 import { useGetStudents } from "../../api/students/useGetStudents"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
-import { NEW_STUDENT_URL } from "../../pages/dashboard/observe/students/new"
+import { NEW_STUDENT_URL } from "../../routes"
 import StudentPicturePlaceholder from "../StudentPicturePlaceholder/StudentPicturePlaceholder"
 
 export const PageHome: FC = () => {

@@ -16,6 +16,7 @@ services:
     depends_on:
       - db
       - minio
+    restart: on-failure
     # Might not be necessary for all projects, but these
     # fixes delve crash on circleci
     security_opt:

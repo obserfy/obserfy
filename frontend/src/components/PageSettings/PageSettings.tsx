@@ -1,7 +1,7 @@
 import React, { FC } from "react"
 import { navigate } from "gatsby"
 import { useColorMode } from "theme-ui"
-import { Link } from "gatsby-plugin-intl3"
+import { Link } from "../Link/Link"
 import Box from "../Box/Box"
 import Typography from "../Typography/Typography"
 import Flex from "../Flex/Flex"
@@ -14,7 +14,7 @@ import { ReactComponent as FlipIcon } from "../../icons/flip.svg"
 import Card from "../Card/Card"
 import { useGetSchool } from "../../api/useGetSchool"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
-import { CLASS_SETTINGS_URL } from "../../pages/dashboard/settings/class"
+import { CLASS_SETTINGS_URL } from "../../routes"
 
 export const PageSettings: FC = () => {
   const schoolDetail = useGetSchool()

@@ -291,7 +291,6 @@ exports[`Layout should render correctly 1`] = `
         </div>
         <a
           href="/dashboard/observe"
-          state="[object Object]"
           style="outline: none;"
         >
           <div
@@ -312,7 +311,6 @@ exports[`Layout should render correctly 1`] = `
         />
         <a
           href="/dashboard/settings"
-          state="[object Object]"
           style="outline: none;"
         >
           <div

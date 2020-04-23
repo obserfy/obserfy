@@ -15,12 +15,12 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import "./commands"
+require("./commands")
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
-import "@cypress/code-coverage/support"
-import "cypress-axe"
-import "gatsby-cypress/commands"
+require("@cypress/code-coverage/support")
+require("cypress-axe")
+require("gatsby-cypress/commands")
 
 Cypress.on('window:before:load', window => {
   const { XMLHttpRequest } = window;

@@ -4,12 +4,11 @@ import GatsbyImage, { FixedObject } from "gatsby-image"
 import Flex from "../Flex/Flex"
 import Typography from "../Typography/Typography"
 import Button from "../Button/Button"
-import { AvatarPlaceholderQuery } from "../../gatsbyGql"
-import { OBSERVE_PAGE_URL } from "../../pages/dashboard/observe"
+import { OBSERVE_PAGE_URL } from "../../routes"
 import Box from "../Box/Box"
 
 export const PageError: FC = () => {
-  const astronaut = useStaticQuery<AvatarPlaceholderQuery>(graphql`
+  const astronaut = useStaticQuery(graphql`
     query AstronautImage {
       file: file(relativePath: { eq: "astronaut.png" }) {
         childImageSharp {

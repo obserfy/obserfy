@@ -18,42 +18,41 @@ module.exports = ({ config }) => {
       {
         loader: "babel-loader",
         options: {
-          presets: [ "@babel/preset-typescript" ],
-          plugins: [
-            require.resolve("babel-plugin-remove-graphql-queries"),
-          ]
-        }
+          presets: ["@babel/preset-typescript", "babel-preset-gatsby"],
+          plugins: [require.resolve("babel-plugin-remove-graphql-queries")],
+        },
       },
-    ]
+    ],
   })
 
   config.module.rules.push({
     test: /\.(ts|tsx)$/,
     include: path.resolve(__dirname, "../src/components"),
-    use: [
-      require.resolve("react-docgen-typescript-loader")
-    ]
+    use: [require.resolve("react-docgen-typescript-loader")],
   })
 
   // Handle SVGR
   const rules = config.module.rules
   // modify storybook's file-loader rule to avoid conflicts with svgr
-  const fileLoaderRule = rules.find(rule => rule.test.test(".svg"))
+  const fileLoaderRule = rules.find((rule) => rule.test.test(".svg"))
   fileLoaderRule.exclude = [pathToInlineSvg]
   rules.push({
     test: /\.svg$/,
     include: path.resolve(__dirname, "../src"),
-    use: [{
-      loader: "@svgr/webpack",
-      options: {
-        prettier: true,         // use prettier to format JS code output (default)
-        svgo: true,             // use svgo to optimize SVGs (default)
-        svgoConfig: {
-          removeViewBox: true, // remove viewBox when possible (default)
-          cleanupIDs: true    // remove unused IDs and minify remaining IDs (default)
-        }
-      }
-    }, "url-loader"]
+    use: [
+      {
+        loader: "@svgr/webpack",
+        options: {
+          prettier: true, // use prettier to format JS code output (default)
+          svgo: true, // use svgo to optimize SVGs (default)
+          svgoConfig: {
+            removeViewBox: true, // remove viewBox when possible (default)
+            cleanupIDs: true, // remove unused IDs and minify remaining IDs (default)
+          },
+        },
+      },
+      "url-loader",
+    ],
   })
 
   // Speed up storybook compilation===============================================
@@ -61,11 +60,11 @@ module.exports = ({ config }) => {
     ...config.optimization,
     removeAvailableModules: false,
     removeEmptyChunks: false,
-    splitChunks: false
+    splitChunks: false,
   }
   config.output = {
     ...config.output,
-    pathinfo: false
+    pathinfo: false,
   }
   config.resolve.extensions.push(".ts", ".tsx")
 
@@ -92,12 +91,6 @@ module.exports = ({ config }) => {
 
   // Prefer Gatsby ES6 entrypoint (module) over commonjs (main) entrypoint
   config.resolve.mainFields = ["browser", "module", "main"]
-
-
-  // Mock gatsby-plugin-intl Link component.
-  config.plugins.push(new webpack.NormalModuleReplacementPlugin(
-    /gatsby-plugin-intl3/, path.resolve(__dirname, "./gatsby-plugin-intl3-mock.ts")
-  ))
 
   return config
 }

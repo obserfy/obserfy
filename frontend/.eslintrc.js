@@ -1,64 +1,31 @@
 module.exports = {
-  parser: "@typescript-eslint/parser", // Specifies the ESLint parser
-  plugins: ["@typescript-eslint", "react-hooks", "jest", "prettier"],
-  overrides: [
-    {
-      "files": ["*.md"],
-      "rules": {
-        "prettier/prettier": [
-          2,
-          {
-            // unnecessary if you're not using `eslint-plugin-prettier`, but required if you are
-            "parser": "markdown"
-          }
-        ]
-      }
-    },
-    {
-      "files": ["*.mdx", ".md"],
-      "extends": ["plugin:mdx/overrides"],
-      rules: {
-        "no-unused-expressions": "off",
-        "react/jsx-filename-extension": 0
-      }
-    }
-  ],
-  extends: [
-    "plugin:@typescript-eslint/recommended", // Uses the recommended rules from the @typescript-eslint/eslint-plugin
-    "plugin:mdx/recommended",
-    "airbnb",
-    "prettier",
-    "prettier/react",
-    "prettier/@typescript-eslint",
-    "plugin:prettier/recommended", // Enables eslint-plugin-prettier and displays prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
-    "plugin:jest/recommended"
-  ],
+  parser: "@typescript-eslint/parser",
   parserOptions: {
-    ecmaVersion: 2018, // Allows for the parsing of modern ECMAScript features
-    sourceType: "module" // Allows for the use of imports
+    project: "./tsconfig.json",
   },
+  extends: [
+    "airbnb-typescript",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
+    "plugin:prettier/recommended",
+    "prettier/@typescript-eslint",
+    "prettier/react",
+    "plugin:jest/recommended",
+  ],
+  plugins: ["jest"],
   env: {
-    "jest/globals": true
+    "jest/globals": true,
   },
   rules: {
-    // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
-    // e.g. "@typescript-eslint/explicit-function-return-type": "off",
     "no-undef": 0,
     "react/prop-types": 0,
     "react/style-prop-object": 0,
     "react/jsx-props-no-spreading": 0,
-    "react/jsx-filename-extension": [1, { extensions: [".tsx", "js"] }],
-    "jest/no-mocks-import": 0,
     // Recommended for immer.
-    'no-param-reassign': ['error', { props: true, ignorePropertyModificationsFor: ['draft'] }],
-    // Needed cause, https://github.com/typescript-eslint/typescript-eslint/issues/493
-    // TODO: Remove on typescript-eslint 2.0
-    "@typescript-eslint/explicit-function-return-type": [
+    "no-param-reassign": [
       "error",
-      {
-        allowTypedFunctionExpressions: true,
-        allowExpressions: true
-      }
+      { props: true, ignorePropertyModificationsFor: ["draft"] },
     ],
     "import/no-extraneous-dependencies": [
       "error",
@@ -73,36 +40,27 @@ module.exports = {
           "**/*.test.tsx",
           "**/*.test.ts",
           "**/*.spec.js",
-          "**/*.spec.ts"
-        ]
-      }
+          "**/*.spec.ts",
+        ],
+      },
     ],
+    "import/no-named-as-default": "off",
+    "import/no-cycle": "off",
     "import/extensions": "off",
-    "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
-    "react-hooks/exhaustive-deps": "warn", // Checks effect dependencies
-
-    // prevents bug on eslint causing error on class constructor with no body
-    // on .d.ts files
-    "no-useless-constructor": "off",
-    "@typescript-eslint/no-useless-constructor": "error",
     "import/prefer-default-export": 0,
     "no-unused-expressions": "off",
-    "mdx/no-unused-expressions": "off"
-  },
-  settings: {
-    react: {
-      version: "detect" // Tells eslint-plugin-react to automatically detect the version of React to use
-    },
-    // Force eslint to analyse tsx (it analyse only js by default
-    "import/resolver": {
-      node: {
-        extensions: [".js", ".jsx", ".ts", ".tsx", ".d.ts"]
-      }
-    },
-    "import/ignore": [".svg$"]
+    "jest/no-mocks-import": "off",
+    "no-restricted-imports": [
+      "error",
+      {
+        name: "dayjs",
+        message:
+          "Please use ./src/dayjs instead. It setups required plugins correctly.",
+      },
+    ],
   },
   globals: {
     document: true,
-    window: true
+    window: true,
   },
 }

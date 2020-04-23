@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react"
 import { useImmer } from "use-immer"
-import { Link, navigate } from "gatsby-plugin-intl3"
+import { Link, navigate } from "../Link/Link"
 import { useGetGuardian } from "../../api/useGetGuardian"
 import Box from "../Box/Box"
 import BackNavigation from "../BackNavigation/BackNavigation"
@@ -15,7 +15,11 @@ import Chip from "../Chip/Chip"
 import { Flex } from "../Flex/Flex"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import InformationalCard from "../InformationalCard/InformationalCard"
-import { CLASS_SETTINGS_URL } from "../../pages/dashboard/settings/class"
+import {
+  CLASS_SETTINGS_URL,
+  PICK_GUARDIAN_URL,
+  NEW_STUDENT_URL,
+} from "../../routes"
 import Card from "../Card/Card"
 import ProfilePicker from "../ProfilePicker/ProfilePicker"
 import {
@@ -23,13 +27,13 @@ import {
   GuardianRelationship,
   usePostNewStudent,
 } from "../../api/students/usePostNewStudent"
-import { PICK_GUARDIAN_URL } from "../../pages/dashboard/observe/students/guardians/pick"
+
 import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
 import {
   useCacheNewStudentFormData,
   useGetNewStudentFormCache,
 } from "./newStudentFormCache"
-import { NEW_STUDENT_URL } from "../../pages/dashboard/observe/students/new"
+
 import Icon from "../Icon/Icon"
 import Pill from "../Pill/Pill"
 import WarningDialog from "../WarningDialog/WarningDialog"

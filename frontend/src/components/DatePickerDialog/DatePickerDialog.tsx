@@ -1,6 +1,4 @@
 import React, { FC, useState } from "react"
-import { useIntl } from "gatsby-plugin-intl3"
-import lastDayOfMonth from "date-fns/lastDayOfMonth"
 import Dialog from "../Dialog/Dialog"
 import Select from "../Select/Select"
 import Flex from "../Flex/Flex"
@@ -10,6 +8,7 @@ import Icon from "../Icon/Icon"
 import { ReactComponent as CloseIcon } from "../../icons/close.svg"
 import Spacer from "../Spacer/Spacer"
 import Button from "../Button/Button"
+import dayjs from "../../dayjs"
 
 interface Props {
   defaultDate?: Date
@@ -32,8 +31,6 @@ export const DatePickerDialog: FC<Props> = ({
     parseInt(month, 10),
     parseInt(date, 10)
   )
-
-  const intl = useIntl()
 
   const title = (
     <Flex
@@ -106,9 +103,7 @@ export const DatePickerDialog: FC<Props> = ({
         >
           {[...Array(12).keys()].map((item) => (
             <option value={item} key={item}>
-              {intl.formatDate(new Date(1, item, 1), {
-                month: "long",
-              })}
+              {dayjs(new Date(1, item, 1)).format("MMMM")}
             </option>
           ))}
         </Select>
@@ -117,7 +112,7 @@ export const DatePickerDialog: FC<Props> = ({
           value={date}
           onChange={(e) => setDate(e.target.value)}
         >
-          {[...Array(lastDayOfMonth(generatedDate).getDate()).keys()].map(
+          {[...Array(dayjs(generatedDate).endOf("month").date()).keys()].map(
             (item) => (
               <option value={item + 1} key={item}>
                 {item + 1}

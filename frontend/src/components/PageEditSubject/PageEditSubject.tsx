@@ -1,14 +1,14 @@
 import React, { FC, useEffect, useState } from "react"
 import { useImmer } from "use-immer"
-import { navigate } from "gatsby-plugin-intl3"
 import { nanoid } from "nanoid"
+import { navigate } from "../Link/Link"
 import {
   Material,
   useGetSubjectMaterials,
 } from "../../api/useGetSubjectMaterials"
 import { useGetArea } from "../../api/useGetArea"
 import { getAnalytics } from "../../analytics"
-import { CURRICULUM_AREA_URL } from "../../pages/dashboard/settings/curriculum/area"
+import { CURRICULUM_AREA_URL } from "../../routes"
 import DraggableMaterialListItem from "../DraggableMaterialListItem/DraggableMaterialListItem"
 import Flex from "../Flex/Flex"
 import BackNavigation from "../BackNavigation/BackNavigation"

@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/camelcase,@typescript-eslint/no-var-requires,global-require */
-const { createProxyMiddleware } = require("http-proxy-middleware")
 require("dotenv").config({
   path: `.env`,
 })
@@ -29,6 +28,10 @@ const guessJsPlugin =
       ]
     : []
 
+// Only use preact on prod. preact's dx on gatsby is still awful.
+const preact =
+  process.env.NODE_ENV === "production" || true ? [`gatsby-plugin-preact`] : []
+
 module.exports = {
   siteMetadata: {
     title: `Obserfy`,
@@ -40,7 +43,7 @@ module.exports = {
     `gatsby-plugin-typescript`,
     "gatsby-plugin-theme-ui",
     `gatsby-plugin-react-helmet-async`,
-    // `gatsby-plugin-preact`,
+    ...preact,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -137,19 +140,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-intl3`,
-      options: {
-        // language JSON resource path
-        path: `${__dirname}/src/intl`,
-        // supported language
-        languages: [`en`],
-        // language file path
-        defaultLanguage: `en`,
-        // option to redirect to `/ko` when connecting `/`
-        redirect: false,
-      },
-    },
-    {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
         siteUrl: `https://obserfy.com`,
@@ -170,9 +160,16 @@ module.exports = {
         dsn: "https://05a5ecaa1d8c4c01b96d2a7993fa9337@sentry.io/1852524",
         // Optional settings, see https://docs.sentry.io/clients/node/config/#optional-settings
         environment: process.env.NODE_ENV,
-        release: require("git-rev-sync").short(),
+        release: require("fs").readFileSync("../VERSION"),
         enabled: (() =>
           ["production", "test"].indexOf(process.env.NODE_ENV) !== -1)(),
+      },
+    },
+    {
+      resolve: `gatsby-plugin-graphql-codegen`,
+      options: {
+        fileName: `./graphql-types.ts`,
+        documentPaths: ["./src/**/*.{ts,tsx}"],
       },
     },
     ...guessJsPlugin,
@@ -185,7 +182,17 @@ module.exports = {
     },
   ],
   developMiddleware: (app) => {
-    app.use("/api", createProxyMiddleware({ target: "http://localhost:8000" }))
-    app.use("/auth", createProxyMiddleware({ target: "http://localhost:8000" }))
+    app.use(
+      "/api",
+      require("http-proxy-middleware").createProxyMiddleware({
+        target: "http://localhost:8000",
+      })
+    )
+    app.use(
+      "/auth",
+      require("http-proxy-middleware").createProxyMiddleware({
+        target: "http://localhost:8000",
+      })
+    )
   },
 }

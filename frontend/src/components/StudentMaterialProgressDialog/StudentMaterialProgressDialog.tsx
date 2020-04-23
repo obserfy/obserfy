@@ -1,10 +1,10 @@
 import React, { FC, useState } from "react"
-import { useIntl } from "gatsby-plugin-intl3"
 import { MaterialProgressStage } from "../../api/useGetStudentMaterialProgress"
 import ScrollableDialog from "../ScrollableDialog/ScrollableDialog"
 import Select from "../Select/Select"
 import Box from "../Box/Box"
 import { updateStudentMaterialProgress } from "../../api/updateStudentMaterialProgress"
+import dayjs from "../../dayjs"
 
 export const StudentMaterialProgressDialog: FC<{
   studentId: string
@@ -27,12 +27,9 @@ export const StudentMaterialProgressDialog: FC<{
   // progress,
 }) => {
   const [selectedStage, setSelectedStage] = useState(stage)
-  const intl = useIntl()
-  const subtext = `Last updated ${intl.formatDate(lastUpdated, {
-    month: "short",
-    day: "2-digit",
-    weekday: "long",
-  })}`
+  const subtext = lastUpdated
+    ? `Last updated ${dayjs(lastUpdated).format("d MMM 'YY")}`
+    : ""
 
   async function submitProgressUpdate(): Promise<void> {
     if (selectedStage === undefined) return

@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react"
-import { Link, navigate } from "gatsby-plugin-intl3"
+import { Link, navigate } from "../Link/Link"
 import Box from "../Box/Box"
 import Typography from "../Typography/Typography"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
@@ -18,8 +18,7 @@ import Icon from "../Icon/Icon"
 import DeleteAreaDialog from "../DeleteAreaDialog/DeleteAreaDialog"
 import DeleteSubjectDialog from "../DeleteSubjectDialog/DeleteSubjectDialog"
 import EditAreaDialog from "../EditAreaDialog/EditAreaDialog"
-import { NEW_SUBJECT_URL } from "../../pages/dashboard/settings/curriculum/subjects/new"
-import { EDIT_SUBJECT_URL } from "../../pages/dashboard/settings/curriculum/subjects/edit"
+import { NEW_SUBJECT_URL, EDIT_SUBJECT_URL } from "../../routes"
 
 // FIXME: Typescript any typing, and inconsistent loading state should be fixed.
 interface Props {

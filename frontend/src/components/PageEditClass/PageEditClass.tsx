@@ -1,9 +1,7 @@
 import React, { FC, useEffect, useRef, useState } from "react"
 import { useImmer } from "use-immer"
-import parse from "date-fns/parse"
-import { navigate } from "gatsby-plugin-intl3"
-import format from "date-fns/format"
-import { CLASS_SETTINGS_URL } from "../../pages/dashboard/settings/class"
+import { navigate } from "../Link/Link"
+import { CLASS_SETTINGS_URL } from "../../routes"
 import { Box } from "../Box/Box"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { Typography } from "../Typography/Typography"
@@ -18,6 +16,7 @@ import usePatchClass from "../../api/usePatchClass"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import DeleteClassDialog from "../DeleteClassDialog/DeleteClassDialog"
 import ErrorMessage from "../ErrorMessage/ErrorMessage"
+import dayjs from "../../dayjs"
 
 interface Props {
   classId: string
@@ -39,8 +38,8 @@ export const PageEditClass: FC<Props> = ({ classId }) => {
     const start = Date.parse(target.startTime)
     const end = Date.parse(target.endTime)
     setName(target.name)
-    setStartTime(format(start, "HH:mm"))
-    setEndTime(format(end, "HH:mm"))
+    setStartTime(dayjs(start).format("HH:mm"))
+    setEndTime(dayjs(end).format("HH:mm"))
     setWeekdays(() => target.weekdays)
     isLoaded.current = true
   }, [classes.data, setWeekdays])
@@ -49,8 +48,8 @@ export const PageEditClass: FC<Props> = ({ classId }) => {
     const result = await mutate({
       name,
       weekdays,
-      endTime: parse(endTime, "HH:mm", new Date()),
-      startTime: parse(startTime, "HH:mm", new Date()),
+      endTime: dayjs(endTime, "HH:mm").toDate(),
+      startTime: dayjs(startTime, "HH:mm").toDate(),
     })
     if (result) {
       await navigate(CLASS_SETTINGS_URL)

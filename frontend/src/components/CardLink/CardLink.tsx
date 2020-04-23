@@ -1,5 +1,5 @@
 import React, { FC } from "react"
-import { Link } from "gatsby-plugin-intl3"
+import { Link } from "../Link/Link"
 import Card from "../Card/Card"
 import Flex from "../Flex/Flex"
 import Typography from "../Typography/Typography"

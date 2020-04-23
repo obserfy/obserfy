@@ -1,18 +1,17 @@
 import React, { FC } from "react"
 import GatsbyImage, { FixedObject } from "gatsby-image"
 import { graphql, useStaticQuery } from "gatsby"
-import { Link } from "gatsby-plugin-intl3"
+import { Link } from "../Link/Link"
 import BackNavigation from "../BackNavigation/BackNavigation"
-import { SETTINGS_URL } from "../../pages/dashboard/settings"
+import { SETTINGS_URL, NEW_CLASS_URL, EDIT_CLASS_URL } from "../../routes"
 import Flex from "../Flex/Flex"
 import Typography from "../Typography/Typography"
 import Button from "../Button/Button"
-import { NEW_CLASS_URL } from "../../pages/dashboard/settings/class/new"
+
 import useGetSchoolClasses from "../../api/useGetSchoolClasses"
 import Card from "../Card/Card"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import { Box } from "../Box/Box"
-import { EDIT_CLASS_URL } from "../../pages/dashboard/settings/class/edit"
 
 export const PageClassSettings: FC = () => {
   const classes = useGetSchoolClasses()

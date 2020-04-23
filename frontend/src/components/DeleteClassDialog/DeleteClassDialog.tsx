@@ -1,5 +1,5 @@
 import React, { FC } from "react"
-import { navigate } from "gatsby-plugin-intl3"
+import { navigate } from "../Link/Link"
 import Flex from "../Flex/Flex"
 import Typography from "../Typography/Typography"
 import Button from "../Button/Button"
@@ -7,7 +7,7 @@ import Spacer from "../Spacer/Spacer"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import Dialog from "../Dialog/Dialog"
 import useDeleteClass from "../../api/useDeleteClass"
-import { CLASS_SETTINGS_URL } from "../../pages/dashboard/settings/class"
+import { CLASS_SETTINGS_URL } from "../../routes"
 
 interface Props {
   onDismiss: () => void
