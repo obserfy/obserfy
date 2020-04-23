@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react"
 import { useImmer } from "use-immer"
-import dayjs from "dayjs"
+import dayjs from "../../dayjs"
 import { navigate } from "../Link/Link"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { CLASS_SETTINGS_URL } from "../../routes"

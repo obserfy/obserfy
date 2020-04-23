@@ -1,6 +1,5 @@
 import React, { FC, useEffect, useRef, useState } from "react"
 import { useImmer } from "use-immer"
-import dayjs from "dayjs"
 import { navigate } from "../Link/Link"
 import { CLASS_SETTINGS_URL } from "../../routes"
 import { Box } from "../Box/Box"
@@ -17,6 +16,7 @@ import usePatchClass from "../../api/usePatchClass"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import DeleteClassDialog from "../DeleteClassDialog/DeleteClassDialog"
 import ErrorMessage from "../ErrorMessage/ErrorMessage"
+import dayjs from "../../dayjs"
 
 interface Props {
   classId: string
