@@ -9,7 +9,7 @@ jobs:
       - restore_cache:
           name: Restore Yarn Package Cache
           keys:
-            - build-v2-{{ checksum "yarn.lock" }}
+            - build-v3-{{ checksum "yarn.lock" }}
       - run: |
           yarn install
       - run: |
@@ -19,14 +19,14 @@ jobs:
       - persist_to_workspace:
           root: ../
           paths:
-            - repo/frontend/node_modules
-            - repo/frontend/.cache
-            - repo/frontend/public
+            - repo/apps/vor/frontend/node_modules
+            - repo/apps/vor/frontend/.cache
+            - repo/apps/vor/frontend/frontend/public
             - .cache/Cypress
       - save_cache:
           when: always
           name: Save Yarn Package Cache
-          key: build-v2-{{ checksum "yarn.lock" }}
+          key: build-v3-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
             - ~/.cache/Cypress
