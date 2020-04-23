@@ -85,9 +85,6 @@ jobs:
       - run:
           name: Wait for db
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
-      - go/load-cache
-      - go/mod-download
-      - go/save-cache
       - run: |
           cd apps/vor/
           mkdir test_result
