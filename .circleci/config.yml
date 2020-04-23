@@ -21,7 +21,7 @@ jobs:
           paths:
             - repo/node_modules
             - repo/apps/vor/frontend/.cache
-            - repo/apps/vor/frontend/frontend/public
+            - repo/apps/vor/frontend/public
             - .cache/Cypress
       - save_cache:
           when: always
