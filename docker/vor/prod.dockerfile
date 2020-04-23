@@ -11,7 +11,8 @@ COPY ./frontend/yarn.lock /usr/src/vor/frontend/yarn.lock
 RUN yarn install --production --frozen-lockfile --network-timeout 100000
 # Build the project
 COPY ./.git /usr/src/vor/.git
-ADD ./frontend /usr/src/vor/frontend
+COPY ./frontend /usr/src/vor/frontend
+COPY ./VERSION /usr/src/vor/VERSION
 RUN --mount=type=secret,id=env,dst=/usr/src/vor/frontend/.env
 RUN yarn build
 # Move the build artifact so its easier to be copied
