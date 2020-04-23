@@ -19,7 +19,7 @@ jobs:
       - persist_to_workspace:
           root: ../
           paths:
-            - repo/apps/vor/frontend/node_modules
+            - repo/node_modules
             - repo/apps/vor/frontend/.cache
             - repo/apps/vor/frontend/frontend/public
             - .cache/Cypress
