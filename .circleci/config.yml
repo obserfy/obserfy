@@ -107,7 +107,6 @@ jobs:
       - run: |
           yarn install
       - run: |
-          cd frontend
           yarn workspace vor test -w 1
       - run: bash <(curl -s https://codecov.io/bash)
 

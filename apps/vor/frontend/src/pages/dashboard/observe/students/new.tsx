@@ -1,13 +1,23 @@
 import React, { FC } from "react"
-import { PageRendererProps } from "gatsby"
+import { PageProps } from "gatsby"
 import SEO from "../../../../components/seo"
 import PageNewStudent from "../../../../components/PageNewStudent/PageNewStudent"
+import { GuardianRelationship } from "../../../../api/students/usePostNewStudent"
 
-const NewStudent: FC<PageRendererProps> = ({ location }) => {
+const NewStudent: FC<PageProps> = ({ location }) => {
   return (
     <>
       <SEO title="Edit Student" />
-      <PageNewStudent newGuardian={location.state?.guardian} />
+      <PageNewStudent
+        newGuardian={
+          (location.state as {
+            guardian?: {
+              id: string
+              relationship: GuardianRelationship
+            }
+          })?.guardian
+        }
+      />
     </>
   )
 }
