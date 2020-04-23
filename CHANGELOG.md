@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.3](https://github.com/obserfy/vor/compare/v1.1.2...v1.1.3) (2020-04-23)
+
+
+### Bug Fixes
+
+* Can't connection to DO Spaces. ([#321](https://github.com/obserfy/vor/issues/321)) ([c2c84b1](https://github.com/obserfy/vor/commit/c2c84b11f3b6a49a1fa779160e6acda7244c1588))
+
 ### [1.1.2](https://github.com/obserfy/vor/compare/v1.1.1...v1.1.2) (2020-04-21)
 
 ### [1.1.1](https://github.com/obserfy/vor/compare/v1.1.0...v1.1.1) (2020-04-12)
