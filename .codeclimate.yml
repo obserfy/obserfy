@@ -2,6 +2,7 @@ version: "2"
 
 exclude_patterns:
   - "**/*.snap"
+  - "**/*graphql-types*"
 
 checks:
   identical-code:
