@@ -113,7 +113,6 @@
     "react-test-renderer": "^16.13.1",
     "storybook-addon-deps": "^2.0.0",
     "storybook-addon-i18n": "^5.1.13",
-    "ts-loader": "^7.0.1",
     "typescript": "^3.8.3",
     "url-loader": "^4.1.0",
     "wait-on": "^4.0.2",

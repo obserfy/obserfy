@@ -1,24 +1,13 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
-    "module": "esnext",
+    "strict": true,
+    "baseUrl": "../node_modules",
     "target": "es5",
-    "lib": ["es6", "dom"],
-    "sourceMap": true,
-    "jsx": "react",
-    "moduleResolution": "node",
-    "rootDir": "src",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true,
-    "downlevelIteration": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true
+    "lib": ["es5", "dom"],
+    "types": ["cypress"]
   },
-  "include": ["global.d.ts", "integration"]
+  "include": [
+    "**/*.ts",
+    "../node_modules/@types/node/globals.d.ts"
+  ]
 }

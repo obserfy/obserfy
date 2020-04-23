@@ -1,7 +1,6 @@
-import faker from "faker"
-import { setSchoolIdState } from "../../src/hooks/schoolIdState"
-
 describe("Test class related features", () => {
+  const faker = require("faker")
+
   beforeEach(() => {
     const name = faker.name.firstName()
     const email = faker.internet.email()
@@ -18,7 +17,7 @@ describe("Test class related features", () => {
 
     cy.request("POST", "/api/v1/schools", { name: schoolName }).then(
       (result) => {
-        setSchoolIdState(result.body.id)
+        window.localStorage.setItem("SCHOOL_ID", result.body.id)
       }
     )
   })
