@@ -1,7 +1,7 @@
 module.exports = {
   parser: "@typescript-eslint/parser", // Specifies the ESLint parser
   parserOptions: {
-    project: "./tsconfig.json",
+    project: "./cypress/tsconfig.json",
   },
   plugins: ["cypress"],
   extends: [
@@ -15,6 +15,7 @@ module.exports = {
   ],
   rules: {
     "jest/valid-expect-in-promise": 0,
-    "jest/expect-expect": 0
-  }
+    "jest/expect-expect": 0,
+    "global-require": "off",
+  },
 }
