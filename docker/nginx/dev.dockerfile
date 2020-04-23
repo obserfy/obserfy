@@ -3,11 +3,8 @@ FROM nginx:stable-alpine
 ENV TARGET_HOST vor_app
 ENV TARGET_PORT 8080
 
-COPY ./docker/nginx/ssl/generate.sh /ssl/generate.sh
+COPY ./docker/nginx/ssl /ssl
 WORKDIR /ssl
-# RUN chmod 700 generate.sh
-ENTRYPOINT ["generate.sh"]
-CMD ["localhost"]
 RUN chmod 600 localhost.crt
 RUN chmod 600 localhost.key
 
