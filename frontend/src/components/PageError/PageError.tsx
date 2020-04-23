@@ -4,7 +4,7 @@ import GatsbyImage, { FixedObject } from "gatsby-image"
 import Flex from "../Flex/Flex"
 import Typography from "../Typography/Typography"
 import Button from "../Button/Button"
-import { OBSERVE_PAGE_URL } from "../../pages/dashboard/observe"
+import { OBSERVE_PAGE_URL } from "../../routes"
 import Box from "../Box/Box"
 
 export const PageError: FC = () => {

@@ -8,7 +8,7 @@ import {
 } from "../../api/useGetSubjectMaterials"
 import { useGetArea } from "../../api/useGetArea"
 import { getAnalytics } from "../../analytics"
-import { CURRICULUM_AREA_URL } from "../../pages/dashboard/settings/curriculum/area"
+import { CURRICULUM_AREA_URL } from "../../routes"
 import DraggableMaterialListItem from "../DraggableMaterialListItem/DraggableMaterialListItem"
 import Flex from "../Flex/Flex"
 import BackNavigation from "../BackNavigation/BackNavigation"

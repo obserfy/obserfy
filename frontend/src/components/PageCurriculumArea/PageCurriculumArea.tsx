@@ -18,8 +18,7 @@ import Icon from "../Icon/Icon"
 import DeleteAreaDialog from "../DeleteAreaDialog/DeleteAreaDialog"
 import DeleteSubjectDialog from "../DeleteSubjectDialog/DeleteSubjectDialog"
 import EditAreaDialog from "../EditAreaDialog/EditAreaDialog"
-import { NEW_SUBJECT_URL } from "../../pages/dashboard/settings/curriculum/subjects/new"
-import { EDIT_SUBJECT_URL } from "../../pages/dashboard/settings/curriculum/subjects/edit"
+import { NEW_SUBJECT_URL, EDIT_SUBJECT_URL } from "../../routes"
 
 // FIXME: Typescript any typing, and inconsistent loading state should be fixed.
 interface Props {

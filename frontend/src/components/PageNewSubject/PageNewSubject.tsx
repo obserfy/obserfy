@@ -15,7 +15,7 @@ import Input from "../Input/Input"
 import Icon from "../Icon/Icon"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import BackNavigation from "../BackNavigation/BackNavigation"
-import { CURRICULUM_AREA_URL } from "../../pages/dashboard/settings/curriculum/area"
+import { CURRICULUM_AREA_URL } from "../../routes"
 import { useGetArea } from "../../api/useGetArea"
 
 const ITEM_HEIGHT = 48
