@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.4](https://github.com/obserfy/vor/compare/v1.1.3...v1.1.4) (2020-04-23)
+
+
+### Bug Fixes
+
+* Fix VERSION not found during gatsby build. ([#330](https://github.com/obserfy/vor/issues/330)) ([859c2cf](https://github.com/obserfy/vor/commit/859c2cf1ae2187207cb857c3c11241c0d71947a3))
+
 ### [1.1.3](https://github.com/obserfy/vor/compare/v1.1.2...v1.1.3) (2020-04-23)
 
 
