@@ -1,8 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Develop All" type="CompoundRunConfigurationType">
-    <toRun name="develop" type="js.build_tools.npm" />
-    <toRun name="Run development docker" type="docker-deploy" />
-    <toRun name="Debug frontend" type="JavascriptDebugType" />
-    <method v="2" />
-  </configuration>
-</component>
