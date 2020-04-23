@@ -1,7 +1,8 @@
 // Test the whole happy path
-import faker from "faker"
 
 describe(" Smoke test on prod build", () => {
+  const faker =  require("faker")
+
   it("should run smoke test successfully", () => {
     // define new user dynamically
     const name = faker.name.firstName()

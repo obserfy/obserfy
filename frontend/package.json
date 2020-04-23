@@ -90,6 +90,7 @@
     "eslint-config-airbnb-typescript": "^7.2.1",
     "eslint-config-prettier": "^6.10.1",
     "eslint-import-resolver-node": "^0.3.3",
+    "eslint-plugin-cypress": "^2.10.3",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-jest": "^23.8.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
@@ -112,7 +113,6 @@
     "react-test-renderer": "^16.13.1",
     "storybook-addon-deps": "^2.0.0",
     "storybook-addon-i18n": "^5.1.13",
-    "ts-loader": "^7.0.1",
     "typescript": "^3.8.3",
     "url-loader": "^4.1.0",
     "wait-on": "^4.0.2",
@@ -140,7 +140,7 @@
     "test": "jest --coverage --passWithNoTests --coverageReporters json clover",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "cy:ci": "yarn wait-on -t 300000  -lv http://localhost:8000/login && yarn cy:run --config baseUrl=http://localhost:8000"
+    "cy:ci": "yarn wait-on -t 300000  -lv http://localhost:8080/login && yarn cy:run --config baseUrl=http://localhost:8000"
   },
   "repository": {
     "type": "git",

@@ -7,7 +7,7 @@ import Spacer from "../Spacer/Spacer"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import Dialog from "../Dialog/Dialog"
 import useDeleteClass from "../../api/useDeleteClass"
-import { CLASS_SETTINGS_URL } from "../../pages/dashboard/settings/class"
+import { CLASS_SETTINGS_URL } from "../../routes"
 
 interface Props {
   onDismiss: () => void

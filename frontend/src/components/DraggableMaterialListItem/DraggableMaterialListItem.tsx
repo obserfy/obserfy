@@ -109,6 +109,9 @@ export const DraggableMaterialListItem: FC<Props> = ({
       moveItem={moveItem}
     >
       <Input
+        data-cy={
+          material.name === "" ? "materialNameInputEmpty" : "materialNameInput"
+        }
         placeholder="Material name"
         p={0}
         width="100%"

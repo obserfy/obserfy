@@ -287,6 +287,7 @@ exports[`DraggableMaterialListItem should render correctly 1`] = `
         </div>
         <label
           class="emotion-4"
+          data-cy="materialNameInput"
         >
           <div
             class="emotion-3"

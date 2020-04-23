@@ -50,6 +50,14 @@ module.exports = {
     "import/prefer-default-export": 0,
     "no-unused-expressions": "off",
     "jest/no-mocks-import": "off",
+    "no-restricted-imports": [
+      "error",
+      {
+        name: "dayjs",
+        message:
+          "Please use ./src/dayjs instead. It setups required plugins correctly.",
+      },
+    ],
   },
   globals: {
     document: true,
