@@ -22,18 +22,18 @@ FROM golang:1.13 AS api-builder
 WORKDIR /usr/src/apps/vor
 COPY . /usr/src
 # Build the project
-RUN go build -o ./vor ./pkg/*.go
+RUN go build -o ./app ./pkg/*.go
 
 ####################################
 # Build the final image
 ####################################
 FROM gcr.io/distroless/base
-WORKDIR /usr/src/vor
+WORKDIR /usr/src/apps/vor
 COPY --from=frontend-builder /frontend ./frontend
-COPY --from=api-builder /usr/src/apps/vor ./vor
+COPY --from=api-builder /usr/src/apps/vor/app ./app
 COPY --from=api-builder /usr/src/apps/vor/mailTemplates ./mailTemplates
 
 ENV ENV=production
 
 EXPOSE 8080
-CMD ["./vor"]
+ENTRYPOINT ["./app"]
