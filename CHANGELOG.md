@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.3](https://github.com/obserfy/vor/compare/v1.2.2...v1.2.3) (2020-04-24)
+
+
+### Bug Fixes
+
+* Failed to run docker-compose ([#336](https://github.com/obserfy/vor/issues/336)) ([de32272](https://github.com/obserfy/vor/commit/de3227234279b16a9aabfc03835345e3c54b1ff9))
+* Fix exec not found inside vor container. ([#335](https://github.com/obserfy/vor/issues/335)) ([aa0ed3c](https://github.com/obserfy/vor/commit/aa0ed3c26f05bce474dda6304bbb28f8890bad0a))
+
 ### [1.2.2](https://github.com/obserfy/vor/compare/v1.2.1...v1.2.2) (2020-04-24)
 
 
