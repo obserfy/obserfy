@@ -9,33 +9,30 @@ jobs:
       - restore_cache:
           name: Restore Yarn Package Cache
           keys:
-            - build-v2-{{ checksum "frontend/yarn.lock" }}
+            - build-v3-{{ checksum "yarn.lock" }}
       - run: |
-          cd frontend
           yarn install
       - run: |
-          cd frontend
-          mv .babelrc.ci.json .babelrc
+          mv ./apps/vor/frontend/.babelrc.ci.json ./apps/vor/frontend/.babelrc
       - run: |
-          cd frontend
-          yarn build:ci
+          yarn workspace vor run build:ci
       - persist_to_workspace:
           root: ../
           paths:
-            - repo/frontend/node_modules
-            - repo/frontend/.cache
-            - repo/frontend/public
+            - repo/node_modules
+            - repo/apps/vor/frontend/.cache
+            - repo/apps/vor/frontend/public
             - .cache/Cypress
       - save_cache:
           when: always
           name: Save Yarn Package Cache
-          key: build-v2-{{ checksum "frontend/yarn.lock" }}
+          key: build-v3-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
             - ~/.cache/Cypress
-            - ./frontend/node_modules
+            - ./node_modules
       - store_artifacts:
-          path: ./frontend/public
+          path: ./vor/frontend/public
 
   e2e:
     machine:
@@ -60,20 +57,14 @@ jobs:
           nvm alias default v12
       - run: npm install -g yarn
       - run: |
-          cd frontend
-          yarn cy:ci
+          yarn workspace e2e run cy:ci
       - run: bash <(curl -s https://codecov.io/bash)
-      - store_test_results:
-          path: frontend/coverage/clover.xml
       - store_artifacts:
-          path: ~/repo/frontend/cypress/videos
+          path: ~/repo/apps/vor/frontend/cypress/videos
           destination: cypress-videos
       - store_artifacts:
-          path: ~/repo/frontend/cypress/screenshots
+          path: ~/repo/apps/vor/frontend/cypress/screenshots
           destination: cypress-screenshots
-      - store_artifacts:
-          path: ~/repo/frontend/coverage
-          destination: coverage
 
   backend_unit:
     docker:
@@ -94,10 +85,8 @@ jobs:
       - run:
           name: Wait for db
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
-      - go/load-cache
-      - go/mod-download
-      - go/save-cache
       - run: |
+          cd apps/vor/
           mkdir test_result
           mkdir test_result/go
           go get gotest.tools/gotestsum
@@ -105,7 +94,7 @@ jobs:
           gotestsum --junitfile test_result/go/gotestsum-report.xml -- $PACKAGE_NAMES -v -coverprofile=coverage.txt -covermode=atomic -coverpkg $(go list ./... | grep -v "test" | paste -s -d",")
       - run: bash <(curl -s https://codecov.io/bash)
       - store_test_results:
-          path: test_result
+          path: apps/vor/test_result
 
   frontend_unit:
     docker:
@@ -116,14 +105,10 @@ jobs:
       - attach_workspace:
           at: ../
       - run: |
-          cd frontend
           yarn install
       - run: |
-          cd frontend
-          yarn test -w 1
+          yarn workspace vor test -w 1
       - run: bash <(curl -s https://codecov.io/bash)
-      - store_test_results:
-          path: frontend/coverage/clover.xml
 
   frontend_lint:
     docker:
@@ -134,11 +119,7 @@ jobs:
       - attach_workspace:
           at: ../
       - run: |
-          cd frontend
-          yarn install
-      - run: |
-          cd frontend
-          yarn lint
+          yarn workspace vor run lint
 
   frontend_typecheck:
     docker:
@@ -149,11 +130,7 @@ jobs:
       - attach_workspace:
           at: ../
       - run: |
-          cd frontend
-          yarn install
-      - run: |
-          cd frontend
-          yarn typecheck
+          yarn workspace vor run typecheck
 
   deploy:
     machine:
@@ -169,9 +146,7 @@ jobs:
           nvm install v12
           node -v
           nvm alias default v12
-          npm install -g yarn
       - run: |
-          yarn global add git
           git config --global user.email "chrsep@protonmail.com"
           git config --global user.name "Chrisando Pramudhita"
       - run: |
@@ -180,12 +155,13 @@ jobs:
       - run: |
           git push --follow-tags origin master
       - run: |
-          cd frontend
+          cd ./apps/vor/frontend
           echo "GA_CLIENT_EMAIL=$GA_CLIENT_EMAIL" >> .env
           echo "GA_PRIVATE_KEY=$GA_PRIVATE_KEY" >> .env
       - run: |
           VERSION=$(cat VERSION)
-          DOCKER_BUILDKIT=1 docker build -t "chrsep/vor:$VERSION" -f  docker/vor/prod.dockerfile . --secret id=env,src=./frontend/.env
+          cd ./apps/vor
+          DOCKER_BUILDKIT=1 docker build -t "chrsep/vor:$VERSION" . --secret id=env,src=./frontend/.env
       - run: |
           VERSION=$(cat VERSION)
           echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_LOGIN" --password-stdin
@@ -207,7 +183,7 @@ orbs:
   go: circleci/go@1.1.0
 
 workflows:
-  test:
+  vor:
     jobs:
       - frontend_build
       - backend_unit
