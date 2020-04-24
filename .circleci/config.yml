@@ -155,12 +155,11 @@ jobs:
       - run: |
           git push --follow-tags origin master
       - run: |
-          cd ./apps/vor/frontend
           echo "GA_CLIENT_EMAIL=$GA_CLIENT_EMAIL" >> .env
           echo "GA_PRIVATE_KEY=$GA_PRIVATE_KEY" >> .env
       - run: |
           VERSION=$(cat VERSION)
-          DOCKER_BUILDKIT=1 docker build -f ./docker/vor/prod.dockerfile  -t "chrsep/vor:$VERSION" . --secret id=env,src=./frontend/.env
+          DOCKER_BUILDKIT=1 docker build -f ./docker/vor/prod.dockerfile  -t "chrsep/vor:$VERSION" . --secret id=env,src=.env
       - run: |
           VERSION=$(cat VERSION)
           echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_LOGIN" --password-stdin
