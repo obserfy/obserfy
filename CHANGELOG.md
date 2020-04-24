@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/obserfy/vor/compare/v1.1.4...v1.2.0) (2020-04-24)
+
+
+### Features
+
+* Refactor to monorepo. Add parent portal, e2e, and landing page projects. ([c764445](https://github.com/obserfy/vor/commit/c76444504dbd9e584cbe5c08613134b1353471f9))
+
 ### [1.1.4](https://github.com/obserfy/vor/compare/v1.1.3...v1.1.4) (2020-04-23)
 
 
