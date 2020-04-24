@@ -24,7 +24,7 @@ echo "Generating key request for $domain"
 #Generate a key
 openssl req -x509 -out $domain.crt -keyout $domain.key \
 -newkey rsa:2048 -nodes -sha256 \
--subj "/C=$country/ST=$state/L=$locality/O=$organization/OU=$organizationalunit/CN=$domain/emailAddress=$email"
+-subj "/C=$country/ST=$state/L=$locality/O=$organization/OU=$organizationalunit/CN=*.dev.localhost/emailAddress=$email"
 
 chmod 0600 $domain.key
 
