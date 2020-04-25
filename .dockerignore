@@ -1,5 +1,1 @@
-.idea
-frontend/node_modules
-frontend/public
-frontend/coverage
-frontend/.cache
+node_modules

@@ -1,0 +1,7 @@
+{
+  "name": "design-tokens",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "license": "GPL-3",
+  "private": true
+}
