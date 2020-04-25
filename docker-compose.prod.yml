@@ -25,8 +25,7 @@ services:
     depends_on:
       - vor_app
     ports:
-      - "8000:80"
-      - "443:443"
+      - "8000:443"
     volumes:
       - ./docker/nginx/ssl:/ssl
 
