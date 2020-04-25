@@ -76,6 +76,7 @@ jobs:
           POSTGRES_USER: postgres
           POSTGRES_DB: defaultdb
     working_directory: ~/repo
+    parallelism: 4
     steps:
       - checkout
       - run:
@@ -109,7 +110,7 @@ jobs:
       - run: |
           yarn install
       - run: |
-          TESTFILES=$(circleci tests glob "apps/vor/frontend/src/**/*.test.ts" | circleci tests split --split-by=timings)
+          TESTFILES=$(circleci tests glob "apps/vor/frontend/src/**/*.test.tsx" | circleci tests split --split-by=timings)
           yarn workspace vor test $TESTFILES
       - run: bash <(curl -s https://codecov.io/bash)
 
