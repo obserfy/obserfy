@@ -30,8 +30,9 @@ import {
 
 import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
 import {
+  setNewStudentCache,
   useCacheNewStudentFormData,
-  useGetNewStudentFormCache,
+  useGetNewStudentFormCache
 } from "./newStudentFormCache"
 
 import Icon from "../Icon/Icon"
@@ -283,8 +284,9 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
                 },
               })
               if (result.status === 201) {
-                updateAllFormState(DEFAULT_FORM_STATE)
                 await navigate("/dashboard/observe")
+                updateAllFormState(DEFAULT_FORM_STATE)
+                await setNewStudentCache(DEFAULT_FORM_STATE)
               }
             }}
           >

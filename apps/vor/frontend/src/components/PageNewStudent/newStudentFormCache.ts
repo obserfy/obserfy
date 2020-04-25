@@ -5,6 +5,14 @@ import dayjs from "../../dayjs"
 
 const CACHE_KEY = "newStudentFormCache"
 
+export const setNewStudentCache = async (
+  data: NewStudentFormData,
+  picture?: File
+) => {
+  localStorage.setItem(CACHE_KEY, JSON.stringify(data))
+  await set(CACHE_KEY, picture)
+}
+
 export const useCacheNewStudentFormData = (
   data: NewStudentFormData,
   picture?: File

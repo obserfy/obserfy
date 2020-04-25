@@ -25,7 +25,7 @@ describe("Test adding new student", () => {
   it("should be able to add student multiple times", () => {
     const studentName = faker.name.firstName()
     const studentId = faker.phone.phoneNumber()
-    const notes = faker.lorem.lines(2)
+    const notes = faker.lorem.lines(1)
     cy.visit("/dashboard/observe/students/new")
 
     cy.contains("Name").type(studentName)
@@ -57,7 +57,7 @@ describe("Test adding new student", () => {
 
     const studentName2 = faker.name.firstName()
     const studentId2 = faker.phone.phoneNumber()
-    const notes2 = faker.lorem.lines(2)
+    const notes2 = faker.lorem.lines(1)
     cy.get("[data-cy=addStudent]").click()
 
     cy.contains("Name")
