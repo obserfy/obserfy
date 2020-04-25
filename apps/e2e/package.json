@@ -29,6 +29,6 @@
   "scripts": {
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "cy:ci": "yarn wait-on -t 300000  -lv http://localhost:8080/login && yarn cy:run --parallel --config baseUrl=http://localhost:8000"
+    "cy:ci": "yarn wait-on -t 300000  -lv http://localhost:8080/login && yarn cy:run --parallel --config baseUrl=http://localhost:8000 --record --key 18218e27-7691-4a96-8a02-ad42d493f0c2"
   }
 }
