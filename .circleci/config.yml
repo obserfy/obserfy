@@ -101,6 +101,7 @@ jobs:
     docker:
       - image: node:12
     working_directory: ~/repo
+    parallelism: 4
     steps:
       - checkout
       - attach_workspace:
@@ -108,7 +109,8 @@ jobs:
       - run: |
           yarn install
       - run: |
-          yarn workspace vor test -w 1
+          TESTFILES=$(circleci tests glob "apps/vor/frontend/src/**/*.test.ts" | circleci tests split --split-by=timings)
+          yarn workspace vor test $TESTFILES
       - run: bash <(curl -s https://codecov.io/bash)
 
   frontend_lint:
