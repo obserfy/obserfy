@@ -20,11 +20,18 @@ export const useCacheNewStudentFormData = (
   const isMounted = useRef(false)
 
   useEffect(() => {
-    if (isMounted.current) {
-      localStorage.setItem(CACHE_KEY, JSON.stringify(data))
-      set(CACHE_KEY, picture)
-    } else {
-      isMounted.current = true
+    let isCancelled = false
+    const runAsync = async () => {
+      if (isMounted.current && !isCancelled) {
+        await set(CACHE_KEY, picture)
+        localStorage.setItem(CACHE_KEY, JSON.stringify(data))
+      } else {
+        isMounted.current = true
+      }
+    }
+    runAsync()
+    return () => {
+      isCancelled = true
     }
   }, [picture, data])
 }
