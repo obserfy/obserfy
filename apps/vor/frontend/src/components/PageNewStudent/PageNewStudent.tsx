@@ -32,7 +32,7 @@ import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
 import {
   setNewStudentCache,
   useCacheNewStudentFormData,
-  useGetNewStudentFormCache
+  useGetNewStudentFormCache,
 } from "./newStudentFormCache"
 
 import Icon from "../Icon/Icon"

@@ -1186,6 +1186,7 @@ exports[`PageNewStudent should render correctly 1`] = `
           </label>
           <button
             class="emotion-21"
+            data-cy="Date of Birth"
           >
             <div
               class="emotion-20"
@@ -1216,6 +1217,7 @@ exports[`PageNewStudent should render correctly 1`] = `
           </label>
           <button
             class="emotion-21"
+            data-cy="Date of Entry"
           >
             <div
               class="emotion-20"
@@ -1325,7 +1327,7 @@ exports[`PageNewStudent should render correctly 1`] = `
           <button
             class="emotion-48"
           >
-            Add
+            Add Guardian
           </button>
         </a>
       </div>
