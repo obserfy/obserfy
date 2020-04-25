@@ -1,0 +1,11 @@
+**/*.svg
+**/*.jpg
+**/*.png
+**/*.json
+**/*.css
+**/*.graphql
+**/graphqlTypes.ts
+public/**/*
+**/*.d.ts
+image-sharp-fragments.ts
+*.js
