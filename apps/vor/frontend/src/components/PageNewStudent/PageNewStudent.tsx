@@ -225,7 +225,7 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
           </Typography.H5>
           <Link to={PICK_GUARDIAN_URL}>
             <Button variant="outline" mr={3}>
-              Add
+              Add Guardian
             </Button>
           </Link>
         </Flex>
