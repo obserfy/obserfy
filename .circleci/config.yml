@@ -60,6 +60,7 @@ jobs:
           nvm alias default v12
       - run: npm install -g yarn
       - run: |
+          cross-env NODE_TLS_REJECT_UNAUTHORIZED=0
           cd frontend
           yarn cy:ci
       - run: bash <(curl -s https://codecov.io/bash)
