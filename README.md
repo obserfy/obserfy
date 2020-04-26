@@ -14,14 +14,14 @@
   <a href="https://github.com/obserfy/vor/blob/master/LICENSE">
     <img src="https://img.shields.io/badge/license-GPL3-blue.svg" alt="Obserfy is released under the GPL-3 license." />
   </a>
-  <a href="https://codeclimate.com/github/obserfy/vor/maintainability">
+  <a href="https://codeclimate.com/github/obserfy/obserfy/maintainability">
     <img src="https://api.codeclimate.com/v1/badges/dc66ddec9ecb065464a3/maintainability" alt="Codeclimate maintainability score." />
   </a>
-  <a href="https://circleci.com/gh/obserfy/vor">
-    <img src="https://circleci.com/gh/obserfy/vor.svg?style=shield" alt="Current npm package version." />
+  <a href="https://circleci.com/gh/obserfy/obserfy">
+    <img src="https://circleci.com/gh/obserfy/obserfy.svg?style=shield" alt="Current npm package version." />
   </a>
-  <a href="https://codecov.io/gh/chrsep/vor">
-    <img src="https://codecov.io/gh/obserfy/vor/branch/master/graph/badge.svg" alt="Downloads per month on npm." />
+  <a href="https://codecov.io/gh/obserfy/obserfy">
+    <img src="https://codecov.io/gh/obserfy/obserfy/branch/master/graph/badge.svg" alt="Downloads per month on npm." />
   </a>
 </p>
 
