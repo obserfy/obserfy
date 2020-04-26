@@ -30,6 +30,7 @@ import {
 
 import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
 import {
+  setNewStudentCache,
   useCacheNewStudentFormData,
   useGetNewStudentFormCache,
 } from "./newStudentFormCache"
@@ -225,7 +226,7 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
           </Typography.H5>
           <Link to={PICK_GUARDIAN_URL}>
             <Button variant="outline" mr={3}>
-              Add
+              Add Guardian
             </Button>
           </Link>
         </Flex>
@@ -283,7 +284,7 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
                 },
               })
               if (result.status === 201) {
-                updateAllFormState(DEFAULT_FORM_STATE)
+                await setNewStudentCache(DEFAULT_FORM_STATE)
                 await navigate("/dashboard/observe")
               }
             }}

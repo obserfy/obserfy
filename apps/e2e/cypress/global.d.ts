@@ -1,5 +1,6 @@
-// eslint-disable-next-line spaced-comment
+/* eslint-disable spaced-comment */
 /// <reference types="cypress" />
+/// <reference types="@types/faker" />
 
 declare namespace Cypress {
   interface Chainable<Subject> {
@@ -12,6 +13,3 @@ declare namespace Cypress {
     waitForRouteChange(): Chainable<any>
   }
 }
-
-declare type UserFixture = typeof import("./fixtures/user.json")
-declare type SchoolFixture = typeof import("./fixtures/school.json")

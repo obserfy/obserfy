@@ -11,7 +11,7 @@ jobs:
           keys:
             - build-v3-{{ checksum "yarn.lock" }}
       - run: |
-          yarn install
+          yarn install --frozen-lockfile
       - run: |
           mv ./apps/vor/frontend/.babelrc.ci.json ./apps/vor/frontend/.babelrc
       - run: |
@@ -40,6 +40,7 @@ jobs:
     working_directory: ~/repo
     environment:
       NODE_ENV: "staging"
+    parallelism: 2
     steps:
       - checkout
       - run: cp .env.example .env
@@ -104,8 +105,6 @@ jobs:
       - checkout
       - attach_workspace:
           at: ../
-      - run: |
-          yarn install
       - run: |
           yarn workspace vor test -w 1
       - run: bash <(curl -s https://codecov.io/bash)
