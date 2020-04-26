@@ -75,7 +75,7 @@ func runServer() error {
 	guardianStore := postgres.GuardianStore{db}
 	mailService := mailgun.NewService()
 	studentImageStorage, err := minio.NewMinioImageStorage()
-	attendanceStore:=postgres.AttendanceStore{db}
+	//attendanceStore:=postgres.AttendanceStore{db}
 	if err != nil {
 		l.Error("failed connecting to minio", zap.Error(err))
 		return err
@@ -93,7 +93,7 @@ func runServer() error {
 	r.Mount("/auth", auth.NewRouter(server, authStore, mailService, clock.New()))
 	r.Route("/api/v1", func(r chi.Router) {
 		r.Use(auth.NewMiddleware(server, authStore))
-		r.Mount("/students", student.NewRouter(server, studentStore,attendanceStore))
+		r.Mount("/students", student.NewRouter(server, studentStore))
 		r.Mount("/observations", observation.NewRouter(server, observationStore))
 		r.Mount("/schools", school.NewRouter(server, schoolStore, studentImageStorage))
 		r.Mount("/user", user.NewRouter(server, userStore))

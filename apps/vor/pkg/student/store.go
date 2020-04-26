@@ -23,4 +23,5 @@ type Store interface {
 	Delete(studentId string) error
 	CheckPermissions(studentId string, userId string) (bool, error)
 	InsertAttendance(studentId string, classId string) (*postgres.Attendance, error)
+	GetAttendance(studentId string) ([]postgres.Attendance, error)
 }
