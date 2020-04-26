@@ -1,5 +1,5 @@
 <p align="center">
-    <img width="76px" src="./frontend/src/images/logo-standalone.svg" alt="Obserfy logo" />
+    <img width="76px" src="./apps/vor/frontend/src/images/logo-standalone.svg" alt="Obserfy logo" />
 </p>
   
 <h1 align="center">
