@@ -40,7 +40,7 @@ jobs:
     working_directory: ~/repo
     environment:
       NODE_ENV: "staging"
-    parallelism: 4
+    parallelism: 2
     steps:
       - checkout
       - run: cp .env.example .env
@@ -101,14 +101,12 @@ jobs:
     docker:
       - image: node:12
     working_directory: ~/repo
-    parallelism: 3
     steps:
       - checkout
       - attach_workspace:
           at: ../
       - run: |
-          TESTFILES=$(circleci tests glob "apps/vor/frontend/src/**/*.test.tsx" | circleci tests split --split-by=timings)
-          yarn workspace vor test $TESTFILES
+          yarn workspace vor test -w 1
       - run: bash <(curl -s https://codecov.io/bash)
 
   frontend_lint:
