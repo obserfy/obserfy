@@ -60,6 +60,7 @@ jobs:
           nvm alias default v12
       - run: npm install -g yarn
       - run: |
+          npm install -g cross-env
           cross-env NODE_TLS_REJECT_UNAUTHORIZED=0
           cd frontend
           yarn cy:ci
