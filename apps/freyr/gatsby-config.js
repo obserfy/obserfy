@@ -8,6 +8,7 @@ module.exports = {
     `gatsby-plugin-react-helmet-async`,
     `gatsby-plugin-preact`,
     `gatsby-plugin-typescript`,
+    `gatsby-plugin-postcss`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
