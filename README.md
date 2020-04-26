@@ -18,10 +18,10 @@
     <img src="https://api.codeclimate.com/v1/badges/dc66ddec9ecb065464a3/maintainability" alt="Codeclimate maintainability score." />
   </a>
   <a href="https://circleci.com/gh/obserfy/obserfy">
-    <img src="https://circleci.com/gh/obserfy/obserfy.svg?style=shield" alt="Current npm package version." />
+    <img src="https://circleci.com/gh/obserfy/obserfy.svg?style=shield" alt="Current CircleCI status" />
   </a>
   <a href="https://codecov.io/gh/obserfy/obserfy">
-    <img src="https://codecov.io/gh/obserfy/obserfy/branch/master/graph/badge.svg" alt="Downloads per month on npm." />
+    <img src="https://codecov.io/gh/obserfy/obserfy/branch/master/graph/badge.svg" alt="Code Coverage" />
   </a>
 </p>
 
