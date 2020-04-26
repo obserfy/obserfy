@@ -22,6 +22,7 @@ export const useCacheNewStudentFormData = (
   useEffect(() => {
     let isCancelled = false
     const runAsync = async () => {
+      console.log(data)
       if (isMounted.current && !isCancelled) {
         await set(CACHE_KEY, picture)
         localStorage.setItem(CACHE_KEY, JSON.stringify(data))
@@ -33,7 +34,17 @@ export const useCacheNewStudentFormData = (
     return () => {
       isCancelled = true
     }
-  }, [picture, data])
+  }, [
+    picture,
+    data.dateOfEntry,
+    data.dateOfBirth,
+    data.selectedClasses,
+    data.guardians,
+    data.gender,
+    data.note,
+    data.customId,
+    data.name,
+  ])
 }
 
 export const useGetNewStudentFormCache = (

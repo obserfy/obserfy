@@ -11,7 +11,7 @@ jobs:
           keys:
             - build-v3-{{ checksum "yarn.lock" }}
       - run: |
-          yarn install
+          yarn install --frozen-lockfile
       - run: |
           mv ./apps/vor/frontend/.babelrc.ci.json ./apps/vor/frontend/.babelrc
       - run: |
@@ -76,7 +76,6 @@ jobs:
           POSTGRES_USER: postgres
           POSTGRES_DB: defaultdb
     working_directory: ~/repo
-    parallelism: 4
     steps:
       - checkout
       - run:
@@ -102,13 +101,11 @@ jobs:
     docker:
       - image: node:12
     working_directory: ~/repo
-    parallelism: 4
+    parallelism: 3
     steps:
       - checkout
       - attach_workspace:
           at: ../
-      - run: |
-          yarn install
       - run: |
           TESTFILES=$(circleci tests glob "apps/vor/frontend/src/**/*.test.tsx" | circleci tests split --split-by=timings)
           yarn workspace vor test $TESTFILES
