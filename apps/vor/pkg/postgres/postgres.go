@@ -42,6 +42,7 @@ func InitTables(db *pg.DB) error {
 		(*Class)(nil),
 		(*Weekday)(nil),
 		(*Student)(nil),
+		(*StudentToClass)(nil),
 		(*Guardian)(nil),
 		(*GuardianToStudent)(nil),
 		(*StudentMaterialProgress)(nil),
