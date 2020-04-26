@@ -22,7 +22,6 @@ export const useCacheNewStudentFormData = (
   useEffect(() => {
     let isCancelled = false
     const runAsync = async () => {
-      console.log(data)
       if (isMounted.current && !isCancelled) {
         await set(CACHE_KEY, picture)
         localStorage.setItem(CACHE_KEY, JSON.stringify(data))
