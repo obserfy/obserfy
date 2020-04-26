@@ -6,7 +6,7 @@
 FROM node:12 AS frontend-builder
 WORKDIR /usr/src
 COPY . /usr/src
-RUN yarn
+RUN yarn install --production --frozen-lockfile
 # Build the project
 RUN --mount=type=secret,id=env,dst=/usr/src/apps/vor/frontend/.env
 RUN yarn workspace vor run build

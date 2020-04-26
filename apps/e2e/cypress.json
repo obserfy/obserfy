@@ -1,8 +1,6 @@
 {
   "baseUrl": "http://localhost:8001",
-  "videoCompression": false,
-  "blacklistHosts": [
-    "*segment.com",
-    "*segment.io"
-  ]
+  "blacklistHosts": ["*segment.com", "*segment.io"],
+  "videoUploadOnPasses": false,
+  "projectId": "m9rk94"
 }
