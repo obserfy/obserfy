@@ -22,6 +22,7 @@ module.exports = {
     "react/prop-types": 0,
     "react/style-prop-object": 0,
     "react/jsx-props-no-spreading": 0,
+    "react/button-has-type": 0,
     // Recommended for immer.
     "no-param-reassign": [
       "error",
