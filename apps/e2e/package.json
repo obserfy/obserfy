@@ -30,6 +30,6 @@
     "cy:open": "cypress open",
     "cy:open-prod": "cypress open --config baseUrl=https://localhost:8000",
     "cy:run": "cypress run",
-    "cy:ci": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 yarn wait-on -t 300000  -lv https://localhost:8080/login && yarn cy:run --parallel --config baseUrl=https://localhost:8000 --record --key 18218e27-7691-4a96-8a02-ad42d493f0c2"
+    "cy:ci": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 yarn wait-on -t 300000  -lv https://localhost:8000/login && yarn cy:run --parallel --config baseUrl=https://localhost:8000 --record --key 18218e27-7691-4a96-8a02-ad42d493f0c2"
   }
 }
