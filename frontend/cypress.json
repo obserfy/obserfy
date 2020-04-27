@@ -1,8 +1,0 @@
-{
-  "baseUrl": "http://localhost:8001",
-  "videoCompression": false,
-  "blacklistHosts": [
-    "*segment.com",
-    "*segment.io"
-  ]
-}

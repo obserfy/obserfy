@@ -9,13 +9,14 @@ services:
       # go-devtools docker specific env
       SRC_ENTRYPOINT: /src/vor/pkg/*.go
     volumes:
-      - .:/src/vor
+      - ./apps/vor:/src/vor
     ports:
       - "40000:40000"
       - "8080:8080"
     depends_on:
       - db
       - minio
+    restart: on-failure
     # Might not be necessary for all projects, but these
     # fixes delve crash on circleci
     security_opt:
@@ -81,7 +82,7 @@ services:
 
   db:
     build:
-      context: ./docker/postgres/
+      context: docker/postgres/
       dockerfile: dev.dockerfile
     container_name: vor-postgres
     environment:
