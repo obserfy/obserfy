@@ -4,12 +4,12 @@
 domain="$1"
 
 #Change to your company details
-country="GB"
-state="Nottingham"
-locality="Nottinghamshire"
-organization="Jamescoyle.net"
+country="ID"
+state="Indonesia"
+locality="Tangerang"
+organization="obserfy"
 organizationalunit="IT"
-email="administrator@jamescoyle.net"
+email="chrsep@protonmail.com"
 
 if [ -z "$1" ]
 then
