@@ -74,7 +74,7 @@
     "@types/rebass": "4.0.5",
     "@types/segment-analytics": "^0.0.32",
     "@types/theme-ui": "^0.3.1",
-    "@typescript-eslint/eslint-plugin": "^2.29.0",
+    "@typescript-eslint/eslint-plugin": "^2.30.0",
     "@typescript-eslint/parser": "^2.29.0",
     "babel-jest": "^25.4.0",
     "babel-loader": "^8.1.0",
