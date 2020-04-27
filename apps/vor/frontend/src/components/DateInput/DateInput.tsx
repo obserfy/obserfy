@@ -29,7 +29,13 @@ export const DateInput: FC<Props> = ({ label, value, onChange, ...props }) => {
             opacity: "1!important",
           }}
         />
-        <Button mt={23} ml={3} variant="outline" sx={{ flexShrink: 0 }}>
+        <Button
+          data-cy={label}
+          mt={23}
+          ml={3}
+          variant="outline"
+          sx={{ flexShrink: 0 }}
+        >
           <Icon as={CalendarIcon} m={0} />
         </Button>
       </Flex>
