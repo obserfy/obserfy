@@ -35,8 +35,8 @@ services:
       - vor_app
     ports:
       - "8000:443"
-    # volumes:
-    #   - ./docker/nginx/ssl:/ssl
+    volumes:
+      - ./docker/nginx/ssl:/ssl
 
   minio:
     image: minio/minio:latest
