@@ -23,7 +23,7 @@ type SchoolTestSuite struct {
 func (s *SchoolTestSuite) SetupTest() {
 	s.store = postgres.SchoolStore{s.DB}
 	s.StudentImageStorage = mocks.StudentImageStorage{}
-	s.Handler = school.NewRouter(s.Server, s.store, &s.StudentImageStorage).ServeHTTP
+	s.Handler = school.NewRouter(s.Server, s.store, &s.StudentImageStorage, nil).ServeHTTP
 }
 
 func TestSchool(t *testing.T) {

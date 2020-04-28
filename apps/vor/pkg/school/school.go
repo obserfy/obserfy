@@ -3,6 +3,7 @@ package school
 import (
 	"errors"
 	"github.com/chrsep/vor/pkg/auth"
+	"github.com/chrsep/vor/pkg/imgproxy"
 	"github.com/chrsep/vor/pkg/minio"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/rest"
@@ -16,13 +17,18 @@ import (
 	"time"
 )
 
-func NewRouter(server rest.Server, store postgres.SchoolStore, imageStorage StudentImageStorage) *chi.Mux {
+func NewRouter(
+	server rest.Server,
+	store postgres.SchoolStore,
+	imageStorage StudentImageStorage,
+	imgproxyClient *imgproxy.Client,
+) *chi.Mux {
 	r := chi.NewRouter()
 	r.Method("POST", "/", postNewSchool(server, store))
 	r.Route("/{schoolId}", func(r chi.Router) {
 		r.Use(authorizationMiddleware(server, store))
 		r.Method("GET", "/", getSchool(server, store))
-		r.Method("GET", "/students", getStudents(server, store))
+		r.Method("GET", "/students", getStudents(server, store, imgproxyClient))
 		r.Method("POST", "/students", postNewStudent(server, store, imageStorage))
 		r.Method("POST", "/invite-code", refreshInviteCode(server, store))
 
@@ -235,11 +241,12 @@ func getSchool(s rest.Server, store postgres.SchoolStore) rest.Handler {
 	})
 }
 
-func getStudents(s rest.Server, store postgres.SchoolStore) rest.Handler {
+func getStudents(s rest.Server, store postgres.SchoolStore, imgproxyClient *imgproxy.Client) rest.Handler {
 	type responseBody struct {
-		Id          string     `json:"id"`
-		Name        string     `json:"name"`
-		DateOfBirth *time.Time `json:"dateOfBirth,omitempty"`
+		Id            string     `json:"id"`
+		Name          string     `json:"name"`
+		DateOfBirth   *time.Time `json:"dateOfBirth,omitempty"`
+		ProfilePicUrl string     `json:"profilePicUrl,omitempty"`
 	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		schoolId := chi.URLParam(r, "schoolId")
@@ -251,10 +258,15 @@ func getStudents(s rest.Server, store postgres.SchoolStore) rest.Handler {
 
 		response := make([]responseBody, 0)
 		for _, student := range students {
+			profilePicUrl := ""
+			if student.ProfilePic != "" {
+				profilePicUrl = imgproxyClient.GenerateUrl(student.ProfilePic, 80, 80)
+			}
 			response = append(response, responseBody{
-				Id:          student.Id,
-				Name:        student.Name,
-				DateOfBirth: student.DateOfBirth,
+				Id:            student.Id,
+				Name:          student.Name,
+				DateOfBirth:   student.DateOfBirth,
+				ProfilePicUrl: profilePicUrl,
 			})
 		}
 		if err = rest.WriteJson(w, response); err != nil {
