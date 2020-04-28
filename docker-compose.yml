@@ -52,33 +52,19 @@ services:
     volumes:
       - vor-minio:/data
 
-  thumbor:
-    image: minimalcompact/thumbor:latest
+  imgproxy:
+    image: darthsim/imgproxy:latest
     depends_on:
       - minio
     environment:
-      VIRTUAL_HOST: localhost
-      # THUMBOR_NUM_PROCESSES control how many processes run inside the container
-      # Normally this is set in connection with the number of CPU cores
-      # Note however that you can also use the docker-compose scale option to dynamically
-      # scale your thumbor instances
-      THUMBOR_NUM_PROCESSES: 1
-      # this would allow CORS from any origin (you can restrict to specific origins if you want)
-      CORS_ALLOW_ORIGIN: "*"
-      # returns a webp image if browser Accept headers match
-      AUTO_WEBP: "True"
-      # We don't use caching, because that will be handled by cloudflare.
-      RESULT_STORAGE: thumbor.result_storages.no_storage
-      RESULT_STORAGE_STORES_UNSAFE: "True"
-      STORAGE: tc_aws.storages.s3_storage
-      LOADER: tc_aws.loaders.s3_loader
-      TC_AWS_ENDPOINT: http://vor-minio:9000
+      IMGPROXY_USE_S3: "true"
+      IMGPROXY_S3_ENDPOINT: http://vor-minio:9000
       TC_AWS_STORAGE_BUCKET:  "media" # S3 bucket for Storage
       # credentials for connecting to minio
       AWS_ACCESS_KEY_ID: "${MINIO_ACCESS_KEY}"
       AWS_SECRET_ACCESS_KEY: "${MINIO_SECRET_KEY}"
     ports:
-      - 9080:80
+      - 10000:8080
 
   db:
     build:
