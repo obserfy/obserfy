@@ -260,7 +260,7 @@ func getStudents(s rest.Server, store postgres.SchoolStore, imgproxyClient *imgp
 		for _, student := range students {
 			profilePicUrl := ""
 			if student.ProfilePic != "" {
-				profilePicUrl = imgproxyClient.GenerateUrl(student.ProfilePic, 0, 0)
+				profilePicUrl = imgproxyClient.GenerateUrl(student.ProfilePic, 80, 80)
 			}
 			response = append(response, responseBody{
 				Id:            student.Id,
