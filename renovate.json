@@ -1,7 +1,27 @@
 {
-  "extends": [
-    "config:base"
-  ],
-  "groupName": "all",
-  "prCreation": "status-success"
+  "extends": ["config:base"],
+  "prCreation": "status-success",
+  "schedule": ["on the last day of the week"],
+  "packageRules": [
+    {
+      "packagePatterns": ["eslint"],
+      "groupName": "eslint",
+      "automerge": true
+    },
+    {
+      "packagePatterns": ["gatsby"],
+      "groupName": "gatsby",
+      "automerge": true
+    },
+    {
+      "packagePatterns": ["cypress"],
+      "groupName": "cypress",
+      "automerge": true
+    },
+    {
+      "packagePatterns": ["go"],
+      "groupName": "go",
+      "automerge": true
+    }
+  ]
 }
