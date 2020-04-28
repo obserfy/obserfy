@@ -63,6 +63,10 @@ services:
       # credentials for connecting to minio
       AWS_ACCESS_KEY_ID: "${MINIO_ACCESS_KEY}"
       AWS_SECRET_ACCESS_KEY: "${MINIO_SECRET_KEY}"
+
+      IMGPROXY_KEY: "${IMGPROXY_KEY}"
+      IMGPROXY_SALT: "${IMGPROXY_SALT}"
+      IMGPROXY_ENABLE_WEBP_DETECTION: "true"
     ports:
       - 10000:8080
 
