@@ -47,6 +47,10 @@
       "packagePatterns": ["react"],
       "groupName": "react",
       "automerge": true
+    },
+    {
+      "packagePatterns": ["core-js"],
+      "groupName": "core-js"
     }
   ]
 }
