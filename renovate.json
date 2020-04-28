@@ -22,6 +22,31 @@
       "packagePatterns": ["go"],
       "groupName": "go",
       "automerge": true
+    },
+    {
+      "packagePatterns": ["jest"],
+      "groupName": "jest",
+      "automerge": true
+    },
+    {
+      "packagePatterns": ["storybook"],
+      "groupName": "storybook",
+      "automerge": true
+    },
+    {
+      "packagePatterns": ["typescript", "@types"],
+      "groupName": "typescript",
+      "automerge": true
+    },
+    {
+      "packagePatterns": ["babel"],
+      "groupName": "babel",
+      "automerge": true
+    },
+    {
+      "packagePatterns": ["react"],
+      "groupName": "react",
+      "automerge": true
     }
   ]
 }
