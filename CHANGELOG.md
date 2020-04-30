@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/obserfy/obserfy/compare/v1.3.0...v1.4.0) (2020-04-30)
+
+
+### Features
+
+* Replaced thumbor with imgproxy. ([7e5e776](https://github.com/obserfy/obserfy/commit/7e5e77684958557af2b0d5ff32b504c3a27accb3))
+
+
+### Bug Fixes
+
+* Display student pictures on dashboard. ([b324496](https://github.com/obserfy/obserfy/commit/b324496a95cdec8a90eafcd1b8a2dcc97009104f))
+* Fix gatsby develop not working with HTTPS api. ([b5fe935](https://github.com/obserfy/obserfy/commit/b5fe9357e464dd21d602952800ec9a6eb7587f00))
+
 ## [1.3.0](https://github.com/obserfy/obserfy/compare/v1.2.3...v1.3.0) (2020-04-27)
 
 
