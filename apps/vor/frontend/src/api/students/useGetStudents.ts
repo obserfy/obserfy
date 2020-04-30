@@ -6,6 +6,7 @@ import { getSchoolId } from "../../hooks/schoolIdState"
 export interface Student {
   id: string
   name: string
+  profilePicUrl?: string
 }
 
 async function fetchStudents(): Promise<Student[]> {

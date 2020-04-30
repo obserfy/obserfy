@@ -13,6 +13,7 @@ import { useGetStudents } from "../../api/students/useGetStudents"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import { NEW_STUDENT_URL } from "../../routes"
 import StudentPicturePlaceholder from "../StudentPicturePlaceholder/StudentPicturePlaceholder"
+import Image from "../Image/Image"
 
 export const PageHome: FC = () => {
   const [searchTerm, setSearchTerm] = useState("")
@@ -35,7 +36,7 @@ export const PageHome: FC = () => {
 
   const studentList =
     students.status === "success" &&
-    matchedStudent?.map(({ name, id }) => (
+    matchedStudent?.map(({ profilePicUrl, name, id }) => (
       <Card
         p={3}
         mx={[0, 3]}
@@ -50,7 +51,18 @@ export const PageHome: FC = () => {
           alignItems: "center",
         }}
       >
-        <StudentPicturePlaceholder />
+        {profilePicUrl ? (
+          <Image
+            src={profilePicUrl}
+            sx={{
+              width: 32,
+              height: 32,
+              borderRadius: "circle",
+            }}
+          />
+        ) : (
+          <StudentPicturePlaceholder />
+        )}
         <Typography.Body ml={3}>{name}</Typography.Body>
       </Card>
     ))
