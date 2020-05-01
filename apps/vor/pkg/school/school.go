@@ -92,16 +92,7 @@ func getClassSession(server rest.Server, store postgres.SchoolStore) http.Handle
 	}
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		classId := chi.URLParam(r, "classId")
-		attendance, err := store.GetClassSession(classId)
-		var response []responseBody
-
-		if len(attendance) > 0 {
-			for _, attendance := range attendance {
-				response = append(response, responseBody{
-					Date: attendance.Date.String(),
-				})
-			}
-		}
+		classSession, err := store.GetClassSession(classId)
 
 		if err != nil {
 			return &rest.Error{
@@ -110,7 +101,7 @@ func getClassSession(server rest.Server, store postgres.SchoolStore) http.Handle
 				Error:   err,
 			}
 		}
-		if err := rest.WriteJson(w, response); err != nil {
+		if err := rest.WriteJson(w, classSession); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
 

@@ -37,12 +37,13 @@ func (s StudentStore) InsertObservation(
 	}
 	return &observation, nil
 }
-func (s StudentStore) InsertAttendance(studentId string, classId string) (*Attendance, error) {
+func (s StudentStore) InsertAttendance(studentId string, classId string,date time.Time) (*Attendance, error) {
 	attendanceId := uuid.New()
 	attendance := Attendance{
 		Id:        attendanceId.String(),
 		StudentId: studentId,
 		ClassId:   classId,
+		Date: date,
 	}
 	if err := s.Insert(&attendance); err != nil {
 		return nil, err

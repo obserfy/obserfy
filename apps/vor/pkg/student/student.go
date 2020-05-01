@@ -84,13 +84,14 @@ func registerAttendance(s rest.Server, store Store) http.Handler {
 	type requestBody struct {
 		StudentId string `json:"studentId"`
 		ClassId   string `json:"classId"`
+		Date time.Time `json:"date"`
 	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		var requestBody requestBody
 		if err := rest.ParseJson(r.Body, &requestBody); err != nil {
 			return rest.NewParseJsonError(err)
 		}
-		attendance, err := store.InsertAttendance(requestBody.StudentId, requestBody.ClassId)
+		attendance, err := store.InsertAttendance(requestBody.StudentId, requestBody.ClassId,requestBody.Date)
 		if err != nil {
 			return &rest.Error{http.StatusNotFound, "Can't create attendance", err}
 		}
