@@ -67,8 +67,13 @@ services:
       IMGPROXY_KEY: "${IMGPROXY_KEY}"
       IMGPROXY_SALT: "${IMGPROXY_SALT}"
       IMGPROXY_ENABLE_WEBP_DETECTION: "true"
+
+  imgproxy-nginx:
+    build:
+      context: .
+      dockerfile: docker/imgproxy-nginx/prod.dockerfile
     ports:
-      - 10000:8080
+      - 10000:443
 
   db:
     build:
