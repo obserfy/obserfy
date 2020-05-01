@@ -96,9 +96,7 @@ func getClassSession(server rest.Server, store postgres.SchoolStore) http.Handle
 		var response []responseBody
 
 		if len(attendance) > 0 {
-			attend := make(map[string]int)
 			for _, attendance := range attendance {
-				attend[attendance.StudentId] = 1
 				response = append(response, responseBody{
 					Date: attendance.Date.String(),
 				})

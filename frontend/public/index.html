@@ -1,0 +1,37 @@
+<!DOCTYPE html><html><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="note" content="environment=development"/><link rel="icon" href="/icons/icon-48x48.png?v=a99b8df482aee3f489774e549de499d1"/><link rel="manifest" href="/manifest.webmanifest"/><meta name="theme-color" content="#121212"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=a99b8df482aee3f489774e549de499d1"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=a99b8df482aee3f489774e549de499d1"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=a99b8df482aee3f489774e549de499d1"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=a99b8df482aee3f489774e549de499d1"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=a99b8df482aee3f489774e549de499d1"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=a99b8df482aee3f489774e549de499d1"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=a99b8df482aee3f489774e549de499d1"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=a99b8df482aee3f489774e549de499d1"/><script>
+      
+      window.segmentSnippetLoaded = false;
+      window.segmentSnippetLoading = false;
+
+      window.segmentSnippetLoader = function (callback) {
+        if (!window.segmentSnippetLoaded && !window.segmentSnippetLoading) {
+          window.segmentSnippetLoading = true;
+
+          function loader() {
+            window.analytics.load('mmWAsCJqhsbHOArCtFhRCUvtAkr8WkzR');
+            window.segmentSnippetLoading = false;
+            window.segmentSnippetLoaded = true;
+            if(callback) {callback()}
+          };
+
+          setTimeout(
+            function () {
+              "requestIdleCallback" in window
+                ? requestIdleCallback(function () {loader()})
+                : loader();
+            },
+            1000 || 1000
+          );
+        }
+      }
+      window.addEventListener('scroll',function () {window.segmentSnippetLoader()}, { once: true });
+    
+      !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t,e){var n=document.createElement("script");n.type="text/javascript";n.async=!0;n.src="https://cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(n,a);analytics._loadOptions=e};analytics.SNIPPET_VERSION="4.1.0";
+    
+    }}();
+  
+    </script><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/google-fonts/s/opensans/v17/mem5YaGs126MiZpBA-UN_r8OUuhp.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/google-fonts/s/opensans/v17/mem8YaGs126MiZpBA-UFVZ0b.woff2"/><style type="text/css">@font-face{font-family:'Open Sans';font-style:normal;font-weight:300;src:local('Open Sans Light'),local('OpenSans-Light'),url(/google-fonts/s/opensans/v17/mem5YaGs126MiZpBA-UN_r8OUuhp.woff2) format('woff2'),url(/google-fonts/s/opensans/v17/mem5YaGs126MiZpBA-UN_r8OUuhv.woff) format('woff');font-display: swap;}@font-face{font-family:'Open Sans';font-style:normal;font-weight:400;src:local('Open Sans Regular'),local('OpenSans-Regular'),url(/google-fonts/s/opensans/v17/mem8YaGs126MiZpBA-UFVZ0b.woff2) format('woff2'),url(/google-fonts/s/opensans/v17/mem8YaGs126MiZpBA-UFVZ0d.woff) format('woff');font-display: swap;}</style><link rel="canonical" href="https://obserfy.com/" data-baseprotocol="https:" data-basehost="obserfy.com"/><script src="/socket.io/socket.io.js"></script></head><body><script>(function() { try {
+  var mode = localStorage.getItem('theme-ui-color-mode');
+  if (!mode) return
+  document.body.classList.add('theme-ui-' + mode);
+} catch (e) {} })();</script><div id="___gatsby"></div><div id="portal"></div><script src="/commons.js"></script></body></html>

@@ -1,0 +1,114 @@
+[
+    {
+        "path": "/en/dashboard/observe/students/guardians/pick",
+        "matchPath": "/en/dashboard/observe/students/guardians/pick"
+    },
+    {
+        "path": "/en/dashboard/observe/students/observations/all",
+        "matchPath": "/en/dashboard/observe/students/observations/all"
+    },
+    {
+        "path": "/en/dashboard/observe/students/observations/new",
+        "matchPath": "/en/dashboard/observe/students/observations/new"
+    },
+    {
+        "path": "/en/dashboard/settings/curriculum/subjects/edit",
+        "matchPath": "/en/dashboard/settings/curriculum/subjects/edit"
+    },
+    {
+        "path": "/en/dashboard/settings/curriculum/subjects/new",
+        "matchPath": "/en/dashboard/settings/curriculum/subjects/new"
+    },
+    {
+        "path": "/en/dashboard/observe/students/details",
+        "matchPath": "/en/dashboard/observe/students/details"
+    },
+    {
+        "path": "/en/dashboard/observe/students/edit",
+        "matchPath": "/en/dashboard/observe/students/edit"
+    },
+    {
+        "path": "/en/dashboard/observe/students/new",
+        "matchPath": "/en/dashboard/observe/students/new"
+    },
+    {
+        "path": "/en/dashboard/observe/students/progress",
+        "matchPath": "/en/dashboard/observe/students/progress"
+    },
+    {
+        "path": "/en/dashboard/settings/class/edit",
+        "matchPath": "/en/dashboard/settings/class/edit"
+    },
+    {
+        "path": "/en/dashboard/settings/class/new",
+        "matchPath": "/en/dashboard/settings/class/new"
+    },
+    {
+        "path": "/en/dashboard/settings/curriculum/area",
+        "matchPath": "/en/dashboard/settings/curriculum/area"
+    },
+    {
+        "path": "/en/dashboard/settings/class",
+        "matchPath": "/en/dashboard/settings/class"
+    },
+    {
+        "path": "/en/dashboard/settings/curriculum",
+        "matchPath": "/en/dashboard/settings/curriculum"
+    },
+    {
+        "path": "/en/dashboard/settings/users",
+        "matchPath": "/en/dashboard/settings/users"
+    },
+    {
+        "path": "/en/dashboard/analyze",
+        "matchPath": "/en/dashboard/analyze"
+    },
+    {
+        "path": "/en/dashboard/observe",
+        "matchPath": "/en/dashboard/observe"
+    },
+    {
+        "path": "/en/dashboard/settings",
+        "matchPath": "/en/dashboard/settings"
+    },
+    {
+        "path": "/en/404.html",
+        "matchPath": "/en/404.html"
+    },
+    {
+        "path": "/en/choose-school",
+        "matchPath": "/en/choose-school"
+    },
+    {
+        "path": "/en/dev-404-page",
+        "matchPath": "/en/dev-404-page"
+    },
+    {
+        "path": "/en/forgot-password",
+        "matchPath": "/en/forgot-password"
+    },
+    {
+        "path": "/en/login",
+        "matchPath": "/en/login"
+    },
+    {
+        "path": "/en/new-school",
+        "matchPath": "/en/new-school"
+    },
+    {
+        "path": "/en/register",
+        "matchPath": "/en/register"
+    },
+    {
+        "path": "/en/reset-password",
+        "matchPath": "/en/reset-password"
+    },
+    {
+        "path": "/en",
+        "matchPath": "/en"
+    },
+    {
+        "path": "/en/404",
+        "matchPath": "/en/*"
+    }
+]
