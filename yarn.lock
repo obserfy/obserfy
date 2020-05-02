@@ -1359,10 +1359,10 @@
     through2 "^2.0.0"
     watchify "3.11.1"
 
-"@cypress/code-coverage@3.5.3":
-  version "3.5.3"
-  resolved "https://registry.yarnpkg.com/@cypress/code-coverage/-/code-coverage-3.5.3.tgz#c2ebb394ef4358f8c212ba8018f692bd661a0909"
-  integrity sha512-oAeV2jcBKBws/hZ+7NoN6g9EymtJw6LoDx8bmm7MrI2q1cPcucUpGVnpQtqKiOfxjdCH7/YttfQr2xPmv+NNNw==
+"@cypress/code-coverage@3.7.0":
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/@cypress/code-coverage/-/code-coverage-3.7.0.tgz#4098623d532f3635a77f88b87768bafbb0d11fb3"
+  integrity sha512-GJZhh/kmybCO3Fgrsr3XrUpUMl9e1dFxNU7N8KQKp60UT4sGahrQL3zjx0+pGvR7kj3zN6Z67g/dyFUye878FQ==
   dependencies:
     "@cypress/browserify-preprocessor" "2.2.2"
     debug "4.1.1"
@@ -7923,10 +7923,10 @@ cypress-axe@0.8.1:
   resolved "https://registry.yarnpkg.com/cypress-axe/-/cypress-axe-0.8.1.tgz#ddb37dca6570c0642dda2388daf678e83b3e8d3f"
   integrity sha512-hX48+r5n7Ns7CHkn601Ag0JiCG1vby5+g7QhlP8X+mkiVYpTLpXAPiiaKFj9QTTCdZSI5+0UqwIxA+ShTsr5tA==
 
-cypress@4.4.1:
-  version "4.4.1"
-  resolved "https://registry.yarnpkg.com/cypress/-/cypress-4.4.1.tgz#f5aa1aa5f328f1299bff328103f7cbad89e80f29"
-  integrity sha512-LcskZ/PXRG9XTlEeeenKqz/KddT1x+7O7dqXsdKWPII01LxLNmNHIvHnlUqApchVbinJ5vir6J255CkELSeL0A==
+cypress@4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/cypress/-/cypress-4.5.0.tgz#01940d085f6429cec3c87d290daa47bb976a7c7b"
+  integrity sha512-2A4g5FW5d2fHzq8HKUGAMVTnW6P8nlWYQALiCoGN4bqBLvgwhYM/oG9oKc2CS6LnvgHFiKivKzpm9sfk3uU3zQ==
   dependencies:
     "@cypress/listr-verbose-renderer" "0.4.1"
     "@cypress/request" "2.88.5"
@@ -10448,12 +10448,12 @@ gatsby-core-utils@^1.1.4:
     configstore "^5.0.1"
     node-object-hash "^2.0.0"
 
-gatsby-cypress@0.3.4:
-  version "0.3.4"
-  resolved "https://registry.yarnpkg.com/gatsby-cypress/-/gatsby-cypress-0.3.4.tgz#7affaf6b19f68f6c7007fb471683e5e010193812"
-  integrity sha512-/yFyjCAZ36KkLNZ6WKRHL99vczkWoqKqKLmTwiSi5WD1Br7qlZtfjky64p29OKNWYKYhTQU178sklBtQq2qrlA==
+gatsby-cypress@0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/gatsby-cypress/-/gatsby-cypress-0.4.0.tgz#864e2245774a1db05cd3332ff3b59e207e268900"
+  integrity sha512-XQIx4r3NithC2DujLgKEYfUc4uLxJ0Tiw9/gGYaa+W8HDL69voM+3ueD1KzMyBHv82/3YPEfuvzej0296TSuAQ==
   dependencies:
-    "@babel/runtime" "^7.8.7"
+    "@babel/runtime" "^7.9.2"
 
 gatsby-graphiql-explorer@^0.3.5:
   version "0.3.5"

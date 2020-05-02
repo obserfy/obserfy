@@ -6,10 +6,10 @@
   "license": "GPL-3",
   "private": true,
   "devDependencies": {
-    "@cypress/code-coverage": "3.5.3",
+    "@cypress/code-coverage": "3.7.0",
     "@types/faker": "4.1.11",
     "@types/node": "13.13.2",
-    "cypress": "4.4.1",
+    "cypress": "4.5.0",
     "cypress-axe": "0.8.1",
     "eslint": "6.8.0",
     "eslint-config-airbnb-typescript": "7.2.1",
@@ -23,7 +23,7 @@
     "eslint-plugin-react": "7.19.0",
     "eslint-plugin-react-hooks": "4.0.0",
     "faker": "4.1.0",
-    "gatsby-cypress": "0.3.4",
+    "gatsby-cypress": "0.4.0",
     "typescript": "3.8.3"
   },
   "scripts": {
