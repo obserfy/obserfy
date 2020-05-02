@@ -17,11 +17,6 @@ plugins:
     enabled: true
     config:
       count_threshold: 4
-  eslint:
-    enabled: true
-    channel: eslint-6
-    config:
-      config: frontend/.eslintrc.js
   govet:
     enabled: true
   gofmt:
