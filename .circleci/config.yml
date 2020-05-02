@@ -69,7 +69,7 @@ jobs:
 
   backend_unit:
     docker:
-      - image: golang:1.13
+      - image: golang:1.14
       - image: circleci/postgres:11
         environment:
           POSTGRES_PASSWORD: postgres
