@@ -72,6 +72,8 @@ services:
     build:
       context: .
       dockerfile: docker/imgproxy-nginx/prod.dockerfile
+    depends_on:
+      - imgproxy
     ports:
       - 10000:443
 
