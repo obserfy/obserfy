@@ -107,7 +107,7 @@
     "prettier": "2.0.5",
     "react-docgen-typescript-loader": "3.7.2",
     "react-test-renderer": "16.13.1",
-    "storybook-addon-deps": "2.0.0",
+    "storybook-addon-deps": "2.0.1",
     "storybook-addon-i18n": "5.1.13",
     "typescript": "3.8.3",
     "url-loader": "4.1.0",
