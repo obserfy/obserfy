@@ -177,7 +177,7 @@ jobs:
           sentry-cli releases -p backend finalize $VERSION
 
 orbs:
-  go: circleci/go@1.1.0
+  go: circleci/go@1.1.1
 
 workflows:
   vor:
