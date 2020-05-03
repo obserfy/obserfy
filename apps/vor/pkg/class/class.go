@@ -15,6 +15,7 @@ func NewRouter(server rest.Server, store Store) *chi.Mux {
 		r.Method("GET", "/", getClass(server, store))
 		r.Method("DELETE", "/", deleteClass(server, store))
 		r.Method("PATCH", "/", updateClass(server, store))
+		r.Method("GET", "/session", getClassSession(server, store))
 	})
 	return r
 }
@@ -56,7 +57,28 @@ func authorizationMiddleware(s rest.Server, store Store) func(next http.Handler)
 		})
 	}
 }
+func getClassSession(server rest.Server, store Store) http.Handler {
+	type responseBody struct {
+		Date string `json:"date"`
+	}
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		classId := chi.URLParam(r, "classId")
+		classSession, err := store.GetClassSession(classId)
 
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "failed querying attendance",
+				Error:   err,
+			}
+		}
+		if err := rest.WriteJson(w, classSession); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
+
+		return nil
+	})
+}
 func updateClass(server rest.Server, store Store) http.Handler {
 	type requestBody struct {
 		Name      string         `json:"name"`

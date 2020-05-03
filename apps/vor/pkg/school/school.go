@@ -16,7 +16,7 @@ import (
 	"time"
 )
 
-func NewRouter(server rest.Server, store postgres.SchoolStore, imageStorage StudentImageStorage) *chi.Mux {
+func NewRouter(server rest.Server, store postgres.SchoolStore, imageStorage StudentImageStorage, classStore postgres.ClassStore) *chi.Mux {
 	r := chi.NewRouter()
 	r.Method("POST", "/", postNewSchool(server, store))
 	r.Route("/{schoolId}", func(r chi.Router) {
@@ -34,9 +34,8 @@ func NewRouter(server rest.Server, store postgres.SchoolStore, imageStorage Stud
 
 		r.Method("POST", "/class", postNewClass(server, store))
 		r.Method("GET", "/class", getClasses(server, store))
-		r.Method("GET", "/class/{classId}/session", getClassSession(server, store))
 
-		r.Method("GET", "/class/{classId}/attendance/{session}", getClassAttendance(server, store))
+		r.Method("GET", "/class/{classId}/attendance", getClassAttendance(server, store, classStore))
 
 		r.Method("POST", "/guardians", postNewGuardian(server, store))
 		r.Method("GET", "/guardians", getGuardians(server, store))
@@ -86,14 +85,30 @@ func getClasses(server rest.Server, store postgres.SchoolStore) http.Handler {
 		return nil
 	})
 }
-func getClassSession(server rest.Server, store postgres.SchoolStore) http.Handler {
+func getClassAttendance(server rest.Server, store postgres.SchoolStore, classStore postgres.ClassStore) http.Handler {
+	type attendanceData struct {
+		StudentId string `json:"studentId"`
+		Name      string `json:"name"`
+		Absent    bool   `json:"absent"`
+	}
+
 	type responseBody struct {
-		Date string `json:"date"`
+		Attendance []attendanceData `json:"attendance"`
+		Date       string           `json:"date"`
 	}
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		session := r.URL.Query().Get("session")
 		classId := chi.URLParam(r, "classId")
-		classSession, err := store.GetClassSession(classId)
-
+		class, err := classStore.GetClass(classId)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "failed querying class",
+				Error:   err,
+			}
+		}
+		students := class.Students
+		attendance, err := store.GetClassAttendance(classId, session)
 		if err != nil {
 			return &rest.Error{
 				Code:    http.StatusInternalServerError,
@@ -101,44 +116,39 @@ func getClassSession(server rest.Server, store postgres.SchoolStore) http.Handle
 				Error:   err,
 			}
 		}
-		if err := rest.WriteJson(w, classSession); err != nil {
-			return rest.NewWriteJsonError(err)
-		}
-
-		return nil
-	})
-}
-func getClassAttendance(server rest.Server, store postgres.SchoolStore) http.Handler {
-	type responseBody struct {
-		StudentId string `json:"studentId"`
-		Name      string `json:"name"`
-		Absent    bool   `json:"absent"`
-	}
-	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
-		session := chi.URLParam(r, "session")
-		classId := chi.URLParam(r, "classId")
-		attendance, err := store.GetClassAttendance(classId, session)
 		var response []responseBody
+		sessionList, _ := classStore.GetClassSession(classId)
+		attendMap := make(map[string]int)
+		if len(sessionList) > 0 {
+			if len(attendance) > 0 {
+				for _, attendance := range attendance {
+					attendMap[attendance.StudentId+"-"+attendance.Date.Format("2006-01-02")] = 1
 
-		if len(attendance) > 0 {
-			students := attendance[0].Class.Students
-			attend := make(map[string]int)
-			for _, attendance := range attendance {
-				attend[attendance.StudentId] = 1
-				response = append(response, responseBody{
-					StudentId: attendance.StudentId,
-					Name:      attendance.Student.Name,
-					Absent:    true,
-				})
-			}
-			for _, student := range students {
-				if attend[student.Id] != 1 {
+				}
+				for _, session := range sessionList {
+					var attendanceArray []attendanceData
+					for _, student := range students {
+						if attendMap[student.Id+"-"+session.Date] != 1 {
+							attendanceArray = append(attendanceArray, attendanceData{
+								StudentId: student.Id,
+								Name:      student.Name,
+								Absent:    true,
+							})
+						} else {
+							attendanceArray = append(attendanceArray, attendanceData{
+								StudentId: student.Id,
+								Name:      student.Name,
+								Absent:    false,
+							})
+						}
+					}
 					response = append(response, responseBody{
-						StudentId: student.Id,
-						Name:      student.Name,
-						Absent:    false,
+						Date:       session.Date,
+						Attendance: attendanceArray,
 					})
 				}
+			} else {
+
 			}
 		}
 

@@ -2,7 +2,6 @@ package postgres
 
 import (
 	"github.com/go-pg/pg/v9"
-	"github.com/go-shadow/moment"
 	"github.com/google/uuid"
 	richErrors "github.com/pkg/errors"
 	"time"
@@ -11,9 +10,7 @@ import (
 type SchoolStore struct {
 	*pg.DB
 }
-type ClassSession struct{
-	Date string `json:"date"`
-}
+
 func (s SchoolStore) NewSchool(schoolName string, userId string) (*School, error) {
 	id := uuid.New()
 	inviteCode := uuid.New()
@@ -79,37 +76,6 @@ func (s SchoolStore) GetClassAttendance(classId string, session string) ([]Atten
 		return nil, err
 	}
 	return attendance, nil
-}
-func (s SchoolStore) GetClassSession(classId string) ([]ClassSession, error) {
-
-	var attendance []Attendance
-	var session []ClassSession
-	if err := s.Model(&attendance).
-		Distinct().
-		ColumnExpr("cast(date AS date)").
-		Select(); err != nil {
-		return nil, err
-	}
-	if len(attendance) > 0 {
-		for _, attendance := range attendance {
-			session = append(session, ClassSession{
-				Date: attendance.Date.Format("2006-01-02"),
-			})
-		}
-	}
-	var class Class
-	if err := s.Model(&class).
-		Relation("Weekdays").
-		Where("id=?", classId).
-		Select(); err != nil {
-		return nil, err
-	}
-	for _,weekday :=range class.Weekdays{
-		session=append(session,ClassSession{
-			Date:moment.New().Now().AddWeeks(1).GoBackTo(weekday.Day).Format("YYYY-MM-DD"),
-		})
-	}
-	return session, nil
 }
 func (s SchoolStore) NewStudent(student Student, classes []string, guardians map[string]int) error {
 	if student.Id == "" {
