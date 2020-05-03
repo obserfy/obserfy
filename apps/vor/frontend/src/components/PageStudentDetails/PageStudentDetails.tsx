@@ -1,5 +1,7 @@
-import React, { FC, useState } from "react"
+/** @jsx jsx */
+import { FC, Fragment, useState } from "react"
 import { navigate } from "gatsby"
+import { jsx } from "theme-ui"
 import { Link } from "../Link/Link"
 import { useGetStudent } from "../../api/useGetStudent"
 import Flex from "../Flex/Flex"
@@ -8,7 +10,6 @@ import Typography, { TextProps } from "../Typography/Typography"
 import Icon from "../Icon/Icon"
 import EmptyListPlaceholder from "../EmptyListPlaceholder/EmptyListPlaceholder"
 import Button from "../Button/Button"
-import { ReactComponent as EditIcon } from "../../icons/edit.svg"
 import { BackNavigation } from "../BackNavigation/BackNavigation"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import { Observation, useGetObservations } from "../../api/useGetObservations"
@@ -44,9 +45,11 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
     ),
   ]?.sort((a, b) => dayjs(b).diff(a))
 
-  const selectedDateDifference = dayjs
-    .duration(dayjs(dates?.[selectedDate] ?? "").diff(dayjs()))
-    .days()
+  const selectedDateDifference = Math.floor(
+    dayjs.duration(dayjs(dates?.[selectedDate] ?? "").diff(dayjs())).asDays()
+  )
+
+  console.log(selectedDateDifference)
 
   const listOfObservations = observations.data
     ?.filter((observation) =>
@@ -83,11 +86,11 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
     )
 
   const dateSelector = (observations.data?.length ?? 0) > 0 && (
-    <Flex alignItems="center" px={3} mb={3}>
+    <Flex alignItems="center" px={2} mb={2}>
       <Button
         disabled={selectedDate >= dates.length - 1}
         onClick={() => setSelectedDate(selectedDate + 1)}
-        variant="outline"
+        variant="secondary"
         py={1}
         px={2}
       >
@@ -110,7 +113,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
       <Button
         disabled={selectedDate < 1}
         onClick={() => setSelectedDate(selectedDate - 1)}
-        variant="outline"
+        variant="secondary"
         py={1}
         px={2}
       >
@@ -120,7 +123,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
   )
 
   return (
-    <>
+    <Fragment>
       <Box maxWidth="maxWidth.sm" margin="auto" pb={5}>
         <BackNavigation text="Home" to="/dashboard/observe" />
         <Flex alignItems="start" mx={3} mb={4} mt={0}>
@@ -130,29 +133,23 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
             )}
           </Typography.H3>
           <Spacer />
-          <Button
-            data-cy="edit"
-            mt={11}
-            ml={3}
-            minWidth={43}
-            variant="outline"
-            onClick={() =>
-              navigate(`/dashboard/observe/students/edit?id=${id}`)
-            }
-          >
-            <Icon minWidth={20} as={EditIcon} m={0} />
-          </Button>
         </Flex>
-        <Box m={3} mb={2}>
+        <Flex m={3} mb={2}>
+          <Link sx={{ mr: 2 }} to={`/dashboard/observe/students/edit?id=${id}`}>
+            <Button data-cy="edit" minWidth={43} variant="outline">
+              See Profile
+            </Button>
+          </Link>
           <Link
+            sx={{ width: "100%" }}
             to={`/dashboard/observe/students/observations/new?studentId=${id}`}
           >
-            <Button width="100%">
+            <Button sx={{ width: "100%" }}>
               <Icon as={PlusIcon} m={0} mr={2} fill="onPrimary" />
               Add Observation
             </Button>
           </Link>
-        </Box>
+        </Flex>
         <Flex pt={4} px={3} mb={3} alignItems="center">
           <SectionHeader mr="auto" lineHeight={1}>
             OBSERVATIONS
@@ -195,7 +192,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
           }}
         />
       )}
-    </>
+    </Fragment>
   )
 }
 
