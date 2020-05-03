@@ -19,11 +19,10 @@ exports[`CardLink should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   padding: 8px;
-  background-color: var(--theme-ui-colors-background,#F7F8FA);
+  background-color: var(--theme-ui-colors-surface,#fff);
   border-radius: 8px;
   box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
   padding: 16px;
-  background-color: var(--theme-ui-colors-surface,#fff);
   overflow: hidden;
 }
 

@@ -226,7 +226,7 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
           </Typography.H5>
           <Link to={PICK_GUARDIAN_URL}>
             <Button variant="outline" mr={3}>
-              Add Guardian
+              Add
             </Button>
           </Link>
         </Flex>
@@ -325,10 +325,11 @@ const GuardianCard: FC<{
 
   return (
     <Card
-      borderRadius={[0, 3]}
+      borderRadius={[0, "default"]}
       py={3}
       pr={2}
       mb={2}
+      mx={[0, 3]}
       display="flex"
       sx={{ alignItems: "center" }}
     >
@@ -342,7 +343,7 @@ const GuardianCard: FC<{
           {guardian.data?.name}
         </Typography.Body>
         <Pill
-          ml={2}
+          ml={3}
           {...(() => {
             switch (relationship) {
               case GuardianRelationship.Father:
