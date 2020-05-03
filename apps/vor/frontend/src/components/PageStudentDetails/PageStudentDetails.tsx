@@ -92,7 +92,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
         onClick={() => setSelectedDate(selectedDate + 1)}
         variant="secondary"
         py={1}
-        px={2}
+        px={1}
       >
         <Icon as={PrevIcon} m={0} />
       </Button>
@@ -115,7 +115,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
         onClick={() => setSelectedDate(selectedDate - 1)}
         variant="secondary"
         py={1}
-        px={2}
+        px={1}
       >
         <Icon as={NextIcon} m={0} />
       </Button>
@@ -135,7 +135,10 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
           <Spacer />
         </Flex>
         <Flex m={3} mb={2}>
-          <Link sx={{ mr: 2 }} to={`/dashboard/observe/students/edit?id=${id}`}>
+          <Link
+            sx={{ mr: 2 }}
+            to={`/dashboard/observe/students/profile?id=${id}`}
+          >
             <Button data-cy="edit" minWidth={43} variant="outline">
               See Profile
             </Button>
@@ -199,7 +202,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
 const SectionHeader: FC<TextProps> = (props) => (
   <Typography.H5
     fontWeight="normal"
-    color="textMediumEmphasis"
+    color="text"
     letterSpacing={3}
     {...props}
   />

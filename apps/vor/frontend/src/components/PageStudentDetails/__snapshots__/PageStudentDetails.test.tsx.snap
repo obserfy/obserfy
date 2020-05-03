@@ -381,7 +381,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   -moz-letter-spacing: 0;
   -ms-letter-spacing: 0;
   letter-spacing: 0;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   font-weight: normal;
   -webkit-letter-spacing: 3px;
   -moz-letter-spacing: 3px;
@@ -526,7 +526,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   -moz-letter-spacing: 0;
   -ms-letter-spacing: 0;
   letter-spacing: 0;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   font-weight: normal;
   -webkit-letter-spacing: 3px;
   -moz-letter-spacing: 3px;
@@ -601,7 +601,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
       >
         <a
           class="emotion-8"
-          href="/dashboard/observe/students/edit?id=asdfadsf"
+          href="/dashboard/observe/students/profile?id=asdfadsf"
         >
           <button
             class="emotion-7"
