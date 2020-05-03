@@ -7,7 +7,7 @@ import Button from "../components/button"
 const ContactUsPage: FC = () => (
   <Layout>
     <SEO title="Home" />
-    <div className="flex sm:flex-box md:flex lg:flex my-16">
+    <div className="flex-row lg:flex my-16">
       <div className="flex-row justify-center lg:w-1/2">
         <h1 className="text-5xl mb-4 leading-none font-heading font-medium">
           Contact Us
@@ -25,7 +25,7 @@ const ContactUsPage: FC = () => (
           </a>
         </div>
       </div>
-      <div className="flex-row justify-center lg:w-1/3 mx-32">
+      <div className="flex-row justify-center lg:w-1/3 mx-auto md:mx-32">
         <form className="bg-white shadow-md rounded p-8" name="contact" method="POST" data-netlify="true">
           <div className="py-4">
             <input type="text" id="email" name="email" placeholder="Email" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
