@@ -93,6 +93,8 @@ func (s StudentStore) Get(studentId string) (*Student, error) {
 	var student Student
 	if err := s.DB.Model(&student).
 		Where("id=?", studentId).
+		Relation("Guardians").
+		Relation("Classes").
 		Select(); err != nil {
 		return nil, err
 	}

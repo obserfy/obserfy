@@ -56,10 +56,28 @@ func authorizationMiddleware(s rest.Server, store Store) func(next http.Handler)
 }
 
 func getStudent(s rest.Server, store Store) http.Handler {
+	type Guardian struct {
+		Id           string `json:"id"`
+		Name         string `json:"name"`
+		Relationship int    `json:"relationship"`
+		Email        string `json:"email"`
+	}
+	type Class struct {
+		Id   string `json:"id"`
+		Name string `json:"name"`
+	}
 	type responseBody struct {
 		Id          string     `json:"id"`
 		Name        string     `json:"name"`
 		DateOfBirth *time.Time `json:"dateOfBirth,omitempty"`
+		DateOfEntry *time.Time `json:"dateOfEntry,omitempty"`
+		Gender      int        `json:"gender"`
+		Note        string     `json:"note"`
+		CustomId    string     `json:"customId"`
+		Active      bool       `json:"active"`
+		ProfilePic  string     `json:"profilePic"`
+		Classes     []Class    `json:"classes"`
+		Guardians   []Guardian `json:"guardians"`
 	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		id := chi.URLParam(r, "studentId")
@@ -69,10 +87,32 @@ func getStudent(s rest.Server, store Store) http.Handler {
 			return &rest.Error{http.StatusNotFound, "Can't find student with specified id", err}
 		}
 
+		guardians := make([]Guardian, len(student.Guardians))
+		for i, guardian := range student.Guardians {
+			guardians[i] = Guardian{
+				Id:           guardian.Id,
+				Name:         guardian.Name,
+				Relationship: 0,
+				Email:        guardian.Email,
+			}
+		}
+		classes := make([]Class, len(student.Classes))
+		for i, class := range student.Classes {
+			classes[i] = Class{
+				Id:   class.Id,
+				Name: class.Name,
+			}
+		}
 		response := responseBody{
 			Id:          student.Id,
 			Name:        student.Name,
+			Gender:      int(student.Gender),
+			CustomId:    student.CustomId,
+			Note:        student.Note,
 			DateOfBirth: student.DateOfBirth,
+			DateOfEntry: student.DateOfEntry,
+			Guardians:   guardians,
+			Classes:     classes,
 		}
 		if err := rest.WriteJson(w, response); err != nil {
 			return rest.NewWriteJsonError(err)
