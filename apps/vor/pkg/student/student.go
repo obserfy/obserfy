@@ -25,6 +25,8 @@ func NewRouter(s rest.Server, store Store) *chi.Mux {
 
 		r.Method("GET", "/materialsProgress", getMaterialProgress(s, store))
 		r.Method("PATCH", "/materialsProgress/{materialId}", upsertMaterialProgress(s, store))
+
+		r.Method("PUT", "/guardians", putGuardians(s, store))
 	})
 	return r
 }
@@ -53,6 +55,13 @@ func authorizationMiddleware(s rest.Server, store Store) func(next http.Handler)
 			return nil
 		})
 	}
+}
+
+func putGuardians(s rest.Server, store Store) http.Handler {
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		// TODO: Finish this
+		return nil
+	})
 }
 
 func getStudent(s rest.Server, store Store) http.Handler {
