@@ -1484,6 +1484,8 @@ export type QueryAllSitePageArgs = {
 export type QuerySiteArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
+  port?: Maybe<IntQueryOperatorInput>;
+  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -1567,6 +1569,8 @@ export type QueryAllSitePluginArgs = {
 export type Site = Node & {
   buildTime?: Maybe<Scalars['Date']>;
   siteMetadata?: Maybe<SiteSiteMetadata>;
+  port?: Maybe<Scalars['Int']>;
+  host?: Maybe<Scalars['String']>;
   polyfill?: Maybe<Scalars['Boolean']>;
   pathPrefix?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
@@ -1769,6 +1773,8 @@ export type SiteFieldsEnum =
   'siteMetadata___title' |
   'siteMetadata___description' |
   'siteMetadata___author' |
+  'port' |
+  'host' |
   'polyfill' |
   'pathPrefix' |
   'id' |
@@ -1861,6 +1867,8 @@ export type SiteFieldsEnum =
 export type SiteFilterInput = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
+  port?: Maybe<IntQueryOperatorInput>;
+  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -2093,10 +2101,6 @@ export type SitePageFieldsEnum =
   'pluginCreator___pluginOptions___enabled' |
   'pluginCreator___pluginOptions___fileName' |
   'pluginCreator___pluginOptions___documentPaths' |
-  'pluginCreator___pluginOptions___GAViewID' |
-  'pluginCreator___pluginOptions___minimumThreshold' |
-  'pluginCreator___pluginOptions___period___startDate' |
-  'pluginCreator___pluginOptions___period___endDate' |
   'pluginCreator___pluginOptions___analyzerPort' |
   'pluginCreator___pluginOptions___pathCheck' |
   'pluginCreator___nodeAPIs' |
@@ -2313,10 +2317,6 @@ export type SitePluginFieldsEnum =
   'pluginOptions___enabled' |
   'pluginOptions___fileName' |
   'pluginOptions___documentPaths' |
-  'pluginOptions___GAViewID' |
-  'pluginOptions___minimumThreshold' |
-  'pluginOptions___period___startDate' |
-  'pluginOptions___period___endDate' |
   'pluginOptions___analyzerPort' |
   'pluginOptions___pathCheck' |
   'nodeAPIs' |
@@ -2456,9 +2456,6 @@ export type SitePluginPluginOptions = {
   enabled?: Maybe<Scalars['Boolean']>;
   fileName?: Maybe<Scalars['String']>;
   documentPaths?: Maybe<Array<Maybe<Scalars['String']>>>;
-  GAViewID?: Maybe<Scalars['String']>;
-  minimumThreshold?: Maybe<Scalars['Float']>;
-  period?: Maybe<SitePluginPluginOptionsPeriod>;
   analyzerPort?: Maybe<Scalars['Int']>;
   pathCheck?: Maybe<Scalars['Boolean']>;
 };
@@ -2489,9 +2486,6 @@ export type SitePluginPluginOptionsFilterInput = {
   enabled?: Maybe<BooleanQueryOperatorInput>;
   fileName?: Maybe<StringQueryOperatorInput>;
   documentPaths?: Maybe<StringQueryOperatorInput>;
-  GAViewID?: Maybe<StringQueryOperatorInput>;
-  minimumThreshold?: Maybe<FloatQueryOperatorInput>;
-  period?: Maybe<SitePluginPluginOptionsPeriodFilterInput>;
   analyzerPort?: Maybe<IntQueryOperatorInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
 };
@@ -2508,32 +2502,6 @@ export type SitePluginPluginOptionsFontsFilterInput = {
 
 export type SitePluginPluginOptionsFontsFilterListInput = {
   elemMatch?: Maybe<SitePluginPluginOptionsFontsFilterInput>;
-};
-
-export type SitePluginPluginOptionsPeriod = {
-  startDate?: Maybe<Scalars['Date']>;
-  endDate?: Maybe<Scalars['Date']>;
-};
-
-
-export type SitePluginPluginOptionsPeriodStartDateArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-
-export type SitePluginPluginOptionsPeriodEndDateArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-export type SitePluginPluginOptionsPeriodFilterInput = {
-  startDate?: Maybe<DateQueryOperatorInput>;
-  endDate?: Maybe<DateQueryOperatorInput>;
 };
 
 export type SitePluginPluginOptionsSvgoConfig = {

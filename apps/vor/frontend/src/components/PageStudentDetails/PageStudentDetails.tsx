@@ -49,8 +49,6 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
     dayjs.duration(dayjs(dates?.[selectedDate] ?? "").diff(dayjs())).asDays()
   )
 
-  console.log(selectedDateDifference)
-
   const listOfObservations = observations.data
     ?.filter((observation) =>
       dayjs(observation.createdDate ?? "").isSame(dates[selectedDate], "day")
@@ -108,7 +106,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
           ? selectedDateDifference === -1
             ? "Today"
             : `${selectedDateDifference * -1} Days`
-          : dayjs(dates?.[selectedDate] ?? "").format("d MMMM 'YY")}
+          : dayjs(dates?.[selectedDate] ?? "").format("D MMMM 'YY")}
       </Typography.Body>
       <Button
         disabled={selectedDate < 1}

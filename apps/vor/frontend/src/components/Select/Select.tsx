@@ -15,15 +15,18 @@ export const Select: FC<SelectProps> = ({
   defaultValue,
   value,
   onChange,
+  width,
+  sx,
   ...props
 }) => (
-  <Label display="flex" sx={{ flexDirection: "column" }} {...props}>
+  <Label display="flex" sx={{ ...sx, flexDirection: "column" }} {...props}>
     {label && !hideLabel && <Box pb={1}>{label}</Box>}
     <BaseSelect
       onChange={onChange}
       defaultValue={defaultValue}
       value={value}
       aria-label={label}
+      width={width}
     >
       {children}
     </BaseSelect>
