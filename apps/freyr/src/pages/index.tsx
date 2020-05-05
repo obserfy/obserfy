@@ -4,6 +4,7 @@ import { Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Button from "../components/button"
+import { trackCustomEvent } from "gatsby-plugin-google-analytics"
 
 const IndexPage: FC = () => (
   <Layout>
@@ -21,7 +22,14 @@ const IndexPage: FC = () => (
           href="https://app.obserfy.com/register"
           className="block mb-3 sm:mb-0 sm:mr-3"
         >
-          <Button className="w-full sm:w-auto text-lg">Get Started</Button>
+          <Button className="w-full sm:w-auto text-lg" onClick={() => {
+              trackCustomEvent({
+                category: "Get Start Button",
+                action: "Click",
+                label: "Get Start",
+              })
+            }
+          }>Get Started</Button>
         </a>
         <Link to="/contact-us">
           <Button secondary className="w-full sm:w-auto text-lg bg-green-200">
