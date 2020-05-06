@@ -1,12 +1,14 @@
-import React, { FC, useState } from "react"
+/** @jsx jsx */
+import { FC, useState, Fragment } from "react"
+import { jsx } from "theme-ui"
 import Box from "../Box/Box"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { useGetStudent } from "../../api/useGetStudent"
 import Card from "../Card/Card"
 import Typography from "../Typography/Typography"
-import { STUDENT_DETAILS_PAGE_URL } from "../../routes"
+import { EDIT_GUARDIANS_URL, STUDENT_DETAILS_PAGE_URL } from "../../routes"
 import dayjs from "../../dayjs"
-import { ReactComponent as PrevIcon } from "../../icons/edit.svg"
+import { ReactComponent as EditIcon } from "../../icons/edit.svg"
 import Button from "../Button/Button"
 import Icon from "../Icon/Icon"
 import Flex from "../Flex/Flex"
@@ -17,6 +19,7 @@ import { Gender } from "../../api/students/usePostNewStudent"
 import Select from "../Select/Select"
 import DatePicker from "../DatePicker/DatePicker"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
+import { Link } from "../Link/Link"
 
 interface Props {
   id: string
@@ -75,7 +78,7 @@ export const PageStudentProfile: FC<Props> = ({ id }) => {
           </Box>
 
           <Button variant="outline" ml="auto" px={2} mt={3} mr={3}>
-            <Icon as={PrevIcon} m={0} />
+            <Icon as={EditIcon} m={0} />
           </Button>
         </Flex>
       </Card>
@@ -98,9 +101,11 @@ export const PageStudentProfile: FC<Props> = ({ id }) => {
               return <Typography.Body lineHeight={1}>Name</Typography.Body>
             })}
           </Box>
-          <Button variant="outline" ml="auto" px={2} mt={3} mr={3}>
-            <Icon as={PrevIcon} m={0} />
-          </Button>
+          <Link to={EDIT_GUARDIANS_URL(id)} sx={{ ml: "auto", mt: 3, mr: 3 }}>
+            <Button variant="outline" px={2}>
+              <Icon as={EditIcon} m={0} />
+            </Button>
+          </Link>
         </Flex>
       </Card>
     </Box>
@@ -110,7 +115,7 @@ export const PageStudentProfile: FC<Props> = ({ id }) => {
 const NameDataBox: FC<{ value?: string }> = ({ value }) => {
   const [showEditDialog, setShowEditDialog] = useState(false)
   return (
-    <>
+    <Fragment>
       <DataBox
         label="Name"
         value={value ?? ""}
@@ -129,14 +134,14 @@ const NameDataBox: FC<{ value?: string }> = ({ value }) => {
           </Box>
         </Dialog>
       )}
-    </>
+    </Fragment>
   )
 }
 
 const GenderDataBox: FC<{ value?: number }> = ({ value }) => {
   const [showEditDialog, setShowEditDialog] = useState(false)
   return (
-    <>
+    <Fragment>
       <DataBox
         label="Gender"
         onEditClick={() => setShowEditDialog(true)}
@@ -168,14 +173,14 @@ const GenderDataBox: FC<{ value?: number }> = ({ value }) => {
           </Box>
         </Dialog>
       )}
-    </>
+    </Fragment>
   )
 }
 
 const StudentIdDataBox: FC<{ value?: string }> = ({ value }) => {
   const [showEditDialog, setShowEditDialog] = useState(false)
   return (
-    <>
+    <Fragment>
       <DataBox
         label="Student ID"
         value={value || "Not set"}
@@ -199,7 +204,7 @@ const StudentIdDataBox: FC<{ value?: string }> = ({ value }) => {
           </Box>
         </Dialog>
       )}
-    </>
+    </Fragment>
   )
 }
 
@@ -208,7 +213,7 @@ const DateOfBirthDataBox: FC<{ value?: string }> = ({ value }) => {
   const [date, setDate] = useState(dayjs(value || 0))
 
   return (
-    <>
+    <Fragment>
       <DataBox
         label="Date of Birth"
         value={value ? dayjs(value).format("D MMMM YYYY") : "N/A"}
@@ -227,7 +232,7 @@ const DateOfBirthDataBox: FC<{ value?: string }> = ({ value }) => {
           </Flex>
         </Dialog>
       )}
-    </>
+    </Fragment>
   )
 }
 
@@ -236,7 +241,7 @@ const DateOfEntryDataBox: FC<{ value?: string }> = ({ value }) => {
   const [date, setDate] = useState(dayjs(value || 0))
 
   return (
-    <>
+    <Fragment>
       <DataBox
         label="Date of Entry"
         onEditClick={() => setShowEditDialog(true)}
@@ -255,7 +260,7 @@ const DateOfEntryDataBox: FC<{ value?: string }> = ({ value }) => {
           </Flex>
         </Dialog>
       )}
-    </>
+    </Fragment>
   )
 }
 
@@ -277,16 +282,16 @@ const DataBox: FC<{
     <Box>
       <Typography.Body
         fontSize={0}
-        lineHeight={1.2}
+        lineHeight={1.6}
         mb={1}
         color="textMediumEmphasis"
       >
         {label}
       </Typography.Body>
-      <Typography.Body lineHeight={1.4}>{value}</Typography.Body>
+      <Typography.Body lineHeight={1.6}>{value}</Typography.Body>
     </Box>
     <Button variant="outline" ml="auto" px={2} onClick={onEditClick}>
-      <Icon as={PrevIcon} m={0} />
+      <Icon as={EditIcon} m={0} />
     </Button>
   </Flex>
 )

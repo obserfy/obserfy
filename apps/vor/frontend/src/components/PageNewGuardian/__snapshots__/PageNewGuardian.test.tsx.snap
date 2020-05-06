@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PageNewSubject should render correctly 1`] = `
-.emotion-19 {
+exports[`PageNewGuardian should render correctly 1`] = `
+.emotion-27 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,24 +9,18 @@ exports[`PageNewSubject should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-19 {
+  .emotion-27 {
     font-size: 20px;
   }
 }
 
-.emotion-18 {
+.emotion-26 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 640px;
-  margin: auto;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-2 {
@@ -91,7 +85,7 @@ exports[`PageNewSubject should render correctly 1`] = `
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 300;
   line-height: heading;
-  font-size: 2rem;
+  font-size: 2.5rem;
   line-height: 3rem;
   -webkit-letter-spacing: 0;
   -moz-letter-spacing: 0;
@@ -101,23 +95,13 @@ exports[`PageNewSubject should render correctly 1`] = `
   --webkitFontSmoothing: antialiased;
   --mozOsxFontSmoothing: grayscale;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
-  margin: 16px;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-bottom: 16px;
+  margin-top: 16px;
 }
 
-.emotion-15 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  background-color: var(--theme-ui-colors-background,#F7F8FA);
-}
-
-.emotion-14 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-}
-
-.emotion-8 {
+.emotion-25 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -145,6 +129,7 @@ exports[`PageNewSubject should render correctly 1`] = `
   display: -ms-flexbox;
   display: flex;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  margin-bottom: 8px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -226,52 +211,27 @@ exports[`PageNewSubject should render correctly 1`] = `
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
-.emotion-9 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  color: rgba(0,0,0,0.88);
-  font-size: 1.6rem;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 400;
-  line-height: 3rem;
-  text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  font-size: 16px;
-  padding-left: 16px;
-  padding-right: 16px;
-  font-weight: bold;
-}
-
-.emotion-10 {
+.emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   width: 100%;
-  overflow: hidden;
-}
-
-.emotion-13 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  cursor: pointer;
-  position: relative;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  as: label;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-size: 14px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  background-color: var(--theme-ui-colors-background,#F7F8FA);
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 8px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -282,51 +242,163 @@ exports[`PageNewSubject should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  max-width: 100%;
-  height: auto;
-  fill: var(--theme-ui-colors-primary,#00e399);
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  margin: 0;
-  height: 20px;
-  width: 24px;
-  margin-right: 8px;
-}
-
-.emotion-12 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  color: rgba(0,0,0,0.88);
-  font-size: 1.6rem;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 400;
-  line-height: 3rem;
-  text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  font-size: 14px;
-}
-
-.emotion-17 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  width: 100%;
-  padding: 16px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.emotion-16 {
+.emotion-9 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: block;
+  width: 100%;
+  padding: 8px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: inherit;
+  line-height: inherit;
+  border: 1px solid;
+  border-radius: 8px;
+  color: inherit;
+  background-color: transparent;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface,#fff);
+  font-size: 16px;
+  padding: 12px;
+}
+
+.emotion-9:hover,
+.emotion-9:focus {
+  border-color: var(--theme-ui-colors-primary,#00e399);
+  outline: none;
+}
+
+.emotion-10 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-left: -28px;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  pointer-events: none;
+  width: 24px;
+  height: 24px;
+}
+
+.emotion-20 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  width: 100%;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  as: label;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  margin-bottom: 16px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-23 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  width: 100%;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  as: label;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-22 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: block;
+  width: 100%;
+  padding: 8px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: inherit;
+  line-height: inherit;
+  border: 1px solid;
+  border-radius: 8px;
+  color: inherit;
+  background-color: transparent;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface,#fff);
+  font-size: 16px;
+  padding: 16px;
+  height: 180px;
+  resize: vertical;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  margin-bottom: 16px;
+}
+
+.emotion-22:hover,
+.emotion-22:focus {
+  border-color: var(--theme-ui-colors-primary,#00e399);
+  outline: none;
+}
+
+.emotion-22::-webkit-input-placeholder {
+  font-style: italic;
+  line-height: 2rem;
+}
+
+.emotion-22::-moz-placeholder {
+  font-style: italic;
+  line-height: 2rem;
+}
+
+.emotion-22:-ms-input-placeholder {
+  font-style: italic;
+  line-height: 2rem;
+}
+
+.emotion-22::placeholder {
+  font-style: italic;
+  line-height: 2rem;
+}
+
+.emotion-24 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -375,33 +447,34 @@ exports[`PageNewSubject should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  width: 100%;
 }
 
-.emotion-16:disabled {
+.emotion-24:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-16:hover,
-.emotion-16:focus {
+.emotion-24:hover,
+.emotion-24:focus {
   background-color: var(--theme-ui-colors-primaryDark,#00a06d);
   outline: none;
 }
 
-.emotion-16:hover:disabled,
-.emotion-16:focus:disabled {
+.emotion-24:hover:disabled,
+.emotion-24:focus:disabled {
   background-color: var(--theme-ui-colors-primary,#00e399);
 }
 
 <div>
   <div
-    class="emotion-19"
+    class="emotion-27"
   >
     <div
-      class="emotion-18"
+      class="emotion-26"
     >
       <a
-        href="/dashboard/settings/curriculum/area?id=sadf"
+        href="/dashboard/observe/students/profile/guardians/edit?id=undefined"
       >
         <div
           class="emotion-2"
@@ -411,68 +484,130 @@ exports[`PageNewSubject should render correctly 1`] = `
           />
           <p
             class="emotion-1"
-          />
+          >
+            Edit Guardians
+          </p>
         </div>
       </a>
-      <h6
+      <h5
         class="emotion-3"
       >
-        New Subject
-      </h6>
+        New Guardian
+      </h5>
       <div
-        class="emotion-15"
+        class="emotion-25"
       >
-        <div
-          class="emotion-14"
+        <label
+          class="emotion-7"
         >
           <div
-            class="emotion-8"
+            class="emotion-4"
           >
-            <label
-              class="emotion-7"
-            >
-              <div
-                class="emotion-4"
-              >
-                Subject name
-              </div>
-              <div
-                class="emotion-6"
-              >
-                <input
-                  class="emotion-5"
-                  value=""
-                />
-              </div>
-            </label>
+            Guardian Name
           </div>
-          <p
-            class="emotion-9"
-          >
-            Materials
-          </p>
           <div
-            class="emotion-10"
-          />
-          <div
-            class="emotion-13"
+            class="emotion-6"
           >
-            <div
-              class="emotion-11"
+            <input
+              class="emotion-5"
+              value=""
             />
-            <p
-              class="emotion-12"
-            >
-              Add material
-            </p>
           </div>
-        </div>
-      </div>
-      <div
-        class="emotion-17"
-      >
+        </label>
+        <label
+          class="emotion-12"
+        >
+          <div
+            class="emotion-4"
+          >
+            Relationship
+          </div>
+          <div
+            class="emotion-11"
+          >
+            <select
+              aria-label="Relationship"
+              class="emotion-9"
+            >
+              <option
+                value="0"
+              >
+                Other
+              </option>
+              <option
+                value="1"
+              >
+                Mother
+              </option>
+              <option
+                value="2"
+              >
+                Father
+              </option>
+            </select>
+            <svg
+              class="emotion-10"
+              fill="currentcolor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+          </div>
+        </label>
+        <label
+          class="emotion-7"
+        >
+          <div
+            class="emotion-4"
+          >
+            Email
+          </div>
+          <div
+            class="emotion-6"
+          >
+            <input
+              class="emotion-5"
+              type="email"
+              value=""
+            />
+          </div>
+        </label>
+        <label
+          class="emotion-20"
+        >
+          <div
+            class="emotion-4"
+          >
+            Phone
+          </div>
+          <div
+            class="emotion-6"
+          >
+            <input
+              class="emotion-5"
+              type="phone"
+              value=""
+            />
+          </div>
+        </label>
+        <label
+          class="emotion-23"
+        >
+          <div
+            class="emotion-4"
+          >
+            Note
+          </div>
+          <textarea
+            aria-label="Note"
+            class="emotion-22"
+          />
+        </label>
         <button
-          class="emotion-16"
+          class="emotion-24"
           disabled=""
         >
           Save

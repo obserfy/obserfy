@@ -67,6 +67,9 @@ exports[`PageRegister should render correctly 1`] = `
   -moz-letter-spacing: 0;
   -ms-letter-spacing: 0;
   letter-spacing: 0;
+  text-rendering: optimizeLegibility;
+  --webkitFontSmoothing: antialiased;
+  --mozOsxFontSmoothing: grayscale;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   margin-top: 16px;
   margin-bottom: 16px;
@@ -212,6 +215,9 @@ exports[`PageRegister should render correctly 1`] = `
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 400;
   line-height: 3rem;
+  text-rendering: optimizeLegibility;
+  --webkitFontSmoothing: antialiased;
+  --mozOsxFontSmoothing: grayscale;
   color: var(--theme-ui-colors-danger,#d50000);
   font-size: 16px;
   margin-bottom: 16px;

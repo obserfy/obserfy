@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PagePickGuardian should render correctly 1`] = `
-.emotion-13 {
+exports[`PageEditGuardians should render correctly 1`] = `
+.emotion-17 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,16 +9,16 @@ exports[`PagePickGuardian should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-13 {
+  .emotion-17 {
     font-size: 20px;
   }
 }
 
-.emotion-12 {
+.emotion-16 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  max-width: 640px;
+  max-width: 700px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -77,14 +77,137 @@ exports[`PagePickGuardian should render correctly 1`] = `
   }
 }
 
+.emotion-3 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 24px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 300;
+  line-height: heading;
+  font-size: 2.5rem;
+  line-height: 3rem;
+  -webkit-letter-spacing: 0;
+  -moz-letter-spacing: 0;
+  -ms-letter-spacing: 0;
+  letter-spacing: 0;
+  text-rendering: optimizeLegibility;
+  --webkitFontSmoothing: antialiased;
+  --mozOsxFontSmoothing: grayscale;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-bottom: 32px;
+  margin-top: 16px;
+}
+
+.emotion-4 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  text-rendering: optimizeLegibility;
+  --webkitFontSmoothing: antialiased;
+  --mozOsxFontSmoothing: grayscale;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  font-size: 16px;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-bottom: 8px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-4 {
+    font-size: 14px;
+  }
+}
+
+.emotion-6 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding: 8px;
+  background-color: var(--theme-ui-colors-surface,#fff);
+  border-radius: 8px;
+  box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
+  border-radius: 0;
+  padding: 0;
+  overflow: hidden;
+  margin-bottom: 16px;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-6 {
+    border-radius: 8px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .emotion-6 {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
+
+.emotion-5 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  text-rendering: optimizeLegibility;
+  --webkitFontSmoothing: antialiased;
+  --mozOsxFontSmoothing: grayscale;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  font-size: 14px;
+  margin: 16px;
+}
+
 .emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  margin: 16px;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  text-rendering: optimizeLegibility;
+  --webkitFontSmoothing: antialiased;
+  --mozOsxFontSmoothing: grayscale;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  font-size: 16px;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-top: 32px;
 }
 
-.emotion-6 {
+@media screen and (min-width:40em) {
+  .emotion-7 {
+    font-size: 14px;
+  }
+}
+
+.emotion-11 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 16px;
+  padding-top: 8px;
+}
+
+.emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -105,21 +228,13 @@ exports[`PagePickGuardian should render correctly 1`] = `
   display: -ms-flexbox;
   display: flex;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  margin-bottom: 8px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.emotion-3 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  padding-bottom: 4px;
-}
-
-.emotion-5 {
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -133,7 +248,7 @@ exports[`PagePickGuardian should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-4 {
+.emotion-8 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -156,64 +271,39 @@ exports[`PagePickGuardian should render correctly 1`] = `
   font-size: 16px;
   padding: 12px;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  background-color: var(--theme-ui-colors-surface,#fff);
   width: 100%;
 }
 
-.emotion-4:hover,
-.emotion-4:focus {
+.emotion-8:hover,
+.emotion-8:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-4::-webkit-input-placeholder {
+.emotion-8::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-4::-moz-placeholder {
+.emotion-8::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-4:-ms-input-placeholder {
+.emotion-8:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-4::placeholder {
+.emotion-8::placeholder {
   font-style: italic;
 }
 
-.emotion-4:disabled {
+.emotion-8:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
-.emotion-8 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  color: rgba(0,0,0,0.88);
-  font-size: 1.6rem;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 400;
-  line-height: 3rem;
-  text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  font-size: 16px;
-  margin-left: 16px;
-  margin-right: 16px;
-  margin-bottom: 8px;
-  margin-top: 32px;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-8 {
-    font-size: 14px;
-  }
-}
-
-.emotion-11 {
+.emotion-15 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -221,40 +311,43 @@ exports[`PagePickGuardian should render correctly 1`] = `
   background-color: var(--theme-ui-colors-surface,#fff);
   border-radius: 8px;
   box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
-  cursor: pointer;
   border-radius: 0;
-  padding: 16px;
+  padding: 0;
   overflow: hidden;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  margin-bottom: 8px;
   margin-left: 0;
   margin-right: 0;
 }
 
-.emotion-11:hover {
-  background-color: var(--theme-ui-colors-primaryLightest,rgba(0,120,86,0.05));
-}
-
 @media screen and (min-width:40em) {
-  .emotion-11 {
+  .emotion-15 {
     border-radius: 8px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .emotion-11 {
+  .emotion-15 {
     margin-left: 16px;
     margin-right: 16px;
   }
 }
 
-.emotion-9 {
+.emotion-14 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 16px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -267,11 +360,10 @@ exports[`PagePickGuardian should render correctly 1`] = `
   margin: 0;
   height: 20px;
   width: 20px;
-  margin-top: 5px;
   margin-right: 16px;
 }
 
-.emotion-10 {
+.emotion-13 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -285,23 +377,24 @@ exports[`PagePickGuardian should render correctly 1`] = `
   --mozOsxFontSmoothing: grayscale;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   font-size: 16px;
+  line-height: 1;
 }
 
 @media screen and (min-width:40em) {
-  .emotion-10 {
+  .emotion-13 {
     font-size: 14px;
   }
 }
 
 <div>
   <div
-    class="emotion-13"
+    class="emotion-17"
   >
     <div
-      class="emotion-12"
+      class="emotion-16"
     >
       <a
-        href="/dashboard/observe/students/new"
+        href="/dashboard/observe/students/profile?id=undefined"
       >
         <div
           class="emotion-2"
@@ -312,48 +405,69 @@ exports[`PagePickGuardian should render correctly 1`] = `
           <p
             class="emotion-1"
           >
-            New Student
+            Student Profile
           </p>
         </div>
       </a>
+      <h5
+        class="emotion-3"
+      />
+      <p
+        class="emotion-4"
+      >
+        Current guardians
+      </p>
       <div
+        class="emotion-6"
+      >
+        <p
+          class="emotion-5"
+        >
+          No guardians set yet
+        </p>
+      </div>
+      <p
         class="emotion-7"
       >
+        Select more
+      </p>
+      <div
+        class="emotion-11"
+      >
         <label
-          class="emotion-6"
+          class="emotion-10"
         >
           <div
-            class="emotion-3"
-          >
-            Guardian Name
-          </div>
-          <div
-            class="emotion-5"
+            class="emotion-9"
           >
             <input
-              class="emotion-4"
+              class="emotion-8"
+              name="name"
+              placeholder="Search"
               value=""
             />
           </div>
         </label>
       </div>
-      <p
-        class="emotion-8"
-      >
-        Select a guardian or create one
-      </p>
       <div
-        class="emotion-11"
+        class="emotion-15"
       >
-        <div
-          class="emotion-9"
-        />
-        <p
-          class="emotion-10"
+        <a
+          href="/dashboard/observe/students/profile/guardians/new?id=undefined"
         >
-          Create 
-          new guardian
-        </p>
+          <div
+            class="emotion-14"
+          >
+            <div
+              class="emotion-12"
+            />
+            <p
+              class="emotion-13"
+            >
+              Create a new guardian
+            </p>
+          </div>
+        </a>
       </div>
     </div>
   </div>
