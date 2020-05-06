@@ -36,7 +36,7 @@ const ContactUsPage: FC = () => (
       <div className="flex-row justify-center lg:w-1/3 mx-auto md:mx-32">
         <form className="bg-white shadow-md rounded p-8" name="contact" method="POST" data-netlify="true">
           <div className="py-4">
-            <input type="text" id="email" name="email" placeholder="Email" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required={true} />
+            <input type="email" id="email" name="email" placeholder="Email" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required={true} />
           </div>
           <div className="py-4">
             <textarea name="message" placeholder="Message" className="resize-none border rounded shadow w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required={true} />
