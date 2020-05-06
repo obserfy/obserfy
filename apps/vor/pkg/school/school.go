@@ -16,7 +16,7 @@ import (
 	"time"
 )
 
-func NewRouter(server rest.Server, store postgres.SchoolStore, imageStorage StudentImageStorage, classStore postgres.ClassStore) *chi.Mux {
+func NewRouter(server rest.Server, store postgres.SchoolStore, imageStorage StudentImageStorage) *chi.Mux {
 	r := chi.NewRouter()
 	r.Method("POST", "/", postNewSchool(server, store))
 	r.Route("/{schoolId}", func(r chi.Router) {
@@ -35,7 +35,7 @@ func NewRouter(server rest.Server, store postgres.SchoolStore, imageStorage Stud
 		r.Method("POST", "/class", postNewClass(server, store))
 		r.Method("GET", "/class", getClasses(server, store))
 
-		r.Method("GET", "/class/{classId}/attendance", getClassAttendance(server, store, classStore))
+		r.Method("GET", "/class/{classId}/attendance/{session}", getClassAttendance(server, store))
 
 		r.Method("POST", "/guardians", postNewGuardian(server, store))
 		r.Method("GET", "/guardians", getGuardians(server, store))
@@ -85,29 +85,16 @@ func getClasses(server rest.Server, store postgres.SchoolStore) http.Handler {
 		return nil
 	})
 }
-func getClassAttendance(server rest.Server, store postgres.SchoolStore, classStore postgres.ClassStore) http.Handler {
+func getClassAttendance(server rest.Server, store postgres.SchoolStore) http.Handler {
 	type attendanceData struct {
 		StudentId string `json:"studentId"`
 		Name      string `json:"name"`
-		Absent    bool   `json:"absent"`
+		Attend    bool   `json:"attend"`
 	}
 
-	type responseBody struct {
-		Attendance []attendanceData `json:"attendance"`
-		Date       string           `json:"date"`
-	}
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
-		session := r.URL.Query().Get("session")
+		session := chi.URLParam(r, "session")
 		classId := chi.URLParam(r, "classId")
-		class, err := classStore.GetClass(classId)
-		if err != nil {
-			return &rest.Error{
-				Code:    http.StatusInternalServerError,
-				Message: "failed querying class",
-				Error:   err,
-			}
-		}
-		students := class.Students
 		attendance, err := store.GetClassAttendance(classId, session)
 		if err != nil {
 			return &rest.Error{
@@ -116,53 +103,32 @@ func getClassAttendance(server rest.Server, store postgres.SchoolStore, classSto
 				Error:   err,
 			}
 		}
-		var response []responseBody
-		sessionList, _ := classStore.GetClassSession(classId)
+		var response []attendanceData
 		attendMap := make(map[string]int)
-		if len(sessionList) > 0 {
-			if len(attendance) > 0 {
-				for _, attendance := range attendance {
-					attendMap[attendance.StudentId+"-"+attendance.Date.Format("2006-01-02")] = 1
-
-				}
-				for _, session := range sessionList {
-					var attendanceArray []attendanceData
-					for _, student := range students {
-						if attendMap[student.Id+"-"+session.Date] != 1 {
-							attendanceArray = append(attendanceArray, attendanceData{
-								StudentId: student.Id,
-								Name:      student.Name,
-								Absent:    true,
-							})
-						} else {
-							attendanceArray = append(attendanceArray, attendanceData{
-								StudentId: student.Id,
-								Name:      student.Name,
-								Absent:    false,
-							})
-						}
-					}
-					response = append(response, responseBody{
-						Date:       session.Date,
-						Attendance: attendanceArray,
+		if len(attendance) > 0 {
+			students := attendance[0].Class.Students
+			for _, attendance := range attendance {
+				attendMap[attendance.StudentId] = 1
+			}
+			for _, student := range students {
+				if attendMap[student.Id] != 1 {
+					response = append(response, attendanceData{
+						StudentId: student.Id,
+						Name:      student.Name,
+						Attend:    false,
+					})
+				} else {
+					response = append(response, attendanceData{
+						StudentId: student.Id,
+						Name:      student.Name,
+						Attend:    true,
 					})
 				}
-			} else {
-
-			}
-		}
-
-		if err != nil {
-			return &rest.Error{
-				Code:    http.StatusInternalServerError,
-				Message: "failed querying attendance",
-				Error:   err,
 			}
 		}
 		if err := rest.WriteJson(w, response); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
-
 		return nil
 	})
 }

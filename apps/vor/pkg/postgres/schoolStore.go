@@ -69,7 +69,7 @@ func (s SchoolStore) GetClassAttendance(classId string, session string) ([]Atten
 	}
 	if err := s.Model(&attendance).
 		Where("class_id=?", classId).
-		Where("date::date>=?", session).
+		Where("date::date=?", session).
 		Relation("Student").
 		Relation("Class.Students").
 		Select(); err != nil {
