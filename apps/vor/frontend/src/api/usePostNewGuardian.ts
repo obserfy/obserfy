@@ -1,4 +1,9 @@
-import { MutateFunction, MutationResult, useMutation } from "react-query"
+import {
+  MutateFunction,
+  MutationResult,
+  queryCache,
+  useMutation,
+} from "react-query"
 import { navigate } from "gatsby"
 import { ApiError, BASE_URL } from "./useApi"
 import { getSchoolId } from "../hooks/schoolIdState"
@@ -8,12 +13,13 @@ interface NewGuardian {
   email: string
   phone: string
   note: string
+  studentId?: string
+  relationship?: number
 }
 
-export const usePostNewGuardian = (): [
-  MutateFunction<Response, NewGuardian>,
-  MutationResult<Response>
-] => {
+export const usePostNewGuardian = (
+  studentId: string
+): [MutateFunction<Response, NewGuardian>, MutationResult<Response>] => {
   const postNewGuardian = async (guardian: NewGuardian): Promise<Response> => {
     const schoolId = getSchoolId()
     const result = await fetch(`${BASE_URL}/schools/${schoolId}/guardians`, {
@@ -36,5 +42,7 @@ export const usePostNewGuardian = (): [
     return result
   }
 
-  return useMutation(postNewGuardian)
+  return useMutation(postNewGuardian, {
+    onSuccess: () => queryCache.refetchQueries(["student", studentId]),
+  })
 }

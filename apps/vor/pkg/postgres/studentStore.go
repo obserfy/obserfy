@@ -131,3 +131,13 @@ func (s StudentStore) InsertGuardianRelation(studentId string, guardianId string
 	}
 	return nil
 }
+
+func (s StudentStore) GetGuardianRelation(studentId string, guardianId string) (*GuardianToStudent, error) {
+	var relation GuardianToStudent
+	if err := s.Model(&relation).
+		Where("student_id=? AND guardian_id=?", studentId, guardianId).
+		Select(); err != nil {
+		return nil, richErrors.Wrap(err, "failed to query guardian to student relation")
+	}
+	return &relation, nil
+}

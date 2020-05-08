@@ -21,8 +21,8 @@ import { Link } from "../Link/Link"
 import { Button } from "../Button/Button"
 import { useDeleteGuardianRelation } from "../../api/useDeleteGuardianRelation"
 import Dialog from "../Dialog/Dialog"
-import DialogHeader from "../DialogHeader/DialogHeader"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
+import GuardianRelationshipPill from "../GuardianRelationshipPill/GuardianRelationshipPill"
 
 interface Props {
   studentId: string
@@ -48,12 +48,11 @@ export const PageEditGuardians: FC<Props> = ({ studentId }) => {
       <Typography.H5 mx={3} mb={4} mt={3}>
         {student.data?.name}
       </Typography.H5>
-
       <Typography.Body mx={3} mb={2} color="textMediumEmphasis">
         Current guardians
       </Typography.Body>
       {(student.data?.guardians.length ?? 0) === 0 && (
-        <Card borderRadius={[0, "default"]} mb={3} mx={[0, 3]}>
+        <Card borderRadius={[0, "default"]} mb={2} mx={[0, 3]}>
           <Typography.Body m={3} color="textMediumEmphasis" fontSize={1}>
             No guardians set yet
           </Typography.Body>
@@ -62,7 +61,11 @@ export const PageEditGuardians: FC<Props> = ({ studentId }) => {
       {student.data?.guardians.map(
         (guardian) =>
           guardian && (
-            <CurrentGuardiansCard guardian={guardian} studentId={studentId} />
+            <CurrentGuardiansCard
+              key={`current${guardian.id}`}
+              guardian={guardian}
+              studentId={studentId}
+            />
           )
       )}
       <Card borderRadius={[0, "default"]} mb={2} mx={[0, 3]}>
@@ -118,18 +121,15 @@ const CurrentGuardiansCard: FC<{
     <>
       <Card borderRadius={[0, "default"]} mb={2} mx={[0, 3]}>
         <Flex alignItems="center">
-          <Box p={3}>
-            <Typography.Body lineHeight={1} mb={2}>
+          <Flex py={3} alignItems="flex-start" flexDirection="column">
+            <Typography.Body lineHeight={1} mb={3} ml={3}>
               {guardian.name}
             </Typography.Body>
-            <Typography.Body
-              lineHeight={1}
-              color="textMediumEmphasis"
-              fontSize={1}
-            >
-              {guardian.email || "No email"}
-            </Typography.Body>
-          </Box>
+            <GuardianRelationshipPill
+              relationship={guardian.relationship}
+              ml={3}
+            />
+          </Flex>
           <Button
             mr={3}
             ml="auto"
@@ -205,17 +205,8 @@ const OtherGuardiansCard: FC<{ guardian: Guardians; studentId: string }> = ({
 
   return (
     <>
-      <Card
-        borderRadius={[0, "default"]}
-        mb={2}
-        mx={[0, 3]}
-        onClick={() => setShowDialog(true)}
-        sx={{
-          cursor: "pointer",
-        }}
-      >
+      <Card borderRadius={[0, "default"]} mb={[0, 2]} mx={[0, 3]}>
         <Flex alignItems="center">
-          <Icon as={PlusIcon} m={0} ml={3} fill="primary" />
           <Box p={3}>
             <Typography.Body lineHeight={1} mb={2}>
               {guardian.name}
@@ -228,6 +219,15 @@ const OtherGuardiansCard: FC<{ guardian: Guardians; studentId: string }> = ({
               {guardian.email || "No email"}
             </Typography.Body>
           </Box>
+          <Button
+            variant="outline"
+            ml="auto"
+            mr={3}
+            px={2}
+            onClick={() => setShowDialog(true)}
+          >
+            <Icon as={PlusIcon} m={0} fill="primary" />
+          </Button>
         </Flex>
       </Card>
       {showDialog && (

@@ -24,4 +24,5 @@ type Store interface {
 	CheckPermissions(studentId string, userId string) (bool, error)
 	InsertGuardianRelation(studentId string, guardianId string, relationship int) error
 	DeleteGuardianRelation(studentId string, guardianId string) error
+	GetGuardianRelation(studentId string, guardianId string) (*postgres.GuardianToStudent, error)
 }

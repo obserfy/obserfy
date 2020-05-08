@@ -11,6 +11,7 @@ import { Box } from "../Box/Box"
 import { usePostNewGuardian } from "../../api/usePostNewGuardian"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { Typography } from "../Typography/Typography"
+import { useGetStudent } from "../../api/useGetStudent"
 
 interface Props {
   id: string
@@ -22,12 +23,16 @@ export const PageNewGuardian: FC<Props> = ({ id }) => {
   const [note, setNote] = useState("")
   const [relationship, setRelationship] = useState(GuardianRelationship.Other)
 
-  const [mutate, { status }] = usePostNewGuardian()
+  const student = useGetStudent(id)
+  const [mutate, { status }] = usePostNewGuardian(id)
 
   return (
     <Box mx="auto" maxWidth="maxWidth.sm">
       <BackNavigation to={EDIT_GUARDIANS_URL(id)} text="Edit Guardians" />
-      <Typography.H5 mx={3} mb={3} mt={3}>
+      <Typography.H5 mx={3} mt={3} color="textDisabled">
+        {student.data?.name}
+      </Typography.H5>
+      <Typography.H5 mx={3} mb={3}>
         New Guardian
       </Typography.H5>
       <Box p={3}>
@@ -79,8 +84,10 @@ export const PageNewGuardian: FC<Props> = ({ id }) => {
               name,
               phone,
               note,
+              relationship,
+              studentId: id,
             })
-            if (result.status === 201) {
+            if (result?.status === 201) {
               await navigate(EDIT_GUARDIANS_URL(id))
             }
           }}

@@ -136,10 +136,18 @@ func getStudent(s rest.Server, store Store) http.Handler {
 
 		guardians := make([]Guardian, len(student.Guardians))
 		for i, guardian := range student.Guardians {
+			relation, err := store.GetGuardianRelation(id, guardian.Id)
+			if err != nil {
+				return &rest.Error{
+					Code:    http.StatusInternalServerError,
+					Message: "can't find student to guardian relatin",
+					Error:   err,
+				}
+			}
 			guardians[i] = Guardian{
 				Id:           guardian.Id,
 				Name:         guardian.Name,
-				Relationship: 0,
+				Relationship: int(relation.Relationship),
 				Email:        guardian.Email,
 			}
 		}
