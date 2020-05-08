@@ -35,5 +35,5 @@ export const useGetStudent = (studentId: string): QueryResult<Student> => {
     return result.json()
   }
 
-  return useQuery(["student", { studentId }], fetchStudent)
+  return useQuery(["student", studentId], fetchStudent)
 }

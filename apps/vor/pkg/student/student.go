@@ -27,6 +27,7 @@ func NewRouter(s rest.Server, store Store) *chi.Mux {
 		r.Method("PATCH", "/materialsProgress/{materialId}", upsertMaterialProgress(s, store))
 
 		r.Method("POST", "/guardianRelations", postNewGuardianRelation(s, store))
+		r.Method("DELETE", "/guardianRelations/{guardianId}", deleteGuardianRelation(s, store))
 	})
 	return r
 }
@@ -79,6 +80,24 @@ func postNewGuardianRelation(s rest.Server, store Store) http.Handler {
 		}
 
 		w.WriteHeader(http.StatusCreated)
+		return nil
+	})
+}
+
+func deleteGuardianRelation(s rest.Server, store Store) http.Handler {
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		studentId := chi.URLParam(r, "studentId")
+		guardianId := chi.URLParam(r, "guardianId")
+
+		if err := store.DeleteGuardianRelation(studentId, guardianId); err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "failed to delete relationship",
+				Error:   err,
+			}
+		}
+
+		w.WriteHeader(http.StatusNoContent)
 		return nil
 	})
 }
@@ -152,7 +171,7 @@ func getStudent(s rest.Server, store Store) http.Handler {
 func deleteStudent(s rest.Server, store Store) http.Handler {
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		studentId := chi.URLParam(r, "studentId") // from a route like /users/{userID}
-		if err := store.Delete(studentId); err != nil {
+		if err := store.DeleteStudent(studentId); err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Failed deleting student", err}
 		}
 		return nil
@@ -185,7 +204,7 @@ func putStudent(s rest.Server, store Store) http.Handler {
 		newStudent := oldStudent
 		newStudent.Name = requestBody.Name
 		newStudent.DateOfBirth = requestBody.DateOfBirth
-		if err := store.Update(newStudent); err != nil {
+		if err := store.UpdateStudent(newStudent); err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Failed updating old student data", err}
 		}
 

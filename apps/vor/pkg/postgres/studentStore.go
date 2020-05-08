@@ -39,6 +39,16 @@ func (s StudentStore) InsertObservation(
 	return &observation, nil
 }
 
+func (s StudentStore) DeleteGuardianRelation(studentId string, guardianId string) error {
+	var relation GuardianToStudent
+	if _, err := s.Model(&relation).
+		Where("student_id=? AND guardian_id=?", studentId, guardianId).
+		Delete(); err != nil {
+		return richErrors.Wrap(err, "failed to delete guardian relation")
+	}
+	return nil
+}
+
 func (s StudentStore) GetObservations(studentId string) ([]Observation, error) {
 	var observations []Observation
 	if err := s.Model(&observations).
@@ -101,11 +111,11 @@ func (s StudentStore) Get(studentId string) (*Student, error) {
 	return &student, nil
 }
 
-func (s StudentStore) Update(student *Student) error {
+func (s StudentStore) UpdateStudent(student *Student) error {
 	return s.DB.Update(student)
 }
 
-func (s StudentStore) Delete(studentId string) error {
+func (s StudentStore) DeleteStudent(studentId string) error {
 	student := Student{Id: studentId}
 	return s.DB.Delete(&student)
 }

@@ -39,7 +39,7 @@ export const PageStudentProfile: FC<Props> = ({ id }) => {
   }
 
   return (
-    <Box maxWidth="maxWidth.sm" margin="auto">
+    <Box maxWidth="maxWidth.sm" margin="auto" pb={4}>
       <BackNavigation
         to={STUDENT_DETAILS_PAGE_URL(id)}
         text="Student Overview"
@@ -85,20 +85,34 @@ export const PageStudentProfile: FC<Props> = ({ id }) => {
 
       <Card borderRadius={[0, "default"]}>
         <Flex sx={{ alignItems: "flex-start" }}>
-          <Box px={3} py={3}>
+          <Box px={3} pt={3}>
             <Typography.Body
               fontSize={0}
               lineHeight={1}
-              mb={2}
               color="textMediumEmphasis"
             >
               Guardians
             </Typography.Body>
             {data?.guardians?.length === 0 && (
-              <Typography.Body lineHeight={1}>Not set</Typography.Body>
+              <Typography.Body lineHeight={1} mb={3} mt={2}>
+                Not set
+              </Typography.Body>
             )}
-            {data?.guardians?.map(() => {
-              return <Typography.Body lineHeight={1}>Name</Typography.Body>
+            {data?.guardians?.map(({ email, name }) => {
+              return (
+                <Box py={3}>
+                  <Typography.Body lineHeight={1} mb={2}>
+                    {name}
+                  </Typography.Body>
+                  <Typography.Body
+                    lineHeight={1}
+                    fontSize={1}
+                    color="textMediumEmphasis"
+                  >
+                    {email || "No email"}
+                  </Typography.Body>
+                </Box>
+              )
             })}
           </Box>
           <Link to={EDIT_GUARDIANS_URL(id)} sx={{ ml: "auto", mt: 3, mr: 3 }}>
