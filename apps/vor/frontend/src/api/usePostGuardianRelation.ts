@@ -11,21 +11,24 @@ export const usePostGuardianRelation = (
   const postGuardianRelation = async (
     relationship: GuardianRelationship
   ): Promise<Response> => {
-    const result = await fetch(`${BASE_URL}/students/${studentId}`, {
-      credentials: "same-origin",
-      method: "POST",
-      body: JSON.stringify({
-        id: guardian.id,
-        relationship,
-      }),
-    })
+    const result = await fetch(
+      `${BASE_URL}/students/${studentId}/guardianRelations`,
+      {
+        credentials: "same-origin",
+        method: "POST",
+        body: JSON.stringify({
+          id: guardian.id,
+          relationship,
+        }),
+      }
+    )
 
     // Throw user to login when something gets 401
     if (result.status === 401) {
       await navigate("/login")
       return result
     }
-    if (result.status !== 204) {
+    if (result.status !== 201) {
       const body: ApiError = await result.json()
       throw Error(body?.error?.message ?? "")
     }

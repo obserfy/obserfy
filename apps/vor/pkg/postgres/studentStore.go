@@ -109,3 +109,15 @@ func (s StudentStore) Delete(studentId string) error {
 	student := Student{Id: studentId}
 	return s.DB.Delete(&student)
 }
+
+func (s StudentStore) InsertGuardianRelation(studentId string, guardianId string, relationship int) error {
+	relation := GuardianToStudent{
+		StudentId:    studentId,
+		GuardianId:   guardianId,
+		Relationship: GuardianRelationship(relationship),
+	}
+	if err := s.Insert(&relation); err != nil {
+		return richErrors.Wrap(err, "failed to save guardian relation")
+	}
+	return nil
+}

@@ -26,7 +26,7 @@ func NewRouter(s rest.Server, store Store) *chi.Mux {
 		r.Method("GET", "/materialsProgress", getMaterialProgress(s, store))
 		r.Method("PATCH", "/materialsProgress/{materialId}", upsertMaterialProgress(s, store))
 
-		r.Method("PUT", "/guardians", putGuardians(s, store))
+		r.Method("POST", "/guardianRelations", postNewGuardianRelation(s, store))
 	})
 	return r
 }
@@ -57,9 +57,28 @@ func authorizationMiddleware(s rest.Server, store Store) func(next http.Handler)
 	}
 }
 
-func putGuardians(s rest.Server, store Store) http.Handler {
+func postNewGuardianRelation(s rest.Server, store Store) http.Handler {
+	type requestBody struct {
+		Id           string `json:"id"`
+		Relationship int    `json:"relationship"`
+	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
-		// TODO: Finish this
+		studentId := chi.URLParam(r, "studentId")
+
+		var body requestBody
+		if err := rest.ParseJson(r.Body, &body); err != nil {
+			return rest.NewParseJsonError(err)
+		}
+
+		if err := store.InsertGuardianRelation(studentId, body.Id, body.Relationship); err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "failed to save relationship",
+				Error:   err,
+			}
+		}
+
+		w.WriteHeader(http.StatusCreated)
 		return nil
 	})
 }

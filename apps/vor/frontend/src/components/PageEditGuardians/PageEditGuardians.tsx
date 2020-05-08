@@ -12,6 +12,7 @@ import { Box } from "../Box/Box"
 import SearchBar from "../SearchBar/SearchBar"
 import Icon from "../Icon/Icon"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
+import { ReactComponent as LinkIcon } from "../../icons/link.svg"
 import { Flex } from "../Flex/Flex"
 import GuardianRelationshipPickerDialog from "../GuardianRelationshipPickerDialog/GuardianRelationshipPickerDialog"
 import { usePostGuardianRelation } from "../../api/usePostGuardianRelation"
@@ -44,8 +45,18 @@ export const PageEditGuardians: FC<Props> = ({ id }) => {
           No guardians set yet
         </Typography.Body>
       </Card>
+      <Card borderRadius={[0, "default"]} mb={2} mx={[0, 3]}>
+        <Link to={NEW_GUARDIANS_URL(id)}>
+          <Flex alignItems="center" p={3}>
+            <Icon as={LinkIcon} m={0} mr={3} fill="textMediumEmphasis" />
+            <Typography.Body lineHeight={1}>
+              Create a new guardian
+            </Typography.Body>
+          </Flex>
+        </Link>
+      </Card>
       <Typography.Body mx={3} mt={4} color="textMediumEmphasis">
-        Select more
+        Add existing guardian
       </Typography.Body>
       <Box px={3} pb={3} pt={2}>
         <SearchBar
@@ -63,16 +74,6 @@ export const PageEditGuardians: FC<Props> = ({ id }) => {
           />
         )
       })}
-      <Card borderRadius={[0, "default"]} mb={2} mx={[0, 3]}>
-        <Link to={NEW_GUARDIANS_URL(id)}>
-          <Flex alignItems="center" p={3}>
-            <Icon as={PlusIcon} m={0} mr={3} fill="primary" />
-            <Typography.Body lineHeight={1}>
-              Create a new guardian
-            </Typography.Body>
-          </Flex>
-        </Link>
-      </Card>
     </Box>
   )
 }
@@ -82,7 +83,10 @@ const SelectGuardianCard: FC<{ guardian: Guardians; studentId: string }> = ({
   studentId,
 }) => {
   const [showDialog, setShowDialog] = useState(false)
-  const [mutate, { status }] = usePostGuardianRelation(guardian, studentId)
+  const [mutate, { error, status }] = usePostGuardianRelation(
+    guardian,
+    studentId
+  )
 
   return (
     <>
@@ -91,27 +95,33 @@ const SelectGuardianCard: FC<{ guardian: Guardians; studentId: string }> = ({
         mb={2}
         mx={[0, 3]}
         onClick={() => setShowDialog(true)}
+        sx={{
+          cursor: "pointer",
+        }}
       >
-        <Box p={3}>
-          <Typography.Body lineHeight={1} mb={2}>
-            {guardian.name}
-          </Typography.Body>
-          <Typography.Body
-            lineHeight={1}
-            color="textMediumEmphasis"
-            fontSize={1}
-          >
-            {guardian.email || "No email"}
-          </Typography.Body>
-        </Box>
+        <Flex alignItems="center">
+          <Icon as={PlusIcon} m={0} ml={3} fill="primary" />
+          <Box p={3}>
+            <Typography.Body lineHeight={1} mb={2}>
+              {guardian.name}
+            </Typography.Body>
+            <Typography.Body
+              lineHeight={1}
+              color="textMediumEmphasis"
+              fontSize={1}
+            >
+              {guardian.email || "No email"}
+            </Typography.Body>
+          </Box>
+        </Flex>
       </Card>
       {showDialog && (
         <GuardianRelationshipPickerDialog
           loading={status === "loading"}
           onDismiss={() => setShowDialog(false)}
           onAccept={async (relationship) => {
-            await mutate(relationship)
-            if (status === "success") {
+            const result = await mutate(relationship)
+            if (!error && result?.status === 201) {
               setShowDialog(false)
             }
           }}
