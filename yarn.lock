@@ -996,7 +996,7 @@
     resolve "^1.8.1"
     semver "^5.5.1"
 
-"@babel/plugin-transform-runtime@^7.9.0", "@babel/plugin-transform-runtime@^7.9.6":
+"@babel/plugin-transform-runtime@^7.9.6":
   version "7.9.6"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-runtime/-/plugin-transform-runtime-7.9.6.tgz#3ba804438ad0d880a17bca5eaa0cdf1edeedb2fd"
   integrity sha512-qcmiECD0mYOjOIt8YHNsAP1SxPooC/rDmfmiSK9BNY72EitdSc7l44WTEklaWuFtbOEBjNhWWyph/kOImbNJ4w==
@@ -5771,15 +5771,15 @@ babel-plugin-react-docgen@^4.0.0:
     react-docgen "^5.0.0"
     recast "^0.14.7"
 
-babel-plugin-remove-graphql-queries@2.9.0, babel-plugin-remove-graphql-queries@^2.9.0:
-  version "2.9.0"
-  resolved "https://registry.yarnpkg.com/babel-plugin-remove-graphql-queries/-/babel-plugin-remove-graphql-queries-2.9.0.tgz#3976cf639f77835b67d73a4b45e4c56727c4aeee"
-  integrity sha512-lvunFJ/JPhQHh5nOGepg1V5aX4zmbBgrd7qjlBObvQHF7Enz0yh6PznKnwtIX54i+bMOrWPUjCZUPXg3Xs+FLQ==
-
-babel-plugin-remove-graphql-queries@^2.9.1:
+babel-plugin-remove-graphql-queries@2.9.1, babel-plugin-remove-graphql-queries@^2.9.1:
   version "2.9.1"
   resolved "https://registry.yarnpkg.com/babel-plugin-remove-graphql-queries/-/babel-plugin-remove-graphql-queries-2.9.1.tgz#098910dc9f2da62b7bf3feec0b169558cbb0755a"
   integrity sha512-Ua41OqiQ0yUi/9ZvbdhCKCkiCAdwCSVxtf5umV1scD6mMYd70eIA9or3M2nxhqHJ2leSRCYdyu771seEICkC3Q==
+
+babel-plugin-remove-graphql-queries@^2.9.0:
+  version "2.9.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-remove-graphql-queries/-/babel-plugin-remove-graphql-queries-2.9.0.tgz#3976cf639f77835b67d73a4b45e4c56727c4aeee"
+  integrity sha512-lvunFJ/JPhQHh5nOGepg1V5aX4zmbBgrd7qjlBObvQHF7Enz0yh6PznKnwtIX54i+bMOrWPUjCZUPXg3Xs+FLQ==
 
 babel-plugin-syntax-jsx@6.18.0, babel-plugin-syntax-jsx@^6.18.0:
   version "6.18.0"
@@ -5930,26 +5930,7 @@ babel-preset-fbjs@^3.3.0:
     "@babel/plugin-transform-template-literals" "^7.0.0"
     babel-plugin-syntax-trailing-function-commas "^7.0.0-beta.0"
 
-babel-preset-gatsby@0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/babel-preset-gatsby/-/babel-preset-gatsby-0.4.0.tgz#78266935e58c52a2113af44fe9681e3cb95c4024"
-  integrity sha512-LbzP0CYBhSb9Y/rniMS2tgvtn3/8Yk1wEQ4McxuCemZkhvcCEPsqN38vqFkhn74MTQIwY8o0v9DgKE42N50c+Q==
-  dependencies:
-    "@babel/plugin-proposal-class-properties" "^7.8.3"
-    "@babel/plugin-proposal-nullish-coalescing-operator" "^7.8.3"
-    "@babel/plugin-proposal-optional-chaining" "^7.9.0"
-    "@babel/plugin-syntax-dynamic-import" "^7.8.3"
-    "@babel/plugin-transform-runtime" "^7.9.0"
-    "@babel/plugin-transform-spread" "^7.8.3"
-    "@babel/preset-env" "^7.9.5"
-    "@babel/preset-react" "^7.9.4"
-    "@babel/runtime" "^7.9.2"
-    babel-plugin-dynamic-import-node "^2.3.3"
-    babel-plugin-macros "^2.8.0"
-    babel-plugin-transform-react-remove-prop-types "^0.4.24"
-    gatsby-core-utils "^1.2.0"
-
-babel-preset-gatsby@^0.4.1:
+babel-preset-gatsby@0.4.1, babel-preset-gatsby@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/babel-preset-gatsby/-/babel-preset-gatsby-0.4.1.tgz#53a41a37e117f4c695f3e0c66066892c41f6c07a"
   integrity sha512-GLRCawxuCKg+EiGaLJdyYcI+NZP8ZPcebqwrvY7vinSmGoKZlBuGcZYO4C9uFVErS4p5168EjVFxWnaJDJ/r1Q==
@@ -10786,15 +10767,6 @@ gatsby-cli@^2.12.15:
   optionalDependencies:
     ink "^2.7.1"
     ink-spinner "^3.0.1"
-
-gatsby-core-utils@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/gatsby-core-utils/-/gatsby-core-utils-1.2.0.tgz#3289b2183d3b0172356cf403bfc2bbf99adae670"
-  integrity sha512-JBsVbniXObn26Hms8Je1vJdhMW04GesochBVLcaTraZC5dfqZDExPix65jrye/voC0YfFtXIngm59yspYZm1OQ==
-  dependencies:
-    ci-info "2.0.0"
-    configstore "^5.0.1"
-    node-object-hash "^2.0.0"
 
 gatsby-core-utils@^1.2.1:
   version "1.2.1"
