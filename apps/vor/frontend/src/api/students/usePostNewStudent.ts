@@ -64,6 +64,6 @@ export const usePostNewStudent = (): [
     return result
   }
 
-  // TODO: Add on success to refresh s
+  // TODO: Add onSuccess to refresh school's student data
   return useMutation(postNewStudent)
 }

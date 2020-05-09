@@ -57,7 +57,7 @@ func (o ObservationStore) UpdateObservation(observationId string, shortDesc stri
 		return nil, err
 	}
 
-	// UpdateStudent the selected observation
+	// Update the selected observation
 	observation.ShortDesc = shortDesc
 	observation.LongDesc = longDesc
 	observation.CategoryId = categoryId

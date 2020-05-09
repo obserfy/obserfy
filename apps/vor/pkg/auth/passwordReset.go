@@ -115,7 +115,7 @@ func doPasswordReset(server rest.Server, store Store, mail MailService, clock cl
 			}
 		}
 
-		// UpdateStudent the user password && DeleteStudent all the user session && delete token
+		// update the user password && delete all the user session && delete token
 		if err := store.DoPasswordReset(token.UserId, body.Password, token.Token); err != nil {
 			return &rest.Error{
 				http.StatusInternalServerError,

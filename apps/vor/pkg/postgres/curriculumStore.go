@@ -201,7 +201,7 @@ func (s CurriculumStore) UpdateMaterial(material *Material, order *int) error {
 			material.Order = *order
 		}
 
-		// UpdateStudent the targeted materials with the targeted changes
+		// Update the targeted materials with the targeted changes
 		if err := tx.Update(material); err != nil {
 			return err
 		}

@@ -161,7 +161,7 @@ func logout(server rest.Server, store Store) rest.Handler {
 			return &rest.Error{Code: http.StatusUnauthorized, Message: "You're not logged in", Error: err}
 		}
 
-		// DeleteStudent session
+		// Delete session
 		err = store.DeleteSession(cookie.Value)
 		if err != nil {
 			return &rest.Error{Code: http.StatusInternalServerError, Message: "Failed deleting session", Error: err}

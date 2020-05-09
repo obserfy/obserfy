@@ -114,7 +114,7 @@ func (s SchoolStore) RefreshInviteCode(schoolId string) (*School, error) {
 		return nil, err
 	}
 
-	// UpdateStudent invite code
+	// Update invite code
 	school.InviteCode = uuid.New().String()
 	if err := s.Update(&school); err != nil {
 		return nil, err
@@ -151,7 +151,7 @@ func (s SchoolStore) NewDefaultCurriculum(schoolId string) error {
 				}
 			}
 
-			// UpdateStudent the school with the new curriculum id
+			// Update the school with the new curriculum id
 			school.CurriculumId = c.Id
 			if err := tx.Update(school); err != nil {
 				return err

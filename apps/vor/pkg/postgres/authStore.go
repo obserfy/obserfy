@@ -170,21 +170,21 @@ func (a AuthStore) DoPasswordReset(userId string, newPassword string, token stri
 
 	user := User{Id: userId, Password: hashedPassword}
 	if err := a.DB.RunInTransaction(func(tx *pg.Tx) error {
-		// DeleteStudent the token being used
+		// Delete the token being used
 		if _, err := a.DB.Model((*PasswordResetToken)(nil)).
 			Where("token=?", token).
 			Delete(); err != nil {
 			return richErrors.Wrap(err, "Failed to delete token")
 		}
 
-		// DeleteStudent all user sessions
+		// Delete all user sessions
 		if _, err := a.DB.Model((*Session)(nil)).
 			Where("user_id=?", userId).
 			Delete(); err != nil {
 			return richErrors.Wrap(err, "Failed to delete Sessions")
 		}
 
-		// UpdateStudent user's password
+		// Update user's password
 		if _, err := a.DB.Model(&user).
 			Set("password = ?password").
 			Where("id = ?id").

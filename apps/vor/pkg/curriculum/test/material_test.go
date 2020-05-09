@@ -106,7 +106,7 @@ func (s *MaterialTestSuite) TestValidUpdate() {
 		subjectId string
 	}{
 		{testName: "update name", name: uuid.New().String()},
-		{testName: "UpdateStudent subject", subjectId: subject.Id},
+		{testName: "Update subject", subjectId: subject.Id},
 	}
 	for _, test := range tests {
 		t.Run(test.testName, func(t *testing.T) {
