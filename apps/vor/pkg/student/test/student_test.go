@@ -75,47 +75,38 @@ func (s *StudentTestSuite) TestAddNewGuardian() {
 	t := s.T()
 	newSchool := s.SaveNewSchool()
 	newStudent := s.SaveNewStudent(*newSchool)
-	newGuardians := []*postgres.Guardian{
-		s.SaveNewGuardian(newSchool, nil),
-		s.SaveNewGuardian(newSchool, nil),
-	}
+	guardian := s.SaveNewGuardian(newSchool, nil)
 
-	payload := []struct {
+	payload := struct {
 		Id           string                        `json:"id"`
 		Relationship postgres.GuardianRelationship `json:"relationship"`
-	}{
-		{Id: newGuardians[0].Id, Relationship: 0},
-		{Id: newGuardians[1].Id, Relationship: 0},
-	}
-	s.CreateRequest("PUT", "/"+newStudent.Id+"/guardians", payload, &newSchool.Users[0].Id)
+	}{Id: guardian.Id, Relationship: 0}
+
+	s.CreateRequest("POST", "/"+newStudent.Id+"/guardianRelations", payload, &newSchool.Users[0].Id)
 
 	var modifiedStudent postgres.Student
 	err := s.DB.Model(&modifiedStudent).
 		Where("id=?", newStudent.Id).
 		Relation("Guardians").
-		Relation("Classes").
 		Select()
 	assert.NoError(t, err)
 
-	assert.Len(t, modifiedStudent.Guardians, len(newGuardians))
+	assert.Len(t, modifiedStudent.Guardians, 1)
+	assert.Equal(t, modifiedStudent.Guardians[0].Id, guardian.Id)
 }
 
 func (s *StudentTestSuite) TestDeleteGuardian() {
 	t := s.T()
 	newSchool := s.SaveNewSchool()
 	newStudent := s.SaveNewStudent(*newSchool)
-	s.SaveNewGuardian(newSchool, newStudent)
-	s.SaveNewGuardian(newSchool, newStudent)
-	s.SaveNewGuardian(newSchool, newStudent)
+	guardian := s.SaveNewGuardian(newSchool, newStudent)
 
-	payload := make([]struct{}, 0)
-	s.CreateRequest("PUT", "/"+newStudent.Id+"/guardians", payload, &newSchool.Users[0].Id)
+	s.CreateRequest("DELETE", "/"+newStudent.Id+"/guardianRelations/"+guardian.Id, nil, &newSchool.Users[0].Id)
 
 	var modifiedStudent postgres.Student
 	err := s.DB.Model(&modifiedStudent).
 		Where("id=?", newStudent.Id).
 		Relation("Guardians").
-		Relation("Classes").
 		Select()
 	assert.NoError(t, err)
 
