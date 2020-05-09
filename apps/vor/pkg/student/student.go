@@ -25,6 +25,9 @@ func NewRouter(s rest.Server, store Store) *chi.Mux {
 
 		r.Method("GET", "/materialsProgress", getMaterialProgress(s, store))
 		r.Method("PATCH", "/materialsProgress/{materialId}", upsertMaterialProgress(s, store))
+
+		r.Method("POST", "/guardianRelations", postNewGuardianRelation(s, store))
+		r.Method("DELETE", "/guardianRelations/{guardianId}", deleteGuardianRelation(s, store))
 	})
 	return r
 }
@@ -55,11 +58,73 @@ func authorizationMiddleware(s rest.Server, store Store) func(next http.Handler)
 	}
 }
 
+func postNewGuardianRelation(s rest.Server, store Store) http.Handler {
+	type requestBody struct {
+		Id           string `json:"id"`
+		Relationship int    `json:"relationship"`
+	}
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		studentId := chi.URLParam(r, "studentId")
+
+		var body requestBody
+		if err := rest.ParseJson(r.Body, &body); err != nil {
+			return rest.NewParseJsonError(err)
+		}
+
+		if err := store.InsertGuardianRelation(studentId, body.Id, body.Relationship); err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "failed to save relationship",
+				Error:   err,
+			}
+		}
+
+		w.WriteHeader(http.StatusCreated)
+		return nil
+	})
+}
+
+func deleteGuardianRelation(s rest.Server, store Store) http.Handler {
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		studentId := chi.URLParam(r, "studentId")
+		guardianId := chi.URLParam(r, "guardianId")
+
+		if err := store.DeleteGuardianRelation(studentId, guardianId); err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "failed to delete relationship",
+				Error:   err,
+			}
+		}
+
+		w.WriteHeader(http.StatusNoContent)
+		return nil
+	})
+}
+
 func getStudent(s rest.Server, store Store) http.Handler {
+	type Guardian struct {
+		Id           string `json:"id"`
+		Name         string `json:"name"`
+		Relationship int    `json:"relationship"`
+		Email        string `json:"email"`
+	}
+	type Class struct {
+		Id   string `json:"id"`
+		Name string `json:"name"`
+	}
 	type responseBody struct {
 		Id          string     `json:"id"`
 		Name        string     `json:"name"`
 		DateOfBirth *time.Time `json:"dateOfBirth,omitempty"`
+		DateOfEntry *time.Time `json:"dateOfEntry,omitempty"`
+		Gender      int        `json:"gender"`
+		Note        string     `json:"note"`
+		CustomId    string     `json:"customId"`
+		Active      bool       `json:"active"`
+		ProfilePic  string     `json:"profilePic"`
+		Classes     []Class    `json:"classes"`
+		Guardians   []Guardian `json:"guardians"`
 	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		id := chi.URLParam(r, "studentId")
@@ -69,10 +134,40 @@ func getStudent(s rest.Server, store Store) http.Handler {
 			return &rest.Error{http.StatusNotFound, "Can't find student with specified id", err}
 		}
 
+		guardians := make([]Guardian, len(student.Guardians))
+		for i, guardian := range student.Guardians {
+			relation, err := store.GetGuardianRelation(id, guardian.Id)
+			if err != nil {
+				return &rest.Error{
+					Code:    http.StatusInternalServerError,
+					Message: "can't find student to guardian relatin",
+					Error:   err,
+				}
+			}
+			guardians[i] = Guardian{
+				Id:           guardian.Id,
+				Name:         guardian.Name,
+				Relationship: int(relation.Relationship),
+				Email:        guardian.Email,
+			}
+		}
+		classes := make([]Class, len(student.Classes))
+		for i, class := range student.Classes {
+			classes[i] = Class{
+				Id:   class.Id,
+				Name: class.Name,
+			}
+		}
 		response := responseBody{
 			Id:          student.Id,
 			Name:        student.Name,
+			Gender:      int(student.Gender),
+			CustomId:    student.CustomId,
+			Note:        student.Note,
 			DateOfBirth: student.DateOfBirth,
+			DateOfEntry: student.DateOfEntry,
+			Guardians:   guardians,
+			Classes:     classes,
 		}
 		if err := rest.WriteJson(w, response); err != nil {
 			return rest.NewWriteJsonError(err)
@@ -84,7 +179,7 @@ func getStudent(s rest.Server, store Store) http.Handler {
 func deleteStudent(s rest.Server, store Store) http.Handler {
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		studentId := chi.URLParam(r, "studentId") // from a route like /users/{userID}
-		if err := store.Delete(studentId); err != nil {
+		if err := store.DeleteStudent(studentId); err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Failed deleting student", err}
 		}
 		return nil
@@ -117,7 +212,7 @@ func putStudent(s rest.Server, store Store) http.Handler {
 		newStudent := oldStudent
 		newStudent.Name = requestBody.Name
 		newStudent.DateOfBirth = requestBody.DateOfBirth
-		if err := store.Update(newStudent); err != nil {
+		if err := store.UpdateStudent(newStudent); err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Failed updating old student data", err}
 		}
 

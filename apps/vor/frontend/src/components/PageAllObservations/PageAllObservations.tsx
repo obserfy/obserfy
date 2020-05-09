@@ -165,8 +165,10 @@ const ObservationList: FC<{
               my={2}
               width="100%"
               textAlign="center"
+              fontSize={1}
+              color="textMediumEmphasis"
             >
-              {dayjs(date).format("d MMMM 'YY")}
+              {dayjs(date).format("D MMMM 'YY")}
             </Typography.Body>
             {observations
               .filter(({ createdDate }) =>

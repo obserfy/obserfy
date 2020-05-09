@@ -22,7 +22,7 @@ export const DateInput: FC<Props> = ({ label, value, onChange, ...props }) => {
         <Input
           label={label}
           width="100%"
-          value={!value ? "" : dayjs(value).format("d MMMM 'YY")}
+          value={!value ? "" : dayjs(value).format("D MMMM 'YY")}
           placeholder="Not set"
           disabled
           sx={{

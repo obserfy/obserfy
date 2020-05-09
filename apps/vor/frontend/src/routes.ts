@@ -22,4 +22,13 @@ export const STUDENT_DETAILS_PAGE_URL = (studentId: string): string =>
 export const ALL_OBSERVATIONS_PAGE_URL = (studentId: string): string =>
   `/dashboard/observe/students/observations/all?studentId=${studentId}`
 
-export const PICK_GUARDIAN_URL = "/dashboard/observe/students/guardians/pick"
+export const EDIT_GUARDIANS_URL = (studentId: string): string =>
+  `/dashboard/observe/students/profile/guardians/edit?id=${studentId}`
+
+export const NEW_GUARDIANS_URL = (studentId: string): string =>
+  `/dashboard/observe/students/profile/guardians/new?id=${studentId}`
+
+export const PICK_GUARDIAN_URL = "/dashboard/observe/students/new/pickGuardians"
+
+export const STUDENT_PROFILE_URL = (id: string) =>
+  `/dashboard/observe/students/profile?id=${id}`

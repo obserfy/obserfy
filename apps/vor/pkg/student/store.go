@@ -19,7 +19,10 @@ type Store interface {
 	GetProgress(studentId string) ([]postgres.StudentMaterialProgress, error)
 	UpdateProgress(progress postgres.StudentMaterialProgress) (pg.Result, error)
 	Get(studentId string) (*postgres.Student, error)
-	Update(student *postgres.Student) error
-	Delete(studentId string) error
+	UpdateStudent(student *postgres.Student) error
+	DeleteStudent(studentId string) error
 	CheckPermissions(studentId string, userId string) (bool, error)
+	InsertGuardianRelation(studentId string, guardianId string, relationship int) error
+	DeleteGuardianRelation(studentId string, guardianId string) error
+	GetGuardianRelation(studentId string, guardianId string) (*postgres.GuardianToStudent, error)
 }

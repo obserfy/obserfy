@@ -1,87 +1,46 @@
 // Test the whole happy path
 
-describe(" Smoke test on prod build", () => {
-  const faker =  require("faker")
+describe("Smoke test on prod build", () => {
+  const faker = require("faker")
+  let name
+  let email
+  let password
+  let schoolName
+
+  beforeEach(() => {
+    name = faker.name.firstName()
+    email = faker.internet.email()
+    password = faker.internet.password()
+    schoolName = faker.company.companyName()
+
+    cy.request({
+      method: "POST",
+      url: "/auth/register",
+      body: { email, password, name },
+      form: true,
+    })
+
+    cy.request("POST", "/api/v1/schools", { name: schoolName }).then(
+      (result) => {
+        window.localStorage.setItem("SCHOOL_ID", result.body.id)
+      }
+    )
+  })
 
   it("should run smoke test successfully", () => {
-    // define new user dynamically
-    const name = faker.name.firstName()
-    const email = faker.internet.email()
-    const password = faker.internet.password()
-
-    const schoolName = faker.company.companyName()
-
     cy.visit("/")
-    // cy.waitForRouteChange()
-
-    // Try logging in and fail
-    cy.contains("Email").type(email)
-    cy.contains("Password").type(password)
-    cy.contains("Login").click()
-    cy.contains("Wrong").should("be.visible")
-
-    // Register account
-    cy.contains("Register")
-      .click()
-      // cy.waitForRouteChange()
-      .url()
-      .should("contains", "register")
-    cy.get("[data-cy=register-email]").type(email)
-    cy.contains("Password").type(password)
-    cy.contains("Name").type(name)
-    cy.get("[data-cy=register-button]").click()
-
-    // Create School
-    // cy.waitForRouteChange()
-    cy.contains("New").click()
-    cy.contains("Name").type(schoolName)
-    cy.contains("Save").click()
-    cy.contains(schoolName).click()
-
-    // Logout
-    cy.url().should("contains", "dashboard")
-    cy.contains("Settings").click()
-    cy.contains("Log Out").click()
-
-    // Login
-    cy.url().should("contains", "login")
-    cy.contains("Email").type(email)
-    cy.contains("Password").type(password)
-    cy.contains("Login").click()
-
-    // Choose school
-    cy.url().should("contains", "school")
-    cy.contains(schoolName).click()
-
-    // Change theme
-    cy.contains("Settings").click()
-    cy.contains("Dark Mode").click()
-    cy.contains("Light Mode").click()
-
-    // Check sidebar links
-    cy.url().should("contains", "settings")
-    cy.contains("Observe").click()
-    // .waitForRouteChange()
-    cy.url().should("contains", "observe")
 
     // Create student
-    let studentName = "Carol"
-    cy.wait(500)
+    const studentName = "Carol"
     cy.get("[data-cy=new-student-button]").click()
-    cy.contains("Save").should("be.disabled")
     cy.contains("Name").type(studentName)
-    cy.contains("Date of Birth").click()
-    cy.contains("Year").find("input").clear().type("2010")
-    cy.contains("Month").find("select").select("4")
-    cy.get("[aria-label=Date]").select("11")
-    cy.get("[data-cy=set-button]").click()
     cy.contains("Save").click()
-    cy.contains(studentName).should("be.visible")
 
     // Create observation, Check observation content
     const shortDesc = "He is improving in a rapid rate"
     const details =
       "Bla bla black sheep have you any war. Yes shire yes shire tea bag fool"
+    cy.contains(studentName).should("be.visible")
     cy.contains(studentName).click()
     cy.contains("Add Observation").click()
     cy.get("[aria-label=Category]").select("2")
@@ -95,19 +54,45 @@ describe(" Smoke test on prod build", () => {
       .contains(details)
       .should("be.visible")
 
-    // Change student name
-    studentName = "Jane Doe"
-    cy.get("[data-cy=edit]").click()
-    cy.contains("Name").find("input").clear().type(studentName)
-    cy.contains("Save").click()
+    // // Change student name
+    // studentName = "Jane Doe"
+    // cy.get("[data-cy=edit]").click()
+    // cy.contains("Name").find("input").clear().type(studentName)
+    // cy.contains("Save").click()
+    //
+    // // Change student dob
+    // cy.get("[data-cy=edit]").click()
+    // cy.contains("Name").find("input").clear().type("Jane Doe")
+    // cy.contains("Date of Birth").click()
+    // cy.contains("Month").find("select").select("6")
+    // cy.get("[data-cy=set-button]").click()
+    // cy.contains("Save").click()
 
-    // Change student dob
-    cy.get("[data-cy=edit]").click()
-    cy.contains("Name").find("input").clear().type("Jane Doe")
-    cy.contains("Date of Birth").click()
-    cy.contains("Month").find("select").select("6")
-    cy.get("[data-cy=set-button]").click()
+    const guardianName = faker.name.firstName()
+    cy.contains("See Profile").click()
+    cy.get("[data-cy=edit-guardians]").click()
+    cy.get("[data-cy=new-guardian]").click()
+    cy.contains("Guardian Name").type(guardianName)
     cy.contains("Save").click()
+    cy.contains(guardianName).should("be.visible")
+
+    // Remove guardian
+    cy.get("[data-cy=remove-guardian]").click()
+    cy.get("[data-cy=remove]").click()
+    cy.contains(guardianName).should("be.visible")
+
+    // Re-add guardian
+    cy.get("[data-cy=add-guardian]").click()
+    cy.get("[aria-label=Relationship]").select("1")
+    cy.contains("Save").click()
+    cy.contains(guardianName).should("be.visible")
+
+    // Go back to student profile page.
+    cy.contains("Student Profile").click()
+    cy.contains(guardianName).should("be.visible")
+
+    // Go back to overview
+    cy.contains("Student Overview").click()
 
     // Edit observation
     cy.url().should("contains", "students")
@@ -119,9 +104,7 @@ describe(" Smoke test on prod build", () => {
     // Delete observation
     cy.get("[data-cy=delete-observation]").should("be.visible")
     // TODO: This part is really flaky, try fixing it later.
-    cy.wait(500)
     cy.get("[data-cy=delete-observation]").click()
-    cy.wait(500)
     cy.get("[data-cy=confirm-delete]").click()
     cy.contains(shortDesc).should("not.be.visible")
 

@@ -511,6 +511,9 @@ func postNewGuardian(server rest.Server, store postgres.SchoolStore) http.Handle
 		Email string `json:"email"`
 		Phone string `json:"phone"`
 		Note  string `json:"note"`
+		// Uses pointer to allow nil, relation is optional
+		StudentId    *string `json:"studentId"`
+		Relationship *int    `json:"relationship"`
 	}
 	type responseBody struct {
 		Id    string `json:"id"`
@@ -536,12 +539,14 @@ func postNewGuardian(server rest.Server, store postgres.SchoolStore) http.Handle
 			}
 		}
 
-		newGuardian, err := store.NewGuardian(
+		newGuardian, err := store.InsertGuardianWIthRelation(
 			schoolId,
 			body.Name,
 			body.Email,
 			body.Phone,
 			body.Note,
+			body.Relationship,
+			body.StudentId,
 		)
 		if err != nil {
 			return &rest.Error{

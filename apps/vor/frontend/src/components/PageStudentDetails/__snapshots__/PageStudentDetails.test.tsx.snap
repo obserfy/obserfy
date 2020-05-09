@@ -43,7 +43,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   }
 }
 
-.emotion-25 {
+.emotion-26 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -51,12 +51,12 @@ exports[`PageStudentDetails should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-25 {
+  .emotion-26 {
     font-size: 20px;
   }
 }
 
-.emotion-24 {
+.emotion-25 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -105,6 +105,9 @@ exports[`PageStudentDetails should render correctly 1`] = `
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 400;
   line-height: 3rem;
+  text-rendering: optimizeLegibility;
+  --webkitFontSmoothing: antialiased;
+  --mozOsxFontSmoothing: grayscale;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   font-size: 16px;
   margin-bottom: 0;
@@ -116,7 +119,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   }
 }
 
-.emotion-8 {
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -148,8 +151,11 @@ exports[`PageStudentDetails should render correctly 1`] = `
   -moz-letter-spacing: 0;
   -ms-letter-spacing: 0;
   letter-spacing: 0;
-  word-wrap: break-word;
+  text-rendering: optimizeLegibility;
+  --webkitFontSmoothing: antialiased;
+  --mozOsxFontSmoothing: grayscale;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  word-wrap: break-word;
 }
 
 .emotion-3 {
@@ -171,6 +177,22 @@ exports[`PageStudentDetails should render correctly 1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+}
+
+.emotion-12 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin: 16px;
+  margin-bottom: 8px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-8 {
+  margin-right: 8px;
 }
 
 .emotion-7 {
@@ -224,8 +246,6 @@ exports[`PageStudentDetails should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin-top: 11px;
-  margin-left: 16px;
   min-width: 43px;
 }
 
@@ -247,28 +267,8 @@ exports[`PageStudentDetails should render correctly 1`] = `
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-6 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  max-width: 100%;
-  height: auto;
-  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  margin: 0;
-  height: 20px;
-  width: 20px;
-  min-width: 20px;
-}
-
 .emotion-11 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  margin: 16px;
-  margin-bottom: 8px;
+  width: 100%;
 }
 
 .emotion-10 {
@@ -355,7 +355,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   margin-right: 8px;
 }
 
-.emotion-14 {
+.emotion-15 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -373,7 +373,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-12 {
+.emotion-13 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -387,7 +387,10 @@ exports[`PageStudentDetails should render correctly 1`] = `
   -moz-letter-spacing: 0;
   -ms-letter-spacing: 0;
   letter-spacing: 0;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  text-rendering: optimizeLegibility;
+  --webkitFontSmoothing: antialiased;
+  --mozOsxFontSmoothing: grayscale;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   font-weight: normal;
   -webkit-letter-spacing: 3px;
   -moz-letter-spacing: 3px;
@@ -397,7 +400,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   line-height: 1;
 }
 
-.emotion-13 {
+.emotion-14 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -450,25 +453,25 @@ exports[`PageStudentDetails should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-13:disabled {
+.emotion-14:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-13:hover,
-.emotion-13:focus {
+.emotion-14:hover,
+.emotion-14:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-13:hover:disabled,
-.emotion-13:focus:disabled {
+.emotion-14:hover:disabled,
+.emotion-14:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-19 {
+.emotion-20 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -478,37 +481,38 @@ exports[`PageStudentDetails should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-19 {
+  .emotion-20 {
     margin-left: 16px;
     margin-right: 16px;
   }
 }
 
-.emotion-18 {
+.emotion-19 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
 }
 
-.emotion-15 {
+.emotion-16 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  border-radius: 0;
+  border-radius: 8px;
   -webkit-animation: 1s ease-in-out 0s infinite animation-0;
   animation: 1s ease-in-out 0s infinite animation-0;
   width: 100%;
   height: 116px;
   margin-bottom: 8px;
+  border-radius: 0;
 }
 
 @media screen and (min-width:40em) {
-  .emotion-15 {
+  .emotion-16 {
     border-radius: 8px;
   }
 }
 
-.emotion-23 {
+.emotion-24 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -517,7 +521,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
   margin-bottom: 4px;
 }
 
-.emotion-20 {
+.emotion-21 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -531,7 +535,10 @@ exports[`PageStudentDetails should render correctly 1`] = `
   -moz-letter-spacing: 0;
   -ms-letter-spacing: 0;
   letter-spacing: 0;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  text-rendering: optimizeLegibility;
+  --webkitFontSmoothing: antialiased;
+  --mozOsxFontSmoothing: grayscale;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   font-weight: normal;
   -webkit-letter-spacing: 3px;
   -moz-letter-spacing: 3px;
@@ -540,14 +547,14 @@ exports[`PageStudentDetails should render correctly 1`] = `
   margin: 16px;
 }
 
-.emotion-22 {
+.emotion-23 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   margin-top: 16px;
 }
 
-.emotion-21 {
+.emotion-22 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -559,20 +566,21 @@ exports[`PageStudentDetails should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-21 {
+  .emotion-22 {
     border-radius: 8px;
   }
 }
 
 <div>
   <div
-    class="emotion-25"
+    class="emotion-26"
   >
     <div
-      class="emotion-24"
+      class="emotion-25"
     >
       <a
         href="/dashboard/observe"
+        style="display: block;"
       >
         <div
           class="emotion-2"
@@ -588,7 +596,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
         </div>
       </a>
       <div
-        class="emotion-8"
+        class="emotion-6"
       >
         <h3
           class="emotion-4"
@@ -600,19 +608,23 @@ exports[`PageStudentDetails should render correctly 1`] = `
         <div
           class="emotion-5"
         />
-        <button
-          class="emotion-7"
-          data-cy="edit"
-        >
-          <div
-            class="emotion-6"
-          />
-        </button>
       </div>
       <div
-        class="emotion-11"
+        class="emotion-12"
       >
         <a
+          class="emotion-8"
+          href="/dashboard/observe/students/profile?id=asdfadsf"
+        >
+          <button
+            class="emotion-7"
+            data-cy="edit"
+          >
+            See Profile
+          </button>
+        </a>
+        <a
+          class="emotion-11"
           href="/dashboard/observe/students/observations/new?studentId=asdfadsf"
         >
           <button
@@ -626,10 +638,10 @@ exports[`PageStudentDetails should render correctly 1`] = `
         </a>
       </div>
       <div
-        class="emotion-14"
+        class="emotion-15"
       >
         <h5
-          class="emotion-12"
+          class="emotion-13"
         >
           OBSERVATIONS
         </h5>
@@ -637,42 +649,42 @@ exports[`PageStudentDetails should render correctly 1`] = `
           href="/dashboard/observe/students/observations/all?studentId=asdfadsf"
         >
           <button
-            class="emotion-13"
+            class="emotion-14"
           >
             All
           </button>
         </a>
       </div>
       <div
-        class="emotion-19"
+        class="emotion-20"
       >
         <div
-          class="emotion-18"
+          class="emotion-19"
         >
           <div
-            class="emotion-15"
+            class="emotion-16"
           />
           <div
-            class="emotion-15"
+            class="emotion-16"
           />
           <div
-            class="emotion-15"
+            class="emotion-16"
           />
         </div>
       </div>
       <div
-        class="emotion-23"
+        class="emotion-24"
       >
         <h5
-          class="emotion-20"
+          class="emotion-21"
         >
           PROGRESS
         </h5>
         <div
-          class="emotion-22"
+          class="emotion-23"
         >
           <div
-            class="emotion-21"
+            class="emotion-22"
           />
         </div>
       </div>

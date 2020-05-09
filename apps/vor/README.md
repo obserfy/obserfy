@@ -7,25 +7,9 @@
 </h1>
 
 <p align="center">
-    Obserfy Mission Controle website for teachers.
+    Mission Control app for teachers. This workspace contains the source code for the main obserfy app used by teachers. 
 </p>
 
-<p align="center">
-  <a href="https://github.com/obserfy/vor/blob/master/LICENSE">
-    <img src="https://img.shields.io/badge/license-GPL3-blue.svg" alt="Obserfy is released under the GPL-3 license." />
-  </a>
-  <a href="https://codeclimate.com/github/obserfy/vor/maintainability">
-    <img src="https://api.codeclimate.com/v1/badges/dc66ddec9ecb065464a3/maintainability" alt="Codeclimate maintainability score." />
-  </a>
-  <a href="https://circleci.com/gh/obserfy/vor">
-    <img src="https://circleci.com/gh/obserfy/vor.svg?style=shield" alt="Current npm package version." />
-  </a>
-  <a href="https://codecov.io/gh/chrsep/vor">
-    <img src="https://codecov.io/gh/obserfy/vor/branch/master/graph/badge.svg" alt="Downloads per month on npm." />
-  </a>
-</p>
-
-This workspace contains the source code for the main obserfy app used by teachers
 
 ## Codebase
 
