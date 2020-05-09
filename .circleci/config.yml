@@ -40,7 +40,7 @@ jobs:
     working_directory: ~/repo
     environment:
       NODE_ENV: "staging"
-    parallelism: 2
+#    parallelism: 2
     steps:
       - checkout
       - run: cp .env.example .env
