@@ -137,7 +137,7 @@ exports[`PageEditGuardians should render correctly 1`] = `
   border-radius: 0;
   padding: 0;
   overflow: hidden;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
   margin-left: 0;
   margin-right: 0;
 }
@@ -170,35 +170,6 @@ exports[`PageEditGuardians should render correctly 1`] = `
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   font-size: 14px;
   margin: 16px;
-}
-
-.emotion-10 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  padding: 8px;
-  background-color: var(--theme-ui-colors-surface,#fff);
-  border-radius: 8px;
-  box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
-  border-radius: 0;
-  padding: 0;
-  overflow: hidden;
-  margin-bottom: 8px;
-  margin-left: 0;
-  margin-right: 0;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-10 {
-    border-radius: 8px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .emotion-10 {
-    margin-left: 16px;
-    margin-right: 16px;
-  }
 }
 
 .emotion-9 {
@@ -389,7 +360,8 @@ exports[`PageEditGuardians should render correctly 1`] = `
       class="emotion-16"
     >
       <a
-        href="/dashboard/observe/students/profile?id=undefined"
+        href="/dashboard/observe/students/profile?id=adhfakjldsf"
+        style="display: block;"
       >
         <div
           class="emotion-2"
@@ -422,10 +394,12 @@ exports[`PageEditGuardians should render correctly 1`] = `
         </p>
       </div>
       <div
-        class="emotion-10"
+        class="emotion-6"
       >
         <a
-          href="/dashboard/observe/students/profile/guardians/new?id=undefined"
+          data-cy="new-guardian"
+          href="/dashboard/observe/students/profile/guardians/new?id=adhfakjldsf"
+          style="display: block;"
         >
           <div
             class="emotion-9"

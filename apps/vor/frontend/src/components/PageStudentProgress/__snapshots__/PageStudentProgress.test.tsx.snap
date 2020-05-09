@@ -170,6 +170,7 @@ exports[`PageStudentProgress should render correctly 1`] = `
     >
       <a
         href="/dashboard/observe/students/details?id=asdfadsf"
+        style="display: block;"
       >
         <div
           class="emotion-2"

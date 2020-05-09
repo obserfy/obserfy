@@ -18,7 +18,7 @@ interface NewGuardian {
 }
 
 export const usePostNewGuardian = (
-  studentId: string
+  studentId?: string
 ): [MutateFunction<Response, NewGuardian>, MutationResult<Response>] => {
   const postNewGuardian = async (guardian: NewGuardian): Promise<Response> => {
     const schoolId = getSchoolId()

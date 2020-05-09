@@ -30,7 +30,7 @@ const themeUiTheme = {
     onSecondary: "#fff",
 
     surface: "#fff",
-    onSurface: "#87000000",
+    onSurface: "rgba(0,0,0,0.87)",
 
     surfaceTransparent: "rgba(255,255,255,0.965)",
     onSurfaceTransparent: "#87000000",

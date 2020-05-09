@@ -15,13 +15,25 @@ import Chip from "../Chip/Chip"
 import { Flex } from "../Flex/Flex"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import InformationalCard from "../InformationalCard/InformationalCard"
-import { CLASS_SETTINGS_URL, NEW_STUDENT_URL, PICK_GUARDIAN_URL } from "../../routes"
+import {
+  CLASS_SETTINGS_URL,
+  NEW_STUDENT_URL,
+  PICK_GUARDIAN_URL,
+} from "../../routes"
 import Card from "../Card/Card"
 import ProfilePicker from "../ProfilePicker/ProfilePicker"
-import { Gender, GuardianRelationship, usePostNewStudent } from "../../api/students/usePostNewStudent"
+import {
+  Gender,
+  GuardianRelationship,
+  usePostNewStudent,
+} from "../../api/students/usePostNewStudent"
 
 import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
-import { setNewStudentCache, useCacheNewStudentFormData, useGetNewStudentFormCache } from "./newStudentFormCache"
+import {
+  setNewStudentCache,
+  useCacheNewStudentFormData,
+  useGetNewStudentFormCache,
+} from "./newStudentFormCache"
 
 import Icon from "../Icon/Icon"
 import WarningDialog from "../WarningDialog/WarningDialog"
@@ -212,7 +224,7 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
           <Typography.H5 m={3} mr="auto">
             GUARDIANS
           </Typography.H5>
-          <Link to={PICK_GUARDIAN_URL}>
+          <Link to={PICK_GUARDIAN_URL} data-cy="add-student">
             <Button variant="outline" mr={3}>
               Add
             </Button>

@@ -496,7 +496,8 @@ exports[`PageNewGuardian should render correctly 1`] = `
       class="emotion-27"
     >
       <a
-        href="/dashboard/observe/students/profile/guardians/edit?id=undefined"
+        href="/dashboard/observe/students/profile/guardians/edit?id=asdfsdaf"
+        style="display: block;"
       >
         <div
           class="emotion-2"

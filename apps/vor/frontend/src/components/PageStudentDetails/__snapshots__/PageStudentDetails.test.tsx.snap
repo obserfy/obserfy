@@ -580,6 +580,7 @@ exports[`PageStudentDetails should render correctly 1`] = `
     >
       <a
         href="/dashboard/observe"
+        style="display: block;"
       >
         <div
           class="emotion-2"

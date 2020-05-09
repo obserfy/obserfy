@@ -152,6 +152,7 @@ exports[`PageClassSettings should render correctly 1`] = `
     >
       <a
         href="/dashboard/settings"
+        style="display: block;"
       >
         <div
           class="emotion-2"

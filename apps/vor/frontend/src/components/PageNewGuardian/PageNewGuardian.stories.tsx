@@ -5,8 +5,8 @@ export default {
   title: "Core|PageNewGuardian",
   component: PageNewGuardian,
   parameters: {
-    componentSubtitle: "Just a simple PageNewGuardian"
-  }
+    componentSubtitle: "Just a simple PageNewGuardian",
+  },
 }
 
-export const Basic: FC = () => <PageNewGuardian />
+export const Basic: FC = () => <PageNewGuardian id="asdfsdaf" />

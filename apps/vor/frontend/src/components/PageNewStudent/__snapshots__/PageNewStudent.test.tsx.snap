@@ -1107,6 +1107,7 @@ exports[`PageNewStudent should render correctly 1`] = `
     >
       <a
         href="/dashboard/observe"
+        style="display: block;"
       >
         <div
           class="emotion-2"
@@ -1338,6 +1339,7 @@ exports[`PageNewStudent should render correctly 1`] = `
           GUARDIANS
         </h5>
         <a
+          data-cy="add-student"
           href="/dashboard/observe/students/new/pickGuardians"
         >
           <button

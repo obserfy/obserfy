@@ -44,7 +44,7 @@ exports[`GuardianRelationshipPill should render correctly 1`] = `
   --webkitFontSmoothing: antialiased;
   --mozOsxFontSmoothing: grayscale;
   text-transform: capitalize;
-  color: var(--theme-ui-colors-onSurface,#87000000);
+  color: var(--theme-ui-colors-onSurface,rgba(0,0,0,0.87));
   font-size: 12px;
   line-height: 1em;
 }
@@ -59,7 +59,7 @@ exports[`GuardianRelationshipPill should render correctly 1`] = `
       <p
         class="emotion-0"
       >
-        N/A
+        Other
       </p>
     </div>
   </div>

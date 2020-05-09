@@ -115,7 +115,11 @@ export const PageStudentProfile: FC<Props> = ({ id }) => {
               )
             })}
           </Box>
-          <Link to={EDIT_GUARDIANS_URL(id)} sx={{ ml: "auto", mt: 3, mr: 3 }}>
+          <Link
+            to={EDIT_GUARDIANS_URL(id)}
+            sx={{ ml: "auto", mt: 3, mr: 3 }}
+            data-cy="edit-guardians"
+          >
             <Button variant="outline" px={2}>
               <Icon as={EditIcon} m={0} />
             </Button>

@@ -603,6 +603,7 @@ exports[`PageEditStudent should render correctly 1`] = `
       >
         <a
           href="/dashboard/observe/students/details?id=jkasdfjaksjdfh"
+          style="display: block;"
         >
           <div
             class="emotion-12"

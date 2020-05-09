@@ -5,8 +5,8 @@ export default {
   title: "Core|GuardianRelationshipPill",
   component: GuardianRelationshipPill,
   parameters: {
-    componentSubtitle: "Just a simple GuardianRelationshipPill"
-  }
+    componentSubtitle: "Just a simple GuardianRelationshipPill",
+  },
 }
 
-export const Basic: FC = () => <GuardianRelationshipPill />
+export const Basic: FC = () => <GuardianRelationshipPill relationship={0} />
