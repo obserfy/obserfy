@@ -22,6 +22,8 @@ type Store interface {
 	UpdateStudent(student *postgres.Student) error
 	DeleteStudent(studentId string) error
 	CheckPermissions(studentId string, userId string) (bool, error)
+	InsertAttendance(studentId string, classId string,date time.Time) (*postgres.Attendance, error)
+	GetAttendance(studentId string) ([]postgres.Attendance, error)
 	InsertGuardianRelation(studentId string, guardianId string, relationship int) error
 	DeleteGuardianRelation(studentId string, guardianId string) error
 	GetGuardianRelation(studentId string, guardianId string) (*postgres.GuardianToStudent, error)

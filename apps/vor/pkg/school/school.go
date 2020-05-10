@@ -41,6 +41,8 @@ func NewRouter(
 		r.Method("POST", "/class", postNewClass(server, store))
 		r.Method("GET", "/class", getClasses(server, store))
 
+		r.Method("GET", "/class/{classId}/attendance/{session}", getClassAttendance(server, store))
+
 		r.Method("POST", "/guardians", postNewGuardian(server, store))
 		r.Method("GET", "/guardians", getGuardians(server, store))
 	})
@@ -89,7 +91,53 @@ func getClasses(server rest.Server, store postgres.SchoolStore) http.Handler {
 		return nil
 	})
 }
+func getClassAttendance(server rest.Server, store postgres.SchoolStore) http.Handler {
+	type attendanceData struct {
+		StudentId string `json:"studentId"`
+		Name      string `json:"name"`
+		Attend    bool   `json:"attend"`
+	}
 
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		session := chi.URLParam(r, "session")
+		classId := chi.URLParam(r, "classId")
+		attendance, err := store.GetClassAttendance(classId, session)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "failed querying attendance",
+				Error:   err,
+			}
+		}
+		var response []attendanceData
+		attendMap := make(map[string]int)
+		if len(attendance) > 0 {
+			students := attendance[0].Class.Students
+			for _, attendance := range attendance {
+				attendMap[attendance.StudentId] = 1
+			}
+			for _, student := range students {
+				if attendMap[student.Id] != 1 {
+					response = append(response, attendanceData{
+						StudentId: student.Id,
+						Name:      student.Name,
+						Attend:    false,
+					})
+				} else {
+					response = append(response, attendanceData{
+						StudentId: student.Id,
+						Name:      student.Name,
+						Attend:    true,
+					})
+				}
+			}
+		}
+		if err := rest.WriteJson(w, response); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
+		return nil
+	})
+}
 func postNewClass(s rest.Server, store postgres.SchoolStore) http.Handler {
 	type requestBody struct {
 		Name      string         `json:"name"`

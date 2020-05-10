@@ -1,9 +1,8 @@
 package postgres
 
 import (
-	"time"
-
 	richErrors "github.com/pkg/errors"
+	"time"
 
 	"github.com/go-pg/pg/v9"
 	"github.com/go-pg/pg/v9/orm"
@@ -37,6 +36,30 @@ func (s StudentStore) InsertObservation(
 		return nil, err
 	}
 	return &observation, nil
+}
+func (s StudentStore) InsertAttendance(studentId string, classId string,date time.Time) (*Attendance, error) {
+	attendanceId := uuid.New()
+	attendance := Attendance{
+		Id:        attendanceId.String(),
+		StudentId: studentId,
+		ClassId:   classId,
+		Date: date,
+	}
+	if err := s.Insert(&attendance); err != nil {
+		return nil, err
+	}
+	return &attendance, nil
+}
+func (s StudentStore) GetAttendance(studentId string) ([]Attendance, error) {
+	var attendance []Attendance
+	if err := s.Model(&attendance).
+		Where("student_id=?", studentId).
+		Relation("Student").
+		Relation("Class").
+		Select(); err != nil {
+		return nil, err
+	}
+	return attendance, nil
 }
 
 func (s StudentStore) DeleteGuardianRelation(studentId string, guardianId string) error {

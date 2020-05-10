@@ -62,7 +62,21 @@ func (s SchoolStore) GetStudents(schoolId string) ([]Student, error) {
 	}
 	return students, nil
 }
-
+func (s SchoolStore) GetClassAttendance(classId string, session string) ([]Attendance, error) {
+	var attendance []Attendance
+	if session == "" {
+		session = "1970-01-01"
+	}
+	if err := s.Model(&attendance).
+		Where("class_id=?", classId).
+		Where("date::date=?", session).
+		Relation("Student").
+		Relation("Class.Students").
+		Select(); err != nil {
+		return nil, err
+	}
+	return attendance, nil
+}
 func (s SchoolStore) NewStudent(student Student, classes []string, guardians map[string]int) error {
 	if student.Id == "" {
 		student.Id = uuid.New().String()

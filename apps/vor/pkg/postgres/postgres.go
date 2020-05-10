@@ -50,6 +50,7 @@ func InitTables(db *pg.DB) error {
 		(*Observation)(nil),
 		(*Session)(nil),
 		(*UserToSchool)(nil),
+		(*Attendance)(nil),
 		(*PasswordResetToken)(nil),
 	} {
 		err := db.CreateTable(model, &orm.CreateTableOptions{IfNotExists: true, FKConstraints: true})
@@ -185,7 +186,14 @@ type School struct {
 	Curriculum   Curriculum
 	Guardian     []Guardian
 }
-
+type Attendance struct {
+	Id        string `json:"id" pg:",type:uuid"`
+	StudentId string `pg:"type:uuid,on_delete:CASCADE"`
+	Student   Student
+	ClassId   string `pg:"type:uuid,on_delete:CASCADE"`
+	Class     Class
+	Date      time.Time `json:"date"`
+}
 type UserToSchool struct {
 	SchoolId string `pg:",type:uuid"`
 	School   School
@@ -219,7 +227,7 @@ type Class struct {
 	StartTime time.Time `pg:",notnull"`
 	EndTime   time.Time `pg:",notnull"`
 	Weekdays  []Weekday
-	Students  []Student `pg:"many2many:student_to_class,joinFK:class_id"`
+	Students  []Student `pg:"many2many:student_to_classes,joinFK:student_id"`
 }
 
 type Weekday struct {
