@@ -38,39 +38,39 @@ exports[`ObservationCard should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  font-size: 24px;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 300;
-  line-height: heading;
-  font-size: 2rem;
+  font-weight: 400;
   line-height: 3rem;
-  -webkit-letter-spacing: 0;
-  -moz-letter-spacing: 0;
-  -ms-letter-spacing: 0;
-  letter-spacing: 0;
   text-rendering: optimizeLegibility;
   --webkitFontSmoothing: antialiased;
   --mozOsxFontSmoothing: grayscale;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  font-size: 16px;
   margin-left: 16px;
   margin-right: 16px;
   margin-top: 8px;
   margin-bottom: 0;
 }
 
+@media screen and (min-width:40em) {
+  .emotion-0 {
+    font-size: 14px;
+  }
+}
+
 .emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  border-top-width: 1px;
-  border-top-style: none;
-  border-top-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  padding: 8px;
-  padding-bottom: 0;
+  padding-left: 8px;
+  padding-right: 8px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  margin-bottom: 8px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -106,7 +106,6 @@ exports[`ObservationCard should render correctly 1`] = `
   padding-left: 8px;
   padding-right: 8px;
   margin-left: 8px;
-  margin-bottom: 8px;
   background-color: #b39ddb;
 }
 
@@ -189,7 +188,6 @@ exports[`ObservationCard should render correctly 1`] = `
   display: flex;
   color: var(--theme-ui-colors-danger,#d50000);
   font-size: 12px;
-  margin-bottom: 8px;
 }
 
 .emotion-5:disabled {
@@ -254,7 +252,6 @@ exports[`ObservationCard should render correctly 1`] = `
   display: -ms-flexbox;
   display: flex;
   font-size: 12px;
-  margin-bottom: 8px;
 }
 
 .emotion-6:disabled {
@@ -276,7 +273,7 @@ exports[`ObservationCard should render correctly 1`] = `
     <div
       class="emotion-8"
     >
-      <h6
+      <p
         class="emotion-0"
         data-cy="observation-short-desc"
       />

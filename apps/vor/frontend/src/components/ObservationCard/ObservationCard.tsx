@@ -22,14 +22,14 @@ export const ObservationCard: FC<Props> = ({
 
   return (
     <Card mb={2} key={observation.id} borderRadius={[0, "default"]}>
-      <Typography.H6
+      <Typography.Body
         mx={3}
         mt={observation.longDesc ? 3 : 2}
         mb={0}
         data-cy="observation-short-desc"
       >
         {observation.shortDesc}
-      </Typography.H6>
+      </Typography.Body>
       {observation.longDesc && (
         <Typography.Body
           fontSize={1}
@@ -37,24 +37,16 @@ export const ObservationCard: FC<Props> = ({
           mx={3}
           mb={3}
           data-cy="observation-long-desc"
+          lineHeight={1.8}
+          color="textMediumEmphasis"
         >
           {observation.longDesc}
         </Typography.Body>
       )}
-      <Flex
-        p={2}
-        pb={0}
-        alignItems="center"
-        sx={{
-          borderTopWidth: 1,
-          borderTopStyle: observation.longDesc ? "solid" : "none",
-          borderTopColor: "border",
-        }}
-      >
+      <Flex px={2} alignItems="center" mb={2}>
         <Flex flexWrap="wrap">
           <Pill
             ml={2}
-            mb={2}
             backgroundColor={category.color}
             text={category.name}
             color={category.onColor}
@@ -62,7 +54,6 @@ export const ObservationCard: FC<Props> = ({
           {observation.creatorName && (
             <Pill
               ml={2}
-              mb={2}
               text={observation.creatorName.split(" ")[0]}
               color="text"
             />
@@ -75,7 +66,6 @@ export const ObservationCard: FC<Props> = ({
           data-cy="delete-observation"
           onClick={() => onDelete(observation)}
           fontSize={0}
-          mb={2}
         >
           delete
         </Button>
@@ -84,7 +74,6 @@ export const ObservationCard: FC<Props> = ({
           data-cy="edit-observation"
           fontSize={0}
           onClick={() => onEdit(observation)}
-          mb={2}
         >
           Edit
         </Button>

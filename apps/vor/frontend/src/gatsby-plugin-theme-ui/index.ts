@@ -81,7 +81,7 @@ const themeUiTheme = {
     modes: {
       dark: {
         text: "rgba(255,255,255, 0.87)",
-        textMediumEmphasis: "rgba(255,255,255, 0.60)",
+        textMediumEmphasis: "rgba(255,255,255, 0.6)",
         textDisabled: "rgba(255,255,255, 0.38)",
         textPrimary: "#00a875",
 
@@ -105,7 +105,7 @@ const themeUiTheme = {
 
         icon: "#979797",
 
-        border: "rgba(255,255,255, 0.05)",
+        border: "rgba(255,255,255, 0.14)",
 
         muted: "#222222",
         mutedLight: "#212121",
