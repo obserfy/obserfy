@@ -1136,8 +1136,8 @@ export type ImageSharpFluid = {
   sizes: Scalars['String'];
   originalImg?: Maybe<Scalars['String']>;
   originalName?: Maybe<Scalars['String']>;
-  presentationWidth?: Maybe<Scalars['Int']>;
-  presentationHeight?: Maybe<Scalars['Int']>;
+  presentationWidth: Scalars['Int'];
+  presentationHeight: Scalars['Int'];
 };
 
 export type ImageSharpFluidFilterInput = {
@@ -1231,8 +1231,8 @@ export type ImageSharpSizes = {
   sizes: Scalars['String'];
   originalImg?: Maybe<Scalars['String']>;
   originalName?: Maybe<Scalars['String']>;
-  presentationWidth?: Maybe<Scalars['Int']>;
-  presentationHeight?: Maybe<Scalars['Int']>;
+  presentationWidth: Scalars['Int'];
+  presentationHeight: Scalars['Int'];
 };
 
 export type ImageSharpSizesFilterInput = {

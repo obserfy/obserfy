@@ -43,7 +43,7 @@ exports[`PageEditStudent should render correctly 1`] = `
   position: fixed;
   border-top-style: solid;
   border-top-width: 1px;
-  border-top-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-top-color: borderSubtle;
   border-radius: 0;
   padding: 0;
   overflow: hidden;

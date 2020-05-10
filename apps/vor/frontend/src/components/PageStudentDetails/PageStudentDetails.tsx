@@ -6,7 +6,7 @@ import { Link } from "../Link/Link"
 import { useGetStudent } from "../../api/useGetStudent"
 import Flex from "../Flex/Flex"
 import Box from "../Box/Box"
-import Typography, { TextProps } from "../Typography/Typography"
+import Typography from "../Typography/Typography"
 import Icon from "../Icon/Icon"
 import EmptyListPlaceholder from "../EmptyListPlaceholder/EmptyListPlaceholder"
 import Button from "../Button/Button"
@@ -53,6 +53,9 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
     ?.filter((observation) =>
       dayjs(observation.createdDate ?? "").isSame(dates[selectedDate], "day")
     )
+    ?.sort((a, b) => {
+      return parseInt(a.categoryId, 10) - parseInt(b.categoryId, 10)
+    })
     ?.map((observation) => (
       <ObservationCard
         key={observation.id}
@@ -84,19 +87,8 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
     )
 
   const dateSelector = (observations.data?.length ?? 0) > 0 && (
-    <Flex alignItems="center" px={2} mb={2}>
-      <Button
-        disabled={selectedDate >= dates.length - 1}
-        onClick={() => setSelectedDate(selectedDate + 1)}
-        variant="secondary"
-        py={1}
-        px={1}
-      >
-        <Icon as={PrevIcon} m={0} />
-      </Button>
+    <Flex alignItems="center" px={3} mb={2}>
       <Typography.Body
-        flex={1}
-        textAlign="center"
         fontSize={1}
         color="textMediumEmphasis"
         sx={{ textTransform: "capitalize" }}
@@ -106,17 +98,34 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
           ? selectedDateDifference === -1
             ? "Today"
             : `${selectedDateDifference * -1} Days`
-          : dayjs(dates?.[selectedDate] ?? "").format("D MMMM 'YY")}
+          : dayjs(dates?.[selectedDate] ?? "").format("dddd, D MMM 'YY")}
       </Typography.Body>
+      <Button
+        disabled={selectedDate >= dates.length - 1}
+        onClick={() => setSelectedDate(selectedDate + 1)}
+        variant="outline"
+        py={1}
+        px={1}
+        mr={1}
+        ml="auto"
+      >
+        <Icon as={PrevIcon} m={0} />
+      </Button>
       <Button
         disabled={selectedDate < 1}
         onClick={() => setSelectedDate(selectedDate - 1)}
-        variant="secondary"
+        variant="outline"
+        mr={2}
         py={1}
         px={1}
       >
         <Icon as={NextIcon} m={0} />
       </Button>
+      <Link to={ALL_OBSERVATIONS_PAGE_URL(id)}>
+        <Button variant="outline" py={1} px={3}>
+          All
+        </Button>
+      </Link>
     </Flex>
   )
 
@@ -125,11 +134,11 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
       <Box maxWidth="maxWidth.sm" margin="auto" pb={5}>
         <BackNavigation text="Home" to="/dashboard/observe" />
         <Flex alignItems="start" mx={3} mb={4} mt={0}>
-          <Typography.H3 sx={{ wordWrap: "break-word" }}>
+          <Typography.H4 sx={{ wordWrap: "break-word" }} lineHeight={1.4}>
             {student.data?.name || (
               <LoadingPlaceholder width="24rem" height={60} />
             )}
-          </Typography.H3>
+          </Typography.H4>
           <Spacer />
         </Flex>
         <Flex m={3} mb={2}>
@@ -151,24 +160,18 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
             </Button>
           </Link>
         </Flex>
-        <Flex pt={4} px={3} mb={3} alignItems="center">
-          <SectionHeader mr="auto" lineHeight={1}>
-            OBSERVATIONS
-          </SectionHeader>
-          <Link to={ALL_OBSERVATIONS_PAGE_URL(id)}>
-            <Button variant="outline">All</Button>
-          </Link>
-        </Flex>
+        <Typography.H6 mr="auto" lineHeight={1} pt={4} pl={3} pr={2} mb={1}>
+          Observations
+        </Typography.H6>
         {emptyObservationPlaceholder}
         {dateSelector}
-        <Box mx={[0, 3]} mb={3}>
+        <Box mx={[0, 3]}>
           {listOfObservations}
           {observations.status === "loading" && !observations.data && (
             <ObservationLoadingPlaceholder />
           )}
         </Box>
         <Box py={3} mb={1}>
-          <SectionHeader m={3}>PROGRESS</SectionHeader>
           <StudentProgressSummaryCard studentId={id} />
         </Box>
       </Box>
@@ -196,15 +199,6 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
     </Fragment>
   )
 }
-
-const SectionHeader: FC<TextProps> = (props) => (
-  <Typography.H5
-    fontWeight="normal"
-    color="text"
-    letterSpacing={3}
-    {...props}
-  />
-)
 
 const ObservationLoadingPlaceholder: FC = () => (
   <Box>
