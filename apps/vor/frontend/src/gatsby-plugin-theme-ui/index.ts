@@ -105,7 +105,8 @@ const themeUiTheme = {
 
         icon: "#979797",
 
-        border: "rgba(255,255,255, 0.14)",
+        border: "rgba(255,255,255, 0.2)",
+        borderSubtle: "rgba(255,255,255, 0.1)",
 
         muted: "#222222",
         mutedLight: "#212121",

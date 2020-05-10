@@ -87,7 +87,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
     )
 
   const dateSelector = (observations.data?.length ?? 0) > 0 && (
-    <Flex alignItems="center" px={3} mb={3}>
+    <Flex alignItems="center" px={3} mb={2}>
       <Typography.Body
         fontSize={1}
         color="textMediumEmphasis"

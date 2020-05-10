@@ -103,7 +103,7 @@ const NavBar: FC = () => {
         position: "fixed",
         borderTopStyle: "solid",
         borderTopWidth: 1,
-        borderTopColor: "border",
+        borderTopColor: "borderSubtle",
         "@supports (backdrop-filter: blur(20px))":
           // Only enable on mid to hi end devices, blur is an expensive effect, turned on by default by devices that doesn't
           // support navigator.deviceMemory.

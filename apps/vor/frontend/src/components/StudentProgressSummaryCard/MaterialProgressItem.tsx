@@ -1,5 +1,8 @@
 import React, { FC } from "react"
-import { MaterialProgress, materialStageToString } from "../../api/useGetStudentMaterialProgress"
+import {
+  MaterialProgress,
+  materialStageToString,
+} from "../../api/useGetStudentMaterialProgress"
 import Flex from "../Flex/Flex"
 import Typography from "../Typography/Typography"
 import Pill from "../Pill/Pill"
