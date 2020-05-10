@@ -7,6 +7,7 @@ import (
 	"github.com/chrsep/vor/pkg/class"
 	"github.com/chrsep/vor/pkg/curriculum"
 	"github.com/chrsep/vor/pkg/guardian"
+	"github.com/chrsep/vor/pkg/imgproxy"
 	"github.com/chrsep/vor/pkg/logger"
 	"github.com/chrsep/vor/pkg/mailgun"
 	"github.com/chrsep/vor/pkg/minio"
@@ -74,6 +75,11 @@ func runServer() error {
 	classStore := postgres.ClassStore{db}
 	guardianStore := postgres.GuardianStore{db}
 	mailService := mailgun.NewService()
+	imgproxyClient, err := imgproxy.CreateClient()
+	if err != nil {
+		l.Error("invalid imgproxy credential", zap.Error(err))
+		return err
+	}
 	studentImageStorage, err := minio.NewMinioImageStorage()
 	//attendanceStore:=postgres.AttendanceStore{db}
 	if err != nil {
@@ -95,7 +101,7 @@ func runServer() error {
 		r.Use(auth.NewMiddleware(server, authStore))
 		r.Mount("/students", student.NewRouter(server, studentStore))
 		r.Mount("/observations", observation.NewRouter(server, observationStore))
-		r.Mount("/schools", school.NewRouter(server, schoolStore, studentImageStorage))
+		r.Mount("/schools", school.NewRouter(server, schoolStore, studentImageStorage, imgproxyClient))
 		r.Mount("/user", user.NewRouter(server, userStore))
 		r.Mount("/curriculum", curriculum.NewRouter(server, curriculumStore))
 		r.Mount("/classes", class.NewRouter(server, classStore))

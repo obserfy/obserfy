@@ -1,0 +1,526 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DatePicker should render correctly 1`] = `
+.emotion-15 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 16px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-15 {
+    font-size: 20px;
+  }
+}
+
+.emotion-7 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-3 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  width: 100%;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  as: label;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  margin-right: 16px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-0 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding-bottom: 4px;
+}
+
+.emotion-2 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-1 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: block;
+  width: 100%;
+  padding: 8px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: inherit;
+  line-height: inherit;
+  border: 1px solid;
+  border-radius: 8px;
+  color: inherit;
+  background-color: transparent;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  width: auto;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface,#fff);
+  font-size: 16px;
+  padding: 12px;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+}
+
+.emotion-1:hover,
+.emotion-1:focus {
+  border-color: var(--theme-ui-colors-primary,#00e399);
+  outline: none;
+}
+
+.emotion-1::-webkit-input-placeholder {
+  font-style: italic;
+}
+
+.emotion-1::-moz-placeholder {
+  font-style: italic;
+}
+
+.emotion-1:-ms-input-placeholder {
+  font-style: italic;
+}
+
+.emotion-1::placeholder {
+  font-style: italic;
+}
+
+.emotion-1:disabled {
+  opacity: 0.68;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
+}
+
+.emotion-8 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  width: 100%;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  as: label;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-right: 16px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-5 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: block;
+  width: 100%;
+  padding: 8px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: inherit;
+  line-height: inherit;
+  border: 1px solid;
+  border-radius: 8px;
+  color: inherit;
+  background-color: transparent;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface,#fff);
+  font-size: 16px;
+  padding: 12px;
+}
+
+.emotion-5:hover,
+.emotion-5:focus {
+  border-color: var(--theme-ui-colors-primary,#00e399);
+  outline: none;
+}
+
+.emotion-6 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-left: -28px;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  pointer-events: none;
+  width: 24px;
+  height: 24px;
+}
+
+.emotion-13 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  width: 100%;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  as: label;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+<div>
+  <div
+    class="emotion-15"
+  >
+    <div
+      class="emotion-7"
+    >
+      <label
+        class="emotion-3"
+        inputmode="numeric"
+        min="1"
+      >
+        <div
+          class="emotion-0"
+        >
+          Year
+        </div>
+        <div
+          class="emotion-2"
+        >
+          <input
+            class="emotion-1"
+            type="number"
+            value="1970"
+          />
+        </div>
+      </label>
+      <label
+        class="emotion-8"
+      >
+        <div
+          class="emotion-0"
+        >
+          Month
+        </div>
+        <div
+          class="emotion-7"
+        >
+          <select
+            aria-label="Month"
+            class="emotion-5"
+          >
+            <option
+              value="0"
+            >
+              January
+            </option>
+            <option
+              value="1"
+            >
+              February
+            </option>
+            <option
+              value="2"
+            >
+              March
+            </option>
+            <option
+              value="3"
+            >
+              April
+            </option>
+            <option
+              value="4"
+            >
+              May
+            </option>
+            <option
+              value="5"
+            >
+              June
+            </option>
+            <option
+              value="6"
+            >
+              July
+            </option>
+            <option
+              value="7"
+            >
+              August
+            </option>
+            <option
+              value="8"
+            >
+              September
+            </option>
+            <option
+              value="9"
+            >
+              October
+            </option>
+            <option
+              value="10"
+            >
+              November
+            </option>
+            <option
+              value="11"
+            >
+              December
+            </option>
+          </select>
+          <svg
+            class="emotion-6"
+            fill="currentcolor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M7 10l5 5 5-5z"
+            />
+          </svg>
+        </div>
+      </label>
+      <label
+        class="emotion-13"
+      >
+        <div
+          class="emotion-0"
+        >
+          Date
+        </div>
+        <div
+          class="emotion-7"
+        >
+          <select
+            aria-label="Date"
+            class="emotion-5"
+          >
+            <option
+              value="1"
+            >
+              1
+            </option>
+            <option
+              value="2"
+            >
+              2
+            </option>
+            <option
+              value="3"
+            >
+              3
+            </option>
+            <option
+              value="4"
+            >
+              4
+            </option>
+            <option
+              value="5"
+            >
+              5
+            </option>
+            <option
+              value="6"
+            >
+              6
+            </option>
+            <option
+              value="7"
+            >
+              7
+            </option>
+            <option
+              value="8"
+            >
+              8
+            </option>
+            <option
+              value="9"
+            >
+              9
+            </option>
+            <option
+              value="10"
+            >
+              10
+            </option>
+            <option
+              value="11"
+            >
+              11
+            </option>
+            <option
+              value="12"
+            >
+              12
+            </option>
+            <option
+              value="13"
+            >
+              13
+            </option>
+            <option
+              value="14"
+            >
+              14
+            </option>
+            <option
+              value="15"
+            >
+              15
+            </option>
+            <option
+              value="16"
+            >
+              16
+            </option>
+            <option
+              value="17"
+            >
+              17
+            </option>
+            <option
+              value="18"
+            >
+              18
+            </option>
+            <option
+              value="19"
+            >
+              19
+            </option>
+            <option
+              value="20"
+            >
+              20
+            </option>
+            <option
+              value="21"
+            >
+              21
+            </option>
+            <option
+              value="22"
+            >
+              22
+            </option>
+            <option
+              value="23"
+            >
+              23
+            </option>
+            <option
+              value="24"
+            >
+              24
+            </option>
+            <option
+              value="25"
+            >
+              25
+            </option>
+            <option
+              value="26"
+            >
+              26
+            </option>
+            <option
+              value="27"
+            >
+              27
+            </option>
+            <option
+              value="28"
+            >
+              28
+            </option>
+            <option
+              value="29"
+            >
+              29
+            </option>
+            <option
+              value="30"
+            >
+              30
+            </option>
+            <option
+              value="31"
+            >
+              31
+            </option>
+          </select>
+          <svg
+            class="emotion-6"
+            fill="currentcolor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M7 10l5 5 5-5z"
+            />
+          </svg>
+        </div>
+      </label>
+    </div>
+  </div>
+</div>
+`;

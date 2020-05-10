@@ -82,7 +82,7 @@ describe("Test adding new student", () => {
     cy.contains("Month").find("select").select("2")
     cy.get(`[data-cy=set-button]`).click()
     cy.contains(newClass.name).click()
-    cy.contains("Add Guardian").click()
+    cy.get("[data-cy=add-student]").click()
 
     const newGuardianName = faker.name.firstName()
     cy.contains("Guardian Name").type(newGuardianName)

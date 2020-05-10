@@ -120,14 +120,14 @@ type Student struct {
 	SchoolId    string `pg:"type:uuid,on_delete:CASCADE"`
 	School      School
 	DateOfBirth *time.Time
-	Classes     []Class `pg:"many2many:student_to_class,joinFK:student_id"`
+	Classes     []Class `pg:"many2many:student_to_classes,joinFK:class_id"`
 	Gender      Gender  `pg:"type:int"`
 	DateOfEntry *time.Time
 	Note        string
 	CustomId    string
 	Active      bool
 	ProfilePic  string
-	Guardians   []Guardian `pg:"many2many:guardian_to_student,joinFK:student_id"`
+	Guardians   []Guardian `pg:"many2many:guardian_to_students,joinFK:guardian_id"`
 }
 
 type Guardian struct {
@@ -138,7 +138,7 @@ type Guardian struct {
 	Note     string
 	SchoolId string `pg:"type:uuid"`
 	School   School
-	Children []Student `pg:"many2many:guardian_to_student,joinFK:guardian_id"`
+	Children []Student `pg:"many2many:guardian_to_students,joinFK:student_id"`
 }
 
 type GuardianRelationship int

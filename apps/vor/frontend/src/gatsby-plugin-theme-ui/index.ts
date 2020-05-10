@@ -30,7 +30,7 @@ const themeUiTheme = {
     onSecondary: "#fff",
 
     surface: "#fff",
-    onSurface: "#87000000",
+    onSurface: "rgba(0,0,0,0.87)",
 
     surfaceTransparent: "rgba(255,255,255,0.965)",
     onSurfaceTransparent: "#87000000",
@@ -174,42 +174,69 @@ const rebassVariants = {
       fontWeight: "light",
       marginBottom: "3rem",
       letterSpacing: "0em",
+      textRendering: "optimizeLegibility",
+      "--webkitFontSmoothing": "antialiased",
+      "--mozOsxFontSmoothing": "grayscale",
     },
     h1: {
       variant: "heading",
       fontSize: "6.103515625rem",
       lineHeight: "9rem",
       letterSpacing: 0,
+
+      textRendering: "optimizeLegibility",
+      "--webkitFontSmoothing": "antialiased",
+      "--mozOsxFontSmoothing": "grayscale",
     },
     h2: {
       variant: "heading",
       fontSize: "4.8828125rem",
       lineHeight: "6rem",
       letterSpacing: 0,
+
+      textRendering: "optimizeLegibility",
+      "--webkitFontSmoothing": "antialiased",
+      "--mozOsxFontSmoothing": "grayscale",
     },
     h3: {
       variant: "heading",
       fontSize: "3.90625rem",
       lineHeight: "6rem",
       letterSpacing: 0,
+
+      textRendering: "optimizeLegibility",
+      "--webkitFontSmoothing": "antialiased",
+      "--mozOsxFontSmoothing": "grayscale",
     },
     h4: {
       variant: "heading",
       fontSize: "3.125rem",
       lineHeight: "6rem",
       letterSpacing: 0,
+
+      textRendering: "optimizeLegibility",
+      "--webkitFontSmoothing": "antialiased",
+      "--mozOsxFontSmoothing": "grayscale",
     },
     h5: {
       variant: "heading",
       fontSize: "2.5rem",
       lineHeight: "3rem",
       letterSpacing: 0,
+
+      textRendering: "optimizeLegibility",
+      "--webkitFontSmoothing": "antialiased",
+      "--mozOsxFontSmoothing": "grayscale",
     },
     h6: {
       variant: "heading",
       fontSize: "2rem",
       lineHeight: "3rem",
       letterSpacing: 0,
+
+      textRendering: "optimizeLegibility",
+      "--webkitFontSmoothing": "antialiased",
+      "--mozOsxFontSmoothing": "grayscale",
     },
     body: {
       color: "rgba(0,0,0,0.88)",
@@ -217,6 +244,9 @@ const rebassVariants = {
       fontFamily: "body",
       fontWeight: "body",
       lineHeight: "3rem",
+      textRendering: "optimizeLegibility",
+      "--webkitFontSmoothing": "antialiased",
+      "--mozOsxFontSmoothing": "grayscale",
     },
   },
   variants: {
@@ -227,7 +257,7 @@ const rebassVariants = {
     },
     card: {
       p: 2,
-      bg: "background",
+      backgroundColor: "surface",
       borderRadius: "default",
       boxShadow:
         "rgba(0, 0, 0, 0.1) 0px 0px 1px, rgba(0, 0, 0, 0.27) 0px 2px 4px -2px",

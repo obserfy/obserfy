@@ -1,7 +1,13 @@
 {
   "name": "design-tokens",
   "version": "1.0.0",
-  "main": "index.ts",
+  "main": "index.js",
   "license": "GPL-3",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "typescript": "3.8.3"
+  },
+  "scripts": {
+    "build": "yarn tsc"
+  }
 }

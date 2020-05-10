@@ -263,7 +263,15 @@ func (s SchoolStore) GetSchoolClasses(schoolId string) ([]Class, error) {
 	return classes, nil
 }
 
-func (s SchoolStore) NewGuardian(schoolId string, name string, email string, phone string, note string) (Guardian, error) {
+func (s SchoolStore) InsertGuardianWIthRelation(
+	schoolId string,
+	name string,
+	email string,
+	phone string,
+	note string,
+	relationship *int,
+	studentId *string,
+) (*Guardian, error) {
 	guardian := Guardian{
 		Id:       uuid.New().String(),
 		Name:     name,
@@ -272,8 +280,27 @@ func (s SchoolStore) NewGuardian(schoolId string, name string, email string, pho
 		Note:     note,
 		SchoolId: schoolId,
 	}
-	_, err := s.Model(&guardian).Insert()
-	return guardian, err
+	if err := s.RunInTransaction(func(tx *pg.Tx) error {
+		if _, err := s.Model(&guardian).Insert(); err != nil {
+			return richErrors.Wrap(err, "failed to insert new guardian")
+		}
+
+		// Creating relation is optional
+		if studentId != nil && relationship != nil {
+			relation := GuardianToStudent{
+				StudentId:    *studentId,
+				GuardianId:   guardian.Id,
+				Relationship: GuardianRelationship(*relationship),
+			}
+			if _, err := s.Model(&relation).Insert(); err != nil {
+				return richErrors.Wrap(err, "failed to insert guardian to student relation")
+			}
+		}
+		return nil
+	}); err != nil {
+		return nil, err
+	}
+	return &guardian, nil
 }
 
 func (s SchoolStore) GetGuardians(schoolId string) ([]Guardian, error) {

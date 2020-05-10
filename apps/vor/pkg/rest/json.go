@@ -28,8 +28,8 @@ func WriteJson(w http.ResponseWriter, object interface{}) error {
 func NewWriteJsonError(err error) *Error {
 	return &Error{
 		http.StatusInternalServerError,
-		"Failed writing json response",
-		richErrors.Wrap(err, "Failed parsing input"),
+		"Fail to write json response",
+		richErrors.Wrap(err, "fail to write json body"),
 	}
 }
 
@@ -41,7 +41,7 @@ func ParseJson(input io.ReadCloser, result interface{}) error {
 func NewParseJsonError(err error) *Error {
 	return &Error{
 		http.StatusBadRequest,
-		"Failed parsing input",
-		richErrors.Wrap(err, "Failed parsing input"),
+		"Fail to parse json request body",
+		richErrors.Wrap(err, "fail to parse json request body"),
 	}
 }

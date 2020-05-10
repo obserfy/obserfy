@@ -1,6 +1,7 @@
 {
   "baseUrl": "http://localhost:8001",
   "blacklistHosts": ["*segment.com", "*segment.io"],
-  "videoUploadOnPasses": false,
-  "projectId": "m9rk94"
+  "projectId": "m9rk94",
+  "viewportHeight": 667,
+  "viewportWidth": 375
 }

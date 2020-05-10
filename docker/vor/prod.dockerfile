@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:experimental
+# syntax=docker/dockerfile:1.0-experimental
 # Commands are relative to the monorepo root
 ####################################
 # Build the gatsby powered frontend
@@ -8,8 +8,7 @@ WORKDIR /usr/src
 COPY . /usr/src
 RUN yarn install --production --frozen-lockfile
 # Build the project
-RUN --mount=type=secret,id=env,dst=/usr/src/apps/vor/frontend/.env
-RUN yarn workspace vor run build
+RUN --mount=type=secret,id=env,dst=/usr/src/apps/vor/frontend/.env yarn workspace vor run build
 # Move the build artifact so its easier to be copied
 # on the final build
 RUN mkdir /frontend

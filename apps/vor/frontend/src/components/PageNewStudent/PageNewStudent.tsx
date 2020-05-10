@@ -17,8 +17,8 @@ import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import InformationalCard from "../InformationalCard/InformationalCard"
 import {
   CLASS_SETTINGS_URL,
-  PICK_GUARDIAN_URL,
   NEW_STUDENT_URL,
+  PICK_GUARDIAN_URL,
 } from "../../routes"
 import Card from "../Card/Card"
 import ProfilePicker from "../ProfilePicker/ProfilePicker"
@@ -36,9 +36,9 @@ import {
 } from "./newStudentFormCache"
 
 import Icon from "../Icon/Icon"
-import Pill from "../Pill/Pill"
 import WarningDialog from "../WarningDialog/WarningDialog"
 import GuardianRelationshipPickerDialog from "../GuardianRelationshipPickerDialog/GuardianRelationshipPickerDialog"
+import GuardianRelationshipPill from "../GuardianRelationshipPill/GuardianRelationshipPill"
 
 export interface NewStudentFormData {
   name: string
@@ -224,9 +224,9 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
           <Typography.H5 m={3} mr="auto">
             GUARDIANS
           </Typography.H5>
-          <Link to={PICK_GUARDIAN_URL}>
+          <Link to={PICK_GUARDIAN_URL} data-cy="add-student">
             <Button variant="outline" mr={3}>
-              Add Guardian
+              Add
             </Button>
           </Link>
         </Flex>
@@ -325,10 +325,11 @@ const GuardianCard: FC<{
 
   return (
     <Card
-      borderRadius={[0, 3]}
+      borderRadius={[0, "default"]}
       py={3}
       pr={2}
       mb={2}
+      mx={[0, 3]}
       display="flex"
       sx={{ alignItems: "center" }}
     >
@@ -341,33 +342,7 @@ const GuardianCard: FC<{
         <Typography.Body lineHeight={1} mb={3} ml={3}>
           {guardian.data?.name}
         </Typography.Body>
-        <Pill
-          ml={2}
-          {...(() => {
-            switch (relationship) {
-              case GuardianRelationship.Father:
-                return { text: "Father", backgroundColor: "orange" }
-              case GuardianRelationship.Mother:
-                return {
-                  text: "Mother",
-                  backgroundColor: "primary",
-                  color: "onPrimary",
-                }
-              case GuardianRelationship.Other:
-                return {
-                  text: "Other",
-                  backgroundColor: "",
-                  color: "onSurface",
-                }
-              default:
-                return {
-                  text: "N/A",
-                  backgroundColor: "",
-                  color: "onSurface",
-                }
-            }
-          })()}
-        />
+        <GuardianRelationshipPill relationship={relationship} ml={3} />
       </Flex>
       <Button
         variant="secondary"

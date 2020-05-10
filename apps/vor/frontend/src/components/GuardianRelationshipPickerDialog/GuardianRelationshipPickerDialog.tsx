@@ -1,21 +1,21 @@
 import React, { FC, useState } from "react"
 import Dialog from "../Dialog/Dialog"
-import Typography from "../Typography/Typography"
-import Button from "../Button/Button"
-import Flex from "../Flex/Flex"
 import { GuardianRelationship } from "../../api/students/usePostNewStudent"
 import Select from "../Select/Select"
 import Box from "../Box/Box"
+import DialogHeader from "../DialogHeader/DialogHeader"
 
 interface Props {
   onDismiss: () => void
   onAccept: (newRelationship: GuardianRelationship) => void
   defaultValue?: GuardianRelationship
+  loading?: boolean
 }
 export const GuardianRelationshipPickerDialog: FC<Props> = ({
   onDismiss,
   onAccept,
   defaultValue,
+  loading,
 }) => {
   const [relationship, setRelationship] = useState(
     defaultValue ?? GuardianRelationship.Other
@@ -23,43 +23,14 @@ export const GuardianRelationshipPickerDialog: FC<Props> = ({
 
   return (
     <Dialog>
-      <Flex
-        alignItems="center"
-        backgroundColor="surface"
-        sx={{
-          justifyContent: "space-between",
-          flexShrink: 0,
-          position: "relative",
-        }}
-      >
-        <Typography.H6
-          width="100%"
-          sx={{
-            position: "absolute",
-            pointerEvents: "none",
-            textAlign: "center",
-            alignContent: "center",
-          }}
-        >
-          Relationship
-        </Typography.H6>
-        <Button
-          variant="outline"
-          m={2}
-          onClick={onDismiss}
-          sx={{ flexShrink: 0 }}
-        >
-          Cancel
-        </Button>
-        <Button
-          ml="auto"
-          m={2}
-          backgroundColor="danger"
-          onClick={() => onAccept(relationship)}
-        >
-          Set
-        </Button>
-      </Flex>
+      <DialogHeader
+        onCancel={onDismiss}
+        onAccept={() => onAccept(relationship)}
+        onAcceptText="Save"
+        title="Relationship"
+        loading={loading}
+      />
+
       <Box backgroundColor="background" p={3}>
         <Select
           label="Relationship"

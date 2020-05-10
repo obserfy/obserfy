@@ -30,7 +30,9 @@ const guessJsPlugin =
 
 // Only use preact on prod. preact's dx on gatsby is still awful.
 const preact =
-  process.env.NODE_ENV === "production" || process.env.PREACT === "y"  ? [`gatsby-plugin-preact`] : []
+  process.env.NODE_ENV === "production" || process.env.PREACT === "y"
+    ? [`gatsby-plugin-preact`]
+    : []
 
 module.exports = {
   siteMetadata: {
@@ -185,13 +187,15 @@ module.exports = {
     app.use(
       "/api",
       require("http-proxy-middleware").createProxyMiddleware({
-        target: "http://localhost:8000",
+        secure: false,
+        target: "https://localhost:8000",
       })
     )
     app.use(
       "/auth",
       require("http-proxy-middleware").createProxyMiddleware({
-        target: "http://localhost:8000",
+        secure: false,
+        target: "https://localhost:8000",
       })
     )
   },
