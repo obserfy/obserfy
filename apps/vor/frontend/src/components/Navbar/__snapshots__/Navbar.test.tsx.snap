@@ -1,0 +1,318 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar should render correctly 1`] = `
+.emotion-10 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 16px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-10 {
+    font-size: 20px;
+  }
+}
+
+.emotion-9 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding: 8px;
+  background-color: var(--theme-ui-colors-surface,#fff);
+  border-radius: 8px;
+  box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
+  z-index: 5;
+  top: auto;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: borderSubtle;
+  border-radius: 0;
+  padding: 0;
+  overflow: hidden;
+  display: block;
+  height: auto;
+  width: 100%;
+  background-color: var(--theme-ui-colors-surface,#fff);
+}
+
+@media screen and (min-width:40em) {
+  .emotion-9 {
+    top: 0;
+    bottom: auto;
+  }
+}
+
+@supports (-webkit-backdrop-filter:blur(20px)) or (backdrop-filter:blur(20px)) {
+  .emotion-9 {
+    background-color: var(--theme-ui-colors-surfaceBlurTransparent,rgba(255,255,255,0.6));
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: backdrop-filter;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .emotion-9 {
+    display: block;
+    height: 100%;
+    width: auto;
+  }
+}
+
+.emotion-8 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+  height: auto;
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-8 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    height: 100%;
+    padding-bottom: 0;
+  }
+}
+
+.emotion-0 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 16px;
+  margin-bottom: 32px;
+  display: none;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-0 {
+    display: block;
+  }
+}
+
+.emotion-3 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  position: relative;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: space-around;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: space-around;
+  justify-content: space-around;
+  height: 48px;
+  margin-bottom: 0;
+  width: 60px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-3:after {
+  top: 0;
+  right: inherit;
+  position: absolute;
+  background-color: var(--theme-ui-colors-textPrimary,#027c5b);
+  border-radius: 0 0 10px 10px;
+  width: 0%;
+  height: 2px;
+  content: '';
+  -webkit-transition: width 100ms cubic-bezier(0.0,0.0,0.2,1);
+  transition: width 100ms cubic-bezier(0.0,0.0,0.2,1);
+}
+
+@media screen and (min-width:40em) {
+  .emotion-3:after {
+    top: inherit;
+    right: 0;
+    border-radius: 10px 0 0 10px;
+    width: 2px;
+    height: 0%;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .emotion-3 {
+    height: 60px;
+    margin-bottom: 8px;
+    width: 70px;
+  }
+}
+
+.emotion-1 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  fill: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  margin: 0;
+  height: 24px;
+  width: 24px;
+}
+
+.emotion-2 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  text-rendering: optimizeLegibility;
+  --webkitFontSmoothing: antialiased;
+  --mozOsxFontSmoothing: grayscale;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  font-size: 10px;
+  line-height: 1;
+  font-weight: normal;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-2 {
+    font-size: 12px;
+  }
+}
+
+.emotion-4 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  height: 100%;
+  display: none;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-4 {
+    display: block;
+  }
+}
+
+<div>
+  <div
+    class="emotion-10"
+  >
+    <nav
+      class="emotion-9"
+    >
+      <div
+        class="emotion-8"
+      >
+        <div
+          class="emotion-0"
+        >
+          <div
+            class=" gatsby-image-wrapper"
+            style="position: relative; overflow: hidden; display: inline-block; width: 40px; height: 40px;"
+          >
+            <img
+              alt=""
+              aria-hidden="true"
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAACVUlEQVQ4y3VVu04bQRSdsd1QpeIH6BAFTZooEiUfkM+goI6Ub4BiR8QBQpMCUblEiijzB7sRJlFMEgoaGjrbyJicc++dx9rOSkdzvXPn7D33MXaufJrK+bpKtqurDtAFeoaub/CuKXxWPZ5EQhD0N4h8Hbz7z8M934SOkgY9u0iYyJrQTRt1tQXsAQfAIbAP3+18LvvCdoU0+1GrAyLcAAYgmPvbkxf/57OC9vfwgqguQbBZnmGkjumKzPFriOAt8CgETZjD6QnOYwFtfuT3KffGwG4r0pj/mA+sG8Cj//kJUVRTOMz89VGOcHjE6GYk9jcfSTqVtChZx6Wk1pU3wgEPYnOK98/+1zHtB+ACOAfu+Q5+z0KKSLFe2VmvEeZqbZnEOaMwsq/AelGkV8DA9mYkpgLYb3KU7DP9sceky5fV6SGSIac9HO6Z3xpwR8lU4v+ecX2fc8mGVccDkctkq+wLc+qJFEEiPTa5E38r60muRSY8tMpGwvMWYbTVt79AeFoSRsn7SfJQJN9LznQykmRZmzDyP/rwCROT/KGU3DHCbTatFWZm1RwAa3nkJJdfWkUZSi53yqJoyfXFpUlhA2vbNOGOOROZdTUyMm2bkSj6lkYvNnYR5SYwtgo+SRRsYE4GcdPPjX0tTU6/1+3GztdVzOWutIOOFyKRaZhEiExGpmTvrIftbGjfFMVM8pa5krFD0llJAW3mrIFMiyzfAW3JbtWVJBPApmWfsTVYzViAZd+FW1OLk3KaCrXyQg4pZ+3I3DJp2lSbxF02rKFrfwvL/vb8A8mhJMm8BwH7AAAAAElFTkSuQmCC"
+              style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 1; transition-delay: 500ms;"
+            />
+            <picture>
+              <source
+                srcset="/static/fe67918dbda465cf53640b9ec939e54c/ff4be/logo-transparent.png 1x,
+/static/fe67918dbda465cf53640b9ec939e54c/183c2/logo-transparent.png 1.5x,
+/static/fe67918dbda465cf53640b9ec939e54c/829e2/logo-transparent.png 2x"
+              />
+              <img
+                alt=""
+                height="40"
+                loading="lazy"
+                src="/static/fe67918dbda465cf53640b9ec939e54c/ff4be/logo-transparent.png"
+                srcset="/static/fe67918dbda465cf53640b9ec939e54c/ff4be/logo-transparent.png 1x,
+/static/fe67918dbda465cf53640b9ec939e54c/183c2/logo-transparent.png 1.5x,
+/static/fe67918dbda465cf53640b9ec939e54c/829e2/logo-transparent.png 2x"
+                style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0; transition: opacity 500ms;"
+                width="40"
+              />
+            </picture>
+            <noscript>
+              &lt;picture&gt;&lt;source srcset="/static/fe67918dbda465cf53640b9ec939e54c/ff4be/logo-transparent.png 1x,
+/static/fe67918dbda465cf53640b9ec939e54c/183c2/logo-transparent.png 1.5x,
+/static/fe67918dbda465cf53640b9ec939e54c/829e2/logo-transparent.png 2x" /&gt;&lt;img loading="lazy" width="40" height="40" srcset="/static/fe67918dbda465cf53640b9ec939e54c/ff4be/logo-transparent.png 1x,
+/static/fe67918dbda465cf53640b9ec939e54c/183c2/logo-transparent.png 1.5x,
+/static/fe67918dbda465cf53640b9ec939e54c/829e2/logo-transparent.png 2x" src="/static/fe67918dbda465cf53640b9ec939e54c/ff4be/logo-transparent.png" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/&gt;&lt;/picture&gt;
+            </noscript>
+          </div>
+        </div>
+        <a
+          href="/dashboard/observe"
+          style="outline: none;"
+        >
+          <div
+            class="emotion-3"
+          >
+            <div
+              class="emotion-1"
+            />
+            <p
+              class="emotion-2"
+            >
+              Observe
+            </p>
+          </div>
+        </a>
+        <div
+          class="emotion-4"
+        />
+        <a
+          href="/dashboard/settings"
+          style="outline: none;"
+        >
+          <div
+            class="emotion-3"
+          >
+            <div
+              class="emotion-1"
+            />
+            <p
+              class="emotion-2"
+            >
+              Settings
+            </p>
+          </div>
+        </a>
+      </div>
+    </nav>
+  </div>
+</div>
+`;
