@@ -48,7 +48,7 @@ exports[`DraggableMaterialListItem should render correctly 1`] = `
   -ms-flex-align: center;
   align-items: center;
   height: 48px;
-  background-color: var(--theme-ui-colors-background,#F7F8FA);
+  background-color: var(--theme-ui-colors-background,#f2f3f5);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
