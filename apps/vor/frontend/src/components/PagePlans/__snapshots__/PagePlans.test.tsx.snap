@@ -18,20 +18,23 @@ exports[`PagePlans should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   margin-left: 16px;
   margin-right: 16px;
-  margin-top: 32px;
-  margin-bottom: 32px;
+  margin-top: 16px;
+  margin-bottom: 16px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -42,20 +45,22 @@ exports[`PagePlans should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  font-size: 24px;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 300;
-  line-height: heading;
-  font-size: 2rem;
+  font-weight: 400;
   line-height: 3rem;
-  -webkit-letter-spacing: 0;
-  -moz-letter-spacing: 0;
-  -ms-letter-spacing: 0;
-  letter-spacing: 0;
   text-rendering: optimizeLegibility;
   --webkitFontSmoothing: antialiased;
   --mozOsxFontSmoothing: grayscale;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  font-size: 16px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-0 {
+    font-size: 14px;
+  }
 }
 
 .emotion-2 {
@@ -311,11 +316,11 @@ exports[`PagePlans should render correctly 1`] = `
       <div
         class="emotion-6"
       >
-        <h6
+        <p
           class="emotion-0"
         >
-          May 2020
-        </h6>
+          Wednesday, 13 May '20
+        </p>
         <button
           class="emotion-2"
         >
