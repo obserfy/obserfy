@@ -5,8 +5,8 @@ export default {
   title: "Core|Navbar",
   component: Navbar,
   parameters: {
-    componentSubtitle: "Just a simple Navbar"
-  }
+    componentSubtitle: "Just a simple Navbar",
+  },
 }
 
 export const Basic: FC = () => <Navbar />
