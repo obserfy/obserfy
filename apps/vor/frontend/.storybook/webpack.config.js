@@ -92,5 +92,10 @@ module.exports = ({ config }) => {
   // Prefer Gatsby ES6 entrypoint (module) over commonjs (main) entrypoint
   config.resolve.mainFields = ["browser", "module", "main"]
 
+  // Webpack can't find gatsby package since the node_modules is now located at
+  // the root of the project. The line below is added so that packages inside
+  // node_modules is now included by webpack.
+  config.module.rules[0].include = path.resolve(__dirname, "../../../../")
+
   return config
 }
