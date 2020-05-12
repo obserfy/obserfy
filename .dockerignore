@@ -1,1 +1,7 @@
-node_modules
+.git
+**/*.md
+**/node_modules
+**/*.env
+**/*.cache
+**/*.public
+**/*.idea

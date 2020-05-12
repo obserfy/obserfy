@@ -150,6 +150,9 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
   return (
     <>
       <Card overflow="inherit" borderRadius={[0, "default"]} mx={[0, 3]}>
+        <Typography.H6 px={3} pt={3} pb={2}>
+          Progress
+        </Typography.H6>
         <Tab
           small
           items={areas.data?.map(({ name }) => name) ?? []}

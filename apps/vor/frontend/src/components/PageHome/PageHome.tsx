@@ -40,11 +40,12 @@ export const PageHome: FC = () => {
       <Card
         p={3}
         mx={[0, 3]}
-        borderRadius={[0, "default"]}
         mb={[0, 2]}
         key={id}
         onClick={() => navigate(`/dashboard/observe/students/details?id=${id}`)}
         sx={{
+          backgroundColor: ["background", "surface"],
+          borderRadius: [0, "default"],
           cursor: "pointer",
           boxShadow: ["none", "low"],
           display: "flex",

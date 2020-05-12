@@ -50,6 +50,7 @@ module.exports = {
     "import/prefer-default-export": 0,
     "no-unused-expressions": "off",
     "jest/no-mocks-import": "off",
+    "react/jsx-fragments": "off",
     "no-restricted-imports": [
       "error",
       {

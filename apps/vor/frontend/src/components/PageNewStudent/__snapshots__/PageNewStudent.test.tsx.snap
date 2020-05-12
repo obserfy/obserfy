@@ -77,6 +77,9 @@ exports[`PageNewStudent should render correctly 1`] = `
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 400;
   line-height: 3rem;
+  text-rendering: optimizeLegibility;
+  --webkitFontSmoothing: antialiased;
+  --mozOsxFontSmoothing: grayscale;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   font-size: 16px;
   margin-bottom: 0;
@@ -124,6 +127,9 @@ exports[`PageNewStudent should render correctly 1`] = `
   -moz-letter-spacing: 0;
   -ms-letter-spacing: 0;
   letter-spacing: 0;
+  text-rendering: optimizeLegibility;
+  --webkitFontSmoothing: antialiased;
+  --mozOsxFontSmoothing: grayscale;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   margin-bottom: 16px;
 }
@@ -163,11 +169,10 @@ exports[`PageNewStudent should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   padding: 8px;
-  background-color: var(--theme-ui-colors-background,#F7F8FA);
+  background-color: var(--theme-ui-colors-surface,#fff);
   border-radius: 8px;
   box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
   padding: 0;
-  background-color: var(--theme-ui-colors-surface,#fff);
   overflow: hidden;
   height: 100px;
   width: 100px;
@@ -222,6 +227,9 @@ exports[`PageNewStudent should render correctly 1`] = `
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 400;
   line-height: 3rem;
+  text-rendering: optimizeLegibility;
+  --webkitFontSmoothing: antialiased;
+  --mozOsxFontSmoothing: grayscale;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   font-size: 12px;
 }
@@ -740,6 +748,9 @@ exports[`PageNewStudent should render correctly 1`] = `
   -moz-letter-spacing: 0;
   -ms-letter-spacing: 0;
   letter-spacing: 0;
+  text-rendering: optimizeLegibility;
+  --webkitFontSmoothing: antialiased;
+  --mozOsxFontSmoothing: grayscale;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   margin: 16px;
   margin-top: 32px;
@@ -803,6 +814,9 @@ exports[`PageNewStudent should render correctly 1`] = `
   -moz-letter-spacing: 0;
   -ms-letter-spacing: 0;
   letter-spacing: 0;
+  text-rendering: optimizeLegibility;
+  --webkitFontSmoothing: antialiased;
+  --mozOsxFontSmoothing: grayscale;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   margin: 16px;
   margin-right: auto;
@@ -885,12 +899,11 @@ exports[`PageNewStudent should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   padding: 8px;
-  background-color: var(--theme-ui-colors-background,#F7F8FA);
+  background-color: var(--theme-ui-colors-surface,#fff);
   border-radius: 8px;
   box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
   border-radius: 0;
   padding: 0;
-  background-color: var(--theme-ui-colors-surface,#fff);
   overflow: hidden;
   margin-left: 0;
   margin-right: 0;
@@ -918,6 +931,9 @@ exports[`PageNewStudent should render correctly 1`] = `
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 400;
   line-height: 3rem;
+  text-rendering: optimizeLegibility;
+  --webkitFontSmoothing: antialiased;
+  --mozOsxFontSmoothing: grayscale;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   font-size: 16px;
   margin: 16px;
@@ -1091,6 +1107,7 @@ exports[`PageNewStudent should render correctly 1`] = `
     >
       <a
         href="/dashboard/observe"
+        style="display: block;"
       >
         <div
           class="emotion-2"
@@ -1322,12 +1339,13 @@ exports[`PageNewStudent should render correctly 1`] = `
           GUARDIANS
         </h5>
         <a
-          href="/dashboard/observe/students/guardians/pick"
+          data-cy="add-student"
+          href="/dashboard/observe/students/new/pickGuardians"
         >
           <button
             class="emotion-48"
           >
-            Add Guardian
+            Add
           </button>
         </a>
       </div>

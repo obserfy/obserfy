@@ -26,7 +26,47 @@ func (s ClassStore) CheckPermission(userId string, classId string) (bool, error)
 	}
 	return true, nil
 }
+func (s ClassStore) GetClassSession(classId string) ([]class.ClassSession, error) {
 
+	var attendance []Attendance
+	var session []class.ClassSession
+	if err := s.DB.Model(&attendance).
+		Distinct().
+		ColumnExpr("cast(date AS date)").
+		Select(); err != nil {
+		return nil, err
+	}
+	if len(attendance) > 0 {
+		for _, attendance := range attendance {
+			session = append(session, class.ClassSession{
+				Date: attendance.Date.Format("2006-01-02"),
+			})
+		}
+	}
+	var selectedClass Class
+	if err := s.DB.Model(&selectedClass).
+		Relation("Weekdays").
+		Where("id=?", classId).
+		Select(); err != nil {
+		return nil, err
+	}
+	for _, weekday := range selectedClass.Weekdays {
+		if int(time.Weekday(weekday.Day)-time.Now().Weekday()) < 0 {
+			session = append(session, class.ClassSession{
+				Date: time.Now().AddDate(0, 0, 7+int(time.Weekday(weekday.Day)-time.Now().Weekday())).Format("2006-01-02"),
+			})
+		} else if int(time.Weekday(weekday.Day)-time.Now().Weekday()) > 0 {
+			session = append(session, class.ClassSession{
+				Date: time.Now().AddDate(0, 0, int(time.Now().Weekday())+int(time.Weekday(weekday.Day)-time.Now().Weekday())).Format("2006-01-02"),
+			})
+		} else {
+			session = append(session, class.ClassSession{
+				Date: time.Now().AddDate(0, 0, int(time.Weekday(weekday.Day))).Format("2006-01-02"),
+			})
+		}
+	}
+	return session, nil
+}
 func (s ClassStore) UpdateClass(id string, name string, weekdays []time.Weekday, startTime time.Time, endTime time.Time) (int, error) {
 	dbWeekdays := make([]Weekday, len(weekdays))
 	for i, weekday := range weekdays {
@@ -86,6 +126,7 @@ func (s ClassStore) GetClass(id string) (*class.Class, error) {
 	var target Class
 	if err := s.DB.Model(&target).
 		Relation("Weekdays").
+		Relation("Students").
 		Where("id=?", id).
 		Select(); err == pg.ErrNoRows {
 		return nil, nil
@@ -97,12 +138,17 @@ func (s ClassStore) GetClass(id string) (*class.Class, error) {
 	for i, weekday := range target.Weekdays {
 		days[i] = weekday.Day
 	}
+	students := make([]class.Student, len(target.Students))
+	for i, student := range target.Students {
+		students[i] = class.Student{Id: student.Id, Name: student.Name}
+	}
 	return &class.Class{
 		Id:        target.Id,
 		Name:      target.Name,
 		Weekdays:  days,
 		StartTime: target.StartTime,
 		EndTime:   target.EndTime,
+		Students:  students,
 	}, nil
 }
 

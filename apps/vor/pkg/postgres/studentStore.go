@@ -1,9 +1,8 @@
 package postgres
 
 import (
-	"time"
-
 	richErrors "github.com/pkg/errors"
+	"time"
 
 	"github.com/go-pg/pg/v9"
 	"github.com/go-pg/pg/v9/orm"
@@ -37,6 +36,40 @@ func (s StudentStore) InsertObservation(
 		return nil, err
 	}
 	return &observation, nil
+}
+func (s StudentStore) InsertAttendance(studentId string, classId string,date time.Time) (*Attendance, error) {
+	attendanceId := uuid.New()
+	attendance := Attendance{
+		Id:        attendanceId.String(),
+		StudentId: studentId,
+		ClassId:   classId,
+		Date: date,
+	}
+	if err := s.Insert(&attendance); err != nil {
+		return nil, err
+	}
+	return &attendance, nil
+}
+func (s StudentStore) GetAttendance(studentId string) ([]Attendance, error) {
+	var attendance []Attendance
+	if err := s.Model(&attendance).
+		Where("student_id=?", studentId).
+		Relation("Student").
+		Relation("Class").
+		Select(); err != nil {
+		return nil, err
+	}
+	return attendance, nil
+}
+
+func (s StudentStore) DeleteGuardianRelation(studentId string, guardianId string) error {
+	var relation GuardianToStudent
+	if _, err := s.Model(&relation).
+		Where("student_id=? AND guardian_id=?", studentId, guardianId).
+		Delete(); err != nil {
+		return richErrors.Wrap(err, "failed to delete guardian relation")
+	}
+	return nil
 }
 
 func (s StudentStore) GetObservations(studentId string) ([]Observation, error) {
@@ -93,17 +126,41 @@ func (s StudentStore) Get(studentId string) (*Student, error) {
 	var student Student
 	if err := s.DB.Model(&student).
 		Where("id=?", studentId).
+		Relation("Guardians").
+		Relation("Classes").
 		Select(); err != nil {
 		return nil, err
 	}
 	return &student, nil
 }
 
-func (s StudentStore) Update(student *Student) error {
+func (s StudentStore) UpdateStudent(student *Student) error {
 	return s.DB.Update(student)
 }
 
-func (s StudentStore) Delete(studentId string) error {
+func (s StudentStore) DeleteStudent(studentId string) error {
 	student := Student{Id: studentId}
 	return s.DB.Delete(&student)
+}
+
+func (s StudentStore) InsertGuardianRelation(studentId string, guardianId string, relationship int) error {
+	relation := GuardianToStudent{
+		StudentId:    studentId,
+		GuardianId:   guardianId,
+		Relationship: GuardianRelationship(relationship),
+	}
+	if err := s.Insert(&relation); err != nil {
+		return richErrors.Wrap(err, "failed to save guardian relation")
+	}
+	return nil
+}
+
+func (s StudentStore) GetGuardianRelation(studentId string, guardianId string) (*GuardianToStudent, error) {
+	var relation GuardianToStudent
+	if err := s.Model(&relation).
+		Where("student_id=? AND guardian_id=?", studentId, guardianId).
+		Select(); err != nil {
+		return nil, richErrors.Wrap(err, "failed to query guardian to student relation")
+	}
+	return &relation, nil
 }

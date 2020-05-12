@@ -81,6 +81,7 @@ func runServer() error {
 		return err
 	}
 	studentImageStorage, err := minio.NewMinioImageStorage()
+	//attendanceStore:=postgres.AttendanceStore{db}
 	if err != nil {
 		l.Error("failed connecting to minio", zap.Error(err))
 		return err
