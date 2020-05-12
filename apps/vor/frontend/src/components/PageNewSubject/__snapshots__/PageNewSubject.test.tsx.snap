@@ -108,7 +108,7 @@ exports[`PageNewSubject should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  background-color: var(--theme-ui-colors-background,#F7F8FA);
+  background-color: var(--theme-ui-colors-background,#f2f3f5);
 }
 
 .emotion-14 {
@@ -271,7 +271,7 @@ exports[`PageNewSubject should render correctly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  background-color: var(--theme-ui-colors-background,#F7F8FA);
+  background-color: var(--theme-ui-colors-background,#f2f3f5);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

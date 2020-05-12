@@ -15,7 +15,9 @@ import { Typography } from "../Typography/Typography"
 const Navbar: FC = () => {
   const [keyboardShown, setKeyboardShown] = useState(false)
   const [lastVh, setLastVh] = useState(0)
-  const { deviceMemory } = useMemoryStatus({ deviceMemory: 4 })
+  const { deviceMemory } = useMemoryStatus({
+    deviceMemory: typeof window === "undefined" ? 0 : 4,
+  })
 
   const query = useStaticQuery(graphql`
     query {
@@ -31,6 +33,7 @@ const Navbar: FC = () => {
     }
   `)
 
+  // Hide navbar when keyboard is shown.
   useEffect(() => {
     const listener: EventListener = () => {
       const vh = Math.max(
@@ -59,7 +62,7 @@ const Navbar: FC = () => {
       borderRadius={0}
       height={["auto", "100%"]}
       width={["100%", "auto"]}
-      backgroundColor="surface"
+      backgroundColor="surfaceBlurNonTransparent"
       sx={{
         zIndex: 5,
         top: ["auto", 0],
@@ -68,7 +71,7 @@ const Navbar: FC = () => {
         position: "fixed",
         borderTopStyle: "solid",
         borderTopWidth: 1,
-        borderTopColor: "borderSubtle",
+        borderTopColor: "borderSolid",
         "@supports (backdrop-filter: blur(20px))":
           // Only enable on mid to hi end devices, blur is an expensive effect, turned on by default by devices that doesn't
           // support navigator.deviceMemory.
@@ -79,7 +82,7 @@ const Navbar: FC = () => {
           // 3. Chrome on android devices, which is where the majority of low end devices lies,
           //    navigator.deviceMemory is supported. This effects will then be disabled on low end devices
           //    with memory up-to 2GB, such as Galaxy S5, which performance got hit really bad with this effect,
-          // 4. This will always be turned on before js is loaded, since gatsby's build step will use the default value.
+          // 4. This will always be turned off before js is loaded, since gatsby's build step will use the default value.
           //    which means the initial html will always include the blur effect. But it doesn't matter, because at load,
           //    the html content is pretty simple.
           deviceMemory > 2

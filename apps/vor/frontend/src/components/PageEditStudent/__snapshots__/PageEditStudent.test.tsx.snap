@@ -43,14 +43,14 @@ exports[`PageEditStudent should render correctly 1`] = `
   position: fixed;
   border-top-style: solid;
   border-top-width: 1px;
-  border-top-color: borderSubtle;
+  border-top-color: var(--theme-ui-colors-borderSolid,#fff);
   border-radius: 0;
   padding: 0;
   overflow: hidden;
   display: block;
   height: auto;
   width: 100%;
-  background-color: var(--theme-ui-colors-surface,#fff);
+  background-color: var(--theme-ui-colors-surfaceBlurNonTransparent,rgba(255,255,255));
 }
 
 @media screen and (min-width:40em) {
@@ -245,7 +245,7 @@ exports[`PageEditStudent should render correctly 1`] = `
   width: 100%;
   padding-left: 0;
   padding-bottom: 48px;
-  background-color: var(--theme-ui-colors-background,#F7F8FA);
+  background-color: var(--theme-ui-colors-background,#f2f3f5);
   margin-bottom: env(safe-area-inset-bottom);
 }
 

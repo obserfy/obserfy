@@ -52,7 +52,7 @@ exports[`Switch should render correctly 1`] = `
   border-radius: 9999px;
   border: 1px solid;
   border-color: var(--theme-ui-colors-primary,#00e399);
-  background-color: var(--theme-ui-colors-background,#F7F8FA);
+  background-color: var(--theme-ui-colors-background,#f2f3f5);
   -webkit-transition-property: -webkit-transform;
   -webkit-transition-property: transform;
   transition-property: transform;
