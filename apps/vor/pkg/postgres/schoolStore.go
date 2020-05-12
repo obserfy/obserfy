@@ -7,11 +7,23 @@ import (
 	"time"
 )
 
-type SchoolStore struct {
-	*pg.DB
-}
+type (
+	SchoolStore struct {
+		*pg.DB
+	}
 
-func (s SchoolStore) NewSchool(schoolName string, userId string) (*School, error) {
+	GuardianRelation struct {
+		SchoolId     string
+		Name         string
+		Email        string
+		Phone        string
+		Note         string
+		Relationship *int
+		StudentId    *string
+	}
+)
+
+func (s SchoolStore) NewSchool(schoolName, userId string) (*School, error) {
 	id := uuid.New()
 	inviteCode := uuid.New()
 	school := School{
@@ -62,7 +74,8 @@ func (s SchoolStore) GetStudents(schoolId string) ([]Student, error) {
 	}
 	return students, nil
 }
-func (s SchoolStore) GetClassAttendance(classId string, session string) ([]Attendance, error) {
+
+func (s SchoolStore) GetClassAttendance(classId, session string) ([]Attendance, error) {
 	var attendance []Attendance
 	if session == "" {
 		session = "1970-01-01"
@@ -77,6 +90,7 @@ func (s SchoolStore) GetClassAttendance(classId string, session string) ([]Atten
 	}
 	return attendance, nil
 }
+
 func (s SchoolStore) NewStudent(student Student, classes []string, guardians map[string]int) error {
 	if student.Id == "" {
 		student.Id = uuid.New().String()
@@ -221,7 +235,7 @@ func (s SchoolStore) GetCurriculumAreas(schoolId string) ([]Area, error) {
 	return school.Curriculum.Areas, nil
 }
 
-func (s SchoolStore) NewClass(id string, name string, weekdays []time.Weekday, startTime time.Time, endTime time.Time) error {
+func (s SchoolStore) NewClass(id string, name string, weekdays []time.Weekday, startTime, endTime time.Time) error {
 	newClass := Class{
 		Id:        uuid.New().String(),
 		SchoolId:  id,
@@ -263,22 +277,14 @@ func (s SchoolStore) GetSchoolClasses(schoolId string) ([]Class, error) {
 	return classes, nil
 }
 
-func (s SchoolStore) InsertGuardianWIthRelation(
-	schoolId string,
-	name string,
-	email string,
-	phone string,
-	note string,
-	relationship *int,
-	studentId *string,
-) (*Guardian, error) {
+func (s SchoolStore) InsertGuardianWithRelation(input GuardianRelation) (*Guardian, error) {
 	guardian := Guardian{
 		Id:       uuid.New().String(),
-		Name:     name,
-		Email:    email,
-		Phone:    phone,
-		Note:     note,
-		SchoolId: schoolId,
+		Name:     input.Name,
+		Email:    input.Email,
+		Phone:    input.Phone,
+		Note:     input.Note,
+		SchoolId: input.SchoolId,
 	}
 	if err := s.RunInTransaction(func(tx *pg.Tx) error {
 		if _, err := s.Model(&guardian).Insert(); err != nil {
@@ -286,11 +292,11 @@ func (s SchoolStore) InsertGuardianWIthRelation(
 		}
 
 		// Creating relation is optional
-		if studentId != nil && relationship != nil {
+		if input.StudentId != nil && input.Relationship != nil {
 			relation := GuardianToStudent{
-				StudentId:    *studentId,
+				StudentId:    *input.StudentId,
 				GuardianId:   guardian.Id,
-				Relationship: GuardianRelationship(*relationship),
+				Relationship: GuardianRelationship(*input.Relationship),
 			}
 			if _, err := s.Model(&relation).Insert(); err != nil {
 				return richErrors.Wrap(err, "failed to insert guardian to student relation")
