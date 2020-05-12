@@ -38,9 +38,7 @@ const themeUiTheme = {
     onSurfaceBlurTransparent: "#87000000",
 
     border: "rgba(0,0,0,.1)",
-    borderSubtle: "rgba(0,0,0, 0.1)",
     borderSolid: "#fff",
-    borderEmphasized: "#cfcfd3",
 
     overlay: "rgba(0,0,0,.6)",
     onOverlay: "#fff",
@@ -89,6 +87,9 @@ const themeUiTheme = {
         primary: "#00a875",
         onPrimary: "#000",
 
+        primaryDark: "#009c6e",
+        onPrimaryDark: "rgba(255,255,255, 0.87)",
+
         background: "#101010",
         onBackground: "rgba(255,255,255, 0.87)",
 
@@ -100,13 +101,9 @@ const themeUiTheme = {
         surfaceBlurTransparent: "rgba(29,29,29,0.6)",
         onSurfaceBlurTransparent: "rgba(255,255,255, 0.87)",
 
-        primaryDark: "#009c6e",
-        onPrimaryDark: "rgba(255,255,255, 0.87)",
-
         icon: "#979797",
 
         border: "rgba(232,232,232, 0.13)",
-        borderSubtle: "rgba(255,255,255, 0.1)",
         borderSolid: "#000",
 
         muted: "#222222",
