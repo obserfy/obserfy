@@ -7,9 +7,11 @@ import Button from "../Button/Button"
 import Icon from "../Icon/Icon"
 import { ReactComponent as PrevIcon } from "../../icons/arrow-back.svg"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
+import useGetPlans from "../../api/useGetPlans"
 
 export const PagePlans: FC = () => {
   const [selectedDate, setSelectedDate] = useState(dayjs())
+  const { data } = useGetPlans(selectedDate.format("YYYY-MM-DD"))
 
   return (
     <Box maxWidth="maxWidth.sm" mx="auto">
@@ -45,6 +47,13 @@ export const PagePlans: FC = () => {
           today
         </Button>
       </Flex>
+      {data?.map((plan) => {
+        return (
+          <Box>
+            <Typography.Body>{plan.title}</Typography.Body>
+          </Box>
+        )
+      })}
     </Box>
   )
 }
