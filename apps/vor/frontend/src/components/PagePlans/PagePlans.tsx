@@ -49,7 +49,7 @@ export const PagePlans: FC = () => {
       </Flex>
       {data?.map((plan) => {
         return (
-          <Box>
+          <Box m={3}>
             <Typography.Body>{plan.title}</Typography.Body>
           </Box>
         )

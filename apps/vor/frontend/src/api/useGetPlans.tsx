@@ -2,7 +2,7 @@ import { useQuery } from "react-query"
 import { fetchApi } from "./fetchApi"
 import { getSchoolId } from "../hooks/schoolIdState"
 
-interface Plans {
+export interface Plans {
   title: string
 }
 function useGetPlans(date: string) {
