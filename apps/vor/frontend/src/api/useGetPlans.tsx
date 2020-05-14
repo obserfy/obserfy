@@ -3,6 +3,7 @@ import { fetchApi } from "./fetchApi"
 import { getSchoolId } from "../hooks/schoolIdState"
 
 export interface Plans {
+  id: string
   title: string
 }
 function useGetPlans(date: string) {

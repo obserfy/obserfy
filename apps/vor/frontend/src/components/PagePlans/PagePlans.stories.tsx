@@ -1,6 +1,7 @@
 import React, { FC } from "react"
 import { Server } from "miragejs"
 import faker from "faker"
+import { nanoid } from "nanoid"
 import PagePlans from "./PagePlans"
 import Layout from "../Layout/Layout"
 import { Plans } from "../../api/useGetPlans"
@@ -18,13 +19,13 @@ new Server({
     this.namespace = "/api/v1"
 
     this.get("/schools/*/plans", (): Plans[] => [
-      { title: faker.company.companyName() },
-      { title: faker.company.companyName() },
-      { title: faker.company.companyName() },
-      { title: faker.company.companyName() },
-      { title: faker.company.companyName() },
-      { title: faker.company.companyName() },
-      { title: faker.company.companyName() },
+      { id: nanoid(), title: faker.company.companyName() },
+      { id: nanoid(), title: faker.company.companyName() },
+      { id: nanoid(), title: faker.company.companyName() },
+      { id: nanoid(), title: faker.company.companyName() },
+      { id: nanoid(), title: faker.company.companyName() },
+      { id: nanoid(), title: faker.company.companyName() },
+      { id: nanoid(), title: faker.company.companyName() },
     ])
   },
 })

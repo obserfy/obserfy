@@ -17,6 +17,13 @@ module.exports = {
   env: {
     "jest/globals": true,
   },
+  overrides: [
+    {
+      // turn off no-new for miragejs use in storybook.
+      files: ["*.stories.tsx"],
+      rules: { "no-new": "off" }
+    }
+  ],
   rules: {
     "no-undef": 0,
     "react/prop-types": 0,
