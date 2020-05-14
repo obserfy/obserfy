@@ -61,6 +61,7 @@
     "@storybook/addon-viewport": "5.3.18",
     "@storybook/addons": "5.3.18",
     "@storybook/react": "5.3.18",
+    "@storybook/storybook-deployer": "^2.8.6",
     "@storybook/theming": "5.3.18",
     "@testing-library/react": "10.0.3",
     "@testing-library/react-hooks": "3.2.1",
@@ -133,7 +134,8 @@
     "storybook": "cross-env NODE_ENV=production start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook",
     "gen:component": "hygen component new --name",
-    "test": "jest --coverage --passWithNoTests --coverageReporters json clover"
+    "test": "jest --coverage --passWithNoTests --coverageReporters json clover",
+    "deploy-storybook": "storybook-to-ghpages"
   },
   "nyc": {
     "extends": "@istanbuljs/nyc-config-typescript",

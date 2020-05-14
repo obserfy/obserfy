@@ -3362,6 +3362,17 @@
     prop-types "^15.7.2"
     regenerator-runtime "^0.13.3"
 
+"@storybook/storybook-deployer@^2.8.6":
+  version "2.8.6"
+  resolved "https://registry.yarnpkg.com/@storybook/storybook-deployer/-/storybook-deployer-2.8.6.tgz#00c2e84f27dfaa88cb0785361453f23b1ebb4ea3"
+  integrity sha512-Bpe7ZtsR5NUuohK3VsQa+nxEHtVxMZZo3DRlRUZW5IZOmzmvSID3i+jkizloG9xO7sw5zUvlD31YMHm7OtdrMA==
+  dependencies:
+    git-url-parse "^11.1.2"
+    glob "^7.1.3"
+    parse-repo "^1.0.4"
+    shelljs "^0.8.1"
+    yargs "^15.0.0"
+
 "@storybook/theming@5.1.9":
   version "5.1.9"
   resolved "https://registry.yarnpkg.com/@storybook/theming/-/theming-5.1.9.tgz#c425f5867fae0db79e01112853b1808332a5f1a2"
@@ -11537,13 +11548,20 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
-git-up@4.0.1:
+git-up@4.0.1, git-up@^4.0.0:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/git-up/-/git-up-4.0.1.tgz#cb2ef086653640e721d2042fe3104857d89007c0"
   integrity sha512-LFTZZrBlrCrGCG07/dm1aCjjpL1z9L3+5aEeI9SBhAqSc+kiA9Or1bgZhQFNppJX6h/f5McrvJt1mQXTFm6Qrw==
   dependencies:
     is-ssh "^1.3.0"
     parse-url "^5.0.0"
+
+git-url-parse@^11.1.2:
+  version "11.1.2"
+  resolved "https://registry.yarnpkg.com/git-url-parse/-/git-url-parse-11.1.2.tgz#aff1a897c36cc93699270587bea3dbcbbb95de67"
+  integrity sha512-gZeLVGY8QVKMIkckncX+iCq2/L8PlwncvDFKiWkBn9EtCfYDbliRTTp6qzyQ1VMdITUfq7293zDzfpjdiGASSQ==
+  dependencies:
+    git-up "^4.0.0"
 
 github-from-package@0.0.0:
   version "0.0.0"
@@ -17168,6 +17186,11 @@ parse-path@^4.0.0:
     is-ssh "^1.3.0"
     protocols "^1.4.0"
 
+parse-repo@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/parse-repo/-/parse-repo-1.0.4.tgz#74b91d2cb8675d11b99976a0065f6ce17fa1bcc8"
+  integrity sha1-dLkdLLhnXRG5mXagBl9s4X+hvMg=
+
 parse-url@^5.0.0:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/parse-url/-/parse-url-5.0.1.tgz#99c4084fc11be14141efa41b3d117a96fcb9527f"
@@ -20427,6 +20450,15 @@ shell-quote@1.7.2, shell-quote@^1.4.2, shell-quote@^1.6.1:
   version "1.7.2"
   resolved "https://registry.yarnpkg.com/shell-quote/-/shell-quote-1.7.2.tgz#67a7d02c76c9da24f99d20808fcaded0e0e04be2"
   integrity sha512-mRz/m/JVscCrkMyPqHc/bczi3OQHkLTqXHEFu0zDhK/qfv3UcOA4SVmRCLmos4bhjr9ekVQubj/R7waKapmiQg==
+
+shelljs@^0.8.1:
+  version "0.8.4"
+  resolved "https://registry.yarnpkg.com/shelljs/-/shelljs-0.8.4.tgz#de7684feeb767f8716b326078a8a00875890e3c2"
+  integrity sha512-7gk3UZ9kOfPLIAbslLzyWeGiEqx9e3rxwZM0KE6EL8GlGwjym9Mrlx5/p33bWTu9YG6vcS4MBxYZDHYr5lr8BQ==
+  dependencies:
+    glob "^7.0.0"
+    interpret "^1.0.0"
+    rechoir "^0.6.2"
 
 shelljs@^0.8.3:
   version "0.8.3"
@@ -23766,7 +23798,7 @@ yargs@^14.2.0:
     y18n "^4.0.0"
     yargs-parser "^15.0.1"
 
-yargs@^15.0.2, yargs@^15.3.1:
+yargs@^15.0.0, yargs@^15.0.2, yargs@^15.3.1:
   version "15.3.1"
   resolved "https://registry.yarnpkg.com/yargs/-/yargs-15.3.1.tgz#9505b472763963e54afe60148ad27a330818e98b"
   integrity sha512-92O1HWEjw27sBfgmXiixJWT5hRBp2eobqXicLtPBIDBhYB+1HpwZlXmbW2luivBJHBzki+7VyCLRtAkScbTBQA==

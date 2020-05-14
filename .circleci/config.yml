@@ -182,8 +182,12 @@ orbs:
 workflows:
   vor:
     jobs:
-      - frontend_build
-      - backend_unit
+      - frontend_build:
+          ignore:
+            - gh-pages
+      - backend_unit:
+          ignore:
+            - gh-pages
       - frontend_lint:
           requires:
             - frontend_build
