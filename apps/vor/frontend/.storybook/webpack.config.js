@@ -31,10 +31,26 @@ module.exports = ({ config }) => {
     use: [require.resolve("react-docgen-typescript-loader")],
   })
 
+  config.module.rules.push({
+    test: /\.stories\.tsx?$/,
+    loaders: [
+      {
+        loader: require.resolve("@storybook/source-loader"),
+        options: { parser: "typescript" },
+      },
+    ],
+    enforce: "pre",
+  })
+
   // Handle SVGR
   const rules = config.module.rules
   // modify storybook's file-loader rule to avoid conflicts with svgr
-  const fileLoaderRule = rules.find((rule) => rule.test.test(".svg"))
+  const fileLoaderRule = rules.find((rule) => {
+    if (rule && rule.test && rule.test.test) {
+      return rule.test.test(".svg")
+    }
+    return false
+  })
   fileLoaderRule.exclude = [pathToInlineSvg]
   rules.push({
     test: /\.svg$/,

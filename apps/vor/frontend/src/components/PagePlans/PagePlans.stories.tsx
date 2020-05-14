@@ -1,11 +1,12 @@
 import React, { FC } from "react"
-import { Server } from "miragejs"
 import faker from "faker"
 import { nanoid } from "nanoid"
 import PagePlans from "./PagePlans"
 import Layout from "../Layout/Layout"
 import { Plans } from "../../api/useGetPlans"
+import mockApi from "../../__mocks__/api"
 
+// Component Details
 export default {
   title: "Core|PagePlans",
   component: PagePlans,
@@ -14,25 +15,32 @@ export default {
   },
 }
 
-new Server({
-  routes() {
-    this.namespace = "/api/v1"
+// Stories
+export const Basic: FC = () => {
+  // Mock server
+  mockApi.get("/schools/*/plans", (): Plans[] => [
+    { id: nanoid(), title: faker.company.companyName() },
+    { id: nanoid(), title: faker.company.companyName() },
+  ])
 
-    this.get("/schools/*/plans", (): Plans[] => [
-      { id: nanoid(), title: faker.company.companyName() },
-      { id: nanoid(), title: faker.company.companyName() },
-      { id: nanoid(), title: faker.company.companyName() },
-      { id: nanoid(), title: faker.company.companyName() },
-      { id: nanoid(), title: faker.company.companyName() },
-      { id: nanoid(), title: faker.company.companyName() },
-      { id: nanoid(), title: faker.company.companyName() },
-    ])
-  },
-})
+  return <PagePlans />
+}
 
-export const Basic: FC = () => <PagePlans />
-export const WithLayout: FC = () => (
-  <Layout>
-    <PagePlans />
-  </Layout>
-)
+export const WithLayout: FC = () => {
+  // Mock server
+  mockApi.get("/schools/*/plans", (): Plans[] => [
+    { id: nanoid(), title: faker.company.companyName() },
+    { id: nanoid(), title: faker.company.companyName() },
+    { id: nanoid(), title: faker.company.companyName() },
+    { id: nanoid(), title: faker.company.companyName() },
+    { id: nanoid(), title: faker.company.companyName() },
+    { id: nanoid(), title: faker.company.companyName() },
+    { id: nanoid(), title: faker.company.companyName() },
+  ])
+
+  return (
+    <Layout>
+      <PagePlans />
+    </Layout>
+  )
+}

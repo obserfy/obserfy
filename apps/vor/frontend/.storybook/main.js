@@ -9,5 +9,6 @@ module.exports = {
     "storybook-addon-i18n",
     "@storybook/addon-viewport",
     "@storybook/addon-docs",
+    '@storybook/addon-storysource',
   ],
 }
