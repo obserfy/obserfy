@@ -32,3 +32,8 @@ export const PICK_GUARDIAN_URL = "/dashboard/observe/students/new/pickGuardians"
 
 export const STUDENT_PROFILE_URL = (id: string) =>
   `/dashboard/observe/students/profile?id=${id}`
+
+export const NEW_PLANS_URL = `/dashboard/plans/new`
+export const ALL_PLANS_URL = `/dashboard/plans`
+export const PLANS_DETAILS_URL = (id: string) =>
+  `/dashboard/plans/details?id=${id}`

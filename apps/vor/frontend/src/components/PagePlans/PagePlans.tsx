@@ -3,11 +3,15 @@ import dayjs from "../../dayjs"
 import { Box } from "../Box/Box"
 import Typography from "../Typography/Typography"
 import { Flex } from "../Flex/Flex"
+import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import Button from "../Button/Button"
 import Icon from "../Icon/Icon"
 import { ReactComponent as PrevIcon } from "../../icons/arrow-back.svg"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import useGetPlans from "../../api/useGetPlans"
+import { Link } from "../Link/Link"
+import { Card } from "../Card/Card"
+import { NEW_PLANS_URL, PLANS_DETAILS_URL } from "../../routes"
 
 export const PagePlans: FC = () => {
   const [selectedDate, setSelectedDate] = useState(dayjs())
@@ -49,11 +53,25 @@ export const PagePlans: FC = () => {
       </Flex>
       {data?.map((plan) => {
         return (
-          <Box m={3}>
-            <Typography.Body>{plan.title}</Typography.Body>
-          </Box>
+          <Link to={PLANS_DETAILS_URL(plan.id)}>
+            <Card p={3} borderRadius={[0, "default"]}>
+              <Typography.Body fontSize={1}>{plan.title}</Typography.Body>
+            </Card>
+          </Link>
         )
       })}
+      <Link to={NEW_PLANS_URL}>
+        <Card
+          p={3}
+          borderRadius={[0, "default"]}
+          sx={{ display: "flex", alignItems: "center" }}
+        >
+          <Icon as={PlusIcon} m={0} fill="primaryDark" />
+          <Typography.Body ml={3} fontSize={1} color="textMediumEmphasis">
+            Add plan
+          </Typography.Body>
+        </Card>
+      </Link>
     </Box>
   )
 }
