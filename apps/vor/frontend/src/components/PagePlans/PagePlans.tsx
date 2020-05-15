@@ -1,4 +1,6 @@
-import React, { FC, useState } from "react"
+/** @jsx jsx */
+import { FC, useState } from "react"
+import { jsx } from "theme-ui"
 import dayjs from "../../dayjs"
 import { Box } from "../Box/Box"
 import Typography from "../Typography/Typography"
@@ -53,14 +55,17 @@ export const PagePlans: FC = () => {
       </Flex>
       {data?.map((plan) => {
         return (
-          <Link to={PLANS_DETAILS_URL(plan.id)}>
+          <Link
+            to={PLANS_DETAILS_URL(plan.id)}
+            sx={{ display: "block", m: [0, 3] }}
+          >
             <Card p={3} borderRadius={[0, "default"]}>
               <Typography.Body fontSize={1}>{plan.title}</Typography.Body>
             </Card>
           </Link>
         )
       })}
-      <Link to={NEW_PLANS_URL}>
+      <Link to={NEW_PLANS_URL} sx={{ display: "block", m: [0, 3] }}>
         <Card
           p={3}
           borderRadius={[0, "default"]}
