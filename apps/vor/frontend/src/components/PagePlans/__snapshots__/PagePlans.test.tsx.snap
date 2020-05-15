@@ -308,12 +308,14 @@ exports[`PagePlans should render correctly 1`] = `
 
 .emotion-10 {
   display: block;
-  margin: 0;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 @media screen and (min-width:40em) {
   .emotion-10 {
-    margin: 16px;
+    margin-left: 16px;
+    margin-right: 16px;
   }
 }
 

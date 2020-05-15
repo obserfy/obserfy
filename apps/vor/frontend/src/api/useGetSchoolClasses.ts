@@ -2,7 +2,7 @@ import { QueryResult, useQuery } from "react-query"
 import { fetchApi } from "./fetchApi"
 import { getSchoolId } from "../hooks/schoolIdState"
 
-interface Class {
+export interface Class {
   id: string
   name: string
   startTime: Date

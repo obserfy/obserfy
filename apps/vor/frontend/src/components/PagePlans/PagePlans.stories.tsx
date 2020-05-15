@@ -8,7 +8,7 @@ import mockApi from "../../__mocks__/api"
 
 // Component Details
 export default {
-  title: "Core|PagePlans",
+  title: "Page|Plans/PagePlans",
   component: PagePlans,
   parameters: {
     componentSubtitle: "Just a simple PagePlans",

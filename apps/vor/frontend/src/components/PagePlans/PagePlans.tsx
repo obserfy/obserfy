@@ -57,7 +57,7 @@ export const PagePlans: FC = () => {
         return (
           <Link
             to={PLANS_DETAILS_URL(plan.id)}
-            sx={{ display: "block", m: [0, 3] }}
+            sx={{ display: "block", mx: [0, 3], mb: [0, 2] }}
           >
             <Card p={3} borderRadius={[0, "default"]}>
               <Typography.Body fontSize={1}>{plan.title}</Typography.Body>
@@ -65,7 +65,7 @@ export const PagePlans: FC = () => {
           </Link>
         )
       })}
-      <Link to={NEW_PLANS_URL} sx={{ display: "block", m: [0, 3] }}>
+      <Link to={NEW_PLANS_URL} sx={{ display: "block", mx: [0, 3] }}>
         <Card
           p={3}
           borderRadius={[0, "default"]}
