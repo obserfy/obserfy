@@ -622,7 +622,7 @@ exports[`PageNewPlan should render correctly 1`] = `
                 class="emotion-5"
                 disabled=""
                 placeholder="Not set"
-                value=""
+                value="1 February '20"
               />
             </div>
           </label>
@@ -675,6 +675,7 @@ exports[`PageNewPlan should render correctly 1`] = `
         />
         <button
           class="emotion-20"
+          disabled=""
         >
           Save
         </button>
