@@ -4192,7 +4192,7 @@
     "@types/history" "*"
     "@types/react" "*"
 
-"@types/react-adaptive-hooks@^0.0.0":
+"@types/react-adaptive-hooks@0.0.0":
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/@types/react-adaptive-hooks/-/react-adaptive-hooks-0.0.0.tgz#164cedba95d2c9826668ad900e90bb995e2d61e0"
   integrity sha512-SKw/BjWVg/1vZ/hCtYPWYk0U9e/ajhnvYALur68VJ6SI87r7lFlOduqUf+zKxn/WjXuqvLw1qLc2xOTjLNL0Nw==
