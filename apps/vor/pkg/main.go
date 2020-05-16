@@ -8,6 +8,7 @@ import (
 	"github.com/chrsep/vor/pkg/curriculum"
 	"github.com/chrsep/vor/pkg/guardian"
 	"github.com/chrsep/vor/pkg/imgproxy"
+	"github.com/chrsep/vor/pkg/lessonplan"
 	"github.com/chrsep/vor/pkg/logger"
 	"github.com/chrsep/vor/pkg/mailgun"
 	"github.com/chrsep/vor/pkg/minio"
@@ -74,6 +75,7 @@ func runServer() error {
 	authStore := postgres.AuthStore{db}
 	classStore := postgres.ClassStore{db}
 	guardianStore := postgres.GuardianStore{db}
+	lessonplanStore := postgres.LessonPlanStore{db}
 	mailService := mailgun.NewService()
 	imgproxyClient, err := imgproxy.CreateClient()
 	if err != nil {
@@ -106,6 +108,7 @@ func runServer() error {
 		r.Mount("/curriculum", curriculum.NewRouter(server, curriculumStore))
 		r.Mount("/classes", class.NewRouter(server, classStore))
 		r.Mount("/guardians", guardian.NewRouter(server, guardianStore))
+		r.Mount("/plans", lessonplan.NewRouter(server, lessonplanStore))
 	})
 	// Serve gatsby static frontend assets
 	r.Group(func(r chi.Router) {

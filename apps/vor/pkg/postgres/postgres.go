@@ -52,6 +52,8 @@ func InitTables(db *pg.DB) error {
 		(*UserToSchool)(nil),
 		(*Attendance)(nil),
 		(*PasswordResetToken)(nil),
+		(*LessonPlan)(nil),
+		(*Attachment)(nil),
 	} {
 		err := db.CreateTable(model, &orm.CreateTableOptions{IfNotExists: true, FKConstraints: true})
 		if err != nil {
@@ -234,4 +236,18 @@ type Weekday struct {
 	ClassId string       `pg:",pk,type:uuid,on_delete:CASCADE"`
 	Day     time.Weekday `pg:",pk,use_zero"`
 	Class   Class
+}
+
+type LessonPlan struct {
+	Id          string `pg:"type:uuid"`
+	Title       string
+	Description string
+	ClassId     string `pg:"type:uuid"`
+	Repetition  int
+}
+
+type Attachment struct {
+	Id       string `pg:"type:uuid"`
+	FileName string
+	FilePath string
 }

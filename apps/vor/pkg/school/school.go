@@ -2,19 +2,21 @@ package school
 
 import (
 	"errors"
-	"github.com/chrsep/vor/pkg/auth"
-	"github.com/chrsep/vor/pkg/imgproxy"
-	"github.com/chrsep/vor/pkg/minio"
-	"github.com/chrsep/vor/pkg/postgres"
-	"github.com/chrsep/vor/pkg/rest"
+	"net/http"
+	"os"
+	"time"
+
 	"github.com/go-chi/chi"
 	"github.com/go-pg/pg/v9"
 	"github.com/go-playground/validator/v10"
 	"github.com/google/uuid"
 	richErrors "github.com/pkg/errors"
-	"net/http"
-	"os"
-	"time"
+
+	"github.com/chrsep/vor/pkg/auth"
+	"github.com/chrsep/vor/pkg/imgproxy"
+	"github.com/chrsep/vor/pkg/minio"
+	"github.com/chrsep/vor/pkg/postgres"
+	"github.com/chrsep/vor/pkg/rest"
 )
 
 func NewRouter(
@@ -45,6 +47,8 @@ func NewRouter(
 
 		r.Method("POST", "/guardians", postNewGuardian(server, store))
 		r.Method("GET", "/guardians", getGuardians(server, store))
+
+		r.Method("GET", "/plans", getLessonPlan(server, store))
 	})
 	return r
 }
@@ -654,6 +658,13 @@ func getGuardians(server rest.Server, store Store) http.Handler {
 		if err := rest.WriteJson(w, &response); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
+		return nil
+	})
+}
+
+func getLessonPlan(server rest.Server, store Store) http.Handler {
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		rest.WriteJson(w, "OK")
 		return nil
 	})
 }
