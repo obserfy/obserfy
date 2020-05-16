@@ -6,7 +6,7 @@
   "license": "GPL-3",
   "private": true,
   "devDependencies": {
-    "@cypress/code-coverage": "3.7.2",
+    "@cypress/code-coverage": "3.7.3",
     "@types/faker": "4.1.11",
     "@types/node": "13.13.5",
     "cypress": "4.5.0",
