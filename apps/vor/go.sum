@@ -11,6 +11,8 @@ github.com/armon/consul-api v0.0.0-20180202201655-eb2c6b5be1b6/go.mod h1:grANhF5
 github.com/aymerick/raymond v2.0.3-0.20180322193309-b565731e1464+incompatible/go.mod h1:osfaiScAUVup+UC9Nfq76eWqDhXlp+4UYaA8uhTBO6g=
 github.com/benbjohnson/clock v1.0.0 h1:78Jk/r6m4wCi6sndMpty7A//t4dw/RW5fV4ZgDVfX1w=
 github.com/benbjohnson/clock v1.0.0/go.mod h1:bGMdMPoPVvcYyt1gHDf4J2KE153Yf9BuiUKYMaxlTDM=
+github.com/benbjohnson/clock v1.0.2 h1:Z0CN0Yb4ig9sGPXkvAQcGJfnrrMQ5QYLCMPRi9iD7YE=
+github.com/benbjohnson/clock v1.0.2/go.mod h1:bGMdMPoPVvcYyt1gHDf4J2KE153Yf9BuiUKYMaxlTDM=
 github.com/brianvoe/gofakeit/v4 v4.3.0 h1:y8octMlc4cmDra6sIst89NHEjZuWYmZDl9H0i5wjTvY=
 github.com/brianvoe/gofakeit/v4 v4.3.0/go.mod h1:GC/GhKWdGJ2eskBf4zGdjo3eHj8rX4E9hFLFg0bqK4s=
 github.com/codegangsta/inject v0.0.0-20150114235600-33e0aa1cb7c0/go.mod h1:4Zcjuz89kmFXt9morQgcfYZAYZ5n8WHjt81YYWIwtTM=
