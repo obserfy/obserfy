@@ -1,9 +1,3 @@
-// Only use preact on prod. preact's dx on gatsby is still awful.
-const preact =
-  process.env.NODE_ENV === "production" || process.env.PREACT === "y"
-    ? [`gatsby-plugin-preact`]
-    : []
-
 module.exports = {
   siteMetadata: {
     title: `Obserfy`,
@@ -12,7 +6,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    ...preact,
+    `gatsby-plugin-preact`,
     `gatsby-plugin-postcss`,
     `gatsby-plugin-netlify-cache`,
     {
