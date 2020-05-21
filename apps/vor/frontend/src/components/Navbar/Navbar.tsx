@@ -8,6 +8,7 @@ import Flex from "../Flex/Flex"
 import Box from "../Box/Box"
 import { ReactComponent as EditIcon } from "../../icons/edit2.svg"
 import { ReactComponent as SettingsIcon } from "../../icons/settings.svg"
+import { ReactComponent as CalendarIcon } from "../../icons/calendar.svg"
 import { Link } from "../Link/Link"
 import Icon from "../Icon/Icon"
 import { Typography } from "../Typography/Typography"
@@ -106,6 +107,7 @@ const Navbar: FC = () => {
           <GatsbyImage fixed={query.file.childImageSharp.fixed} />
         </Box>
         <NavBarItem title="Observe" icon={EditIcon} to="/dashboard/observe" />
+        <NavBarItem title="Plan" icon={CalendarIcon} to="/dashboard/plans" />
         <Box height="100%" display={["none", "block"]} />
         <NavBarItem
           title="Settings"
@@ -177,7 +179,6 @@ const NavBarItem: FC<{
           lineHeight={1}
           fontSize={["10px", 0]}
           color={match ? "textPrimary" : "textMediumEmphasis"}
-          fontWeight={match ? "bold" : "normal"}
         >
           {title}
         </Typography.Body>
