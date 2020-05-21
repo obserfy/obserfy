@@ -6,7 +6,7 @@
  */
 
 import React, { FC } from "react"
-import { Helmet } from "react-helmet-async"
+import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
 interface Props {

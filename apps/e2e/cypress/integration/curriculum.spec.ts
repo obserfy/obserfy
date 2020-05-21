@@ -39,6 +39,7 @@ describe("Test curriculum features", () => {
     cy.contains("Save").click()
 
     cy.contains("h6", newAreaName).click()
+    cy.wait(500)
     cy.contains("New").click()
 
     cy.contains("Subject name").type(newSubjectName)
