@@ -11,9 +11,8 @@ module.exports = {
     author: `@chrsep`,
   },
   plugins: [
-    `gatsby-plugin-react-helmet-async`,
+    `gatsby-plugin-react-helmet`,
     ...preact,
-    `gatsby-plugin-typescript`,
     `gatsby-plugin-postcss`,
     `gatsby-plugin-netlify-cache`,
     {

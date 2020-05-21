@@ -42,9 +42,8 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-layout`,
-    `gatsby-plugin-typescript`,
     "gatsby-plugin-theme-ui",
-    `gatsby-plugin-react-helmet-async`,
+    `gatsby-plugin-react-helmet`,
     ...preact,
     {
       resolve: `gatsby-source-filesystem`,
