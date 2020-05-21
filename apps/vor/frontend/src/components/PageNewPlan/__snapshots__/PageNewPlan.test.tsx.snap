@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageNewPlan should render correctly 1`] = `
-.emotion-23 {
+.emotion-31 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,12 +9,12 @@ exports[`PageNewPlan should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-23 {
+  .emotion-31 {
     font-size: 20px;
   }
 }
 
-.emotion-22 {
+.emotion-30 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -98,7 +98,7 @@ exports[`PageNewPlan should render correctly 1`] = `
   margin: 16px;
 }
 
-.emotion-21 {
+.emotion-29 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -504,7 +504,99 @@ exports[`PageNewPlan should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-20 {
+.emotion-27 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-22 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  border-radius: 8px;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-width: 1px;
+  border-style: solid;
+  white-space: nowrap;
+  background-color: var(--theme-ui-colors-primary,#00e399);
+  margin-right: 8px;
+  margin-bottom: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.emotion-22:hover {
+  background-color: var(--theme-ui-colors-primary,#00e399);
+}
+
+.emotion-21 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  text-rendering: optimizeLegibility;
+  --webkitFontSmoothing: antialiased;
+  --mozOsxFontSmoothing: grayscale;
+  color: var(--theme-ui-colors-onPrimary,#000);
+  font-size: 14px;
+}
+
+.emotion-24 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  border-radius: 8px;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-width: 1px;
+  border-style: solid;
+  white-space: nowrap;
+  background-color: var(--theme-ui-colors-surface,#fff);
+  margin-right: 8px;
+  margin-bottom: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.emotion-24:hover {
+  background-color: var(--theme-ui-colors-primaryLightest,rgba(0,120,86,0.05));
+}
+
+.emotion-23 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  text-rendering: optimizeLegibility;
+  --webkitFontSmoothing: antialiased;
+  --mozOsxFontSmoothing: grayscale;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  font-size: 14px;
+}
+
+.emotion-28 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -554,30 +646,31 @@ exports[`PageNewPlan should render correctly 1`] = `
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  margin-top: 16px;
 }
 
-.emotion-20:disabled {
+.emotion-28:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-20:hover,
-.emotion-20:focus {
+.emotion-28:hover,
+.emotion-28:focus {
   background-color: var(--theme-ui-colors-primaryDark,#00a06d);
   outline: none;
 }
 
-.emotion-20:hover:disabled,
-.emotion-20:focus:disabled {
+.emotion-28:hover:disabled,
+.emotion-28:focus:disabled {
   background-color: var(--theme-ui-colors-primary,#00e399);
 }
 
 <div>
   <div
-    class="emotion-23"
+    class="emotion-31"
   >
     <div
-      class="emotion-22"
+      class="emotion-30"
     >
       <a
         href="/dashboard/plans"
@@ -602,7 +695,7 @@ exports[`PageNewPlan should render correctly 1`] = `
         New Plan
       </h5>
       <div
-        class="emotion-21"
+        class="emotion-29"
       >
         <div
           class="emotion-10"
@@ -673,8 +766,44 @@ exports[`PageNewPlan should render correctly 1`] = `
         <div
           class="emotion-19"
         />
+        <h6
+          class="emotion-18"
+        >
+          Repetition
+        </h6>
+        <div
+          class="emotion-27"
+        >
+          <div
+            class="emotion-22"
+          >
+            <p
+              class="emotion-21"
+            >
+              None
+            </p>
+          </div>
+          <div
+            class="emotion-24"
+          >
+            <p
+              class="emotion-23"
+            >
+              Daily
+            </p>
+          </div>
+          <div
+            class="emotion-24"
+          >
+            <p
+              class="emotion-23"
+            >
+              Weekly
+            </p>
+          </div>
+        </div>
         <button
-          class="emotion-20"
+          class="emotion-28"
           disabled=""
         >
           Save

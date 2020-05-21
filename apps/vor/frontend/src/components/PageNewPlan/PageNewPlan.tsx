@@ -29,6 +29,11 @@ export const PageNewPlan: FC<Props> = ({ chosenDate }) => {
   const [classId, setClassId] = useState("")
   const [date, setDate] = useState(dayjs(chosenDate))
 
+  // Repetition data
+  const [repetition, setRepetition] = useState(0)
+  const [startDate, setStartDate] = useState(dayjs(chosenDate))
+  const [endDate, setEndDate] = useState(dayjs(chosenDate))
+
   return (
     <Box maxWidth="maxWidth.sm" mx="auto">
       <BackNavigation to={ALL_PLANS_URL} text="All plans" />
@@ -68,9 +73,47 @@ export const PageNewPlan: FC<Props> = ({ chosenDate }) => {
             />
           ))}
         </Flex>
+        <Typography.H6 mb={2}>Repetition</Typography.H6>
+        <Flex>
+          <Chip
+            text="None"
+            activeBackground="primary"
+            onClick={() => setRepetition(0)}
+            isActive={repetition === 0}
+          />
+          <Chip
+            text="Daily"
+            activeBackground="primary"
+            onClick={() => setRepetition(1)}
+            isActive={repetition === 1}
+          />
+          <Chip
+            text="Weekly"
+            activeBackground="primary"
+            onClick={() => setRepetition(2)}
+            isActive={repetition === 2}
+          />
+        </Flex>
+        {repetition > 0 && (
+          <Box mt={2}>
+            <DateInput
+              label="Start date"
+              value={startDate.toDate()}
+              onChange={(value) => setStartDate(dayjs(value))}
+              mb={2}
+            />
+            <DateInput
+              label="End date"
+              value={endDate.toDate()}
+              onChange={(value) => setEndDate(dayjs(value))}
+              mb={2}
+            />
+          </Box>
+        )}
         <Button
           width="100%"
           disabled={classId === "" || title === ""}
+          mt={3}
           onClick={async () => {
             const result = await mutate({
               title,
