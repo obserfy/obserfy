@@ -15,7 +15,6 @@ import (
 	"github.com/chrsep/vor/pkg/auth"
 	"github.com/chrsep/vor/pkg/imgproxy"
 	"github.com/chrsep/vor/pkg/minio"
-	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/rest"
 )
 
@@ -330,13 +329,13 @@ func getStudents(s rest.Server, store Store, imgproxyClient *imgproxy.Client) re
 
 func postNewStudent(s rest.Server, store Store, storage StudentImageStorage) rest.Handler {
 	type studentField struct {
-		Name        string          `json:"name"`
-		DateOfBirth *time.Time      `json:"dateOfBirth"`
-		DateOfEntry *time.Time      `json:"dateOfEntry"`
-		CustomId    string          `json:"customId"`
-		Classes     []string        `json:"classes"`
-		Note        string          `json:"note"`
-		Gender      postgres.Gender `json:"gender"`
+		Name        string      `json:"name"`
+		DateOfBirth *time.Time  `json:"dateOfBirth"`
+		DateOfEntry *time.Time  `json:"dateOfEntry"`
+		CustomId    string      `json:"customId"`
+		Classes     []string    `json:"classes"`
+		Note        string      `json:"note"`
+		Gender      Gender      `json:"gender"`
 		Guardians   []struct {
 			Id           string `json:"id"`
 			Relationship int    `json:"relationship"`
@@ -409,7 +408,8 @@ func postNewStudent(s rest.Server, store Store, storage StudentImageStorage) res
 		for _, guardian := range newStudent.Guardians {
 			guardians[guardian.Id] = guardian.Relationship
 		}
-		err = store.NewStudent(postgres.Student{
+
+		err = store.NewStudent(Student{
 			Id:          newStudentId,
 			Name:        newStudent.Name,
 			SchoolId:    schoolId,
@@ -483,7 +483,7 @@ func deleteCurriculum(s rest.Server, store Store) rest.Handler {
 
 		// Get school data and check if curriculum exists
 		err := store.DeleteCurriculum(schoolId)
-		if errors.Is(postgres.EmptyCurriculumError{}, err) {
+		if errors.Is(EmptyCurriculumError, err) {
 			return &rest.Error{http.StatusNotFound, "School doesn't have curriculum yet", err}
 		} else if err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Failed to get school data", err}
@@ -504,7 +504,7 @@ func getCurriculum(s rest.Server, store Store) rest.Handler {
 
 		// Get school data and check if curriculum exists
 		c, err := store.GetCurriculum(schoolId)
-		if errors.Is(postgres.EmptyCurriculumError{}, err) {
+		if errors.Is(EmptyCurriculumError, err) {
 			return &rest.Error{http.StatusNotFound, "School doesn't have curriculum yet", err}
 		} else if err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Failed to get school data", err}
@@ -530,8 +530,8 @@ func getCurriculumAreas(s rest.Server, store Store) rest.Handler {
 
 		// Get school data and check if curriculum exists
 		areas, err := store.GetCurriculumAreas(schoolId)
-		if errors.Is(postgres.EmptyCurriculumError{}, err) {
-			emptyArray := make([]postgres.Area, 0)
+		if errors.Is(EmptyCurriculumError, err) {
+			emptyArray := make([]Area, 0)
 			if err = rest.WriteJson(w, emptyArray); err != nil {
 				return rest.NewWriteJsonError(err)
 			}
@@ -591,7 +591,7 @@ func postNewGuardian(server rest.Server, store Store) http.Handler {
 			}
 		}
 
-		guardianInput := postgres.GuardianRelation{
+		guardianInput := GuardianWithRelation{
 			SchoolId:     schoolId,
 			Name:         body.Name,
 			Email:        body.Email,

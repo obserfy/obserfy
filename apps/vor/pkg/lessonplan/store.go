@@ -1,7 +1,23 @@
 package lessonplan
 
-import "github.com/chrsep/vor/pkg/postgres"
+type (
+	LessonPlan struct {
+		Id          string
+		Title       string
+		Description string
+		ClassId     string
+		Repetition  int
+	}
 
-type Store interface {
-	CreateLessonPlan(input postgres.PlanData) (*postgres.LessonPlan, error)
-}
+	PlanData struct {
+		ClassId     string
+		Title       string
+		Description string
+		Repetition  int
+	}
+
+	Store interface {
+		CreateLessonPlan(input PlanData) (*LessonPlan, error)
+		GetLessonPlan(planId string) (*LessonPlan, error)
+	}
+)

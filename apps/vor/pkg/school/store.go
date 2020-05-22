@@ -3,22 +3,111 @@ package school
 import (
 	"time"
 
-	"github.com/chrsep/vor/pkg/postgres"
+	"github.com/pkg/errors"
 )
 
-type Store interface {
-	NewSchool(schoolName, userId string) (*postgres.School, error)
-	GetSchool(schoolId string) (*postgres.School, error)
-	GetStudents(schoolId string) ([]postgres.Student, error)
-	GetClassAttendance(classId, session string) ([]postgres.Attendance, error)
-	NewStudent(student postgres.Student, classes []string, guardians map[string]int) error
-	RefreshInviteCode(schoolId string) (*postgres.School, error)
-	NewDefaultCurriculum(schoolId string) error
-	DeleteCurriculum(schoolId string) error
-	GetCurriculum(schoolId string) (*postgres.Curriculum, error)
-	GetCurriculumAreas(schoolId string) ([]postgres.Area, error)
-	NewClass(id string, name string, weekdays []time.Weekday, startTime, endTime time.Time) error
-	GetSchoolClasses(schoolId string) ([]postgres.Class, error)
-	InsertGuardianWithRelation(input postgres.GuardianRelation) (*postgres.Guardian, error)
-	GetGuardians(schoolId string) ([]postgres.Guardian, error)
-}
+var (
+	EmptyCurriculumError = errors.New("School doesn't have curriculum")
+)
+
+
+type (
+	School struct {
+		Id           string
+		Name         string
+		InviteCode   string
+		Users        []*User
+		CurriculumId string
+		Curriculum   Curriculum
+	}
+
+	User struct {
+		Id    string
+		Email string
+		Name  string
+	}
+
+	Attendance struct {
+		Id        string
+		StudentId string
+		Class     Class
+		Date      time.Time
+	}
+
+	Student struct {
+		Id          string
+		Name        string
+		SchoolId    string
+		ProfilePic  string
+		DateOfBirth *time.Time
+		Gender      Gender
+		DateOfEntry *time.Time
+		Note        string
+		CustomId    string
+		Active      bool
+	}
+
+	Gender int
+
+	Class struct {
+		Id        string
+		Name      string
+		StartTime time.Time
+		EndTime   time.Time
+		Students  []Student
+		Weekdays  []Weekday
+	}
+
+	Weekday struct {
+		Day time.Weekday
+	}
+
+	Curriculum struct {
+		Id    string
+		Name  string
+		Areas []Area
+	}
+
+	Area struct {
+		Id   string
+		Name string
+	}
+
+	GuardianWithRelation struct {
+		SchoolId     string
+		Name         string
+		Email        string
+		Phone        string
+		Note         string
+		Relationship *int
+		StudentId    *string
+	}
+
+	Guardian struct {
+		Id           string
+		SchoolId     string
+		Name         string
+		Email        string
+		Phone        string
+		Note         string
+		Relationship *int
+		StudentId    *string
+	}
+
+	Store interface {
+		NewSchool(schoolName, userId string) (*School, error)
+		GetSchool(schoolId string) (*School, error)
+		GetStudents(schoolId string) ([]Student, error)
+		GetClassAttendance(classId, session string) ([]Attendance, error)
+		NewStudent(student Student, classes []string, guardians map[string]int) error
+		RefreshInviteCode(schoolId string) (*School, error)
+		NewDefaultCurriculum(schoolId string) error
+		DeleteCurriculum(schoolId string) error
+		GetCurriculum(schoolId string) (*Curriculum, error)
+		GetCurriculumAreas(schoolId string) ([]Area, error)
+		NewClass(id string, name string, weekdays []time.Weekday, startTime, endTime time.Time) error
+		GetSchoolClasses(schoolId string) ([]Class, error)
+		InsertGuardianWithRelation(input GuardianWithRelation) (*Guardian, error)
+		GetGuardians(schoolId string) ([]Guardian, error)
+	}
+)

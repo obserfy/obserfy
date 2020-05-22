@@ -106,7 +106,7 @@ func runServer() error {
 		r.Mount("/schools", school.NewRouter(server, schoolStore, studentImageStorage, imgproxyClient))
 		r.Mount("/user", user.NewRouter(server, userStore))
 		r.Mount("/curriculum", curriculum.NewRouter(server, curriculumStore))
-		r.Mount("/classes", class.NewRouter(server, classStore))
+		r.Mount("/classes", class.NewRouter(server, classStore, lessonplanStore))
 		r.Mount("/guardians", guardian.NewRouter(server, guardianStore))
 		r.Mount("/plans", lessonplan.NewRouter(server, lessonplanStore))
 	})

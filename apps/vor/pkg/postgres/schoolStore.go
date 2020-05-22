@@ -1,29 +1,22 @@
 package postgres
 
 import (
+	"time"
+
 	"github.com/go-pg/pg/v9"
 	"github.com/google/uuid"
 	richErrors "github.com/pkg/errors"
-	"time"
+
+	cSchool "github.com/chrsep/vor/pkg/school"
 )
 
 type (
 	SchoolStore struct {
 		*pg.DB
 	}
-
-	GuardianRelation struct {
-		SchoolId     string
-		Name         string
-		Email        string
-		Phone        string
-		Note         string
-		Relationship *int
-		StudentId    *string
-	}
 )
 
-func (s SchoolStore) NewSchool(schoolName, userId string) (*School, error) {
+func (s SchoolStore) NewSchool(schoolName, userId string) (*cSchool.School, error) {
 	id := uuid.New()
 	inviteCode := uuid.New()
 	school := School{
@@ -48,10 +41,14 @@ func (s SchoolStore) NewSchool(schoolName, userId string) (*School, error) {
 	if err != nil {
 		return nil, err
 	}
-	return &school, nil
+	return &cSchool.School{
+		Id:         school.Id,
+		Name:       school.Name,
+		InviteCode: school.InviteCode,
+	}, nil
 }
 
-func (s SchoolStore) GetSchool(schoolId string) (*School, error) {
+func (s SchoolStore) GetSchool(schoolId string) (*cSchool.School, error) {
 	var school School
 	if err := s.Model(&school).
 		Relation("Users").
@@ -59,24 +56,54 @@ func (s SchoolStore) GetSchool(schoolId string) (*School, error) {
 		Select(); err != nil {
 		return nil, err
 	}
-	return &school, nil
+
+	userData := make([]*cSchool.User, 0)
+	for _, user := range school.Users {
+		userData = append(userData, &cSchool.User{
+			Id:    user.Id,
+			Email: user.Email,
+			Name:  user.Name,
+		})
+	}
+
+	return &cSchool.School{
+		Id: school.Id,
+		Name: school.Name,
+		InviteCode: school.InviteCode,
+		Users: userData,
+	}, nil
 }
 
-func (s SchoolStore) GetStudents(schoolId string) ([]Student, error) {
+func (s SchoolStore) GetStudents(schoolId string) ([]cSchool.Student, error) {
 	var students []Student
+	res := make([]cSchool.Student, 0)
+
 	if err := s.Model(&students).
 		Where("school_id=?", schoolId).
 		Order("name").
 		Select(); err == pg.ErrNoRows {
-		return make([]Student, 0), nil
+		return res, nil
 	} else if err != nil {
 		return nil, richErrors.Wrap(err, "Failed querying student")
 	}
-	return students, nil
+
+	for _, s := range students {
+		res = append(res, cSchool.Student{
+			Id: s.Id,
+			Name:        s.Name,
+			SchoolId:    s.SchoolId,
+			ProfilePic:  s.ProfilePic,
+			DateOfBirth: s.DateOfBirth,
+		})
+	}
+
+	return res, nil
 }
 
-func (s SchoolStore) GetClassAttendance(classId, session string) ([]Attendance, error) {
+func (s SchoolStore) GetClassAttendance(classId, session string) ([]cSchool.Attendance, error) {
 	var attendance []Attendance
+	res := make([]cSchool.Attendance, 0)
+
 	if session == "" {
 		session = "1970-01-01"
 	}
@@ -86,12 +113,31 @@ func (s SchoolStore) GetClassAttendance(classId, session string) ([]Attendance, 
 		Relation("Student").
 		Relation("Class.Students").
 		Select(); err != nil {
-		return nil, err
+		return res, err
 	}
-	return attendance, nil
+
+	for _, v := range attendance {
+		students := make([]cSchool.Student, 0)
+		for _, student := range v.Class.Students {
+			students = append(students, cSchool.Student{
+				Id:   student.Id,
+				Name: student.Name,
+			})
+		}
+
+		res = append(res, cSchool.Attendance{
+			Id:        v.Id,
+			StudentId: v.StudentId,
+			Class:     cSchool.Class{
+				Students: students,
+			},
+		})
+	}
+
+	return res, nil
 }
 
-func (s SchoolStore) NewStudent(student Student, classes []string, guardians map[string]int) error {
+func (s SchoolStore) NewStudent(student cSchool.Student, classes []string, guardians map[string]int) error {
 	if student.Id == "" {
 		student.Id = uuid.New().String()
 	}
@@ -133,7 +179,7 @@ func (s SchoolStore) NewStudent(student Student, classes []string, guardians map
 	return nil
 }
 
-func (s SchoolStore) RefreshInviteCode(schoolId string) (*School, error) {
+func (s SchoolStore) RefreshInviteCode(schoolId string) (*cSchool.School, error) {
 	// TODO: This should be done in a single query
 	var school School
 	if err := s.Model(&school).
@@ -147,7 +193,11 @@ func (s SchoolStore) RefreshInviteCode(schoolId string) (*School, error) {
 	if err := s.Update(&school); err != nil {
 		return nil, err
 	}
-	return &school, nil
+	return &cSchool.School{
+		Id:         school.Id,
+		Name:       school.Name,
+		InviteCode: school.InviteCode,
+	}, nil
 }
 
 func (s SchoolStore) NewDefaultCurriculum(schoolId string) error {
@@ -198,13 +248,13 @@ func (s SchoolStore) DeleteCurriculum(schoolId string) error {
 		return err
 	}
 	if school.CurriculumId == "" {
-		return EmptyCurriculumError{}
+		return cSchool.EmptyCurriculumError
 	}
 	c := Curriculum{Id: school.CurriculumId}
 	return s.Delete(&c)
 }
 
-func (s SchoolStore) GetCurriculum(schoolId string) (*Curriculum, error) {
+func (s SchoolStore) GetCurriculum(schoolId string) (*cSchool.Curriculum, error) {
 	var school School
 	err := s.Model(&school).
 		Relation("Curriculum").
@@ -214,13 +264,18 @@ func (s SchoolStore) GetCurriculum(schoolId string) (*Curriculum, error) {
 		return nil, err
 	}
 	if school.CurriculumId == "" {
-		return nil, EmptyCurriculumError{}
+		return nil, cSchool.EmptyCurriculumError
 	}
-	return &school.Curriculum, nil
+
+	return &cSchool.Curriculum{
+		Id:   school.Curriculum.Id,
+		Name: school.Curriculum.Name,
+	}, nil
 }
 
-func (s SchoolStore) GetCurriculumAreas(schoolId string) ([]Area, error) {
+func (s SchoolStore) GetCurriculumAreas(schoolId string) ([]cSchool.Area, error) {
 	var school School
+	res := make([]cSchool.Area, 0)
 	err := s.Model(&school).
 		Relation("Curriculum").
 		Relation("Curriculum.Areas").
@@ -230,9 +285,16 @@ func (s SchoolStore) GetCurriculumAreas(schoolId string) ([]Area, error) {
 		return nil, err
 	}
 	if school.CurriculumId == "" {
-		return nil, EmptyCurriculumError{}
+		return nil, cSchool.EmptyCurriculumError
 	}
-	return school.Curriculum.Areas, nil
+
+	for _, v := range school.Curriculum.Areas {
+		res = append(res, cSchool.Area{
+			Id:   v.Id,
+			Name: v.Name,
+		})
+	}
+	return res, nil
 }
 
 func (s SchoolStore) NewClass(id string, name string, weekdays []time.Weekday, startTime, endTime time.Time) error {
@@ -266,18 +328,37 @@ func (s SchoolStore) NewClass(id string, name string, weekdays []time.Weekday, s
 	return nil
 }
 
-func (s SchoolStore) GetSchoolClasses(schoolId string) ([]Class, error) {
+func (s SchoolStore) GetSchoolClasses(schoolId string) ([]cSchool.Class, error) {
 	var classes []Class
+	res := make([]cSchool.Class, 0)
+
 	if err := s.DB.Model(&classes).
 		Where("school_id=?", schoolId).
 		Relation("Weekdays").
 		Select(); err != nil {
 		return nil, err
 	}
-	return classes, nil
+
+	for _, v := range classes {
+		weekdays := make([]cSchool.Weekday, 0)
+		for _, day := range v.Weekdays {
+			weekdays = append(weekdays, cSchool.Weekday{
+				Day: day.Day,
+			})
+		}
+		res = append(res, cSchool.Class{
+			Id:        v.Id,
+			Name:      v.Name,
+			StartTime: v.StartTime,
+			EndTime:   v.EndTime,
+			Weekdays:  weekdays,
+		})
+	}
+
+	return res, nil
 }
 
-func (s SchoolStore) InsertGuardianWithRelation(input GuardianRelation) (*Guardian, error) {
+func (s SchoolStore) InsertGuardianWithRelation(input cSchool.GuardianWithRelation) (*cSchool.Guardian, error) {
 	guardian := Guardian{
 		Id:       uuid.New().String(),
 		Name:     input.Name,
@@ -306,22 +387,36 @@ func (s SchoolStore) InsertGuardianWithRelation(input GuardianRelation) (*Guardi
 	}); err != nil {
 		return nil, err
 	}
-	return &guardian, nil
+
+	return &cSchool.Guardian{
+		Id:       guardian.Id,
+		Name:     guardian.Name,
+		Email:    guardian.Email,
+		Phone:    guardian.Phone,
+		Note:     guardian.Note,
+		SchoolId: guardian.SchoolId,
+	}, nil
 }
 
-func (s SchoolStore) GetGuardians(schoolId string) ([]Guardian, error) {
+func (s SchoolStore) GetGuardians(schoolId string) ([]cSchool.Guardian, error) {
 	var guardian []Guardian
+	res := make([]cSchool.Guardian, 0)
 
 	if err := s.DB.Model(&guardian).
 		Where("school_id=?", schoolId).
 		Select(); err != nil {
 		return nil, richErrors.Wrap(err, "failed to query school's guardians")
 	}
-	return guardian, nil
-}
 
-type EmptyCurriculumError struct{}
+	for _, v := range guardian {
+		res = append(res, cSchool.Guardian{
+			Id:    v.Id,
+			Name:  v.Name,
+			Email: v.Email,
+			Phone: v.Phone,
+			Note:  v.Note,
+		})
+	}
 
-func (e EmptyCurriculumError) Error() string {
-	return "School doesn't have curriculum"
+	return res, nil
 }

@@ -243,6 +243,7 @@ type LessonPlan struct {
 	Title       string
 	Description string
 	ClassId     string `pg:"type:uuid"`
+	Class       Class
 	Repetition  int
 }
 

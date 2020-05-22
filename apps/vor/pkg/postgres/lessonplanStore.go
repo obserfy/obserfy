@@ -4,6 +4,8 @@ import (
 	"github.com/go-pg/pg/v9"
 	"github.com/google/uuid"
 	"github.com/pkg/errors"
+
+	lp "github.com/chrsep/vor/pkg/lessonplan"
 )
 
 type (
@@ -19,9 +21,9 @@ type (
 	}
 )
 
-func (s LessonPlanStore) CreateLessonPlan(input PlanData) (*LessonPlan, error) {
+func (s LessonPlanStore) CreateLessonPlan(input lp.PlanData) (*lp.LessonPlan, error) {
 	id := uuid.New()
-	plan := LessonPlan{
+	obj := LessonPlan{
 		Id:          id.String(),
 		Title:       input.Title,
 		Description: input.Description,
@@ -29,10 +31,39 @@ func (s LessonPlanStore) CreateLessonPlan(input PlanData) (*LessonPlan, error) {
 		Repetition:  input.Repetition,
 	}
 
-	if _, err := s.Model(&plan).Insert(); err != nil {
+	if _, err := s.Model(&obj).Insert(); err != nil {
 		err = errors.Wrapf(err, "failed create lesson plan")
 		return nil, err
 	}
 
-	return &plan, nil
+	return &lp.LessonPlan{
+		Id:          obj.Id,
+		Title:       obj.Title,
+		Description: obj.Description,
+		ClassId:     obj.ClassId,
+		Repetition:  obj.Repetition,
+	}, nil
+}
+
+func (s LessonPlanStore) GetLessonPlan(planId string) (*lp.LessonPlan, error) {
+	var obj LessonPlan
+
+	err := s.Model(&obj).
+			Where("id = ?", planId).
+			Select()
+
+	if err != nil {
+		if err == pg.ErrNoRows{
+			return nil, nil
+		}
+		return nil, errors.Wrapf(err, "Failed get lesson plan")
+	}
+
+	return &lp.LessonPlan{
+		Id:          obj.Id,
+		Title:       obj.Title,
+		Description: obj.Description,
+		ClassId:     obj.ClassId,
+		Repetition:  obj.Repetition,
+	}, nil
 }
