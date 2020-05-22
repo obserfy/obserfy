@@ -1,7 +1,11 @@
-import React from 'react'
+import React from "react"
 
-export default () => (
-  <main>
-    <h1>Hello from Preact!!!</h1>
-  </main>
-)
+const IndexPage = () => {
+  return (
+    <main>
+      <h1>Hello from Preact!!!</h1>
+    </main>
+  )
+}
+
+export default IndexPage
