@@ -2607,6 +2607,14 @@
     "@prefresh/core" "0.6.0"
     "@prefresh/utils" "0.1.0"
 
+"@prefresh/webpack@^0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@prefresh/webpack/-/webpack-0.7.0.tgz#a5cfdec11ca1b21a03fedd94d42ff0447a205d06"
+  integrity sha512-1dZ7Jb4bcU1S6OBiDsTQZ43A5kCTK+5hNwOJzYyyUHAthImvKBNpYq2UvBeLatDZvVYb2/x5m4gCFWtokEB+jQ==
+  dependencies:
+    "@prefresh/core" "0.6.0"
+    "@prefresh/utils" "0.1.0"
+
 "@reach/router@1.3.3", "@reach/router@^1.2.1", "@reach/router@^1.3.3":
   version "1.3.3"
   resolved "https://registry.yarnpkg.com/@reach/router/-/router-1.3.3.tgz#58162860dce6c9449d49be86b0561b5ef46d80db"

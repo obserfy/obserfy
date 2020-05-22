@@ -1,3 +1,5 @@
+const PreactRefreshPlugin = require(`@prefresh/webpack`);
+
 module.exports = {
   experimental: {
     modern: true,
@@ -37,9 +39,11 @@ module.exports = {
           );
           return entries;
         });
+      config.plugins.unshift(new PreactRefreshPlugin());
+      config.plugins = config.plugins.filter(
+        (plugin) => plugin.constructor.name !== `ReactFreshWebpackPlugin`
+      );
     }
-
-    console.log(config)
 
     return config;
   },
