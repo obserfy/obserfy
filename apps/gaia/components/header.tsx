@@ -22,9 +22,16 @@ const Header: FC<Props> = ({ userImageSrc, userName }) => {
             <ProfilePicture src={userImageSrc} />
           </div>
           <div className="ml-3 text-sm">{userName}</div>
-          <div className="ml-auto p-3">
+          <div
+            tabIndex={0}
+            role="button"
+            className="ml-auto p-3 cursor-pointer"
+            onClick={() => setShowLogout(true)}
+            onKeyUp={(e) => {
+              e.keyCode === 13 && setShowLogout(true)
+            }}
+          >
             <img
-              onClick={() => setShowLogout(true)}
               alt="logout icon"
               src={require("../icons/log-out.svg")}
               height={18}
