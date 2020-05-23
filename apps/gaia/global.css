@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.dialog-overlay {
+  @apply absolute h-screen w-screen flex items-center justify-center;
+
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.dialog {
+  @apply bg-background rounded shadow-md;
+}
+
+button {
+  @apply py-1 px-6 bg-primary rounded text-onPrimary;
+}
+
+h1 {
+  @apply text-2xl;
+}
