@@ -44,7 +44,6 @@ module.exports = withPlugins([optimizedImages], {
       config.plugins = config.plugins.filter(
         (plugin) => plugin.constructor.name !== `ReactFreshWebpackPlugin`
       )
-      console.log(config)
     }
 
     return config
