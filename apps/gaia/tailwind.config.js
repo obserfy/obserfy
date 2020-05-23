@@ -1,9 +1,10 @@
 module.exports = {
-  purge: ["**/*.jsx"],
+  purge: ["**/*.tsx"],
   theme: {
     extend: {
       colors: {
-        background: "#fff",
+        surface: "#fff",
+        background: "#fafafa",
         primary: "#00e399",
         onPrimary: "#000",
         overlay: "rgba(0, 0, 0, 0.8)",

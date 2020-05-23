@@ -1,6 +1,6 @@
 import React from "react"
-import "../global.css"
 import Layout from "../components/layout"
+import "../global.css"
 
 function App({ Component, pageProps }) {
   return (
