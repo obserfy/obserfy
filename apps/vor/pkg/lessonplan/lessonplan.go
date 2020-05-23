@@ -3,8 +3,9 @@ package lessonplan
 import (
 	"net/http"
 
-	"github.com/chrsep/vor/pkg/rest"
 	"github.com/go-chi/chi"
+
+	"github.com/chrsep/vor/pkg/rest"
 )
 
 func NewRouter(server rest.Server, store Store) *chi.Mux {

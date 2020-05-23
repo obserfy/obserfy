@@ -4,10 +4,11 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/chrsep/vor/pkg/auth"
-	"github.com/chrsep/vor/pkg/rest"
 	"github.com/go-chi/chi"
 	"github.com/go-playground/validator/v10"
+
+	"github.com/chrsep/vor/pkg/auth"
+	"github.com/chrsep/vor/pkg/rest"
 )
 
 type (

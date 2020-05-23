@@ -1,11 +1,13 @@
 package curriculum
 
 import (
-	"github.com/chrsep/vor/pkg/auth"
-	"github.com/chrsep/vor/pkg/rest"
+	"net/http"
+
 	"github.com/go-chi/chi"
 	"github.com/google/uuid"
-	"net/http"
+
+	"github.com/chrsep/vor/pkg/auth"
+	"github.com/chrsep/vor/pkg/rest"
 )
 
 func curriculumAuthMiddleware(server rest.Server, store Store) func(next http.Handler) http.Handler {
