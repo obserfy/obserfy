@@ -1,5 +1,6 @@
 import React, { FC } from "react"
 import { useQuery } from "react-query"
+import Button from "./button"
 
 const Layout: FC = ({ children }) => {
   const { data, status } = useQuery(
@@ -23,14 +24,14 @@ const Layout: FC = ({ children }) => {
   return (
     <div>
       {status === "error" && (
-        <div className="dialog-overlay">
-          <div className="dialog p-6">
-            <h1>Looks like your session has expired</h1>
+        <div className="absolute h-screen w-screen flex items-center justify-center bg-overlay">
+          <div className="bg-background rounded shadow-md p-6">
+            <h1 className="text-2xl">Looks like your session has expired</h1>
             <p className="block mt-3">Please log back in</p>
             <a href="/api/login" className="block mt-6 w-full ">
-              <button type="button" className="w-full py-3">
+              <Button type="button" className="w-full py-3">
                 Login
-              </button>
+              </Button>
             </a>
           </div>
         </div>

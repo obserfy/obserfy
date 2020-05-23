@@ -1,7 +1,7 @@
 module.exports = {
   parser: "@typescript-eslint/parser",
   parserOptions: {
-    project: "./tsconfig.json",
+    project: "./tsconfig.json"
   },
   extends: [
     "airbnb-typescript",
@@ -11,11 +11,11 @@ module.exports = {
     "plugin:prettier/recommended",
     "prettier/@typescript-eslint",
     "prettier/react",
-    "plugin:jest/recommended",
+    "plugin:jest/recommended"
   ],
   plugins: ["jest"],
   env: {
-    "jest/globals": true,
+    "jest/globals": true
   },
   overrides: [
     {
@@ -25,6 +25,7 @@ module.exports = {
     }
   ],
   rules: {
+    "react/button-has-type": 0,
     "no-undef": 0,
     "react/prop-types": 0,
     "react/style-prop-object": 0,
@@ -32,7 +33,7 @@ module.exports = {
     // Recommended for immer.
     "no-param-reassign": [
       "error",
-      { props: true, ignorePropertyModificationsFor: ["draft"] },
+      { props: true, ignorePropertyModificationsFor: ["draft"] }
     ],
     "import/no-extraneous-dependencies": [
       "error",
@@ -47,9 +48,9 @@ module.exports = {
           "**/*.test.tsx",
           "**/*.test.ts",
           "**/*.spec.js",
-          "**/*.spec.ts",
-        ],
-      },
+          "**/*.spec.ts"
+        ]
+      }
     ],
     "import/no-named-as-default": "off",
     "import/no-cycle": "off",
@@ -63,12 +64,12 @@ module.exports = {
       {
         name: "dayjs",
         message:
-          "Please use ./src/dayjs instead. It setups required plugins correctly.",
-      },
-    ],
+          "Please use ./src/dayjs instead. It setups required plugins correctly."
+      }
+    ]
   },
   globals: {
     document: true,
-    window: true,
-  },
+    window: true
+  }
 }
