@@ -141,6 +141,7 @@ func getClassAttendance(server rest.Server, store Store) http.Handler {
 		return nil
 	})
 }
+
 func postNewClass(s rest.Server, store Store) http.Handler {
 	type requestBody struct {
 		Name      string         `json:"name"`

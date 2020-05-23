@@ -53,7 +53,7 @@ func InitTables(db *pg.DB) error {
 		(*Attendance)(nil),
 		(*PasswordResetToken)(nil),
 		(*LessonPlan)(nil),
-		(*Attachment)(nil),
+		(*File)(nil),
 	} {
 		err := db.CreateTable(model, &orm.CreateTableOptions{IfNotExists: true, FKConstraints: true})
 		if err != nil {
@@ -67,6 +67,7 @@ type Session struct {
 	Token  string `pg:",pk" pg:",type:uuid"`
 	UserId string
 }
+
 type Curriculum struct {
 	Id      string `pg:"type:uuid"`
 	Name    string
@@ -188,6 +189,7 @@ type School struct {
 	Curriculum   Curriculum
 	Guardian     []Guardian
 }
+
 type Attendance struct {
 	Id        string `json:"id" pg:",type:uuid"`
 	StudentId string `pg:"type:uuid,on_delete:CASCADE"`
@@ -196,6 +198,7 @@ type Attendance struct {
 	Class     Class
 	Date      time.Time `json:"date"`
 }
+
 type UserToSchool struct {
 	SchoolId string `pg:",type:uuid"`
 	School   School
@@ -247,8 +250,7 @@ type LessonPlan struct {
 	Repetition  int
 }
 
-type Attachment struct {
-	Id       string `pg:"type:uuid"`
-	FileName string
-	FilePath string
+type File struct {
+	Id   string `pg:"type:uuid"`
+	Name string
 }
