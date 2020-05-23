@@ -1,6 +1,9 @@
+// next.config.js
+const withPlugins = require("next-compose-plugins")
+const optimizedImages = require("next-optimized-images")
 const PreactRefreshPlugin = require(`@prefresh/webpack`)
 
-module.exports = {
+module.exports = withPlugins([optimizedImages], {
   experimental: {
     modern: true,
     polyfillsOptimization: true,
@@ -46,4 +49,4 @@ module.exports = {
 
     return config
   },
-}
+})
