@@ -1,4 +1,7 @@
 {
   "private": true,
-  "workspaces": ["apps/*", "apps/vor/*", "packages/*"]
+  "workspaces": {
+    "packages": ["apps/*", "apps/vor/*", "packages/*"],
+    "nohoist": ["gaia/**"]
+  }
 }

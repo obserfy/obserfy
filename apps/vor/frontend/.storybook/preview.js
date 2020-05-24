@@ -39,17 +39,6 @@ const ThemeSwitcher = () => {
 }
 addDecorator(ThemeDecorator)
 
-// ================================ i18n ===============================================
-addParameters({
-  i18n: {
-    provider: IntlProvider,
-    providerProps: {},
-    supportedLocales: ["en", "id"],
-    providerLocaleKey: "locale",
-  },
-})
-addDecorator(withI18n)
-
 // ==================================== Viewports =======================================
 addParameters({
   viewport: {

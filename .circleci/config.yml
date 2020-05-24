@@ -40,7 +40,7 @@ jobs:
     working_directory: ~/repo
     environment:
       NODE_ENV: "staging"
-#    parallelism: 2
+    #    parallelism: 2
     steps:
       - checkout
       - run: cp .env.example .env
@@ -61,10 +61,10 @@ jobs:
           yarn workspace e2e run cy:ci
       - run: bash <(curl -s https://codecov.io/bash)
       - store_artifacts:
-          path: ~/repo/apps/vor/frontend/cypress/videos
+          path: ~/repo/apps/e2e/cypress/videos
           destination: cypress-videos
       - store_artifacts:
-          path: ~/repo/apps/vor/frontend/cypress/screenshots
+          path: ~/repo/apps/e2e/cypress/screenshots
           destination: cypress-screenshots
 
   backend_unit:
@@ -180,10 +180,17 @@ orbs:
   go: circleci/go@1.1.2
 
 workflows:
+  version: 2
   vor:
     jobs:
-      - frontend_build
-      - backend_unit
+      - frontend_build:
+          filters:
+            branches:
+              ignore: gh-pages
+      - backend_unit:
+          filters:
+            branches:
+              ignore: gh-pages
       - frontend_lint:
           requires:
             - frontend_build

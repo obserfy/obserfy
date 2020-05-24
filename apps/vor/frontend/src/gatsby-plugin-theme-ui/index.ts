@@ -7,7 +7,7 @@ const themeUiTheme = {
     textDisabled: "rgba(0,0,0, 0.38)",
     textPrimary: "#027c5b",
 
-    background: "#F7F8FA",
+    background: "#f2f3f5",
     onBackground: "rgba(0,0,0,0.87)",
 
     // Primary Color
@@ -32,14 +32,13 @@ const themeUiTheme = {
     surface: "#fff",
     onSurface: "rgba(0,0,0,0.87)",
 
-    surfaceTransparent: "rgba(255,255,255,0.965)",
-    onSurfaceTransparent: "#87000000",
-
+    surfaceBlurNonTransparent: "rgba(255,255,255)",
+    onSurfaceBlurNonTransparent: "#87000000",
     surfaceBlurTransparent: "rgba(255,255,255,0.6)",
     onSurfaceBlurTransparent: "#87000000",
 
     border: "rgba(0,0,0,.1)",
-    borderEmphasized: "#cfcfd3",
+    borderSolid: "#fff",
 
     overlay: "rgba(0,0,0,.6)",
     onOverlay: "#fff",
@@ -88,25 +87,24 @@ const themeUiTheme = {
         primary: "#00a875",
         onPrimary: "#000",
 
+        primaryDark: "#009c6e",
+        onPrimaryDark: "rgba(255,255,255, 0.87)",
+
         background: "#101010",
         onBackground: "rgba(255,255,255, 0.87)",
 
         surface: "#1d1d1d",
         onSurface: "rgba(255,255,255, 0.87)",
 
-        surfaceTransparent: "rgba(29,29,29,0.975)",
-        onSurfaceTransparent: "rgba(255,255,255, 0.87)",
-
+        surfaceBlurNonTransparent: "rgba(23,23,23)",
+        onSurfaceBlurNonTransparent: "rgba(255,255,255, 0.87)",
         surfaceBlurTransparent: "rgba(29,29,29,0.6)",
         onSurfaceBlurTransparent: "rgba(255,255,255, 0.87)",
 
-        primaryDark: "#009c6e",
-        onPrimaryDark: "rgba(255,255,255, 0.87)",
-
         icon: "#979797",
 
-        border: "rgba(255,255,255, 0.2)",
-        borderSubtle: "rgba(255,255,255, 0.1)",
+        border: "rgba(232,232,232, 0.13)",
+        borderSolid: "#000",
 
         muted: "#222222",
         mutedLight: "#212121",

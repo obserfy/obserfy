@@ -31,10 +31,26 @@ module.exports = ({ config }) => {
     use: [require.resolve("react-docgen-typescript-loader")],
   })
 
+  config.module.rules.push({
+    test: /\.stories\.tsx?$/,
+    loaders: [
+      {
+        loader: require.resolve("@storybook/source-loader"),
+        options: { parser: "typescript" },
+      },
+    ],
+    enforce: "pre",
+  })
+
   // Handle SVGR
   const rules = config.module.rules
   // modify storybook's file-loader rule to avoid conflicts with svgr
-  const fileLoaderRule = rules.find((rule) => rule.test.test(".svg"))
+  const fileLoaderRule = rules.find((rule) => {
+    if (rule && rule.test && rule.test.test) {
+      return rule.test.test(".svg")
+    }
+    return false
+  })
   fileLoaderRule.exclude = [pathToInlineSvg]
   rules.push({
     test: /\.svg$/,
@@ -91,6 +107,11 @@ module.exports = ({ config }) => {
 
   // Prefer Gatsby ES6 entrypoint (module) over commonjs (main) entrypoint
   config.resolve.mainFields = ["browser", "module", "main"]
+
+  // Webpack can't find gatsby package since the node_modules is now located at
+  // the root of the project. The line below is added so that packages inside
+  // node_modules is now included by webpack.
+  config.module.rules[0].include = path.resolve(__dirname, "../../../../")
 
   return config
 }
