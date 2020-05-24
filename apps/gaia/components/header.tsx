@@ -1,6 +1,7 @@
 import React, { FC, useState } from "react"
 import ProfilePicture from "./profilePicture"
 import Button from "./button"
+import useGetChildren from "../apiHooks/useGetChildren"
 
 interface Props {
   userName?: string
@@ -8,6 +9,7 @@ interface Props {
 }
 const Header: FC<Props> = ({ userImageSrc, userName }) => {
   const [showLogout, setShowLogout] = useState(false)
+
   return (
     <>
       <div className="bg-surface">
@@ -27,9 +29,7 @@ const Header: FC<Props> = ({ userImageSrc, userName }) => {
             role="button"
             className="ml-auto p-3 cursor-pointer"
             onClick={() => setShowLogout(true)}
-            onKeyUp={(e) => {
-              e.keyCode === 13 && setShowLogout(true)
-            }}
+            onKeyUp={(e) => e.keyCode === 13 && setShowLogout(true)}
           >
             <img
               alt="logout icon"
