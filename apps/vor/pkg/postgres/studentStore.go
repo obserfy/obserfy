@@ -56,6 +56,7 @@ func (s StudentStore) GetAttendance(studentId string) ([]Attendance, error) {
 		Where("student_id=?", studentId).
 		Relation("Student").
 		Relation("Class").
+
 		Select(); err != nil {
 		return nil, err
 	}
@@ -135,7 +136,11 @@ func (s StudentStore) Get(studentId string) (*Student, error) {
 }
 
 func (s StudentStore) UpdateStudent(student *Student) error {
-	return s.DB.Update(student)
+	if _, err := s.DB.Model(student).
+	WherePK().UpdateNotZero(); err != nil {
+		return richErrors.Wrap(err, "failed to update student")
+	}
+	return nil
 }
 
 func (s StudentStore) DeleteStudent(studentId string) error {

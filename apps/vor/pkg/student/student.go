@@ -225,6 +225,9 @@ func putStudent(s rest.Server, store Store) http.Handler {
 	type requestBody struct {
 		Name        string     `json:"name"`
 		DateOfBirth *time.Time `json:"dateOfBirth"`
+		DateOfEntry *time.Time      `json:"dateOfEntry"`
+		CustomId    string          `json:"customId"`
+		Gender      postgres.Gender `json:"gender"`
 	}
 	type responseBody struct {
 		Id          string     `json:"id"`
@@ -247,6 +250,10 @@ func putStudent(s rest.Server, store Store) http.Handler {
 		newStudent := oldStudent
 		newStudent.Name = requestBody.Name
 		newStudent.DateOfBirth = requestBody.DateOfBirth
+		newStudent.Gender = requestBody.Gender
+		newStudent.CustomId = requestBody.CustomId
+		newStudent.DateOfEntry = requestBody.DateOfEntry
+
 		if err := store.UpdateStudent(newStudent); err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Failed updating old student data", err}
 		}
