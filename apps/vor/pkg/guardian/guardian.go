@@ -1,12 +1,14 @@
 package guardian
 
 import (
-	"github.com/chrsep/vor/pkg/auth"
-	"github.com/chrsep/vor/pkg/rest"
+	"net/http"
+
 	"github.com/go-chi/chi"
 	"github.com/google/uuid"
 	richErrors "github.com/pkg/errors"
-	"net/http"
+
+	"github.com/chrsep/vor/pkg/auth"
+	"github.com/chrsep/vor/pkg/rest"
 )
 
 func NewRouter(server rest.Server, store Store) *chi.Mux {

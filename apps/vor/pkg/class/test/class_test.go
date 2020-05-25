@@ -23,6 +23,7 @@ func (s *ClassTestSuite) SetupTest() {
 	s.Handler = class.NewRouter(
 		s.Server,
 		postgres.ClassStore{s.DB},
+		postgres.LessonPlanStore{s.DB},
 	).ServeHTTP
 }
 

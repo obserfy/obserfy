@@ -4,13 +4,15 @@ import (
 	"github.com/go-pg/pg/v9"
 	"github.com/go-pg/pg/v9/orm"
 	richErrors "github.com/pkg/errors"
+
+	cObservation "github.com/chrsep/vor/pkg/observation"
 )
 
 type ObservationStore struct {
 	*pg.DB
 }
 
-func (o ObservationStore) GetObservation(id string) (*Observation, error) {
+func (o ObservationStore) GetObservation(id string) (*cObservation.Observation, error) {
 	var observation Observation
 	if err := o.Model(&observation).
 		Where("Observation.id=?", id).
@@ -21,8 +23,20 @@ func (o ObservationStore) GetObservation(id string) (*Observation, error) {
 	} else if err != nil {
 		return nil, richErrors.Wrap(err, "failed getting observation")
 	}
-	return &observation, nil
+
+	return &cObservation.Observation{
+		Id:          observation.Id,
+		StudentName: observation.Student.Name,
+		CategoryId:  observation.CategoryId,
+		LongDesc:    observation.LongDesc,
+		ShortDesc:   observation.ShortDesc,
+		EventTime:   observation.EventTime,
+		CreatedDate: observation.CreatedDate,
+		CreatorId:   observation.CreatorId,
+		CreatorName: observation.Creator.Name,
+	}, nil
 }
+
 func (s ObservationStore) CheckPermissions(observationId string, userId string) (bool, error) {
 
 	var observation Observation
@@ -48,7 +62,8 @@ func (s ObservationStore) CheckPermissions(observationId string, userId string) 
 	}
 	// return true, nil
 }
-func (o ObservationStore) UpdateObservation(observationId string, shortDesc string, longDesc string, categoryId string) (*Observation, error) {
+
+func (o ObservationStore) UpdateObservation(observationId string, shortDesc string, longDesc string, categoryId string) (*cObservation.Observation, error) {
 	// Query the requested observation
 	var observation Observation
 	if err := o.Model(&observation).
@@ -64,7 +79,17 @@ func (o ObservationStore) UpdateObservation(observationId string, shortDesc stri
 	if err := o.Update(&observation); err != nil {
 		return nil, err
 	}
-	return &observation, nil
+
+	return &cObservation.Observation{
+		Id:          observation.Id,
+		StudentId:   observation.StudentId,
+		ShortDesc:   shortDesc,
+		LongDesc:    longDesc,
+		CategoryId:  categoryId,
+		CreatedDate: observation.CreatedDate,
+		EventTime:   observation.EventTime,
+		CreatorId:   observation.CreatorId,
+	}, nil
 }
 
 func (o ObservationStore) DeleteObservation(observationId string) error {

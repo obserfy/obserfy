@@ -4,12 +4,12 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/chrsep/vor/pkg/postgres"
-	"github.com/chrsep/vor/pkg/rest"
 	"github.com/go-chi/chi"
 	"github.com/go-pg/pg/v9"
 	"github.com/google/uuid"
 	richErrors "github.com/pkg/errors"
+
+	"github.com/chrsep/vor/pkg/rest"
 )
 
 func NewRouter(server rest.Server, store Store) *chi.Mux {
@@ -168,13 +168,13 @@ func createSubject(server rest.Server, store Store) http.Handler {
 		}
 
 		// Convert Material into proper form
-		var materials []postgres.Material
+		var materials []Material
 		orderingNumbers := make(map[int]bool)
 		for _, material := range requestBody.Materials {
 			// For checking duplicated order later
 			orderingNumbers[material.Order] = true
 
-			materials = append(materials, postgres.Material{
+			materials = append(materials, Material{
 				Id:    uuid.New().String(),
 				Name:  material.Name,
 				Order: material.Order,
@@ -387,11 +387,11 @@ func replaceSubject(server rest.Server, store Store) http.Handler {
 				richErrors.New("empty subject name"),
 			}
 		}
-		newSubject := postgres.Subject{
+		newSubject := Subject{
 			Id:        subjectId,
 			AreaId:    body.AreaId,
 			Name:      body.Name,
-			Materials: make([]postgres.Material, 0),
+			Materials: make([]Material, 0),
 			Order:     body.Order,
 		}
 		materialOrderNumbers := make(map[int]bool)
@@ -411,7 +411,7 @@ func replaceSubject(server rest.Server, store Store) http.Handler {
 			if _, err := uuid.Parse(material.Id); err != nil {
 				material.Id = uuid.New().String()
 			}
-			newSubject.Materials = append(newSubject.Materials, postgres.Material{
+			newSubject.Materials = append(newSubject.Materials, Material{
 				Id:        material.Id,
 				SubjectId: subjectId,
 				Subject:   newSubject,
