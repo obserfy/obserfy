@@ -10,7 +10,6 @@ var (
 	EmptyCurriculumError = errors.New("School doesn't have curriculum")
 )
 
-
 type (
 	School struct {
 		Id           string

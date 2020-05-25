@@ -1,7 +1,10 @@
 interface UpdateStudentRequestBody {
   id: string
   name?: string
+  customId?: string
   dateOfBirth?: Date
+  dateOfEntry?: Date
+  gender?: number
 }
 export function updateStudentApi(
   student: UpdateStudentRequestBody

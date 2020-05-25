@@ -21,7 +21,7 @@ func updateLessonPlan(server rest.Server, store Store) http.Handler {
 	type reqBody struct {
 		Title       *string `json:"title"`
 		Description *string `json:"description"`
-		Repetition  *int `json:"repetition"`
+		Repetition  *int    `json:"repetition"`
 	}
 
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {

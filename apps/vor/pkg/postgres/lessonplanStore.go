@@ -49,11 +49,11 @@ func (s LessonPlanStore) GetLessonPlan(planId string) (*lp.LessonPlan, error) {
 	var obj LessonPlan
 
 	err := s.Model(&obj).
-			Where("id = ?", planId).
-			Select()
+		Where("id = ?", planId).
+		Select()
 
 	if err != nil {
-		if err == pg.ErrNoRows{
+		if err == pg.ErrNoRows {
 			return nil, nil
 		}
 		return nil, errors.Wrapf(err, "Failed get lesson plan")
