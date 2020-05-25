@@ -67,10 +67,10 @@ func (s SchoolStore) GetSchool(schoolId string) (*cSchool.School, error) {
 	}
 
 	return &cSchool.School{
-		Id: school.Id,
-		Name: school.Name,
+		Id:         school.Id,
+		Name:       school.Name,
 		InviteCode: school.InviteCode,
-		Users: userData,
+		Users:      userData,
 	}, nil
 }
 
@@ -89,7 +89,7 @@ func (s SchoolStore) GetStudents(schoolId string) ([]cSchool.Student, error) {
 
 	for _, s := range students {
 		res = append(res, cSchool.Student{
-			Id: s.Id,
+			Id:          s.Id,
 			Name:        s.Name,
 			SchoolId:    s.SchoolId,
 			ProfilePic:  s.ProfilePic,
@@ -128,7 +128,7 @@ func (s SchoolStore) GetClassAttendance(classId, session string) ([]cSchool.Atte
 		res = append(res, cSchool.Attendance{
 			Id:        v.Id,
 			StudentId: v.StudentId,
-			Class:     cSchool.Class{
+			Class: cSchool.Class{
 				Students: students,
 			},
 		})
@@ -201,13 +201,8 @@ func (s SchoolStore) RefreshInviteCode(schoolId string) (*cSchool.School, error)
 }
 
 func (s SchoolStore) NewDefaultCurriculum(schoolId string) error {
-	school, err := s.GetSchool(schoolId)
-	if err != nil {
-		return richErrors.Wrap(err, "Failed saving school")
-	}
-
 	c := createDefault()
-	err = s.RunInTransaction(
+	err := s.RunInTransaction(
 		func(tx *pg.Tx) error {
 			// Save the curriculum tree.
 			if err := tx.Insert(&c); err != nil {
@@ -230,9 +225,10 @@ func (s SchoolStore) NewDefaultCurriculum(schoolId string) error {
 			}
 
 			// Update the school with the new curriculum id
-			school.CurriculumId = c.Id
-			if err := tx.Update(school); err != nil {
-				return err
+			if _, err := tx.Model(&School{Id: schoolId, CurriculumId: c.Id}).
+				WherePK().
+				UpdateNotZero(); err != nil {
+				return richErrors.Wrap(err, "Failed saving curriculum")
 			}
 			return nil
 		})
