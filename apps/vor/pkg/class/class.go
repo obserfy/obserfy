@@ -1,14 +1,19 @@
 package class
 
 import (
-	"github.com/chrsep/vor/pkg/rest"
-	"github.com/go-chi/chi"
-	"github.com/google/uuid"
 	"net/http"
 	"time"
+
+	"github.com/go-chi/chi"
+	"github.com/go-playground/validator/v10"
+	"github.com/google/uuid"
+	"github.com/pkg/errors"
+
+	"github.com/chrsep/vor/pkg/lessonplan"
+	"github.com/chrsep/vor/pkg/rest"
 )
 
-func NewRouter(server rest.Server, store Store) *chi.Mux {
+func NewRouter(server rest.Server, store Store, lpStore lessonplan.Store) *chi.Mux {
 	r := chi.NewRouter()
 	r.Route("/{classId}", func(r chi.Router) {
 		r.Use(authorizationMiddleware(server, store))
@@ -16,6 +21,7 @@ func NewRouter(server rest.Server, store Store) *chi.Mux {
 		r.Method("DELETE", "/", deleteClass(server, store))
 		r.Method("PATCH", "/", updateClass(server, store))
 		r.Method("GET", "/session", getClassSession(server, store))
+		r.Method("POST", "/plans", postNewLessonPlan(server, lpStore))
 	})
 	return r
 }
@@ -164,6 +170,63 @@ func deleteClass(server rest.Server, store Store) http.Handler {
 				err,
 			}
 		}
+		return nil
+	})
+}
+
+func postNewLessonPlan(server rest.Server, store lessonplan.Store) http.Handler {
+	type reqBody struct {
+		Title       string `json:"title" validate:"required"`
+		Description string `json:"description"`
+		Repetition  int    `json:"repetition"`
+	}
+
+	type resBody struct {
+		Id    string `json:"id"`
+		Title string `json:"title"`
+	}
+
+	validate := validator.New()
+
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		body := reqBody{}
+		classId := chi.URLParam(r, "classId")
+
+		if err := rest.ParseJson(r.Body, &body); err != nil {
+			return rest.NewParseJsonError(err)
+		}
+		if err := validate.Struct(body); err != nil {
+			return &rest.Error{
+				Code:    http.StatusBadRequest,
+				Message: err.Error(),
+				Error:   errors.Wrapf(err, "invalid request body"),
+			}
+		}
+
+		planInput := lessonplan.PlanData{
+			ClassId:     classId,
+			Title:       body.Title,
+			Description: body.Description,
+			Repetition:  body.Repetition,
+		}
+
+		lessonPlan, err := store.CreateLessonPlan(planInput)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "failed to create lesson plan",
+				Error:   err,
+			}
+		}
+
+		w.WriteHeader(http.StatusCreated)
+		if err := rest.WriteJson(w, &resBody{
+			Id:    lessonPlan.Id,
+			Title: lessonPlan.Title,
+		}); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
+
 		return nil
 	})
 }

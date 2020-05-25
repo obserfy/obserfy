@@ -2,24 +2,25 @@ package school
 
 import (
 	"errors"
-	"github.com/chrsep/vor/pkg/auth"
-	"github.com/chrsep/vor/pkg/imgproxy"
-	"github.com/chrsep/vor/pkg/minio"
-	"github.com/chrsep/vor/pkg/postgres"
-	"github.com/chrsep/vor/pkg/rest"
+	"net/http"
+	"os"
+	"time"
+
 	"github.com/go-chi/chi"
 	"github.com/go-pg/pg/v9"
 	"github.com/go-playground/validator/v10"
 	"github.com/google/uuid"
 	richErrors "github.com/pkg/errors"
-	"net/http"
-	"os"
-	"time"
+
+	"github.com/chrsep/vor/pkg/auth"
+	"github.com/chrsep/vor/pkg/imgproxy"
+	"github.com/chrsep/vor/pkg/minio"
+	"github.com/chrsep/vor/pkg/rest"
 )
 
 func NewRouter(
 	server rest.Server,
-	store postgres.SchoolStore,
+	store Store,
 	imageStorage StudentImageStorage,
 	imgproxyClient *imgproxy.Client,
 ) *chi.Mux {
@@ -45,11 +46,13 @@ func NewRouter(
 
 		r.Method("POST", "/guardians", postNewGuardian(server, store))
 		r.Method("GET", "/guardians", getGuardians(server, store))
+
+		r.Method("GET", "/plans", getLessonPlan(server, store))
 	})
 	return r
 }
 
-func getClasses(server rest.Server, store postgres.SchoolStore) http.Handler {
+func getClasses(server rest.Server, store Store) http.Handler {
 	type responseBody struct {
 		Id        string         `json:"id"`
 		Name      string         `json:"name"`
@@ -91,7 +94,7 @@ func getClasses(server rest.Server, store postgres.SchoolStore) http.Handler {
 		return nil
 	})
 }
-func getClassAttendance(server rest.Server, store postgres.SchoolStore) http.Handler {
+func getClassAttendance(server rest.Server, store Store) http.Handler {
 	type attendanceData struct {
 		StudentId string `json:"studentId"`
 		Name      string `json:"name"`
@@ -138,7 +141,8 @@ func getClassAttendance(server rest.Server, store postgres.SchoolStore) http.Han
 		return nil
 	})
 }
-func postNewClass(s rest.Server, store postgres.SchoolStore) http.Handler {
+
+func postNewClass(s rest.Server, store Store) http.Handler {
 	type requestBody struct {
 		Name      string         `json:"name"`
 		StartTime time.Time      `json:"startTime"`
@@ -173,9 +177,14 @@ func postNewClass(s rest.Server, store postgres.SchoolStore) http.Handler {
 	})
 }
 
-func postNewSchool(s rest.Server, store postgres.SchoolStore) rest.Handler {
+func postNewSchool(s rest.Server, store Store) rest.Handler {
 	var requestBody struct {
 		Name string
+	}
+
+	type responseBody struct {
+		Id   string `json:"id"`
+		Name string `json:"name"`
 	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		session, ok := auth.GetSessionFromCtx(r.Context())
@@ -191,14 +200,17 @@ func postNewSchool(s rest.Server, store postgres.SchoolStore) rest.Handler {
 			return &rest.Error{http.StatusInternalServerError, "failed saving school data", err}
 		}
 		w.WriteHeader(http.StatusCreated)
-		if err := rest.WriteJson(w, school); err != nil {
+		if err := rest.WriteJson(w, responseBody{
+			Id:   school.Id,
+			Name: school.Name,
+		}); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
 		return nil
 	})
 }
 
-func authorizationMiddleware(s rest.Server, store postgres.SchoolStore) func(next http.Handler) http.Handler {
+func authorizationMiddleware(s rest.Server, store Store) func(next http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
 		return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 			schoolId := chi.URLParam(r, "schoolId")
@@ -240,7 +252,7 @@ func authorizationMiddleware(s rest.Server, store postgres.SchoolStore) func(nex
 	}
 }
 
-func getSchool(s rest.Server, store postgres.SchoolStore) rest.Handler {
+func getSchool(s rest.Server, store Store) rest.Handler {
 	type responseUserField struct {
 		Id            string `json:"id"`
 		Name          string `json:"name"`
@@ -289,7 +301,7 @@ func getSchool(s rest.Server, store postgres.SchoolStore) rest.Handler {
 	})
 }
 
-func getStudents(s rest.Server, store postgres.SchoolStore, imgproxyClient *imgproxy.Client) rest.Handler {
+func getStudents(s rest.Server, store Store, imgproxyClient *imgproxy.Client) rest.Handler {
 	type responseBody struct {
 		Id            string     `json:"id"`
 		Name          string     `json:"name"`
@@ -324,15 +336,15 @@ func getStudents(s rest.Server, store postgres.SchoolStore, imgproxyClient *imgp
 	})
 }
 
-func postNewStudent(s rest.Server, store postgres.SchoolStore, storage StudentImageStorage) rest.Handler {
+func postNewStudent(s rest.Server, store Store, storage StudentImageStorage) rest.Handler {
 	type studentField struct {
-		Name        string          `json:"name"`
-		DateOfBirth *time.Time      `json:"dateOfBirth"`
-		DateOfEntry *time.Time      `json:"dateOfEntry"`
-		CustomId    string          `json:"customId"`
-		Classes     []string        `json:"classes"`
-		Note        string          `json:"note"`
-		Gender      postgres.Gender `json:"gender"`
+		Name        string     `json:"name"`
+		DateOfBirth *time.Time `json:"dateOfBirth"`
+		DateOfEntry *time.Time `json:"dateOfEntry"`
+		CustomId    string     `json:"customId"`
+		Classes     []string   `json:"classes"`
+		Note        string     `json:"note"`
+		Gender      Gender     `json:"gender"`
 		Guardians   []struct {
 			Id           string `json:"id"`
 			Relationship int    `json:"relationship"`
@@ -405,7 +417,8 @@ func postNewStudent(s rest.Server, store postgres.SchoolStore, storage StudentIm
 		for _, guardian := range newStudent.Guardians {
 			guardians[guardian.Id] = guardian.Relationship
 		}
-		err = store.NewStudent(postgres.Student{
+
+		err = store.NewStudent(Student{
 			Id:          newStudentId,
 			Name:        newStudent.Name,
 			SchoolId:    schoolId,
@@ -430,7 +443,7 @@ func postNewStudent(s rest.Server, store postgres.SchoolStore, storage StudentIm
 	})
 }
 
-func refreshInviteCode(s rest.Server, store postgres.SchoolStore) http.Handler {
+func refreshInviteCode(s rest.Server, store Store) http.Handler {
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		schoolId := chi.URLParam(r, "schoolId")
 
@@ -447,7 +460,7 @@ func refreshInviteCode(s rest.Server, store postgres.SchoolStore) http.Handler {
 	})
 }
 
-func postNewCurriculum(s rest.Server, store postgres.SchoolStore) http.Handler {
+func postNewCurriculum(s rest.Server, store Store) http.Handler {
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		// Get school id
 		schoolId := chi.URLParam(r, "schoolId")
@@ -472,14 +485,14 @@ func postNewCurriculum(s rest.Server, store postgres.SchoolStore) http.Handler {
 	})
 }
 
-func deleteCurriculum(s rest.Server, store postgres.SchoolStore) rest.Handler {
+func deleteCurriculum(s rest.Server, store Store) rest.Handler {
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		// Get school id
 		schoolId := chi.URLParam(r, "schoolId")
 
 		// Get school data and check if curriculum exists
 		err := store.DeleteCurriculum(schoolId)
-		if errors.Is(postgres.EmptyCurriculumError{}, err) {
+		if errors.Is(EmptyCurriculumError, err) {
 			return &rest.Error{http.StatusNotFound, "School doesn't have curriculum yet", err}
 		} else if err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Failed to get school data", err}
@@ -489,7 +502,7 @@ func deleteCurriculum(s rest.Server, store postgres.SchoolStore) rest.Handler {
 	})
 }
 
-func getCurriculum(s rest.Server, store postgres.SchoolStore) rest.Handler {
+func getCurriculum(s rest.Server, store Store) rest.Handler {
 	type responseBody struct {
 		Id   string `json:"id"`
 		Name string `json:"name"`
@@ -500,7 +513,7 @@ func getCurriculum(s rest.Server, store postgres.SchoolStore) rest.Handler {
 
 		// Get school data and check if curriculum exists
 		c, err := store.GetCurriculum(schoolId)
-		if errors.Is(postgres.EmptyCurriculumError{}, err) {
+		if errors.Is(EmptyCurriculumError, err) {
 			return &rest.Error{http.StatusNotFound, "School doesn't have curriculum yet", err}
 		} else if err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Failed to get school data", err}
@@ -515,7 +528,7 @@ func getCurriculum(s rest.Server, store postgres.SchoolStore) rest.Handler {
 	})
 }
 
-func getCurriculumAreas(s rest.Server, store postgres.SchoolStore) rest.Handler {
+func getCurriculumAreas(s rest.Server, store Store) rest.Handler {
 	type simplifiedArea struct {
 		Id   string `json:"id"`
 		Name string `json:"name"`
@@ -526,8 +539,8 @@ func getCurriculumAreas(s rest.Server, store postgres.SchoolStore) rest.Handler 
 
 		// Get school data and check if curriculum exists
 		areas, err := store.GetCurriculumAreas(schoolId)
-		if errors.Is(postgres.EmptyCurriculumError{}, err) {
-			emptyArray := make([]postgres.Area, 0)
+		if errors.Is(EmptyCurriculumError, err) {
+			emptyArray := make([]Area, 0)
 			if err = rest.WriteJson(w, emptyArray); err != nil {
 				return rest.NewWriteJsonError(err)
 			}
@@ -553,7 +566,7 @@ func getCurriculumAreas(s rest.Server, store postgres.SchoolStore) rest.Handler 
 	})
 }
 
-func postNewGuardian(server rest.Server, store postgres.SchoolStore) http.Handler {
+func postNewGuardian(server rest.Server, store Store) http.Handler {
 	type requestBody struct {
 		Name  string `json:"name" validate:"required"`
 		Email string `json:"email"`
@@ -587,15 +600,17 @@ func postNewGuardian(server rest.Server, store postgres.SchoolStore) http.Handle
 			}
 		}
 
-		newGuardian, err := store.InsertGuardianWIthRelation(
-			schoolId,
-			body.Name,
-			body.Email,
-			body.Phone,
-			body.Note,
-			body.Relationship,
-			body.StudentId,
-		)
+		guardianInput := GuardianWithRelation{
+			SchoolId:     schoolId,
+			Name:         body.Name,
+			Email:        body.Email,
+			Phone:        body.Phone,
+			Note:         body.Note,
+			Relationship: body.Relationship,
+			StudentId:    body.StudentId,
+		}
+
+		newGuardian, err := store.InsertGuardianWithRelation(guardianInput)
 		if err != nil {
 			return &rest.Error{
 				Code:    http.StatusInternalServerError,
@@ -618,7 +633,7 @@ func postNewGuardian(server rest.Server, store postgres.SchoolStore) http.Handle
 	})
 }
 
-func getGuardians(server rest.Server, store postgres.SchoolStore) http.Handler {
+func getGuardians(server rest.Server, store Store) http.Handler {
 	type responseBody struct {
 		Id    string `json:"id"`
 		Name  string `json:"name"`
@@ -652,6 +667,13 @@ func getGuardians(server rest.Server, store postgres.SchoolStore) http.Handler {
 		if err := rest.WriteJson(w, &response); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
+		return nil
+	})
+}
+
+func getLessonPlan(server rest.Server, store Store) http.Handler {
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		rest.WriteJson(w, "OK")
 		return nil
 	})
 }
