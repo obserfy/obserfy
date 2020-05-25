@@ -7,6 +7,10 @@ const pgPool = new Pool({
   password: process.env.PG_PASSWORD,
   port: parseInt(process.env.PG_PORT, 10),
   max: parseInt(process.env.MAX_CLIENTS, 10) || 10,
+  ssl: process.env.NODE_ENV === "production" && {
+    cert: process.env.PG_CERT,
+    rejectUnauthorized: false,
+  },
 })
 
 pgPool.on("error", (err) => {

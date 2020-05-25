@@ -1,7 +1,6 @@
 import React, { FC, useState } from "react"
 import ProfilePicture from "./profilePicture"
 import Button from "./button"
-import useGetChildren from "../apiHooks/useGetChildren"
 
 interface Props {
   userName?: string

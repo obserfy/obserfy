@@ -1,9 +1,9 @@
 // next.config.js
 const withPlugins = require("next-compose-plugins")
 const optimizedImages = require("next-optimized-images")
-const PreactRefreshPlugin = require(`@prefresh/webpack`)
+const withPrefresh = require("@prefresh/next")
 
-module.exports = withPlugins([optimizedImages], {
+module.exports = withPlugins([withPrefresh, optimizedImages], {
   experimental: {
     modern: true,
     polyfillsOptimization: true,
@@ -40,10 +40,6 @@ module.exports = withPlugins([optimizedImages], {
           entries["main.js"] = ["preact/debug"].concat(entries["main.js"] || [])
           return entries
         })
-      config.plugins.unshift(new PreactRefreshPlugin())
-      config.plugins = config.plugins.filter(
-        (plugin) => plugin.constructor.name !== `ReactFreshWebpackPlugin`
-      )
     }
 
     return config
