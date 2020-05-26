@@ -22,7 +22,7 @@ const Layout: FC = ({ children }) => {
       {status === "error" && <PleaseLoginDialog />}
       <div className="bg-background">
         <Header userName={data?.name} userImageSrc={data?.picture} />
-        <main className="max-w-6xl mx-auto">{children}</main>
+        <main className="max-w-4xl mx-auto">{children}</main>
       </div>
     </>
   )
