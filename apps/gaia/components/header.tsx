@@ -12,7 +12,7 @@ const Header: FC<Props> = ({ userImageSrc, userName }) => {
   return (
     <>
       <div className="bg-surface">
-        <div className="p-3 pb-2 flex items-center max-w-6xl mx-auto">
+        <div className="p-3 pb-2 flex items-center max-w-4xl mx-auto">
           <img
             alt="obserfy logo"
             src="/logo-transparent.png"
@@ -38,7 +38,7 @@ const Header: FC<Props> = ({ userImageSrc, userName }) => {
             />
           </div>
         </div>
-        <div className="flex px-3 py-6 max-w-6xl mx-auto">
+        <div className="flex px-3 py-6 max-w-4xl mx-auto">
           <div>
             <img
               alt="profile"
@@ -55,7 +55,7 @@ const Header: FC<Props> = ({ userImageSrc, userName }) => {
         </div>
       </div>
       <div className="sticky top-0 bg-surface border-b ">
-        <nav className="w-full flex max-w-6xl mx-auto">
+        <nav className="w-full flex max-w-4xl mx-auto">
           <div
             className="mx-3 px-1 py-2 border-b-2 border-black text-sm"
             style={{ marginBottom: "-1px" }}
@@ -73,7 +73,7 @@ const Header: FC<Props> = ({ userImageSrc, userName }) => {
                 Cancel
               </Button>
               <a href="/api/logout" className="block ml-3 w-full">
-                <Button className="w-full">Yes</Button>
+                <Button className="w-full bg-red-700 text-white">Yes</Button>
               </a>
             </div>
           </div>

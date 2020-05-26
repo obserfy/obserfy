@@ -14,11 +14,7 @@ const Button: FC<
     <button
       {...props}
       className={`
-        py-1 
-        px-6 
-        rounded 
-        text-onPrimary 
-        ${outline ? "bg-white" : "bg-primary"}
+        ${outline && "bg-white"}
         ${outline && "border"}
         ${className}
       `}
