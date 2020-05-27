@@ -12,8 +12,8 @@ const Layout: FC = ({ children }) => {
 
   useEffect(() => {
     const newId = userChildren.data?.[0]?.id
-    if (router.query.child === undefined && newId !== undefined) {
-      router.push(`/?child=${userChildren.data?.[0]?.id}`)
+    if (router.query.childId === undefined && newId !== undefined) {
+      router.push(`/?childId=${userChildren.data?.[0]?.id}`)
     }
   }, [userChildren.data])
 

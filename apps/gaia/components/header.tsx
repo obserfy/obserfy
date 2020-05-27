@@ -1,13 +1,17 @@
 import React, { FC, useState } from "react"
 import ProfilePicture from "./profilePicture"
 import Button from "./button"
+import useGetChild from "../hooks/useGetChild"
+import { useQueryString } from "../hooks/useQueryString"
 
 interface Props {
   userName?: string
   userImageSrc?: string
 }
 const Header: FC<Props> = ({ userImageSrc, userName }) => {
+  const childId = useQueryString("childId")
   const [showLogout, setShowLogout] = useState(false)
+  const child = useGetChild(childId)
 
   return (
     <>
@@ -38,7 +42,7 @@ const Header: FC<Props> = ({ userImageSrc, userName }) => {
             />
           </div>
         </div>
-        <div className="flex px-3 py-6 max-w-4xl mx-auto">
+        <div className="flex px-3 py-6 max-w-4xl mx-auto mr-3">
           <div>
             <img
               alt="profile"
@@ -49,8 +53,12 @@ const Header: FC<Props> = ({ userImageSrc, userName }) => {
             />
           </div>
           <div>
-            <div className="ml-3 text-2xl">Hermione Granger</div>
-            <div className="ml-3 text-sm text-gray-700">Joyful Online</div>
+            <div className="ml-3 text-2xl leading-tight">
+              {child.data?.name}
+            </div>
+            <div className="ml-3 text-sm text-gray-700">
+              {child.data?.schoolName}
+            </div>
           </div>
         </div>
       </div>

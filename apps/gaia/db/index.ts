@@ -21,12 +21,37 @@ export const queryChildrenByGuardianEmail = async (guardianEmail: string) => {
   const client = await pgPool.connect()
 
   // language=PostgreSQL
-  const result = await client.query<{ name: string }>(`
-      SELECT s.id, s.name
-      FROM students s
-      JOIN guardian_to_students gts ON s.id = gts.student_id
-      JOIN guardians g ON gts.guardian_id = g.id
-      WHERE g.email = '${guardianEmail}'
-  `)
+  const result = await client.query<{ id: string; name: string }>(
+    `
+              SELECT s.id, s.name
+              FROM students s
+                       JOIN guardian_to_students gts ON s.id = gts.student_id
+                       JOIN guardians g ON gts.guardian_id = g.id
+              WHERE g.email = $1
+    `,
+    [guardianEmail]
+  )
   return result.rows
+}
+
+export const queryChildData = async (
+  guardianEmail: string,
+  childId: string
+) => {
+  const client = await pgPool.connect()
+
+  // language=PostgreSQL
+  const result = await client.query(
+    `
+              SELECT s.id, s.name, school.name as school_name, s.profile_pic
+              FROM students s
+                       JOIN schools school ON s.school_id = school.id
+                       JOIN guardian_to_students gts ON s.id = gts.student_id
+                       JOIN guardians g ON gts.guardian_id = g.id
+              WHERE g.email = $1
+                AND s.id = $2
+    `,
+    [guardianEmail, childId]
+  )
+  return result.rows[0]
 }
