@@ -3,6 +3,8 @@ import ProfilePicture from "./profilePicture"
 import Button from "./button"
 import useGetChild from "../hooks/useGetChild"
 import { useQueryString } from "../hooks/useQueryString"
+import LogoutIcon from "../icons/log-out.svg"
+import StudentPicPlaceholder from "../images/student_pic_placeholder.jpg"
 
 interface Props {
   userName?: string
@@ -34,19 +36,14 @@ const Header: FC<Props> = ({ userImageSrc, userName }) => {
             onClick={() => setShowLogout(true)}
             onKeyUp={(e) => e.keyCode === 13 && setShowLogout(true)}
           >
-            <img
-              alt="logout icon"
-              src={require("../icons/log-out.svg")}
-              height={18}
-              width={18}
-            />
+            <img alt="logout icon" src={LogoutIcon} height={18} width={18} />
           </div>
         </div>
         <div className="flex px-3 py-6 max-w-4xl mx-auto mr-3">
           <div>
             <img
               alt="profile"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4LlsiK4wcMEo2fEGLfj3WNBxAIXZJSnMgSlZavkf2HZGcWzhXDyvxfZOSrJ8&s"
+              src={child.data?.profilePic ?? StudentPicPlaceholder}
               width={60}
               height={60}
               className="rounded-full"

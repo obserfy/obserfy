@@ -1,5 +1,6 @@
 import { NextApiHandler } from "next"
 import { queryChildData } from "../../../db"
+import { generateUrl } from "../../../utils/imgproxy"
 
 const childHandler: NextApiHandler = async (req, res) => {
   try {
@@ -20,7 +21,8 @@ const childHandler: NextApiHandler = async (req, res) => {
       id: result.id,
       name: result.name,
       schoolName: result.school_name,
-      profilePic: result.profilePic,
+      profilePic:
+        result.profile_pic && generateUrl(result.profile_pic, 100, 100),
     })
   } catch (error) {
     console.error(error)

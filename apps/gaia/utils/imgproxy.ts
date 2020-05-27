@@ -5,7 +5,11 @@ const SALT = process.env.IMGPROXY_SALT
 const URL = process.env.IMGPROXY_URL
 const BUCKET = process.env.IMGPROXY_BUCKET
 
-export const generateUrl = (imagePath: string, width: number, height: number) => {
+export const generateUrl = (
+  imagePath: string,
+  width: number,
+  height: number
+) => {
   const urlSafeBase64 = (string) => {
     return Buffer.from(string)
       .toString("base64")
@@ -27,9 +31,9 @@ export const generateUrl = (imagePath: string, width: number, height: number) =>
   const resizingType = "fill"
   const gravity = "no"
   const enlarge = 1
-  const extension = "png"
   const encodedUrl = urlSafeBase64(url)
-  const path = `/${resizingType}/${width}/${height}/${gravity}/${enlarge}/${encodedUrl}.${extension}`
+  const path = `/${resizingType}/${width}/${height}/${gravity}/${enlarge}/${encodedUrl}`
+  console.log(path)
 
   const signature = sign(SALT, path, KEY)
   return `${URL}/${signature}${path}`
