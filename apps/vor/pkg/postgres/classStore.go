@@ -1,9 +1,10 @@
 package postgres
 
 import (
+	"time"
+
 	"github.com/go-pg/pg/v9"
 	richErrors "github.com/pkg/errors"
-	"time"
 
 	"github.com/chrsep/vor/pkg/class"
 )

@@ -8,8 +8,7 @@ require (
 	github.com/getsentry/sentry-go v0.6.1
 	github.com/go-chi/chi v4.1.1+incompatible
 	github.com/go-pg/pg/v9 v9.1.6
-	github.com/go-playground/validator/v10 v10.2.0
-	github.com/go-shadow/moment v0.0.0-20140422073900-e837f27dad94
+	github.com/go-playground/validator/v10 v10.3.0
 	github.com/google/uuid v1.1.1
 	github.com/joho/godotenv v1.3.0
 	github.com/mailgun/mailgun-go/v4 v4.1.0
@@ -20,6 +19,6 @@ require (
 	golang.org/x/crypto v0.0.0-20200510223506-06a226fb4e37
 	golang.org/x/lint v0.0.0-20191125180803-fdd1cda4f05f // indirect
 	golang.org/x/sys v0.0.0-20191128015809-6d18c012aee9 // indirect
-	golang.org/x/tools v0.0.0-20200515220128-d3bf790afa53
+	golang.org/x/tools v0.0.0-20200522201501-cb1345f3a375 // indirect
 	gopkg.in/yaml.v2 v2.2.7 // indirect
 )

@@ -4,6 +4,8 @@ import (
 	"github.com/go-pg/pg/v9"
 	"github.com/google/uuid"
 	richErrors "github.com/pkg/errors"
+
+	cCurriculum "github.com/chrsep/vor/pkg/curriculum"
 )
 
 type CurriculumStore struct {
@@ -135,7 +137,7 @@ func (s CurriculumStore) CheckAreaPermissions(areaId string, userId string) (boo
 
 	return false, nil
 }
-func (s CurriculumStore) ReplaceSubject(newSubject Subject) error {
+func (s CurriculumStore) ReplaceSubject(newSubject cCurriculum.Subject) error {
 	var materialsToKeep []string
 	for _, material := range newSubject.Materials {
 		materialsToKeep = append(materialsToKeep, material.Id)
@@ -169,17 +171,23 @@ func (s CurriculumStore) ReplaceSubject(newSubject Subject) error {
 	return nil
 }
 
-func (s CurriculumStore) GetMaterial(materialId string) (*Material, error) {
+func (s CurriculumStore) GetMaterial(materialId string) (*cCurriculum.Material, error) {
 	var material Material
 	if err := s.DB.Model(&material).
 		Where("id=?", materialId).
 		Select(); err != nil {
 		return nil, err
 	}
-	return &material, nil
+
+	return &cCurriculum.Material{
+		Id:        material.Id,
+		SubjectId: material.SubjectId,
+		Name:      material.Name,
+		Order:     material.Order,
+	}, nil
 }
 
-func (s CurriculumStore) UpdateMaterial(material *Material, order *int) error {
+func (s CurriculumStore) UpdateMaterial(material *cCurriculum.Material, order *int) error {
 	if err := s.RunInTransaction(func(tx *pg.Tx) error {
 		// Reorder the order of materials
 		if order != nil {
@@ -212,7 +220,7 @@ func (s CurriculumStore) UpdateMaterial(material *Material, order *int) error {
 	return nil
 }
 
-func (s CurriculumStore) NewMaterial(name string, subjectId string) (*Material, error) {
+func (s CurriculumStore) NewMaterial(name string, subjectId string) (*cCurriculum.Material, error) {
 	var biggestOrder int
 	if _, err := s.DB.Model((*Material)(nil)).
 		Where("subject_id=?", subjectId).
@@ -232,20 +240,32 @@ func (s CurriculumStore) NewMaterial(name string, subjectId string) (*Material, 
 	if err := s.DB.Insert(&material); err != nil {
 		return nil, err
 	}
-	return &material, nil
+
+	return &cCurriculum.Material{
+		Id:        material.Id,
+		SubjectId: material.SubjectId,
+		Name:      material.Name,
+		Order:     material.Order,
+	}, nil
 }
 
-func (s CurriculumStore) GetSubject(id string) (*Subject, error) {
+func (s CurriculumStore) GetSubject(id string) (*cCurriculum.Subject, error) {
 	var subject Subject
 	if err := s.DB.Model(&subject).
 		Where("id=?", id).
 		Select(); err != nil {
 		return nil, err
 	}
-	return &subject, nil
+
+	return &cCurriculum.Subject{
+		Id:     subject.Id,
+		AreaId: subject.AreaId,
+		Name:   subject.Name,
+		Order:  subject.Order,
+	}, nil
 }
 
-func (s CurriculumStore) NewSubject(name string, areaId string, materials []Material) (*Subject, error) {
+func (s CurriculumStore) NewSubject(name string, areaId string, materials []cCurriculum.Material) (*cCurriculum.Subject, error) {
 	var biggestOrder int
 	if _, err := s.DB.Model((*Subject)(nil)).
 		Where("area_id=?", areaId).
@@ -278,7 +298,13 @@ func (s CurriculumStore) NewSubject(name string, areaId string, materials []Mate
 	}); err != nil {
 		return nil, err
 	}
-	return &subject, nil
+
+	return &cCurriculum.Subject{
+		Id:     subject.Id,
+		AreaId: subject.AreaId,
+		Name:   subject.Name,
+		Order:  subject.Order,
+	}, nil
 }
 
 func (s CurriculumStore) NewArea(name string, curriculumId string) (string, error) {
@@ -294,34 +320,60 @@ func (s CurriculumStore) NewArea(name string, curriculumId string) (string, erro
 	return id, nil
 }
 
-func (s CurriculumStore) GetArea(areaId string) (*Area, error) {
+func (s CurriculumStore) GetArea(areaId string) (*cCurriculum.Area, error) {
 	var area Area
 	if err := s.Model(&area).
 		Where("id=?", areaId).
 		Select(); err != nil {
 		return nil, err
 	}
-	return &area, nil
+
+	return &cCurriculum.Area{
+		Id:   area.Id,
+		Name: area.Name,
+	}, nil
 }
 
-func (s CurriculumStore) GetAreaSubjects(areaId string) ([]Subject, error) {
+func (s CurriculumStore) GetAreaSubjects(areaId string) ([]cCurriculum.Subject, error) {
 	var subjects []Subject
+	res := make([]cCurriculum.Subject, 0)
+
 	if err := s.Model(&subjects).
 		Where("area_id=?", areaId).
 		Select(); err != nil {
 		return nil, err
 	}
-	return subjects, nil
+
+	for _, v := range subjects {
+		res = append(res, cCurriculum.Subject{
+			Id:    v.Id,
+			Name:  v.Name,
+			Order: v.Order,
+		})
+	}
+
+	return res, nil
 }
 
-func (s CurriculumStore) GetSubjectMaterials(subjectId string) ([]Material, error) {
+func (s CurriculumStore) GetSubjectMaterials(subjectId string) ([]cCurriculum.Material, error) {
 	var materials []Material
+	res := make([]cCurriculum.Material, 0)
+
 	if err := s.Model(&materials).
 		Where("subject_id=?", subjectId).
 		Select(); err != nil {
 		return nil, err
 	}
-	return materials, nil
+
+	for _, v := range materials {
+		res = append(res, cCurriculum.Material{
+			Id:    v.Id,
+			Name:  v.Name,
+			Order: v.Order,
+		})
+	}
+
+	return res, nil
 }
 
 func (s CurriculumStore) DeleteArea(id string) error {
