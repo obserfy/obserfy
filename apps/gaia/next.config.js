@@ -2,6 +2,7 @@
 const withPlugins = require("next-compose-plugins")
 const optimizedImages = require("next-optimized-images")
 const withPrefresh = require("@prefresh/next")
+const path = require("path")
 
 module.exports = withPlugins([withPrefresh, optimizedImages], {
   experimental: {
@@ -31,13 +32,14 @@ module.exports = withPlugins([withPrefresh, optimizedImages], {
     // Install webpack aliases:
     const aliases = config.resolve.alias || (config.resolve.alias = {})
     aliases.react = aliases["react-dom"] = "preact/compat"
+    aliases.preact = path.resolve(__dirname, "node_modules", "preact")
 
     // inject Preact DevTools
     if (dev && !isServer) {
       const entry = config.entry
       config.entry = () =>
         entry().then((entries) => {
-          entries["main.js"] = ["preact/debug"].concat(entries["main.js"] || [])
+          // entries["main.js"] = ["preact/debug"].concat(entries["main.js"] || [])
           return entries
         })
     }
