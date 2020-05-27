@@ -23,6 +23,7 @@
     "gatsby-plugin-webpack-bundle-analyser-v2": "1.1.9",
     "gatsby-source-filesystem": "2.3.8",
     "gatsby-transformer-sharp": "2.5.3",
+    "postcss-preset-env": "^6.7.0",
     "preact": "10.4.4",
     "react": "16.13.1",
     "react-dom": "16.13.1",
@@ -31,9 +32,9 @@
   "devDependencies": {
     "@types/react": "16.9.35",
     "@types/react-helmet": "6.0.0",
-    "eslint": "7.0.0",
     "@typescript-eslint/eslint-plugin": "2.31.0",
     "@typescript-eslint/parser": "2.31.0",
+    "eslint": "7.0.0",
     "eslint-config-airbnb-typescript": "7.2.1",
     "eslint-config-prettier": "6.11.0",
     "eslint-import-resolver-node": "0.3.3",
