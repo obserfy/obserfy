@@ -5,7 +5,7 @@ const childHandler: NextApiHandler = async (req, res) => {
   try {
     // const user = await auth0.getSession(req)
     // TODO: Use user's real session's email after we authenticate app with google.
-    const email = "chrseps@protonmail.com"
+    const email = "chrsep@protonmail.com"
     const {
       query: { childId },
     } = req

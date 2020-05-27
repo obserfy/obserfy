@@ -2646,7 +2646,7 @@
   resolved "https://registry.yarnpkg.com/@prefresh/core/-/core-0.6.0.tgz#b7801ad3d16de9d21ed0824db6c85707f93cf93c"
   integrity sha512-xhhBgQeMmyoSYEr8F27oypxRTWysIKPnc+Ed6U5OmEwPtLeKsccI3UCpSQyrcv5/HmPNPjAYHPqNC0uH57rIkw==
 
-"@prefresh/next@^0.1.0":
+"@prefresh/next@0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@prefresh/next/-/next-0.1.0.tgz#b78c60f64c0b154aa824ec5fbb211ba635275197"
   integrity sha512-xBdtqnSlHrXDeY03KRy9Z77BXvcgy6MtR8xh01jme/XYkDadVT43oif1rtFeNvBbM22CbAfDKB3CNi8Y3XLCXw==
@@ -2658,6 +2658,11 @@
   resolved "https://registry.yarnpkg.com/@prefresh/utils/-/utils-0.1.0.tgz#9b69c9ecd6002e72e096e5e72f4bd4f88d15284c"
   integrity sha512-xtUsQMJIHwBuiXu1E1iiXNVfn60N6zpVUo67ZvQVA6OMlslQzWtbdnTXRT+iplBBgfLmQvXR0bKsNz1+ZYSMgw==
 
+"@prefresh/utils@0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@prefresh/utils/-/utils-0.1.2.tgz#4fd698cf3b191667cc03406841cdeca0441f4b3a"
+  integrity sha512-uIXXKHoNPKCyJRvJId06VBSaNJKn1ifVACatJkcfJw4i9e3A89q7aOM91CUAyvgbY8QzPyiqG1EeIbsjgcFgKA==
+
 "@prefresh/webpack@^0.6.0":
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/@prefresh/webpack/-/webpack-0.6.0.tgz#fec281c8b94e5455646686eb4c123a7b22004dd3"
@@ -2666,13 +2671,13 @@
     "@prefresh/core" "0.6.0"
     "@prefresh/utils" "0.1.0"
 
-"@prefresh/webpack@^0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@prefresh/webpack/-/webpack-0.7.0.tgz#a5cfdec11ca1b21a03fedd94d42ff0447a205d06"
-  integrity sha512-1dZ7Jb4bcU1S6OBiDsTQZ43A5kCTK+5hNwOJzYyyUHAthImvKBNpYq2UvBeLatDZvVYb2/x5m4gCFWtokEB+jQ==
+"@prefresh/webpack@^0.7.1":
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/@prefresh/webpack/-/webpack-0.7.1.tgz#e5cd6eb27ba1686acc5bc84154959ec74c0190f1"
+  integrity sha512-3EFUh8mPAv0xO9C1mDWkyoUtNTIIN2J1f/D1DabLvKlj/wwwVMWprdfexWrhNSFs+hJHRx/dqJzTitPvoa63Yg==
   dependencies:
     "@prefresh/core" "0.6.0"
-    "@prefresh/utils" "0.1.0"
+    "@prefresh/utils" "0.1.2"
 
 "@reach/router@1.3.3", "@reach/router@^1.2.1", "@reach/router@^1.3.3":
   version "1.3.3"
@@ -4062,7 +4067,7 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-13.13.2.tgz#160d82623610db590a64e8ca81784e11117e5a54"
   integrity sha512-LB2R1Oyhpg8gu4SON/mfforE525+Hi/M1ineICEDftqNVTyFg1aRIeGuTvXAoWHc4nbrFncWtJgMmoyRvuGh7A==
 
-"@types/node@14.0.5":
+"@types/node@14.0.5", "@types/node@^14.0.5":
   version "14.0.5"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.0.5.tgz#3d03acd3b3414cf67faf999aed11682ed121f22b"
   integrity sha512-90hiq6/VqtQgX8Sp0EzeIsv3r+ellbGj4URKj5j30tLlZvRUpnAe9YbYnjl3pJM93GyXU0tghHhvXHq+5rnCKA==
@@ -4215,7 +4220,7 @@
     "@types/prop-types" "*"
     csstype "^2.2.0"
 
-"@types/react@16.9.35":
+"@types/react@16.9.35", "@types/react@^16.9.35":
   version "16.9.35"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.35.tgz#a0830d172e8aadd9bd41709ba2281a3124bbd368"
   integrity sha512-q0n0SsWcGc8nDqH2GJfWQWUOmZSJhXV64CjVN5SvcNti3TdEaA3AH0D8DwNmMdzjMAC/78tB8nAZIlV8yTz+zQ==
@@ -16351,10 +16356,23 @@ neon-js@^1.1.2:
   resolved "https://registry.yarnpkg.com/neon-js/-/neon-js-1.1.2.tgz#af85d8e2bb8099cfc7f6fe256a896a5464b00623"
   integrity sha1-r4XY4ruAmc/H9v4laolqVGSwBiM=
 
-newline-regex@^0.2.0:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/newline-regex/-/newline-regex-0.2.1.tgz#4696d869045ee1509b83aac3a58d4a93bbed926e"
-  integrity sha1-RpbYaQRe4VCbg6rDpY1Kk7vtkm4=
+next-compose-plugins@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/next-compose-plugins/-/next-compose-plugins-2.2.0.tgz#95cd8eb40ab0652070d76572fb648354191628b0"
+  integrity sha512-ChUlpT9tWfJ7YxqGw/WQ2T1gf8EeX93n1XqeQw0lkvGa7seszahvF4eOZUJoq7Hetsbzg4UHVnPoCXfXTyQR3g==
+
+next-optimized-images@^2.6.0:
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/next-optimized-images/-/next-optimized-images-2.6.0.tgz#10ae5feca4148d3abe4a6781e304bcb1d5c3c557"
+  integrity sha512-z+dASQLXIJPrc1iBt+jm5bravXud3nZ3de3Y3HgUNpJNUdkweym91dvKVgmvpXkEaNzExArybuSVNhOB2vR5qA==
+  dependencies:
+    chalk "^2.4.2"
+    figures "^3.0.0"
+    file-loader "^3.0.1"
+    imagemin "^6.1.0"
+    img-loader "^3.0.1"
+    raw-loader "^2.0.0"
+    url-loader "^1.1.2"
 
 next-tick@^1.0.0:
   version "1.1.0"
@@ -23074,7 +23092,7 @@ typescript-plugin-css-modules@2.3.0:
     reserved-words "^0.1.2"
     sass "^1.26.5"
 
-typescript@3.9.3:
+typescript@3.9.3, typescript@^3.9.3:
   version "3.9.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.3.tgz#d3ac8883a97c26139e42df5e93eeece33d610b8a"
   integrity sha512-D/wqnB2xzNFIcoBG9FG8cXRDjiqSTbG2wd8DMZeQyJlP1vfTkIxH4GKveWaEBYySKIg+USu+E+EDIR47SqnaMQ==
