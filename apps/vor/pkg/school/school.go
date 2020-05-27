@@ -181,6 +181,11 @@ func postNewSchool(s rest.Server, store Store) rest.Handler {
 	var requestBody struct {
 		Name string
 	}
+
+	type responseBody struct {
+		Id   string `json:"id"`
+		Name string `json:"name"`
+	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		session, ok := auth.GetSessionFromCtx(r.Context())
 		if !ok {
@@ -195,7 +200,10 @@ func postNewSchool(s rest.Server, store Store) rest.Handler {
 			return &rest.Error{http.StatusInternalServerError, "failed saving school data", err}
 		}
 		w.WriteHeader(http.StatusCreated)
-		if err := rest.WriteJson(w, school); err != nil {
+		if err := rest.WriteJson(w, responseBody{
+			Id:   school.Id,
+			Name: school.Name,
+		}); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
 		return nil
@@ -330,13 +338,13 @@ func getStudents(s rest.Server, store Store, imgproxyClient *imgproxy.Client) re
 
 func postNewStudent(s rest.Server, store Store, storage StudentImageStorage) rest.Handler {
 	type studentField struct {
-		Name        string      `json:"name"`
-		DateOfBirth *time.Time  `json:"dateOfBirth"`
-		DateOfEntry *time.Time  `json:"dateOfEntry"`
-		CustomId    string      `json:"customId"`
-		Classes     []string    `json:"classes"`
-		Note        string      `json:"note"`
-		Gender      Gender      `json:"gender"`
+		Name        string     `json:"name"`
+		DateOfBirth *time.Time `json:"dateOfBirth"`
+		DateOfEntry *time.Time `json:"dateOfEntry"`
+		CustomId    string     `json:"customId"`
+		Classes     []string   `json:"classes"`
+		Note        string     `json:"note"`
+		Gender      Gender     `json:"gender"`
 		Guardians   []struct {
 			Id           string `json:"id"`
 			Relationship int    `json:"relationship"`
