@@ -54,6 +54,8 @@ func InitTables(db *pg.DB) error {
 		(*PasswordResetToken)(nil),
 		(*LessonPlan)(nil),
 		(*File)(nil),
+		(*LessonPlanToFile)(nil),
+		(*RepetitionPattern)(nil),
 	} {
 		err := db.CreateTable(model, &orm.CreateTableOptions{IfNotExists: true, FKConstraints: true})
 		if err != nil {
@@ -247,10 +249,27 @@ type LessonPlan struct {
 	Description string
 	ClassId     string `pg:"type:uuid"`
 	Class       Class
-	Repetition  int
+	Type        int
+	Files       []File `pg:"many2many:lesson_plan_to_files,joinFK:file_id"`
 }
 
 type File struct {
-	Id   string `pg:"type:uuid"`
-	Name string
+	Id          string       `pg:"type:uuid"`
+	Name        string
+	LessonPlans []LessonPlan `pg:"many2many:lesson_plan_to_files,joinFK:lesson_plan_id"`
+}
+
+type LessonPlanToFile struct {
+	LessonPlanId string `pg:"type:uuid"`
+	LessonPlan   LessonPlan
+	FileId       string `pg:"type:uuid"`
+	File         File
+}
+
+type RepetitionPattern struct {
+	LessonPlanId string     `pg:"type:uuid"`
+	LessonPlan   LessonPlan
+	StartTime    time.Time
+	EndTime      time.Time
+	Repetition   int        `pg:",use_zero"`
 }

@@ -1,11 +1,10 @@
 package postgres
 
 import (
+	lp "github.com/chrsep/vor/pkg/lessonplan"
 	"github.com/go-pg/pg/v9"
 	"github.com/google/uuid"
 	"github.com/pkg/errors"
-
-	lp "github.com/chrsep/vor/pkg/lessonplan"
 )
 
 type (
@@ -21,17 +20,65 @@ type (
 	}
 )
 
-func (s LessonPlanStore) CreateLessonPlan(input lp.PlanData) (*lp.LessonPlan, error) {
+func (s LessonPlanStore) CreateLessonPlan(planInput lp.PlanData, rpInput *lp.RepetitionData) (*lp.LessonPlan, error) {
 	id := uuid.New()
+	var rpObj RepetitionPattern
+
 	obj := LessonPlan{
 		Id:          id.String(),
-		Title:       input.Title,
-		Description: input.Description,
-		ClassId:     input.ClassId,
-		Repetition:  input.Repetition,
+		Title:       planInput.Title,
+		Description: planInput.Description,
+		ClassId:     planInput.ClassId,
+		Type:        planInput.Type,
 	}
 
-	if _, err := s.Model(&obj).Insert(); err != nil {
+	err := s.RunInTransaction(func(tx *pg.Tx) error {
+		if err := tx.Insert(&obj); err != nil {
+			return err
+		}
+
+		for _, file := range planInput.Files {
+			if file == "" {
+				continue
+			}
+
+			fileId := uuid.New()
+			objFile := File{
+				Id:   fileId.String(),
+				Name: file,
+			}
+
+			if err := tx.Insert(&objFile); err != nil {
+				return err
+			}
+
+			relation := LessonPlanToFile{
+				LessonPlanId: obj.Id,
+				FileId:       objFile.Id,
+			}
+
+			if err := tx.Insert(&relation); err != nil {
+				return err
+			}
+		}
+
+		if rpInput != nil {
+			rpObj = RepetitionPattern{
+				LessonPlanId: obj.Id,
+				StartTime:    rpInput.StartTime,
+				EndTime:      rpInput.EndTime,
+				Repetition:   rpInput.Repetition,
+			}
+
+			if err := tx.Insert(&rpObj); err != nil {
+				return err
+			}
+		}
+
+		return nil
+	})
+
+	if err != nil {
 		err = errors.Wrapf(err, "failed create lesson plan")
 		return nil, err
 	}
@@ -41,7 +88,6 @@ func (s LessonPlanStore) CreateLessonPlan(input lp.PlanData) (*lp.LessonPlan, er
 		Title:       obj.Title,
 		Description: obj.Description,
 		ClassId:     obj.ClassId,
-		Repetition:  obj.Repetition,
 	}, nil
 }
 
@@ -64,6 +110,5 @@ func (s LessonPlanStore) GetLessonPlan(planId string) (*lp.LessonPlan, error) {
 		Title:       obj.Title,
 		Description: obj.Description,
 		ClassId:     obj.ClassId,
-		Repetition:  obj.Repetition,
 	}, nil
 }
