@@ -1,5 +1,4 @@
 import React from "react"
-import "./privacy-policy.css"
 
 const PrivacyPolicyPage = () => {
   return (

@@ -1,9 +1,9 @@
 import React, { FC } from "react"
 
+import { trackCustomEvent } from "gatsby-plugin-google-analytics"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Button from "../components/button"
-import { trackCustomEvent } from "gatsby-plugin-google-analytics"
 
 const ContactUsPage: FC = () => (
   <Layout>
@@ -22,27 +22,51 @@ const ContactUsPage: FC = () => (
             href="https://app.obserfy.com/register"
             className="block mb-3 sm:mb-0 sm:mr-3"
           >
-            <Button secondary className="w-full sm:w-auto text-lg bg-green-200" onClick={() => {
+            <Button
+              secondary
+              className="w-full sm:w-auto text-lg bg-green-200"
+              onClick={() => {
                 trackCustomEvent({
                   category: "Get Start Button",
                   action: "Click",
                   label: "Get Start",
                 })
-              }
-            }>Get Started</Button>
+              }}
+            >
+              Get Started
+            </Button>
           </a>
         </div>
       </div>
       <div className="flex-row justify-center lg:w-1/3 mx-auto md:mx-32">
-        <form className="bg-white shadow-md rounded p-8" name="contact" method="POST" data-netlify="true">
+        <form
+          className="bg-white shadow-md rounded p-8"
+          name="contact"
+          method="POST"
+          data-netlify="true"
+        >
           <div className="py-4">
-            <input type="email" id="email" name="email" placeholder="Email" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required={true} />
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              required
+            />
           </div>
           <div className="py-4">
-            <textarea name="message" placeholder="Message" className="resize-none border rounded shadow w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required={true} />
+            <textarea
+              name="message"
+              placeholder="Message"
+              className="resize-none border rounded shadow w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              required
+            />
           </div>
           <div className="py-4">
-            <Button className="w-full text-lg" type="submit">Send</Button>
+            <Button className="w-full text-lg" type="submit">
+              Send
+            </Button>
           </div>
         </form>
       </div>

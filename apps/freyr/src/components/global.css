@@ -3,3 +3,7 @@
 @tailwind components;
 
 @tailwind utilities;
+
+button {
+  @apply py-3 px-6 font-body font-bold shadow-sm rounded bg-green-500 text-white;
+}
