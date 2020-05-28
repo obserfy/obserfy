@@ -9,3 +9,6 @@ test_result
 node_modules
 .cache
 package-lock.json
+
+# Local Netlify folder
+.netlify
