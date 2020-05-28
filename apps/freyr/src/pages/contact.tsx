@@ -18,11 +18,13 @@ const ContactUsPage: FC = () => (
       </div>
       <div className="flex-row justify-center lg:w-1/3 ml-auto">
         <form
-          name="contact"
+          name="contact-us"
           method="POST"
           data-netlify="true"
           className="pt-3 md:pt-16"
+          data-netlify-honeypot="bot-field"
         >
+          <input type="hidden" name="form-name" value="contact" />
           <label htmlFor="email" className="text-gray-700">
             Email
             <input
