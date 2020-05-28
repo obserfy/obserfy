@@ -14,8 +14,8 @@ const IndexPage: FC = () => (
         Run your Montessori school efficiently
       </h1>
       <p className="text-xl my-8 text-gray-700 font-body">
-        Our tools help Montessori schools manage their records, do reports and
-        communicate with parents more efficiently
+        We help Montessori schools manage their records, do reports and
+        communicate with parents efficiently
       </p>
       <div className="sm:flex">
         <a
