@@ -137,7 +137,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
-        siteUrl: `https://obserfy.com`,
+        siteUrl: `https://app.obserfy.com`,
       },
     },
     {
