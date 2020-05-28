@@ -182,7 +182,7 @@ func postNewLessonPlan(server rest.Server, store lessonplan.Store) http.Handler 
 		Type        int      `json:"type" validate:"required,oneof= 1 2"`
 		StartTime   int64    `json:"startTime"`
 		EndTime     int64    `json:"endTime"`
-		Repetition  int      `json:"validate:oneof= 0 1 2"`
+		Repetition  int      `json:"repetition" validate:"oneof= 0 1 2"`
 		Files       []string `json:"files"`
 	}
 

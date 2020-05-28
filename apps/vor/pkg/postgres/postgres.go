@@ -244,7 +244,7 @@ type Weekday struct {
 }
 
 type LessonPlan struct {
-	Id          string `pg:"type:uuid"`
+	Id          string `pg:"type:uuid,on_delete:CASCADE"`
 	Title       string
 	Description string
 	ClassId     string `pg:"type:uuid"`
@@ -254,7 +254,7 @@ type LessonPlan struct {
 }
 
 type File struct {
-	Id          string       `pg:"type:uuid"`
+	Id          string       `pg:"type:uuid,on_delete:CASCADE"`
 	Name        string
 	LessonPlans []LessonPlan `pg:"many2many:lesson_plan_to_files,joinFK:lesson_plan_id"`
 }

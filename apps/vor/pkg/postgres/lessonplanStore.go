@@ -91,6 +91,10 @@ func (s LessonPlanStore) CreateLessonPlan(planInput lp.PlanData, rpInput *lp.Rep
 	}, nil
 }
 
+func (s LessonPlanStore) UpdateLessonPlan(planData lp.UpdatePlanData) (*LessonPlan, error) {
+	return nil, nil
+}
+
 func (s LessonPlanStore) GetLessonPlan(planId string) (*lp.LessonPlan, error) {
 	var obj LessonPlan
 

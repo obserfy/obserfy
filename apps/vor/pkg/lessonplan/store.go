@@ -33,8 +33,19 @@ type (
 		Repetition int
 	}
 
+	UpdatePlanData struct {
+		PlanId      string
+		Title       *string
+		Description *string
+		Type        *int
+		Repetition  *int
+		StartTime   *time.Time
+		EndTime     *time.Time
+	}
+
 	Store interface {
 		CreateLessonPlan(planInput PlanData, rpInput *RepetitionData) (*LessonPlan, error)
+		UpdateLessonPlan(planData UpdatePlanData) (*LessonPlan, error)
 		GetLessonPlan(planId string) (*LessonPlan, error)
 	}
 )
