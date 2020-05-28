@@ -36,7 +36,7 @@ const Header: FC = () => {
           </Button>
         </a>
 
-        <a href="https://parent.obserfy.com">
+        <a href="https://parent.obserfy.com/api/login">
           <Button className="px-3 py-2 border bg-transparent text-gray-700 text-sm">
             Parents
           </Button>
