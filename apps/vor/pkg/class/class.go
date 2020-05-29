@@ -177,13 +177,13 @@ func deleteClass(server rest.Server, store Store) http.Handler {
 
 func postNewLessonPlan(server rest.Server, store lessonplan.Store) http.Handler {
 	type reqBody struct {
-		Title       string   `json:"title" validate:"required"`
-		Description string   `json:"description"`
-		Type        int      `json:"type" validate:"required,oneof= 1 2"`
-		StartTime   int64    `json:"startTime"`
-		EndTime     int64    `json:"endTime"`
-		Repetition  int      `json:"repetition" validate:"oneof= 0 1 2"`
-		Files       []string `json:"files"`
+		Title       string    `json:"title" validate:"required"`
+		Description string    `json:"description"`
+		Type        int       `json:"type" validate:"required,oneof= 1 2"`
+		StartTime   time.Time `json:"startTime" validate:"required"`
+		EndTime     *time.Time`json:"endTime,omitempty"`
+		Repetition  int       `json:"repetition" validate:"oneof= 0 1 2"`
+		Files       []string  `json:"files"`
 	}
 
 	type resBody struct {
@@ -210,29 +210,20 @@ func postNewLessonPlan(server rest.Server, store lessonplan.Store) http.Handler 
 
 		// validate repetition data
 		var errMsg string
-		var startTime, endTime time.Time
 		var err error
 
 		isValid := true
 		var repetitionInput *lessonplan.RepetitionData
 
 		if body.Type == lessonplan.TypeRepeat {
-			if body.StartTime == 0 {
-				isValid = false
-				errMsg = "start time can't be empty"
-			}
-			startTime = time.Unix(body.StartTime, 0)
-
-			if body.EndTime == 0 {
+			if body.EndTime == nil {
 				isValid = false
 				errMsg = "end time can't be empty"
-			}
-			endTime = time.Unix(body.EndTime, 0)
-
-			repetitionInput = &lessonplan.RepetitionData{
-				StartTime:  startTime,
-				EndTime:    endTime,
-				Repetition: body.Repetition,
+			} else {
+				repetitionInput = &lessonplan.RepetitionData{
+					EndTime:    *body.EndTime,
+					Repetition: body.Repetition,
+				}
 			}
 		}
 
@@ -250,6 +241,7 @@ func postNewLessonPlan(server rest.Server, store lessonplan.Store) http.Handler 
 			Description: body.Description,
 			Type:        body.Type,
 			Files:       body.Files,
+			StartTime:   body.StartTime,
 		}
 
 		lessonPlan, err := store.CreateLessonPlan(planInput, repetitionInput)

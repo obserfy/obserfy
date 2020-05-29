@@ -251,6 +251,7 @@ type LessonPlan struct {
 	Class       Class
 	Type        int
 	Files       []File `pg:"many2many:lesson_plan_to_files,joinFK:file_id"`
+	StartTime   time.Time
 }
 
 type File struct {
@@ -269,7 +270,6 @@ type LessonPlanToFile struct {
 type RepetitionPattern struct {
 	LessonPlanId string     `pg:"type:uuid"`
 	LessonPlan   LessonPlan
-	StartTime    time.Time
 	EndTime      time.Time
 	Repetition   int        `pg:",use_zero"`
 }

@@ -30,6 +30,7 @@ func (s LessonPlanStore) CreateLessonPlan(planInput lp.PlanData, rpInput *lp.Rep
 		Description: planInput.Description,
 		ClassId:     planInput.ClassId,
 		Type:        planInput.Type,
+		StartTime:   planInput.StartTime,
 	}
 
 	err := s.RunInTransaction(func(tx *pg.Tx) error {
@@ -65,7 +66,6 @@ func (s LessonPlanStore) CreateLessonPlan(planInput lp.PlanData, rpInput *lp.Rep
 		if rpInput != nil {
 			rpObj = RepetitionPattern{
 				LessonPlanId: obj.Id,
-				StartTime:    rpInput.StartTime,
 				EndTime:      rpInput.EndTime,
 				Repetition:   rpInput.Repetition,
 			}
@@ -91,7 +91,22 @@ func (s LessonPlanStore) CreateLessonPlan(planInput lp.PlanData, rpInput *lp.Rep
 	}, nil
 }
 
-func (s LessonPlanStore) UpdateLessonPlan(planData lp.UpdatePlanData) (*LessonPlan, error) {
+func (s LessonPlanStore) UpdateLessonPlan(planData lp.UpdatePlanData) (*lp.LessonPlan, error) {
+	// TODO: need to be simplified
+	var obj LessonPlan
+
+	err := s.RunInTransaction(func(tx *pg.Tx) error {
+		if planData.Title != nil {
+			obj.Title = *planData.Title
+		}
+
+		return nil
+	})
+
+	if err != nil {
+
+	}
+
 	return nil, nil
 }
 

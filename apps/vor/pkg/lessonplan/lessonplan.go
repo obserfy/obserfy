@@ -20,11 +20,11 @@ func NewRouter(server rest.Server, store Store) *chi.Mux {
 func updateLessonPlan(server rest.Server, store Store) http.Handler {
 	type reqBody struct {
 		Title       *string `json:"title"`
-		Description *string `json:"description"`
-		Type        *int    `json:"type" validate:"oneof= 1 2"`
-		Repetition  *int    `json:"repetition" validate:"oneof= 0 1 2"`
-		StartTime   *int64  `json:"startTime"`
-		EndTime     *int64  `json:"endTime"`
+		Description *string `json:"description,omitempty"`
+		Type        *int    `json:"type,omitempty" validate:"oneof= 1 2"`
+		Repetition  *int    `json:"repetition,omitempty" validate:"oneof= 0 1 2"`
+		StartTime   *int64  `json:"startTime,omitempty"`
+		EndTime     *int64  `json:"endTime,omitempty"`
 	}
 
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {

@@ -25,10 +25,10 @@ type (
 		Description string
 		Type        int
 		Files       []string
+		StartTime   time.Time
 	}
 
 	RepetitionData struct {
-		StartTime  time.Time
 		EndTime    time.Time
 		Repetition int
 	}
