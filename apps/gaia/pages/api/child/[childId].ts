@@ -1,17 +1,15 @@
-import { NextApiHandler } from "next"
 import { queryChildData } from "../../../db"
 import { generateUrl } from "../../../utils/imgproxy"
+import auth0 from "../../../utils/auth0"
 
-const childHandler: NextApiHandler = async (req, res) => {
+const childHandler = auth0.requireAuthentication(async (req, res) => {
   try {
-    // const user = await auth0.getSession(req)
-    // TODO: Use user's real session's email after we authenticate app with google.
-    const email = "chrsep@protonmail.com"
+    const { user } = await auth0.getSession(req)
     const {
       query: { childId },
     } = req
 
-    const result = await queryChildData(email, childId as string)
+    const result = await queryChildData(user.email, childId as string)
     if (!result) {
       res.status(404).end("not found")
       return
@@ -28,6 +26,6 @@ const childHandler: NextApiHandler = async (req, res) => {
     console.error(error)
     res.status(error.status || 500).end(error.message)
   }
-}
+})
 
 export default childHandler

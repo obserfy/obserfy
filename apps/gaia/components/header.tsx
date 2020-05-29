@@ -39,7 +39,7 @@ const Header: FC<Props> = ({ userImageSrc, userName }) => {
             <img alt="logout icon" src={LogoutIcon} height={18} width={18} />
           </div>
         </div>
-        <div className="flex px-3 py-6 max-w-4xl mx-auto mr-3">
+        <div className="flex px-3 py-6 max-w-4xl mx-auto">
           <div>
             <img
               alt="profile"
