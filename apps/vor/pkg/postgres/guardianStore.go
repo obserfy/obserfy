@@ -57,7 +57,7 @@ func (s GuardianStore) DeleteGuardian(id string) (int, error) {
 	if err == pg.ErrNoRows {
 		return 0, nil
 	} else if err != nil {
-		return 0, richErrors.Wrap(err, "can't find guardian with the specified id")
+		return 0, richErrors.Wrap(err, "failed to delete guardian from db")
 	}
 	return result.RowsAffected(), nil
 }
