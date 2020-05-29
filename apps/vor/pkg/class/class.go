@@ -218,7 +218,7 @@ func postNewLessonPlan(server rest.Server, store lessonplan.Store) http.Handler 
 		if body.Type == lessonplan.TypeRepeat {
 			if body.EndTime == nil {
 				isValid = false
-				errMsg = "end time can't be empty"
+				errMsg = "End time can't be empty"
 			} else {
 				repetitionInput = &lessonplan.RepetitionData{
 					EndTime:    *body.EndTime,
@@ -231,7 +231,6 @@ func postNewLessonPlan(server rest.Server, store lessonplan.Store) http.Handler 
 			return &rest.Error{
 				Code:    http.StatusBadRequest,
 				Message: errMsg,
-				Error:   errors.Wrapf(err, "invalid request body"),
 			}
 		}
 
@@ -248,7 +247,7 @@ func postNewLessonPlan(server rest.Server, store lessonplan.Store) http.Handler 
 		if err != nil {
 			return &rest.Error{
 				Code:    http.StatusInternalServerError,
-				Message: "failed to create lesson plan",
+				Message: "Failed to create lesson plan",
 				Error:   err,
 			}
 		}

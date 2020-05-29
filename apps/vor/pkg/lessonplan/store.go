@@ -3,7 +3,7 @@ package lessonplan
 import "time"
 
 const (
-	//TypeNormal = 1
+	TypeNormal = 1
 	TypeRepeat = 2
 
 	//RepetitionDaily = 0
@@ -45,7 +45,7 @@ type (
 
 	Store interface {
 		CreateLessonPlan(planInput PlanData, rpInput *RepetitionData) (*LessonPlan, error)
-		UpdateLessonPlan(planData UpdatePlanData) (*LessonPlan, error)
+		UpdateLessonPlan(planData UpdatePlanData) (int, error)
 		GetLessonPlan(planId string) (*LessonPlan, error)
 	}
 )

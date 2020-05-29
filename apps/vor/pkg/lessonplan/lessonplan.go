@@ -29,12 +29,49 @@ func updateLessonPlan(server rest.Server, store Store) http.Handler {
 
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		body := reqBody{}
-		//planId := chi.URLParam(r, "planId")
+		planId := chi.URLParam(r, "planId")
 
 		if err := rest.ParseJson(r.Body, &body); err != nil {
 			return rest.NewParseJsonError(err)
 		}
 
+		isValid := true
+		errMsg := ""
+		if body.Type != nil {
+			if *body.Type == TypeRepeat &&
+				(body.EndTime == nil || body.Repetition == nil) {
+				isValid = false
+				errMsg = "End time and repetition must be filled"
+			}
+		}
+
+		if !isValid {
+			return &rest.Error{
+				Code:    http.StatusBadRequest,
+				Message: errMsg,
+			}
+		}
+
+		planInput := UpdatePlanData{
+			PlanId: planId,
+		}
+		rowsAffected, err := store.UpdateLessonPlan(planInput)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "Failed to update lesson plan",
+				Error:   err,
+			}
+		}
+
+		if rowsAffected == 0 {
+			return &rest.Error{
+				Code:    http.StatusNotFound,
+				Message: "Can't find specified lesson plan",
+			}
+		}
+
+		w.WriteHeader(http.StatusNoContent)
 		return nil
 	})
 }
