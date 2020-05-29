@@ -5,7 +5,6 @@ const login: NextApiHandler = async (req, res) => {
   try {
     const session = await auth0.getSession(req)
     if (session) {
-      console.log(session)
       res.setHeader("Location", "/")
       res.status(302).end()
       return

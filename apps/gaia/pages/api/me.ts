@@ -11,11 +11,11 @@ export interface UserData {
   updated_at: string
 }
 
-export default async function me(req, res) {
+export default auth0.requireAuthentication(async function me(req, res) {
   try {
     await auth0.handleProfile(req, res)
   } catch (error) {
     console.error(error)
     res.status(error.status || 500).end(error.message)
   }
-}
+})
