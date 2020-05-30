@@ -92,6 +92,14 @@ type (
 		Relationship *int
 		StudentId    *string
 	}
+	LessonPlan struct {
+		Id          string
+		Title       string
+		Description string
+		ClassId     string
+		ClassName   string
+		StartTime   time.Time
+	}
 
 	FileData struct {
 		FileId   string
@@ -117,5 +125,6 @@ type (
 		CreateFile(schoolId, file string) (*FileData, error)
 		DeleteFile(fileId string) error
 		UpdateFile(fileId, fileName string) (*FileData, error)
+		GetLessonPlans(schoolId string, date string) ([]LessonPlan, error)
 	}
 )
