@@ -92,7 +92,14 @@ type (
 		Relationship *int
 		StudentId    *string
 	}
-
+	LessonPlan struct {
+		Id          string
+		Title       string
+		Description string
+		ClassId     string
+		ClassName   string
+		StartTime   time.Time
+	}
 	Store interface {
 		NewSchool(schoolName, userId string) (*School, error)
 		GetSchool(schoolId string) (*School, error)
@@ -108,5 +115,6 @@ type (
 		GetSchoolClasses(schoolId string) ([]Class, error)
 		InsertGuardianWithRelation(input GuardianWithRelation) (*Guardian, error)
 		GetGuardians(schoolId string) ([]Guardian, error)
+		GetLessonPlans(schoolId string, date string) ([]LessonPlan, error)
 	}
 )

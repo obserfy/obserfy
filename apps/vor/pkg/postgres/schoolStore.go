@@ -1,6 +1,7 @@
 package postgres
 
 import (
+	"github.com/go-pg/pg/v9/orm"
 	"time"
 
 	"github.com/go-pg/pg/v9"
@@ -414,5 +415,31 @@ func (s SchoolStore) GetGuardians(schoolId string) ([]cSchool.Guardian, error) {
 		})
 	}
 
+	return res, nil
+}
+func (s SchoolStore) GetLessonPlans(schoolId string, date string) ([]cSchool.LessonPlan, error) {
+	var lessonPlan []LessonPlan
+	res := make([]cSchool.LessonPlan, 0)
+	if date == "" {
+		date = "1970-01-01"
+	}
+	if err := s.DB.Model(&lessonPlan).
+		Where("lesson_plan.start_time::date=?", date).
+		Relation("Class", func(q *orm.Query) (*orm.Query, error) {
+			return q.Where("school_id = ?", schoolId), nil
+		}).
+		Select(); err != nil {
+		return nil, richErrors.Wrap(err, "Failed to query school's lesson plan")
+	}
+	for _, v := range lessonPlan {
+		res = append(res, cSchool.LessonPlan{
+			Id:          v.Id,
+			Title:       v.Title,
+			Description: v.Description,
+			ClassId:     v.ClassId,
+			ClassName:   v.Class.Name,
+			StartTime:   v.StartTime,
+		})
+	}
 	return res, nil
 }
