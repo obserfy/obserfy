@@ -1,5 +1,7 @@
 FROM node:14.3.0-alpine
 
+ENV NODE_ENV=production
+
 COPY yarn.lock yarn.lock
 COPY package.json package.json
 COPY apps/gaia/package.json apps/gaia/package.json
