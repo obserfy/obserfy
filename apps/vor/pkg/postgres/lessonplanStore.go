@@ -99,26 +99,35 @@ func (s LessonPlanStore) UpdateLessonPlan(planData lp.UpdatePlanData) (int, erro
 
 	var rowsAffected int
 	err := s.RunInTransaction(func(tx *pg.Tx) error {
+		var column []string
 		if planData.Title != nil {
 			obj.Title = *planData.Title
+			column = append(column, "title")
 		}
 		if planData.Description != nil {
 			obj.Description = *planData.Description
+			column = append(column, "description")
 		}
 		if planData.Type != nil {
 			obj.Type = *planData.Type
+			column = append(column, "type")
 		}
 		if planData.StartTime != nil {
 			obj.StartTime = *planData.StartTime
+			column = append(column, "start_time")
 		}
 
-		res, err := tx.Model(&obj).WherePK().Update()
+		res, err := tx.Model(&obj).Column(column...).WherePK().Update()
 		if err != nil {
 			return err
 		}
 		rowsAffected = res.RowsAffected()
 
 		// delete repetition pattern data if exist
+		// if no changes in pattern type, return immediately
+		if planData.Type == nil {
+			return nil
+		}
 		if obj.Type == lp.TypeNormal {
 			err := tx.Delete(&RepetitionPattern{LessonPlanId: planData.PlanId})
 			if err != pg.ErrNoRows {
@@ -134,7 +143,6 @@ func (s LessonPlanStore) UpdateLessonPlan(planData lp.UpdatePlanData) (int, erro
 		}
 
 		if _, err := tx.Model(&rpObj).OnConflict("(id) DO UPDATE").
-			Set("end_time = ?, repetition = ?", rpObj.EndTime, rpObj.Repetition).
 			Insert(); err != nil {
 			return err
 		}
@@ -168,5 +176,11 @@ func (s LessonPlanStore) GetLessonPlan(planId string) (*lp.LessonPlan, error) {
 		Title:       obj.Title,
 		Description: obj.Description,
 		ClassId:     obj.ClassId,
+		Type:        obj.Type,
+		StartTime:   obj.StartTime,
 	}, nil
+}
+
+func (s LessonPlanStore) DeleteLessonPlan(planId string) error {
+	return s.Delete(&LessonPlan{Id: planId})
 }

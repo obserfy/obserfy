@@ -17,6 +17,8 @@ type (
 		Title       string
 		Description string
 		ClassId     string
+		Type        int
+		StartTime   time.Time
 	}
 
 	PlanData struct {
@@ -47,5 +49,6 @@ type (
 		CreateLessonPlan(planInput PlanData, rpInput *RepetitionData) (*LessonPlan, error)
 		UpdateLessonPlan(planData UpdatePlanData) (int, error)
 		GetLessonPlan(planId string) (*LessonPlan, error)
+		DeleteLessonPlan(planId string) error
 	}
 )

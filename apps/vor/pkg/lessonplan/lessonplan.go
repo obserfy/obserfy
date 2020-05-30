@@ -1,7 +1,9 @@
 package lessonplan
 
 import (
+	"github.com/go-pg/pg/v9"
 	"net/http"
+	"time"
 
 	"github.com/go-chi/chi"
 
@@ -12,6 +14,7 @@ func NewRouter(server rest.Server, store Store) *chi.Mux {
 	r := chi.NewRouter()
 	r.Route("/{planId}", func(r chi.Router) {
 		r.Method("PATCH", "/", updateLessonPlan(server, store))
+		r.Method("DELETE", "/", deleteLessonPlan(server, store))
 	})
 
 	return r
@@ -19,12 +22,12 @@ func NewRouter(server rest.Server, store Store) *chi.Mux {
 
 func updateLessonPlan(server rest.Server, store Store) http.Handler {
 	type reqBody struct {
-		Title       *string `json:"title"`
-		Description *string `json:"description,omitempty"`
-		Type        *int    `json:"type,omitempty" validate:"oneof= 1 2"`
-		Repetition  *int    `json:"repetition,omitempty" validate:"oneof= 0 1 2"`
-		StartTime   *int64  `json:"startTime,omitempty"`
-		EndTime     *int64  `json:"endTime,omitempty"`
+		Title       *string    `json:"title, omitempty"`
+		Description *string    `json:"description,omitempty"`
+		Type        *int       `json:"type,omitempty" validate:"oneof= 1 2"`
+		Repetition  *int       `json:"repetition,omitempty" validate:"oneof= 0 1 2"`
+		StartTime   *time.Time `json:"startTime,omitempty"`
+		EndTime     *time.Time `json:"endTime,omitempty"`
 	}
 
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
@@ -53,7 +56,13 @@ func updateLessonPlan(server rest.Server, store Store) http.Handler {
 		}
 
 		planInput := UpdatePlanData{
-			PlanId: planId,
+			PlanId:      planId,
+			Title:       body.Title,
+			Description: body.Description,
+			Type:        body.Type,
+			Repetition:  body.Repetition,
+			StartTime:   body.StartTime,
+			EndTime:     body.EndTime,
 		}
 		rowsAffected, err := store.UpdateLessonPlan(planInput)
 		if err != nil {
@@ -72,6 +81,31 @@ func updateLessonPlan(server rest.Server, store Store) http.Handler {
 		}
 
 		w.WriteHeader(http.StatusNoContent)
+		return nil
+	})
+}
+
+func deleteLessonPlan(server rest.Server, store Store) http.Handler {
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		planId := chi.URLParam(r, "planId")
+
+		err := store.DeleteLessonPlan(planId)
+		if err != nil {
+			if err == pg.ErrNoRows {
+				return &rest.Error{
+					Code:    http.StatusNotFound,
+					Message: "No lesson plan found",
+					Error:   err,
+				}
+			}
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "Failed to delete lesson plan",
+				Error:   err,
+			}
+		}
+
+		w.WriteHeader(http.StatusOK)
 		return nil
 	})
 }
