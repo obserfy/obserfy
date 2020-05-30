@@ -179,10 +179,9 @@ func postNewLessonPlan(server rest.Server, store lessonplan.Store) http.Handler 
 	type reqBody struct {
 		Title       string    `json:"title" validate:"required"`
 		Description string    `json:"description"`
-		Type        int       `json:"type" validate:"required,oneof= 1 2"`
+		Type        int       `json:"type" validate:"oneof=0 1 2 3"`
 		StartTime   time.Time `json:"startTime" validate:"required"`
 		EndTime     *time.Time`json:"endTime,omitempty"`
-		Repetition  int       `json:"repetition" validate:"oneof= 0 1 2"`
 		Files       []string  `json:"files"`
 	}
 
@@ -213,18 +212,10 @@ func postNewLessonPlan(server rest.Server, store lessonplan.Store) http.Handler 
 		var err error
 
 		isValid := true
-		var repetitionInput *lessonplan.RepetitionData
 
-		if body.Type == lessonplan.TypeRepeat {
-			if body.EndTime == nil {
-				isValid = false
-				errMsg = "End time can't be empty"
-			} else {
-				repetitionInput = &lessonplan.RepetitionData{
-					EndTime:    *body.EndTime,
-					Repetition: body.Repetition,
-				}
-			}
+		if body.Type != lessonplan.RepetitionNone && body.EndTime == nil {
+			isValid = false
+			errMsg = "End time can't be empty"
 		}
 
 		if !isValid {
@@ -241,9 +232,10 @@ func postNewLessonPlan(server rest.Server, store lessonplan.Store) http.Handler 
 			Type:        body.Type,
 			Files:       body.Files,
 			StartTime:   body.StartTime,
+			EndTime:     body.EndTime,
 		}
 
-		lessonPlan, err := store.CreateLessonPlan(planInput, repetitionInput)
+		lessonPlan, err := store.CreateLessonPlan(planInput)
 		if err != nil {
 			return &rest.Error{
 				Code:    http.StatusInternalServerError,

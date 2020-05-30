@@ -24,8 +24,7 @@ func updateLessonPlan(server rest.Server, store Store) http.Handler {
 	type reqBody struct {
 		Title       *string    `json:"title, omitempty"`
 		Description *string    `json:"description,omitempty"`
-		Type        *int       `json:"type,omitempty" validate:"oneof= 1 2"`
-		Repetition  *int       `json:"repetition,omitempty" validate:"oneof= 0 1 2"`
+		Type        *int       `json:"type,omitempty" validate:"oneof=0 1 2 3"`
 		StartTime   *time.Time `json:"startTime,omitempty"`
 		EndTime     *time.Time `json:"endTime,omitempty"`
 	}
@@ -41,8 +40,7 @@ func updateLessonPlan(server rest.Server, store Store) http.Handler {
 		isValid := true
 		errMsg := ""
 		if body.Type != nil {
-			if *body.Type == TypeRepeat &&
-				(body.EndTime == nil || body.Repetition == nil) {
+			if *body.Type != RepetitionNone && body.EndTime == nil {
 				isValid = false
 				errMsg = "End time and repetition must be filled"
 			}
@@ -60,7 +58,6 @@ func updateLessonPlan(server rest.Server, store Store) http.Handler {
 			Title:       body.Title,
 			Description: body.Description,
 			Type:        body.Type,
-			Repetition:  body.Repetition,
 			StartTime:   body.StartTime,
 			EndTime:     body.EndTime,
 		}
@@ -108,4 +105,8 @@ func deleteLessonPlan(server rest.Server, store Store) http.Handler {
 		w.WriteHeader(http.StatusOK)
 		return nil
 	})
+}
+
+func updateFile() {
+	
 }

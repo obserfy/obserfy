@@ -3,12 +3,10 @@ package lessonplan
 import "time"
 
 const (
-	TypeNormal = 1
-	TypeRepeat = 2
-
-	//RepetitionDaily = 0
-	//RepetitionWeekly = 1
-	//RepetitionMonthly = 2
+	RepetitionNone = iota
+	RepetitionDaily
+	RepetitionWeekly
+	RepetitionMonthly
 )
 
 type (
@@ -28,11 +26,7 @@ type (
 		Type        int
 		Files       []string
 		StartTime   time.Time
-	}
-
-	RepetitionData struct {
-		EndTime    time.Time
-		Repetition int
+		EndTime     *time.Time
 	}
 
 	UpdatePlanData struct {
@@ -46,7 +40,7 @@ type (
 	}
 
 	Store interface {
-		CreateLessonPlan(planInput PlanData, rpInput *RepetitionData) (*LessonPlan, error)
+		CreateLessonPlan(planInput PlanData) (*LessonPlan, error)
 		UpdateLessonPlan(planData UpdatePlanData) (int, error)
 		GetLessonPlan(planId string) (*LessonPlan, error)
 		DeleteLessonPlan(planId string) error
