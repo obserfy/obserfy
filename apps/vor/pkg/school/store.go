@@ -99,6 +99,12 @@ type (
 		ClassId     string
 		ClassName   string
 		StartTime   time.Time
+		Files       []File
+	}
+	File struct {
+		Id          string
+		Name        string
+		LessonPlans []LessonPlan
 	}
 
 	FileData struct {
@@ -126,5 +132,6 @@ type (
 		DeleteFile(fileId string) error
 		UpdateFile(fileId, fileName string) (*FileData, error)
 		GetLessonPlans(schoolId string, date string) ([]LessonPlan, error)
+		GetLessonFiles(schoolId string) ([]File, error)
 	}
 )
