@@ -3,5 +3,9 @@
 @tailwind utilities;
 
 button {
-  @apply py-1 px-6 rounded text-onPrimary bg-primary;
+  @apply py-1 px-6 rounded text-onPrimary bg-primary font-bold;
+}
+
+.loading-placeholder {
+  @apply bg-gray-300;
 }
