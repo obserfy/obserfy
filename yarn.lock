@@ -45,7 +45,7 @@
   dependencies:
     cross-fetch "3.0.4"
 
-"@auth0/nextjs-auth0@^0.13.0":
+"@auth0/nextjs-auth0@0.13.0":
   version "0.13.0"
   resolved "https://registry.yarnpkg.com/@auth0/nextjs-auth0/-/nextjs-auth0-0.13.0.tgz#cc48e210bc5e35d7c7e37abcf5cc7e963c3aa96f"
   integrity sha512-1UZ/Fjm9mHCZtqMsHPfQex64n8Ili5/hWEd6xSauy44eM6+RqTz/Hy3DQCMtLGV+mh7TATNtz+TIDn63qMlv7A==
@@ -4065,7 +4065,7 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-13.13.2.tgz#160d82623610db590a64e8ca81784e11117e5a54"
   integrity sha512-LB2R1Oyhpg8gu4SON/mfforE525+Hi/M1ineICEDftqNVTyFg1aRIeGuTvXAoWHc4nbrFncWtJgMmoyRvuGh7A==
 
-"@types/node@14.0.5", "@types/node@^14.0.5":
+"@types/node@14.0.5":
   version "14.0.5"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.0.5.tgz#3d03acd3b3414cf67faf999aed11682ed121f22b"
   integrity sha512-90hiq6/VqtQgX8Sp0EzeIsv3r+ellbGj4URKj5j30tLlZvRUpnAe9YbYnjl3pJM93GyXU0tghHhvXHq+5rnCKA==
@@ -4102,7 +4102,7 @@
   resolved "https://registry.yarnpkg.com/@types/pg-types/-/pg-types-1.11.5.tgz#1eebbe62b6772fcc75c18957a90f933d155e005b"
   integrity sha512-L8ogeT6vDzT1vxlW3KITTCt+BVXXVkLXfZ/XNm6UqbcJgxf+KPO7yjWx7dQQE8RW07KopL10x2gNMs41+IkMGQ==
 
-"@types/pg@^7.14.3":
+"@types/pg@7.14.3":
   version "7.14.3"
   resolved "https://registry.yarnpkg.com/@types/pg/-/pg-7.14.3.tgz#eb166e4f4287923890b10ed20371f937938cb995"
   integrity sha512-go5zddQ1FrUQHeBvqPzQ1svKo4KKucSwvqLsvwc/EIuQ9sxDA21b68xc/RwhzAK5pPCnez8NrkYatFIGdJBVvA==
@@ -4181,7 +4181,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-query@1.1.2", "@types/react-query@^1.1.2":
+"@types/react-query@1.1.2":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@types/react-query/-/react-query-1.1.2.tgz#3d7f3c9457116d05ba4eabb9e7f882b6d496436c"
   integrity sha512-/IuQs37kmUg7C417Rotu+uf/3LghR3Qv6RGHO2YU1P+wFx167Hy3WJ3r9Si0jOyJVTDtjF2Lt0xSeq+kJwokKw==
@@ -4218,7 +4218,7 @@
     "@types/prop-types" "*"
     csstype "^2.2.0"
 
-"@types/react@16.9.35", "@types/react@^16.9.35":
+"@types/react@16.9.35":
   version "16.9.35"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.35.tgz#a0830d172e8aadd9bd41709ba2281a3124bbd368"
   integrity sha512-q0n0SsWcGc8nDqH2GJfWQWUOmZSJhXV64CjVN5SvcNti3TdEaA3AH0D8DwNmMdzjMAC/78tB8nAZIlV8yTz+zQ==
@@ -8393,7 +8393,7 @@ date-fns@^2.14.0:
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.14.0.tgz#359a87a265bb34ef2e38f93ecf63ac453f9bc7ba"
   integrity sha512-1zD+68jhFgDIM0rF05rcwYO8cExdNqxjq4xP1QKM60Q45mnO6zaMWB4tOzrIr4M4GSLntsKeE4c9Bdl2jhL/yw==
 
-dayjs@1.8.27, dayjs@^1.8.27:
+dayjs@1.8.27:
   version "1.8.27"
   resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.8.27.tgz#a8ae63ee990af28c05c430f0e160ae835a0fbbf8"
   integrity sha512-Jpa2acjWIeOkg8KURUHICk0EqnEFSSF5eMEscsOgyJ92ZukXwmpmRkPSUka7KHSfbj5eKH30ieosYip+ky9emQ==
@@ -11185,7 +11185,7 @@ gatsby-plugin-react-helmet@3.3.2:
   dependencies:
     "@babel/runtime" "^7.9.6"
 
-gatsby-plugin-remove-trailing-slashes@2.3.3, gatsby-plugin-remove-trailing-slashes@^2.3.3:
+gatsby-plugin-remove-trailing-slashes@2.3.3:
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-remove-trailing-slashes/-/gatsby-plugin-remove-trailing-slashes-2.3.3.tgz#4e5fb02fdc555e7691b46342c41bf0f61c9c4e95"
   integrity sha512-vKVdBSE7lg0J55frWaTOs65PKHb6yQJOVA5xayvAbojWEidwOwurQvpdDxBug0b6WAVLqihYnlIN/EUnI7MWEg==
@@ -12871,7 +12871,7 @@ imagemin-pngquant@^6.0.1:
     is-stream "^1.1.0"
     pngquant-bin "^5.0.0"
 
-imagemin-svgo@^7.1.0:
+imagemin-svgo@7.1.0:
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/imagemin-svgo/-/imagemin-svgo-7.1.0.tgz#528a42fd3d55eff5d4af8fd1113f25fb61ad6d9a"
   integrity sha512-0JlIZNWP0Luasn1HT82uB9nU9aa+vUj6kpT+MjPW11LbprXC+iC4HDwn1r4Q2/91qj4iy9tRZNsFySMlEpLdpg==
@@ -16354,12 +16354,12 @@ neon-js@^1.1.2:
   resolved "https://registry.yarnpkg.com/neon-js/-/neon-js-1.1.2.tgz#af85d8e2bb8099cfc7f6fe256a896a5464b00623"
   integrity sha1-r4XY4ruAmc/H9v4laolqVGSwBiM=
 
-next-compose-plugins@^2.2.0:
+next-compose-plugins@2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/next-compose-plugins/-/next-compose-plugins-2.2.0.tgz#95cd8eb40ab0652070d76572fb648354191628b0"
   integrity sha512-ChUlpT9tWfJ7YxqGw/WQ2T1gf8EeX93n1XqeQw0lkvGa7seszahvF4eOZUJoq7Hetsbzg4UHVnPoCXfXTyQR3g==
 
-next-optimized-images@^2.6.0:
+next-optimized-images@2.6.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/next-optimized-images/-/next-optimized-images-2.6.0.tgz#10ae5feca4148d3abe4a6781e304bcb1d5c3c557"
   integrity sha512-z+dASQLXIJPrc1iBt+jm5bravXud3nZ3de3Y3HgUNpJNUdkweym91dvKVgmvpXkEaNzExArybuSVNhOB2vR5qA==
@@ -17697,7 +17697,7 @@ pg-types@^2.1.0:
     postgres-date "~1.0.4"
     postgres-interval "^1.1.0"
 
-pg@^8.2.1:
+pg@8.2.1:
   version "8.2.1"
   resolved "https://registry.yarnpkg.com/pg/-/pg-8.2.1.tgz#f5a81f5e2025182fbe701514d3e1a43e68a616ac"
   integrity sha512-DKzffhpkWRr9jx7vKxA+ur79KG+SKw+PdjMb1IRhMiKI9zqYUGczwFprqy+5Veh/DCcFs1Y6V8lRLN5I1DlleQ==
@@ -18441,7 +18441,7 @@ postcss-place@^4.0.1:
     postcss "^7.0.2"
     postcss-values-parser "^2.0.0"
 
-postcss-preset-env@^6.7.0:
+postcss-preset-env@6.7.0:
   version "6.7.0"
   resolved "https://registry.yarnpkg.com/postcss-preset-env/-/postcss-preset-env-6.7.0.tgz#c34ddacf8f902383b35ad1e030f178f4cdf118a5"
   integrity sha512-eU4/K5xzSFwUFJ8hTdTQzo2RBLbDVt83QZrAvI07TULOkmyQlnYlpwep+2yIK+K+0KlZO4BvFcleOCCcUtwchg==
@@ -19657,7 +19657,7 @@ react-popper@^1.3.7:
     typed-styles "^0.0.7"
     warning "^4.0.2"
 
-react-query@1.5.2, react-query@^1.5.2:
+react-query@1.5.2:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/react-query/-/react-query-1.5.2.tgz#955d20ee2f3418476e9ab1080b54ccbc73018858"
   integrity sha512-dXN75mZiF3mBR2HAPBpsNvltPAW8MwLn/psKwjtippEBMoSa2Cqy7JxizAY23cKvXA0551RIsp5W01GNh/vw8w==
@@ -19701,15 +19701,15 @@ react-refresh@0.8.2, react-refresh@^0.8.2:
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.8.2.tgz#24bb0858eac92b0d7b0dd561747f0c9fd6c60327"
   integrity sha512-n8GXxo3DwM2KtFEL69DAVhGc4A1THn2qjmfvSo3nze0NLCoPbywazeJPqdp0RdSGLmyhQzeyA+XPXOobbYlkzg==
 
+react-refresh@0.8.3:
+  version "0.8.3"
+  resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.8.3.tgz#721d4657672d400c5e3c75d063c4a85fb2d5d68f"
+  integrity sha512-X8jZHc7nCMjaCqoU+V2I0cOhNW+QMBwSUkeXnTi8IPe6zaRWfn60ZzvFDZqWPfmSJfjub7dDW1SP0jaHWLu/hg==
+
 react-refresh@^0.7.0:
   version "0.7.2"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.7.2.tgz#f30978d21eb8cac6e2f2fde056a7d04f6844dd50"
   integrity sha512-u5l7fhAJXecWUJzVxzMRU2Zvw8m4QmDNHlTrT5uo3KBlYBhmChd7syAakBoay1yIiVhx/8Fi7a6v6kQZfsw81Q==
-
-react-refresh@^0.8.3:
-  version "0.8.3"
-  resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.8.3.tgz#721d4657672d400c5e3c75d063c4a85fb2d5d68f"
-  integrity sha512-X8jZHc7nCMjaCqoU+V2I0cOhNW+QMBwSUkeXnTi8IPe6zaRWfn60ZzvFDZqWPfmSJfjub7dDW1SP0jaHWLu/hg==
 
 react-select@^3.0.8:
   version "3.1.0"
@@ -22410,7 +22410,7 @@ table@^5.2.3, table@^5.4.1, table@^5.4.6:
     slice-ansi "^2.1.0"
     string-width "^3.0.0"
 
-tailwindcss@1.4.6, tailwindcss@^1.4.6:
+tailwindcss@1.4.6:
   version "1.4.6"
   resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-1.4.6.tgz#17b37166ccda08d7e7f9ca995ea48ce1e0089700"
   integrity sha512-qV0qInUq1FWih39Bc5CWECdgObSzRrbjGD4ke4kAPSIq6WXrPhv0wwOcUWJgJ66ltT9j+XnSRYikG8WNRU/fTQ==
@@ -23090,7 +23090,7 @@ typescript-plugin-css-modules@2.3.0:
     reserved-words "^0.1.2"
     sass "^1.26.5"
 
-typescript@3.9.3, typescript@^3.9.3:
+typescript@3.9.3:
   version "3.9.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.3.tgz#d3ac8883a97c26139e42df5e93eeece33d610b8a"
   integrity sha512-D/wqnB2xzNFIcoBG9FG8cXRDjiqSTbG2wd8DMZeQyJlP1vfTkIxH4GKveWaEBYySKIg+USu+E+EDIR47SqnaMQ==
