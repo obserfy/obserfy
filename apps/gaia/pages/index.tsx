@@ -25,7 +25,11 @@ const IndexPage = () => {
         >
           <img alt="Next date" src={ChevronRight} />
         </Button>
-        <Button className="ml-1" outline onClick={() => setDate(dayjs())}>
+        <Button
+          className="ml-1 font-normal"
+          outline
+          onClick={() => setDate(dayjs())}
+        >
           Today
         </Button>
       </div>

@@ -1,19 +1,14 @@
 import React, { FC, useState } from "react"
 import ProfilePicture from "./profilePicture"
 import Button from "./button"
-import useGetChild from "../hooks/useGetChild"
-import { useQueryString } from "../hooks/useQueryString"
 import LogoutIcon from "../icons/log-out.svg"
-import StudentPicPlaceholder from "../images/student_pic_placeholder.jpg"
 
 interface Props {
   userName?: string
   userImageSrc?: string
 }
 const Header: FC<Props> = ({ userImageSrc, userName }) => {
-  const childId = useQueryString("childId")
   const [showLogout, setShowLogout] = useState(false)
-  const child = useGetChild(childId)
 
   return (
     <>
@@ -25,7 +20,7 @@ const Header: FC<Props> = ({ userImageSrc, userName }) => {
             height={40}
             width={40}
           />
-          <div className="ml-6">
+          <div className="ml-8">
             <ProfilePicture src={userImageSrc} />
           </div>
           <div className="ml-3 text-sm">{userName}</div>
@@ -39,36 +34,8 @@ const Header: FC<Props> = ({ userImageSrc, userName }) => {
             <img alt="logout icon" src={LogoutIcon} height={18} width={18} />
           </div>
         </div>
-        <div className="flex px-3 py-6 max-w-4xl mx-auto">
-          <div>
-            <img
-              alt="profile"
-              src={child.data?.profilePic ?? StudentPicPlaceholder}
-              width={60}
-              height={60}
-              className="rounded-full"
-            />
-          </div>
-          <div>
-            <div className="ml-3 text-2xl leading-tight">
-              {child.data?.name}
-            </div>
-            <div className="ml-3 text-sm text-gray-700">
-              {child.data?.schoolName}
-            </div>
-          </div>
-        </div>
       </div>
-      <div className="sticky top-0 bg-surface border-b ">
-        <nav className="w-full flex max-w-4xl mx-auto">
-          <div
-            className="mx-3 px-1 py-2 border-b-2 border-black text-sm"
-            style={{ marginBottom: "-1px" }}
-          >
-            Lesson Plans
-          </div>
-        </nav>
-      </div>
+
       {showLogout && (
         <div className="fixed h-screen w-screen bg-overlay z-50 top-0 left-0 flex items-center justify-center">
           <div className="bg-white rounded shadow-md p-3 flex flex-col items-center">
