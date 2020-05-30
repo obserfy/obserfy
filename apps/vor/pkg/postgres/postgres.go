@@ -249,7 +249,7 @@ type LessonPlan struct {
 	Description string
 	ClassId     string `pg:"type:uuid"`
 	Class       Class
-	Type        int
+	Type        int    `pg:",use_zero"`
 	Files       []File `pg:"many2many:lesson_plan_to_files,joinFK:file_id"`
 	StartTime   time.Time
 }
@@ -271,5 +271,4 @@ type RepetitionPattern struct {
 	LessonPlanId string     `pg:"type:uuid"`
 	LessonPlan   LessonPlan
 	EndTime      time.Time
-	Repetition   int        `pg:",use_zero"`
 }

@@ -20,7 +20,7 @@ type (
 	}
 )
 
-func (s LessonPlanStore) CreateLessonPlan(planInput lp.PlanData, rpInput *lp.RepetitionData) (*lp.LessonPlan, error) {
+func (s LessonPlanStore) CreateLessonPlan(planInput lp.PlanData) (*lp.LessonPlan, error) {
 	id := uuid.New()
 	var rpObj RepetitionPattern
 
@@ -63,11 +63,10 @@ func (s LessonPlanStore) CreateLessonPlan(planInput lp.PlanData, rpInput *lp.Rep
 			}
 		}
 
-		if rpInput != nil {
+		if planInput.EndTime != nil {
 			rpObj = RepetitionPattern{
 				LessonPlanId: obj.Id,
-				EndTime:      rpInput.EndTime,
-				Repetition:   rpInput.Repetition,
+				EndTime:      *planInput.EndTime,
 			}
 
 			if err := tx.Insert(&rpObj); err != nil {
@@ -128,7 +127,7 @@ func (s LessonPlanStore) UpdateLessonPlan(planData lp.UpdatePlanData) (int, erro
 		if planData.Type == nil {
 			return nil
 		}
-		if obj.Type == lp.TypeNormal {
+		if obj.Type == lp.RepetitionNone {
 			err := tx.Delete(&RepetitionPattern{LessonPlanId: planData.PlanId})
 			if err != pg.ErrNoRows {
 				return err
@@ -139,7 +138,6 @@ func (s LessonPlanStore) UpdateLessonPlan(planData lp.UpdatePlanData) (int, erro
 		rpObj := RepetitionPattern{
 			LessonPlanId: planData.PlanId,
 			EndTime:      *planData.EndTime,
-			Repetition:   *planData.Repetition,
 		}
 
 		if _, err := tx.Model(&rpObj).OnConflict("(id) DO UPDATE").
