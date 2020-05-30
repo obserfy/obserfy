@@ -443,3 +443,25 @@ func (s SchoolStore) GetLessonPlans(schoolId string, date string) ([]cSchool.Les
 	}
 	return res, nil
 }
+func (s SchoolStore) GetLessonFiles(schoolId string) ([]cSchool.File, error) {
+	var lessonPlan []LessonPlan
+	files := make([]cSchool.File, 0)
+	if err := s.DB.Model(&lessonPlan).
+		Relation("Files").
+		Relation("Class", func(q *orm.Query) (*orm.Query, error) {
+			return q.Where("school_id = ?", schoolId), nil
+		}).
+		Select(); err != nil {
+		return nil, richErrors.Wrap(err, "Failed to query school's files")
+	}
+	for _, v := range lessonPlan {
+		println("len", len(v.Files))
+		for _, f := range v.Files {
+			files = append(files, cSchool.File{
+				Id:   f.Id,
+				Name: f.Name,
+			})
+		}
+	}
+	return files, nil
+}

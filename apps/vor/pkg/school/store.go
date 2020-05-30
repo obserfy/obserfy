@@ -99,6 +99,12 @@ type (
 		ClassId     string
 		ClassName   string
 		StartTime   time.Time
+		Files       []File
+	}
+	File struct {
+		Id          string
+		Name        string
+		LessonPlans []LessonPlan
 	}
 	Store interface {
 		NewSchool(schoolName, userId string) (*School, error)
@@ -116,5 +122,6 @@ type (
 		InsertGuardianWithRelation(input GuardianWithRelation) (*Guardian, error)
 		GetGuardians(schoolId string) ([]Guardian, error)
 		GetLessonPlans(schoolId string, date string) ([]LessonPlan, error)
+		GetLessonFiles(schoolId string) ([]File, error)
 	}
 )

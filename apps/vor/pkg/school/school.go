@@ -48,6 +48,8 @@ func NewRouter(
 		r.Method("GET", "/guardians", getGuardians(server, store))
 
 		r.Method("GET", "/plans", getLessonPlan(server, store))
+		r.Method("GET", "/files", getLessonFiles(server, store))
+
 	})
 	return r
 }
@@ -698,6 +700,32 @@ func getLessonPlan(server rest.Server, store Store) http.Handler {
 				Description: plan.Description,
 				StartTime:   plan.StartTime,
 				ClassName:   plan.ClassName,
+			}
+		}
+		rest.WriteJson(w, response)
+		return nil
+	})
+}
+func getLessonFiles(server rest.Server, store Store) http.Handler {
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		type responseBody struct {
+			Id   string `json:"file_id"`
+			Name string `json:"file_name"`
+		}
+		schoolId := chi.URLParam(r, "schoolId")
+		lessonFiles, err := store.GetLessonFiles(schoolId)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "Failed to query lesson files",
+				Error:   err,
+			}
+		}
+		response := make([]responseBody, len(lessonFiles))
+		for i, f := range lessonFiles {
+			response[i] = responseBody{
+				Id:   f.Id,
+				Name: f.Name,
 			}
 		}
 		rest.WriteJson(w, response)
