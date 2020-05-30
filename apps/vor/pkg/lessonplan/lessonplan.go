@@ -2,6 +2,7 @@ package lessonplan
 
 import (
 	"net/http"
+	"time"
 
 	"github.com/go-chi/chi"
 
@@ -19,12 +20,12 @@ func NewRouter(server rest.Server, store Store) *chi.Mux {
 
 func updateLessonPlan(server rest.Server, store Store) http.Handler {
 	type reqBody struct {
-		Title       *string `json:"title"`
-		Description *string `json:"description,omitempty"`
-		Type        *int    `json:"type,omitempty" validate:"oneof= 1 2"`
-		Repetition  *int    `json:"repetition,omitempty" validate:"oneof= 0 1 2"`
-		StartTime   *int64  `json:"startTime,omitempty"`
-		EndTime     *int64  `json:"endTime,omitempty"`
+		Title       *string    `json:"title, omitempty"`
+		Description *string    `json:"description,omitempty"`
+		Type        *int       `json:"type,omitempty" validate:"oneof= 1 2"`
+		Repetition  *int       `json:"repetition,omitempty" validate:"oneof= 0 1 2"`
+		StartTime   *time.Time `json:"startTime,omitempty"`
+		EndTime     *time.Time `json:"endTime,omitempty"`
 	}
 
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
@@ -53,7 +54,13 @@ func updateLessonPlan(server rest.Server, store Store) http.Handler {
 		}
 
 		planInput := UpdatePlanData{
-			PlanId: planId,
+			PlanId:      planId,
+			Title:       body.Title,
+			Description: body.Description,
+			Type:        body.Type,
+			Repetition:  body.Repetition,
+			StartTime:   body.StartTime,
+			EndTime:     body.EndTime,
 		}
 		rowsAffected, err := store.UpdateLessonPlan(planInput)
 		if err != nil {
