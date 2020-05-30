@@ -1,6 +1,7 @@
 package lessonplan
 
 import (
+	"github.com/go-pg/pg/v9"
 	"net/http"
 	"time"
 
@@ -13,6 +14,7 @@ func NewRouter(server rest.Server, store Store) *chi.Mux {
 	r := chi.NewRouter()
 	r.Route("/{planId}", func(r chi.Router) {
 		r.Method("PATCH", "/", updateLessonPlan(server, store))
+		r.Method("DELETE", "/", deleteLessonPlan(server, store))
 	})
 
 	return r
@@ -79,6 +81,31 @@ func updateLessonPlan(server rest.Server, store Store) http.Handler {
 		}
 
 		w.WriteHeader(http.StatusNoContent)
+		return nil
+	})
+}
+
+func deleteLessonPlan(server rest.Server, store Store) http.Handler {
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		planId := chi.URLParam(r, "planId")
+
+		err := store.DeleteLessonPlan(planId)
+		if err != nil {
+			if err == pg.ErrNoRows {
+				return &rest.Error{
+					Code:    http.StatusNotFound,
+					Message: "No lesson plan found",
+					Error:   err,
+				}
+			}
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "Failed to delete lesson plan",
+				Error:   err,
+			}
+		}
+
+		w.WriteHeader(http.StatusOK)
 		return nil
 	})
 }

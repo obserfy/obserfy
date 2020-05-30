@@ -176,5 +176,11 @@ func (s LessonPlanStore) GetLessonPlan(planId string) (*lp.LessonPlan, error) {
 		Title:       obj.Title,
 		Description: obj.Description,
 		ClassId:     obj.ClassId,
+		Type:        obj.Type,
+		StartTime:   obj.StartTime,
 	}, nil
+}
+
+func (s LessonPlanStore) DeleteLessonPlan(planId string) error {
+	return s.Delete(&LessonPlan{Id: planId})
 }
