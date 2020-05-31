@@ -3,9 +3,13 @@ import dayjs from "../utils/dayjs"
 import Button from "../components/button"
 import ChevronRight from "../icons/chevron-right.svg"
 import ChevronLeft from "../icons/chevron-left.svg"
+import useGetChildPlans from "../hooks/useGetChildPlans"
+import { useQueryString } from "../hooks/useQueryString"
 
 const IndexPage = () => {
   const [date, setDate] = useState(dayjs())
+  const childId = useQueryString("childId")
+  const childPlans = useGetChildPlans(childId, date)
 
   return (
     <main className="p-3">
