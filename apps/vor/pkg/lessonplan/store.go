@@ -37,6 +37,7 @@ type (
 		Repetition  *int
 		StartTime   *time.Time
 		EndTime     *time.Time
+		Files       []string
 	}
 
 	Store interface {

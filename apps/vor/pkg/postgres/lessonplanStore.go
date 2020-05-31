@@ -88,6 +88,7 @@ func (s LessonPlanStore) UpdateLessonPlan(planData lp.UpdatePlanData) (int, erro
 
 	var rowsAffected int
 	err := s.RunInTransaction(func(tx *pg.Tx) error {
+		// update lesson plan
 		var column []string
 		if planData.Title != nil {
 			obj.Title = *planData.Title
@@ -112,6 +113,17 @@ func (s LessonPlanStore) UpdateLessonPlan(planData lp.UpdatePlanData) (int, erro
 		}
 		rowsAffected = res.RowsAffected()
 
+		// update lesson plan files
+		for _, file := range planData.Files {
+			err = tx.Insert(&File{
+				LessonPlanId: planData.PlanId,
+				Name:         file,
+			})
+			if err != nil {
+				return err
+			}
+		}
+
 		// delete repetition pattern data if exist
 		// if no changes in pattern type, return immediately
 		if planData.Type == nil {
@@ -119,10 +131,10 @@ func (s LessonPlanStore) UpdateLessonPlan(planData lp.UpdatePlanData) (int, erro
 		}
 		if obj.Type == lp.RepetitionNone {
 			err := tx.Delete(&RepetitionPattern{LessonPlanId: planData.PlanId})
-			if err != pg.ErrNoRows {
-				return err
+			if err == pg.ErrNoRows {
+				return nil
 			}
-			return nil
+			return err
 		}
 
 		rpObj := RepetitionPattern{
