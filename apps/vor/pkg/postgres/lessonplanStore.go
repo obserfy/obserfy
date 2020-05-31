@@ -43,22 +43,12 @@ func (s LessonPlanStore) CreateLessonPlan(planInput lp.PlanData) (*lp.LessonPlan
 				continue
 			}
 
-			fileId := uuid.New()
 			objFile := File{
-				Id:   fileId.String(),
-				Name: file,
+				LessonPlanId: obj.Id,
+				Name:         file,
 			}
 
 			if err := tx.Insert(&objFile); err != nil {
-				return err
-			}
-
-			relation := LessonPlanToFile{
-				LessonPlanId: obj.Id,
-				FileId:       objFile.Id,
-			}
-
-			if err := tx.Insert(&relation); err != nil {
 				return err
 			}
 		}
@@ -181,4 +171,25 @@ func (s LessonPlanStore) GetLessonPlan(planId string) (*lp.LessonPlan, error) {
 
 func (s LessonPlanStore) DeleteLessonPlan(planId string) error {
 	return s.Delete(&LessonPlan{Id: planId})
+}
+
+func (s LessonPlanStore) DeleteLessonPlanFile(planId string, files []string) error {
+	err := s.RunInTransaction(func(tx *pg.Tx) error {
+		for _, file := range files {
+			err := tx.Delete(&File{
+				LessonPlanId: planId,
+				Name:         file,
+			})
+			if err != nil {
+				return err
+			}
+		}
+		return nil
+	})
+
+	if err != nil {
+		return errors.Wrapf(err, "Failed to delete lesson plan file")
+	}
+
+	return nil
 }

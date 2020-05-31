@@ -44,5 +44,6 @@ type (
 		UpdateLessonPlan(planData UpdatePlanData) (int, error)
 		GetLessonPlan(planId string) (*LessonPlan, error)
 		DeleteLessonPlan(planId string) error
+		DeleteLessonPlanFile(planId string, files []string) error
 	}
 )
