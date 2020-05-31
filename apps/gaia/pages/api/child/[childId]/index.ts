@@ -1,6 +1,6 @@
-import { queryChildData } from "../../../db"
-import { generateUrl } from "../../../utils/imgproxy"
-import auth0 from "../../../utils/auth0"
+import { queryChildData } from "../../../../db"
+import { generateUrl } from "../../../../utils/imgproxy"
+import auth0 from "../../../../utils/auth0"
 
 const childHandler = auth0.requireAuthentication(async (req, res) => {
   try {
