@@ -28,6 +28,7 @@ const Layout: FC = ({ children }) => {
     return (
       <div>
         <Head>
+          <html lang="en" />
           <title>Obserfy for Parents</title>
           <meta
             name="viewport"
