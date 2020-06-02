@@ -46,12 +46,20 @@ const IndexPage = () => {
       </div>
       {childPlans.status === "success" && childPlans.data?.length === 0 && (
         <div className="flex flex-col items-center py-16 ">
-          <img
-            alt="No plans yet illustration"
-            src={DisappointedIllustration}
-            width={300}
-            className="mb-4"
-          />
+          <picture className="mb-4 w-64">
+            <source
+              srcSet={require("../images/disappointed-illustration.png?webp")}
+              type="image/webp"
+            />
+            <source
+              srcSet={require("../images/disappointed-illustration.png")}
+              type="image/jpeg"
+            />
+            <img
+              alt="No plans yet illustration"
+              src={require("../images/disappointed-illustration.png")}
+            />
+          </picture>
           <h5 className="text-2xl mx-4 text-center">
             No plans for {date.format("MMMM D")}
           </h5>

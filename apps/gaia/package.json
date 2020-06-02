@@ -12,7 +12,11 @@
     "@prefresh/next": "0.2.0",
     "@types/react": "16.9.35",
     "dayjs": "1.8.27",
+    "imagemin-mozjpeg": "^9.0.0",
+    "imagemin-optipng": "^8.0.0",
     "imagemin-svgo": "7.1.0",
+    "img-loader": "^3.0.1",
+    "lqip-loader": "^2.2.0",
     "next": "9.4.2",
     "next-compose-plugins": "2.2.0",
     "next-optimized-images": "2.6.0",
@@ -26,7 +30,8 @@
     "react-refresh": "0.8.3",
     "react-ssr-prepass": "npm:preact-ssr-prepass@1.0.1",
     "tailwindcss": "1.4.6",
-    "typescript": "3.9.3"
+    "typescript": "3.9.3",
+    "webp-loader": "^0.6.0"
   },
   "devDependencies": {
     "@types/node": "14.0.5",
