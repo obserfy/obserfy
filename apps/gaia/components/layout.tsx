@@ -1,5 +1,6 @@
 import React, { FC, useEffect } from "react"
 import { useRouter } from "next/router"
+import Head from "next/head"
 import useGetUser from "../hooks/useGetUser"
 import Header from "./header"
 import useGetChildren from "../hooks/useGetChildren"
@@ -7,6 +8,7 @@ import Button from "./button"
 import StudentPicPlaceholder from "../images/student_pic_placeholder.jpg"
 import useGetChild from "../hooks/useGetChild"
 import { useQueryString } from "../hooks/useQueryString"
+import Logo from "../images/logo.svg"
 
 const Layout: FC = ({ children }) => {
   const user = useGetUser()
@@ -25,6 +27,13 @@ const Layout: FC = ({ children }) => {
   if ((user.error as Error)?.message === "not_authenticated") {
     return (
       <div>
+        <Head>
+          <title>Obserfy for Parents</title>
+          <meta
+            name="viewport"
+            content="initial-scale=1.0, width=device-width"
+          />
+        </Head>
         <EmptyHeader />
         <main className="max-w-lg mx-auto my-8">
           <h1 className="text-2xl m-3 leading-tight">
@@ -95,9 +104,10 @@ const EmptyHeader = () => {
       <div className="flex items-center">
         <img
           alt="obserfy logo"
-          src="/logo-transparent.png"
-          height={40}
-          width={40}
+          src={Logo}
+          height={30}
+          width={30}
+          className="ml-3"
         />
         <h1 className="ml-2 text-lg font-bold">Obserfy</h1>
       </div>

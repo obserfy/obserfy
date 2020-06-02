@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import Head from "next/head"
 import dayjs from "../utils/dayjs"
 import Button from "../components/button"
 import ChevronRight from "../icons/chevron-right.svg"
@@ -15,6 +16,9 @@ const IndexPage = () => {
 
   return (
     <div className="p-3">
+      <Head>
+        <title>Home | Obserfy for Parents</title>
+      </Head>
       <div className="flex items-center mb-3">
         <div className="text-sm">{date.format("ddd, DD MMM 'YY")}</div>
         <Button

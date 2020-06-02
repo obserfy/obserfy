@@ -2,6 +2,7 @@ import React, { FC, useState } from "react"
 import ProfilePicture from "./profilePicture"
 import Button from "./button"
 import LogoutIcon from "../icons/log-out.svg"
+import Logo from "../images/logo.svg"
 
 interface Props {
   userName?: string
@@ -16,9 +17,10 @@ const Header: FC<Props> = ({ userImageSrc, userName }) => {
         <div className="p-3 pb-2 flex items-center max-w-4xl mx-auto">
           <img
             alt="obserfy logo"
-            src="/logo-transparent.png"
-            height={40}
-            width={40}
+            src={Logo}
+            height={30}
+            width={30}
+            className="ml-3"
           />
           <div className="ml-8">
             <ProfilePicture src={userImageSrc} />
