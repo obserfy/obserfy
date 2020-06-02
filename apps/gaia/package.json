@@ -17,7 +17,7 @@
     "imagemin-svgo": "7.1.0",
     "img-loader": "^3.0.1",
     "lqip-loader": "^2.2.0",
-    "next": "9.4.2",
+    "next": "9.4.4",
     "next-compose-plugins": "2.2.0",
     "next-optimized-images": "2.6.0",
     "pg": "8.2.1",
