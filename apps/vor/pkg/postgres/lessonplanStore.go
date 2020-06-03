@@ -1,10 +1,11 @@
 package postgres
 
 import (
-	lp "github.com/chrsep/vor/pkg/lessonplan"
 	"github.com/go-pg/pg/v9"
 	"github.com/google/uuid"
 	"github.com/pkg/errors"
+
+	cLessonPlan "github.com/chrsep/vor/pkg/lessonplan"
 )
 
 type (
@@ -20,7 +21,7 @@ type (
 	}
 )
 
-func (s LessonPlanStore) CreateLessonPlan(planInput lp.PlanData) (*lp.LessonPlan, error) {
+func (s LessonPlanStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLessonPlan.LessonPlan, error) {
 	id := uuid.New()
 	var rpObj RepetitionPattern
 
@@ -38,14 +39,14 @@ func (s LessonPlanStore) CreateLessonPlan(planInput lp.PlanData) (*lp.LessonPlan
 			return err
 		}
 
-		for _, file := range planInput.Files {
+		for _, file := range planInput.FileIds {
 			if file == "" {
 				continue
 			}
 
-			objFile := File{
+			objFile := FileToLessonPlan{
 				LessonPlanId: obj.Id,
-				Name:         file,
+				FileId:       file,
 			}
 
 			if err := tx.Insert(&objFile); err != nil {
@@ -72,7 +73,7 @@ func (s LessonPlanStore) CreateLessonPlan(planInput lp.PlanData) (*lp.LessonPlan
 		return nil, err
 	}
 
-	return &lp.LessonPlan{
+	return &cLessonPlan.LessonPlan{
 		Id:          obj.Id,
 		Title:       obj.Title,
 		Description: obj.Description,
@@ -80,7 +81,7 @@ func (s LessonPlanStore) CreateLessonPlan(planInput lp.PlanData) (*lp.LessonPlan
 	}, nil
 }
 
-func (s LessonPlanStore) UpdateLessonPlan(planData lp.UpdatePlanData) (int, error) {
+func (s LessonPlanStore) UpdateLessonPlan(planData cLessonPlan.UpdatePlanData) (int, error) {
 	// TODO: need to be simplified
 	obj := LessonPlan{
 		Id: planData.PlanId,
@@ -113,23 +114,12 @@ func (s LessonPlanStore) UpdateLessonPlan(planData lp.UpdatePlanData) (int, erro
 		}
 		rowsAffected = res.RowsAffected()
 
-		// update lesson plan files
-		for _, file := range planData.Files {
-			err = tx.Insert(&File{
-				LessonPlanId: planData.PlanId,
-				Name:         file,
-			})
-			if err != nil {
-				return err
-			}
-		}
-
 		// delete repetition pattern data if exist
 		// if no changes in pattern type, return immediately
 		if planData.Type == nil {
 			return nil
 		}
-		if obj.Type == lp.RepetitionNone {
+		if obj.Type == cLessonPlan.RepetitionNone {
 			err := tx.Delete(&RepetitionPattern{LessonPlanId: planData.PlanId})
 			if err == pg.ErrNoRows {
 				return nil
@@ -157,7 +147,7 @@ func (s LessonPlanStore) UpdateLessonPlan(planData lp.UpdatePlanData) (int, erro
 	return rowsAffected, nil
 }
 
-func (s LessonPlanStore) GetLessonPlan(planId string) (*lp.LessonPlan, error) {
+func (s LessonPlanStore) GetLessonPlan(planId string) (*cLessonPlan.LessonPlan, error) {
 	var obj LessonPlan
 
 	err := s.Model(&obj).
@@ -171,7 +161,7 @@ func (s LessonPlanStore) GetLessonPlan(planId string) (*lp.LessonPlan, error) {
 		return nil, errors.Wrapf(err, "Failed get lesson plan")
 	}
 
-	return &lp.LessonPlan{
+	return &cLessonPlan.LessonPlan{
 		Id:          obj.Id,
 		Title:       obj.Title,
 		Description: obj.Description,
@@ -185,23 +175,9 @@ func (s LessonPlanStore) DeleteLessonPlan(planId string) error {
 	return s.Delete(&LessonPlan{Id: planId})
 }
 
-func (s LessonPlanStore) DeleteLessonPlanFile(planId string, files []string) error {
-	err := s.RunInTransaction(func(tx *pg.Tx) error {
-		for _, file := range files {
-			err := tx.Delete(&File{
-				LessonPlanId: planId,
-				Name:         file,
-			})
-			if err != nil {
-				return err
-			}
-		}
-		return nil
+func (s LessonPlanStore) DeleteLessonPlanFile(planId, fileId string) error {
+	return s.Delete(&FileToLessonPlan{
+		LessonPlanId: planId,
+		FileId:       fileId,
 	})
-
-	if err != nil {
-		return errors.Wrapf(err, "Failed to delete lesson plan file")
-	}
-
-	return nil
 }

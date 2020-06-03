@@ -416,3 +416,45 @@ func (s SchoolStore) GetGuardians(schoolId string) ([]cSchool.Guardian, error) {
 
 	return res, nil
 }
+
+func (s SchoolStore) CreateFile(schoolId, file string) (*cSchool.FileData, error) {
+	obj := File{
+		Id:       uuid.New().String(),
+		SchoolId: schoolId,
+		FileName: file,
+	}
+	if err := s.Insert(&obj); err != nil {
+		return nil, richErrors.Wrap(err, "failed to create file:")
+	}
+	return &cSchool.FileData{
+		FileId:   obj.Id,
+		SchoolId: obj.SchoolId,
+		FileName: obj.FileName,
+	}, nil
+}
+
+func (s SchoolStore) DeleteFile(fileId string) error {
+	return s.Delete(&File{Id: fileId})
+}
+
+func (s SchoolStore) UpdateFile(fileId, fileName string) (*cSchool.FileData, error) {
+	obj := File{
+		Id:       fileId,
+		FileName: fileName,
+	}
+	res, err := s.Model(&obj).Column("file_name").
+		Returning("*").WherePK().Update()
+	if err != nil {
+		return nil, richErrors.Wrap(err, "failed update file:")
+	}
+
+	if res.RowsAffected() == 0 {
+		return nil, pg.ErrNoRows
+	}
+
+	return &cSchool.FileData{
+		FileId:   obj.Id,
+		SchoolId: obj.SchoolId,
+		FileName: obj.FileName,
+	}, nil
+}

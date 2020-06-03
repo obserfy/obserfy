@@ -18,7 +18,7 @@ func NewRouter(server rest.Server, store Store) *chi.Mux {
 		r.Method("PATCH", "/", updateLessonPlan(server, store))
 		r.Method("DELETE", "/", deleteLessonPlan(server, store))
 
-		r.Method("DELETE", "/files", deleteLessonPlanFile(server, store))
+		r.Method("DELETE", "/file/{fileId}", deleteLessonPlanFile(server, store))
 	})
 
 	return r
@@ -31,7 +31,6 @@ func updateLessonPlan(server rest.Server, store Store) http.Handler {
 		Type        *int       `json:"type,omitempty" validate:"oneof=0 1 2 3"`
 		StartTime   *time.Time `json:"startTime,omitempty"`
 		EndTime     *time.Time `json:"endTime,omitempty"`
-		Files       *[]string  `json:"files,omitempty"`
 	}
 
 	validate := validator.New()
@@ -67,11 +66,6 @@ func updateLessonPlan(server rest.Server, store Store) http.Handler {
 			}
 		}
 
-		var files []string
-		if body.Files != nil {
-			files = *body.Files
-		}
-
 		planInput := UpdatePlanData{
 			PlanId:      planId,
 			Title:       body.Title,
@@ -79,7 +73,6 @@ func updateLessonPlan(server rest.Server, store Store) http.Handler {
 			Type:        body.Type,
 			StartTime:   body.StartTime,
 			EndTime:     body.EndTime,
-			Files:       files,
 		}
 		rowsAffected, err := store.UpdateLessonPlan(planInput)
 		if err != nil {
@@ -128,18 +121,11 @@ func deleteLessonPlan(server rest.Server, store Store) http.Handler {
 }
 
 func deleteLessonPlanFile(server rest.Server, store Store) http.Handler {
-	type reqBody struct {
-		Files []string `json:"files"`
-	}
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
-		body := reqBody{}
 		planId := chi.URLParam(r, "planId")
+		fileId := chi.URLParam(r, "fileId")
 
-		if err := rest.ParseJson(r.Body, &body); err != nil {
-			return rest.NewParseJsonError(err)
-		}
-
-		err := store.DeleteLessonPlanFile(planId, body.Files)
+		err := store.DeleteLessonPlanFile(planId, fileId)
 		if err != nil {
 			if err == pg.ErrNoRows {
 				return &rest.Error{
