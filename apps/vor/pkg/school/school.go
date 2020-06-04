@@ -48,9 +48,8 @@ func NewRouter(
 		r.Method("GET", "/guardians", getGuardians(server, store))
 
 		r.Method("GET", "/plans", getLessonPlan(server, store))
+
 		r.Method("GET", "/files", getLessonFiles(server, store))
-
-
 		r.Method("POST", "/files", addFile(server, store))
 		r.Method("PATCH", "/files/{fileId}", updateFile(server, store))
 		r.Method("DELETE", "/files/{fileId}", deleteFile(server, store))
@@ -706,7 +705,9 @@ func getLessonPlan(server rest.Server, store Store) http.Handler {
 				ClassName:   plan.ClassName,
 			}
 		}
-		rest.WriteJson(w, response)
+		if err := rest.WriteJson(w, response); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
 		return nil
 	})
 }
@@ -732,7 +733,9 @@ func getLessonFiles(server rest.Server, store Store) http.Handler {
 				Name: f.Name,
 			}
 		}
-		rest.WriteJson(w, response)
+		if err := rest.WriteJson(w, response); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
 		return nil
 	})
 }
@@ -743,9 +746,8 @@ func addFile(server rest.Server, store Store) http.Handler {
 	}
 
 	type resBody struct {
-		FileId   string `json:"fileId"`
-		SchoolId string `json:"schoolId"`
-		FileName string `json:"fileName"`
+		Id   string `json:"id"`
+		Name string `json:"name"`
 	}
 
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
@@ -774,9 +776,8 @@ func addFile(server rest.Server, store Store) http.Handler {
 
 		w.WriteHeader(http.StatusCreated)
 		if err := rest.WriteJson(w, &resBody{
-			FileId:   res.FileId,
-			SchoolId: res.SchoolId,
-			FileName: res.FileName,
+			Id:   res.Id,
+			Name: res.Name,
 		}); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
@@ -784,6 +785,7 @@ func addFile(server rest.Server, store Store) http.Handler {
 	})
 }
 
+// TODO: Implement this
 func updateFile(server rest.Server, store Store) http.Handler {
 	type reqBody struct {
 		FileName string `json:"fileName"`
@@ -838,6 +840,7 @@ func updateFile(server rest.Server, store Store) http.Handler {
 	})
 }
 
+// TODO: Implement this
 func deleteFile(server rest.Server, store Store) http.Handler {
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		fileId := chi.URLParam(r, "fileId")
