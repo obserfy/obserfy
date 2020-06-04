@@ -4,7 +4,6 @@ import (
 	cLessonPlan "github.com/chrsep/vor/pkg/lessonplan"
 	"github.com/go-pg/pg/v9"
 	"github.com/google/uuid"
-	"github.com/pingcap/errors"
 	richErrors "github.com/pkg/errors"
 )
 
@@ -122,7 +121,7 @@ func (s LessonPlanStore) UpdateLessonPlan(planInput cLessonPlan.UpdatePlanData) 
 		rowsAffected = planResult.RowsAffected() + planDetailsResult.RowsAffected()
 		return nil
 	}); err != nil {
-		return rowsAffected, errors.Wrapf(err, "Failed update lesson plan")
+		return rowsAffected, richErrors.Wrap(err, "Failed update lesson plan")
 	}
 
 	return rowsAffected, nil
