@@ -9,3 +9,4 @@ public/**/*
 **/*.d.ts
 image-sharp-fragments.ts
 *.js
+graphql-types.ts

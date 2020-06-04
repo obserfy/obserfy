@@ -444,9 +444,9 @@ func (s SchoolStore) GetLessonPlans(schoolId string, date string) ([]cSchool.Les
 	return res, nil
 }
 func (s SchoolStore) GetLessonFiles(schoolId string) ([]cSchool.File, error) {
-	var lessonPlan []LessonPlan
+	var plans []LessonPlan
 	files := make([]cSchool.File, 0)
-	if err := s.DB.Model(&lessonPlan).
+	if err := s.DB.Model(&plans).
 		Relation("Files").
 		Relation("Class", func(q *orm.Query) (*orm.Query, error) {
 			return q.Where("school_id = ?", schoolId), nil
@@ -454,19 +454,19 @@ func (s SchoolStore) GetLessonFiles(schoolId string) ([]cSchool.File, error) {
 		Select(); err != nil {
 		return nil, richErrors.Wrap(err, "Failed to query school's files")
 	}
-	for _, v := range lessonPlan {
-		println("len", len(v.Files))
-		for _, f := range v.Files {
+	for _, plan := range plans {
+		println("len", len(plan.Files))
+		for _, file := range plan.Files {
 			files = append(files, cSchool.File{
-				Id:   f.Id,
-				Name: f.Name,
+				Id:   file.Id,
+				Name: file.FileName,
 			})
 		}
 	}
 	return files, nil
 }
 
-func (s SchoolStore) CreateFile(schoolId, file string) (*cSchool.FileData, error) {
+func (s SchoolStore) CreateFile(schoolId, file string) (*cSchool.File, error) {
 	obj := File{
 		Id:       uuid.New().String(),
 		SchoolId: schoolId,
@@ -475,10 +475,9 @@ func (s SchoolStore) CreateFile(schoolId, file string) (*cSchool.FileData, error
 	if err := s.Insert(&obj); err != nil {
 		return nil, richErrors.Wrap(err, "failed to create file:")
 	}
-	return &cSchool.FileData{
-		FileId:   obj.Id,
-		SchoolId: obj.SchoolId,
-		FileName: obj.FileName,
+	return &cSchool.File{
+		Id:   obj.Id,
+		Name: obj.FileName,
 	}, nil
 }
 
@@ -486,7 +485,7 @@ func (s SchoolStore) DeleteFile(fileId string) error {
 	return s.Delete(&File{Id: fileId})
 }
 
-func (s SchoolStore) UpdateFile(fileId, fileName string) (*cSchool.FileData, error) {
+func (s SchoolStore) UpdateFile(fileId, fileName string) (*cSchool.File, error) {
 	obj := File{
 		Id:       fileId,
 		FileName: fileName,
@@ -501,9 +500,8 @@ func (s SchoolStore) UpdateFile(fileId, fileName string) (*cSchool.FileData, err
 		return nil, pg.ErrNoRows
 	}
 
-	return &cSchool.FileData{
-		FileId:   obj.Id,
-		SchoolId: obj.SchoolId,
-		FileName: obj.FileName,
+	return &cSchool.File{
+		Id:   obj.Id,
+		Name: obj.FileName,
 	}, nil
 }
