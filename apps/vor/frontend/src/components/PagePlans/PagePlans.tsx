@@ -66,7 +66,10 @@ export const PagePlans: FC = () => {
           </Link>
         )
       })}
-      <Link to={NEW_PLANS_URL} sx={{ display: "block", mx: [0, 3] }}>
+      <Link
+        to={`${NEW_PLANS_URL}?date=${selectedDate.format("YYYY-MM-DD")}`}
+        sx={{ display: "block", mx: [0, 3] }}
+      >
         <Card
           px={3}
           py={2}

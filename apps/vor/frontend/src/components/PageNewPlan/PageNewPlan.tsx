@@ -15,6 +15,7 @@ import DateInput from "../DateInput/DateInput"
 import usePostNewPlan from "../../api/usePostNewPlan"
 import dayjs from "../../dayjs"
 import { navigate } from "../Link/Link"
+import EmptyClassDataPlaceholder from "../EmptyClassDataPlaceholder/EmptyClassDataPlaceholder"
 
 interface Props {
   chosenDate: string
@@ -27,18 +28,19 @@ export const PageNewPlan: FC<Props> = ({ chosenDate }) => {
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
   const [classId, setClassId] = useState("")
-  const [date, setDate] = useState(dayjs(chosenDate))
+  const [date, setDate] = useState(chosenDate ? dayjs(chosenDate) : dayjs())
 
   // Repetition data
   const [repetition, setRepetition] = useState(0)
-  const [startDate, setStartDate] = useState(dayjs(chosenDate))
-  const [endDate, setEndDate] = useState(dayjs(chosenDate))
+  const [startDate, setStartDate] = useState(date)
+  const [endDate, setEndDate] = useState(date)
 
   return (
     <Box maxWidth="maxWidth.sm" mx="auto">
       <BackNavigation to={ALL_PLANS_URL} text="All plans" />
       <Typography.H5 m={3}>New Plan</Typography.H5>
-      <Box p={3}>
+
+      <Box mx={3}>
         <DateInput
           label="Date"
           value={date.toDate()}
@@ -61,18 +63,30 @@ export const PageNewPlan: FC<Props> = ({ chosenDate }) => {
             setDescription(e.target.value)
           }}
         />
-        <Typography.H6 mb={2}>Class</Typography.H6>
-        <Flex mb={3}>
-          {classes.data?.map(({ id, name }) => (
-            <Chip
-              key={id}
-              text={name}
-              activeBackground="primary"
-              onClick={() => setClassId(id)}
-              isActive={id === classId}
-            />
-          ))}
-        </Flex>
+      </Box>
+
+      {classes.status === "success" && classes.data.length === 0 ? (
+        <Box mb={3}>
+          <EmptyClassDataPlaceholder />
+        </Box>
+      ) : (
+        <Box mx={3}>
+          <Typography.H6 mb={2}>Class</Typography.H6>
+          <Flex mb={3}>
+            {classes.data?.map(({ id, name }) => (
+              <Chip
+                key={id}
+                text={name}
+                activeBackground="primary"
+                onClick={() => setClassId(id)}
+                isActive={id === classId}
+              />
+            ))}
+          </Flex>
+        </Box>
+      )}
+
+      <Box mx={3}>
         <Typography.H6 mb={2}>Repetition</Typography.H6>
         <Flex>
           <Chip
@@ -110,6 +124,9 @@ export const PageNewPlan: FC<Props> = ({ chosenDate }) => {
             />
           </Box>
         )}
+      </Box>
+
+      <Box mx={3} mb={4}>
         <Button
           width="100%"
           disabled={classId === "" || title === ""}
