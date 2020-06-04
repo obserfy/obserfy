@@ -730,15 +730,80 @@ func addFile(server rest.Server, store Store) http.Handler {
 }
 
 func updateFile(server rest.Server, store Store) http.Handler {
+	type reqBody struct {
+		FileName string `json:"fileName"`
+	}
+
+	type resBody struct {
+		FileId   string `json:"fileId"`
+		SchoolId string `json:"schoolId"`
+		FileName string `json:"fileName"`
+	}
+
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
-		rest.WriteJson(w, "OK")
+		body := reqBody{}
+		fileId := chi.URLParam(r, "fileId")
+
+		if err := rest.ParseJson(r.Body, &body); err != nil {
+			return rest.NewParseJsonError(err)
+		}
+
+		if body.FileName == "" {
+			return &rest.Error{
+				Code:    http.StatusBadRequest,
+				Message: "File name must not empty",
+			}
+		}
+
+		res, err := store.UpdateFile(fileId, body.FileName)
+		if err != nil {
+			if err == pg.ErrNoRows {
+				return &rest.Error{
+					Code:    http.StatusNotFound,
+					Message: "File not found",
+					Error:   err,
+				}
+			}
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "Failed update file",
+				Error:   err,
+			}
+		}
+
+		w.WriteHeader(http.StatusOK)
+		if err := rest.WriteJson(w, &resBody{
+			FileId:   res.FileId,
+			SchoolId: res.SchoolId,
+			FileName: res.FileName,
+		}); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
 		return nil
 	})
 }
 
 func deleteFile(server rest.Server, store Store) http.Handler {
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
-		rest.WriteJson(w, "OK")
+		fileId := chi.URLParam(r, "fileId")
+
+		err := store.DeleteFile(fileId)
+		if err != nil {
+			if err == pg.ErrNoRows {
+				return &rest.Error{
+					Code:    http.StatusNotFound,
+					Message: "No file found",
+					Error:   err,
+				}
+			}
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "Failed to delete file",
+				Error:   err,
+			}
+		}
+
+		w.WriteHeader(http.StatusOK)
 		return nil
 	})
 }

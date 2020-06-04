@@ -182,7 +182,7 @@ func postNewLessonPlan(server rest.Server, store lessonplan.Store) http.Handler 
 		Type        int       `json:"type" validate:"oneof=0 1 2 3"`
 		StartTime   time.Time `json:"startTime" validate:"required"`
 		EndTime     *time.Time`json:"endTime,omitempty"`
-		FileIds       []string  `json:"fileIds"`
+		FileIds     []string  `json:"fileIds"`
 	}
 
 	type resBody struct {
