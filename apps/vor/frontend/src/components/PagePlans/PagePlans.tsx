@@ -22,8 +22,8 @@ export const PagePlans: FC = () => {
   return (
     <Box maxWidth="maxWidth.sm" mx="auto">
       <Flex alignItems="center" mx={3} my={3}>
-        <Typography.Body>
-          {selectedDate.format("dddd, DD MMM 'YY")}
+        <Typography.Body sx={{ fontSize: 1 }}>
+          {selectedDate.format("ddd, DD MMM 'YY")}
         </Typography.Body>
         <Button
           variant="outline"
@@ -49,8 +49,9 @@ export const PagePlans: FC = () => {
           py={1}
           px={3}
           onClick={() => setSelectedDate(dayjs())}
+          disabled={selectedDate.isSame(dayjs(), "day")}
         >
-          today
+          Today
         </Button>
       </Flex>
       {data?.map((plan) => {
@@ -67,7 +68,8 @@ export const PagePlans: FC = () => {
       })}
       <Link to={NEW_PLANS_URL} sx={{ display: "block", mx: [0, 3] }}>
         <Card
-          p={3}
+          px={3}
+          py={2}
           borderRadius={[0, "default"]}
           sx={{ display: "flex", alignItems: "center" }}
         >
