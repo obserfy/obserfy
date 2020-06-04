@@ -785,16 +785,14 @@ func addFile(server rest.Server, store Store) http.Handler {
 	})
 }
 
-// TODO: Implement this
 func updateFile(server rest.Server, store Store) http.Handler {
 	type reqBody struct {
 		FileName string `json:"fileName"`
 	}
 
 	type resBody struct {
-		FileId   string `json:"fileId"`
-		SchoolId string `json:"schoolId"`
-		FileName string `json:"fileName"`
+		Id   string `json:"id"`
+		Name string `json:"name"`
 	}
 
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
@@ -830,9 +828,8 @@ func updateFile(server rest.Server, store Store) http.Handler {
 
 		w.WriteHeader(http.StatusOK)
 		if err := rest.WriteJson(w, &resBody{
-			FileId:   res.FileId,
-			SchoolId: res.SchoolId,
-			FileName: res.FileName,
+			Id:   res.Id,
+			Name: res.Name,
 		}); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
@@ -840,7 +837,6 @@ func updateFile(server rest.Server, store Store) http.Handler {
 	})
 }
 
-// TODO: Implement this
 func deleteFile(server rest.Server, store Store) http.Handler {
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		fileId := chi.URLParam(r, "fileId")
