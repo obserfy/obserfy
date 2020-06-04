@@ -54,7 +54,7 @@ func InitTables(db *pg.DB) error {
 		(*PasswordResetToken)(nil),
 		(*LessonPlan)(nil),
 		(*File)(nil),
-		(*LessonPlanToFile)(nil),
+		(*FileToLessonPlan)(nil),
 		(*RepetitionPattern)(nil),
 	} {
 		err := db.CreateTable(model, &orm.CreateTableOptions{IfNotExists: true, FKConstraints: true})
@@ -243,32 +243,36 @@ type Weekday struct {
 	Class   Class
 }
 
-type LessonPlan struct {
-	Id          string `pg:"type:uuid,on_delete:CASCADE"`
-	Title       string
-	Description string
-	ClassId     string `pg:"type:uuid"`
-	Class       Class
-	Type        int    `pg:",use_zero"`
-	Files       []File `pg:"many2many:lesson_plan_to_files,joinFK:file_id"`
-	StartTime   time.Time
-}
+type (
+	LessonPlan struct {
+		Id          string `pg:"type:uuid"`
+		Title       string
+		Description string
+		ClassId     string `pg:"type:uuid"`
+		Class       Class
+		Type        int    `pg:",use_zero"`
+		Files       []File `pg:"many2many:file_to_lesson_plans,joinFK:file_id"`
+		StartTime   time.Time
+	}
 
-type File struct {
-	Id          string       `pg:"type:uuid,on_delete:CASCADE"`
-	Name        string
-	LessonPlans []LessonPlan `pg:"many2many:lesson_plan_to_files,joinFK:lesson_plan_id"`
-}
+	File struct {
+		Id          string `pg:"type:uuid,pk"`
+		SchoolId    string `pg:"type:uuid"`
+		School      School
+		FileName    string
+		LessonPlans []LessonPlan `pg:"many2many:file_to_lesson_plans,joinFK:lesson_plan_id"`
+	}
 
-type LessonPlanToFile struct {
-	LessonPlanId string `pg:"type:uuid"`
-	LessonPlan   LessonPlan
-	FileId       string `pg:"type:uuid"`
-	File         File
-}
+	FileToLessonPlan struct {
+		LessonPlanId string     `pg:"type:uuid,on_delete:CASCADE"`
+		LessonPlan   LessonPlan
+		FileId       string     `pg:"type:uuid,on_delete:CASCADE"`
+		File         File
+	}
 
-type RepetitionPattern struct {
-	LessonPlanId string     `pg:"type:uuid"`
-	LessonPlan   LessonPlan
-	EndTime      time.Time
-}
+	RepetitionPattern struct {
+		LessonPlanId string     `pg:"type:uuid,on_delete:CASCADE"`
+		LessonPlan   LessonPlan
+		EndTime      time.Time
+	}
+)

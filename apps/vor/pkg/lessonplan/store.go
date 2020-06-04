@@ -24,7 +24,7 @@ type (
 		Title       string
 		Description string
 		Type        int
-		Files       []string
+		FileIds     []string
 		StartTime   time.Time
 		EndTime     *time.Time
 	}
@@ -44,5 +44,6 @@ type (
 		UpdateLessonPlan(planData UpdatePlanData) (int, error)
 		GetLessonPlan(planId string) (*LessonPlan, error)
 		DeleteLessonPlan(planId string) error
+		DeleteLessonPlanFile(planId, fileId string) error
 	}
 )

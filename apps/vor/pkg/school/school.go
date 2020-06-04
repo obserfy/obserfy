@@ -50,6 +50,10 @@ func NewRouter(
 		r.Method("GET", "/plans", getLessonPlan(server, store))
 		r.Method("GET", "/files", getLessonFiles(server, store))
 
+
+		r.Method("POST", "/files", addFile(server, store))
+		r.Method("PATCH", "/files/{fileId}", updateFile(server, store))
+		r.Method("DELETE", "/files/{fileId}", deleteFile(server, store))
 	})
 	return r
 }
@@ -729,6 +733,67 @@ func getLessonFiles(server rest.Server, store Store) http.Handler {
 			}
 		}
 		rest.WriteJson(w, response)
+		return nil
+	})
+}
+
+func addFile(server rest.Server, store Store) http.Handler {
+	type reqBody struct {
+		FileName string `json:"fileName"`
+	}
+
+	type resBody struct {
+		FileId   string `json:"fileId"`
+		SchoolId string `json:"schoolId"`
+		FileName string `json:"fileName"`
+	}
+
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		body := reqBody{}
+		schoolId := chi.URLParam(r, "schoolId")
+
+		if err := rest.ParseJson(r.Body, &body); err != nil {
+			return rest.NewParseJsonError(err)
+		}
+
+		if body.FileName == "" {
+			return &rest.Error{
+				Code:    http.StatusBadRequest,
+				Message: "File name must not empty",
+			}
+		}
+
+		res, err := store.CreateFile(schoolId, body.FileName)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "Failed create file",
+				Error:   err,
+			}
+		}
+
+		w.WriteHeader(http.StatusCreated)
+		if err := rest.WriteJson(w, &resBody{
+			FileId:   res.FileId,
+			SchoolId: res.SchoolId,
+			FileName: res.FileName,
+		}); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
+		return nil
+	})
+}
+
+func updateFile(server rest.Server, store Store) http.Handler {
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		rest.WriteJson(w, "OK")
+		return nil
+	})
+}
+
+func deleteFile(server rest.Server, store Store) http.Handler {
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		rest.WriteJson(w, "OK")
 		return nil
 	})
 }
