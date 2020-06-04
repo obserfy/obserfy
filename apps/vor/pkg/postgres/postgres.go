@@ -53,9 +53,9 @@ func InitTables(db *pg.DB) error {
 		(*Attendance)(nil),
 		(*PasswordResetToken)(nil),
 		(*LessonPlan)(nil),
+		(*LessonPlanDetails)(nil),
 		(*File)(nil),
 		(*FileToLessonPlan)(nil),
-		(*RepetitionPattern)(nil),
 	} {
 		err := db.CreateTable(model, &orm.CreateTableOptions{IfNotExists: true, FKConstraints: true})
 		if err != nil {
@@ -244,15 +244,22 @@ type Weekday struct {
 }
 
 type (
+	LessonPlanDetails struct {
+		Id                string `pg:"type:uuid"`
+		Title             *string
+		Description       *string
+		ClassId           string `pg:"type:uuid"`
+		Class             Class
+		Files             []File `pg:"many2many:file_to_lesson_plans,joinFK:file_id"`
+		RepetitionType    int    `pg:",use_zero"`
+		RepetitionEndDate time.Time
+	}
+
 	LessonPlan struct {
-		Id          string `pg:"type:uuid"`
-		Title       string
-		Description string
-		ClassId     string `pg:"type:uuid"`
-		Class       Class
-		Type        int    `pg:",use_zero"`
-		Files       []File `pg:"many2many:file_to_lesson_plans,joinFK:file_id"`
-		StartTime   time.Time
+		Id        string `pg:"type:uuid"`
+		Date      *time.Time
+		DetailsId string `pg:"type:uuid"`
+		Details   LessonPlanDetails
 	}
 
 	File struct {
@@ -264,15 +271,9 @@ type (
 	}
 
 	FileToLessonPlan struct {
-		LessonPlanId string     `pg:"type:uuid,on_delete:CASCADE"`
-		LessonPlan   LessonPlan
-		FileId       string     `pg:"type:uuid,on_delete:CASCADE"`
-		File         File
-	}
-
-	RepetitionPattern struct {
-		LessonPlanId string     `pg:"type:uuid,on_delete:CASCADE"`
-		LessonPlan   LessonPlan
-		EndTime      time.Time
+		LessonPlanDetailsId string `pg:"type:uuid,on_delete:CASCADE"`
+		LessonPlanDetails   LessonPlanDetails
+		FileId              string `pg:"type:uuid,on_delete:CASCADE"`
+		File                File
 	}
 )

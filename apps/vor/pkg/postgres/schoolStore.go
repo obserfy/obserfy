@@ -417,6 +417,7 @@ func (s SchoolStore) GetGuardians(schoolId string) ([]cSchool.Guardian, error) {
 
 	return res, nil
 }
+
 func (s SchoolStore) GetLessonPlans(schoolId string, date string) ([]cSchool.LessonPlan, error) {
 	var lessonPlan []LessonPlan
 	res := make([]cSchool.LessonPlan, 0)
@@ -424,46 +425,43 @@ func (s SchoolStore) GetLessonPlans(schoolId string, date string) ([]cSchool.Les
 		date = "1970-01-01"
 	}
 	if err := s.DB.Model(&lessonPlan).
-		Where("lesson_plan.start_time::date=?", date).
+		Where("'date'::date=?", date).
+		Relation("LessonPlanDetails").
 		Relation("Class", func(q *orm.Query) (*orm.Query, error) {
 			return q.Where("school_id = ?", schoolId), nil
 		}).
 		Select(); err != nil {
 		return nil, richErrors.Wrap(err, "Failed to query school's lesson plan")
 	}
-	for _, v := range lessonPlan {
+	for _, plan := range lessonPlan {
 		res = append(res, cSchool.LessonPlan{
-			Id:          v.Id,
-			Title:       v.Title,
-			Description: v.Description,
-			ClassId:     v.ClassId,
-			ClassName:   v.Class.Name,
-			StartTime:   v.StartTime,
+			Id:          plan.Id,
+			Title:       *plan.Details.Title,
+			Description: *plan.Details.Description,
+			ClassId:     plan.Details.ClassId,
+			ClassName:   plan.Details.Class.Name,
+			StartTime:   *plan.Date,
 		})
 	}
 	return res, nil
 }
+
 func (s SchoolStore) GetLessonFiles(schoolId string) ([]cSchool.File, error) {
-	var plans []LessonPlan
-	files := make([]cSchool.File, 0)
-	if err := s.DB.Model(&plans).
-		Relation("Files").
-		Relation("Class", func(q *orm.Query) (*orm.Query, error) {
-			return q.Where("school_id = ?", schoolId), nil
-		}).
+	var files []File
+	if err := s.DB.Model(&files).
+		Where("school_id=?", schoolId).
 		Select(); err != nil {
 		return nil, richErrors.Wrap(err, "Failed to query school's files")
 	}
-	for _, plan := range plans {
-		println("len", len(plan.Files))
-		for _, file := range plan.Files {
-			files = append(files, cSchool.File{
-				Id:   file.Id,
-				Name: file.FileName,
-			})
+
+	result := make([]cSchool.File, len(files))
+	for idx, file := range files {
+		result[idx] = cSchool.File{
+			Id:   file.Id,
+			Name: file.FileName,
 		}
 	}
-	return files, nil
+	return result, nil
 }
 
 func (s SchoolStore) CreateFile(schoolId, file string) (*cSchool.File, error) {

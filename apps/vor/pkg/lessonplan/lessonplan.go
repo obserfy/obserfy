@@ -1,13 +1,11 @@
 package lessonplan
 
 import (
-	"net/http"
-	"time"
-
 	"github.com/go-chi/chi"
 	"github.com/go-pg/pg/v9"
 	"github.com/go-playground/validator/v10"
 	"github.com/pkg/errors"
+	"net/http"
 
 	"github.com/chrsep/vor/pkg/rest"
 )
@@ -26,19 +24,17 @@ func NewRouter(server rest.Server, store Store) *chi.Mux {
 
 func updateLessonPlan(server rest.Server, store Store) http.Handler {
 	type reqBody struct {
-		Title       *string    `json:"title,omitempty"`
-		Description *string    `json:"description,omitempty"`
-		Type        *int       `json:"type,omitempty" validate:"oneof=0 1 2 3"`
-		StartTime   *time.Time `json:"startTime,omitempty"`
-		EndTime     *time.Time `json:"endTime,omitempty"`
+		Title       *string `json:"title,omitempty"`
+		Description *string `json:"description,omitempty"`
+		Type        *int    `json:"type,omitempty" validate:"oneof=0 1 2 3"`
 	}
 
 	validate := validator.New()
 
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
-		body := reqBody{}
 		planId := chi.URLParam(r, "planId")
 
+		body := reqBody{}
 		if err := rest.ParseJson(r.Body, &body); err != nil {
 			return rest.NewParseJsonError(err)
 		}
@@ -50,29 +46,10 @@ func updateLessonPlan(server rest.Server, store Store) http.Handler {
 			}
 		}
 
-		isValid := true
-		errMsg := ""
-		if body.Type != nil {
-			if *body.Type != RepetitionNone && body.EndTime == nil {
-				isValid = false
-				errMsg = "End time and repetition must be filled"
-			}
-		}
-
-		if !isValid {
-			return &rest.Error{
-				Code:    http.StatusBadRequest,
-				Message: errMsg,
-			}
-		}
-
 		planInput := UpdatePlanData{
-			PlanId:      planId,
+			Id:          planId,
 			Title:       body.Title,
 			Description: body.Description,
-			Type:        body.Type,
-			StartTime:   body.StartTime,
-			EndTime:     body.EndTime,
 		}
 		rowsAffected, err := store.UpdateLessonPlan(planInput)
 		if err != nil {

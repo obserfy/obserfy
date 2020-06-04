@@ -64,6 +64,7 @@ func authorizationMiddleware(s rest.Server, store Store) func(next http.Handler)
 		})
 	}
 }
+
 func getClassSession(server rest.Server, store Store) http.Handler {
 	type responseBody struct {
 		Date string `json:"date"`
@@ -86,6 +87,7 @@ func getClassSession(server rest.Server, store Store) http.Handler {
 		return nil
 	})
 }
+
 func updateClass(server rest.Server, store Store) http.Handler {
 	type requestBody struct {
 		Name      string         `json:"name"`
@@ -175,14 +177,17 @@ func deleteClass(server rest.Server, store Store) http.Handler {
 	})
 }
 
+// TODO: Might need to move this to school later, when plans can target other things other than classes.
 func postNewLessonPlan(server rest.Server, store lessonplan.Store) http.Handler {
 	type reqBody struct {
 		Title       string    `json:"title" validate:"required"`
 		Description string    `json:"description"`
-		Type        int       `json:"type" validate:"oneof=0 1 2 3"`
-		StartTime   time.Time `json:"startTime" validate:"required"`
-		EndTime     *time.Time`json:"endTime,omitempty"`
+		Date        time.Time `json:"date" validate:"required"`
 		FileIds     []string  `json:"fileIds"`
+		Repetition  *struct {
+			Type    int       `json:"type" validate:"oneof=0 1 2 3"`
+			EndDate time.Time `json:"endDate" validate:"required"`
+		} `json:"repetition,omitempty"`
 	}
 
 	type resBody struct {
@@ -207,32 +212,17 @@ func postNewLessonPlan(server rest.Server, store lessonplan.Store) http.Handler 
 			}
 		}
 
-		// validate repetition data
-		var errMsg string
-		var err error
-
-		isValid := true
-
-		if body.Type != lessonplan.RepetitionNone && body.EndTime == nil {
-			isValid = false
-			errMsg = "End time can't be empty"
-		}
-
-		if !isValid {
-			return &rest.Error{
-				Code:    http.StatusBadRequest,
-				Message: errMsg,
-			}
-		}
-
 		planInput := lessonplan.PlanData{
 			ClassId:     classId,
 			Title:       body.Title,
 			Description: body.Description,
-			Type:        body.Type,
 			FileIds:     body.FileIds,
-			StartTime:   body.StartTime,
-			EndTime:     body.EndTime,
+		}
+		if body.Repetition != nil {
+			planInput.Repetition = &lessonplan.RepetitionPattern{
+				Type:    body.Repetition.Type,
+				EndDate: body.Repetition.EndDate,
+			}
 		}
 
 		lessonPlan, err := store.CreateLessonPlan(planInput)

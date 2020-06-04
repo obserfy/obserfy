@@ -9,17 +9,22 @@ interface NewPlan {
   classId: string
   title: string
   description: string
+  repetition?: {
+    type: number
+    endDate: Dayjs
+  }
 }
 const usePostNewPlan = () => {
   let date: string
   const postPlan = async (newPlan: NewPlan) => {
-    date = newPlan.date.format("YYYY-MM-DD")
-    const result = await fetch(`${BASE_URL}/class/${newPlan.classId}/plans`, {
+    const result = await fetch(`${BASE_URL}/classes/${newPlan.classId}/plans`, {
       method: "POST",
       body: JSON.stringify({
         title: newPlan.title,
         description: newPlan.description,
-        date,
+        fileIds: [],
+        date: newPlan.date.toISOString(),
+        repetition: newPlan.repetition,
       }),
     })
 
