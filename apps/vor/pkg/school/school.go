@@ -677,16 +677,18 @@ func getGuardians(server rest.Server, store Store) http.Handler {
 }
 
 func getLessonPlan(server rest.Server, store Store) http.Handler {
+	type responseBody struct {
+		Id          string    `json:"id"`
+		Title       string    `json:"title"`
+		Description string    `json:"description"`
+		ClassName   string    `json:"className"`
+		StartTime   time.Time `json:"startTime"`
+	}
+
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
-		type responseBody struct {
-			Id          string    `json:"id"`
-			Title       string    `json:"title"`
-			Description string    `json:"description"`
-			ClassName   string    `json:"className"`
-			StartTime   time.Time `json:"startTime"`
-		}
 		schoolId := chi.URLParam(r, "schoolId")
 		date := r.URL.Query().Get("date")
+
 		lessonPlans, err := store.GetLessonPlans(schoolId, date)
 		if err != nil {
 			return &rest.Error{
@@ -695,6 +697,7 @@ func getLessonPlan(server rest.Server, store Store) http.Handler {
 				Error:   err,
 			}
 		}
+
 		response := make([]responseBody, len(lessonPlans))
 		for i, plan := range lessonPlans {
 			response[i] = responseBody{

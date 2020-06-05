@@ -425,9 +425,9 @@ func (s SchoolStore) GetLessonPlans(schoolId string, date string) ([]cSchool.Les
 		date = "1970-01-01"
 	}
 	if err := s.DB.Model(&lessonPlan).
-		Where("'date'::date=?", date).
-		Relation("LessonPlanDetails").
-		Relation("Class", func(q *orm.Query) (*orm.Query, error) {
+		Where("date::date=?", date).
+		Relation("Details").
+		Relation("Details.Class", func(q *orm.Query) (*orm.Query, error) {
 			return q.Where("school_id = ?", schoolId), nil
 		}).
 		Select(); err != nil {
