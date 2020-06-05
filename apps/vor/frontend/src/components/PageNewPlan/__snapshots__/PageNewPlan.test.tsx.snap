@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageNewPlan should render correctly 1`] = `
-.emotion-31 {
+.emotion-34 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,12 +9,12 @@ exports[`PageNewPlan should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-31 {
+  .emotion-34 {
     font-size: 20px;
   }
 }
 
-.emotion-30 {
+.emotion-33 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -98,11 +98,12 @@ exports[`PageNewPlan should render correctly 1`] = `
   margin: 16px;
 }
 
-.emotion-29 {
+.emotion-18 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  padding: 16px;
+  margin-left: 16px;
+  margin-right: 16px;
 }
 
 .emotion-10 {
@@ -472,7 +473,7 @@ exports[`PageNewPlan should render correctly 1`] = `
   line-height: 2rem;
 }
 
-.emotion-18 {
+.emotion-19 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -493,7 +494,7 @@ exports[`PageNewPlan should render correctly 1`] = `
   margin-bottom: 8px;
 }
 
-.emotion-19 {
+.emotion-20 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -504,7 +505,7 @@ exports[`PageNewPlan should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-27 {
+.emotion-29 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -514,7 +515,7 @@ exports[`PageNewPlan should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-22 {
+.emotion-24 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -535,11 +536,11 @@ exports[`PageNewPlan should render correctly 1`] = `
   padding-right: 8px;
 }
 
-.emotion-22:hover {
+.emotion-24:hover {
   background-color: var(--theme-ui-colors-primary,#00e399);
 }
 
-.emotion-21 {
+.emotion-23 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -555,7 +556,7 @@ exports[`PageNewPlan should render correctly 1`] = `
   font-size: 14px;
 }
 
-.emotion-24 {
+.emotion-26 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -576,11 +577,11 @@ exports[`PageNewPlan should render correctly 1`] = `
   padding-right: 8px;
 }
 
-.emotion-24:hover {
+.emotion-26:hover {
   background-color: var(--theme-ui-colors-primaryLightest,rgba(0,120,86,0.05));
 }
 
-.emotion-23 {
+.emotion-25 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -596,7 +597,16 @@ exports[`PageNewPlan should render correctly 1`] = `
   font-size: 14px;
 }
 
-.emotion-28 {
+.emotion-32 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-bottom: 32px;
+}
+
+.emotion-31 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -649,28 +659,28 @@ exports[`PageNewPlan should render correctly 1`] = `
   margin-top: 16px;
 }
 
-.emotion-28:disabled {
+.emotion-31:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-28:hover,
-.emotion-28:focus {
+.emotion-31:hover,
+.emotion-31:focus {
   background-color: var(--theme-ui-colors-primaryDark,#00a06d);
   outline: none;
 }
 
-.emotion-28:hover:disabled,
-.emotion-28:focus:disabled {
+.emotion-31:hover:disabled,
+.emotion-31:focus:disabled {
   background-color: var(--theme-ui-colors-primary,#00e399);
 }
 
 <div>
   <div
-    class="emotion-31"
+    class="emotion-34"
   >
     <div
-      class="emotion-30"
+      class="emotion-33"
     >
       <a
         href="/dashboard/plans"
@@ -695,7 +705,7 @@ exports[`PageNewPlan should render correctly 1`] = `
         New Plan
       </h5>
       <div
-        class="emotion-29"
+        class="emotion-18"
       >
         <div
           class="emotion-10"
@@ -758,52 +768,64 @@ exports[`PageNewPlan should render correctly 1`] = `
             class="emotion-16"
           />
         </label>
+      </div>
+      <div
+        class="emotion-18"
+      >
         <h6
-          class="emotion-18"
+          class="emotion-19"
         >
           Class
         </h6>
         <div
-          class="emotion-19"
+          class="emotion-20"
         />
+      </div>
+      <div
+        class="emotion-18"
+      >
         <h6
-          class="emotion-18"
+          class="emotion-19"
         >
           Repetition
         </h6>
         <div
-          class="emotion-27"
+          class="emotion-29"
         >
           <div
-            class="emotion-22"
+            class="emotion-24"
           >
             <p
-              class="emotion-21"
+              class="emotion-23"
             >
               None
             </p>
           </div>
           <div
-            class="emotion-24"
+            class="emotion-26"
           >
             <p
-              class="emotion-23"
+              class="emotion-25"
             >
               Daily
             </p>
           </div>
           <div
-            class="emotion-24"
+            class="emotion-26"
           >
             <p
-              class="emotion-23"
+              class="emotion-25"
             >
               Weekly
             </p>
           </div>
         </div>
+      </div>
+      <div
+        class="emotion-32"
+      >
         <button
-          class="emotion-28"
+          class="emotion-31"
           disabled=""
         >
           Save
