@@ -714,6 +714,7 @@ func getLessonPlan(server rest.Server, store Store) http.Handler {
 		return nil
 	})
 }
+
 func getLessonFiles(server rest.Server, store Store) http.Handler {
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		type responseBody struct {
