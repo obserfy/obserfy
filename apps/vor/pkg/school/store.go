@@ -127,7 +127,7 @@ type (
 		CreateFile(schoolId, file string) (*File, error)
 		DeleteFile(fileId string) error
 		UpdateFile(fileId, fileName string) (*File, error)
-		GetLessonPlans(schoolId string, date string) ([]LessonPlan, error)
+		GetLessonPlans(schoolId string, date time.Time) ([]LessonPlan, error)
 		GetLessonFiles(schoolId string) ([]File, error)
 	}
 )

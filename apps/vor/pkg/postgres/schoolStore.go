@@ -418,12 +418,9 @@ func (s SchoolStore) GetGuardians(schoolId string) ([]cSchool.Guardian, error) {
 	return res, nil
 }
 
-func (s SchoolStore) GetLessonPlans(schoolId string, date string) ([]cSchool.LessonPlan, error) {
+func (s SchoolStore) GetLessonPlans(schoolId string, date time.Time) ([]cSchool.LessonPlan, error) {
 	var lessonPlan []LessonPlan
 	res := make([]cSchool.LessonPlan, 0)
-	if date == "" {
-		date = "1970-01-01"
-	}
 	if err := s.DB.Model(&lessonPlan).
 		Where("date::date=?", date).
 		Relation("Details").

@@ -17,7 +17,7 @@ import { NEW_PLANS_URL, PLANS_DETAILS_URL } from "../../routes"
 
 export const PagePlans: FC = () => {
   const [selectedDate, setSelectedDate] = useState(dayjs())
-  const { data } = useGetPlans(selectedDate.format("YYYY-MM-DD"))
+  const { data } = useGetPlans(selectedDate)
 
   return (
     <Box maxWidth="maxWidth.sm" mx="auto">

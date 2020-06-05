@@ -689,7 +689,15 @@ func getLessonPlan(server rest.Server, store Store) http.Handler {
 		schoolId := chi.URLParam(r, "schoolId")
 		date := r.URL.Query().Get("date")
 
-		lessonPlans, err := store.GetLessonPlans(schoolId, date)
+		parsedDate, err := time.Parse(time.RFC3339, date)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusBadRequest,
+				Message: "date needs to be in ISO format",
+				Error:   err,
+			}
+		}
+		lessonPlans, err := store.GetLessonPlans(schoolId, parsedDate)
 		if err != nil {
 			return &rest.Error{
 				Code:    http.StatusInternalServerError,
