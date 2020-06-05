@@ -6,6 +6,7 @@ import (
 	"github.com/go-playground/validator/v10"
 	"github.com/pkg/errors"
 	"net/http"
+	"time"
 
 	"github.com/chrsep/vor/pkg/rest"
 )
@@ -13,6 +14,7 @@ import (
 func NewRouter(server rest.Server, store Store) *chi.Mux {
 	r := chi.NewRouter()
 	r.Route("/{planId}", func(r chi.Router) {
+		r.Method("GET", "/", getLessonPlan(server, store))
 		r.Method("PATCH", "/", updateLessonPlan(server, store))
 		r.Method("DELETE", "/", deleteLessonPlan(server, store))
 
@@ -20,6 +22,40 @@ func NewRouter(server rest.Server, store Store) *chi.Mux {
 	})
 
 	return r
+}
+
+func getLessonPlan(server rest.Server, store Store) http.Handler {
+	type resBody struct {
+		Id          string    `json:"id"`
+		Title       string    `json:"title"`
+		Description string    `json:"description"`
+		ClassId     string    `json:"classId"`
+		Date        time.Time `json:"date"`
+	}
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		planId := chi.URLParam(r, "planId")
+
+		plan, err := store.GetLessonPlan(planId)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "failed to query lesson plan",
+				Error:   err,
+			}
+		}
+
+		response := resBody{
+			Id:          plan.Id,
+			Title:       plan.Title,
+			Description: plan.Description,
+			ClassId:     plan.ClassId,
+			Date:        plan.Date,
+		}
+		if err := rest.WriteJson(w, response); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
+		return nil
+	})
 }
 
 func updateLessonPlan(server rest.Server, store Store) http.Handler {

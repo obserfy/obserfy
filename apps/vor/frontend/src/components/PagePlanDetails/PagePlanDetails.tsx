@@ -25,13 +25,41 @@ export const PagePlanDetails: FC<Props> = ({ id }) => {
     <Box maxWidth="maxWidth.sm" mx="auto">
       <BackNavigation to={ALL_PLANS_URL} text="All plans" />
       <Typography.H5 m={3} mb={4}>
-        {plan.data?.title}
+        Plan Details
       </Typography.H5>
       <Card borderRadius={[0, "default"]}>
         <DateDataBox value={plan.data?.date} />
+        <TitleDataBox value={plan.data?.title} />
         <DescriptionDataBox value={plan.data?.description} />
       </Card>
     </Box>
+  )
+}
+
+const TitleDataBox: FC<{ value?: string }> = ({ value }) => {
+  const [showEditDialog, setShowEditDialog] = useState(false)
+
+  return (
+    <>
+      <DataBox
+        label="Title"
+        value={value ?? ""}
+        onEditClick={() => setShowEditDialog(true)}
+      />
+      {showEditDialog && (
+        <Dialog>
+          <DialogHeader
+            title="Edit Title"
+            onAcceptText="Save"
+            onCancel={() => setShowEditDialog(false)}
+            onAccept={() => setShowEditDialog(false)}
+          />
+          <Box backgroundColor="background" p={3}>
+            <Input label="Name" sx={{ width: "100%" }} value={value} />
+          </Box>
+        </Dialog>
+      )}
+    </>
   )
 }
 

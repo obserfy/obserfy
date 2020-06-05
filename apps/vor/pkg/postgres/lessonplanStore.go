@@ -127,7 +127,7 @@ func (s LessonPlanStore) GetLessonPlan(planId string) (*cLessonPlan.LessonPlan, 
 
 	err := s.Model(&plan).
 		Relation("Details").
-		Where("id = ?", planId).
+		Where("lesson_plan.id = ?", planId).
 		Select()
 
 	if err != nil {

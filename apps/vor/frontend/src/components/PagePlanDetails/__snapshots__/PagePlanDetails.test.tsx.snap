@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PagePlanDetails should render correctly 1`] = `
-.emotion-18 {
+.emotion-24 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,12 +9,12 @@ exports[`PagePlanDetails should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-18 {
+  .emotion-24 {
     font-size: 20px;
   }
 }
 
-.emotion-17 {
+.emotion-23 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -99,7 +99,7 @@ exports[`PagePlanDetails should render correctly 1`] = `
   margin-bottom: 32px;
 }
 
-.emotion-16 {
+.emotion-22 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -113,7 +113,7 @@ exports[`PagePlanDetails should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-16 {
+  .emotion-22 {
     border-radius: 8px;
   }
 }
@@ -280,10 +280,10 @@ exports[`PagePlanDetails should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-18"
+    class="emotion-24"
   >
     <div
-      class="emotion-17"
+      class="emotion-23"
     >
       <a
         href="/dashboard/plans"
@@ -304,9 +304,11 @@ exports[`PagePlanDetails should render correctly 1`] = `
       </a>
       <h5
         class="emotion-3"
-      />
+      >
+        Plan Details
+      </h5>
       <div
-        class="emotion-16"
+        class="emotion-22"
       >
         <div
           class="emotion-9"
@@ -324,6 +326,29 @@ exports[`PagePlanDetails should render correctly 1`] = `
             >
               N/A
             </p>
+          </div>
+          <button
+            class="emotion-8"
+          >
+            <div
+              class="emotion-7"
+            />
+          </button>
+        </div>
+        <div
+          class="emotion-9"
+        >
+          <div
+            class="emotion-6"
+          >
+            <p
+              class="emotion-4"
+            >
+              Title
+            </p>
+            <p
+              class="emotion-5"
+            />
           </div>
           <button
             class="emotion-8"
