@@ -12,9 +12,9 @@ type ObservationStore struct {
 	*pg.DB
 }
 
-func (o ObservationStore) GetObservation(id string) (*cObservation.Observation, error) {
+func (s ObservationStore) GetObservation(id string) (*cObservation.Observation, error) {
 	var observation Observation
-	if err := o.Model(&observation).
+	if err := s.Model(&observation).
 		Where("Observation.id=?", id).
 		Relation("Creator").
 		Relation("Student").
@@ -63,10 +63,10 @@ func (s ObservationStore) CheckPermissions(observationId string, userId string) 
 	// return true, nil
 }
 
-func (o ObservationStore) UpdateObservation(observationId string, shortDesc string, longDesc string, categoryId string) (*cObservation.Observation, error) {
+func (s ObservationStore) UpdateObservation(observationId string, shortDesc string, longDesc string, categoryId string) (*cObservation.Observation, error) {
 	// Query the requested observation
 	var observation Observation
-	if err := o.Model(&observation).
+	if err := s.Model(&observation).
 		Where("id=?", observationId).
 		Select(); err != nil {
 		return nil, err
@@ -76,7 +76,7 @@ func (o ObservationStore) UpdateObservation(observationId string, shortDesc stri
 	observation.ShortDesc = shortDesc
 	observation.LongDesc = longDesc
 	observation.CategoryId = categoryId
-	if err := o.Update(&observation); err != nil {
+	if err := s.Update(&observation); err != nil {
 		return nil, err
 	}
 
@@ -92,7 +92,7 @@ func (o ObservationStore) UpdateObservation(observationId string, shortDesc stri
 	}, nil
 }
 
-func (o ObservationStore) DeleteObservation(observationId string) error {
+func (s ObservationStore) DeleteObservation(observationId string) error {
 	observation := Observation{Id: observationId}
-	return o.Delete(&observation)
+	return s.Delete(&observation)
 }
