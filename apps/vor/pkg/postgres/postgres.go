@@ -256,9 +256,9 @@ type (
 	}
 
 	LessonPlan struct {
-		Id        string `pg:"type:uuid"`
-		Date      *time.Time
-		DetailsId string `pg:"type:uuid"`
+		Id        string     `pg:"type:uuid"`
+		Date      *time.Time `pg:",notnull"`
+		DetailsId string     `pg:"type:uuid"`
 		Details   LessonPlanDetails
 	}
 
