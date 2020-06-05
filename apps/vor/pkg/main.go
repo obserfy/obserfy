@@ -4,7 +4,7 @@ import (
 	"crypto/tls"
 	"github.com/benbjohnson/clock"
 	"github.com/chrsep/vor/pkg/auth"
-	"github.com/chrsep/vor/pkg/class"
+	"github.com/chrsep/vor/pkg/classes"
 	"github.com/chrsep/vor/pkg/curriculum"
 	"github.com/chrsep/vor/pkg/guardian"
 	"github.com/chrsep/vor/pkg/imgproxy"
@@ -75,7 +75,7 @@ func runServer() error {
 	authStore := postgres.AuthStore{db}
 	classStore := postgres.ClassStore{db}
 	guardianStore := postgres.GuardianStore{db}
-	lessonplanStore := postgres.LessonPlanStore{db}
+	lessonPlanStore := postgres.LessonPlanStore{db}
 	mailService := mailgun.NewService()
 	imgproxyClient, err := imgproxy.CreateClient()
 	if err != nil {
@@ -106,9 +106,9 @@ func runServer() error {
 		r.Mount("/schools", school.NewRouter(server, schoolStore, studentImageStorage, imgproxyClient))
 		r.Mount("/user", user.NewRouter(server, userStore))
 		r.Mount("/curriculum", curriculum.NewRouter(server, curriculumStore))
-		r.Mount("/classes", class.NewRouter(server, classStore, lessonplanStore))
+		r.Mount("/classes", classes.NewRouter(server, classStore, lessonPlanStore))
 		r.Mount("/guardians", guardian.NewRouter(server, guardianStore))
-		r.Mount("/plans", lessonplan.NewRouter(server, lessonplanStore))
+		r.Mount("/plans", lessonplan.NewRouter(server, lessonPlanStore))
 	})
 	// Serve gatsby static frontend assets
 	r.Group(func(r chi.Router) {

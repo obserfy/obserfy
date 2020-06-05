@@ -80,8 +80,10 @@ func (s LessonPlanStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLes
 		if err := tx.Insert(&plans); err != nil {
 			return richErrors.Wrap(err, "failed to save lesson plan")
 		}
-		if err := tx.Insert(fileRelations); err != nil {
-			return richErrors.Wrap(err, "failed to save file relations")
+		if len(fileRelations) > 0 {
+			if err := tx.Insert(&fileRelations); err != nil {
+				return richErrors.Wrap(err, "failed to save file relations")
+			}
 		}
 		return nil
 	}); err != nil {

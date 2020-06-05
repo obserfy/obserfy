@@ -52,8 +52,8 @@ func InitTables(db *pg.DB) error {
 		(*UserToSchool)(nil),
 		(*Attendance)(nil),
 		(*PasswordResetToken)(nil),
-		(*LessonPlan)(nil),
 		(*LessonPlanDetails)(nil),
+		(*LessonPlan)(nil),
 		(*File)(nil),
 		(*FileToLessonPlan)(nil),
 	} {

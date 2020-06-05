@@ -2,7 +2,7 @@ package class_test
 
 import (
 	"github.com/brianvoe/gofakeit/v4"
-	"github.com/chrsep/vor/pkg/class"
+	"github.com/chrsep/vor/pkg/classes"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/rest"
 	"github.com/chrsep/vor/pkg/testutils"
@@ -20,7 +20,7 @@ type ClassTestSuite struct {
 }
 
 func (s *ClassTestSuite) SetupTest() {
-	s.Handler = class.NewRouter(
+	s.Handler = classes.NewRouter(
 		s.Server,
 		postgres.ClassStore{s.DB},
 		postgres.LessonPlanStore{s.DB},

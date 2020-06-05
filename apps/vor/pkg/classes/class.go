@@ -1,4 +1,4 @@
-package class
+package classes
 
 import (
 	"net/http"
