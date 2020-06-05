@@ -11,13 +11,6 @@ type (
 	LessonPlanStore struct {
 		*pg.DB
 	}
-
-	PlanData struct {
-		ClassId     string
-		Title       string
-		Description string
-		Repetition  int
-	}
 )
 
 func (s LessonPlanStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLessonPlan.LessonPlan, error) {

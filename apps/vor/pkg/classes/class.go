@@ -217,6 +217,7 @@ func postNewLessonPlan(server rest.Server, store lessonplan.Store) http.Handler 
 			Title:       body.Title,
 			Description: body.Description,
 			FileIds:     body.FileIds,
+			Date:        body.Date,
 		}
 		if body.Repetition != nil {
 			planInput.Repetition = &lessonplan.RepetitionPattern{
