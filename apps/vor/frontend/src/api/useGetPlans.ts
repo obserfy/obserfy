@@ -13,7 +13,10 @@ function useGetPlans(date: Dayjs) {
     `/schools/${schoolId}/plans?date=${date.startOf("day").toISOString()}`
   )
 
-  return useQuery(["plans", schoolId, date], getPlans)
+  return useQuery(
+    ["plans", schoolId, date.startOf("day").toISOString()],
+    getPlans
+  )
 }
 
 export default useGetPlans

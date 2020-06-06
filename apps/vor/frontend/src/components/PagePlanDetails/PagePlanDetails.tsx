@@ -16,12 +16,16 @@ import dayjs from "../../dayjs"
 import DatePicker from "../DatePicker/DatePicker"
 import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
 import AlertDialog from "../AlertDialog/AlertDialog"
+import useDeletePlans from "../../api/useDeletePlan"
+import { navigate } from "../Link/Link"
 
 interface Props {
   id: string
 }
 export const PagePlanDetails: FC<Props> = ({ id }) => {
   const plan = useGetPlan(id)
+  const [deletePlan] = useDeletePlans(id)
+
   const [showDeleteDialog, setShowDeleteDialog] = useState(false)
 
   return (
@@ -52,7 +56,12 @@ export const PagePlanDetails: FC<Props> = ({ id }) => {
           positiveText="Yes"
           body={`Are you sure you want to delete ${plan.data?.title}?`}
           onNegativeClick={() => setShowDeleteDialog(false)}
-          onPositiveClick={() => setShowDeleteDialog(false)}
+          onPositiveClick={async () => {
+            const result = await deletePlan()
+            if (result.ok) {
+              await navigate(ALL_PLANS_URL)
+            }
+          }}
         />
       )}
     </>
