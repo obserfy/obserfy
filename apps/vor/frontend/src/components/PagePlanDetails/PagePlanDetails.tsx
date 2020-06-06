@@ -14,25 +14,48 @@ import Icon from "../Icon/Icon"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
 import dayjs from "../../dayjs"
 import DatePicker from "../DatePicker/DatePicker"
+import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
+import AlertDialog from "../AlertDialog/AlertDialog"
 
 interface Props {
   id: string
 }
 export const PagePlanDetails: FC<Props> = ({ id }) => {
   const plan = useGetPlan(id)
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false)
 
   return (
-    <Box maxWidth="maxWidth.sm" mx="auto">
-      <BackNavigation to={ALL_PLANS_URL} text="All plans" />
-      <Typography.H5 m={3} mb={4}>
-        Plan Details
-      </Typography.H5>
-      <Card borderRadius={[0, "default"]}>
-        <DateDataBox value={plan.data?.date} />
-        <TitleDataBox value={plan.data?.title} />
-        <DescriptionDataBox value={plan.data?.description} />
-      </Card>
-    </Box>
+    <>
+      <Box maxWidth="maxWidth.sm" mx="auto">
+        <BackNavigation to={ALL_PLANS_URL} text="All plans" />
+        <Flex alignItems="center" m={3} mb={3}>
+          <Typography.H5>{plan.data?.title}</Typography.H5>
+          <Button
+            variant="outline"
+            px={2}
+            ml="auto"
+            onClick={() => setShowDeleteDialog(true)}
+          >
+            <Icon as={TrashIcon} m={0} fill="danger" />
+          </Button>
+        </Flex>
+        <Card borderRadius={[0, "default"]}>
+          <DateDataBox value={plan.data?.date} />
+          <TitleDataBox value={plan.data?.title} />
+          <DescriptionDataBox value={plan.data?.description} />
+        </Card>
+      </Box>
+      {showDeleteDialog && (
+        <AlertDialog
+          title="Delete plan?"
+          negativeText="Cancel"
+          positiveText="Yes"
+          body={`Are you sure you want to delete ${plan.data?.title}?`}
+          onNegativeClick={() => setShowDeleteDialog(false)}
+          onPositiveClick={() => setShowDeleteDialog(false)}
+        />
+      )}
+    </>
   )
 }
 
@@ -144,7 +167,7 @@ const DateDataBox: FC<{ value?: string }> = ({ value }) => {
       {showEditDialog && (
         <Dialog>
           <DialogHeader
-            title="Edit Date of Entry"
+            title="Edit Date"
             onAcceptText="Save"
             onCancel={() => setShowEditDialog(false)}
             onAccept={() => setShowEditDialog(false)}
