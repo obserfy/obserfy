@@ -1,7 +1,7 @@
 package postgres
 
 import (
-	"github.com/chrsep/vor/pkg/classes"
+	"github.com/chrsep/vor/pkg/class"
 	"time"
 
 	"github.com/go-pg/pg/v9"
@@ -26,10 +26,10 @@ func (s ClassStore) CheckPermission(userId string, classId string) (bool, error)
 	}
 	return true, nil
 }
-func (s ClassStore) GetClassSession(classId string) ([]classes.ClassSession, error) {
+func (s ClassStore) GetClassSession(classId string) ([]class.ClassSession, error) {
 
 	var attendance []Attendance
-	var session []classes.ClassSession
+	var session []class.ClassSession
 	if err := s.DB.Model(&attendance).
 		Distinct().
 		ColumnExpr("cast(date AS date)").
@@ -38,7 +38,7 @@ func (s ClassStore) GetClassSession(classId string) ([]classes.ClassSession, err
 	}
 	if len(attendance) > 0 {
 		for _, attendance := range attendance {
-			session = append(session, classes.ClassSession{
+			session = append(session, class.ClassSession{
 				Date: attendance.Date.Format("2006-01-02"),
 			})
 		}
@@ -52,15 +52,15 @@ func (s ClassStore) GetClassSession(classId string) ([]classes.ClassSession, err
 	}
 	for _, weekday := range selectedClass.Weekdays {
 		if int(time.Weekday(weekday.Day)-time.Now().Weekday()) < 0 {
-			session = append(session, classes.ClassSession{
+			session = append(session, class.ClassSession{
 				Date: time.Now().AddDate(0, 0, 7+int(time.Weekday(weekday.Day)-time.Now().Weekday())).Format("2006-01-02"),
 			})
 		} else if int(time.Weekday(weekday.Day)-time.Now().Weekday()) > 0 {
-			session = append(session, classes.ClassSession{
+			session = append(session, class.ClassSession{
 				Date: time.Now().AddDate(0, 0, int(time.Now().Weekday())+int(time.Weekday(weekday.Day)-time.Now().Weekday())).Format("2006-01-02"),
 			})
 		} else {
-			session = append(session, classes.ClassSession{
+			session = append(session, class.ClassSession{
 				Date: time.Now().AddDate(0, 0, int(time.Weekday(weekday.Day))).Format("2006-01-02"),
 			})
 		}
@@ -122,7 +122,7 @@ func (s ClassStore) UpdateClass(id string, name string, weekdays []time.Weekday,
 	return rowsEffected, nil
 }
 
-func (s ClassStore) GetClass(id string) (*classes.Class, error) {
+func (s ClassStore) GetClass(id string) (*class.Class, error) {
 	var target Class
 	if err := s.DB.Model(&target).
 		Relation("Weekdays").
@@ -138,11 +138,11 @@ func (s ClassStore) GetClass(id string) (*classes.Class, error) {
 	for i, weekday := range target.Weekdays {
 		days[i] = weekday.Day
 	}
-	students := make([]classes.Student, len(target.Students))
+	students := make([]class.Student, len(target.Students))
 	for i, student := range target.Students {
-		students[i] = classes.Student{Id: student.Id, Name: student.Name}
+		students[i] = class.Student{Id: student.Id, Name: student.Name}
 	}
-	return &classes.Class{
+	return &class.Class{
 		Id:        target.Id,
 		Name:      target.Name,
 		Weekdays:  days,

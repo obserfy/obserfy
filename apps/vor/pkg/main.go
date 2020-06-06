@@ -4,7 +4,7 @@ import (
 	"crypto/tls"
 	"github.com/benbjohnson/clock"
 	"github.com/chrsep/vor/pkg/auth"
-	"github.com/chrsep/vor/pkg/classes"
+	"github.com/chrsep/vor/pkg/class"
 	"github.com/chrsep/vor/pkg/curriculum"
 	"github.com/chrsep/vor/pkg/guardian"
 	"github.com/chrsep/vor/pkg/imgproxy"
@@ -106,7 +106,7 @@ func runServer() error {
 		r.Mount("/schools", school.NewRouter(server, schoolStore, studentImageStorage, imgproxyClient))
 		r.Mount("/user", user.NewRouter(server, userStore))
 		r.Mount("/curriculum", curriculum.NewRouter(server, curriculumStore))
-		r.Mount("/classes", classes.NewRouter(server, classStore, lessonPlanStore))
+		r.Mount("/classes", class.NewRouter(server, classStore, lessonPlanStore))
 		r.Mount("/guardians", guardian.NewRouter(server, guardianStore))
 		r.Mount("/plans", lessonplan.NewRouter(server, lessonPlanStore))
 	})
