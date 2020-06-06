@@ -6,7 +6,7 @@ export interface Schools {
 }
 export const useGetSchools = (): [Schools[], boolean, () => void] => {
   const [schools, loading, setAsOutdated] = useOldApiHook<Schools[]>(
-    "/user/schools"
+    "/users/schools"
   )
   return [schools ?? [], loading, setAsOutdated]
 }
