@@ -22,7 +22,7 @@ export const fetchApi = <T>(url: string) => async (): Promise<T> => {
   return json
 }
 
-export const deleteApi = <T>(url: string, id: string) => async () => {
+export const deleteApi = (url: string, id: string) => async () => {
   const result = await fetch(`${BASE_URL}${url}/${id}`, {
     credentials: "same-origin",
     method: "DELETE",
@@ -33,7 +33,27 @@ export const deleteApi = <T>(url: string, id: string) => async () => {
     await navigate("/login")
     return result
   }
-  if (result.status !== 200) {
+  if (!result.ok) {
+    const body: ApiError = await result.json()
+    throw Error(body?.error?.message ?? "")
+  }
+
+  return result
+}
+
+export const patchApi = <T>(url: string, id: string) => async (payload: T) => {
+  const result = await fetch(`${BASE_URL}${url}/${id}`, {
+    credentials: "same-origin",
+    method: "PATCH",
+    body: JSON.stringify(payload),
+  })
+
+  // Throw user to login when something gets 401
+  if (result.status === 401) {
+    await navigate("/login")
+    return result
+  }
+  if (!result.ok) {
     const body: ApiError = await result.json()
     throw Error(body?.error?.message ?? "")
   }
