@@ -70,13 +70,13 @@ const DescriptionDataBox: FC<{ value?: string }> = ({ value }) => {
     <>
       <DataBox
         label="Description"
-        value={value ?? ""}
+        value={value || "-"}
         onEditClick={() => setShowEditDialog(true)}
       />
       {showEditDialog && (
         <Dialog>
           <DialogHeader
-            title="Edit Name"
+            title="Edit Description"
             onAcceptText="Save"
             onCancel={() => setShowEditDialog(false)}
             onAccept={() => setShowEditDialog(false)}
@@ -108,13 +108,15 @@ const DataBox: FC<{
     <Box>
       <Typography.Body
         fontSize={0}
-        lineHeight={1.6}
-        mb={1}
+        lineHeight={1}
+        mb={2}
         color="textMediumEmphasis"
       >
         {label}
       </Typography.Body>
-      <Typography.Body lineHeight={1.6}>{value}</Typography.Body>
+      <Typography.Body fontSize={1} lineHeight={1}>
+        {value}
+      </Typography.Body>
     </Box>
     <Button
       variant="outline"
