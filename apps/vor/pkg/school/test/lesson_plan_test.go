@@ -29,5 +29,5 @@ func (s *SchoolTestSuite) TestGetLessonPlan() {
 	assert.NoError(t, err)
 
 	assert.Len(t, body, 1)
-	assert.Equal(t, *lessonPlan.Details.Title, body[0].Title)
+	assert.Equal(t, lessonPlan.Details.Title, body[0].Title)
 }

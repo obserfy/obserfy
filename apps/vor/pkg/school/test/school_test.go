@@ -80,8 +80,8 @@ func (s *SchoolTestSuite) SaveNewLessonPlan() (*postgres.LessonPlan, string) {
 	description := gofakeit.Name()
 	details := postgres.LessonPlanDetails{
 		Id:             uuid.New().String(),
-		Title:          &title,
-		Description:    &description,
+		Title:          title,
+		Description:    description,
 		ClassId:        newClass.Id,
 		Class:          *newClass,
 		Files:          nil,

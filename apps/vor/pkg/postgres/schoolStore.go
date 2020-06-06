@@ -433,8 +433,8 @@ func (s SchoolStore) GetLessonPlans(schoolId string, date time.Time) ([]cSchool.
 	for _, plan := range lessonPlan {
 		res = append(res, cSchool.LessonPlan{
 			Id:          plan.Id,
-			Title:       *plan.Details.Title,
-			Description: *plan.Details.Description,
+			Title:       plan.Details.Title,
+			Description: plan.Details.Description,
 			ClassId:     plan.Details.ClassId,
 			ClassName:   plan.Details.Class.Name,
 			StartTime:   *plan.Date,
