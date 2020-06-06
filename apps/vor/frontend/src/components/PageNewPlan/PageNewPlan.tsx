@@ -32,7 +32,6 @@ export const PageNewPlan: FC<Props> = ({ chosenDate }) => {
 
   // Repetition data
   const [repetition, setRepetition] = useState(0)
-  const [startDate, setStartDate] = useState(date)
   const [endDate, setEndDate] = useState(date)
 
   return (
@@ -109,15 +108,9 @@ export const PageNewPlan: FC<Props> = ({ chosenDate }) => {
           />
         </Flex>
         {repetition > 0 && (
-          <Box mt={2}>
+          <Box mt={1}>
             <DateInput
-              label="Start date"
-              value={startDate.toDate()}
-              onChange={(value) => setStartDate(dayjs(value))}
-              mb={2}
-            />
-            <DateInput
-              label="End date"
+              label="Repeat Until"
               value={endDate.toDate()}
               onChange={(value) => setEndDate(dayjs(value))}
               mb={2}
