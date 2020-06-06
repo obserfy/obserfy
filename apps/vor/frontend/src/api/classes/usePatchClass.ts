@@ -4,8 +4,8 @@ import {
   queryCache,
   useMutation,
 } from "react-query"
-import { getSchoolId } from "../hooks/schoolIdState"
-import { patchApi } from "./fetchApi"
+import { getSchoolId } from "../../hooks/schoolIdState"
+import { patchApi } from "../fetchApi"
 
 interface Class {
   name: string

@@ -1,6 +1,6 @@
 import { QueryResult, useQuery } from "react-query"
-import { getSchoolId } from "../hooks/schoolIdState"
-import { fetchApi } from "./fetchApi"
+import { getSchoolId } from "../../hooks/schoolIdState"
+import { fetchApi } from "../fetchApi"
 
 export interface Guardians {
   id: string

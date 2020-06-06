@@ -1,5 +1,5 @@
 import { QueryResult, useQuery } from "react-query"
-import { fetchApi } from "./fetchApi"
+import { fetchApi } from "../fetchApi"
 
 interface Guardians {
   id: string
