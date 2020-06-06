@@ -1,7 +1,7 @@
 import { useQuery } from "react-query"
-import { fetchApi } from "./fetchApi"
-import { getSchoolId } from "../hooks/schoolIdState"
-import { Dayjs } from "../dayjs"
+import { fetchApi } from "../fetchApi"
+import { getSchoolId } from "../../hooks/schoolIdState"
+import { Dayjs } from "../../dayjs"
 
 export interface Plans {
   id: string

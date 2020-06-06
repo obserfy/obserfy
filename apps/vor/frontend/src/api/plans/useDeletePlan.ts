@@ -4,8 +4,8 @@ import {
   queryCache,
   useMutation,
 } from "react-query"
-import { getSchoolId } from "../hooks/schoolIdState"
-import { deleteApi } from "./fetchApi"
+import { getSchoolId } from "../../hooks/schoolIdState"
+import { deleteApi } from "../fetchApi"
 
 const useDeletePlans = (
   planId: string

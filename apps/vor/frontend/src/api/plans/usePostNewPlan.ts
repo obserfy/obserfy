@@ -1,8 +1,8 @@
 import { queryCache, useMutation } from "react-query"
 import { navigate } from "gatsby"
-import { ApiError, BASE_URL } from "./useApi"
-import { Dayjs } from "../dayjs"
-import { getSchoolId } from "../hooks/schoolIdState"
+import { ApiError, BASE_URL } from "../useApi"
+import { Dayjs } from "../../dayjs"
+import { getSchoolId } from "../../hooks/schoolIdState"
 
 interface NewPlan {
   date: Dayjs

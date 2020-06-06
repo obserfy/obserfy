@@ -1,4 +1,9 @@
-import { MutateFunction, MutationResult, queryCache, useMutation } from "react-query"
+import {
+  MutateFunction,
+  MutationResult,
+  queryCache,
+  useMutation,
+} from "react-query"
 import { getSchoolId } from "../hooks/schoolIdState"
 import { patchApi } from "./fetchApi"
 
