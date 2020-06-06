@@ -10,7 +10,7 @@ export interface Plans {
 function useGetPlans(date: Dayjs) {
   const schoolId = getSchoolId()
   const getPlans = fetchApi<Plans[]>(
-    `/schools/${schoolId}/plans?date=${date.toISOString()}`
+    `/schools/${schoolId}/plans?date=${date.startOf("day").toISOString()}`
   )
 
   return useQuery(["plans", schoolId, date], getPlans)
