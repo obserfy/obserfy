@@ -51,7 +51,7 @@ describe("Test adding new student", () => {
     }
     cy.request(
       "POST",
-      `/api/v1/schools/${localStorage.getItem("SCHOOL_ID")}/class`,
+      `/api/v1/schools/${localStorage.getItem("SCHOOL_ID")}/classes`,
       newClass
     )
 

@@ -11,7 +11,7 @@ export function createSubjectApi(
   areaId: string,
   subject: NewSubject
 ): Promise<Response> {
-  return fetch(`${BASE_URL}/curriculum/areas/${areaId}/subjects`, {
+  return fetch(`${BASE_URL}/curriculums/areas/${areaId}/subjects`, {
     credentials: "same-origin",
     method: "POST",
     headers: { "Content-Type": "application/json" },

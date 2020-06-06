@@ -20,7 +20,7 @@ func NewRouter(server rest.Server, store Store, lpStore lessonplan.Store) *chi.M
 		r.Method("GET", "/", getClass(server, store))
 		r.Method("DELETE", "/", deleteClass(server, store))
 		r.Method("PATCH", "/", updateClass(server, store))
-		r.Method("GET", "/session", getClassSession(server, store))
+		r.Method("GET", "/sessions", getClassSession(server, store))
 		r.Method("POST", "/plans", postNewLessonPlan(server, lpStore))
 	})
 	return r

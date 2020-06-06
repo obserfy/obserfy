@@ -11,7 +11,7 @@ interface UpdateSubjectPayload {
 export function updateSubjectApi(
   subject: UpdateSubjectPayload
 ): Promise<Response> {
-  return fetch(`${BASE_URL}/curriculum/subjects/${subject.id}`, {
+  return fetch(`${BASE_URL}/curriculums/subjects/${subject.id}`, {
     credentials: "same-origin",
     method: "PUT",
     headers: { "Content-Type": "application/json" },
