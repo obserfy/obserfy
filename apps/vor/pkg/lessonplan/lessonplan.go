@@ -60,9 +60,9 @@ func getLessonPlan(server rest.Server, store Store) http.Handler {
 
 func updateLessonPlan(server rest.Server, store Store) http.Handler {
 	type reqBody struct {
-		Title       *string `json:"title,omitempty"`
-		Description *string `json:"description,omitempty"`
-		Type        *int    `json:"type,omitempty" validate:"oneof=0 1 2 3"`
+		Title       *string    `json:"title,omitempty"`
+		Description *string    `json:"description,omitempty"`
+		Date        *time.Time `json:"date,omitempty"`
 	}
 
 	validate := validator.New()
@@ -86,6 +86,7 @@ func updateLessonPlan(server rest.Server, store Store) http.Handler {
 			Id:          planId,
 			Title:       body.Title,
 			Description: body.Description,
+			Date:        body.Date,
 		}
 		rowsAffected, err := store.UpdateLessonPlan(planInput)
 		if err != nil {
@@ -103,7 +104,7 @@ func updateLessonPlan(server rest.Server, store Store) http.Handler {
 			}
 		}
 
-		w.WriteHeader(http.StatusOK)
+		w.WriteHeader(http.StatusNoContent)
 		return nil
 	})
 }

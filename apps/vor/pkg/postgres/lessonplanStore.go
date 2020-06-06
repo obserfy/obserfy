@@ -93,27 +93,35 @@ func (s LessonPlanStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLes
 }
 
 func (s LessonPlanStore) UpdateLessonPlan(planInput cLessonPlan.UpdatePlanData) (int, error) {
+	originalPlan := LessonPlan{Id: planInput.Id}
+	s.Model(&originalPlan).WherePK().Column("details_id").Select()
 	plan := LessonPlan{
 		Id:   planInput.Id,
 		Date: planInput.Date,
 	}
 	planDetails := LessonPlanDetails{
+		Id:          originalPlan.DetailsId,
 		Title:       planInput.Title,
 		Description: planInput.Description,
 	}
 
 	rowsAffected := 0
 	if err := s.RunInTransaction(func(tx *pg.Tx) error {
-		planResult, err := tx.Model(&plan).WherePK().UpdateNotZero()
-		if err != nil {
-			return richErrors.Wrap(err, "")
-		}
-		planDetailsResult, err := tx.Model(&planDetails).WherePK().UpdateNotZero()
-		if err != nil {
-			return richErrors.Wrap(err, "")
+		if planInput.Date != nil {
+			result, err := tx.Model(&plan).WherePK().UpdateNotZero()
+			if err != nil {
+				return richErrors.Wrap(err, "")
+			}
+			rowsAffected = rowsAffected + result.RowsAffected()
 		}
 
-		rowsAffected = planResult.RowsAffected() + planDetailsResult.RowsAffected()
+		if planInput.Title != nil || planInput.Description != nil {
+			result, err := tx.Model(&planDetails).WherePK().UpdateNotZero()
+			if err != nil {
+				return richErrors.Wrap(err, "")
+			}
+			rowsAffected = rowsAffected + result.RowsAffected()
+		}
 		return nil
 	}); err != nil {
 		return rowsAffected, richErrors.Wrap(err, "Failed update lesson plan")
