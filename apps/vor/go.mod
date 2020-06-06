@@ -14,7 +14,7 @@ require (
 	github.com/mailgun/mailgun-go/v4 v4.1.1
 	github.com/minio/minio-go/v6 v6.0.56
 	github.com/pkg/errors v0.9.1
-	github.com/stretchr/testify v1.5.1
+	github.com/stretchr/testify v1.6.1
 	go.uber.org/zap v1.15.0
 	golang.org/x/crypto v0.0.0-20200604202706-70a84ac30bf9
 	golang.org/x/lint v0.0.0-20191125180803-fdd1cda4f05f // indirect
