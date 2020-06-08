@@ -6,5 +6,5 @@ interface GetCurriculumResponse {
   name: string
 }
 export function useGetCurriculum(): Api<GetCurriculumResponse> {
-  return useApi<GetCurriculumResponse>(`/schools/${getSchoolId()}/curriculum`)
+  return useApi<GetCurriculumResponse>(`/schools/${getSchoolId()}/curriculums`)
 }
