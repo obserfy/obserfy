@@ -21,7 +21,7 @@ const usePostNewClass = (): [
 ] => {
   const schoolId = getSchoolId()
   const fetchApi = async (newClass: Class): Promise<Response> => {
-    const result = await fetch(`${BASE_URL}/schools/${schoolId}/class`, {
+    const result = await fetch(`${BASE_URL}/schools/${schoolId}/classes`, {
       credentials: "same-origin",
       method: "POST",
       body: JSON.stringify(newClass),

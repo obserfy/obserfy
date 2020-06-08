@@ -34,15 +34,15 @@ func NewRouter(
 		r.Method("POST", "/invite-code", refreshInviteCode(server, store))
 
 		// TODO: This might fit better in curriculum package, revisit later
-		r.Method("POST", "/curriculum", postNewCurriculum(server, store))
-		r.Method("DELETE", "/curriculum", deleteCurriculum(server, store))
-		r.Method("GET", "/curriculum", getCurriculum(server, store))
-		r.Method("GET", "/curriculum/areas", getCurriculumAreas(server, store))
+		r.Method("POST", "/curriculums", postNewCurriculum(server, store))
+		r.Method("DELETE", "/curriculums", deleteCurriculum(server, store))
+		r.Method("GET", "/curriculums", getCurriculum(server, store))
+		r.Method("GET", "/curriculums/areas", getCurriculumAreas(server, store))
 
-		r.Method("POST", "/class", postNewClass(server, store))
-		r.Method("GET", "/class", getClasses(server, store))
+		r.Method("POST", "/classes", postNewClass(server, store))
+		r.Method("GET", "/classes", getClasses(server, store))
 
-		r.Method("GET", "/class/{classId}/attendance/{session}", getClassAttendance(server, store))
+		r.Method("GET", "/classes/{classId}/attendances/{session}", getClassAttendance(server, store))
 
 		r.Method("POST", "/guardians", postNewGuardian(server, store))
 		r.Method("GET", "/guardians", getGuardians(server, store))

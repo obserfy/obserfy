@@ -30,7 +30,7 @@ func (s *SchoolTestSuite) TestValidCreateClass() {
 		},
 	}
 
-	result := s.CreateRequest("POST", "/"+newSchool.Id+"/class", payload, &newSchool.Users[0].Id)
+	result := s.CreateRequest("POST", "/"+newSchool.Id+"/classes", payload, &newSchool.Users[0].Id)
 	assert.Equal(t, http.StatusCreated, result.Code)
 
 	var class postgres.Class
@@ -58,7 +58,7 @@ func (s *SchoolTestSuite) TestGetClass() {
 		s.SaveNewClass(*newSchool),
 	}
 
-	result := s.CreateRequest("GET", "/"+newSchool.Id+"/class", nil, &newSchool.Users[0].Id)
+	result := s.CreateRequest("GET", "/"+newSchool.Id+"/classes", nil, &newSchool.Users[0].Id)
 	var response []struct {
 		Id        string         `json:"id"`
 		Name      string         `json:"name"`
@@ -78,7 +78,7 @@ func (s *SchoolTestSuite) TestGetEmptyClass() {
 	gofakeit.Seed(time.Now().UnixNano())
 	newSchool := s.SaveNewSchool()
 
-	result := s.CreateRequest("GET", "/"+newSchool.Id+"/class", nil, &newSchool.Users[0].Id)
+	result := s.CreateRequest("GET", "/"+newSchool.Id+"/classes", nil, &newSchool.Users[0].Id)
 	var response []struct {
 		Id        string         `json:"id"`
 		Name      string         `json:"name"`

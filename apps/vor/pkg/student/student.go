@@ -21,8 +21,8 @@ func NewRouter(s rest.Server, store Store) *chi.Mux {
 		r.Method("PUT", "/", putStudent(s, store))
 		r.Method("POST", "/observations", postObservation(s, store))
 		r.Method("GET", "/observations", getObservation(s, store))
-		r.Method("POST", "/attendance", registerAttendance(s, store))
-		r.Method("GET", "/attendance", getAttendance(s, store))
+		r.Method("POST", "/attendances", registerAttendance(s, store))
+		r.Method("GET", "/attendances", getAttendance(s, store))
 		r.Method("GET", "/materialsProgress", getMaterialProgress(s, store))
 		r.Method("PATCH", "/materialsProgress/{materialId}", upsertMaterialProgress(s, store))
 

@@ -19,10 +19,10 @@ export default {
 export const Basic: FC = () => <PageNewPlan chosenDate="2020-02-01" />
 
 export const WithLayout: FC = () => {
-  mockApi.post("/class/*/plans", async (schema, request) => {
+  mockApi.post("/classes/*/plans", async (schema, request) => {
     action("New class posted")(request.url, request.requestBody)
   })
-  mockApi.get("/schools/*/class", (): Class[] => {
+  mockApi.get("/schools/*/classes", (): Class[] => {
     return [
       {
         id: nanoid(),

@@ -11,7 +11,7 @@ export interface Class {
 }
 const useGetSchoolClasses = (): QueryResult<Class[]> => {
   const schoolId = getSchoolId()
-  const getClass = fetchApi<Class[]>(`/schools/${schoolId}/class`)
+  const getClass = fetchApi<Class[]>(`/schools/${schoolId}/classes`)
   return useQuery(["classes", schoolId], getClass)
 }
 

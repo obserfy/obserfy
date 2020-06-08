@@ -6,7 +6,7 @@ export async function createDefaultCurriculum(
 ): Promise<void> {
   const baseUrl = "/api/v1"
   const response = await fetch(
-    `${baseUrl}/schools/${getSchoolId()}/curriculum`,
+    `${baseUrl}/schools/${getSchoolId()}/curriculums`,
     {
       credentials: "same-origin",
       method: "POST",

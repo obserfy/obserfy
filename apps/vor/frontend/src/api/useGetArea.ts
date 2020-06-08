@@ -9,6 +9,6 @@ export function useGetArea(
   areaId: string,
   options?: QueryOptions<Area>
 ): QueryResult<Area> {
-  const fetchArea = fetchApi<Area>(`/curriculum/areas/${areaId}`)
+  const fetchArea = fetchApi<Area>(`/curriculums/areas/${areaId}`)
   return useQuery(["areas", areaId], fetchArea, options)
 }

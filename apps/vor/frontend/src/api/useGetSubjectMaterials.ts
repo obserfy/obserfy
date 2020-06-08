@@ -11,7 +11,7 @@ export function useGetSubjectMaterials(
   options?: QueryOptions<Material[]>
 ): QueryResult<Material[]> {
   const fetchSubjectMaterials = fetchApi<Material[]>(
-    `/curriculum/subjects/${subjectId}/materials`
+    `/curriculums/subjects/${subjectId}/materials`
   )
   return useQuery(["materials", subjectId], fetchSubjectMaterials, options)
 }
