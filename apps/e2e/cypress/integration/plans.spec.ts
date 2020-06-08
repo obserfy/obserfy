@@ -21,7 +21,7 @@ describe("Test class related features", () => {
     cy.request("POST", "/api/v1/schools", { name: schoolName }).then(
       (result) => {
         window.localStorage.setItem("SCHOOL_ID", result.body.id)
-        return cy.request("POST", `/api/v1/schools/${result.body.id}/class`, {
+        return cy.request("POST", `/api/v1/schools/${result.body.id}/classes`, {
           name: className,
           startTime: classStartTime.toISOString(),
           endTime: classStartTime.toISOString(),
