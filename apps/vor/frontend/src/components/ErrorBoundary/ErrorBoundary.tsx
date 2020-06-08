@@ -16,6 +16,9 @@ export class ErrorBoundary extends Component<{}, State> {
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
+    if (process.env.NODE_ENV !== "production") {
+      console.error(error)
+    }
     Sentry.configureScope((scope) => {
       Object.keys(errorInfo).forEach((key) => {
         scope.setExtra(key, errorInfo[key])
