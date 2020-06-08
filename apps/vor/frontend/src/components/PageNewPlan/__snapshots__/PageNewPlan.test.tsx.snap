@@ -683,7 +683,7 @@ exports[`PageNewPlan should render correctly 1`] = `
       class="emotion-33"
     >
       <a
-        href="/dashboard/plans?date=2020-01-31T17:00:00.000Z"
+        href="/dashboard/plans?date=2020-02-01T00:00:00.000Z"
         style="display: block;"
       >
         <div

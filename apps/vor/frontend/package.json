@@ -134,7 +134,7 @@
     "storybook": "cross-env NODE_ENV=production start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s .storybook/static/",
     "gen:component": "hygen component new --name",
-    "test": "jest --coverage --passWithNoTests --coverageReporters json clover",
+    "test": "TZ=UTC jest --coverage --passWithNoTests --coverageReporters json clover",
     "deploy-storybook": "storybook-to-ghpages"
   },
   "nyc": {
