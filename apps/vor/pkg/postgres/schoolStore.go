@@ -431,14 +431,17 @@ func (s SchoolStore) GetLessonPlans(schoolId string, date time.Time) ([]cSchool.
 		return nil, richErrors.Wrap(err, "Failed to query school's lesson plan")
 	}
 	for _, plan := range lessonPlan {
-		res = append(res, cSchool.LessonPlan{
-			Id:          plan.Id,
-			Title:       plan.Details.Title,
-			Description: *plan.Details.Description,
-			ClassId:     plan.Details.ClassId,
-			ClassName:   plan.Details.Class.Name,
-			StartTime:   *plan.Date,
-		})
+		newPlan := cSchool.LessonPlan{
+			Id:        plan.Id,
+			Title:     plan.Details.Title,
+			ClassId:   plan.Details.ClassId,
+			ClassName: plan.Details.Class.Name,
+			Date:      *plan.Date,
+		}
+		if plan.Details.Description != nil {
+			newPlan.Description = *plan.Details.Description
+		}
+		res = append(res, newPlan)
 	}
 	return res, nil
 }

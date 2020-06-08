@@ -682,7 +682,7 @@ func getLessonPlan(server rest.Server, store Store) http.Handler {
 		Title       string    `json:"title"`
 		Description string    `json:"description"`
 		ClassName   string    `json:"className"`
-		StartTime   time.Time `json:"startTime"`
+		Date        time.Time `json:"date"`
 	}
 
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
@@ -712,7 +712,7 @@ func getLessonPlan(server rest.Server, store Store) http.Handler {
 				Id:          plan.Id,
 				Title:       plan.Title,
 				Description: plan.Description,
-				StartTime:   plan.StartTime,
+				Date:        plan.Date,
 				ClassName:   plan.ClassName,
 			}
 		}

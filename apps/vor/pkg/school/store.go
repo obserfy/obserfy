@@ -99,7 +99,7 @@ type (
 		Description string
 		ClassId     string
 		ClassName   string
-		StartTime   time.Time
+		Date        time.Time
 		Files       []File
 	}
 
