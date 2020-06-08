@@ -6,7 +6,7 @@ import Button from "../Button/Button"
 import Spacer from "../Spacer/Spacer"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import Dialog from "../Dialog/Dialog"
-import useDeleteClass from "../../api/useDeleteClass"
+import useDeleteClass from "../../api/classes/useDeleteClass"
 import { CLASS_SETTINGS_URL } from "../../routes"
 
 interface Props {

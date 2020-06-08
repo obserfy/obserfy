@@ -75,7 +75,7 @@ func runServer() error {
 	authStore := postgres.AuthStore{db}
 	classStore := postgres.ClassStore{db}
 	guardianStore := postgres.GuardianStore{db}
-	lessonplanStore := postgres.LessonPlanStore{db}
+	lessonPlanStore := postgres.LessonPlanStore{db}
 	mailService := mailgun.NewService()
 	imgproxyClient, err := imgproxy.CreateClient()
 	if err != nil {
@@ -106,9 +106,9 @@ func runServer() error {
 		r.Mount("/schools", school.NewRouter(server, schoolStore, studentImageStorage, imgproxyClient))
 		r.Mount("/users", user.NewRouter(server, userStore))
 		r.Mount("/curriculums", curriculum.NewRouter(server, curriculumStore))
-		r.Mount("/classes", class.NewRouter(server, classStore, lessonplanStore))
+		r.Mount("/classes", class.NewRouter(server, classStore, lessonPlanStore))
 		r.Mount("/guardians", guardian.NewRouter(server, guardianStore))
-		r.Mount("/plans", lessonplan.NewRouter(server, lessonplanStore))
+		r.Mount("/plans", lessonplan.NewRouter(server, lessonPlanStore))
 	})
 	// Serve gatsby static frontend assets
 	r.Group(func(r chi.Router) {

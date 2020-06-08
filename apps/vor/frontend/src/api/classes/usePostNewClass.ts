@@ -5,9 +5,9 @@ import {
   useMutation,
 } from "react-query"
 import { navigate } from "gatsby"
-import { ApiError, BASE_URL } from "./useApi"
-import { getSchoolId } from "../hooks/schoolIdState"
-import Class from "../pages/dashboard/settings/class"
+import { ApiError, BASE_URL } from "../useApi"
+import { getSchoolId } from "../../hooks/schoolIdState"
+import Class from "../../pages/dashboard/settings/class"
 
 interface Class {
   name: string

@@ -1,3 +1,5 @@
+import { Dayjs } from "./dayjs"
+
 export const NEW_STUDENT_URL = "/dashboard/observe/students/new"
 export const SETTINGS_URL = "/dashboard/settings"
 export const NEW_CLASS_URL = "/dashboard/settings/class/new"
@@ -33,7 +35,11 @@ export const PICK_GUARDIAN_URL = "/dashboard/observe/students/new/pickGuardians"
 export const STUDENT_PROFILE_URL = (id: string) =>
   `/dashboard/observe/students/profile?id=${id}`
 
-export const NEW_PLANS_URL = `/dashboard/plans/new`
-export const ALL_PLANS_URL = `/dashboard/plans`
+export const NEW_PLANS_URL = (date?: Dayjs) =>
+  `/dashboard/plans/new${date ? `?date=${date.toISOString()}` : ""}`
+
+export const ALL_PLANS_URL = (date?: Dayjs) =>
+  `/dashboard/plans${date ? `?date=${date.toISOString()}` : ""}`
+
 export const PLANS_DETAILS_URL = (id: string) =>
   `/dashboard/plans/details?id=${id}`

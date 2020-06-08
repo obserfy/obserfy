@@ -5,8 +5,8 @@ import {
   useMutation,
 } from "react-query"
 import { navigate } from "gatsby"
-import { ApiError, BASE_URL } from "./useApi"
-import { getSchoolId } from "../hooks/schoolIdState"
+import { ApiError, BASE_URL } from "../useApi"
+import { getSchoolId } from "../../hooks/schoolIdState"
 
 interface NewGuardian {
   name: string

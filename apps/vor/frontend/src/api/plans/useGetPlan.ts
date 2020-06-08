@@ -1,5 +1,5 @@
 import { useQuery } from "react-query"
-import { fetchApi } from "./fetchApi"
+import { fetchApi } from "../fetchApi"
 
 export interface PlanDetails {
   id: string

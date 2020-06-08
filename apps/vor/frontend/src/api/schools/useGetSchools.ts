@@ -1,4 +1,4 @@
-import useOldApiHook from "./useOldApiHook"
+import useOldApiHook from "../useOldApiHook"
 
 export interface Schools {
   id: string

@@ -1,17 +1,17 @@
 import React, { FC } from "react"
 import SEO from "../../../components/seo"
-import PagePlans from "../../../components/PagePlans/PagePlans"
+import PageNewPlan from "../../../components/PageNewPlan/PageNewPlan"
 import { useQueryString } from "../../../hooks/useQueryString"
 
-const Plans: FC = () => {
+const NewPlans: FC = () => {
   const date = useQueryString("date")
 
   return (
     <>
-      <SEO title="Lesson Plans" />
-      <PagePlans date={date} />
+      <SEO title="New Lesson Plans" />
+      <PageNewPlan chosenDate={date} />
     </>
   )
 }
 
-export default Plans
+export default NewPlans

@@ -5,9 +5,9 @@ import Flex from "../Flex/Flex"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 
 interface Props {
-  onCancel: () => void
+  onCancel?: () => void
   onCancelText?: string
-  onAccept: () => void
+  onAccept?: () => void
   onAcceptText: string
   title: string
   loading?: boolean

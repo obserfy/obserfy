@@ -28,11 +28,6 @@ declare module "*.css" {
   export default content
 }
 
-interface NavigationItem {
-  id: string
-  title: string
-}
-
 declare module "@rebass/forms" {
   // eslint-disable-next-line import/no-duplicates
   import { FC } from "react"
@@ -48,13 +43,4 @@ declare module "@rebass/forms" {
   export const Input: FC<BoxProps>
 }
 
-interface Navigator {
-  share: any
-}
-
-declare const $crisp: any | undefined
 declare const Sentry: typeof import("@sentry/browser")
-
-declare interface Window {
-  CRISP_TOKEN_ID?: string
-}

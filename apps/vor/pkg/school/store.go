@@ -93,6 +93,22 @@ type (
 		StudentId    *string
 	}
 
+	LessonPlan struct {
+		Id          string
+		Title       string
+		Description string
+		ClassId     string
+		ClassName   string
+		Date        time.Time
+		Files       []File
+	}
+
+	File struct {
+		Id          string
+		Name        string
+		LessonPlans []LessonPlan
+	}
+
 	Store interface {
 		NewSchool(schoolName, userId string) (*School, error)
 		GetSchool(schoolId string) (*School, error)
@@ -108,5 +124,10 @@ type (
 		GetSchoolClasses(schoolId string) ([]Class, error)
 		InsertGuardianWithRelation(input GuardianWithRelation) (*Guardian, error)
 		GetGuardians(schoolId string) ([]Guardian, error)
+		CreateFile(schoolId, file string) (*File, error)
+		DeleteFile(fileId string) error
+		UpdateFile(fileId, fileName string) (*File, error)
+		GetLessonPlans(schoolId string, date time.Time) ([]LessonPlan, error)
+		GetLessonFiles(schoolId string) ([]File, error)
 	}
 )
