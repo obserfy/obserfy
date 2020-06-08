@@ -40,7 +40,7 @@ func (s *ClassTestSuite) TestPostNewLessonPlan() {
 		Select()
 	assert.NoError(t, err)
 	assert.Equal(t, payload.Title, plan.Details.Title)
-	assert.Equal(t, payload.Description, plan.Details.Description)
+	assert.Equal(t, payload.Description, *plan.Details.Description)
 	assert.Equal(t, payload.Date.Unix(), plan.Date.Unix())
 	assert.Equal(t, len(payload.FileIds), len(plan.Details.Files))
 }
