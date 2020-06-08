@@ -23,7 +23,7 @@ const usePostNewPlan = () => {
         title: newPlan.title,
         description: newPlan.description,
         fileIds: [],
-        date: newPlan.date.toISOString(),
+        date: newPlan.date.startOf("day").toISOString(),
         repetition: newPlan.repetition,
       }),
     })

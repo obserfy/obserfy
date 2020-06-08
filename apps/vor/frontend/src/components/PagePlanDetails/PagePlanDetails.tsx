@@ -44,7 +44,10 @@ export const PagePlanDetails: FC<Props> = ({ id }) => {
   return (
     <>
       <Box maxWidth="maxWidth.sm" mx="auto">
-        <BackNavigation to={ALL_PLANS_URL} text="All plans" />
+        <BackNavigation
+          to={ALL_PLANS_URL(dayjs(plan.data?.date))}
+          text="All plans"
+        />
         <Flex alignItems="center" m={3} mb={3}>
           <Typography.H5>{plan.data?.title}</Typography.H5>
           <Button
@@ -72,7 +75,7 @@ export const PagePlanDetails: FC<Props> = ({ id }) => {
           onPositiveClick={async () => {
             const result = await deletePlan()
             if (result.ok) {
-              await navigate(ALL_PLANS_URL)
+              await navigate(ALL_PLANS_URL(dayjs(plan.data?.date)))
             }
           }}
         />
@@ -225,6 +228,7 @@ const DataBox: FC<{
       px={2}
       onClick={onEditClick}
       sx={{ flexShrink: 0 }}
+      aria-label={`edit-${label.toLowerCase()}`}
     >
       <Icon as={EditIcon} m={0} />
     </Button>

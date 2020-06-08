@@ -1,0 +1,65 @@
+describe("Test class related features", () => {
+  const faker = require("faker")
+
+  const className = faker.company.companyName()
+  const classStartTime = faker.date.recent()
+
+  beforeEach(() => {
+    const name = faker.name.firstName()
+    const email = faker.internet.email()
+    const password = faker.internet.password()
+
+    const schoolName = faker.company.companyName()
+
+    cy.request({
+      method: "POST",
+      url: "/auth/register",
+      body: { email, password, name },
+      form: true,
+    })
+
+    cy.request("POST", "/api/v1/schools", { name: schoolName }).then(
+      (result) => {
+        window.localStorage.setItem("SCHOOL_ID", result.body.id)
+        return cy.request("POST", `/api/v1/schools/${result.body.id}/class`, {
+          name: className,
+          startTime: classStartTime.toISOString(),
+          endTime: classStartTime.toISOString(),
+        })
+      }
+    )
+  })
+
+  it("should be able to add, view, and delete class", () => {
+    const firstName = "A Bold New Plan"
+
+    const secondName = "A bolder plan"
+    const secondDescription = "A description"
+    cy.visit("/dashboard/plans")
+
+    cy.get('[aria-label="next-date"]').click()
+
+    // test create
+    cy.contains("Add").click()
+    cy.contains("Save").should("be.disabled")
+    cy.contains("Title").type(firstName)
+    cy.contains(className).click()
+    cy.contains("Save").click()
+    cy.contains(firstName).should("be.visible")
+
+    // Test edit
+    cy.contains(firstName).click()
+    cy.get('[aria-label="edit-title"]').click()
+    cy.contains("label", "Title").find("input").clear().type(secondName)
+    cy.contains("Save").click()
+    cy.contains(secondName).should("be.visible")
+
+    cy.get('[aria-label="edit-description"]').click()
+    cy.contains("label", "Description").find("textarea").type(secondDescription)
+    cy.contains("Save").click()
+    cy.contains(secondDescription).should("be.visible")
+
+    cy.contains("All plans").click()
+    cy.contains(secondName).should("be.visible")
+  })
+})

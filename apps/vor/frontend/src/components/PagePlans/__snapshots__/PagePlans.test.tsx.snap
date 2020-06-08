@@ -399,6 +399,7 @@ exports[`PagePlans should render correctly 1`] = `
           Wed, 11 Dec '19
         </p>
         <button
+          aria-label="previous-date"
           class="emotion-2"
         >
           <div
@@ -406,6 +407,7 @@ exports[`PagePlans should render correctly 1`] = `
           />
         </button>
         <button
+          aria-label="next-date"
           class="emotion-4"
         >
           <div
@@ -421,7 +423,7 @@ exports[`PagePlans should render correctly 1`] = `
       </div>
       <a
         class="emotion-10"
-        href="/dashboard/plans/new?date=2019-12-11"
+        href="/dashboard/plans/new?date=2019-12-11T11:53:02.050Z"
       >
         <div
           class="emotion-9"

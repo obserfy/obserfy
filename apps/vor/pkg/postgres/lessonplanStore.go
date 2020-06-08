@@ -18,7 +18,7 @@ func (s LessonPlanStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLes
 		Id:          uuid.New().String(),
 		ClassId:     planInput.ClassId,
 		Title:       planInput.Title,
-		Description: planInput.Description,
+		Description: &planInput.Description,
 	}
 
 	var plans []LessonPlan
@@ -87,22 +87,29 @@ func (s LessonPlanStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLes
 	return &cLessonPlan.LessonPlan{
 		Id:          planDetails.Id,
 		Title:       planDetails.Title,
-		Description: planDetails.Description,
+		Description: *planDetails.Description,
 		ClassId:     planDetails.ClassId,
 	}, nil
 }
 
 func (s LessonPlanStore) UpdateLessonPlan(planInput cLessonPlan.UpdatePlanData) (int, error) {
 	originalPlan := LessonPlan{Id: planInput.Id}
-	s.Model(&originalPlan).WherePK().Column("details_id").Select()
+	if err := s.Model(&originalPlan).
+		WherePK().
+		Column("details_id").
+		Select(); err != nil {
+		return 0, richErrors.Wrap(err, "failed to find related plan")
+	}
 	plan := LessonPlan{
 		Id:   planInput.Id,
 		Date: planInput.Date,
 	}
 	planDetails := LessonPlanDetails{
 		Id:          originalPlan.DetailsId,
-		Title:       *planInput.Title,
-		Description: *planInput.Description,
+		Description: planInput.Description,
+	}
+	if planInput.Title != nil {
+		planDetails.Title = *planInput.Title
 	}
 
 	rowsAffected := 0
@@ -149,7 +156,7 @@ func (s LessonPlanStore) GetLessonPlan(planId string) (*cLessonPlan.LessonPlan, 
 		Id:          plan.Id,
 		ClassId:     plan.Details.ClassId,
 		Title:       plan.Details.Title,
-		Description: plan.Details.Description,
+		Description: *plan.Details.Description,
 		Date:        *plan.Date,
 		Repetition: &cLessonPlan.RepetitionPattern{
 			Type:    plan.Details.RepetitionType,

@@ -36,7 +36,7 @@ export const PageNewPlan: FC<Props> = ({ chosenDate }) => {
 
   return (
     <Box maxWidth="maxWidth.sm" mx="auto">
-      <BackNavigation to={ALL_PLANS_URL} text="All plans" />
+      <BackNavigation to={ALL_PLANS_URL(date)} text="All plans" />
       <Typography.H5 m={3}>New Plan</Typography.H5>
 
       <Box mx={3}>
@@ -131,8 +131,8 @@ export const PageNewPlan: FC<Props> = ({ chosenDate }) => {
               classId,
               date,
             })
-            if (result.status === 201) {
-              await navigate(ALL_PLANS_URL)
+            if (result.ok) {
+              await navigate(ALL_PLANS_URL(date))
             }
           }}
         >

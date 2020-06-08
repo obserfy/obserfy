@@ -81,7 +81,7 @@ func (s *SchoolTestSuite) SaveNewLessonPlan() (*postgres.LessonPlan, string) {
 	details := postgres.LessonPlanDetails{
 		Id:             uuid.New().String(),
 		Title:          title,
-		Description:    description,
+		Description:    &description,
 		ClassId:        newClass.Id,
 		Class:          *newClass,
 		Files:          nil,

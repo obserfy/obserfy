@@ -247,7 +247,7 @@ type (
 	LessonPlanDetails struct {
 		Id                string `pg:"type:uuid"`
 		Title             string
-		Description       string
+		Description       *string
 		ClassId           string `pg:"type:uuid"`
 		Class             Class
 		Files             []File `pg:"many2many:file_to_lesson_plans,joinFK:file_id"`
