@@ -10,33 +10,37 @@ const (
 )
 
 type (
+	RepetitionPattern struct {
+		Type    int
+		EndDate time.Time
+	}
+
 	LessonPlan struct {
 		Id          string
 		Title       string
 		Description string
 		ClassId     string
-		Type        int
-		StartTime   time.Time
+		FileIds     []string
+		Date        time.Time
+		Repetition  *RepetitionPattern
 	}
 
 	PlanData struct {
-		ClassId     string
+		Id          string
 		Title       string
 		Description string
-		Type        int
+		ClassId     string
 		FileIds     []string
-		StartTime   time.Time
-		EndTime     *time.Time
+		Date        time.Time
+		Repetition  *RepetitionPattern
 	}
 
 	UpdatePlanData struct {
-		PlanId      string
+		Id          string
 		Title       *string
 		Description *string
-		Type        *int
-		Repetition  *int
-		StartTime   *time.Time
-		EndTime     *time.Time
+		Date        *time.Time
+		Repetition  *RepetitionPattern
 	}
 
 	Store interface {

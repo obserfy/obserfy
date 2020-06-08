@@ -3,7 +3,7 @@ import faker from "faker"
 import { nanoid } from "nanoid"
 import PagePlans from "./PagePlans"
 import Layout from "../Layout/Layout"
-import { Plans } from "../../api/useGetPlans"
+import { Plans } from "../../api/plans/useGetPlans"
 import mockApi from "../../__mocks__/api"
 
 // Component Details

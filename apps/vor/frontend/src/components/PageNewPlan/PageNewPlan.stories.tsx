@@ -5,7 +5,7 @@ import { action } from "@storybook/addon-actions"
 import PageNewPlan from "./PageNewPlan"
 import Layout from "../Layout/Layout"
 import mockApi from "../../__mocks__/api"
-import { Class } from "../../api/useGetSchoolClasses"
+import { Class } from "../../api/classes/useGetSchoolClasses"
 import dayjs from "../../dayjs"
 
 export default {

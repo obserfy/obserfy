@@ -1,7 +1,7 @@
 import { queryCache, useMutation } from "react-query"
 import { navigate } from "gatsby"
-import { GuardianRelationship } from "./students/usePostNewStudent"
-import { ApiError, BASE_URL } from "./useApi"
+import { GuardianRelationship } from "../students/usePostNewStudent"
+import { ApiError, BASE_URL } from "../useApi"
 import { Guardians } from "./useGetSchoolGuardians"
 
 export const usePostGuardianRelation = (

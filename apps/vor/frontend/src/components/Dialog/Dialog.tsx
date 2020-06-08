@@ -44,7 +44,7 @@ export const Dialog: FC<Props> = ({ sx, ...props }) => {
       >
         <Card
           backgroundColor="surface"
-          maxWidth="maxWidth.sm"
+          maxWidth="maxWidth.xsm"
           width="100%"
           maxHeight="100vh"
           pb="env(safe-area-inset-bottom)"

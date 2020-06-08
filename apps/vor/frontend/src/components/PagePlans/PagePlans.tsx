@@ -10,20 +10,23 @@ import Button from "../Button/Button"
 import Icon from "../Icon/Icon"
 import { ReactComponent as PrevIcon } from "../../icons/arrow-back.svg"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
-import useGetPlans from "../../api/useGetPlans"
+import useGetPlans from "../../api/plans/useGetPlans"
 import { Link } from "../Link/Link"
 import { Card } from "../Card/Card"
-import { NEW_PLANS_URL, PLANS_DETAILS_URL } from "../../routes"
+import { ALL_PLANS_URL, NEW_PLANS_URL, PLANS_DETAILS_URL } from "../../routes"
 
-export const PagePlans: FC = () => {
-  const [selectedDate, setSelectedDate] = useState(dayjs())
-  const { data } = useGetPlans(selectedDate.format("YYYY-MM-DD"))
+interface Props {
+  date?: string
+}
+export const PagePlans: FC<Props> = ({ date }) => {
+  const [selectedDate, setSelectedDate] = useState(date ? dayjs(date) : dayjs())
+  const { data } = useGetPlans(selectedDate)
 
   return (
     <Box maxWidth="maxWidth.sm" mx="auto">
       <Flex alignItems="center" mx={3} my={3}>
-        <Typography.Body>
-          {selectedDate.format("dddd, DD MMM 'YY")}
+        <Typography.Body sx={{ fontSize: 1 }}>
+          {selectedDate.format("ddd, DD MMM 'YY")}
         </Typography.Body>
         <Button
           variant="outline"
@@ -31,7 +34,13 @@ export const PagePlans: FC = () => {
           px={1}
           mr={1}
           ml="auto"
-          onClick={() => setSelectedDate(selectedDate.add(-1, "day"))}
+          aria-label="previous-date"
+          onClick={() => {
+            const newDate = selectedDate.add(-1, "day")
+            setSelectedDate(newDate)
+            // Update the url without re-rendering the whole component tree
+            window.history.replaceState({}, "", ALL_PLANS_URL(newDate))
+          }}
         >
           <Icon as={PrevIcon} m={0} />
         </Button>
@@ -40,7 +49,13 @@ export const PagePlans: FC = () => {
           mr={2}
           py={1}
           px={1}
-          onClick={() => setSelectedDate(selectedDate.add(1, "day"))}
+          aria-label="next-date"
+          onClick={() => {
+            const newDate = selectedDate.add(1, "day")
+            setSelectedDate(newDate)
+            // Update the url without re-rendering the whole component tree
+            window.history.replaceState({}, "", ALL_PLANS_URL(newDate))
+          }}
         >
           <Icon as={NextIcon} m={0} />
         </Button>
@@ -48,9 +63,15 @@ export const PagePlans: FC = () => {
           variant="outline"
           py={1}
           px={3}
-          onClick={() => setSelectedDate(dayjs())}
+          onClick={() => {
+            const newDate = dayjs()
+            setSelectedDate(newDate)
+            // Update the url without re-rendering the whole component tree
+            window.history.replaceState({}, "", ALL_PLANS_URL(newDate))
+          }}
+          disabled={selectedDate.isSame(dayjs(), "day")}
         >
-          today
+          Today
         </Button>
       </Flex>
       {data?.map((plan) => {
@@ -65,9 +86,13 @@ export const PagePlans: FC = () => {
           </Link>
         )
       })}
-      <Link to={NEW_PLANS_URL} sx={{ display: "block", mx: [0, 3] }}>
+      <Link
+        to={NEW_PLANS_URL(selectedDate)}
+        sx={{ display: "block", mx: [0, 3] }}
+      >
         <Card
-          p={3}
+          px={3}
+          py={2}
           borderRadius={[0, "default"]}
           sx={{ display: "flex", alignItems: "center" }}
         >

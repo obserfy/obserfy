@@ -1,6 +1,6 @@
 import { QueryResult, useQuery } from "react-query"
-import { fetchApi } from "./fetchApi"
-import { getSchoolId } from "../hooks/schoolIdState"
+import { fetchApi } from "../fetchApi"
+import { getSchoolId } from "../../hooks/schoolIdState"
 
 interface School {
   name: string

@@ -22,7 +22,7 @@
     "gatsby-plugin-nprogress": "2.3.2",
     "gatsby-plugin-offline": "3.2.7",
     "gatsby-plugin-portal": "1.0.7",
-    "gatsby-plugin-preact": "4.0.0",
+    "gatsby-plugin-preact": "4.0.2",
     "gatsby-plugin-prefetch-google-fonts": "1.4.3",
     "gatsby-plugin-react-helmet": "3.3.2",
     "gatsby-plugin-remove-trailing-slashes": "2.3.3",
@@ -134,7 +134,7 @@
     "storybook": "cross-env NODE_ENV=production start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s .storybook/static/",
     "gen:component": "hygen component new --name",
-    "test": "jest --coverage --passWithNoTests --coverageReporters json clover",
+    "test": "TZ=UTC jest --coverage --passWithNoTests --coverageReporters json clover",
     "deploy-storybook": "storybook-to-ghpages"
   },
   "nyc": {

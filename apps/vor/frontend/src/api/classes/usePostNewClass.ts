@@ -5,8 +5,9 @@ import {
   useMutation,
 } from "react-query"
 import { navigate } from "gatsby"
-import { ApiError, BASE_URL } from "./useApi"
-import { getSchoolId } from "../hooks/schoolIdState"
+import { ApiError, BASE_URL } from "../useApi"
+import { getSchoolId } from "../../hooks/schoolIdState"
+import Class from "../../pages/dashboard/settings/class"
 
 interface Class {
   name: string
@@ -14,13 +15,15 @@ interface Class {
   endTime: Date
   weekdays: number[]
 }
-const usePatchClass = (
-  classId: string
-): [MutateFunction<Response, Class>, MutationResult<Response>] => {
+const usePostNewClass = (): [
+  MutateFunction<Response, Class>,
+  MutationResult<Response>
+] => {
+  const schoolId = getSchoolId()
   const fetchApi = async (newClass: Class): Promise<Response> => {
-    const result = await fetch(`${BASE_URL}/classes/${classId}`, {
+    const result = await fetch(`${BASE_URL}/schools/${schoolId}/class`, {
       credentials: "same-origin",
-      method: "PATCH",
+      method: "POST",
       body: JSON.stringify(newClass),
     })
 
@@ -29,7 +32,7 @@ const usePatchClass = (
       await navigate("/login")
       return result
     }
-    if (result.status !== 204) {
+    if (result.status !== 201) {
       const body: ApiError = await result.json()
       throw Error(body?.error?.message ?? "")
     }
@@ -39,12 +42,9 @@ const usePatchClass = (
 
   return useMutation<Response, Class>(fetchApi, {
     onSuccess: async () => {
-      await Promise.all([
-        queryCache.refetchQueries(["class", classId]),
-        queryCache.refetchQueries(["classes", getSchoolId()]),
-      ])
+      await queryCache.refetchQueries(["classes", schoolId])
     },
   })
 }
 
-export default usePatchClass
+export default usePostNewClass

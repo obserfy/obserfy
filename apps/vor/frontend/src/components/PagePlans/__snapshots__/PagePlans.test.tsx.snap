@@ -55,6 +55,7 @@ exports[`PagePlans should render correctly 1`] = `
   --mozOsxFontSmoothing: grayscale;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   font-size: 16px;
+  font-size: 14px;
 }
 
 @media screen and (min-width:40em) {
@@ -328,8 +329,12 @@ exports[`PagePlans should render correctly 1`] = `
   border-radius: 8px;
   box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
   border-radius: 0;
-  padding: 16px;
+  padding: 0;
   overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -391,9 +396,10 @@ exports[`PagePlans should render correctly 1`] = `
         <p
           class="emotion-0"
         >
-          Wednesday, 11 Dec '19
+          Wed, 11 Dec '19
         </p>
         <button
+          aria-label="previous-date"
           class="emotion-2"
         >
           <div
@@ -401,6 +407,7 @@ exports[`PagePlans should render correctly 1`] = `
           />
         </button>
         <button
+          aria-label="next-date"
           class="emotion-4"
         >
           <div
@@ -409,13 +416,14 @@ exports[`PagePlans should render correctly 1`] = `
         </button>
         <button
           class="emotion-5"
+          disabled=""
         >
-          today
+          Today
         </button>
       </div>
       <a
         class="emotion-10"
-        href="/dashboard/plans/new"
+        href="/dashboard/plans/new?date=2019-12-11T11:53:02.050Z"
       >
         <div
           class="emotion-9"

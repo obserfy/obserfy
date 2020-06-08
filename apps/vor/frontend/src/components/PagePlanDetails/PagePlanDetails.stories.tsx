@@ -4,7 +4,7 @@ import faker from "faker"
 import PagePlanDetails from "./PagePlanDetails"
 import Layout from "../Layout/Layout"
 import mockApi from "../../__mocks__/api"
-import { PlanDetails } from "../../api/useGetPlan"
+import { PlanDetails } from "../../api/plans/useGetPlan"
 
 export default {
   title: "Page|Plans/PagePlanDetails",

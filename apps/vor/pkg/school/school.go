@@ -49,6 +49,7 @@ func NewRouter(
 
 		r.Method("GET", "/plans", getLessonPlan(server, store))
 
+		r.Method("GET", "/files", getLessonFiles(server, store))
 		r.Method("POST", "/files", addFile(server, store))
 		r.Method("PATCH", "/files/{fileId}", updateFile(server, store))
 		r.Method("DELETE", "/files/{fileId}", deleteFile(server, store))
@@ -676,8 +677,77 @@ func getGuardians(server rest.Server, store Store) http.Handler {
 }
 
 func getLessonPlan(server rest.Server, store Store) http.Handler {
+	type responseBody struct {
+		Id          string    `json:"id"`
+		Title       string    `json:"title"`
+		Description string    `json:"description"`
+		ClassName   string    `json:"className"`
+		Date        time.Time `json:"date"`
+	}
+
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
-		rest.WriteJson(w, "OK")
+		schoolId := chi.URLParam(r, "schoolId")
+		date := r.URL.Query().Get("date")
+
+		parsedDate, err := time.Parse(time.RFC3339, date)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusBadRequest,
+				Message: "date needs to be in ISO format",
+				Error:   err,
+			}
+		}
+		lessonPlans, err := store.GetLessonPlans(schoolId, parsedDate)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "Failed to query lesson plan",
+				Error:   err,
+			}
+		}
+
+		response := make([]responseBody, len(lessonPlans))
+		for i, plan := range lessonPlans {
+			response[i] = responseBody{
+				Id:          plan.Id,
+				Title:       plan.Title,
+				Description: plan.Description,
+				Date:        plan.Date,
+				ClassName:   plan.ClassName,
+			}
+		}
+		if err := rest.WriteJson(w, response); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
+		return nil
+	})
+}
+
+func getLessonFiles(server rest.Server, store Store) http.Handler {
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		type responseBody struct {
+			Id   string `json:"file_id"`
+			Name string `json:"file_name"`
+		}
+		schoolId := chi.URLParam(r, "schoolId")
+		lessonFiles, err := store.GetLessonFiles(schoolId)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "Failed to query lesson files",
+				Error:   err,
+			}
+		}
+		response := make([]responseBody, len(lessonFiles))
+		for i, f := range lessonFiles {
+			response[i] = responseBody{
+				Id:   f.Id,
+				Name: f.Name,
+			}
+		}
+		if err := rest.WriteJson(w, response); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
 		return nil
 	})
 }
@@ -688,9 +758,8 @@ func addFile(server rest.Server, store Store) http.Handler {
 	}
 
 	type resBody struct {
-		FileId   string `json:"fileId"`
-		SchoolId string `json:"schoolId"`
-		FileName string `json:"fileName"`
+		Id   string `json:"id"`
+		Name string `json:"name"`
 	}
 
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
@@ -719,9 +788,8 @@ func addFile(server rest.Server, store Store) http.Handler {
 
 		w.WriteHeader(http.StatusCreated)
 		if err := rest.WriteJson(w, &resBody{
-			FileId:   res.FileId,
-			SchoolId: res.SchoolId,
-			FileName: res.FileName,
+			Id:   res.Id,
+			Name: res.Name,
 		}); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
@@ -735,9 +803,8 @@ func updateFile(server rest.Server, store Store) http.Handler {
 	}
 
 	type resBody struct {
-		FileId   string `json:"fileId"`
-		SchoolId string `json:"schoolId"`
-		FileName string `json:"fileName"`
+		Id   string `json:"id"`
+		Name string `json:"name"`
 	}
 
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
@@ -773,9 +840,8 @@ func updateFile(server rest.Server, store Store) http.Handler {
 
 		w.WriteHeader(http.StatusOK)
 		if err := rest.WriteJson(w, &resBody{
-			FileId:   res.FileId,
-			SchoolId: res.SchoolId,
-			FileName: res.FileName,
+			Id:   res.Id,
+			Name: res.Name,
 		}); err != nil {
 			return rest.NewWriteJsonError(err)
 		}

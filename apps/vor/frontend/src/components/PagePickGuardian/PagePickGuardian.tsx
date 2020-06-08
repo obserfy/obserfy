@@ -12,12 +12,12 @@ import Card from "../Card/Card"
 import Icon from "../Icon/Icon"
 import Button from "../Button/Button"
 import Flex from "../Flex/Flex"
-import { usePostNewGuardian } from "../../api/usePostNewGuardian"
+import { usePostNewGuardian } from "../../api/guardians/usePostNewGuardian"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import {
   Guardians,
   useGetSchoolGuardians,
-} from "../../api/useGetSchoolGuardians"
+} from "../../api/guardians/useGetSchoolGuardians"
 import TextArea from "../TextArea/TextArea"
 import GuardianRelationshipPickerDialog from "../GuardianRelationshipPickerDialog/GuardianRelationshipPickerDialog"
 

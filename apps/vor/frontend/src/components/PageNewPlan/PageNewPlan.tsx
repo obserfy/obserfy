@@ -7,14 +7,15 @@ import BackNavigation from "../BackNavigation/BackNavigation"
 import { ALL_PLANS_URL } from "../../routes"
 import { Typography } from "../Typography/Typography"
 import Button from "../Button/Button"
-import useGetSchoolClasses from "../../api/useGetSchoolClasses"
+import useGetSchoolClasses from "../../api/classes/useGetSchoolClasses"
 import Chip from "../Chip/Chip"
 import { Flex } from "../Flex/Flex"
 import TextArea from "../TextArea/TextArea"
 import DateInput from "../DateInput/DateInput"
-import usePostNewPlan from "../../api/usePostNewPlan"
+import usePostNewPlan from "../../api/plans/usePostNewPlan"
 import dayjs from "../../dayjs"
 import { navigate } from "../Link/Link"
+import EmptyClassDataPlaceholder from "../EmptyClassDataPlaceholder/EmptyClassDataPlaceholder"
 
 interface Props {
   chosenDate: string
@@ -27,18 +28,18 @@ export const PageNewPlan: FC<Props> = ({ chosenDate }) => {
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
   const [classId, setClassId] = useState("")
-  const [date, setDate] = useState(dayjs(chosenDate))
+  const [date, setDate] = useState(chosenDate ? dayjs(chosenDate) : dayjs())
 
   // Repetition data
   const [repetition, setRepetition] = useState(0)
-  const [startDate, setStartDate] = useState(dayjs(chosenDate))
-  const [endDate, setEndDate] = useState(dayjs(chosenDate))
+  const [endDate, setEndDate] = useState(date)
 
   return (
     <Box maxWidth="maxWidth.sm" mx="auto">
-      <BackNavigation to={ALL_PLANS_URL} text="All plans" />
+      <BackNavigation to={ALL_PLANS_URL(date)} text="All plans" />
       <Typography.H5 m={3}>New Plan</Typography.H5>
-      <Box p={3}>
+
+      <Box mx={3}>
         <DateInput
           label="Date"
           value={date.toDate()}
@@ -61,18 +62,30 @@ export const PageNewPlan: FC<Props> = ({ chosenDate }) => {
             setDescription(e.target.value)
           }}
         />
-        <Typography.H6 mb={2}>Class</Typography.H6>
-        <Flex mb={3}>
-          {classes.data?.map(({ id, name }) => (
-            <Chip
-              key={id}
-              text={name}
-              activeBackground="primary"
-              onClick={() => setClassId(id)}
-              isActive={id === classId}
-            />
-          ))}
-        </Flex>
+      </Box>
+
+      {classes.status === "success" && classes.data.length === 0 ? (
+        <Box mb={3}>
+          <EmptyClassDataPlaceholder />
+        </Box>
+      ) : (
+        <Box mx={3}>
+          <Typography.H6 mb={2}>Class</Typography.H6>
+          <Flex mb={3}>
+            {classes.data?.map(({ id, name }) => (
+              <Chip
+                key={id}
+                text={name}
+                activeBackground="primary"
+                onClick={() => setClassId(id)}
+                isActive={id === classId}
+              />
+            ))}
+          </Flex>
+        </Box>
+      )}
+
+      <Box mx={3}>
         <Typography.H6 mb={2}>Repetition</Typography.H6>
         <Flex>
           <Chip
@@ -95,21 +108,18 @@ export const PageNewPlan: FC<Props> = ({ chosenDate }) => {
           />
         </Flex>
         {repetition > 0 && (
-          <Box mt={2}>
+          <Box mt={1}>
             <DateInput
-              label="Start date"
-              value={startDate.toDate()}
-              onChange={(value) => setStartDate(dayjs(value))}
-              mb={2}
-            />
-            <DateInput
-              label="End date"
+              label="Repeat Until"
               value={endDate.toDate()}
               onChange={(value) => setEndDate(dayjs(value))}
               mb={2}
             />
           </Box>
         )}
+      </Box>
+
+      <Box mx={3} mb={4}>
         <Button
           width="100%"
           disabled={classId === "" || title === ""}
@@ -121,8 +131,8 @@ export const PageNewPlan: FC<Props> = ({ chosenDate }) => {
               classId,
               date,
             })
-            if (result.status === 201) {
-              await navigate(ALL_PLANS_URL)
+            if (result.ok) {
+              await navigate(ALL_PLANS_URL(date))
             }
           }}
         >

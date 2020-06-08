@@ -1,6 +1,7 @@
 package postgres
 
 import (
+	"github.com/go-pg/pg/v9/orm"
 	"time"
 
 	"github.com/go-pg/pg/v9"
@@ -417,7 +418,53 @@ func (s SchoolStore) GetGuardians(schoolId string) ([]cSchool.Guardian, error) {
 	return res, nil
 }
 
-func (s SchoolStore) CreateFile(schoolId, file string) (*cSchool.FileData, error) {
+func (s SchoolStore) GetLessonPlans(schoolId string, date time.Time) ([]cSchool.LessonPlan, error) {
+	var lessonPlan []LessonPlan
+	res := make([]cSchool.LessonPlan, 0)
+	if err := s.DB.Model(&lessonPlan).
+		Where("date::date=?", date).
+		Relation("Details").
+		Relation("Details.Class", func(q *orm.Query) (*orm.Query, error) {
+			return q.Where("school_id = ?", schoolId), nil
+		}).
+		Select(); err != nil {
+		return nil, richErrors.Wrap(err, "Failed to query school's lesson plan")
+	}
+	for _, plan := range lessonPlan {
+		newPlan := cSchool.LessonPlan{
+			Id:        plan.Id,
+			Title:     plan.Details.Title,
+			ClassId:   plan.Details.ClassId,
+			ClassName: plan.Details.Class.Name,
+			Date:      *plan.Date,
+		}
+		if plan.Details.Description != nil {
+			newPlan.Description = *plan.Details.Description
+		}
+		res = append(res, newPlan)
+	}
+	return res, nil
+}
+
+func (s SchoolStore) GetLessonFiles(schoolId string) ([]cSchool.File, error) {
+	var files []File
+	if err := s.DB.Model(&files).
+		Where("school_id=?", schoolId).
+		Select(); err != nil {
+		return nil, richErrors.Wrap(err, "Failed to query school's files")
+	}
+
+	result := make([]cSchool.File, len(files))
+	for idx, file := range files {
+		result[idx] = cSchool.File{
+			Id:   file.Id,
+			Name: file.FileName,
+		}
+	}
+	return result, nil
+}
+
+func (s SchoolStore) CreateFile(schoolId, file string) (*cSchool.File, error) {
 	obj := File{
 		Id:       uuid.New().String(),
 		SchoolId: schoolId,
@@ -426,10 +473,9 @@ func (s SchoolStore) CreateFile(schoolId, file string) (*cSchool.FileData, error
 	if err := s.Insert(&obj); err != nil {
 		return nil, richErrors.Wrap(err, "failed to create file:")
 	}
-	return &cSchool.FileData{
-		FileId:   obj.Id,
-		SchoolId: obj.SchoolId,
-		FileName: obj.FileName,
+	return &cSchool.File{
+		Id:   obj.Id,
+		Name: obj.FileName,
 	}, nil
 }
 
@@ -437,7 +483,7 @@ func (s SchoolStore) DeleteFile(fileId string) error {
 	return s.Delete(&File{Id: fileId})
 }
 
-func (s SchoolStore) UpdateFile(fileId, fileName string) (*cSchool.FileData, error) {
+func (s SchoolStore) UpdateFile(fileId, fileName string) (*cSchool.File, error) {
 	obj := File{
 		Id:       fileId,
 		FileName: fileName,
@@ -452,9 +498,8 @@ func (s SchoolStore) UpdateFile(fileId, fileName string) (*cSchool.FileData, err
 		return nil, pg.ErrNoRows
 	}
 
-	return &cSchool.FileData{
-		FileId:   obj.Id,
-		SchoolId: obj.SchoolId,
-		FileName: obj.FileName,
+	return &cSchool.File{
+		Id:   obj.Id,
+		Name: obj.FileName,
 	}, nil
 }

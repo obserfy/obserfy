@@ -2594,18 +2594,28 @@
   resolved "https://registry.yarnpkg.com/@prefresh/core/-/core-0.6.0.tgz#b7801ad3d16de9d21ed0824db6c85707f93cf93c"
   integrity sha512-xhhBgQeMmyoSYEr8F27oypxRTWysIKPnc+Ed6U5OmEwPtLeKsccI3UCpSQyrcv5/HmPNPjAYHPqNC0uH57rIkw==
 
+"@prefresh/core@^0.7.0":
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/@prefresh/core/-/core-0.7.1.tgz#75c73975dbbf66d70fc698eda26aeae1767d3c07"
+  integrity sha512-wa7M0cTV7DcBu3vw4MEtVXWFxsdHXbky8qzhBFJ/HEp7fdEmvOateYmGOjSeOn+QaKeAqUBGTMnTyVER0lamNA==
+
 "@prefresh/utils@0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@prefresh/utils/-/utils-0.1.0.tgz#9b69c9ecd6002e72e096e5e72f4bd4f88d15284c"
   integrity sha512-xtUsQMJIHwBuiXu1E1iiXNVfn60N6zpVUo67ZvQVA6OMlslQzWtbdnTXRT+iplBBgfLmQvXR0bKsNz1+ZYSMgw==
 
-"@prefresh/webpack@0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@prefresh/webpack/-/webpack-0.7.0.tgz#a5cfdec11ca1b21a03fedd94d42ff0447a205d06"
-  integrity sha512-1dZ7Jb4bcU1S6OBiDsTQZ43A5kCTK+5hNwOJzYyyUHAthImvKBNpYq2UvBeLatDZvVYb2/x5m4gCFWtokEB+jQ==
+"@prefresh/utils@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@prefresh/utils/-/utils-0.2.0.tgz#1d269210758346e8e1f8a6410b61ba3e4fb982f9"
+  integrity sha512-mxJraGQLPmvAuI8Br0y/pvJWI2sy5IHU5veZ5GglP1gnb4dpp5rjIVjHdlVvrXUKGtFIpB3zxrqS+vYn1cQ01A==
+
+"@prefresh/webpack@0.8.0", "@prefresh/webpack@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@prefresh/webpack/-/webpack-0.8.0.tgz#f66268f7756940b955a5720dafacceb4554c7714"
+  integrity sha512-l9vZiiI+1Za34fEvylUKiU8YFVA9w3/xmnMtj+PtVLY9zPUrBs15k23EfkUSDPJ6tuD/dfmFol6y/h6tlcuo7A==
   dependencies:
-    "@prefresh/core" "0.6.0"
-    "@prefresh/utils" "0.1.0"
+    "@prefresh/core" "^0.7.0"
+    "@prefresh/utils" "^0.2.0"
 
 "@prefresh/webpack@^0.6.0":
   version "0.6.0"
@@ -10995,6 +11005,14 @@ gatsby-plugin-preact@4.0.0:
   integrity sha512-QvntARJf340Yiq6jLaJW0GHL5KSJRRvRzPBZODTNTfk47nkPodSCGzcNr8cH9ek4yAm4iLLuDhJWG9nijixivA==
   dependencies:
     "@prefresh/webpack" "^0.6.0"
+    react-refresh "^0.8.2"
+
+gatsby-plugin-preact@4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-preact/-/gatsby-plugin-preact-4.0.2.tgz#3c51076dc1c306dd326b0fe604bc9f5102040312"
+  integrity sha512-3Vufoi3gz30OmszKko27aKAC9Snym/Nhl1l1Eddu8vy7vjlntC7XKuQ4tIJsbT0EDYn20Ajo1W8y76bW4jBtXA==
+  dependencies:
+    "@prefresh/webpack" "^0.8.0"
     react-refresh "^0.8.2"
 
 gatsby-plugin-prefetch-google-fonts@1.4.3:
