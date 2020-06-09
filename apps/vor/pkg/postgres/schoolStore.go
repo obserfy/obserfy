@@ -423,8 +423,8 @@ func (s SchoolStore) GetLessonPlans(schoolId string, date time.Time) ([]cSchool.
 	res := make([]cSchool.LessonPlan, 0)
 	if err := s.DB.Model(&lessonPlan).
 		Where("date::date=?", date).
-		Relation("Details").
-		Relation("Details.Class", func(q *orm.Query) (*orm.Query, error) {
+		Relation("LessonPlanDetails").
+		Relation("LessonPlanDetails.Class", func(q *orm.Query) (*orm.Query, error) {
 			return q.Where("school_id = ?", schoolId), nil
 		}).
 		Select(); err != nil {
@@ -433,13 +433,13 @@ func (s SchoolStore) GetLessonPlans(schoolId string, date time.Time) ([]cSchool.
 	for _, plan := range lessonPlan {
 		newPlan := cSchool.LessonPlan{
 			Id:        plan.Id,
-			Title:     plan.Details.Title,
-			ClassId:   plan.Details.ClassId,
-			ClassName: plan.Details.Class.Name,
+			Title:     plan.LessonPlanDetails.Title,
+			ClassId:   plan.LessonPlanDetails.ClassId,
+			ClassName: plan.LessonPlanDetails.Class.Name,
 			Date:      *plan.Date,
 		}
-		if plan.Details.Description != nil {
-			newPlan.Description = *plan.Details.Description
+		if plan.LessonPlanDetails.Description != nil {
+			newPlan.Description = *plan.LessonPlanDetails.Description
 		}
 		res = append(res, newPlan)
 	}

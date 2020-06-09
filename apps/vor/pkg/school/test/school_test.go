@@ -89,10 +89,10 @@ func (s *SchoolTestSuite) SaveNewLessonPlan() (*postgres.LessonPlan, string) {
 	}
 	date := gofakeit.Date()
 	newLessonPlan := postgres.LessonPlan{
-		Id:        uuid.New().String(),
-		Date:      &date,
-		DetailsId: details.Id,
-		Details:   details,
+		Id:                  uuid.New().String(),
+		Date:                &date,
+		LessonPlanDetailsId: details.Id,
+		LessonPlanDetails:   details,
 	}
 	err := s.DB.Insert(&details)
 	assert.NoError(t, err)

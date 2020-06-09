@@ -13,7 +13,7 @@ func (s *SchoolTestSuite) TestGetLessonPlan() {
 	gofakeit.Seed(time.Now().UnixNano())
 	lessonPlan, userId := s.SaveNewLessonPlan()
 
-	url := "/" + lessonPlan.Details.Class.School.Id + "/plans?date=" + lessonPlan.Date.Format(time.RFC3339)
+	url := "/" + lessonPlan.LessonPlanDetails.Class.School.Id + "/plans?date=" + lessonPlan.Date.Format(time.RFC3339)
 	result := s.CreateRequest("GET", url, nil, &userId)
 	assert.Equal(t, http.StatusOK, result.Code)
 
@@ -29,5 +29,5 @@ func (s *SchoolTestSuite) TestGetLessonPlan() {
 	assert.NoError(t, err)
 
 	assert.Len(t, body, 1)
-	assert.Equal(t, lessonPlan.Details.Title, body[0].Title)
+	assert.Equal(t, lessonPlan.LessonPlanDetails.Title, body[0].Title)
 }
