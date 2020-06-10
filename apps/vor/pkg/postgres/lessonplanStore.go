@@ -96,7 +96,7 @@ func (s LessonPlanStore) UpdateLessonPlan(planInput cLessonPlan.UpdatePlanData) 
 	originalPlan := LessonPlan{Id: planInput.Id}
 	if err := s.Model(&originalPlan).
 		WherePK().
-		Column("details_id").
+		Column("lesson_plan_details_id").
 		Select(); err != nil {
 		return 0, richErrors.Wrap(err, "failed to find related plan")
 	}
