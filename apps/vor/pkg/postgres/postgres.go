@@ -253,13 +253,14 @@ type (
 		Files             []File `pg:"many2many:file_to_lesson_plans,joinFK:file_id"`
 		RepetitionType    int    `pg:",use_zero"`
 		RepetitionEndDate time.Time
+		LessonPlans       []*LessonPlan
 	}
 
 	LessonPlan struct {
-		Id        string     `pg:"type:uuid"`
-		Date      *time.Time `pg:",notnull"`
-		DetailsId string     `pg:"type:uuid"`
-		Details   LessonPlanDetails
+		Id                  string     `pg:"type:uuid"`
+		Date                *time.Time `pg:",notnull"`
+		LessonPlanDetailsId string     `pg:"type:uuid"`
+		LessonPlanDetails   LessonPlanDetails
 	}
 
 	File struct {

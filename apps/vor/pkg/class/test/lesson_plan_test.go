@@ -36,11 +36,11 @@ func (s *ClassTestSuite) TestPostNewLessonPlan() {
 	var plan postgres.LessonPlan
 	err := s.DB.Model(&plan).
 		Where("date=?", payload.Date).
-		Relation("Details").
+		Relation("LessonPlanDetails").
 		Select()
 	assert.NoError(t, err)
-	assert.Equal(t, payload.Title, plan.Details.Title)
-	assert.Equal(t, payload.Description, *plan.Details.Description)
+	assert.Equal(t, payload.Title, plan.LessonPlanDetails.Title)
+	assert.Equal(t, payload.Description, *plan.LessonPlanDetails.Description)
 	assert.Equal(t, payload.Date.Unix(), plan.Date.Unix())
-	assert.Equal(t, len(payload.FileIds), len(plan.Details.Files))
+	assert.Equal(t, len(payload.FileIds), len(plan.LessonPlanDetails.Files))
 }

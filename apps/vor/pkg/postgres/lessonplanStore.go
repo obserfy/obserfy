@@ -23,9 +23,9 @@ func (s LessonPlanStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLes
 
 	var plans []LessonPlan
 	plans = append(plans, LessonPlan{
-		Id:        uuid.New().String(),
-		Date:      &planInput.Date,
-		DetailsId: planDetails.Id,
+		Id:                  uuid.New().String(),
+		Date:                &planInput.Date,
+		LessonPlanDetailsId: planDetails.Id,
 	})
 	// Create all instance of repeating plans and save to db. This will make it easy to
 	// retrieve, modify, and attach metadata to individual instances of the plans down the road
@@ -51,9 +51,9 @@ func (s LessonPlanStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLes
 				break
 			}
 			plans = append(plans, LessonPlan{
-				Id:        uuid.New().String(),
-				Date:      &currentDate,
-				DetailsId: planDetails.Id,
+				Id:                  uuid.New().String(),
+				Date:                &currentDate,
+				LessonPlanDetailsId: planDetails.Id,
 			})
 		}
 	}
@@ -96,7 +96,7 @@ func (s LessonPlanStore) UpdateLessonPlan(planInput cLessonPlan.UpdatePlanData) 
 	originalPlan := LessonPlan{Id: planInput.Id}
 	if err := s.Model(&originalPlan).
 		WherePK().
-		Column("details_id").
+		Column("lesson_plan_details_id").
 		Select(); err != nil {
 		return 0, richErrors.Wrap(err, "failed to find related plan")
 	}
@@ -105,7 +105,7 @@ func (s LessonPlanStore) UpdateLessonPlan(planInput cLessonPlan.UpdatePlanData) 
 		Date: planInput.Date,
 	}
 	planDetails := LessonPlanDetails{
-		Id:          originalPlan.DetailsId,
+		Id:          originalPlan.LessonPlanDetailsId,
 		Description: planInput.Description,
 	}
 	if planInput.Title != nil {
@@ -141,7 +141,7 @@ func (s LessonPlanStore) GetLessonPlan(planId string) (*cLessonPlan.LessonPlan, 
 	var plan LessonPlan
 
 	err := s.Model(&plan).
-		Relation("Details").
+		Relation("LessonPlanDetails").
 		Where("lesson_plan.id = ?", planId).
 		Select()
 
@@ -154,13 +154,13 @@ func (s LessonPlanStore) GetLessonPlan(planId string) (*cLessonPlan.LessonPlan, 
 
 	return &cLessonPlan.LessonPlan{
 		Id:          plan.Id,
-		ClassId:     plan.Details.ClassId,
-		Title:       plan.Details.Title,
-		Description: *plan.Details.Description,
+		ClassId:     plan.LessonPlanDetails.ClassId,
+		Title:       plan.LessonPlanDetails.Title,
+		Description: *plan.LessonPlanDetails.Description,
 		Date:        *plan.Date,
 		Repetition: &cLessonPlan.RepetitionPattern{
-			Type:    plan.Details.RepetitionType,
-			EndDate: plan.Details.RepetitionEndDate,
+			Type:    plan.LessonPlanDetails.RepetitionType,
+			EndDate: plan.LessonPlanDetails.RepetitionEndDate,
 		},
 	}, nil
 }
