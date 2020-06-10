@@ -61,5 +61,12 @@ describe("Test class related features", () => {
 
     cy.contains("All plans").click()
     cy.contains(secondName).should("be.visible")
+
+    // Regression test, should be able to delete class
+    cy.visit("/dashboard/settings/class")
+    cy.contains(className).click()
+    cy.contains("Delete").click()
+    cy.contains("Yes").click()
+    cy.contains(className).should("not.be.visible")
   })
 })
