@@ -267,7 +267,7 @@ type (
 		Id          string `pg:"type:uuid,pk"`
 		SchoolId    string `pg:"type:uuid,on_delete:CASCADE"`
 		School      School
-		FileName    string
+		Name        string
 		LessonPlans []LessonPlan `pg:"many2many:file_to_lesson_plans,joinFK:lesson_plan_id"`
 	}
 

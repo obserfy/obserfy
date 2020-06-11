@@ -458,7 +458,7 @@ func (s SchoolStore) GetLessonFiles(schoolId string) ([]cSchool.File, error) {
 	for idx, file := range files {
 		result[idx] = cSchool.File{
 			Id:   file.Id,
-			Name: file.FileName,
+			Name: file.Name,
 		}
 	}
 	return result, nil
@@ -468,14 +468,14 @@ func (s SchoolStore) CreateFile(schoolId, file string) (*cSchool.File, error) {
 	obj := File{
 		Id:       uuid.New().String(),
 		SchoolId: schoolId,
-		FileName: file,
+		Name:     file,
 	}
 	if err := s.Insert(&obj); err != nil {
 		return nil, richErrors.Wrap(err, "failed to create file:")
 	}
 	return &cSchool.File{
 		Id:   obj.Id,
-		Name: obj.FileName,
+		Name: obj.Name,
 	}, nil
 }
 
@@ -485,8 +485,8 @@ func (s SchoolStore) DeleteFile(fileId string) error {
 
 func (s SchoolStore) UpdateFile(fileId, fileName string) (*cSchool.File, error) {
 	obj := File{
-		Id:       fileId,
-		FileName: fileName,
+		Id:   fileId,
+		Name: fileName,
 	}
 	res, err := s.Model(&obj).Column("file_name").
 		Returning("*").WherePK().Update()
@@ -500,6 +500,6 @@ func (s SchoolStore) UpdateFile(fileId, fileName string) (*cSchool.File, error) 
 
 	return &cSchool.File{
 		Id:   obj.Id,
-		Name: obj.FileName,
+		Name: obj.Name,
 	}, nil
 }
