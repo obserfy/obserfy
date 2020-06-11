@@ -29,7 +29,7 @@ func (s LessonPlanStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLes
 	})
 	// Create all instance of repeating plans and save to db. This will make it easy to
 	// retrieve, modify, and attach metadata to individual instances of the plans down the road
-	if planInput.Repetition != nil {
+	if planInput.Repetition != nil && planInput.Repetition.Type != cLessonPlan.RepetitionNone {
 		// If nil, repetition_type will automatically be 0, since it has useZero tag.
 		planDetails.RepetitionType = planInput.Repetition.Type
 		planDetails.RepetitionEndDate = planInput.Repetition.EndDate
