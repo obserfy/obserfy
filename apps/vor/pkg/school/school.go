@@ -14,7 +14,6 @@ import (
 
 	"github.com/chrsep/vor/pkg/auth"
 	"github.com/chrsep/vor/pkg/imgproxy"
-	"github.com/chrsep/vor/pkg/minio"
 	"github.com/chrsep/vor/pkg/rest"
 )
 
@@ -357,7 +356,6 @@ func postNewStudent(s rest.Server, store Store, storage StudentImageStorage) res
 	}
 
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
-		_, _ = minio.NewMinioImageStorage()
 		schoolId := chi.URLParam(r, "schoolId")
 		if err := r.ParseMultipartForm(10 << 20); err != nil {
 			return &rest.Error{
