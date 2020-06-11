@@ -140,3 +140,30 @@ func (s *BaseTestSuite) CreateRequest(method string, path string, bodyJson inter
 	s.Handler(w, req)
 	return w
 }
+
+func (s *BaseTestSuite) CreateMultipartRequest(url string, multipartForm *bytes.Buffer, boundary string, userId *string) *httptest.ResponseRecorder {
+	w := httptest.NewRecorder()
+
+	req := httptest.NewRequest("POST", url, multipartForm)
+	req.Header.Set("Content-Type", "multipart/form-data;boundary="+boundary)
+	if userId != nil {
+		// Save session to DB
+		sessionToken := uuid.New().String()
+		err := s.DB.Insert(&postgres.Session{
+			Token:  sessionToken,
+			UserId: *userId,
+		})
+		assert.NoError(s.T(), err)
+
+		// Save session to context
+		ctx := context.WithValue(req.Context(), auth.SessionCtxKey, &auth.Session{
+			Token:  sessionToken,
+			UserId: *userId,
+		})
+		s.Handler(w, req.WithContext(ctx))
+		return w
+	}
+
+	s.Handler(w, req)
+	return w
+}
