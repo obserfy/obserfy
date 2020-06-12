@@ -371,6 +371,7 @@ func postNewStudent(s rest.Server, store Store, storage StudentImageStorage) res
 		picture, pictureFileHeader, err := r.FormFile("picture")
 		var profilePicPath string
 		if err == nil {
+			// TODO: Do we need to read the file header here? We already have pictureFileHeader above?
 			fileHeader := make([]byte, 512)
 			if _, err := picture.Read(fileHeader); err != nil {
 				return &rest.Error{

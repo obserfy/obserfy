@@ -11,11 +11,10 @@ import (
 	cSchool "github.com/chrsep/vor/pkg/school"
 )
 
-type (
-	SchoolStore struct {
-		*pg.DB
-	}
-)
+type SchoolStore struct {
+	*pg.DB
+	FileStorage FileStorage
+}
 
 func (s SchoolStore) NewSchool(schoolName, userId string) (*cSchool.School, error) {
 	id := uuid.New()
