@@ -3,16 +3,18 @@ package school_test
 import (
 	"bytes"
 	"encoding/json"
-	"github.com/brianvoe/gofakeit/v4"
-	"github.com/chrsep/vor/pkg/mocks"
-	"github.com/chrsep/vor/pkg/school"
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/mock"
 	"io/ioutil"
 	"mime/multipart"
 	"net/http"
 	"os"
 	"time"
+
+	"github.com/brianvoe/gofakeit/v4"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/mock"
+
+	"github.com/chrsep/vor/pkg/mocks"
+	"github.com/chrsep/vor/pkg/school"
 )
 
 func (s SchoolTestSuite) TestSaveNewStudentWithPic() {
