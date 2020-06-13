@@ -36,5 +36,5 @@ func (f FileStorage) GetUrl(schoolId string, fileId string) string {
 }
 
 func GenerateSchoolFileKey(schoolId string, fileId string) string {
-	return "files" + schoolId + "/" + fileId
+	return "files/" + schoolId + "/" + fileId
 }
