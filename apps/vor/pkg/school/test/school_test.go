@@ -101,3 +101,22 @@ func (s *SchoolTestSuite) SaveNewLessonPlan() (*postgres.LessonPlan, string) {
 	assert.NoError(t, err)
 	return &newLessonPlan, newSchool.Users[0].Id
 }
+
+func (s *SchoolTestSuite) SaveNewFile() (*postgres.File, string) {
+	t := s.T()
+	gofakeit.Seed(time.Now().UnixNano())
+	newSchool := s.SaveNewSchool()
+
+	fileId := uuid.New().String()
+	file := postgres.File{
+		Id:          fileId,
+		SchoolId:    newSchool.Id,
+		School:      *newSchool,
+		Name:        gofakeit.Name(),
+		LessonPlans: nil,
+		FileKey:     "files/" + newSchool.Id + "/" + fileId,
+	}
+	err := s.DB.Insert(&file)
+	assert.NoError(t, err)
+	return &file, newSchool.Users[0].Id
+}

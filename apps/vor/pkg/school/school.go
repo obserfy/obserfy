@@ -795,7 +795,7 @@ func addFile(server rest.Server, store Store) http.Handler {
 
 func updateFile(server rest.Server, store Store) http.Handler {
 	type reqBody struct {
-		FileName string `json:"fileName"`
+		Name string `json:"name"`
 	}
 
 	type resBody struct {
@@ -811,14 +811,14 @@ func updateFile(server rest.Server, store Store) http.Handler {
 			return rest.NewParseJsonError(err)
 		}
 
-		if body.FileName == "" {
+		if body.Name == "" {
 			return &rest.Error{
 				Code:    http.StatusBadRequest,
 				Message: "File name must not empty",
 			}
 		}
 
-		res, err := store.UpdateFile(fileId, body.FileName)
+		res, err := store.UpdateFile(fileId, body.Name)
 		if err != nil {
 			if err == pg.ErrNoRows {
 				return &rest.Error{
@@ -834,7 +834,7 @@ func updateFile(server rest.Server, store Store) http.Handler {
 			}
 		}
 
-		w.WriteHeader(http.StatusOK)
+		w.WriteHeader(http.StatusNoContent)
 		if err := rest.WriteJson(w, &resBody{
 			Id:   res.Id,
 			Name: res.Name,
