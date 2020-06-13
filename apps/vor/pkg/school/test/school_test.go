@@ -2,6 +2,7 @@ package school_test
 
 import (
 	"github.com/brianvoe/gofakeit/v4"
+	"github.com/chrsep/vor/pkg/minio"
 	"github.com/chrsep/vor/pkg/mocks"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/school"
@@ -21,7 +22,7 @@ type SchoolTestSuite struct {
 }
 
 func (s *SchoolTestSuite) SetupTest() {
-	s.store = postgres.SchoolStore{s.DB, nil}
+	s.store = postgres.SchoolStore{s.DB, minio.NewFileStorage(s.MinioClient)}
 	s.StudentImageStorage = mocks.StudentImageStorage{}
 	s.Handler = school.NewRouter(s.Server, s.store, &s.StudentImageStorage, nil).ServeHTTP
 }
