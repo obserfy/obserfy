@@ -269,7 +269,7 @@ type (
 		School      School
 		Name        string
 		LessonPlans []LessonPlan `pg:"many2many:file_to_lesson_plans,joinFK:lesson_plan_id"`
-		FileKey     string
+		ObjectKey   string
 	}
 
 	FileToLessonPlan struct {

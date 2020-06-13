@@ -120,7 +120,7 @@ func (s *SchoolTestSuite) SaveNewFile() (*postgres.File, string) {
 		School:      *newSchool,
 		Name:        gofakeit.Name(),
 		LessonPlans: nil,
-		FileKey:     fileKey,
+		ObjectKey:   fileKey,
 	}
 	err := s.DB.Insert(&file)
 	assert.NoError(t, err)

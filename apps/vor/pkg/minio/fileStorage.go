@@ -20,21 +20,16 @@ type FileStorage struct {
 }
 
 func (f FileStorage) Save(schoolId string, fileId string, file multipart.File, size int64) (string, error) {
-	key := GenerateSchoolFileKey(schoolId, fileId)
+	key := "files/" + schoolId + "/" + fileId
 	if _, err := f.Client.PutObject(f.bucketName, key, file, size, minio.PutObjectOptions{}); err != nil {
 		return "", richErrors.Wrap(err, "Failed to upload file to s3")
 	}
 	return key, nil
 }
 
-func (f FileStorage) Delete(schoolId string, fileId string) (string, error) {
-	panic("implement me")
-}
-
-func (f FileStorage) GetUrl(schoolId string, fileId string) string {
-	panic("implement me")
-}
-
-func GenerateSchoolFileKey(schoolId string, fileId string) string {
-	return "files/" + schoolId + "/" + fileId
+func (f FileStorage) Delete(key string) error {
+	if err := f.Client.RemoveObject(f.bucketName, key); err != nil {
+		return richErrors.Wrap(err, "Failed to upload file to s3")
+	}
+	return nil
 }
