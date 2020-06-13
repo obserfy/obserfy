@@ -70,6 +70,13 @@ jobs:
   backend_unit:
     docker:
       - image: golang:1.14
+      - image: minio/minio:latest
+        entrypoint: sh
+        command: -c 'mkdir -p /data/media && /usr/bin/minio server /data'
+        environment:
+          MINIO_ACCESS_KEY: AKIAIOSFODNN7EXAMPLE
+          MINIO_SECRET_KEY: wJalrXUtnFEMIK7MDENGbPxRfiCYEXAMPLEKEY
+          MINIO_HTTP_TRACE: "/dev/stdout"
       - image: circleci/postgres:11
         environment:
           POSTGRES_PASSWORD: postgres
@@ -83,6 +90,9 @@ jobs:
           command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
           environment:
             DOCKERIZE_VERSION: v0.3.0
+      - run:
+          name: Wait for minio
+          command: dockerize -wait tcp://localhost:9000 -timeout 1m
       - run:
           name: Wait for db
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
