@@ -11,11 +11,10 @@ import (
 	cSchool "github.com/chrsep/vor/pkg/school"
 )
 
-type (
-	SchoolStore struct {
-		*pg.DB
-	}
-)
+type SchoolStore struct {
+	*pg.DB
+	FileStorage FileStorage
+}
 
 func (s SchoolStore) NewSchool(schoolName, userId string) (*cSchool.School, error) {
 	id := uuid.New()
@@ -464,19 +463,16 @@ func (s SchoolStore) GetLessonFiles(schoolId string) ([]cSchool.File, error) {
 	return result, nil
 }
 
-func (s SchoolStore) CreateFile(schoolId, file string) (*cSchool.File, error) {
-	obj := File{
+func (s SchoolStore) CreateFile(schoolId, file string) (*string, error) {
+	newFile := File{
 		Id:       uuid.New().String(),
 		SchoolId: schoolId,
 		Name:     file,
 	}
-	if err := s.Insert(&obj); err != nil {
+	if err := s.Insert(&newFile); err != nil {
 		return nil, richErrors.Wrap(err, "failed to create file:")
 	}
-	return &cSchool.File{
-		Id:   obj.Id,
-		Name: obj.Name,
-	}, nil
+	return &newFile.Id, nil
 }
 
 func (s SchoolStore) DeleteFile(fileId string) error {

@@ -50,6 +50,7 @@ func NewRouter(
 
 		r.Method("GET", "/files", getLessonFiles(server, store))
 		r.Method("POST", "/files", addFile(server, store))
+		// TODO: Might be better to be on its own root path.
 		r.Method("PATCH", "/files/{fileId}", updateFile(server, store))
 		r.Method("DELETE", "/files/{fileId}", deleteFile(server, store))
 	})
@@ -370,6 +371,7 @@ func postNewStudent(s rest.Server, store Store, storage StudentImageStorage) res
 		picture, pictureFileHeader, err := r.FormFile("picture")
 		var profilePicPath string
 		if err == nil {
+			// TODO: Do we need to read the file header here? We already have pictureFileHeader above?
 			fileHeader := make([]byte, 512)
 			if _, err := picture.Read(fileHeader); err != nil {
 				return &rest.Error{
@@ -751,31 +753,30 @@ func getLessonFiles(server rest.Server, store Store) http.Handler {
 }
 
 func addFile(server rest.Server, store Store) http.Handler {
-	type reqBody struct {
-		FileName string `json:"fileName"`
-	}
-
 	type resBody struct {
-		Id   string `json:"id"`
-		Name string `json:"name"`
+		Id string `json:"id"`
 	}
-
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
-		body := reqBody{}
 		schoolId := chi.URLParam(r, "schoolId")
 
-		if err := rest.ParseJson(r.Body, &body); err != nil {
-			return rest.NewParseJsonError(err)
-		}
-
-		if body.FileName == "" {
+		if err := r.ParseMultipartForm(10 << 20); err != nil {
 			return &rest.Error{
 				Code:    http.StatusBadRequest,
-				Message: "File name must not empty",
+				Message: "failed to parse payload",
+				Error:   richErrors.Wrap(err, "failed to parse response body"),
 			}
 		}
 
-		res, err := store.CreateFile(schoolId, body.FileName)
+		_, fileHeader, err := r.FormFile("file")
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusBadRequest,
+				Message: "invalid payload",
+				Error:   richErrors.Wrap(err, "invalid payload"),
+			}
+		}
+
+		id, err := store.CreateFile(schoolId, fileHeader.Filename)
 		if err != nil {
 			return &rest.Error{
 				Code:    http.StatusInternalServerError,
@@ -785,10 +786,7 @@ func addFile(server rest.Server, store Store) http.Handler {
 		}
 
 		w.WriteHeader(http.StatusCreated)
-		if err := rest.WriteJson(w, &resBody{
-			Id:   res.Id,
-			Name: res.Name,
-		}); err != nil {
+		if err := rest.WriteJson(w, &resBody{*id}); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
 		return nil

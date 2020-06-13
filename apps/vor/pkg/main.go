@@ -69,7 +69,6 @@ func runServer() error {
 	server := rest.NewServer(l)
 	studentStore := postgres.StudentStore{db}
 	observationStore := postgres.ObservationStore{db}
-	schoolStore := postgres.SchoolStore{db}
 	userStore := postgres.UserStore{db}
 	curriculumStore := postgres.CurriculumStore{db}
 	authStore := postgres.AuthStore{db}
@@ -89,6 +88,8 @@ func runServer() error {
 		return err
 	}
 	imageStorage := minio.NewImageStorage(minioClient)
+	fileStorage := minio.NewFileStorage(minioClient)
+	schoolStore := postgres.SchoolStore{db, fileStorage}
 
 	// Setup routing
 	r := chi.NewRouter()

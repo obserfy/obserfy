@@ -124,7 +124,7 @@ type (
 		GetSchoolClasses(schoolId string) ([]Class, error)
 		InsertGuardianWithRelation(input GuardianWithRelation) (*Guardian, error)
 		GetGuardians(schoolId string) ([]Guardian, error)
-		CreateFile(schoolId, file string) (*File, error)
+		CreateFile(schoolId, file string) (*string, error)
 		DeleteFile(fileId string) error
 		UpdateFile(fileId, fileName string) (*File, error)
 		GetLessonPlans(schoolId string, date time.Time) ([]LessonPlan, error)
