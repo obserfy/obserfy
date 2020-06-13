@@ -490,7 +490,7 @@ func (s SchoolStore) UpdateFile(fileId, fileName string) (*cSchool.File, error) 
 		Id:   fileId,
 		Name: fileName,
 	}
-	res, err := s.Model(&obj).Column("file_name").
+	res, err := s.Model(&obj).Column("name").
 		Returning("*").WherePK().Update()
 	if err != nil {
 		return nil, richErrors.Wrap(err, "failed update file:")

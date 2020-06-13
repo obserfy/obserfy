@@ -1,6 +1,7 @@
 package school_test
 
 import (
+	"bytes"
 	"github.com/brianvoe/gofakeit/v4"
 	"github.com/chrsep/vor/pkg/minio"
 	"github.com/chrsep/vor/pkg/mocks"
@@ -8,8 +9,12 @@ import (
 	"github.com/chrsep/vor/pkg/school"
 	"github.com/chrsep/vor/pkg/testutils"
 	"github.com/google/uuid"
+	minio2 "github.com/minio/minio-go/v6"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
+	"io/ioutil"
+	"mime/multipart"
+	"os"
 	"testing"
 	"time"
 )
@@ -100,4 +105,54 @@ func (s *SchoolTestSuite) SaveNewLessonPlan() (*postgres.LessonPlan, string) {
 	err = s.DB.Insert(&newLessonPlan)
 	assert.NoError(t, err)
 	return &newLessonPlan, newSchool.Users[0].Id
+}
+
+func (s *SchoolTestSuite) SaveNewFile() (*postgres.File, string) {
+	t := s.T()
+	gofakeit.Seed(time.Now().UnixNano())
+	newSchool := s.SaveNewSchool()
+
+	fileId := uuid.New().String()
+	fileKey := "files/" + newSchool.Id + "/" + fileId
+	file := postgres.File{
+		Id:          fileId,
+		SchoolId:    newSchool.Id,
+		School:      *newSchool,
+		Name:        gofakeit.Name(),
+		LessonPlans: nil,
+		FileKey:     fileKey,
+	}
+	err := s.DB.Insert(&file)
+	assert.NoError(t, err)
+
+	testfile, _ := s.ReadTestFile(file.Name)
+	_, err = s.MinioClient.PutObject("media", fileKey, testfile, int64(testfile.Len()), minio2.PutObjectOptions{})
+	assert.NoError(t, err)
+
+	return &file, newSchool.Users[0].Id
+}
+
+func (s *SchoolTestSuite) ReadTestFile(name string) (*bytes.Buffer, *multipart.Writer) {
+	t := s.T()
+	filePath := "testfile.txt"
+
+	// Read file contents
+	file, err := os.Open(filePath)
+	assert.NoError(t, err)
+	fileContents, err := ioutil.ReadAll(file)
+	assert.NoError(t, err)
+	err = file.Close()
+	assert.NoError(t, err)
+
+	// Write file to multipart/form-data
+	payload := new(bytes.Buffer)
+	writer := multipart.NewWriter(payload)
+	part, err := writer.CreateFormFile("file", name)
+	assert.NoError(t, err)
+	_, err = part.Write(fileContents)
+	assert.NoError(t, err)
+	err = writer.Close()
+	assert.NoError(t, err)
+
+	return payload, writer
 }

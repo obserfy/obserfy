@@ -62,3 +62,20 @@ func (s *SchoolTestSuite) TestUploadFile() {
 	assert.NoError(t, err)
 	assert.Equal(t, fileContents, fileRead)
 }
+
+func (s *SchoolTestSuite) TestPatchFile() {
+	t := s.T()
+	gofakeit.Seed(time.Now().UnixNano())
+	file, userId := s.SaveNewFile()
+
+	payload := struct {
+		Name string `json:"name"`
+	}{Name: gofakeit.Name()}
+	result := s.CreateRequest("PATCH", "/"+file.SchoolId+"/files/"+file.Id, payload, &userId)
+	assert.Equal(t, http.StatusNoContent, result.Code)
+
+	updatedFile := postgres.File{Id: file.Id}
+	err := s.DB.Model(&updatedFile).WherePK().Select()
+	assert.NoError(t, err)
+	assert.Equal(t, payload.Name, updatedFile.Name)
+}
