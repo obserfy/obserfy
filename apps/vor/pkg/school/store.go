@@ -1,6 +1,7 @@
 package school
 
 import (
+	"mime/multipart"
 	"time"
 
 	"github.com/pkg/errors"
@@ -124,7 +125,7 @@ type (
 		GetSchoolClasses(schoolId string) ([]Class, error)
 		InsertGuardianWithRelation(input GuardianWithRelation) (*Guardian, error)
 		GetGuardians(schoolId string) ([]Guardian, error)
-		CreateFile(schoolId, file string) (*string, error)
+		CreateFile(schoolId string, file multipart.File, fileHeader *multipart.FileHeader) (*string, error)
 		DeleteFile(fileId string) error
 		UpdateFile(fileId, fileName string) (*File, error)
 		GetLessonPlans(schoolId string, date time.Time) ([]LessonPlan, error)

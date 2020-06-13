@@ -767,7 +767,7 @@ func addFile(server rest.Server, store Store) http.Handler {
 			}
 		}
 
-		_, fileHeader, err := r.FormFile("file")
+		file, fileHeader, err := r.FormFile("file")
 		if err != nil {
 			return &rest.Error{
 				Code:    http.StatusBadRequest,
@@ -776,7 +776,7 @@ func addFile(server rest.Server, store Store) http.Handler {
 			}
 		}
 
-		id, err := store.CreateFile(schoolId, fileHeader.Filename)
+		id, err := store.CreateFile(schoolId, file, fileHeader)
 		if err != nil {
 			return &rest.Error{
 				Code:    http.StatusInternalServerError,

@@ -2,6 +2,7 @@ package postgres
 
 import (
 	"github.com/go-pg/pg/v9/orm"
+	"mime/multipart"
 	"time"
 
 	"github.com/go-pg/pg/v9"
@@ -463,12 +464,17 @@ func (s SchoolStore) GetLessonFiles(schoolId string) ([]cSchool.File, error) {
 	return result, nil
 }
 
-func (s SchoolStore) CreateFile(schoolId, file string) (*string, error) {
+func (s SchoolStore) CreateFile(schoolId string, file multipart.File, fileHeader *multipart.FileHeader) (*string, error) {
 	newFile := File{
 		Id:       uuid.New().String(),
 		SchoolId: schoolId,
-		Name:     file,
+		Name:     fileHeader.Filename,
 	}
+	fileKey, err := s.FileStorage.Save(schoolId, newFile.Id, file, fileHeader.Size)
+	if err != nil {
+		return nil, richErrors.Wrap(err, "failed to save file to s3")
+	}
+	newFile.FileKey = fileKey
 	if err := s.Insert(&newFile); err != nil {
 		return nil, richErrors.Wrap(err, "failed to create file:")
 	}
