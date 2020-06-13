@@ -70,6 +70,13 @@ jobs:
   backend_unit:
     docker:
       - image: golang:1.14
+      - image: minio/minio:latest
+        entrypoint: sh
+        command: -c 'mkdir -p /data/media && /usr/bin/minio server /data'
+        environment:
+          MINIO_ACCESS_KEY: AKIAIOSFODNN7EXAMPLE
+          MINIO_SECRET_KEY: wJalrXUtnFEMIK7MDENGbPxRfiCYEXAMPLEKEY
+          MINIO_HTTP_TRACE: "/dev/stdout"
       - image: circleci/postgres:11
         environment:
           POSTGRES_PASSWORD: postgres
