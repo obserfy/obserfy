@@ -474,7 +474,7 @@ func (s SchoolStore) CreateFile(schoolId string, file multipart.File, fileHeader
 	if err != nil {
 		return nil, richErrors.Wrap(err, "failed to save file to s3")
 	}
-	newFile.FileKey = fileKey
+	newFile.ObjectKey = fileKey
 	if err := s.Insert(&newFile); err != nil {
 		return nil, richErrors.Wrap(err, "failed to create file:")
 	}
@@ -482,7 +482,19 @@ func (s SchoolStore) CreateFile(schoolId string, file multipart.File, fileHeader
 }
 
 func (s SchoolStore) DeleteFile(fileId string) error {
-	return s.Delete(&File{Id: fileId})
+	file := File{Id: fileId}
+	if err := s.Model(&file).
+		WherePK().
+		Column("object_key").
+		Select(); err != nil {
+		return richErrors.Wrap(err, "failed to query target file")
+	}
+
+	if err := s.FileStorage.Delete(file.ObjectKey); err != nil {
+		return richErrors.Wrap(err, "failed to delete file from s3")
+	}
+
+	return s.Delete(&file)
 }
 
 func (s SchoolStore) UpdateFile(fileId, fileName string) (*cSchool.File, error) {

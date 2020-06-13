@@ -56,7 +56,7 @@ func (s *SchoolTestSuite) TestUploadFile() {
 	assert.Equal(t, fileName, fileDataOnDb.Name)
 
 	// Get and compare file from minio with the test file
-	fileOnMinio, err := s.MinioClient.GetObject("media", fileDataOnDb.FileKey, minio.GetObjectOptions{})
+	fileOnMinio, err := s.MinioClient.GetObject("media", fileDataOnDb.ObjectKey, minio.GetObjectOptions{})
 	assert.NoError(t, err)
 	fileRead, err := ioutil.ReadAll(fileOnMinio)
 	assert.NoError(t, err)
@@ -78,4 +78,23 @@ func (s *SchoolTestSuite) TestPatchFile() {
 	err := s.DB.Model(&updatedFile).WherePK().Select()
 	assert.NoError(t, err)
 	assert.Equal(t, payload.Name, updatedFile.Name)
+}
+
+func (s *SchoolTestSuite) TestDeleteFile() {
+	t := s.T()
+	gofakeit.Seed(time.Now().UnixNano())
+	file, userId := s.SaveNewFile()
+
+	payload := struct {
+		Name string `json:"name"`
+	}{Name: gofakeit.Name()}
+	result := s.CreateRequest("DELETE", "/"+file.SchoolId+"/files/"+file.Id, payload, &userId)
+	assert.Equal(t, http.StatusOK, result.Code)
+
+	updatedFile := postgres.File{Id: file.Id}
+	err := s.DB.Model(&updatedFile).WherePK().Select()
+	assert.Error(t, err)
+
+	_, err = s.MinioClient.StatObject("media", file.ObjectKey, minio.StatObjectOptions{})
+	assert.Error(t, err)
 }
