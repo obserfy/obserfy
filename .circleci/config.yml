@@ -91,6 +91,9 @@ jobs:
           environment:
             DOCKERIZE_VERSION: v0.3.0
       - run:
+          name: Wait for minio
+          command: dockerize -wait tcp://localhost:9000 -timeout 1m
+      - run:
           name: Wait for db
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
       - run: |
