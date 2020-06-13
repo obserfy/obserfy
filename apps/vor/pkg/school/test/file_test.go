@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"github.com/brianvoe/gofakeit/v4"
 	"github.com/chrsep/vor/pkg/postgres"
+	"github.com/minio/minio-go/v6"
 	"github.com/stretchr/testify/assert"
 	"io/ioutil"
 	"mime/multipart"
@@ -48,9 +49,16 @@ func (s *SchoolTestSuite) TestUploadFile() {
 	err = json.Unmarshal(result.Body.Bytes(), &response)
 	assert.NoError(t, err)
 
-	fileSaved := postgres.File{Id: response.Id}
-	err = s.DB.Model(&fileSaved).WherePK().Select()
+	fileDataOnDb := postgres.File{Id: response.Id}
+	err = s.DB.Model(&fileDataOnDb).WherePK().Select()
 	assert.NoError(t, err)
 
-	assert.Equal(t, fileName, fileSaved.Name)
+	assert.Equal(t, fileName, fileDataOnDb.Name)
+
+	// Get and compare file from minio with the test file
+	fileOnMinio, err := s.MinioClient.GetObject("media", fileDataOnDb.FileKey, minio.GetObjectOptions{})
+	assert.NoError(t, err)
+	fileRead, err := ioutil.ReadAll(fileOnMinio)
+	assert.NoError(t, err)
+	assert.Equal(t, fileContents, fileRead)
 }
