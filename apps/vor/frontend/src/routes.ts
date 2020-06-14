@@ -45,3 +45,6 @@ export const NEW_GUARDIANS_URL = (studentId: string): string =>
 
 export const EDIT_STUDENT_CLASS_URL = (id: string) =>
   `/dashboard/observe/students/profile/classes/edit?id=${id}`
+
+export const NEW_STUDENT_CLASS_URL = (id: string) =>
+  `/dashboard/observe/students/profile/classes/new?id=${id}`

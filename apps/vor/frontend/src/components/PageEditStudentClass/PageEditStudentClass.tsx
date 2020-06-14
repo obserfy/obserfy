@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react"
 import { BackNavigation } from "../BackNavigation/BackNavigation"
-import { NEW_GUARDIANS_URL, STUDENT_PROFILE_URL } from "../../routes"
+import { NEW_STUDENT_CLASS_URL, STUDENT_PROFILE_URL } from "../../routes"
 import Box from "../Box/Box"
 import { useGetStudent } from "../../api/useGetStudent"
 import useGetSchoolClasses from "../../api/classes/useGetSchoolClasses"
@@ -66,7 +66,7 @@ export const PageEditStudentClass: FC<Props> = ({ studentId }) => {
       )}
       <Card borderRadius={[0, "default"]} mb={2} mx={[0, 3]}>
         <Link
-          to={NEW_GUARDIANS_URL(studentId)}
+          to={NEW_STUDENT_CLASS_URL(studentId)}
           data-cy="new-guardian"
           style={{ display: "block" }}
         >

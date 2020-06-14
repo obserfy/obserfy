@@ -154,6 +154,10 @@ func postNewClass(s rest.Server, store Store) http.Handler {
 		EndTime   time.Time      `json:"endTime"`
 		Weekdays  []time.Weekday `json:"weekdays"`
 	}
+
+	type responseBody struct {
+		Id string `json:"id"`
+	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		schoolId := chi.URLParam(r, "schoolId")
 
@@ -162,7 +166,7 @@ func postNewClass(s rest.Server, store Store) http.Handler {
 			return rest.NewParseJsonError(err)
 		}
 
-		err := store.NewClass(
+		id, err := store.NewClass(
 			schoolId,
 			body.Name,
 			body.Weekdays,
@@ -178,6 +182,12 @@ func postNewClass(s rest.Server, store Store) http.Handler {
 		}
 
 		w.WriteHeader(http.StatusCreated)
+		response := responseBody{
+			Id: id,
+		}
+		if err := rest.WriteJson(w, &response); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
 		return nil
 	})
 }

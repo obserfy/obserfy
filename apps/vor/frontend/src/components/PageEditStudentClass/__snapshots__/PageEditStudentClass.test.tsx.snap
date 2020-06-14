@@ -398,7 +398,7 @@ exports[`PageEditStudentClass should render correctly 1`] = `
       >
         <a
           data-cy="new-guardian"
-          href="/dashboard/observe/students/profile/guardians/new?id=asdfasfd"
+          href="/dashboard/observe/students/profile/classes/new?id=asdfasfd"
           style="display: block;"
         >
           <div

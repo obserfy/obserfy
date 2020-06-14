@@ -121,7 +121,7 @@ type (
 		DeleteCurriculum(schoolId string) error
 		GetCurriculum(schoolId string) (*Curriculum, error)
 		GetCurriculumAreas(schoolId string) ([]Area, error)
-		NewClass(id string, name string, weekdays []time.Weekday, startTime, endTime time.Time) error
+		NewClass(id, name string, weekdays []time.Weekday, startTime, endTime time.Time) (string, error)
 		GetSchoolClasses(schoolId string) ([]Class, error)
 		InsertGuardianWithRelation(input GuardianWithRelation) (*Guardian, error)
 		GetGuardians(schoolId string) ([]Guardian, error)

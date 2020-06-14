@@ -294,7 +294,7 @@ func (s SchoolStore) GetCurriculumAreas(schoolId string) ([]cSchool.Area, error)
 	return res, nil
 }
 
-func (s SchoolStore) NewClass(id string, name string, weekdays []time.Weekday, startTime, endTime time.Time) error {
+func (s SchoolStore) NewClass(id string, name string, weekdays []time.Weekday, startTime, endTime time.Time) (string, error) {
 	newClass := Class{
 		Id:        uuid.New().String(),
 		SchoolId:  id,
@@ -320,9 +320,9 @@ func (s SchoolStore) NewClass(id string, name string, weekdays []time.Weekday, s
 		}
 		return nil
 	}); err != nil {
-		return err
+		return "", err
 	}
-	return nil
+	return newClass.Id, nil
 }
 
 func (s SchoolStore) GetSchoolClasses(schoolId string) ([]cSchool.Class, error) {
