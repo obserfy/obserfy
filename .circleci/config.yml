@@ -128,7 +128,7 @@ jobs:
       - attach_workspace:
           at: ../
       - run: |
-          yarn workspace vor run lint
+          yarn workspaces run lint
 
   frontend_typecheck:
     docker:
@@ -139,7 +139,7 @@ jobs:
       - attach_workspace:
           at: ../
       - run: |
-          yarn workspace vor run typecheck
+          yarn workspaces run typecheck
 
   deploy:
     machine:
