@@ -1,4 +1,7 @@
-import React, { FC, useState } from "react"
+/** @jsx jsx */
+import { FC, useState } from "react"
+import { jsx } from "theme-ui"
+import { Fragment } from "react"
 import { Link } from "../Link/Link"
 import { Box } from "../Box/Box"
 import SearchBar from "../SearchBar/SearchBar"
@@ -36,7 +39,7 @@ export const PageHome: FC = () => {
   const studentList =
     students.status === "success" &&
     matchedStudent?.map(({ profilePicUrl, name, id }) => (
-      <Link to={STUDENT_DETAILS_PAGE_URL(id)}>
+      <Link to={STUDENT_DETAILS_PAGE_URL(id)} sx={{ display: "block" }}>
         <Card
           p={3}
           mx={[0, 3]}
@@ -88,7 +91,7 @@ export const PageHome: FC = () => {
       {emptyData && <NoStudentPlaceholder />}
       {students.status === "loading" && <StudentLoadingPlaceholder />}
       {students.status === "error" && (
-        <>
+        <Fragment>
           <Typography.Body textAlign="center" mx={4} mb={3}>
             Oops, we fail to fetch new student data. Please try again in a
             minute.
@@ -96,7 +99,7 @@ export const PageHome: FC = () => {
           <Button mx="auto" onClick={students.refetch}>
             Try again
           </Button>
-        </>
+        </Fragment>
       )}
     </Box>
   )
