@@ -6,10 +6,9 @@
  */
 
 import React, { FC } from "react"
-
+import { Link } from "gatsby"
 import Header from "./header"
 import "./global.css"
-import { Link } from "gatsby"
 
 const Layout: FC = ({ children }) => {
   return (

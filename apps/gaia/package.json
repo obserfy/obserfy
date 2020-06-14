@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "eslint --ext .tsx,.ts ./",
+    "typecheck": "tsc --noemit"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "0.13.0",

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import React, { useState } from "react"
 import Head from "next/head"
 import dayjs from "../utils/dayjs"
@@ -6,7 +7,6 @@ import ChevronRight from "../icons/chevron-right.svg"
 import ChevronLeft from "../icons/chevron-left.svg"
 import useGetChildPlans from "../hooks/useGetChildPlans"
 import { useQueryString } from "../hooks/useQueryString"
-import DisappointedIllustration from "../images/disappointed-illustration.png"
 import Plan from "../components/plan"
 
 const IndexPage = () => {
