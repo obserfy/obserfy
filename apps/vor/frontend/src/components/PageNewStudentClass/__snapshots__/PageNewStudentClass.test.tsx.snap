@@ -450,7 +450,7 @@ exports[`PageNewStudentClass should render correctly 1`] = `
       class="emotion-37"
     >
       <a
-        href="/dashboard/observe/students/profile/classes/edit?id=undefined"
+        href="/dashboard/observe/students/profile/classes/edit?id=adsfnalskfdb"
         style="display: block;"
       >
         <div
