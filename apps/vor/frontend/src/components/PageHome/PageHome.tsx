@@ -1,7 +1,6 @@
 /** @jsx jsx */
-import { FC, useState } from "react"
+import { FC, Fragment, useState } from "react"
 import { jsx } from "theme-ui"
-import { Fragment } from "react"
 import { Link } from "../Link/Link"
 import { Box } from "../Box/Box"
 import SearchBar from "../SearchBar/SearchBar"
