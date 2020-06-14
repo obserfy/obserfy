@@ -7,7 +7,11 @@ import { useGetStudent } from "../../api/useGetStudent"
 import { usePatchStudentApi } from "../../api/students/usePatchStudentApi"
 import Card from "../Card/Card"
 import Typography from "../Typography/Typography"
-import { EDIT_GUARDIANS_URL, STUDENT_DETAILS_PAGE_URL } from "../../routes"
+import {
+  EDIT_GUARDIANS_URL,
+  EDIT_STUDENT_CLASS_URL,
+  STUDENT_DETAILS_PAGE_URL,
+} from "../../routes"
 import dayjs from "../../dayjs"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
 import Button from "../Button/Button"
@@ -92,9 +96,15 @@ export const PageStudentProfile: FC<Props> = ({ id }) => {
             })}
           </Box>
 
-          <Button variant="outline" ml="auto" px={2} mt={3} mr={3}>
-            <Icon as={EditIcon} m={0} />
-          </Button>
+          <Link
+            to={EDIT_STUDENT_CLASS_URL(id)}
+            sx={{ ml: "auto", mt: 3, mr: 3 }}
+            data-cy="edit-classes"
+          >
+            <Button variant="outline" ml="auto" px={2}>
+              <Icon as={EditIcon} m={0} />
+            </Button>
+          </Link>
         </Flex>
       </Card>
 
