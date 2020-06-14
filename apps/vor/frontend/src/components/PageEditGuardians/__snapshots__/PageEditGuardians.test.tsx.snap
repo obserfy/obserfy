@@ -18,7 +18,7 @@ exports[`PageEditGuardians should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  max-width: 700px;
+  max-width: 640px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -418,7 +418,7 @@ exports[`PageEditGuardians should render correctly 1`] = `
       <p
         class="emotion-11"
       >
-        Add existing guardian
+        Select from existing guardian
       </p>
       <div
         class="emotion-15"

@@ -40,7 +40,7 @@ export const PageEditGuardians: FC<Props> = ({ studentId }) => {
   })
 
   return (
-    <Box maxWidth="maxWidth.md" mx="auto">
+    <Box maxWidth="maxWidth.sm" mx="auto">
       <BackNavigation
         to={STUDENT_PROFILE_URL(studentId)}
         text="Student Profile"
@@ -89,7 +89,7 @@ export const PageEditGuardians: FC<Props> = ({ studentId }) => {
         </Link>
       </Card>
       <Typography.Body mx={3} mt={4} color="textMediumEmphasis">
-        Add existing guardian
+        Select from existing guardian
       </Typography.Body>
       <Box px={3} pb={3} pt={2}>
         <SearchBar
