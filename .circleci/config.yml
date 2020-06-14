@@ -9,7 +9,7 @@ jobs:
       - restore_cache:
           name: Restore Yarn Package Cache
           keys:
-            - build-v3-{{ checksum "yarn.lock" }}
+            - build-v4-{{ checksum "yarn.lock" }}
       - run: |
           yarn install --frozen-lockfile
       - run: |
@@ -20,17 +20,24 @@ jobs:
           root: ../
           paths:
             - repo/node_modules
+            - repo/apps/gaia/node_modules
+            - repo/apps/freyr/node_modules
             - repo/apps/vor/frontend/.cache
             - repo/apps/vor/frontend/public
             - .cache/Cypress
       - save_cache:
           when: always
           name: Save Yarn Package Cache
-          key: build-v3-{{ checksum "yarn.lock" }}
+          key: build-v4-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
             - ~/.cache/Cypress
             - ./node_modules
+            - ./apps/gaia/node_modules
+            - ./apps/freyr/node_modules
+            - ./apps/vor/frontend/.cache
+            - ./apps/vor/frontend/public
+            - ./apps/vor/frontend/node_modules
       - store_artifacts:
           path: ./vor/frontend/public
 
