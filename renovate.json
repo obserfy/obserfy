@@ -1,56 +1,23 @@
 {
   "extends": ["config:base"],
-  "prCreation": "status-success",
-  "schedule": ["on the last day of the week"],
+  "automerge": true,
   "packageRules": [
     {
       "packagePatterns": ["eslint"],
-      "groupName": "eslint",
-      "automerge": true
+      "groupName": "eslint"
     },
     {
       "packagePatterns": ["gatsby"],
-      "groupName": "gatsby",
-      "automerge": true
+      "groupName": "gatsby"
     },
     {
-      "packagePatterns": ["cypress"],
-      "groupName": "cypress",
-      "automerge": true
-    },
-    {
-      "packagePatterns": ["go"],
-      "groupName": "go",
-      "automerge": true
-    },
-    {
-      "packagePatterns": ["jest"],
-      "groupName": "jest",
-      "automerge": true
-    },
-    {
-      "packagePatterns": ["storybook"],
-      "groupName": "storybook",
-      "automerge": true
-    },
-    {
-      "packagePatterns": ["typescript", "@types"],
-      "groupName": "typescript",
-      "automerge": true
-    },
-    {
-      "packagePatterns": ["babel"],
-      "groupName": "babel",
-      "automerge": true
-    },
-    {
-      "packagePatterns": ["react"],
-      "groupName": "react",
-      "automerge": true
+      "packagePatterns": ["@storybook"],
+      "groupName": "storybook"
     },
     {
       "packagePatterns": ["core-js"],
-      "groupName": "core-js"
+      "groupName": "core-js",
+      "automerge": false
     }
   ]
 }
