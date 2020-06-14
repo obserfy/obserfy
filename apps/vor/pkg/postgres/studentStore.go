@@ -22,8 +22,10 @@ func (s StudentStore) NewClassRelation(studentId string, classId string) error {
 }
 
 func (s StudentStore) DeleteClassRelation(studentId string, classId string) error {
-	relation := StudentToClass{ClassId: classId, StudentId: studentId}
-	if err := s.Delete(&relation); err != nil {
+	var relation StudentToClass
+	if _, err := s.Model(&relation).
+		Where("student_id = ? AND class_id = ?", studentId, classId).
+		Delete(); err != nil {
 		return richErrors.Wrap(err, "failed to delete class from student relation")
 	}
 	return nil
