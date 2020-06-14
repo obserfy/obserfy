@@ -1,11 +1,10 @@
 /** @jsx jsx */
-import { FC, useState, Fragment } from "react"
+import { FC, Fragment, useState } from "react"
 import { jsx } from "theme-ui"
 import Box from "../Box/Box"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { useGetStudent } from "../../api/useGetStudent"
-import { updateStudentApi } from "../../api/students/updateStudentApi"
-
+import { usePatchStudentApi } from "../../api/students/usePatchStudentApi"
 import Card from "../Card/Card"
 import Typography from "../Typography/Typography"
 import { EDIT_GUARDIANS_URL, STUDENT_DETAILS_PAGE_URL } from "../../routes"
@@ -150,10 +149,11 @@ const NameDataBox: FC<{ value?: string; studentId: string }> = ({
   value,
   studentId,
 }) => {
+  const [mutate, { status }] = usePatchStudentApi(studentId)
   const [showEditDialog, setShowEditDialog] = useState(false)
   const [name, setName] = useState(value)
   const saveName = async () => {
-    await updateStudentApi({ id: studentId, name })
+    await mutate({ id: studentId, name })
     setShowEditDialog(false)
   }
   return (
@@ -170,6 +170,7 @@ const NameDataBox: FC<{ value?: string; studentId: string }> = ({
             onAcceptText="Save"
             onCancel={() => setShowEditDialog(false)}
             onAccept={saveName}
+            loading={status === "loading"}
           />
           <Box backgroundColor="background" p={3}>
             <Input
@@ -191,10 +192,11 @@ const GenderDataBox: FC<{ value?: number; studentId: string }> = ({
   value,
   studentId,
 }) => {
+  const [mutate, { status }] = usePatchStudentApi(studentId)
   const [showEditDialog, setShowEditDialog] = useState(false)
   const [gender, setGender] = useState(value)
   const saveGender = async () => {
-    await updateStudentApi({ id: studentId, gender })
+    await mutate({ id: studentId, gender })
     setShowEditDialog(false)
   }
   return (
@@ -220,6 +222,7 @@ const GenderDataBox: FC<{ value?: number; studentId: string }> = ({
             onAcceptText="Save"
             onCancel={() => setShowEditDialog(false)}
             onAccept={saveGender}
+            loading={status === "loading"}
           />
           <Box backgroundColor="background" p={3}>
             <Select
@@ -244,10 +247,11 @@ const StudentIdDataBox: FC<{ value?: string; studentId: string }> = ({
   value,
   studentId,
 }) => {
+  const [mutate, { status }] = usePatchStudentApi(studentId)
   const [showEditDialog, setShowEditDialog] = useState(false)
   const [customId, setCustomId] = useState(value)
   const saveCustomId = async () => {
-    await updateStudentApi({ id: studentId, customId })
+    await mutate({ id: studentId, customId })
     setShowEditDialog(false)
   }
   return (
@@ -264,6 +268,7 @@ const StudentIdDataBox: FC<{ value?: string; studentId: string }> = ({
             onAcceptText="Save"
             onCancel={() => setShowEditDialog(false)}
             onAccept={saveCustomId}
+            loading={status === "loading"}
           />
           <Box backgroundColor="background" p={3}>
             <Input
@@ -286,10 +291,11 @@ const DateOfBirthDataBox: FC<{ value?: string; studentId: string }> = ({
   value,
   studentId,
 }) => {
+  const [mutate, { status }] = usePatchStudentApi(studentId)
   const [showEditDialog, setShowEditDialog] = useState(false)
   const [date, setDate] = useState(dayjs(value || 0))
   const saveDateOfBirth = async () => {
-    await updateStudentApi({
+    await mutate({
       id: studentId,
       dateOfBirth: new Date(date.toString()),
     })
@@ -309,6 +315,7 @@ const DateOfBirthDataBox: FC<{ value?: string; studentId: string }> = ({
             onAcceptText="Save"
             onCancel={() => setShowEditDialog(false)}
             onAccept={saveDateOfBirth}
+            loading={status === "loading"}
           />
           <Flex p={3} backgroundColor="background">
             <DatePicker value={date} onChange={setDate} />
@@ -323,12 +330,13 @@ const DateOfEntryDataBox: FC<{ value?: string; studentId: string }> = ({
   value,
   studentId,
 }) => {
+  const [mutate, { status }] = usePatchStudentApi(studentId)
   const [showEditDialog, setShowEditDialog] = useState(false)
   const [date, setDate] = useState(dayjs(value || 0))
   const saveDateOfEntry = async () => {
-    await updateStudentApi({
+    await mutate({
       id: studentId,
-      dateOfEntry: new Date(date.toString()),
+      dateOfEntry: date.toISOString(),
     })
     setShowEditDialog(false)
   }
@@ -346,6 +354,7 @@ const DateOfEntryDataBox: FC<{ value?: string; studentId: string }> = ({
             onAcceptText="Save"
             onCancel={() => setShowEditDialog(false)}
             onAccept={saveDateOfEntry}
+            loading={status === "loading"}
           />
           <Flex p={3} backgroundColor="background">
             <DatePicker value={date} onChange={setDate} />
