@@ -17,12 +17,14 @@ func NewRouter(s rest.Server, store Store) *chi.Mux {
 		r.Use(authorizationMiddleware(s, store))
 		r.Method("GET", "/", getStudent(s, store))
 		r.Method("DELETE", "/", deleteStudent(s, store))
-		// TODO:Use PATCH instead of PUT, and implement UPSERT
-		r.Method("PUT", "/", putStudent(s, store))
+		r.Method("PATCH", "/", putStudent(s, store))
+
 		r.Method("POST", "/observations", postObservation(s, store))
 		r.Method("GET", "/observations", getObservation(s, store))
+
 		r.Method("POST", "/attendances", registerAttendance(s, store))
 		r.Method("GET", "/attendances", getAttendance(s, store))
+
 		r.Method("GET", "/materialsProgress", getMaterialProgress(s, store))
 		r.Method("PATCH", "/materialsProgress/{materialId}", upsertMaterialProgress(s, store))
 
@@ -223,8 +225,8 @@ func deleteStudent(s rest.Server, store Store) http.Handler {
 
 func putStudent(s rest.Server, store Store) http.Handler {
 	type requestBody struct {
-		Name        string     `json:"name"`
-		DateOfBirth *time.Time `json:"dateOfBirth"`
+		Name        string          `json:"name"`
+		DateOfBirth *time.Time      `json:"dateOfBirth"`
 		DateOfEntry *time.Time      `json:"dateOfEntry"`
 		CustomId    string          `json:"customId"`
 		Gender      postgres.Gender `json:"gender"`
