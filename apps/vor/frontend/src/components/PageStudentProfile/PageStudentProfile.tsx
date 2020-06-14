@@ -391,7 +391,13 @@ const DataBox: FC<{
       </Typography.Body>
       <Typography.Body lineHeight={1.6}>{value}</Typography.Body>
     </Box>
-    <Button variant="outline" ml="auto" px={2} onClick={onEditClick}>
+    <Button
+      variant="outline"
+      ml="auto"
+      px={2}
+      onClick={onEditClick}
+      aria-label={`edit-${label.toLowerCase()}`}
+    >
       <Icon as={EditIcon} m={0} />
     </Button>
   </Flex>
