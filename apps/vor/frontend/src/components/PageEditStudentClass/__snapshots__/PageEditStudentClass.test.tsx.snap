@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PageEditGuardians should render correctly 1`] = `
+exports[`PageEditStudentClass should render correctly 1`] = `
 .emotion-18 {
   box-sizing: border-box;
   margin: 0;
@@ -18,9 +18,9 @@ exports[`PageEditGuardians should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  max-width: 640px;
   margin-left: auto;
   margin-right: auto;
+  max-width: 640px;
 }
 
 .emotion-2 {
@@ -382,7 +382,7 @@ exports[`PageEditGuardians should render correctly 1`] = `
       class="emotion-17"
     >
       <a
-        href="/dashboard/observe/students/profile?id=adhfakjldsf"
+        href="/dashboard/observe/students/profile?id=asdfasfd"
         style="display: block;"
       >
         <div
@@ -404,12 +404,12 @@ exports[`PageEditGuardians should render correctly 1`] = `
       <h5
         class="emotion-4"
       >
-        Edit Guardians
+        Edit Classes
       </h5>
       <p
         class="emotion-5"
       >
-        Current guardians
+        Current classes
       </p>
       <div
         class="emotion-7"
@@ -417,7 +417,7 @@ exports[`PageEditGuardians should render correctly 1`] = `
         <p
           class="emotion-6"
         >
-          No guardians set yet
+          No classes selected yet
         </p>
       </div>
       <div
@@ -425,7 +425,7 @@ exports[`PageEditGuardians should render correctly 1`] = `
       >
         <a
           data-cy="new-guardian"
-          href="/dashboard/observe/students/profile/guardians/new?id=adhfakjldsf"
+          href="/dashboard/observe/students/profile/classes/new?id=asdfasfd"
           style="display: block;"
         >
           <div
@@ -434,7 +434,7 @@ exports[`PageEditGuardians should render correctly 1`] = `
             <p
               class="emotion-8"
             >
-              Create new guardian
+              Create new class
             </p>
             <div
               class="emotion-9"
@@ -445,7 +445,7 @@ exports[`PageEditGuardians should render correctly 1`] = `
       <p
         class="emotion-12"
       >
-        Select from existing guardian
+        Select from existing class
       </p>
       <div
         class="emotion-16"

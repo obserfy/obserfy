@@ -30,8 +30,57 @@ func NewRouter(s rest.Server, store Store) *chi.Mux {
 
 		r.Method("POST", "/guardianRelations", postNewGuardianRelation(s, store))
 		r.Method("DELETE", "/guardianRelations/{guardianId}", deleteGuardianRelation(s, store))
+
+		r.Method("POST", "/classes", postClassRelation(s, store))
+		r.Method("DELETE", "/classes", deleteClassRelation(s, store))
 	})
 	return r
+}
+
+func postClassRelation(s rest.Server, store Store) http.Handler {
+	type reqBody struct {
+		ClassId string `json:"classId"`
+	}
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		studentId := chi.URLParam(r, "studentId")
+
+		var body reqBody
+		if err := rest.ParseJson(r.Body, &body); err != nil {
+			return rest.NewParseJsonError(err)
+		}
+
+		if err := store.NewClassRelation(studentId, body.ClassId); err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "failed to create class relationship",
+				Error:   err,
+			}
+		}
+		return nil
+	})
+}
+
+func deleteClassRelation(s rest.Server, store Store) http.Handler {
+	type reqBody struct {
+		ClassId string `json:"classId"`
+	}
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		studentId := chi.URLParam(r, "studentId")
+
+		var body reqBody
+		if err := rest.ParseJson(r.Body, &body); err != nil {
+			return rest.NewParseJsonError(err)
+		}
+
+		if err := store.DeleteClassRelation(studentId, body.ClassId); err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "failed to delete class relationship",
+				Error:   err,
+			}
+		}
+		return nil
+	})
 }
 
 func authorizationMiddleware(s rest.Server, store Store) func(next http.Handler) http.Handler {
