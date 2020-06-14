@@ -13,7 +13,7 @@ type StudentStore struct {
 	*pg.DB
 }
 
-func (s StudentStore) NewClassRelationship(studentId string, classId string) error {
+func (s StudentStore) NewClassRelation(studentId string, classId string) error {
 	relation := StudentToClass{ClassId: classId, StudentId: studentId}
 	if err := s.Insert(&relation); err != nil {
 		return richErrors.Wrap(err, "failed to save class to student relation")
@@ -21,7 +21,7 @@ func (s StudentStore) NewClassRelationship(studentId string, classId string) err
 	return nil
 }
 
-func (s StudentStore) DeleteClassRelationship(studentId string, classId string) error {
+func (s StudentStore) DeleteClassRelation(studentId string, classId string) error {
 	relation := StudentToClass{ClassId: classId, StudentId: studentId}
 	if err := s.Delete(&relation); err != nil {
 		return richErrors.Wrap(err, "failed to delete class from student relation")

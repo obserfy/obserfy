@@ -31,13 +31,13 @@ func NewRouter(s rest.Server, store Store) *chi.Mux {
 		r.Method("POST", "/guardianRelations", postNewGuardianRelation(s, store))
 		r.Method("DELETE", "/guardianRelations/{guardianId}", deleteGuardianRelation(s, store))
 
-		r.Method("POST", "/classes", postClassRelationship(s, store))
-		r.Method("DELETE", "/classes", deleteClassRelationship(s, store))
+		r.Method("POST", "/classes", postClassRelation(s, store))
+		r.Method("DELETE", "/classes", deleteClassRelation(s, store))
 	})
 	return r
 }
 
-func postClassRelationship(s rest.Server, store Store) http.Handler {
+func postClassRelation(s rest.Server, store Store) http.Handler {
 	type reqBody struct {
 		ClassId string `json:"classId"`
 	}
@@ -49,7 +49,7 @@ func postClassRelationship(s rest.Server, store Store) http.Handler {
 			return rest.NewParseJsonError(err)
 		}
 
-		if err := store.NewClassRelationship(studentId, body.ClassId); err != nil {
+		if err := store.NewClassRelation(studentId, body.ClassId); err != nil {
 			return &rest.Error{
 				Code:    http.StatusInternalServerError,
 				Message: "failed to create class relationship",
@@ -60,7 +60,7 @@ func postClassRelationship(s rest.Server, store Store) http.Handler {
 	})
 }
 
-func deleteClassRelationship(s rest.Server, store Store) http.Handler {
+func deleteClassRelation(s rest.Server, store Store) http.Handler {
 	type reqBody struct {
 		ClassId string `json:"classId"`
 	}
@@ -72,7 +72,7 @@ func deleteClassRelationship(s rest.Server, store Store) http.Handler {
 			return rest.NewParseJsonError(err)
 		}
 
-		if err := store.DeleteClassRelationship(studentId, body.ClassId); err != nil {
+		if err := store.DeleteClassRelation(studentId, body.ClassId); err != nil {
 			return &rest.Error{
 				Code:    http.StatusInternalServerError,
 				Message: "failed to delete class relationship",
