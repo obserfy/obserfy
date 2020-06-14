@@ -91,9 +91,11 @@ export const PageStudentProfile: FC<Props> = ({ id }) => {
             {data?.classes?.length === 0 && (
               <Typography.Body lineHeight={1}>Not set</Typography.Body>
             )}
-            {data?.classes?.map(() => {
-              return <Typography.Body lineHeight={1}>Name</Typography.Body>
-            })}
+            {data?.classes?.map((currentClass) => (
+              <Typography.Body lineHeight={1} key={currentClass.id} mt={3}>
+                {currentClass.name}
+              </Typography.Body>
+            ))}
           </Box>
 
           <Link
