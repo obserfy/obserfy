@@ -45,8 +45,11 @@ export const PageEditGuardians: FC<Props> = ({ studentId }) => {
         to={STUDENT_PROFILE_URL(studentId)}
         text="Student Profile"
       />
-      <Typography.H5 mx={3} mb={4} mt={3}>
+      <Typography.H5 mx={3} mt={3} color="textDisabled">
         {student.data?.name}
+      </Typography.H5>
+      <Typography.H5 mx={3} mb={3}>
+        Edit Guardians
       </Typography.H5>
       <Typography.Body mx={3} mb={2} color="textMediumEmphasis">
         Current guardians
