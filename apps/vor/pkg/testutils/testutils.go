@@ -7,10 +7,13 @@ import (
 	"fmt"
 	"github.com/brianvoe/gofakeit/v4"
 	"github.com/chrsep/vor/pkg/auth"
+	cMinio "github.com/chrsep/vor/pkg/minio"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/rest"
 	"github.com/go-pg/pg/v9"
 	"github.com/google/uuid"
+	"github.com/joho/godotenv"
+	"github.com/minio/minio-go/v6"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
 	"go.uber.org/zap/zaptest"
@@ -21,9 +24,10 @@ import (
 
 type BaseTestSuite struct {
 	suite.Suite
-	DB      *pg.DB
-	Handler http.HandlerFunc
-	Server  rest.Server
+	DB          *pg.DB
+	MinioClient *minio.Client
+	Handler     http.HandlerFunc
+	Server      rest.Server
 }
 
 func (s *BaseTestSuite) TearDownSuite() {
@@ -33,9 +37,18 @@ func (s *BaseTestSuite) TearDownSuite() {
 }
 
 func (s *BaseTestSuite) SetupSuite() {
-	db, err := connectTestDB()
-	assert.NoError(s.T(), err)
-	s.DB = db
+	err := godotenv.Load("../../../../../.env.test")
+	if err != nil {
+		panic(err)
+	}
+	s.DB, err = connectTestDB()
+	if err != nil {
+		panic(err)
+	}
+	s.MinioClient, err = cMinio.NewClient()
+	if err != nil {
+		panic(err)
+	}
 	s.Server = rest.NewServer(zaptest.NewLogger(s.T()))
 }
 
@@ -119,6 +132,33 @@ func (s *BaseTestSuite) CreateRequest(method string, path string, bodyJson inter
 	assert.NoError(s.T(), err)
 
 	req := httptest.NewRequest(method, path, bytes.NewBuffer(body))
+	if userId != nil {
+		// Save session to DB
+		sessionToken := uuid.New().String()
+		err := s.DB.Insert(&postgres.Session{
+			Token:  sessionToken,
+			UserId: *userId,
+		})
+		assert.NoError(s.T(), err)
+
+		// Save session to context
+		ctx := context.WithValue(req.Context(), auth.SessionCtxKey, &auth.Session{
+			Token:  sessionToken,
+			UserId: *userId,
+		})
+		s.Handler(w, req.WithContext(ctx))
+		return w
+	}
+
+	s.Handler(w, req)
+	return w
+}
+
+func (s *BaseTestSuite) CreateMultipartRequest(url string, multipartForm *bytes.Buffer, boundary string, userId *string) *httptest.ResponseRecorder {
+	w := httptest.NewRecorder()
+
+	req := httptest.NewRequest("POST", url, multipartForm)
+	req.Header.Set("Content-Type", "multipart/form-data;boundary="+boundary)
 	if userId != nil {
 		// Save session to DB
 		sessionToken := uuid.New().String()

@@ -1,12 +1,17 @@
 /** @jsx jsx */
-import { FC, useState, Fragment } from "react"
+import { FC, Fragment, useState } from "react"
 import { jsx } from "theme-ui"
 import Box from "../Box/Box"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { useGetStudent } from "../../api/useGetStudent"
+import { usePatchStudentApi } from "../../api/students/usePatchStudentApi"
 import Card from "../Card/Card"
 import Typography from "../Typography/Typography"
-import { EDIT_GUARDIANS_URL, STUDENT_DETAILS_PAGE_URL } from "../../routes"
+import {
+  EDIT_GUARDIANS_URL,
+  EDIT_STUDENT_CLASS_URL,
+  STUDENT_DETAILS_PAGE_URL,
+} from "../../routes"
 import dayjs from "../../dayjs"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
 import Button from "../Button/Button"
@@ -45,16 +50,30 @@ export const PageStudentProfile: FC<Props> = ({ id }) => {
         text="Student Overview"
       />
       <Card borderRadius={[0, "default"]} mb={3}>
-        <NameDataBox value={data?.name} key={`name${data?.name}`} />
-        <GenderDataBox value={data?.gender} key={`gender${data?.gender}`} />
-        <StudentIdDataBox value={data?.customId} key={`id${data?.customId}`} />
+        <NameDataBox
+          value={data?.name}
+          key={`name${data?.name}`}
+          studentId={id}
+        />
+        <GenderDataBox
+          value={data?.gender}
+          key={`gender${data?.gender}`}
+          studentId={id}
+        />
+        <StudentIdDataBox
+          value={data?.customId}
+          key={`id${data?.customId}`}
+          studentId={id}
+        />
         <DateOfBirthDataBox
           value={data?.dateOfBirth}
           key={`dob${data?.dateOfBirth}`}
+          studentId={id}
         />
         <DateOfEntryDataBox
           value={data?.dateOfEntry}
           key={`doe${data?.dateOfEntry}`}
+          studentId={id}
         />
       </Card>
 
@@ -72,14 +91,22 @@ export const PageStudentProfile: FC<Props> = ({ id }) => {
             {data?.classes?.length === 0 && (
               <Typography.Body lineHeight={1}>Not set</Typography.Body>
             )}
-            {data?.classes?.map(() => {
-              return <Typography.Body lineHeight={1}>Name</Typography.Body>
-            })}
+            {data?.classes?.map((currentClass) => (
+              <Typography.Body lineHeight={1} key={currentClass.id} mt={3}>
+                {currentClass.name}
+              </Typography.Body>
+            ))}
           </Box>
 
-          <Button variant="outline" ml="auto" px={2} mt={3} mr={3}>
-            <Icon as={EditIcon} m={0} />
-          </Button>
+          <Link
+            to={EDIT_STUDENT_CLASS_URL(id)}
+            sx={{ ml: "auto", mt: 3, mr: 3 }}
+            data-cy="edit-classes"
+          >
+            <Button variant="outline" ml="auto" px={2}>
+              <Icon as={EditIcon} m={0} />
+            </Button>
+          </Link>
         </Flex>
       </Card>
 
@@ -130,8 +157,17 @@ export const PageStudentProfile: FC<Props> = ({ id }) => {
   )
 }
 
-const NameDataBox: FC<{ value?: string }> = ({ value }) => {
+const NameDataBox: FC<{ value?: string; studentId: string }> = ({
+  value,
+  studentId,
+}) => {
+  const [mutate, { status }] = usePatchStudentApi(studentId)
   const [showEditDialog, setShowEditDialog] = useState(false)
+  const [name, setName] = useState(value)
+  const saveName = async () => {
+    await mutate({ id: studentId, name })
+    setShowEditDialog(false)
+  }
   return (
     <Fragment>
       <DataBox
@@ -145,10 +181,18 @@ const NameDataBox: FC<{ value?: string }> = ({ value }) => {
             title="Edit Name"
             onAcceptText="Save"
             onCancel={() => setShowEditDialog(false)}
-            onAccept={() => setShowEditDialog(false)}
+            onAccept={saveName}
+            loading={status === "loading"}
           />
           <Box backgroundColor="background" p={3}>
-            <Input label="Name" sx={{ width: "100%" }} value={value} />
+            <Input
+              label="Name"
+              sx={{ width: "100%" }}
+              onChange={(e) => {
+                setName(e.target.value)
+              }}
+              value={name}
+            />
           </Box>
         </Dialog>
       )}
@@ -156,15 +200,24 @@ const NameDataBox: FC<{ value?: string }> = ({ value }) => {
   )
 }
 
-const GenderDataBox: FC<{ value?: number }> = ({ value }) => {
+const GenderDataBox: FC<{ value?: number; studentId: string }> = ({
+  value,
+  studentId,
+}) => {
+  const [mutate, { status }] = usePatchStudentApi(studentId)
   const [showEditDialog, setShowEditDialog] = useState(false)
+  const [gender, setGender] = useState(value)
+  const saveGender = async () => {
+    await mutate({ id: studentId, gender })
+    setShowEditDialog(false)
+  }
   return (
     <Fragment>
       <DataBox
         label="Gender"
         onEditClick={() => setShowEditDialog(true)}
         value={(() => {
-          switch (value) {
+          switch (gender) {
             case 1:
               return "Male"
             case 2:
@@ -180,10 +233,17 @@ const GenderDataBox: FC<{ value?: number }> = ({ value }) => {
             title="Edit Gender"
             onAcceptText="Save"
             onCancel={() => setShowEditDialog(false)}
-            onAccept={() => setShowEditDialog(false)}
+            onAccept={saveGender}
+            loading={status === "loading"}
           />
           <Box backgroundColor="background" p={3}>
-            <Select label="Gender" value={value}>
+            <Select
+              label="Gender"
+              value={gender}
+              onChange={(e) => {
+                setGender(parseInt(e.target.value, 10))
+              }}
+            >
               <option value={Gender.NotSet}>Not Set</option>
               <option value={Gender.Male}>Male</option>
               <option value={Gender.Female}>Female</option>
@@ -195,13 +255,22 @@ const GenderDataBox: FC<{ value?: number }> = ({ value }) => {
   )
 }
 
-const StudentIdDataBox: FC<{ value?: string }> = ({ value }) => {
+const StudentIdDataBox: FC<{ value?: string; studentId: string }> = ({
+  value,
+  studentId,
+}) => {
+  const [mutate, { status }] = usePatchStudentApi(studentId)
   const [showEditDialog, setShowEditDialog] = useState(false)
+  const [customId, setCustomId] = useState(value)
+  const saveCustomId = async () => {
+    await mutate({ id: studentId, customId })
+    setShowEditDialog(false)
+  }
   return (
     <Fragment>
       <DataBox
         label="Student ID"
-        value={value || "Not set"}
+        value={customId || "Not set"}
         onEditClick={() => setShowEditDialog(true)}
       />
       {showEditDialog && (
@@ -210,13 +279,17 @@ const StudentIdDataBox: FC<{ value?: string }> = ({ value }) => {
             title="Edit Student ID"
             onAcceptText="Save"
             onCancel={() => setShowEditDialog(false)}
-            onAccept={() => setShowEditDialog(false)}
+            onAccept={saveCustomId}
+            loading={status === "loading"}
           />
           <Box backgroundColor="background" p={3}>
             <Input
               label="Student ID"
               sx={{ width: "100%" }}
-              value={value}
+              value={customId}
+              onChange={(e) => {
+                setCustomId(e.target.value)
+              }}
               placeholder="Type an ID"
             />
           </Box>
@@ -226,15 +299,25 @@ const StudentIdDataBox: FC<{ value?: string }> = ({ value }) => {
   )
 }
 
-const DateOfBirthDataBox: FC<{ value?: string }> = ({ value }) => {
+const DateOfBirthDataBox: FC<{ value?: string; studentId: string }> = ({
+  value,
+  studentId,
+}) => {
+  const [mutate, { status }] = usePatchStudentApi(studentId)
   const [showEditDialog, setShowEditDialog] = useState(false)
   const [date, setDate] = useState(dayjs(value || 0))
-
+  const saveDateOfBirth = async () => {
+    await mutate({
+      id: studentId,
+      dateOfBirth: new Date(date.toString()),
+    })
+    setShowEditDialog(false)
+  }
   return (
     <Fragment>
       <DataBox
         label="Date of Birth"
-        value={value ? dayjs(value).format("D MMMM YYYY") : "N/A"}
+        value={date ? dayjs(date).format("D MMMM YYYY") : "N/A"}
         onEditClick={() => setShowEditDialog(true)}
       />
       {showEditDialog && (
@@ -243,7 +326,8 @@ const DateOfBirthDataBox: FC<{ value?: string }> = ({ value }) => {
             title="Edit Date of Birth"
             onAcceptText="Save"
             onCancel={() => setShowEditDialog(false)}
-            onAccept={() => setShowEditDialog(false)}
+            onAccept={saveDateOfBirth}
+            loading={status === "loading"}
           />
           <Flex p={3} backgroundColor="background">
             <DatePicker value={date} onChange={setDate} />
@@ -254,16 +338,26 @@ const DateOfBirthDataBox: FC<{ value?: string }> = ({ value }) => {
   )
 }
 
-const DateOfEntryDataBox: FC<{ value?: string }> = ({ value }) => {
+const DateOfEntryDataBox: FC<{ value?: string; studentId: string }> = ({
+  value,
+  studentId,
+}) => {
+  const [mutate, { status }] = usePatchStudentApi(studentId)
   const [showEditDialog, setShowEditDialog] = useState(false)
   const [date, setDate] = useState(dayjs(value || 0))
-
+  const saveDateOfEntry = async () => {
+    await mutate({
+      id: studentId,
+      dateOfEntry: date.toISOString(),
+    })
+    setShowEditDialog(false)
+  }
   return (
     <Fragment>
       <DataBox
         label="Date of Entry"
         onEditClick={() => setShowEditDialog(true)}
-        value={value ? dayjs(value).format("D MMMM YYYY") : "N/A"}
+        value={date ? dayjs(date).format("D MMMM YYYY") : "N/A"}
       />
       {showEditDialog && (
         <Dialog>
@@ -271,7 +365,8 @@ const DateOfEntryDataBox: FC<{ value?: string }> = ({ value }) => {
             title="Edit Date of Entry"
             onAcceptText="Save"
             onCancel={() => setShowEditDialog(false)}
-            onAccept={() => setShowEditDialog(false)}
+            onAccept={saveDateOfEntry}
+            loading={status === "loading"}
           />
           <Flex p={3} backgroundColor="background">
             <DatePicker value={date} onChange={setDate} />
@@ -308,7 +403,13 @@ const DataBox: FC<{
       </Typography.Body>
       <Typography.Body lineHeight={1.6}>{value}</Typography.Body>
     </Box>
-    <Button variant="outline" ml="auto" px={2} onClick={onEditClick}>
+    <Button
+      variant="outline"
+      ml="auto"
+      px={2}
+      onClick={onEditClick}
+      aria-label={`edit-${label.toLowerCase()}`}
+    >
       <Icon as={EditIcon} m={0} />
     </Button>
   </Flex>

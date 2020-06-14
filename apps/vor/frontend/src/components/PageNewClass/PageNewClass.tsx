@@ -10,7 +10,7 @@ import Flex from "../Flex/Flex"
 import Button from "../Button/Button"
 import { Typography } from "../Typography/Typography"
 import Chip from "../Chip/Chip"
-import usePostNewClass from "../../api/usePostNewClass"
+import usePostNewClass from "../../api/classes/usePostNewClass"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import ErrorMessage from "../ErrorMessage/ErrorMessage"
 

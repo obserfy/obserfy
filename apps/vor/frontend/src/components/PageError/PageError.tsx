@@ -37,14 +37,14 @@ export const PageError: FC = () => {
           m={3}
           mb={2}
         >
-          Something went wrong
+          Oops, Something went wrong
         </Typography.H3>
         <Typography.H6 mb={4}>Try reloading the page, sorry</Typography.H6>
         <Flex>
-          <a href="https://github.com/chrsep/vor/issues/new?assignees=&labels=&template=bug_report.md&title=">
+          <a href="https://github.com/chrsep/obserfy/issues/new?assignees=&labels=&template=bug_report.md&title=">
             <Button variant="outline">Report Bug</Button>
           </a>
-          <Box as="a" href={OBSERVE_PAGE_URL} ml={3}>
+          <Box as="a" href={OBSERVE_PAGE_URL} ml={2}>
             <Button>Go to Home</Button>
           </Box>
         </Flex>

@@ -13,6 +13,24 @@ type StudentStore struct {
 	*pg.DB
 }
 
+func (s StudentStore) NewClassRelation(studentId string, classId string) error {
+	relation := StudentToClass{ClassId: classId, StudentId: studentId}
+	if err := s.Insert(&relation); err != nil {
+		return richErrors.Wrap(err, "failed to save class to student relation")
+	}
+	return nil
+}
+
+func (s StudentStore) DeleteClassRelation(studentId string, classId string) error {
+	var relation StudentToClass
+	if _, err := s.Model(&relation).
+		Where("student_id = ? AND class_id = ?", studentId, classId).
+		Delete(); err != nil {
+		return richErrors.Wrap(err, "failed to delete class from student relation")
+	}
+	return nil
+}
+
 func (s StudentStore) InsertObservation(
 	studentId string,
 	creatorId string,
@@ -37,13 +55,13 @@ func (s StudentStore) InsertObservation(
 	}
 	return &observation, nil
 }
-func (s StudentStore) InsertAttendance(studentId string, classId string,date time.Time) (*Attendance, error) {
+func (s StudentStore) InsertAttendance(studentId string, classId string, date time.Time) (*Attendance, error) {
 	attendanceId := uuid.New()
 	attendance := Attendance{
 		Id:        attendanceId.String(),
 		StudentId: studentId,
 		ClassId:   classId,
-		Date: date,
+		Date:      date,
 	}
 	if err := s.Insert(&attendance); err != nil {
 		return nil, err
@@ -135,7 +153,11 @@ func (s StudentStore) Get(studentId string) (*Student, error) {
 }
 
 func (s StudentStore) UpdateStudent(student *Student) error {
-	return s.DB.Update(student)
+	if _, err := s.DB.Model(student).
+		WherePK().UpdateNotZero(); err != nil {
+		return richErrors.Wrap(err, "failed to update student")
+	}
+	return nil
 }
 
 func (s StudentStore) DeleteStudent(studentId string) error {

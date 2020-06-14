@@ -8,7 +8,7 @@ import Flex from "../Flex/Flex"
 import Typography from "../Typography/Typography"
 import Button from "../Button/Button"
 
-import useGetSchoolClasses from "../../api/useGetSchoolClasses"
+import useGetSchoolClasses from "../../api/classes/useGetSchoolClasses"
 import Card from "../Card/Card"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import { Box } from "../Box/Box"

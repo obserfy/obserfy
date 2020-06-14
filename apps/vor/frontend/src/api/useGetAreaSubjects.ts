@@ -8,7 +8,7 @@ export interface Subject {
 }
 export function useGetAreaSubjects(areaId: string): QueryResult<Subject[]> {
   const fetchAreaSubjects = fetchApi<Subject[]>(
-    `/curriculum/areas/${areaId}/subjects`
+    `/curriculums/areas/${areaId}/subjects`
   )
   return useQuery(["area_subjects", areaId], fetchAreaSubjects)
 }

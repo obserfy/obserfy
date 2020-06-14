@@ -4,19 +4,34 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/chrsep/vor/pkg/auth"
-	"github.com/chrsep/vor/pkg/postgres"
-	"github.com/chrsep/vor/pkg/rest"
 	"github.com/go-chi/chi"
 	"github.com/go-playground/validator/v10"
+
+	"github.com/chrsep/vor/pkg/auth"
+	"github.com/chrsep/vor/pkg/rest"
 )
 
-type Store interface {
-	UpdateObservation(observationId string, shortDesc string, longDesc string, categoryId string) (*postgres.Observation, error)
-	DeleteObservation(observationId string) error
-	GetObservation(id string) (*postgres.Observation, error)
-	CheckPermissions(observationId string, userId string) (bool, error)
-}
+type (
+	Observation struct {
+		Id          string
+		StudentId   string
+		StudentName string
+		ShortDesc   string
+		LongDesc    string
+		CategoryId  string
+		CreatedDate time.Time
+		EventTime   *time.Time
+		CreatorId   string
+		CreatorName string
+	}
+
+	Store interface {
+		UpdateObservation(observationId string, shortDesc string, longDesc string, categoryId string) (*Observation, error)
+		DeleteObservation(observationId string) error
+		GetObservation(id string) (*Observation, error)
+		CheckPermissions(observationId string, userId string) (bool, error)
+	}
+)
 
 func NewRouter(s rest.Server, store Store) *chi.Mux {
 	r := chi.NewRouter()
@@ -134,7 +149,7 @@ func getObservation(s rest.Server, store Store) http.Handler {
 
 		response := responseBody{
 			Id:          observation.Id,
-			StudentName: observation.Student.Name,
+			StudentName: observation.StudentName,
 			CategoryId:  observation.CategoryId,
 			LongDesc:    observation.LongDesc,
 			ShortDesc:   observation.ShortDesc,
@@ -143,7 +158,7 @@ func getObservation(s rest.Server, store Store) http.Handler {
 		}
 		if observation.CreatorId != "" {
 			response.CreatorId = observation.CreatorId
-			response.CreatorName = observation.Creator.Name
+			response.CreatorName = observation.CreatorName
 		}
 
 		if err := rest.WriteJson(w, response); err != nil {

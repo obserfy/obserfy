@@ -1,7 +1,7 @@
 module.exports = {
   parser: "@typescript-eslint/parser", // Specifies the ESLint parser
   parserOptions: {
-    project: "tsconfig.json",
+    project: "./cypress/tsconfig.json",
   },
   plugins: ["cypress"],
   extends: [

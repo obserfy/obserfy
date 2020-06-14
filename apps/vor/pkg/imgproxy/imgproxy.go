@@ -40,7 +40,7 @@ func (i Client) GenerateUrl(imagePath string, width int, height int) string {
 	return i.baseUrl + "/" + signature + path
 }
 
-func CreateClient() (*Client, error) {
+func NewClient() (*Client, error) {
 	key := os.Getenv("IMGPROXY_KEY")
 	salt := os.Getenv("IMGPROXY_SALT")
 	imgproxyUrl := os.Getenv("IMGPROXY_URL")

@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-background;
+}
+button {
+  @apply py-1 px-6 rounded text-onPrimary bg-primary font-bold;
+}
+button:disabled {
+  @apply opacity-50;
+}
+
+.loading-placeholder {
+  @apply bg-gray-300;
+}

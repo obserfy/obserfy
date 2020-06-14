@@ -5,7 +5,7 @@ import { fetchApi } from "./fetchApi"
 
 export function useGetCurriculumAreas(): QueryResult<Area[]> {
   const fetchCurriculumAreas = fetchApi<Area[]>(
-    `/schools/${getSchoolId()}/curriculum/areas`
+    `/schools/${getSchoolId()}/curriculums/areas`
   )
   return useQuery("areas", fetchCurriculumAreas)
 }

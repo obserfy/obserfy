@@ -1,0 +1,471 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageEditStudentClass should render correctly 1`] = `
+.emotion-18 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 16px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-18 {
+    font-size: 20px;
+  }
+}
+
+.emotion-17 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 640px;
+}
+
+.emotion-2 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-left: -8px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-0 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  margin: 16px;
+  height: 24px;
+  width: 24px;
+  margin-right: 4px;
+}
+
+.emotion-1 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  text-rendering: optimizeLegibility;
+  --webkitFontSmoothing: antialiased;
+  --mozOsxFontSmoothing: grayscale;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  font-size: 16px;
+  margin-bottom: 0;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-1 {
+    font-size: 14px;
+  }
+}
+
+.emotion-3 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 24px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 300;
+  line-height: heading;
+  font-size: 2.5rem;
+  line-height: 3rem;
+  -webkit-letter-spacing: 0;
+  -moz-letter-spacing: 0;
+  -ms-letter-spacing: 0;
+  letter-spacing: 0;
+  text-rendering: optimizeLegibility;
+  --webkitFontSmoothing: antialiased;
+  --mozOsxFontSmoothing: grayscale;
+  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-top: 16px;
+}
+
+.emotion-4 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 24px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 300;
+  line-height: heading;
+  font-size: 2.5rem;
+  line-height: 3rem;
+  -webkit-letter-spacing: 0;
+  -moz-letter-spacing: 0;
+  -ms-letter-spacing: 0;
+  letter-spacing: 0;
+  text-rendering: optimizeLegibility;
+  --webkitFontSmoothing: antialiased;
+  --mozOsxFontSmoothing: grayscale;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-bottom: 16px;
+}
+
+.emotion-5 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  text-rendering: optimizeLegibility;
+  --webkitFontSmoothing: antialiased;
+  --mozOsxFontSmoothing: grayscale;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  font-size: 16px;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-bottom: 8px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-5 {
+    font-size: 14px;
+  }
+}
+
+.emotion-7 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding: 8px;
+  background-color: var(--theme-ui-colors-surface,#fff);
+  border-radius: 8px;
+  box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
+  border-radius: 0;
+  padding: 0;
+  overflow: hidden;
+  margin-bottom: 8px;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-7 {
+    border-radius: 8px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .emotion-7 {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
+
+.emotion-6 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  text-rendering: optimizeLegibility;
+  --webkitFontSmoothing: antialiased;
+  --mozOsxFontSmoothing: grayscale;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  font-size: 14px;
+  margin: 16px;
+}
+
+.emotion-10 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 16px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-8 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  text-rendering: optimizeLegibility;
+  --webkitFontSmoothing: antialiased;
+  --mozOsxFontSmoothing: grayscale;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  font-size: 14px;
+  line-height: 1;
+}
+
+.emotion-9 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  fill: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  margin: 0;
+  height: 20px;
+  width: 20px;
+  margin-left: auto;
+  margin-right: 8px;
+}
+
+.emotion-12 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  text-rendering: optimizeLegibility;
+  --webkitFontSmoothing: antialiased;
+  --mozOsxFontSmoothing: grayscale;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  font-size: 16px;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-top: 32px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-12 {
+    font-size: 14px;
+  }
+}
+
+.emotion-16 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 16px;
+  padding-top: 8px;
+}
+
+.emotion-15 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  width: 100%;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  as: label;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-14 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-13 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: block;
+  width: 100%;
+  padding: 8px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: inherit;
+  line-height: inherit;
+  border: 1px solid;
+  border-radius: 8px;
+  color: inherit;
+  background-color: transparent;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  width: auto;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface,#fff);
+  font-size: 16px;
+  padding: 12px;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  background-color: var(--theme-ui-colors-surface,#fff);
+  width: 100%;
+}
+
+.emotion-13:hover,
+.emotion-13:focus {
+  border-color: var(--theme-ui-colors-primary,#00e399);
+  outline: none;
+}
+
+.emotion-13::-webkit-input-placeholder {
+  font-style: italic;
+}
+
+.emotion-13::-moz-placeholder {
+  font-style: italic;
+}
+
+.emotion-13:-ms-input-placeholder {
+  font-style: italic;
+}
+
+.emotion-13::placeholder {
+  font-style: italic;
+}
+
+.emotion-13:disabled {
+  opacity: 0.68;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
+}
+
+<div>
+  <div
+    class="emotion-18"
+  >
+    <div
+      class="emotion-17"
+    >
+      <a
+        href="/dashboard/observe/students/profile?id=asdfasfd"
+        style="display: block;"
+      >
+        <div
+          class="emotion-2"
+        >
+          <div
+            class="emotion-0"
+          />
+          <p
+            class="emotion-1"
+          >
+            Student Profile
+          </p>
+        </div>
+      </a>
+      <h5
+        class="emotion-3"
+      />
+      <h5
+        class="emotion-4"
+      >
+        Edit Classes
+      </h5>
+      <p
+        class="emotion-5"
+      >
+        Current classes
+      </p>
+      <div
+        class="emotion-7"
+      >
+        <p
+          class="emotion-6"
+        >
+          No classes selected yet
+        </p>
+      </div>
+      <div
+        class="emotion-7"
+      >
+        <a
+          data-cy="new-guardian"
+          href="/dashboard/observe/students/profile/classes/new?id=asdfasfd"
+          style="display: block;"
+        >
+          <div
+            class="emotion-10"
+          >
+            <p
+              class="emotion-8"
+            >
+              Create new class
+            </p>
+            <div
+              class="emotion-9"
+            />
+          </div>
+        </a>
+      </div>
+      <p
+        class="emotion-12"
+      >
+        Select from existing class
+      </p>
+      <div
+        class="emotion-16"
+      >
+        <label
+          class="emotion-15"
+        >
+          <div
+            class="emotion-14"
+          >
+            <input
+              class="emotion-13"
+              name="name"
+              placeholder="Search"
+              value=""
+            />
+          </div>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+`;

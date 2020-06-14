@@ -17,19 +17,70 @@ func NewRouter(s rest.Server, store Store) *chi.Mux {
 		r.Use(authorizationMiddleware(s, store))
 		r.Method("GET", "/", getStudent(s, store))
 		r.Method("DELETE", "/", deleteStudent(s, store))
-		// TODO:Use PATCH instead of PUT, and implement UPSERT
-		r.Method("PUT", "/", putStudent(s, store))
+		r.Method("PATCH", "/", putStudent(s, store))
+
 		r.Method("POST", "/observations", postObservation(s, store))
 		r.Method("GET", "/observations", getObservation(s, store))
-		r.Method("POST", "/attendance", registerAttendance(s, store))
-		r.Method("GET", "/attendance", getAttendance(s, store))
+
+		r.Method("POST", "/attendances", registerAttendance(s, store))
+		r.Method("GET", "/attendances", getAttendance(s, store))
+
 		r.Method("GET", "/materialsProgress", getMaterialProgress(s, store))
 		r.Method("PATCH", "/materialsProgress/{materialId}", upsertMaterialProgress(s, store))
 
 		r.Method("POST", "/guardianRelations", postNewGuardianRelation(s, store))
 		r.Method("DELETE", "/guardianRelations/{guardianId}", deleteGuardianRelation(s, store))
+
+		r.Method("POST", "/classes", postClassRelation(s, store))
+		r.Method("DELETE", "/classes", deleteClassRelation(s, store))
 	})
 	return r
+}
+
+func postClassRelation(s rest.Server, store Store) http.Handler {
+	type reqBody struct {
+		ClassId string `json:"classId"`
+	}
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		studentId := chi.URLParam(r, "studentId")
+
+		var body reqBody
+		if err := rest.ParseJson(r.Body, &body); err != nil {
+			return rest.NewParseJsonError(err)
+		}
+
+		if err := store.NewClassRelation(studentId, body.ClassId); err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "failed to create class relationship",
+				Error:   err,
+			}
+		}
+		return nil
+	})
+}
+
+func deleteClassRelation(s rest.Server, store Store) http.Handler {
+	type reqBody struct {
+		ClassId string `json:"classId"`
+	}
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		studentId := chi.URLParam(r, "studentId")
+
+		var body reqBody
+		if err := rest.ParseJson(r.Body, &body); err != nil {
+			return rest.NewParseJsonError(err)
+		}
+
+		if err := store.DeleteClassRelation(studentId, body.ClassId); err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "failed to delete class relationship",
+				Error:   err,
+			}
+		}
+		return nil
+	})
 }
 
 func authorizationMiddleware(s rest.Server, store Store) func(next http.Handler) http.Handler {
@@ -223,8 +274,11 @@ func deleteStudent(s rest.Server, store Store) http.Handler {
 
 func putStudent(s rest.Server, store Store) http.Handler {
 	type requestBody struct {
-		Name        string     `json:"name"`
-		DateOfBirth *time.Time `json:"dateOfBirth"`
+		Name        string          `json:"name"`
+		DateOfBirth *time.Time      `json:"dateOfBirth"`
+		DateOfEntry *time.Time      `json:"dateOfEntry"`
+		CustomId    string          `json:"customId"`
+		Gender      postgres.Gender `json:"gender"`
 	}
 	type responseBody struct {
 		Id          string     `json:"id"`
@@ -247,6 +301,10 @@ func putStudent(s rest.Server, store Store) http.Handler {
 		newStudent := oldStudent
 		newStudent.Name = requestBody.Name
 		newStudent.DateOfBirth = requestBody.DateOfBirth
+		newStudent.Gender = requestBody.Gender
+		newStudent.CustomId = requestBody.CustomId
+		newStudent.DateOfEntry = requestBody.DateOfEntry
+
 		if err := store.UpdateStudent(newStudent); err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Failed updating old student data", err}
 		}

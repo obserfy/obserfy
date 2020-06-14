@@ -3,7 +3,7 @@ import BackNavigation from "../BackNavigation/BackNavigation"
 import {
   Guardians,
   useGetSchoolGuardians,
-} from "../../api/useGetSchoolGuardians"
+} from "../../api/guardians/useGetSchoolGuardians"
 import { Student, useGetStudent } from "../../api/useGetStudent"
 import { Typography } from "../Typography/Typography"
 import { Card } from "../Card/Card"
@@ -16,10 +16,10 @@ import { ReactComponent as LinkIcon } from "../../icons/link.svg"
 import { ReactComponent as RemoveIcon } from "../../icons/close.svg"
 import { Flex } from "../Flex/Flex"
 import GuardianRelationshipPickerDialog from "../GuardianRelationshipPickerDialog/GuardianRelationshipPickerDialog"
-import { usePostGuardianRelation } from "../../api/usePostGuardianRelation"
+import { usePostGuardianRelation } from "../../api/guardians/usePostGuardianRelation"
 import { Link } from "../Link/Link"
 import { Button } from "../Button/Button"
-import { useDeleteGuardianRelation } from "../../api/useDeleteGuardianRelation"
+import { useDeleteGuardianRelation } from "../../api/guardians/useDeleteGuardianRelation"
 import Dialog from "../Dialog/Dialog"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import GuardianRelationshipPill from "../GuardianRelationshipPill/GuardianRelationshipPill"
@@ -40,13 +40,16 @@ export const PageEditGuardians: FC<Props> = ({ studentId }) => {
   })
 
   return (
-    <Box maxWidth="maxWidth.md" mx="auto">
+    <Box maxWidth="maxWidth.sm" mx="auto">
       <BackNavigation
         to={STUDENT_PROFILE_URL(studentId)}
         text="Student Profile"
       />
-      <Typography.H5 mx={3} mb={4} mt={3}>
+      <Typography.H5 mx={3} mt={3} color="textDisabled">
         {student.data?.name}
+      </Typography.H5>
+      <Typography.H5 mx={3} mb={3}>
+        Edit Guardians
       </Typography.H5>
       <Typography.Body mx={3} mb={2} color="textMediumEmphasis">
         Current guardians
@@ -89,7 +92,7 @@ export const PageEditGuardians: FC<Props> = ({ studentId }) => {
         </Link>
       </Card>
       <Typography.Body mx={3} mt={4} color="textMediumEmphasis">
-        Add existing guardian
+        Select from existing guardian
       </Typography.Body>
       <Box px={3} pb={3} pt={2}>
         <SearchBar

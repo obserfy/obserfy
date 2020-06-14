@@ -1,5 +1,6 @@
-import React, { FC, useState } from "react"
-import { navigate } from "gatsby"
+/** @jsx jsx */
+import { FC, Fragment, useState } from "react"
+import { jsx } from "theme-ui"
 import { Link } from "../Link/Link"
 import { Box } from "../Box/Box"
 import SearchBar from "../SearchBar/SearchBar"
@@ -11,7 +12,7 @@ import { Typography } from "../Typography/Typography"
 import Card from "../Card/Card"
 import { useGetStudents } from "../../api/students/useGetStudents"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
-import { NEW_STUDENT_URL } from "../../routes"
+import { NEW_STUDENT_URL, STUDENT_DETAILS_PAGE_URL } from "../../routes"
 import StudentPicturePlaceholder from "../StudentPicturePlaceholder/StudentPicturePlaceholder"
 import Image from "../Image/Image"
 
@@ -37,35 +38,36 @@ export const PageHome: FC = () => {
   const studentList =
     students.status === "success" &&
     matchedStudent?.map(({ profilePicUrl, name, id }) => (
-      <Card
-        p={3}
-        mx={[0, 3]}
-        mb={[0, 2]}
-        key={id}
-        onClick={() => navigate(`/dashboard/observe/students/details?id=${id}`)}
-        sx={{
-          backgroundColor: ["background", "surface"],
-          borderRadius: [0, "default"],
-          cursor: "pointer",
-          boxShadow: ["none", "low"],
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        {profilePicUrl ? (
-          <Image
-            src={profilePicUrl}
-            sx={{
-              width: 32,
-              height: 32,
-              borderRadius: "circle",
-            }}
-          />
-        ) : (
-          <StudentPicturePlaceholder />
-        )}
-        <Typography.Body ml={3}>{name}</Typography.Body>
-      </Card>
+      <Link to={STUDENT_DETAILS_PAGE_URL(id)} sx={{ display: "block" }}>
+        <Card
+          p={3}
+          mx={[0, 3]}
+          mb={[0, 2]}
+          key={id}
+          sx={{
+            backgroundColor: ["background", "surface"],
+            borderRadius: [0, "default"],
+            cursor: "pointer",
+            boxShadow: ["none", "low"],
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          {profilePicUrl ? (
+            <Image
+              src={profilePicUrl}
+              sx={{
+                width: 32,
+                height: 32,
+                borderRadius: "circle",
+              }}
+            />
+          ) : (
+            <StudentPicturePlaceholder />
+          )}
+          <Typography.Body ml={3}>{name}</Typography.Body>
+        </Card>
+      </Link>
     ))
 
   return (
@@ -88,7 +90,7 @@ export const PageHome: FC = () => {
       {emptyData && <NoStudentPlaceholder />}
       {students.status === "loading" && <StudentLoadingPlaceholder />}
       {students.status === "error" && (
-        <>
+        <Fragment>
           <Typography.Body textAlign="center" mx={4} mb={3}>
             Oops, we fail to fetch new student data. Please try again in a
             minute.
@@ -96,7 +98,7 @@ export const PageHome: FC = () => {
           <Button mx="auto" onClick={students.refetch}>
             Try again
           </Button>
-        </>
+        </Fragment>
       )}
     </Box>
   )

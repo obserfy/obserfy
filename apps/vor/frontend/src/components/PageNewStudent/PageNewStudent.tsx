@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react"
 import { useImmer } from "use-immer"
 import { Link, navigate } from "../Link/Link"
-import { useGetGuardian } from "../../api/useGetGuardian"
+import { useGetGuardian } from "../../api/guardians/useGetGuardian"
 import Box from "../Box/Box"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import Input from "../Input/Input"
@@ -10,16 +10,11 @@ import DateInput from "../DateInput/DateInput"
 import TextArea from "../TextArea/TextArea"
 import { Typography } from "../Typography/Typography"
 import Select from "../Select/Select"
-import useGetSchoolClasses from "../../api/useGetSchoolClasses"
+import useGetSchoolClasses from "../../api/classes/useGetSchoolClasses"
 import Chip from "../Chip/Chip"
 import { Flex } from "../Flex/Flex"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
-import InformationalCard from "../InformationalCard/InformationalCard"
-import {
-  CLASS_SETTINGS_URL,
-  NEW_STUDENT_URL,
-  PICK_GUARDIAN_URL,
-} from "../../routes"
+import { NEW_STUDENT_URL, PICK_GUARDIAN_URL } from "../../routes"
 import Card from "../Card/Card"
 import ProfilePicker from "../ProfilePicker/ProfilePicker"
 import {
@@ -39,6 +34,7 @@ import Icon from "../Icon/Icon"
 import WarningDialog from "../WarningDialog/WarningDialog"
 import GuardianRelationshipPickerDialog from "../GuardianRelationshipPickerDialog/GuardianRelationshipPickerDialog"
 import GuardianRelationshipPill from "../GuardianRelationshipPill/GuardianRelationshipPill"
+import EmptyClassDataPlaceholder from "../EmptyClassDataPlaceholder/EmptyClassDataPlaceholder"
 
 export interface NewStudentFormData {
   name: string
@@ -300,16 +296,6 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
 const ClassesLoadingPlaceholder: FC = () => (
   <Box m={3}>
     <LoadingPlaceholder width="100%" height="4rem" />
-  </Box>
-)
-
-const EmptyClassDataPlaceholder: FC = () => (
-  <Box mx={[0, 3]}>
-    <InformationalCard
-      buttonText="Go to Class Settings"
-      message="Create your first class to track your student's class enrollment."
-      to={CLASS_SETTINGS_URL}
-    />
   </Box>
 )
 

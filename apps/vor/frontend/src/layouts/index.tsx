@@ -4,6 +4,7 @@ import Layout from "../components/Layout/Layout"
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary"
 import Box from "../components/Box/Box"
 
+// Used by gatsby-plugin-layout
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const LayoutManager: FC<any> = ({ children, pageContext }) => (
   <ErrorBoundary>

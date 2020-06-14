@@ -1,5 +1,5 @@
 import React, { FC } from "react"
-import { Helmet } from "react-helmet-async"
+import { Helmet } from "react-helmet"
 
 interface Props {
   title: string

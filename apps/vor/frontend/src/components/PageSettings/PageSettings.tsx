@@ -12,7 +12,7 @@ import { ReactComponent as LightModeIcon } from "../../icons/light-mode.svg"
 import { ReactComponent as DarkModeIcon } from "../../icons/dark-mode.svg"
 import { ReactComponent as FlipIcon } from "../../icons/flip.svg"
 import Card from "../Card/Card"
-import { useGetSchool } from "../../api/useGetSchool"
+import { useGetSchool } from "../../api/schools/useGetSchool"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import { CLASS_SETTINGS_URL } from "../../routes"
 

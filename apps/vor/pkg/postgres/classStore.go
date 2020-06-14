@@ -1,11 +1,11 @@
 package postgres
 
 import (
-	"github.com/go-pg/pg/v9"
-	richErrors "github.com/pkg/errors"
+	"github.com/chrsep/vor/pkg/class"
 	"time"
 
-	"github.com/chrsep/vor/pkg/class"
+	"github.com/go-pg/pg/v9"
+	richErrors "github.com/pkg/errors"
 )
 
 type ClassStore struct {

@@ -52,6 +52,10 @@ func InitTables(db *pg.DB) error {
 		(*UserToSchool)(nil),
 		(*Attendance)(nil),
 		(*PasswordResetToken)(nil),
+		(*LessonPlanDetails)(nil),
+		(*LessonPlan)(nil),
+		(*File)(nil),
+		(*FileToLessonPlan)(nil),
 	} {
 		err := db.CreateTable(model, &orm.CreateTableOptions{IfNotExists: true, FKConstraints: true})
 		if err != nil {
@@ -65,6 +69,7 @@ type Session struct {
 	Token  string `pg:",pk" pg:",type:uuid"`
 	UserId string
 }
+
 type Curriculum struct {
 	Id      string `pg:"type:uuid"`
 	Name    string
@@ -186,6 +191,7 @@ type School struct {
 	Curriculum   Curriculum
 	Guardian     []Guardian
 }
+
 type Attendance struct {
 	Id        string `json:"id" pg:",type:uuid"`
 	StudentId string `pg:"type:uuid,on_delete:CASCADE"`
@@ -194,6 +200,7 @@ type Attendance struct {
 	Class     Class
 	Date      time.Time `json:"date"`
 }
+
 type UserToSchool struct {
 	SchoolId string `pg:",type:uuid"`
 	School   School
@@ -235,3 +242,40 @@ type Weekday struct {
 	Day     time.Weekday `pg:",pk,use_zero"`
 	Class   Class
 }
+
+type (
+	LessonPlanDetails struct {
+		Id                string `pg:"type:uuid"`
+		Title             string
+		Description       *string
+		ClassId           string `pg:"type:uuid,on_delete:SET NULL"`
+		Class             Class
+		Files             []File `pg:"many2many:file_to_lesson_plans,joinFK:file_id"`
+		RepetitionType    int    `pg:",use_zero"`
+		RepetitionEndDate time.Time
+		LessonPlans       []*LessonPlan
+	}
+
+	LessonPlan struct {
+		Id                  string     `pg:"type:uuid"`
+		Date                *time.Time `pg:",notnull"`
+		LessonPlanDetailsId string     `pg:"type:uuid"`
+		LessonPlanDetails   LessonPlanDetails
+	}
+
+	File struct {
+		Id          string `pg:"type:uuid,pk"`
+		SchoolId    string `pg:"type:uuid,on_delete:CASCADE"`
+		School      School
+		Name        string
+		LessonPlans []LessonPlan `pg:"many2many:file_to_lesson_plans,joinFK:lesson_plan_id"`
+		ObjectKey   string
+	}
+
+	FileToLessonPlan struct {
+		LessonPlanDetailsId string `pg:"type:uuid,on_delete:CASCADE"`
+		LessonPlanDetails   LessonPlanDetails
+		FileId              string `pg:"type:uuid,on_delete:CASCADE"`
+		File                File
+	}
+)

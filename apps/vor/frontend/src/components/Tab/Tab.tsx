@@ -19,11 +19,12 @@ export const Tab: FC<TabProps> = ({
 }) => (
   <Box overflowX="auto" {...props}>
     <Flex
-      sx={Object.assign(sx != null ? sx : {}, {
+      sx={{
+        ...sx,
         borderBottomColor: "border",
         borderBottomWidth: 1,
         borderBottomStyle: "solid",
-      })}
+      }}
       minWidth="100%"
       width={items.length > 3 ? "fit-content" : "100%"}
       justifyContent={

@@ -33,19 +33,17 @@ export const PageCurriculumArea: FC<Props> = ({ id }) => {
   const [subjectToDelete, setSubjectToDelete] = useState<Subject>()
   const loading = area.status === "loading" || subjects.status === "loading"
 
-  const subjectList = subjects.data
-    ?.sort((a, b) => b.order - a.order)
-    .map((subject) => (
-      <SubjectListItem
-        key={subject.id}
-        subject={subject}
-        areaId={id}
-        onDeleteClick={() => {
-          setSubjectToDelete(subject)
-          setShowDeleteSubjectDialog(true)
-        }}
-      />
-    ))
+  const subjectList = subjects.data?.map((subject) => (
+    <SubjectListItem
+      key={subject.id}
+      subject={subject}
+      areaId={id}
+      onDeleteClick={() => {
+        setSubjectToDelete(subject)
+        setShowDeleteSubjectDialog(true)
+      }}
+    />
+  ))
 
   return (
     <>
