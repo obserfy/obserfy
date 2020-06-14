@@ -14,11 +14,19 @@ type StudentStore struct {
 }
 
 func (s StudentStore) NewClassRelationship(studentId string, classId string) error {
-	panic("implement me")
+	relation := StudentToClass{ClassId: classId, StudentId: studentId}
+	if err := s.Insert(&relation); err != nil {
+		return richErrors.Wrap(err, "failed to save class to student relation")
+	}
+	return nil
 }
 
 func (s StudentStore) DeleteClassRelationship(studentId string, classId string) error {
-	panic("implement me")
+	relation := StudentToClass{ClassId: classId, StudentId: studentId}
+	if err := s.Delete(&relation); err != nil {
+		return richErrors.Wrap(err, "failed to delete class from student relation")
+	}
+	return nil
 }
 
 func (s StudentStore) InsertObservation(
