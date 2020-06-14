@@ -82,6 +82,7 @@ describe("Smoke test on prod build", () => {
     cy.contains(guardianName).should("be.visible")
 
     // Re-add guardian
+    cy.wait(200)
     cy.get("[data-cy=add-guardian]").click()
     cy.get("[aria-label=Relationship]").select("1")
     cy.contains("Save").click()
