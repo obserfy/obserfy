@@ -5,8 +5,8 @@ export default {
   title: "Core|PageNewStudentClass",
   component: PageNewStudentClass,
   parameters: {
-    componentSubtitle: "Just a simple PageNewStudentClass"
-  }
+    componentSubtitle: "Just a simple PageNewStudentClass",
+  },
 }
 
-export const Basic: FC = () => <PageNewStudentClass />
+export const Basic: FC = () => <PageNewStudentClass id="adsfnalskfdb" />

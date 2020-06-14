@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react"
 import { useImmer } from "use-immer"
 import BackNavigation from "../BackNavigation/BackNavigation"
-import { CLASS_SETTINGS_URL, EDIT_STUDENT_CLASS_URL } from "../../routes"
+import { EDIT_STUDENT_CLASS_URL } from "../../routes"
 import { Box } from "../Box/Box"
 import { useGetStudent } from "../../api/useGetStudent"
 import { Typography } from "../Typography/Typography"
