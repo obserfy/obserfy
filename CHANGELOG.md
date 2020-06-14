@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/obserfy/obserfy/compare/v1.5.1...v1.6.0) (2020-06-14)
+
+
+### Features
+
+* Accept multipart/form-data on post new file endpoint. ([836e786](https://github.com/obserfy/obserfy/commit/836e786d4037f96e29ffe5f2f8c49c347ae2893b))
+* **gaia:** Add get child API. ([08d7585](https://github.com/obserfy/obserfy/commit/08d758517f75532092ea0d8b4f9e14df4d0700c2))
+* Add lesson plan page. ([cbeb4f7](https://github.com/obserfy/obserfy/commit/cbeb4f719b116fc5800c5d62ec2c4cc0601cd273))
+* Add lesson plan page. ([63258bd](https://github.com/obserfy/obserfy/commit/63258bd9b7ad2507d8cba57e324bbc79fb25a5e5))
+
+
+### Bug Fixes
+
+* Fix student data not updated directly after being updated. ([#482](https://github.com/obserfy/obserfy/issues/482)) ([289e730](https://github.com/obserfy/obserfy/commit/289e7301b59f6a6a7ece0d336ff9e1e9c9805cca))
+* **deps:** update dependency immer to v7 ([#475](https://github.com/obserfy/obserfy/issues/475)) ([f5ec272](https://github.com/obserfy/obserfy/commit/f5ec27251b9f16d5ff596d809e1d1b295dd8b3c0))
+* Don't reverse list of subjects. ([ed81101](https://github.com/obserfy/obserfy/commit/ed811012b2daeecf744c6bb6be71ef5cd87f3be6))
+* Fix can't delete class with lesson plans. ([#460](https://github.com/obserfy/obserfy/issues/460)) ([e18bb5d](https://github.com/obserfy/obserfy/commit/e18bb5d5b1a87ac1f9c80f74e100471175bc224d))
+* **gaia:** Fix prefresh ([84debe9](https://github.com/obserfy/obserfy/commit/84debe9fafa528615f5b26d95821c810ad58fb85))
+
 ### [1.5.1](https://github.com/obserfy/obserfy/compare/v1.5.0...v1.5.1) (2020-05-28)
 
 ## [1.5.0](https://github.com/obserfy/obserfy/compare/v1.4.0...v1.5.0) (2020-05-12)
