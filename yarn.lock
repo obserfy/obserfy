@@ -9646,11 +9646,6 @@ des.js@^1.0.0:
     inherits "^2.0.1"
     minimalistic-assert "^1.0.0"
 
-design-tokens@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/design-tokens/-/design-tokens-1.0.0.tgz#3b06d1046d6c3982d13522fea664366c7c0b0448"
-  integrity sha512-6WIQFn0HDxmUdPbDsbWzFgRZFnAI7mg/1BtcGv1GKHAstd1HCo5BHKlzSQYpqkf1GWQWzI7gDYtfF61VCb7tdQ==
-
 destroy@~1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/destroy/-/destroy-1.0.4.tgz#978857442c44749e4206613e37946205826abd80"

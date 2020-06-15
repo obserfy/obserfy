@@ -76,7 +76,7 @@ describe("Test adding new student", () => {
 
     cy.visit("/dashboard/observe")
     cy.contains(studentName).should("be.visible")
-    cy.visit("/dashboard/observe/students/new").waitForRouteChange()
+    cy.visit("/dashboard/observe/students/new")
     cy.contains("Name").find("input").should("have.value", studentName2)
     cy.get(`[data-cy="Date of Entry"]`).click()
     cy.contains("Month").find("select").select("2")
