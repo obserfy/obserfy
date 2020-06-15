@@ -8441,6 +8441,11 @@ commander@^2.11.0, commander@^2.18.0, commander@^2.19.0, commander@^2.20.0:
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
   integrity sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
 
+commander@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-3.0.2.tgz#6837c3fb677ad9933d1cfba42dd14d5117d6b39e"
+  integrity sha512-Gar0ASD4BDyKC4hl4DwHqDrmvjoxWKZigVnAbn5H1owvm4CxCPdb0HQDehwNYMJpla5+M2tPmPARzhtYuwpHow==
+
 commander@^4.0.1, commander@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/commander/-/commander-4.1.1.tgz#9fd602bd936294e9e9ef46a3f4d6964044b18068"
@@ -9646,10 +9651,14 @@ des.js@^1.0.0:
     inherits "^2.0.1"
     minimalistic-assert "^1.0.0"
 
-design-tokens@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/design-tokens/-/design-tokens-1.0.0.tgz#3b06d1046d6c3982d13522fea664366c7c0b0448"
-  integrity sha512-6WIQFn0HDxmUdPbDsbWzFgRZFnAI7mg/1BtcGv1GKHAstd1HCo5BHKlzSQYpqkf1GWQWzI7gDYtfF61VCb7tdQ==
+design-tokens@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/design-tokens/-/design-tokens-1.0.1.tgz#d1f1f8fbebf07f422b263d00b379209bea61bb5b"
+  integrity sha512-0uLCdWkhlzgHVAA/rbWzjgZHFldWC8G0qwB3WV2VGefkJzTLemubhRuq5tgC+R/NkDGcn2ScoGf9ZuFQQWByig==
+  dependencies:
+    change-case "^3.1.0"
+    commander "^3.0.2"
+    self-referenced-object "^1.1.0"
 
 destroy@~1.0.4:
   version "1.0.4"
@@ -22140,6 +22149,11 @@ select@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/select/-/select-1.1.2.tgz#0e7350acdec80b1108528786ec1d4418d11b396d"
   integrity sha1-DnNQrN7ICxEIUoeG7B1EGNEbOW0=
+
+self-referenced-object@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/self-referenced-object/-/self-referenced-object-1.1.0.tgz#613c1cd7d1010d4b2277533f5411a951a2df7b17"
+  integrity sha512-g1xvTtl+VwfN+mhPlOIsJRGwChagE1+B3xaZHN50//G9Oayy3wF/VaWXZQqYC7wGZ0tBZ3IOvZqf/VBJLWa+Ww==
 
 selfsigned@^1.10.7:
   version "1.10.7"
