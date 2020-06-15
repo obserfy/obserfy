@@ -75,7 +75,7 @@
     "@types/react-query": "1.1.2",
     "@types/rebass": "4.0.6",
     "@types/segment-analytics": "0.0.32",
-    "@types/theme-ui": "0.3.2",
+    "@types/theme-ui": "0.3.4",
     "@typescript-eslint/eslint-plugin": "3.2.0",
     "@typescript-eslint/parser": "3.2.0",
     "babel-jest": "26.0.1",
