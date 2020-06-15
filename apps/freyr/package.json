@@ -27,7 +27,7 @@
     "preact": "10.4.4",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-helmet": "6.0.0"
+    "react-helmet": "6.1.0"
   },
   "devDependencies": {
     "@types/react": "16.9.36",
