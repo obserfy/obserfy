@@ -81,7 +81,7 @@
     "babel-jest": "26.0.1",
     "babel-loader": "8.1.0",
     "babel-plugin-istanbul": "6.0.0",
-    "babel-plugin-remove-graphql-queries": "2.9.3",
+    "babel-plugin-remove-graphql-queries": "2.9.5",
     "babel-plugin-transform-default-import": "1.0.0",
     "babel-preset-gatsby": "0.4.8",
     "core-js": "2.6.11",
