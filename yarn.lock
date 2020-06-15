@@ -3566,33 +3566,23 @@
   resolved "https://registry.yarnpkg.com/@prefresh/core/-/core-0.6.0.tgz#b7801ad3d16de9d21ed0824db6c85707f93cf93c"
   integrity sha512-xhhBgQeMmyoSYEr8F27oypxRTWysIKPnc+Ed6U5OmEwPtLeKsccI3UCpSQyrcv5/HmPNPjAYHPqNC0uH57rIkw==
 
-"@prefresh/core@^0.6.2":
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/@prefresh/core/-/core-0.6.2.tgz#05a149923ff058f8052bccaa8880151f1f14da3b"
-  integrity sha512-O3MvvGe3sdLt+EPXCVvUgl2YjlAXhMDFYGzF0M+ObvHSU/hp5uP7M0yQpN19OC8xw7m0rUJnzL2jq7qse1nfUA==
-
 "@prefresh/core@^0.7.0":
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/@prefresh/core/-/core-0.7.1.tgz#75c73975dbbf66d70fc698eda26aeae1767d3c07"
   integrity sha512-wa7M0cTV7DcBu3vw4MEtVXWFxsdHXbky8qzhBFJ/HEp7fdEmvOateYmGOjSeOn+QaKeAqUBGTMnTyVER0lamNA==
 
-"@prefresh/next@0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@prefresh/next/-/next-0.2.0.tgz#62a9144560bf396fc974b7e9d0525459b19e47f7"
-  integrity sha512-hOYKKXYUP8wZPoefNBfPzssDIGQIfRAtUfUxUExJdDJ3vit2bM8OXI3e5W95guN/Y5P91IgEIVfqK3QRE9gl7Q==
+"@prefresh/next@0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@prefresh/next/-/next-0.3.0.tgz#8c8c5689932c25930a08c223c88bafa4a949d8b5"
+  integrity sha512-7vzUN2hsCMYZ2uCzKNNbmaQALkkfmRXBZo3Vj7Sxb4q//N/GKYqBwXkF9tZK0R8dz38lYoJoVLh6u7eVPOua3w==
   dependencies:
-    "@prefresh/core" "^0.6.2"
-    "@prefresh/utils" "^0.1.2"
+    "@prefresh/core" "^0.7.0"
+    "@prefresh/utils" "^0.2.0"
 
 "@prefresh/utils@0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@prefresh/utils/-/utils-0.1.0.tgz#9b69c9ecd6002e72e096e5e72f4bd4f88d15284c"
   integrity sha512-xtUsQMJIHwBuiXu1E1iiXNVfn60N6zpVUo67ZvQVA6OMlslQzWtbdnTXRT+iplBBgfLmQvXR0bKsNz1+ZYSMgw==
-
-"@prefresh/utils@^0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@prefresh/utils/-/utils-0.1.2.tgz#4fd698cf3b191667cc03406841cdeca0441f4b3a"
-  integrity sha512-uIXXKHoNPKCyJRvJId06VBSaNJKn1ifVACatJkcfJw4i9e3A89q7aOM91CUAyvgbY8QzPyiqG1EeIbsjgcFgKA==
 
 "@prefresh/utils@^0.2.0":
   version "0.2.0"
