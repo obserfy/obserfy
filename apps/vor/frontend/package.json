@@ -43,7 +43,7 @@
     "react": "16.13.1",
     "react-adaptive-hooks": "0.0.8",
     "react-dom": "16.13.1",
-    "react-helmet": "6.0.0",
+    "react-helmet": "6.1.0",
     "react-query": "1.5.3",
     "rebass": "4.0.7",
     "theme-ui": "0.3.1",
