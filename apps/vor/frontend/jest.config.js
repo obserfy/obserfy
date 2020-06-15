@@ -12,6 +12,7 @@ module.exports = {
   testMatch: ["**/?(*.)+(test).[jt]s?(x)"],
   globals: {
     __PATH_PREFIX__: ``,
+    __BASE_PATH__: ``,
   },
   testURL: `http://localhost`,
   setupFiles: [
