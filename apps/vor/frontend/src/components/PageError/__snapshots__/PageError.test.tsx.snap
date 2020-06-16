@@ -65,8 +65,6 @@ exports[`PageError should render correctly 1`] = `
   -ms-letter-spacing: 0;
   letter-spacing: 0;
   text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
   padding-top: 16px;
   margin: 16px;
   margin-bottom: 8px;
@@ -88,8 +86,6 @@ exports[`PageError should render correctly 1`] = `
   -ms-letter-spacing: 0;
   letter-spacing: 0;
   text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
   margin-bottom: 32px;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
 }
@@ -256,8 +252,6 @@ exports[`PageError should render correctly 1`] = `
   font-weight: 400;
   line-height: 3rem;
   text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
   margin: 16px;
   margin-top: 32px;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));

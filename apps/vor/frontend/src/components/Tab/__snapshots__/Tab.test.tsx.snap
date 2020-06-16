@@ -65,8 +65,6 @@ exports[`Tab should render correctly 1`] = `
   -ms-letter-spacing: 0;
   letter-spacing: 0;
   text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
   margin-left: 16px;
   margin-right: 16px;
   margin-bottom: 0;
@@ -117,8 +115,6 @@ exports[`Tab should render correctly 1`] = `
   -ms-letter-spacing: 0;
   letter-spacing: 0;
   text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
   margin-left: 16px;
   margin-right: 16px;
   margin-bottom: 0;

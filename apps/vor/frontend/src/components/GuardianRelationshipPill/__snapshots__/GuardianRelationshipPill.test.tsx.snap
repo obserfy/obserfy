@@ -41,8 +41,6 @@ exports[`GuardianRelationshipPill should render correctly 1`] = `
   font-weight: 400;
   line-height: 3rem;
   text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
   color: var(--theme-ui-colors-onSurface,rgba(0,0,0,0.87));
   font-size: 12px;
   line-height: 1em;

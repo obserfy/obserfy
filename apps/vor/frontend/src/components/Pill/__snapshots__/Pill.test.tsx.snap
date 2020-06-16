@@ -41,8 +41,6 @@ exports[`Pill should render correctly 1`] = `
   font-weight: 400;
   line-height: 3rem;
   text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
   font-size: 12px;
   line-height: 1em;
   text-transform: capitalize;

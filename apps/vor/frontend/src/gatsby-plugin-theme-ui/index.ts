@@ -1,4 +1,6 @@
-const Theme = {
+import { Theme } from "theme-ui"
+
+const theme: Theme = {
   useColorSchemeMediaQuery: true,
   colors: {
     // Base color
@@ -179,68 +181,48 @@ const Theme = {
       marginBottom: "3rem",
       letterSpacing: "0em",
       textRendering: "optimizeLegibility",
-      "--webkitFontSmoothing": "antialiased",
-      "--mozOsxFontSmoothing": "grayscale",
     },
     h1: {
       variant: "heading",
       fontSize: "6.103515625rem",
       lineHeight: "9rem",
       letterSpacing: 0,
-
       textRendering: "optimizeLegibility",
-      "--webkitFontSmoothing": "antialiased",
-      "--mozOsxFontSmoothing": "grayscale",
     },
     h2: {
       variant: "heading",
       fontSize: "4.8828125rem",
       lineHeight: "6rem",
       letterSpacing: 0,
-
       textRendering: "optimizeLegibility",
-      "--webkitFontSmoothing": "antialiased",
-      "--mozOsxFontSmoothing": "grayscale",
     },
     h3: {
       variant: "heading",
       fontSize: "3.90625rem",
       lineHeight: "6rem",
       letterSpacing: 0,
-
       textRendering: "optimizeLegibility",
-      "--webkitFontSmoothing": "antialiased",
-      "--mozOsxFontSmoothing": "grayscale",
     },
     h4: {
       variant: "heading",
       fontSize: "3.125rem",
       lineHeight: "6rem",
       letterSpacing: 0,
-
       textRendering: "optimizeLegibility",
-      "--webkitFontSmoothing": "antialiased",
-      "--mozOsxFontSmoothing": "grayscale",
     },
     h5: {
       variant: "heading",
       fontSize: "2.5rem",
       lineHeight: "3rem",
       letterSpacing: 0,
-
       textRendering: "optimizeLegibility",
-      "--webkitFontSmoothing": "antialiased",
-      "--mozOsxFontSmoothing": "grayscale",
     },
     h6: {
       variant: "heading",
       fontSize: "2rem",
       lineHeight: "3rem",
       letterSpacing: 0,
-
       textRendering: "optimizeLegibility",
-      "--webkitFontSmoothing": "antialiased",
-      "--mozOsxFontSmoothing": "grayscale",
     },
     body: {
       color: "rgba(0,0,0,0.88)",
@@ -249,30 +231,6 @@ const Theme = {
       fontWeight: "body",
       lineHeight: "3rem",
       textRendering: "optimizeLegibility",
-      "--webkitFontSmoothing": "antialiased",
-      "--mozOsxFontSmoothing": "grayscale",
-    },
-  },
-  variants: {
-    avatar: {
-      width: "avatar",
-      height: "avatar",
-      borderRadius: "circle",
-    },
-
-    link: {
-      color: "primary",
-    },
-    nav: {
-      fontSize: 1,
-      fontWeight: "bold",
-      display: "inline-block",
-      p: 2,
-      color: "inherit",
-      textDecoration: "none",
-      ":hover,:focus,.active": {
-        color: "primary",
-      },
     },
   },
   buttons: {
@@ -404,20 +362,13 @@ const Theme = {
         lineHeight: "2rem",
       },
     },
-  },
-  label: {
-    color: "textMediumEmphasis",
-    as: "label",
-    fontFamily: "body",
-    fontSize: 1,
-    userSelect: "none",
-  },
-  loadingPlaceholder: {
-    text: {
-      height: "1em",
+    label: {
+      color: "textMediumEmphasis",
+      fontFamily: "body",
+      fontSize: 1,
+      userSelect: "none",
     },
   },
 }
 
-export type Theme = typeof Theme
-export default Theme
+export default theme

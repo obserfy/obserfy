@@ -49,8 +49,6 @@ exports[`Chip should render correctly 1`] = `
   font-weight: 400;
   line-height: 3rem;
   text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
   color: var(--theme-ui-colors-onPrimary,#000);
   font-size: 14px;
 }
