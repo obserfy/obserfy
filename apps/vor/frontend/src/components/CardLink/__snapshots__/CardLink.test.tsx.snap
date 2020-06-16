@@ -106,8 +106,6 @@ exports[`CardLink should render correctly 1`] = `
           />
           <div
             class="emotion-2"
-            height="icon"
-            width="icon"
           />
         </div>
       </div>

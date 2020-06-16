@@ -303,8 +303,6 @@ exports[`Layout should render correctly 1`] = `
           >
             <div
               class="emotion-1"
-              height="icon"
-              width="icon"
             />
             <p
               class="emotion-2"
@@ -322,8 +320,6 @@ exports[`Layout should render correctly 1`] = `
           >
             <div
               class="emotion-1"
-              height="icon"
-              width="icon"
             />
             <p
               class="emotion-2"
@@ -344,8 +340,6 @@ exports[`Layout should render correctly 1`] = `
           >
             <div
               class="emotion-1"
-              height="icon"
-              width="icon"
             />
             <p
               class="emotion-2"

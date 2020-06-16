@@ -285,8 +285,6 @@ exports[`Navbar should render correctly 1`] = `
           >
             <div
               class="emotion-1"
-              height="icon"
-              width="icon"
             />
             <p
               class="emotion-2"
@@ -304,8 +302,6 @@ exports[`Navbar should render correctly 1`] = `
           >
             <div
               class="emotion-1"
-              height="icon"
-              width="icon"
             />
             <p
               class="emotion-2"
@@ -326,8 +322,6 @@ exports[`Navbar should render correctly 1`] = `
           >
             <div
               class="emotion-1"
-              height="icon"
-              width="icon"
             />
             <p
               class="emotion-2"

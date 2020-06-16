@@ -35,8 +35,6 @@ exports[`Icon should render correctly 1`] = `
   >
     <img
       class="emotion-0"
-      height="icon"
-      width="icon"
     />
   </div>
 </div>

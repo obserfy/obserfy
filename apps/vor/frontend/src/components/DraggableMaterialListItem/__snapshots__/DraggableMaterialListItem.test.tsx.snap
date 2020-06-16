@@ -277,8 +277,6 @@ exports[`DraggableMaterialListItem should render correctly 1`] = `
         >
           <div
             class="emotion-0"
-            height="icon"
-            width="icon"
           />
         </div>
         <label
@@ -300,8 +298,6 @@ exports[`DraggableMaterialListItem should render correctly 1`] = `
         >
           <div
             class="emotion-5"
-            height="icon"
-            width="icon"
           />
         </button>
       </div>
