@@ -17,12 +17,12 @@ func NewRouter(s rest.Server, store Store) *chi.Mux {
 		r.Use(authorizationMiddleware(s, store))
 		r.Method("GET", "/", getStudent(s, store))
 		r.Method("DELETE", "/", deleteStudent(s, store))
-		r.Method("PATCH", "/", putStudent(s, store))
+		r.Method("PATCH", "/", patchStudent(s, store))
 
 		r.Method("POST", "/observations", postObservation(s, store))
 		r.Method("GET", "/observations", getObservation(s, store))
 
-		r.Method("POST", "/attendances", registerAttendance(s, store))
+		r.Method("POST", "/attendances", postAttaendances(s, store))
 		r.Method("GET", "/attendances", getAttendance(s, store))
 
 		r.Method("GET", "/materialsProgress", getMaterialProgress(s, store))
@@ -108,7 +108,7 @@ func authorizationMiddleware(s rest.Server, store Store) func(next http.Handler)
 		})
 	}
 }
-func registerAttendance(s rest.Server, store Store) http.Handler {
+func postAttaendances(s rest.Server, store Store) http.Handler {
 	type requestBody struct {
 		StudentId string    `json:"studentId"`
 		ClassId   string    `json:"classId"`
@@ -272,7 +272,7 @@ func deleteStudent(s rest.Server, store Store) http.Handler {
 	})
 }
 
-func putStudent(s rest.Server, store Store) http.Handler {
+func patchStudent(s rest.Server, store Store) http.Handler {
 	type requestBody struct {
 		Name        string          `json:"name"`
 		DateOfBirth *time.Time      `json:"dateOfBirth"`
