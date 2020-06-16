@@ -1,12 +1,10 @@
-import React, { FC } from "react"
+import React, { FC, PropsWithoutRef } from "react"
+import { Button, Flex, Card, CardProps } from "theme-ui"
 import { Typography } from "../Typography/Typography"
-import { Flex } from "../Flex/Flex"
-import { Card, CardProps } from "../Card/Card"
-import Button from "../Button/Button"
 import Icon from "../Icon/Icon"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 
-interface Props extends CardProps {
+interface Props extends PropsWithoutRef<CardProps> {
   text: string
   callToActionText: string
   onActionClick: () => void
@@ -21,12 +19,14 @@ export const EmptyListPlaceholder: FC<Props> = ({
     <Flex
       m={3}
       px={4}
-      flexDirection="column"
-      alignItems="center"
-      justifyContent="center"
-      height="100%"
+      sx={{
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100%",
+      }}
     >
-      <Typography.Body mb={4} mt={3} textAlign="center">
+      <Typography.Body mb={4} mt={3} sx={{ textAlign: "center" }}>
         {text}
       </Typography.Body>
       <Button variant="outline" onClick={onActionClick}>

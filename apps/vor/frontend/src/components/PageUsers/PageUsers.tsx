@@ -1,8 +1,8 @@
 import React, { FC } from "react"
+import { Box } from "theme-ui"
 import useOldApiHook from "../../api/useOldApiHook"
 import { getSchoolId } from "../../hooks/schoolIdState"
 import UserCard from "../UserCard/UserCard"
-import Box from "../Box/Box"
 import BackNavigation from "../BackNavigation/BackNavigation"
 
 export const PageUsers: FC = () => {
@@ -30,7 +30,7 @@ export const PageUsers: FC = () => {
   )
 
   return (
-    <Box maxWidth="maxWidth.sm" mx="auto">
+    <Box sx={{ maxWidth: "maxWidth.sm" }} mx="auto">
       <BackNavigation to="/dashboard/settings" text="Settings" />
       <Box px={2}>{userCards}</Box>
     </Box>

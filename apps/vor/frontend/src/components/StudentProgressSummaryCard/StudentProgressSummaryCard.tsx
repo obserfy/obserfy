@@ -1,13 +1,12 @@
 import React, { FC, useState } from "react"
+import { Button, Flex, Box, Card } from "theme-ui"
 import { Link } from "../Link/Link"
-import Button from "../Button/Button"
 import Spacer from "../Spacer/Spacer"
-import Flex from "../Flex/Flex"
 import Typography from "../Typography/Typography"
-import Card from "../Card/Card"
+
 import Tab from "../Tab/Tab"
 import StudentMaterialProgressDialog from "../StudentMaterialProgressDialog/StudentMaterialProgressDialog"
-import Box from "../Box/Box"
+
 import InformationalCard from "../InformationalCard/InformationalCard"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import { useGetCurriculumAreas } from "../../api/useGetCurriculumAreas"
@@ -52,9 +51,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
     return (
       <Box mt={3}>
         <LoadingPlaceholder
-          width="100%"
-          height="17rem"
-          sx={{ borderRadius: [0, "default"] }}
+          sx={{ height: "17rem", width: "100%", borderRadius: [0, "default"] }}
         />
       </Box>
     )
@@ -76,11 +73,13 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
   // Fully functional view
   const emptyProgressPlaceholder = isProgressEmpty && (
     <Typography.Body
-      width="100%"
       my={4}
-      sx={{ textAlign: "center" }}
+      sx={{
+        fontSize: 1,
+        width: "100%",
+        textAlign: "center",
+      }}
       color="textMediumEmphasis"
-      fontSize={1}
     >
       No materials in progress.
     </Typography.Body>
@@ -114,9 +113,9 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
   const footer = (
     <Flex
       p={2}
-      alignItems="center"
       sx={{
-        borderTopWidth: 1,
+        alignItems: "center",
+        borderTopWidth: "1px",
         borderTopColor: "border",
         borderTopStyle: "solid",
       }}
@@ -125,7 +124,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
       <Link
         to={`/dashboard/observe/students/progress?studentId=${studentId}&areaId=${selectedAreaId}`}
       >
-        <Button variant="secondary" fontSize={0}>
+        <Button variant="secondary" sx={{ fontSize: 0 }}>
           See All {areas.data?.[tab]?.name} Progress
         </Button>
       </Link>
@@ -140,8 +139,8 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
       materialName={selected?.materialName}
       materialId={selected?.materialId}
       onDismiss={() => setIsEditing(false)}
-      onSubmitted={() => {
-        progress.refetch()
+      onSubmitted={async () => {
+        await progress.refetch()
         setIsEditing(false)
       }}
     />
@@ -149,7 +148,10 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
 
   return (
     <>
-      <Card overflow="inherit" borderRadius={[0, "default"]} mx={[0, 3]}>
+      <Card
+        sx={{ borderRadius: [0, "default"], overflow: "inherit" }}
+        mx={[0, 3]}
+      >
         <Typography.H6 px={3} pt={3} pb={2}>
           Progress
         </Typography.H6>
@@ -162,10 +164,12 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
         <Box my={2}>
           {(inProgress?.length ?? 0) > 0 && (
             <Typography.Body
-              fontSize={0}
               mt={3}
               mx={3}
-              sx={{ letterSpacing: 1.2 }}
+              sx={{
+                fontSize: 0,
+                letterSpacing: 1.2,
+              }}
             >
               IN PROGRESS
             </Typography.Body>
@@ -174,10 +178,12 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
           {emptyProgressPlaceholder}
           {(listOfMastered?.length ?? 0) > 0 && (
             <Typography.Body
-              fontSize={0}
               mt={3}
               mx={3}
-              sx={{ letterSpacing: 1.2 }}
+              sx={{
+                fontSize: 0,
+                letterSpacing: 1.2,
+              }}
             >
               RECENTLY MASTERED
             </Typography.Body>

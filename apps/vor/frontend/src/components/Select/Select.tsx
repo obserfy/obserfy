@@ -1,12 +1,16 @@
-import React, { ChangeEventHandler, FC } from "react"
-import { Select as BaseSelect } from "@rebass/forms"
-import Label from "../Label/Label"
-import Box, { BoxProps } from "../Box/Box"
+import React, { ChangeEventHandler, FC, PropsWithoutRef } from "react"
+import {
+  Box,
+  Label,
+  Select as BaseSelect,
+  SelectProps as BaseSelectProps,
+  SxProps,
+} from "theme-ui"
 
-export interface SelectProps extends BoxProps {
+export interface SelectProps extends PropsWithoutRef<BaseSelectProps>, SxProps {
   label?: string
   hideLabel?: boolean
-  onChange?: ChangeEventHandler<HTMLInputElement>
+  onChange?: ChangeEventHandler<HTMLSelectElement>
 }
 export const Select: FC<SelectProps> = ({
   children,
@@ -15,18 +19,17 @@ export const Select: FC<SelectProps> = ({
   defaultValue,
   value,
   onChange,
-  width,
   sx,
   ...props
 }) => (
-  <Label display="flex" sx={{ ...sx, flexDirection: "column" }} {...props}>
+  <Label sx={{ ...sx, display: "flex", flexDirection: "column" }}>
     {label && !hideLabel && <Box pb={1}>{label}</Box>}
     <BaseSelect
       onChange={onChange}
       defaultValue={defaultValue}
       value={value}
       aria-label={label}
-      width={width}
+      {...props}
     >
       {children}
     </BaseSelect>

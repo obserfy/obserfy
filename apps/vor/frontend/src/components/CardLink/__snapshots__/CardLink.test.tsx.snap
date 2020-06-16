@@ -18,12 +18,11 @@ exports[`CardLink should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  padding: 8px;
+  overflow: auto;
   background-color: var(--theme-ui-colors-surface,#fff);
   border-radius: 8px;
   box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
   padding: 16px;
-  overflow: hidden;
 }
 
 .emotion-3 {
@@ -44,7 +43,6 @@ exports[`CardLink should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  font-size: 24px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 300;
   line-height: heading;
@@ -64,10 +62,10 @@ exports[`CardLink should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  pointer-events: none;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  pointer-events: none;
 }
 
 .emotion-2 {
@@ -76,13 +74,13 @@ exports[`CardLink should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
+  margin: 0;
   fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  margin: 0;
-  height: 20px;
   width: 20px;
+  height: 20px;
 }
 
 <div>
@@ -108,6 +106,8 @@ exports[`CardLink should render correctly 1`] = `
           />
           <div
             class="emotion-2"
+            height="icon"
+            width="icon"
           />
         </div>
       </div>

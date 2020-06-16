@@ -1,6 +1,6 @@
 import React, { FC } from "react"
+import { BoxProps, Box } from "theme-ui"
 import Typography from "../Typography/Typography"
-import Box, { BoxProps } from "../Box/Box"
 
 interface Props extends BoxProps {
   text: string
@@ -34,7 +34,12 @@ export const Chip: FC<Props> = ({
       },
     }}
   >
-    <Typography.Body fontSize={1} color={isActive ? "onPrimary" : "text"}>
+    <Typography.Body
+      sx={{
+        fontSize: 1,
+      }}
+      color={isActive ? "onPrimary" : "text"}
+    >
       {text}
     </Typography.Body>
   </Box>

@@ -1,17 +1,15 @@
 import React, { FC } from "react"
 import GatsbyImage, { FixedObject } from "gatsby-image"
 import { graphql, useStaticQuery } from "gatsby"
+import { Flex, Button, Card, Box } from "theme-ui"
 import { Link } from "../Link/Link"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { SETTINGS_URL, NEW_CLASS_URL, EDIT_CLASS_URL } from "../../routes"
-import Flex from "../Flex/Flex"
 import Typography from "../Typography/Typography"
-import Button from "../Button/Button"
 
 import useGetSchoolClasses from "../../api/classes/useGetSchoolClasses"
-import Card from "../Card/Card"
+
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
-import { Box } from "../Box/Box"
 
 export const PageClassSettings: FC = () => {
   const classes = useGetSchoolClasses()
@@ -19,13 +17,24 @@ export const PageClassSettings: FC = () => {
   const haveNoClass = classes.status === "success" && classes.data?.length === 0
 
   return (
-    <Flex flexDirection="column" maxWidth="maxWidth.md" mx="auto">
+    <Flex
+      sx={{
+        flexDirection: "column",
+        maxWidth: "maxWidth.md",
+      }}
+      mx="auto"
+    >
       <BackNavigation to={SETTINGS_URL} text="Settings" />
       {classes.status === "loading" && <LoadingState />}
       {haveNoClass && <NoClassPlaceholder />}
       {(classes.data?.length ?? 0) > 0 && (
-        <Flex alignItems="center" m={3} mb={4}>
-          <Typography.H3 mr="auto" lineHeight={1}>
+        <Flex sx={{ alignItems: "center" }} m={3} mb={4}>
+          <Typography.H3
+            mr="auto"
+            sx={{
+              lineHeight: 1,
+            }}
+          >
             Classes
           </Typography.H3>
           <Link to={NEW_CLASS_URL}>
@@ -58,7 +67,14 @@ const NoClassPlaceholder: FC = () => {
   `)
 
   return (
-    <Flex flexDirection="column" m={3} pt={4} alignItems="center">
+    <Flex
+      m={3}
+      pt={4}
+      sx={{
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
       <GatsbyImage
         fixed={illustration?.file?.childImageSharp?.fixed as FixedObject}
       />
@@ -80,10 +96,10 @@ const NoClassPlaceholder: FC = () => {
 
 const LoadingState: FC = () => (
   <Box m={3}>
-    <LoadingPlaceholder width="20rem" height={48} mb={3} />
-    <LoadingPlaceholder width="100%" height={62} mb={2} />
-    <LoadingPlaceholder width="100%" height={62} mb={2} />
-    <LoadingPlaceholder width="100%" height={62} mb={2} />
+    <LoadingPlaceholder sx={{ width: "20rem", height: 48 }} mb={3} />
+    <LoadingPlaceholder sx={{ width: "100%", height: 62 }} mb={2} />
+    <LoadingPlaceholder sx={{ width: "100%", height: 62 }} mb={2} />
+    <LoadingPlaceholder sx={{ width: "100%", height: 62 }} mb={2} />
   </Box>
 )
 

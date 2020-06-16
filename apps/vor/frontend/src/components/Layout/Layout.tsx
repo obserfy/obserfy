@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 import { navigate } from "gatsby"
-import Box from "../Box/Box"
+import { Box } from "theme-ui"
 import {
   getSchoolId,
   SCHOOL_ID_UNDEFINED_PLACEHOLDER,
@@ -23,10 +23,12 @@ export const Layout: FC = ({ children }) => {
       <Navbar />
       <Box
         as="main"
-        width="100%"
+        sx={{
+          backgroundColor: "background",
+          width: "100%",
+        }}
         pl={[0, 70]}
         pb={[48, 0]}
-        backgroundColor="background"
         mb="env(safe-area-inset-bottom)"
       >
         {children}

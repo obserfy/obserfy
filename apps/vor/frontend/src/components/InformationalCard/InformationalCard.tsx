@@ -1,12 +1,10 @@
 import React, { FC } from "react"
+import { Flex, Button, Box } from "theme-ui"
 import { Link } from "../Link/Link"
-import Flex from "../Flex/Flex"
 import Icon from "../Icon/Icon"
 import { ReactComponent as InfoIcon } from "../../icons/info.svg"
 import Typography from "../Typography/Typography"
 import Spacer from "../Spacer/Spacer"
-import Button from "../Button/Button"
-import Box from "../Box/Box"
 
 interface Props {
   message: string
@@ -24,19 +22,36 @@ export const InformationalCard: FC<Props> = ({ message, buttonText, to }) => (
       borderRadius: [0, "default"],
     }}
   >
-    <Flex alignItems="center">
+    <Flex sx={{ alignItems: "center" }}>
       <Icon as={InfoIcon} m={0} fill="warning" />
-      <Typography.Body fontSize={1} ml={2} color="warning">
+      <Typography.Body
+        sx={{
+          fontSize: 1,
+        }}
+        ml={2}
+        color="warning"
+      >
         Info
       </Typography.Body>
     </Flex>
-    <Typography.Body fontSize={1} pb={2}>
+    <Typography.Body
+      sx={{
+        fontSize: 1,
+      }}
+      pb={2}
+    >
       {message}
     </Typography.Body>
     <Flex>
       <Spacer />
       <Link to={to}>
-        <Button variant="outline" color="warning" fontSize={0}>
+        <Button
+          variant="outline"
+          color="warning"
+          sx={{
+            fontSize: 0,
+          }}
+        >
           {buttonText}
         </Button>
       </Link>

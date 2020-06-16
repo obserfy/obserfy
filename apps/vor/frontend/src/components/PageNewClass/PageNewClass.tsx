@@ -1,13 +1,13 @@
 import React, { FC, useState } from "react"
 import { useImmer } from "use-immer"
+import { Flex, Button, Box } from "theme-ui"
 import dayjs from "../../dayjs"
 import { navigate } from "../Link/Link"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { CLASS_SETTINGS_URL } from "../../routes"
-import { Box } from "../Box/Box"
+
 import Input from "../Input/Input"
-import Flex from "../Flex/Flex"
-import Button from "../Button/Button"
+
 import { Typography } from "../Typography/Typography"
 import Chip from "../Chip/Chip"
 import usePostNewClass from "../../api/classes/usePostNewClass"
@@ -46,13 +46,13 @@ export const PageNewClass: FC = () => {
   }
 
   return (
-    <Box maxWidth="maxWidth.sm" margin="auto">
+    <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto">
       <BackNavigation to={CLASS_SETTINGS_URL} text="Class" />
       <Typography.H5 m={3}>New Class</Typography.H5>
       <Box m={3}>
         <Input
           label="Name"
-          width="100%"
+          sx={{ width: "100%" }}
           mb={3}
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -63,7 +63,7 @@ export const PageNewClass: FC = () => {
             value={startTime}
             onChange={(e) => setStartTime(e.target.value)}
             label="Start Time"
-            width="100%"
+            sx={{ width: "100%" }}
             mb={3}
             mr={3}
           />
@@ -72,14 +72,19 @@ export const PageNewClass: FC = () => {
             value={endTime}
             onChange={(e) => setEndTime(e.target.value)}
             label="End Time"
-            width="100%"
+            sx={{ width: "100%" }}
             mb={3}
           />
         </Flex>
         <Typography.Body mb={2} color="textMediumEmphasis">
           Available every
         </Typography.Body>
-        <Flex mb={3} flexWrap="wrap">
+        <Flex
+          mb={3}
+          sx={{
+            flexWrap: "wrap",
+          }}
+        >
           {WEEKDAYS.map((weekday, i) => (
             <Chip
               key={weekday}
@@ -98,7 +103,7 @@ export const PageNewClass: FC = () => {
           ))}
         </Flex>
         <Button
-          width="100%"
+          sx={{ width: "100%" }}
           disabled={!valid || status === "loading"}
           onClick={postNewClass}
         >

@@ -1,11 +1,10 @@
 import React, { FC } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import GatsbyImage, { FixedObject } from "gatsby-image"
-import { Link } from "../Link/Link"
-import Flex from "../Flex/Flex"
+import { Flex, Button, Box } from "theme-ui"
 import Typography from "../Typography/Typography"
-import Button from "../Button/Button"
-import Box from "../Box/Box"
+
+import { Link } from "../Link/Link"
 import { OBSERVE_PAGE_URL } from "../../routes"
 
 export const Page404: FC = () => {
@@ -23,13 +22,20 @@ export const Page404: FC = () => {
 
   return (
     <Flex
-      alignItems="center"
-      justifyContent="center"
-      height="100vh"
-      width="100vw"
+      sx={{
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+        width: "100vw",
+      }}
       pb={4}
     >
-      <Flex flexDirection="column" alignItems="center">
+      <Flex
+        sx={{
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
         <Typography.H1
           sx={{ textAlign: "center" }}
           lineHeight={1.2}

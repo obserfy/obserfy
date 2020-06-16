@@ -18,11 +18,11 @@ exports[`PageNewSubject should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  margin: auto;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
   max-width: 640px;
-  margin: auto;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -33,11 +33,11 @@ exports[`PageNewSubject should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  margin-left: -8px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-left: -8px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -50,14 +50,14 @@ exports[`PageNewSubject should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
+  margin: 16px;
+  margin-right: 4px;
   fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  margin: 16px;
-  height: 24px;
   width: 24px;
-  margin-right: 4px;
+  height: 24px;
 }
 
 .emotion-1 {
@@ -72,22 +72,14 @@ exports[`PageNewSubject should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   --webkitFontSmoothing: antialiased;
   --mozOsxFontSmoothing: grayscale;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  font-size: 16px;
   margin-bottom: 0;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-1 {
-    font-size: 14px;
-  }
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
 }
 
 .emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  font-size: 24px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 300;
   line-height: heading;
@@ -100,8 +92,8 @@ exports[`PageNewSubject should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   --webkitFontSmoothing: antialiased;
   --mozOsxFontSmoothing: grayscale;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   margin: 16px;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
 }
 
 .emotion-15 {
@@ -129,6 +121,10 @@ exports[`PageNewSubject should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   as: label;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -137,18 +133,14 @@ exports[`PageNewSubject should render correctly 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .emotion-4 {
@@ -185,9 +177,10 @@ exports[`PageNewSubject should render correctly 1`] = `
   font-size: inherit;
   line-height: inherit;
   border: 1px solid;
-  border-radius: 8px;
+  border-radius: 4px;
   color: inherit;
   background-color: transparent;
+  border-radius: 8px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
@@ -238,10 +231,10 @@ exports[`PageNewSubject should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   --webkitFontSmoothing: antialiased;
   --mozOsxFontSmoothing: grayscale;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  font-size: 16px;
   padding-left: 16px;
   padding-right: 16px;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  font-size: 16px;
   font-weight: bold;
 }
 
@@ -257,12 +250,6 @@ exports[`PageNewSubject should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  cursor: pointer;
-  position: relative;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
   padding-left: 16px;
   padding-right: 16px;
   padding-top: 8px;
@@ -271,6 +258,12 @@ exports[`PageNewSubject should render correctly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  cursor: pointer;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   background-color: var(--theme-ui-colors-background,#f2f3f5);
   display: -webkit-box;
   display: -webkit-flex;
@@ -284,14 +277,14 @@ exports[`PageNewSubject should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
+  margin: 0;
+  margin-right: 8px;
   fill: var(--theme-ui-colors-primary,#00e399);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  margin: 0;
+  width: 20px;
   height: 20px;
-  width: 24px;
-  margin-right: 8px;
 }
 
 .emotion-12 {
@@ -314,12 +307,12 @@ exports[`PageNewSubject should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  padding: 16px;
   -webkit-box-pack: end;
   -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
   justify-content: flex-end;
   width: 100%;
-  padding: 16px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -363,6 +356,10 @@ exports[`PageNewSubject should render correctly 1`] = `
   padding-left: 16px;
   padding-right: 16px;
   white-space: nowrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -371,10 +368,6 @@ exports[`PageNewSubject should render correctly 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-16:disabled {
@@ -409,6 +402,8 @@ exports[`PageNewSubject should render correctly 1`] = `
         >
           <div
             class="emotion-0"
+            height="icon"
+            width="icon"
           />
           <p
             class="emotion-1"
@@ -460,6 +455,8 @@ exports[`PageNewSubject should render correctly 1`] = `
           >
             <div
               class="emotion-11"
+              height="icon"
+              width="24"
             />
             <p
               class="emotion-12"

@@ -1,10 +1,9 @@
 import React, { FC, FormEvent, useState } from "react"
 import { navigate } from "gatsby"
-import Flex from "../Flex/Flex"
-import Box from "../Box/Box"
+import { Flex, Box, Button } from "theme-ui"
+
 import { Typography } from "../Typography/Typography"
 import Input from "../Input/Input"
-import Button from "../Button/Button"
 
 async function submitNewSchoolForm(name: string): Promise<void> {
   const data = { name }
@@ -26,18 +25,24 @@ export const PageNewSchool: FC = () => {
   }
 
   return (
-    <Flex justifyContent="center" minHeight="100vh" minWidth="100vw" pt={6}>
+    <Flex
+      sx={{
+        justifyContent: "center",
+        minHeight: "100vh",
+        minWidth: "100vw",
+      }}
+      pt={6}
+    >
       <Box
         as="form"
         p={3}
-        maxWidth="maxWidth.sm"
-        width="100%"
+        sx={{ width: "100%", maxWidth: "maxWidth.sm" }}
         onSubmit={handleSubmit}
         mt={-5}
       >
         <Typography.H2 my={3}>New School</Typography.H2>
         <Input
-          width="100%"
+          sx={{ width: "100%" }}
           label="School Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -48,13 +53,13 @@ export const PageNewSchool: FC = () => {
           <Button
             type="button"
             variant="outline"
-            width="100%"
+            sx={{ width: "100%" }}
             mr={3}
             onClick={() => navigate("/choose-school")}
           >
             Cancel
           </Button>
-          <Button variant="primaryBig" width="100%">
+          <Button variant="primaryBig" sx={{ width: "100%" }}>
             Save
           </Button>
         </Flex>

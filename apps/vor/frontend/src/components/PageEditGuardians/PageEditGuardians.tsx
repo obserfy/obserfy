@@ -1,4 +1,5 @@
 import React, { FC, useState } from "react"
+import { Box, Card, Flex } from "theme-ui"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import {
   Guardians,
@@ -6,15 +7,14 @@ import {
 } from "../../api/guardians/useGetSchoolGuardians"
 import { Student, useGetStudent } from "../../api/useGetStudent"
 import { Typography } from "../Typography/Typography"
-import { Card } from "../Card/Card"
+
 import { NEW_GUARDIANS_URL, STUDENT_PROFILE_URL } from "../../routes"
-import { Box } from "../Box/Box"
 import SearchBar from "../SearchBar/SearchBar"
 import Icon from "../Icon/Icon"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import { ReactComponent as LinkIcon } from "../../icons/link.svg"
 import { ReactComponent as RemoveIcon } from "../../icons/close.svg"
-import { Flex } from "../Flex/Flex"
+
 import GuardianRelationshipPickerDialog from "../GuardianRelationshipPickerDialog/GuardianRelationshipPickerDialog"
 import { usePostGuardianRelation } from "../../api/guardians/usePostGuardianRelation"
 import { Link } from "../Link/Link"
@@ -40,7 +40,7 @@ export const PageEditGuardians: FC<Props> = ({ studentId }) => {
   })
 
   return (
-    <Box maxWidth="maxWidth.sm" mx="auto">
+    <Box sx={{ maxWidth: "maxWidth.sm" }} mx="auto">
       <BackNavigation
         to={STUDENT_PROFILE_URL(studentId)}
         text="Student Profile"
@@ -55,8 +55,14 @@ export const PageEditGuardians: FC<Props> = ({ studentId }) => {
         Current guardians
       </Typography.Body>
       {(student.data?.guardians.length ?? 0) === 0 && (
-        <Card borderRadius={[0, "default"]} mb={2} mx={[0, 3]}>
-          <Typography.Body m={3} color="textMediumEmphasis" fontSize={1}>
+        <Card sx={{ borderRadius: [0, "default"] }} mb={2} mx={[0, 3]}>
+          <Typography.Body
+            m={3}
+            color="textMediumEmphasis"
+            sx={{
+              fontSize: 1,
+            }}
+          >
             No guardians set yet
           </Typography.Body>
         </Card>
@@ -71,14 +77,19 @@ export const PageEditGuardians: FC<Props> = ({ studentId }) => {
             />
           )
       )}
-      <Card borderRadius={[0, "default"]} mb={2} mx={[0, 3]}>
+      <Card sx={{ borderRadius: [0, "default"] }} mb={2} mx={[0, 3]}>
         <Link
           to={NEW_GUARDIANS_URL(studentId)}
           data-cy="new-guardian"
           style={{ display: "block" }}
         >
-          <Flex alignItems="center" p={3}>
-            <Typography.Body lineHeight={1} fontSize={1}>
+          <Flex sx={{ alignItems: "center" }} p={3}>
+            <Typography.Body
+              sx={{
+                lineHeight: 1,
+                fontSize: 1,
+              }}
+            >
               Create new guardian
             </Typography.Body>
             <Icon
@@ -96,7 +107,7 @@ export const PageEditGuardians: FC<Props> = ({ studentId }) => {
       </Typography.Body>
       <Box px={3} pb={3} pt={2}>
         <SearchBar
-          width="100%"
+          sx={{ width: "100%" }}
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
@@ -126,10 +137,22 @@ const CurrentGuardiansCard: FC<{
 
   return (
     <>
-      <Card borderRadius={[0, "default"]} mb={2} mx={[0, 3]}>
-        <Flex alignItems="center">
-          <Flex py={3} alignItems="flex-start" flexDirection="column">
-            <Typography.Body lineHeight={1} mb={3} ml={3}>
+      <Card sx={{ borderRadius: [0, "default"] }} mb={2} mx={[0, 3]}>
+        <Flex sx={{ alignItems: "center" }}>
+          <Flex
+            py={3}
+            sx={{
+              alignItems: "flex-start",
+              flexDirection: "column",
+            }}
+          >
+            <Typography.Body
+              sx={{
+                lineHeight: 1,
+              }}
+              mb={3}
+              ml={3}
+            >
               {guardian.name}
             </Typography.Body>
             <GuardianRelationshipPill
@@ -152,14 +175,13 @@ const CurrentGuardiansCard: FC<{
       {showDialog && (
         <Dialog>
           <Flex
-            alignItems="center"
+            sx={{ alignItems: "center", position: "relative" }}
             backgroundColor="surface"
             py={1}
-            sx={{ position: "relative" }}
           >
             <Typography.H6
-              width="100%"
               sx={{
+                width: "100%",
                 position: "absolute",
                 pointerEvents: "none",
                 textAlign: "center",
@@ -214,16 +236,23 @@ const OtherGuardiansCard: FC<{ guardian: Guardians; studentId: string }> = ({
 
   return (
     <>
-      <Card borderRadius={[0, "default"]} mb={[0, 2]} mx={[0, 3]}>
-        <Flex alignItems="center">
+      <Card sx={{ borderRadius: [0, "default"] }} mb={[0, 2]} mx={[0, 3]}>
+        <Flex sx={{ alignItems: "center" }}>
           <Box p={3}>
-            <Typography.Body lineHeight={1} mb={2}>
+            <Typography.Body
+              sx={{
+                lineHeight: 1,
+              }}
+              mb={2}
+            >
               {guardian.name}
             </Typography.Body>
             <Typography.Body
-              lineHeight={1}
               color="textMediumEmphasis"
-              fontSize={1}
+              sx={{
+                lineHeight: 1,
+                fontSize: 1,
+              }}
             >
               {guardian.email || "No email"}
             </Typography.Body>

@@ -27,11 +27,11 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  margin-left: -8px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-left: -8px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -44,14 +44,14 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
+  margin: 16px;
+  margin-right: 4px;
   fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  margin: 16px;
-  height: 24px;
   width: 24px;
-  margin-right: 4px;
+  height: 24px;
 }
 
 .emotion-1 {
@@ -66,22 +66,14 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   --webkitFontSmoothing: antialiased;
   --mozOsxFontSmoothing: grayscale;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  font-size: 16px;
   margin-bottom: 0;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-1 {
-    font-size: 14px;
-  }
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
 }
 
 .emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  font-size: 24px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 300;
   line-height: heading;
@@ -94,17 +86,16 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   --webkitFontSmoothing: antialiased;
   --mozOsxFontSmoothing: grayscale;
-  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
   margin-left: 16px;
   margin-right: 16px;
   margin-top: 16px;
+  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
 .emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  font-size: 24px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 300;
   line-height: heading;
@@ -117,10 +108,10 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   --webkitFontSmoothing: antialiased;
   --mozOsxFontSmoothing: grayscale;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   margin-left: 16px;
   margin-right: 16px;
   margin-bottom: 16px;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
 }
 
 .emotion-36 {
@@ -135,6 +126,10 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   as: label;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -143,19 +138,14 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  margin-bottom: 16px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-5 {
@@ -192,9 +182,10 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   font-size: inherit;
   line-height: inherit;
   border: 1px solid;
-  border-radius: 8px;
+  border-radius: 4px;
   color: inherit;
   background-color: transparent;
+  border-radius: 8px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
@@ -202,6 +193,7 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   font-size: 16px;
   padding: 12px;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  margin-bottom: 16px;
   width: 100%;
 }
 
@@ -243,33 +235,61 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-12 {
+.emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  display: block;
   width: 100%;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  as: label;
+  padding: 8px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: inherit;
+  line-height: inherit;
+  border: 1px solid;
+  border-radius: 4px;
+  color: inherit;
+  background-color: transparent;
+  border-radius: 8px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-size: 14px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  width: auto;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface,#fff);
+  font-size: 16px;
+  padding: 12px;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   margin-bottom: 16px;
   margin-right: 16px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  width: 100%;
+}
+
+.emotion-10:hover,
+.emotion-10:focus {
+  border-color: var(--theme-ui-colors-primary,#00e399);
+  outline: none;
+}
+
+.emotion-10::-webkit-input-placeholder {
+  font-style: italic;
+}
+
+.emotion-10::-moz-placeholder {
+  font-style: italic;
+}
+
+.emotion-10:-ms-input-placeholder {
+  font-style: italic;
+}
+
+.emotion-10::placeholder {
+  font-style: italic;
+}
+
+.emotion-10:disabled {
+  opacity: 0.68;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
 .emotion-18 {
@@ -284,15 +304,8 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   --webkitFontSmoothing: antialiased;
   --mozOsxFontSmoothing: grayscale;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  font-size: 16px;
   margin-bottom: 8px;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-18 {
-    font-size: 14px;
-  }
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
 }
 
 .emotion-33 {
@@ -313,6 +326,11 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  background-color: var(--theme-ui-colors-surface,#fff);
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -323,11 +341,6 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   border-width: 1px;
   border-style: solid;
   white-space: nowrap;
-  background-color: var(--theme-ui-colors-surface,#fff);
-  margin-right: 8px;
-  margin-bottom: 8px;
-  padding-left: 8px;
-  padding-right: 8px;
 }
 
 .emotion-20:hover {
@@ -387,6 +400,10 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   padding-left: 16px;
   padding-right: 16px;
   white-space: nowrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -395,10 +412,6 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   width: 100%;
 }
 
@@ -430,16 +443,9 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   --webkitFontSmoothing: antialiased;
   --mozOsxFontSmoothing: grayscale;
-  color: var(--theme-ui-colors-error,#d50000);
-  font-size: 16px;
   margin: 16px;
+  color: var(--theme-ui-colors-error,#d50000);
   text-align: center;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-35 {
-    font-size: 14px;
-  }
 }
 
 <div>
@@ -458,6 +464,8 @@ exports[`PageNewStudentClass should render correctly 1`] = `
         >
           <div
             class="emotion-0"
+            height="icon"
+            width="icon"
           />
           <p
             class="emotion-1"
@@ -498,7 +506,7 @@ exports[`PageNewStudentClass should render correctly 1`] = `
           class="emotion-17"
         >
           <label
-            class="emotion-12"
+            class="emotion-8"
           >
             <div
               class="emotion-5"
@@ -509,7 +517,7 @@ exports[`PageNewStudentClass should render correctly 1`] = `
               class="emotion-7"
             >
               <input
-                class="emotion-6"
+                class="emotion-10"
                 type="time"
                 value="09:00"
               />

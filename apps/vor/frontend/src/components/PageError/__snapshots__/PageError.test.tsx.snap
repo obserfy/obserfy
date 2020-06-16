@@ -18,6 +18,10 @@ exports[`PageError should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -28,16 +32,16 @@ exports[`PageError should render correctly 1`] = `
   justify-content: center;
   height: 100vh;
   width: 100vw;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -45,17 +49,12 @@ exports[`PageError should render correctly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-0 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  font-size: 24px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 300;
   line-height: heading;
@@ -68,19 +67,17 @@ exports[`PageError should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   --webkitFontSmoothing: antialiased;
   --mozOsxFontSmoothing: grayscale;
-  text-align: center;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   padding-top: 16px;
-  line-height: 1.2;
   margin: 16px;
   margin-bottom: 8px;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  text-align: center;
 }
 
 .emotion-1 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  font-size: 24px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 300;
   line-height: heading;
@@ -93,8 +90,8 @@ exports[`PageError should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   --webkitFontSmoothing: antialiased;
   --mozOsxFontSmoothing: grayscale;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   margin-bottom: 32px;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
 }
 
 .emotion-5 {
@@ -144,8 +141,10 @@ exports[`PageError should render correctly 1`] = `
   padding-left: 16px;
   padding-right: 16px;
   white-space: nowrap;
-  border: 1px solid;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -154,10 +153,8 @@ exports[`PageError should render correctly 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  border: 1px solid;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
 .emotion-2:disabled {
@@ -179,9 +176,6 @@ exports[`PageError should render correctly 1`] = `
 }
 
 .emotion-4 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
   margin-left: 8px;
 }
 
@@ -222,6 +216,10 @@ exports[`PageError should render correctly 1`] = `
   padding-left: 16px;
   padding-right: 16px;
   white-space: nowrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -230,10 +228,6 @@ exports[`PageError should render correctly 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-3:disabled {
@@ -264,13 +258,11 @@ exports[`PageError should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   --webkitFontSmoothing: antialiased;
   --mozOsxFontSmoothing: grayscale;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  font-size: 14px;
   margin: 16px;
   margin-top: 32px;
-  max-width: 250px;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  font-size: 14px;
   text-align: center;
-  line-height: 1.5;
 }
 
 <div>

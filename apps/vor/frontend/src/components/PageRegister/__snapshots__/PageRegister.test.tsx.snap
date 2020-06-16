@@ -18,13 +18,13 @@ exports[`PageRegister should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  padding-top: 0;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
   min-height: 100vh;
   min-width: 100vw;
-  padding-top: 0;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -42,9 +42,9 @@ exports[`PageRegister should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   padding: 16px;
-  max-width: 640px;
-  width: 100%;
   margin-top: 0;
+  width: 100%;
+  max-width: 640px;
 }
 
 @media screen and (min-width:40em) {
@@ -57,7 +57,6 @@ exports[`PageRegister should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  font-size: 24px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 300;
   line-height: heading;
@@ -70,9 +69,9 @@ exports[`PageRegister should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   --webkitFontSmoothing: antialiased;
   --mozOsxFontSmoothing: grayscale;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   margin-top: 16px;
   margin-bottom: 16px;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
 }
 
 .emotion-4 {
@@ -80,6 +79,10 @@ exports[`PageRegister should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   as: label;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -88,19 +91,14 @@ exports[`PageRegister should render correctly 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  margin-bottom: 8px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-1 {
@@ -137,9 +135,10 @@ exports[`PageRegister should render correctly 1`] = `
   font-size: inherit;
   line-height: inherit;
   border: 1px solid;
-  border-radius: 8px;
+  border-radius: 4px;
   color: inherit;
   background-color: transparent;
+  border-radius: 8px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
@@ -147,6 +146,7 @@ exports[`PageRegister should render correctly 1`] = `
   font-size: 16px;
   padding: 12px;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  margin-bottom: 8px;
   width: 100%;
 }
 
@@ -178,32 +178,60 @@ exports[`PageRegister should render correctly 1`] = `
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
-.emotion-12 {
+.emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  display: block;
   width: 100%;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  as: label;
+  padding: 8px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: inherit;
+  line-height: inherit;
+  border: 1px solid;
+  border-radius: 4px;
+  color: inherit;
+  background-color: transparent;
+  border-radius: 8px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-size: 14px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  width: auto;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface,#fff);
+  font-size: 16px;
+  padding: 12px;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   margin-bottom: 16px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  width: 100%;
+}
+
+.emotion-10:hover,
+.emotion-10:focus {
+  border-color: var(--theme-ui-colors-primary,#00e399);
+  outline: none;
+}
+
+.emotion-10::-webkit-input-placeholder {
+  font-style: italic;
+}
+
+.emotion-10::-moz-placeholder {
+  font-style: italic;
+}
+
+.emotion-10:-ms-input-placeholder {
+  font-style: italic;
+}
+
+.emotion-10::placeholder {
+  font-style: italic;
+}
+
+.emotion-10:disabled {
+  opacity: 0.68;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
 .emotion-13 {
@@ -218,18 +246,11 @@ exports[`PageRegister should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   --webkitFontSmoothing: antialiased;
   --mozOsxFontSmoothing: grayscale;
-  color: var(--theme-ui-colors-danger,#d50000);
-  font-size: 16px;
   margin-bottom: 16px;
-  width: 100%;
+  color: var(--theme-ui-colors-danger,#d50000);
   text-align: center;
+  width: 100%;
   font-weight: bold;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-13 {
-    font-size: 14px;
-  }
 }
 
 .emotion-16 {
@@ -279,8 +300,10 @@ exports[`PageRegister should render correctly 1`] = `
   padding-left: 16px;
   padding-right: 16px;
   white-space: nowrap;
-  border: 1px solid;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -289,12 +312,10 @@ exports[`PageRegister should render correctly 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
+  border: 1px solid;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   margin-right: 16px;
+  width: 100%;
 }
 
 .emotion-14:disabled {
@@ -352,6 +373,10 @@ exports[`PageRegister should render correctly 1`] = `
   padding-left: 16px;
   padding-right: 16px;
   white-space: nowrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -360,10 +385,6 @@ exports[`PageRegister should render correctly 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   width: 100%;
 }
 
@@ -400,7 +421,6 @@ exports[`PageRegister should render correctly 1`] = `
         </h2>
         <label
           class="emotion-4"
-          required=""
         >
           <div
             class="emotion-1"
@@ -413,14 +433,13 @@ exports[`PageRegister should render correctly 1`] = `
             <input
               class="emotion-2"
               name="name"
+              required=""
               value=""
             />
           </div>
         </label>
         <label
           class="emotion-4"
-          data-cy="register-email"
-          required=""
         >
           <div
             class="emotion-1"
@@ -432,15 +451,16 @@ exports[`PageRegister should render correctly 1`] = `
           >
             <input
               class="emotion-2"
+              data-cy="register-email"
               name="email"
+              required=""
               type="email"
               value=""
             />
           </div>
         </label>
         <label
-          class="emotion-12"
-          required=""
+          class="emotion-4"
         >
           <div
             class="emotion-1"
@@ -451,8 +471,9 @@ exports[`PageRegister should render correctly 1`] = `
             class="emotion-3"
           >
             <input
-              class="emotion-2"
+              class="emotion-10"
               name="password"
+              required=""
               type="password"
               value=""
             />

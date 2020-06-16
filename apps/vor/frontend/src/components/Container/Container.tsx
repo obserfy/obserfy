@@ -1,5 +1,5 @@
 import React, { FC } from "react"
-import { Box, BoxProps } from "../Box/Box"
+import { Box, BoxProps } from "theme-ui"
 
 /**
  * Provide a maximum width and automatically center itself inside its parent.

@@ -18,17 +18,17 @@ exports[`DialogHeader should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  position: relative;
-  border-bottom-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  background-color: var(--theme-ui-colors-surface,#fff);
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  background-color: var(--theme-ui-colors-surface,#fff);
-  padding-top: 4px;
-  padding-bottom: 4px;
+  position: relative;
+  border-bottom-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -39,7 +39,6 @@ exports[`DialogHeader should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  font-size: 24px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 300;
   line-height: heading;
@@ -52,14 +51,14 @@ exports[`DialogHeader should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   --webkitFontSmoothing: antialiased;
   --mozOsxFontSmoothing: grayscale;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  width: 100%;
   position: absolute;
   pointer-events: none;
   text-align: center;
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
-  width: 100%;
 }
 
 .emotion-1 {
@@ -99,6 +98,10 @@ exports[`DialogHeader should render correctly 1`] = `
   padding-left: 16px;
   padding-right: 16px;
   white-space: nowrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -107,14 +110,10 @@ exports[`DialogHeader should render correctly 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  color: var(--theme-ui-colors-danger,#d50000);
   margin-top: 4px;
   margin-bottom: 4px;
   margin-left: 8px;
+  color: var(--theme-ui-colors-danger,#d50000);
 }
 
 .emotion-1:disabled {
@@ -166,6 +165,10 @@ exports[`DialogHeader should render correctly 1`] = `
   padding-left: 16px;
   padding-right: 16px;
   white-space: nowrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -174,10 +177,6 @@ exports[`DialogHeader should render correctly 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   margin-left: auto;
   margin-top: 4px;
   margin-bottom: 4px;

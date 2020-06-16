@@ -18,17 +18,17 @@ exports[`Page404 should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+  padding-bottom: 32px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   height: 100vh;
   width: 100vw;
-  padding-bottom: 32px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -56,7 +56,6 @@ exports[`Page404 should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  font-size: 24px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 300;
   line-height: heading;
@@ -69,11 +68,10 @@ exports[`Page404 should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   --webkitFontSmoothing: antialiased;
   --mozOsxFontSmoothing: grayscale;
-  text-align: center;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
-  line-height: 1.2;
   margin: 16px;
   margin-bottom: 32px;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  text-align: center;
 }
 
 .emotion-1 {
@@ -95,18 +93,11 @@ exports[`Page404 should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   --webkitFontSmoothing: antialiased;
   --mozOsxFontSmoothing: grayscale;
-  text-align: center;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
-  font-size: 16px;
   margin-bottom: 32px;
   margin-left: 64px;
   margin-right: 64px;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-2 {
-    font-size: 14px;
-  }
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  text-align: center;
 }
 
 .emotion-3 {
@@ -146,6 +137,10 @@ exports[`Page404 should render correctly 1`] = `
   padding-left: 16px;
   padding-right: 16px;
   white-space: nowrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -154,10 +149,6 @@ exports[`Page404 should render correctly 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-3:disabled {

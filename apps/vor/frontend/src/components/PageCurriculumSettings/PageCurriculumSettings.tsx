@@ -1,9 +1,9 @@
 import React, { FC, useState } from "react"
+import { Flex, Button, Box } from "theme-ui"
 import Typography from "../Typography/Typography"
-import { Box } from "../Box/Box"
-import Flex from "../Flex/Flex"
+
 import Spacer from "../Spacer/Spacer"
-import Button from "../Button/Button"
+
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import CardLink from "../CardLink/CardLink"
 import BackNavigation from "../BackNavigation/BackNavigation"
@@ -29,7 +29,7 @@ export const PageCurriculumSettings: FC = () => {
 
   return (
     <>
-      <Box maxWidth="maxWidth.sm" margin="auto">
+      <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto">
         <BackNavigation to="/dashboard/settings" text="Settings" />
         {loading && <LoadingState />}
         {!loading && !curriculum.error && (
@@ -63,7 +63,7 @@ export const PageCurriculumSettings: FC = () => {
 }
 
 const SetupCurriculum: FC<{ onCreated: () => void }> = ({ onCreated }) => (
-  <Flex alignItems="center" p={3}>
+  <Flex sx={{ alignItems: "center" }} p={3}>
     <Typography.H6>Setup curriculum</Typography.H6>
     <Spacer />
     <Button onClick={() => createDefaultCurriculum(onCreated)}>
@@ -79,7 +79,12 @@ const CurriculumAreas: FC<{
 }> = ({ newAreaClick, name, areas }) => (
   <Box mx={3}>
     <Typography.H3 pb={3}>{name}</Typography.H3>
-    <Button variant="outline" mb={2} width="100%" onClick={newAreaClick}>
+    <Button
+      variant="outline"
+      mb={2}
+      sx={{ width: "100%" }}
+      onClick={newAreaClick}
+    >
       <Icon as={PlusIcon} m={0} mr={2} />
       New Area
     </Button>
@@ -96,10 +101,10 @@ const CurriculumAreas: FC<{
 
 const LoadingState: FC = () => (
   <Box p={3}>
-    <LoadingPlaceholder width="100%" height="5rem" />
-    <LoadingPlaceholder width="100%" height="6rem" mt={3} />
-    <LoadingPlaceholder width="100%" height="6rem" mt={3} />
-    <LoadingPlaceholder width="100%" height="6rem" mt={3} />
+    <LoadingPlaceholder sx={{ width: "100%", height: "5rem" }} />
+    <LoadingPlaceholder sx={{ width: "100%", height: "6rem" }} mt={3} />
+    <LoadingPlaceholder sx={{ width: "100%", height: "6rem" }} mt={3} />
+    <LoadingPlaceholder sx={{ width: "100%", height: "6rem" }} mt={3} />
   </Box>
 )
 

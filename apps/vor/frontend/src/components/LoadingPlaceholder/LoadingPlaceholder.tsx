@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 import { keyframes } from "@emotion/core"
-import Box, { BoxProps } from "../Box/Box"
+import { BoxProps, Box } from "theme-ui"
 
 const fading = keyframes`
   0% {
@@ -18,8 +18,6 @@ const fading = keyframes`
 `
 interface Props extends BoxProps {
   variant?: "loadingPlaceholder.text"
-  height?: number | string
-  width: number | string
   m?: number
 }
 export const LoadingPlaceholder: FC<Props> = ({ sx, ...props }) => (

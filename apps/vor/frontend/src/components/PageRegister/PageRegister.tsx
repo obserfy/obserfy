@@ -1,11 +1,8 @@
 import React, { FC, FormEvent, useEffect, useState } from "react"
 import { navigate } from "gatsby"
-import Flex from "../Flex/Flex"
-import Box from "../Box/Box"
+import { Flex, Box, Button, Card } from "theme-ui"
 import { Typography } from "../Typography/Typography"
 import Input from "../Input/Input"
-import Button from "../Button/Button"
-import Card from "../Card/Card"
 import { getAnalytics } from "../../analytics"
 
 interface Props {
@@ -60,16 +57,17 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
 
   return (
     <Flex
-      justifyContent="center"
-      minHeight="100vh"
-      minWidth="100vw"
+      sx={{
+        justifyContent: "center",
+        minHeight: "100vh",
+        minWidth: "100vw",
+      }}
       pt={[0, 6]}
     >
       <Box
         as="form"
         p={3}
-        maxWidth="maxWidth.sm"
-        width="100%"
+        sx={{ width: "100%", maxWidth: "maxWidth.sm" }}
         onSubmit={handleSubmit}
         mt={[0, -5]}
       >
@@ -95,7 +93,7 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
         )}
         <Typography.H2 my={3}>Register</Typography.H2>
         <Input
-          width="100%"
+          sx={{ width: "100%" }}
           name="name"
           label="Name"
           value={name}
@@ -107,7 +105,7 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
           data-cy="register-email"
           type="email"
           name="email"
-          width="100%"
+          sx={{ width: "100%" }}
           label="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -117,7 +115,7 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
         <Input
           type="password"
           name="password"
-          width="100%"
+          sx={{ width: "100%" }}
           label="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -126,10 +124,12 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
         />
         <Typography.Body
           mb={3}
-          width="100%"
-          textAlign="center"
+          sx={{
+            textAlign: "center",
+            width: "100%",
+            fontWeight: "bold",
+          }}
           color="danger"
-          fontWeight="bold"
         >
           {error}
         </Typography.Body>
@@ -137,13 +137,17 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
           <Button
             type="button"
             variant="outline"
-            width="100%"
+            sx={{ width: "100%" }}
             mr={3}
             onClick={() => navigate("/login")}
           >
             Log In
           </Button>
-          <Button variant="primaryBig" width="100%" data-cy="register-button">
+          <Button
+            variant="primaryBig"
+            sx={{ width: "100%" }}
+            data-cy="register-button"
+          >
             Register
           </Button>
         </Flex>

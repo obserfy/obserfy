@@ -74,8 +74,8 @@ exports[`PageHome should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  max-width: 640px;
   margin: auto;
+  max-width: 640px;
 }
 
 .emotion-5 {
@@ -94,6 +94,10 @@ exports[`PageHome should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   as: label;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -102,19 +106,14 @@ exports[`PageHome should render correctly 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  margin-right: 16px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-1 {
@@ -144,9 +143,10 @@ exports[`PageHome should render correctly 1`] = `
   font-size: inherit;
   line-height: inherit;
   border: 1px solid;
-  border-radius: 8px;
+  border-radius: 4px;
   color: inherit;
   background-color: transparent;
+  border-radius: 8px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
@@ -154,6 +154,7 @@ exports[`PageHome should render correctly 1`] = `
   font-size: 16px;
   padding: 12px;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  margin-right: 16px;
   background-color: var(--theme-ui-colors-surface,#fff);
   width: 100%;
 }
@@ -223,8 +224,10 @@ exports[`PageHome should render correctly 1`] = `
   padding-left: 16px;
   padding-right: 16px;
   white-space: nowrap;
-  border: 1px solid;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -233,10 +236,8 @@ exports[`PageHome should render correctly 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  border: 1px solid;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   height: 100%;
 }
 
@@ -264,13 +265,13 @@ exports[`PageHome should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
+  margin: 0;
   fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  margin: 0;
-  height: 20px;
   width: 20px;
+  height: 20px;
 }
 
 .emotion-10 {
@@ -285,48 +286,48 @@ exports[`PageHome should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  margin-bottom: 16px;
   border-radius: 8px;
   -webkit-animation: 1s ease-in-out 0s infinite animation-0;
   animation: 1s ease-in-out 0s infinite animation-0;
   width: 50%;
   height: 30px;
-  margin-bottom: 16px;
 }
 
 .emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  margin-bottom: 16px;
   border-radius: 8px;
   -webkit-animation: 1s ease-in-out 0s infinite animation-0;
   animation: 1s ease-in-out 0s infinite animation-0;
   width: 70%;
   height: 30px;
-  margin-bottom: 16px;
 }
 
 .emotion-8 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  margin-bottom: 16px;
   border-radius: 8px;
   -webkit-animation: 1s ease-in-out 0s infinite animation-0;
   animation: 1s ease-in-out 0s infinite animation-0;
   width: 40%;
   height: 30px;
-  margin-bottom: 16px;
 }
 
 .emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  margin-bottom: 16px;
   border-radius: 8px;
   -webkit-animation: 1s ease-in-out 0s infinite animation-0;
   animation: 1s ease-in-out 0s infinite animation-0;
   width: 60%;
   height: 30px;
-  margin-bottom: 16px;
 }
 
 <div>
@@ -363,6 +364,8 @@ exports[`PageHome should render correctly 1`] = `
           >
             <div
               class="emotion-3"
+              height="icon"
+              width="icon"
             />
           </button>
         </a>

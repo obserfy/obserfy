@@ -1,7 +1,7 @@
 import React, { FC } from "react"
+import { BoxProps } from "theme-ui"
 import Dialog from "../Dialog/Dialog"
 import { Typography } from "../Typography/Typography"
-import { BoxProps } from "../Box/Box"
 import DialogHeader from "../DialogHeader/DialogHeader"
 
 interface Props extends BoxProps {
@@ -31,7 +31,13 @@ export const AlertDialog: FC<Props> = ({
       onCancel={onNegativeClick}
       onAccept={onPositiveClick}
     />
-    <Typography.Body p={3} m={0} backgroundColor="background">
+    <Typography.Body
+      p={3}
+      m={0}
+      sx={{
+        backgroundColor: "background",
+      }}
+    >
       {body}
     </Typography.Body>
   </Dialog>

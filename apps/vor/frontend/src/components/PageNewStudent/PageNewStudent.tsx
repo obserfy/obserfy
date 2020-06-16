@@ -1,21 +1,19 @@
 import React, { FC, useState } from "react"
 import { useImmer } from "use-immer"
+import { Box, Button, Card, Flex } from "theme-ui"
 import { Link, navigate } from "../Link/Link"
 import { useGetGuardian } from "../../api/guardians/useGetGuardian"
-import Box from "../Box/Box"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import Input from "../Input/Input"
-import Button from "../Button/Button"
 import DateInput from "../DateInput/DateInput"
 import TextArea from "../TextArea/TextArea"
 import { Typography } from "../Typography/Typography"
 import Select from "../Select/Select"
 import useGetSchoolClasses from "../../api/classes/useGetSchoolClasses"
 import Chip from "../Chip/Chip"
-import { Flex } from "../Flex/Flex"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import { NEW_STUDENT_URL, PICK_GUARDIAN_URL } from "../../routes"
-import Card from "../Card/Card"
+
 import ProfilePicker from "../ProfilePicker/ProfilePicker"
 import {
   Gender,
@@ -126,10 +124,10 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
 
   return (
     <>
-      <Box maxWidth="maxWidth.sm" margin="auto" pb={4}>
+      <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={4}>
         <BackNavigation to="/dashboard/observe" text="Home" />
         <Box mx={3}>
-          <Flex alignItems="flex-end">
+          <Flex sx={{ alignItems: "flex-end" }}>
             <Typography.H4 mb={3}>New Student</Typography.H4>
             <ProfilePicker
               ml="auto"
@@ -140,7 +138,7 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
           </Flex>
           <Input
             label="Name (Required)"
-            width="100%"
+            sx={{ width: "100%" }}
             value={name}
             onChange={(e) => setName(e.target.value)}
             mb={3}
@@ -171,14 +169,14 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
             value={customId}
             onChange={(e) => setCustomId(e.target.value)}
             label="Student ID"
-            width="100%"
+            sx={{ width: "100%" }}
             mb={3}
           />
           <TextArea
             value={note}
             onChange={(e) => setNotes(e.target.value)}
             label="Notes"
-            height={100}
+            sx={{ height: 100 }}
           />
         </Box>
         <Typography.H5 m={3} mt={4}>
@@ -216,7 +214,7 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
             })}
           </Flex>
         )}
-        <Flex alignItems="center" mt={3}>
+        <Flex sx={{ alignItems: "center" }} mt={3}>
           <Typography.H5 m={3} mr="auto">
             GUARDIANS
           </Typography.H5>
@@ -227,7 +225,7 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
           </Link>
         </Flex>
         {guardians.length === 0 && (
-          <Card borderRadius={[0, "default"]} mx={[0, 3]}>
+          <Card sx={{ borderRadius: [0, "default"] }} mx={[0, 3]}>
             <Typography.Body m={3} color="textMediumEmphasis">
               This student doesn&apos;t have a guardian yet.
             </Typography.Body>
@@ -263,7 +261,7 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
             Clear
           </Button>
           <Button
-            width="100%"
+            sx={{ width: "100%" }}
             disabled={isFormInvalid}
             onClick={async () => {
               const result = await mutate({
@@ -295,7 +293,7 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
 
 const ClassesLoadingPlaceholder: FC = () => (
   <Box m={3}>
-    <LoadingPlaceholder width="100%" height="4rem" />
+    <LoadingPlaceholder sx={{ width: "100%", height: "4rem" }} />
   </Box>
 )
 
@@ -311,21 +309,25 @@ const GuardianCard: FC<{
 
   return (
     <Card
-      borderRadius={[0, "default"]}
       py={3}
       pr={2}
       mb={2}
       mx={[0, 3]}
-      display="flex"
-      sx={{ alignItems: "center" }}
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        borderRadius: [0, "default"],
+      }}
     >
       <Flex
-        alignItems="start"
-        width="100%"
-        flexDirection="column"
         onClick={() => setShowRelationShipDialog(true)}
+        sx={{
+          flexDirection: "column",
+          width: "100%",
+          alignItems: "start",
+        }}
       >
-        <Typography.Body lineHeight={1} mb={3} ml={3}>
+        <Typography.Body sx={{ lineHeight: 1 }} mb={3} ml={3}>
           {guardian.data?.name}
         </Typography.Body>
         <GuardianRelationshipPill relationship={relationship} ml={3} />

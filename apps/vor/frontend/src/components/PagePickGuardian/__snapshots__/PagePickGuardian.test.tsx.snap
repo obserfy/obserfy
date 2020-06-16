@@ -18,20 +18,20 @@ exports[`PagePickGuardian should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  max-width: 640px;
   margin-left: auto;
   margin-right: auto;
+  max-width: 640px;
 }
 
 .emotion-2 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  margin-left: -8px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-left: -8px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -44,14 +44,14 @@ exports[`PagePickGuardian should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
+  margin: 16px;
+  margin-right: 4px;
   fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  margin: 16px;
-  height: 24px;
   width: 24px;
-  margin-right: 4px;
+  height: 24px;
 }
 
 .emotion-1 {
@@ -66,15 +66,8 @@ exports[`PagePickGuardian should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   --webkitFontSmoothing: antialiased;
   --mozOsxFontSmoothing: grayscale;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  font-size: 16px;
   margin-bottom: 0;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-1 {
-    font-size: 14px;
-  }
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
 }
 
 .emotion-7 {
@@ -89,6 +82,10 @@ exports[`PagePickGuardian should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   as: label;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -97,19 +94,14 @@ exports[`PagePickGuardian should render correctly 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  margin-bottom: 8px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-3 {
@@ -146,9 +138,10 @@ exports[`PagePickGuardian should render correctly 1`] = `
   font-size: inherit;
   line-height: inherit;
   border: 1px solid;
-  border-radius: 8px;
+  border-radius: 4px;
   color: inherit;
   background-color: transparent;
+  border-radius: 8px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
@@ -156,6 +149,7 @@ exports[`PagePickGuardian should render correctly 1`] = `
   font-size: 16px;
   padding: 12px;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  margin-bottom: 8px;
   width: 100%;
 }
 
@@ -199,52 +193,34 @@ exports[`PagePickGuardian should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   --webkitFontSmoothing: antialiased;
   --mozOsxFontSmoothing: grayscale;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  font-size: 16px;
   margin-left: 16px;
   margin-right: 16px;
   margin-bottom: 8px;
   margin-top: 32px;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-8 {
-    font-size: 14px;
-  }
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
 }
 
 .emotion-11 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  padding: 8px;
+  overflow: auto;
   background-color: var(--theme-ui-colors-surface,#fff);
   border-radius: 8px;
   box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
+  padding: 16px;
+  margin-left: 0;
+  margin-right: 0;
+  border-radius: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: flex-start;
   -webkit-box-align: flex-start;
   -ms-flex-align: flex-start;
   align-items: flex-start;
   cursor: pointer;
-  border-radius: 0;
-  padding: 16px;
-  overflow: hidden;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-left: 0;
-  margin-right: 0;
-}
-
-.emotion-11:hover {
-  background-color: var(--theme-ui-colors-primaryLightest,rgba(0,120,86,0.05));
-}
-
-@media screen and (min-width:40em) {
-  .emotion-11 {
-    border-radius: 8px;
-  }
 }
 
 @media screen and (min-width:40em) {
@@ -254,21 +230,31 @@ exports[`PagePickGuardian should render correctly 1`] = `
   }
 }
 
+@media screen and (min-width:40em) {
+  .emotion-11 {
+    border-radius: 8px;
+  }
+}
+
+.emotion-11:hover {
+  background-color: var(--theme-ui-colors-primaryLightest,rgba(0,120,86,0.05));
+}
+
 .emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   max-width: 100%;
   height: auto;
+  margin: 0;
+  margin-top: 5px;
+  margin-right: 16px;
   fill: var(--theme-ui-colors-primary,#00e399);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  margin: 0;
-  height: 20px;
   width: 20px;
-  margin-top: 5px;
-  margin-right: 16px;
+  height: 20px;
 }
 
 .emotion-10 {
@@ -284,13 +270,6 @@ exports[`PagePickGuardian should render correctly 1`] = `
   --webkitFontSmoothing: antialiased;
   --mozOsxFontSmoothing: grayscale;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
-  font-size: 16px;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-10 {
-    font-size: 14px;
-  }
 }
 
 <div>
@@ -309,6 +288,8 @@ exports[`PagePickGuardian should render correctly 1`] = `
         >
           <div
             class="emotion-0"
+            height="icon"
+            width="icon"
           />
           <p
             class="emotion-1"
@@ -348,6 +329,8 @@ exports[`PagePickGuardian should render correctly 1`] = `
       >
         <div
           class="emotion-9"
+          height="icon"
+          width="icon"
         />
         <p
           class="emotion-10"

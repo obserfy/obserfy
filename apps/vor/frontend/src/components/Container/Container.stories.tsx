@@ -1,7 +1,7 @@
 import React, { FC } from "react"
 
+import { Box } from "theme-ui"
 import Container from "./Container"
-import Box from "../Box/Box"
 
 export default {
   title: "Core|Container",
@@ -13,6 +13,6 @@ export default {
 
 export const Basic: FC = () => (
   <Container>
-    <Box width="100%" backgroundColor="primary" height="10rem" />
+    <Box sx={{ width: "100%", height: "10rem" }} backgroundColor="primary" />
   </Container>
 )

@@ -1,10 +1,10 @@
 import React, { FC, useState } from "react"
+import { Flex, Button } from "theme-ui"
 import { getAnalytics } from "../../analytics"
-import Flex from "../Flex/Flex"
 import Typography from "../Typography/Typography"
 import Dialog from "../Dialog/Dialog"
 import Spacer from "../Spacer/Spacer"
-import Button from "../Button/Button"
+
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import { deleteSubjectApi } from "../../api/deleteSubjectApi"
 
@@ -39,16 +39,16 @@ export const DeleteSubjectDialog: FC<Props> = ({
 
   const header = (
     <Flex
-      alignItems="center"
       backgroundColor="surface"
       sx={{
+        alignItems: "center",
         flexShrink: 0,
         position: "relative",
       }}
     >
       <Typography.H6
-        width="100%"
         sx={{
+          width: "100%",
           position: "absolute",
           pointerEvents: "none",
           textAlign: "center",
@@ -74,7 +74,7 @@ export const DeleteSubjectDialog: FC<Props> = ({
   )
 
   return (
-    <Dialog maxWidth={["", "maxWidth.xsm"]}>
+    <Dialog sx={{ maxWidth: ["", "maxWidth.xsm"] }}>
       {header}
       <Typography.Body p={3}>
         <i>&quot;{name}&quot;</i> and student data related to it will be

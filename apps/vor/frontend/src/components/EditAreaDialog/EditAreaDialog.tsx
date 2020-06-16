@@ -1,11 +1,11 @@
 import React, { FC, useState } from "react"
+import { Flex, Button, Box } from "theme-ui"
 import Dialog from "../Dialog/Dialog"
-import Flex from "../Flex/Flex"
 import Typography from "../Typography/Typography"
-import Button from "../Button/Button"
+
 import Spacer from "../Spacer/Spacer"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
-import Box from "../Box/Box"
+
 import Input from "../Input/Input"
 import { updateAreaApi } from "../../api/updateAreaApi"
 
@@ -43,12 +43,16 @@ export const EditAreaDialog: FC<Props> = ({
   }
 
   return (
-    <Dialog backgroundColor="background">
-      <Flex flexDirection="column">
+    <Dialog sx={{ backgroundColor: "background" }}>
+      <Flex
+        sx={{
+          flexDirection: "column",
+        }}
+      >
         <Flex
-          alignItems="center"
           backgroundColor="surface"
           sx={{
+            alignItems: "center",
             position: "relative",
             borderBottomColor: "border",
             borderBottomWidth: 1,
@@ -56,8 +60,8 @@ export const EditAreaDialog: FC<Props> = ({
           }}
         >
           <Typography.H6
-            width="100%"
             sx={{
+              width: "100%",
               position: "absolute",
               pointerEvents: "none",
               textAlign: "center",
@@ -80,7 +84,7 @@ export const EditAreaDialog: FC<Props> = ({
             disabled={loading}
             autoFocus
             label="Area name"
-            width="100%"
+            sx={{ width: "100%" }}
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
@@ -94,12 +98,12 @@ export const EditAreaDialog: FC<Props> = ({
 const ErrorMessage: FC = () => (
   <Typography.Body
     color="warning"
-    width="100%"
     mt={3}
-    fontSize={1}
-    textAlign="center"
     p={1}
     sx={{
+      width: "100%",
+      fontSize: 1,
+      textAlign: "center",
       borderRadius: "default",
       borderStyle: "solid",
       borderColor: "warning",

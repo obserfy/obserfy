@@ -32,10 +32,10 @@ exports[`PageSettings should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  max-width: 640px;
   margin: auto;
   padding: 16px;
   padding-top: 16px;
+  max-width: 640px;
 }
 
 @media screen and (min-width:40em) {
@@ -54,8 +54,8 @@ exports[`PageSettings should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  width: 100%;
   margin-bottom: 32px;
+  width: 100%;
 }
 
 .emotion-0 {
@@ -73,7 +73,6 @@ exports[`PageSettings should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  font-size: 24px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 300;
   line-height: heading;
@@ -86,9 +85,9 @@ exports[`PageSettings should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   --webkitFontSmoothing: antialiased;
   --mozOsxFontSmoothing: grayscale;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   margin-bottom: 16px;
   margin-left: 4px;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
 }
 
 .emotion-3 {
@@ -128,8 +127,10 @@ exports[`PageSettings should render correctly 1`] = `
   padding-left: 16px;
   padding-right: 16px;
   white-space: nowrap;
-  border: 1px solid;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -138,10 +139,8 @@ exports[`PageSettings should render correctly 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  border: 1px solid;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
 .emotion-3:disabled {
@@ -168,26 +167,25 @@ exports[`PageSettings should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
+  margin: 0;
+  margin-right: 8px;
   fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  margin: 0;
-  height: 20px;
   width: 20px;
-  margin-right: 8px;
+  height: 20px;
 }
 
 .emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  padding: 8px;
+  overflow: auto;
   background-color: var(--theme-ui-colors-surface,#fff);
   border-radius: 8px;
   box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
   padding: 16px;
-  overflow: hidden;
   margin-bottom: 8px;
 }
 
@@ -209,7 +207,6 @@ exports[`PageSettings should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  font-size: 24px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 300;
   line-height: heading;
@@ -229,10 +226,10 @@ exports[`PageSettings should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  pointer-events: none;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  pointer-events: none;
 }
 
 .emotion-7 {
@@ -241,13 +238,13 @@ exports[`PageSettings should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
+  margin: 0;
   fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  margin: 0;
-  height: 20px;
   width: 20px;
+  height: 20px;
 }
 
 .emotion-26 {
@@ -261,12 +258,11 @@ exports[`PageSettings should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  padding: 8px;
+  overflow: auto;
   background-color: var(--theme-ui-colors-surface,#fff);
   border-radius: 8px;
   box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
   padding: 16px;
-  overflow: hidden;
 }
 
 .emotion-23 {
@@ -279,7 +275,6 @@ exports[`PageSettings should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  font-size: 24px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 300;
   line-height: heading;
@@ -292,8 +287,8 @@ exports[`PageSettings should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   --webkitFontSmoothing: antialiased;
   --mozOsxFontSmoothing: grayscale;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   margin-bottom: 16px;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
 }
 
 .emotion-22 {
@@ -308,10 +303,9 @@ exports[`PageSettings should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   --webkitFontSmoothing: antialiased;
   --mozOsxFontSmoothing: grayscale;
-  word-wrap: break-word;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   font-size: 14px;
-  line-height: 1.5em;
+  word-wrap: break-word;
 }
 
 .emotion-28 {
@@ -351,8 +345,10 @@ exports[`PageSettings should render correctly 1`] = `
   padding-left: 16px;
   padding-right: 16px;
   white-space: nowrap;
-  border: 1px solid;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -361,16 +357,14 @@ exports[`PageSettings should render correctly 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  border: 1px solid;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   margin-top: 8px;
   margin-bottom: 8px;
-  width: 100%;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   padding-top: 16px;
   padding-bottom: 16px;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  width: 100%;
 }
 
 .emotion-28:disabled {
@@ -428,8 +422,10 @@ exports[`PageSettings should render correctly 1`] = `
   padding-left: 16px;
   padding-right: 16px;
   white-space: nowrap;
-  border: 1px solid;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -438,16 +434,14 @@ exports[`PageSettings should render correctly 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  border: 1px solid;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   margin-top: 8px;
   margin-bottom: 8px;
-  width: 100%;
-  color: var(--theme-ui-colors-danger,#d50000);
   padding-top: 16px;
   padding-bottom: 16px;
+  color: var(--theme-ui-colors-danger,#d50000);
+  width: 100%;
 }
 
 .emotion-29:disabled {
@@ -492,6 +486,8 @@ exports[`PageSettings should render correctly 1`] = `
           >
             <div
               class="emotion-2"
+              height="icon"
+              width="icon"
             />
             Switch School
           </button>
@@ -516,6 +512,8 @@ exports[`PageSettings should render correctly 1`] = `
             />
             <div
               class="emotion-7"
+              height="icon"
+              width="icon"
             />
           </div>
         </div>
@@ -539,6 +537,8 @@ exports[`PageSettings should render correctly 1`] = `
             />
             <div
               class="emotion-7"
+              height="icon"
+              width="icon"
             />
           </div>
         </div>
@@ -562,6 +562,8 @@ exports[`PageSettings should render correctly 1`] = `
             />
             <div
               class="emotion-7"
+              height="icon"
+              width="icon"
             />
           </div>
         </div>
@@ -599,6 +601,8 @@ exports[`PageSettings should render correctly 1`] = `
       >
         <div
           class="emotion-2"
+          height="icon"
+          width="icon"
         />
         Dark Mode
       </button>

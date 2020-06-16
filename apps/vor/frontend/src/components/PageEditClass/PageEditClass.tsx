@@ -1,14 +1,12 @@
 import React, { FC, useEffect, useRef, useState } from "react"
 import { useImmer } from "use-immer"
+import { Flex, Button, Box } from "theme-ui"
 import { navigate } from "../Link/Link"
 import { CLASS_SETTINGS_URL } from "../../routes"
-import { Box } from "../Box/Box"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { Typography } from "../Typography/Typography"
 import Input from "../Input/Input"
-import Flex from "../Flex/Flex"
 import Chip from "../Chip/Chip"
-import Button from "../Button/Button"
 import { WEEKDAYS } from "../PageNewClass/PageNewClass"
 import useGetClass from "../../api/classes/useGetClass"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
@@ -58,7 +56,7 @@ export const PageEditClass: FC<Props> = ({ classId }) => {
 
   return (
     <>
-      <Box maxWidth="maxWidth.sm" margin="auto">
+      <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto">
         <BackNavigation to={CLASS_SETTINGS_URL} text="Class" />
         <Typography.H5 m={3}>Edit Class</Typography.H5>
         {classes.status === "loading" && <LoadingState />}
@@ -66,7 +64,7 @@ export const PageEditClass: FC<Props> = ({ classId }) => {
           <Box m={3}>
             <Input
               label="Name"
-              width="100%"
+              sx={{ width: "100%" }}
               mb={3}
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -77,7 +75,7 @@ export const PageEditClass: FC<Props> = ({ classId }) => {
                 value={startTime}
                 onChange={(e) => setStartTime(e.target.value)}
                 label="Start Time"
-                width="100%"
+                sx={{ width: "100%" }}
                 mb={3}
                 mr={3}
               />
@@ -86,14 +84,19 @@ export const PageEditClass: FC<Props> = ({ classId }) => {
                 value={endTime}
                 onChange={(e) => setEndTime(e.target.value)}
                 label="End Time"
-                width="100%"
+                sx={{ width: "100%" }}
                 mb={3}
               />
             </Flex>
             <Typography.Body mb={2} color="textMediumEmphasis">
               Available every
             </Typography.Body>
-            <Flex mb={3} flexWrap="wrap">
+            <Flex
+              mb={3}
+              sx={{
+                flexWrap: "wrap",
+              }}
+            >
               {WEEKDAYS.map((weekday, i) => (
                 <Chip
                   key={weekday}
@@ -122,7 +125,7 @@ export const PageEditClass: FC<Props> = ({ classId }) => {
                 Delete
               </Button>
               <Button
-                width="100%"
+                sx={{ width: "100%" }}
                 disabled={!valid || status === "loading"}
                 onClick={patchClass}
               >
@@ -150,14 +153,14 @@ export const PageEditClass: FC<Props> = ({ classId }) => {
 const LoadingState: FC = () => {
   return (
     <Box m={3} mt={4}>
-      <LoadingPlaceholder width="12rem" height={48} mb={3} />
-      <LoadingPlaceholder width="100%" height={48} mb={3} />
+      <LoadingPlaceholder sx={{ width: "12rem", height: 48 }} mb={3} />
+      <LoadingPlaceholder sx={{ width: "100%", height: 48 }} mb={3} />
       <Flex mb={3}>
-        <LoadingPlaceholder width="100%" height={48} mr={3} />
-        <LoadingPlaceholder width="100%" height={48} />
+        <LoadingPlaceholder sx={{ width: "100%", height: 48 }} mb={3} />
+        <LoadingPlaceholder sx={{ width: "100%", height: 48 }} />
       </Flex>
-      <LoadingPlaceholder width="100%" height={48} mb={3} />
-      <LoadingPlaceholder width="100%" height={48} mb={3} />
+      <LoadingPlaceholder sx={{ width: "100%", height: 48 }} mb={3} />
+      <LoadingPlaceholder sx={{ width: "100%", height: 48 }} mb={3} />
     </Box>
   )
 }

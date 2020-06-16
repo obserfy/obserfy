@@ -1,9 +1,6 @@
 import React, { FC } from "react"
-
-import { SxStyleProp } from "rebass"
+import { SxStyleProp, FlexProps, Flex, Box } from "theme-ui"
 import { Typography } from "../Typography/Typography"
-import Flex, { FlexProps } from "../Flex/Flex"
-import { Box } from "../Box/Box"
 
 interface Props extends FlexProps {
   values: string[]
@@ -55,8 +52,8 @@ export const ToggleButton: FC<Props> = ({
           <Typography.Body
             m={0}
             color={isSelected ? "primaryDark" : "text"}
-            fontSize={1}
             sx={{
+              fontSize: 1,
               whiteSpace: "nowrap",
               transition: "color 100ms cubic-bezier(0.0, 0.0, 0.2, 1)",
               userSelect: "none",

@@ -18,11 +18,11 @@ exports[`AlertDialog should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  height: 100vh;
+  min-height: 600px;
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
-  min-height: 600px;
-  height: 100vh;
 }
 
 <div>

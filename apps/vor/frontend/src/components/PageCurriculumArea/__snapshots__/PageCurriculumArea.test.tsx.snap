@@ -40,11 +40,11 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  margin-left: -8px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-left: -8px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -57,14 +57,14 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
+  margin: 16px;
+  margin-right: 4px;
   fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  margin: 16px;
-  height: 24px;
   width: 24px;
-  margin-right: 4px;
+  height: 24px;
 }
 
 .emotion-1 {
@@ -79,15 +79,8 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   --webkitFontSmoothing: antialiased;
   --mozOsxFontSmoothing: grayscale;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  font-size: 16px;
   margin-bottom: 0;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-1 {
-    font-size: 14px;
-  }
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
 }
 
 .emotion-4 {
@@ -112,7 +105,6 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  font-size: 24px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 300;
   line-height: heading;
@@ -125,9 +117,9 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   --webkitFontSmoothing: antialiased;
   --mozOsxFontSmoothing: grayscale;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   padding: 16px;
   padding-bottom: 8px;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   line-height: 1;
 }
 
@@ -181,11 +173,10 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   padding-left: 16px;
   padding-right: 16px;
   white-space: nowrap;
-  border: 1px solid;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -194,11 +185,12 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  border: 1px solid;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-danger,#d50000);
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
 
 .emotion-7:disabled {
@@ -225,14 +217,14 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
+  margin: 0;
+  margin-right: 8px;
   fill: var(--theme-ui-colors-danger,#d50000);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  margin: 0;
-  height: 20px;
   width: 20px;
-  margin-right: 8px;
+  height: 20px;
 }
 
 .emotion-9 {
@@ -272,11 +264,10 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   padding-left: 16px;
   padding-right: 16px;
   white-space: nowrap;
-  border: 1px solid;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -285,12 +276,13 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  border: 1px solid;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   margin-left: 8px;
   margin-right: 8px;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
 
 .emotion-9:disabled {
@@ -317,27 +309,27 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
+  margin: 0;
+  margin-right: 8px;
   fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  margin: 0;
-  height: 20px;
   width: 20px;
-  margin-right: 8px;
+  height: 20px;
 }
 
 .emotion-15 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-top: 32px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-left: 16px;
-  margin-right: 16px;
-  margin-top: 32px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -348,7 +340,6 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  font-size: 24px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 300;
   line-height: heading;
@@ -362,21 +353,16 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   --webkitFontSmoothing: antialiased;
   --mozOsxFontSmoothing: grayscale;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  font-weight: normal;
-  -webkit-letter-spacing: 3px;
-  -moz-letter-spacing: 3px;
-  -ms-letter-spacing: 3px;
-  letter-spacing: 3px;
 }
 
 .emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  pointer-events: none;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  pointer-events: none;
 }
 
 .emotion-14 {
@@ -416,8 +402,10 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   padding-left: 16px;
   padding-right: 16px;
   white-space: nowrap;
-  border: 1px solid;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -426,10 +414,8 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  border: 1px solid;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
 .emotion-14:disabled {
@@ -466,6 +452,8 @@ exports[`PageCurriculumArea should render correctly 1`] = `
         >
           <div
             class="emotion-0"
+            height="icon"
+            width="icon"
           />
           <p
             class="emotion-1"
@@ -492,6 +480,8 @@ exports[`PageCurriculumArea should render correctly 1`] = `
         >
           <div
             class="emotion-6"
+            height="icon"
+            width="icon"
           />
           Delete
         </button>
@@ -500,6 +490,8 @@ exports[`PageCurriculumArea should render correctly 1`] = `
         >
           <div
             class="emotion-8"
+            height="icon"
+            width="icon"
           />
           Edit
         </button>
@@ -509,6 +501,8 @@ exports[`PageCurriculumArea should render correctly 1`] = `
       >
         <h5
           class="emotion-11"
+          font-weight="normal"
+          letter-spacing="3"
         >
           SUBJECTS
         </h5>
@@ -523,6 +517,8 @@ exports[`PageCurriculumArea should render correctly 1`] = `
           >
             <div
               class="emotion-8"
+              height="icon"
+              width="icon"
             />
             New
           </button>
