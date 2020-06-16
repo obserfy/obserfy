@@ -366,8 +366,6 @@ exports[`PageEditStudentClass should render correctly 1`] = `
         >
           <div
             class="emotion-0"
-            height="icon"
-            width="icon"
           />
           <p
             class="emotion-1"
@@ -416,8 +414,6 @@ exports[`PageEditStudentClass should render correctly 1`] = `
             </p>
             <div
               class="emotion-9"
-              height="icon"
-              width="icon"
             />
           </div>
         </a>

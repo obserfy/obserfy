@@ -498,8 +498,6 @@ exports[`PageNewGuardian should render correctly 1`] = `
         >
           <div
             class="emotion-0"
-            height="icon"
-            width="icon"
           />
           <p
             class="emotion-1"

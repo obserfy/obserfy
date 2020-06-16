@@ -8,8 +8,6 @@ interface Props extends PropsWithoutRef<ImageProps> {
 export const Icon: FC<Props> = ({ size = "icon", fill, sx, ...props }) => (
   <Image
     m={3}
-    height="icon"
-    width="icon"
     sx={{
       ...sx,
       fill: fill || "icon",

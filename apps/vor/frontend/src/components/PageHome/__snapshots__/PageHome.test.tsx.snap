@@ -364,8 +364,6 @@ exports[`PageHome should render correctly 1`] = `
           >
             <div
               class="emotion-3"
-              height="icon"
-              width="icon"
             />
           </button>
         </a>

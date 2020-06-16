@@ -486,8 +486,6 @@ exports[`PageSettings should render correctly 1`] = `
           >
             <div
               class="emotion-2"
-              height="icon"
-              width="icon"
             />
             Switch School
           </button>
@@ -512,8 +510,6 @@ exports[`PageSettings should render correctly 1`] = `
             />
             <div
               class="emotion-7"
-              height="icon"
-              width="icon"
             />
           </div>
         </div>
@@ -537,8 +533,6 @@ exports[`PageSettings should render correctly 1`] = `
             />
             <div
               class="emotion-7"
-              height="icon"
-              width="icon"
             />
           </div>
         </div>
@@ -562,8 +556,6 @@ exports[`PageSettings should render correctly 1`] = `
             />
             <div
               class="emotion-7"
-              height="icon"
-              width="icon"
             />
           </div>
         </div>
@@ -601,8 +593,6 @@ exports[`PageSettings should render correctly 1`] = `
       >
         <div
           class="emotion-2"
-          height="icon"
-          width="icon"
         />
         Dark Mode
       </button>
