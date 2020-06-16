@@ -254,6 +254,14 @@ type (
 		RepetitionType    int    `pg:",use_zero"`
 		RepetitionEndDate time.Time
 		LessonPlans       []*LessonPlan
+
+		// Why we have area here? because we want to allow users
+		// to be able to select an area, without selecting material.
+		// AreaId should be ignored on application logic when MaterialId is set.
+		Area       Area
+		AreaId     string `pg:"type:uuid,on_delete:SET NULL"`
+		Material   Material
+		MaterialId string `pg:"type:uuid,on_delete:SET NULL"`
 	}
 
 	LessonPlan struct {
