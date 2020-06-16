@@ -28,7 +28,7 @@
     "preact-render-to-string": "5.1.9",
     "react": "github:preact-compat/react#1.0.0",
     "react-dom": "github:preact-compat/react-dom#1.0.0",
-    "react-query": "1.5.3",
+    "react-query": "1.5.8",
     "react-refresh": "0.8.3",
     "react-ssr-prepass": "npm:preact-ssr-prepass@1.0.1",
     "tailwindcss": "1.4.6",
