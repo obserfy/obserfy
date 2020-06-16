@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react"
+import { Box } from "theme-ui"
 import ScrollableDialog from "../ScrollableDialog/ScrollableDialog"
-import { Box } from "../Box/Box"
 import Input from "../Input/Input"
 
 interface Props {
@@ -22,7 +22,7 @@ export const NewStudentDialog: FC<Props> = ({ onConfirm, onCancel }) => {
       <Box p={3}>
         <Input
           label="Full Name"
-          width="100%"
+          sx={{ width: "100%" }}
           placeholder="Erica Sterling"
           onChange={(e) => setName(e.target.value)}
           value={name}

@@ -1,13 +1,13 @@
 import React, { FC, useState } from "react"
+import { Flex, Button } from "theme-ui"
 import Dialog from "../Dialog/Dialog"
 import Select from "../Select/Select"
-import Flex from "../Flex/Flex"
 import Input from "../Input/Input"
 import { Typography } from "../Typography/Typography"
 import Icon from "../Icon/Icon"
 import { ReactComponent as CloseIcon } from "../../icons/close.svg"
 import Spacer from "../Spacer/Spacer"
-import Button from "../Button/Button"
+
 import dayjs from "../../dayjs"
 
 interface Props {
@@ -34,22 +34,32 @@ export const DatePickerDialog: FC<Props> = ({
 
   const title = (
     <Flex
-      alignItems="center"
       p={3}
       sx={{
+        alignItems: "center",
         borderBottomWidth: 1,
         borderBottomStyle: "solid",
         borderBottomColor: "border",
       }}
     >
-      <Typography.H6 mb={0} mr={3} fontWeight="bold" flex={1} overflowY="auto">
+      <Typography.H6
+        mb={0}
+        mr={3}
+        sx={{
+          fontWeight: "bold",
+          flex: 1,
+          overflowY: "auto",
+        }}
+      >
         Pick a Date
       </Typography.H6>
       <Icon
         as={CloseIcon}
-        size={32}
         m={0}
-        sx={{ cursor: "pointer" }}
+        sx={{
+          width: 32,
+          cursor: "pointer",
+        }}
         onClick={onDismiss}
       />
     </Flex>
@@ -58,9 +68,9 @@ export const DatePickerDialog: FC<Props> = ({
   const footer = (
     <Flex
       p={3}
-      alignItems="center"
       sx={{
-        borderTopWidth: 1,
+        alignItems: "center",
+        borderTopWidth: "1px",
         borderTopStyle: "solid",
         borderTopColor: "border",
       }}
@@ -82,12 +92,17 @@ export const DatePickerDialog: FC<Props> = ({
   return (
     <Dialog>
       {title}
-      <Flex p={3} backgroundColor="background">
+      <Flex
+        p={3}
+        sx={{
+          backgroundColor: "background",
+        }}
+      >
         <Input
           mr={3}
           type="number"
           label="Year"
-          width="100%"
+          sx={{ width: "100%" }}
           min="1"
           inputMode="numeric"
           value={year}

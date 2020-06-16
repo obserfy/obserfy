@@ -1,10 +1,9 @@
 import React, { FC } from "react"
-import Flex from "../Flex/Flex"
+import { Flex, Button, Card } from "theme-ui"
 import Typography from "../Typography/Typography"
 import Pill from "../Pill/Pill"
 import Spacer from "../Spacer/Spacer"
-import Button from "../Button/Button"
-import Card from "../Card/Card"
+
 import { categories } from "../../categories"
 import { Observation } from "../../api/useGetObservations"
 
@@ -21,7 +20,7 @@ export const ObservationCard: FC<Props> = ({
   const category = categories[parseInt(observation.categoryId, 10)]
 
   return (
-    <Card mb={2} key={observation.id} borderRadius={[0, "default"]}>
+    <Card mb={2} key={observation.id} sx={{ borderRadius: [0, "default"] }}>
       <Typography.Body
         mx={3}
         mt={observation.longDesc ? 3 : 2}
@@ -32,7 +31,9 @@ export const ObservationCard: FC<Props> = ({
       </Typography.Body>
       {observation.longDesc && (
         <Typography.Body
-          fontSize={1}
+          sx={{
+            fontSize: 1,
+          }}
           mt={2}
           mx={3}
           mb={3}
@@ -43,8 +44,12 @@ export const ObservationCard: FC<Props> = ({
           {observation.longDesc}
         </Typography.Body>
       )}
-      <Flex px={2} alignItems="center" mb={2}>
-        <Flex flexWrap="wrap">
+      <Flex px={2} sx={{ alignItems: "center" }} mb={2}>
+        <Flex
+          sx={{
+            flexWrap: "wrap",
+          }}
+        >
           <Pill
             ml={2}
             backgroundColor={category.color}
@@ -65,14 +70,18 @@ export const ObservationCard: FC<Props> = ({
           color="danger"
           data-cy="delete-observation"
           onClick={() => onDelete(observation)}
-          fontSize={0}
+          sx={{
+            fontSize: 0,
+          }}
         >
           delete
         </Button>
         <Button
           variant="secondary"
           data-cy="edit-observation"
-          fontSize={0}
+          sx={{
+            fontSize: 0,
+          }}
           onClick={() => onEdit(observation)}
         >
           Edit

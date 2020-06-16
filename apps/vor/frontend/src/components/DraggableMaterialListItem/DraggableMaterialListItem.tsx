@@ -1,7 +1,7 @@
 import React, { FC, memo, useCallback } from "react"
+import { Button } from "theme-ui"
 import { Material } from "../../api/useGetSubjectMaterials"
 import Input from "../Input/Input"
-import Button from "../Button/Button"
 import Icon from "../Icon/Icon"
 import { ReactComponent as DeleteIcon } from "../../icons/trash.svg"
 import DraggableListItem from "../DraggableListItem/DraggableListItem"
@@ -114,12 +114,12 @@ export const DraggableMaterialListItem: FC<Props> = ({
         }
         placeholder="Material name"
         p={0}
-        width="100%"
         value={material.name}
         onChange={onNameChange}
         backgroundColor="transparent"
         autoFocus={autofocus}
         sx={{
+          width: "100%",
           fontSize: [2, 1],
           p: 0,
           pl: 2,

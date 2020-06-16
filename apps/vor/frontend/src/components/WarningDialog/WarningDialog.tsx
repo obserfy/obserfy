@@ -1,7 +1,7 @@
 import React, { FC } from "react"
-import Flex from "../Flex/Flex"
+import { Flex, Button } from "theme-ui"
 import Typography from "../Typography/Typography"
-import Button from "../Button/Button"
+
 import Spacer from "../Spacer/Spacer"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import Dialog from "../Dialog/Dialog"
@@ -20,18 +20,18 @@ export const WarningDialog: FC<Props> = ({
   onAccept,
   loading,
 }) => (
-  <Dialog maxWidth={["", "maxWidth.xsm"]}>
+  <Dialog sx={{ maxWidth: ["", "maxWidth.xsm"] }}>
     <Flex
-      alignItems="center"
       backgroundColor="surface"
       sx={{
+        alignItems: "center",
         flexShrink: 0,
         position: "relative",
       }}
     >
       <Typography.H6
-        width="100%"
         sx={{
+          width: "100%",
           position: "absolute",
           pointerEvents: "none",
           textAlign: "center",

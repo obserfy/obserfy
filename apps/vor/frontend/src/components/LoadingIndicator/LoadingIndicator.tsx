@@ -1,8 +1,7 @@
 // @ts-nocheck
-// TODO: remove ts-nocheck when we migrate to theme-ui from rebass.
 import React, { FC } from "react"
 import { keyframes } from "@emotion/core"
-import Box, { BoxProps } from "../Box/Box"
+import { Box, BoxProps } from "theme-ui"
 
 const ellipsis1 = keyframes(`
  0% {

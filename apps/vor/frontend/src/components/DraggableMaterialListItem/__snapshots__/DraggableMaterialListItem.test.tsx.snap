@@ -18,14 +18,20 @@ exports[`DraggableMaterialListItem should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  height: 48px;
   background-color: var(--theme-ui-colors-primaryLightest,rgba(0,120,86,0.05));
+  height: 48px;
 }
 
 .emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  background-color: var(--theme-ui-colors-background,#f2f3f5);
+  height: 48px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -43,12 +49,6 @@ exports[`DraggableMaterialListItem should render correctly 1`] = `
   transform: translateY(0px);
   z-index: 1;
   top: 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  height: 48px;
-  background-color: var(--theme-ui-colors-background,#f2f3f5);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -59,11 +59,11 @@ exports[`DraggableMaterialListItem should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  cursor: move;
   padding-left: 16px;
   padding-right: 16px;
   padding-top: 8px;
   padding-bottom: 8px;
+  cursor: move;
 }
 
 .emotion-0 {
@@ -72,13 +72,13 @@ exports[`DraggableMaterialListItem should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
+  margin: 0;
+  width: 20px;
   fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  margin: 0;
-  height: 24px;
-  width: 24px;
+  height: 20px;
 }
 
 .emotion-4 {
@@ -86,6 +86,10 @@ exports[`DraggableMaterialListItem should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   as: label;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -94,19 +98,14 @@ exports[`DraggableMaterialListItem should render correctly 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  padding: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-3 {
@@ -136,7 +135,7 @@ exports[`DraggableMaterialListItem should render correctly 1`] = `
   font-size: inherit;
   line-height: inherit;
   border: 1px solid;
-  border-radius: 8px;
+  border-radius: 4px;
   color: inherit;
   background-color: transparent;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -146,13 +145,13 @@ exports[`DraggableMaterialListItem should render correctly 1`] = `
   font-size: 16px;
   padding: 12px;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
-  font-size: 16px;
+  padding: 0;
+  background-color: transparent;
+  width: 100%;
   padding: 0;
   padding-left: 8px;
   border: none;
   height: 100%;
-  background-color: transparent;
-  width: 100%;
 }
 
 .emotion-2:hover,
@@ -181,12 +180,6 @@ exports[`DraggableMaterialListItem should render correctly 1`] = `
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
-}
-
-@media screen and (min-width:40em) {
-  .emotion-2 {
-    font-size: 14px;
-  }
 }
 
 .emotion-6 {
@@ -226,18 +219,6 @@ exports[`DraggableMaterialListItem should render correctly 1`] = `
   padding-left: 16px;
   padding-right: 16px;
   white-space: nowrap;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   margin-right: 8px;
 }
 
@@ -259,13 +240,13 @@ exports[`DraggableMaterialListItem should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
+  margin: 0;
   fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  margin: 0;
-  height: 20px;
   width: 20px;
+  height: 20px;
 }
 
 <div>
@@ -283,17 +264,19 @@ exports[`DraggableMaterialListItem should render correctly 1`] = `
         >
           <div
             class="emotion-0"
+            height="icon"
+            width="icon"
           />
         </div>
         <label
           class="emotion-4"
-          data-cy="materialNameInput"
         >
           <div
             class="emotion-3"
           >
             <input
               class="emotion-2"
+              data-cy="materialNameInput"
               placeholder="Material name"
               value="Johnny"
             />
@@ -304,6 +287,8 @@ exports[`DraggableMaterialListItem should render correctly 1`] = `
         >
           <div
             class="emotion-5"
+            height="icon"
+            width="icon"
           />
         </button>
       </div>

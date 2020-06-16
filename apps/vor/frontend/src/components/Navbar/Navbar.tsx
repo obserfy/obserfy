@@ -3,9 +3,8 @@ import { graphql, useStaticQuery } from "gatsby"
 import GatsbyImage from "gatsby-image"
 import { useLocation, useMatch } from "@reach/router"
 import { useMemoryStatus } from "react-adaptive-hooks/memory"
-import Card from "../Card/Card"
-import Flex from "../Flex/Flex"
-import Box from "../Box/Box"
+import { Flex, Box, Card } from "theme-ui"
+
 import { ReactComponent as EditIcon } from "../../icons/edit2.svg"
 import { ReactComponent as SettingsIcon } from "../../icons/settings.svg"
 import { ReactComponent as CalendarIcon } from "../../icons/calendar.svg"
@@ -58,20 +57,20 @@ const Navbar: FC = () => {
 
   return (
     <Card
-      display={[keyboardShown ? "none" : "block", "block"]}
       as="nav"
-      borderRadius={0}
-      height={["auto", "100%"]}
-      width={["100%", "auto"]}
       backgroundColor="surfaceBlurNonTransparent"
       sx={{
+        height: ["auto", "100%"],
+        width: ["100%", "auto"],
+        borderRadius: 0,
+        display: [keyboardShown ? "none" : "block", "block"],
         zIndex: 5,
         top: ["auto", 0],
         bottom: [0, "auto"],
         left: 0,
         position: "fixed",
         borderTopStyle: "solid",
-        borderTopWidth: 1,
+        borderTopWidth: "1px",
         borderTopColor: "borderSolid",
         "@supports (backdrop-filter: blur(20px))":
           // Only enable on mid to hi end devices, blur is an expensive effect, turned on by default by devices that doesn't
@@ -97,18 +96,25 @@ const Navbar: FC = () => {
       }}
     >
       <Flex
-        flexDirection={["row", "column"]}
-        justifyContent={["space-evenly"]}
-        height={["auto", "100%"]}
+        sx={{
+          justifyContent: ["space-evenly"],
+          flexDirection: ["row", "column"],
+          height: ["auto", "100%"],
+        }}
         pb={["env(safe-area-inset-bottom)", 0]}
         pl="env(safe-area-inset-left)"
       >
-        <Box mx="auto" my={3} display={["none", "block"]} mb={4}>
+        <Box mx="auto" my={3} sx={{ display: ["none", "block"] }} mb={4}>
           <GatsbyImage fixed={query.file.childImageSharp.fixed} />
         </Box>
         <NavBarItem title="Observe" icon={EditIcon} to="/dashboard/observe" />
         <NavBarItem title="Plan" icon={CalendarIcon} to="/dashboard/plans" />
-        <Box height="100%" display={["none", "block"]} />
+        <Box
+          sx={{
+            height: "100%",
+            display: ["none", "block"],
+          }}
+        />
         <NavBarItem
           title="Settings"
           icon={SettingsIcon}
@@ -147,14 +153,14 @@ const NavBarItem: FC<{
       }}
     >
       <Flex
-        flexDirection="column"
-        alignItems="center"
-        justifyContent="space-around"
-        height={[48, 60]}
         mb={[0, 2]}
-        width={[60, 70]}
         py={1}
         sx={{
+          width: [60, 70],
+          height: [48, 60],
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "space-around",
           position: "relative",
           "&:after": {
             top: [0, "inherit"],
@@ -172,12 +178,14 @@ const NavBarItem: FC<{
         <Icon
           as={icon}
           m={0}
-          size={24}
           fill={match ? "textPrimary" : "textDisabled"}
+          size={24}
         />
         <Typography.Body
-          lineHeight={1}
-          fontSize={["10px", 0]}
+          sx={{
+            lineHeight: 1,
+            fontSize: ["10px", 0],
+          }}
           color={match ? "textPrimary" : "textMediumEmphasis"}
         >
           {title}

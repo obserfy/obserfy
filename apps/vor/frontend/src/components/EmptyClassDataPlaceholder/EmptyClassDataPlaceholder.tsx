@@ -1,5 +1,5 @@
 import React, { FC } from "react"
-import Box from "../Box/Box"
+import { Box } from "theme-ui"
 import InformationalCard from "../InformationalCard/InformationalCard"
 import { CLASS_SETTINGS_URL } from "../../routes"
 

@@ -1,13 +1,13 @@
 import React, { FC, useState } from "react"
+import { Button, Box } from "theme-ui"
 import Select from "../Select/Select"
 import { GuardianRelationship } from "../../api/students/usePostNewStudent"
 import Input from "../Input/Input"
 import TextArea from "../TextArea/TextArea"
-import Button from "../Button/Button"
 import { navigate } from "../Link/Link"
 import { EDIT_GUARDIANS_URL } from "../../routes"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
-import { Box } from "../Box/Box"
+
 import { usePostNewGuardian } from "../../api/guardians/usePostNewGuardian"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { Typography } from "../Typography/Typography"
@@ -27,7 +27,7 @@ export const PageNewGuardian: FC<Props> = ({ id }) => {
   const [mutate, { status }] = usePostNewGuardian(id)
 
   return (
-    <Box mx="auto" maxWidth="maxWidth.sm">
+    <Box mx="auto" sx={{ maxWidth: "maxWidth.sm" }}>
       <BackNavigation to={EDIT_GUARDIANS_URL(id)} text="Edit Guardians" />
       <Typography.H5 mx={3} mt={3} color="textDisabled">
         {student.data?.name}
@@ -40,7 +40,7 @@ export const PageNewGuardian: FC<Props> = ({ id }) => {
           value={name}
           mb={2}
           label="Guardian Name"
-          width="100%"
+          sx={{ width: "100%" }}
           onChange={(e) => setName(e.target.value)}
         />
         <Select
@@ -58,7 +58,7 @@ export const PageNewGuardian: FC<Props> = ({ id }) => {
           value={email}
           mb={2}
           label="Email"
-          width="100%"
+          sx={{ width: "100%" }}
           onChange={(event) => setEmail(event.target.value)}
         />
         <Input
@@ -66,7 +66,7 @@ export const PageNewGuardian: FC<Props> = ({ id }) => {
           value={phone}
           mb={3}
           label="Phone"
-          width="100%"
+          sx={{ width: "100%" }}
           onChange={(event) => setPhone(event.target.value)}
         />
         <TextArea
@@ -76,7 +76,7 @@ export const PageNewGuardian: FC<Props> = ({ id }) => {
           onChange={(e) => setNote(e.target.value)}
         />
         <Button
-          width="100%"
+          sx={{ width: "100%" }}
           disabled={name === ""}
           onClick={async () => {
             const result = await mutate({

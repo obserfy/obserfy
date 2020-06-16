@@ -1,14 +1,12 @@
-import React, { ChangeEventHandler, FC } from "react"
-import { Textarea as BaseTextArea } from "@rebass/forms"
-import Label from "../Label/Label"
-import Box, { BoxProps } from "../Box/Box"
+import React, { ChangeEvent, FC, PropsWithoutRef } from "react"
+import { Box, Label, Textarea as BaseTextArea, TextareaProps } from "theme-ui"
 
-interface Props extends BoxProps {
+interface Props extends PropsWithoutRef<TextareaProps> {
   label?: string
-  onChange?: ChangeEventHandler<HTMLInputElement>
+  onChange?: (event: ChangeEvent<HTMLTextAreaElement>) => void
 }
 export const TextArea: FC<Props> = ({ label, ...props }) => (
-  <Label display="flex" sx={{ flexDirection: "column" }}>
+  <Label sx={{ display: "flex", flexDirection: "column" }}>
     {label && <Box pb={1}>{label}</Box>}
     <BaseTextArea aria-label={label} {...props} />
   </Label>

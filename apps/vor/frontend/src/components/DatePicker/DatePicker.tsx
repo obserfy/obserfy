@@ -1,14 +1,14 @@
-import React, { FC } from "react"
+import React, { FC, PropsWithoutRef } from "react"
+import { Flex, FlexProps } from "theme-ui"
 import Input from "../Input/Input"
 import Select from "../Select/Select"
 import dayjs, { Dayjs } from "../../dayjs"
-import Flex, { FlexProps } from "../Flex/Flex"
 
 const MONTHS = [...Array(12).keys()].map((item) =>
   dayjs().set("month", item).format("MMMM")
 )
 
-interface Props extends Omit<FlexProps, "onChange" | "value"> {
+interface Props extends Omit<PropsWithoutRef<FlexProps>, "onChange"> {
   value: Dayjs
   onChange: (date: Dayjs) => void
 }

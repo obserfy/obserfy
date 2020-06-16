@@ -1,17 +1,13 @@
 import React, { FC } from "react"
 import { navigate } from "gatsby"
-import { useColorMode } from "theme-ui"
+import { useColorMode, Box, Flex, Button, Card } from "theme-ui"
 import { Link } from "../Link/Link"
-import Box from "../Box/Box"
 import Typography from "../Typography/Typography"
-import Flex from "../Flex/Flex"
 import Icon from "../Icon/Icon"
-import Button from "../Button/Button"
 import CardLink from "../CardLink/CardLink"
 import { ReactComponent as LightModeIcon } from "../../icons/light-mode.svg"
 import { ReactComponent as DarkModeIcon } from "../../icons/dark-mode.svg"
 import { ReactComponent as FlipIcon } from "../../icons/flip.svg"
-import Card from "../Card/Card"
 import { useGetSchool } from "../../api/schools/useGetSchool"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import { CLASS_SETTINGS_URL } from "../../routes"
@@ -40,10 +36,10 @@ export const PageSettings: FC = () => {
   }
 
   return (
-    <Box maxWidth="maxWidth.sm" margin="auto" p={3} pt={[3, 3, 4]}>
-      <Box width="100%" mb={4}>
+    <Box sx={{ maxWidth: "maxWidth.sm" }} m="auto" p={3} pt={[3, 3, 4]}>
+      <Box sx={{ width: "100%" }} mb={4}>
         {schoolDetail.status === "loading" && !schoolDetail.data?.name && (
-          <LoadingPlaceholder width="100%" height={60} />
+          <LoadingPlaceholder sx={{ width: "100%", height: 60 }} />
         )}
         <Typography.H3 mb={3} ml={1}>
           {schoolDetail.data?.name}
@@ -60,18 +56,20 @@ export const PageSettings: FC = () => {
       <CardLink mb={2} name="Class" to={CLASS_SETTINGS_URL} />
       <Box mb={4}>
         <Card p={3} onClick={shareLink}>
-          <Flex alignItems="center">
+          <Flex sx={{ alignItems: "center" }}>
             <Box>
               <Typography.H6 mb={3}>Invite your co-workers</Typography.H6>
               {schoolDetail.status === "loading" &&
                 !schoolDetail.data?.inviteLink && (
-                  <LoadingPlaceholder width="100%" height={60} />
+                  <LoadingPlaceholder sx={{ width: "100%", height: 60 }} />
                 )}
               <Typography.Body
                 id="shareLink"
-                fontSize={1}
                 lineHeight="1.5em"
-                sx={{ wordWrap: "break-word" }}
+                sx={{
+                  fontSize: 1,
+                  wordWrap: "break-word",
+                }}
               >
                 {schoolDetail.data?.inviteLink}
               </Typography.Body>
@@ -83,10 +81,10 @@ export const PageSettings: FC = () => {
       <Button
         variant="outline"
         my={2}
-        width="100%"
         color="danger"
         py={3}
         onClick={logout}
+        sx={{ width: "100%" }}
       >
         Log Out
       </Button>
@@ -100,10 +98,10 @@ const ThemeModeButton: FC = () => {
     <Button
       variant="outline"
       my={2}
-      width="100%"
       color="textMediumEmphasis"
       py={3}
       onClick={() => setColorMode(colorMode === "dark" ? "default" : "dark")}
+      sx={{ width: "100%" }}
     >
       {colorMode === "dark" ? (
         <>

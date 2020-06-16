@@ -1,9 +1,9 @@
 import React, { FC } from "react"
 import { navigate } from "gatsby"
-import Flex from "../Flex/Flex"
-import Box from "../Box/Box"
+import { Flex, Box, Card } from "theme-ui"
+
 import { useGetSchools } from "../../api/schools/useGetSchools"
-import Card from "../Card/Card"
+
 import { Typography } from "../Typography/Typography"
 import Icon from "../Icon/Icon"
 import { ReactComponent as ArrowNextIcon } from "../../icons/next-arrow.svg"
@@ -31,8 +31,8 @@ export const PageChooseSchool: FC = () => {
       }}
       data-cy="school_item"
     >
-      <Flex alignItems="center">
-        <Typography.H6 textAlign="left">{name}</Typography.H6>
+      <Flex sx={{ alignItems: "center" }}>
+        <Typography.H6 sx={{ textAlign: "left" }}>{name}</Typography.H6>
         <Spacer />
         <Icon as={ArrowNextIcon} />
       </Flex>
@@ -46,15 +46,22 @@ export const PageChooseSchool: FC = () => {
   )
 
   return (
-    <Flex justifyContent="center" minHeight="100vh" minWidth="100vw" pt={6}>
-      <Box p={3} maxWidth="maxWidth.sm" width="100%" mt={-5}>
+    <Flex
+      sx={{
+        justifyContent: "center",
+        minHeight: "100vh",
+        minWidth: "100vw",
+      }}
+      pt={6}
+    >
+      <Box p={3} sx={{ maxWidth: "maxWidth.sm", width: "100%" }} mt={-5}>
         <Typography.H2 mb={4}>Your Schools</Typography.H2>
         {availableSchools}
         {emptySchoolPlaceholder}
         <Button
           mt={3}
           variant="outlineBig"
-          width="100%"
+          sx={{ width: "100%" }}
           onClick={() => navigate("/new-school")}
           data-cy="newSchool"
         >

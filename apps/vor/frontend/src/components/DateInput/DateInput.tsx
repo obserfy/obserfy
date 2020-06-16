@@ -1,11 +1,10 @@
 import React, { FC, useState } from "react"
+import { Button, Flex, BoxProps } from "theme-ui"
 import Input from "../Input/Input"
-import Button from "../Button/Button"
 import Icon from "../Icon/Icon"
 import { ReactComponent as CalendarIcon } from "../../icons/calendar.svg"
-import Flex from "../Flex/Flex"
 import DatePickerDialog from "../DatePickerDialog/DatePickerDialog"
-import { BoxProps } from "../Box/Box"
+
 import dayjs from "../../dayjs"
 
 interface Props extends Omit<BoxProps, "value" | "onChange"> {
@@ -21,13 +20,13 @@ export const DateInput: FC<Props> = ({ label, value, onChange, ...props }) => {
       <Flex onClick={() => setShowDatePicker(true)} {...props}>
         <Input
           label={label}
-          width="100%"
+          sx={{
+            opacity: "1!important",
+            width: "100%",
+          }}
           value={!value ? "" : dayjs(value).format("D MMMM 'YY")}
           placeholder="Not set"
           disabled
-          sx={{
-            opacity: "1!important",
-          }}
         />
         <Button
           data-cy={label}

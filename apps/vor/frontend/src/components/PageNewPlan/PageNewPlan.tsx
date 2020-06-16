@@ -1,15 +1,12 @@
 /** @jsx jsx */
 import { FC, useState } from "react"
-import { jsx } from "theme-ui"
-import { Box } from "../Box/Box"
+import { jsx, Button, Flex, Box } from "theme-ui"
 import Input from "../Input/Input"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { ALL_PLANS_URL } from "../../routes"
 import { Typography } from "../Typography/Typography"
-import Button from "../Button/Button"
 import useGetSchoolClasses from "../../api/classes/useGetSchoolClasses"
 import Chip from "../Chip/Chip"
-import { Flex } from "../Flex/Flex"
 import TextArea from "../TextArea/TextArea"
 import DateInput from "../DateInput/DateInput"
 import usePostNewPlan from "../../api/plans/usePostNewPlan"
@@ -35,7 +32,7 @@ export const PageNewPlan: FC<Props> = ({ chosenDate }) => {
   const [endDate, setEndDate] = useState(date)
 
   return (
-    <Box maxWidth="maxWidth.sm" mx="auto">
+    <Box sx={{ maxWidth: "maxWidth.sm" }} mx="auto">
       <BackNavigation to={ALL_PLANS_URL(date)} text="All plans" />
       <Typography.H5 m={3}>New Plan</Typography.H5>
 
@@ -48,16 +45,16 @@ export const PageNewPlan: FC<Props> = ({ chosenDate }) => {
         />
         <Input
           label="Title"
-          width="100%"
+          sx={{ width: "100%" }}
           mb={2}
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
         <TextArea
           label="Description"
-          width="100%"
           mb={3}
           value={description}
+          sx={{ width: "100%" }}
           onChange={(e) => {
             setDescription(e.target.value)
           }}
@@ -121,7 +118,6 @@ export const PageNewPlan: FC<Props> = ({ chosenDate }) => {
 
       <Box mx={3} mb={4}>
         <Button
-          width="100%"
           disabled={classId === "" || title === ""}
           mt={3}
           onClick={async () => {
@@ -135,6 +131,7 @@ export const PageNewPlan: FC<Props> = ({ chosenDate }) => {
               await navigate(ALL_PLANS_URL(date))
             }
           }}
+          sx={{ width: "100%" }}
         >
           Save
         </Button>

@@ -1,10 +1,9 @@
 import React, { FC } from "react"
 
+import { Button, Flex } from "theme-ui"
 import Dialog from "./Dialog"
 import { Typography } from "../Typography/Typography"
-import Button from "../Button/Button"
 import Spacer from "../Spacer/Spacer"
-import Flex from "../Flex/Flex"
 
 export default {
   title: "Basic|Dialog/Dialog",

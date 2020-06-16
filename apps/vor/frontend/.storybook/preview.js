@@ -22,7 +22,13 @@ const ThemeDecorator = (story) => {
     <LocationProvider history={history}>
       <ThemeProvider theme={Theme}>
         <ThemeSwitcher />
-        <Box backgroundColor="background">{story()}</Box>
+        <Box
+          sx={{
+            backgroundColor: "background",
+          }}
+        >
+          {story()}
+        </Box>
       </ThemeProvider>
     </LocationProvider>
   )

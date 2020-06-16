@@ -1,4 +1,4 @@
-const themeUiTheme = {
+const Theme = {
   useColorSchemeMediaQuery: true,
   colors: {
     // Base color
@@ -162,10 +162,15 @@ const themeUiTheme = {
   shadows: {
     low: "rgba(0, 0, 0, 0.1) 0px 0px 1px, rgba(0, 0, 0, 0.27) 0px 2px 4px -2px",
   },
-}
-
-const rebassVariants = {
-  // rebass variants
+  cards: {
+    primary: {
+      overflow: "auto",
+      backgroundColor: "surface",
+      borderRadius: "default",
+      boxShadow:
+        "rgba(0, 0, 0, 0.1) 0px 0px 1px, rgba(0, 0, 0, 0.27) 0px 2px 4px -2px",
+    },
+  },
   text: {
     heading: {
       color: "rgba(0,0,0,0.88)",
@@ -254,13 +259,7 @@ const rebassVariants = {
       height: "avatar",
       borderRadius: "circle",
     },
-    card: {
-      p: 2,
-      backgroundColor: "surface",
-      borderRadius: "default",
-      boxShadow:
-        "rgba(0, 0, 0, 0.1) 0px 0px 1px, rgba(0, 0, 0, 0.27) 0px 2px 4px -2px",
-    },
+
     link: {
       color: "primary",
     },
@@ -291,6 +290,9 @@ const rebassVariants = {
       py: 2,
       px: 3,
       whiteSpace: "nowrap",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
       "&:disabled": {
         opacity: 0.38,
         cursor: "auto",
@@ -349,6 +351,7 @@ const rebassVariants = {
   },
   forms: {
     input: {
+      borderRadius: "default",
       fontFamily: "body",
       width: "auto",
       borderColor: "border",
@@ -370,6 +373,7 @@ const rebassVariants = {
       },
     },
     select: {
+      borderRadius: "default",
       color: "text",
       fontFamily: "body",
       borderColor: "border",
@@ -382,6 +386,7 @@ const rebassVariants = {
       },
     },
     textarea: {
+      borderRadius: "default",
       fontFamily: "body",
       borderColor: "border",
       backgroundColor: "surface",
@@ -412,11 +417,6 @@ const rebassVariants = {
       height: "1em",
     },
   },
-}
-
-const Theme = {
-  ...themeUiTheme,
-  ...rebassVariants,
 }
 
 export type Theme = typeof Theme

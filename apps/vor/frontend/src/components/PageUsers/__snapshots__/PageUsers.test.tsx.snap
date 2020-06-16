@@ -18,20 +18,20 @@ exports[`PageUsers should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  max-width: 640px;
   margin-left: auto;
   margin-right: auto;
+  max-width: 640px;
 }
 
 .emotion-2 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  margin-left: -8px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-left: -8px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -44,14 +44,14 @@ exports[`PageUsers should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
+  margin: 16px;
+  margin-right: 4px;
   fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  margin: 16px;
-  height: 24px;
   width: 24px;
-  margin-right: 4px;
+  height: 24px;
 }
 
 .emotion-1 {
@@ -66,9 +66,9 @@ exports[`PageUsers should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   --webkitFontSmoothing: antialiased;
   --mozOsxFontSmoothing: grayscale;
+  margin-bottom: 0;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   font-size: 16px;
-  margin-bottom: 0;
 }
 
 @media screen and (min-width:40em) {
@@ -101,6 +101,8 @@ exports[`PageUsers should render correctly 1`] = `
         >
           <div
             class="emotion-0"
+            height="icon"
+            width="icon"
           />
           <p
             class="emotion-1"

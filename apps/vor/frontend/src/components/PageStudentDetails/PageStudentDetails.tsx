@@ -1,15 +1,14 @@
 /** @jsx jsx */
 import { FC, Fragment, useState } from "react"
 import { navigate } from "gatsby"
-import { jsx } from "theme-ui"
+import { jsx, Flex, Box, Button } from "theme-ui"
 import { Link } from "../Link/Link"
 import { useGetStudent } from "../../api/useGetStudent"
-import Flex from "../Flex/Flex"
-import Box from "../Box/Box"
+
 import Typography from "../Typography/Typography"
 import Icon from "../Icon/Icon"
 import EmptyListPlaceholder from "../EmptyListPlaceholder/EmptyListPlaceholder"
-import Button from "../Button/Button"
+
 import { BackNavigation } from "../BackNavigation/BackNavigation"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import { Observation, useGetObservations } from "../../api/useGetObservations"
@@ -75,7 +74,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
     (observations.data ?? []).length === 0 && (
       <EmptyListPlaceholder
         mx={[0, 3]}
-        borderRadius={[0, "default"]}
+        sx={{ borderRadius: [0, "default"] }}
         text="No observation have been added yet"
         callToActionText="new observation"
         onActionClick={() =>
@@ -87,11 +86,13 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
     )
 
   const dateSelector = (observations.data?.length ?? 0) > 0 && (
-    <Flex alignItems="center" px={3} mb={2}>
+    <Flex sx={{ alignItems: "center" }} px={3} mb={2}>
       <Typography.Body
-        fontSize={1}
         color="textMediumEmphasis"
-        sx={{ textTransform: "capitalize" }}
+        sx={{
+          fontSize: 1,
+          textTransform: "capitalize",
+        }}
       >
         {/* eslint-disable-next-line no-nested-ternary */}
         {selectedDateDifference > -3
@@ -131,12 +132,12 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
 
   return (
     <Fragment>
-      <Box maxWidth="maxWidth.sm" margin="auto" pb={5}>
+      <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={5}>
         <BackNavigation text="Home" to="/dashboard/observe" />
-        <Flex alignItems="start" mx={3} mb={4} mt={0}>
+        <Flex sx={{ alignItems: "start" }} mx={3} mb={4} mt={0}>
           <Typography.H4 sx={{ wordWrap: "break-word" }} lineHeight={1.4}>
             {student.data?.name || (
-              <LoadingPlaceholder width="24rem" height={60} />
+              <LoadingPlaceholder sx={{ width: "24rem", height: 60 }} />
             )}
           </Typography.H4>
           <Spacer />
@@ -146,7 +147,7 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
             sx={{ mr: 2 }}
             to={`/dashboard/observe/students/profile?id=${id}`}
           >
-            <Button data-cy="edit" minWidth={43} variant="outline">
+            <Button data-cy="edit" sx={{ minWidth: 43 }} variant="outline">
               See Profile
             </Button>
           </Link>
@@ -160,7 +161,16 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
             </Button>
           </Link>
         </Flex>
-        <Typography.H6 mr="auto" lineHeight={1} pt={4} pl={3} pr={2} mb={1}>
+        <Typography.H6
+          mr="auto"
+          sx={{
+            lineHeight: 1,
+          }}
+          pt={4}
+          pl={3}
+          pr={2}
+          mb={1}
+        >
           Observations
         </Typography.H6>
         {emptyObservationPlaceholder}
@@ -203,22 +213,28 @@ export const PageStudentDetails: FC<Props> = ({ id }) => {
 const ObservationLoadingPlaceholder: FC = () => (
   <Box>
     <LoadingPlaceholder
-      width="100%"
-      height={116}
       mb={2}
-      sx={{ borderRadius: [0, "default"] }}
+      sx={{
+        height: 116,
+        width: "100%",
+        borderRadius: [0, "default"],
+      }}
     />
     <LoadingPlaceholder
-      width="100%"
-      height={116}
       mb={2}
-      sx={{ borderRadius: [0, "default"] }}
+      sx={{
+        height: 116,
+        width: "100%",
+        borderRadius: [0, "default"],
+      }}
     />
     <LoadingPlaceholder
-      width="100%"
-      height={116}
       mb={2}
-      sx={{ borderRadius: [0, "default"] }}
+      sx={{
+        height: 116,
+        width: "100%",
+        borderRadius: [0, "default"],
+      }}
     />
   </Box>
 )

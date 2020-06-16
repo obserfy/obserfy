@@ -18,19 +18,15 @@ exports[`PagePlans should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  max-width: 640px;
   margin-left: auto;
   margin-right: auto;
+  max-width: 640px;
 }
 
 .emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   margin-left: 16px;
   margin-right: 16px;
   margin-top: 16px;
@@ -39,6 +35,10 @@ exports[`PagePlans should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .emotion-0 {
@@ -103,18 +103,6 @@ exports[`PagePlans should render correctly 1`] = `
   white-space: nowrap;
   border: 1px solid;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 4px;
@@ -147,13 +135,13 @@ exports[`PagePlans should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
+  margin: 0;
   fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  margin: 0;
-  height: 20px;
   width: 20px;
+  height: 20px;
 }
 
 .emotion-4 {
@@ -195,18 +183,6 @@ exports[`PagePlans should render correctly 1`] = `
   white-space: nowrap;
   border: 1px solid;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   margin-right: 8px;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -271,18 +247,6 @@ exports[`PagePlans should render correctly 1`] = `
   white-space: nowrap;
   border: 1px solid;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 16px;
@@ -324,13 +288,6 @@ exports[`PagePlans should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  padding: 8px;
-  background-color: var(--theme-ui-colors-surface,#fff);
-  border-radius: 8px;
-  box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
-  border-radius: 0;
-  padding: 0;
-  overflow: hidden;
   padding-left: 16px;
   padding-right: 16px;
   padding-top: 8px;
@@ -343,6 +300,7 @@ exports[`PagePlans should render correctly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  border-radius: 0;
 }
 
 @media screen and (min-width:40em) {
@@ -357,13 +315,13 @@ exports[`PagePlans should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
+  margin: 0;
   fill: var(--theme-ui-colors-primaryDark,#00a06d);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  margin: 0;
-  height: 20px;
   width: 20px;
+  height: 20px;
 }
 
 .emotion-8 {
@@ -378,9 +336,16 @@ exports[`PagePlans should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   --webkitFontSmoothing: antialiased;
   --mozOsxFontSmoothing: grayscale;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  font-size: 14px;
   margin-left: 16px;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  font-size: 16px;
+  font-size: 14px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-8 {
+    font-size: 14px;
+  }
 }
 
 <div>
@@ -404,6 +369,8 @@ exports[`PagePlans should render correctly 1`] = `
         >
           <div
             class="emotion-1"
+            height="icon"
+            width="icon"
           />
         </button>
         <button
@@ -412,6 +379,8 @@ exports[`PagePlans should render correctly 1`] = `
         >
           <div
             class="emotion-1"
+            height="icon"
+            width="icon"
           />
         </button>
         <button
@@ -430,6 +399,8 @@ exports[`PagePlans should render correctly 1`] = `
         >
           <div
             class="emotion-7"
+            height="icon"
+            width="icon"
           />
           <p
             class="emotion-8"

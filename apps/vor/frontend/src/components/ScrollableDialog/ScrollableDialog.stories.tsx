@@ -1,8 +1,8 @@
 import React, { FC, useState } from "react"
+import { Box } from "theme-ui"
 import ScrollableDialog from "./ScrollableDialog"
 import Typography from "../Typography/Typography"
 import SearchBar from "../SearchBar/SearchBar"
-import Box from "../Box/Box"
 
 export default {
   title: "Basic|Dialog/ScrollableDialog",

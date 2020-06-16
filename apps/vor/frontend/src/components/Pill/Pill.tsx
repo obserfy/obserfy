@@ -1,11 +1,11 @@
 import React, { FC } from "react"
-import Box, { BoxProps } from "../Box/Box"
+import { BoxProps, Box } from "theme-ui"
 import Typography from "../Typography/Typography"
 
 interface Props extends BoxProps {
   text: string
 }
-export const Pill: FC<Props> = ({ color, text, ...props }) => {
+export const Pill: FC<Props> = ({ sx, color, text, ...props }) => {
   const borderProps = {
     borderColor: "border",
     borderWidth: 1,
@@ -15,14 +15,16 @@ export const Pill: FC<Props> = ({ color, text, ...props }) => {
     <Box
       py={1}
       px={2}
-      sx={{ ...borderProps, borderRadius: "circle", flexShrink: 0 }}
+      sx={{ ...borderProps, borderRadius: "circle", flexShrink: 0, ...sx }}
       {...props}
     >
       <Typography.Body
-        lineHeight="1em"
-        fontSize={0}
         color={color}
-        sx={{ textTransform: "capitalize" }}
+        sx={{
+          fontSize: 0,
+          lineHeight: "1em",
+          textTransform: "capitalize",
+        }}
       >
         {text}
       </Typography.Body>

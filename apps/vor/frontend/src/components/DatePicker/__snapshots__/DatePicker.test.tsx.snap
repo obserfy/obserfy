@@ -14,7 +14,7 @@ exports[`DatePicker should render correctly 1`] = `
   }
 }
 
-.emotion-7 {
+.emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -29,6 +29,10 @@ exports[`DatePicker should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   as: label;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -37,19 +41,14 @@ exports[`DatePicker should render correctly 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  margin-right: 16px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-0 {
@@ -86,7 +85,7 @@ exports[`DatePicker should render correctly 1`] = `
   font-size: inherit;
   line-height: inherit;
   border: 1px solid;
-  border-radius: 8px;
+  border-radius: 4px;
   color: inherit;
   background-color: transparent;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -96,6 +95,7 @@ exports[`DatePicker should render correctly 1`] = `
   font-size: 16px;
   padding: 12px;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  margin-right: 16px;
 }
 
 .emotion-1:hover,
@@ -131,6 +131,10 @@ exports[`DatePicker should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   as: label;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -139,13 +143,19 @@ exports[`DatePicker should render correctly 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.emotion-7 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
   margin-right: 16px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -166,7 +176,7 @@ exports[`DatePicker should render correctly 1`] = `
   font-size: inherit;
   line-height: inherit;
   border: 1px solid;
-  border-radius: 8px;
+  border-radius: 4px;
   color: inherit;
   background-color: transparent;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
@@ -192,34 +202,6 @@ exports[`DatePicker should render correctly 1`] = `
   -ms-flex-item-align: center;
   align-self: center;
   pointer-events: none;
-  width: 24px;
-  height: 24px;
-}
-
-.emotion-13 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  width: 100%;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  as: label;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-size: 14px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 <div>
@@ -227,12 +209,10 @@ exports[`DatePicker should render correctly 1`] = `
     class="emotion-15"
   >
     <div
-      class="emotion-7"
+      class="emotion-12"
     >
       <label
         class="emotion-3"
-        inputmode="numeric"
-        min="1"
       >
         <div
           class="emotion-0"
@@ -244,6 +224,8 @@ exports[`DatePicker should render correctly 1`] = `
         >
           <input
             class="emotion-1"
+            inputmode="numeric"
+            min="1"
             type="number"
             value="1970"
           />
@@ -328,7 +310,9 @@ exports[`DatePicker should render correctly 1`] = `
           <svg
             class="emotion-6"
             fill="currentcolor"
+            height="24"
             viewBox="0 0 24 24"
+            width="24"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
@@ -338,7 +322,7 @@ exports[`DatePicker should render correctly 1`] = `
         </div>
       </label>
       <label
-        class="emotion-13"
+        class="emotion-8"
       >
         <div
           class="emotion-0"
@@ -346,7 +330,7 @@ exports[`DatePicker should render correctly 1`] = `
           Date
         </div>
         <div
-          class="emotion-7"
+          class="emotion-12"
         >
           <select
             aria-label="Date"
@@ -511,7 +495,9 @@ exports[`DatePicker should render correctly 1`] = `
           <svg
             class="emotion-6"
             fill="currentcolor"
+            height="24"
             viewBox="0 0 24 24"
+            width="24"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path

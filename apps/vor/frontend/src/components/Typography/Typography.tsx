@@ -1,19 +1,14 @@
-import React, { FC } from "react"
-import { Heading, Text, TextProps as BaseTextProps } from "rebass"
+import React, { FC, PropsWithoutRef } from "react"
+import { Heading, Text, BoxProps, HeadingProps } from "theme-ui"
 
-export type TextProps = Omit<BaseTextProps, "css">
-// TODO: Do not edit, apparently this pattern doesn't work well
-//  autocomplete doesn't work correctly with this component.
-//  We'll rebuild typographic components into it's own components
-//  from now on, eg. components such as Label and Subtitle.
 interface Typography {
-  H1: FC<TextProps>
-  H2: FC<TextProps>
-  H3: FC<TextProps>
-  H4: FC<TextProps>
-  H5: FC<TextProps>
-  H6: FC<TextProps>
-  Body: FC<TextProps>
+  H1: FC<HeadingProps>
+  H2: FC<HeadingProps>
+  H3: FC<HeadingProps>
+  H4: FC<HeadingProps>
+  H5: FC<HeadingProps>
+  H6: FC<HeadingProps>
+  Body: FC<PropsWithoutRef<BoxProps>>
 }
 
 /**
@@ -27,8 +22,8 @@ export const Typography: Typography = {
   H4: (props) => <Heading color="text" as="h4" variant="h4" {...props} />,
   H5: (props) => <Heading color="text" as="h5" variant="h5" {...props} />,
   H6: (props) => <Heading color="text" as="h6" variant="h6" {...props} />,
-  Body: (props) => (
-    <Text color="text" fontSize={[2, 1]} as="p" variant="body" {...props} />
+  Body: ({ ...props }) => (
+    <Text variant="body" color="text" as="p" {...props} />
   ),
 }
 

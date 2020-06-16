@@ -1,10 +1,10 @@
 import React, { FC, useState } from "react"
+import { Flex, Button, Box } from "theme-ui"
 import Dialog from "../Dialog/Dialog"
 import Input from "../Input/Input"
-import Flex from "../Flex/Flex"
-import Button from "../Button/Button"
+
 import Typography from "../Typography/Typography"
-import Box from "../Box/Box"
+
 import Spacer from "../Spacer/Spacer"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import { createAreaApi } from "../../api/createAreaApi"
@@ -39,12 +39,16 @@ export const NewAreaDialog: FC<Props> = ({
   }
 
   return (
-    <Dialog backgroundColor="background">
-      <Flex flexDirection="column">
+    <Dialog sx={{ backgroundColor: "background" }}>
+      <Flex
+        sx={{
+          flexDirection: "column",
+        }}
+      >
         <Flex
-          alignItems="center"
           backgroundColor="surface"
           sx={{
+            alignItems: "center",
             position: "relative",
             borderBottomColor: "border",
             borderBottomWidth: 1,
@@ -52,8 +56,8 @@ export const NewAreaDialog: FC<Props> = ({
           }}
         >
           <Typography.H6
-            width="100%"
             sx={{
+              width: "100%",
               position: "absolute",
               pointerEvents: "none",
               textAlign: "center",
@@ -77,7 +81,7 @@ export const NewAreaDialog: FC<Props> = ({
             disabled={loading}
             autoFocus
             label="Area name"
-            width="100%"
+            sx={{ width: "100%" }}
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
@@ -90,12 +94,12 @@ export const NewAreaDialog: FC<Props> = ({
 const ErrorMessage: FC = () => (
   <Typography.Body
     color="warning"
-    width="100%"
     mb={2}
-    fontSize={1}
-    textAlign="center"
     p={1}
     sx={{
+      width: "100%",
+      fontSize: 1,
+      textAlign: "center",
       borderRadius: "default",
       borderStyle: "solid",
       borderColor: "warning",

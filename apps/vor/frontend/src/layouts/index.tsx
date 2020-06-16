@@ -1,8 +1,8 @@
 import React, { FC } from "react"
 import { Global } from "@emotion/core"
+import { Box } from "theme-ui"
 import Layout from "../components/Layout/Layout"
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary"
-import Box from "../components/Box/Box"
 
 // Used by gatsby-plugin-layout
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -10,7 +10,13 @@ const LayoutManager: FC<any> = ({ children, pageContext }) => (
   <ErrorBoundary>
     <GlobalStyle />
     {pageContext.layout === "open" ? (
-      <Box backgroundColor="background">{children}</Box>
+      <Box
+        sx={{
+          backgroundColor: "background",
+        }}
+      >
+        {children}
+      </Box>
     ) : (
       <Layout>{children}</Layout>
     )}

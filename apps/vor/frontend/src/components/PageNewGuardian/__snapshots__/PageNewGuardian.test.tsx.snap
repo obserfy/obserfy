@@ -27,11 +27,11 @@ exports[`PageNewGuardian should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  margin-left: -8px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-left: -8px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -44,14 +44,14 @@ exports[`PageNewGuardian should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
+  margin: 16px;
+  margin-right: 4px;
   fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  margin: 16px;
-  height: 24px;
   width: 24px;
-  margin-right: 4px;
+  height: 24px;
 }
 
 .emotion-1 {
@@ -66,9 +66,9 @@ exports[`PageNewGuardian should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   --webkitFontSmoothing: antialiased;
   --mozOsxFontSmoothing: grayscale;
+  margin-bottom: 0;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   font-size: 16px;
-  margin-bottom: 0;
 }
 
 @media screen and (min-width:40em) {
@@ -81,7 +81,6 @@ exports[`PageNewGuardian should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  font-size: 24px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 300;
   line-height: heading;
@@ -94,17 +93,16 @@ exports[`PageNewGuardian should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   --webkitFontSmoothing: antialiased;
   --mozOsxFontSmoothing: grayscale;
-  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
   margin-left: 16px;
   margin-right: 16px;
   margin-top: 16px;
+  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
 .emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  font-size: 24px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 300;
   line-height: heading;
@@ -117,10 +115,10 @@ exports[`PageNewGuardian should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   --webkitFontSmoothing: antialiased;
   --mozOsxFontSmoothing: grayscale;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   margin-left: 16px;
   margin-right: 16px;
   margin-bottom: 16px;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
 }
 
 .emotion-26 {
@@ -135,6 +133,10 @@ exports[`PageNewGuardian should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   as: label;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -143,19 +145,14 @@ exports[`PageNewGuardian should render correctly 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  margin-bottom: 8px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-5 {
@@ -192,7 +189,7 @@ exports[`PageNewGuardian should render correctly 1`] = `
   font-size: inherit;
   line-height: inherit;
   border: 1px solid;
-  border-radius: 8px;
+  border-radius: 4px;
   color: inherit;
   background-color: transparent;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -202,6 +199,7 @@ exports[`PageNewGuardian should render correctly 1`] = `
   font-size: 16px;
   padding: 12px;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  margin-bottom: 8px;
   width: 100%;
 }
 
@@ -238,6 +236,10 @@ exports[`PageNewGuardian should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   as: label;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -246,24 +248,20 @@ exports[`PageNewGuardian should render correctly 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-bottom: 8px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  margin-bottom: 8px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -283,7 +281,7 @@ exports[`PageNewGuardian should render correctly 1`] = `
   font-size: inherit;
   line-height: inherit;
   border: 1px solid;
-  border-radius: 8px;
+  border-radius: 4px;
   color: inherit;
   background-color: transparent;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
@@ -309,62 +307,61 @@ exports[`PageNewGuardian should render correctly 1`] = `
   -ms-flex-item-align: center;
   align-self: center;
   pointer-events: none;
-  width: 24px;
-  height: 24px;
 }
 
-.emotion-21 {
+.emotion-19 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  display: block;
   width: 100%;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  as: label;
+  padding: 8px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: inherit;
+  line-height: inherit;
+  border: 1px solid;
+  border-radius: 4px;
+  color: inherit;
+  background-color: transparent;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-size: 14px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  width: auto;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface,#fff);
+  font-size: 16px;
+  padding: 12px;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   margin-bottom: 16px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  width: 100%;
 }
 
-.emotion-24 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  width: 100%;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  as: label;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-size: 14px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+.emotion-19:hover,
+.emotion-19:focus {
+  border-color: var(--theme-ui-colors-primary,#00e399);
+  outline: none;
+}
+
+.emotion-19::-webkit-input-placeholder {
+  font-style: italic;
+}
+
+.emotion-19::-moz-placeholder {
+  font-style: italic;
+}
+
+.emotion-19:-ms-input-placeholder {
+  font-style: italic;
+}
+
+.emotion-19::placeholder {
+  font-style: italic;
+}
+
+.emotion-19:disabled {
+  opacity: 0.68;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
 .emotion-23 {
@@ -380,7 +377,7 @@ exports[`PageNewGuardian should render correctly 1`] = `
   font-size: inherit;
   line-height: inherit;
   border: 1px solid;
-  border-radius: 8px;
+  border-radius: 4px;
   color: inherit;
   background-color: transparent;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -457,18 +454,6 @@ exports[`PageNewGuardian should render correctly 1`] = `
   padding-left: 16px;
   padding-right: 16px;
   white-space: nowrap;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   width: 100%;
 }
 
@@ -504,6 +489,8 @@ exports[`PageNewGuardian should render correctly 1`] = `
         >
           <div
             class="emotion-0"
+            height="icon"
+            width="icon"
           />
           <p
             class="emotion-1"
@@ -574,7 +561,9 @@ exports[`PageNewGuardian should render correctly 1`] = `
             <svg
               class="emotion-11"
               fill="currentcolor"
+              height="24"
               viewBox="0 0 24 24"
+              width="24"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
@@ -602,7 +591,7 @@ exports[`PageNewGuardian should render correctly 1`] = `
           </div>
         </label>
         <label
-          class="emotion-21"
+          class="emotion-8"
         >
           <div
             class="emotion-5"
@@ -613,14 +602,14 @@ exports[`PageNewGuardian should render correctly 1`] = `
             class="emotion-7"
           >
             <input
-              class="emotion-6"
+              class="emotion-19"
               type="phone"
               value=""
             />
           </div>
         </label>
         <label
-          class="emotion-24"
+          class="emotion-13"
         >
           <div
             class="emotion-5"

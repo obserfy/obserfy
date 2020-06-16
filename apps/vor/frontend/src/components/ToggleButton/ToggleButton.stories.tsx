@@ -1,6 +1,6 @@
 import React, { FC } from "react"
+import { Box } from "theme-ui"
 import ToggleButton from "./ToggleButton"
-import Box from "../Box/Box"
 
 export default {
   title: "Basic|ToggleButton",

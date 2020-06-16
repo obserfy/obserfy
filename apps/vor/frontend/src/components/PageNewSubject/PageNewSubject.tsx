@@ -1,16 +1,16 @@
 import React, { FC, useState } from "react"
 import { useImmer } from "use-immer"
 import { nanoid } from "nanoid"
+import { Flex, Button, Box } from "theme-ui"
 import { navigate } from "../Link/Link"
 import { Material } from "../../api/useGetSubjectMaterials"
 import { createSubjectApi } from "../../api/createSubjectApi"
 import { getAnalytics } from "../../analytics"
 import DraggableMaterialListItem from "../DraggableMaterialListItem/DraggableMaterialListItem"
-import Flex from "../Flex/Flex"
 import Typography from "../Typography/Typography"
-import Button from "../Button/Button"
+
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
-import Box from "../Box/Box"
+
 import Input from "../Input/Input"
 import Icon from "../Icon/Icon"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
@@ -65,17 +65,27 @@ export const PageNewSubject: FC<Props> = ({ areaId }) => {
   ))
 
   return (
-    <Flex flexDirection="column" maxWidth="maxWidth.sm" margin="auto">
+    <Flex
+      sx={{
+        flexDirection: "column",
+        maxWidth: "maxWidth.sm",
+      }}
+      margin="auto"
+    >
       <BackNavigation
         to={CURRICULUM_AREA_URL(areaId)}
         text={area.data?.name ?? ""}
       />
       <Typography.H6 m={3}>New Subject</Typography.H6>
-      <Box backgroundColor="background">
+      <Box
+        sx={{
+          backgroundColor: "background",
+        }}
+      >
         <Box>
           <Box p={3}>
             <Input
-              width="100%"
+              sx={{ width: "100%" }}
               label="Subject name"
               value={subjectName}
               onChange={(e) => setSubjectName(e.target.value)}
@@ -83,20 +93,18 @@ export const PageNewSubject: FC<Props> = ({ areaId }) => {
           </Box>
           <Typography.Body
             px={3}
-            fontSize={2}
-            fontWeight="bold"
+            sx={{
+              fontSize: 2,
+              fontWeight: "bold",
+            }}
             color="textMediumEmphasis"
           >
             Materials
           </Typography.Body>
-          <Box width="100%" overflow="hidden">
-            {list}
-          </Box>
+          <Box sx={{ width: "100%", overflow: "hidden" }}>{list}</Box>
           <Flex
             px={3}
             py={2}
-            alignItems="center"
-            backgroundColor="background"
             onClick={() => {
               setMaterials((draft) => {
                 draft.push({
@@ -107,19 +115,26 @@ export const PageNewSubject: FC<Props> = ({ areaId }) => {
               })
             }}
             sx={{
+              alignItems: "center",
               cursor: "pointer",
               position: "relative",
               userSelect: "none",
+              backgroundColor: "background",
             }}
           >
             <Icon as={PlusIcon} m={0} mr={2} width={24} fill="primary" />
-            <Typography.Body color="textMediumEmphasis" fontSize={1}>
+            <Typography.Body
+              color="textMediumEmphasis"
+              sx={{
+                fontSize: 1,
+              }}
+            >
               Add material
             </Typography.Body>
           </Flex>
         </Box>
       </Box>
-      <Flex justifyContent="flex-end" width="100%" p={3}>
+      <Flex sx={{ justifyContent: "flex-end", width: "100%" }} p={3}>
         <Button disabled={!isValid} onClick={createSubject}>
           {loading && <LoadingIndicator />}
           Save

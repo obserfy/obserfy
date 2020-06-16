@@ -5,9 +5,8 @@
   "version": "0.1.0",
   "author": "Chrisando Eka Pramudhita <chrsep@protonmail.com>",
   "dependencies": {
-    "@emotion/core": "10.0.28",
+    "@emotion/core": "^10.0.28",
     "@reach/router": "1.3.3",
-    "@rebass/forms": "4.0.6",
     "@svgr/webpack": "5.4.0",
     "dayjs": "1.8.28",
     "dotenv": "8.2.0",
@@ -44,8 +43,7 @@
     "react-dom": "16.13.1",
     "react-helmet": "6.1.0",
     "react-query": "1.5.3",
-    "rebass": "4.0.7",
-    "theme-ui": "0.3.1",
+    "theme-ui": "^0.4.0-alpha.3",
     "use-immer": "0.4.0"
   },
   "devDependencies": {
@@ -72,9 +70,7 @@
     "@types/react": "16.9.36",
     "@types/react-adaptive-hooks": "0.0.0",
     "@types/react-query": "1.1.2",
-    "@types/rebass": "4.0.6",
     "@types/segment-analytics": "0.0.32",
-    "@types/theme-ui": "0.3.4",
     "@typescript-eslint/eslint-plugin": "3.2.0",
     "@typescript-eslint/parser": "3.2.0",
     "babel-jest": "26.0.1",

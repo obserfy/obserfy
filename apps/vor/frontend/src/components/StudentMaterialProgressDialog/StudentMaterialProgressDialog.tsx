@@ -1,8 +1,8 @@
 import React, { FC, useState } from "react"
+import { Box } from "theme-ui"
 import { MaterialProgressStage } from "../../api/useGetStudentMaterialProgress"
 import ScrollableDialog from "../ScrollableDialog/ScrollableDialog"
 import Select from "../Select/Select"
-import Box from "../Box/Box"
 import { updateStudentMaterialProgress } from "../../api/updateStudentMaterialProgress"
 import dayjs from "../../dayjs"
 

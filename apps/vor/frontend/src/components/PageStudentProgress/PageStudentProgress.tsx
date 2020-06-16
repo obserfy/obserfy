@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react"
+import { Box, Flex, Card } from "theme-ui"
 import { useGetStudent } from "../../api/useGetStudent"
-import Box from "../Box/Box"
 import Typography from "../Typography/Typography"
 import { BackNavigation } from "../BackNavigation/BackNavigation"
 import { useGetArea } from "../../api/useGetArea"
@@ -9,8 +9,7 @@ import {
   Material,
   useGetSubjectMaterials,
 } from "../../api/useGetSubjectMaterials"
-import Card from "../Card/Card"
-import Flex from "../Flex/Flex"
+
 import Icon from "../Icon/Icon"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import {
@@ -48,14 +47,18 @@ export const PageStudentProgress: FC<Props> = ({ areaId, studentId }) => {
 
   if (loading) {
     return (
-      <Box maxWidth="maxWidth.sm" m={[3, "auto"]}>
+      <Box sx={{ maxWidth: "maxWidth.sm" }} m={[3, "auto"]}>
         {backNavigation}
-        <LoadingPlaceholder width="100%" height="6rem" mb={2} mt={4} />
-        <LoadingPlaceholder width="100%" height="6rem" mb={4} />
-        <LoadingPlaceholder width="100%" height="6rem" mb={2} />
-        <LoadingPlaceholder width="100%" height="6rem" mb={2} />
-        <LoadingPlaceholder width="100%" height="6rem" mb={2} />
-        <LoadingPlaceholder width="100%" height="6rem" mb={2} />
+        <LoadingPlaceholder
+          sx={{ width: "100%", height: "6rem" }}
+          mb={2}
+          mt={4}
+        />
+        <LoadingPlaceholder sx={{ width: "100%", height: "6rem" }} mb={4} />
+        <LoadingPlaceholder sx={{ width: "100%", height: "6rem" }} mb={2} />
+        <LoadingPlaceholder sx={{ width: "100%", height: "6rem" }} mb={2} />
+        <LoadingPlaceholder sx={{ width: "100%", height: "6rem" }} mb={2} />
+        <LoadingPlaceholder sx={{ width: "100%", height: "6rem" }} mb={2} />
       </Box>
     )
   }
@@ -66,7 +69,7 @@ export const PageStudentProgress: FC<Props> = ({ areaId, studentId }) => {
 
   return (
     <>
-      <Box maxWidth="maxWidth.sm" margin="auto" pb={5}>
+      <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={5}>
         {backNavigation}
         <Box m={3} mb={4}>
           <Typography.H3 sx={{ wordWrap: "break-word" }}>
@@ -81,7 +84,7 @@ export const PageStudentProgress: FC<Props> = ({ areaId, studentId }) => {
             mb={4}
             key={subject.id}
             mx={[0, 3]}
-            borderRadius={[0, "default"]}
+            sx={{ borderRadius: [0, "default"] }}
           >
             <Typography.H6 m={3}>{subject.name}</Typography.H6>
             <SubjectMaterials
@@ -123,12 +126,12 @@ const SubjectMaterials: FC<{
   if (materials.status === "loading") {
     return (
       <>
-        <LoadingPlaceholder width="100%" height="6rem" mb={2} />
-        <LoadingPlaceholder width="100%" height="6rem" mb={2} />
-        <LoadingPlaceholder width="100%" height="6rem" mb={2} />
-        <LoadingPlaceholder width="100%" height="6rem" mb={2} />
-        <LoadingPlaceholder width="100%" height="6rem" mb={2} />
-        <LoadingPlaceholder width="100%" height="6rem" mb={2} />
+        <LoadingPlaceholder sx={{ width: "100%", height: "6rem" }} mb={2} />
+        <LoadingPlaceholder sx={{ width: "100%", height: "6rem" }} mb={2} />
+        <LoadingPlaceholder sx={{ width: "100%", height: "6rem" }} mb={2} />
+        <LoadingPlaceholder sx={{ width: "100%", height: "6rem" }} mb={2} />
+        <LoadingPlaceholder sx={{ width: "100%", height: "6rem" }} mb={2} />
+        <LoadingPlaceholder sx={{ width: "100%", height: "6rem" }} mb={2} />
       </>
     )
   }
@@ -140,18 +143,24 @@ const SubjectMaterials: FC<{
         const stage = materialStageToString(match?.stage)
         return (
           <Flex
-            alignItems="center"
             key={material.id}
             py={2}
             onClick={() => onMaterialClick(material)}
             sx={{
+              alignItems: "center",
               cursor: "pointer",
               borderTopColor: "border",
-              borderTopWidth: 1,
+              borderTopWidth: "1px",
               borderTopStyle: "solid",
             }}
           >
-            <Typography.Body ml={3} fontSize={1} mr="auto">
+            <Typography.Body
+              ml={3}
+              sx={{
+                fontSize: 1,
+              }}
+              mr="auto"
+            >
               {material.name}
             </Typography.Body>
             {stage && (

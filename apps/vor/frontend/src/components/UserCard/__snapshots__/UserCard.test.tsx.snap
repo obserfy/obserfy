@@ -18,12 +18,7 @@ exports[`UserCard should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  padding: 8px;
-  background-color: var(--theme-ui-colors-surface,#fff);
-  border-radius: 8px;
-  box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
   padding: 16px;
-  overflow: hidden;
   margin-top: 8px;
 }
 
@@ -62,7 +57,6 @@ exports[`UserCard should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  font-size: 24px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 300;
   line-height: heading;
@@ -98,16 +92,21 @@ exports[`UserCard should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  pointer-events: none;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  pointer-events: none;
 }
 
 .emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin: 4px;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   border-width: 1px;
   border-style: solid;
@@ -115,12 +114,7 @@ exports[`UserCard should render correctly 1`] = `
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 8px;
-  padding-right: 8px;
   background-color: var(--theme-ui-colors-primary,#00e399);
-  margin: 4px;
 }
 
 .emotion-4 {
@@ -135,10 +129,9 @@ exports[`UserCard should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   --webkitFontSmoothing: antialiased;
   --mozOsxFontSmoothing: grayscale;
-  text-transform: capitalize;
   color: var(--theme-ui-colors-onPrimary,#000);
   font-size: 12px;
-  line-height: 1em;
+  text-transform: capitalize;
 }
 
 <div>

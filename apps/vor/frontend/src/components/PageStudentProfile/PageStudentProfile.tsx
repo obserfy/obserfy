@@ -1,11 +1,11 @@
 /** @jsx jsx */
 import { FC, Fragment, useState } from "react"
-import { jsx } from "theme-ui"
-import Box from "../Box/Box"
+import { jsx, Box, Button, Flex, Card } from "theme-ui"
+
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { useGetStudent } from "../../api/useGetStudent"
 import { usePatchStudentApi } from "../../api/students/usePatchStudentApi"
-import Card from "../Card/Card"
+
 import Typography from "../Typography/Typography"
 import {
   EDIT_GUARDIANS_URL,
@@ -14,9 +14,9 @@ import {
 } from "../../routes"
 import dayjs from "../../dayjs"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
-import Button from "../Button/Button"
+
 import Icon from "../Icon/Icon"
-import Flex from "../Flex/Flex"
+
 import Dialog from "../Dialog/Dialog"
 import Input from "../Input/Input"
 import DialogHeader from "../DialogHeader/DialogHeader"
@@ -35,21 +35,21 @@ export const PageStudentProfile: FC<Props> = ({ id }) => {
   if (status === "loading") {
     return (
       <Box>
-        <LoadingPlaceholder width="100%" height="10em" mb={3} />
-        <LoadingPlaceholder width="100%" height="10em" mb={3} />
-        <LoadingPlaceholder width="100%" height="10em" mb={3} />
-        <LoadingPlaceholder width="100%" height="10em" mb={3} />
+        <LoadingPlaceholder sx={{ width: "100%", height: "10em" }} mb={3} />
+        <LoadingPlaceholder sx={{ width: "100%", height: "10em" }} mb={3} />
+        <LoadingPlaceholder sx={{ width: "100%", height: "10em" }} mb={3} />
+        <LoadingPlaceholder sx={{ width: "100%", height: "10em" }} mb={3} />
       </Box>
     )
   }
 
   return (
-    <Box maxWidth="maxWidth.sm" margin="auto" pb={4}>
+    <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={4}>
       <BackNavigation
         to={STUDENT_DETAILS_PAGE_URL(id)}
         text="Student Overview"
       />
-      <Card borderRadius={[0, "default"]} mb={3}>
+      <Card sx={{ borderRadius: [0, "default"] }} mb={3}>
         <NameDataBox
           value={data?.name}
           key={`name${data?.name}`}
@@ -77,22 +77,36 @@ export const PageStudentProfile: FC<Props> = ({ id }) => {
         />
       </Card>
 
-      <Card borderRadius={[0, "default"]} mb={3}>
+      <Card sx={{ borderRadius: [0, "default"] }} mb={3}>
         <Flex sx={{ alignItems: "flex-start" }}>
           <Box px={3} py={3}>
             <Typography.Body
-              fontSize={0}
-              lineHeight={1}
+              sx={{
+                fontSize: 0,
+                lineHeight: 1,
+              }}
               mb={2}
               color="textMediumEmphasis"
             >
               Classes
             </Typography.Body>
             {data?.classes?.length === 0 && (
-              <Typography.Body lineHeight={1}>Not set</Typography.Body>
+              <Typography.Body
+                sx={{
+                  lineHeight: 1,
+                }}
+              >
+                Not set
+              </Typography.Body>
             )}
             {data?.classes?.map((currentClass) => (
-              <Typography.Body lineHeight={1} key={currentClass.id} mt={3}>
+              <Typography.Body
+                sx={{
+                  lineHeight: 1,
+                }}
+                key={currentClass.id}
+                mt={3}
+              >
                 {currentClass.name}
               </Typography.Body>
             ))}
@@ -110,30 +124,45 @@ export const PageStudentProfile: FC<Props> = ({ id }) => {
         </Flex>
       </Card>
 
-      <Card borderRadius={[0, "default"]}>
+      <Card sx={{ borderRadius: [0, "default"] }}>
         <Flex sx={{ alignItems: "flex-start" }}>
           <Box px={3} pt={3}>
             <Typography.Body
-              fontSize={0}
-              lineHeight={1}
+              sx={{
+                fontSize: 0,
+                lineHeight: 1,
+              }}
               color="textMediumEmphasis"
             >
               Guardians
             </Typography.Body>
             {data?.guardians?.length === 0 && (
-              <Typography.Body lineHeight={1} mb={3} mt={2}>
+              <Typography.Body
+                sx={{
+                  lineHeight: 1,
+                }}
+                mb={3}
+                mt={2}
+              >
                 Not set
               </Typography.Body>
             )}
             {data?.guardians?.map(({ email, name }) => {
               return (
                 <Box py={3}>
-                  <Typography.Body lineHeight={1} mb={2}>
+                  <Typography.Body
+                    sx={{
+                      lineHeight: 1,
+                    }}
+                    mb={2}
+                  >
                     {name}
                   </Typography.Body>
                   <Typography.Body
-                    lineHeight={1}
-                    fontSize={1}
+                    sx={{
+                      lineHeight: 1,
+                      fontSize: 1,
+                    }}
                     color="textMediumEmphasis"
                   >
                     {email || "No email"}
@@ -184,7 +213,12 @@ const NameDataBox: FC<{ value?: string; studentId: string }> = ({
             onAccept={saveName}
             loading={status === "loading"}
           />
-          <Box backgroundColor="background" p={3}>
+          <Box
+            sx={{
+              backgroundColor: "background",
+            }}
+            p={3}
+          >
             <Input
               label="Name"
               sx={{ width: "100%" }}
@@ -236,7 +270,12 @@ const GenderDataBox: FC<{ value?: number; studentId: string }> = ({
             onAccept={saveGender}
             loading={status === "loading"}
           />
-          <Box backgroundColor="background" p={3}>
+          <Box
+            sx={{
+              backgroundColor: "background",
+            }}
+            p={3}
+          >
             <Select
               label="Gender"
               value={gender}
@@ -282,7 +321,12 @@ const StudentIdDataBox: FC<{ value?: string; studentId: string }> = ({
             onAccept={saveCustomId}
             loading={status === "loading"}
           />
-          <Box backgroundColor="background" p={3}>
+          <Box
+            sx={{
+              backgroundColor: "background",
+            }}
+            p={3}
+          >
             <Input
               label="Student ID"
               sx={{ width: "100%" }}
@@ -329,7 +373,12 @@ const DateOfBirthDataBox: FC<{ value?: string; studentId: string }> = ({
             onAccept={saveDateOfBirth}
             loading={status === "loading"}
           />
-          <Flex p={3} backgroundColor="background">
+          <Flex
+            p={3}
+            sx={{
+              backgroundColor: "background",
+            }}
+          >
             <DatePicker value={date} onChange={setDate} />
           </Flex>
         </Dialog>
@@ -368,7 +417,12 @@ const DateOfEntryDataBox: FC<{ value?: string; studentId: string }> = ({
             onAccept={saveDateOfEntry}
             loading={status === "loading"}
           />
-          <Flex p={3} backgroundColor="background">
+          <Flex
+            p={3}
+            sx={{
+              backgroundColor: "background",
+            }}
+          >
             <DatePicker value={date} onChange={setDate} />
           </Flex>
         </Dialog>
@@ -394,7 +448,9 @@ const DataBox: FC<{
   >
     <Box>
       <Typography.Body
-        fontSize={0}
+        sx={{
+          fontSize: 0,
+        }}
         lineHeight={1.6}
         mb={1}
         color="textMediumEmphasis"

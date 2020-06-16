@@ -1,15 +1,15 @@
 import React, { FC, useState } from "react"
+import { Box, Flex, Button } from "theme-ui"
 import { categories } from "../../categories"
-import Box from "../Box/Box"
 import Select from "../Select/Select"
 import Input from "../Input/Input"
 import TextArea from "../TextArea/TextArea"
 import { Observation } from "../../api/useGetObservations"
 import { getAnalytics } from "../../analytics"
 import Dialog from "../Dialog/Dialog"
-import Flex from "../Flex/Flex"
+
 import Typography from "../Typography/Typography"
-import Button from "../Button/Button"
+
 import Spacer from "../Spacer/Spacer"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 
@@ -54,12 +54,17 @@ export const EditObservationDialog: FC<Props> = ({
   }
 
   return (
-    <Dialog title="Edit Observation">
-      <Flex flexDirection="column" maxHeight="100%">
+    <Dialog>
+      <Flex
+        sx={{
+          flexDirection: "column",
+          maxHeight: "100%",
+        }}
+      >
         <Flex
-          alignItems="center"
           backgroundColor="surface"
           sx={{
+            alignItems: "center",
             position: "relative",
             borderBottomColor: "border",
             borderBottomWidth: 1,
@@ -67,8 +72,8 @@ export const EditObservationDialog: FC<Props> = ({
           }}
         >
           <Typography.H6
-            width="100%"
             sx={{
+              width: "100%",
               position: "absolute",
               pointerEvents: "none",
               textAlign: "center",
@@ -92,13 +97,15 @@ export const EditObservationDialog: FC<Props> = ({
         </Flex>
         <Box
           p={3}
-          backgroundColor="background"
-          overflowY="auto"
-          maxHeight="100%"
+          sx={{
+            backgroundColor: "background",
+            overflowY: "auto",
+            maxHeight: "100%",
+          }}
         >
           <Input
             label="Short Description"
-            width="100%"
+            sx={{ width: "100%" }}
             placeholder="What have you find?"
             onChange={(e) => setShortDesc(e.target.value)}
             value={shortDesc}
@@ -106,8 +113,10 @@ export const EditObservationDialog: FC<Props> = ({
           />
           <TextArea
             label="Details"
-            width="100%"
-            fontSize={2}
+            sx={{
+              width: "100%",
+              fontSize: 2,
+            }}
             placeholder="Tell us about what you observed"
             onChange={(e) => setDetails(e.target.value)}
             value={details}

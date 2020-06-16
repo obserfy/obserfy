@@ -1,12 +1,10 @@
 import React, { FC } from "react"
-import { Flex } from "../Flex/Flex"
+import { Button, Flex, BoxProps, Box } from "theme-ui"
 import { Typography } from "../Typography/Typography"
 import Icon from "../Icon/Icon"
 import { ReactComponent as CloseIcon } from "../../icons/close.svg"
 import Spacer from "../Spacer/Spacer"
-import Button from "../Button/Button"
 import Dialog from "../Dialog/Dialog"
-import Box, { BoxProps } from "../Box/Box"
 
 interface Props extends BoxProps {
   title: string
@@ -31,11 +29,11 @@ export const ScrollableDialog: FC<Props> = ({
   ...props
 }) => (
   <Dialog {...props}>
-    <Flex flexDirection="column" maxHeight="100%">
+    <Flex sx={{ flexDirection: "column", maxHeight: "100%" }}>
       <Flex
-        alignItems="center"
         p={3}
         sx={{
+          alignItems: "center",
           borderBottomWidth: 1,
           borderBottomStyle: "solid",
           borderBottomColor: "border",
@@ -44,37 +42,40 @@ export const ScrollableDialog: FC<Props> = ({
         <Typography.H6
           mb={0}
           mr={3}
-          fontWeight="bold"
-          flex={1}
-          overflowY="auto"
+          sx={{
+            flex: 1,
+            overflowY: "auto",
+            fontWeight: "bold",
+          }}
         >
           {title}
         </Typography.H6>
         <Icon
           as={CloseIcon}
-          size={32}
           m={0}
           onClick={onDismiss}
           sx={{ cursor: "pointer" }}
         />
       </Flex>
-      <Box overflowY="auto" backgroundColor="background">
+      <Box sx={{ overflowY: "auto", backgroundColor: "background" }}>
         {children}
       </Box>
       <Flex
         p={3}
-        alignItems="center"
         sx={{
-          borderTopWidth: 1,
+          alignItems: "center",
+          borderTopWidth: "1px",
           borderTopStyle: "solid",
           borderTopColor: "border",
         }}
       >
         <Typography.Body
-          fontSize={1}
-          lineHeight={1.4}
           mb={0}
           color="textMediumEmphasis"
+          sx={{
+            lineHeight: 1.4,
+            fontSize: 1,
+          }}
         >
           {subtext}
         </Typography.Body>

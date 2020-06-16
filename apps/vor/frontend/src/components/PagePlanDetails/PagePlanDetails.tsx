@@ -1,15 +1,12 @@
 import React, { FC, useState } from "react"
+import { Flex, Button, Card, Box } from "theme-ui"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { ALL_PLANS_URL } from "../../routes"
 import { Typography } from "../Typography/Typography"
-import { Box } from "../Box/Box"
 import useGetPlan from "../../api/plans/useGetPlan"
-import Card from "../Card/Card"
 import Dialog from "../Dialog/Dialog"
 import DialogHeader from "../DialogHeader/DialogHeader"
 import Input from "../Input/Input"
-import Flex from "../Flex/Flex"
-import Button from "../Button/Button"
 import Icon from "../Icon/Icon"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
 import dayjs from "../../dayjs"
@@ -33,22 +30,21 @@ export const PagePlanDetails: FC<Props> = ({ id }) => {
   if (plan.status === "loading") {
     return (
       <Box>
-        <LoadingPlaceholder width="100%" height="10em" mb={3} />
-        <LoadingPlaceholder width="100%" height="10em" mb={3} />
-        <LoadingPlaceholder width="100%" height="10em" mb={3} />
-        <LoadingPlaceholder width="100%" height="10em" mb={3} />
+        <LoadingPlaceholder sx={{ width: "100%", height: "10em" }} mb={3} />
+        <LoadingPlaceholder sx={{ width: "100%", height: "10em" }} mb={3} />
+        <LoadingPlaceholder sx={{ width: "100%", height: "10em" }} mb={3} />
       </Box>
     )
   }
 
   return (
     <>
-      <Box maxWidth="maxWidth.sm" mx="auto">
+      <Box sx={{ maxWidth: "maxWidth.sm" }} mx="auto">
         <BackNavigation
           to={ALL_PLANS_URL(dayjs(plan.data?.date))}
           text="All plans"
         />
-        <Flex alignItems="center" m={3} mb={3}>
+        <Flex sx={{ alignItems: "center" }} m={3} mb={3}>
           <Typography.H5>{plan.data?.title}</Typography.H5>
           <Button
             variant="outline"
@@ -59,7 +55,7 @@ export const PagePlanDetails: FC<Props> = ({ id }) => {
             <Icon as={TrashIcon} m={0} fill="danger" />
           </Button>
         </Flex>
-        <Card borderRadius={[0, "default"]}>
+        <Card sx={{ borderRadius: [0, "default"] }}>
           <DateDataBox value={plan.data?.date} id={id} />
           <TitleDataBox value={plan.data?.title} id={id} />
           <DescriptionDataBox value={plan.data?.description} id={id} />
@@ -107,7 +103,12 @@ const DateDataBox: FC<{ value?: string; id: string }> = ({ value, id }) => {
               setShowEditDialog(false)
             }}
           />
-          <Flex p={3} backgroundColor="background">
+          <Flex
+            p={3}
+            sx={{
+              backgroundColor: "background",
+            }}
+          >
             <DatePicker value={date} onChange={setDate} />
           </Flex>
         </Dialog>
@@ -139,7 +140,12 @@ const TitleDataBox: FC<{ value?: string; id: string }> = ({ id, value }) => {
               setShowEditDialog(false)
             }}
           />
-          <Box backgroundColor="background" p={3}>
+          <Box
+            sx={{
+              backgroundColor: "background",
+            }}
+            p={3}
+          >
             <Input
               label="Title"
               sx={{ width: "100%" }}
@@ -179,7 +185,12 @@ const DescriptionDataBox: FC<{ value?: string; id: string }> = ({
               setShowEditDialog(false)
             }}
           />
-          <Box backgroundColor="background" p={3}>
+          <Box
+            sx={{
+              backgroundColor: "background",
+            }}
+            p={3}
+          >
             <TextArea
               label="Description"
               sx={{ width: "100%" }}
@@ -211,14 +222,21 @@ const DataBox: FC<{
   >
     <Box>
       <Typography.Body
-        fontSize={0}
-        lineHeight={1}
         mb={2}
         color="textMediumEmphasis"
+        sx={{
+          lineHeight: 1,
+          fontSize: 0,
+        }}
       >
         {label}
       </Typography.Body>
-      <Typography.Body fontSize={1} lineHeight={1}>
+      <Typography.Body
+        sx={{
+          fontSize: 1,
+          lineHeight: 1,
+        }}
+      >
         {value}
       </Typography.Body>
     </Box>
