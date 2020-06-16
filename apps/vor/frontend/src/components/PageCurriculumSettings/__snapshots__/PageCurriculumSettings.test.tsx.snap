@@ -91,8 +91,6 @@ exports[`PageCurriculumSettings should render correctly 1`] = `
   font-weight: 400;
   line-height: 3rem;
   text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
   margin-bottom: 0;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
 }

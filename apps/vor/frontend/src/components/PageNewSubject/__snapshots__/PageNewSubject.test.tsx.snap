@@ -70,8 +70,6 @@ exports[`PageNewSubject should render correctly 1`] = `
   font-weight: 400;
   line-height: 3rem;
   text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
   margin-bottom: 0;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
 }
@@ -90,8 +88,6 @@ exports[`PageNewSubject should render correctly 1`] = `
   -ms-letter-spacing: 0;
   letter-spacing: 0;
   text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
   margin: 16px;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
 }
@@ -126,7 +122,6 @@ exports[`PageNewSubject should render correctly 1`] = `
   display: -ms-flexbox;
   display: flex;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  as: label;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-size: 14px;
   -webkit-user-select: none;
@@ -229,8 +224,6 @@ exports[`PageNewSubject should render correctly 1`] = `
   font-weight: 400;
   line-height: 3rem;
   text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
   padding-left: 16px;
   padding-right: 16px;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
@@ -297,8 +290,6 @@ exports[`PageNewSubject should render correctly 1`] = `
   font-weight: 400;
   line-height: 3rem;
   text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   font-size: 14px;
 }

@@ -51,8 +51,6 @@ exports[`PagePlans should render correctly 1`] = `
   font-weight: 400;
   line-height: 3rem;
   text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   font-size: 14px;
 }
@@ -367,8 +365,6 @@ exports[`PagePlans should render correctly 1`] = `
   font-weight: 400;
   line-height: 3rem;
   text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
   margin-left: 16px;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   font-size: 14px;

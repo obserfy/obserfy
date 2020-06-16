@@ -66,8 +66,6 @@ exports[`ToggleButton should render correctly 1`] = `
   font-weight: 400;
   line-height: 3rem;
   text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
   margin: 0;
   color: var(--theme-ui-colors-primaryDark,#00a06d);
   font-size: 14px;
@@ -111,8 +109,6 @@ exports[`ToggleButton should render correctly 1`] = `
   font-weight: 400;
   line-height: 3rem;
   text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
   margin: 0;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   font-size: 14px;

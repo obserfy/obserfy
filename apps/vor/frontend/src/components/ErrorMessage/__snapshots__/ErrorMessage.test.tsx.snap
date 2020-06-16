@@ -24,8 +24,6 @@ exports[`ErrorMessage should render correctly 1`] = `
   font-weight: 400;
   line-height: 3rem;
   text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
   color: var(--theme-ui-colors-error,#d50000);
   text-align: center;
 }

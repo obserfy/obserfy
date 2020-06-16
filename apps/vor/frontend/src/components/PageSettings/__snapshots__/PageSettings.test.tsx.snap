@@ -83,8 +83,6 @@ exports[`PageSettings should render correctly 1`] = `
   -ms-letter-spacing: 0;
   letter-spacing: 0;
   text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
   margin-bottom: 16px;
   margin-left: 4px;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
@@ -217,8 +215,6 @@ exports[`PageSettings should render correctly 1`] = `
   -ms-letter-spacing: 0;
   letter-spacing: 0;
   text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
 }
 
@@ -285,8 +281,6 @@ exports[`PageSettings should render correctly 1`] = `
   -ms-letter-spacing: 0;
   letter-spacing: 0;
   text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
   margin-bottom: 16px;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
 }
@@ -301,8 +295,6 @@ exports[`PageSettings should render correctly 1`] = `
   font-weight: 400;
   line-height: 3rem;
   text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   font-size: 14px;
   word-wrap: break-word;
