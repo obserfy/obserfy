@@ -51,7 +51,6 @@ exports[`FloatingActionButton should render correctly 1`] = `
   padding-left: 16px;
   padding-right: 16px;
   white-space: nowrap;
-  margin: 16px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -64,13 +63,26 @@ exports[`FloatingActionButton should render correctly 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  margin: 16px;
   min-width: 50px;
   min-height: 50px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   border-radius: 99999px;
   position: fixed;
   bottom: 0;
   right: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .emotion-0:disabled {

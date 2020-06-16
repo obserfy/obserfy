@@ -18,6 +18,10 @@ exports[`Navbar should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  overflow: auto;
+  background-color: var(--theme-ui-colors-surface,#fff);
+  border-radius: 8px;
+  box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
   background-color: var(--theme-ui-colors-surfaceBlurNonTransparent,rgba(255,255,255));
   height: auto;
   width: 100%;
@@ -177,12 +181,12 @@ exports[`Navbar should render correctly 1`] = `
   max-width: 100%;
   height: auto;
   margin: 0;
-  width: 20px;
   fill: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  height: 20px;
+  width: 24px;
+  height: 24px;
 }
 
 .emotion-2 {
@@ -198,8 +202,8 @@ exports[`Navbar should render correctly 1`] = `
   --webkitFontSmoothing: antialiased;
   --mozOsxFontSmoothing: grayscale;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  font-size: 10px;
   line-height: 1;
+  font-size: 10px;
 }
 
 @media screen and (min-width:40em) {

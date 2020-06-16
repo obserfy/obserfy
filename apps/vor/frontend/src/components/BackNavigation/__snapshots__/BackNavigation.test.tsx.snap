@@ -59,13 +59,6 @@ exports[`BackNavigation should render correctly 1`] = `
   --mozOsxFontSmoothing: grayscale;
   margin-bottom: 0;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  font-size: 16px;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-1 {
-    font-size: 14px;
-  }
 }
 
 <div>

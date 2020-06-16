@@ -81,13 +81,6 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   --mozOsxFontSmoothing: grayscale;
   margin-bottom: 0;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  font-size: 16px;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-1 {
-    font-size: 14px;
-  }
 }
 
 .emotion-4 {
@@ -180,6 +173,18 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   padding-left: 16px;
   padding-right: 16px;
   white-space: nowrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   border: 1px solid;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-danger,#d50000);
@@ -259,6 +264,18 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   padding-left: 16px;
   padding-right: 16px;
   white-space: nowrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   border: 1px solid;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   margin-left: 8px;
@@ -385,6 +402,18 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   padding-left: 16px;
   padding-right: 16px;
   white-space: nowrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   border: 1px solid;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }

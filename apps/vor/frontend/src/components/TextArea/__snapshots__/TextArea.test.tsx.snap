@@ -56,6 +56,7 @@ exports[`TextArea should render correctly 1`] = `
   border-radius: 4px;
   color: inherit;
   background-color: transparent;
+  border-radius: 8px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   background-color: var(--theme-ui-colors-surface,#fff);

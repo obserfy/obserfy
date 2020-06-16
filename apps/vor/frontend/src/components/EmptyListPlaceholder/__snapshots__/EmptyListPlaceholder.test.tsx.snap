@@ -18,6 +18,10 @@ exports[`EmptyListPlaceholder should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  overflow: auto;
+  background-color: var(--theme-ui-colors-surface,#fff);
+  border-radius: 8px;
+  box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
 }
 
 .emotion-3 {
@@ -60,14 +64,7 @@ exports[`EmptyListPlaceholder should render correctly 1`] = `
   margin-bottom: 32px;
   margin-top: 16px;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
-  font-size: 16px;
   text-align: center;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-0 {
-    font-size: 14px;
-  }
 }
 
 .emotion-2 {
@@ -107,6 +104,18 @@ exports[`EmptyListPlaceholder should render correctly 1`] = `
   padding-left: 16px;
   padding-right: 16px;
   white-space: nowrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   border: 1px solid;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }

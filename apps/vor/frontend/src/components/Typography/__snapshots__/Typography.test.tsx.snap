@@ -141,13 +141,6 @@ exports[`Typography should render correctly all correctly 1`] = `
   --webkitFontSmoothing: antialiased;
   --mozOsxFontSmoothing: grayscale;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
-  font-size: 16px;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-6 {
-    font-size: 14px;
-  }
 }
 
 <div>
