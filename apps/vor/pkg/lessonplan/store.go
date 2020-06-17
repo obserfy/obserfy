@@ -33,6 +33,8 @@ type (
 		FileIds     []string
 		Date        time.Time
 		Repetition  *RepetitionPattern
+		AreaId      string
+		MaterialId  string
 	}
 
 	UpdatePlanData struct {

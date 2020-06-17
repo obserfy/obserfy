@@ -1,16 +1,15 @@
 package class
 
 import (
+	"github.com/pingcap/errors"
 	"net/http"
 	"time"
 
+	"github.com/chrsep/vor/pkg/lessonplan"
+	"github.com/chrsep/vor/pkg/rest"
 	"github.com/go-chi/chi"
 	"github.com/go-playground/validator/v10"
 	"github.com/google/uuid"
-	"github.com/pkg/errors"
-
-	"github.com/chrsep/vor/pkg/lessonplan"
-	"github.com/chrsep/vor/pkg/rest"
 )
 
 func NewRouter(server rest.Server, store Store, lpStore lessonplan.Store) *chi.Mux {
@@ -183,6 +182,8 @@ func postNewLessonPlan(server rest.Server, store lessonplan.Store) http.Handler 
 		Description string    `json:"description"`
 		Date        time.Time `json:"date" validate:"required"`
 		FileIds     []string  `json:"fileIds"`
+		AreaId      string    `json:"areaId,omitempty"`
+		MaterialId  string    `json:"materialId,omitempty"`
 		Repetition  *struct {
 			Type    int       `json:"type" validate:"oneof=0 1 2 3"`
 			EndDate time.Time `json:"endDate" validate:"required"`
@@ -217,6 +218,8 @@ func postNewLessonPlan(server rest.Server, store lessonplan.Store) http.Handler 
 			Description: body.Description,
 			FileIds:     body.FileIds,
 			Date:        body.Date,
+			AreaId:      body.AreaId,
+			MaterialId:  body.MaterialId,
 		}
 		if body.Repetition != nil {
 			planInput.Repetition = &lessonplan.RepetitionPattern{
