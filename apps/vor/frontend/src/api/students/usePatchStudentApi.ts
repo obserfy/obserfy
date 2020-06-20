@@ -13,6 +13,7 @@ interface UpdateStudentRequestBody {
   dateOfBirth?: string
   dateOfEntry?: string
   gender?: number
+  active?: boolean
 }
 export function usePatchStudentApi(
   id: string
