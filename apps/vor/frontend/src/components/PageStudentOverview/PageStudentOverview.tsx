@@ -26,7 +26,7 @@ import dayjs from "../../dayjs"
 interface Props {
   id: string
 }
-export const PageStudentDetails: FC<Props> = ({ id }) => {
+export const PageStudentOverview: FC<Props> = ({ id }) => {
   const [isEditingObservation, setIsEditingObservation] = useState(false)
   const [isDeletingObservation, setIsDeletingObservation] = useState(false)
   const [targetObservation, setTargetObservation] = useState<Observation>()
@@ -239,4 +239,4 @@ const ObservationLoadingPlaceholder: FC = () => (
   </Box>
 )
 
-export default PageStudentDetails
+export default PageStudentOverview

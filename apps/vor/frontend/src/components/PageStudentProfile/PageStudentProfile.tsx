@@ -10,7 +10,7 @@ import Typography from "../Typography/Typography"
 import {
   EDIT_GUARDIANS_URL,
   EDIT_STUDENT_CLASS_URL,
-  STUDENT_DETAILS_PAGE_URL,
+  STUDENT_OVERVIEW_PAGE_URL,
 } from "../../routes"
 import dayjs from "../../dayjs"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
@@ -46,7 +46,7 @@ export const PageStudentProfile: FC<Props> = ({ id }) => {
   return (
     <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={4}>
       <BackNavigation
-        to={STUDENT_DETAILS_PAGE_URL(id)}
+        to={STUDENT_OVERVIEW_PAGE_URL(id)}
         text="Student Overview"
       />
       <Card sx={{ borderRadius: [0, "default"] }} mb={3}>
