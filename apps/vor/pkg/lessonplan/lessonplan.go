@@ -1,12 +1,13 @@
 package lessonplan
 
 import (
+	"net/http"
+	"time"
+
 	"github.com/go-chi/chi"
 	"github.com/go-pg/pg/v9"
 	"github.com/go-playground/validator/v10"
 	"github.com/pkg/errors"
-	"net/http"
-	"time"
 
 	"github.com/chrsep/vor/pkg/rest"
 )
@@ -63,6 +64,7 @@ func updateLessonPlan(server rest.Server, store Store) http.Handler {
 		Title       *string    `json:"title,omitempty"`
 		Description *string    `json:"description,omitempty"`
 		Date        *time.Time `json:"date,omitempty"`
+		AreaId      *string    `json:"areaId,omitempty"`
 	}
 
 	validate := validator.New()
@@ -87,6 +89,7 @@ func updateLessonPlan(server rest.Server, store Store) http.Handler {
 			Title:       body.Title,
 			Description: body.Description,
 			Date:        body.Date,
+			AreaId:      body.AreaId,
 		}
 		rowsAffected, err := store.UpdateLessonPlan(planInput)
 		if err != nil {
