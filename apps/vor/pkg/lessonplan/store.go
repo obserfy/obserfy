@@ -43,6 +43,7 @@ type (
 		Description *string
 		Date        *time.Time
 		Repetition  *RepetitionPattern
+		AreaId      *string
 	}
 
 	Store interface {

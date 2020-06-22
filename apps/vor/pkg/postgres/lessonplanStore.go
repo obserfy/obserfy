@@ -124,6 +124,9 @@ func (s LessonPlanStore) UpdateLessonPlan(planInput cLessonPlan.UpdatePlanData) 
 	if planInput.Title != nil {
 		planDetails.Title = *planInput.Title
 	}
+	if planInput.AreaId != nil {
+		planDetails.AreaId = *planInput.AreaId
+	}
 
 	rowsAffected := 0
 	if err := s.RunInTransaction(func(tx *pg.Tx) error {
