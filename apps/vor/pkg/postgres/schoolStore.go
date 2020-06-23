@@ -75,12 +75,13 @@ func (s SchoolStore) GetSchool(schoolId string) (*cSchool.School, error) {
 	}, nil
 }
 
-func (s SchoolStore) GetStudents(schoolId string) ([]cSchool.Student, error) {
+func (s SchoolStore) GetStudents(schoolId, classId string) ([]cSchool.Student, error) {
 	var students []Student
 	res := make([]cSchool.Student, 0)
 
 	if err := s.Model(&students).
-		Where("school_id=?", schoolId).
+		Join("INNER JOIN student_to_classes stc ON students.id=stc.student_id").
+		Where("school_id=? && stc.class_id=?", schoolId, classId).
 		Order("name").
 		Select(); err == pg.ErrNoRows {
 		return res, nil
