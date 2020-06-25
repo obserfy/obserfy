@@ -79,14 +79,25 @@ func (s SchoolStore) GetStudents(schoolId, classId string) ([]cSchool.Student, e
 	var students []Student
 	res := make([]cSchool.Student, 0)
 
-	if err := s.Model(&students).
-		Join("INNER JOIN student_to_classes stc ON students.id=stc.student_id").
-		Where("school_id=? && stc.class_id=?", schoolId, classId).
-		Order("name").
-		Select(); err == pg.ErrNoRows {
-		return res, nil
-	} else if err != nil {
-		return nil, richErrors.Wrap(err, "Failed querying student")
+	if classId != "" {
+		if err := s.Model(&students).
+			Join("INNER JOIN student_to_classes stc ON students.id=stc.student_id").
+			Where("school_id=? && stc.class_id=?", schoolId, classId).
+			Order("name").
+			Select(); err == pg.ErrNoRows {
+			return res, nil
+		} else if err != nil {
+			return nil, richErrors.Wrap(err, "Failed querying student")
+		}
+	} else {
+		if err := s.Model(&students).
+			Where("school_id=?", schoolId).
+			Order("name").
+			Select(); err == pg.ErrNoRows {
+			return res, nil
+		} else if err != nil {
+			return nil, richErrors.Wrap(err, "Failed querying student")
+		}
 	}
 
 	for _, s := range students {
