@@ -6,6 +6,7 @@ import { getSchoolId } from "../../hooks/schoolIdState"
 export interface Student {
   id: string
   name: string
+  active?:boolean
   profilePicUrl?: string
 }
 

@@ -164,7 +164,7 @@ const SubjectMaterials: FC<{
               {material.name}
             </Typography.Body>
             {stage && (
-              <Pill
+              < Pill
                 mx={2}
                 text={stage}
                 color={`materialStage.on${stage}`}
