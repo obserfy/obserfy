@@ -3,10 +3,11 @@ package postgres
 import (
 	"crypto/tls"
 	"fmt"
+	"time"
+
 	"github.com/go-pg/pg/v9"
 	"github.com/go-pg/pg/v9/orm"
 	richErrors "github.com/pkg/errors"
-	"time"
 )
 
 func Connect(user string, password string, addr string, tlsConfig *tls.Config) *pg.DB {
@@ -130,7 +131,7 @@ type Student struct {
 	DateOfEntry *time.Time
 	Note        string
 	CustomId    string
-	Active      bool
+	Active      bool `pg:",notnull"`
 	ProfilePic  string
 	Guardians   []Guardian `pg:"many2many:guardian_to_students,joinFK:guardian_id"`
 }

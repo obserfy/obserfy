@@ -25,6 +25,7 @@ import Select from "../Select/Select"
 import DatePicker from "../DatePicker/DatePicker"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import { Link } from "../Link/Link"
+import AlertDialog from "../AlertDialog/AlertDialog"
 
 interface Props {
   id: string
@@ -182,6 +183,12 @@ export const PageStudentProfile: FC<Props> = ({ id }) => {
           </Link>
         </Flex>
       </Card>
+      <Box mt={3}>
+      <SetStatusDataBox
+          studentId={id}
+          
+         ></SetStatusDataBox>
+      </Box>
     </Box>
   )
 }
@@ -430,7 +437,42 @@ const DateOfEntryDataBox: FC<{ value?: string; studentId: string }> = ({
     </Fragment>
   )
 }
-
+const SetStatusDataBox: FC<{  studentId: string }> = ({
+  
+  studentId,
+}) => {
+  const [mutate, ] = usePatchStudentApi(studentId)
+  const [showStatusDialog, setShowStatusDialog] = useState(false)
+  const saveStatus = async () => {
+    await mutate({ id: studentId, active:true })
+    setShowStatusDialog(false)
+  }
+  return (
+    <Fragment>
+      <Button
+            variant="outline"
+            px={2}
+            ml="auto"
+            onClick={() => setShowStatusDialog(true)}
+          >
+            Set Inactive
+            </Button>
+            {showStatusDialog && (
+        <AlertDialog
+          title="Set inactive?"
+          negativeText="Cancel"
+          positiveText="Yes"
+          body={`Are you sure you want to set student as inactive?`}
+          onNegativeClick={() => setShowStatusDialog(false)}
+          onPositiveClick={async () => {
+            const result = await saveStatus()
+            
+          }}
+        />
+      )}
+    </Fragment>
+  )
+}
 const DataBox: FC<{
   label: string
   value: string
