@@ -70,8 +70,16 @@ func connectTestDB() (*pg.DB, error) {
 		}
 	}
 
-	if err := postgres.InitTables(db); err != nil {
-		panic(err)
+	// This is required to reduce the test's flakyness
+	// Sometimes the test will on CI with ERROR #23505 duplicate key value violates unique constraint "pg_type_typname_nsp_index"
+	// We could just retry creating the tables when that happens.
+	err := postgres.InitTables(db)
+	if err != nil {
+		time.Sleep(time.Second)
+		err := postgres.InitTables(db)
+		if err != nil {
+			return nil, err
+		}
 	}
 	return db, nil
 }
