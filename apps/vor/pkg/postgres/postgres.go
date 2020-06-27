@@ -131,7 +131,7 @@ type Student struct {
 	DateOfEntry *time.Time
 	Note        string
 	CustomId    string
-	Active      *bool `pg:",notnull"`
+	Active      *bool `pg:",notnull,default:true"`
 	ProfilePic  string
 	Guardians   []Guardian `pg:"many2many:guardian_to_students,joinFK:guardian_id"`
 }
