@@ -1,6 +1,6 @@
 // Test the whole happy path
 
-describe("Smoke test on prod build", () => {
+describe("test student profile page", () => {
   const faker = require("faker")
   let name
   let email
@@ -27,7 +27,7 @@ describe("Smoke test on prod build", () => {
     )
   })
 
-  it("should run smoke test successfully", () => {
+  it("should be able to edit all student data.", () => {
     cy.visit("/")
 
     // Create student
