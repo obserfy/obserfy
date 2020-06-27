@@ -450,7 +450,10 @@ const SetStatusDataBox: FC<{
     setShowStatusDialog(false)
   }
   return (
-    <Flex p={3} sx={{ alignItems: "center", backgroundColor: "surface" }}>
+    <Card
+      p={3}
+      sx={{ display: "flex", alignItems: "center", backgroundColor: "surface" }}
+    >
       <Box>
         <Typography.Body sx={{ fontSize: 0, lineHeight: 1.4 }}>
           Status
@@ -477,7 +480,7 @@ const SetStatusDataBox: FC<{
           onPositiveClick={() => saveStatus()}
         />
       )}
-    </Flex>
+    </Card>
   )
 }
 const DataBox: FC<{
