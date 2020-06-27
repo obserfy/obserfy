@@ -452,13 +452,25 @@ const SetStatusDataBox: FC<{
   return (
     <Card
       p={3}
-      sx={{ display: "flex", alignItems: "center", backgroundColor: "surface" }}
+      sx={{
+        borderRadius: [0, "default"],
+        display: "flex",
+        alignItems: "center",
+        backgroundColor: "surface",
+      }}
     >
       <Box>
-        <Typography.Body sx={{ fontSize: 0, lineHeight: 1.4 }}>
+        <Typography.Body
+          sx={{
+            fontSize: 0,
+            lineHeight: 1.4,
+          }}
+        >
           Status
         </Typography.Body>
-        <Typography.Body>{active ? "Active" : "Inactive"}</Typography.Body>
+        <Typography.Body sx={{ color: !active ? "warning" : undefined }}>
+          {active ? "Active" : "Inactive"}
+        </Typography.Body>
       </Box>
       <Button
         variant={active ? "outline" : "primary"}

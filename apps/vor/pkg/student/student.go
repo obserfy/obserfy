@@ -255,6 +255,7 @@ func getStudent(s rest.Server, store Store) http.Handler {
 			DateOfEntry: student.DateOfEntry,
 			Guardians:   guardians,
 			Classes:     classes,
+			Active:      *student.Active,
 		}
 		if err := rest.WriteJson(w, response); err != nil {
 			return rest.NewWriteJsonError(err)

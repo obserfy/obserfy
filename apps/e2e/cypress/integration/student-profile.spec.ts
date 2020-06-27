@@ -56,7 +56,7 @@ describe("test student profile page", () => {
 
     // Change student name
     studentName = "Jane Doe"
-    cy.get("[data-cy=edit]").click()
+    cy.contains("See Profile").click()
     cy.get("[aria-label=edit-name]").click()
     cy.contains("label", "Name").find("input").clear().type(studentName)
     cy.contains("Save").click()
@@ -70,12 +70,11 @@ describe("test student profile page", () => {
     // cy.contains("Save").click()
 
     // Test changing status
-    cy.contains("Set As Inactive").click()
+    cy.contains("Set As Inactive", { matchCase: false }).click()
     cy.contains("Yes").click()
-    cy.contains("Active").should("be.visible")
+    cy.contains("Inactive").should("be.visible")
 
     const guardianName = faker.name.firstName()
-    cy.contains("See Profile").click()
     cy.get("[data-cy=edit-guardians]").click()
     cy.get("[data-cy=new-guardian]").click()
     cy.contains("Guardian Name").type(guardianName)
