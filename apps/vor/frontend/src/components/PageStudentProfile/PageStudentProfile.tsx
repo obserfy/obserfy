@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { FC, Fragment, useState } from "react"
-import { jsx, Box, Button, Flex, Card } from "theme-ui"
+import { Box, Button, Card, Flex, jsx } from "theme-ui"
 
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { useGetStudent } from "../../api/useGetStudent"
@@ -184,10 +184,11 @@ export const PageStudentProfile: FC<Props> = ({ id }) => {
         </Flex>
       </Card>
       <Box mt={3}>
-      <SetStatusDataBox
+        <SetStatusDataBox
           studentId={id}
-          
-         ></SetStatusDataBox>
+          active={data?.active ?? false}
+          name={data?.name ?? ""}
+        />
       </Box>
     </Box>
   )
@@ -437,40 +438,46 @@ const DateOfEntryDataBox: FC<{ value?: string; studentId: string }> = ({
     </Fragment>
   )
 }
-const SetStatusDataBox: FC<{  studentId: string }> = ({
-  
-  studentId,
-}) => {
-  const [mutate, ] = usePatchStudentApi(studentId)
+const SetStatusDataBox: FC<{
+  studentId: string
+  active: boolean
+  name: string
+}> = ({ studentId, active, name }) => {
+  const [mutate] = usePatchStudentApi(studentId)
   const [showStatusDialog, setShowStatusDialog] = useState(false)
   const saveStatus = async () => {
-    await mutate({ id: studentId, active:true })
+    await mutate({ active: !active })
     setShowStatusDialog(false)
   }
   return (
-    <Fragment>
+    <Flex p={3} sx={{ alignItems: "center", backgroundColor: "surface" }}>
+      <Box>
+        <Typography.Body sx={{ fontSize: 0, lineHeight: 1.4 }}>
+          Status
+        </Typography.Body>
+        <Typography.Body>{active ? "Active" : "Inactive"}</Typography.Body>
+      </Box>
       <Button
-            variant="outline"
-            px={2}
-            ml="auto"
-            onClick={() => setShowStatusDialog(true)}
-          >
-            Set Inactive
-            </Button>
-            {showStatusDialog && (
+        variant={active ? "outline" : "primary"}
+        ml="auto"
+        onClick={() => setShowStatusDialog(true)}
+        sx={{ color: active ? "warning" : undefined }}
+      >
+        Set as {active ? "Inactive" : "Active"}
+      </Button>
+      {showStatusDialog && (
         <AlertDialog
-          title="Set inactive?"
+          title={`Set as ${active ? "inactive" : "active"}?`}
           negativeText="Cancel"
           positiveText="Yes"
-          body={`Are you sure you want to set student as inactive?`}
+          body={`Are you sure you want to set ${name} as ${
+            active ? "inactive" : "active"
+          }?`}
           onNegativeClick={() => setShowStatusDialog(false)}
-          onPositiveClick={async () => {
-            const result = await saveStatus()
-            
-          }}
+          onPositiveClick={() => saveStatus()}
         />
       )}
-    </Fragment>
+    </Flex>
   )
 }
 const DataBox: FC<{
@@ -478,22 +485,10 @@ const DataBox: FC<{
   value: string
   onEditClick?: () => void
 }> = ({ label, value, onEditClick }) => (
-  <Flex
-    px={3}
-    py={3}
-    sx={{
-      borderBottomWidth: 1,
-      borderBottomColor: "border",
-      borderBottomStyle: "solid",
-      alignItems: "center",
-    }}
-  >
+  <Flex px={3} py={3} sx={{ alignItems: "center" }}>
     <Box>
       <Typography.Body
-        sx={{
-          fontSize: 0,
-        }}
-        lineHeight={1.6}
+        sx={{ fontSize: 0, lineHeight: 1.4 }}
         mb={1}
         color="textMediumEmphasis"
       >
