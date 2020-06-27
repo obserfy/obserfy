@@ -15,7 +15,8 @@
     <img src="https://img.shields.io/badge/license-GPL3-blue.svg" alt="Obserfy is released under the GPL-3 license." />
   </a>
   <a href="https://codeclimate.com/github/obserfy/obserfy/maintainability">
-    <img src="https://api.codeclimate.com/v1/badges/2457c2aa1fea9cb172fb/maintainability" /></a>
+    <img src="https://api.codeclimate.com/v1/badges/2457c2aa1fea9cb172fb/maintainability" />
+  </a>
   <a href="https://circleci.com/gh/obserfy/obserfy">
     <img src="https://circleci.com/gh/obserfy/obserfy.svg?style=shield" alt="Current CircleCI status" />
   </a>

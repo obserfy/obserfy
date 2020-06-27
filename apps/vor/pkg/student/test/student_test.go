@@ -46,7 +46,7 @@ func (s *StudentTestSuite) SaveNewStudent(school postgres.School) *postgres.Stud
 }
 func (s *StudentTestSuite) TestPatchStudent() {
 	t := s.T()
-	newSchool := s.SaveNewSchool()
+	newSchool := s.GenerateSchool()
 	newStudent := s.SaveNewStudent(*newSchool)
 	payload := struct {
 		Name     string `json:"name"`
@@ -96,7 +96,7 @@ func (s *StudentTestSuite) SaveNewGuardian(school *postgres.School, student *pos
 
 func (s *StudentTestSuite) TestAddNewGuardian() {
 	t := s.T()
-	newSchool := s.SaveNewSchool()
+	newSchool := s.GenerateSchool()
 	newStudent := s.SaveNewStudent(*newSchool)
 	guardian := s.SaveNewGuardian(newSchool, nil)
 
@@ -120,7 +120,7 @@ func (s *StudentTestSuite) TestAddNewGuardian() {
 
 func (s *StudentTestSuite) TestDeleteGuardian() {
 	t := s.T()
-	newSchool := s.SaveNewSchool()
+	newSchool := s.GenerateSchool()
 	newStudent := s.SaveNewStudent(*newSchool)
 	guardian := s.SaveNewGuardian(newSchool, newStudent)
 
@@ -138,6 +138,6 @@ func (s *StudentTestSuite) TestDeleteGuardian() {
 
 //func (s *StudentTestSuite) ReplaceGuardian() {
 //	t := s.T()
-//	newSchool := s.SaveNewSchool()
+//	newSchool := s.GenerateSchool()
 //	newStudent := s.SaveNewStudent(*newSchool)
 //}
