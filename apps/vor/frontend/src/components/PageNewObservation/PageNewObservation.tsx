@@ -49,7 +49,7 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
   return (
     <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={4}>
       <BackNavigation
-        to={`/dashboard/observe/students/details?id=${studentId}`}
+        to={`/dashboard/observe/students/overview?id=${studentId}`}
         text="Student Detail"
       />
       {student.status === "loading" && student.data === undefined ? (

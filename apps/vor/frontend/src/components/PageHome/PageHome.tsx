@@ -11,7 +11,7 @@ import { Typography } from "../Typography/Typography"
 
 import { useGetStudents } from "../../api/students/useGetStudents"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
-import { NEW_STUDENT_URL, STUDENT_DETAILS_PAGE_URL } from "../../routes"
+import { NEW_STUDENT_URL, STUDENT_OVERVIEW_PAGE_URL } from "../../routes"
 import StudentPicturePlaceholder from "../StudentPicturePlaceholder/StudentPicturePlaceholder"
 
 export const PageHome: FC = () => {
@@ -36,7 +36,7 @@ export const PageHome: FC = () => {
   const studentList =
     students.status === "success" &&
     matchedStudent?.map(({ profilePicUrl, name, id }) => (
-      <Link to={STUDENT_DETAILS_PAGE_URL(id)} sx={{ display: "block" }}>
+      <Link to={STUDENT_OVERVIEW_PAGE_URL(id)} sx={{ display: "block" }}>
         <Card
           p={3}
           mx={[0, 3]}

@@ -1,6 +1,9 @@
 package student_test
 
 import (
+	"testing"
+	"time"
+
 	"github.com/brianvoe/gofakeit/v4"
 	"github.com/chrsep/vor/pkg/mocks"
 	"github.com/chrsep/vor/pkg/postgres"
@@ -9,8 +12,6 @@ import (
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
-	"testing"
-	"time"
 )
 
 type StudentTestSuite struct {
@@ -42,6 +43,28 @@ func (s *StudentTestSuite) SaveNewStudent(school postgres.School) *postgres.Stud
 	err := s.DB.Insert(&newStudent)
 	assert.NoError(t, err)
 	return &newStudent
+}
+func (s *StudentTestSuite) TestPatchStudent() {
+	t := s.T()
+	newSchool := s.SaveNewSchool()
+	newStudent := s.SaveNewStudent(*newSchool)
+	payload := struct {
+		Name     string `json:"name"`
+		CustomId string `json:"customId"`
+		Active   bool   `json:"active"`
+	}{Name: "kris", Active: false, CustomId: "chris-88"}
+
+	s.CreateRequest("PATCH", "/"+newStudent.Id+"/", payload, &newSchool.Users[0].Id)
+
+	var modifiedStudent postgres.Student
+	err := s.DB.Model(&modifiedStudent).
+		Where("id=?", newStudent.Id).
+		Select()
+	assert.NoError(t, err)
+
+	assert.Equal(t, modifiedStudent.Active, payload.Active)
+	assert.Equal(t, modifiedStudent.Name, payload.Name)
+	assert.Equal(t, modifiedStudent.CustomId, payload.CustomId)
 }
 
 func (s *StudentTestSuite) SaveNewGuardian(school *postgres.School, student *postgres.Student) *postgres.Guardian {

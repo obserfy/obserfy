@@ -2,7 +2,7 @@ import React, { FC, memo, useCallback, useMemo, useState } from "react"
 import { Box, Flex } from "theme-ui"
 import { Observation, useGetObservations } from "../../api/useGetObservations"
 import BackNavigation from "../BackNavigation/BackNavigation"
-import { STUDENT_DETAILS_PAGE_URL } from "../../routes"
+import { STUDENT_OVERVIEW_PAGE_URL } from "../../routes"
 import { categories } from "../../categories"
 
 import Chip from "../Chip/Chip"
@@ -57,7 +57,7 @@ export const PageAllObservations: FC<Props> = ({ studentId }) => {
     <>
       <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto">
         <BackNavigation
-          to={STUDENT_DETAILS_PAGE_URL(studentId)}
+          to={STUDENT_OVERVIEW_PAGE_URL(studentId)}
           text="Student Details"
         />
         {student.status === "loading" && !student.data && (
