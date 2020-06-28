@@ -1,0 +1,27 @@
+{
+    "sqltools.connections": [
+        {
+            "database": "defaultdb",
+            "driver": "PostgreSQL",
+            "name": "vor",
+            "password": "postgres",
+            "pgOptions": {
+                "ssl": {}
+            },
+            "port": 5432,
+            "previewLimit": 50,
+            "server": "localhost",
+            "username": "postgres"
+        }
+    ],
+    "database.connections": [
+        {
+            "type": "postgres",
+            "name": "postgres@localhost (Postgre SQL)",
+            "host": "localhost:5432",
+            "username": "postgres",
+            "database": null,
+            "password": "postgres"
+        }
+    ]
+}

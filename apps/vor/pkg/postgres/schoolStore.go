@@ -1,9 +1,10 @@
 package postgres
 
 import (
-	"github.com/go-pg/pg/v9/orm"
 	"mime/multipart"
 	"time"
+
+	"github.com/go-pg/pg/v9/orm"
 
 	"github.com/go-pg/pg/v9"
 	"github.com/google/uuid"
@@ -95,6 +96,7 @@ func (s SchoolStore) GetStudents(schoolId string) ([]cSchool.Student, error) {
 			SchoolId:    s.SchoolId,
 			ProfilePic:  s.ProfilePic,
 			DateOfBirth: s.DateOfBirth,
+			Active:      *s.Active,
 		})
 	}
 
