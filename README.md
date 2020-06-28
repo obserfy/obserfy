@@ -21,7 +21,7 @@
     <img src="https://circleci.com/gh/obserfy/obserfy.svg?style=shield" alt="Current CircleCI status" />
   </a>
   <a href="https://codecov.io/gh/obserfy/obserfy">
-    <img src="https://codecov.io/gh/obserfy/obserfy/branch/master/graph/badge.svg" alt="Code Coverage" />
+    <img src="https://codecov.io/gh/obserfy/obserfy/branch/develop/graph/badge.svg" alt="Code Coverage" />
   </a>
 </p>
 
