@@ -179,6 +179,8 @@ func (s LessonPlanStore) GetLessonPlan(planId string) (*cLessonPlan.LessonPlan, 
 		Title:       plan.LessonPlanDetails.Title,
 		Description: *plan.LessonPlanDetails.Description,
 		Date:        *plan.Date,
+		AreaId:      plan.LessonPlanDetails.AreaId,
+		MaterialId:  plan.LessonPlanDetails.MaterialId,
 		Repetition: &cLessonPlan.RepetitionPattern{
 			Type:    plan.LessonPlanDetails.RepetitionType,
 			EndDate: plan.LessonPlanDetails.RepetitionEndDate,

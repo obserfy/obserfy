@@ -160,6 +160,63 @@ func (s *BaseTestSuite) GenerateArea() (postgres.Area, string) {
 	return area, school.Users[0].Id
 }
 
+func (s *BaseTestSuite) GenerateClass(school postgres.School) *postgres.Class {
+	t := s.T()
+	newClass := postgres.Class{
+		Id:        uuid.New().String(),
+		SchoolId:  school.Id,
+		School:    school,
+		Name:      gofakeit.Name(),
+		StartTime: time.Now(),
+		EndTime:   time.Now(),
+	}
+	newClass.Weekdays = []postgres.Weekday{
+		{newClass.Id, time.Sunday, newClass},
+		{newClass.Id, time.Thursday, newClass},
+		{newClass.Id, time.Friday, newClass},
+	}
+	err := s.DB.Insert(&newClass)
+	assert.NoError(t, err)
+	err = s.DB.Insert(&newClass.Weekdays)
+	assert.NoError(t, err)
+	return &newClass
+}
+
+func (s *BaseTestSuite) GenerateLessonPlan() (postgres.LessonPlan, string) {
+	t := s.T()
+	material, userid := s.GenerateMaterial()
+	class := s.GenerateClass(material.Subject.Area.Curriculum.Schools[0])
+
+	lessonName := gofakeit.Name()
+	lessonPlanDetails := postgres.LessonPlanDetails{
+		Id:                uuid.New().String(),
+		Title:             gofakeit.Name(),
+		Description:       &lessonName,
+		ClassId:           class.Id,
+		Class:             postgres.Class{},
+		RepetitionType:    0,
+		RepetitionEndDate: gofakeit.Date(),
+		Area:              material.Subject.Area,
+		AreaId:            material.Subject.AreaId,
+		Material:          material,
+		MaterialId:        material.Id,
+	}
+	date := gofakeit.Date()
+	lessonPlan := postgres.LessonPlan{
+		Id:                  uuid.New().String(),
+		Date:                &date,
+		LessonPlanDetailsId: lessonPlanDetails.Id,
+		LessonPlanDetails:   lessonPlanDetails,
+	}
+
+	err := s.DB.Insert(&lessonPlanDetails)
+	assert.NoError(t, err)
+	err = s.DB.Insert(&lessonPlan)
+	assert.NoError(t, err)
+
+	return lessonPlan, userid
+}
+
 func (s *BaseTestSuite) CreateRequest(method string, path string, bodyJson interface{}, userId *string) *httptest.ResponseRecorder {
 	w := httptest.NewRecorder()
 

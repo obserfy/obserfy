@@ -23,6 +23,8 @@ type (
 		FileIds     []string
 		Date        time.Time
 		Repetition  *RepetitionPattern
+		AreaId      string
+		MaterialId  string
 	}
 
 	PlanData struct {
