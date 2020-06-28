@@ -143,6 +143,7 @@ func (s LessonPlanStore) UpdateLessonPlan(planInput cLessonPlan.UpdatePlanData) 
 			rowsAffected = rowsAffected + result.RowsAffected()
 		}
 
+		// Make sure that we're aren't doing an update with empty struct
 		if planInput.Title != nil || planInput.Description != nil || planInput.AreaId != nil || planInput.MaterialId != nil {
 			result, err := tx.Model(&planDetails).WherePK().UpdateNotZero()
 			if err != nil {
