@@ -75,6 +75,8 @@ func (s *LessonPlansTestSuite) TestPatchLessonPlan() {
 		{"title", Payload{Title: gofakeit.Name()}},
 		{"description", Payload{Description: gofakeit.Name()}},
 		{"date", Payload{Date: randomDatePointer()}},
+		// TODO: These are material and area from a different school, we probably shouldn't allow
+		// 	this to succeed.
 		{"AreaId", Payload{AreaId: anotherArea.Id}},
 		{"MaterialId", Payload{MaterialId: anotherMaterial.Id}},
 	}
