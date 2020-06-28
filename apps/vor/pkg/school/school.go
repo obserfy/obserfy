@@ -46,7 +46,7 @@ func NewRouter(
 		r.Method("POST", "/guardians", postNewGuardian(server, store))
 		r.Method("GET", "/guardians", getGuardians(server, store))
 
-		r.Method("GET", "/plans", getLessonPlan(server, store))
+		r.Method("GET", "/plans", getLessonPlans(server, store))
 
 		r.Method("GET", "/files", getLessonFiles(server, store))
 		r.Method("POST", "/files", addFile(server, store))
@@ -686,13 +686,18 @@ func getGuardians(server rest.Server, store Store) http.Handler {
 	})
 }
 
-func getLessonPlan(server rest.Server, store Store) http.Handler {
+func getLessonPlans(server rest.Server, store Store) http.Handler {
+	type Area struct {
+		Id   string `json:"id"`
+		Name string `json:"name"`
+	}
 	type responseBody struct {
 		Id          string    `json:"id"`
 		Title       string    `json:"title"`
 		Description string    `json:"description"`
 		ClassName   string    `json:"className"`
 		Date        time.Time `json:"date"`
+		Area        *Area     `json:"area,omitempty"`
 	}
 
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
@@ -724,6 +729,12 @@ func getLessonPlan(server rest.Server, store Store) http.Handler {
 				Description: plan.Description,
 				Date:        plan.Date,
 				ClassName:   plan.ClassName,
+			}
+			if plan.AreaId != "" {
+				response[i].Area = &Area{
+					Id:   plan.AreaId,
+					Name: plan.AreaName,
+				}
 			}
 		}
 		if err := rest.WriteJson(w, response); err != nil {

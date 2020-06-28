@@ -102,6 +102,8 @@ type (
 		ClassName   string
 		Date        time.Time
 		Files       []File
+		AreaId      string
+		AreaName    string
 	}
 
 	File struct {
