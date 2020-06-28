@@ -122,7 +122,7 @@ func (s LessonPlanStore) UpdateLessonPlan(planInput cLessonPlan.UpdatePlanData) 
 		Id:          originalPlan.LessonPlanDetailsId,
 		Description: planInput.Description,
 	}
-	// TODO: Aren't these nil check something that can be handled by UpdateNotZero?
+	// TODO: Aren't these nil checks something that will be handled by UpdateNotZero?
 	if planInput.Title != nil {
 		planDetails.Title = *planInput.Title
 	}
@@ -143,7 +143,7 @@ func (s LessonPlanStore) UpdateLessonPlan(planInput cLessonPlan.UpdatePlanData) 
 			rowsAffected = rowsAffected + result.RowsAffected()
 		}
 
-		if planInput.Title != nil || planInput.Description != nil {
+		if planInput.Title != nil || planInput.Description != nil || planInput.AreaId != nil || planInput.MaterialId != nil {
 			result, err := tx.Model(&planDetails).WherePK().UpdateNotZero()
 			if err != nil {
 				return richErrors.Wrap(err, "")

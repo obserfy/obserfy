@@ -28,7 +28,7 @@ func TestLessonPlans(t *testing.T) {
 	suite.Run(t, new(LessonPlansTestSuite))
 }
 
-func (s *LessonPlansTestSuite) TestPatchLessonPlan() {
+func (s *LessonPlansTestSuite) TestGetLessonPlan() {
 	t := s.T()
 	gofakeit.Seed(time.Now().UnixNano())
 	lessonPlan, userId := s.GenerateLessonPlan()
@@ -52,4 +52,62 @@ func (s *LessonPlansTestSuite) TestPatchLessonPlan() {
 	assert.Equal(t, lessonPlan.LessonPlanDetails.MaterialId, responseBody.MaterialId)
 	assert.Equal(t, lessonPlan.LessonPlanDetails.AreaId, responseBody.AreaId)
 	assert.Equal(t, lessonPlan.Date.Unix(), responseBody.Date.Unix())
+}
+
+func (s *LessonPlansTestSuite) TestPatchLessonPlan() {
+	t := s.T()
+	gofakeit.Seed(time.Now().UnixNano())
+	lessonPlan, userId := s.GenerateLessonPlan()
+
+	type Payload struct {
+		Title       string     `json:"title,omitempty"`
+		Description string     `json:"description,omitempty"`
+		Date        *time.Time `json:"date,omitempty"`
+		AreaId      string     `json:"areaId,omitempty"`
+		MaterialId  string     `json:"materialId,omitempty"`
+	}
+	anotherArea, _ := s.GenerateArea()
+	anotherMaterial, _ := s.GenerateMaterial()
+	tests := []struct {
+		name    string
+		payload Payload
+	}{
+		{"title", Payload{Title: gofakeit.Name()}},
+		{"description", Payload{Description: gofakeit.Name()}},
+		{"date", Payload{Date: randomDatePointer()}},
+		{"AreaId", Payload{AreaId: anotherArea.Id}},
+		{"MaterialId", Payload{MaterialId: anotherMaterial.Id}},
+	}
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			result := s.CreateRequest("PATCH", "/"+lessonPlan.Id, test.payload, &userId)
+			assert.Equal(t, http.StatusNoContent, result.Code)
+
+			updatedLessonPlan := postgres.LessonPlanDetails{Id: lessonPlan.LessonPlanDetailsId}
+			err := s.DB.Model(&updatedLessonPlan).Relation("LessonPlans").WherePK().Select()
+			assert.NoError(t, err)
+
+			if test.payload.Title != "" {
+				assert.Equal(t, test.payload.Title, updatedLessonPlan.Title)
+			}
+			if test.payload.Description != "" {
+				assert.Equal(t, test.payload.Description, *updatedLessonPlan.Description)
+			}
+			if test.payload.Date != nil {
+				assert.Equal(t, test.payload.Date.Unix(), updatedLessonPlan.LessonPlans[0].Date.Unix())
+			}
+
+			if test.payload.AreaId != "" {
+				assert.Equal(t, test.payload.AreaId, updatedLessonPlan.AreaId)
+			}
+			if test.payload.MaterialId != "" {
+				assert.Equal(t, test.payload.MaterialId, updatedLessonPlan.MaterialId)
+			}
+		})
+	}
+}
+
+func randomDatePointer() *time.Time {
+	date := gofakeit.Date()
+	return &date
 }
