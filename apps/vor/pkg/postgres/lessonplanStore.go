@@ -113,6 +113,7 @@ func (s LessonPlanStore) UpdateLessonPlan(planInput cLessonPlan.UpdatePlanData) 
 		Select(); err != nil {
 		return 0, richErrors.Wrap(err, "failed to find related plan")
 	}
+
 	plan := LessonPlan{
 		Id:   planInput.Id,
 		Date: planInput.Date,
@@ -121,11 +122,15 @@ func (s LessonPlanStore) UpdateLessonPlan(planInput cLessonPlan.UpdatePlanData) 
 		Id:          originalPlan.LessonPlanDetailsId,
 		Description: planInput.Description,
 	}
+	// TODO: Aren't these nil check something that can be handled by UpdateNotZero?
 	if planInput.Title != nil {
 		planDetails.Title = *planInput.Title
 	}
 	if planInput.AreaId != nil {
 		planDetails.AreaId = *planInput.AreaId
+	}
+	if planInput.MaterialId != nil {
+		planDetails.MaterialId = *planInput.MaterialId
 	}
 
 	rowsAffected := 0

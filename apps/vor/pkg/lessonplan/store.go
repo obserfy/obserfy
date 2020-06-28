@@ -44,6 +44,7 @@ type (
 		Date        *time.Time
 		Repetition  *RepetitionPattern
 		AreaId      *string
+		MaterialId  *string
 	}
 
 	Store interface {

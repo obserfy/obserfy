@@ -65,6 +65,7 @@ func updateLessonPlan(server rest.Server, store Store) http.Handler {
 		Description *string    `json:"description,omitempty"`
 		Date        *time.Time `json:"date,omitempty"`
 		AreaId      *string    `json:"areaId,omitempty"`
+		MaterialId  *string    `json:"materialId,omitempty"`
 	}
 
 	validate := validator.New()
@@ -90,6 +91,7 @@ func updateLessonPlan(server rest.Server, store Store) http.Handler {
 			Description: body.Description,
 			Date:        body.Date,
 			AreaId:      body.AreaId,
+			MaterialId:  body.MaterialId,
 		}
 		rowsAffected, err := store.UpdateLessonPlan(planInput)
 		if err != nil {
