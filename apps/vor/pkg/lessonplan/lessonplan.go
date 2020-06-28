@@ -32,6 +32,8 @@ func getLessonPlan(server rest.Server, store Store) http.Handler {
 		Description string    `json:"description"`
 		ClassId     string    `json:"classId"`
 		Date        time.Time `json:"date"`
+		AreaId      string    `json:"areaId"`
+		MaterialId  string    `json:"materialId"`
 	}
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		planId := chi.URLParam(r, "planId")
@@ -51,6 +53,8 @@ func getLessonPlan(server rest.Server, store Store) http.Handler {
 			Description: plan.Description,
 			ClassId:     plan.ClassId,
 			Date:        plan.Date,
+			MaterialId:  plan.MaterialId,
+			AreaId:      plan.AreaId,
 		}
 		if err := rest.WriteJson(w, response); err != nil {
 			return rest.NewWriteJsonError(err)
@@ -65,6 +69,7 @@ func updateLessonPlan(server rest.Server, store Store) http.Handler {
 		Description *string    `json:"description,omitempty"`
 		Date        *time.Time `json:"date,omitempty"`
 		AreaId      *string    `json:"areaId,omitempty"`
+		MaterialId  *string    `json:"materialId,omitempty"`
 	}
 
 	validate := validator.New()
@@ -90,6 +95,7 @@ func updateLessonPlan(server rest.Server, store Store) http.Handler {
 			Description: body.Description,
 			Date:        body.Date,
 			AreaId:      body.AreaId,
+			MaterialId:  body.MaterialId,
 		}
 		rowsAffected, err := store.UpdateLessonPlan(planInput)
 		if err != nil {

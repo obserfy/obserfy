@@ -245,6 +245,7 @@ type Weekday struct {
 }
 
 type (
+	// TODO: Lesson plan might need an explicit relationship to a school.
 	LessonPlanDetails struct {
 		Id                string `pg:"type:uuid"`
 		Title             string
