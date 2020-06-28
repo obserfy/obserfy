@@ -54,37 +54,6 @@ func (s *SchoolTestSuite) SaveNewGuardian() (*postgres.Guardian, string) {
 	return &newGuardian, newSchool.Users[0].Id
 }
 
-func (s *SchoolTestSuite) SaveNewLessonPlan() (*postgres.LessonPlan, string) {
-	t := s.T()
-	gofakeit.Seed(time.Now().UnixNano())
-	newSchool := s.GenerateSchool()
-	newClass := s.GenerateClass(*newSchool)
-
-	title := gofakeit.Name()
-	description := gofakeit.Name()
-	details := postgres.LessonPlanDetails{
-		Id:             uuid.New().String(),
-		Title:          title,
-		Description:    &description,
-		ClassId:        newClass.Id,
-		Class:          *newClass,
-		Files:          nil,
-		RepetitionType: 0,
-	}
-	date := gofakeit.Date()
-	newLessonPlan := postgres.LessonPlan{
-		Id:                  uuid.New().String(),
-		Date:                &date,
-		LessonPlanDetailsId: details.Id,
-		LessonPlanDetails:   details,
-	}
-	err := s.DB.Insert(&details)
-	assert.NoError(t, err)
-	err = s.DB.Insert(&newLessonPlan)
-	assert.NoError(t, err)
-	return &newLessonPlan, newSchool.Users[0].Id
-}
-
 func (s *SchoolTestSuite) SaveNewFile() (*postgres.File, string) {
 	t := s.T()
 	gofakeit.Seed(time.Now().UnixNano())

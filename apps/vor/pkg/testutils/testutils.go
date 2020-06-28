@@ -193,7 +193,7 @@ func (s *BaseTestSuite) GenerateLessonPlan() (postgres.LessonPlan, string) {
 		Title:             gofakeit.Name(),
 		Description:       &lessonName,
 		ClassId:           class.Id,
-		Class:             postgres.Class{},
+		Class:             *class,
 		RepetitionType:    0,
 		RepetitionEndDate: gofakeit.Date(),
 		Area:              material.Subject.Area,

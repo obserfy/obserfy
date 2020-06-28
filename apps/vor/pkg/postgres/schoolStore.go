@@ -431,18 +431,20 @@ func (s SchoolStore) GetGuardians(schoolId string) ([]cSchool.Guardian, error) {
 
 func (s SchoolStore) GetLessonPlans(schoolId string, date time.Time) ([]cSchool.LessonPlan, error) {
 	var lessonPlan []LessonPlan
-	res := make([]cSchool.LessonPlan, 0)
 	if err := s.DB.Model(&lessonPlan).
 		Where("date::date=?", date).
 		Relation("LessonPlanDetails").
+		Relation("LessonPlanDetails.Area").
 		Relation("LessonPlanDetails.Class", func(q *orm.Query) (*orm.Query, error) {
 			return q.Where("school_id = ?", schoolId), nil
 		}).
 		Select(); err != nil {
 		return nil, richErrors.Wrap(err, "Failed to query school's lesson plan")
 	}
-	for _, plan := range lessonPlan {
-		newPlan := cSchool.LessonPlan{
+
+	res := make([]cSchool.LessonPlan, len(lessonPlan))
+	for i, plan := range lessonPlan {
+		res[i] = cSchool.LessonPlan{
 			Id:        plan.Id,
 			Title:     plan.LessonPlanDetails.Title,
 			ClassId:   plan.LessonPlanDetails.ClassId,
@@ -450,9 +452,12 @@ func (s SchoolStore) GetLessonPlans(schoolId string, date time.Time) ([]cSchool.
 			Date:      *plan.Date,
 		}
 		if plan.LessonPlanDetails.Description != nil {
-			newPlan.Description = *plan.LessonPlanDetails.Description
+			res[i].Description = *plan.LessonPlanDetails.Description
 		}
-		res = append(res, newPlan)
+		if plan.LessonPlanDetails.AreaId != "" {
+			res[i].AreaId = plan.LessonPlanDetails.Area.Id
+			res[i].AreaName = plan.LessonPlanDetails.Area.Name
+		}
 	}
 	return res, nil
 }
