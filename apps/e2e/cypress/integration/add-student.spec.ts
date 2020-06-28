@@ -1,4 +1,4 @@
-describe("Test adding new student", () => {
+describe("test adding new student", () => {
   const faker = require("faker")
 
   beforeEach(() => {
