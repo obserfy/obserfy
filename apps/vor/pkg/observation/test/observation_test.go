@@ -32,7 +32,7 @@ func TestObservation(t *testing.T) {
 func (s *ObservationTestSuite) SaveNewObservation() postgres.Observation {
 	currentTime := time.Now().Local()
 	gofakeit.Seed(time.Now().UnixNano())
-	school := s.SaveNewSchool()
+	school := s.GenerateSchool()
 	student := postgres.Student{
 		Id:          uuid.New().String(),
 		Name:        gofakeit.Name(),
@@ -89,7 +89,7 @@ func (s *ObservationTestSuite) TestGetObservation() {
 }
 
 func (s *ObservationTestSuite) TestInvalidGetObservation() {
-	school := s.SaveNewSchool()
+	school := s.GenerateSchool()
 	tests := []struct {
 		name          string
 		observationId string

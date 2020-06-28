@@ -160,7 +160,18 @@ func (s SchoolStore) NewStudent(student cSchool.Student, classes []string, guard
 			})
 		}
 
-		if err := tx.Insert(&student); err != nil {
+		if err := tx.Insert(&Student{
+			Id:          student.Id,
+			Name:        student.Name,
+			SchoolId:    student.SchoolId,
+			DateOfBirth: student.DateOfBirth,
+			Gender:      Gender(student.Gender),
+			DateOfEntry: student.DateOfEntry,
+			Note:        student.Note,
+			CustomId:    student.CustomId,
+			Active:      &student.Active,
+			ProfilePic:  student.ProfilePic,
+		}); err != nil {
 			return richErrors.Wrap(err, "failed to save new student")
 		}
 		if len(classRelations) > 0 {

@@ -1,7 +1,7 @@
-describe("Smoke test on prod build", () => {
+describe("test authentication", () => {
   const faker = require("faker")
 
-  it("should run smoke test successfully", () => {
+  it("should be able to login and register", () => {
     // define new user dynamically
     const name = faker.name.firstName()
     const email = faker.internet.email()

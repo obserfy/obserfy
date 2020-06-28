@@ -32,7 +32,7 @@ func TestClass(t *testing.T) {
 func (s *GuardianTestSuite) SaveNewGuardian() (*postgres.Guardian, string) {
 	t := s.T()
 	gofakeit.Seed(time.Now().UnixNano())
-	newSchool := s.SaveNewSchool()
+	newSchool := s.GenerateSchool()
 	newGuardian := postgres.Guardian{
 		Id:       uuid.New().String(),
 		Name:     gofakeit.Name(),

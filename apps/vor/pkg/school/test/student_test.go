@@ -20,7 +20,7 @@ import (
 func (s SchoolTestSuite) TestSaveNewStudentWithPic() {
 	t := s.T()
 	gofakeit.Seed(time.Now().UnixNano())
-	newSchool := s.SaveNewSchool()
+	newSchool := s.GenerateSchool()
 
 	name := gofakeit.Name()
 	payload := new(bytes.Buffer)
@@ -46,7 +46,7 @@ func (s SchoolTestSuite) TestSaveNewStudentWithPic() {
 	assert.NoError(t, err)
 
 	req := struct {
-		Name        string `json:"string"`
+		Name        string    `json:"string"`
 		DateOfBirth time.Time `json:"dateOfBirth"`
 	}{Name: name, DateOfBirth: time.Now()}
 	json, err := json.Marshal(req)

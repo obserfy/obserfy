@@ -20,7 +20,7 @@ func TestMaterialTestSuite(t *testing.T) {
 
 func (s *MaterialTestSuite) TestValidPost() {
 	t := s.T()
-	subject, userId := s.saveNewSubject()
+	subject, userId := s.GenerateSubject()
 
 	payload := struct {
 		Name string `json:"name"`
@@ -36,7 +36,7 @@ func (s *MaterialTestSuite) TestValidPost() {
 
 func (s *MaterialTestSuite) TestOrderingOfInsert() {
 	t := s.T()
-	subject, userId := s.saveNewSubject()
+	subject, userId := s.GenerateSubject()
 	tests := []struct {
 		name          string
 		materialName  string
@@ -68,7 +68,7 @@ func (s *MaterialTestSuite) TestOrderingOfInsert() {
 
 func (s *MaterialTestSuite) TestInvalidCreateSubject() {
 	t := s.T()
-	subject, userId := s.saveNewSubject()
+	subject, userId := s.GenerateSubject()
 	tests := []struct {
 		testName  string
 		name      string
@@ -98,7 +98,7 @@ func (s *MaterialTestSuite) TestInvalidCreateSubject() {
 
 func (s *MaterialTestSuite) TestValidUpdate() {
 	t := s.T()
-	subject, _ := s.saveNewSubject()
+	subject, _ := s.GenerateSubject()
 
 	tests := []struct {
 		testName  string
@@ -110,7 +110,7 @@ func (s *MaterialTestSuite) TestValidUpdate() {
 	}
 	for _, test := range tests {
 		t.Run(test.testName, func(t *testing.T) {
-			originalMaterial, userId := s.saveNewMaterial()
+			originalMaterial, userId := s.GenerateMaterial()
 
 			payload := struct {
 				Name      string `json:"name,omitempty"`
@@ -146,7 +146,7 @@ func (s *MaterialTestSuite) TestValidUpdate() {
 
 func (s *MaterialTestSuite) TestUpdateMaterialOrderBackward() {
 	t := s.T()
-	subject, userId := s.saveNewSubject()
+	subject, userId := s.GenerateSubject()
 	originalMaterials := []postgres.Material{
 		{Id: uuid.New().String(), Name: "Major", SubjectId: subject.Id, Order: 1},
 		{Id: uuid.New().String(), Name: "Tom", SubjectId: subject.Id, Order: 2},
@@ -192,7 +192,7 @@ func (s *MaterialTestSuite) TestUpdateMaterialOrderBackward() {
 
 func (s *MaterialTestSuite) TestUpdateMaterialOrderForward() {
 	t := s.T()
-	subject, userId := s.saveNewSubject()
+	subject, userId := s.GenerateSubject()
 	originalMaterials := []postgres.Material{
 		{Id: uuid.New().String(), Name: "Major", SubjectId: subject.Id, Order: 1},
 		{Id: uuid.New().String(), Name: "Tom", SubjectId: subject.Id, Order: 2},
@@ -237,7 +237,7 @@ func (s *MaterialTestSuite) TestUpdateMaterialOrderForward() {
 
 func (s *MaterialTestSuite) TestUpdateMaterialOrderRandomly() {
 	t := s.T()
-	subject, userId := s.saveNewSubject()
+	subject, userId := s.GenerateSubject()
 	originalMaterials := []postgres.Material{
 		{Id: uuid.New().String(), Name: "Major", SubjectId: subject.Id, Order: 1},
 		{Id: uuid.New().String(), Name: "Tom", SubjectId: subject.Id, Order: 2},

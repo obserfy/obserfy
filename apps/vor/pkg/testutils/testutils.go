@@ -31,9 +31,7 @@ type BaseTestSuite struct {
 }
 
 func (s *BaseTestSuite) TearDownSuite() {
-	if err := s.DB.Close(); err != nil {
-		assert.NoError(s.T(), err)
-	}
+	assert.NoError(s.T(), s.DB.Close())
 }
 
 func (s *BaseTestSuite) SetupSuite() {
@@ -72,6 +70,9 @@ func connectTestDB() (*pg.DB, error) {
 		}
 	}
 
+	// This is required to reduce the test's flakyness
+	// Sometimes the test will on CI with ERROR #23505 duplicate key value violates unique constraint "pg_type_typname_nsp_index"
+	// We could just retry creating the tables when that happens.
 	err := postgres.InitTables(db)
 	if err != nil {
 		time.Sleep(time.Second)
@@ -83,7 +84,7 @@ func connectTestDB() (*pg.DB, error) {
 	return db, nil
 }
 
-func (s *BaseTestSuite) SaveNewSchool() *postgres.School {
+func (s *BaseTestSuite) GenerateSchool() *postgres.School {
 	t := s.T()
 	gofakeit.Seed(time.Now().UnixNano())
 	curriculum := postgres.Curriculum{Id: uuid.New().String()}
@@ -106,23 +107,57 @@ func (s *BaseTestSuite) SaveNewSchool() *postgres.School {
 		UserId:   newUser.Id,
 	}
 	newSchool.Curriculum = curriculum
-	if err := s.DB.Insert(&newUser); err != nil {
-		assert.NoError(t, err)
-		return nil
-	}
-	if err := s.DB.Insert(&curriculum); err != nil {
-		assert.NoError(t, err)
-		return nil
-	}
-	if err := s.DB.Insert(&newSchool); err != nil {
-		assert.NoError(t, err)
-		return nil
-	}
-	if err := s.DB.Insert(&schoolUserRelation); err != nil {
-		assert.NoError(t, err)
-		return nil
-	}
+
+	assert.NoError(t, s.DB.Insert(&newUser))
+	assert.NoError(t, s.DB.Insert(&curriculum))
+	assert.NoError(t, s.DB.Insert(&newSchool))
+	assert.NoError(t, s.DB.Insert(&schoolUserRelation))
 	return &newSchool
+}
+
+func (s *BaseTestSuite) GenerateMaterial() (postgres.Material, string) {
+	subject, userId := s.GenerateSubject()
+
+	// save subject
+	material := postgres.Material{
+		Id:        uuid.New().String(),
+		Name:      uuid.New().String(),
+		SubjectId: subject.Id,
+		Subject:   subject,
+	}
+	err := s.DB.Insert(&material)
+	assert.NoError(s.T(), err)
+	return material, userId
+}
+
+func (s *BaseTestSuite) GenerateSubject() (postgres.Subject, string) {
+	// Save area
+	area, userId := s.GenerateArea()
+
+	// save subject
+	originalSubject := postgres.Subject{
+		Id:     uuid.New().String(),
+		Name:   uuid.New().String(),
+		AreaId: area.Id,
+		Area:   area,
+	}
+	err := s.DB.Insert(&originalSubject)
+	assert.NoError(s.T(), err)
+	return originalSubject, userId
+}
+
+func (s *BaseTestSuite) GenerateArea() (postgres.Area, string) {
+	school := s.GenerateSchool()
+	area := postgres.Area{
+		Id:           uuid.New().String(),
+		CurriculumId: school.CurriculumId,
+		Curriculum:   school.Curriculum,
+		Name:         "",
+		Subjects:     nil,
+	}
+	err := s.DB.Insert(&area)
+	assert.NoError(s.T(), err)
+	return area, school.Users[0].Id
 }
 
 func (s *BaseTestSuite) CreateRequest(method string, path string, bodyJson interface{}, userId *string) *httptest.ResponseRecorder {

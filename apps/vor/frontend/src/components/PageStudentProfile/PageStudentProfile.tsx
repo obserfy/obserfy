@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { FC, Fragment, useState } from "react"
-import { jsx, Box, Button, Flex, Card } from "theme-ui"
+import { Box, Button, Card, Flex, jsx } from "theme-ui"
 
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { useGetStudent } from "../../api/useGetStudent"
@@ -25,6 +25,7 @@ import Select from "../Select/Select"
 import DatePicker from "../DatePicker/DatePicker"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import { Link } from "../Link/Link"
+import AlertDialog from "../AlertDialog/AlertDialog"
 
 interface Props {
   id: string
@@ -182,6 +183,13 @@ export const PageStudentProfile: FC<Props> = ({ id }) => {
           </Link>
         </Flex>
       </Card>
+      <Box mt={3}>
+        <SetStatusDataBox
+          studentId={id}
+          active={data?.active ?? false}
+          name={data?.name ?? ""}
+        />
+      </Box>
     </Box>
   )
 }
@@ -430,28 +438,72 @@ const DateOfEntryDataBox: FC<{ value?: string; studentId: string }> = ({
     </Fragment>
   )
 }
-
+const SetStatusDataBox: FC<{
+  studentId: string
+  active: boolean
+  name: string
+}> = ({ studentId, active, name }) => {
+  const [mutate] = usePatchStudentApi(studentId)
+  const [showStatusDialog, setShowStatusDialog] = useState(false)
+  const saveStatus = async () => {
+    await mutate({ active: !active })
+    setShowStatusDialog(false)
+  }
+  return (
+    <Card
+      p={3}
+      sx={{
+        borderRadius: [0, "default"],
+        display: "flex",
+        alignItems: "center",
+        backgroundColor: "surface",
+      }}
+    >
+      <Box>
+        <Typography.Body
+          sx={{
+            fontSize: 0,
+            lineHeight: 1.4,
+          }}
+        >
+          Status
+        </Typography.Body>
+        <Typography.Body sx={{ color: !active ? "warning" : undefined }}>
+          {active ? "Active" : "Inactive"}
+        </Typography.Body>
+      </Box>
+      <Button
+        variant={active ? "outline" : "primary"}
+        ml="auto"
+        onClick={() => setShowStatusDialog(true)}
+        sx={{ color: active ? "warning" : undefined }}
+      >
+        Set as {active ? "Inactive" : "Active"}
+      </Button>
+      {showStatusDialog && (
+        <AlertDialog
+          title={`Set as ${active ? "inactive" : "active"}?`}
+          negativeText="Cancel"
+          positiveText="Yes"
+          body={`Are you sure you want to set ${name} as ${
+            active ? "inactive" : "active"
+          }?`}
+          onNegativeClick={() => setShowStatusDialog(false)}
+          onPositiveClick={() => saveStatus()}
+        />
+      )}
+    </Card>
+  )
+}
 const DataBox: FC<{
   label: string
   value: string
   onEditClick?: () => void
 }> = ({ label, value, onEditClick }) => (
-  <Flex
-    px={3}
-    py={3}
-    sx={{
-      borderBottomWidth: 1,
-      borderBottomColor: "border",
-      borderBottomStyle: "solid",
-      alignItems: "center",
-    }}
-  >
+  <Flex px={3} py={3} sx={{ alignItems: "center" }}>
     <Box>
       <Typography.Body
-        sx={{
-          fontSize: 0,
-        }}
-        lineHeight={1.6}
+        sx={{ fontSize: 0, lineHeight: 1.4 }}
         mb={1}
         color="textMediumEmphasis"
       >
