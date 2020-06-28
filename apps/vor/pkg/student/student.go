@@ -1,7 +1,6 @@
 package student
 
 import (
-	"fmt"
 	"net/http"
 	"time"
 
@@ -309,7 +308,6 @@ func patchStudent(s rest.Server, store Store) http.Handler {
 		newStudent.CustomId = requestBody.CustomId
 		newStudent.DateOfEntry = requestBody.DateOfEntry
 		newStudent.Active = requestBody.Active
-		fmt.Println("a", newStudent.Active)
 		if err := store.UpdateStudent(newStudent); err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Failed updating old student data", err}
 		}
