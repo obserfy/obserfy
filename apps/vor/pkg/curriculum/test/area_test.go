@@ -20,7 +20,7 @@ func TestAreaTestSuite(t *testing.T) {
 
 // Not existent area should return 404
 func (s *AreaTestSuite) TestGetExistingArea() {
-	area, _ := s.saveNewArea()
+	area, _ := s.GenerateArea()
 
 	userId := area.Curriculum.Schools[0].Users[0].Id
 	result := s.CreateRequest("GET", "/areas/"+area.Id, nil, &userId)
@@ -28,7 +28,7 @@ func (s *AreaTestSuite) TestGetExistingArea() {
 }
 
 func (s *AreaTestSuite) TestGetNonExistentArea() {
-	school := s.SaveNewSchool()
+	school := s.GenerateSchool()
 	result := s.CreateRequest("GET", "/areas/"+uuid.New().String(), nil, &school.Users[0].Id)
 	assert.Equal(s.T(), http.StatusNotFound, result.Code)
 }
@@ -37,7 +37,7 @@ func (s *AreaTestSuite) TestGetNonExistentArea() {
 func (s *AreaTestSuite) TestCreateValidArea() {
 	t := s.T()
 	// Save curriculum and use its id for request
-	school := s.SaveNewSchool()
+	school := s.GenerateSchool()
 
 	// setup the area for test
 	area := struct {
@@ -61,7 +61,7 @@ func (s *AreaTestSuite) TestCreateValidArea() {
 // Area without curriculum should fail
 func (s *AreaTestSuite) TestCreateAreaWithNoCurriculum() {
 	t := s.T()
-	area, userId := s.saveNewArea()
+	area, userId := s.GenerateArea()
 
 	result := s.CreateRequest("POST", "//areas", area, &userId)
 
@@ -78,7 +78,7 @@ func (s *AreaTestSuite) TestCreateAreaWithNoName() {
 	t := s.T()
 	// Setup data
 
-	area, userId := s.saveNewArea()
+	area, userId := s.GenerateArea()
 
 	// Send request
 	result := s.CreateRequest("POST", "/"+area.CurriculumId+"/areas", area, &userId)
@@ -95,7 +95,7 @@ func (s *AreaTestSuite) TestCreateAreaWithNoName() {
 
 func (s *AreaTestSuite) TestDeleteArea() {
 	t := s.T()
-	area, userId := s.saveNewArea()
+	area, userId := s.GenerateArea()
 	response := s.CreateRequest("DELETE", "/areas/"+area.Id, nil, &userId)
 	assert.Equal(t, http.StatusOK, response.Code)
 	var savedArea postgres.Area
@@ -107,14 +107,14 @@ func (s *AreaTestSuite) TestDeleteArea() {
 
 func (s *AreaTestSuite) TestDeleteUnknownArea() {
 	t := s.T()
-	school := s.SaveNewSchool()
+	school := s.GenerateSchool()
 	response := s.CreateRequest("DELETE", "/areas/"+uuid.New().String(), nil, &school.Users[0].Id)
 	assert.Equal(t, http.StatusNotFound, response.Code)
 }
 
 func (s *AreaTestSuite) TestUpdateAreaName() {
 	t := s.T()
-	area, userId := s.saveNewArea()
+	area, userId := s.GenerateArea()
 
 	payload := struct {
 		Name string `json:"name"`
@@ -135,7 +135,7 @@ func (s *AreaTestSuite) TestUpdateAreaName() {
 
 func (s *AreaTestSuite) TestUpdateInvalidAreaName() {
 	t := s.T()
-	area, userId := s.saveNewArea()
+	area, userId := s.GenerateArea()
 
 	payload := struct {
 		Name string `json:"name"`

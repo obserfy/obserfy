@@ -25,16 +25,16 @@ func (s *SchoolTestSuite) TestCreateNewGuardian() {
 		body       requestBody
 		resultCode int
 	}{
-		{"complete", *s.SaveNewSchool(), requestBody{
+		{"complete", *s.GenerateSchool(), requestBody{
 			Name:  gofakeit.Name(),
 			Email: gofakeit.Email(),
 			Phone: gofakeit.Phone(),
 			Note:  gofakeit.Sentence(10),
 		}, http.StatusCreated},
-		{"only name", *s.SaveNewSchool(), requestBody{
+		{"only name", *s.GenerateSchool(), requestBody{
 			Name: gofakeit.Name(),
 		}, http.StatusCreated},
-		{"without name", *s.SaveNewSchool(), requestBody{
+		{"without name", *s.GenerateSchool(), requestBody{
 			Email: gofakeit.Email(),
 			Phone: gofakeit.Phone(),
 			Note:  gofakeit.Sentence(10),
@@ -89,7 +89,7 @@ func (s *SchoolTestSuite) TestGetSchoolGuardians() {
 
 func (s *SchoolTestSuite) TestGetSchoolGuardians_WithNoGuardian() {
 	t := s.T()
-	newSchool := s.SaveNewSchool()
+	newSchool := s.GenerateSchool()
 
 	result := s.CreateRequest("GET", "/"+newSchool.Id+"/guardians", nil, &newSchool.Users[0].Id)
 	assert.Equal(t, http.StatusOK, result.Code)

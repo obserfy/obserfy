@@ -61,7 +61,7 @@ func (s *SchoolTestSuite) SaveNewClass(school postgres.School) *postgres.Class {
 func (s *SchoolTestSuite) SaveNewGuardian() (*postgres.Guardian, string) {
 	t := s.T()
 	gofakeit.Seed(time.Now().UnixNano())
-	newSchool := s.SaveNewSchool()
+	newSchool := s.GenerateSchool()
 	newGuardian := postgres.Guardian{
 		Id:       uuid.New().String(),
 		Name:     gofakeit.Name(),
@@ -79,7 +79,7 @@ func (s *SchoolTestSuite) SaveNewGuardian() (*postgres.Guardian, string) {
 func (s *SchoolTestSuite) SaveNewLessonPlan() (*postgres.LessonPlan, string) {
 	t := s.T()
 	gofakeit.Seed(time.Now().UnixNano())
-	newSchool := s.SaveNewSchool()
+	newSchool := s.GenerateSchool()
 	newClass := s.SaveNewClass(*newSchool)
 
 	title := gofakeit.Name()
@@ -110,7 +110,7 @@ func (s *SchoolTestSuite) SaveNewLessonPlan() (*postgres.LessonPlan, string) {
 func (s *SchoolTestSuite) SaveNewFile() (*postgres.File, string) {
 	t := s.T()
 	gofakeit.Seed(time.Now().UnixNano())
-	newSchool := s.SaveNewSchool()
+	newSchool := s.GenerateSchool()
 
 	fileId := uuid.New().String()
 	fileKey := "files/" + newSchool.Id + "/" + fileId
