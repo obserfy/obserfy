@@ -27,10 +27,10 @@ exports[`PagePlans should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  margin-left: 16px;
-  margin-right: 16px;
-  margin-top: 16px;
-  margin-bottom: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 16px;
+  padding-bottom: 8px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -52,6 +52,7 @@ exports[`PagePlans should render correctly 1`] = `
   line-height: 3rem;
   text-rendering: optimizeLegibility;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  font-weight: bold;
   font-size: 14px;
 }
 

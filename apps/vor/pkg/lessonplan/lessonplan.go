@@ -68,6 +68,7 @@ func updateLessonPlan(server rest.Server, store Store) http.Handler {
 		Title       *string    `json:"title,omitempty"`
 		Description *string    `json:"description,omitempty"`
 		Date        *time.Time `json:"date,omitempty"`
+		ClassId     *string    `json:"classId,omitempty"`
 		AreaId      *string    `json:"areaId,omitempty"`
 		MaterialId  *string    `json:"materialId,omitempty"`
 	}
@@ -96,6 +97,7 @@ func updateLessonPlan(server rest.Server, store Store) http.Handler {
 			Date:        body.Date,
 			AreaId:      body.AreaId,
 			MaterialId:  body.MaterialId,
+			ClassId:     body.ClassId,
 		}
 		rowsAffected, err := store.UpdateLessonPlan(planInput)
 		if err != nil {

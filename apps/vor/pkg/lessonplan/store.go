@@ -47,6 +47,7 @@ type (
 		Repetition  *RepetitionPattern
 		AreaId      *string
 		MaterialId  *string
+		ClassId     *string
 	}
 
 	Store interface {
