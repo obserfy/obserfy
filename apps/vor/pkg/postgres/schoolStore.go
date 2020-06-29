@@ -83,7 +83,7 @@ func (s SchoolStore) GetStudents(schoolId, classId string) ([]cSchool.Student, e
 	if classId != "" {
 		err = s.Model(&students).
 			Join("INNER JOIN student_to_classes stc ON students.id=stc.student_id").
-			Where("school_id=? && stc.class_id=?", schoolId, classId).
+			Where("students.school_id=? && stc.class_id=?", schoolId, classId).
 			Order("name").
 			Select()
 	} else {
