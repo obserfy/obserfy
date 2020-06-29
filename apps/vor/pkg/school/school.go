@@ -325,8 +325,9 @@ func getStudents(s rest.Server, store Store, imgproxyClient *imgproxy.Client) re
 	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		schoolId := chi.URLParam(r, "schoolId")
+		classId := r.URL.Query().Get("classId")
 
-		students, err := store.GetStudents(schoolId)
+		students, err := store.GetStudents(schoolId, classId)
 		if err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Failed getting all students", err}
 		}
