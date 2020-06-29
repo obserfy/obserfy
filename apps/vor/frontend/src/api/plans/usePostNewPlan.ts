@@ -9,6 +9,7 @@ interface NewPlan {
   classId: string
   title: string
   description: string
+  areaId: string
   repetition?: {
     type: number
     endDate: Dayjs
@@ -25,6 +26,7 @@ const usePostNewPlan = () => {
         fileIds: [],
         date: newPlan.date.startOf("day").toISOString(),
         repetition: newPlan.repetition,
+        areaId: newPlan.areaId,
       }),
     })
 

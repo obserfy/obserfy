@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { FC, useState } from "react"
-import { jsx, Button, Flex, Box } from "theme-ui"
+import { Box, Button, Flex, jsx } from "theme-ui"
 import Input from "../Input/Input"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { ALL_PLANS_URL } from "../../routes"
@@ -13,6 +13,7 @@ import usePostNewPlan from "../../api/plans/usePostNewPlan"
 import dayjs from "../../dayjs"
 import { navigate } from "../Link/Link"
 import EmptyClassDataPlaceholder from "../EmptyClassDataPlaceholder/EmptyClassDataPlaceholder"
+import { useGetCurriculumAreas } from "../../api/useGetCurriculumAreas"
 
 interface Props {
   chosenDate: string
@@ -20,11 +21,13 @@ interface Props {
 
 export const PageNewPlan: FC<Props> = ({ chosenDate }) => {
   const classes = useGetSchoolClasses()
+  const areas = useGetCurriculumAreas()
   const [mutate] = usePostNewPlan()
 
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
   const [classId, setClassId] = useState("")
+  const [areaId, setAreaId] = useState("")
   const [date, setDate] = useState(chosenDate ? dayjs(chosenDate) : dayjs())
 
   // Repetition data
@@ -60,6 +63,33 @@ export const PageNewPlan: FC<Props> = ({ chosenDate }) => {
           }}
         />
       </Box>
+
+      {areas.status === "success" && areas.data.length === 0 ? (
+        <Box mb={3}>
+          <EmptyClassDataPlaceholder />
+        </Box>
+      ) : (
+        <Box mx={3}>
+          <Typography.H6 mb={2}>Related Area</Typography.H6>
+          <Flex mb={3} sx={{ flexWrap: "wrap" }}>
+            {areas.data?.map(({ id, name }) => (
+              <Chip
+                key={id}
+                text={name}
+                activeBackground="primary"
+                onClick={() => {
+                  if (id === areaId) {
+                    setAreaId("")
+                  } else {
+                    setAreaId(id)
+                  }
+                }}
+                isActive={id === areaId}
+              />
+            ))}
+          </Flex>
+        </Box>
+      )}
 
       {classes.status === "success" && classes.data.length === 0 ? (
         <Box mb={3}>
@@ -122,6 +152,7 @@ export const PageNewPlan: FC<Props> = ({ chosenDate }) => {
           mt={3}
           onClick={async () => {
             const result = await mutate({
+              areaId,
               title,
               description,
               classId,

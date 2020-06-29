@@ -2111,13 +2111,13 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___siteUrl'
   | 'pluginCreator___pluginOptions___color'
   | 'pluginCreator___pluginOptions___showSpinner'
+  | 'pluginCreator___pluginOptions___dsn'
+  | 'pluginCreator___pluginOptions___environment'
+  | 'pluginCreator___pluginOptions___enabled'
   | 'pluginCreator___pluginOptions___fileName'
   | 'pluginCreator___pluginOptions___documentPaths'
   | 'pluginCreator___pluginOptions___analyzerPort'
   | 'pluginCreator___pluginOptions___pathCheck'
-  | 'pluginCreator___pluginOptions___dsn'
-  | 'pluginCreator___pluginOptions___environment'
-  | 'pluginCreator___pluginOptions___enabled'
   | 'pluginCreator___nodeAPIs'
   | 'pluginCreator___browserAPIs'
   | 'pluginCreator___ssrAPIs'
@@ -2332,13 +2332,13 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___siteUrl'
   | 'pluginOptions___color'
   | 'pluginOptions___showSpinner'
+  | 'pluginOptions___dsn'
+  | 'pluginOptions___environment'
+  | 'pluginOptions___enabled'
   | 'pluginOptions___fileName'
   | 'pluginOptions___documentPaths'
   | 'pluginOptions___analyzerPort'
   | 'pluginOptions___pathCheck'
-  | 'pluginOptions___dsn'
-  | 'pluginOptions___environment'
-  | 'pluginOptions___enabled'
   | 'nodeAPIs'
   | 'browserAPIs'
   | 'ssrAPIs'
@@ -2476,13 +2476,13 @@ export type SitePluginPluginOptions = {
   siteUrl?: Maybe<Scalars['String']>;
   color?: Maybe<Scalars['String']>;
   showSpinner?: Maybe<Scalars['Boolean']>;
+  dsn?: Maybe<Scalars['String']>;
+  environment?: Maybe<Scalars['String']>;
+  enabled?: Maybe<Scalars['Boolean']>;
   fileName?: Maybe<Scalars['String']>;
   documentPaths?: Maybe<Array<Maybe<Scalars['String']>>>;
   analyzerPort?: Maybe<Scalars['Int']>;
   pathCheck?: Maybe<Scalars['Boolean']>;
-  dsn?: Maybe<Scalars['String']>;
-  environment?: Maybe<Scalars['String']>;
-  enabled?: Maybe<Scalars['Boolean']>;
 };
 
 export type SitePluginPluginOptionsFilterInput = {
@@ -2511,13 +2511,13 @@ export type SitePluginPluginOptionsFilterInput = {
   siteUrl?: Maybe<StringQueryOperatorInput>;
   color?: Maybe<StringQueryOperatorInput>;
   showSpinner?: Maybe<BooleanQueryOperatorInput>;
+  dsn?: Maybe<StringQueryOperatorInput>;
+  environment?: Maybe<StringQueryOperatorInput>;
+  enabled?: Maybe<BooleanQueryOperatorInput>;
   fileName?: Maybe<StringQueryOperatorInput>;
   documentPaths?: Maybe<StringQueryOperatorInput>;
   analyzerPort?: Maybe<IntQueryOperatorInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
-  dsn?: Maybe<StringQueryOperatorInput>;
-  environment?: Maybe<StringQueryOperatorInput>;
-  enabled?: Maybe<BooleanQueryOperatorInput>;
 };
 
 export type SitePluginPluginOptionsFonts = {
