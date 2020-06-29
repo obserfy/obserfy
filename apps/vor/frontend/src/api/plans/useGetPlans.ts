@@ -6,7 +6,7 @@ import { Dayjs } from "../../dayjs"
 export interface Plans {
   id: string
   title: string
-  area: {
+  area?: {
     id: string
     name: string
   }
