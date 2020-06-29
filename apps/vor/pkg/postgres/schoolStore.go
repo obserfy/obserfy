@@ -169,7 +169,7 @@ func (s SchoolStore) NewStudent(student cSchool.Student, classes []string, guard
 			DateOfEntry: student.DateOfEntry,
 			Note:        student.Note,
 			CustomId:    student.CustomId,
-			Active:      &student.Active,
+			Active:      student.Active,
 			ProfilePic:  student.ProfilePic,
 		}); err != nil {
 			return richErrors.Wrap(err, "failed to save new student")
