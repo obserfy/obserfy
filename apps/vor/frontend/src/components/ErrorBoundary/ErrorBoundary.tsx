@@ -17,6 +17,7 @@ export class ErrorBoundary extends Component<{}, State> {
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
     if (process.env.NODE_ENV !== "production") {
+      // eslint-disable-next-line no-console
       console.error(error)
     }
     Sentry.configureScope((scope) => {

@@ -20,7 +20,7 @@ func TestSubjectTestSuite(t *testing.T) {
 
 func (s *SubjectTestSuite) TestCreateSubject() {
 	t := s.T()
-	area, userId := s.saveNewArea()
+	area, userId := s.GenerateArea()
 
 	payload := struct {
 		Name   string `json:"name"`
@@ -67,7 +67,7 @@ func (s *SubjectTestSuite) TestCreateSubject() {
 // AddSubject should have name
 func (s *SubjectTestSuite) TestCreateSubjectWithNoName() {
 	t := s.T()
-	area, userId := s.saveNewArea()
+	area, userId := s.GenerateArea()
 
 	payload := struct {
 		Name   string `json:"name"`
@@ -79,7 +79,7 @@ func (s *SubjectTestSuite) TestCreateSubjectWithNoName() {
 
 func (s *SubjectTestSuite) TestCreateNewSubjectWithMaterials() {
 	t := s.T()
-	area, userId := s.saveNewArea()
+	area, userId := s.GenerateArea()
 
 	type materialPayload struct {
 		Name  string `json:"name"`
@@ -116,7 +116,7 @@ func (s *SubjectTestSuite) TestCreateNewSubjectWithMaterials() {
 
 func (s *SubjectTestSuite) TestCreateNewSubjectWithMaterialsWithRepeatedOrder() {
 	t := s.T()
-	area, userId := s.saveNewArea()
+	area, userId := s.GenerateArea()
 
 	type materialPayload struct {
 		Name  string `json:"name"`
@@ -149,7 +149,7 @@ func (s *SubjectTestSuite) TestCreateNewSubjectWithMaterialsWithRepeatedOrder() 
 
 func (s *SubjectTestSuite) TestDeleteSubject() {
 	t := s.T()
-	subject, userId := s.saveNewSubject()
+	subject, userId := s.GenerateSubject()
 	result := s.CreateRequest("DELETE", "/subjects/"+subject.Id, nil, &userId)
 	assert.Equal(t, http.StatusOK, result.Code)
 	var savedSubject postgres.Subject
@@ -161,7 +161,7 @@ func (s *SubjectTestSuite) TestDeleteSubject() {
 
 func (s *SubjectTestSuite) TestDeleteUnknownSubject() {
 	t := s.T()
-	school := s.SaveNewSchool()
+	school := s.GenerateSchool()
 	subjectId := uuid.New().String()
 	result := s.CreateRequest("DELETE", "/subjects/"+subjectId, nil, &school.Users[0].Id)
 	assert.Equal(t, http.StatusNotFound, result.Code)
@@ -169,7 +169,7 @@ func (s *SubjectTestSuite) TestDeleteUnknownSubject() {
 
 func (s *SubjectTestSuite) TestPutSubjectWithRemovedMaterial() {
 	t := s.T()
-	material, userId := s.saveNewMaterial()
+	material, userId := s.GenerateMaterial()
 
 	type materialPayload struct {
 		Name  string `json:"name"`
@@ -201,7 +201,7 @@ func (s *SubjectTestSuite) TestPutSubjectWithRemovedMaterial() {
 
 func (s *SubjectTestSuite) TestPutSubjectWithNewMaterial() {
 	t := s.T()
-	material, userId := s.saveNewMaterial()
+	material, userId := s.GenerateMaterial()
 
 	type materialPayload struct {
 		Id    string `json:"id"`
@@ -240,7 +240,7 @@ func (s *SubjectTestSuite) TestPutSubjectWithNewMaterial() {
 
 func (s *SubjectTestSuite) TestPutSubjectWithUpdatedMaterial() {
 	t := s.T()
-	material, userId := s.saveNewMaterial()
+	material, userId := s.GenerateMaterial()
 
 	type materialPayload struct {
 		Id    string `json:"id"`

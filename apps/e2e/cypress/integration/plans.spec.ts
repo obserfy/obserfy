@@ -1,4 +1,4 @@
-describe("Test class related features", () => {
+describe("Test lesson plan features", () => {
   const faker = require("faker")
 
   const className = faker.company.companyName()
@@ -30,7 +30,7 @@ describe("Test class related features", () => {
     )
   })
 
-  it("should be able to add, view, and delete class", () => {
+  it("should be able to edit, create, and delete plans.", () => {
     const firstName = "A Bold New Plan"
 
     const secondName = "A bolder plan"

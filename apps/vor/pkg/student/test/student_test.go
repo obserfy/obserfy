@@ -31,7 +31,7 @@ func TestStudentApi(t *testing.T) {
 	suite.Run(t, new(StudentTestSuite))
 }
 
-func (s *StudentTestSuite) SaveNewStudent(school postgres.School) *postgres.Student {
+func (s *StudentTestSuite) GenerateStudent(school postgres.School) *postgres.Student {
 	t := s.T()
 	gofakeit.Seed(time.Now().UnixNano())
 	newStudent := postgres.Student{
@@ -46,8 +46,8 @@ func (s *StudentTestSuite) SaveNewStudent(school postgres.School) *postgres.Stud
 }
 func (s *StudentTestSuite) TestPatchStudent() {
 	t := s.T()
-	newSchool := s.SaveNewSchool()
-	newStudent := s.SaveNewStudent(*newSchool)
+	newSchool := s.GenerateSchool()
+	newStudent := s.GenerateStudent(*newSchool)
 	payload := struct {
 		Name     string `json:"name"`
 		CustomId string `json:"customId"`
@@ -62,7 +62,7 @@ func (s *StudentTestSuite) TestPatchStudent() {
 		Select()
 	assert.NoError(t, err)
 
-	assert.Equal(t, modifiedStudent.Active, payload.Active)
+	assert.Equal(t, modifiedStudent.Active, &payload.Active)
 	assert.Equal(t, modifiedStudent.Name, payload.Name)
 	assert.Equal(t, modifiedStudent.CustomId, payload.CustomId)
 }
@@ -96,8 +96,8 @@ func (s *StudentTestSuite) SaveNewGuardian(school *postgres.School, student *pos
 
 func (s *StudentTestSuite) TestAddNewGuardian() {
 	t := s.T()
-	newSchool := s.SaveNewSchool()
-	newStudent := s.SaveNewStudent(*newSchool)
+	newSchool := s.GenerateSchool()
+	newStudent := s.GenerateStudent(*newSchool)
 	guardian := s.SaveNewGuardian(newSchool, nil)
 
 	payload := struct {
@@ -120,8 +120,8 @@ func (s *StudentTestSuite) TestAddNewGuardian() {
 
 func (s *StudentTestSuite) TestDeleteGuardian() {
 	t := s.T()
-	newSchool := s.SaveNewSchool()
-	newStudent := s.SaveNewStudent(*newSchool)
+	newSchool := s.GenerateSchool()
+	newStudent := s.GenerateStudent(*newSchool)
 	guardian := s.SaveNewGuardian(newSchool, newStudent)
 
 	s.CreateRequest("DELETE", "/"+newStudent.Id+"/guardianRelations/"+guardian.Id, nil, &newSchool.Users[0].Id)
@@ -139,5 +139,5 @@ func (s *StudentTestSuite) TestDeleteGuardian() {
 //func (s *StudentTestSuite) ReplaceGuardian() {
 //	t := s.T()
 //	newSchool := s.SaveNewSchool()
-//	newStudent := s.SaveNewStudent(*newSchool)
+//	newStudent := s.GenerateStudent(*newSchool)
 //}
