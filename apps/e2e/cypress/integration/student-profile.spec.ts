@@ -56,7 +56,7 @@ describe("test student profile page", () => {
 
     // Change student name
     studentName = "Jane Doe"
-    cy.contains("See Profile").click()
+    cy.contains("Profile").click()
     cy.get("[aria-label=edit-name]").click()
     cy.contains("label", "Name").find("input").clear().type(studentName)
     cy.contains("Save").click()
