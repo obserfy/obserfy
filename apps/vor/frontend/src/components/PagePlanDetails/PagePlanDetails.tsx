@@ -20,6 +20,7 @@ import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import TextArea from "../TextArea/TextArea"
 import useGetSchoolClasses from "../../api/classes/useGetSchoolClasses"
 import Chip from "../Chip/Chip"
+import { useGetCurriculumAreas } from "../../api/useGetCurriculumAreas"
 
 interface Props {
   id: string
@@ -54,19 +55,20 @@ export const PagePlanDetails: FC<Props> = ({ id }) => {
             lessonPlanId={id}
           />
           <ClassDataBox value={plan.data?.classId} lessonPlanId={id} />
+          <AreaDataBox value={plan.data?.areaId} lessonPlanId={id} />
         </Card>
+        <Button
+          variant="outline"
+          mx={2}
+          mt={3}
+          ml="auto"
+          onClick={() => setShowDeleteDialog(true)}
+          color="danger"
+        >
+          <Icon as={TrashIcon} m={0} mr={2} fill="danger" />
+          Delete
+        </Button>
       </Box>
-      <Button
-        variant="outline"
-        mx={2}
-        mt={3}
-        ml="auto"
-        onClick={() => setShowDeleteDialog(true)}
-        color="danger"
-      >
-        <Icon as={TrashIcon} m={0} mr={2} fill="danger" />
-        Delete
-      </Button>
       {showDeleteDialog && (
         <AlertDialog
           title="Delete plan?"
@@ -224,7 +226,7 @@ const ClassDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
   return (
     <>
       <DataBox
-        label="Related Class"
+        label="Class"
         value={classes.data?.find(({ id }) => id === value)?.name || "-"}
         onEditClick={() => setShowEditDialog(true)}
       />
@@ -257,6 +259,54 @@ const ClassDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
                   }
                 }}
                 isActive={id === selectedClass}
+              />
+            ))}
+          </Flex>
+        </Dialog>
+      )}
+    </>
+  )
+}
+
+const AreaDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
+  value,
+  lessonPlanId,
+}) => {
+  const classes = useGetCurriculumAreas()
+  const [showEditDialog, setShowEditDialog] = useState(false)
+  const [selectedArea, setSelectedArea] = useState(value)
+  const [mutate] = usePatchPlan(lessonPlanId)
+
+  return (
+    <>
+      <DataBox
+        label="Related Area"
+        value={classes.data?.find(({ id }) => id === value)?.name || "Other"}
+        onEditClick={() => setShowEditDialog(true)}
+      />
+      {showEditDialog && (
+        <Dialog>
+          <DialogHeader
+            title="Change Area"
+            onAcceptText="Save"
+            onCancel={() => setShowEditDialog(false)}
+            onAccept={async () => {
+              await mutate({ areaId: selectedArea })
+              setShowEditDialog(false)
+            }}
+          />
+          <Flex
+            sx={{ backgroundColor: "background", flexWrap: "wrap" }}
+            p={3}
+            pb={2}
+          >
+            {classes.data?.map(({ id, name }) => (
+              <Chip
+                key={id}
+                text={name}
+                activeBackground="primary"
+                onClick={() => setSelectedArea(id)}
+                isActive={id === selectedArea}
               />
             ))}
           </Flex>

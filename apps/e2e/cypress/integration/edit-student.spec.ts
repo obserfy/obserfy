@@ -36,7 +36,7 @@ describe("test student edit", () => {
     cy.contains("Save").click()
 
     cy.contains(studentName).click()
-    cy.contains("See Profile").click()
+    cy.contains("Profile").click()
 
     cy.get("[aria-label=edit-name]").click()
     cy.contains("label", "Name").find("input").clear().type(newName)

@@ -16,7 +16,7 @@ func NewRouter(server rest.Server, store Store) *chi.Mux {
 	r := chi.NewRouter()
 	r.Route("/{planId}", func(r chi.Router) {
 		r.Method("GET", "/", getLessonPlan(server, store))
-		r.Method("PATCH", "/", updateLessonPlan(server, store))
+		r.Method("PATCH", "/", patchLessonPlan(server, store))
 		r.Method("DELETE", "/", deleteLessonPlan(server, store))
 
 		r.Method("DELETE", "/file/{fileId}", deleteLessonPlanFile(server, store))
@@ -63,7 +63,7 @@ func getLessonPlan(server rest.Server, store Store) http.Handler {
 	})
 }
 
-func updateLessonPlan(server rest.Server, store Store) http.Handler {
+func patchLessonPlan(server rest.Server, store Store) http.Handler {
 	type reqBody struct {
 		Title       *string    `json:"title,omitempty"`
 		Description *string    `json:"description,omitempty"`

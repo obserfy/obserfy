@@ -7,6 +7,7 @@ interface PatchPlanPayload {
   description?: string
   classId?: string
   date?: Dayjs
+  areaId?: string
 }
 const usePatchPlan = (planId: string) => {
   const patchPlan = patchApi<PatchPlanPayload>("/plans", planId)

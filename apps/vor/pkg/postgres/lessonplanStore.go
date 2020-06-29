@@ -164,12 +164,10 @@ func (s LessonPlanStore) UpdateLessonPlan(planInput cLessonPlan.UpdatePlanData) 
 
 func (s LessonPlanStore) GetLessonPlan(planId string) (*cLessonPlan.LessonPlan, error) {
 	var plan LessonPlan
-
 	err := s.Model(&plan).
 		Relation("LessonPlanDetails").
 		Where("lesson_plan.id = ?", planId).
 		Select()
-
 	if err != nil {
 		if err == pg.ErrNoRows {
 			return nil, nil
