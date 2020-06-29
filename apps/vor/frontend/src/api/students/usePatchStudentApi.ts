@@ -7,7 +7,6 @@ import {
 import { patchApi } from "../fetchApi"
 
 interface UpdateStudentRequestBody {
-  id: string
   name?: string
   customId?: string
   dateOfBirth?: string

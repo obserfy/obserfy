@@ -254,6 +254,7 @@ func getStudent(s rest.Server, store Store) http.Handler {
 			DateOfEntry: student.DateOfEntry,
 			Guardians:   guardians,
 			Classes:     classes,
+			Active:      *student.Active,
 		}
 		if err := rest.WriteJson(w, response); err != nil {
 			return rest.NewWriteJsonError(err)
@@ -279,13 +280,13 @@ func patchStudent(s rest.Server, store Store) http.Handler {
 		DateOfEntry *time.Time      `json:"dateOfEntry"`
 		CustomId    string          `json:"customId"`
 		Gender      postgres.Gender `json:"gender"`
-		Active      bool            `json:"active"`
+		Active      *bool           `json:"active"`
 	}
 	type responseBody struct {
 		Id          string     `json:"id"`
 		Name        string     `json:"name"`
 		DateOfBirth *time.Time `json:"dateOfBirth,omitempty"`
-		Active      bool       `json:"active"`
+		Active      *bool      `json:"active"`
 	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		targetId := chi.URLParam(r, "studentId") // from a route like /users/{userID}
@@ -307,7 +308,6 @@ func patchStudent(s rest.Server, store Store) http.Handler {
 		newStudent.CustomId = requestBody.CustomId
 		newStudent.DateOfEntry = requestBody.DateOfEntry
 		newStudent.Active = requestBody.Active
-
 		if err := store.UpdateStudent(newStudent); err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Failed updating old student data", err}
 		}

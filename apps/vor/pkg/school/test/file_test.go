@@ -17,7 +17,7 @@ import (
 func (s *SchoolTestSuite) TestUploadFile() {
 	t := s.T()
 	gofakeit.Seed(time.Now().UnixNano())
-	school := s.SaveNewSchool()
+	school := s.GenerateSchool()
 
 	fileName := gofakeit.Name()
 	filePath := "testfile.txt"
@@ -66,16 +66,23 @@ func (s *SchoolTestSuite) TestUploadFile() {
 func (s *SchoolTestSuite) TestPatchFile() {
 	t := s.T()
 	gofakeit.Seed(time.Now().UnixNano())
+	// Generates new data and save it to db
 	file, userId := s.SaveNewFile()
 
+	// Setup payload
 	payload := struct {
 		Name string `json:"name"`
 	}{Name: gofakeit.Name()}
+
+	// Send request with payload
 	result := s.CreateRequest("PATCH", "/"+file.SchoolId+"/files/"+file.Id, payload, &userId)
 	assert.Equal(t, http.StatusNoContent, result.Code)
 
+	// Query the data from db
 	updatedFile := postgres.File{Id: file.Id}
 	err := s.DB.Model(&updatedFile).WherePK().Select()
+
+	// Assert data got updated properly.
 	assert.NoError(t, err)
 	assert.Equal(t, payload.Name, updatedFile.Name)
 }

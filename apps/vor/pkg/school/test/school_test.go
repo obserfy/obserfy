@@ -36,32 +36,10 @@ func TestSchool(t *testing.T) {
 	suite.Run(t, new(SchoolTestSuite))
 }
 
-func (s *SchoolTestSuite) SaveNewClass(school postgres.School) *postgres.Class {
-	t := s.T()
-	newClass := postgres.Class{
-		Id:        uuid.New().String(),
-		SchoolId:  school.Id,
-		School:    school,
-		Name:      gofakeit.Name(),
-		StartTime: time.Now(),
-		EndTime:   time.Now(),
-	}
-	newClass.Weekdays = []postgres.Weekday{
-		{newClass.Id, time.Sunday, newClass},
-		{newClass.Id, time.Thursday, newClass},
-		{newClass.Id, time.Friday, newClass},
-	}
-	err := s.DB.Insert(&newClass)
-	assert.NoError(t, err)
-	err = s.DB.Insert(&newClass.Weekdays)
-	assert.NoError(t, err)
-	return &newClass
-}
-
 func (s *SchoolTestSuite) SaveNewGuardian() (*postgres.Guardian, string) {
 	t := s.T()
 	gofakeit.Seed(time.Now().UnixNano())
-	newSchool := s.SaveNewSchool()
+	newSchool := s.GenerateSchool()
 	newGuardian := postgres.Guardian{
 		Id:       uuid.New().String(),
 		Name:     gofakeit.Name(),
@@ -76,41 +54,10 @@ func (s *SchoolTestSuite) SaveNewGuardian() (*postgres.Guardian, string) {
 	return &newGuardian, newSchool.Users[0].Id
 }
 
-func (s *SchoolTestSuite) SaveNewLessonPlan() (*postgres.LessonPlan, string) {
-	t := s.T()
-	gofakeit.Seed(time.Now().UnixNano())
-	newSchool := s.SaveNewSchool()
-	newClass := s.SaveNewClass(*newSchool)
-
-	title := gofakeit.Name()
-	description := gofakeit.Name()
-	details := postgres.LessonPlanDetails{
-		Id:             uuid.New().String(),
-		Title:          title,
-		Description:    &description,
-		ClassId:        newClass.Id,
-		Class:          *newClass,
-		Files:          nil,
-		RepetitionType: 0,
-	}
-	date := gofakeit.Date()
-	newLessonPlan := postgres.LessonPlan{
-		Id:                  uuid.New().String(),
-		Date:                &date,
-		LessonPlanDetailsId: details.Id,
-		LessonPlanDetails:   details,
-	}
-	err := s.DB.Insert(&details)
-	assert.NoError(t, err)
-	err = s.DB.Insert(&newLessonPlan)
-	assert.NoError(t, err)
-	return &newLessonPlan, newSchool.Users[0].Id
-}
-
 func (s *SchoolTestSuite) SaveNewFile() (*postgres.File, string) {
 	t := s.T()
 	gofakeit.Seed(time.Now().UnixNano())
-	newSchool := s.SaveNewSchool()
+	newSchool := s.GenerateSchool()
 
 	fileId := uuid.New().String()
 	fileKey := "files/" + newSchool.Id + "/" + fileId

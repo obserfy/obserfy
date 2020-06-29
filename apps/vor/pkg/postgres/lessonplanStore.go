@@ -113,6 +113,7 @@ func (s LessonPlanStore) UpdateLessonPlan(planInput cLessonPlan.UpdatePlanData) 
 		Select(); err != nil {
 		return 0, richErrors.Wrap(err, "failed to find related plan")
 	}
+
 	plan := LessonPlan{
 		Id:   planInput.Id,
 		Date: planInput.Date,
@@ -121,11 +122,15 @@ func (s LessonPlanStore) UpdateLessonPlan(planInput cLessonPlan.UpdatePlanData) 
 		Id:          originalPlan.LessonPlanDetailsId,
 		Description: planInput.Description,
 	}
+	// TODO: Aren't these nil checks something that will be handled by UpdateNotZero?
 	if planInput.Title != nil {
 		planDetails.Title = *planInput.Title
 	}
 	if planInput.AreaId != nil {
 		planDetails.AreaId = *planInput.AreaId
+	}
+	if planInput.MaterialId != nil {
+		planDetails.MaterialId = *planInput.MaterialId
 	}
 
 	rowsAffected := 0
@@ -138,7 +143,8 @@ func (s LessonPlanStore) UpdateLessonPlan(planInput cLessonPlan.UpdatePlanData) 
 			rowsAffected = rowsAffected + result.RowsAffected()
 		}
 
-		if planInput.Title != nil || planInput.Description != nil {
+		// Make sure that we're aren't doing an update with empty struct
+		if planInput.Title != nil || planInput.Description != nil || planInput.AreaId != nil || planInput.MaterialId != nil {
 			result, err := tx.Model(&planDetails).WherePK().UpdateNotZero()
 			if err != nil {
 				return richErrors.Wrap(err, "")
@@ -174,6 +180,8 @@ func (s LessonPlanStore) GetLessonPlan(planId string) (*cLessonPlan.LessonPlan, 
 		Title:       plan.LessonPlanDetails.Title,
 		Description: *plan.LessonPlanDetails.Description,
 		Date:        *plan.Date,
+		AreaId:      plan.LessonPlanDetails.AreaId,
+		MaterialId:  plan.LessonPlanDetails.MaterialId,
 		Repetition: &cLessonPlan.RepetitionPattern{
 			Type:    plan.LessonPlanDetails.RepetitionType,
 			EndDate: plan.LessonPlanDetails.RepetitionEndDate,
