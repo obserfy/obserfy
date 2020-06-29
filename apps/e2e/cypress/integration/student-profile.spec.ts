@@ -72,7 +72,9 @@ describe("test student profile page", () => {
     // Test changing status
     cy.contains("Set As Inactive", { matchCase: false }).click()
     cy.contains("Yes").click()
-    cy.contains("Inactive").should("be.visible")
+    cy.wait(100)
+    cy.get("[data-cy=active-button]").should("be.visible")
+    cy.get("[data-cy=inactive-button]").should("not.be.visible")
 
     const guardianName = faker.name.firstName()
     cy.get("[data-cy=edit-guardians]").click()
