@@ -6,6 +6,10 @@ import { Dayjs } from "../../dayjs"
 export interface Plans {
   id: string
   title: string
+  area?: {
+    id: string
+    name: string
+  }
 }
 function useGetPlans(date: Dayjs) {
   const schoolId = getSchoolId()

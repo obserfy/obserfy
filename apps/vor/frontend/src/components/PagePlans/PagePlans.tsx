@@ -78,12 +78,18 @@ export const PagePlans: FC<Props> = ({ date }) => {
             sx={{ display: "block", mx: [0, 3], mb: [0, 2] }}
           >
             <Card p={3} sx={{ borderRadius: [0, "default"] }}>
+              <Typography.Body sx={{ fontSize: 1, lineHeight: 1 }}>
+                {plan.title}
+              </Typography.Body>
               <Typography.Body
                 sx={{
-                  fontSize: 1,
+                  fontSize: 0,
+                  lineHeight: 1,
+                  color: "textMediumEmphasis",
                 }}
+                mt={2}
               >
-                {plan.title}
+                {plan.area ? plan.area.name : "Other"}
               </Typography.Body>
             </Card>
           </Link>
@@ -91,28 +97,12 @@ export const PagePlans: FC<Props> = ({ date }) => {
       })}
       <Link
         to={NEW_PLANS_URL(selectedDate)}
-        sx={{ display: "block", mx: [0, 3] }}
+        sx={{ display: "block", m: [3, 3] }}
       >
-        <Card
-          px={3}
-          py={2}
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            borderRadius: [0, "default"],
-          }}
-        >
-          <Icon as={PlusIcon} m={0} fill="primaryDark" />
-          <Typography.Body
-            ml={3}
-            sx={{
-              fontSize: 1,
-            }}
-            color="textMediumEmphasis"
-          >
-            Add plan
-          </Typography.Body>
-        </Card>
+        <Button variant="outline">
+          <Icon as={PlusIcon} m={0} mr={2} fill="onBackground" />
+          Add new plan
+        </Button>
       </Link>
     </Box>
   )
