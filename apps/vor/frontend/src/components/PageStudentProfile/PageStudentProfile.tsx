@@ -477,6 +477,7 @@ const SetStatusDataBox: FC<{
         ml="auto"
         onClick={() => setShowStatusDialog(true)}
         sx={{ color: active ? "warning" : undefined }}
+        data-cy={active ? "inactive-button" : "active-button"}
       >
         Set as {active ? "Inactive" : "Active"}
       </Button>
