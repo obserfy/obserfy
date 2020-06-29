@@ -303,12 +303,6 @@ exports[`PagePlans should render correctly 1`] = `
   margin: 16px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-9 {
-    margin: 16px;
-  }
-}
-
 .emotion-8 {
   box-sizing: border-box;
   margin: 0;
@@ -360,6 +354,7 @@ exports[`PagePlans should render correctly 1`] = `
   justify-content: center;
   border: 1px solid;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  margin-left: auto;
 }
 
 .emotion-8:disabled {

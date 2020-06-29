@@ -31,9 +31,6 @@ export const ObservationCard: FC<Props> = ({
       </Typography.Body>
       {observation.longDesc && (
         <Typography.Body
-          sx={{
-            fontSize: 1,
-          }}
           mt={2}
           mx={3}
           mb={3}
@@ -45,11 +42,7 @@ export const ObservationCard: FC<Props> = ({
         </Typography.Body>
       )}
       <Flex px={2} sx={{ alignItems: "center" }} mb={2}>
-        <Flex
-          sx={{
-            flexWrap: "wrap",
-          }}
-        >
+        <Flex sx={{ flexWrap: "wrap" }}>
           <Pill
             ml={2}
             backgroundColor={category.color}
@@ -70,18 +63,12 @@ export const ObservationCard: FC<Props> = ({
           color="danger"
           data-cy="delete-observation"
           onClick={() => onDelete(observation)}
-          sx={{
-            fontSize: 0,
-          }}
         >
           delete
         </Button>
         <Button
           variant="secondary"
           data-cy="edit-observation"
-          sx={{
-            fontSize: 0,
-          }}
           onClick={() => onEdit(observation)}
         >
           Edit

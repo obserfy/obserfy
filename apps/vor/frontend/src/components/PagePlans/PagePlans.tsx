@@ -95,11 +95,8 @@ export const PagePlans: FC<Props> = ({ date }) => {
           </Link>
         )
       })}
-      <Link
-        to={NEW_PLANS_URL(selectedDate)}
-        sx={{ display: "block", m: [3, 3] }}
-      >
-        <Button variant="outline">
+      <Link to={NEW_PLANS_URL(selectedDate)} sx={{ display: "block", m: 3 }}>
+        <Button variant="outline" sx={{ ml: "auto" }}>
           <Icon as={PlusIcon} m={0} mr={2} fill="onBackground" />
           Add new plan
         </Button>
