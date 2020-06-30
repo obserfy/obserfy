@@ -157,6 +157,13 @@ export const PageNewPlan: FC<Props> = ({ chosenDate }) => {
               description,
               classId,
               date,
+              repetition:
+                repetition === 0
+                  ? undefined
+                  : {
+                      type: repetition,
+                      endDate,
+                    },
             })
             if (result.ok) {
               await navigate(ALL_PLANS_URL(date))

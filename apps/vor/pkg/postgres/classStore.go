@@ -26,6 +26,7 @@ func (s ClassStore) CheckPermission(userId string, classId string) (bool, error)
 	}
 	return true, nil
 }
+
 func (s ClassStore) GetClassSession(classId string) ([]class.ClassSession, error) {
 
 	var attendance []Attendance
@@ -67,6 +68,7 @@ func (s ClassStore) GetClassSession(classId string) ([]class.ClassSession, error
 	}
 	return session, nil
 }
+
 func (s ClassStore) UpdateClass(id string, name string, weekdays []time.Weekday, startTime time.Time, endTime time.Time) (int, error) {
 	dbWeekdays := make([]Weekday, len(weekdays))
 	for i, weekday := range weekdays {
