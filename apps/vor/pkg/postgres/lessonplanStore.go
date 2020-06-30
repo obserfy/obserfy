@@ -63,9 +63,12 @@ func (s LessonPlanStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLes
 			if currentDate.After(planInput.Repetition.EndDate) {
 				break
 			}
+			// Create a separate date value to be referenced by each plan,
+			// since currentDate will keep getting updated
+			planFinalDate := currentDate
 			plans = append(plans, LessonPlan{
 				Id:                  uuid.New().String(),
-				Date:                &currentDate,
+				Date:                &planFinalDate,
 				LessonPlanDetailsId: planDetails.Id,
 			})
 		}
@@ -93,7 +96,6 @@ func (s LessonPlanStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLes
 		}
 		return nil
 	}); err != nil {
-
 		return nil, err
 	}
 
