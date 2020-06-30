@@ -37,6 +37,7 @@ type (
 		Repetition  *RepetitionPattern
 		AreaId      string
 		MaterialId  string
+		Students    []string
 	}
 
 	UpdatePlanData struct {

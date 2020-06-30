@@ -268,6 +268,7 @@ type (
 		Students   []Student `pg:"many2many:lesson_plan_details_to_students,joinFK:student_id"`
 	}
 
+	// Each plan can have some more additional students attached to it.
 	LessonPlanDetailsToStudents struct {
 		LessonPlanDetails   LessonPlanDetails
 		LessonPlanDetailsId string `pg:"type:uuid,on_delete:CASCADE"`
