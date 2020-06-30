@@ -59,6 +59,7 @@ func (s *ClassTestSuite) TestPostNewLessonPlanWithRepetition() {
 		name    string
 		payload postNewPlanPayload
 		count   int
+		dates   []time.Time
 	}{
 		{
 			"none",
@@ -75,6 +76,7 @@ func (s *ClassTestSuite) TestPostNewLessonPlanWithRepetition() {
 				},
 			},
 			1,
+			[]time.Time{date},
 		},
 		{
 			"daily",
@@ -91,6 +93,35 @@ func (s *ClassTestSuite) TestPostNewLessonPlanWithRepetition() {
 				},
 			},
 			4,
+			[]time.Time{
+				date,
+				date.AddDate(0, 0, 1),
+				date.AddDate(0, 0, 2),
+				date.AddDate(0, 0, 3),
+			},
+		},
+		{
+			"weekly",
+			postNewPlanPayload{
+				Title:       gofakeit.Name(),
+				Description: gofakeit.Name(),
+				Date:        date,
+				Repetition: &struct {
+					Type    int       `json:"type"`
+					EndDate time.Time `json:"endDate"`
+				}{
+					Type:    lessonplan.RepetitionWeekly,
+					EndDate: date.Add(32 * 24 * time.Hour),
+				},
+			},
+			5,
+			[]time.Time{
+				date,
+				date.AddDate(0, 0, 7),
+				date.AddDate(0, 0, 14),
+				date.AddDate(0, 0, 21),
+				date.AddDate(0, 0, 28),
+			},
 		},
 		{
 			"monthly",
@@ -107,6 +138,10 @@ func (s *ClassTestSuite) TestPostNewLessonPlanWithRepetition() {
 				},
 			},
 			2,
+			[]time.Time{
+				date,
+				date.AddDate(0, 1, 0),
+			},
 		},
 	}
 	for _, test := range tests {
@@ -121,13 +156,20 @@ func (s *ClassTestSuite) TestPostNewLessonPlanWithRepetition() {
 				Select()
 			assert.NoError(t, err)
 			assert.Len(t, plans.LessonPlans, test.count)
+
+			for i := range test.dates {
+				assert.Equal(t, test.dates[i].Unix(), plans.LessonPlans[i].Date.Unix())
+			}
 		})
 	}
 }
 
 func (s *ClassTestSuite) TestPostNewLessonPlanWithCurriculumData() {
 	t := s.T()
-	class := s.SaveNewClass()
+	material, userId := s.GenerateMaterial()
+	area := material.Subject.Area
+	class := s.GenerateClass(area.Curriculum.Schools[0])
+
 	gofakeit.Seed(time.Now().UnixNano())
 	date := gofakeit.Date()
 
@@ -149,6 +191,8 @@ func (s *ClassTestSuite) TestPostNewLessonPlanWithCurriculumData() {
 					Type:    lessonplan.RepetitionNone,
 					EndDate: date.Add(32 * 24 * time.Hour),
 				},
+				AreaId:     area.Id,
+				MaterialId: material.Id,
 			},
 			1,
 		},
@@ -165,6 +209,8 @@ func (s *ClassTestSuite) TestPostNewLessonPlanWithCurriculumData() {
 					Type:    lessonplan.RepetitionDaily,
 					EndDate: date.Add(3 * 24 * time.Hour),
 				},
+				AreaId:     area.Id,
+				MaterialId: material.Id,
 			},
 			4,
 		},
@@ -181,13 +227,15 @@ func (s *ClassTestSuite) TestPostNewLessonPlanWithCurriculumData() {
 					Type:    lessonplan.RepetitionMonthly,
 					EndDate: date.Add(32 * 24 * time.Hour),
 				},
+				AreaId:     area.Id,
+				MaterialId: material.Id,
 			},
 			2,
 		},
 	}
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			result := s.CreateRequest("POST", "/"+class.Id+"/plans", test.payload, nil)
+			result := s.CreateRequest("POST", "/"+class.Id+"/plans", test.payload, &userId)
 			assert.Equal(t, http.StatusCreated, result.Code)
 
 			var plans postgres.LessonPlanDetails
@@ -197,6 +245,8 @@ func (s *ClassTestSuite) TestPostNewLessonPlanWithCurriculumData() {
 				Select()
 			assert.NoError(t, err)
 			assert.Len(t, plans.LessonPlans, test.count)
+			assert.Equal(t, plans.AreaId, test.payload.AreaId)
+			assert.Equal(t, plans.MaterialId, test.payload.MaterialId)
 		})
 	}
 }
