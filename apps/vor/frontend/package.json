@@ -47,7 +47,7 @@
     "use-immer": "0.4.0"
   },
   "devDependencies": {
-    "@babel/preset-typescript": "7.10.1",
+    "@babel/preset-typescript": "7.10.4",
     "@istanbuljs/nyc-config-typescript": "1.0.1",
     "@storybook/addon-a11y": "5.3.19",
     "@storybook/addon-actions": "5.3.19",
