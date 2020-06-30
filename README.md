@@ -31,14 +31,11 @@ This is the monorepo of [Obserfy](https://obserfy.com). This repo contains every
 
 **Obserfy aims to empower teachers and schools to provide high-quality education to more children by simplifying and automating as much of their works as possible.** Our software should be fast, simple, and accessible. It should get out of the way of the teachers, allowing them to focus on understanding and planning the education of their students.
 
-
 ## Codebase
 
 ### Folder structure
 
 ```sh
-packages/
-|--design-tokens  # Contains design tokens used throughout our products, for consistency
 apps/
 |--e2e            # Our e2e tests
 |--freyr          # Our landing page powered by gatsby

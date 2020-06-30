@@ -135,7 +135,7 @@ export const PageStudentOverview: FC<Props> = ({ id }) => {
       <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={5}>
         <BackNavigation text="Home" to="/dashboard/observe" />
         <Flex sx={{ alignItems: "start" }} mx={3} mb={4} mt={0}>
-          <Typography.H4 sx={{ wordWrap: "break-word" }} lineHeight={1.4}>
+          <Typography.H4 sx={{ wordWrap: "break-word", lineHeight: 1.6 }}>
             {student.data?.name || (
               <LoadingPlaceholder sx={{ width: "24rem", height: 60 }} />
             )}
@@ -148,7 +148,7 @@ export const PageStudentOverview: FC<Props> = ({ id }) => {
             to={`/dashboard/observe/students/profile?id=${id}`}
           >
             <Button data-cy="edit" sx={{ minWidth: 43 }} variant="outline">
-              See Profile
+              Profile
             </Button>
           </Link>
           <Link
@@ -157,7 +157,7 @@ export const PageStudentOverview: FC<Props> = ({ id }) => {
           >
             <Button sx={{ width: "100%" }}>
               <Icon as={PlusIcon} m={0} mr={2} fill="onPrimary" />
-              Add Observation
+              Observation
             </Button>
           </Link>
         </Flex>
@@ -181,7 +181,7 @@ export const PageStudentOverview: FC<Props> = ({ id }) => {
             <ObservationLoadingPlaceholder />
           )}
         </Box>
-        <Box py={3} mb={1}>
+        <Box mb={1}>
           <StudentProgressSummaryCard studentId={id} />
         </Box>
       </Box>
@@ -211,7 +211,7 @@ export const PageStudentOverview: FC<Props> = ({ id }) => {
 }
 
 const ObservationLoadingPlaceholder: FC = () => (
-  <Box>
+  <Box mt={4}>
     <LoadingPlaceholder
       mb={2}
       sx={{

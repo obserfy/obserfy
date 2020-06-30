@@ -7,6 +7,7 @@ export interface PlanDetails {
   description: string
   classId: string
   date: string
+  areaId?: string
 }
 const useGetPlan = (id: string) => {
   const getPlan = fetchApi<PlanDetails>(`/plans/${id}`)

@@ -132,6 +132,9 @@ func (s LessonPlanStore) UpdateLessonPlan(planInput cLessonPlan.UpdatePlanData) 
 	if planInput.MaterialId != nil {
 		planDetails.MaterialId = *planInput.MaterialId
 	}
+	if planInput.ClassId != nil {
+		planDetails.ClassId = *planInput.ClassId
+	}
 
 	rowsAffected := 0
 	if err := s.RunInTransaction(func(tx *pg.Tx) error {
@@ -144,7 +147,7 @@ func (s LessonPlanStore) UpdateLessonPlan(planInput cLessonPlan.UpdatePlanData) 
 		}
 
 		// Make sure that we're aren't doing an update with empty struct
-		if planInput.Title != nil || planInput.Description != nil || planInput.AreaId != nil || planInput.MaterialId != nil {
+		if planInput.Title != nil || planInput.Description != nil || planInput.AreaId != nil || planInput.MaterialId != nil || planInput.ClassId != nil {
 			result, err := tx.Model(&planDetails).WherePK().UpdateNotZero()
 			if err != nil {
 				return richErrors.Wrap(err, "")
@@ -161,12 +164,10 @@ func (s LessonPlanStore) UpdateLessonPlan(planInput cLessonPlan.UpdatePlanData) 
 
 func (s LessonPlanStore) GetLessonPlan(planId string) (*cLessonPlan.LessonPlan, error) {
 	var plan LessonPlan
-
 	err := s.Model(&plan).
 		Relation("LessonPlanDetails").
 		Where("lesson_plan.id = ?", planId).
 		Select()
-
 	if err != nil {
 		if err == pg.ErrNoRows {
 			return nil, nil

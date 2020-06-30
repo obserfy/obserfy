@@ -21,8 +21,8 @@ export const PagePlans: FC<Props> = ({ date }) => {
 
   return (
     <Box sx={{ maxWidth: "maxWidth.sm" }} mx="auto">
-      <Flex sx={{ alignItems: "center" }} mx={3} my={3}>
-        <Typography.Body sx={{ fontSize: 1 }}>
+      <Flex sx={{ alignItems: "center" }} px={3} pt={3} pb={2}>
+        <Typography.Body sx={{ fontWeight: "bold", fontSize: 1 }}>
           {selectedDate.format("ddd, DD MMM 'YY")}
         </Typography.Body>
         <Button
@@ -78,12 +78,12 @@ export const PagePlans: FC<Props> = ({ date }) => {
             sx={{ display: "block", mx: [0, 3], mb: [0, 2] }}
           >
             <Card p={3} sx={{ borderRadius: [0, "default"] }}>
-              <Typography.Body sx={{ fontSize: 1, lineHeight: 1 }}>
+              <Typography.Body sx={{ lineHeight: 1 }}>
                 {plan.title}
               </Typography.Body>
               <Typography.Body
                 sx={{
-                  fontSize: 0,
+                  fontSize: 1,
                   lineHeight: 1,
                   color: "textMediumEmphasis",
                 }}
@@ -95,11 +95,8 @@ export const PagePlans: FC<Props> = ({ date }) => {
           </Link>
         )
       })}
-      <Link
-        to={NEW_PLANS_URL(selectedDate)}
-        sx={{ display: "block", m: [3, 3] }}
-      >
-        <Button variant="outline">
+      <Link to={NEW_PLANS_URL(selectedDate)} sx={{ display: "block", m: 3 }}>
+        <Button variant="outline" sx={{ ml: "auto" }}>
           <Icon as={PlusIcon} m={0} mr={2} fill="onBackground" />
           Add new plan
         </Button>

@@ -27,10 +27,10 @@ exports[`PagePlans should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  margin-left: 16px;
-  margin-right: 16px;
-  margin-top: 16px;
-  margin-bottom: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 16px;
+  padding-bottom: 8px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -52,6 +52,7 @@ exports[`PagePlans should render correctly 1`] = `
   line-height: 3rem;
   text-rendering: optimizeLegibility;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  font-weight: bold;
   font-size: 14px;
 }
 
@@ -303,12 +304,6 @@ exports[`PagePlans should render correctly 1`] = `
   margin: 16px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-9 {
-    margin: 16px;
-  }
-}
-
 .emotion-8 {
   box-sizing: border-box;
   margin: 0;
@@ -360,6 +355,7 @@ exports[`PagePlans should render correctly 1`] = `
   justify-content: center;
   border: 1px solid;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  margin-left: auto;
 }
 
 .emotion-8:disabled {
