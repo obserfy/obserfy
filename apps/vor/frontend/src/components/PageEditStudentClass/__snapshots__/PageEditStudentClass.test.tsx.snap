@@ -130,7 +130,7 @@ exports[`PageEditStudentClass should render correctly 1`] = `
   min-width: 0;
   overflow: auto;
   background-color: var(--theme-ui-colors-surface,#fff);
-  border-radius: 8px;
+  border-radius: 6px;
   box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
   margin-bottom: 8px;
   margin-left: 0;
@@ -147,7 +147,7 @@ exports[`PageEditStudentClass should render correctly 1`] = `
 
 @media screen and (min-width:40em) {
   .emotion-7 {
-    border-radius: 8px;
+    border-radius: 6px;
   }
 }
 
@@ -295,7 +295,7 @@ exports[`PageEditStudentClass should render correctly 1`] = `
   border-radius: 4px;
   color: inherit;
   background-color: transparent;
-  border-radius: 8px;
+  border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));

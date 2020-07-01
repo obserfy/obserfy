@@ -178,7 +178,7 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   border-radius: 4px;
   color: inherit;
   background-color: transparent;
-  border-radius: 8px;
+  border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
@@ -244,7 +244,7 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   border-radius: 4px;
   color: inherit;
   background-color: transparent;
-  border-radius: 8px;
+  border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
@@ -327,7 +327,7 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 6px;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   border-width: 1px;
   border-style: solid;
@@ -380,7 +380,7 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   font-weight: bold;
   color: var(--theme-ui-colors-onPrimary,#000);
   background-color: var(--theme-ui-colors-primary,#00e399);
-  border-radius: 8px;
+  border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
   transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);

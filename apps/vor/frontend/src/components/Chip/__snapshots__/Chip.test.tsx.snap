@@ -28,7 +28,7 @@ exports[`Chip should render correctly 1`] = `
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 6px;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   border-width: 1px;
   border-style: solid;

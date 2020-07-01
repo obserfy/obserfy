@@ -158,7 +158,7 @@ const theme: Theme = {
     },
   },
   radii: {
-    default: 8,
+    default: 6,
     circle: 99999,
   },
   shadows: {
