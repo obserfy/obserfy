@@ -43,7 +43,7 @@ exports[`PageStudentOverview should render correctly 1`] = `
   }
 }
 
-.emotion-23 {
+.emotion-22 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -51,12 +51,12 @@ exports[`PageStudentOverview should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-23 {
+  .emotion-22 {
     font-size: 20px;
   }
 }
 
-.emotion-22 {
+.emotion-21 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -361,7 +361,7 @@ exports[`PageStudentOverview should render correctly 1`] = `
   margin-right: auto;
   padding-top: 32px;
   padding-left: 16px;
-  padding-right: 8px;
+  padding-right: 16px;
   margin-bottom: 4px;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   line-height: 1;
@@ -408,13 +408,6 @@ exports[`PageStudentOverview should render correctly 1`] = `
   }
 }
 
-.emotion-21 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  margin-bottom: 4px;
-}
-
 .emotion-20 {
   box-sizing: border-box;
   margin: 0;
@@ -441,10 +434,10 @@ exports[`PageStudentOverview should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-23"
+    class="emotion-22"
   >
     <div
-      class="emotion-22"
+      class="emotion-21"
     >
       <a
         href="/dashboard/observe"
@@ -528,15 +521,11 @@ exports[`PageStudentOverview should render correctly 1`] = `
         </div>
       </div>
       <div
-        class="emotion-21"
+        class="emotion-20"
       >
         <div
-          class="emotion-20"
-        >
-          <div
-            class="emotion-19"
-          />
-        </div>
+          class="emotion-19"
+        />
       </div>
     </div>
   </div>
