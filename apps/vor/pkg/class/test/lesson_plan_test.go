@@ -172,8 +172,7 @@ func (s *ClassTestSuite) TestPostNewLessonPlanWithCurriculumData() {
 	school := area.Curriculum.Schools[0]
 	class := s.GenerateClass(school)
 
-	class := s.GenerateClass(school)
-	student := s.GenerateStudent(school)
+	student := s.GenerateStudent(&school)
 
 	gofakeit.Seed(time.Now().UnixNano())
 	date := gofakeit.Date()
@@ -198,7 +197,7 @@ func (s *ClassTestSuite) TestPostNewLessonPlanWithCurriculumData() {
 				},
 				AreaId:     area.Id,
 				MaterialId: material.Id,
-				Students: []string{student.Id},
+				Students:   []string{student.Id},
 			},
 			1,
 		},
@@ -217,7 +216,7 @@ func (s *ClassTestSuite) TestPostNewLessonPlanWithCurriculumData() {
 				},
 				AreaId:     area.Id,
 				MaterialId: material.Id,
-				Students: []string{student.Id},
+				Students:   []string{student.Id},
 			},
 			4,
 		},
@@ -236,7 +235,7 @@ func (s *ClassTestSuite) TestPostNewLessonPlanWithCurriculumData() {
 				},
 				AreaId:     area.Id,
 				MaterialId: material.Id,
-				Students: []string{student.Id},
+				Students:   []string{student.Id},
 			},
 			2,
 		},
