@@ -33,10 +33,10 @@ export const PageStudentPlans: FC<Props> = ({ studentId, date }) => {
         to={STUDENT_OVERVIEW_PAGE_URL(studentId)}
         text="Student Overview"
       />
-      <Typography.H5 mx={3} color="textDisabled">
+      <Typography.H5 mx={3} mt={3} color="textDisabled">
         {student.data?.name}
       </Typography.H5>
-      <Typography.H5 mx={3} mb={3}>
+      <Typography.H5 mx={3} mb={4}>
         Plans
       </Typography.H5>
       <Flex sx={{ alignItems: "center" }} px={3} pb={2}>
