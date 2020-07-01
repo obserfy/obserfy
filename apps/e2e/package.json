@@ -37,6 +37,6 @@
     "typecheck": "cd cypress && tsc --noemit"
   },
   "dependencies": {
-    "typescript": "3.9.5"
+    "typescript": "3.9.6"
   }
 }
