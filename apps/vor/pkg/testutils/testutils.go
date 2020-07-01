@@ -115,6 +115,31 @@ func (s *BaseTestSuite) GenerateSchool() *postgres.School {
 	return &newSchool
 }
 
+func (s *BaseTestSuite) GenerateStudent(school *postgres.School) *postgres.Student {
+	t := s.T()
+	if school == nil {
+		school = s.GenerateSchool()
+	}
+	dob := gofakeit.Date()
+	dateOfEntry := gofakeit.Date()
+	active := true
+	student := postgres.Student{
+		Id:          uuid.New().String(),
+		Name:        gofakeit.Name(),
+		SchoolId:    school.Id,
+		School:      *school,
+		DateOfBirth: &dob,
+		DateOfEntry: &dateOfEntry,
+		Note:        gofakeit.Name(),
+		CustomId:    gofakeit.Name(),
+		Active:      &active,
+		ProfilePic:  "",
+	}
+	err := s.DB.Insert(&student)
+	assert.NoError(t, err)
+	return &student
+}
+
 func (s *BaseTestSuite) GenerateMaterial() (postgres.Material, string) {
 	subject, userId := s.GenerateSubject()
 

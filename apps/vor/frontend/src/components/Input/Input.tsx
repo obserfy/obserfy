@@ -51,7 +51,7 @@ export const Input: FC<Props> = ({
           <Icon
             as={icon}
             m={0}
-            mr={-40}
+            mr={-36}
             sx={{ width: 24, height: 24, zIndex: 2 }}
             ml={3}
           />

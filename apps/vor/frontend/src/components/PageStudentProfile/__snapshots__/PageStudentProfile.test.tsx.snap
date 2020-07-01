@@ -39,7 +39,7 @@ exports[`PageStudentProfile should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   margin-bottom: 16px;
-  border-radius: 8px;
+  border-radius: 6px;
   -webkit-animation: 1s ease-in-out 0s infinite animation-0;
   animation: 1s ease-in-out 0s infinite animation-0;
   width: 100%;

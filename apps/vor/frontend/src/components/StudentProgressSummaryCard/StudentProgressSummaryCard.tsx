@@ -153,7 +153,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
         mx={[0, 3]}
       >
         <Typography.H6 px={3} pt={3} pb={2}>
-          Progress
+          Curriculum Progress
         </Typography.H6>
         <Tab
           small

@@ -188,6 +188,7 @@ func postNewLessonPlan(server rest.Server, store lessonplan.Store) http.Handler 
 			Type    int       `json:"type" validate:"oneof=0 1 2 3"`
 			EndDate time.Time `json:"endDate" validate:"required"`
 		} `json:"repetition,omitempty"`
+		Students []string `json:"students"`
 	}
 
 	type resBody struct {
@@ -220,6 +221,7 @@ func postNewLessonPlan(server rest.Server, store lessonplan.Store) http.Handler 
 			Date:        body.Date,
 			AreaId:      body.AreaId,
 			MaterialId:  body.MaterialId,
+			Students:    body.Students,
 		}
 		if body.Repetition != nil {
 			planInput.Repetition = &lessonplan.RepetitionPattern{

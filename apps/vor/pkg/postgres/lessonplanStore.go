@@ -82,6 +82,12 @@ func (s LessonPlanStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLes
 		}
 	}
 
+	studentRelations := make([]LessonPlanDetailsToStudents, len(planInput.Students))
+	for i := range planInput.Students {
+		studentRelations[i].StudentId = planInput.Students[i]
+		studentRelations[i].LessonPlanDetailsId = planDetails.Id
+	}
+
 	if err := s.RunInTransaction(func(tx *pg.Tx) error {
 		if err := tx.Insert(&planDetails); err != nil {
 			return richErrors.Wrap(err, "failed to save lesson plan details")
@@ -91,6 +97,11 @@ func (s LessonPlanStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLes
 		}
 		if len(fileRelations) > 0 {
 			if err := tx.Insert(&fileRelations); err != nil {
+				return richErrors.Wrap(err, "failed to save file relations")
+			}
+		}
+		if len(studentRelations) > 0 {
+			if err := tx.Insert(&studentRelations); err != nil {
 				return richErrors.Wrap(err, "failed to save file relations")
 			}
 		}

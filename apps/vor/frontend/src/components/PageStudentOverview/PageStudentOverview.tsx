@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { FC, Fragment, useState } from "react"
 import { navigate } from "gatsby"
-import { jsx, Flex, Box, Button } from "theme-ui"
+import { Box, Button, Flex, jsx } from "theme-ui"
 import { Link } from "../Link/Link"
 import { useGetStudent } from "../../api/useGetStudent"
 
@@ -20,23 +20,60 @@ import StudentProgressSummaryCard from "../StudentProgressSummaryCard/StudentPro
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import { ReactComponent as PrevIcon } from "../../icons/arrow-back.svg"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
-import { ALL_OBSERVATIONS_PAGE_URL } from "../../routes"
+import {
+  ALL_OBSERVATIONS_PAGE_URL,
+  NEW_OBSERVATION_URL,
+  STUDENT_PROFILE_URL,
+} from "../../routes"
 import dayjs from "../../dayjs"
 
 interface Props {
   id: string
 }
 export const PageStudentOverview: FC<Props> = ({ id }) => {
-  const [isEditingObservation, setIsEditingObservation] = useState(false)
-  const [isDeletingObservation, setIsDeletingObservation] = useState(false)
+  const student = useGetStudent(id)
+  return (
+    <Fragment>
+      <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={5}>
+        <BackNavigation text="Home" to="/dashboard/observe" />
+        <Flex sx={{ alignItems: "start" }} mx={3} mb={4} mt={0}>
+          <Typography.H4 sx={{ wordWrap: "break-word", lineHeight: 1.6 }}>
+            {student.data?.name || (
+              <LoadingPlaceholder sx={{ width: "24rem", height: 60 }} />
+            )}
+          </Typography.H4>
+          <Spacer />
+        </Flex>
+        <Flex m={3} mb={2}>
+          <Link sx={{ mr: 2 }} to={STUDENT_PROFILE_URL(id)}>
+            <Button data-cy="edit" sx={{ minWidth: 43 }} variant="outline">
+              Profile
+            </Button>
+          </Link>
+          <Link sx={{ width: "100%" }} to={NEW_OBSERVATION_URL(id)}>
+            <Button sx={{ width: "100%" }}>
+              <Icon as={PlusIcon} m={0} mr={2} fill="onPrimary" />
+              Observation
+            </Button>
+          </Link>
+        </Flex>
+        <ObservationSection studentId={id} />
+        <StudentProgressSummaryCard studentId={id} />
+      </Box>
+    </Fragment>
+  )
+}
+
+const ObservationSection: FC<{ studentId: string }> = ({ studentId }) => {
+  const { data, status, refetch } = useGetObservations(studentId)
   const [targetObservation, setTargetObservation] = useState<Observation>()
   const [selectedDate, setSelectedDate] = useState(0)
-  const student = useGetStudent(id)
-  const observations = useGetObservations(id)
+  const [isEditingObservation, setIsEditingObservation] = useState(false)
+  const [isDeletingObservation, setIsDeletingObservation] = useState(false)
 
   const dates = [
     ...new Set(
-      observations.data?.map(({ createdDate }) =>
+      data?.map(({ createdDate }) =>
         dayjs(createdDate ?? "")
           .startOf("day")
           .toISOString()
@@ -48,13 +85,11 @@ export const PageStudentOverview: FC<Props> = ({ id }) => {
     dayjs.duration(dayjs(dates?.[selectedDate] ?? "").diff(dayjs())).asDays()
   )
 
-  const listOfObservations = observations.data
+  const listOfObservations = data
     ?.filter((observation) =>
       dayjs(observation.createdDate ?? "").isSame(dates[selectedDate], "day")
     )
-    ?.sort((a, b) => {
-      return parseInt(a.categoryId, 10) - parseInt(b.categoryId, 10)
-    })
+    ?.sort((a, b) => parseInt(a.categoryId, 10) - parseInt(b.categoryId, 10))
     ?.map((observation) => (
       <ObservationCard
         key={observation.id}
@@ -70,29 +105,23 @@ export const PageStudentOverview: FC<Props> = ({ id }) => {
       />
     ))
 
-  const emptyObservationPlaceholder = observations.status !== "loading" &&
-    (observations.data ?? []).length === 0 && (
+  const emptyObservationPlaceholder = status !== "loading" &&
+    (data ?? []).length === 0 && (
       <EmptyListPlaceholder
         mx={[0, 3]}
+        my={3}
         sx={{ borderRadius: [0, "default"] }}
         text="No observation have been added yet"
         callToActionText="new observation"
-        onActionClick={() =>
-          navigate(
-            `/dashboard/observe/students/observations/new?studentId=${id}`
-          )
-        }
+        onActionClick={() => navigate(NEW_OBSERVATION_URL(studentId))}
       />
     )
 
-  const dateSelector = (observations.data?.length ?? 0) > 0 && (
+  const dateSelector = (data?.length ?? 0) > 0 && (
     <Flex sx={{ alignItems: "center" }} px={3} mb={2}>
       <Typography.Body
         color="textMediumEmphasis"
-        sx={{
-          fontSize: 1,
-          textTransform: "capitalize",
-        }}
+        sx={{ fontSize: 1, textTransform: "capitalize" }}
       >
         {/* eslint-disable-next-line no-nested-ternary */}
         {selectedDateDifference > -3
@@ -122,7 +151,7 @@ export const PageStudentOverview: FC<Props> = ({ id }) => {
       >
         <Icon as={NextIcon} m={0} />
       </Button>
-      <Link to={ALL_OBSERVATIONS_PAGE_URL(id)}>
+      <Link to={ALL_OBSERVATIONS_PAGE_URL(studentId)}>
         <Button variant="outline" py={1} px={3}>
           All
         </Button>
@@ -132,65 +161,21 @@ export const PageStudentOverview: FC<Props> = ({ id }) => {
 
   return (
     <Fragment>
-      <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={5}>
-        <BackNavigation text="Home" to="/dashboard/observe" />
-        <Flex sx={{ alignItems: "start" }} mx={3} mb={4} mt={0}>
-          <Typography.H4 sx={{ wordWrap: "break-word", lineHeight: 1.6 }}>
-            {student.data?.name || (
-              <LoadingPlaceholder sx={{ width: "24rem", height: 60 }} />
-            )}
-          </Typography.H4>
-          <Spacer />
-        </Flex>
-        <Flex m={3} mb={2}>
-          <Link
-            sx={{ mr: 2 }}
-            to={`/dashboard/observe/students/profile?id=${id}`}
-          >
-            <Button data-cy="edit" sx={{ minWidth: 43 }} variant="outline">
-              Profile
-            </Button>
-          </Link>
-          <Link
-            sx={{ width: "100%" }}
-            to={`/dashboard/observe/students/observations/new?studentId=${id}`}
-          >
-            <Button sx={{ width: "100%" }}>
-              <Icon as={PlusIcon} m={0} mr={2} fill="onPrimary" />
-              Observation
-            </Button>
-          </Link>
-        </Flex>
-        <Typography.H6
-          mr="auto"
-          sx={{
-            lineHeight: 1,
-          }}
-          pt={4}
-          pl={3}
-          pr={2}
-          mb={1}
-        >
-          Observations
-        </Typography.H6>
-        {emptyObservationPlaceholder}
-        {dateSelector}
-        <Box mx={[0, 3]}>
-          {listOfObservations}
-          {observations.status === "loading" && !observations.data && (
-            <ObservationLoadingPlaceholder />
-          )}
-        </Box>
-        <Box mb={1}>
-          <StudentProgressSummaryCard studentId={id} />
-        </Box>
+      <Typography.H6 mr="auto" sx={{ lineHeight: 1 }} pt={4} px={3} mb={1}>
+        Observations
+      </Typography.H6>
+      {emptyObservationPlaceholder}
+      {dateSelector}
+      <Box mx={[0, 3]}>
+        {listOfObservations}
+        {status === "loading" && !data && <ObservationLoadingPlaceholder />}
       </Box>
       {isEditingObservation && (
         <EditObservationDialog
           defaultValue={targetObservation}
           onDismiss={() => setIsEditingObservation(false)}
           onSaved={async () => {
-            await observations.refetch()
+            await refetch()
             setIsEditingObservation(false)
           }}
         />
@@ -201,7 +186,7 @@ export const PageStudentOverview: FC<Props> = ({ id }) => {
           shortDesc={targetObservation?.shortDesc}
           onDismiss={() => setIsDeletingObservation(false)}
           onDeleted={async () => {
-            await observations.refetch()
+            await refetch()
             setIsDeletingObservation(false)
           }}
         />

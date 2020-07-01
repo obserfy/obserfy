@@ -57,6 +57,7 @@ func InitTables(db *pg.DB) error {
 		(*LessonPlan)(nil),
 		(*File)(nil),
 		(*FileToLessonPlan)(nil),
+		(*LessonPlanDetailsToStudents)(nil),
 	} {
 		err := db.CreateTable(model, &orm.CreateTableOptions{IfNotExists: true, FKConstraints: true})
 		if err != nil {
@@ -263,7 +264,16 @@ type (
 		Area       Area
 		AreaId     string `pg:"type:uuid,on_delete:SET NULL"`
 		Material   Material
-		MaterialId string `pg:"type:uuid,on_delete:SET NULL"`
+		MaterialId string    `pg:"type:uuid,on_delete:SET NULL"`
+		Students   []Student `pg:"many2many:lesson_plan_details_to_students,joinFK:student_id"`
+	}
+
+	// Each plan can have some more additional students attached to it.
+	LessonPlanDetailsToStudents struct {
+		LessonPlanDetails   LessonPlanDetails
+		LessonPlanDetailsId string `pg:"type:uuid,on_delete:CASCADE"`
+		Student             Student
+		StudentId           string `pg:"type:uuid,on_delete:CASCADE"`
 	}
 
 	LessonPlan struct {

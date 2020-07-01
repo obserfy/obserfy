@@ -120,7 +120,7 @@ exports[`PageAllObservations should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  border-radius: 8px;
+  border-radius: 6px;
   -webkit-animation: 1s ease-in-out 0s infinite animation-0;
   animation: 1s ease-in-out 0s infinite animation-0;
   width: 100%;
@@ -132,7 +132,7 @@ exports[`PageAllObservations should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   margin-top: 8px;
-  border-radius: 8px;
+  border-radius: 6px;
   -webkit-animation: 1s ease-in-out 0s infinite animation-0;
   animation: 1s ease-in-out 0s infinite animation-0;
   width: 90%%;
@@ -203,7 +203,7 @@ exports[`PageAllObservations should render correctly 1`] = `
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 6px;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   border-width: 1px;
   border-style: solid;
@@ -242,7 +242,7 @@ exports[`PageAllObservations should render correctly 1`] = `
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 6px;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   border-width: 1px;
   border-style: solid;
@@ -279,7 +279,7 @@ exports[`PageAllObservations should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   margin-bottom: 16px;
-  border-radius: 8px;
+  border-radius: 6px;
   -webkit-animation: 1s ease-in-out 0s infinite animation-0;
   animation: 1s ease-in-out 0s infinite animation-0;
   width: 100%;

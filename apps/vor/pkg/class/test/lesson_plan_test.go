@@ -21,6 +21,7 @@ type postNewPlanPayload struct {
 		Type    int       `json:"type"`
 		EndDate time.Time `json:"endDate"`
 	} `json:"repetition,omitempty"`
+	Students []string `json:"students"`
 }
 
 func (s *ClassTestSuite) TestPostNewLessonPlan() {
@@ -168,7 +169,10 @@ func (s *ClassTestSuite) TestPostNewLessonPlanWithCurriculumData() {
 	t := s.T()
 	material, userId := s.GenerateMaterial()
 	area := material.Subject.Area
-	class := s.GenerateClass(area.Curriculum.Schools[0])
+	school := area.Curriculum.Schools[0]
+	class := s.GenerateClass(school)
+
+	student := s.GenerateStudent(&school)
 
 	gofakeit.Seed(time.Now().UnixNano())
 	date := gofakeit.Date()
@@ -193,6 +197,7 @@ func (s *ClassTestSuite) TestPostNewLessonPlanWithCurriculumData() {
 				},
 				AreaId:     area.Id,
 				MaterialId: material.Id,
+				Students:   []string{student.Id},
 			},
 			1,
 		},
@@ -211,6 +216,7 @@ func (s *ClassTestSuite) TestPostNewLessonPlanWithCurriculumData() {
 				},
 				AreaId:     area.Id,
 				MaterialId: material.Id,
+				Students:   []string{student.Id},
 			},
 			4,
 		},
@@ -229,6 +235,7 @@ func (s *ClassTestSuite) TestPostNewLessonPlanWithCurriculumData() {
 				},
 				AreaId:     area.Id,
 				MaterialId: material.Id,
+				Students:   []string{student.Id},
 			},
 			2,
 		},
@@ -242,11 +249,13 @@ func (s *ClassTestSuite) TestPostNewLessonPlanWithCurriculumData() {
 			err := s.DB.Model(&plans).
 				Where("title=?", test.payload.Title).
 				Relation("LessonPlans").
+				Relation("Students").
 				Select()
 			assert.NoError(t, err)
 			assert.Len(t, plans.LessonPlans, test.count)
 			assert.Equal(t, plans.AreaId, test.payload.AreaId)
 			assert.Equal(t, plans.MaterialId, test.payload.MaterialId)
+			assert.Len(t, plans.Students, len(test.payload.Students))
 		})
 	}
 }
