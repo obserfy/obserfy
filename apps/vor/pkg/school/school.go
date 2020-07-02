@@ -322,6 +322,7 @@ func getStudents(s rest.Server, store Store, imgproxyClient *imgproxy.Client) re
 		Name          string     `json:"name"`
 		DateOfBirth   *time.Time `json:"dateOfBirth,omitempty"`
 		ProfilePicUrl string     `json:"profilePicUrl,omitempty"`
+		Active        bool       `json:"active"`
 	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		schoolId := chi.URLParam(r, "schoolId")
@@ -343,6 +344,7 @@ func getStudents(s rest.Server, store Store, imgproxyClient *imgproxy.Client) re
 				Name:          student.Name,
 				DateOfBirth:   student.DateOfBirth,
 				ProfilePicUrl: profilePicUrl,
+				Active:        student.Active,
 			})
 		}
 		if err = rest.WriteJson(w, response); err != nil {
