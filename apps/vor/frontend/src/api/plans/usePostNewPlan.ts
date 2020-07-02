@@ -44,7 +44,8 @@ const usePostNewPlan = () => {
   }
 
   return useMutation(postPlan, {
-    onSuccess: () => queryCache.refetchQueries(["plans", getSchoolId(), date]),
+    onSuccess: () =>
+      queryCache.invalidateQueries(["plans", getSchoolId(), date]),
   })
 }
 
