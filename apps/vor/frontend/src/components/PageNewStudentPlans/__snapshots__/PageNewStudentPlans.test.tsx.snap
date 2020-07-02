@@ -678,7 +678,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
       class="emotion-36"
     >
       <a
-        href="/dashboard/observe/students/plans?studentId=adsfasdfsa&date=2020-07-02T18:01:01.847Z"
+        href="/dashboard/observe/students/plans?studentId=adsfasdfsa&date=1996-05-26T00:00:00.000Z"
         style="display: block;"
       >
         <div
@@ -720,7 +720,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
                 class="emotion-5"
                 disabled=""
                 placeholder="Not set"
-                value="2 July '20"
+                value="26 May '96"
               />
             </div>
           </label>

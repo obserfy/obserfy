@@ -11,7 +11,7 @@ export default {
 
 export const Basic: FC = () => (
   <PageNewStudentPlans
-    chosenDate={new Date().toISOString()}
+    chosenDate={new Date(1996, 4, 26).toISOString()}
     studentId="adsfasdfsa"
   />
 )

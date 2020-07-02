@@ -9,4 +9,9 @@ export default {
   },
 }
 
-export const Basic: FC = () => <PageStudentPlans studentId="asdfasfd" />
+export const Basic: FC = () => (
+  <PageStudentPlans
+    studentId="asdfasfd"
+    date={new Date(1996, 4, 26).toISOString()}
+  />
+)
