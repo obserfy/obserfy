@@ -1,12 +1,12 @@
 /** @jsx jsx */
 import { FC, useState } from "react"
-import { jsx, Button, Box, Card, Flex } from "theme-ui"
+import { Box, Button, Card, Flex, jsx } from "theme-ui"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import {
-  ALL_PLANS_URL,
-  NEW_PLANS_URL,
-  PLANS_DETAILS_URL,
+  NEW_STUDENT_PLANS_URL,
   STUDENT_OVERVIEW_PAGE_URL,
+  STUDENT_PLANS_DETAILS_URL,
+  STUDENT_PLANS_URL,
 } from "../../routes"
 import dayjs from "../../dayjs"
 import useGetPlans from "../../api/plans/useGetPlans"
@@ -54,7 +54,11 @@ export const PageStudentPlans: FC<Props> = ({ studentId, date }) => {
             const newDate = selectedDate.add(-1, "day")
             setSelectedDate(newDate)
             // Update the url without re-rendering the whole component tree
-            window.history.replaceState({}, "", ALL_PLANS_URL(newDate))
+            window.history.replaceState(
+              {},
+              "",
+              STUDENT_PLANS_URL(studentId, newDate)
+            )
           }}
         >
           <Icon as={PrevIcon} m={0} />
@@ -69,7 +73,11 @@ export const PageStudentPlans: FC<Props> = ({ studentId, date }) => {
             const newDate = selectedDate.add(1, "day")
             setSelectedDate(newDate)
             // Update the url without re-rendering the whole component tree
-            window.history.replaceState({}, "", ALL_PLANS_URL(newDate))
+            window.history.replaceState(
+              {},
+              "",
+              STUDENT_PLANS_URL(studentId, newDate)
+            )
           }}
         >
           <Icon as={NextIcon} m={0} />
@@ -82,7 +90,11 @@ export const PageStudentPlans: FC<Props> = ({ studentId, date }) => {
             const newDate = dayjs()
             setSelectedDate(newDate)
             // Update the url without re-rendering the whole component tree
-            window.history.replaceState({}, "", ALL_PLANS_URL(newDate))
+            window.history.replaceState(
+              {},
+              "",
+              STUDENT_PLANS_URL(studentId, newDate)
+            )
           }}
           disabled={selectedDate.isSame(dayjs(), "day")}
         >
@@ -92,7 +104,7 @@ export const PageStudentPlans: FC<Props> = ({ studentId, date }) => {
       {data?.map((plan) => {
         return (
           <Link
-            to={PLANS_DETAILS_URL(plan.id)}
+            to={STUDENT_PLANS_DETAILS_URL(studentId, plan.id)}
             sx={{ display: "block", mx: [0, 3], mb: [0, 2] }}
           >
             <Card p={3} sx={{ borderRadius: [0, "default"] }}>
@@ -113,7 +125,10 @@ export const PageStudentPlans: FC<Props> = ({ studentId, date }) => {
           </Link>
         )
       })}
-      <Link to={NEW_PLANS_URL(selectedDate)} sx={{ display: "block", m: 3 }}>
+      <Link
+        to={NEW_STUDENT_PLANS_URL(studentId, selectedDate)}
+        sx={{ display: "block", m: 3 }}
+      >
         <Button variant="outline" sx={{ ml: "auto" }}>
           <Icon as={PlusIcon} m={0} mr={2} fill="onBackground" />
           Add new plan

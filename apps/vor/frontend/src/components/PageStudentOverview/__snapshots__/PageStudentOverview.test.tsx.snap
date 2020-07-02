@@ -486,7 +486,7 @@ exports[`PageStudentOverview should render correctly 1`] = `
         </a>
         <a
           class="emotion-8"
-          href="/dashboard/observe/students/plans?studentId=asdfadsf"
+          href="/dashboard/observe/students/plans?studentId=asdfadsf&date="
         >
           <button
             class="emotion-7"
