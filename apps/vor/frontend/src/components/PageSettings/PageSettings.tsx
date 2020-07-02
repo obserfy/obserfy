@@ -56,7 +56,7 @@ export const PageSettings: FC = () => {
       <CardLink mb={2} name="Class" to={CLASS_SETTINGS_URL} />
       <CardLink mb={2} name="Students" to="/dashboard/settings/students" />
 
-        <Box mb={4}>
+      <Box mb={4}>
         <Card p={3} onClick={shareLink}>
           <Flex sx={{ alignItems: "center" }}>
             <Box>
