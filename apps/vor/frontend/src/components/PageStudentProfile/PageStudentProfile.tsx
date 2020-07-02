@@ -102,9 +102,7 @@ export const PageStudentProfile: FC<Props> = ({ id }) => {
             )}
             {data?.classes?.map((currentClass) => (
               <Typography.Body
-                sx={{
-                  lineHeight: 1,
-                }}
+                sx={{ lineHeight: 1 }}
                 key={currentClass.id}
                 mt={3}
               >
@@ -138,32 +136,18 @@ export const PageStudentProfile: FC<Props> = ({ id }) => {
               Guardians
             </Typography.Body>
             {data?.guardians?.length === 0 && (
-              <Typography.Body
-                sx={{
-                  lineHeight: 1,
-                }}
-                mb={3}
-                mt={2}
-              >
+              <Typography.Body sx={{ lineHeight: 1 }} mb={3} mt={2}>
                 Not set
               </Typography.Body>
             )}
             {data?.guardians?.map(({ email, name }) => {
               return (
                 <Box py={3}>
-                  <Typography.Body
-                    sx={{
-                      lineHeight: 1,
-                    }}
-                    mb={2}
-                  >
+                  <Typography.Body sx={{ lineHeight: 1 }} mb={2}>
                     {name}
                   </Typography.Body>
                   <Typography.Body
-                    sx={{
-                      lineHeight: 1,
-                      fontSize: 1,
-                    }}
+                    sx={{ lineHeight: 1, fontSize: 1 }}
                     color="textMediumEmphasis"
                   >
                     {email || "No email"}
@@ -221,12 +205,7 @@ const NameDataBox: FC<{ value?: string; studentId: string }> = ({
             onAccept={saveName}
             loading={status === "loading"}
           />
-          <Box
-            sx={{
-              backgroundColor: "background",
-            }}
-            p={3}
-          >
+          <Box sx={{ backgroundColor: "background" }} p={3}>
             <Input
               label="Name"
               sx={{ width: "100%" }}

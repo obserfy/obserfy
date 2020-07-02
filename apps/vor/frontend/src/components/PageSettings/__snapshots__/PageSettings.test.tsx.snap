@@ -564,7 +564,7 @@ exports[`PageSettings should render correctly 1`] = `
             <h6
               class="emotion-5"
             >
-              Students
+              All Students
             </h6>
             <div
               class="emotion-6"
