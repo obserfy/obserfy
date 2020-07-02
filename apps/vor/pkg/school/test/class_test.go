@@ -51,11 +51,11 @@ func (s *SchoolTestSuite) TestGetClass() {
 	gofakeit.Seed(time.Now().UnixNano())
 	newSchool := s.GenerateSchool()
 	classes := []*postgres.Class{
-		s.GenerateClass(*newSchool),
-		s.GenerateClass(*newSchool),
-		s.GenerateClass(*newSchool),
-		s.GenerateClass(*newSchool),
-		s.GenerateClass(*newSchool),
+		s.GenerateClass(newSchool),
+		s.GenerateClass(newSchool),
+		s.GenerateClass(newSchool),
+		s.GenerateClass(newSchool),
+		s.GenerateClass(newSchool),
 	}
 
 	result := s.CreateRequest("GET", "/"+newSchool.Id+"/classes", nil, &newSchool.Users[0].Id)

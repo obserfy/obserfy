@@ -185,12 +185,16 @@ func (s *BaseTestSuite) GenerateArea() (postgres.Area, string) {
 	return area, school.Users[0].Id
 }
 
-func (s *BaseTestSuite) GenerateClass(school postgres.School) *postgres.Class {
+func (s *BaseTestSuite) GenerateClass(school *postgres.School) *postgres.Class {
 	t := s.T()
+	if school == nil {
+		school = s.GenerateSchool()
+	}
+
 	newClass := postgres.Class{
 		Id:        uuid.New().String(),
 		SchoolId:  school.Id,
-		School:    school,
+		School:    *school,
 		Name:      gofakeit.Name(),
 		StartTime: time.Now(),
 		EndTime:   time.Now(),
@@ -210,7 +214,7 @@ func (s *BaseTestSuite) GenerateClass(school postgres.School) *postgres.Class {
 func (s *BaseTestSuite) GenerateLessonPlan() (postgres.LessonPlan, string) {
 	t := s.T()
 	material, userid := s.GenerateMaterial()
-	class := s.GenerateClass(material.Subject.Area.Curriculum.Schools[0])
+	class := s.GenerateClass(&material.Subject.Area.Curriculum.Schools[0])
 
 	lessonName := gofakeit.Name()
 	lessonPlanDetails := postgres.LessonPlanDetails{

@@ -2,6 +2,7 @@ package school
 
 import (
 	"errors"
+	"github.com/chrsep/vor/pkg/lessonplan"
 	"net/http"
 	"os"
 	"time"
@@ -47,6 +48,7 @@ func NewRouter(
 		r.Method("GET", "/guardians", getGuardians(server, store))
 
 		r.Method("GET", "/plans", getLessonPlans(server, store))
+		r.Method("POST", "/plans", postNewLessonPlan(server, store))
 
 		r.Method("GET", "/files", getLessonFiles(server, store))
 		r.Method("POST", "/files", addFile(server, store))
@@ -888,6 +890,81 @@ func deleteFile(server rest.Server, store Store) http.Handler {
 		}
 
 		w.WriteHeader(http.StatusOK)
+		return nil
+	})
+}
+
+func postNewLessonPlan(server rest.Server, store Store) http.Handler {
+	type reqBody struct {
+		Title       string    `json:"title" validate:"required"`
+		Description string    `json:"description"`
+		Date        time.Time `json:"date" validate:"required"`
+		FileIds     []string  `json:"fileIds"`
+		AreaId      string    `json:"areaId,omitempty"`
+		MaterialId  string    `json:"materialId,omitempty"`
+		Repetition  *struct {
+			Type    int       `json:"type" validate:"oneof=0 1 2 3"`
+			EndDate time.Time `json:"endDate" validate:"required"`
+		} `json:"repetition,omitempty"`
+		Students []string `json:"students"`
+		ClassId  string   `json:"classId"`
+	}
+
+	type resBody struct {
+		Id    string `json:"id"`
+		Title string `json:"title"`
+	}
+
+	validate := validator.New()
+
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		body := reqBody{}
+
+		if err := rest.ParseJson(r.Body, &body); err != nil {
+			return rest.NewParseJsonError(err)
+		}
+		if err := validate.Struct(body); err != nil {
+			return &rest.Error{
+				Code:    http.StatusBadRequest,
+				Message: err.Error(),
+				Error:   richErrors.Wrap(err, "invalid request body"),
+			}
+		}
+
+		planInput := lessonplan.PlanData{
+			ClassId:     body.ClassId,
+			Title:       body.Title,
+			Description: body.Description,
+			FileIds:     body.FileIds,
+			Date:        body.Date,
+			AreaId:      body.AreaId,
+			MaterialId:  body.MaterialId,
+			Students:    body.Students,
+		}
+		if body.Repetition != nil {
+			planInput.Repetition = &lessonplan.RepetitionPattern{
+				Type:    body.Repetition.Type,
+				EndDate: body.Repetition.EndDate,
+			}
+		}
+
+		lessonPlan, err := store.CreateLessonPlan(planInput)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "Failed to create lesson plan",
+				Error:   err,
+			}
+		}
+
+		w.WriteHeader(http.StatusCreated)
+		if err := rest.WriteJson(w, &resBody{
+			Id:    lessonPlan.Id,
+			Title: lessonPlan.Title,
+		}); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
+
 		return nil
 	})
 }
