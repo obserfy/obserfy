@@ -26,7 +26,7 @@
     "eslint-plugin-react": "7.20.3",
     "eslint-plugin-react-hooks": "4.0.5",
     "faker": "4.1.0",
-    "gatsby-cypress": "0.4.8"
+    "gatsby-cypress": "0.4.9"
   },
   "scripts": {
     "cy:open": "cypress open",
