@@ -288,13 +288,13 @@ func (s *SchoolTestSuite) TestPostNewLessonPlanWithCurriculumData() {
 			err := s.DB.Model(&plans).
 				Where("title=?", test.payload.Title).
 				Relation("LessonPlans").
-				Relation("Students").
+				Relation("LessonPlans.Students").
 				Select()
 			assert.NoError(t, err)
 			assert.Len(t, plans.LessonPlans, test.count)
 			assert.Equal(t, plans.AreaId, test.payload.AreaId)
 			assert.Equal(t, plans.MaterialId, test.payload.MaterialId)
-			assert.Len(t, plans.Students, len(test.payload.Students))
+			assert.Len(t, plans.LessonPlans[0].Students, len(test.payload.Students))
 		})
 	}
 }
