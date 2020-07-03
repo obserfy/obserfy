@@ -1,11 +1,11 @@
 import React, { FC, useState } from "react"
-import { Button, Box, Flex } from "theme-ui"
+import { Box, Button, Flex } from "theme-ui"
 import useGetSchoolClasses from "../../api/classes/useGetSchoolClasses"
 import { useGetCurriculumAreas } from "../../api/useGetCurriculumAreas"
 import usePostNewPlan from "../../api/plans/usePostNewPlan"
 import dayjs from "../../dayjs"
 import BackNavigation from "../BackNavigation/BackNavigation"
-import { ALL_PLANS_URL, STUDENT_PLANS_URL } from "../../routes"
+import { STUDENT_PLANS_URL } from "../../routes"
 import { Typography } from "../Typography/Typography"
 import DateInput from "../DateInput/DateInput"
 import Input from "../Input/Input"
@@ -149,7 +149,7 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
 
       <Box mx={3} mb={4}>
         <Button
-          disabled={classId === "" || title === ""}
+          disabled={title === ""}
           mt={3}
           onClick={async () => {
             const result = await mutate({
@@ -167,7 +167,7 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
                     },
             })
             if (result.ok) {
-              await navigate(ALL_PLANS_URL(date))
+              await navigate(STUDENT_PLANS_URL(studentId, date))
             }
           }}
           sx={{ width: "100%" }}
