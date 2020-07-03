@@ -2,7 +2,6 @@ package postgres
 
 import (
 	cLessonPlan "github.com/chrsep/vor/pkg/lessonplan"
-	"github.com/go-pg/pg/v9/orm"
 	"mime/multipart"
 	"time"
 
@@ -445,12 +444,10 @@ func (s SchoolStore) GetGuardians(schoolId string) ([]cSchool.Guardian, error) {
 func (s SchoolStore) GetLessonPlans(schoolId string, date time.Time) ([]cSchool.LessonPlan, error) {
 	var lessonPlan []LessonPlan
 	if err := s.DB.Model(&lessonPlan).
-		Where("date::date=?", date).
+		Where("date::date=? AND lesson_plan_details.school_id=?", date, schoolId).
 		Relation("LessonPlanDetails").
 		Relation("LessonPlanDetails.Area").
-		Relation("LessonPlanDetails.Class", func(q *orm.Query) (*orm.Query, error) {
-			return q.Where("school_id = ?", schoolId), nil
-		}).
+		Relation("LessonPlanDetails.Class").
 		Select(); err != nil {
 		return nil, richErrors.Wrap(err, "Failed to query school's lesson plan")
 	}
