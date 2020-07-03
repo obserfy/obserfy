@@ -96,7 +96,7 @@
     "faker": "4.1.0",
     "http-proxy-middleware": "1.0.4",
     "husky": "4.2.5",
-    "hygen": "6.0.2",
+    "hygen": "6.0.3",
     "jest": "26.1.0",
     "jest-date-mock": "1.0.8",
     "jest-emotion": "10.0.32",
