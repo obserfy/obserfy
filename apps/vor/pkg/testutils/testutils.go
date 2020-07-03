@@ -220,7 +220,7 @@ func (s *BaseTestSuite) GenerateLessonPlan() (postgres.LessonPlan, string) {
 	lessonPlanDetails := postgres.LessonPlanDetails{
 		Id:                uuid.New().String(),
 		Title:             gofakeit.Name(),
-		Description:       &lessonName,
+		Description:       lessonName,
 		ClassId:           class.Id,
 		Class:             *class,
 		RepetitionType:    0,

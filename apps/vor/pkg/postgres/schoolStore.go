@@ -455,14 +455,12 @@ func (s SchoolStore) GetLessonPlans(schoolId string, date time.Time) ([]cSchool.
 	res := make([]cSchool.LessonPlan, len(lessonPlan))
 	for i, plan := range lessonPlan {
 		res[i] = cSchool.LessonPlan{
-			Id:        plan.Id,
-			Title:     plan.LessonPlanDetails.Title,
-			ClassId:   plan.LessonPlanDetails.ClassId,
-			ClassName: plan.LessonPlanDetails.Class.Name,
-			Date:      *plan.Date,
-		}
-		if plan.LessonPlanDetails.Description != nil {
-			res[i].Description = *plan.LessonPlanDetails.Description
+			Id:          plan.Id,
+			Title:       plan.LessonPlanDetails.Title,
+			ClassId:     plan.LessonPlanDetails.ClassId,
+			ClassName:   plan.LessonPlanDetails.Class.Name,
+			Date:        *plan.Date,
+			Description: plan.LessonPlanDetails.Description,
 		}
 		if plan.LessonPlanDetails.AreaId != "" {
 			res[i].AreaId = plan.LessonPlanDetails.Area.Id
@@ -549,7 +547,7 @@ func (s SchoolStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLessonP
 		Id:          uuid.New().String(),
 		ClassId:     planInput.ClassId,
 		Title:       planInput.Title,
-		Description: &planInput.Description,
+		Description: planInput.Description,
 		AreaId:      planInput.AreaId,
 		SchoolId:    planInput.SchoolId,
 	}
@@ -655,7 +653,7 @@ func (s SchoolStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLessonP
 	return &cLessonPlan.LessonPlan{
 		Id:          planDetails.Id,
 		Title:       planDetails.Title,
-		Description: *planDetails.Description,
+		Description: planDetails.Description,
 		ClassId:     planDetails.ClassId,
 	}, nil
 }

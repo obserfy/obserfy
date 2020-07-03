@@ -48,7 +48,7 @@ func (s *LessonPlansTestSuite) TestGetLessonPlan() {
 	err := rest.ParseJson(result.Result().Body, &responseBody)
 	assert.NoError(t, err)
 	assert.Equal(t, lessonPlan.LessonPlanDetails.Title, responseBody.Title)
-	assert.Equal(t, lessonPlan.LessonPlanDetails.Description, &responseBody.Description)
+	assert.Equal(t, lessonPlan.LessonPlanDetails.Description, responseBody.Description)
 	assert.Equal(t, lessonPlan.LessonPlanDetails.MaterialId, responseBody.MaterialId)
 	assert.Equal(t, lessonPlan.LessonPlanDetails.AreaId, responseBody.AreaId)
 	assert.Equal(t, lessonPlan.Date.Unix(), responseBody.Date.Unix())
@@ -93,7 +93,7 @@ func (s *LessonPlansTestSuite) TestPatchLessonPlan() {
 				assert.Equal(t, test.payload.Title, updatedLessonPlan.Title)
 			}
 			if test.payload.Description != "" {
-				assert.Equal(t, test.payload.Description, *updatedLessonPlan.Description)
+				assert.Equal(t, test.payload.Description, updatedLessonPlan.Description)
 			}
 			if test.payload.Date != nil {
 				assert.Equal(t, test.payload.Date.Unix(), updatedLessonPlan.LessonPlans[0].Date.Unix())

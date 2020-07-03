@@ -21,32 +21,23 @@ func (s LessonPlanStore) UpdateLessonPlan(planInput cLessonPlan.UpdatePlanData) 
 		return 0, richErrors.Wrap(err, "failed to find related plan")
 	}
 
-	plan := LessonPlan{
-		Id:   planInput.Id,
-		Date: planInput.Date,
-	}
-	planDetails := LessonPlanDetails{
-		Id:          originalPlan.LessonPlanDetailsId,
-		Description: planInput.Description,
-	}
-	// TODO: Aren't these nil checks something that will be handled by UpdateNotZero?
-	if planInput.Title != nil {
-		planDetails.Title = *planInput.Title
-	}
-	if planInput.AreaId != nil {
-		planDetails.AreaId = *planInput.AreaId
-	}
-	if planInput.MaterialId != nil {
-		planDetails.MaterialId = *planInput.MaterialId
-	}
-	if planInput.ClassId != nil {
-		planDetails.ClassId = *planInput.ClassId
-	}
+	plan := make(PartialUpdateModel)
+	plan.AddDateColumn("date", planInput.Date)
+
+	planDetails := make(PartialUpdateModel)
+	planDetails.AddStringColumn("description", planInput.Description)
+	planDetails.AddStringColumn("title", planInput.Title)
+	planDetails.AddIdColumn("area_id", planInput.AreaId)
+	planDetails.AddIdColumn("material_id", planInput.MaterialId)
+	planDetails.AddIdColumn("class_id", planInput.ClassId)
 
 	rowsAffected := 0
 	if err := s.RunInTransaction(func(tx *pg.Tx) error {
-		if planInput.Date != nil {
-			result, err := tx.Model(&plan).WherePK().UpdateNotZero()
+		if !plan.IsEmpty() {
+			result, err := tx.Model(plan.GetModel()).
+				TableExpr("lesson_plans").
+				Where("id = ?", planInput.Id).
+				Update()
 			if err != nil {
 				return richErrors.Wrap(err, "")
 			}
@@ -54,8 +45,11 @@ func (s LessonPlanStore) UpdateLessonPlan(planInput cLessonPlan.UpdatePlanData) 
 		}
 
 		// Make sure that we're aren't doing an update with empty struct
-		if planInput.Title != nil || planInput.Description != nil || planInput.AreaId != nil || planInput.MaterialId != nil || planInput.ClassId != nil {
-			result, err := tx.Model(&planDetails).WherePK().UpdateNotZero()
+		if !planDetails.IsEmpty() {
+			result, err := tx.Model(planDetails.GetModel()).
+				TableExpr("lesson_plan_details").
+				Where("id=?", originalPlan.LessonPlanDetailsId).
+				Update()
 			if err != nil {
 				return richErrors.Wrap(err, "")
 			}
@@ -86,7 +80,7 @@ func (s LessonPlanStore) GetLessonPlan(planId string) (*cLessonPlan.LessonPlan, 
 		Id:          plan.Id,
 		ClassId:     plan.LessonPlanDetails.ClassId,
 		Title:       plan.LessonPlanDetails.Title,
-		Description: *plan.LessonPlanDetails.Description,
+		Description: plan.LessonPlanDetails.Description,
 		Date:        *plan.Date,
 		AreaId:      plan.LessonPlanDetails.AreaId,
 		MaterialId:  plan.LessonPlanDetails.MaterialId,

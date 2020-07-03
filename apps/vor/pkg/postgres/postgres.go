@@ -251,7 +251,7 @@ type (
 	LessonPlanDetails struct {
 		Id                string `pg:"type:uuid"`
 		Title             string
-		Description       *string
+		Description       string
 		ClassId           string `pg:"type:uuid,on_delete:SET NULL"`
 		SchoolId          string `pg:"type:uuid,on_delete:CASCADE"`
 		Class             Class
@@ -301,3 +301,56 @@ type (
 		File                File
 	}
 )
+
+// PartialUpdateModel makes it easy to partially update a table using go-pg by enforcing some
+// rules.
+// 1. accepts a pointer to differentiate between empty/zero values (empty strings, false, etc) and ignored values
+// 2. nil values will be dropped and ignored
+// 3. empty/zero values will be saved and therefore passed to go-pg (usually resulting in NULL being saved)
+// 4. other values will be passed to go-pg
+//
+// Usage example:
+//	planDetails := make(PartialUpdateModel)
+//	planDetails.AddStringColumn("description", planInput.Description)
+//	planDetails.AddStringColumn("title", planInput.Title)
+//  planDetails.AddIdColumn("material_id", planInput.MaterialId)
+//	db.Model(planDetails.GetModel()).
+//		TableExpr("lesson_plan_details").
+//		Where("id = ?", planInput.Id).
+//		Update()
+//
+// In this example, if planInput.Description contains empty value and title contains a valid name, then go-pg would only update
+// the title, ignoring description column completely.
+type PartialUpdateModel map[string]interface{}
+
+func (u *PartialUpdateModel) AddStringColumn(name string, value *string) {
+	if value != nil {
+		(*u)[name] = value
+	}
+}
+
+func (u *PartialUpdateModel) AddDateColumn(name string, value *time.Time) {
+	if value != nil {
+		(*u)[name] = value
+	}
+}
+
+func (u *PartialUpdateModel) AddIdColumn(name string, value *string) {
+	if value != nil {
+		(*u)[name] = value
+		if *value == "" {
+			(*u)[name] = nil
+		}
+	}
+}
+
+// GetModel generates a model that is valid for use in go-pg v10. The model doesn't contains table name.
+// Table name will need to be provided to go-pg manually on query.
+func (u *PartialUpdateModel) GetModel() *map[string]interface{} {
+	model := (map[string]interface{})(*u)
+	return &model
+}
+
+func (u *PartialUpdateModel) IsEmpty() bool {
+	return len(*u) == 0
+}

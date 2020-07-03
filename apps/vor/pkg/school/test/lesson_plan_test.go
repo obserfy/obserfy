@@ -36,7 +36,7 @@ func (s *SchoolTestSuite) TestGetLessonPlan() {
 
 	assert.Len(t, body, 1)
 	assert.Equal(t, lessonPlan.LessonPlanDetails.Title, body[0].Title)
-	assert.Equal(t, *lessonPlan.LessonPlanDetails.Description, body[0].Description)
+	assert.Equal(t, lessonPlan.LessonPlanDetails.Description, body[0].Description)
 	assert.Equal(t, lessonPlan.LessonPlanDetails.Class.Name, body[0].ClassName)
 	assert.Equal(t, lessonPlan.LessonPlanDetails.Area.Name, body[0].Area.Name)
 	assert.Equal(t, lessonPlan.LessonPlanDetails.Area.Id, body[0].Area.Id)
@@ -78,7 +78,7 @@ func (s *SchoolTestSuite) TestPostNewLessonPlan() {
 		Select()
 	assert.NoError(t, err)
 	assert.Equal(t, payload.Title, plan.LessonPlanDetails.Title)
-	assert.Equal(t, payload.Description, *plan.LessonPlanDetails.Description)
+	assert.Equal(t, payload.Description, plan.LessonPlanDetails.Description)
 	assert.Equal(t, payload.Date.Unix(), plan.Date.Unix())
 	assert.Equal(t, len(payload.FileIds), len(plan.LessonPlanDetails.Files))
 }
