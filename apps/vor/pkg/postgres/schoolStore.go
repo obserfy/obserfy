@@ -567,11 +567,19 @@ func (s SchoolStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLessonP
 	}
 
 	var plans []LessonPlan
-	plans = append(plans, LessonPlan{
+	var studentRelations []LessonPlanToStudents
+	plan := LessonPlan{
 		Id:                  uuid.New().String(),
 		Date:                &planInput.Date,
 		LessonPlanDetailsId: planDetails.Id,
-	})
+	}
+	for i := range planInput.Students {
+		studentRelations = append(studentRelations, LessonPlanToStudents{
+			LessonPlanId: plan.Id,
+			StudentId:    planInput.Students[i],
+		})
+	}
+	plans = append(plans, plan)
 	// Create all instance of repeating plans and save to db. This will make it easy to
 	// retrieve, modify, and attach metadata to individual instances of the plans down the road
 	if planInput.Repetition != nil && planInput.Repetition.Type != cLessonPlan.RepetitionNone {
@@ -598,11 +606,19 @@ func (s SchoolStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLessonP
 			// Create a separate date value to be referenced by each plan,
 			// since currentDate will keep getting updated
 			planFinalDate := currentDate
-			plans = append(plans, LessonPlan{
+			plan := LessonPlan{
 				Id:                  uuid.New().String(),
 				Date:                &planFinalDate,
 				LessonPlanDetailsId: planDetails.Id,
-			})
+			}
+			studentRelations := make([]LessonPlanToStudents, len(planInput.Students))
+			for i := range planInput.Students {
+				studentRelations = append(studentRelations, LessonPlanToStudents{
+					LessonPlanId: plan.Id,
+					StudentId:    planInput.Students[i],
+				})
+			}
+			plans = append(plans, plan)
 		}
 	}
 
@@ -612,12 +628,6 @@ func (s SchoolStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLessonP
 			LessonPlanDetailsId: planDetails.Id,
 			FileId:              file,
 		}
-	}
-
-	studentRelations := make([]LessonPlanDetailsToStudents, len(planInput.Students))
-	for i := range planInput.Students {
-		studentRelations[i].StudentId = planInput.Students[i]
-		studentRelations[i].LessonPlanDetailsId = planDetails.Id
 	}
 
 	if err := s.RunInTransaction(func(tx *pg.Tx) error {

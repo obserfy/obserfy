@@ -57,7 +57,7 @@ func InitTables(db *pg.DB) error {
 		(*LessonPlan)(nil),
 		(*File)(nil),
 		(*FileToLessonPlan)(nil),
-		(*LessonPlanDetailsToStudents)(nil),
+		(*LessonPlanToStudents)(nil),
 	} {
 		err := db.CreateTable(model, &orm.CreateTableOptions{IfNotExists: true, FKConstraints: true})
 		if err != nil {
@@ -134,7 +134,8 @@ type Student struct {
 	CustomId    string
 	Active      *bool `pg:",notnull,default:true"`
 	ProfilePic  string
-	Guardians   []Guardian `pg:"many2many:guardian_to_students,joinFK:guardian_id"`
+	Guardians   []Guardian   `pg:"many2many:guardian_to_students,joinFK:guardian_id"`
+	LessonPlans []LessonPlan `pg:"many2many:lesson_plan_to_students,joinFK:lesson_plan_id"`
 }
 
 type Guardian struct {
@@ -265,16 +266,15 @@ type (
 		Area       Area
 		AreaId     string `pg:"type:uuid,on_delete:SET NULL"`
 		Material   Material
-		MaterialId string    `pg:"type:uuid,on_delete:SET NULL"`
-		Students   []Student `pg:"many2many:lesson_plan_details_to_students,joinFK:student_id"`
+		MaterialId string `pg:"type:uuid,on_delete:SET NULL"`
 	}
 
 	// Each plan can have some more additional students attached to it.
-	LessonPlanDetailsToStudents struct {
-		LessonPlanDetails   LessonPlanDetails
-		LessonPlanDetailsId string `pg:"type:uuid,on_delete:CASCADE"`
-		Student             Student
-		StudentId           string `pg:"type:uuid,on_delete:CASCADE"`
+	LessonPlanToStudents struct {
+		LessonPlan   LessonPlan
+		LessonPlanId string `pg:"type:uuid,on_delete:CASCADE"`
+		Student      Student
+		StudentId    string `pg:"type:uuid,on_delete:CASCADE"`
 	}
 
 	LessonPlan struct {
@@ -282,6 +282,7 @@ type (
 		Date                *time.Time `pg:",notnull"`
 		LessonPlanDetailsId string     `pg:"type:uuid"`
 		LessonPlanDetails   LessonPlanDetails
+		Students            []Student `pg:"many2many:lesson_plan_to_students,joinFK:student_id"`
 	}
 
 	File struct {
