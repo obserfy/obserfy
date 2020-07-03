@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageNewStudentPlans should render correctly 1`] = `
-.emotion-37 {
+.emotion-35 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,12 +9,12 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-37 {
+  .emotion-35 {
     font-size: 20px;
   }
 }
 
-.emotion-36 {
+.emotion-34 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -82,11 +82,33 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   -ms-letter-spacing: 0;
   letter-spacing: 0;
   text-rendering: optimizeLegibility;
-  margin: 16px;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-top: 16px;
+  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
+}
+
+.emotion-4 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 300;
+  line-height: heading;
+  font-size: 2.5rem;
+  line-height: 3rem;
+  -webkit-letter-spacing: 0;
+  -moz-letter-spacing: 0;
+  -ms-letter-spacing: 0;
+  letter-spacing: 0;
+  text-rendering: optimizeLegibility;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-bottom: 32px;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
 }
 
-.emotion-18 {
+.emotion-19 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -94,7 +116,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   margin-right: 16px;
 }
 
-.emotion-10 {
+.emotion-11 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -105,7 +127,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-7 {
+.emotion-8 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -131,14 +153,14 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   flex-direction: column;
 }
 
-.emotion-4 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   padding-bottom: 4px;
 }
 
-.emotion-6 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -152,7 +174,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-5 {
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -180,35 +202,35 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-5:hover,
-.emotion-5:focus {
+.emotion-6:hover,
+.emotion-6:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-5::-webkit-input-placeholder {
+.emotion-6::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-5::-moz-placeholder {
+.emotion-6::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-5:-ms-input-placeholder {
+.emotion-6:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-5::placeholder {
+.emotion-6::placeholder {
   font-style: italic;
 }
 
-.emotion-5:disabled {
+.emotion-6:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
-.emotion-9 {
+.emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -266,25 +288,25 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   flex-shrink: 0;
 }
 
-.emotion-9:disabled {
+.emotion-10:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-9:hover,
-.emotion-9:focus {
+.emotion-10:hover,
+.emotion-10:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-9:hover:disabled,
-.emotion-9:focus:disabled {
+.emotion-10:hover:disabled,
+.emotion-10:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-8 {
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -299,7 +321,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-14 {
+.emotion-15 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -325,7 +347,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   flex-direction: column;
 }
 
-.emotion-12 {
+.emotion-13 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -353,35 +375,35 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-12:hover,
-.emotion-12:focus {
+.emotion-13:hover,
+.emotion-13:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-12::-webkit-input-placeholder {
+.emotion-13::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-12::-moz-placeholder {
+.emotion-13::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-12:-ms-input-placeholder {
+.emotion-13:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-12::placeholder {
+.emotion-13::placeholder {
   font-style: italic;
 }
 
-.emotion-12:disabled {
+.emotion-13:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
-.emotion-17 {
+.emotion-18 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -406,7 +428,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   flex-direction: column;
 }
 
-.emotion-16 {
+.emotion-17 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -435,33 +457,33 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-16:hover,
-.emotion-16:focus {
+.emotion-17:hover,
+.emotion-17:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-16::-webkit-input-placeholder {
+.emotion-17::-webkit-input-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-16::-moz-placeholder {
+.emotion-17::-moz-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-16:-ms-input-placeholder {
+.emotion-17:-ms-input-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-16::placeholder {
+.emotion-17::placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-19 {
+.emotion-20 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -479,7 +501,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
 }
 
-.emotion-20 {
+.emotion-21 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -493,18 +515,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-23 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  margin-bottom: 16px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.emotion-32 {
+.emotion-30 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -514,7 +525,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-27 {
+.emotion-25 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -535,11 +546,11 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   white-space: nowrap;
 }
 
-.emotion-27:hover {
+.emotion-25:hover {
   background-color: var(--theme-ui-colors-primary,#00e399);
 }
 
-.emotion-26 {
+.emotion-24 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -553,7 +564,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   font-size: 14px;
 }
 
-.emotion-29 {
+.emotion-27 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -574,11 +585,11 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   white-space: nowrap;
 }
 
-.emotion-29:hover {
+.emotion-27:hover {
   background-color: var(--theme-ui-colors-primaryLightest,rgba(0,120,86,0.05));
 }
 
-.emotion-28 {
+.emotion-26 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -592,7 +603,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   font-size: 14px;
 }
 
-.emotion-35 {
+.emotion-33 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -601,7 +612,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   margin-bottom: 32px;
 }
 
-.emotion-34 {
+.emotion-32 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -654,28 +665,28 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-34:disabled {
+.emotion-32:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-34:hover,
-.emotion-34:focus {
+.emotion-32:hover,
+.emotion-32:focus {
   background-color: var(--theme-ui-colors-primaryDark,#00a06d);
   outline: none;
 }
 
-.emotion-34:hover:disabled,
-.emotion-34:focus:disabled {
+.emotion-32:hover:disabled,
+.emotion-32:focus:disabled {
   background-color: var(--theme-ui-colors-primary,#00e399);
 }
 
 <div>
   <div
-    class="emotion-37"
+    class="emotion-35"
   >
     <div
-      class="emotion-36"
+      class="emotion-34"
     >
       <a
         href="/dashboard/observe/students/plans?studentId=adsfasdfsa&date=1996-05-26T00:00:00.000Z"
@@ -696,28 +707,31 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
       </a>
       <h5
         class="emotion-3"
+      />
+      <h5
+        class="emotion-4"
       >
         New Plan
       </h5>
       <div
-        class="emotion-18"
+        class="emotion-19"
       >
         <div
-          class="emotion-10"
+          class="emotion-11"
         >
           <label
-            class="emotion-7"
+            class="emotion-8"
           >
             <div
-              class="emotion-4"
+              class="emotion-5"
             >
               Date
             </div>
             <div
-              class="emotion-6"
+              class="emotion-7"
             >
               <input
-                class="emotion-5"
+                class="emotion-6"
                 disabled=""
                 placeholder="Not set"
                 value="26 May '96"
@@ -725,103 +739,91 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
             </div>
           </label>
           <button
-            class="emotion-9"
+            class="emotion-10"
             data-cy="Date"
           >
             <div
-              class="emotion-8"
+              class="emotion-9"
             />
           </button>
         </div>
         <label
-          class="emotion-14"
+          class="emotion-15"
         >
           <div
-            class="emotion-4"
+            class="emotion-5"
           >
             Title
           </div>
           <div
-            class="emotion-6"
+            class="emotion-7"
           >
             <input
-              class="emotion-12"
+              class="emotion-13"
               value=""
             />
           </div>
         </label>
         <label
-          class="emotion-17"
+          class="emotion-18"
         >
           <div
-            class="emotion-4"
+            class="emotion-5"
           >
             Description
           </div>
           <textarea
             aria-label="Description"
-            class="emotion-16"
+            class="emotion-17"
           />
         </label>
       </div>
       <div
-        class="emotion-18"
+        class="emotion-19"
       >
         <h6
-          class="emotion-19"
+          class="emotion-20"
         >
           Related Area
         </h6>
         <div
+          class="emotion-21"
+        />
+      </div>
+      <div
+        class="emotion-19"
+      >
+        <h6
           class="emotion-20"
-        />
-      </div>
-      <div
-        class="emotion-18"
-      >
-        <h6
-          class="emotion-19"
-        >
-          Class
-        </h6>
-        <div
-          class="emotion-23"
-        />
-      </div>
-      <div
-        class="emotion-18"
-      >
-        <h6
-          class="emotion-19"
         >
           Repetition
         </h6>
         <div
-          class="emotion-32"
+          class="emotion-30"
         >
+          <div
+            class="emotion-25"
+          >
+            <p
+              class="emotion-24"
+            >
+              None
+            </p>
+          </div>
           <div
             class="emotion-27"
           >
             <p
               class="emotion-26"
             >
-              None
-            </p>
-          </div>
-          <div
-            class="emotion-29"
-          >
-            <p
-              class="emotion-28"
-            >
               Daily
             </p>
           </div>
           <div
-            class="emotion-29"
+            class="emotion-27"
           >
             <p
-              class="emotion-28"
+              class="emotion-26"
             >
               Weekly
             </p>
@@ -829,10 +831,10 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
         </div>
       </div>
       <div
-        class="emotion-35"
+        class="emotion-33"
       >
         <button
-          class="emotion-34"
+          class="emotion-32"
           disabled=""
         >
           Save

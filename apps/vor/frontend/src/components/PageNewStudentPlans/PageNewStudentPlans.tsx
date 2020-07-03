@@ -140,6 +140,7 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
               title,
               description,
               date,
+              students: [studentId],
               repetition:
                 repetition === 0
                   ? undefined
