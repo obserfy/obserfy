@@ -252,6 +252,7 @@ type (
 		Title             string
 		Description       *string
 		ClassId           string `pg:"type:uuid,on_delete:SET NULL"`
+		SchoolId          string `pg:"type:uuid,on_delete:CASCADE"`
 		Class             Class
 		Files             []File `pg:"many2many:file_to_lesson_plans,joinFK:file_id"`
 		RepetitionType    int    `pg:",use_zero"`

@@ -554,6 +554,7 @@ func (s SchoolStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLessonP
 		Title:       planInput.Title,
 		Description: &planInput.Description,
 		AreaId:      planInput.AreaId,
+		SchoolId:    planInput.SchoolId,
 	}
 
 	if planInput.MaterialId != "" {

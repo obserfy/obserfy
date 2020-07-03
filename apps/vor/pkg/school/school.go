@@ -919,6 +919,7 @@ func postNewLessonPlan(server rest.Server, store Store) http.Handler {
 
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		body := reqBody{}
+		schoolId := chi.URLParam(r, "schoolId")
 
 		if err := rest.ParseJson(r.Body, &body); err != nil {
 			return rest.NewParseJsonError(err)
@@ -940,6 +941,7 @@ func postNewLessonPlan(server rest.Server, store Store) http.Handler {
 			AreaId:      body.AreaId,
 			MaterialId:  body.MaterialId,
 			Students:    body.Students,
+			SchoolId:    schoolId,
 		}
 		if body.Repetition != nil {
 			planInput.Repetition = &lessonplan.RepetitionPattern{
