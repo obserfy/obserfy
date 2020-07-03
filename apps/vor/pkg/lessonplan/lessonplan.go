@@ -65,12 +65,12 @@ func getLessonPlan(server rest.Server, store Store) http.Handler {
 
 func patchLessonPlan(server rest.Server, store Store) http.Handler {
 	type reqBody struct {
-		Title       *string    `json:"title,omitempty"`
-		Description *string    `json:"description,omitempty"`
-		Date        *time.Time `json:"date,omitempty"`
-		ClassId     *string    `json:"classId,omitempty"`
-		AreaId      *string    `json:"areaId,omitempty"`
-		MaterialId  *string    `json:"materialId,omitempty"`
+		Title       *string    `json:"title"`
+		Description *string    `json:"description"`
+		Date        *time.Time `json:"date"`
+		ClassId     *string    `json:"classId"`
+		AreaId      *string    `json:"areaId"`
+		MaterialId  *string    `json:"materialId"`
 	}
 
 	validate := validator.New()
