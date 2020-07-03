@@ -1,6 +1,5 @@
 import React, { FC, useState } from "react"
 import { Box, Button, Flex } from "theme-ui"
-import useGetSchoolClasses from "../../api/classes/useGetSchoolClasses"
 import { useGetCurriculumAreas } from "../../api/useGetCurriculumAreas"
 import usePostNewPlan from "../../api/plans/usePostNewPlan"
 import dayjs from "../../dayjs"
@@ -13,19 +12,19 @@ import TextArea from "../TextArea/TextArea"
 import EmptyClassDataPlaceholder from "../EmptyClassDataPlaceholder/EmptyClassDataPlaceholder"
 import Chip from "../Chip/Chip"
 import { navigate } from "../Link/Link"
+import { useGetStudent } from "../../api/useGetStudent"
 
 interface Props {
   studentId: string
   chosenDate: string
 }
 export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
-  const classes = useGetSchoolClasses()
+  const student = useGetStudent(studentId)
   const areas = useGetCurriculumAreas()
   const [mutate] = usePostNewPlan()
 
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
-  const [classId, setClassId] = useState("")
   const [areaId, setAreaId] = useState("")
   const [date, setDate] = useState(chosenDate ? dayjs(chosenDate) : dayjs())
 
@@ -39,7 +38,12 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
         to={STUDENT_PLANS_URL(studentId, date)}
         text="All plans"
       />
-      <Typography.H5 m={3}>New Plan</Typography.H5>
+      <Typography.H5 mx={3} mt={3} color="textDisabled">
+        {student.data?.name}
+      </Typography.H5>
+      <Typography.H5 mx={3} mb={4}>
+        New Plan
+      </Typography.H5>
       <Box mx={3}>
         <DateInput
           label="Date"
@@ -92,27 +96,6 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
         </Box>
       )}
 
-      {classes.status === "success" && classes.data.length === 0 ? (
-        <Box mb={3}>
-          <EmptyClassDataPlaceholder />
-        </Box>
-      ) : (
-        <Box mx={3}>
-          <Typography.H6 mb={2}>Class</Typography.H6>
-          <Flex mb={3}>
-            {classes.data?.map(({ id, name }) => (
-              <Chip
-                key={id}
-                text={name}
-                activeBackground="primary"
-                onClick={() => setClassId(id)}
-                isActive={id === classId}
-              />
-            ))}
-          </Flex>
-        </Box>
-      )}
-
       <Box mx={3}>
         <Typography.H6 mb={2}>Repetition</Typography.H6>
         <Flex>
@@ -156,7 +139,6 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
               areaId,
               title,
               description,
-              classId,
               date,
               repetition:
                 repetition === 0
