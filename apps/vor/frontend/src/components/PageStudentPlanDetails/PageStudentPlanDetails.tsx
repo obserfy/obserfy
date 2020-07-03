@@ -4,7 +4,7 @@ import useGetPlan from "../../api/plans/useGetPlan"
 import useDeletePlans from "../../api/plans/useDeletePlan"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import BackNavigation from "../BackNavigation/BackNavigation"
-import { ALL_PLANS_URL, STUDENT_PLANS_URL } from "../../routes"
+import { STUDENT_PLANS_URL } from "../../routes"
 import dayjs from "../../dayjs"
 import Icon from "../Icon/Icon"
 import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
@@ -80,7 +80,9 @@ export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
           onPositiveClick={async () => {
             const result = await deletePlan()
             if (result.ok) {
-              await navigate(ALL_PLANS_URL(dayjs(plan.data?.date)))
+              await navigate(
+                STUDENT_PLANS_URL(studentId, dayjs(plan.data?.date))
+              )
             }
           }}
         />
