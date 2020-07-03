@@ -14,7 +14,7 @@ const useDeleteClass = (
 
   return useMutation<Response>(deleteClass, {
     onSuccess: async () => {
-      await queryCache.refetchQueries(["classes", getSchoolId()])
+      await queryCache.invalidateQueries(["classes", getSchoolId()])
     },
   })
 }

@@ -34,12 +34,8 @@ export const PageEditSubject: FC<Props> = ({ areaId, subjectId }) => {
   const [subjectName, setSubjectName] = useState("")
   const [materials, setMaterials] = useImmer<Material[]>([])
 
-  const startingMaterials = useGetSubjectMaterials(subjectId, {
-    refetchOnWindowFocus: false,
-  })
-  const area = useGetArea(areaId, {
-    refetchOnWindowFocus: false,
-  })
+  const startingMaterials = useGetSubjectMaterials(subjectId)
+  const area = useGetArea(areaId)
   const subject = useGetSubject(subjectId, {
     refetchOnWindowFocus: false,
   })
