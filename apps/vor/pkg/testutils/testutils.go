@@ -229,6 +229,7 @@ func (s *BaseTestSuite) GenerateLessonPlan() (postgres.LessonPlan, string) {
 		AreaId:            material.Subject.AreaId,
 		Material:          material,
 		MaterialId:        material.Id,
+		SchoolId:          class.SchoolId,
 	}
 	date := gofakeit.Date()
 	lessonPlan := postgres.LessonPlan{
