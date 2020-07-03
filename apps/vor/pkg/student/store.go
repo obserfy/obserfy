@@ -2,7 +2,7 @@ package student
 
 import (
 	"github.com/chrsep/vor/pkg/postgres"
-	"github.com/go-pg/pg/v9"
+	"github.com/go-pg/pg/v10"
 	"time"
 )
 

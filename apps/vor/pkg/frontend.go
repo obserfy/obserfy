@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/chrsep/vor/pkg/postgres"
-	"github.com/go-pg/pg/v9"
+	"github.com/go-pg/pg/v10"
 	"net/http"
 	"os"
 	"strings"

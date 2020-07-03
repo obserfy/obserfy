@@ -1,7 +1,7 @@
 package postgres
 
 import (
-	"github.com/go-pg/pg/v9"
+	"github.com/go-pg/pg/v10"
 
 	"github.com/chrsep/vor/pkg/user"
 )

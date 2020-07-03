@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/go-pg/pg/v9"
-	"github.com/go-pg/pg/v9/orm"
+	"github.com/go-pg/pg/v10"
+	"github.com/go-pg/pg/v10/orm"
 	richErrors "github.com/pkg/errors"
 )
 
@@ -127,15 +127,15 @@ type Student struct {
 	SchoolId    string `pg:"type:uuid,on_delete:CASCADE"`
 	School      School
 	DateOfBirth *time.Time
-	Classes     []Class `pg:"many2many:student_to_classes,joinFK:class_id"`
+	Classes     []Class `pg:"many2many:student_to_classes,join_fk:class_id"`
 	Gender      Gender  `pg:"type:int"`
 	DateOfEntry *time.Time
 	Note        string
 	CustomId    string
 	Active      *bool `pg:",notnull,default:true"`
 	ProfilePic  string
-	Guardians   []Guardian   `pg:"many2many:guardian_to_students,joinFK:guardian_id"`
-	LessonPlans []LessonPlan `pg:"many2many:lesson_plan_to_students,joinFK:lesson_plan_id"`
+	Guardians   []Guardian   `pg:"many2many:guardian_to_students,join_fk:guardian_id"`
+	LessonPlans []LessonPlan `pg:"many2many:lesson_plan_to_students,join_fk:lesson_plan_id"`
 }
 
 type Guardian struct {
@@ -146,7 +146,7 @@ type Guardian struct {
 	Note     string
 	SchoolId string `pg:"type:uuid"`
 	School   School
-	Children []Student `pg:"many2many:guardian_to_students,joinFK:student_id"`
+	Children []Student `pg:"many2many:guardian_to_students,join_fk:student_id"`
 }
 
 type GuardianRelationship int
@@ -189,7 +189,7 @@ type School struct {
 	Id           string `json:"id" pg:",type:uuid"`
 	Name         string `json:"name"`
 	InviteCode   string `json:"inviteCode"`
-	Users        []User `pg:"many2many:user_to_schools,joinFK:user_id"`
+	Users        []User `pg:"many2many:user_to_schools,join_fk:user_id"`
 	CurriculumId string `pg:",type:uuid,on_delete:SET NULL"`
 	Curriculum   Curriculum
 	Guardian     []Guardian
@@ -216,7 +216,7 @@ type User struct {
 	Email    string `pg:",unique"`
 	Name     string
 	Password []byte
-	Schools  []School `pg:"many2many:user_to_schools,joinFK:school_id"`
+	Schools  []School `pg:"many2many:user_to_schools,join_fk:school_id"`
 }
 
 type PasswordResetToken struct {
@@ -237,7 +237,7 @@ type Class struct {
 	StartTime time.Time `pg:",notnull"`
 	EndTime   time.Time `pg:",notnull"`
 	Weekdays  []Weekday
-	Students  []Student `pg:"many2many:student_to_classes,joinFK:student_id"`
+	Students  []Student `pg:"many2many:student_to_classes,join_fk:student_id"`
 }
 
 type Weekday struct {
@@ -255,7 +255,7 @@ type (
 		ClassId           string `pg:"type:uuid,on_delete:SET NULL"`
 		SchoolId          string `pg:"type:uuid,on_delete:CASCADE"`
 		Class             Class
-		Files             []File `pg:"many2many:file_to_lesson_plans,joinFK:file_id"`
+		Files             []File `pg:"many2many:file_to_lesson_plans,join_fk:file_id"`
 		RepetitionType    int    `pg:",use_zero"`
 		RepetitionEndDate time.Time
 		LessonPlans       []*LessonPlan
@@ -282,7 +282,7 @@ type (
 		Date                *time.Time `pg:",notnull"`
 		LessonPlanDetailsId string     `pg:"type:uuid"`
 		LessonPlanDetails   LessonPlanDetails
-		Students            []Student `pg:"many2many:lesson_plan_to_students,joinFK:student_id"`
+		Students            []Student `pg:"many2many:lesson_plan_to_students,join_fk:student_id"`
 	}
 
 	File struct {
@@ -290,7 +290,7 @@ type (
 		SchoolId    string `pg:"type:uuid,on_delete:CASCADE"`
 		School      School
 		Name        string
-		LessonPlans []LessonPlan `pg:"many2many:file_to_lesson_plans,joinFK:lesson_plan_id"`
+		LessonPlans []LessonPlan `pg:"many2many:file_to_lesson_plans,join_fk:lesson_plan_id"`
 		ObjectKey   string
 	}
 

@@ -10,7 +10,7 @@ import (
 	cMinio "github.com/chrsep/vor/pkg/minio"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/rest"
-	"github.com/go-pg/pg/v9"
+	"github.com/go-pg/pg/v10"
 	"github.com/google/uuid"
 	"github.com/joho/godotenv"
 	"github.com/minio/minio-go/v6"
