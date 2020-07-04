@@ -12996,10 +12996,10 @@ husky@4.2.5:
     slash "^3.0.0"
     which-pm-runs "^1.0.0"
 
-hygen@6.0.3:
-  version "6.0.3"
-  resolved "https://registry.yarnpkg.com/hygen/-/hygen-6.0.3.tgz#230a0a42ef51e20d968b6aebabc7ddbc88a0d9c6"
-  integrity sha512-ftDgDC0RYTcHA+eM0coHK83NA3+xmusfFWSFtd9TABwI6NxLnUu6VKd1D46SRDJveSaaAfbXNw9T6XBegzBWFg==
+hygen@6.0.4:
+  version "6.0.4"
+  resolved "https://registry.yarnpkg.com/hygen/-/hygen-6.0.4.tgz#89d494c34c4160484e2057e649045e2e466b31de"
+  integrity sha512-FzYMYnhSfJc3i/fLi6GqpGVNQSCvAQ2eKL8oA59iJ8c50/BjFujjMYW0nB+Vl7fGwb2OPbyROb1vIBWPBG+rFg==
   dependencies:
     "@types/node" "^14.0.14"
     chalk "^4.1.0"
