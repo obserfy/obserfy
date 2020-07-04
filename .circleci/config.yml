@@ -55,7 +55,7 @@ jobs:
       - checkout
       - run: cp .env.example .env
       - run:
-          command: docker-compose up
+          command: docker-compose up db vor_app nginx minio
           background: true
       - attach_workspace:
           at: ../
