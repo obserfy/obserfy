@@ -62,8 +62,20 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
         </Typography.H6>
       )}
       <Box as="form" px={3} onSubmit={submit}>
-        <Input
+        <Select
           autoFocus
+          label="Category"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          mb={3}
+        >
+          {categories.map(({ id, name }) => (
+            <option key={id} value={id}>
+              {name}
+            </option>
+          ))}
+        </Select>
+        <Input
           label="Short Description"
           sx={{ width: "100%" }}
           placeholder="What have you found?"
@@ -83,17 +95,6 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
           value={longDesc}
           mb={3}
         />
-        <Select
-          label="Category"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-        >
-          {categories.map(({ id, name }) => (
-            <option key={id} value={id}>
-              {name}
-            </option>
-          ))}
-        </Select>
         <Flex pt={3}>
           <Spacer />
           <Button disabled={shortDesc === ""}>

@@ -111,7 +111,91 @@ exports[`PageNewObservation should render correctly 1`] = `
   padding-right: 16px;
 }
 
+.emotion-9 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.emotion-5 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding-bottom: 4px;
+}
+
 .emotion-8 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-6 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: block;
+  width: 100%;
+  padding: 8px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: inherit;
+  line-height: inherit;
+  border: 1px solid;
+  border-radius: 4px;
+  color: inherit;
+  background-color: transparent;
+  border-radius: 6px;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface,#fff);
+  font-size: 16px;
+  padding: 12px;
+}
+
+.emotion-6:hover,
+.emotion-6:focus {
+  border-color: var(--theme-ui-colors-primary,#00e399);
+  outline: none;
+}
+
+.emotion-7 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-left: -28px;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  pointer-events: none;
+}
+
+.emotion-13 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -137,14 +221,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   flex-direction: column;
 }
 
-.emotion-5 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  padding-bottom: 4px;
-}
-
-.emotion-7 {
+.emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -158,7 +235,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-6 {
+.emotion-11 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -186,60 +263,35 @@ exports[`PageNewObservation should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-6:hover,
-.emotion-6:focus {
+.emotion-11:hover,
+.emotion-11:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-6::-webkit-input-placeholder {
+.emotion-11::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-6::-moz-placeholder {
+.emotion-11::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-6:-ms-input-placeholder {
+.emotion-11:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-6::placeholder {
+.emotion-11::placeholder {
   font-style: italic;
 }
 
-.emotion-6:disabled {
+.emotion-11:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
-.emotion-11 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-size: 14px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.emotion-10 {
+.emotion-15 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -270,82 +322,30 @@ exports[`PageNewObservation should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-10:hover,
-.emotion-10:focus {
+.emotion-15:hover,
+.emotion-15:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-10::-webkit-input-placeholder {
+.emotion-15::-webkit-input-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-10::-moz-placeholder {
+.emotion-15::-moz-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-10:-ms-input-placeholder {
+.emotion-15:-ms-input-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-10::placeholder {
+.emotion-15::placeholder {
   font-style: italic;
   line-height: 2rem;
-}
-
-.emotion-15 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.emotion-13 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  display: block;
-  width: 100%;
-  padding: 8px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  font-size: inherit;
-  line-height: inherit;
-  border: 1px solid;
-  border-radius: 4px;
-  color: inherit;
-  background-color: transparent;
-  border-radius: 6px;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface,#fff);
-  font-size: 16px;
-  padding: 12px;
-}
-
-.emotion-13:hover,
-.emotion-13:focus {
-  border-color: var(--theme-ui-colors-primary,#00e399);
-  outline: none;
-}
-
-.emotion-14 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  margin-left: -28px;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
-  pointer-events: none;
 }
 
 .emotion-19 {
@@ -471,39 +471,7 @@ exports[`PageNewObservation should render correctly 1`] = `
         class="emotion-20"
       >
         <label
-          class="emotion-8"
-        >
-          <div
-            class="emotion-5"
-          >
-            Short Description
-          </div>
-          <div
-            class="emotion-7"
-          >
-            <input
-              class="emotion-6"
-              placeholder="What have you found?"
-              value=""
-            />
-          </div>
-        </label>
-        <label
-          class="emotion-11"
-        >
-          <div
-            class="emotion-5"
-          >
-            Details
-          </div>
-          <textarea
-            aria-label="Details"
-            class="emotion-10"
-            placeholder="Tell us what you observed"
-          />
-        </label>
-        <label
-          class="emotion-11"
+          class="emotion-9"
         >
           <div
             class="emotion-5"
@@ -511,11 +479,11 @@ exports[`PageNewObservation should render correctly 1`] = `
             Category
           </div>
           <div
-            class="emotion-15"
+            class="emotion-8"
           >
             <select
               aria-label="Category"
-              class="emotion-13"
+              class="emotion-6"
             >
               <option
                 value="0"
@@ -549,7 +517,7 @@ exports[`PageNewObservation should render correctly 1`] = `
               </option>
             </select>
             <svg
-              class="emotion-14"
+              class="emotion-7"
               fill="currentcolor"
               height="24"
               viewBox="0 0 24 24"
@@ -561,6 +529,38 @@ exports[`PageNewObservation should render correctly 1`] = `
               />
             </svg>
           </div>
+        </label>
+        <label
+          class="emotion-13"
+        >
+          <div
+            class="emotion-5"
+          >
+            Short Description
+          </div>
+          <div
+            class="emotion-12"
+          >
+            <input
+              class="emotion-11"
+              placeholder="What have you found?"
+              value=""
+            />
+          </div>
+        </label>
+        <label
+          class="emotion-9"
+        >
+          <div
+            class="emotion-5"
+          >
+            Details
+          </div>
+          <textarea
+            aria-label="Details"
+            class="emotion-15"
+            placeholder="Tell us what you observed"
+          />
         </label>
         <div
           class="emotion-19"
