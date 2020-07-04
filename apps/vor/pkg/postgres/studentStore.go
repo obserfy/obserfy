@@ -55,6 +55,7 @@ func (s StudentStore) InsertObservation(
 	}
 	return &observation, nil
 }
+
 func (s StudentStore) InsertAttendance(studentId string, classId string, date time.Time) (*Attendance, error) {
 	attendanceId := uuid.New()
 	attendance := Attendance{
@@ -68,6 +69,7 @@ func (s StudentStore) InsertAttendance(studentId string, classId string, date ti
 	}
 	return &attendance, nil
 }
+
 func (s StudentStore) GetAttendance(studentId string) ([]Attendance, error) {
 	var attendance []Attendance
 	if err := s.Model(&attendance).
@@ -102,6 +104,7 @@ func (s StudentStore) GetObservations(studentId string) ([]Observation, error) {
 	}
 	return observations, nil
 }
+
 func (s StudentStore) CheckPermissions(studentId string, userId string) (bool, error) {
 	var student Student
 
@@ -123,6 +126,7 @@ func (s StudentStore) CheckPermissions(studentId string, userId string) (bool, e
 		return false, nil
 	}
 }
+
 func (s StudentStore) GetProgress(studentId string) ([]StudentMaterialProgress, error) {
 	var progresses []StudentMaterialProgress
 	if err := s.Model(&progresses).
@@ -185,4 +189,8 @@ func (s StudentStore) GetGuardianRelation(studentId string, guardianId string) (
 		return nil, richErrors.Wrap(err, "failed to query guardian to student relation")
 	}
 	return &relation, nil
+}
+
+func (s StudentStore) GetLessonPlans(studentId string, date time.Time) ([]LessonPlan, error) {
+	panic("implement me")
 }
