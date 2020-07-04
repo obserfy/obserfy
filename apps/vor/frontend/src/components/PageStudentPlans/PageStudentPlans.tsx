@@ -9,7 +9,6 @@ import {
   STUDENT_PLANS_URL,
 } from "../../routes"
 import dayjs from "../../dayjs"
-import useGetPlans from "../../api/plans/useGetPlans"
 import Typography from "../Typography/Typography"
 import Icon from "../Icon/Icon"
 import { ReactComponent as PrevIcon } from "../../icons/arrow-back.svg"
@@ -17,6 +16,7 @@ import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import { Link } from "../Link/Link"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import { useGetStudent } from "../../api/useGetStudent"
+import useGetStudentPlans from "../../api/students/useGetStudentPlans"
 
 interface Props {
   studentId: string
@@ -25,7 +25,7 @@ interface Props {
 export const PageStudentPlans: FC<Props> = ({ studentId, date }) => {
   const [selectedDate, setSelectedDate] = useState(date ? dayjs(date) : dayjs())
   const student = useGetStudent(studentId)
-  const { data } = useGetPlans(selectedDate)
+  const { data } = useGetStudentPlans(studentId, selectedDate)
 
   return (
     <Box mx="auto" sx={{ maxWidth: "maxWidth.sm" }}>
