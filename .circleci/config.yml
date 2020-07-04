@@ -53,6 +53,7 @@ jobs:
     #    parallelism: 2
     steps:
       - checkout
+      - run: sudo apt update && sudo apt install docker-ce
       - run: cp .env.example .env
       - run:
           command: docker-compose up db vor_app nginx minio
