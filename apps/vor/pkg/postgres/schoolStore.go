@@ -604,19 +604,18 @@ func (s SchoolStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLessonP
 			// Create a separate date value to be referenced by each plan,
 			// since currentDate will keep getting updated
 			planFinalDate := currentDate
-			plan := LessonPlan{
+			newPlan := LessonPlan{
 				Id:                  uuid.New().String(),
 				Date:                &planFinalDate,
 				LessonPlanDetailsId: planDetails.Id,
 			}
-			studentRelations := make([]LessonPlanToStudents, len(planInput.Students))
 			for i := range planInput.Students {
 				studentRelations = append(studentRelations, LessonPlanToStudents{
-					LessonPlanId: plan.Id,
+					LessonPlanId: newPlan.Id,
 					StudentId:    planInput.Students[i],
 				})
 			}
-			plans = append(plans, plan)
+			plans = append(plans, newPlan)
 		}
 	}
 
