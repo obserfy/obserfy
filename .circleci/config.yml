@@ -153,7 +153,7 @@ jobs:
 
   deploy:
     machine:
-      image: ubuntu-1604:201903-01
+      image: ubuntu-1604:202004-01
     working_directory: ~/repo
     steps:
       - checkout
@@ -161,7 +161,6 @@ jobs:
           echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
           echo ' [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
       - run: |
-          sudo apt update && sudo apt install docker-ce
           nvm install v12
           node -v
           nvm alias default v12
