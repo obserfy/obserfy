@@ -78,9 +78,7 @@ services:
       - 10000:443
 
   db:
-    build:
-      context: docker/postgres/
-      dockerfile: dev.dockerfile
+    image: obserfy/postgres-dev:latest
     container_name: vor-postgres
     environment:
       POSTGRES_PASSWORD: postgres
