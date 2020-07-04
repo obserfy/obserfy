@@ -319,8 +319,9 @@ type (
 //		Where("id = ?", planInput.Id).
 //		Update()
 //
-// In this example, if planInput.Description contains empty value and title contains a valid name, then go-pg would only update
-// the title, ignoring description column completely.
+// In this example, if planInput.Description contains nil and title contains a valid name, then go-pg would only update
+// the title, ignoring description column completely. PartialUpdateModel also doesn't contains any information about the
+// table that is being operated on. It cares only about which column names should be updated and with what value.
 type PartialUpdateModel map[string]interface{}
 
 func (u *PartialUpdateModel) AddStringColumn(name string, value *string) {
