@@ -192,5 +192,15 @@ func (s StudentStore) GetGuardianRelation(studentId string, guardianId string) (
 }
 
 func (s StudentStore) GetLessonPlans(studentId string, date time.Time) ([]LessonPlan, error) {
-	panic("implement me")
+	var lessonPlan []LessonPlan
+	if err := s.DB.Model(&lessonPlan).
+		Join("LEFT JOIN lesson_plan_to_students AS lpts ON lesson_plan.id=lpts.lesson_plan_id").
+		Where("date::date=? AND lpts.student_id=?", date, studentId).
+		Relation("LessonPlanDetails").
+		Relation("LessonPlanDetails.Area").
+		Select(); err != nil {
+		return nil, richErrors.Wrap(err, "Failed to query students's lesson plan")
+	}
+
+	return lessonPlan, nil
 }

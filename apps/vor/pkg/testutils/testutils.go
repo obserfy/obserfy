@@ -214,7 +214,9 @@ func (s *BaseTestSuite) GenerateClass(school *postgres.School) *postgres.Class {
 func (s *BaseTestSuite) GenerateLessonPlan() (postgres.LessonPlan, string) {
 	t := s.T()
 	material, userid := s.GenerateMaterial()
-	class := s.GenerateClass(&material.Subject.Area.Curriculum.Schools[0])
+	school := &material.Subject.Area.Curriculum.Schools[0]
+	class := s.GenerateClass(school)
+	student := s.GenerateStudent(school)
 
 	lessonName := gofakeit.Name()
 	lessonPlanDetails := postgres.LessonPlanDetails{
@@ -237,11 +239,20 @@ func (s *BaseTestSuite) GenerateLessonPlan() (postgres.LessonPlan, string) {
 		Date:                &date,
 		LessonPlanDetailsId: lessonPlanDetails.Id,
 		LessonPlanDetails:   lessonPlanDetails,
+		Students:            []postgres.Student{*student},
+	}
+	studentRelation := postgres.LessonPlanToStudents{
+		LessonPlan:   lessonPlan,
+		LessonPlanId: lessonPlan.Id,
+		Student:      *student,
+		StudentId:    student.Id,
 	}
 
 	err := s.DB.Insert(&lessonPlanDetails)
 	assert.NoError(t, err)
 	err = s.DB.Insert(&lessonPlan)
+	assert.NoError(t, err)
+	err = s.DB.Insert(&studentRelation)
 	assert.NoError(t, err)
 
 	return lessonPlan, userid
