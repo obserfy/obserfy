@@ -45,6 +45,7 @@ type (
 		Note        string
 		CustomId    string
 		Active      bool
+		Classes     []Class
 	}
 
 	Gender int
