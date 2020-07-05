@@ -43,7 +43,7 @@ exports[`PageStudentOverview should render correctly 1`] = `
   }
 }
 
-.emotion-22 {
+.emotion-24 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -51,12 +51,12 @@ exports[`PageStudentOverview should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-22 {
+  .emotion-24 {
     font-size: 20px;
   }
 }
 
-.emotion-21 {
+.emotion-23 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -168,7 +168,7 @@ exports[`PageStudentOverview should render correctly 1`] = `
   pointer-events: none;
 }
 
-.emotion-12 {
+.emotion-14 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -256,11 +256,11 @@ exports[`PageStudentOverview should render correctly 1`] = `
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-11 {
+.emotion-13 {
   width: 100%;
 }
 
-.emotion-10 {
+.emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -312,23 +312,23 @@ exports[`PageStudentOverview should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-10:disabled {
+.emotion-12:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-10:hover,
-.emotion-10:focus {
+.emotion-12:hover,
+.emotion-12:focus {
   background-color: var(--theme-ui-colors-primaryDark,#00a06d);
   outline: none;
 }
 
-.emotion-10:hover:disabled,
-.emotion-10:focus:disabled {
+.emotion-12:hover:disabled,
+.emotion-12:focus:disabled {
   background-color: var(--theme-ui-colors-primary,#00e399);
 }
 
-.emotion-9 {
+.emotion-11 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -344,7 +344,7 @@ exports[`PageStudentOverview should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-13 {
+.emotion-15 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -367,7 +367,7 @@ exports[`PageStudentOverview should render correctly 1`] = `
   line-height: 1;
 }
 
-.emotion-18 {
+.emotion-20 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -376,20 +376,20 @@ exports[`PageStudentOverview should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-18 {
+  .emotion-20 {
     margin-left: 16px;
     margin-right: 16px;
   }
 }
 
-.emotion-17 {
+.emotion-19 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   margin-top: 32px;
 }
 
-.emotion-14 {
+.emotion-16 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -403,19 +403,19 @@ exports[`PageStudentOverview should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-14 {
+  .emotion-16 {
     border-radius: 6px;
   }
 }
 
-.emotion-20 {
+.emotion-22 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   margin-top: 16px;
 }
 
-.emotion-19 {
+.emotion-21 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -427,17 +427,17 @@ exports[`PageStudentOverview should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-19 {
+  .emotion-21 {
     border-radius: 6px;
   }
 }
 
 <div>
   <div
-    class="emotion-22"
+    class="emotion-24"
   >
     <div
-      class="emotion-21"
+      class="emotion-23"
     >
       <a
         href="/dashboard/observe"
@@ -471,7 +471,7 @@ exports[`PageStudentOverview should render correctly 1`] = `
         />
       </div>
       <div
-        class="emotion-12"
+        class="emotion-14"
       >
         <a
           class="emotion-8"
@@ -485,46 +485,57 @@ exports[`PageStudentOverview should render correctly 1`] = `
           </button>
         </a>
         <a
-          class="emotion-11"
+          class="emotion-8"
+          href="/dashboard/observe/students/plans?studentId=asdfadsf&date="
+        >
+          <button
+            class="emotion-7"
+            data-cy="edit"
+          >
+            Plans
+          </button>
+        </a>
+        <a
+          class="emotion-13"
           href="/dashboard/observe/students/observations/new?studentId=asdfadsf"
         >
           <button
-            class="emotion-10"
+            class="emotion-12"
           >
             <div
-              class="emotion-9"
+              class="emotion-11"
             />
             Observation
           </button>
         </a>
       </div>
       <h6
-        class="emotion-13"
+        class="emotion-15"
       >
         Observations
       </h6>
-      <div
-        class="emotion-18"
-      >
-        <div
-          class="emotion-17"
-        >
-          <div
-            class="emotion-14"
-          />
-          <div
-            class="emotion-14"
-          />
-          <div
-            class="emotion-14"
-          />
-        </div>
-      </div>
       <div
         class="emotion-20"
       >
         <div
           class="emotion-19"
+        >
+          <div
+            class="emotion-16"
+          />
+          <div
+            class="emotion-16"
+          />
+          <div
+            class="emotion-16"
+          />
+        </div>
+      </div>
+      <div
+        class="emotion-22"
+      >
+        <div
+          class="emotion-21"
         />
       </div>
     </div>

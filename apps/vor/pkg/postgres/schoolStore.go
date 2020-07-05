@@ -1,12 +1,11 @@
 package postgres
 
 import (
+	cLessonPlan "github.com/chrsep/vor/pkg/lessonplan"
 	"mime/multipart"
 	"time"
 
-	"github.com/go-pg/pg/v9/orm"
-
-	"github.com/go-pg/pg/v9"
+	"github.com/go-pg/pg/v10"
 	"github.com/google/uuid"
 	richErrors "github.com/pkg/errors"
 
@@ -446,12 +445,10 @@ func (s SchoolStore) GetGuardians(schoolId string) ([]cSchool.Guardian, error) {
 func (s SchoolStore) GetLessonPlans(schoolId string, date time.Time) ([]cSchool.LessonPlan, error) {
 	var lessonPlan []LessonPlan
 	if err := s.DB.Model(&lessonPlan).
-		Where("date::date=?", date).
+		Where("date::date=? AND lesson_plan_details.school_id=?", date, schoolId).
 		Relation("LessonPlanDetails").
 		Relation("LessonPlanDetails.Area").
-		Relation("LessonPlanDetails.Class", func(q *orm.Query) (*orm.Query, error) {
-			return q.Where("school_id = ?", schoolId), nil
-		}).
+		Relation("LessonPlanDetails.Class").
 		Select(); err != nil {
 		return nil, richErrors.Wrap(err, "Failed to query school's lesson plan")
 	}
@@ -459,14 +456,12 @@ func (s SchoolStore) GetLessonPlans(schoolId string, date time.Time) ([]cSchool.
 	res := make([]cSchool.LessonPlan, len(lessonPlan))
 	for i, plan := range lessonPlan {
 		res[i] = cSchool.LessonPlan{
-			Id:        plan.Id,
-			Title:     plan.LessonPlanDetails.Title,
-			ClassId:   plan.LessonPlanDetails.ClassId,
-			ClassName: plan.LessonPlanDetails.Class.Name,
-			Date:      *plan.Date,
-		}
-		if plan.LessonPlanDetails.Description != nil {
-			res[i].Description = *plan.LessonPlanDetails.Description
+			Id:          plan.Id,
+			Title:       plan.LessonPlanDetails.Title,
+			ClassId:     plan.LessonPlanDetails.ClassId,
+			ClassName:   plan.LessonPlanDetails.Class.Name,
+			Date:        *plan.Date,
+			Description: plan.LessonPlanDetails.Description,
 		}
 		if plan.LessonPlanDetails.AreaId != "" {
 			res[i].AreaId = plan.LessonPlanDetails.Area.Id
@@ -545,5 +540,120 @@ func (s SchoolStore) UpdateFile(fileId, fileName string) (*cSchool.File, error) 
 	return &cSchool.File{
 		Id:   obj.Id,
 		Name: obj.Name,
+	}, nil
+}
+
+func (s SchoolStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLessonPlan.LessonPlan, error) {
+	planDetails := LessonPlanDetails{
+		Id:          uuid.New().String(),
+		ClassId:     planInput.ClassId,
+		Title:       planInput.Title,
+		Description: planInput.Description,
+		AreaId:      planInput.AreaId,
+		SchoolId:    planInput.SchoolId,
+	}
+
+	if planInput.MaterialId != "" {
+		relatedMaterial := Material{Id: planInput.MaterialId}
+		if err := s.Model(&relatedMaterial).
+			WherePK().
+			Relation("Subject.area_id").
+			Select(); err != nil {
+			return nil, richErrors.Wrap(err, "failed to get related material's area_id")
+		}
+		planDetails.MaterialId = planInput.MaterialId
+		planDetails.AreaId = relatedMaterial.Subject.AreaId
+	}
+
+	var plans []LessonPlan
+	var studentRelations []LessonPlanToStudents
+	plan := LessonPlan{
+		Id:                  uuid.New().String(),
+		Date:                &planInput.Date,
+		LessonPlanDetailsId: planDetails.Id,
+	}
+	for i := range planInput.Students {
+		studentRelations = append(studentRelations, LessonPlanToStudents{
+			LessonPlanId: plan.Id,
+			StudentId:    planInput.Students[i],
+		})
+	}
+	plans = append(plans, plan)
+	// Create all instance of repeating plans and save to db. This will make it easy to
+	// retrieve, modify, and attach metadata to individual instances of the plans down the road
+	if planInput.Repetition != nil && planInput.Repetition.Type != cLessonPlan.RepetitionNone {
+		// If nil, repetition_type column in db will automatically be 0, since it has useZero tag.
+		planDetails.RepetitionType = planInput.Repetition.Type
+		planDetails.RepetitionEndDate = planInput.Repetition.EndDate
+
+		currentDate := planInput.Date
+		monthToAdd := 0
+		daysToAdd := 0
+		switch planInput.Repetition.Type {
+		case cLessonPlan.RepetitionDaily:
+			daysToAdd = 1
+		case cLessonPlan.RepetitionWeekly:
+			daysToAdd = 7
+		case cLessonPlan.RepetitionMonthly:
+			monthToAdd = 1
+		}
+		for {
+			currentDate = currentDate.AddDate(0, monthToAdd, daysToAdd)
+			if currentDate.After(planInput.Repetition.EndDate) {
+				break
+			}
+			// Create a separate date value to be referenced by each plan,
+			// since currentDate will keep getting updated
+			planFinalDate := currentDate
+			newPlan := LessonPlan{
+				Id:                  uuid.New().String(),
+				Date:                &planFinalDate,
+				LessonPlanDetailsId: planDetails.Id,
+			}
+			for i := range planInput.Students {
+				studentRelations = append(studentRelations, LessonPlanToStudents{
+					LessonPlanId: newPlan.Id,
+					StudentId:    planInput.Students[i],
+				})
+			}
+			plans = append(plans, newPlan)
+		}
+	}
+
+	fileRelations := make([]FileToLessonPlan, len(planInput.FileIds))
+	for idx, file := range planInput.FileIds {
+		fileRelations[idx] = FileToLessonPlan{
+			LessonPlanDetailsId: planDetails.Id,
+			FileId:              file,
+		}
+	}
+
+	if err := s.RunInTransaction(func(tx *pg.Tx) error {
+		if err := tx.Insert(&planDetails); err != nil {
+			return richErrors.Wrap(err, "failed to save lesson plan details")
+		}
+		if err := tx.Insert(&plans); err != nil {
+			return richErrors.Wrap(err, "failed to save lesson plan")
+		}
+		if len(fileRelations) > 0 {
+			if err := tx.Insert(&fileRelations); err != nil {
+				return richErrors.Wrap(err, "failed to save file relations")
+			}
+		}
+		if len(studentRelations) > 0 {
+			if err := tx.Insert(&studentRelations); err != nil {
+				return richErrors.Wrap(err, "failed to save file relations")
+			}
+		}
+		return nil
+	}); err != nil {
+		return nil, err
+	}
+
+	return &cLessonPlan.LessonPlan{
+		Id:          planDetails.Id,
+		Title:       planDetails.Title,
+		Description: planDetails.Description,
+		ClassId:     planDetails.ClassId,
 	}, nil
 }

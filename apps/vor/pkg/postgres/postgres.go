@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/go-pg/pg/v9"
-	"github.com/go-pg/pg/v9/orm"
+	"github.com/go-pg/pg/v10"
+	"github.com/go-pg/pg/v10/orm"
 	richErrors "github.com/pkg/errors"
 )
 
@@ -57,7 +57,7 @@ func InitTables(db *pg.DB) error {
 		(*LessonPlan)(nil),
 		(*File)(nil),
 		(*FileToLessonPlan)(nil),
-		(*LessonPlanDetailsToStudents)(nil),
+		(*LessonPlanToStudents)(nil),
 	} {
 		err := db.CreateTable(model, &orm.CreateTableOptions{IfNotExists: true, FKConstraints: true})
 		if err != nil {
@@ -127,14 +127,15 @@ type Student struct {
 	SchoolId    string `pg:"type:uuid,on_delete:CASCADE"`
 	School      School
 	DateOfBirth *time.Time
-	Classes     []Class `pg:"many2many:student_to_classes,joinFK:class_id"`
+	Classes     []Class `pg:"many2many:student_to_classes,join_fk:class_id"`
 	Gender      Gender  `pg:"type:int"`
 	DateOfEntry *time.Time
 	Note        string
 	CustomId    string
 	Active      *bool `pg:",notnull,default:true"`
 	ProfilePic  string
-	Guardians   []Guardian `pg:"many2many:guardian_to_students,joinFK:guardian_id"`
+	Guardians   []Guardian   `pg:"many2many:guardian_to_students,join_fk:guardian_id"`
+	LessonPlans []LessonPlan `pg:"many2many:lesson_plan_to_students,join_fk:lesson_plan_id"`
 }
 
 type Guardian struct {
@@ -145,7 +146,7 @@ type Guardian struct {
 	Note     string
 	SchoolId string `pg:"type:uuid"`
 	School   School
-	Children []Student `pg:"many2many:guardian_to_students,joinFK:student_id"`
+	Children []Student `pg:"many2many:guardian_to_students,join_fk:student_id"`
 }
 
 type GuardianRelationship int
@@ -188,7 +189,7 @@ type School struct {
 	Id           string `json:"id" pg:",type:uuid"`
 	Name         string `json:"name"`
 	InviteCode   string `json:"inviteCode"`
-	Users        []User `pg:"many2many:user_to_schools,joinFK:user_id"`
+	Users        []User `pg:"many2many:user_to_schools,join_fk:user_id"`
 	CurriculumId string `pg:",type:uuid,on_delete:SET NULL"`
 	Curriculum   Curriculum
 	Guardian     []Guardian
@@ -215,7 +216,7 @@ type User struct {
 	Email    string `pg:",unique"`
 	Name     string
 	Password []byte
-	Schools  []School `pg:"many2many:user_to_schools,joinFK:school_id"`
+	Schools  []School `pg:"many2many:user_to_schools,join_fk:school_id"`
 }
 
 type PasswordResetToken struct {
@@ -236,7 +237,7 @@ type Class struct {
 	StartTime time.Time `pg:",notnull"`
 	EndTime   time.Time `pg:",notnull"`
 	Weekdays  []Weekday
-	Students  []Student `pg:"many2many:student_to_classes,joinFK:student_id"`
+	Students  []Student `pg:"many2many:student_to_classes,join_fk:student_id"`
 }
 
 type Weekday struct {
@@ -250,10 +251,11 @@ type (
 	LessonPlanDetails struct {
 		Id                string `pg:"type:uuid"`
 		Title             string
-		Description       *string
+		Description       string
 		ClassId           string `pg:"type:uuid,on_delete:SET NULL"`
+		SchoolId          string `pg:"type:uuid,on_delete:CASCADE"`
 		Class             Class
-		Files             []File `pg:"many2many:file_to_lesson_plans,joinFK:file_id"`
+		Files             []File `pg:"many2many:file_to_lesson_plans,join_fk:file_id"`
 		RepetitionType    int    `pg:",use_zero"`
 		RepetitionEndDate time.Time
 		LessonPlans       []*LessonPlan
@@ -264,16 +266,15 @@ type (
 		Area       Area
 		AreaId     string `pg:"type:uuid,on_delete:SET NULL"`
 		Material   Material
-		MaterialId string    `pg:"type:uuid,on_delete:SET NULL"`
-		Students   []Student `pg:"many2many:lesson_plan_details_to_students,joinFK:student_id"`
+		MaterialId string `pg:"type:uuid,on_delete:SET NULL"`
 	}
 
 	// Each plan can have some more additional students attached to it.
-	LessonPlanDetailsToStudents struct {
-		LessonPlanDetails   LessonPlanDetails
-		LessonPlanDetailsId string `pg:"type:uuid,on_delete:CASCADE"`
-		Student             Student
-		StudentId           string `pg:"type:uuid,on_delete:CASCADE"`
+	LessonPlanToStudents struct {
+		LessonPlan   LessonPlan
+		LessonPlanId string `pg:"type:uuid,on_delete:CASCADE"`
+		Student      Student
+		StudentId    string `pg:"type:uuid,on_delete:CASCADE"`
 	}
 
 	LessonPlan struct {
@@ -281,6 +282,7 @@ type (
 		Date                *time.Time `pg:",notnull"`
 		LessonPlanDetailsId string     `pg:"type:uuid"`
 		LessonPlanDetails   LessonPlanDetails
+		Students            []Student `pg:"many2many:lesson_plan_to_students,join_fk:student_id"`
 	}
 
 	File struct {
@@ -288,7 +290,7 @@ type (
 		SchoolId    string `pg:"type:uuid,on_delete:CASCADE"`
 		School      School
 		Name        string
-		LessonPlans []LessonPlan `pg:"many2many:file_to_lesson_plans,joinFK:lesson_plan_id"`
+		LessonPlans []LessonPlan `pg:"many2many:file_to_lesson_plans,join_fk:lesson_plan_id"`
 		ObjectKey   string
 	}
 
@@ -299,3 +301,57 @@ type (
 		File                File
 	}
 )
+
+// PartialUpdateModel makes it easy to partially update a table using go-pg by enforcing some
+// rules.
+// 1. accepts a pointer to differentiate between empty/zero values (empty strings, false, etc) and ignored values
+// 2. nil values will be dropped and ignored
+// 3. empty/zero values will be saved and therefore passed to go-pg (usually resulting in NULL being saved)
+// 4. other values will be passed to go-pg
+//
+// Usage example:
+//	planDetails := make(PartialUpdateModel)
+//	planDetails.AddStringColumn("description", planInput.Description)
+//	planDetails.AddStringColumn("title", planInput.Title)
+//  planDetails.AddIdColumn("material_id", planInput.MaterialId)
+//	db.Model(planDetails.GetModel()).
+//		TableExpr("lesson_plan_details").
+//		Where("id = ?", planInput.Id).
+//		Update()
+//
+// In this example, if planInput.Description contains nil and title contains a valid name, then go-pg would only update
+// the title, ignoring description column completely. PartialUpdateModel also doesn't contains any information about the
+// table that is being operated on. It cares only about which column names should be updated and with what value.
+type PartialUpdateModel map[string]interface{}
+
+func (u *PartialUpdateModel) AddStringColumn(name string, value *string) {
+	if value != nil {
+		(*u)[name] = value
+	}
+}
+
+func (u *PartialUpdateModel) AddDateColumn(name string, value *time.Time) {
+	if value != nil {
+		(*u)[name] = value
+	}
+}
+
+func (u *PartialUpdateModel) AddIdColumn(name string, value *string) {
+	if value != nil {
+		(*u)[name] = value
+		if *value == "" {
+			(*u)[name] = nil
+		}
+	}
+}
+
+// GetModel generates a model that is valid for use in go-pg v10. The model doesn't contains table name.
+// Table name will need to be provided to go-pg manually on query.
+func (u *PartialUpdateModel) GetModel() *map[string]interface{} {
+	model := (map[string]interface{})(*u)
+	return &model
+}
+
+func (u *PartialUpdateModel) IsEmpty() bool {
+	return len(*u) == 0
+}

@@ -2,7 +2,7 @@ package student
 
 import (
 	"github.com/chrsep/vor/pkg/postgres"
-	"github.com/go-pg/pg/v9"
+	"github.com/go-pg/pg/v10"
 	"time"
 )
 
@@ -29,4 +29,5 @@ type Store interface {
 	GetGuardianRelation(studentId string, guardianId string) (*postgres.GuardianToStudent, error)
 	NewClassRelation(studentId string, classId string) error
 	DeleteClassRelation(studentId string, classId string) error
+	GetLessonPlans(studentId string, date time.Time) ([]postgres.LessonPlan, error)
 }

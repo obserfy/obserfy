@@ -38,6 +38,7 @@ type (
 		AreaId      string
 		MaterialId  string
 		Students    []string
+		SchoolId    string
 	}
 
 	UpdatePlanData struct {
@@ -52,7 +53,6 @@ type (
 	}
 
 	Store interface {
-		CreateLessonPlan(planInput PlanData) (*LessonPlan, error)
 		UpdateLessonPlan(planData UpdatePlanData) (int, error)
 		GetLessonPlan(planId string) (*LessonPlan, error)
 		DeleteLessonPlan(planId string) error

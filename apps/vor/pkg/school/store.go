@@ -1,6 +1,7 @@
 package school
 
 import (
+	"github.com/chrsep/vor/pkg/lessonplan"
 	"mime/multipart"
 	"time"
 
@@ -132,5 +133,6 @@ type (
 		UpdateFile(fileId, fileName string) (*File, error)
 		GetLessonPlans(schoolId string, date time.Time) ([]LessonPlan, error)
 		GetLessonFiles(schoolId string) ([]File, error)
+		CreateLessonPlan(input lessonplan.PlanData) (*lessonplan.LessonPlan, error)
 	}
 )

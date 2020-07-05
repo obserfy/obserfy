@@ -4,8 +4,8 @@ import (
 	richErrors "github.com/pkg/errors"
 	"time"
 
-	"github.com/go-pg/pg/v9"
-	"github.com/go-pg/pg/v9/orm"
+	"github.com/go-pg/pg/v10"
+	"github.com/go-pg/pg/v10/orm"
 	"github.com/google/uuid"
 )
 
@@ -55,6 +55,7 @@ func (s StudentStore) InsertObservation(
 	}
 	return &observation, nil
 }
+
 func (s StudentStore) InsertAttendance(studentId string, classId string, date time.Time) (*Attendance, error) {
 	attendanceId := uuid.New()
 	attendance := Attendance{
@@ -68,6 +69,7 @@ func (s StudentStore) InsertAttendance(studentId string, classId string, date ti
 	}
 	return &attendance, nil
 }
+
 func (s StudentStore) GetAttendance(studentId string) ([]Attendance, error) {
 	var attendance []Attendance
 	if err := s.Model(&attendance).
@@ -102,6 +104,7 @@ func (s StudentStore) GetObservations(studentId string) ([]Observation, error) {
 	}
 	return observations, nil
 }
+
 func (s StudentStore) CheckPermissions(studentId string, userId string) (bool, error) {
 	var student Student
 
@@ -123,6 +126,7 @@ func (s StudentStore) CheckPermissions(studentId string, userId string) (bool, e
 		return false, nil
 	}
 }
+
 func (s StudentStore) GetProgress(studentId string) ([]StudentMaterialProgress, error) {
 	var progresses []StudentMaterialProgress
 	if err := s.Model(&progresses).
@@ -185,4 +189,18 @@ func (s StudentStore) GetGuardianRelation(studentId string, guardianId string) (
 		return nil, richErrors.Wrap(err, "failed to query guardian to student relation")
 	}
 	return &relation, nil
+}
+
+func (s StudentStore) GetLessonPlans(studentId string, date time.Time) ([]LessonPlan, error) {
+	var lessonPlan []LessonPlan
+	if err := s.DB.Model(&lessonPlan).
+		Join("LEFT JOIN lesson_plan_to_students AS lpts ON lesson_plan.id=lpts.lesson_plan_id").
+		Where("date::date=? AND lpts.student_id=?", date, studentId).
+		Relation("LessonPlanDetails").
+		Relation("LessonPlanDetails.Area").
+		Select(); err != nil {
+		return nil, richErrors.Wrap(err, "Failed to query students's lesson plan")
+	}
+
+	return lessonPlan, nil
 }

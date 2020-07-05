@@ -10,7 +10,7 @@ import (
 	cMinio "github.com/chrsep/vor/pkg/minio"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/rest"
-	"github.com/go-pg/pg/v9"
+	"github.com/go-pg/pg/v10"
 	"github.com/google/uuid"
 	"github.com/joho/godotenv"
 	"github.com/minio/minio-go/v6"
@@ -185,12 +185,16 @@ func (s *BaseTestSuite) GenerateArea() (postgres.Area, string) {
 	return area, school.Users[0].Id
 }
 
-func (s *BaseTestSuite) GenerateClass(school postgres.School) *postgres.Class {
+func (s *BaseTestSuite) GenerateClass(school *postgres.School) *postgres.Class {
 	t := s.T()
+	if school == nil {
+		school = s.GenerateSchool()
+	}
+
 	newClass := postgres.Class{
 		Id:        uuid.New().String(),
 		SchoolId:  school.Id,
-		School:    school,
+		School:    *school,
 		Name:      gofakeit.Name(),
 		StartTime: time.Now(),
 		EndTime:   time.Now(),
@@ -210,13 +214,15 @@ func (s *BaseTestSuite) GenerateClass(school postgres.School) *postgres.Class {
 func (s *BaseTestSuite) GenerateLessonPlan() (postgres.LessonPlan, string) {
 	t := s.T()
 	material, userid := s.GenerateMaterial()
-	class := s.GenerateClass(material.Subject.Area.Curriculum.Schools[0])
+	school := &material.Subject.Area.Curriculum.Schools[0]
+	class := s.GenerateClass(school)
+	student := s.GenerateStudent(school)
 
 	lessonName := gofakeit.Name()
 	lessonPlanDetails := postgres.LessonPlanDetails{
 		Id:                uuid.New().String(),
 		Title:             gofakeit.Name(),
-		Description:       &lessonName,
+		Description:       lessonName,
 		ClassId:           class.Id,
 		Class:             *class,
 		RepetitionType:    0,
@@ -225,6 +231,7 @@ func (s *BaseTestSuite) GenerateLessonPlan() (postgres.LessonPlan, string) {
 		AreaId:            material.Subject.AreaId,
 		Material:          material,
 		MaterialId:        material.Id,
+		SchoolId:          class.SchoolId,
 	}
 	date := gofakeit.Date()
 	lessonPlan := postgres.LessonPlan{
@@ -232,11 +239,20 @@ func (s *BaseTestSuite) GenerateLessonPlan() (postgres.LessonPlan, string) {
 		Date:                &date,
 		LessonPlanDetailsId: lessonPlanDetails.Id,
 		LessonPlanDetails:   lessonPlanDetails,
+		Students:            []postgres.Student{*student},
+	}
+	studentRelation := postgres.LessonPlanToStudents{
+		LessonPlan:   lessonPlan,
+		LessonPlanId: lessonPlan.Id,
+		Student:      *student,
+		StudentId:    student.Id,
 	}
 
 	err := s.DB.Insert(&lessonPlanDetails)
 	assert.NoError(t, err)
 	err = s.DB.Insert(&lessonPlan)
+	assert.NoError(t, err)
+	err = s.DB.Insert(&studentRelation)
 	assert.NoError(t, err)
 
 	return lessonPlan, userid

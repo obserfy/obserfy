@@ -33,6 +33,8 @@ func NewRouter(s rest.Server, store Store) *chi.Mux {
 
 		r.Method("POST", "/classes", postClassRelation(s, store))
 		r.Method("DELETE", "/classes", deleteClassRelation(s, store))
+
+		r.Method("GET", "/plans", getPlans(s, store))
 	})
 	return r
 }
@@ -482,6 +484,63 @@ func upsertMaterialProgress(s rest.Server, store Store) http.Handler {
 		if _, err := store.UpdateProgress(progress); err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Failed updating progress", err}
 		}
+		return nil
+	})
+}
+
+func getPlans(s rest.Server, store Store) http.Handler {
+	type Area struct {
+		Id   string `json:"id"`
+		Name string `json:"name"`
+	}
+	type responseBody struct {
+		Id          string    `json:"id"`
+		Title       string    `json:"title"`
+		Description string    `json:"description"`
+		Date        time.Time `json:"date"`
+		Area        *Area     `json:"area,omitempty"`
+	}
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		studentId := chi.URLParam(r, "studentId")
+		date := r.URL.Query().Get("date")
+
+		parsedDate, err := time.Parse(time.RFC3339, date)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusBadRequest,
+				Message: "date needs to be in ISO format",
+				Error:   err,
+			}
+		}
+
+		lessonPlans, err := store.GetLessonPlans(studentId, parsedDate)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "Failed to query lesson plan",
+				Error:   err,
+			}
+		}
+
+		response := make([]responseBody, len(lessonPlans))
+		for i, plan := range lessonPlans {
+			response[i] = responseBody{
+				Id:          plan.Id,
+				Title:       plan.LessonPlanDetails.Title,
+				Description: plan.LessonPlanDetails.Description,
+				Date:        *plan.Date,
+			}
+			if plan.LessonPlanDetails.AreaId != "" {
+				response[i].Area = &Area{
+					Id:   plan.LessonPlanDetails.AreaId,
+					Name: plan.LessonPlanDetails.Area.Name,
+				}
+			}
+		}
+		if err := rest.WriteJson(w, response); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
+
 		return nil
 	})
 }

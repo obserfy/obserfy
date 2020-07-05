@@ -23,6 +23,7 @@ import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import {
   ALL_OBSERVATIONS_PAGE_URL,
   NEW_OBSERVATION_URL,
+  STUDENT_PLANS_URL,
   STUDENT_PROFILE_URL,
 } from "../../routes"
 import dayjs from "../../dayjs"
@@ -48,6 +49,11 @@ export const PageStudentOverview: FC<Props> = ({ id }) => {
           <Link sx={{ mr: 2 }} to={STUDENT_PROFILE_URL(id)}>
             <Button data-cy="edit" sx={{ minWidth: 43 }} variant="outline">
               Profile
+            </Button>
+          </Link>
+          <Link sx={{ mr: 2 }} to={STUDENT_PLANS_URL(id)}>
+            <Button data-cy="edit" sx={{ minWidth: 43 }} variant="outline">
+              Plans
             </Button>
           </Link>
           <Link sx={{ width: "100%" }} to={NEW_OBSERVATION_URL(id)}>
