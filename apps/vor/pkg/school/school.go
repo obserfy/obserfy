@@ -341,13 +341,17 @@ func getStudents(s rest.Server, store Store, imgproxyClient *imgproxy.Client) re
 		classId := r.URL.Query().Get("classId")
 		active := r.URL.Query().Get("active")
 
-		parsedActive, err := strconv.ParseBool(active)
-		if err != nil {
-			return &rest.Error{
-				Code:    http.StatusBadRequest,
-				Message: "invalid active query value",
-				Error:   richErrors.Wrap(err, "invalid active query value"),
+		var parsedActive *bool = nil
+		if active != "" {
+			result, err := strconv.ParseBool(active)
+			if err != nil {
+				return &rest.Error{
+					Code:    http.StatusBadRequest,
+					Message: "invalid active query value",
+					Error:   richErrors.Wrap(err, "invalid active query value"),
+				}
 			}
+			parsedActive = &result
 		}
 
 		students, err := store.GetStudents(schoolId, classId, parsedActive)

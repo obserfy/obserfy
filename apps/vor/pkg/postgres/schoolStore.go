@@ -75,20 +75,25 @@ func (s SchoolStore) GetSchool(schoolId string) (*cSchool.School, error) {
 	}, nil
 }
 
-func (s SchoolStore) GetStudents(schoolId, classId string, active bool) ([]cSchool.Student, error) {
+func (s SchoolStore) GetStudents(schoolId, classId string, active *bool) ([]cSchool.Student, error) {
 	var students []Student
 	res := make([]cSchool.Student, 0)
 
-	err := s.Model(&students).
+	query := s.Model(&students).
 		Where("school_id=?", schoolId).
-		Relation("Classes").
 		Order("name").
-		Select()
+		Relation("Classes")
+	if classId != "" {
+		query = query.Where("Classes.id=?", classId)
+	}
+	if active != nil {
+		query = query.
+			Where("active=?", active)
+	}
 
-	if err != nil {
-		if err == pg.ErrNoRows {
-			return res, nil
-		}
+	if err := query.Select(); err == pg.ErrNoRows {
+		return res, nil
+	} else if err != nil {
 		return nil, richErrors.Wrap(err, "Failed querying student")
 	}
 
