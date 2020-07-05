@@ -5,6 +5,7 @@ import (
 	"github.com/chrsep/vor/pkg/lessonplan"
 	"net/http"
 	"os"
+	"strconv"
 	"time"
 
 	"github.com/go-chi/chi"
@@ -338,8 +339,18 @@ func getStudents(s rest.Server, store Store, imgproxyClient *imgproxy.Client) re
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		schoolId := chi.URLParam(r, "schoolId")
 		classId := r.URL.Query().Get("classId")
+		active := r.URL.Query().Get("active")
 
-		students, err := store.GetStudents(schoolId, classId)
+		parsedActive, err := strconv.ParseBool(active)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusBadRequest,
+				Message: "invalid active query value",
+				Error:   richErrors.Wrap(err, "invalid active query value"),
+			}
+		}
+
+		students, err := store.GetStudents(schoolId, classId, parsedActive)
 		if err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Failed getting all students", err}
 		}

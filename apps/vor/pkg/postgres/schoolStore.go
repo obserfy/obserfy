@@ -75,7 +75,7 @@ func (s SchoolStore) GetSchool(schoolId string) (*cSchool.School, error) {
 	}, nil
 }
 
-func (s SchoolStore) GetStudents(schoolId, classId string) ([]cSchool.Student, error) {
+func (s SchoolStore) GetStudents(schoolId, classId string, active bool) ([]cSchool.Student, error) {
 	var students []Student
 	res := make([]cSchool.Student, 0)
 

@@ -117,7 +117,7 @@ type (
 	Store interface {
 		NewSchool(schoolName, userId string) (*School, error)
 		GetSchool(schoolId string) (*School, error)
-		GetStudents(schoolId, classId string) ([]Student, error)
+		GetStudents(schoolId, classId string, active bool) ([]Student, error)
 		GetClassAttendance(classId, session string) ([]Attendance, error)
 		NewStudent(student Student, classes []string, guardians map[string]int) error
 		RefreshInviteCode(schoolId string) (*School, error)
