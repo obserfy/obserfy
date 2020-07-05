@@ -21,7 +21,10 @@ export function usePatchStudentApi(
 
   return useMutation(patchStudent, {
     onSuccess: async () => {
-      await queryCache.refetchQueries(["student", id])
+      await Promise.all([
+        queryCache.invalidateQueries(["student", id]),
+        queryCache.invalidateQueries("students"),
+      ])
     },
   })
 }

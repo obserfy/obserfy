@@ -25,7 +25,7 @@ export const useDeleteStudentClassRelation = (studentId: string) => {
 
   return useMutation(deleteStudentClassRelation, {
     onSuccess: async () => {
-      await queryCache.refetchQueries(["student", studentId])
+      await queryCache.invalidateQueries(["student", studentId])
     },
   })
 }

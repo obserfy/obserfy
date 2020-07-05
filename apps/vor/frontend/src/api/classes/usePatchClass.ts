@@ -21,8 +21,8 @@ const usePatchClass = (
   return useMutation<Response, Class>(patchClass, {
     onSuccess: async () => {
       await Promise.all([
-        queryCache.refetchQueries(["class", classId]),
-        queryCache.refetchQueries(["classes", getSchoolId()]),
+        queryCache.invalidateQueries(["class", classId]),
+        queryCache.invalidateQueries(["classes", getSchoolId()]),
       ])
     },
   })

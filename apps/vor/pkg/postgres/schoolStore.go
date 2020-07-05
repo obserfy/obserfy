@@ -107,6 +107,7 @@ func (s SchoolStore) GetStudents(schoolId, classId string) ([]cSchool.Student, e
 			SchoolId:    s.SchoolId,
 			ProfilePic:  s.ProfilePic,
 			DateOfBirth: s.DateOfBirth,
+			Active:      *s.Active,
 		})
 	}
 

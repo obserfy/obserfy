@@ -46,7 +46,7 @@ jobs:
 
   e2e:
     machine:
-      image: ubuntu-1604:201903-01
+      image: ubuntu-1604:202004-01
     working_directory: ~/repo
     environment:
       NODE_ENV: "staging"
@@ -55,7 +55,7 @@ jobs:
       - checkout
       - run: cp .env.example .env
       - run:
-          command: docker-compose up
+          command: COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose up db vor_app nginx minio
           background: true
       - attach_workspace:
           at: ../
@@ -153,7 +153,7 @@ jobs:
 
   deploy:
     machine:
-      image: ubuntu-1604:201903-01
+      image: ubuntu-1604:202004-01
     working_directory: ~/repo
     steps:
       - checkout
@@ -161,7 +161,6 @@ jobs:
           echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
           echo ' [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
       - run: |
-          sudo apt update && sudo apt install docker-ce
           nvm install v12
           node -v
           nvm alias default v12

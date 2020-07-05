@@ -42,7 +42,7 @@ const usePostNewClass = (): [
 
   return useMutation<Response, Class>(fetchApi, {
     onSuccess: async () => {
-      await queryCache.refetchQueries(["classes", schoolId])
+      await queryCache.invalidateQueries(["classes", schoolId])
     },
   })
 }

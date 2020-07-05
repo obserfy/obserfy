@@ -43,6 +43,6 @@ export const usePostNewGuardian = (
   }
 
   return useMutation(postNewGuardian, {
-    onSuccess: () => queryCache.refetchQueries(["student", studentId]),
+    onSuccess: () => queryCache.invalidateQueries(["student", studentId]),
   })
 }

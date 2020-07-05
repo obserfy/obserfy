@@ -14,7 +14,7 @@ const usePatchPlan = (planId: string) => {
 
   return useMutation(patchPlan, {
     onSuccess: async () => {
-      await queryCache.refetchQueries(["plan", planId])
+      await queryCache.invalidateQueries(["plan", planId])
     },
   })
 }

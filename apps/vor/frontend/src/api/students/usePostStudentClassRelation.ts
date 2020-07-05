@@ -25,7 +25,7 @@ const usePostStudentClassRelation = (studentId: string) => {
 
   return useMutation(postStudentClassRelation, {
     onSuccess: async () => {
-      await queryCache.refetchQueries(["student", studentId])
+      await queryCache.invalidateQueries(["student", studentId])
     },
   })
 }

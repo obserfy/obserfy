@@ -5,7 +5,9 @@ const useGetChild = (childId: string) => {
     const result = await fetch(`/api/child/${childId}`)
     return result.json()
   }
-  return useQuery(childId && ["child", childId], getChild)
+  return useQuery(["child", childId], getChild, {
+    enabled: childId,
+  })
 }
 
 export default useGetChild
