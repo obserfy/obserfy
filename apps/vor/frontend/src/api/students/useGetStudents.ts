@@ -8,31 +8,35 @@ export interface Student {
   name: string
   active: boolean
   profilePicUrl?: string
-}
-
-async function fetchStudents(classId = ""): Promise<Student[]> {
-  const url = `/schools/${getSchoolId()}/students?classId=${classId}`
-  const result = await fetch(`${BASE_URL}${url}`, {
-    credentials: "same-origin",
-  })
-
-  // Throw user to login when something gets 401
-  if (result.status === 401) {
-    await navigate("/login")
-  }
-
-  if (result.status === 404) {
-    await navigate("/choose-school")
-  }
-
-  if (result.status !== 200) {
-    const response: ApiError = await result.json()
-    throw Error(response.error?.message)
-  }
-
-  return result.json()
+  classes: {
+    classId: string
+    className: string
+  }[]
 }
 
 export const useGetStudents = (classId = ""): QueryResult<Student[]> => {
-  return useQuery(classId, fetchStudents)
+  const fetchStudents = async (): Promise<Student[]> => {
+    const url = `/schools/${getSchoolId()}/students?classId=${classId}`
+    const result = await fetch(`${BASE_URL}${url}`, {
+      credentials: "same-origin",
+    })
+
+    // Throw user to login when something gets 401
+    if (result.status === 401) {
+      await navigate("/login")
+    }
+
+    if (result.status === 404) {
+      await navigate("/choose-school")
+    }
+
+    if (result.status !== 200) {
+      const response: ApiError = await result.json()
+      throw Error(response.error?.message)
+    }
+
+    return result.json()
+  }
+
+  return useQuery(["students", { classId }], fetchStudents)
 }

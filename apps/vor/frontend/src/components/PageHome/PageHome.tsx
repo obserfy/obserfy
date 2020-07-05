@@ -4,6 +4,7 @@ import { jsx, Button, Card, Box, Flex, Image } from "theme-ui"
 import { Link } from "../Link/Link"
 
 import Chip from "../Chip/Chip"
+import Pill from "../Pill/Pill"
 import SearchBar from "../SearchBar/SearchBar"
 
 import Icon from "../Icon/Icon"
@@ -20,7 +21,7 @@ export const PageHome: FC = () => {
   const [searchTerm, setSearchTerm] = useState("")
   const [filterClass, setFilterClass] = useState("")
   const students = useGetStudents(filterClass)
-  const classes = useGetSchoolClasses()
+  const allClass = useGetSchoolClasses()
 
   const matchedStudent =
     students.error === null
@@ -39,7 +40,7 @@ export const PageHome: FC = () => {
 
   const studentList =
     students.status === "success" &&
-    matchedStudent?.map(({ profilePicUrl, name, id }) => (
+    matchedStudent?.map(({ profilePicUrl, name, id, classes }) => (
       <Link to={STUDENT_OVERVIEW_PAGE_URL(id)} sx={{ display: "block" }}>
         <Card
           p={3}
@@ -67,7 +68,14 @@ export const PageHome: FC = () => {
           ) : (
             <StudentPicturePlaceholder />
           )}
-          <Typography.Body ml={3}>{name}</Typography.Body>
+          <Box>
+            <Typography.Body ml={3}>{name}</Typography.Body>
+            <Flex sx={{ flexWrap: "wrap" }} ml={1}>
+              {classes?.map(({ className }) => (
+                <Pill ml={2} text={className} color="text" />
+              ))}
+            </Flex>
+          </Box>
         </Card>
       </Link>
     ))
@@ -108,7 +116,7 @@ export const PageHome: FC = () => {
           activeBackground="primary"
           onClick={() => setFilterClass("")}
         />
-        {classes.data?.map(({ id, name }) => (
+        {allClass.data?.map(({ id, name }) => (
           <Chip
             key={id}
             isActive={filterClass === id}
