@@ -57,7 +57,7 @@ exports[`PageHome should render correctly 1`] = `
   }
 }
 
-.emotion-12 {
+.emotion-15 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -65,12 +65,12 @@ exports[`PageHome should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-12 {
+  .emotion-15 {
     font-size: 20px;
   }
 }
 
-.emotion-11 {
+.emotion-14 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -273,7 +273,63 @@ exports[`PageHome should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-10 {
+.emotion-8 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding-left: 16px;
+  padding-right: 8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.emotion-7 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  background-color: var(--theme-ui-colors-primary,#00e399);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  border-radius: 6px;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-width: 1px;
+  border-style: solid;
+  white-space: nowrap;
+}
+
+.emotion-7:hover {
+  background-color: var(--theme-ui-colors-primary,#00e399);
+}
+
+.emotion-6 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  text-rendering: optimizeLegibility;
+  color: var(--theme-ui-colors-onPrimary,#000);
+  font-size: 14px;
+}
+
+.emotion-13 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -281,7 +337,7 @@ exports[`PageHome should render correctly 1`] = `
   padding-right: 16px;
 }
 
-.emotion-6 {
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -293,7 +349,7 @@ exports[`PageHome should render correctly 1`] = `
   height: 30px;
 }
 
-.emotion-7 {
+.emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -305,7 +361,7 @@ exports[`PageHome should render correctly 1`] = `
   height: 30px;
 }
 
-.emotion-8 {
+.emotion-11 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -317,7 +373,7 @@ exports[`PageHome should render correctly 1`] = `
   height: 30px;
 }
 
-.emotion-9 {
+.emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -331,10 +387,10 @@ exports[`PageHome should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-12"
+    class="emotion-15"
   >
     <div
-      class="emotion-11"
+      class="emotion-14"
     >
       <div
         class="emotion-5"
@@ -368,19 +424,32 @@ exports[`PageHome should render correctly 1`] = `
         </a>
       </div>
       <div
-        class="emotion-10"
+        class="emotion-8"
       >
         <div
-          class="emotion-6"
-        />
-        <div
           class="emotion-7"
-        />
-        <div
-          class="emotion-8"
-        />
+        >
+          <p
+            class="emotion-6"
+          >
+            All
+          </p>
+        </div>
+      </div>
+      <div
+        class="emotion-13"
+      >
         <div
           class="emotion-9"
+        />
+        <div
+          class="emotion-10"
+        />
+        <div
+          class="emotion-11"
+        />
+        <div
+          class="emotion-12"
         />
       </div>
     </div>
