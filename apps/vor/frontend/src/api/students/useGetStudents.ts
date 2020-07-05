@@ -43,5 +43,5 @@ export const useGetStudents = (
     return result.json()
   }
 
-  return useQuery(["students", { classId }], fetchStudents)
+  return useQuery(["students", classId, active], fetchStudents)
 }
