@@ -84,7 +84,9 @@ func (s SchoolStore) GetStudents(schoolId, classId string, active *bool) ([]cSch
 		Order("name").
 		Relation("Classes")
 	if classId != "" {
-		query = query.Where("Classes.id=?", classId)
+		query = query.
+			Join("LEFT JOIN student_to_classes AS stc on id=stc.student_id").
+			Where("stc.class_id=?", classId)
 	}
 	if active != nil {
 		query = query.
@@ -99,19 +101,11 @@ func (s SchoolStore) GetStudents(schoolId, classId string, active *bool) ([]cSch
 
 	for _, s := range students {
 		classes := make([]cSchool.Class, 0)
-		var isIncluded bool
 		for _, class := range s.Classes {
 			classes = append(classes, cSchool.Class{
 				Id:   class.Id,
 				Name: class.Name,
 			})
-			if classId == class.Id {
-				isIncluded = true
-			}
-		}
-
-		if !isIncluded && classId != "" {
-			continue
 		}
 
 		res = append(res, cSchool.Student{
