@@ -1,16 +1,14 @@
-import React, { ChangeEventHandler, FC } from "react"
-import { Input as BaseInput } from "@rebass/forms"
-import Label from "../Label/Label"
-import Box, { BoxProps } from "../Box/Box"
+import React, { ChangeEventHandler, FC, PropsWithoutRef } from "react"
+import { Input as BaseInput, InputProps, Label, Flex, Box } from "theme-ui"
 import Icon from "../Icon/Icon"
-import { Flex } from "../Flex/Flex"
 
-interface Props extends BoxProps {
+interface Props extends PropsWithoutRef<InputProps> {
   name?: string
   icon?: FC
   small?: boolean
   onChange?: ChangeEventHandler<HTMLInputElement>
   onEnterPressed?: () => void
+  label?: string
 }
 export const Input: FC<Props> = ({
   autoFocus,
@@ -40,16 +38,23 @@ export const Input: FC<Props> = ({
   }
   return (
     <Label
-      display="flex"
       color={disabled ? "textDisabled" : "textMediumEmphasis"}
-      sx={{ flexDirection: "column" }}
-      fontSize={small ? 0 : undefined}
-      {...props}
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        fontSize: small ? 0 : undefined,
+      }}
     >
       {label && <Box pb={small ? 2 : 1}>{label}</Box>}
-      <Flex alignItems="center">
+      <Flex sx={{ alignItems: "center" }}>
         {icon && (
-          <Icon as={icon} m={0} mr={-40} size={24} sx={{ zIndex: 2 }} ml={3} />
+          <Icon
+            as={icon}
+            m={0}
+            mr={-36}
+            sx={{ width: 24, height: 24, zIndex: 2 }}
+            ml={3}
+          />
         )}
         <BaseInput
           autoFocus={autoFocus}
@@ -60,13 +65,16 @@ export const Input: FC<Props> = ({
           type={type}
           disabled={disabled}
           py={small ? 2 : undefined}
-          sx={withIconStyle}
-          fontSize={small ? 1 : undefined}
           backgroundColor={backgroundColor}
           placeholder={placeholder}
           width={width}
           onChange={onChange}
           value={value}
+          sx={{
+            ...withIconStyle,
+            fontSize: small ? 1 : undefined,
+          }}
+          {...props}
         />
       </Flex>
     </Label>

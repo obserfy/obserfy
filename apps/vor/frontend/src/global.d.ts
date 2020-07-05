@@ -28,19 +28,4 @@ declare module "*.css" {
   export default content
 }
 
-declare module "@rebass/forms" {
-  // eslint-disable-next-line import/no-duplicates
-  import { FC } from "react"
-  import { BoxProps, FlexProps } from "rebass"
-
-  export const Label: FC<FlexProps>
-  export const Select: FC<BoxProps>
-  export const Textarea: FC<BoxProps>
-  export const Radio: FC<BoxProps>
-  export const Checkbox: FC<BoxProps>
-  export const Slider: FC<BoxProps>
-  export const Switch: FC<BoxProps>
-  export const Input: FC<BoxProps>
-}
-
 declare const Sentry: typeof import("@sentry/browser")

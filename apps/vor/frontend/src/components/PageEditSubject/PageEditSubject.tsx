@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useState } from "react"
 import { useImmer } from "use-immer"
 import { nanoid } from "nanoid"
+import { Flex, Box, Button } from "theme-ui"
 import { navigate } from "../Link/Link"
 import {
   Material,
@@ -10,14 +11,13 @@ import { useGetArea } from "../../api/useGetArea"
 import { getAnalytics } from "../../analytics"
 import { CURRICULUM_AREA_URL } from "../../routes"
 import DraggableMaterialListItem from "../DraggableMaterialListItem/DraggableMaterialListItem"
-import Flex from "../Flex/Flex"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import Typography from "../Typography/Typography"
-import Box from "../Box/Box"
+
 import Input from "../Input/Input"
 import Icon from "../Icon/Icon"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
-import Button from "../Button/Button"
+
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import { useGetSubject } from "../../api/useGetSubject"
 import { updateSubjectApi } from "../../api/updateSubjectApi"
@@ -34,12 +34,8 @@ export const PageEditSubject: FC<Props> = ({ areaId, subjectId }) => {
   const [subjectName, setSubjectName] = useState("")
   const [materials, setMaterials] = useImmer<Material[]>([])
 
-  const startingMaterials = useGetSubjectMaterials(subjectId, {
-    refetchOnWindowFocus: false,
-  })
-  const area = useGetArea(areaId, {
-    refetchOnWindowFocus: false,
-  })
+  const startingMaterials = useGetSubjectMaterials(subjectId)
+  const area = useGetArea(areaId)
   const subject = useGetSubject(subjectId, {
     refetchOnWindowFocus: false,
   })
@@ -94,21 +90,21 @@ export const PageEditSubject: FC<Props> = ({ areaId, subjectId }) => {
 
   if (area.status === "loading" && subject.status === "loading") {
     return (
-      <Box py={3} px={3} maxWidth="maxWidth.sm" margin="auto">
-        <LoadingPlaceholder width="20rem" height="3rem" mb={4} />
-        <LoadingPlaceholder width="20rem" height="3rem" mb={4} />
-        <LoadingPlaceholder width="100%" height="6rem" mb={3} />
-        <LoadingPlaceholder width="8rem" height="2rem" mb={2} />
-        <LoadingPlaceholder width="100%" height="4rem" mb={2} />
-        <LoadingPlaceholder width="100%" height="4rem" mb={2} />
-        <LoadingPlaceholder width="100%" height="4rem" mb={2} />
-        <LoadingPlaceholder width="100%" height="4rem" mb={2} />
+      <Box py={3} px={3} sx={{ maxWidth: "maxWidth.sm" }} margin="auto">
+        <LoadingPlaceholder sx={{ width: "20rem", height: "3rem" }} mb={4} />
+        <LoadingPlaceholder sx={{ width: "20rem", height: "3rem" }} mb={4} />
+        <LoadingPlaceholder sx={{ width: "100%", height: "6rem" }} mb={3} />
+        <LoadingPlaceholder sx={{ width: "8rem", height: "2rem" }} mb={2} />
+        <LoadingPlaceholder sx={{ width: "100%", height: "4rem" }} mb={2} />
+        <LoadingPlaceholder sx={{ width: "100%", height: "4rem" }} mb={2} />
+        <LoadingPlaceholder sx={{ width: "100%", height: "4rem" }} mb={2} />
+        <LoadingPlaceholder sx={{ width: "100%", height: "4rem" }} mb={2} />
       </Box>
     )
   }
 
   return (
-    <Box maxWidth="maxWidth.sm" margin="auto">
+    <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto">
       <BackNavigation
         to={CURRICULUM_AREA_URL(areaId)}
         text={area.data?.name ?? ""}
@@ -116,23 +112,25 @@ export const PageEditSubject: FC<Props> = ({ areaId, subjectId }) => {
       <Typography.H6 m={3}>Edit Subject</Typography.H6>
       <Box p={3}>
         <Input
-          width="100%"
+          sx={{ width: "100%" }}
           label="Subject name"
           value={subjectName}
           onChange={(e) => setSubjectName(e.target.value)}
         />
       </Box>
-      <Typography.Body px={3} fontSize={1} color="textMediumEmphasis">
+      <Typography.Body
+        px={3}
+        sx={{
+          fontSize: 1,
+        }}
+        color="textMediumEmphasis"
+      >
         Materials
       </Typography.Body>
-      <Box width="100%" overflow="hidden">
-        {list}
-      </Box>
+      <Box sx={{ width: "100%", overflow: "hidden" }}>{list}</Box>
       <Flex
         px={3}
         py={2}
-        alignItems="center"
-        backgroundColor="background"
         onClick={() => {
           setMaterials((draft) => {
             draft.push({
@@ -143,17 +141,24 @@ export const PageEditSubject: FC<Props> = ({ areaId, subjectId }) => {
           })
         }}
         sx={{
+          backgroundColor: "background",
+          alignItems: "center",
           cursor: "pointer",
           position: "relative",
           userSelect: "none",
         }}
       >
         <Icon as={PlusIcon} m={0} mr={2} width={24} fill="primary" />
-        <Typography.Body color="textMediumEmphasis" fontSize={1}>
+        <Typography.Body
+          color="textMediumEmphasis"
+          sx={{
+            fontSize: 1,
+          }}
+        >
           Add material
         </Typography.Body>
       </Flex>
-      <Flex justifyContent="flex-end" width="100%" p={3}>
+      <Flex sx={{ width: "100%", justifyContent: "flex-end" }} p={3}>
         <Button disabled={!isValid} onClick={updateSubject}>
           {submitting && <LoadingIndicator />}
           Save

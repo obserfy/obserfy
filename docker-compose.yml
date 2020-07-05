@@ -13,9 +13,6 @@ services:
     ports:
       - "40000:40000"
       - "8080:8080"
-    depends_on:
-      - db
-      - minio
     restart: on-failure
     # Might not be necessary for all projects, but these
     # fixes delve crash on circleci
@@ -51,6 +48,8 @@ services:
       - 9000:9000
     volumes:
       - vor-minio:/data
+    env_file:
+      - .env
 
   imgproxy:
     image: darthsim/imgproxy:latest
@@ -67,6 +66,8 @@ services:
       IMGPROXY_KEY: "${IMGPROXY_KEY}"
       IMGPROXY_SALT: "${IMGPROXY_SALT}"
       IMGPROXY_ENABLE_WEBP_DETECTION: "true"
+    env_file:
+      - .env
 
   imgproxy-nginx:
     build:
@@ -78,9 +79,7 @@ services:
       - 10000:443
 
   db:
-    build:
-      context: docker/postgres/
-      dockerfile: dev.dockerfile
+    image: obserfy/postgres-dev:latest
     container_name: vor-postgres
     environment:
       POSTGRES_PASSWORD: postgres

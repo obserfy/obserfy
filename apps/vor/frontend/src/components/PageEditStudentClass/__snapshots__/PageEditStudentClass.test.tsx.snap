@@ -27,11 +27,11 @@ exports[`PageEditStudentClass should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  margin-left: -8px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-left: -8px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -44,14 +44,14 @@ exports[`PageEditStudentClass should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
+  margin: 16px;
+  margin-right: 4px;
   fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  margin: 16px;
-  height: 24px;
   width: 24px;
-  margin-right: 4px;
+  height: 24px;
 }
 
 .emotion-1 {
@@ -64,24 +64,14 @@ exports[`PageEditStudentClass should render correctly 1`] = `
   font-weight: 400;
   line-height: 3rem;
   text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  font-size: 16px;
   margin-bottom: 0;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-1 {
-    font-size: 14px;
-  }
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
 }
 
 .emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  font-size: 24px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 300;
   line-height: heading;
@@ -92,19 +82,16 @@ exports[`PageEditStudentClass should render correctly 1`] = `
   -ms-letter-spacing: 0;
   letter-spacing: 0;
   text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
-  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
   margin-left: 16px;
   margin-right: 16px;
   margin-top: 16px;
+  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
 .emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  font-size: 24px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 300;
   line-height: heading;
@@ -115,12 +102,10 @@ exports[`PageEditStudentClass should render correctly 1`] = `
   -ms-letter-spacing: 0;
   letter-spacing: 0;
   text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   margin-left: 16px;
   margin-right: 16px;
   margin-bottom: 16px;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
 }
 
 .emotion-5 {
@@ -133,47 +118,36 @@ exports[`PageEditStudentClass should render correctly 1`] = `
   font-weight: 400;
   line-height: 3rem;
   text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  font-size: 16px;
   margin-left: 16px;
   margin-right: 16px;
   margin-bottom: 8px;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-5 {
-    font-size: 14px;
-  }
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
 }
 
 .emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  padding: 8px;
+  overflow: auto;
   background-color: var(--theme-ui-colors-surface,#fff);
-  border-radius: 8px;
+  border-radius: 6px;
   box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
-  border-radius: 0;
-  padding: 0;
-  overflow: hidden;
   margin-bottom: 8px;
   margin-left: 0;
   margin-right: 0;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-7 {
-    border-radius: 8px;
-  }
+  border-radius: 0;
 }
 
 @media screen and (min-width:40em) {
   .emotion-7 {
     margin-left: 16px;
     margin-right: 16px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .emotion-7 {
+    border-radius: 6px;
   }
 }
 
@@ -187,22 +161,20 @@ exports[`PageEditStudentClass should render correctly 1`] = `
   font-weight: 400;
   line-height: 3rem;
   text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
+  margin: 16px;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   font-size: 14px;
-  margin: 16px;
 }
 
 .emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  padding: 16px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 16px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -219,11 +191,9 @@ exports[`PageEditStudentClass should render correctly 1`] = `
   font-weight: 400;
   line-height: 3rem;
   text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
-  font-size: 14px;
   line-height: 1;
+  font-size: 14px;
 }
 
 .emotion-9 {
@@ -232,15 +202,15 @@ exports[`PageEditStudentClass should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
+  margin: 0;
+  margin-left: auto;
+  margin-right: 8px;
   fill: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  margin: 0;
-  height: 20px;
   width: 20px;
-  margin-left: auto;
-  margin-right: 8px;
+  height: 20px;
 }
 
 .emotion-12 {
@@ -253,19 +223,10 @@ exports[`PageEditStudentClass should render correctly 1`] = `
   font-weight: 400;
   line-height: 3rem;
   text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  font-size: 16px;
   margin-left: 16px;
   margin-right: 16px;
   margin-top: 32px;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-12 {
-    font-size: 14px;
-  }
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
 }
 
 .emotion-16 {
@@ -283,26 +244,25 @@ exports[`PageEditStudentClass should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  as: label;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-size: 14px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .emotion-14 {
@@ -332,9 +292,10 @@ exports[`PageEditStudentClass should render correctly 1`] = `
   font-size: inherit;
   line-height: inherit;
   border: 1px solid;
-  border-radius: 8px;
+  border-radius: 4px;
   color: inherit;
   background-color: transparent;
+  border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));

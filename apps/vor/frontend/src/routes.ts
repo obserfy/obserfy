@@ -19,11 +19,27 @@ export const EDIT_SUBJECT_URL = (areaId: string, subjectId: string): string =>
 export const EDIT_CLASS_URL = (classId: string): string =>
   `/dashboard/settings/class/edit?classId=${classId}`
 
-export const STUDENT_DETAILS_PAGE_URL = (studentId: string): string =>
-  `/dashboard/observe/students/details?id=${studentId}`
+export const STUDENT_OVERVIEW_PAGE_URL = (studentId: string): string =>
+  `/dashboard/observe/students/overview?id=${studentId}`
 
 export const ALL_OBSERVATIONS_PAGE_URL = (studentId: string): string =>
   `/dashboard/observe/students/observations/all?studentId=${studentId}`
+
+export const NEW_OBSERVATION_URL = (studentId: string): string =>
+  `/dashboard/observe/students/observations/new?studentId=${studentId}`
+
+export const STUDENT_PLANS_URL = (studentId: string, date?: Dayjs) =>
+  `/dashboard/observe/students/plans?studentId=${studentId}&date=${
+    date?.toISOString() ?? ""
+  }`
+
+export const NEW_STUDENT_PLANS_URL = (studentId: string, date?: Dayjs) =>
+  `/dashboard/observe/students/plans/new?studentId=${studentId}&date=${
+    date?.toISOString() ?? ""
+  }`
+
+export const STUDENT_PLANS_DETAILS_URL = (studentId: string, planId: string) =>
+  `/dashboard/observe/students/plans/details?studentId=${studentId}&planId=${planId}`
 
 export const EDIT_GUARDIANS_URL = (studentId: string): string =>
   `/dashboard/observe/students/profile/guardians/edit?id=${studentId}`

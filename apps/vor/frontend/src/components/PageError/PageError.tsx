@@ -1,11 +1,12 @@
-import React, { FC } from "react"
+/** @jsx jsx */
+import { FC } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import GatsbyImage, { FixedObject } from "gatsby-image"
-import Flex from "../Flex/Flex"
+import { jsx, Button, Flex } from "theme-ui"
 import Typography from "../Typography/Typography"
-import Button from "../Button/Button"
+
 import { OBSERVE_PAGE_URL } from "../../routes"
-import Box from "../Box/Box"
+import { Link } from "../Link/Link"
 
 export const PageError: FC = () => {
   const astronaut = useStaticQuery(graphql`
@@ -21,12 +22,19 @@ export const PageError: FC = () => {
   `)
   return (
     <Flex
-      alignItems="center"
-      justifyContent="center"
-      height="100vh"
-      width="100vw"
+      sx={{
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100vh",
+        width: "100vw",
+      }}
     >
-      <Flex flexDirection="column" alignItems="center">
+      <Flex
+        sx={{
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
         <GatsbyImage
           fixed={astronaut?.file?.childImageSharp?.fixed as FixedObject}
         />
@@ -44,17 +52,19 @@ export const PageError: FC = () => {
           <a href="https://github.com/chrsep/obserfy/issues/new?assignees=&labels=&template=bug_report.md&title=">
             <Button variant="outline">Report Bug</Button>
           </a>
-          <Box as="a" href={OBSERVE_PAGE_URL} ml={2}>
+          <Link to={OBSERVE_PAGE_URL} sx={{ ml: 2 }}>
             <Button>Go to Home</Button>
-          </Box>
+          </Link>
         </Flex>
         <Typography.Body
           m={3}
           mt={4}
-          fontSize={1}
+          sx={{
+            fontSize: 1,
+            textAlign: "center",
+          }}
           color="textMediumEmphasis"
           maxWidth={250}
-          textAlign="center"
           lineHeight={1.5}
         >
           Just a heads up, you&apos;ll need a Github account to report a bug.

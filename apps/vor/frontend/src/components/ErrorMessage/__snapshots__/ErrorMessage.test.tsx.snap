@@ -24,17 +24,8 @@ exports[`ErrorMessage should render correctly 1`] = `
   font-weight: 400;
   line-height: 3rem;
   text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
   color: var(--theme-ui-colors-error,#d50000);
-  font-size: 16px;
   text-align: center;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-0 {
-    font-size: 14px;
-  }
 }
 
 <div>

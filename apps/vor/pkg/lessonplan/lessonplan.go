@@ -1,12 +1,13 @@
 package lessonplan
 
 import (
-	"github.com/go-chi/chi"
-	"github.com/go-pg/pg/v9"
-	"github.com/go-playground/validator/v10"
-	"github.com/pkg/errors"
 	"net/http"
 	"time"
+
+	"github.com/go-chi/chi"
+	"github.com/go-pg/pg/v10"
+	"github.com/go-playground/validator/v10"
+	"github.com/pkg/errors"
 
 	"github.com/chrsep/vor/pkg/rest"
 )
@@ -15,7 +16,7 @@ func NewRouter(server rest.Server, store Store) *chi.Mux {
 	r := chi.NewRouter()
 	r.Route("/{planId}", func(r chi.Router) {
 		r.Method("GET", "/", getLessonPlan(server, store))
-		r.Method("PATCH", "/", updateLessonPlan(server, store))
+		r.Method("PATCH", "/", patchLessonPlan(server, store))
 		r.Method("DELETE", "/", deleteLessonPlan(server, store))
 
 		r.Method("DELETE", "/file/{fileId}", deleteLessonPlanFile(server, store))
@@ -31,6 +32,8 @@ func getLessonPlan(server rest.Server, store Store) http.Handler {
 		Description string    `json:"description"`
 		ClassId     string    `json:"classId"`
 		Date        time.Time `json:"date"`
+		AreaId      string    `json:"areaId"`
+		MaterialId  string    `json:"materialId"`
 	}
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		planId := chi.URLParam(r, "planId")
@@ -50,6 +53,8 @@ func getLessonPlan(server rest.Server, store Store) http.Handler {
 			Description: plan.Description,
 			ClassId:     plan.ClassId,
 			Date:        plan.Date,
+			MaterialId:  plan.MaterialId,
+			AreaId:      plan.AreaId,
 		}
 		if err := rest.WriteJson(w, response); err != nil {
 			return rest.NewWriteJsonError(err)
@@ -58,11 +63,14 @@ func getLessonPlan(server rest.Server, store Store) http.Handler {
 	})
 }
 
-func updateLessonPlan(server rest.Server, store Store) http.Handler {
+func patchLessonPlan(server rest.Server, store Store) http.Handler {
 	type reqBody struct {
-		Title       *string    `json:"title,omitempty"`
-		Description *string    `json:"description,omitempty"`
-		Date        *time.Time `json:"date,omitempty"`
+		Title       *string    `json:"title"`
+		Description *string    `json:"description"`
+		Date        *time.Time `json:"date"`
+		ClassId     *string    `json:"classId"`
+		AreaId      *string    `json:"areaId"`
+		MaterialId  *string    `json:"materialId"`
 	}
 
 	validate := validator.New()
@@ -87,6 +95,9 @@ func updateLessonPlan(server rest.Server, store Store) http.Handler {
 			Title:       body.Title,
 			Description: body.Description,
 			Date:        body.Date,
+			AreaId:      body.AreaId,
+			MaterialId:  body.MaterialId,
+			ClassId:     body.ClassId,
 		}
 		rowsAffected, err := store.UpdateLessonPlan(planInput)
 		if err != nil {

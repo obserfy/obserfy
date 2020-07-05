@@ -1,21 +1,19 @@
-import React, { FC } from "react"
+import React, { FC, PropsWithoutRef } from "react"
+import { Card, CardProps, Flex } from "theme-ui"
 import { Link } from "../Link/Link"
-import Card from "../Card/Card"
-import Flex from "../Flex/Flex"
 import Typography from "../Typography/Typography"
 import Spacer from "../Spacer/Spacer"
 import Icon from "../Icon/Icon"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
-import { BoxProps } from "../Box/Box"
 
-interface Props extends BoxProps {
+interface Props extends PropsWithoutRef<CardProps> {
   name: string
   to: string
 }
 export const CardLink: FC<Props> = ({ name, to, ...props }) => (
   <Link to={to}>
     <Card p={3} {...props}>
-      <Flex alignItems="center">
+      <Flex sx={{ alignItems: "center" }}>
         <Typography.H6>{name}</Typography.H6>
         <Spacer />
         <Icon as={NextIcon} m={0} />

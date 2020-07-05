@@ -1,15 +1,12 @@
 import React, { FC, useState } from "react"
+import { Box, Flex, Button, Card } from "theme-ui"
 import { Link, navigate } from "../Link/Link"
-import Box from "../Box/Box"
 import Typography from "../Typography/Typography"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
-import Card from "../Card/Card"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { useGetArea } from "../../api/useGetArea"
 import { Subject, useGetAreaSubjects } from "../../api/useGetAreaSubjects"
 import { useGetSubjectMaterials } from "../../api/useGetSubjectMaterials"
-import Flex from "../Flex/Flex"
-import Button from "../Button/Button"
 import Spacer from "../Spacer/Spacer"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
@@ -47,10 +44,16 @@ export const PageCurriculumArea: FC<Props> = ({ id }) => {
 
   return (
     <>
-      <Box maxWidth="maxWidth.sm" margin="auto">
+      <Box sx={{ maxWidth: "maxWidth.sm", margin: "auto" }}>
         <BackNavigation to="/dashboard/settings/curriculum" text="Curriculum" />
         {loading && !area.data?.name && <LoadingState />}
-        <Typography.H3 p={3} pb={2} lineHeight={1}>
+        <Typography.H3
+          p={3}
+          pb={2}
+          sx={{
+            lineHeight: 1,
+          }}
+        >
           {area.data?.name}
         </Typography.H3>
         <Flex mx={3} mt={3}>
@@ -73,7 +76,7 @@ export const PageCurriculumArea: FC<Props> = ({ id }) => {
             Edit
           </Button>
         </Flex>
-        <Flex alignItems="center" mx={3} mt={4}>
+        <Flex sx={{ alignItems: "center" }} mx={3} mt={4}>
           <Typography.H5
             fontWeight="normal"
             color="textMediumEmphasis"
@@ -127,7 +130,7 @@ export const PageCurriculumArea: FC<Props> = ({ id }) => {
 
 const LoadingState: FC = () => (
   <Box p={3}>
-    <LoadingPlaceholder width="100%" height="4rem" />
+    <LoadingPlaceholder sx={{ width: "100%", height: "4rem" }} />
   </Box>
 )
 
@@ -151,33 +154,39 @@ const SubjectListItem: FC<SubjectListItemProps> = ({
       key={material.id}
       sx={{
         borderTopColor: "border",
-        borderTopWidth: 1,
+        borderTopWidth: "1px",
         borderTopStyle: "solid",
       }}
     >
-      <Typography.Body fontSize={1}>{material.name}</Typography.Body>
+      <Typography.Body
+        sx={{
+          fontSize: 1,
+        }}
+      >
+        {material.name}
+      </Typography.Body>
     </Box>
   ))
 
   const loadingPlaceholder = materials.status === "loading" && !materials.data && (
     <Box m={3}>
-      <LoadingPlaceholder width="100%" height="4rem" mb={3} />
-      <LoadingPlaceholder width="100%" height="4rem" mb={3} />
-      <LoadingPlaceholder width="100%" height="4rem" mb={3} />
-      <LoadingPlaceholder width="100%" height="4rem" mb={3} />
-      <LoadingPlaceholder width="100%" height="4rem" mb={3} />
+      <LoadingPlaceholder sx={{ width: "100%", height: "4rem" }} mb={3} />
+      <LoadingPlaceholder sx={{ width: "100%", height: "4rem" }} mb={3} />
+      <LoadingPlaceholder sx={{ width: "100%", height: "4rem" }} mb={3} />
+      <LoadingPlaceholder sx={{ width: "100%", height: "4rem" }} mb={3} />
+      <LoadingPlaceholder sx={{ width: "100%", height: "4rem" }} mb={3} />
     </Box>
   )
 
   return (
     <Box py={3} px={[0, 3]}>
-      <Card borderRadius={[0, "default"]}>
-        <Flex alignItems="center" m={3} mr={2}>
+      <Card sx={{ borderRadius: [0, "default"] }}>
+        <Flex sx={{ alignItems: "center" }} m={3} mr={2}>
           <Typography.Body fontSize={3} mr={3}>
             {subject.name}
           </Typography.Body>
           <Spacer />
-          <Flex alignItems="center" sx={{ flexShrink: 0 }}>
+          <Flex sx={{ alignItems: "center", flexShrink: 0 }}>
             <Button
               sx={{ flexShrink: 0 }}
               variant="secondary"

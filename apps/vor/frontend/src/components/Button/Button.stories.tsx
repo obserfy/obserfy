@@ -1,7 +1,7 @@
 import React, { FC } from "react"
 
+import { Box } from "theme-ui"
 import Button from "./Button"
-import Box from "../Box/Box"
 
 export default {
   title: "Core|Button",

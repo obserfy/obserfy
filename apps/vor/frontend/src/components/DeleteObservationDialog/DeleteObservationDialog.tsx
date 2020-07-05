@@ -1,8 +1,8 @@
 import React, { FC, useState } from "react"
-import Flex from "../Flex/Flex"
+import { Flex, Button } from "theme-ui"
 import Typography from "../Typography/Typography"
 import Spacer from "../Spacer/Spacer"
-import Button from "../Button/Button"
+
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import Dialog from "../Dialog/Dialog"
 import { getAnalytics } from "../../analytics"
@@ -38,12 +38,12 @@ export const DeleteObservationDialog: FC<Props> = ({
   }
 
   return (
-    <Dialog maxWidth={["", "maxWidth.xsm"]}>
+    <Dialog sx={{ maxWidth: ["", "maxWidth.xsm"] }}>
       <Flex
         backgroundColor="surface"
-        justifyContent="center"
         p={3}
         sx={{
+          justifyContent: "center",
           flexShrink: 0,
           position: "relative",
           borderBottomColor: "border",
@@ -71,7 +71,7 @@ export const DeleteObservationDialog: FC<Props> = ({
         <i>&quot;{shortDesc}&quot;</i> will be permanently deleted. Are you
         sure?
       </Typography.Body>
-      <Flex alignItems="center">
+      <Flex sx={{ alignItems: "center" }}>
         <Spacer />
         <Button variant="outline" m={2} onClick={onDismiss}>
           Cancel

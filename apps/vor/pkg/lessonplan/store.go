@@ -23,6 +23,8 @@ type (
 		FileIds     []string
 		Date        time.Time
 		Repetition  *RepetitionPattern
+		AreaId      string
+		MaterialId  string
 	}
 
 	PlanData struct {
@@ -33,6 +35,10 @@ type (
 		FileIds     []string
 		Date        time.Time
 		Repetition  *RepetitionPattern
+		AreaId      string
+		MaterialId  string
+		Students    []string
+		SchoolId    string
 	}
 
 	UpdatePlanData struct {
@@ -41,10 +47,12 @@ type (
 		Description *string
 		Date        *time.Time
 		Repetition  *RepetitionPattern
+		AreaId      *string
+		MaterialId  *string
+		ClassId     *string
 	}
 
 	Store interface {
-		CreateLessonPlan(planInput PlanData) (*LessonPlan, error)
 		UpdateLessonPlan(planData UpdatePlanData) (int, error)
 		GetLessonPlan(planId string) (*LessonPlan, error)
 		DeleteLessonPlan(planId string) error

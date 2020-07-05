@@ -17,12 +17,12 @@ func NewRouter(s rest.Server, store Store) *chi.Mux {
 		r.Use(authorizationMiddleware(s, store))
 		r.Method("GET", "/", getStudent(s, store))
 		r.Method("DELETE", "/", deleteStudent(s, store))
-		r.Method("PATCH", "/", putStudent(s, store))
+		r.Method("PATCH", "/", patchStudent(s, store))
 
 		r.Method("POST", "/observations", postObservation(s, store))
 		r.Method("GET", "/observations", getObservation(s, store))
 
-		r.Method("POST", "/attendances", registerAttendance(s, store))
+		r.Method("POST", "/attendances", postAttaendances(s, store))
 		r.Method("GET", "/attendances", getAttendance(s, store))
 
 		r.Method("GET", "/materialsProgress", getMaterialProgress(s, store))
@@ -33,6 +33,8 @@ func NewRouter(s rest.Server, store Store) *chi.Mux {
 
 		r.Method("POST", "/classes", postClassRelation(s, store))
 		r.Method("DELETE", "/classes", deleteClassRelation(s, store))
+
+		r.Method("GET", "/plans", getPlans(s, store))
 	})
 	return r
 }
@@ -108,7 +110,7 @@ func authorizationMiddleware(s rest.Server, store Store) func(next http.Handler)
 		})
 	}
 }
-func registerAttendance(s rest.Server, store Store) http.Handler {
+func postAttaendances(s rest.Server, store Store) http.Handler {
 	type requestBody struct {
 		StudentId string    `json:"studentId"`
 		ClassId   string    `json:"classId"`
@@ -254,6 +256,7 @@ func getStudent(s rest.Server, store Store) http.Handler {
 			DateOfEntry: student.DateOfEntry,
 			Guardians:   guardians,
 			Classes:     classes,
+			Active:      *student.Active,
 		}
 		if err := rest.WriteJson(w, response); err != nil {
 			return rest.NewWriteJsonError(err)
@@ -272,18 +275,20 @@ func deleteStudent(s rest.Server, store Store) http.Handler {
 	})
 }
 
-func putStudent(s rest.Server, store Store) http.Handler {
+func patchStudent(s rest.Server, store Store) http.Handler {
 	type requestBody struct {
 		Name        string          `json:"name"`
 		DateOfBirth *time.Time      `json:"dateOfBirth"`
 		DateOfEntry *time.Time      `json:"dateOfEntry"`
 		CustomId    string          `json:"customId"`
 		Gender      postgres.Gender `json:"gender"`
+		Active      *bool           `json:"active"`
 	}
 	type responseBody struct {
 		Id          string     `json:"id"`
 		Name        string     `json:"name"`
 		DateOfBirth *time.Time `json:"dateOfBirth,omitempty"`
+		Active      *bool      `json:"active"`
 	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		targetId := chi.URLParam(r, "studentId") // from a route like /users/{userID}
@@ -304,7 +309,7 @@ func putStudent(s rest.Server, store Store) http.Handler {
 		newStudent.Gender = requestBody.Gender
 		newStudent.CustomId = requestBody.CustomId
 		newStudent.DateOfEntry = requestBody.DateOfEntry
-
+		newStudent.Active = requestBody.Active
 		if err := store.UpdateStudent(newStudent); err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Failed updating old student data", err}
 		}
@@ -313,6 +318,7 @@ func putStudent(s rest.Server, store Store) http.Handler {
 			Id:          newStudent.Id,
 			Name:        newStudent.Name,
 			DateOfBirth: newStudent.DateOfBirth,
+			Active:      newStudent.Active,
 		}
 		if err := rest.WriteJson(w, response); err != nil {
 			return rest.NewWriteJsonError(err)
@@ -478,6 +484,63 @@ func upsertMaterialProgress(s rest.Server, store Store) http.Handler {
 		if _, err := store.UpdateProgress(progress); err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Failed updating progress", err}
 		}
+		return nil
+	})
+}
+
+func getPlans(s rest.Server, store Store) http.Handler {
+	type Area struct {
+		Id   string `json:"id"`
+		Name string `json:"name"`
+	}
+	type responseBody struct {
+		Id          string    `json:"id"`
+		Title       string    `json:"title"`
+		Description string    `json:"description"`
+		Date        time.Time `json:"date"`
+		Area        *Area     `json:"area,omitempty"`
+	}
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		studentId := chi.URLParam(r, "studentId")
+		date := r.URL.Query().Get("date")
+
+		parsedDate, err := time.Parse(time.RFC3339, date)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusBadRequest,
+				Message: "date needs to be in ISO format",
+				Error:   err,
+			}
+		}
+
+		lessonPlans, err := store.GetLessonPlans(studentId, parsedDate)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "Failed to query lesson plan",
+				Error:   err,
+			}
+		}
+
+		response := make([]responseBody, len(lessonPlans))
+		for i, plan := range lessonPlans {
+			response[i] = responseBody{
+				Id:          plan.Id,
+				Title:       plan.LessonPlanDetails.Title,
+				Description: plan.LessonPlanDetails.Description,
+				Date:        *plan.Date,
+			}
+			if plan.LessonPlanDetails.AreaId != "" {
+				response[i].Area = &Area{
+					Id:   plan.LessonPlanDetails.AreaId,
+					Name: plan.LessonPlanDetails.Area.Name,
+				}
+			}
+		}
+		if err := rest.WriteJson(w, response); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
+
 		return nil
 	})
 }

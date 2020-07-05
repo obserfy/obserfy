@@ -1,21 +1,19 @@
 /** @jsx jsx */
 import { FC, useState } from "react"
-import { jsx } from "theme-ui"
-import { Box } from "../Box/Box"
+import { Box, Button, Flex, jsx } from "theme-ui"
 import Input from "../Input/Input"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { ALL_PLANS_URL } from "../../routes"
 import { Typography } from "../Typography/Typography"
-import Button from "../Button/Button"
 import useGetSchoolClasses from "../../api/classes/useGetSchoolClasses"
 import Chip from "../Chip/Chip"
-import { Flex } from "../Flex/Flex"
 import TextArea from "../TextArea/TextArea"
 import DateInput from "../DateInput/DateInput"
 import usePostNewPlan from "../../api/plans/usePostNewPlan"
 import dayjs from "../../dayjs"
 import { navigate } from "../Link/Link"
 import EmptyClassDataPlaceholder from "../EmptyClassDataPlaceholder/EmptyClassDataPlaceholder"
+import { useGetCurriculumAreas } from "../../api/useGetCurriculumAreas"
 
 interface Props {
   chosenDate: string
@@ -23,11 +21,13 @@ interface Props {
 
 export const PageNewPlan: FC<Props> = ({ chosenDate }) => {
   const classes = useGetSchoolClasses()
+  const areas = useGetCurriculumAreas()
   const [mutate] = usePostNewPlan()
 
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
   const [classId, setClassId] = useState("")
+  const [areaId, setAreaId] = useState("")
   const [date, setDate] = useState(chosenDate ? dayjs(chosenDate) : dayjs())
 
   // Repetition data
@@ -35,7 +35,7 @@ export const PageNewPlan: FC<Props> = ({ chosenDate }) => {
   const [endDate, setEndDate] = useState(date)
 
   return (
-    <Box maxWidth="maxWidth.sm" mx="auto">
+    <Box sx={{ maxWidth: "maxWidth.sm" }} mx="auto">
       <BackNavigation to={ALL_PLANS_URL(date)} text="All plans" />
       <Typography.H5 m={3}>New Plan</Typography.H5>
 
@@ -48,21 +48,48 @@ export const PageNewPlan: FC<Props> = ({ chosenDate }) => {
         />
         <Input
           label="Title"
-          width="100%"
+          sx={{ width: "100%" }}
           mb={2}
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
         <TextArea
           label="Description"
-          width="100%"
           mb={3}
           value={description}
+          sx={{ width: "100%" }}
           onChange={(e) => {
             setDescription(e.target.value)
           }}
         />
       </Box>
+
+      {areas.status === "success" && areas.data.length === 0 ? (
+        <Box mb={3}>
+          <EmptyClassDataPlaceholder />
+        </Box>
+      ) : (
+        <Box mx={3}>
+          <Typography.H6 mb={2}>Related Area</Typography.H6>
+          <Flex mb={3} sx={{ flexWrap: "wrap" }}>
+            {areas.data?.map(({ id, name }) => (
+              <Chip
+                key={id}
+                text={name}
+                activeBackground="primary"
+                onClick={() => {
+                  if (id === areaId) {
+                    setAreaId("")
+                  } else {
+                    setAreaId(id)
+                  }
+                }}
+                isActive={id === areaId}
+              />
+            ))}
+          </Flex>
+        </Box>
+      )}
 
       {classes.status === "success" && classes.data.length === 0 ? (
         <Box mb={3}>
@@ -121,20 +148,28 @@ export const PageNewPlan: FC<Props> = ({ chosenDate }) => {
 
       <Box mx={3} mb={4}>
         <Button
-          width="100%"
           disabled={classId === "" || title === ""}
           mt={3}
           onClick={async () => {
             const result = await mutate({
+              areaId,
               title,
               description,
               classId,
               date,
+              repetition:
+                repetition === 0
+                  ? undefined
+                  : {
+                      type: repetition,
+                      endDate,
+                    },
             })
             if (result.ok) {
               await navigate(ALL_PLANS_URL(date))
             }
           }}
+          sx={{ width: "100%" }}
         >
           Save
         </Button>

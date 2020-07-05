@@ -1,11 +1,10 @@
 import React, { FC, FormEvent, useState } from "react"
+import { Box, Flex, Button } from "theme-ui"
 import { categories } from "../../categories"
-import Box from "../Box/Box"
 import Select from "../Select/Select"
 import Input from "../Input/Input"
 import TextArea from "../TextArea/TextArea"
-import Flex from "../Flex/Flex"
-import Button from "../Button/Button"
+
 import BackNavigation from "../BackNavigation/BackNavigation"
 import Spacer from "../Spacer/Spacer"
 import Typography from "../Typography/Typography"
@@ -48,14 +47,14 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
   }
 
   return (
-    <Box maxWidth="maxWidth.sm" margin="auto" pb={4}>
+    <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={4}>
       <BackNavigation
-        to={`/dashboard/observe/students/details?id=${studentId}`}
+        to={`/dashboard/observe/students/overview?id=${studentId}`}
         text="Student Detail"
       />
       {student.status === "loading" && student.data === undefined ? (
         <Box pb={4} pt={3} px={3}>
-          <LoadingPlaceholder width="100%" height="4rem" />
+          <LoadingPlaceholder sx={{ width: "100%", height: "4rem" }} />
         </Box>
       ) : (
         <Typography.H6 pb={4} pt={3} px={3}>
@@ -63,29 +62,12 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
         </Typography.H6>
       )}
       <Box as="form" px={3} onSubmit={submit}>
-        <Input
-          autoFocus
-          label="Short Description"
-          width="100%"
-          placeholder="What have you found?"
-          onChange={(e) => setShortDesc(e.target.value)}
-          value={shortDesc}
-          mb={3}
-        />
-        <TextArea
-          height={150}
-          label="Details"
-          width="100%"
-          fontSize={2}
-          placeholder="Tell us what you observed"
-          onChange={(e) => setDetails(e.target.value)}
-          value={longDesc}
-          mb={3}
-        />
         <Select
+          autoFocus
           label="Category"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
+          mb={3}
         >
           {categories.map(({ id, name }) => (
             <option key={id} value={id}>
@@ -93,6 +75,26 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
             </option>
           ))}
         </Select>
+        <Input
+          label="Short Description"
+          sx={{ width: "100%" }}
+          placeholder="What have you found?"
+          onChange={(e) => setShortDesc(e.target.value)}
+          value={shortDesc}
+          mb={3}
+        />
+        <TextArea
+          label="Details"
+          sx={{
+            height: 150,
+            fontSize: 2,
+            width: "100%",
+          }}
+          placeholder="Tell us what you observed"
+          onChange={(e) => setDetails(e.target.value)}
+          value={longDesc}
+          mb={3}
+        />
         <Flex pt={3}>
           <Spacer />
           <Button disabled={shortDesc === ""}>

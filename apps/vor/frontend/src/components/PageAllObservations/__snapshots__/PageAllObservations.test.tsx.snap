@@ -60,19 +60,19 @@ exports[`PageAllObservations should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  max-width: 640px;
   margin: auto;
+  max-width: 640px;
 }
 
 .emotion-2 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  margin-left: -8px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-left: -8px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -85,14 +85,14 @@ exports[`PageAllObservations should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
+  margin: 16px;
+  margin-right: 4px;
   fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  margin: 16px;
-  height: 24px;
   width: 24px;
-  margin-right: 4px;
+  height: 24px;
 }
 
 .emotion-1 {
@@ -105,17 +105,8 @@ exports[`PageAllObservations should render correctly 1`] = `
   font-weight: 400;
   line-height: 3rem;
   text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  font-size: 16px;
   margin-bottom: 0;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-1 {
-    font-size: 14px;
-  }
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
 }
 
 .emotion-5 {
@@ -129,7 +120,7 @@ exports[`PageAllObservations should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  border-radius: 8px;
+  border-radius: 6px;
   -webkit-animation: 1s ease-in-out 0s infinite animation-0;
   animation: 1s ease-in-out 0s infinite animation-0;
   width: 100%;
@@ -140,12 +131,12 @@ exports[`PageAllObservations should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  border-radius: 8px;
+  margin-top: 8px;
+  border-radius: 6px;
   -webkit-animation: 1s ease-in-out 0s infinite animation-0;
   animation: 1s ease-in-out 0s infinite animation-0;
   width: 90%%;
   height: 5rem;
-  margin-top: 8px;
 }
 
 .emotion-8 {
@@ -160,7 +151,6 @@ exports[`PageAllObservations should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  font-size: 24px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 300;
   line-height: heading;
@@ -171,10 +161,8 @@ exports[`PageAllObservations should render correctly 1`] = `
   -ms-letter-spacing: 0;
   letter-spacing: 0;
   text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
-  word-wrap: break-word;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  word-wrap: break-word;
 }
 
 .emotion-6 {
@@ -205,21 +193,21 @@ exports[`PageAllObservations should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  background-color: var(--theme-ui-colors-surface,#fff);
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 6px;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   border-width: 1px;
   border-style: solid;
   white-space: nowrap;
-  background-color: var(--theme-ui-colors-surface,#fff);
-  margin-right: 8px;
-  margin-bottom: 8px;
-  padding-left: 8px;
-  padding-right: 8px;
 }
 
 .emotion-10:hover {
@@ -236,8 +224,6 @@ exports[`PageAllObservations should render correctly 1`] = `
   font-weight: 400;
   line-height: 3rem;
   text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   font-size: 14px;
 }
@@ -246,21 +232,21 @@ exports[`PageAllObservations should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  background-color: #b39ddb;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 6px;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   border-width: 1px;
   border-style: solid;
   white-space: nowrap;
-  background-color: #b39ddb;
-  margin-right: 8px;
-  margin-bottom: 8px;
-  padding-left: 8px;
-  padding-right: 8px;
 }
 
 .emotion-12:hover {
@@ -277,8 +263,6 @@ exports[`PageAllObservations should render correctly 1`] = `
   font-weight: 400;
   line-height: 3rem;
   text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
   color: var(--theme-ui-colors-onPrimary,#000);
   font-size: 14px;
 }
@@ -294,12 +278,12 @@ exports[`PageAllObservations should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  border-radius: 8px;
+  margin-bottom: 16px;
+  border-radius: 6px;
   -webkit-animation: 1s ease-in-out 0s infinite animation-0;
   animation: 1s ease-in-out 0s infinite animation-0;
   width: 100%;
   height: 20rem;
-  margin-bottom: 16px;
 }
 
 .emotion-30 {
@@ -323,7 +307,7 @@ exports[`PageAllObservations should render correctly 1`] = `
       class="emotion-31"
     >
       <a
-        href="/dashboard/observe/students/details?id=sadfasdf"
+        href="/dashboard/observe/students/overview?id=sadfasdf"
         style="display: block;"
       >
         <div

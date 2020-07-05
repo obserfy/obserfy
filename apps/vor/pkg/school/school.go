@@ -2,12 +2,14 @@ package school
 
 import (
 	"errors"
+	"github.com/chrsep/vor/pkg/lessonplan"
 	"net/http"
 	"os"
+	"strconv"
 	"time"
 
 	"github.com/go-chi/chi"
-	"github.com/go-pg/pg/v9"
+	"github.com/go-pg/pg/v10"
 	"github.com/go-playground/validator/v10"
 	"github.com/google/uuid"
 	richErrors "github.com/pkg/errors"
@@ -46,7 +48,8 @@ func NewRouter(
 		r.Method("POST", "/guardians", postNewGuardian(server, store))
 		r.Method("GET", "/guardians", getGuardians(server, store))
 
-		r.Method("GET", "/plans", getLessonPlan(server, store))
+		r.Method("GET", "/plans", getLessonPlans(server, store))
+		r.Method("POST", "/plans", postNewLessonPlan(server, store))
 
 		r.Method("GET", "/files", getLessonFiles(server, store))
 		r.Method("POST", "/files", addFile(server, store))
@@ -317,16 +320,41 @@ func getSchool(s rest.Server, store Store) rest.Handler {
 }
 
 func getStudents(s rest.Server, store Store, imgproxyClient *imgproxy.Client) rest.Handler {
-	type responseBody struct {
-		Id            string     `json:"id"`
-		Name          string     `json:"name"`
-		DateOfBirth   *time.Time `json:"dateOfBirth,omitempty"`
-		ProfilePicUrl string     `json:"profilePicUrl,omitempty"`
-	}
+	type (
+		class struct {
+			Id   string `json:"classId"`
+			Name string `json:"className"`
+		}
+
+		responseBody struct {
+			Id            string     `json:"id"`
+			Name          string     `json:"name"`
+			DateOfBirth   *time.Time `json:"dateOfBirth,omitempty"`
+			ProfilePicUrl string     `json:"profilePicUrl,omitempty"`
+			Active        bool       `json:"active"`
+			Classes       []class    `json:"classes"`
+		}
+	)
+
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		schoolId := chi.URLParam(r, "schoolId")
+		classId := r.URL.Query().Get("classId")
+		active := r.URL.Query().Get("active")
 
-		students, err := store.GetStudents(schoolId)
+		var parsedActive *bool = nil
+		if active != "" {
+			result, err := strconv.ParseBool(active)
+			if err != nil {
+				return &rest.Error{
+					Code:    http.StatusBadRequest,
+					Message: "invalid active query value",
+					Error:   richErrors.Wrap(err, "invalid active query value"),
+				}
+			}
+			parsedActive = &result
+		}
+
+		students, err := store.GetStudents(schoolId, classId, parsedActive)
 		if err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Failed getting all students", err}
 		}
@@ -337,11 +365,22 @@ func getStudents(s rest.Server, store Store, imgproxyClient *imgproxy.Client) re
 			if student.ProfilePic != "" {
 				profilePicUrl = imgproxyClient.GenerateUrl(student.ProfilePic, 80, 80)
 			}
+
+			classes := make([]class, 0)
+			for _, v := range student.Classes {
+				classes = append(classes, class{
+					Id:   v.Id,
+					Name: v.Name,
+				})
+			}
+
 			response = append(response, responseBody{
 				Id:            student.Id,
 				Name:          student.Name,
 				DateOfBirth:   student.DateOfBirth,
 				ProfilePicUrl: profilePicUrl,
+				Active:        student.Active,
+				Classes:       classes,
 			})
 		}
 		if err = rest.WriteJson(w, response); err != nil {
@@ -686,13 +725,18 @@ func getGuardians(server rest.Server, store Store) http.Handler {
 	})
 }
 
-func getLessonPlan(server rest.Server, store Store) http.Handler {
+func getLessonPlans(server rest.Server, store Store) http.Handler {
+	type Area struct {
+		Id   string `json:"id"`
+		Name string `json:"name"`
+	}
 	type responseBody struct {
 		Id          string    `json:"id"`
 		Title       string    `json:"title"`
 		Description string    `json:"description"`
 		ClassName   string    `json:"className"`
 		Date        time.Time `json:"date"`
+		Area        *Area     `json:"area,omitempty"`
 	}
 
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
@@ -724,6 +768,12 @@ func getLessonPlan(server rest.Server, store Store) http.Handler {
 				Description: plan.Description,
 				Date:        plan.Date,
 				ClassName:   plan.ClassName,
+			}
+			if plan.AreaId != "" {
+				response[i].Area = &Area{
+					Id:   plan.AreaId,
+					Name: plan.AreaName,
+				}
 			}
 		}
 		if err := rest.WriteJson(w, response); err != nil {
@@ -876,6 +926,83 @@ func deleteFile(server rest.Server, store Store) http.Handler {
 		}
 
 		w.WriteHeader(http.StatusOK)
+		return nil
+	})
+}
+
+func postNewLessonPlan(server rest.Server, store Store) http.Handler {
+	type reqBody struct {
+		Title       string    `json:"title" validate:"required"`
+		Description string    `json:"description"`
+		Date        time.Time `json:"date" validate:"required"`
+		FileIds     []string  `json:"fileIds"`
+		AreaId      string    `json:"areaId,omitempty"`
+		MaterialId  string    `json:"materialId,omitempty"`
+		Repetition  *struct {
+			Type    int       `json:"type" validate:"oneof=0 1 2 3"`
+			EndDate time.Time `json:"endDate" validate:"required"`
+		} `json:"repetition,omitempty"`
+		Students []string `json:"students"`
+		ClassId  string   `json:"classId"`
+	}
+
+	type resBody struct {
+		Id    string `json:"id"`
+		Title string `json:"title"`
+	}
+
+	validate := validator.New()
+
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		body := reqBody{}
+		schoolId := chi.URLParam(r, "schoolId")
+
+		if err := rest.ParseJson(r.Body, &body); err != nil {
+			return rest.NewParseJsonError(err)
+		}
+		if err := validate.Struct(body); err != nil {
+			return &rest.Error{
+				Code:    http.StatusBadRequest,
+				Message: err.Error(),
+				Error:   richErrors.Wrap(err, "invalid request body"),
+			}
+		}
+
+		planInput := lessonplan.PlanData{
+			ClassId:     body.ClassId,
+			Title:       body.Title,
+			Description: body.Description,
+			FileIds:     body.FileIds,
+			Date:        body.Date,
+			AreaId:      body.AreaId,
+			MaterialId:  body.MaterialId,
+			Students:    body.Students,
+			SchoolId:    schoolId,
+		}
+		if body.Repetition != nil {
+			planInput.Repetition = &lessonplan.RepetitionPattern{
+				Type:    body.Repetition.Type,
+				EndDate: body.Repetition.EndDate,
+			}
+		}
+
+		lessonPlan, err := store.CreateLessonPlan(planInput)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "Failed to create lesson plan",
+				Error:   err,
+			}
+		}
+
+		w.WriteHeader(http.StatusCreated)
+		if err := rest.WriteJson(w, &resBody{
+			Id:    lessonPlan.Id,
+			Title: lessonPlan.Title,
+		}); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
+
 		return nil
 	})
 }

@@ -1,6 +1,6 @@
 // Test the whole happy path
 
-describe("Smoke test on prod build", () => {
+describe("test student profile page", () => {
   const faker = require("faker")
   let name
   let email
@@ -27,11 +27,11 @@ describe("Smoke test on prod build", () => {
     )
   })
 
-  it("should run smoke test successfully", () => {
+  it("should be able to edit all student data.", () => {
     cy.visit("/")
 
     // Create student
-    const studentName = "Carol"
+    let studentName = "Carol"
     cy.get("[data-cy=new-student-button]").click()
     cy.contains("Name").type(studentName)
     cy.contains("Save").click()
@@ -42,7 +42,7 @@ describe("Smoke test on prod build", () => {
       "Bla bla black sheep have you any war. Yes shire yes shire tea bag fool"
     cy.contains(studentName).should("be.visible")
     cy.contains(studentName).click()
-    cy.contains("Add Observation").click()
+    cy.contains("Observation").click()
     cy.get("[aria-label=Category]").select("2")
     cy.contains("Short Description").type(shortDesc)
     cy.get("[aria-label=Details]").type(details)
@@ -54,22 +54,29 @@ describe("Smoke test on prod build", () => {
       .contains(details)
       .should("be.visible")
 
-    // // Change student name
-    // studentName = "Jane Doe"
-    // cy.get("[data-cy=edit]").click()
-    // cy.contains("Name").find("input").clear().type(studentName)
-    // cy.contains("Save").click()
-    //
-    // // Change student dob
-    // cy.get("[data-cy=edit]").click()
+    // Change student name
+    studentName = "Jane Doe"
+    cy.contains("Profile").click()
+    cy.get("[aria-label=edit-name]").click()
+    cy.contains("label", "Name").find("input").clear().type(studentName)
+    cy.contains("Save").click()
+    cy.contains(studentName).should("be.visible")
+
+    // Change student dob
     // cy.contains("Name").find("input").clear().type("Jane Doe")
     // cy.contains("Date of Birth").click()
     // cy.contains("Month").find("select").select("6")
     // cy.get("[data-cy=set-button]").click()
     // cy.contains("Save").click()
 
+    // Test changing status
+    cy.contains("Set As Inactive", { matchCase: false }).click()
+    cy.contains("Yes").click()
+    cy.wait(100)
+    cy.get("[data-cy=active-button]").should("be.visible")
+    cy.get("[data-cy=inactive-button]").should("not.be.visible")
+
     const guardianName = faker.name.firstName()
-    cy.contains("See Profile").click()
     cy.get("[data-cy=edit-guardians]").click()
     cy.get("[data-cy=new-guardian]").click()
     cy.contains("Guardian Name").type(guardianName)
@@ -82,7 +89,7 @@ describe("Smoke test on prod build", () => {
     cy.contains(guardianName).should("be.visible")
 
     // Re-add guardian
-    cy.wait(200)
+    cy.wait(500)
     cy.get("[data-cy=add-guardian]").click()
     cy.get("[aria-label=Relationship]").select("1")
     cy.contains("Save").click()

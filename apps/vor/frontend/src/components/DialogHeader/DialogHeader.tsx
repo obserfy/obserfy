@@ -1,7 +1,7 @@
 import React, { FC } from "react"
+import { Button, Flex } from "theme-ui"
+
 import Typography from "../Typography/Typography"
-import Button from "../Button/Button"
-import Flex from "../Flex/Flex"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 
 interface Props {
@@ -21,10 +21,10 @@ export const DialogHeader: FC<Props> = ({
   loading,
 }) => (
   <Flex
-    alignItems="center"
     backgroundColor="surface"
     py={1}
     sx={{
+      alignItems: "center",
       position: "relative",
       borderBottomColor: "border",
       borderBottomWidth: 1,
@@ -32,8 +32,8 @@ export const DialogHeader: FC<Props> = ({
     }}
   >
     <Typography.H6
-      width="100%"
       sx={{
+        width: "100%",
         position: "absolute",
         pointerEvents: "none",
         textAlign: "center",

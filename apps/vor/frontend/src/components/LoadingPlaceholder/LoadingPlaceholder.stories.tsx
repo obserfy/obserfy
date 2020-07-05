@@ -9,4 +9,6 @@ export default {
   },
 }
 
-export const Basic: FC = () => <LoadingPlaceholder width={100} height={100} />
+export const Basic: FC = () => (
+  <LoadingPlaceholder sx={{ width: 100, height: 100 }} />
+)

@@ -7,12 +7,12 @@ import {
 import { patchApi } from "../fetchApi"
 
 interface UpdateStudentRequestBody {
-  id: string
   name?: string
   customId?: string
   dateOfBirth?: string
   dateOfEntry?: string
   gender?: number
+  active?: boolean
 }
 export function usePatchStudentApi(
   id: string
@@ -21,7 +21,10 @@ export function usePatchStudentApi(
 
   return useMutation(patchStudent, {
     onSuccess: async () => {
-      await queryCache.refetchQueries(["student", id])
+      await Promise.all([
+        queryCache.invalidateQueries(["student", id]),
+        queryCache.invalidateQueries("students"),
+      ])
     },
   })
 }

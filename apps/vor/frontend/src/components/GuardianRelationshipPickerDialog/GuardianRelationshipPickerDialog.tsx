@@ -1,8 +1,8 @@
 import React, { FC, useState } from "react"
+import { Box } from "theme-ui"
 import Dialog from "../Dialog/Dialog"
 import { GuardianRelationship } from "../../api/students/usePostNewStudent"
 import Select from "../Select/Select"
-import Box from "../Box/Box"
 import DialogHeader from "../DialogHeader/DialogHeader"
 
 interface Props {
@@ -31,7 +31,12 @@ export const GuardianRelationshipPickerDialog: FC<Props> = ({
         loading={loading}
       />
 
-      <Box backgroundColor="background" p={3}>
+      <Box
+        sx={{
+          backgroundColor: "background",
+        }}
+        p={3}
+      >
         <Select
           label="Relationship"
           mb={2}

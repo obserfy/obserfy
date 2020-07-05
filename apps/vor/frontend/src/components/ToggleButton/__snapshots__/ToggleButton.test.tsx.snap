@@ -26,8 +26,8 @@ exports[`ToggleButton should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  border-radius: 8px;
   background-color: var(--theme-ui-colors-surface,#fff);
+  border-radius: 6px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -38,6 +38,8 @@ exports[`ToggleButton should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  padding-left: 16px;
+  padding-right: 16px;
   cursor: pointer;
   background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-style: solid;
@@ -50,10 +52,8 @@ exports[`ToggleButton should render correctly 1`] = `
   flex: inherit;
   -webkit-transition: background-color 100ms cubic-bezier(0.0,0.0,0.2,1);
   transition: background-color 100ms cubic-bezier(0.0,0.0,0.2,1);
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
-  padding-left: 16px;
-  padding-right: 16px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
 }
 
 .emotion-0 {
@@ -66,8 +66,9 @@ exports[`ToggleButton should render correctly 1`] = `
   font-weight: 400;
   line-height: 3rem;
   text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
+  margin: 0;
+  color: var(--theme-ui-colors-primaryDark,#00a06d);
+  font-size: 14px;
   white-space: nowrap;
   -webkit-transition: color 100ms cubic-bezier(0.0,0.0,0.2,1);
   transition: color 100ms cubic-bezier(0.0,0.0,0.2,1);
@@ -76,15 +77,14 @@ exports[`ToggleButton should render correctly 1`] = `
   -ms-user-select: none;
   user-select: none;
   text-align: center;
-  color: var(--theme-ui-colors-primaryDark,#00a06d);
-  font-size: 14px;
-  margin: 0;
 }
 
 .emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  padding-left: 16px;
+  padding-right: 16px;
   cursor: pointer;
   background-color: var(--theme-ui-colors-surface,#fff);
   border-style: solid;
@@ -97,8 +97,6 @@ exports[`ToggleButton should render correctly 1`] = `
   flex: inherit;
   -webkit-transition: background-color 100ms cubic-bezier(0.0,0.0,0.2,1);
   transition: background-color 100ms cubic-bezier(0.0,0.0,0.2,1);
-  padding-left: 16px;
-  padding-right: 16px;
 }
 
 .emotion-2 {
@@ -111,8 +109,9 @@ exports[`ToggleButton should render correctly 1`] = `
   font-weight: 400;
   line-height: 3rem;
   text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
+  margin: 0;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  font-size: 14px;
   white-space: nowrap;
   -webkit-transition: color 100ms cubic-bezier(0.0,0.0,0.2,1);
   transition: color 100ms cubic-bezier(0.0,0.0,0.2,1);
@@ -121,15 +120,14 @@ exports[`ToggleButton should render correctly 1`] = `
   -ms-user-select: none;
   user-select: none;
   text-align: center;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
-  font-size: 14px;
-  margin: 0;
 }
 
 .emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  padding-left: 16px;
+  padding-right: 16px;
   cursor: pointer;
   background-color: var(--theme-ui-colors-surface,#fff);
   border-style: solid;
@@ -142,10 +140,8 @@ exports[`ToggleButton should render correctly 1`] = `
   flex: inherit;
   -webkit-transition: background-color 100ms cubic-bezier(0.0,0.0,0.2,1);
   transition: background-color 100ms cubic-bezier(0.0,0.0,0.2,1);
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
-  padding-left: 16px;
-  padding-right: 16px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
 }
 
 <div>

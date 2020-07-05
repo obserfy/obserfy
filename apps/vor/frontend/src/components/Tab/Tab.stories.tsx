@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react"
 
+import { Box } from "theme-ui"
 import Tab from "./Tab"
-import Box from "../Box/Box"
 
 export default {
   title: "Basic|Tab",
@@ -14,7 +14,11 @@ export default {
 export const Basic: FC = () => {
   const [selectedItemIdx, setSelectedItem] = useState(0)
   return (
-    <Box backgroundColor="background">
+    <Box
+      sx={{
+        backgroundColor: "background",
+      }}
+    >
       <Tab
         onTabClick={setSelectedItem}
         selectedItemIdx={selectedItemIdx}

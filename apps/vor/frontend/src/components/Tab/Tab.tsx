@@ -1,7 +1,6 @@
 import React, { FC } from "react"
-import { Typography, TextProps } from "../Typography/Typography"
-import Flex, { FlexProps } from "../Flex/Flex"
-import Box from "../Box/Box"
+import { Box, FlexProps, Flex, HeadingProps } from "theme-ui"
+import { Typography } from "../Typography/Typography"
 
 interface TabProps extends FlexProps {
   items: string[]
@@ -17,29 +16,30 @@ export const Tab: FC<TabProps> = ({
   small,
   ...props
 }) => (
-  <Box overflowX="auto" {...props}>
+  <Box sx={{ overflowX: "auto" }} {...props}>
     <Flex
       sx={{
         ...sx,
         borderBottomColor: "border",
         borderBottomWidth: 1,
         borderBottomStyle: "solid",
+        minWidth: "100%",
+        width: items.length > 3 ? "fit-content" : "100%",
+        justifyContent:
+          items.length > 3 || items.length === 1 ? "start" : "space-around",
+        alignItems: "center",
       }}
-      minWidth="100%"
-      width={items.length > 3 ? "fit-content" : "100%"}
-      justifyContent={
-        items.length > 3 || items.length === 1 ? "start" : "space-around"
-      }
-      alignItems="center"
     >
       {items.map((item, idx) => (
         <TabItem
           onClick={() => onTabClick(idx)}
           key={item}
           isSelected={selectedItemIdx === idx}
-          fontSize={small ? 0 : undefined}
-          lineHeight={small ? 2 : undefined}
-          fontWeight={small ? "normal" : "lighter"}
+          sx={{
+            fontWeight: small ? "normal" : "lighter",
+            lineHeight: small ? 2 : undefined,
+            fontSize: small ? 0 : undefined,
+          }}
         >
           {item}
         </TabItem>
@@ -48,11 +48,10 @@ export const Tab: FC<TabProps> = ({
   </Box>
 )
 
-interface TabItemProps extends TextProps {
+interface TabItemProps extends HeadingProps {
   isSelected?: boolean
-  onClick?: () => void
 }
-const TabItem: FC<TabItemProps> = ({ isSelected, onClick, ...props }) => (
+const TabItem: FC<TabItemProps> = ({ isSelected, onClick, sx, ...props }) => (
   <Typography.H6
     {...props}
     onClick={onClick}
@@ -60,6 +59,7 @@ const TabItem: FC<TabItemProps> = ({ isSelected, onClick, ...props }) => (
     mb={0}
     color={isSelected ? "textPrimary" : "text"}
     sx={{
+      ...sx,
       whiteSpace: "nowrap",
       cursor: "pointer",
       display: "flex",

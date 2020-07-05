@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react"
+import { Box, Button, Flex, Card } from "theme-ui"
 import { navigate } from "../Link/Link"
-import Box from "../Box/Box"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { NEW_STUDENT_URL } from "../../routes"
 import Input from "../Input/Input"
@@ -8,10 +8,9 @@ import Select from "../Select/Select"
 import { GuardianRelationship } from "../../api/students/usePostNewStudent"
 import Typography from "../Typography/Typography"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
-import Card from "../Card/Card"
+
 import Icon from "../Icon/Icon"
-import Button from "../Button/Button"
-import Flex from "../Flex/Flex"
+
 import { usePostNewGuardian } from "../../api/guardians/usePostNewGuardian"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import {
@@ -33,14 +32,14 @@ export const PagePickGuardian: FC = () => {
   const [mutate, { status }] = usePostNewGuardian()
 
   return (
-    <Box maxWidth="maxWidth.sm" mx="auto">
+    <Box sx={{ maxWidth: "maxWidth.sm" }} mx="auto">
       <BackNavigation to={NEW_STUDENT_URL} text="New Student" />
       <Box m={3}>
         <Input
           value={name}
           mb={2}
           label="Guardian Name"
-          width="100%"
+          sx={{ width: "100%" }}
           onChange={(e) => setName(e.target.value)}
         />
         {createNew && (
@@ -60,7 +59,7 @@ export const PagePickGuardian: FC = () => {
               value={email}
               mb={2}
               label="Email"
-              width="100%"
+              sx={{ width: "100%" }}
               onChange={(event) => setEmail(event.target.value)}
             />
             <Input
@@ -68,7 +67,7 @@ export const PagePickGuardian: FC = () => {
               value={phone}
               mb={3}
               label="Phone"
-              width="100%"
+              sx={{ width: "100%" }}
               onChange={(event) => setPhone(event.target.value)}
             />
             <TextArea
@@ -132,11 +131,11 @@ export const PagePickGuardian: FC = () => {
             ))}
           <Card
             p={3}
-            borderRadius={[0, "default"]}
-            display="flex"
             mx={[0, 3]}
             onClick={() => setCreateNew(true)}
             sx={{
+              borderRadius: [0, "default"],
+              display: "flex",
               alignItems: "flex-start",
               cursor: "pointer",
               "&:hover": {
@@ -161,12 +160,12 @@ const GuardianCard: FC<{ guardian: Guardians }> = ({ guardian }) => {
       <Card
         onClick={() => setShowGuardianSelector(true)}
         p={3}
-        borderRadius={[0, "default"]}
-        display="flex"
         mx={[0, 3]}
         mb={2}
         sx={{
+          borderRadius: [0, "default"],
           alignItems: "flex-start",
+          display: "flex",
           cursor: "pointer",
           "&:hover": {
             backgroundColor: "primaryLightest",

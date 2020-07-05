@@ -1,8 +1,8 @@
 import React, { FC } from "react"
+import { Flex, Button } from "theme-ui"
 import { navigate } from "../Link/Link"
-import Flex from "../Flex/Flex"
 import Typography from "../Typography/Typography"
-import Button from "../Button/Button"
+
 import Spacer from "../Spacer/Spacer"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import Dialog from "../Dialog/Dialog"
@@ -26,16 +26,16 @@ export const DeleteClassDialog: FC<Props> = ({ classId, onDismiss, name }) => {
 
   const header = (
     <Flex
-      alignItems="center"
       backgroundColor="surface"
       sx={{
+        alignItems: "center",
         flexShrink: 0,
         position: "relative",
       }}
     >
       <Typography.H6
-        width="100%"
         sx={{
+          width: "100%",
           position: "absolute",
           pointerEvents: "none",
           textAlign: "center",
@@ -61,7 +61,7 @@ export const DeleteClassDialog: FC<Props> = ({ classId, onDismiss, name }) => {
   )
 
   return (
-    <Dialog maxWidth={["", "maxWidth.xsm"]}>
+    <Dialog sx={{ maxWidth: ["", "maxWidth.xsm"] }}>
       {header}
       <Typography.Body
         p={3}

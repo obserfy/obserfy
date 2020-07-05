@@ -1,6 +1,6 @@
 import React, { TouchEvent, MouseEvent, FC, useRef, useState } from "react"
-import Flex from "../Flex/Flex"
-import Box from "../Box/Box"
+import { Flex, Box } from "theme-ui"
+
 import Icon from "../Icon/Icon"
 import { ReactComponent as GridIcon } from "../../icons/grid.svg"
 
@@ -50,7 +50,7 @@ export const DraggableListItem: FC<Props> = ({
 
   return (
     <Box
-      height={48}
+      sx={{ height: 48 }}
       backgroundColor="primaryLightest"
       onMouseMove={(e) => {
         // @ts-ignore
@@ -59,10 +59,10 @@ export const DraggableListItem: FC<Props> = ({
       onTouchMove={(e) => onDragging(e, e.targetTouches[0].clientY)}
     >
       <Flex
-        alignItems="center"
-        height={height}
         backgroundColor={isDragging ? "surface" : "background"}
         sx={{
+          height,
+          alignItems: "center",
           userSelect: "none",
           width: "100%",
           maxWidth: 640,
@@ -89,7 +89,7 @@ export const DraggableListItem: FC<Props> = ({
           onTouchEnd={onDragStop}
           onTouchStart={(e) => onDragStart(e, e.targetTouches[0].clientY)}
         >
-          <Icon as={GridIcon} m={0} size={24} />
+          <Icon as={GridIcon} m={0} sx={{ width: 24 }} />
         </Box>
         {children}
       </Flex>

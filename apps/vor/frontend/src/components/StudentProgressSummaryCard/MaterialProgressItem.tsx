@@ -1,9 +1,9 @@
 import React, { FC } from "react"
+import { Flex } from "theme-ui"
 import {
   MaterialProgress,
   materialStageToString,
 } from "../../api/useGetStudentMaterialProgress"
-import Flex from "../Flex/Flex"
 import Typography from "../Typography/Typography"
 import Pill from "../Pill/Pill"
 import Icon from "../Icon/Icon"
@@ -20,10 +20,15 @@ const MaterialProgressItem: FC<Props> = ({ value, onClick }) => {
       px={3}
       py={2}
       onClick={onClick}
-      alignItems="center"
-      sx={{ cursor: "pointer" }}
+      sx={{ cursor: "pointer", alignItems: "center" }}
     >
-      <Typography.Body fontSize={1} lineHeight={1.8} mr={3}>
+      <Typography.Body
+        sx={{
+          fontSize: 1,
+        }}
+        lineHeight={1.8}
+        mr={3}
+      >
         {value.materialName}
       </Typography.Body>
       <Pill

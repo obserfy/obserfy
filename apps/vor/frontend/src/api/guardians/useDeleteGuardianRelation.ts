@@ -28,6 +28,6 @@ export const useDeleteGuardianRelation = (
   }
 
   return useMutation(postGuardianRelation, {
-    onSuccess: () => queryCache.refetchQueries(["student", studentId]),
+    onSuccess: () => queryCache.invalidateQueries(["student", studentId]),
   })
 }

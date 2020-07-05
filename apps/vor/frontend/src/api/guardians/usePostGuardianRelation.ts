@@ -1,6 +1,5 @@
 import { queryCache, useMutation } from "react-query"
 import { navigate } from "gatsby"
-import { GuardianRelationship } from "../students/usePostNewStudent"
 import { ApiError, BASE_URL } from "../useApi"
 import { Guardians } from "./useGetSchoolGuardians"
 
@@ -9,7 +8,7 @@ export const usePostGuardianRelation = (
   studentId: string
 ) => {
   const postGuardianRelation = async (
-    relationship: GuardianRelationship
+    relationship: number
   ): Promise<Response> => {
     const result = await fetch(
       `${BASE_URL}/students/${studentId}/guardianRelations`,
@@ -36,6 +35,6 @@ export const usePostGuardianRelation = (
   }
 
   return useMutation(postGuardianRelation, {
-    onSuccess: () => queryCache.refetchQueries(["student", studentId]),
+    onSuccess: () => queryCache.invalidateQueries(["student", studentId]),
   })
 }

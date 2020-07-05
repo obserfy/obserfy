@@ -6,9 +6,11 @@ import { getSchoolId } from "../../hooks/schoolIdState"
 
 interface NewPlan {
   date: Dayjs
-  classId: string
   title: string
-  description: string
+  classId?: string
+  description?: string
+  areaId?: string
+  students?: string[]
   repetition?: {
     type: number
     endDate: Dayjs
@@ -17,7 +19,8 @@ interface NewPlan {
 const usePostNewPlan = () => {
   let date: string
   const postPlan = async (newPlan: NewPlan) => {
-    const result = await fetch(`${BASE_URL}/classes/${newPlan.classId}/plans`, {
+    const schoolId = getSchoolId()
+    const result = await fetch(`${BASE_URL}/schools/${schoolId}/plans`, {
       method: "POST",
       body: JSON.stringify({
         title: newPlan.title,
@@ -25,6 +28,9 @@ const usePostNewPlan = () => {
         fileIds: [],
         date: newPlan.date.startOf("day").toISOString(),
         repetition: newPlan.repetition,
+        areaId: newPlan.areaId,
+        classId: newPlan.classId,
+        students: newPlan.students,
       }),
     })
 
@@ -42,7 +48,8 @@ const usePostNewPlan = () => {
   }
 
   return useMutation(postPlan, {
-    onSuccess: () => queryCache.refetchQueries(["plans", getSchoolId(), date]),
+    onSuccess: () =>
+      queryCache.invalidateQueries(["plans", getSchoolId(), date]),
   })
 }
 

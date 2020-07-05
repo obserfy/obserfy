@@ -1,8 +1,6 @@
-import React, { FC, useEffect } from "react"
+import React, { FC, PropsWithoutRef, useEffect } from "react"
 import { Global } from "@emotion/core"
-import Card from "../Card/Card"
-import { Flex } from "../Flex/Flex"
-import { BoxProps } from "../Box/Box"
+import { BoxProps, Card, Flex } from "theme-ui"
 import Portal from "../Portal/Portal"
 
 function disableScroll(e: TouchEvent): boolean {
@@ -10,7 +8,7 @@ function disableScroll(e: TouchEvent): boolean {
   return false
 }
 
-interface Props extends BoxProps {
+interface Props extends PropsWithoutRef<BoxProps> {
   visible?: boolean
 }
 export const Dialog: FC<Props> = ({ sx, ...props }) => {
@@ -27,14 +25,14 @@ export const Dialog: FC<Props> = ({ sx, ...props }) => {
       <Flex
         as="dialog"
         role="dialog"
-        flexDirection="column-reverse"
-        alignItems={["", "center"]}
-        justifyContent={["", "center"]}
         backgroundColor="overlay"
-        width="100%"
-        height="100%"
         p={[0, 3]}
         sx={{
+          height: "100%",
+          width: "100%",
+          justifyContent: ["", "center"],
+          flexDirection: "column-reverse",
+          alignItems: ["", "center"],
           border: "none",
           top: 0,
           left: 0,
@@ -44,12 +42,12 @@ export const Dialog: FC<Props> = ({ sx, ...props }) => {
       >
         <Card
           backgroundColor="surface"
-          maxWidth="maxWidth.xsm"
-          width="100%"
-          maxHeight="100vh"
           pb="env(safe-area-inset-bottom)"
           sx={{
             ...sx,
+            maxHeight: "100vh",
+            width: "100%",
+            maxWidth: "maxWidth.xsm",
             borderTopLeftRadius: "default",
             borderTopRightRadius: "default",
             borderBottomLeftRadius: [0, "default"],

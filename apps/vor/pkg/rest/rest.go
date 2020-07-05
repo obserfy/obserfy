@@ -11,9 +11,12 @@ import (
 )
 
 type Error struct {
-	Code    int
+	// Status code of the http response
+	Code int
+	// Message to be shown to user
 	Message string
-	Error   error
+	// Error to be reported to sentry/log
+	Error error
 }
 type HandlerFunc func(http.ResponseWriter, *http.Request) *Error
 

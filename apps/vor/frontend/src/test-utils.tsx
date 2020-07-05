@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { FC, ReactElement } from "react"
-import { ThemeProvider } from "theme-ui"
+import { ThemeProvider, Box } from "theme-ui"
 import { render, RenderOptions, RenderResult } from "@testing-library/react"
 import {
   createHistory,
@@ -8,7 +8,6 @@ import {
   LocationProvider,
 } from "@reach/router"
 import Theme from "./gatsby-plugin-theme-ui"
-import Box from "./components/Box/Box"
 
 const AllProviders: FC = ({ children }) => {
   // TODO: Maybe this better be outside
@@ -16,7 +15,7 @@ const AllProviders: FC = ({ children }) => {
   return (
     <LocationProvider history={history}>
       <ThemeProvider theme={Theme}>
-        <Box fontSize={[16, 20]}>{children}</Box>
+        <Box sx={{ fontSize: [16, 20] }}>{children}</Box>
       </ThemeProvider>
     </LocationProvider>
   )

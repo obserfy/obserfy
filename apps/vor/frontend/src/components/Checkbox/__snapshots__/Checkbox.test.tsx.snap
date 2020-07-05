@@ -19,19 +19,13 @@ exports[`Checkbox should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  as: label;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-size: 14px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -41,10 +35,15 @@ exports[`Checkbox should render correctly 1`] = `
   display: -ms-flexbox;
   display: flex;
   font-size: 16px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .emotion-3 {
@@ -70,8 +69,6 @@ exports[`Checkbox should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   display: none;
-  width: 24px;
-  height: 24px;
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -98,8 +95,6 @@ input:focus ~ .emotion-1 {
   margin: 0;
   min-width: 0;
   display: block;
-  width: 24px;
-  height: 24px;
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -140,7 +135,9 @@ input:focus ~ .emotion-2 {
           aria-hidden="true"
           class="emotion-1"
           fill="currentcolor"
+          height="24"
           viewBox="0 0 24 24"
+          width="24"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -151,7 +148,9 @@ input:focus ~ .emotion-2 {
           aria-hidden="true"
           class="emotion-2"
           fill="currentcolor"
+          height="24"
           viewBox="0 0 24 24"
+          width="24"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path

@@ -1,6 +1,7 @@
 package school
 
 import (
+	"github.com/chrsep/vor/pkg/lessonplan"
 	"mime/multipart"
 	"time"
 
@@ -45,6 +46,7 @@ type (
 		Note        string
 		CustomId    string
 		Active      bool
+		Classes     []Class
 	}
 
 	Gender int
@@ -102,6 +104,8 @@ type (
 		ClassName   string
 		Date        time.Time
 		Files       []File
+		AreaId      string
+		AreaName    string
 	}
 
 	File struct {
@@ -113,7 +117,7 @@ type (
 	Store interface {
 		NewSchool(schoolName, userId string) (*School, error)
 		GetSchool(schoolId string) (*School, error)
-		GetStudents(schoolId string) ([]Student, error)
+		GetStudents(schoolId, classId string, active *bool) ([]Student, error)
 		GetClassAttendance(classId, session string) ([]Attendance, error)
 		NewStudent(student Student, classes []string, guardians map[string]int) error
 		RefreshInviteCode(schoolId string) (*School, error)
@@ -130,5 +134,6 @@ type (
 		UpdateFile(fileId, fileName string) (*File, error)
 		GetLessonPlans(schoolId string, date time.Time) ([]LessonPlan, error)
 		GetLessonFiles(schoolId string) ([]File, error)
+		CreateLessonPlan(input lessonplan.PlanData) (*lessonplan.LessonPlan, error)
 	}
 )

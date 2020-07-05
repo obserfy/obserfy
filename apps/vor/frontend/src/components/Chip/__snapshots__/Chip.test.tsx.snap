@@ -18,21 +18,21 @@ exports[`Chip should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  background-color: var(--theme-ui-colors-primary,#00e399);
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 6px;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   border-width: 1px;
   border-style: solid;
   white-space: nowrap;
-  background-color: var(--theme-ui-colors-primary,#00e399);
-  margin-right: 8px;
-  margin-bottom: 8px;
-  padding-left: 8px;
-  padding-right: 8px;
 }
 
 .emotion-1:hover {
@@ -49,8 +49,6 @@ exports[`Chip should render correctly 1`] = `
   font-weight: 400;
   line-height: 3rem;
   text-rendering: optimizeLegibility;
-  --webkitFontSmoothing: antialiased;
-  --mozOsxFontSmoothing: grayscale;
   color: var(--theme-ui-colors-onPrimary,#000);
   font-size: 14px;
 }

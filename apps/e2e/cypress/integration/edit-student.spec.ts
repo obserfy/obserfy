@@ -1,4 +1,4 @@
-describe("Smoke test on prod build", () => {
+describe("test student edit", () => {
   const faker = require("faker")
   let name
   let email
@@ -25,7 +25,7 @@ describe("Smoke test on prod build", () => {
     )
   })
 
-  it("should run smoke test successfully", () => {
+  it("should be able to edit student successfully", () => {
     cy.visit("/")
 
     // Create student
@@ -36,7 +36,7 @@ describe("Smoke test on prod build", () => {
     cy.contains("Save").click()
 
     cy.contains(studentName).click()
-    cy.contains("See Profile").click()
+    cy.contains("Profile").click()
 
     cy.get("[aria-label=edit-name]").click()
     cy.contains("label", "Name").find("input").clear().type(newName)

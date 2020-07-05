@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 import { action } from "@storybook/addon-actions"
-import { Box } from "../Box/Box"
+import { Box } from "theme-ui"
 import AlertDialog from "./AlertDialog"
 
 export default {
@@ -12,7 +12,7 @@ export default {
 }
 
 export const Basic: FC = () => (
-  <Box minHeight={600} height="100vh" sx={{ transform: "scale(1)" }}>
+  <Box sx={{ height: "100vh", minHeight: 600, transform: "scale(1)" }}>
     <AlertDialog
       positiveText="Yes, please"
       negativeText="No, spare him"

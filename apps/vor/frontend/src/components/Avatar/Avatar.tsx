@@ -1,17 +1,14 @@
-import React, { FC } from "react"
-import { FixedObject } from "gatsby-image"
-import { BoxProps } from "../Box/Box"
-import { Image } from "../Image/Image"
+import React, { FC, PropsWithoutRef } from "react"
+import { Image, ImageProps } from "theme-ui"
 
-interface Props extends BoxProps {
+interface Props extends PropsWithoutRef<ImageProps> {
   source?: string
-  fixed?: FixedObject
 }
 export const Avatar: FC<Props> = (props) => {
   return (
     <Image
-      size={32}
       sx={{
+        width: 32,
         objectFit: "cover",
         objectPosition: "center",
         borderRadius: "circle",

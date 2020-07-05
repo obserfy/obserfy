@@ -18,14 +18,20 @@ exports[`DraggableListItem should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  height: 48px;
   background-color: var(--theme-ui-colors-primaryLightest,rgba(0,120,86,0.05));
+  height: 48px;
 }
 
 .emotion-2 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  background-color: var(--theme-ui-colors-background,#f2f3f5);
+  height: 48px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -43,12 +49,6 @@ exports[`DraggableListItem should render correctly 1`] = `
   transform: translateY(0px);
   z-index: 1;
   top: 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  height: 48px;
-  background-color: var(--theme-ui-colors-background,#f2f3f5);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -59,11 +59,11 @@ exports[`DraggableListItem should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  cursor: move;
   padding-left: 16px;
   padding-right: 16px;
   padding-top: 8px;
   padding-bottom: 8px;
+  cursor: move;
 }
 
 .emotion-0 {
@@ -72,13 +72,13 @@ exports[`DraggableListItem should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
+  margin: 0;
+  width: 20px;
   fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  margin: 0;
-  height: 24px;
-  width: 24px;
+  height: 20px;
 }
 
 <div>

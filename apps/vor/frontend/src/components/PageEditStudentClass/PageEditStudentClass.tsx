@@ -1,14 +1,14 @@
 import React, { FC, useState } from "react"
+import { Box, Card, Flex } from "theme-ui"
 import { BackNavigation } from "../BackNavigation/BackNavigation"
 import { NEW_STUDENT_CLASS_URL, STUDENT_PROFILE_URL } from "../../routes"
-import Box from "../Box/Box"
 import { useGetStudent } from "../../api/useGetStudent"
 import useGetSchoolClasses from "../../api/classes/useGetSchoolClasses"
 import { Typography } from "../Typography/Typography"
-import { Card } from "../Card/Card"
+
 import Dialog from "../Dialog/Dialog"
 import DialogHeader from "../DialogHeader/DialogHeader"
-import { Flex } from "../Flex/Flex"
+
 import { Button } from "../Button/Button"
 import Icon from "../Icon/Icon"
 import { ReactComponent as RemoveIcon } from "../../icons/close.svg"
@@ -35,7 +35,7 @@ export const PageEditStudentClass: FC<Props> = ({ studentId }) => {
   )
 
   return (
-    <Box mx="auto" maxWidth="maxWidth.sm">
+    <Box mx="auto" sx={{ maxWidth: "maxWidth.sm" }}>
       <BackNavigation
         text="Student Profile"
         to={STUDENT_PROFILE_URL(studentId)}
@@ -50,8 +50,14 @@ export const PageEditStudentClass: FC<Props> = ({ studentId }) => {
         Current classes
       </Typography.Body>
       {(student.data?.classes.length ?? 0) === 0 && (
-        <Card borderRadius={[0, "default"]} mb={2} mx={[0, 3]}>
-          <Typography.Body m={3} color="textMediumEmphasis" fontSize={1}>
+        <Card sx={{ borderRadius: [0, "default"] }} mb={2} mx={[0, 3]}>
+          <Typography.Body
+            m={3}
+            color="textMediumEmphasis"
+            sx={{
+              fontSize: 1,
+            }}
+          >
             No classes selected yet
           </Typography.Body>
         </Card>
@@ -67,14 +73,19 @@ export const PageEditStudentClass: FC<Props> = ({ studentId }) => {
             />
           )
       )}
-      <Card borderRadius={[0, "default"]} mb={2} mx={[0, 3]}>
+      <Card sx={{ borderRadius: [0, "default"] }} mb={2} mx={[0, 3]}>
         <Link
           to={NEW_STUDENT_CLASS_URL(studentId)}
           data-cy="new-guardian"
           style={{ display: "block" }}
         >
-          <Flex alignItems="center" p={3}>
-            <Typography.Body lineHeight={1} fontSize={1}>
+          <Flex sx={{ alignItems: "center" }} p={3}>
+            <Typography.Body
+              sx={{
+                lineHeight: 1,
+                fontSize: 1,
+              }}
+            >
               Create new class
             </Typography.Body>
             <Icon
@@ -92,7 +103,7 @@ export const PageEditStudentClass: FC<Props> = ({ studentId }) => {
       </Typography.Body>
       <Box px={3} pb={3} pt={2}>
         <SearchBar
-          width="100%"
+          sx={{ width: "100%" }}
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
@@ -121,9 +132,14 @@ const CurrentClass: FC<{
 
   return (
     <>
-      <Card borderRadius={[0, "default"]} mb={2} mx={[0, 3]}>
-        <Flex alignItems="center" py={3}>
-          <Typography.Body lineHeight={1} ml={3}>
+      <Card sx={{ borderRadius: [0, "default"] }} mb={2} mx={[0, 3]}>
+        <Flex sx={{ alignItems: "center" }} py={3}>
+          <Typography.Body
+            sx={{
+              lineHeight: 1,
+            }}
+            ml={3}
+          >
             {name}
           </Typography.Body>
           <Button
@@ -153,7 +169,12 @@ const CurrentClass: FC<{
               setShowDialog(false)
             }}
           />
-          <Typography.Body p={3} backgroundColor="background">
+          <Typography.Body
+            p={3}
+            sx={{
+              backgroundColor: "background",
+            }}
+          >
             Are you sure you want to remove {name}?
           </Typography.Body>
         </Dialog>
@@ -171,9 +192,14 @@ const OtherClass: FC<{ studentId: string; classId: string; name: string }> = ({
 
   return (
     <>
-      <Card borderRadius={[0, "default"]} mb={2} mx={[0, 3]}>
-        <Flex alignItems="center" py={3}>
-          <Typography.Body lineHeight={1} ml={3}>
+      <Card sx={{ borderRadius: [0, "default"] }} mb={2} mx={[0, 3]}>
+        <Flex sx={{ alignItems: "center" }} py={3}>
+          <Typography.Body
+            sx={{
+              lineHeight: 1,
+            }}
+            ml={3}
+          >
             {name}
           </Typography.Body>
           <Button

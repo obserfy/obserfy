@@ -1,18 +1,18 @@
 import React, { ChangeEventHandler, FC } from "react"
+import { InputProps } from "theme-ui"
 import { ReactComponent as SearchIcon } from "../../icons/search.svg"
 import Input from "../Input/Input"
-import { BoxProps } from "../Box/Box"
 
-interface Props extends BoxProps {
+interface Props extends InputProps {
   onChange?: ChangeEventHandler<HTMLInputElement>
 }
-export const SearchBar: FC<Props> = (props) => (
+export const SearchBar: FC<Props> = ({ sx, ...props }) => (
   <Input
     name="name"
-    width="100%"
     placeholder="Search"
     icon={SearchIcon}
     backgroundColor="surface"
+    sx={{ ...sx, width: "100%" }}
     {...props}
   />
 )
