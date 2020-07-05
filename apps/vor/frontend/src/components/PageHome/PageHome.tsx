@@ -108,8 +108,7 @@ export const PageHome: FC = () => {
           activeBackground="primary"
           onClick={() => setFilterClass("")}
         />
-        {
-          classes.data?.map(({id, name}) => (
+        {classes.data?.map(({ id, name }) => (
           <Chip
             key={id}
             isActive={filterClass === id}
@@ -117,8 +116,7 @@ export const PageHome: FC = () => {
             activeBackground="primary"
             onClick={() => setFilterClass(id)}
           />
-          ))
-        }
+        ))}
       </Flex>
       {studentList}
       {emptySearchResult && <EmptySearchResultPlaceholder term={searchTerm} />}

@@ -10,7 +10,7 @@ export interface Student {
   profilePicUrl?: string
 }
 
-async function fetchStudents(classId=""): Promise<Student[]> {
+async function fetchStudents(classId = ""): Promise<Student[]> {
   const url = `/schools/${getSchoolId()}/students?classId=${classId}`
   const result = await fetch(`${BASE_URL}${url}`, {
     credentials: "same-origin",
@@ -33,6 +33,6 @@ async function fetchStudents(classId=""): Promise<Student[]> {
   return result.json()
 }
 
-export const useGetStudents = (classId=""): QueryResult<Student[]> => {
+export const useGetStudents = (classId = ""): QueryResult<Student[]> => {
   return useQuery(classId, fetchStudents)
 }
