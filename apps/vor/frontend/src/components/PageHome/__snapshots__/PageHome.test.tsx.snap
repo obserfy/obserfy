@@ -83,6 +83,8 @@ exports[`PageHome should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   padding: 16px;
+  padding-top: 16px;
+  padding-bottom: 8px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -153,7 +155,7 @@ exports[`PageHome should render correctly 1`] = `
   font-size: 16px;
   padding: 12px;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
-  margin-right: 16px;
+  margin-right: 8px;
   background-color: var(--theme-ui-colors-surface,#fff);
   width: 100%;
 }
@@ -278,9 +280,7 @@ exports[`PageHome should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   padding-left: 16px;
-  padding-right: 8px;
-  padding-top: 4px;
-  padding-bottom: 4px;
+  padding-right: 16px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
