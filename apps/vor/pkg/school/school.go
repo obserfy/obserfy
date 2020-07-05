@@ -319,13 +319,22 @@ func getSchool(s rest.Server, store Store) rest.Handler {
 }
 
 func getStudents(s rest.Server, store Store, imgproxyClient *imgproxy.Client) rest.Handler {
-	type responseBody struct {
-		Id            string     `json:"id"`
-		Name          string     `json:"name"`
-		DateOfBirth   *time.Time `json:"dateOfBirth,omitempty"`
-		ProfilePicUrl string     `json:"profilePicUrl,omitempty"`
-		Active        bool       `json:"active"`
-	}
+	type (
+		class struct {
+			Id   string `json:"classId"`
+			Name string `json:"className"`
+		}
+
+		responseBody struct {
+			Id            string     `json:"id"`
+			Name          string     `json:"name"`
+			DateOfBirth   *time.Time `json:"dateOfBirth,omitempty"`
+			ProfilePicUrl string     `json:"profilePicUrl,omitempty"`
+			Active        bool       `json:"active"`
+			Classes       []class    `json:"classes"`
+		}
+	)
+
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		schoolId := chi.URLParam(r, "schoolId")
 		classId := r.URL.Query().Get("classId")
@@ -341,12 +350,22 @@ func getStudents(s rest.Server, store Store, imgproxyClient *imgproxy.Client) re
 			if student.ProfilePic != "" {
 				profilePicUrl = imgproxyClient.GenerateUrl(student.ProfilePic, 80, 80)
 			}
+
+			classes := make([]class, 0)
+			for _, v := range student.Classes {
+				classes = append(classes, class{
+					Id:   v.Id,
+					Name: v.Name,
+				})
+			}
+
 			response = append(response, responseBody{
 				Id:            student.Id,
 				Name:          student.Name,
 				DateOfBirth:   student.DateOfBirth,
 				ProfilePicUrl: profilePicUrl,
 				Active:        student.Active,
+				Classes:       classes,
 			})
 		}
 		if err = rest.WriteJson(w, response); err != nil {

@@ -3,12 +3,15 @@ import { FC, Fragment, useState } from "react"
 import { jsx, Button, Card, Box, Flex, Image } from "theme-ui"
 import { Link } from "../Link/Link"
 
+import Chip from "../Chip/Chip"
+import Pill from "../Pill/Pill"
 import SearchBar from "../SearchBar/SearchBar"
 
 import Icon from "../Icon/Icon"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import { Typography } from "../Typography/Typography"
 
+import useGetSchoolClasses from "../../api/classes/useGetSchoolClasses"
 import { useGetStudents } from "../../api/students/useGetStudents"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import { NEW_STUDENT_URL, STUDENT_OVERVIEW_PAGE_URL } from "../../routes"
@@ -16,7 +19,9 @@ import StudentPicturePlaceholder from "../StudentPicturePlaceholder/StudentPictu
 
 export const PageHome: FC = () => {
   const [searchTerm, setSearchTerm] = useState("")
-  const students = useGetStudents()
+  const [filterClass, setFilterClass] = useState("")
+  const students = useGetStudents(filterClass)
+  const allClass = useGetSchoolClasses()
 
   const matchedStudent =
     students.error === null
@@ -35,7 +40,7 @@ export const PageHome: FC = () => {
 
   const studentList =
     students.status === "success" &&
-    matchedStudent?.map(({ profilePicUrl, name, id }) => (
+    matchedStudent?.map(({ profilePicUrl, name, id, classes }) => (
       <Link to={STUDENT_OVERVIEW_PAGE_URL(id)} sx={{ display: "block" }}>
         <Card
           p={3}
@@ -63,7 +68,14 @@ export const PageHome: FC = () => {
           ) : (
             <StudentPicturePlaceholder />
           )}
-          <Typography.Body ml={3}>{name}</Typography.Body>
+          <Box>
+            <Typography.Body ml={3}>{name}</Typography.Body>
+            <Flex sx={{ flexWrap: "wrap" }} ml={1}>
+              {classes?.map(({ className }) => (
+                <Pill ml={2} text={className} color="text" />
+              ))}
+            </Flex>
+          </Box>
         </Card>
       </Link>
     ))
@@ -88,6 +100,31 @@ export const PageHome: FC = () => {
             <Icon as={PlusIcon} m={0} />
           </Button>
         </Link>
+      </Flex>
+      <Flex
+        pl={3}
+        pr={2}
+        py={1}
+        sx={{
+          flexWrap: "wrap",
+        }}
+      >
+        <Chip
+          key="all"
+          isActive={filterClass === ""}
+          text="All"
+          activeBackground="primary"
+          onClick={() => setFilterClass("")}
+        />
+        {allClass.data?.map(({ id, name }) => (
+          <Chip
+            key={id}
+            isActive={filterClass === id}
+            text={name}
+            activeBackground="primary"
+            onClick={() => setFilterClass(id)}
+          />
+        ))}
       </Flex>
       {studentList}
       {emptySearchResult && <EmptySearchResultPlaceholder term={searchTerm} />}

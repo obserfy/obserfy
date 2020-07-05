@@ -77,21 +77,13 @@ func (s SchoolStore) GetSchool(schoolId string) (*cSchool.School, error) {
 
 func (s SchoolStore) GetStudents(schoolId, classId string) ([]cSchool.Student, error) {
 	var students []Student
-	var err error
 	res := make([]cSchool.Student, 0)
 
-	if classId != "" {
-		err = s.Model(&students).
-			Join("INNER JOIN student_to_classes AS stc ON id=stc.student_id").
-			Where("school_id=? AND stc.class_id=?", schoolId, classId).
-			Order("name").
-			Select()
-	} else {
-		err = s.Model(&students).
-			Where("school_id=?", schoolId).
-			Order("name").
-			Select()
-	}
+	err := s.Model(&students).
+		Where("school_id=?", schoolId).
+		Relation("Classes").
+		Order("name").
+		Select()
 
 	if err != nil {
 		if err == pg.ErrNoRows {
@@ -101,6 +93,22 @@ func (s SchoolStore) GetStudents(schoolId, classId string) ([]cSchool.Student, e
 	}
 
 	for _, s := range students {
+		classes := make([]cSchool.Class, 0)
+		var isIncluded bool
+		for _, class := range s.Classes {
+			classes = append(classes, cSchool.Class{
+				Id:   class.Id,
+				Name: class.Name,
+			})
+			if classId == class.Id {
+				isIncluded = true
+			}
+		}
+
+		if !isIncluded && classId != "" {
+			continue
+		}
+
 		res = append(res, cSchool.Student{
 			Id:          s.Id,
 			Name:        s.Name,
@@ -108,6 +116,7 @@ func (s SchoolStore) GetStudents(schoolId, classId string) ([]cSchool.Student, e
 			ProfilePic:  s.ProfilePic,
 			DateOfBirth: s.DateOfBirth,
 			Active:      *s.Active,
+			Classes:     classes,
 		})
 	}
 
