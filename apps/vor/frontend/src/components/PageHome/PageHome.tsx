@@ -20,7 +20,7 @@ import StudentPicturePlaceholder from "../StudentPicturePlaceholder/StudentPictu
 export const PageHome: FC = () => {
   const [searchTerm, setSearchTerm] = useState("")
   const [filterClass, setFilterClass] = useState("")
-  const students = useGetStudents(filterClass)
+  const students = useGetStudents(filterClass, true)
   const allClass = useGetSchoolClasses()
 
   const matchedStudent =
@@ -82,9 +82,9 @@ export const PageHome: FC = () => {
 
   return (
     <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto">
-      <Flex p={3}>
+      <Flex p={3} pt={3} pb={2}>
         <SearchBar
-          mr={3}
+          mr={2}
           placeholder="Search students"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
@@ -101,14 +101,7 @@ export const PageHome: FC = () => {
           </Button>
         </Link>
       </Flex>
-      <Flex
-        pl={3}
-        pr={2}
-        py={1}
-        sx={{
-          flexWrap: "wrap",
-        }}
-      >
+      <Flex px={3} sx={{ flexWrap: "wrap" }}>
         <Chip
           key="all"
           isActive={filterClass === ""}

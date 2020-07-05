@@ -75,38 +75,37 @@ func (s SchoolStore) GetSchool(schoolId string) (*cSchool.School, error) {
 	}, nil
 }
 
-func (s SchoolStore) GetStudents(schoolId, classId string) ([]cSchool.Student, error) {
+func (s SchoolStore) GetStudents(schoolId, classId string, active *bool) ([]cSchool.Student, error) {
 	var students []Student
 	res := make([]cSchool.Student, 0)
 
-	err := s.Model(&students).
+	query := s.Model(&students).
 		Where("school_id=?", schoolId).
-		Relation("Classes").
 		Order("name").
-		Select()
+		Relation("Classes")
+	if classId != "" {
+		query = query.
+			Join("LEFT JOIN student_to_classes AS stc on id=stc.student_id").
+			Where("stc.class_id=?", classId)
+	}
+	if active != nil {
+		query = query.
+			Where("active=?", active)
+	}
 
-	if err != nil {
-		if err == pg.ErrNoRows {
-			return res, nil
-		}
+	if err := query.Select(); err == pg.ErrNoRows {
+		return res, nil
+	} else if err != nil {
 		return nil, richErrors.Wrap(err, "Failed querying student")
 	}
 
 	for _, s := range students {
 		classes := make([]cSchool.Class, 0)
-		var isIncluded bool
 		for _, class := range s.Classes {
 			classes = append(classes, cSchool.Class{
 				Id:   class.Id,
 				Name: class.Name,
 			})
-			if classId == class.Id {
-				isIncluded = true
-			}
-		}
-
-		if !isIncluded && classId != "" {
-			continue
 		}
 
 		res = append(res, cSchool.Student{
