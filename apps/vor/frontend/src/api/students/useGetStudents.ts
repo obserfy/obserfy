@@ -14,9 +14,14 @@ export interface Student {
   }[]
 }
 
-export const useGetStudents = (classId = ""): QueryResult<Student[]> => {
+export const useGetStudents = (
+  classId = "",
+  active?: boolean
+): QueryResult<Student[]> => {
   const fetchStudents = async (): Promise<Student[]> => {
-    const url = `/schools/${getSchoolId()}/students?classId=${classId}`
+    const url = `/schools/${getSchoolId()}/students?classId=${classId}&active=${
+      active ?? ""
+    }`
     const result = await fetch(`${BASE_URL}${url}`, {
       credentials: "same-origin",
     })

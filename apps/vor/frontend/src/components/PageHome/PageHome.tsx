@@ -20,7 +20,7 @@ import StudentPicturePlaceholder from "../StudentPicturePlaceholder/StudentPictu
 export const PageHome: FC = () => {
   const [searchTerm, setSearchTerm] = useState("")
   const [filterClass, setFilterClass] = useState("")
-  const students = useGetStudents(filterClass)
+  const students = useGetStudents(filterClass, true)
   const allClass = useGetSchoolClasses()
 
   const matchedStudent =
