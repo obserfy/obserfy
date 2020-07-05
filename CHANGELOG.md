@@ -2,6 +2,52 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.7.0](https://github.com/obserfy/obserfy/compare/v1.6.0...v1.7.0) (2020-07-05)
+
+
+### Features
+
+* Accept area id and material id in "new lesson plan" endpoint ([e2d71b7](https://github.com/obserfy/obserfy/commit/e2d71b77427ce88356ae3b37270291636cfd1e8f))
+* Add many2many relationship between student and lesson plans. ([3528f4d](https://github.com/obserfy/obserfy/commit/3528f4dc1441edf91f46e7df2488a452ae32e6be))
+* Add material and area relationship to LessonPlanDetails. ([53bf365](https://github.com/obserfy/obserfy/commit/53bf365251efa58ab5f3206e86035bfa938a5dbb))
+* Add material id to patch plan endpoint. ([c5765a3](https://github.com/obserfy/obserfy/commit/c5765a381e442aa1342457a44c13f530c6485e8f))
+* Allow changing student's "active" properties through API ([#532](https://github.com/obserfy/obserfy/issues/532)) ([6de3c10](https://github.com/obserfy/obserfy/commit/6de3c109c9264be2e268245fc776f4a9c982102c))
+* Allow editing class on lesson plans. ([8336d14](https://github.com/obserfy/obserfy/commit/8336d14c7ed51a090ea63c40dbda712c5a288b20))
+
+
+### Bug Fixes
+
+* Prevent broken deploy. ([c4a474f](https://github.com/obserfy/obserfy/commit/c4a474f42aebe670d638004c883a883afece731e))
+* remove react-query types. Fix react-query dependent query. ([a054c51](https://github.com/obserfy/obserfy/commit/a054c51dbcb0071e96e77ac0e1a1e1faf50c7a25))
+* **deps:** pin dependencies ([36bda97](https://github.com/obserfy/obserfy/commit/36bda9776c8db5be8322d8debde93361ed30e020))
+* **deps:** pin dependency typescript to 3.9.5 ([#490](https://github.com/obserfy/obserfy/issues/490)) ([4b4f3af](https://github.com/obserfy/obserfy/commit/4b4f3af629ed94f227ba886913c569d91701a289))
+* **deps:** update dependency @prefresh/next to v0.3.0 ([#498](https://github.com/obserfy/obserfy/issues/498)) ([335c604](https://github.com/obserfy/obserfy/commit/335c604b2369294db21d2d9e1e5545e6e32fc1af))
+* **deps:** update dependency @prefresh/next to v0.3.1 ([#534](https://github.com/obserfy/obserfy/issues/534)) ([6c0448d](https://github.com/obserfy/obserfy/commit/6c0448d8b97fe54613911621e9bdcde99c29bf1a))
+* **deps:** update dependency @reach/router to v1.3.4 ([ac30b36](https://github.com/obserfy/obserfy/commit/ac30b36faec37f6012b032502b8b0400b387b945))
+* **deps:** update dependency dayjs to v1.8.28 ([#499](https://github.com/obserfy/obserfy/issues/499)) ([717679e](https://github.com/obserfy/obserfy/commit/717679efffd30ac25b593d79c197eedcb32e0365))
+* **deps:** update dependency dayjs to v1.8.29 ([7d1b322](https://github.com/obserfy/obserfy/commit/7d1b322097d09a19f981a9ad66d33cbe03e5360f))
+* **deps:** update dependency gatsby to v2.23.12 ([b24ff16](https://github.com/obserfy/obserfy/commit/b24ff160b57d428947a481e2367839d4e13ffd7e))
+* **deps:** update dependency graphql to v15.1.0 ([#500](https://github.com/obserfy/obserfy/issues/500)) ([de69d6f](https://github.com/obserfy/obserfy/commit/de69d6f7e05688b080531e7bd382eb80e99d0096))
+* **deps:** update dependency imagemin-svgo to v8 ([#516](https://github.com/obserfy/obserfy/issues/516)) ([9f76daa](https://github.com/obserfy/obserfy/commit/9f76daa8327b3492f656b70b752a2a2b25471453))
+* **deps:** update dependency immer to v7.0.3 ([f4ece4c](https://github.com/obserfy/obserfy/commit/f4ece4cc91cb937c7db357d45b69a382de24913d))
+* **deps:** update dependency nanoid to v3.1.10 ([#501](https://github.com/obserfy/obserfy/issues/501)) ([ba4ca09](https://github.com/obserfy/obserfy/commit/ba4ca09aced129a56bb4f8f7fcf59af668144091))
+* **deps:** update dependency preact to v10.4.5 ([f204377](https://github.com/obserfy/obserfy/commit/f2043771446b23e475080bbbb8fe82313ebedd0a))
+* **deps:** update dependency query-string to v6.13.1 ([#502](https://github.com/obserfy/obserfy/issues/502)) ([dd0e2d0](https://github.com/obserfy/obserfy/commit/dd0e2d00550d0414bf96e36da95a2f1b427b8b6a))
+* **deps:** update dependency react-helmet to v6.1.0 ([#513](https://github.com/obserfy/obserfy/issues/513)) ([50d1cea](https://github.com/obserfy/obserfy/commit/50d1cea19642a45d92176704d23ebfc320eca36b))
+* **deps:** update dependency react-query to v1.5.8 ([#514](https://github.com/obserfy/obserfy/issues/514)) ([c6258c9](https://github.com/obserfy/obserfy/commit/c6258c967d0d18f985cdb3148f3a3a04e32f98c5))
+* **deps:** update dependency react-query to v1.5.9 ([0036370](https://github.com/obserfy/obserfy/commit/0036370008004bfce7af99a66d3b4fa35ed182f0))
+* **deps:** update dependency react-query to v2 ([811dcb1](https://github.com/obserfy/obserfy/commit/811dcb16aa32f814072ebfa50b5a0093471dec99))
+* **deps:** update dependency react-query to v2.4.12 ([5112930](https://github.com/obserfy/obserfy/commit/5112930163efcbeca1581901a495d64d6278502a))
+* **deps:** update dependency react-query to v2.4.13 ([06a61c9](https://github.com/obserfy/obserfy/commit/06a61c9523db84647437f915c193aed17a5e6cde))
+* **deps:** update dependency theme-ui to v0.4.0-rc.1 ([#520](https://github.com/obserfy/obserfy/issues/520)) ([6ba046f](https://github.com/obserfy/obserfy/commit/6ba046fd9111663623b4bad7fd79ea25372257be))
+* **deps:** update gatsby ([0969eb0](https://github.com/obserfy/obserfy/commit/0969eb0e5ba2d1721188c805a4c06ea0e9d35f9d))
+* **deps:** update gatsby ([ab8cdbe](https://github.com/obserfy/obserfy/commit/ab8cdbeab921202e7d6d184496934bb52595e5ea))
+* **deps:** update gatsby ([b77ba3f](https://github.com/obserfy/obserfy/commit/b77ba3f8f50c6f1b2c475d2d0055653b942e0b3f))
+* Fix broken storybook build. ([#557](https://github.com/obserfy/obserfy/issues/557)) ([3219901](https://github.com/obserfy/obserfy/commit/32199010589ecfd5acfb3e66840cbcfded9cf512))
+* Fix icons throwing error. ([#519](https://github.com/obserfy/obserfy/issues/519)) ([f125622](https://github.com/obserfy/obserfy/commit/f125622c485851a82b1b45ada9dd92ed1524bc42))
+* Fix lesson plan UI to send repetition data. ([c51612b](https://github.com/obserfy/obserfy/commit/c51612b8c55ad4c5c546aa35c8aaad5ac8c0e1a7))
+* Fix post lesson plan endpoint to correctly generate lesson plan. ([b5bceb1](https://github.com/obserfy/obserfy/commit/b5bceb1b8134e8dd375f8132a4e29888990dd87b))
+
 ## [1.6.0](https://github.com/obserfy/obserfy/compare/v1.5.1...v1.6.0) (2020-06-14)
 
 
