@@ -287,7 +287,7 @@ exports[`Navbar should render correctly 1`] = `
             <p
               class="emotion-2"
             >
-              Observe
+              Students
             </p>
           </div>
         </a>
@@ -324,7 +324,7 @@ exports[`Navbar should render correctly 1`] = `
             <p
               class="emotion-2"
             >
-              Settings
+              Admin
             </p>
           </div>
         </a>

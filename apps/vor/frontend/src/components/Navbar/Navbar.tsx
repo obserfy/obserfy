@@ -107,7 +107,7 @@ const Navbar: FC = () => {
         <Box mx="auto" my={3} sx={{ display: ["none", "block"] }} mb={4}>
           <GatsbyImage fixed={query.file.childImageSharp.fixed} />
         </Box>
-        <NavBarItem title="Observe" icon={EditIcon} to="/dashboard/observe" />
+        <NavBarItem title="Students" icon={EditIcon} to="/dashboard/observe" />
         <NavBarItem title="Plan" icon={CalendarIcon} to="/dashboard/plans" />
         <Box
           sx={{
@@ -116,7 +116,7 @@ const Navbar: FC = () => {
           }}
         />
         <NavBarItem
-          title="Settings"
+          title="Admin"
           icon={SettingsIcon}
           to="/dashboard/settings"
         />
