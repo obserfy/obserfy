@@ -22,7 +22,7 @@
     "next": "9.4.4",
     "next-compose-plugins": "2.2.0",
     "next-optimized-images": "2.6.1",
-    "pg": "8.2.1",
+    "pg": "8.2.2",
     "postcss-preset-env": "6.7.0",
     "preact": "10.4.5",
     "preact-render-to-string": "5.1.9",
