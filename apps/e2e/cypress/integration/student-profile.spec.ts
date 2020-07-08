@@ -42,7 +42,7 @@ describe("test student profile page", () => {
       "Bla bla black sheep have you any war. Yes shire yes shire tea bag fool"
     cy.contains(studentName).should("be.visible")
     cy.contains(studentName).click()
-    cy.contains("Students").click()
+    cy.contains("Observation").click()
     cy.get("[aria-label=Category]").select("2")
     cy.contains("Short Description").type(shortDesc)
     cy.get("[aria-label=Details]").type(details)
