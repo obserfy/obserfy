@@ -52,10 +52,10 @@
   resolved "https://registry.yarnpkg.com/@ardatan/aggregate-error/-/aggregate-error-0.0.1.tgz#1403ac5de10d8ca689fc1f65844c27179ae1d44f"
   integrity sha512-UQ9BequOTIavs0pTHLMwQwKQF8tTV1oezY/H2O9chA+JNPFZSua55xpU5dPSjAU9/jLJ1VwU+HJuTVN8u7S6Fg==
 
-"@auth0/nextjs-auth0@0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@auth0/nextjs-auth0/-/nextjs-auth0-0.13.0.tgz#cc48e210bc5e35d7c7e37abcf5cc7e963c3aa96f"
-  integrity sha512-1UZ/Fjm9mHCZtqMsHPfQex64n8Ili5/hWEd6xSauy44eM6+RqTz/Hy3DQCMtLGV+mh7TATNtz+TIDn63qMlv7A==
+"@auth0/nextjs-auth0@0.14.0":
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/@auth0/nextjs-auth0/-/nextjs-auth0-0.14.0.tgz#73991703fbf233cba382142a14cbdebf18fc0281"
+  integrity sha512-GN4+i+XE0zKm8qYsXhYR7AL0NuNxqVHQUFJ4FbXGqzXWxeC46CgJwKxDWiKX0Wp10GT5d8qh3JPpjNutkmShtA==
   dependencies:
     "@hapi/iron" "^5.1.4"
     base64url "^3.0.1"
