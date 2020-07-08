@@ -1,4 +1,5 @@
 import React, { FC, useState } from "react"
+import Img from "react-optimized-image"
 import ProfilePicture from "./profilePicture"
 import Button from "./button"
 import LogoutIcon from "../icons/log-out.svg"
@@ -15,7 +16,7 @@ const Header: FC<Props> = ({ userImageSrc, userName }) => {
     <>
       <div className="bg-surface">
         <div className="p-3 pb-2 flex items-center max-w-4xl mx-auto">
-          <img
+          <Img
             alt="obserfy logo"
             src={Logo}
             height={30}
@@ -33,7 +34,7 @@ const Header: FC<Props> = ({ userImageSrc, userName }) => {
             onClick={() => setShowLogout(true)}
             onKeyUp={(e) => e.keyCode === 13 && setShowLogout(true)}
           >
-            <img alt="logout icon" src={LogoutIcon} height={18} width={18} />
+            <Img alt="logout icon" src={LogoutIcon} height={18} width={18} />
           </div>
         </div>
       </div>

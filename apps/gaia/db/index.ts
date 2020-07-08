@@ -14,7 +14,7 @@ const pgPool = new Pool({
 })
 
 pgPool.on("error", (err) => {
-  console.error("Unexpected error in Postgress connection pool", err)
+  console.error("Unexpected error in PostgresSQL connection pool", err)
 })
 
 export const queryChildrenByGuardianEmail = async (guardianEmail: string) => {
