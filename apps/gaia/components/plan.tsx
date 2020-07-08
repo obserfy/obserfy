@@ -1,4 +1,5 @@
 import React, { FC } from "react"
+import Img from "react-optimized-image"
 import Button from "./button"
 import PaperclipIcon from "../icons/paperclip.svg"
 
@@ -31,7 +32,7 @@ const File = () => {
   return (
     <div className="flex items-center py-1 text-sm">
       <Button className="py-1 px-1 mr-3" outline>
-        <img alt="attachment icon" src={PaperclipIcon} />
+        <Img alt="attachment icon" src={PaperclipIcon} />
       </Button>
       First-file.pdf
     </div>
