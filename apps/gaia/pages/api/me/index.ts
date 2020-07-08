@@ -1,4 +1,4 @@
-import auth0 from "../../utils/auth0"
+import auth0 from "../../../utils/auth0"
 
 export interface UserData {
   family_name: string

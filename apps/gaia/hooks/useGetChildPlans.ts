@@ -5,7 +5,7 @@ const useGetChildPlans = (childId: string, date: Dayjs) => {
   const formattedDate = date.format("YYYY-DD-MM")
   const getChildPlans = async () => {
     const result = await fetch(
-      `/api/child/${childId}/plans?date=${formattedDate}`,
+      `/api/children/${childId}/plans?date=${formattedDate}`,
       { credentials: "same-origin" }
     )
 

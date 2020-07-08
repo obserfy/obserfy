@@ -1,5 +1,5 @@
-import { queryChildrenByGuardianEmail } from "../../db"
-import auth0 from "../../utils/auth0"
+import { queryChildrenByGuardianEmail } from "../../../db"
+import auth0 from "../../../utils/auth0"
 
 const childrenHandler = auth0.requireAuthentication(async (req, res) => {
   try {
