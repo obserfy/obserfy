@@ -16714,7 +16714,7 @@ next-compose-plugins@2.2.0:
   resolved "https://registry.yarnpkg.com/next-compose-plugins/-/next-compose-plugins-2.2.0.tgz#95cd8eb40ab0652070d76572fb648354191628b0"
   integrity sha512-ChUlpT9tWfJ7YxqGw/WQ2T1gf8EeX93n1XqeQw0lkvGa7seszahvF4eOZUJoq7Hetsbzg4UHVnPoCXfXTyQR3g==
 
-next-optimized-images@^3.0.0-canary.0:
+next-optimized-images@3.0.0-canary.0:
   version "3.0.0-canary.0"
   resolved "https://registry.yarnpkg.com/next-optimized-images/-/next-optimized-images-3.0.0-canary.0.tgz#777e4e69591b8540a5dacdf253de53b84fc65763"
   integrity sha512-+aXAXsobpBXxqydRC8udtAlbH+5fbzZd1sefkPVbwtRYYMbvXrZZg4nwV6fnzK6qN9xXM7C40yT/vieaC1SLMA==
@@ -19981,7 +19981,7 @@ react-load-script@^0.0.6:
   resolved "https://registry.yarnpkg.com/react-load-script/-/react-load-script-0.0.6.tgz#db6851236aaa25bb622677a2eb51dad4f8d2c258"
   integrity sha512-aRGxDGP9VoLxcsaYvKWIW+LRrMOzz2eEcubTS4NvQPPugjk2VvMhow0wWTkSl7RxookomD1MwcP4l5UStg5ShQ==
 
-react-optimized-image@^0.2.0:
+react-optimized-image@0.2.0, react-optimized-image@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/react-optimized-image/-/react-optimized-image-0.2.0.tgz#086495aee68b90241b244804c66eefabed20b947"
   integrity sha512-Z6Yh8ymG9xU9Lu+DqEC7gtH5Sl9U95bpWY4Oh/VgytemDaaZqhBTqFvZp2S35foTYY+9AQYr51CQNE+I2N56Rg==
