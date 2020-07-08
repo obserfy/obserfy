@@ -38,7 +38,7 @@ describe("test authentication", () => {
 
     // Logout
     cy.url().should("contains", "dashboard")
-    cy.contains("Settings").click()
+    cy.contains("Admin").click()
     cy.contains("Log Out").click()
 
     // Login
@@ -52,13 +52,13 @@ describe("test authentication", () => {
     cy.contains(schoolName).click()
 
     // Change theme
-    cy.contains("Settings").click()
+    cy.contains("Admin").click()
     cy.contains("Dark Mode").click()
     cy.contains("Light Mode").click()
 
     // Check sidebar links
     cy.url().should("contains", "settings")
-    cy.contains("Observe").click()
+    cy.contains("Students").click()
     // .waitForRouteChange()
     cy.url().should("contains", "observe")
   })

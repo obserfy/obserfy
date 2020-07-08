@@ -3,6 +3,8 @@ package school_test
 import (
 	"bytes"
 	"encoding/json"
+	"github.com/chrsep/vor/pkg/postgres"
+	"github.com/chrsep/vor/pkg/rest"
 	"io/ioutil"
 	"mime/multipart"
 	"net/http"
@@ -14,10 +16,10 @@ import (
 	"github.com/stretchr/testify/mock"
 
 	"github.com/chrsep/vor/pkg/mocks"
-	"github.com/chrsep/vor/pkg/school"
+	schoolPkg "github.com/chrsep/vor/pkg/school"
 )
 
-func (s SchoolTestSuite) TestSaveNewStudentWithPic() {
+func (s *SchoolTestSuite) TestSaveNewStudentWithPic() {
 	t := s.T()
 	gofakeit.Seed(time.Now().UnixNano())
 	newSchool := s.GenerateSchool()
@@ -40,7 +42,7 @@ func (s SchoolTestSuite) TestSaveNewStudentWithPic() {
 
 	// mock student image storage
 	mockImage := new(mocks.StudentImageStorage)
-	s.Handler = school.NewRouter(s.Server, s.store, mockImage, nil).ServeHTTP
+	s.Handler = schoolPkg.NewRouter(s.Server, s.store, mockImage, nil).ServeHTTP
 	mockImage.On("SaveProfilePicture", mock.Anything, mock.Anything, mock.Anything).Return("/path", nil)
 	_, err = mockImage.SaveProfilePicture(mock.Anything, nil, 50)
 	assert.NoError(t, err)
@@ -60,4 +62,32 @@ func (s SchoolTestSuite) TestSaveNewStudentWithPic() {
 
 	result := s.CreateMultipartRequest("/"+newSchool.Id+"/students", payload, writer.Boundary(), &newSchool.Users[0].Id)
 	assert.Equal(t, result.Code, http.StatusCreated)
+}
+
+func (s *SchoolTestSuite) TestGetStudents() {
+	t := s.T()
+	school := s.GenerateSchool()
+	students := []postgres.Student{
+		*s.GenerateStudent(school),
+		*s.GenerateStudent(school),
+		*s.GenerateStudent(school),
+		*s.GenerateStudent(school),
+		*s.GenerateStudent(school),
+		*s.GenerateStudent(school),
+	}
+
+	var responseBody []struct {
+		Id            string     `json:"id"`
+		Name          string     `json:"name"`
+		DateOfBirth   *time.Time `json:"dateOfBirth,omitempty"`
+		ProfilePicUrl string     `json:"profilePicUrl,omitempty"`
+		Active        bool       `json:"active"`
+	}
+	result := s.CreateRequest("GET", "/"+school.Id+"/students", nil, &school.Users[0].Id)
+	assert.Equal(t, result.Code, http.StatusOK)
+
+	err := rest.ParseJson(result.Result().Body, &responseBody)
+	assert.NoError(t, err)
+
+	assert.Equal(t, len(students), len(responseBody))
 }
