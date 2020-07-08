@@ -126,7 +126,7 @@ describe("test student profile page", () => {
     cy.contains("Math").should("exist")
 
     // Go to a student
-    cy.contains(/Observe/i).click()
+    cy.contains(/Students/i).click()
     // .waitForRouteChange()
     cy.url().should("contains", "observe")
     cy.contains(studentName).click()
