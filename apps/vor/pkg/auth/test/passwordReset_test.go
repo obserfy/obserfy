@@ -42,7 +42,7 @@ func (s *AuthTestSuite) TestValidMailPasswordReset() {
 	s.mailService.On("SendResetPassword", mock.Anything).Return(nil)
 	t := s.T()
 
-	user, err := s.SaveNewUser()
+	user, err := s.GenerateUser()
 	assert.NoError(t, err)
 
 	payload := struct {
@@ -63,7 +63,7 @@ func (s *AuthTestSuite) TestMailPasswordResetNonExistentEmail() {
 	s.mailService.On("SendResetPassword", mock.Anything).Return(nil)
 	t := s.T()
 
-	user, err := s.SaveNewUser()
+	user, err := s.GenerateUser()
 	assert.NoError(t, err)
 
 	payload := struct {
@@ -85,7 +85,7 @@ func (s *AuthTestSuite) TestValidDoPasswordReset() {
 	s.mailService.On("SendPasswordResetSuccessful", mock.Anything).
 		Return(nil)
 	t := s.T()
-	token, err := s.SaveNewPasswordResetToken()
+	token, err := s.GeneratePasswordResetToken()
 	assert.NoError(t, err)
 
 	password := uuid.New().String()
@@ -113,7 +113,7 @@ func (s *AuthTestSuite) TestValidDoPasswordReset() {
 // Empty password
 func (s *AuthTestSuite) TestEmptyPasswordDoPasswordReset() {
 	t := s.T()
-	token, err := s.SaveNewPasswordResetToken()
+	token, err := s.GeneratePasswordResetToken()
 	assert.NoError(t, err)
 
 	password := ""
@@ -132,7 +132,7 @@ func (s *AuthTestSuite) TestEmptyPasswordDoPasswordReset() {
 func (s *AuthTestSuite) TestInvalidTokenDoPasswordReset() {
 	t := s.T()
 
-	_, err := s.SaveNewPasswordResetToken()
+	_, err := s.GeneratePasswordResetToken()
 	password := uuid.New().String()
 
 	assert.NoError(t, err)
@@ -164,7 +164,7 @@ func (s *AuthTestSuite) TestDoPasswordResetTwiceShouldFailed() {
 	s.mailService.On("SendPasswordResetSuccessful", mock.Anything).
 		Return(nil)
 	t := s.T()
-	token, err := s.SaveNewPasswordResetToken()
+	token, err := s.GeneratePasswordResetToken()
 	assert.NoError(t, err)
 
 	password := uuid.New().String()
@@ -200,7 +200,7 @@ func (s *AuthTestSuite) TestDoPasswordResetTwiceShouldFailed() {
 // Test expired token should not be usable
 func (s *AuthTestSuite) TestExpiredTokenDoPasswordReset() {
 	t := s.T()
-	token, err := s.SaveNewPasswordResetToken()
+	token, err := s.GeneratePasswordResetToken()
 	assert.NoError(t, err)
 
 	// Advance time by 1 hour

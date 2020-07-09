@@ -36,24 +36,6 @@ func TestSchool(t *testing.T) {
 	suite.Run(t, new(SchoolTestSuite))
 }
 
-func (s *SchoolTestSuite) SaveNewGuardian() (*postgres.Guardian, string) {
-	t := s.T()
-	gofakeit.Seed(time.Now().UnixNano())
-	newSchool := s.GenerateSchool()
-	newGuardian := postgres.Guardian{
-		Id:       uuid.New().String(),
-		Name:     gofakeit.Name(),
-		Email:    gofakeit.Email(),
-		Phone:    gofakeit.Phone(),
-		Note:     gofakeit.Paragraph(1, 3, 20, " "),
-		SchoolId: newSchool.Id,
-		School:   *newSchool,
-	}
-	err := s.DB.Insert(&newGuardian)
-	assert.NoError(t, err)
-	return &newGuardian, newSchool.Users[0].Id
-}
-
 func (s *SchoolTestSuite) SaveNewFile() (*postgres.File, string) {
 	t := s.T()
 	gofakeit.Seed(time.Now().UnixNano())

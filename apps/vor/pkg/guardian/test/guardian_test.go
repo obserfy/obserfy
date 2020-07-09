@@ -29,27 +29,10 @@ func TestClass(t *testing.T) {
 	suite.Run(t, new(GuardianTestSuite))
 }
 
-func (s *GuardianTestSuite) SaveNewGuardian() (*postgres.Guardian, string) {
-	t := s.T()
-	gofakeit.Seed(time.Now().UnixNano())
-	newSchool := s.GenerateSchool()
-	newGuardian := postgres.Guardian{
-		Id:       uuid.New().String(),
-		Name:     gofakeit.Name(),
-		Email:    gofakeit.Email(),
-		Phone:    gofakeit.Phone(),
-		Note:     gofakeit.Paragraph(1, 3, 20, " "),
-		SchoolId: newSchool.Id,
-		School:   *newSchool,
-	}
-	err := s.DB.Insert(&newGuardian)
-	assert.NoError(t, err)
-	return &newGuardian, newSchool.Users[0].Id
-}
-
 func (s *GuardianTestSuite) TestAuthorization() {
 	t := s.T()
-	newGuardian, userId := s.SaveNewGuardian()
+	newSchool := s.GenerateSchool()
+	newGuardian, userId := s.GenerateGuardian(newSchool)
 	tests := []struct {
 		name       string
 		userId     string
@@ -77,7 +60,8 @@ func (s *GuardianTestSuite) TestAuthorization() {
 
 func (s *GuardianTestSuite) TestGetGuardian() {
 	t := s.T()
-	newGuardian, userId := s.SaveNewGuardian()
+	newSchool := s.GenerateSchool()
+	newGuardian, userId := s.GenerateGuardian(newSchool)
 	tests := []struct {
 		name       string
 		id         string
@@ -106,7 +90,8 @@ func (s *GuardianTestSuite) TestGetGuardian() {
 
 func (s *GuardianTestSuite) TestDeleteGuardian() {
 	t := s.T()
-	newGuardian, userId := s.SaveNewGuardian()
+	newSchool := s.GenerateSchool()
+	newGuardian, userId := s.GenerateGuardian(newSchool)
 	tests := []struct {
 		name       string
 		id         string
@@ -180,7 +165,8 @@ func (s *GuardianTestSuite) TestUpdateGuardian() {
 	}
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			newGuardian, userId := s.SaveNewGuardian()
+			newSchool := s.GenerateSchool()
+			newGuardian, userId := s.GenerateGuardian(newSchool)
 			result := s.CreateRequest("PATCH", "/"+newGuardian.Id, test.body, &userId)
 			assert.Equal(t, test.resultCode, result.Code)
 		})

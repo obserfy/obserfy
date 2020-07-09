@@ -17,6 +17,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
 	"go.uber.org/zap/zaptest"
+	"golang.org/x/crypto/bcrypt"
 	"net/http"
 	"net/http/httptest"
 	"time"
@@ -256,6 +257,93 @@ func (s *BaseTestSuite) GenerateLessonPlan() (postgres.LessonPlan, string) {
 	assert.NoError(t, err)
 
 	return lessonPlan, userid
+}
+
+func (s *BaseTestSuite) GenerateGuardian(school *postgres.School) (*postgres.Guardian, string) {
+	t := s.T()
+	gofakeit.Seed(time.Now().UnixNano())
+
+	newGuardian := postgres.Guardian{
+		Id:       uuid.New().String(),
+		Name:     gofakeit.Name(),
+		Email:    gofakeit.Email(),
+		Phone:    gofakeit.Phone(),
+		Note:     gofakeit.Paragraph(1, 3, 20, " "),
+		SchoolId: school.Id,
+		School:   *school,
+	}
+	err := s.DB.Insert(&newGuardian)
+	assert.NoError(t, err)
+
+	return &newGuardian, school.Users[0].Id
+}
+
+func (s *BaseTestSuite) GenerateObservation()  postgres.Observation {
+	currentTime := time.Now().Local()
+	gofakeit.Seed(time.Now().UnixNano())
+	newSchool := s.GenerateSchool()
+	newStudent := s.GenerateStudent(newSchool)
+
+	o := postgres.Observation{
+		Id:          uuid.New().String(),
+		ShortDesc:   gofakeit.Sentence(10),
+		LongDesc:    gofakeit.Paragraph(1, 1, 20, "\n"),
+		CategoryId:  "1",
+		CreatedDate: currentTime,
+		EventTime:   &currentTime,
+		Student:     newStudent,
+		StudentId:   newStudent.Id,
+		Creator:     &newSchool.Users[0],
+		CreatorId:   newSchool.Users[0].Id,
+	}
+	_, err := s.DB.Model(&o).Insert()
+	assert.NoError(s.T(), err)
+
+	return o
+}
+
+func (s *BaseTestSuite) GenerateUser() (*auth.User, error) {
+	gofakeit.Seed(time.Now().UnixNano())
+	password := gofakeit.Password(true, true, true, true, true, 10)
+	hashedPassword, _ := bcrypt.GenerateFromPassword([]byte(password), 10)
+	user := postgres.User{
+		Id: uuid.New().String(),
+		Email: gofakeit.Email(),
+		Name: gofakeit.Name(),
+		Password: hashedPassword,
+	}
+	_, err := s.DB.Model(&user).Insert()
+	assert.NoError(s.T(), err)
+
+	return &auth.User{
+		Id:    user.Id,
+		Email: user.Email,
+		Name:  user.Name,
+	}, nil
+}
+
+func (s *BaseTestSuite) GeneratePasswordResetToken() (*auth.PasswordResetToken, error) {
+	user, err := s.GenerateUser()
+	assert.NoError(s.T(), err)
+	currentTime := time.Now()
+	expiredAt := currentTime.Add(time.Hour)
+	newToken := uuid.New().String()
+	token := postgres.PasswordResetToken{
+		Token:     newToken,
+		CreatedAt: currentTime,
+		ExpiredAt: expiredAt,
+		UserId:    user.Id,
+	}
+	_, err = s.DB.Model(&token).Insert()
+	assert.NoError(s.T(), err)
+
+	return &auth.PasswordResetToken{
+		Token:     token.Token,
+		UserId:    token.UserId,
+		CreatedAt: token.CreatedAt,
+		ExpiredAt: token.ExpiredAt,
+		User:      *user,
+	}, nil
 }
 
 func (s *BaseTestSuite) CreateRequest(method string, path string, bodyJson interface{}, userId *string) *httptest.ResponseRecorder {

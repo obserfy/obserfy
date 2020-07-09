@@ -2,7 +2,6 @@ package observation_test
 
 import (
 	"encoding/json"
-	"github.com/brianvoe/gofakeit/v4"
 	"github.com/chrsep/vor/pkg/observation"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/testutils"
@@ -29,38 +28,9 @@ func TestObservation(t *testing.T) {
 	suite.Run(t, new(ObservationTestSuite))
 }
 
-func (s *ObservationTestSuite) SaveNewObservation() postgres.Observation {
-	currentTime := time.Now().Local()
-	gofakeit.Seed(time.Now().UnixNano())
-	school := s.GenerateSchool()
-	student := postgres.Student{
-		Id:          uuid.New().String(),
-		Name:        gofakeit.Name(),
-		DateOfBirth: &currentTime,
-		SchoolId:    school.Id,
-	}
-	_, err := s.DB.Model(&student).Insert()
-	assert.NoError(s.T(), err)
-	o := postgres.Observation{
-		Id:          uuid.New().String(),
-		ShortDesc:   gofakeit.Sentence(10),
-		LongDesc:    gofakeit.Paragraph(1, 1, 20, "\n"),
-		CategoryId:  "1",
-		CreatedDate: currentTime,
-		EventTime:   &currentTime,
-		Student:     &student,
-		StudentId:   student.Id,
-		Creator:     &school.Users[0],
-		CreatorId:   school.Users[0].Id,
-	}
-	_, err = s.DB.Model(&o).Insert()
-	assert.NoError(s.T(), err)
-	return o
-}
-
 func (s *ObservationTestSuite) TestGetObservation() {
 	t := s.T()
-	o := s.SaveNewObservation()
+	o := s.GenerateObservation()
 
 	w := s.CreateRequest("GET", "/"+o.Id, nil, &o.CreatorId)
 	assert.Equal(t, http.StatusOK, w.Code)
