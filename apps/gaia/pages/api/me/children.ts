@@ -1,11 +1,11 @@
-import { queryChildrenByGuardianEmail } from "../../../db"
+import { findChildrenByGuardianEmail } from "../../../db"
 import auth0 from "../../../utils/auth0"
 
 const childrenHandler = auth0.requireAuthentication(async (req, res) => {
   try {
     const { user } = await auth0.getSession(req)
 
-    const result = await queryChildrenByGuardianEmail(user.email)
+    const result = await findChildrenByGuardianEmail(user.email)
     res.status(200).json(result)
   } catch (error) {
     console.error(error)

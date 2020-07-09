@@ -17,49 +17,60 @@ pgPool.on("error", (err) => {
   console.error("Unexpected error in PostgresSQL connection pool", err)
 })
 
-export const queryChildrenByGuardianEmail = async (guardianEmail: string) => {
+const query = async (sql: string, params: string[]) => {
   const client = await pgPool.connect()
-
   try {
-    // language=PostgreSQL
-    const result = await client.query<{ id: string; name: string }>(
-      `
-              SELECT s.id, s.name
-              FROM students s
-                       JOIN guardian_to_students gts ON s.id = gts.student_id
-                       JOIN guardians g ON gts.guardian_id = g.id
-              WHERE g.email = $1
-    `,
-      [guardianEmail]
-    )
-    return result.rows
+    return await client.query(sql, params)
   } finally {
     client.release()
   }
 }
 
-export const queryChildData = async (
-  guardianEmail: string,
-  childId: string
-) => {
-  const client = await pgPool.connect()
-
-  try {
-    // language=PostgreSQL
-    const result = await client.query(
-      `
-              SELECT s.id, s.name, school.name as school_name, s.profile_pic
-              FROM students s
-                       JOIN schools school ON s.school_id = school.id
-                       JOIN guardian_to_students gts ON s.id = gts.student_id
-                       JOIN guardians g ON gts.guardian_id = g.id
-              WHERE g.email = $1
-                AND s.id = $2
+export const findChildrenByGuardianEmail = async (guardianEmail: string) => {
+  // language=PostgreSQL
+  const result = await query(
+    `
+              select s.id, s.name
+              from students s
+                       join guardian_to_students gts on s.id = gts.student_id
+                       join guardians g on gts.guardian_id = g.id
+              where g.email = $1
     `,
-      [guardianEmail, childId]
-    )
-    return result.rows[0]
-  } finally {
-    client.release()
-  }
+    [guardianEmail]
+  )
+  return result.rows
+}
+
+export const findChildById = async (guardianEmail: string, childId: string) => {
+  // language=PostgreSQL
+  const result = await query(
+    `
+              select s.id, s.name, school.name as school_name, s.profile_pic
+              from students s
+                       join schools school on s.school_id = school.id
+                       join guardian_to_students gts on s.id = gts.student_id
+                       join guardians g on gts.guardian_id = g.id
+              where g.email = $1
+                and s.id = $2
+    `,
+    [guardianEmail, childId]
+  )
+  return result.rows[0]
+}
+
+export async function findLessonPlanByChildId(childId: string) {
+  // language=PostgreSQL
+  const result = await query(
+    `
+              select lp.id           as id,
+                     lpd.title       as title,
+                     lpd.description as description
+              from lesson_plans lp
+                       join lesson_plan_details lpd on lp.lesson_plan_details_id = lpd.id
+                       join lesson_plan_to_students lpts on lp.id = lpts.lesson_plan_id
+              where lpts.student_id = $1
+    `,
+    [childId]
+  )
+  return result.rows
 }
