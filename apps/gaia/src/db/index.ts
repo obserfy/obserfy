@@ -1,4 +1,6 @@
 import { Pool } from "pg"
+import { LessonPlan } from "../domain"
+import dayjs from "../utils/dayjs"
 
 const pgPool = new Pool({
   user: process.env.PG_USER,
@@ -58,17 +60,18 @@ export const findChildById = async (guardianEmail: string, childId: string) => {
   return result.rows[0]
 }
 
-export async function findLessonPlanByChildIdAndDate(
+export const findLessonPlanByChildIdAndDate = async (
   childId: string,
   date: string
-) {
+): Promise<LessonPlan[]> => {
   // language=PostgreSQL
-  const result = await query(
+  const plans = await query(
     `
               select lp.id           as id,
                      lpd.title       as title,
                      lpd.description as description,
                      a.name          as areaName,
+                     a.id            as areaid,
                      lp.date         as date
               from lesson_plans lp
                        left join lesson_plan_details lpd on lp.lesson_plan_details_id = lpd.id
@@ -79,5 +82,16 @@ export async function findLessonPlanByChildIdAndDate(
     `,
     [childId, date]
   )
-  return result.rows
+
+  return plans.rows.map((plan) => ({
+    id: plan.id,
+    title: plan.title,
+    description: plan.description,
+    date: dayjs(plan.date),
+    student: [],
+    area: {
+      id: plan.areaid,
+      name: plan.areaname,
+    },
+  }))
 }
