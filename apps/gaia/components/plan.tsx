@@ -13,17 +13,15 @@ interface Props {
 }
 const Plan: FC<Props> = ({ name, area, files }) => {
   return (
-    <div>
-      <div className="flex flex-col items-start bg-surface px-3 pt-3  pb-2 rounded shadow mb-2">
-        <div className="text-md">{name}</div>
-        <div className="text-sm text-green-700 mb-3">{area}</div>
-        {files.length > 0 && (
-          <div className="text-sm text-gray-700 mb-1">Files</div>
-        )}
-        {files.map(() => (
-          <File />
-        ))}
-      </div>
+    <div className="flex flex-col items-start bg-surface px-3 pt-3  pb-2 rounded mb-2 border">
+      <div className="text-md">{name}</div>
+      <div className="text-sm text-green-700 mb-3">{area}</div>
+      {files.length > 0 && (
+        <div className="text-sm text-gray-700 mb-1">Files</div>
+      )}
+      {files.map(() => (
+        <File />
+      ))}
     </div>
   )
 }

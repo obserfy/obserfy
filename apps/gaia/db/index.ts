@@ -58,19 +58,26 @@ export const findChildById = async (guardianEmail: string, childId: string) => {
   return result.rows[0]
 }
 
-export async function findLessonPlanByChildId(childId: string) {
+export async function findLessonPlanByChildIdAndDate(
+  childId: string,
+  date: string
+) {
   // language=PostgreSQL
   const result = await query(
     `
               select lp.id           as id,
                      lpd.title       as title,
-                     lpd.description as description
+                     lpd.description as description,
+                     a.name          as areaName,
+                     lp.date         as date
               from lesson_plans lp
-                       join lesson_plan_details lpd on lp.lesson_plan_details_id = lpd.id
-                       join lesson_plan_to_students lpts on lp.id = lpts.lesson_plan_id
+                       left join lesson_plan_details lpd on lp.lesson_plan_details_id = lpd.id
+                       left join lesson_plan_to_students lpts on lp.id = lpts.lesson_plan_id
+                       left join areas a on lpd.area_id = a.id
               where lpts.student_id = $1
+                AND ($2::date IS NULL OR lp.date::date = $2::date)
     `,
-    [childId]
+    [childId, date]
   )
   return result.rows
 }

@@ -2,7 +2,7 @@ import { useQuery } from "react-query"
 import { Dayjs } from "../utils/dayjs"
 
 const useGetChildPlans = (childId: string, date: Dayjs) => {
-  const formattedDate = date.format("YYYY-DD-MM")
+  const formattedDate = date.startOf("day").toISOString()
   const getChildPlans = async () => {
     const result = await fetch(
       `/api/children/${childId}/plans?date=${formattedDate}`,

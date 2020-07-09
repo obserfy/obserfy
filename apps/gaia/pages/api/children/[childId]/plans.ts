@@ -1,13 +1,13 @@
 import auth0 from "../../../../utils/auth0"
-import { findLessonPlanByChildId } from "../../../../db"
+import { findLessonPlanByChildIdAndDate } from "../../../../db"
+import { getFirstQueryValue } from "../../../../utils/rest"
 
 export default auth0.requireAuthentication(async (req, res) => {
   try {
-    const {
-      query: { childId },
-    } = req
+    const date = getFirstQueryValue(req, "date")
+    const childId = getFirstQueryValue(req, "childId")
 
-    const plans = await findLessonPlanByChildId(childId as string)
+    const plans = await findLessonPlanByChildIdAndDate(childId as string, date)
 
     res.status(200).json(plans)
   } catch (err) {

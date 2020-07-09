@@ -52,7 +52,7 @@ const IndexPage = () => {
         />
       )}
       {childPlans.data?.map((plan) => (
-        <Plan name={plan.name} files={[]} area="Practical Life" />
+        <Plan name={plan.title} files={[]} area={plan.areaName} />
       ))}
     </div>
   )
