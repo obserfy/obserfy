@@ -1,4 +1,4 @@
-import { queryChildData } from "../../../../db"
+import { findChildById } from "../../../../db"
 import { generateUrl } from "../../../../utils/imgproxy"
 import auth0 from "../../../../utils/auth0"
 
@@ -9,7 +9,7 @@ const childHandler = auth0.requireAuthentication(async (req, res) => {
       query: { childId },
     } = req
 
-    const result = await queryChildData(user.email, childId as string)
+    const result = await findChildById(user.email, childId as string)
     if (!result) {
       res.status(404).end("not found")
       return
