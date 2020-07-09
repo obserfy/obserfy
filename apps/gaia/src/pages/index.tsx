@@ -7,7 +7,6 @@ import ChevronRight from "../icons/chevron-right.svg"
 import ChevronLeft from "../icons/chevron-left.svg"
 import useGetChildPlans from "../hooks/useGetChildPlans"
 import { useQueryString } from "../hooks/useQueryString"
-import Plan from "../components/plan"
 import NoPlanIllustration from "../images/no-plan-illustration.svg"
 
 const IndexPage = () => {
@@ -16,11 +15,11 @@ const IndexPage = () => {
   const childPlans = useGetChildPlans(childId, date)
 
   return (
-    <div className="p-3">
+    <div>
       <Head>
         <title>Home | Obserfy for Parents</title>
       </Head>
-      <div className="flex items-center mb-3">
+      <div className="flex items-end p-3">
         <div className="text-sm">{date.format("ddd, DD MMM 'YY")}</div>
         <Button
           className="px-1 ml-auto"
@@ -51,9 +50,37 @@ const IndexPage = () => {
           date={date}
         />
       )}
-      {childPlans.data?.map((plan) => (
-        <Plan name={plan.title} files={[]} area={plan.areaName} />
-      ))}
+      <div className="md:px-3">
+        {childPlans.data?.map((plan) => (
+          <Plan
+            name={plan.title}
+            files={[]}
+            area={plan.area?.name}
+            description={plan.description}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
+
+const Plan: FC<{
+  name: string
+  area: string
+  description?: string
+  files: Array<{
+    link: string
+    name: string
+  }>
+}> = ({ name, area, files, description }) => {
+  return (
+    <div className="flex flex-col items-start bg-surface md:rounded mb-2 border p-3">
+      <div className="text-md">{name}</div>
+      {description && <div className="text-gray-600 mt-1">{description}</div>}
+      {area && <div className="text-sm text-green-700 mt-1">{area}</div>}
+      {files.length > 0 && (
+        <div className="text-sm text-gray-700 mb-1">Files</div>
+      )}
     </div>
   )
 }

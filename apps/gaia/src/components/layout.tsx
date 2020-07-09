@@ -84,7 +84,7 @@ const Layout: FC = ({ children }) => {
           <div className="sticky top-0 bg-surface border-b ">
             <nav className="w-full flex max-w-4xl mx-auto">
               <div
-                className="mx-3 px-1 py-2 border-b-2 border-black text-sm"
+                className="mx-3 py-2 border-b-2 border-black text-sm"
                 style={{ marginBottom: "-1px" }}
               >
                 Lesson Plans
