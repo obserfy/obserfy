@@ -2,15 +2,17 @@ package observation_test
 
 import (
 	"encoding/json"
-	"github.com/chrsep/vor/pkg/observation"
-	"github.com/chrsep/vor/pkg/postgres"
-	"github.com/chrsep/vor/pkg/testutils"
-	"github.com/google/uuid"
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/suite"
 	"net/http"
 	"testing"
 	"time"
+
+	"github.com/google/uuid"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/suite"
+
+	"github.com/chrsep/vor/pkg/observation"
+	"github.com/chrsep/vor/pkg/postgres"
+	"github.com/chrsep/vor/pkg/testutils"
 )
 
 type ObservationTestSuite struct {

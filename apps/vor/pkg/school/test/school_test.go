@@ -2,21 +2,24 @@ package school_test
 
 import (
 	"bytes"
-	"github.com/brianvoe/gofakeit/v4"
-	"github.com/chrsep/vor/pkg/minio"
-	"github.com/chrsep/vor/pkg/mocks"
-	"github.com/chrsep/vor/pkg/postgres"
-	"github.com/chrsep/vor/pkg/school"
-	"github.com/chrsep/vor/pkg/testutils"
-	"github.com/google/uuid"
-	minio2 "github.com/minio/minio-go/v6"
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/suite"
 	"io/ioutil"
 	"mime/multipart"
 	"os"
 	"testing"
 	"time"
+
+	"github.com/brianvoe/gofakeit/v4"
+	"github.com/google/uuid"
+	minio2 "github.com/minio/minio-go/v6"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/suite"
+
+	"github.com/chrsep/vor/pkg/minio"
+	"github.com/chrsep/vor/pkg/mocks"
+	"github.com/chrsep/vor/pkg/postgres"
+	"github.com/chrsep/vor/pkg/school"
+	"github.com/chrsep/vor/pkg/testutils"
+
 )
 
 type SchoolTestSuite struct {

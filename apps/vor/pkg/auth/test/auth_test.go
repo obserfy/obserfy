@@ -1,13 +1,15 @@
 package auth_test
 
 import (
+	"testing"
+
 	"github.com/benbjohnson/clock"
+	"github.com/stretchr/testify/mock"
+	"github.com/stretchr/testify/suite"
+
 	"github.com/chrsep/vor/pkg/auth"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/testutils"
-	"github.com/stretchr/testify/mock"
-	"github.com/stretchr/testify/suite"
-	"testing"
 )
 
 type AuthTestSuite struct {

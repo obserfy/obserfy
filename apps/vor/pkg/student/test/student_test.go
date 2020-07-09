@@ -1,18 +1,19 @@
 package student_test
 
 import (
-	"github.com/chrsep/vor/pkg/rest"
 	"net/http"
 	"testing"
 	"time"
 
 	"github.com/brianvoe/gofakeit/v4"
-	"github.com/chrsep/vor/pkg/mocks"
-	"github.com/chrsep/vor/pkg/postgres"
-	"github.com/chrsep/vor/pkg/student"
-	"github.com/chrsep/vor/pkg/testutils"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
+
+	"github.com/chrsep/vor/pkg/mocks"
+	"github.com/chrsep/vor/pkg/postgres"
+	"github.com/chrsep/vor/pkg/rest"
+	"github.com/chrsep/vor/pkg/student"
+	"github.com/chrsep/vor/pkg/testutils"
 )
 
 type StudentTestSuite struct {

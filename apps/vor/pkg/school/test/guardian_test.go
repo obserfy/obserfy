@@ -1,13 +1,15 @@
 package school_test
 
 import (
-	"github.com/brianvoe/gofakeit/v4"
-	"github.com/chrsep/vor/pkg/postgres"
-	"github.com/chrsep/vor/pkg/rest"
-	"github.com/stretchr/testify/assert"
 	"net/http"
 	"testing"
 	"time"
+
+	"github.com/brianvoe/gofakeit/v4"
+	"github.com/stretchr/testify/assert"
+
+	"github.com/chrsep/vor/pkg/postgres"
+	"github.com/chrsep/vor/pkg/rest"
 )
 
 func (s *SchoolTestSuite) TestCreateNewGuardian() {

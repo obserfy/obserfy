@@ -1,13 +1,15 @@
 package auth_test
 
 import (
-	"github.com/chrsep/vor/pkg/postgres"
-	"github.com/google/uuid"
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/mock"
 	"net/http"
 	"testing"
 	"time"
+
+	"github.com/google/uuid"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/mock"
+
+	"github.com/chrsep/vor/pkg/postgres"
 )
 
 func (s *AuthTestSuite) TestInvalidMailPasswordReset() {

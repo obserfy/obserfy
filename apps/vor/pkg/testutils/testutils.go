@@ -5,11 +5,11 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"net/http"
+	"net/http/httptest"
+	"time"
+
 	"github.com/brianvoe/gofakeit/v4"
-	"github.com/chrsep/vor/pkg/auth"
-	cMinio "github.com/chrsep/vor/pkg/minio"
-	"github.com/chrsep/vor/pkg/postgres"
-	"github.com/chrsep/vor/pkg/rest"
 	"github.com/go-pg/pg/v10"
 	"github.com/google/uuid"
 	"github.com/joho/godotenv"
@@ -18,9 +18,11 @@ import (
 	"github.com/stretchr/testify/suite"
 	"go.uber.org/zap/zaptest"
 	"golang.org/x/crypto/bcrypt"
-	"net/http"
-	"net/http/httptest"
-	"time"
+
+	"github.com/chrsep/vor/pkg/auth"
+	cMinio "github.com/chrsep/vor/pkg/minio"
+	"github.com/chrsep/vor/pkg/postgres"
+	"github.com/chrsep/vor/pkg/rest"
 )
 
 type BaseTestSuite struct {

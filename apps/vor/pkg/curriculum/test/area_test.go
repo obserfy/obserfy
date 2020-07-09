@@ -1,13 +1,15 @@
 package curriculum_test
 
 import (
-	"github.com/chrsep/vor/pkg/postgres"
+	"net/http"
+	"testing"
+
 	"github.com/go-pg/pg/v10"
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
-	"net/http"
-	"testing"
+
+	"github.com/chrsep/vor/pkg/postgres"
 )
 
 type AreaTestSuite struct {
