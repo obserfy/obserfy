@@ -154,10 +154,8 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   border: 0;
   border-radius: 4px;
   cursor: pointer;
-  text-transform: capitalize;
   box-sizing: border-box;
-  font-size: 14px;
-  font-weight: bold;
+  font-size: 16px;
   color: var(--theme-ui-colors-textPrimary,#027c5b);
   background-color: transparent;
   border-radius: 6px;
@@ -181,6 +179,7 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  touch-action: manipulation;
   border: 1px solid;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-danger,#d50000);
@@ -245,10 +244,8 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   border: 0;
   border-radius: 4px;
   cursor: pointer;
-  text-transform: capitalize;
   box-sizing: border-box;
-  font-size: 14px;
-  font-weight: bold;
+  font-size: 16px;
   color: var(--theme-ui-colors-textPrimary,#027c5b);
   background-color: transparent;
   border-radius: 6px;
@@ -272,6 +269,7 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  touch-action: manipulation;
   border: 1px solid;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   margin-left: 8px;
@@ -381,10 +379,8 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   border: 0;
   border-radius: 4px;
   cursor: pointer;
-  text-transform: capitalize;
   box-sizing: border-box;
-  font-size: 14px;
-  font-weight: bold;
+  font-size: 16px;
   color: var(--theme-ui-colors-textPrimary,#027c5b);
   background-color: transparent;
   border-radius: 6px;
@@ -408,6 +404,7 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  touch-action: manipulation;
   border: 1px solid;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }

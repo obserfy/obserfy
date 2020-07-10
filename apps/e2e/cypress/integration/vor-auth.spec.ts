@@ -53,8 +53,8 @@ describe("test authentication", () => {
 
     // Change theme
     cy.contains("Admin").click()
-    cy.contains("Dark Mode").click()
-    cy.contains("Light Mode").click()
+    cy.get("[data-cy=dark-switch]").click()
+    cy.get("[data-cy=light-switch]").click()
 
     // Check sidebar links
     cy.url().should("contains", "settings")
