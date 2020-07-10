@@ -586,6 +586,7 @@ exports[`PageSettings should render correctly 1`] = `
       >
         <button
           class="emotion-30"
+          data-cy="dark-switch"
         >
           <div
             class="emotion-5"

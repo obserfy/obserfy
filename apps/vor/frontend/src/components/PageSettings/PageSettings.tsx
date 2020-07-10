@@ -99,6 +99,7 @@ const ThemeModeButton: FC = () => {
       p={3}
       onClick={() => setColorMode(colorMode === "dark" ? "default" : "dark")}
       sx={{ flexShrink: 0 }}
+      data-cy={colorMode === "dark" ? "light-switch" : "dark-switch"}
     >
       {colorMode === "dark" ? (
         <Icon as={LightModeIcon} m={0} />
