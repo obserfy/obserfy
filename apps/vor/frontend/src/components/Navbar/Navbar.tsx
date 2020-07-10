@@ -108,7 +108,7 @@ const Navbar: FC = () => {
           <GatsbyImage fixed={query.file.childImageSharp.fixed} />
         </Box>
         <NavBarItem title="Students" icon={EditIcon} to="/dashboard/observe" />
-        <NavBarItem title="Plan" icon={CalendarIcon} to="/dashboard/plans" />
+        {/* <NavBarItem title="Plan" icon={CalendarIcon} to="/dashboard/plans" /> */}
         <Box
           sx={{
             height: "100%",

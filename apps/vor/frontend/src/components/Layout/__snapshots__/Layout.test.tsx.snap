@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Layout should render correctly 1`] = `
-.emotion-14 {
+.emotion-11 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,12 +9,12 @@ exports[`Layout should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-14 {
+  .emotion-11 {
     font-size: 20px;
   }
 }
 
-.emotion-12 {
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -38,7 +38,7 @@ exports[`Layout should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-12 {
+  .emotion-9 {
     height: 100%;
     width: auto;
     display: block;
@@ -48,7 +48,7 @@ exports[`Layout should render correctly 1`] = `
 }
 
 @supports (-webkit-backdrop-filter:blur(20px)) or (backdrop-filter:blur(20px)) {
-  .emotion-12 {
+  .emotion-9 {
     background-color: var(--theme-ui-colors-surfaceBlurTransparent,rgba(255,255,255,0.6));
     -webkit-backdrop-filter: saturate(180%) blur(20px);
     backdrop-filter: saturate(180%) blur(20px);
@@ -59,7 +59,7 @@ exports[`Layout should render correctly 1`] = `
   }
 }
 
-.emotion-11 {
+.emotion-8 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -80,13 +80,13 @@ exports[`Layout should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-11 {
+  .emotion-8 {
     padding-bottom: 0;
   }
 }
 
 @media screen and (min-width:40em) {
-  .emotion-11 {
+  .emotion-8 {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -210,7 +210,7 @@ exports[`Layout should render correctly 1`] = `
   }
 }
 
-.emotion-7 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -219,12 +219,12 @@ exports[`Layout should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-7 {
+  .emotion-4 {
     display: block;
   }
 }
 
-.emotion-13 {
+.emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -236,7 +236,7 @@ exports[`Layout should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-13 {
+  .emotion-10 {
     padding-left: 70px;
     padding-bottom: 0;
   }
@@ -244,13 +244,13 @@ exports[`Layout should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-14"
+    class="emotion-11"
   >
     <nav
-      class="emotion-12"
+      class="emotion-9"
     >
       <div
-        class="emotion-11"
+        class="emotion-8"
       >
         <div
           class="emotion-0"
@@ -309,25 +309,8 @@ exports[`Layout should render correctly 1`] = `
             </p>
           </div>
         </a>
-        <a
-          href="/dashboard/plans"
-          style="outline: none;"
-        >
-          <div
-            class="emotion-3"
-          >
-            <div
-              class="emotion-1"
-            />
-            <p
-              class="emotion-2"
-            >
-              Plan
-            </p>
-          </div>
-        </a>
         <div
-          class="emotion-7"
+          class="emotion-4"
         />
         <a
           href="/dashboard/settings"
@@ -349,7 +332,7 @@ exports[`Layout should render correctly 1`] = `
       </div>
     </nav>
     <main
-      class="emotion-13"
+      class="emotion-10"
     />
   </div>
 </div>
