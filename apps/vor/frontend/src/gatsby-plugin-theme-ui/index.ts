@@ -236,10 +236,8 @@ const theme: Theme = {
   buttons: {
     primary: {
       cursor: "pointer",
-      textTransform: "capitalize",
       boxSizing: "border-box",
-      fontSize: 1,
-      fontWeight: "bold",
+      fontSize: 2,
       color: "onPrimary",
       bg: "primary",
       borderRadius: "default",
@@ -251,6 +249,7 @@ const theme: Theme = {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
+      touchAction: "manipulation",
       "&:disabled": {
         opacity: 0.38,
         cursor: "auto",

@@ -64,7 +64,7 @@ export const ObservationCard: FC<Props> = ({
           data-cy="delete-observation"
           onClick={() => onDelete(observation)}
         >
-          delete
+          Delete
         </Button>
         <Button
           variant="secondary"
