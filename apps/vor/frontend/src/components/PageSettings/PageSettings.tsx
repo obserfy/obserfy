@@ -1,13 +1,11 @@
 import React, { FC } from "react"
 import { navigate } from "gatsby"
-import { useColorMode, Box, Flex, Button, Card } from "theme-ui"
-import { Link } from "../Link/Link"
+import { Box, Button, Card, Flex, useColorMode } from "theme-ui"
 import Typography from "../Typography/Typography"
 import Icon from "../Icon/Icon"
 import CardLink from "../CardLink/CardLink"
 import { ReactComponent as LightModeIcon } from "../../icons/light-mode.svg"
 import { ReactComponent as DarkModeIcon } from "../../icons/dark-mode.svg"
-import { ReactComponent as FlipIcon } from "../../icons/flip.svg"
 import { useGetSchool } from "../../api/schools/useGetSchool"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import { CLASS_SETTINGS_URL } from "../../routes"
@@ -36,59 +34,58 @@ export const PageSettings: FC = () => {
   }
 
   return (
-    <Box sx={{ maxWidth: "maxWidth.sm" }} m="auto" p={3} pt={[3, 3, 4]}>
-      <Box sx={{ width: "100%" }} mb={4}>
+    <Box sx={{ maxWidth: "maxWidth.sm" }} m="auto" px={3} pt={[3, 3, 4]} pb={5}>
+      <Box sx={{ width: "100%" }} mb={3}>
         {schoolDetail.status === "loading" && !schoolDetail.data?.name && (
           <LoadingPlaceholder sx={{ width: "100%", height: 60 }} />
         )}
-        <Typography.H3 mb={3} ml={1}>
+        <Typography.H4 mb={3} ml={1} sx={{ textAlign: "center" }}>
           {schoolDetail.data?.name}
-        </Typography.H3>
-        <Link to="/choose-school">
-          <Button variant="outline">
-            <Icon as={FlipIcon} m={0} mr={2} />
-            Switch School
-          </Button>
-        </Link>
+        </Typography.H4>
       </Box>
       <CardLink mb={2} name="Curriculum" to="/dashboard/settings/curriculum" />
       <CardLink mb={2} name="Users" to="/dashboard/settings/users" />
       <CardLink mb={2} name="Class" to={CLASS_SETTINGS_URL} />
       <CardLink mb={2} name="All Students" to="/dashboard/settings/students" />
-      <Box mb={4}>
-        <Card p={3} onClick={shareLink}>
-          <Flex sx={{ alignItems: "center" }}>
-            <Box>
-              <Typography.H6 mb={3}>Invite your co-workers</Typography.H6>
-              {schoolDetail.status === "loading" &&
-                !schoolDetail.data?.inviteLink && (
-                  <LoadingPlaceholder sx={{ width: "100%", height: 60 }} />
-                )}
-              <Typography.Body
-                id="shareLink"
-                lineHeight="1.5em"
-                sx={{
-                  fontSize: 1,
-                  wordWrap: "break-word",
-                }}
-              >
-                {schoolDetail.data?.inviteLink}
-              </Typography.Body>
-            </Box>
-          </Flex>
-        </Card>
-      </Box>
-      <ThemeModeButton />
-      <Button
-        variant="outline"
-        my={2}
-        color="danger"
-        py={3}
-        onClick={logout}
-        sx={{ width: "100%" }}
-      >
-        Log Out
-      </Button>
+      <Card p={3} onClick={shareLink}>
+        <Flex sx={{ alignItems: "center" }}>
+          <Box>
+            <Typography.H6 mb={3}>Invite your co-workers</Typography.H6>
+            {schoolDetail.status === "loading" &&
+              !schoolDetail.data?.inviteLink && (
+                <LoadingPlaceholder sx={{ width: "100%", height: 60 }} />
+              )}
+            <Typography.Body
+              id="shareLink"
+              lineHeight="1.5em"
+              sx={{ wordWrap: "break-word" }}
+            >
+              {schoolDetail.data?.inviteLink}
+            </Typography.Body>
+          </Box>
+        </Flex>
+      </Card>
+      <Flex mt={2}>
+        <ThemeModeButton />
+        <Button
+          variant="outline"
+          ml={2}
+          color="warning"
+          onClick={() => navigate("/choose-school")}
+          sx={{ flexShrink: 0 }}
+        >
+          Switch school
+        </Button>
+        <Button
+          variant="outline"
+          ml={2}
+          color="danger"
+          onClick={logout}
+          sx={{ flexShrink: 0, flexGrow: 1 }}
+        >
+          Log Out
+        </Button>
+      </Flex>
     </Box>
   )
 }
@@ -98,22 +95,15 @@ const ThemeModeButton: FC = () => {
   return (
     <Button
       variant="outline"
-      my={2}
       color="textMediumEmphasis"
-      py={3}
+      p={3}
       onClick={() => setColorMode(colorMode === "dark" ? "default" : "dark")}
-      sx={{ width: "100%" }}
+      sx={{ flexShrink: 0 }}
     >
       {colorMode === "dark" ? (
-        <>
-          <Icon as={LightModeIcon} m={0} mr={2} />
-          Light Mode
-        </>
+        <Icon as={LightModeIcon} m={0} />
       ) : (
-        <>
-          <Icon as={DarkModeIcon} m={0} mr={2} />
-          Dark Mode
-        </>
+        <Icon as={DarkModeIcon} m={0} />
       )}
     </Button>
   )
