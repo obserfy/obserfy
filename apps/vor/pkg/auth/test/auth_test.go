@@ -1,15 +1,15 @@
 package auth_test
 
 import (
+	"testing"
+
 	"github.com/benbjohnson/clock"
-	"github.com/brianvoe/gofakeit/v4"
+	"github.com/stretchr/testify/mock"
+	"github.com/stretchr/testify/suite"
+
 	"github.com/chrsep/vor/pkg/auth"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/testutils"
-	"github.com/stretchr/testify/mock"
-	"github.com/stretchr/testify/suite"
-	"testing"
-	"time"
 )
 
 type AuthTestSuite struct {
@@ -43,37 +43,4 @@ func (m *mailServiceMock) SendPasswordResetSuccessful(email string) error {
 func (m *mailServiceMock) SendResetPassword(email string, token string) error {
 	args := m.Called(email)
 	return args.Error(0)
-}
-
-func (s *AuthTestSuite) SaveNewUser() (*auth.User, error) {
-	gofakeit.Seed(time.Now().UnixNano())
-	user, err := s.store.NewUser(
-		gofakeit.Email(),
-		gofakeit.Password(true, true, true, true, true, 10),
-		gofakeit.Name(),
-		"",
-	)
-	if err != nil {
-		return nil, err
-	}
-	return user, nil
-}
-
-func (s *AuthTestSuite) SaveNewPasswordResetToken() (*auth.PasswordResetToken, error) {
-	user, err := s.SaveNewUser()
-	if err != nil {
-		return nil, err
-	}
-	token, err := s.store.NewPasswordResetToken(user.Id)
-	if err != nil {
-		return nil, err
-	}
-	token.User = *user
-	return &auth.PasswordResetToken{
-		Token:     token.Token,
-		UserId:    token.UserId,
-		CreatedAt: token.CreatedAt,
-		ExpiredAt: token.ExpiredAt,
-		User:      token.User,
-	}, nil
 }

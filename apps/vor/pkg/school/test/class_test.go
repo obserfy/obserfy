@@ -2,11 +2,13 @@ package school_test
 
 import (
 	"encoding/json"
-	"github.com/brianvoe/gofakeit/v4"
-	"github.com/chrsep/vor/pkg/postgres"
-	"github.com/stretchr/testify/assert"
 	"net/http"
 	"time"
+
+	"github.com/brianvoe/gofakeit/v4"
+	"github.com/stretchr/testify/assert"
+
+	"github.com/chrsep/vor/pkg/postgres"
 )
 
 func (s *SchoolTestSuite) TestValidCreateClass() {
