@@ -181,7 +181,8 @@ exports[`Navbar should render correctly 1`] = `
   max-width: 100%;
   height: auto;
   margin: 0;
-  fill: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
+  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
+  fill: transparent;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
