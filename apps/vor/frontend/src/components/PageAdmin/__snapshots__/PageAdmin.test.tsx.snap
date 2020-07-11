@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PageSettings should render correctly 1`] = `
+exports[`PageAdmin should render correctly 1`] = `
 @keyframes animation-0 {
   0% {
     background-color: rgba(165,165,165,0.05);
