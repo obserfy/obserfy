@@ -10,15 +10,13 @@ module.exports = withPlugins([withPrefresh, optimizedImages], {
     polyfillsOptimization: true,
   },
 
-  webpack(config, { dev, isServer }) {
+  webpack: (config, { dev, isServer }) => {
     const splitChunks = config.optimization && config.optimization.splitChunks
     if (splitChunks) {
-      const cacheGroups = splitChunks.cacheGroups
+      const { cacheGroups } = splitChunks
       const preactModules = /[\\/]node_modules[\\/](preact|preact-render-to-string|preact-context-provider)[\\/]/
       if (cacheGroups.framework) {
-        cacheGroups.preact = Object.assign({}, cacheGroups.framework, {
-          test: preactModules,
-        })
+        cacheGroups.preact = { ...cacheGroups.framework, test: preactModules }
         cacheGroups.commons.name = "framework"
       } else {
         cacheGroups.preact = {
@@ -36,10 +34,10 @@ module.exports = withPlugins([withPrefresh, optimizedImages], {
 
     // inject Preact DevTools
     if (dev && !isServer) {
-      const entry = config.entry
+      const { entry } = config
       config.entry = () =>
         entry().then((entries) => {
-          // entries["main.js"] = ["preact/debug"].concat(entries["main.js"] || [])
+          entries["main.js"] = ["preact/debug"].concat(entries["main.js"] || [])
           return entries
         })
     }

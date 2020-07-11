@@ -3,15 +3,17 @@ package school_test
 import (
 	"bytes"
 	"encoding/json"
-	"github.com/brianvoe/gofakeit/v4"
-	"github.com/chrsep/vor/pkg/postgres"
-	"github.com/minio/minio-go/v6"
-	"github.com/stretchr/testify/assert"
 	"io/ioutil"
 	"mime/multipart"
 	"net/http"
 	"os"
 	"time"
+
+	"github.com/brianvoe/gofakeit/v4"
+	"github.com/minio/minio-go/v6"
+	"github.com/stretchr/testify/assert"
+
+	"github.com/chrsep/vor/pkg/postgres"
 )
 
 func (s *SchoolTestSuite) TestUploadFile() {

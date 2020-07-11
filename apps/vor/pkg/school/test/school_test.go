@@ -2,21 +2,24 @@ package school_test
 
 import (
 	"bytes"
-	"github.com/brianvoe/gofakeit/v4"
-	"github.com/chrsep/vor/pkg/minio"
-	"github.com/chrsep/vor/pkg/mocks"
-	"github.com/chrsep/vor/pkg/postgres"
-	"github.com/chrsep/vor/pkg/school"
-	"github.com/chrsep/vor/pkg/testutils"
-	"github.com/google/uuid"
-	minio2 "github.com/minio/minio-go/v6"
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/suite"
 	"io/ioutil"
 	"mime/multipart"
 	"os"
 	"testing"
 	"time"
+
+	"github.com/brianvoe/gofakeit/v4"
+	"github.com/google/uuid"
+	minio2 "github.com/minio/minio-go/v6"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/suite"
+
+	"github.com/chrsep/vor/pkg/minio"
+	"github.com/chrsep/vor/pkg/mocks"
+	"github.com/chrsep/vor/pkg/postgres"
+	"github.com/chrsep/vor/pkg/school"
+	"github.com/chrsep/vor/pkg/testutils"
+
 )
 
 type SchoolTestSuite struct {
@@ -34,24 +37,6 @@ func (s *SchoolTestSuite) SetupTest() {
 
 func TestSchool(t *testing.T) {
 	suite.Run(t, new(SchoolTestSuite))
-}
-
-func (s *SchoolTestSuite) SaveNewGuardian() (*postgres.Guardian, string) {
-	t := s.T()
-	gofakeit.Seed(time.Now().UnixNano())
-	newSchool := s.GenerateSchool()
-	newGuardian := postgres.Guardian{
-		Id:       uuid.New().String(),
-		Name:     gofakeit.Name(),
-		Email:    gofakeit.Email(),
-		Phone:    gofakeit.Phone(),
-		Note:     gofakeit.Paragraph(1, 3, 20, " "),
-		SchoolId: newSchool.Id,
-		School:   *newSchool,
-	}
-	err := s.DB.Insert(&newGuardian)
-	assert.NoError(t, err)
-	return &newGuardian, newSchool.Users[0].Id
 }
 
 func (s *SchoolTestSuite) SaveNewFile() (*postgres.File, string) {

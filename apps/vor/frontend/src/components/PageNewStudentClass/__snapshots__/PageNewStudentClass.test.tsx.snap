@@ -374,10 +374,8 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   border: 0;
   border-radius: 4px;
   cursor: pointer;
-  text-transform: capitalize;
   box-sizing: border-box;
-  font-size: 14px;
-  font-weight: bold;
+  font-size: 16px;
   color: var(--theme-ui-colors-onPrimary,#000);
   background-color: var(--theme-ui-colors-primary,#00e399);
   border-radius: 6px;
@@ -401,6 +399,7 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  touch-action: manipulation;
   width: 100%;
 }
 

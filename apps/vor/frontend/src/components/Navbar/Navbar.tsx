@@ -4,10 +4,8 @@ import GatsbyImage from "gatsby-image"
 import { useLocation, useMatch } from "@reach/router"
 import { useMemoryStatus } from "react-adaptive-hooks/memory"
 import { Flex, Box, Card } from "theme-ui"
-
-import { ReactComponent as EditIcon } from "../../icons/edit2.svg"
 import { ReactComponent as SettingsIcon } from "../../icons/settings.svg"
-import { ReactComponent as CalendarIcon } from "../../icons/calendar.svg"
+import { ReactComponent as StudentsIcon } from "../../icons/students.svg"
 import { Link } from "../Link/Link"
 import Icon from "../Icon/Icon"
 import { Typography } from "../Typography/Typography"
@@ -107,8 +105,12 @@ const Navbar: FC = () => {
         <Box mx="auto" my={3} sx={{ display: ["none", "block"] }} mb={4}>
           <GatsbyImage fixed={query.file.childImageSharp.fixed} />
         </Box>
-        <NavBarItem title="Observe" icon={EditIcon} to="/dashboard/observe" />
-        <NavBarItem title="Plan" icon={CalendarIcon} to="/dashboard/plans" />
+        <NavBarItem
+          title="Students"
+          icon={StudentsIcon}
+          to="/dashboard/observe"
+        />
+        {/* <NavBarItem title="Plan" icon={CalendarIcon} to="/dashboard/plans" /> */}
         <Box
           sx={{
             height: "100%",
@@ -116,7 +118,7 @@ const Navbar: FC = () => {
           }}
         />
         <NavBarItem
-          title="Settings"
+          title="Admin"
           icon={SettingsIcon}
           to="/dashboard/settings"
         />
@@ -178,8 +180,11 @@ const NavBarItem: FC<{
         <Icon
           as={icon}
           m={0}
-          fill={match ? "textPrimary" : "textDisabled"}
+          fill="transparent"
           size={24}
+          sx={{
+            color: match ? "textPrimary" : "textDisabled",
+          }}
         />
         <Typography.Body
           sx={{

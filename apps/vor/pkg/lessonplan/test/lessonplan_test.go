@@ -1,16 +1,18 @@
 package lessonplan_test
 
 import (
+	"net/http"
+	"testing"
+	"time"
+
 	"github.com/brianvoe/gofakeit/v4"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/suite"
+
 	"github.com/chrsep/vor/pkg/lessonplan"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/rest"
 	"github.com/chrsep/vor/pkg/testutils"
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/suite"
-	"net/http"
-	"testing"
-	"time"
 )
 
 type LessonPlansTestSuite struct {

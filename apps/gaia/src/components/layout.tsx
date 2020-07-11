@@ -1,6 +1,7 @@
 import React, { FC, useEffect } from "react"
 import { useRouter } from "next/router"
 import Head from "next/head"
+import Img from "react-optimized-image"
 import useGetUser from "../hooks/useGetUser"
 import Header from "./header"
 import useGetChildren from "../hooks/useGetChildren"
@@ -83,7 +84,7 @@ const Layout: FC = ({ children }) => {
           <div className="sticky top-0 bg-surface border-b ">
             <nav className="w-full flex max-w-4xl mx-auto">
               <div
-                className="mx-3 px-1 py-2 border-b-2 border-black text-sm"
+                className="mx-3 py-2 border-b-2 border-black text-sm"
                 style={{ marginBottom: "-1px" }}
               >
                 Lesson Plans
@@ -103,7 +104,7 @@ const EmptyHeader = () => {
   return (
     <div className="p-3 pb-2 flex items-center max-w-4xl  mx-auto bg-white">
       <div className="flex items-center">
-        <img
+        <Img
           alt="obserfy logo"
           src={Logo}
           height={30}

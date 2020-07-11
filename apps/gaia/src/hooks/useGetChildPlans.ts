@@ -1,11 +1,12 @@
 import { useQuery } from "react-query"
 import { Dayjs } from "../utils/dayjs"
+import { LessonPlan } from "../domain"
 
 const useGetChildPlans = (childId: string, date: Dayjs) => {
-  const formattedDate = date.format("YYYY-DD-MM")
-  const getChildPlans = async () => {
+  const formattedDate = date.startOf("day").toISOString()
+  const getChildPlans = async (): Promise<LessonPlan[]> => {
     const result = await fetch(
-      `/api/child/${childId}/plans?date=${formattedDate}`,
+      `/api/children/${childId}/plans?date=${formattedDate}`,
       { credentials: "same-origin" }
     )
 

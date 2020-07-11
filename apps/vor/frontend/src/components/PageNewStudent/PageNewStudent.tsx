@@ -278,6 +278,7 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
                 },
               })
               if (result.status === 201) {
+                // reset cache
                 await setNewStudentCache(DEFAULT_FORM_STATE)
                 await navigate("/dashboard/observe")
               }

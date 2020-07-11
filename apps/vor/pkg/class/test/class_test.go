@@ -1,18 +1,20 @@
 package class_test
 
 import (
+	"net/http"
+	"testing"
+	"time"
+
 	"github.com/brianvoe/gofakeit/v4"
-	"github.com/chrsep/vor/pkg/class"
-	"github.com/chrsep/vor/pkg/postgres"
-	"github.com/chrsep/vor/pkg/rest"
-	"github.com/chrsep/vor/pkg/testutils"
 	"github.com/go-pg/pg/v10"
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
-	"net/http"
-	"testing"
-	"time"
+
+	"github.com/chrsep/vor/pkg/class"
+	"github.com/chrsep/vor/pkg/postgres"
+	"github.com/chrsep/vor/pkg/rest"
+	"github.com/chrsep/vor/pkg/testutils"
 )
 
 type ClassTestSuite struct {
@@ -31,52 +33,10 @@ func TestClass(t *testing.T) {
 	suite.Run(t, new(ClassTestSuite))
 }
 
-func (s *ClassTestSuite) SaveNewClass() *postgres.Class {
-	t := s.T()
-	gofakeit.Seed(time.Now().UnixNano())
-	newUser := postgres.User{Id: uuid.New().String()}
-	newSchool := postgres.School{
-		Id:           uuid.New().String(),
-		Name:         gofakeit.Name(),
-		InviteCode:   uuid.New().String(),
-		Users:        []postgres.User{},
-		CurriculumId: "",
-		Curriculum:   postgres.Curriculum{},
-	}
-	newSchool.Users = []postgres.User{newUser}
-	schoolUserRelation := postgres.UserToSchool{
-		SchoolId: newSchool.Id,
-		UserId:   newUser.Id,
-	}
-	newClass := postgres.Class{
-		Id:        uuid.New().String(),
-		SchoolId:  newSchool.Id,
-		School:    newSchool,
-		Name:      gofakeit.Name(),
-		StartTime: time.Now(),
-		EndTime:   time.Now(),
-	}
-	newClass.Weekdays = []postgres.Weekday{
-		{newClass.Id, time.Sunday, newClass},
-		{newClass.Id, time.Thursday, newClass},
-		{newClass.Id, time.Friday, newClass},
-	}
-	err := s.DB.Insert(&newUser)
-	assert.NoError(t, err)
-	err = s.DB.Insert(&newSchool)
-	assert.NoError(t, err)
-	err = s.DB.Insert(&schoolUserRelation)
-	assert.NoError(t, err)
-	err = s.DB.Insert(&newClass)
-	assert.NoError(t, err)
-	err = s.DB.Insert(&newClass.Weekdays)
-	assert.NoError(t, err)
-	return &newClass
-}
-
 func (s *ClassTestSuite) TestDeleteClass() {
 	t := s.T()
-	newClass := s.SaveNewClass()
+	newSchool := s.GenerateSchool()
+	newClass := s.GenerateClass(newSchool)
 	result := s.CreateRequest("DELETE", "/"+newClass.Id, nil, nil)
 	assert.Equal(t, http.StatusOK, result.Code)
 
@@ -93,7 +53,8 @@ func (s *ClassTestSuite) TestDeleteNonExistentClass() {
 
 func (s *ClassTestSuite) TestGetClass() {
 	t := s.T()
-	original := s.SaveNewClass()
+	newSchool := s.GenerateSchool()
+	original := s.GenerateClass(newSchool)
 	result := s.CreateRequest("GET", "/"+original.Id, nil, nil)
 	assert.Equal(t, http.StatusOK, result.Code)
 
@@ -121,7 +82,8 @@ func (s *ClassTestSuite) TestGetNonExistentClass() {
 
 func (s *ClassTestSuite) TestPatchClassName() {
 	t := s.T()
-	original := s.SaveNewClass()
+	newSchool := s.GenerateSchool()
+	original := s.GenerateClass(newSchool)
 	gofakeit.Seed(time.Now().UnixNano())
 
 	payload := struct {
@@ -146,7 +108,8 @@ func (s *ClassTestSuite) TestPatchClassName() {
 
 func (s *ClassTestSuite) TestPatchClassAll() {
 	t := s.T()
-	original := s.SaveNewClass()
+	newSchool := s.GenerateSchool()
+	original := s.GenerateClass(newSchool)
 	gofakeit.Seed(time.Now().UnixNano())
 
 	payload := struct {
