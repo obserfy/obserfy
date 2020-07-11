@@ -44,6 +44,7 @@ func InitTables(db *pg.DB) error {
 		(*Class)(nil),
 		(*Weekday)(nil),
 		(*Student)(nil),
+		(*ImageToStudents)(nil),
 		(*StudentToClass)(nil),
 		(*Guardian)(nil),
 		(*GuardianToStudent)(nil),
@@ -309,6 +310,13 @@ type (
 		Key      string
 		SchoolId string `pg:"type:uuid,on_delete:cascade"`
 		School   School
+	}
+
+	ImageToStudents struct {
+		StudentId string `pg:"type:uuid,on_delete:CASCADE"`
+		Student   Student
+		ImageId   string `pg:"type:uuid,on_delete:CASCADE"`
+		Image     Image
 	}
 )
 
