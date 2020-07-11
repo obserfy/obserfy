@@ -40,6 +40,7 @@ func InitTables(db *pg.DB) error {
 		(*Subject)(nil),
 		(*Material)(nil),
 		(*School)(nil),
+		(*Image)(nil),
 		(*Class)(nil),
 		(*Weekday)(nil),
 		(*Student)(nil),
@@ -122,20 +123,22 @@ const (
 )
 
 type Student struct {
-	Id          string `json:"id" pg:",type:uuid"`
-	Name        string `json:"name"`
-	SchoolId    string `pg:"type:uuid,on_delete:CASCADE"`
-	School      School
-	DateOfBirth *time.Time
-	Classes     []Class `pg:"many2many:student_to_classes,join_fk:class_id"`
-	Gender      Gender  `pg:"type:int"`
-	DateOfEntry *time.Time
-	Note        string
-	CustomId    string
-	Active      *bool `pg:",notnull,default:true"`
-	ProfilePic  string
-	Guardians   []Guardian   `pg:"many2many:guardian_to_students,join_fk:guardian_id"`
-	LessonPlans []LessonPlan `pg:"many2many:lesson_plan_to_students,join_fk:lesson_plan_id"`
+	Id             string `json:"id" pg:",type:uuid"`
+	Name           string `json:"name"`
+	SchoolId       string `pg:"type:uuid,on_delete:CASCADE"`
+	School         School
+	DateOfBirth    *time.Time
+	Classes        []Class `pg:"many2many:student_to_classes,join_fk:class_id"`
+	Gender         Gender  `pg:"type:int"`
+	DateOfEntry    *time.Time
+	Note           string
+	CustomId       string
+	Active         *bool `pg:",notnull,default:true"`
+	ProfilePic     string
+	Guardians      []Guardian   `pg:"many2many:guardian_to_students,join_fk:guardian_id"`
+	LessonPlans    []LessonPlan `pg:"many2many:lesson_plan_to_students,join_fk:lesson_plan_id"`
+	ProfileImageId string       `pg:",type:uuid"`
+	ProfileImage   Image
 }
 
 type Guardian struct {
@@ -299,6 +302,13 @@ type (
 		LessonPlanDetails   LessonPlanDetails
 		FileId              string `pg:"type:uuid,on_delete:CASCADE"`
 		File                File
+	}
+
+	Image struct {
+		Id       string `pg:"type:uuid"`
+		Key      string
+		SchoolId string `pg:"type:uuid,on_delete:cascade"`
+		School   School
 	}
 )
 
