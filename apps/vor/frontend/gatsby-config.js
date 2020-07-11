@@ -60,7 +60,9 @@ module.exports = {
         icon: `src/images/logo-standalone.svg`, // This path is relative to the root of the site.
       },
     },
-    // `gatsby-plugin-offline`,
+    // this (optional) plugin enables Progressive Web App + Offline functionality
+    // To learn more, visit: https://gatsby.dev/offline
+    `gatsby-plugin-offline`,
     // `gatsby-plugin-remove-serviceworker`,
     `gatsby-plugin-remove-trailing-slashes`,
     `gatsby-plugin-emotion`,
@@ -120,9 +122,6 @@ module.exports = {
         },
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
     {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {

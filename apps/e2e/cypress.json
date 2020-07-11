@@ -4,5 +4,6 @@
   "projectId": "m9rk94",
   "viewportHeight": 667,
   "viewportWidth": 375,
-  "video": false
+  "video": false,
+  "chromeWebSecurity": false
 }
