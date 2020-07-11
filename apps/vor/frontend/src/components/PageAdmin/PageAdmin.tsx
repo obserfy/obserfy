@@ -1,16 +1,21 @@
 import React, { FC } from "react"
 import { navigate } from "gatsby"
-import { Box, Button, Card, Flex, useColorMode } from "theme-ui"
-import Typography from "../Typography/Typography"
-import Icon from "../Icon/Icon"
-import CardLink from "../CardLink/CardLink"
-import { ReactComponent as LightModeIcon } from "../../icons/light-mode.svg"
-import { ReactComponent as DarkModeIcon } from "../../icons/dark-mode.svg"
+import { Button, Box, Flex, useColorMode, Card } from "theme-ui"
 import { useGetSchool } from "../../api/schools/useGetSchool"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
-import { CLASS_SETTINGS_URL } from "../../routes"
+import Typography from "../Typography/Typography"
+import CardLink from "../CardLink/CardLink"
+import {
+  ADMIN_CURRICULUM_URL,
+  ADMIN_STUDENTS_URL,
+  ADMIN_USERS_URL,
+  CLASS_SETTINGS_URL,
+} from "../../routes"
+import Icon from "../Icon/Icon"
+import { ReactComponent as LightModeIcon } from "../../icons/light-mode.svg"
+import { ReactComponent as DarkModeIcon } from "../../icons/dark-mode.svg"
 
-export const PageSettings: FC = () => {
+export const PageAdmin: FC = () => {
   const schoolDetail = useGetSchool()
 
   function shareLink(): void {
@@ -43,10 +48,10 @@ export const PageSettings: FC = () => {
           {schoolDetail.data?.name}
         </Typography.H4>
       </Box>
-      <CardLink mb={2} name="Curriculum" to="/dashboard/settings/curriculum" />
-      <CardLink mb={2} name="Users" to="/dashboard/settings/users" />
+      <CardLink mb={2} name="Curriculum" to={ADMIN_CURRICULUM_URL} />
+      <CardLink mb={2} name="Users" to={ADMIN_USERS_URL} />
       <CardLink mb={2} name="Class" to={CLASS_SETTINGS_URL} />
-      <CardLink mb={2} name="All Students" to="/dashboard/settings/students" />
+      <CardLink mb={2} name="All Students" to={ADMIN_STUDENTS_URL} />
       <Card p={3} onClick={shareLink}>
         <Flex sx={{ alignItems: "center" }}>
           <Box>
@@ -110,4 +115,4 @@ const ThemeModeButton: FC = () => {
   )
 }
 
-export default PageSettings
+export default PageAdmin

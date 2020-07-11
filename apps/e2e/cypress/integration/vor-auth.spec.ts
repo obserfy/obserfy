@@ -57,9 +57,9 @@ describe("test authentication", () => {
     cy.get("[data-cy=light-switch]").click()
 
     // Check sidebar links
-    cy.url().should("contains", "settings")
+    cy.url().should("contains", "admin")
     cy.contains("Students").click()
     // .waitForRouteChange()
-    cy.url().should("contains", "observe")
+    cy.url().should("contains", "students")
   })
 })

@@ -33,21 +33,21 @@ func createFrontendAuthMiddleware(db *pg.DB, folder string) func(next http.Handl
 					return
 				}
 			} else if strings.HasPrefix(path, "/login") || strings.HasPrefix(path, "/register") {
-				// If user already authenticated, jump to dashboard observe.
+				// If user already authenticated, jump to dashboard.
 				token, err := r.Cookie("session")
 				if token != nil {
 					var session postgres.Session
 					err = db.Model(&session).Where("token=?", token.Value).Select()
 					if err == nil {
-						http.Redirect(w, r, "/dashboard/observe", http.StatusFound)
+						http.Redirect(w, r, "/dashboard/students", http.StatusFound)
 						return
 					}
 				}
 			}
 
-			// If trying to access root, redirect to dashboard observe.
+			// If trying to access root, redirect to dashboard
 			if path == "/" || path == "/dashboard" || path == "/dashboard/" || path == "/dashboard/home" {
-				http.Redirect(w, r, "/dashboard/observe", http.StatusFound)
+				http.Redirect(w, r, "/dashboard/students", http.StatusFound)
 				return
 			}
 

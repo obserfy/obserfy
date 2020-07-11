@@ -9,7 +9,7 @@ jobs:
       - restore_cache:
           name: Restore Yarn Package Cache
           keys:
-            - build-v6-{{ checksum "yarn.lock" }}
+            - build-v7-{{ checksum "yarn.lock" }}
       - run: |
           yarn install --frozen-lockfile
       - run: |
@@ -30,7 +30,7 @@ jobs:
       - save_cache:
           when: always
           name: Save Yarn Package Cache
-          key: build-v6-{{ checksum "yarn.lock" }}
+          key: build-v7-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
             - ~/.cache/Cypress

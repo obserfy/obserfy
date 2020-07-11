@@ -1,8 +1,8 @@
 import React, { FC } from "react"
 import { PageProps } from "gatsby"
-import SEO from "../../../../../components/seo"
-import PageNewStudent from "../../../../../components/PageNewStudent/PageNewStudent"
-import { GuardianRelationship } from "../../../../../api/students/usePostNewStudent"
+import SEO from "../../../../components/seo"
+import PageNewStudent from "../../../../components/PageNewStudent/PageNewStudent"
+import { GuardianRelationship } from "../../../../api/students/usePostNewStudent"
 
 const NewStudent: FC<PageProps> = ({ location }) => {
   return (

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PageSettings should render correctly 1`] = `
+exports[`PageAdmin should render correctly 1`] = `
 @keyframes animation-0 {
   0% {
     background-color: rgba(165,165,165,0.05);
@@ -466,7 +466,7 @@ exports[`PageSettings should render correctly 1`] = `
         />
       </div>
       <a
-        href="/dashboard/settings/curriculum"
+        href="/dashboard/admin/curriculum"
       >
         <div
           class="emotion-7"
@@ -489,7 +489,7 @@ exports[`PageSettings should render correctly 1`] = `
         </div>
       </a>
       <a
-        href="/dashboard/settings/users"
+        href="/dashboard/admin/users"
       >
         <div
           class="emotion-7"
@@ -512,7 +512,7 @@ exports[`PageSettings should render correctly 1`] = `
         </div>
       </a>
       <a
-        href="/dashboard/settings/class"
+        href="/dashboard/admin/class"
       >
         <div
           class="emotion-7"
@@ -535,7 +535,7 @@ exports[`PageSettings should render correctly 1`] = `
         </div>
       </a>
       <a
-        href="/dashboard/settings/students"
+        href="/dashboard/admin/students"
       >
         <div
           class="emotion-7"

@@ -205,7 +205,7 @@ exports[`PageListOfStudents should render correctly 1`] = `
       class="emotion-8"
     >
       <a
-        href="/dashboard/settings"
+        href="/dashboard/admin"
         style="display: block;"
       >
         <div

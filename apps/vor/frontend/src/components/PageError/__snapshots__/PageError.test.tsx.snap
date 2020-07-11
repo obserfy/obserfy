@@ -335,7 +335,7 @@ exports[`PageError should render correctly 1`] = `
           </a>
           <a
             class="emotion-4"
-            href="/dashboard/observe"
+            href="/dashboard/students"
           >
             <button
               class="emotion-3"

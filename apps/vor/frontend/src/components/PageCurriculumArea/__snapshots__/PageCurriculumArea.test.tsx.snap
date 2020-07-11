@@ -435,7 +435,7 @@ exports[`PageCurriculumArea should render correctly 1`] = `
       class="emotion-16"
     >
       <a
-        href="/dashboard/settings/curriculum"
+        href="/dashboard/admin/curriculum"
         style="display: block;"
       >
         <div
@@ -495,7 +495,7 @@ exports[`PageCurriculumArea should render correctly 1`] = `
           class="emotion-12"
         />
         <a
-          href="/dashboard/settings/curriculum/subjects/new?areaId="
+          href="/dashboard/admin/curriculum/subjects/new?areaId="
         >
           <button
             class="emotion-14"

@@ -19,7 +19,6 @@ import (
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/school"
 	"github.com/chrsep/vor/pkg/testutils"
-
 )
 
 type SchoolTestSuite struct {
