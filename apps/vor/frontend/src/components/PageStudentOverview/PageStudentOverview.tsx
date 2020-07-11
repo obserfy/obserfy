@@ -25,6 +25,7 @@ import {
   NEW_OBSERVATION_URL,
   STUDENT_PLANS_URL,
   STUDENT_PROFILE_URL,
+  STUDENTS_URL,
 } from "../../routes"
 import dayjs from "../../dayjs"
 
@@ -36,7 +37,7 @@ export const PageStudentOverview: FC<Props> = ({ id }) => {
   return (
     <Fragment>
       <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={5}>
-        <BackNavigation text="Home" to="/dashboard/observe" />
+        <BackNavigation text="Home" to={STUDENTS_URL} />
         <Flex sx={{ alignItems: "start" }} mx={3} mb={4} mt={0}>
           <Typography.H4 sx={{ wordWrap: "break-word", lineHeight: 1.6 }}>
             {student.data?.name || (

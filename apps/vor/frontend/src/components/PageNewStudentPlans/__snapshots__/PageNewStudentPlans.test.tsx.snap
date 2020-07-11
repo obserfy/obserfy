@@ -687,7 +687,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
       class="emotion-34"
     >
       <a
-        href="/dashboard/observe/students/plans?studentId=adsfasdfsa&date=1996-05-26T00:00:00.000Z"
+        href="/dashboard/students/plans?studentId=adsfasdfsa&date=1996-05-26T00:00:00.000Z"
         style="display: block;"
       >
         <div

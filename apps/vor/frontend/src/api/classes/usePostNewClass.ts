@@ -7,7 +7,7 @@ import {
 import { navigate } from "gatsby"
 import { ApiError, BASE_URL } from "../useApi"
 import { getSchoolId } from "../../hooks/schoolIdState"
-import Class from "../../pages/dashboard/settings/class"
+import Class from "../../pages/dashboard/admin/class"
 
 interface Class {
   name: string

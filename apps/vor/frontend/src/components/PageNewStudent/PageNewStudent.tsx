@@ -12,7 +12,7 @@ import Select from "../Select/Select"
 import useGetSchoolClasses from "../../api/classes/useGetSchoolClasses"
 import Chip from "../Chip/Chip"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
-import { NEW_STUDENT_URL, PICK_GUARDIAN_URL } from "../../routes"
+import { NEW_STUDENT_URL, STUDENTS_URL, PICK_GUARDIAN_URL } from "../../routes"
 
 import ProfilePicker from "../ProfilePicker/ProfilePicker"
 import {
@@ -125,7 +125,7 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
   return (
     <>
       <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={4}>
-        <BackNavigation to="/dashboard/observe" text="Home" />
+        <BackNavigation to={STUDENTS_URL} text="Home" />
         <Box mx={3}>
           <Flex sx={{ alignItems: "flex-end" }}>
             <Typography.H4 mb={3}>New Student</Typography.H4>
@@ -280,7 +280,7 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
               if (result.status === 201) {
                 // reset cache
                 await setNewStudentCache(DEFAULT_FORM_STATE)
-                await navigate("/dashboard/observe")
+                await navigate(STUDENTS_URL)
               }
             }}
           >

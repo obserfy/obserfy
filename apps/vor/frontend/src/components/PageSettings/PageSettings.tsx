@@ -8,7 +8,12 @@ import { ReactComponent as LightModeIcon } from "../../icons/light-mode.svg"
 import { ReactComponent as DarkModeIcon } from "../../icons/dark-mode.svg"
 import { useGetSchool } from "../../api/schools/useGetSchool"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
-import { CLASS_SETTINGS_URL } from "../../routes"
+import {
+  CLASS_SETTINGS_URL,
+  ADMIN_CURRICULUM_URL,
+  ADMIN_STUDENTS_URL,
+  ADMIN_USERS_URL,
+} from "../../routes"
 
 export const PageSettings: FC = () => {
   const schoolDetail = useGetSchool()
@@ -43,10 +48,10 @@ export const PageSettings: FC = () => {
           {schoolDetail.data?.name}
         </Typography.H4>
       </Box>
-      <CardLink mb={2} name="Curriculum" to="/dashboard/settings/curriculum" />
-      <CardLink mb={2} name="Users" to="/dashboard/settings/users" />
+      <CardLink mb={2} name="Curriculum" to={ADMIN_CURRICULUM_URL} />
+      <CardLink mb={2} name="Users" to={ADMIN_USERS_URL} />
       <CardLink mb={2} name="Class" to={CLASS_SETTINGS_URL} />
-      <CardLink mb={2} name="All Students" to="/dashboard/settings/students" />
+      <CardLink mb={2} name="All Students" to={ADMIN_STUDENTS_URL} />
       <Card p={3} onClick={shareLink}>
         <Flex sx={{ alignItems: "center" }}>
           <Box>

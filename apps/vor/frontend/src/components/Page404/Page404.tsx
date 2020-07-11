@@ -5,7 +5,7 @@ import { Flex, Button, Box } from "theme-ui"
 import Typography from "../Typography/Typography"
 
 import { Link } from "../Link/Link"
-import { OBSERVE_PAGE_URL } from "../../routes"
+import { STUDENTS_URL } from "../../routes"
 
 export const Page404: FC = () => {
   const notFound = useStaticQuery(graphql`
@@ -52,7 +52,7 @@ export const Page404: FC = () => {
         <Typography.Body mb={4} mx={5} sx={{ textAlign: "center" }}>
           Oops, we can&apos;t seem to find the page you are looking for.
         </Typography.Body>
-        <Link to={OBSERVE_PAGE_URL}>
+        <Link to={STUDENTS_URL}>
           <Button>Go Back Home</Button>
         </Link>
       </Flex>

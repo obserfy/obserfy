@@ -384,7 +384,7 @@ exports[`PageNewSubject should render correctly 1`] = `
       class="emotion-18"
     >
       <a
-        href="/dashboard/settings/curriculum/area?id=sadf"
+        href="/dashboard/admin/curriculum/area?id=sadf"
         style="display: block;"
       >
         <div

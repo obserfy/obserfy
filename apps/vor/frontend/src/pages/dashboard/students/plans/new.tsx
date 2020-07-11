@@ -1,7 +1,7 @@
 import React, { FC } from "react"
-import { useQueryString } from "../../../../../hooks/useQueryString"
-import SEO from "../../../../../components/seo"
-import PageNewStudentPlans from "../../../../../components/PageNewStudentPlans/PageNewStudentPlans"
+import { useQueryString } from "../../../../hooks/useQueryString"
+import SEO from "../../../../components/seo"
+import PageNewStudentPlans from "../../../../components/PageNewStudentPlans/PageNewStudentPlans"
 
 const NewStudentPlans: FC = () => {
   const date = useQueryString("date")

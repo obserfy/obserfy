@@ -4,6 +4,7 @@ import useOldApiHook from "../../api/useOldApiHook"
 import { getSchoolId } from "../../hooks/schoolIdState"
 import UserCard from "../UserCard/UserCard"
 import BackNavigation from "../BackNavigation/BackNavigation"
+import { SETTINGS_URL } from "../../routes"
 
 export const PageUsers: FC = () => {
   // Todo: Type this correctly when we start using restful react.
@@ -31,7 +32,7 @@ export const PageUsers: FC = () => {
 
   return (
     <Box sx={{ maxWidth: "maxWidth.sm" }} mx="auto">
-      <BackNavigation to="/dashboard/settings" text="Settings" />
+      <BackNavigation to={SETTINGS_URL} text="Settings" />
       <Box px={2}>{userCards}</Box>
     </Box>
   )

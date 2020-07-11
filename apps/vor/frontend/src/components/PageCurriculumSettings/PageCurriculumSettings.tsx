@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react"
-import { Flex, Button, Box } from "theme-ui"
+import { Box, Button, Flex } from "theme-ui"
 import Typography from "../Typography/Typography"
 
 import Spacer from "../Spacer/Spacer"
@@ -14,6 +14,7 @@ import { Area } from "../../api/useGetArea"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import Icon from "../Icon/Icon"
 import NewAreaDialog from "../NewAreaDialog/NewAreaDialog"
+import { CURRICULUM_AREA_URL, SETTINGS_URL } from "../../routes"
 
 export const PageCurriculumSettings: FC = () => {
   const [showNewAreaDialog, setShowNewAreaDialog] = useState(false)
@@ -30,7 +31,7 @@ export const PageCurriculumSettings: FC = () => {
   return (
     <>
       <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto">
-        <BackNavigation to="/dashboard/settings" text="Settings" />
+        <BackNavigation to={SETTINGS_URL} text="Settings" />
         {loading && <LoadingState />}
         {!loading && !curriculum.error && (
           <CurriculumAreas
@@ -92,7 +93,7 @@ const CurriculumAreas: FC<{
       <CardLink
         key={area.id}
         name={area.name}
-        to={`/dashboard/settings/curriculum/area?id=${area.id}`}
+        to={CURRICULUM_AREA_URL(area.id)}
         mb={2}
       />
     ))}

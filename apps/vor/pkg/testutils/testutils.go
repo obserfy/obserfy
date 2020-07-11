@@ -280,7 +280,7 @@ func (s *BaseTestSuite) GenerateGuardian(school *postgres.School) (*postgres.Gua
 	return &newGuardian, school.Users[0].Id
 }
 
-func (s *BaseTestSuite) GenerateObservation()  postgres.Observation {
+func (s *BaseTestSuite) GenerateObservation() postgres.Observation {
 	currentTime := time.Now().Local()
 	gofakeit.Seed(time.Now().UnixNano())
 	newSchool := s.GenerateSchool()
@@ -309,9 +309,9 @@ func (s *BaseTestSuite) GenerateUser() (*auth.User, error) {
 	password := gofakeit.Password(true, true, true, true, true, 10)
 	hashedPassword, _ := bcrypt.GenerateFromPassword([]byte(password), 10)
 	user := postgres.User{
-		Id: uuid.New().String(),
-		Email: gofakeit.Email(),
-		Name: gofakeit.Name(),
+		Id:       uuid.New().String(),
+		Email:    gofakeit.Email(),
+		Name:     gofakeit.Name(),
 		Password: hashedPassword,
 	}
 	_, err := s.DB.Model(&user).Insert()

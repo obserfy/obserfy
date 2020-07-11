@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react"
-import { Button, Flex, Box, Card } from "theme-ui"
+import { Box, Button, Card, Flex } from "theme-ui"
 import { Link } from "../Link/Link"
 import Spacer from "../Spacer/Spacer"
 import Typography from "../Typography/Typography"
@@ -16,6 +16,7 @@ import {
   useGetStudentMaterialProgress,
 } from "../../api/useGetStudentMaterialProgress"
 import MaterialProgressItem from "./MaterialProgressItem"
+import { ADMIN_CURRICULUM_URL, STUDENT_PROGRESS_URL } from "../../routes"
 
 interface Props {
   studentId: string
@@ -64,7 +65,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
         <InformationalCard
           message="You can enable the curriculum feature to track student progress in your curriculum."
           buttonText=" Go to Curriculum "
-          to="/dashboard/settings/curriculum"
+          to={ADMIN_CURRICULUM_URL}
         />
       </Box>
     )
@@ -121,9 +122,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
       }}
     >
       <Spacer />
-      <Link
-        to={`/dashboard/observe/students/progress?studentId=${studentId}&areaId=${selectedAreaId}`}
-      >
+      <Link to={STUDENT_PROGRESS_URL(studentId, selectedAreaId ?? "")}>
         <Button variant="secondary" sx={{ fontSize: 0 }}>
           See All {areas.data?.[tab]?.name} Progress
         </Button>

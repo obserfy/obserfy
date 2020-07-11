@@ -276,7 +276,7 @@ exports[`Navbar should render correctly 1`] = `
           </div>
         </div>
         <a
-          href="/dashboard/observe"
+          href="/dashboard/students"
           style="outline: none;"
         >
           <div
@@ -296,7 +296,7 @@ exports[`Navbar should render correctly 1`] = `
           class="emotion-4"
         />
         <a
-          href="/dashboard/settings"
+          href="/dashboard/admin"
           style="outline: none;"
         >
           <div

@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react"
-import { Box, Flex, Card } from "theme-ui"
+import { Box, Card, Flex } from "theme-ui"
 import { useGetStudent } from "../../api/useGetStudent"
 import Typography from "../Typography/Typography"
 import { BackNavigation } from "../BackNavigation/BackNavigation"
@@ -20,6 +20,7 @@ import {
 import Pill from "../Pill/Pill"
 import StudentMaterialProgressDialog from "../StudentMaterialProgressDialog/StudentMaterialProgressDialog"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
+import { STUDENT_OVERVIEW_PAGE_URL } from "../../routes"
 
 interface Props {
   studentId: string
@@ -41,7 +42,7 @@ export const PageStudentProgress: FC<Props> = ({ areaId, studentId }) => {
   const backNavigation = (
     <BackNavigation
       text="Student Details"
-      to={`/dashboard/observe/students/overview?id=${studentId}`}
+      to={STUDENT_OVERVIEW_PAGE_URL(studentId)}
     />
   )
 
