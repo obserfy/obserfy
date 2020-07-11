@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.7.1](https://github.com/obserfy/obserfy/compare/v1.7.0...v1.7.1) (2020-07-11)
+
+
+### Bug Fixes
+
+* Fix race condition on useCacheNewStudentFormData ([0bbdc0f](https://github.com/obserfy/obserfy/commit/0bbdc0f9a9f4c90e215b986a2f38bd66ad01bd88))
+* **deps:** pin dependencies ([f382929](https://github.com/obserfy/obserfy/commit/f382929fd05f625eeb9005ee7016de5152acdc7e))
+* **deps:** update dependency @auth0/nextjs-auth0 to v0.14.0 ([4648f36](https://github.com/obserfy/obserfy/commit/4648f36cb8919720a839c394ecfae520b0800ec9))
+* **deps:** update dependency gatsby to v2.23.22 ([bbe25e0](https://github.com/obserfy/obserfy/commit/bbe25e0e693e43e57265443cfa6ab5fdbca63f49))
+* **deps:** update dependency gatsby to v2.24.1 ([24039d9](https://github.com/obserfy/obserfy/commit/24039d91206768486c1a73549481a772856f65a2))
+* **deps:** update dependency gatsby to v2.24.2 ([2aade77](https://github.com/obserfy/obserfy/commit/2aade776dc614fa2e15e39e6387fe8e3b85370d6))
+* **deps:** update dependency pg to v8.2.2 ([30e8bc8](https://github.com/obserfy/obserfy/commit/30e8bc8548c45248a254128fb0d83d2a25763352))
+* **deps:** update dependency pg to v8.3.0 ([67c1ef6](https://github.com/obserfy/obserfy/commit/67c1ef61ce02d6ad7a96886718bb4fc1b9201d2e))
+* **deps:** update dependency react-query to v2.4.14 ([b433e51](https://github.com/obserfy/obserfy/commit/b433e51490bbc49c2de56cf0f93bfaf911e3b142))
+* **deps:** update gatsby ([65a9edb](https://github.com/obserfy/obserfy/commit/65a9edb194827123c196155fa2d7b5299c19e511))
+* **deps:** update gatsby ([48e641e](https://github.com/obserfy/obserfy/commit/48e641e45dc0be53276c050fc6392dfa4ea0eba2))
+
 ## [1.7.0](https://github.com/obserfy/obserfy/compare/v1.6.0...v1.7.0) (2020-07-05)
 
 
