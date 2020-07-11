@@ -1,8 +1,8 @@
 import React from "react"
 import { render } from "../../test-utils"
-import { Basic } from "./PageSettings.stories"
+import { Basic } from "./PageAdmin.stories"
 
-describe("PageSettings", () => {
+describe("PageAdmin", () => {
   it("should render correctly", () => {
     // TODO: This is a temporary fix, make sure to test mock response correctly.
     const response = {
