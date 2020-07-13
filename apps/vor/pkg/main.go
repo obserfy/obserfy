@@ -89,7 +89,7 @@ func runServer() error {
 	}
 	imageStorage := minio.NewImageStorage(minioClient)
 	fileStorage := minio.NewFileStorage(minioClient)
-	schoolStore := postgres.SchoolStore{db, fileStorage}
+	schoolStore := postgres.SchoolStore{db, fileStorage, imageStorage}
 
 	// Setup routing
 	r := chi.NewRouter()

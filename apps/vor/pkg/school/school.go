@@ -51,11 +51,13 @@ func NewRouter(
 		r.Method("GET", "/plans", getLessonPlans(server, store))
 		r.Method("POST", "/plans", postNewLessonPlan(server, store))
 
-		r.Method("GET", "/files", getLessonFiles(server, store))
-		r.Method("POST", "/files", addFile(server, store))
+		r.Method("GET", "/files", getFiles(server, store))
+		r.Method("POST", "/files", postNewFile(server, store))
 		// TODO: Might be better to be on its own root path.
-		r.Method("PATCH", "/files/{fileId}", updateFile(server, store))
+		r.Method("PATCH", "/files/{fileId}", patchFile(server, store))
 		r.Method("DELETE", "/files/{fileId}", deleteFile(server, store))
+
+		r.Method("POST", "/images", postNewImage(server, store))
 	})
 	return r
 }
@@ -783,7 +785,7 @@ func getLessonPlans(server rest.Server, store Store) http.Handler {
 	})
 }
 
-func getLessonFiles(server rest.Server, store Store) http.Handler {
+func getFiles(server rest.Server, store Store) http.Handler {
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		type responseBody struct {
 			Id   string `json:"file_id"`
@@ -812,7 +814,7 @@ func getLessonFiles(server rest.Server, store Store) http.Handler {
 	})
 }
 
-func addFile(server rest.Server, store Store) http.Handler {
+func postNewFile(server rest.Server, store Store) http.Handler {
 	type resBody struct {
 		Id string `json:"id"`
 	}
@@ -853,7 +855,7 @@ func addFile(server rest.Server, store Store) http.Handler {
 	})
 }
 
-func updateFile(server rest.Server, store Store) http.Handler {
+func patchFile(server rest.Server, store Store) http.Handler {
 	type reqBody struct {
 		Name string `json:"name"`
 	}
@@ -1003,6 +1005,47 @@ func postNewLessonPlan(server rest.Server, store Store) http.Handler {
 			return rest.NewWriteJsonError(err)
 		}
 
+		return nil
+	})
+}
+
+func postNewImage(server rest.Server, store Store) http.Handler {
+	type resBody struct {
+		Id string `json:"id"`
+	}
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		schoolId := chi.URLParam(r, "schoolId")
+
+		if err := r.ParseMultipartForm(10 << 20); err != nil {
+			return &rest.Error{
+				Code:    http.StatusBadRequest,
+				Message: "failed to parse payload",
+				Error:   richErrors.Wrap(err, "failed to parse response body"),
+			}
+		}
+
+		file, fileHeader, err := r.FormFile("file")
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusBadRequest,
+				Message: "invalid payload",
+				Error:   richErrors.Wrap(err, "invalid payload"),
+			}
+		}
+
+		id, err := store.CreateImage(schoolId, file, fileHeader)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "Failed create file",
+				Error:   err,
+			}
+		}
+
+		w.WriteHeader(http.StatusCreated)
+		if err := rest.WriteJson(w, &resBody{id}); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
 		return nil
 	})
 }

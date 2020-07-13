@@ -135,5 +135,6 @@ type (
 		GetLessonPlans(schoolId string, date time.Time) ([]LessonPlan, error)
 		GetLessonFiles(schoolId string) ([]File, error)
 		CreateLessonPlan(input lessonplan.PlanData) (*lessonplan.LessonPlan, error)
+		CreateImage(schoolId string, image multipart.File, header *multipart.FileHeader) (string, error)
 	}
 )

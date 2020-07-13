@@ -14,7 +14,8 @@ import (
 
 type SchoolStore struct {
 	*pg.DB
-	FileStorage FileStorage
+	FileStorage  FileStorage
+	ImageStorage ImageStorage
 }
 
 func (s SchoolStore) NewSchool(schoolName, userId string) (*cSchool.School, error) {
@@ -664,4 +665,8 @@ func (s SchoolStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLessonP
 		Description: planDetails.Description,
 		ClassId:     planDetails.ClassId,
 	}, nil
+}
+
+func (s SchoolStore) CreateImage(schoolId string, image multipart.File, header *multipart.FileHeader) (string, error) {
+	panic("implement me")
 }
