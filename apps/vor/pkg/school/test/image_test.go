@@ -3,6 +3,7 @@ package school_test
 import (
 	"bytes"
 	"encoding/json"
+	"github.com/google/uuid"
 	"io/ioutil"
 	"mime/multipart"
 	"net/http"
@@ -42,22 +43,24 @@ func (s *SchoolTestSuite) TestUploadImage() {
 	err = writer.Close()
 	assert.NoError(t, err)
 
+	// Upload Image
 	result := s.CreateMultipartRequest("/"+school.Id+"/images", payload, writer.Boundary(), &school.Users[0].Id)
 	assert.Equal(t, result.Code, http.StatusCreated)
 
+	// Response with ID
 	var response struct {
 		Id string `json:"id"`
 	}
 	err = json.Unmarshal(result.Body.Bytes(), &response)
 	assert.NoError(t, err)
 
-	fileDataOnDb := postgres.Image{Id: response.Id}
+	// Make sure ID is really in DB
+	fileDataOnDb := postgres.Image{Id: uuid.MustParse(response.Id)}
 	err = s.DB.Model(&fileDataOnDb).WherePK().Select()
 	assert.NoError(t, err)
-
 	assert.Equal(t, school.Id, fileDataOnDb.SchoolId)
 
-	// Get and compare file from minio with the test file
+	// Make sure file is in minio
 	fileOnMinio, err := s.MinioClient.GetObject("media", fileDataOnDb.ObjectKey, minio.GetObjectOptions{})
 	assert.NoError(t, err)
 	fileRead, err := ioutil.ReadAll(fileOnMinio)

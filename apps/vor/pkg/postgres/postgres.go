@@ -3,6 +3,7 @@ package postgres
 import (
 	"crypto/tls"
 	"fmt"
+	"github.com/google/uuid"
 	"time"
 
 	"github.com/go-pg/pg/v10"
@@ -306,8 +307,8 @@ type (
 	}
 
 	Image struct {
-		Id        string `pg:"type:uuid"`
-		SchoolId  string `pg:"type:uuid,on_delete:cascade"`
+		Id        uuid.UUID `pg:"type:uuid"`
+		SchoolId  string    `pg:"type:uuid,on_delete:cascade"`
 		School    School
 		ObjectKey string
 		CreatedAt time.Time `pg:"default:now()"`
