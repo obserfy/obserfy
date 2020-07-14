@@ -142,6 +142,7 @@ type (
 		GetLessonFiles(schoolId string) ([]File, error)
 		CreateLessonPlan(input lessonplan.PlanData) (*lessonplan.LessonPlan, error)
 		CreateImage(schoolId string, image multipart.File, header *multipart.FileHeader) (string, error)
+		GetUser(email string) (*User,error)
 	}
 	MailService interface {
 		SendInviteEmail(email string, inviterEmail string, inviteCode string) error

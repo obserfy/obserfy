@@ -80,11 +80,14 @@ func inviteUser(server rest.Server, store Store, mail MailService) http.Handler 
 		}
 		school, _ := store.GetSchool(schoolId)
 		for _, email := range body.Email {
-			if err := mail.SendInviteEmail(email, body.Inviter, school.InviteCode); err != nil {
-				return &rest.Error{
-					Code:    http.StatusInternalServerError,
-					Message: "failed sending email",
-					Error:   err,
+			user,_ :=store.GetUser(email)
+			if user==nil {
+				if err := mail.SendInviteEmail(email, body.Inviter, school.InviteCode); err != nil {
+					return &rest.Error{
+						Code:    http.StatusInternalServerError,
+						Message: "failed sending email",
+						Error:   err,
+					}
 				}
 			}
 		}

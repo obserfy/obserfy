@@ -680,6 +680,20 @@ func (s SchoolStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLessonP
 		ClassId:     planDetails.ClassId,
 	}, nil
 }
+func (u SchoolStore) GetUser(email string) (*cSchool.User, error) {
+	var model cSchool.User
+	if err := u.Model(&model).
+		Column("id", "email", "name").
+		Where("email=?", email).
+		Select(); err != nil {
+		return nil, err
+	}
+	return &cSchool.User{
+		Id:    model.Id,
+		Email: model.Email,
+		Name:  model.Name,
+	}, nil
+}
 
 func (s SchoolStore) CreateImage(schoolId string, image multipart.File, header *multipart.FileHeader) (string, error) {
 	newImage := Image{
