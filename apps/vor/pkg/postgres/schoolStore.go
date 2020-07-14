@@ -668,5 +668,17 @@ func (s SchoolStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLessonP
 }
 
 func (s SchoolStore) CreateImage(schoolId string, image multipart.File, header *multipart.FileHeader) (string, error) {
-	panic("implement me")
+	newImage := Image{
+		Id:       uuid.New().String(),
+		SchoolId: schoolId,
+	}
+	fileKey, err := s.FileStorage.Save(schoolId, newImage.Id, image, header.Size)
+	if err != nil {
+		return "", richErrors.Wrap(err, "failed to save file to s3")
+	}
+	newImage.ObjectKey = fileKey
+	if err := s.Insert(&newImage); err != nil {
+		return "", richErrors.Wrap(err, "failed to create file:")
+	}
+	return newImage.Id, nil
 }

@@ -51,11 +51,11 @@ func (s *SchoolTestSuite) TestUploadImage() {
 	err = json.Unmarshal(result.Body.Bytes(), &response)
 	assert.NoError(t, err)
 
-	fileDataOnDb := postgres.File{Id: response.Id}
+	fileDataOnDb := postgres.Image{Id: response.Id}
 	err = s.DB.Model(&fileDataOnDb).WherePK().Select()
 	assert.NoError(t, err)
 
-	assert.Equal(t, fileName, fileDataOnDb.Name)
+	assert.Equal(t, school.Id, fileDataOnDb.SchoolId)
 
 	// Get and compare file from minio with the test file
 	fileOnMinio, err := s.MinioClient.GetObject("media", fileDataOnDb.ObjectKey, minio.GetObjectOptions{})

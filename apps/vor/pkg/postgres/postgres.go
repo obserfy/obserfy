@@ -138,7 +138,7 @@ type Student struct {
 	ProfilePic     string
 	Guardians      []Guardian   `pg:"many2many:guardian_to_students,join_fk:guardian_id"`
 	LessonPlans    []LessonPlan `pg:"many2many:lesson_plan_to_students,join_fk:lesson_plan_id"`
-	ProfileImageId string       `pg:",type:uuid"`
+	ProfileImageId string       `pg:",type:uuid,on_delete:SET NULL"`
 	ProfileImage   Image
 }
 
@@ -306,10 +306,11 @@ type (
 	}
 
 	Image struct {
-		Id       string `pg:"type:uuid"`
-		Key      string
-		SchoolId string `pg:"type:uuid,on_delete:cascade"`
-		School   School
+		Id        string `pg:"type:uuid"`
+		SchoolId  string `pg:"type:uuid,on_delete:cascade"`
+		School    School
+		ObjectKey string
+		CreatedAt time.Time `pg:"default:now()"`
 	}
 
 	ImageToStudents struct {

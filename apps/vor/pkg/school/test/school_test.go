@@ -23,7 +23,7 @@ import (
 type SchoolTestSuite struct {
 	testutils.BaseTestSuite
 
-	StudentImageStorage postgres.ImageStorage
+	StudentImageStorage minio.ImageStorage
 	store               postgres.SchoolStore
 }
 
@@ -31,7 +31,7 @@ func (s *SchoolTestSuite) SetupTest() {
 	t := s.T()
 	client, err := minio.NewClient()
 	assert.NoError(t, err)
-	s.StudentImageStorage = minio.NewImageStorage(client)
+	s.StudentImageStorage = *minio.NewImageStorage(client)
 
 	s.store = postgres.SchoolStore{s.DB, minio.NewFileStorage(s.MinioClient), s.StudentImageStorage}
 	s.Handler = school.NewRouter(s.Server, s.store, s.StudentImageStorage, nil).ServeHTTP
