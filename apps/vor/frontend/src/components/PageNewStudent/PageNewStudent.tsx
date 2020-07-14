@@ -12,7 +12,7 @@ import Select from "../Select/Select"
 import useGetSchoolClasses from "../../api/classes/useGetSchoolClasses"
 import Chip from "../Chip/Chip"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
-import { NEW_STUDENT_URL, STUDENTS_URL, PICK_GUARDIAN_URL } from "../../routes"
+import { NEW_STUDENT_URL, PICK_GUARDIAN_URL, STUDENTS_URL } from "../../routes"
 
 import ProfilePicker from "../ProfilePicker/ProfilePicker"
 import {
@@ -36,7 +36,6 @@ import EmptyClassDataPlaceholder from "../EmptyClassDataPlaceholder/EmptyClassDa
 
 export interface NewStudentFormData {
   name: string
-  picture?: File
   customId: string
   note: string
   gender: Gender
@@ -47,6 +46,7 @@ export interface NewStudentFormData {
     relationship: GuardianRelationship
   }>
   selectedClasses: string[]
+  profileImageId: string
 }
 
 const DEFAULT_FORM_STATE: NewStudentFormData = {
@@ -57,7 +57,7 @@ const DEFAULT_FORM_STATE: NewStudentFormData = {
   gender: 0,
   note: "",
   customId: "",
-  picture: undefined,
+  profileImageId: "",
   name: "",
 }
 
@@ -69,8 +69,7 @@ interface Props {
 }
 
 export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
-  const [picture, setPicture] = useState<File>()
-  const cachedData = useGetNewStudentFormCache(DEFAULT_FORM_STATE, setPicture)
+  const cachedData = useGetNewStudentFormCache(DEFAULT_FORM_STATE)
 
   const [name, setName] = useState(cachedData.name)
   const [customId, setCustomId] = useState(cachedData.customId)
@@ -78,6 +77,7 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
   const [gender, setGender] = useState<Gender>(cachedData.gender)
   const [dateOfBirth, setDateOfBirth] = useState(cachedData.dateOfBirth)
   const [dateOfEntry, setDateOfEntry] = useState(cachedData.dateOfEntry)
+  const [profileImageId, setProfileImageId] = useState("")
   const [guardians, setGuardians] = useImmer<NewStudentFormData["guardians"]>(
     () => {
       if (
@@ -96,23 +96,21 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
   const classes = useGetSchoolClasses()
   const isFormInvalid = name === ""
 
-  useCacheNewStudentFormData(
-    {
-      name,
-      customId,
-      note,
-      gender,
-      dateOfBirth,
-      dateOfEntry,
-      guardians,
-      selectedClasses,
-    },
-    picture
-  )
+  useCacheNewStudentFormData({
+    name,
+    customId,
+    note,
+    gender,
+    dateOfBirth,
+    dateOfEntry,
+    guardians,
+    selectedClasses,
+    profileImageId,
+  })
 
   const updateAllFormState = (data: NewStudentFormData): void => {
     setName(data.name)
-    setPicture(data.picture)
+    setProfileImageId(data.profileImageId)
     setCustomId(data.customId)
     setNotes(data.note)
     setGender(data.gender)
@@ -131,8 +129,8 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
             <Typography.H4 mb={3}>New Student</Typography.H4>
             <ProfilePicker
               ml="auto"
-              onChange={setPicture}
-              value={picture}
+              onChange={setProfileImageId}
+              value={profileImageId}
               mb={2}
             />
           </Flex>
@@ -265,19 +263,17 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
             disabled={isFormInvalid}
             onClick={async () => {
               const result = await mutate({
-                picture,
-                student: {
-                  classes: selectedClasses,
-                  name,
-                  customId,
-                  dateOfBirth,
-                  dateOfEntry,
-                  guardians,
-                  note,
-                  gender,
-                },
+                classes: selectedClasses,
+                name,
+                customId,
+                dateOfBirth,
+                dateOfEntry,
+                guardians,
+                note,
+                gender,
+                profileImageId,
               })
-              if (result.status === 201) {
+              if (result.ok) {
                 // reset cache
                 await setNewStudentCache(DEFAULT_FORM_STATE)
                 await navigate(STUDENTS_URL)

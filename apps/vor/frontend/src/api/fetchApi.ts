@@ -61,8 +61,8 @@ export const patchApi = <T>(url: string, id: string) => async (payload: T) => {
   return result
 }
 
-export const postApi = <T>(url: string, id: string) => async (payload: T) => {
-  const result = await fetch(`${BASE_URL}${url}/${id}`, {
+export const postApi = <T>(url: string) => async (payload: T) => {
+  const result = await fetch(`${BASE_URL}${url}`, {
     credentials: "same-origin",
     method: "POST",
     body: JSON.stringify(payload),

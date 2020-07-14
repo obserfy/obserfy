@@ -150,6 +150,7 @@ func (s StudentStore) Get(studentId string) (*Student, error) {
 		Where("id=?", studentId).
 		Relation("Guardians").
 		Relation("Classes").
+		Relation("ProfileImage").
 		Select(); err != nil {
 		return nil, err
 	}

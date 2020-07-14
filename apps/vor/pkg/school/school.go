@@ -393,15 +393,15 @@ func getStudents(s rest.Server, store Store, imgproxyClient *imgproxy.Client) re
 
 func postNewStudent(s rest.Server, store Store) rest.Handler {
 	type requestBody struct {
-		Name        string     `json:"name"`
-		DateOfBirth *time.Time `json:"dateOfBirth"`
-		DateOfEntry *time.Time `json:"dateOfEntry"`
-		CustomId    string     `json:"customId"`
-		Classes     []string   `json:"classes"`
-		Note        string     `json:"note"`
-		Gender      Gender     `json:"gender"`
-		ProfilePic  string     `json:"profilePic"`
-		Guardians   []struct {
+		Name           string     `json:"name"`
+		DateOfBirth    *time.Time `json:"dateOfBirth"`
+		DateOfEntry    *time.Time `json:"dateOfEntry"`
+		CustomId       string     `json:"customId"`
+		Classes        []string   `json:"classes"`
+		Note           string     `json:"note"`
+		Gender         Gender     `json:"gender"`
+		ProfileImageId string     `json:"profileImageId"`
+		Guardians      []struct {
 			Id           string `json:"id"`
 			Relationship int    `json:"relationship"`
 		} `json:"guardians"`
@@ -431,7 +431,7 @@ func postNewStudent(s rest.Server, store Store) rest.Handler {
 			CustomId:    body.CustomId,
 			Active:      true,
 			ProfileImage: Image{
-				Id: body.ProfilePic,
+				Id: body.ProfileImageId,
 			},
 		}, body.Classes, guardians)
 		if err != nil {

@@ -13,6 +13,6 @@ export default {
 
 export const Basic: FC = () => (
   <Box m={3}>
-    <ProfilePicker onChange={action("changed")} />
+    <ProfilePicker onChange={action("changed")} value="" />
   </Box>
 )
