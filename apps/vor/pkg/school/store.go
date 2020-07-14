@@ -36,17 +36,22 @@ type (
 	}
 
 	Student struct {
-		Id          string
-		Name        string
-		SchoolId    string
-		ProfilePic  string
-		DateOfBirth *time.Time
-		Gender      Gender
-		DateOfEntry *time.Time
-		Note        string
-		CustomId    string
-		Active      bool
-		Classes     []Class
+		Id           string
+		Name         string
+		SchoolId     string
+		DateOfBirth  *time.Time
+		Gender       Gender
+		DateOfEntry  *time.Time
+		Note         string
+		CustomId     string
+		Active       bool
+		Classes      []Class
+		ProfileImage Image
+	}
+
+	Image struct {
+		Id        string
+		ObjectKey string
 	}
 
 	Gender int

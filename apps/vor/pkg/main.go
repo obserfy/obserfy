@@ -105,7 +105,7 @@ func runServer() error {
 		r.Use(auth.NewMiddleware(server, authStore))
 		r.Mount("/students", student.NewRouter(server, studentStore))
 		r.Mount("/observations", observation.NewRouter(server, observationStore))
-		r.Mount("/schools", school.NewRouter(server, schoolStore, imageStorage, imgproxyClient))
+		r.Mount("/schools", school.NewRouter(server, schoolStore, imgproxyClient))
 		r.Mount("/users", user.NewRouter(server, userStore))
 		r.Mount("/curriculums", curriculum.NewRouter(server, curriculumStore))
 		r.Mount("/classes", class.NewRouter(server, classStore, lessonPlanStore))

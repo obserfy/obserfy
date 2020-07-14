@@ -34,7 +34,7 @@ func (s *SchoolTestSuite) SetupTest() {
 	s.StudentImageStorage = *minio.NewImageStorage(client)
 
 	s.store = postgres.SchoolStore{s.DB, minio.NewFileStorage(s.MinioClient), s.StudentImageStorage}
-	s.Handler = school.NewRouter(s.Server, s.store, s.StudentImageStorage, nil).ServeHTTP
+	s.Handler = school.NewRouter(s.Server, s.store, nil).ServeHTTP
 }
 
 func TestSchool(t *testing.T) {

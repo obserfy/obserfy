@@ -110,10 +110,13 @@ func (s SchoolStore) GetStudents(schoolId, classId string, active *bool) ([]cSch
 		}
 
 		res = append(res, cSchool.Student{
-			Id:          s.Id,
-			Name:        s.Name,
-			SchoolId:    s.SchoolId,
-			ProfilePic:  s.ProfilePic,
+			Id:       s.Id,
+			Name:     s.Name,
+			SchoolId: s.SchoolId,
+			ProfileImage: cSchool.Image{
+				Id:        s.ProfileImage.Id.String(),
+				ObjectKey: s.ProfileImage.ObjectKey,
+			},
 			DateOfBirth: s.DateOfBirth,
 			Active:      *s.Active,
 			Classes:     classes,
@@ -183,16 +186,16 @@ func (s SchoolStore) NewStudent(student cSchool.Student, classes []string, guard
 		}
 
 		if err := tx.Insert(&Student{
-			Id:          student.Id,
-			Name:        student.Name,
-			SchoolId:    student.SchoolId,
-			DateOfBirth: student.DateOfBirth,
-			Gender:      Gender(student.Gender),
-			DateOfEntry: student.DateOfEntry,
-			Note:        student.Note,
-			CustomId:    student.CustomId,
-			Active:      &student.Active,
-			ProfilePic:  student.ProfilePic,
+			Id:             student.Id,
+			Name:           student.Name,
+			SchoolId:       student.SchoolId,
+			DateOfBirth:    student.DateOfBirth,
+			Gender:         Gender(student.Gender),
+			DateOfEntry:    student.DateOfEntry,
+			Note:           student.Note,
+			CustomId:       student.CustomId,
+			Active:         &student.Active,
+			ProfileImageId: student.ProfileImage.Id,
 		}); err != nil {
 			return richErrors.Wrap(err, "failed to save new student")
 		}

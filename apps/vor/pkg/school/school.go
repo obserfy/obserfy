@@ -22,7 +22,6 @@ import (
 func NewRouter(
 	server rest.Server,
 	store Store,
-	imageStorage StudentImageStorage,
 	imgproxyClient *imgproxy.Client,
 ) *chi.Mux {
 	r := chi.NewRouter()
@@ -31,7 +30,7 @@ func NewRouter(
 		r.Use(authorizationMiddleware(server, store))
 		r.Method("GET", "/", getSchool(server, store))
 		r.Method("GET", "/students", getStudents(server, store, imgproxyClient))
-		r.Method("POST", "/students", postNewStudent(server, store, imageStorage))
+		r.Method("POST", "/students", postNewStudent(server, store))
 		r.Method("POST", "/invite-code", refreshInviteCode(server, store))
 
 		// TODO: This might fit better in curriculum package, revisit later
@@ -364,8 +363,8 @@ func getStudents(s rest.Server, store Store, imgproxyClient *imgproxy.Client) re
 		response := make([]responseBody, 0)
 		for _, student := range students {
 			profilePicUrl := ""
-			if student.ProfilePic != "" {
-				profilePicUrl = imgproxyClient.GenerateUrl(student.ProfilePic, 80, 80)
+			if student.ProfileImage.ObjectKey != "" {
+				profilePicUrl = imgproxyClient.GenerateUrl(student.ProfileImage.ObjectKey, 80, 80)
 			}
 
 			classes := make([]class, 0)
@@ -392,8 +391,8 @@ func getStudents(s rest.Server, store Store, imgproxyClient *imgproxy.Client) re
 	})
 }
 
-func postNewStudent(s rest.Server, store Store, storage StudentImageStorage) rest.Handler {
-	type studentField struct {
+func postNewStudent(s rest.Server, store Store) rest.Handler {
+	type requestBody struct {
 		Name        string     `json:"name"`
 		DateOfBirth *time.Time `json:"dateOfBirth"`
 		DateOfEntry *time.Time `json:"dateOfEntry"`
@@ -401,6 +400,7 @@ func postNewStudent(s rest.Server, store Store, storage StudentImageStorage) res
 		Classes     []string   `json:"classes"`
 		Note        string     `json:"note"`
 		Gender      Gender     `json:"gender"`
+		ProfilePic  string     `json:"profilePic"`
 		Guardians   []struct {
 			Id           string `json:"id"`
 			Relationship int    `json:"relationship"`
@@ -409,83 +409,31 @@ func postNewStudent(s rest.Server, store Store, storage StudentImageStorage) res
 
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		schoolId := chi.URLParam(r, "schoolId")
-		if err := r.ParseMultipartForm(10 << 20); err != nil {
-			return &rest.Error{
-				Code:    http.StatusBadRequest,
-				Message: "failed to parse payload",
-				Error:   richErrors.Wrap(err, "failed to parse response body"),
-			}
-		}
 
-		newStudentId := uuid.New().String()
-		// Save student profile picture
-		picture, pictureFileHeader, err := r.FormFile("picture")
-		var profilePicPath string
-		if err == nil {
-			// TODO: Do we need to read the file header here? We already have pictureFileHeader above?
-			fileHeader := make([]byte, 512)
-			if _, err := picture.Read(fileHeader); err != nil {
-				return &rest.Error{
-					Code:    http.StatusInternalServerError,
-					Message: "failed to parse picture header",
-					Error:   richErrors.Wrap(err, "failed to parse picture header"),
-				}
-			}
-			mime := http.DetectContentType(fileHeader)
-			if mime != "image/png" {
-				return &rest.Error{
-					Code:    http.StatusBadRequest,
-					Message: "profile picture must be a png",
-					Error:   richErrors.New("invalid profile picture format"),
-				}
-			}
-			if _, err := picture.Seek(0, 0); err != nil {
-				return &rest.Error{
-					Code:    http.StatusInternalServerError,
-					Message: "failed moving picture buffer seeker to beginning",
-					Error:   richErrors.Wrap(err, "failed moving picture buffer seeker to beginning"),
-				}
-			}
-			profilePicPath, err = storage.SaveProfilePicture(newStudentId, picture, pictureFileHeader.Size)
-			if err != nil {
-				return &rest.Error{
-					Code:    http.StatusInternalServerError,
-					Message: "failed to save image",
-					Error:   richErrors.Wrap(err, "failed to save image"),
-				}
-			}
-		}
-
-		// save student data
-		student, _, err := r.FormFile("student")
-		if err != nil {
-			return &rest.Error{
-				Code:    http.StatusBadRequest,
-				Message: "failed to parse student data",
-				Error:   richErrors.Wrap(err, "failed to parse student form field"),
-			}
-		}
-		var newStudent studentField
-		if err := rest.ParseJson(student, &newStudent); err != nil {
+		var body requestBody
+		if err := rest.ParseJson(r.Body, &body); err != nil {
 			return rest.NewParseJsonError(err)
 		}
+
 		guardians := make(map[string]int)
-		for _, guardian := range newStudent.Guardians {
+		for _, guardian := range body.Guardians {
 			guardians[guardian.Id] = guardian.Relationship
 		}
 
-		err = store.NewStudent(Student{
-			Id:          newStudentId,
-			Name:        newStudent.Name,
+		err := store.NewStudent(Student{
+			Id:          uuid.New().String(),
+			Name:        body.Name,
 			SchoolId:    schoolId,
-			DateOfBirth: newStudent.DateOfBirth,
-			Gender:      newStudent.Gender,
-			DateOfEntry: newStudent.DateOfEntry,
-			Note:        newStudent.Note,
-			CustomId:    newStudent.CustomId,
+			DateOfBirth: body.DateOfBirth,
+			Gender:      body.Gender,
+			DateOfEntry: body.DateOfEntry,
+			Note:        body.Note,
+			CustomId:    body.CustomId,
 			Active:      true,
-			ProfilePic:  profilePicPath,
-		}, newStudent.Classes, guardians)
+			ProfileImage: Image{
+				Id: body.ProfilePic,
+			},
+		}, body.Classes, guardians)
 		if err != nil {
 			return &rest.Error{
 				Code:    http.StatusInternalServerError,
