@@ -36,7 +36,7 @@ func (s *SchoolTestSuite) TestUploadImage() {
 	// Write file to multipart/form-data
 	payload := new(bytes.Buffer)
 	writer := multipart.NewWriter(payload)
-	part, err := writer.CreateFormFile("file", fileName)
+	part, err := writer.CreateFormFile("image", fileName)
 	assert.NoError(t, err)
 	_, err = part.Write(fileContents)
 	assert.NoError(t, err)

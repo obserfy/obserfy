@@ -958,7 +958,7 @@ func postNewLessonPlan(server rest.Server, store Store) http.Handler {
 }
 
 func postNewImage(server rest.Server, store Store) http.Handler {
-	type resBody struct {
+	type responseBody struct {
 		Id string `json:"id"`
 	}
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
@@ -972,7 +972,7 @@ func postNewImage(server rest.Server, store Store) http.Handler {
 			}
 		}
 
-		file, fileHeader, err := r.FormFile("file")
+		file, fileHeader, err := r.FormFile("image")
 		if err != nil {
 			return &rest.Error{
 				Code:    http.StatusBadRequest,
@@ -991,7 +991,7 @@ func postNewImage(server rest.Server, store Store) http.Handler {
 		}
 
 		w.WriteHeader(http.StatusCreated)
-		if err := rest.WriteJson(w, &resBody{id}); err != nil {
+		if err := rest.WriteJson(w, &responseBody{id}); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
 		return nil
