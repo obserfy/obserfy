@@ -3,7 +3,7 @@ import { ApiError } from "./useApi"
 
 const BASE_URL = "/api/v1"
 
-export const fetchApi = <T>(url: string) => async (): Promise<T> => {
+export const getApi = <T>(url: string) => async (): Promise<T> => {
   const result = await fetch(BASE_URL + url, {
     credentials: "same-origin",
   })

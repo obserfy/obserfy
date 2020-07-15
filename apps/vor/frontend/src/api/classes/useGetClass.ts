@@ -1,5 +1,5 @@
 import { QueryResult, useQuery } from "react-query"
-import { fetchApi } from "../fetchApi"
+import { getApi } from "../fetchApi"
 
 interface Class {
   id: string
@@ -9,7 +9,7 @@ interface Class {
   weekdays: number[]
 }
 const useGetClass = (classId: string): QueryResult<Class> => {
-  const getClass = fetchApi<Class>(`/classes/${classId}`)
+  const getClass = getApi<Class>(`/classes/${classId}`)
   return useQuery(["class", classId], getClass)
 }
 
