@@ -55,6 +55,7 @@ jobs:
       - persist_to_workspace:
           root: ../
           paths:
+            - repo/.yarn/
             - repo/node_modules
             - repo/apps/gaia/node_modules
             - repo/apps/freyr/node_modules
@@ -66,6 +67,7 @@ jobs:
           name: Save Yarn Package Cache
           key: build-v8-{{ checksum "yarn.lock" }}
           paths:
+            - ~/.yarn
             - ~/.cache/yarn
             - ~/.cache/Cypress
             - ./node_modules
