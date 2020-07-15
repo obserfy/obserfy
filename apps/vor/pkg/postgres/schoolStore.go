@@ -165,21 +165,6 @@ func (s SchoolStore) GetClassAttendance(classId, session string) ([]cSchool.Atte
 }
 
 func (s SchoolStore) NewStudent(student cSchool.Student, classes []string, guardians map[string]int) error {
-	classRelations := make([]StudentToClass, len(classes))
-	for i, class := range classes {
-		classRelations[i] = StudentToClass{
-			StudentId: student.Id,
-			ClassId:   class,
-		}
-	}
-	guardianRelations := make([]GuardianToStudent, 0)
-	for id, guardian := range guardians {
-		guardianRelations = append(guardianRelations, GuardianToStudent{
-			StudentId:    student.Id,
-			GuardianId:   id,
-			Relationship: GuardianRelationship(guardian),
-		})
-	}
 	newStudent := Student{
 		Id:             uuid.New().String(),
 		Name:           student.Name,
@@ -191,6 +176,21 @@ func (s SchoolStore) NewStudent(student cSchool.Student, classes []string, guard
 		CustomId:       student.CustomId,
 		Active:         &student.Active,
 		ProfileImageId: student.ProfileImage.Id,
+	}
+	classRelations := make([]StudentToClass, len(classes))
+	for i, class := range classes {
+		classRelations[i] = StudentToClass{
+			StudentId: newStudent.Id,
+			ClassId:   class,
+		}
+	}
+	guardianRelations := make([]GuardianToStudent, 0)
+	for id, guardian := range guardians {
+		guardianRelations = append(guardianRelations, GuardianToStudent{
+			StudentId:    newStudent.Id,
+			GuardianId:   id,
+			Relationship: GuardianRelationship(guardian),
+		})
 	}
 
 	if err := s.RunInTransaction(func(tx *pg.Tx) error {
