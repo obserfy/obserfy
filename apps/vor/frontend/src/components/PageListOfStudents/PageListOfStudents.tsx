@@ -4,7 +4,7 @@ import { Box, Card, Flex, Image, jsx } from "theme-ui"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { SETTINGS_URL } from "../../routes"
 import Typography from "../Typography/Typography"
-import { useGetStudents } from "../../api/students/useGetStudents"
+import { useGetAllStudents } from "../../api/students/useGetAllStudents"
 import SearchBar from "../SearchBar/SearchBar"
 import Pill from "../Pill/Pill"
 import AlertDialog from "../AlertDialog/AlertDialog"
@@ -12,7 +12,7 @@ import { usePatchStudentApi } from "../../api/students/usePatchStudentApi"
 import StudentPicturePlaceholder from "../StudentPicturePlaceholder/StudentPicturePlaceholder"
 
 export const PageListOfStudents: FC = () => {
-  const students = useGetStudents()
+  const students = useGetAllStudents()
   const [searchTerm, setSearchTerm] = useState("")
   const filteredStudents = students.data?.filter((student) =>
     student.name.match(new RegExp(searchTerm, "i"))

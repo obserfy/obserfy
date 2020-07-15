@@ -14,7 +14,7 @@ export interface Student {
   }[]
 }
 
-export const useGetStudents = (
+export const useGetAllStudents = (
   classId = "",
   active?: boolean
 ): QueryResult<Student[]> => {
