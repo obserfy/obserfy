@@ -21,7 +21,7 @@ const GlobalStyle: FC = () => (
   <Global
     styles={(theme) => ({
       body: {
-        backgroundColor: theme.colors.background,
+        backgroundColor: theme.colors?.background ?? "",
         minHeight: "100vh",
         top: 0,
       },

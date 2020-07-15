@@ -20,7 +20,7 @@ export class ErrorBoundary extends Component<{}, State> {
       // eslint-disable-next-line no-console
       console.error(error)
     }
-    Sentry.configureScope((scope) => {
+    Sentry.configureScope((scope: any) => {
       Object.keys(errorInfo).forEach((key) => {
         scope.setExtra(key, errorInfo[key])
       })

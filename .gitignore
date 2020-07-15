@@ -12,3 +12,5 @@ package-lock.json
 
 # Local Netlify folder
 .netlify
+.yarn
+.pnp.js
