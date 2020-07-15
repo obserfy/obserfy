@@ -1,4 +1,4 @@
-FROM postgres:11-alpine
+FROM postgres:12-alpine
 
 ADD pg_hba.conf /pg_hba.conf
 ADD postgresql.conf /postgresql.conf
