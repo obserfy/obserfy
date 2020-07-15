@@ -147,7 +147,7 @@ func (s StudentStore) UpdateProgress(progress StudentMaterialProgress) (pg.Resul
 func (s StudentStore) Get(studentId string) (*Student, error) {
 	var student Student
 	if err := s.DB.Model(&student).
-		Where("id=?", studentId).
+		Where("Student.id=?", studentId).
 		Relation("Guardians").
 		Relation("Classes").
 		Relation("ProfileImage").
@@ -159,7 +159,8 @@ func (s StudentStore) Get(studentId string) (*Student, error) {
 
 func (s StudentStore) UpdateStudent(student *Student) error {
 	if _, err := s.DB.Model(student).
-		WherePK().UpdateNotZero(); err != nil {
+		WherePK().
+		UpdateNotZero(); err != nil {
 		return richErrors.Wrap(err, "failed to update student")
 	}
 	return nil
