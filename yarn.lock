@@ -2957,18 +2957,28 @@
   resolved "https://registry.yarnpkg.com/@prefresh/core/-/core-0.7.1.tgz#75c73975dbbf66d70fc698eda26aeae1767d3c07"
   integrity sha512-wa7M0cTV7DcBu3vw4MEtVXWFxsdHXbky8qzhBFJ/HEp7fdEmvOateYmGOjSeOn+QaKeAqUBGTMnTyVER0lamNA==
 
-"@prefresh/next@0.3.1":
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/@prefresh/next/-/next-0.3.1.tgz#9fb7e1ee0a3d9dabc619367a6dc78f60d2eaf5bc"
-  integrity sha512-GR2K2FYB7LXAjKLviuWpfLWnvWxxyEE4tp03OQfiiOp0Z5kY1oxJW2E1ZWxkd9MaMCSargx2D857iUM1/Id4oQ==
+"@prefresh/core@^0.7.2":
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/@prefresh/core/-/core-0.7.2.tgz#982a530cd26b1c466786e92b2abfa03aa8c29f56"
+  integrity sha512-K01Yx3cWY+A4Cb61cJ93swmFS2ZaeCD2uRg8dvaUAw/6oZvtEPrqzueVRjjavkRdwhIuOwqHbCg4scSbo7jE/A==
+
+"@prefresh/next@0.3.2":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@prefresh/next/-/next-0.3.2.tgz#92c84865ec0ec285918955ea9e07a7662e780f02"
+  integrity sha512-HpsMsqyjVHsn2/U1AWHneBN28rhmPQHTyYRaOzbZ3yz89s2WSpsEdZWkTZM5aVRqh1d2gy9eEhS0lVxjPzYPTg==
   dependencies:
-    "@prefresh/core" "^0.7.0"
-    "@prefresh/utils" "^0.2.0"
+    "@prefresh/core" "^0.7.2"
+    "@prefresh/utils" "^0.2.1"
 
 "@prefresh/utils@^0.2.0":
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@prefresh/utils/-/utils-0.2.0.tgz#1d269210758346e8e1f8a6410b61ba3e4fb982f9"
   integrity sha512-mxJraGQLPmvAuI8Br0y/pvJWI2sy5IHU5veZ5GglP1gnb4dpp5rjIVjHdlVvrXUKGtFIpB3zxrqS+vYn1cQ01A==
+
+"@prefresh/utils@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@prefresh/utils/-/utils-0.2.1.tgz#1446082c87f1ef61b0c407f1bd0e79726fb5ab45"
+  integrity sha512-Ju7WHncqUKsaFp7yAFoNSR2jdr0bjqr8AwV06LtpFmwliPe4IDGRcBGhofg+SY9yld3FUF1JWmEoUOfCyCGRhA==
 
 "@prefresh/webpack@^0.8.1":
   version "0.8.1"
