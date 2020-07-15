@@ -328,12 +328,12 @@ func getStudents(s rest.Server, store Store, imgproxyClient *imgproxy.Client) re
 		}
 
 		responseBody struct {
-			Id            string     `json:"id"`
-			Name          string     `json:"name"`
-			DateOfBirth   *time.Time `json:"dateOfBirth,omitempty"`
-			ProfilePicUrl string     `json:"profilePicUrl,omitempty"`
-			Active        bool       `json:"active"`
-			Classes       []class    `json:"classes"`
+			Id              string     `json:"id"`
+			Name            string     `json:"name"`
+			DateOfBirth     *time.Time `json:"dateOfBirth,omitempty"`
+			ProfileImageUrl string     `json:"profileImageUrl,omitempty"`
+			Active          bool       `json:"active"`
+			Classes         []class    `json:"classes"`
 		}
 	)
 
@@ -362,9 +362,9 @@ func getStudents(s rest.Server, store Store, imgproxyClient *imgproxy.Client) re
 
 		response := make([]responseBody, 0)
 		for _, student := range students {
-			profilePicUrl := ""
+			profileImageUrl := ""
 			if student.ProfileImage.ObjectKey != "" {
-				profilePicUrl = imgproxyClient.GenerateUrl(student.ProfileImage.ObjectKey, 80, 80)
+				profileImageUrl = imgproxyClient.GenerateUrl(student.ProfileImage.ObjectKey, 80, 80)
 			}
 
 			classes := make([]class, 0)
@@ -376,12 +376,12 @@ func getStudents(s rest.Server, store Store, imgproxyClient *imgproxy.Client) re
 			}
 
 			response = append(response, responseBody{
-				Id:            student.Id,
-				Name:          student.Name,
-				DateOfBirth:   student.DateOfBirth,
-				ProfilePicUrl: profilePicUrl,
-				Active:        student.Active,
-				Classes:       classes,
+				Id:              student.Id,
+				Name:            student.Name,
+				DateOfBirth:     student.DateOfBirth,
+				ProfileImageUrl: profileImageUrl,
+				Active:          student.Active,
+				Classes:         classes,
 			})
 		}
 		if err = rest.WriteJson(w, response); err != nil {

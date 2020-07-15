@@ -64,7 +64,6 @@ exports[`ProfilePicker should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  padding-top: 16px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -92,6 +91,7 @@ exports[`ProfilePicker should render correctly 1`] = `
   height: auto;
   margin: 0;
   margin-bottom: 4px;
+  margin-top: 16px;
   fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
@@ -178,6 +178,7 @@ exports[`ProfilePicker should render correctly 1`] = `
     >
       <div
         class="emotion-6"
+        value=""
       >
         <label
           class="emotion-5"

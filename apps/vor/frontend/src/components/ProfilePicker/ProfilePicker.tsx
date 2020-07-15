@@ -70,7 +70,9 @@ export const ProfilePicker: FC<Props> = ({ onChange, ...props }) => {
             if (selectedImage) {
               const result = await mutate(selectedImage)
               if (result.ok) {
+                const response = await result.json()
                 setImage(selectedImage)
+                onChange(response.id)
               }
             }
           }}

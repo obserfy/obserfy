@@ -81,9 +81,10 @@ func (s SchoolStore) GetStudents(schoolId, classId string, active *bool) ([]cSch
 	res := make([]cSchool.Student, 0)
 
 	query := s.Model(&students).
-		Where("school_id=?", schoolId).
+		Where("student.school_id=?", schoolId).
 		Order("name").
-		Relation("Classes")
+		Relation("Classes").
+		Relation("ProfileImage")
 	if classId != "" {
 		query = query.
 			Join("LEFT JOIN student_to_classes AS stc on id=stc.student_id").
@@ -164,39 +165,36 @@ func (s SchoolStore) GetClassAttendance(classId, session string) ([]cSchool.Atte
 }
 
 func (s SchoolStore) NewStudent(student cSchool.Student, classes []string, guardians map[string]int) error {
-	if student.Id == "" {
-		student.Id = uuid.New().String()
+	classRelations := make([]StudentToClass, len(classes))
+	for i, class := range classes {
+		classRelations[i] = StudentToClass{
+			StudentId: student.Id,
+			ClassId:   class,
+		}
 	}
+	guardianRelations := make([]GuardianToStudent, 0)
+	for id, guardian := range guardians {
+		guardianRelations = append(guardianRelations, GuardianToStudent{
+			StudentId:    student.Id,
+			GuardianId:   id,
+			Relationship: GuardianRelationship(guardian),
+		})
+	}
+	newStudent := Student{
+		Id:             uuid.New().String(),
+		Name:           student.Name,
+		SchoolId:       student.SchoolId,
+		DateOfBirth:    student.DateOfBirth,
+		Gender:         Gender(student.Gender),
+		DateOfEntry:    student.DateOfEntry,
+		Note:           student.Note,
+		CustomId:       student.CustomId,
+		Active:         &student.Active,
+		ProfileImageId: student.ProfileImage.Id,
+	}
+
 	if err := s.RunInTransaction(func(tx *pg.Tx) error {
-		classRelations := make([]StudentToClass, len(classes))
-		for i, class := range classes {
-			classRelations[i] = StudentToClass{
-				StudentId: student.Id,
-				ClassId:   class,
-			}
-		}
-
-		guardianRelations := make([]GuardianToStudent, 0)
-		for id, guardian := range guardians {
-			guardianRelations = append(guardianRelations, GuardianToStudent{
-				StudentId:    student.Id,
-				GuardianId:   id,
-				Relationship: GuardianRelationship(guardian),
-			})
-		}
-
-		if err := tx.Insert(&Student{
-			Id:             student.Id,
-			Name:           student.Name,
-			SchoolId:       student.SchoolId,
-			DateOfBirth:    student.DateOfBirth,
-			Gender:         Gender(student.Gender),
-			DateOfEntry:    student.DateOfEntry,
-			Note:           student.Note,
-			CustomId:       student.CustomId,
-			Active:         &student.Active,
-			ProfileImageId: student.ProfileImage.Id,
-		}); err != nil {
+		if err := tx.Insert(&newStudent); err != nil {
 			return richErrors.Wrap(err, "failed to save new student")
 		}
 		if len(classRelations) > 0 {
