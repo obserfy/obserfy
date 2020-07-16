@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react"
+import React, { FC } from "react"
 import { Box, BoxProps, Card, Flex, Image, Input, Label } from "theme-ui"
 
 import Typography from "../Typography/Typography"
@@ -6,22 +6,23 @@ import { ReactComponent as CameraIcon } from "../../icons/camera.svg"
 import Icon from "../Icon/Icon"
 import usePostNewImage from "../../api/schools/usePostNewImage"
 import { LoadingIndicator } from "../LoadingIndicator/LoadingIndicator"
+import useGetImage from "../../api/useGetImage"
 
 interface Props extends Omit<BoxProps, "onChange" | "value"> {
   onChange: (imageId: string) => void
   value: string
 }
-export const ProfilePicker: FC<Props> = ({ onChange, ...props }) => {
+export const ProfilePicker: FC<Props> = ({ value, onChange, ...props }) => {
   const [mutate, { status }] = usePostNewImage()
-  const [image, setImage] = useState<File>()
+  const image = useGetImage(value)
 
   return (
     <Box {...props} sx={{ flexShrink: 0 }}>
       <Label>
-        <Card sx={{ height: 100, width: 100 }}>
-          {image ? (
+        <Card sx={{ height: 100, width: 100, overflow: "hidden" }}>
+          {image.status === "success" ? (
             <Image
-              src={URL.createObjectURL(image)}
+              src={image.data.url}
               sx={{
                 height: "100%",
                 width: "100%",
@@ -71,7 +72,6 @@ export const ProfilePicker: FC<Props> = ({ onChange, ...props }) => {
               const result = await mutate(selectedImage)
               if (result.ok) {
                 const response = await result.json()
-                setImage(selectedImage)
                 onChange(response.id)
               }
             }
