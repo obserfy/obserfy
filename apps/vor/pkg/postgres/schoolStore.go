@@ -177,16 +177,18 @@ func (s SchoolStore) NewStudent(student cSchool.Student, classes []string, guard
 		Active:         &student.Active,
 		ProfileImageId: student.ProfileImage.Id,
 	}
-	classRelations := make([]StudentToClass, len(classes))
+
+	classRelationships := make([]StudentToClass, len(classes))
 	for i, class := range classes {
-		classRelations[i] = StudentToClass{
+		classRelationships[i] = StudentToClass{
 			StudentId: newStudent.Id,
 			ClassId:   class,
 		}
 	}
-	guardianRelations := make([]GuardianToStudent, 0)
+
+	guardianRelationships := make([]GuardianToStudent, 0)
 	for id, guardian := range guardians {
-		guardianRelations = append(guardianRelations, GuardianToStudent{
+		guardianRelationships = append(guardianRelationships, GuardianToStudent{
 			StudentId:    newStudent.Id,
 			GuardianId:   id,
 			Relationship: GuardianRelationship(guardian),
@@ -197,14 +199,25 @@ func (s SchoolStore) NewStudent(student cSchool.Student, classes []string, guard
 		if err := tx.Insert(&newStudent); err != nil {
 			return richErrors.Wrap(err, "failed to save new student")
 		}
-		if len(classRelations) > 0 {
-			if err := tx.Insert(&classRelations); err != nil {
+
+		if len(classRelationships) > 0 {
+			if err := tx.Insert(&classRelationships); err != nil {
 				return richErrors.Wrap(err, "failed to save student to class relation")
 			}
 		}
-		if len(guardianRelations) > 0 {
-			if err := tx.Insert(&guardianRelations); err != nil {
+
+		if len(guardianRelationships) > 0 {
+			if err := tx.Insert(&guardianRelationships); err != nil {
 				return richErrors.Wrap(err, "failed to save guardian to student relation")
+			}
+		}
+
+		if student.ProfileImage.Id != "" {
+			if err := tx.Insert(&ImageToStudents{
+				StudentId: newStudent.Id,
+				ImageId:   newStudent.ProfileImageId,
+			}); err != nil {
+				return richErrors.Wrap(err, "failed to save student to image relationship")
 			}
 		}
 		return nil
