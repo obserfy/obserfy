@@ -36,10 +36,10 @@ export const PageListOfStudents: FC = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
       </Box>
-      {filteredStudents?.map(({ id, name, active, profilePicUrl }) => (
+      {filteredStudents?.map(({ id, name, active, profileImageUrl }) => (
         <StudentCard
           key={id}
-          profilePicUrl={profilePicUrl}
+          profilePicUrl={profileImageUrl}
           name={name}
           active={active}
           studentId={id}

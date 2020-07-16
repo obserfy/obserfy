@@ -40,7 +40,7 @@ export const PageHome: FC = () => {
 
   const studentList =
     students.status === "success" &&
-    matchedStudent?.map(({ profilePicUrl, name, id, classes }) => (
+    matchedStudent?.map(({ profileImageUrl, name, id, classes }) => (
       <Link to={STUDENT_OVERVIEW_PAGE_URL(id)} sx={{ display: "block" }}>
         <Card
           p={3}
@@ -56,9 +56,9 @@ export const PageHome: FC = () => {
             alignItems: "center",
           }}
         >
-          {profilePicUrl ? (
+          {profileImageUrl ? (
             <Image
-              src={profilePicUrl}
+              src={profileImageUrl}
               sx={{
                 width: 32,
                 height: 32,

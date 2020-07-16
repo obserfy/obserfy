@@ -7,7 +7,7 @@ export interface Student {
   id: string
   name: string
   active: boolean
-  profilePicUrl?: string
+  profileImageUrl?: string
   classes: {
     classId: string
     className: string
