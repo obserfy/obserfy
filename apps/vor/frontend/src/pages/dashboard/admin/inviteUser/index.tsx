@@ -3,12 +3,12 @@ import SEO from "../../../../components/seo"
 import PageInviteUser from "../../../../components/PageInviteUser/PageInviteUser"
 
 const Class: FC = () => {
-    return (
-        <>
-            <SEO title="Invite User" />
-            <PageInviteUser />
-        </>
-    )
+  return (
+    <>
+      <SEO title="Invite User" />
+      <PageInviteUser />
+    </>
+  )
 }
 
 export default Class

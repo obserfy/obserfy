@@ -5,8 +5,8 @@ export default {
   title: "Core|PageInviteUser",
   component: PageInviteUser,
   parameters: {
-    componentSubtitle: "Just a simple PageInviteUser"
-  }
+    componentSubtitle: "Just a simple PageInviteUser",
+  },
 }
 
 export const Basic: FC = () => <PageInviteUser />

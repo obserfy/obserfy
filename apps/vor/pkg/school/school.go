@@ -66,7 +66,6 @@ func NewRouter(
 func inviteUser(server rest.Server, store Store, mail MailService) http.Handler {
 	type requestBody struct {
 		Email   []string `json:"email"`
-		Inviter string   `json:"inviter"`
 	}
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		schoolId := chi.URLParam(r, "schoolId")
@@ -78,11 +77,15 @@ func inviteUser(server rest.Server, store Store, mail MailService) http.Handler 
 				Error:   err,
 			}
 		}
+		session, ok := auth.GetSessionFromCtx(r.Context())
+		if !ok {
+			return auth.NewGetSessionError()
+		}
 		school, _ := store.GetSchool(schoolId)
 		for _, email := range body.Email {
 			user,_ :=store.GetUser(email)
 			if user==nil {
-				if err := mail.SendInviteEmail(email, body.Inviter, school.InviteCode); err != nil {
+				if err := mail.SendInviteEmail(email, session.User.Name, school.InviteCode); err != nil {
 					return &rest.Error{
 						Code:    http.StatusInternalServerError,
 						Message: "failed sending email",
@@ -91,7 +94,6 @@ func inviteUser(server rest.Server, store Store, mail MailService) http.Handler 
 				}
 			}
 		}
-
 		return nil
 	})
 }
