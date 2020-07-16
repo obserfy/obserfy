@@ -58,6 +58,7 @@ exports[`ProfilePicker should render correctly 1`] = `
   box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
   height: 100px;
   width: 100px;
+  overflow: hidden;
 }
 
 .emotion-2 {
@@ -178,7 +179,6 @@ exports[`ProfilePicker should render correctly 1`] = `
     >
       <div
         class="emotion-6"
-        value=""
       >
         <label
           class="emotion-5"
