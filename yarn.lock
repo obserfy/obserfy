@@ -20024,10 +20024,10 @@ react-popper@^1.3.7:
     typed-styles "^0.0.7"
     warning "^4.0.2"
 
-react-query@2.4.19:
-  version "2.4.19"
-  resolved "https://registry.yarnpkg.com/react-query/-/react-query-2.4.19.tgz#a8d1602f10992cfe6c034f4bb03c2bf240b81e11"
-  integrity sha512-WGzMg1JW/Qy/4Uu773laaaRyVb5abhn0xDmFyNDtx5MpDPn0Y+szGPVJZMKk3vU6SzpxtM6UhcDcwus8w+A/IQ==
+react-query@2.4.20:
+  version "2.4.20"
+  resolved "https://registry.yarnpkg.com/react-query/-/react-query-2.4.20.tgz#aabb7e127bbb532c91870d29f926f141bd18a9f4"
+  integrity sha512-WDd/DmKffzHfLqkdjAfHKNGKSb3N/wmxfU2dBmESesaX7dlzSK0yyZbjgy80nQTyr33M1sTGqvcwxVn8MJjxfg==
   dependencies:
     ts-toolbelt "^6.9.4"
 
