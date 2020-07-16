@@ -48,7 +48,7 @@
     "stylelint-config-prettier": "8.0.2",
     "stylelint-config-standard": "20.0.0",
     "tailwindcss": "1.5.1",
-    "typescript": "3.9.6",
+    "typescript": "3.9.7",
     "typescript-plugin-css-modules": "2.4.0"
   },
   "keywords": [
