@@ -77,7 +77,9 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
   const [gender, setGender] = useState<Gender>(cachedData.gender)
   const [dateOfBirth, setDateOfBirth] = useState(cachedData.dateOfBirth)
   const [dateOfEntry, setDateOfEntry] = useState(cachedData.dateOfEntry)
-  const [profileImageId, setProfileImageId] = useState("")
+  const [profileImageId, setProfileImageId] = useState(
+    cachedData.profileImageId
+  )
   const [guardians, setGuardians] = useImmer<NewStudentFormData["guardians"]>(
     () => {
       if (
