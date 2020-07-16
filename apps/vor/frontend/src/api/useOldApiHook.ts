@@ -3,10 +3,7 @@ import { navigate } from "gatsby"
 
 const baseUrl = "/api/v1"
 
-/** @deprecated Use the new useApi instead
- * @param url
- * @param fetchOptions
- */
+/** @deprecated use the new react-query based hook, create one if it does not exists */
 function useOldApiHook<T>(
   url: string,
   fetchOptions?: RequestInit

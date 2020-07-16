@@ -1,5 +1,5 @@
 import { useQuery } from "react-query"
-import { fetchApi } from "./fetchApi"
+import { getApi } from "./fetchApi"
 
 export interface Material {
   id: string
@@ -7,7 +7,7 @@ export interface Material {
   order: number
 }
 export function useGetSubjectMaterials(subjectId: string) {
-  const fetchSubjectMaterials = fetchApi<Material[]>(
+  const fetchSubjectMaterials = getApi<Material[]>(
     `/curriculums/subjects/${subjectId}/materials`
   )
   return useQuery(["materials", subjectId], fetchSubjectMaterials)

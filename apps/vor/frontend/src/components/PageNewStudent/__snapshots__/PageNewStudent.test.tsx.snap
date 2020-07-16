@@ -161,13 +161,13 @@ exports[`PageNewStudent should render correctly 1`] = `
   box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
   height: 100px;
   width: 100px;
+  overflow: hidden;
 }
 
 .emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  padding-top: 16px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -195,6 +195,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   height: auto;
   margin: 0;
   margin-bottom: 4px;
+  margin-top: 16px;
   fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;

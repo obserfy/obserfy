@@ -1,6 +1,7 @@
 interface RequestBody {
   stage: number
 }
+/** @deprecated use the new react-query based hook, create one if it does not exists */
 export function updateStudentMaterialProgress(
   studentId: string,
   materialId: string,

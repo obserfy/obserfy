@@ -7,6 +7,7 @@ import (
 	"github.com/chrsep/vor/pkg/class"
 	"github.com/chrsep/vor/pkg/curriculum"
 	"github.com/chrsep/vor/pkg/guardian"
+	"github.com/chrsep/vor/pkg/images"
 	"github.com/chrsep/vor/pkg/imgproxy"
 	"github.com/chrsep/vor/pkg/lessonplan"
 	"github.com/chrsep/vor/pkg/logger"
@@ -75,6 +76,7 @@ func runServer() error {
 	classStore := postgres.ClassStore{db}
 	guardianStore := postgres.GuardianStore{db}
 	lessonPlanStore := postgres.LessonPlanStore{db}
+	imageStore := postgres.ImageStore{db}
 	mailService := mailgun.NewService()
 	//attendanceStore:=postgres.AttendanceStore{db}
 	imgproxyClient, err := imgproxy.NewClient()
@@ -89,7 +91,7 @@ func runServer() error {
 	}
 	imageStorage := minio.NewImageStorage(minioClient)
 	fileStorage := minio.NewFileStorage(minioClient)
-	schoolStore := postgres.SchoolStore{db, fileStorage}
+	schoolStore := postgres.SchoolStore{db, fileStorage, imageStorage}
 
 	// Setup routing
 	r := chi.NewRouter()
@@ -105,12 +107,13 @@ func runServer() error {
 		r.Use(auth.NewMiddleware(server, authStore))
 		r.Mount("/students", student.NewRouter(server, studentStore))
 		r.Mount("/observations", observation.NewRouter(server, observationStore))
-		r.Mount("/schools", school.NewRouter(server, schoolStore, imageStorage, imgproxyClient))
+		r.Mount("/schools", school.NewRouter(server, schoolStore, imgproxyClient))
 		r.Mount("/users", user.NewRouter(server, userStore))
 		r.Mount("/curriculums", curriculum.NewRouter(server, curriculumStore))
 		r.Mount("/classes", class.NewRouter(server, classStore, lessonPlanStore))
 		r.Mount("/guardians", guardian.NewRouter(server, guardianStore))
 		r.Mount("/plans", lessonplan.NewRouter(server, lessonPlanStore))
+		r.Mount("/images", images.NewRouter(server, imageStore, *imgproxyClient))
 	})
 	// Serve gatsby static frontend assets
 	r.Group(func(r chi.Router) {

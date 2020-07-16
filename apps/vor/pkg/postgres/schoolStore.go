@@ -14,7 +14,8 @@ import (
 
 type SchoolStore struct {
 	*pg.DB
-	FileStorage FileStorage
+	FileStorage  FileStorage
+	ImageStorage ImageStorage
 }
 
 func (s SchoolStore) NewSchool(schoolName, userId string) (*cSchool.School, error) {
@@ -80,9 +81,10 @@ func (s SchoolStore) GetStudents(schoolId, classId string, active *bool) ([]cSch
 	res := make([]cSchool.Student, 0)
 
 	query := s.Model(&students).
-		Where("school_id=?", schoolId).
+		Where("student.school_id=?", schoolId).
 		Order("name").
-		Relation("Classes")
+		Relation("Classes").
+		Relation("ProfileImage")
 	if classId != "" {
 		query = query.
 			Join("LEFT JOIN student_to_classes AS stc on id=stc.student_id").
@@ -109,10 +111,13 @@ func (s SchoolStore) GetStudents(schoolId, classId string, active *bool) ([]cSch
 		}
 
 		res = append(res, cSchool.Student{
-			Id:          s.Id,
-			Name:        s.Name,
-			SchoolId:    s.SchoolId,
-			ProfilePic:  s.ProfilePic,
+			Id:       s.Id,
+			Name:     s.Name,
+			SchoolId: s.SchoolId,
+			ProfileImage: cSchool.Image{
+				Id:        s.ProfileImage.Id.String(),
+				ObjectKey: s.ProfileImage.ObjectKey,
+			},
 			DateOfBirth: s.DateOfBirth,
 			Active:      *s.Active,
 			Classes:     classes,
@@ -160,49 +165,59 @@ func (s SchoolStore) GetClassAttendance(classId, session string) ([]cSchool.Atte
 }
 
 func (s SchoolStore) NewStudent(student cSchool.Student, classes []string, guardians map[string]int) error {
-	if student.Id == "" {
-		student.Id = uuid.New().String()
+	newStudent := Student{
+		Id:             uuid.New().String(),
+		Name:           student.Name,
+		SchoolId:       student.SchoolId,
+		DateOfBirth:    student.DateOfBirth,
+		Gender:         Gender(student.Gender),
+		DateOfEntry:    student.DateOfEntry,
+		Note:           student.Note,
+		CustomId:       student.CustomId,
+		Active:         &student.Active,
+		ProfileImageId: student.ProfileImage.Id,
 	}
+
+	classRelationships := make([]StudentToClass, len(classes))
+	for i, class := range classes {
+		classRelationships[i] = StudentToClass{
+			StudentId: newStudent.Id,
+			ClassId:   class,
+		}
+	}
+
+	guardianRelationships := make([]GuardianToStudent, 0)
+	for id, guardian := range guardians {
+		guardianRelationships = append(guardianRelationships, GuardianToStudent{
+			StudentId:    newStudent.Id,
+			GuardianId:   id,
+			Relationship: GuardianRelationship(guardian),
+		})
+	}
+
 	if err := s.RunInTransaction(func(tx *pg.Tx) error {
-		classRelations := make([]StudentToClass, len(classes))
-		for i, class := range classes {
-			classRelations[i] = StudentToClass{
-				StudentId: student.Id,
-				ClassId:   class,
-			}
-		}
-
-		guardianRelations := make([]GuardianToStudent, 0)
-		for id, guardian := range guardians {
-			guardianRelations = append(guardianRelations, GuardianToStudent{
-				StudentId:    student.Id,
-				GuardianId:   id,
-				Relationship: GuardianRelationship(guardian),
-			})
-		}
-
-		if err := tx.Insert(&Student{
-			Id:          student.Id,
-			Name:        student.Name,
-			SchoolId:    student.SchoolId,
-			DateOfBirth: student.DateOfBirth,
-			Gender:      Gender(student.Gender),
-			DateOfEntry: student.DateOfEntry,
-			Note:        student.Note,
-			CustomId:    student.CustomId,
-			Active:      &student.Active,
-			ProfilePic:  student.ProfilePic,
-		}); err != nil {
+		if err := tx.Insert(&newStudent); err != nil {
 			return richErrors.Wrap(err, "failed to save new student")
 		}
-		if len(classRelations) > 0 {
-			if err := tx.Insert(&classRelations); err != nil {
+
+		if len(classRelationships) > 0 {
+			if err := tx.Insert(&classRelationships); err != nil {
 				return richErrors.Wrap(err, "failed to save student to class relation")
 			}
 		}
-		if len(guardianRelations) > 0 {
-			if err := tx.Insert(&guardianRelations); err != nil {
+
+		if len(guardianRelationships) > 0 {
+			if err := tx.Insert(&guardianRelationships); err != nil {
 				return richErrors.Wrap(err, "failed to save guardian to student relation")
+			}
+		}
+
+		if student.ProfileImage.Id != "" {
+			if err := tx.Insert(&ImageToStudents{
+				StudentId: newStudent.Id,
+				ImageId:   newStudent.ProfileImageId,
+			}); err != nil {
+				return richErrors.Wrap(err, "failed to save student to image relationship")
 			}
 		}
 		return nil
@@ -664,4 +679,20 @@ func (s SchoolStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLessonP
 		Description: planDetails.Description,
 		ClassId:     planDetails.ClassId,
 	}, nil
+}
+
+func (s SchoolStore) CreateImage(schoolId string, image multipart.File, header *multipart.FileHeader) (string, error) {
+	newImage := Image{
+		Id:       uuid.New(),
+		SchoolId: schoolId,
+	}
+	fileKey, err := s.FileStorage.Save(schoolId, newImage.Id.String(), image, header.Size)
+	if err != nil {
+		return "", richErrors.Wrap(err, "failed to save file to s3")
+	}
+	newImage.ObjectKey = fileKey
+	if err := s.Insert(&newImage); err != nil {
+		return "", richErrors.Wrap(err, "failed to create file:")
+	}
+	return newImage.Id.String(), nil
 }

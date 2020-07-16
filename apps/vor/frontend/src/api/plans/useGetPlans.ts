@@ -1,5 +1,5 @@
 import { useQuery } from "react-query"
-import { fetchApi } from "../fetchApi"
+import { getApi } from "../fetchApi"
 import { getSchoolId } from "../../hooks/schoolIdState"
 import { Dayjs } from "../../dayjs"
 
@@ -13,7 +13,7 @@ export interface Plans {
 }
 function useGetPlans(date: Dayjs) {
   const schoolId = getSchoolId()
-  const getPlans = fetchApi<Plans[]>(
+  const getPlans = getApi<Plans[]>(
     `/schools/${schoolId}/plans?date=${date.startOf("day").toISOString()}`
   )
 

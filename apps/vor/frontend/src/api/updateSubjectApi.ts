@@ -8,6 +8,7 @@ interface UpdateSubjectPayload {
   order: number
   materials: Material[]
 }
+/** @deprecated use the new react-query based hook, create one if it does not exists */
 export function updateSubjectApi(
   subject: UpdateSubjectPayload
 ): Promise<Response> {

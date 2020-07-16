@@ -5,6 +5,7 @@ interface CreateObservationPayload {
   longDesc: string
   shortDesc: string
 }
+/** @deprecated use the new react-query based hook, create one if it does not exists */
 export function createObservationApi(
   studentId: string,
   observation: CreateObservationPayload

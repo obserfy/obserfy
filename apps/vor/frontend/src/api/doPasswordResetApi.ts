@@ -1,3 +1,4 @@
+/** @deprecated use the new react-query based hook, create one if it does not exists */
 export function doPasswordResetApi(
   token: string,
   password: string

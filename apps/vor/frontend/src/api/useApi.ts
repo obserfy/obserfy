@@ -15,6 +15,7 @@ export interface Api<T> extends ApiError {
   data?: T
 }
 
+/** @deprecated use the new react-query based hook, create one if it does not exists */
 function useApi<T>(url: string, fetchOptions?: RequestInit): Api<T> {
   const [isOutdated, setIsOutdated] = useState(true)
   const [loading, setLoading] = useState(true)

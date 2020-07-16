@@ -17,7 +17,7 @@ func NewRouter(server rest.Server, store Store) *chi.Mux {
 		r.Use(authorizationMiddleware(server, store))
 		r.Method("GET", "/", getGuardian(server, store))
 		r.Method("DELETE", "/", deleteGuardian(server, store))
-		r.Method("PATCH", "/", patchClass(server, store))
+		r.Method("PATCH", "/", patchGuardian(server, store))
 	})
 	return r
 }
@@ -119,7 +119,7 @@ func deleteGuardian(server rest.Server, store Store) http.Handler {
 	})
 }
 
-func patchClass(server rest.Server, store Store) http.Handler {
+func patchGuardian(server rest.Server, store Store) http.Handler {
 	type requestBody struct {
 		Name  string `json:"name"`
 		Email string `json:"email"`

@@ -1,5 +1,5 @@
 import { useQuery } from "react-query"
-import { fetchApi } from "../fetchApi"
+import { getApi } from "../fetchApi"
 
 export interface PlanDetails {
   id: string
@@ -10,7 +10,7 @@ export interface PlanDetails {
   areaId?: string
 }
 const useGetPlan = (id: string) => {
-  const getPlan = fetchApi<PlanDetails>(`/plans/${id}`)
+  const getPlan = getApi<PlanDetails>(`/plans/${id}`)
 
   return useQuery(["plan", id], getPlan)
 }
