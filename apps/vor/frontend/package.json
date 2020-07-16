@@ -44,7 +44,7 @@
     "react-helmet": "6.1.0",
     "react-query": "2.4.21",
     "theme-ui": "0.4.0-rc.1",
-    "use-immer": "0.4.0"
+    "use-immer": "0.4.1"
   },
   "devDependencies": {
     "@babel/preset-typescript": "7.10.4",
