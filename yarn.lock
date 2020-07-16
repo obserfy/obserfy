@@ -10439,10 +10439,10 @@ extsprintf@^1.2.0:
   resolved "https://registry.yarnpkg.com/extsprintf/-/extsprintf-1.4.0.tgz#e2689f8f356fad62cca65a3a91c5df5f9551692f"
   integrity sha1-4mifjzVvrWLMplo6kcXfX5VRaS8=
 
-fake-indexeddb@3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/fake-indexeddb/-/fake-indexeddb-3.1.0.tgz#2a84c8c67de200b398fc9430b17fcf6f73764d2d"
-  integrity sha512-wpAlOALUie3nlxwO5yCulEm1Wv+xAYG71fZ1Ygpted26OrRKxtitlpJQbPGNW38TvL3nL9GKcTmFq7GlZcGn+A==
+fake-indexeddb@3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/fake-indexeddb/-/fake-indexeddb-3.1.1.tgz#801f0b4c1e096084727014cc24e97f169ffe41c0"
+  integrity sha512-y3hsVRLVdHb34bG0DcqfgFJ2jYxZ6Jc/Q82QPB/QvUr48ei+WoNG7Ph03J0r5S9dfntwgABLlOpHjn/6WzQA8A==
   dependencies:
     realistic-structured-clone "^2.0.1"
     setimmediate "^1.0.5"
