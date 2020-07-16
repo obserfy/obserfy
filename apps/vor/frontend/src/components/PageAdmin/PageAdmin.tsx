@@ -7,7 +7,7 @@ import Typography from "../Typography/Typography"
 import CardLink from "../CardLink/CardLink"
 import {
   ADMIN_CURRICULUM_URL,
-  ADMIN_STUDENTS_URL,
+  ADMIN_STUDENTS_URL,ADMIN_INVITE_USER_URL,
   ADMIN_USERS_URL,
   CLASS_SETTINGS_URL,
 } from "../../routes"
@@ -52,6 +52,8 @@ export const PageAdmin: FC = () => {
       <CardLink mb={2} name="Users" to={ADMIN_USERS_URL} />
       <CardLink mb={2} name="Class" to={CLASS_SETTINGS_URL} />
       <CardLink mb={2} name="All Students" to={ADMIN_STUDENTS_URL} />
+      <CardLink mb={2} name="Invite User" to={ADMIN_INVITE_USER_URL} />
+
       <Card p={3} onClick={shareLink}>
         <Flex sx={{ alignItems: "center" }}>
           <Box>
