@@ -111,12 +111,9 @@ export const PageInviteUser: FC = () => {
           !schoolDetail.data?.inviteLink && (
             <LoadingPlaceholder sx={{ width: "100%", height: 60 }} />
           )}
-        <Flex>
-          <Typography.Body sx={{ width: "100%" }} onClick={shareLink}>
-            {schoolDetail.data?.inviteLink}
-          </Typography.Body>
-          <Button>Share</Button>
-        </Flex>
+        <Typography.Body sx={{ width: "100%" }} onClick={shareLink}>
+          {schoolDetail.data?.inviteLink}
+        </Typography.Body>
       </Box>
     </Box>
   )

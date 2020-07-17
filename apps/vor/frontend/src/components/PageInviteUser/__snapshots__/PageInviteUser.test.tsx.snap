@@ -15,7 +15,7 @@ exports[`PageInviteUser should render correctly 1`] = `
   }
 }
 
-.emotion-23 {
+.emotion-21 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -23,12 +23,12 @@ exports[`PageInviteUser should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-23 {
+  .emotion-21 {
     font-size: 20px;
   }
 }
 
-.emotion-22 {
+.emotion-20 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -476,7 +476,7 @@ exports[`PageInviteUser should render correctly 1`] = `
   text-align: center;
 }
 
-.emotion-21 {
+.emotion-19 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -531,16 +531,6 @@ exports[`PageInviteUser should render correctly 1`] = `
   height: 60px;
 }
 
-.emotion-20 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .emotion-18 {
   box-sizing: border-box;
   margin: 0;
@@ -555,78 +545,12 @@ exports[`PageInviteUser should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-19 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  display: inline-block;
-  text-align: center;
-  line-height: inherit;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  font-size: inherit;
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  color: white;
-  background-color: var(--theme-ui-colors-primary,#00e399);
-  border: 0;
-  border-radius: 4px;
-  cursor: pointer;
-  box-sizing: border-box;
-  font-size: 16px;
-  color: var(--theme-ui-colors-onPrimary,#000);
-  background-color: var(--theme-ui-colors-primary,#00e399);
-  border-radius: 6px;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 16px;
-  padding-right: 16px;
-  white-space: nowrap;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  touch-action: manipulation;
-}
-
-.emotion-19:disabled {
-  opacity: 0.38;
-  cursor: auto;
-}
-
-.emotion-19:hover,
-.emotion-19:focus {
-  background-color: var(--theme-ui-colors-primaryDark,#00a06d);
-  outline: none;
-}
-
-.emotion-19:hover:disabled,
-.emotion-19:focus:disabled {
-  background-color: var(--theme-ui-colors-primary,#00e399);
-}
-
 <div>
   <div
-    class="emotion-23"
+    class="emotion-21"
   >
     <div
-      class="emotion-22"
+      class="emotion-20"
     >
       <a
         href="/dashboard/admin"
@@ -698,7 +622,7 @@ exports[`PageInviteUser should render correctly 1`] = `
         Or
       </p>
       <div
-        class="emotion-21"
+        class="emotion-19"
       >
         <p
           class="emotion-15"
@@ -715,18 +639,9 @@ exports[`PageInviteUser should render correctly 1`] = `
         <div
           class="emotion-17"
         />
-        <div
-          class="emotion-20"
-        >
-          <p
-            class="emotion-18"
-          />
-          <button
-            class="emotion-19"
-          >
-            Share
-          </button>
-        </div>
+        <p
+          class="emotion-18"
+        />
       </div>
     </div>
   </div>
