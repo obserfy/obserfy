@@ -1,12 +1,13 @@
 import React, { FC } from "react"
 import { navigate } from "gatsby"
-import { Button, Box, Flex, useColorMode, Card } from "theme-ui"
+import { Box, Button, Flex, useColorMode } from "theme-ui"
 import { useGetSchool } from "../../api/schools/useGetSchool"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import Typography from "../Typography/Typography"
 import CardLink from "../CardLink/CardLink"
 import {
   ADMIN_CURRICULUM_URL,
+  ADMIN_INVITE_USER_URL,
   ADMIN_STUDENTS_URL,
   ADMIN_USERS_URL,
   CLASS_SETTINGS_URL,
@@ -17,16 +18,6 @@ import { ReactComponent as DarkModeIcon } from "../../icons/dark-mode.svg"
 
 export const PageAdmin: FC = () => {
   const schoolDetail = useGetSchool()
-
-  function shareLink(): void {
-    if (navigator.share) {
-      navigator.share({
-        title: "Vor Invitation",
-        text: "Check out vor. Manage your student data.",
-        url: schoolDetail.data?.inviteLink,
-      })
-    }
-  }
 
   async function logout(): Promise<void> {
     const response = await fetch("/auth/logout", {
@@ -52,24 +43,7 @@ export const PageAdmin: FC = () => {
       <CardLink mb={2} name="Users" to={ADMIN_USERS_URL} />
       <CardLink mb={2} name="Class" to={CLASS_SETTINGS_URL} />
       <CardLink mb={2} name="All Students" to={ADMIN_STUDENTS_URL} />
-      <Card p={3} onClick={shareLink}>
-        <Flex sx={{ alignItems: "center" }}>
-          <Box>
-            <Typography.H6 mb={3}>Invite your co-workers</Typography.H6>
-            {schoolDetail.status === "loading" &&
-              !schoolDetail.data?.inviteLink && (
-                <LoadingPlaceholder sx={{ width: "100%", height: 60 }} />
-              )}
-            <Typography.Body
-              id="shareLink"
-              lineHeight="1.5em"
-              sx={{ wordWrap: "break-word" }}
-            >
-              {schoolDetail.data?.inviteLink}
-            </Typography.Body>
-          </Box>
-        </Flex>
-      </Card>
+      <CardLink mb={2} name="Invite Your Team" to={ADMIN_INVITE_USER_URL} />
       <Flex mt={2}>
         <ThemeModeButton />
         <Button

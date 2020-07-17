@@ -17,7 +17,7 @@ type (
 	Session struct {
 		Token  string `json:"token"`
 		UserId string `json:"userId"`
-		User   User   `json:"user"`
+		//User   User   `json:"user"`
 	}
 
 	PasswordResetToken struct {

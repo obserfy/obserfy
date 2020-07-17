@@ -1,9 +1,10 @@
 package school
 
 import (
-	"github.com/chrsep/vor/pkg/lessonplan"
 	"mime/multipart"
 	"time"
+
+	"github.com/chrsep/vor/pkg/lessonplan"
 
 	"github.com/pkg/errors"
 )
@@ -141,5 +142,9 @@ type (
 		GetLessonFiles(schoolId string) ([]File, error)
 		CreateLessonPlan(input lessonplan.PlanData) (*lessonplan.LessonPlan, error)
 		CreateImage(schoolId string, image multipart.File, header *multipart.FileHeader) (string, error)
+		GetUser(email string) (*User, error)
+	}
+	MailService interface {
+		SendInviteEmail(email string, inviteCode string, schoolName string) error
 	}
 )

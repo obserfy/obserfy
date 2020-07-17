@@ -2,11 +2,12 @@ package school
 
 import (
 	"errors"
-	"github.com/chrsep/vor/pkg/lessonplan"
 	"net/http"
 	"os"
 	"strconv"
 	"time"
+
+	"github.com/chrsep/vor/pkg/lessonplan"
 
 	"github.com/go-chi/chi"
 	"github.com/go-pg/pg/v10"
@@ -23,6 +24,7 @@ func NewRouter(
 	server rest.Server,
 	store Store,
 	imgproxyClient *imgproxy.Client,
+	email MailService,
 ) *chi.Mux {
 	r := chi.NewRouter()
 	r.Method("POST", "/", postNewSchool(server, store))
@@ -32,6 +34,7 @@ func NewRouter(
 		r.Method("GET", "/students", getStudents(server, store, imgproxyClient))
 		r.Method("POST", "/students", postNewStudent(server, store))
 		r.Method("POST", "/invite-code", refreshInviteCode(server, store))
+		r.Method("POST", "/invite-user", inviteUser(server, store, email))
 
 		// TODO: This might fit better in curriculum package, revisit later
 		r.Method("POST", "/curriculums", postNewCurriculum(server, store))
@@ -59,6 +62,47 @@ func NewRouter(
 		r.Method("POST", "/images", postNewImage(server, store))
 	})
 	return r
+}
+func inviteUser(server rest.Server, store Store, mail MailService) http.Handler {
+	type requestBody struct {
+		Email []string `json:"email" validate:"required,dive,email,required"`
+	}
+	validate := validator.New()
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		schoolId := chi.URLParam(r, "schoolId")
+		var body requestBody
+		if err := rest.ParseJson(r.Body, &body); err != nil {
+			return rest.NewParseJsonError(err)
+		}
+
+		if err := validate.Struct(body); err != nil {
+			return &rest.Error{
+				Code:    http.StatusBadRequest,
+				Message: "invalid email address",
+				Error:   err,
+			}
+		}
+
+		school, err := store.GetSchool(schoolId)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "can't query school data",
+				Error:   err,
+			}
+		}
+
+		for _, email := range body.Email {
+			if err := mail.SendInviteEmail(email, school.InviteCode, school.Name); err != nil {
+				return &rest.Error{
+					Code:    http.StatusInternalServerError,
+					Message: "failed sending email",
+					Error:   err,
+				}
+			}
+		}
+		return nil
+	})
 }
 
 func getClasses(server rest.Server, store Store) http.Handler {

@@ -2,6 +2,7 @@ package school_test
 
 import (
 	"bytes"
+	"github.com/stretchr/testify/mock"
 	"io/ioutil"
 	"mime/multipart"
 	"os"
@@ -27,6 +28,16 @@ type SchoolTestSuite struct {
 	store               postgres.SchoolStore
 }
 
+// TODO: this is similar to mailService mock in auth package, consider refactoring it.
+type mailServiceMock struct {
+	mock.Mock
+}
+
+func (m *mailServiceMock) SendInviteEmail(email string, inviterEmail string, inviteCode string) error {
+	args := m.Called(email, inviterEmail, inviteCode)
+	return args.Error(0)
+}
+
 func (s *SchoolTestSuite) SetupTest() {
 	t := s.T()
 	client, err := minio.NewClient()
@@ -34,7 +45,7 @@ func (s *SchoolTestSuite) SetupTest() {
 	s.StudentImageStorage = *minio.NewImageStorage(client)
 
 	s.store = postgres.SchoolStore{s.DB, minio.NewFileStorage(s.MinioClient), s.StudentImageStorage}
-	s.Handler = school.NewRouter(s.Server, s.store, nil).ServeHTTP
+	s.Handler = school.NewRouter(s.Server, s.store, nil, &mailServiceMock{}).ServeHTTP
 }
 
 func TestSchool(t *testing.T) {

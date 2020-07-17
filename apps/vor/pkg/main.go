@@ -2,6 +2,10 @@ package main
 
 import (
 	"crypto/tls"
+	"log"
+	"net/http"
+	"os"
+
 	"github.com/benbjohnson/clock"
 	"github.com/chrsep/vor/pkg/auth"
 	"github.com/chrsep/vor/pkg/class"
@@ -25,9 +29,6 @@ import (
 	"github.com/go-chi/chi/middleware"
 	_ "github.com/joho/godotenv/autoload"
 	"go.uber.org/zap"
-	"log"
-	"net/http"
-	"os"
 )
 
 func main() {
@@ -107,7 +108,7 @@ func runServer() error {
 		r.Use(auth.NewMiddleware(server, authStore))
 		r.Mount("/students", student.NewRouter(server, studentStore))
 		r.Mount("/observations", observation.NewRouter(server, observationStore))
-		r.Mount("/schools", school.NewRouter(server, schoolStore, imgproxyClient))
+		r.Mount("/schools", school.NewRouter(server, schoolStore, imgproxyClient, mailService))
 		r.Mount("/users", user.NewRouter(server, userStore))
 		r.Mount("/curriculums", curriculum.NewRouter(server, curriculumStore))
 		r.Mount("/classes", class.NewRouter(server, classStore, lessonPlanStore))

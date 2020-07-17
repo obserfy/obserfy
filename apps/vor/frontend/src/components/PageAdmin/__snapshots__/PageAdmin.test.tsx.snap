@@ -15,7 +15,7 @@ exports[`PageAdmin should render correctly 1`] = `
   }
 }
 
-.emotion-35 {
+.emotion-34 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -23,12 +23,12 @@ exports[`PageAdmin should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-35 {
+  .emotion-34 {
     font-size: 20px;
   }
 }
 
-.emotion-34 {
+.emotion-33 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -41,13 +41,13 @@ exports[`PageAdmin should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-34 {
+  .emotion-33 {
     padding-top: 16px;
   }
 }
 
 @media screen and (min-width:52em) {
-  .emotion-34 {
+  .emotion-33 {
     padding-top: 32px;
   }
 }
@@ -159,56 +159,7 @@ exports[`PageAdmin should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-28 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  overflow: auto;
-  background-color: var(--theme-ui-colors-surface,#fff);
-  border-radius: 6px;
-  box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
-  padding: 16px;
-}
-
-.emotion-26 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-}
-
-.emotion-23 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 300;
-  line-height: heading;
-  font-size: 2rem;
-  line-height: 3rem;
-  -webkit-letter-spacing: 0;
-  -moz-letter-spacing: 0;
-  -ms-letter-spacing: 0;
-  letter-spacing: 0;
-  text-rendering: optimizeLegibility;
-  margin-bottom: 16px;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
-}
-
-.emotion-25 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  color: rgba(0,0,0,0.88);
-  font-size: 1.6rem;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 400;
-  line-height: 3rem;
-  text-rendering: optimizeLegibility;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
-  word-wrap: break-word;
-}
-
-.emotion-33 {
+.emotion-32 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -217,6 +168,81 @@ exports[`PageAdmin should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.emotion-29 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  text-align: center;
+  line-height: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: inherit;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: white;
+  background-color: var(--theme-ui-colors-primary,#00e399);
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  box-sizing: border-box;
+  font-size: 16px;
+  color: var(--theme-ui-colors-textPrimary,#027c5b);
+  background-color: transparent;
+  border-radius: 6px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  white-space: nowrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  touch-action: manipulation;
+  border: 1px solid;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  padding: 16px;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.emotion-29:disabled {
+  opacity: 0.38;
+  cursor: auto;
+}
+
+.emotion-29:hover,
+.emotion-29:focus {
+  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
+  border-color: var(--theme-ui-colors-primary,#00e399);
+  outline: none;
+}
+
+.emotion-29:hover:disabled,
+.emotion-29:focus:disabled {
+  background-color: transparent;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
 .emotion-30 {
@@ -269,8 +295,8 @@ exports[`PageAdmin should render correctly 1`] = `
   touch-action: manipulation;
   border: 1px solid;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  padding: 16px;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  margin-left: 8px;
+  color: var(--theme-ui-colors-warning,#ff6d00);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -345,10 +371,14 @@ exports[`PageAdmin should render correctly 1`] = `
   border: 1px solid;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   margin-left: 8px;
-  color: var(--theme-ui-colors-warning,#ff6d00);
+  color: var(--theme-ui-colors-danger,#d50000);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
 }
 
 .emotion-31:disabled {
@@ -369,91 +399,12 @@ exports[`PageAdmin should render correctly 1`] = `
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-32 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  display: inline-block;
-  text-align: center;
-  line-height: inherit;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  font-size: inherit;
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  color: white;
-  background-color: var(--theme-ui-colors-primary,#00e399);
-  border: 0;
-  border-radius: 4px;
-  cursor: pointer;
-  box-sizing: border-box;
-  font-size: 16px;
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
-  background-color: transparent;
-  border-radius: 6px;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 16px;
-  padding-right: 16px;
-  white-space: nowrap;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  touch-action: manipulation;
-  border: 1px solid;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  margin-left: 8px;
-  color: var(--theme-ui-colors-danger,#d50000);
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-}
-
-.emotion-32:disabled {
-  opacity: 0.38;
-  cursor: auto;
-}
-
-.emotion-32:hover,
-.emotion-32:focus {
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
-  border-color: var(--theme-ui-colors-primary,#00e399);
-  outline: none;
-}
-
-.emotion-32:hover:disabled,
-.emotion-32:focus:disabled {
-  background-color: transparent;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-}
-
 <div>
   <div
-    class="emotion-35"
+    class="emotion-34"
   >
     <div
-      class="emotion-34"
+      class="emotion-33"
     >
       <div
         class="emotion-2"
@@ -557,35 +508,34 @@ exports[`PageAdmin should render correctly 1`] = `
           </div>
         </div>
       </a>
-      <div
-        class="emotion-28"
+      <a
+        href="/dashboard/admin/inviteUser"
       >
         <div
-          class="emotion-6"
+          class="emotion-7"
         >
           <div
-            class="emotion-26"
+            class="emotion-6"
           >
             <h6
-              class="emotion-23"
+              class="emotion-3"
             >
-              Invite your co-workers
+              Invite Your Team
             </h6>
             <div
-              class="emotion-0"
+              class="emotion-4"
             />
-            <p
-              class="emotion-25"
-              id="shareLink"
+            <div
+              class="emotion-5"
             />
           </div>
         </div>
-      </div>
+      </a>
       <div
-        class="emotion-33"
+        class="emotion-32"
       >
         <button
-          class="emotion-30"
+          class="emotion-29"
           data-cy="dark-switch"
         >
           <div
@@ -593,12 +543,12 @@ exports[`PageAdmin should render correctly 1`] = `
           />
         </button>
         <button
-          class="emotion-31"
+          class="emotion-30"
         >
           Switch school
         </button>
         <button
-          class="emotion-32"
+          class="emotion-31"
         >
           Log Out
         </button>
