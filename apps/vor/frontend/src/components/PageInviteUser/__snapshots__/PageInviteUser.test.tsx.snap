@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageInviteUser should render correctly 1`] = `
-.emotion-12 {
+.emotion-16 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,21 +9,18 @@ exports[`PageInviteUser should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-12 {
+  .emotion-16 {
     font-size: 20px;
   }
 }
 
-.emotion-11 {
+.emotion-15 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   margin-left: auto;
   margin-right: auto;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  max-width: 700px;
+  max-width: 640px;
 }
 
 .emotion-2 {
@@ -86,49 +83,22 @@ exports[`PageInviteUser should render correctly 1`] = `
   letter-spacing: 0;
   text-rendering: optimizeLegibility;
   margin: 16px;
+  margin-bottom: 32px;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   line-height: 1;
 }
 
-.emotion-8 {
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  overflow: auto;
-  background-color: var(--theme-ui-colors-surface,#fff);
-  border-radius: 6px;
-  box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
-  padding: 16px;
-  margin-left: 0;
-  margin-right: 0;
-  margin-bottom: 0;
-  background-color: var(--theme-ui-colors-background,#f2f3f5);
-  border-radius: 0;
-  box-shadow: none;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-bottom: 8px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-8 {
-    margin-left: 16px;
-    margin-right: 16px;
-    margin-bottom: 8px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .emotion-8 {
-    background-color: var(--theme-ui-colors-surface,#fff);
-    border-radius: 6px;
-    box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
-  }
 }
 
 .emotion-5 {
@@ -181,7 +151,6 @@ exports[`PageInviteUser should render correctly 1`] = `
   touch-action: manipulation;
   border: 1px solid;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  height: 100%;
 }
 
 .emotion-5:disabled {
@@ -217,10 +186,23 @@ exports[`PageInviteUser should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-7 {
+.emotion-8 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -228,13 +210,160 @@ exports[`PageInviteUser should render correctly 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-align-items: start;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
-  align-items: start;
+}
+
+.emotion-7 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .emotion-6 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: block;
+  width: 100%;
+  padding: 8px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: inherit;
+  line-height: inherit;
+  border: 1px solid;
+  border-radius: 4px;
+  color: inherit;
+  background-color: transparent;
+  border-radius: 6px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  width: auto;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface,#fff);
+  font-size: 16px;
+  padding: 12px;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  margin-left: 8px;
+  width: 100%;
+}
+
+.emotion-6:hover,
+.emotion-6:focus {
+  border-color: var(--theme-ui-colors-primary,#00e399);
+  outline: none;
+}
+
+.emotion-6::-webkit-input-placeholder {
+  font-style: italic;
+}
+
+.emotion-6::-moz-placeholder {
+  font-style: italic;
+}
+
+.emotion-6:-ms-input-placeholder {
+  font-style: italic;
+}
+
+.emotion-6::placeholder {
+  font-style: italic;
+}
+
+.emotion-6:disabled {
+  opacity: 0.68;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
+}
+
+.emotion-14 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.emotion-12 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  text-align: center;
+  line-height: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: inherit;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: white;
+  background-color: var(--theme-ui-colors-primary,#00e399);
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  box-sizing: border-box;
+  font-size: 16px;
+  color: var(--theme-ui-colors-textPrimary,#027c5b);
+  background-color: transparent;
+  border-radius: 6px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  white-space: nowrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  touch-action: manipulation;
+  border: 1px solid;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  padding: 0;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.emotion-12:disabled {
+  opacity: 0.38;
+  cursor: auto;
+}
+
+.emotion-12:hover,
+.emotion-12:focus {
+  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
+  border-color: var(--theme-ui-colors-primary,#00e399);
+  outline: none;
+}
+
+.emotion-12:hover:disabled,
+.emotion-12:focus:disabled {
+  background-color: transparent;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+}
+
+.emotion-11 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -244,31 +373,14 @@ exports[`PageInviteUser should render correctly 1`] = `
   font-weight: 400;
   line-height: 3rem;
   text-rendering: optimizeLegibility;
-  margin-left: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-left: 8px;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   line-height: 1.6;
 }
 
-.emotion-10 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  margin-left: 0;
-  margin-right: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-10 {
-    margin-left: 16px;
-    margin-right: 16px;
-  }
-}
-
-.emotion-9 {
+.emotion-13 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -319,28 +431,28 @@ exports[`PageInviteUser should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-9:disabled {
+.emotion-13:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-9:hover,
-.emotion-9:focus {
+.emotion-13:hover,
+.emotion-13:focus {
   background-color: var(--theme-ui-colors-primaryDark,#00a06d);
   outline: none;
 }
 
-.emotion-9:hover:disabled,
-.emotion-9:focus:disabled {
+.emotion-13:hover:disabled,
+.emotion-13:focus:disabled {
   background-color: var(--theme-ui-colors-primary,#00e399);
 }
 
 <div>
   <div
-    class="emotion-12"
+    class="emotion-16"
   >
     <div
-      class="emotion-11"
+      class="emotion-15"
     >
       <a
         href="/dashboard/admin"
@@ -362,10 +474,10 @@ exports[`PageInviteUser should render correctly 1`] = `
       <h5
         class="emotion-3"
       >
-        Invite User
+        Invite Users
       </h5>
       <div
-        class="emotion-8"
+        class="emotion-9"
       >
         <button
           class="emotion-5"
@@ -374,21 +486,38 @@ exports[`PageInviteUser should render correctly 1`] = `
             class="emotion-4"
           />
         </button>
-        <div
-          class="emotion-7"
+        <label
+          class="emotion-8"
         >
+          <div
+            class="emotion-7"
+          >
+            <input
+              class="emotion-6"
+              name="email"
+              placeholder="Email address"
+              value=""
+            />
+          </div>
+        </label>
+      </div>
+      <div
+        class="emotion-14"
+      >
+        <button
+          class="emotion-12"
+        >
+          <div
+            class="emotion-4"
+          />
           <p
-            class="emotion-6"
+            class="emotion-11"
           >
             Add More Email
           </p>
-        </div>
-      </div>
-      <div
-        class="emotion-10"
-      >
+        </button>
         <button
-          class="emotion-9"
+          class="emotion-13"
         >
           Send Invitation
         </button>
