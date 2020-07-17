@@ -12,8 +12,11 @@ import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import Icon from "../Icon/Icon"
 import Input from "../Input/Input"
 import { usePostUserInvite } from "../../api/usePostUserInvite"
+import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
+import { useGetSchool } from "../../api/schools/useGetSchool"
 
 export const PageInviteUser: FC = () => {
+  const schoolDetail = useGetSchool()
   const [emails, setEmails] = useImmer([{ id: nanoid(), email: "" }])
   const [mutate] = usePostUserInvite()
 
@@ -38,12 +41,22 @@ export const PageInviteUser: FC = () => {
       setEmails(() => [])
     }
   }
+  function shareLink(): void {
+    if (window.navigator?.share) {
+      window.navigator?.share({
+        title: `Join ${schoolDetail.data?.name} in Obserfy`,
+        text: "Check out obserfy. Manage your student data.",
+        url: schoolDetail.data?.inviteLink,
+      })
+    }
+  }
+
   return (
     <Box sx={{ maxWidth: "maxWidth.sm" }} mx="auto">
-      <BackNavigation to={SETTINGS_URL} text="Settings" />
-      <Typography.H5 m={3} mb={4} sx={{ lineHeight: 1 }}>
-        Invite Users
-      </Typography.H5>
+      <BackNavigation to={SETTINGS_URL} text="Admin / Invite" />
+      <Typography.H6 m={3} mb={4} sx={{ lineHeight: 1 }}>
+        Invite using emails
+      </Typography.H6>
       {emails?.map(({ id, email }) => (
         <EmailInput
           key={id}
@@ -55,24 +68,55 @@ export const PageInviteUser: FC = () => {
       ))}
       <Box mx={3}>
         <Button
-          p={0}
           mb={3}
           variant="outline"
           sx={{ width: "100%" }}
+          color="onBackground"
           onClick={() =>
             setEmails((draft) => {
               draft.push({ id: nanoid(), email: "" })
             })
           }
         >
-          <Icon as={PlusIcon} m={0} />
-          <Typography.Body py={2} ml={2} sx={{ lineHeight: 1.6 }}>
-            Add More Email
-          </Typography.Body>
+          <Icon as={PlusIcon} m={0} mr={2} fill="textPrimary" />
+          Add more email
         </Button>
         <Button sx={{ width: "100%" }} onClick={sendInvitation}>
-          Send Invitation
+          Send invites
         </Button>
+      </Box>
+      <Typography.Body my={3} sx={{ textAlign: "center" }}>
+        Or
+      </Typography.Body>
+      <Box
+        m={3}
+        p={3}
+        sx={{
+          backgroundColor: "surface",
+          borderRadius: "default",
+          alignItems: "center",
+          borderStyle: "solid",
+          borderColor: "border",
+          borderWidth: 1,
+        }}
+      >
+        <Typography.Body color="textMediumEmphasis" fontSize={1}>
+          Invite using link
+        </Typography.Body>
+        <Typography.Body mb={3}>
+          Share this link to your co-workers. Once they register using it,
+          they&apos;ll have access to {schoolDetail.data?.name}.
+        </Typography.Body>
+        {schoolDetail.status === "loading" &&
+          !schoolDetail.data?.inviteLink && (
+            <LoadingPlaceholder sx={{ width: "100%", height: 60 }} />
+          )}
+        <Flex>
+          <Typography.Body sx={{ width: "100%" }} onClick={shareLink}>
+            {schoolDetail.data?.inviteLink}
+          </Typography.Body>
+          <Button>Share</Button>
+        </Flex>
       </Box>
     </Box>
   )
@@ -87,7 +131,7 @@ const EmailInput: FC<{
   return (
     <Flex px={3} mb={2}>
       <Button variant="outline" onClick={() => removeFromEmailList(id)}>
-        <Icon as={CloseIcon} m={0} />
+        <Icon as={CloseIcon} m={0} fill="danger" />
       </Button>
       <Input
         sx={{ width: "100%" }}

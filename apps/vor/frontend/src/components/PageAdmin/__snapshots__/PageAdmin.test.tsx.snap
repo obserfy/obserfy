@@ -15,7 +15,7 @@ exports[`PageAdmin should render correctly 1`] = `
   }
 }
 
-.emotion-40 {
+.emotion-34 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -23,12 +23,12 @@ exports[`PageAdmin should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-40 {
+  .emotion-34 {
     font-size: 20px;
   }
 }
 
-.emotion-39 {
+.emotion-33 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -41,13 +41,13 @@ exports[`PageAdmin should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-39 {
+  .emotion-33 {
     padding-top: 16px;
   }
 }
 
 @media screen and (min-width:52em) {
-  .emotion-39 {
+  .emotion-33 {
     padding-top: 32px;
   }
 }
@@ -159,56 +159,7 @@ exports[`PageAdmin should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-33 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  overflow: auto;
-  background-color: var(--theme-ui-colors-surface,#fff);
-  border-radius: 6px;
-  box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
-  padding: 16px;
-}
-
-.emotion-31 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-}
-
-.emotion-28 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 300;
-  line-height: heading;
-  font-size: 2rem;
-  line-height: 3rem;
-  -webkit-letter-spacing: 0;
-  -moz-letter-spacing: 0;
-  -ms-letter-spacing: 0;
-  letter-spacing: 0;
-  text-rendering: optimizeLegibility;
-  margin-bottom: 16px;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
-}
-
-.emotion-30 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  color: rgba(0,0,0,0.88);
-  font-size: 1.6rem;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 400;
-  line-height: 3rem;
-  text-rendering: optimizeLegibility;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
-  word-wrap: break-word;
-}
-
-.emotion-38 {
+.emotion-32 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -219,7 +170,7 @@ exports[`PageAdmin should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-35 {
+.emotion-29 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -276,25 +227,25 @@ exports[`PageAdmin should render correctly 1`] = `
   flex-shrink: 0;
 }
 
-.emotion-35:disabled {
+.emotion-29:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-35:hover,
-.emotion-35:focus {
+.emotion-29:hover,
+.emotion-29:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-35:hover:disabled,
-.emotion-35:focus:disabled {
+.emotion-29:hover:disabled,
+.emotion-29:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-36 {
+.emotion-30 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -351,25 +302,25 @@ exports[`PageAdmin should render correctly 1`] = `
   flex-shrink: 0;
 }
 
-.emotion-36:disabled {
+.emotion-30:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-36:hover,
-.emotion-36:focus {
+.emotion-30:hover,
+.emotion-30:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-36:hover:disabled,
-.emotion-36:focus:disabled {
+.emotion-30:hover:disabled,
+.emotion-30:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-37 {
+.emotion-31 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -430,30 +381,30 @@ exports[`PageAdmin should render correctly 1`] = `
   flex-grow: 1;
 }
 
-.emotion-37:disabled {
+.emotion-31:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-37:hover,
-.emotion-37:focus {
+.emotion-31:hover,
+.emotion-31:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-37:hover:disabled,
-.emotion-37:focus:disabled {
+.emotion-31:hover:disabled,
+.emotion-31:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
 <div>
   <div
-    class="emotion-40"
+    class="emotion-34"
   >
     <div
-      class="emotion-39"
+      class="emotion-33"
     >
       <div
         class="emotion-2"
@@ -569,7 +520,7 @@ exports[`PageAdmin should render correctly 1`] = `
             <h6
               class="emotion-3"
             >
-              Invite User
+              Invite Your Team
             </h6>
             <div
               class="emotion-4"
@@ -581,34 +532,10 @@ exports[`PageAdmin should render correctly 1`] = `
         </div>
       </a>
       <div
-        class="emotion-33"
-      >
-        <div
-          class="emotion-6"
-        >
-          <div
-            class="emotion-31"
-          >
-            <h6
-              class="emotion-28"
-            >
-              Invite your co-workers
-            </h6>
-            <div
-              class="emotion-0"
-            />
-            <p
-              class="emotion-30"
-              id="shareLink"
-            />
-          </div>
-        </div>
-      </div>
-      <div
-        class="emotion-38"
+        class="emotion-32"
       >
         <button
-          class="emotion-35"
+          class="emotion-29"
           data-cy="dark-switch"
         >
           <div
@@ -616,12 +543,12 @@ exports[`PageAdmin should render correctly 1`] = `
           />
         </button>
         <button
-          class="emotion-36"
+          class="emotion-30"
         >
           Switch school
         </button>
         <button
-          class="emotion-37"
+          class="emotion-31"
         >
           Log Out
         </button>
