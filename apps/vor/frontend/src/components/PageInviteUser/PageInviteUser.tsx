@@ -18,7 +18,7 @@ import { useGetSchool } from "../../api/schools/useGetSchool"
 export const PageInviteUser: FC = () => {
   const schoolDetail = useGetSchool()
   const [emails, setEmails] = useImmer([{ id: nanoid(), email: "" }])
-  const [mutate] = usePostUserInvite()
+  const [mutate, { status }] = usePostUserInvite()
 
   const removeItem = (id: string): void => {
     setEmails((draft) =>
@@ -38,7 +38,7 @@ export const PageInviteUser: FC = () => {
   const sendInvitation = async (): Promise<void> => {
     const result = await mutate({ email: emails.map((el) => el.email) })
     if (result.ok) {
-      setEmails(() => [])
+      setEmails(() => [{ id: nanoid(), email: "" }])
     }
   }
   function shareLink(): void {
@@ -85,6 +85,18 @@ export const PageInviteUser: FC = () => {
           Send invites
         </Button>
       </Box>
+      {status === "success" && (
+        <Typography.Body
+          m={3}
+          sx={{
+            textAlign: "center",
+            color: "primary",
+            fontWeight: "bold",
+          }}
+        >
+          Emails sent!
+        </Typography.Body>
+      )}
       <Typography.Body my={3} sx={{ textAlign: "center" }}>
         Or
       </Typography.Body>
