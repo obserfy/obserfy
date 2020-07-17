@@ -15,17 +15,17 @@ type Service struct {
 	mailgun mailgun.Mailgun
 }
 
-func (s Service) SendInviteEmail(email string, inviterEmail string, inviteCode string) error {
+func (s Service) SendInviteEmail(email string, inviteCode string, schoolName string) error {
 	t, err := template.ParseFiles("./mailTemplates/send-invite.html")
 	if err != nil {
 		return richErrors.Wrap(err, "Failed parsing send-invite.html")
 	}
 	body := new(bytes.Buffer)
-	url := "https://obserfy.com/register?inviteCode=" + inviteCode
+	url := "https://" + os.Getenv("SITE_URL") + "/register?inviteCode=" + inviteCode
 	if err := t.Execute(body, struct {
-		Inviter   string
-		InviteUrl string
-	}{Inviter: inviterEmail, InviteUrl: url}); err != nil {
+		SchoolName string
+		InviteUrl  string
+	}{SchoolName: schoolName, InviteUrl: url}); err != nil {
 		return richErrors.Wrap(err, "Failed executing template")
 	}
 
@@ -47,6 +47,7 @@ func (s Service) SendInviteEmail(email string, inviterEmail string, inviteCode s
 	}
 	return nil
 }
+
 func (s Service) SendPasswordResetSuccessful(email string) error {
 	t, err := template.ParseFiles("./mailTemplates/reset-password-success.html")
 	if err != nil {

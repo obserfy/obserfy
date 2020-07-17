@@ -65,32 +65,39 @@ func NewRouter(
 }
 func inviteUser(server rest.Server, store Store, mail MailService) http.Handler {
 	type requestBody struct {
-		Email   []string `json:"email"`
+		Email []string `json:"email" validate:"required,dive,email,required"`
 	}
+	validate := validator.New()
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		schoolId := chi.URLParam(r, "schoolId")
 		var body requestBody
 		if err := rest.ParseJson(r.Body, &body); err != nil {
+			return rest.NewParseJsonError(err)
+		}
+
+		if err := validate.Struct(body); err != nil {
 			return &rest.Error{
-				Code:    http.StatusInternalServerError,
-				Message: "failed parsing json",
+				Code:    http.StatusBadRequest,
+				Message: "invalid email address",
 				Error:   err,
 			}
 		}
-		session, ok := auth.GetSessionFromCtx(r.Context())
-		if !ok {
-			return auth.NewGetSessionError()
+
+		school, err := store.GetSchool(schoolId)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "can't query school data",
+				Error:   err,
+			}
 		}
-		school, _ := store.GetSchool(schoolId)
+
 		for _, email := range body.Email {
-			user,_ :=store.GetUser(email)
-			if user==nil {
-				if err := mail.SendInviteEmail(email, session.User.Name, school.InviteCode); err != nil {
-					return &rest.Error{
-						Code:    http.StatusInternalServerError,
-						Message: "failed sending email",
-						Error:   err,
-					}
+			if err := mail.SendInviteEmail(email, school.InviteCode, school.Name); err != nil {
+				return &rest.Error{
+					Code:    http.StatusInternalServerError,
+					Message: "failed sending email",
+					Error:   err,
 				}
 			}
 		}
