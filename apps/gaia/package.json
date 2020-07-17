@@ -29,7 +29,7 @@
     "react": "github:preact-compat/react#1.0.0",
     "react-dom": "github:preact-compat/react-dom#1.0.0",
     "react-optimized-image": "0.2.0",
-    "react-query": "3.0.0",
+    "react-query": "2.5.1",
     "react-refresh": "0.8.3",
     "react-ssr-prepass": "npm:preact-ssr-prepass@1.0.1",
     "tailwindcss": "1.5.1",
