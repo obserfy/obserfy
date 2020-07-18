@@ -50,6 +50,11 @@ export const PageGuardianProfile: FC<Props> = ({ guardianId }) => {
           key={`phone${data?.phone}`}
           guardianId={guardianId}
         />
+        <NoteDataBox
+          value={data?.note}
+          key={`note${data?.note}`}
+          guardianId={guardianId}
+        />
       </Card>
     </Box>
   )
@@ -176,6 +181,49 @@ const PhoneDataBox: FC<{ value?: string; guardianId: string }> = ({
                 setPhone(e.target.value)
               }}
               value={phone}
+            />
+          </Box>
+        </Dialog>
+      )}
+    </Fragment>
+  )
+}
+
+const NoteDataBox: FC<{ value?: string; guardianId: string }> = ({
+  value,
+  guardianId,
+}) => {
+  const [mutate, { status }] = usePatchGuardian(guardianId)
+  const [showEditDialog, setShowEditDialog] = useState(false)
+  const [note, setNote] = useState(value)
+  const saveNote = async () => {
+    await mutate({ id: guardianId, note })
+    setShowEditDialog(false)
+  }
+  return (
+    <Fragment>
+      <DataBox
+        label="Note"
+        value={value ?? ""}
+        onEditClick={() => setShowEditDialog(true)}
+      />
+      {showEditDialog && (
+        <Dialog>
+          <DialogHeader
+            title="Edit Note"
+            onAcceptText="Save"
+            onCancel={() => setShowEditDialog(false)}
+            onAccept={saveNote}
+            loading={status === "loading"}
+          />
+          <Box sx={{ backgroundColor: "background" }} p={3}>
+            <Input
+              label="Note"
+              sx={{ width: "100%" }}
+              onChange={(e) => {
+                setNote(e.target.value)
+              }}
+              value={note}
             />
           </Box>
         </Dialog>
