@@ -26,9 +26,6 @@ exports[`DialogHeader should render correctly 1`] = `
   -ms-flex-align: center;
   align-items: center;
   position: relative;
-  border-bottom-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

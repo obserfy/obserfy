@@ -40,12 +40,7 @@ export const PageNewPlan: FC<Props> = ({ chosenDate }) => {
       <Typography.H5 m={3}>New Plan</Typography.H5>
 
       <Box mx={3}>
-        <DateInput
-          label="Date"
-          value={date.toDate()}
-          onChange={(value) => setDate(dayjs(value))}
-          mb={2}
-        />
+        <DateInput label="Date" value={date} onChange={setDate} mb={2} />
         <Input
           label="Title"
           sx={{ width: "100%" }}
@@ -138,8 +133,8 @@ export const PageNewPlan: FC<Props> = ({ chosenDate }) => {
           <Box mt={1}>
             <DateInput
               label="Repeat Until"
-              value={endDate.toDate()}
-              onChange={(value) => setEndDate(dayjs(value))}
+              value={endDate}
+              onChange={setEndDate}
               mb={2}
             />
           </Box>

@@ -26,9 +26,6 @@ export const DialogHeader: FC<Props> = ({
     sx={{
       alignItems: "center",
       position: "relative",
-      borderBottomColor: "border",
-      borderBottomWidth: 1,
-      borderBottomStyle: "solid",
     }}
   >
     <Typography.H6

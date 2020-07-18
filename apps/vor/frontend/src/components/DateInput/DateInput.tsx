@@ -5,12 +5,12 @@ import Icon from "../Icon/Icon"
 import { ReactComponent as CalendarIcon } from "../../icons/calendar.svg"
 import DatePickerDialog from "../DatePickerDialog/DatePickerDialog"
 
-import dayjs from "../../dayjs"
+import dayjs, { Dayjs } from "../../dayjs"
 
 interface Props extends Omit<BoxProps, "value" | "onChange"> {
-  value?: Date
+  value?: Dayjs
   label?: string
-  onChange: (date: Date) => void
+  onChange: (date: Dayjs) => void
 }
 export const DateInput: FC<Props> = ({ label, value, onChange, ...props }) => {
   const [showDatePicker, setShowDatePicker] = useState(false)
