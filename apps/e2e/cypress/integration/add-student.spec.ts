@@ -30,10 +30,10 @@ describe("test adding new student", () => {
 
     cy.contains("Name").type(studentName)
     cy.get(`[data-cy="Date of Birth"]`).click()
-    cy.get(`[data-cy=set-button]`).click()
+    cy.get(`[data-cy="confirm"]`).click()
 
     cy.get(`[data-cy="Date of Entry"]`).click()
-    cy.get(`[data-cy=set-button]`).click()
+    cy.get(`[data-cy="confirm"]`).click()
 
     cy.contains("Gender").find("select").select("Male")
     cy.contains("Student ID").type(studentId)
@@ -65,10 +65,10 @@ describe("test adding new student", () => {
       .should("have.value", "")
       .type(studentName2)
     cy.get(`[data-cy="Date of Birth"]`).click()
-    cy.get(`[data-cy=set-button]`).click()
+    cy.get(`[data-cy=confirm]`).click()
 
     cy.get(`[data-cy="Date of Entry"]`).click()
-    cy.get(`[data-cy=set-button]`).click()
+    cy.get(`[data-cy=confirm]`).click()
 
     cy.contains("Gender").find("select").select("Male")
     cy.contains("Student ID").type(studentId2)
@@ -79,8 +79,10 @@ describe("test adding new student", () => {
     cy.visit("/dashboard/students/new")
     cy.contains("Name").find("input").should("have.value", studentName2)
     cy.get(`[data-cy="Date of Entry"]`).click()
-    cy.contains("Month").find("select").select("2")
-    cy.get(`[data-cy=set-button]`).click()
+    cy.get(`[data-cy="prev"]`).click()
+    cy.get(`[data-cy="prev"]`).click()
+    cy.contains("button", "5").click()
+    cy.get(`[data-cy=confirm]`).click()
     cy.contains(newClass.name).click()
     cy.get("[data-cy=add-student]").click()
 

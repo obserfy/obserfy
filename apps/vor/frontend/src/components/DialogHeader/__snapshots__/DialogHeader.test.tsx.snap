@@ -202,11 +202,13 @@ exports[`DialogHeader should render correctly 1`] = `
       </h6>
       <button
         class="emotion-1"
+        data-cy="cancel"
       >
         Cancel
       </button>
       <button
         class="emotion-2"
+        data-cy="confirm"
       >
          
         Save

@@ -39,10 +39,24 @@ export const DialogHeader: FC<Props> = ({
     >
       {title}
     </Typography.H6>
-    <Button variant="secondary" color="danger" my={1} onClick={onCancel} ml={2}>
+    <Button
+      variant="secondary"
+      color="danger"
+      my={1}
+      onClick={onCancel}
+      ml={2}
+      data-cy="cancel"
+    >
       {onCancelText}
     </Button>
-    <Button variant="secondary" ml="auto" my={1} onClick={onAccept} mr={2}>
+    <Button
+      variant="secondary"
+      ml="auto"
+      my={1}
+      onClick={onAccept}
+      mr={2}
+      data-cy="confirm"
+    >
       {loading && <LoadingIndicator />} {onAcceptText}
     </Button>
   </Flex>

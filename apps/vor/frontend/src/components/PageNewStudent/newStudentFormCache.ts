@@ -47,10 +47,10 @@ export const useGetNewStudentFormCache = (
       return {
         ...parsedData,
         dateOfEntry: parsedData.dateOfEntry
-          ? dayjs(parsedData.dateOfEntry).toDate()
+          ? dayjs(parsedData.dateOfEntry)
           : undefined,
         dateOfBirth: parsedData.dateOfBirth
-          ? dayjs(parsedData.dateOfBirth).toDate()
+          ? dayjs(parsedData.dateOfBirth)
           : undefined,
       }
     }
