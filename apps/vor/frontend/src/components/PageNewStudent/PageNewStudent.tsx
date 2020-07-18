@@ -33,14 +33,15 @@ import WarningDialog from "../WarningDialog/WarningDialog"
 import GuardianRelationshipPickerDialog from "../GuardianRelationshipPickerDialog/GuardianRelationshipPickerDialog"
 import GuardianRelationshipPill from "../GuardianRelationshipPill/GuardianRelationshipPill"
 import EmptyClassDataPlaceholder from "../EmptyClassDataPlaceholder/EmptyClassDataPlaceholder"
+import { Dayjs } from "../../dayjs"
 
 export interface NewStudentFormData {
   name: string
   customId: string
   note: string
   gender: Gender
-  dateOfBirth?: Date
-  dateOfEntry?: Date
+  dateOfBirth?: Dayjs
+  dateOfEntry?: Dayjs
   guardians: Array<{
     id: string
     relationship: GuardianRelationship

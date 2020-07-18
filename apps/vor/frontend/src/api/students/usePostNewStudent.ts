@@ -1,6 +1,7 @@
 import { MutationResultPair, useMutation } from "react-query"
 import { getSchoolId } from "../../hooks/schoolIdState"
 import { postApi } from "../fetchApi"
+import { Dayjs } from "../../dayjs"
 
 export enum GuardianRelationship {
   Other,
@@ -16,8 +17,8 @@ export enum Gender {
 
 interface NewStudent {
   name: string
-  dateOfBirth?: Date
-  dateOfEntry?: Date
+  dateOfBirth?: Dayjs
+  dateOfEntry?: Dayjs
   customId: string
   classes: string[]
   note: string

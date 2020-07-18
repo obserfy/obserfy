@@ -14,18 +14,16 @@ import {
 } from "../../routes"
 import dayjs from "../../dayjs"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
-
 import Icon from "../Icon/Icon"
-
 import Dialog from "../Dialog/Dialog"
 import Input from "../Input/Input"
 import DialogHeader from "../DialogHeader/DialogHeader"
 import { Gender } from "../../api/students/usePostNewStudent"
 import Select from "../Select/Select"
-import DatePicker from "../DatePicker/DatePicker"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import { Link } from "../Link/Link"
 import AlertDialog from "../AlertDialog/AlertDialog"
+import DatePickerDialog from "../DatePickerDialog/DatePickerDialog"
 
 interface Props {
   id: string
@@ -308,12 +306,7 @@ const StudentIdDataBox: FC<{ value?: string; studentId: string }> = ({
             onAccept={saveCustomId}
             loading={status === "loading"}
           />
-          <Box
-            sx={{
-              backgroundColor: "background",
-            }}
-            p={3}
-          >
+          <Box sx={{ backgroundColor: "background" }} p={3}>
             <Input
               label="Student ID"
               sx={{ width: "100%" }}
@@ -330,45 +323,33 @@ const StudentIdDataBox: FC<{ value?: string; studentId: string }> = ({
   )
 }
 
+// TODO: The two components below looks similar, consider refactoring
 const DateOfBirthDataBox: FC<{ value?: string; studentId: string }> = ({
   value,
   studentId,
 }) => {
-  const [mutate, { status }] = usePatchStudentApi(studentId)
+  const [mutate] = usePatchStudentApi(studentId)
   const [showEditDialog, setShowEditDialog] = useState(false)
-  const [date, setDate] = useState(dayjs(value || 0))
-  const saveDateOfBirth = async () => {
-    await mutate({
-      id: studentId,
-      dateOfBirth: new Date(date.toString()),
-    })
-    setShowEditDialog(false)
-  }
+
   return (
     <Fragment>
       <DataBox
         label="Date of Birth"
-        value={date ? dayjs(date).format("D MMMM YYYY") : "N/A"}
+        value={value ? dayjs(value).format("D MMMM YYYY") : "N/A"}
         onEditClick={() => setShowEditDialog(true)}
       />
       {showEditDialog && (
-        <Dialog>
-          <DialogHeader
-            title="Edit Date of Birth"
-            onAcceptText="Save"
-            onCancel={() => setShowEditDialog(false)}
-            onAccept={saveDateOfBirth}
-            loading={status === "loading"}
-          />
-          <Flex
-            p={3}
-            sx={{
-              backgroundColor: "background",
-            }}
-          >
-            <DatePicker value={date} onChange={setDate} />
-          </Flex>
-        </Dialog>
+        <DatePickerDialog
+          defaultDate={dayjs(value)}
+          onConfirm={async (date) => {
+            await mutate({
+              id: studentId,
+              dateOfBirth: date,
+            })
+            setShowEditDialog(false)
+          }}
+          onDismiss={() => setShowEditDialog(false)}
+        />
       )}
     </Fragment>
   )
@@ -378,41 +359,28 @@ const DateOfEntryDataBox: FC<{ value?: string; studentId: string }> = ({
   value,
   studentId,
 }) => {
-  const [mutate, { status }] = usePatchStudentApi(studentId)
+  const [mutate] = usePatchStudentApi(studentId)
   const [showEditDialog, setShowEditDialog] = useState(false)
-  const [date, setDate] = useState(dayjs(value || 0))
-  const saveDateOfEntry = async () => {
-    await mutate({
-      id: studentId,
-      dateOfEntry: date.toISOString(),
-    })
-    setShowEditDialog(false)
-  }
+
   return (
     <Fragment>
       <DataBox
         label="Date of Entry"
+        value={value ? dayjs(value).format("D MMMM YYYY") : "N/A"}
         onEditClick={() => setShowEditDialog(true)}
-        value={date ? dayjs(date).format("D MMMM YYYY") : "N/A"}
       />
       {showEditDialog && (
-        <Dialog>
-          <DialogHeader
-            title="Edit Date of Entry"
-            onAcceptText="Save"
-            onCancel={() => setShowEditDialog(false)}
-            onAccept={saveDateOfEntry}
-            loading={status === "loading"}
-          />
-          <Flex
-            p={3}
-            sx={{
-              backgroundColor: "background",
-            }}
-          >
-            <DatePicker value={date} onChange={setDate} />
-          </Flex>
-        </Dialog>
+        <DatePickerDialog
+          defaultDate={dayjs(value)}
+          onConfirm={async (date) => {
+            await mutate({
+              id: studentId,
+              dateOfEntry: date,
+            })
+            setShowEditDialog(false)
+          }}
+          onDismiss={() => setShowEditDialog(false)}
+        />
       )}
     </Fragment>
   )

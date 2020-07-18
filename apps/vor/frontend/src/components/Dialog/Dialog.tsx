@@ -44,7 +44,6 @@ export const Dialog: FC<Props> = ({ sx, ...props }) => {
           backgroundColor="surface"
           pb="env(safe-area-inset-bottom)"
           sx={{
-            ...sx,
             maxHeight: "100vh",
             width: "100%",
             maxWidth: "maxWidth.xsm",
@@ -52,6 +51,7 @@ export const Dialog: FC<Props> = ({ sx, ...props }) => {
             borderTopRightRadius: "default",
             borderBottomLeftRadius: [0, "default"],
             borderBottomRightRadius: [0, "default"],
+            ...sx,
           }}
           {...props}
         />

@@ -1,142 +1,130 @@
 import React, { FC, useState } from "react"
-import { Flex, Button } from "theme-ui"
+import { Button, Flex } from "theme-ui"
 import Dialog from "../Dialog/Dialog"
-import Select from "../Select/Select"
-import Input from "../Input/Input"
-import { Typography } from "../Typography/Typography"
-import Icon from "../Icon/Icon"
-import { ReactComponent as CloseIcon } from "../../icons/close.svg"
-import Spacer from "../Spacer/Spacer"
 
-import dayjs from "../../dayjs"
+import dayjs, { Dayjs } from "../../dayjs"
+import { DialogHeader } from "../DialogHeader/DialogHeader"
+import Typography from "../Typography/Typography"
+import Icon from "../Icon/Icon"
+import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
+import { ReactComponent as PrevIcon } from "../../icons/arrow-back.svg"
+
+const range = (length: number) => {
+  return [...Array(length).keys()]
+}
 
 interface Props {
-  defaultDate?: Date
+  defaultDate?: Dayjs
   onDismiss: () => void
-  onConfirm: (date: Date) => void
+  onConfirm: (date: Dayjs) => void
 }
 export const DatePickerDialog: FC<Props> = ({
   defaultDate,
   onDismiss,
   onConfirm,
 }) => {
-  const [year, setYear] = useState(
-    defaultDate?.getFullYear().toString() ?? "2020"
+  const [selectedDate, setSelectedDate] = useState(
+    defaultDate ?? dayjs(Date.now())
   )
-  const [month, setMonth] = useState(defaultDate?.getMonth().toString() ?? "0")
-  const [date, setDate] = useState(defaultDate?.getDate().toString() ?? "1")
-
-  const generatedDate = new Date(
-    parseInt(year === "" ? "2020" : year, 10),
-    parseInt(month, 10),
-    parseInt(date, 10)
-  )
-
-  const title = (
-    <Flex
-      p={3}
-      sx={{
-        alignItems: "center",
-        borderBottomWidth: 1,
-        borderBottomStyle: "solid",
-        borderBottomColor: "border",
-      }}
-    >
-      <Typography.H6
-        mb={0}
-        mr={3}
-        sx={{
-          fontWeight: "bold",
-          flex: 1,
-          overflowY: "auto",
-        }}
-      >
-        Pick a Date
-      </Typography.H6>
-      <Icon
-        as={CloseIcon}
-        m={0}
-        sx={{
-          width: 32,
-          cursor: "pointer",
-        }}
-        onClick={onDismiss}
-      />
-    </Flex>
-  )
-
-  const footer = (
-    <Flex
-      p={3}
-      sx={{
-        alignItems: "center",
-        borderTopWidth: "1px",
-        borderTopStyle: "solid",
-        borderTopColor: "border",
-      }}
-    >
-      <Spacer />
-      <Button mr={3} variant="outline" onClick={onDismiss}>
-        Cancel
-      </Button>
-      <Button
-        variant="primary"
-        data-cy="set-button"
-        onClick={() => onConfirm(generatedDate)}
-      >
-        Set
-      </Button>
-    </Flex>
-  )
+  const [monthShown, setMonth] = useState(selectedDate.startOf("month"))
+  const isShowingCurrentMonth = monthShown.isSame(dayjs(Date.now()), "month")
 
   return (
-    <Dialog>
-      {title}
+    <Dialog sx={{ maxWidth: ["100%", 400] }}>
+      <DialogHeader
+        onAcceptText="Set"
+        title="Pick a Date"
+        onCancel={() => onDismiss()}
+        onAccept={() => {
+          onConfirm(selectedDate)
+        }}
+      />
+      <Flex py={3} sx={{ alignItems: "flex-end" }}>
+        <Typography.Body ml={3}>
+          {monthShown.format("MMM YYYY")}
+        </Typography.Body>
+        <Button
+          variant="outline"
+          p={1}
+          ml="auto"
+          onClick={() => setMonth(monthShown.add(-1, "month"))}
+          data-cy="prev"
+        >
+          <Icon as={PrevIcon} m={0} />
+        </Button>
+        <Button
+          variant="outline"
+          p={1}
+          ml={1}
+          onClick={() => setMonth(monthShown.add(1, "month"))}
+          data-cy="next"
+        >
+          <Icon as={NextIcon} m={0} />
+        </Button>
+        <Button
+          variant="outline"
+          py={1}
+          sx={{ fontSize: 1 }}
+          ml={1}
+          mr={3}
+          onClick={() => setMonth(dayjs(Date.now()).startOf("month"))}
+          disabled={isShowingCurrentMonth}
+        >
+          This month
+        </Button>
+      </Flex>
       <Flex
-        p={3}
+        px={3}
+        pb={2}
         sx={{
-          backgroundColor: "background",
+          borderBottomWidth: 1,
+          borderBottomStyle: "solid",
+          borderBottomColor: "border",
+          flexWrap: "wrap",
         }}
       >
-        <Input
-          mr={3}
-          type="number"
-          label="Year"
-          sx={{ width: "100%" }}
-          min="1"
-          inputMode="numeric"
-          value={year}
-          onChange={(e) => {
-            setYear(e.target.value)
-          }}
-        />
-        <Select
-          label="Month"
-          value={month}
-          onChange={(e) => setMonth(e.target.value)}
-          mr={3}
-        >
-          {[...Array(12).keys()].map((item) => (
-            <option value={item} key={item}>
-              {dayjs(new Date(1, item, 1)).format("MMMM")}
-            </option>
-          ))}
-        </Select>
-        <Select
-          label="Date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-        >
-          {[...Array(dayjs(generatedDate).endOf("month").date()).keys()].map(
-            (item) => (
-              <option value={item + 1} key={item}>
-                {item + 1}
-              </option>
-            )
-          )}
-        </Select>
+        {["M", "T", "W", "T", "F", "S", "S"].map((dayInitial) => (
+          <Typography.Body
+            color="textMediumEmphasis"
+            sx={{ textAlign: "center", width: "14.28%" }}
+          >
+            {dayInitial}
+          </Typography.Body>
+        ))}
       </Flex>
-      {footer}
+      <Flex sx={{ flexWrap: "wrap", minHeight: 258 }} px={3} pb={3} pt={2}>
+        {range(monthShown.daysInMonth())
+          .map((date) => date + 1)
+          .map((date) => {
+            const firstDateIndent =
+              date === 1 ? `${14.28 * monthShown.day()}%` : 0
+            const isCurrentDate =
+              isShowingCurrentMonth && dayjs(Date.now()).date() === date
+
+            const isSelected =
+              selectedDate.isSame(monthShown, "month") &&
+              selectedDate.date() === date
+
+            return (
+              <Button
+                variant={isSelected ? "primary" : "secondary"}
+                key={`${date}-${monthShown.month()}`}
+                px={0}
+                sx={{
+                  fontWeight: isCurrentDate || isSelected ? "bold" : undefined,
+                  width: "14.28%",
+                }}
+                color={
+                  isCurrentDate && !isSelected ? "primaryDark" : "onBackground"
+                }
+                ml={firstDateIndent}
+                onClick={() => setSelectedDate(monthShown.set("date", date))}
+              >
+                {date}
+              </Button>
+            )
+          })}
+      </Flex>
     </Dialog>
   )
 }

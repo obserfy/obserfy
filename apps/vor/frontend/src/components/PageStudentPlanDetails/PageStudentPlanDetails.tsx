@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react"
-import { Box, Card, Button, Flex } from "theme-ui"
+import { Box, Button, Card, Flex } from "theme-ui"
 import useGetPlan from "../../api/plans/useGetPlan"
 import useDeletePlans from "../../api/plans/useDeletePlan"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
@@ -13,7 +13,6 @@ import { navigate } from "../Link/Link"
 import usePatchPlan from "../../api/plans/usePatchPlans"
 import Dialog from "../Dialog/Dialog"
 import DialogHeader from "../DialogHeader/DialogHeader"
-import DatePicker from "../DatePicker/DatePicker"
 import Input from "../Input/Input"
 import TextArea from "../TextArea/TextArea"
 import useGetSchoolClasses from "../../api/classes/useGetSchoolClasses"
@@ -21,6 +20,7 @@ import Chip from "../Chip/Chip"
 import { useGetCurriculumAreas } from "../../api/useGetCurriculumAreas"
 import { Typography } from "../Typography/Typography"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
+import DatePickerDialog from "../DatePickerDialog/DatePickerDialog"
 
 interface Props {
   studentId: string
@@ -96,7 +96,6 @@ const DateDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
   lessonPlanId,
 }) => {
   const [showEditDialog, setShowEditDialog] = useState(false)
-  const [date, setDate] = useState(dayjs(value || 0))
   const [mutate] = usePatchPlan(lessonPlanId)
 
   return (
@@ -107,25 +106,14 @@ const DateDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
         value={value ? dayjs(value).format("D MMMM YYYY") : "N/A"}
       />
       {showEditDialog && (
-        <Dialog>
-          <DialogHeader
-            title="Edit Date"
-            onAcceptText="Save"
-            onCancel={() => setShowEditDialog(false)}
-            onAccept={async () => {
-              await mutate({ date: date.startOf("day") })
-              setShowEditDialog(false)
-            }}
-          />
-          <Flex
-            p={3}
-            sx={{
-              backgroundColor: "background",
-            }}
-          >
-            <DatePicker value={date} onChange={setDate} />
-          </Flex>
-        </Dialog>
+        <DatePickerDialog
+          defaultDate={dayjs(value)}
+          onConfirm={async (date) => {
+            await mutate({ date })
+            setShowEditDialog(false)
+          }}
+          onDismiss={() => setShowEditDialog(false)}
+        />
       )}
     </>
   )
