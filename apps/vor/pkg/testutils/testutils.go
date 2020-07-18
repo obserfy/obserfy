@@ -403,3 +403,18 @@ func (s *BaseTestSuite) CreateMultipartRequest(url string, multipartForm *bytes.
 	s.Handler(w, req)
 	return w
 }
+
+func (s *BaseTestSuite) GenerateImage(school *postgres.School) postgres.Image {
+	t := s.T()
+	gofakeit.Seed(time.Now().UnixNano())
+	image := postgres.Image{
+		Id:        uuid.New(),
+		SchoolId:  school.Id,
+		School:    *school,
+		ObjectKey: uuid.New().String(),
+		CreatedAt: gofakeit.Date(),
+	}
+	err := s.DB.Insert(&image)
+	assert.NoError(t, err)
+	return image
+}

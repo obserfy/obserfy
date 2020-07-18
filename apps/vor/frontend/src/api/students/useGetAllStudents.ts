@@ -7,14 +7,14 @@ export interface Student {
   id: string
   name: string
   active: boolean
-  profilePicUrl?: string
+  profileImageUrl?: string
   classes: {
     classId: string
     className: string
   }[]
 }
 
-export const useGetStudents = (
+export const useGetAllStudents = (
   classId = "",
   active?: boolean
 ): QueryResult<Student[]> => {

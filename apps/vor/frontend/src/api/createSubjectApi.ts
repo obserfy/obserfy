@@ -7,6 +7,7 @@ export interface NewSubject {
     order: number
   }>
 }
+/** @deprecated use the new react-query based hook, create one if it does not exists */
 export function createSubjectApi(
   areaId: string,
   subject: NewSubject

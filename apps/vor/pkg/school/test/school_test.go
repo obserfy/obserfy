@@ -2,6 +2,7 @@ package school_test
 
 import (
 	"bytes"
+	"github.com/stretchr/testify/mock"
 	"io/ioutil"
 	"mime/multipart"
 	"os"
@@ -15,7 +16,6 @@ import (
 	"github.com/stretchr/testify/suite"
 
 	"github.com/chrsep/vor/pkg/minio"
-	"github.com/chrsep/vor/pkg/mocks"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/school"
 	"github.com/chrsep/vor/pkg/testutils"
@@ -24,14 +24,28 @@ import (
 type SchoolTestSuite struct {
 	testutils.BaseTestSuite
 
-	StudentImageStorage mocks.StudentImageStorage
+	StudentImageStorage minio.ImageStorage
 	store               postgres.SchoolStore
 }
 
+// TODO: this is similar to mailService mock in auth package, consider refactoring it.
+type mailServiceMock struct {
+	mock.Mock
+}
+
+func (m *mailServiceMock) SendInviteEmail(email string, inviterEmail string, inviteCode string) error {
+	args := m.Called(email, inviterEmail, inviteCode)
+	return args.Error(0)
+}
+
 func (s *SchoolTestSuite) SetupTest() {
-	s.store = postgres.SchoolStore{s.DB, minio.NewFileStorage(s.MinioClient)}
-	s.StudentImageStorage = mocks.StudentImageStorage{}
-	s.Handler = school.NewRouter(s.Server, s.store, &s.StudentImageStorage, nil).ServeHTTP
+	t := s.T()
+	client, err := minio.NewClient()
+	assert.NoError(t, err)
+	s.StudentImageStorage = *minio.NewImageStorage(client)
+
+	s.store = postgres.SchoolStore{s.DB, minio.NewFileStorage(s.MinioClient), s.StudentImageStorage}
+	s.Handler = school.NewRouter(s.Server, s.store, nil, &mailServiceMock{}).ServeHTTP
 }
 
 func TestSchool(t *testing.T) {

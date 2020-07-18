@@ -12,7 +12,7 @@ import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import { Typography } from "../Typography/Typography"
 
 import useGetSchoolClasses from "../../api/classes/useGetSchoolClasses"
-import { useGetStudents } from "../../api/students/useGetStudents"
+import { useGetAllStudents } from "../../api/students/useGetAllStudents"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import { NEW_STUDENT_URL, STUDENT_OVERVIEW_PAGE_URL } from "../../routes"
 import StudentPicturePlaceholder from "../StudentPicturePlaceholder/StudentPicturePlaceholder"
@@ -20,7 +20,7 @@ import StudentPicturePlaceholder from "../StudentPicturePlaceholder/StudentPictu
 export const PageHome: FC = () => {
   const [searchTerm, setSearchTerm] = useState("")
   const [filterClass, setFilterClass] = useState("")
-  const students = useGetStudents(filterClass, true)
+  const students = useGetAllStudents(filterClass, true)
   const allClass = useGetSchoolClasses()
 
   const matchedStudent =
@@ -40,7 +40,7 @@ export const PageHome: FC = () => {
 
   const studentList =
     students.status === "success" &&
-    matchedStudent?.map(({ profilePicUrl, name, id, classes }) => (
+    matchedStudent?.map(({ profileImageUrl, name, id, classes }) => (
       <Link to={STUDENT_OVERVIEW_PAGE_URL(id)} sx={{ display: "block" }}>
         <Card
           p={3}
@@ -56,9 +56,9 @@ export const PageHome: FC = () => {
             alignItems: "center",
           }}
         >
-          {profilePicUrl ? (
+          {profileImageUrl ? (
             <Image
-              src={profilePicUrl}
+              src={profileImageUrl}
               sx={{
                 width: 32,
                 height: 32,

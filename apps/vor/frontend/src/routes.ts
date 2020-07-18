@@ -9,6 +9,7 @@ export const PICK_GUARDIAN_URL = "/dashboard/students/new/pickGuardians"
 export const ADMIN_CURRICULUM_URL = "/dashboard/admin/curriculum"
 export const ADMIN_USERS_URL = "/dashboard/admin/users"
 export const ADMIN_STUDENTS_URL = "/dashboard/admin/students"
+export const ADMIN_INVITE_USER_URL = "/dashboard/admin/inviteUser"
 export const ADMIN_GUARDIAN_URL = "/dashboard/admin/guardians"
 export const NEW_GUARDIAN_ADMIN_URL = "/dashboard/admin/guardians/new"
 

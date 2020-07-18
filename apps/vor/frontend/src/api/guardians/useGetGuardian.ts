@@ -1,5 +1,5 @@
 import { QueryResult, useQuery } from "react-query"
-import { fetchApi } from "../fetchApi"
+import { getApi } from "../fetchApi"
 
 interface Guardian {
   id: string
@@ -9,6 +9,6 @@ interface Guardian {
   phone: string
 }
 export const useGetGuardian = (guardianId: string): QueryResult<Guardian> => {
-  const fetchGuardian = fetchApi<Guardian>(`/guardians/${guardianId}`)
+  const fetchGuardian = getApi<Guardian>(`/guardians/${guardianId}`)
   return useQuery(["guardian", { guardianId }], fetchGuardian)
 }

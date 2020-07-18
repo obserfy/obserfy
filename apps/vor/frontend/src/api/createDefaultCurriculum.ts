@@ -1,6 +1,7 @@
 import { getSchoolId } from "../hooks/schoolIdState"
 import { getAnalytics } from "../analytics"
 
+/** @deprecated use the new react-query based hook, create one if it does not exists */
 export async function createDefaultCurriculum(
   onSuccess: () => void
 ): Promise<void> {

@@ -1,6 +1,7 @@
 import React, { FC } from "react"
 import { action } from "@storybook/addon-actions"
 import DatePickerDialog from "./DatePickerDialog"
+import dayjs from "../../dayjs"
 
 export default {
   title: "Basic|Dialog/DatePickerDialog",
@@ -14,6 +15,6 @@ export const Basic: FC = () => (
   <DatePickerDialog
     onConfirm={action("confirm")}
     onDismiss={action("dismiss")}
-    defaultDate={new Date(2012, 2, 1)}
+    defaultDate={dayjs(new Date(2012, 1, 12))}
   />
 )
