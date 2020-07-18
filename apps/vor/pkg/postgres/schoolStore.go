@@ -87,7 +87,7 @@ func (s SchoolStore) GetStudents(schoolId, classId string, active *bool) ([]cSch
 		Relation("ProfileImage")
 	if classId != "" {
 		query = query.
-			Join("LEFT JOIN student_to_classes AS stc on id=stc.student_id").
+			Join("LEFT JOIN student_to_classes AS stc on student.id=stc.student_id").
 			Where("stc.class_id=?", classId)
 	}
 	if active != nil {
