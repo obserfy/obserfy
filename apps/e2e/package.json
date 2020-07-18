@@ -15,7 +15,7 @@
     "cypress-axe": "0.8.1",
     "cypress-intellij-reporter": "0.0.4",
     "eslint": "7.4.0",
-    "eslint-config-airbnb-typescript": "8.0.2",
+    "eslint-config-airbnb-typescript": "9.0.0",
     "eslint-config-prettier": "6.11.0",
     "eslint-import-resolver-node": "0.3.4",
     "eslint-plugin-cypress": "2.11.1",
