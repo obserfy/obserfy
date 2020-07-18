@@ -10,6 +10,7 @@ import {
   ADMIN_STUDENTS_URL,
   ADMIN_USERS_URL,
   CLASS_SETTINGS_URL,
+  ADMIN_GUARDIAN_URL,
 } from "../../routes"
 import Icon from "../Icon/Icon"
 import { ReactComponent as LightModeIcon } from "../../icons/light-mode.svg"
@@ -52,6 +53,7 @@ export const PageAdmin: FC = () => {
       <CardLink mb={2} name="Users" to={ADMIN_USERS_URL} />
       <CardLink mb={2} name="Class" to={CLASS_SETTINGS_URL} />
       <CardLink mb={2} name="All Students" to={ADMIN_STUDENTS_URL} />
+      <CardLink mb={2} name="All Guardians" to={ADMIN_GUARDIAN_URL} />
       <Card p={3} onClick={shareLink}>
         <Flex sx={{ alignItems: "center" }}>
           <Box>
