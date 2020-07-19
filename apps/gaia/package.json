@@ -31,7 +31,7 @@
     "react-optimized-image": "0.2.0",
     "react-query": "2.5.4",
     "react-refresh": "0.8.3",
-    "react-ssr-prepass": "npm:preact-ssr-prepass@1.0.1",
+    "react-ssr-prepass": "npm:preact-ssr-prepass@1.1.0",
     "tailwindcss": "1.5.1",
     "typescript": "3.9.7",
     "webp-loader": "0.6.0"
