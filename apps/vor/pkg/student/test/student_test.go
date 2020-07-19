@@ -1,6 +1,7 @@
 package student_test
 
 import (
+	"github.com/chrsep/vor/pkg/minio"
 	"net/http"
 	"testing"
 	"time"
@@ -9,7 +10,6 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
 
-	"github.com/chrsep/vor/pkg/mocks"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/rest"
 	"github.com/chrsep/vor/pkg/student"
@@ -19,13 +19,17 @@ import (
 type StudentTestSuite struct {
 	testutils.BaseTestSuite
 
-	StudentImageStorage mocks.StudentImageStorage
+	StudentImageStorage minio.ImageStorage
 	store               postgres.StudentStore
 }
 
 func (s *StudentTestSuite) SetupTest() {
+	t := s.T()
+	client, err := minio.NewClient()
+	assert.NoError(t, err)
+	s.StudentImageStorage = *minio.NewImageStorage(client)
+
 	s.store = postgres.StudentStore{s.DB}
-	s.StudentImageStorage = mocks.StudentImageStorage{}
 	s.Handler = student.NewRouter(s.Server, s.store).ServeHTTP
 }
 

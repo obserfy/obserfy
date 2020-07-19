@@ -1,28 +1,21 @@
 import { useEffect, useMemo, useRef } from "react"
-import { get, set } from "idb-keyval"
 import { NewStudentFormData } from "./PageNewStudent"
 import dayjs from "../../dayjs"
 
 const CACHE_KEY = "newStudentFormCache"
 
-export const setNewStudentCache = async (
-  data: NewStudentFormData,
-  picture?: File
-) => {
+export const setNewStudentCache = async (data: NewStudentFormData) => {
   localStorage.setItem(CACHE_KEY, JSON.stringify(data))
-  await set(CACHE_KEY, picture)
 }
 
-export const useCacheNewStudentFormData = (
-  data: NewStudentFormData,
-  picture?: File
-): void => {
+// cache student form to local storage
+export const useCacheNewStudentFormData = (data: NewStudentFormData): void => {
   const isMounted = useRef(false)
 
   useEffect(() => {
     const runAsync = async () => {
       if (isMounted.current) {
-        await setNewStudentCache(data, picture)
+        await setNewStudentCache(data)
       } else {
         isMounted.current = true
       }
@@ -31,7 +24,6 @@ export const useCacheNewStudentFormData = (
     const timeout = setTimeout(runAsync, 100)
     return () => clearTimeout(timeout)
   }, [
-    picture,
     data.dateOfEntry,
     data.dateOfBirth,
     data.selectedClasses,
@@ -40,30 +32,14 @@ export const useCacheNewStudentFormData = (
     data.note,
     data.customId,
     data.name,
+    data.profileImageId,
   ])
 }
 
 export const useGetNewStudentFormCache = (
-  defaultValue: NewStudentFormData,
-  pictureCallback: (file: File) => void
-): NewStudentFormData => {
-  // Load the image asynchronously
-  useEffect(() => {
-    let isCancelled = false
-    const loadPicture = async (): Promise<void> => {
-      const cachedPicture = await get<File>(CACHE_KEY)
-      if (!isCancelled) {
-        pictureCallback(cachedPicture)
-      }
-    }
-    loadPicture()
-    return () => {
-      isCancelled = true
-    }
-  }, [pictureCallback])
-
-  // Load everything else in sync
-  return useMemo((): NewStudentFormData => {
+  defaultValue: NewStudentFormData
+): NewStudentFormData =>
+  useMemo((): NewStudentFormData => {
     const cachedData =
       typeof localStorage !== "undefined" && localStorage.getItem(CACHE_KEY)
     if (cachedData) {
@@ -71,13 +47,12 @@ export const useGetNewStudentFormCache = (
       return {
         ...parsedData,
         dateOfEntry: parsedData.dateOfEntry
-          ? dayjs(parsedData.dateOfEntry).toDate()
+          ? dayjs(parsedData.dateOfEntry)
           : undefined,
         dateOfBirth: parsedData.dateOfBirth
-          ? dayjs(parsedData.dateOfBirth).toDate()
+          ? dayjs(parsedData.dateOfBirth)
           : undefined,
       }
     }
     return defaultValue
   }, [defaultValue])
-}

@@ -1,9 +1,10 @@
 import { navigate } from "gatsby"
 import { ApiError } from "./useApi"
 
+// TODO: rename file to apiHelpers
 const BASE_URL = "/api/v1"
 
-export const fetchApi = <T>(url: string) => async (): Promise<T> => {
+export const getApi = <T>(url: string) => async (): Promise<T> => {
   const result = await fetch(BASE_URL + url, {
     credentials: "same-origin",
   })
@@ -61,8 +62,8 @@ export const patchApi = <T>(url: string, id: string) => async (payload: T) => {
   return result
 }
 
-export const postApi = <T>(url: string, id: string) => async (payload: T) => {
-  const result = await fetch(`${BASE_URL}${url}/${id}`, {
+export const postApi = <T>(url: string) => async (payload: T) => {
+  const result = await fetch(`${BASE_URL}${url}`, {
     credentials: "same-origin",
     method: "POST",
     body: JSON.stringify(payload),

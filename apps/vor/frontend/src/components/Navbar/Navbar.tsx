@@ -9,6 +9,7 @@ import { ReactComponent as StudentsIcon } from "../../icons/students.svg"
 import { Link } from "../Link/Link"
 import Icon from "../Icon/Icon"
 import { Typography } from "../Typography/Typography"
+import { STUDENTS_URL, SETTINGS_URL } from "../../routes"
 
 const Navbar: FC = () => {
   const [keyboardShown, setKeyboardShown] = useState(false)
@@ -105,11 +106,7 @@ const Navbar: FC = () => {
         <Box mx="auto" my={3} sx={{ display: ["none", "block"] }} mb={4}>
           <GatsbyImage fixed={query.file.childImageSharp.fixed} />
         </Box>
-        <NavBarItem
-          title="Students"
-          icon={StudentsIcon}
-          to="/dashboard/observe"
-        />
+        <NavBarItem title="Students" icon={StudentsIcon} to={STUDENTS_URL} />
         {/* <NavBarItem title="Plan" icon={CalendarIcon} to="/dashboard/plans" /> */}
         <Box
           sx={{
@@ -117,11 +114,7 @@ const Navbar: FC = () => {
             display: ["none", "block"],
           }}
         />
-        <NavBarItem
-          title="Admin"
-          icon={SettingsIcon}
-          to="/dashboard/settings"
-        />
+        <NavBarItem title="Admin" icon={SettingsIcon} to={SETTINGS_URL} />
       </Flex>
     </Card>
   )

@@ -1,6 +1,6 @@
 import { QueryResult, useQuery } from "react-query"
 import { getSchoolId } from "../../hooks/schoolIdState"
-import { fetchApi } from "../fetchApi"
+import { getApi } from "../fetchApi"
 
 export interface Guardians {
   id: string
@@ -11,6 +11,6 @@ export interface Guardians {
 }
 export const useGetSchoolGuardians = (): QueryResult<Guardians[]> => {
   const schoolId = getSchoolId()
-  const fetchGuardians = fetchApi<Guardians[]>(`/schools/${schoolId}/guardians`)
+  const fetchGuardians = getApi<Guardians[]>(`/schools/${schoolId}/guardians`)
   return useQuery(["guardians", { schoolId }], fetchGuardians)
 }

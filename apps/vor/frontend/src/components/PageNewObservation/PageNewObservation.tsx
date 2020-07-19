@@ -13,6 +13,7 @@ import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import { getAnalytics } from "../../analytics"
 import { createObservationApi } from "../../api/createObservationApi"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
+import { STUDENT_OVERVIEW_PAGE_URL } from "../../routes"
 
 interface Props {
   studentId: string
@@ -49,7 +50,7 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
   return (
     <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={4}>
       <BackNavigation
-        to={`/dashboard/observe/students/overview?id=${studentId}`}
+        to={STUDENT_OVERVIEW_PAGE_URL(studentId)}
         text="Student Detail"
       />
       {student.status === "loading" && student.data === undefined ? (

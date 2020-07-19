@@ -1,31 +1,28 @@
-import React, { ChangeEvent, FC, useState } from "react"
-import { Input, Flex, BoxProps, Box, Label, Card, Image } from "theme-ui"
+import React, { FC } from "react"
+import { Box, BoxProps, Card, Flex, Image, Input, Label } from "theme-ui"
 
 import Typography from "../Typography/Typography"
 import { ReactComponent as CameraIcon } from "../../icons/camera.svg"
 import Icon from "../Icon/Icon"
-import WarningDialog from "../WarningDialog/WarningDialog"
+import usePostNewImage from "../../api/schools/usePostNewImage"
+import { LoadingIndicator } from "../LoadingIndicator/LoadingIndicator"
+import useGetImage from "../../api/useGetImage"
 
 interface Props extends Omit<BoxProps, "onChange" | "value"> {
-  onChange: (file?: File) => void
-  value?: File
+  onChange: (imageId: string) => void
+  value: string
 }
 export const ProfilePicker: FC<Props> = ({ value, onChange, ...props }) => {
-  const [showDeleteDialog, setShowDeleteDialog] = useState(false)
+  const [mutate, { status }] = usePostNewImage()
+  const image = useGetImage(value)
 
   return (
     <Box {...props} sx={{ flexShrink: 0 }}>
-      <Label
-        onClick={() => {
-          if (value) {
-            setShowDeleteDialog(true)
-          }
-        }}
-      >
-        <Card sx={{ height: 100, width: 100 }}>
-          {value ? (
+      <Label>
+        <Card sx={{ height: 100, width: 100, overflow: "hidden" }}>
+          {image.status === "success" ? (
             <Image
-              src={URL.createObjectURL(value)}
+              src={image.data.url}
               sx={{
                 height: "100%",
                 width: "100%",
@@ -35,7 +32,6 @@ export const ProfilePicker: FC<Props> = ({ value, onChange, ...props }) => {
             />
           ) : (
             <Flex
-              pt={3}
               sx={{
                 justifyContent: "center",
                 flexDirection: "column",
@@ -44,38 +40,45 @@ export const ProfilePicker: FC<Props> = ({ value, onChange, ...props }) => {
                 height: "100%",
               }}
             >
-              <Icon as={CameraIcon} m={0} width={24} height={24} mb={1} />
-              <Typography.Body
-                color="textMediumEmphasis"
-                sx={{
-                  fontSize: 0,
-                }}
-              >
-                Add Picture
-              </Typography.Body>
+              {status === "loading" ? (
+                <LoadingIndicator size={40} />
+              ) : (
+                <>
+                  <Icon
+                    as={CameraIcon}
+                    m={0}
+                    width={24}
+                    height={24}
+                    mb={1}
+                    mt={3}
+                  />
+                  <Typography.Body
+                    color="textMediumEmphasis"
+                    sx={{ fontSize: 0 }}
+                  >
+                    Add Picture
+                  </Typography.Body>
+                </>
+              )}
             </Flex>
           )}
         </Card>
         <Input
           sx={{ display: "none" }}
           type="file"
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            onChange(e.target.files?.[0])
-          }
-          disabled={value !== undefined}
+          onChange={async (e) => {
+            const selectedImage = e.target.files?.[0]
+            if (selectedImage) {
+              const result = await mutate(selectedImage)
+              if (result.ok) {
+                const response = await result.json()
+                onChange(response.id)
+              }
+            }
+          }}
+          disabled={status === "loading"}
         />
       </Label>
-      {showDeleteDialog && (
-        <WarningDialog
-          onDismiss={() => setShowDeleteDialog(false)}
-          onAccept={() => {
-            onChange(undefined)
-            setShowDeleteDialog(false)
-          }}
-          title="Remove picture?"
-          description="Do you want to remove this student's picture?"
-        />
-      )}
     </Box>
   )
 }

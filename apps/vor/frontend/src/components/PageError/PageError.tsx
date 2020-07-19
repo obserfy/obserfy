@@ -5,7 +5,7 @@ import GatsbyImage, { FixedObject } from "gatsby-image"
 import { jsx, Button, Flex } from "theme-ui"
 import Typography from "../Typography/Typography"
 
-import { OBSERVE_PAGE_URL } from "../../routes"
+import { STUDENTS_URL } from "../../routes"
 import { Link } from "../Link/Link"
 
 export const PageError: FC = () => {
@@ -52,7 +52,7 @@ export const PageError: FC = () => {
           <a href="https://github.com/chrsep/obserfy/issues/new?assignees=&labels=&template=bug_report.md&title=">
             <Button variant="outline">Report Bug</Button>
           </a>
-          <Link to={OBSERVE_PAGE_URL} sx={{ ml: 2 }}>
+          <Link to={STUDENTS_URL} sx={{ ml: 2 }}>
             <Button>Go to Home</Button>
           </Link>
         </Flex>

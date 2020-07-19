@@ -1,22 +1,16 @@
 package school_test
 
 import (
-	"bytes"
-	"encoding/json"
+	"github.com/brianvoe/gofakeit/v4"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/rest"
-	"io/ioutil"
-	"mime/multipart"
+	"github.com/google/uuid"
 	"net/http"
-	"os"
+	"strconv"
+	"testing"
 	"time"
 
-	"github.com/brianvoe/gofakeit/v4"
 	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/mock"
-
-	"github.com/chrsep/vor/pkg/mocks"
-	schoolPkg "github.com/chrsep/vor/pkg/school"
 )
 
 func (s *SchoolTestSuite) TestSaveNewStudentWithPic() {
@@ -24,44 +18,17 @@ func (s *SchoolTestSuite) TestSaveNewStudentWithPic() {
 	gofakeit.Seed(time.Now().UnixNano())
 	newSchool := s.GenerateSchool()
 
-	name := gofakeit.Name()
-	payload := new(bytes.Buffer)
-	writer := multipart.NewWriter(payload)
-
-	imagePath := "icon.png"
-	image, err := os.Open(imagePath)
-	assert.NoError(t, err)
-	content, err := ioutil.ReadAll(image)
-	assert.NoError(t, err)
-	err = image.Close()
-	assert.NoError(t, err)
-	part, err := writer.CreateFormFile("picture", name)
-	assert.NoError(t, err)
-	_, err = part.Write(content)
-	assert.NoError(t, err)
-
-	// mock student image storage
-	mockImage := new(mocks.StudentImageStorage)
-	s.Handler = schoolPkg.NewRouter(s.Server, s.store, mockImage, nil).ServeHTTP
-	mockImage.On("SaveProfilePicture", mock.Anything, mock.Anything, mock.Anything).Return("/path", nil)
-	_, err = mockImage.SaveProfilePicture(mock.Anything, nil, 50)
-	assert.NoError(t, err)
-
-	req := struct {
-		Name        string    `json:"string"`
+	payload := struct {
+		Name        string    `json:"name"`
 		DateOfBirth time.Time `json:"dateOfBirth"`
-	}{Name: name, DateOfBirth: time.Now()}
-	json, err := json.Marshal(req)
-	assert.NoError(t, err)
-	part2, err := writer.CreateFormFile("student", name)
-	assert.NoError(t, err)
-	_, err = part2.Write(json)
-	assert.NoError(t, err)
-	err = writer.Close()
-	assert.NoError(t, err)
+	}{Name: gofakeit.Name(), DateOfBirth: time.Now()}
 
-	result := s.CreateMultipartRequest("/"+newSchool.Id+"/students", payload, writer.Boundary(), &newSchool.Users[0].Id)
+	result := s.CreateRequest("POST", "/"+newSchool.Id+"/students", payload, &newSchool.Users[0].Id)
 	assert.Equal(t, result.Code, http.StatusCreated)
+
+	var student postgres.Student
+	err := s.DB.Model(&student).Where("name = ?", payload.Name).Select()
+	assert.NoError(t, err)
 }
 
 func (s *SchoolTestSuite) TestGetStudents() {
@@ -90,4 +57,60 @@ func (s *SchoolTestSuite) TestGetStudents() {
 	assert.NoError(t, err)
 
 	assert.Equal(t, len(students), len(responseBody))
+}
+
+func (s *SchoolTestSuite) TestGetStudentsByClassId() {
+	t := s.T()
+	school := s.GenerateSchool()
+	s.GenerateStudent(school)
+	s.GenerateStudent(school)
+
+	var responseBody []struct {
+		Id            string     `json:"id"`
+		Name          string     `json:"name"`
+		DateOfBirth   *time.Time `json:"dateOfBirth,omitempty"`
+		ProfilePicUrl string     `json:"profilePicUrl,omitempty"`
+		Active        bool       `json:"active"`
+	}
+	result := s.CreateRequest("GET", "/"+school.Id+"/students?classId="+uuid.New().String(), nil, &school.Users[0].Id)
+	assert.Equal(t, result.Code, http.StatusOK)
+
+	err := rest.ParseJson(result.Result().Body, &responseBody)
+	assert.NoError(t, err)
+
+	assert.Equal(t, 0, len(responseBody))
+}
+
+func (s *SchoolTestSuite) TestGetStudentsByStatus() {
+	t := s.T()
+	school := s.GenerateSchool()
+	s.GenerateStudent(school)
+	s.GenerateStudent(school)
+
+	tests := []struct {
+		name   string
+		active bool
+		length int
+	}{
+		{"active", true, 2},
+		{"inactive", false, 0},
+	}
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			var responseBody []struct {
+				Id            string     `json:"id"`
+				Name          string     `json:"name"`
+				DateOfBirth   *time.Time `json:"dateOfBirth,omitempty"`
+				ProfilePicUrl string     `json:"profilePicUrl,omitempty"`
+				Active        bool       `json:"active"`
+			}
+			result := s.CreateRequest("GET", "/"+school.Id+"/students?active="+strconv.FormatBool(test.active), nil, &school.Users[0].Id)
+			assert.Equal(t, result.Code, http.StatusOK)
+
+			err := rest.ParseJson(result.Result().Body, &responseBody)
+			assert.NoError(t, err)
+
+			assert.Equal(t, test.length, len(responseBody))
+		})
+	}
 }

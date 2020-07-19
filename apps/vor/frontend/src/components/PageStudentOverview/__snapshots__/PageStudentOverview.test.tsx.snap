@@ -438,7 +438,7 @@ exports[`PageStudentOverview should render correctly 1`] = `
       class="emotion-23"
     >
       <a
-        href="/dashboard/observe"
+        href="/dashboard/students"
         style="display: block;"
       >
         <div
@@ -473,7 +473,7 @@ exports[`PageStudentOverview should render correctly 1`] = `
       >
         <a
           class="emotion-8"
-          href="/dashboard/observe/students/profile?id=asdfadsf"
+          href="/dashboard/students/profile?id=asdfadsf"
         >
           <button
             class="emotion-7"
@@ -484,7 +484,7 @@ exports[`PageStudentOverview should render correctly 1`] = `
         </a>
         <a
           class="emotion-8"
-          href="/dashboard/observe/students/plans?studentId=asdfadsf&date="
+          href="/dashboard/students/plans?studentId=asdfadsf&date="
         >
           <button
             class="emotion-7"
@@ -495,7 +495,7 @@ exports[`PageStudentOverview should render correctly 1`] = `
         </a>
         <a
           class="emotion-13"
-          href="/dashboard/observe/students/observations/new?studentId=asdfadsf"
+          href="/dashboard/students/observations/new?studentId=asdfadsf"
         >
           <button
             class="emotion-12"

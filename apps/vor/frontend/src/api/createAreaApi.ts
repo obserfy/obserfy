@@ -1,5 +1,6 @@
 import { BASE_URL } from "./useApi"
 
+/** @deprecated use the new react-query based hook, create one if it does not exists */
 export function createAreaApi(
   name: string,
   curriculumId: string

@@ -66,7 +66,7 @@ describe("test student profile page", () => {
     // cy.contains("Name").find("input").clear().type("Jane Doe")
     // cy.contains("Date of Birth").click()
     // cy.contains("Month").find("select").select("6")
-    // cy.get("[data-cy=set-button]").click()
+    // cy.get("[data-cy=confirm]").click()
     // cy.contains("Save").click()
 
     // Test changing status
@@ -128,7 +128,7 @@ describe("test student profile page", () => {
     // Go to a student
     cy.contains(/Students/i).click()
     // .waitForRouteChange()
-    cy.url().should("contains", "observe")
+    cy.url().should("contains", "students")
     cy.contains(studentName).click()
     // .waitForRouteChange()
 

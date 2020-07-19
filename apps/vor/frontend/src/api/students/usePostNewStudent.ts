@@ -1,7 +1,7 @@
-import { MutateFunction, MutationResult, useMutation } from "react-query"
-import { BASE_URL } from "../useApi"
+import { MutationResultPair, useMutation } from "react-query"
 import { getSchoolId } from "../../hooks/schoolIdState"
-import { getAnalytics } from "../../analytics"
+import { postApi } from "../fetchApi"
+import { Dayjs } from "../../dayjs"
 
 export enum GuardianRelationship {
   Other,
@@ -17,53 +17,26 @@ export enum Gender {
 
 interface NewStudent {
   name: string
-  dateOfBirth?: Date
-  dateOfEntry?: Date
+  dateOfBirth?: Dayjs
+  dateOfEntry?: Dayjs
   customId: string
   classes: string[]
   note: string
   gender: number
+  profileImageId: string
   guardians: Array<{
     id: string
     relationship: GuardianRelationship
   }>
 }
 
-export const usePostNewStudent = (): [
-  MutateFunction<Response, { student: NewStudent; picture?: File }>,
-  MutationResult<Response>
-] => {
-  const postNewStudent = async (data: {
-    student: NewStudent
-    picture: File
-  }): Promise<Response> => {
-    const studentJson = JSON.stringify(data.student)
-    const payload = new FormData()
-    payload.append(
-      "student",
-      new Blob([studentJson], {
-        type: "application/json",
-      })
-    )
-    if (data.picture) {
-      payload.append("picture", data.picture)
-    }
-
-    const result = await fetch(
-      `${BASE_URL}/schools/${getSchoolId()}/students`,
-      {
-        credentials: "same-origin",
-        method: "POST",
-        body: payload,
-      }
-    )
-    getAnalytics()?.track("Student Created", {
-      responseStatus: result.status,
-      studentName: data.student.name,
-    })
-    return result
-  }
-
-  // TODO: Add onSuccess to refresh school's student data
+export const usePostNewStudent = (): MutationResultPair<
+  Response,
+  NewStudent,
+  Error
+> => {
+  const postNewStudent = postApi<NewStudent>(
+    `/schools/${getSchoolId()}/students`
+  )
   return useMutation(postNewStudent)
 }

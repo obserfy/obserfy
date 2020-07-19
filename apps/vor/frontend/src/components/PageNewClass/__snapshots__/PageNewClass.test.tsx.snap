@@ -419,7 +419,7 @@ exports[`PageNewClass should render correctly 1`] = `
       class="emotion-36"
     >
       <a
-        href="/dashboard/settings/class"
+        href="/dashboard/admin/class"
         style="display: block;"
       >
         <div

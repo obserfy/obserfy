@@ -31,7 +31,7 @@ describe("test curriculum features", () => {
       faker.name.firstName(),
       faker.name.firstName(),
     ]
-    cy.visit("/dashboard/settings/curriculum")
+    cy.visit("/dashboard/admin/curriculum")
 
     cy.contains("Use Default", { matchCase: false }).click()
     cy.contains("New Area").click()

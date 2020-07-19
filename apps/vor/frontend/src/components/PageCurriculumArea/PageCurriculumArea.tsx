@@ -15,7 +15,11 @@ import Icon from "../Icon/Icon"
 import DeleteAreaDialog from "../DeleteAreaDialog/DeleteAreaDialog"
 import DeleteSubjectDialog from "../DeleteSubjectDialog/DeleteSubjectDialog"
 import EditAreaDialog from "../EditAreaDialog/EditAreaDialog"
-import { NEW_SUBJECT_URL, EDIT_SUBJECT_URL } from "../../routes"
+import {
+  NEW_SUBJECT_URL,
+  EDIT_SUBJECT_URL,
+  ADMIN_CURRICULUM_URL,
+} from "../../routes"
 
 // FIXME: Typescript any typing, and inconsistent loading state should be fixed.
 interface Props {
@@ -45,7 +49,7 @@ export const PageCurriculumArea: FC<Props> = ({ id }) => {
   return (
     <>
       <Box sx={{ maxWidth: "maxWidth.sm", margin: "auto" }}>
-        <BackNavigation to="/dashboard/settings/curriculum" text="Curriculum" />
+        <BackNavigation to={ADMIN_CURRICULUM_URL} text="Curriculum" />
         {loading && !area.data?.name && <LoadingState />}
         <Typography.H3
           p={3}
@@ -98,7 +102,7 @@ export const PageCurriculumArea: FC<Props> = ({ id }) => {
         <DeleteAreaDialog
           name={area.data?.name ?? ""}
           onDismiss={() => setShowDeleteAreaDialog(false)}
-          onDeleted={() => navigate("/dashboard/settings/curriculum")}
+          onDeleted={() => navigate(ADMIN_CURRICULUM_URL)}
           areaId={id}
         />
       )}

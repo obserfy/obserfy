@@ -11,13 +11,14 @@ import Spacer from "../Spacer/Spacer"
 import { Button } from "../Button/Button"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import { setSchoolIdState } from "../../hooks/schoolIdState"
+import { STUDENTS_URL } from "../../routes"
 
 export const PageChooseSchool: FC = () => {
   const [schools] = useGetSchools()
 
   function saveSelectedSchool(schoolId: string): void {
     setSchoolIdState(schoolId)
-    navigate("/dashboard/observe")
+    navigate(STUDENTS_URL)
   }
 
   const availableSchools = schools?.map(({ id, name }) => (

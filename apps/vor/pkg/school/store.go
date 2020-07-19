@@ -1,9 +1,10 @@
 package school
 
 import (
-	"github.com/chrsep/vor/pkg/lessonplan"
 	"mime/multipart"
 	"time"
+
+	"github.com/chrsep/vor/pkg/lessonplan"
 
 	"github.com/pkg/errors"
 )
@@ -36,17 +37,22 @@ type (
 	}
 
 	Student struct {
-		Id          string
-		Name        string
-		SchoolId    string
-		ProfilePic  string
-		DateOfBirth *time.Time
-		Gender      Gender
-		DateOfEntry *time.Time
-		Note        string
-		CustomId    string
-		Active      bool
-		Classes     []Class
+		Id           string
+		Name         string
+		SchoolId     string
+		DateOfBirth  *time.Time
+		Gender       Gender
+		DateOfEntry  *time.Time
+		Note         string
+		CustomId     string
+		Active       bool
+		Classes      []Class
+		ProfileImage Image
+	}
+
+	Image struct {
+		Id        string
+		ObjectKey string
 	}
 
 	Gender int
@@ -135,5 +141,10 @@ type (
 		GetLessonPlans(schoolId string, date time.Time) ([]LessonPlan, error)
 		GetLessonFiles(schoolId string) ([]File, error)
 		CreateLessonPlan(input lessonplan.PlanData) (*lessonplan.LessonPlan, error)
+		CreateImage(schoolId string, image multipart.File, header *multipart.FileHeader) (string, error)
+		GetUser(email string) (*User, error)
+	}
+	MailService interface {
+		SendInviteEmail(email string, inviteCode string, schoolName string) error
 	}
 )

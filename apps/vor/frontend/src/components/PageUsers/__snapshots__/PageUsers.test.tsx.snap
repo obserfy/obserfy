@@ -84,7 +84,7 @@ exports[`PageUsers should render correctly 1`] = `
       class="emotion-4"
     >
       <a
-        href="/dashboard/settings"
+        href="/dashboard/admin"
         style="display: block;"
       >
         <div

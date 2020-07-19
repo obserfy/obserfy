@@ -231,7 +231,7 @@ exports[`Page404 should render correctly 1`] = `
           Oops, we can't seem to find the page you are looking for.
         </p>
         <a
-          href="/dashboard/observe"
+          href="/dashboard/students"
         >
           <button
             class="emotion-3"

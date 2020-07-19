@@ -444,7 +444,7 @@ exports[`PageNewObservation should render correctly 1`] = `
       class="emotion-21"
     >
       <a
-        href="/dashboard/observe/students/overview?id="
+        href="/dashboard/students/overview?id="
         style="display: block;"
       >
         <div

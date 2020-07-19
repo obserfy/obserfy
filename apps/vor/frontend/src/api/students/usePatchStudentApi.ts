@@ -5,12 +5,13 @@ import {
   useMutation,
 } from "react-query"
 import { patchApi } from "../fetchApi"
+import { Dayjs } from "../../dayjs"
 
 interface UpdateStudentRequestBody {
   name?: string
   customId?: string
-  dateOfBirth?: string
-  dateOfEntry?: string
+  dateOfBirth?: Dayjs
+  dateOfEntry?: Dayjs
   gender?: number
   active?: boolean
 }

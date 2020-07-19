@@ -409,7 +409,7 @@ exports[`PageHome should render correctly 1`] = `
           </div>
         </label>
         <a
-          href="/dashboard/observe/students/new"
+          href="/dashboard/students/new"
           style="flex-shrink: 0;"
         >
           <button
