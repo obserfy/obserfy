@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.8.0](https://github.com/obserfy/obserfy/compare/v1.7.1...v1.8.0) (2020-07-19)
+
+
+### Features
+
+* add post new image api. Refactor test. ([87a1207](https://github.com/obserfy/obserfy/commit/87a12075e216a42ba2c893d9880d6957897d8ee4))
+* Add usePostNewImage hook. Upload image using new api on new student page. ([b5a83c7](https://github.com/obserfy/obserfy/commit/b5a83c73268964ce1c0c5c795239e020374759bd))
+
+
+### Bug Fixes
+
+* get school's students api throwing 500 ([45b9ade](https://github.com/obserfy/obserfy/commit/45b9ade7316b1d2191c6de61d1cde9bd5a5c61b4))
+* uploaded student image were not being saved into db. ([b1cd072](https://github.com/obserfy/obserfy/commit/b1cd072aca13e071bece3d223fa743a311f0d429))
+
 ### [1.7.1](https://github.com/obserfy/obserfy/compare/v1.7.0...v1.7.1) (2020-07-11)
 
 
