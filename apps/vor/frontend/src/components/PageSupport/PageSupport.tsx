@@ -30,7 +30,7 @@ export const PageSupport: FC = () => {
         },
       })
     }
-  }, [status])
+  }, [status, data])
   return (
     <Box mx="auto" sx={{ maxWidth: "maxWidth.sm" }}>
       <Typography.H6 mx={3} mt={4} mb={2}>
