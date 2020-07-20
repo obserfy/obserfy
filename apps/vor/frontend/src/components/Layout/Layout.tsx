@@ -6,7 +6,7 @@ import {
   SCHOOL_ID_UNDEFINED_PLACEHOLDER,
 } from "../../hooks/schoolIdState"
 import Navbar from "../Navbar/Navbar"
-import { useIdentify } from "../../api/useIdentify"
+import { useGetUserProfile } from "../../api/useGetUserProfile"
 
 /** Top level component which encapsulate most pages. Provides Appbar and Sidebar for navigation.
  *
@@ -15,7 +15,7 @@ import { useIdentify } from "../../api/useIdentify"
  * in src/layouts/index.tsx.
  * */
 export const Layout: FC = ({ children }) => {
-  useIdentify()
+  useGetUserProfile()
 
   if (getSchoolId() === SCHOOL_ID_UNDEFINED_PLACEHOLDER) {
     navigate("/choose-school")

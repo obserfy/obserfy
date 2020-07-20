@@ -8,7 +8,7 @@ interface GetUserResponse {
   email: string
   name: string
 }
-export const useIdentify = () => {
+export const useGetUserProfile = () => {
   const identify = async () => {
     const user = await getApi<GetUserResponse>("/users")()
     const school = await getApi<GetSchoolResponse>(
@@ -21,6 +21,16 @@ export const useIdentify = () => {
         email: user.email,
         school: school.name,
       })
+    }
+
+    return {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      school: {
+        id: getSchoolId(),
+        name: school.name,
+      },
     }
   }
 
