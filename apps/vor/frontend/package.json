@@ -27,7 +27,7 @@
     "gatsby-plugin-remove-trailing-slashes": "2.3.11",
     "gatsby-plugin-segment-js": "3.3.0",
     "gatsby-plugin-sentry": "1.0.1",
-    "gatsby-plugin-sharp": "2.6.19",
+    "gatsby-plugin-sharp": "2.6.20",
     "gatsby-plugin-svgr": "2.0.2",
     "gatsby-plugin-theme-ui": "0.3.0",
     "gatsby-plugin-webpack-bundle-analyser-v2": "1.1.10",
