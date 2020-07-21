@@ -351,7 +351,9 @@ exports[`Layout should render correctly 1`] = `
     </nav>
     <main
       class="emotion-13"
-    />
+    >
+      <div />
+    </main>
   </div>
 </div>
 `;

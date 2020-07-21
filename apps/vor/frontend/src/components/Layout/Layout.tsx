@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import React, { FC, useEffect, useState } from "react"
 import { navigate } from "gatsby"
 import { Box } from "theme-ui"
 import {
@@ -7,6 +7,7 @@ import {
 } from "../../hooks/schoolIdState"
 import Navbar from "../Navbar/Navbar"
 import { useGetUserProfile } from "../../api/useGetUserProfile"
+import Typography from "../Typography/Typography"
 
 /** Top level component which encapsulate most pages. Provides Appbar and Sidebar for navigation.
  *
@@ -31,9 +32,50 @@ export const Layout: FC = ({ children }) => {
         pb={[48, 0]}
         mb="env(safe-area-inset-bottom)"
       >
+        <UpdateNotification />
         {children}
       </Box>
     </>
+  )
+}
+
+const UpdateNotification = () => {
+  const [updateAvailable, setUpdateAvailable] = useState(false)
+
+  useEffect(() => {
+    window.updateAvailable = () => {
+      setUpdateAvailable(true)
+    }
+    return () => {
+      window.updateAvailable = undefined
+    }
+  }, [])
+
+  if (!updateAvailable) return <div />
+
+  return (
+    <Box sx={{ backgroundColor: "primary", width: "100%" }}>
+      <Typography.Body
+        color="onPrimary"
+        sx={{ fontSize: 1, textAlign: "center" }}
+      >
+        <span role="img" aria-label="hooray">
+          🎉🎉
+        </span>{" "}
+        Update is available!{" "}
+        <Box
+          sx={{
+            display: "inline",
+            textDecoration: "underline",
+            fontWeight: "bold",
+            cursor: "pointer",
+          }}
+          onClick={() => window.location.reload()}
+        >
+          Update Now
+        </Box>
+      </Typography.Body>
+    </Box>
   )
 }
 
