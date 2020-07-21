@@ -6,7 +6,6 @@ import Typography from "../Typography/Typography"
 import Spacer from "../Spacer/Spacer"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import { deleteAreaApi } from "../../api/deleteAreaApi"
-import { getAnalytics } from "../../analytics"
 
 interface Props {
   onDismiss: () => void
@@ -27,9 +26,9 @@ export const DeleteAreaDialog: FC<Props> = ({
     const response = await deleteAreaApi(areaId)
     if (response.status === 200 || response.status === 400) {
       onDeleted()
-      getAnalytics()?.track("Area deleted", { statusCode: response.status })
+      analytics.track("Area deleted", { statusCode: response.status })
     } else {
-      getAnalytics()?.track("Area delete fail", {
+      analytics.track("Area delete fail", {
         statusCode: response.status,
         areaId,
       })

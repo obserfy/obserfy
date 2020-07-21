@@ -8,7 +8,7 @@ import {
   useGetSubjectMaterials,
 } from "../../api/useGetSubjectMaterials"
 import { useGetArea } from "../../api/useGetArea"
-import { getAnalytics } from "../../analytics"
+
 import { CURRICULUM_AREA_URL } from "../../routes"
 import DraggableMaterialListItem from "../DraggableMaterialListItem/DraggableMaterialListItem"
 import BackNavigation from "../BackNavigation/BackNavigation"
@@ -67,7 +67,7 @@ export const PageEditSubject: FC<Props> = ({ areaId, subjectId }) => {
     })
 
     if (response.status === 200) {
-      getAnalytics()?.track("Subject Created", {
+      analytics.track("Subject Created", {
         responseStatus: response.status,
         studentName: subjectName,
       })

@@ -3,7 +3,6 @@ import { navigate } from "gatsby"
 import { Flex, Box, Button, Card } from "theme-ui"
 import { Typography } from "../Typography/Typography"
 import Input from "../Input/Input"
-import { getAnalytics } from "../../analytics"
 
 interface Props {
   inviteCode?: string
@@ -27,7 +26,7 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
   }, [inviteCode])
 
   async function submitRegisterForm(): Promise<void> {
-    getAnalytics()?.track("User Register")
+    analytics.track("User Register")
     const credentials = new FormData()
     credentials.append("email", email)
     credentials.append("password", password)
@@ -39,10 +38,10 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
       body: credentials,
     })
     if (response.status === 200) {
-      getAnalytics()?.track("User Register Success")
+      analytics.track("User Register Success")
       navigate("/choose-school")
     } else if (response.status === 409) {
-      getAnalytics()?.track("User Register Failed", {
+      analytics.track("User Register Failed", {
         email,
         status: response.status,
       })

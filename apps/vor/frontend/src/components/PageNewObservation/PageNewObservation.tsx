@@ -10,7 +10,7 @@ import Spacer from "../Spacer/Spacer"
 import Typography from "../Typography/Typography"
 import { useGetStudent } from "../../api/useGetStudent"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
-import { getAnalytics } from "../../analytics"
+
 import { createObservationApi } from "../../api/createObservationApi"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import { STUDENT_OVERVIEW_PAGE_URL } from "../../routes"
@@ -35,12 +35,12 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
     })
 
     if (response.status === 201) {
-      getAnalytics()?.track("Observation Created", {
+      analytics.track("Observation Created", {
         responseStatus: response.status,
       })
       window.history?.back()
     } else {
-      getAnalytics()?.track("Create Observation Failed", {
+      analytics.track("Create Observation Failed", {
         responseStatus: response.status,
       })
       setSubmitting(false)

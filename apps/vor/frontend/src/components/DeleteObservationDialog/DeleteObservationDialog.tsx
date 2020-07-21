@@ -5,7 +5,6 @@ import Spacer from "../Spacer/Spacer"
 
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import Dialog from "../Dialog/Dialog"
-import { getAnalytics } from "../../analytics"
 
 interface Props {
   shortDesc: string
@@ -29,7 +28,7 @@ export const DeleteObservationDialog: FC<Props> = ({
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     })
-    getAnalytics()?.track("Observation Deleted", {
+    analytics.track("Observation Deleted", {
       responseStatus: response.status,
       observationId,
     })
