@@ -1,8 +1,10 @@
 package main
 
 import (
+	"fmt"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/go-pg/pg/v10"
+	"io/ioutil"
 	"net/http"
 	"os"
 	"strings"
@@ -16,6 +18,14 @@ func createFrontendAuthMiddleware(db *pg.DB, folder string) func(next http.Handl
 	return func(next http.Handler) http.Handler {
 		fn := func(w http.ResponseWriter, r *http.Request) {
 			path := r.URL.Path
+
+			// returns 404 page with 404 sstatus code
+			if path == "/404" {
+				w.WriteHeader(http.StatusNotFound)
+				fileContents, _ := ioutil.ReadFile(folder + "/404/index.html")
+				_, _ = fmt.Fprint(w, string(fileContents))
+				return
+			}
 
 			// Make sure all request to path under dashboard has a valid session,
 			// else redirect to login.
@@ -72,7 +82,28 @@ func createFrontendAuthMiddleware(db *pg.DB, folder string) func(next http.Handl
 				}
 			}
 
-			next.ServeHTTP(w, r)
+			// Detect if we got 404
+			if _, err := os.Stat(fmt.Sprintf("%s", folder) + r.RequestURI); os.IsNotExist(err) {
+				// Check user session
+				token, err := r.Cookie("session")
+				if err != nil {
+					http.Redirect(w, r, "/login", http.StatusFound)
+					return
+				}
+
+				var session postgres.Session
+				err = db.Model(&session).Where("token=?", token.Value).Select()
+				// Redirect to login if user is not logged in
+				if err != nil {
+					http.Redirect(w, r, "/login", http.StatusFound)
+					return
+				}
+
+				// Redirect to 404 page if user is not logged in
+				http.Redirect(w, r, "/404", http.StatusFound)
+			} else {
+				next.ServeHTTP(w, r)
+			}
 		}
 		return http.HandlerFunc(fn)
 	}
