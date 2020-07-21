@@ -51,19 +51,19 @@ export const PageSupport: FC = () => {
         </a>
         <a href="https://feedback.obserfy.com">
           <Flex p={3} sx={{ alignItems: "center" }}>
-            <Typography.Body>Roadmap</Typography.Body>
+            <Typography.Body>Our roadmap</Typography.Body>
             <Icon as={NextIcon} m={0} ml="auto" />
           </Flex>
         </a>
       </Card>
 
       <Typography.H6 m={3} mt={4} mb={2}>
-        We are here to help
+        Get help
       </Typography.H6>
       <Card sx={{ borderRadius: [0, "default"] }}>
         <Flex m={3} sx={{ alignItems: "flex-start" }}>
           <Box mr={3}>
-            <Typography.Body>Shoot us an Email</Typography.Body>
+            <Typography.Body>Shoot us an e-mail</Typography.Body>
             <Typography.Body color="textMediumEmphasis">
               Have a question? Shoot us an email at chrsep@protonmail.com
             </Typography.Body>

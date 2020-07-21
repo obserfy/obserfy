@@ -316,7 +316,7 @@ exports[`PageSupport should render correctly 1`] = `
             <p
               class="emotion-1"
             >
-              Roadmap
+              Our roadmap
             </p>
             <div
               class="emotion-2"
@@ -327,7 +327,7 @@ exports[`PageSupport should render correctly 1`] = `
       <h6
         class="emotion-11"
       >
-        We are here to help
+        Get help
       </h6>
       <div
         class="emotion-10"
@@ -341,7 +341,7 @@ exports[`PageSupport should render correctly 1`] = `
             <p
               class="emotion-1"
             >
-              Shoot us an Email
+              Shoot us an e-mail
             </p>
             <p
               class="emotion-13"
