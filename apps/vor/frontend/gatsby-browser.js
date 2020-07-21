@@ -38,3 +38,9 @@ export const shouldUpdateScroll = ({
 
   return true
 }
+
+export const onServiceWorkerUpdateReady = () => {
+  if (window.updateAvailable) {
+    window.updateAvailable()
+  }
+}

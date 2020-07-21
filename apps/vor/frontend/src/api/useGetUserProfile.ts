@@ -15,7 +15,7 @@ export const useGetUserProfile = () => {
       `/schools/${getSchoolId()}`
     )()
 
-    if (user) {
+    if (user && school) {
       analytics.identify(user.id, {
         name: user.name,
         email: user.email,
