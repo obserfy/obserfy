@@ -5,7 +5,7 @@ import Select from "../Select/Select"
 import Input from "../Input/Input"
 import TextArea from "../TextArea/TextArea"
 import { Observation } from "../../api/useGetObservations"
-import { getAnalytics } from "../../analytics"
+
 import Dialog from "../Dialog/Dialog"
 
 import Typography from "../Typography/Typography"
@@ -45,7 +45,7 @@ export const EditObservationDialog: FC<Props> = ({
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(observation),
     })
-    getAnalytics()?.track("Observation Updated", {
+    analytics.track("Observation Updated", {
       responseStatus: response.status,
       observationId: observation.id,
     })

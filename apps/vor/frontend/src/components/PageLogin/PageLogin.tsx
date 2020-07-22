@@ -5,7 +5,6 @@ import Input from "../Input/Input"
 
 import { Link } from "../Link/Link"
 import { Typography } from "../Typography/Typography"
-import { getAnalytics } from "../../analytics"
 
 export const PageLogin: FC = () => {
   const [email, setEmail] = useState("")
@@ -21,10 +20,10 @@ export const PageLogin: FC = () => {
     })
     if (response.status === 200) {
       await navigate("/choose-school")
-      getAnalytics()?.track("User Login Success")
+      analytics.track("User Login Success")
     } else {
       setError("Wrong email or password")
-      getAnalytics()?.track("User Login Failed", {
+      analytics.track("User Login Failed", {
         email,
         status: response.status,
       })

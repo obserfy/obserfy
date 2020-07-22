@@ -11,7 +11,6 @@ import { ReactComponent as CheckmarkIcon } from "../../icons/checkmark.svg"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import { doPasswordResetApi } from "../../api/doPasswordResetApi"
-import { getAnalytics } from "../../analytics"
 import Spacer from "../Spacer/Spacer"
 
 interface Props {
@@ -53,11 +52,11 @@ export const PageResetPassword: FC<Props> = ({ token }) => {
     const response = await doPasswordResetApi(token, password)
     if (response.status === 200) {
       setSuccess(true)
-      getAnalytics()?.track("Password reset success")
+      analytics.track("Password reset success")
     } else {
       const body = await response.json()
       setError(body?.error?.message ?? "Something went wrong, please try again")
-      getAnalytics()?.track("Password reset failed")
+      analytics.track("Password reset failed")
     }
 
     setLoading(false)

@@ -10,13 +10,7 @@ const LayoutManager: FC<any> = ({ children, pageContext }) => (
   <ErrorBoundary>
     <GlobalStyle />
     {pageContext.layout === "open" ? (
-      <Box
-        sx={{
-          backgroundColor: "background",
-        }}
-      >
-        {children}
-      </Box>
+      <Box sx={{ backgroundColor: "background" }}>{children}</Box>
     ) : (
       <Layout>{children}</Layout>
     )}

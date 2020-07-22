@@ -29,3 +29,9 @@ declare module "*.css" {
 }
 
 declare const Sentry: typeof import("@sentry/browser")
+
+declare const Canny: (method: string, data: any) => void
+
+interface Window {
+  updateAvailable?: () => void
+}
