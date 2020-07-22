@@ -13,7 +13,7 @@
     "@auth0/nextjs-auth0": "0.15.0",
     "@prefresh/next": "0.3.2",
     "@types/react": "16.9.41",
-    "dayjs": "1.8.29",
+    "dayjs": "1.8.30",
     "imagemin-mozjpeg": "9.0.0",
     "imagemin-optipng": "8.0.0",
     "imagemin-svgo": "8.0.0",
