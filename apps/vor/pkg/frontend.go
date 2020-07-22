@@ -74,14 +74,6 @@ func createFrontendAuthMiddleware(db *pg.DB, folder string) func(next http.Handl
 				}
 			}
 
-			// returns 404 page with 404 sstatus code
-			if path == "/404" {
-				w.WriteHeader(http.StatusNotFound)
-				fileContents, _ := ioutil.ReadFile(folder + "/404/index.html")
-				_, _ = fmt.Fprint(w, string(fileContents))
-				return
-			}
-
 			// Detect if we got 404
 			if _, err := os.Stat(fmt.Sprintf("%s", folder) + path); os.IsNotExist(err) {
 				// Check user session
@@ -99,8 +91,10 @@ func createFrontendAuthMiddleware(db *pg.DB, folder string) func(next http.Handl
 					return
 				}
 
-				// Redirect to 404 page if user is not logged in
-				http.Redirect(w, r, "/404", http.StatusFound)
+				// Return 404 page when not found
+				w.WriteHeader(http.StatusNotFound)
+				fileContents, _ := ioutil.ReadFile(folder + "/404/index.html")
+				_, _ = fmt.Fprint(w, string(fileContents))
 			} else {
 				next.ServeHTTP(w, r)
 			}
