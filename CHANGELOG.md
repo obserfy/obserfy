@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.9.0](https://github.com/obserfy/obserfy/compare/v1.8.0...v1.9.0) (2020-07-22)
+
+
+### Features
+
+* Add update notification. ([#710](https://github.com/obserfy/obserfy/issues/710)) ([1a422d0](https://github.com/obserfy/obserfy/commit/1a422d0791390aaebfb5cddc530c8a466e59a084))
+
+
+### Bug Fixes
+
+* **deps:** update dependency dayjs to v1.8.30 ([9eb0477](https://github.com/obserfy/obserfy/commit/9eb047782558f2ff60e30413c0c4cf55313dee74))
+* **deps:** update dependency gatsby to v2.24.5 ([3398f14](https://github.com/obserfy/obserfy/commit/3398f14486b3aca96a53a007d8a41fde2127facb))
+* **deps:** update dependency gatsby-plugin-sharp to v2.6.20 ([e04fe49](https://github.com/obserfy/obserfy/commit/e04fe49902f227131af47350672335b3751156ac))
+* **deps:** update dependency next-optimized-images to v3.0.0-canary.1 ([8373979](https://github.com/obserfy/obserfy/commit/837397974bc06d8d76c566a3ebb95b1906928eb0))
+* **deps:** update dependency react-optimized-image to v0.3.0 ([b72f7a1](https://github.com/obserfy/obserfy/commit/b72f7a17354b3abaf88d4982872cabca2ec066bc))
+* **deps:** update dependency react-optimized-image to v0.3.1 ([2684558](https://github.com/obserfy/obserfy/commit/2684558f1013fdd69b09498dc88898169c5b5888))
+* **deps:** update dependency react-query to v2.5.5 ([08822b1](https://github.com/obserfy/obserfy/commit/08822b115def477bc75ed4d3388d5d21efc1bc2d))
+* **deps:** update dependency tailwindcss to v1.5.2 ([27a16d2](https://github.com/obserfy/obserfy/commit/27a16d26b2fd970fdcf579ada6e816b5dc44f123))
+* **deps:** update gatsby ([f00b718](https://github.com/obserfy/obserfy/commit/f00b7183f4672660964380dab1376e8e16864c2b))
+
 ## [1.8.0](https://github.com/obserfy/obserfy/compare/v1.7.1...v1.8.0) (2020-07-19)
 
 
