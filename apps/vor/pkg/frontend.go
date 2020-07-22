@@ -1,8 +1,10 @@
 package main
 
 import (
+	"fmt"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/go-pg/pg/v10"
+	"io/ioutil"
 	"net/http"
 	"os"
 	"strings"
@@ -72,7 +74,30 @@ func createFrontendAuthMiddleware(db *pg.DB, folder string) func(next http.Handl
 				}
 			}
 
-			next.ServeHTTP(w, r)
+			// Detect if we got 404
+			if _, err := os.Stat(fmt.Sprintf("%s", folder) + path); os.IsNotExist(err) {
+				// Check user session
+				token, err := r.Cookie("session")
+				if err != nil {
+					http.Redirect(w, r, "/login", http.StatusFound)
+					return
+				}
+
+				var session postgres.Session
+				err = db.Model(&session).Where("token=?", token.Value).Select()
+				// Redirect to login if user is not logged in
+				if err != nil {
+					http.Redirect(w, r, "/login", http.StatusFound)
+					return
+				}
+
+				// Return 404 page when not found
+				w.WriteHeader(http.StatusNotFound)
+				fileContents, _ := ioutil.ReadFile(folder + "/404/index.html")
+				_, _ = fmt.Fprint(w, string(fileContents))
+			} else {
+				next.ServeHTTP(w, r)
+			}
 		}
 		return http.HandlerFunc(fn)
 	}
