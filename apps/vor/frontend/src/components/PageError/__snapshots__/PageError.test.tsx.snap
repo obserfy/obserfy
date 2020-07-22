@@ -305,7 +305,7 @@ exports[`PageError should render correctly 1`] = `
           class="emotion-4"
         >
           <a
-            href="https://feedback.obserfy.com/bug-reports"
+            href="https://feedback.obserfy.com/bug-reports/create"
           >
             <button
               class="emotion-2"

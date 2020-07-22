@@ -73,7 +73,7 @@ export const PageError: FC = () => {
           Sorry, please try reloading the page.
         </Typography.Body>
         <Flex>
-          <a href="https://feedback.obserfy.com/bug-reports">
+          <a href="https://feedback.obserfy.com/bug-reports/create">
             <Button variant="outline">Report</Button>
           </a>
           <a href="/">
