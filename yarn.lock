@@ -3123,7 +3123,7 @@
     "@sentry/utils" "5.20.0"
     tslib "^1.9.3"
 
-"@sentry/gatsby@^5.20.0":
+"@sentry/gatsby@5.20.0":
   version "5.20.0"
   resolved "https://registry.yarnpkg.com/@sentry/gatsby/-/gatsby-5.20.0.tgz#edcd97b321b2d36f8d78d40629eedd8d2007deba"
   integrity sha512-DvVlKYpFexLZ3zLK+IvNd3GU+KctQvbR6pnb73xDyXtzt5sDfdOBDX/MSp9y516Bzzne83cXbRkEo1U0SE5K7g==
