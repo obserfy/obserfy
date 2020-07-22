@@ -17006,14 +17006,14 @@ next-compose-plugins@2.2.0:
   resolved "https://registry.yarnpkg.com/next-compose-plugins/-/next-compose-plugins-2.2.0.tgz#95cd8eb40ab0652070d76572fb648354191628b0"
   integrity sha512-ChUlpT9tWfJ7YxqGw/WQ2T1gf8EeX93n1XqeQw0lkvGa7seszahvF4eOZUJoq7Hetsbzg4UHVnPoCXfXTyQR3g==
 
-next-optimized-images@3.0.0-canary.0:
-  version "3.0.0-canary.0"
-  resolved "https://registry.yarnpkg.com/next-optimized-images/-/next-optimized-images-3.0.0-canary.0.tgz#777e4e69591b8540a5dacdf253de53b84fc65763"
-  integrity sha512-+aXAXsobpBXxqydRC8udtAlbH+5fbzZd1sefkPVbwtRYYMbvXrZZg4nwV6fnzK6qN9xXM7C40yT/vieaC1SLMA==
+next-optimized-images@3.0.0-canary.1:
+  version "3.0.0-canary.1"
+  resolved "https://registry.yarnpkg.com/next-optimized-images/-/next-optimized-images-3.0.0-canary.1.tgz#d9500f721ee2be9b56bf8d902b027095adc8a466"
+  integrity sha512-6eZfYVkYf61tkqp0GFnrKAZHagZw2XYeOHDCNCTZN3GfJtdfBPPyxZTMy7oC3JrfD5UFz0npxU2kHV3iW7dOxQ==
   dependencies:
     file-loader "^6.0.0"
     optimized-images-loader "^0.2.1"
-    react-optimized-image "^0.2.0"
+    react-optimized-image "^0.3.0"
 
 next-tick@^1.0.0:
   version "1.1.0"
@@ -20278,7 +20278,7 @@ react-load-script@^0.0.6:
   resolved "https://registry.yarnpkg.com/react-load-script/-/react-load-script-0.0.6.tgz#db6851236aaa25bb622677a2eb51dad4f8d2c258"
   integrity sha512-aRGxDGP9VoLxcsaYvKWIW+LRrMOzz2eEcubTS4NvQPPugjk2VvMhow0wWTkSl7RxookomD1MwcP4l5UStg5ShQ==
 
-react-optimized-image@0.3.0:
+react-optimized-image@0.3.0, react-optimized-image@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/react-optimized-image/-/react-optimized-image-0.3.0.tgz#0e9e9e73cb77d5784417d32abe2e928b164e9ad7"
   integrity sha512-CPtTigEmOwNNiMYS3k1SxZKe6nh1tVia1lBpUC2tsPnI1AiE9t96KOmwd2/eegAdfdHsXBo8/iPBTCgM1fs/kw==
@@ -20286,15 +20286,6 @@ react-optimized-image@0.3.0:
     app-root-path "^3.0.0"
     babel-explode-module "^3.0.0"
     babel-file-loader "^2.0.0"
-    babel-plugin-syntax-jsx "^6.18.0"
-    clone "^2.1.2"
-
-react-optimized-image@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/react-optimized-image/-/react-optimized-image-0.2.0.tgz#086495aee68b90241b244804c66eefabed20b947"
-  integrity sha512-Z6Yh8ymG9xU9Lu+DqEC7gtH5Sl9U95bpWY4Oh/VgytemDaaZqhBTqFvZp2S35foTYY+9AQYr51CQNE+I2N56Rg==
-  dependencies:
-    app-root-path "^3.0.0"
     babel-plugin-syntax-jsx "^6.18.0"
     clone "^2.1.2"
 
