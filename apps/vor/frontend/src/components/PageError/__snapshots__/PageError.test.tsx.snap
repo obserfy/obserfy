@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageError should render correctly 1`] = `
-.emotion-9 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,12 +9,12 @@ exports[`PageError should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-9 {
+  .emotion-7 {
     font-size: 20px;
   }
 }
 
-.emotion-8 {
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -34,7 +34,7 @@ exports[`PageError should render correctly 1`] = `
   width: 100vw;
 }
 
-.emotion-7 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -67,30 +67,30 @@ exports[`PageError should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   padding-top: 16px;
   margin: 16px;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   text-align: center;
+  line-height: 1.2;
 }
 
 .emotion-1 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 300;
-  line-height: heading;
-  font-size: 2rem;
+  font-weight: 400;
   line-height: 3rem;
-  -webkit-letter-spacing: 0;
-  -moz-letter-spacing: 0;
-  -ms-letter-spacing: 0;
-  letter-spacing: 0;
   text-rendering: optimizeLegibility;
   margin-bottom: 32px;
+  margin-left: 16px;
+  margin-right: 16px;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  text-align: center;
 }
 
-.emotion-5 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -170,10 +170,6 @@ exports[`PageError should render correctly 1`] = `
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-4 {
-  margin-left: 8px;
-}
-
 .emotion-3 {
   box-sizing: border-box;
   margin: 0;
@@ -222,6 +218,7 @@ exports[`PageError should render correctly 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   touch-action: manipulation;
+  margin-left: 8px;
 }
 
 .emotion-3:disabled {
@@ -240,32 +237,15 @@ exports[`PageError should render correctly 1`] = `
   background-color: var(--theme-ui-colors-primary,#00e399);
 }
 
-.emotion-6 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  color: rgba(0,0,0,0.88);
-  font-size: 1.6rem;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 400;
-  line-height: 3rem;
-  text-rendering: optimizeLegibility;
-  margin: 16px;
-  margin-top: 32px;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  font-size: 14px;
-  text-align: center;
-}
-
 <div>
   <div
-    class="emotion-9"
+    class="emotion-7"
   >
     <div
-      class="emotion-8"
+      class="emotion-6"
     >
       <div
-        class="emotion-7"
+        class="emotion-5"
       >
         <div
           class=" gatsby-image-wrapper"
@@ -316,39 +296,33 @@ exports[`PageError should render correctly 1`] = `
         >
           Oops, Something went wrong
         </h3>
-        <h6
+        <p
           class="emotion-1"
         >
-          Try reloading the page, sorry
-        </h6>
+          Sorry, please try reloading the page.
+        </p>
         <div
-          class="emotion-5"
+          class="emotion-4"
         >
           <a
-            href="https://github.com/chrsep/obserfy/issues/new?assignees=&labels=&template=bug_report.md&title="
+            href="https://feedback.obserfy.com/bug-reports/create"
           >
             <button
               class="emotion-2"
             >
-              Report Bug
+              Report
             </button>
           </a>
           <a
-            class="emotion-4"
-            href="/dashboard/students"
+            href="/"
           >
             <button
               class="emotion-3"
             >
-              Go to Home
+              Reload
             </button>
           </a>
         </div>
-        <p
-          class="emotion-6"
-        >
-          Just a heads up, you'll need a Github account to report a bug.
-        </p>
       </div>
     </div>
   </div>
