@@ -19,14 +19,6 @@ func createFrontendAuthMiddleware(db *pg.DB, folder string) func(next http.Handl
 		fn := func(w http.ResponseWriter, r *http.Request) {
 			path := r.URL.Path
 
-			// returns 404 page with 404 sstatus code
-			if path == "/404" {
-				w.WriteHeader(http.StatusNotFound)
-				fileContents, _ := ioutil.ReadFile(folder + "/404/index.html")
-				_, _ = fmt.Fprint(w, string(fileContents))
-				return
-			}
-
 			// Make sure all request to path under dashboard has a valid session,
 			// else redirect to login.
 			if strings.HasPrefix(path, "/dashboard") || path == "/" {
@@ -82,8 +74,16 @@ func createFrontendAuthMiddleware(db *pg.DB, folder string) func(next http.Handl
 				}
 			}
 
+			// returns 404 page with 404 sstatus code
+			if path == "/404" {
+				w.WriteHeader(http.StatusNotFound)
+				fileContents, _ := ioutil.ReadFile(folder + "/404/index.html")
+				_, _ = fmt.Fprint(w, string(fileContents))
+				return
+			}
+
 			// Detect if we got 404
-			if _, err := os.Stat(fmt.Sprintf("%s", folder) + r.RequestURI); os.IsNotExist(err) {
+			if _, err := os.Stat(fmt.Sprintf("%s", folder) + path); os.IsNotExist(err) {
 				// Check user session
 				token, err := r.Cookie("session")
 				if err != nil {
