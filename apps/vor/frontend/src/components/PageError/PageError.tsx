@@ -1,12 +1,11 @@
 /** @jsx jsx */
-import { FC } from "react"
+import { FC, useEffect } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import GatsbyImage, { FixedObject } from "gatsby-image"
-import { jsx, Button, Flex } from "theme-ui"
+import { Button, Flex, jsx } from "theme-ui"
 import Typography from "../Typography/Typography"
-
-import { STUDENTS_URL } from "../../routes"
-import { Link } from "../Link/Link"
+import { useGetUserProfile } from "../../api/useGetUserProfile"
+import { loadCanny } from "../../canny"
 
 export const PageError: FC = () => {
   const astronaut = useStaticQuery(graphql`
@@ -20,6 +19,30 @@ export const PageError: FC = () => {
       }
     }
   `)
+
+  const { data, status } = useGetUserProfile()
+
+  useEffect(() => {
+    if (status === "success") {
+      loadCanny()
+      Canny("identify", {
+        appID: "5f0d32f03899af5d46779764",
+        user: {
+          // Replace these values with the current user's data
+          email: data?.email,
+          name: data?.name,
+          id: data?.id,
+          companies: [
+            {
+              name: data?.school.name,
+              id: data?.school.id,
+            },
+          ],
+        },
+      })
+    }
+  }, [status, data])
+
   return (
     <Flex
       sx={{
@@ -40,35 +63,23 @@ export const PageError: FC = () => {
         />
         <Typography.H3
           pt={3}
-          sx={{ textAlign: "center" }}
-          lineHeight={1.2}
+          sx={{ textAlign: "center", lineHeight: 1.2 }}
           m={3}
-          mb={2}
+          mb={3}
         >
           Oops, Something went wrong
         </Typography.H3>
-        <Typography.H6 mb={4}>Try reloading the page, sorry</Typography.H6>
-        <Flex>
-          <a href="https://github.com/chrsep/obserfy/issues/new?assignees=&labels=&template=bug_report.md&title=">
-            <Button variant="outline">Report Bug</Button>
-          </a>
-          <Link to={STUDENTS_URL} sx={{ ml: 2 }}>
-            <Button>Go to Home</Button>
-          </Link>
-        </Flex>
-        <Typography.Body
-          m={3}
-          mt={4}
-          sx={{
-            fontSize: 1,
-            textAlign: "center",
-          }}
-          color="textMediumEmphasis"
-          maxWidth={250}
-          lineHeight={1.5}
-        >
-          Just a heads up, you&apos;ll need a Github account to report a bug.
+        <Typography.Body mb={4} mx={3} sx={{ textAlign: "center" }}>
+          Sorry, please try reloading the page.
         </Typography.Body>
+        <Flex>
+          <a href="https://feedback.obserfy.com/bug-reports">
+            <Button variant="outline">Report</Button>
+          </a>
+          <a href="/">
+            <Button ml={2}>Reload</Button>
+          </a>
+        </Flex>
       </Flex>
     </Flex>
   )
