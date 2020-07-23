@@ -1,5 +1,6 @@
-import React, { FC, FormEvent, useState } from "react"
-import { Box, Flex, Button } from "theme-ui"
+/** @jsx jsx */
+import { FC, FormEvent, useState, Fragment } from "react"
+import { jsx, Box, Flex, Button } from "theme-ui"
 import { Link } from "../Link/Link"
 import { Typography } from "../Typography/Typography"
 import Input from "../Input/Input"
@@ -10,6 +11,7 @@ import { ReactComponent as BackIcon } from "../../icons/arrow-back.svg"
 import { ReactComponent as AlertIcon } from "../../icons/alert.svg"
 import Icon from "../Icon/Icon"
 import { mailPasswordResetApi } from "../../api/mailPasswordResetApi"
+import BrandBanner from "../BrandBanner/BrandBanner"
 
 function validateEmail(email: string): boolean {
   return email !== ""
@@ -47,29 +49,21 @@ export const PageForgotPassword: FC = () => {
   }
 
   return (
-    <Flex
-      sx={{
-        justifyContent: "center",
-        minHeight: "100vh",
-        minWidth: "100vw",
-      }}
-      pt={3}
-    >
+    <Box>
+      <BrandBanner />
       <Box
+        mx="auto"
         as="form"
         p={3}
-        sx={{ maxWidth: "maxWidth.sm", width: "100%" }}
+        sx={{ maxWidth: "maxWidth.xsm", width: "100%" }}
         onSubmit={handleSubmit}
       >
-        <Typography.H2 my={3}>Forgot Password</Typography.H2>
-        <Typography.Body
-          sx={{
-            fontSize: 2,
-          }}
-          my={4}
-        >
-          Can&apos;t remember your password? No problem, tell us your email
-          address and we&apos;ll help you reset it.
+        <Typography.H5 sx={{ fontWeight: "bold" }} my={3}>
+          Reset Password
+        </Typography.H5>
+        <Typography.Body sx={{ fontSize: 2 }} my={4}>
+          Can&apos;t remember your password? No problem, type email address and
+          we&apos;ll help you reset it.
         </Typography.Body>
         <Input
           sx={{ width: "100%" }}
@@ -89,14 +83,7 @@ export const PageForgotPassword: FC = () => {
             py={2}
             px={3}
           >
-            <Icon
-              sx={{}}
-              as={AlertIcon}
-              m={1}
-              ml={0}
-              mr={2}
-              fill="onTintError"
-            />
+            <Icon as={AlertIcon} m={1} ml={0} mr={2} fill="onTintError" />
             <Typography.Body
               sx={{
                 alignSelf: "flex-start",
@@ -109,10 +96,10 @@ export const PageForgotPassword: FC = () => {
             </Typography.Body>
           </Flex>
         )}
-        {success && (
-          <>
+        {success ? (
+          <Fragment>
             <Flex
-              my={3}
+              mb={3}
               py={2}
               px={3}
               backgroundColor="primaryLighter"
@@ -132,10 +119,7 @@ export const PageForgotPassword: FC = () => {
               />
               <Typography.Body
                 color="textPrimary"
-                sx={{
-                  width: "100%",
-                  fontSize: 1,
-                }}
+                sx={{ width: "100%", fontSize: 1 }}
                 ml={1}
               >
                 We&apos;ve sent an email to you. Please check your inbox :)
@@ -147,23 +131,26 @@ export const PageForgotPassword: FC = () => {
                 Go Back
               </Button>
             </Link>
-          </>
-        )}
-        {!success && (
-          <Flex>
-            <Link to="/login" style={{ width: "100%" }}>
-              <Button type="button" variant="outlineBig" sx={{ width: "100%" }}>
-                Login
-              </Button>
-            </Link>
-            <Button variant="primaryBig" sx={{ width: "100%" }} ml={3}>
+          </Fragment>
+        ) : (
+          <Fragment>
+            <Button sx={{ width: "100%" }}>
               {loading && <LoadingIndicator color="onPrimary" />}
-              Reset
+              Reset Password
             </Button>
-          </Flex>
+            <Typography.Body
+              mt={3}
+              color="textMediumEmphasis"
+              sx={{ textAlign: "center" }}
+            >
+              <Link to="/login" sx={{ color: "textPrimary" }}>
+                Back to Login
+              </Link>
+            </Typography.Body>
+          </Fragment>
         )}
       </Box>
-    </Flex>
+    </Box>
   )
 }
 
