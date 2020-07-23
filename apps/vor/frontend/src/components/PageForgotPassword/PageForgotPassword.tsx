@@ -1,6 +1,6 @@
 /** @jsx jsx */
-import { FC, FormEvent, useState, Fragment } from "react"
-import { jsx, Box, Flex, Button } from "theme-ui"
+import { FC, Fragment, useState } from "react"
+import { Box, Button, Flex, jsx } from "theme-ui"
 import { Link } from "../Link/Link"
 import { Typography } from "../Typography/Typography"
 import Input from "../Input/Input"
@@ -10,43 +10,15 @@ import { ReactComponent as CheckmarkIcon } from "../../icons/checkmark.svg"
 import { ReactComponent as BackIcon } from "../../icons/arrow-back.svg"
 import { ReactComponent as AlertIcon } from "../../icons/alert.svg"
 import Icon from "../Icon/Icon"
-import { mailPasswordResetApi } from "../../api/mailPasswordResetApi"
 import BrandBanner from "../BrandBanner/BrandBanner"
-
-function validateEmail(email: string): boolean {
-  return email !== ""
-}
+import usePostResetPasswordEmail from "../../api/usePostResetPasswordEmail"
 
 export const PageForgotPassword: FC = () => {
   const [email, setEmail] = useState("")
-  const [error, setError] = useState("")
-  const [loading, setLoading] = useState(false)
-  const [success, setSuccess] = useState(false)
-
-  async function handleSubmit(e: FormEvent): Promise<void> {
-    e.preventDefault()
-    // validate email
-    const isEmailValid = validateEmail(email)
-    if (!isEmailValid) {
-      setError("Invalid email address")
-      return
-    }
-
-    // Reset state
-    setLoading(true)
-    setSuccess(false)
-    setError("")
-
-    // Make the request
-    const response = await mailPasswordResetApi(email)
-    if (response.status === 200) {
-      setSuccess(true)
-    } else {
-      setSuccess(false)
-      setError("Failed requesting password reset, please try again.")
-    }
-    setLoading(false)
-  }
+  const [
+    postResetPasswordEmail,
+    { error, isLoading, isSuccess },
+  ] = usePostResetPasswordEmail()
 
   return (
     <Box>
@@ -56,14 +28,17 @@ export const PageForgotPassword: FC = () => {
         as="form"
         px={3}
         sx={{ maxWidth: "maxWidth.xsm", width: "100%" }}
-        onSubmit={handleSubmit}
+        onSubmit={(e) => {
+          e.preventDefault()
+          postResetPasswordEmail(email)
+        }}
       >
         <Typography.H5 sx={{ fontWeight: "bold" }} my={3}>
           Reset Password
         </Typography.H5>
         <Typography.Body sx={{ fontSize: 2 }} my={4}>
-          Can&apos;t remember your password? No problem, type email address and
-          we&apos;ll help you reset it.
+          Can&apos;t remember your password? No problem, type your email address
+          and we&apos;ll help you reset it.
         </Typography.Body>
         <Input
           sx={{ width: "100%" }}
@@ -72,7 +47,7 @@ export const PageForgotPassword: FC = () => {
           onChange={(e) => setEmail(e.target.value)}
           required
           mb={3}
-          disabled={success}
+          disabled={isSuccess}
           type="email"
         />
         {error && (
@@ -96,7 +71,7 @@ export const PageForgotPassword: FC = () => {
             </Typography.Body>
           </Flex>
         )}
-        {success ? (
+        {isSuccess ? (
           <Fragment>
             <Flex
               mb={3}
@@ -135,7 +110,7 @@ export const PageForgotPassword: FC = () => {
         ) : (
           <Fragment>
             <Button sx={{ width: "100%" }}>
-              {loading && <LoadingIndicator color="onPrimary" />}
+              {isLoading && <LoadingIndicator color="onPrimary" />}
               Reset Password
             </Button>
             <Typography.Body
