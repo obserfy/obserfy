@@ -1,8 +1,13 @@
-import React, { FC, FormEvent, useEffect, useState } from "react"
+/** @jsx jsx */
+import { FC, FormEvent, useEffect, useState } from "react"
 import { navigate } from "gatsby"
-import { Flex, Box, Button, Card } from "theme-ui"
+import { jsx, Flex, Box, Button, Card } from "theme-ui"
 import { Typography } from "../Typography/Typography"
 import Input from "../Input/Input"
+import BrandBanner from "../BrandBanner/BrandBanner"
+import { Link } from "../Link/Link"
+import Icon from "../Icon/Icon"
+import { ReactComponent as InfoIcon } from "../../icons/info.svg"
 
 interface Props {
   inviteCode?: string
@@ -55,27 +60,21 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
   }
 
   return (
-    <Flex
-      sx={{
-        justifyContent: "center",
-        minHeight: "100vh",
-        minWidth: "100vw",
-      }}
-      pt={[0, 6]}
-    >
+    <Box>
+      <BrandBanner />
       <Box
+        mx="auto"
         as="form"
-        p={3}
-        sx={{ width: "100%", maxWidth: "maxWidth.sm" }}
+        px={3}
+        sx={{ width: "100%", maxWidth: "maxWidth.xsm" }}
         onSubmit={handleSubmit}
-        mt={[0, -5]}
       >
         {inviter && (
           <Card
             p={3}
             mb={4}
             sx={{
-              borderBottomColor: "green",
+              borderBottomColor: "primary",
               borderBottomStyle: "solid",
               borderBottomWidth: 2,
             }}
@@ -90,7 +89,9 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
             </Typography.H4>
           </Card>
         )}
-        <Typography.H2 my={3}>Register</Typography.H2>
+        <Typography.H5 sx={{ fontWeight: "bold" }} my={3}>
+          Sign Up
+        </Typography.H5>
         <Input
           sx={{ width: "100%" }}
           name="name"
@@ -121,6 +122,9 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
           required
           mb={3}
         />
+        <Button sx={{ width: "100%" }} data-cy="register-button">
+          Sign Up
+        </Button>
         <Typography.Body
           mb={3}
           sx={{
@@ -132,26 +136,38 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
         >
           {error}
         </Typography.Body>
-        <Flex>
-          <Button
-            type="button"
-            variant="outline"
-            sx={{ width: "100%" }}
-            mr={3}
-            onClick={() => navigate("/login")}
-          >
-            Log In
-          </Button>
-          <Button
-            variant="primaryBig"
-            sx={{ width: "100%" }}
-            data-cy="register-button"
-          >
-            Register
-          </Button>
+        <Typography.Body
+          mt={5}
+          color="textMediumEmphasis"
+          sx={{ textAlign: "center" }}
+        >
+          Already have an account?{" "}
+          <Link to="/login" sx={{ color: "textPrimary" }}>
+            Login
+          </Link>
+        </Typography.Body>
+        <Flex
+          mt={3}
+          p={3}
+          backgroundColor="primaryLighter"
+          sx={{
+            borderRadius: "default",
+            alignItems: "center",
+          }}
+        >
+          <Icon as={InfoIcon} m={0} fill="primaryDark" />
+          <Typography.Body sx={{ fontSize: 1, lineHeight: 1.4 }} ml={2}>
+            Are you a parent?{" "}
+            <a
+              href="https://parent.obserfy.com/api/login"
+              sx={{ color: "textPrimary" }}
+            >
+              Go to parent portal
+            </a>
+          </Typography.Body>
         </Flex>
       </Box>
-    </Flex>
+    </Box>
   )
 }
 
