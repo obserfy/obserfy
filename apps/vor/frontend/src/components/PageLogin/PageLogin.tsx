@@ -1,6 +1,5 @@
 /** @jsx jsx */
-import { FC, FormEvent, useState } from "react"
-import { navigate } from "gatsby"
+import { FC, useState } from "react"
 import { Box, Button, Flex, jsx } from "theme-ui"
 import Input from "../Input/Input"
 import { Link } from "../Link/Link"
@@ -8,35 +7,13 @@ import { Typography } from "../Typography/Typography"
 import Icon from "../Icon/Icon"
 import { ReactComponent as InfoIcon } from "../../icons/info.svg"
 import BrandBanner from "../BrandBanner/BrandBanner"
+import usePostLogin from "../../api/usePostLogin"
+import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 
 export const PageLogin: FC = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const [error, setError] = useState("")
-
-  async function submitLoginForm(): Promise<void> {
-    setError("")
-    const response = await fetch("/auth/login", {
-      method: "POST",
-      credentials: "same-origin",
-      body: JSON.stringify({ email, password }),
-    })
-    if (response.status === 200) {
-      await navigate("/choose-school")
-      analytics.track("User Login Success")
-    } else {
-      setError("Wrong email or password")
-      analytics.track("User Login Failed", {
-        email,
-        status: response.status,
-      })
-    }
-  }
-
-  function handleSubmit(e: FormEvent): void {
-    submitLoginForm()
-    e.preventDefault()
-  }
+  const [mutate, { error, isLoading }] = usePostLogin()
 
   return (
     <Box>
@@ -47,7 +24,10 @@ export const PageLogin: FC = () => {
           as="form"
           px={3}
           sx={{ width: "100%", maxWidth: "maxWidth.xsm" }}
-          onSubmit={handleSubmit}
+          onSubmit={async (e) => {
+            e.preventDefault()
+            await mutate({ email, password })
+          }}
         >
           <Typography.H5 sx={{ fontWeight: "bold" }} my={3}>
             Login
@@ -70,7 +50,7 @@ export const PageLogin: FC = () => {
           />
 
           <Button my={3} sx={{ width: "100%" }}>
-            Login
+            {isLoading ? <LoadingIndicator /> : "Login"}
           </Button>
           <Typography.Body
             my={3}
@@ -82,7 +62,7 @@ export const PageLogin: FC = () => {
               fontWeight: "bold",
             }}
           >
-            {error}
+            {error ? "Wrong email or password" : ""}
           </Typography.Body>
           <Typography.Body
             color="textMediumEmphasis"

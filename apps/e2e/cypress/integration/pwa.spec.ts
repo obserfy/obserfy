@@ -12,7 +12,6 @@ describe("test pwa works correctly", () => {
         registrations.forEach((registration) => {
           registration.unregister()
         })
-        localStorage.clear()
       })
     }
 
