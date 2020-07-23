@@ -961,7 +961,10 @@ func postNewLessonPlan(server rest.Server, store Store) http.Handler {
 				Error:   richErrors.Wrap(err, "invalid request body"),
 			}
 		}
-
+		session, ok := auth.GetSessionFromCtx(r.Context())
+		if !ok {
+			return auth.NewGetSessionError()
+		}
 		planInput := lessonplan.PlanData{
 			ClassId:     body.ClassId,
 			Title:       body.Title,
@@ -972,6 +975,7 @@ func postNewLessonPlan(server rest.Server, store Store) http.Handler {
 			MaterialId:  body.MaterialId,
 			Students:    body.Students,
 			SchoolId:    schoolId,
+			UserId: session.UserId,
 		}
 		if body.Repetition != nil {
 			planInput.Repetition = &lessonplan.RepetitionPattern{

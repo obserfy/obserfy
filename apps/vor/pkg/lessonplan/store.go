@@ -39,6 +39,7 @@ type (
 		MaterialId  string
 		Students    []string
 		SchoolId    string
+		UserId string
 	}
 
 	UpdatePlanData struct {
