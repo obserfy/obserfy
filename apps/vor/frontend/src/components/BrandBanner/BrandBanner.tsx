@@ -1,8 +1,8 @@
 /** @jsx jsx */
-import { FC, Fragment } from "react"
+import { FC } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import GatsbyImage from "gatsby-image"
-import { jsx, Flex } from "theme-ui"
+import { Flex, jsx } from "theme-ui"
 import { Typography } from "../Typography/Typography"
 
 export const BrandBanner: FC = () => {
@@ -21,7 +21,7 @@ export const BrandBanner: FC = () => {
   `)
 
   return (
-    <Fragment>
+    <a href="https://obserfy.com">
       <Flex
         mx="auto"
         py={3}
@@ -46,7 +46,7 @@ export const BrandBanner: FC = () => {
           </span>
         </Typography.Body>
       </Flex>
-    </Fragment>
+    </a>
   )
 }
 
