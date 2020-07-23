@@ -50,7 +50,8 @@ export const PageLogin: FC = () => {
           />
 
           <Button my={3} sx={{ width: "100%" }}>
-            {isLoading ? <LoadingIndicator /> : "Login"}
+            {isLoading && <LoadingIndicator />}
+            Login
           </Button>
           <Typography.Body
             my={3}

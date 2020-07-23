@@ -88,7 +88,8 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
           mb={3}
         />
         <Button sx={{ width: "100%" }} data-cy="register-button">
-          {isLoading ? <LoadingIndicator /> : "Sign Up"}
+          {isLoading && <LoadingIndicator />}
+          Sign Up
         </Button>
         <Typography.Body
           my={3}
