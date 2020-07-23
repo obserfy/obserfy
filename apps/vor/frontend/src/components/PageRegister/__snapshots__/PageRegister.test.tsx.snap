@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageRegister should render correctly 1`] = `
-.emotion-19 {
+.emotion-27 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,59 +9,88 @@ exports[`PageRegister should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-19 {
+  .emotion-27 {
     font-size: 20px;
   }
 }
 
-.emotion-18 {
+.emotion-26 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  padding-top: 0;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  min-height: 100vh;
-  min-width: 100vw;
+}
+
+.emotion-3 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 8px;
+  padding-right: 8px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-18 {
-    padding-top: 128px;
-  }
-}
-
-.emotion-17 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  padding: 16px;
-  margin-top: 0;
   width: 100%;
-  max-width: 640px;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-17 {
-    margin-top: -64px;
-  }
+  max-width: 500px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .emotion-0 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.emotion-2 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  text-rendering: optimizeLegibility;
+  margin-left: 8px;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.emotion-1 {
+  font-weight: normal;
+  white-space: nowrap;
+}
+
+.emotion-25 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 300;
   line-height: heading;
-  font-size: 4.8828125rem;
-  line-height: 6rem;
+  font-size: 2.5rem;
+  line-height: 3rem;
   -webkit-letter-spacing: 0;
   -moz-letter-spacing: 0;
   -ms-letter-spacing: 0;
@@ -70,9 +99,10 @@ exports[`PageRegister should render correctly 1`] = `
   margin-top: 16px;
   margin-bottom: 16px;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  font-weight: bold;
 }
 
-.emotion-4 {
+.emotion-8 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -98,14 +128,14 @@ exports[`PageRegister should render correctly 1`] = `
   flex-direction: column;
 }
 
-.emotion-1 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   padding-bottom: 4px;
 }
 
-.emotion-3 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -119,7 +149,7 @@ exports[`PageRegister should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-2 {
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -147,35 +177,35 @@ exports[`PageRegister should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-2:hover,
-.emotion-2:focus {
+.emotion-6:hover,
+.emotion-6:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-2::-webkit-input-placeholder {
+.emotion-6::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-2::-moz-placeholder {
+.emotion-6::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-2:-ms-input-placeholder {
+.emotion-6:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-2::placeholder {
+.emotion-6::placeholder {
   font-style: italic;
 }
 
-.emotion-2:disabled {
+.emotion-6:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
-.emotion-10 {
+.emotion-14 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -203,134 +233,35 @@ exports[`PageRegister should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-10:hover,
-.emotion-10:focus {
+.emotion-14:hover,
+.emotion-14:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-10::-webkit-input-placeholder {
+.emotion-14::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-10::-moz-placeholder {
+.emotion-14::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-10:-ms-input-placeholder {
+.emotion-14:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-10::placeholder {
+.emotion-14::placeholder {
   font-style: italic;
 }
 
-.emotion-10:disabled {
+.emotion-14:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
-.emotion-13 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  color: rgba(0,0,0,0.88);
-  font-size: 1.6rem;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 400;
-  line-height: 3rem;
-  text-rendering: optimizeLegibility;
-  margin-bottom: 16px;
-  color: var(--theme-ui-colors-danger,#d50000);
-  text-align: center;
-  width: 100%;
-  font-weight: bold;
-}
-
-.emotion-16 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.emotion-14 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  display: inline-block;
-  text-align: center;
-  line-height: inherit;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  font-size: inherit;
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  color: white;
-  background-color: var(--theme-ui-colors-primary,#00e399);
-  border: 0;
-  border-radius: 4px;
-  cursor: pointer;
-  box-sizing: border-box;
-  font-size: 16px;
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
-  background-color: transparent;
-  border-radius: 6px;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 16px;
-  padding-right: 16px;
-  white-space: nowrap;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  touch-action: manipulation;
-  border: 1px solid;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  margin-right: 16px;
-  width: 100%;
-}
-
-.emotion-14:disabled {
-  opacity: 0.38;
-  cursor: auto;
-}
-
-.emotion-14:hover,
-.emotion-14:focus {
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
-  border-color: var(--theme-ui-colors-primary,#00e399);
-  outline: none;
-}
-
-.emotion-14:hover:disabled,
-.emotion-14:focus:disabled {
-  background-color: transparent;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-}
-
-.emotion-15 {
+.emotion-17 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -360,8 +291,8 @@ exports[`PageRegister should render correctly 1`] = `
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
   transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  padding-top: 16px;
-  padding-bottom: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   padding-left: 16px;
   padding-right: 16px;
   white-space: nowrap;
@@ -381,50 +312,190 @@ exports[`PageRegister should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-15:disabled {
+.emotion-17:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-15:hover,
-.emotion-15:focus {
+.emotion-17:hover,
+.emotion-17:focus {
   background-color: var(--theme-ui-colors-primaryDark,#00a06d);
   outline: none;
 }
 
-.emotion-15:hover:disabled,
-.emotion-15:focus:disabled {
+.emotion-17:hover:disabled,
+.emotion-17:focus:disabled {
   background-color: var(--theme-ui-colors-primary,#00e399);
+}
+
+.emotion-18 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  text-rendering: optimizeLegibility;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  color: var(--theme-ui-colors-danger,#d50000);
+  text-align: center;
+  width: 100%;
+}
+
+.emotion-20 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  text-rendering: optimizeLegibility;
+  margin-top: 64px;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  text-align: center;
+}
+
+.emotion-19 {
+  color: var(--theme-ui-colors-textPrimary,#027c5b);
+}
+
+.emotion-24 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-top: 16px;
+  padding: 16px;
+  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 6px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.emotion-21 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+  fill: var(--theme-ui-colors-primaryDark,#00a06d);
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.emotion-23 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  text-rendering: optimizeLegibility;
+  margin-left: 8px;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  font-size: 14px;
+  line-height: 1.4;
 }
 
 <div>
   <div
-    class="emotion-19"
+    class="emotion-27"
   >
     <div
-      class="emotion-18"
+      class="emotion-26"
     >
-      <form
-        class="emotion-17"
+      <a
+        href="https://obserfy.com"
       >
-        <h2
-          class="emotion-0"
-        >
-          Register
-        </h2>
-        <label
-          class="emotion-4"
+        <div
+          class="emotion-3"
         >
           <div
-            class="emotion-1"
+            class="emotion-0 gatsby-image-wrapper"
+            style="position: relative; overflow: hidden; display: inline-block; width: 40px; height: 40px;"
+          >
+            <img
+              alt=""
+              aria-hidden="true"
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAACVUlEQVQ4y3VVu04bQRSdsd1QpeIH6BAFTZooEiUfkM+goI6Ub4BiR8QBQpMCUblEiijzB7sRJlFMEgoaGjrbyJicc++dx9rOSkdzvXPn7D33MXaufJrK+bpKtqurDtAFeoaub/CuKXxWPZ5EQhD0N4h8Hbz7z8M934SOkgY9u0iYyJrQTRt1tQXsAQfAIbAP3+18LvvCdoU0+1GrAyLcAAYgmPvbkxf/57OC9vfwgqguQbBZnmGkjumKzPFriOAt8CgETZjD6QnOYwFtfuT3KffGwG4r0pj/mA+sG8Cj//kJUVRTOMz89VGOcHjE6GYk9jcfSTqVtChZx6Wk1pU3wgEPYnOK98/+1zHtB+ACOAfu+Q5+z0KKSLFe2VmvEeZqbZnEOaMwsq/AelGkV8DA9mYkpgLYb3KU7DP9sceky5fV6SGSIac9HO6Z3xpwR8lU4v+ecX2fc8mGVccDkctkq+wLc+qJFEEiPTa5E38r60muRSY8tMpGwvMWYbTVt79AeFoSRsn7SfJQJN9LznQykmRZmzDyP/rwCROT/KGU3DHCbTatFWZm1RwAa3nkJJdfWkUZSi53yqJoyfXFpUlhA2vbNOGOOROZdTUyMm2bkSj6lkYvNnYR5SYwtgo+SRRsYE4GcdPPjX0tTU6/1+3GztdVzOWutIOOFyKRaZhEiExGpmTvrIftbGjfFMVM8pa5krFD0llJAW3mrIFMiyzfAW3JbtWVJBPApmWfsTVYzViAZd+FW1OLk3KaCrXyQg4pZ+3I3DJp2lSbxF02rKFrfwvL/vb8A8mhJMm8BwH7AAAAAElFTkSuQmCC"
+              style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 1; transition-delay: 500ms;"
+            />
+            <picture>
+              <source
+                srcset="/static/fe67918dbda465cf53640b9ec939e54c/ff4be/logo-transparent.png 1x,
+/static/fe67918dbda465cf53640b9ec939e54c/183c2/logo-transparent.png 1.5x,
+/static/fe67918dbda465cf53640b9ec939e54c/829e2/logo-transparent.png 2x"
+              />
+              <img
+                alt=""
+                height="40"
+                loading="lazy"
+                src="/static/fe67918dbda465cf53640b9ec939e54c/ff4be/logo-transparent.png"
+                srcset="/static/fe67918dbda465cf53640b9ec939e54c/ff4be/logo-transparent.png 1x,
+/static/fe67918dbda465cf53640b9ec939e54c/183c2/logo-transparent.png 1.5x,
+/static/fe67918dbda465cf53640b9ec939e54c/829e2/logo-transparent.png 2x"
+                style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0; transition: opacity 500ms;"
+                width="40"
+              />
+            </picture>
+            <noscript>
+              &lt;picture&gt;&lt;source srcset="/static/fe67918dbda465cf53640b9ec939e54c/ff4be/logo-transparent.png 1x,
+/static/fe67918dbda465cf53640b9ec939e54c/183c2/logo-transparent.png 1.5x,
+/static/fe67918dbda465cf53640b9ec939e54c/829e2/logo-transparent.png 2x" /&gt;&lt;img loading="lazy" width="40" height="40" srcset="/static/fe67918dbda465cf53640b9ec939e54c/ff4be/logo-transparent.png 1x,
+/static/fe67918dbda465cf53640b9ec939e54c/183c2/logo-transparent.png 1.5x,
+/static/fe67918dbda465cf53640b9ec939e54c/829e2/logo-transparent.png 2x" src="/static/fe67918dbda465cf53640b9ec939e54c/ff4be/logo-transparent.png" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/&gt;&lt;/picture&gt;
+            </noscript>
+          </div>
+          <p
+            class="emotion-2"
+          >
+            Obserfy
+             
+            <span
+              class="emotion-1"
+            >
+              for Teachers
+            </span>
+          </p>
+        </div>
+      </a>
+      <form
+        class="emotion-25"
+      >
+        <h5
+          class="emotion-4"
+        >
+          Sign Up
+        </h5>
+        <label
+          class="emotion-8"
+        >
+          <div
+            class="emotion-5"
           >
             Name
           </div>
           <div
-            class="emotion-3"
+            class="emotion-7"
           >
             <input
-              class="emotion-2"
+              class="emotion-6"
               name="name"
               required=""
               value=""
@@ -432,18 +503,18 @@ exports[`PageRegister should render correctly 1`] = `
           </div>
         </label>
         <label
-          class="emotion-4"
+          class="emotion-8"
         >
           <div
-            class="emotion-1"
+            class="emotion-5"
           >
             Email
           </div>
           <div
-            class="emotion-3"
+            class="emotion-7"
           >
             <input
-              class="emotion-2"
+              class="emotion-6"
               data-cy="register-email"
               name="email"
               required=""
@@ -453,18 +524,18 @@ exports[`PageRegister should render correctly 1`] = `
           </div>
         </label>
         <label
-          class="emotion-4"
+          class="emotion-8"
         >
           <div
-            class="emotion-1"
+            class="emotion-5"
           >
             Password
           </div>
           <div
-            class="emotion-3"
+            class="emotion-7"
           >
             <input
-              class="emotion-10"
+              class="emotion-14"
               name="password"
               required=""
               type="password"
@@ -472,24 +543,45 @@ exports[`PageRegister should render correctly 1`] = `
             />
           </div>
         </label>
-        <p
-          class="emotion-13"
-        />
-        <div
-          class="emotion-16"
+        <button
+          class="emotion-17"
+          data-cy="register-button"
         >
-          <button
-            class="emotion-14"
-            type="button"
+          Sign Up
+        </button>
+        <p
+          class="emotion-18"
+        />
+        <p
+          class="emotion-20"
+        >
+          Already have an account?
+           
+          <a
+            class="emotion-19"
+            href="/login"
           >
-            Log In
-          </button>
-          <button
-            class="emotion-15"
-            data-cy="register-button"
+            Login
+          </a>
+        </p>
+        <div
+          class="emotion-24"
+        >
+          <div
+            class="emotion-21"
+          />
+          <p
+            class="emotion-23"
           >
-            Register
-          </button>
+            Are you a parent?
+             
+            <a
+              class="emotion-19"
+              href="https://parent.obserfy.com/api/login"
+            >
+              Go to parent portal
+            </a>
+          </p>
         </div>
       </form>
     </div>

@@ -1,5 +1,6 @@
-import React, { FC, FormEvent, useState } from "react"
-import { Box, Flex, Button } from "theme-ui"
+/** @jsx jsx */
+import { FC, Fragment, useState } from "react"
+import { Box, Button, Flex, jsx } from "theme-ui"
 import { Link } from "../Link/Link"
 import { Typography } from "../Typography/Typography"
 import Input from "../Input/Input"
@@ -9,67 +10,35 @@ import { ReactComponent as CheckmarkIcon } from "../../icons/checkmark.svg"
 import { ReactComponent as BackIcon } from "../../icons/arrow-back.svg"
 import { ReactComponent as AlertIcon } from "../../icons/alert.svg"
 import Icon from "../Icon/Icon"
-import { mailPasswordResetApi } from "../../api/mailPasswordResetApi"
-
-function validateEmail(email: string): boolean {
-  return email !== ""
-}
+import BrandBanner from "../BrandBanner/BrandBanner"
+import usePostResetPasswordEmail from "../../api/usePostResetPasswordEmail"
 
 export const PageForgotPassword: FC = () => {
   const [email, setEmail] = useState("")
-  const [error, setError] = useState("")
-  const [loading, setLoading] = useState(false)
-  const [success, setSuccess] = useState(false)
-
-  async function handleSubmit(e: FormEvent): Promise<void> {
-    e.preventDefault()
-    // validate email
-    const isEmailValid = validateEmail(email)
-    if (!isEmailValid) {
-      setError("Invalid email address")
-      return
-    }
-
-    // Reset state
-    setLoading(true)
-    setSuccess(false)
-    setError("")
-
-    // Make the request
-    const response = await mailPasswordResetApi(email)
-    if (response.status === 200) {
-      setSuccess(true)
-    } else {
-      setSuccess(false)
-      setError("Failed requesting password reset, please try again.")
-    }
-    setLoading(false)
-  }
+  const [
+    postResetPasswordEmail,
+    { error, isLoading, isSuccess },
+  ] = usePostResetPasswordEmail()
 
   return (
-    <Flex
-      sx={{
-        justifyContent: "center",
-        minHeight: "100vh",
-        minWidth: "100vw",
-      }}
-      pt={3}
-    >
+    <Box>
+      <BrandBanner />
       <Box
+        mx="auto"
         as="form"
-        p={3}
-        sx={{ maxWidth: "maxWidth.sm", width: "100%" }}
-        onSubmit={handleSubmit}
+        px={3}
+        sx={{ maxWidth: "maxWidth.xsm", width: "100%" }}
+        onSubmit={(e) => {
+          e.preventDefault()
+          postResetPasswordEmail(email)
+        }}
       >
-        <Typography.H2 my={3}>Forgot Password</Typography.H2>
-        <Typography.Body
-          sx={{
-            fontSize: 2,
-          }}
-          my={4}
-        >
-          Can&apos;t remember your password? No problem, tell us your email
-          address and we&apos;ll help you reset it.
+        <Typography.H5 sx={{ fontWeight: "bold" }} my={3}>
+          Reset Password
+        </Typography.H5>
+        <Typography.Body sx={{ fontSize: 2 }} my={4}>
+          Can&apos;t remember your password? No problem, type your email address
+          and we&apos;ll help you reset it.
         </Typography.Body>
         <Input
           sx={{ width: "100%" }}
@@ -78,7 +47,7 @@ export const PageForgotPassword: FC = () => {
           onChange={(e) => setEmail(e.target.value)}
           required
           mb={3}
-          disabled={success}
+          disabled={isSuccess}
           type="email"
         />
         {error && (
@@ -89,14 +58,7 @@ export const PageForgotPassword: FC = () => {
             py={2}
             px={3}
           >
-            <Icon
-              sx={{}}
-              as={AlertIcon}
-              m={1}
-              ml={0}
-              mr={2}
-              fill="onTintError"
-            />
+            <Icon as={AlertIcon} m={1} ml={0} mr={2} fill="onTintError" />
             <Typography.Body
               sx={{
                 alignSelf: "flex-start",
@@ -109,10 +71,10 @@ export const PageForgotPassword: FC = () => {
             </Typography.Body>
           </Flex>
         )}
-        {success && (
-          <>
+        {isSuccess ? (
+          <Fragment>
             <Flex
-              my={3}
+              mb={3}
               py={2}
               px={3}
               backgroundColor="primaryLighter"
@@ -132,10 +94,7 @@ export const PageForgotPassword: FC = () => {
               />
               <Typography.Body
                 color="textPrimary"
-                sx={{
-                  width: "100%",
-                  fontSize: 1,
-                }}
+                sx={{ width: "100%", fontSize: 1 }}
                 ml={1}
               >
                 We&apos;ve sent an email to you. Please check your inbox :)
@@ -147,23 +106,26 @@ export const PageForgotPassword: FC = () => {
                 Go Back
               </Button>
             </Link>
-          </>
-        )}
-        {!success && (
-          <Flex>
-            <Link to="/login" style={{ width: "100%" }}>
-              <Button type="button" variant="outlineBig" sx={{ width: "100%" }}>
-                Login
-              </Button>
-            </Link>
-            <Button variant="primaryBig" sx={{ width: "100%" }} ml={3}>
-              {loading && <LoadingIndicator color="onPrimary" />}
-              Reset
+          </Fragment>
+        ) : (
+          <Fragment>
+            <Button sx={{ width: "100%" }}>
+              {isLoading && <LoadingIndicator color="onPrimary" />}
+              Reset Password
             </Button>
-          </Flex>
+            <Typography.Body
+              mt={3}
+              color="textMediumEmphasis"
+              sx={{ textAlign: "center" }}
+            >
+              <Link to="/login" sx={{ color: "textPrimary" }}>
+                Back to Login
+              </Link>
+            </Typography.Body>
+          </Fragment>
         )}
       </Box>
-    </Flex>
+    </Box>
   )
 }
 
