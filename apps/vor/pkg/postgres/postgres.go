@@ -257,8 +257,8 @@ type (
 		Id                string `pg:"type:uuid"`
 		Title             string
 		Description       string
-		UserId   string `pg:",type:uuid"`
-		User     User
+		UserId            string `pg:",type:uuid"`
+		User              User
 		ClassId           string `pg:"type:uuid,on_delete:SET NULL"`
 		SchoolId          string `pg:"type:uuid,on_delete:CASCADE"`
 		Class             Class

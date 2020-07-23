@@ -975,7 +975,7 @@ func postNewLessonPlan(server rest.Server, store Store) http.Handler {
 			MaterialId:  body.MaterialId,
 			Students:    body.Students,
 			SchoolId:    schoolId,
-			UserId: session.UserId,
+			UserId:      session.UserId,
 		}
 		if body.Repetition != nil {
 			planInput.Repetition = &lessonplan.RepetitionPattern{
