@@ -54,7 +54,7 @@ export const PageForgotPassword: FC = () => {
       <Box
         mx="auto"
         as="form"
-        p={3}
+        px={3}
         sx={{ maxWidth: "maxWidth.xsm", width: "100%" }}
         onSubmit={handleSubmit}
       >
