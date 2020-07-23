@@ -338,11 +338,11 @@ exports[`PageRegister should render correctly 1`] = `
   font-weight: 400;
   line-height: 3rem;
   text-rendering: optimizeLegibility;
+  margin-top: 16px;
   margin-bottom: 16px;
   color: var(--theme-ui-colors-danger,#d50000);
   text-align: center;
   width: 100%;
-  font-weight: bold;
 }
 
 .emotion-20 {

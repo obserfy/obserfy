@@ -1,13 +1,15 @@
 /** @jsx jsx */
-import { FC, FormEvent, useEffect, useState } from "react"
-import { navigate } from "gatsby"
-import { jsx, Flex, Box, Button, Card } from "theme-ui"
+import { FC, useState } from "react"
+import { Box, Button, Card, Flex, jsx } from "theme-ui"
 import { Typography } from "../Typography/Typography"
 import Input from "../Input/Input"
 import BrandBanner from "../BrandBanner/BrandBanner"
 import { Link } from "../Link/Link"
 import Icon from "../Icon/Icon"
 import { ReactComponent as InfoIcon } from "../../icons/info.svg"
+import usePostRegister from "../../api/usePostRegister"
+import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
+import useGetInviteCodeDetails from "../../api/useGetInviteCodeDetails"
 
 interface Props {
   inviteCode?: string
@@ -16,48 +18,8 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [name, setName] = useState("")
-  const [inviter, setSchoolInviter] = useState<string>()
-  const [error, setError] = useState("")
-
-  useEffect(() => {
-    const f = async (): Promise<void> => {
-      const response = await fetch(`/auth/invite-code/${inviteCode}`)
-      if (response.status === 200) {
-        const schoolData = await response.json()
-        setSchoolInviter(schoolData.schoolName)
-      }
-    }
-    f()
-  }, [inviteCode])
-
-  async function submitRegisterForm(): Promise<void> {
-    analytics.track("User Register")
-    const credentials = new FormData()
-    credentials.append("email", email)
-    credentials.append("password", password)
-    credentials.append("name", name)
-    credentials.append("inviteCode", inviteCode ?? "")
-    const response = await fetch("/auth/register", {
-      method: "POST",
-      credentials: "same-origin",
-      body: credentials,
-    })
-    if (response.status === 200) {
-      analytics.track("User Register Success")
-      navigate("/choose-school")
-    } else if (response.status === 409) {
-      analytics.track("User Register Failed", {
-        email,
-        status: response.status,
-      })
-      setError("Email has already been used to register")
-    }
-  }
-
-  function handleSubmit(e: FormEvent): void {
-    submitRegisterForm()
-    e.preventDefault()
-  }
+  const inviteCodeDetails = useGetInviteCodeDetails(inviteCode)
+  const [postRegister, { error, isLoading }] = usePostRegister()
 
   return (
     <Box>
@@ -67,9 +29,12 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
         as="form"
         px={3}
         sx={{ width: "100%", maxWidth: "maxWidth.xsm" }}
-        onSubmit={handleSubmit}
+        onSubmit={(e) => {
+          e.preventDefault()
+          postRegister({ name, password, email, inviteCode })
+        }}
       >
-        {inviter && (
+        {inviteCodeDetails.isSuccess && (
           <Card
             p={3}
             mb={4}
@@ -81,7 +46,7 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
           >
             <Typography.Body>You&apos;ve been invited to join</Typography.Body>
             <Typography.H4>
-              {inviter}
+              {inviteCodeDetails.data.schoolName}
               <span role="img" aria-label="Party emoji">
                 {" "}
                 🎊 🎉
@@ -123,18 +88,14 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
           mb={3}
         />
         <Button sx={{ width: "100%" }} data-cy="register-button">
-          Sign Up
+          {isLoading ? <LoadingIndicator /> : "Sign Up"}
         </Button>
         <Typography.Body
-          mb={3}
-          sx={{
-            textAlign: "center",
-            width: "100%",
-            fontWeight: "bold",
-          }}
+          my={3}
+          sx={{ textAlign: "center", width: "100%" }}
           color="danger"
         >
-          {error}
+          {error?.message}
         </Typography.Body>
         <Typography.Body
           mt={5}

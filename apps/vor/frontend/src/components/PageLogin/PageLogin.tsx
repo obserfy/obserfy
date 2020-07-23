@@ -24,9 +24,9 @@ export const PageLogin: FC = () => {
           as="form"
           px={3}
           sx={{ width: "100%", maxWidth: "maxWidth.xsm" }}
-          onSubmit={async (e) => {
+          onSubmit={(e) => {
             e.preventDefault()
-            await mutate({ email, password })
+            mutate({ email, password })
           }}
         >
           <Typography.H5 sx={{ fontWeight: "bold" }} my={3}>
