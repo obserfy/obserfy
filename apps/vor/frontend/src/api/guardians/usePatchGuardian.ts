@@ -20,10 +20,7 @@ export function usePatchGuardian(
 
   return useMutation(patchGuardian, {
     onSuccess: async () => {
-      await Promise.all([
-        queryCache.invalidateQueries(["guardians", id]),
-        queryCache.invalidateQueries("guardians"),
-      ])
+      await queryCache.invalidateQueries("guardians")
     },
   })
 }

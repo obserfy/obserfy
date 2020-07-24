@@ -10,5 +10,5 @@ interface Guardian {
 }
 export const useGetGuardian = (guardianId: string): QueryResult<Guardian> => {
   const fetchGuardian = getApi<Guardian>(`/guardians/${guardianId}`)
-  return useQuery(["guardian", { guardianId }], fetchGuardian)
+  return useQuery(["guardians", { guardianId }], fetchGuardian)
 }

@@ -79,7 +79,7 @@ const GuardianCard: FC<{
         }}
       >
         <Flex sx={{ flexDirection: "column", alignItems: "start" }}>
-          <Typography.Body ml={3} mb={2} sx={{ lineHeight: 1.6 }}>
+          <Typography.Body ml={[0, 3]} sx={{ lineHeight: 1.6 }}>
             {name}
           </Typography.Body>
         </Flex>
