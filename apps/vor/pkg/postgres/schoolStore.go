@@ -491,6 +491,7 @@ func (s SchoolStore) GetLessonPlans(schoolId string, date time.Time) ([]cSchool.
 		Relation("LessonPlanDetails").
 		Relation("LessonPlanDetails.Area").
 		Relation("LessonPlanDetails.Class").
+		Relation("LessonPlanDetails.User").
 		Select(); err != nil {
 		return nil, richErrors.Wrap(err, "Failed to query school's lesson plan")
 	}
@@ -504,6 +505,8 @@ func (s SchoolStore) GetLessonPlans(schoolId string, date time.Time) ([]cSchool.
 			ClassName:   plan.LessonPlanDetails.Class.Name,
 			Date:        *plan.Date,
 			Description: plan.LessonPlanDetails.Description,
+			UserId: plan.LessonPlanDetails.UserId,
+			UserName: plan.LessonPlanDetails.User.Name,
 		}
 		if plan.LessonPlanDetails.AreaId != "" {
 			res[i].AreaId = plan.LessonPlanDetails.Area.Id

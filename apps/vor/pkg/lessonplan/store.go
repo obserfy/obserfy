@@ -1,6 +1,8 @@
 package lessonplan
 
-import "time"
+import (
+	"time"
+)
 
 const (
 	RepetitionNone = iota
