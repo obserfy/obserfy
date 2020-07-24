@@ -15,7 +15,7 @@ exports[`PageAdmin should render correctly 1`] = `
   }
 }
 
-.emotion-39 {
+.emotion-44 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -23,12 +23,12 @@ exports[`PageAdmin should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-39 {
+  .emotion-44 {
     font-size: 20px;
   }
 }
 
-.emotion-38 {
+.emotion-43 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -41,13 +41,13 @@ exports[`PageAdmin should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-38 {
+  .emotion-43 {
     padding-top: 16px;
   }
 }
 
 @media screen and (min-width:52em) {
-  .emotion-38 {
+  .emotion-43 {
     padding-top: 32px;
   }
 }
@@ -159,7 +159,7 @@ exports[`PageAdmin should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-37 {
+.emotion-42 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -170,7 +170,7 @@ exports[`PageAdmin should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-34 {
+.emotion-39 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -227,25 +227,25 @@ exports[`PageAdmin should render correctly 1`] = `
   flex-shrink: 0;
 }
 
-.emotion-34:disabled {
+.emotion-39:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-34:hover,
-.emotion-34:focus {
+.emotion-39:hover,
+.emotion-39:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-34:hover:disabled,
-.emotion-34:focus:disabled {
+.emotion-39:hover:disabled,
+.emotion-39:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-35 {
+.emotion-40 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -302,25 +302,25 @@ exports[`PageAdmin should render correctly 1`] = `
   flex-shrink: 0;
 }
 
-.emotion-35:disabled {
+.emotion-40:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-35:hover,
-.emotion-35:focus {
+.emotion-40:hover,
+.emotion-40:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-35:hover:disabled,
-.emotion-35:focus:disabled {
+.emotion-40:hover:disabled,
+.emotion-40:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-36 {
+.emotion-41 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -381,30 +381,30 @@ exports[`PageAdmin should render correctly 1`] = `
   flex-grow: 1;
 }
 
-.emotion-36:disabled {
+.emotion-41:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-36:hover,
-.emotion-36:focus {
+.emotion-41:hover,
+.emotion-41:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-36:hover:disabled,
-.emotion-36:focus:disabled {
+.emotion-41:hover:disabled,
+.emotion-41:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
 <div>
   <div
-    class="emotion-39"
+    class="emotion-44"
   >
     <div
-      class="emotion-38"
+      class="emotion-43"
     >
       <div
         class="emotion-2"
@@ -578,10 +578,10 @@ exports[`PageAdmin should render correctly 1`] = `
         </div>
       </a>
       <div
-        class="emotion-37"
+        class="emotion-42"
       >
         <button
-          class="emotion-34"
+          class="emotion-39"
           data-cy="dark-switch"
         >
           <div
@@ -589,12 +589,12 @@ exports[`PageAdmin should render correctly 1`] = `
           />
         </button>
         <button
-          class="emotion-35"
+          class="emotion-40"
         >
           Switch school
         </button>
         <button
-          class="emotion-36"
+          class="emotion-41"
         >
           Log Out
         </button>

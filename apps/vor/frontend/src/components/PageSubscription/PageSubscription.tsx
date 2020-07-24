@@ -1,16 +1,19 @@
-import React, { FC } from "react"
-import { Box, Card, Flex, Button } from "theme-ui"
+import React, { FC, useState } from "react"
+import { Box, Button, Card, Flex } from "theme-ui"
 import Typography from "../Typography/Typography"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import Icon from "../Icon/Icon"
 import { ReactComponent as CheckmarkIcon } from "../../icons/checkmark-outline.svg"
+import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 
 export const PageSubscription: FC = () => {
+  const [loading, setLoading] = useState(false)
+
   return (
     <Box mx="auto" sx={{ maxWidth: "maxWidth.xsm" }}>
       <BackNavigation to="../" text="Admin" />
       <Typography.H4 sx={{ fontWeight: "bold", textAlign: "center" }}>
-        Subscription Plans
+        Subscription Plan
       </Typography.H4>
       <Card m={3} p={4} mt={4} sx={{ borderRadius: 16 }}>
         <Typography.Body
@@ -42,12 +45,30 @@ export const PageSubscription: FC = () => {
           <Feature text="Parent portal" />
           <Feature text="Image gallery" comingSoon />
           <Feature text="Reporting" comingSoon />
+          <Feature text="And more coming..." />
         </Box>
 
         <Button
+          mt={4}
           p={3}
           sx={{ width: "100%", fontWeight: "bold", borderRadius: 16 }}
+          onClick={() => {
+            setLoading(true)
+            const script = document.createElement("script")
+            script.type = "text/javascript"
+            script.onload = () => {
+              setLoading(false)
+              Paddle.Setup({ vendor: 112134 })
+              Paddle.Checkout.open({
+                product: 590592,
+                email: "chrsep@protonmail.com",
+              })
+            }
+            script.src = "https://cdn.paddle.com/paddle/paddle.js"
+            document.getElementsByTagName("head")[0].appendChild(script)
+          }}
         >
+          {loading && <LoadingIndicator color="onPrimary" />}
           Start Free Trial
         </Button>
       </Card>

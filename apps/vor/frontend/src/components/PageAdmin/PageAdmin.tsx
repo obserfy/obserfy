@@ -7,12 +7,12 @@ import Typography from "../Typography/Typography"
 import CardLink from "../CardLink/CardLink"
 import {
   ADMIN_CURRICULUM_URL,
+  ADMIN_GUARDIAN_URL,
   ADMIN_INVITE_USER_URL,
   ADMIN_STUDENTS_URL,
   ADMIN_SUBSCRIPTION_URL,
   ADMIN_USERS_URL,
   CLASS_SETTINGS_URL,
-  ADMIN_GUARDIAN_URL,
 } from "../../routes"
 import Icon from "../Icon/Icon"
 import { ReactComponent as LightModeIcon } from "../../icons/light-mode.svg"
