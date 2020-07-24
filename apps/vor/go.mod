@@ -8,7 +8,6 @@ require (
 	github.com/getsentry/sentry-go v0.6.1
 	github.com/go-chi/chi v4.1.2+incompatible
 	github.com/go-pg/pg/v10 v10.0.0-beta.5
-	github.com/go-pg/pg/v9 v9.1.6
 	github.com/go-playground/validator/v10 v10.3.0
 	github.com/google/uuid v1.1.1
 	github.com/joho/godotenv v1.3.0

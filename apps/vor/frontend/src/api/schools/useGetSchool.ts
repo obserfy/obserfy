@@ -2,7 +2,7 @@ import { QueryResult, useQuery } from "react-query"
 import { getApi } from "../fetchApi"
 import { getSchoolId } from "../../hooks/schoolIdState"
 
-interface School {
+export interface GetSchoolResponse {
   name: string
   inviteLink: string
   users: {
@@ -12,7 +12,7 @@ interface School {
     isCurrentUser: boolean
   }[]
 }
-export const useGetSchool = (): QueryResult<School> => {
-  const fetchSchool = getApi<School>(`/schools/${getSchoolId()}`)
+export const useGetSchool = (): QueryResult<GetSchoolResponse> => {
+  const fetchSchool = getApi<GetSchoolResponse>(`/schools/${getSchoolId()}`)
   return useQuery("school", fetchSchool)
 }

@@ -5,7 +5,6 @@ import { Flex, Button, Box } from "theme-ui"
 import { navigate } from "../Link/Link"
 import { Material } from "../../api/useGetSubjectMaterials"
 import { createSubjectApi } from "../../api/createSubjectApi"
-import { getAnalytics } from "../../analytics"
 import DraggableMaterialListItem from "../DraggableMaterialListItem/DraggableMaterialListItem"
 import Typography from "../Typography/Typography"
 
@@ -43,7 +42,7 @@ export const PageNewSubject: FC<Props> = ({ areaId }) => {
     })
 
     if (response.status === 201) {
-      getAnalytics()?.track("Subject Created", {
+      analytics.track("Subject Created", {
         responseStatus: response.status,
         studentName: subjectName,
       })

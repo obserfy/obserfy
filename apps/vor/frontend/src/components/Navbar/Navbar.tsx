@@ -3,13 +3,14 @@ import { graphql, useStaticQuery } from "gatsby"
 import GatsbyImage from "gatsby-image"
 import { useLocation, useMatch } from "@reach/router"
 import { useMemoryStatus } from "react-adaptive-hooks/memory"
-import { Flex, Box, Card } from "theme-ui"
+import { Box, Card, Flex } from "theme-ui"
 import { ReactComponent as SettingsIcon } from "../../icons/settings.svg"
 import { ReactComponent as StudentsIcon } from "../../icons/students.svg"
+import { ReactComponent as MessageIcon } from "../../icons/message.svg"
 import { Link } from "../Link/Link"
 import Icon from "../Icon/Icon"
 import { Typography } from "../Typography/Typography"
-import { STUDENTS_URL, SETTINGS_URL } from "../../routes"
+import { SETTINGS_URL, STUDENTS_URL, SUPPORT_URL } from "../../routes"
 
 const Navbar: FC = () => {
   const [keyboardShown, setKeyboardShown] = useState(false)
@@ -115,6 +116,7 @@ const Navbar: FC = () => {
           }}
         />
         <NavBarItem title="Admin" icon={SettingsIcon} to={SETTINGS_URL} />
+        <NavBarItem title="Support" icon={MessageIcon} to={SUPPORT_URL} />
       </Flex>
     </Card>
   )
@@ -130,8 +132,7 @@ const NavBarItem: FC<{
   const location = useLocation()
   const url = `${match?.uri}/${match?.["*"]}${location.search}` ?? ""
 
-  // Implement bottom navigation bar behaviour that follows patterns described
-  // on material.io
+  // persist navigation state from each top-level sections
   useEffect(() => {
     if (match?.uri) {
       setTarget(url)
@@ -142,10 +143,7 @@ const NavBarItem: FC<{
     <Link
       to={url === target ? to : target}
       state={{ preserveScroll: true }}
-      style={{
-        outline: "none",
-        WebkitTapHighlightColor: "transparent",
-      }}
+      style={{ outline: "none", WebkitTapHighlightColor: "transparent" }}
     >
       <Flex
         mb={[0, 2]}
@@ -175,15 +173,10 @@ const NavBarItem: FC<{
           m={0}
           fill="transparent"
           size={24}
-          sx={{
-            color: match ? "textPrimary" : "textDisabled",
-          }}
+          sx={{ color: match ? "textPrimary" : "textDisabled" }}
         />
         <Typography.Body
-          sx={{
-            lineHeight: 1,
-            fontSize: ["10px", 0],
-          }}
+          sx={{ lineHeight: 1, fontSize: ["10px", 0] }}
           color={match ? "textPrimary" : "textMediumEmphasis"}
         >
           {title}

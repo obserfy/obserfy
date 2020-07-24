@@ -15,11 +15,11 @@ describe("test authentication", () => {
     // Try logging in and fail
     cy.contains("Email").type(email)
     cy.contains("Password").type(password)
-    cy.contains("Login").click()
+    cy.contains("button", "Login").click()
     cy.contains("Wrong").should("be.visible")
 
     // Register account
-    cy.contains("Register")
+    cy.contains("Sign Up")
       .click()
       // cy.waitForRouteChange()
       .url()
@@ -45,7 +45,7 @@ describe("test authentication", () => {
     cy.url().should("contains", "login")
     cy.contains("Email").type(email)
     cy.contains("Password").type(password)
-    cy.contains("Login").click()
+    cy.contains("button", "Login").click()
 
     // Choose school
     cy.url().should("contains", "school")

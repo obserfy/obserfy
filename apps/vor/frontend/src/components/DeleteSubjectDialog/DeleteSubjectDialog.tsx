@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react"
 import { Flex, Button } from "theme-ui"
-import { getAnalytics } from "../../analytics"
+
 import Typography from "../Typography/Typography"
 import Dialog from "../Dialog/Dialog"
 import Spacer from "../Spacer/Spacer"
@@ -27,9 +27,9 @@ export const DeleteSubjectDialog: FC<Props> = ({
     const response = await deleteSubjectApi(subjectId)
     if (response.status === 200 || response.status === 400) {
       onDeleted()
-      getAnalytics()?.track("Subject deleted", { statusCode: response.status })
+      analytics.track("Subject deleted", { statusCode: response.status })
     } else {
-      getAnalytics()?.track("Subject delete fail", {
+      analytics.track("Subject delete fail", {
         statusCode: response.status,
         subjectId,
       })

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageLogin should render correctly 1`] = `
-.emotion-16 {
+.emotion-27 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,47 +9,100 @@ exports[`PageLogin should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-16 {
+  .emotion-27 {
     font-size: 20px;
   }
 }
 
-.emotion-15 {
+.emotion-26 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  padding-top: 128px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  min-height: 100vh;
-  min-width: 100vw;
+}
+
+.emotion-3 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 8px;
+  padding-right: 8px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.emotion-14 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  padding: 16px;
-  margin-top: -64px;
   width: 100%;
-  max-width: 640px;
+  max-width: 500px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .emotion-0 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.emotion-2 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  text-rendering: optimizeLegibility;
+  margin-left: 8px;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.emotion-1 {
+  font-weight: normal;
+  white-space: nowrap;
+}
+
+.emotion-20 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.emotion-19 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding-left: 16px;
+  padding-right: 16px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 300;
   line-height: heading;
-  font-size: 4.8828125rem;
-  line-height: 6rem;
+  font-size: 2.5rem;
+  line-height: 3rem;
   -webkit-letter-spacing: 0;
   -moz-letter-spacing: 0;
   -ms-letter-spacing: 0;
@@ -58,9 +111,10 @@ exports[`PageLogin should render correctly 1`] = `
   margin-top: 16px;
   margin-bottom: 16px;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  font-weight: bold;
 }
 
-.emotion-4 {
+.emotion-8 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -86,14 +140,14 @@ exports[`PageLogin should render correctly 1`] = `
   flex-direction: column;
 }
 
-.emotion-1 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   padding-bottom: 4px;
 }
 
-.emotion-3 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -105,62 +159,6 @@ exports[`PageLogin should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.emotion-2 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  display: block;
-  width: 100%;
-  padding: 8px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  font-size: inherit;
-  line-height: inherit;
-  border: 1px solid;
-  border-radius: 4px;
-  color: inherit;
-  background-color: transparent;
-  border-radius: 6px;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  width: auto;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface,#fff);
-  font-size: 16px;
-  padding: 12px;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
-  margin-bottom: 8px;
-  width: 100%;
-}
-
-.emotion-2:hover,
-.emotion-2:focus {
-  border-color: var(--theme-ui-colors-primary,#00e399);
-  outline: none;
-}
-
-.emotion-2::-webkit-input-placeholder {
-  font-style: italic;
-}
-
-.emotion-2::-moz-placeholder {
-  font-style: italic;
-}
-
-.emotion-2:-ms-input-placeholder {
-  font-style: italic;
-}
-
-.emotion-2::placeholder {
-  font-style: italic;
-}
-
-.emotion-2:disabled {
-  opacity: 0.68;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
 .emotion-6 {
@@ -187,6 +185,7 @@ exports[`PageLogin should render correctly 1`] = `
   font-size: 16px;
   padding: 12px;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  margin-bottom: 8px;
   width: 100%;
 }
 
@@ -218,107 +217,62 @@ exports[`PageLogin should render correctly 1`] = `
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
-.emotion-9 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  color: rgba(0,0,0,0.88);
-  font-size: 1.6rem;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 400;
-  line-height: 3rem;
-  text-rendering: optimizeLegibility;
-  margin-top: 8px;
-  margin-bottom: 8px;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
-  font-size: 14px;
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-}
-
-.emotion-12 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  display: block;
+  width: 100%;
+  padding: 8px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  display: inline-block;
-  text-align: center;
-  line-height: inherit;
-  -webkit-text-decoration: none;
-  text-decoration: none;
   font-size: inherit;
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  color: white;
-  background-color: var(--theme-ui-colors-primary,#00e399);
-  border: 0;
+  line-height: inherit;
+  border: 1px solid;
   border-radius: 4px;
-  cursor: pointer;
-  box-sizing: border-box;
-  font-size: 16px;
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
+  color: inherit;
   background-color: transparent;
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 16px;
-  padding-right: 16px;
-  white-space: nowrap;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  touch-action: manipulation;
-  border: 1px solid;
+  width: auto;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  margin-right: 16px;
+  background-color: var(--theme-ui-colors-surface,#fff);
+  font-size: 16px;
+  padding: 12px;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   width: 100%;
-}
-
-.emotion-10:disabled {
-  opacity: 0.38;
-  cursor: auto;
 }
 
 .emotion-10:hover,
 .emotion-10:focus {
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-10:hover:disabled,
-.emotion-10:focus:disabled {
-  background-color: transparent;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+.emotion-10::-webkit-input-placeholder {
+  font-style: italic;
 }
 
-.emotion-11 {
+.emotion-10::-moz-placeholder {
+  font-style: italic;
+}
+
+.emotion-10:-ms-input-placeholder {
+  font-style: italic;
+}
+
+.emotion-10::placeholder {
+  font-style: italic;
+}
+
+.emotion-10:disabled {
+  opacity: 0.68;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
+}
+
+.emotion-13 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -348,8 +302,8 @@ exports[`PageLogin should render correctly 1`] = `
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
   transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  padding-top: 16px;
-  padding-bottom: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   padding-left: 16px;
   padding-right: 16px;
   white-space: nowrap;
@@ -366,26 +320,28 @@ exports[`PageLogin should render correctly 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   touch-action: manipulation;
+  margin-top: 16px;
+  margin-bottom: 16px;
   width: 100%;
 }
 
-.emotion-11:disabled {
+.emotion-13:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-11:hover,
-.emotion-11:focus {
+.emotion-13:hover,
+.emotion-13:focus {
   background-color: var(--theme-ui-colors-primaryDark,#00a06d);
   outline: none;
 }
 
-.emotion-11:hover:disabled,
-.emotion-11:focus:disabled {
+.emotion-13:hover:disabled,
+.emotion-13:focus:disabled {
   background-color: var(--theme-ui-colors-primary,#00e399);
 }
 
-.emotion-13 {
+.emotion-14 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -404,86 +360,262 @@ exports[`PageLogin should render correctly 1`] = `
   font-weight: bold;
 }
 
+.emotion-16 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  text-rendering: optimizeLegibility;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  text-align: center;
+}
+
+.emotion-15 {
+  color: var(--theme-ui-colors-textPrimary,#027c5b);
+}
+
+.emotion-18 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  text-rendering: optimizeLegibility;
+  margin-top: 64px;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  text-align: center;
+}
+
+.emotion-25 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 16px;
+  max-width: 500px;
+}
+
+.emotion-24 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding: 16px;
+  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 6px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.emotion-21 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+  fill: var(--theme-ui-colors-primaryDark,#00a06d);
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.emotion-23 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  text-rendering: optimizeLegibility;
+  margin-left: 8px;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  font-size: 14px;
+  line-height: 1.4;
+}
+
 <div>
   <div
-    class="emotion-16"
+    class="emotion-27"
   >
     <div
-      class="emotion-15"
+      class="emotion-26"
     >
-      <form
-        class="emotion-14"
+      <a
+        href="https://obserfy.com"
       >
-        <h2
-          class="emotion-0"
-        >
-          Welcome
-        </h2>
-        <label
-          class="emotion-4"
-        >
-          <div
-            class="emotion-1"
-          >
-            Email
-          </div>
-          <div
-            class="emotion-3"
-          >
-            <input
-              class="emotion-2"
-              required=""
-              value=""
-            />
-          </div>
-        </label>
-        <label
-          class="emotion-4"
-        >
-          <div
-            class="emotion-1"
-          >
-            Password
-          </div>
-          <div
-            class="emotion-3"
-          >
-            <input
-              class="emotion-6"
-              required=""
-              type="password"
-              value=""
-            />
-          </div>
-        </label>
-        <a
-          href="/forgot-password"
-        >
-          <p
-            class="emotion-9"
-          >
-            Forgot password?
-          </p>
-        </a>
         <div
-          class="emotion-12"
+          class="emotion-3"
         >
-          <button
-            class="emotion-10"
-            type="button"
+          <div
+            class="emotion-0 gatsby-image-wrapper"
+            style="position: relative; overflow: hidden; display: inline-block; width: 40px; height: 40px;"
           >
-            Register
-          </button>
+            <img
+              alt=""
+              aria-hidden="true"
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAACVUlEQVQ4y3VVu04bQRSdsd1QpeIH6BAFTZooEiUfkM+goI6Ub4BiR8QBQpMCUblEiijzB7sRJlFMEgoaGjrbyJicc++dx9rOSkdzvXPn7D33MXaufJrK+bpKtqurDtAFeoaub/CuKXxWPZ5EQhD0N4h8Hbz7z8M934SOkgY9u0iYyJrQTRt1tQXsAQfAIbAP3+18LvvCdoU0+1GrAyLcAAYgmPvbkxf/57OC9vfwgqguQbBZnmGkjumKzPFriOAt8CgETZjD6QnOYwFtfuT3KffGwG4r0pj/mA+sG8Cj//kJUVRTOMz89VGOcHjE6GYk9jcfSTqVtChZx6Wk1pU3wgEPYnOK98/+1zHtB+ACOAfu+Q5+z0KKSLFe2VmvEeZqbZnEOaMwsq/AelGkV8DA9mYkpgLYb3KU7DP9sceky5fV6SGSIac9HO6Z3xpwR8lU4v+ecX2fc8mGVccDkctkq+wLc+qJFEEiPTa5E38r60muRSY8tMpGwvMWYbTVt79AeFoSRsn7SfJQJN9LznQykmRZmzDyP/rwCROT/KGU3DHCbTatFWZm1RwAa3nkJJdfWkUZSi53yqJoyfXFpUlhA2vbNOGOOROZdTUyMm2bkSj6lkYvNnYR5SYwtgo+SRRsYE4GcdPPjX0tTU6/1+3GztdVzOWutIOOFyKRaZhEiExGpmTvrIftbGjfFMVM8pa5krFD0llJAW3mrIFMiyzfAW3JbtWVJBPApmWfsTVYzViAZd+FW1OLk3KaCrXyQg4pZ+3I3DJp2lSbxF02rKFrfwvL/vb8A8mhJMm8BwH7AAAAAElFTkSuQmCC"
+              style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 1; transition-delay: 500ms;"
+            />
+            <picture>
+              <source
+                srcset="/static/fe67918dbda465cf53640b9ec939e54c/ff4be/logo-transparent.png 1x,
+/static/fe67918dbda465cf53640b9ec939e54c/183c2/logo-transparent.png 1.5x,
+/static/fe67918dbda465cf53640b9ec939e54c/829e2/logo-transparent.png 2x"
+              />
+              <img
+                alt=""
+                height="40"
+                loading="lazy"
+                src="/static/fe67918dbda465cf53640b9ec939e54c/ff4be/logo-transparent.png"
+                srcset="/static/fe67918dbda465cf53640b9ec939e54c/ff4be/logo-transparent.png 1x,
+/static/fe67918dbda465cf53640b9ec939e54c/183c2/logo-transparent.png 1.5x,
+/static/fe67918dbda465cf53640b9ec939e54c/829e2/logo-transparent.png 2x"
+                style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0; transition: opacity 500ms;"
+                width="40"
+              />
+            </picture>
+            <noscript>
+              &lt;picture&gt;&lt;source srcset="/static/fe67918dbda465cf53640b9ec939e54c/ff4be/logo-transparent.png 1x,
+/static/fe67918dbda465cf53640b9ec939e54c/183c2/logo-transparent.png 1.5x,
+/static/fe67918dbda465cf53640b9ec939e54c/829e2/logo-transparent.png 2x" /&gt;&lt;img loading="lazy" width="40" height="40" srcset="/static/fe67918dbda465cf53640b9ec939e54c/ff4be/logo-transparent.png 1x,
+/static/fe67918dbda465cf53640b9ec939e54c/183c2/logo-transparent.png 1.5x,
+/static/fe67918dbda465cf53640b9ec939e54c/829e2/logo-transparent.png 2x" src="/static/fe67918dbda465cf53640b9ec939e54c/ff4be/logo-transparent.png" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/&gt;&lt;/picture&gt;
+            </noscript>
+          </div>
+          <p
+            class="emotion-2"
+          >
+            Obserfy
+             
+            <span
+              class="emotion-1"
+            >
+              for Teachers
+            </span>
+          </p>
+        </div>
+      </a>
+      <div
+        class="emotion-20"
+      >
+        <form
+          class="emotion-19"
+        >
+          <h5
+            class="emotion-4"
+          >
+            Login
+          </h5>
+          <label
+            class="emotion-8"
+          >
+            <div
+              class="emotion-5"
+            >
+              Email
+            </div>
+            <div
+              class="emotion-7"
+            >
+              <input
+                class="emotion-6"
+                required=""
+                value=""
+              />
+            </div>
+          </label>
+          <label
+            class="emotion-8"
+          >
+            <div
+              class="emotion-5"
+            >
+              Password
+            </div>
+            <div
+              class="emotion-7"
+            >
+              <input
+                class="emotion-10"
+                required=""
+                type="password"
+                value=""
+              />
+            </div>
+          </label>
           <button
-            class="emotion-11"
+            class="emotion-13"
           >
             Login
           </button>
+          <p
+            class="emotion-14"
+          />
+          <p
+            class="emotion-16"
+          >
+            <a
+              class="emotion-15"
+              href="/forgot-password"
+            >
+              Forgot password
+            </a>
+          </p>
+          <p
+            class="emotion-18"
+          >
+            Don't have an account?
+             
+            <a
+              class="emotion-15"
+              href="/register"
+            >
+              Sign Up
+            </a>
+          </p>
+        </form>
+      </div>
+      <div
+        class="emotion-25"
+      >
+        <div
+          class="emotion-24"
+        >
+          <div
+            class="emotion-21"
+          />
+          <p
+            class="emotion-23"
+          >
+            Are you a parent?
+             
+            <a
+              class="emotion-15"
+              href="https://parent.obserfy.com/api/login"
+            >
+              Go to parent portal
+            </a>
+          </p>
         </div>
-        <p
-          class="emotion-13"
-        />
-      </form>
+      </div>
     </div>
   </div>
 </div>

@@ -38,3 +38,38 @@ export const shouldUpdateScroll = ({
 
   return true
 }
+
+export const onServiceWorkerUpdateReady = () => {
+  if (window.updateAvailable) {
+    window.updateAvailable()
+  }
+}
+
+export const onClientEntry = () => {
+  window.analytics.on("page", function (event, properties, options) {
+    const breadcrumb = {
+      category: "page",
+      level: "info",
+      data: options,
+    }
+    window.Sentry.addBreadcrumb(breadcrumb)
+  })
+
+  window.analytics.on("track", function (event, properties, options) {
+    const breadcrumb = {
+      category: "track",
+      level: "info",
+      data: properties,
+    }
+    window.Sentry.addBreadcrumb(breadcrumb)
+  })
+
+  window.analytics.on("identify", function (event, properties, options) {
+    const user = {
+      id: event,
+      username: properties.name,
+      email: properties.email,
+    }
+    Sentry.setUser(user)
+  })
+}
