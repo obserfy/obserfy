@@ -9,6 +9,7 @@ import {
   ADMIN_CURRICULUM_URL,
   ADMIN_INVITE_USER_URL,
   ADMIN_STUDENTS_URL,
+  ADMIN_SUBSCRIPTION_URL,
   ADMIN_USERS_URL,
   CLASS_SETTINGS_URL,
   ADMIN_GUARDIAN_URL,
@@ -46,6 +47,7 @@ export const PageAdmin: FC = () => {
       <CardLink mb={2} name="All Students" to={ADMIN_STUDENTS_URL} />
       <CardLink mb={2} name="All Guardians" to={ADMIN_GUARDIAN_URL} />
       <CardLink mb={2} name="Invite Your Team" to={ADMIN_INVITE_USER_URL} />
+      <CardLink mb={2} name="Subscription Plan" to={ADMIN_SUBSCRIPTION_URL} />
       <Flex mt={2}>
         <ThemeModeButton />
         <Button
