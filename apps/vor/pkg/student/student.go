@@ -503,7 +503,7 @@ func getPlans(s rest.Server, store Store) http.Handler {
 		Description string    `json:"description"`
 		Date        time.Time `json:"date"`
 		Area        *Area     `json:"area,omitempty"`
-		User User `json:"user,omitempty"`
+		User        User      `json:"user,omitempty"`
 	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		studentId := chi.URLParam(r, "studentId")
@@ -535,8 +535,8 @@ func getPlans(s rest.Server, store Store) http.Handler {
 				Description: plan.LessonPlanDetails.Description,
 				Date:        *plan.Date,
 				User: User{
-					Id:plan.LessonPlanDetails.UserId,
-					Name:plan.LessonPlanDetails.User.Name,
+					Id:   plan.LessonPlanDetails.UserId,
+					Name: plan.LessonPlanDetails.User.Name,
 				},
 			}
 			if plan.LessonPlanDetails.AreaId != "" {

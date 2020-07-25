@@ -756,8 +756,8 @@ func getLessonPlans(server rest.Server, store Store) http.Handler {
 		Description string    `json:"description"`
 		ClassName   string    `json:"className"`
 		Date        time.Time `json:"date"`
-		Area *Area `json:"area,omitempty"`
-		User User `json:"user,omitempty"`
+		Area        *Area     `json:"area,omitempty"`
+		User        User      `json:"user,omitempty"`
 	}
 
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
@@ -790,8 +790,8 @@ func getLessonPlans(server rest.Server, store Store) http.Handler {
 				Date:        plan.Date,
 				ClassName:   plan.ClassName,
 				User: User{
-					Id:plan.UserId,
-					Name:plan.UserName,
+					Id:   plan.UserId,
+					Name: plan.UserName,
 				},
 			}
 			if plan.AreaId != "" {

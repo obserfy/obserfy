@@ -129,8 +129,8 @@ type (
 		Files       []File
 		AreaId      string
 		AreaName    string
-		UserId string
-		UserName string
+		UserId      string
+		UserName    string
 	}
 
 	File struct {
