@@ -183,6 +183,8 @@ jobs:
           echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_LOGIN" --password-stdin
           docker push obserfy/vor:$VERSION
       - run: |
+          docker build -t "obserfy/gaia:latest" -f ./docker/gaia/prod.dockerfile .
+      - run: |
           npm install -g @sentry/cli
       - run: |
           VERSION=$(cat VERSION)
