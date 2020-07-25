@@ -493,12 +493,17 @@ func getPlans(s rest.Server, store Store) http.Handler {
 		Id   string `json:"id"`
 		Name string `json:"name"`
 	}
+	type User struct {
+		Id   string `json:"id"`
+		Name string `json:"name"`
+	}
 	type responseBody struct {
 		Id          string    `json:"id"`
 		Title       string    `json:"title"`
 		Description string    `json:"description"`
 		Date        time.Time `json:"date"`
 		Area        *Area     `json:"area,omitempty"`
+		User User `json:"user,omitempty"`
 	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		studentId := chi.URLParam(r, "studentId")
@@ -529,6 +534,10 @@ func getPlans(s rest.Server, store Store) http.Handler {
 				Title:       plan.LessonPlanDetails.Title,
 				Description: plan.LessonPlanDetails.Description,
 				Date:        *plan.Date,
+				User: User{
+					Id:plan.LessonPlanDetails.UserId,
+					Name:plan.LessonPlanDetails.User.Name,
+				},
 			}
 			if plan.LessonPlanDetails.AreaId != "" {
 				response[i].Area = &Area{
