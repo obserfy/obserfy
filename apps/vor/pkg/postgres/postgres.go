@@ -40,6 +40,7 @@ func InitTables(db *pg.DB) error {
 		(*Area)(nil),
 		(*Subject)(nil),
 		(*Material)(nil),
+		(*Subscription)(nil),
 		(*School)(nil),
 		(*Image)(nil),
 		(*Class)(nil),
@@ -190,14 +191,32 @@ type Observation struct {
 	Creator     *User
 }
 
+type Subscription struct {
+	Id                 uuid.UUID `pg:",type:uuid"`
+	CancelUrl          string
+	Currency           string
+	User               User
+	Email              string
+	EventTime          time.Time
+	MarketingConsent   bool
+	NextBillDate       time.Time
+	Status             string
+	SubscriptionId     string
+	SubscriptionPlanId string
+	PaddleUserId       string
+	UpdateUrl          string
+}
+
 type School struct {
-	Id           string `json:"id" pg:",type:uuid"`
-	Name         string `json:"name"`
-	InviteCode   string `json:"inviteCode"`
-	Users        []User `pg:"many2many:user_to_schools,join_fk:user_id"`
-	CurriculumId string `pg:",type:uuid,on_delete:SET NULL"`
-	Curriculum   Curriculum
-	Guardian     []Guardian
+	Id             string `json:"id" pg:",type:uuid"`
+	Name           string `json:"name"`
+	InviteCode     string `json:"inviteCode"`
+	Users          []User `pg:"many2many:user_to_schools,join_fk:user_id"`
+	CurriculumId   string `pg:",type:uuid,on_delete:SET NULL"`
+	Curriculum     Curriculum
+	Guardian       []Guardian
+	SubscriptionId uuid.UUID `pg:",type:uuid"`
+	Subscription   Subscription
 }
 
 type Attendance struct {
