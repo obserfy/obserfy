@@ -195,7 +195,6 @@ type Subscription struct {
 	Id                 uuid.UUID `pg:",type:uuid"`
 	CancelUrl          string
 	Currency           string
-	User               User
 	Email              string
 	EventTime          time.Time
 	MarketingConsent   bool

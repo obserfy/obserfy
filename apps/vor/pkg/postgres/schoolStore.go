@@ -681,9 +681,9 @@ func (s SchoolStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLessonP
 		ClassId:     planDetails.ClassId,
 	}, nil
 }
-func (u SchoolStore) GetUser(email string) (*cSchool.User, error) {
+func (s SchoolStore) GetUser(email string) (*cSchool.User, error) {
 	var model cSchool.User
-	if err := u.Model(&model).
+	if err := s.Model(&model).
 		Column("id", "email", "name").
 		Where("email=?", email).
 		Select(); err != nil {
