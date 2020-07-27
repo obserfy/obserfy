@@ -5,7 +5,7 @@ require("dotenv").config({
 
 // Conditionally load guess js
 const guessJsPlugin =
-  process.env.GA_PRIVATE_KEY && process.env.GA_CLIENT_EMAIL
+  process.env.GA_PRIVATE_KEY && process.env.GA_CLIENT_EMAIL && process.env.CYPRESS_SUPPORT !== "y"
     ? [
         {
           resolve: "gatsby-plugin-guess-js",
