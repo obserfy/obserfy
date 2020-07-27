@@ -8,6 +8,14 @@ describe("test student profile page", () => {
   let schoolName
 
   beforeEach(() => {
+    window?.navigator?.serviceWorker
+      .getRegistrations()
+      .then((registrations) => {
+        registrations.forEach((registration) => {
+          registration.unregister()
+        })
+      })
+
     name = faker.name.firstName()
     email = faker.internet.email()
     password = faker.internet.password()

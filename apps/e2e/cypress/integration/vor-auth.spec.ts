@@ -1,6 +1,16 @@
 describe("test authentication", () => {
   const faker = require("faker")
 
+  beforeEach(() => {
+    window?.navigator?.serviceWorker
+      .getRegistrations()
+      .then((registrations) => {
+        registrations.forEach((registration) => {
+          registration.unregister()
+        })
+      })
+  })
+
   it("should be able to login and register", () => {
     // define new user dynamically
     const name = faker.name.firstName()

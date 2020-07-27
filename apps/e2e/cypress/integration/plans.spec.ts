@@ -5,6 +5,14 @@ describe("Test lesson plan features", () => {
   const classStartTime = faker.date.recent()
 
   beforeEach(() => {
+    window?.navigator?.serviceWorker
+      .getRegistrations()
+      .then((registrations) => {
+        registrations.forEach((registration) => {
+          registration.unregister()
+        })
+      })
+
     const name = faker.name.firstName()
     const email = faker.internet.email()
     const password = faker.internet.password()
