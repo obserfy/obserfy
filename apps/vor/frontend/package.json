@@ -34,7 +34,7 @@
     "gatsby-source-filesystem": "2.3.22",
     "gatsby-transformer-sharp": "2.5.11",
     "idb-keyval": "3.2.0",
-    "immer": "7.0.5",
+    "immer": "7.0.7",
     "nanoid": "3.1.11",
     "preact": "10.4.6",
     "query-string": "6.13.1",
