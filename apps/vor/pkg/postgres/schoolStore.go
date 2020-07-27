@@ -54,7 +54,8 @@ func (s SchoolStore) GetSchool(schoolId string) (*cSchool.School, error) {
 	var school School
 	if err := s.Model(&school).
 		Relation("Users").
-		Where("id=?", schoolId).
+		Relation("Subscription").
+		Where("school.id=?", schoolId).
 		Select(); err != nil {
 		return nil, err
 	}
@@ -68,12 +69,30 @@ func (s SchoolStore) GetSchool(schoolId string) (*cSchool.School, error) {
 		})
 	}
 
-	return &cSchool.School{
+	result := cSchool.School{
 		Id:         school.Id,
 		Name:       school.Name,
 		InviteCode: school.InviteCode,
 		Users:      userData,
-	}, nil
+	}
+	if (Subscription{}) != school.Subscription {
+		result.Subscription = cSchool.Subscription{
+			Id:                 school.Subscription.Id,
+			CancelUrl:          school.Subscription.CancelUrl,
+			Currency:           school.Subscription.Currency,
+			Email:              school.Subscription.Email,
+			EventTime:          school.Subscription.EventTime,
+			NextBillDate:       school.Subscription.NextBillDate,
+			Status:             school.Subscription.Status,
+			SubscriptionId:     school.Subscription.SubscriptionId,
+			SubscriptionPlanId: school.Subscription.SubscriptionPlanId,
+			PaddleUserId:       school.Subscription.PaddleUserId,
+			UpdateUrl:          school.Subscription.UpdateUrl,
+			MarketingConsent:   school.Subscription.MarketingConsent,
+		}
+	}
+
+	return &result, nil
 }
 
 func (s SchoolStore) GetStudents(schoolId, classId string, active *bool) ([]cSchool.Student, error) {

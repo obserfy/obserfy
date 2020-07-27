@@ -316,18 +316,27 @@ func authorizationMiddleware(s rest.Server, store Store) func(next http.Handler)
 }
 
 func getSchool(s rest.Server, store Store) rest.Handler {
-	type responseUserField struct {
+	type user struct {
 		Id            string `json:"id"`
 		Name          string `json:"name"`
 		Email         string `json:"email"`
 		IsCurrentUser bool   `json:"isCurrentUser"`
 	}
 
+	type subscription struct {
+		Id           uuid.UUID `json:"id"`
+		CancelUrl    string    `json:"cancelUrl"`
+		NextBillDate time.Time `json:"nextBillDate"`
+		Status       string    `json:"status"`
+		UpdateUrl    string    `json:"updateUrl"`
+	}
+
 	type response struct {
-		Name       string              `json:"name"`
-		InviteLink string              `json:"inviteLink"`
-		InviteCode string              `json:"inviteCode"`
-		Users      []responseUserField `json:"users"`
+		Name         string        `json:"name"`
+		InviteLink   string        `json:"inviteLink"`
+		InviteCode   string        `json:"inviteCode"`
+		Users        []user        `json:"users"`
+		Subscription *subscription `json:"subscription,omitempty"`
 	}
 
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
@@ -340,10 +349,14 @@ func getSchool(s rest.Server, store Store) rest.Handler {
 		// Get school data
 		school, err := store.GetSchool(schoolId)
 		if err != nil {
-			return &rest.Error{http.StatusInternalServerError, "Failed getting school data", err}
+			return &rest.Error{
+				http.StatusInternalServerError,
+				"Failed getting school data",
+				err,
+			}
 		}
 
-		users := make([]responseUserField, len(school.Users))
+		users := make([]user, len(school.Users))
 		for i, user := range school.Users {
 			users[i].Id = user.Id
 			users[i].Email = user.Email
@@ -355,6 +368,15 @@ func getSchool(s rest.Server, store Store) rest.Handler {
 			InviteLink: "https://" + os.Getenv("SITE_URL") + "/register?inviteCode=" + school.InviteCode,
 			InviteCode: school.InviteCode,
 			Users:      users,
+		}
+		if (Subscription{}) != school.Subscription {
+			response.Subscription = &subscription{
+				Id:           school.Subscription.Id,
+				CancelUrl:    school.Subscription.CancelUrl,
+				NextBillDate: school.Subscription.NextBillDate,
+				Status:       school.Subscription.Status,
+				UpdateUrl:    school.Subscription.UpdateUrl,
+			}
 		}
 
 		if err := rest.WriteJson(w, response); err != nil {
