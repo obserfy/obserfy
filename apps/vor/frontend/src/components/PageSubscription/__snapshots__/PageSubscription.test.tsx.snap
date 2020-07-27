@@ -1,7 +1,63 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageSubscription should render correctly 1`] = `
-.emotion-42 {
+@keyframes animation-0 {
+  0% {
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0);
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes animation-1 {
+  0% {
+    -webkit-transform: translate(0,0);
+    -ms-transform: translate(0,0);
+    transform: translate(0,0);
+  }
+
+  100% {
+    -webkit-transform: translate(6px,0);
+    -ms-transform: translate(6px,0);
+    transform: translate(6px,0);
+  }
+}
+
+@keyframes animation-1 {
+  0% {
+    -webkit-transform: translate(0,0);
+    -ms-transform: translate(0,0);
+    transform: translate(0,0);
+  }
+
+  100% {
+    -webkit-transform: translate(6px,0);
+    -ms-transform: translate(6px,0);
+    transform: translate(6px,0);
+  }
+}
+
+@keyframes animation-2 {
+  0% {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+  }
+
+  100% {
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0);
+  }
+}
+
+.emotion-43 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,12 +65,12 @@ exports[`PageSubscription should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-42 {
+  .emotion-43 {
     font-size: 20px;
   }
 }
 
-.emotion-41 {
+.emotion-42 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -87,7 +143,7 @@ exports[`PageSubscription should render correctly 1`] = `
   text-align: center;
 }
 
-.emotion-40 {
+.emotion-41 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -244,7 +300,7 @@ exports[`PageSubscription should render correctly 1`] = `
   color: var(--theme-ui-colors-textPrimary,#027c5b);
 }
 
-.emotion-39 {
+.emotion-40 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -299,28 +355,74 @@ exports[`PageSubscription should render correctly 1`] = `
   border-radius: 16px;
 }
 
-.emotion-39:disabled {
+.emotion-40:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-39:hover,
-.emotion-39:focus {
+.emotion-40:hover,
+.emotion-40:focus {
   background-color: var(--theme-ui-colors-primaryDark,#00a06d);
   outline: none;
 }
 
-.emotion-39:hover:disabled,
-.emotion-39:focus:disabled {
+.emotion-40:hover:disabled,
+.emotion-40:focus:disabled {
   background-color: var(--theme-ui-colors-primary,#00e399);
+}
+
+.emotion-39 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-right: 4px;
+  display: inline-block;
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+
+.emotion-39 div {
+  position: absolute;
+  top: 9px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: var(--theme-ui-colors-onPrimary,#000);
+  -webkit-animation-timing-function: cubic-bezier(0,1,1,0);
+  animation-timing-function: cubic-bezier(0,1,1,0);
+}
+
+.emotion-39 div:nth-child(1) {
+  left: 2px;
+  -webkit-animation: animation-0 0.6s infinite;
+  animation: animation-0 0.6s infinite;
+}
+
+.emotion-39 div:nth-child(2) {
+  left: 2px;
+  -webkit-animation: animation-1 0.6s infinite;
+  animation: animation-1 0.6s infinite;
+}
+
+.emotion-39 div:nth-child(3) {
+  left: 8px;
+  -webkit-animation: animation-1 0.6s infinite;
+  animation: animation-1 0.6s infinite;
+}
+
+.emotion-39 div:nth-child(4) {
+  left: 14px;
+  -webkit-animation: animation-2 0.6s infinite;
+  animation: animation-2 0.6s infinite;
 }
 
 <div>
   <div
-    class="emotion-42"
+    class="emotion-43"
   >
     <div
-      class="emotion-41"
+      class="emotion-42"
     >
       <a
         aria-current="page"
@@ -347,7 +449,7 @@ exports[`PageSubscription should render correctly 1`] = `
         Subscription Plan
       </h4>
       <div
-        class="emotion-40"
+        class="emotion-41"
       >
         <p
           class="emotion-4"
@@ -496,9 +598,17 @@ exports[`PageSubscription should render correctly 1`] = `
           </div>
         </div>
         <button
-          class="emotion-39"
+          class="emotion-40"
+          disabled=""
         >
-          Start Free Trial
+          <div
+            class="emotion-39"
+          >
+            <div />
+            <div />
+            <div />
+            <div />
+          </div>
         </button>
       </div>
     </div>

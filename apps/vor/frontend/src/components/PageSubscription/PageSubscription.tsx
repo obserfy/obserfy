@@ -1,13 +1,16 @@
 import React, { FC, useState } from "react"
-import { Box, Button, Card, Flex } from "theme-ui"
+import { Box, Button, Card, Flex, useColorMode } from "theme-ui"
 import Typography from "../Typography/Typography"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import Icon from "../Icon/Icon"
 import { ReactComponent as CheckmarkIcon } from "../../icons/checkmark-outline.svg"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
+import { useGetUserProfile } from "../../api/useGetUserProfile"
 
 export const PageSubscription: FC = () => {
   const [loading, setLoading] = useState(false)
+  const user = useGetUserProfile()
+  const [colorMode] = useColorMode()
 
   return (
     <Box mx="auto" sx={{ maxWidth: "maxWidth.xsm" }}>
@@ -52,6 +55,7 @@ export const PageSubscription: FC = () => {
           mt={4}
           p={3}
           sx={{ width: "100%", fontWeight: "bold", borderRadius: 16 }}
+          disabled={user.isLoading}
           onClick={() => {
             setLoading(true)
             const script = document.createElement("script")
@@ -61,15 +65,23 @@ export const PageSubscription: FC = () => {
               Paddle.Setup({ vendor: 112134 })
               Paddle.Checkout.open({
                 product: 590592,
-                email: "chrsep@protonmail.com",
+                email: user.data?.email,
+                passthrough: JSON.stringify({ schoolId: user.data?.school.id }),
+                allowQuantity: false,
+                displayModeTheme: colorMode === "dark" ? "dark" : "light",
+                message:
+                  "Qty and price will be updated later based on your school's user count.",
               })
             }
             script.src = "https://cdn.paddle.com/paddle/paddle.js"
             document.getElementsByTagName("head")[0].appendChild(script)
           }}
         >
-          {loading && <LoadingIndicator color="onPrimary" />}
-          Start Free Trial
+          {loading || user.isLoading ? (
+            <LoadingIndicator color="onPrimary" />
+          ) : (
+            "Start Free Trial"
+          )}
         </Button>
       </Card>
     </Box>
