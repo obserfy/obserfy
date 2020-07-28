@@ -69,7 +69,53 @@ describe("test authentication", () => {
     // Check sidebar links
     cy.url().should("contains", "admin")
     cy.contains("Students").click()
-    // .waitForRouteChange()
     cy.url().should("contains", "students")
+    cy.contains("Admin").click()
+    cy.contains("Invite Your Team").click()
+
+    // Test invite code
+    cy.contains("https")
+      .invoke("text")
+      .then((text) => {
+        const inviteCode = text.split("=")[1]
+        const inviteUrl = `/register?inviteCode=${inviteCode}`
+        cy.visit(inviteUrl)
+
+        cy.contains("Join as").click()
+        cy.contains(schoolName).should("be.visible")
+
+        // logout again
+        cy.clearCookies()
+
+        // Register new user using invite link
+        // define new user dynamically
+        const name2 = faker.name.firstName()
+        const email2 = faker.internet.email()
+        const password2 = faker.internet.password()
+        cy.visit(inviteUrl)
+        cy.get("[data-cy=register-email]").type(email2)
+        cy.contains("Password").type(password2)
+        cy.contains("Name").type(name2)
+        cy.get("[data-cy=register-button]").click()
+        cy.contains(schoolName).should("be.visible")
+
+        // register other user and manually use invite code
+        const name3 = faker.name.firstName()
+        const email3 = faker.internet.email()
+        const password3 = faker.internet.password()
+        cy.clearCookies()
+        cy.visit("/register")
+        cy.get("[data-cy=register-email]").type(email3)
+        cy.contains("Password").type(password3)
+        cy.contains("Name").type(name3)
+        cy.get("[data-cy=register-button]").click()
+        cy.wait(300)
+        cy.contains(schoolName).should("not.be.visible")
+
+        cy.visit(inviteUrl)
+        cy.contains(`Join as ${name3}`).click()
+        cy.contains("Your Schools").should("be.visible")
+        cy.contains(schoolName).should("be.visible")
+      })
   })
 })
