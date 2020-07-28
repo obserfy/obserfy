@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CardLink should render correctly 1`] = `
-.emotion-5 {
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,9 +9,13 @@ exports[`CardLink should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-5 {
+  .emotion-6 {
     font-size: 20px;
   }
+}
+
+.emotion-5 {
+  display: block;
 }
 
 .emotion-4 {
@@ -29,14 +33,14 @@ exports[`CardLink should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .emotion-0 {
@@ -83,9 +87,10 @@ exports[`CardLink should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-5"
+    class="emotion-6"
   >
     <a
+      class="emotion-5"
       href="/curriculum"
     >
       <div

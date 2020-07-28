@@ -1,0 +1,140 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BrandBanner should render correctly 1`] = `
+.emotion-6 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 16px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-6 {
+    font-size: 20px;
+  }
+}
+
+.emotion-5 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 16px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.emotion-4 {
+  display: inline-block;
+}
+
+.emotion-3 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.emotion-0 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.emotion-2 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  text-rendering: optimizeLegibility;
+  margin-left: 8px;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.emotion-1 {
+  font-weight: normal;
+  white-space: nowrap;
+}
+
+<div>
+  <div
+    class="emotion-6"
+  >
+    <div
+      class="emotion-5"
+    >
+      <a
+        class="emotion-4"
+        href="https://obserfy.com"
+      >
+        <div
+          class="emotion-3"
+        >
+          <div
+            class="emotion-0 gatsby-image-wrapper"
+            style="position: relative; overflow: hidden; display: inline-block; width: 32px; height: 32px;"
+          >
+            <img
+              alt=""
+              aria-hidden="true"
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAC8ElEQVQ4y11Uu25TQRDdsUkUCdGTHhoaemgjEI8PSAuCAn4gH5AiqUi8awfyIgX0PIKUNm2AwtnNg1cS8kBCSocRsmP7Xs7Mzl5fsDTe55w9M3PmGhPqhkLNyC/YqtEfBTdK3t0z3q1SsL9McDnWO1hP4ex6cc/DJzj1d6YAIwUjXz8PpxqcftP3pZy+zee0VWewjD7N5bL35VmOOxu4M8Y+leYMg5EZsFFmwV3FpSM6fp7Tdj3HugvHHs4zZdjHGnu2Jw/tLfCd6QJImJbAYH/o6zxf6gA4g4EJwACg1uc1n8XHAPxjhe83BGPTRpa05S4IM4CBxZkARbAuz4XN/kIuITNQsH3Z50e9PaOTFZ4/KoXsZjhMhNNJYMSvA0SZfYStw47pYDGmwxegfV6DSAv+o7GawbVkM4YSwfYEbBV2qXh5c3YE64dg2KadRhn0jI6WmdCkweZ9qVwKlcOMzN4NpNEgnFUGybc3GFAIaI5j5e0WA77lHGloqRA9OF0WZ2+HjH+CscbGwMO6/4KJqBKymAaEzX8oCi+yJAeMH2Kx6mSas1EOwRoFquo4LpHFag+IiMZ8IZGUu3UtVoWZIR2peCVAd0cqH+CTcs8jXt6l3bmcpSBJhjS4mqZpR5QJFWBxHNJxgg6XJefCUKK0bXaYklygA6S9AhdlkYv0QHt1GK9XcV4dgDXOYW+fPj/lHEYiu1L1n8zwGh8AgAuRcXuprtqwm+a/H8AY+I2mplsoA/rE+DrJ4L0Wo1uIlWXBWgvuJWwcDO/CJjDfU7Be0QQcVdy7lSo3xhu4UEiHYiiZdMbBUmw95EzCHDzM8w4dcsrsWkpyksE0NzqrvtQBWcwtA4g2u5yzUq935GPi7anZrI0qO2cqvpaYNugkfrq46U0Eid0Q1OIXpythRmanJtSu/KPRJA2dP4a1uDe5nbTHo0EaLDFJQ2zPtYKZ10iLz7e3hrYbpEW6iPWk9GawLW1FZtgWaXj7Cna7RKKatPoXutXYgtaU6eYAAAAASUVORK5CYII="
+              style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 1; transition-delay: 500ms;"
+            />
+            <picture>
+              <source
+                srcset="/static/3e94836dd0b0c2444aac67e3738ae9bc/c1598/logo-standalone.png 1x,
+/static/3e94836dd0b0c2444aac67e3738ae9bc/aff39/logo-standalone.png 1.5x,
+/static/3e94836dd0b0c2444aac67e3738ae9bc/ea22a/logo-standalone.png 2x"
+              />
+              <img
+                alt=""
+                height="32"
+                loading="lazy"
+                src="/static/3e94836dd0b0c2444aac67e3738ae9bc/c1598/logo-standalone.png"
+                srcset="/static/3e94836dd0b0c2444aac67e3738ae9bc/c1598/logo-standalone.png 1x,
+/static/3e94836dd0b0c2444aac67e3738ae9bc/aff39/logo-standalone.png 1.5x,
+/static/3e94836dd0b0c2444aac67e3738ae9bc/ea22a/logo-standalone.png 2x"
+                style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0; transition: opacity 500ms;"
+                width="32"
+              />
+            </picture>
+            <noscript>
+              &lt;picture&gt;&lt;source srcset="/static/3e94836dd0b0c2444aac67e3738ae9bc/c1598/logo-standalone.png 1x,
+/static/3e94836dd0b0c2444aac67e3738ae9bc/aff39/logo-standalone.png 1.5x,
+/static/3e94836dd0b0c2444aac67e3738ae9bc/ea22a/logo-standalone.png 2x" /&gt;&lt;img loading="lazy" width="32" height="32" srcset="/static/3e94836dd0b0c2444aac67e3738ae9bc/c1598/logo-standalone.png 1x,
+/static/3e94836dd0b0c2444aac67e3738ae9bc/aff39/logo-standalone.png 1.5x,
+/static/3e94836dd0b0c2444aac67e3738ae9bc/ea22a/logo-standalone.png 2x" src="/static/3e94836dd0b0c2444aac67e3738ae9bc/c1598/logo-standalone.png" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/&gt;&lt;/picture&gt;
+            </noscript>
+          </div>
+          <p
+            class="emotion-2"
+          >
+            Obserfy
+             
+            <span
+              class="emotion-1"
+            >
+              for Teachers
+            </span>
+          </p>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+`;

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`InformationalCard should render correctly 1`] = `
-.emotion-8 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,25 +9,32 @@ exports[`InformationalCard should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-8 {
+  .emotion-7 {
     font-size: 20px;
   }
 }
 
-.emotion-7 {
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   padding: 16px;
   margin-top: 16px;
   background-color: var(--theme-ui-colors-tintWarning,rgba(255,199,1,0.2));
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   border-width: 1px;
   border-color: var(--theme-ui-colors-warning,#ff6d00);
   border-radius: 0;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 @media screen and (min-width:40em) {
-  .emotion-7 {
+  .emotion-6 {
     border-radius: 6px;
   }
 }
@@ -36,14 +43,14 @@ exports[`InformationalCard should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .emotion-0 {
@@ -91,27 +98,12 @@ exports[`InformationalCard should render correctly 1`] = `
   font-size: 14px;
 }
 
-.emotion-6 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+.emotion-5 {
+  margin-left: auto;
+  display: inline-block;
 }
 
 .emotion-4 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  pointer-events: none;
-}
-
-.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -165,30 +157,30 @@ exports[`InformationalCard should render correctly 1`] = `
   font-size: 12px;
 }
 
-.emotion-5:disabled {
+.emotion-4:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-5:hover,
-.emotion-5:focus {
+.emotion-4:hover,
+.emotion-4:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-5:hover:disabled,
-.emotion-5:focus:disabled {
+.emotion-4:hover:disabled,
+.emotion-4:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
 <div>
   <div
-    class="emotion-8"
+    class="emotion-7"
   >
     <div
-      class="emotion-7"
+      class="emotion-6"
     >
       <div
         class="emotion-2"
@@ -207,24 +199,17 @@ exports[`InformationalCard should render correctly 1`] = `
       >
         This is very useful do this.
       </p>
-      <div
-        class="emotion-6"
+      <a
+        aria-current="page"
+        class="emotion-5"
+        href="/"
       >
-        <div
+        <button
           class="emotion-4"
-        />
-        <a
-          aria-current="page"
-          class=""
-          href="/"
         >
-          <button
-            class="emotion-5"
-          >
-            A button
-          </button>
-        </a>
-      </div>
+          A button
+        </button>
+      </a>
     </div>
   </div>
 </div>

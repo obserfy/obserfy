@@ -2,6 +2,7 @@ package main
 
 import (
 	"crypto/tls"
+	"github.com/chrsep/vor/pkg/subscription"
 	"log"
 	"net/http"
 	"os"
@@ -78,6 +79,7 @@ func runServer() error {
 	guardianStore := postgres.GuardianStore{db}
 	lessonPlanStore := postgres.LessonPlanStore{db}
 	imageStore := postgres.ImageStore{db}
+	subscriptionStore := postgres.SubscriptionStore{db}
 	mailService := mailgun.NewService()
 	//attendanceStore:=postgres.AttendanceStore{db}
 	imgproxyClient, err := imgproxy.NewClient()
@@ -104,6 +106,9 @@ func runServer() error {
 	r.Use(middleware.Recoverer)          // Catches panic, recover and return 500
 	r.Use(sentryHandler.Handle)          // Panic goes to sentry first, who catch it than re-panics
 	r.Mount("/auth", auth.NewRouter(server, authStore, mailService, clock.New()))
+	r.Route("/webhooks/v1", func(r chi.Router) {
+		r.Mount("/subscriptions", subscription.NewRouter(server, subscriptionStore))
+	})
 	r.Route("/api/v1", func(r chi.Router) {
 		r.Use(auth.NewMiddleware(server, authStore))
 		r.Mount("/students", student.NewRouter(server, studentStore))

@@ -34,7 +34,7 @@ func createFrontendAuthMiddleware(db *pg.DB, folder string) func(next http.Handl
 					http.Redirect(w, r, "/login", http.StatusFound)
 					return
 				}
-			} else if strings.HasPrefix(path, "/login") || strings.HasPrefix(path, "/register") {
+			} else if strings.HasPrefix(path, "/login") {
 				// If user already authenticated, jump to dashboard.
 				token, err := r.Cookie("session")
 				if token != nil {

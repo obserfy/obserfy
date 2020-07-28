@@ -10,7 +10,10 @@ export const ADMIN_CURRICULUM_URL = "/dashboard/admin/curriculum"
 export const ADMIN_USERS_URL = "/dashboard/admin/users"
 export const ADMIN_STUDENTS_URL = "/dashboard/admin/students"
 export const ADMIN_INVITE_USER_URL = "/dashboard/admin/inviteUser"
+export const ADMIN_SUBSCRIPTION_URL = "/dashboard/admin/subscription"
 export const SUPPORT_URL = "/dashboard/support"
+export const ADMIN_GUARDIAN_URL = "/dashboard/admin/guardians"
+export const NEW_GUARDIAN_ADMIN_URL = "/dashboard/admin/guardians/new"
 
 export const CURRICULUM_AREA_URL = (areaId: string): string =>
   `/dashboard/admin/curriculum/area?id=${areaId}`
@@ -75,3 +78,6 @@ export const STUDENT_PROGRESS_URL = (
   selectedAreaId: string
 ) =>
   `/dashboard/students/progress?studentId=${studentId}&areaId=${selectedAreaId}`
+
+export const GUARDIAN_PROFILE_URL = (id: string) =>
+  `/dashboard/admin/guardians/profile?id=${id}`

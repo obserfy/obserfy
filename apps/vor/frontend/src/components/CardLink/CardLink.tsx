@@ -1,5 +1,6 @@
-import React, { FC, PropsWithoutRef } from "react"
-import { Card, CardProps, Flex } from "theme-ui"
+/** @jsx jsx */
+import { FC, PropsWithoutRef } from "react"
+import { jsx, Card, CardProps, Flex } from "theme-ui"
 import { Link } from "../Link/Link"
 import Typography from "../Typography/Typography"
 import Spacer from "../Spacer/Spacer"
@@ -11,7 +12,7 @@ interface Props extends PropsWithoutRef<CardProps> {
   to: string
 }
 export const CardLink: FC<Props> = ({ name, to, ...props }) => (
-  <Link to={to}>
+  <Link to={to} sx={{ display: "block" }}>
     <Card p={3} {...props}>
       <Flex sx={{ alignItems: "center" }}>
         <Typography.H6>{name}</Typography.H6>
