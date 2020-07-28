@@ -48,9 +48,17 @@ func postWebhook(server rest.Server, store Store) http.Handler {
 		alertName := r.FormValue("alert_name")
 		if alertName == "subscription_created" {
 			return handleSubscriptionCreated(r.Form, store)
+		} else if alertName == "subscription_updated" {
+			return handleSubscriptionUpdated(r.Form, store)
+		} else if alertName == "subscription_cancelled" {
+			return handleSubscriptionCancelled(r.Form, store)
+		} else {
+			return &rest.Error{
+				Code:    http.StatusBadRequest,
+				Message: "unrecognized alert_name",
+				Error:   richErrors.New(alertName + " is not a valid alert_name"),
+			}
 		}
-
-		return nil
 	})
 }
 
@@ -117,6 +125,14 @@ func handleSubscriptionCreated(values url.Values, store Store) *rest.Error {
 		}
 	}
 
+	return nil
+}
+
+func handleSubscriptionUpdated(form url.Values, store Store) *rest.Error {
+	return nil
+}
+
+func handleSubscriptionCancelled(form url.Values, store Store) *rest.Error {
 	return nil
 }
 
