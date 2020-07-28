@@ -1,12 +1,12 @@
-import useOldApiHook from "../useOldApiHook"
+import { useQuery } from "react-query"
+import { getApi } from "../fetchApi"
 
-export interface Schools {
+export interface School {
   id: string
   name: string
 }
-export const useGetSchools = (): [Schools[], boolean, () => void] => {
-  const [schools, loading, setAsOutdated] = useOldApiHook<Schools[]>(
-    "/users/schools"
-  )
-  return [schools ?? [], loading, setAsOutdated]
+export const useGetSchools = () => {
+  const getSchools = getApi<School[]>("/users/schools")
+
+  return useQuery(["schools"], getSchools)
 }
