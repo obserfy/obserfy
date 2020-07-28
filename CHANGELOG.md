@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.10.0](https://github.com/obserfy/obserfy/compare/v1.9.0...v1.10.0) (2020-07-28)
+
+
+### Features
+
+* Add subscription page. ([8e50243](https://github.com/obserfy/obserfy/commit/8e50243a97d65087a1b37787542f21c15f44bde3))
+* Add subscription webhook. ([30ac8aa](https://github.com/obserfy/obserfy/commit/30ac8aa2879c4e93418e232ed160de9313c40a67))
+* improve brand banner. ([2be65bb](https://github.com/obserfy/obserfy/commit/2be65bb16bb3b654e22e8455252ee59d544611a2))
+* Redesigned choose school page. ([6763659](https://github.com/obserfy/obserfy/commit/6763659d71715d9fbbd440be015b31ab6b3331a4))
+* Use register with invite code while being logged in. ([295f446](https://github.com/obserfy/obserfy/commit/295f446e4e78b903df3b5fdf004bbdd8c429acdf))
+
+
+### Bug Fixes
+
+* changing schools doesn't invalidate get students cache. ([17e093a](https://github.com/obserfy/obserfy/commit/17e093aa903f7f8e38727fdefa226a5232d7b4f5))
+* **deps:** pin dependency @sentry/gatsby to 5.20.0 ([dbb98d4](https://github.com/obserfy/obserfy/commit/dbb98d43c66c4109208d4f7ab1394675f974423f))
+* **deps:** update dependency gatsby to v2.24.10 ([050e8c7](https://github.com/obserfy/obserfy/commit/050e8c7cd288fe980851fdf45307b26608716ff4))
+* **deps:** update dependency react-query to v2.5.6 ([b876530](https://github.com/obserfy/obserfy/commit/b8765300582ebe9cfe59827233d103b080c19a20))
+
 ## [1.9.0](https://github.com/obserfy/obserfy/compare/v1.8.0...v1.9.0) (2020-07-22)
 
 
