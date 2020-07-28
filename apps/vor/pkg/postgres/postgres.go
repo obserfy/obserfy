@@ -228,9 +228,9 @@ type Attendance struct {
 }
 
 type UserToSchool struct {
-	SchoolId string `pg:",type:uuid"`
+	SchoolId string `pg:",type:uuid,unique:school_user"`
 	School   School
-	UserId   string `pg:",type:uuid"`
+	UserId   string `pg:",type:uuid,unique:school_user"`
 	User     User
 }
 

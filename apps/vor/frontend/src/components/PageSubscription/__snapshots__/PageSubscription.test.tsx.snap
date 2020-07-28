@@ -138,6 +138,7 @@ exports[`PageSubscription should render correctly 1`] = `
   -ms-letter-spacing: 0;
   letter-spacing: 0;
   text-rendering: optimizeLegibility;
+  margin-bottom: 32px;
   color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
   font-weight: bold;
   text-align: center;
@@ -321,54 +322,11 @@ exports[`PageSubscription should render correctly 1`] = `
   background-color: var(--theme-ui-colors-primary,#00e399);
   border: 0;
   border-radius: 4px;
-  cursor: pointer;
-  box-sizing: border-box;
-  font-size: 16px;
-  color: var(--theme-ui-colors-onPrimary,#000);
-  background-color: var(--theme-ui-colors-primary,#00e399);
-  border-radius: 6px;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 16px;
-  padding-right: 16px;
-  white-space: nowrap;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  touch-action: manipulation;
   margin-top: 32px;
   padding: 16px;
   width: 100%;
   font-weight: bold;
   border-radius: 16px;
-}
-
-.emotion-40:disabled {
-  opacity: 0.38;
-  cursor: auto;
-}
-
-.emotion-40:hover,
-.emotion-40:focus {
-  background-color: var(--theme-ui-colors-primaryDark,#00a06d);
-  outline: none;
-}
-
-.emotion-40:hover:disabled,
-.emotion-40:focus:disabled {
-  background-color: var(--theme-ui-colors-primary,#00e399);
 }
 
 .emotion-39 {
@@ -564,7 +522,7 @@ exports[`PageSubscription should render correctly 1`] = `
             <p
               class="emotion-29"
             >
-              Coming Soon
+              Soon
             </p>
           </div>
           <div
@@ -581,7 +539,7 @@ exports[`PageSubscription should render correctly 1`] = `
             <p
               class="emotion-29"
             >
-              Coming Soon
+              Soon
             </p>
           </div>
           <div
