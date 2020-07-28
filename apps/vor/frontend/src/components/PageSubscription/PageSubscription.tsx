@@ -119,7 +119,7 @@ export const PageSubscription: FC = () => {
         </Box>
 
         <Button
-          variant={isSubscribed ? "outline" : undefined}
+          variant={isSubscribed ? "outline" : "primary"}
           mt={4}
           p={3}
           sx={{ width: "100%", fontWeight: "bold", borderRadius: 16 }}
