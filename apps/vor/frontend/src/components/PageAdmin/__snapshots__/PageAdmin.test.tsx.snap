@@ -15,7 +15,7 @@ exports[`PageAdmin should render correctly 1`] = `
   }
 }
 
-.emotion-39 {
+.emotion-51 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -23,12 +23,12 @@ exports[`PageAdmin should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-39 {
+  .emotion-51 {
     font-size: 20px;
   }
 }
 
-.emotion-38 {
+.emotion-50 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -41,13 +41,13 @@ exports[`PageAdmin should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-38 {
+  .emotion-50 {
     padding-top: 16px;
   }
 }
 
 @media screen and (min-width:52em) {
-  .emotion-38 {
+  .emotion-50 {
     padding-top: 32px;
   }
 }
@@ -91,6 +91,10 @@ exports[`PageAdmin should render correctly 1`] = `
   text-align: center;
 }
 
+.emotion-8 {
+  display: block;
+}
+
 .emotion-7 {
   box-sizing: border-box;
   margin: 0;
@@ -107,14 +111,14 @@ exports[`PageAdmin should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .emotion-3 {
@@ -159,7 +163,7 @@ exports[`PageAdmin should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-37 {
+.emotion-49 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -170,7 +174,7 @@ exports[`PageAdmin should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-34 {
+.emotion-46 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -227,25 +231,25 @@ exports[`PageAdmin should render correctly 1`] = `
   flex-shrink: 0;
 }
 
-.emotion-34:disabled {
+.emotion-46:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-34:hover,
-.emotion-34:focus {
+.emotion-46:hover,
+.emotion-46:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-34:hover:disabled,
-.emotion-34:focus:disabled {
+.emotion-46:hover:disabled,
+.emotion-46:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-35 {
+.emotion-47 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -302,25 +306,25 @@ exports[`PageAdmin should render correctly 1`] = `
   flex-shrink: 0;
 }
 
-.emotion-35:disabled {
+.emotion-47:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-35:hover,
-.emotion-35:focus {
+.emotion-47:hover,
+.emotion-47:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-35:hover:disabled,
-.emotion-35:focus:disabled {
+.emotion-47:hover:disabled,
+.emotion-47:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-36 {
+.emotion-48 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -381,30 +385,30 @@ exports[`PageAdmin should render correctly 1`] = `
   flex-grow: 1;
 }
 
-.emotion-36:disabled {
+.emotion-48:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-36:hover,
-.emotion-36:focus {
+.emotion-48:hover,
+.emotion-48:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-36:hover:disabled,
-.emotion-36:focus:disabled {
+.emotion-48:hover:disabled,
+.emotion-48:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
 <div>
   <div
-    class="emotion-39"
+    class="emotion-51"
   >
     <div
-      class="emotion-38"
+      class="emotion-50"
     >
       <div
         class="emotion-2"
@@ -417,6 +421,7 @@ exports[`PageAdmin should render correctly 1`] = `
         />
       </div>
       <a
+        class="emotion-8"
         href="/dashboard/admin/curriculum"
       >
         <div
@@ -440,6 +445,7 @@ exports[`PageAdmin should render correctly 1`] = `
         </div>
       </a>
       <a
+        class="emotion-8"
         href="/dashboard/admin/users"
       >
         <div
@@ -463,6 +469,7 @@ exports[`PageAdmin should render correctly 1`] = `
         </div>
       </a>
       <a
+        class="emotion-8"
         href="/dashboard/admin/class"
       >
         <div
@@ -486,6 +493,7 @@ exports[`PageAdmin should render correctly 1`] = `
         </div>
       </a>
       <a
+        class="emotion-8"
         href="/dashboard/admin/students"
       >
         <div
@@ -509,6 +517,7 @@ exports[`PageAdmin should render correctly 1`] = `
         </div>
       </a>
       <a
+        class="emotion-8"
         href="/dashboard/admin/guardians"
       >
         <div
@@ -532,6 +541,7 @@ exports[`PageAdmin should render correctly 1`] = `
         </div>
       </a>
       <a
+        class="emotion-8"
         href="/dashboard/admin/inviteUser"
       >
         <div
@@ -554,11 +564,35 @@ exports[`PageAdmin should render correctly 1`] = `
           </div>
         </div>
       </a>
+      <a
+        class="emotion-8"
+        href="/dashboard/admin/subscription"
+      >
+        <div
+          class="emotion-7"
+        >
+          <div
+            class="emotion-6"
+          >
+            <h6
+              class="emotion-3"
+            >
+              Subscription Plan
+            </h6>
+            <div
+              class="emotion-4"
+            />
+            <div
+              class="emotion-5"
+            />
+          </div>
+        </div>
+      </a>
       <div
-        class="emotion-37"
+        class="emotion-49"
       >
         <button
-          class="emotion-34"
+          class="emotion-46"
           data-cy="dark-switch"
         >
           <div
@@ -566,12 +600,12 @@ exports[`PageAdmin should render correctly 1`] = `
           />
         </button>
         <button
-          class="emotion-35"
+          class="emotion-47"
         >
           Switch school
         </button>
         <button
-          class="emotion-36"
+          class="emotion-48"
         >
           Log Out
         </button>

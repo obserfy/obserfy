@@ -18,8 +18,9 @@ export const useGetAllStudents = (
   classId = "",
   active?: boolean
 ): QueryResult<Student[]> => {
+  const schoolId = getSchoolId()
   const fetchStudents = async (): Promise<Student[]> => {
-    const url = `/schools/${getSchoolId()}/students?classId=${classId}&active=${
+    const url = `/schools/${schoolId}/students?classId=${classId}&active=${
       active ?? ""
     }`
     const result = await fetch(`${BASE_URL}${url}`, {
@@ -43,5 +44,5 @@ export const useGetAllStudents = (
     return result.json()
   }
 
-  return useQuery(["students", classId, active], fetchStudents)
+  return useQuery(["students", schoolId, classId, active], fetchStudents)
 }

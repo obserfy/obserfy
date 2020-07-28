@@ -1,0 +1,618 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageSubscription should render correctly 1`] = `
+@keyframes animation-0 {
+  0% {
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0);
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes animation-1 {
+  0% {
+    -webkit-transform: translate(0,0);
+    -ms-transform: translate(0,0);
+    transform: translate(0,0);
+  }
+
+  100% {
+    -webkit-transform: translate(6px,0);
+    -ms-transform: translate(6px,0);
+    transform: translate(6px,0);
+  }
+}
+
+@keyframes animation-1 {
+  0% {
+    -webkit-transform: translate(0,0);
+    -ms-transform: translate(0,0);
+    transform: translate(0,0);
+  }
+
+  100% {
+    -webkit-transform: translate(6px,0);
+    -ms-transform: translate(6px,0);
+    transform: translate(6px,0);
+  }
+}
+
+@keyframes animation-2 {
+  0% {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+  }
+
+  100% {
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0);
+  }
+}
+
+.emotion-43 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 16px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-43 {
+    font-size: 20px;
+  }
+}
+
+.emotion-42 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 500px;
+}
+
+.emotion-2 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-left: -8px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-0 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  margin: 16px;
+  margin-right: 4px;
+  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.emotion-1 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  text-rendering: optimizeLegibility;
+  margin-bottom: 0;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+}
+
+.emotion-3 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 300;
+  line-height: heading;
+  font-size: 3.125rem;
+  line-height: 6rem;
+  -webkit-letter-spacing: 0;
+  -moz-letter-spacing: 0;
+  -ms-letter-spacing: 0;
+  letter-spacing: 0;
+  text-rendering: optimizeLegibility;
+  margin-bottom: 32px;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  font-weight: bold;
+  text-align: center;
+}
+
+.emotion-41 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  overflow: auto;
+  background-color: var(--theme-ui-colors-surface,#fff);
+  border-radius: 6px;
+  box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
+  margin: 16px;
+  padding: 32px;
+  margin-top: 32px;
+  border-radius: 16px;
+}
+
+.emotion-4 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  text-rendering: optimizeLegibility;
+  margin-bottom: 8px;
+  color: var(--theme-ui-colors-textPrimary,#027c5b);
+  font-weight: bold;
+  line-height: 1;
+}
+
+.emotion-7 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-5 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 300;
+  line-height: heading;
+  font-size: 3.90625rem;
+  line-height: 6rem;
+  -webkit-letter-spacing: 0;
+  -moz-letter-spacing: 0;
+  -ms-letter-spacing: 0;
+  letter-spacing: 0;
+  text-rendering: optimizeLegibility;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  font-weight: bold;
+  line-height: 1;
+}
+
+.emotion-6 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  text-rendering: optimizeLegibility;
+  margin-left: 8px;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+}
+
+.emotion-8 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  text-rendering: optimizeLegibility;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+}
+
+.emotion-38 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.emotion-11 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-9 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+  fill: var(--theme-ui-colors-primary,#00e399);
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.emotion-10 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  text-rendering: optimizeLegibility;
+  margin-left: 8px;
+  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+}
+
+.emotion-29 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: rgba(0,0,0,0.88);
+  font-size: 1.6rem;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  text-rendering: optimizeLegibility;
+  margin-left: 8px;
+  color: var(--theme-ui-colors-textPrimary,#027c5b);
+}
+
+.emotion-40 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  text-align: center;
+  line-height: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: inherit;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: white;
+  background-color: var(--theme-ui-colors-primary,#00e399);
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  box-sizing: border-box;
+  font-size: 16px;
+  color: var(--theme-ui-colors-onPrimary,#000);
+  background-color: var(--theme-ui-colors-primary,#00e399);
+  border-radius: 6px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  white-space: nowrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  touch-action: manipulation;
+  margin-top: 32px;
+  padding: 16px;
+  width: 100%;
+  font-weight: bold;
+  border-radius: 16px;
+}
+
+.emotion-40:disabled {
+  opacity: 0.38;
+  cursor: auto;
+}
+
+.emotion-40:hover,
+.emotion-40:focus {
+  background-color: var(--theme-ui-colors-primaryDark,#00a06d);
+  outline: none;
+}
+
+.emotion-40:hover:disabled,
+.emotion-40:focus:disabled {
+  background-color: var(--theme-ui-colors-primary,#00e399);
+}
+
+.emotion-39 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-right: 4px;
+  display: inline-block;
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+
+.emotion-39 div {
+  position: absolute;
+  top: 9px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: var(--theme-ui-colors-onPrimary,#000);
+  -webkit-animation-timing-function: cubic-bezier(0,1,1,0);
+  animation-timing-function: cubic-bezier(0,1,1,0);
+}
+
+.emotion-39 div:nth-child(1) {
+  left: 2px;
+  -webkit-animation: animation-0 0.6s infinite;
+  animation: animation-0 0.6s infinite;
+}
+
+.emotion-39 div:nth-child(2) {
+  left: 2px;
+  -webkit-animation: animation-1 0.6s infinite;
+  animation: animation-1 0.6s infinite;
+}
+
+.emotion-39 div:nth-child(3) {
+  left: 8px;
+  -webkit-animation: animation-1 0.6s infinite;
+  animation: animation-1 0.6s infinite;
+}
+
+.emotion-39 div:nth-child(4) {
+  left: 14px;
+  -webkit-animation: animation-2 0.6s infinite;
+  animation: animation-2 0.6s infinite;
+}
+
+<div>
+  <div
+    class="emotion-43"
+  >
+    <div
+      class="emotion-42"
+    >
+      <a
+        aria-current="page"
+        class=""
+        href="/"
+        style="display: block;"
+      >
+        <div
+          class="emotion-2"
+        >
+          <div
+            class="emotion-0"
+          />
+          <p
+            class="emotion-1"
+          >
+            Admin
+          </p>
+        </div>
+      </a>
+      <h4
+        class="emotion-3"
+      >
+        Subscription Plan
+      </h4>
+      <div
+        class="emotion-41"
+      >
+        <p
+          class="emotion-4"
+        >
+          Standard Plan
+        </p>
+        <div
+          class="emotion-7"
+        >
+          <h3
+            class="emotion-5"
+          >
+            $11.99
+          </h3>
+          <p
+            class="emotion-6"
+          >
+            User/month
+          </p>
+        </div>
+        <p
+          class="emotion-8"
+        >
+          Simple pricing for every school.
+        </p>
+        <div
+          class="emotion-38"
+        >
+          <div
+            class="emotion-11"
+          >
+            <div
+              class="emotion-9"
+            />
+            <p
+              class="emotion-10"
+            >
+              90-days free trial
+            </p>
+          </div>
+          <div
+            class="emotion-11"
+          >
+            <div
+              class="emotion-9"
+            />
+            <p
+              class="emotion-10"
+            >
+              Unlimited students
+            </p>
+          </div>
+          <div
+            class="emotion-11"
+          >
+            <div
+              class="emotion-9"
+            />
+            <p
+              class="emotion-10"
+            >
+              Record observations
+            </p>
+          </div>
+          <div
+            class="emotion-11"
+          >
+            <div
+              class="emotion-9"
+            />
+            <p
+              class="emotion-10"
+            >
+              Create lesson plans
+            </p>
+          </div>
+          <div
+            class="emotion-11"
+          >
+            <div
+              class="emotion-9"
+            />
+            <p
+              class="emotion-10"
+            >
+              Track curriculum progress
+            </p>
+          </div>
+          <div
+            class="emotion-11"
+          >
+            <div
+              class="emotion-9"
+            />
+            <p
+              class="emotion-10"
+            >
+              Parent portal
+            </p>
+          </div>
+          <div
+            class="emotion-11"
+          >
+            <div
+              class="emotion-9"
+            />
+            <p
+              class="emotion-10"
+            >
+              Image gallery
+            </p>
+            <p
+              class="emotion-29"
+            >
+              Soon
+            </p>
+          </div>
+          <div
+            class="emotion-11"
+          >
+            <div
+              class="emotion-9"
+            />
+            <p
+              class="emotion-10"
+            >
+              Reporting
+            </p>
+            <p
+              class="emotion-29"
+            >
+              Soon
+            </p>
+          </div>
+          <div
+            class="emotion-11"
+          >
+            <div
+              class="emotion-9"
+            />
+            <p
+              class="emotion-10"
+            >
+              And more coming...
+            </p>
+          </div>
+        </div>
+        <button
+          class="emotion-40"
+          disabled=""
+        >
+          <div
+            class="emotion-39"
+          >
+            <div />
+            <div />
+            <div />
+            <div />
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

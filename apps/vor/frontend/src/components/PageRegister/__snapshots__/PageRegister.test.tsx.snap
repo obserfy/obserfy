@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageRegister should render correctly 1`] = `
-.emotion-27 {
+.emotion-29 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,33 +9,40 @@ exports[`PageRegister should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-27 {
+  .emotion-29 {
     font-size: 20px;
   }
 }
 
-.emotion-26 {
+.emotion-28 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+}
+
+.emotion-5 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 16px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.emotion-4 {
+  display: inline-block;
 }
 
 .emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 16px;
-  padding-bottom: 16px;
-  padding-left: 8px;
-  padding-right: 8px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 100%;
-  max-width: 500px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -70,7 +77,7 @@ exports[`PageRegister should render correctly 1`] = `
   white-space: nowrap;
 }
 
-.emotion-25 {
+.emotion-27 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -82,7 +89,7 @@ exports[`PageRegister should render correctly 1`] = `
   max-width: 500px;
 }
 
-.emotion-4 {
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -102,7 +109,7 @@ exports[`PageRegister should render correctly 1`] = `
   font-weight: bold;
 }
 
-.emotion-8 {
+.emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -128,14 +135,14 @@ exports[`PageRegister should render correctly 1`] = `
   flex-direction: column;
 }
 
-.emotion-5 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   padding-bottom: 4px;
 }
 
-.emotion-7 {
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -149,7 +156,7 @@ exports[`PageRegister should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-6 {
+.emotion-8 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -177,35 +184,35 @@ exports[`PageRegister should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-6:hover,
-.emotion-6:focus {
+.emotion-8:hover,
+.emotion-8:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-6::-webkit-input-placeholder {
+.emotion-8::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-6::-moz-placeholder {
+.emotion-8::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-6:-ms-input-placeholder {
+.emotion-8:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-6::placeholder {
+.emotion-8::placeholder {
   font-style: italic;
 }
 
-.emotion-6:disabled {
+.emotion-8:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
-.emotion-14 {
+.emotion-16 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -233,35 +240,35 @@ exports[`PageRegister should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-14:hover,
-.emotion-14:focus {
+.emotion-16:hover,
+.emotion-16:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-14::-webkit-input-placeholder {
+.emotion-16::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-14::-moz-placeholder {
+.emotion-16::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-14:-ms-input-placeholder {
+.emotion-16:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-14::placeholder {
+.emotion-16::placeholder {
   font-style: italic;
 }
 
-.emotion-14:disabled {
+.emotion-16:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
-.emotion-17 {
+.emotion-19 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -312,23 +319,23 @@ exports[`PageRegister should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-17:disabled {
+.emotion-19:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-17:hover,
-.emotion-17:focus {
+.emotion-19:hover,
+.emotion-19:focus {
   background-color: var(--theme-ui-colors-primaryDark,#00a06d);
   outline: none;
 }
 
-.emotion-17:hover:disabled,
-.emotion-17:focus:disabled {
+.emotion-19:hover:disabled,
+.emotion-19:focus:disabled {
   background-color: var(--theme-ui-colors-primary,#00e399);
 }
 
-.emotion-18 {
+.emotion-20 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -345,7 +352,7 @@ exports[`PageRegister should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-20 {
+.emotion-22 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -360,11 +367,11 @@ exports[`PageRegister should render correctly 1`] = `
   text-align: center;
 }
 
-.emotion-19 {
+.emotion-21 {
   color: var(--theme-ui-colors-textPrimary,#027c5b);
 }
 
-.emotion-24 {
+.emotion-26 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -382,7 +389,7 @@ exports[`PageRegister should render correctly 1`] = `
   align-items: center;
 }
 
-.emotion-21 {
+.emotion-23 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -397,7 +404,7 @@ exports[`PageRegister should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-23 {
+.emotion-25 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -415,87 +422,92 @@ exports[`PageRegister should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-27"
+    class="emotion-29"
   >
     <div
-      class="emotion-26"
+      class="emotion-28"
     >
-      <a
-        href="https://obserfy.com"
+      <div
+        class="emotion-5"
       >
-        <div
-          class="emotion-3"
+        <a
+          class="emotion-4"
+          href="https://obserfy.com"
         >
           <div
-            class="emotion-0 gatsby-image-wrapper"
-            style="position: relative; overflow: hidden; display: inline-block; width: 40px; height: 40px;"
+            class="emotion-3"
           >
-            <img
-              alt=""
-              aria-hidden="true"
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAACVUlEQVQ4y3VVu04bQRSdsd1QpeIH6BAFTZooEiUfkM+goI6Ub4BiR8QBQpMCUblEiijzB7sRJlFMEgoaGjrbyJicc++dx9rOSkdzvXPn7D33MXaufJrK+bpKtqurDtAFeoaub/CuKXxWPZ5EQhD0N4h8Hbz7z8M934SOkgY9u0iYyJrQTRt1tQXsAQfAIbAP3+18LvvCdoU0+1GrAyLcAAYgmPvbkxf/57OC9vfwgqguQbBZnmGkjumKzPFriOAt8CgETZjD6QnOYwFtfuT3KffGwG4r0pj/mA+sG8Cj//kJUVRTOMz89VGOcHjE6GYk9jcfSTqVtChZx6Wk1pU3wgEPYnOK98/+1zHtB+ACOAfu+Q5+z0KKSLFe2VmvEeZqbZnEOaMwsq/AelGkV8DA9mYkpgLYb3KU7DP9sceky5fV6SGSIac9HO6Z3xpwR8lU4v+ecX2fc8mGVccDkctkq+wLc+qJFEEiPTa5E38r60muRSY8tMpGwvMWYbTVt79AeFoSRsn7SfJQJN9LznQykmRZmzDyP/rwCROT/KGU3DHCbTatFWZm1RwAa3nkJJdfWkUZSi53yqJoyfXFpUlhA2vbNOGOOROZdTUyMm2bkSj6lkYvNnYR5SYwtgo+SRRsYE4GcdPPjX0tTU6/1+3GztdVzOWutIOOFyKRaZhEiExGpmTvrIftbGjfFMVM8pa5krFD0llJAW3mrIFMiyzfAW3JbtWVJBPApmWfsTVYzViAZd+FW1OLk3KaCrXyQg4pZ+3I3DJp2lSbxF02rKFrfwvL/vb8A8mhJMm8BwH7AAAAAElFTkSuQmCC"
-              style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 1; transition-delay: 500ms;"
-            />
-            <picture>
-              <source
-                srcset="/static/fe67918dbda465cf53640b9ec939e54c/ff4be/logo-transparent.png 1x,
-/static/fe67918dbda465cf53640b9ec939e54c/183c2/logo-transparent.png 1.5x,
-/static/fe67918dbda465cf53640b9ec939e54c/829e2/logo-transparent.png 2x"
-              />
+            <div
+              class="emotion-0 gatsby-image-wrapper"
+              style="position: relative; overflow: hidden; display: inline-block; width: 32px; height: 32px;"
+            >
               <img
                 alt=""
-                height="40"
-                loading="lazy"
-                src="/static/fe67918dbda465cf53640b9ec939e54c/ff4be/logo-transparent.png"
-                srcset="/static/fe67918dbda465cf53640b9ec939e54c/ff4be/logo-transparent.png 1x,
-/static/fe67918dbda465cf53640b9ec939e54c/183c2/logo-transparent.png 1.5x,
-/static/fe67918dbda465cf53640b9ec939e54c/829e2/logo-transparent.png 2x"
-                style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0; transition: opacity 500ms;"
-                width="40"
+                aria-hidden="true"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAC8ElEQVQ4y11Uu25TQRDdsUkUCdGTHhoaemgjEI8PSAuCAn4gH5AiqUi8awfyIgX0PIKUNm2AwtnNg1cS8kBCSocRsmP7Xs7Mzl5fsDTe55w9M3PmGhPqhkLNyC/YqtEfBTdK3t0z3q1SsL9McDnWO1hP4ex6cc/DJzj1d6YAIwUjXz8PpxqcftP3pZy+zee0VWewjD7N5bL35VmOOxu4M8Y+leYMg5EZsFFmwV3FpSM6fp7Tdj3HugvHHs4zZdjHGnu2Jw/tLfCd6QJImJbAYH/o6zxf6gA4g4EJwACg1uc1n8XHAPxjhe83BGPTRpa05S4IM4CBxZkARbAuz4XN/kIuITNQsH3Z50e9PaOTFZ4/KoXsZjhMhNNJYMSvA0SZfYStw47pYDGmwxegfV6DSAv+o7GawbVkM4YSwfYEbBV2qXh5c3YE64dg2KadRhn0jI6WmdCkweZ9qVwKlcOMzN4NpNEgnFUGybc3GFAIaI5j5e0WA77lHGloqRA9OF0WZ2+HjH+CscbGwMO6/4KJqBKymAaEzX8oCi+yJAeMH2Kx6mSas1EOwRoFquo4LpHFag+IiMZ8IZGUu3UtVoWZIR2peCVAd0cqH+CTcs8jXt6l3bmcpSBJhjS4mqZpR5QJFWBxHNJxgg6XJefCUKK0bXaYklygA6S9AhdlkYv0QHt1GK9XcV4dgDXOYW+fPj/lHEYiu1L1n8zwGh8AgAuRcXuprtqwm+a/H8AY+I2mplsoA/rE+DrJ4L0Wo1uIlWXBWgvuJWwcDO/CJjDfU7Be0QQcVdy7lSo3xhu4UEiHYiiZdMbBUmw95EzCHDzM8w4dcsrsWkpyksE0NzqrvtQBWcwtA4g2u5yzUq935GPi7anZrI0qO2cqvpaYNugkfrq46U0Eid0Q1OIXpythRmanJtSu/KPRJA2dP4a1uDe5nbTHo0EaLDFJQ2zPtYKZ10iLz7e3hrYbpEW6iPWk9GawLW1FZtgWaXj7Cna7RKKatPoXutXYgtaU6eYAAAAASUVORK5CYII="
+                style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 1; transition-delay: 500ms;"
               />
-            </picture>
-            <noscript>
-              &lt;picture&gt;&lt;source srcset="/static/fe67918dbda465cf53640b9ec939e54c/ff4be/logo-transparent.png 1x,
-/static/fe67918dbda465cf53640b9ec939e54c/183c2/logo-transparent.png 1.5x,
-/static/fe67918dbda465cf53640b9ec939e54c/829e2/logo-transparent.png 2x" /&gt;&lt;img loading="lazy" width="40" height="40" srcset="/static/fe67918dbda465cf53640b9ec939e54c/ff4be/logo-transparent.png 1x,
-/static/fe67918dbda465cf53640b9ec939e54c/183c2/logo-transparent.png 1.5x,
-/static/fe67918dbda465cf53640b9ec939e54c/829e2/logo-transparent.png 2x" src="/static/fe67918dbda465cf53640b9ec939e54c/ff4be/logo-transparent.png" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/&gt;&lt;/picture&gt;
-            </noscript>
-          </div>
-          <p
-            class="emotion-2"
-          >
-            Obserfy
-             
-            <span
-              class="emotion-1"
+              <picture>
+                <source
+                  srcset="/static/3e94836dd0b0c2444aac67e3738ae9bc/c1598/logo-standalone.png 1x,
+/static/3e94836dd0b0c2444aac67e3738ae9bc/aff39/logo-standalone.png 1.5x,
+/static/3e94836dd0b0c2444aac67e3738ae9bc/ea22a/logo-standalone.png 2x"
+                />
+                <img
+                  alt=""
+                  height="32"
+                  loading="lazy"
+                  src="/static/3e94836dd0b0c2444aac67e3738ae9bc/c1598/logo-standalone.png"
+                  srcset="/static/3e94836dd0b0c2444aac67e3738ae9bc/c1598/logo-standalone.png 1x,
+/static/3e94836dd0b0c2444aac67e3738ae9bc/aff39/logo-standalone.png 1.5x,
+/static/3e94836dd0b0c2444aac67e3738ae9bc/ea22a/logo-standalone.png 2x"
+                  style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0; transition: opacity 500ms;"
+                  width="32"
+                />
+              </picture>
+              <noscript>
+                &lt;picture&gt;&lt;source srcset="/static/3e94836dd0b0c2444aac67e3738ae9bc/c1598/logo-standalone.png 1x,
+/static/3e94836dd0b0c2444aac67e3738ae9bc/aff39/logo-standalone.png 1.5x,
+/static/3e94836dd0b0c2444aac67e3738ae9bc/ea22a/logo-standalone.png 2x" /&gt;&lt;img loading="lazy" width="32" height="32" srcset="/static/3e94836dd0b0c2444aac67e3738ae9bc/c1598/logo-standalone.png 1x,
+/static/3e94836dd0b0c2444aac67e3738ae9bc/aff39/logo-standalone.png 1.5x,
+/static/3e94836dd0b0c2444aac67e3738ae9bc/ea22a/logo-standalone.png 2x" src="/static/3e94836dd0b0c2444aac67e3738ae9bc/c1598/logo-standalone.png" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/&gt;&lt;/picture&gt;
+              </noscript>
+            </div>
+            <p
+              class="emotion-2"
             >
-              for Teachers
-            </span>
-          </p>
-        </div>
-      </a>
+              Obserfy
+               
+              <span
+                class="emotion-1"
+              >
+                for Teachers
+              </span>
+            </p>
+          </div>
+        </a>
+      </div>
       <form
-        class="emotion-25"
+        class="emotion-27"
       >
         <h5
-          class="emotion-4"
+          class="emotion-6"
         >
           Sign Up
         </h5>
         <label
-          class="emotion-8"
+          class="emotion-10"
         >
           <div
-            class="emotion-5"
+            class="emotion-7"
           >
             Name
           </div>
           <div
-            class="emotion-7"
+            class="emotion-9"
           >
             <input
-              class="emotion-6"
+              class="emotion-8"
               name="name"
               required=""
               value=""
@@ -503,18 +515,18 @@ exports[`PageRegister should render correctly 1`] = `
           </div>
         </label>
         <label
-          class="emotion-8"
+          class="emotion-10"
         >
           <div
-            class="emotion-5"
+            class="emotion-7"
           >
             Email
           </div>
           <div
-            class="emotion-7"
+            class="emotion-9"
           >
             <input
-              class="emotion-6"
+              class="emotion-8"
               data-cy="register-email"
               name="email"
               required=""
@@ -524,18 +536,18 @@ exports[`PageRegister should render correctly 1`] = `
           </div>
         </label>
         <label
-          class="emotion-8"
+          class="emotion-10"
         >
           <div
-            class="emotion-5"
+            class="emotion-7"
           >
             Password
           </div>
           <div
-            class="emotion-7"
+            class="emotion-9"
           >
             <input
-              class="emotion-14"
+              class="emotion-16"
               name="password"
               required=""
               type="password"
@@ -544,39 +556,39 @@ exports[`PageRegister should render correctly 1`] = `
           </div>
         </label>
         <button
-          class="emotion-17"
+          class="emotion-19"
           data-cy="register-button"
         >
           Sign Up
         </button>
         <p
-          class="emotion-18"
+          class="emotion-20"
         />
         <p
-          class="emotion-20"
+          class="emotion-22"
         >
           Already have an account?
            
           <a
-            class="emotion-19"
+            class="emotion-21"
             href="/login"
           >
             Login
           </a>
         </p>
         <div
-          class="emotion-24"
+          class="emotion-26"
         >
           <div
-            class="emotion-21"
+            class="emotion-23"
           />
           <p
-            class="emotion-23"
+            class="emotion-25"
           >
             Are you a parent?
              
             <a
-              class="emotion-19"
+              class="emotion-21"
               href="https://parent.obserfy.com/api/login"
             >
               Go to parent portal

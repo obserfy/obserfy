@@ -15,5 +15,6 @@ type (
 	Store interface {
 		GetUser(userId string) (*User, error)
 		GetSchools(userId string) ([]UserSchool, error)
+		AddSchool(userId string, invite string) error
 	}
 )

@@ -1,13 +1,35 @@
 package postgres
 
 import (
-	"github.com/go-pg/pg/v10"
-
 	"github.com/chrsep/vor/pkg/user"
+	"github.com/go-pg/pg/v10"
+	richErrors "github.com/pkg/errors"
+	"strings"
 )
 
 type UserStore struct {
 	*pg.DB
+}
+
+func (u UserStore) AddSchool(userId string, inviteCode string) error {
+	var school School
+	if err := u.Model(&school).
+		Column("id").
+		Where("invite_code=?", inviteCode).
+		Select(); err != nil {
+		return richErrors.Wrap(err, "failed to get school by invite_code")
+	}
+
+	userToSchool := UserToSchool{
+		UserId:   userId,
+		SchoolId: school.Id,
+	}
+	if _, err := u.Model(&userToSchool).
+		Insert(); err != nil && strings.Contains(err.Error(), "#23505") {
+	} else if err != nil {
+		return richErrors.Wrap(err, "failed to insert user to school relation")
+	}
+	return nil
 }
 
 func (u UserStore) GetUser(userId string) (*user.User, error) {
