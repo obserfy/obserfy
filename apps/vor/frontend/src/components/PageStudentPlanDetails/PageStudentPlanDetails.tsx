@@ -58,8 +58,7 @@ export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
         </Card>
         <Button
           variant="outline"
-          mx={2}
-          mt={3}
+          m={3}
           ml="auto"
           onClick={() => setShowDeleteDialog(true)}
           color="danger"
