@@ -178,12 +178,12 @@ jobs:
       - run: |
           VERSION=$(cat VERSION)
           DOCKER_BUILDKIT=1 docker build -f ./docker/vor/prod.dockerfile  -t "obserfy/vor:$VERSION" . --secret id=env,src=.env
+          DOCKER_BUILDKIT=1 docker build -f ./docker/gaia/prod.dockerfile  -t "obserfy/gaia:$VERSION" .
       - run: |
           VERSION=$(cat VERSION)
           echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_LOGIN" --password-stdin
           docker push obserfy/vor:$VERSION
-      - run: |
-          docker build -t "obserfy/gaia:latest" -f ./docker/gaia/prod.dockerfile .
+          docker push obserfy/gaia:$VERSION
       - run: |
           npm install -g @sentry/cli
       - run: |
