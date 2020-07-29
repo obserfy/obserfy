@@ -1,10 +1,9 @@
 /** @jsx jsx */
 import { FC, Fragment, useState } from "react"
-import { jsx, Button, Card, Box, Flex, Image } from "theme-ui"
+import { Box, Button, Card, Flex, Image, jsx } from "theme-ui"
 import { Link } from "../Link/Link"
 
 import Chip from "../Chip/Chip"
-import Pill from "../Pill/Pill"
 import SearchBar from "../SearchBar/SearchBar"
 
 import Icon from "../Icon/Icon"
@@ -68,11 +67,18 @@ export const PageHome: FC = () => {
           ) : (
             <StudentPicturePlaceholder />
           )}
-          <Box>
-            <Typography.Body ml={3}>{name}</Typography.Body>
-            <Flex sx={{ flexWrap: "wrap" }} ml={1}>
+          <Box ml={3}>
+            <Typography.Body>{name}</Typography.Body>
+            <Flex sx={{ flexWrap: "wrap" }}>
               {classes?.map(({ className }) => (
-                <Pill ml={2} text={className} color="text" />
+                <Typography.Body
+                  mt={1}
+                  mr={2}
+                  color="textMediumEmphasis"
+                  sx={{ lineHeight: 1, fontSize: 1 }}
+                >
+                  {className}
+                </Typography.Body>
               ))}
             </Flex>
           </Box>
