@@ -61,7 +61,7 @@ exports[`EmptyListPlaceholder should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   margin-bottom: 32px;
   margin-top: 16px;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-text,#37383c);
   text-align: center;
 }
 

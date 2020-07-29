@@ -20,9 +20,6 @@ export const Tab: FC<TabProps> = ({
     <Flex
       sx={{
         ...sx,
-        borderBottomColor: "border",
-        borderBottomWidth: 1,
-        borderBottomStyle: "solid",
         minWidth: "100%",
         width: items.length > 3 ? "fit-content" : "100%",
         justifyContent:
@@ -36,9 +33,8 @@ export const Tab: FC<TabProps> = ({
           key={item}
           isSelected={selectedItemIdx === idx}
           sx={{
-            fontWeight: small ? "normal" : "lighter",
             lineHeight: small ? 2 : undefined,
-            fontSize: small ? 0 : undefined,
+            fontSize: small ? 0 : 1,
           }}
         >
           {item}
@@ -52,12 +48,12 @@ interface TabItemProps extends HeadingProps {
   isSelected?: boolean
 }
 const TabItem: FC<TabItemProps> = ({ isSelected, onClick, sx, ...props }) => (
-  <Typography.H6
+  <Typography.Body
     {...props}
     onClick={onClick}
     mx={3}
     mb={0}
-    color={isSelected ? "textPrimary" : "text"}
+    color={isSelected ? "textPrimary" : "textMediumEmphasis"}
     sx={{
       ...sx,
       whiteSpace: "nowrap",
@@ -73,7 +69,7 @@ const TabItem: FC<TabItemProps> = ({ isSelected, onClick, sx, ...props }) => (
         width: isSelected ? "125%" : "0%",
         height: 3,
         content: "''",
-        marginTop: 12,
+        marginTop: 2,
         transition: "width 100ms cubic-bezier(0.0, 0.0, 0.2, 1)",
       },
     }}

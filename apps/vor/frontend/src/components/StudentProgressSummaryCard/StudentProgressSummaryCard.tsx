@@ -112,18 +112,10 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
     ))
 
   const footer = (
-    <Flex
-      p={2}
-      sx={{
-        alignItems: "center",
-        borderTopWidth: "1px",
-        borderTopColor: "border",
-        borderTopStyle: "solid",
-      }}
-    >
+    <Flex p={2} sx={{ alignItems: "center" }}>
       <Spacer />
       <Link to={STUDENT_PROGRESS_URL(studentId, selectedAreaId ?? "")}>
-        <Button variant="secondary" sx={{ fontSize: 0 }}>
+        <Button variant="secondary" sx={{ fontSize: 1 }}>
           See All {areas.data?.[tab]?.name} Progress
         </Button>
       </Link>
@@ -151,11 +143,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
         sx={{ borderRadius: [0, "default"], overflow: "inherit" }}
         mx={[0, 3]}
       >
-        <Typography.H6 px={3} pt={3} pb={2}>
-          Curriculum Progress
-        </Typography.H6>
         <Tab
-          small
           items={areas.data?.map(({ name }) => name) ?? []}
           onTabClick={setTab}
           selectedItemIdx={tab}
@@ -165,10 +153,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
             <Typography.Body
               mt={3}
               mx={3}
-              sx={{
-                fontSize: 0,
-                letterSpacing: 1.2,
-              }}
+              sx={{ fontSize: 0, color: "textMediumEmphasis" }}
             >
               IN PROGRESS
             </Typography.Body>
@@ -179,10 +164,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
             <Typography.Body
               mt={3}
               mx={3}
-              sx={{
-                fontSize: 0,
-                letterSpacing: 1.2,
-              }}
+              sx={{ fontSize: 0, color: "textMediumEmphasis" }}
             >
               RECENTLY MASTERED
             </Typography.Body>

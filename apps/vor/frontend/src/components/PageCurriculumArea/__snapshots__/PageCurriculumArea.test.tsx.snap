@@ -115,7 +115,7 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   padding: 16px;
   padding-bottom: 8px;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-text,#37383c);
   line-height: 1;
 }
 

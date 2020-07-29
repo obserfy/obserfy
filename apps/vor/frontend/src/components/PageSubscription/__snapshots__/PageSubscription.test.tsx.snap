@@ -139,7 +139,7 @@ exports[`PageSubscription should render correctly 1`] = `
   letter-spacing: 0;
   text-rendering: optimizeLegibility;
   margin-bottom: 32px;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-text,#37383c);
   font-weight: bold;
   text-align: center;
 }
@@ -202,7 +202,7 @@ exports[`PageSubscription should render correctly 1`] = `
   -ms-letter-spacing: 0;
   letter-spacing: 0;
   text-rendering: optimizeLegibility;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-text,#37383c);
   font-weight: bold;
   line-height: 1;
 }
@@ -233,7 +233,7 @@ exports[`PageSubscription should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   margin-top: 16px;
   margin-bottom: 16px;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-text,#37383c);
 }
 
 .emotion-38 {
@@ -284,7 +284,7 @@ exports[`PageSubscription should render correctly 1`] = `
   line-height: 3rem;
   text-rendering: optimizeLegibility;
   margin-left: 8px;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-text,#37383c);
 }
 
 .emotion-29 {

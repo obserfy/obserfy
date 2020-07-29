@@ -119,7 +119,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   letter-spacing: 0;
   text-rendering: optimizeLegibility;
   margin-bottom: 16px;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-text,#37383c);
 }
 
 .emotion-10 {
@@ -241,7 +241,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   background-color: var(--theme-ui-colors-surface,#fff);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-text,#37383c);
   display: none;
 }
 
@@ -343,7 +343,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   background-color: var(--theme-ui-colors-surface,#fff);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-text,#37383c);
   margin-bottom: 16px;
   width: 100%;
 }
@@ -436,7 +436,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   background-color: var(--theme-ui-colors-surface,#fff);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-text,#37383c);
   opacity: 1!important;
   width: 100%;
 }
@@ -601,7 +601,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   color: inherit;
   background-color: transparent;
   border-radius: 6px;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-text,#37383c);
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   background-color: var(--theme-ui-colors-surface,#fff);
@@ -650,7 +650,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   padding: 16px;
   height: 180px;
   resize: vertical;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-text,#37383c);
   height: 100px;
 }
 
@@ -696,7 +696,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   margin: 16px;
   margin-top: 32px;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-text,#37383c);
 }
 
 .emotion-45 {
@@ -759,7 +759,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   margin: 16px;
   margin-right: auto;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-text,#37383c);
 }
 
 .emotion-48 {

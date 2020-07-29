@@ -4,7 +4,7 @@ const theme: Theme = {
   useColorSchemeMediaQuery: true,
   colors: {
     // Base color
-    text: "rgba(0,0,0,0.87)",
+    text: "#37383c",
     textMediumEmphasis: "rgba(0,0,0, 0.60)",
     textDisabled: "rgba(0,0,0, 0.38)",
     textPrimary: "#027c5b",
