@@ -15,7 +15,6 @@ import Dialog from "../Dialog/Dialog"
 import DialogHeader from "../DialogHeader/DialogHeader"
 import Input from "../Input/Input"
 import TextArea from "../TextArea/TextArea"
-import useGetSchoolClasses from "../../api/classes/useGetSchoolClasses"
 import Chip from "../Chip/Chip"
 import { useGetCurriculumAreas } from "../../api/useGetCurriculumAreas"
 import { Typography } from "../Typography/Typography"
@@ -55,7 +54,6 @@ export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
             value={plan.data?.description}
             lessonPlanId={planId}
           />
-          <ClassDataBox value={plan.data?.classId} lessonPlanId={planId} />
           <AreaDataBox value={plan.data?.areaId} lessonPlanId={planId} />
         </Card>
         <Button
@@ -199,60 +197,6 @@ const DescriptionDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
               placeholder="Add some description here"
             />
           </Box>
-        </Dialog>
-      )}
-    </>
-  )
-}
-
-const ClassDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
-  value,
-  lessonPlanId,
-}) => {
-  const classes = useGetSchoolClasses()
-  const [showEditDialog, setShowEditDialog] = useState(false)
-  const [selectedClass, setSelectedClass] = useState(value)
-  const [mutate] = usePatchPlan(lessonPlanId)
-
-  return (
-    <>
-      <DataBox
-        label="Class"
-        value={classes.data?.find(({ id }) => id === value)?.name || "-"}
-        onEditClick={() => setShowEditDialog(true)}
-      />
-      {showEditDialog && (
-        <Dialog>
-          <DialogHeader
-            title="Change Class"
-            onAcceptText="Save"
-            onCancel={() => setShowEditDialog(false)}
-            onAccept={async () => {
-              await mutate({ classId: selectedClass })
-              setShowEditDialog(false)
-            }}
-          />
-          <Flex
-            sx={{ backgroundColor: "background", flexWrap: "wrap" }}
-            p={3}
-            pb={2}
-          >
-            {classes.data?.map(({ id, name }) => (
-              <Chip
-                key={id}
-                text={name}
-                activeBackground="primary"
-                onClick={() => {
-                  if (id === selectedClass) {
-                    setSelectedClass("")
-                  } else {
-                    setSelectedClass(id)
-                  }
-                }}
-                isActive={id === selectedClass}
-              />
-            ))}
-          </Flex>
         </Dialog>
       )}
     </>
