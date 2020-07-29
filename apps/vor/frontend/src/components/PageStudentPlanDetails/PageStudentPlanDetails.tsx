@@ -49,12 +49,12 @@ export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
         />
         <Card sx={{ borderRadius: [0, "default"] }}>
           <DateDataBox value={plan.data?.date} lessonPlanId={planId} />
+          <AreaDataBox value={plan.data?.areaId} lessonPlanId={planId} />
           <TitleDataBox value={plan.data?.title} lessonPlanId={planId} />
           <DescriptionDataBox
             value={plan.data?.description}
             lessonPlanId={planId}
           />
-          <AreaDataBox value={plan.data?.areaId} lessonPlanId={planId} />
         </Card>
         <Button
           variant="outline"
