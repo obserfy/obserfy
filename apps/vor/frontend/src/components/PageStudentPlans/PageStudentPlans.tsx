@@ -121,6 +121,18 @@ export const PageStudentPlans: FC<Props> = ({ studentId, date }) => {
               >
                 {plan.area ? plan.area.name : "Other"}
               </Typography.Body>
+              {plan.user?.name && (
+                <Typography.Body
+                  sx={{
+                    fontSize: 0,
+                    lineHeight: 1,
+                    color: "textMediumEmphasis",
+                  }}
+                  mt={3}
+                >
+                  Created by {plan.user.name.split(" ")[0]}
+                </Typography.Body>
+              )}
             </Card>
           </Link>
         )

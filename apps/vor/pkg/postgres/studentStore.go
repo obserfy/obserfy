@@ -200,6 +200,7 @@ func (s StudentStore) GetLessonPlans(studentId string, date time.Time) ([]Lesson
 		Where("date::date=? AND lpts.student_id=?", date, studentId).
 		Relation("LessonPlanDetails").
 		Relation("LessonPlanDetails.Area").
+		Relation("LessonPlanDetails.User").
 		Select(); err != nil {
 		return nil, richErrors.Wrap(err, "Failed to query students's lesson plan")
 	}
