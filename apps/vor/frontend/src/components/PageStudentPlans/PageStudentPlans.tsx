@@ -40,7 +40,7 @@ export const PageStudentPlans: FC<Props> = ({ studentId, date }) => {
         Plans
       </Typography.H5>
       <Flex sx={{ alignItems: "center" }} px={3} pb={2}>
-        <Typography.Body sx={{ fontWeight: "bold", fontSize: 1 }}>
+        <Typography.Body color="textMediumEmphasis">
           {selectedDate.format("ddd, DD MMM 'YY")}
         </Typography.Body>
         <Button
@@ -107,28 +107,17 @@ export const PageStudentPlans: FC<Props> = ({ studentId, date }) => {
             to={STUDENT_PLANS_DETAILS_URL(studentId, plan.id)}
             sx={{ display: "block", mx: [0, 3], mb: [0, 2] }}
           >
-            <Card p={3} sx={{ borderRadius: [0, "default"] }}>
-              <Typography.Body sx={{ lineHeight: 1 }}>
-                {plan.title}
-              </Typography.Body>
+            <Card px={3} py={2} sx={{ borderRadius: [0, "default"] }}>
+              <Typography.Body>{plan.title}</Typography.Body>
               <Typography.Body
-                sx={{
-                  fontSize: 1,
-                  lineHeight: 1,
-                  color: "textMediumEmphasis",
-                }}
-                mt={2}
+                sx={{ fontSize: 1, color: "textMediumEmphasis" }}
               >
                 {plan.area ? plan.area.name : "Other"}
               </Typography.Body>
               {plan.user?.name && (
                 <Typography.Body
-                  sx={{
-                    fontSize: 0,
-                    lineHeight: 1,
-                    color: "textMediumEmphasis",
-                  }}
-                  mt={3}
+                  sx={{ fontSize: 0, color: "textMediumEmphasis" }}
+                  mt={2}
                 >
                   Created by {plan.user.name.split(" ")[0]}
                 </Typography.Body>

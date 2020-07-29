@@ -169,7 +169,7 @@ const DescriptionDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
     <>
       <MultilineDataBox
         label="Description"
-        value={value || "-"}
+        value={value || "No descriptions given yet..."}
         onEditClick={() => setShowEditDialog(true)}
       />
       {showEditDialog && (
