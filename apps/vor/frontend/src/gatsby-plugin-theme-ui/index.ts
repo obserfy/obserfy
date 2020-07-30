@@ -237,7 +237,7 @@ const theme: Theme = {
     primary: {
       cursor: "pointer",
       boxSizing: "border-box",
-      fontSize: 2,
+      fontSize: 1,
       color: "onPrimary",
       bg: "primary",
       borderRadius: "default",
