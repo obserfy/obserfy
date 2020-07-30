@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.10.2](https://github.com/obserfy/obserfy/compare/v1.10.1...v1.10.2) (2020-07-30)
+
+
+### Bug Fixes
+
+* service worker not caching correctly. ([24c2e98](https://github.com/obserfy/obserfy/commit/24c2e98d56af5c07e48ff08e2feab1f9d18402ec))
+* tweak paddings. ([7fc3b2c](https://github.com/obserfy/obserfy/commit/7fc3b2c817dd3f458ddd99ecfd1a61d1dc2935cc))
+
 ### [1.10.1](https://github.com/obserfy/obserfy/compare/v1.10.0...v1.10.1) (2020-07-30)
 
 ## [1.10.0](https://github.com/obserfy/obserfy/compare/v1.9.0...v1.10.0) (2020-07-28)
