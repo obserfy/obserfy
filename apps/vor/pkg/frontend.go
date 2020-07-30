@@ -48,7 +48,7 @@ func createFrontendAuthMiddleware(db *pg.DB, folder string) func(next http.Handl
 			}
 
 			// If trying to access root, redirect to dashboard
-			if path == "/dashboard" || path == "/dashboard/" || path == "/dashboard/home" {
+			if path == "/" || path == "/dashboard" || path == "/dashboard/" || path == "/dashboard/home" {
 				http.Redirect(w, r, "/dashboard/students", http.StatusFound)
 				return
 			}
