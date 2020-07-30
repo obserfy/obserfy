@@ -280,6 +280,7 @@ exports[`PageHome should render correctly 1`] = `
   min-width: 0;
   padding-left: 16px;
   padding-right: 16px;
+  margin-bottom: 8px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

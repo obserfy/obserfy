@@ -108,7 +108,7 @@ export const PageHome: FC = () => {
           </Button>
         </Link>
       </Flex>
-      <Flex px={3} sx={{ flexWrap: "wrap" }}>
+      <Flex px={3} mb={2} sx={{ flexWrap: "wrap" }}>
         <Chip
           mr={2}
           key="all"
