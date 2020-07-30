@@ -110,7 +110,7 @@ exports[`ToggleButton should render correctly 1`] = `
   line-height: 3rem;
   text-rendering: optimizeLegibility;
   margin: 0;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-text,#37383c);
   font-size: 14px;
   white-space: nowrap;
   -webkit-transition: color 100ms cubic-bezier(0.0,0.0,0.2,1);

@@ -46,7 +46,7 @@ exports[`ObservationCard should render correctly 1`] = `
   margin-right: 16px;
   margin-top: 8px;
   margin-bottom: 0;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-text,#37383c);
 }
 
 .emotion-7 {

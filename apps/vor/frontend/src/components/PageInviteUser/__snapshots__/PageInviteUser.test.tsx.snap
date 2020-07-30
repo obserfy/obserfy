@@ -98,7 +98,7 @@ exports[`PageInviteUser should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   margin: 16px;
   margin-bottom: 32px;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-text,#37383c);
   line-height: 1;
 }
 
@@ -263,7 +263,7 @@ exports[`PageInviteUser should render correctly 1`] = `
   background-color: var(--theme-ui-colors-surface,#fff);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-text,#37383c);
   margin-left: 8px;
   width: 100%;
 }
@@ -472,7 +472,7 @@ exports[`PageInviteUser should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   margin-top: 16px;
   margin-bottom: 16px;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-text,#37383c);
   text-align: center;
 }
 
@@ -517,7 +517,7 @@ exports[`PageInviteUser should render correctly 1`] = `
   line-height: 3rem;
   text-rendering: optimizeLegibility;
   margin-bottom: 16px;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-text,#37383c);
 }
 
 .emotion-17 {
@@ -541,7 +541,7 @@ exports[`PageInviteUser should render correctly 1`] = `
   font-weight: 400;
   line-height: 3rem;
   text-rendering: optimizeLegibility;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-text,#37383c);
   width: 100%;
 }
 

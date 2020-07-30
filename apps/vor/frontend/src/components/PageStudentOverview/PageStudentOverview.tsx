@@ -1,21 +1,18 @@
 /** @jsx jsx */
 import { FC, Fragment, useState } from "react"
 import { navigate } from "gatsby"
-import { Box, Button, Flex, jsx } from "theme-ui"
+import { Image, Box, Button, Flex, jsx } from "theme-ui"
 import { Link } from "../Link/Link"
 import { useGetStudent } from "../../api/useGetStudent"
-
 import Typography from "../Typography/Typography"
 import Icon from "../Icon/Icon"
 import EmptyListPlaceholder from "../EmptyListPlaceholder/EmptyListPlaceholder"
-
 import { BackNavigation } from "../BackNavigation/BackNavigation"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import { Observation, useGetObservations } from "../../api/useGetObservations"
 import EditObservationDialog from "../EditObservationDialog/EditObservationDialog"
 import DeleteObservationDialog from "../DeleteObservationDialog/DeleteObservationDialog"
 import ObservationCard from "../ObservationCard/ObservationCard"
-import Spacer from "../Spacer/Spacer"
 import StudentProgressSummaryCard from "../StudentProgressSummaryCard/StudentProgressSummaryCard"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import { ReactComponent as PrevIcon } from "../../icons/arrow-back.svg"
@@ -28,6 +25,7 @@ import {
   STUDENTS_URL,
 } from "../../routes"
 import dayjs from "../../dayjs"
+import StudentPicturePlaceholder from "../StudentPicturePlaceholder/StudentPicturePlaceholder"
 
 interface Props {
   id: string
@@ -38,13 +36,25 @@ export const PageStudentOverview: FC<Props> = ({ id }) => {
     <Fragment>
       <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={5}>
         <BackNavigation text="Home" to={STUDENTS_URL} />
-        <Flex sx={{ alignItems: "start" }} mx={3} mb={4} mt={0}>
-          <Typography.H4 sx={{ wordWrap: "break-word", lineHeight: 1.6 }}>
+        <Flex sx={{ alignItems: "center" }} mx={3}>
+          <Box sx={{ flexShrink: 0 }}>
+            {student.data?.profilePic ? (
+              <Image
+                src={student.data?.profilePic}
+                sx={{ width: 32, height: 32, borderRadius: "circle" }}
+              />
+            ) : (
+              <StudentPicturePlaceholder />
+            )}
+          </Box>
+          <Typography.H6
+            ml={3}
+            sx={{ wordWrap: "break-word", fontWeight: "bold", lineHeight: 1.4 }}
+          >
             {student.data?.name || (
               <LoadingPlaceholder sx={{ width: "24rem", height: 60 }} />
             )}
-          </Typography.H4>
-          <Spacer />
+          </Typography.H6>
         </Flex>
         <Flex m={3} mb={2}>
           <Link sx={{ mr: 2 }} to={STUDENT_PROFILE_URL(id)}>
@@ -65,6 +75,10 @@ export const PageStudentOverview: FC<Props> = ({ id }) => {
           </Link>
         </Flex>
         <ObservationSection studentId={id} />
+
+        <Typography.H6 px={3} pt={4} pb={3} sx={{ fontWeight: "bold" }}>
+          Curriculum Progress
+        </Typography.H6>
         <StudentProgressSummaryCard studentId={id} />
       </Box>
     </Fragment>
@@ -126,10 +140,7 @@ const ObservationSection: FC<{ studentId: string }> = ({ studentId }) => {
 
   const dateSelector = (data?.length ?? 0) > 0 && (
     <Flex sx={{ alignItems: "center" }} px={3} mb={2}>
-      <Typography.Body
-        color="textMediumEmphasis"
-        sx={{ fontSize: 1, textTransform: "capitalize" }}
-      >
+      <Typography.Body sx={{ fontSize: 1 }}>
         {/* eslint-disable-next-line no-nested-ternary */}
         {selectedDateDifference > -3
           ? selectedDateDifference === -1
@@ -168,7 +179,7 @@ const ObservationSection: FC<{ studentId: string }> = ({ studentId }) => {
 
   return (
     <Fragment>
-      <Typography.H6 mr="auto" sx={{ lineHeight: 1 }} pt={4} px={3} mb={1}>
+      <Typography.H6 mr="auto" sx={{ fontWeight: "bold" }} pt={4} px={3}>
         Observations
       </Typography.H6>
       {emptyObservationPlaceholder}

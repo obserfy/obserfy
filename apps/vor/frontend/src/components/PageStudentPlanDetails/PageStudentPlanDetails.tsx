@@ -15,7 +15,6 @@ import Dialog from "../Dialog/Dialog"
 import DialogHeader from "../DialogHeader/DialogHeader"
 import Input from "../Input/Input"
 import TextArea from "../TextArea/TextArea"
-import useGetSchoolClasses from "../../api/classes/useGetSchoolClasses"
 import Chip from "../Chip/Chip"
 import { useGetCurriculumAreas } from "../../api/useGetCurriculumAreas"
 import { Typography } from "../Typography/Typography"
@@ -43,25 +42,23 @@ export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
 
   return (
     <>
-      <Box sx={{ maxWidth: "maxWidth.sm" }} mx="auto">
+      <Box sx={{ maxWidth: "maxWidth.sm" }} pb={3} mx="auto">
         <BackNavigation
           to={STUDENT_PLANS_URL(studentId, dayjs(plan.data?.date))}
           text="All plans"
         />
         <Card sx={{ borderRadius: [0, "default"] }}>
           <DateDataBox value={plan.data?.date} lessonPlanId={planId} />
+          <AreaDataBox value={plan.data?.areaId} lessonPlanId={planId} />
           <TitleDataBox value={plan.data?.title} lessonPlanId={planId} />
           <DescriptionDataBox
             value={plan.data?.description}
             lessonPlanId={planId}
           />
-          <ClassDataBox value={plan.data?.classId} lessonPlanId={planId} />
-          <AreaDataBox value={plan.data?.areaId} lessonPlanId={planId} />
         </Card>
         <Button
           variant="outline"
-          mx={2}
-          mt={3}
+          m={3}
           ml="auto"
           onClick={() => setShowDeleteDialog(true)}
           color="danger"
@@ -145,12 +142,7 @@ const TitleDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
               setShowEditDialog(false)
             }}
           />
-          <Box
-            sx={{
-              backgroundColor: "background",
-            }}
-            p={3}
-          >
+          <Box sx={{ backgroundColor: "background" }} p={3}>
             <Input
               label="Title"
               sx={{ width: "100%" }}
@@ -174,9 +166,9 @@ const DescriptionDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
 
   return (
     <>
-      <DataBox
+      <MultilineDataBox
         label="Description"
-        value={value || "-"}
+        value={value || "No descriptions given yet..."}
         onEditClick={() => setShowEditDialog(true)}
       />
       {showEditDialog && (
@@ -193,66 +185,12 @@ const DescriptionDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
           <Box sx={{ backgroundColor: "background" }} p={3}>
             <TextArea
               label="Description"
-              sx={{ width: "100%" }}
+              sx={{ width: "100%", lineHeight: 1.8, minHeight: 400 }}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Add some description here"
             />
           </Box>
-        </Dialog>
-      )}
-    </>
-  )
-}
-
-const ClassDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
-  value,
-  lessonPlanId,
-}) => {
-  const classes = useGetSchoolClasses()
-  const [showEditDialog, setShowEditDialog] = useState(false)
-  const [selectedClass, setSelectedClass] = useState(value)
-  const [mutate] = usePatchPlan(lessonPlanId)
-
-  return (
-    <>
-      <DataBox
-        label="Class"
-        value={classes.data?.find(({ id }) => id === value)?.name || "-"}
-        onEditClick={() => setShowEditDialog(true)}
-      />
-      {showEditDialog && (
-        <Dialog>
-          <DialogHeader
-            title="Change Class"
-            onAcceptText="Save"
-            onCancel={() => setShowEditDialog(false)}
-            onAccept={async () => {
-              await mutate({ classId: selectedClass })
-              setShowEditDialog(false)
-            }}
-          />
-          <Flex
-            sx={{ backgroundColor: "background", flexWrap: "wrap" }}
-            p={3}
-            pb={2}
-          >
-            {classes.data?.map(({ id, name }) => (
-              <Chip
-                key={id}
-                text={name}
-                activeBackground="primary"
-                onClick={() => {
-                  if (id === selectedClass) {
-                    setSelectedClass("")
-                  } else {
-                    setSelectedClass(id)
-                  }
-                }}
-                isActive={id === selectedClass}
-              />
-            ))}
-          </Flex>
         </Dialog>
       )}
     </>
@@ -315,13 +253,13 @@ const DataBox: FC<{
   <Flex px={3} py={3} sx={{ alignItems: "flex-start" }}>
     <Box>
       <Typography.Body
-        mb={2}
+        mb={1}
         color="textMediumEmphasis"
         sx={{ lineHeight: 1, fontSize: 1 }}
       >
         {label}
       </Typography.Body>
-      <Typography.Body sx={{ lineHeight: 1 }}>{value}</Typography.Body>
+      <Typography.Body>{value}</Typography.Body>
     </Box>
     <Button
       variant="outline"
@@ -334,6 +272,38 @@ const DataBox: FC<{
       <Icon as={EditIcon} m={0} />
     </Button>
   </Flex>
+)
+
+const MultilineDataBox: FC<{
+  label: string
+  value: string
+  onEditClick?: () => void
+}> = ({ label, value, onEditClick }) => (
+  <Box px={3} py={3} sx={{ alignItems: "flex-start" }}>
+    <Box mb={2}>
+      <Typography.Body
+        mb={1}
+        color="textMediumEmphasis"
+        sx={{ lineHeight: 1, fontSize: 1 }}
+      >
+        {label}
+      </Typography.Body>
+      {value.split("\n").map((text) => (
+        <Typography.Body mb={3}>{text}</Typography.Body>
+      ))}
+    </Box>
+    <Button
+      variant="outline"
+      ml="auto"
+      px={2}
+      onClick={onEditClick}
+      sx={{ flexShrink: 0, fontSize: 1, color: "textMediumEmphasis" }}
+      aria-label={`edit-${label.toLowerCase()}`}
+    >
+      <Icon as={EditIcon} m={0} mr={2} />
+      Edit {label.toLowerCase()}
+    </Button>
+  </Box>
 )
 
 export default PageStudentPlanDetails

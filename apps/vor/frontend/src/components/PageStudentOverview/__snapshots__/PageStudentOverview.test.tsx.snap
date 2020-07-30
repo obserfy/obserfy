@@ -43,7 +43,7 @@ exports[`PageStudentOverview should render correctly 1`] = `
   }
 }
 
-.emotion-24 {
+.emotion-26 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -51,12 +51,12 @@ exports[`PageStudentOverview should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-24 {
+  .emotion-26 {
     font-size: 20px;
   }
 }
 
-.emotion-23 {
+.emotion-25 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -110,44 +110,57 @@ exports[`PageStudentOverview should render correctly 1`] = `
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
 }
 
-.emotion-6 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   margin-left: 16px;
   margin-right: 16px;
-  margin-bottom: 32px;
-  margin-top: 0;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: start;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
-  align-items: start;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.emotion-3 {
+  border-radius: 99999px;
+}
+
+.emotion-6 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 300;
   line-height: heading;
-  font-size: 3.125rem;
-  line-height: 6rem;
+  font-size: 2rem;
+  line-height: 3rem;
   -webkit-letter-spacing: 0;
   -moz-letter-spacing: 0;
   -ms-letter-spacing: 0;
   letter-spacing: 0;
   text-rendering: optimizeLegibility;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  margin-left: 16px;
+  color: var(--theme-ui-colors-text,#37383c);
   word-wrap: break-word;
-  line-height: 1.6;
+  font-weight: bold;
+  line-height: 1.4;
 }
 
-.emotion-3 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -158,17 +171,7 @@ exports[`PageStudentOverview should render correctly 1`] = `
   height: 60px;
 }
 
-.emotion-5 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  pointer-events: none;
-}
-
-.emotion-14 {
+.emotion-15 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -180,11 +183,11 @@ exports[`PageStudentOverview should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-8 {
+.emotion-9 {
   margin-right: 8px;
 }
 
-.emotion-7 {
+.emotion-8 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -237,29 +240,29 @@ exports[`PageStudentOverview should render correctly 1`] = `
   min-width: 43px;
 }
 
-.emotion-7:disabled {
+.emotion-8:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-7:hover,
-.emotion-7:focus {
+.emotion-8:hover,
+.emotion-8:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-7:hover:disabled,
-.emotion-7:focus:disabled {
+.emotion-8:hover:disabled,
+.emotion-8:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-13 {
+.emotion-14 {
   width: 100%;
 }
 
-.emotion-12 {
+.emotion-13 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -310,23 +313,23 @@ exports[`PageStudentOverview should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-12:disabled {
+.emotion-13:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-12:hover,
-.emotion-12:focus {
+.emotion-13:hover,
+.emotion-13:focus {
   background-color: var(--theme-ui-colors-primaryDark,#00a06d);
   outline: none;
 }
 
-.emotion-12:hover:disabled,
-.emotion-12:focus:disabled {
+.emotion-13:hover:disabled,
+.emotion-13:focus:disabled {
   background-color: var(--theme-ui-colors-primary,#00e399);
 }
 
-.emotion-11 {
+.emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -342,7 +345,7 @@ exports[`PageStudentOverview should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-15 {
+.emotion-16 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -360,12 +363,11 @@ exports[`PageStudentOverview should render correctly 1`] = `
   padding-top: 32px;
   padding-left: 16px;
   padding-right: 16px;
-  margin-bottom: 4px;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
-  line-height: 1;
+  color: var(--theme-ui-colors-text,#37383c);
+  font-weight: bold;
 }
 
-.emotion-20 {
+.emotion-21 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -374,20 +376,20 @@ exports[`PageStudentOverview should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-20 {
+  .emotion-21 {
     margin-left: 16px;
     margin-right: 16px;
   }
 }
 
-.emotion-19 {
+.emotion-20 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   margin-top: 32px;
 }
 
-.emotion-16 {
+.emotion-17 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -401,7 +403,7 @@ exports[`PageStudentOverview should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-16 {
+  .emotion-17 {
     border-radius: 6px;
   }
 }
@@ -410,10 +412,32 @@ exports[`PageStudentOverview should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 300;
+  line-height: heading;
+  font-size: 2rem;
+  line-height: 3rem;
+  -webkit-letter-spacing: 0;
+  -moz-letter-spacing: 0;
+  -ms-letter-spacing: 0;
+  letter-spacing: 0;
+  text-rendering: optimizeLegibility;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 32px;
+  padding-bottom: 16px;
+  color: var(--theme-ui-colors-text,#37383c);
+  font-weight: bold;
+}
+
+.emotion-24 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
   margin-top: 16px;
 }
 
-.emotion-21 {
+.emotion-23 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -425,17 +449,17 @@ exports[`PageStudentOverview should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-21 {
+  .emotion-23 {
     border-radius: 6px;
   }
 }
 
 <div>
   <div
-    class="emotion-24"
+    class="emotion-26"
   >
     <div
-      class="emotion-23"
+      class="emotion-25"
     >
       <a
         href="/dashboard/students"
@@ -455,85 +479,127 @@ exports[`PageStudentOverview should render correctly 1`] = `
         </div>
       </a>
       <div
-        class="emotion-6"
+        class="emotion-7"
       >
-        <h4
+        <div
           class="emotion-4"
         >
           <div
-            class="emotion-3"
+            class="emotion-3 gatsby-image-wrapper"
+            style="position: relative; overflow: hidden; display: inline-block; width: 32px; height: 32px;"
+          >
+            <img
+              alt=""
+              aria-hidden="true"
+              src="data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAUDBgT/xAAZAQABBQAAAAAAAAAAAAAAAAAEAAECAwX/2gAMAwEAAhADEAAAAdqXL10PVYAruR95qQqhgf/EABoQAAMBAAMAAAAAAAAAAAAAAAABAwIQESH/2gAIAQEAAQUCnQzrie+iexMRJifn/8QAGxEAAgEFAAAAAAAAAAAAAAAAAAECAxASEzH/2gAIAQMBAT8BUcGbIlTlv//EABgRAAMBAQAAAAAAAAAAAAAAAAABAxEQ/9oACAECAQE/AbajKD5//8QAFBABAAAAAAAAAAAAAAAAAAAAMP/aAAgBAQAGPwIf/8QAGBABAQEBAQAAAAAAAAAAAAAAAAERITH/2gAIAQEAAT8h2SsatTdxe1dXP//aAAwDAQACAAMAAAAQQzdA/8QAFxEBAAMAAAAAAAAAAAAAAAAAAQAQEf/aAAgBAwEBPxC6JXZ//8QAGBEAAwEBAAAAAAAAAAAAAAAAAAERITH/2gAIAQIBAT8QbiU2CpkR/8QAFxABAQEBAAAAAAAAAAAAAAAAAQARIf/aAAgBAQABPxAs9hHZojWxnbU9knEEY2X2/9k="
+              style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 1; transition-delay: 500ms;"
+            />
+            <picture>
+              <source
+                srcset="/static/80905386593735f8fe1b97babdc4e163/daaa8/1.jpg 1x,
+/static/80905386593735f8fe1b97babdc4e163/ffcc9/1.jpg 1.5x,
+/static/80905386593735f8fe1b97babdc4e163/cf62c/1.jpg 2x"
+              />
+              <img
+                alt=""
+                height="32"
+                loading="lazy"
+                src="/static/80905386593735f8fe1b97babdc4e163/daaa8/1.jpg"
+                srcset="/static/80905386593735f8fe1b97babdc4e163/daaa8/1.jpg 1x,
+/static/80905386593735f8fe1b97babdc4e163/ffcc9/1.jpg 1.5x,
+/static/80905386593735f8fe1b97babdc4e163/cf62c/1.jpg 2x"
+                style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0; transition: opacity 500ms;"
+                width="32"
+              />
+            </picture>
+            <noscript>
+              &lt;picture&gt;&lt;source srcset="/static/80905386593735f8fe1b97babdc4e163/daaa8/1.jpg 1x,
+/static/80905386593735f8fe1b97babdc4e163/ffcc9/1.jpg 1.5x,
+/static/80905386593735f8fe1b97babdc4e163/cf62c/1.jpg 2x" /&gt;&lt;img loading="lazy" width="32" height="32" srcset="/static/80905386593735f8fe1b97babdc4e163/daaa8/1.jpg 1x,
+/static/80905386593735f8fe1b97babdc4e163/ffcc9/1.jpg 1.5x,
+/static/80905386593735f8fe1b97babdc4e163/cf62c/1.jpg 2x" src="/static/80905386593735f8fe1b97babdc4e163/daaa8/1.jpg" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/&gt;&lt;/picture&gt;
+            </noscript>
+          </div>
+        </div>
+        <h6
+          class="emotion-6"
+        >
+          <div
+            class="emotion-5"
           />
-        </h4>
-        <div
-          class="emotion-5"
-        />
+        </h6>
       </div>
       <div
-        class="emotion-14"
+        class="emotion-15"
       >
         <a
-          class="emotion-8"
+          class="emotion-9"
           href="/dashboard/students/profile?id=asdfadsf"
         >
           <button
-            class="emotion-7"
+            class="emotion-8"
             data-cy="edit"
           >
             Profile
           </button>
         </a>
         <a
-          class="emotion-8"
+          class="emotion-9"
           href="/dashboard/students/plans?studentId=asdfadsf&date="
         >
           <button
-            class="emotion-7"
+            class="emotion-8"
             data-cy="edit"
           >
             Plans
           </button>
         </a>
         <a
-          class="emotion-13"
+          class="emotion-14"
           href="/dashboard/students/observations/new?studentId=asdfadsf"
         >
           <button
-            class="emotion-12"
+            class="emotion-13"
           >
             <div
-              class="emotion-11"
+              class="emotion-12"
             />
             Observation
           </button>
         </a>
       </div>
       <h6
-        class="emotion-15"
+        class="emotion-16"
       >
         Observations
       </h6>
       <div
-        class="emotion-20"
+        class="emotion-21"
       >
         <div
-          class="emotion-19"
+          class="emotion-20"
         >
           <div
-            class="emotion-16"
+            class="emotion-17"
           />
           <div
-            class="emotion-16"
+            class="emotion-17"
           />
           <div
-            class="emotion-16"
+            class="emotion-17"
           />
         </div>
       </div>
-      <div
+      <h6
         class="emotion-22"
       >
+        Curriculum Progress
+      </h6>
+      <div
+        class="emotion-24"
+      >
         <div
-          class="emotion-21"
+          class="emotion-23"
         />
       </div>
     </div>

@@ -68,7 +68,7 @@ exports[`PageError should render correctly 1`] = `
   padding-top: 16px;
   margin: 16px;
   margin-bottom: 16px;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-text,#37383c);
   text-align: center;
   line-height: 1.2;
 }
@@ -86,7 +86,7 @@ exports[`PageError should render correctly 1`] = `
   margin-bottom: 32px;
   margin-left: 16px;
   margin-right: 16px;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-text,#37383c);
   text-align: center;
 }
 

@@ -60,7 +60,7 @@ exports[`BrandBanner should render correctly 1`] = `
   line-height: 3rem;
   text-rendering: optimizeLegibility;
   margin-left: 8px;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-text,#37383c);
   font-size: 20px;
   font-weight: bold;
   line-height: 1.2;
