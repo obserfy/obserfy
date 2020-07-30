@@ -93,6 +93,8 @@ export const PageAllObservations: FC<Props> = ({ studentId }) => {
             }
             return (
               <Chip
+                mr={2}
+                mb={2}
                 key={category.id}
                 isActive={category.id === selectedCategory}
                 activeBackground={category.color}

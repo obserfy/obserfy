@@ -87,7 +87,7 @@ exports[`DateInput should render correctly 1`] = `
   background-color: var(--theme-ui-colors-surface,#fff);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-text,#37383c);
   opacity: 1!important;
   width: 100%;
 }
@@ -143,7 +143,7 @@ exports[`DateInput should render correctly 1`] = `
   border-radius: 4px;
   cursor: pointer;
   box-sizing: border-box;
-  font-size: 16px;
+  font-size: 14px;
   color: var(--theme-ui-colors-textPrimary,#027c5b);
   background-color: transparent;
   border-radius: 6px;

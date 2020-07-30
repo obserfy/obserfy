@@ -41,7 +41,7 @@ exports[`PageSupport should render correctly 1`] = `
   margin-right: 16px;
   margin-top: 32px;
   margin-bottom: 8px;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-text,#37383c);
 }
 
 .emotion-10 {
@@ -86,7 +86,7 @@ exports[`PageSupport should render correctly 1`] = `
   font-weight: 400;
   line-height: 3rem;
   text-rendering: optimizeLegibility;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-text,#37383c);
 }
 
 .emotion-2 {
@@ -122,7 +122,7 @@ exports[`PageSupport should render correctly 1`] = `
   margin: 16px;
   margin-top: 32px;
   margin-bottom: 8px;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-text,#37383c);
 }
 
 .emotion-18 {
@@ -190,7 +190,7 @@ exports[`PageSupport should render correctly 1`] = `
   border-radius: 4px;
   cursor: pointer;
   box-sizing: border-box;
-  font-size: 16px;
+  font-size: 14px;
   color: var(--theme-ui-colors-textPrimary,#027c5b);
   background-color: transparent;
   border-radius: 6px;

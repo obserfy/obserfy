@@ -154,7 +154,7 @@ exports[`PageHome should render correctly 1`] = `
   background-color: var(--theme-ui-colors-surface,#fff);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-text,#37383c);
   margin-right: 8px;
   background-color: var(--theme-ui-colors-surface,#fff);
   width: 100%;
@@ -211,7 +211,7 @@ exports[`PageHome should render correctly 1`] = `
   border-radius: 4px;
   cursor: pointer;
   box-sizing: border-box;
-  font-size: 16px;
+  font-size: 14px;
   color: var(--theme-ui-colors-textPrimary,#027c5b);
   background-color: transparent;
   border-radius: 6px;
@@ -280,6 +280,7 @@ exports[`PageHome should render correctly 1`] = `
   min-width: 0;
   padding-left: 16px;
   padding-right: 16px;
+  margin-bottom: 8px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -294,7 +295,6 @@ exports[`PageHome should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   margin-right: 8px;
-  margin-bottom: 8px;
   padding-left: 8px;
   padding-right: 8px;
   background-color: var(--theme-ui-colors-primary,#00e399);

@@ -66,7 +66,7 @@ exports[`PageRegister should render correctly 1`] = `
   line-height: 3rem;
   text-rendering: optimizeLegibility;
   margin-left: 8px;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-text,#37383c);
   font-size: 20px;
   font-weight: bold;
   line-height: 1.2;
@@ -105,7 +105,7 @@ exports[`PageRegister should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   margin-top: 16px;
   margin-bottom: 16px;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-text,#37383c);
   font-weight: bold;
 }
 
@@ -179,7 +179,7 @@ exports[`PageRegister should render correctly 1`] = `
   background-color: var(--theme-ui-colors-surface,#fff);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-text,#37383c);
   margin-bottom: 8px;
   width: 100%;
 }
@@ -235,7 +235,7 @@ exports[`PageRegister should render correctly 1`] = `
   background-color: var(--theme-ui-colors-surface,#fff);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-text,#37383c);
   margin-bottom: 16px;
   width: 100%;
 }
@@ -291,7 +291,7 @@ exports[`PageRegister should render correctly 1`] = `
   border-radius: 4px;
   cursor: pointer;
   box-sizing: border-box;
-  font-size: 16px;
+  font-size: 14px;
   color: var(--theme-ui-colors-onPrimary,#000);
   background-color: var(--theme-ui-colors-primary,#00e399);
   border-radius: 6px;
@@ -415,7 +415,7 @@ exports[`PageRegister should render correctly 1`] = `
   line-height: 3rem;
   text-rendering: optimizeLegibility;
   margin-left: 8px;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-text,#37383c);
   font-size: 14px;
   line-height: 1.4;
 }

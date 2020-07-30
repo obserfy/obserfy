@@ -69,6 +69,8 @@ export const PageNewPlan: FC<Props> = ({ chosenDate }) => {
           <Flex mb={3} sx={{ flexWrap: "wrap" }}>
             {areas.data?.map(({ id, name }) => (
               <Chip
+                mb={2}
+                mr={2}
                 key={id}
                 text={name}
                 activeBackground="primary"
@@ -96,6 +98,8 @@ export const PageNewPlan: FC<Props> = ({ chosenDate }) => {
           <Flex mb={3}>
             {classes.data?.map(({ id, name }) => (
               <Chip
+                mb={2}
+                mr={2}
                 key={id}
                 text={name}
                 activeBackground="primary"
@@ -111,18 +115,21 @@ export const PageNewPlan: FC<Props> = ({ chosenDate }) => {
         <Typography.H6 mb={2}>Repetition</Typography.H6>
         <Flex>
           <Chip
+            mr={2}
             text="None"
             activeBackground="primary"
             onClick={() => setRepetition(0)}
             isActive={repetition === 0}
           />
           <Chip
+            mr={2}
             text="Daily"
             activeBackground="primary"
             onClick={() => setRepetition(1)}
             isActive={repetition === 1}
           />
           <Chip
+            mr={2}
             text="Weekly"
             activeBackground="primary"
             onClick={() => setRepetition(2)}

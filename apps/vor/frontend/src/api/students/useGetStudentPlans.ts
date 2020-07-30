@@ -9,6 +9,10 @@ export interface Plans {
     id: string
     name: string
   }
+  user?: {
+    id: string
+    name: string
+  }
 }
 function useGetStudentPlans(studentId: string, date: Dayjs) {
   const getPlans = getApi<Plans[]>(

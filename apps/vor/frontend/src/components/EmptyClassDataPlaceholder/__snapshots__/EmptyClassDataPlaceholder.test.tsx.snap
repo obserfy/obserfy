@@ -109,7 +109,7 @@ exports[`EmptyClassDataPlaceholder should render correctly 1`] = `
   line-height: 3rem;
   text-rendering: optimizeLegibility;
   padding-bottom: 8px;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-text,#37383c);
   font-size: 14px;
 }
 
@@ -141,7 +141,7 @@ exports[`EmptyClassDataPlaceholder should render correctly 1`] = `
   border-radius: 4px;
   cursor: pointer;
   box-sizing: border-box;
-  font-size: 16px;
+  font-size: 14px;
   color: var(--theme-ui-colors-textPrimary,#027c5b);
   background-color: transparent;
   border-radius: 6px;

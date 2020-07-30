@@ -67,6 +67,8 @@ func (s LessonPlanStore) GetLessonPlan(planId string) (*cLessonPlan.LessonPlan, 
 	var plan LessonPlan
 	err := s.Model(&plan).
 		Relation("LessonPlanDetails").
+		//Relation("Users").
+		//Where("user.id = ?",plan.LessonPlanDetails.UserId).
 		Where("lesson_plan.id = ?", planId).
 		Select()
 	if err != nil {

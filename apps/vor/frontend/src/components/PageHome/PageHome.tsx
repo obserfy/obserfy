@@ -1,10 +1,9 @@
 /** @jsx jsx */
 import { FC, Fragment, useState } from "react"
-import { jsx, Button, Card, Box, Flex, Image } from "theme-ui"
+import { Box, Button, Card, Flex, Image, jsx } from "theme-ui"
 import { Link } from "../Link/Link"
 
 import Chip from "../Chip/Chip"
-import Pill from "../Pill/Pill"
 import SearchBar from "../SearchBar/SearchBar"
 
 import Icon from "../Icon/Icon"
@@ -43,7 +42,8 @@ export const PageHome: FC = () => {
     matchedStudent?.map(({ profileImageUrl, name, id, classes }) => (
       <Link to={STUDENT_OVERVIEW_PAGE_URL(id)} sx={{ display: "block" }}>
         <Card
-          p={3}
+          px={3}
+          py={2}
           mx={[0, 3]}
           mb={[0, 2]}
           key={id}
@@ -68,11 +68,18 @@ export const PageHome: FC = () => {
           ) : (
             <StudentPicturePlaceholder />
           )}
-          <Box>
-            <Typography.Body ml={3}>{name}</Typography.Body>
-            <Flex sx={{ flexWrap: "wrap" }} ml={1}>
+          <Box ml={3} mb={2}>
+            <Typography.Body>{name}</Typography.Body>
+            <Flex sx={{ flexWrap: "wrap" }}>
               {classes?.map(({ className }) => (
-                <Pill ml={2} text={className} color="text" />
+                <Typography.Body
+                  mt={1}
+                  mr={2}
+                  color="textMediumEmphasis"
+                  sx={{ lineHeight: 1, fontSize: 1 }}
+                >
+                  {className}
+                </Typography.Body>
               ))}
             </Flex>
           </Box>
@@ -101,8 +108,9 @@ export const PageHome: FC = () => {
           </Button>
         </Link>
       </Flex>
-      <Flex px={3} sx={{ flexWrap: "wrap" }}>
+      <Flex px={3} mb={2} sx={{ flexWrap: "wrap" }}>
         <Chip
+          mr={2}
           key="all"
           isActive={filterClass === ""}
           text="All"
@@ -111,6 +119,7 @@ export const PageHome: FC = () => {
         />
         {allClass.data?.map(({ id, name }) => (
           <Chip
+            mr={2}
             key={id}
             isActive={filterClass === id}
             text={name}

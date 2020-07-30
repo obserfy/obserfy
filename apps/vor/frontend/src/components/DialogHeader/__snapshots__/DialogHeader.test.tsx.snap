@@ -46,7 +46,7 @@ exports[`DialogHeader should render correctly 1`] = `
   -ms-letter-spacing: 0;
   letter-spacing: 0;
   text-rendering: optimizeLegibility;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-text,#37383c);
   width: 100%;
   position: absolute;
   pointer-events: none;
@@ -79,7 +79,7 @@ exports[`DialogHeader should render correctly 1`] = `
   border-radius: 4px;
   cursor: pointer;
   box-sizing: border-box;
-  font-size: 16px;
+  font-size: 14px;
   color: var(--theme-ui-colors-textPrimary,#027c5b);
   background-color: transparent;
   border-radius: 6px;
@@ -145,7 +145,7 @@ exports[`DialogHeader should render correctly 1`] = `
   border-radius: 4px;
   cursor: pointer;
   box-sizing: border-box;
-  font-size: 16px;
+  font-size: 14px;
   color: var(--theme-ui-colors-textPrimary,#027c5b);
   background-color: transparent;
   border-radius: 6px;

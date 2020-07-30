@@ -89,7 +89,7 @@ exports[`PageNewSubject should render correctly 1`] = `
   letter-spacing: 0;
   text-rendering: optimizeLegibility;
   margin: 16px;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-text,#37383c);
 }
 
 .emotion-15 {
@@ -182,7 +182,7 @@ exports[`PageNewSubject should render correctly 1`] = `
   background-color: var(--theme-ui-colors-surface,#fff);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text,rgba(0,0,0,0.87));
+  color: var(--theme-ui-colors-text,#37383c);
   width: 100%;
 }
 
@@ -333,7 +333,7 @@ exports[`PageNewSubject should render correctly 1`] = `
   border-radius: 4px;
   cursor: pointer;
   box-sizing: border-box;
-  font-size: 16px;
+  font-size: 14px;
   color: var(--theme-ui-colors-onPrimary,#000);
   background-color: var(--theme-ui-colors-primary,#00e399);
   border-radius: 6px;

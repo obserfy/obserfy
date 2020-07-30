@@ -99,6 +99,8 @@ export const PageNewStudentClass: FC<Props> = ({ id }) => {
         >
           {WEEKDAYS.map((weekday, i) => (
             <Chip
+              mb={2}
+              mr={2}
               key={weekday}
               text={weekday}
               activeBackground="primary"
