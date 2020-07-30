@@ -17116,14 +17116,14 @@ next-compose-plugins@2.2.0:
   resolved "https://registry.yarnpkg.com/next-compose-plugins/-/next-compose-plugins-2.2.0.tgz#95cd8eb40ab0652070d76572fb648354191628b0"
   integrity sha512-ChUlpT9tWfJ7YxqGw/WQ2T1gf8EeX93n1XqeQw0lkvGa7seszahvF4eOZUJoq7Hetsbzg4UHVnPoCXfXTyQR3g==
 
-next-optimized-images@3.0.0-canary.5:
-  version "3.0.0-canary.5"
-  resolved "https://registry.yarnpkg.com/next-optimized-images/-/next-optimized-images-3.0.0-canary.5.tgz#46c6375dfdd612707a6b55c848e440dc42d23c28"
-  integrity sha512-z9rtEVtdLtNTsdVayhKp2QhKWTzKgdXygps2KiHQUexY+Zj4pRVHa/QOUR0Tm4523EJn2QjeR5AdmNGSdFL9Dg==
+next-optimized-images@3.0.0-canary.6:
+  version "3.0.0-canary.6"
+  resolved "https://registry.yarnpkg.com/next-optimized-images/-/next-optimized-images-3.0.0-canary.6.tgz#d374cf0a5fe978a92685ca4c1e334793e3e0c5cb"
+  integrity sha512-7ydmfIdAndGjd/1X69rG1ItFK3jxyK2jTMvhCqETuo3xnpwcEdy7su+7XxNa+VSvPCAsCy4Mf7SNqHxxhG6j2g==
   dependencies:
     file-loader "^6.0.0"
-    optimized-images-loader "^0.2.4"
-    react-optimized-image "^0.3.3"
+    optimized-images-loader "^0.2.6"
+    react-optimized-image "^0.3.4"
 
 next-tick@^1.0.0:
   version "1.1.0"
@@ -17817,10 +17817,10 @@ optimize-css-assets-webpack-plugin@^5.0.3:
     cssnano "^4.1.10"
     last-call-webpack-plugin "^3.0.0"
 
-optimized-images-loader@^0.2.4:
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/optimized-images-loader/-/optimized-images-loader-0.2.4.tgz#20862b94277d4f8d6b5ab8b269c0896c0974e615"
-  integrity sha512-wFRjfm8c8foFHlr5E3VEweOfLajg0Qj44GTndi9Jc9l8+dMG1XiawG5UBHUh+cm4CAcb8eVzQ9TOpGHhD5bzBw==
+optimized-images-loader@^0.2.6:
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/optimized-images-loader/-/optimized-images-loader-0.2.6.tgz#0c8cd207cb6bc673e2e79649a75991e234da9503"
+  integrity sha512-uUHUP7uyCiTyNs/8iPQunkMVeb6aVQ/+aLmBd7P6kMi1ylHRu7DxB5PqSzcSDUyf6p/KvqsAfcC9chDy3O5ctQ==
   dependencies:
     "@wasm-codecs/mozjpeg" "^1.0.0"
     "@wasm-codecs/oxipng" "^1.0.0"
@@ -20390,10 +20390,21 @@ react-load-script@^0.0.6:
   resolved "https://registry.yarnpkg.com/react-load-script/-/react-load-script-0.0.6.tgz#db6851236aaa25bb622677a2eb51dad4f8d2c258"
   integrity sha512-aRGxDGP9VoLxcsaYvKWIW+LRrMOzz2eEcubTS4NvQPPugjk2VvMhow0wWTkSl7RxookomD1MwcP4l5UStg5ShQ==
 
-react-optimized-image@0.3.3, react-optimized-image@^0.3.3:
+react-optimized-image@0.3.3:
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/react-optimized-image/-/react-optimized-image-0.3.3.tgz#0a7bf7f5a38ae701b2f6a4fa965696ccb1aac850"
   integrity sha512-hj89xSLbF9uCodOqZuIA6GsIt/T55gvI/14auFh+iW+4t/UHFxtDcsbM/tbDXimMZkA4BqpS98/XZTz54HKuyQ==
+  dependencies:
+    app-root-path "^3.0.0"
+    babel-explode-module "^3.0.0"
+    babel-file-loader "^2.0.0"
+    babel-plugin-syntax-jsx "^6.18.0"
+    clone "^2.1.2"
+
+react-optimized-image@^0.3.4:
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/react-optimized-image/-/react-optimized-image-0.3.4.tgz#ea53606bd2d654e51117427090f521291d3fcd63"
+  integrity sha512-GtIoAimeq149m1BfYbHj7OdW30/JVQvLFWWJgDr3Q2ZVypEblq1CQe34RXvMATtruxL273euZKXAqCKKqdcN4A==
   dependencies:
     app-root-path "^3.0.0"
     babel-explode-module "^3.0.0"
