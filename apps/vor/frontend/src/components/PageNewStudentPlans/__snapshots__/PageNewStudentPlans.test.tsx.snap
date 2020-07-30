@@ -529,7 +529,6 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   margin-right: 8px;
-  margin-bottom: 8px;
   padding-left: 8px;
   padding-right: 8px;
   background-color: var(--theme-ui-colors-primary,#00e399);
@@ -568,7 +567,6 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   margin-right: 8px;
-  margin-bottom: 8px;
   padding-left: 8px;
   padding-right: 8px;
   background-color: var(--theme-ui-colors-surface,#fff);

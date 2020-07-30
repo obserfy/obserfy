@@ -17,8 +17,6 @@ export const Chip: FC<Props> = ({
   <Box
     {...props}
     backgroundColor={isActive ? activeBackground : "surface"}
-    mr={2}
-    mb={2}
     px={2}
     sx={{
       ...sx,
@@ -35,9 +33,7 @@ export const Chip: FC<Props> = ({
     }}
   >
     <Typography.Body
-      sx={{
-        fontSize: 1,
-      }}
+      sx={{ fontSize: 1 }}
       color={isActive ? "onPrimary" : "text"}
     >
       {text}

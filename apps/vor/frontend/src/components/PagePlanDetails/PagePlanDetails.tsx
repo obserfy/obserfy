@@ -236,6 +236,8 @@ const ClassDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
           >
             {classes.data?.map(({ id, name }) => (
               <Chip
+                mr={2}
+                mb={2}
                 key={id}
                 text={name}
                 activeBackground="primary"
@@ -290,6 +292,8 @@ const AreaDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
           >
             {classes.data?.map(({ id, name }) => (
               <Chip
+                mr={2}
+                mb={2}
                 key={id}
                 text={name}
                 activeBackground="primary"
