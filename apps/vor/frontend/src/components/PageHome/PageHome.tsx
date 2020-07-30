@@ -42,7 +42,8 @@ export const PageHome: FC = () => {
     matchedStudent?.map(({ profileImageUrl, name, id, classes }) => (
       <Link to={STUDENT_OVERVIEW_PAGE_URL(id)} sx={{ display: "block" }}>
         <Card
-          p={3}
+          px={3}
+          py={2}
           mx={[0, 3]}
           mb={[0, 2]}
           key={id}
@@ -109,6 +110,7 @@ export const PageHome: FC = () => {
       </Flex>
       <Flex px={3} sx={{ flexWrap: "wrap" }}>
         <Chip
+          mr={2}
           key="all"
           isActive={filterClass === ""}
           text="All"
@@ -117,6 +119,7 @@ export const PageHome: FC = () => {
         />
         {allClass.data?.map(({ id, name }) => (
           <Chip
+            mr={2}
             key={id}
             isActive={filterClass === id}
             text={name}

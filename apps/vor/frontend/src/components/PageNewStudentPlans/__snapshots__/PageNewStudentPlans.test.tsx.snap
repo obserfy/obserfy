@@ -253,7 +253,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   border-radius: 4px;
   cursor: pointer;
   box-sizing: border-box;
-  font-size: 16px;
+  font-size: 14px;
   color: var(--theme-ui-colors-textPrimary,#027c5b);
   background-color: transparent;
   border-radius: 6px;
@@ -529,7 +529,6 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   margin-right: 8px;
-  margin-bottom: 8px;
   padding-left: 8px;
   padding-right: 8px;
   background-color: var(--theme-ui-colors-primary,#00e399);
@@ -568,7 +567,6 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   margin-right: 8px;
-  margin-bottom: 8px;
   padding-left: 8px;
   padding-right: 8px;
   background-color: var(--theme-ui-colors-surface,#fff);
@@ -634,7 +632,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   border-radius: 4px;
   cursor: pointer;
   box-sizing: border-box;
-  font-size: 16px;
+  font-size: 14px;
   color: var(--theme-ui-colors-onPrimary,#000);
   background-color: var(--theme-ui-colors-primary,#00e399);
   border-radius: 6px;
