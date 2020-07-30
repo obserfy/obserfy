@@ -2105,10 +2105,12 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___showSpinner'
   | 'pluginCreator___pluginOptions___dsn'
   | 'pluginCreator___pluginOptions___release'
+  | 'pluginCreator___pluginOptions___analyzerPort'
+  | 'pluginCreator___pluginOptions___disable'
+  | 'pluginCreator___pluginOptions___pathCheck'
+  | 'pluginCreator___pluginOptions___codegen'
   | 'pluginCreator___pluginOptions___fileName'
   | 'pluginCreator___pluginOptions___documentPaths'
-  | 'pluginCreator___pluginOptions___analyzerPort'
-  | 'pluginCreator___pluginOptions___pathCheck'
   | 'pluginCreator___nodeAPIs'
   | 'pluginCreator___browserAPIs'
   | 'pluginCreator___ssrAPIs'
@@ -2325,10 +2327,12 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___showSpinner'
   | 'pluginOptions___dsn'
   | 'pluginOptions___release'
+  | 'pluginOptions___analyzerPort'
+  | 'pluginOptions___disable'
+  | 'pluginOptions___pathCheck'
+  | 'pluginOptions___codegen'
   | 'pluginOptions___fileName'
   | 'pluginOptions___documentPaths'
-  | 'pluginOptions___analyzerPort'
-  | 'pluginOptions___pathCheck'
   | 'nodeAPIs'
   | 'browserAPIs'
   | 'ssrAPIs'
@@ -2468,10 +2472,12 @@ export type SitePluginPluginOptions = {
   showSpinner?: Maybe<Scalars['Boolean']>;
   dsn?: Maybe<Scalars['String']>;
   release?: Maybe<Scalars['String']>;
+  analyzerPort?: Maybe<Scalars['Int']>;
+  disable?: Maybe<Scalars['Boolean']>;
+  pathCheck?: Maybe<Scalars['Boolean']>;
+  codegen?: Maybe<Scalars['Boolean']>;
   fileName?: Maybe<Scalars['String']>;
   documentPaths?: Maybe<Array<Maybe<Scalars['String']>>>;
-  analyzerPort?: Maybe<Scalars['Int']>;
-  pathCheck?: Maybe<Scalars['Boolean']>;
 };
 
 export type SitePluginPluginOptionsFilterInput = {
@@ -2502,10 +2508,12 @@ export type SitePluginPluginOptionsFilterInput = {
   showSpinner?: Maybe<BooleanQueryOperatorInput>;
   dsn?: Maybe<StringQueryOperatorInput>;
   release?: Maybe<StringQueryOperatorInput>;
+  analyzerPort?: Maybe<IntQueryOperatorInput>;
+  disable?: Maybe<BooleanQueryOperatorInput>;
+  pathCheck?: Maybe<BooleanQueryOperatorInput>;
+  codegen?: Maybe<BooleanQueryOperatorInput>;
   fileName?: Maybe<StringQueryOperatorInput>;
   documentPaths?: Maybe<StringQueryOperatorInput>;
-  analyzerPort?: Maybe<IntQueryOperatorInput>;
-  pathCheck?: Maybe<BooleanQueryOperatorInput>;
 };
 
 export type SitePluginPluginOptionsFonts = {

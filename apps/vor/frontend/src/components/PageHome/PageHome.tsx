@@ -68,13 +68,14 @@ export const PageHome: FC = () => {
           ) : (
             <StudentPicturePlaceholder />
           )}
-          <Box ml={3} mb={2}>
-            <Typography.Body>{name}</Typography.Body>
+          <Box ml={3} py={1}>
+            <Typography.Body sx={{ lineHeight: 1.6 }}>{name}</Typography.Body>
             <Flex sx={{ flexWrap: "wrap" }}>
               {classes?.map(({ className }) => (
                 <Typography.Body
                   mt={1}
                   mr={2}
+                  mb={1}
                   color="textMediumEmphasis"
                   sx={{ lineHeight: 1, fontSize: 1 }}
                 >
