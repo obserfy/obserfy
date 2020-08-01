@@ -129,7 +129,7 @@ jobs:
       - attach_workspace:
           at: ../
       - run: |
-          yarn workspaces run lint
+          yarn workspaces foreach -p run lint
 
   node_typecheck:
     docker:
@@ -140,7 +140,7 @@ jobs:
       - attach_workspace:
           at: ../
       - run: |
-          yarn workspaces run typecheck
+          yarn workspaces foreach -p run typecheck
 
   e2e:
     machine:
