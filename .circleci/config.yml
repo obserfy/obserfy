@@ -56,11 +56,9 @@ jobs:
           root: ../
           paths:
             - repo/.yarn/
-            - repo/node_modules
-            - repo/apps/gaia/node_modules
-            - repo/apps/freyr/node_modules
-            - repo/apps/e2e/node_modules
-            - repo/apps/vor/frontend/node_modules
+            - repo/.pnp.js
+            - repo/apps/vor/frontend/.cache
+            - repo/apps/vor/frontend/public
             - .cache/Cypress
       - save_cache:
           when: always
@@ -71,10 +69,11 @@ jobs:
             - ~/.cache/yarn
             - ~/.cache/Cypress
             - ./node_modules
-            - ./apps/gaia/node_modules
-            - ./apps/freyr/node_modules
             - ./apps/e2e/node_modules
-            - ./apps/vor/frontend/node_modules
+            - ./apps/vor/frontend/.cache
+            - ./apps/vor/frontend/public
+      - store_artifacts:
+          path: ./vor/frontend/public
 
   vor_frontend_build:
     docker:
@@ -140,7 +139,7 @@ jobs:
       - attach_workspace:
           at: ../
       - run: |
-          yarn workspaces foreach -p run typecheck
+          yarn workspaces run typecheck
 
   e2e:
     machine:
