@@ -3,7 +3,9 @@
 /// <reference types="optimized-images-loader" />
 
 declare module "*.svg" {
-  const content: string
+  import { ImgSrc } from "react-optimized-image"
+
+  const content: ImgSrc
   export default content
 }
 
