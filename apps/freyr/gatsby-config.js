@@ -6,7 +6,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-preact`,
+    // `gatsby-plugin-preact`,
     `gatsby-plugin-postcss`,
     `gatsby-plugin-netlify-cache`,
     {
@@ -83,6 +83,12 @@ module.exports = {
         pageTransitionDelay: 0,
         // Set Variation ID. 0 for original 1,2,3....
         variationId: "0",
+      },
+    },
+    {
+      resolve: `gatsby-theme-i18n-lingui`,
+      options: {
+        localeDir: `./i18n/lingui`,
       },
     },
   ],

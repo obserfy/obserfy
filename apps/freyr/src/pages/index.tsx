@@ -5,12 +5,13 @@ import { trackCustomEvent } from "gatsby-plugin-google-analytics"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Button from "../components/button"
-
+import { Trans } from "@lingui/macro"
 const IndexPage: FC = () => (
   <Layout>
     <SEO title="Home" />
     <div className="flex-row justify-center my-12 max-w-xl">
       <h1 className="text-5xl leading-none font-heading font-medium">
+      <Trans>Hello World</Trans>
         Run your Montessori school efficiently
       </h1>
       <p className="text-xl my-8 text-gray-700 font-body">
