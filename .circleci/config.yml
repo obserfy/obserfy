@@ -49,7 +49,7 @@ jobs:
       - restore_cache:
           name: Restore Yarn Package Cache
           keys:
-            - build-v8-{{ checksum "yarn.lock" }}
+            - build-v9-{{ checksum "yarn.lock" }}
       - run: |
           yarn install --frozen-lockfile
       - persist_to_workspace:
@@ -63,7 +63,7 @@ jobs:
       - save_cache:
           when: always
           name: Save Yarn Package Cache
-          key: build-v8-{{ checksum "yarn.lock" }}
+          key: build-v9-{{ checksum "yarn.lock" }}
           paths:
             - ~/.yarn
             - ~/.cache/yarn
@@ -139,7 +139,7 @@ jobs:
       - attach_workspace:
           at: ../
       - run: |
-          yarn workspaces run typecheck
+          yarn workspaces foreach -p run typecheck
 
   e2e:
     machine:
