@@ -3,6 +3,7 @@ module.exports = {
     title: `Obserfy`,
     description: `Obserfy landing page`,
     author: `@chrsep`,
+    siteUrl: `https://obserfy.com`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -83,6 +84,13 @@ module.exports = {
         pageTransitionDelay: 0,
         // Set Variation ID. 0 for original 1,2,3....
         variationId: "0",
+      },
+    },
+    {
+      resolve: `gatsby-theme-i18n`,
+      options: {
+        defaultLang: `en`,
+        configPath: require.resolve(`./i18n/config.json`),
       },
     },
     {
