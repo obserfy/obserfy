@@ -29,6 +29,13 @@ type (
 		MaterialId  string
 	}
 
+	Link struct {
+		Url         string
+		Image       string
+		Title       string
+		Description string
+	}
+
 	PlanData struct {
 		Id          string
 		Title       string
@@ -42,6 +49,7 @@ type (
 		Students    []string
 		SchoolId    string
 		UserId      string
+		Links       []Link
 	}
 
 	UpdatePlanData struct {
