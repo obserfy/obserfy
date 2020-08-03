@@ -1,6 +1,7 @@
 package lessonplan
 
 import (
+	"github.com/google/uuid"
 	"time"
 )
 
@@ -27,9 +28,11 @@ type (
 		Repetition  *RepetitionPattern
 		AreaId      string
 		MaterialId  string
+		Links       []Link
 	}
 
 	Link struct {
+		Id          uuid.UUID
 		Url         string
 		Image       string
 		Title       string

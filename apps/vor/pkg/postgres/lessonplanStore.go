@@ -67,6 +67,7 @@ func (s LessonPlanStore) GetLessonPlan(planId string) (*cLessonPlan.LessonPlan, 
 	var plan LessonPlan
 	err := s.Model(&plan).
 		Relation("LessonPlanDetails").
+		Relation("LessonPlanDetails.Links").
 		//Relation("Users").
 		//Where("user.id = ?",plan.LessonPlanDetails.UserId).
 		Where("lesson_plan.id = ?", planId).
@@ -78,7 +79,7 @@ func (s LessonPlanStore) GetLessonPlan(planId string) (*cLessonPlan.LessonPlan, 
 		return nil, richErrors.Wrapf(err, "Failed get lesson plan")
 	}
 
-	return &cLessonPlan.LessonPlan{
+	result := &cLessonPlan.LessonPlan{
 		Id:          plan.Id,
 		ClassId:     plan.LessonPlanDetails.ClassId,
 		Title:       plan.LessonPlanDetails.Title,
@@ -90,7 +91,17 @@ func (s LessonPlanStore) GetLessonPlan(planId string) (*cLessonPlan.LessonPlan, 
 			Type:    plan.LessonPlanDetails.RepetitionType,
 			EndDate: plan.LessonPlanDetails.RepetitionEndDate,
 		},
-	}, nil
+	}
+	for _, link := range plan.LessonPlanDetails.Links {
+		result.Links = append(result.Links, cLessonPlan.Link{
+			Id:          link.Id,
+			Url:         link.Url,
+			Image:       link.Image,
+			Title:       link.Title,
+			Description: link.Description,
+		})
+	}
+	return result, nil
 }
 
 func (s LessonPlanStore) DeleteLessonPlan(planId string) error {
