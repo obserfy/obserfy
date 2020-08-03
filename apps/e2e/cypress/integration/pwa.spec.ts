@@ -42,11 +42,13 @@ describe("test pwa works correctly", () => {
     cy.visit("/")
     cy.url().should("contains", "dashboard")
 
-    // so does third visit
-    cy.visit("/")
-    cy.url().should("contains", "dashboard")
-    cy.visit("/login")
-    cy.url().should("contains", "dashboard")
+    // so does every other visits visit
+    for (let i = 0; i < 10; i += 1) {
+      cy.visit("/")
+      cy.url().should("contains", "dashboard")
+      cy.visit("/login")
+      cy.url().should("contains", "dashboard")
+    }
 
     // shouldn't be able to visit dashboard after logging out
     cy.request("POST", "auth/logout")
