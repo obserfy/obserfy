@@ -1,6 +1,7 @@
 package lessonplan
 
 import (
+	"github.com/google/uuid"
 	"net/http"
 	"time"
 
@@ -26,6 +27,13 @@ func NewRouter(server rest.Server, store Store) *chi.Mux {
 }
 
 func getLessonPlan(server rest.Server, store Store) http.Handler {
+	type link struct {
+		Id          uuid.UUID `json:"id"`
+		Url         string    `json:"url"`
+		Image       string    `json:"image"`
+		Title       string    `json:"title"`
+		Description string    `json:"description"`
+	}
 	type resBody struct {
 		Id          string    `json:"id"`
 		Title       string    `json:"title"`
@@ -34,6 +42,7 @@ func getLessonPlan(server rest.Server, store Store) http.Handler {
 		Date        time.Time `json:"date"`
 		AreaId      string    `json:"areaId"`
 		MaterialId  string    `json:"materialId"`
+		Links       []link    `json:"links"`
 	}
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		planId := chi.URLParam(r, "planId")
@@ -55,6 +64,15 @@ func getLessonPlan(server rest.Server, store Store) http.Handler {
 			Date:        plan.Date,
 			MaterialId:  plan.MaterialId,
 			AreaId:      plan.AreaId,
+		}
+		for _, l := range plan.Links {
+			response.Links = append(response.Links, link{
+				Id:          l.Id,
+				Url:         l.Url,
+				Image:       l.Image,
+				Title:       l.Title,
+				Description: l.Description,
+			})
 		}
 		if err := rest.WriteJson(w, response); err != nil {
 			return rest.NewWriteJsonError(err)

@@ -58,7 +58,7 @@ func InitTables(db *pg.DB) error {
 		(*Attendance)(nil),
 		(*PasswordResetToken)(nil),
 		(*LessonPlanDetails)(nil),
-		(*LessonPlanLinks)(nil),
+		(*LessonPlanLink)(nil),
 		(*LessonPlan)(nil),
 		(*File)(nil),
 		(*FileToLessonPlan)(nil),
@@ -285,7 +285,7 @@ type (
 		RepetitionType    int    `pg:",use_zero"`
 		RepetitionEndDate time.Time
 		LessonPlans       []*LessonPlan
-		Links             []LessonPlanLinks
+		Links             []LessonPlanLink
 
 		// Why we have area here? because we want to allow users
 		// to be able to select an area, without selecting material.
@@ -343,7 +343,7 @@ type (
 		Image     Image
 	}
 
-	LessonPlanLinks struct {
+	LessonPlanLink struct {
 		Id                  uuid.UUID `pg:"type:uuid"`
 		Title               string
 		Url                 string

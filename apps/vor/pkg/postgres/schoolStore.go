@@ -674,9 +674,9 @@ func (s SchoolStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLessonP
 		}
 	}
 
-	links := make([]LessonPlanLinks, 0)
+	links := make([]LessonPlanLink, 0)
 	for _, link := range planInput.Links {
-		links = append(links, LessonPlanLinks{
+		links = append(links, LessonPlanLink{
 			Id:                  uuid.New(),
 			Title:               link.Title,
 			Url:                 link.Url,

@@ -1,6 +1,7 @@
 package lessonplan_test
 
 import (
+	"github.com/google/uuid"
 	"net/http"
 	"testing"
 	"time"
@@ -38,6 +39,13 @@ func (s *LessonPlansTestSuite) TestGetLessonPlan() {
 	result := s.CreateRequest("GET", "/"+lessonPlan.Id, nil, &userId)
 	assert.Equal(t, result.Code, http.StatusOK)
 
+	type link struct {
+		Id          uuid.UUID `json:"id"`
+		Url         string    `json:"url"`
+		Image       string    `json:"image"`
+		Title       string    `json:"title"`
+		Description string    `json:"description"`
+	}
 	var responseBody struct {
 		Id          string    `json:"id"`
 		Title       string    `json:"title"`
@@ -46,6 +54,7 @@ func (s *LessonPlansTestSuite) TestGetLessonPlan() {
 		Date        time.Time `json:"date"`
 		AreaId      string    `json:"areaId"`
 		MaterialId  string    `json:"materialId"`
+		Links       []link    `json:"links"`
 	}
 	err := rest.ParseJson(result.Result().Body, &responseBody)
 	assert.NoError(t, err)
@@ -54,6 +63,7 @@ func (s *LessonPlansTestSuite) TestGetLessonPlan() {
 	assert.Equal(t, lessonPlan.LessonPlanDetails.MaterialId, responseBody.MaterialId)
 	assert.Equal(t, lessonPlan.LessonPlanDetails.AreaId, responseBody.AreaId)
 	assert.Equal(t, lessonPlan.Date.Unix(), responseBody.Date.Unix())
+	assert.Equal(t, len(lessonPlan.LessonPlanDetails.Links), len(responseBody.Links))
 }
 
 func (s *LessonPlansTestSuite) TestPatchLessonPlan() {
