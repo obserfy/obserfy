@@ -54,7 +54,7 @@ func createFrontendAuthMiddleware(db *pg.DB, folder string) func(next http.Handl
 			}
 
 			// Remove trailing slashes
-			if strings.HasSuffix(path, "/") {
+			if strings.HasSuffix(path, "/") && path != "/" {
 				http.Redirect(w, r, strings.TrimSuffix(path, "/"), http.StatusMovedPermanently)
 				return
 			}
