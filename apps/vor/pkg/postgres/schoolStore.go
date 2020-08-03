@@ -704,7 +704,7 @@ func (s SchoolStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLessonP
 			}
 		}
 		if len(links) > 0 {
-			if err := tx.Insert(&studentRelations); err != nil {
+			if err := tx.Insert(&links); err != nil {
 				return richErrors.Wrap(err, "failed to save links")
 			}
 		}
@@ -720,6 +720,7 @@ func (s SchoolStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLessonP
 		ClassId:     planDetails.ClassId,
 	}, nil
 }
+
 func (s SchoolStore) GetUser(email string) (*cSchool.User, error) {
 	var model cSchool.User
 	if err := s.Model(&model).

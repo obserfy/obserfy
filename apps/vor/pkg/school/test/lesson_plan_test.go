@@ -44,6 +44,12 @@ func (s *SchoolTestSuite) TestGetLessonPlan() {
 	assert.Equal(t, lessonPlan.LessonPlanDetails.Area.Id, body[0].Area.Id)
 }
 
+type link struct {
+	Url         string `json:"url"`
+	Image       string `json:"image"`
+	Title       string `json:"title"`
+	Description string `json:"description"`
+}
 type postNewPlanPayload struct {
 	Title       string    `json:"title"`
 	Description string    `json:"description"`
@@ -57,6 +63,7 @@ type postNewPlanPayload struct {
 	} `json:"repetition,omitempty"`
 	Students []string `json:"students"`
 	ClassId  string   `json:"classId"`
+	Links    []link   `json:"links"`
 }
 
 func (s *SchoolTestSuite) TestPostNewLessonPlan() {
@@ -299,4 +306,43 @@ func (s *SchoolTestSuite) TestPostNewLessonPlanWithCurriculumData() {
 			assert.Len(t, plans.LessonPlans[0].Students, len(test.payload.Students))
 		})
 	}
+}
+
+func (s *SchoolTestSuite) TestPostNewLessonPlanWithLinks() {
+	t := s.T()
+	class := s.GenerateClass(nil)
+	gofakeit.Seed(time.Now().UnixNano())
+
+	payload := postNewPlanPayload{
+		Title:       gofakeit.Name(),
+		Description: gofakeit.Name(),
+		Date:        gofakeit.Date(),
+		Repetition:  nil,
+		Links: []link{
+			{
+				Url:         gofakeit.URL(),
+				Image:       gofakeit.ImageURL(20, 20),
+				Title:       gofakeit.Name(),
+				Description: gofakeit.Name(),
+			},
+		},
+	}
+	result := s.CreateRequest("POST", "/"+class.School.Id+"/plans", payload, &class.School.Users[0].Id)
+	assert.Equal(t, http.StatusCreated, result.Code)
+
+	var plan postgres.LessonPlan
+	err := s.DB.Model(&plan).
+		Where("date=?", payload.Date).
+		Relation("LessonPlanDetails").
+		Relation("LessonPlanDetails.Links").
+		Select()
+	assert.NoError(t, err)
+	assert.Equal(t, payload.Title, plan.LessonPlanDetails.Title)
+	assert.Equal(t, payload.Description, plan.LessonPlanDetails.Description)
+	assert.Equal(t, payload.Date.Unix(), plan.Date.Unix())
+	assert.Equal(t, len(payload.Links), len(plan.LessonPlanDetails.Links))
+	assert.Equal(t, payload.Links[0].Title, plan.LessonPlanDetails.Links[0].Title)
+	assert.Equal(t, payload.Links[0].Image, plan.LessonPlanDetails.Links[0].Image)
+	assert.Equal(t, payload.Links[0].Url, plan.LessonPlanDetails.Links[0].Url)
+	assert.Equal(t, payload.Links[0].Description, plan.LessonPlanDetails.Links[0].Description)
 }
