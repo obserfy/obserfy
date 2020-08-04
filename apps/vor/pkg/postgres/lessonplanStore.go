@@ -3,6 +3,7 @@ package postgres
 import (
 	cLessonPlan "github.com/chrsep/vor/pkg/lessonplan"
 	"github.com/go-pg/pg/v10"
+	"github.com/google/uuid"
 	richErrors "github.com/pkg/errors"
 )
 
@@ -11,6 +12,28 @@ type (
 		*pg.DB
 	}
 )
+
+func (s LessonPlanStore) AddLinkToLessonPlan(id string, link cLessonPlan.Link) error {
+	lessonPlan := LessonPlan{Id: id}
+	if err := s.DB.Model(&lessonPlan).
+		WherePK().
+		Select(); err != nil {
+		return richErrors.Wrap(err, "failed to query the specified lesson plan")
+	}
+
+	newLink := LessonPlanLink{
+		Id:                  uuid.New(),
+		Title:               link.Title,
+		Url:                 link.Url,
+		Image:               link.Image,
+		Description:         link.Description,
+		LessonPlanDetailsId: lessonPlan.LessonPlanDetailsId,
+	}
+	if _, err := s.Model(&newLink).Insert(); err != nil {
+		return richErrors.Wrap(err, "failed to insert new link")
+	}
+	return nil
+}
 
 func (s LessonPlanStore) UpdateLessonPlan(planInput cLessonPlan.UpdatePlanData) (int, error) {
 	originalPlan := LessonPlan{Id: planInput.Id}

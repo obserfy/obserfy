@@ -121,6 +121,35 @@ func (s *LessonPlansTestSuite) TestPatchLessonPlan() {
 	}
 }
 
+func (s *LessonPlansTestSuite) TestPostNewLinks() {
+	t := s.T()
+	lessonPlan, userId := s.GenerateLessonPlan()
+	gofakeit.Seed(time.Now().UnixNano())
+
+	type payload struct {
+		Url         string `json:"url"`
+		Image       string `json:"image"`
+		Title       string `json:"title"`
+		Description string `json:"description"`
+	}
+	result := s.CreateRequest("POST", "/"+lessonPlan.Id+"/links", payload{
+		Url:         gofakeit.URL(),
+		Image:       gofakeit.ImageURL(10, 10),
+		Title:       gofakeit.Name(),
+		Description: gofakeit.Name(),
+	}, &userId)
+	assert.Equal(t, http.StatusCreated, result.Code)
+
+	updatedLessonPlan := postgres.LessonPlan{Id: lessonPlan.Id}
+	err := s.DB.Model(&updatedLessonPlan).
+		Relation("LessonPlanDetails").
+		Relation("LessonPlanDetails.Links").
+		WherePK().
+		Select()
+	assert.NoError(t, err)
+	assert.Len(t, updatedLessonPlan.LessonPlanDetails.Links, 2)
+}
+
 func randomDatePointer() *time.Time {
 	date := gofakeit.Date()
 	return &date

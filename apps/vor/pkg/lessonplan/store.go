@@ -71,5 +71,6 @@ type (
 		GetLessonPlan(planId string) (*LessonPlan, error)
 		DeleteLessonPlan(planId string) error
 		DeleteLessonPlanFile(planId, fileId string) error
+		AddLinkToLessonPlan(planId string, link Link) error
 	}
 )
