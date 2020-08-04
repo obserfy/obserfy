@@ -272,6 +272,22 @@ func (s *BaseTestSuite) GenerateLessonPlan() (postgres.LessonPlan, string) {
 	return lessonPlan, userid
 }
 
+func (s *BaseTestSuite) GenerateLessonPlanLink(details postgres.LessonPlanDetails) postgres.LessonPlanLink {
+	t := s.T()
+	link := postgres.LessonPlanLink{
+		Id:                  uuid.New(),
+		Title:               gofakeit.Name(),
+		Url:                 gofakeit.URL(),
+		Image:               gofakeit.ImageURL(10, 10),
+		Description:         gofakeit.Name(),
+		LessonPlanDetails:   details,
+		LessonPlanDetailsId: details.Id,
+	}
+	_, err := s.DB.Model(&link).Insert()
+	assert.NoError(t, err)
+	return link
+}
+
 func (s *BaseTestSuite) GenerateGuardian(school *postgres.School) (*postgres.Guardian, string) {
 	t := s.T()
 	gofakeit.Seed(time.Now().UnixNano())

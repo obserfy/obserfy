@@ -24,7 +24,6 @@ func NewRouter(server rest.Server, store Store) *chi.Mux {
 
 		r.Method("POST", "/links", postLink(server, store))
 	})
-
 	return r
 }
 
