@@ -674,6 +674,18 @@ func (s SchoolStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLessonP
 		}
 	}
 
+	links := make([]LessonPlanLink, 0)
+	for _, link := range planInput.Links {
+		links = append(links, LessonPlanLink{
+			Id:                  uuid.New(),
+			Title:               link.Title,
+			Url:                 link.Url,
+			Image:               link.Image,
+			Description:         link.Description,
+			LessonPlanDetailsId: planDetails.Id,
+		})
+	}
+
 	if err := s.RunInTransaction(func(tx *pg.Tx) error {
 		if err := tx.Insert(&planDetails); err != nil {
 			return richErrors.Wrap(err, "failed to save lesson plan details")
@@ -691,6 +703,11 @@ func (s SchoolStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLessonP
 				return richErrors.Wrap(err, "failed to save file relations")
 			}
 		}
+		if len(links) > 0 {
+			if err := tx.Insert(&links); err != nil {
+				return richErrors.Wrap(err, "failed to save links")
+			}
+		}
 		return nil
 	}); err != nil {
 		return nil, err
@@ -703,6 +720,7 @@ func (s SchoolStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLessonP
 		ClassId:     planDetails.ClassId,
 	}, nil
 }
+
 func (s SchoolStore) GetUser(email string) (*cSchool.User, error) {
 	var model cSchool.User
 	if err := s.Model(&model).

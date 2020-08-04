@@ -236,6 +236,15 @@ func (s *BaseTestSuite) GenerateLessonPlan() (postgres.LessonPlan, string) {
 		MaterialId:        material.Id,
 		SchoolId:          class.SchoolId,
 	}
+	link := postgres.LessonPlanLink{
+		Id:                  uuid.New(),
+		Title:               gofakeit.Name(),
+		Url:                 gofakeit.URL(),
+		Image:               gofakeit.ImageURL(10, 10),
+		Description:         gofakeit.Name(),
+		LessonPlanDetailsId: lessonPlanDetails.Id,
+	}
+	lessonPlanDetails.Links = append(lessonPlanDetails.Links, link)
 	date := gofakeit.Date()
 	lessonPlan := postgres.LessonPlan{
 		Id:                  uuid.New().String(),
@@ -251,14 +260,32 @@ func (s *BaseTestSuite) GenerateLessonPlan() (postgres.LessonPlan, string) {
 		StudentId:    student.Id,
 	}
 
-	err := s.DB.Insert(&lessonPlanDetails)
+	_, err := s.DB.Model(&lessonPlanDetails).Insert()
 	assert.NoError(t, err)
-	err = s.DB.Insert(&lessonPlan)
+	_, err = s.DB.Model(&lessonPlan).Insert()
 	assert.NoError(t, err)
-	err = s.DB.Insert(&studentRelation)
+	_, err = s.DB.Model(&studentRelation).Insert()
+	assert.NoError(t, err)
+	_, err = s.DB.Model(&link).Insert()
 	assert.NoError(t, err)
 
 	return lessonPlan, userid
+}
+
+func (s *BaseTestSuite) GenerateLessonPlanLink(details postgres.LessonPlanDetails) postgres.LessonPlanLink {
+	t := s.T()
+	link := postgres.LessonPlanLink{
+		Id:                  uuid.New(),
+		Title:               gofakeit.Name(),
+		Url:                 gofakeit.URL(),
+		Image:               gofakeit.ImageURL(10, 10),
+		Description:         gofakeit.Name(),
+		LessonPlanDetails:   details,
+		LessonPlanDetailsId: details.Id,
+	}
+	_, err := s.DB.Model(&link).Insert()
+	assert.NoError(t, err)
+	return link
 }
 
 func (s *BaseTestSuite) GenerateGuardian(school *postgres.School) (*postgres.Guardian, string) {
