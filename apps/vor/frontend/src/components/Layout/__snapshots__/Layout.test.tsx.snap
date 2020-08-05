@@ -146,7 +146,7 @@ exports[`Layout should render correctly 1`] = `
 
 @media screen and (min-width:40em) {
   .emotion-3 {
-    width: 70px;
+    width: 64px;
     height: 60px;
   }
 }
@@ -241,7 +241,7 @@ exports[`Layout should render correctly 1`] = `
 
 @media screen and (min-width:40em) {
   .emotion-13 {
-    padding-left: 70px;
+    padding-left: 64px;
     padding-bottom: 0;
   }
 }

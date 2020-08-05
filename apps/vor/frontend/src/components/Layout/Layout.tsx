@@ -28,7 +28,7 @@ export const Layout: FC = ({ children }) => {
       <Box
         as="main"
         sx={{ backgroundColor: "background", width: "100%" }}
-        pl={[0, 70]}
+        pl={[0, 64]}
         pb={[48, 0]}
         mb="env(safe-area-inset-bottom)"
       >
