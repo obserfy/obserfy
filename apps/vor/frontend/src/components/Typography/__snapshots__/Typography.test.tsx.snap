@@ -19,16 +19,11 @@ exports[`Typography should render correctly all correctly 1`] = `
   margin: 0;
   min-width: 0;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 300;
+  font-weight: bold;
   line-height: heading;
-  font-size: 6.103515625rem;
-  line-height: 9rem;
-  -webkit-letter-spacing: 0;
-  -moz-letter-spacing: 0;
-  -ms-letter-spacing: 0;
-  letter-spacing: 0;
-  text-rendering: optimizeLegibility;
   color: var(--theme-ui-colors-text,#37383c);
+  text-rendering: optimizeLegibility;
+  font-size: 96px;
 }
 
 .emotion-1 {
@@ -36,16 +31,11 @@ exports[`Typography should render correctly all correctly 1`] = `
   margin: 0;
   min-width: 0;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 300;
+  font-weight: bold;
   line-height: heading;
-  font-size: 4.8828125rem;
-  line-height: 6rem;
-  -webkit-letter-spacing: 0;
-  -moz-letter-spacing: 0;
-  -ms-letter-spacing: 0;
-  letter-spacing: 0;
-  text-rendering: optimizeLegibility;
   color: var(--theme-ui-colors-text,#37383c);
+  text-rendering: optimizeLegibility;
+  font-size: 64px;
 }
 
 .emotion-2 {
@@ -53,16 +43,11 @@ exports[`Typography should render correctly all correctly 1`] = `
   margin: 0;
   min-width: 0;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 300;
+  font-weight: bold;
   line-height: heading;
-  font-size: 3.90625rem;
-  line-height: 6rem;
-  -webkit-letter-spacing: 0;
-  -moz-letter-spacing: 0;
-  -ms-letter-spacing: 0;
-  letter-spacing: 0;
-  text-rendering: optimizeLegibility;
   color: var(--theme-ui-colors-text,#37383c);
+  text-rendering: optimizeLegibility;
+  font-size: 48px;
 }
 
 .emotion-3 {
@@ -70,16 +55,11 @@ exports[`Typography should render correctly all correctly 1`] = `
   margin: 0;
   min-width: 0;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 300;
+  font-weight: bold;
   line-height: heading;
-  font-size: 3.125rem;
-  line-height: 6rem;
-  -webkit-letter-spacing: 0;
-  -moz-letter-spacing: 0;
-  -ms-letter-spacing: 0;
-  letter-spacing: 0;
-  text-rendering: optimizeLegibility;
   color: var(--theme-ui-colors-text,#37383c);
+  text-rendering: optimizeLegibility;
+  font-size: 32px;
 }
 
 .emotion-4 {
@@ -87,16 +67,11 @@ exports[`Typography should render correctly all correctly 1`] = `
   margin: 0;
   min-width: 0;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 300;
+  font-weight: bold;
   line-height: heading;
-  font-size: 2.5rem;
-  line-height: 3rem;
-  -webkit-letter-spacing: 0;
-  -moz-letter-spacing: 0;
-  -ms-letter-spacing: 0;
-  letter-spacing: 0;
-  text-rendering: optimizeLegibility;
   color: var(--theme-ui-colors-text,#37383c);
+  text-rendering: optimizeLegibility;
+  font-size: 24px;
 }
 
 .emotion-5 {
@@ -104,29 +79,27 @@ exports[`Typography should render correctly all correctly 1`] = `
   margin: 0;
   min-width: 0;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 300;
+  font-weight: bold;
   line-height: heading;
-  font-size: 2rem;
-  line-height: 3rem;
-  -webkit-letter-spacing: 0;
-  -moz-letter-spacing: 0;
-  -ms-letter-spacing: 0;
-  letter-spacing: 0;
-  text-rendering: optimizeLegibility;
   color: var(--theme-ui-colors-text,#37383c);
+  text-rendering: optimizeLegibility;
+  font-size: 20px;
 }
 
 .emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: rgba(0,0,0,0.88);
-  font-size: 1.6rem;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 400;
-  line-height: 3rem;
-  text-rendering: optimizeLegibility;
   color: var(--theme-ui-colors-text,#37383c);
+  font-size: 16px;
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-6 {
+    font-size: 14px;
+  }
 }
 
 <div>

@@ -37,9 +37,9 @@ export const PageAdmin: FC = () => {
         {schoolDetail.status === "loading" && !schoolDetail.data?.name && (
           <LoadingPlaceholder sx={{ width: "100%", height: 60 }} />
         )}
-        <Typography.H4 mb={3} ml={1} sx={{ textAlign: "center" }}>
+        <Typography.H5 my={3} ml={1} sx={{ textAlign: "center" }}>
           {schoolDetail.data?.name}
-        </Typography.H4>
+        </Typography.H5>
       </Box>
       <CardLink mb={2} name="Curriculum" to={ADMIN_CURRICULUM_URL} />
       <CardLink mb={2} name="Users" to={ADMIN_USERS_URL} />
@@ -85,9 +85,9 @@ const ThemeModeButton: FC = () => {
       data-cy={colorMode === "dark" ? "light-switch" : "dark-switch"}
     >
       {colorMode === "dark" ? (
-        <Icon as={LightModeIcon} m={0} />
+        <Icon as={LightModeIcon} />
       ) : (
-        <Icon as={DarkModeIcon} m={0} />
+        <Icon as={DarkModeIcon} />
       )}
     </Button>
   )

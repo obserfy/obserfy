@@ -24,7 +24,7 @@ export const InformationalCard: FC<Props> = ({ message, buttonText, to }) => (
     }}
   >
     <Flex sx={{ alignItems: "center" }}>
-      <Icon as={InfoIcon} m={0} fill="warning" />
+      <Icon as={InfoIcon} fill="warning" />
       <Typography.Body sx={{ fontSize: 1 }} ml={2} color="warning">
         Info
       </Typography.Body>

@@ -78,7 +78,7 @@ export const PageInviteUser: FC = () => {
             })
           }
         >
-          <Icon as={PlusIcon} m={0} mr={2} fill="textPrimary" />
+          <Icon as={PlusIcon} mr={2} fill="textPrimary" />
           Add more email
         </Button>
         <Button sx={{ width: "100%" }} onClick={sendInvitation}>
@@ -140,7 +140,7 @@ const EmailInput: FC<{
   return (
     <Flex px={3} mb={2}>
       <Button variant="outline" onClick={() => removeFromEmailList(id)}>
-        <Icon as={CloseIcon} m={0} fill="danger" />
+        <Icon as={CloseIcon} fill="danger" />
       </Button>
       <Input
         sx={{ width: "100%" }}

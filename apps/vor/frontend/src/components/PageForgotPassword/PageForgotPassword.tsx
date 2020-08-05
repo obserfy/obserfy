@@ -102,7 +102,7 @@ export const PageForgotPassword: FC = () => {
             </Flex>
             <Link to="/login">
               <Button variant="outline">
-                <Icon as={BackIcon} m={0} mr={1} fill="textPrimary" />
+                <Icon as={BackIcon} mr={1} fill="textPrimary" />
                 Go Back
               </Button>
             </Link>

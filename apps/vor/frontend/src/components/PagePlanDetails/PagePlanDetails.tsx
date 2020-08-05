@@ -65,7 +65,7 @@ export const PagePlanDetails: FC<Props> = ({ id }) => {
           onClick={() => setShowDeleteDialog(true)}
           color="danger"
         >
-          <Icon as={TrashIcon} m={0} mr={2} fill="danger" />
+          <Icon as={TrashIcon} mr={2} fill="danger" />
           Delete
         </Button>
       </Box>
@@ -341,7 +341,7 @@ const DataBox: FC<{
       sx={{ flexShrink: 0 }}
       aria-label={`edit-${label.toLowerCase()}`}
     >
-      <Icon as={EditIcon} m={0} />
+      <Icon as={EditIcon} />
     </Button>
   </Flex>
 )

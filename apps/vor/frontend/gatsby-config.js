@@ -130,7 +130,7 @@ module.exports = {
         fonts: [
           {
             family: `Open Sans`,
-            variants: [`300`, `400`, `700`],
+            variants: [`400`, `700`],
           },
         ],
       },

@@ -115,7 +115,7 @@ export const PageStudentProfile: FC<Props> = ({ id }) => {
             data-cy="edit-classes"
           >
             <Button variant="outline" ml="auto" px={2}>
-              <Icon as={EditIcon} m={0} />
+              <Icon as={EditIcon} />
             </Button>
           </Link>
         </Flex>
@@ -160,7 +160,7 @@ export const PageStudentProfile: FC<Props> = ({ id }) => {
             data-cy="edit-guardians"
           >
             <Button variant="outline" px={2}>
-              <Icon as={EditIcon} m={0} />
+              <Icon as={EditIcon} />
             </Button>
           </Link>
         </Flex>
@@ -466,7 +466,7 @@ const DataBox: FC<{
       onClick={onEditClick}
       aria-label={`edit-${label.toLowerCase()}`}
     >
-      <Icon as={EditIcon} m={0} />
+      <Icon as={EditIcon} />
     </Button>
   </Flex>
 )

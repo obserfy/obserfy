@@ -44,14 +44,7 @@ export const ProfilePicker: FC<Props> = ({ value, onChange, ...props }) => {
                 <LoadingIndicator size={40} />
               ) : (
                 <>
-                  <Icon
-                    as={CameraIcon}
-                    m={0}
-                    width={24}
-                    height={24}
-                    mb={1}
-                    mt={3}
-                  />
+                  <Icon as={CameraIcon} width={24} height={24} mb={1} mt={3} />
                   <Typography.Body
                     color="textMediumEmphasis"
                     sx={{ fontSize: 0 }}

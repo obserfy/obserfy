@@ -201,7 +201,6 @@ exports[`DateInput should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
-  margin: 0;
   fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;

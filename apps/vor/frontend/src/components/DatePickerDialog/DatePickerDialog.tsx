@@ -50,7 +50,7 @@ export const DatePickerDialog: FC<Props> = ({
           onClick={() => setMonth(monthShown.add(-1, "month"))}
           data-cy="prev"
         >
-          <Icon as={PrevIcon} m={0} />
+          <Icon as={PrevIcon} />
         </Button>
         <Button
           variant="outline"
@@ -59,7 +59,7 @@ export const DatePickerDialog: FC<Props> = ({
           onClick={() => setMonth(monthShown.add(1, "month"))}
           data-cy="next"
         >
-          <Icon as={NextIcon} m={0} />
+          <Icon as={NextIcon} />
         </Button>
         <Button
           variant="outline"

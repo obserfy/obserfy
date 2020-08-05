@@ -92,13 +92,7 @@ export const PageEditGuardians: FC<Props> = ({ studentId }) => {
             >
               Create new guardian
             </Typography.Body>
-            <Icon
-              as={LinkIcon}
-              m={0}
-              ml="auto"
-              mr={2}
-              fill="textMediumEmphasis"
-            />
+            <Icon as={LinkIcon} ml="auto" mr={2} fill="textMediumEmphasis" />
           </Flex>
         </Link>
       </Card>
@@ -168,7 +162,7 @@ const CurrentGuardiansCard: FC<{
             onClick={() => setShowDialog(true)}
             data-cy="remove-guardian"
           >
-            <Icon as={RemoveIcon} m={0} fill="danger" />
+            <Icon as={RemoveIcon} fill="danger" />
           </Button>
         </Flex>
       </Card>
@@ -265,7 +259,7 @@ const OtherGuardiansCard: FC<{ guardian: Guardians; studentId: string }> = ({
             onClick={() => setShowDialog(true)}
             data-cy="add-guardian"
           >
-            <Icon as={PlusIcon} m={0} fill="primaryDark" />
+            <Icon as={PlusIcon} fill="primaryDark" />
           </Button>
         </Flex>
       </Card>

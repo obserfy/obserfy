@@ -61,7 +61,7 @@ export const PageStudentPlans: FC<Props> = ({ studentId, date }) => {
             )
           }}
         >
-          <Icon as={PrevIcon} m={0} />
+          <Icon as={PrevIcon} />
         </Button>
         <Button
           variant="outline"
@@ -80,7 +80,7 @@ export const PageStudentPlans: FC<Props> = ({ studentId, date }) => {
             )
           }}
         >
-          <Icon as={NextIcon} m={0} />
+          <Icon as={NextIcon} />
         </Button>
         <Button
           variant="outline"
@@ -131,7 +131,7 @@ export const PageStudentPlans: FC<Props> = ({ studentId, date }) => {
         sx={{ display: "block", m: 3 }}
       >
         <Button variant="outline" sx={{ ml: "auto" }}>
-          <Icon as={PlusIcon} m={0} mr={2} fill="onBackground" />
+          <Icon as={PlusIcon} mr={2} fill="onBackground" />
           Add new plan
         </Button>
       </Link>

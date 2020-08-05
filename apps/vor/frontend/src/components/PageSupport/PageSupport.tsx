@@ -40,19 +40,19 @@ export const PageSupport: FC = () => {
         <a href="https://feedback.obserfy.com/feature-requests">
           <Flex p={3} sx={{ alignItems: "center" }}>
             <Typography.Body>Feature Requests</Typography.Body>
-            <Icon as={NextIcon} m={0} ml="auto" />
+            <Icon as={NextIcon} ml="auto" />
           </Flex>
         </a>
         <a href="https://feedback.obserfy.com/bug-reports">
           <Flex p={3} sx={{ alignItems: "center" }}>
             <Typography.Body>Bug Report</Typography.Body>
-            <Icon as={NextIcon} m={0} ml="auto" />
+            <Icon as={NextIcon} ml="auto" />
           </Flex>
         </a>
         <a href="https://feedback.obserfy.com">
           <Flex p={3} sx={{ alignItems: "center" }}>
             <Typography.Body>Our roadmap</Typography.Body>
-            <Icon as={NextIcon} m={0} ml="auto" />
+            <Icon as={NextIcon} ml="auto" />
           </Flex>
         </a>
       </Card>

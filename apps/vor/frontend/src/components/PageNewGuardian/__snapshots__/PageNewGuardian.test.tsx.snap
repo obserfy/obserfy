@@ -58,14 +58,18 @@ exports[`PageNewGuardian should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: rgba(0,0,0,0.88);
-  font-size: 1.6rem;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 400;
-  line-height: 3rem;
+  color: var(--theme-ui-colors-text,#37383c);
+  font-size: 16px;
   text-rendering: optimizeLegibility;
+  line-height: 1.5;
   margin-bottom: 0;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+}
+
+@media screen and (min-width:40em) {
+  .emotion-1 {
+    font-size: 14px;
+  }
 }
 
 .emotion-3 {
@@ -73,15 +77,11 @@ exports[`PageNewGuardian should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 300;
+  font-weight: bold;
   line-height: heading;
-  font-size: 2.5rem;
-  line-height: 3rem;
-  -webkit-letter-spacing: 0;
-  -moz-letter-spacing: 0;
-  -ms-letter-spacing: 0;
-  letter-spacing: 0;
+  color: var(--theme-ui-colors-text,#37383c);
   text-rendering: optimizeLegibility;
+  font-size: 24px;
   margin-left: 16px;
   margin-right: 16px;
   margin-top: 16px;
@@ -93,19 +93,14 @@ exports[`PageNewGuardian should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 300;
+  font-weight: bold;
   line-height: heading;
-  font-size: 2.5rem;
-  line-height: 3rem;
-  -webkit-letter-spacing: 0;
-  -moz-letter-spacing: 0;
-  -ms-letter-spacing: 0;
-  letter-spacing: 0;
+  color: var(--theme-ui-colors-text,#37383c);
   text-rendering: optimizeLegibility;
+  font-size: 24px;
   margin-left: 16px;
   margin-right: 16px;
   margin-bottom: 16px;
-  color: var(--theme-ui-colors-text,#37383c);
 }
 
 .emotion-26 {

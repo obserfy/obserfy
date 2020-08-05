@@ -63,7 +63,7 @@ export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
           onClick={() => setShowDeleteDialog(true)}
           color="danger"
         >
-          <Icon as={TrashIcon} m={0} mr={2} fill="danger" />
+          <Icon as={TrashIcon} mr={2} fill="danger" />
           Delete
         </Button>
       </Box>
@@ -269,7 +269,7 @@ const DataBox: FC<{
       sx={{ flexShrink: 0 }}
       aria-label={`edit-${label.toLowerCase()}`}
     >
-      <Icon as={EditIcon} m={0} />
+      <Icon as={EditIcon} />
     </Button>
   </Flex>
 )
@@ -300,7 +300,7 @@ const MultilineDataBox: FC<{
       sx={{ flexShrink: 0, fontSize: 1, color: "textMediumEmphasis" }}
       aria-label={`edit-${label.toLowerCase()}`}
     >
-      <Icon as={EditIcon} m={0} mr={2} />
+      <Icon as={EditIcon} mr={2} />
       Edit {label.toLowerCase()}
     </Button>
   </Box>

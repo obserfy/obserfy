@@ -105,7 +105,7 @@ export const PageHome: FC = () => {
               height: "100%",
             }}
           >
-            <Icon as={PlusIcon} m={0} />
+            <Icon as={PlusIcon} />
           </Button>
         </Link>
       </Flex>
@@ -197,7 +197,7 @@ const NoStudentPlaceholder: FC = () => (
       </Typography.Body>
       <Link to={NEW_STUDENT_URL} data-cy="new-student-button">
         <Button variant="outline">
-          <Icon as={PlusIcon} m={0} mr={2} />
+          <Icon as={PlusIcon} mr={2} />
           New Student
         </Button>
       </Link>
