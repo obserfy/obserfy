@@ -1,0 +1,34 @@
+{
+  "Contact Us": {
+    "origin": [
+      [
+        "src/pages/contact.tsx",
+        11
+      ]
+    ]
+  },
+  "Email": {
+    "origin": [
+      [
+        "src/pages/contact.tsx",
+        22
+      ]
+    ]
+  },
+  "Message": {
+    "origin": [
+      [
+        "src/pages/contact.tsx",
+        26
+      ]
+    ]
+  },
+  "Send": {
+    "origin": [
+      [
+        "src/pages/contact.tsx",
+        30
+      ]
+    ]
+  }
+}

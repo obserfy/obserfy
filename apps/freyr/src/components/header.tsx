@@ -1,6 +1,7 @@
 import { graphql, Link, useStaticQuery } from "gatsby"
 import React, { FC } from "react"
 import GatsbyImage from "gatsby-image"
+import { Trans } from "@lingui/macro"
 import Button from "./button"
 
 const Header: FC = () => {
@@ -32,13 +33,13 @@ const Header: FC = () => {
       <div className="flex items-center">
         <a href="https://app.obserfy.com/" className="">
           <Button className="px-3 py-2 mr-3 border bg-transparent text-gray-700 text-sm">
-            Teachers
+            <Trans>Teachers</Trans>
           </Button>
         </a>
 
         <a href="https://parent.obserfy.com/api/login">
           <Button className="px-3 py-2 border bg-transparent text-gray-700 text-sm">
-            Parents
+            <Trans>Parents</Trans>
           </Button>
         </a>
       </div>

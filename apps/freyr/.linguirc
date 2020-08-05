@@ -1,7 +1,7 @@
 {
   "localeDir": "i18n/lingui",
   "srcPathDirs": ["src/"],
-  "srcPathIgnorePatterns": ["__tests__", "node_modules"],
+  "srcPathIgnorePatterns": ["__tests__", "/node_modules/"],
   "format": "po",
   "sorting": "origin",
   "extractBabelOptions": {

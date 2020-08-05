@@ -1,4 +1,5 @@
 import React, { FC } from "react"
+import { Trans } from "@lingui/macro"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Button from "../components/button"
@@ -9,7 +10,7 @@ const ContactUsPage: FC = () => (
     <div className="flex-row sm:flex my-16">
       <div className="flex-row justify-center lg:w-1/2 mr-3">
         <h1 className="text-5xl mb-4 leading-none font-heading font-medium">
-          Contact Us
+          <Trans>Contact Us</Trans>
         </h1>
         <p className="text-xl mt-8 mb-3 text-gray-700 font-body">
           Have a question? Shoot us a message using this form. We&apos;d love to
@@ -26,7 +27,7 @@ const ContactUsPage: FC = () => (
         >
           <input type="hidden" name="form-name" value="contact" />
           <label htmlFor="email" className="text-gray-700">
-            Email
+            <Trans>Email</Trans>
             <input
               type="email"
               id="email"
@@ -37,7 +38,7 @@ const ContactUsPage: FC = () => (
             />
           </label>
           <label htmlFor="message" className="text-gray-700">
-            Message
+            <Trans>Message</Trans>
             <textarea
               name="message"
               className="resize-none text-lg border rounded shadow w-full p-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-3 h-48"
@@ -45,7 +46,7 @@ const ContactUsPage: FC = () => (
             />
           </label>
           <Button className="w-full text-lg" type="submit">
-            Send
+            <Trans>Send</Trans>
           </Button>
         </form>
       </div>
