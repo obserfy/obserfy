@@ -50,7 +50,6 @@ export const ToggleButton: FC<Props> = ({
           sx={styleProps}
         >
           <Typography.Body
-            m={0}
             color={isSelected ? "primaryDark" : "text"}
             sx={{
               fontSize: 1,

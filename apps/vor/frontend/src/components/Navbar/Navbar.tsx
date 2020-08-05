@@ -170,7 +170,6 @@ const NavBarItem: FC<{
       >
         <Icon
           as={icon}
-          m={0}
           fill="transparent"
           size={24}
           sx={{ color: match ? "textPrimary" : "textDisabled" }}

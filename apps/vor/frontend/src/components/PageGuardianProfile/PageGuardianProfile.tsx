@@ -255,7 +255,7 @@ const DataBox: FC<{
       onClick={onEditClick}
       aria-label={`edit-${label.toLowerCase()}`}
     >
-      <Icon as={EditIcon} m={0} />
+      <Icon as={EditIcon} />
     </Button>
   </Flex>
 )

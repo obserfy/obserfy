@@ -79,14 +79,14 @@ const CurriculumAreas: FC<{
   areas?: Area[]
 }> = ({ newAreaClick, name, areas }) => (
   <Box mx={3}>
-    <Typography.H3 pb={3}>{name}</Typography.H3>
+    <Typography.H4 pb={3}>{name}</Typography.H4>
     <Button
       variant="outline"
       mb={2}
       sx={{ width: "100%" }}
       onClick={newAreaClick}
     >
-      <Icon as={PlusIcon} m={0} mr={2} />
+      <Icon as={PlusIcon} mr={2} />
       New Area
     </Button>
     {areas?.map((area) => (

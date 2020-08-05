@@ -89,7 +89,7 @@ export const DraggableListItem: FC<Props> = ({
           onTouchEnd={onDragStop}
           onTouchStart={(e) => onDragStart(e, e.targetTouches[0].clientY)}
         >
-          <Icon as={GridIcon} m={0} sx={{ width: 24 }} />
+          <Icon as={GridIcon} sx={{ width: 24 }} />
         </Box>
         {children}
       </Flex>

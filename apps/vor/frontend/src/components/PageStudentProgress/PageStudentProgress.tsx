@@ -172,7 +172,7 @@ const SubjectMaterials: FC<{
                 backgroundColor={`materialStage.${stage.toLocaleLowerCase()}`}
               />
             )}
-            <Icon as={NextIcon} m={0} mr={3} />
+            <Icon as={NextIcon} mr={3} />
           </Flex>
         )
       })}

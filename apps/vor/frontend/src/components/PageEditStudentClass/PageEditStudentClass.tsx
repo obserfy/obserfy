@@ -88,13 +88,7 @@ export const PageEditStudentClass: FC<Props> = ({ studentId }) => {
             >
               Create new class
             </Typography.Body>
-            <Icon
-              as={LinkIcon}
-              m={0}
-              ml="auto"
-              mr={2}
-              fill="textMediumEmphasis"
-            />
+            <Icon as={LinkIcon} ml="auto" mr={2} fill="textMediumEmphasis" />
           </Flex>
         </Link>
       </Card>
@@ -151,7 +145,7 @@ const CurrentClass: FC<{
             onClick={() => setShowDialog(true)}
             data-cy="remove-guardian"
           >
-            <Icon as={RemoveIcon} m={0} fill="danger" />
+            <Icon as={RemoveIcon} fill="danger" />
           </Button>
         </Flex>
       </Card>
@@ -214,7 +208,7 @@ const OtherClass: FC<{ studentId: string; classId: string; name: string }> = ({
             {status === "loading" ? (
               <LoadingIndicator ml={2} />
             ) : (
-              <Icon as={PlusIcon} m={0} fill="primary" />
+              <Icon as={PlusIcon} fill="primary" />
             )}
           </Button>
         </Flex>

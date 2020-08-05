@@ -337,7 +337,7 @@ const GuardianCard: FC<{
         ml="auto"
         onClick={() => setShowRemoveDialog(true)}
       >
-        <Icon as={TrashIcon} m={0} />
+        <Icon as={TrashIcon} />
       </Button>
       {showRemoveDialog && (
         <WarningDialog

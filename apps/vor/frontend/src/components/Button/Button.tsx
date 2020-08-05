@@ -20,7 +20,7 @@ export const Button: FC<ButtonProps> = ({
   ...props
 }) => (
   <ButtonBase onClick={onClick} onMouseEnter={onMouseEnter} {...props}>
-    {icon && <Icon as={icon} m={0} mr={2} />}
+    {icon && <Icon as={icon} mr={2} />}
     {children}
   </ButtonBase>
 )

@@ -129,7 +129,7 @@ export const PageResetPassword: FC<Props> = ({ token }) => {
               <Link to="/login">
                 <Button variant="outline">
                   Login
-                  <Icon as={NextIcon} m={0} mr={1} fill="textPrimary" />
+                  <Icon as={NextIcon} mr={1} fill="textPrimary" />
                 </Button>
               </Link>
             </Flex>

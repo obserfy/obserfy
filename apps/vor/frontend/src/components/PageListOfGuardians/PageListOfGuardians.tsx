@@ -48,7 +48,7 @@ export const PageListOfGuardians: FC = () => {
               height: "100%",
             }}
           >
-            <Icon as={PlusIcon} m={0} />
+            <Icon as={PlusIcon} />
           </Button>
         </Link>
       </Flex>

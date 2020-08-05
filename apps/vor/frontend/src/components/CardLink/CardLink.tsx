@@ -1,9 +1,8 @@
 /** @jsx jsx */
 import { FC, PropsWithoutRef } from "react"
-import { jsx, Card, CardProps, Flex } from "theme-ui"
+import { Card, CardProps, Flex, jsx } from "theme-ui"
 import { Link } from "../Link/Link"
 import Typography from "../Typography/Typography"
-import Spacer from "../Spacer/Spacer"
 import Icon from "../Icon/Icon"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 
@@ -15,9 +14,8 @@ export const CardLink: FC<Props> = ({ name, to, ...props }) => (
   <Link to={to} sx={{ display: "block" }}>
     <Card p={3} {...props}>
       <Flex sx={{ alignItems: "center" }}>
-        <Typography.H6>{name}</Typography.H6>
-        <Spacer />
-        <Icon as={NextIcon} m={0} />
+        <Typography.Body sx={{ fontSize: [2, 2] }}>{name}</Typography.Body>
+        <Icon as={NextIcon} ml="auto" />
       </Flex>
     </Card>
   </Link>

@@ -31,7 +31,7 @@ const MaterialProgressItem: FC<Props> = ({ value, onClick }) => {
         mr={2}
         ml="auto"
       />
-      <Icon as={NextIcon} m={0} />
+      <Icon as={NextIcon} />
     </Flex>
   )
 }
