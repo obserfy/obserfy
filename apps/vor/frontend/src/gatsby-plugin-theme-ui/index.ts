@@ -71,7 +71,7 @@ const theme: Theme = {
 
     materialStage: {
       presented: "#dd2c00",
-      onPresented: "text",
+      onPresented: "white",
 
       practiced: "#ffab00",
       onPracticed: "black",
