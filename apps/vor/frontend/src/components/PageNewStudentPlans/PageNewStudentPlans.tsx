@@ -1,7 +1,11 @@
 import React, { FC, useState } from "react"
-import { Box, Button, Flex } from "theme-ui"
+import { Box, Button, Card, Flex } from "theme-ui"
+import { useImmer } from "use-immer"
+import { nanoid } from "nanoid"
 import { useGetCurriculumAreas } from "../../api/useGetCurriculumAreas"
-import usePostNewPlan from "../../api/plans/usePostNewPlan"
+import usePostNewPlan, {
+  PostNewLessonPlanBody,
+} from "../../api/plans/usePostNewPlan"
 import dayjs from "../../dayjs"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { STUDENT_PLANS_URL } from "../../routes"
@@ -13,6 +17,8 @@ import EmptyClassDataPlaceholder from "../EmptyClassDataPlaceholder/EmptyClassDa
 import Chip from "../Chip/Chip"
 import { navigate } from "../Link/Link"
 import { useGetStudent } from "../../api/useGetStudent"
+import { ReactComponent as LinkIcon } from "../../icons/link.svg"
+import Icon from "../Icon/Icon"
 
 interface Props {
   studentId: string
@@ -27,6 +33,7 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
   const [description, setDescription] = useState("")
   const [areaId, setAreaId] = useState("")
   const [date, setDate] = useState(chosenDate ? dayjs(chosenDate) : dayjs())
+  const [links, setLinks] = useImmer<PostNewLessonPlanBody["links"]>([])
 
   // Repetition data
   const [repetition, setRepetition] = useState(0)
@@ -63,7 +70,20 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
           }}
         />
       </Box>
-
+      <Box mx={3} mb={3}>
+        <Typography.H6 mb={2}>Links</Typography.H6>
+        {links.map((link) => (
+          <LinkPreview key={link.id} link={link} />
+        ))}
+        <UrlField
+          onSave={(url) => {
+            setLinks((draft) => {
+              draft.push({ id: nanoid(), url })
+              return draft
+            })
+          }}
+        />
+      </Box>
       {areas.status === "success" && areas.data.length === 0 ? (
         <Box mb={3}>
           <EmptyClassDataPlaceholder />
@@ -71,7 +91,7 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
       ) : (
         <Box mx={3}>
           <Typography.H6 mb={2}>Related Area</Typography.H6>
-          <Flex mb={3} sx={{ flexWrap: "wrap" }}>
+          <Flex mb={2} sx={{ flexWrap: "wrap" }}>
             {areas.data?.map(({ id, name }) => (
               <Chip
                 mb={2}
@@ -79,13 +99,7 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
                 key={id}
                 text={name}
                 activeBackground="primary"
-                onClick={() => {
-                  if (id === areaId) {
-                    setAreaId("")
-                  } else {
-                    setAreaId(id)
-                  }
-                }}
+                onClick={() => setAreaId(id === areaId ? "" : id)}
                 isActive={id === areaId}
               />
             ))}
@@ -140,6 +154,7 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
               title,
               description,
               date,
+              links,
               students: [studentId],
               repetition:
                 repetition === 0
@@ -159,6 +174,52 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
         </Button>
       </Box>
     </Box>
+  )
+}
+
+const UrlField: FC<{ onSave: (url: string) => void }> = ({ onSave }) => {
+  const [url, setUrl] = useState("")
+
+  return (
+    <Flex>
+      <Input
+        aria-label="URL"
+        sx={{ width: "100%" }}
+        placeholder="https://...."
+        value={url}
+        onChange={(e) => setUrl(e.target.value)}
+      />
+      <Button
+        ml={2}
+        variant="outline"
+        disabled={url === ""}
+        onClick={() => {
+          onSave(url)
+          setUrl("")
+        }}
+      >
+        Add
+      </Button>
+    </Flex>
+  )
+}
+
+const LinkPreview: FC<{ link: PostNewLessonPlanBody["links"][0] }> = ({
+  link,
+}) => {
+  // const metadata = useLinkPreview(link.url)
+
+  return (
+    <Card p={2} mb={2} sx={{ overflowX: "hidden" }}>
+      <Flex sx={{ alignItems: "center" }}>
+        <Button variant="outline" sx={{ flexShrink: 0 }} px={2}>
+          <Icon as={LinkIcon} />
+        </Button>
+        <Typography.Body ml={2} sx={{ whiteSpace: "nowrap" }}>
+          {link.url}
+        </Typography.Body>
+      </Flex>
+    </Card>
   )
 }
 

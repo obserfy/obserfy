@@ -4,7 +4,7 @@ import { ApiError, BASE_URL } from "../useApi"
 import { Dayjs } from "../../dayjs"
 import { getSchoolId } from "../../hooks/schoolIdState"
 
-interface NewPlan {
+export interface PostNewLessonPlanBody {
   date: Dayjs
   title: string
   classId?: string
@@ -15,10 +15,17 @@ interface NewPlan {
     type: number
     endDate: Dayjs
   }
+  links: Array<{
+    id: string
+    url: string
+    title?: string
+    description?: string
+    image?: string
+  }>
 }
 const usePostNewPlan = () => {
   let date: string
-  const postPlan = async (newPlan: NewPlan) => {
+  const postPlan = async (newPlan: PostNewLessonPlanBody) => {
     const schoolId = getSchoolId()
     const result = await fetch(`${BASE_URL}/schools/${schoolId}/plans`, {
       method: "POST",
@@ -31,6 +38,7 @@ const usePostNewPlan = () => {
         areaId: newPlan.areaId,
         classId: newPlan.classId,
         students: newPlan.students,
+        links: newPlan.links,
       }),
     })
 
