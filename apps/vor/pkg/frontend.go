@@ -48,13 +48,13 @@ func createFrontendAuthMiddleware(db *pg.DB, folder string) func(next http.Handl
 			}
 
 			// If trying to access root, redirect to dashboard
-			if path == "/" || path == "/dashboard" || path == "/dashboard/" || path == "/dashboard/home" {
+			if path == "/dashboard" || path == "/dashboard/" || path == "/dashboard/home" {
 				http.Redirect(w, r, "/dashboard/students", http.StatusFound)
 				return
 			}
 
 			// Remove trailing slashes
-			if strings.HasSuffix(path, "/") {
+			if strings.HasSuffix(path, "/") && path != "/" {
 				http.Redirect(w, r, strings.TrimSuffix(path, "/"), http.StatusMovedPermanently)
 				return
 			}

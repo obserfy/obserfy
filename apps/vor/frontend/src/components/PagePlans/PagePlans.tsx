@@ -39,7 +39,7 @@ export const PagePlans: FC<Props> = ({ date }) => {
             window.history.replaceState({}, "", ALL_PLANS_URL(newDate))
           }}
         >
-          <Icon as={PrevIcon} m={0} />
+          <Icon as={PrevIcon} />
         </Button>
         <Button
           variant="outline"
@@ -54,7 +54,7 @@ export const PagePlans: FC<Props> = ({ date }) => {
             window.history.replaceState({}, "", ALL_PLANS_URL(newDate))
           }}
         >
-          <Icon as={NextIcon} m={0} />
+          <Icon as={NextIcon} />
         </Button>
         <Button
           variant="outline"
@@ -97,7 +97,7 @@ export const PagePlans: FC<Props> = ({ date }) => {
       })}
       <Link to={NEW_PLANS_URL(selectedDate)} sx={{ display: "block", m: 3 }}>
         <Button variant="outline" sx={{ ml: "auto" }}>
-          <Icon as={PlusIcon} m={0} mr={2} fill="onBackground" />
+          <Icon as={PlusIcon} mr={2} fill="onBackground" />
           Add new plan
         </Button>
       </Link>

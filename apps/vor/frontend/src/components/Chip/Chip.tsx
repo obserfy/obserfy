@@ -18,6 +18,7 @@ export const Chip: FC<Props> = ({
     {...props}
     backgroundColor={isActive ? activeBackground : "surface"}
     px={2}
+    py={1}
     sx={{
       ...sx,
       userSelect: "none",

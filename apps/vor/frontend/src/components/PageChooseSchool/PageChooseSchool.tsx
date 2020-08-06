@@ -34,7 +34,7 @@ export const PageChooseSchool: FC = () => {
     >
       <Flex sx={{ alignItems: "center" }}>
         <Typography.Body>{name}</Typography.Body>
-        <Icon m={0} ml="auto" as={ArrowNextIcon} />
+        <Icon ml="auto" as={ArrowNextIcon} />
       </Flex>
     </Card>
   ))
@@ -62,7 +62,7 @@ export const PageChooseSchool: FC = () => {
             sx={{ width: "100%" }}
             data-cy="newSchool"
           >
-            <Icon as={PlusIcon} m={0} mr={2} />
+            <Icon as={PlusIcon} mr={2} />
             New school
           </Button>
         </Link>

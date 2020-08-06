@@ -26,12 +26,13 @@ const MaterialProgressItem: FC<Props> = ({ value, onClick }) => {
         {value.materialName}
       </Typography.Body>
       <Pill
+        color={`materialStage.on${stage}`}
         backgroundColor={`materialStage.${stage.toLowerCase()}`}
         text={stage}
         mr={2}
         ml="auto"
       />
-      <Icon as={NextIcon} m={0} />
+      <Icon as={NextIcon} />
     </Flex>
   )
 }

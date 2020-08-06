@@ -128,7 +128,7 @@ export const DraggableMaterialListItem: FC<Props> = ({
         }}
       />
       <Button mr={2} variant="secondary" onClick={onDelete}>
-        <Icon as={DeleteIcon} m={0} />
+        <Icon as={DeleteIcon} />
       </Button>
     </DraggableListItem>
   )

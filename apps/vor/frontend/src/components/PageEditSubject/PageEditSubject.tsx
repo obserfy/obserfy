@@ -148,7 +148,7 @@ export const PageEditSubject: FC<Props> = ({ areaId, subjectId }) => {
           userSelect: "none",
         }}
       >
-        <Icon as={PlusIcon} m={0} mr={2} width={24} fill="primary" />
+        <Icon as={PlusIcon} mr={2} width={24} fill="primary" />
         <Typography.Body
           color="textMediumEmphasis"
           sx={{

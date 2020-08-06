@@ -1,6 +1,7 @@
 package lessonplan
 
 import (
+	"github.com/google/uuid"
 	"time"
 )
 
@@ -27,6 +28,15 @@ type (
 		Repetition  *RepetitionPattern
 		AreaId      string
 		MaterialId  string
+		Links       []Link
+	}
+
+	Link struct {
+		Id          uuid.UUID
+		Url         string
+		Image       string
+		Title       string
+		Description string
 	}
 
 	PlanData struct {
@@ -42,6 +52,7 @@ type (
 		Students    []string
 		SchoolId    string
 		UserId      string
+		Links       []Link
 	}
 
 	UpdatePlanData struct {
@@ -60,5 +71,6 @@ type (
 		GetLessonPlan(planId string) (*LessonPlan, error)
 		DeleteLessonPlan(planId string) error
 		DeleteLessonPlanFile(planId, fileId string) error
+		AddLinkToLessonPlan(planId string, link Link) error
 	}
 )

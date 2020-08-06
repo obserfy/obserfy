@@ -49,6 +49,7 @@ export const PageStudentOverview: FC<Props> = ({ id }) => {
           </Box>
           <Typography.H6
             ml={3}
+            mb={2}
             sx={{ wordWrap: "break-word", fontWeight: "bold", lineHeight: 1.4 }}
           >
             {student.data?.name || (
@@ -69,7 +70,7 @@ export const PageStudentOverview: FC<Props> = ({ id }) => {
           </Link>
           <Link sx={{ width: "100%" }} to={NEW_OBSERVATION_URL(id)}>
             <Button sx={{ width: "100%" }}>
-              <Icon as={PlusIcon} m={0} mr={2} fill="onPrimary" />
+              <Icon as={PlusIcon} mr={2} fill="onPrimary" />
               Observation
             </Button>
           </Link>
@@ -157,7 +158,7 @@ const ObservationSection: FC<{ studentId: string }> = ({ studentId }) => {
         mr={1}
         ml="auto"
       >
-        <Icon as={PrevIcon} m={0} />
+        <Icon as={PrevIcon} />
       </Button>
       <Button
         disabled={selectedDate < 1}
@@ -167,7 +168,7 @@ const ObservationSection: FC<{ studentId: string }> = ({ studentId }) => {
         py={1}
         px={1}
       >
-        <Icon as={NextIcon} m={0} />
+        <Icon as={NextIcon} />
       </Button>
       <Link to={ALL_OBSERVATIONS_PAGE_URL(studentId)}>
         <Button variant="outline" py={1} px={3}>

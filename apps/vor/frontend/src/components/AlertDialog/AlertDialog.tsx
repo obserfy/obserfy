@@ -33,7 +33,6 @@ export const AlertDialog: FC<Props> = ({
     />
     <Typography.Body
       p={3}
-      m={0}
       sx={{
         backgroundColor: "background",
       }}

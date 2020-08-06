@@ -969,6 +969,12 @@ func postNewLessonPlan(server rest.Server, store Store) http.Handler {
 		} `json:"repetition,omitempty"`
 		Students []string `json:"students"`
 		ClassId  string   `json:"classId"`
+		Links    []struct {
+			Url         string `json:"url"`
+			Image       string `json:"image"`
+			Title       string `json:"title"`
+			Description string `json:"description"`
+		} `json:"links"`
 	}
 
 	type resBody struct {
@@ -979,7 +985,7 @@ func postNewLessonPlan(server rest.Server, store Store) http.Handler {
 	validate := validator.New()
 
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
-		body := reqBody{}
+		var body reqBody
 		schoolId := chi.URLParam(r, "schoolId")
 
 		if err := rest.ParseJson(r.Body, &body); err != nil {
@@ -992,6 +998,7 @@ func postNewLessonPlan(server rest.Server, store Store) http.Handler {
 				Error:   richErrors.Wrap(err, "invalid request body"),
 			}
 		}
+
 		session, ok := auth.GetSessionFromCtx(r.Context())
 		if !ok {
 			return auth.NewGetSessionError()
@@ -1013,6 +1020,14 @@ func postNewLessonPlan(server rest.Server, store Store) http.Handler {
 				Type:    body.Repetition.Type,
 				EndDate: body.Repetition.EndDate,
 			}
+		}
+		for _, link := range body.Links {
+			planInput.Links = append(planInput.Links, lessonplan.Link{
+				Url:         link.Url,
+				Image:       link.Image,
+				Title:       link.Title,
+				Description: link.Description,
+			})
 		}
 
 		lessonPlan, err := store.CreateLessonPlan(planInput)

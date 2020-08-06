@@ -46,7 +46,7 @@ describe("test curriculum features", () => {
     cy.contains("Area Name", { matchCase: false }).type(newAreaName)
     cy.contains("Save").click()
 
-    cy.contains("h6", newAreaName).click()
+    cy.contains("p", newAreaName).click()
     cy.wait(500)
     cy.contains("New").click()
 
