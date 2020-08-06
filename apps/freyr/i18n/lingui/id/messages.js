@@ -1,13 +1,1 @@
-/* eslint-disable */ module.exports = {
-  messages: {
-    "Title Home Page": "Jalankan sekolah Montessori Anda secara efisien",
-    "Subtitle Home Page": "Kami membantu sekolah Montessori mengelola catatan mereka, melakukan laporan dan berkomunikasi dengan orang tua secara efisien",
-    "Early Access": "Dapatkan Akses Dini",
-    "Contact Us": "Kontak Kami",
-    "Email": "Email",
-    "Message": "Pesan",
-    "Send": "Kirim",
-    "Teachers": "Guru",
-    "Parents": "Orang Tua"
-  },
-}
+/* eslint-disable */module.exports={languageData:{"plurals":function(n,ord){if(ord)return"other";return"other"}},messages:{"Contact Us":"Kontak Kami","Early Access":"Dapatkan Akses Dini","Email":"Email","Message":"Pesan","Parents":"Orang Tua","Send":"Kirim","Subtitle Home Page":"Kami membantu sekolah Montessori mengelola catatan mereka, melakukan laporan dan berkomunikasi dengan orang tua secara efisien","Teachers":"Guru","Title Home Page":"Jalankan sekolah Montessori Anda secara efisien"}};

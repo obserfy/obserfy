@@ -3,7 +3,7 @@
   "srcPathDirs": ["src/"],
   "srcPathIgnorePatterns": ["__tests__", "/node_modules/"],
   "format": "po",
-  "sorting": "origin",
+  "sorting": "messageId",
   "extractBabelOptions": {
     "presets": [
       "babel-preset-gatsby"

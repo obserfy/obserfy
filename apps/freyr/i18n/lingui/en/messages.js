@@ -1,14 +1,1 @@
-/* eslint-disable */
-module.exports = {
-  messages: {
-    "Title Home Page": "Run your Montessori school efficiently",
-    "Subtitle Home Page": "We help Montessori schools manage their records, do reports and communicate with parents efficiently",
-    "Early Access": "Get Early Access",
-    "Contact Us": "Contact Us",
-    "Email": "Email",
-    "Message": "Message",
-    "Send": "Send",
-    "Teachers": "Teachers",
-    "Parents": "Parents"
-  },
-}
+/* eslint-disable */module.exports={languageData:{"plurals":function(n,ord){var s=String(n).split("."),v0=!s[1],t0=Number(s[0])==n,n10=t0&&s[0].slice(-1),n100=t0&&s[0].slice(-2);if(ord)return n10==1&&n100!=11?"one":n10==2&&n100!=12?"two":n10==3&&n100!=13?"few":"other";return n==1&&v0?"one":"other"}},messages:{"Contact Us":"Contact Us","Early Access":"Get Early Access","Email":"Email","Message":"Message","Parents":"Parents","Send":"Send","Subtitle Home Page":"We help Montessori schools manage their records, do reports and communicate with parents efficiently","Teachers":"Teachers","Title Home Page":"Run your Montessori school efficiently"}};

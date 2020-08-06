@@ -13,18 +13,14 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/header.tsx:30
-msgid "Teachers"
-msgstr "Teachers"
-
-#: src/components/header.tsx:36
-msgid "Parents"
-msgstr "Parents"
-
 #: src/pages/contact.tsx:11
 #: src/pages/index.tsx:31
 msgid "Contact Us"
-msgstr "Contact Us"
+msgstr "Kontak Kami"
+
+#: src/pages/index.tsx:26
+msgid "Early Access"
+msgstr "Dapatkan Akses Dini"
 
 #: src/pages/contact.tsx:22
 msgid "Email"
@@ -32,20 +28,24 @@ msgstr "Email"
 
 #: src/pages/contact.tsx:26
 msgid "Message"
-msgstr "Message"
+msgstr "Pesan"
+
+#: src/components/header.tsx:36
+msgid "Parents"
+msgstr "Orang Tua"
 
 #: src/pages/contact.tsx:30
 msgid "Send"
-msgstr "Send"
-
-#: src/pages/index.tsx:12
-msgid "Title Home Page"
-msgstr "Title Home Page"
+msgstr "Kirim"
 
 #: src/pages/index.tsx:15
 msgid "Subtitle Home Page"
-msgstr "Subtitle Home Page"
+msgstr "Kami membantu sekolah Montessori mengelola catatan mereka, melakukan laporan dan berkomunikasi dengan orang tua secara efisien"
 
-#: src/pages/index.tsx:26
-msgid "Early Access"
-msgstr "Early Access"
+#: src/components/header.tsx:30
+msgid "Teachers"
+msgstr "Guru"
+
+#: src/pages/index.tsx:12
+msgid "Title Home Page"
+msgstr "Jalankan sekolah Montessori Anda secara efisien"
