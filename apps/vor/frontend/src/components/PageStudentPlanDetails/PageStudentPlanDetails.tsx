@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react"
 import { Box, Button, Card, Flex } from "theme-ui"
-import useGetPlan from "../../api/plans/useGetPlan"
+import useGetPlan, { GetPlanResponseBody } from "../../api/plans/useGetPlan"
 import useDeletePlans from "../../api/plans/useDeletePlan"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import BackNavigation from "../BackNavigation/BackNavigation"
@@ -20,6 +20,11 @@ import { useGetCurriculumAreas } from "../../api/useGetCurriculumAreas"
 import { Typography } from "../Typography/Typography"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
 import DatePickerDialog from "../DatePickerDialog/DatePickerDialog"
+import { ReactComponent as LinkIcon } from "../../icons/link.svg"
+import useDeleteLessonPlanLink from "../../api/plans/useDeleteLessonPlanLink"
+import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
+import LinkInput from "../LinkInput/LinkInput"
+import usePostNewLessonPlanLink from "../../api/plans/usePostNewLessonPlanLink"
 
 interface Props {
   studentId: string
@@ -47,7 +52,7 @@ export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
           to={STUDENT_PLANS_URL(studentId, dayjs(plan.data?.date))}
           text="All plans"
         />
-        <Card sx={{ borderRadius: [0, "default"] }}>
+        <Card mb={3} sx={{ borderRadius: [0, "default"] }}>
           <DateDataBox value={plan.data?.date} lessonPlanId={planId} />
           <AreaDataBox value={plan.data?.areaId} lessonPlanId={planId} />
           <TitleDataBox value={plan.data?.title} lessonPlanId={planId} />
@@ -55,6 +60,27 @@ export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
             value={plan.data?.description}
             lessonPlanId={planId}
           />
+        </Card>
+        <Card sx={{ borderRadius: [0, "default"] }}>
+          <Typography.Body
+            mt={3}
+            mx={3}
+            mb={1}
+            color="textMediumEmphasis"
+            sx={{ lineHeight: 1, fontSize: 1 }}
+          >
+            Links
+          </Typography.Body>
+          {plan.data?.links?.map((link) => {
+            return (
+              <LessonPlanLinks
+                key={link.id}
+                link={link}
+                lessonPlanId={planId}
+              />
+            )
+          })}
+          <UrlField lessonPlanId={planId} />
         </Card>
         <Button
           variant="outline"
@@ -168,8 +194,9 @@ const DescriptionDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
     <>
       <MultilineDataBox
         label="Description"
-        value={value || "No descriptions given yet..."}
+        value={value || ""}
         onEditClick={() => setShowEditDialog(true)}
+        placeholder="-"
       />
       {showEditDialog && (
         <Dialog>
@@ -231,6 +258,8 @@ const AreaDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
           >
             {classes.data?.map(({ id, name }) => (
               <Chip
+                mr={2}
+                mb={2}
                 key={id}
                 text={name}
                 activeBackground="primary"
@@ -278,7 +307,8 @@ const MultilineDataBox: FC<{
   label: string
   value: string
   onEditClick?: () => void
-}> = ({ label, value, onEditClick }) => (
+  placeholder: string
+}> = ({ label, value, onEditClick, placeholder }) => (
   <Box px={3} py={3} sx={{ alignItems: "flex-start" }}>
     <Box mb={2}>
       <Typography.Body
@@ -289,7 +319,7 @@ const MultilineDataBox: FC<{
         {label}
       </Typography.Body>
       {value.split("\n").map((text) => (
-        <Typography.Body mb={3}>{text}</Typography.Body>
+        <Typography.Body mb={3}>{text || placeholder}</Typography.Body>
       ))}
     </Box>
     <Button
@@ -305,5 +335,76 @@ const MultilineDataBox: FC<{
     </Button>
   </Box>
 )
+
+const LessonPlanLinks: FC<{
+  link: GetPlanResponseBody["links"][0]
+  lessonPlanId: string
+}> = ({ link, lessonPlanId }) => {
+  const [isLoading, setIsLoading] = useState(false)
+  const [deleteLink] = useDeleteLessonPlanLink(link.id, lessonPlanId)
+
+  return (
+    <Flex m={3} sx={{ alignItems: "center" }}>
+      <Button
+        variant="outline"
+        sx={{ zIndex: 2, flexShrink: 0 }}
+        px={2}
+        onClick={() => window.open(link.url)}
+      >
+        <Icon as={LinkIcon} />
+      </Button>
+      <Box sx={{ whiteSpace: "nowrap", overflowX: "auto" }}>
+        <Typography.Body sx={{ display: "inline-block" }} mx={2}>
+          {link.url}
+        </Typography.Body>
+      </Box>
+      <Button
+        variant="outline"
+        ml="auto"
+        color="danger"
+        px={2}
+        backgroundColor="surface"
+        sx={{ zIndex: 2, flexShrink: 0 }}
+        onClick={async () => {
+          setIsLoading(true)
+          const result = await deleteLink()
+          if (!result?.ok) {
+            setIsLoading(false)
+          }
+        }}
+        disabled={isLoading}
+      >
+        {isLoading ? (
+          <LoadingIndicator ml={1} />
+        ) : (
+          <Icon as={TrashIcon} fill="danger" />
+        )}
+      </Button>
+    </Flex>
+  )
+}
+
+const UrlField: FC<{ lessonPlanId: string }> = ({ lessonPlanId }) => {
+  const [isLoading, setIsLoading] = useState(false)
+  const [postNewLink] = usePostNewLessonPlanLink(lessonPlanId)
+  const [url, setUrl] = useState("")
+
+  return (
+    <LinkInput
+      value={url}
+      onChange={setUrl}
+      m={3}
+      isLoading={isLoading}
+      onSave={async () => {
+        setIsLoading(true)
+        const result = await postNewLink({ url })
+        if (result?.ok) {
+          setUrl("")
+        }
+        setIsLoading(false)
+      }}
+    />
+  )
+}
 
 export default PageStudentPlanDetails

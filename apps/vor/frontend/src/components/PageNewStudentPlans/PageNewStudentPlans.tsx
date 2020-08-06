@@ -133,7 +133,7 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
           />
         </Flex>
         {repetition > 0 && (
-          <Box mt={1}>
+          <Box mt={3}>
             <DateInput
               label="Repeat Until"
               value={endDate}

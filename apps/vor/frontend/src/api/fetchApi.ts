@@ -23,8 +23,8 @@ export const getApi = <T>(url: string) => async (): Promise<T> => {
   return json
 }
 
-export const deleteApi = (url: string, id: string) => async () => {
-  const result = await fetch(`${BASE_URL}${url}/${id}`, {
+export const deleteApi = (url: string) => async () => {
+  const result = await fetch(`${BASE_URL}${url}`, {
     credentials: "same-origin",
     method: "DELETE",
   })

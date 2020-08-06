@@ -213,6 +213,7 @@ const theme: Theme = {
   },
   buttons: {
     primary: {
+      userSelect: "none",
       cursor: "pointer",
       boxSizing: "border-box",
       fontSize: 1,
