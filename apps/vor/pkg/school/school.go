@@ -60,6 +60,8 @@ func NewRouter(
 		r.Method("DELETE", "/files/{fileId}", deleteFile(server, store))
 
 		r.Method("POST", "/images", postNewImage(server, store))
+
+		r.Method("DELETE", "/users/{userId}", deleteUser(server, store))
 	})
 	return r
 }
@@ -941,6 +943,32 @@ func deleteFile(server rest.Server, store Store) http.Handler {
 		fileId := chi.URLParam(r, "fileId")
 
 		err := store.DeleteFile(fileId)
+		if err != nil {
+			if err == pg.ErrNoRows {
+				return &rest.Error{
+					Code:    http.StatusNotFound,
+					Message: "No file found",
+					Error:   err,
+				}
+			}
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "Failed to delete file",
+				Error:   err,
+			}
+		}
+
+		w.WriteHeader(http.StatusOK)
+		return nil
+	})
+}
+
+func deleteUser(server rest.Server, store Store) http.Handler {
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		userId := chi.URLParam(r, "userId")
+		schoolId := chi.URLParam(r, "schoolId")
+
+		err := store.DeleteUser(schoolId, userId)
 		if err != nil {
 			if err == pg.ErrNoRows {
 				return &rest.Error{
