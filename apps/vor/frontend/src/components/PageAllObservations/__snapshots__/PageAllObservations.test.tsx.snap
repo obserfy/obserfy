@@ -160,7 +160,7 @@ exports[`PageAllObservations should render correctly 1`] = `
   line-height: heading;
   color: var(--theme-ui-colors-text,#37383c);
   text-rendering: optimizeLegibility;
-  font-size: 48px;
+  font-size: 24px;
   word-wrap: break-word;
 }
 
@@ -347,14 +347,14 @@ exports[`PageAllObservations should render correctly 1`] = `
       <div
         class="emotion-8"
       >
-        <h3
+        <h5
           class="emotion-7"
         >
           <span
             class="emotion-6"
           />
            Observations
-        </h3>
+        </h5>
       </div>
       <div
         class="emotion-23"
