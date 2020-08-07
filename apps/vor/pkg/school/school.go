@@ -967,19 +967,22 @@ func deleteUser(server rest.Server, store Store) http.Handler {
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		userId := chi.URLParam(r, "userId")
 		schoolId := chi.URLParam(r, "schoolId")
-
-		err := store.DeleteUser(schoolId, userId)
-		if err != nil {
-			if err == pg.ErrNoRows {
-				return &rest.Error{
-					Code:    http.StatusNotFound,
-					Message: "No file found",
-					Error:   err,
-				}
-			}
+		session, ok := auth.GetSessionFromCtx(r.Context())
+		if !ok {
+			return auth.NewGetSessionError()
+		}
+		if session.UserId == userId {
 			return &rest.Error{
 				Code:    http.StatusInternalServerError,
-				Message: "Failed to delete file",
+				Message: "Cannot delete yourself",
+				Error:   nil,
+			}
+		}
+		err := store.DeleteUser(schoolId, userId)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "Failed to delete user",
 				Error:   err,
 			}
 		}
