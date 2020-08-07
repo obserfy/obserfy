@@ -1,9 +1,10 @@
-import React, { FC } from "react"
+import React, { FC, useState } from "react"
 import { Button, Flex, Card } from "theme-ui"
 import Typography from "../Typography/Typography"
 import Spacer from "../Spacer/Spacer"
 import Pill from "../Pill/Pill"
 import useDeleteUser from "../../api/schools/useDeleteUser"
+import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 
 interface Props {
   name: string
@@ -13,18 +14,15 @@ interface Props {
 }
 
 export const UserCard: FC<Props> = ({ userId, email, name, isCurrentUser }) => {
+  const [isLoading, setIsLoading] = useState(false)
   const [deleteUser] = useDeleteUser(userId)
+
   return (
     <Card p={3} mt={2}>
       <Flex sx={{ alignItems: "start" }}>
         <Flex sx={{ flexDirection: "column", alignItems: "start" }}>
           <Typography.H6>{name}</Typography.H6>
-          <Typography.Body
-            sx={{
-              fontSize: 1,
-            }}
-            color="textMediumEmphasis"
-          >
+          <Typography.Body sx={{ fontSize: 1 }} color="textMediumEmphasis">
             {email}
           </Typography.Body>
         </Flex>
@@ -39,12 +37,17 @@ export const UserCard: FC<Props> = ({ userId, email, name, isCurrentUser }) => {
         )}
         {!isCurrentUser && (
           <Button
+            variant="outline"
+            color="danger"
             m="auto"
+            disabled={isLoading}
             onClick={async () => {
+              setIsLoading(true)
               await deleteUser()
+              setIsLoading(false)
             }}
           >
-            Remove
+            {isLoading ? <LoadingIndicator /> : "Remove"}
           </Button>
         )}
       </Flex>
