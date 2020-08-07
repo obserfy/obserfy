@@ -973,7 +973,7 @@ func deleteUser(server rest.Server, store Store) http.Handler {
 		}
 		if session.UserId == userId {
 			return &rest.Error{
-				Code:    http.StatusInternalServerError,
+				Code:    http.StatusBadRequest,
 				Message: "Cannot delete yourself",
 				Error:   nil,
 			}
