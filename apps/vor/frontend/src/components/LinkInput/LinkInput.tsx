@@ -1,20 +1,21 @@
 import React, { FC } from "react"
-import { Button, Flex, FlexProps } from "theme-ui"
+import { Button, Flex, SxStyleProp } from "theme-ui"
 import Input from "../Input/Input"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 
-const LinkInput: FC<
-  Omit<FlexProps, "onChange"> & {
-    value?: string
-    onChange: (value: string) => void
-    onSave: () => void
-    isLoading: boolean
-  }
-> = ({ value, onChange, onSave, isLoading, ...props }) => (
-  <Flex {...props}>
+const LinkInput: FC<{
+  value?: string
+  onChange: (value: string) => void
+  onSave: () => void
+  isLoading: boolean
+  containerSx?: SxStyleProp
+  inputSx?: SxStyleProp
+}> = ({ inputSx, containerSx, value, onChange, onSave, isLoading }) => (
+  <Flex sx={containerSx}>
     <Input
       aria-label="URL"
-      sx={{ width: "100%" }}
+      sx={{ width: "100%", ...inputSx }}
+      p={2}
       placeholder="https://...."
       value={value}
       onChange={(e) => onChange(e.target.value)}

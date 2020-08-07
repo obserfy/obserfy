@@ -1,5 +1,6 @@
-import React, { FC, useState } from "react"
-import { Box, Button, Card, Flex } from "theme-ui"
+/** @jsx jsx */
+import { FC, useState, Fragment } from "react"
+import { jsx, Box, Button, Card, Flex } from "theme-ui"
 import useGetPlan, { GetPlanResponseBody } from "../../api/plans/useGetPlan"
 import useDeletePlans from "../../api/plans/useDeletePlan"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
@@ -46,7 +47,7 @@ export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
   }
 
   return (
-    <>
+    <Fragment>
       <Box sx={{ maxWidth: "maxWidth.sm" }} pb={3} mx="auto">
         <BackNavigation
           to={STUDENT_PLANS_URL(studentId, dayjs(plan.data?.date))}
@@ -71,6 +72,9 @@ export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
           >
             Links
           </Typography.Body>
+          {(plan.data?.links?.length ?? 0) === 0 && (
+            <Typography.Body m={3}>No links attached yet</Typography.Body>
+          )}
           {plan.data?.links?.map((link) => {
             return (
               <LessonPlanLinks
@@ -110,7 +114,7 @@ export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
           }}
         />
       )}
-    </>
+    </Fragment>
   )
 }
 
@@ -122,7 +126,7 @@ const DateDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
   const [mutate] = usePatchPlan(lessonPlanId)
 
   return (
-    <>
+    <Fragment>
       <DataBox
         label="Date"
         onEditClick={() => setShowEditDialog(true)}
@@ -138,7 +142,7 @@ const DateDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
           onDismiss={() => setShowEditDialog(false)}
         />
       )}
-    </>
+    </Fragment>
   )
 }
 
@@ -151,7 +155,7 @@ const TitleDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
   const [mutate] = usePatchPlan(lessonPlanId)
 
   return (
-    <>
+    <Fragment>
       <DataBox
         label="Title"
         value={value ?? ""}
@@ -178,7 +182,7 @@ const TitleDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
           </Box>
         </Dialog>
       )}
-    </>
+    </Fragment>
   )
 }
 
@@ -191,7 +195,7 @@ const DescriptionDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
   const [mutate] = usePatchPlan(lessonPlanId)
 
   return (
-    <>
+    <Fragment>
       <MultilineDataBox
         label="Description"
         value={value || ""}
@@ -220,7 +224,7 @@ const DescriptionDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
           </Box>
         </Dialog>
       )}
-    </>
+    </Fragment>
   )
 }
 
@@ -234,7 +238,7 @@ const AreaDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
   const [mutate] = usePatchPlan(lessonPlanId)
 
   return (
-    <>
+    <Fragment>
       <DataBox
         label="Related Area"
         value={classes.data?.find(({ id }) => id === value)?.name || "Other"}
@@ -270,7 +274,7 @@ const AreaDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
           </Flex>
         </Dialog>
       )}
-    </>
+    </Fragment>
   )
 }
 
@@ -344,20 +348,25 @@ const LessonPlanLinks: FC<{
   const [deleteLink] = useDeleteLessonPlanLink(link.id, lessonPlanId)
 
   return (
-    <Flex m={3} sx={{ alignItems: "center" }}>
-      <Button
-        variant="outline"
-        sx={{ zIndex: 2, flexShrink: 0 }}
-        px={2}
-        onClick={() => window.open(link.url)}
+    <Flex m={3} sx={{ alignItems: "center", maxHeight: "100%" }}>
+      <a
+        href={link.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        sx={{ display: "flex", alignItems: "center", overflowX: "auto" }}
       >
         <Icon as={LinkIcon} />
-      </Button>
-      <Box sx={{ whiteSpace: "nowrap", overflowX: "auto" }}>
-        <Typography.Body sx={{ display: "inline-block" }} mx={2}>
+        <Typography.Body
+          sx={{
+            whiteSpace: "nowrap",
+            display: "inline-block",
+            textDecoration: "underline",
+          }}
+          mx={2}
+        >
           {link.url}
         </Typography.Body>
-      </Box>
+      </a>
       <Button
         variant="outline"
         ml="auto"
@@ -393,7 +402,6 @@ const UrlField: FC<{ lessonPlanId: string }> = ({ lessonPlanId }) => {
     <LinkInput
       value={url}
       onChange={setUrl}
-      m={3}
       isLoading={isLoading}
       onSave={async () => {
         setIsLoading(true)
@@ -403,6 +411,8 @@ const UrlField: FC<{ lessonPlanId: string }> = ({ lessonPlanId }) => {
         }
         setIsLoading(false)
       }}
+      containerSx={{ mx: 3, mb: 3, mt: 2 }}
+      inputSx={{ backgroundColor: "background" }}
     />
   )
 }
