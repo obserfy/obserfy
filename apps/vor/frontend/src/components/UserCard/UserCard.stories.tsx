@@ -1,5 +1,4 @@
 import React, { FC } from "react"
-import { action } from "@storybook/addon-actions"
 import UserCard from "./UserCard"
 
 export default {
@@ -16,6 +15,5 @@ export const Basic: FC = () => (
     email="johnny@gmail.com"
     isCurrentUser
     name="Johnny Obviously"
-    onDelete={action("delete user")}
   />
 )

@@ -13,7 +13,7 @@ const useDeleteUser = (
   const deleteUser = deleteApi(`/schools/${getSchoolId()}/users/${userId}`)
   return useMutation<Response>(deleteUser, {
     onSuccess: async () => {
-      await queryCache.invalidateQueries(["school", getSchoolId()])
+      await queryCache.invalidateQueries(["school"])
     },
   })
 }
