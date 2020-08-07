@@ -162,6 +162,7 @@ type (
 		CreateLessonPlan(input lessonplan.PlanData) (*lessonplan.LessonPlan, error)
 		CreateImage(schoolId string, image multipart.File, header *multipart.FileHeader) (string, error)
 		GetUser(email string) (*User, error)
+		DeleteUser(schoolId string, userId string) error
 	}
 	MailService interface {
 		SendInviteEmail(email string, inviteCode string, schoolName string) error
