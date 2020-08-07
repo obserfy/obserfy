@@ -472,6 +472,9 @@ func postNewStudent(s rest.Server, store Store) rest.Handler {
 			Relationship int    `json:"relationship"`
 		} `json:"guardians"`
 	}
+	type responseBody struct {
+		Id string `json:"id"`
+	}
 
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		schoolId := chi.URLParam(r, "schoolId")
@@ -486,7 +489,7 @@ func postNewStudent(s rest.Server, store Store) rest.Handler {
 			guardians[guardian.Id] = guardian.Relationship
 		}
 
-		err := store.NewStudent(Student{
+		newStudent := Student{
 			Id:          uuid.New().String(),
 			Name:        body.Name,
 			SchoolId:    schoolId,
@@ -499,7 +502,8 @@ func postNewStudent(s rest.Server, store Store) rest.Handler {
 			ProfileImage: Image{
 				Id: body.ProfileImageId,
 			},
-		}, body.Classes, guardians)
+		}
+		err := store.NewStudent(newStudent, body.Classes, guardians)
 		if err != nil {
 			return &rest.Error{
 				Code:    http.StatusInternalServerError,
@@ -507,8 +511,10 @@ func postNewStudent(s rest.Server, store Store) rest.Handler {
 				Error:   err,
 			}
 		}
-
 		w.WriteHeader(http.StatusCreated)
+		if err := rest.WriteJson(w, &responseBody{Id: newStudent.Id}); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
 		return nil
 	})
 }

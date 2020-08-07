@@ -9,12 +9,11 @@ import usePostNewPlan, {
 } from "../../api/plans/usePostNewPlan"
 import dayjs from "../../dayjs"
 import BackNavigation from "../BackNavigation/BackNavigation"
-import { STUDENT_PLANS_URL } from "../../routes"
+import { ADMIN_CURRICULUM_URL, STUDENT_PLANS_URL } from "../../routes"
 import { Typography } from "../Typography/Typography"
 import DateInput from "../DateInput/DateInput"
 import Input from "../Input/Input"
 import TextArea from "../TextArea/TextArea"
-import EmptyClassDataPlaceholder from "../EmptyClassDataPlaceholder/EmptyClassDataPlaceholder"
 import Chip from "../Chip/Chip"
 import { navigate } from "../Link/Link"
 import { useGetStudent } from "../../api/useGetStudent"
@@ -22,6 +21,7 @@ import { ReactComponent as LinkIcon } from "../../icons/link.svg"
 import Icon from "../Icon/Icon"
 import LinkInput from "../LinkInput/LinkInput"
 import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
+import InformationalCard from "../InformationalCard/InformationalCard"
 
 interface Props {
   studentId: string
@@ -109,8 +109,12 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
         />
       </Box>
       {areas.status === "success" && areas.data.length === 0 ? (
-        <Box mb={3}>
-          <EmptyClassDataPlaceholder />
+        <Box mx={[0, 3]}>
+          <InformationalCard
+            message="You can enable the curriculum feature to track student progress in your curriculum."
+            buttonText=" Go to Curriculum "
+            to={ADMIN_CURRICULUM_URL}
+          />
         </Box>
       ) : (
         <Box mx={3}>

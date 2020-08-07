@@ -19,6 +19,8 @@ describe("Test lesson plan features", () => {
 
     const schoolName = faker.company.companyName()
 
+    const studentName = faker.name.firstName()
+
     cy.request({
       method: "POST",
       url: "/auth/register",
@@ -29,11 +31,20 @@ describe("Test lesson plan features", () => {
     cy.request("POST", "/api/v1/schools", { name: schoolName }).then(
       (result) => {
         window.localStorage.setItem("SCHOOL_ID", result.body.id)
-        return cy.request("POST", `/api/v1/schools/${result.body.id}/classes`, {
-          name: className,
-          startTime: classStartTime.toISOString(),
-          endTime: classStartTime.toISOString(),
-        })
+        return cy
+          .request("POST", `/api/v1/schools/${result.body.id}/classes`, {
+            name: className,
+            startTime: classStartTime.toISOString(),
+            endTime: classStartTime.toISOString(),
+          })
+          .request("POST", `/api/v1/schools/${result.body.id}/students`, {
+            name: studentName,
+          })
+          .then((studentResult) => {
+            cy.visit(
+              `/dashboard/students/plans?studentId=${studentResult.body.id}`
+            )
+          })
       }
     )
   })
@@ -43,7 +54,6 @@ describe("Test lesson plan features", () => {
 
     const secondName = "A bolder plan"
     const secondDescription = "A description"
-    cy.visit("/dashboard/plans")
 
     cy.get('[aria-label="next-date"]').click()
 
@@ -51,7 +61,6 @@ describe("Test lesson plan features", () => {
     cy.contains("Add").click()
     cy.contains("Save").should("be.disabled")
     cy.contains("Title").type(firstName)
-    cy.contains(className).click()
     cy.contains("Save").click()
     cy.contains(firstName).should("be.visible")
 

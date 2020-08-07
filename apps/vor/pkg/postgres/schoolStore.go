@@ -185,7 +185,7 @@ func (s SchoolStore) GetClassAttendance(classId, session string) ([]cSchool.Atte
 
 func (s SchoolStore) NewStudent(student cSchool.Student, classes []string, guardians map[string]int) error {
 	newStudent := Student{
-		Id:             uuid.New().String(),
+		Id:             student.Id,
 		Name:           student.Name,
 		SchoolId:       student.SchoolId,
 		DateOfBirth:    student.DateOfBirth,
