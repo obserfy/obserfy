@@ -53,7 +53,7 @@ export const PageStudentOverview: FC<Props> = ({ id }) => {
             sx={{ wordWrap: "break-word", fontWeight: "bold", lineHeight: 1.4 }}
           >
             {student.data?.name || (
-              <LoadingPlaceholder sx={{ width: "24rem", height: 60 }} />
+              <LoadingPlaceholder sx={{ width: "12rem", height: 28 }} />
             )}
           </Typography.H6>
         </Flex>

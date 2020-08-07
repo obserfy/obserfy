@@ -167,8 +167,8 @@ exports[`PageStudentOverview should render correctly 1`] = `
   border-radius: 6px;
   -webkit-animation: 1s ease-in-out 0s infinite animation-0;
   animation: 1s ease-in-out 0s infinite animation-0;
-  width: 24rem;
-  height: 60px;
+  width: 12rem;
+  height: 28px;
 }
 
 .emotion-15 {
