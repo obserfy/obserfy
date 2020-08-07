@@ -11,7 +11,7 @@ export default {
 
 export const Basic: FC = () => (
   <UserCard
-    userId="1234"
+    userId="123"
     email="johnny@gmail.com"
     isCurrentUser
     name="Johnny Obviously"
