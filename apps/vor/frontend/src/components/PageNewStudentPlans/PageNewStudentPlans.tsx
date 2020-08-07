@@ -1,5 +1,6 @@
-import React, { FC, useState } from "react"
-import { Box, Button, Card, Flex } from "theme-ui"
+/** @jsx jsx */
+import { FC, useState } from "react"
+import { Box, Button, Card, Flex, jsx } from "theme-ui"
 import { useImmer } from "use-immer"
 import { nanoid } from "nanoid"
 import { useGetCurriculumAreas } from "../../api/useGetCurriculumAreas"
@@ -19,6 +20,8 @@ import { navigate } from "../Link/Link"
 import { useGetStudent } from "../../api/useGetStudent"
 import { ReactComponent as LinkIcon } from "../../icons/link.svg"
 import Icon from "../Icon/Icon"
+import LinkInput from "../LinkInput/LinkInput"
+import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
 
 interface Props {
   studentId: string
@@ -38,6 +41,21 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
   // Repetition data
   const [repetition, setRepetition] = useState(0)
   const [endDate, setEndDate] = useState(date)
+
+  async function postNewPlan() {
+    const result = await mutate({
+      areaId,
+      title,
+      description,
+      date,
+      links,
+      students: [studentId],
+      repetition: repetition === 0 ? undefined : { type: repetition, endDate },
+    })
+    if (result.ok) {
+      await navigate(STUDENT_PLANS_URL(studentId, date))
+    }
+  }
 
   return (
     <Box sx={{ maxWidth: "maxWidth.sm" }} mx="auto">
@@ -73,7 +91,13 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
       <Box mx={3} mb={3}>
         <Typography.H6 mb={2}>Links</Typography.H6>
         {links.map((link) => (
-          <LinkPreview key={link.id} link={link} />
+          <LinkPreview
+            key={link.id}
+            link={link}
+            onDelete={(id) => {
+              setLinks((draft) => draft.filter((item) => item.id !== id))
+            }}
+          />
         ))}
         <UrlField
           onSave={(url) => {
@@ -148,27 +172,8 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
         <Button
           disabled={title === ""}
           mt={3}
-          onClick={async () => {
-            const result = await mutate({
-              areaId,
-              title,
-              description,
-              date,
-              links,
-              students: [studentId],
-              repetition:
-                repetition === 0
-                  ? undefined
-                  : {
-                      type: repetition,
-                      endDate,
-                    },
-            })
-            if (result.ok) {
-              await navigate(STUDENT_PLANS_URL(studentId, date))
-            }
-          }}
           sx={{ width: "100%" }}
+          onClick={postNewPlan}
         >
           Save
         </Button>
@@ -181,46 +186,61 @@ const UrlField: FC<{ onSave: (url: string) => void }> = ({ onSave }) => {
   const [url, setUrl] = useState("")
 
   return (
-    <Flex>
-      <Input
-        aria-label="URL"
-        sx={{ width: "100%" }}
-        placeholder="https://...."
-        value={url}
-        onChange={(e) => setUrl(e.target.value)}
-      />
-      <Button
-        ml={2}
-        variant="outline"
-        disabled={url === ""}
-        onClick={() => {
-          onSave(url)
-          setUrl("")
+    <LinkInput
+      value={url}
+      onChange={setUrl}
+      inputSx={{ p: 2 }}
+      onSave={() => {
+        onSave(url)
+        setUrl("")
+      }}
+    />
+  )
+}
+
+const LinkPreview: FC<{
+  link: PostNewLessonPlanBody["links"][0]
+  onDelete: (id: string) => void
+}> = ({ link, onDelete }) => (
+  <Card mb={2} sx={{ overflow: "inherit" }}>
+    <Flex sx={{ alignItems: "center" }}>
+      <a
+        href={link.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          overflowX: ["auto", "hidden"],
         }}
       >
-        Add
-      </Button>
-    </Flex>
-  )
-}
-
-const LinkPreview: FC<{ link: PostNewLessonPlanBody["links"][0] }> = ({
-  link,
-}) => {
-  // const metadata = useLinkPreview(link.url)
-
-  return (
-    <Card p={2} mb={2} sx={{ overflowX: "hidden" }}>
-      <Flex sx={{ alignItems: "center" }}>
-        <Button variant="outline" sx={{ flexShrink: 0 }} px={2}>
-          <Icon as={LinkIcon} />
-        </Button>
-        <Typography.Body ml={2} sx={{ whiteSpace: "nowrap" }}>
+        <Icon as={LinkIcon} ml={3} my={3} />
+        <Typography.Body
+          ml={2}
+          sx={{
+            whiteSpace: "nowrap",
+            display: "inline-block",
+            textDecoration: "underline",
+          }}
+        >
           {link.url}
         </Typography.Body>
-      </Flex>
-    </Card>
-  )
-}
+      </a>
+
+      <Button
+        variant="outline"
+        ml="auto"
+        color="danger"
+        px={2}
+        backgroundColor="surface"
+        sx={{ zIndex: 2, flexShrink: 0 }}
+        mr={2}
+        onClick={() => onDelete(link.id)}
+      >
+        <Icon as={TrashIcon} fill="danger" />
+      </Button>
+    </Flex>
+  </Card>
+)
 
 export default PageNewStudentPlans

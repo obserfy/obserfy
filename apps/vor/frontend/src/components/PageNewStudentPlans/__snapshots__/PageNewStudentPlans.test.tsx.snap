@@ -536,7 +536,9 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   font-size: 16px;
   padding: 12px;
   color: var(--theme-ui-colors-text,#37383c);
+  padding: 8px;
   width: 100%;
+  padding: 8px;
 }
 
 .emotion-21:hover,
@@ -647,13 +649,13 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   margin-bottom: 8px;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .emotion-32 {

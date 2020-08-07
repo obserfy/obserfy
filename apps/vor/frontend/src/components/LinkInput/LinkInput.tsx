@@ -7,7 +7,7 @@ const LinkInput: FC<{
   value?: string
   onChange: (value: string) => void
   onSave: () => void
-  isLoading: boolean
+  isLoading?: boolean
   containerSx?: SxStyleProp
   inputSx?: SxStyleProp
 }> = ({ inputSx, containerSx, value, onChange, onSave, isLoading }) => (

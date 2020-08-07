@@ -361,12 +361,12 @@ const LessonPlanLinks: FC<{
       >
         <Icon as={LinkIcon} ml={3} />
         <Typography.Body
+          mx={2}
           sx={{
             whiteSpace: "nowrap",
             display: "inline-block",
             textDecoration: "underline",
           }}
-          mx={2}
         >
           {link.url}
         </Typography.Body>
@@ -402,19 +402,21 @@ const UrlField: FC<{ lessonPlanId: string }> = ({ lessonPlanId }) => {
   const [postNewLink] = usePostNewLessonPlanLink(lessonPlanId)
   const [url, setUrl] = useState("")
 
+  async function sendPostNewLinkRequest() {
+    setIsLoading(true)
+    const result = await postNewLink({ url })
+    if (result?.ok) {
+      setUrl("")
+    }
+    setIsLoading(false)
+  }
+
   return (
     <LinkInput
       value={url}
       onChange={setUrl}
       isLoading={isLoading}
-      onSave={async () => {
-        setIsLoading(true)
-        const result = await postNewLink({ url })
-        if (result?.ok) {
-          setUrl("")
-        }
-        setIsLoading(false)
-      }}
+      onSave={sendPostNewLinkRequest}
       containerSx={{ mx: 3, mb: 3, mt: 2 }}
       inputSx={{ backgroundColor: "background" }}
     />
