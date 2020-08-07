@@ -348,14 +348,18 @@ const LessonPlanLinks: FC<{
   const [deleteLink] = useDeleteLessonPlanLink(link.id, lessonPlanId)
 
   return (
-    <Flex m={3} sx={{ alignItems: "center", maxHeight: "100%" }}>
+    <Flex my={3} mr={3} sx={{ alignItems: "center", maxHeight: "100%" }}>
       <a
         href={link.url}
         target="_blank"
         rel="noopener noreferrer"
-        sx={{ display: "flex", alignItems: "center", overflowX: "auto" }}
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          overflowX: ["auto", "hidden"],
+        }}
       >
-        <Icon as={LinkIcon} />
+        <Icon as={LinkIcon} ml={3} />
         <Typography.Body
           sx={{
             whiteSpace: "nowrap",
