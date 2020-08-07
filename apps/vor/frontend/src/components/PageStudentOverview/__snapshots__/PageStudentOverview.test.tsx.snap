@@ -167,8 +167,8 @@ exports[`PageStudentOverview should render correctly 1`] = `
   border-radius: 6px;
   -webkit-animation: 1s ease-in-out 0s infinite animation-0;
   animation: 1s ease-in-out 0s infinite animation-0;
-  width: 24rem;
-  height: 60px;
+  width: 12rem;
+  height: 28px;
 }
 
 .emotion-15 {
@@ -208,6 +208,10 @@ exports[`PageStudentOverview should render correctly 1`] = `
   background-color: var(--theme-ui-colors-primary,#00e399);
   border: 0;
   border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
@@ -283,6 +287,10 @@ exports[`PageStudentOverview should render correctly 1`] = `
   background-color: var(--theme-ui-colors-primary,#00e399);
   border: 0;
   border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;

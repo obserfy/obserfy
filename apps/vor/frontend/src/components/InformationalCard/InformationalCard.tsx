@@ -23,7 +23,7 @@ export const InformationalCard: FC<Props> = ({ message, buttonText, to }) => (
       flexDirection: "column",
     }}
   >
-    <Flex sx={{ alignItems: "center" }}>
+    <Flex sx={{ alignItems: "center" }} mb={1}>
       <Icon as={InfoIcon} fill="warning" />
       <Typography.Body sx={{ fontSize: 1 }} ml={2} color="warning">
         Info

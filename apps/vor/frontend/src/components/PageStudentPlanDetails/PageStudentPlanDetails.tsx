@@ -1,6 +1,7 @@
-import React, { FC, useState } from "react"
-import { Box, Button, Card, Flex } from "theme-ui"
-import useGetPlan from "../../api/plans/useGetPlan"
+/** @jsx jsx */
+import { FC, useState, Fragment } from "react"
+import { jsx, Box, Button, Card, Flex } from "theme-ui"
+import useGetPlan, { GetPlanResponseBody } from "../../api/plans/useGetPlan"
 import useDeletePlans from "../../api/plans/useDeletePlan"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import BackNavigation from "../BackNavigation/BackNavigation"
@@ -20,6 +21,11 @@ import { useGetCurriculumAreas } from "../../api/useGetCurriculumAreas"
 import { Typography } from "../Typography/Typography"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
 import DatePickerDialog from "../DatePickerDialog/DatePickerDialog"
+import { ReactComponent as LinkIcon } from "../../icons/link.svg"
+import useDeleteLessonPlanLink from "../../api/plans/useDeleteLessonPlanLink"
+import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
+import LinkInput from "../LinkInput/LinkInput"
+import usePostNewLessonPlanLink from "../../api/plans/usePostNewLessonPlanLink"
 
 interface Props {
   studentId: string
@@ -41,13 +47,13 @@ export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
   }
 
   return (
-    <>
+    <Fragment>
       <Box sx={{ maxWidth: "maxWidth.sm" }} pb={3} mx="auto">
         <BackNavigation
           to={STUDENT_PLANS_URL(studentId, dayjs(plan.data?.date))}
           text="All plans"
         />
-        <Card sx={{ borderRadius: [0, "default"] }}>
+        <Card mb={3} sx={{ borderRadius: [0, "default"] }}>
           <DateDataBox value={plan.data?.date} lessonPlanId={planId} />
           <AreaDataBox value={plan.data?.areaId} lessonPlanId={planId} />
           <TitleDataBox value={plan.data?.title} lessonPlanId={planId} />
@@ -55,6 +61,30 @@ export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
             value={plan.data?.description}
             lessonPlanId={planId}
           />
+        </Card>
+        <Card sx={{ borderRadius: [0, "default"] }}>
+          <Typography.Body
+            mt={3}
+            mx={3}
+            mb={1}
+            color="textMediumEmphasis"
+            sx={{ lineHeight: 1, fontSize: 1 }}
+          >
+            Links
+          </Typography.Body>
+          {(plan.data?.links?.length ?? 0) === 0 && (
+            <Typography.Body m={3}>No links attached yet</Typography.Body>
+          )}
+          {plan.data?.links?.map((link) => {
+            return (
+              <LessonPlanLinks
+                key={link.id}
+                link={link}
+                lessonPlanId={planId}
+              />
+            )
+          })}
+          <UrlField lessonPlanId={planId} />
         </Card>
         <Button
           variant="outline"
@@ -84,7 +114,7 @@ export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
           }}
         />
       )}
-    </>
+    </Fragment>
   )
 }
 
@@ -96,7 +126,7 @@ const DateDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
   const [mutate] = usePatchPlan(lessonPlanId)
 
   return (
-    <>
+    <Fragment>
       <DataBox
         label="Date"
         onEditClick={() => setShowEditDialog(true)}
@@ -112,7 +142,7 @@ const DateDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
           onDismiss={() => setShowEditDialog(false)}
         />
       )}
-    </>
+    </Fragment>
   )
 }
 
@@ -125,7 +155,7 @@ const TitleDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
   const [mutate] = usePatchPlan(lessonPlanId)
 
   return (
-    <>
+    <Fragment>
       <DataBox
         label="Title"
         value={value ?? ""}
@@ -152,7 +182,7 @@ const TitleDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
           </Box>
         </Dialog>
       )}
-    </>
+    </Fragment>
   )
 }
 
@@ -165,11 +195,12 @@ const DescriptionDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
   const [mutate] = usePatchPlan(lessonPlanId)
 
   return (
-    <>
+    <Fragment>
       <MultilineDataBox
         label="Description"
-        value={value || "No descriptions given yet..."}
+        value={value || ""}
         onEditClick={() => setShowEditDialog(true)}
+        placeholder="-"
       />
       {showEditDialog && (
         <Dialog>
@@ -193,7 +224,7 @@ const DescriptionDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
           </Box>
         </Dialog>
       )}
-    </>
+    </Fragment>
   )
 }
 
@@ -207,7 +238,7 @@ const AreaDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
   const [mutate] = usePatchPlan(lessonPlanId)
 
   return (
-    <>
+    <Fragment>
       <DataBox
         label="Related Area"
         value={classes.data?.find(({ id }) => id === value)?.name || "Other"}
@@ -231,6 +262,8 @@ const AreaDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
           >
             {classes.data?.map(({ id, name }) => (
               <Chip
+                mr={2}
+                mb={2}
                 key={id}
                 text={name}
                 activeBackground="primary"
@@ -241,7 +274,7 @@ const AreaDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
           </Flex>
         </Dialog>
       )}
-    </>
+    </Fragment>
   )
 }
 
@@ -278,7 +311,8 @@ const MultilineDataBox: FC<{
   label: string
   value: string
   onEditClick?: () => void
-}> = ({ label, value, onEditClick }) => (
+  placeholder: string
+}> = ({ label, value, onEditClick, placeholder }) => (
   <Box px={3} py={3} sx={{ alignItems: "flex-start" }}>
     <Box mb={2}>
       <Typography.Body
@@ -289,7 +323,7 @@ const MultilineDataBox: FC<{
         {label}
       </Typography.Body>
       {value.split("\n").map((text) => (
-        <Typography.Body mb={3}>{text}</Typography.Body>
+        <Typography.Body mb={3}>{text || placeholder}</Typography.Body>
       ))}
     </Box>
     <Button
@@ -305,5 +339,88 @@ const MultilineDataBox: FC<{
     </Button>
   </Box>
 )
+
+const LessonPlanLinks: FC<{
+  link: GetPlanResponseBody["links"][0]
+  lessonPlanId: string
+}> = ({ link, lessonPlanId }) => {
+  const [isLoading, setIsLoading] = useState(false)
+  const [deleteLink] = useDeleteLessonPlanLink(link.id, lessonPlanId)
+
+  return (
+    <Flex my={3} mr={3} sx={{ alignItems: "center", maxHeight: "100%" }}>
+      <a
+        href={link.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          overflowX: ["auto", "hidden"],
+        }}
+      >
+        <Icon as={LinkIcon} ml={3} />
+        <Typography.Body
+          mx={2}
+          sx={{
+            whiteSpace: "nowrap",
+            display: "inline-block",
+            textDecoration: "underline",
+          }}
+        >
+          {link.url}
+        </Typography.Body>
+      </a>
+      <Button
+        variant="outline"
+        ml="auto"
+        color="danger"
+        px={2}
+        backgroundColor="surface"
+        sx={{ zIndex: 2, flexShrink: 0 }}
+        onClick={async () => {
+          setIsLoading(true)
+          const result = await deleteLink()
+          if (!result?.ok) {
+            setIsLoading(false)
+          }
+        }}
+        disabled={isLoading}
+      >
+        {isLoading ? (
+          <LoadingIndicator ml={1} />
+        ) : (
+          <Icon as={TrashIcon} fill="danger" />
+        )}
+      </Button>
+    </Flex>
+  )
+}
+
+const UrlField: FC<{ lessonPlanId: string }> = ({ lessonPlanId }) => {
+  const [isLoading, setIsLoading] = useState(false)
+  const [postNewLink] = usePostNewLessonPlanLink(lessonPlanId)
+  const [url, setUrl] = useState("")
+
+  async function sendPostNewLinkRequest() {
+    setIsLoading(true)
+    const result = await postNewLink({ url })
+    if (result?.ok) {
+      setUrl("")
+    }
+    setIsLoading(false)
+  }
+
+  return (
+    <LinkInput
+      value={url}
+      onChange={setUrl}
+      isLoading={isLoading}
+      onSave={sendPostNewLinkRequest}
+      containerSx={{ mx: 3, mb: 3, mt: 2 }}
+      inputSx={{ backgroundColor: "background" }}
+    />
+  )
+}
 
 export default PageStudentPlanDetails

@@ -2,6 +2,7 @@ package main
 
 import (
 	"crypto/tls"
+	"github.com/chrsep/vor/pkg/links"
 	"github.com/chrsep/vor/pkg/subscription"
 	"log"
 	"net/http"
@@ -80,6 +81,7 @@ func runServer() error {
 	lessonPlanStore := postgres.LessonPlanStore{db}
 	imageStore := postgres.ImageStore{db}
 	subscriptionStore := postgres.SubscriptionStore{db}
+	linksStore := postgres.LinksStore{db}
 	mailService := mailgun.NewService()
 	//attendanceStore:=postgres.AttendanceStore{db}
 	imgproxyClient, err := imgproxy.NewClient()
@@ -120,6 +122,7 @@ func runServer() error {
 		r.Mount("/guardians", guardian.NewRouter(server, guardianStore))
 		r.Mount("/plans", lessonplan.NewRouter(server, lessonPlanStore))
 		r.Mount("/images", images.NewRouter(server, imageStore, *imgproxyClient))
+		r.Mount("/links", links.NewRouter(server, linksStore))
 	})
 	// Serve gatsby static frontend assets
 	r.Group(func(r chi.Router) {

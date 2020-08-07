@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DateInput should render correctly 1`] = `
-.emotion-6 {
+exports[`LinkInput should render correctly 1`] = `
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,12 +9,12 @@ exports[`DateInput should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-6 {
+  .emotion-5 {
     font-size: 20px;
   }
 }
 
-.emotion-5 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -40,7 +40,7 @@ exports[`DateInput should render correctly 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -88,7 +88,7 @@ exports[`DateInput should render correctly 1`] = `
   font-size: 16px;
   padding: 12px;
   color: var(--theme-ui-colors-text,#37383c);
-  opacity: 1!important;
+  padding: 8px;
   width: 100%;
 }
 
@@ -120,7 +120,7 @@ exports[`DateInput should render correctly 1`] = `
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
-.emotion-4 {
+.emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -174,51 +174,33 @@ exports[`DateInput should render correctly 1`] = `
   touch-action: manipulation;
   border: 1px solid;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  margin-top: 23px;
-  margin-left: 16px;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
+  margin-left: 8px;
 }
 
-.emotion-4:disabled {
+.emotion-3:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-4:hover,
-.emotion-4:focus {
+.emotion-3:hover,
+.emotion-3:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-4:hover:disabled,
-.emotion-4:focus:disabled {
+.emotion-3:hover:disabled,
+.emotion-3:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-3 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  max-width: 100%;
-  height: auto;
-  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  width: 20px;
-  height: 20px;
-}
-
 <div>
   <div
-    class="emotion-6"
+    class="emotion-5"
   >
     <div
-      class="emotion-5"
+      class="emotion-4"
     >
       <label
         class="emotion-2"
@@ -227,19 +209,17 @@ exports[`DateInput should render correctly 1`] = `
           class="emotion-1"
         >
           <input
+            aria-label="URL"
             class="emotion-0"
-            disabled=""
-            placeholder="Not set"
+            placeholder="https://...."
             value=""
           />
         </div>
       </label>
       <button
-        class="emotion-4"
+        class="emotion-3"
       >
-        <div
-          class="emotion-3"
-        />
+        Add
       </button>
     </div>
   </div>
