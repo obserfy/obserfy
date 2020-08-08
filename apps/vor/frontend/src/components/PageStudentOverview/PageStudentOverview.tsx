@@ -17,9 +17,13 @@ import StudentProgressSummaryCard from "../StudentProgressSummaryCard/StudentPro
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import { ReactComponent as PrevIcon } from "../../icons/arrow-back.svg"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
+import { ReactComponent as ImageIcon } from "../../icons/image.svg"
+import { ReactComponent as CalendarIcon } from "../../icons/calendar.svg"
+import { ReactComponent as PersonIcon } from "../../icons/person.svg"
 import {
   ALL_OBSERVATIONS_PAGE_URL,
   NEW_OBSERVATION_URL,
+  STUDENT_GALLERY_URL,
   STUDENT_PLANS_URL,
   STUDENT_PROFILE_URL,
   STUDENTS_URL,
@@ -57,17 +61,27 @@ export const PageStudentOverview: FC<Props> = ({ id }) => {
             )}
           </Typography.H6>
         </Flex>
-        <Flex m={3} mb={2}>
-          <Link sx={{ mr: 2 }} to={STUDENT_PROFILE_URL(id)}>
-            <Button data-cy="edit" sx={{ minWidth: 43 }} variant="outline">
+        <Flex m={3}>
+          <Link sx={{ mr: 2, flexGrow: [1, 0] }} to={STUDENT_PROFILE_URL(id)}>
+            <Button data-cy="edit" variant="outline" sx={{ width: "100%" }}>
+              <Icon as={PersonIcon} fill="textPrimary" mr={2} />
               Profile
             </Button>
           </Link>
-          <Link sx={{ mr: 2 }} to={STUDENT_PLANS_URL(id)}>
-            <Button data-cy="edit" sx={{ minWidth: 43 }} variant="outline">
+          <Link sx={{ mr: 2, flexGrow: [1, 0] }} to={STUDENT_PLANS_URL(id)}>
+            <Button data-cy="edit" variant="outline" sx={{ width: "100%" }}>
+              <Icon as={CalendarIcon} fill="textPrimary" mr={2} />
               Plans
             </Button>
           </Link>
+          <Link sx={{ flexGrow: [1, 0] }} to={STUDENT_GALLERY_URL(id)}>
+            <Button data-cy="edit" variant="outline" sx={{ width: "100%" }}>
+              <Icon as={ImageIcon} fill="textPrimary" mr={2} />
+              Gallery
+            </Button>
+          </Link>
+        </Flex>
+        <Flex m={3} mb={2}>
           <Link sx={{ width: "100%" }} to={NEW_OBSERVATION_URL(id)}>
             <Button sx={{ width: "100%" }}>
               <Icon as={PlusIcon} mr={2} fill="onPrimary" />

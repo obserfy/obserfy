@@ -43,7 +43,7 @@ exports[`PageStudentOverview should render correctly 1`] = `
   }
 }
 
-.emotion-26 {
+.emotion-32 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -51,12 +51,12 @@ exports[`PageStudentOverview should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-26 {
+  .emotion-32 {
     font-size: 20px;
   }
 }
 
-.emotion-25 {
+.emotion-31 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -171,23 +171,39 @@ exports[`PageStudentOverview should render correctly 1`] = `
   height: 28px;
 }
 
-.emotion-15 {
+.emotion-17 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   margin: 16px;
-  margin-bottom: 8px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.emotion-9 {
+.emotion-10 {
   margin-right: 8px;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
 }
 
-.emotion-8 {
+@media screen and (min-width:40em) {
+  .emotion-10 {
+    -webkit-box-flex: 0;
+    -webkit-flex-grow: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+  }
+}
+
+.emotion-20 {
+  width: 100%;
+}
+
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -241,32 +257,71 @@ exports[`PageStudentOverview should render correctly 1`] = `
   touch-action: manipulation;
   border: 1px solid;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  min-width: 43px;
+  width: 100%;
 }
 
-.emotion-8:disabled {
+.emotion-9:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-8:hover,
-.emotion-8:focus {
+.emotion-9:hover,
+.emotion-9:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-8:hover:disabled,
-.emotion-8:focus:disabled {
+.emotion-9:hover:disabled,
+.emotion-9:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-14 {
-  width: 100%;
+.emotion-8 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  margin-right: 8px;
+  fill: var(--theme-ui-colors-textPrimary,#027c5b);
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
 }
 
-.emotion-13 {
+.emotion-16 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-16 {
+    -webkit-box-flex: 0;
+    -webkit-flex-grow: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+  }
+}
+
+.emotion-21 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin: 16px;
+  margin-bottom: 8px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-19 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -321,23 +376,23 @@ exports[`PageStudentOverview should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-13:disabled {
+.emotion-19:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-13:hover,
-.emotion-13:focus {
+.emotion-19:hover,
+.emotion-19:focus {
   background-color: var(--theme-ui-colors-primaryDark,#00a06d);
   outline: none;
 }
 
-.emotion-13:hover:disabled,
-.emotion-13:focus:disabled {
+.emotion-19:hover:disabled,
+.emotion-19:focus:disabled {
   background-color: var(--theme-ui-colors-primary,#00e399);
 }
 
-.emotion-12 {
+.emotion-18 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -352,7 +407,7 @@ exports[`PageStudentOverview should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-16 {
+.emotion-22 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -369,7 +424,7 @@ exports[`PageStudentOverview should render correctly 1`] = `
   font-weight: bold;
 }
 
-.emotion-21 {
+.emotion-27 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -378,20 +433,20 @@ exports[`PageStudentOverview should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-21 {
+  .emotion-27 {
     margin-left: 16px;
     margin-right: 16px;
   }
 }
 
-.emotion-20 {
+.emotion-26 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   margin-top: 32px;
 }
 
-.emotion-17 {
+.emotion-23 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -405,12 +460,12 @@ exports[`PageStudentOverview should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-17 {
+  .emotion-23 {
     border-radius: 6px;
   }
 }
 
-.emotion-22 {
+.emotion-28 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -427,14 +482,14 @@ exports[`PageStudentOverview should render correctly 1`] = `
   font-weight: bold;
 }
 
-.emotion-24 {
+.emotion-30 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   margin-top: 16px;
 }
 
-.emotion-23 {
+.emotion-29 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -446,17 +501,17 @@ exports[`PageStudentOverview should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-23 {
+  .emotion-29 {
     border-radius: 6px;
   }
 }
 
 <div>
   <div
-    class="emotion-26"
+    class="emotion-32"
   >
     <div
-      class="emotion-25"
+      class="emotion-31"
     >
       <a
         href="/dashboard/students"
@@ -527,76 +582,100 @@ exports[`PageStudentOverview should render correctly 1`] = `
         </h6>
       </div>
       <div
-        class="emotion-15"
+        class="emotion-17"
       >
         <a
-          class="emotion-9"
+          class="emotion-10"
           href="/dashboard/students/profile?id=asdfadsf"
         >
           <button
-            class="emotion-8"
+            class="emotion-9"
             data-cy="edit"
           >
+            <div
+              class="emotion-8"
+            />
             Profile
           </button>
         </a>
         <a
-          class="emotion-9"
+          class="emotion-10"
           href="/dashboard/students/plans?studentId=asdfadsf&date="
         >
           <button
-            class="emotion-8"
+            class="emotion-9"
             data-cy="edit"
           >
+            <div
+              class="emotion-8"
+            />
             Plans
           </button>
         </a>
         <a
-          class="emotion-14"
+          class="emotion-16"
+          href="/dashboard/students/gallery?id=asdfadsf"
+        >
+          <button
+            class="emotion-9"
+            data-cy="edit"
+          >
+            <div
+              class="emotion-8"
+            />
+            Gallery
+          </button>
+        </a>
+      </div>
+      <div
+        class="emotion-21"
+      >
+        <a
+          class="emotion-20"
           href="/dashboard/students/observations/new?studentId=asdfadsf"
         >
           <button
-            class="emotion-13"
+            class="emotion-19"
           >
             <div
-              class="emotion-12"
+              class="emotion-18"
             />
             Observation
           </button>
         </a>
       </div>
       <h6
-        class="emotion-16"
+        class="emotion-22"
       >
         Observations
       </h6>
       <div
-        class="emotion-21"
+        class="emotion-27"
       >
         <div
-          class="emotion-20"
+          class="emotion-26"
         >
           <div
-            class="emotion-17"
+            class="emotion-23"
           />
           <div
-            class="emotion-17"
+            class="emotion-23"
           />
           <div
-            class="emotion-17"
+            class="emotion-23"
           />
         </div>
       </div>
       <h6
-        class="emotion-22"
+        class="emotion-28"
       >
         Curriculum Progress
       </h6>
       <div
-        class="emotion-24"
+        class="emotion-30"
       >
         <div
-          class="emotion-23"
+          class="emotion-29"
         />
       </div>
     </div>

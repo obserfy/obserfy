@@ -121,6 +121,12 @@ exports[`ObservationCard should render correctly 1`] = `
   }
 }
 
+@media screen and (min-width:40em) {
+  .emotion-1 {
+    font-size: 12px;
+  }
+}
+
 .emotion-4 {
   box-sizing: border-box;
   margin: 0;
