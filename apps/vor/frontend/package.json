@@ -108,7 +108,7 @@
     "storybook-addon-i18n": "5.1.13",
     "typescript": "3.9.7",
     "url-loader": "4.1.0",
-    "wait-on": "5.1.0",
+    "wait-on": "5.2.0",
     "webpack": "4.44.1"
   },
   "license": "GNU GPL v3",
