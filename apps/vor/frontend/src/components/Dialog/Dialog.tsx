@@ -1,7 +1,27 @@
 import React, { FC, PropsWithoutRef, useEffect } from "react"
-import { Global } from "@emotion/core"
-import { BoxProps, Card, Flex } from "theme-ui"
+import { Global, keyframes } from "@emotion/core"
+import { BoxProps, Card, Flex, Box } from "theme-ui"
 import Portal from "../Portal/Portal"
+
+const dialogEnterAnim = keyframes(`
+  0% {
+    transform: translateY(64px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+`)
+
+const bgEnterAnim = keyframes(`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`)
 
 function disableScroll(e: TouchEvent): boolean {
   e.preventDefault()
@@ -25,9 +45,9 @@ export const Dialog: FC<Props> = ({ sx, ...props }) => {
       <Flex
         as="dialog"
         role="dialog"
-        backgroundColor="overlay"
         p={[0, 3]}
         sx={{
+          background: "transparent",
           height: "100%",
           width: "100%",
           justifyContent: ["", "center"],
@@ -40,6 +60,16 @@ export const Dialog: FC<Props> = ({ sx, ...props }) => {
           position: "fixed",
         }}
       >
+        <Box
+          sx={{
+            position: "absolute",
+            backgroundColor: "overlay",
+            width: "100%",
+            height: "100%",
+            zIndex: 1000002,
+            animation: `${bgEnterAnim} 0.175s`,
+          }}
+        />
         <Card
           backgroundColor="surface"
           pb="env(safe-area-inset-bottom)"
@@ -51,6 +81,8 @@ export const Dialog: FC<Props> = ({ sx, ...props }) => {
             borderTopRightRadius: "default",
             borderBottomLeftRadius: [0, "default"],
             borderBottomRightRadius: [0, "default"],
+            animation: `${dialogEnterAnim} 0.175s`,
+            zIndex: 1000003,
             ...sx,
           }}
           {...props}
