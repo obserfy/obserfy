@@ -1,7 +1,6 @@
 package postgres
 
 import (
-	"github.com/chrsep/vor/pkg/student"
 	richErrors "github.com/pkg/errors"
 	"mime/multipart"
 	"time"
@@ -251,18 +250,10 @@ func (s StudentStore) CreateImage(studentId string, image multipart.File, header
 	return newImage.Id.String(), nil
 }
 
-func (s StudentStore) FindStudentImages(id string) ([]student.Images, error) {
+func (s StudentStore) FindStudentImages(id string) ([]Image, error) {
 	queriedStudent := Student{Id: id}
 	if err := s.Model(&queriedStudent).WherePK().Relation("Images").Select(); err != nil {
 		return nil, richErrors.Wrap(err, "failed to find student")
 	}
-	result := make([]student.Images, 0)
-	for _, image := range queriedStudent.Images {
-		result = append(result, student.Images{
-			Id:        image.Id,
-			ObjectKey: image.ObjectKey,
-			CreatedAt: image.CreatedAt,
-		})
-	}
-	return result, nil
+	return queriedStudent.Images, nil
 }
