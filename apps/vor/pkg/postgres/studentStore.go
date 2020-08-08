@@ -1,6 +1,7 @@
 package postgres
 
 import (
+	"github.com/chrsep/vor/pkg/student"
 	richErrors "github.com/pkg/errors"
 	"mime/multipart"
 	"time"
@@ -211,23 +212,25 @@ func (s StudentStore) GetLessonPlans(studentId string, date time.Time) ([]Lesson
 }
 
 func (s StudentStore) CreateImage(studentId string, image multipart.File, header *multipart.FileHeader) (string, error) {
-	student := Student{Id: studentId}
-	if err := s.Model(&student).WherePK().Select(); err != nil {
+	queriedStudent := Student{Id: studentId}
+	if err := s.Model(&queriedStudent).
+		WherePK().
+		Select(); err != nil {
 		return "", richErrors.Wrap(err, "failed to query student")
 	}
 
 	// db data
 	newImage := Image{
 		Id:       uuid.New(),
-		SchoolId: student.SchoolId,
+		SchoolId: queriedStudent.SchoolId,
 	}
 	studentImageRelation := ImageToStudents{
-		StudentId: student.Id,
+		StudentId: queriedStudent.Id,
 		ImageId:   newImage.Id.String(),
 	}
 
 	// save image to s3
-	objectKey, err := s.ImageStorage.Save(student.SchoolId, newImage.Id.String(), image, header.Size)
+	objectKey, err := s.ImageStorage.Save(queriedStudent.SchoolId, newImage.Id.String(), image, header.Size)
 	if err != nil {
 		return "", richErrors.Wrap(err, "failed to save file to s3")
 	}
@@ -246,4 +249,20 @@ func (s StudentStore) CreateImage(studentId string, image multipart.File, header
 		return "", err
 	}
 	return newImage.Id.String(), nil
+}
+
+func (s StudentStore) FindStudentImages(id string) ([]student.Images, error) {
+	queriedStudent := Student{Id: id}
+	if err := s.Model(&queriedStudent).WherePK().Relation("Images").Select(); err != nil {
+		return nil, richErrors.Wrap(err, "failed to find student")
+	}
+	result := make([]student.Images, 0)
+	for _, image := range queriedStudent.Images {
+		result = append(result, student.Images{
+			Id:        image.Id,
+			ObjectKey: image.ObjectKey,
+			CreatedAt: image.CreatedAt,
+		})
+	}
+	return result, nil
 }

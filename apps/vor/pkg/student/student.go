@@ -2,6 +2,7 @@ package student
 
 import (
 	"github.com/chrsep/vor/pkg/imgproxy"
+	"github.com/google/uuid"
 	"net/http"
 	"time"
 
@@ -38,6 +39,7 @@ func NewRouter(s rest.Server, store Store, imgproxyClient *imgproxy.Client) *chi
 		r.Method("GET", "/plans", getPlans(s, store))
 
 		r.Method("POST", "/images", postNewImage(s, store))
+		r.Method("GET", "/images", getStudentImages(s, store, imgproxyClient))
 	})
 	return r
 }
@@ -594,6 +596,44 @@ func postNewImage(s rest.Server, store Store) http.Handler {
 		}
 		w.WriteHeader(http.StatusCreated)
 		if err := rest.WriteJson(w, &responseBody{id}); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
+		return nil
+	})
+}
+
+func getStudentImages(s rest.Server, store Store, client *imgproxy.Client) rest.Handler {
+	type imageJson struct {
+		Id           uuid.UUID `json:"id"`
+		OriginalUrl  string    `json:"originalUrl"`
+		ThumbnailUrl string    `json:"thumbnailUrl"`
+		CreatedAt    time.Time `json:"createdAt"`
+	}
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		studentId := chi.URLParam(r, "studentId")
+
+		images, err := store.FindStudentImages(studentId)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "failed to query student images",
+				Error:   err,
+			}
+		}
+
+		response := make([]imageJson, 0)
+		for _, image := range images {
+			originalUrl := client.GenerateOriginalUrl(image.ObjectKey)
+			thumbnailUrl := client.GenerateUrl(image.ObjectKey, 400, 400)
+			response = append(response, imageJson{
+				Id:           image.Id,
+				CreatedAt:    image.CreatedAt,
+				OriginalUrl:  originalUrl,
+				ThumbnailUrl: thumbnailUrl,
+			})
+		}
+
+		if err := rest.WriteJson(w, &response); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
 		return nil

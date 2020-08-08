@@ -3,9 +3,16 @@ package student
 import (
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/go-pg/pg/v10"
+	"github.com/google/uuid"
 	"mime/multipart"
 	"time"
 )
+
+type Images struct {
+	Id        uuid.UUID
+	ObjectKey string
+	CreatedAt time.Time
+}
 
 type Store interface {
 	InsertObservation(
@@ -32,4 +39,5 @@ type Store interface {
 	DeleteClassRelation(studentId string, classId string) error
 	GetLessonPlans(studentId string, date time.Time) ([]postgres.LessonPlan, error)
 	CreateImage(studentId string, file multipart.File, header *multipart.FileHeader) (string, error)
+	FindStudentImages(id string) ([]Images, error)
 }
