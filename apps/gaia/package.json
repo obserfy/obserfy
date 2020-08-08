@@ -28,7 +28,7 @@
     "preact-render-to-string": "5.1.10",
     "react": "github:preact-compat/react#1.0.0",
     "react-dom": "github:preact-compat/react-dom#1.0.0",
-    "react-optimized-image": "0.3.4",
+    "react-optimized-image": "0.3.5",
     "react-query": "2.5.13",
     "react-refresh": "0.8.3",
     "react-ssr-prepass": "npm:preact-ssr-prepass@1.1.1",
