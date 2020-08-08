@@ -294,34 +294,34 @@ exports[`PageGallery should render correctly 1`] = `
 }
 
 .emotion-10 :nth-child(3n) {
-  padding-right: 0;
+  margin-right: 0;
 }
 
 @media screen and (min-width:40em) {
   .emotion-10 :nth-child(3n) {
-    padding-right: 0;
+    margin-right: 0;
   }
 }
 
 @media screen and (min-width:52em) {
   .emotion-10 :nth-child(3n) {
-    padding-right: 16px;
+    margin-right: 16px;
   }
 }
 
 .emotion-10 :nth-child(4n) {
-  padding-right: 4px;
+  margin-right: 4px;
 }
 
 @media screen and (min-width:40em) {
   .emotion-10 :nth-child(4n) {
-    padding-right: 4px;
+    margin-right: 4px;
   }
 }
 
 @media screen and (min-width:52em) {
   .emotion-10 :nth-child(4n) {
-    padding-right: 0;
+    margin-right: 0;
   }
 }
 

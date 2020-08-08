@@ -51,27 +51,55 @@ export const PageGallery: FC<Props> = ({ id }) => {
         </Label>
       </Box>
       <Flex
+        mt={4}
+        mx={[0, 3]}
         sx={{
           flexWrap: "wrap",
           "& :nth-child(3n)": {
-            pr: [0, 0, 3],
+            mr: [0, 0, 3],
           },
           "& :nth-child(4n)": {
-            pr: [1, 1, 0],
+            mr: [1, 1, 0],
           },
         }}
-        mt={4}
-        mx={[0, 3]}
       >
-        {images.data?.map((image) => (
-          <Image
-            loading="lazy"
-            src={image.thumbnailUrl}
-            sx={{ width: ["33.333%", "33.333%", "25%"] }}
-            pb={[1, 3]}
-            pr={[1, 3]}
-          />
-        ))}
+        {images.data?.map((image) => {
+          // TODO: These are some ugly css, might be inconsistent on some devieces
+          //  due to the calc and decimal points, revisit later.
+          return (
+            <Box
+              sx={{
+                width: [
+                  "calc(33.333% - 2.6666666px)",
+                  "calc(33.333% - 10.666666px)",
+                  "calc(25% - 12px)",
+                ],
+              }}
+              mr={[1, 3]}
+              mb={[1, 3]}
+            >
+              <Box
+                pt="100%"
+                sx={{
+                  width: "100%",
+                  position: "relative",
+                }}
+              >
+                <Image
+                  loading="lazy"
+                  src={image.thumbnailUrl}
+                  sx={{
+                    position: "absolute",
+                    top: 0,
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                  }}
+                />
+              </Box>
+            </Box>
+          )
+        })}
       </Flex>
     </Box>
   )
