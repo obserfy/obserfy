@@ -113,7 +113,7 @@ func runServer() error {
 	})
 	r.Route("/api/v1", func(r chi.Router) {
 		r.Use(auth.NewMiddleware(server, authStore))
-		r.Mount("/students", student.NewRouter(server, studentStore))
+		r.Mount("/students", student.NewRouter(server, studentStore, imgproxyClient))
 		r.Mount("/observations", observation.NewRouter(server, observationStore))
 		r.Mount("/schools", school.NewRouter(server, schoolStore, imgproxyClient, mailService))
 		r.Mount("/users", user.NewRouter(server, userStore))

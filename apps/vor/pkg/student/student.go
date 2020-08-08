@@ -1,6 +1,7 @@
 package student
 
 import (
+	"github.com/chrsep/vor/pkg/imgproxy"
 	"net/http"
 	"time"
 
@@ -11,11 +12,11 @@ import (
 	richErrors "github.com/pkg/errors"
 )
 
-func NewRouter(s rest.Server, store Store) *chi.Mux {
+func NewRouter(s rest.Server, store Store, imgproxyClient *imgproxy.Client) *chi.Mux {
 	r := chi.NewRouter()
 	r.Route("/{studentId}", func(r chi.Router) {
 		r.Use(authorizationMiddleware(s, store))
-		r.Method("GET", "/", getStudent(s, store))
+		r.Method("GET", "/", getStudent(s, store, imgproxyClient))
 		r.Method("DELETE", "/", deleteStudent(s, store))
 		r.Method("PATCH", "/", patchStudent(s, store))
 
@@ -192,7 +193,7 @@ func deleteGuardianRelation(s rest.Server, store Store) http.Handler {
 	})
 }
 
-func getStudent(s rest.Server, store Store) http.Handler {
+func getStudent(s rest.Server, store Store, imgproxyClient *imgproxy.Client) http.Handler {
 	type Guardian struct {
 		Id           string `json:"id"`
 		Name         string `json:"name"`
@@ -259,6 +260,9 @@ func getStudent(s rest.Server, store Store) http.Handler {
 			Guardians:   guardians,
 			Classes:     classes,
 			Active:      *student.Active,
+		}
+		if student.ProfileImage.ObjectKey != "" {
+			response.ProfilePic = imgproxyClient.GenerateUrl(student.ProfileImage.ObjectKey, 80, 80)
 		}
 		if err := rest.WriteJson(w, response); err != nil {
 			return rest.NewWriteJsonError(err)
