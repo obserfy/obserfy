@@ -3219,28 +3219,28 @@
   resolved "https://registry.yarnpkg.com/@prefresh/core/-/core-0.7.1.tgz#75c73975dbbf66d70fc698eda26aeae1767d3c07"
   integrity sha512-wa7M0cTV7DcBu3vw4MEtVXWFxsdHXbky8qzhBFJ/HEp7fdEmvOateYmGOjSeOn+QaKeAqUBGTMnTyVER0lamNA==
 
-"@prefresh/core@^0.7.2":
-  version "0.7.2"
-  resolved "https://registry.yarnpkg.com/@prefresh/core/-/core-0.7.2.tgz#982a530cd26b1c466786e92b2abfa03aa8c29f56"
-  integrity sha512-K01Yx3cWY+A4Cb61cJ93swmFS2ZaeCD2uRg8dvaUAw/6oZvtEPrqzueVRjjavkRdwhIuOwqHbCg4scSbo7jE/A==
+"@prefresh/core@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@prefresh/core/-/core-0.8.0.tgz#521db2b29f1d5df2b681f26ec5cfea2e094416b3"
+  integrity sha512-hw7ovlCdS+3LFCs9hczLnWpYR/tL3jCMOX74jjhSCp538meQv5+6mi9BehOjmvizu6pZ/FeXZ5GFvJT9lgixyw==
 
-"@prefresh/next@0.3.2":
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/@prefresh/next/-/next-0.3.2.tgz#92c84865ec0ec285918955ea9e07a7662e780f02"
-  integrity sha512-HpsMsqyjVHsn2/U1AWHneBN28rhmPQHTyYRaOzbZ3yz89s2WSpsEdZWkTZM5aVRqh1d2gy9eEhS0lVxjPzYPTg==
+"@prefresh/next@0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@prefresh/next/-/next-0.4.0.tgz#3af0fa50fbbee780eda24e89ee568d74a1b37b05"
+  integrity sha512-14sCiNujIo0LGJJb2dA9buU4E1oHnHUceE852G3OFy3TmNYSHaYpDM/U5vneICcfw/jzI+o6qdIOqQawSkLfwg==
   dependencies:
-    "@prefresh/core" "^0.7.2"
-    "@prefresh/utils" "^0.2.1"
+    "@prefresh/core" "^0.8.0"
+    "@prefresh/utils" "^0.3.0"
 
 "@prefresh/utils@^0.2.0":
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@prefresh/utils/-/utils-0.2.0.tgz#1d269210758346e8e1f8a6410b61ba3e4fb982f9"
   integrity sha512-mxJraGQLPmvAuI8Br0y/pvJWI2sy5IHU5veZ5GglP1gnb4dpp5rjIVjHdlVvrXUKGtFIpB3zxrqS+vYn1cQ01A==
 
-"@prefresh/utils@^0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@prefresh/utils/-/utils-0.2.1.tgz#1446082c87f1ef61b0c407f1bd0e79726fb5ab45"
-  integrity sha512-Ju7WHncqUKsaFp7yAFoNSR2jdr0bjqr8AwV06LtpFmwliPe4IDGRcBGhofg+SY9yld3FUF1JWmEoUOfCyCGRhA==
+"@prefresh/utils@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@prefresh/utils/-/utils-0.3.0.tgz#f8795fad4d1b1ead690567b9665f58436bcc8de2"
+  integrity sha512-mxT63g0Ng29cdKGR8ORiEu9qXeKch7e9jGkjI7S8ydTXZEM083kCqPeLRe51HTO04uH5UPTyO7AO2P7oyRNyww==
 
 "@prefresh/webpack@^0.8.1":
   version "0.8.1"
