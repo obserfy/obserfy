@@ -43,7 +43,7 @@ exports[`PageStudentOverview should render correctly 1`] = `
   }
 }
 
-.emotion-32 {
+.emotion-33 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -51,12 +51,12 @@ exports[`PageStudentOverview should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-32 {
+  .emotion-33 {
     font-size: 20px;
   }
 }
 
-.emotion-31 {
+.emotion-32 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -407,6 +407,30 @@ exports[`PageStudentOverview should render correctly 1`] = `
   height: 20px;
 }
 
+.emotion-24 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding-top: 32px;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-bottom: 8px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+}
+
+.emotion-23 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+}
+
 .emotion-22 {
   box-sizing: border-box;
   margin: 0;
@@ -418,35 +442,17 @@ exports[`PageStudentOverview should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   font-size: 20px;
   margin-right: auto;
-  padding-top: 32px;
-  padding-left: 16px;
-  padding-right: 16px;
   font-weight: bold;
 }
 
-.emotion-27 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  margin-left: 0;
-  margin-right: 0;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-27 {
-    margin-left: 16px;
-    margin-right: 16px;
-  }
-}
-
-.emotion-26 {
+.emotion-28 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   margin-top: 32px;
 }
 
-.emotion-23 {
+.emotion-25 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -460,12 +466,12 @@ exports[`PageStudentOverview should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-23 {
+  .emotion-25 {
     border-radius: 6px;
   }
 }
 
-.emotion-28 {
+.emotion-29 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -482,14 +488,14 @@ exports[`PageStudentOverview should render correctly 1`] = `
   font-weight: bold;
 }
 
-.emotion-30 {
+.emotion-31 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   margin-top: 16px;
 }
 
-.emotion-29 {
+.emotion-30 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -501,17 +507,17 @@ exports[`PageStudentOverview should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-29 {
+  .emotion-30 {
     border-radius: 6px;
   }
 }
 
 <div>
   <div
-    class="emotion-32"
+    class="emotion-33"
   >
     <div
-      class="emotion-31"
+      class="emotion-32"
     >
       <a
         href="/dashboard/students"
@@ -644,38 +650,42 @@ exports[`PageStudentOverview should render correctly 1`] = `
           </button>
         </a>
       </div>
-      <h6
-        class="emotion-22"
-      >
-        Observations
-      </h6>
       <div
-        class="emotion-27"
+        class="emotion-24"
       >
         <div
-          class="emotion-26"
+          class="emotion-23"
         >
-          <div
-            class="emotion-23"
-          />
-          <div
-            class="emotion-23"
-          />
-          <div
-            class="emotion-23"
-          />
+          <h6
+            class="emotion-22"
+          >
+            Observations
+          </h6>
         </div>
       </div>
-      <h6
+      <div
         class="emotion-28"
+      >
+        <div
+          class="emotion-25"
+        />
+        <div
+          class="emotion-25"
+        />
+        <div
+          class="emotion-25"
+        />
+      </div>
+      <h6
+        class="emotion-29"
       >
         Curriculum Progress
       </h6>
       <div
-        class="emotion-30"
+        class="emotion-31"
       >
         <div
-          class="emotion-29"
+          class="emotion-30"
         />
       </div>
     </div>
