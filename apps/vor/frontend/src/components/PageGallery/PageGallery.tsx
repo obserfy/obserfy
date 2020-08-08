@@ -54,7 +54,10 @@ export const PageGallery: FC<Props> = ({ id }) => {
         sx={{
           flexWrap: "wrap",
           "& :nth-child(3n)": {
-            pr: 0,
+            pr: [0, 0, 3],
+          },
+          "& :nth-child(4n)": {
+            pr: [1, 1, 0],
           },
         }}
         mt={4}
@@ -62,6 +65,7 @@ export const PageGallery: FC<Props> = ({ id }) => {
       >
         {images.data?.map((image) => (
           <Image
+            loading="lazy"
             src={image.thumbnailUrl}
             sx={{ width: ["33.333%", "33.333%", "25%"] }}
             pb={[1, 3]}
