@@ -18,34 +18,47 @@ msgstr ""
 msgid "Contact Us"
 msgstr "Contact Us"
 
-#: src/pages/index.tsx:26
-msgid "Early Access"
-msgstr "Get Early Access"
-
 #: src/pages/contact.tsx:22
 msgid "Email"
 msgstr "Email"
+
+#: src/pages/index.tsx:26
+msgid "Get Early Access"
+msgstr "Get Early Access"
+
+#: src/pages/contact.tsx:14
+msgid "Have a question? Shoot us a message using this form. We'd love to talk with you about your need."
+msgstr "Have a question? Shoot us a message using this form. We'd love to talk with you about your need."
+
+#: src/pages/privacy-policy.tsx:11
+msgid "Last updated"
+msgstr "Last updated"
 
 #: src/pages/contact.tsx:26
 msgid "Message"
 msgstr "Message"
 
-#: src/components/header.tsx:36
+#: src/components/header.tsx:37
 msgid "Parents"
 msgstr "Parents"
+
+#: src/components/layout.tsx:20
+#: src/pages/privacy-policy.tsx:9
+msgid "Privacy Policy"
+msgstr "Privacy Policy"
+
+#: src/pages/index.tsx:12
+msgid "Run your Montessori school efficiently"
+msgstr "Run your Montessori school efficiently"
 
 #: src/pages/contact.tsx:30
 msgid "Send"
 msgstr "Send"
 
-#: src/pages/index.tsx:15
-msgid "Subtitle Home Page"
-msgstr "We help Montessori schools manage their records, do reports and communicate with parents efficiently"
-
-#: src/components/header.tsx:30
+#: src/components/header.tsx:31
 msgid "Teachers"
 msgstr "Teachers"
 
-#: src/pages/index.tsx:12
-msgid "Title Home Page"
-msgstr "Run your Montessori school efficiently"
+#: src/pages/index.tsx:15
+msgid "We help Montessori schools manage their records, do reports and communicate with parents efficiently"
+msgstr "We help Montessori schools manage their records, do reports and communicate with parents efficiently"

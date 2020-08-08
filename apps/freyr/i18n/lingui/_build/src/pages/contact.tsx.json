@@ -7,6 +7,14 @@
       ]
     ]
   },
+  "Have a question? Shoot us a message using this form. We'd love to talk with you about your need.": {
+    "origin": [
+      [
+        "src/pages/contact.tsx",
+        14
+      ]
+    ]
+  },
   "Email": {
     "origin": [
       [

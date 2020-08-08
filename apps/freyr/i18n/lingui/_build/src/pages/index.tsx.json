@@ -1,5 +1,5 @@
 {
-  "Title Home Page": {
+  "Run your Montessori school efficiently": {
     "origin": [
       [
         "src/pages/index.tsx",
@@ -7,7 +7,7 @@
       ]
     ]
   },
-  "Subtitle Home Page": {
+  "We help Montessori schools manage their records, do reports and communicate with parents efficiently": {
     "origin": [
       [
         "src/pages/index.tsx",
@@ -15,7 +15,7 @@
       ]
     ]
   },
-  "Early Access": {
+  "Get Early Access": {
     "origin": [
       [
         "src/pages/index.tsx",

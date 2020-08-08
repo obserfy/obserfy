@@ -6,9 +6,10 @@
  */
 
 import React, { FC } from "react"
-import { Link } from "gatsby"
+import { LocalizedLink as Link } from "atsby-tgheme-i18n"
 import Header from "./header"
 import "./global.css"
+import { Trans } from "@lingui/macro"
 
 const Layout: FC = ({ children }) => {
   return (
@@ -19,7 +20,7 @@ const Layout: FC = ({ children }) => {
         <footer className="text-center my-3 flex items-center pt-8 text-gray-700">
           <div>© {new Date().getFullYear()} Obserfy</div>
           <Link to="/privacy-policy" className="ml-3 underline">
-            Privacy Policy
+            <Trans>Privacy Policy</Trans>
           </Link>
         </footer>
       </div>

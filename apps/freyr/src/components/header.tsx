@@ -1,4 +1,5 @@
-import { graphql, Link, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
+import { LocalizedLink as Link } from "gatsby-theme-i18n"
 import React, { FC } from "react"
 import GatsbyImage from "gatsby-image"
 import { Trans } from "@lingui/macro"
