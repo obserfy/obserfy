@@ -67,7 +67,7 @@ export const Dialog: FC<Props> = ({ sx, ...props }) => {
             width: "100%",
             height: "100%",
             zIndex: 1000002,
-            animation: `${bgEnterAnim} 0.175s`,
+            animation: `${bgEnterAnim} 0.25s cubic-bezier(0.4, 0.0, 0.2, 1);`,
           }}
         />
         <Card
@@ -81,7 +81,7 @@ export const Dialog: FC<Props> = ({ sx, ...props }) => {
             borderTopRightRadius: "default",
             borderBottomLeftRadius: [0, "default"],
             borderBottomRightRadius: [0, "default"],
-            animation: `${dialogEnterAnim} 0.175s`,
+            animation: `${dialogEnterAnim} 0.25s cubic-bezier(0.4, 0.0, 0.2, 1);`,
             zIndex: 1000003,
             ...sx,
           }}
