@@ -29,7 +29,7 @@ func (s *StudentTestSuite) SetupTest() {
 	assert.NoError(t, err)
 	s.StudentImageStorage = *minio.NewImageStorage(client)
 
-	s.store = postgres.StudentStore{s.DB}
+	s.store = postgres.StudentStore{s.DB, s.StudentImageStorage}
 	s.Handler = student.NewRouter(s.Server, s.store).ServeHTTP
 }
 

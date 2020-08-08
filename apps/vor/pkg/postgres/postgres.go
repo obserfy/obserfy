@@ -142,6 +142,7 @@ type Student struct {
 	Guardians      []Guardian   `pg:"many2many:guardian_to_students,join_fk:guardian_id"`
 	LessonPlans    []LessonPlan `pg:"many2many:lesson_plan_to_students,join_fk:lesson_plan_id"`
 	ProfileImageId string       `pg:",type:uuid,on_delete:SET NULL"`
+	Images         []Image      `pg:"many2many:image_to_students,join_fk:image_id"`
 	ProfileImage   Image
 }
 
