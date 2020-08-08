@@ -9,4 +9,4 @@ export default {
   },
 }
 
-export const Basic: FC = () => <PageGallery />
+export const Basic: FC = () => <PageGallery id="asdasd" />
