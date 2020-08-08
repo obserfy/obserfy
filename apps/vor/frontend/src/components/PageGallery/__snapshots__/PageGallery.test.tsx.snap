@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageGallery should render correctly 1`] = `
-.emotion-9 {
+.emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,18 +9,18 @@ exports[`PageGallery should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-9 {
+  .emotion-12 {
     font-size: 20px;
   }
 }
 
-.emotion-8 {
+.emotion-11 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   margin: auto;
   padding-bottom: 64px;
-  max-width: 640px;
+  max-width: 900px;
 }
 
 .emotion-2 {
@@ -103,7 +103,7 @@ exports[`PageGallery should render correctly 1`] = `
   margin-bottom: 32px;
 }
 
-.emotion-7 {
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -111,7 +111,80 @@ exports[`PageGallery should render correctly 1`] = `
   padding-right: 16px;
 }
 
-.emotion-6 {
+.emotion-8 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.emotion-5 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: block;
+  width: 100%;
+  padding: 8px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: inherit;
+  line-height: inherit;
+  border: 1px solid;
+  border-radius: 4px;
+  color: inherit;
+  background-color: transparent;
+  border-radius: 6px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  width: auto;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface,#fff);
+  font-size: 16px;
+  padding: 12px;
+  color: var(--theme-ui-colors-text,#37383c);
+  display: none;
+}
+
+.emotion-5:hover,
+.emotion-5:focus {
+  border-color: var(--theme-ui-colors-primary,#00e399);
+  outline: none;
+}
+
+.emotion-5::-webkit-input-placeholder {
+  font-style: italic;
+}
+
+.emotion-5::-moz-placeholder {
+  font-style: italic;
+}
+
+.emotion-5:-ms-input-placeholder {
+  font-style: italic;
+}
+
+.emotion-5::placeholder {
+  font-style: italic;
+}
+
+.emotion-5:disabled {
+  opacity: 0.68;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
+}
+
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -166,23 +239,23 @@ exports[`PageGallery should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-6:disabled {
+.emotion-7:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-6:hover,
-.emotion-6:focus {
+.emotion-7:hover,
+.emotion-7:focus {
   background-color: var(--theme-ui-colors-primaryDark,#00a06d);
   outline: none;
 }
 
-.emotion-6:hover:disabled,
-.emotion-6:focus:disabled {
+.emotion-7:hover:disabled,
+.emotion-7:focus:disabled {
   background-color: var(--theme-ui-colors-primary,#00e399);
 }
 
-.emotion-5 {
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -197,12 +270,39 @@ exports[`PageGallery should render correctly 1`] = `
   height: 20px;
 }
 
+.emotion-10 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-top: 32px;
+  margin-left: 0;
+  margin-right: 0;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-10 {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
+
+.emotion-10 :nth-child(3n) {
+  padding-right: 0;
+}
+
 <div>
   <div
-    class="emotion-9"
+    class="emotion-12"
   >
     <div
-      class="emotion-8"
+      class="emotion-11"
     >
       <a
         href="/dashboard/students/overview?id=asdasd"
@@ -230,17 +330,28 @@ exports[`PageGallery should render correctly 1`] = `
         Gallery
       </h5>
       <div
-        class="emotion-7"
+        class="emotion-9"
       >
-        <button
-          class="emotion-6"
+        <label
+          class="emotion-8"
         >
-          <div
+          <input
             class="emotion-5"
+            type="file"
           />
-          Photo
-        </button>
+          <div
+            class="emotion-7"
+          >
+            <div
+              class="emotion-6"
+            />
+            Photo
+          </div>
+        </label>
       </div>
+      <div
+        class="emotion-10"
+      />
     </div>
   </div>
 </div>
