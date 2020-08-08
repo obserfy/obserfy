@@ -205,7 +205,7 @@ exports[`PageGallery should render correctly 1`] = `
       class="emotion-8"
     >
       <a
-        href="/dashboard/students/overview?id=undefined"
+        href="/dashboard/students/overview?id=asdasd"
         style="display: block;"
       >
         <div

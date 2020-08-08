@@ -3,6 +3,7 @@ package student
 import (
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/go-pg/pg/v10"
+	"mime/multipart"
 	"time"
 )
 
@@ -30,4 +31,5 @@ type Store interface {
 	NewClassRelation(studentId string, classId string) error
 	DeleteClassRelation(studentId string, classId string) error
 	GetLessonPlans(studentId string, date time.Time) ([]postgres.LessonPlan, error)
+	CreateImage(studentId string, file multipart.File, header *multipart.FileHeader) (string, error)
 }

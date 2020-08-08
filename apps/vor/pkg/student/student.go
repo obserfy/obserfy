@@ -35,6 +35,8 @@ func NewRouter(s rest.Server, store Store) *chi.Mux {
 		r.Method("DELETE", "/classes", deleteClassRelation(s, store))
 
 		r.Method("GET", "/plans", getPlans(s, store))
+
+		r.Method("POST", "/images", postNewImage(s, store))
 	})
 	return r
 }
@@ -550,6 +552,46 @@ func getPlans(s rest.Server, store Store) http.Handler {
 			return rest.NewWriteJsonError(err)
 		}
 
+		return nil
+	})
+}
+
+func postNewImage(s rest.Server, store Store) http.Handler {
+	type responseBody struct {
+		Id string `json:"id"`
+	}
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		studentId := chi.URLParam(r, "studentId")
+
+		if err := r.ParseMultipartForm(10 << 20); err != nil {
+			return &rest.Error{
+				Code:    http.StatusBadRequest,
+				Message: "failed to parse payload",
+				Error:   richErrors.Wrap(err, "failed to parse response body"),
+			}
+		}
+
+		file, fileHeader, err := r.FormFile("image")
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusBadRequest,
+				Message: "invalid payload",
+				Error:   richErrors.Wrap(err, "invalid payload"),
+			}
+		}
+
+		id, err := store.CreateImage(studentId, file, fileHeader)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "Failed create file",
+				Error:   err,
+			}
+		}
+		w.WriteHeader(http.StatusCreated)
+		if err := rest.WriteJson(w, &responseBody{id}); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
 		return nil
 	})
 }

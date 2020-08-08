@@ -2,6 +2,7 @@ package postgres
 
 import (
 	richErrors "github.com/pkg/errors"
+	"mime/multipart"
 	"time"
 
 	"github.com/go-pg/pg/v10"
@@ -11,6 +12,7 @@ import (
 
 type StudentStore struct {
 	*pg.DB
+	ImageStorage ImageStorage
 }
 
 func (s StudentStore) NewClassRelation(studentId string, classId string) error {
@@ -206,4 +208,42 @@ func (s StudentStore) GetLessonPlans(studentId string, date time.Time) ([]Lesson
 	}
 
 	return lessonPlan, nil
+}
+
+func (s StudentStore) CreateImage(studentId string, image multipart.File, header *multipart.FileHeader) (string, error) {
+	student := Student{Id: studentId}
+	if err := s.Model(&student).WherePK().Select(); err != nil {
+		return "", richErrors.Wrap(err, "failed to query student")
+	}
+
+	// db data
+	newImage := Image{
+		Id:       uuid.New(),
+		SchoolId: student.SchoolId,
+	}
+	studentImageRelation := ImageToStudents{
+		StudentId: student.Id,
+		ImageId:   newImage.Id.String(),
+	}
+
+	// save image to s3
+	objectKey, err := s.ImageStorage.Save(student.SchoolId, newImage.Id.String(), image, header.Size)
+	if err != nil {
+		return "", richErrors.Wrap(err, "failed to save file to s3")
+	}
+	newImage.ObjectKey = objectKey
+
+	// save data to db
+	if err := s.RunInTransaction(func(tx *pg.Tx) error {
+		if _, err := tx.Model(&newImage).Insert(); err != nil {
+			return richErrors.Wrap(err, "failed to save image")
+		}
+		if _, err := tx.Model(&studentImageRelation).Insert(); err != nil {
+			return richErrors.Wrap(err, "failed to save student image relation")
+		}
+		return nil
+	}); err != nil {
+		return "", err
+	}
+	return newImage.Id.String(), nil
 }

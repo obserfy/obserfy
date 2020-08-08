@@ -741,7 +741,7 @@ func (s SchoolStore) CreateImage(schoolId string, image multipart.File, header *
 		Id:       uuid.New(),
 		SchoolId: schoolId,
 	}
-	fileKey, err := s.FileStorage.Save(schoolId, newImage.Id.String(), image, header.Size)
+	fileKey, err := s.ImageStorage.Save(schoolId, newImage.Id.String(), image, header.Size)
 	if err != nil {
 		return "", richErrors.Wrap(err, "failed to save file to s3")
 	}
@@ -751,16 +751,8 @@ func (s SchoolStore) CreateImage(schoolId string, image multipart.File, header *
 	}
 	return newImage.Id.String(), nil
 }
+
 func (s SchoolStore) DeleteUser(schoolId string, userId string) error {
-	//school, err := s.GetSchool(schoolId)
-	//if err != nil {
-	//	return err
-	//}
-	//if school.CurriculumId == "" {
-	//	return cSchool.EmptyCurriculumError
-	//}
-	//c := Curriculum{Id: school.CurriculumId}
-	//return s.Delete(&c)
 	var relation UserToSchool
 	if _, err := s.Model(&relation).
 		Where("school_id = ? AND user_id = ?", schoolId, userId).
