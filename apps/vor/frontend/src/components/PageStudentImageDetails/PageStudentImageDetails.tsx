@@ -22,7 +22,7 @@ export const PageStudentImageDetails: FC<Props> = ({ studentId, imageId }) => {
 
   return (
     <>
-      <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto">
+      <Box sx={{ maxWidth: "maxWidth.md" }} margin="auto">
         <BackNavigation
           to={STUDENT_IMAGES_URL(studentId)}
           text="Image Gallery"
