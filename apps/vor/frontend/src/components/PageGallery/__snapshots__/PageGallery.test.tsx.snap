@@ -277,13 +277,13 @@ exports[`PageGallery should render correctly 1`] = `
   margin-top: 32px;
   margin-left: 0;
   margin-right: 0;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 @media screen and (min-width:40em) {

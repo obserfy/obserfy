@@ -1,5 +1,6 @@
-import React, { FC } from "react"
-import { Image, Input, Box, Button, Label, Flex } from "theme-ui"
+/** @jsx jsx */
+import { FC } from "react"
+import { Box, Button, Flex, Image, Input, jsx, Label } from "theme-ui"
 import { BackNavigation } from "../BackNavigation/BackNavigation"
 import { STUDENT_OVERVIEW_PAGE_URL } from "../../routes"
 import Typography from "../Typography/Typography"
@@ -9,6 +10,7 @@ import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import usePostNewStudentImage from "../../api/students/usePostNewStudentImage"
 import useGetStudentImages from "../../api/students/useGetStudentImages"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
+import { Link } from "../Link/Link"
 
 interface Props {
   id: string
@@ -55,36 +57,27 @@ export const PageGallery: FC<Props> = ({ id }) => {
         mx={[0, 3]}
         sx={{
           flexWrap: "wrap",
-          "& :nth-child(3n)": {
-            mr: [0, 0, 3],
-          },
-          "& :nth-child(4n)": {
-            mr: [1, 1, 0],
-          },
+          "& :nth-child(3n)": { mr: [0, 0, 3] },
+          "& :nth-child(4n)": { mr: [1, 1, 0] },
         }}
       >
         {images.data?.map((image) => {
-          // TODO: These are some ugly css, might be inconsistent on some devieces
+          // TODO: These are some ugly css, might be inconsistent on some devices
           //  due to the calc and decimal points, revisit later.
           return (
-            <Box
+            <Link
+              to="/"
               sx={{
+                mr: [1, 3],
+                mb: [1, 3],
                 width: [
                   "calc(33.333% - 2.6666666px)",
                   "calc(33.333% - 10.666666px)",
                   "calc(25% - 12px)",
                 ],
               }}
-              mr={[1, 3]}
-              mb={[1, 3]}
             >
-              <Box
-                pt="100%"
-                sx={{
-                  width: "100%",
-                  position: "relative",
-                }}
-              >
+              <Box pt="100%" sx={{ width: "100%", position: "relative" }}>
                 <Image
                   loading="lazy"
                   src={image.thumbnailUrl}
@@ -94,10 +87,11 @@ export const PageGallery: FC<Props> = ({ id }) => {
                     bottom: 0,
                     left: 0,
                     right: 0,
+                    cursor: "pointer",
                   }}
                 />
               </Box>
-            </Box>
+            </Link>
           )
         })}
       </Flex>

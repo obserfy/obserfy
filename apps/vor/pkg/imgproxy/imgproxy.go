@@ -42,7 +42,7 @@ func (i Client) GenerateUrl(imagePath string, width int, height int) string {
 
 func (i Client) GenerateOriginalUrl(imagePath string) string {
 	url := "s3://" + i.minioBucket + "/" + imagePath
-	path := base64.RawURLEncoding.EncodeToString([]byte(url))
+	path := "/" + base64.RawURLEncoding.EncodeToString([]byte(url))
 
 	mac := hmac.New(sha256.New, i.keyBinary)
 	mac.Write(i.saltBinary)
