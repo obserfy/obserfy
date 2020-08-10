@@ -1,6 +1,7 @@
 package lessonplan
 
 import (
+	"github.com/chrsep/vor/pkg/auth"
 	"github.com/google/uuid"
 	"net/http"
 	"time"
@@ -11,11 +12,14 @@ import (
 	"github.com/pkg/errors"
 
 	"github.com/chrsep/vor/pkg/rest"
+	richErrors "github.com/pkg/errors"
 )
 
 func NewRouter(server rest.Server, store Store) *chi.Mux {
 	r := chi.NewRouter()
 	r.Route("/{planId}", func(r chi.Router) {
+		r.Use(authorizationMiddleware(server, store))
+
 		r.Method("GET", "/", getLessonPlan(server, store))
 		r.Method("PATCH", "/", patchLessonPlan(server, store))
 		r.Method("DELETE", "/", deleteLessonPlan(server, store))
@@ -26,7 +30,49 @@ func NewRouter(server rest.Server, store Store) *chi.Mux {
 	})
 	return r
 }
+func authorizationMiddleware(s rest.Server, store Store) func(next http.Handler) http.Handler {
+	return func(next http.Handler) http.Handler {
+		return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+			planId := chi.URLParam(r, "planId")
 
+			if _, err := uuid.Parse(planId); err != nil {
+				return &rest.Error{
+					http.StatusNotFound,
+					"Can't find the specified plan",
+					err,
+				}
+			}
+
+			session, ok := auth.GetSessionFromCtx(r.Context())
+			if !ok {
+				return &rest.Error{
+					http.StatusUnauthorized,
+					"You're not logged in",
+					richErrors.New("no session found"),
+				}
+			}
+
+			authorized, err := store.CheckPermission(session.UserId, planId)
+			if err != nil {
+				return &rest.Error{
+					Code:    http.StatusInternalServerError,
+					Message: "failed to query plan data",
+					Error:   err,
+				}
+			}
+			if !authorized {
+				return &rest.Error{
+					Code:    http.StatusNotFound,
+					Message: "We can't find the given plan",
+					Error:   richErrors.New("unauthorized access to plan data"),
+				}
+			}
+
+			next.ServeHTTP(w, r)
+			return nil
+		})
+	}
+}
 func postLink(server rest.Server, store Store) http.Handler {
 	type requestBody struct {
 		Url         string `json:"url"`

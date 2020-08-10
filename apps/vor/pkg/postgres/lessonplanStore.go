@@ -105,6 +105,7 @@ func (s LessonPlanStore) GetLessonPlan(planId string) (*cLessonPlan.LessonPlan, 
 	result := &cLessonPlan.LessonPlan{
 		Id:          plan.Id,
 		ClassId:     plan.LessonPlanDetails.ClassId,
+		SchoolId:    plan.LessonPlanDetails.SchoolId,
 		Title:       plan.LessonPlanDetails.Title,
 		Description: plan.LessonPlanDetails.Description,
 		Date:        *plan.Date,
@@ -136,4 +137,25 @@ func (s LessonPlanStore) DeleteLessonPlanFile(planId, fileId string) error {
 		LessonPlanDetailsId: planId,
 		FileId:              fileId,
 	})
+}
+func (s LessonPlanStore) CheckPermission(userId string, planId string) (bool, error) {
+	var user User
+	if err := s.Model(&user).
+		Relation("Schools").
+		Where("id=?", userId).
+		Select(); err == pg.ErrNoRows {
+		return false, nil
+	} else if err != nil {
+		return false, richErrors.Wrap(err, "Failed getting user")
+	}
+	plan, err := s.GetLessonPlan(planId)
+	if err != nil {
+		return false, richErrors.Wrap(err, "failed to query lesson plan")
+	}
+	for _, school := range user.Schools {
+		if school.Id == plan.SchoolId {
+			return true, nil
+		}
+	}
+	return false, nil
 }

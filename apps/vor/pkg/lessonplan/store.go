@@ -23,6 +23,7 @@ type (
 		Title       string
 		Description string
 		ClassId     string
+		SchoolId    string
 		FileIds     []string
 		Date        time.Time
 		Repetition  *RepetitionPattern
@@ -72,5 +73,6 @@ type (
 		DeleteLessonPlan(planId string) error
 		DeleteLessonPlanFile(planId, fileId string) error
 		AddLinkToLessonPlan(planId string, link Link) error
+		CheckPermission(userId string, planId string) (bool, error)
 	}
 )
