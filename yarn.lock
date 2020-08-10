@@ -126,6 +126,28 @@
     semver "^5.4.1"
     source-map "^0.5.0"
 
+"@babel/core@7.11.0", "@babel/core@^7.9.6":
+  version "7.11.0"
+  resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.11.0.tgz#73b9c33f1658506887f767c26dae07798b30df76"
+  integrity sha512-mkLq8nwaXmDtFmRkQ8ED/eA2CnVw4zr7dCztKalZXBvdK5EeNUAesrrwUqjQEzFgomJssayzB0aqlOsP1vGLqg==
+  dependencies:
+    "@babel/code-frame" "^7.10.4"
+    "@babel/generator" "^7.11.0"
+    "@babel/helper-module-transforms" "^7.11.0"
+    "@babel/helpers" "^7.10.4"
+    "@babel/parser" "^7.11.0"
+    "@babel/template" "^7.10.4"
+    "@babel/traverse" "^7.11.0"
+    "@babel/types" "^7.11.0"
+    convert-source-map "^1.7.0"
+    debug "^4.1.0"
+    gensync "^1.0.0-beta.1"
+    json5 "^2.1.2"
+    lodash "^4.17.19"
+    resolve "^1.3.2"
+    semver "^5.4.1"
+    source-map "^0.5.0"
+
 "@babel/core@7.4.5":
   version "7.4.5"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.4.5.tgz#081f97e8ffca65a9b4b0fdc7e274e703f000c06a"
@@ -206,28 +228,6 @@
     gensync "^1.0.0-beta.1"
     json5 "^2.1.2"
     lodash "^4.17.13"
-    resolve "^1.3.2"
-    semver "^5.4.1"
-    source-map "^0.5.0"
-
-"@babel/core@^7.11.0", "@babel/core@^7.9.6":
-  version "7.11.0"
-  resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.11.0.tgz#73b9c33f1658506887f767c26dae07798b30df76"
-  integrity sha512-mkLq8nwaXmDtFmRkQ8ED/eA2CnVw4zr7dCztKalZXBvdK5EeNUAesrrwUqjQEzFgomJssayzB0aqlOsP1vGLqg==
-  dependencies:
-    "@babel/code-frame" "^7.10.4"
-    "@babel/generator" "^7.11.0"
-    "@babel/helper-module-transforms" "^7.11.0"
-    "@babel/helpers" "^7.10.4"
-    "@babel/parser" "^7.11.0"
-    "@babel/template" "^7.10.4"
-    "@babel/traverse" "^7.11.0"
-    "@babel/types" "^7.11.0"
-    convert-source-map "^1.7.0"
-    debug "^4.1.0"
-    gensync "^1.0.0-beta.1"
-    json5 "^2.1.2"
-    lodash "^4.17.19"
     resolve "^1.3.2"
     semver "^5.4.1"
     source-map "^0.5.0"
@@ -3034,7 +3034,7 @@
   resolved "https://registry.yarnpkg.com/@lingui/babel-plugin-transform-react/-/babel-plugin-transform-react-2.9.1.tgz#9e6a9da4cb3d3226aafd8f856f6025646d4e409f"
   integrity sha512-3btgAUpH5OSlZf/c4bXsDtvPity+H+7Mm1GJmWEwQSjl5kQNLisNVHpWPKvESuNbfQEtmtK5iIMVUYx8GD/Sig==
 
-"@lingui/cli@^2.9.1":
+"@lingui/cli@2.9.1":
   version "2.9.1"
   resolved "https://registry.yarnpkg.com/@lingui/cli/-/cli-2.9.1.tgz#c29dd04625954a47d5899b26e772e2a8d7b33be9"
   integrity sha512-Ruzg4UxZzqnJDMpdGE04G8NnXFRAd5nH5dZ7rAYBurSddlLEqE3DVrxMToYC1BfCpbmWznHguPwusljrCUkMeg==
@@ -3085,14 +3085,14 @@
     make-plural "^4.1.1"
     messageformat-parser "^2.0.0"
 
-"@lingui/macro@^2.9.1":
+"@lingui/macro@2.9.1":
   version "2.9.1"
   resolved "https://registry.yarnpkg.com/@lingui/macro/-/macro-2.9.1.tgz#45f1d98012d9d99d4ea17753c609ce72abb961a8"
   integrity sha512-iuT4rNl57h574vUfO9sYWstpbNMMaBxdscyOnY/R+HIPX0cPSjqaDmKTDInfI1gFpYznM2OOhOpqxMMUGt2+Gw==
   dependencies:
     "@lingui/babel-plugin-transform-react" "2.9.1"
 
-"@lingui/react@^2.9.1":
+"@lingui/react@2.9.1":
   version "2.9.1"
   resolved "https://registry.yarnpkg.com/@lingui/react/-/react-2.9.1.tgz#6dee029a4067939859b43f4f3dd068cb611256c0"
   integrity sha512-LUpsw7zDUfS/iJWrBfmaVKcxjyNUQkMjBRuLVEzLHp32A6pK2CGFlDouBsEl1zbJn8gFdcBwWhTsh/FcXZCmXg==
@@ -4880,7 +4880,7 @@
   resolved "https://registry.yarnpkg.com/@types/lingui__core/-/lingui__core-2.7.0.tgz#a93e53338a5a7ae5aa8cdb22ef0111d2053c6ef0"
   integrity sha512-4gx/msI4cVlx1/RI1g6bDREZqflWh4HflMX3A5mMnvM6ymohg5SOzWk+R18N6/44ONPqOI+pcP8xjKLrI2tQhQ==
 
-"@types/lingui__macro@^2.7.3":
+"@types/lingui__macro@2.7.3":
   version "2.7.3"
   resolved "https://registry.yarnpkg.com/@types/lingui__macro/-/lingui__macro-2.7.3.tgz#7671abf5c816b79028e320053a53d13ca6cf7c8e"
   integrity sha512-/kU4T6F7qNYwao0G2NV2LBt0AZuGcLM2w37pf70QcZDky1TAJIGxB76m4L1jlTW4GZXbvPZbQlws8i8Uctqg3A==
@@ -12648,12 +12648,12 @@ gatsby-telemetry@^1.3.26:
     node-fetch "2.6.0"
     uuid "3.4.0"
 
-gatsby-theme-i18n-lingui@^1.0.2:
+gatsby-theme-i18n-lingui@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/gatsby-theme-i18n-lingui/-/gatsby-theme-i18n-lingui-1.0.2.tgz#e87e95abfdf82af3f560e2cfa8dd17eca87a0f5e"
   integrity sha512-kSZARqeVWCxuW8WID7yTTyLwuKnmPNYms8DuYV+2/jZLz6DiWr3PrB+FfuWhPcp0QggHSa8pVc6d7x/UzbVpww==
 
-gatsby-theme-i18n@^1.0.2:
+gatsby-theme-i18n@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/gatsby-theme-i18n/-/gatsby-theme-i18n-1.0.2.tgz#1f227b82b43eb7999359ac4377b3507dd52fbf0a"
   integrity sha512-OhuHL6MmFmL412FvMkdB0dSTRHDJIQAklumujAPUnQjvmZRFbwdUG9TDgGSD70pOO/eoYc9TbtZ/g4h4tVR1zQ==
