@@ -1,6 +1,5 @@
 import React, { FC } from "react"
 import { Box, BoxProps, Card, Flex, Image, Input, Label } from "theme-ui"
-
 import Typography from "../Typography/Typography"
 import { ReactComponent as CameraIcon } from "../../icons/camera.svg"
 import Icon from "../Icon/Icon"

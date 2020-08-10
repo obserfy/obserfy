@@ -73,12 +73,12 @@ export const PageStudentProgress: FC<Props> = ({ areaId, studentId }) => {
       <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={5}>
         {backNavigation}
         <Box m={3} mb={4}>
-          <Typography.H3 sx={{ wordWrap: "break-word" }}>
+          <Typography.H5 sx={{ wordWrap: "break-word" }}>
             <Box as="span" color="textDisabled">
               {student.data?.name}
             </Box>
             {` ${area.data?.name} Progress`}
-          </Typography.H3>
+          </Typography.H5>
         </Box>
         {subjects.data?.map((subject) => (
           <Card
@@ -155,13 +155,7 @@ const SubjectMaterials: FC<{
               borderTopStyle: "solid",
             }}
           >
-            <Typography.Body
-              ml={3}
-              sx={{
-                fontSize: 1,
-              }}
-              mr="auto"
-            >
+            <Typography.Body ml={3} sx={{ fontSize: 1 }} mr="auto">
               {material.name}
             </Typography.Body>
             {stage && (

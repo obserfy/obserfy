@@ -1,6 +1,7 @@
 package student_test
 
 import (
+	"github.com/chrsep/vor/pkg/imgproxy"
 	"github.com/chrsep/vor/pkg/minio"
 	"net/http"
 	"testing"
@@ -27,10 +28,12 @@ func (s *StudentTestSuite) SetupTest() {
 	t := s.T()
 	client, err := minio.NewClient()
 	assert.NoError(t, err)
-	s.StudentImageStorage = *minio.NewImageStorage(client)
+	imgproxyClient, err := imgproxy.NewClient()
+	assert.NoError(t, err)
 
-	s.store = postgres.StudentStore{s.DB}
-	s.Handler = student.NewRouter(s.Server, s.store).ServeHTTP
+	s.StudentImageStorage = *minio.NewImageStorage(client)
+	s.store = postgres.StudentStore{s.DB, s.StudentImageStorage}
+	s.Handler = student.NewRouter(s.Server, s.store, imgproxyClient).ServeHTTP
 }
 
 func TestStudentApi(t *testing.T) {

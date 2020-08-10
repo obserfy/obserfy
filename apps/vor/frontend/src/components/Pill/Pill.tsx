@@ -21,7 +21,7 @@ export const Pill: FC<Props> = ({ sx, color, text, ...props }) => {
       <Typography.Body
         color={color}
         sx={{
-          fontSize: 0,
+          fontSize: [0, 0],
           lineHeight: "1em",
           textTransform: "capitalize",
         }}

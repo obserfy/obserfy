@@ -117,7 +117,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   line-height: heading;
   color: var(--theme-ui-colors-text,#37383c);
   text-rendering: optimizeLegibility;
-  font-size: 32px;
+  font-size: 24px;
   margin-bottom: 16px;
 }
 
@@ -1065,11 +1065,11 @@ exports[`PageNewStudent should render correctly 1`] = `
         <div
           class="emotion-11"
         >
-          <h4
+          <h5
             class="emotion-3"
           >
             New Student
-          </h4>
+          </h5>
           <div
             class="emotion-10"
           >
@@ -1259,7 +1259,7 @@ exports[`PageNewStudent should render correctly 1`] = `
       <h5
         class="emotion-43"
       >
-        CLASSES
+        Classes
       </h5>
       <div
         class="emotion-45"
@@ -1277,7 +1277,7 @@ exports[`PageNewStudent should render correctly 1`] = `
         <h5
           class="emotion-47"
         >
-          GUARDIANS
+          Guardians
         </h5>
         <a
           data-cy="add-student"

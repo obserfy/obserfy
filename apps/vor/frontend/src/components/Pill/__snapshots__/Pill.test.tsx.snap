@@ -50,6 +50,12 @@ exports[`Pill should render correctly 1`] = `
   }
 }
 
+@media screen and (min-width:40em) {
+  .emotion-0 {
+    font-size: 12px;
+  }
+}
+
 <div>
   <div
     class="emotion-2"
