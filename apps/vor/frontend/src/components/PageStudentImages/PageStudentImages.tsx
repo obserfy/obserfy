@@ -12,18 +12,18 @@ import useGetStudentImages from "../../api/students/useGetStudentImages"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 
 interface Props {
-  id: string
+  studentId: string
 }
-export const PageGallery: FC<Props> = ({ id }) => {
-  const student = useGetStudent(id)
-  const images = useGetStudentImages(id)
-  const [postNewStudentImage, { isLoading }] = usePostNewStudentImage(id)
+export const PageStudentImages: FC<Props> = ({ studentId }) => {
+  const student = useGetStudent(studentId)
+  const images = useGetStudentImages(studentId)
+  const [postNewStudentImage, { isLoading }] = usePostNewStudentImage(studentId)
 
   return (
     <Box sx={{ maxWidth: "maxWidth.lg" }} margin="auto" pb={5}>
       <BackNavigation
         text="Student Overview"
-        to={STUDENT_OVERVIEW_PAGE_URL(id)}
+        to={STUDENT_OVERVIEW_PAGE_URL(studentId)}
       />
       <Typography.H5 mx={3} mt={3} color="textDisabled">
         {student.data?.name}
@@ -97,4 +97,4 @@ export const PageGallery: FC<Props> = ({ id }) => {
   )
 }
 
-export default PageGallery
+export default PageStudentImages
