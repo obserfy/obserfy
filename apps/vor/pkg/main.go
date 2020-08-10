@@ -78,7 +78,6 @@ func runServer() error {
 	classStore := postgres.ClassStore{db}
 	guardianStore := postgres.GuardianStore{db}
 	lessonPlanStore := postgres.LessonPlanStore{db}
-	imageStore := postgres.ImageStore{db}
 	subscriptionStore := postgres.SubscriptionStore{db}
 	linksStore := postgres.LinksStore{db}
 	mailService := mailgun.NewService()
@@ -93,10 +92,11 @@ func runServer() error {
 		l.Error("failed connecting to minio", zap.Error(err))
 		return err
 	}
-	imageStorage := minio.NewImageStorage(minioClient)
+	minioImageStorage := minio.NewImageStorage(minioClient)
 	fileStorage := minio.NewFileStorage(minioClient)
-	schoolStore := postgres.SchoolStore{db, fileStorage, imageStorage}
-	studentStore := postgres.StudentStore{db, imageStorage}
+	schoolStore := postgres.SchoolStore{db, fileStorage, minioImageStorage}
+	studentStore := postgres.StudentStore{db, minioImageStorage}
+	imageStore := postgres.ImageStore{db, minioImageStorage}
 
 	// Setup routing
 	r := chi.NewRouter()

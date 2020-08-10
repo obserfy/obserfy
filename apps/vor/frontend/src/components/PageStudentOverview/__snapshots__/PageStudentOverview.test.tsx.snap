@@ -620,7 +620,7 @@ exports[`PageStudentOverview should render correctly 1`] = `
         </a>
         <a
           class="emotion-16"
-          href="/dashboard/students/gallery?id=asdfadsf"
+          href="/dashboard/students/images?studentId=asdfadsf"
         >
           <button
             class="emotion-9"

@@ -2,7 +2,10 @@
 import { FC } from "react"
 import { Box, Button, Flex, Image, Input, jsx, Label } from "theme-ui"
 import { BackNavigation } from "../BackNavigation/BackNavigation"
-import { STUDENT_OVERVIEW_PAGE_URL } from "../../routes"
+import {
+  STUDENT_IMAGE_DETAILS_URL,
+  STUDENT_OVERVIEW_PAGE_URL,
+} from "../../routes"
 import Typography from "../Typography/Typography"
 import { useGetStudent } from "../../api/useGetStudent"
 import Icon from "../Icon/Icon"
@@ -10,20 +13,21 @@ import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import usePostNewStudentImage from "../../api/students/usePostNewStudentImage"
 import useGetStudentImages from "../../api/students/useGetStudentImages"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
+import { Link } from "../Link/Link"
 
 interface Props {
-  id: string
+  studentId: string
 }
-export const PageGallery: FC<Props> = ({ id }) => {
-  const student = useGetStudent(id)
-  const images = useGetStudentImages(id)
-  const [postNewStudentImage, { isLoading }] = usePostNewStudentImage(id)
+export const PageStudentImages: FC<Props> = ({ studentId }) => {
+  const student = useGetStudent(studentId)
+  const images = useGetStudentImages(studentId)
+  const [postNewStudentImage, { isLoading }] = usePostNewStudentImage(studentId)
 
   return (
-    <Box sx={{ maxWidth: "maxWidth.lg" }} margin="auto" pb={5}>
+    <Box sx={{ maxWidth: "maxWidth.md" }} margin="auto" pb={5}>
       <BackNavigation
         text="Student Overview"
-        to={STUDENT_OVERVIEW_PAGE_URL(id)}
+        to={STUDENT_OVERVIEW_PAGE_URL(studentId)}
       />
       <Typography.H5 mx={3} mt={3} color="textDisabled">
         {student.data?.name}
@@ -47,7 +51,7 @@ export const PageGallery: FC<Props> = ({ id }) => {
           <Button as="div" sx={{ width: "100%" }} disabled={isLoading}>
             {isLoading && <LoadingIndicator />}
             <Icon as={PlusIcon} mr={2} fill="onPrimary" />
-            Photo
+            Upload Photo
           </Button>
         </Label>
       </Box>
@@ -64,7 +68,8 @@ export const PageGallery: FC<Props> = ({ id }) => {
           // TODO: These are some ugly css, might be inconsistent on some devices
           //  due to the calc and decimal points, revisit later.
           return (
-            <Box
+            <Link
+              to={STUDENT_IMAGE_DETAILS_URL(studentId, image.id)}
               sx={{
                 mr: [1, 3],
                 mb: [1, 3],
@@ -89,7 +94,7 @@ export const PageGallery: FC<Props> = ({ id }) => {
                   }}
                 />
               </Box>
-            </Box>
+            </Link>
           )
         })}
       </Flex>
@@ -97,4 +102,4 @@ export const PageGallery: FC<Props> = ({ id }) => {
   )
 }
 
-export default PageGallery
+export default PageStudentImages

@@ -1,0 +1,148 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageStudentImageDetails should render correctly 1`] = `
+.emotion-7 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 16px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-7 {
+    font-size: 20px;
+  }
+}
+
+.emotion-6 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin: auto;
+  max-width: 700px;
+}
+
+.emotion-2 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-left: -8px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-0 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  margin: 16px;
+  margin-right: 4px;
+  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.emotion-1 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: var(--theme-ui-colors-text,#37383c);
+  font-size: 16px;
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+  margin-bottom: 0;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+}
+
+@media screen and (min-width:40em) {
+  .emotion-1 {
+    font-size: 14px;
+  }
+}
+
+.emotion-3 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: bold;
+  line-height: heading;
+  color: var(--theme-ui-colors-text,#37383c);
+  text-rendering: optimizeLegibility;
+  font-size: 24px;
+  margin: 16px;
+}
+
+.emotion-5 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-5 {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+.emotion-4 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  width: 100%;
+}
+
+<div>
+  <div
+    class="emotion-7"
+  >
+    <div
+      class="emotion-6"
+    >
+      <a
+        href="/dashboard/students/images?studentId=asdfasdf"
+        style="display: block;"
+      >
+        <div
+          class="emotion-2"
+        >
+          <div
+            class="emotion-0"
+          />
+          <p
+            class="emotion-1"
+          >
+            Image Gallery
+          </p>
+        </div>
+      </a>
+      <h5
+        class="emotion-3"
+      />
+      <div
+        class="emotion-5"
+      >
+        <img
+          class="emotion-4"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PageGallery should render correctly 1`] = `
+exports[`PageStudentImages should render correctly 1`] = `
 .emotion-12 {
   box-sizing: border-box;
   margin: 0;
@@ -20,7 +20,7 @@ exports[`PageGallery should render correctly 1`] = `
   min-width: 0;
   margin: auto;
   padding-bottom: 64px;
-  max-width: 900px;
+  max-width: 700px;
 }
 
 .emotion-2 {
@@ -333,7 +333,7 @@ exports[`PageGallery should render correctly 1`] = `
       class="emotion-11"
     >
       <a
-        href="/dashboard/students/overview?id=asdasd"
+        href="/dashboard/students/overview?id="
         style="display: block;"
       >
         <div
@@ -373,7 +373,7 @@ exports[`PageGallery should render correctly 1`] = `
             <div
               class="emotion-6"
             />
-            Photo
+            Upload Photo
           </div>
         </label>
       </div>
