@@ -33,6 +33,12 @@ export const STUDENT_OVERVIEW_PAGE_URL = (studentId: string): string =>
 export const STUDENT_IMAGES_URL = (studentId: string): string =>
   `/dashboard/students/images?studentId=${studentId}`
 
+export const STUDENT_IMAGE_DETAILS_URL = (
+  studentId: string,
+  imageId: string
+): string =>
+  `/dashboard/students/images/details?studentId=${studentId}&imageId=${imageId}`
+
 export const ALL_OBSERVATIONS_PAGE_URL = (studentId: string): string =>
   `/dashboard/students/observations/all?studentId=${studentId}`
 
