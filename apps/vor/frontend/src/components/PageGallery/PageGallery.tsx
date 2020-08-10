@@ -10,7 +10,6 @@ import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import usePostNewStudentImage from "../../api/students/usePostNewStudentImage"
 import useGetStudentImages from "../../api/students/useGetStudentImages"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
-import { Link } from "../Link/Link"
 
 interface Props {
   id: string
@@ -65,8 +64,7 @@ export const PageGallery: FC<Props> = ({ id }) => {
           // TODO: These are some ugly css, might be inconsistent on some devices
           //  due to the calc and decimal points, revisit later.
           return (
-            <Link
-              to="/"
+            <Box
               sx={{
                 mr: [1, 3],
                 mb: [1, 3],
@@ -91,7 +89,7 @@ export const PageGallery: FC<Props> = ({ id }) => {
                   }}
                 />
               </Box>
-            </Link>
+            </Box>
           )
         })}
       </Flex>
