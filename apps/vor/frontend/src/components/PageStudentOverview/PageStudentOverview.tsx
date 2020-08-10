@@ -144,7 +144,6 @@ const ObservationSection: FC<{ studentId: string }> = ({ studentId }) => {
   const emptyObservationPlaceholder = status !== "loading" &&
     (data ?? []).length === 0 && (
       <EmptyListPlaceholder
-        mx={[0, 3]}
         my={3}
         sx={{ borderRadius: [0, "default"] }}
         text="No observation have been added yet"

@@ -51,7 +51,7 @@ export const PageStudentImages: FC<Props> = ({ studentId }) => {
           <Button as="div" sx={{ width: "100%" }} disabled={isLoading}>
             {isLoading && <LoadingIndicator />}
             <Icon as={PlusIcon} mr={2} fill="onPrimary" />
-            Photo
+            Upload Photo
           </Button>
         </Label>
       </Box>

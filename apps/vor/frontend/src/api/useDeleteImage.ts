@@ -1,9 +1,13 @@
-import { useMutation } from "react-query"
+import { queryCache, useMutation } from "react-query"
 import { deleteApi } from "./fetchApi"
 
-const useDeleteImage = (imageId: string) => {
+const useDeleteImage = (studentId: string, imageId: string) => {
   const deleteImage = deleteApi(`/images/${imageId}`)
-  return useMutation(deleteImage)
+  return useMutation(deleteImage, {
+    onSuccess: async () => {
+      await queryCache.invalidateQueries(["student", studentId, "images"])
+    },
+  })
 }
 
 export default useDeleteImage

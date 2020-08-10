@@ -18,7 +18,7 @@ export const PageStudentImageDetails: FC<Props> = ({ studentId, imageId }) => {
   const student = useGetStudent(studentId)
   const image = useGetImage(imageId)
   const [showDeleteDialog, setShowDeleteDialog] = useState(false)
-  const [deleteImage, { isLoading }] = useDeleteImage(imageId)
+  const [deleteImage, { isLoading }] = useDeleteImage(studentId, imageId)
 
   return (
     <>

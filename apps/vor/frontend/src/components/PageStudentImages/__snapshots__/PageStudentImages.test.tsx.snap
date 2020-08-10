@@ -373,7 +373,7 @@ exports[`PageStudentImages should render correctly 1`] = `
             <div
               class="emotion-6"
             />
-            Photo
+            Upload Photo
           </div>
         </label>
       </div>

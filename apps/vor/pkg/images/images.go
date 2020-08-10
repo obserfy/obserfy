@@ -12,12 +12,14 @@ import (
 
 type Store interface {
 	FindImageById(id uuid.UUID) (domain.Image, error)
+	DeleteImageById(id uuid.UUID) error
 }
 
 func NewRouter(server rest.Server, store Store, imgproxyClient imgproxy.Client) *chi.Mux {
 	r := chi.NewRouter()
 	r.Route("/{imageId}", func(r chi.Router) {
 		r.Method("GET", "/", getImage(server, store, imgproxyClient))
+		r.Method("DELETE", "/", deleteImage(server, store))
 	})
 	return r
 }
@@ -63,6 +65,29 @@ func getImage(server rest.Server, store Store, client imgproxy.Client) http.Hand
 		}
 		if err := rest.WriteJson(w, response); err != nil {
 			return rest.NewWriteJsonError(err)
+		}
+		return nil
+	})
+}
+
+func deleteImage(server rest.Server, store Store) http.Handler {
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		imageId, err := uuid.Parse(chi.URLParam(r, "imageId"))
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusNotFound,
+				Message: "can't find image with the specified id",
+				Error:   err,
+			}
+		}
+
+		err = store.DeleteImageById(imageId)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "failed to delete image",
+				Error:   err,
+			}
 		}
 		return nil
 	})
