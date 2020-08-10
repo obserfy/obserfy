@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.10.3](https://github.com/obserfy/obserfy/compare/v1.10.2...v1.10.3) (2020-08-10)
+
+
+### Bug Fixes
+
+* don't link images to homepage. ([67d587a](https://github.com/obserfy/obserfy/commit/67d587add6931acbe667568d619a86242228a3a8))
+* **deps:** update dependency gatsby to v2.24.23 ([580f71e](https://github.com/obserfy/obserfy/commit/580f71e63f17deae228d3f2d78f8d4c52195f204))
+* **deps:** update dependency gatsby-plugin-webpack-bundle-analyser-v2 to v1.1.11 ([1d67302](https://github.com/obserfy/obserfy/commit/1d673027a70bfb0e7a2d75dab6d5800689b5443d))
+* **deps:** update dependency react-optimized-image to v0.3.4 ([2e200fa](https://github.com/obserfy/obserfy/commit/2e200fada6539e2028af4647bfbcd8e8b902eff2))
+* **deps:** update dependency react-query to v2.5.10 ([ec0fd9a](https://github.com/obserfy/obserfy/commit/ec0fd9a70be8b07f0d83f60445c0281c17f4d8a3))
+* **deps:** update dependency react-query to v2.5.11 ([eabe4e6](https://github.com/obserfy/obserfy/commit/eabe4e638bca5db2be74553ec1f9991d0a59f33d))
+* **deps:** update dependency react-query to v2.5.9 ([7d827b6](https://github.com/obserfy/obserfy/commit/7d827b6b4dd9ad6ac9e1880c11b13908ba5e6a5a))
+* **deps:** update dependency tailwindcss to v1.6.1 ([90a58a9](https://github.com/obserfy/obserfy/commit/90a58a938b42cead0feb2186e27a76c74c6205c9))
+* **deps:** update gatsby ([64fcb2b](https://github.com/obserfy/obserfy/commit/64fcb2b978fc3862f3b4310580455af4e8cc7d11))
+
 ### [1.10.2](https://github.com/obserfy/obserfy/compare/v1.10.1...v1.10.2) (2020-07-30)
 
 
