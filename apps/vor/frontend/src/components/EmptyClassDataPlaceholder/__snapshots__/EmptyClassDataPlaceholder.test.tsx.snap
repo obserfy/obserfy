@@ -58,6 +58,7 @@ exports[`EmptyClassDataPlaceholder should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  margin-bottom: 4px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -74,7 +75,6 @@ exports[`EmptyClassDataPlaceholder should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
-  margin: 0;
   fill: var(--theme-ui-colors-warning,#ff6d00);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
@@ -87,30 +87,37 @@ exports[`EmptyClassDataPlaceholder should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: rgba(0,0,0,0.88);
-  font-size: 1.6rem;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 400;
-  line-height: 3rem;
+  color: var(--theme-ui-colors-text,#37383c);
+  font-size: 16px;
   text-rendering: optimizeLegibility;
+  line-height: 1.5;
   margin-left: 8px;
   color: var(--theme-ui-colors-warning,#ff6d00);
   font-size: 14px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-1 {
+    font-size: 14px;
+  }
 }
 
 .emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: rgba(0,0,0,0.88);
-  font-size: 1.6rem;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 400;
-  line-height: 3rem;
-  text-rendering: optimizeLegibility;
-  padding-bottom: 8px;
   color: var(--theme-ui-colors-text,#37383c);
+  font-size: 16px;
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+  padding-bottom: 8px;
   font-size: 14px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-3 {
+    font-size: 14px;
+  }
 }
 
 .emotion-5 {
@@ -139,6 +146,10 @@ exports[`EmptyClassDataPlaceholder should render correctly 1`] = `
   background-color: var(--theme-ui-colors-primary,#00e399);
   border: 0;
   border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;

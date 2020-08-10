@@ -129,7 +129,7 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
         <BackNavigation to={STUDENTS_URL} text="Home" />
         <Box mx={3}>
           <Flex sx={{ alignItems: "flex-end" }}>
-            <Typography.H4 mb={3}>New Student</Typography.H4>
+            <Typography.H5 mb={3}>New Student</Typography.H5>
             <ProfilePicker
               ml="auto"
               onChange={setProfileImageId}
@@ -181,7 +181,7 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
           />
         </Box>
         <Typography.H5 m={3} mt={4}>
-          CLASSES
+          Classes
         </Typography.H5>
         {classes.status === "success" && classes.data.length === 0 && (
           <EmptyClassDataPlaceholder />
@@ -193,6 +193,8 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
               const selected = selectedClasses.includes(item.id)
               return (
                 <Chip
+                  mr={2}
+                  mb={2}
                   key={item.id}
                   text={item.name}
                   activeBackground="primary"
@@ -217,7 +219,7 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
         )}
         <Flex sx={{ alignItems: "center" }} mt={3}>
           <Typography.H5 m={3} mr="auto">
-            GUARDIANS
+            Guardians
           </Typography.H5>
           <Link to={PICK_GUARDIAN_URL} data-cy="add-student">
             <Button variant="outline" mr={3}>
@@ -337,7 +339,7 @@ const GuardianCard: FC<{
         ml="auto"
         onClick={() => setShowRemoveDialog(true)}
       >
-        <Icon as={TrashIcon} m={0} />
+        <Icon as={TrashIcon} />
       </Button>
       {showRemoveDialog && (
         <WarningDialog

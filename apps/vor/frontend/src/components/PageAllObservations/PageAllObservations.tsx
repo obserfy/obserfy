@@ -67,12 +67,12 @@ export const PageAllObservations: FC<Props> = ({ studentId }) => {
           </Box>
         )}
         <Box m={3} mb={4}>
-          <Typography.H3 sx={{ wordWrap: "break-word" }}>
+          <Typography.H5 sx={{ wordWrap: "break-word" }}>
             <Box as="span" color="textDisabled">
               {student.data?.name}
             </Box>
             {` Observations`}
-          </Typography.H3>
+          </Typography.H5>
         </Box>
         <Flex
           pl={3}

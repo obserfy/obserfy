@@ -73,17 +73,20 @@ exports[`PageChooseSchool should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: rgba(0,0,0,0.88);
-  font-size: 1.6rem;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 400;
-  line-height: 3rem;
-  text-rendering: optimizeLegibility;
-  margin-left: 8px;
   color: var(--theme-ui-colors-text,#37383c);
+  font-size: 16px;
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+  margin-left: 8px;
   font-size: 20px;
   font-weight: bold;
   line-height: 1.2;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-2 {
+    font-size: 14px;
+  }
 }
 
 .emotion-1 {
@@ -107,17 +110,12 @@ exports[`PageChooseSchool should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 300;
+  font-weight: bold;
   line-height: heading;
-  font-size: 2.5rem;
-  line-height: 3rem;
-  -webkit-letter-spacing: 0;
-  -moz-letter-spacing: 0;
-  -ms-letter-spacing: 0;
-  letter-spacing: 0;
-  text-rendering: optimizeLegibility;
-  margin-bottom: 16px;
   color: var(--theme-ui-colors-text,#37383c);
+  text-rendering: optimizeLegibility;
+  font-size: 24px;
+  margin-bottom: 16px;
   font-weight: bold;
 }
 
@@ -153,6 +151,10 @@ exports[`PageChooseSchool should render correctly 1`] = `
   background-color: var(--theme-ui-colors-primary,#00e399);
   border: 0;
   border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
@@ -210,7 +212,6 @@ exports[`PageChooseSchool should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
-  margin: 0;
   margin-right: 8px;
   fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;

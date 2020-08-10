@@ -35,7 +35,7 @@ interface Props extends BoxProps {
   size?: number
 }
 export const LoadingIndicator: FC<Props> = ({
-  color = "white",
+  color = "text",
   size = 20,
   ...props
 }) => {
@@ -44,7 +44,7 @@ export const LoadingIndicator: FC<Props> = ({
 
   return (
     <Box
-      mr={1}
+      mx={1}
       sx={{
         display: "inline-block",
         position: "relative",

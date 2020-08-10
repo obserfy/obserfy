@@ -185,7 +185,7 @@ func (s SchoolStore) GetClassAttendance(classId, session string) ([]cSchool.Atte
 
 func (s SchoolStore) NewStudent(student cSchool.Student, classes []string, guardians map[string]int) error {
 	newStudent := Student{
-		Id:             uuid.New().String(),
+		Id:             student.Id,
 		Name:           student.Name,
 		SchoolId:       student.SchoolId,
 		DateOfBirth:    student.DateOfBirth,
@@ -674,6 +674,18 @@ func (s SchoolStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLessonP
 		}
 	}
 
+	links := make([]LessonPlanLink, 0)
+	for _, link := range planInput.Links {
+		links = append(links, LessonPlanLink{
+			Id:                  uuid.New(),
+			Title:               link.Title,
+			Url:                 link.Url,
+			Image:               link.Image,
+			Description:         link.Description,
+			LessonPlanDetailsId: planDetails.Id,
+		})
+	}
+
 	if err := s.RunInTransaction(func(tx *pg.Tx) error {
 		if err := tx.Insert(&planDetails); err != nil {
 			return richErrors.Wrap(err, "failed to save lesson plan details")
@@ -691,6 +703,11 @@ func (s SchoolStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLessonP
 				return richErrors.Wrap(err, "failed to save file relations")
 			}
 		}
+		if len(links) > 0 {
+			if err := tx.Insert(&links); err != nil {
+				return richErrors.Wrap(err, "failed to save links")
+			}
+		}
 		return nil
 	}); err != nil {
 		return nil, err
@@ -703,6 +720,7 @@ func (s SchoolStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLessonP
 		ClassId:     planDetails.ClassId,
 	}, nil
 }
+
 func (s SchoolStore) GetUser(email string) (*cSchool.User, error) {
 	var model cSchool.User
 	if err := s.Model(&model).
@@ -723,7 +741,7 @@ func (s SchoolStore) CreateImage(schoolId string, image multipart.File, header *
 		Id:       uuid.New(),
 		SchoolId: schoolId,
 	}
-	fileKey, err := s.FileStorage.Save(schoolId, newImage.Id.String(), image, header.Size)
+	fileKey, err := s.ImageStorage.Save(schoolId, newImage.Id.String(), image, header.Size)
 	if err != nil {
 		return "", richErrors.Wrap(err, "failed to save file to s3")
 	}
@@ -732,4 +750,14 @@ func (s SchoolStore) CreateImage(schoolId string, image multipart.File, header *
 		return "", richErrors.Wrap(err, "failed to create file:")
 	}
 	return newImage.Id.String(), nil
+}
+
+func (s SchoolStore) DeleteUser(schoolId string, userId string) error {
+	var relation UserToSchool
+	if _, err := s.Model(&relation).
+		Where("school_id = ? AND user_id = ?", schoolId, userId).
+		Delete(); err != nil {
+		return richErrors.Wrap(err, "failed to delete user from school relation")
+	}
+	return nil
 }

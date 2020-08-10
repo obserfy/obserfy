@@ -35,7 +35,7 @@ export const DateInput: FC<Props> = ({ label, value, onChange, ...props }) => {
           variant="outline"
           sx={{ flexShrink: 0 }}
         >
-          <Icon as={CalendarIcon} m={0} />
+          <Icon as={CalendarIcon} />
         </Button>
       </Flex>
       {showDatePicker && (

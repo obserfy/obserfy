@@ -1,13 +1,10 @@
 import React, { FC } from "react"
 import { navigate } from "gatsby"
-import { Box, Card, Flex } from "theme-ui"
-
+import { Button, Box, Card, Flex } from "theme-ui"
 import { useGetSchools } from "../../api/schools/useGetSchools"
-
 import { Typography } from "../Typography/Typography"
 import Icon from "../Icon/Icon"
 import { ReactComponent as ArrowNextIcon } from "../../icons/next-arrow.svg"
-import { Button } from "../Button/Button"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import { setSchoolIdState } from "../../hooks/schoolIdState"
 import { STUDENTS_URL } from "../../routes"
@@ -34,7 +31,7 @@ export const PageChooseSchool: FC = () => {
     >
       <Flex sx={{ alignItems: "center" }}>
         <Typography.Body>{name}</Typography.Body>
-        <Icon m={0} ml="auto" as={ArrowNextIcon} />
+        <Icon ml="auto" as={ArrowNextIcon} />
       </Flex>
     </Card>
   ))
@@ -62,7 +59,7 @@ export const PageChooseSchool: FC = () => {
             sx={{ width: "100%" }}
             data-cy="newSchool"
           >
-            <Icon as={PlusIcon} m={0} mr={2} />
+            <Icon as={PlusIcon} mr={2} />
             New school
           </Button>
         </Link>

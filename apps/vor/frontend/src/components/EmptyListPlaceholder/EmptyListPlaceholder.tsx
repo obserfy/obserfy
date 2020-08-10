@@ -30,7 +30,7 @@ export const EmptyListPlaceholder: FC<Props> = ({
         {text}
       </Typography.Body>
       <Button variant="outline" onClick={onActionClick}>
-        <Icon as={PlusIcon} m={0} mr={2} />
+        <Icon as={PlusIcon} mr={2} />
         {callToActionText}
       </Button>
     </Flex>

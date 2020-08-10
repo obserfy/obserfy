@@ -9,4 +9,5 @@ type FileStorage interface {
 
 type ImageStorage interface {
 	Save(schoolId string, imageId string, image multipart.File, size int64) (string, error)
+	Delete(key string) error
 }

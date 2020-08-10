@@ -1,6 +1,5 @@
 import React, { FC } from "react"
 import { Box, BoxProps, Card, Flex, Image, Input, Label } from "theme-ui"
-
 import Typography from "../Typography/Typography"
 import { ReactComponent as CameraIcon } from "../../icons/camera.svg"
 import Icon from "../Icon/Icon"
@@ -44,14 +43,7 @@ export const ProfilePicker: FC<Props> = ({ value, onChange, ...props }) => {
                 <LoadingIndicator size={40} />
               ) : (
                 <>
-                  <Icon
-                    as={CameraIcon}
-                    m={0}
-                    width={24}
-                    height={24}
-                    mb={1}
-                    mt={3}
-                  />
+                  <Icon as={CameraIcon} width={24} height={24} mb={1} mt={3} />
                   <Typography.Body
                     color="textMediumEmphasis"
                     sx={{ fontSize: 0 }}

@@ -40,6 +40,17 @@ func (i Client) GenerateUrl(imagePath string, width int, height int) string {
 	return i.baseUrl + "/" + signature + path
 }
 
+func (i Client) GenerateOriginalUrl(imagePath string) string {
+	url := "s3://" + i.minioBucket + "/" + imagePath
+	path := "/" + base64.RawURLEncoding.EncodeToString([]byte(url))
+
+	mac := hmac.New(sha256.New, i.keyBinary)
+	mac.Write(i.saltBinary)
+	mac.Write([]byte(path))
+	signature := base64.RawURLEncoding.EncodeToString(mac.Sum(nil))
+	return i.baseUrl + "/" + signature + path
+}
+
 func NewClient() (*Client, error) {
 	key := os.Getenv("IMGPROXY_KEY")
 	salt := os.Getenv("IMGPROXY_SALT")

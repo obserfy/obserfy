@@ -63,7 +63,6 @@ export const PageSubscription: FC = () => {
             <Flex py={3} sx={{ alignItems: "center" }}>
               <Icon
                 as={CreditCardIcon}
-                m={0}
                 size={24}
                 color="textPrimary"
                 fill="transparent"
@@ -71,16 +70,16 @@ export const PageSubscription: FC = () => {
               <Typography.Body ml={3} sx={{ lineHeight: 1 }}>
                 Payment details
               </Typography.Body>
-              <Icon as={NextIcon} m={0} ml="auto" />
+              <Icon as={NextIcon} ml="auto" />
             </Flex>
           </a>
           <a href={school.data?.subscription.cancelUrl}>
             <Flex py={3} mb={3} sx={{ alignItems: "center" }}>
-              <Icon as={CancelIcon} m={0} size={24} fill="danger" />
+              <Icon as={CancelIcon} size={24} fill="danger" />
               <Typography.Body ml={3} sx={{ lineHeight: 1 }}>
                 Cancel Plan
               </Typography.Body>
-              <Icon as={NextIcon} m={0} ml="auto" />
+              <Icon as={NextIcon} ml="auto" />
             </Flex>
           </a>
         </Card>
@@ -171,7 +170,7 @@ const Feature: FC<{ text: string; comingSoon?: boolean }> = ({
 }) => {
   return (
     <Flex sx={{ alignItems: "center" }}>
-      <Icon as={CheckmarkIcon} m={0} fill="primary" />
+      <Icon as={CheckmarkIcon} fill="primary" />
       <Typography.Body ml={2}>{text}</Typography.Body>
       {comingSoon && (
         <Typography.Body ml={2} color="textPrimary">

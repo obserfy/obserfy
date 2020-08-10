@@ -50,12 +50,7 @@ export const ScrollableDialog: FC<Props> = ({
         >
           {title}
         </Typography.H6>
-        <Icon
-          as={CloseIcon}
-          m={0}
-          onClick={onDismiss}
-          sx={{ cursor: "pointer" }}
-        />
+        <Icon as={CloseIcon} onClick={onDismiss} sx={{ cursor: "pointer" }} />
       </Flex>
       <Box sx={{ overflowY: "auto", backgroundColor: "background" }}>
         {children}

@@ -10,7 +10,7 @@ import { deleteApi } from "../fetchApi"
 const useDeleteClass = (
   classId: string
 ): [MutateFunction<Response, undefined>, MutationResult<Response>] => {
-  const deleteClass = deleteApi("/classes", classId)
+  const deleteClass = deleteApi(`/classes/${classId}`)
 
   return useMutation<Response>(deleteClass, {
     onSuccess: async () => {

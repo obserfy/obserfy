@@ -42,7 +42,7 @@ const theme: Theme = {
     border: "rgba(0,0,0,.1)",
     borderSolid: "#fff",
 
-    overlay: "rgba(0,0,0,.6)",
+    overlay: "rgba(0,0,0,.7)",
     onOverlay: "#fff",
 
     muted: "#f6f6f9",
@@ -71,7 +71,7 @@ const theme: Theme = {
 
     materialStage: {
       presented: "#dd2c00",
-      onPresented: "text",
+      onPresented: "white",
 
       practiced: "#ffab00",
       onPracticed: "black",
@@ -111,7 +111,6 @@ const theme: Theme = {
         muted: "#222222",
         mutedLight: "#212121",
 
-        overlay: "rgba(0,0,0,.6)",
         onOverlay: "#fff",
 
         warning: "#ffd600",
@@ -134,7 +133,7 @@ const theme: Theme = {
   },
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 96],
   fontWeights: {
-    heading: 300,
+    heading: "bold",
     body: 400,
   },
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
@@ -174,67 +173,46 @@ const theme: Theme = {
     },
   },
   text: {
-    heading: {
-      color: "rgba(0,0,0,0.88)",
-      fontFamily: "heading",
-      fontWeight: "light",
-      marginBottom: "3rem",
-      letterSpacing: "0em",
-      textRendering: "optimizeLegibility",
-    },
     h1: {
-      variant: "heading",
-      fontSize: "6.103515625rem",
-      lineHeight: "9rem",
-      letterSpacing: 0,
+      color: "text",
       textRendering: "optimizeLegibility",
+      fontSize: 8,
     },
     h2: {
-      variant: "heading",
-      fontSize: "4.8828125rem",
-      lineHeight: "6rem",
-      letterSpacing: 0,
+      color: "text",
       textRendering: "optimizeLegibility",
+      fontSize: 7,
     },
     h3: {
-      variant: "heading",
-      fontSize: "3.90625rem",
-      lineHeight: "6rem",
-      letterSpacing: 0,
+      color: "text",
       textRendering: "optimizeLegibility",
+      fontSize: 6,
     },
     h4: {
-      variant: "heading",
-      fontSize: "3.125rem",
-      lineHeight: "6rem",
-      letterSpacing: 0,
+      color: "text",
       textRendering: "optimizeLegibility",
+      fontSize: 5,
     },
     h5: {
-      variant: "heading",
-      fontSize: "2.5rem",
-      lineHeight: "3rem",
-      letterSpacing: 0,
+      color: "text",
       textRendering: "optimizeLegibility",
+      fontSize: 4,
     },
     h6: {
-      variant: "heading",
-      fontSize: "2rem",
-      lineHeight: "3rem",
-      letterSpacing: 0,
+      color: "text",
       textRendering: "optimizeLegibility",
+      fontSize: 3,
     },
     body: {
-      color: "rgba(0,0,0,0.88)",
-      fontSize: "1.6rem",
-      fontFamily: "body",
-      fontWeight: "body",
-      lineHeight: "3rem",
+      color: "text",
+      fontSize: [2, 1],
       textRendering: "optimizeLegibility",
+      lineHeight: 1.5,
     },
   },
   buttons: {
     primary: {
+      userSelect: "none",
       cursor: "pointer",
       boxSizing: "border-box",
       fontSize: 1,

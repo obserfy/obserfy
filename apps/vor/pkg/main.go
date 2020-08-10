@@ -2,6 +2,7 @@ package main
 
 import (
 	"crypto/tls"
+	"github.com/chrsep/vor/pkg/links"
 	"github.com/chrsep/vor/pkg/subscription"
 	"log"
 	"net/http"
@@ -70,7 +71,6 @@ func runServer() error {
 
 	// Setup server and data stores
 	server := rest.NewServer(l)
-	studentStore := postgres.StudentStore{db}
 	observationStore := postgres.ObservationStore{db}
 	userStore := postgres.UserStore{db}
 	curriculumStore := postgres.CurriculumStore{db}
@@ -78,8 +78,8 @@ func runServer() error {
 	classStore := postgres.ClassStore{db}
 	guardianStore := postgres.GuardianStore{db}
 	lessonPlanStore := postgres.LessonPlanStore{db}
-	imageStore := postgres.ImageStore{db}
 	subscriptionStore := postgres.SubscriptionStore{db}
+	linksStore := postgres.LinksStore{db}
 	mailService := mailgun.NewService()
 	//attendanceStore:=postgres.AttendanceStore{db}
 	imgproxyClient, err := imgproxy.NewClient()
@@ -92,9 +92,11 @@ func runServer() error {
 		l.Error("failed connecting to minio", zap.Error(err))
 		return err
 	}
-	imageStorage := minio.NewImageStorage(minioClient)
+	minioImageStorage := minio.NewImageStorage(minioClient)
 	fileStorage := minio.NewFileStorage(minioClient)
-	schoolStore := postgres.SchoolStore{db, fileStorage, imageStorage}
+	schoolStore := postgres.SchoolStore{db, fileStorage, minioImageStorage}
+	studentStore := postgres.StudentStore{db, minioImageStorage}
+	imageStore := postgres.ImageStore{db, minioImageStorage}
 
 	// Setup routing
 	r := chi.NewRouter()
@@ -111,7 +113,7 @@ func runServer() error {
 	})
 	r.Route("/api/v1", func(r chi.Router) {
 		r.Use(auth.NewMiddleware(server, authStore))
-		r.Mount("/students", student.NewRouter(server, studentStore))
+		r.Mount("/students", student.NewRouter(server, studentStore, imgproxyClient))
 		r.Mount("/observations", observation.NewRouter(server, observationStore))
 		r.Mount("/schools", school.NewRouter(server, schoolStore, imgproxyClient, mailService))
 		r.Mount("/users", user.NewRouter(server, userStore))
@@ -120,6 +122,7 @@ func runServer() error {
 		r.Mount("/guardians", guardian.NewRouter(server, guardianStore))
 		r.Mount("/plans", lessonplan.NewRouter(server, lessonPlanStore))
 		r.Mount("/images", images.NewRouter(server, imageStore, *imgproxyClient))
+		r.Mount("/links", links.NewRouter(server, linksStore))
 	})
 	// Serve gatsby static frontend assets
 	r.Group(func(r chi.Router) {

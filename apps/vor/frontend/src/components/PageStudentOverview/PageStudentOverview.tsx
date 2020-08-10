@@ -17,9 +17,13 @@ import StudentProgressSummaryCard from "../StudentProgressSummaryCard/StudentPro
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import { ReactComponent as PrevIcon } from "../../icons/arrow-back.svg"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
+import { ReactComponent as ImageIcon } from "../../icons/image.svg"
+import { ReactComponent as CalendarIcon } from "../../icons/calendar.svg"
+import { ReactComponent as PersonIcon } from "../../icons/person.svg"
 import {
   ALL_OBSERVATIONS_PAGE_URL,
   NEW_OBSERVATION_URL,
+  STUDENT_IMAGES_URL,
   STUDENT_PLANS_URL,
   STUDENT_PROFILE_URL,
   STUDENTS_URL,
@@ -49,27 +53,38 @@ export const PageStudentOverview: FC<Props> = ({ id }) => {
           </Box>
           <Typography.H6
             ml={3}
+            mb={2}
             sx={{ wordWrap: "break-word", fontWeight: "bold", lineHeight: 1.4 }}
           >
             {student.data?.name || (
-              <LoadingPlaceholder sx={{ width: "24rem", height: 60 }} />
+              <LoadingPlaceholder sx={{ width: "12rem", height: 28 }} />
             )}
           </Typography.H6>
         </Flex>
-        <Flex m={3} mb={2}>
-          <Link sx={{ mr: 2 }} to={STUDENT_PROFILE_URL(id)}>
-            <Button data-cy="edit" sx={{ minWidth: 43 }} variant="outline">
+        <Flex m={3}>
+          <Link sx={{ mr: 2, flexGrow: [1, 0] }} to={STUDENT_PROFILE_URL(id)}>
+            <Button data-cy="edit" variant="outline" sx={{ width: "100%" }}>
+              <Icon as={PersonIcon} fill="textPrimary" mr={2} />
               Profile
             </Button>
           </Link>
-          <Link sx={{ mr: 2 }} to={STUDENT_PLANS_URL(id)}>
-            <Button data-cy="edit" sx={{ minWidth: 43 }} variant="outline">
+          <Link sx={{ mr: 2, flexGrow: [1, 0] }} to={STUDENT_PLANS_URL(id)}>
+            <Button data-cy="edit" variant="outline" sx={{ width: "100%" }}>
+              <Icon as={CalendarIcon} fill="textPrimary" mr={2} />
               Plans
             </Button>
           </Link>
+          <Link sx={{ flexGrow: [1, 0] }} to={STUDENT_IMAGES_URL(id)}>
+            <Button data-cy="edit" variant="outline" sx={{ width: "100%" }}>
+              <Icon as={ImageIcon} fill="textPrimary" mr={2} />
+              Gallery
+            </Button>
+          </Link>
+        </Flex>
+        <Flex m={3} mb={2}>
           <Link sx={{ width: "100%" }} to={NEW_OBSERVATION_URL(id)}>
             <Button sx={{ width: "100%" }}>
-              <Icon as={PlusIcon} m={0} mr={2} fill="onPrimary" />
+              <Icon as={PlusIcon} mr={2} fill="onPrimary" />
               Observation
             </Button>
           </Link>
@@ -129,7 +144,6 @@ const ObservationSection: FC<{ studentId: string }> = ({ studentId }) => {
   const emptyObservationPlaceholder = status !== "loading" &&
     (data ?? []).length === 0 && (
       <EmptyListPlaceholder
-        mx={[0, 3]}
         my={3}
         sx={{ borderRadius: [0, "default"] }}
         text="No observation have been added yet"
@@ -139,15 +153,7 @@ const ObservationSection: FC<{ studentId: string }> = ({ studentId }) => {
     )
 
   const dateSelector = (data?.length ?? 0) > 0 && (
-    <Flex sx={{ alignItems: "center" }} px={3} mb={2}>
-      <Typography.Body sx={{ fontSize: 1 }}>
-        {/* eslint-disable-next-line no-nested-ternary */}
-        {selectedDateDifference > -3
-          ? selectedDateDifference === -1
-            ? "Today"
-            : `${selectedDateDifference * -1} Days`
-          : dayjs(dates?.[selectedDate] ?? "").format("dddd, D MMM 'YY")}
-      </Typography.Body>
+    <Flex ml="auto">
       <Button
         disabled={selectedDate >= dates.length - 1}
         onClick={() => setSelectedDate(selectedDate + 1)}
@@ -155,9 +161,8 @@ const ObservationSection: FC<{ studentId: string }> = ({ studentId }) => {
         py={1}
         px={1}
         mr={1}
-        ml="auto"
       >
-        <Icon as={PrevIcon} m={0} />
+        <Icon as={PrevIcon} />
       </Button>
       <Button
         disabled={selectedDate < 1}
@@ -167,10 +172,13 @@ const ObservationSection: FC<{ studentId: string }> = ({ studentId }) => {
         py={1}
         px={1}
       >
-        <Icon as={NextIcon} m={0} />
+        <Icon as={NextIcon} />
       </Button>
-      <Link to={ALL_OBSERVATIONS_PAGE_URL(studentId)}>
-        <Button variant="outline" py={1} px={3}>
+      <Link
+        sx={{ display: "inline-block" }}
+        to={ALL_OBSERVATIONS_PAGE_URL(studentId)}
+      >
+        <Button variant="outline" py={1} px={3} sx={{ height: 30 }}>
           All
         </Button>
       </Link>
@@ -179,15 +187,27 @@ const ObservationSection: FC<{ studentId: string }> = ({ studentId }) => {
 
   return (
     <Fragment>
-      <Typography.H6 mr="auto" sx={{ fontWeight: "bold" }} pt={4} px={3}>
-        Observations
-      </Typography.H6>
+      <Flex sx={{ alignItems: "flex-end" }} pt={4} px={3} mb={2}>
+        <Box>
+          <Typography.H6 mr="auto" sx={{ fontWeight: "bold" }}>
+            Observations
+          </Typography.H6>
+          {(data?.length ?? 0) > 0 && (
+            <Typography.Body sx={{ fontSize: 1 }} color="textMediumEmphasis">
+              {/* eslint-disable-next-line no-nested-ternary */}
+              {selectedDateDifference > -3
+                ? selectedDateDifference === -1
+                  ? "Today"
+                  : `${selectedDateDifference * -1} Days`
+                : dayjs(dates?.[selectedDate] ?? "").format("dddd, D MMM 'YY")}
+            </Typography.Body>
+          )}
+        </Box>
+        {dateSelector}
+      </Flex>
       {emptyObservationPlaceholder}
-      {dateSelector}
-      <Box mx={[0, 3]}>
-        {listOfObservations}
-        {status === "loading" && !data && <ObservationLoadingPlaceholder />}
-      </Box>
+      {listOfObservations}
+      {status === "loading" && !data && <ObservationLoadingPlaceholder />}
       {isEditingObservation && (
         <EditObservationDialog
           defaultValue={targetObservation}

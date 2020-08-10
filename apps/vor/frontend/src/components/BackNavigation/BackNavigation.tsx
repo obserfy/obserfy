@@ -12,7 +12,13 @@ interface Props {
 export const BackNavigation: FC<Props> = ({ to, text }) => (
   <Link to={to} state={{ preserveScroll: true }} style={{ display: "block" }}>
     <Flex sx={{ alignItems: "center" }} ml={-2}>
-      <Icon as={Arrow} mr={1} size={24} sx={{ fill: "textMediumEmphasis" }} />
+      <Icon
+        as={Arrow}
+        m={3}
+        mr={1}
+        size={24}
+        sx={{ fill: "textMediumEmphasis" }}
+      />
       <Typography.Body mb={0} color="textMediumEmphasis">
         {text}
       </Typography.Body>

@@ -12,6 +12,7 @@ interface Props extends BoxProps {
   onNegativeClick?: () => void
   onPositiveClick?: () => void
   body: string
+  loading?: boolean
 }
 export const AlertDialog: FC<Props> = ({
   positiveText,
@@ -21,6 +22,7 @@ export const AlertDialog: FC<Props> = ({
   title,
   body,
   onNegativeClick,
+  loading,
   ...props
 }) => (
   <Dialog {...props}>
@@ -30,14 +32,9 @@ export const AlertDialog: FC<Props> = ({
       onCancelText={negativeText}
       onCancel={onNegativeClick}
       onAccept={onPositiveClick}
+      loading={loading}
     />
-    <Typography.Body
-      p={3}
-      m={0}
-      sx={{
-        backgroundColor: "background",
-      }}
-    >
+    <Typography.Body p={3} sx={{ backgroundColor: "background" }}>
       {body}
     </Typography.Body>
   </Dialog>

@@ -94,7 +94,7 @@ export const PageLogin: FC = () => {
             alignItems: "center",
           }}
         >
-          <Icon as={InfoIcon} m={0} fill="primaryDark" />
+          <Icon as={InfoIcon} fill="primaryDark" />
           <Typography.Body sx={{ fontSize: 1, lineHeight: 1.4 }} ml={2}>
             Are you a parent?{" "}
             <a

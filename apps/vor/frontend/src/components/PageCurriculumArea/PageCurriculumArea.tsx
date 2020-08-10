@@ -51,15 +51,9 @@ export const PageCurriculumArea: FC<Props> = ({ id }) => {
       <Box sx={{ maxWidth: "maxWidth.sm", margin: "auto" }}>
         <BackNavigation to={ADMIN_CURRICULUM_URL} text="Curriculum" />
         {loading && !area.data?.name && <LoadingState />}
-        <Typography.H3
-          p={3}
-          pb={2}
-          sx={{
-            lineHeight: 1,
-          }}
-        >
+        <Typography.H4 p={3} pb={2}>
           {area.data?.name}
-        </Typography.H3>
+        </Typography.H4>
         <Flex mx={3} mt={3}>
           <Button
             variant="outline"
@@ -67,7 +61,7 @@ export const PageCurriculumArea: FC<Props> = ({ id }) => {
             color="danger"
             sx={{ flexShrink: 0 }}
           >
-            <Icon as={DeleteIcon} m={0} fill="danger" mr={2} />
+            <Icon as={DeleteIcon} fill="danger" mr={2} />
             Delete
           </Button>
           <Button
@@ -76,22 +70,16 @@ export const PageCurriculumArea: FC<Props> = ({ id }) => {
             mx={2}
             sx={{ flexShrink: 0 }}
           >
-            <Icon as={EditIcon} m={0} mr={2} />
+            <Icon as={EditIcon} mr={2} />
             Edit
           </Button>
         </Flex>
         <Flex sx={{ alignItems: "center" }} mx={3} mt={4}>
-          <Typography.H5
-            fontWeight="normal"
-            color="textMediumEmphasis"
-            letterSpacing={3}
-          >
-            SUBJECTS
-          </Typography.H5>
+          <Typography.H6>Subjects</Typography.H6>
           <Spacer />
           <Link to={NEW_SUBJECT_URL(id)}>
             <Button variant="outline">
-              <Icon as={PlusIcon} m={0} mr={2} />
+              <Icon as={PlusIcon} mr={2} />
               New
             </Button>
           </Link>
@@ -196,11 +184,11 @@ const SubjectListItem: FC<SubjectListItemProps> = ({
               variant="secondary"
               onClick={onDeleteClick}
             >
-              <Icon as={DeleteIcon} m={0} fill="danger" />
+              <Icon as={DeleteIcon} fill="danger" />
             </Button>
             <Link to={EDIT_SUBJECT_URL(areaId, subject.id)}>
               <Button sx={{ flexShrink: 0 }} variant="secondary">
-                <Icon as={EditIcon} m={0} fill="textPrimary" />
+                <Icon as={EditIcon} fill="textPrimary" />
               </Button>
             </Link>
           </Flex>

@@ -4,6 +4,8 @@ import { getApi } from "./fetchApi"
 interface Image {
   id: string
   url: string
+  originalUrl: string
+  createdAt: string
 }
 const useGetImage = (imageId: string) => {
   const getImage = getApi<Image>(`/images/${imageId}`)

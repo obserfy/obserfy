@@ -72,14 +72,18 @@ exports[`PageNewStudent should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: rgba(0,0,0,0.88);
-  font-size: 1.6rem;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 400;
-  line-height: 3rem;
+  color: var(--theme-ui-colors-text,#37383c);
+  font-size: 16px;
   text-rendering: optimizeLegibility;
+  line-height: 1.5;
   margin-bottom: 0;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+}
+
+@media screen and (min-width:40em) {
+  .emotion-1 {
+    font-size: 14px;
+  }
 }
 
 .emotion-42 {
@@ -109,17 +113,12 @@ exports[`PageNewStudent should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 300;
+  font-weight: bold;
   line-height: heading;
-  font-size: 3.125rem;
-  line-height: 6rem;
-  -webkit-letter-spacing: 0;
-  -moz-letter-spacing: 0;
-  -ms-letter-spacing: 0;
-  letter-spacing: 0;
-  text-rendering: optimizeLegibility;
-  margin-bottom: 16px;
   color: var(--theme-ui-colors-text,#37383c);
+  text-rendering: optimizeLegibility;
+  font-size: 24px;
+  margin-bottom: 16px;
 }
 
 .emotion-10 {
@@ -193,7 +192,6 @@ exports[`PageNewStudent should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
-  margin: 0;
   margin-bottom: 4px;
   margin-top: 16px;
   fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
@@ -208,14 +206,18 @@ exports[`PageNewStudent should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: rgba(0,0,0,0.88);
-  font-size: 1.6rem;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 400;
-  line-height: 3rem;
+  color: var(--theme-ui-colors-text,#37383c);
+  font-size: 16px;
   text-rendering: optimizeLegibility;
+  line-height: 1.5;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   font-size: 12px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-5 {
+    font-size: 14px;
+  }
 }
 
 .emotion-8 {
@@ -490,6 +492,10 @@ exports[`PageNewStudent should render correctly 1`] = `
   background-color: var(--theme-ui-colors-primary,#00e399);
   border: 0;
   border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
@@ -550,7 +556,6 @@ exports[`PageNewStudent should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
-  margin: 0;
   fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
@@ -685,18 +690,13 @@ exports[`PageNewStudent should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 300;
+  font-weight: bold;
   line-height: heading;
-  font-size: 2.5rem;
-  line-height: 3rem;
-  -webkit-letter-spacing: 0;
-  -moz-letter-spacing: 0;
-  -ms-letter-spacing: 0;
-  letter-spacing: 0;
+  color: var(--theme-ui-colors-text,#37383c);
   text-rendering: optimizeLegibility;
+  font-size: 24px;
   margin: 16px;
   margin-top: 32px;
-  color: var(--theme-ui-colors-text,#37383c);
 }
 
 .emotion-45 {
@@ -748,18 +748,13 @@ exports[`PageNewStudent should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 300;
+  font-weight: bold;
   line-height: heading;
-  font-size: 2.5rem;
-  line-height: 3rem;
-  -webkit-letter-spacing: 0;
-  -moz-letter-spacing: 0;
-  -ms-letter-spacing: 0;
-  letter-spacing: 0;
+  color: var(--theme-ui-colors-text,#37383c);
   text-rendering: optimizeLegibility;
+  font-size: 24px;
   margin: 16px;
   margin-right: auto;
-  color: var(--theme-ui-colors-text,#37383c);
 }
 
 .emotion-48 {
@@ -783,6 +778,10 @@ exports[`PageNewStudent should render correctly 1`] = `
   background-color: var(--theme-ui-colors-primary,#00e399);
   border: 0;
   border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
@@ -863,14 +862,18 @@ exports[`PageNewStudent should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: rgba(0,0,0,0.88);
-  font-size: 1.6rem;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 400;
-  line-height: 3rem;
+  color: var(--theme-ui-colors-text,#37383c);
+  font-size: 16px;
   text-rendering: optimizeLegibility;
+  line-height: 1.5;
   margin: 16px;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+}
+
+@media screen and (min-width:40em) {
+  .emotion-50 {
+    font-size: 14px;
+  }
 }
 
 .emotion-54 {
@@ -906,6 +909,10 @@ exports[`PageNewStudent should render correctly 1`] = `
   background-color: var(--theme-ui-colors-primary,#00e399);
   border: 0;
   border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
@@ -978,6 +985,10 @@ exports[`PageNewStudent should render correctly 1`] = `
   background-color: var(--theme-ui-colors-primary,#00e399);
   border: 0;
   border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
@@ -1054,11 +1065,11 @@ exports[`PageNewStudent should render correctly 1`] = `
         <div
           class="emotion-11"
         >
-          <h4
+          <h5
             class="emotion-3"
           >
             New Student
-          </h4>
+          </h5>
           <div
             class="emotion-10"
           >
@@ -1248,7 +1259,7 @@ exports[`PageNewStudent should render correctly 1`] = `
       <h5
         class="emotion-43"
       >
-        CLASSES
+        Classes
       </h5>
       <div
         class="emotion-45"
@@ -1266,7 +1277,7 @@ exports[`PageNewStudent should render correctly 1`] = `
         <h5
           class="emotion-47"
         >
-          GUARDIANS
+          Guardians
         </h5>
         <a
           data-cy="add-student"

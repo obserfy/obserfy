@@ -3,6 +3,7 @@ package postgres
 import (
 	cLessonPlan "github.com/chrsep/vor/pkg/lessonplan"
 	"github.com/go-pg/pg/v10"
+	"github.com/google/uuid"
 	richErrors "github.com/pkg/errors"
 )
 
@@ -11,6 +12,28 @@ type (
 		*pg.DB
 	}
 )
+
+func (s LessonPlanStore) AddLinkToLessonPlan(id string, link cLessonPlan.Link) error {
+	lessonPlan := LessonPlan{Id: id}
+	if err := s.DB.Model(&lessonPlan).
+		WherePK().
+		Select(); err != nil {
+		return richErrors.Wrap(err, "failed to query the specified lesson plan")
+	}
+
+	newLink := LessonPlanLink{
+		Id:                  uuid.New(),
+		Title:               link.Title,
+		Url:                 link.Url,
+		Image:               link.Image,
+		Description:         link.Description,
+		LessonPlanDetailsId: lessonPlan.LessonPlanDetailsId,
+	}
+	if _, err := s.Model(&newLink).Insert(); err != nil {
+		return richErrors.Wrap(err, "failed to insert new link")
+	}
+	return nil
+}
 
 func (s LessonPlanStore) UpdateLessonPlan(planInput cLessonPlan.UpdatePlanData) (int, error) {
 	originalPlan := LessonPlan{Id: planInput.Id}
@@ -67,6 +90,7 @@ func (s LessonPlanStore) GetLessonPlan(planId string) (*cLessonPlan.LessonPlan, 
 	var plan LessonPlan
 	err := s.Model(&plan).
 		Relation("LessonPlanDetails").
+		Relation("LessonPlanDetails.Links").
 		//Relation("Users").
 		//Where("user.id = ?",plan.LessonPlanDetails.UserId).
 		Where("lesson_plan.id = ?", planId).
@@ -78,9 +102,10 @@ func (s LessonPlanStore) GetLessonPlan(planId string) (*cLessonPlan.LessonPlan, 
 		return nil, richErrors.Wrapf(err, "Failed get lesson plan")
 	}
 
-	return &cLessonPlan.LessonPlan{
+	result := &cLessonPlan.LessonPlan{
 		Id:          plan.Id,
 		ClassId:     plan.LessonPlanDetails.ClassId,
+		SchoolId:    plan.LessonPlanDetails.SchoolId,
 		Title:       plan.LessonPlanDetails.Title,
 		Description: plan.LessonPlanDetails.Description,
 		Date:        *plan.Date,
@@ -90,7 +115,17 @@ func (s LessonPlanStore) GetLessonPlan(planId string) (*cLessonPlan.LessonPlan, 
 			Type:    plan.LessonPlanDetails.RepetitionType,
 			EndDate: plan.LessonPlanDetails.RepetitionEndDate,
 		},
-	}, nil
+	}
+	for _, link := range plan.LessonPlanDetails.Links {
+		result.Links = append(result.Links, cLessonPlan.Link{
+			Id:          link.Id,
+			Url:         link.Url,
+			Image:       link.Image,
+			Title:       link.Title,
+			Description: link.Description,
+		})
+	}
+	return result, nil
 }
 
 func (s LessonPlanStore) DeleteLessonPlan(planId string) error {
@@ -102,4 +137,25 @@ func (s LessonPlanStore) DeleteLessonPlanFile(planId, fileId string) error {
 		LessonPlanDetailsId: planId,
 		FileId:              fileId,
 	})
+}
+func (s LessonPlanStore) CheckPermission(userId string, planId string) (bool, error) {
+	var user User
+	if err := s.Model(&user).
+		Relation("Schools").
+		Where("id=?", userId).
+		Select(); err == pg.ErrNoRows {
+		return false, nil
+	} else if err != nil {
+		return false, richErrors.Wrap(err, "Failed getting user")
+	}
+	plan, err := s.GetLessonPlan(planId)
+	if err != nil {
+		return false, richErrors.Wrap(err, "failed to query lesson plan")
+	}
+	for _, school := range user.Schools {
+		if school.Id == plan.SchoolId {
+			return true, nil
+		}
+	}
+	return false, nil
 }

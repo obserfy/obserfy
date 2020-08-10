@@ -143,7 +143,7 @@ export const PagePickGuardian: FC = () => {
               },
             }}
           >
-            <Icon as={PlusIcon} m={0} mt="5px" mr={3} fill="primary" />
+            <Icon as={PlusIcon} mt="5px" mr={3} fill="primary" />
             <Typography.Body>Create {name || "new guardian"}</Typography.Body>
           </Card>
         </>

@@ -1,6 +1,8 @@
 package student
 
 import (
+	"github.com/chrsep/vor/pkg/imgproxy"
+	"github.com/google/uuid"
 	"net/http"
 	"time"
 
@@ -11,11 +13,11 @@ import (
 	richErrors "github.com/pkg/errors"
 )
 
-func NewRouter(s rest.Server, store Store) *chi.Mux {
+func NewRouter(s rest.Server, store Store, imgproxyClient *imgproxy.Client) *chi.Mux {
 	r := chi.NewRouter()
 	r.Route("/{studentId}", func(r chi.Router) {
 		r.Use(authorizationMiddleware(s, store))
-		r.Method("GET", "/", getStudent(s, store))
+		r.Method("GET", "/", getStudent(s, store, imgproxyClient))
 		r.Method("DELETE", "/", deleteStudent(s, store))
 		r.Method("PATCH", "/", patchStudent(s, store))
 
@@ -35,6 +37,9 @@ func NewRouter(s rest.Server, store Store) *chi.Mux {
 		r.Method("DELETE", "/classes", deleteClassRelation(s, store))
 
 		r.Method("GET", "/plans", getPlans(s, store))
+
+		r.Method("POST", "/images", postNewImage(s, store))
+		r.Method("GET", "/images", getStudentImages(s, store, imgproxyClient))
 	})
 	return r
 }
@@ -190,7 +195,7 @@ func deleteGuardianRelation(s rest.Server, store Store) http.Handler {
 	})
 }
 
-func getStudent(s rest.Server, store Store) http.Handler {
+func getStudent(s rest.Server, store Store, imgproxyClient *imgproxy.Client) http.Handler {
 	type Guardian struct {
 		Id           string `json:"id"`
 		Name         string `json:"name"`
@@ -257,6 +262,9 @@ func getStudent(s rest.Server, store Store) http.Handler {
 			Guardians:   guardians,
 			Classes:     classes,
 			Active:      *student.Active,
+		}
+		if student.ProfileImage.ObjectKey != "" {
+			response.ProfilePic = imgproxyClient.GenerateUrl(student.ProfileImage.ObjectKey, 80, 80)
 		}
 		if err := rest.WriteJson(w, response); err != nil {
 			return rest.NewWriteJsonError(err)
@@ -550,6 +558,84 @@ func getPlans(s rest.Server, store Store) http.Handler {
 			return rest.NewWriteJsonError(err)
 		}
 
+		return nil
+	})
+}
+
+func postNewImage(s rest.Server, store Store) http.Handler {
+	type responseBody struct {
+		Id string `json:"id"`
+	}
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		studentId := chi.URLParam(r, "studentId")
+
+		if err := r.ParseMultipartForm(10 << 20); err != nil {
+			return &rest.Error{
+				Code:    http.StatusBadRequest,
+				Message: "failed to parse payload",
+				Error:   richErrors.Wrap(err, "failed to parse response body"),
+			}
+		}
+
+		file, fileHeader, err := r.FormFile("image")
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusBadRequest,
+				Message: "invalid payload",
+				Error:   richErrors.Wrap(err, "invalid payload"),
+			}
+		}
+
+		id, err := store.CreateImage(studentId, file, fileHeader)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "Failed create file",
+				Error:   err,
+			}
+		}
+		w.WriteHeader(http.StatusCreated)
+		if err := rest.WriteJson(w, &responseBody{id}); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
+		return nil
+	})
+}
+
+func getStudentImages(s rest.Server, store Store, client *imgproxy.Client) rest.Handler {
+	type imageJson struct {
+		Id           uuid.UUID `json:"id"`
+		OriginalUrl  string    `json:"originalUrl"`
+		ThumbnailUrl string    `json:"thumbnailUrl"`
+		CreatedAt    time.Time `json:"createdAt"`
+	}
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		studentId := chi.URLParam(r, "studentId")
+
+		images, err := store.FindStudentImages(studentId)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "failed to query student images",
+				Error:   err,
+			}
+		}
+
+		response := make([]imageJson, 0)
+		for _, image := range images {
+			originalUrl := client.GenerateOriginalUrl(image.ObjectKey)
+			thumbnailUrl := client.GenerateUrl(image.ObjectKey, 400, 400)
+			response = append(response, imageJson{
+				Id:           image.Id,
+				CreatedAt:    image.CreatedAt,
+				OriginalUrl:  originalUrl,
+				ThumbnailUrl: thumbnailUrl,
+			})
+		}
+
+		if err := rest.WriteJson(w, &response); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
 		return nil
 	})
 }

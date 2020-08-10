@@ -149,7 +149,7 @@ const NavBarItem: FC<{
         mb={[0, 2]}
         py={1}
         sx={{
-          width: [60, 70],
+          width: [60, 64],
           height: [48, 60],
           flexDirection: "column",
           alignItems: "center",
@@ -170,7 +170,6 @@ const NavBarItem: FC<{
       >
         <Icon
           as={icon}
-          m={0}
           fill="transparent"
           size={24}
           sx={{ color: match ? "textPrimary" : "textDisabled" }}

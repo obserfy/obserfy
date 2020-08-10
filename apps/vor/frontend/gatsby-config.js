@@ -56,7 +56,7 @@ module.exports = {
       options: {
         name: `Obserfy`,
         short_name: `Obserfy`,
-        start_url: `https://app.obserfy.com/dashboard/students`,
+        start_url: `/dashboard/students`,
         background_color: `#121212`,
         theme_color: `#121212`,
         display: `standalone`,
@@ -130,7 +130,7 @@ module.exports = {
         fonts: [
           {
             family: `Open Sans`,
-            variants: [`300`, `400`, `700`],
+            variants: [`400`, `700`],
           },
         ],
       },
@@ -160,7 +160,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-graphql-codegen`,
       options: {
-        codegen: process.env.NODE_ENV === 'development',
+        codegen: process.env.NODE_ENV === "development",
         fileName: `./graphql-types.ts`,
         documentPaths: ["./src/**/*.{ts,tsx}"],
       },
