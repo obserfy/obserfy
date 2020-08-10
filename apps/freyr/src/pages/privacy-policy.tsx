@@ -1,16 +1,20 @@
 import React from "react"
+import { Trans } from "@lingui/macro"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { Trans } from "@lingui/macro"
 
 const PrivacyPolicyPage = () => {
   return (
     <Layout>
       <SEO title="Privacy Policy" />
       <div className="max-w-xl md:mx-auto mx-3">
-        <h1 className="text-3xl my-3"><Trans>Privacy Policy</Trans></h1>
+        <h1 className="text-3xl my-3">
+          <Trans>Privacy Policy</Trans>
+        </h1>
 
-        <p className="mb-3 text-sm"><Trans>Last updated</Trans>: May 27, 2020</p>
+        <p className="mb-3 text-sm">
+          <Trans>Last updated</Trans>: May 27, 2020
+        </p>
 
         <p className="mb-3">
           This Privacy Policy describes Our policies and procedures on the

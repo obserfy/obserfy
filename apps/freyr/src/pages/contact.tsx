@@ -13,8 +13,10 @@ const ContactUsPage: FC = () => (
           <Trans>Contact Us</Trans>
         </h1>
         <p className="text-xl mt-8 mb-3 text-gray-700 font-body">
-          <Trans>Have a question? Shoot us a message using this form. We'd love to
-          talk with you about your need.</Trans>
+          <Trans>
+            Have a question? Shoot us a message using this form. We&apos;d love
+            to talk with you about your need.
+          </Trans>
         </p>
       </div>
       <div className="flex-row justify-center lg:w-1/3 ml-auto">

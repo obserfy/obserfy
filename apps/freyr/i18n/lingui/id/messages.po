@@ -14,15 +14,15 @@ msgstr ""
 "Plural-Forms: \n"
 
 #: src/pages/contact.tsx:11
-#: src/pages/index.tsx:31
+#: src/pages/index.tsx:34
 msgid "Contact Us"
 msgstr "Kontak Kami"
 
-#: src/pages/contact.tsx:22
+#: src/pages/contact.tsx:24
 msgid "Email"
 msgstr "Email"
 
-#: src/pages/index.tsx:26
+#: src/pages/index.tsx:29
 msgid "Get Early Access"
 msgstr "Dapatkan Akses Dini"
 
@@ -30,11 +30,11 @@ msgstr "Dapatkan Akses Dini"
 msgid "Have a question? Shoot us a message using this form. We'd love to talk with you about your need."
 msgstr "Punya pertanyaan? Kirim pesan ke kami menggunakan form ini. Dengan senang hati kami akan membantu sesuai dengan kebutuhan Anda."
 
-#: src/pages/privacy-policy.tsx:11
+#: src/pages/privacy-policy.tsx:14
 msgid "Last updated"
 msgstr "Terakhir diperbarui"
 
-#: src/pages/contact.tsx:26
+#: src/pages/contact.tsx:28
 msgid "Message"
 msgstr "Pesan"
 
@@ -43,7 +43,7 @@ msgid "Parents"
 msgstr "Orang Tua"
 
 #: src/components/layout.tsx:20
-#: src/pages/privacy-policy.tsx:9
+#: src/pages/privacy-policy.tsx:10
 msgid "Privacy Policy"
 msgstr "Kebijakan Privasi"
 
@@ -51,7 +51,7 @@ msgstr "Kebijakan Privasi"
 msgid "Run your Montessori school efficiently"
 msgstr "Jalankan sekolah Montessori Anda secara efisien"
 
-#: src/pages/contact.tsx:30
+#: src/pages/contact.tsx:32
 msgid "Send"
 msgstr "Kirim"
 

@@ -14,15 +14,15 @@ msgstr ""
 "Plural-Forms: \n"
 
 #: src/pages/contact.tsx:11
-#: src/pages/index.tsx:31
+#: src/pages/index.tsx:34
 msgid "Contact Us"
 msgstr "Contact Us"
 
-#: src/pages/contact.tsx:22
+#: src/pages/contact.tsx:24
 msgid "Email"
 msgstr "Email"
 
-#: src/pages/index.tsx:26
+#: src/pages/index.tsx:29
 msgid "Get Early Access"
 msgstr "Get Early Access"
 
@@ -30,11 +30,11 @@ msgstr "Get Early Access"
 msgid "Have a question? Shoot us a message using this form. We'd love to talk with you about your need."
 msgstr "Have a question? Shoot us a message using this form. We'd love to talk with you about your need."
 
-#: src/pages/privacy-policy.tsx:11
+#: src/pages/privacy-policy.tsx:14
 msgid "Last updated"
 msgstr "Last updated"
 
-#: src/pages/contact.tsx:26
+#: src/pages/contact.tsx:28
 msgid "Message"
 msgstr "Message"
 
@@ -43,7 +43,7 @@ msgid "Parents"
 msgstr "Parents"
 
 #: src/components/layout.tsx:20
-#: src/pages/privacy-policy.tsx:9
+#: src/pages/privacy-policy.tsx:10
 msgid "Privacy Policy"
 msgstr "Privacy Policy"
 
@@ -51,7 +51,7 @@ msgstr "Privacy Policy"
 msgid "Run your Montessori school efficiently"
 msgstr "Run your Montessori school efficiently"
 
-#: src/pages/contact.tsx:30
+#: src/pages/contact.tsx:32
 msgid "Send"
 msgstr "Send"
 

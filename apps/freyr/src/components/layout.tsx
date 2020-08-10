@@ -6,10 +6,10 @@
  */
 
 import React, { FC } from "react"
-import { LocalizedLink as Link } from "atsby-tgheme-i18n"
+import { LocalizedLink as Link } from "gatsby-theme-i18n"
+import { Trans } from "@lingui/macro"
 import Header from "./header"
 import "./global.css"
-import { Trans } from "@lingui/macro"
 
 const Layout: FC = ({ children }) => {
   return (

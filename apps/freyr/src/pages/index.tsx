@@ -15,7 +15,10 @@ const IndexPage: FC = () => (
         <Trans>Run your Montessori school efficiently</Trans>
       </h1>
       <p className="text-xl my-8 text-gray-700 font-body">
-        <Trans>We help Montessori schools manage their records, do reports and communicate with parents efficiently</Trans>
+        <Trans>
+          We help Montessori schools manage their records, do reports and
+          communicate with parents efficiently
+        </Trans>
       </p>
       <div className="sm:flex">
         <a
