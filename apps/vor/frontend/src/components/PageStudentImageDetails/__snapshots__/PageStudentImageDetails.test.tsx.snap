@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageStudentImageDetails should render correctly 1`] = `
+.emotion-4 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 16px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-4 {
+    font-size: 20px;
+  }
+}
+
+.emotion-3 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+}
+
+.emotion-2 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-left: -8px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-0 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  margin: 16px;
+  margin-right: 4px;
+  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.emotion-1 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: var(--theme-ui-colors-text,#37383c);
+  font-size: 16px;
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+  margin-bottom: 0;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+}
+
+@media screen and (min-width:40em) {
+  .emotion-1 {
+    font-size: 14px;
+  }
+}
+
+<div>
+  <div
+    class="emotion-4"
+  >
+    <div
+      class="emotion-3"
+    >
+      <a
+        href="/dashboard/students/images?studentId=asdfasdf"
+        style="display: block;"
+      >
+        <div
+          class="emotion-2"
+        >
+          <div
+            class="emotion-0"
+          />
+          <p
+            class="emotion-1"
+          >
+            Image Gallery
+          </p>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+`;

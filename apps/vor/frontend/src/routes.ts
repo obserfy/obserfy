@@ -30,8 +30,8 @@ export const EDIT_CLASS_URL = (classId: string): string =>
 export const STUDENT_OVERVIEW_PAGE_URL = (studentId: string): string =>
   `/dashboard/students/overview?id=${studentId}`
 
-export const STUDENT_GALLERY_URL = (studentId: string): string =>
-  `/dashboard/students/gallery?id=${studentId}`
+export const STUDENT_IMAGES_URL = (studentId: string): string =>
+  `/dashboard/students/images?studentId=${studentId}`
 
 export const ALL_OBSERVATIONS_PAGE_URL = (studentId: string): string =>
   `/dashboard/students/observations/all?studentId=${studentId}`
