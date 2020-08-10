@@ -20,7 +20,7 @@ exports[`PageStudentImages should render correctly 1`] = `
   min-width: 0;
   margin: auto;
   padding-bottom: 64px;
-  max-width: 900px;
+  max-width: 700px;
 }
 
 .emotion-2 {

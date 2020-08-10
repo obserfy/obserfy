@@ -24,7 +24,7 @@ export const PageStudentImages: FC<Props> = ({ studentId }) => {
   const [postNewStudentImage, { isLoading }] = usePostNewStudentImage(studentId)
 
   return (
-    <Box sx={{ maxWidth: "maxWidth.lg" }} margin="auto" pb={5}>
+    <Box sx={{ maxWidth: "maxWidth.md" }} margin="auto" pb={5}>
       <BackNavigation
         text="Student Overview"
         to={STUDENT_OVERVIEW_PAGE_URL(studentId)}

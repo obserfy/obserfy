@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageStudentImageDetails should render correctly 1`] = `
-.emotion-4 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,15 +9,17 @@ exports[`PageStudentImageDetails should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-4 {
+  .emotion-7 {
     font-size: 20px;
   }
 }
 
-.emotion-3 {
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  margin: auto;
+  max-width: 640px;
 }
 
 .emotion-2 {
@@ -69,12 +71,49 @@ exports[`PageStudentImageDetails should render correctly 1`] = `
   }
 }
 
+.emotion-3 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: bold;
+  line-height: heading;
+  color: var(--theme-ui-colors-text,#37383c);
+  text-rendering: optimizeLegibility;
+  font-size: 24px;
+  margin: 16px;
+}
+
+.emotion-5 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-5 {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+.emotion-4 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  width: 100%;
+}
+
 <div>
   <div
-    class="emotion-4"
+    class="emotion-7"
   >
     <div
-      class="emotion-3"
+      class="emotion-6"
     >
       <a
         href="/dashboard/students/images?studentId=asdfasdf"
@@ -93,6 +132,16 @@ exports[`PageStudentImageDetails should render correctly 1`] = `
           </p>
         </div>
       </a>
+      <h5
+        class="emotion-3"
+      />
+      <div
+        class="emotion-5"
+      >
+        <img
+          class="emotion-4"
+        />
+      </div>
     </div>
   </div>
 </div>
