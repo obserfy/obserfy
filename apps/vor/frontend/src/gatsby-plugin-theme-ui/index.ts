@@ -42,7 +42,7 @@ const theme: Theme = {
     border: "rgba(0,0,0,.1)",
     borderSolid: "#fff",
 
-    overlay: "rgba(0,0,0,.6)",
+    overlay: "rgba(0,0,0,.7)",
     onOverlay: "#fff",
 
     muted: "#f6f6f9",
@@ -111,7 +111,6 @@ const theme: Theme = {
         muted: "#222222",
         mutedLight: "#212121",
 
-        overlay: "rgba(0,0,0,.6)",
         onOverlay: "#fff",
 
         warning: "#ffd600",
@@ -213,6 +212,7 @@ const theme: Theme = {
   },
   buttons: {
     primary: {
+      userSelect: "none",
       cursor: "pointer",
       boxSizing: "border-box",
       fontSize: 1,

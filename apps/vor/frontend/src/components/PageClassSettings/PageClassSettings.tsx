@@ -28,15 +28,15 @@ export const PageClassSettings: FC = () => {
       {classes.status === "loading" && <LoadingState />}
       {haveNoClass && <NoClassPlaceholder />}
       {(classes.data?.length ?? 0) > 0 && (
-        <Flex sx={{ alignItems: "center" }} m={3} mb={4}>
-          <Typography.H3
+        <Flex sx={{ alignItems: "center" }} m={3}>
+          <Typography.H4
             mr="auto"
             sx={{
               lineHeight: 1,
             }}
           >
             Classes
-          </Typography.H3>
+          </Typography.H4>
           <Link to={NEW_CLASS_URL}>
             <Button>New</Button>
           </Link>

@@ -60,7 +60,7 @@ exports[`PageError should render correctly 1`] = `
   line-height: heading;
   color: var(--theme-ui-colors-text,#37383c);
   text-rendering: optimizeLegibility;
-  font-size: 48px;
+  font-size: 24px;
   padding-top: 16px;
   margin: 16px;
   margin-bottom: 16px;
@@ -119,6 +119,10 @@ exports[`PageError should render correctly 1`] = `
   background-color: var(--theme-ui-colors-primary,#00e399);
   border: 0;
   border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
@@ -189,6 +193,10 @@ exports[`PageError should render correctly 1`] = `
   background-color: var(--theme-ui-colors-primary,#00e399);
   border: 0;
   border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
@@ -289,11 +297,11 @@ exports[`PageError should render correctly 1`] = `
 /static/9cf0a1adee34b11d10d8c8d2e3e53438/6e29c/astronaut.png 2x" src="/static/9cf0a1adee34b11d10d8c8d2e3e53438/d8216/astronaut.png" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/&gt;&lt;/picture&gt;
           </noscript>
         </div>
-        <h3
+        <h5
           class="emotion-0"
         >
           Oops, Something went wrong
-        </h3>
+        </h5>
         <p
           class="emotion-1"
         >

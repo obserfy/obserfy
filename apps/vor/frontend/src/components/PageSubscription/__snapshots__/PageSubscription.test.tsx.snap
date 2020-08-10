@@ -333,6 +333,10 @@ exports[`PageSubscription should render correctly 1`] = `
   background-color: var(--theme-ui-colors-primary,#00e399);
   border: 0;
   border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
@@ -387,6 +391,7 @@ exports[`PageSubscription should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  margin-left: 4px;
   margin-right: 4px;
   display: inline-block;
   position: relative;

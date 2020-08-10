@@ -61,14 +61,14 @@ export const PageError: FC = () => {
         <GatsbyImage
           fixed={astronaut?.file?.childImageSharp?.fixed as FixedObject}
         />
-        <Typography.H3
+        <Typography.H5
           pt={3}
           sx={{ textAlign: "center", lineHeight: 1.2 }}
           m={3}
           mb={3}
         >
           Oops, Something went wrong
-        </Typography.H3>
+        </Typography.H5>
         <Typography.Body mb={4} mx={3} sx={{ textAlign: "center" }}>
           Sorry, please try reloading the page.
         </Typography.Body>

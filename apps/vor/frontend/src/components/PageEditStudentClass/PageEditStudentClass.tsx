@@ -1,15 +1,12 @@
 import React, { FC, useState } from "react"
-import { Box, Card, Flex } from "theme-ui"
+import { Button, Box, Card, Flex } from "theme-ui"
 import { BackNavigation } from "../BackNavigation/BackNavigation"
 import { NEW_STUDENT_CLASS_URL, STUDENT_PROFILE_URL } from "../../routes"
 import { useGetStudent } from "../../api/useGetStudent"
 import useGetSchoolClasses from "../../api/classes/useGetSchoolClasses"
 import { Typography } from "../Typography/Typography"
-
 import Dialog from "../Dialog/Dialog"
 import DialogHeader from "../DialogHeader/DialogHeader"
-
-import { Button } from "../Button/Button"
 import Icon from "../Icon/Icon"
 import { ReactComponent as RemoveIcon } from "../../icons/close.svg"
 import { Link } from "../Link/Link"

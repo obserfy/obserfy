@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react"
-import { Box, Card, Flex } from "theme-ui"
+import { Button, Box, Card, Flex } from "theme-ui"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import {
   Guardians,
@@ -7,18 +7,15 @@ import {
 } from "../../api/guardians/useGetSchoolGuardians"
 import { Student, useGetStudent } from "../../api/useGetStudent"
 import { Typography } from "../Typography/Typography"
-
 import { NEW_GUARDIANS_URL, STUDENT_PROFILE_URL } from "../../routes"
 import SearchBar from "../SearchBar/SearchBar"
 import Icon from "../Icon/Icon"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import { ReactComponent as LinkIcon } from "../../icons/link.svg"
 import { ReactComponent as RemoveIcon } from "../../icons/close.svg"
-
 import GuardianRelationshipPickerDialog from "../GuardianRelationshipPickerDialog/GuardianRelationshipPickerDialog"
 import { usePostGuardianRelation } from "../../api/guardians/usePostGuardianRelation"
 import { Link } from "../Link/Link"
-import { Button } from "../Button/Button"
 import { useDeleteGuardianRelation } from "../../api/guardians/useDeleteGuardianRelation"
 import Dialog from "../Dialog/Dialog"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
