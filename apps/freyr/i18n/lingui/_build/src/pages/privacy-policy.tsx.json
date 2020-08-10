@@ -1,0 +1,18 @@
+{
+  "Privacy Policy": {
+    "origin": [
+      [
+        "src/pages/privacy-policy.tsx",
+        10
+      ]
+    ]
+  },
+  "Last updated": {
+    "origin": [
+      [
+        "src/pages/privacy-policy.tsx",
+        14
+      ]
+    ]
+  }
+}

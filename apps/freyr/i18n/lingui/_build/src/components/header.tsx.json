@@ -1,0 +1,18 @@
+{
+  "Teachers": {
+    "origin": [
+      [
+        "src/components/header.tsx",
+        31
+      ]
+    ]
+  },
+  "Parents": {
+    "origin": [
+      [
+        "src/components/header.tsx",
+        37
+      ]
+    ]
+  }
+}

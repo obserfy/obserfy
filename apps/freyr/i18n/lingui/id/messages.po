@@ -1,0 +1,64 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2020-08-02 18:37+0700\n"
+"Mime-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: id\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/pages/contact.tsx:11
+#: src/pages/index.tsx:34
+msgid "Contact Us"
+msgstr "Kontak Kami"
+
+#: src/pages/contact.tsx:24
+msgid "Email"
+msgstr "Email"
+
+#: src/pages/index.tsx:29
+msgid "Get Early Access"
+msgstr "Dapatkan Akses Dini"
+
+#: src/pages/contact.tsx:14
+msgid "Have a question? Shoot us a message using this form. We'd love to talk with you about your need."
+msgstr "Punya pertanyaan? Kirim pesan ke kami menggunakan form ini. Dengan senang hati kami akan membantu sesuai dengan kebutuhan Anda."
+
+#: src/pages/privacy-policy.tsx:14
+msgid "Last updated"
+msgstr "Terakhir diperbarui"
+
+#: src/pages/contact.tsx:28
+msgid "Message"
+msgstr "Pesan"
+
+#: src/components/header.tsx:37
+msgid "Parents"
+msgstr "Orang Tua"
+
+#: src/components/layout.tsx:20
+#: src/pages/privacy-policy.tsx:10
+msgid "Privacy Policy"
+msgstr "Kebijakan Privasi"
+
+#: src/pages/index.tsx:12
+msgid "Run your Montessori school efficiently"
+msgstr "Jalankan sekolah Montessori Anda secara efisien"
+
+#: src/pages/contact.tsx:32
+msgid "Send"
+msgstr "Kirim"
+
+#: src/components/header.tsx:31
+msgid "Teachers"
+msgstr "Guru"
+
+#: src/pages/index.tsx:15
+msgid "We help Montessori schools manage their records, do reports and communicate with parents efficiently"
+msgstr "Kami membantu sekolah Montessori mengelola catatan mereka, melakukan laporan dan berkomunikasi dengan orang tua secara efisien"
