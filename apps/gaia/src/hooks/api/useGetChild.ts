@@ -1,10 +1,9 @@
 import { useQuery } from "react-query"
+import { GetChildResponse } from "../../pages/api/children/[childId]"
+import { getApi } from "../../apiHelpers"
 
 const useGetChild = (childId: string) => {
-  const getChild = async () => {
-    const result = await fetch(`/api/children/${childId}`)
-    return result.json()
-  }
+  const getChild = getApi<GetChildResponse>(`/children/${childId}`)
   return useQuery(["child", childId], getChild, {
     enabled: childId,
   })

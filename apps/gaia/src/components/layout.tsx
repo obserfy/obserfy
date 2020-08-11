@@ -2,12 +2,12 @@ import React, { FC, useEffect } from "react"
 import { useRouter } from "next/router"
 import Head from "next/head"
 import Img from "react-optimized-image"
-import useGetUser from "../hooks/useGetUser"
+import useGetUser from "../hooks/api/useGetUser"
 import Header from "./header"
-import useGetChildren from "../hooks/useGetChildren"
+import useGetChildren from "../hooks/api/useGetChildren"
 import Button from "./button"
 import StudentPicPlaceholder from "../images/student_pic_placeholder.jpg"
-import useGetChild from "../hooks/useGetChild"
+import useGetChild from "../hooks/api/useGetChild"
 import { useQueryString } from "../hooks/useQueryString"
 import Logo from "../images/logo.svg"
 
@@ -20,7 +20,7 @@ const Layout: FC = ({ children }) => {
 
   useEffect(() => {
     const newId = userChildren.data?.[0]?.id
-    if (router.query.childId === undefined && newId !== undefined) {
+    if (!router.query.childId && newId) {
       router.push(`/?childId=${userChildren.data?.[0]?.id}`)
     }
   }, [userChildren.data])
@@ -63,15 +63,25 @@ const Layout: FC = ({ children }) => {
       {user.status === "success" && child.status === "success" ? (
         <>
           <div className="bg-white">
-            <div className="flex px-3 py-8 max-w-4xl mx-auto">
+            <div className="flex px-3 py-3 max-w-4xl mx-auto">
               <div>
-                <img
-                  alt="profile"
-                  src={child.data?.profilePic ?? StudentPicPlaceholder}
-                  width={60}
-                  height={60}
-                  className="rounded-full"
-                />
+                {child.data?.profilePic ? (
+                  <img
+                    alt="profile"
+                    src={child.data.profilePic}
+                    width={60}
+                    height={60}
+                    className="rounded-full"
+                  />
+                ) : (
+                  <Img
+                    alt="profile"
+                    src={StudentPicPlaceholder}
+                    width={60}
+                    height={60}
+                    className="rounded-full"
+                  />
+                )}
               </div>
               <div className="ml-4">
                 <div className="text-2xl leading-tight">{child.data?.name}</div>
