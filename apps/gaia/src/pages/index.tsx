@@ -5,7 +5,7 @@ import dayjs, { Dayjs } from "../utils/dayjs"
 import Button from "../components/button"
 import ChevronRight from "../icons/chevron-right.svg"
 import ChevronLeft from "../icons/chevron-left.svg"
-import useGetChildPlans from "../hooks/useGetChildPlans"
+import useGetChildPlans from "../hooks/api/useGetChildPlans"
 import { useQueryString } from "../hooks/useQueryString"
 import NoPlanIllustration from "../images/no-plan-illustration.svg"
 
