@@ -57,6 +57,7 @@ const IndexPage = () => {
             files={[]}
             area={plan.area?.name}
             description={plan.description}
+            links={plan.links}
           />
         ))}
       </div>
@@ -71,6 +72,13 @@ const Plan: FC<{
   files: Array<{
     link: string
     name: string
+  }>
+  links: Array<{
+    id: string
+    url: string
+    title?: string
+    description?: string
+    image?: string
   }>
 }> = ({ name, area, files, description }) => {
   return (
