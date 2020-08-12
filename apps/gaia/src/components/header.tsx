@@ -15,15 +15,9 @@ const Header: FC<Props> = ({ userImageSrc, userName }) => {
   return (
     <>
       <div className="bg-surface">
-        <div className="p-3 pb-2 flex items-center max-w-4xl mx-auto">
-          <Img
-            alt="obserfy logo"
-            src={Logo}
-            height={30}
-            width={30}
-            className="ml-3"
-          />
-          <div className="ml-8">
+        <div className="p-3 pb-2 flex items-center max-w-3xl mx-auto">
+          <Img alt="obserfy logo" src={Logo} height={30} width={30} />
+          <div className="ml-4">
             <ProfilePicture src={userImageSrc} />
           </div>
           <div className="ml-3 text-sm">{userName}</div>

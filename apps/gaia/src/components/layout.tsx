@@ -42,7 +42,7 @@ const Layout: FC = ({ children }) => {
       {user.status === "success" && child.status === "success" ? (
         <>
           <div className="bg-white">
-            <div className="flex px-3 py-3 max-w-4xl mx-auto">
+            <div className="flex px-3 py-3 max-w-3xl mx-auto">
               <div>
                 {child.data?.profilePic ? (
                   <img
@@ -71,7 +71,7 @@ const Layout: FC = ({ children }) => {
             </div>
           </div>
           <div className="sticky top-0 bg-surface border-b ">
-            <nav className="w-full flex max-w-4xl mx-auto">
+            <nav className="w-full flex max-w-3xl mx-auto">
               <div
                 className="mx-3 py-2 border-b-2 border-black text-sm"
                 style={{ marginBottom: "-1px" }}
@@ -80,7 +80,7 @@ const Layout: FC = ({ children }) => {
               </div>
             </nav>
           </div>
-          <main className="max-w-4xl mx-auto">{children}</main>
+          <main className="max-w-3xl mx-auto">{children}</main>
         </>
       ) : (
         <LoadingPlaceholder />
@@ -91,7 +91,7 @@ const Layout: FC = ({ children }) => {
 
 const PlaceholderHeader = () => {
   return (
-    <div className="p-3 pb-2 flex items-center max-w-4xl  mx-auto bg-white">
+    <div className="p-3 pb-2 flex items-center max-w-3xl  mx-auto bg-white">
       <div className="flex items-center">
         <Img
           alt="obserfy logo"
@@ -109,7 +109,7 @@ const PlaceholderHeader = () => {
 const LoadingPlaceholder = () => {
   return (
     <div className="bg-white">
-      <div className="bg-white flex px-3 py-6 max-w-4xl mx-auto">
+      <div className="bg-white flex px-3 py-6 max-w-3xl mx-auto">
         <div>
           <div
             className="rounded-full loading-placeholder"
@@ -125,7 +125,7 @@ const LoadingPlaceholder = () => {
         </div>
       </div>
       <div className="sticky top-0 bg-surface border-b ">
-        <nav className="w-full flex max-w-4xl mx-auto">
+        <nav className="w-full flex max-w-3xl mx-auto">
           <div className="mx-3 px-1 py-2 border-b-2 text-sm ">
             <div className="loading-placeholder w-24 rounded h-4" />
           </div>
