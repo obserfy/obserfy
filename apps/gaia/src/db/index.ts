@@ -72,13 +72,16 @@ export const findLessonPlanByChildIdAndDate = async (
                      lpd.description as description,
                      a.name          as areaName,
                      a.id            as areaid,
-                     lp.date         as date
+                     lp.date         as date,
+                     array_agg(lpl.url)         as url
               from lesson_plans lp
                        left join lesson_plan_details lpd on lp.lesson_plan_details_id = lpd.id
                        left join lesson_plan_to_students lpts on lp.id = lpts.lesson_plan_id
                        left join areas a on lpd.area_id = a.id
+                       left join lesson_plan_links lpl on lpd.id = lpl.lesson_plan_details_id
               where lpts.student_id = $1
                 AND ($2::date IS NULL OR lp.date::date = $2::date)
+              group by lp.id, lpd.title, lpd.description, a.name, a.id, lp.date
     `,
     [childId, date]
   )
@@ -89,6 +92,7 @@ export const findLessonPlanByChildIdAndDate = async (
     description: plan.description,
     date: dayjs(plan.date),
     student: [],
+    links: plan.url.filter((url) => url).map((url) => ({ url })),
     area: {
       id: plan.areaid,
       name: plan.areaname,
