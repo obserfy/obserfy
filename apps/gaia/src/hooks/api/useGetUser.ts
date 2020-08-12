@@ -5,8 +5,7 @@ import { getApi } from "../../apiHelpers"
 const useGetUser = () => {
   const getUser = getApi<UserData>("/me")
   return useQuery("me", getUser, {
-    retry: (failureCount, error) =>
-      !(error instanceof Error && error.message === "not_authenticated"),
+    retry: (failureCount, error) => !(error.message === "not_authenticated"),
   })
 }
 

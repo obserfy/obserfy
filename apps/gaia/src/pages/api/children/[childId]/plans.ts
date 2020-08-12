@@ -12,6 +12,13 @@ export interface GetChildPlansResponse {
     id: string
     name: string
   }
+  links: Array<{
+    id: string
+    url: string
+    title?: string
+    description?: string
+    image?: string
+  }>
 }
 export default auth0.requireAuthentication(async (req, res) => {
   try {

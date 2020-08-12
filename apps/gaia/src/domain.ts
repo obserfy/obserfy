@@ -12,6 +12,14 @@ export interface Children {
   dateOfEntry?: Dayjs
 }
 
+interface Link {
+  id: string
+  url: string
+  title?: string
+  description?: string
+  image?: string
+}
+
 export interface LessonPlan {
   id: string
   title: string
@@ -19,4 +27,5 @@ export interface LessonPlan {
   date: Dayjs
   area?: Area
   student: Children[]
+  links: Link[]
 }
