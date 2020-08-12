@@ -76,8 +76,13 @@ const Plan: FC<{
   return (
     <div className="flex flex-col items-start bg-surface md:rounded mb-2 border p-3">
       <div className="text-md">{name}</div>
-      {description && <div className="text-gray-600 mt-1">{description}</div>}
-      {area && <div className="text-sm text-green-700 mt-1">{area}</div>}
+      {description
+        .split("\n")
+        .filter((text) => text !== "")
+        .map((text) => (
+          <div className="text-gray-600 my-2">{text}</div>
+        ))}
+      {area && <div className="text-sm text-green-700">{area}</div>}
       {files.length > 0 && (
         <div className="text-sm text-gray-700 mb-1">Files</div>
       )}
