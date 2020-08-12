@@ -57,6 +57,8 @@ export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
           <DateDataBox value={plan.data?.date} lessonPlanId={planId} />
           <AreaDataBox value={plan.data?.areaId} lessonPlanId={planId} />
           <TitleDataBox value={plan.data?.title} lessonPlanId={planId} />
+        </Card>
+        <Card mb={3} sx={{ borderRadius: [0, "default"] }}>
           <DescriptionDataBox
             value={plan.data?.description}
             lessonPlanId={planId}
@@ -316,15 +318,18 @@ const MultilineDataBox: FC<{
   <Box px={3} py={3} sx={{ alignItems: "flex-start" }}>
     <Box mb={2}>
       <Typography.Body
-        mb={1}
+        mb={2}
         color="textMediumEmphasis"
         sx={{ lineHeight: 1, fontSize: 1 }}
       >
         {label}
       </Typography.Body>
-      {value.split("\n").map((text) => (
-        <Typography.Body mb={3}>{text || placeholder}</Typography.Body>
-      ))}
+      {value
+        .split("\n")
+        .filter((text) => text)
+        .map((text) => (
+          <Typography.Body mb={3}>{text || placeholder}</Typography.Body>
+        ))}
     </Box>
     <Button
       variant="outline"
