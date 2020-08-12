@@ -79,7 +79,7 @@ jobs:
 
   backend_unit:
     docker:
-      - image: golang:1.14
+      - image: golang:1.15
       - image: minio/minio:latest
         entrypoint: sh
         command: -c 'mkdir -p /data/media && /usr/bin/minio server /data'
