@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.10.4](https://github.com/obserfy/obserfy/compare/v1.10.3...v1.10.4) (2020-08-12)
+
+
+### Bug Fixes
+
+* **deps:** update dependency next to v9.5.2 ([89d1d90](https://github.com/obserfy/obserfy/commit/89d1d90ea200e49beac276c8f709cee5f7d1f13f))
+
 ### [1.10.3](https://github.com/obserfy/obserfy/compare/v1.10.2...v1.10.3) (2020-08-10)
 
 
