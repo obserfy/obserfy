@@ -85,11 +85,12 @@ const Plan: FC<{
 }> = ({ name, area, files, description, links }) => {
   return (
     <div className="flex flex-col items-start bg-surface md:rounded mb-2 border py-3">
+      {area && <div className="text-sm text-green-700 px-3 mb-1">{area}</div>}
       <div className="text-md px-3">{name}</div>
       {description
-        .split("\n")
-        .filter((text) => text !== "")
-        .map((text) => (
+        ?.split("\n")
+        ?.filter((text) => text !== "")
+        ?.map((text) => (
           <div className="text-gray-600 my-2 px-3">{text}</div>
         ))}
       {links.map((link) => {
@@ -109,7 +110,6 @@ const Plan: FC<{
           </a>
         )
       })}
-      {area && <div className="text-sm text-green-700 px-3">{area}</div>}
       {files.length > 0 && (
         <div className="text-sm text-gray-700 mb-1">Files</div>
       )}
