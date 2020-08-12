@@ -12,9 +12,10 @@ import { useQueryString } from "../hooks/useQueryString"
 import Logo from "../images/logo.svg"
 
 const Layout: FC = ({ children }) => {
+  const childId = useQueryString("childId")
+
   const user = useGetUser()
   const userChildren = useGetChildren()
-  const childId = useQueryString("childId")
   const child = useGetChild(childId)
   const router = useRouter()
 
@@ -25,30 +26,8 @@ const Layout: FC = ({ children }) => {
     }
   }, [userChildren.data])
 
-  if ((user.error as Error)?.message === "not_authenticated") {
-    return (
-      <div>
-        <Head>
-          <html lang="en" />
-          <title>Obserfy for Parents</title>
-          <meta
-            name="viewport"
-            content="initial-scale=1.0, width=device-width"
-          />
-        </Head>
-        <EmptyHeader />
-        <main className="max-w-lg mx-auto my-8">
-          <h1 className="text-2xl m-3 leading-tight">
-            Looks like your session has expired
-          </h1>
-          <a href="/api/login" className="block mt-6 w-full px-3">
-            <Button type="button" className="w-full py-3">
-              Login
-            </Button>
-          </a>
-        </main>
-      </div>
-    )
+  if (user.error?.message === "not_authenticated") {
+    return <ExpiredSession />
   }
 
   return (
@@ -57,7 +36,7 @@ const Layout: FC = ({ children }) => {
         <Header userName={user.data?.name} userImageSrc={user.data?.picture} />
       ) : (
         <div className="bg-white">
-          <EmptyHeader />
+          <PlaceholderHeader />
         </div>
       )}
       {user.status === "success" && child.status === "success" ? (
@@ -104,13 +83,13 @@ const Layout: FC = ({ children }) => {
           <main className="max-w-4xl mx-auto">{children}</main>
         </>
       ) : (
-        <ChildLoadingPlaceholder />
+        <LoadingPlaceholder />
       )}
     </div>
   )
 }
 
-const EmptyHeader = () => {
+const PlaceholderHeader = () => {
   return (
     <div className="p-3 pb-2 flex items-center max-w-4xl  mx-auto bg-white">
       <div className="flex items-center">
@@ -127,7 +106,7 @@ const EmptyHeader = () => {
   )
 }
 
-const ChildLoadingPlaceholder = () => {
+const LoadingPlaceholder = () => {
   return (
     <div className="bg-white">
       <div className="bg-white flex px-3 py-6 max-w-4xl mx-auto">
@@ -152,6 +131,29 @@ const ChildLoadingPlaceholder = () => {
           </div>
         </nav>
       </div>
+    </div>
+  )
+}
+
+const ExpiredSession = () => {
+  return (
+    <div>
+      <Head>
+        <html lang="en" />
+        <title>Obserfy for Parents</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <PlaceholderHeader />
+      <main className="max-w-lg mx-auto my-8">
+        <h1 className="text-2xl m-3 leading-tight">
+          Looks like your session has expired
+        </h1>
+        <a href="/api/login" className="block mt-6 w-full px-3">
+          <Button type="button" className="w-full py-3">
+            Login
+          </Button>
+        </a>
+      </main>
     </div>
   )
 }
