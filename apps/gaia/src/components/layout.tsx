@@ -2,53 +2,32 @@ import React, { FC, useEffect } from "react"
 import { useRouter } from "next/router"
 import Head from "next/head"
 import Img from "react-optimized-image"
-import useGetUser from "../hooks/useGetUser"
+import useGetUser from "../hooks/api/useGetUser"
 import Header from "./header"
-import useGetChildren from "../hooks/useGetChildren"
+import useGetChildren from "../hooks/api/useGetChildren"
 import Button from "./button"
 import StudentPicPlaceholder from "../images/student_pic_placeholder.jpg"
-import useGetChild from "../hooks/useGetChild"
+import useGetChild from "../hooks/api/useGetChild"
 import { useQueryString } from "../hooks/useQueryString"
 import Logo from "../images/logo.svg"
 
 const Layout: FC = ({ children }) => {
+  const childId = useQueryString("childId")
+
   const user = useGetUser()
   const userChildren = useGetChildren()
-  const childId = useQueryString("childId")
   const child = useGetChild(childId)
   const router = useRouter()
 
   useEffect(() => {
     const newId = userChildren.data?.[0]?.id
-    if (router.query.childId === undefined && newId !== undefined) {
+    if (!router.query.childId && newId) {
       router.push(`/?childId=${userChildren.data?.[0]?.id}`)
     }
   }, [userChildren.data])
 
-  if ((user.error as Error)?.message === "not_authenticated") {
-    return (
-      <div>
-        <Head>
-          <html lang="en" />
-          <title>Obserfy for Parents</title>
-          <meta
-            name="viewport"
-            content="initial-scale=1.0, width=device-width"
-          />
-        </Head>
-        <EmptyHeader />
-        <main className="max-w-lg mx-auto my-8">
-          <h1 className="text-2xl m-3 leading-tight">
-            Looks like your session has expired
-          </h1>
-          <a href="/api/login" className="block mt-6 w-full px-3">
-            <Button type="button" className="w-full py-3">
-              Login
-            </Button>
-          </a>
-        </main>
-      </div>
-    )
+  if (user.error?.message === "not_authenticated") {
+    return <ExpiredSession />
   }
 
   return (
@@ -57,21 +36,31 @@ const Layout: FC = ({ children }) => {
         <Header userName={user.data?.name} userImageSrc={user.data?.picture} />
       ) : (
         <div className="bg-white">
-          <EmptyHeader />
+          <PlaceholderHeader />
         </div>
       )}
       {user.status === "success" && child.status === "success" ? (
         <>
           <div className="bg-white">
-            <div className="flex px-3 py-8 max-w-4xl mx-auto">
+            <div className="flex px-3 py-3 max-w-3xl mx-auto">
               <div>
-                <img
-                  alt="profile"
-                  src={child.data?.profilePic ?? StudentPicPlaceholder}
-                  width={60}
-                  height={60}
-                  className="rounded-full"
-                />
+                {child.data?.profilePic ? (
+                  <img
+                    alt="profile"
+                    src={child.data.profilePic}
+                    width={60}
+                    height={60}
+                    className="rounded-full"
+                  />
+                ) : (
+                  <Img
+                    alt="profile"
+                    src={StudentPicPlaceholder}
+                    width={60}
+                    height={60}
+                    className="rounded-full"
+                  />
+                )}
               </div>
               <div className="ml-4">
                 <div className="text-2xl leading-tight">{child.data?.name}</div>
@@ -82,7 +71,7 @@ const Layout: FC = ({ children }) => {
             </div>
           </div>
           <div className="sticky top-0 bg-surface border-b ">
-            <nav className="w-full flex max-w-4xl mx-auto">
+            <nav className="w-full flex max-w-3xl mx-auto">
               <div
                 className="mx-3 py-2 border-b-2 border-black text-sm"
                 style={{ marginBottom: "-1px" }}
@@ -91,18 +80,18 @@ const Layout: FC = ({ children }) => {
               </div>
             </nav>
           </div>
-          <main className="max-w-4xl mx-auto">{children}</main>
+          <main className="max-w-3xl mx-auto">{children}</main>
         </>
       ) : (
-        <ChildLoadingPlaceholder />
+        <LoadingPlaceholder />
       )}
     </div>
   )
 }
 
-const EmptyHeader = () => {
+const PlaceholderHeader = () => {
   return (
-    <div className="p-3 pb-2 flex items-center max-w-4xl  mx-auto bg-white">
+    <div className="p-3 pb-2 flex items-center max-w-3xl  mx-auto bg-white">
       <div className="flex items-center">
         <Img
           alt="obserfy logo"
@@ -117,10 +106,10 @@ const EmptyHeader = () => {
   )
 }
 
-const ChildLoadingPlaceholder = () => {
+const LoadingPlaceholder = () => {
   return (
     <div className="bg-white">
-      <div className="bg-white flex px-3 py-6 max-w-4xl mx-auto">
+      <div className="bg-white flex px-3 py-6 max-w-3xl mx-auto">
         <div>
           <div
             className="rounded-full loading-placeholder"
@@ -136,12 +125,35 @@ const ChildLoadingPlaceholder = () => {
         </div>
       </div>
       <div className="sticky top-0 bg-surface border-b ">
-        <nav className="w-full flex max-w-4xl mx-auto">
+        <nav className="w-full flex max-w-3xl mx-auto">
           <div className="mx-3 px-1 py-2 border-b-2 text-sm ">
             <div className="loading-placeholder w-24 rounded h-4" />
           </div>
         </nav>
       </div>
+    </div>
+  )
+}
+
+const ExpiredSession = () => {
+  return (
+    <div>
+      <Head>
+        <html lang="en" />
+        <title>Obserfy for Parents</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <PlaceholderHeader />
+      <main className="max-w-lg mx-auto my-8">
+        <h1 className="text-2xl m-3 leading-tight">
+          Looks like your session has expired
+        </h1>
+        <a href="/api/login" className="block mt-6 w-full px-3">
+          <Button type="button" className="w-full py-3">
+            Login
+          </Button>
+        </a>
+      </main>
     </div>
   )
 }

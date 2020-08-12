@@ -18,6 +18,7 @@ const Button: FC<
         ${outline && "border"}
         ${className}
       `}
+      style={{ touchAction: "manipulation" }}
     />
   )
 }

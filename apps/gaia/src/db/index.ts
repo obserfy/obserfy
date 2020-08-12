@@ -67,18 +67,22 @@ export const findLessonPlanByChildIdAndDate = async (
   // language=PostgreSQL
   const plans = await query(
     `
-              select lp.id           as id,
-                     lpd.title       as title,
-                     lpd.description as description,
-                     a.name          as areaName,
-                     a.id            as areaid,
-                     lp.date         as date
+              select lp.id              as id,
+                     lpd.title          as title,
+                     lpd.description    as description,
+                     a.name             as areaName,
+                     a.id               as areaid,
+                     lp.date            as date,
+                     array_agg(lpl.url) as urls,
+                     array_agg(lpl.id)  as url_ids
               from lesson_plans lp
                        left join lesson_plan_details lpd on lp.lesson_plan_details_id = lpd.id
                        left join lesson_plan_to_students lpts on lp.id = lpts.lesson_plan_id
                        left join areas a on lpd.area_id = a.id
+                       left join lesson_plan_links lpl on lpd.id = lpl.lesson_plan_details_id
               where lpts.student_id = $1
                 AND ($2::date IS NULL OR lp.date::date = $2::date)
+              group by lp.id, lpd.title, lpd.description, a.name, a.id, lp.date
     `,
     [childId, date]
   )
@@ -93,5 +97,13 @@ export const findLessonPlanByChildIdAndDate = async (
       id: plan.areaid,
       name: plan.areaname,
     },
+    links: plan.urls
+      .map((url, idx) => {
+        if (url) {
+          return { url, id: plan.url_ids[idx] }
+        }
+        return null
+      })
+      .filter((url) => url),
   }))
 }

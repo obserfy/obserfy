@@ -1,7 +1,8 @@
 import React, { FC } from "react"
 
-import { Link } from "gatsby"
+import { LocalizedLink as Link } from "gatsby-theme-i18n"
 import { trackCustomEvent } from "gatsby-plugin-google-analytics"
+import { Trans } from "@lingui/macro"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Button from "../components/button"
@@ -11,11 +12,13 @@ const IndexPage: FC = () => (
     <SEO title="Home" />
     <div className="flex-row justify-center my-12 max-w-xl">
       <h1 className="text-5xl leading-none font-heading font-medium">
-        Run your Montessori school efficiently
+        <Trans>Run your Montessori school efficiently</Trans>
       </h1>
       <p className="text-xl my-8 text-gray-700 font-body">
-        We help Montessori schools manage their records, do reports and
-        communicate with parents efficiently
+        <Trans>
+          We help Montessori schools manage their records, do reports and
+          communicate with parents efficiently
+        </Trans>
       </p>
       <div className="sm:flex">
         <a
@@ -32,12 +35,12 @@ const IndexPage: FC = () => (
               })
             }}
           >
-            Get Early Access
+            <Trans>Get Early Access</Trans>
           </Button>
         </a>
         <Link to="/contact">
           <Button secondary className="w-full sm:w-auto text-lg bg-green-200">
-            Contact Us
+            <Trans>Contact Us</Trans>
           </Button>
         </Link>
       </div>

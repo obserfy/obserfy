@@ -1,13 +1,15 @@
 import React, { FC, useState } from "react"
 import Head from "next/head"
 import Img from "react-optimized-image"
+import { Svg } from "react-optimized-image/lib"
 import dayjs, { Dayjs } from "../utils/dayjs"
 import Button from "../components/button"
 import ChevronRight from "../icons/chevron-right.svg"
 import ChevronLeft from "../icons/chevron-left.svg"
-import useGetChildPlans from "../hooks/useGetChildPlans"
+import useGetChildPlans from "../hooks/api/useGetChildPlans"
 import { useQueryString } from "../hooks/useQueryString"
 import NoPlanIllustration from "../images/no-plan-illustration.svg"
+import LinkIcon from "../icons/link.svg"
 
 const IndexPage = () => {
   const [date, setDate] = useState(dayjs())
@@ -57,6 +59,7 @@ const IndexPage = () => {
             files={[]}
             area={plan.area?.name}
             description={plan.description}
+            links={plan.links}
           />
         ))}
       </div>
@@ -72,12 +75,41 @@ const Plan: FC<{
     link: string
     name: string
   }>
-}> = ({ name, area, files, description }) => {
+  links: Array<{
+    id: string
+    url: string
+    title?: string
+    description?: string
+    image?: string
+  }>
+}> = ({ name, area, files, description, links }) => {
   return (
-    <div className="flex flex-col items-start bg-surface md:rounded mb-2 border p-3">
-      <div className="text-md">{name}</div>
-      {description && <div className="text-gray-600 mt-1">{description}</div>}
-      {area && <div className="text-sm text-green-700 mt-1">{area}</div>}
+    <div className="flex flex-col items-start bg-surface md:rounded mb-2 border py-3">
+      {area && <div className="text-sm text-green-700 px-3 mb-1">{area}</div>}
+      <div className="text-md px-3">{name}</div>
+      {description
+        ?.split("\n")
+        ?.filter((text) => text !== "")
+        ?.map((text) => (
+          <div className="text-gray-700 my-2 px-3">{text}</div>
+        ))}
+      {links.map((link) => {
+        return (
+          <a
+            key={link.id}
+            href={link.url}
+            className="overflow-x-auto max-w-full px-3 underline py-2 flex items-center"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <Svg
+              src={LinkIcon}
+              className="w-5 h-5 mr-2 fill-current flex-shrink-0"
+            />
+            <div className="whitespace-no-wrap">{link.url}</div>
+          </a>
+        )
+      })}
       {files.length > 0 && (
         <div className="text-sm text-gray-700 mb-1">Files</div>
       )}
