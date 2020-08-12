@@ -91,7 +91,7 @@ const Plan: FC<{
         ?.split("\n")
         ?.filter((text) => text !== "")
         ?.map((text) => (
-          <div className="text-gray-600 my-2 px-3">{text}</div>
+          <div className="text-gray-700 my-2 px-3">{text}</div>
         ))}
       {links.map((link) => {
         return (
