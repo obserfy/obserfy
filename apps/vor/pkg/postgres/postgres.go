@@ -52,7 +52,6 @@ func InitTables(db *pg.DB) error {
 		(*GuardianToStudent)(nil),
 		(*StudentMaterialProgress)(nil),
 		(*User)(nil),
-		(*Observation)(nil),
 		(*Session)(nil),
 		(*UserToSchool)(nil),
 		(*Attendance)(nil),
@@ -60,6 +59,7 @@ func InitTables(db *pg.DB) error {
 		(*LessonPlanDetails)(nil),
 		(*LessonPlanLink)(nil),
 		(*LessonPlan)(nil),
+		(*Observation)(nil),
 		(*File)(nil),
 		(*FileToLessonPlan)(nil),
 		(*LessonPlanToStudents)(nil),
@@ -181,16 +181,18 @@ type StudentToClass struct {
 }
 
 type Observation struct {
-	Id          string `json:"id" pg:",type:uuid"`
-	StudentId   string `pg:",type:uuid,on_delete:CASCADE"`
-	Student     *Student
-	ShortDesc   string    `json:"shortDesc"`
-	LongDesc    string    `json:"longDesc"`
-	CategoryId  string    `json:"categoryId"`
-	CreatedDate time.Time `json:"createdDate"`
-	EventTime   *time.Time
-	CreatorId   string `pg:",type:uuid,on_delete:SET NULL"`
-	Creator     *User
+	Id           string `json:"id" pg:",type:uuid"`
+	StudentId    string `pg:",type:uuid,on_delete:CASCADE"`
+	Student      *Student
+	ShortDesc    string    `json:"shortDesc"`
+	LongDesc     string    `json:"longDesc"`
+	CategoryId   string    `json:"categoryId"`
+	CreatedDate  time.Time `json:"createdDate"`
+	EventTime    *time.Time
+	CreatorId    string `pg:",type:uuid,on_delete:SET NULL"`
+	Creator      *User
+	LessonPlan   LessonPlan
+	LessonPlanId string `pg:"type:uuid,on_delete:CASCADE"`
 }
 
 type Subscription struct {
