@@ -193,6 +193,13 @@ type Observation struct {
 	Creator     *User
 }
 
+type ObservationToImage struct {
+	Observation   Observation
+	ObservationId string `pg:"type:uuid,on_delete:CASCADE"`
+	Image         Image
+	ImageId       uuid.UUID `pg:"type:uuid,on_delete:CASCADE"`
+}
+
 type Subscription struct {
 	Id                 uuid.UUID `pg:",type:uuid"`
 	CancelUrl          string
