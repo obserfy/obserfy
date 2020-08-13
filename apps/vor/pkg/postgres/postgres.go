@@ -218,6 +218,7 @@ type School struct {
 	Guardian       []Guardian
 	SubscriptionId uuid.UUID `pg:",type:uuid"`
 	Subscription   Subscription
+	CreatedAt      time.Time `pg:"default:now()"`
 }
 
 type Attendance struct {
