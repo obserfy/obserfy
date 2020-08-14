@@ -4152,7 +4152,7 @@
   dependencies:
     any-observable "^0.3.0"
 
-"@segment/snippet@^4.13.1":
+"@segment/snippet@4.13.1":
   version "4.13.1"
   resolved "https://registry.yarnpkg.com/@segment/snippet/-/snippet-4.13.1.tgz#094b7e06742485e7beafaa8a713982952a8fb964"
   integrity sha512-Z4HCHb/aLX9+92DI8PUUovLLFoKowCrq4IXHjyrXE24Y8ZKRoEiFW8IZKYZ3yEkfS2z54UKDHDJ/NxNNmZMU1Q==
@@ -5730,7 +5730,7 @@
     "@types/glob" "*"
     "@types/node" "*"
 
-"@types/segment-analytics@0.0.32", "@types/segment-analytics@^0.0.32":
+"@types/segment-analytics@0.0.32":
   version "0.0.32"
   resolved "https://registry.yarnpkg.com/@types/segment-analytics/-/segment-analytics-0.0.32.tgz#63e27737a81f6bd0fbecd86207afb92d12d85cca"
   integrity sha512-p0SHnfHfZwemTeaISvu8WUXtw81A4AOU4GEr7B9S9jLx2iu/z/4aLT0flRJtHVusVAlMeJSdobn0uD/oR1sFEw==
