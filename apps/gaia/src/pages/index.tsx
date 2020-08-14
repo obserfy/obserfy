@@ -21,7 +21,7 @@ const IndexPage = () => {
       <Head>
         <title>Home | Obserfy for Parents</title>
       </Head>
-      <div className="max-w-3xl mx-auto flex items-end p-3">
+      <div className="max-w-3xl mx-auto flex items-center p-3">
         <div className="text-sm">{date.format("ddd, DD MMM 'YY")}</div>
         <Button
           className="ml-auto"
