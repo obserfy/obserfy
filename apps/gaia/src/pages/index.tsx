@@ -24,15 +24,17 @@ const IndexPage = () => {
       <div className="max-w-3xl mx-auto flex items-end p-3">
         <div className="text-sm">{date.format("ddd, DD MMM 'YY")}</div>
         <Button
-          className="px-1 ml-auto"
+          className="ml-auto"
           outline
+          iconOnly
           onClick={() => setDate(date.add(-1, "day"))}
         >
           <Img src={ChevronLeft} />
         </Button>
         <Button
-          className="px-1 ml-1"
+          className="ml-1"
           outline
+          iconOnly
           onClick={() => setDate(date.add(1, "day"))}
         >
           <Img alt="Next date" src={ChevronRight} />
@@ -40,6 +42,7 @@ const IndexPage = () => {
         <Button
           className="ml-1 font-normal text-sm"
           outline
+          small
           onClick={() => setDate(dayjs())}
           disabled={date.isSame(dayjs(), "day")}
         >

@@ -1,11 +1,19 @@
 .base {
-  @apply py-1 px-6 rounded text-onPrimary bg-primary;
+  @apply py-2 px-6 rounded text-onPrimary bg-primary;
 
   touch-action: manipulation;
 }
 
 .outline {
   @apply bg-white border;
+}
+
+.small {
+  @apply py-1 text-sm;
+}
+
+.icon {
+  @apply px-1 py-1;
 }
 
 .base:disabled {

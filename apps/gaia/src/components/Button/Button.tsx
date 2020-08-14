@@ -3,6 +3,8 @@ import styles from "./Button.module.css"
 
 interface Props {
   outline?: boolean
+  small?: boolean
+  iconOnly?: boolean
 }
 
 const Button: FC<
@@ -11,13 +13,15 @@ const Button: FC<
     HTMLButtonElement
   > &
     Props
-> = ({ outline, className, ...props }) => {
+> = ({ iconOnly, small, outline, className, ...props }) => {
   return (
     <button
       {...props}
       className={`
         ${styles.base} 
         ${outline && styles.outline} 
+        ${small && styles.small}
+        ${iconOnly && styles.icon}
         ${className} 
       `}
     />
