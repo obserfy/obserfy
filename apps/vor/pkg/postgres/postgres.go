@@ -195,6 +195,8 @@ type Observation struct {
 	LessonPlanId string `pg:"type:uuid,on_delete:SET NULL"`
 	Guardian     Guardian
 	GuardianId   string `pg:"type:uuid,on_delete:SET NULL"`
+	Area         Area
+	AreaId       string `pg:"type:uuid,on_delete:SET NULL"`
 }
 
 type Subscription struct {
