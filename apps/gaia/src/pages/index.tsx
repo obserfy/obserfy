@@ -21,7 +21,7 @@ const IndexPage = () => {
       <Head>
         <title>Home | Obserfy for Parents</title>
       </Head>
-      <div className="flex items-end p-3">
+      <div className="max-w-3xl mx-auto flex items-end p-3">
         <div className="text-sm">{date.format("ddd, DD MMM 'YY")}</div>
         <Button
           className="px-1 ml-auto"
@@ -52,7 +52,7 @@ const IndexPage = () => {
           date={date}
         />
       )}
-      <div className="md:px-3">
+      <div className="max-w-3xl mx-auto md:px-3">
         {childPlans.data?.map((plan) => (
           <Plan
             name={plan.title}
