@@ -1,5 +1,5 @@
-import React from "react";
-import Button from "../components/Button/Button";
+import React from "react"
+import Button from "../components/Button/Button"
 
 const SessionExpired = () => (
   <main className="max-w-lg mx-auto my-8">
