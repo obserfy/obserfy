@@ -3,7 +3,7 @@ import Head from "next/head"
 import Img from "react-optimized-image"
 import { Svg } from "react-optimized-image/lib"
 import dayjs, { Dayjs } from "../utils/dayjs"
-import Button from "../components/button"
+import Button from "../components/Button/Button"
 import ChevronRight from "../icons/chevron-right.svg"
 import ChevronLeft from "../icons/chevron-left.svg"
 import useGetChildPlans from "../hooks/api/useGetChildPlans"
@@ -113,6 +113,9 @@ const Plan: FC<{
       {files.length > 0 && (
         <div className="text-sm text-gray-700 mb-1">Files</div>
       )}
+      <Button outline className="ml-auto mr-3 mt-3">
+        Add observation
+      </Button>
     </div>
   )
 }

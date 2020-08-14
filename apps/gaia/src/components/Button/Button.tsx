@@ -1,8 +1,10 @@
 import React, { ButtonHTMLAttributes, DetailedHTMLProps, FC } from "react"
+import styles from "./Button.module.css"
 
 interface Props {
   outline?: boolean
 }
+
 const Button: FC<
   DetailedHTMLProps<
     ButtonHTMLAttributes<HTMLButtonElement>,
@@ -14,11 +16,10 @@ const Button: FC<
     <button
       {...props}
       className={`
-        ${outline && "bg-white"}
-        ${outline && "border"}
-        ${className}
+        ${styles.base} 
+        ${outline && styles.outline} 
+        ${className} 
       `}
-      style={{ touchAction: "manipulation" }}
     />
   )
 }

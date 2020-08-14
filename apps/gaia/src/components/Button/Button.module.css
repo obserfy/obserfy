@@ -1,0 +1,13 @@
+.base {
+  @apply py-1 px-6 rounded text-onPrimary bg-primary;
+
+  touch-action: manipulation;
+}
+
+.outline {
+  @apply bg-white border;
+}
+
+.base:disabled {
+  @apply opacity-50;
+}

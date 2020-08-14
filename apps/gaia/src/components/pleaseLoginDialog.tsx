@@ -1,5 +1,5 @@
 import React from "react"
-import Button from "./button"
+import Button from "./Button/button"
 
 const PleaseLoginDialog = () => (
   <div className="fixed h-screen w-screen flex items-center justify-center bg-overlay z-50 px-3">

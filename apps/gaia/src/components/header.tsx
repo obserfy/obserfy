@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react"
 import Img from "react-optimized-image"
 import ProfilePicture from "./profilePicture"
-import Button from "./button"
+import Button from "./Button/Button"
 import LogoutIcon from "../icons/log-out.svg"
 import Logo from "../images/logo.svg"
 
