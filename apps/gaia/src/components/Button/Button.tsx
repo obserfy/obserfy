@@ -1,24 +1,29 @@
 import React, { ButtonHTMLAttributes, DetailedHTMLProps, FC } from "react"
+import styles from "./Button.module.css"
 
 interface Props {
   outline?: boolean
+  small?: boolean
+  iconOnly?: boolean
 }
+
 const Button: FC<
   DetailedHTMLProps<
     ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
   > &
     Props
-> = ({ outline, className, ...props }) => {
+> = ({ iconOnly, small, outline, className, ...props }) => {
   return (
     <button
       {...props}
       className={`
-        ${outline && "bg-white"}
-        ${outline && "border"}
-        ${className}
+        ${styles.base} 
+        ${outline && styles.outline} 
+        ${small && styles.small}
+        ${iconOnly && styles.icon}
+        ${className} 
       `}
-      style={{ touchAction: "manipulation" }}
     />
   )
 }

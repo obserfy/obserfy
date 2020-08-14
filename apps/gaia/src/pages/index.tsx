@@ -3,7 +3,7 @@ import Head from "next/head"
 import Img from "react-optimized-image"
 import { Svg } from "react-optimized-image/lib"
 import dayjs, { Dayjs } from "../utils/dayjs"
-import Button from "../components/button"
+import Button from "../components/Button/Button"
 import ChevronRight from "../icons/chevron-right.svg"
 import ChevronLeft from "../icons/chevron-left.svg"
 import useGetChildPlans from "../hooks/api/useGetChildPlans"
@@ -21,18 +21,20 @@ const IndexPage = () => {
       <Head>
         <title>Home | Obserfy for Parents</title>
       </Head>
-      <div className="flex items-end p-3">
+      <div className="max-w-3xl mx-auto flex items-center p-3">
         <div className="text-sm">{date.format("ddd, DD MMM 'YY")}</div>
         <Button
-          className="px-1 ml-auto"
+          className="ml-auto"
           outline
+          iconOnly
           onClick={() => setDate(date.add(-1, "day"))}
         >
           <Img src={ChevronLeft} />
         </Button>
         <Button
-          className="px-1 ml-1"
+          className="ml-1"
           outline
+          iconOnly
           onClick={() => setDate(date.add(1, "day"))}
         >
           <Img alt="Next date" src={ChevronRight} />
@@ -40,6 +42,7 @@ const IndexPage = () => {
         <Button
           className="ml-1 font-normal text-sm"
           outline
+          small
           onClick={() => setDate(dayjs())}
           disabled={date.isSame(dayjs(), "day")}
         >
@@ -52,7 +55,7 @@ const IndexPage = () => {
           date={date}
         />
       )}
-      <div className="md:px-3">
+      <div className="max-w-3xl mx-auto md:px-3">
         {childPlans.data?.map((plan) => (
           <Plan
             name={plan.title}
@@ -85,7 +88,7 @@ const Plan: FC<{
 }> = ({ name, area, files, description, links }) => {
   return (
     <div className="flex flex-col items-start bg-surface md:rounded mb-2 border py-3">
-      {area && <div className="text-sm text-green-700 px-3 mb-1">{area}</div>}
+      {area && <div className="text-sm text-green-700 px-3 mb-2">{area}</div>}
       <div className="text-md px-3">{name}</div>
       {description
         ?.split("\n")
@@ -113,6 +116,9 @@ const Plan: FC<{
       {files.length > 0 && (
         <div className="text-sm text-gray-700 mb-1">Files</div>
       )}
+      <Button outline className="ml-auto mr-3 mt-3">
+        Add observation
+      </Button>
     </div>
   )
 }
