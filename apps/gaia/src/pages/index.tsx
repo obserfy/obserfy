@@ -85,7 +85,7 @@ const Plan: FC<{
 }> = ({ name, area, files, description, links }) => {
   return (
     <div className="flex flex-col items-start bg-surface md:rounded mb-2 border py-3">
-      {area && <div className="text-sm text-green-700 px-3 mb-1">{area}</div>}
+      {area && <div className="text-sm text-green-700 px-3 mb-2">{area}</div>}
       <div className="text-md px-3">{name}</div>
       {description
         ?.split("\n")

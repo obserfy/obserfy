@@ -42,7 +42,7 @@ const Layout: FC = ({ children }) => {
       {user.status === "success" && child.status === "success" ? (
         <>
           <div className="bg-white">
-            <div className="flex px-3 py-3 max-w-3xl mx-auto">
+            <div className="flex px-3 py-3 max-w-3xl mx-auto items-center">
               <div>
                 {child.data?.profilePic ? (
                   <img
@@ -63,17 +63,19 @@ const Layout: FC = ({ children }) => {
                 )}
               </div>
               <div className="ml-4">
-                <div className="text-2xl leading-tight">{child.data?.name}</div>
+                <div className="text-lg leading-tight font-bold">
+                  {child.data?.name}
+                </div>
                 <div className="text-sm text-gray-700">
                   {child.data?.schoolName}
                 </div>
               </div>
             </div>
           </div>
-          <div className="sticky top-0 bg-surface border-b ">
-            <nav className="w-full flex max-w-3xl mx-auto">
+          <div className="sticky top-0 bg-surface border-b">
+            <nav className="w-full flex max-w-3xl mx-auto pt-3">
               <div
-                className="mx-3 py-2 border-b-2 border-black text-sm"
+                className="mx-3 py-1 border-b-2 border-black text-sm px-2"
                 style={{ marginBottom: "-1px" }}
               >
                 Lesson Plans
