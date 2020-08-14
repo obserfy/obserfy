@@ -10,6 +10,10 @@ module.exports = {
         overlay: "rgba(0, 0, 0, 0.8)",
       },
     },
+    fontFamily: {
+      heading: ["Open Sans"],
+      body: ["Open Sans"],
+    },
   },
   variants: {},
   plugins: [],
