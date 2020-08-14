@@ -46,44 +46,7 @@ class MyDocument extends Document {
             href="/google-fonts/s/opensans/v17/mem8YaGs126MiZpBA-UFVZ0b.woff2"
           />
           {/* eslint-disable-next-line react/no-danger */}
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-window.segmentSnippetLoaded = false
-window.segmentSnippetLoading = false
-
-window.segmentSnippetLoader = function (callback) {
-  if (!window.segmentSnippetLoaded && !window.segmentSnippetLoading) {
-    window.segmentSnippetLoading = true
-
-    function loader() {
-      window.analytics.load(${NEXT_PUBLIC_GAIA_SEGMENT_KEY})
-      window.segmentSnippetLoading = false
-      window.segmentSnippetLoaded = true
-      if (callback) {
-        callback()
-      }
-    }
-
-    setTimeout(function () {
-      "requestIdleCallback" in window
-        ? requestIdleCallback(function () {
-            loader()
-          })
-        : loader()
-    }, 1000)
-  }
-}
-window.addEventListener(
-  "scroll",
-  function () {
-    window.segmentSnippetLoader()
-  },
-  { once: true }
-)
-${renderSnippet()}`,
-            }}
-          />
+          <script dangerouslySetInnerHTML={{ __html: renderSnippet() }} />
         </Head>
         <body>
           <Main />
