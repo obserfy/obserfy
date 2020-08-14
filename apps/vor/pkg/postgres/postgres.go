@@ -192,7 +192,9 @@ type Observation struct {
 	CreatorId    string `pg:",type:uuid,on_delete:SET NULL"`
 	Creator      *User
 	LessonPlan   LessonPlan
-	LessonPlanId string `pg:"type:uuid,on_delete:CASCADE"`
+	LessonPlanId string `pg:"type:uuid,on_delete:SET NULL"`
+	Guardian     Guardian
+	GuardianId   string `pg:"type:uuid,on_delete:SET NULL"`
 }
 
 type Subscription struct {
