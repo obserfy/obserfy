@@ -15,7 +15,7 @@ const Layout: FC = ({ children }) => {
         <Header />
         <ChildInfo childId={childId} />
       </div>
-      <Navbar />
+      <Navbar childId={childId} />
       <main>{children}</main>
     </div>
   )
