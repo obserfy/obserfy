@@ -1,5 +1,6 @@
 import React, { FC, useState } from "react"
 import { useRouter } from "next/router"
+import Link from "next/link"
 
 interface Props {
   childId: string
@@ -15,26 +16,28 @@ const Navbar: FC<Props> = ({ childId }) => {
       <nav className="w-full flex max-w-3xl mx-auto pt-3">
         <ul className="flex">
           <li className="-mb-px mr-1" onClick={() => setActive("lesson-plan")}>
-            <a
-              className={`${
-                active === "lesson-plan" ? "border-b border-black" : ""
-              } bg-white inline-block py-2 px-4 text-blue-700 font-semibold ${
-                active === "lesson-plan" ? "border-b border-black" : ""
-              }`}
-              href="/"
-            >
-              Lesson Plan
-            </a>
+            <Link href="/">
+              <a
+                className={`${
+                  active === "lesson-plan" ? "border-b border-black" : ""
+                } bg-white inline-block py-2 px-4 text-blue-700 font-semibold ${
+                  active === "lesson-plan" ? "border-b border-black" : ""
+                }`}
+              >
+                Lesson Plan
+              </a>
+            </Link>
           </li>
           <li className="mr-1" onClick={() => setActive("gallery")}>
-            <a
-              className={`${
-                active === "gallery" ? "border-b border-black" : ""
-              } bg-white inline-block py-2 px-4 text-blue-700 font-semibold`}
-              href={`/gallery?childId=${childId}`}
-            >
-              Gallery
-            </a>
+            <Link href={`/gallery?childId=${childId}`}>
+              <a
+                className={`${
+                  active === "gallery" ? "border-b border-black" : ""
+                } bg-white inline-block py-2 px-4 text-blue-700 font-semibold`}
+              >
+                Gallery
+              </a>
+            </Link>
           </li>
         </ul>
       </nav>
