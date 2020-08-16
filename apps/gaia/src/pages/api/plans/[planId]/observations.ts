@@ -1,7 +1,7 @@
 import auth0 from "../../../../utils/auth0"
 import { insertObservationToPlan } from "../../../../db"
 
-interface PostPlanObservationRequest {
+export interface PostPlanObservationRequest {
   childId: string
   observation: string
 }
