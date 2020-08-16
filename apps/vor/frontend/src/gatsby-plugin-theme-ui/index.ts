@@ -105,7 +105,7 @@ const theme: Theme = {
 
         icon: "#979797",
 
-        border: "rgba(232,232,232, 0.13)",
+        border: "rgba(232,232,232, 0.07)",
         borderSolid: "#000",
 
         muted: "#222222",
@@ -228,6 +228,12 @@ const theme: Theme = {
       alignItems: "center",
       justifyContent: "center",
       touchAction: "manipulation",
+      boxShadow:
+        "rgba(27, 31, 35, 0.1) 0px 1px 0px 0px, rgba(255, 255, 255, 0.03) 0px 1px 0px 0px inset",
+      borderColor: "border",
+      borderStyle: "solid",
+      borderWidth: 1,
+      lineHeight: 1,
       "&:disabled": {
         opacity: 0.38,
         cursor: "auto",
@@ -248,20 +254,19 @@ const theme: Theme = {
       variant: "buttons.primary",
       color: "textPrimary",
       bg: "transparent",
+      border: "none",
+      boxShadow: "none",
       "&:hover, &:focus": {
         backgroundColor: "primaryLighter",
         borderColor: "primary",
         outline: "none",
       },
     },
-    secondaryBig: {
-      variant: "buttons.secondary",
-      py: 3,
-    },
     outline: {
-      variant: "buttons.secondary",
-      border: "1px solid",
-      borderColor: "border",
+      variant: "buttons.primary",
+      backgroundColor: "surface",
+      color: "textPrimary",
+      boxShadow: "none",
       "&:hover, &:focus": {
         backgroundColor: "primaryLighter",
         borderColor: "primary",

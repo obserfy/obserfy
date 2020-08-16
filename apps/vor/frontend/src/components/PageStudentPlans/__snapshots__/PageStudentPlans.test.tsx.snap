@@ -114,10 +114,6 @@ exports[`PageStudentPlans should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .emotion-5 {
@@ -166,7 +162,7 @@ exports[`PageStudentPlans should render correctly 1`] = `
   box-sizing: border-box;
   font-size: 14px;
   color: var(--theme-ui-colors-textPrimary,#027c5b);
-  background-color: transparent;
+  background-color: var(--theme-ui-colors-surface,#fff);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
@@ -189,8 +185,11 @@ exports[`PageStudentPlans should render correctly 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   touch-action: manipulation;
-  border: 1px solid;
+  box-shadow: none;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-style: solid;
+  border-width: 1px;
+  line-height: 1;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 4px;
@@ -260,7 +259,7 @@ exports[`PageStudentPlans should render correctly 1`] = `
   box-sizing: border-box;
   font-size: 14px;
   color: var(--theme-ui-colors-textPrimary,#027c5b);
-  background-color: transparent;
+  background-color: var(--theme-ui-colors-surface,#fff);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
@@ -283,8 +282,11 @@ exports[`PageStudentPlans should render correctly 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   touch-action: manipulation;
-  border: 1px solid;
+  box-shadow: none;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-style: solid;
+  border-width: 1px;
+  line-height: 1;
   margin-right: 8px;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -339,7 +341,7 @@ exports[`PageStudentPlans should render correctly 1`] = `
   box-sizing: border-box;
   font-size: 14px;
   color: var(--theme-ui-colors-textPrimary,#027c5b);
-  background-color: transparent;
+  background-color: var(--theme-ui-colors-surface,#fff);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
@@ -362,8 +364,11 @@ exports[`PageStudentPlans should render correctly 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   touch-action: manipulation;
-  border: 1px solid;
+  box-shadow: none;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-style: solid;
+  border-width: 1px;
+  line-height: 1;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 16px;
@@ -422,7 +427,7 @@ exports[`PageStudentPlans should render correctly 1`] = `
   box-sizing: border-box;
   font-size: 14px;
   color: var(--theme-ui-colors-textPrimary,#027c5b);
-  background-color: transparent;
+  background-color: var(--theme-ui-colors-surface,#fff);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
@@ -445,8 +450,11 @@ exports[`PageStudentPlans should render correctly 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   touch-action: manipulation;
-  border: 1px solid;
+  box-shadow: none;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-style: solid;
+  border-width: 1px;
+  line-height: 1;
   margin-left: auto;
 }
 

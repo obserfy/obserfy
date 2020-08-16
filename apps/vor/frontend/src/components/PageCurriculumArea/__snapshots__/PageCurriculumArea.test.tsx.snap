@@ -159,7 +159,7 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   box-sizing: border-box;
   font-size: 14px;
   color: var(--theme-ui-colors-textPrimary,#027c5b);
-  background-color: transparent;
+  background-color: var(--theme-ui-colors-surface,#fff);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
@@ -182,8 +182,11 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   touch-action: manipulation;
-  border: 1px solid;
+  box-shadow: none;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-style: solid;
+  border-width: 1px;
+  line-height: 1;
   color: var(--theme-ui-colors-danger,#d50000);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
@@ -252,7 +255,7 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   box-sizing: border-box;
   font-size: 14px;
   color: var(--theme-ui-colors-textPrimary,#027c5b);
-  background-color: transparent;
+  background-color: var(--theme-ui-colors-surface,#fff);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
@@ -275,8 +278,11 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   touch-action: manipulation;
-  border: 1px solid;
+  box-shadow: none;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-style: solid;
+  border-width: 1px;
+  line-height: 1;
   margin-left: 8px;
   margin-right: 8px;
   -webkit-flex-shrink: 0;
@@ -385,7 +391,7 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   box-sizing: border-box;
   font-size: 14px;
   color: var(--theme-ui-colors-textPrimary,#027c5b);
-  background-color: transparent;
+  background-color: var(--theme-ui-colors-surface,#fff);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
@@ -408,8 +414,11 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   touch-action: manipulation;
-  border: 1px solid;
+  box-shadow: none;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-style: solid;
+  border-width: 1px;
+  line-height: 1;
 }
 
 .emotion-14:disabled {

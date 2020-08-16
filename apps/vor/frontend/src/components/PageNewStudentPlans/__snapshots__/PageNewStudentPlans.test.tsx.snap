@@ -254,7 +254,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   box-sizing: border-box;
   font-size: 14px;
   color: var(--theme-ui-colors-textPrimary,#027c5b);
-  background-color: transparent;
+  background-color: var(--theme-ui-colors-surface,#fff);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
@@ -277,8 +277,11 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   touch-action: manipulation;
-  border: 1px solid;
+  box-shadow: none;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-style: solid;
+  border-width: 1px;
+  line-height: 1;
   margin-top: 23px;
   margin-left: 16px;
   -webkit-flex-shrink: 0;
@@ -598,7 +601,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   box-sizing: border-box;
   font-size: 14px;
   color: var(--theme-ui-colors-textPrimary,#027c5b);
-  background-color: transparent;
+  background-color: var(--theme-ui-colors-surface,#fff);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
@@ -621,8 +624,11 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   touch-action: manipulation;
-  border: 1px solid;
+  box-shadow: none;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-style: solid;
+  border-width: 1px;
+  line-height: 1;
   margin-left: 8px;
 }
 
@@ -807,6 +813,11 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   touch-action: manipulation;
+  box-shadow: rgba(27,31,35,0.1) 0px 1px 0px 0px,rgba(255,255,255,0.03) 0px 1px 0px 0px inset;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-style: solid;
+  border-width: 1px;
+  line-height: 1;
   margin-top: 16px;
   width: 100%;
 }
