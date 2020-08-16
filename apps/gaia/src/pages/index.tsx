@@ -1,7 +1,6 @@
 import React, { FC, useState } from "react"
 import Head from "next/head"
 import Img from "react-optimized-image"
-import { Svg } from "react-optimized-image/lib"
 import dayjs, { Dayjs } from "../utils/dayjs"
 import Button from "../components/Button/Button"
 import ChevronRight from "../icons/chevron-right.svg"
@@ -9,7 +8,6 @@ import ChevronLeft from "../icons/chevron-left.svg"
 import useGetChildPlans from "../hooks/api/useGetChildPlans"
 import { useQueryString } from "../hooks/useQueryString"
 import NoPlanIllustration from "../images/no-plan-illustration.svg"
-import LinkIcon from "../icons/link.svg"
 import Plan from "../components/Plan/Plan"
 
 const IndexPage = () => {
