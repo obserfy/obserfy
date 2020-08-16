@@ -35,6 +35,10 @@ func Connect(user string, password string, addr string, tlsConfig *tls.Config) *
 }
 
 func InitTables(db *pg.DB) error {
+	_, err := db.Exec("CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\"")
+	if err != nil {
+		return richErrors.Wrap(err, "failed to create extension")
+	}
 	for _, model := range []interface{}{
 		(*Curriculum)(nil),
 		(*Area)(nil),
@@ -181,7 +185,7 @@ type StudentToClass struct {
 }
 
 type Observation struct {
-	Id           string `json:"id" pg:",type:uuid"`
+	Id           string `json:"id" pg:",type:uuid,default:uuid_generate_v4()"`
 	StudentId    string `pg:",type:uuid,on_delete:CASCADE"`
 	Student      *Student
 	ShortDesc    string    `json:"shortDesc"`

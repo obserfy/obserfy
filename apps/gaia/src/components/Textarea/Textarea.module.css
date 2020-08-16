@@ -7,5 +7,5 @@
 }
 
 .label {
-  @apply opacity-50 mb-1 text-sm;
+  @apply opacity-75 mb-1 text-sm;
 }

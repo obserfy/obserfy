@@ -107,3 +107,52 @@ export const findLessonPlanByChildIdAndDate = async (
       .filter((url) => url),
   }))
 }
+
+export const insertObservationToPlan = async (
+  planId: string,
+  parentEmail: string,
+  childId: string,
+  observation: string
+) => {
+  const plan = await query(
+    `
+              select title, area_id
+              from lesson_plans lp
+                       join lesson_plan_details lpd on lpd.id = lp.lesson_plan_details_id
+              where id = $1
+    `,
+    [planId]
+  )
+
+  // language=PostgreSQL
+  const parent = await query(
+    `
+              select id
+              from guardians
+              where email = $1
+    `,
+    [parentEmail]
+  )
+
+  const now = dayjs()
+  // language=PostgreSQL
+  const result = await query(
+    `
+              insert into observations (student_id, short_desc, long_desc, created_date, event_time, lesson_plan_id,
+                                        guardian_id, area_id)
+              values ($1, $2, $3, $4, $5, $6, $7, $8)
+    `,
+    [
+      childId,
+      plan.rows[0].title,
+      observation,
+      now,
+      now,
+      planId,
+      parent.rows[0].id,
+      plan.rows[0].area_id,
+    ]
+  )
+
+  return result.rowCount
+}

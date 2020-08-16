@@ -79,7 +79,7 @@ const EmptyPlansIllustration: FC<{ loading: boolean; date: Dayjs }> = ({
     <div
       className={`flex flex-col items-center py-16 ${
         loading && "opacity-50"
-      } transition-opacity duration-200`}
+      } transition-opacity duration-200 max-w-3xl mx-auto`}
     >
       <Img src={NoPlanIllustration} className="w-64 md:w-1/2 mb-3" />
       <h5
