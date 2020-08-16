@@ -34,7 +34,6 @@ const Plan: FC<Props> = ({
   links,
 }) => {
   const [showAddObservationForm, setShowAddObservationForm] = useState(false)
-  const [postObservation] = usePostPlanObservation(planId)
 
   const renderedDescription = description
     ?.split("\n")
@@ -67,10 +66,9 @@ const Plan: FC<Props> = ({
       {renderedFiles}
       {showAddObservationForm ? (
         <AddObservationForm
-          onCancel={() => setShowAddObservationForm(false)}
-          onSubmit={async (observation) => {
-            await postObservation({ observation, childId })
-          }}
+          planId={planId}
+          childId={childId}
+          onDismiss={() => setShowAddObservationForm(false)}
         />
       ) : (
         <Button
@@ -86,9 +84,12 @@ const Plan: FC<Props> = ({
 }
 
 const AddObservationForm: FC<{
-  onCancel: () => void
-  onSubmit: (observation: string) => void
-}> = ({ onSubmit, onCancel }) => {
+  onDismiss: () => void
+  planId: string
+  childId: string
+}> = ({ onDismiss, planId, childId }) => {
+  const [loading, setLoading] = useState(false)
+  const [postObservation] = usePostPlanObservation(planId)
   const [observation, setObservation] = useState("")
 
   return (
@@ -99,17 +100,31 @@ const AddObservationForm: FC<{
           label="Observation"
           value={observation}
           onChange={(e) => setObservation(e.target.value)}
+          disabled={loading}
         />
       </div>
       <div className="flex ml-auto">
-        <Button outline className="ml-auto mr-3 mt-3" onClick={onCancel}>
+        <Button
+          outline
+          className="ml-auto mr-3 mt-3"
+          onClick={onDismiss}
+          disabled={loading}
+        >
           Cancel
         </Button>
         <Button
           className="ml-auto mr-3 mt-3"
-          onClick={() => onSubmit(observation)}
+          disabled={loading}
+          onClick={async () => {
+            setLoading(true)
+            const result = await postObservation({ observation, childId })
+            setLoading(false)
+            if (result.ok) {
+              onDismiss()
+            }
+          }}
         >
-          Post
+          {loading ? "Loading" : "Post"}
         </Button>
       </div>
     </>

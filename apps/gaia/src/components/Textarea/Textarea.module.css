@@ -1,5 +1,5 @@
 .container {
-  @apply flex flex-col bg-gray-200 rounded  p-2;
+  @apply flex flex-col bg-gray-200 rounded  p-2 border;
 }
 
 .textarea {

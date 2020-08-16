@@ -7,6 +7,7 @@ interface Props {
   placeholder?: string
   value?: string
   onChange?: ChangeEventHandler<HTMLTextAreaElement>
+  disabled?: boolean
 }
 const Textarea: FC<Props> = ({
   value,
@@ -14,9 +15,12 @@ const Textarea: FC<Props> = ({
   placeholder,
   label,
   className,
+  disabled,
 }) => (
   <div
-    className={`${styles.container} ${className} focus-within:shadow-outline`}
+    className={`${styles.container} ${className} focus-within:shadow-outline ${
+      disabled && "opacity-50"
+    }`}
   >
     <label htmlFor={label} className={styles.label}>
       {label}
@@ -27,6 +31,7 @@ const Textarea: FC<Props> = ({
       placeholder={placeholder}
       value={value}
       onChange={onChange}
+      disabled={disabled}
     />
   </div>
 )
