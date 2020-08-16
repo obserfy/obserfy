@@ -14,13 +14,14 @@ const childHandler = auth0.requireAuthentication(async (req, res) => {
 
     if (req.method === "POST") {
       const body: PostPlanObservationRequest = JSON.parse(req.body)
-      await insertObservationToPlan(
+      const result = await insertObservationToPlan(
         planId as string,
         user.email,
         body.childId,
         body.observation
       )
       res.status(201)
+      res.end(result.toString())
     } else {
       res.status(405)
     }

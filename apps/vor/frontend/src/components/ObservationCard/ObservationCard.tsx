@@ -43,12 +43,14 @@ export const ObservationCard: FC<Props> = ({
       )}
       <Flex px={2} sx={{ alignItems: "center" }} mb={2}>
         <Flex sx={{ flexWrap: "wrap" }}>
-          <Pill
-            ml={2}
-            backgroundColor={category.color}
-            text={category.name}
-            color={category.onColor}
-          />
+          {category && (
+            <Pill
+              ml={2}
+              backgroundColor={category.color}
+              text={category.name}
+              color={category.onColor}
+            />
+          )}
           {observation.creatorName && (
             <Pill
               ml={2}

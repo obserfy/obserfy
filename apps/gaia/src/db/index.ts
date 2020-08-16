@@ -119,7 +119,7 @@ export const insertObservationToPlan = async (
               select title, area_id
               from lesson_plans lp
                        join lesson_plan_details lpd on lpd.id = lp.lesson_plan_details_id
-              where id = $1
+              where lp.id = $1
     `,
     [planId]
   )

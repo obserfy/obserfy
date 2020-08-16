@@ -3,8 +3,11 @@ import { Svg } from "react-optimized-image/lib"
 import LinkIcon from "../../icons/link.svg"
 import Button from "../Button/Button"
 import Textarea from "../Textarea/Textarea"
+import usePostPlanObservation from "../../hooks/api/usePostPlanObservation"
 
 interface Props {
+  planId: string
+  childId: string
   name: string
   area: string
   description?: string
@@ -21,8 +24,17 @@ interface Props {
   }>
 }
 
-const Plan: FC<Props> = ({ name, area, files, description, links }) => {
+const Plan: FC<Props> = ({
+  childId,
+  planId,
+  name,
+  area,
+  files,
+  description,
+  links,
+}) => {
   const [showAddObservationForm, setShowAddObservationForm] = useState(false)
+  const [postObservation] = usePostPlanObservation(planId)
 
   const renderedDescription = description
     ?.split("\n")
@@ -54,7 +66,12 @@ const Plan: FC<Props> = ({ name, area, files, description, links }) => {
       {renderedLinks}
       {renderedFiles}
       {showAddObservationForm ? (
-        <AddObservationForm onCancel={() => setShowAddObservationForm(false)} />
+        <AddObservationForm
+          onCancel={() => setShowAddObservationForm(false)}
+          onSubmit={async (observation) => {
+            await postObservation({ observation, childId })
+          }}
+        />
       ) : (
         <Button
           outline
@@ -68,17 +85,32 @@ const Plan: FC<Props> = ({ name, area, files, description, links }) => {
   )
 }
 
-const AddObservationForm: FC<{ onCancel: () => void }> = ({ onCancel }) => {
+const AddObservationForm: FC<{
+  onCancel: () => void
+  onSubmit: (observation: string) => void
+}> = ({ onSubmit, onCancel }) => {
+  const [observation, setObservation] = useState("")
+
   return (
     <>
       <div className="px-3 w-full">
-        <Textarea className="w-full mt-3" label="Observation" />
+        <Textarea
+          className="w-full mt-3"
+          label="Observation"
+          value={observation}
+          onChange={(e) => setObservation(e.target.value)}
+        />
       </div>
       <div className="flex ml-auto">
         <Button outline className="ml-auto mr-3 mt-3" onClick={onCancel}>
           Cancel
         </Button>
-        <Button className="ml-auto mr-3 mt-3">Post</Button>
+        <Button
+          className="ml-auto mr-3 mt-3"
+          onClick={() => onSubmit(observation)}
+        >
+          Post
+        </Button>
       </div>
     </>
   )

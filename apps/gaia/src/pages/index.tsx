@@ -59,11 +59,14 @@ const IndexPage = () => {
       <div className="max-w-3xl mx-auto md:px-3">
         {childPlans.data?.map((plan) => (
           <Plan
+            key={plan.id}
+            childId={childId}
+            planId={plan.id}
             name={plan.title}
-            files={[]}
             area={plan.area?.name}
             description={plan.description}
             links={plan.links}
+            files={[]}
           />
         ))}
       </div>
