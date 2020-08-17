@@ -27,18 +27,22 @@ export const ObservationCard: FC<Props> = ({
       <Typography.Body mt={1} mx={3} data-cy="observation-short-desc">
         {observation.shortDesc}
       </Typography.Body>
-      {observation.longDesc && (
-        <Typography.Body
-          mt={2}
-          mb={1}
-          mx={3}
-          data-cy="observation-long-desc"
-          lineHeight={1.8}
-          color="textMediumEmphasis"
-        >
-          {observation.longDesc}
-        </Typography.Body>
-      )}
+      {observation.longDesc &&
+        observation.longDesc
+          .split("\n")
+          .filter((text) => text)
+          .map((text) => (
+            <Typography.Body
+              mt={2}
+              mb={1}
+              mx={3}
+              data-cy="observation-long-desc"
+              lineHeight={1.8}
+              color="textMediumEmphasis"
+            >
+              {text}
+            </Typography.Body>
+          ))}
       <Flex sx={{ alignItems: "baseline" }} mb={2}>
         {category && (
           <Typography.Body
