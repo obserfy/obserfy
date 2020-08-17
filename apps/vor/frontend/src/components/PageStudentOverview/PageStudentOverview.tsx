@@ -61,27 +61,27 @@ export const PageStudentOverview: FC<Props> = ({ id }) => {
             )}
           </Typography.H6>
         </Flex>
-        <Flex m={3}>
-          <Link sx={{ mr: 2, flexGrow: [1, 0] }} to={STUDENT_PROFILE_URL(id)}>
+        <Flex mx={3} my={2}>
+          <Link sx={{ mr: 2, flexGrow: 1 }} to={STUDENT_PROFILE_URL(id)}>
             <Button data-cy="edit" variant="outline" sx={{ width: "100%" }}>
               <Icon as={PersonIcon} fill="textPrimary" mr={2} />
               Profile
             </Button>
           </Link>
-          <Link sx={{ mr: 2, flexGrow: [1, 0] }} to={STUDENT_PLANS_URL(id)}>
+          <Link sx={{ mr: 2, flexGrow: 1 }} to={STUDENT_PLANS_URL(id)}>
             <Button data-cy="edit" variant="outline" sx={{ width: "100%" }}>
               <Icon as={CalendarIcon} fill="textPrimary" mr={2} />
               Plans
             </Button>
           </Link>
-          <Link sx={{ flexGrow: [1, 0] }} to={STUDENT_IMAGES_URL(id)}>
+          <Link sx={{ flexGrow: 1 }} to={STUDENT_IMAGES_URL(id)}>
             <Button data-cy="edit" variant="outline" sx={{ width: "100%" }}>
               <Icon as={ImageIcon} fill="textPrimary" mr={2} />
               Gallery
             </Button>
           </Link>
         </Flex>
-        <Flex m={3} mb={2}>
+        <Flex m={3} my={2}>
           <Link sx={{ width: "100%" }} to={NEW_OBSERVATION_URL(id)}>
             <Button sx={{ width: "100%" }}>
               <Icon as={PlusIcon} mr={2} fill="onPrimary" />
@@ -89,12 +89,15 @@ export const PageStudentOverview: FC<Props> = ({ id }) => {
             </Button>
           </Link>
         </Flex>
+
         <ObservationSection studentId={id} />
 
-        <Typography.H6 px={3} pt={4} pb={3} sx={{ fontWeight: "bold" }}>
+        <Typography.H6 px={[3, 4]} pt={4} pb={3} sx={{ fontWeight: "bold" }}>
           Curriculum Progress
         </Typography.H6>
-        <StudentProgressSummaryCard studentId={id} />
+        <Box mx={[0, 3]}>
+          <StudentProgressSummaryCard studentId={id} />
+        </Box>
       </Box>
     </Fragment>
   )
@@ -187,27 +190,32 @@ const ObservationSection: FC<{ studentId: string }> = ({ studentId }) => {
 
   return (
     <Fragment>
-      <Flex sx={{ alignItems: "flex-end" }} pt={4} px={3} mb={2}>
+      <Flex sx={{ alignItems: "flex-end" }} pt={4} px={[3, 4]} mb={2}>
         <Box>
-          <Typography.H6 mr="auto" sx={{ fontWeight: "bold" }}>
+          <Typography.H6 mr="auto" sx={{ fontWeight: "bold" }} mb={1}>
             Observations
           </Typography.H6>
           {(data?.length ?? 0) > 0 && (
-            <Typography.Body sx={{ fontSize: 1 }} color="textMediumEmphasis">
-              {/* eslint-disable-next-line no-nested-ternary */}
-              {selectedDateDifference > -3
-                ? selectedDateDifference === -1
-                  ? "Today"
-                  : `${selectedDateDifference * -1} Days`
-                : dayjs(dates?.[selectedDate] ?? "").format("dddd, D MMM 'YY")}
+            <Typography.Body
+              sx={{ fontSize: [1, 1], lineHeight: 1 }}
+              color="textMediumEmphasis"
+              mb={2}
+            >
+              {selectedDateDifference !== -1
+                ? dayjs(dates?.[selectedDate] ?? "").format("dddd, D MMM 'YY")
+                : `Today, ${dayjs(dates?.[selectedDate] ?? "").format(
+                    "D MMM 'YY"
+                  )}`}
             </Typography.Body>
           )}
         </Box>
         {dateSelector}
       </Flex>
-      {emptyObservationPlaceholder}
-      {listOfObservations}
-      {status === "loading" && !data && <ObservationLoadingPlaceholder />}
+      <Box mx={[0, 3]}>
+        {emptyObservationPlaceholder}
+        {listOfObservations}
+        {status === "loading" && !data && <ObservationLoadingPlaceholder />}
+      </Box>
       {isEditingObservation && (
         <EditObservationDialog
           defaultValue={targetObservation}

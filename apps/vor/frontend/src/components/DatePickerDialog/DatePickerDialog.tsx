@@ -39,7 +39,7 @@ export const DatePickerDialog: FC<Props> = ({
           onConfirm(selectedDate)
         }}
       />
-      <Flex py={3} sx={{ alignItems: "flex-end" }}>
+      <Flex py={3}>
         <Typography.Body ml={3}>
           {monthShown.format("MMM YYYY")}
         </Typography.Body>
