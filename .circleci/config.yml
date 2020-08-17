@@ -178,7 +178,7 @@ jobs:
       - run: |
           VERSION=$(cat VERSION)
           DOCKER_BUILDKIT=1 docker build -f ./docker/vor/prod.dockerfile  -t "obserfy/vor:$VERSION" . --secret id=env,src=.env
-          DOCKER_BUILDKIT=1 docker build -f ./docker/gaia/prod.dockerfile  -t "obserfy/gaia:$VERSION" .
+          DOCKER_BUILDKIT=1 docker build --build-arg NEXT_PUBLIC_GAIA_SEGMENT_KEY -f ./docker/gaia/prod.dockerfile  -t "obserfy/gaia:$VERSION"  .
       - run: |
           VERSION=$(cat VERSION)
           echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_LOGIN" --password-stdin
