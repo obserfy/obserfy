@@ -23,7 +23,7 @@ exports[`ObservationCard should render correctly 1`] = `
   border-radius: 6px;
   box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
   margin-bottom: 8px;
-  padding-top: 16px;
+  padding-top: 8px;
   border-radius: 0;
 }
 
@@ -41,40 +41,13 @@ exports[`ObservationCard should render correctly 1`] = `
   font-size: 16px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
-  margin-left: 16px;
-  margin-right: 16px;
-  margin-bottom: 8px;
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
-  font-size: 14px;
-  line-height: 1;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-0 {
-    font-size: 14px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .emotion-0 {
-    font-size: 14px;
-  }
-}
-
-.emotion-1 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
-  text-rendering: optimizeLegibility;
-  line-height: 1.5;
+  margin-top: 4px;
   margin-left: 16px;
   margin-right: 16px;
 }
 
 @media screen and (min-width:40em) {
-  .emotion-1 {
+  .emotion-0 {
     font-size: 14px;
   }
 }
@@ -92,6 +65,34 @@ exports[`ObservationCard should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.emotion-1 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: var(--theme-ui-colors-text,#37383c);
+  font-size: 16px;
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+  margin-left: 16px;
+  margin-right: 4px;
+  margin-bottom: 8px;
+  color: var(--theme-ui-colors-textPrimary,#027c5b);
+  font-size: 12px;
+  line-height: 1;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-1 {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .emotion-1 {
+    font-size: 12px;
+  }
 }
 
 .emotion-2 {
@@ -250,17 +251,17 @@ exports[`ObservationCard should render correctly 1`] = `
     >
       <p
         class="emotion-0"
-      >
-        Others
-      </p>
-      <p
-        class="emotion-1"
         data-cy="observation-short-desc"
       />
       
       <div
         class="emotion-4"
       >
+        <p
+          class="emotion-1"
+        >
+          Others
+        </p>
         <button
           class="emotion-2"
           data-cy="delete-observation"

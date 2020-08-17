@@ -22,19 +22,9 @@ export const ObservationCard: FC<Props> = ({
       mb={2}
       key={observation.id}
       sx={{ borderRadius: [0, "default"] }}
-      pt={3}
+      pt={2}
     >
-      {category && (
-        <Typography.Body
-          mx={3}
-          mb={2}
-          sx={{ fontSize: [1, 1], lineHeight: 1 }}
-          color="textPrimary"
-        >
-          {category.name}
-        </Typography.Body>
-      )}
-      <Typography.Body mx={3} data-cy="observation-short-desc">
+      <Typography.Body mt={1} mx={3} data-cy="observation-short-desc">
         {observation.shortDesc}
       </Typography.Body>
       {observation.longDesc && (
@@ -50,13 +40,23 @@ export const ObservationCard: FC<Props> = ({
         </Typography.Body>
       )}
       <Flex sx={{ alignItems: "baseline" }} mb={2}>
+        {category && (
+          <Typography.Body
+            ml={3}
+            mr={1}
+            mb={2}
+            sx={{ fontSize: [0, 0], lineHeight: 1 }}
+            color="textPrimary"
+          >
+            {category.name}
+          </Typography.Body>
+        )}
         {observation.creatorName && (
           <Typography.Body
             sx={{ fontSize: [0, 0], lineHeight: 1 }}
-            ml={3}
             color="textMediumEmphasis"
           >
-            Created by {observation.creatorName.split(" ")[0]}{" "}
+            by {observation.creatorName.split(" ")[0]}{" "}
           </Typography.Body>
         )}
         <Button
