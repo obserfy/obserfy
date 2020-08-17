@@ -14,7 +14,7 @@ export default auth0.requireAuthentication(async (req, res) => {
     res.status(200).json(
       images.map((img) => ({
         ...img,
-        imageUrl: generateUrl(img.object_key, 200, 200),
+        imageUrl: generateUrl(img.object_key, 300, 300),
       }))
     )
   } catch (err) {
