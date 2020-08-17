@@ -4,6 +4,7 @@ import LinkIcon from "../../icons/link.svg"
 import Button from "../Button/Button"
 import Textarea from "../Textarea/Textarea"
 import usePostPlanObservation from "../../hooks/api/usePostPlanObservation"
+import dayjs from "../../utils/dayjs"
 
 interface Props {
   planId: string
@@ -22,6 +23,11 @@ interface Props {
     description?: string
     image?: string
   }>
+  observations: Array<{
+    id: string
+    observation: string
+    createdAt: string
+  }>
 }
 
 const Plan: FC<Props> = ({
@@ -32,6 +38,7 @@ const Plan: FC<Props> = ({
   files,
   description,
   links,
+  observations,
 }) => {
   const [showAddObservationForm, setShowAddObservationForm] = useState(false)
 
@@ -52,6 +59,18 @@ const Plan: FC<Props> = ({
       <div className="whitespace-no-wrap">{link.url}</div>
     </a>
   ))
+
+  const renderedObservations = observations.map(
+    ({ id, observation, createdAt }) => (
+      <div key={id} className="mx-3 mb-3 text-gray-700 flex">
+        <div className="rounded-full bg-black w-1 flex-shrink-0 mr-3" />
+        <div>
+          <div>{observation}</div>
+          <div className="text-sm mt-2">{dayjs(createdAt).format("HH:mm")}</div>
+        </div>
+      </div>
+    )
+  )
 
   const renderedFiles = files.length > 0 && (
     <div className="text-sm text-gray-700 mb-1">Files</div>
@@ -79,6 +98,10 @@ const Plan: FC<Props> = ({
           Add observation
         </Button>
       )}
+      {observations.length > 0 && (
+        <div className="mx-3 mb-2 text-sm">Observations</div>
+      )}
+      {renderedObservations}
     </div>
   )
 }

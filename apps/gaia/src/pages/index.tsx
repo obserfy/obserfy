@@ -64,6 +64,7 @@ const IndexPage = () => {
             area={plan.area?.name}
             description={plan.description}
             links={plan.links}
+            observations={plan.observations}
             files={[]}
           />
         ))}

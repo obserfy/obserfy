@@ -106,7 +106,7 @@ export const findLessonPlanByChildIdAndDate = async (
         if (id) {
           return {
             id,
-            observations: plan.observations[idx],
+            observation: plan.observations[idx],
             createdAt: plan.observation_created_dates[idx],
           }
         }
