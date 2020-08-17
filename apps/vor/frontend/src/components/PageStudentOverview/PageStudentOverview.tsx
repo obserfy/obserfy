@@ -197,16 +197,15 @@ const ObservationSection: FC<{ studentId: string }> = ({ studentId }) => {
           </Typography.H6>
           {(data?.length ?? 0) > 0 && (
             <Typography.Body
-              sx={{ fontSize: 1, lineHeight: 1 }}
+              sx={{ fontSize: [1, 1], lineHeight: 1 }}
               color="textMediumEmphasis"
               mb={2}
             >
-              {/* eslint-disable-next-line no-nested-ternary */}
-              {selectedDateDifference > -3
-                ? selectedDateDifference === -1
-                  ? "Today"
-                  : `${selectedDateDifference * -1} Days`
-                : dayjs(dates?.[selectedDate] ?? "").format("dddd, D MMM 'YY")}
+              {selectedDateDifference !== -1
+                ? dayjs(dates?.[selectedDate] ?? "").format("dddd, D MMM 'YY")
+                : `Today, ${dayjs(dates?.[selectedDate] ?? "").format(
+                    "D MMM 'YY"
+                  )}`}
             </Typography.Body>
           )}
         </Box>
