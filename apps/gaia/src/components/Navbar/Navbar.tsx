@@ -16,7 +16,9 @@ const Navbar: FC<Props> = ({ childId }) => {
             <Link href={`/?childId=${childId}`}>
               <a
                 className={`${
-                  router.pathname === "/" ? "border-b-2 border-black" : ""
+                  router.pathname === "/"
+                    ? "border-b-2 border-black"
+                    : "text-gray-700"
                 } bg-white inline-block p-2 text-sm`}
               >
                 Lesson Plan
@@ -29,7 +31,7 @@ const Navbar: FC<Props> = ({ childId }) => {
                 className={`${
                   router.pathname === "/gallery"
                     ? "border-b-2 border-black"
-                    : ""
+                    : "text-gray-700"
                 } bg-white inline-block p-2 text-sm`}
               >
                 Gallery
