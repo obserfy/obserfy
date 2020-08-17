@@ -67,19 +67,23 @@ export const findLessonPlanByChildIdAndDate = async (
   // language=PostgreSQL
   const plans = await query(
     `
-              select lp.id              as id,
-                     lpd.title          as title,
-                     lpd.description    as description,
-                     a.name             as areaName,
-                     a.id               as areaid,
-                     lp.date            as date,
-                     array_agg(lpl.url) as urls,
-                     array_agg(lpl.id)  as url_ids
+              select lp.id                     as id,
+                     lpd.title                 as title,
+                     lpd.description           as description,
+                     a.name                    as areaName,
+                     a.id                      as areaid,
+                     lp.date                   as date,
+                     array_agg(lpl.url)        as urls,
+                     array_agg(lpl.id)         as url_ids,
+                     array_agg(o.id)           as observation_ids,
+                     array_agg(o.long_desc)    as observations,
+                     array_agg(o.created_date) as observation_created_dates
               from lesson_plans lp
                        left join lesson_plan_details lpd on lp.lesson_plan_details_id = lpd.id
                        left join lesson_plan_to_students lpts on lp.id = lpts.lesson_plan_id
                        left join areas a on lpd.area_id = a.id
                        left join lesson_plan_links lpl on lpd.id = lpl.lesson_plan_details_id
+                       left join observations o on lp.id = o.lesson_plan_id
               where lpts.student_id = $1
                 AND ($2::date IS NULL OR lp.date::date = $2::date)
               group by lp.id, lpd.title, lpd.description, a.name, a.id, lp.date
@@ -97,6 +101,18 @@ export const findLessonPlanByChildIdAndDate = async (
       id: plan.areaid,
       name: plan.areaname,
     },
+    observations: plan.observation_ids
+      .map((id, idx) => {
+        if (id) {
+          return {
+            id,
+            observations: plan.observations[idx],
+            createdAt: plan.observation_created_dates[idx],
+          }
+        }
+        return null
+      })
+      .filter((observation) => observation),
     links: plan.urls
       .map((url, idx) => {
         if (url) {
