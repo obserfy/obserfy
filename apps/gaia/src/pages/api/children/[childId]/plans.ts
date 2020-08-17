@@ -19,6 +19,11 @@ export interface GetChildPlansResponse {
     description?: string
     image?: string
   }>
+  observations: Array<{
+    id: string
+    observation: string
+    createdAt: string
+  }>
 }
 export default auth0.requireAuthentication(async (req, res) => {
   try {

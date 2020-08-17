@@ -318,6 +318,11 @@ exports[`PageRegister should render correctly 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   touch-action: manipulation;
+  box-shadow: rgba(27,31,35,0.1) 0px 1px 0px 0px,rgba(255,255,255,0.03) 0px 1px 0px 0px inset;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-style: solid;
+  border-width: 1px;
+  line-height: 1;
   width: 100%;
 }
 

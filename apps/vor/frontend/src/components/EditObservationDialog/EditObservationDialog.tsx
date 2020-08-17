@@ -27,7 +27,7 @@ export const EditObservationDialog: FC<Props> = ({
   const [shortDesc, setShortDesc] = useState(defaultValue?.shortDesc ?? "")
   const [details, setDetails] = useState(defaultValue?.longDesc ?? "")
   const [category, setCategory] = useState(
-    categories[defaultValue?.categoryId ?? 1].id
+    categories[defaultValue?.categoryId ?? 1]?.id ?? "0"
   )
 
   async function submitEditObservation(): Promise<void> {

@@ -1,0 +1,11 @@
+.container {
+  @apply flex flex-col bg-gray-200 rounded  p-2 border;
+}
+
+.textarea {
+  @apply bg-transparent h-32 outline-none;
+}
+
+.label {
+  @apply opacity-75 mb-1 text-sm;
+}

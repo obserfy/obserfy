@@ -233,6 +233,12 @@ exports[`DraggableMaterialListItem should render correctly 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   touch-action: manipulation;
+  box-shadow: none;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-style: solid;
+  border-width: 1px;
+  line-height: 1;
+  border: none;
   margin-right: 8px;
 }
 
