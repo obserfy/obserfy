@@ -4,7 +4,7 @@ import LinkIcon from "../../icons/link.svg"
 import Button from "../Button/Button"
 import Textarea from "../Textarea/Textarea"
 import usePostPlanObservation from "../../hooks/api/usePostPlanObservation"
-import dayjs from "../../utils/dayjs"
+import dayjs, { Dayjs } from "../../utils/dayjs"
 
 interface Props {
   planId: string
@@ -62,13 +62,11 @@ const Plan: FC<Props> = ({
 
   const renderedObservations = observations.map(
     ({ id, observation, createdAt }) => (
-      <div key={id} className="mx-3 mb-3 text-gray-700 flex">
-        <div className="rounded-full bg-black w-1 flex-shrink-0 mr-3" />
-        <div>
-          <div>{observation}</div>
-          <div className="text-sm mt-2">{dayjs(createdAt).format("HH:mm")}</div>
-        </div>
-      </div>
+      <Observation
+        key={id}
+        createdAt={dayjs(createdAt)}
+        observation={observation}
+      />
     )
   )
 
@@ -151,6 +149,21 @@ const AddObservationForm: FC<{
         </Button>
       </div>
     </>
+  )
+}
+
+const Observation: FC<{
+  observation: string
+  createdAt: Dayjs
+}> = ({ observation, createdAt }) => {
+  return (
+    <div className="mx-3 mb-3 text-gray-700 flex">
+      <div className="rounded-full bg-black w-1 flex-shrink-0 mr-3" />
+      <div>
+        <div>{observation}</div>
+        <div className="text-sm mt-2">{createdAt.format("HH:mm")}</div>
+      </div>
+    </div>
   )
 }
 
