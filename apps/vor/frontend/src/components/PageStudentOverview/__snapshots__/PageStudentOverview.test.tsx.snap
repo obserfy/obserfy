@@ -422,7 +422,6 @@ exports[`PageStudentOverview should render correctly 1`] = `
 @media screen and (min-width:40em) {
   .emotion-24 {
     padding-left: 32px;
-    padding-right: 32px;
   }
 }
 

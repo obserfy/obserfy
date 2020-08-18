@@ -1,11 +1,13 @@
 import React, { FC, useState } from "react"
-import Img, { Svg } from "react-optimized-image/lib"
+import { Svg } from "react-optimized-image/lib"
 import LinkIcon from "../../icons/link.svg"
 import Button from "../Button/Button"
 import Textarea from "../Textarea/Textarea"
 import usePostPlanObservation from "../../hooks/api/usePostPlanObservation"
 import dayjs, { Dayjs } from "../../utils/dayjs"
 import TrashIcon from "../../icons/trash.svg"
+import usePatchObservation from "../../hooks/api/usePatchObservation"
+import useDeleteObservation from "../../hooks/api/useDeleteObservation"
 
 interface Props {
   planId: string
@@ -65,6 +67,7 @@ const Plan: FC<Props> = ({
     ({ id, observation, createdAt }) => (
       <Observation
         key={id}
+        id={id}
         createdAt={dayjs(createdAt)}
         observation={observation}
       />
@@ -154,9 +157,10 @@ const AddObservationForm: FC<{
 }
 
 const Observation: FC<{
+  id: string
   observation: string
   createdAt: Dayjs
-}> = ({ observation, createdAt }) => {
+}> = ({ id, observation, createdAt }) => {
   const [isEditing, setIsEditing] = useState(false)
   return (
     <div className="px-3 mt-2 text-gray-700 flex w-full">
@@ -164,6 +168,7 @@ const Observation: FC<{
       <div className="w-full">
         {isEditing && (
           <EditObservationForm
+            observationId={id}
             original={observation}
             onDismiss={() => setIsEditing(false)}
           />
@@ -188,10 +193,13 @@ const Observation: FC<{
   )
 }
 
-const EditObservationForm: FC<{ onDismiss: () => void; original: string }> = ({
-  original,
-  onDismiss,
-}) => {
+const EditObservationForm: FC<{
+  observationId: string
+  onDismiss: () => void
+  original: string
+}> = ({ original, onDismiss }) => {
+  // const [patchObservation] = usePatchObservation(observationId)
+  // const [deleteObservation] = useDeleteObservation(observationId)
   const [observation, setObservation] = useState(original)
 
   return (
