@@ -190,7 +190,7 @@ const ObservationSection: FC<{ studentId: string }> = ({ studentId }) => {
 
   return (
     <Fragment>
-      <Flex sx={{ alignItems: "flex-end" }} pt={4} px={[3, 4]} mb={2}>
+      <Flex sx={{ alignItems: "flex-end" }} pt={4} pl={[3, 4]} pr={3} mb={2}>
         <Box>
           <Typography.H6 mr="auto" sx={{ fontWeight: "bold" }} mb={1}>
             Observations

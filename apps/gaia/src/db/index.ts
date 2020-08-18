@@ -127,7 +127,7 @@ export const getChildImages = async (childId: string) => {
   // language=PostgreSQL
   const result = await query(
     `
-              select i.student_id,image.object_key,i.image_id
+              select i.student_id, image.object_key, i.image_id
               from image_to_students i
                        join images image on image.id = i.image_id
               where i.student_id = $1
@@ -183,5 +183,31 @@ export const insertObservationToPlan = async (
     ]
   )
 
+  return result.rowCount
+}
+
+export const deleteObservation = async (id) => {
+  // language=PostgreSQL
+  const result = await query(
+    `
+              delete
+              from observations
+              where id = $1
+    `,
+    [id]
+  )
+  return result.rowCount
+}
+
+export const updateObservation = async (id, observation: string) => {
+  // language=PostgreSQL
+  const result = await query(
+    `
+              update observations
+              set long_desc = $1
+              where id = $2
+    `,
+    [observation, id]
+  )
   return result.rowCount
 }

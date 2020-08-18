@@ -9,7 +9,9 @@ module.exports = withPlugins([withPrefresh, optimizedImages], {
     modern: true,
     polyfillsOptimization: true,
   },
-
+  devIndicators: {
+    autoPrerender: false,
+  },
   webpack: (config, { dev, isServer }) => {
     const splitChunks = config.optimization && config.optimization.splitChunks
     if (splitChunks) {

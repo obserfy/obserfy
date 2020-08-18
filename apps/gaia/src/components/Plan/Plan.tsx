@@ -4,7 +4,11 @@ import LinkIcon from "../../icons/link.svg"
 import Button from "../Button/Button"
 import Textarea from "../Textarea/Textarea"
 import usePostPlanObservation from "../../hooks/api/usePostPlanObservation"
-import dayjs from "../../utils/dayjs"
+import dayjs, { Dayjs } from "../../utils/dayjs"
+import TrashIcon from "../../icons/trash.svg"
+import usePatchObservation from "../../hooks/api/usePatchObservation"
+import useDeleteObservation from "../../hooks/api/useDeleteObservation"
+import Dialog from "../Dialog/Dialog"
 
 interface Props {
   planId: string
@@ -62,13 +66,12 @@ const Plan: FC<Props> = ({
 
   const renderedObservations = observations.map(
     ({ id, observation, createdAt }) => (
-      <div key={id} className="mx-3 mb-3 text-gray-700 flex">
-        <div className="rounded-full bg-black w-1 flex-shrink-0 mr-3" />
-        <div>
-          <div>{observation}</div>
-          <div className="text-sm mt-2">{dayjs(createdAt).format("HH:mm")}</div>
-        </div>
-      </div>
+      <Observation
+        key={id}
+        id={id}
+        createdAt={dayjs(createdAt)}
+        observation={observation}
+      />
     )
   )
 
@@ -99,7 +102,7 @@ const Plan: FC<Props> = ({
         </Button>
       )}
       {observations.length > 0 && (
-        <div className="mx-3 mb-2 text-sm">Observations</div>
+        <div className="mx-3 text-sm">Observations</div>
       )}
       {renderedObservations}
     </div>
@@ -150,6 +153,121 @@ const AddObservationForm: FC<{
           {loading ? "Loading" : "Post"}
         </Button>
       </div>
+    </>
+  )
+}
+
+const Observation: FC<{
+  id: string
+  observation: string
+  createdAt: Dayjs
+}> = ({ id, observation, createdAt }) => {
+  const [isEditing, setIsEditing] = useState(false)
+  return (
+    <div className="px-3 mt-2 text-gray-700 flex w-full">
+      <div className="rounded-full bg-black w-1 flex-shrink-0 mr-3" />
+      <div className="w-full">
+        {isEditing && (
+          <EditObservationForm
+            observationId={id}
+            original={observation}
+            onDismiss={() => setIsEditing(false)}
+          />
+        )}
+        {!isEditing && (
+          <>
+            <div>{observation}</div>
+            <div className="flex mt-2 item-center w-full">
+              <div className="text-sm">{createdAt.format("HH:mm")}</div>
+              <Button
+                outline
+                className="ml-auto mr-3 text-sm underline cursor-pointer border-none p-0"
+                onClick={() => setIsEditing(true)}
+              >
+                Edit
+              </Button>
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  )
+}
+
+const EditObservationForm: FC<{
+  observationId: string
+  onDismiss: () => void
+  original: string
+}> = ({ observationId, original, onDismiss }) => {
+  const [patchObservation, patching] = usePatchObservation(observationId)
+  const [deleteObservation, deleting] = useDeleteObservation(observationId)
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false)
+
+  const [observation, setObservation] = useState(original)
+
+  return (
+    <>
+      <Textarea
+        label="Edit observation"
+        value={observation}
+        onChange={(e) => setObservation(e.target.value)}
+      />
+      <div className="flex mt-2">
+        <Button
+          iconOnly
+          outline
+          className="mr-2 text-red-700 px-2"
+          onClick={() => setShowDeleteDialog(true)}
+          disabled={patching.isLoading}
+        >
+          <Svg src={TrashIcon} width={20} height={20} />
+        </Button>
+        <Button
+          outline
+          className="ml-auto mr-2"
+          onClick={onDismiss}
+          disabled={patching.isLoading}
+        >
+          Cancel
+        </Button>
+        <Button
+          disabled={observation === original || patching.isLoading}
+          onClick={async () => {
+            const result = await patchObservation({ observation })
+            if (result.ok) {
+              onDismiss()
+            }
+          }}
+        >
+          {patching.isLoading ? "Loading" : "Save"}
+        </Button>
+      </div>
+      {showDeleteDialog && (
+        <Dialog>
+          <div className="text-xl mx-6 mb-6 mt-3">Delete this observation?</div>
+          <div className="flex w-full">
+            <Button
+              outline
+              onClick={() => setShowDeleteDialog(false)}
+              disabled={deleting.isLoading}
+            >
+              Cancel
+            </Button>
+            <Button
+              className="w-full bg-red-700 text-white ml-2"
+              onClick={async () => {
+                const result = await deleteObservation()
+                if (result.ok) {
+                  onDismiss()
+                }
+              }}
+              disabled={deleting.isLoading}
+            >
+              {deleting.isLoading ? "Loading" : "Yes"}
+            </Button>
+          </div>
+        </Dialog>
+      )}
     </>
   )
 }
