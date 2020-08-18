@@ -8,7 +8,6 @@ const renderSnippet = () => {
   const opts = {
     apiKey: NEXT_PUBLIC_GAIA_SEGMENT_KEY,
     page: true,
-    load: false,
   }
 
   return min(opts)
