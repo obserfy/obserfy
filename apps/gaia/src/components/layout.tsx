@@ -29,7 +29,7 @@ const Layout: FC = ({ children }) => {
 
   return (
     <div className="bg-background">
-      <div className="bg-surface">
+      <div className="bg-surface pb-3">
         <Header />
         <ChildInfo childId={childId} />
       </div>

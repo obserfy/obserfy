@@ -10,7 +10,7 @@ const Navbar: FC<Props> = ({ childId }) => {
 
   return (
     <div className="sticky top-0 bg-surface border-b">
-      <nav className="w-full flex max-w-3xl mx-auto pt-3 pl-1">
+      <nav className="w-full flex max-w-3xl mx-auto pl-1">
         <ul className="flex">
           <li className="mr-1" style={{ marginBottom: -1 }}>
             <Link href={`/?childId=${childId}`}>
