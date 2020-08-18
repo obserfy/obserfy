@@ -34,7 +34,7 @@ export const Tab: FC<TabProps> = ({
           isSelected={selectedItemIdx === idx}
           sx={{
             lineHeight: small ? 2 : undefined,
-            fontSize: small ? 0 : 1,
+            fontSize: small ? [0, 0] : [1, 1],
           }}
         >
           {item}
