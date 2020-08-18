@@ -10,8 +10,12 @@ const Header: FC = () => {
   const [showLogout, setShowLogout] = useState(false)
   const user = useGetUser()
 
-  if (user.status !== "success") {
-    return <PlaceholderHeader />
+  if (user.isLoading) {
+    return <LoadingPlaceholder />
+  }
+
+  if (user.isError) {
+    return <ErrorPlaceholder />
   }
 
   return (
@@ -49,15 +53,23 @@ const Header: FC = () => {
   )
 }
 
-const PlaceholderHeader = () => {
-  return (
-    <div className="h-16 px-3 flex items-center max-w-3xl mx-auto">
-      <Img alt="obserfy logo" src={Logo} height={30} width={30} />
-      <h1 className="ml-3 text-lg font-bold">
-        Obserfy <span className="font-normal">for Parents</span>
-      </h1>
-    </div>
-  )
-}
+const LoadingPlaceholder = () => (
+  <div className="h-16 px-3 flex items-center max-w-3xl mx-auto">
+    <div
+      className="rounded-full bg-gray-200"
+      style={{ width: 30, height: 30 }}
+    />
+    <div className="bg-gray-200 w-16 h-4 rounded ml-3" />
+  </div>
+)
+
+const ErrorPlaceholder = () => (
+  <div className="h-16 px-3 flex items-center max-w-3xl mx-auto">
+    <Img alt="obserfy logo" src={Logo} height={30} width={30} />
+    <h1 className="ml-3 text-lg font-bold">
+      Obserfy <span className="font-normal">for Parents</span>
+    </h1>
+  </div>
+)
 
 export default Header
