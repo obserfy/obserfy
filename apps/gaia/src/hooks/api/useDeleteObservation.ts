@@ -4,7 +4,7 @@ import { deleteApi } from "../../apiHelpers"
 const useDeleteObservation = (id: string) => {
   const deleteObservation = deleteApi(`/observations/${id}`)
   return useMutation(deleteObservation, {
-    onSuccess: () => queryCache.invalidateQueries(["plans"]),
+    onSuccess: () => queryCache.invalidateQueries(["childPlans"]),
   })
 }
 

@@ -8,6 +8,7 @@ import dayjs, { Dayjs } from "../../utils/dayjs"
 import TrashIcon from "../../icons/trash.svg"
 import usePatchObservation from "../../hooks/api/usePatchObservation"
 import useDeleteObservation from "../../hooks/api/useDeleteObservation"
+import Dialog from "../Dialog/Dialog"
 
 interface Props {
   planId: string
@@ -197,9 +198,11 @@ const EditObservationForm: FC<{
   observationId: string
   onDismiss: () => void
   original: string
-}> = ({ original, onDismiss }) => {
-  // const [patchObservation] = usePatchObservation(observationId)
-  // const [deleteObservation] = useDeleteObservation(observationId)
+}> = ({ observationId, original, onDismiss }) => {
+  const [patchObservation, patching] = usePatchObservation(observationId)
+  const [deleteObservation, deleting] = useDeleteObservation(observationId)
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false)
+
   const [observation, setObservation] = useState(original)
 
   return (
@@ -210,14 +213,61 @@ const EditObservationForm: FC<{
         onChange={(e) => setObservation(e.target.value)}
       />
       <div className="flex mt-2">
-        <Button iconOnly outline className="mr-2 text-red-700 px-2">
+        <Button
+          iconOnly
+          outline
+          className="mr-2 text-red-700 px-2"
+          onClick={() => setShowDeleteDialog(true)}
+          disabled={patching.isLoading}
+        >
           <Svg src={TrashIcon} width={20} height={20} />
         </Button>
-        <Button outline className="ml-auto mr-2" onClick={onDismiss}>
+        <Button
+          outline
+          className="ml-auto mr-2"
+          onClick={onDismiss}
+          disabled={patching.isLoading}
+        >
           Cancel
         </Button>
-        <Button disabled={observation === original}>Save</Button>
+        <Button
+          disabled={observation === original || patching.isLoading}
+          onClick={async () => {
+            const result = await patchObservation({ observation })
+            if (result.ok) {
+              onDismiss()
+            }
+          }}
+        >
+          {patching.isLoading ? "Loading" : "Save"}
+        </Button>
       </div>
+      {showDeleteDialog && (
+        <Dialog>
+          <div className="text-xl mx-6 mb-6 mt-3">Delete this observation?</div>
+          <div className="flex w-full">
+            <Button
+              outline
+              onClick={() => setShowDeleteDialog(false)}
+              disabled={deleting.isLoading}
+            >
+              Cancel
+            </Button>
+            <Button
+              className="w-full bg-red-700 text-white ml-2"
+              onClick={async () => {
+                const result = await deleteObservation()
+                if (result.ok) {
+                  onDismiss()
+                }
+              }}
+              disabled={observation === original || deleting.isLoading}
+            >
+              {deleting.isLoading ? "Loading" : "Yes"}
+            </Button>
+          </div>
+        </Dialog>
+      )}
     </>
   )
 }

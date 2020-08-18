@@ -7,7 +7,7 @@ const usePatchObservation = (id: string) => {
     `/observations/${id}`
   )
   return useMutation(patchObservation, {
-    onSuccess: () => queryCache.invalidateQueries(["plans"]),
+    onSuccess: () => queryCache.invalidateQueries(["childPlans"]),
   })
 }
 

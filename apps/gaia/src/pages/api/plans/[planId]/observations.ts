@@ -20,9 +20,9 @@ const childHandler = auth0.requireAuthentication(async (req, res) => {
         body.childId,
         body.observation
       )
-      res.status(201)
+      res.status(201).end()
     } else {
-      res.status(405)
+      res.status(405).end()
     }
   } catch (error) {
     console.error(error)

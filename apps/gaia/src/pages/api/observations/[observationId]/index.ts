@@ -14,9 +14,10 @@ const handlePatch = async (
   const body: PatchObservationRequestBody = JSON.parse(req.body)
   const result = await updateObservation(observationId, body.observation)
   if (result > 0) {
-    res.status(200)
+    res.status(200).end()
+    return
   }
-  res.status(404)
+  res.status(404).end()
 }
 
 const handleDelete = async (
@@ -26,10 +27,10 @@ const handleDelete = async (
 ) => {
   const result = await deleteObservation(observationId)
   if (result > 0) {
-    res.status(200)
+    res.status(200).end()
     return
   }
-  res.status(404)
+  res.status(404).end()
 }
 
 const observationHandler = auth0.requireAuthentication(
