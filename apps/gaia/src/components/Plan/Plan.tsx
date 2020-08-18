@@ -1,10 +1,11 @@
 import React, { FC, useState } from "react"
-import { Svg } from "react-optimized-image/lib"
+import Img, { Svg } from "react-optimized-image/lib"
 import LinkIcon from "../../icons/link.svg"
 import Button from "../Button/Button"
 import Textarea from "../Textarea/Textarea"
 import usePostPlanObservation from "../../hooks/api/usePostPlanObservation"
 import dayjs, { Dayjs } from "../../utils/dayjs"
+import TrashIcon from "../../icons/trash.svg"
 
 interface Props {
   planId: string
@@ -97,7 +98,7 @@ const Plan: FC<Props> = ({
         </Button>
       )}
       {observations.length > 0 && (
-        <div className="mx-3 mb-2 text-sm">Observations</div>
+        <div className="mx-3 text-sm">Observations</div>
       )}
       {renderedObservations}
     </div>
@@ -156,14 +157,60 @@ const Observation: FC<{
   observation: string
   createdAt: Dayjs
 }> = ({ observation, createdAt }) => {
+  const [isEditing, setIsEditing] = useState(false)
   return (
-    <div className="mx-3 mb-3 text-gray-700 flex">
+    <div className="px-3 mt-2 text-gray-700 flex w-full">
       <div className="rounded-full bg-black w-1 flex-shrink-0 mr-3" />
-      <div>
-        <div>{observation}</div>
-        <div className="text-sm mt-2">{createdAt.format("HH:mm")}</div>
+      <div className="w-full">
+        {isEditing && (
+          <EditObservationForm
+            original={observation}
+            onDismiss={() => setIsEditing(false)}
+          />
+        )}
+        {!isEditing && (
+          <>
+            <div>{observation}</div>
+            <div className="flex mt-2 item-center w-full">
+              <div className="text-sm">{createdAt.format("HH:mm")}</div>
+              <Button
+                outline
+                className="ml-auto mr-3 text-sm underline cursor-pointer border-none p-0"
+                onClick={() => setIsEditing(true)}
+              >
+                Edit
+              </Button>
+            </div>
+          </>
+        )}
       </div>
     </div>
+  )
+}
+
+const EditObservationForm: FC<{ onDismiss: () => void; original: string }> = ({
+  original,
+  onDismiss,
+}) => {
+  const [observation, setObservation] = useState(original)
+
+  return (
+    <>
+      <Textarea
+        label="Edit observation"
+        value={observation}
+        onChange={(e) => setObservation(e.target.value)}
+      />
+      <div className="flex mt-2">
+        <Button iconOnly outline className="mr-2 text-red-700 px-2">
+          <Svg src={TrashIcon} width={20} height={20} />
+        </Button>
+        <Button outline className="ml-auto mr-2" onClick={onDismiss}>
+          Cancel
+        </Button>
+        <Button disabled={observation === original}>Save</Button>
+      </div>
+    </>
   )
 }
 
