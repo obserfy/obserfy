@@ -19,7 +19,7 @@ const Layout: FC = ({ children }) => {
   if (router.pathname === "/session-expired") {
     return (
       <div className="bg-background">
-        <div className="bg-surface">
+        <div className="bg-surface min-h-screen">
           <Header />
           <main>{children}</main>
         </div>
