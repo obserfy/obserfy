@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.11.0](https://github.com/obserfy/obserfy/compare/v1.10.4...v1.11.0) (2020-08-18)
+
+
+### Features
+
+* add "created at" column in school table. ([6b1f7fd](https://github.com/obserfy/obserfy/commit/6b1f7fd63fa32b63fa8c7f9f8d097364dfc864a0))
+
 ### [1.10.4](https://github.com/obserfy/obserfy/compare/v1.10.3...v1.10.4) (2020-08-12)
 
 
