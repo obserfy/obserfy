@@ -28,4 +28,11 @@ export interface LessonPlan {
   area?: Area
   student: Children[]
   links: Link[]
+  observations: Observation[]
+}
+
+export interface Observation {
+  id: string
+  observation: string
+  createdAt: string
 }

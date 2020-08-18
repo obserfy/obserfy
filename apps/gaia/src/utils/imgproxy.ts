@@ -33,7 +33,6 @@ export const generateUrl = (
   const enlarge = 1
   const encodedUrl = urlSafeBase64(url)
   const path = `/${resizingType}/${width}/${height}/${gravity}/${enlarge}/${encodedUrl}`
-  console.log(path)
 
   const signature = sign(SALT, path, KEY)
   return `${URL}/${signature}${path}`

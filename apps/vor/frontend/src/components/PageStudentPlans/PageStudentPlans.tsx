@@ -39,7 +39,7 @@ export const PageStudentPlans: FC<Props> = ({ studentId, date }) => {
       <Typography.H5 mx={3} mb={4}>
         Plans
       </Typography.H5>
-      <Flex sx={{ alignItems: "center" }} px={3} pb={2}>
+      <Flex px={3} pb={2}>
         <Typography.Body color="textMediumEmphasis">
           {selectedDate.format("ddd, DD MMM 'YY")}
         </Typography.Body>

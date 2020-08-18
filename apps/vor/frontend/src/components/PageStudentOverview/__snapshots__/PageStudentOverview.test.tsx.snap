@@ -43,7 +43,7 @@ exports[`PageStudentOverview should render correctly 1`] = `
   }
 }
 
-.emotion-33 {
+.emotion-35 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -51,12 +51,12 @@ exports[`PageStudentOverview should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-33 {
+  .emotion-35 {
     font-size: 20px;
   }
 }
 
-.emotion-32 {
+.emotion-34 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -175,7 +175,10 @@ exports[`PageStudentOverview should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  margin: 16px;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-top: 8px;
+  margin-bottom: 8px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -188,15 +191,6 @@ exports[`PageStudentOverview should render correctly 1`] = `
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-10 {
-    -webkit-box-flex: 0;
-    -webkit-flex-grow: 0;
-    -ms-flex-positive: 0;
-    flex-grow: 0;
-  }
 }
 
 .emotion-20 {
@@ -232,7 +226,7 @@ exports[`PageStudentOverview should render correctly 1`] = `
   box-sizing: border-box;
   font-size: 14px;
   color: var(--theme-ui-colors-textPrimary,#027c5b);
-  background-color: transparent;
+  background-color: var(--theme-ui-colors-surface,#fff);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
@@ -255,8 +249,11 @@ exports[`PageStudentOverview should render correctly 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   touch-action: manipulation;
-  border: 1px solid;
+  box-shadow: none;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-style: solid;
+  border-width: 1px;
+  line-height: 1;
   width: 100%;
 }
 
@@ -300,20 +297,12 @@ exports[`PageStudentOverview should render correctly 1`] = `
   flex-grow: 1;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-16 {
-    -webkit-box-flex: 0;
-    -webkit-flex-grow: 0;
-    -ms-flex-positive: 0;
-    flex-grow: 0;
-  }
-}
-
 .emotion-21 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   margin: 16px;
+  margin-top: 8px;
   margin-bottom: 8px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -373,6 +362,11 @@ exports[`PageStudentOverview should render correctly 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   touch-action: manipulation;
+  box-shadow: rgba(27,31,35,0.1) 0px 1px 0px 0px,rgba(255,255,255,0.03) 0px 1px 0px 0px inset;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-style: solid;
+  border-width: 1px;
+  line-height: 1;
   width: 100%;
 }
 
@@ -425,6 +419,12 @@ exports[`PageStudentOverview should render correctly 1`] = `
   align-items: flex-end;
 }
 
+@media screen and (min-width:40em) {
+  .emotion-24 {
+    padding-left: 32px;
+  }
+}
+
 .emotion-23 {
   box-sizing: border-box;
   margin: 0;
@@ -442,7 +442,23 @@ exports[`PageStudentOverview should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   font-size: 20px;
   margin-right: auto;
+  margin-bottom: 4px;
   font-weight: bold;
+}
+
+.emotion-29 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-29 {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
 }
 
 .emotion-28 {
@@ -471,7 +487,7 @@ exports[`PageStudentOverview should render correctly 1`] = `
   }
 }
 
-.emotion-29 {
+.emotion-30 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -488,14 +504,21 @@ exports[`PageStudentOverview should render correctly 1`] = `
   font-weight: bold;
 }
 
-.emotion-31 {
+@media screen and (min-width:40em) {
+  .emotion-30 {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+.emotion-32 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   margin-top: 16px;
 }
 
-.emotion-30 {
+.emotion-31 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -507,17 +530,17 @@ exports[`PageStudentOverview should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-30 {
+  .emotion-31 {
     border-radius: 6px;
   }
 }
 
 <div>
   <div
-    class="emotion-33"
+    class="emotion-35"
   >
     <div
-      class="emotion-32"
+      class="emotion-34"
     >
       <a
         href="/dashboard/students"
@@ -664,29 +687,37 @@ exports[`PageStudentOverview should render correctly 1`] = `
         </div>
       </div>
       <div
-        class="emotion-28"
+        class="emotion-29"
       >
         <div
-          class="emotion-25"
-        />
-        <div
-          class="emotion-25"
-        />
-        <div
-          class="emotion-25"
-        />
+          class="emotion-28"
+        >
+          <div
+            class="emotion-25"
+          />
+          <div
+            class="emotion-25"
+          />
+          <div
+            class="emotion-25"
+          />
+        </div>
       </div>
       <h6
-        class="emotion-29"
+        class="emotion-30"
       >
         Curriculum Progress
       </h6>
       <div
-        class="emotion-31"
+        class="emotion-29"
       >
         <div
-          class="emotion-30"
-        />
+          class="emotion-32"
+        >
+          <div
+            class="emotion-31"
+          />
+        </div>
       </div>
     </div>
   </div>

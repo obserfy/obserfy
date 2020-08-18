@@ -324,12 +324,9 @@ const MultilineDataBox: FC<{
       >
         {label}
       </Typography.Body>
-      {value
-        .split("\n")
-        .filter((text) => text)
-        .map((text) => (
-          <Typography.Body mb={3}>{text || placeholder}</Typography.Body>
-        ))}
+      {value.split("\n\n").map((text) => (
+        <Typography.Body mb={3}>{text || placeholder}</Typography.Body>
+      ))}
     </Box>
     <Button
       variant="outline"

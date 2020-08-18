@@ -35,6 +35,10 @@ func Connect(user string, password string, addr string, tlsConfig *tls.Config) *
 }
 
 func InitTables(db *pg.DB) error {
+	_, err := db.Exec("CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\"")
+	if err != nil {
+		return richErrors.Wrap(err, "failed to create extension")
+	}
 	for _, model := range []interface{}{
 		(*Curriculum)(nil),
 		(*Area)(nil),
@@ -52,7 +56,6 @@ func InitTables(db *pg.DB) error {
 		(*GuardianToStudent)(nil),
 		(*StudentMaterialProgress)(nil),
 		(*User)(nil),
-		(*Observation)(nil),
 		(*Session)(nil),
 		(*UserToSchool)(nil),
 		(*Attendance)(nil),
@@ -60,6 +63,7 @@ func InitTables(db *pg.DB) error {
 		(*LessonPlanDetails)(nil),
 		(*LessonPlanLink)(nil),
 		(*LessonPlan)(nil),
+		(*Observation)(nil),
 		(*File)(nil),
 		(*FileToLessonPlan)(nil),
 		(*LessonPlanToStudents)(nil),
@@ -181,16 +185,22 @@ type StudentToClass struct {
 }
 
 type Observation struct {
-	Id          string `json:"id" pg:",type:uuid"`
-	StudentId   string `pg:",type:uuid,on_delete:CASCADE"`
-	Student     *Student
-	ShortDesc   string    `json:"shortDesc"`
-	LongDesc    string    `json:"longDesc"`
-	CategoryId  string    `json:"categoryId"`
-	CreatedDate time.Time `json:"createdDate"`
-	EventTime   *time.Time
-	CreatorId   string `pg:",type:uuid,on_delete:SET NULL"`
-	Creator     *User
+	Id           string `json:"id" pg:",type:uuid,default:uuid_generate_v4()"`
+	StudentId    string `pg:",type:uuid,on_delete:CASCADE"`
+	Student      *Student
+	ShortDesc    string    `json:"shortDesc"`
+	LongDesc     string    `json:"longDesc"`
+	CategoryId   string    `json:"categoryId"`
+	CreatedDate  time.Time `json:"createdDate"`
+	EventTime    *time.Time
+	CreatorId    string `pg:",type:uuid,on_delete:SET NULL"`
+	Creator      *User
+	LessonPlan   LessonPlan
+	LessonPlanId string `pg:"type:uuid,on_delete:SET NULL"`
+	Guardian     Guardian
+	GuardianId   string `pg:"type:uuid,on_delete:SET NULL"`
+	Area         Area
+	AreaId       string `pg:"type:uuid,on_delete:SET NULL"`
 }
 
 type Subscription struct {
@@ -218,6 +228,7 @@ type School struct {
 	Guardian       []Guardian
 	SubscriptionId uuid.UUID `pg:",type:uuid"`
 	Subscription   Subscription
+	CreatedAt      time.Time `pg:"default:now()"`
 }
 
 type Attendance struct {

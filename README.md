@@ -27,10 +27,6 @@
 
 This is the monorepo of [Obserfy](https://obserfy.com). This repo contains every code that you need to run Obserfy on your own. Obserfy is currently still on its early days. If you were to give it a try, we would love to hear any of your feedback through github issue, or email at chrsep@protonmail.com.
 
-## Vision
-
-**Obserfy aims to empower teachers and schools to provide high-quality education to more children by simplifying and automating as much of their works as possible.** Our software should be fast, simple, and accessible. It should get out of the way of the teachers, allowing them to focus on understanding and planning the education of their students.
-
 ## Codebase
 
 ### Folder structure

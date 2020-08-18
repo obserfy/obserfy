@@ -67,19 +67,23 @@ export const findLessonPlanByChildIdAndDate = async (
   // language=PostgreSQL
   const plans = await query(
     `
-              select lp.id              as id,
-                     lpd.title          as title,
-                     lpd.description    as description,
-                     a.name             as areaName,
-                     a.id               as areaid,
-                     lp.date            as date,
-                     array_agg(lpl.url) as urls,
-                     array_agg(lpl.id)  as url_ids
+              select lp.id                     as id,
+                     lpd.title                 as title,
+                     lpd.description           as description,
+                     a.name                    as areaName,
+                     a.id                      as areaid,
+                     lp.date                   as date,
+                     array_agg(lpl.url)        as urls,
+                     array_agg(lpl.id)         as url_ids,
+                     array_agg(o.id)           as observation_ids,
+                     array_agg(o.long_desc)    as observations,
+                     array_agg(o.created_date) as observation_created_dates
               from lesson_plans lp
                        left join lesson_plan_details lpd on lp.lesson_plan_details_id = lpd.id
                        left join lesson_plan_to_students lpts on lp.id = lpts.lesson_plan_id
                        left join areas a on lpd.area_id = a.id
                        left join lesson_plan_links lpl on lpd.id = lpl.lesson_plan_details_id
+                       left join observations o on lp.id = o.lesson_plan_id
               where lpts.student_id = $1
                 AND ($2::date IS NULL OR lp.date::date = $2::date)
               group by lp.id, lpd.title, lpd.description, a.name, a.id, lp.date
@@ -97,6 +101,18 @@ export const findLessonPlanByChildIdAndDate = async (
       id: plan.areaid,
       name: plan.areaname,
     },
+    observations: plan.observation_ids
+      .map((id, idx) => {
+        if (id) {
+          return {
+            id,
+            observation: plan.observations[idx],
+            createdAt: plan.observation_created_dates[idx],
+          }
+        }
+        return null
+      })
+      .filter((observation) => observation),
     links: plan.urls
       .map((url, idx) => {
         if (url) {
@@ -106,4 +122,92 @@ export const findLessonPlanByChildIdAndDate = async (
       })
       .filter((url) => url),
   }))
+}
+export const getChildImages = async (childId: string) => {
+  // language=PostgreSQL
+  const result = await query(
+    `
+              select i.student_id, image.object_key, i.image_id
+              from image_to_students i
+                       join images image on image.id = i.image_id
+              where i.student_id = $1
+    `,
+    [childId]
+  )
+  return result.rows
+}
+
+export const insertObservationToPlan = async (
+  planId: string,
+  parentEmail: string,
+  childId: string,
+  observation: string
+) => {
+  const plan = await query(
+    `
+              select title, area_id
+              from lesson_plans lp
+                       join lesson_plan_details lpd on lpd.id = lp.lesson_plan_details_id
+              where lp.id = $1
+    `,
+    [planId]
+  )
+
+  // language=PostgreSQL
+  const parent = await query(
+    `
+              select id
+              from guardians
+              where email = $1
+    `,
+    [parentEmail]
+  )
+
+  const now = dayjs()
+  // language=PostgreSQL
+  const result = await query(
+    `
+              insert into observations (student_id, short_desc, long_desc, created_date, event_time, lesson_plan_id,
+                                        guardian_id, area_id)
+              values ($1, $2, $3, $4, $5, $6, $7, $8)
+    `,
+    [
+      childId,
+      plan.rows[0].title,
+      observation,
+      now,
+      now,
+      planId,
+      parent.rows[0].id,
+      plan.rows[0].area_id,
+    ]
+  )
+
+  return result.rowCount
+}
+
+export const deleteObservation = async (id) => {
+  // language=PostgreSQL
+  const result = await query(
+    `
+              delete
+              from observations
+              where id = $1
+    `,
+    [id]
+  )
+  return result.rowCount
+}
+
+export const updateObservation = async (id, observation: string) => {
+  // language=PostgreSQL
+  const result = await query(
+    `
+              update observations
+              set long_desc = $1
+              where id = $2
+    `,
+    [observation, id]
+  )
+  return result.rowCount
 }

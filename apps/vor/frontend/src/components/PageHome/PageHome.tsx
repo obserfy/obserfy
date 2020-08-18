@@ -109,9 +109,10 @@ export const PageHome: FC = () => {
           </Button>
         </Link>
       </Flex>
-      <Flex px={3} mb={2} sx={{ flexWrap: "wrap" }}>
+      <Flex px={3} sx={{ flexWrap: "wrap" }}>
         <Chip
           mr={2}
+          mb={2}
           key="all"
           isActive={filterClass === ""}
           text="All"
@@ -121,6 +122,7 @@ export const PageHome: FC = () => {
         {allClass.data?.map(({ id, name }) => (
           <Chip
             mr={2}
+            mb={2}
             key={id}
             isActive={filterClass === id}
             text={name}
