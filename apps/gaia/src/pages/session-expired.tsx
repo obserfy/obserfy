@@ -2,7 +2,7 @@ import React from "react"
 import Button from "../components/Button/Button"
 
 const SessionExpired = () => (
-  <main className="max-w-lg mx-auto my-8">
+  <div className="max-w-lg mx-auto my-8">
     <h1 className="text-2xl m-3 leading-tight">
       Looks like your session has expired
     </h1>
@@ -11,7 +11,7 @@ const SessionExpired = () => (
         Login
       </Button>
     </a>
-  </main>
+  </div>
 )
 
 export default SessionExpired
