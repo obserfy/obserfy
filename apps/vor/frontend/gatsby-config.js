@@ -65,7 +65,30 @@ module.exports = {
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-plugin-offline`,
+      options: {
+        workboxConfig: {
+          // globPatterns: ["**/icon-path*"],
+          runtimeCaching: [
+            // inspired by next-pwa's https://github.com/shadowwalker/next-pwa/blob/1d6ace1ec501638fa1feb7dd2526c1ef1d62210e/cache.js#L87-L99
+            {
+              urlPattern: /\/api\/.*$/i,
+              handler: "NetworkFirst",
+              method: "GET",
+              options: {
+                cacheName: "apis",
+                expiration: {
+                  maxEntries: 16,
+                  maxAgeSeconds: 24 * 60 * 60, // 24 hours
+                },
+                networkTimeoutSeconds: 10, // fall back to cache if api does not response within 10 seconds
+              },
+            },
+          ],
+        },
+      },
+    },
     // `gatsby-plugin-remove-serviceworker`,
     `gatsby-plugin-emotion`,
     `gatsby-plugin-portal`,
