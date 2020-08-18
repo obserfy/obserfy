@@ -261,7 +261,7 @@ const EditObservationForm: FC<{
                   onDismiss()
                 }
               }}
-              disabled={observation === original || deleting.isLoading}
+              disabled={deleting.isLoading}
             >
               {deleting.isLoading ? "Loading" : "Yes"}
             </Button>
