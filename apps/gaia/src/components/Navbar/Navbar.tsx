@@ -1,15 +1,44 @@
-import React from "react"
+import React, { FC } from "react"
+import { useRouter } from "next/router"
+import Link from "next/link"
 
-const Navbar = () => {
+interface Props {
+  childId: string
+}
+const Navbar: FC<Props> = ({ childId }) => {
+  const router = useRouter()
+
   return (
     <div className="sticky top-0 bg-surface border-b">
-      <nav className="w-full flex max-w-3xl mx-auto pt-3">
-        <div
-          className="mx-3 py-1 border-b-2 border-black text-sm px-2"
-          style={{ marginBottom: "-1px" }}
-        >
-          Lesson Plans
-        </div>
+      <nav className="w-full flex max-w-3xl mx-auto pt-3 pl-1">
+        <ul className="flex">
+          <li className="mr-1" style={{ marginBottom: -1 }}>
+            <Link href={`/?childId=${childId}`}>
+              <a
+                className={`${
+                  router.pathname === "/"
+                    ? "border-b-2 border-black"
+                    : "text-gray-700"
+                } bg-white inline-block p-2 text-sm`}
+              >
+                Lesson Plan
+              </a>
+            </Link>
+          </li>
+          <li className="mr-1" style={{ marginBottom: -1 }}>
+            <Link href={`/gallery?childId=${childId}`}>
+              <a
+                className={`${
+                  router.pathname === "/gallery"
+                    ? "border-b-2 border-black"
+                    : "text-gray-700"
+                } bg-white inline-block p-2 text-sm`}
+              >
+                Gallery
+              </a>
+            </Link>
+          </li>
+        </ul>
       </nav>
     </div>
   )

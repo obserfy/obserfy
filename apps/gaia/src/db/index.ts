@@ -123,6 +123,19 @@ export const findLessonPlanByChildIdAndDate = async (
       .filter((url) => url),
   }))
 }
+export const getChildImages = async (childId: string) => {
+  // language=PostgreSQL
+  const result = await query(
+    `
+              select i.student_id,image.object_key,i.image_id
+              from image_to_students i
+                       join images image on image.id = i.image_id
+              where i.student_id = $1
+    `,
+    [childId]
+  )
+  return result.rows
+}
 
 export const insertObservationToPlan = async (
   planId: string,
