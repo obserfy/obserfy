@@ -7,6 +7,7 @@ const useGetChildImages = (childId: string) => {
   }
   return useQuery(["childImages", childId], getChildImages, {
     enabled: childId,
+    initialData: [],
   })
 }
 

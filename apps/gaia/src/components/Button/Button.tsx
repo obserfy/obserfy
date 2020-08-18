@@ -19,9 +19,9 @@ const Button: FC<
       {...props}
       className={`
         ${styles.base} 
-        ${outline && styles.outline} 
-        ${small && styles.small}
-        ${iconOnly && styles.icon}
+        ${outline ? styles.outline : ""} 
+        ${small ? styles.small : ""}
+        ${iconOnly ? styles.icon : ""}
         ${className} 
       `}
     />

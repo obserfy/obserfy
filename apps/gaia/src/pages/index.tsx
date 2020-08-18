@@ -85,9 +85,9 @@ const EmptyPlansIllustration: FC<{ loading: boolean; date: Dayjs }> = ({
     >
       <Img src={NoPlanIllustration} className="w-64 md:w-1/2 mb-3" />
       <h5
-        className={`text-2xl mx-4 text-center ${
+        className={`text-xl mx-4 text-center ${
           loading && "opacity-0"
-        } transition-opacity duration-200`}
+        } transition-opacity duration-200 font-bold`}
       >
         No plans for {date.format("MMMM D")}
       </h5>

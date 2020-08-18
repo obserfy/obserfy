@@ -1,5 +1,5 @@
 import React, { FC } from "react"
-import { Router } from "next/router"
+import { Router, useRouter } from "next/router"
 import Header from "./header"
 import useGetChildren from "../hooks/api/useGetChildren"
 import ChildInfo from "./ChildInfo/ChildInfo"
@@ -14,10 +14,22 @@ Router.events.on("routeChangeComplete", (url) => {
 const Layout: FC = ({ children }) => {
   useGetChildren()
   const childId = useQueryString("childId")
+  const router = useRouter()
+
+  if (router.pathname === "/session-expired") {
+    return (
+      <div className="bg-background">
+        <div className="bg-surface min-h-screen">
+          <Header />
+          <main>{children}</main>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="bg-background">
-      <div className="bg-surface">
+      <div className="bg-surface pb-3">
         <Header />
         <ChildInfo childId={childId} />
       </div>
