@@ -13,8 +13,8 @@ const GalleryPage = () => {
       <Head>
         <title>Gallery | Obserfy for Parents</title>
       </Head>
-      <div className="max-w-3xl mx-auto flex items-center">
-        <div className="flex mx-auto flex-wrap">
+      <div className="max-w-3xl mx-auto flex items-center ">
+        <div className="flex mx-auto flex-wrap w-full">
           {childImages.data.map((img) => (
             <div
               key={img.image_id}
