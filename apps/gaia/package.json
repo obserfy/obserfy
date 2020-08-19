@@ -10,7 +10,7 @@
     "typecheck": "tsc --noemit"
   },
   "dependencies": {
-    "@auth0/nextjs-auth0": "0.15.0",
+    "@auth0/nextjs-auth0": "0.16.0",
     "@prefresh/next": "1.0.0",
     "@segment/snippet": "4.13.1",
     "@types/react": "16.9.41",
