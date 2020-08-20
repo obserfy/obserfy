@@ -34,7 +34,7 @@
     "react-query": "2.7.0",
     "react-refresh": "0.8.3",
     "react-ssr-prepass": "npm:preact-ssr-prepass@1.1.1",
-    "tailwindcss": "1.7.2",
+    "tailwindcss": "1.7.3",
     "typescript": "3.9.7",
     "webp-loader": "0.6.0"
   },
