@@ -1,6 +1,6 @@
 {
   "baseUrl": "http://localhost:8001",
-  "blacklistHosts": ["*segment.com", "*segment.io", "*sentry.io", "*sentry.com" ],
+  "blockHosts": ["*segment.com", "*segment.io", "*sentry.io", "*sentry.com" ],
   "projectId": "m9rk94",
   "viewportHeight": 667,
   "viewportWidth": 375,
