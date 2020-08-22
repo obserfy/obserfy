@@ -95,7 +95,7 @@
     "http-proxy-middleware": "1.0.5",
     "husky": "4.2.5",
     "hygen": "6.0.4",
-    "jest": "26.4.1",
+    "jest": "26.4.2",
     "jest-date-mock": "1.0.8",
     "jest-emotion": "10.0.32",
     "jest-fetch-mock": "3.0.3",
