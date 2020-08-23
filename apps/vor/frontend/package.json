@@ -91,7 +91,7 @@
     "eslint-plugin-react": "7.20.6",
     "eslint-plugin-react-hooks": "4.1.0",
     "fake-indexeddb": "3.1.2",
-    "faker": "4.1.0",
+    "faker": "5.0.0",
     "http-proxy-middleware": "1.0.5",
     "husky": "4.2.5",
     "hygen": "6.0.4",
