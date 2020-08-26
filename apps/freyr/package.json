@@ -29,7 +29,7 @@
     "gatsby-theme-i18n-lingui": "1.0.2",
     "gatsby-transformer-sharp": "2.5.12",
     "postcss-preset-env": "6.7.0",
-    "preact": "10.4.7",
+    "preact": "10.4.8",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-helmet": "6.1.0"
