@@ -31,6 +31,13 @@ const Header: FC = () => {
           <Link to="/">Obserfy</Link>
         </h1>
       </div>
+      <div className="flex items-center mr-20">
+        <Link to="/pricing">
+        <div className="text-sm text-gray-700 font-bold">
+        <Trans>Pricing</Trans>
+        </div>
+        </Link>
+      </div>
       <div className="flex items-center">
         <a href="https://app.obserfy.com/" className="">
           <Button className="px-3 py-2 mr-3 border bg-transparent text-gray-700 text-sm">

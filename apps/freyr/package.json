@@ -23,6 +23,7 @@
     "gatsby-plugin-react-helmet": "3.3.10",
     "gatsby-plugin-remove-trailing-slashes": "2.3.11",
     "gatsby-plugin-sharp": "2.6.25",
+    "gatsby-plugin-svgr": "^2.0.2",
     "gatsby-plugin-webpack-bundle-analyser-v2": "1.1.11",
     "gatsby-source-filesystem": "2.3.24",
     "gatsby-theme-i18n": "1.0.2",

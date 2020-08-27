@@ -13,6 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/pages/pricing.tsx:9
+msgid "Best price for You"
+msgstr "Best price for You"
+
 #: src/pages/contact.tsx:11
 #: src/pages/index.tsx:34
 msgid "Contact Us"
@@ -38,9 +42,13 @@ msgstr "Last updated"
 msgid "Message"
 msgstr "Message"
 
-#: src/components/header.tsx:37
+#: src/components/header.tsx:44
 msgid "Parents"
 msgstr "Parents"
+
+#: src/components/header.tsx:31
+msgid "Pricing"
+msgstr "Pricing"
 
 #: src/components/layout.tsx:20
 #: src/pages/privacy-policy.tsx:10
@@ -55,7 +63,7 @@ msgstr "Run your Montessori school efficiently"
 msgid "Send"
 msgstr "Send"
 
-#: src/components/header.tsx:31
+#: src/components/header.tsx:38
 msgid "Teachers"
 msgstr "Teachers"
 
