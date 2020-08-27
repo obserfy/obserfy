@@ -39,7 +39,7 @@
     "webp-loader": "0.6.0"
   },
   "devDependencies": {
-    "@types/node": "14.6.0",
+    "@types/node": "14.6.1",
     "@types/pg": "7.14.4",
     "@types/react-query": "1.1.2",
     "@typescript-eslint/eslint-plugin": "3.10.0",
