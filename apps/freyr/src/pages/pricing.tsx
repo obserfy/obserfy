@@ -28,7 +28,7 @@ const PricingCard: FC<{}> = ({}) => (
       <p className="mb-6">Simple pricing for every school.</p>
       <div>
         <div className="inline">
-          <CheckmarkIcon />
+          <div className="text-primary"><CheckmarkIcon /></div>
           <span>90-days free trial</span>
         </div>
         <div>Unlimited students</div>
