@@ -163,6 +163,9 @@ jobs:
           node -v
           nvm alias default v12
       - run: npm install -g yarn
+      - run:
+          command: yarn workspace gaia start
+          background: true
       - run: |
           yarn workspace e2e run cy:ci
       - run: bash <(curl -s https://codecov.io/bash)
