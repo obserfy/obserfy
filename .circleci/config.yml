@@ -87,9 +87,9 @@ jobs:
       - run: |
           yarn workspace vor build
       - persist_to_workspace:
-          root: ./apps/vor/frontend
+          root: ../
           paths:
-            - public
+            - ./repo/apps/vor/frontend/public
 
   gaia_build:
     docker:
@@ -102,11 +102,11 @@ jobs:
       - run: |
           yarn workspace gaia build
       - persist_to_workspace:
-          root: ./apps/gaia
+          root: ../
           paths:
-            - .next
+            - ./repo/apps/gaia/.next
 
-  node_test:
+  vor_snapshot_test:
     docker:
       - image: node:12
     working_directory: ~/repo
@@ -155,10 +155,6 @@ jobs:
           background: true
       - attach_workspace:
           at: ../
-      - attach_workspace:
-          at: ./apps/gaia
-      - attach_workspace:
-          at: ./apps/vor/frontend
       - run: |
           echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
           echo ' [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
@@ -248,14 +244,15 @@ workflows:
       - node_typecheck:
           requires:
             - install_js_deps
-      - node_test:
-          requires:
-            - install_js_deps
 
+      - vor_snapshot_test:
+          requires:
+            - vor_frontend_build
       - e2e:
           requires:
             - vor_frontend_build
             - gaia_build
+
       - deploy:
           filters:
             branches:
@@ -264,6 +261,6 @@ workflows:
           requires:
             - e2e
             - vor_backend_test
-            - node_test
+            - vor_snapshot_test
             - node_lint
             - node_typecheck
