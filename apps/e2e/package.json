@@ -32,7 +32,7 @@
     "cy:open": "cypress open",
     "cy:open-prod": "cypress open --config baseUrl=https://localhost:8000",
     "cy:run": "cypress run",
-    "cy:ci": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 yarn wait-on -t 300000  -lv https://localhost:8000/login && yarn cy:run --config baseUrl=https://localhost:8000",
+    "cy:ci": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 yarn wait-on -t 300000  -lv https://localhost:8000/login && yarn wait-on -t 300000  -lv http://localhost:3000 && yarn cy:run --config baseUrl=https://localhost:8000",
     "lint": "eslint --ext .tsx,.ts ./",
     "typecheck": "cd cypress && tsc --noemit"
   },

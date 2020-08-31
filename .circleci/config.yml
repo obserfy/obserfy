@@ -1,83 +1,6 @@
 version: 2.1
 jobs:
-  frontend_build:
-    docker:
-      - image: node:12
-    working_directory: ~/repo
-    steps:
-      - checkout
-      - restore_cache:
-          name: Restore Yarn Package Cache
-          keys:
-            - build-v8-{{ checksum "yarn.lock" }}
-      - run: |
-          yarn install --frozen-lockfile
-      - run: |
-          mv ./apps/vor/frontend/.babelrc.ci.json ./apps/vor/frontend/.babelrc
-      - run: |
-          yarn workspace vor run build:ci
-      - persist_to_workspace:
-          root: ../
-          paths:
-            - repo/node_modules
-            - repo/apps/gaia/node_modules
-            - repo/apps/freyr/node_modules
-            - repo/apps/e2e/node_modules
-            - repo/apps/vor/frontend/.cache
-            - repo/apps/vor/frontend/public
-            - repo/apps/vor/frontend/node_modules
-            - .cache/Cypress
-      - save_cache:
-          when: always
-          name: Save Yarn Package Cache
-          key: build-v8-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
-            - ~/.cache/Cypress
-            - ./node_modules
-            - ./apps/gaia/node_modules
-            - ./apps/freyr/node_modules
-            - ./apps/e2e/node_modules
-            - ./apps/vor/frontend/.cache
-            - ./apps/vor/frontend/public
-            - ./apps/vor/frontend/node_modules
-      - store_artifacts:
-          path: ./vor/frontend/public
-
-  e2e:
-    machine:
-      image: ubuntu-1604:202004-01
-    working_directory: ~/repo
-    environment:
-      NODE_ENV: "staging"
-    #    parallelism: 2
-    steps:
-      - checkout
-      - run: cp .env.example .env
-      - run:
-          command: COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose up db vor_app nginx minio
-          background: true
-      - attach_workspace:
-          at: ../
-      - run: |
-          echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
-          echo ' [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
-      - run: |
-          nvm install v12
-          node -v
-          nvm alias default v12
-      - run: npm install -g yarn
-      - run: |
-          yarn workspace e2e run cy:ci
-      - run: bash <(curl -s https://codecov.io/bash)
-      - store_artifacts:
-          path: ~/repo/apps/e2e/cypress/videos
-          destination: cypress-videos
-      - store_artifacts:
-          path: ~/repo/apps/e2e/cypress/screenshots
-          destination: cypress-screenshots
-
-  backend_unit:
+  vor_backend_test:
     docker:
       - image: golang:1.15
       - image: minio/minio:latest
@@ -117,7 +40,73 @@ jobs:
       - store_test_results:
           path: apps/vor/test_result
 
-  frontend_unit:
+  install_js_deps:
+    docker:
+      - image: node:12
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - build-v8-{{ checksum "yarn.lock" }}
+      - run: |
+          yarn install --frozen-lockfile
+      - persist_to_workspace:
+          root: ../
+          paths:
+            - repo/node_modules
+            - repo/apps/gaia/node_modules
+            - repo/apps/freyr/node_modules
+            - repo/apps/e2e/node_modules
+            - repo/apps/vor/frontend/node_modules
+            - .cache/Cypress
+      - save_cache:
+          when: always
+          name: Save Yarn Package Cache
+          key: build-v8-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+            - ~/.cache/Cypress
+            - ./node_modules
+            - ./apps/gaia/node_modules
+            - ./apps/freyr/node_modules
+            - ./apps/e2e/node_modules
+            - ./apps/vor/frontend/node_modules
+
+  vor_frontend_build:
+    docker:
+      - image: node:12
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ../
+      - run: |
+          mv ./apps/vor/frontend/.babelrc.ci.json ./apps/vor/frontend/.babelrc
+      - run: |
+          yarn workspace vor build
+      - persist_to_workspace:
+          root: ../
+          paths:
+            - ./repo/apps/vor/frontend/public
+
+  gaia_build:
+    docker:
+      - image: node:12
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ../
+      - run: |
+          yarn workspace gaia build
+      - persist_to_workspace:
+          root: ../
+          paths:
+            - ./repo/apps/gaia/.next
+
+  vor_snapshot_test:
     docker:
       - image: node:12
     working_directory: ~/repo
@@ -129,7 +118,7 @@ jobs:
           yarn workspace vor test -w 1
       - run: bash <(curl -s https://codecov.io/bash)
 
-  frontend_lint:
+  node_lint:
     docker:
       - image: node:12
     working_directory: ~/repo
@@ -140,7 +129,7 @@ jobs:
       - run: |
           yarn workspaces run lint
 
-  frontend_typecheck:
+  node_typecheck:
     docker:
       - image: node:12
     working_directory: ~/repo
@@ -150,6 +139,37 @@ jobs:
           at: ../
       - run: |
           yarn workspaces run typecheck
+
+  e2e:
+    machine:
+      image: ubuntu-1604:202004-01
+    working_directory: ~/repo
+    #    parallelism: 2
+    steps:
+      - checkout
+      - run: cp .env.example .env
+      - run:
+          command: COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose up db vor_app nginx minio
+          background: true
+      - attach_workspace:
+          at: ../
+      - run: |
+          echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
+          echo ' [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
+      - run: |
+          nvm install v12
+          node -v
+          nvm alias default v12
+      - run: npm install -g yarn
+      - run:
+          command: yarn workspace gaia start
+          background: true
+      - run: |
+          yarn workspace e2e run cy:ci
+      - run: bash <(curl -s https://codecov.io/bash)
+      - store_artifacts:
+          path: ~/repo/apps/e2e/cypress/screenshots
+          destination: cypress-screenshots
 
   deploy:
     machine:
@@ -204,26 +224,36 @@ workflows:
   version: 2
   vor:
     jobs:
-      - frontend_build:
+      - vor_backend_test:
           filters:
             branches:
               ignore: gh-pages
-      - backend_unit:
+      - install_js_deps:
           filters:
             branches:
               ignore: gh-pages
-      - frontend_lint:
+
+      - vor_frontend_build:
           requires:
-            - frontend_build
-      - frontend_typecheck:
+            - install_js_deps
+      - gaia_build:
           requires:
-            - frontend_build
-      - frontend_unit:
+            - install_js_deps
+      - node_lint:
           requires:
-            - frontend_build
+            - install_js_deps
+      - node_typecheck:
+          requires:
+            - install_js_deps
+
+      - vor_snapshot_test:
+          requires:
+            - vor_frontend_build
       - e2e:
           requires:
-            - frontend_build
+            - vor_frontend_build
+            - gaia_build
+
       - deploy:
           filters:
             branches:
@@ -231,7 +261,7 @@ workflows:
                 - master
           requires:
             - e2e
-            - backend_unit
-            - frontend_unit
-            - frontend_lint
-            - frontend_typecheck
+            - vor_backend_test
+            - vor_snapshot_test
+            - node_lint
+            - node_typecheck
