@@ -52,7 +52,7 @@
     "eslint-plugin-react": "7.20.6",
     "eslint-plugin-react-hooks": "4.1.0",
     "prettier": "2.1.1",
-    "stylelint": "13.6.1",
+    "stylelint": "13.7.0",
     "stylelint-config-prettier": "8.0.2",
     "stylelint-config-standard": "20.0.0",
     "tailwindcss": "1.7.6",
