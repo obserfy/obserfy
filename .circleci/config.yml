@@ -144,8 +144,6 @@ jobs:
     machine:
       image: ubuntu-1604:202004-01
     working_directory: ~/repo
-    environment:
-      NODE_ENV: "staging"
     #    parallelism: 2
     steps:
       - checkout
