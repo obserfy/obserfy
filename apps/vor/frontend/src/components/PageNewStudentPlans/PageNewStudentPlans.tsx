@@ -135,7 +135,7 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
         </Box>
       )}
 
-      <Box mx={3}>
+      <Box mx={3} mb={3}>
         <Typography.H6 mb={2}>Repetition</Typography.H6>
         <Flex>
           <Chip
@@ -170,6 +170,10 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
             />
           </Box>
         )}
+      </Box>
+
+      <Box mx={3}>
+        <Typography.H6 mb={2}>Other Related Students</Typography.H6>
       </Box>
 
       <Box mx={3} mb={4}>
