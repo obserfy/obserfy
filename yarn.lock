@@ -4522,7 +4522,7 @@
     ts-dedent "^1.1.1"
     util-deprecate "^1.0.2"
 
-"@storybook/addon-essentials@^6.0.21":
+"@storybook/addon-essentials@6.0.21":
   version "6.0.21"
   resolved "https://registry.yarnpkg.com/@storybook/addon-essentials/-/addon-essentials-6.0.21.tgz#79e9da1e0eaeedacdcabb88eedbb28aedfa8d154"
   integrity sha512-5axeIvoglQ2lB2mAgrbqpbiGWl/pXe0/Nz7XrEPfl4e5gjXi5bli7yio/gt1TzXWOnNELX5PCZ9UuCz/Hjih4Q==
@@ -9060,7 +9060,7 @@ chownr@^2.0.0:
   resolved "https://registry.yarnpkg.com/chownr/-/chownr-2.0.0.tgz#15bfbe53d2eab4cf70f18a8cd68ebe5b3cb1dece"
   integrity sha512-bIomtDF5KGpdogkLd9VspvFzk9KfpyyGlS8YFVZl7TGPBHL5snIOnxeshwVgPteQ9b4Eydl+pVbIyE1DcvCWgQ==
 
-chromatic@^5.1.0:
+chromatic@5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/chromatic/-/chromatic-5.1.0.tgz#98e1991f8be565b5e64b1d158ccf4c9258e9ff8d"
   integrity sha512-8hmRRayRKElR6+k4R1HZ3mq95zeJhzE2gxMQWrurbUl5tWG0n2JIuhsHS4vxnaFw/iVqMk10ORLtZ7StaHApUQ==
