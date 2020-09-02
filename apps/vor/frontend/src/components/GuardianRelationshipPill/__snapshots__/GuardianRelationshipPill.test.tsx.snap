@@ -29,6 +29,7 @@ exports[`GuardianRelationshipPill should render correctly 1`] = `
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
+  display: inline-block;
 }
 
 .emotion-0 {

@@ -3,7 +3,7 @@ import { action } from "@storybook/addon-actions"
 import NewStudentDialog from "./NewStudentDialog"
 
 export default {
-  title: "Basic|Dialog/NewStudentDialog",
+  title: "Basic/Dialog/NewStudentDialog",
   component: NewStudentDialog,
   parameters: {
     componentSubtitle: "Just a simple NewStudentDialog",

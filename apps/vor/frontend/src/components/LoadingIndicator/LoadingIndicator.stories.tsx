@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import LoadingIndicator from "./LoadingIndicator"
 
 export default {
-  title: "Core|LoadingIndicator",
+  title: "Core/LoadingIndicator",
   component: LoadingIndicator,
   parameters: {
     componentSubtitle: "Just a simple LoadingIndicator",

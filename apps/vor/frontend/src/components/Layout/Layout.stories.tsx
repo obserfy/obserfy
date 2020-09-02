@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import Layout from "./Layout"
 
 export default {
-  title: "Basic|Layout",
+  title: "Basic/Layout",
   component: Layout,
   parameters: {
     componentSubtitle: "Just a simple Layout",

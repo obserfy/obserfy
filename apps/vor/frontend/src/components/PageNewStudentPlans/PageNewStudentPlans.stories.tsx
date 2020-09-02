@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import PageNewStudentPlans from "./PageNewStudentPlans"
 
 export default {
-  title: "Core|PageNewStudentPlans",
+  title: "Core/PageNewStudentPlans",
   component: PageNewStudentPlans,
   parameters: {
     componentSubtitle: "Just a simple PageNewStudentPlans",

@@ -4,7 +4,7 @@ import { Box } from "theme-ui"
 import ProfilePicker from "./ProfilePicker"
 
 export default {
-  title: "Core|ProfilePicker",
+  title: "Core/ProfilePicker",
   component: ProfilePicker,
   parameters: {
     componentSubtitle: "Just a simple ProfilePicker",

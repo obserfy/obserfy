@@ -4,7 +4,7 @@ import { Box } from "theme-ui"
 import Tab from "./Tab"
 
 export default {
-  title: "Basic|Tab",
+  title: "Basic/Tab",
   component: Tab,
   parameters: {
     componentSubtitle: "Just a simple Tab",

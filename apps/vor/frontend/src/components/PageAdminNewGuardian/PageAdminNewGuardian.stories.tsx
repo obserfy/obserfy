@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import PageAdminNewGuardian from "./PageAdminNewGuardian"
 
 export default {
-  title: "Core|PageAdminNewGuardian",
+  title: "Core/PageAdminNewGuardian",
   component: PageAdminNewGuardian,
   parameters: {
     componentSubtitle: "Just a simple PageAdminNewGuardian",

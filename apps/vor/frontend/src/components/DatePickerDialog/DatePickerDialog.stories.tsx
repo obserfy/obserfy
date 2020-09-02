@@ -4,7 +4,7 @@ import DatePickerDialog from "./DatePickerDialog"
 import dayjs from "../../dayjs"
 
 export default {
-  title: "Basic|Dialog/DatePickerDialog",
+  title: "Basic/Dialog/DatePickerDialog",
   component: DatePickerDialog,
   parameters: {
     componentSubtitle: "Just a simple DatePickerDialog",

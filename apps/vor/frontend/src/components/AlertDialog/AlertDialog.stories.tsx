@@ -4,7 +4,7 @@ import { Box } from "theme-ui"
 import AlertDialog from "./AlertDialog"
 
 export default {
-  title: "Basic|Dialog/AlertDialog",
+  title: "Basic/Dialog/AlertDialog",
   component: AlertDialog,
   parameters: {
     componentSubtitle: "Just a simple AlertDialog",

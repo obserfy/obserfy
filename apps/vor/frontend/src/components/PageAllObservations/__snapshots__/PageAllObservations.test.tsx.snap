@@ -199,6 +199,7 @@ exports[`PageAllObservations should render correctly 1`] = `
   padding-top: 4px;
   padding-bottom: 4px;
   background-color: var(--theme-ui-colors-surface,#fff);
+  display: inline-block;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -244,6 +245,7 @@ exports[`PageAllObservations should render correctly 1`] = `
   padding-top: 4px;
   padding-bottom: 4px;
   background-color: #b39ddb;
+  display: inline-block;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;

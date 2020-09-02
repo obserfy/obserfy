@@ -3,7 +3,7 @@ import { action } from "@storybook/addon-actions"
 import LinkInput from "./LinkInput"
 
 export default {
-  title: "Core|LinkInput",
+  title: "Core/LinkInput",
   component: LinkInput,
   parameters: {
     componentSubtitle: "Just a simple LinkInput",

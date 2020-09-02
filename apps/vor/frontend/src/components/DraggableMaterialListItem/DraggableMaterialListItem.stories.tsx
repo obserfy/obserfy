@@ -5,7 +5,7 @@ import DraggableMaterialListItem from "./DraggableMaterialListItem"
 import { Material } from "../../api/useGetSubjectMaterials"
 
 export default {
-  title: "Core|DraggableMaterialListItem",
+  title: "Core/DraggableMaterialListItem",
   component: DraggableMaterialListItem,
   parameters: {
     componentSubtitle: "Just a simple DraggableMaterialListItem",

@@ -3,7 +3,7 @@ import { action } from "@storybook/addon-actions"
 import WarningDialog from "./WarningDialog"
 
 export default {
-  title: "Basic|Dialog/WarningDialog",
+  title: "Basic/Dialog/WarningDialog",
   component: WarningDialog,
   parameters: {
     componentSubtitle: "Just a simple WarningDialog",

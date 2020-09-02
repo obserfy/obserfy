@@ -5,7 +5,7 @@ import Typography from "../Typography/Typography"
 import SearchBar from "../SearchBar/SearchBar"
 
 export default {
-  title: "Basic|Dialog/ScrollableDialog",
+  title: "Basic/Dialog/ScrollableDialog",
   component: ScrollableDialog,
   parameters: {
     componentSubtitle: "Just a simple ScrollableDialog",

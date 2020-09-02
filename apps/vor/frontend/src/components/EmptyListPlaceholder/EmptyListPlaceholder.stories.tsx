@@ -3,7 +3,7 @@ import { action } from "@storybook/addon-actions"
 import EmptyListPlaceholder from "./EmptyListPlaceholder"
 
 export default {
-  title: "Core|EmptyListPlaceholder",
+  title: "Core/EmptyListPlaceholder",
   component: EmptyListPlaceholder,
   parameters: {
     componentSubtitle: "Just a simple EmptyListPlaceholder",

@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import Spacer from "./Spacer"
 
 export default {
-  title: "Core|Spacer",
+  title: "Core/Spacer",
   component: Spacer,
   parameters: {
     componentSubtitle: "Just a simple Spacer",

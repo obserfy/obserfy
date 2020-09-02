@@ -3,7 +3,7 @@ import { action } from "@storybook/addon-actions"
 import ObservationCard from "./ObservationCard"
 
 export default {
-  title: "Basic|Card/ObservationCard",
+  title: "Basic/Card/ObservationCard",
   component: ObservationCard,
   parameters: {
     componentSubtitle: "Just a simple ObservationCard",
