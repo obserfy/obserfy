@@ -1,58 +1,21 @@
-import { Box, ThemeProvider, useColorMode, Flex } from "theme-ui"
-import Theme from "../src/gatsby-plugin-theme-ui"
-import { addDecorator, addParameters } from "@storybook/react"
-import { action } from "@storybook/addon-actions"
-import React, { useEffect } from "react"
-import {
-  createHistory,
-  createMemorySource,
-  LocationProvider,
-} from "@reach/router"
-import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport"
-import "../src/global.css"
-import { DocsPage } from "storybook-addon-deps/blocks"
-import { select } from "@storybook/addon-knobs"
+import { Box, ThemeProvider } from "theme-ui";
+import Theme from "../src/gatsby-plugin-theme-ui";
+import { addDecorator } from "@storybook/react";
+import { action } from "@storybook/addon-actions";
+import React from "react";
+import { createHistory, createMemorySource, LocationProvider } from "@reach/router";
+import "../src/global.css";
 
 const history = createHistory(createMemorySource("/"))
-const ThemeDecorator = (story) => {
-  return (
-    <LocationProvider history={history}>
-      <ThemeProvider theme={Theme}>
-        <ThemeSwitcher />
-        <Box
-          sx={{
-            backgroundColor: "background",
-          }}
-        >
-          {story()}
-        </Box>
-      </ThemeProvider>
-    </LocationProvider>
-  )
-}
-const ThemeSwitcher = () => {
-  const [, setColorMode] = useColorMode()
-  const theme = select("Theme", { dark: "dark", light: "default" }, "dark")
+const ComponentWrapper = (story) => (
+  <LocationProvider history={history}>
+    <ThemeProvider theme={Theme}>
+      <Box sx={{ backgroundColor: "background" }}>{story()}</Box>
+    </ThemeProvider>
+  </LocationProvider>
+)
 
-  useEffect(() => {
-    setColorMode(theme)
-  }, [theme, setColorMode])
-
-  return <Flex m={2} sx={{ position: "fixed", right: 0, top: 0 }} />
-}
-addDecorator(ThemeDecorator)
-
-// ==================================== Viewports =======================================
-addParameters({
-  viewport: {
-    viewports: INITIAL_VIEWPORTS,
-  },
-})
-
-// ==================================== DocsPage =======================================
-addParameters({
-  docs: { page: DocsPage },
-})
+addDecorator(ComponentWrapper)
 
 // ===================================== Gatsby ===========================================
 // Make gatsby components work on storybook.

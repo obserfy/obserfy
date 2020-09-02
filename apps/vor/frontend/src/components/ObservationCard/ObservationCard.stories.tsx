@@ -1,6 +1,5 @@
 import React, { FC } from "react"
 import { action } from "@storybook/addon-actions"
-import { text } from "@storybook/addon-knobs"
 import ObservationCard from "./ObservationCard"
 
 export default {
@@ -15,7 +14,7 @@ export const Basic: FC = () => (
   <ObservationCard
     observation={{
       studentName: "Angelica",
-      createdDate: text("date", "2019-12-10T11:53:02.050339Z"),
+      createdDate: "2019-12-10T11:53:02.050339Z",
       id: "",
       studentId: "",
       longDesc: "",
