@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import Icon from "./Icon"
 
 export default {
-  title: "Core|Icon",
+  title: "Core/Icon",
   component: Icon,
   parameters: {
     componentSubtitle: "Just a simple Icon",

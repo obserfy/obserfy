@@ -674,6 +674,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   padding-top: 4px;
   padding-bottom: 4px;
   background-color: var(--theme-ui-colors-primary,#00e399);
+  display: inline-block;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -718,6 +719,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   padding-top: 4px;
   padding-bottom: 4px;
   background-color: var(--theme-ui-colors-surface,#fff);
+  display: inline-block;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;

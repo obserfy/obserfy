@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import PageAdmin from "./PageAdmin"
 
 export default {
-  title: "Core|PageAdmin",
+  title: "Core/PageAdmin",
   component: PageAdmin,
   parameters: {
     componentSubtitle: "Just a simple PageAdmin",

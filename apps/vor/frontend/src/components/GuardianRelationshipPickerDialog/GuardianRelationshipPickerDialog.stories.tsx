@@ -3,7 +3,7 @@ import { action } from "@storybook/addon-actions"
 import GuardianRelationshipPickerDialog from "./GuardianRelationshipPickerDialog"
 
 export default {
-  title: "Core|GuardianRelationshipPickerDialog",
+  title: "Core/GuardianRelationshipPickerDialog",
   component: GuardianRelationshipPickerDialog,
   parameters: {
     componentSubtitle: "Just a simple GuardianRelationshipPickerDialog",

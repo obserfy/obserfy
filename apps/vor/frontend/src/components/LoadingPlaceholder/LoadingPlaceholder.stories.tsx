@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import LoadingPlaceholder from "./LoadingPlaceholder"
 
 export default {
-  title: "Core|LoadingPlaceholder",
+  title: "Core/LoadingPlaceholder",
   component: LoadingPlaceholder,
   parameters: {
     componentSubtitle: "Just a simple LoadingPlaceholder",

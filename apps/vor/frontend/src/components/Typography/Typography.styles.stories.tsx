@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import Typography from "./Typography"
 
 export default {
-  title: "Styles|Typography",
+  title: "Styles/Typography",
   component: Typography,
   parameters: {
     order: 1,

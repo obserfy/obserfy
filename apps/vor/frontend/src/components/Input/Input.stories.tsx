@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import Input from "./Input"
 
 export default {
-  title: "Core|Forms/Input",
+  title: "Core/Forms/Input",
   component: Input,
   parameters: {
     componentSubtitle: "Just a simple Input",

@@ -15,7 +15,13 @@ export const Pill: FC<Props> = ({ sx, color, text, ...props }) => {
     <Box
       py={1}
       px={2}
-      sx={{ ...borderProps, borderRadius: "circle", flexShrink: 0, ...sx }}
+      sx={{
+        ...borderProps,
+        borderRadius: "circle",
+        flexShrink: 0,
+        display: "inline-block",
+        ...sx,
+      }}
       {...props}
     >
       <Typography.Body
