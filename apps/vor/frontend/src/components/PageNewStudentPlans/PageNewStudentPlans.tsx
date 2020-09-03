@@ -22,11 +22,18 @@ import Icon from "../Icon/Icon"
 import LinkInput from "../LinkInput/LinkInput"
 import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
 import InformationalCard from "../InformationalCard/InformationalCard"
+import Dialog from "../Dialog/Dialog"
+import DialogHeader from "../DialogHeader/DialogHeader"
+import {
+  Student,
+  useGetAllStudents,
+} from "../../api/students/useGetAllStudents"
 
 interface Props {
   studentId: string
   chosenDate: string
 }
+
 export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
   const student = useGetStudent(studentId)
   const areas = useGetCurriculumAreas()
@@ -37,6 +44,9 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
   const [areaId, setAreaId] = useState("")
   const [date, setDate] = useState(chosenDate ? dayjs(chosenDate) : dayjs())
   const [links, setLinks] = useImmer<PostNewLessonPlanBody["links"]>([])
+  const [showStudentPickerDialog, setShowStudentPickerDialog] = useState(false)
+  const [otherStudents, setOtherStudents] = useImmer<Student[]>([])
+  const otherStudentsId = otherStudents.map(({ id }) => id)
 
   // Repetition data
   const [repetition, setRepetition] = useState(0)
@@ -49,7 +59,7 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
       description,
       date,
       links,
-      students: [studentId],
+      students: [studentId, ...otherStudentsId],
       repetition: repetition === 0 ? undefined : { type: repetition, endDate },
     })
     if (result.ok) {
@@ -80,7 +90,7 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
         />
         <TextArea
           label="Description"
-          mb={3}
+          mb={4}
           value={description}
           sx={{ width: "100%" }}
           onChange={(e) => {
@@ -88,7 +98,7 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
           }}
         />
       </Box>
-      <Box mx={3} mb={3}>
+      <Box mx={3} mb={4}>
         <Typography.H6 mb={2}>Links</Typography.H6>
         {links.map((link) => (
           <LinkPreview
@@ -117,7 +127,7 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
           />
         </Box>
       ) : (
-        <Box mx={3}>
+        <Box mx={3} mb={4}>
           <Typography.H6 mb={2}>Related Area</Typography.H6>
           <Flex mb={2} sx={{ flexWrap: "wrap" }}>
             {areas.data?.map(({ id, name }) => (
@@ -135,7 +145,7 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
         </Box>
       )}
 
-      <Box mx={3} mb={3}>
+      <Box mx={3} mb={4}>
         <Typography.H6 mb={2}>Repetition</Typography.H6>
         <Flex>
           <Chip
@@ -173,7 +183,30 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
       </Box>
 
       <Box mx={3}>
-        <Typography.H6 mb={2}>Other Related Students</Typography.H6>
+        <Flex sx={{ alignItems: "baseline" }} mb={2}>
+          <Typography.H6>Other Students</Typography.H6>
+          <Button
+            ml="auto"
+            variant="outline"
+            onClick={() => setShowStudentPickerDialog(true)}
+          >
+            Add
+          </Button>
+        </Flex>
+        <Box>
+          {otherStudents.map((otherStudent) => (
+            <Box>{otherStudent.name}</Box>
+          ))}
+        </Box>
+        {showStudentPickerDialog && (
+          <StudentPickerDialog
+            filteredIds={[studentId, ...otherStudentsId]}
+            onDismiss={() => setShowStudentPickerDialog(false)}
+            onAccept={(students) =>
+              setOtherStudents((draft) => [...draft, ...students])
+            }
+          />
+        )}
       </Box>
 
       <Box mx={3} mb={4}>
@@ -220,6 +253,10 @@ const LinkPreview: FC<{
           display: "flex",
           alignItems: "center",
           overflowX: ["auto", "hidden"],
+          "&:hover": {
+            textDecoration: "underline",
+            color: "onSurface",
+          },
         }}
       >
         <Icon as={LinkIcon} ml={3} my={3} />
@@ -228,7 +265,6 @@ const LinkPreview: FC<{
           sx={{
             whiteSpace: "nowrap",
             display: "inline-block",
-            textDecoration: "underline",
           }}
         >
           {link.url}
@@ -250,5 +286,75 @@ const LinkPreview: FC<{
     </Flex>
   </Card>
 )
+
+const StudentPickerDialog: FC<{
+  filteredIds: string[]
+  onDismiss: () => void
+  onAccept: (student: Student[]) => void
+}> = ({ filteredIds, onDismiss, onAccept }) => {
+  const allStudents = useGetAllStudents("", true)
+  const [search, setSearch] = useState("")
+  const [selected, setSelected] = useImmer<Student[]>([])
+
+  const matched = allStudents.data
+    ?.filter((student) => student.name.match(new RegExp(search, "i")))
+    ?.filter((student) => {
+      return filteredIds.findIndex((id) => student.id === id) === -1
+    })
+
+  return (
+    <Dialog>
+      <DialogHeader
+        onAcceptText="Add"
+        title="Add More Student"
+        onCancel={onDismiss}
+        onAccept={() => {
+          onAccept(selected)
+          onDismiss()
+        }}
+      />
+      <Box
+        pt={3}
+        sx={{
+          maxHeight: 300,
+          overflowY: "scroll",
+          WebkitOverflowScrolling: "touch",
+        }}
+      >
+        <Input
+          mx={3}
+          sx={{ backgroundColor: "background", width: "100%" }}
+          placeholder="Search student"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        {matched?.map((student) => {
+          const isSelected =
+            selected.findIndex(({ id }) => id === student.id) !== -1
+
+          return (
+            <Flex
+              sx={{ backgroundColor: isSelected ? "primary" : "surface" }}
+              p={3}
+              onClick={() => {
+                if (!isSelected) {
+                  setSelected((draft) => {
+                    draft.push(student)
+                  })
+                } else {
+                  setSelected((draft) => {
+                    return draft.filter(({ id }) => id !== student.id)
+                  })
+                }
+              }}
+            >
+              <Typography.Body>{student.name}</Typography.Body>
+            </Flex>
+          )
+        })}
+      </Box>
+    </Dialog>
+  )
+}
 
 export default PageNewStudentPlans
