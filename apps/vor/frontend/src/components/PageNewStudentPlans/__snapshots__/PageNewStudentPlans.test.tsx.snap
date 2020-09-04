@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageNewStudentPlans should render correctly 1`] = `
-.emotion-46 {
+.emotion-47 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,12 +9,12 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-46 {
+  .emotion-47 {
     font-size: 20px;
   }
 }
 
-.emotion-45 {
+.emotion-46 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -857,7 +857,29 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-43 {
+.emotion-42 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: var(--theme-ui-colors-text,#37383c);
+  font-size: 16px;
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  text-align: center;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+}
+
+@media screen and (min-width:40em) {
+  .emotion-42 {
+    font-size: 14px;
+  }
+}
+
+.emotion-44 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -918,28 +940,28 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-43:disabled {
+.emotion-44:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-43:hover,
-.emotion-43:focus {
+.emotion-44:hover,
+.emotion-44:focus {
   background-color: var(--theme-ui-colors-primaryDark,#00a06d);
   outline: none;
 }
 
-.emotion-43:hover:disabled,
-.emotion-43:focus:disabled {
+.emotion-44:hover:disabled,
+.emotion-44:focus:disabled {
   background-color: var(--theme-ui-colors-primary,#00e399);
 }
 
 <div>
   <div
-    class="emotion-46"
+    class="emotion-47"
   >
     <div
-      class="emotion-45"
+      class="emotion-46"
     >
       <a
         href="/dashboard/students/plans?studentId=adsfasdfsa&date=1996-05-26T00:00:00.000Z"
@@ -1133,12 +1155,17 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
             Add
           </button>
         </div>
+        <p
+          class="emotion-42"
+        >
+          No other students added yet.
+        </p>
       </div>
       <div
         class="emotion-26"
       >
         <button
-          class="emotion-43"
+          class="emotion-44"
           disabled=""
         >
           Save

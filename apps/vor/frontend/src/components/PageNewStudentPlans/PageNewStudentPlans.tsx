@@ -226,6 +226,13 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
             </Button>
           </Flex>
         ))}
+        <Typography.Body
+          mx={3}
+          my={4}
+          sx={{ textAlign: "center", color: "textMediumEmphasis" }}
+        >
+          No other students added yet.
+        </Typography.Body>
         {showStudentPickerDialog && (
           <StudentPickerDialog
             filteredIds={[studentId, ...otherStudentsId]}
@@ -392,12 +399,7 @@ const StudentPickerDialog: FC<{
                 }
               }}
             >
-              <Typography.Body
-                p={3}
-                sx={{
-                  width: "100%",
-                }}
-              >
+              <Typography.Body p={3} sx={{ width: "100%" }}>
                 {student.name}
               </Typography.Body>
               {isSelected && (
