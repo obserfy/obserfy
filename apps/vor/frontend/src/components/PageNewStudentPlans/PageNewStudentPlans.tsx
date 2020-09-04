@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { FC, useState } from "react"
-import { Box, Button, Card, Flex, jsx } from "theme-ui"
+import { Box, Button, Card, Flex, Image, jsx } from "theme-ui"
 import { useImmer } from "use-immer"
 import { nanoid } from "nanoid"
 import { useGetCurriculumAreas } from "../../api/useGetCurriculumAreas"
@@ -28,6 +28,7 @@ import {
   Student,
   useGetAllStudents,
 } from "../../api/students/useGetAllStudents"
+import StudentPicturePlaceholder from "../StudentPicturePlaceholder/StudentPicturePlaceholder"
 
 interface Props {
   studentId: string
@@ -132,9 +133,9 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
           <Flex mb={2} sx={{ flexWrap: "wrap" }}>
             {areas.data?.map(({ id, name }) => (
               <Chip
+                key={id}
                 mb={2}
                 mr={2}
-                key={id}
                 text={name}
                 activeBackground="primary"
                 onClick={() => setAreaId(id === areaId ? "" : id)}
@@ -182,9 +183,9 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
         )}
       </Box>
 
-      <Box mx={3}>
-        <Flex sx={{ alignItems: "baseline" }} mb={2}>
-          <Typography.H6>Other Students</Typography.H6>
+      <Box mx={3} mb={4}>
+        <Flex sx={{ alignItems: "flex-end" }} mb={2}>
+          <Typography.H6>Other Related Students</Typography.H6>
           <Button
             ml="auto"
             variant="outline"
@@ -193,11 +194,37 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
             Add
           </Button>
         </Flex>
-        <Box>
-          {otherStudents.map((otherStudent) => (
-            <Box>{otherStudent.name}</Box>
-          ))}
-        </Box>
+        {otherStudents.map((otherStudent) => (
+          <Flex key={otherStudent.id} my={3} sx={{ alignItems: "center" }}>
+            <Box sx={{ flexShrink: 0 }}>
+              {otherStudent.profileImageUrl ? (
+                <Image
+                  src={otherStudent.profileImageUrl}
+                  sx={{
+                    width: 32,
+                    height: 32,
+                    borderRadius: "circle",
+                  }}
+                />
+              ) : (
+                <StudentPicturePlaceholder />
+              )}
+            </Box>
+            <Typography.Body ml={3} sx={{ width: "100%" }}>
+              {otherStudent.name}
+            </Typography.Body>
+            <Button
+              variant="secondary"
+              onClick={() =>
+                setOtherStudents((draft) => {
+                  return draft.filter(({ id }) => id !== otherStudent.id)
+                })
+              }
+            >
+              <Icon as={TrashIcon} color="red" fill="danger" />
+            </Button>
+          </Flex>
+        ))}
         {showStudentPickerDialog && (
           <StudentPickerDialog
             filteredIds={[studentId, ...otherStudentsId]}
@@ -296,17 +323,19 @@ const StudentPickerDialog: FC<{
   const [search, setSearch] = useState("")
   const [selected, setSelected] = useImmer<Student[]>([])
 
-  const matched = allStudents.data
-    ?.filter((student) => student.name.match(new RegExp(search, "i")))
-    ?.filter((student) => {
-      return filteredIds.findIndex((id) => student.id === id) === -1
-    })
+  const unselectedStudents = allStudents.data?.filter((student) => {
+    return filteredIds.findIndex((id) => student.id === id) === -1
+  })
+
+  const matched = unselectedStudents?.filter((student) => {
+    return student.name.match(new RegExp(search, "i"))
+  })
 
   return (
     <Dialog>
       <DialogHeader
         onAcceptText="Add"
-        title="Add More Student"
+        title="Select Students"
         onCancel={onDismiss}
         onAccept={() => {
           onAccept(selected)
@@ -323,19 +352,29 @@ const StudentPickerDialog: FC<{
       >
         <Input
           mx={3}
+          mb={3}
           sx={{ backgroundColor: "background", width: "100%" }}
           placeholder="Search student"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
+        {unselectedStudents?.length === 0 && (
+          <Typography.Body m={3} sx={{ width: "100%", textAlign: "center" }}>
+            No more students to add
+          </Typography.Body>
+        )}
         {matched?.map((student) => {
           const isSelected =
             selected.findIndex(({ id }) => id === student.id) !== -1
 
           return (
-            <Flex
-              sx={{ backgroundColor: isSelected ? "primary" : "surface" }}
-              p={3}
+            <Box
+              key={student.id}
+              pl={3}
+              sx={{
+                backgroundColor: isSelected ? "primary" : "surface",
+                cursor: "pointer",
+              }}
               onClick={() => {
                 if (!isSelected) {
                   setSelected((draft) => {
@@ -348,8 +387,18 @@ const StudentPickerDialog: FC<{
                 }
               }}
             >
-              <Typography.Body>{student.name}</Typography.Body>
-            </Flex>
+              <Typography.Body
+                p={3}
+                sx={{
+                  width: "100%",
+                  borderBottomStyle: "solid",
+                  borderBottomWidth: 1,
+                  borderBottomColor: "border",
+                }}
+              >
+                {student.name}
+              </Typography.Body>
+            </Box>
           )
         })}
       </Box>

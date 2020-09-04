@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageNewStudentPlans should render correctly 1`] = `
-.emotion-47 {
+.emotion-46 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,12 +9,12 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-47 {
+  .emotion-46 {
     font-size: 20px;
   }
 }
 
-.emotion-46 {
+.emotion-45 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -761,10 +761,10 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
 }
 
 .emotion-39 {
@@ -857,13 +857,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-42 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-}
-
-.emotion-44 {
+.emotion-43 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -924,28 +918,28 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-44:disabled {
+.emotion-43:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-44:hover,
-.emotion-44:focus {
+.emotion-43:hover,
+.emotion-43:focus {
   background-color: var(--theme-ui-colors-primaryDark,#00a06d);
   outline: none;
 }
 
-.emotion-44:hover:disabled,
-.emotion-44:focus:disabled {
+.emotion-43:hover:disabled,
+.emotion-43:focus:disabled {
   background-color: var(--theme-ui-colors-primary,#00e399);
 }
 
 <div>
   <div
-    class="emotion-47"
+    class="emotion-46"
   >
     <div
-      class="emotion-46"
+      class="emotion-45"
     >
       <a
         href="/dashboard/students/plans?studentId=adsfasdfsa&date=1996-05-26T00:00:00.000Z"
@@ -1123,7 +1117,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
         </div>
       </div>
       <div
-        class="emotion-19"
+        class="emotion-26"
       >
         <div
           class="emotion-41"
@@ -1131,7 +1125,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
           <h6
             class="emotion-39"
           >
-            Other Students
+            Other Related Students
           </h6>
           <button
             class="emotion-40"
@@ -1139,15 +1133,12 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
             Add
           </button>
         </div>
-        <div
-          class="emotion-42"
-        />
       </div>
       <div
         class="emotion-26"
       >
         <button
-          class="emotion-44"
+          class="emotion-43"
           disabled=""
         >
           Save
