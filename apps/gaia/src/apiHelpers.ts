@@ -58,3 +58,21 @@ export const postApi = <T>(url: string) => async (payload: T) => {
 
   return result
 }
+export const postFile = (url:string)=>async (image:File) =>{
+  const payload = new FormData()
+  payload.append("image", image)
+
+  const result = await fetch(`${BASE_URL}${url}`, {
+    credentials: "same-origin",
+    method: "POST",
+    body: payload,
+  })
+
+  if (!result.ok) {
+    const body = await result.json()
+    throw Error(body?.error ?? "")
+  }
+
+  return result
+}
+

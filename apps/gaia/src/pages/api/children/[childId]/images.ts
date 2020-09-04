@@ -11,6 +11,7 @@ export default auth0.requireAuthentication(async (req, res) => {
       res.status(404).end("not found")
       return
     }
+    
     res.status(200).json(
       images.map((img) => ({
         ...img,

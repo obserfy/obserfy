@@ -7,6 +7,7 @@ export interface GetChildResponse {
   name: string
   schoolName: string
   profilePic: string
+  schoolId: string
 }
 
 const childHandler = auth0.requireAuthentication(async (req, res) => {
@@ -26,6 +27,7 @@ const childHandler = auth0.requireAuthentication(async (req, res) => {
       id: result.id,
       name: result.name,
       schoolName: result.school_name,
+      schoolId:result.school_id,
       profilePic:
         result.profile_pic && generateUrl(result.profile_pic, 100, 100),
     }

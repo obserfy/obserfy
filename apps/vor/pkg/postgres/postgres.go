@@ -64,6 +64,7 @@ func InitTables(db *pg.DB) error {
 		(*LessonPlanLink)(nil),
 		(*LessonPlan)(nil),
 		(*Observation)(nil),
+		(*ObservationToImage)(nil),
 		(*File)(nil),
 		(*FileToLessonPlan)(nil),
 		(*LessonPlanToStudents)(nil),
