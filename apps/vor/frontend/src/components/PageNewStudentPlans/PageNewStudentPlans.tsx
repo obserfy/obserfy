@@ -21,6 +21,7 @@ import { ReactComponent as LinkIcon } from "../../icons/link.svg"
 import Icon from "../Icon/Icon"
 import LinkInput from "../LinkInput/LinkInput"
 import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
+import { ReactComponent as CheckmarkIcon } from "../../icons/checkmark-outline.svg"
 import InformationalCard from "../InformationalCard/InformationalCard"
 import Dialog from "../Dialog/Dialog"
 import DialogHeader from "../DialogHeader/DialogHeader"
@@ -221,7 +222,7 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
                 })
               }
             >
-              <Icon as={TrashIcon} color="red" fill="danger" />
+              <Icon as={TrashIcon} fill="danger" />
             </Button>
           </Flex>
         ))}
@@ -341,6 +342,7 @@ const StudentPickerDialog: FC<{
           onAccept(selected)
           onDismiss()
         }}
+        disableAccept={selected.length === 0}
       />
       <Box
         pt={3}
@@ -368,12 +370,15 @@ const StudentPickerDialog: FC<{
             selected.findIndex(({ id }) => id === student.id) !== -1
 
           return (
-            <Box
+            <Flex
               key={student.id}
               pl={3}
               sx={{
-                backgroundColor: isSelected ? "primary" : "surface",
+                alignItems: "center",
                 cursor: "pointer",
+                borderBottomStyle: "solid",
+                borderBottomWidth: 1,
+                borderBottomColor: "border",
               }}
               onClick={() => {
                 if (!isSelected) {
@@ -391,14 +396,14 @@ const StudentPickerDialog: FC<{
                 p={3}
                 sx={{
                   width: "100%",
-                  borderBottomStyle: "solid",
-                  borderBottomWidth: 1,
-                  borderBottomColor: "border",
                 }}
               >
                 {student.name}
               </Typography.Body>
-            </Box>
+              {isSelected && (
+                <Icon mr={3} as={CheckmarkIcon} fill="primaryDark" />
+              )}
+            </Flex>
           )
         })}
       </Box>
