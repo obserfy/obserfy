@@ -47,7 +47,7 @@ export const findChildById = async (guardianEmail: string, childId: string) => {
     // language=PostgreSQL
     const result = await query(
             `
-                select s.id, s.name, school.name as school_name, s.profile_pic,s.school_id
+                select s.id, s.name, school.name as school_name, s.profile_pic, s.school_id
                 from students s
                          join schools school on s.school_id = school.id
                          join guardian_to_students gts on s.id = gts.student_id
@@ -146,11 +146,11 @@ export const insertObservationToPlan = async (
     // language=PostgreSQL
     const plan = await query(
             `
-              select title, area_id
-              from lesson_plans lp
-                       join lesson_plan_details lpd on lpd.id = lp.lesson_plan_details_id
-              where lp.id = $1
-    `,
+                select title, area_id
+                from lesson_plans lp
+                         join lesson_plan_details lpd on lpd.id = lp.lesson_plan_details_id
+                where lp.id = $1
+        `,
         [planId]
     )
 
@@ -213,15 +213,15 @@ export const updateObservation = async (id, observation: string) => {
     return result.rowCount
 }
 
-export const insertImage = async (objectKey, schoolId, studentId: string) => {
+export const insertImage = async (imageId, objectKey, schoolId, studentId: string) => {
     // language=PostgreSQL
     const result = await query(
             `
-                insert into images (school_id, object_key)
-                values ($1, $2)
+                insert into images (id, school_id, object_key)
+                values ($1, $2, $3)
         `,
         [
-            schoolId, objectKey
+            imageId, schoolId, objectKey
         ]
     )
     // language=PostgreSQL
@@ -231,7 +231,8 @@ export const insertImage = async (objectKey, schoolId, studentId: string) => {
                 values ($1, $2)
         `,
         [
-            studentId, result.rows[0].id
+            studentId, imageId
         ]
     )
+    return true
 }
