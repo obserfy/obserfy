@@ -58,7 +58,7 @@ export const postApi = <T>(url: string) => async (payload: T) => {
 
   return result
 }
-export const postFile = (url:string)=>async (image:File) =>{
+export const postFile = (url: string) => async (image: File) => {
   const payload = new FormData()
   payload.append("image", image)
 
@@ -75,4 +75,3 @@ export const postFile = (url:string)=>async (image:File) =>{
 
   return result
 }
-
