@@ -1,10 +1,12 @@
 import React, { FC, memo, useCallback, useMemo, useState } from "react"
 import { Box, Flex } from "theme-ui"
-import { Observation, useGetObservations } from "../../api/useGetObservations"
+import {
+  Observation,
+  useGetStudentObservations,
+} from "../../api/useGetStudentObservations"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { STUDENT_OVERVIEW_PAGE_URL } from "../../routes"
 import { categories } from "../../categories"
-
 import Chip from "../Chip/Chip"
 import Typography from "../Typography/Typography"
 import { useGetStudent } from "../../api/useGetStudent"
@@ -29,7 +31,7 @@ export const PageAllObservations: FC<Props> = ({ studentId }) => {
   const [isEditingObservation, setIsEditingObservation] = useState(false)
   const [isDeletingObservation, setIsDeletingObservation] = useState(false)
   const [targetObservation, setTargetObservation] = useState<Observation>()
-  const observations = useGetObservations(studentId)
+  const observations = useGetStudentObservations(studentId)
   const student = useGetStudent(studentId)
 
   const filteredObservation = useMemo(

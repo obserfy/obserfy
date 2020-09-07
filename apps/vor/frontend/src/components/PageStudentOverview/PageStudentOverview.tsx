@@ -9,7 +9,10 @@ import Icon from "../Icon/Icon"
 import EmptyListPlaceholder from "../EmptyListPlaceholder/EmptyListPlaceholder"
 import { BackNavigation } from "../BackNavigation/BackNavigation"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
-import { Observation, useGetObservations } from "../../api/useGetObservations"
+import {
+  Observation,
+  useGetStudentObservations,
+} from "../../api/useGetStudentObservations"
 import EditObservationDialog from "../EditObservationDialog/EditObservationDialog"
 import DeleteObservationDialog from "../DeleteObservationDialog/DeleteObservationDialog"
 import ObservationCard from "../ObservationCard/ObservationCard"
@@ -104,7 +107,7 @@ export const PageStudentOverview: FC<Props> = ({ id }) => {
 }
 
 const ObservationSection: FC<{ studentId: string }> = ({ studentId }) => {
-  const { data, status, refetch } = useGetObservations(studentId)
+  const { data, status, refetch } = useGetStudentObservations(studentId)
   const [targetObservation, setTargetObservation] = useState<Observation>()
   const [selectedDate, setSelectedDate] = useState(0)
   const [isEditingObservation, setIsEditingObservation] = useState(false)

@@ -4,7 +4,7 @@ import { categories } from "../../categories"
 import Select from "../Select/Select"
 import Input from "../Input/Input"
 import TextArea from "../TextArea/TextArea"
-import { Observation } from "../../api/useGetObservations"
+import { Observation } from "../../api/useGetStudentObservations"
 
 import Dialog from "../Dialog/Dialog"
 

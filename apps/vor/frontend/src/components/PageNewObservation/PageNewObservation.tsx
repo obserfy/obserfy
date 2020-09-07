@@ -1,49 +1,42 @@
 import React, { FC, FormEvent, useState } from "react"
-import { Box, Flex, Button } from "theme-ui"
+import { Box, Button } from "theme-ui"
 import { categories } from "../../categories"
 import Select from "../Select/Select"
 import Input from "../Input/Input"
 import TextArea from "../TextArea/TextArea"
-
-import BackNavigation from "../BackNavigation/BackNavigation"
-import Spacer from "../Spacer/Spacer"
 import Typography from "../Typography/Typography"
 import { useGetStudent } from "../../api/useGetStudent"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
-
-import { createObservationApi } from "../../api/createObservationApi"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
+import usePostNewObservation from "../../api/usePostNewObservation"
 import { STUDENT_OVERVIEW_PAGE_URL } from "../../routes"
+import BackNavigation from "../BackNavigation/BackNavigation"
 
 interface Props {
   studentId: string
 }
 export const PageNewObservation: FC<Props> = ({ studentId }) => {
+  const [postNewObservation, { isLoading }] = usePostNewObservation(studentId)
+
   const [shortDesc, setShortDesc] = useState("")
   const [longDesc, setDetails] = useState("")
   const [category, setCategory] = useState(categories[0].id)
-  const [submitting, setSubmitting] = useState(false)
-  const student = useGetStudent(studentId)
 
   async function submit(e: FormEvent): Promise<void> {
     e.preventDefault()
-    setSubmitting(true)
-    const response = await createObservationApi(studentId, {
+    const response = await postNewObservation({
       categoryId: category,
       longDesc,
       shortDesc,
     })
 
-    if (response.status === 201) {
-      analytics.track("Observation Created", {
-        responseStatus: response.status,
-      })
+    if (response.ok) {
+      analytics.track("Observation Created")
       window.history?.back()
     } else {
       analytics.track("Create Observation Failed", {
         responseStatus: response.status,
       })
-      setSubmitting(false)
     }
   }
 
@@ -53,15 +46,7 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
         to={STUDENT_OVERVIEW_PAGE_URL(studentId)}
         text="Student Detail"
       />
-      {student.status === "loading" && student.data === undefined ? (
-        <Box pb={4} pt={3} px={3}>
-          <LoadingPlaceholder sx={{ width: "100%", height: "4rem" }} />
-        </Box>
-      ) : (
-        <Typography.H6 pb={4} pt={3} px={3}>
-          {student.data?.name}
-        </Typography.H6>
-      )}
+      <StudentName id={studentId} />
       <Box as="form" px={3} onSubmit={submit}>
         <Select
           autoFocus
@@ -86,25 +71,34 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
         />
         <TextArea
           label="Details"
-          sx={{
-            height: 150,
-            fontSize: 2,
-            width: "100%",
-          }}
           placeholder="Tell us what you observed"
           onChange={(e) => setDetails(e.target.value)}
           value={longDesc}
           mb={3}
         />
-        <Flex pt={3}>
-          <Spacer />
-          <Button disabled={shortDesc === ""}>
-            {submitting && <LoadingIndicator />}
-            Add
-          </Button>
-        </Flex>
+        <Button disabled={shortDesc === ""} ml="auto">
+          {isLoading && <LoadingIndicator />} Add
+        </Button>
       </Box>
     </Box>
+  )
+}
+
+const StudentName: FC<{ id: string }> = ({ id }) => {
+  const { data, isLoading } = useGetStudent(id)
+
+  if (isLoading && data === undefined) {
+    return (
+      <Box pb={4} pt={3} px={3}>
+        <LoadingPlaceholder sx={{ width: "16rem", height: 27 }} />
+      </Box>
+    )
+  }
+
+  return (
+    <Typography.H6 pb={4} pt={3} px={3}>
+      {data?.name}
+    </Typography.H6>
   )
 }
 

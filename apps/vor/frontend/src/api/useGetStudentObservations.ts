@@ -1,5 +1,5 @@
 import { navigate } from "gatsby"
-import { QueryResult, useQuery } from "react-query"
+import { queryCache, QueryResult, useQuery } from "react-query"
 import { BASE_URL } from "./useApi"
 
 export interface Observation {
@@ -15,7 +15,7 @@ export interface Observation {
   eventTime?: string
 }
 
-export const useGetObservations = (
+export const useGetStudentObservations = (
   studentId: string
 ): QueryResult<Observation[]> => {
   async function fetchObservation(): Promise<Observation[]> {
@@ -35,3 +35,6 @@ export const useGetObservations = (
 
   return useQuery(["observations", { studentId }], fetchObservation)
 }
+
+export const invalidateStudentObservations = async (studentId: string) =>
+  queryCache.invalidateQueries<Observation[]>(["observations", { studentId }])

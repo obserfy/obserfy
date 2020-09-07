@@ -15,7 +15,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   }
 }
 
-.emotion-22 {
+.emotion-20 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -23,12 +23,12 @@ exports[`PageNewObservation should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-22 {
+  .emotion-20 {
     font-size: 20px;
   }
 }
 
-.emotion-21 {
+.emotion-19 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -103,11 +103,11 @@ exports[`PageNewObservation should render correctly 1`] = `
   border-radius: 6px;
   -webkit-animation: 1s ease-in-out 0s infinite animation-0;
   animation: 1s ease-in-out 0s infinite animation-0;
-  width: 100%;
-  height: 4rem;
+  width: 16rem;
+  height: 27px;
 }
 
-.emotion-20 {
+.emotion-18 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -322,9 +322,6 @@ exports[`PageNewObservation should render correctly 1`] = `
   resize: vertical;
   color: var(--theme-ui-colors-text,#37383c);
   margin-bottom: 16px;
-  height: 150px;
-  font-size: 16px;
-  width: 100%;
 }
 
 .emotion-15:hover,
@@ -353,28 +350,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   line-height: 2rem;
 }
 
-.emotion-19 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  padding-top: 16px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .emotion-17 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  pointer-events: none;
-}
-
-.emotion-18 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -431,30 +407,31 @@ exports[`PageNewObservation should render correctly 1`] = `
   border-style: solid;
   border-width: 1px;
   line-height: 1;
+  margin-left: auto;
 }
 
-.emotion-18:disabled {
+.emotion-17:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-18:hover,
-.emotion-18:focus {
+.emotion-17:hover,
+.emotion-17:focus {
   background-color: var(--theme-ui-colors-primaryDark,#00a06d);
   outline: none;
 }
 
-.emotion-18:hover:disabled,
-.emotion-18:focus:disabled {
+.emotion-17:hover:disabled,
+.emotion-17:focus:disabled {
   background-color: var(--theme-ui-colors-primary,#00e399);
 }
 
 <div>
   <div
-    class="emotion-22"
+    class="emotion-20"
   >
     <div
-      class="emotion-21"
+      class="emotion-19"
     >
       <a
         href="/dashboard/students/overview?id="
@@ -481,7 +458,7 @@ exports[`PageNewObservation should render correctly 1`] = `
         />
       </div>
       <form
-        class="emotion-20"
+        class="emotion-18"
       >
         <label
           class="emotion-9"
@@ -575,19 +552,12 @@ exports[`PageNewObservation should render correctly 1`] = `
             placeholder="Tell us what you observed"
           />
         </label>
-        <div
-          class="emotion-19"
+        <button
+          class="emotion-17"
+          disabled=""
         >
-          <div
-            class="emotion-17"
-          />
-          <button
-            class="emotion-18"
-            disabled=""
-          >
-            Add
-          </button>
-        </div>
+           Add
+        </button>
       </form>
     </div>
   </div>
