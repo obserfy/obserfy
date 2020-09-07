@@ -1,22 +1,23 @@
-import React, { FC, FormEvent, useState } from "react"
-import { Box, Button } from "theme-ui"
+/** @jsx jsx */
+import { FC, FormEvent, Fragment, useState } from "react"
+import { jsx, Box, Button, Flex } from "theme-ui"
 import { categories } from "../../categories"
 import Select from "../Select/Select"
 import Input from "../Input/Input"
 import TextArea from "../TextArea/TextArea"
 import Typography from "../Typography/Typography"
 import { useGetStudent } from "../../api/useGetStudent"
-import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import usePostNewObservation from "../../api/usePostNewObservation"
+import { Link, navigate } from "../Link/Link"
 import { STUDENT_OVERVIEW_PAGE_URL } from "../../routes"
-import BackNavigation from "../BackNavigation/BackNavigation"
 
 interface Props {
   studentId: string
 }
 export const PageNewObservation: FC<Props> = ({ studentId }) => {
   const [postNewObservation, { isLoading }] = usePostNewObservation(studentId)
+  const student = useGetStudent(studentId)
 
   const [shortDesc, setShortDesc] = useState("")
   const [longDesc, setDetails] = useState("")
@@ -32,7 +33,7 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
 
     if (response.ok) {
       analytics.track("Observation Created")
-      window.history?.back()
+      await navigate(STUDENT_OVERVIEW_PAGE_URL(studentId))
     } else {
       analytics.track("Create Observation Failed", {
         responseStatus: response.status,
@@ -41,64 +42,77 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
   }
 
   return (
-    <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={4}>
-      <BackNavigation
-        to={STUDENT_OVERVIEW_PAGE_URL(studentId)}
-        text="Student Detail"
-      />
-      <StudentName id={studentId} />
-      <Box as="form" px={3} onSubmit={submit}>
-        <Select
-          autoFocus
-          label="Category"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-          mb={3}
+    <Fragment>
+      <Box
+        sx={{
+          position: "sticky",
+          top: 0,
+          backgroundColor: "surface",
+          borderBottomWidth: 1,
+          borderBottomColor: "border",
+          borderBottomStyle: "solid",
+        }}
+        mb={3}
+      >
+        <Flex
+          sx={{ alignItems: "center", maxWidth: "maxWidth.sm" }}
+          margin="auto"
         >
-          {categories.map(({ id, name }) => (
-            <option key={id} value={id}>
-              {name}
-            </option>
-          ))}
-        </Select>
-        <Input
-          label="Short Description"
-          sx={{ width: "100%" }}
-          placeholder="What have you found?"
-          onChange={(e) => setShortDesc(e.target.value)}
-          value={shortDesc}
-          mb={3}
-        />
-        <TextArea
-          label="Details"
-          placeholder="Tell us what you observed"
-          onChange={(e) => setDetails(e.target.value)}
-          value={longDesc}
-          mb={3}
-        />
-        <Button disabled={shortDesc === ""} ml="auto">
-          {isLoading && <LoadingIndicator />} Add
-        </Button>
+          <Link
+            to={STUDENT_OVERVIEW_PAGE_URL(studentId)}
+            sx={{ fontSize: 1, color: "textMediumEmphasis", ml: 3 }}
+          >
+            {student.data?.name.split(" ")[0]}
+          </Link>
+          <span sx={{ mx: 1 }}>/</span>
+          <Typography.Body sx={{ fontSize: [1, 1], color: "text" }}>
+            New Observation
+          </Typography.Body>
+          <Button
+            ml="auto"
+            p={2}
+            my={2}
+            mr={3}
+            onClick={submit}
+            disabled={shortDesc === ""}
+          >
+            {isLoading && <LoadingIndicator />} Save
+          </Button>
+        </Flex>
       </Box>
-    </Box>
-  )
-}
-
-const StudentName: FC<{ id: string }> = ({ id }) => {
-  const { data, isLoading } = useGetStudent(id)
-
-  if (isLoading && data === undefined) {
-    return (
-      <Box pb={4} pt={3} px={3}>
-        <LoadingPlaceholder sx={{ width: "16rem", height: 27 }} />
+      <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={4}>
+        <Box px={3}>
+          <Select
+            autoFocus
+            label="Category"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            mb={3}
+          >
+            {categories.map(({ id, name }) => (
+              <option key={id} value={id}>
+                {name}
+              </option>
+            ))}
+          </Select>
+          <Input
+            label="Short Description"
+            sx={{ width: "100%" }}
+            placeholder="What have you found?"
+            onChange={(e) => setShortDesc(e.target.value)}
+            value={shortDesc}
+            mb={3}
+          />
+          <TextArea
+            label="Details"
+            placeholder="Tell us what you observed"
+            onChange={(e) => setDetails(e.target.value)}
+            value={longDesc}
+            mb={3}
+          />
+        </Box>
       </Box>
-    )
-  }
-
-  return (
-    <Typography.H6 pb={4} pt={3} px={3}>
-      {data?.name}
-    </Typography.H6>
+    </Fragment>
   )
 }
 
