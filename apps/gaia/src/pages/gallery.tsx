@@ -4,18 +4,32 @@ import Img from "react-optimized-image"
 import useGetChildImages from "../hooks/useGetChildImages"
 import { useQueryString } from "../hooks/useQueryString"
 import NoImagesIllustration from "../images/no-images-illustration.svg"
+// import usePostImage from "../hooks/api/usePostImage"
+// import useGetChild from "../hooks/api/useGetChild"
 
 const GalleryPage = () => {
   const childId = useQueryString("childId")
+  // const child = useGetChild(childId)
   const childImages = useGetChildImages(childId)
+  // const [postImage] = usePostImage(childId, child.data?.schoolId || "0")
   return (
     <>
       <Head>
         <title>Gallery | Obserfy for Parents</title>
       </Head>
-      <div className="max-w-3xl mx-auto flex items-center ">
+      {/* <div className="max-w-3xl mx-auto flex items-center"> */}
+      {/*    <input type="file" */}
+      {/*           onChange={async (e) => { */}
+      {/*               const selectedImage = e.target.files?.[0] */}
+      {/*               if (selectedImage) { */}
+      {/*                   await postImage(selectedImage) */}
+      {/*               } */}
+      {/*           }} */}
+      {/*    ></input> */}
+      {/* </div> */}
+      <div className="max-w-3xl mx-auto flex items-center">
         <div className="flex mx-auto flex-wrap w-full">
-          {childImages.data.map((img) => (
+          {childImages.data?.map((img) => (
             <div
               key={img.image_id}
               style={{ maxWidth: "33.3333%" }}
@@ -29,7 +43,7 @@ const GalleryPage = () => {
               />
             </div>
           ))}
-          {childImages.data.length === 0 && (
+          {childImages.data?.length === 0 && (
             <EmptyGalleryIllustration loading={childImages.isLoading} />
           )}
         </div>

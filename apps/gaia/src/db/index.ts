@@ -32,12 +32,12 @@ export const findChildrenByGuardianEmail = async (guardianEmail: string) => {
   // language=PostgreSQL
   const result = await query(
     `
-              select s.id, s.name
-              from students s
-                       join guardian_to_students gts on s.id = gts.student_id
-                       join guardians g on gts.guardian_id = g.id
-              where g.email = $1
-    `,
+                select s.id, s.name
+                from students s
+                         join guardian_to_students gts on s.id = gts.student_id
+                         join guardians g on gts.guardian_id = g.id
+                where g.email = $1
+        `,
     [guardianEmail]
   )
   return result.rows
@@ -47,14 +47,14 @@ export const findChildById = async (guardianEmail: string, childId: string) => {
   // language=PostgreSQL
   const result = await query(
     `
-              select s.id, s.name, school.name as school_name, s.profile_pic
-              from students s
-                       join schools school on s.school_id = school.id
-                       join guardian_to_students gts on s.id = gts.student_id
-                       join guardians g on gts.guardian_id = g.id
-              where g.email = $1
-                and s.id = $2
-    `,
+                select s.id, s.name, school.name as school_name, s.profile_pic, s.school_id
+                from students s
+                         join schools school on s.school_id = school.id
+                         join guardian_to_students gts on s.id = gts.student_id
+                         join guardians g on gts.guardian_id = g.id
+                where g.email = $1
+                  and s.id = $2
+        `,
     [guardianEmail, childId]
   )
   return result.rows[0]
@@ -67,27 +67,27 @@ export const findLessonPlanByChildIdAndDate = async (
   // language=PostgreSQL
   const plans = await query(
     `
-              select lp.id                     as id,
-                     lpd.title                 as title,
-                     lpd.description           as description,
-                     a.name                    as areaName,
-                     a.id                      as areaid,
-                     lp.date                   as date,
-                     array_agg(lpl.url)        as urls,
-                     array_agg(lpl.id)         as url_ids,
-                     array_agg(o.id)           as observation_ids,
-                     array_agg(o.long_desc)    as observations,
-                     array_agg(o.created_date) as observation_created_dates
-              from lesson_plans lp
-                       left join lesson_plan_details lpd on lp.lesson_plan_details_id = lpd.id
-                       left join lesson_plan_to_students lpts on lp.id = lpts.lesson_plan_id
-                       left join areas a on lpd.area_id = a.id
-                       left join lesson_plan_links lpl on lpd.id = lpl.lesson_plan_details_id
-                       left join observations o on lp.id = o.lesson_plan_id
-              where lpts.student_id = $1
-                AND ($2::date IS NULL OR lp.date::date = $2::date)
-              group by lp.id, lpd.title, lpd.description, a.name, a.id, lp.date
-    `,
+                select lp.id                     as id,
+                       lpd.title                 as title,
+                       lpd.description           as description,
+                       a.name                    as areaName,
+                       a.id                      as areaid,
+                       lp.date                   as date,
+                       array_agg(lpl.url)        as urls,
+                       array_agg(lpl.id)         as url_ids,
+                       array_agg(o.id)           as observation_ids,
+                       array_agg(o.long_desc)    as observations,
+                       array_agg(o.created_date) as observation_created_dates
+                from lesson_plans lp
+                         left join lesson_plan_details lpd on lp.lesson_plan_details_id = lpd.id
+                         left join lesson_plan_to_students lpts on lp.id = lpts.lesson_plan_id
+                         left join areas a on lpd.area_id = a.id
+                         left join lesson_plan_links lpl on lpd.id = lpl.lesson_plan_details_id
+                         left join observations o on lp.id = o.lesson_plan_id
+                where lpts.student_id = $1
+                  AND ($2::date IS NULL OR lp.date::date = $2::date)
+                group by lp.id, lpd.title, lpd.description, a.name, a.id, lp.date
+        `,
     [childId, date]
   )
 
@@ -127,11 +127,11 @@ export const getChildImages = async (childId: string) => {
   // language=PostgreSQL
   const result = await query(
     `
-              select i.student_id, image.object_key, i.image_id
-              from image_to_students i
-                       join images image on image.id = i.image_id
-              where i.student_id = $1
-    `,
+                select i.student_id, image.object_key, i.image_id
+                from image_to_students i
+                         join images image on image.id = i.image_id
+                where i.student_id = $1
+        `,
     [childId]
   )
   return result.rows
@@ -143,23 +143,24 @@ export const insertObservationToPlan = async (
   childId: string,
   observation: string
 ) => {
+  // language=PostgreSQL
   const plan = await query(
     `
-              select title, area_id
-              from lesson_plans lp
-                       join lesson_plan_details lpd on lpd.id = lp.lesson_plan_details_id
-              where lp.id = $1
-    `,
+                select title, area_id
+                from lesson_plans lp
+                         join lesson_plan_details lpd on lpd.id = lp.lesson_plan_details_id
+                where lp.id = $1
+        `,
     [planId]
   )
 
   // language=PostgreSQL
   const parent = await query(
     `
-              select id
-              from guardians
-              where email = $1
-    `,
+                select id
+                from guardians
+                where email = $1
+        `,
     [parentEmail]
   )
 
@@ -167,10 +168,10 @@ export const insertObservationToPlan = async (
   // language=PostgreSQL
   const result = await query(
     `
-              insert into observations (student_id, short_desc, long_desc, created_date, event_time, lesson_plan_id,
-                                        guardian_id, area_id)
-              values ($1, $2, $3, $4, $5, $6, $7, $8)
-    `,
+                insert into observations (student_id, short_desc, long_desc, created_date, event_time, lesson_plan_id,
+                                          guardian_id, area_id)
+                values ($1, $2, $3, $4, $5, $6, $7, $8)
+        `,
     [
       childId,
       plan.rows[0].title,
@@ -190,10 +191,10 @@ export const deleteObservation = async (id) => {
   // language=PostgreSQL
   const result = await query(
     `
-              delete
-              from observations
-              where id = $1
-    `,
+                delete
+                from observations
+                where id = $1
+        `,
     [id]
   )
   return result.rowCount
@@ -203,11 +204,42 @@ export const updateObservation = async (id, observation: string) => {
   // language=PostgreSQL
   const result = await query(
     `
-              update observations
-              set long_desc = $1
-              where id = $2
-    `,
+                update observations
+                set long_desc = $1
+                where id = $2
+        `,
     [observation, id]
   )
   return result.rowCount
+}
+
+export const insertImage = async (
+  imageId,
+  objectKey,
+  schoolId,
+  studentId: string
+) => {
+  try {
+    // language=PostgreSQL
+    await query(`BEGIN TRANSACTION`, [])
+    await query(
+      `
+                insert into images (id, school_id, object_key)
+                values ($1, $2, $3)
+        `,
+      [imageId, schoolId, objectKey]
+    )
+    await query(
+      `
+                insert into image_to_students (student_id, image_id)
+                values ($1, $2)
+        `,
+      [studentId, imageId]
+    )
+    await query(`COMMIT`, [])
+    return true
+  } catch (e) {
+    await query(`ROLLBACK`, [])
+    throw e
+  }
 }
