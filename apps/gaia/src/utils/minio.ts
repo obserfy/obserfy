@@ -7,5 +7,7 @@ const minioClient = new Minio.Client({
   accessKey: process.env.MINIO_ACCESS_KEY,
   secretKey: process.env.MINIO_SECRET_KEY,
 })
-
-export default minioClient
+const uploadFile = async (key, file) => {
+  await minioClient.putObject(process.env.MINIO_BUCKET_NAME, key, file)
+}
+export default uploadFile

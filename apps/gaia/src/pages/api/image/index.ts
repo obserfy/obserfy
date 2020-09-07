@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid"
 import { IncomingForm } from "formidable"
 import auth0 from "../../../utils/auth0"
 import { insertImage } from "../../../db"
-import minioClient from "../../../utils/minio"
+import uploadFile from "../../../utils/minio"
 
 export const config = {
   api: {
@@ -28,7 +28,7 @@ const handlePost = async (res: NextApiResponse, req: NextApiRequest) => {
       return null
     })
   })
-  await minioClient.putObject(process.env.MINIO_BUCKET_NAME, key, data)
+  await uploadFile(key, data)
   await insertImage(imageId, key, schoolId as string, studentId as string)
   res.status(200).end()
 }

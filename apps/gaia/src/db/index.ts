@@ -219,21 +219,27 @@ export const insertImage = async (
   schoolId,
   studentId: string
 ) => {
-  // language=PostgreSQL
-  await query(
-    `
+  try {
+    // language=PostgreSQL
+    await query(`BEGIN TRANSACTION`, [])
+    await query(
+      `
                 insert into images (id, school_id, object_key)
                 values ($1, $2, $3)
         `,
-    [imageId, schoolId, objectKey]
-  )
-  // language=PostgreSQL
-  await query(
-    `
+      [imageId, schoolId, objectKey]
+    )
+    await query(
+      `
                 insert into image_to_students (student_id, image_id)
                 values ($1, $2)
         `,
-    [studentId, imageId]
-  )
-  return true
+      [studentId, imageId]
+    )
+    await query(`COMMIT`, [])
+    return true
+  } catch (e) {
+    await query(`ROLLBACK`, [])
+    throw e
+  }
 }
