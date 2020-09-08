@@ -3,7 +3,7 @@ import { useQueryString } from "../../../../hooks/useQueryString"
 import PageGuardianProfile from "../../../../components/PageGuardianProfile/PageGuardianProfile"
 
 const GuardianProfile = () => {
-  const id = useQueryString("studentId")
+  const id = useQueryString("id")
 
   return <PageGuardianProfile guardianId={id} />
 }
