@@ -3,7 +3,7 @@ import PageEditGuardians from "../../../../../components/PageEditGuardians/PageE
 import { useQueryString } from "../../../../../hooks/useQueryString"
 
 const EditGuardians: FC = () => {
-  const id = useQueryString("id")
+  const id = useQueryString("studentId")
 
   return <PageEditGuardians studentId={id} />
 }

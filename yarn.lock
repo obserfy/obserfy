@@ -5392,6 +5392,11 @@
   dependencies:
     csstype "^2.5.7"
 
+"@theme-ui/match-media@^0.4.0-rc.5":
+  version "0.4.0-rc.5"
+  resolved "https://registry.yarnpkg.com/@theme-ui/match-media/-/match-media-0.4.0-rc.5.tgz#358b7d6a21b8f24c0a7405ba476393351cccd4a1"
+  integrity sha512-O/edINFznaT487DfDizaqEjQOHPFYbOkoKIPOwS9tdrWhpPGbNTMXMWB6uVV/f7twbTbtfVbxr8+IUQWoyOJsg==
+
 "@theme-ui/mdx@^0.4.0-rc.5":
   version "0.4.0-rc.5"
   resolved "https://registry.yarnpkg.com/@theme-ui/mdx/-/mdx-0.4.0-rc.5.tgz#f2de02bc1a0507632516d61e203b9656a9d50fde"

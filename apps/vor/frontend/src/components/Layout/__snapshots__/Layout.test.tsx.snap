@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Layout should render correctly 1`] = `
-.emotion-14 {
+.emotion-15 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,7 +9,7 @@ exports[`Layout should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-14 {
+  .emotion-15 {
     font-size: 20px;
   }
 }
@@ -228,27 +228,44 @@ exports[`Layout should render correctly 1`] = `
   }
 }
 
-.emotion-13 {
+.emotion-14 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   padding-left: 0;
   padding-bottom: 48px;
-  margin-bottom: env(safe-area-inset-bottom);
-  background-color: var(--theme-ui-colors-background,#f2f3f5);
-  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 @media screen and (min-width:40em) {
-  .emotion-13 {
+  .emotion-14 {
     padding-left: 64px;
     padding-bottom: 0;
   }
 }
 
+.emotion-13 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-bottom: env(safe-area-inset-bottom);
+  background-color: var(--theme-ui-colors-background,#f2f3f5);
+  width: 100%;
+}
+
+@media screen and (min-width:52em) {
+  .emotion-13 {
+    height: 100vh;
+    overflow-y: scroll;
+  }
+}
+
 <div>
   <div
-    class="emotion-14"
+    class="emotion-15"
   >
     <nav
       class="emotion-12"
@@ -352,11 +369,14 @@ exports[`Layout should render correctly 1`] = `
         </a>
       </div>
     </nav>
-    <main
-      class="emotion-13"
+    <div />
+    <div
+      class="emotion-14"
     >
-      <div />
-    </main>
+      <main
+        class="emotion-13"
+      />
+    </div>
   </div>
 </div>
 `;

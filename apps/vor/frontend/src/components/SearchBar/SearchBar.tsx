@@ -8,6 +8,7 @@ interface Props extends InputProps {
 }
 export const SearchBar: FC<Props> = ({ sx, ...props }) => (
   <Input
+    small
     name="name"
     placeholder="Search"
     icon={SearchIcon}

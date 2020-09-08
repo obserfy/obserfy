@@ -19,7 +19,7 @@ const theme: Theme = {
     primaryDark: "#00a06d",
     onPrimaryDark: "#fff",
 
-    primaryLight: "#629749",
+    primaryLight: "rgba(0,120,86,0.24)",
     onPrimaryLight: "text",
 
     primaryLighter: "rgba(0,120,86,0.12)",

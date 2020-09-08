@@ -123,6 +123,7 @@ exports[`PageListOfStudents should render correctly 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  font-size: 12px;
 }
 
 .emotion-5 {
@@ -163,8 +164,11 @@ exports[`PageListOfStudents should render correctly 1`] = `
   font-size: 16px;
   padding: 12px;
   color: var(--theme-ui-colors-text,#37383c);
+  padding-top: 8px;
+  padding-bottom: 8px;
   background-color: var(--theme-ui-colors-surface,#fff);
   width: 100%;
+  font-size: 14px;
   width: 100%;
 }
 

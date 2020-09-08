@@ -3,7 +3,7 @@ import PageNewGuardian from "../../../../../components/PageNewGuardian/PageNewGu
 import { useQueryString } from "../../../../../hooks/useQueryString"
 
 const NewGuardians: FC = () => {
-  const id = useQueryString("id")
+  const id = useQueryString("studentId")
 
   return <PageNewGuardian id={id} />
 }

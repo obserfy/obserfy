@@ -80,7 +80,7 @@ module.exports = {
                 cacheName: "apis",
                 expiration: {
                   maxEntries: 64,
-                  maxAgeSeconds: 3* 24 * 60 * 60, // 24 hours
+                  maxAgeSeconds: 3 * 24 * 60 * 60, // 24 hours
                 },
                 networkTimeoutSeconds: 10, // fall back to cache if api does not response within 10 seconds
               },
@@ -193,8 +193,8 @@ module.exports = {
     {
       resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
       options: {
-        analyzerPort: 3000,
-        disable: true,
+        analyzerPort: 3300,
+        // disable: true,
       },
     },
   ],
