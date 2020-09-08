@@ -1,6 +1,5 @@
-import { navigate } from "gatsby"
 import { queryCache, QueryResult, useQuery } from "react-query"
-import { BASE_URL } from "./useApi"
+import { getApi } from "./fetchApi"
 
 export interface Observation {
   id?: string
@@ -18,23 +17,24 @@ export interface Observation {
 export const useGetStudentObservations = (
   studentId: string
 ): QueryResult<Observation[]> => {
-  async function fetchObservation(): Promise<Observation[]> {
-    const url = `/students/${studentId}/observations`
-    const result = await fetch(`${BASE_URL}${url}`, {
-      credentials: "same-origin",
-    })
+  const getStudentObservations = getApi<Observation[]>(
+    `/students/${studentId}/observations`
+  )
 
-    // Throw user to login when something gets 401
-    if (result.status === 401) {
-      await navigate("/login")
-      return []
-    }
-
-    return result.json()
-  }
-
-  return useQuery(["observations", { studentId }], fetchObservation)
+  return useQuery(
+    ["student", studentId, "observations"],
+    getStudentObservations
+  )
 }
 
-export const invalidateStudentObservations = async (studentId: string) =>
-  queryCache.invalidateQueries<Observation[]>(["observations", { studentId }])
+export const getStudentObservationsCache = (studentId: string) =>
+  queryCache.getQueryData<Observation[]>(["student", studentId, "observations"])
+
+export const updateStudentObservationsCache = (
+  studentId: string,
+  observations: Observation[]
+) =>
+  queryCache.setQueryData<Observation[]>(
+    ["student", studentId, "observations"],
+    observations
+  )

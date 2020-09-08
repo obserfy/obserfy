@@ -1,6 +1,9 @@
 import { useMutation } from "react-query"
 import { postApi } from "./fetchApi"
-import { invalidateStudentObservations } from "./useGetStudentObservations"
+import {
+  getStudentObservationsCache,
+  updateStudentObservationsCache,
+} from "./useGetStudentObservations"
 import { Dayjs } from "../dayjs"
 
 interface PostNewObservationBody {
@@ -15,8 +18,11 @@ const usePostNewObservation = (studentId: string) => {
     `/students/${studentId}/observations`
   )
   return useMutation(postNewObservation, {
-    onSuccess: async () => {
-      await invalidateStudentObservations(studentId)
+    onSuccess: async (data) => {
+      const newObservation = await data.json()
+      const observations = getStudentObservationsCache(studentId) ?? []
+      observations.push(newObservation)
+      updateStudentObservationsCache(studentId, observations)
     },
   })
 }
