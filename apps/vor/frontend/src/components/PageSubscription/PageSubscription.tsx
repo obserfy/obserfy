@@ -55,8 +55,8 @@ export const PageSubscription: FC = () => {
               Amount Due
             </Typography.Body>
             <Typography.Body>
-              ${11.99 * school.data?.users?.length} (
-              {school.data?.users?.length} users)
+              ${3.99 * school.data?.users?.length} ({school.data?.users?.length}{" "}
+              users)
             </Typography.Body>
           </Box>
           <a href={school.data?.subscription.updateUrl}>
