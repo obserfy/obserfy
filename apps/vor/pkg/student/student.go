@@ -21,7 +21,7 @@ func NewRouter(s rest.Server, store Store, imgproxyClient *imgproxy.Client) *chi
 		r.Method("DELETE", "/", deleteStudent(s, store))
 		r.Method("PATCH", "/", patchStudent(s, store))
 
-		r.Method("POST", "/observations", postObservation(s, store))
+		r.Method("POST", "/observations", postObservation(s, store, imgproxyClient))
 		r.Method("GET", "/observations", getObservation(s, store))
 
 		r.Method("POST", "/attendances", postAttaendances(s, store))
@@ -335,12 +335,31 @@ func patchStudent(s rest.Server, store Store) http.Handler {
 	})
 }
 
-func postObservation(s rest.Server, store Store) http.Handler {
+func postObservation(s rest.Server, store Store, imgproxyClient *imgproxy.Client) http.Handler {
 	type requestBody struct {
-		ShortDesc  string     `json:"shortDesc"`
-		LongDesc   string     `json:"longDesc"`
-		CategoryId string     `json:"categoryId"`
-		EventTime  *time.Time `json:"eventTime"`
+		ShortDesc  string      `json:"shortDesc"`
+		LongDesc   string      `json:"longDesc"`
+		CategoryId string      `json:"categoryId"`
+		EventTime  *time.Time  `json:"eventTime"`
+		Images     []uuid.UUID `json:"images"`
+		AreaId     uuid.UUID   `json:"areaId"`
+	}
+
+	type image struct {
+		Id           uuid.UUID `json:"id"`
+		ThumbnailUrl string    `json:"thumbnailUrl"`
+		OriginalUrl  string    `json:"originalUrl"`
+	}
+	type responseBody struct {
+		ShortDesc   string    `json:"shortDesc"`
+		LongDesc    string    `json:"longDesc"`
+		CategoryId  string    `json:"categoryId"`
+		CreatedDate time.Time `json:"createdDate"`
+		EventTime   time.Time `json:"eventTime"`
+		Images      []image   `json:"images"`
+		AreaId      uuid.UUID `json:"areaId"`
+		CreatorId   string    `json:"creatorId,omitempty"`
+		CreatorName string    `json:"creatorName,omitempty"`
 	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		id := chi.URLParam(r, "studentId")
@@ -358,12 +377,9 @@ func postObservation(s rest.Server, store Store) http.Handler {
 			return rest.NewParseJsonError(err)
 		}
 
-		var eventTime *time.Time
-		if body.EventTime == nil {
-			currentTime := time.Now()
-			eventTime = &currentTime
-		} else {
-			eventTime = body.EventTime
+		var eventTime = time.Now()
+		if body.EventTime != nil {
+			eventTime = *body.EventTime
 		}
 		observation, err := store.InsertObservation(id,
 			session.UserId,
@@ -371,6 +387,8 @@ func postObservation(s rest.Server, store Store) http.Handler {
 			body.ShortDesc,
 			body.CategoryId,
 			eventTime,
+			body.Images,
+			body.AreaId,
 		)
 		if err != nil {
 			return &rest.Error{
@@ -380,8 +398,27 @@ func postObservation(s rest.Server, store Store) http.Handler {
 			}
 		}
 
+		images := make([]image, 0)
+		for i := range observation.Images {
+			images = append(images, image{
+				Id:           observation.Images[i].Id,
+				ThumbnailUrl: imgproxyClient.GenerateUrl(observation.Images[i].ObjectKey, 80, 80),
+				OriginalUrl:  imgproxyClient.GenerateOriginalUrl(observation.Images[i].ObjectKey),
+			})
+		}
+
 		w.WriteHeader(http.StatusCreated)
-		if err := rest.WriteJson(w, observation); err != nil {
+		if err := rest.WriteJson(w, responseBody{
+			ShortDesc:   observation.ShortDesc,
+			LongDesc:    observation.LongDesc,
+			CategoryId:  observation.CategoryId,
+			EventTime:   observation.EventTime,
+			Images:      images,
+			AreaId:      observation.AreaId,
+			CreatorId:   observation.CreatorId,
+			CreatorName: observation.Creator.Name,
+			CreatedDate: observation.CreatedDate,
+		}); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
 		return nil
@@ -390,15 +427,15 @@ func postObservation(s rest.Server, store Store) http.Handler {
 
 func getObservation(s rest.Server, store Store) http.Handler {
 	type observation struct {
-		Id          string     `json:"id"`
-		StudentName string     `json:"studentName"`
-		CategoryId  string     `json:"categoryId"`
-		CreatorId   string     `json:"creatorId,omitempty"`
-		CreatorName string     `json:"creatorName,omitempty"`
-		LongDesc    string     `json:"longDesc"`
-		ShortDesc   string     `json:"shortDesc"`
-		CreatedDate time.Time  `json:"createdDate"`
-		EventTime   *time.Time `json:"eventTime,omitempty"`
+		Id          string    `json:"id"`
+		StudentName string    `json:"studentName"`
+		CategoryId  string    `json:"categoryId"`
+		CreatorId   string    `json:"creatorId,omitempty"`
+		CreatorName string    `json:"creatorName,omitempty"`
+		LongDesc    string    `json:"longDesc"`
+		ShortDesc   string    `json:"shortDesc"`
+		CreatedDate time.Time `json:"createdDate"`
+		EventTime   time.Time `json:"eventTime,omitempty"`
 	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		id := chi.URLParam(r, "studentId")

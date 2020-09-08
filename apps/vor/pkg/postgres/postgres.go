@@ -193,7 +193,7 @@ type Observation struct {
 	LongDesc     string    `json:"longDesc"`
 	CategoryId   string    `json:"categoryId"`
 	CreatedDate  time.Time `json:"createdDate"`
-	EventTime    *time.Time
+	EventTime    time.Time
 	CreatorId    string `pg:",type:uuid,on_delete:SET NULL"`
 	Creator      *User
 	LessonPlan   LessonPlan
@@ -201,7 +201,8 @@ type Observation struct {
 	Guardian     Guardian
 	GuardianId   string `pg:"type:uuid,on_delete:SET NULL"`
 	Area         Area
-	AreaId       string `pg:"type:uuid,on_delete:SET NULL"`
+	AreaId       uuid.UUID `pg:"type:uuid,on_delete:SET NULL"`
+	Images       []Image   `pg:"many2many:observation_to_images,join_fk:image_id"`
 }
 
 type ObservationToImage struct {
