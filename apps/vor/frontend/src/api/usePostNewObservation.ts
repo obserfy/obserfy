@@ -1,11 +1,14 @@
 import { useMutation } from "react-query"
 import { postApi } from "./fetchApi"
 import { invalidateStudentObservations } from "./useGetStudentObservations"
+import { Dayjs } from "../dayjs"
 
 interface PostNewObservationBody {
-  categoryId: string
-  longDesc: string
   shortDesc: string
+  longDesc?: string
+  categoryId?: string
+  images?: string[]
+  eventTime?: Dayjs
 }
 const usePostNewObservation = (studentId: string) => {
   const postNewObservation = postApi<PostNewObservationBody>(
