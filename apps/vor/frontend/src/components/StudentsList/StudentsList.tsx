@@ -26,7 +26,8 @@ export const StudentsList: FC = () => {
       )
     : []
 
-  const noStudents = students.isSuccess && students.data.length === 0
+  const noStudents =
+    students.isSuccess && students.data && students.data.length === 0
 
   const noSearchResult =
     students.isSuccess && matches?.length === 0 && searchTerm !== ""
@@ -140,10 +141,18 @@ const NoStudentPlaceholder: FC = () => (
 
 const StudentLoadingPlaceholder: FC = () => (
   <Box px={3}>
-    <LoadingPlaceholder sx={{ width: "50%", height: 30 }} mb={3} />
-    <LoadingPlaceholder sx={{ width: "70%", height: 30 }} mb={3} />
-    <LoadingPlaceholder sx={{ width: "40%", height: 30 }} mb={3} />
-    <LoadingPlaceholder sx={{ width: "60%", height: 30 }} mb={3} />
+    {[1, 2, 3, 4, 5].map(() => (
+      <Flex sx={{ alignItems: "center" }} py={2}>
+        <LoadingPlaceholder
+          sx={{ width: 32, height: 32, borderRadius: "circle" }}
+          mb={2}
+        />
+        <Box ml={3}>
+          <LoadingPlaceholder sx={{ width: "10rem", height: 22 }} mb={2} />
+          <LoadingPlaceholder sx={{ width: "4rem", height: 22 }} />
+        </Box>
+      </Flex>
+    ))}
   </Box>
 )
 

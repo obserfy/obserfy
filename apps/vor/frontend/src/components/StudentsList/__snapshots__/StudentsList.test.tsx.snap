@@ -1,7 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`StudentsList should render correctly 1`] = `
-.emotion-15 {
+@keyframes animation-0 {
+  0% {
+    background-color: rgba(165,165,165,0.05);
+  }
+
+  50% {
+    background-color: rgba(165,165,165,0.1);
+  }
+
+  100% {
+    background-color: rgba(165,165,165,0.05);
+  }
+}
+
+@keyframes animation-0 {
+  0% {
+    background-color: rgba(165,165,165,0.05);
+  }
+
+  50% {
+    background-color: rgba(165,165,165,0.1);
+  }
+
+  100% {
+    background-color: rgba(165,165,165,0.05);
+  }
+}
+
+@keyframes animation-0 {
+  0% {
+    background-color: rgba(165,165,165,0.05);
+  }
+
+  50% {
+    background-color: rgba(165,165,165,0.1);
+  }
+
+  100% {
+    background-color: rgba(165,165,165,0.05);
+  }
+}
+
+.emotion-36 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,12 +51,12 @@ exports[`StudentsList should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-15 {
+  .emotion-36 {
     font-size: 20px;
   }
 }
 
-.emotion-14 {
+.emotion-35 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -290,160 +332,79 @@ exports[`StudentsList should render correctly 1`] = `
   }
 }
 
+.emotion-34 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
 .emotion-13 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  overflow: auto;
-  background-color: var(--theme-ui-colors-surface,#fff);
-  border-radius: 6px;
-  box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
-  margin-left: 16px;
-  margin-right: 16px;
-}
-
-.emotion-12 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  margin: 16px;
-  padding-left: 32px;
-  padding-right: 32px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  height: 100%;
 }
 
 .emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
-  text-rendering: optimizeLegibility;
-  line-height: 1.5;
-  margin-bottom: 32px;
-  margin-top: 16px;
-  text-align: center;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
+  animation: 1s ease-in-out 0s infinite animation-0;
+  width: 32px;
+  height: 32px;
+  border-radius: 99999px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-9 {
-    font-size: 14px;
-  }
-}
-
-.emotion-11 {
+.emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  display: inline-block;
-  text-align: center;
-  line-height: inherit;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  font-size: inherit;
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  color: white;
-  background-color: var(--theme-ui-colors-primary,#00e399);
-  border: 0;
-  border-radius: 4px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  box-sizing: border-box;
-  font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
-  background-color: var(--theme-ui-colors-surface,#fff);
-  border-radius: 6px;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 16px;
-  padding-right: 16px;
-  white-space: nowrap;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  touch-action: manipulation;
-  box-shadow: none;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  border-style: solid;
-  border-width: 1px;
-  line-height: 1;
-}
-
-.emotion-11:disabled {
-  opacity: 0.38;
-  cursor: auto;
-}
-
-.emotion-11:hover,
-.emotion-11:focus {
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
-  border-color: var(--theme-ui-colors-primary,#00e399);
-  outline: none;
-}
-
-.emotion-11:hover:disabled,
-.emotion-11:focus:disabled {
-  background-color: transparent;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  margin-left: 16px;
 }
 
 .emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  max-width: 100%;
-  height: auto;
-  margin-right: 8px;
-  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  width: 20px;
-  height: 20px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
+  animation: 1s ease-in-out 0s infinite animation-0;
+  width: 10rem;
+  height: 22px;
+}
+
+.emotion-11 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  border-radius: 6px;
+  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
+  animation: 1s ease-in-out 0s infinite animation-0;
+  width: 4rem;
+  height: 22px;
 }
 
 <div>
   <div
-    class="emotion-15"
+    class="emotion-36"
   >
     <div
-      class="emotion-14"
+      class="emotion-35"
     >
       <div
         class="emotion-5"
@@ -490,29 +451,92 @@ exports[`StudentsList should render correctly 1`] = `
         </div>
       </div>
       <div
-        class="emotion-13"
+        class="emotion-34"
       >
         <div
-          class="emotion-12"
+          class="emotion-13"
         >
-          <p
+          <div
             class="emotion-9"
+          />
+          <div
+            class="emotion-12"
           >
-            You have no student enrolled
-          </p>
-          <a
-            data-cy="new-student-button"
-            href="/dashboard/students/new"
-          >
-            <button
+            <div
+              class="emotion-10"
+            />
+            <div
               class="emotion-11"
-            >
-              <div
-                class="emotion-10"
-              />
-              New Student
-            </button>
-          </a>
+            />
+          </div>
+        </div>
+        <div
+          class="emotion-13"
+        >
+          <div
+            class="emotion-9"
+          />
+          <div
+            class="emotion-12"
+          >
+            <div
+              class="emotion-10"
+            />
+            <div
+              class="emotion-11"
+            />
+          </div>
+        </div>
+        <div
+          class="emotion-13"
+        >
+          <div
+            class="emotion-9"
+          />
+          <div
+            class="emotion-12"
+          >
+            <div
+              class="emotion-10"
+            />
+            <div
+              class="emotion-11"
+            />
+          </div>
+        </div>
+        <div
+          class="emotion-13"
+        >
+          <div
+            class="emotion-9"
+          />
+          <div
+            class="emotion-12"
+          >
+            <div
+              class="emotion-10"
+            />
+            <div
+              class="emotion-11"
+            />
+          </div>
+        </div>
+        <div
+          class="emotion-13"
+        >
+          <div
+            class="emotion-9"
+          />
+          <div
+            class="emotion-12"
+          >
+            <div
+              class="emotion-10"
+            />
+            <div
+              class="emotion-11"
+            />
+          </div>
         </div>
       </div>
     </div>
