@@ -5,7 +5,7 @@ import PageStudentProfile from "../../../../components/PageStudentProfile/PageSt
 import { useQueryString } from "../../../../hooks/useQueryString"
 
 const StudentProfile: FC<PageRendererProps> = () => {
-  const id = useQueryString("id")
+  const id = useQueryString("studentId")
 
   return (
     <>
