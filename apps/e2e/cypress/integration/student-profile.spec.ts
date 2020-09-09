@@ -56,7 +56,7 @@ describe("test student profile page", () => {
     cy.get("[aria-label=Category]").select("2")
     cy.contains("Short Description").type(shortDesc)
     cy.get("[aria-label=Details]").type(details)
-    cy.contains("Add").click()
+    cy.contains("Save").click()
     cy.get("[data-cy=observation-short-desc]")
       .contains(shortDesc)
       .should("be.visible")
