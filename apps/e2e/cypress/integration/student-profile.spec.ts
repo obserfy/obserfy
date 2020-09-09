@@ -40,7 +40,9 @@ describe("test student profile page", () => {
 
     // Create student
     let studentName = "Carol"
-    cy.get("[data-cy=new-student-button]").click()
+    cy.get("main").within(() => {
+      cy.get("[data-cy=new-student-button]").click()
+    })
     cy.contains("Name").type(studentName)
     cy.contains("Save").click()
 

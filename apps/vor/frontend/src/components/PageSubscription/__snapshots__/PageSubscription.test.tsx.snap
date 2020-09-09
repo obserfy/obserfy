@@ -400,13 +400,13 @@ exports[`PageSubscription should render correctly 1`] = `
   margin-right: 4px;
   display: inline-block;
   position: relative;
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
 }
 
 .emotion-39 div {
   position: absolute;
-  top: 9px;
+  top: 512px;
   width: 3px;
   height: 3px;
   border-radius: 50%;

@@ -14,6 +14,25 @@ exports[`PageHome should render correctly 1`] = `
   }
 }
 
+.emotion-15 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: block;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-15 {
+    display: block;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .emotion-15 {
+    display: none;
+  }
+}
+
 .emotion-14 {
   box-sizing: border-box;
   margin: 0;
@@ -443,7 +462,7 @@ exports[`PageHome should render correctly 1`] = `
     class="emotion-16"
   >
     <div
-      class="emotion-14"
+      class="emotion-15"
     >
       <div
         class="emotion-14"
