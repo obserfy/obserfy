@@ -40,7 +40,9 @@ describe("test student profile page", () => {
 
     // Create student
     let studentName = "Carol"
-    cy.get("[data-cy=new-student-button]").click()
+    cy.get("main").within(() => {
+      cy.get("[data-cy=new-student-button]").click()
+    })
     cy.contains("Name").type(studentName)
     cy.contains("Save").click()
 
@@ -54,7 +56,7 @@ describe("test student profile page", () => {
     cy.get("[aria-label=Category]").select("2")
     cy.contains("Short Description").type(shortDesc)
     cy.get("[aria-label=Details]").type(details)
-    cy.contains("Add").click()
+    cy.contains("Save").click()
     cy.get("[data-cy=observation-short-desc]")
       .contains(shortDesc)
       .should("be.visible")

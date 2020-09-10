@@ -499,7 +499,7 @@ exports[`PageStudentPlans should render correctly 1`] = `
       class="emotion-15"
     >
       <a
-        href="/dashboard/students/overview?id=asdfasfd"
+        href="/dashboard/students/overview?studentId=asdfasfd"
         style="display: block;"
       >
         <div

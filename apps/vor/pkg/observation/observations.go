@@ -20,7 +20,7 @@ type (
 		LongDesc    string
 		CategoryId  string
 		CreatedDate time.Time
-		EventTime   *time.Time
+		EventTime   time.Time
 		CreatorId   string
 		CreatorName string
 	}
@@ -109,15 +109,15 @@ func deleteObservation(s rest.Server, store Store) rest.Handler {
 
 func getObservation(s rest.Server, store Store) http.Handler {
 	type responseBody struct {
-		Id          string     `json:"id"`
-		StudentName string     `json:"studentName"`
-		CategoryId  string     `json:"categoryId"`
-		CreatorId   string     `json:"creatorId,omitempty"`
-		CreatorName string     `json:"creatorName,omitempty"`
-		LongDesc    string     `json:"longDesc"`
-		ShortDesc   string     `json:"shortDesc"`
-		CreatedDate time.Time  `json:"createdDate"`
-		EventTime   *time.Time `json:"eventTime,omitempty"`
+		Id          string    `json:"id"`
+		StudentName string    `json:"studentName"`
+		CategoryId  string    `json:"categoryId"`
+		CreatorId   string    `json:"creatorId,omitempty"`
+		CreatorName string    `json:"creatorName,omitempty"`
+		LongDesc    string    `json:"longDesc"`
+		ShortDesc   string    `json:"shortDesc"`
+		CreatedDate time.Time `json:"createdDate"`
+		EventTime   time.Time `json:"eventTime,omitempty"`
 	}
 	validate := validator.New()
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {

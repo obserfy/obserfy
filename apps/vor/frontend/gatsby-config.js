@@ -80,7 +80,7 @@ module.exports = {
                 cacheName: "apis",
                 expiration: {
                   maxEntries: 64,
-                  maxAgeSeconds: 3* 24 * 60 * 60, // 24 hours
+                  maxAgeSeconds: 3 * 24 * 60 * 60, // 24 hours
                 },
                 networkTimeoutSeconds: 10, // fall back to cache if api does not response within 10 seconds
               },
@@ -178,6 +178,7 @@ module.exports = {
       options: {
         dsn: "https://05a5ecaa1d8c4c01b96d2a7993fa9337@sentry.io/1852524",
         release: require("fs").readFileSync("../../../VERSION", "utf8"),
+        tracesSampleRate: 0.1, // this is just to test, you should lower this in production
       },
     },
     {
@@ -193,7 +194,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
       options: {
-        analyzerPort: 3000,
+        analyzerPort: 3300,
         disable: true,
       },
     },

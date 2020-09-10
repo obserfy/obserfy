@@ -3,7 +3,7 @@ import { Button, Card, Flex } from "theme-ui"
 import Typography from "../Typography/Typography"
 
 import { categories } from "../../categories"
-import { Observation } from "../../api/useGetObservations"
+import { Observation } from "../../api/useGetStudentObservations"
 
 interface Props {
   observation: Observation

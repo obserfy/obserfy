@@ -27,14 +27,9 @@ export const Input: FC<Props> = ({
   label,
   ...props
 }) => {
-  let withIconStyle = sx
+  let modifiedSx = sx
   if (icon !== undefined) {
-    withIconStyle = Object.assign(withIconStyle || {}, {
-      backgroundSize: 24,
-      backgroundPosition: "center",
-      backgroundPositionX: 16,
-      pl: 52,
-    })
+    modifiedSx = { ...modifiedSx, pl: small ? 34 : 52 }
   }
   return (
     <Label
@@ -50,9 +45,9 @@ export const Input: FC<Props> = ({
         {icon && (
           <Icon
             as={icon}
-            mr={-36}
+            mr={small ? -28 : -36}
             sx={{ width: 24, height: 24, zIndex: 2 }}
-            ml={3}
+            ml={small ? 2 : 3}
           />
         )}
         <BaseInput
@@ -70,7 +65,7 @@ export const Input: FC<Props> = ({
           onChange={onChange}
           value={value}
           sx={{
-            ...withIconStyle,
+            ...modifiedSx,
             fontSize: small ? 1 : undefined,
           }}
           {...props}

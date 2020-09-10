@@ -39,7 +39,9 @@ describe("test student edit", () => {
     // Create student
     const studentName = "Carol"
     const newName = "jane"
-    cy.get("[data-cy=new-student-button]").click()
+    cy.get("main").within(() => {
+      cy.get("[data-cy=new-student-button]").click()
+    })
     cy.contains("Name").type(studentName)
     cy.contains("Save").click()
 

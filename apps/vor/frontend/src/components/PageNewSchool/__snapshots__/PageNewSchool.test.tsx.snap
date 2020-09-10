@@ -50,7 +50,7 @@ exports[`PageNewSchool should render correctly 1`] = `
   line-height: heading;
   color: var(--theme-ui-colors-text,#37383c);
   text-rendering: optimizeLegibility;
-  font-size: 64px;
+  font-size: 24px;
   margin-top: 16px;
   margin-bottom: 16px;
 }
@@ -333,11 +333,11 @@ exports[`PageNewSchool should render correctly 1`] = `
       <form
         class="emotion-8"
       >
-        <h2
+        <h5
           class="emotion-0"
         >
           New School
-        </h2>
+        </h5>
         <label
           class="emotion-4"
         >

@@ -148,22 +148,22 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
         <Box my={2}>
           {(inProgress?.length ?? 0) > 0 && (
             <Typography.Body
-              mt={3}
+              mt={4}
               mx={3}
               sx={{ fontSize: 0, color: "textMediumEmphasis" }}
             >
-              IN PROGRESS
+              In Progress
             </Typography.Body>
           )}
           {listOfInProgress}
           {emptyProgressPlaceholder}
           {(listOfMastered?.length ?? 0) > 0 && (
             <Typography.Body
-              mt={3}
+              mt={4}
               mx={3}
               sx={{ fontSize: 0, color: "textMediumEmphasis" }}
             >
-              RECENTLY MASTERED
+              Recently Mastered
             </Typography.Body>
           )}
           {listOfMastered}

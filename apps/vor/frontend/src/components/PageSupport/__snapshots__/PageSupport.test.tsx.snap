@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageSupport should render correctly 1`] = `
-.emotion-21 {
+.emotion-15 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,12 +9,12 @@ exports[`PageSupport should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-21 {
+  .emotion-15 {
     font-size: 20px;
   }
 }
 
-.emotion-20 {
+.emotion-14 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -39,7 +39,7 @@ exports[`PageSupport should render correctly 1`] = `
   margin-bottom: 8px;
 }
 
-.emotion-10 {
+.emotion-13 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -51,12 +51,12 @@ exports[`PageSupport should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-10 {
+  .emotion-13 {
     border-radius: 6px;
   }
 }
 
-.emotion-3 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -69,6 +69,13 @@ exports[`PageSupport should render correctly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+}
+
+.emotion-3 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-right: 16px;
 }
 
 .emotion-1 {
@@ -91,6 +98,23 @@ exports[`PageSupport should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  color: var(--theme-ui-colors-text,#37383c);
+  font-size: 16px;
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+}
+
+@media screen and (min-width:40em) {
+  .emotion-2 {
+    font-size: 14px;
+  }
+}
+
+.emotion-4 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
   max-width: 100%;
   height: auto;
   margin-left: auto;
@@ -102,22 +126,7 @@ exports[`PageSupport should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-11 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: bold;
-  line-height: heading;
-  color: var(--theme-ui-colors-text,#37383c);
-  text-rendering: optimizeLegibility;
-  font-size: 20px;
-  margin: 16px;
-  margin-top: 32px;
-  margin-bottom: 8px;
-}
-
-.emotion-18 {
+.emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -132,38 +141,14 @@ exports[`PageSupport should render correctly 1`] = `
   align-items: flex-start;
 }
 
-.emotion-14 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  margin-right: 16px;
-}
-
-.emotion-13 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
-  text-rendering: optimizeLegibility;
-  line-height: 1.5;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-}
-
-@media screen and (min-width:40em) {
-  .emotion-13 {
-    font-size: 14px;
-  }
-}
-
-.emotion-17 {
+.emotion-11 {
   margin-left: auto;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
-.emotion-16 {
+.emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -226,25 +211,25 @@ exports[`PageSupport should render correctly 1`] = `
   padding-bottom: 4px;
 }
 
-.emotion-16:disabled {
+.emotion-10:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-16:hover,
-.emotion-16:focus {
+.emotion-10:hover,
+.emotion-10:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-16:hover:disabled,
-.emotion-16:focus:disabled {
+.emotion-10:hover:disabled,
+.emotion-10:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-15 {
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -264,81 +249,49 @@ exports[`PageSupport should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-21"
+    class="emotion-15"
   >
     <div
-      class="emotion-20"
+      class="emotion-14"
     >
       <h6
         class="emotion-0"
       >
-        Give feedbacks
+        Help and Feedbacks
       </h6>
       <div
-        class="emotion-10"
+        class="emotion-13"
       >
-        <a
-          href="https://feedback.obserfy.com/feature-requests"
-        >
-          <div
-            class="emotion-3"
-          >
-            <p
-              class="emotion-1"
-            >
-              Feature Requests
-            </p>
-            <div
-              class="emotion-2"
-            />
-          </div>
-        </a>
-        <a
-          href="https://feedback.obserfy.com/bug-reports"
-        >
-          <div
-            class="emotion-3"
-          >
-            <p
-              class="emotion-1"
-            >
-              Bug Report
-            </p>
-            <div
-              class="emotion-2"
-            />
-          </div>
-        </a>
         <a
           href="https://feedback.obserfy.com"
         >
           <div
-            class="emotion-3"
+            class="emotion-5"
           >
-            <p
-              class="emotion-1"
-            >
-              Our roadmap
-            </p>
             <div
-              class="emotion-2"
+              class="emotion-3"
+            >
+              <p
+                class="emotion-1"
+              >
+                Go to Canny
+              </p>
+              <p
+                class="emotion-2"
+              >
+                Post and upvote suggestions, ideas, and issues.
+              </p>
+            </div>
+            <div
+              class="emotion-4"
             />
           </div>
         </a>
-      </div>
-      <h6
-        class="emotion-11"
-      >
-        Get help
-      </h6>
-      <div
-        class="emotion-10"
-      >
         <div
-          class="emotion-18"
+          class="emotion-12"
         >
           <div
-            class="emotion-14"
+            class="emotion-3"
           >
             <p
               class="emotion-1"
@@ -346,20 +299,20 @@ exports[`PageSupport should render correctly 1`] = `
               Shoot us an e-mail
             </p>
             <p
-              class="emotion-13"
+              class="emotion-2"
             >
               Have a question? Shoot us an email at chrsep@protonmail.com
             </p>
           </div>
           <a
-            class="emotion-17"
+            class="emotion-11"
             href="mailto:chrsep@protonmail.com"
           >
             <button
-              class="emotion-16"
+              class="emotion-10"
             >
               <div
-                class="emotion-15"
+                class="emotion-9"
               />
             </button>
           </a>

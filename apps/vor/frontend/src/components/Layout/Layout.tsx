@@ -1,6 +1,8 @@
 import React, { FC, useEffect, useState } from "react"
 import { navigate } from "gatsby"
-import { Box } from "theme-ui"
+import { Box, Flex } from "theme-ui"
+import { useMatch } from "@reach/router"
+import { useBreakpointIndex } from "@theme-ui/match-media"
 import {
   getSchoolId,
   SCHOOL_ID_UNDEFINED_PLACEHOLDER,
@@ -8,6 +10,7 @@ import {
 import Navbar from "../Navbar/Navbar"
 import { useGetUserProfile } from "../../api/useGetUserProfile"
 import Typography from "../Typography/Typography"
+import StudentsList from "../StudentsList/StudentsList"
 
 /** Top level component which encapsulate most pages. Provides Appbar and Sidebar for navigation.
  *
@@ -25,16 +28,22 @@ export const Layout: FC = ({ children }) => {
   return (
     <>
       <Navbar />
-      <Box
-        as="main"
-        sx={{ backgroundColor: "background", width: "100%" }}
-        pl={[0, 64]}
-        pb={[48, 0]}
-        mb="env(safe-area-inset-bottom)"
-      >
-        <UpdateNotification />
-        {children}
-      </Box>
+      <UpdateNotification />
+      <Flex pl={[0, 64]} pb={[48, 0]}>
+        <StudentsSubrouteSidebar />
+        <Box
+          as="main"
+          sx={{
+            backgroundColor: "background",
+            width: "100%",
+            height: [undefined, undefined, "100vh"],
+            overflowY: [undefined, undefined, "scroll"],
+          }}
+          mb="env(safe-area-inset-bottom)"
+        >
+          {children}
+        </Box>
+      </Flex>
     </>
   )
 }
@@ -77,6 +86,32 @@ const UpdateNotification = () => {
       </Typography.Body>
     </Box>
   )
+}
+
+const StudentsSubrouteSidebar = () => {
+  const studentSubroute = useMatch("/dashboard/students/*")
+  const breakpoint = useBreakpointIndex({ defaultIndex: 2 })
+
+  if (studentSubroute && breakpoint > 1) {
+    return (
+      <Box
+        sx={{
+          flexShrink: 0,
+          borderRightWidth: 1,
+          borderRightStyle: "solid",
+          borderRightColor: "border",
+          height: "100vh",
+          overflowY: "auto",
+          width: [undefined, 300, 300, 400],
+          display: ["none", "none", "block"],
+        }}
+      >
+        <StudentsList />
+      </Box>
+    )
+  }
+
+  return <></>
 }
 
 export default Layout

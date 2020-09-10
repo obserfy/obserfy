@@ -44,7 +44,5 @@ export const useGetAllStudents = (
     return result.json()
   }
 
-  return useQuery(["students", schoolId, classId, active], fetchStudents, {
-    initialData: [],
-  })
+  return useQuery(["students", schoolId, classId, active], fetchStudents)
 }

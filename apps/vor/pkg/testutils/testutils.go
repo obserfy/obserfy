@@ -319,7 +319,7 @@ func (s *BaseTestSuite) GenerateObservation() postgres.Observation {
 		LongDesc:    gofakeit.Paragraph(1, 1, 20, "\n"),
 		CategoryId:  "1",
 		CreatedDate: currentTime,
-		EventTime:   &currentTime,
+		EventTime:   currentTime,
 		Student:     newStudent,
 		StudentId:   newStudent.Id,
 		Creator:     &newSchool.Users[0],

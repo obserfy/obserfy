@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PageHome should render correctly 1`] = `
+exports[`StudentsList should render correctly 1`] = `
 @keyframes animation-0 {
   0% {
     background-color: rgba(165,165,165,0.05);
@@ -40,19 +40,6 @@ exports[`PageHome should render correctly 1`] = `
 
   100% {
     background-color: rgba(165,165,165,0.05);
-  }
-}
-
-.emotion-37 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  font-size: 16px;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-37 {
-    font-size: 20px;
   }
 }
 
@@ -60,18 +47,12 @@ exports[`PageHome should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  display: block;
+  font-size: 16px;
 }
 
 @media screen and (min-width:40em) {
   .emotion-36 {
-    display: block;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .emotion-36 {
-    display: none;
+    font-size: 20px;
   }
 }
 
@@ -420,145 +401,141 @@ exports[`PageHome should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-37"
+    class="emotion-36"
   >
     <div
-      class="emotion-36"
+      class="emotion-35"
     >
       <div
-        class="emotion-35"
+        class="emotion-5"
+      >
+        <label
+          class="emotion-2"
+        >
+          <div
+            class="emotion-1"
+          >
+            <input
+              class="emotion-0"
+              name="name"
+              placeholder="Search students"
+              value=""
+            />
+          </div>
+        </label>
+        <a
+          href="/dashboard/students/new"
+          style="flex-shrink: 0;"
+        >
+          <button
+            class="emotion-4"
+            data-cy="addStudent"
+          >
+            <div
+              class="emotion-3"
+            />
+          </button>
+        </a>
+      </div>
+      <div
+        class="emotion-8"
       >
         <div
-          class="emotion-5"
+          class="emotion-7"
         >
-          <label
-            class="emotion-2"
+          <p
+            class="emotion-6"
           >
-            <div
-              class="emotion-1"
-            >
-              <input
-                class="emotion-0"
-                name="name"
-                placeholder="Search students"
-                value=""
-              />
-            </div>
-          </label>
-          <a
-            href="/dashboard/students/new"
-            style="flex-shrink: 0;"
-          >
-            <button
-              class="emotion-4"
-              data-cy="addStudent"
-            >
-              <div
-                class="emotion-3"
-              />
-            </button>
-          </a>
+            All
+          </p>
         </div>
+      </div>
+      <div
+        class="emotion-34"
+      >
         <div
-          class="emotion-8"
+          class="emotion-13"
         >
           <div
-            class="emotion-7"
+            class="emotion-9"
+          />
+          <div
+            class="emotion-12"
           >
-            <p
-              class="emotion-6"
-            >
-              All
-            </p>
+            <div
+              class="emotion-10"
+            />
+            <div
+              class="emotion-11"
+            />
           </div>
         </div>
         <div
-          class="emotion-34"
+          class="emotion-13"
         >
           <div
-            class="emotion-13"
-          >
-            <div
-              class="emotion-9"
-            />
-            <div
-              class="emotion-12"
-            >
-              <div
-                class="emotion-10"
-              />
-              <div
-                class="emotion-11"
-              />
-            </div>
-          </div>
+            class="emotion-9"
+          />
           <div
-            class="emotion-13"
+            class="emotion-12"
           >
             <div
-              class="emotion-9"
+              class="emotion-10"
             />
             <div
-              class="emotion-12"
-            >
-              <div
-                class="emotion-10"
-              />
-              <div
-                class="emotion-11"
-              />
-            </div>
+              class="emotion-11"
+            />
           </div>
+        </div>
+        <div
+          class="emotion-13"
+        >
           <div
-            class="emotion-13"
+            class="emotion-9"
+          />
+          <div
+            class="emotion-12"
           >
             <div
-              class="emotion-9"
+              class="emotion-10"
             />
             <div
-              class="emotion-12"
-            >
-              <div
-                class="emotion-10"
-              />
-              <div
-                class="emotion-11"
-              />
-            </div>
+              class="emotion-11"
+            />
           </div>
+        </div>
+        <div
+          class="emotion-13"
+        >
           <div
-            class="emotion-13"
+            class="emotion-9"
+          />
+          <div
+            class="emotion-12"
           >
             <div
-              class="emotion-9"
+              class="emotion-10"
             />
             <div
-              class="emotion-12"
-            >
-              <div
-                class="emotion-10"
-              />
-              <div
-                class="emotion-11"
-              />
-            </div>
+              class="emotion-11"
+            />
           </div>
+        </div>
+        <div
+          class="emotion-13"
+        >
           <div
-            class="emotion-13"
+            class="emotion-9"
+          />
+          <div
+            class="emotion-12"
           >
             <div
-              class="emotion-9"
+              class="emotion-10"
             />
             <div
-              class="emotion-12"
-            >
-              <div
-                class="emotion-10"
-              />
-              <div
-                class="emotion-11"
-              />
-            </div>
+              class="emotion-11"
+            />
           </div>
         </div>
       </div>
