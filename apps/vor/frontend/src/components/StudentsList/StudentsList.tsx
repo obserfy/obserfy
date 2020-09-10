@@ -169,12 +169,7 @@ const StudentListItem: FC<{
   const selected = studentId === id
 
   return (
-    <Link
-      to={STUDENT_OVERVIEW_PAGE_URL(id)}
-      sx={{
-        display: "block",
-      }}
-    >
+    <Link to={STUDENT_OVERVIEW_PAGE_URL(id)} sx={{ display: "block" }}>
       <Box
         px={3}
         py={2}
@@ -185,9 +180,7 @@ const StudentListItem: FC<{
           borderRightWidth: 2,
           borderRightStyle: selected ? "solid" : "none",
           backgroundColor: selected ? "primaryLightest" : "transparent",
-          "&:hover": {
-            backgroundColor: "primaryLight",
-          },
+          "&:hover": { backgroundColor: "primaryLight" },
         }}
       >
         {profileImageUrl ? (
