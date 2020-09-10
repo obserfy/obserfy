@@ -18,6 +18,7 @@ import usePostNewStudentImage from "../../api/students/usePostNewStudentImage"
 import { ReactComponent as Arrow } from "../../icons/arrow-back.svg"
 import Breadcrumb from "../Breadcrumb/Breadcrumb"
 import BreadcrumbItem from "../Breadcrumb/BreadcrumbItem"
+import TranslucentBar from "../TranslucentBar/TranslucentBar"
 
 interface Props {
   studentId: string
@@ -51,23 +52,18 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
 
   return (
     <Fragment>
-      <Box
-        sx={{
+      <TranslucentBar
+        boxSx={{
           position: "sticky",
           top: 0,
-          backgroundColor: "surface",
           borderBottomWidth: 1,
           borderBottomColor: "border",
-          borderBottomStyle: "solid",
+          borderBottomStyle: "borderSolid",
         }}
-        mb={3}
       >
-        <Flex
-          sx={{ alignItems: "center", maxWidth: "maxWidth.sm" }}
-          margin="auto"
-        >
+        <Flex sx={{ alignItems: "center", maxWidth: "maxWidth.sm" }} m="auto">
           <Link to={STUDENT_OVERVIEW_PAGE_URL(studentId)}>
-            <Button ml={2} p={1} variant="secondary">
+            <Button mx={2} p={1} variant="secondary">
               <Icon as={Arrow} sx={{ fill: "textMediumEmphasis" }} />
             </Button>
           </Link>
@@ -88,8 +84,8 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
             {isLoading && <LoadingIndicator />} Save
           </Button>
         </Flex>
-      </Box>
-      <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={4} px={3}>
+      </TranslucentBar>
+      <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={4} px={3} mt={3}>
         <Select
           autoFocus
           label="Category"
