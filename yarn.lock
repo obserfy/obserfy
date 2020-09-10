@@ -4414,6 +4414,17 @@
     hoist-non-react-statics "^3.3.2"
     tslib "^1.9.3"
 
+"@sentry/tracing@5.22.3":
+  version "5.22.3"
+  resolved "https://registry.yarnpkg.com/@sentry/tracing/-/tracing-5.22.3.tgz#9b5a376e3164c007a22e8642ec094104468cac0c"
+  integrity sha512-Zp59kMCk5v56ZAyErqjv/QvGOWOQ5fRltzeVQVp8unIDTk6gEFXfhwPsYHOokJe1mfkmrgPDV6xAkYgtL3KCDQ==
+  dependencies:
+    "@sentry/hub" "5.22.3"
+    "@sentry/minimal" "5.22.3"
+    "@sentry/types" "5.22.3"
+    "@sentry/utils" "5.22.3"
+    tslib "^1.9.3"
+
 "@sentry/tracing@5.23.0":
   version "5.23.0"
   resolved "https://registry.yarnpkg.com/@sentry/tracing/-/tracing-5.23.0.tgz#6627a6c659abce968e45e897ebc038873cc83fb2"
@@ -4423,17 +4434,6 @@
     "@sentry/minimal" "5.23.0"
     "@sentry/types" "5.23.0"
     "@sentry/utils" "5.23.0"
-    tslib "^1.9.3"
-
-"@sentry/tracing@^5.22.3":
-  version "5.22.3"
-  resolved "https://registry.yarnpkg.com/@sentry/tracing/-/tracing-5.22.3.tgz#9b5a376e3164c007a22e8642ec094104468cac0c"
-  integrity sha512-Zp59kMCk5v56ZAyErqjv/QvGOWOQ5fRltzeVQVp8unIDTk6gEFXfhwPsYHOokJe1mfkmrgPDV6xAkYgtL3KCDQ==
-  dependencies:
-    "@sentry/hub" "5.22.3"
-    "@sentry/minimal" "5.22.3"
-    "@sentry/types" "5.22.3"
-    "@sentry/utils" "5.22.3"
     tslib "^1.9.3"
 
 "@sentry/types@5.22.3":
@@ -5450,7 +5450,7 @@
   dependencies:
     csstype "^2.5.7"
 
-"@theme-ui/match-media@^0.4.0-rc.5":
+"@theme-ui/match-media@0.4.0-rc.5":
   version "0.4.0-rc.5"
   resolved "https://registry.yarnpkg.com/@theme-ui/match-media/-/match-media-0.4.0-rc.5.tgz#358b7d6a21b8f24c0a7405ba476393351cccd4a1"
   integrity sha512-O/edINFznaT487DfDizaqEjQOHPFYbOkoKIPOwS9tdrWhpPGbNTMXMWB6uVV/f7twbTbtfVbxr8+IUQWoyOJsg==
