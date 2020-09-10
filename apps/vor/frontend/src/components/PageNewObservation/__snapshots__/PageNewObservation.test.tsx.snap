@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageNewObservation should render correctly 1`] = `
-.emotion-30 {
+.emotion-31 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,12 +9,12 @@ exports[`PageNewObservation should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-30 {
+  .emotion-31 {
     font-size: 20px;
   }
 }
 
-.emotion-7 {
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -28,7 +28,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   border-bottom-style: solid;
 }
 
-.emotion-6 {
+.emotion-8 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -133,11 +133,37 @@ exports[`PageNewObservation should render correctly 1`] = `
   fill: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
 }
 
-.emotion-2 {
+.emotion-6 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-4 {
   font-size: 14px;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  margin-left: 8px;
   line-height: 1;
+}
+
+.emotion-4:last-child {
+  color: var(--theme-ui-colors-text,#37383c);
+}
+
+.emotion-4:last-child > .splitter {
+  display: none;
+}
+
+.emotion-2:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
 }
 
 .emotion-3 {
@@ -145,32 +171,24 @@ exports[`PageNewObservation should render correctly 1`] = `
   margin-right: 4px;
 }
 
-.emotion-4 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
-  text-rendering: optimizeLegibility;
-  line-height: 1.5;
   font-size: 14px;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   line-height: 1;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-4 {
-    font-size: 14px;
-  }
+.emotion-5:last-child {
+  color: var(--theme-ui-colors-text,#37383c);
 }
 
-@media screen and (min-width:40em) {
-  .emotion-4 {
-    font-size: 14px;
-  }
+.emotion-5:last-child > .splitter {
+  display: none;
 }
 
-.emotion-5 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -234,40 +252,34 @@ exports[`PageNewObservation should render correctly 1`] = `
   margin-right: 16px;
 }
 
-.emotion-5:disabled {
+.emotion-7:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-5:hover,
-.emotion-5:focus {
+.emotion-7:hover,
+.emotion-7:focus {
   background-color: var(--theme-ui-colors-primaryDark,#00a06d);
   outline: none;
 }
 
-.emotion-5:hover:disabled,
-.emotion-5:focus:disabled {
+.emotion-7:hover:disabled,
+.emotion-7:focus:disabled {
   background-color: var(--theme-ui-colors-primary,#00e399);
 }
 
-.emotion-29 {
+.emotion-30 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   margin: auto;
   padding-bottom: 32px;
+  padding-left: 16px;
+  padding-right: 16px;
   max-width: 640px;
 }
 
-.emotion-20 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  padding-left: 16px;
-  padding-right: 16px;
-}
-
-.emotion-12 {
+.emotion-14 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -292,14 +304,14 @@ exports[`PageNewObservation should render correctly 1`] = `
   flex-direction: column;
 }
 
-.emotion-8 {
+.emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   padding-bottom: 4px;
 }
 
-.emotion-11 {
+.emotion-13 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -310,7 +322,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-9 {
+.emotion-11 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -335,13 +347,13 @@ exports[`PageNewObservation should render correctly 1`] = `
   padding: 12px;
 }
 
-.emotion-9:hover,
-.emotion-9:focus {
+.emotion-11:hover,
+.emotion-11:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-10 {
+.emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -352,7 +364,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   pointer-events: none;
 }
 
-.emotion-16 {
+.emotion-18 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -378,21 +390,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   flex-direction: column;
 }
 
-.emotion-15 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.emotion-14 {
+.emotion-16 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -420,35 +418,35 @@ exports[`PageNewObservation should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-14:hover,
-.emotion-14:focus {
+.emotion-16:hover,
+.emotion-16:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-14::-webkit-input-placeholder {
+.emotion-16::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-14::-moz-placeholder {
+.emotion-16::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-14:-ms-input-placeholder {
+.emotion-16:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-14::placeholder {
+.emotion-16::placeholder {
   font-style: italic;
 }
 
-.emotion-14:disabled {
+.emotion-16:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
-.emotion-18 {
+.emotion-20 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -476,33 +474,33 @@ exports[`PageNewObservation should render correctly 1`] = `
   margin-bottom: 16px;
 }
 
-.emotion-18:hover,
-.emotion-18:focus {
+.emotion-20:hover,
+.emotion-20:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-18::-webkit-input-placeholder {
+.emotion-20::-webkit-input-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-18::-moz-placeholder {
+.emotion-20::-moz-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-18:-ms-input-placeholder {
+.emotion-20:-ms-input-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-18::placeholder {
+.emotion-20::placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-21 {
+.emotion-22 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -511,19 +509,17 @@ exports[`PageNewObservation should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-bottom: 8px;
-  margin-left: 16px;
-  margin-right: 16px;
   font-size: 14px;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
 }
 
 @media screen and (min-width:40em) {
-  .emotion-21 {
+  .emotion-22 {
     font-size: 14px;
   }
 }
 
-.emotion-28 {
+.emotion-29 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -540,15 +536,14 @@ exports[`PageNewObservation should render correctly 1`] = `
   flex-wrap: wrap;
 }
 
-.emotion-27 {
+.emotion-28 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  margin-left: 16px;
   margin-bottom: 16px;
 }
 
-.emotion-26 {
+.emotion-27 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -556,6 +551,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   background-color: var(--theme-ui-colors-surface,#fff);
   border-radius: 6px;
   box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
+  margin-right: 16px;
   padding: 16px;
   width: 80px;
   height: 80px;
@@ -581,11 +577,11 @@ exports[`PageNewObservation should render correctly 1`] = `
   border-width: 1px;
 }
 
-.emotion-26:hover {
+.emotion-27:hover {
   border-color: var(--theme-ui-colors-primary,#00e399);
 }
 
-.emotion-22 {
+.emotion-23 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -599,7 +595,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-23 {
+.emotion-24 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -626,29 +622,29 @@ exports[`PageNewObservation should render correctly 1`] = `
   display: none;
 }
 
-.emotion-23:hover,
-.emotion-23:focus {
+.emotion-24:hover,
+.emotion-24:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-23::-webkit-input-placeholder {
+.emotion-24::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-23::-moz-placeholder {
+.emotion-24::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-23:-ms-input-placeholder {
+.emotion-24:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-23::placeholder {
+.emotion-24::placeholder {
   font-style: italic;
 }
 
-.emotion-23:disabled {
+.emotion-24:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
@@ -656,13 +652,13 @@ exports[`PageNewObservation should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-30"
+    class="emotion-31"
   >
     <div
-      class="emotion-7"
+      class="emotion-9"
     >
       <div
-        class="emotion-6"
+        class="emotion-8"
       >
         <a
           href="/dashboard/students/overview?studentId="
@@ -675,22 +671,35 @@ exports[`PageNewObservation should render correctly 1`] = `
             />
           </button>
         </a>
-        <a
-          class="emotion-2"
-          href="/dashboard/students/overview?studentId="
-        />
-        <span
-          class="emotion-3"
+        <div
+          class="emotion-6"
         >
-          /
-        </span>
-        <p
-          class="emotion-4"
-        >
-          New Observation
-        </p>
+          <a
+            class="emotion-4"
+            href="/dashboard/students/overview?studentId="
+          >
+            <span
+              class="emotion-2"
+            />
+            <span
+              class="splitter emotion-3"
+            >
+              /
+            </span>
+          </a>
+          <div
+            class="emotion-5"
+          >
+            New Observation
+            <span
+              class="splitter"
+            >
+              /
+            </span>
+          </div>
+        </div>
         <button
-          class="emotion-5"
+          class="emotion-7"
           disabled=""
         >
            Save
@@ -698,131 +707,127 @@ exports[`PageNewObservation should render correctly 1`] = `
       </div>
     </div>
     <div
-      class="emotion-29"
+      class="emotion-30"
     >
-      <div
-        class="emotion-20"
+      <label
+        class="emotion-14"
       >
-        <label
-          class="emotion-12"
+        <div
+          class="emotion-10"
         >
-          <div
-            class="emotion-8"
-          >
-            Category
-          </div>
-          <div
+          Category
+        </div>
+        <div
+          class="emotion-13"
+        >
+          <select
+            aria-label="Category"
             class="emotion-11"
           >
-            <select
-              aria-label="Category"
-              class="emotion-9"
+            <option
+              value="0"
             >
-              <option
-                value="0"
-              >
-                Others
-              </option>
-              <option
-                value="1"
-              >
-                Cultural
-              </option>
-              <option
-                value="2"
-              >
-                Language
-              </option>
-              <option
-                value="3"
-              >
-                Mathematics
-              </option>
-              <option
-                value="4"
-              >
-                Practical Life
-              </option>
-              <option
-                value="5"
-              >
-                Sensorial
-              </option>
-            </select>
-            <svg
-              class="emotion-10"
-              fill="currentcolor"
-              height="24"
-              viewBox="0 0 24 24"
-              width="24"
-              xmlns="http://www.w3.org/2000/svg"
+              Others
+            </option>
+            <option
+              value="1"
             >
-              <path
-                d="M7 10l5 5 5-5z"
-              />
-            </svg>
-          </div>
-        </label>
-        <label
-          class="emotion-16"
-        >
-          <div
-            class="emotion-8"
+              Cultural
+            </option>
+            <option
+              value="2"
+            >
+              Language
+            </option>
+            <option
+              value="3"
+            >
+              Mathematics
+            </option>
+            <option
+              value="4"
+            >
+              Practical Life
+            </option>
+            <option
+              value="5"
+            >
+              Sensorial
+            </option>
+          </select>
+          <svg
+            class="emotion-12"
+            fill="currentcolor"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            Short Description
-          </div>
-          <div
-            class="emotion-15"
-          >
-            <input
-              class="emotion-14"
-              placeholder="What have you found?"
-              value=""
+            <path
+              d="M7 10l5 5 5-5z"
             />
-          </div>
-        </label>
-        <label
-          class="emotion-12"
+          </svg>
+        </div>
+      </label>
+      <label
+        class="emotion-18"
+      >
+        <div
+          class="emotion-10"
         >
-          <div
-            class="emotion-8"
-          >
-            Details
-          </div>
-          <textarea
-            aria-label="Details"
-            class="emotion-18"
-            placeholder="Tell us what you observed"
+          Short Description*
+        </div>
+        <div
+          class="emotion-6"
+        >
+          <input
+            class="emotion-16"
+            placeholder="What have you found?"
+            value=""
           />
-        </label>
-      </div>
+        </div>
+      </label>
+      <label
+        class="emotion-14"
+      >
+        <div
+          class="emotion-10"
+        >
+          Details
+        </div>
+        <textarea
+          aria-label="Details"
+          class="emotion-20"
+          placeholder="Tell us what you observed"
+        />
+      </label>
       <p
-        class="emotion-21"
+        class="emotion-22"
       >
         Attached Images
       </p>
       <div
-        class="emotion-28"
+        class="emotion-29"
       >
         <div
-          class="emotion-27"
+          class="emotion-28"
         >
           <label
-            class="emotion-26"
+            class="emotion-27"
           >
             <div
-              class="emotion-22"
+              class="emotion-23"
             />
             Image
             <label
-              class="emotion-16"
+              class="emotion-18"
             >
               <div
-                class="emotion-15"
+                class="emotion-6"
               >
                 <input
                   accept="image/*"
-                  class="emotion-23"
+                  class="emotion-24"
                   type="file"
                   value=""
                 />

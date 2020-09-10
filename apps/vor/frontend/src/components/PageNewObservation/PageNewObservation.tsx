@@ -16,6 +16,8 @@ import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import Icon from "../Icon/Icon"
 import usePostNewStudentImage from "../../api/students/usePostNewStudentImage"
 import { ReactComponent as Arrow } from "../../icons/arrow-back.svg"
+import Breadcrumb from "../Breadcrumb/Breadcrumb"
+import BreadcrumbItem from "../Breadcrumb/BreadcrumbItem"
 
 interface Props {
   studentId: string
@@ -69,23 +71,12 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
               <Icon as={Arrow} sx={{ fill: "textMediumEmphasis" }} />
             </Button>
           </Link>
-          <Link
-            to={STUDENT_OVERVIEW_PAGE_URL(studentId)}
-            sx={{
-              fontSize: 1,
-              color: "textMediumEmphasis",
-              ml: 2,
-              lineHeight: 1,
-            }}
-          >
-            {student.data?.name.split(" ")[0]}
-          </Link>
-          <span sx={{ mx: 1 }}>/</span>
-          <Typography.Body
-            sx={{ fontSize: [1, 1], color: "text", lineHeight: 1 }}
-          >
-            New Observation
-          </Typography.Body>
+          <Breadcrumb>
+            <BreadcrumbItem to={STUDENT_OVERVIEW_PAGE_URL(studentId)}>
+              {student.data?.name.split(" ")[0]}
+            </BreadcrumbItem>
+            <BreadcrumbItem>New Observation</BreadcrumbItem>
+          </Breadcrumb>
           <Button
             ml="auto"
             p={2}
@@ -98,46 +89,43 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
           </Button>
         </Flex>
       </Box>
-      <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={4}>
-        <Box px={3}>
-          <Select
-            autoFocus
-            label="Category"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-            mb={3}
-          >
-            {categories.map(({ id, name }) => (
-              <option key={id} value={id}>
-                {name}
-              </option>
-            ))}
-          </Select>
-          <Input
-            label="Short Description"
-            sx={{ width: "100%" }}
-            placeholder="What have you found?"
-            onChange={(e) => setShortDesc(e.target.value)}
-            value={shortDesc}
-            mb={3}
-          />
-          <TextArea
-            label="Details"
-            placeholder="Tell us what you observed"
-            onChange={(e) => setDetails(e.target.value)}
-            value={longDesc}
-            mb={3}
-          />
-        </Box>
+      <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={4} px={3}>
+        <Select
+          autoFocus
+          label="Category"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          mb={3}
+        >
+          {categories.map(({ id, name }) => (
+            <option key={id} value={id}>
+              {name}
+            </option>
+          ))}
+        </Select>
+        <Input
+          label="Short Description*"
+          sx={{ width: "100%" }}
+          placeholder="What have you found?"
+          onChange={(e) => setShortDesc(e.target.value)}
+          value={shortDesc}
+          mb={3}
+        />
+        <TextArea
+          label="Details"
+          placeholder="Tell us what you observed"
+          onChange={(e) => setDetails(e.target.value)}
+          value={longDesc}
+          mb={3}
+        />
         <Typography.Body
           sx={{ fontSize: 1, color: "textMediumEmphasis" }}
           mb={2}
-          mx={3}
         >
           Attached Images
         </Typography.Body>
         <Flex sx={{ alignItems: "center", flexWrap: "wrap" }}>
-          <Images
+          <UploadImageButton
             studentId={studentId}
             onUploaded={(image) =>
               setImages((draft) => {
@@ -148,7 +136,7 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
           {images.map((image) => {
             return (
               <Image
-                ml={3}
+                mr={3}
                 mb={3}
                 sx={{
                   height: 80,
@@ -166,16 +154,17 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
   )
 }
 
-const Images: FC<{
+const UploadImageButton: FC<{
   studentId: string
   onUploaded: (image: { id: string; file: File }) => void
 }> = ({ onUploaded, studentId }) => {
   const [postNewStudentImage, { isLoading }] = usePostNewStudentImage(studentId)
 
   return (
-    <Box ml={3} mb={3}>
+    <Box mb={3}>
       <Card
         as="label"
+        mr={3}
         p={3}
         sx={{
           width: 80,
@@ -208,13 +197,12 @@ const Images: FC<{
           accept="image/*"
           onChange={async (e) => {
             const selectedImage = e.target.files?.[0]
-            if (selectedImage) {
-              const result = await postNewStudentImage(selectedImage)
-              if (result.ok) {
-                const response = await result.json()
-                onUploaded({ id: response.id, file: selectedImage })
-              }
-            }
+            if (!selectedImage) return
+
+            const result = await postNewStudentImage(selectedImage)
+            if (!result.ok) return
+            const response = await result.json()
+            onUploaded({ id: response.id, file: selectedImage })
           }}
         />
       </Card>
