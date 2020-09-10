@@ -19,6 +19,8 @@ import { ReactComponent as Arrow } from "../../icons/arrow-back.svg"
 import Breadcrumb from "../Breadcrumb/Breadcrumb"
 import BreadcrumbItem from "../Breadcrumb/BreadcrumbItem"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
+import DateInput from "../DateInput/DateInput"
+import dayjs from "../../dayjs"
 
 interface Props {
   studentId: string
@@ -31,6 +33,7 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
   const [longDesc, setDetails] = useState("")
   const [category, setCategory] = useState(categories[0].id)
   const [images, setImages] = useImmer<Array<{ id: string; file: File }>>([])
+  const [eventTime, setEventTime] = useState(dayjs())
 
   async function submit(): Promise<void> {
     const response = await postNewObservation({
@@ -38,6 +41,7 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
       longDesc,
       shortDesc,
       images: images.map((image) => image.id),
+      eventTime,
     })
 
     if (response.ok) {
@@ -99,6 +103,14 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
             </option>
           ))}
         </Select>
+        <DateInput
+          value={eventTime}
+          label="Event Time"
+          onChange={(value) => {
+            setEventTime(value)
+          }}
+          mb={3}
+        />
         <Input
           label="Short Description*"
           sx={{ width: "100%" }}
