@@ -1,8 +1,9 @@
 ---
 to: src/components/<%= name%>/<%= name%>.stories.tsx
 ---
-import React, { FC } from "react"
-import <%= name %> from "./<%= name %>"
+import React from "react"
+import { Meta, Story } from "@storybook/react"
+import <%= name %>, { <%= name%>Props } from "./<%= name %>"
 
 export default {
   title: "Core/<%= name %>",
@@ -10,6 +11,9 @@ export default {
   parameters: {
     componentSubtitle: "Just a simple <%= name %>",
   },
-}
+} as Meta
 
-export const Basic: FC = () => <<%= name%> />
+const Template: Story<<%= name%>Props> = () => <<%= name%> />
+
+export const Default = Template.bind({})
+Default.args = {}

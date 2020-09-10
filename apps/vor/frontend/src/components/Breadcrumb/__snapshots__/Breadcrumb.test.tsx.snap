@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Breadcrumb should render correctly 1`] = `
+.emotion-4 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 16px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-4 {
+    font-size: 20px;
+  }
+}
+
+.emotion-3 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-0 {
+  font-size: 14px;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  margin-left: 8px;
+  line-height: 1;
+}
+
+.emotion-0:last-child {
+  color: var(--theme-ui-colors-text,#37383c);
+}
+
+.emotion-0:last-child > .splitter {
+  display: none;
+}
+
+<div>
+  <div
+    class="emotion-4"
+  >
+    <div
+      class="emotion-3"
+    >
+      <a
+        aria-current="page"
+        class="emotion-0"
+        href="/"
+      >
+        Students
+         
+        <span
+          class="splitter"
+        >
+          /
+        </span>
+      </a>
+      <a
+        aria-current="page"
+        class="emotion-0"
+        href="/"
+      >
+        Joyce
+         
+        <span
+          class="splitter"
+        >
+          /
+        </span>
+      </a>
+      <a
+        aria-current="page"
+        class="emotion-0"
+        href="/"
+      >
+        Observations
+         
+        <span
+          class="splitter"
+        >
+          /
+        </span>
+      </a>
+    </div>
+  </div>
+</div>
+`;
