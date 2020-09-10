@@ -15,6 +15,7 @@ import { STUDENT_OVERVIEW_PAGE_URL } from "../../routes"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import Icon from "../Icon/Icon"
 import usePostNewStudentImage from "../../api/students/usePostNewStudentImage"
+import { ReactComponent as Arrow } from "../../icons/arrow-back.svg"
 
 interface Props {
   studentId: string
@@ -63,14 +64,26 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
           sx={{ alignItems: "center", maxWidth: "maxWidth.sm" }}
           margin="auto"
         >
+          <Link to={STUDENT_OVERVIEW_PAGE_URL(studentId)}>
+            <Button ml={2} p={1} variant="secondary">
+              <Icon as={Arrow} sx={{ fill: "textMediumEmphasis" }} />
+            </Button>
+          </Link>
           <Link
             to={STUDENT_OVERVIEW_PAGE_URL(studentId)}
-            sx={{ fontSize: 1, color: "textMediumEmphasis", ml: 3 }}
+            sx={{
+              fontSize: 1,
+              color: "textMediumEmphasis",
+              ml: 2,
+              lineHeight: 1,
+            }}
           >
             {student.data?.name.split(" ")[0]}
           </Link>
           <span sx={{ mx: 1 }}>/</span>
-          <Typography.Body sx={{ fontSize: [1, 1], color: "text" }}>
+          <Typography.Body
+            sx={{ fontSize: [1, 1], color: "text", lineHeight: 1 }}
+          >
             New Observation
           </Typography.Body>
           <Button

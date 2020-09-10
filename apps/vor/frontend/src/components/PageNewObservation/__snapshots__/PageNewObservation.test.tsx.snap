@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageNewObservation should render correctly 1`] = `
-.emotion-28 {
+.emotion-30 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,12 +9,12 @@ exports[`PageNewObservation should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-28 {
+  .emotion-30 {
     font-size: 20px;
   }
 }
 
-.emotion-5 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -28,7 +28,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   border-bottom-style: solid;
 }
 
-.emotion-4 {
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -44,18 +44,108 @@ exports[`PageNewObservation should render correctly 1`] = `
   max-width: 640px;
 }
 
-.emotion-0 {
+.emotion-1 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  text-align: center;
+  line-height: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: inherit;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: white;
+  background-color: var(--theme-ui-colors-primary,#00e399);
+  border: 0;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  margin-left: 16px;
+  color: var(--theme-ui-colors-textPrimary,#027c5b);
+  background-color: transparent;
+  border-radius: 6px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  white-space: nowrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  touch-action: manipulation;
+  box-shadow: none;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-style: solid;
+  border-width: 1px;
+  line-height: 1;
+  border: none;
+  margin-left: 8px;
+  padding: 4px;
 }
 
-.emotion-1 {
+.emotion-1:disabled {
+  opacity: 0.38;
+  cursor: auto;
+}
+
+.emotion-1:hover,
+.emotion-1:focus {
+  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
+  border-color: var(--theme-ui-colors-primary,#00e399);
+  outline: none;
+}
+
+.emotion-0 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  fill: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+}
+
+.emotion-2 {
+  font-size: 14px;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  margin-left: 8px;
+  line-height: 1;
+}
+
+.emotion-3 {
   margin-left: 4px;
   margin-right: 4px;
 }
 
-.emotion-2 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -65,21 +155,22 @@ exports[`PageNewObservation should render correctly 1`] = `
   line-height: 1.5;
   font-size: 14px;
   color: var(--theme-ui-colors-text,#37383c);
+  line-height: 1;
 }
 
 @media screen and (min-width:40em) {
-  .emotion-2 {
+  .emotion-4 {
     font-size: 14px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .emotion-2 {
+  .emotion-4 {
     font-size: 14px;
   }
 }
 
-.emotion-3 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -143,23 +234,23 @@ exports[`PageNewObservation should render correctly 1`] = `
   margin-right: 16px;
 }
 
-.emotion-3:disabled {
+.emotion-5:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-3:hover,
-.emotion-3:focus {
+.emotion-5:hover,
+.emotion-5:focus {
   background-color: var(--theme-ui-colors-primaryDark,#00a06d);
   outline: none;
 }
 
-.emotion-3:hover:disabled,
-.emotion-3:focus:disabled {
+.emotion-5:hover:disabled,
+.emotion-5:focus:disabled {
   background-color: var(--theme-ui-colors-primary,#00e399);
 }
 
-.emotion-27 {
+.emotion-29 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -168,7 +259,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   max-width: 640px;
 }
 
-.emotion-18 {
+.emotion-20 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -176,7 +267,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   padding-right: 16px;
 }
 
-.emotion-10 {
+.emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -201,14 +292,14 @@ exports[`PageNewObservation should render correctly 1`] = `
   flex-direction: column;
 }
 
-.emotion-6 {
+.emotion-8 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   padding-bottom: 4px;
 }
 
-.emotion-9 {
+.emotion-11 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -219,7 +310,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-7 {
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -244,13 +335,13 @@ exports[`PageNewObservation should render correctly 1`] = `
   padding: 12px;
 }
 
-.emotion-7:hover,
-.emotion-7:focus {
+.emotion-9:hover,
+.emotion-9:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-8 {
+.emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -261,7 +352,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   pointer-events: none;
 }
 
-.emotion-14 {
+.emotion-16 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -287,7 +378,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   flex-direction: column;
 }
 
-.emotion-13 {
+.emotion-15 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -301,7 +392,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-12 {
+.emotion-14 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -329,35 +420,35 @@ exports[`PageNewObservation should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-12:hover,
-.emotion-12:focus {
+.emotion-14:hover,
+.emotion-14:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-12::-webkit-input-placeholder {
+.emotion-14::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-12::-moz-placeholder {
+.emotion-14::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-12:-ms-input-placeholder {
+.emotion-14:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-12::placeholder {
+.emotion-14::placeholder {
   font-style: italic;
 }
 
-.emotion-12:disabled {
+.emotion-14:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
-.emotion-16 {
+.emotion-18 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -385,33 +476,33 @@ exports[`PageNewObservation should render correctly 1`] = `
   margin-bottom: 16px;
 }
 
-.emotion-16:hover,
-.emotion-16:focus {
+.emotion-18:hover,
+.emotion-18:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-16::-webkit-input-placeholder {
+.emotion-18::-webkit-input-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-16::-moz-placeholder {
+.emotion-18::-moz-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-16:-ms-input-placeholder {
+.emotion-18:-ms-input-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-16::placeholder {
+.emotion-18::placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-19 {
+.emotion-21 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -427,12 +518,12 @@ exports[`PageNewObservation should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-19 {
+  .emotion-21 {
     font-size: 14px;
   }
 }
 
-.emotion-26 {
+.emotion-28 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -449,7 +540,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   flex-wrap: wrap;
 }
 
-.emotion-25 {
+.emotion-27 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -457,7 +548,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   margin-bottom: 16px;
 }
 
-.emotion-24 {
+.emotion-26 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -490,11 +581,11 @@ exports[`PageNewObservation should render correctly 1`] = `
   border-width: 1px;
 }
 
-.emotion-24:hover {
+.emotion-26:hover {
   border-color: var(--theme-ui-colors-primary,#00e399);
 }
 
-.emotion-20 {
+.emotion-22 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -508,7 +599,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-21 {
+.emotion-23 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -535,29 +626,29 @@ exports[`PageNewObservation should render correctly 1`] = `
   display: none;
 }
 
-.emotion-21:hover,
-.emotion-21:focus {
+.emotion-23:hover,
+.emotion-23:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-21::-webkit-input-placeholder {
+.emotion-23::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-21::-moz-placeholder {
+.emotion-23::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-21:-ms-input-placeholder {
+.emotion-23:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-21::placeholder {
+.emotion-23::placeholder {
   font-style: italic;
 }
 
-.emotion-21:disabled {
+.emotion-23:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
@@ -565,30 +656,41 @@ exports[`PageNewObservation should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-28"
+    class="emotion-30"
   >
     <div
-      class="emotion-5"
+      class="emotion-7"
     >
       <div
-        class="emotion-4"
+        class="emotion-6"
       >
         <a
-          class="emotion-0"
+          href="/dashboard/students/overview?studentId="
+        >
+          <button
+            class="emotion-1"
+          >
+            <div
+              class="emotion-0"
+            />
+          </button>
+        </a>
+        <a
+          class="emotion-2"
           href="/dashboard/students/overview?studentId="
         />
         <span
-          class="emotion-1"
+          class="emotion-3"
         >
           /
         </span>
         <p
-          class="emotion-2"
+          class="emotion-4"
         >
           New Observation
         </p>
         <button
-          class="emotion-3"
+          class="emotion-5"
           disabled=""
         >
            Save
@@ -596,25 +698,25 @@ exports[`PageNewObservation should render correctly 1`] = `
       </div>
     </div>
     <div
-      class="emotion-27"
+      class="emotion-29"
     >
       <div
-        class="emotion-18"
+        class="emotion-20"
       >
         <label
-          class="emotion-10"
+          class="emotion-12"
         >
           <div
-            class="emotion-6"
+            class="emotion-8"
           >
             Category
           </div>
           <div
-            class="emotion-9"
+            class="emotion-11"
           >
             <select
               aria-label="Category"
-              class="emotion-7"
+              class="emotion-9"
             >
               <option
                 value="0"
@@ -648,7 +750,7 @@ exports[`PageNewObservation should render correctly 1`] = `
               </option>
             </select>
             <svg
-              class="emotion-8"
+              class="emotion-10"
               fill="currentcolor"
               height="24"
               viewBox="0 0 24 24"
@@ -662,65 +764,65 @@ exports[`PageNewObservation should render correctly 1`] = `
           </div>
         </label>
         <label
-          class="emotion-14"
+          class="emotion-16"
         >
           <div
-            class="emotion-6"
+            class="emotion-8"
           >
             Short Description
           </div>
           <div
-            class="emotion-13"
+            class="emotion-15"
           >
             <input
-              class="emotion-12"
+              class="emotion-14"
               placeholder="What have you found?"
               value=""
             />
           </div>
         </label>
         <label
-          class="emotion-10"
+          class="emotion-12"
         >
           <div
-            class="emotion-6"
+            class="emotion-8"
           >
             Details
           </div>
           <textarea
             aria-label="Details"
-            class="emotion-16"
+            class="emotion-18"
             placeholder="Tell us what you observed"
           />
         </label>
       </div>
       <p
-        class="emotion-19"
+        class="emotion-21"
       >
         Attached Images
       </p>
       <div
-        class="emotion-26"
+        class="emotion-28"
       >
         <div
-          class="emotion-25"
+          class="emotion-27"
         >
           <label
-            class="emotion-24"
+            class="emotion-26"
           >
             <div
-              class="emotion-20"
+              class="emotion-22"
             />
             Image
             <label
-              class="emotion-14"
+              class="emotion-16"
             >
               <div
-                class="emotion-13"
+                class="emotion-15"
               >
                 <input
                   accept="image/*"
-                  class="emotion-21"
+                  class="emotion-23"
                   type="file"
                   value=""
                 />
