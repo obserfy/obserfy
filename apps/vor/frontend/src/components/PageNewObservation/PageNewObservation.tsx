@@ -34,7 +34,7 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
   const [longDesc, setDetails] = useState("")
   const [images, setImages] = useImmer<Array<{ id: string; file: File }>>([])
   const [eventTime, setEventTime] = useState(dayjs())
-  const [areaId, setAreaId] = useState("")
+  const [areaId, setAreaId] = useState<string>()
 
   async function submit(): Promise<void> {
     const response = await postNewObservation({
@@ -125,7 +125,7 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
                 isActive={isSelected}
                 onClick={() => {
                   if (isSelected) {
-                    setAreaId("")
+                    setAreaId(undefined)
                   } else {
                     setAreaId(id)
                   }

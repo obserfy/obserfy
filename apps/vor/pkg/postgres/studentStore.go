@@ -66,6 +66,7 @@ func (s StudentStore) InsertObservation(studentId string, creatorId string, long
 			WherePK().
 			Relation("Images").
 			Relation("Creator").
+			Relation("Area").
 			Select(); err != nil {
 			return richErrors.Wrap(err, "failed to get complete observation data")
 		}
