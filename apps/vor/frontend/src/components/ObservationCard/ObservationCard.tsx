@@ -40,16 +40,15 @@ export const ObservationCard: FC<Props> = ({
             {text}
           </Typography.Body>
         ))}
-      <Flex sx={{ alignItems: "baseline" }} mb={2}>
+      <Flex sx={{ alignItems: "baseline" }} mb={2} ml={3}>
         {category && (
           <Typography.Body
-            ml={3}
             mr={1}
             mb={2}
             sx={{ fontSize: [0, 0], lineHeight: 1 }}
             color="textPrimary"
           >
-            {category.name}
+            {category.name} |
           </Typography.Body>
         )}
         {observation.creatorName && (
@@ -57,7 +56,7 @@ export const ObservationCard: FC<Props> = ({
             sx={{ fontSize: [0, 0], lineHeight: 1 }}
             color="textMediumEmphasis"
           >
-            by {observation.creatorName.split(" ")[0]}{" "}
+            {observation.creatorName.split(" ")[0]}{" "}
           </Typography.Body>
         )}
         <Button
