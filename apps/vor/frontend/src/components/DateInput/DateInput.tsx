@@ -31,7 +31,7 @@ export const DateInput: FC<Props> = ({ label, value, onChange, ...props }) => {
         <Button
           data-cy={label}
           mt={23}
-          ml={3}
+          ml={2}
           variant="outline"
           sx={{ flexShrink: 0 }}
         >

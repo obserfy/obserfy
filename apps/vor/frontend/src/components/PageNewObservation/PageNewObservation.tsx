@@ -91,11 +91,26 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
         </Flex>
       </TranslucentBar>
       <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={4} px={3} mt={3}>
+        <Input
+          label="Short Description*"
+          sx={{ width: "100%" }}
+          placeholder="What have you found?"
+          onChange={(e) => setShortDesc(e.target.value)}
+          value={shortDesc}
+          mb={3}
+        />
+        <TextArea
+          label="Details"
+          placeholder="Tell us what you observed"
+          onChange={(e) => setDetails(e.target.value)}
+          value={longDesc}
+          mb={3}
+        />
         <Typography.Body
           sx={{ fontSize: 1, color: "textMediumEmphasis" }}
-          mb={1}
+          mb={2}
         >
-          Area
+          Related Area
         </Typography.Body>
         <Flex mb={2} sx={{ flexWrap: "wrap" }}>
           {areas.data?.map(({ id, name }) => {
@@ -125,21 +140,6 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
           onChange={(value) => {
             setEventTime(value)
           }}
-          mb={3}
-        />
-        <Input
-          label="Short Description*"
-          sx={{ width: "100%" }}
-          placeholder="What have you found?"
-          onChange={(e) => setShortDesc(e.target.value)}
-          value={shortDesc}
-          mb={3}
-        />
-        <TextArea
-          label="Details"
-          placeholder="Tell us what you observed"
-          onChange={(e) => setDetails(e.target.value)}
-          value={longDesc}
           mb={3}
         />
         <Typography.Body

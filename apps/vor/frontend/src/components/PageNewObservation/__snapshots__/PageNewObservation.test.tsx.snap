@@ -292,51 +292,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   max-width: 640px;
 }
 
-.emotion-10 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
-  text-rendering: optimizeLegibility;
-  line-height: 1.5;
-  margin-bottom: 4px;
-  font-size: 14px;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-}
-
-@media screen and (min-width:40em) {
-  .emotion-10 {
-    font-size: 14px;
-  }
-}
-
-.emotion-11 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  margin-bottom: 8px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-}
-
-.emotion-18 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  margin-bottom: 16px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.emotion-15 {
+.emotion-13 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -352,7 +308,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -362,14 +318,193 @@ exports[`PageNewObservation should render correctly 1`] = `
   flex-direction: column;
 }
 
-.emotion-12 {
+.emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   padding-bottom: 4px;
 }
 
-.emotion-13 {
+.emotion-11 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: block;
+  width: 100%;
+  padding: 8px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: inherit;
+  line-height: inherit;
+  border: 1px solid;
+  border-radius: 4px;
+  color: inherit;
+  background-color: transparent;
+  border-radius: 6px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  width: auto;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface,#fff);
+  font-size: 16px;
+  padding: 12px;
+  color: var(--theme-ui-colors-text,#37383c);
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.emotion-11:hover,
+.emotion-11:focus {
+  border-color: var(--theme-ui-colors-primary,#00e399);
+  outline: none;
+}
+
+.emotion-11::-webkit-input-placeholder {
+  font-style: italic;
+}
+
+.emotion-11::-moz-placeholder {
+  font-style: italic;
+}
+
+.emotion-11:-ms-input-placeholder {
+  font-style: italic;
+}
+
+.emotion-11::placeholder {
+  font-style: italic;
+}
+
+.emotion-11:disabled {
+  opacity: 0.68;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
+}
+
+.emotion-16 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.emotion-15 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: block;
+  width: 100%;
+  padding: 8px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: inherit;
+  line-height: inherit;
+  border: 1px solid;
+  border-radius: 4px;
+  color: inherit;
+  background-color: transparent;
+  border-radius: 6px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface,#fff);
+  font-size: 16px;
+  padding: 16px;
+  height: 180px;
+  resize: vertical;
+  color: var(--theme-ui-colors-text,#37383c);
+  margin-bottom: 16px;
+}
+
+.emotion-15:hover,
+.emotion-15:focus {
+  border-color: var(--theme-ui-colors-primary,#00e399);
+  outline: none;
+}
+
+.emotion-15::-webkit-input-placeholder {
+  font-style: italic;
+  line-height: 2rem;
+}
+
+.emotion-15::-moz-placeholder {
+  font-style: italic;
+  line-height: 2rem;
+}
+
+.emotion-15:-ms-input-placeholder {
+  font-style: italic;
+  line-height: 2rem;
+}
+
+.emotion-15::placeholder {
+  font-style: italic;
+  line-height: 2rem;
+}
+
+.emotion-17 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: var(--theme-ui-colors-text,#37383c);
+  font-size: 16px;
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+}
+
+@media screen and (min-width:40em) {
+  .emotion-17 {
+    font-size: 14px;
+  }
+}
+
+.emotion-18 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-bottom: 8px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.emotion-25 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-bottom: 16px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-20 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -397,35 +532,35 @@ exports[`PageNewObservation should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-13:hover,
-.emotion-13:focus {
+.emotion-20:hover,
+.emotion-20:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-13::-webkit-input-placeholder {
+.emotion-20::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-13::-moz-placeholder {
+.emotion-20::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-13:-ms-input-placeholder {
+.emotion-20:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-13::placeholder {
+.emotion-20::placeholder {
   font-style: italic;
 }
 
-.emotion-13:disabled {
+.emotion-20:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
-.emotion-17 {
+.emotion-24 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -483,31 +618,31 @@ exports[`PageNewObservation should render correctly 1`] = `
   border-width: 1px;
   line-height: 1;
   margin-top: 23px;
-  margin-left: 16px;
+  margin-left: 8px;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
-.emotion-17:disabled {
+.emotion-24:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-17:hover,
-.emotion-17:focus {
+.emotion-24:hover,
+.emotion-24:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-17:hover:disabled,
-.emotion-17:focus:disabled {
+.emotion-24:hover:disabled,
+.emotion-24:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-16 {
+.emotion-23 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -519,186 +654,6 @@ exports[`PageNewObservation should render correctly 1`] = `
   flex-shrink: 0;
   width: 20px;
   height: 20px;
-}
-
-.emotion-22 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-size: 14px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.emotion-20 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  display: block;
-  width: 100%;
-  padding: 8px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  font-size: inherit;
-  line-height: inherit;
-  border: 1px solid;
-  border-radius: 4px;
-  color: inherit;
-  background-color: transparent;
-  border-radius: 6px;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  width: auto;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface,#fff);
-  font-size: 16px;
-  padding: 12px;
-  color: var(--theme-ui-colors-text,#37383c);
-  margin-bottom: 16px;
-  width: 100%;
-}
-
-.emotion-20:hover,
-.emotion-20:focus {
-  border-color: var(--theme-ui-colors-primary,#00e399);
-  outline: none;
-}
-
-.emotion-20::-webkit-input-placeholder {
-  font-style: italic;
-}
-
-.emotion-20::-moz-placeholder {
-  font-style: italic;
-}
-
-.emotion-20:-ms-input-placeholder {
-  font-style: italic;
-}
-
-.emotion-20::placeholder {
-  font-style: italic;
-}
-
-.emotion-20:disabled {
-  opacity: 0.68;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
-}
-
-.emotion-25 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-size: 14px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.emotion-24 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  display: block;
-  width: 100%;
-  padding: 8px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  font-size: inherit;
-  line-height: inherit;
-  border: 1px solid;
-  border-radius: 4px;
-  color: inherit;
-  background-color: transparent;
-  border-radius: 6px;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface,#fff);
-  font-size: 16px;
-  padding: 16px;
-  height: 180px;
-  resize: vertical;
-  color: var(--theme-ui-colors-text,#37383c);
-  margin-bottom: 16px;
-}
-
-.emotion-24:hover,
-.emotion-24:focus {
-  border-color: var(--theme-ui-colors-primary,#00e399);
-  outline: none;
-}
-
-.emotion-24::-webkit-input-placeholder {
-  font-style: italic;
-  line-height: 2rem;
-}
-
-.emotion-24::-moz-placeholder {
-  font-style: italic;
-  line-height: 2rem;
-}
-
-.emotion-24:-ms-input-placeholder {
-  font-style: italic;
-  line-height: 2rem;
-}
-
-.emotion-24::placeholder {
-  font-style: italic;
-  line-height: 2rem;
-}
-
-.emotion-26 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
-  text-rendering: optimizeLegibility;
-  line-height: 1.5;
-  margin-bottom: 8px;
-  font-size: 14px;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-}
-
-@media screen and (min-width:40em) {
-  .emotion-26 {
-    font-size: 14px;
-  }
 }
 
 .emotion-33 {
@@ -877,50 +832,11 @@ exports[`PageNewObservation should render correctly 1`] = `
     <div
       class="emotion-34"
     >
-      <p
-        class="emotion-10"
-      >
-        Area
-      </p>
-      <div
-        class="emotion-11"
-      />
-      <div
-        class="emotion-18"
-      >
-        <label
-          class="emotion-15"
-        >
-          <div
-            class="emotion-12"
-          >
-            Event Time
-          </div>
-          <div
-            class="emotion-6"
-          >
-            <input
-              class="emotion-13"
-              disabled=""
-              placeholder="Not set"
-              value="27 June '18"
-            />
-          </div>
-        </label>
-        <button
-          class="emotion-17"
-          data-cy="Event Time"
-        >
-          <div
-            class="emotion-16"
-          />
-        </button>
-      </div>
       <label
-        class="emotion-22"
+        class="emotion-13"
       >
         <div
-          class="emotion-12"
+          class="emotion-10"
         >
           Short Description*
         </div>
@@ -928,28 +844,67 @@ exports[`PageNewObservation should render correctly 1`] = `
           class="emotion-6"
         >
           <input
-            class="emotion-20"
+            class="emotion-11"
             placeholder="What have you found?"
             value=""
           />
         </div>
       </label>
       <label
-        class="emotion-25"
+        class="emotion-16"
       >
         <div
-          class="emotion-12"
+          class="emotion-10"
         >
           Details
         </div>
         <textarea
           aria-label="Details"
-          class="emotion-24"
+          class="emotion-15"
           placeholder="Tell us what you observed"
         />
       </label>
       <p
-        class="emotion-26"
+        class="emotion-17"
+      >
+        Related Area
+      </p>
+      <div
+        class="emotion-18"
+      />
+      <div
+        class="emotion-25"
+      >
+        <label
+          class="emotion-13"
+        >
+          <div
+            class="emotion-10"
+          >
+            Event Time
+          </div>
+          <div
+            class="emotion-6"
+          >
+            <input
+              class="emotion-20"
+              disabled=""
+              placeholder="Not set"
+              value="27 June '18"
+            />
+          </div>
+        </label>
+        <button
+          class="emotion-24"
+          data-cy="Event Time"
+        >
+          <div
+            class="emotion-23"
+          />
+        </button>
+      </div>
+      <p
+        class="emotion-17"
       >
         Attached Images
       </p>
@@ -963,11 +918,11 @@ exports[`PageNewObservation should render correctly 1`] = `
             class="emotion-31"
           >
             <div
-              class="emotion-16"
+              class="emotion-23"
             />
             Image
             <label
-              class="emotion-22"
+              class="emotion-13"
             >
               <div
                 class="emotion-6"

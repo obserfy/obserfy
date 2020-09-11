@@ -138,7 +138,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -283,7 +283,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   border-width: 1px;
   line-height: 1;
   margin-top: 23px;
-  margin-left: 16px;
+  margin-left: 8px;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -319,32 +319,6 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   flex-shrink: 0;
   width: 20px;
   height: 20px;
-}
-
-.emotion-15 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-size: 14px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
 }
 
 .emotion-13 {
@@ -1025,7 +999,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
           </button>
         </div>
         <label
-          class="emotion-15"
+          class="emotion-8"
         >
           <div
             class="emotion-5"
@@ -1067,7 +1041,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
           class="emotion-25"
         >
           <label
-            class="emotion-15"
+            class="emotion-8"
           >
             <div
               class="emotion-7"

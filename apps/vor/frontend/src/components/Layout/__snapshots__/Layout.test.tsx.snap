@@ -252,13 +252,6 @@ exports[`Layout should render correctly 1`] = `
   width: 100%;
 }
 
-@media screen and (min-width:52em) {
-  .emotion-13 {
-    height: 100vh;
-    overflow-y: scroll;
-  }
-}
-
 <div>
   <div
     class="emotion-15"
@@ -365,7 +358,6 @@ exports[`Layout should render correctly 1`] = `
         </a>
       </div>
     </nav>
-    <div />
     <div
       class="emotion-14"
     >

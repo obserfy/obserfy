@@ -389,32 +389,6 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-19 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-size: 14px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
 .emotion-17 {
   box-sizing: border-box;
   margin: 0;
@@ -529,7 +503,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   border-width: 1px;
   line-height: 1;
   margin-top: 23px;
-  margin-left: 16px;
+  margin-left: 8px;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -1136,7 +1110,7 @@ exports[`PageNewStudent should render correctly 1`] = `
           class="emotion-22"
         >
           <label
-            class="emotion-19"
+            class="emotion-15"
           >
             <div
               class="emotion-12"
@@ -1167,7 +1141,7 @@ exports[`PageNewStudent should render correctly 1`] = `
           class="emotion-22"
         >
           <label
-            class="emotion-19"
+            class="emotion-15"
           >
             <div
               class="emotion-12"
