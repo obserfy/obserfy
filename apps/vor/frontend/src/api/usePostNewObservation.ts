@@ -12,6 +12,7 @@ interface PostNewObservationBody {
   categoryId?: string
   images?: string[]
   eventTime?: Dayjs
+  areaId?: string
 }
 const usePostNewObservation = (studentId: string) => {
   const postNewObservation = postApi<PostNewObservationBody>(

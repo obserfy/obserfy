@@ -2,8 +2,6 @@
 import { FC, Fragment, useState } from "react"
 import { Box, Button, Card, Flex, Image, jsx } from "theme-ui"
 import { useImmer } from "use-immer"
-import { categories } from "../../categories"
-import Select from "../Select/Select"
 import Input from "../Input/Input"
 import TextArea from "../TextArea/TextArea"
 import Typography from "../Typography/Typography"
@@ -21,6 +19,8 @@ import BreadcrumbItem from "../Breadcrumb/BreadcrumbItem"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
 import DateInput from "../DateInput/DateInput"
 import dayjs from "../../dayjs"
+import { useGetCurriculumAreas } from "../../api/useGetCurriculumAreas"
+import Chip from "../Chip/Chip"
 
 interface Props {
   studentId: string
@@ -28,20 +28,21 @@ interface Props {
 export const PageNewObservation: FC<Props> = ({ studentId }) => {
   const [postNewObservation, { isLoading }] = usePostNewObservation(studentId)
   const student = useGetStudent(studentId)
+  const areas = useGetCurriculumAreas()
 
   const [shortDesc, setShortDesc] = useState("")
   const [longDesc, setDetails] = useState("")
-  const [category, setCategory] = useState(categories[0].id)
   const [images, setImages] = useImmer<Array<{ id: string; file: File }>>([])
   const [eventTime, setEventTime] = useState(dayjs())
+  const [areaId, setAreaId] = useState("")
 
   async function submit(): Promise<void> {
     const response = await postNewObservation({
-      categoryId: category,
+      images: images.map((image) => image.id),
       longDesc,
       shortDesc,
-      images: images.map((image) => image.id),
       eventTime,
+      areaId,
     })
 
     if (response.ok) {
@@ -61,8 +62,8 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
           position: "sticky",
           top: 0,
           borderBottomWidth: 1,
-          borderBottomColor: "border",
-          borderBottomStyle: "borderSolid",
+          borderBottomColor: "borderSolid",
+          borderBottomStyle: "solid",
         }}
       >
         <Flex sx={{ alignItems: "center", maxWidth: "maxWidth.sm" }} m="auto">
@@ -79,30 +80,45 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
           </Breadcrumb>
           <Button
             ml="auto"
-            p={2}
+            p={isLoading ? 1 : 2}
             my={2}
             mr={3}
             onClick={submit}
             disabled={shortDesc === ""}
           >
-            {isLoading && <LoadingIndicator />} Save
+            {isLoading ? <LoadingIndicator size={22} /> : "Save"}
           </Button>
         </Flex>
       </TranslucentBar>
       <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={4} px={3} mt={3}>
-        <Select
-          autoFocus
-          label="Category"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-          mb={3}
+        <Typography.Body
+          sx={{ fontSize: 1, color: "textMediumEmphasis" }}
+          mb={1}
         >
-          {categories.map(({ id, name }) => (
-            <option key={id} value={id}>
-              {name}
-            </option>
-          ))}
-        </Select>
+          Area
+        </Typography.Body>
+        <Flex mb={2} sx={{ flexWrap: "wrap" }}>
+          {areas.data?.map(({ id, name }) => {
+            const isSelected = id === areaId
+            return (
+              <Chip
+                key={id}
+                activeBackground="primary"
+                text={name}
+                mr={2}
+                mb={2}
+                isActive={isSelected}
+                onClick={() => {
+                  if (isSelected) {
+                    setAreaId("")
+                  } else {
+                    setAreaId(id)
+                  }
+                }}
+              />
+            )
+          })}
+        </Flex>
         <DateInput
           value={eventTime}
           label="Event Time"

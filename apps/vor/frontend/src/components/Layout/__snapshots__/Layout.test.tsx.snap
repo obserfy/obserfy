@@ -30,7 +30,7 @@ exports[`Layout should render correctly 1`] = `
   position: fixed;
   border-top-style: solid;
   border-top-width: 1px;
-  border-top-color: var(--theme-ui-colors-borderSolid,#fff);
+  border-top-color: var(--theme-ui-colors-borderSolid,rgba(0,0,0,.1));
 }
 
 @media screen and (min-width:40em) {
