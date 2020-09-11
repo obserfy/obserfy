@@ -12,6 +12,10 @@ export interface Observation {
   creatorId?: string
   creatorName?: string
   eventTime?: string
+  area?: {
+    id: string
+    name: string
+  }
 }
 
 export const useGetStudentObservations = (
