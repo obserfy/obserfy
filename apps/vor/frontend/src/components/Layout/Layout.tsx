@@ -100,7 +100,7 @@ const StudentsSubrouteSidebar = () => {
           borderRightColor: "border",
           height: "100vh",
           overflowY: "auto",
-          width: [undefined, 300],
+          width: [undefined, 300, 300, 300, 420],
           display: ["none", "none", "block"],
         }}
       >

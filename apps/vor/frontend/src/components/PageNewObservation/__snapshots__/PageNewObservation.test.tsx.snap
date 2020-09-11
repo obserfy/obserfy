@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageNewObservation should render correctly 1`] = `
-.emotion-35 {
+.emotion-39 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,12 +9,12 @@ exports[`PageNewObservation should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-35 {
+  .emotion-39 {
     font-size: 20px;
   }
 }
 
-.emotion-9 {
+.emotion-13 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -28,7 +28,7 @@ exports[`PageNewObservation should render correctly 1`] = `
 }
 
 @supports (-webkit-backdrop-filter:blur(20px)) or (backdrop-filter:blur(20px)) {
-  .emotion-9 {
+  .emotion-13 {
     background-color: var(--theme-ui-colors-surfaceBlurTransparent,rgba(255,255,255,0.6));
     -webkit-backdrop-filter: saturate(180%) blur(20px);
     backdrop-filter: saturate(180%) blur(20px);
@@ -39,7 +39,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   }
 }
 
-.emotion-8 {
+.emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -53,6 +53,13 @@ exports[`PageNewObservation should render correctly 1`] = `
   -ms-flex-align: center;
   align-items: center;
   max-width: 640px;
+}
+
+.emotion-2 {
+  margin: 8px;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
 
 .emotion-1 {
@@ -113,8 +120,6 @@ exports[`PageNewObservation should render correctly 1`] = `
   border-width: 1px;
   line-height: 1;
   border: none;
-  margin-left: 8px;
-  margin-right: 8px;
   padding: 4px;
 }
 
@@ -145,7 +150,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   fill: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
 }
 
-.emotion-6 {
+.emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -153,43 +158,19 @@ exports[`PageNewObservation should render correctly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  overflow-x: auto;
+  overflow-y: hidden;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.emotion-4 {
-  font-size: 14px;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  line-height: 1;
-}
-
-.emotion-4:last-child {
-  color: var(--theme-ui-colors-text,#37383c);
-}
-
-.emotion-4:last-child > .splitter {
-  display: none;
-}
-
-.emotion-2:hover {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-}
-
-.emotion-3 {
-  margin-left: 4px;
-  margin-right: 4px;
-}
-
 .emotion-5 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  font-size: 14px;
+  font-size: 12px;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   line-height: 1;
+  white-space: nowrap;
 }
 
 .emotion-5:last-child {
@@ -200,7 +181,35 @@ exports[`PageNewObservation should render correctly 1`] = `
   display: none;
 }
 
-.emotion-7 {
+.emotion-3:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+.emotion-4 {
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+.emotion-9 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 12px;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.emotion-9:last-child {
+  color: var(--theme-ui-colors-text,#37383c);
+}
+
+.emotion-9:last-child > .splitter {
+  display: none;
+}
+
+.emotion-11 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -264,23 +273,23 @@ exports[`PageNewObservation should render correctly 1`] = `
   margin-right: 16px;
 }
 
-.emotion-7:disabled {
+.emotion-11:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-7:hover,
-.emotion-7:focus {
+.emotion-11:hover,
+.emotion-11:focus {
   background-color: var(--theme-ui-colors-primaryDark,#00a06d);
   outline: none;
 }
 
-.emotion-7:hover:disabled,
-.emotion-7:focus:disabled {
+.emotion-11:hover:disabled,
+.emotion-11:focus:disabled {
   background-color: var(--theme-ui-colors-primary,#00e399);
 }
 
-.emotion-34 {
+.emotion-38 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -292,7 +301,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   max-width: 640px;
 }
 
-.emotion-13 {
+.emotion-17 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -318,14 +327,28 @@ exports[`PageNewObservation should render correctly 1`] = `
   flex-direction: column;
 }
 
-.emotion-10 {
+.emotion-14 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   padding-bottom: 4px;
 }
 
-.emotion-11 {
+.emotion-16 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-15 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -353,35 +376,35 @@ exports[`PageNewObservation should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-11:hover,
-.emotion-11:focus {
+.emotion-15:hover,
+.emotion-15:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-11::-webkit-input-placeholder {
+.emotion-15::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-11::-moz-placeholder {
+.emotion-15::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-11:-ms-input-placeholder {
+.emotion-15:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-11::placeholder {
+.emotion-15::placeholder {
   font-style: italic;
 }
 
-.emotion-11:disabled {
+.emotion-15:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
-.emotion-16 {
+.emotion-20 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -406,7 +429,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   flex-direction: column;
 }
 
-.emotion-15 {
+.emotion-19 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -434,33 +457,33 @@ exports[`PageNewObservation should render correctly 1`] = `
   margin-bottom: 16px;
 }
 
-.emotion-15:hover,
-.emotion-15:focus {
+.emotion-19:hover,
+.emotion-19:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-15::-webkit-input-placeholder {
+.emotion-19::-webkit-input-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-15::-moz-placeholder {
+.emotion-19::-moz-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-15:-ms-input-placeholder {
+.emotion-19:-ms-input-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-15::placeholder {
+.emotion-19::placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-17 {
+.emotion-21 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -474,12 +497,12 @@ exports[`PageNewObservation should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-17 {
+  .emotion-21 {
     font-size: 14px;
   }
 }
 
-.emotion-18 {
+.emotion-22 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -493,7 +516,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   flex-wrap: wrap;
 }
 
-.emotion-25 {
+.emotion-29 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -504,7 +527,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-20 {
+.emotion-24 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -532,35 +555,35 @@ exports[`PageNewObservation should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-20:hover,
-.emotion-20:focus {
+.emotion-24:hover,
+.emotion-24:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-20::-webkit-input-placeholder {
+.emotion-24::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-20::-moz-placeholder {
+.emotion-24::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-20:-ms-input-placeholder {
+.emotion-24:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-20::placeholder {
+.emotion-24::placeholder {
   font-style: italic;
 }
 
-.emotion-20:disabled {
+.emotion-24:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
-.emotion-24 {
+.emotion-28 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -624,25 +647,25 @@ exports[`PageNewObservation should render correctly 1`] = `
   flex-shrink: 0;
 }
 
-.emotion-24:disabled {
+.emotion-28:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-24:hover,
-.emotion-24:focus {
+.emotion-28:hover,
+.emotion-28:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-24:hover:disabled,
-.emotion-24:focus:disabled {
+.emotion-28:hover:disabled,
+.emotion-28:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-23 {
+.emotion-27 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -656,7 +679,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-33 {
+.emotion-37 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -673,14 +696,14 @@ exports[`PageNewObservation should render correctly 1`] = `
   flex-wrap: wrap;
 }
 
-.emotion-32 {
+.emotion-36 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   margin-bottom: 16px;
 }
 
-.emotion-31 {
+.emotion-35 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -714,11 +737,11 @@ exports[`PageNewObservation should render correctly 1`] = `
   border-width: 1px;
 }
 
-.emotion-31:hover {
+.emotion-35:hover {
   border-color: var(--theme-ui-colors-primary,#00e399);
 }
 
-.emotion-28 {
+.emotion-32 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -745,29 +768,29 @@ exports[`PageNewObservation should render correctly 1`] = `
   display: none;
 }
 
-.emotion-28:hover,
-.emotion-28:focus {
+.emotion-32:hover,
+.emotion-32:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-28::-webkit-input-placeholder {
+.emotion-32::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-28::-moz-placeholder {
+.emotion-32::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-28:-ms-input-placeholder {
+.emotion-32:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-28::placeholder {
+.emotion-32::placeholder {
   font-style: italic;
 }
 
-.emotion-28:disabled {
+.emotion-32:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
@@ -775,15 +798,16 @@ exports[`PageNewObservation should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-35"
+    class="emotion-39"
   >
     <div
-      class="emotion-9"
+      class="emotion-13"
     >
       <div
-        class="emotion-8"
+        class="emotion-12"
       >
         <a
+          class="emotion-2"
           href="/dashboard/students/overview?studentId="
         >
           <button
@@ -795,23 +819,38 @@ exports[`PageNewObservation should render correctly 1`] = `
           </button>
         </a>
         <div
-          class="emotion-6"
+          class="emotion-10"
         >
           <a
-            class="emotion-4"
+            class="emotion-5"
+            href="/dashboard/students"
+          >
+            <span
+              class="emotion-3"
+            >
+              Students
+            </span>
+            <span
+              class="splitter emotion-4"
+            >
+              /
+            </span>
+          </a>
+          <a
+            class="emotion-5"
             href="/dashboard/students/overview?studentId="
           >
             <span
-              class="emotion-2"
+              class="emotion-3"
             />
             <span
-              class="splitter emotion-3"
+              class="splitter emotion-4"
             >
               /
             </span>
           </a>
           <div
-            class="emotion-5"
+            class="emotion-9"
           >
             New Observation
             <span
@@ -822,7 +861,7 @@ exports[`PageNewObservation should render correctly 1`] = `
           </div>
         </div>
         <button
-          class="emotion-7"
+          class="emotion-11"
           disabled=""
         >
           Save
@@ -830,64 +869,64 @@ exports[`PageNewObservation should render correctly 1`] = `
       </div>
     </div>
     <div
-      class="emotion-34"
+      class="emotion-38"
     >
       <label
-        class="emotion-13"
+        class="emotion-17"
       >
         <div
-          class="emotion-10"
+          class="emotion-14"
         >
           Short Description*
         </div>
         <div
-          class="emotion-6"
+          class="emotion-16"
         >
           <input
-            class="emotion-11"
+            class="emotion-15"
             placeholder="What have you found?"
             value=""
           />
         </div>
       </label>
       <label
-        class="emotion-16"
+        class="emotion-20"
       >
         <div
-          class="emotion-10"
+          class="emotion-14"
         >
           Details
         </div>
         <textarea
           aria-label="Details"
-          class="emotion-15"
+          class="emotion-19"
           placeholder="Tell us what you observed"
         />
       </label>
       <p
-        class="emotion-17"
+        class="emotion-21"
       >
         Related Area
       </p>
       <div
-        class="emotion-18"
+        class="emotion-22"
       />
       <div
-        class="emotion-25"
+        class="emotion-29"
       >
         <label
-          class="emotion-13"
+          class="emotion-17"
         >
           <div
-            class="emotion-10"
+            class="emotion-14"
           >
             Event Time
           </div>
           <div
-            class="emotion-6"
+            class="emotion-16"
           >
             <input
-              class="emotion-20"
+              class="emotion-24"
               disabled=""
               placeholder="Not set"
               value="27 June '18"
@@ -895,41 +934,41 @@ exports[`PageNewObservation should render correctly 1`] = `
           </div>
         </label>
         <button
-          class="emotion-24"
+          class="emotion-28"
           data-cy="Event Time"
         >
           <div
-            class="emotion-23"
+            class="emotion-27"
           />
         </button>
       </div>
       <p
-        class="emotion-17"
+        class="emotion-21"
       >
         Attached Images
       </p>
       <div
-        class="emotion-33"
+        class="emotion-37"
       >
         <div
-          class="emotion-32"
+          class="emotion-36"
         >
           <label
-            class="emotion-31"
+            class="emotion-35"
           >
             <div
-              class="emotion-23"
+              class="emotion-27"
             />
             Image
             <label
-              class="emotion-13"
+              class="emotion-17"
             >
               <div
-                class="emotion-6"
+                class="emotion-16"
               >
                 <input
                   accept="image/*"
-                  class="emotion-28"
+                  class="emotion-32"
                   type="file"
                   value=""
                 />

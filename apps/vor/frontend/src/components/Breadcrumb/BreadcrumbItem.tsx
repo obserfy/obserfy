@@ -8,9 +8,10 @@ interface Props {
 }
 export const BreadcrumbItem: FC<Props> = ({ to, children }) => {
   const sx: SxStyleProp = {
-    fontSize: 1,
+    fontSize: 0,
     color: "textMediumEmphasis",
     lineHeight: 1,
+    whiteSpace: "nowrap",
     "&:last-child": {
       color: "text",
       "& > .splitter": {

@@ -8,12 +8,11 @@ import Typography from "../Typography/Typography"
 import { useGetStudent } from "../../api/useGetStudent"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import usePostNewObservation from "../../api/usePostNewObservation"
-import { Link, navigate } from "../Link/Link"
-import { STUDENT_OVERVIEW_PAGE_URL } from "../../routes"
+import { navigate } from "../Link/Link"
+import { STUDENT_OVERVIEW_PAGE_URL, STUDENTS_URL } from "../../routes"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import Icon from "../Icon/Icon"
 import usePostNewStudentImage from "../../api/students/usePostNewStudentImage"
-import { ReactComponent as Arrow } from "../../icons/arrow-back.svg"
 import Breadcrumb from "../Breadcrumb/Breadcrumb"
 import BreadcrumbItem from "../Breadcrumb/BreadcrumbItem"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
@@ -21,6 +20,7 @@ import DateInput from "../DateInput/DateInput"
 import dayjs from "../../dayjs"
 import { useGetCurriculumAreas } from "../../api/useGetCurriculumAreas"
 import Chip from "../Chip/Chip"
+import BackButton from "../BackButton/BackButton"
 
 interface Props {
   studentId: string
@@ -67,12 +67,9 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
         }}
       >
         <Flex sx={{ alignItems: "center", maxWidth: "maxWidth.sm" }} m="auto">
-          <Link to={STUDENT_OVERVIEW_PAGE_URL(studentId)}>
-            <Button mx={2} p={1} variant="secondary">
-              <Icon as={Arrow} sx={{ fill: "textMediumEmphasis" }} />
-            </Button>
-          </Link>
+          <BackButton to={STUDENT_OVERVIEW_PAGE_URL(studentId)} />
           <Breadcrumb>
+            <BreadcrumbItem to={STUDENTS_URL}>Students</BreadcrumbItem>
             <BreadcrumbItem to={STUDENT_OVERVIEW_PAGE_URL(studentId)}>
               {student.data?.name.split(" ")[0]}
             </BreadcrumbItem>

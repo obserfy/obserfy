@@ -1,6 +1,7 @@
 import { Theme } from "theme-ui"
 
 const theme: Theme = {
+  breakpoints: ["40em", "52em", "64em", "72em"],
   useColorSchemeMediaQuery: true,
   colors: {
     // Base color
