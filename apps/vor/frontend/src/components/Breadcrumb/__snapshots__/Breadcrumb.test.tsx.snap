@@ -23,7 +23,6 @@ exports[`Breadcrumb should render correctly 1`] = `
   -ms-flex-align: center;
   align-items: center;
   overflow-x: auto;
-  overflow-y: hidden;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -31,14 +30,14 @@ exports[`Breadcrumb should render correctly 1`] = `
 }
 
 .emotion-2 {
+  display: inline-block;
   font-size: 12px;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  line-height: 1;
   white-space: nowrap;
 }
 
 .emotion-2:last-child {
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-textPrimary,#027c5b);
 }
 
 .emotion-2:last-child > .splitter {

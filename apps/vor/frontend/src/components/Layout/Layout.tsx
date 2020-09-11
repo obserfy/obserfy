@@ -21,6 +21,9 @@ import StudentsList from "../StudentsList/StudentsList"
 export const Layout: FC = ({ children }) => {
   useGetUserProfile()
 
+  const studentSubroute = useMatch("/dashboard/students/*")
+  const breakpoint = useBreakpointIndex({ defaultIndex: 2 })
+
   if (getSchoolId() === SCHOOL_ID_UNDEFINED_PLACEHOLDER) {
     navigate("/choose-school")
   }
@@ -30,11 +33,12 @@ export const Layout: FC = ({ children }) => {
       <Navbar />
       <UpdateNotification />
       <Flex pl={[0, 64]} pb={[48, 0]}>
-        <StudentsSubrouteSidebar />
+        {studentSubroute && breakpoint > 1 && <StudentsSubrouteSidebar />}
         <Box
           as="main"
           sx={{ backgroundColor: "background", width: "100%" }}
           mb="env(safe-area-inset-bottom)"
+          ml={studentSubroute ? [0, 0, 300, 300, 420] : 0}
         >
           {children}
         </Box>
@@ -83,33 +87,24 @@ const UpdateNotification = () => {
   )
 }
 
-const StudentsSubrouteSidebar = () => {
-  const studentSubroute = useMatch("/dashboard/students/*")
-  const breakpoint = useBreakpointIndex({ defaultIndex: 2 })
-
-  if (studentSubroute && breakpoint > 1) {
-    return (
-      <Box
-        pb={5}
-        sx={{
-          position: "sticky",
-          top: 0,
-          flexShrink: 0,
-          borderRightWidth: 1,
-          borderRightStyle: "solid",
-          borderRightColor: "border",
-          height: "100vh",
-          overflowY: "auto",
-          width: [undefined, 300, 300, 300, 420],
-          display: ["none", "none", "block"],
-        }}
-      >
-        <StudentsList />
-      </Box>
-    )
-  }
-
-  return <></>
-}
+const StudentsSubrouteSidebar = () => (
+  <Box
+    pb={5}
+    sx={{
+      position: "fixed",
+      top: 0,
+      flexShrink: 0,
+      borderRightWidth: 1,
+      borderRightStyle: "solid",
+      borderRightColor: "border",
+      height: "100vh",
+      overflowY: "auto",
+      width: [undefined, 300, 300, 300, 420],
+      display: ["none", "none", "block"],
+    }}
+  >
+    <StudentsList />
+  </Box>
+)
 
 export default Layout

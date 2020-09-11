@@ -5,9 +5,7 @@ export interface BreadcrumbProps {
   sx?: SxStyleProp
 }
 export const Breadcrumb: FC<BreadcrumbProps> = ({ sx, children }) => (
-  <Flex
-    sx={{ ...sx, alignItems: "center", overflowX: "auto", overflowY: "hidden" }}
-  >
+  <Flex sx={{ ...sx, alignItems: "center", overflowX: "auto" }}>
     {children}
   </Flex>
 )
