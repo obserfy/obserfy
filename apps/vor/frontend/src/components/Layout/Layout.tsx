@@ -33,12 +33,7 @@ export const Layout: FC = ({ children }) => {
         <StudentsSubrouteSidebar />
         <Box
           as="main"
-          sx={{
-            backgroundColor: "background",
-            width: "100%",
-            height: [undefined, undefined, "100vh"],
-            overflowY: [undefined, undefined, "scroll"],
-          }}
+          sx={{ backgroundColor: "background", width: "100%" }}
           mb="env(safe-area-inset-bottom)"
         >
           {children}
@@ -60,10 +55,10 @@ const UpdateNotification = () => {
     }
   }, [])
 
-  if (!updateAvailable) return <div />
+  if (!updateAvailable) return <></>
 
   return (
-    <Box sx={{ backgroundColor: "primary", width: "100%" }}>
+    <Box py={2} sx={{ backgroundColor: "primary", width: "100%" }}>
       <Typography.Body
         color="onPrimary"
         sx={{ fontSize: 1, textAlign: "center" }}
@@ -95,14 +90,17 @@ const StudentsSubrouteSidebar = () => {
   if (studentSubroute && breakpoint > 1) {
     return (
       <Box
+        pb={5}
         sx={{
+          position: "sticky",
+          top: 0,
           flexShrink: 0,
           borderRightWidth: 1,
           borderRightStyle: "solid",
           borderRightColor: "border",
           height: "100vh",
           overflowY: "auto",
-          width: [undefined, 300, 300, 400],
+          width: [undefined, 300],
           display: ["none", "none", "block"],
         }}
       >
