@@ -23,7 +23,7 @@
     "imagemin-optipng": "8.0.0",
     "imagemin-svgo": "8.0.0",
     "img-loader": "3.0.1",
-    "lqip-loader": "2.2.0",
+    "lqip-loader": "2.2.1",
     "minio": "7.0.16",
     "next": "9.5.3",
     "next-compose-plugins": "2.2.0",
