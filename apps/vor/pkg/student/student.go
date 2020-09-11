@@ -436,6 +436,10 @@ func postObservation(s rest.Server, store Store, imgproxyClient *imgproxy.Client
 }
 
 func getObservation(s rest.Server, store Store) http.Handler {
+	type area struct {
+		Id   string `json:"id"`
+		Name string `json:"name"`
+	}
 	type observation struct {
 		Id          string    `json:"id"`
 		StudentName string    `json:"studentName"`
@@ -446,6 +450,7 @@ func getObservation(s rest.Server, store Store) http.Handler {
 		ShortDesc   string    `json:"shortDesc"`
 		CreatedDate time.Time `json:"createdDate"`
 		EventTime   time.Time `json:"eventTime,omitempty"`
+		Area        *area     `json:"area,omitempty"`
 	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		id := chi.URLParam(r, "studentId")
@@ -468,6 +473,12 @@ func getObservation(s rest.Server, store Store) http.Handler {
 			responseBody[i].ShortDesc = o.ShortDesc
 			responseBody[i].EventTime = o.EventTime
 			responseBody[i].CreatedDate = o.CreatedDate
+			if o.AreaId != uuid.Nil {
+				responseBody[i].Area = &area{
+					Id:   o.Area.Id,
+					Name: o.Area.Name,
+				}
+			}
 			if o.CreatorId != "" {
 				responseBody[i].CreatorId = o.CreatorId
 				responseBody[i].CreatorName = o.Creator.Name

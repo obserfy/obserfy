@@ -119,6 +119,7 @@ func (s StudentStore) GetObservations(studentId string) ([]Observation, error) {
 		Where("student_id=?", studentId).
 		Relation("Student").
 		Relation("Creator").
+		Relation("Area").
 		Order("created_date").
 		Select(); err != nil {
 		return nil, err
