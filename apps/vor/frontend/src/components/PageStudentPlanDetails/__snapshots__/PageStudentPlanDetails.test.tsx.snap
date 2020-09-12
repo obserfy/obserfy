@@ -7,7 +7,7 @@ exports[`PageStudentPlanDetails should render correctly 1`] = `
   }
 
   50% {
-    background-color: rgba(165,165,165,0.1);
+    background-color: rgba(165,165,165,0.2);
   }
 
   100% {
@@ -21,7 +21,7 @@ exports[`PageStudentPlanDetails should render correctly 1`] = `
   }
 
   50% {
-    background-color: rgba(165,165,165,0.1);
+    background-color: rgba(165,165,165,0.2);
   }
 
   100% {
@@ -35,7 +35,7 @@ exports[`PageStudentPlanDetails should render correctly 1`] = `
   }
 
   50% {
-    background-color: rgba(165,165,165,0.1);
+    background-color: rgba(165,165,165,0.2);
   }
 
   100% {
@@ -282,7 +282,7 @@ exports[`PageStudentPlanDetails should render correctly 1`] = `
       >
         <a
           class="emotion-2"
-          href="/dashboard/students/plans?studentId=asdfasfd&date=2020-09-11T19:43:28.227Z"
+          href="/dashboard/students/plans?studentId=asdfasfd&date=2020-09-12T09:37:02.519Z"
         >
           <button
             class="emotion-1"
@@ -325,7 +325,7 @@ exports[`PageStudentPlanDetails should render correctly 1`] = `
           </a>
           <a
             class="emotion-5"
-            href="/dashboard/students/plans?studentId=asdfasfd&date=2020-09-11T19:43:28.227Z"
+            href="/dashboard/students/plans?studentId=asdfasfd&date=2020-09-12T09:37:02.520Z"
           >
             <span
               class="emotion-3"

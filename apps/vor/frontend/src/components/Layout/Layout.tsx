@@ -31,7 +31,6 @@ export const Layout: FC = ({ children }) => {
   return (
     <>
       <Navbar />
-      <UpdateNotification />
       <Flex pl={[0, 64]} pb={[48, 0]}>
         {studentSubroute && breakpoint > 1 && <StudentsSubrouteSidebar />}
         <Box
@@ -40,6 +39,7 @@ export const Layout: FC = ({ children }) => {
           mb="env(safe-area-inset-bottom)"
           ml={studentSubroute ? [0, 0, 300, 300, 420] : 0}
         >
+          <UpdateNotification />
           {children}
         </Box>
       </Flex>
