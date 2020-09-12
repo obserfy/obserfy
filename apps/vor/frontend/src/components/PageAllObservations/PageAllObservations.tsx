@@ -4,8 +4,7 @@ import {
   Observation,
   useGetStudentObservations,
 } from "../../api/useGetStudentObservations"
-import BackNavigation from "../BackNavigation/BackNavigation"
-import { STUDENT_OVERVIEW_PAGE_URL } from "../../routes"
+import { STUDENT_OVERVIEW_PAGE_URL, STUDENTS_URL } from "../../routes"
 import { categories } from "../../categories"
 import Chip from "../Chip/Chip"
 import Typography from "../Typography/Typography"
@@ -15,6 +14,9 @@ import DeleteObservationDialog from "../DeleteObservationDialog/DeleteObservatio
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import ObservationCard from "../ObservationCard/ObservationCard"
 import dayjs from "../../dayjs"
+import BackButton from "../BackButton/BackButton"
+import Breadcrumb from "../Breadcrumb/Breadcrumb"
+import BreadcrumbItem from "../Breadcrumb/BreadcrumbItem"
 
 const allCategory = {
   id: "-1",
@@ -58,32 +60,17 @@ export const PageAllObservations: FC<Props> = ({ studentId }) => {
   return (
     <>
       <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto">
-        <BackNavigation
-          to={STUDENT_OVERVIEW_PAGE_URL(studentId)}
-          text="Student Details"
-        />
-        {student.status === "loading" && !student.data && (
-          <Box m={3}>
-            <LoadingPlaceholder sx={{ width: "100%", height: "5rem" }} />
-            <LoadingPlaceholder sx={{ width: "90%%", height: "5rem" }} mt={2} />
-          </Box>
-        )}
-        <Box m={3} mb={4}>
-          <Typography.H5 sx={{ wordWrap: "break-word" }}>
-            <Box as="span" color="textDisabled">
-              {student.data?.name}
-            </Box>
-            {` Observations`}
-          </Typography.H5>
-        </Box>
-        <Flex
-          pl={3}
-          pr={2}
-          py={2}
-          sx={{
-            flexWrap: "wrap",
-          }}
-        >
+        <Flex sx={{ height: 48, alignItems: "center" }}>
+          <BackButton to={STUDENT_OVERVIEW_PAGE_URL(studentId)} />
+          <Breadcrumb>
+            <BreadcrumbItem to={STUDENTS_URL}>Students</BreadcrumbItem>
+            <BreadcrumbItem to={STUDENT_OVERVIEW_PAGE_URL(studentId)}>
+              {student.data?.name.split(" ")[0]}
+            </BreadcrumbItem>
+            <BreadcrumbItem>All Observations</BreadcrumbItem>
+          </Breadcrumb>
+        </Flex>
+        <Flex pl={3} pr={2} py={2} sx={{ flexWrap: "wrap" }}>
           {[allCategory, ...categories].map((category) => {
             let observationCount = 0
             if (category.id === allCategory.id) {
@@ -107,25 +94,45 @@ export const PageAllObservations: FC<Props> = ({ studentId }) => {
           })}
         </Flex>
         {observations.status === "loading" && !observations.data && (
-          <Box mb={2}>
+          <Box mb={2} pt={4}>
             <LoadingPlaceholder
-              sx={{ width: "100%", height: "20rem" }}
+              sx={{
+                width: "100%",
+                height: "5rem",
+                borderRadius: [0, "default"],
+              }}
               mb={3}
             />
             <LoadingPlaceholder
-              sx={{ width: "100%", height: "20rem" }}
+              sx={{
+                width: "100%",
+                height: "5rem",
+                borderRadius: [0, "default"],
+              }}
               mb={3}
             />
             <LoadingPlaceholder
-              sx={{ width: "100%", height: "20rem" }}
+              sx={{
+                width: "100%",
+                height: "5rem",
+                borderRadius: [0, "default"],
+              }}
               mb={3}
             />
             <LoadingPlaceholder
-              sx={{ width: "100%", height: "20rem" }}
+              sx={{
+                width: "100%",
+                height: "5rem",
+                borderRadius: [0, "default"],
+              }}
               mb={3}
             />
             <LoadingPlaceholder
-              sx={{ width: "100%", height: "20rem" }}
+              sx={{
+                width: "100%",
+                height: "5rem",
+                borderRadius: [0, "default"],
+              }}
               mb={3}
             />
           </Box>
@@ -194,9 +201,8 @@ const ObservationList: FC<{
                 textAlign: "center",
                 fontSize: 1,
               }}
-              color="textMediumEmphasis"
             >
-              {dayjs(date).format("D MMMM 'YY")}
+              {dayjs(date).format("D MMMM YYYY")}
             </Typography.Body>
             {observations
               .filter(({ createdDate }) =>
