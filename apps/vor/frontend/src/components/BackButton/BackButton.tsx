@@ -9,7 +9,7 @@ export interface BackButtonProps {
   to: string
 }
 export const BackButton: FC<BackButtonProps> = ({ to }) => (
-  <Link to={to} sx={{ m: 2, flexShrink: 0 }} cy-data="back-button">
+  <Link to={to} sx={{ m: 2, flexShrink: 0 }} data-cy="back-button">
     <Button p={1} variant="secondary">
       <Icon as={Arrow} sx={{ fill: "textMediumEmphasis" }} />
     </Button>
