@@ -116,6 +116,7 @@ exports[`BackButton should render correctly 1`] = `
     <a
       aria-current="page"
       class="emotion-2"
+      data-cy="back-button"
       href="/"
     >
       <button

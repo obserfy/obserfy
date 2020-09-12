@@ -1044,6 +1044,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
       >
         <a
           class="emotion-2"
+          data-cy="back-button"
           href="/dashboard/students/plans?studentId=adsfasdfsa&date=1996-05-26T00:00:00.000Z"
         >
           <button

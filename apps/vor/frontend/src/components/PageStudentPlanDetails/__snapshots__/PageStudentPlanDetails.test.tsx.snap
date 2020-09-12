@@ -282,6 +282,7 @@ exports[`PageStudentPlanDetails should render correctly 1`] = `
       >
         <a
           class="emotion-2"
+          data-cy="back-button"
           href="/dashboard/students/plans?studentId=asdfasfd&date=2018-06-27T00:00:00.000Z"
         >
           <button

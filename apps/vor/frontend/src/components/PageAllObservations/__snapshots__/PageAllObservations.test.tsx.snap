@@ -299,6 +299,7 @@ exports[`PageAllObservations should render correctly 1`] = `
       >
         <a
           class="emotion-2"
+          data-cy="back-button"
           href="/dashboard/students/overview?studentId=sadfasdf"
         >
           <button
