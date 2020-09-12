@@ -183,18 +183,20 @@ const StudentListItem: FC<{
           "&:hover": { backgroundColor: "primaryLight" },
         }}
       >
-        {profileImageUrl ? (
-          <Image
-            src={profileImageUrl}
-            sx={{
-              width: 32,
-              height: 32,
-              borderRadius: "circle",
-            }}
-          />
-        ) : (
-          <StudentPicturePlaceholder />
-        )}
+        <Box sx={{ flexShrink: 0, width: 32, height: 32 }}>
+          {profileImageUrl ? (
+            <Image
+              src={profileImageUrl}
+              sx={{
+                width: 32,
+                height: 32,
+                borderRadius: "circle",
+              }}
+            />
+          ) : (
+            <StudentPicturePlaceholder />
+          )}
+        </Box>
         <Box ml={3} py={1}>
           <Typography.Body sx={{ lineHeight: 1.6 }}>{name}</Typography.Body>
           <Flex sx={{ flexWrap: "wrap" }}>

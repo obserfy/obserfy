@@ -66,6 +66,7 @@ func (s StudentStore) InsertObservation(studentId string, creatorId string, long
 			WherePK().
 			Relation("Images").
 			Relation("Creator").
+			Relation("Area").
 			Select(); err != nil {
 			return richErrors.Wrap(err, "failed to get complete observation data")
 		}
@@ -118,6 +119,7 @@ func (s StudentStore) GetObservations(studentId string) ([]Observation, error) {
 		Where("student_id=?", studentId).
 		Relation("Student").
 		Relation("Creator").
+		Relation("Area").
 		Order("created_date").
 		Select(); err != nil {
 		return nil, err

@@ -1,0 +1,194 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TranslucentBar should render correctly 1`] = `
+.emotion-21 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 16px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-21 {
+    font-size: 20px;
+  }
+}
+
+.emotion-20 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+}
+
+.emotion-4 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  background-color: var(--theme-ui-colors-surfaceBlurNonTransparent,rgba(255,255,255));
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+@supports (-webkit-backdrop-filter:blur(20px)) or (backdrop-filter:blur(20px)) {
+  .emotion-4 {
+    background-color: var(--theme-ui-colors-surfaceBlurTransparent,rgba(255,255,255,0.6));
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: backdrop-filter;
+  }
+}
+
+.emotion-3 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-box-pack: space-around;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: space-around;
+  justify-content: space-around;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-0 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin: 16px;
+}
+
+.emotion-9 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-5 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  background-color: red;
+  height: 300px;
+  width: 100px;
+}
+
+.emotion-6 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  background-color: yellow;
+  height: 300px;
+  width: 100px;
+}
+
+.emotion-7 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  background-color: green;
+  height: 300px;
+  width: 100px;
+}
+
+.emotion-8 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  background-color: blue;
+  height: 300px;
+  width: 100px;
+}
+
+<div>
+  <div
+    class="emotion-21"
+  >
+    <div
+      class="emotion-20"
+    >
+      <div
+        class="emotion-4"
+      >
+        <div
+          class="emotion-3"
+        >
+          <div
+            class="emotion-0"
+          >
+            One
+          </div>
+          <div
+            class="emotion-0"
+          >
+            Two
+          </div>
+          <div
+            class="emotion-0"
+          >
+            Three
+          </div>
+        </div>
+      </div>
+      <div
+        class="emotion-9"
+      >
+        <div
+          class="emotion-5"
+        />
+        <div
+          class="emotion-6"
+        />
+        <div
+          class="emotion-7"
+        />
+        <div
+          class="emotion-8"
+        />
+      </div>
+      <div
+        class="emotion-9"
+      >
+        <div
+          class="emotion-8"
+        />
+        <div
+          class="emotion-5"
+        />
+        <div
+          class="emotion-7"
+        />
+        <div
+          class="emotion-6"
+        />
+      </div>
+      <div
+        class="emotion-9"
+      >
+        <div
+          class="emotion-5"
+        />
+        <div
+          class="emotion-6"
+        />
+        <div
+          class="emotion-8"
+        />
+        <div
+          class="emotion-7"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

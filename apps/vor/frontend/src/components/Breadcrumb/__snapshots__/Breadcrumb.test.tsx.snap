@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Breadcrumb should render correctly 1`] = `
+.emotion-10 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 16px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-10 {
+    font-size: 20px;
+  }
+}
+
+.emotion-9 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  overflow-x: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-2 {
+  display: inline-block;
+  font-size: 12px;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  white-space: nowrap;
+}
+
+.emotion-2:last-child {
+  color: var(--theme-ui-colors-textPrimary,#027c5b);
+}
+
+.emotion-2:last-child > .splitter {
+  display: none;
+}
+
+.emotion-0:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+.emotion-1 {
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+<div>
+  <div
+    class="emotion-10"
+  >
+    <div
+      class="emotion-9"
+    >
+      <a
+        aria-current="page"
+        class="emotion-2"
+        href="/"
+      >
+        <span
+          class="emotion-0"
+        >
+          Students
+        </span>
+        <span
+          class="splitter emotion-1"
+        >
+          /
+        </span>
+      </a>
+      <a
+        aria-current="page"
+        class="emotion-2"
+        href="/"
+      >
+        <span
+          class="emotion-0"
+        >
+          Joyce
+        </span>
+        <span
+          class="splitter emotion-1"
+        >
+          /
+        </span>
+      </a>
+      <a
+        aria-current="page"
+        class="emotion-2"
+        href="/"
+      >
+        <span
+          class="emotion-0"
+        >
+          Observations
+        </span>
+        <span
+          class="splitter emotion-1"
+        >
+          /
+        </span>
+      </a>
+    </div>
+  </div>
+</div>
+`;

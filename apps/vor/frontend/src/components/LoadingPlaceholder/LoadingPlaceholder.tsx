@@ -9,7 +9,7 @@ const fading = keyframes`
   }
   50% {
     background-color: 
-    rgba(165, 165, 165, 0.1);
+    rgba(165, 165, 165, 0.2);
   }
   100% {
     background-color: 

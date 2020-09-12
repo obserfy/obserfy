@@ -20,7 +20,10 @@ import {
 import Pill from "../Pill/Pill"
 import StudentMaterialProgressDialog from "../StudentMaterialProgressDialog/StudentMaterialProgressDialog"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
-import { STUDENT_OVERVIEW_PAGE_URL } from "../../routes"
+import { STUDENT_OVERVIEW_PAGE_URL, STUDENTS_URL } from "../../routes"
+import BackButton from "../BackButton/BackButton"
+import Breadcrumb from "../Breadcrumb/Breadcrumb"
+import BreadcrumbItem from "../Breadcrumb/BreadcrumbItem"
 
 interface Props {
   studentId: string
@@ -71,15 +74,16 @@ export const PageStudentProgress: FC<Props> = ({ areaId, studentId }) => {
   return (
     <>
       <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={5}>
-        {backNavigation}
-        <Box m={3} mb={4}>
-          <Typography.H5 sx={{ wordWrap: "break-word" }}>
-            <Box as="span" color="textDisabled">
-              {student.data?.name}
-            </Box>
-            {` ${area.data?.name} Progress`}
-          </Typography.H5>
-        </Box>
+        <Flex sx={{ height: 48, alignItems: "center" }}>
+          <BackButton to={STUDENT_OVERVIEW_PAGE_URL(studentId)} />
+          <Breadcrumb>
+            <BreadcrumbItem to={STUDENTS_URL}>Students</BreadcrumbItem>
+            <BreadcrumbItem to={STUDENT_OVERVIEW_PAGE_URL(studentId)}>
+              {student.data?.name.split(" ")[0]}
+            </BreadcrumbItem>
+            <BreadcrumbItem>{` ${area.data?.name} Progress`}</BreadcrumbItem>
+          </Breadcrumb>
+        </Flex>
         {subjects.data?.map((subject) => (
           <Card
             mb={4}
