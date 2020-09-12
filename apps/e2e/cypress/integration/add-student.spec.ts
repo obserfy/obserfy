@@ -97,7 +97,7 @@ describe("test adding new student", () => {
     const newGuardianName = faker.name.firstName()
     cy.contains("Guardian Name").type(newGuardianName)
     cy.contains("Create").click()
-    cy.contains("Save").click()
+    cy.get("[data-cy=save-guardian]").click()
 
     cy.contains(newGuardianName).should("be.visible")
 

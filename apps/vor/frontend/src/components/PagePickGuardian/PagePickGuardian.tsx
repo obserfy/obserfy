@@ -86,6 +86,7 @@ export const PagePickGuardian: FC = () => {
                 Cancel
               </Button>
               <Button
+                data-cy="save-guardian"
                 disabled={name === ""}
                 onClick={async () => {
                   const result = await mutate({
