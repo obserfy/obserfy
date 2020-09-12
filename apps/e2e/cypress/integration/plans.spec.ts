@@ -76,7 +76,7 @@ describe("Test lesson plan features", () => {
     cy.contains("Save").click()
     cy.contains(secondDescription).should("be.visible")
 
-    cy.contains("All plans").click()
+    cy.get("[cy-data=back-button]").click()
     cy.contains(secondName).should("be.visible")
 
     // Regression test, should be able to delete class
