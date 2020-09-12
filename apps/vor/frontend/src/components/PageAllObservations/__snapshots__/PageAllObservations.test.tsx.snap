@@ -15,7 +15,7 @@ exports[`PageAllObservations should render correctly 1`] = `
   }
 }
 
-.emotion-35 {
+.emotion-22 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -23,12 +23,12 @@ exports[`PageAllObservations should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-35 {
+  .emotion-22 {
     font-size: 20px;
   }
 }
 
-.emotion-34 {
+.emotion-21 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -204,7 +204,7 @@ exports[`PageAllObservations should render correctly 1`] = `
   display: none;
 }
 
-.emotion-26 {
+.emotion-14 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -231,7 +231,7 @@ exports[`PageAllObservations should render correctly 1`] = `
   padding-right: 8px;
   padding-top: 4px;
   padding-bottom: 4px;
-  background-color: var(--theme-ui-colors-surface,#fff);
+  background-color: var(--theme-ui-colors-primary,#00e399);
   display: inline-block;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -246,7 +246,7 @@ exports[`PageAllObservations should render correctly 1`] = `
 }
 
 .emotion-13:hover {
-  background-color: var(--theme-ui-colors-primaryLightest,rgba(0,120,86,0.05));
+  background-color: var(--theme-ui-colors-primary,#00e399);
 }
 
 .emotion-12 {
@@ -254,66 +254,14 @@ exports[`PageAllObservations should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
-  text-rendering: optimizeLegibility;
-  line-height: 1.5;
-  color: var(--theme-ui-colors-text,#37383c);
   font-size: 14px;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-12 {
-    font-size: 14px;
-  }
-}
-
-.emotion-15 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  margin-right: 8px;
-  margin-bottom: 8px;
-  padding-left: 8px;
-  padding-right: 8px;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  background-color: #b39ddb;
-  display: inline-block;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  border-radius: 6px;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  border-width: 1px;
-  border-style: solid;
-  white-space: nowrap;
-}
-
-.emotion-15:hover {
-  background-color: #b39ddb;
-}
-
-.emotion-14 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   color: var(--theme-ui-colors-onPrimary,#000);
   font-size: 14px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-14 {
-    font-size: 14px;
-  }
-}
-
-.emotion-32 {
+.emotion-20 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -321,7 +269,7 @@ exports[`PageAllObservations should render correctly 1`] = `
   padding-top: 32px;
 }
 
-.emotion-27 {
+.emotion-15 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -334,30 +282,17 @@ exports[`PageAllObservations should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-27 {
+  .emotion-15 {
     border-radius: 6px;
-  }
-}
-
-.emotion-33 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  margin: 0;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-33 {
-    margin: 16px;
   }
 }
 
 <div>
   <div
-    class="emotion-35"
+    class="emotion-22"
   >
     <div
-      class="emotion-34"
+      class="emotion-21"
     >
       <div
         class="emotion-11"
@@ -418,7 +353,7 @@ exports[`PageAllObservations should render correctly 1`] = `
         </div>
       </div>
       <div
-        class="emotion-26"
+        class="emotion-14"
       >
         <div
           class="emotion-13"
@@ -426,86 +361,29 @@ exports[`PageAllObservations should render correctly 1`] = `
           <p
             class="emotion-12"
           >
-            All (0)
+            all (0)
           </p>
         </div>
+      </div>
+      <div
+        class="emotion-20"
+      >
         <div
           class="emotion-15"
-        >
-          <p
-            class="emotion-14"
-          >
-            Others (0)
-          </p>
-        </div>
-        <div
-          class="emotion-13"
-        >
-          <p
-            class="emotion-12"
-          >
-            Cultural (0)
-          </p>
-        </div>
-        <div
-          class="emotion-13"
-        >
-          <p
-            class="emotion-12"
-          >
-            Language (0)
-          </p>
-        </div>
-        <div
-          class="emotion-13"
-        >
-          <p
-            class="emotion-12"
-          >
-            Mathematics (0)
-          </p>
-        </div>
-        <div
-          class="emotion-13"
-        >
-          <p
-            class="emotion-12"
-          >
-            Practical Life (0)
-          </p>
-        </div>
-        <div
-          class="emotion-13"
-        >
-          <p
-            class="emotion-12"
-          >
-            Sensorial (0)
-          </p>
-        </div>
-      </div>
-      <div
-        class="emotion-32"
-      >
-        <div
-          class="emotion-27"
         />
         <div
-          class="emotion-27"
+          class="emotion-15"
         />
         <div
-          class="emotion-27"
+          class="emotion-15"
         />
         <div
-          class="emotion-27"
+          class="emotion-15"
         />
         <div
-          class="emotion-27"
+          class="emotion-15"
         />
       </div>
-      <div
-        class="emotion-33"
-      />
     </div>
   </div>
 </div>

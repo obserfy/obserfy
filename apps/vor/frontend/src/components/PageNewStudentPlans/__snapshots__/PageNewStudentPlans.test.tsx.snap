@@ -865,17 +865,11 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   color: var(--theme-ui-colors-onPrimary,#000);
   font-size: 14px;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-43 {
-    font-size: 14px;
-  }
 }
 
 .emotion-46 {
@@ -910,17 +904,11 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   color: var(--theme-ui-colors-text,#37383c);
   font-size: 14px;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-45 {
-    font-size: 14px;
-  }
 }
 
 .emotion-53 {
@@ -1033,7 +1021,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-left: 16px;
@@ -1042,12 +1030,6 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   margin-bottom: 32px;
   text-align: center;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-}
-
-@media screen and (min-width:40em) {
-  .emotion-54 {
-    font-size: 14px;
-  }
 }
 
 <div>

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ObservationCard should render correctly 1`] = `
-.emotion-6 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,12 +9,12 @@ exports[`ObservationCard should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-6 {
+  .emotion-5 {
     font-size: 20px;
   }
 }
 
-.emotion-5 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -28,7 +28,7 @@ exports[`ObservationCard should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-5 {
+  .emotion-4 {
     border-radius: 6px;
   }
 }
@@ -38,7 +38,7 @@ exports[`ObservationCard should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-top: 4px;
@@ -46,13 +46,7 @@ exports[`ObservationCard should render correctly 1`] = `
   margin-right: 16px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-0 {
-    font-size: 14px;
-  }
-}
-
-.emotion-4 {
+.emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -69,33 +63,6 @@ exports[`ObservationCard should render correctly 1`] = `
 }
 
 .emotion-1 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
-  text-rendering: optimizeLegibility;
-  line-height: 1.5;
-  margin-right: 4px;
-  margin-bottom: 8px;
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
-  font-size: 12px;
-  line-height: 1;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-1 {
-    font-size: 14px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .emotion-1 {
-    font-size: 12px;
-  }
-}
-
-.emotion-2 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -157,19 +124,19 @@ exports[`ObservationCard should render correctly 1`] = `
   color: var(--theme-ui-colors-danger,#d50000);
 }
 
-.emotion-2:disabled {
+.emotion-1:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-2:hover,
-.emotion-2:focus {
+.emotion-1:hover,
+.emotion-1:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-3 {
+.emotion-2 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -230,13 +197,13 @@ exports[`ObservationCard should render correctly 1`] = `
   margin-right: 8px;
 }
 
-.emotion-3:disabled {
+.emotion-2:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-3:hover,
-.emotion-3:focus {
+.emotion-2:hover,
+.emotion-2:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
@@ -244,10 +211,10 @@ exports[`ObservationCard should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-6"
+    class="emotion-5"
   >
     <div
-      class="emotion-5"
+      class="emotion-4"
     >
       <p
         class="emotion-0"
@@ -255,22 +222,16 @@ exports[`ObservationCard should render correctly 1`] = `
       />
       
       <div
-        class="emotion-4"
+        class="emotion-3"
       >
-        <p
-          class="emotion-1"
-        >
-          Others
-           |
-        </p>
         <button
-          class="emotion-2"
+          class="emotion-1"
           data-cy="delete-observation"
         >
           Delete
         </button>
         <button
-          class="emotion-3"
+          class="emotion-2"
           data-cy="edit-observation"
         >
           Edit

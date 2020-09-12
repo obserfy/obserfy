@@ -206,7 +206,7 @@ const theme: Theme = {
     },
     body: {
       color: "text",
-      fontSize: [2, 1],
+      fontSize: 1,
       textRendering: "optimizeLegibility",
       lineHeight: 1.5,
     },

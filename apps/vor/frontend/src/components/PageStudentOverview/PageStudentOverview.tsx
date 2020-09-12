@@ -41,6 +41,7 @@ interface Props {
 }
 export const PageStudentOverview: FC<Props> = ({ id }) => {
   const student = useGetStudent(id)
+
   return (
     <Fragment>
       <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={5}>
@@ -123,8 +124,8 @@ const ObservationSection: FC<{ studentId: string }> = ({ studentId }) => {
 
   const dates = [
     ...new Set(
-      data?.map(({ createdDate }) =>
-        dayjs(createdDate ?? "")
+      data?.map(({ eventTime }) =>
+        dayjs(eventTime ?? "")
           .startOf("day")
           .toISOString()
       )
@@ -137,9 +138,13 @@ const ObservationSection: FC<{ studentId: string }> = ({ studentId }) => {
 
   const listOfObservations = data
     ?.filter((observation) =>
-      dayjs(observation.createdDate ?? "").isSame(dates[selectedDate], "day")
+      dayjs(observation.eventTime ?? "").isSame(dates[selectedDate], "day")
     )
-    ?.sort((a, b) => parseInt(a.categoryId, 10) - parseInt(b.categoryId, 10))
+    ?.sort((a, b) => {
+      const firstArea = a.area?.name ?? ""
+      const secondArea = b.area?.name ?? ""
+      return firstArea.localeCompare(secondArea)
+    })
     ?.map((observation) => (
       <ObservationCard
         key={observation.id}

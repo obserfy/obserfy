@@ -282,7 +282,7 @@ exports[`PageStudentPlanDetails should render correctly 1`] = `
       >
         <a
           class="emotion-2"
-          href="/dashboard/students/plans?studentId=asdfasfd&date=2020-09-12T10:01:47.142Z"
+          href="/dashboard/students/plans?studentId=asdfasfd&date=2020-09-12T14:23:32.086Z"
         >
           <button
             class="emotion-1"
@@ -325,7 +325,7 @@ exports[`PageStudentPlanDetails should render correctly 1`] = `
           </a>
           <a
             class="emotion-5"
-            href="/dashboard/students/plans?studentId=asdfasfd&date=2020-09-12T10:01:47.142Z"
+            href="/dashboard/students/plans?studentId=asdfasfd&date=2020-09-12T14:23:32.086Z"
           >
             <span
               class="emotion-3"

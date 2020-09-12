@@ -126,16 +126,10 @@ exports[`PageAdmin should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   font-size: 16px;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-3 {
-    font-size: 14px;
-  }
 }
 
 @media screen and (min-width:40em) {
