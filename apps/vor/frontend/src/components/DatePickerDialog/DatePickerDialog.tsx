@@ -1,5 +1,5 @@
-import React, { FC, useState } from "react"
-import { Button, Flex } from "theme-ui"
+import React, { FC, memo, useState } from "react"
+import { Box, Button, Flex } from "theme-ui"
 import Dialog from "../Dialog/Dialog"
 
 import dayjs, { Dayjs } from "../../dayjs"
@@ -8,6 +8,9 @@ import Typography from "../Typography/Typography"
 import Icon from "../Icon/Icon"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import { ReactComponent as PrevIcon } from "../../icons/arrow-back.svg"
+import { ReactComponent as NestedCircleIcon } from "../../icons/nested-circle.svg"
+import { ReactComponent as RightDoubleArrowIcon } from "../../icons/right-double-arrow.svg"
+import { ReactComponent as LeftDoubleArrowIcon } from "../../icons/left-double-arrow.svg"
 import { borderBottom } from "../../border"
 
 const range = (length: number) => [...Array(length).keys()]
@@ -25,7 +28,7 @@ export const DatePickerDialog: FC<DatePickerDialogProps> = ({
   const currentDate = dayjs()
   const [selected, setSelectedDate] = useState(defaultDate ?? dayjs())
   const [month, setMonth] = useState(selected.startOf("month"))
-  const isShowingCurrentMonth = month.isSame(currentDate, "month")
+  const isSelectedToday = selected.isSame(currentDate, "date")
 
   return (
     <Dialog sx={{ maxWidth: ["100%", 400] }}>
@@ -37,19 +40,27 @@ export const DatePickerDialog: FC<DatePickerDialogProps> = ({
           onConfirm(selected)
         }}
       />
-      <Flex py={3}>
-        <Typography.Body ml={3} sx={{ fontWeight: "bold" }}>
-          {month.format("MMM YYYY")}
-        </Typography.Body>
+      <Flex py={3} sx={{ alignItems: "center", touchAction: "manipulation" }}>
+        <Typography.Body ml={3}>{month.format("MMM YYYY")}</Typography.Body>
         <Button
           variant="outline"
           p={1}
           ml="auto"
+          onClick={() => setMonth(month.add(-1, "year"))}
+          data-cy="prev"
+        >
+          <Icon as={LeftDoubleArrowIcon} />
+        </Button>
+        <Button
+          variant="outline"
+          p={1}
+          ml={1}
           onClick={() => setMonth(month.add(-1, "month"))}
           data-cy="prev"
         >
           <Icon as={PrevIcon} />
         </Button>
+
         <Button
           variant="outline"
           p={1}
@@ -61,14 +72,26 @@ export const DatePickerDialog: FC<DatePickerDialogProps> = ({
         </Button>
         <Button
           variant="outline"
-          py={1}
+          p={1}
+          ml={1}
+          onClick={() => setMonth(month.add(1, "year"))}
+          data-cy="next"
+        >
+          <Icon as={RightDoubleArrowIcon} />
+        </Button>
+        <Button
+          variant="outline"
+          p={1}
+          mr={3}
           sx={{ fontSize: 1 }}
           ml={1}
-          mr={3}
-          onClick={() => setMonth(dayjs())}
-          disabled={isShowingCurrentMonth}
+          onClick={() => {
+            setMonth(dayjs().startOf("month"))
+            setSelectedDate(dayjs())
+          }}
+          disabled={isSelectedToday}
         >
-          This month
+          <Icon as={NestedCircleIcon} fill="textPrimary" />
         </Button>
       </Flex>
       <DatesTable
@@ -94,13 +117,7 @@ const DatesTable: FC<{
   onDateClick: (date: Dayjs) => void
 }> = ({ month, onDateClick, selected }) => (
   <>
-    <Flex px={3} pb={2} sx={{ ...borderBottom }}>
-      {["S", "M", "T", "W", "T", "F", "S"].map((weekday) => (
-        <Typography.Body sx={{ textAlign: "center", width: "14.28%" }}>
-          {weekday}
-        </Typography.Body>
-      ))}
-    </Flex>
+    <WeekDayInitials />
     <Flex sx={{ flexWrap: "wrap", minHeight: 250 }} mx={3} my={2}>
       {range(month.daysInMonth()).map((number) => {
         const date = number + 1
@@ -114,7 +131,7 @@ const DatesTable: FC<{
 
         return (
           <Flex
-            key={`${date}-${month.month()}`}
+            key={`${date}-${month.unix()}`}
             sx={{
               alignItems: "center",
               justifyContent: "center",
@@ -124,16 +141,25 @@ const DatesTable: FC<{
           >
             <Button
               variant={isSelected ? "primary" : "secondary"}
+              color={isSelected ? "onPrimary" : "text"}
               px={0}
               sx={{
                 fontWeight: isToday || isSelected ? "bold" : undefined,
                 height: 40,
                 width: 40,
               }}
-              color={isToday && !isSelected ? "textPrimary" : "onBackground"}
               onClick={() => onDateClick(fullDate)}
             >
-              {date}
+              <Flex sx={{ flexDirection: "column", alignItems: "center" }}>
+                <Box>{date}</Box>
+                {isToday && (
+                  <Icon
+                    size={10}
+                    as={NestedCircleIcon}
+                    fill={isSelected ? "onPrimary" : "textPrimary"}
+                  />
+                )}
+              </Flex>
             </Button>
           </Flex>
         )
@@ -141,5 +167,15 @@ const DatesTable: FC<{
     </Flex>
   </>
 )
+
+const WeekDayInitials: FC = memo(() => (
+  <Flex px={3} pb={2} sx={{ ...borderBottom, userSelect: "none" }}>
+    {["S", "M", "T", "W", "T", "F", "S"].map((weekday) => (
+      <Typography.Body sx={{ textAlign: "center", width: "14.28%" }}>
+        {weekday}
+      </Typography.Body>
+    ))}
+  </Flex>
+))
 
 export default DatePickerDialog
