@@ -89,7 +89,7 @@ export const DatePickerDialog: FC<DatePickerDialogProps> = ({
             setMonth(dayjs().startOf("month"))
             setSelectedDate(dayjs())
           }}
-          disabled={isSelectedToday}
+          disabled={isSelectedToday && month.isSame(currentDate, "month")}
         >
           <Icon as={NestedCircleIcon} fill="textPrimary" />
         </Button>
