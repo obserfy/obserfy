@@ -8,26 +8,24 @@ import Typography from "../Typography/Typography"
 import Icon from "../Icon/Icon"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import { ReactComponent as PrevIcon } from "../../icons/arrow-back.svg"
+import { borderBottom } from "../../border"
 
-const range = (length: number) => {
-  return [...Array(length).keys()]
-}
+const range = (length: number) => [...Array(length).keys()]
 
-interface Props {
+export interface DatePickerDialogProps {
   defaultDate?: Dayjs
   onDismiss: () => void
   onConfirm: (date: Dayjs) => void
 }
-export const DatePickerDialog: FC<Props> = ({
+export const DatePickerDialog: FC<DatePickerDialogProps> = ({
   defaultDate,
   onDismiss,
   onConfirm,
 }) => {
-  const [selectedDate, setSelectedDate] = useState(
-    defaultDate ?? dayjs(Date.now())
-  )
-  const [monthShown, setMonth] = useState(selectedDate.startOf("month"))
-  const isShowingCurrentMonth = monthShown.isSame(dayjs(Date.now()), "month")
+  const currentDate = dayjs()
+  const [selected, setSelectedDate] = useState(defaultDate ?? dayjs())
+  const [month, setMonth] = useState(selected.startOf("month"))
+  const isShowingCurrentMonth = month.isSame(currentDate, "month")
 
   return (
     <Dialog sx={{ maxWidth: ["100%", 400] }}>
@@ -36,18 +34,18 @@ export const DatePickerDialog: FC<Props> = ({
         title="Pick a Date"
         onCancel={() => onDismiss()}
         onAccept={() => {
-          onConfirm(selectedDate)
+          onConfirm(selected)
         }}
       />
       <Flex py={3}>
-        <Typography.Body ml={3}>
-          {monthShown.format("MMM YYYY")}
+        <Typography.Body ml={3} sx={{ fontWeight: "bold" }}>
+          {month.format("MMM YYYY")}
         </Typography.Body>
         <Button
           variant="outline"
           p={1}
           ml="auto"
-          onClick={() => setMonth(monthShown.add(-1, "month"))}
+          onClick={() => setMonth(month.add(-1, "month"))}
           data-cy="prev"
         >
           <Icon as={PrevIcon} />
@@ -56,7 +54,7 @@ export const DatePickerDialog: FC<Props> = ({
           variant="outline"
           p={1}
           ml={1}
-          onClick={() => setMonth(monthShown.add(1, "month"))}
+          onClick={() => setMonth(month.add(1, "month"))}
           data-cy="next"
         >
           <Icon as={NextIcon} />
@@ -67,66 +65,81 @@ export const DatePickerDialog: FC<Props> = ({
           sx={{ fontSize: 1 }}
           ml={1}
           mr={3}
-          onClick={() => setMonth(dayjs(Date.now()).startOf("month"))}
+          onClick={() => setMonth(dayjs())}
           disabled={isShowingCurrentMonth}
         >
           This month
         </Button>
       </Flex>
-      <Flex
-        px={3}
-        pb={2}
-        sx={{
-          borderBottomWidth: 1,
-          borderBottomStyle: "solid",
-          borderBottomColor: "border",
-          flexWrap: "wrap",
-        }}
+      <DatesTable
+        month={month}
+        onDateClick={(date) => setSelectedDate(date)}
+        selected={selected}
+      />
+      <Typography.Body
+        px={4}
+        py={3}
+        backgroundColor="background"
+        sx={{ fontWeight: "bold" }}
       >
-        {["M", "T", "W", "T", "F", "S", "S"].map((dayInitial) => (
-          <Typography.Body
-            color="textMediumEmphasis"
-            sx={{ textAlign: "center", width: "14.28%" }}
-          >
-            {dayInitial}
-          </Typography.Body>
-        ))}
-      </Flex>
-      <Flex sx={{ flexWrap: "wrap", minHeight: 258 }} px={3} pb={3} pt={2}>
-        {range(monthShown.daysInMonth())
-          .map((date) => date + 1)
-          .map((date) => {
-            const firstDateIndent =
-              date === 1 ? `${14.28 * monthShown.day()}%` : 0
-            const isCurrentDate =
-              isShowingCurrentMonth && dayjs(Date.now()).date() === date
-
-            const isSelected =
-              selectedDate.isSame(monthShown, "month") &&
-              selectedDate.date() === date
-
-            return (
-              <Button
-                variant={isSelected ? "primary" : "secondary"}
-                key={`${date}-${monthShown.month()}`}
-                px={0}
-                sx={{
-                  fontWeight: isCurrentDate || isSelected ? "bold" : undefined,
-                  width: "14.28%",
-                }}
-                color={
-                  isCurrentDate && !isSelected ? "primaryDark" : "onBackground"
-                }
-                ml={firstDateIndent}
-                onClick={() => setSelectedDate(monthShown.set("date", date))}
-              >
-                {date}
-              </Button>
-            )
-          })}
-      </Flex>
+        {selected.format("dddd, DD MMM YYYY")}
+      </Typography.Body>
     </Dialog>
   )
 }
+
+const DatesTable: FC<{
+  selected: Dayjs
+  month: Dayjs
+  onDateClick: (date: Dayjs) => void
+}> = ({ month, onDateClick, selected }) => (
+  <>
+    <Flex px={3} pb={2} sx={{ ...borderBottom }}>
+      {["S", "M", "T", "W", "T", "F", "S"].map((weekday) => (
+        <Typography.Body sx={{ textAlign: "center", width: "14.28%" }}>
+          {weekday}
+        </Typography.Body>
+      ))}
+    </Flex>
+    <Flex sx={{ flexWrap: "wrap", minHeight: 250 }} mx={3} my={2}>
+      {range(month.daysInMonth()).map((number) => {
+        const date = number + 1
+        const fullDate = month.set("date", date)
+
+        const firstRowIndent = date === 1 ? `${14.28 * month.day()}%` : 0
+
+        const isToday = dayjs().isSame(fullDate, "date")
+
+        const isSelected = selected.isSame(fullDate, "date")
+
+        return (
+          <Flex
+            key={`${date}-${month.month()}`}
+            sx={{
+              alignItems: "center",
+              justifyContent: "center",
+              width: "14.28%",
+            }}
+            ml={firstRowIndent}
+          >
+            <Button
+              variant={isSelected ? "primary" : "secondary"}
+              px={0}
+              sx={{
+                fontWeight: isToday || isSelected ? "bold" : undefined,
+                height: 40,
+                width: 40,
+              }}
+              color={isToday && !isSelected ? "textPrimary" : "onBackground"}
+              onClick={() => onDateClick(fullDate)}
+            >
+              {date}
+            </Button>
+          </Flex>
+        )
+      })}
+    </Flex>
+  </>
+)
 
 export default DatePickerDialog
