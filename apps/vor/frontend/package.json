@@ -118,7 +118,7 @@
     "start:prod": "NODE_ENV=production npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "storybook": "cross-env NODE_ENV=production start-storybook -p 6006 -s public",
+    "storybook": "cp -r ./public/page-data/sq/d ./public/static && start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s .storybook/static/",
     "gen:component": "hygen component new --name",
     "test": "cp -r ./public/page-data/sq/d ./public/static && TZ=UTC jest --coverage --passWithNoTests --coverageReporters json clover",
