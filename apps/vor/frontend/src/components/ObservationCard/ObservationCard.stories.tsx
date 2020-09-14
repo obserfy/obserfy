@@ -22,6 +22,5 @@ export const Basic: FC = () => (
       shortDesc: "",
     }}
     onDelete={action("delete")}
-    onEdit={action("edit")}
   />
 )

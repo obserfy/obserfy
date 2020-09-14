@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EditObservationDialog should render correctly 1`] = `
+exports[`PageEditObservation should render correctly 1`] = `
 .emotion-0 {
   box-sizing: border-box;
   margin: 0;
@@ -17,6 +17,10 @@ exports[`EditObservationDialog should render correctly 1`] = `
 <div>
   <div
     class="emotion-0"
-  />
+  >
+    <div>
+      asdfsadfsadfasdf
+    </div>
+  </div>
 </div>
 `;

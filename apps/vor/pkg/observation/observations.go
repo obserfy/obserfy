@@ -86,7 +86,11 @@ func updateObservation(s rest.Server, store Store) rest.Handler {
 
 		observation, err := store.UpdateObservation(id, requestBody.ShortDesc, requestBody.LongDesc, requestBody.CategoryId)
 		if err != nil {
-			return &rest.Error{http.StatusInternalServerError, "Failed updating observation", err}
+			return &rest.Error{
+				http.StatusInternalServerError,
+				"Failed updating observation",
+				err,
+			}
 		}
 
 		// Return the updated observation

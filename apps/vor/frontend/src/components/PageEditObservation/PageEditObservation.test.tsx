@@ -1,10 +1,10 @@
 import React from "react"
 import { render } from "../../test-utils"
-import { Basic } from "./EditObservationDialog.stories"
+import { Default } from "./PageEditObservation.stories"
 
-describe("EditObservationDialog", () => {
+describe("PageEditObservation", () => {
   it("should render correctly", () => {
-    const { container } = render(<Basic />)
+    const { container } = render(<Default />)
     expect(container).toMatchSnapshot()
   })
 })

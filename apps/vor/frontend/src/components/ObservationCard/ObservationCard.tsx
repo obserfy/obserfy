@@ -1,18 +1,16 @@
-import React, { FC } from "react"
-import { Button, Card, Flex } from "theme-ui"
+/** @jsx jsx */
+import { FC } from "react"
+import { jsx, Button, Card, Flex } from "theme-ui"
 import Typography from "../Typography/Typography"
 import { Observation } from "../../api/useGetStudentObservations"
+import { Link } from "../Link/Link"
+import { EDIT_OBSERVATION_URL } from "../../routes"
 
 interface Props {
   observation: Observation
   onDelete: (value: Observation) => void
-  onEdit: (value: Observation) => void
 }
-export const ObservationCard: FC<Props> = ({
-  onDelete,
-  onEdit,
-  observation,
-}) => (
+export const ObservationCard: FC<Props> = ({ onDelete, observation }) => (
   <Card mb={2} sx={{ borderRadius: [0, "default"] }} pt={2}>
     <Typography.Body mt={1} mx={3} data-cy="observation-short-desc">
       {observation.shortDesc}
@@ -38,7 +36,7 @@ export const ObservationCard: FC<Props> = ({
           sx={{ fontSize: [0, 0], lineHeight: 1 }}
           color="textPrimary"
         >
-          {observation.area.name} |
+          {observation.area.name} {observation.creatorName && "|"}
         </Typography.Body>
       )}
       {observation.creatorName && (
@@ -46,7 +44,7 @@ export const ObservationCard: FC<Props> = ({
           sx={{ fontSize: 0, lineHeight: 1 }}
           color="textMediumEmphasis"
         >
-          {observation.creatorName.split(" ")[0]}{" "}
+          {observation.creatorName}
         </Typography.Body>
       )}
       <Button
@@ -55,17 +53,26 @@ export const ObservationCard: FC<Props> = ({
         data-cy="delete-observation"
         onClick={() => onDelete(observation)}
         ml="auto"
+        mr={2}
+        px={2}
+        sx={{ fontSize: 0 }}
       >
         Delete
       </Button>
-      <Button
-        variant="secondary"
-        data-cy="edit-observation"
-        onClick={() => onEdit(observation)}
-        mr={2}
+      <Link
+        to={EDIT_OBSERVATION_URL(observation.studentId, observation.id)}
+        sx={{
+          display: "inline-block",
+          mr: 3,
+          fontSize: 0,
+          color: "text",
+          "&:hover": {
+            textDecoration: "underline",
+          },
+        }}
       >
         Edit
-      </Button>
+      </Link>
     </Flex>
   </Card>
 )

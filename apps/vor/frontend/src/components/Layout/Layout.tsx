@@ -11,6 +11,7 @@ import Navbar from "../Navbar/Navbar"
 import { useGetUserProfile } from "../../api/useGetUserProfile"
 import Typography from "../Typography/Typography"
 import StudentsList from "../StudentsList/StudentsList"
+import { borderRight } from "../../border"
 
 /** Top level component which encapsulate most pages. Provides Appbar and Sidebar for navigation.
  *
@@ -35,9 +36,10 @@ export const Layout: FC = ({ children }) => {
         {studentSubroute && breakpoint > 1 && <StudentsSubrouteSidebar />}
         <Box
           as="main"
-          sx={{ backgroundColor: "background", width: "100%" }}
+          backgroundColor="background"
           mb="env(safe-area-inset-bottom)"
           ml={studentSubroute ? [0, 0, 300, 300, 420] : 0}
+          sx={{ width: "100%" }}
         >
           <UpdateNotification />
           {children}
@@ -63,10 +65,7 @@ const UpdateNotification = () => {
 
   return (
     <Box py={2} sx={{ backgroundColor: "primary", width: "100%" }}>
-      <Typography.Body
-        color="onPrimary"
-        sx={{ fontSize: 1, textAlign: "center" }}
-      >
+      <Typography.Body color="onPrimary" sx={{ textAlign: "center" }}>
         <span role="img" aria-label="hooray">
           🎉🎉
         </span>{" "}
@@ -91,12 +90,10 @@ const StudentsSubrouteSidebar = () => (
   <Box
     pb={5}
     sx={{
+      ...borderRight,
       position: "fixed",
       top: 0,
       flexShrink: 0,
-      borderRightWidth: 1,
-      borderRightStyle: "solid",
-      borderRightColor: "border",
       height: "100vh",
       overflowY: "auto",
       width: [undefined, 300, 300, 300, 420],

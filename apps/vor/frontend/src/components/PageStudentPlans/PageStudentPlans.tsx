@@ -17,9 +17,7 @@ import { Link } from "../Link/Link"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import { useGetStudent } from "../../api/useGetStudent"
 import useGetStudentPlans from "../../api/students/useGetStudentPlans"
-import BackButton from "../BackButton/BackButton"
-import Breadcrumb from "../Breadcrumb/Breadcrumb"
-import BreadcrumbItem from "../Breadcrumb/BreadcrumbItem"
+import TopBar from "../TopBar/TopBar"
 
 interface Props {
   studentId: string
@@ -32,16 +30,16 @@ export const PageStudentPlans: FC<Props> = ({ studentId, date }) => {
 
   return (
     <Box mx="auto" sx={{ maxWidth: "maxWidth.sm" }}>
-      <Flex sx={{ height: 48, alignItems: "center" }}>
-        <BackButton to={STUDENT_OVERVIEW_PAGE_URL(studentId)} />
-        <Breadcrumb>
-          <BreadcrumbItem to={STUDENTS_URL}>Students</BreadcrumbItem>
-          <BreadcrumbItem to={STUDENT_OVERVIEW_PAGE_URL(studentId)}>
-            {student.data?.name.split(" ")[0]}
-          </BreadcrumbItem>
-          <BreadcrumbItem>Plans</BreadcrumbItem>
-        </Breadcrumb>
-      </Flex>
+      <TopBar
+        breadcrumbs={[
+          { to: STUDENTS_URL, text: "Students" },
+          {
+            to: STUDENT_OVERVIEW_PAGE_URL(studentId),
+            text: student.data?.name.split(" ")[0],
+          },
+          { text: "Plans" },
+        ]}
+      />
       <Flex px={3} pb={2} sx={{ alignItems: "flex-end" }}>
         <Typography.Body color="textMediumEmphasis" sx={{ fontSize: 1 }}>
           {selectedDate.format("ddd, DD MMM 'YY")}

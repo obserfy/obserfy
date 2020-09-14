@@ -12,7 +12,6 @@ import {
   Observation,
   useGetStudentObservations,
 } from "../../api/useGetStudentObservations"
-import EditObservationDialog from "../EditObservationDialog/EditObservationDialog"
 import DeleteObservationDialog from "../DeleteObservationDialog/DeleteObservationDialog"
 import ObservationCard from "../ObservationCard/ObservationCard"
 import StudentProgressSummaryCard from "../StudentProgressSummaryCard/StudentProgressSummaryCard"
@@ -119,7 +118,6 @@ const ObservationSection: FC<{ studentId: string }> = ({ studentId }) => {
   const { data, status, refetch } = useGetStudentObservations(studentId)
   const [targetObservation, setTargetObservation] = useState<Observation>()
   const [selectedDate, setSelectedDate] = useState(0)
-  const [isEditingObservation, setIsEditingObservation] = useState(false)
   const [isDeletingObservation, setIsDeletingObservation] = useState(false)
 
   const dates = [
@@ -152,10 +150,6 @@ const ObservationSection: FC<{ studentId: string }> = ({ studentId }) => {
         onDelete={(value) => {
           setTargetObservation(value)
           setIsDeletingObservation(true)
-        }}
-        onEdit={(value) => {
-          setTargetObservation(value)
-          setIsEditingObservation(true)
         }}
       />
     ))
@@ -232,16 +226,6 @@ const ObservationSection: FC<{ studentId: string }> = ({ studentId }) => {
         {listOfObservations}
         {status === "loading" && !data && <ObservationLoadingPlaceholder />}
       </Box>
-      {isEditingObservation && (
-        <EditObservationDialog
-          defaultValue={targetObservation}
-          onDismiss={() => setIsEditingObservation(false)}
-          onSaved={async () => {
-            await refetch()
-            setIsEditingObservation(false)
-          }}
-        />
-      )}
       {isDeletingObservation && targetObservation && (
         <DeleteObservationDialog
           observationId={targetObservation.id ?? ""}

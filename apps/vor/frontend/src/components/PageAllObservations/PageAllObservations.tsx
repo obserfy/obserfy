@@ -8,7 +8,6 @@ import { STUDENT_OVERVIEW_PAGE_URL, STUDENTS_URL } from "../../routes"
 import Chip from "../Chip/Chip"
 import Typography from "../Typography/Typography"
 import { useGetStudent } from "../../api/useGetStudent"
-import EditObservationDialog from "../EditObservationDialog/EditObservationDialog"
 import DeleteObservationDialog from "../DeleteObservationDialog/DeleteObservationDialog"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import ObservationCard from "../ObservationCard/ObservationCard"
@@ -22,7 +21,6 @@ interface Props {
 }
 export const PageAllObservations: FC<Props> = ({ studentId }) => {
   const [selectedArea, setSelectedArea] = useState("")
-  const [isEditingObservation, setIsEditingObservation] = useState(false)
   const [isDeletingObservation, setIsDeletingObservation] = useState(false)
   const [targetObservation, setTargetObservation] = useState<Observation>()
   const observations = useGetStudentObservations(studentId)
@@ -138,23 +136,9 @@ export const PageAllObservations: FC<Props> = ({ studentId }) => {
               setIsDeletingObservation(true)
               setTargetObservation(observation)
             }}
-            showEditDialog={(observation) => {
-              setIsEditingObservation(true)
-              setTargetObservation(observation)
-            }}
           />
         )}
       </Box>
-      {isEditingObservation && (
-        <EditObservationDialog
-          defaultValue={targetObservation}
-          onDismiss={() => setIsEditingObservation(false)}
-          onSaved={() => {
-            setIsEditingObservation(false)
-            observations.refetch()
-          }}
-        />
-      )}
       {isDeletingObservation && targetObservation && (
         <DeleteObservationDialog
           observationId={targetObservation.id ?? ""}
@@ -173,8 +157,7 @@ export const PageAllObservations: FC<Props> = ({ studentId }) => {
 const ObservationList: FC<{
   observations: Observation[]
   showDeleteDialog: (observation: Observation) => void
-  showEditDialog: (observation: Observation) => void
-}> = ({ showDeleteDialog, observations, showEditDialog }) => {
+}> = ({ showDeleteDialog, observations }) => {
   const observationsByDate: { [key: number]: ReactNode[] } = {}
   observations.forEach((observation) => {
     const date = dayjs(observation.eventTime).startOf("day").unix()
@@ -186,7 +169,6 @@ const ObservationList: FC<{
         key={observation.id}
         observation={observation}
         onDelete={showDeleteDialog}
-        onEdit={showEditDialog}
       />
     )
   })
