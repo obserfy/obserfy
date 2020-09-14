@@ -2479,7 +2479,7 @@ export type SitePluginPluginOptions = {
   showSpinner?: Maybe<Scalars['Boolean']>;
   dsn?: Maybe<Scalars['String']>;
   release?: Maybe<Scalars['String']>;
-  tracesSampleRate?: Maybe<Scalars['Int']>;
+  tracesSampleRate?: Maybe<Scalars['Float']>;
   codegen?: Maybe<Scalars['Boolean']>;
   fileName?: Maybe<Scalars['String']>;
   documentPaths?: Maybe<Array<Maybe<Scalars['String']>>>;
@@ -2517,7 +2517,7 @@ export type SitePluginPluginOptionsFilterInput = {
   showSpinner?: Maybe<BooleanQueryOperatorInput>;
   dsn?: Maybe<StringQueryOperatorInput>;
   release?: Maybe<StringQueryOperatorInput>;
-  tracesSampleRate?: Maybe<IntQueryOperatorInput>;
+  tracesSampleRate?: Maybe<FloatQueryOperatorInput>;
   codegen?: Maybe<BooleanQueryOperatorInput>;
   fileName?: Maybe<StringQueryOperatorInput>;
   documentPaths?: Maybe<StringQueryOperatorInput>;
