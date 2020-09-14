@@ -53,7 +53,6 @@ describe("test student profile page", () => {
     cy.contains(studentName).should("be.visible")
     cy.contains(studentName).click()
     cy.contains("Observation").click()
-    cy.get("[aria-label=Category]").select("2")
     cy.contains("Short Description").type(shortDesc)
     cy.get("[aria-label=Details]").type(details)
     cy.contains("Save").click()
@@ -110,7 +109,7 @@ describe("test student profile page", () => {
     cy.contains(guardianName).should("be.visible")
 
     // Go back to overview
-    cy.contains("Student Overview").click()
+    cy.get("[data-cy=back-button]").click()
 
     // Edit observation
     cy.url().should("contains", "students")
@@ -157,7 +156,7 @@ describe("test student profile page", () => {
 
     // Go back and see if it shows up
     cy.contains("Practiced").should("be.visible")
-    cy.contains("Student Details").click({ force: true })
+    cy.get("[data-cy=back-button]").click({ force: true })
     // .waitForRouteChange()
 
     // Change to master

@@ -1,5 +1,5 @@
 import React, { ChangeEventHandler, FC, PropsWithoutRef } from "react"
-import { Input as BaseInput, InputProps, Label, Flex, Box } from "theme-ui"
+import { Box, Flex, Input as BaseInput, InputProps, Label } from "theme-ui"
 import Icon from "../Icon/Icon"
 
 interface Props extends PropsWithoutRef<InputProps> {
@@ -33,7 +33,7 @@ export const Input: FC<Props> = ({
   }
   return (
     <Label
-      color={disabled ? "textDisabled" : "textMediumEmphasis"}
+      color="textMediumEmphasis"
       sx={{
         display: "flex",
         flexDirection: "column",

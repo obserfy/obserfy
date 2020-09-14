@@ -59,17 +59,11 @@ exports[`PageEditStudentClass should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-bottom: 0;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-}
-
-@media screen and (min-width:40em) {
-  .emotion-1 {
-    font-size: 14px;
-  }
 }
 
 .emotion-3 {
@@ -108,19 +102,13 @@ exports[`PageEditStudentClass should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-left: 16px;
   margin-right: 16px;
   margin-bottom: 8px;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-}
-
-@media screen and (min-width:40em) {
-  .emotion-5 {
-    font-size: 14px;
-  }
 }
 
 .emotion-7 {
@@ -155,18 +143,12 @@ exports[`PageEditStudentClass should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin: 16px;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   font-size: 14px;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-6 {
-    font-size: 14px;
-  }
 }
 
 .emotion-10 {
@@ -189,17 +171,11 @@ exports[`PageEditStudentClass should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   line-height: 1;
   font-size: 14px;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-8 {
-    font-size: 14px;
-  }
 }
 
 .emotion-9 {
@@ -223,19 +199,13 @@ exports[`PageEditStudentClass should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-left: 16px;
   margin-right: 16px;
   margin-top: 32px;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-}
-
-@media screen and (min-width:40em) {
-  .emotion-12 {
-    font-size: 14px;
-  }
 }
 
 .emotion-16 {

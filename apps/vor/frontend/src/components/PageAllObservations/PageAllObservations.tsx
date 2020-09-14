@@ -1,12 +1,10 @@
-import React, { FC, memo, useCallback, useMemo, useState } from "react"
+import React, { FC, Fragment, ReactNode, useMemo, useState } from "react"
 import { Box, Flex } from "theme-ui"
 import {
   Observation,
   useGetStudentObservations,
 } from "../../api/useGetStudentObservations"
-import BackNavigation from "../BackNavigation/BackNavigation"
-import { STUDENT_OVERVIEW_PAGE_URL } from "../../routes"
-import { categories } from "../../categories"
+import { STUDENT_OVERVIEW_PAGE_URL, STUDENTS_URL } from "../../routes"
 import Chip from "../Chip/Chip"
 import Typography from "../Typography/Typography"
 import { useGetStudent } from "../../api/useGetStudent"
@@ -15,126 +13,137 @@ import DeleteObservationDialog from "../DeleteObservationDialog/DeleteObservatio
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import ObservationCard from "../ObservationCard/ObservationCard"
 import dayjs from "../../dayjs"
-
-const allCategory = {
-  id: "-1",
-  name: "All",
-  color: "primary",
-  onColor: "onPrimary",
-}
+import BackButton from "../BackButton/BackButton"
+import Breadcrumb from "../Breadcrumb/Breadcrumb"
+import BreadcrumbItem from "../Breadcrumb/BreadcrumbItem"
 
 interface Props {
   studentId: string
 }
 export const PageAllObservations: FC<Props> = ({ studentId }) => {
-  const [selectedCategory, setSelectedCategory] = useState("0")
+  const [selectedArea, setSelectedArea] = useState("")
   const [isEditingObservation, setIsEditingObservation] = useState(false)
   const [isDeletingObservation, setIsDeletingObservation] = useState(false)
   const [targetObservation, setTargetObservation] = useState<Observation>()
   const observations = useGetStudentObservations(studentId)
   const student = useGetStudent(studentId)
 
-  const filteredObservation = useMemo(
-    () =>
-      observations.data?.filter(({ categoryId }) => {
-        if (selectedCategory === allCategory.id) return true
-        return categoryId === selectedCategory
-      }) ?? [],
-    [observations.data, selectedCategory]
-  )
-
-  // Group observations by dates
-
-  const showDeleteDialog = useCallback((observation) => {
-    setIsDeletingObservation(true)
-    setTargetObservation(observation)
-  }, [])
-
-  const showEditDialog = useCallback((observation) => {
-    setIsEditingObservation(true)
-    setTargetObservation(observation)
-  }, [])
+  const parsedData = useMemo(() => {
+    const areaNames: { [key: string]: string } = {}
+    const observationsByArea: { [key: string]: Observation[] } = {}
+    observations.data?.forEach((observation) => {
+      const areaId = observation.area?.id ?? "Other"
+      const areaName = observation.area?.name ?? "Other"
+      if (observationsByArea[areaId] === undefined) {
+        observationsByArea[areaId] = []
+      }
+      observationsByArea[areaId].push(observation)
+      areaNames[areaId] = areaName
+    })
+    return { areaNames, observationsByArea }
+  }, [observations.data])
 
   return (
     <>
       <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto">
-        <BackNavigation
-          to={STUDENT_OVERVIEW_PAGE_URL(studentId)}
-          text="Student Details"
-        />
-        {student.status === "loading" && !student.data && (
-          <Box m={3}>
-            <LoadingPlaceholder sx={{ width: "100%", height: "5rem" }} />
-            <LoadingPlaceholder sx={{ width: "90%%", height: "5rem" }} mt={2} />
-          </Box>
-        )}
-        <Box m={3} mb={4}>
-          <Typography.H5 sx={{ wordWrap: "break-word" }}>
-            <Box as="span" color="textDisabled">
-              {student.data?.name}
-            </Box>
-            {` Observations`}
-          </Typography.H5>
-        </Box>
-        <Flex
-          pl={3}
-          pr={2}
-          py={2}
-          sx={{
-            flexWrap: "wrap",
-          }}
-        >
-          {[allCategory, ...categories].map((category) => {
-            let observationCount = 0
-            if (category.id === allCategory.id) {
-              observationCount = observations.data?.length ?? 0
-            } else {
-              observations.data?.forEach(({ categoryId }) => {
-                if (categoryId === category.id) observationCount += 1
-              })
-            }
+        <Flex sx={{ height: 48, alignItems: "center" }}>
+          <BackButton to={STUDENT_OVERVIEW_PAGE_URL(studentId)} />
+          <Breadcrumb>
+            <BreadcrumbItem to={STUDENTS_URL}>Students</BreadcrumbItem>
+            <BreadcrumbItem to={STUDENT_OVERVIEW_PAGE_URL(studentId)}>
+              {student.data?.name.split(" ")[0]}
+            </BreadcrumbItem>
+            <BreadcrumbItem>All Observations</BreadcrumbItem>
+          </Breadcrumb>
+        </Flex>
+        <Flex pl={3} pr={2} py={2} sx={{ flexWrap: "wrap" }}>
+          <Chip
+            mr={2}
+            mb={2}
+            isActive={selectedArea === ""}
+            activeBackground="primary"
+            text={`all (${observations.data?.length ?? 0})`}
+            onClick={() => setSelectedArea("")}
+          />
+          {Object.keys(parsedData.areaNames).map((areaId) => {
+            const isSelected = areaId === selectedArea
+
             return (
               <Chip
                 mr={2}
                 mb={2}
-                key={category.id}
-                isActive={category.id === selectedCategory}
-                activeBackground={category.color}
-                text={`${category.name} (${observationCount})`}
-                onClick={() => setSelectedCategory(category.id)}
+                key={areaId}
+                isActive={areaId === selectedArea}
+                activeBackground="primary"
+                text={`${parsedData.areaNames[areaId]} (${parsedData.observationsByArea[areaId].length})`}
+                onClick={() => {
+                  setSelectedArea(isSelected ? "" : areaId)
+                }}
               />
             )
           })}
         </Flex>
         {observations.status === "loading" && !observations.data && (
-          <Box mb={2}>
+          <Box mb={2} pt={4}>
             <LoadingPlaceholder
-              sx={{ width: "100%", height: "20rem" }}
+              sx={{
+                width: "100%",
+                height: "5rem",
+                borderRadius: [0, "default"],
+              }}
               mb={3}
             />
             <LoadingPlaceholder
-              sx={{ width: "100%", height: "20rem" }}
+              sx={{
+                width: "100%",
+                height: "5rem",
+                borderRadius: [0, "default"],
+              }}
               mb={3}
             />
             <LoadingPlaceholder
-              sx={{ width: "100%", height: "20rem" }}
+              sx={{
+                width: "100%",
+                height: "5rem",
+                borderRadius: [0, "default"],
+              }}
               mb={3}
             />
             <LoadingPlaceholder
-              sx={{ width: "100%", height: "20rem" }}
+              sx={{
+                width: "100%",
+                height: "5rem",
+                borderRadius: [0, "default"],
+              }}
               mb={3}
             />
             <LoadingPlaceholder
-              sx={{ width: "100%", height: "20rem" }}
+              sx={{
+                width: "100%",
+                height: "5rem",
+                borderRadius: [0, "default"],
+              }}
               mb={3}
             />
           </Box>
         )}
-        <ObservationList
-          observations={filteredObservation}
-          showDeleteDialog={showDeleteDialog}
-          showEditDialog={showEditDialog}
-        />
+        {observations.isSuccess && (
+          <ObservationList
+            observations={
+              selectedArea !== ""
+                ? parsedData.observationsByArea[selectedArea] ?? []
+                : observations.data ?? []
+            }
+            showDeleteDialog={(observation) => {
+              setIsDeletingObservation(true)
+              setTargetObservation(observation)
+            }}
+            showEditDialog={(observation) => {
+              setIsEditingObservation(true)
+              setTargetObservation(observation)
+            }}
+          />
+        )}
       </Box>
       {isEditingObservation && (
         <EditObservationDialog
@@ -165,58 +174,40 @@ const ObservationList: FC<{
   observations: Observation[]
   showDeleteDialog: (observation: Observation) => void
   showEditDialog: (observation: Observation) => void
-}> = memo(({ showDeleteDialog, observations, showEditDialog }) => {
-  const dates = useMemo(
-    () =>
-      [
-        ...new Set(
-          observations.map(({ createdDate }) =>
-            dayjs(Date.parse(createdDate ?? ""))
-              .startOf("day")
-              .toISOString()
-          )
-        ),
-      ]?.sort((a, b) => dayjs(b).diff(a)),
-    [observations]
-  )
+}> = ({ showDeleteDialog, observations, showEditDialog }) => {
+  const observationsByDate: { [key: number]: ReactNode[] } = {}
+  observations.forEach((observation) => {
+    const date = dayjs(observation.eventTime).startOf("day").unix()
+    if (observationsByDate[date] === undefined) {
+      observationsByDate[date] = []
+    }
+    observationsByDate[date].push(
+      <ObservationCard
+        key={observation.id}
+        observation={observation}
+        onDelete={showDeleteDialog}
+        onEdit={showEditDialog}
+      />
+    )
+  })
 
   return (
     <Box m={[0, 3]}>
-      {dates.map((date) => {
-        return (
-          <Box>
-            <Typography.Body
-              as="div"
-              data-cy="observation-short-desc"
-              my={2}
-              sx={{
-                width: "100%",
-                textAlign: "center",
-                fontSize: 1,
-              }}
-              color="textMediumEmphasis"
-            >
-              {dayjs(date).format("D MMMM 'YY")}
-            </Typography.Body>
-            {observations
-              .filter(({ createdDate }) =>
-                dayjs(createdDate ?? "").isSame(date, "day")
-              )
-              .map((observation) => {
-                return (
-                  <ObservationCard
-                    key={observation.id}
-                    observation={observation}
-                    onDelete={showDeleteDialog}
-                    onEdit={showEditDialog}
-                  />
-                )
-              })}
-          </Box>
-        )
-      })}
+      {Object.keys(observationsByDate)
+        .reverse()
+        .map((date) => {
+          const dateUnix = parseInt(date, 10)
+          return (
+            <Fragment key={date}>
+              <Typography.Body my={2} sx={{ textAlign: "center", fontSize: 1 }}>
+                {dayjs.unix(dateUnix).format("D MMMM YYYY")}
+              </Typography.Body>
+              {observationsByDate[dateUnix]}
+            </Fragment>
+          )
+        })}
     </Box>
   )
-})
+}
 
 export default PageAllObservations

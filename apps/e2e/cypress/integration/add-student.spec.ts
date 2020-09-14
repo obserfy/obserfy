@@ -87,8 +87,8 @@ describe("test adding new student", () => {
     cy.visit("/dashboard/students/new")
     cy.contains("Name").find("input").should("have.value", studentName2)
     cy.get(`[data-cy="Date of Entry"]`).click()
-    cy.get(`[data-cy="prev"]`).click()
-    cy.get(`[data-cy="prev"]`).click()
+    cy.get(`[data-cy="prev-month"]`).click()
+    cy.get(`[data-cy="prev-year"]`).click()
     cy.contains("button", "5").click()
     cy.get(`[data-cy=confirm]`).click()
     cy.contains(newClass.name).click()
@@ -97,7 +97,7 @@ describe("test adding new student", () => {
     const newGuardianName = faker.name.firstName()
     cy.contains("Guardian Name").type(newGuardianName)
     cy.contains("Create").click()
-    cy.contains("Save").click()
+    cy.get("[data-cy=save-guardian]").click()
 
     cy.contains(newGuardianName).should("be.visible")
 

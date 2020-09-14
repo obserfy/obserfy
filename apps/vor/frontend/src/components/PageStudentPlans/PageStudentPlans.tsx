@@ -1,12 +1,12 @@
 /** @jsx jsx */
 import { FC, useState } from "react"
 import { Box, Button, Card, Flex, jsx } from "theme-ui"
-import BackNavigation from "../BackNavigation/BackNavigation"
 import {
   NEW_STUDENT_PLANS_URL,
   STUDENT_OVERVIEW_PAGE_URL,
   STUDENT_PLANS_DETAILS_URL,
   STUDENT_PLANS_URL,
+  STUDENTS_URL,
 } from "../../routes"
 import dayjs from "../../dayjs"
 import Typography from "../Typography/Typography"
@@ -17,6 +17,9 @@ import { Link } from "../Link/Link"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import { useGetStudent } from "../../api/useGetStudent"
 import useGetStudentPlans from "../../api/students/useGetStudentPlans"
+import BackButton from "../BackButton/BackButton"
+import Breadcrumb from "../Breadcrumb/Breadcrumb"
+import BreadcrumbItem from "../Breadcrumb/BreadcrumbItem"
 
 interface Props {
   studentId: string
@@ -29,18 +32,18 @@ export const PageStudentPlans: FC<Props> = ({ studentId, date }) => {
 
   return (
     <Box mx="auto" sx={{ maxWidth: "maxWidth.sm" }}>
-      <BackNavigation
-        to={STUDENT_OVERVIEW_PAGE_URL(studentId)}
-        text="Student Overview"
-      />
-      <Typography.H5 mx={3} mt={3} color="textDisabled">
-        {student.data?.name}
-      </Typography.H5>
-      <Typography.H5 mx={3} mb={4}>
-        Plans
-      </Typography.H5>
-      <Flex px={3} pb={2}>
-        <Typography.Body color="textMediumEmphasis">
+      <Flex sx={{ height: 48, alignItems: "center" }}>
+        <BackButton to={STUDENT_OVERVIEW_PAGE_URL(studentId)} />
+        <Breadcrumb>
+          <BreadcrumbItem to={STUDENTS_URL}>Students</BreadcrumbItem>
+          <BreadcrumbItem to={STUDENT_OVERVIEW_PAGE_URL(studentId)}>
+            {student.data?.name.split(" ")[0]}
+          </BreadcrumbItem>
+          <BreadcrumbItem>Plans</BreadcrumbItem>
+        </Breadcrumb>
+      </Flex>
+      <Flex px={3} pb={2} sx={{ alignItems: "flex-end" }}>
+        <Typography.Body color="textMediumEmphasis" sx={{ fontSize: 1 }}>
           {selectedDate.format("ddd, DD MMM 'YY")}
         </Typography.Body>
         <Button
@@ -84,7 +87,7 @@ export const PageStudentPlans: FC<Props> = ({ studentId, date }) => {
         </Button>
         <Button
           variant="outline"
-          py={1}
+          py={2}
           px={3}
           onClick={() => {
             const newDate = dayjs()

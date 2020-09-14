@@ -40,7 +40,7 @@ exports[`DateInput should render correctly 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -177,8 +177,8 @@ exports[`DateInput should render correctly 1`] = `
   border-style: solid;
   border-width: 1px;
   line-height: 1;
-  margin-top: 23px;
-  margin-left: 16px;
+  margin-top: 0;
+  margin-left: 8px;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;

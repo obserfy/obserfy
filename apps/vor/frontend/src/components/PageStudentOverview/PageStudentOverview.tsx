@@ -1,13 +1,12 @@
 /** @jsx jsx */
 import { FC, Fragment, useState } from "react"
 import { navigate } from "gatsby"
-import { Image, Box, Button, Flex, jsx } from "theme-ui"
+import { Box, Button, Flex, Image, jsx } from "theme-ui"
 import { Link } from "../Link/Link"
 import { useGetStudent } from "../../api/useGetStudent"
 import Typography from "../Typography/Typography"
 import Icon from "../Icon/Icon"
 import EmptyListPlaceholder from "../EmptyListPlaceholder/EmptyListPlaceholder"
-import { BackNavigation } from "../BackNavigation/BackNavigation"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import {
   Observation,
@@ -33,16 +32,26 @@ import {
 } from "../../routes"
 import dayjs from "../../dayjs"
 import StudentPicturePlaceholder from "../StudentPicturePlaceholder/StudentPicturePlaceholder"
+import Breadcrumb from "../Breadcrumb/Breadcrumb"
+import BreadcrumbItem from "../Breadcrumb/BreadcrumbItem"
+import BackButton from "../BackButton/BackButton"
 
 interface Props {
   id: string
 }
 export const PageStudentOverview: FC<Props> = ({ id }) => {
   const student = useGetStudent(id)
+
   return (
     <Fragment>
       <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={5}>
-        <BackNavigation text="Home" to={STUDENTS_URL} />
+        <Flex sx={{ height: 48, alignItems: "center" }}>
+          <BackButton to={STUDENTS_URL} />
+          <Breadcrumb>
+            <BreadcrumbItem to={STUDENTS_URL}>Students</BreadcrumbItem>
+            <BreadcrumbItem>{student.data?.name.split(" ")[0]}</BreadcrumbItem>
+          </Breadcrumb>
+        </Flex>
         <Flex sx={{ alignItems: "center" }} mx={3}>
           <Box sx={{ flexShrink: 0 }}>
             {student.data?.profilePic ? (
@@ -95,7 +104,7 @@ export const PageStudentOverview: FC<Props> = ({ id }) => {
 
         <ObservationSection studentId={id} />
 
-        <Typography.H6 px={[3, 4]} pt={4} pb={3} sx={{ fontWeight: "bold" }}>
+        <Typography.H6 px={3} pt={4} pb={3} sx={{ fontWeight: "bold" }}>
           Curriculum Progress
         </Typography.H6>
         <Box mx={[0, 3]}>
@@ -115,8 +124,8 @@ const ObservationSection: FC<{ studentId: string }> = ({ studentId }) => {
 
   const dates = [
     ...new Set(
-      data?.map(({ createdDate }) =>
-        dayjs(createdDate ?? "")
+      data?.map(({ eventTime }) =>
+        dayjs(eventTime ?? "")
           .startOf("day")
           .toISOString()
       )
@@ -129,9 +138,13 @@ const ObservationSection: FC<{ studentId: string }> = ({ studentId }) => {
 
   const listOfObservations = data
     ?.filter((observation) =>
-      dayjs(observation.createdDate ?? "").isSame(dates[selectedDate], "day")
+      dayjs(observation.eventTime ?? "").isSame(dates[selectedDate], "day")
     )
-    ?.sort((a, b) => parseInt(a.categoryId, 10) - parseInt(b.categoryId, 10))
+    ?.sort((a, b) => {
+      const firstArea = a.area?.name ?? ""
+      const secondArea = b.area?.name ?? ""
+      return firstArea.localeCompare(secondArea)
+    })
     ?.map((observation) => (
       <ObservationCard
         key={observation.id}
@@ -193,7 +206,7 @@ const ObservationSection: FC<{ studentId: string }> = ({ studentId }) => {
 
   return (
     <Fragment>
-      <Flex sx={{ alignItems: "flex-end" }} pt={4} pl={[3, 4]} pr={3} mb={2}>
+      <Flex sx={{ alignItems: "flex-end" }} pt={4} px={3} mb={2}>
         <Box>
           <Typography.H6 mr="auto" sx={{ fontWeight: "bold" }} mb={1}>
             Observations

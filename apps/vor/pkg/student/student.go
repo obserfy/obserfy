@@ -285,12 +285,13 @@ func deleteStudent(s rest.Server, store Store) http.Handler {
 
 func patchStudent(s rest.Server, store Store) http.Handler {
 	type requestBody struct {
-		Name        string          `json:"name"`
-		DateOfBirth *time.Time      `json:"dateOfBirth"`
-		DateOfEntry *time.Time      `json:"dateOfEntry"`
-		CustomId    string          `json:"customId"`
-		Gender      postgres.Gender `json:"gender"`
-		Active      *bool           `json:"active"`
+		Name          string          `json:"name"`
+		DateOfBirth   *time.Time      `json:"dateOfBirth"`
+		DateOfEntry   *time.Time      `json:"dateOfEntry"`
+		CustomId      string          `json:"customId"`
+		Gender        postgres.Gender `json:"gender"`
+		Active        *bool           `json:"active"`
+		ProfileImageId string         `json:"profileImageId"`
 	}
 	type responseBody struct {
 		Id          string     `json:"id"`
@@ -318,6 +319,7 @@ func patchStudent(s rest.Server, store Store) http.Handler {
 		newStudent.CustomId = requestBody.CustomId
 		newStudent.DateOfEntry = requestBody.DateOfEntry
 		newStudent.Active = requestBody.Active
+		newStudent.ProfileImageId = requestBody.ProfileImageId
 		if err := store.UpdateStudent(newStudent); err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Failed updating old student data", err}
 		}
@@ -345,6 +347,10 @@ func postObservation(s rest.Server, store Store, imgproxyClient *imgproxy.Client
 		AreaId     uuid.UUID   `json:"areaId"`
 	}
 
+	type area struct {
+		Id   uuid.UUID `json:"id"`
+		Name string    `json:"name"`
+	}
 	type image struct {
 		Id           uuid.UUID `json:"id"`
 		ThumbnailUrl string    `json:"thumbnailUrl"`
@@ -357,7 +363,7 @@ func postObservation(s rest.Server, store Store, imgproxyClient *imgproxy.Client
 		CreatedDate time.Time `json:"createdDate"`
 		EventTime   time.Time `json:"eventTime"`
 		Images      []image   `json:"images"`
-		AreaId      uuid.UUID `json:"areaId"`
+		Area        *area     `json:"area,omitempty"`
 		CreatorId   string    `json:"creatorId,omitempty"`
 		CreatorName string    `json:"creatorName,omitempty"`
 	}
@@ -407,18 +413,24 @@ func postObservation(s rest.Server, store Store, imgproxyClient *imgproxy.Client
 			})
 		}
 
-		w.WriteHeader(http.StatusCreated)
-		if err := rest.WriteJson(w, responseBody{
+		response := responseBody{
 			ShortDesc:   observation.ShortDesc,
 			LongDesc:    observation.LongDesc,
 			CategoryId:  observation.CategoryId,
 			EventTime:   observation.EventTime,
 			Images:      images,
-			AreaId:      observation.AreaId,
 			CreatorId:   observation.CreatorId,
 			CreatorName: observation.Creator.Name,
 			CreatedDate: observation.CreatedDate,
-		}); err != nil {
+		}
+		if observation.AreaId != uuid.Nil {
+			response.Area = &area{
+				Id:   observation.AreaId,
+				Name: observation.Area.Name,
+			}
+		}
+		w.WriteHeader(http.StatusCreated)
+		if err := rest.WriteJson(w, response); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
 		return nil
@@ -426,6 +438,10 @@ func postObservation(s rest.Server, store Store, imgproxyClient *imgproxy.Client
 }
 
 func getObservation(s rest.Server, store Store) http.Handler {
+	type area struct {
+		Id   string `json:"id"`
+		Name string `json:"name"`
+	}
 	type observation struct {
 		Id          string    `json:"id"`
 		StudentName string    `json:"studentName"`
@@ -436,6 +452,7 @@ func getObservation(s rest.Server, store Store) http.Handler {
 		ShortDesc   string    `json:"shortDesc"`
 		CreatedDate time.Time `json:"createdDate"`
 		EventTime   time.Time `json:"eventTime,omitempty"`
+		Area        *area     `json:"area,omitempty"`
 	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		id := chi.URLParam(r, "studentId")
@@ -458,6 +475,12 @@ func getObservation(s rest.Server, store Store) http.Handler {
 			responseBody[i].ShortDesc = o.ShortDesc
 			responseBody[i].EventTime = o.EventTime
 			responseBody[i].CreatedDate = o.CreatedDate
+			if o.AreaId != uuid.Nil {
+				responseBody[i].Area = &area{
+					Id:   o.Area.Id,
+					Name: o.Area.Name,
+				}
+			}
 			if o.CreatorId != "" {
 				responseBody[i].CreatorId = o.CreatorId
 				responseBody[i].CreatorName = o.Creator.Name
