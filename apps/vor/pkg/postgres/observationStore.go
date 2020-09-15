@@ -80,33 +80,51 @@ func (s ObservationStore) UpdateObservation(
 	model.AddDateColumn("event_time", eventTime)
 	model.AddUUIDColumn("area_id", areaId)
 
-	if _, err := s.Model(&model).
-		Where("id=?", observationId).
+	if _, err := s.Model(model.GetModel()).
+		TableExpr("observations").
+		Where("id = ?", observationId).
 		Update(); err != nil {
 		return nil, err
 	}
 
 	// Get newly updated observation
 	observation := Observation{Id: observationId}
-	if err := s.Model().
+	if err := s.Model(&observation).
 		WherePK().
 		Relation("Area").
 		Relation("Creator").
 		Relation("Images").
+		Relation("Student").
 		Select(); err != nil {
 		return nil, richErrors.Wrap(err, "failed to get updated observation")
 	}
 
-	return &domain.Observation{
+	result := domain.Observation{
 		Id:          observation.Id,
 		StudentId:   observation.StudentId,
+		StudentName: observation.Student.Name,
 		ShortDesc:   observation.ShortDesc,
 		LongDesc:    observation.LongDesc,
 		CategoryId:  observation.CategoryId,
 		CreatedDate: observation.CreatedDate,
 		EventTime:   observation.EventTime,
 		CreatorId:   observation.CreatorId,
-	}, nil
+		CreatorName: observation.Creator.Name,
+	}
+	if observation.AreaId != uuid.Nil {
+		result.Area = domain.Area{
+			Id:   observation.Area.Id,
+			Name: observation.Area.Name,
+		}
+	}
+	for i := range observation.Images {
+		result.Images = append(result.Images, domain.Image{
+			Id:        observation.Images[i].Id,
+			ObjectKey: observation.Images[i].ObjectKey,
+			CreatedAt: observation.Images[i].CreatedAt,
+		})
+	}
+	return &result, nil
 }
 
 func (s ObservationStore) DeleteObservation(observationId string) error {

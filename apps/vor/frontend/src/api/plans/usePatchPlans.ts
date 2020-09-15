@@ -10,7 +10,7 @@ interface PatchPlanPayload {
   areaId?: string
 }
 const usePatchPlan = (planId: string) => {
-  const patchPlan = patchApi<PatchPlanPayload>("/plans", planId)
+  const patchPlan = patchApi<PatchPlanPayload>(`/plans/${planId}`)
 
   return useMutation(patchPlan, {
     onSuccess: async () => {

@@ -18,7 +18,7 @@ const ObservationDetails: FC = () => {
   const student = useGetStudent(studentId)
 
   return (
-    <Box mx="auto" sx={{ maxWidth: "maxWidth.tm" }}>
+    <Box mx="auto" sx={{ maxWidth: "maxWidth.sm" }}>
       <SEO title="Edit Student" />
       <TopBar
         breadcrumbs={[

@@ -154,6 +154,7 @@ func patchObservation(s rest.Server, store Store) rest.Handler {
 		OriginalUrl  string    `json:"originalUrl"`
 	}
 	type responseBody struct {
+		Id          string    `json:"id"`
 		ShortDesc   string    `json:"shortDesc"`
 		LongDesc    string    `json:"longDesc"`
 		CreatedDate time.Time `json:"createdDate"`
@@ -188,6 +189,7 @@ func patchObservation(s rest.Server, store Store) rest.Handler {
 		}
 
 		response := responseBody{
+			Id:          observation.Id,
 			ShortDesc:   observation.ShortDesc,
 			LongDesc:    observation.LongDesc,
 			CreatedDate: observation.CreatedDate,

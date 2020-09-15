@@ -42,8 +42,10 @@ export const deleteApi = (url: string) => async () => {
   return result
 }
 
-export const patchApi = <T>(url: string, id: string) => async (payload: T) => {
-  const result = await fetch(`${BASE_URL}${url}/${id}`, {
+export const patchApi = <T>(url: string) => async (
+  payload: T
+): Promise<Response> => {
+  const result = await fetch(`${BASE_URL}${url}`, {
     credentials: "same-origin",
     method: "PATCH",
     body: JSON.stringify(payload),

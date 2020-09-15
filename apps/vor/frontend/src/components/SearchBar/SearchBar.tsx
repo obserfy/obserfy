@@ -3,7 +3,7 @@ import { InputProps } from "theme-ui"
 import { ReactComponent as SearchIcon } from "../../icons/search.svg"
 import Input from "../Input/Input"
 
-interface Props extends InputProps {
+interface Props extends Omit<InputProps, "ref"> {
   onChange?: ChangeEventHandler<HTMLInputElement>
 }
 export const SearchBar: FC<Props> = ({ sx, ...props }) => (
