@@ -4,20 +4,13 @@ import (
 	"crypto/hmac"
 	"crypto/sha256"
 	"encoding/base64"
-	"encoding/hex"
 	"fmt"
-	richErrors "github.com/pkg/errors"
-	"os"
 )
 
-type Client struct {
-	keyBinary   []byte
-	saltBinary  []byte
-	baseUrl     string
-	minioBucket string
-}
-
-func (i Client) GenerateUrl(imagePath string, width int, height int) string {
+func GenerateUrl(imageObjectKey string, width int, height int) string {
+	// Create sane default transformation
+	gravity := "no"
+	enlarge := 1
 	resize := "fill"
 	if width == 0 {
 		width = 100
@@ -25,53 +18,35 @@ func (i Client) GenerateUrl(imagePath string, width int, height int) string {
 	if height == 0 {
 		height = 100
 	}
-	gravity := "no"
-	enlarge := 1
 
-	url := "s3://" + i.minioBucket + "/" + imagePath
-	encodedURL := base64.RawURLEncoding.EncodeToString([]byte(url))
-
-	path := fmt.Sprintf("/%s/%d/%d/%s/%d/%s", resize, width, height, gravity, enlarge, encodedURL)
-
-	mac := hmac.New(sha256.New, i.keyBinary)
-	mac.Write(i.saltBinary)
-	mac.Write([]byte(path))
-	signature := base64.RawURLEncoding.EncodeToString(mac.Sum(nil))
-	return i.baseUrl + "/" + signature + path
+	// Create image's S3 URL
+	S3Url := generateBase64S3Url(imageObjectKey)
+	imgproxyUrl := fmt.Sprintf("/%s/%d/%d/%s/%d/%s", resize, width, height, gravity, enlarge, S3Url)
+	return signUrl(imgproxyUrl)
 }
 
-func (i Client) GenerateOriginalUrl(imagePath string) string {
-	url := "s3://" + i.minioBucket + "/" + imagePath
-	path := "/" + base64.RawURLEncoding.EncodeToString([]byte(url))
-
-	mac := hmac.New(sha256.New, i.keyBinary)
-	mac.Write(i.saltBinary)
-	mac.Write([]byte(path))
-	signature := base64.RawURLEncoding.EncodeToString(mac.Sum(nil))
-	return i.baseUrl + "/" + signature + path
+func GenerateOriginalUrl(imageObjectKey string) string {
+	S3Url := generateBase64S3Url(imageObjectKey)
+	imgproxyUrl := fmt.Sprintf("/%s", S3Url)
+	return signUrl(imgproxyUrl)
 }
 
-func NewClient() (*Client, error) {
-	key := os.Getenv("IMGPROXY_KEY")
-	salt := os.Getenv("IMGPROXY_SALT")
-	imgproxyUrl := os.Getenv("IMGPROXY_URL")
-	minioBucket := os.Getenv("MINIO_BUCKET_NAME")
+func generateBase64S3Url(objectKey string) string {
+	config := mustGetConfig()
+	return base64.RawURLEncoding.EncodeToString(
+		[]byte("s3://" + config.minioBucket + "/" + objectKey),
+	)
+}
 
-	var keyBin, saltBin []byte
-	var err error
+func signUrl(url string) string {
+	config := mustGetConfig()
 
-	if keyBin, err = hex.DecodeString(key); err != nil {
-		return nil, richErrors.Wrap(err, "Failed to decode imgproxy bin string to hex")
-	}
+	// Create signature
+	mac := hmac.New(sha256.New, config.keyBinary)
+	mac.Write(config.saltBinary)
+	mac.Write([]byte(url))
+	signature := base64.RawURLEncoding.EncodeToString(mac.Sum(nil))
 
-	if saltBin, err = hex.DecodeString(salt); err != nil {
-		return nil, richErrors.Wrap(err, "Failed to decode imgproxy salt to hex")
-	}
-
-	return &Client{
-		keyBinary:   keyBin,
-		saltBinary:  saltBin,
-		baseUrl:     imgproxyUrl,
-		minioBucket: minioBucket,
-	}, nil
+	// Create signed url
+	return config.baseUrl + "/" + signature + url
 }

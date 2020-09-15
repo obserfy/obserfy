@@ -409,6 +409,12 @@ func (u *PartialUpdateModel) AddDateColumn(name string, value *time.Time) {
 	}
 }
 
+func (u *PartialUpdateModel) AddUUIDColumn(name string, value uuid.UUID) {
+	if value != uuid.Nil {
+		(*u)[name] = value
+	}
+}
+
 func (u *PartialUpdateModel) AddIdColumn(name string, value *string) {
 	if value != nil {
 		(*u)[name] = value

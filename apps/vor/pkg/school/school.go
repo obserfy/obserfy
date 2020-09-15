@@ -23,7 +23,6 @@ import (
 func NewRouter(
 	server rest.Server,
 	store Store,
-	imgproxyClient *imgproxy.Client,
 	email MailService,
 ) *chi.Mux {
 	r := chi.NewRouter()
@@ -31,7 +30,7 @@ func NewRouter(
 	r.Route("/{schoolId}", func(r chi.Router) {
 		r.Use(authorizationMiddleware(server, store))
 		r.Method("GET", "/", getSchool(server, store))
-		r.Method("GET", "/students", getStudents(server, store, imgproxyClient))
+		r.Method("GET", "/students", getStudents(server, store))
 		r.Method("POST", "/students", postNewStudent(server, store))
 		r.Method("POST", "/invite-code", refreshInviteCode(server, store))
 		r.Method("POST", "/invite-user", inviteUser(server, store, email))
@@ -388,7 +387,7 @@ func getSchool(s rest.Server, store Store) rest.Handler {
 	})
 }
 
-func getStudents(s rest.Server, store Store, imgproxyClient *imgproxy.Client) rest.Handler {
+func getStudents(s rest.Server, store Store) rest.Handler {
 	type (
 		class struct {
 			Id   string `json:"classId"`
@@ -432,7 +431,7 @@ func getStudents(s rest.Server, store Store, imgproxyClient *imgproxy.Client) re
 		for _, student := range students {
 			profileImageUrl := ""
 			if student.ProfileImage.ObjectKey != "" {
-				profileImageUrl = imgproxyClient.GenerateUrl(student.ProfileImage.ObjectKey, 80, 80)
+				profileImageUrl = imgproxy.GenerateUrl(student.ProfileImage.ObjectKey, 80, 80)
 			}
 
 			classes := make([]class, 0)

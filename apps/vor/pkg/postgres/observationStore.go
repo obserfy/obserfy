@@ -1,18 +1,19 @@
 package postgres
 
 import (
+	"github.com/chrsep/vor/pkg/domain"
 	"github.com/go-pg/pg/v10"
 	"github.com/go-pg/pg/v10/orm"
+	"github.com/google/uuid"
 	richErrors "github.com/pkg/errors"
-
-	cObservation "github.com/chrsep/vor/pkg/observation"
+	"time"
 )
 
 type ObservationStore struct {
 	*pg.DB
 }
 
-func (s ObservationStore) GetObservation(id string) (*cObservation.Observation, error) {
+func (s ObservationStore) GetObservation(id string) (*domain.Observation, error) {
 	var observation Observation
 	if err := s.Model(&observation).
 		Where("Observation.id=?", id).
@@ -24,7 +25,7 @@ func (s ObservationStore) GetObservation(id string) (*cObservation.Observation, 
 		return nil, richErrors.Wrap(err, "failed getting observation")
 	}
 
-	return &cObservation.Observation{
+	return &domain.Observation{
 		Id:          observation.Id,
 		StudentName: observation.Student.Name,
 		CategoryId:  observation.CategoryId,
@@ -63,29 +64,45 @@ func (s ObservationStore) CheckPermissions(observationId string, userId string) 
 	// return true, nil
 }
 
-func (s ObservationStore) UpdateObservation(observationId string, shortDesc string, longDesc string, categoryId string) (*cObservation.Observation, error) {
-	// Query the requested observation
-	var observation Observation
-	if err := s.Model(&observation).
+func (s ObservationStore) UpdateObservation(
+	observationId string,
+	shortDesc *string,
+	longDesc *string,
+	eventTime *time.Time,
+	areaId uuid.UUID,
+	categoryId uuid.UUID,
+) (*domain.Observation, error) {
+	// Create model to update the data
+	model := make(PartialUpdateModel)
+	model.AddStringColumn("long_desc", longDesc)
+	model.AddStringColumn("short_desc", shortDesc)
+	model.AddUUIDColumn("category_id", categoryId)
+	model.AddDateColumn("event_time", eventTime)
+	model.AddUUIDColumn("area_id", areaId)
+
+	if _, err := s.Model(&model).
 		Where("id=?", observationId).
+		Update(); err != nil {
+		return nil, err
+	}
+
+	// Get newly updated observation
+	observation := Observation{Id: observationId}
+	if err := s.Model().
+		WherePK().
+		Relation("Area").
+		Relation("Creator").
+		Relation("Images").
 		Select(); err != nil {
-		return nil, err
+		return nil, richErrors.Wrap(err, "failed to get updated observation")
 	}
 
-	// Update the selected observation
-	observation.ShortDesc = shortDesc
-	observation.LongDesc = longDesc
-	observation.CategoryId = categoryId
-	if err := s.Update(&observation); err != nil {
-		return nil, err
-	}
-
-	return &cObservation.Observation{
+	return &domain.Observation{
 		Id:          observation.Id,
 		StudentId:   observation.StudentId,
-		ShortDesc:   shortDesc,
-		LongDesc:    longDesc,
-		CategoryId:  categoryId,
+		ShortDesc:   observation.ShortDesc,
+		LongDesc:    observation.LongDesc,
+		CategoryId:  observation.CategoryId,
 		CreatedDate: observation.CreatedDate,
 		EventTime:   observation.EventTime,
 		CreatorId:   observation.CreatorId,

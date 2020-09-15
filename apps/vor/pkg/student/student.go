@@ -13,15 +13,15 @@ import (
 	richErrors "github.com/pkg/errors"
 )
 
-func NewRouter(s rest.Server, store Store, imgproxyClient *imgproxy.Client) *chi.Mux {
+func NewRouter(s rest.Server, store Store) *chi.Mux {
 	r := chi.NewRouter()
 	r.Route("/{studentId}", func(r chi.Router) {
 		r.Use(authorizationMiddleware(s, store))
-		r.Method("GET", "/", getStudent(s, store, imgproxyClient))
+		r.Method("GET", "/", getStudent(s, store))
 		r.Method("DELETE", "/", deleteStudent(s, store))
 		r.Method("PATCH", "/", patchStudent(s, store))
 
-		r.Method("POST", "/observations", postObservation(s, store, imgproxyClient))
+		r.Method("POST", "/observations", postObservation(s, store))
 		r.Method("GET", "/observations", getObservation(s, store))
 
 		r.Method("POST", "/attendances", postAttaendances(s, store))
@@ -39,7 +39,7 @@ func NewRouter(s rest.Server, store Store, imgproxyClient *imgproxy.Client) *chi
 		r.Method("GET", "/plans", getPlans(s, store))
 
 		r.Method("POST", "/images", postNewImage(s, store))
-		r.Method("GET", "/images", getStudentImages(s, store, imgproxyClient))
+		r.Method("GET", "/images", getStudentImages(s, store))
 	})
 	return r
 }
@@ -195,7 +195,7 @@ func deleteGuardianRelation(s rest.Server, store Store) http.Handler {
 	})
 }
 
-func getStudent(s rest.Server, store Store, imgproxyClient *imgproxy.Client) http.Handler {
+func getStudent(s rest.Server, store Store) http.Handler {
 	type Guardian struct {
 		Id           string `json:"id"`
 		Name         string `json:"name"`
@@ -264,7 +264,7 @@ func getStudent(s rest.Server, store Store, imgproxyClient *imgproxy.Client) htt
 			Active:      *student.Active,
 		}
 		if student.ProfileImage.ObjectKey != "" {
-			response.ProfilePic = imgproxyClient.GenerateUrl(student.ProfileImage.ObjectKey, 80, 80)
+			response.ProfilePic = imgproxy.GenerateUrl(student.ProfileImage.ObjectKey, 80, 80)
 		}
 		if err := rest.WriteJson(w, response); err != nil {
 			return rest.NewWriteJsonError(err)
@@ -335,7 +335,7 @@ func patchStudent(s rest.Server, store Store) http.Handler {
 	})
 }
 
-func postObservation(s rest.Server, store Store, imgproxyClient *imgproxy.Client) http.Handler {
+func postObservation(s rest.Server, store Store) http.Handler {
 	type requestBody struct {
 		ShortDesc  string      `json:"shortDesc"`
 		LongDesc   string      `json:"longDesc"`
@@ -406,8 +406,8 @@ func postObservation(s rest.Server, store Store, imgproxyClient *imgproxy.Client
 		for i := range observation.Images {
 			images = append(images, image{
 				Id:           observation.Images[i].Id,
-				ThumbnailUrl: imgproxyClient.GenerateUrl(observation.Images[i].ObjectKey, 80, 80),
-				OriginalUrl:  imgproxyClient.GenerateOriginalUrl(observation.Images[i].ObjectKey),
+				ThumbnailUrl: imgproxy.GenerateUrl(observation.Images[i].ObjectKey, 80, 80),
+				OriginalUrl:  imgproxy.GenerateOriginalUrl(observation.Images[i].ObjectKey),
 			})
 		}
 
@@ -660,7 +660,7 @@ func postNewImage(s rest.Server, store Store) http.Handler {
 	})
 }
 
-func getStudentImages(s rest.Server, store Store, client *imgproxy.Client) rest.Handler {
+func getStudentImages(s rest.Server, store Store) rest.Handler {
 	type imageJson struct {
 		Id           uuid.UUID `json:"id"`
 		OriginalUrl  string    `json:"originalUrl"`
@@ -681,8 +681,8 @@ func getStudentImages(s rest.Server, store Store, client *imgproxy.Client) rest.
 
 		response := make([]imageJson, 0)
 		for _, image := range images {
-			originalUrl := client.GenerateOriginalUrl(image.ObjectKey)
-			thumbnailUrl := client.GenerateUrl(image.ObjectKey, 400, 400)
+			originalUrl := imgproxy.GenerateOriginalUrl(image.ObjectKey)
+			thumbnailUrl := imgproxy.GenerateUrl(image.ObjectKey, 400, 400)
 			response = append(response, imageJson{
 				Id:           image.Id,
 				CreatedAt:    image.CreatedAt,

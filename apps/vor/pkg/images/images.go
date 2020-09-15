@@ -15,16 +15,16 @@ type Store interface {
 	DeleteImageById(id uuid.UUID) error
 }
 
-func NewRouter(server rest.Server, store Store, imgproxyClient imgproxy.Client) *chi.Mux {
+func NewRouter(server rest.Server, store Store) *chi.Mux {
 	r := chi.NewRouter()
 	r.Route("/{imageId}", func(r chi.Router) {
-		r.Method("GET", "/", getImage(server, store, imgproxyClient))
+		r.Method("GET", "/", getImage(server, store))
 		r.Method("DELETE", "/", deleteImage(server, store))
 	})
 	return r
 }
 
-func getImage(server rest.Server, store Store, client imgproxy.Client) http.Handler {
+func getImage(server rest.Server, store Store) http.Handler {
 	type responseBody struct {
 		Id          string    `json:"id"`
 		Url         string    `json:"url"`
@@ -59,8 +59,8 @@ func getImage(server rest.Server, store Store, client imgproxy.Client) http.Hand
 
 		response := &responseBody{
 			Id:          image.Id.String(),
-			Url:         client.GenerateUrl(image.ObjectKey, 100, 100),
-			OriginalUrl: client.GenerateOriginalUrl(image.ObjectKey),
+			Url:         imgproxy.GenerateUrl(image.ObjectKey, 100, 100),
+			OriginalUrl: imgproxy.GenerateOriginalUrl(image.ObjectKey),
 			CreatedAt:   image.CreatedAt,
 		}
 		if err := rest.WriteJson(w, response); err != nil {
