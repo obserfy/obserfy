@@ -45,11 +45,17 @@ export const ALL_OBSERVATIONS_PAGE_URL = (studentId: string): string =>
 export const NEW_OBSERVATION_URL = (studentId: string): string =>
   `/dashboard/students/observations/new?studentId=${studentId}`
 
-export const EDIT_OBSERVATION_URL = (
+export const OBSERVATION_DETAILS_URL = (
   studentId: string,
   observationId: string
 ): string =>
-  `/dashboard/students/observations/edit?studentId=${studentId}&observationId=${observationId}`
+  `/dashboard/students/observations/details?studentId=${studentId}&observationId=${observationId}`
+
+export const STUDENT_OVERVIEWS_OBSERVATION_DETAILS_URL = (
+  studentId: string,
+  observationId: string
+): string =>
+  `/dashboard/students/observation-details?studentId=${studentId}&observationId=${observationId}`
 
 export const STUDENT_PLANS_URL = (studentId: string, date?: Dayjs) =>
   `/dashboard/students/plans?studentId=${studentId}&date=${

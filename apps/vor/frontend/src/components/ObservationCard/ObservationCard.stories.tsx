@@ -1,5 +1,4 @@
 import React, { FC } from "react"
-import { action } from "@storybook/addon-actions"
 import ObservationCard from "./ObservationCard"
 
 export default {
@@ -16,11 +15,9 @@ export const Basic: FC = () => (
       studentName: "Angelica",
       createdDate: "2019-12-10T11:53:02.050339Z",
       id: "",
-      studentId: "",
       longDesc: "",
       categoryId: "0",
       shortDesc: "",
     }}
-    onDelete={action("delete")}
   />
 )

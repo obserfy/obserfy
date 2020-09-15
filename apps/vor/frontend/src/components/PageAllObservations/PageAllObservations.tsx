@@ -4,25 +4,27 @@ import {
   Observation,
   useGetStudentObservations,
 } from "../../api/useGetStudentObservations"
-import { STUDENT_OVERVIEW_PAGE_URL, STUDENTS_URL } from "../../routes"
+import {
+  OBSERVATION_DETAILS_URL,
+  STUDENT_OVERVIEW_PAGE_URL,
+  STUDENTS_URL,
+} from "../../routes"
 import Chip from "../Chip/Chip"
 import Typography from "../Typography/Typography"
 import { useGetStudent } from "../../api/useGetStudent"
-import DeleteObservationDialog from "../DeleteObservationDialog/DeleteObservationDialog"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import ObservationCard from "../ObservationCard/ObservationCard"
 import dayjs from "../../dayjs"
 import BackButton from "../BackButton/BackButton"
 import Breadcrumb from "../Breadcrumb/Breadcrumb"
 import BreadcrumbItem from "../Breadcrumb/BreadcrumbItem"
+import { Link } from "../Link/Link"
 
 interface Props {
   studentId: string
 }
 export const PageAllObservations: FC<Props> = ({ studentId }) => {
   const [selectedArea, setSelectedArea] = useState("")
-  const [isDeletingObservation, setIsDeletingObservation] = useState(false)
-  const [targetObservation, setTargetObservation] = useState<Observation>()
   const observations = useGetStudentObservations(studentId)
   const student = useGetStudent(studentId)
 
@@ -51,7 +53,7 @@ export const PageAllObservations: FC<Props> = ({ studentId }) => {
             <BreadcrumbItem to={STUDENT_OVERVIEW_PAGE_URL(studentId)}>
               {student.data?.name.split(" ")[0]}
             </BreadcrumbItem>
-            <BreadcrumbItem>All Observations</BreadcrumbItem>
+            <BreadcrumbItem>Observations</BreadcrumbItem>
           </Breadcrumb>
         </Flex>
         <Flex pl={3} pr={2} py={2} sx={{ flexWrap: "wrap" }}>
@@ -127,51 +129,41 @@ export const PageAllObservations: FC<Props> = ({ studentId }) => {
         )}
         {observations.isSuccess && (
           <ObservationList
+            studentId={studentId}
             observations={
               selectedArea !== ""
                 ? parsedData.observationsByArea[selectedArea] ?? []
                 : observations.data ?? []
             }
-            showDeleteDialog={(observation) => {
-              setIsDeletingObservation(true)
-              setTargetObservation(observation)
-            }}
           />
         )}
       </Box>
-      {isDeletingObservation && targetObservation && (
-        <DeleteObservationDialog
-          observationId={targetObservation.id ?? ""}
-          shortDesc={targetObservation?.shortDesc}
-          onDismiss={() => setIsDeletingObservation(false)}
-          onDeleted={() => {
-            observations.refetch()
-            setIsDeletingObservation(false)
-          }}
-        />
-      )}
     </>
   )
 }
 
 const ObservationList: FC<{
+  studentId: string
   observations: Observation[]
-  showDeleteDialog: (observation: Observation) => void
-}> = ({ showDeleteDialog, observations }) => {
-  const observationsByDate: { [key: number]: ReactNode[] } = {}
-  observations.forEach((observation) => {
-    const date = dayjs(observation.eventTime).startOf("day").unix()
-    if (observationsByDate[date] === undefined) {
-      observationsByDate[date] = []
-    }
-    observationsByDate[date].push(
-      <ObservationCard
-        key={observation.id}
-        observation={observation}
-        onDelete={showDeleteDialog}
-      />
-    )
-  })
+}> = ({ observations, studentId }) => {
+  const observationsByDate = useMemo(() => {
+    const result: { [key: number]: ReactNode[] } = {}
+    observations?.forEach((observation) => {
+      const date = dayjs(observation.eventTime).startOf("day").unix()
+      if (result[date] === undefined) {
+        result[date] = []
+      }
+      result[date].push(
+        <Link
+          key={observation.id}
+          to={OBSERVATION_DETAILS_URL(studentId, observation.id)}
+        >
+          <ObservationCard key={observation.id} observation={observation} />
+        </Link>
+      )
+    })
+    return result
+  }, [observations])
 
   return (
     <Box m={[0, 3]}>

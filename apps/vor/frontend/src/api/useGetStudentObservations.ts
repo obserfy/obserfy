@@ -3,7 +3,6 @@ import { getApi } from "./fetchApi"
 
 export interface Observation {
   id: string
-  studentId: string
   studentName: string
   shortDesc: string
   longDesc: string

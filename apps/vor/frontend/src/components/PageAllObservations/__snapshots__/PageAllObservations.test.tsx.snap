@@ -344,7 +344,7 @@ exports[`PageAllObservations should render correctly 1`] = `
           <div
             class="emotion-9"
           >
-            All Observations
+            Observations
             <span
               class="splitter"
             >

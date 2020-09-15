@@ -12,7 +12,6 @@ import {
   Observation,
   useGetStudentObservations,
 } from "../../api/useGetStudentObservations"
-import DeleteObservationDialog from "../DeleteObservationDialog/DeleteObservationDialog"
 import ObservationCard from "../ObservationCard/ObservationCard"
 import StudentProgressSummaryCard from "../StudentProgressSummaryCard/StudentProgressSummaryCard"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
@@ -25,6 +24,7 @@ import {
   ALL_OBSERVATIONS_PAGE_URL,
   NEW_OBSERVATION_URL,
   STUDENT_IMAGES_URL,
+  STUDENT_OVERVIEWS_OBSERVATION_DETAILS_URL,
   STUDENT_PLANS_URL,
   STUDENT_PROFILE_URL,
   STUDENTS_URL,
@@ -115,10 +115,8 @@ export const PageStudentOverview: FC<Props> = ({ id }) => {
 }
 
 const ObservationSection: FC<{ studentId: string }> = ({ studentId }) => {
-  const { data, refetch, isLoading } = useGetStudentObservations(studentId)
-  const [targetObservation, setTargetObservation] = useState<Observation>()
+  const { data, isLoading } = useGetStudentObservations(studentId)
   const [selectionIdx, setSelectionIdx] = useState(0)
-  const [isDeletingObservation, setIsDeletingObservation] = useState(false)
 
   const dataLength = data?.length ?? 0
 
@@ -215,28 +213,18 @@ const ObservationSection: FC<{ studentId: string }> = ({ studentId }) => {
             return firstArea.localeCompare(secondArea)
           })
           .map((observation) => (
-            <ObservationCard
+            <Link
               key={observation.id}
-              observation={observation}
-              onDelete={(value) => {
-                setTargetObservation(value)
-                setIsDeletingObservation(true)
-              }}
-            />
+              to={STUDENT_OVERVIEWS_OBSERVATION_DETAILS_URL(
+                studentId,
+                observation.id
+              )}
+            >
+              <ObservationCard key={observation.id} observation={observation} />
+            </Link>
           ))}
         {isLoading && !data && <ObservationLoadingPlaceholder />}
       </Box>
-      {isDeletingObservation && targetObservation && (
-        <DeleteObservationDialog
-          observationId={targetObservation.id ?? ""}
-          shortDesc={targetObservation?.shortDesc}
-          onDismiss={() => setIsDeletingObservation(false)}
-          onDeleted={async () => {
-            await refetch()
-            setIsDeletingObservation(false)
-          }}
-        />
-      )}
     </Fragment>
   )
 }
