@@ -34,7 +34,10 @@ const ObservationDetails: FC = () => {
           { text: "Details" },
         ]}
       />
-      <PageObservationDetails observationId={observationId} />
+      <PageObservationDetails
+        observationId={observationId}
+        backUrl={ALL_OBSERVATIONS_PAGE_URL(studentId)}
+      />
     </Box>
   )
 }

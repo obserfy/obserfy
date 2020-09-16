@@ -1,5 +1,5 @@
 import React, { FC, Fragment, useEffect, useRef, useState } from "react"
-import { Box, Card } from "theme-ui"
+import { Box, Button, Card } from "theme-ui"
 import useGetObservation from "../../api/observations/useGetObservation"
 import Dialog from "../Dialog/Dialog"
 import DialogHeader from "../DialogHeader/DialogHeader"
@@ -7,14 +7,21 @@ import Input from "../Input/Input"
 import usePatchObservation from "../../api/observations/usePatchObservation"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import DataBox from "../DataBox/DataBox"
+import Icon from "../Icon/Icon"
+import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
+import DeleteObservationDialog from "../DeleteObservationDialog/DeleteObservationDialog"
+import { navigate } from "../Link/Link"
 
 export interface PageObservationDetailsProps {
   observationId: string
+  backUrl: string
 }
 export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
   observationId,
+  backUrl,
 }) => {
   const { data, isLoading } = useGetObservation(observationId)
+  const [isDeleting, setIsDeleting] = useState(false)
   const [patchObservation, patchObservationState] = usePatchObservation(
     observationId
   )
@@ -29,7 +36,7 @@ export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
 
   return (
     <Box>
-      <Card sx={{ borderRadius: [0, "default"] }}>
+      <Card sx={{ borderRadius: [0, "default"] }} mx={[0, 3]}>
         <ShortTextDataBox
           label="Short Description"
           originalValue={data?.shortDesc}
@@ -40,6 +47,25 @@ export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
           }}
         />
       </Card>
+      <Button
+        variant="outline"
+        color="danger"
+        ml="auto"
+        mr={3}
+        my={3}
+        onClick={() => setIsDeleting(true)}
+      >
+        <Icon as={TrashIcon} fill="danger" mr={2} />
+        Delete
+      </Button>
+      {isDeleting && (
+        <DeleteObservationDialog
+          shortDesc={data?.shortDesc ?? ""}
+          observationId={observationId}
+          onDeleted={() => navigate(backUrl)}
+          onDismiss={() => setIsDeleting(false)}
+        />
+      )}
     </Box>
   )
 }

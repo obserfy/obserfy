@@ -13,7 +13,7 @@ export default {
 } as Meta
 
 const Template: Story<PageObservationDetailsProps> = () => (
-  <PageObservationDetails observationId="" />
+  <PageObservationDetails observationId="" backUrl="/" />
 )
 
 export const Default = Template.bind({})
