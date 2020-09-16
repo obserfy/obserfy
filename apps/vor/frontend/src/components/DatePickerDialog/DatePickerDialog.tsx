@@ -19,11 +19,13 @@ export interface DatePickerDialogProps {
   defaultDate?: Dayjs
   onDismiss: () => void
   onConfirm: (date: Dayjs) => void
+  isLoading?: boolean
 }
 export const DatePickerDialog: FC<DatePickerDialogProps> = ({
   defaultDate,
   onDismiss,
   onConfirm,
+  isLoading,
 }) => {
   const currentDate = dayjs()
   const [selected, setSelectedDate] = useState(defaultDate ?? dayjs())
@@ -33,6 +35,7 @@ export const DatePickerDialog: FC<DatePickerDialogProps> = ({
   return (
     <Dialog sx={{ maxWidth: ["100%", 400] }}>
       <DialogHeader
+        loading={isLoading}
         onAcceptText="Set"
         title="Pick a Date"
         onCancel={() => onDismiss()}
@@ -170,9 +173,12 @@ const DatesTable: FC<{
 
 const WeekDayInitials: FC = memo(() => (
   <Flex px={3} pb={2} sx={{ ...borderBottom, userSelect: "none" }}>
-    {["S", "M", "T", "W", "T", "F", "S"].map((weekday) => (
-      <Typography.Body sx={{ textAlign: "center", width: "14.28%" }}>
-        {weekday}
+    {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((weekday) => (
+      <Typography.Body
+        key={weekday}
+        sx={{ textAlign: "center", width: "14.28%" }}
+      >
+        {weekday[0]}
       </Typography.Body>
     ))}
   </Flex>

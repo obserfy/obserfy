@@ -15,6 +15,8 @@ import TextArea from "../TextArea/TextArea"
 import MultilineDataBox from "../MultilineDataBox/MultilineDataBox"
 import { useGetCurriculumAreas } from "../../api/useGetCurriculumAreas"
 import Chip from "../Chip/Chip"
+import DatePickerDialog from "../DatePickerDialog/DatePickerDialog"
+import dayjs, { Dayjs } from "../../dayjs"
 
 export interface PageObservationDetailsProps {
   observationId: string
@@ -64,6 +66,14 @@ export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
               text: name,
             })) ?? []
           }
+        />
+        <DateDataBox
+          label="Event Time"
+          originalValue={dayjs(data?.eventTime)}
+          onSave={async (eventTime) => {
+            const result = await patchObservation({ eventTime })
+            return result.ok
+          }}
         />
       </Card>
 
@@ -258,6 +268,38 @@ const SingleChoiceDataBox: FC<{
             ))}
           </Flex>
         </Dialog>
+      )}
+    </Fragment>
+  )
+}
+
+const DateDataBox: FC<{
+  label: string
+  originalValue?: Dayjs
+  onSave: (value: Dayjs) => Promise<boolean>
+  isLoading?: boolean
+}> = ({ label, originalValue, isLoading, onSave }) => {
+  const [isEditing, setIsEditing] = useState(false)
+
+  return (
+    <Fragment>
+      <DataBox
+        label={label}
+        value={originalValue?.format("dddd, DD MMM YYYY") ?? ""}
+        onEditClick={() => setIsEditing(true)}
+      />
+      {isEditing && (
+        <DatePickerDialog
+          isLoading={isLoading}
+          defaultDate={originalValue}
+          onDismiss={() => setIsEditing(false)}
+          onConfirm={async (date) => {
+            const ok = await onSave(date)
+            if (ok) {
+              setIsEditing(false)
+            }
+          }}
+        />
       )}
     </Fragment>
   )

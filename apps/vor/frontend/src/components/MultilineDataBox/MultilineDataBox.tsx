@@ -26,7 +26,9 @@ export const MultilineDataBox: FC<MultilineDataBoxProps> = ({
         {label}
       </Typography.Body>
       {value.split("\n\n").map((text) => (
-        <Typography.Body mb={3}>{text || placeholder}</Typography.Body>
+        <Typography.Body key={text} mb={3}>
+          {text || placeholder}
+        </Typography.Body>
       ))}
     </Box>
     <Button

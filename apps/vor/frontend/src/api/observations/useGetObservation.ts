@@ -1,6 +1,5 @@
 import { queryCache, useQuery } from "react-query"
 import { getApi } from "../fetchApi"
-import { Dayjs } from "../../dayjs"
 
 interface Observation {
   id: string
@@ -10,8 +9,8 @@ interface Observation {
   creatorName: string
   longDesc: string
   shortDesc: string
-  createdDate: Dayjs
-  eventTime: Dayjs
+  createdDate: string
+  eventTime: string
   area?: {
     id: string
     name: string

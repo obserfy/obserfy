@@ -141,8 +141,8 @@ const NoStudentPlaceholder: FC = () => (
 
 const StudentLoadingPlaceholder: FC = () => (
   <Box px={3}>
-    {[1, 2, 3, 4, 5].map(() => (
-      <Flex sx={{ alignItems: "center" }} py={2}>
+    {[1, 2, 3, 4, 5].map((i) => (
+      <Flex key={i} sx={{ alignItems: "center" }} py={2}>
         <LoadingPlaceholder
           sx={{ width: 32, height: 32, borderRadius: "circle" }}
           mb={2}
