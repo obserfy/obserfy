@@ -32,6 +32,7 @@ const ObservationDetails: FC = () => {
         ]}
       />
       <PageObservationDetails
+        studentId={studentId}
         observationId={observationId}
         backUrl={STUDENT_OVERVIEW_PAGE_URL(studentId)}
       />

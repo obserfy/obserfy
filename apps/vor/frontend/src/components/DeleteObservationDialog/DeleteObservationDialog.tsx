@@ -7,16 +7,21 @@ import DialogHeader from "../DialogHeader/DialogHeader"
 interface Props {
   shortDesc: string
   observationId: string
+  studentId: string
   onDeleted: () => void
   onDismiss: () => void
 }
 export const DeleteObservationDialog: FC<Props> = ({
   onDismiss,
   observationId,
+  studentId,
   shortDesc,
   onDeleted,
 }) => {
-  const [deleteObservation, { isLoading }] = useDeleteObservation(observationId)
+  const [deleteObservation, { isLoading }] = useDeleteObservation(
+    observationId,
+    studentId
+  )
 
   return (
     <Dialog>

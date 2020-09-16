@@ -20,10 +20,12 @@ import dayjs, { Dayjs } from "../../dayjs"
 
 export interface PageObservationDetailsProps {
   observationId: string
+  studentId: string
   backUrl: string
 }
 export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
   observationId,
+  studentId,
   backUrl,
 }) => {
   const { data, isLoading } = useGetObservation(observationId)
@@ -102,6 +104,7 @@ export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
       </Button>
       {isDeleting && (
         <DeleteObservationDialog
+          studentId={studentId}
           shortDesc={data?.shortDesc ?? ""}
           observationId={observationId}
           onDeleted={() => navigate(backUrl)}
