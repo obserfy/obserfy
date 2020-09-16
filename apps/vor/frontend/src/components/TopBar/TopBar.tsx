@@ -17,7 +17,9 @@ export const TopBar: FC<TopBarProps> = ({ breadcrumbs }) => (
     />
     <Breadcrumb>
       {breadcrumbs.map(({ to, text }) => (
-        <BreadcrumbItem to={to}>{text}</BreadcrumbItem>
+        <BreadcrumbItem key={text + (to ?? "empty")} to={to}>
+          {text}
+        </BreadcrumbItem>
       ))}
     </Breadcrumb>
   </Flex>

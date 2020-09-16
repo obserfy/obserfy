@@ -11,6 +11,8 @@ import Icon from "../Icon/Icon"
 import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
 import DeleteObservationDialog from "../DeleteObservationDialog/DeleteObservationDialog"
 import { navigate } from "../Link/Link"
+import TextArea from "../TextArea/TextArea"
+import MultilineDataBox from "../MultilineDataBox/MultilineDataBox"
 
 export interface PageObservationDetailsProps {
   observationId: string
@@ -36,7 +38,7 @@ export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
 
   return (
     <Box>
-      <Card sx={{ borderRadius: [0, "default"] }} mx={[0, 3]}>
+      <Card sx={{ borderRadius: [0, "default"] }} mx={[0, 3]} mb={3}>
         <ShortTextDataBox
           label="Short Description"
           originalValue={data?.shortDesc}
@@ -47,6 +49,19 @@ export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
           }}
         />
       </Card>
+
+      <Card sx={{ borderRadius: [0, "default"] }} mx={[0, 3]}>
+        <LongTextDataBox
+          label="Details"
+          originalValue={data?.longDesc}
+          isLoading={patchObservationState.isLoading}
+          onSave={async (longDesc) => {
+            const result = await patchObservation({ longDesc })
+            return result.ok
+          }}
+        />
+      </Card>
+
       <Button
         variant="outline"
         color="danger"
@@ -108,13 +123,65 @@ const ShortTextDataBox: FC<{
             }}
           />
           <Input
-            autoFocus
             label={label}
             sx={{ width: "100%" }}
             onChange={(e) => setValue(e.target.value)}
             value={value}
             ref={inputField}
             containerSx={{ p: 3, backgroundColor: "background" }}
+          />
+        </Dialog>
+      )}
+    </Fragment>
+  )
+}
+
+const LongTextDataBox: FC<{
+  label: string
+  originalValue?: string
+  onSave: (value: string) => Promise<boolean>
+  isLoading?: boolean
+}> = ({ label, originalValue, isLoading, onSave }) => {
+  const [isEditing, setIsEditing] = useState(false)
+  const [value, setValue] = useState(originalValue ?? "")
+
+  const inputField = useRef<HTMLTextAreaElement>(null)
+  useEffect(() => {
+    if (isEditing) {
+      inputField.current?.focus()
+    }
+  }, [isEditing])
+
+  return (
+    <Fragment>
+      <MultilineDataBox
+        label={label}
+        value={originalValue ?? ""}
+        onEditClick={() => setIsEditing(true)}
+        placeholder="-"
+      />
+      {isEditing && (
+        <Dialog>
+          <DialogHeader
+            title={`Edit ${label}`}
+            onAcceptText="Save"
+            onCancel={() => setIsEditing(false)}
+            loading={isLoading}
+            onAccept={async () => {
+              const ok = await onSave(value)
+              if (ok) {
+                setIsEditing(false)
+              }
+            }}
+          />
+          <TextArea
+            label={label}
+            sx={{ width: "100%", lineHeight: 1.8, minHeight: 400 }}
+            onChange={(e) => setValue(e.target.value)}
+            value={value}
+            ref={inputField}
+            containerSx={{ p: 3, backgroundColor: "background" }}
+            placeholder="Write something"
           />
         </Dialog>
       )}

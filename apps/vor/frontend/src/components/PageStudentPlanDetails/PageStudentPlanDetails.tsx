@@ -33,6 +33,7 @@ import BackButton from "../BackButton/BackButton"
 import Breadcrumb from "../Breadcrumb/Breadcrumb"
 import BreadcrumbItem from "../Breadcrumb/BreadcrumbItem"
 import { useGetStudent } from "../../api/useGetStudent"
+import MultilineDataBox from "../MultilineDataBox/MultilineDataBox"
 
 interface Props {
   studentId: string
@@ -331,39 +332,6 @@ const DataBox: FC<{
       <Icon as={EditIcon} />
     </Button>
   </Flex>
-)
-
-const MultilineDataBox: FC<{
-  label: string
-  value: string
-  onEditClick?: () => void
-  placeholder: string
-}> = ({ label, value, onEditClick, placeholder }) => (
-  <Box px={3} py={3} sx={{ alignItems: "flex-start" }}>
-    <Box mb={2}>
-      <Typography.Body
-        mb={2}
-        color="textMediumEmphasis"
-        sx={{ lineHeight: 1, fontSize: 1 }}
-      >
-        {label}
-      </Typography.Body>
-      {value.split("\n\n").map((text) => (
-        <Typography.Body mb={3}>{text || placeholder}</Typography.Body>
-      ))}
-    </Box>
-    <Button
-      variant="outline"
-      ml="auto"
-      px={2}
-      onClick={onEditClick}
-      sx={{ flexShrink: 0, fontSize: 1, color: "textMediumEmphasis" }}
-      aria-label={`edit-${label.toLowerCase()}`}
-    >
-      <Icon as={EditIcon} mr={2} />
-      Edit {label.toLowerCase()}
-    </Button>
-  </Box>
 )
 
 const LessonPlanLinks: FC<{
