@@ -12,6 +12,10 @@ interface Observation {
   shortDesc: string
   createdDate: Dayjs
   eventTime: Dayjs
+  area?: {
+    id: string
+    name: string
+  }
 }
 const useGetObservation = (observationId: string) => {
   const getObservation = getApi<Observation>(`/observations/${observationId}`)

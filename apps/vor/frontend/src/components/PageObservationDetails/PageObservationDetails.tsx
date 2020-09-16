@@ -1,5 +1,5 @@
 import React, { FC, Fragment, useEffect, useRef, useState } from "react"
-import { Box, Button, Card } from "theme-ui"
+import { Box, Button, Card, Flex } from "theme-ui"
 import useGetObservation from "../../api/observations/useGetObservation"
 import Dialog from "../Dialog/Dialog"
 import DialogHeader from "../DialogHeader/DialogHeader"
@@ -13,6 +13,8 @@ import DeleteObservationDialog from "../DeleteObservationDialog/DeleteObservatio
 import { navigate } from "../Link/Link"
 import TextArea from "../TextArea/TextArea"
 import MultilineDataBox from "../MultilineDataBox/MultilineDataBox"
+import { useGetCurriculumAreas } from "../../api/useGetCurriculumAreas"
+import Chip from "../Chip/Chip"
 
 export interface PageObservationDetailsProps {
   observationId: string
@@ -23,6 +25,7 @@ export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
   backUrl,
 }) => {
   const { data, isLoading } = useGetObservation(observationId)
+  const areas = useGetCurriculumAreas()
   const [isDeleting, setIsDeleting] = useState(false)
   const [patchObservation, patchObservationState] = usePatchObservation(
     observationId
@@ -47,6 +50,20 @@ export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
             const result = await patchObservation({ shortDesc })
             return result.ok
           }}
+        />
+        <SingleChoiceDataBox
+          label="Area"
+          originalValue={data?.area?.id}
+          onSave={async (areaId) => {
+            const result = await patchObservation({ areaId })
+            return result.ok
+          }}
+          possibleValues={
+            areas.data?.map(({ id, name }) => ({
+              id,
+              text: name,
+            })) ?? []
+          }
         />
       </Card>
 
@@ -183,6 +200,63 @@ const LongTextDataBox: FC<{
             containerSx={{ p: 3, backgroundColor: "background" }}
             placeholder="Write something"
           />
+        </Dialog>
+      )}
+    </Fragment>
+  )
+}
+
+const SingleChoiceDataBox: FC<{
+  label: string
+  originalValue?: string
+  possibleValues: Array<{ id: string; text: string }>
+  onSave: (value: string) => Promise<boolean>
+  isLoading?: boolean
+}> = ({ possibleValues, label, originalValue, isLoading, onSave }) => {
+  const [isEditing, setIsEditing] = useState(false)
+  const [value, setValue] = useState(originalValue ?? "")
+
+  const original = possibleValues.find((v) => v.id === originalValue)
+
+  return (
+    <Fragment>
+      <DataBox
+        label={label}
+        value={original?.text ?? ""}
+        onEditClick={() => setIsEditing(true)}
+      />
+      {isEditing && (
+        <Dialog>
+          <DialogHeader
+            title={`Edit ${label}`}
+            onAcceptText="Save"
+            onCancel={() => setIsEditing(false)}
+            loading={isLoading}
+            onAccept={async () => {
+              const ok = await onSave(value)
+              if (ok) {
+                setIsEditing(false)
+              }
+            }}
+          />
+          <Flex
+            px={3}
+            pt={3}
+            pb={2}
+            sx={{ flexWrap: "wrap", backgroundColor: "background" }}
+          >
+            {possibleValues.map(({ text, id }) => (
+              <Chip
+                key={id}
+                text={text}
+                activeBackground="primary"
+                isActive={id === value}
+                onClick={() => setValue(id)}
+                mr={2}
+                mb={2}
+              />
+            ))}
+          </Flex>
         </Dialog>
       )}
     </Fragment>

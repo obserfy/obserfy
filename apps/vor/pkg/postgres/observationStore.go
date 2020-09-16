@@ -17,6 +17,8 @@ func (s ObservationStore) GetObservation(id string) (*domain.Observation, error)
 	var observation Observation
 	if err := s.Model(&observation).
 		Where("Observation.id=?", id).
+		Relation("Images").
+		Relation("Area").
 		Relation("Creator").
 		Relation("Student").
 		Select(); err == pg.ErrNoRows {
@@ -25,7 +27,7 @@ func (s ObservationStore) GetObservation(id string) (*domain.Observation, error)
 		return nil, richErrors.Wrap(err, "failed getting observation")
 	}
 
-	return &domain.Observation{
+	result := domain.Observation{
 		Id:          observation.Id,
 		StudentName: observation.Student.Name,
 		CategoryId:  observation.CategoryId,
@@ -35,13 +37,25 @@ func (s ObservationStore) GetObservation(id string) (*domain.Observation, error)
 		CreatedDate: observation.CreatedDate,
 		CreatorId:   observation.CreatorId,
 		CreatorName: observation.Creator.Name,
-	}, nil
+	}
+	if observation.AreaId != uuid.Nil {
+		result.Area = domain.Area{
+			Id:   observation.Area.Id,
+			Name: observation.Area.Name,
+		}
+	}
+	for i := range observation.Images {
+		result.Images = append(result.Images, domain.Image{
+			Id:        observation.Images[i].Id,
+			ObjectKey: observation.Images[i].ObjectKey,
+			CreatedAt: observation.Images[i].CreatedAt,
+		})
+	}
+	return &result, nil
 }
 
 func (s ObservationStore) CheckPermissions(observationId string, userId string) (bool, error) {
-
 	var observation Observation
-
 	if err := s.Model(&observation).
 		Relation("Student").
 		Relation("Student.School.Users", func(q *orm.Query) (*orm.Query, error) {
@@ -53,15 +67,12 @@ func (s ObservationStore) CheckPermissions(observationId string, userId string) 
 	} else if err != nil {
 		return false, richErrors.Wrap(err, "failed checking user access to observation")
 	}
-	// body, _ := json.Marshal(observation)
-	// fmt.Println(string(body))
 	if len(observation.Student.School.Users) > 0 {
 		return true, nil
 
 	} else {
 		return false, nil
 	}
-	// return true, nil
 }
 
 func (s ObservationStore) UpdateObservation(

@@ -75,6 +75,15 @@ func deleteObservation(s rest.Server, store Store) rest.Handler {
 }
 
 func getObservation(s rest.Server, store Store) http.Handler {
+	type area struct {
+		Id   uuid.UUID `json:"id"`
+		Name string    `json:"name"`
+	}
+	type image struct {
+		Id           uuid.UUID `json:"id"`
+		ThumbnailUrl string    `json:"thumbnailUrl"`
+		OriginalUrl  string    `json:"originalUrl"`
+	}
 	type responseBody struct {
 		Id          string    `json:"id"`
 		StudentName string    `json:"studentName"`
@@ -85,6 +94,8 @@ func getObservation(s rest.Server, store Store) http.Handler {
 		ShortDesc   string    `json:"shortDesc"`
 		CreatedDate time.Time `json:"createdDate"`
 		EventTime   time.Time `json:"eventTime,omitempty"`
+		Area        *area     `json:"area"`
+		Images      []image   `json:"images"`
 	}
 	validate := validator.New()
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
@@ -127,7 +138,20 @@ func getObservation(s rest.Server, store Store) http.Handler {
 			response.CreatorId = observation.CreatorId
 			response.CreatorName = observation.CreatorName
 		}
-
+		if observation.Area.Id != "" {
+			response.Area = &area{
+				Id:   uuid.MustParse(observation.Area.Id),
+				Name: observation.Area.Name,
+			}
+		}
+		for i := range observation.Images {
+			item := observation.Images[i]
+			response.Images = append(response.Images, image{
+				Id:           item.Id,
+				ThumbnailUrl: imgproxy.GenerateUrl(observation.Images[i].ObjectKey, 80, 80),
+				OriginalUrl:  imgproxy.GenerateOriginalUrl(observation.Images[i].ObjectKey),
+			})
+		}
 		if err := rest.WriteJson(w, response); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
