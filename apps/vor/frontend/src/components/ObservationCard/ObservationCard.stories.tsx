@@ -18,6 +18,7 @@ export const Basic: FC = () => (
       longDesc: "",
       categoryId: "0",
       shortDesc: "",
+      images: [],
     }}
   />
 )

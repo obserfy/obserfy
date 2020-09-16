@@ -436,11 +436,16 @@ func postObservation(s rest.Server, store Store) http.Handler {
 }
 
 func getObservation(s rest.Server, store Store) http.Handler {
+	type image struct {
+		Id           uuid.UUID `json:"id"`
+		ThumbnailUrl string    `json:"thumbnailUrl"`
+		OriginalUrl  string    `json:"originalUrl"`
+	}
 	type area struct {
 		Id   string `json:"id"`
 		Name string `json:"name"`
 	}
-	type observation struct {
+	type responseBody struct {
 		Id          string    `json:"id"`
 		StudentName string    `json:"studentName"`
 		CategoryId  string    `json:"categoryId"`
@@ -451,6 +456,7 @@ func getObservation(s rest.Server, store Store) http.Handler {
 		CreatedDate time.Time `json:"createdDate"`
 		EventTime   time.Time `json:"eventTime,omitempty"`
 		Area        *area     `json:"area,omitempty"`
+		Images      []image   `json:"images"`
 	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		id := chi.URLParam(r, "studentId")
@@ -464,28 +470,37 @@ func getObservation(s rest.Server, store Store) http.Handler {
 			}
 		}
 
-		responseBody := make([]observation, len(observations))
+		response := make([]responseBody, len(observations))
 		for i, o := range observations {
-			responseBody[i].Id = o.Id
-			responseBody[i].StudentName = o.Student.Name
-			responseBody[i].CategoryId = o.CategoryId
-			responseBody[i].LongDesc = o.LongDesc
-			responseBody[i].ShortDesc = o.ShortDesc
-			responseBody[i].EventTime = o.EventTime
-			responseBody[i].CreatedDate = o.CreatedDate
+			response[i].Id = o.Id
+			response[i].StudentName = o.Student.Name
+			response[i].CategoryId = o.CategoryId
+			response[i].LongDesc = o.LongDesc
+			response[i].ShortDesc = o.ShortDesc
+			response[i].EventTime = o.EventTime
+			response[i].CreatedDate = o.CreatedDate
 			if o.AreaId != uuid.Nil {
-				responseBody[i].Area = &area{
+				response[i].Area = &area{
 					Id:   o.Area.Id,
 					Name: o.Area.Name,
 				}
 			}
 			if o.CreatorId != "" {
-				responseBody[i].CreatorId = o.CreatorId
-				responseBody[i].CreatorName = o.Creator.Name
+				response[i].CreatorId = o.CreatorId
+				response[i].CreatorName = o.Creator.Name
+			}
+			response[i].Images = make([]image, 0)
+			for j := range o.Images {
+				item := o.Images[j]
+				response[i].Images = append(response[i].Images, image{
+					Id:           item.Id,
+					ThumbnailUrl: imgproxy.GenerateUrl(item.ObjectKey, 80, 80),
+					OriginalUrl:  imgproxy.GenerateOriginalUrl(item.ObjectKey),
+				})
 			}
 		}
 
-		if err := rest.WriteJson(w, responseBody); err != nil {
+		if err := rest.WriteJson(w, response); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
 		return nil

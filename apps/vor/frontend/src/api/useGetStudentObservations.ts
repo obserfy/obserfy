@@ -15,6 +15,11 @@ export interface Observation {
     id: string
     name: string
   }
+  images: Array<{
+    id: string
+    thumbnailUrl: string
+    originalUrl: string
+  }>
 }
 
 export const useGetStudentObservations = (
