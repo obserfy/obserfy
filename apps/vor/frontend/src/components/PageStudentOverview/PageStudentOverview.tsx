@@ -197,7 +197,7 @@ const ObservationSection: FC<{ studentId: string }> = ({ studentId }) => {
               mb={2}
             >
               {!selectedDate.isSame(Date.now(), "date")
-                ? selectedDate.format("dddd, D MMM YYYY")
+                ? selectedDate.format("ddd, D MMM YYYY")
                 : `Today, ${selectedDate.format("D MMM YYYY")}`}
             </Typography.Body>
           )}
