@@ -53,6 +53,7 @@ exports[`ObservationCard should render correctly 1`] = `
   min-width: 0;
   margin-left: 16px;
   margin-right: 16px;
+  margin-bottom: 8px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
