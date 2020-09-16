@@ -53,6 +53,14 @@ export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
             return result.ok
           }}
         />
+        <DateDataBox
+          label="Event Time"
+          originalValue={dayjs(data?.eventTime)}
+          onSave={async (eventTime) => {
+            const result = await patchObservation({ eventTime })
+            return result.ok
+          }}
+        />
         <SingleChoiceDataBox
           label="Area"
           originalValue={data?.area?.id}
@@ -66,14 +74,6 @@ export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
               text: name,
             })) ?? []
           }
-        />
-        <DateDataBox
-          label="Event Time"
-          originalValue={dayjs(data?.eventTime)}
-          onSave={async (eventTime) => {
-            const result = await patchObservation({ eventTime })
-            return result.ok
-          }}
         />
       </Card>
 
@@ -232,7 +232,7 @@ const SingleChoiceDataBox: FC<{
     <Fragment>
       <DataBox
         label={label}
-        value={original?.text ?? ""}
+        value={original?.text ?? "-"}
         onEditClick={() => setIsEditing(true)}
       />
       {isEditing && (

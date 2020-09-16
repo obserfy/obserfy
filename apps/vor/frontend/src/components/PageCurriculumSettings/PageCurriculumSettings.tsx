@@ -22,7 +22,7 @@ export const PageCurriculumSettings: FC = () => {
   const curriculum = useGetCurriculum()
   const areas = useGetCurriculumAreas()
 
-  const loading = curriculum.loading || areas.status === "loading"
+  const loading = curriculum.isLoading || areas.isLoading
 
   function closeNewAreaDialog(): void {
     setShowNewAreaDialog(false)
@@ -43,7 +43,7 @@ export const PageCurriculumSettings: FC = () => {
         {!loading && curriculum.error && (
           <SetupCurriculum
             onCreated={() => {
-              curriculum.setOutdated()
+              curriculum.refetch()
               areas.refetch()
             }}
           />

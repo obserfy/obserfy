@@ -1,10 +1,15 @@
+import { useQuery } from "react-query"
 import { getSchoolId } from "../hooks/schoolIdState"
-import useApi, { Api } from "./useApi"
+import { getApi } from "./fetchApi"
 
 interface GetCurriculumResponse {
   id: string
   name: string
 }
-export function useGetCurriculum(): Api<GetCurriculumResponse> {
-  return useApi<GetCurriculumResponse>(`/schools/${getSchoolId()}/curriculums`)
+export function useGetCurriculum() {
+  const schoolId = getSchoolId()
+  const getCurriculum = getApi<GetCurriculumResponse>(
+    `/schools/${schoolId}/curriculums`
+  )
+  return useQuery(["school", schoolId, "curriculum"], getCurriculum)
 }
