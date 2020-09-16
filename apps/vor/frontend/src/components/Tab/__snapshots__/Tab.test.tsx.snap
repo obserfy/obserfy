@@ -54,7 +54,7 @@ exports[`Tab should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 14px;
+  font-size: 16px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-left: 8px;
@@ -90,6 +90,12 @@ exports[`Tab should render correctly 1`] = `
   }
 }
 
+@media screen and (min-width:40em) {
+  .emotion-0 {
+    font-size: 14px;
+  }
+}
+
 .emotion-0:after {
   background-color: var(--theme-ui-colors-primary,#00e399);
   border-radius: 2px 2px 0 0;
@@ -106,7 +112,7 @@ exports[`Tab should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 14px;
+  font-size: 16px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-left: 8px;
@@ -134,6 +140,12 @@ exports[`Tab should render correctly 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-1 {
+    font-size: 14px;
+  }
 }
 
 @media screen and (min-width:40em) {

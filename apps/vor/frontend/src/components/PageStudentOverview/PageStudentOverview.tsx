@@ -213,15 +213,14 @@ const ObservationSection: FC<{ studentId: string }> = ({ studentId }) => {
             return firstArea.localeCompare(secondArea)
           })
           .map((observation) => (
-            <Link
+            <ObservationCard
               key={observation.id}
-              to={STUDENT_OVERVIEWS_OBSERVATION_DETAILS_URL(
+              observation={observation}
+              detailsUrl={STUDENT_OVERVIEWS_OBSERVATION_DETAILS_URL(
                 studentId,
                 observation.id
               )}
-            >
-              <ObservationCard key={observation.id} observation={observation} />
-            </Link>
+            />
           ))}
         {isLoading && !data && <ObservationLoadingPlaceholder />}
       </Box>

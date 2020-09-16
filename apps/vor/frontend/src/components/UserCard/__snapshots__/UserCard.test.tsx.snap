@@ -74,11 +74,17 @@ exports[`UserCard should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 14px;
+  font-size: 16px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   font-size: 14px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-1 {
+    font-size: 14px;
+  }
 }
 
 .emotion-3 {
@@ -116,13 +122,19 @@ exports[`UserCard should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 14px;
+  font-size: 16px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   color: var(--theme-ui-colors-onPrimary,#000);
   font-size: 12px;
   line-height: 1em;
   text-transform: capitalize;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-4 {
+    font-size: 14px;
+  }
 }
 
 @media screen and (min-width:40em) {

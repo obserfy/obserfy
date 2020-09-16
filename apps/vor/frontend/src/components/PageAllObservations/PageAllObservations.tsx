@@ -18,7 +18,6 @@ import dayjs from "../../dayjs"
 import BackButton from "../BackButton/BackButton"
 import Breadcrumb from "../Breadcrumb/Breadcrumb"
 import BreadcrumbItem from "../Breadcrumb/BreadcrumbItem"
-import { Link } from "../Link/Link"
 
 interface Props {
   studentId: string
@@ -154,12 +153,11 @@ const ObservationList: FC<{
         result[date] = []
       }
       result[date].push(
-        <Link
+        <ObservationCard
           key={observation.id}
-          to={OBSERVATION_DETAILS_URL(studentId, observation.id)}
-        >
-          <ObservationCard key={observation.id} observation={observation} />
-        </Link>
+          detailsUrl={OBSERVATION_DETAILS_URL(studentId, observation.id)}
+          observation={observation}
+        />
       )
     })
     return result

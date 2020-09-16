@@ -60,13 +60,19 @@ exports[`PageLogin should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 14px;
+  font-size: 16px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-left: 8px;
   font-size: 20px;
   font-weight: bold;
   line-height: 1.2;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-2 {
+    font-size: 14px;
+  }
 }
 
 .emotion-1 {
@@ -354,7 +360,7 @@ exports[`PageLogin should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 14px;
+  font-size: 16px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-top: 16px;
@@ -366,16 +372,28 @@ exports[`PageLogin should render correctly 1`] = `
   font-weight: bold;
 }
 
+@media screen and (min-width:40em) {
+  .emotion-16 {
+    font-size: 14px;
+  }
+}
+
 .emotion-18 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 14px;
+  font-size: 16px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   text-align: center;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-18 {
+    font-size: 14px;
+  }
 }
 
 .emotion-17 {
@@ -387,12 +405,18 @@ exports[`PageLogin should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 14px;
+  font-size: 16px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-top: 64px;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   text-align: center;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-20 {
+    font-size: 14px;
+  }
 }
 
 .emotion-27 {
@@ -441,12 +465,18 @@ exports[`PageLogin should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 14px;
+  font-size: 16px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-left: 8px;
   font-size: 14px;
   line-height: 1.4;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-25 {
+    font-size: 14px;
+  }
 }
 
 <div>

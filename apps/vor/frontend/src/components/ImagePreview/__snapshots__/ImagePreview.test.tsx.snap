@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ErrorMessage should render correctly 1`] = `
+exports[`ImagePreview should render correctly 1`] = `
 .emotion-1 {
   box-sizing: border-box;
   margin: 0;
@@ -18,29 +18,21 @@ exports[`ErrorMessage should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
-  text-rendering: optimizeLegibility;
-  line-height: 1.5;
-  color: var(--theme-ui-colors-error,#d50000);
-  text-align: center;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-0 {
-    font-size: 14px;
-  }
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
 }
 
 <div>
   <div
     class="emotion-1"
   >
-    <p
+    <img
       class="emotion-0"
-    >
-      Are you mad?
-    </p>
+      height="32"
+      src=""
+      width="32"
+    />
   </div>
 </div>
 `;

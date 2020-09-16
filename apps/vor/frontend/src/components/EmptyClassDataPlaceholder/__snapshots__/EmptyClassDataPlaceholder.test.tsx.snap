@@ -88,7 +88,7 @@ exports[`EmptyClassDataPlaceholder should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 14px;
+  font-size: 16px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-left: 8px;
@@ -96,16 +96,28 @@ exports[`EmptyClassDataPlaceholder should render correctly 1`] = `
   font-size: 14px;
 }
 
+@media screen and (min-width:40em) {
+  .emotion-1 {
+    font-size: 14px;
+  }
+}
+
 .emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 14px;
+  font-size: 16px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   padding-bottom: 8px;
   font-size: 14px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-3 {
+    font-size: 14px;
+  }
 }
 
 .emotion-5 {

@@ -20,5 +20,6 @@ export const Basic: FC = () => (
       shortDesc: "",
       images: [],
     }}
+    detailsUrl=""
   />
 )
