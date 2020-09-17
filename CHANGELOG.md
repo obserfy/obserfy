@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.11.2](https://github.com/obserfy/obserfy/compare/v1.11.1...v1.11.2) (2020-09-17)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @auth0/nextjs-auth0 to v0.16.0 ([5994e5e](https://github.com/obserfy/obserfy/commit/5994e5e4526e546e447b14098f3a3dd9dfd481e4))
+* **deps:** update dependency @prefresh/next to v1 ([fbea955](https://github.com/obserfy/obserfy/commit/fbea9557a29aee720189d5ed42e3e35d9ace58be))
+* **deps:** update dependency dayjs to v1.8.34 ([addaa77](https://github.com/obserfy/obserfy/commit/addaa77ec78388ecf479b5640081eaba4b0d39c9))
+* **deps:** update dependency immer to v7.0.8 ([5b0cfc2](https://github.com/obserfy/obserfy/commit/5b0cfc2b2136b524b4b74b8c0dc5956d3f36bf8a))
+* **deps:** update dependency pg to v8.3.3 ([5b4f14a](https://github.com/obserfy/obserfy/commit/5b4f14aa80d66f6b3af6c2bfc02cb42f72eecce3))
+* **deps:** update dependency preact to v10.4.8 ([7ff47e2](https://github.com/obserfy/obserfy/commit/7ff47e2669f416f1d70a2efc99a25a4f06854c1a))
+* **deps:** update dependency react-query to v2.6.0 ([0c626f2](https://github.com/obserfy/obserfy/commit/0c626f2ce530c0a8304e5ec28d710eddc6e82c47))
+* **deps:** update dependency react-query to v2.7.0 ([8ab1127](https://github.com/obserfy/obserfy/commit/8ab112738f5c4febb5f6f930a8e7982d7d9a85f7))
+* **deps:** update dependency tailwindcss to v1.7.0 ([7151ba7](https://github.com/obserfy/obserfy/commit/7151ba7ad9218ee335601c226f9bcc28d76c642d))
+* **deps:** update dependency tailwindcss to v1.7.1 ([1c2cc78](https://github.com/obserfy/obserfy/commit/1c2cc78708069e5310bd3da8401010d22970bbdc))
+* **deps:** update dependency tailwindcss to v1.7.2 ([b94f655](https://github.com/obserfy/obserfy/commit/b94f65526cead94ce0e20e01ebb5efc17a7b8be0))
+* **deps:** update dependency tailwindcss to v1.7.3 ([42e87ca](https://github.com/obserfy/obserfy/commit/42e87cab1e3518eb7c29729f80544c721f4921e2))
+* **deps:** update dependency tailwindcss to v1.7.4 ([c48cd32](https://github.com/obserfy/obserfy/commit/c48cd32d1ac2f1efb4cc74ede8dc757ff609431b))
+* **deps:** update dependency tailwindcss to v1.7.5 ([c673540](https://github.com/obserfy/obserfy/commit/c67354007f3618766d73ded90259bb50893a6187))
+* **deps:** update dependency tailwindcss to v1.7.6 ([1675b65](https://github.com/obserfy/obserfy/commit/1675b65a9e56ea8b4fad515b2ce139f3d1e9bc73))
+
 ### [1.11.1](https://github.com/obserfy/obserfy/compare/v1.11.0...v1.11.1) (2020-08-18)
 
 ## [1.11.0](https://github.com/obserfy/obserfy/compare/v1.10.4...v1.11.0) (2020-08-18)
