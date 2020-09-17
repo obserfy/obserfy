@@ -222,7 +222,6 @@ exports[`Layout should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  padding-left: 0;
   padding-bottom: 48px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -232,7 +231,6 @@ exports[`Layout should render correctly 1`] = `
 
 @media screen and (min-width:40em) {
   .emotion-14 {
-    padding-left: 64px;
     padding-bottom: 0;
   }
 }
@@ -244,7 +242,10 @@ exports[`Layout should render correctly 1`] = `
   margin-bottom: env(safe-area-inset-bottom);
   margin-left: 0;
   background-color: var(--theme-ui-colors-background,#f2f3f5);
-  width: 100%;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
 }
 
 <div>
