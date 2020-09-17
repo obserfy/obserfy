@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react"
-import { Box, Button, Image, SxStyleProp } from "theme-ui"
+import { Button, Image, SxStyleProp } from "theme-ui"
 import Dialog from "../Dialog/Dialog"
 import { ReactComponent as CloseIcon } from "../../icons/close.svg"
 import Icon from "../Icon/Icon"
@@ -32,20 +32,18 @@ export const ImagePreview: FC<ImagePreviewProps> = ({
             backgroundColor: "background",
           }}
         >
-          <Box>
-            <Button
-              variant="outline"
-              ml="auto"
-              my={3}
-              mr={3}
-              p={2}
-              onClick={() => setShowOriginal(false)}
-            >
-              <Icon as={CloseIcon} mr={1} />
-              Close
-            </Button>
-            <Image src={originalUrl} />
-          </Box>
+          <Button
+            variant="outline"
+            ml="auto"
+            my={3}
+            mr={3}
+            p={2}
+            onClick={() => setShowOriginal(false)}
+          >
+            <Icon as={CloseIcon} mr={1} />
+            Close
+          </Button>
+          <Image src={originalUrl} />
         </Dialog>
       )}
     </>

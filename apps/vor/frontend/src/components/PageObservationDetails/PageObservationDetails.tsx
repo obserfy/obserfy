@@ -1,5 +1,5 @@
 import React, { FC, Fragment, useEffect, useRef, useState } from "react"
-import { Box, Button, Card, Flex } from "theme-ui"
+import { Box, Button, Card, Flex, Image } from "theme-ui"
 import useGetObservation from "../../api/observations/useGetObservation"
 import Dialog from "../Dialog/Dialog"
 import DialogHeader from "../DialogHeader/DialogHeader"
@@ -17,6 +17,8 @@ import { useGetCurriculumAreas } from "../../api/useGetCurriculumAreas"
 import Chip from "../Chip/Chip"
 import DatePickerDialog from "../DatePickerDialog/DatePickerDialog"
 import dayjs, { Dayjs } from "../../dayjs"
+import Typography from "../Typography/Typography"
+import { borderFull } from "../../border"
 
 export interface PageObservationDetailsProps {
   observationId: string
@@ -79,7 +81,7 @@ export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
         />
       </Card>
 
-      <Card sx={{ borderRadius: [0, "default"] }} mx={[0, 3]}>
+      <Card sx={{ borderRadius: [0, "default"] }} mx={[0, 3]} mb={3}>
         <LongTextDataBox
           label="Details"
           originalValue={data?.longDesc}
@@ -90,6 +92,20 @@ export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
           }}
         />
       </Card>
+
+      {(data?.images ?? []).length > 0 && (
+        <Card sx={{ borderRadius: [0, "default"] }} mx={[0, 3]} pt={3}>
+          <Typography.Body
+            mb={2}
+            color="textMediumEmphasis"
+            sx={{ lineHeight: 1, fontSize: [1, 0] }}
+            px={3}
+          >
+            Images
+          </Typography.Body>
+          <Images images={data?.images ?? []} />
+        </Card>
+      )}
 
       <Button
         variant="outline"
@@ -112,6 +128,41 @@ export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
         />
       )}
     </Box>
+  )
+}
+
+const Images: FC<{
+  images: Array<{ id: string; thumbnailUrl: string; originalUrl: string }>
+}> = ({ images }) => {
+  const [selectedIdx, setSelectedIdx] = useState<number>()
+
+  return (
+    <>
+      <Flex px={3} mb={3}>
+        {images.map((image, idx) => {
+          const isSelected = selectedIdx === idx
+          return (
+            <Image
+              key={image.id}
+              src={image.thumbnailUrl}
+              height={40}
+              width={40}
+              mr={2}
+              sx={{
+                borderRadius: "default",
+                cursor: "pointer",
+                boxShadow: isSelected ? "0 0 0 2px #00a875" : "",
+                ...borderFull,
+              }}
+              onClick={() => setSelectedIdx(isSelected ? undefined : idx)}
+            />
+          )
+        })}
+      </Flex>
+      {selectedIdx !== undefined && (
+        <Image src={images[selectedIdx].originalUrl} sx={{ width: "100%" }} />
+      )}
+    </>
   )
 }
 

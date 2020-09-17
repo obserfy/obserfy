@@ -9,3 +9,9 @@ export const borderRight = {
   borderRightStyle: "solid",
   borderRightColor: "border",
 }
+
+export const borderFull = {
+  borderWidth: 1,
+  borderStyle: "solid",
+  borderColor: "border",
+}

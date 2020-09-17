@@ -15,6 +15,11 @@ interface Observation {
     id: string
     name: string
   }
+  images: Array<{
+    id: string
+    originalUrl: string
+    thumbnailUrl: string
+  }>
 }
 const useGetObservation = (observationId: string) => {
   const getObservation = getApi<Observation>(`/observations/${observationId}`)
