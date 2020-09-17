@@ -11,5 +11,9 @@ export function useGetCurriculum() {
   const getCurriculum = getApi<GetCurriculumResponse>(
     `/schools/${schoolId}/curriculums`
   )
-  return useQuery(["school", schoolId, "curriculum"], getCurriculum)
+  return useQuery(["school", schoolId, "curriculum"], getCurriculum, {
+    retry: (a, b) => {
+      return b.message !== "School doesn't have curriculum yet"
+    },
+  })
 }
