@@ -19,17 +19,11 @@ exports[`ErrorMessage should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   color: var(--theme-ui-colors-error,#d50000);
   text-align: center;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-0 {
-    font-size: 14px;
-  }
 }
 
 <div>

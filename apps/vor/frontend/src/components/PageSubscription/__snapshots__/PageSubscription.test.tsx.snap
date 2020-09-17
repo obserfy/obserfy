@@ -115,17 +115,11 @@ exports[`PageSubscription should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-bottom: 0;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-}
-
-@media screen and (min-width:40em) {
-  .emotion-1 {
-    font-size: 14px;
-  }
 }
 
 .emotion-3 {
@@ -178,7 +172,7 @@ exports[`PageSubscription should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   color: var(--theme-ui-colors-textPrimary,#027c5b);
@@ -186,27 +180,15 @@ exports[`PageSubscription should render correctly 1`] = `
   line-height: 1;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-4 {
-    font-size: 14px;
-  }
-}
-
 .emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-left: auto;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-5 {
-    font-size: 14px;
-  }
 }
 
 .emotion-44 {
@@ -228,19 +210,13 @@ exports[`PageSubscription should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-bottom: 8px;
   color: var(--theme-ui-colors-textPrimary,#027c5b);
   font-weight: bold;
   line-height: 1;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-8 {
-    font-size: 14px;
-  }
 }
 
 .emotion-11 {
@@ -276,17 +252,11 @@ exports[`PageSubscription should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-left: 8px;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-}
-
-@media screen and (min-width:40em) {
-  .emotion-10 {
-    font-size: 14px;
-  }
 }
 
 .emotion-12 {
@@ -294,17 +264,11 @@ exports[`PageSubscription should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-top: 16px;
   margin-bottom: 16px;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-12 {
-    font-size: 14px;
-  }
 }
 
 .emotion-41 {
@@ -348,16 +312,10 @@ exports[`PageSubscription should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-left: 8px;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-14 {
-    font-size: 14px;
-  }
 }
 
 .emotion-36 {
@@ -365,17 +323,11 @@ exports[`PageSubscription should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-left: 8px;
   color: var(--theme-ui-colors-textPrimary,#027c5b);
-}
-
-@media screen and (min-width:40em) {
-  .emotion-36 {
-    font-size: 14px;
-  }
 }
 
 .emotion-43 {

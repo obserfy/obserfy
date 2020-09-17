@@ -40,7 +40,7 @@ exports[`MultilineDataBox should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-bottom: 8px;
@@ -49,27 +49,15 @@ exports[`MultilineDataBox should render correctly 1`] = `
   font-size: 14px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-0 {
-    font-size: 14px;
-  }
-}
-
 .emotion-1 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-bottom: 16px;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-1 {
-    font-size: 14px;
-  }
 }
 
 .emotion-4 {

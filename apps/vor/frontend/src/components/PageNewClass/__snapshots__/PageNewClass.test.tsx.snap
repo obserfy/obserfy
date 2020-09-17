@@ -58,17 +58,11 @@ exports[`PageNewClass should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-bottom: 0;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-}
-
-@media screen and (min-width:40em) {
-  .emotion-1 {
-    font-size: 14px;
-  }
 }
 
 .emotion-3 {
@@ -266,17 +260,11 @@ exports[`PageNewClass should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-bottom: 8px;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-}
-
-@media screen and (min-width:40em) {
-  .emotion-17 {
-    font-size: 14px;
-  }
 }
 
 .emotion-32 {
@@ -326,17 +314,11 @@ exports[`PageNewClass should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   color: var(--theme-ui-colors-text,#37383c);
   font-size: 14px;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-18 {
-    font-size: 14px;
-  }
 }
 
 .emotion-33 {
@@ -420,18 +402,12 @@ exports[`PageNewClass should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin: 16px;
   color: var(--theme-ui-colors-error,#d50000);
   text-align: center;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-34 {
-    font-size: 14px;
-  }
 }
 
 <div>

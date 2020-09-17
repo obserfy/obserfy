@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { FC } from "react"
-import { Button, Card, Flex, jsx } from "theme-ui"
+import { Card, Flex, jsx } from "theme-ui"
 import Typography from "../Typography/Typography"
 import { Observation } from "../../api/useGetStudentObservations"
 import ImagePreview from "../ImagePreview/ImagePreview"
@@ -54,16 +54,17 @@ export const ObservationCard: FC<Props> = ({ detailsUrl, observation }) => (
       {observation.creatorName && (
         <Typography.Body
           pb={2}
-          sx={{ fontSize: 0, lineHeight: 1 }}
+          sx={{ fontSize: [0, 0], lineHeight: 1 }}
           color="textMediumEmphasis"
         >
           {observation.creatorName}
         </Typography.Body>
       )}
-      <Link to={detailsUrl} sx={{ ml: "auto" }}>
-        <Button variant="secondary" p={2} sx={{ fontSize: 0 }}>
-          See More
-        </Button>
+      <Link
+        to={detailsUrl}
+        sx={{ color: "textPrimary", ml: "auto", mr: 3, fontSize: 0 }}
+      >
+        See More
       </Link>
     </Flex>
   </Card>
