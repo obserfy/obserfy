@@ -4,6 +4,8 @@ import (
 	"github.com/chrsep/vor/pkg/domain"
 	"github.com/chrsep/vor/pkg/imgproxy"
 	"github.com/google/uuid"
+	richErrors "github.com/pkg/errors"
+	"mime/multipart"
 	"net/http"
 	"time"
 
@@ -25,6 +27,7 @@ type Store interface {
 	DeleteObservation(observationId string) error
 	GetObservation(id string) (*domain.Observation, error)
 	CheckPermissions(observationId string, userId string) (bool, error)
+	CreateImage(id string, file multipart.File, header *multipart.FileHeader) (*domain.Image, error)
 }
 
 func NewRouter(s rest.Server, store Store) *chi.Mux {
@@ -34,6 +37,8 @@ func NewRouter(s rest.Server, store Store) *chi.Mux {
 		r.Method("DELETE", "/", deleteObservation(s, store))
 		r.Method("GET", "/", getObservation(s, store))
 		r.Method("PATCH", "/", patchObservation(s, store))
+
+		r.Method("POST", "/images", postNewImage(s, store))
 	})
 
 	return r
@@ -236,6 +241,43 @@ func patchObservation(s rest.Server, store Store) rest.Handler {
 			})
 		}
 		if err := rest.WriteJson(w, &response); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
+		return nil
+	})
+}
+
+func postNewImage(s rest.Server, store Store) rest.Handler {
+	type response struct {
+		Id           uuid.UUID `json:"id"`
+		ThumbnailUrl string    `json:"thumbnailUrl"`
+		OriginalUrl  string    `json:"originalUrl"`
+	}
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		observationId := chi.URLParam(r, "observationId")
+		if err := r.ParseMultipartForm(10 << 20); err != nil {
+			return &rest.Error{
+				Code:    http.StatusBadRequest,
+				Message: "failed to parse payload",
+				Error:   richErrors.Wrap(err, "failed to parse response body"),
+			}
+		}
+
+		file, fileHeader, err := r.FormFile("image")
+		image, err := store.CreateImage(observationId, file, fileHeader)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "Failed create file",
+				Error:   err,
+			}
+		}
+		w.WriteHeader(http.StatusCreated)
+		if err := rest.WriteJson(w, &response{
+			Id:           image.Id,
+			ThumbnailUrl: imgproxy.GenerateUrl(image.ObjectKey, 80, 80),
+			OriginalUrl:  imgproxy.GenerateOriginalUrl(image.ObjectKey),
+		}); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
 		return nil

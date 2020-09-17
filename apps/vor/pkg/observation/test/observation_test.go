@@ -2,6 +2,7 @@ package observation_test
 
 import (
 	"encoding/json"
+	"github.com/chrsep/vor/pkg/minio"
 	"net/http"
 	"testing"
 	"time"
@@ -22,7 +23,9 @@ type ObservationTestSuite struct {
 }
 
 func (s *ObservationTestSuite) SetupTest() {
-	s.store = postgres.ObservationStore{s.DB}
+	client, err := minio.NewClient()
+	assert.NoError(s.T(), err)
+	s.store = postgres.ObservationStore{s.DB, minio.NewImageStorage(client)}
 	s.Handler = observation.NewRouter(s.Server, s.store).ServeHTTP
 }
 

@@ -6,11 +6,13 @@ import (
 	"github.com/go-pg/pg/v10/orm"
 	"github.com/google/uuid"
 	richErrors "github.com/pkg/errors"
+	"mime/multipart"
 	"time"
 )
 
 type ObservationStore struct {
 	*pg.DB
+	ImageStorage ImageStorage
 }
 
 func (s ObservationStore) GetObservation(id string) (*domain.Observation, error) {
@@ -141,4 +143,54 @@ func (s ObservationStore) UpdateObservation(
 func (s ObservationStore) DeleteObservation(observationId string) error {
 	observation := Observation{Id: observationId}
 	return s.Delete(&observation)
+}
+
+func (s ObservationStore) CreateImage(observationId string, file multipart.File, header *multipart.FileHeader) (*domain.Image, error) {
+	observation := Observation{Id: observationId}
+	if err := s.Model(&observation).
+		WherePK().
+		Relation("Student").
+		Select(); err != nil {
+		return nil, richErrors.Wrap(err, "failed to get updated observation")
+	}
+
+	newImage := Image{
+		Id:        uuid.New(),
+		SchoolId:  observation.Student.SchoolId,
+		ObjectKey: "",
+		CreatedAt: time.Time{},
+	} // save image to s3
+	studentImageRelation := ImageToStudents{
+		StudentId: observation.Student.Id,
+		ImageId:   newImage.Id.String(),
+	}
+	observationImageRelation := ObservationToImage{
+		ObservationId: observationId,
+		ImageId:       newImage.Id,
+	}
+	objectKey, err := s.ImageStorage.Save(observation.Student.SchoolId, newImage.Id.String(), file, header.Size)
+	if err != nil {
+		return nil, richErrors.Wrap(err, "failed to save file to s3")
+	}
+	newImage.ObjectKey = objectKey
+	// save data to db
+	if err := s.RunInTransaction(func(tx *pg.Tx) error {
+		if _, err := tx.Model(&newImage).Insert(); err != nil {
+			return richErrors.Wrap(err, "failed to save image")
+		}
+		if _, err := tx.Model(&studentImageRelation).Insert(); err != nil {
+			return richErrors.Wrap(err, "failed to save student image relation")
+		}
+		if _, err := tx.Model(&observationImageRelation).Insert(); err != nil {
+			return richErrors.Wrap(err, "failed to save observation to image relation")
+		}
+		return nil
+	}); err != nil {
+		return nil, err
+	}
+	return &domain.Image{
+		Id:        newImage.Id,
+		ObjectKey: newImage.ObjectKey,
+		CreatedAt: newImage.CreatedAt,
+	}, err
 }

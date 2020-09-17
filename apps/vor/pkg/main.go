@@ -70,7 +70,6 @@ func runServer() error {
 
 	// Setup server and data stores
 	server := rest.NewServer(l)
-	observationStore := postgres.ObservationStore{db}
 	userStore := postgres.UserStore{db}
 	curriculumStore := postgres.CurriculumStore{db}
 	authStore := postgres.AuthStore{db}
@@ -91,6 +90,7 @@ func runServer() error {
 	schoolStore := postgres.SchoolStore{db, fileStorage, minioImageStorage}
 	studentStore := postgres.StudentStore{db, minioImageStorage}
 	imageStore := postgres.ImageStore{db, minioImageStorage}
+	observationStore := postgres.ObservationStore{db, minioImageStorage}
 
 	// Setup routing
 	r := chi.NewRouter()
