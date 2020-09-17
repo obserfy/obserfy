@@ -23,7 +23,9 @@ interface Observation {
 }
 const useGetObservation = (observationId: string) => {
   const getObservation = getApi<Observation>(`/observations/${observationId}`)
-  return useQuery(["observation", observationId], getObservation)
+  return useQuery(["observation", observationId], getObservation, {
+    refetchOnWindowFocus: false,
+  })
 }
 
 export const updateObservationCache = (observation: Observation) => {

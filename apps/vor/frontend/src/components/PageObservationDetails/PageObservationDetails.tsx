@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { FC, Fragment, useEffect, useRef, useState } from "react"
-import { jsx, Box, Button, Card, Flex, Image, Label } from "theme-ui"
+import { Box, Button, Card, Flex, Image, jsx, Label } from "theme-ui"
 import useGetObservation from "../../api/observations/useGetObservation"
 import Dialog from "../Dialog/Dialog"
 import DialogHeader from "../DialogHeader/DialogHeader"
@@ -23,6 +23,7 @@ import Typography from "../Typography/Typography"
 import { borderFull } from "../../border"
 import usePostNewObservationImage from "../../api/observations/usePostNewObservationImage"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
+import useDeleteObservationImage from "../../api/observations/useDeleteObservationImage"
 
 export interface PageObservationDetailsProps {
   observationId: string
@@ -144,6 +145,12 @@ const ImagesDataBox: FC<{
   const [postNewImage, { isLoading }] = usePostNewObservationImage(
     observationId
   )
+  const selectedImage =
+    selectedIdx !== undefined ? images[selectedIdx] : undefined
+  const [deleteImage, deleteImageState] = useDeleteObservationImage(
+    observationId,
+    selectedImage?.id
+  )
 
   const fileSelector = useRef<HTMLInputElement>(null)
 
@@ -206,7 +213,26 @@ const ImagesDataBox: FC<{
         </Label>
       </Flex>
       {selectedIdx !== undefined && (
-        <Image src={images[selectedIdx].originalUrl} sx={{ width: "100%" }} />
+        <Fragment>
+          <Image src={selectedImage?.originalUrl} sx={{ width: "100%" }} />
+          <Button
+            variant="outline"
+            color="danger"
+            ml="auto"
+            mr={3}
+            my={3}
+            onClick={async () => {
+              await deleteImage()
+              setSelectedIdx(undefined)
+            }}
+          >
+            {deleteImageState.isLoading ? (
+              <LoadingIndicator m="auto" />
+            ) : (
+              <Fragment>Delete Image</Fragment>
+            )}
+          </Button>
+        </Fragment>
       )}
     </Fragment>
   )
