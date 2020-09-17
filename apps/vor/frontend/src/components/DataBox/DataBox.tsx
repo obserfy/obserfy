@@ -16,7 +16,7 @@ export const DataBox: FC<DataBoxProps> = ({ label, value, onEditClick }) => (
       <Typography.Body
         mb={1}
         color="textMediumEmphasis"
-        sx={{ lineHeight: 1, fontSize: [1, 0] }}
+        sx={{ lineHeight: 1, fontSize: 0 }}
       >
         {label}
       </Typography.Body>

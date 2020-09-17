@@ -21,8 +21,8 @@ type Store interface {
 		shortDesc *string,
 		longDesc *string,
 		eventTime *time.Time,
-		areaId uuid.UUID,
-		categoryId uuid.UUID,
+		areaId *uuid.UUID,
+		categoryId *uuid.UUID,
 	) (*domain.Observation, error)
 	DeleteObservation(observationId string) error
 	GetObservation(id string) (*domain.Observation, error)
@@ -169,8 +169,8 @@ func patchObservation(s rest.Server, store Store) rest.Handler {
 		LongDesc   *string    `json:"longDesc"`
 		ShortDesc  *string    `json:"shortDesc"`
 		EventTime  *time.Time `json:"eventTime,omitempty"`
-		AreaId     uuid.UUID  `json:"areaId"`
-		CategoryId uuid.UUID  `json:"categoryId"`
+		AreaId     *string    `json:"areaId"`
+		CategoryId *string    `json:"categoryId"`
 	}
 
 	type area struct {
@@ -201,13 +201,32 @@ func patchObservation(s rest.Server, store Store) rest.Handler {
 			return rest.NewParseJsonError(err)
 		}
 
+		var areaId *uuid.UUID
+		if body.AreaId == nil {
+			areaId = nil
+		} else if *body.AreaId == "" {
+			areaId = &uuid.Nil
+		} else {
+			areaIdUUID := uuid.MustParse(*body.AreaId)
+			areaId = &areaIdUUID
+		}
+
+		var categoryId *uuid.UUID
+		if body.CategoryId == nil {
+			categoryId = nil
+		} else if *body.CategoryId == "" {
+			categoryId = &uuid.Nil
+		} else {
+			categoryUUID := uuid.MustParse(*body.CategoryId)
+			categoryId = &categoryUUID
+		}
 		observation, err := store.UpdateObservation(
 			observationId,
 			body.ShortDesc,
 			body.LongDesc,
 			body.EventTime,
-			body.AreaId,
-			body.CategoryId,
+			areaId,
+			categoryId,
 		)
 		if err != nil {
 			return &rest.Error{

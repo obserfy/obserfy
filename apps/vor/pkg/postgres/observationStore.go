@@ -82,8 +82,8 @@ func (s ObservationStore) UpdateObservation(
 	shortDesc *string,
 	longDesc *string,
 	eventTime *time.Time,
-	areaId uuid.UUID,
-	categoryId uuid.UUID,
+	areaId *uuid.UUID,
+	categoryId *uuid.UUID,
 ) (*domain.Observation, error) {
 	// Create model to update the data
 	model := make(PartialUpdateModel)

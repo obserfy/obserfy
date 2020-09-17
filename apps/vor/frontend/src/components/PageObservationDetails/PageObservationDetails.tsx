@@ -332,17 +332,20 @@ const SingleChoiceDataBox: FC<{
             pb={2}
             sx={{ flexWrap: "wrap", backgroundColor: "background" }}
           >
-            {possibleValues.map(({ text, id }) => (
-              <Chip
-                key={id}
-                text={text}
-                activeBackground="primary"
-                isActive={id === value}
-                onClick={() => setValue(id)}
-                mr={2}
-                mb={2}
-              />
-            ))}
+            {possibleValues.map(({ text, id }) => {
+              const isSelected = id === value
+              return (
+                <Chip
+                  key={id}
+                  text={text}
+                  activeBackground="primary"
+                  isActive={isSelected}
+                  onClick={() => setValue(isSelected ? "" : id)}
+                  mr={2}
+                  mb={2}
+                />
+              )
+            })}
           </Flex>
         </Dialog>
       )}

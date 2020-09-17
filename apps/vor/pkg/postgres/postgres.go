@@ -409,9 +409,15 @@ func (u *PartialUpdateModel) AddDateColumn(name string, value *time.Time) {
 	}
 }
 
-func (u *PartialUpdateModel) AddUUIDColumn(name string, value uuid.UUID) {
-	if value != uuid.Nil {
-		(*u)[name] = value
+// If value is nil, we ignore it. If we pass in uuid.Nil, we'll set the value in postgres to NULL
+// otherwise, we just pass in the UUID to postgres normally.
+func (u *PartialUpdateModel) AddUUIDColumn(name string, value *uuid.UUID) {
+	if value != nil {
+		if *value == uuid.Nil {
+			(*u)[name] = nil
+		} else {
+			(*u)[name] = value
+		}
 	}
 }
 
