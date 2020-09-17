@@ -1,5 +1,6 @@
-import React, { FC, Fragment, useEffect, useRef, useState } from "react"
-import { Box, Button, Card, Flex, Image } from "theme-ui"
+/** @jsx jsx */
+import { FC, Fragment, useEffect, useRef, useState } from "react"
+import { jsx, Box, Button, Card, Flex, Image, Label } from "theme-ui"
 import useGetObservation from "../../api/observations/useGetObservation"
 import Dialog from "../Dialog/Dialog"
 import DialogHeader from "../DialogHeader/DialogHeader"
@@ -9,6 +10,7 @@ import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import DataBox from "../DataBox/DataBox"
 import Icon from "../Icon/Icon"
 import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
+import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import DeleteObservationDialog from "../DeleteObservationDialog/DeleteObservationDialog"
 import { navigate } from "../Link/Link"
 import TextArea from "../TextArea/TextArea"
@@ -93,19 +95,17 @@ export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
         />
       </Card>
 
-      {(data?.images ?? []).length > 0 && (
-        <Card sx={{ borderRadius: [0, "default"] }} mx={[0, 3]} pt={3}>
-          <Typography.Body
-            mb={2}
-            color="textMediumEmphasis"
-            sx={{ lineHeight: 1, fontSize: [1, 0] }}
-            px={3}
-          >
-            Images
-          </Typography.Body>
-          <Images images={data?.images ?? []} />
-        </Card>
-      )}
+      <Card sx={{ borderRadius: [0, "default"] }} mx={[0, 3]} pt={3}>
+        <Typography.Body
+          mb={2}
+          color="textMediumEmphasis"
+          sx={{ lineHeight: 1, fontSize: [1, 0] }}
+          px={3}
+        >
+          Images
+        </Typography.Body>
+        <Images images={data?.images ?? []} />
+      </Card>
 
       <Button
         variant="outline"
@@ -136,19 +136,21 @@ const Images: FC<{
 }> = ({ images }) => {
   const [selectedIdx, setSelectedIdx] = useState<number>()
 
+  const fileSelector = useRef<HTMLInputElement>(null)
+
   return (
-    <>
-      <Flex px={3} mb={3}>
+    <Fragment>
+      <Flex px={3} mb={3} sx={{ flexWrap: "wrap", alignItems: "center" }}>
         {images.map((image, idx) => {
           const isSelected = selectedIdx === idx
           return (
             <Image
               key={image.id}
               src={image.thumbnailUrl}
-              height={40}
-              width={40}
               mr={2}
               sx={{
+                height: "40px",
+                width: "40px",
                 borderRadius: "default",
                 cursor: "pointer",
                 boxShadow: isSelected ? "0 0 0 2px #00a875" : "",
@@ -158,11 +160,32 @@ const Images: FC<{
             />
           )
         })}
+        <Label
+          sx={{
+            height: "40px",
+            width: "40px",
+            backgroundColor: "background",
+            borderRadius: "default",
+            cursor: "pointer",
+            "&:hover": { borderColor: "primary" },
+            ...borderFull,
+          }}
+          variant="outline"
+          p={0}
+        >
+          <input
+            ref={fileSelector}
+            type="file"
+            sx={{ display: "none" }}
+            accept="image/*"
+          />
+          <Icon as={PlusIcon} m="auto" />
+        </Label>
       </Flex>
       {selectedIdx !== undefined && (
         <Image src={images[selectedIdx].originalUrl} sx={{ width: "100%" }} />
       )}
-    </>
+    </Fragment>
   )
 }
 
