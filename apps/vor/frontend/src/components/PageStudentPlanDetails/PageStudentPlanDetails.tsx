@@ -1,11 +1,14 @@
 /** @jsx jsx */
-import { FC, useState, Fragment } from "react"
-import { jsx, Box, Button, Card, Flex } from "theme-ui"
+import { FC, Fragment, useState } from "react"
+import { Box, Button, Card, Flex, jsx } from "theme-ui"
 import useGetPlan, { GetPlanResponseBody } from "../../api/plans/useGetPlan"
 import useDeletePlans from "../../api/plans/useDeletePlan"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
-import BackNavigation from "../BackNavigation/BackNavigation"
-import { STUDENT_PLANS_URL } from "../../routes"
+import {
+  STUDENT_OVERVIEW_PAGE_URL,
+  STUDENT_PLANS_URL,
+  STUDENTS_URL,
+} from "../../routes"
 import dayjs from "../../dayjs"
 import Icon from "../Icon/Icon"
 import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
@@ -26,6 +29,11 @@ import useDeleteLessonPlanLink from "../../api/plans/useDeleteLessonPlanLink"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import LinkInput from "../LinkInput/LinkInput"
 import usePostNewLessonPlanLink from "../../api/plans/usePostNewLessonPlanLink"
+import BackButton from "../BackButton/BackButton"
+import Breadcrumb from "../Breadcrumb/Breadcrumb"
+import BreadcrumbItem from "../Breadcrumb/BreadcrumbItem"
+import { useGetStudent } from "../../api/useGetStudent"
+import MultilineDataBox from "../MultilineDataBox/MultilineDataBox"
 
 interface Props {
   studentId: string
@@ -33,15 +41,35 @@ interface Props {
 }
 export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
   const plan = useGetPlan(planId)
+  const student = useGetStudent(studentId)
   const [deletePlan] = useDeletePlans(planId)
   const [showDeleteDialog, setShowDeleteDialog] = useState(false)
 
-  if (plan.status === "loading") {
+  const appbar = (
+    <Flex sx={{ height: 48, alignItems: "center" }}>
+      <BackButton to={STUDENT_PLANS_URL(studentId, dayjs(plan.data?.date))} />
+      <Breadcrumb>
+        <BreadcrumbItem to={STUDENTS_URL}>Students</BreadcrumbItem>
+        <BreadcrumbItem to={STUDENT_OVERVIEW_PAGE_URL(studentId)}>
+          {student.data?.name.split(" ")[0]}
+        </BreadcrumbItem>
+        <BreadcrumbItem
+          to={STUDENT_PLANS_URL(studentId, dayjs(plan.data?.date))}
+        >
+          Plans
+        </BreadcrumbItem>
+        <BreadcrumbItem>Details</BreadcrumbItem>
+      </Breadcrumb>
+    </Flex>
+  )
+
+  if (plan.isLoading) {
     return (
-      <Box>
-        <LoadingPlaceholder sx={{ width: "100%", height: "10em" }} mb={3} />
-        <LoadingPlaceholder sx={{ width: "100%", height: "10em" }} mb={3} />
-        <LoadingPlaceholder sx={{ width: "100%", height: "10em" }} mb={3} />
+      <Box sx={{ maxWidth: "maxWidth.sm" }} pb={3} mx="auto">
+        {appbar}
+        <LoadingPlaceholder sx={{ width: "100%", height: 213 }} mb={3} />
+        <LoadingPlaceholder sx={{ width: "100%", height: 129 }} mb={3} />
+        <LoadingPlaceholder sx={{ width: "100%", height: 140 }} mb={3} />
       </Box>
     )
   }
@@ -49,10 +77,7 @@ export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
   return (
     <Fragment>
       <Box sx={{ maxWidth: "maxWidth.sm" }} pb={3} mx="auto">
-        <BackNavigation
-          to={STUDENT_PLANS_URL(studentId, dayjs(plan.data?.date))}
-          text="All plans"
-        />
+        {appbar}
         <Card mb={3} sx={{ borderRadius: [0, "default"] }}>
           <DateDataBox value={plan.data?.date} lessonPlanId={planId} />
           <AreaDataBox value={plan.data?.areaId} lessonPlanId={planId} />
@@ -307,39 +332,6 @@ const DataBox: FC<{
       <Icon as={EditIcon} />
     </Button>
   </Flex>
-)
-
-const MultilineDataBox: FC<{
-  label: string
-  value: string
-  onEditClick?: () => void
-  placeholder: string
-}> = ({ label, value, onEditClick, placeholder }) => (
-  <Box px={3} py={3} sx={{ alignItems: "flex-start" }}>
-    <Box mb={2}>
-      <Typography.Body
-        mb={2}
-        color="textMediumEmphasis"
-        sx={{ lineHeight: 1, fontSize: 1 }}
-      >
-        {label}
-      </Typography.Body>
-      {value.split("\n\n").map((text) => (
-        <Typography.Body mb={3}>{text || placeholder}</Typography.Body>
-      ))}
-    </Box>
-    <Button
-      variant="outline"
-      ml="auto"
-      px={2}
-      onClick={onEditClick}
-      sx={{ flexShrink: 0, fontSize: 1, color: "textMediumEmphasis" }}
-      aria-label={`edit-${label.toLowerCase()}`}
-    >
-      <Icon as={EditIcon} mr={2} />
-      Edit {label.toLowerCase()}
-    </Button>
-  </Box>
 )
 
 const LessonPlanLinks: FC<{

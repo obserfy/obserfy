@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import PageNewClass from "./PageNewClass"
 
 export default {
-  title: "Core|PageNewClass",
+  title: "Core/PageNewClass",
   component: PageNewClass,
   parameters: {
     componentSubtitle: "Just a simple PageNewClass",

@@ -25,7 +25,7 @@ export const PageSubscription: FC = () => {
       <Typography.H4 sx={{ fontWeight: "bold", textAlign: "center" }} mb={4}>
         Subscription Plan
       </Typography.H4>
-      {school.data?.subscription && (
+      {school.data?.subscription ? (
         <Card m={3} px={4} sx={{ borderRadius: 16 }}>
           <Flex my={4} sx={{ alignItems: "center" }}>
             <Typography.Body
@@ -55,8 +55,8 @@ export const PageSubscription: FC = () => {
               Amount Due
             </Typography.Body>
             <Typography.Body>
-              ${11.99 * school.data?.users?.length} (
-              {school.data?.users?.length} users)
+              ${3.99 * school.data?.users?.length} ({school.data?.users?.length}{" "}
+              users)
             </Typography.Body>
           </Box>
           <a href={school.data?.subscription.updateUrl}>
@@ -83,6 +83,18 @@ export const PageSubscription: FC = () => {
             </Flex>
           </a>
         </Card>
+      ) : (
+        <Card m={3} px={4} sx={{ borderRadius: 16 }}>
+          <Flex my={4} sx={{ alignItems: "center" }}>
+            <Typography.Body
+              color="textPrimary"
+              sx={{ fontWeight: "bold", lineHeight: 1 }}
+            >
+              Free Trial
+            </Typography.Body>
+            <Typography.Body ml="auto">Current Plan</Typography.Body>
+          </Flex>
+        </Card>
       )}
       <Card m={3} p={4} mt={4} sx={{ borderRadius: 16 }}>
         <Typography.Body
@@ -95,7 +107,7 @@ export const PageSubscription: FC = () => {
 
         <Flex sx={{ alignItems: "baseline" }}>
           <Typography.H3 sx={{ fontWeight: "bold", lineHeight: 1 }}>
-            $11.99
+            $3.99
           </Typography.H3>
           <Typography.Body ml={2} color="textMediumEmphasis">
             User/month
@@ -112,7 +124,7 @@ export const PageSubscription: FC = () => {
           <Feature text="Create lesson plans" />
           <Feature text="Track curriculum progress" />
           <Feature text="Parent portal" />
-          <Feature text="Image gallery" comingSoon />
+          <Feature text="Image gallery" />
           <Feature text="Reporting" comingSoon />
           <Feature text="And more coming..." />
         </Box>

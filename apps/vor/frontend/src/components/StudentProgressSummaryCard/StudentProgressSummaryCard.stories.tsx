@@ -3,7 +3,7 @@ import { Box } from "theme-ui"
 import StudentProgressSummaryCard from "./StudentProgressSummaryCard"
 
 export default {
-  title: "Basic|Card/StudentProgressSummaryCard",
+  title: "Basic/Card/StudentProgressSummaryCard",
   component: StudentProgressSummaryCard,
   parameters: {
     componentSubtitle: "Just a simple StudentProgressSummaryCard",

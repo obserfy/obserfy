@@ -1,6 +1,8 @@
 import React, { FC, useEffect, useState } from "react"
 import { navigate } from "gatsby"
-import { Box } from "theme-ui"
+import { Box, Flex } from "theme-ui"
+import { useMatch } from "@reach/router"
+import { useBreakpointIndex } from "@theme-ui/match-media"
 import {
   getSchoolId,
   SCHOOL_ID_UNDEFINED_PLACEHOLDER,
@@ -8,6 +10,8 @@ import {
 import Navbar from "../Navbar/Navbar"
 import { useGetUserProfile } from "../../api/useGetUserProfile"
 import Typography from "../Typography/Typography"
+import StudentsList from "../StudentsList/StudentsList"
+import { borderRight } from "../../border"
 
 /** Top level component which encapsulate most pages. Provides Appbar and Sidebar for navigation.
  *
@@ -18,6 +22,9 @@ import Typography from "../Typography/Typography"
 export const Layout: FC = ({ children }) => {
   useGetUserProfile()
 
+  const studentSubroute = useMatch("/dashboard/students/*")
+  const breakpoint = useBreakpointIndex({ defaultIndex: 2 })
+
   if (getSchoolId() === SCHOOL_ID_UNDEFINED_PLACEHOLDER) {
     navigate("/choose-school")
   }
@@ -25,16 +32,19 @@ export const Layout: FC = ({ children }) => {
   return (
     <>
       <Navbar />
-      <Box
-        as="main"
-        sx={{ backgroundColor: "background", width: "100%" }}
-        pl={[0, 64]}
-        pb={[48, 0]}
-        mb="env(safe-area-inset-bottom)"
-      >
-        <UpdateNotification />
-        {children}
-      </Box>
+      <Flex pl={[0, 64]} pb={[48, 0]}>
+        {studentSubroute && breakpoint > 1 && <StudentsSubrouteSidebar />}
+        <Box
+          as="main"
+          backgroundColor="background"
+          mb="env(safe-area-inset-bottom)"
+          ml={studentSubroute ? [0, 0, 300, 300, 420] : 0}
+          sx={{ width: "100%" }}
+        >
+          <UpdateNotification />
+          {children}
+        </Box>
+      </Flex>
     </>
   )
 }
@@ -51,14 +61,11 @@ const UpdateNotification = () => {
     }
   }, [])
 
-  if (!updateAvailable) return <div />
+  if (!updateAvailable) return <></>
 
   return (
-    <Box sx={{ backgroundColor: "primary", width: "100%" }}>
-      <Typography.Body
-        color="onPrimary"
-        sx={{ fontSize: 1, textAlign: "center" }}
-      >
+    <Box py={2} sx={{ backgroundColor: "primary", width: "100%" }}>
+      <Typography.Body color="onPrimary" sx={{ textAlign: "center" }}>
         <span role="img" aria-label="hooray">
           🎉🎉
         </span>{" "}
@@ -78,5 +85,23 @@ const UpdateNotification = () => {
     </Box>
   )
 }
+
+const StudentsSubrouteSidebar = () => (
+  <Box
+    pb={5}
+    sx={{
+      ...borderRight,
+      position: "fixed",
+      top: 0,
+      flexShrink: 0,
+      height: "100vh",
+      overflowY: "auto",
+      width: [undefined, 300, 300, 300, 420],
+      display: ["none", "none", "block"],
+    }}
+  >
+    <StudentsList />
+  </Box>
+)
 
 export default Layout

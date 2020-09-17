@@ -34,33 +34,21 @@ export const PageSupport: FC = () => {
   return (
     <Box mx="auto" sx={{ maxWidth: "maxWidth.sm" }}>
       <Typography.H6 mx={3} mt={4} mb={2}>
-        Give feedbacks
+        Help and Feedbacks
       </Typography.H6>
       <Card sx={{ borderRadius: [0, "default"] }}>
-        <a href="https://feedback.obserfy.com/feature-requests">
-          <Flex p={3} sx={{ alignItems: "center" }}>
-            <Typography.Body>Feature Requests</Typography.Body>
-            <Icon as={NextIcon} ml="auto" />
-          </Flex>
-        </a>
-        <a href="https://feedback.obserfy.com/bug-reports">
-          <Flex p={3} sx={{ alignItems: "center" }}>
-            <Typography.Body>Bug Report</Typography.Body>
-            <Icon as={NextIcon} ml="auto" />
-          </Flex>
-        </a>
         <a href="https://feedback.obserfy.com">
           <Flex p={3} sx={{ alignItems: "center" }}>
-            <Typography.Body>Our roadmap</Typography.Body>
+            <Box mr={3}>
+              <Typography.Body>Go to Canny</Typography.Body>
+              <Typography.Body color="textMediumEmphasis">
+                Post and upvote suggestions, ideas, and issues.
+              </Typography.Body>
+            </Box>
             <Icon as={NextIcon} ml="auto" />
           </Flex>
         </a>
-      </Card>
 
-      <Typography.H6 m={3} mt={4} mb={2}>
-        Get help
-      </Typography.H6>
-      <Card sx={{ borderRadius: [0, "default"] }}>
         <Flex m={3} sx={{ alignItems: "flex-start" }}>
           <Box mr={3}>
             <Typography.Body>Shoot us an e-mail</Typography.Body>

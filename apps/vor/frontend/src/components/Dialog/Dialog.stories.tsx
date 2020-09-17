@@ -6,7 +6,7 @@ import { Typography } from "../Typography/Typography"
 import Spacer from "../Spacer/Spacer"
 
 export default {
-  title: "Basic|Dialog/Dialog",
+  title: "Basic/Dialog/Dialog",
   component: Dialog,
   parameters: {
     componentSubtitle: "Just a simple Dialog",

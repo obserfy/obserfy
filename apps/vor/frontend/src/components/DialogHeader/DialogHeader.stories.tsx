@@ -3,7 +3,7 @@ import { action } from "@storybook/addon-actions"
 import DialogHeader from "./DialogHeader"
 
 export default {
-  title: "Core|DialogHeader",
+  title: "Core/DialogHeader",
   component: DialogHeader,
   parameters: {
     componentSubtitle: "Just a simple DialogHeader",

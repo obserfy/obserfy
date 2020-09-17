@@ -21,6 +21,7 @@ export const Chip: FC<Props> = ({
     py={1}
     sx={{
       ...sx,
+      display: "inline-block",
       userSelect: "none",
       cursor: "pointer",
       borderRadius: "default",

@@ -1,10 +1,10 @@
 /** @jsx jsx */
 import { FC } from "react"
 import { Box, Button, Flex, Image, Input, jsx, Label } from "theme-ui"
-import { BackNavigation } from "../BackNavigation/BackNavigation"
 import {
   STUDENT_IMAGE_DETAILS_URL,
   STUDENT_OVERVIEW_PAGE_URL,
+  STUDENTS_URL,
 } from "../../routes"
 import Typography from "../Typography/Typography"
 import { useGetStudent } from "../../api/useGetStudent"
@@ -14,6 +14,9 @@ import usePostNewStudentImage from "../../api/students/usePostNewStudentImage"
 import useGetStudentImages from "../../api/students/useGetStudentImages"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import { Link } from "../Link/Link"
+import BackButton from "../BackButton/BackButton"
+import Breadcrumb from "../Breadcrumb/Breadcrumb"
+import BreadcrumbItem from "../Breadcrumb/BreadcrumbItem"
 
 interface Props {
   studentId: string
@@ -24,11 +27,17 @@ export const PageStudentImages: FC<Props> = ({ studentId }) => {
   const [postNewStudentImage, { isLoading }] = usePostNewStudentImage(studentId)
 
   return (
-    <Box sx={{ maxWidth: "maxWidth.md" }} margin="auto" pb={5}>
-      <BackNavigation
-        text="Student Overview"
-        to={STUDENT_OVERVIEW_PAGE_URL(studentId)}
-      />
+    <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={5}>
+      <Flex sx={{ height: 48, alignItems: "center" }}>
+        <BackButton to={STUDENT_OVERVIEW_PAGE_URL(studentId)} />
+        <Breadcrumb>
+          <BreadcrumbItem to={STUDENTS_URL}>Students</BreadcrumbItem>
+          <BreadcrumbItem to={STUDENT_OVERVIEW_PAGE_URL(studentId)}>
+            {student.data?.name.split(" ")[0]}
+          </BreadcrumbItem>
+          <BreadcrumbItem>Image Gallery</BreadcrumbItem>
+        </Breadcrumb>
+      </Flex>
       <Typography.H5 mx={3} mt={3} color="textDisabled">
         {student.data?.name}
       </Typography.H5>
@@ -39,6 +48,7 @@ export const PageStudentImages: FC<Props> = ({ studentId }) => {
         <Label>
           <Input
             type="file"
+            accept="image/*"
             sx={{ display: "none" }}
             disabled={isLoading}
             onChange={async (e) => {

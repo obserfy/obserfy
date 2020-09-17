@@ -1,6 +1,7 @@
 import { Theme } from "theme-ui"
 
 const theme: Theme = {
+  breakpoints: ["40em", "52em", "64em", "72em"],
   useColorSchemeMediaQuery: true,
   colors: {
     // Base color
@@ -19,7 +20,7 @@ const theme: Theme = {
     primaryDark: "#00a06d",
     onPrimaryDark: "#fff",
 
-    primaryLight: "#629749",
+    primaryLight: "rgba(0,120,86,0.24)",
     onPrimaryLight: "text",
 
     primaryLighter: "rgba(0,120,86,0.12)",
@@ -40,7 +41,7 @@ const theme: Theme = {
     onSurfaceBlurTransparent: "#87000000",
 
     border: "rgba(0,0,0,.1)",
-    borderSolid: "#fff",
+    borderSolid: "rgba(0,0,0,.1)",
 
     overlay: "rgba(0,0,0,.7)",
     onOverlay: "#fff",
@@ -205,7 +206,7 @@ const theme: Theme = {
     },
     body: {
       color: "text",
-      fontSize: [2, 1],
+      fontSize: 1,
       textRendering: "optimizeLegibility",
       lineHeight: 1.5,
     },

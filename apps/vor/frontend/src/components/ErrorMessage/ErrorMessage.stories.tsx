@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import ErrorMessage from "./ErrorMessage"
 
 export default {
-  title: "Core|ErrorMessage",
+  title: "Core/ErrorMessage",
   component: ErrorMessage,
   parameters: {
     componentSubtitle: "Just a simple ErrorMessage",

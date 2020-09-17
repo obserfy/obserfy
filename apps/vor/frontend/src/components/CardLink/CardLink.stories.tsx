@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import CardLink from "./CardLink"
 
 export default {
-  title: "Core|CardLink",
+  title: "Core/CardLink",
   component: CardLink,
   parameters: {
     componentSubtitle: "Just a simple CardLink",

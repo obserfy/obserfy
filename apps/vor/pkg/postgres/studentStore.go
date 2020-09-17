@@ -33,14 +33,7 @@ func (s StudentStore) DeleteClassRelation(studentId string, classId string) erro
 	return nil
 }
 
-func (s StudentStore) InsertObservation(
-	studentId string,
-	creatorId string,
-	longDesc string,
-	shortDesc string,
-	category string,
-	eventTime *time.Time,
-) (*Observation, error) {
+func (s StudentStore) InsertObservation(studentId string, creatorId string, longDesc string, shortDesc string, category string, eventTime time.Time, images []uuid.UUID, areaId uuid.UUID) (*Observation, error) {
 	observationId := uuid.New()
 	observation := Observation{
 		Id:          observationId.String(),
@@ -51,8 +44,34 @@ func (s StudentStore) InsertObservation(
 		CreatorId:   creatorId,
 		CreatedDate: time.Now(),
 		EventTime:   eventTime,
+		AreaId:      areaId,
 	}
-	if err := s.Insert(&observation); err != nil {
+	observationImages := make([]ObservationToImage, 0)
+	for i := range images {
+		observationImages = append(observationImages, ObservationToImage{
+			ObservationId: observation.Id,
+			ImageId:       images[i],
+		})
+	}
+	if err := s.RunInTransaction(func(tx *pg.Tx) error {
+		if err := tx.Insert(&observation); err != nil {
+			return richErrors.Wrap(err, "failed to save observations")
+		}
+		if len(observationImages) > 0 {
+			if err := tx.Insert(&observationImages); err != nil {
+				return richErrors.Wrap(err, "failed to save observation images")
+			}
+		}
+		if err := tx.Model(&observation).
+			WherePK().
+			Relation("Images").
+			Relation("Creator").
+			Relation("Area").
+			Select(); err != nil {
+			return richErrors.Wrap(err, "failed to get complete observation data")
+		}
+		return nil
+	}); err != nil {
 		return nil, err
 	}
 	return &observation, nil
@@ -100,6 +119,8 @@ func (s StudentStore) GetObservations(studentId string) ([]Observation, error) {
 		Where("student_id=?", studentId).
 		Relation("Student").
 		Relation("Creator").
+		Relation("Area").
+		Relation("Images").
 		Order("created_date").
 		Select(); err != nil {
 		return nil, err

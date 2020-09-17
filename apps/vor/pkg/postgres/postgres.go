@@ -64,6 +64,7 @@ func InitTables(db *pg.DB) error {
 		(*LessonPlanLink)(nil),
 		(*LessonPlan)(nil),
 		(*Observation)(nil),
+		(*ObservationToImage)(nil),
 		(*File)(nil),
 		(*FileToLessonPlan)(nil),
 		(*LessonPlanToStudents)(nil),
@@ -192,7 +193,7 @@ type Observation struct {
 	LongDesc     string    `json:"longDesc"`
 	CategoryId   string    `json:"categoryId"`
 	CreatedDate  time.Time `json:"createdDate"`
-	EventTime    *time.Time
+	EventTime    time.Time
 	CreatorId    string `pg:",type:uuid,on_delete:SET NULL"`
 	Creator      *User
 	LessonPlan   LessonPlan
@@ -200,7 +201,15 @@ type Observation struct {
 	Guardian     Guardian
 	GuardianId   string `pg:"type:uuid,on_delete:SET NULL"`
 	Area         Area
-	AreaId       string `pg:"type:uuid,on_delete:SET NULL"`
+	AreaId       uuid.UUID `pg:"type:uuid,on_delete:SET NULL"`
+	Images       []Image   `pg:"many2many:observation_to_images,join_fk:image_id"`
+}
+
+type ObservationToImage struct {
+	Observation   Observation
+	ObservationId string `pg:"type:uuid,on_delete:CASCADE"`
+	Image         Image
+	ImageId       uuid.UUID `pg:"type:uuid,on_delete:CASCADE"`
 }
 
 type Subscription struct {
@@ -397,6 +406,18 @@ func (u *PartialUpdateModel) AddStringColumn(name string, value *string) {
 func (u *PartialUpdateModel) AddDateColumn(name string, value *time.Time) {
 	if value != nil {
 		(*u)[name] = value
+	}
+}
+
+// If value is nil, we ignore it. If we pass in uuid.Nil, we'll set the value in postgres to NULL
+// otherwise, we just pass in the UUID to postgres normally.
+func (u *PartialUpdateModel) AddUUIDColumn(name string, value *uuid.UUID) {
+	if value != nil {
+		if *value == uuid.Nil {
+			(*u)[name] = nil
+		} else {
+			(*u)[name] = value
+		}
 	}
 }
 

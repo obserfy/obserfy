@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import InformationalCard from "./InformationalCard"
 
 export default {
-  title: "Basic|Card/InformationalCard",
+  title: "Basic/Card/InformationalCard",
   component: InformationalCard,
   parameters: {
     componentSubtitle: "Just a simple InformationalCard",

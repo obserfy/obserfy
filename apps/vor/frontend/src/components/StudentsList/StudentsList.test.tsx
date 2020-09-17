@@ -1,8 +1,8 @@
 import React from "react"
 import { render } from "../../test-utils"
-import { Basic } from "./EditObservationDialog.stories"
+import { Basic } from "./StudentsList.stories"
 
-describe("EditObservationDialog", () => {
+describe("StudentsList", () => {
   it("should render correctly", () => {
     const { container } = render(<Basic />)
     expect(container).toMatchSnapshot()

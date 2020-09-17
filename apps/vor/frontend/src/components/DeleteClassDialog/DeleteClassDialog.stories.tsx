@@ -3,7 +3,7 @@ import { action } from "@storybook/addon-actions"
 import DeleteClassDialog from "./DeleteClassDialog"
 
 export default {
-  title: "Core|DeleteClassDialog",
+  title: "Core/DeleteClassDialog",
   component: DeleteClassDialog,
   parameters: {
     componentSubtitle: "Just a simple DeleteClassDialog",

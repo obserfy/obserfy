@@ -28,7 +28,7 @@ export const EDIT_CLASS_URL = (classId: string): string =>
   `/dashboard/admin/class/edit?classId=${classId}`
 
 export const STUDENT_OVERVIEW_PAGE_URL = (studentId: string): string =>
-  `/dashboard/students/overview?id=${studentId}`
+  `/dashboard/students/overview?studentId=${studentId}`
 
 export const STUDENT_IMAGES_URL = (studentId: string): string =>
   `/dashboard/students/images?studentId=${studentId}`
@@ -45,6 +45,18 @@ export const ALL_OBSERVATIONS_PAGE_URL = (studentId: string): string =>
 export const NEW_OBSERVATION_URL = (studentId: string): string =>
   `/dashboard/students/observations/new?studentId=${studentId}`
 
+export const OBSERVATION_DETAILS_URL = (
+  studentId: string,
+  observationId: string
+): string =>
+  `/dashboard/students/observations/details?studentId=${studentId}&observationId=${observationId}`
+
+export const STUDENT_OVERVIEWS_OBSERVATION_DETAILS_URL = (
+  studentId: string,
+  observationId: string
+): string =>
+  `/dashboard/students/observation-details?studentId=${studentId}&observationId=${observationId}`
+
 export const STUDENT_PLANS_URL = (studentId: string, date?: Dayjs) =>
   `/dashboard/students/plans?studentId=${studentId}&date=${
     date?.toISOString() ?? ""
@@ -59,10 +71,10 @@ export const STUDENT_PLANS_DETAILS_URL = (studentId: string, planId: string) =>
   `/dashboard/students/plans/details?studentId=${studentId}&planId=${planId}`
 
 export const EDIT_GUARDIANS_URL = (studentId: string): string =>
-  `/dashboard/students/profile/guardians/edit?id=${studentId}`
+  `/dashboard/students/profile/guardians/edit?studentId=${studentId}`
 
 export const STUDENT_PROFILE_URL = (id: string) =>
-  `/dashboard/students/profile?id=${id}`
+  `/dashboard/students/profile?studentId=${id}`
 
 export const NEW_PLANS_URL = (date?: Dayjs) =>
   `/dashboard/plans/new${date ? `?date=${date.toISOString()}` : ""}`
@@ -74,13 +86,13 @@ export const PLANS_DETAILS_URL = (id: string) =>
   `/dashboard/plans/details?id=${id}`
 
 export const NEW_GUARDIANS_URL = (studentId: string): string =>
-  `/dashboard/students/profile/guardians/new?id=${studentId}`
+  `/dashboard/students/profile/guardians/new?studentId=${studentId}`
 
 export const EDIT_STUDENT_CLASS_URL = (id: string) =>
-  `/dashboard/students/profile/classes/edit?id=${id}`
+  `/dashboard/students/profile/classes/edit?studentId=${id}`
 
 export const NEW_STUDENT_CLASS_URL = (id: string) =>
-  `/dashboard/students/profile/classes/new?id=${id}`
+  `/dashboard/students/profile/classes/new?studentId=${id}`
 
 export const STUDENT_PROGRESS_URL = (
   studentId: string,

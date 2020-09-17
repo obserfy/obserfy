@@ -36,7 +36,7 @@ interface Props extends BoxProps {
 }
 export const LoadingIndicator: FC<Props> = ({
   color = "text",
-  size = 20,
+  size = 18,
   ...props
 }) => {
   const ballSize = Math.round(size / 6)
@@ -52,7 +52,7 @@ export const LoadingIndicator: FC<Props> = ({
         height: `${size}px`,
         "& div": {
           position: "absolute",
-          top: Math.round((size - ballSize) * 0.5),
+          top: `${Math.round((size - ballSize) * 0.5)}px`,
           width: `${ballSize}px`,
           height: `${ballSize}px`,
           borderRadius: "50%",

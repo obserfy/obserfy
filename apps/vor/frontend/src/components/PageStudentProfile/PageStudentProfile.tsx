@@ -1,8 +1,6 @@
 /** @jsx jsx */
 import { FC, Fragment, useState } from "react"
 import { Box, Button, Card, Flex, jsx } from "theme-ui"
-
-import BackNavigation from "../BackNavigation/BackNavigation"
 import { useGetStudent } from "../../api/useGetStudent"
 import { usePatchStudentApi } from "../../api/students/usePatchStudentApi"
 
@@ -11,6 +9,7 @@ import {
   EDIT_GUARDIANS_URL,
   EDIT_STUDENT_CLASS_URL,
   STUDENT_OVERVIEW_PAGE_URL,
+  STUDENTS_URL,
 } from "../../routes"
 import dayjs from "../../dayjs"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
@@ -24,6 +23,9 @@ import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import { Link } from "../Link/Link"
 import AlertDialog from "../AlertDialog/AlertDialog"
 import DatePickerDialog from "../DatePickerDialog/DatePickerDialog"
+import BackButton from "../BackButton/BackButton"
+import Breadcrumb from "../Breadcrumb/Breadcrumb"
+import BreadcrumbItem from "../Breadcrumb/BreadcrumbItem"
 
 interface Props {
   id: string
@@ -44,10 +46,16 @@ export const PageStudentProfile: FC<Props> = ({ id }) => {
 
   return (
     <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={4}>
-      <BackNavigation
-        to={STUDENT_OVERVIEW_PAGE_URL(id)}
-        text="Student Overview"
-      />
+      <Flex sx={{ height: 48, alignItems: "center" }}>
+        <BackButton to={STUDENT_OVERVIEW_PAGE_URL(id)} />
+        <Breadcrumb>
+          <BreadcrumbItem to={STUDENTS_URL}>Students</BreadcrumbItem>
+          <BreadcrumbItem to={STUDENT_OVERVIEW_PAGE_URL(id)}>
+            {data?.name.split(" ")[0]}
+          </BreadcrumbItem>
+          <BreadcrumbItem>Profile</BreadcrumbItem>
+        </Breadcrumb>
+      </Flex>
       <Card sx={{ borderRadius: [0, "default"] }} mb={3}>
         <NameDataBox
           value={data?.name}
@@ -443,6 +451,7 @@ const SetStatusDataBox: FC<{
     </Card>
   )
 }
+
 const DataBox: FC<{
   label: string
   value: string

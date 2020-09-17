@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import Chip from "./Chip"
 
 export default {
-  title: "Core|Chip",
+  title: "Core/Chip",
   component: Chip,
   parameters: {
     componentSubtitle: "Just a simple Chip",

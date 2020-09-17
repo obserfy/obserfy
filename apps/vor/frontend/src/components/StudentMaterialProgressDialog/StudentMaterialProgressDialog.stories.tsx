@@ -3,7 +3,7 @@ import { action } from "@storybook/addon-actions"
 import StudentMaterialProgressDialog from "./StudentMaterialProgressDialog"
 
 export default {
-  title: "Basic|Dialog/StudentMaterialProgressDialog",
+  title: "Basic/Dialog/StudentMaterialProgressDialog",
   component: StudentMaterialProgressDialog,
   parameters: {
     componentSubtitle: "Just a simple StudentMaterialProgressDialog",

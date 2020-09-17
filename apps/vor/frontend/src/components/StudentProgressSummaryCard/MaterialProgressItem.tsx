@@ -22,7 +22,7 @@ const MaterialProgressItem: FC<Props> = ({ value, onClick }) => {
       onClick={onClick}
       sx={{ cursor: "pointer", alignItems: "center" }}
     >
-      <Typography.Body sx={{ fontSize: 1, lineHeight: 1.6 }} mr={3}>
+      <Typography.Body sx={{ fontSize: 1, lineHeight: 1.4 }} mr={3}>
         {value.materialName}
       </Typography.Body>
       <Pill

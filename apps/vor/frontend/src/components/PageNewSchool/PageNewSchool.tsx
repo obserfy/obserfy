@@ -40,7 +40,7 @@ export const PageNewSchool: FC = () => {
         onSubmit={handleSubmit}
         mt={-5}
       >
-        <Typography.H2 my={3}>New School</Typography.H2>
+        <Typography.H5 my={3}>New School</Typography.H5>
         <Input
           sx={{ width: "100%" }}
           label="School Name"

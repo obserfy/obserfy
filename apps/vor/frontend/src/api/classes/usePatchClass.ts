@@ -16,7 +16,7 @@ interface Class {
 const usePatchClass = (
   classId: string
 ): [MutateFunction<Response, Class>, MutationResult<Response>] => {
-  const patchClass = patchApi<Class>("/classes", classId)
+  const patchClass = patchApi<Class>(`/classes/${classId}`)
 
   return useMutation<Response, Class>(patchClass, {
     onSuccess: async () => {

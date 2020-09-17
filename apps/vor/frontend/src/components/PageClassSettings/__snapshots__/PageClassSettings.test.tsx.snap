@@ -7,7 +7,7 @@ exports[`PageClassSettings should render correctly 1`] = `
   }
 
   50% {
-    background-color: rgba(165,165,165,0.1);
+    background-color: rgba(165,165,165,0.2);
   }
 
   100% {
@@ -21,7 +21,7 @@ exports[`PageClassSettings should render correctly 1`] = `
   }
 
   50% {
-    background-color: rgba(165,165,165,0.1);
+    background-color: rgba(165,165,165,0.2);
   }
 
   100% {
@@ -94,17 +94,11 @@ exports[`PageClassSettings should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-bottom: 0;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-}
-
-@media screen and (min-width:40em) {
-  .emotion-1 {
-    font-size: 14px;
-  }
 }
 
 .emotion-7 {

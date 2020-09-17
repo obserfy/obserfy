@@ -2,6 +2,7 @@ package curriculum
 
 import (
 	"errors"
+	"github.com/chrsep/vor/pkg/domain"
 	"net/http"
 
 	"github.com/go-chi/chi"
@@ -168,13 +169,13 @@ func createSubject(server rest.Server, store Store) http.Handler {
 		}
 
 		// Convert Material into proper form
-		var materials []Material
+		var materials []domain.Material
 		orderingNumbers := make(map[int]bool)
 		for _, material := range requestBody.Materials {
 			// For checking duplicated order later
 			orderingNumbers[material.Order] = true
 
-			materials = append(materials, Material{
+			materials = append(materials, domain.Material{
 				Id:    uuid.New().String(),
 				Name:  material.Name,
 				Order: material.Order,
@@ -185,7 +186,7 @@ func createSubject(server rest.Server, store Store) http.Handler {
 			return &rest.Error{
 				http.StatusUnprocessableEntity,
 				"Material order number can't be repeated",
-				richErrors.New("Repeatd order number in list of materials")}
+				richErrors.New("Repeated order number in list of materials")}
 		}
 		subject, err := store.NewSubject(requestBody.Name, areaId, materials)
 		if err != nil {
@@ -387,11 +388,11 @@ func replaceSubject(server rest.Server, store Store) http.Handler {
 				richErrors.New("empty subject name"),
 			}
 		}
-		newSubject := Subject{
+		newSubject := domain.Subject{
 			Id:        subjectId,
 			AreaId:    body.AreaId,
 			Name:      body.Name,
-			Materials: make([]Material, 0),
+			Materials: make([]domain.Material, 0),
 			Order:     body.Order,
 		}
 		materialOrderNumbers := make(map[int]bool)
@@ -411,7 +412,7 @@ func replaceSubject(server rest.Server, store Store) http.Handler {
 			if _, err := uuid.Parse(material.Id); err != nil {
 				material.Id = uuid.New().String()
 			}
-			newSubject.Materials = append(newSubject.Materials, Material{
+			newSubject.Materials = append(newSubject.Materials, domain.Material{
 				Id:        material.Id,
 				SubjectId: subjectId,
 				Subject:   newSubject,

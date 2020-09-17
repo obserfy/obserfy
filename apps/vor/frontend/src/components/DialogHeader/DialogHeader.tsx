@@ -11,6 +11,7 @@ interface Props {
   onAcceptText: string
   title: string
   loading?: boolean
+  disableAccept?: boolean
 }
 export const DialogHeader: FC<Props> = ({
   title,
@@ -19,6 +20,7 @@ export const DialogHeader: FC<Props> = ({
   onCancel,
   onCancelText = "Cancel",
   loading,
+  disableAccept,
 }) => (
   <Flex
     backgroundColor="surface"
@@ -30,6 +32,7 @@ export const DialogHeader: FC<Props> = ({
   >
     <Typography.H6
       sx={{
+        fontSize: 2,
         width: "100%",
         position: "absolute",
         pointerEvents: "none",
@@ -56,6 +59,7 @@ export const DialogHeader: FC<Props> = ({
       onClick={onAccept}
       mr={2}
       data-cy="confirm"
+      disabled={disableAccept}
     >
       {loading && <LoadingIndicator />} {onAcceptText}
     </Button>

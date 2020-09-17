@@ -3,19 +3,13 @@ package student
 import (
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/go-pg/pg/v10"
+	"github.com/google/uuid"
 	"mime/multipart"
 	"time"
 )
 
 type Store interface {
-	InsertObservation(
-		studentId string,
-		creatorId string,
-		longDesc string,
-		shortDesc string,
-		category string,
-		eventTime *time.Time,
-	) (*postgres.Observation, error)
+	InsertObservation(studentId string, creatorId string, longDesc string, shortDesc string, category string, eventTime time.Time, images []uuid.UUID, areaId uuid.UUID) (*postgres.Observation, error)
 	GetObservations(studentId string) ([]postgres.Observation, error)
 	GetProgress(studentId string) ([]postgres.StudentMaterialProgress, error)
 	UpdateProgress(progress postgres.StudentMaterialProgress) (pg.Result, error)

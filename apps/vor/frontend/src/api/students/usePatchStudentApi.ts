@@ -14,11 +14,12 @@ interface UpdateStudentRequestBody {
   dateOfEntry?: Dayjs
   gender?: number
   active?: boolean
+  profileImageId?: string
 }
 export function usePatchStudentApi(
   id: string
 ): [MutateFunction<Response, unknown>, MutationResult<Response>] {
-  const patchStudent = patchApi<UpdateStudentRequestBody>("/students", id)
+  const patchStudent = patchApi<UpdateStudentRequestBody>(`/students/${id}`)
 
   return useMutation(patchStudent, {
     onSuccess: async () => {

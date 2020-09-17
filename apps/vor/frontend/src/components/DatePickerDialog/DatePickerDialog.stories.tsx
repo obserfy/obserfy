@@ -1,20 +1,26 @@
-import React, { FC } from "react"
+import React from "react"
 import { action } from "@storybook/addon-actions"
-import DatePickerDialog from "./DatePickerDialog"
+import { Meta, Story } from "@storybook/react"
+import DatePickerDialog, { DatePickerDialogProps } from "./DatePickerDialog"
 import dayjs from "../../dayjs"
 
 export default {
-  title: "Basic|Dialog/DatePickerDialog",
+  title: "Basic/Dialog/DatePickerDialog",
   component: DatePickerDialog,
   parameters: {
     componentSubtitle: "Just a simple DatePickerDialog",
   },
-}
+} as Meta
 
-export const Basic: FC = () => (
+const Template: Story<DatePickerDialogProps> = ({ defaultDate }) => (
   <DatePickerDialog
     onConfirm={action("confirm")}
     onDismiss={action("dismiss")}
-    defaultDate={dayjs(new Date(2012, 1, 12))}
+    defaultDate={defaultDate}
   />
 )
+
+export const Default = Template.bind({})
+Default.args = {
+  defaultDate: dayjs(new Date(2012, 1, 12)),
+}

@@ -1,15 +1,30 @@
-import React, { ChangeEvent, FC, PropsWithoutRef } from "react"
-import { Box, Label, Textarea as BaseTextArea, TextareaProps } from "theme-ui"
+import React, {
+  ChangeEvent,
+  forwardRef,
+  ForwardRefRenderFunction,
+  PropsWithoutRef,
+} from "react"
+import {
+  Box,
+  Label,
+  SxStyleProp,
+  Textarea as BaseTextArea,
+  TextareaProps,
+} from "theme-ui"
 
 interface Props extends PropsWithoutRef<TextareaProps> {
   label?: string
   onChange?: (event: ChangeEvent<HTMLTextAreaElement>) => void
+  containerSx?: SxStyleProp
 }
-export const TextArea: FC<Props> = ({ label, ...props }) => (
-  <Label sx={{ display: "flex", flexDirection: "column" }}>
+export const TextArea: ForwardRefRenderFunction<HTMLTextAreaElement, Props> = (
+  { label, containerSx, ...props },
+  ref
+) => (
+  <Label sx={{ display: "flex", flexDirection: "column", ...containerSx }}>
     {label && <Box pb={1}>{label}</Box>}
-    <BaseTextArea aria-label={label} {...props} />
+    <BaseTextArea ref={ref} aria-label={label} {...props} />
   </Label>
 )
 
-export default TextArea
+export default forwardRef(TextArea)

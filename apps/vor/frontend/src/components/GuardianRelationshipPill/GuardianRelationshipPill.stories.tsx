@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import GuardianRelationshipPill from "./GuardianRelationshipPill"
 
 export default {
-  title: "Core|GuardianRelationshipPill",
+  title: "Core/GuardianRelationshipPill",
   component: GuardianRelationshipPill,
   parameters: {
     componentSubtitle: "Just a simple GuardianRelationshipPill",

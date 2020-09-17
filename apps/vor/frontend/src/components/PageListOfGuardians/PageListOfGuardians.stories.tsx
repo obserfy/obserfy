@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import PageListOfGuardians from "./PageListOfGuardians"
 
 export default {
-  title: "Core|PageListOfGuardians",
+  title: "Core/PageListOfGuardians",
   component: PageListOfGuardians,
   parameters: {
     componentSubtitle: "Just a simple PageListOfGuardians",

@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import BrandBanner from "./BrandBanner"
 
 export default {
-  title: "Core|BrandBanner",
+  title: "Core/BrandBanner",
   component: BrandBanner,
   parameters: {
     componentSubtitle: "Just a simple BrandBanner",

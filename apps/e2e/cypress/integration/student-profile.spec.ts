@@ -40,7 +40,9 @@ describe("test student profile page", () => {
 
     // Create student
     let studentName = "Carol"
-    cy.get("[data-cy=new-student-button]").click()
+    cy.get("main").within(() => {
+      cy.get("[data-cy=new-student-button]").click()
+    })
     cy.contains("Name").type(studentName)
     cy.contains("Save").click()
 
@@ -51,10 +53,9 @@ describe("test student profile page", () => {
     cy.contains(studentName).should("be.visible")
     cy.contains(studentName).click()
     cy.contains("Observation").click()
-    cy.get("[aria-label=Category]").select("2")
     cy.contains("Short Description").type(shortDesc)
     cy.get("[aria-label=Details]").type(details)
-    cy.contains("Add").click()
+    cy.contains("Save").click()
     cy.get("[data-cy=observation-short-desc]")
       .contains(shortDesc)
       .should("be.visible")
@@ -108,20 +109,21 @@ describe("test student profile page", () => {
     cy.contains(guardianName).should("be.visible")
 
     // Go back to overview
-    cy.contains("Student Overview").click()
+    cy.get("[data-cy=back-button]").click()
 
     // Edit observation
     cy.url().should("contains", "students")
-    cy.get("[data-cy=edit-observation]").click()
-    cy.get("[aria-label=Details]").type("Some additional text")
+    cy.contains("See More").click()
+    cy.contains("Edit details").click()
+    cy.contains("label", "Details").type("Some additional text")
     cy.contains("Save").click()
     cy.contains("Some additional text").should("be.visible")
 
     // Delete observation
-    cy.get("[data-cy=delete-observation]").should("be.visible")
+    cy.contains("Delete").should("be.visible")
     // TODO: This part is really flaky, try fixing it later.
-    cy.get("[data-cy=delete-observation]").click()
-    cy.get("[data-cy=confirm-delete]").click()
+    cy.contains("Delete").click()
+    cy.contains("button", "Yes").click()
     cy.contains(shortDesc).should("not.be.visible")
 
     // Go to curriculum
@@ -155,7 +157,7 @@ describe("test student profile page", () => {
 
     // Go back and see if it shows up
     cy.contains("Practiced").should("be.visible")
-    cy.contains("Student Details").click({ force: true })
+    cy.get("[data-cy=back-button]").click({ force: true })
     // .waitForRouteChange()
 
     // Change to master

@@ -16,7 +16,7 @@ interface UpdateGuardianRequest {
 export function usePatchGuardian(
   id: string
 ): [MutateFunction<Response, unknown>, MutationResult<Response>] {
-  const patchGuardian = patchApi<UpdateGuardianRequest>("/guardians", id)
+  const patchGuardian = patchApi<UpdateGuardianRequest>(`/guardians/${id}`)
 
   return useMutation(patchGuardian, {
     onSuccess: async () => {

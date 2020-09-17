@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import PageEditClass from "./PageEditClass"
 
 export default {
-  title: "Core|PageEditClass",
+  title: "Core/PageEditClass",
   component: PageEditClass,
   parameters: {
     componentSubtitle: "Just a simple PageEditClass",

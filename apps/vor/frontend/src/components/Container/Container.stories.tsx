@@ -4,7 +4,7 @@ import { Box } from "theme-ui"
 import Container from "./Container"
 
 export default {
-  title: "Core|Container",
+  title: "Core/Container",
   component: Container,
   parameters: {
     componentSubtitle: "Container component with maxWidth set",

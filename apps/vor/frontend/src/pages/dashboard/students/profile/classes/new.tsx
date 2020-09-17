@@ -2,10 +2,10 @@ import React from "react"
 import { useQueryString } from "../../../../../hooks/useQueryString"
 import PageNewStudentClass from "../../../../../components/PageNewStudentClass/PageNewStudentClass"
 
-const NewStudntClass = () => {
-  const id = useQueryString("id")
+const NewStudentClass = () => {
+  const id = useQueryString("studentId")
 
   return <PageNewStudentClass id={id} />
 }
 
-export default NewStudntClass
+export default NewStudentClass

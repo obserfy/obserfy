@@ -3,7 +3,7 @@ import { action } from "@storybook/addon-actions"
 import DraggableListItem from "./DraggableListItem"
 
 export default {
-  title: "Core|DraggableListItem",
+  title: "Core/DraggableListItem",
   component: DraggableListItem,
   parameters: {
     componentSubtitle: "Just a simple DraggableListItem",
