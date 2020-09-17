@@ -97,7 +97,6 @@ export const findLessonPlanByChildIdAndDate = async (
     [childId, date]
   )
 
-  console.log(plans.rows)
   return plans.rows.map((plan) => ({
     id: plan.id,
     title: plan.title,
