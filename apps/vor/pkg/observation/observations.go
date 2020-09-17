@@ -1,6 +1,11 @@
 package observation
 
 import (
+	"github.com/chrsep/vor/pkg/domain"
+	"github.com/chrsep/vor/pkg/imgproxy"
+	"github.com/google/uuid"
+	richErrors "github.com/pkg/errors"
+	"mime/multipart"
 	"net/http"
 	"time"
 
@@ -11,36 +16,29 @@ import (
 	"github.com/chrsep/vor/pkg/rest"
 )
 
-type (
-	Observation struct {
-		Id          string
-		StudentId   string
-		StudentName string
-		ShortDesc   string
-		LongDesc    string
-		CategoryId  string
-		CreatedDate time.Time
-		EventTime   time.Time
-		CreatorId   string
-		CreatorName string
-	}
-
-	Store interface {
-		UpdateObservation(observationId string, shortDesc string, longDesc string, categoryId string) (*Observation, error)
-		DeleteObservation(observationId string) error
-		GetObservation(id string) (*Observation, error)
-		CheckPermissions(observationId string, userId string) (bool, error)
-	}
-)
+type Store interface {
+	UpdateObservation(observationId string,
+		shortDesc *string,
+		longDesc *string,
+		eventTime *time.Time,
+		areaId *uuid.UUID,
+		categoryId *uuid.UUID,
+	) (*domain.Observation, error)
+	DeleteObservation(observationId string) error
+	GetObservation(id string) (*domain.Observation, error)
+	CheckPermissions(observationId string, userId string) (bool, error)
+	CreateImage(id string, file multipart.File, header *multipart.FileHeader) (*domain.Image, error)
+}
 
 func NewRouter(s rest.Server, store Store) *chi.Mux {
 	r := chi.NewRouter()
 	r.Route("/{observationId}", func(r chi.Router) {
 		r.Use(authorizationMiddleware(s, store))
 		r.Method("DELETE", "/", deleteObservation(s, store))
-		// TODO: Use patch with upsert instead of PUT.
-		r.Method("PUT", "/", updateObservation(s, store))
 		r.Method("GET", "/", getObservation(s, store))
+		r.Method("PATCH", "/", patchObservation(s, store))
+
+		r.Method("POST", "/images", postNewImage(s, store))
 	})
 
 	return r
@@ -70,32 +68,6 @@ func authorizationMiddleware(s rest.Server, store Store) func(next http.Handler)
 		})
 	}
 }
-func updateObservation(s rest.Server, store Store) rest.Handler {
-	type requestBody struct {
-		ShortDesc  string `json:"shortDesc"`
-		LongDesc   string `json:"longDesc"`
-		CategoryId string `json:"categoryId"`
-	}
-	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
-		id := chi.URLParam(r, "observationId")
-		// Parse the request body
-		var requestBody requestBody
-		if err := rest.ParseJson(r.Body, &requestBody); err != nil {
-			return rest.NewParseJsonError(err)
-		}
-
-		observation, err := store.UpdateObservation(id, requestBody.ShortDesc, requestBody.LongDesc, requestBody.CategoryId)
-		if err != nil {
-			return &rest.Error{http.StatusInternalServerError, "Failed updating observation", err}
-		}
-
-		// Return the updated observation
-		if err := rest.WriteJson(w, observation); err != nil {
-			return rest.NewWriteJsonError(err)
-		}
-		return nil
-	})
-}
 
 func deleteObservation(s rest.Server, store Store) rest.Handler {
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
@@ -108,6 +80,15 @@ func deleteObservation(s rest.Server, store Store) rest.Handler {
 }
 
 func getObservation(s rest.Server, store Store) http.Handler {
+	type area struct {
+		Id   uuid.UUID `json:"id"`
+		Name string    `json:"name"`
+	}
+	type image struct {
+		Id           uuid.UUID `json:"id"`
+		ThumbnailUrl string    `json:"thumbnailUrl"`
+		OriginalUrl  string    `json:"originalUrl"`
+	}
 	type responseBody struct {
 		Id          string    `json:"id"`
 		StudentName string    `json:"studentName"`
@@ -118,6 +99,8 @@ func getObservation(s rest.Server, store Store) http.Handler {
 		ShortDesc   string    `json:"shortDesc"`
 		CreatedDate time.Time `json:"createdDate"`
 		EventTime   time.Time `json:"eventTime,omitempty"`
+		Area        *area     `json:"area"`
+		Images      []image   `json:"images"`
 	}
 	validate := validator.New()
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
@@ -160,8 +143,160 @@ func getObservation(s rest.Server, store Store) http.Handler {
 			response.CreatorId = observation.CreatorId
 			response.CreatorName = observation.CreatorName
 		}
-
+		if observation.Area.Id != "" {
+			response.Area = &area{
+				Id:   uuid.MustParse(observation.Area.Id),
+				Name: observation.Area.Name,
+			}
+		}
+		for i := range observation.Images {
+			item := observation.Images[i]
+			response.Images = append(response.Images, image{
+				Id:           item.Id,
+				ThumbnailUrl: imgproxy.GenerateUrl(observation.Images[i].ObjectKey, 80, 80),
+				OriginalUrl:  imgproxy.GenerateOriginalUrl(observation.Images[i].ObjectKey),
+			})
+		}
 		if err := rest.WriteJson(w, response); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
+		return nil
+	})
+}
+
+func patchObservation(s rest.Server, store Store) rest.Handler {
+	type requestBody struct {
+		LongDesc   *string    `json:"longDesc"`
+		ShortDesc  *string    `json:"shortDesc"`
+		EventTime  *time.Time `json:"eventTime,omitempty"`
+		AreaId     *string    `json:"areaId"`
+		CategoryId *string    `json:"categoryId"`
+	}
+
+	type area struct {
+		Id   uuid.UUID `json:"id"`
+		Name string    `json:"name"`
+	}
+	type image struct {
+		Id           uuid.UUID `json:"id"`
+		ThumbnailUrl string    `json:"thumbnailUrl"`
+		OriginalUrl  string    `json:"originalUrl"`
+	}
+	type responseBody struct {
+		Id          string    `json:"id"`
+		ShortDesc   string    `json:"shortDesc"`
+		LongDesc    string    `json:"longDesc"`
+		CreatedDate time.Time `json:"createdDate"`
+		EventTime   time.Time `json:"eventTime"`
+		Images      []image   `json:"images"`
+		Area        *area     `json:"area,omitempty"`
+		CreatorId   string    `json:"creatorId,omitempty"`
+		CreatorName string    `json:"creatorName,omitempty"`
+	}
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		observationId := chi.URLParam(r, "observationId")
+
+		var body requestBody
+		if err := rest.ParseJson(r.Body, &body); err != nil {
+			return rest.NewParseJsonError(err)
+		}
+
+		var areaId *uuid.UUID
+		if body.AreaId == nil {
+			areaId = nil
+		} else if *body.AreaId == "" {
+			areaId = &uuid.Nil
+		} else {
+			areaIdUUID := uuid.MustParse(*body.AreaId)
+			areaId = &areaIdUUID
+		}
+
+		var categoryId *uuid.UUID
+		if body.CategoryId == nil {
+			categoryId = nil
+		} else if *body.CategoryId == "" {
+			categoryId = &uuid.Nil
+		} else {
+			categoryUUID := uuid.MustParse(*body.CategoryId)
+			categoryId = &categoryUUID
+		}
+		observation, err := store.UpdateObservation(
+			observationId,
+			body.ShortDesc,
+			body.LongDesc,
+			body.EventTime,
+			areaId,
+			categoryId,
+		)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "failed to patch observation",
+				Error:   err,
+			}
+		}
+
+		response := responseBody{
+			Id:          observation.Id,
+			ShortDesc:   observation.ShortDesc,
+			LongDesc:    observation.LongDesc,
+			CreatedDate: observation.CreatedDate,
+			EventTime:   observation.EventTime,
+			CreatorId:   observation.CreatorId,
+			CreatorName: observation.CreatorName,
+		}
+		if observation.Area.Id != "" {
+			response.Area = &area{
+				Id:   uuid.MustParse(observation.Area.Id),
+				Name: observation.Area.Name,
+			}
+		}
+		for i := range observation.Images {
+			item := observation.Images[i]
+			response.Images = append(response.Images, image{
+				Id:           item.Id,
+				ThumbnailUrl: imgproxy.GenerateUrl(observation.Images[i].ObjectKey, 80, 80),
+				OriginalUrl:  imgproxy.GenerateOriginalUrl(observation.Images[i].ObjectKey),
+			})
+		}
+		if err := rest.WriteJson(w, &response); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
+		return nil
+	})
+}
+
+func postNewImage(s rest.Server, store Store) rest.Handler {
+	type response struct {
+		Id           uuid.UUID `json:"id"`
+		ThumbnailUrl string    `json:"thumbnailUrl"`
+		OriginalUrl  string    `json:"originalUrl"`
+	}
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		observationId := chi.URLParam(r, "observationId")
+		if err := r.ParseMultipartForm(10 << 20); err != nil {
+			return &rest.Error{
+				Code:    http.StatusBadRequest,
+				Message: "failed to parse payload",
+				Error:   richErrors.Wrap(err, "failed to parse response body"),
+			}
+		}
+
+		file, fileHeader, err := r.FormFile("image")
+		image, err := store.CreateImage(observationId, file, fileHeader)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "Failed create file",
+				Error:   err,
+			}
+		}
+		w.WriteHeader(http.StatusCreated)
+		if err := rest.WriteJson(w, &response{
+			Id:           image.Id,
+			ThumbnailUrl: imgproxy.GenerateUrl(image.ObjectKey, 80, 80),
+			OriginalUrl:  imgproxy.GenerateOriginalUrl(image.ObjectKey),
+		}); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
 		return nil

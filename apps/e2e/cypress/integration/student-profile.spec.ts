@@ -113,16 +113,17 @@ describe("test student profile page", () => {
 
     // Edit observation
     cy.url().should("contains", "students")
-    cy.get("[data-cy=edit-observation]").click()
-    cy.get("[aria-label=Details]").type("Some additional text")
+    cy.contains("See More").click()
+    cy.contains("Edit details").click()
+    cy.contains("label", "Details").type("Some additional text")
     cy.contains("Save").click()
     cy.contains("Some additional text").should("be.visible")
 
     // Delete observation
-    cy.get("[data-cy=delete-observation]").should("be.visible")
+    cy.contains("Delete").should("be.visible")
     // TODO: This part is really flaky, try fixing it later.
-    cy.get("[data-cy=delete-observation]").click()
-    cy.get("[data-cy=confirm-delete]").click()
+    cy.contains("Delete").click()
+    cy.contains("button", "Yes").click()
     cy.contains(shortDesc).should("not.be.visible")
 
     // Go to curriculum

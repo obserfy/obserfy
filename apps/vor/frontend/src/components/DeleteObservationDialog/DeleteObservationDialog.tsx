@@ -1,90 +1,47 @@
-import React, { FC, useState } from "react"
-import { Flex, Button } from "theme-ui"
+import React, { FC } from "react"
 import Typography from "../Typography/Typography"
-import Spacer from "../Spacer/Spacer"
-
-import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import Dialog from "../Dialog/Dialog"
+import useDeleteObservation from "../../api/observations/useDeleteObservation"
+import DialogHeader from "../DialogHeader/DialogHeader"
 
 interface Props {
   shortDesc: string
   observationId: string
+  studentId: string
   onDeleted: () => void
   onDismiss: () => void
 }
 export const DeleteObservationDialog: FC<Props> = ({
   onDismiss,
   observationId,
+  studentId,
   shortDesc,
   onDeleted,
 }) => {
-  const [loading, setLoading] = useState(false)
-
-  async function deleteObservation(): Promise<void> {
-    setLoading(true)
-    const baseUrl = "/api/v1"
-    const response = await fetch(`${baseUrl}/observations/${observationId}`, {
-      credentials: "same-origin",
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-    })
-    analytics.track("Observation Deleted", {
-      responseStatus: response.status,
-      observationId,
-    })
-    setLoading(false)
-    onDeleted()
-  }
+  const [deleteObservation, { isLoading }] = useDeleteObservation(
+    observationId,
+    studentId
+  )
 
   return (
-    <Dialog sx={{ maxWidth: ["", "maxWidth.xsm"] }}>
-      <Flex
-        backgroundColor="surface"
-        p={3}
-        sx={{
-          justifyContent: "center",
-          flexShrink: 0,
-          position: "relative",
-          borderBottomColor: "border",
-          borderBottomWidth: 1,
-          borderBottomStyle: "solid",
+    <Dialog>
+      <DialogHeader
+        onAcceptText="Yes"
+        title="Delete Observation?"
+        loading={isLoading}
+        onCancel={onDismiss}
+        onAccept={async () => {
+          const response = await deleteObservation()
+          if (response.ok) {
+            analytics.track("Observation Deleted", { observationId })
+            onDeleted()
+          }
         }}
-      >
-        <Typography.H6
-          sx={{
-            pointerEvents: "none",
-            alignContent: "center",
-          }}
-        >
-          Delete Observation?
-        </Typography.H6>
-      </Flex>
-      <Typography.Body
-        p={3}
-        sx={{
-          borderBottomColor: "border",
-          borderBottomWidth: 1,
-          borderBottomStyle: "solid",
-        }}
-      >
+      />
+      <Typography.Body p={3}>
         <i>&quot;{shortDesc}&quot;</i> will be permanently deleted. Are you
         sure?
       </Typography.Body>
-      <Flex sx={{ alignItems: "center" }}>
-        <Spacer />
-        <Button variant="outline" m={2} onClick={onDismiss}>
-          Cancel
-        </Button>
-        <Button
-          m={2}
-          backgroundColor="danger"
-          onClick={deleteObservation}
-          data-cy="confirm-delete"
-        >
-          {loading && <LoadingIndicator />}
-          Yes
-        </Button>
-      </Flex>
     </Dialog>
   )
 }

@@ -530,6 +530,7 @@ exports[`PageStudentImages should render correctly 1`] = `
           class="emotion-17"
         >
           <input
+            accept="image/*"
             class="emotion-14"
             type="file"
           />

@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { FC, Fragment, useState } from "react"
+import { FC, Fragment, useMemo, useState } from "react"
 import { navigate } from "gatsby"
 import { Box, Button, Flex, Image, jsx } from "theme-ui"
 import { Link } from "../Link/Link"
@@ -12,8 +12,6 @@ import {
   Observation,
   useGetStudentObservations,
 } from "../../api/useGetStudentObservations"
-import EditObservationDialog from "../EditObservationDialog/EditObservationDialog"
-import DeleteObservationDialog from "../DeleteObservationDialog/DeleteObservationDialog"
 import ObservationCard from "../ObservationCard/ObservationCard"
 import StudentProgressSummaryCard from "../StudentProgressSummaryCard/StudentProgressSummaryCard"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
@@ -26,6 +24,7 @@ import {
   ALL_OBSERVATIONS_PAGE_URL,
   NEW_OBSERVATION_URL,
   STUDENT_IMAGES_URL,
+  STUDENT_OVERVIEWS_OBSERVATION_DETAILS_URL,
   STUDENT_PLANS_URL,
   STUDENT_PROFILE_URL,
   STUDENTS_URL,
@@ -116,66 +115,46 @@ export const PageStudentOverview: FC<Props> = ({ id }) => {
 }
 
 const ObservationSection: FC<{ studentId: string }> = ({ studentId }) => {
-  const { data, status, refetch } = useGetStudentObservations(studentId)
-  const [targetObservation, setTargetObservation] = useState<Observation>()
-  const [selectedDate, setSelectedDate] = useState(0)
-  const [isEditingObservation, setIsEditingObservation] = useState(false)
-  const [isDeletingObservation, setIsDeletingObservation] = useState(false)
+  const { data, isLoading } = useGetStudentObservations(studentId)
+  const [selectionIdx, setSelectionIdx] = useState(0)
 
-  const dates = [
-    ...new Set(
-      data?.map(({ eventTime }) =>
-        dayjs(eventTime ?? "")
-          .startOf("day")
-          .toISOString()
-      )
-    ),
-  ]?.sort((a, b) => dayjs(b).diff(a))
+  const dataLength = data?.length ?? 0
 
-  const selectedDateDifference = Math.floor(
-    dayjs.duration(dayjs(dates?.[selectedDate] ?? "").diff(dayjs())).asDays()
+  const observationsByDate = useMemo(() => {
+    const result: { [key: number]: Observation[] } = {}
+    data?.forEach((observation) => {
+      const date = dayjs(observation.eventTime).startOf("day").unix()
+      if (result[date] === undefined) {
+        result[date] = []
+      }
+      result[date].push(observation)
+    })
+    return result
+  }, [data])
+
+  const dates = Object.keys(observationsByDate).sort((a, b) =>
+    b.localeCompare(a)
   )
 
-  const listOfObservations = data
-    ?.filter((observation) =>
-      dayjs(observation.eventTime ?? "").isSame(dates[selectedDate], "day")
-    )
-    ?.sort((a, b) => {
-      const firstArea = a.area?.name ?? ""
-      const secondArea = b.area?.name ?? ""
-      return firstArea.localeCompare(secondArea)
-    })
-    ?.map((observation) => (
-      <ObservationCard
-        key={observation.id}
-        observation={observation}
-        onDelete={(value) => {
-          setTargetObservation(value)
-          setIsDeletingObservation(true)
-        }}
-        onEdit={(value) => {
-          setTargetObservation(value)
-          setIsEditingObservation(true)
-        }}
-      />
-    ))
+  const selectedDate = dayjs.unix(parseInt(dates[selectionIdx], 10))
 
-  const emptyObservationPlaceholder = status !== "loading" &&
-    (data ?? []).length === 0 && (
-      <EmptyListPlaceholder
-        my={3}
-        sx={{ borderRadius: [0, "default"] }}
-        text="No observation have been added yet"
-        callToActionText="new observation"
-        onActionClick={() => navigate(NEW_OBSERVATION_URL(studentId))}
-      />
-    )
+  const observations: Observation[] = observationsByDate[dates[selectionIdx]]
 
-  const dateSelector = (data?.length ?? 0) > 0 && (
+  const emptyObservationPlaceholder = !isLoading && dataLength === 0 && (
+    <EmptyListPlaceholder
+      my={3}
+      sx={{ borderRadius: [0, "default"] }}
+      text="No observation have been added yet"
+      callToActionText="new observation"
+      onActionClick={() => navigate(NEW_OBSERVATION_URL(studentId))}
+    />
+  )
+
+  const dateSelector = dataLength > 0 && (
     <Flex ml="auto">
       <Button
-        disabled={selectedDate >= dates.length - 1}
-        onClick={() => setSelectedDate(selectedDate + 1)}
+        disabled={selectionIdx >= dates.length - 1}
+        onClick={() => setSelectionIdx(selectionIdx + 1)}
         variant="outline"
         py={1}
         px={1}
@@ -184,8 +163,8 @@ const ObservationSection: FC<{ studentId: string }> = ({ studentId }) => {
         <Icon as={PrevIcon} />
       </Button>
       <Button
-        disabled={selectedDate < 1}
-        onClick={() => setSelectedDate(selectedDate - 1)}
+        disabled={selectionIdx < 1}
+        onClick={() => setSelectionIdx(selectionIdx - 1)}
         variant="outline"
         mr={2}
         py={1}
@@ -211,17 +190,15 @@ const ObservationSection: FC<{ studentId: string }> = ({ studentId }) => {
           <Typography.H6 mr="auto" sx={{ fontWeight: "bold" }} mb={1}>
             Observations
           </Typography.H6>
-          {(data?.length ?? 0) > 0 && (
+          {dataLength > 0 && (
             <Typography.Body
               sx={{ fontSize: [1, 1], lineHeight: 1 }}
               color="textMediumEmphasis"
               mb={2}
             >
-              {selectedDateDifference !== -1
-                ? dayjs(dates?.[selectedDate] ?? "").format("dddd, D MMM 'YY")
-                : `Today, ${dayjs(dates?.[selectedDate] ?? "").format(
-                    "D MMM 'YY"
-                  )}`}
+              {!selectedDate.isSame(Date.now(), "date")
+                ? selectedDate.format("ddd, D MMM YYYY")
+                : `Today, ${selectedDate.format("D MMM YYYY")}`}
             </Typography.Body>
           )}
         </Box>
@@ -229,30 +206,24 @@ const ObservationSection: FC<{ studentId: string }> = ({ studentId }) => {
       </Flex>
       <Box mx={[0, 3]}>
         {emptyObservationPlaceholder}
-        {listOfObservations}
-        {status === "loading" && !data && <ObservationLoadingPlaceholder />}
+        {observations
+          ?.sort((a, b) => {
+            const firstArea = a.area?.name ?? ""
+            const secondArea = b.area?.name ?? ""
+            return firstArea.localeCompare(secondArea)
+          })
+          .map((observation) => (
+            <ObservationCard
+              key={observation.id}
+              observation={observation}
+              detailsUrl={STUDENT_OVERVIEWS_OBSERVATION_DETAILS_URL(
+                studentId,
+                observation.id
+              )}
+            />
+          ))}
+        {isLoading && !data && <ObservationLoadingPlaceholder />}
       </Box>
-      {isEditingObservation && (
-        <EditObservationDialog
-          defaultValue={targetObservation}
-          onDismiss={() => setIsEditingObservation(false)}
-          onSaved={async () => {
-            await refetch()
-            setIsEditingObservation(false)
-          }}
-        />
-      )}
-      {isDeletingObservation && targetObservation && (
-        <DeleteObservationDialog
-          observationId={targetObservation.id ?? ""}
-          shortDesc={targetObservation?.shortDesc}
-          onDismiss={() => setIsDeletingObservation(false)}
-          onDeleted={async () => {
-            await refetch()
-            setIsDeletingObservation(false)
-          }}
-        />
-      )}
     </Fragment>
   )
 }

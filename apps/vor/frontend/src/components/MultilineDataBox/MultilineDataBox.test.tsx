@@ -1,10 +1,10 @@
 import React from "react"
 import { render } from "../../test-utils"
-import { Basic } from "./EditObservationDialog.stories"
+import { Default } from "./MultilineDataBox.stories"
 
-describe("EditObservationDialog", () => {
+describe("MultilineDataBox", () => {
   it("should render correctly", () => {
-    const { container } = render(<Basic />)
+    const { container } = render(<Default {...Default.args} />)
     expect(container).toMatchSnapshot()
   })
 })

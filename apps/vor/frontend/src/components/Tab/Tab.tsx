@@ -26,6 +26,7 @@ export const Tab: FC<TabProps> = ({
           items.length > 3 || items.length === 1 ? "start" : "space-around",
         alignItems: "center",
       }}
+      pl={small ? 2 : 0}
     >
       {items.map((item, idx) => (
         <TabItem
@@ -35,6 +36,7 @@ export const Tab: FC<TabProps> = ({
           sx={{
             lineHeight: small ? 2 : undefined,
             fontSize: small ? [0, 0] : [1, 1],
+            mx: small ? 2 : 3,
           }}
         >
           {item}
@@ -51,7 +53,7 @@ const TabItem: FC<TabItemProps> = ({ isSelected, onClick, sx, ...props }) => (
   <Typography.Body
     {...props}
     onClick={onClick}
-    mx={3}
+    mx={2}
     mb={0}
     color={isSelected ? "textPrimary" : "textMediumEmphasis"}
     sx={{

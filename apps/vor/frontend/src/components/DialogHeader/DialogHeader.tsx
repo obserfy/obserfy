@@ -32,6 +32,7 @@ export const DialogHeader: FC<Props> = ({
   >
     <Typography.H6
       sx={{
+        fontSize: 2,
         width: "100%",
         position: "absolute",
         pointerEvents: "none",

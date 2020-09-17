@@ -48,6 +48,7 @@ export const PageStudentImages: FC<Props> = ({ studentId }) => {
         <Label>
           <Input
             type="file"
+            accept="image/*"
             sx={{ display: "none" }}
             disabled={isLoading}
             onChange={async (e) => {

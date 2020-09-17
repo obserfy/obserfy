@@ -4,12 +4,14 @@ import {
   Observation,
   useGetStudentObservations,
 } from "../../api/useGetStudentObservations"
-import { STUDENT_OVERVIEW_PAGE_URL, STUDENTS_URL } from "../../routes"
+import {
+  OBSERVATION_DETAILS_URL,
+  STUDENT_OVERVIEW_PAGE_URL,
+  STUDENTS_URL,
+} from "../../routes"
 import Chip from "../Chip/Chip"
 import Typography from "../Typography/Typography"
 import { useGetStudent } from "../../api/useGetStudent"
-import EditObservationDialog from "../EditObservationDialog/EditObservationDialog"
-import DeleteObservationDialog from "../DeleteObservationDialog/DeleteObservationDialog"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import ObservationCard from "../ObservationCard/ObservationCard"
 import dayjs from "../../dayjs"
@@ -22,9 +24,6 @@ interface Props {
 }
 export const PageAllObservations: FC<Props> = ({ studentId }) => {
   const [selectedArea, setSelectedArea] = useState("")
-  const [isEditingObservation, setIsEditingObservation] = useState(false)
-  const [isDeletingObservation, setIsDeletingObservation] = useState(false)
-  const [targetObservation, setTargetObservation] = useState<Observation>()
   const observations = useGetStudentObservations(studentId)
   const student = useGetStudent(studentId)
 
@@ -53,7 +52,7 @@ export const PageAllObservations: FC<Props> = ({ studentId }) => {
             <BreadcrumbItem to={STUDENT_OVERVIEW_PAGE_URL(studentId)}>
               {student.data?.name.split(" ")[0]}
             </BreadcrumbItem>
-            <BreadcrumbItem>All Observations</BreadcrumbItem>
+            <BreadcrumbItem>Observations</BreadcrumbItem>
           </Breadcrumb>
         </Flex>
         <Flex pl={3} pr={2} py={2} sx={{ flexWrap: "wrap" }}>
@@ -129,67 +128,40 @@ export const PageAllObservations: FC<Props> = ({ studentId }) => {
         )}
         {observations.isSuccess && (
           <ObservationList
+            studentId={studentId}
             observations={
               selectedArea !== ""
                 ? parsedData.observationsByArea[selectedArea] ?? []
                 : observations.data ?? []
             }
-            showDeleteDialog={(observation) => {
-              setIsDeletingObservation(true)
-              setTargetObservation(observation)
-            }}
-            showEditDialog={(observation) => {
-              setIsEditingObservation(true)
-              setTargetObservation(observation)
-            }}
           />
         )}
       </Box>
-      {isEditingObservation && (
-        <EditObservationDialog
-          defaultValue={targetObservation}
-          onDismiss={() => setIsEditingObservation(false)}
-          onSaved={() => {
-            setIsEditingObservation(false)
-            observations.refetch()
-          }}
-        />
-      )}
-      {isDeletingObservation && targetObservation && (
-        <DeleteObservationDialog
-          observationId={targetObservation.id ?? ""}
-          shortDesc={targetObservation?.shortDesc}
-          onDismiss={() => setIsDeletingObservation(false)}
-          onDeleted={() => {
-            observations.refetch()
-            setIsDeletingObservation(false)
-          }}
-        />
-      )}
     </>
   )
 }
 
 const ObservationList: FC<{
+  studentId: string
   observations: Observation[]
-  showDeleteDialog: (observation: Observation) => void
-  showEditDialog: (observation: Observation) => void
-}> = ({ showDeleteDialog, observations, showEditDialog }) => {
-  const observationsByDate: { [key: number]: ReactNode[] } = {}
-  observations.forEach((observation) => {
-    const date = dayjs(observation.eventTime).startOf("day").unix()
-    if (observationsByDate[date] === undefined) {
-      observationsByDate[date] = []
-    }
-    observationsByDate[date].push(
-      <ObservationCard
-        key={observation.id}
-        observation={observation}
-        onDelete={showDeleteDialog}
-        onEdit={showEditDialog}
-      />
-    )
-  })
+}> = ({ observations, studentId }) => {
+  const observationsByDate = useMemo(() => {
+    const result: { [key: number]: ReactNode[] } = {}
+    observations?.forEach((observation) => {
+      const date = dayjs(observation.eventTime).startOf("day").unix()
+      if (result[date] === undefined) {
+        result[date] = []
+      }
+      result[date].push(
+        <ObservationCard
+          key={observation.id}
+          detailsUrl={OBSERVATION_DETAILS_URL(studentId, observation.id)}
+          observation={observation}
+        />
+      )
+    })
+    return result
+  }, [observations])
 
   return (
     <Box m={[0, 3]}>

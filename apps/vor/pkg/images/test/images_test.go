@@ -2,7 +2,6 @@ package images_test
 
 import (
 	"github.com/chrsep/vor/pkg/images"
-	"github.com/chrsep/vor/pkg/imgproxy"
 	"github.com/chrsep/vor/pkg/minio"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/chrsep/vor/pkg/testutils"
@@ -20,11 +19,10 @@ type ImagesTestSuite struct {
 
 func (s *ImagesTestSuite) SetupTest() {
 	t := s.T()
-	imgproxyClient, err := imgproxy.NewClient()
-	assert.NoError(t, err)
 	minioClient, err := minio.NewClient()
+	assert.NoError(t, err)
 	s.store = postgres.ImageStore{s.DB, minio.NewImageStorage(minioClient)}
-	s.Handler = images.NewRouter(s.Server, s.store, *imgproxyClient).ServeHTTP
+	s.Handler = images.NewRouter(s.Server, s.store).ServeHTTP
 }
 
 func TestImagesApi(t *testing.T) {

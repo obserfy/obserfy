@@ -120,6 +120,7 @@ func (s StudentStore) GetObservations(studentId string) ([]Observation, error) {
 		Relation("Student").
 		Relation("Creator").
 		Relation("Area").
+		Relation("Images").
 		Order("created_date").
 		Select(); err != nil {
 		return nil, err
