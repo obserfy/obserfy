@@ -14,6 +14,7 @@ interface UpdateStudentRequestBody {
   dateOfEntry?: Dayjs
   gender?: number
   active?: boolean
+  profileImageId?: string
 }
 export function usePatchStudentApi(
   id: string

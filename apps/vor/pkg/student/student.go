@@ -285,12 +285,13 @@ func deleteStudent(s rest.Server, store Store) http.Handler {
 
 func patchStudent(s rest.Server, store Store) http.Handler {
 	type requestBody struct {
-		Name        string          `json:"name"`
-		DateOfBirth *time.Time      `json:"dateOfBirth"`
-		DateOfEntry *time.Time      `json:"dateOfEntry"`
-		CustomId    string          `json:"customId"`
-		Gender      postgres.Gender `json:"gender"`
-		Active      *bool           `json:"active"`
+		Name          string          `json:"name"`
+		DateOfBirth   *time.Time      `json:"dateOfBirth"`
+		DateOfEntry   *time.Time      `json:"dateOfEntry"`
+		CustomId      string          `json:"customId"`
+		Gender        postgres.Gender `json:"gender"`
+		Active        *bool           `json:"active"`
+		ProfileImageId string         `json:"profileImageId"`
 	}
 	type responseBody struct {
 		Id          string     `json:"id"`
@@ -318,6 +319,7 @@ func patchStudent(s rest.Server, store Store) http.Handler {
 		newStudent.CustomId = requestBody.CustomId
 		newStudent.DateOfEntry = requestBody.DateOfEntry
 		newStudent.Active = requestBody.Active
+		newStudent.ProfileImageId = requestBody.ProfileImageId
 		if err := store.UpdateStudent(newStudent); err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Failed updating old student data", err}
 		}
