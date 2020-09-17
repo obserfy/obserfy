@@ -33,4 +33,8 @@ export const updateObservationCache = (observation: Observation) => {
   )
 }
 
+export const getObservationCache = (observationId: string) => {
+  return queryCache.getQueryData<Observation>(["observation", observationId])
+}
+
 export default useGetObservation

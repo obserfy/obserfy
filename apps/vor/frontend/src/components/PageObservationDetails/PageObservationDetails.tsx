@@ -21,6 +21,8 @@ import DatePickerDialog from "../DatePickerDialog/DatePickerDialog"
 import dayjs, { Dayjs } from "../../dayjs"
 import Typography from "../Typography/Typography"
 import { borderFull } from "../../border"
+import usePostNewObservationImage from "../../api/observations/usePostNewObservationImage"
+import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 
 export interface PageObservationDetailsProps {
   observationId: string
@@ -104,7 +106,10 @@ export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
         >
           Images
         </Typography.Body>
-        <Images images={data?.images ?? []} />
+        <ImagesDataBox
+          observationId={observationId}
+          images={data?.images ?? []}
+        />
       </Card>
 
       <Button
@@ -131,16 +136,20 @@ export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
   )
 }
 
-const Images: FC<{
+const ImagesDataBox: FC<{
   images: Array<{ id: string; thumbnailUrl: string; originalUrl: string }>
-}> = ({ images }) => {
+  observationId: string
+}> = ({ images, observationId }) => {
   const [selectedIdx, setSelectedIdx] = useState<number>()
+  const [postNewImage, { isLoading }] = usePostNewObservationImage(
+    observationId
+  )
 
   const fileSelector = useRef<HTMLInputElement>(null)
 
   return (
     <Fragment>
-      <Flex px={3} mb={3} sx={{ flexWrap: "wrap", alignItems: "center" }}>
+      <Flex px={3} mb={2} sx={{ flexWrap: "wrap", alignItems: "center" }}>
         {images.map((image, idx) => {
           const isSelected = selectedIdx === idx
           return (
@@ -148,6 +157,7 @@ const Images: FC<{
               key={image.id}
               src={image.thumbnailUrl}
               mr={2}
+              mb={2}
               sx={{
                 height: "40px",
                 width: "40px",
@@ -161,6 +171,7 @@ const Images: FC<{
           )
         })}
         <Label
+          mb={2}
           sx={{
             height: "40px",
             width: "40px",
@@ -168,6 +179,7 @@ const Images: FC<{
             borderRadius: "default",
             cursor: "pointer",
             "&:hover": { borderColor: "primary" },
+            opacity: isLoading ? 0.5 : 1,
             ...borderFull,
           }}
           variant="outline"
@@ -178,8 +190,19 @@ const Images: FC<{
             type="file"
             sx={{ display: "none" }}
             accept="image/*"
+            disabled={isLoading}
+            onChange={async (e) => {
+              console.log(e.target.files)
+              if (e.target.files) {
+                await postNewImage(e.target.files[0])
+              }
+            }}
           />
-          <Icon as={PlusIcon} m="auto" />
+          {isLoading ? (
+            <LoadingIndicator m="auto" />
+          ) : (
+            <Icon as={PlusIcon} m="auto" />
+          )}
         </Label>
       </Flex>
       {selectedIdx !== undefined && (
