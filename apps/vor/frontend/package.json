@@ -100,7 +100,7 @@
     "react-test-renderer": "16.13.1",
     "storybook-addon-deps": "2.1.3",
     "storybook-addon-i18n": "5.1.13",
-    "typescript": "4.0.2",
+    "typescript": "4.0.3",
     "url-loader": "4.1.0",
     "wait-on": "5.2.0",
     "webpack": "4.44.1"
