@@ -1,4 +1,4 @@
-import { QueryResult, useQuery } from "react-query"
+import { queryCache, QueryResult, useQuery } from "react-query"
 import { navigate } from "gatsby"
 import { BASE_URL } from "./useApi"
 
@@ -36,6 +36,20 @@ export function useGetStudentMaterialProgress(
     ["studentCurriculumProgress", studentId],
     fetchMaterialProgress(studentId)
   )
+}
+
+export function getStudentMaterialProgressCache(studentId: string) {
+  return queryCache.getQueryData<MaterialProgress[]>([
+    "studentCurriculumProgress",
+    studentId,
+  ])
+}
+
+export function setStudentMaterialProgressCache(
+  studentId: string,
+  data: MaterialProgress[]
+) {
+  return queryCache.setQueryData(["studentCurriculumProgress", studentId], data)
 }
 
 export function materialStageToString(stage?: MaterialProgressStage): string {
