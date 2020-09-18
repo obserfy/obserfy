@@ -111,10 +111,6 @@ export const PageStudentProgress: FC<Props> = ({ areaId, studentId }) => {
           materialName={selectedMaterial?.name ?? ""}
           materialId={selectedMaterial?.id ?? ""}
           onDismiss={() => setIsEditing(false)}
-          onSubmitted={() => {
-            progress.refetch()
-            setIsEditing(false)
-          }}
         />
       )}
     </>

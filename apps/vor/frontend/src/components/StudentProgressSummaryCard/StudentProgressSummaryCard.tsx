@@ -130,10 +130,6 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
       materialName={selected?.materialName}
       materialId={selected?.materialId}
       onDismiss={() => setIsEditing(false)}
-      onSubmitted={async () => {
-        await progress.refetch()
-        setIsEditing(false)
-      }}
     />
   )
 

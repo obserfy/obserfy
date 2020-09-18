@@ -15,7 +15,35 @@ exports[`PageObservationDetails should render correctly 1`] = `
   }
 }
 
-.emotion-2 {
+@keyframes animation-0 {
+  0% {
+    background-color: rgba(165,165,165,0.05);
+  }
+
+  50% {
+    background-color: rgba(165,165,165,0.2);
+  }
+
+  100% {
+    background-color: rgba(165,165,165,0.05);
+  }
+}
+
+@keyframes animation-0 {
+  0% {
+    background-color: rgba(165,165,165,0.05);
+  }
+
+  50% {
+    background-color: rgba(165,165,165,0.2);
+  }
+
+  100% {
+    background-color: rgba(165,165,165,0.05);
+  }
+}
+
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -23,35 +51,67 @@ exports[`PageObservationDetails should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-2 {
+  .emotion-4 {
     font-size: 20px;
   }
 }
 
-.emotion-1 {
+.emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  margin-left: 16px;
+  margin-right: 16px;
 }
 
 .emotion-0 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  margin-bottom: 8px;
   border-radius: 6px;
   -webkit-animation: 1s ease-in-out 0s infinite animation-0;
   animation: 1s ease-in-out 0s infinite animation-0;
+  height: 210px;
+}
+
+.emotion-1 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
+  animation: 1s ease-in-out 0s infinite animation-0;
+  height: 150px;
+}
+
+.emotion-2 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
+  animation: 1s ease-in-out 0s infinite animation-0;
+  height: 92px;
 }
 
 <div>
   <div
-    class="emotion-2"
+    class="emotion-4"
   >
     <div
-      class="emotion-1"
+      class="emotion-3"
     >
       <div
         class="emotion-0"
+      />
+      <div
+        class="emotion-1"
+      />
+      <div
+        class="emotion-2"
       />
     </div>
   </div>

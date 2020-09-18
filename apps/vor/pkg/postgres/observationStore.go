@@ -37,8 +37,10 @@ func (s ObservationStore) GetObservation(id string) (*domain.Observation, error)
 		ShortDesc:   observation.ShortDesc,
 		EventTime:   observation.EventTime,
 		CreatedDate: observation.CreatedDate,
-		CreatorId:   observation.CreatorId,
-		CreatorName: observation.Creator.Name,
+	}
+	if observation.Creator != nil {
+		result.CreatorId = observation.Creator.Id
+		result.CreatorName = observation.Creator.Name
 	}
 	if observation.AreaId != uuid.Nil {
 		result.Area = domain.Area{

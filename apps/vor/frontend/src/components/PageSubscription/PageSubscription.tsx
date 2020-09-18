@@ -90,7 +90,7 @@ export const PageSubscription: FC = () => {
               color="textPrimary"
               sx={{ fontWeight: "bold", lineHeight: 1 }}
             >
-              Free Trial
+              Early Access
             </Typography.Body>
             <Typography.Body ml="auto">Current Plan</Typography.Body>
           </Flex>
@@ -113,12 +113,8 @@ export const PageSubscription: FC = () => {
             User/month
           </Typography.Body>
         </Flex>
-        <Typography.Body my={3}>
-          Simple pricing for every school.
-        </Typography.Body>
 
         <Box my={3}>
-          <Feature text="90-days free trial" />
           <Feature text="Unlimited students" />
           <Feature text="Record observations" />
           <Feature text="Create lesson plans" />
@@ -134,9 +130,10 @@ export const PageSubscription: FC = () => {
           mt={4}
           p={3}
           sx={{ width: "100%", fontWeight: "bold", borderRadius: 16 }}
-          disabled={
-            user.isLoading || school.isLoading || isSubscribed !== undefined
-          }
+          // disabled={
+          //   user.isLoading || school.isLoading || isSubscribed !== undefined
+          // }
+          disabled
           onClick={() => {
             setLoading(true)
             const script = document.createElement("script")
@@ -168,7 +165,7 @@ export const PageSubscription: FC = () => {
           ) : loading || user.isLoading ? (
             <LoadingIndicator color="onPrimary" />
           ) : (
-            "Start Free Trial"
+            "(Starting on Jan 1st 2021)"
           )}
         </Button>
       </Card>

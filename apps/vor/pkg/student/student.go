@@ -285,13 +285,13 @@ func deleteStudent(s rest.Server, store Store) http.Handler {
 
 func patchStudent(s rest.Server, store Store) http.Handler {
 	type requestBody struct {
-		Name          string          `json:"name"`
-		DateOfBirth   *time.Time      `json:"dateOfBirth"`
-		DateOfEntry   *time.Time      `json:"dateOfEntry"`
-		CustomId      string          `json:"customId"`
-		Gender        postgres.Gender `json:"gender"`
-		Active        *bool           `json:"active"`
-		ProfileImageId string         `json:"profileImageId"`
+		Name           string          `json:"name"`
+		DateOfBirth    *time.Time      `json:"dateOfBirth"`
+		DateOfEntry    *time.Time      `json:"dateOfEntry"`
+		CustomId       string          `json:"customId"`
+		Gender         postgres.Gender `json:"gender"`
+		Active         *bool           `json:"active"`
+		ProfileImageId string          `json:"profileImageId"`
 	}
 	type responseBody struct {
 		Id          string     `json:"id"`
@@ -546,6 +546,13 @@ func getMaterialProgress(s rest.Server, store Store) http.Handler {
 }
 
 func upsertMaterialProgress(s rest.Server, store Store) http.Handler {
+	type responseBody struct {
+		AreaId       string    `json:"areaId"`
+		MaterialName string    `json:"materialName"`
+		MaterialId   string    `json:"materialId"`
+		Stage        int       `json:"stage"`
+		UpdatedAt    time.Time `json:"updatedAt"`
+	}
 	type requestBody struct {
 		Stage int `json:"stage"`
 	}
@@ -558,14 +565,28 @@ func upsertMaterialProgress(s rest.Server, store Store) http.Handler {
 			return rest.NewParseJsonError(err)
 		}
 
-		progress := postgres.StudentMaterialProgress{
+		progress, err := store.UpdateProgress(postgres.StudentMaterialProgress{
 			MaterialId: materialId,
 			StudentId:  studentId,
 			Stage:      requestBody.Stage,
 			UpdatedAt:  time.Now(),
+		})
+		if err != nil {
+			return &rest.Error{
+				http.StatusInternalServerError,
+				"Failed updating progress",
+				err,
+			}
 		}
-		if _, err := store.UpdateProgress(progress); err != nil {
-			return &rest.Error{http.StatusInternalServerError, "Failed updating progress", err}
+
+		if err := rest.WriteJson(w, &responseBody{
+			AreaId:       progress.Material.Subject.Area.Id,
+			MaterialName: progress.Material.Name,
+			MaterialId:   progress.MaterialId,
+			Stage:        progress.Stage,
+			UpdatedAt:    progress.UpdatedAt,
+		}); err != nil {
+			return rest.NewWriteJsonError(err)
 		}
 		return nil
 	})
