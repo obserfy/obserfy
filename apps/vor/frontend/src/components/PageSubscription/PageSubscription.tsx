@@ -130,9 +130,10 @@ export const PageSubscription: FC = () => {
           mt={4}
           p={3}
           sx={{ width: "100%", fontWeight: "bold", borderRadius: 16 }}
-          disabled={
-            user.isLoading || school.isLoading || isSubscribed !== undefined
-          }
+          // disabled={
+          //   user.isLoading || school.isLoading || isSubscribed !== undefined
+          // }
+          disabled
           onClick={() => {
             setLoading(true)
             const script = document.createElement("script")
@@ -164,7 +165,7 @@ export const PageSubscription: FC = () => {
           ) : loading || user.isLoading ? (
             <LoadingIndicator color="onPrimary" />
           ) : (
-            "Start Free Trial"
+            "(Starting on Jan 1st 2021)"
           )}
         </Button>
       </Card>
