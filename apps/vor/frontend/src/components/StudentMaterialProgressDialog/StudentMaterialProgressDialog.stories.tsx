@@ -17,6 +17,5 @@ export const Basic: FC = () => (
     materialId="asdfasdf"
     materialName="Fancy Shoelaces"
     studentId="asdfasdf"
-    onSubmitted={action("submit")}
   />
 )

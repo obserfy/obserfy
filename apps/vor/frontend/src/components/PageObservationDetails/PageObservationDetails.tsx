@@ -44,8 +44,10 @@ export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
 
   if (isLoading) {
     return (
-      <Box>
-        <LoadingPlaceholder />
+      <Box mx={3}>
+        <LoadingPlaceholder sx={{ height: 210 }} mb={2} />
+        <LoadingPlaceholder sx={{ height: 150 }} mb={2} />
+        <LoadingPlaceholder sx={{ height: 92 }} mb={2} />
       </Box>
     )
   }

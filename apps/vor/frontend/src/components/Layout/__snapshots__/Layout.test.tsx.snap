@@ -240,7 +240,7 @@ exports[`Layout should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   margin-bottom: env(safe-area-inset-bottom);
-  margin-left: 0;
+  padding-left: 0;
   background-color: var(--theme-ui-colors-background,#f2f3f5);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;

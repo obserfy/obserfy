@@ -121,6 +121,8 @@ const ObservationSection: FC<{ studentId: string }> = ({ studentId }) => {
   const dataLength = data?.length ?? 0
 
   const observationsByDate = useMemo(() => {
+    // Always reset selection when data change (which means we've navigated to a different student)
+    setSelectionIdx(0)
     const result: { [key: number]: Observation[] } = {}
     data?.forEach((observation) => {
       const date = dayjs(observation.eventTime).startOf("day").unix()

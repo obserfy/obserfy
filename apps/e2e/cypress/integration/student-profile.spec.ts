@@ -151,9 +151,9 @@ describe("test student profile page", () => {
 
     // Change something to Practiced
     cy.contains("Number Rods").click()
-    cy.contains("Save changes").should("be.disabled")
-    cy.get("[aria-label=Progress]").select("1")
-    cy.contains("Save changes").click()
+    cy.contains("Save").should("be.disabled")
+    cy.contains("Practiced").click()
+    cy.contains("Save").click()
 
     // Go back and see if it shows up
     cy.contains("Practiced").should("be.visible")
@@ -164,8 +164,8 @@ describe("test student profile page", () => {
     cy.contains("See All Math").should("be.visible")
     cy.contains("Practiced").should("be.visible").click()
 
-    cy.get("[aria-label=Progress]").select("2")
-    cy.contains("Save changes").click()
+    cy.contains("Mastered").click()
+    cy.contains("Save").click()
 
     // Make sure it shows up
     cy.contains("Mastered").should("be.visible")

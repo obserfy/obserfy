@@ -4,12 +4,12 @@ import Typography from "../Typography/Typography"
 
 interface Props extends BoxProps {
   text: string
-  activeBackground: string
+  activeBackground?: string
   isActive?: boolean
 }
 export const Chip: FC<Props> = ({
   isActive,
-  activeBackground,
+  activeBackground = "primary",
   text,
   sx,
   ...props

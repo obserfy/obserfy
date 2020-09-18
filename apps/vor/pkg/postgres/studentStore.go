@@ -163,8 +163,20 @@ func (s StudentStore) GetProgress(studentId string) ([]StudentMaterialProgress, 
 	return progresses, nil
 }
 
-func (s StudentStore) UpdateProgress(progress StudentMaterialProgress) (pg.Result, error) {
-	return s.Model(&progress).OnConflict("(material_id, student_id) DO UPDATE").Insert()
+func (s StudentStore) UpdateProgress(progress StudentMaterialProgress) (*StudentMaterialProgress, error) {
+	if _, err := s.Model(&progress).
+		OnConflict("(material_id, student_id) DO UPDATE").
+		Insert(); err != nil {
+		return nil, richErrors.Wrap(err, "failed to upsert material progress")
+	}
+	if err := s.Model(&progress).WherePK().
+		Relation("Material").
+		Relation("Material.Subject").
+		Relation("Material.Subject.Area").
+		Select(); err != nil {
+		return nil, richErrors.Wrap(err, "failed to select the udpated material progress")
+	}
+	return &progress, nil
 }
 
 func (s StudentStore) Get(studentId string) (*Student, error) {
