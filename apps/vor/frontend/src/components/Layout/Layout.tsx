@@ -38,7 +38,7 @@ export const Layout: FC = ({ children }) => {
           as="main"
           backgroundColor="background"
           mb="env(safe-area-inset-bottom)"
-          ml={studentSubroute ? [0, 64, 364, 364, 484] : 0}
+          pl={studentSubroute ? [0, 64, 364, 364, 484] : 0}
           sx={{ flexGrow: 1 }}
         >
           <UpdateNotification />
