@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.11.5](https://github.com/obserfy/obserfy/compare/v1.11.4...v1.11.5) (2020-09-18)
+
+
+### Bug Fixes
+
+* change some text. ([27e5afb](https://github.com/obserfy/obserfy/commit/27e5afb9eb30cf406dd19dc5489d613a6d2a65bb))
+* change some text. ([921da61](https://github.com/obserfy/obserfy/commit/921da6147140827c166d573d8ff1aca86cd9f8ba))
+* **deps:** update dependency @sentry/tracing to v5.24.1 ([bd4638a](https://github.com/obserfy/obserfy/commit/bd4638a20becf5839ae932ddf5ffdceb90c89336))
+* nil pointer exception on observations without creator. ([0e3ddc7](https://github.com/obserfy/obserfy/commit/0e3ddc7fea575ea98781f982cfb144f8c40f31b9))
+* sidebar glowing white in dark mode. ([a7e2efa](https://github.com/obserfy/obserfy/commit/a7e2efa0c017e443e72f0f276257f3cbbc10b378))
+* **deps:** update dependency @sentry/tracing to v5.24.0 ([956bf33](https://github.com/obserfy/obserfy/commit/956bf33a56053a0214d7de130d3fd1e6e3bbf181))
+
 ### [1.11.4](https://github.com/obserfy/obserfy/compare/v1.11.2...v1.11.4) (2020-09-17)
 
 ### [1.11.3](https://github.com/obserfy/obserfy/compare/v1.11.2...v1.11.3) (2020-09-17)
