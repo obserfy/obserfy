@@ -23,15 +23,23 @@ const usePatchStudentMaterialProgress = (
         (material) => materialId === material.materialId
       )
       const result = await data.json()
-      if (cache && materialIndex !== undefined && materialIndex >= 0) {
-        const cacheItem = cache[materialIndex]
-        if (cacheItem) {
-          cache[materialIndex] = result
-        } else {
-          cache.push(result)
-        }
-        setStudentMaterialProgressCache(studentId, cache)
+
+      // populate cache if empty
+      if (cache === undefined) {
+        setStudentMaterialProgressCache(studentId, [result])
+        return
       }
+
+      // if material progress exists in cache, update it
+      if (materialIndex !== undefined && materialIndex >= 0) {
+        cache[materialIndex] = result
+        setStudentMaterialProgressCache(studentId, cache)
+        return
+      }
+
+      // if material progress doesn't exists in cache, create it
+      cache.push(result)
+      setStudentMaterialProgressCache(studentId, cache)
     },
   })
 }
