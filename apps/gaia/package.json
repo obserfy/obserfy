@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "0.16.0",
-    "@prefresh/next": "1.1.0",
+    "@prefresh/next": "1.2.0",
     "@segment/snippet": "4.13.1",
     "@types/formidable": "1.0.31",
     "@types/minio": "7.0.6",
