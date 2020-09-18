@@ -90,7 +90,7 @@ export const PageSubscription: FC = () => {
               color="textPrimary"
               sx={{ fontWeight: "bold", lineHeight: 1 }}
             >
-              Free Trial
+              Early Access
             </Typography.Body>
             <Typography.Body ml="auto">Current Plan</Typography.Body>
           </Flex>
@@ -113,12 +113,8 @@ export const PageSubscription: FC = () => {
             User/month
           </Typography.Body>
         </Flex>
-        <Typography.Body my={3}>
-          Simple pricing for every school.
-        </Typography.Body>
 
         <Box my={3}>
-          <Feature text="90-days free trial" />
           <Feature text="Unlimited students" />
           <Feature text="Record observations" />
           <Feature text="Create lesson plans" />
