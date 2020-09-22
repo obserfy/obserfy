@@ -13,12 +13,11 @@ const SupportPage = () => {
   const user = useGetUser()
 
   useEffect(() => {
-    if (user) {
+    if (user.isSuccess && child.isSuccess) {
       loadCanny()
       Canny("identify", {
         appID: "5f0d32f03899af5d46779764",
         user: {
-          // Replace these values with the current user's datapac
           email: user.data?.name,
           name: user.data?.name,
           id: user.data?.sub,
@@ -31,54 +30,51 @@ const SupportPage = () => {
         },
       })
     }
-  }, [])
+  }, [user.data, child.data])
+
   return (
     <>
       <Head>
         <title>Support | Obserfy for Parents</title>
       </Head>
       <div className="max-w-3xl mx-auto mt-2 flex flex-col items-center">
-        <div className="w-full rounded-lg p-2 bg-white border border-gray-300 mb-2">
-          <a href="https://feedback.obserfy.com">
-            <div className="grid grid-cols-3">
-              <div className="col-span-2">
-                <div className="text-gray-900 font-bold text-xl">
-                  Go To Canny?
-                </div>
-                <p className="text-gray-700 text-base">
-                  Post and upvote suggestions, ideas, and issues.
+        <div className="w-full md:rounded p-3 bg-white border border-gray-300 mb-2">
+          <a href="https://feedback.obserfy.com/parent-dashboard">
+            <div className="flex">
+              <div>
+                <h6 className="text-gray-900 font-bold text-sm mb-2">
+                  Post feedback
+                </h6>
+                <p className="text-gray-700 text-sm">
+                  Tell us how to improve obserfy for parents
                 </p>
               </div>
-              <div>
-                <Img
-                  className="my-auto h-full ml-auto"
-                  alt="logout icon"
-                  src={LogoutIcon}
-                  width={25}
-                />
-              </div>
+              <Img
+                className="my-auto h-full ml-auto m-3"
+                alt="logout icon"
+                src={LogoutIcon}
+                width={18}
+              />
             </div>
           </a>
         </div>
-        <div className="w-full rounded-lg p-2 bg-white border border-gray-300">
-          <a href="mailto:chrsep@protonmail.com">
-            <div className="grid grid-cols-3">
-              <div className="col-span-2">
-                <div className="text-gray-900 font-bold text-xl mb-2">
+        <div className="w-full md:rounded p-3 bg-white border border-gray-300">
+          <a href="mailto:support@obserfy.com">
+            <div className="flex">
+              <div>
+                <h6 className="text-gray-900 font-bold text-sm mb-2">
                   Email Us
-                </div>
-                <p className="text-gray-700 text-base">
-                  Have a question? Shoot us an email at chrsep@protonmail.com
+                </h6>
+                <p className="text-gray-700 text-sm">
+                  Have a question? Shoot us an email at support@obserfy.com
                 </p>
               </div>
-              <div>
-                <Img
-                  className="my-auto h-full ml-auto"
-                  alt="logout icon"
-                  src={LogoutIcon}
-                  width={25}
-                />
-              </div>
+              <Img
+                className="my-auto h-full ml-auto m-3"
+                alt="logout icon"
+                src={LogoutIcon}
+                width={18}
+              />
             </div>
           </a>
         </div>
