@@ -11,7 +11,7 @@ export default initAuth0({
     // The secret used to encrypt the cookie.
     cookieSecret: process.env.AUTH0_COOKIE_SECRET,
     // The cookie lifetime (expiration) in seconds. Set to 8 hours by default.
-    cookieLifetime: 60 * 60 * 24 * 7,
+    cookieLifetime: 60 * 60 * 24 * 60,
     // (Optional) The cookie domain this should run on. Leave it blank to restrict it to your domain.
     cookieDomain: process.env.AUTH0_COOKIE_DOMAIN,
     // (Optional) SameSite configuration for the session cookie. Defaults to 'lax', but can be changed to 'strict' or 'none'. Set it to false if you want to disable the SameSite setting.
