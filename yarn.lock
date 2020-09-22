@@ -13816,6 +13816,14 @@ gatsby-theme-i18n@1.0.3:
     gatsby-plugin-react-helmet "^3.3.10"
     react-helmet "^6.1.0"
 
+gatsby-theme-i18n@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/gatsby-theme-i18n/-/gatsby-theme-i18n-1.0.4.tgz#2c58c028cbc983357af57aba4cec4eb51a02b52b"
+  integrity sha512-dmym770Z3vhddGq/xzgGl4+LvIsb9rh2FIcG1qSzM3uzwKDcTyW6uTaWc6oKkcBHW6gFYEU8XlyyMic0IbVL2w==
+  dependencies:
+    gatsby-plugin-react-helmet "^3.3.10"
+    react-helmet "^6.1.0"
+
 gatsby-transformer-sharp@2.5.14:
   version "2.5.14"
   resolved "https://registry.yarnpkg.com/gatsby-transformer-sharp/-/gatsby-transformer-sharp-2.5.14.tgz#8329d5c2fead279ff43d7a8c04fb003412b8d9be"
