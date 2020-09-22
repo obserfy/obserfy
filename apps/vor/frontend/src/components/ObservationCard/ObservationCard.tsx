@@ -40,10 +40,9 @@ export const ObservationCard: FC<Props> = ({ detailsUrl, observation }) => (
         ))}
       </Flex>
     )}
-    <Flex sx={{ alignItems: "baseline" }} ml={3} mr={2} mb={2}>
+    <Flex sx={{ alignItems: "baseline" }} ml={3} mr={2} mb={3}>
       {observation.area && (
         <Typography.Body
-          pb={2}
           mr={1}
           sx={{ fontSize: [0, 0], lineHeight: 1 }}
           color="textPrimary"
@@ -53,7 +52,6 @@ export const ObservationCard: FC<Props> = ({ detailsUrl, observation }) => (
       )}
       {observation.creatorName && (
         <Typography.Body
-          pb={2}
           sx={{ fontSize: [0, 0], lineHeight: 1 }}
           color="textMediumEmphasis"
         >
