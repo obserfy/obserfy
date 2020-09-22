@@ -1,12 +1,9 @@
 import React, { FC, useState } from "react"
 import { Box, Button, Flex } from "theme-ui"
 import Typography from "../Typography/Typography"
-
 import Spacer from "../Spacer/Spacer"
-
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import CardLink from "../CardLink/CardLink"
-import BackNavigation from "../BackNavigation/BackNavigation"
 import { useGetCurriculum } from "../../api/useGetCurriculum"
 import { useGetCurriculumAreas } from "../../api/useGetCurriculumAreas"
 import { createDefaultCurriculum } from "../../api/createDefaultCurriculum"
@@ -14,7 +11,8 @@ import { Area } from "../../api/useGetArea"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import Icon from "../Icon/Icon"
 import NewAreaDialog from "../NewAreaDialog/NewAreaDialog"
-import { CURRICULUM_AREA_URL, SETTINGS_URL } from "../../routes"
+import { ADMIN_URL, CURRICULUM_AREA_URL } from "../../routes"
+import TopBar from "../TopBar/TopBar"
 
 export const PageCurriculumSettings: FC = () => {
   const [showNewAreaDialog, setShowNewAreaDialog] = useState(false)
@@ -31,7 +29,17 @@ export const PageCurriculumSettings: FC = () => {
   return (
     <>
       <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto">
-        <BackNavigation to={SETTINGS_URL} text="Settings" />
+        <TopBar
+          breadcrumbs={[
+            {
+              text: "Admin",
+              to: ADMIN_URL,
+            },
+            {
+              text: "Curriculum",
+            },
+          ]}
+        />
         {loading && <LoadingState />}
         {!loading && !curriculum.error && (
           <CurriculumAreas

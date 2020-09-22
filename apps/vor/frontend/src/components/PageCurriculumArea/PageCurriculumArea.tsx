@@ -1,9 +1,8 @@
 import React, { FC, useState } from "react"
-import { Box, Flex, Button, Card } from "theme-ui"
+import { Box, Button, Card, Flex } from "theme-ui"
 import { Link, navigate } from "../Link/Link"
 import Typography from "../Typography/Typography"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
-import BackNavigation from "../BackNavigation/BackNavigation"
 import { useGetArea } from "../../api/useGetArea"
 import { Subject, useGetAreaSubjects } from "../../api/useGetAreaSubjects"
 import { useGetSubjectMaterials } from "../../api/useGetSubjectMaterials"
@@ -16,12 +15,13 @@ import DeleteAreaDialog from "../DeleteAreaDialog/DeleteAreaDialog"
 import DeleteSubjectDialog from "../DeleteSubjectDialog/DeleteSubjectDialog"
 import EditAreaDialog from "../EditAreaDialog/EditAreaDialog"
 import {
-  NEW_SUBJECT_URL,
-  EDIT_SUBJECT_URL,
   ADMIN_CURRICULUM_URL,
+  ADMIN_URL,
+  EDIT_SUBJECT_URL,
+  NEW_SUBJECT_URL,
 } from "../../routes"
+import TopBar from "../TopBar/TopBar"
 
-// FIXME: Typescript any typing, and inconsistent loading state should be fixed.
 interface Props {
   id: string
 }
@@ -32,7 +32,7 @@ export const PageCurriculumArea: FC<Props> = ({ id }) => {
   const [showDeleteSubjectDialog, setShowDeleteSubjectDialog] = useState(false)
   const [showEditAreaDialog, setShowEditAreaDialog] = useState(false)
   const [subjectToDelete, setSubjectToDelete] = useState<Subject>()
-  const loading = area.status === "loading" || subjects.status === "loading"
+  const loading = area.isLoading || subjects.isLoading
 
   const subjectList = subjects.data?.map((subject) => (
     <SubjectListItem
@@ -49,7 +49,19 @@ export const PageCurriculumArea: FC<Props> = ({ id }) => {
   return (
     <>
       <Box sx={{ maxWidth: "maxWidth.sm", margin: "auto" }}>
-        <BackNavigation to={ADMIN_CURRICULUM_URL} text="Curriculum" />
+        <TopBar
+          breadcrumbs={[
+            {
+              text: "Admin",
+              to: ADMIN_URL,
+            },
+            {
+              text: "Curriculum",
+              to: ADMIN_CURRICULUM_URL,
+            },
+            { text: "Area" },
+          ]}
+        />
         {loading && !area.data?.name && <LoadingState />}
         <Typography.H4 p={3} pb={2}>
           {area.data?.name}

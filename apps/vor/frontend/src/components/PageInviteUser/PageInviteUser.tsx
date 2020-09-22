@@ -4,7 +4,7 @@ import { Box, Button, Flex, jsx } from "theme-ui"
 import { nanoid } from "nanoid"
 import { useImmer } from "use-immer"
 import BackNavigation from "../BackNavigation/BackNavigation"
-import { SETTINGS_URL } from "../../routes"
+import { ADMIN_URL } from "../../routes"
 import Typography from "../Typography/Typography"
 import { ReactComponent as CloseIcon } from "../../icons/close.svg"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
@@ -53,7 +53,7 @@ export const PageInviteUser: FC = () => {
 
   return (
     <Box sx={{ maxWidth: "maxWidth.sm" }} mx="auto">
-      <BackNavigation to={SETTINGS_URL} text="Admin / Invite" />
+      <BackNavigation to={ADMIN_URL} text="Admin / Invite" />
       <Typography.H6 m={3} mb={4} sx={{ lineHeight: 1 }}>
         Invite using emails
       </Typography.H6>

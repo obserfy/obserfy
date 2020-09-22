@@ -9,7 +9,7 @@ import { ReactComponent as MessageIcon } from "../../icons/message.svg"
 import { Link } from "../Link/Link"
 import Icon from "../Icon/Icon"
 import { Typography } from "../Typography/Typography"
-import { SETTINGS_URL, STUDENTS_URL, SUPPORT_URL } from "../../routes"
+import { ADMIN_URL, STUDENTS_URL, SUPPORT_URL } from "../../routes"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
 
 const Navbar: FC = () => {
@@ -90,7 +90,7 @@ const Navbar: FC = () => {
             display: ["none", "block"],
           }}
         />
-        <NavBarItem title="Admin" icon={SettingsIcon} to={SETTINGS_URL} />
+        <NavBarItem title="Admin" icon={SettingsIcon} to={ADMIN_URL} />
         <NavBarItem title="Support" icon={MessageIcon} to={SUPPORT_URL} />
       </Flex>
     </TranslucentBar>

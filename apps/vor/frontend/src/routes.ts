@@ -1,7 +1,7 @@
 import { Dayjs } from "./dayjs"
 
 export const NEW_STUDENT_URL = "/dashboard/students/new"
-export const SETTINGS_URL = "/dashboard/admin"
+export const ADMIN_URL = "/dashboard/admin"
 export const NEW_CLASS_URL = "/dashboard/admin/class/new"
 export const CLASS_SETTINGS_URL = "/dashboard/admin/class"
 export const STUDENTS_URL = "/dashboard/students"
