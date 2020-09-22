@@ -35,6 +35,7 @@ module.exports = {
     title: `Obserfy`,
     description: `Obserfy`,
     author: `@chrsep`,
+    siteUrl: `https://app.obserfy.com`
   },
   plugins: [
     `gatsby-plugin-layout`,
@@ -187,6 +188,19 @@ module.exports = {
         codegen: process.env.NODE_ENV === "development",
         fileName: `./graphql-types.ts`,
         documentPaths: ["./src/**/*.{ts,tsx}"],
+      },
+    },
+    {
+      resolve: `gatsby-theme-i18n`,
+      options: {
+        defaultLang: `en`,
+        configPath: require.resolve(`./i18n/config.json`),
+      },
+    },
+    {
+      resolve: `gatsby-theme-i18n-lingui`,
+      options: {
+        localeDir: `./i18n/lingui`,
       },
     },
     ...guessJsPlugin,

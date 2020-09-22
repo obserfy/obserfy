@@ -1,0 +1,30 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2020-09-21 01:27+0700\n"
+"Mime-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: en\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/components/PageListOfStudents/PageListOfStudents.tsx:68
+msgid "Cancel"
+msgstr "Cancel"
+
+#: src/components/AlertDialog/AlertDialog.tsx:23
+#~ msgid "{body}"
+#~ msgstr ""
+
+#: src/components/DialogHeader/DialogHeader.tsx:20
+#~ msgid "{onCancelText}"
+#~ msgstr ""
+
+#: src/components/DialogHeader/DialogHeader.tsx:17
+#~ msgid "{title}"
+#~ msgstr ""

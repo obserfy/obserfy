@@ -1,0 +1,1 @@
+/* eslint-disable */module.exports={languageData:{"plurals":function(n,ord){if(ord)return"other";return"other"}},messages:{"Cancel":"Batal","{body}":function(a){return[a("body")]},"{onCancelText}":function(a){return[a("onCancelText")]},"{title}":function(a){return[a("title")]}}};

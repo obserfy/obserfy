@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { FC, useState } from "react"
 import { Box, Card, Flex, Image, jsx } from "theme-ui"
+import { i18nMark } from "@lingui/core"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { SETTINGS_URL } from "../../routes"
 import Typography from "../Typography/Typography"
@@ -103,7 +104,7 @@ const StudentCard: FC<{
       {showStatusDialog && (
         <AlertDialog
           title={`Set as ${active ? "inactive" : "active"}?`}
-          negativeText="Cancel"
+          negativeText={i18nMark("Cancel")}
           positiveText="Yes"
           body={`Are you sure you want to set ${name} as ${
             active ? "inactive" : "active"

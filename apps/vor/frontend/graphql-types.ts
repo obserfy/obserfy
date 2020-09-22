@@ -1290,6 +1290,28 @@ export type IntQueryOperatorInput = {
 };
 
 
+export type Locale = {
+  code?: Maybe<Scalars['String']>;
+  hrefLang?: Maybe<Scalars['String']>;
+  dateFormat?: Maybe<Scalars['String']>;
+  langDir?: Maybe<Scalars['String']>;
+  localName?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+export type LocaleFilterInput = {
+  code?: Maybe<StringQueryOperatorInput>;
+  hrefLang?: Maybe<StringQueryOperatorInput>;
+  dateFormat?: Maybe<StringQueryOperatorInput>;
+  langDir?: Maybe<StringQueryOperatorInput>;
+  localName?: Maybe<StringQueryOperatorInput>;
+  name?: Maybe<StringQueryOperatorInput>;
+};
+
+export type LocaleFilterListInput = {
+  elemMatch?: Maybe<LocaleFilterInput>;
+};
+
 /** Node Interface */
 export type Node = {
   id: Scalars['ID'];
@@ -1350,6 +1372,8 @@ export type Query = {
   allSite: SiteConnection;
   imageSharp?: Maybe<ImageSharp>;
   allImageSharp: ImageSharpConnection;
+  themeI18N?: Maybe<ThemeI18n>;
+  allThemeI18N: ThemeI18nConnection;
   siteBuildMetadata?: Maybe<SiteBuildMetadata>;
   allSiteBuildMetadata: SiteBuildMetadataConnection;
   sitePlugin?: Maybe<SitePlugin>;
@@ -1522,6 +1546,25 @@ export type QueryImageSharpArgs = {
 export type QueryAllImageSharpArgs = {
   filter?: Maybe<ImageSharpFilterInput>;
   sort?: Maybe<ImageSharpSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
+export type QueryThemeI18NArgs = {
+  defaultLang?: Maybe<StringQueryOperatorInput>;
+  configPath?: Maybe<StringQueryOperatorInput>;
+  config?: Maybe<LocaleFilterListInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+};
+
+
+export type QueryAllThemeI18NArgs = {
+  filter?: Maybe<ThemeI18nFilterInput>;
+  sort?: Maybe<ThemeI18nSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
@@ -1775,6 +1818,7 @@ export type SiteFieldsEnum =
   | 'siteMetadata___title'
   | 'siteMetadata___description'
   | 'siteMetadata___author'
+  | 'siteMetadata___siteUrl'
   | 'port'
   | 'host'
   | 'polyfill'
@@ -1927,10 +1971,18 @@ export type SitePageConnectionGroupArgs = {
 };
 
 export type SitePageContext = {
+  locale?: Maybe<Scalars['String']>;
+  hrefLang?: Maybe<Scalars['String']>;
+  originalPath?: Maybe<Scalars['String']>;
+  dateFormat?: Maybe<Scalars['String']>;
   layout?: Maybe<Scalars['String']>;
 };
 
 export type SitePageContextFilterInput = {
+  locale?: Maybe<StringQueryOperatorInput>;
+  hrefLang?: Maybe<StringQueryOperatorInput>;
+  originalPath?: Maybe<StringQueryOperatorInput>;
+  dateFormat?: Maybe<StringQueryOperatorInput>;
   layout?: Maybe<StringQueryOperatorInput>;
 };
 
@@ -2033,6 +2085,10 @@ export type SitePageFieldsEnum =
   | 'internal___owner'
   | 'internal___type'
   | 'isCreatedByStatefulCreatePages'
+  | 'context___locale'
+  | 'context___hrefLang'
+  | 'context___originalPath'
+  | 'context___dateFormat'
   | 'context___layout'
   | 'pluginCreator___id'
   | 'pluginCreator___parent___id'
@@ -2110,6 +2166,9 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___codegen'
   | 'pluginCreator___pluginOptions___fileName'
   | 'pluginCreator___pluginOptions___documentPaths'
+  | 'pluginCreator___pluginOptions___defaultLang'
+  | 'pluginCreator___pluginOptions___configPath'
+  | 'pluginCreator___pluginOptions___localeDir'
   | 'pluginCreator___pluginOptions___analyzerPort'
   | 'pluginCreator___pluginOptions___disable'
   | 'pluginCreator___pluginOptions___pathCheck'
@@ -2336,6 +2395,9 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___codegen'
   | 'pluginOptions___fileName'
   | 'pluginOptions___documentPaths'
+  | 'pluginOptions___defaultLang'
+  | 'pluginOptions___configPath'
+  | 'pluginOptions___localeDir'
   | 'pluginOptions___analyzerPort'
   | 'pluginOptions___disable'
   | 'pluginOptions___pathCheck'
@@ -2483,6 +2545,9 @@ export type SitePluginPluginOptions = {
   codegen?: Maybe<Scalars['Boolean']>;
   fileName?: Maybe<Scalars['String']>;
   documentPaths?: Maybe<Array<Maybe<Scalars['String']>>>;
+  defaultLang?: Maybe<Scalars['String']>;
+  configPath?: Maybe<Scalars['String']>;
+  localeDir?: Maybe<Scalars['String']>;
   analyzerPort?: Maybe<Scalars['Int']>;
   disable?: Maybe<Scalars['Boolean']>;
   pathCheck?: Maybe<Scalars['Boolean']>;
@@ -2521,6 +2586,9 @@ export type SitePluginPluginOptionsFilterInput = {
   codegen?: Maybe<BooleanQueryOperatorInput>;
   fileName?: Maybe<StringQueryOperatorInput>;
   documentPaths?: Maybe<StringQueryOperatorInput>;
+  defaultLang?: Maybe<StringQueryOperatorInput>;
+  configPath?: Maybe<StringQueryOperatorInput>;
+  localeDir?: Maybe<StringQueryOperatorInput>;
   analyzerPort?: Maybe<IntQueryOperatorInput>;
   disable?: Maybe<BooleanQueryOperatorInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
@@ -2605,12 +2673,14 @@ export type SiteSiteMetadata = {
   title?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
   author?: Maybe<Scalars['String']>;
+  siteUrl?: Maybe<Scalars['String']>;
 };
 
 export type SiteSiteMetadataFilterInput = {
   title?: Maybe<StringQueryOperatorInput>;
   description?: Maybe<StringQueryOperatorInput>;
   author?: Maybe<StringQueryOperatorInput>;
+  siteUrl?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SiteSortInput = {
@@ -2629,6 +2699,164 @@ export type StringQueryOperatorInput = {
   nin?: Maybe<Array<Maybe<Scalars['String']>>>;
   regex?: Maybe<Scalars['String']>;
   glob?: Maybe<Scalars['String']>;
+};
+
+export type ThemeI18n = Node & {
+  defaultLang?: Maybe<Scalars['String']>;
+  configPath?: Maybe<Scalars['String']>;
+  config?: Maybe<Array<Maybe<Locale>>>;
+  id: Scalars['ID'];
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+};
+
+export type ThemeI18nConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<ThemeI18nEdge>;
+  nodes: Array<ThemeI18n>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  group: Array<ThemeI18nGroupConnection>;
+};
+
+
+export type ThemeI18nConnectionDistinctArgs = {
+  field: ThemeI18nFieldsEnum;
+};
+
+
+export type ThemeI18nConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: ThemeI18nFieldsEnum;
+};
+
+export type ThemeI18nEdge = {
+  next?: Maybe<ThemeI18n>;
+  node: ThemeI18n;
+  previous?: Maybe<ThemeI18n>;
+};
+
+export type ThemeI18nFieldsEnum = 
+  | 'defaultLang'
+  | 'configPath'
+  | 'config'
+  | 'config___code'
+  | 'config___hrefLang'
+  | 'config___dateFormat'
+  | 'config___langDir'
+  | 'config___localName'
+  | 'config___name'
+  | 'id'
+  | 'parent___id'
+  | 'parent___parent___id'
+  | 'parent___parent___parent___id'
+  | 'parent___parent___parent___children'
+  | 'parent___parent___children'
+  | 'parent___parent___children___id'
+  | 'parent___parent___children___children'
+  | 'parent___parent___internal___content'
+  | 'parent___parent___internal___contentDigest'
+  | 'parent___parent___internal___description'
+  | 'parent___parent___internal___fieldOwners'
+  | 'parent___parent___internal___ignoreType'
+  | 'parent___parent___internal___mediaType'
+  | 'parent___parent___internal___owner'
+  | 'parent___parent___internal___type'
+  | 'parent___children'
+  | 'parent___children___id'
+  | 'parent___children___parent___id'
+  | 'parent___children___parent___children'
+  | 'parent___children___children'
+  | 'parent___children___children___id'
+  | 'parent___children___children___children'
+  | 'parent___children___internal___content'
+  | 'parent___children___internal___contentDigest'
+  | 'parent___children___internal___description'
+  | 'parent___children___internal___fieldOwners'
+  | 'parent___children___internal___ignoreType'
+  | 'parent___children___internal___mediaType'
+  | 'parent___children___internal___owner'
+  | 'parent___children___internal___type'
+  | 'parent___internal___content'
+  | 'parent___internal___contentDigest'
+  | 'parent___internal___description'
+  | 'parent___internal___fieldOwners'
+  | 'parent___internal___ignoreType'
+  | 'parent___internal___mediaType'
+  | 'parent___internal___owner'
+  | 'parent___internal___type'
+  | 'children'
+  | 'children___id'
+  | 'children___parent___id'
+  | 'children___parent___parent___id'
+  | 'children___parent___parent___children'
+  | 'children___parent___children'
+  | 'children___parent___children___id'
+  | 'children___parent___children___children'
+  | 'children___parent___internal___content'
+  | 'children___parent___internal___contentDigest'
+  | 'children___parent___internal___description'
+  | 'children___parent___internal___fieldOwners'
+  | 'children___parent___internal___ignoreType'
+  | 'children___parent___internal___mediaType'
+  | 'children___parent___internal___owner'
+  | 'children___parent___internal___type'
+  | 'children___children'
+  | 'children___children___id'
+  | 'children___children___parent___id'
+  | 'children___children___parent___children'
+  | 'children___children___children'
+  | 'children___children___children___id'
+  | 'children___children___children___children'
+  | 'children___children___internal___content'
+  | 'children___children___internal___contentDigest'
+  | 'children___children___internal___description'
+  | 'children___children___internal___fieldOwners'
+  | 'children___children___internal___ignoreType'
+  | 'children___children___internal___mediaType'
+  | 'children___children___internal___owner'
+  | 'children___children___internal___type'
+  | 'children___internal___content'
+  | 'children___internal___contentDigest'
+  | 'children___internal___description'
+  | 'children___internal___fieldOwners'
+  | 'children___internal___ignoreType'
+  | 'children___internal___mediaType'
+  | 'children___internal___owner'
+  | 'children___internal___type'
+  | 'internal___content'
+  | 'internal___contentDigest'
+  | 'internal___description'
+  | 'internal___fieldOwners'
+  | 'internal___ignoreType'
+  | 'internal___mediaType'
+  | 'internal___owner'
+  | 'internal___type';
+
+export type ThemeI18nFilterInput = {
+  defaultLang?: Maybe<StringQueryOperatorInput>;
+  configPath?: Maybe<StringQueryOperatorInput>;
+  config?: Maybe<LocaleFilterListInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+};
+
+export type ThemeI18nGroupConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<ThemeI18nEdge>;
+  nodes: Array<ThemeI18n>;
+  pageInfo: PageInfo;
+  field: Scalars['String'];
+  fieldValue?: Maybe<Scalars['String']>;
+};
+
+export type ThemeI18nSortInput = {
+  fields?: Maybe<Array<Maybe<ThemeI18nFieldsEnum>>>;
+  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
 export type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;

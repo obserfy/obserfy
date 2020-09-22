@@ -3902,6 +3902,15 @@
     make-plural "^4.1.1"
     messageformat-parser "^2.0.0"
 
+"@lingui/core@2.9.2", "@lingui/core@^2.9.2":
+  version "2.9.2"
+  resolved "https://registry.yarnpkg.com/@lingui/core/-/core-2.9.2.tgz#e2ba14862a29ff6b84c9f5d0f59e6ad657f868c5"
+  integrity sha512-prrEGlhbvqbyvHMfgKXaaGDM4cGCofca1lOfIOEEX1rZreRjG7Y+cga0oEEQJ9xS59uMht9GGFOwQJsGHYIU0g==
+  dependencies:
+    babel-runtime "^6.26.0"
+    make-plural "^4.1.1"
+    messageformat-parser "^2.0.0"
+
 "@lingui/macro@2.9.1":
   version "2.9.1"
   resolved "https://registry.yarnpkg.com/@lingui/macro/-/macro-2.9.1.tgz#45f1d98012d9d99d4ea17753c609ce72abb961a8"
@@ -3915,6 +3924,17 @@
   integrity sha512-LUpsw7zDUfS/iJWrBfmaVKcxjyNUQkMjBRuLVEzLHp32A6pK2CGFlDouBsEl1zbJn8gFdcBwWhTsh/FcXZCmXg==
   dependencies:
     "@lingui/core" "2.9.1"
+    babel-runtime "^6.26.0"
+    hash-sum "^1.0.2"
+    hoist-non-react-statics "3.3.0"
+    prop-types "^15.7.2"
+
+"@lingui/react@^2.9.2":
+  version "2.9.2"
+  resolved "https://registry.yarnpkg.com/@lingui/react/-/react-2.9.2.tgz#129802cf7e4589f5179b295d4935af0430e0d081"
+  integrity sha512-grlarLgJt6vu9wkvGetLunbrImRlL5bsnc4CdtXCNwm0r+8srI+mow5PimtK+MrtOSjXSqLdt/giMYFBE3MOSw==
+  dependencies:
+    "@lingui/core" "2.9.2"
     babel-runtime "^6.26.0"
     hash-sum "^1.0.2"
     hoist-non-react-statics "3.3.0"
@@ -13782,6 +13802,11 @@ gatsby-theme-i18n-lingui@1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/gatsby-theme-i18n-lingui/-/gatsby-theme-i18n-lingui-1.0.3.tgz#2a790ea192dcb03be01dd294257f80c48a39e152"
   integrity sha512-gbWPohqyThxjRJ7WjmBxjTVPimFeDGrZsqa9f4EAO/8KWEF0PFO6BEiWPQHgILOC1dbs8BQ1qHHrLCjh31/Q4Q==
+
+gatsby-theme-i18n-lingui@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/gatsby-theme-i18n-lingui/-/gatsby-theme-i18n-lingui-1.0.4.tgz#74372ec876b598b376ed5ffc5c1b2a6a8ae332f9"
+  integrity sha512-lxhv+O8CASXCG2ka/dTvdVuh8gAIN4VldkFm7/r6YO0QJsbuoL0XSHgy//VqC/pG8qMu35iQnQ7hUV7aHihW9A==
 
 gatsby-theme-i18n@1.0.3:
   version "1.0.3"
