@@ -248,6 +248,12 @@ exports[`Layout should render correctly 1`] = `
   flex-grow: 1;
 }
 
+@media screen and (min-width:40em) {
+  .emotion-13 {
+    padding-left: 64px;
+  }
+}
+
 <div>
   <div
     class="emotion-15"
