@@ -1,8 +1,13 @@
 import { navigate } from "gatsby"
-import { ApiError } from "./useApi"
 
 // TODO: rename file to apiHelpers
 const BASE_URL = "/api/v1"
+
+interface ApiError {
+  error?: {
+    message: string
+  }
+}
 
 export const getApi = <T>(url: string) => async (): Promise<T> => {
   const result = await fetch(BASE_URL + url, {
