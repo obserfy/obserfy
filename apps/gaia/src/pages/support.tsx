@@ -1,8 +1,9 @@
 import React, { useEffect } from "react"
 import Head from "next/head"
-import Img from "react-optimized-image"
+import Img, { Svg } from "react-optimized-image"
 import { useQueryString } from "../hooks/useQueryString"
-import LogoutIcon from "../icons/log-out.svg"
+import LinkIcon from "../icons/external-link.svg"
+import MailIcon from "../icons/mail.svg"
 import loadCanny from "../utils/canny"
 import useGetUser from "../hooks/api/useGetUser"
 import useGetChild from "../hooks/api/useGetChild"
@@ -37,47 +38,42 @@ const SupportPage = () => {
       <Head>
         <title>Support | Obserfy for Parents</title>
       </Head>
-      <div className="max-w-3xl mx-auto mt-2 flex flex-col items-center">
-        <div className="w-full md:rounded p-3 bg-white border border-gray-300 mb-2">
-          <a href="https://feedback.obserfy.com/parent-dashboard">
-            <div className="flex">
-              <div>
-                <h6 className="text-gray-900 font-bold text-sm mb-2">
-                  Post feedback
-                </h6>
-                <p className="text-gray-700 text-sm">
-                  Tell us how to improve obserfy for parents
-                </p>
-              </div>
-              <Img
-                className="my-auto h-full ml-auto m-3"
-                alt="logout icon"
-                src={LogoutIcon}
-                width={18}
-              />
-            </div>
-          </a>
-        </div>
-        <div className="w-full md:rounded p-3 bg-white border border-gray-300">
-          <a href="mailto:support@obserfy.com">
-            <div className="flex">
-              <div>
-                <h6 className="text-gray-900 font-bold text-sm mb-2">
-                  Email Us
-                </h6>
-                <p className="text-gray-700 text-sm">
-                  Have a question? Shoot us an email at support@obserfy.com
-                </p>
-              </div>
-              <Img
-                className="my-auto h-full ml-auto m-3"
-                alt="logout icon"
-                src={LogoutIcon}
-                width={18}
-              />
-            </div>
-          </a>
-        </div>
+      <div className="max-w-3xl mx-auto mt-2 flex flex-col md:flex-row items-stretch">
+        <a
+          href="https://feedback.obserfy.com/parent-dashboard"
+          className="block w-full md:rounded p-3 bg-white border border-gray-300 mb-2 md:mb-0 flex items-center md:mr-2 hover:border-primary"
+        >
+          <div>
+            <h6 className="text-gray-900 font-bold text-sm mb-2">
+              Send feedback
+            </h6>
+            <p className="text-gray-700 text-sm">
+              Send us suggestions on how to improve obserfy.
+            </p>
+          </div>
+          <Img
+            className="my-auto h-full ml-auto m-3"
+            alt="logout icon"
+            src={LinkIcon}
+            width={20}
+          />
+        </a>
+        <a
+          href="mailto:support@obserfy.com"
+          className="w-full md:rounded p-3 bg-white border border-gray-300 flex items-center hover:border-primary"
+        >
+          <div>
+            <h6 className="text-gray-900 font-bold text-sm mb-2">Email Us</h6>
+            <p className="text-gray-700 text-sm">
+              Have a question? Shoot us an email at support@obserfy.com
+            </p>
+          </div>
+          <Svg
+            className="my-auto h-full ml-auto m-3 text-gray-900"
+            src={MailIcon}
+            width={24}
+          />
+        </a>
       </div>
     </>
   )
