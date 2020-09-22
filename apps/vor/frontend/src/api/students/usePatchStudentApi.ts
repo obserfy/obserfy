@@ -1,9 +1,4 @@
-import {
-  MutateFunction,
-  MutationResult,
-  queryCache,
-  useMutation,
-} from "react-query"
+import { queryCache, useMutation } from "react-query"
 import { patchApi } from "../fetchApi"
 import { Dayjs } from "../../dayjs"
 
@@ -16,9 +11,7 @@ interface UpdateStudentRequestBody {
   active?: boolean
   profileImageId?: string
 }
-export function usePatchStudentApi(
-  id: string
-): [MutateFunction<Response, unknown>, MutationResult<Response>] {
+export function usePatchStudentApi(id: string) {
   const patchStudent = patchApi<UpdateStudentRequestBody>(`/students/${id}`)
 
   return useMutation(patchStudent, {

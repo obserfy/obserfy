@@ -69,7 +69,7 @@ export const PageStudentImageDetails: FC<Props> = ({ studentId, imageId }) => {
           loading={isLoading}
           onPositiveClick={async () => {
             const result = await deleteImage()
-            if (result.ok) {
+            if (result?.ok) {
               await navigate(STUDENT_IMAGES_URL(studentId))
             }
           }}
@@ -87,7 +87,6 @@ export const PageStudentImageDetails: FC<Props> = ({ studentId, imageId }) => {
           loading={status === "loading"}
           onPositiveClick={async () => {
             await updateStudentImage({
-              id: studentId,
               profileImageId: imageId,
             })
             setShowSetProfileDialog(false)

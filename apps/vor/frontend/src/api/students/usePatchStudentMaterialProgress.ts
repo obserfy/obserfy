@@ -18,6 +18,7 @@ const usePatchStudentMaterialProgress = (
 
   return useMutation(patchStudentMaterialProgress, {
     onSuccess: async (data) => {
+      if (data === undefined) return
       const cache = getStudentMaterialProgressCache(studentId)
       const materialIndex = cache?.findIndex(
         (material) => materialId === material.materialId
