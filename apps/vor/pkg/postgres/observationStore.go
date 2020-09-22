@@ -123,8 +123,6 @@ func (s ObservationStore) UpdateObservation(
 		CategoryId:  observation.CategoryId,
 		CreatedDate: observation.CreatedDate,
 		EventTime:   observation.EventTime,
-		CreatorId:   observation.CreatorId,
-		CreatorName: observation.Creator.Name,
 	}
 	if observation.AreaId != uuid.Nil {
 		result.Area = domain.Area{
@@ -138,6 +136,10 @@ func (s ObservationStore) UpdateObservation(
 			ObjectKey: observation.Images[i].ObjectKey,
 			CreatedAt: observation.Images[i].CreatedAt,
 		})
+	}
+	if observation.Creator != nil {
+		result.CreatorId = observation.Creator.Id
+		result.CreatorName = observation.Creator.Name
 	}
 	return &result, nil
 }
