@@ -9,37 +9,25 @@ import NoImagesIllustration from "../images/no-images-illustration.svg"
 
 const GalleryPage = () => {
   const childId = useQueryString("childId")
-  // const child = useGetChild(childId)
   const childImages = useGetChildImages(childId)
-  // const [postImage] = usePostImage(childId, child.data?.schoolId || "0")
   return (
     <>
       <Head>
         <title>Gallery | Obserfy for Parents</title>
       </Head>
-      {/* <div className="max-w-3xl mx-auto flex items-center"> */}
-      {/*    <input type="file" */}
-      {/*           onChange={async (e) => { */}
-      {/*               const selectedImage = e.target.files?.[0] */}
-      {/*               if (selectedImage) { */}
-      {/*                   await postImage(selectedImage) */}
-      {/*               } */}
-      {/*           }} */}
-      {/*    ></input> */}
-      {/* </div> */}
       <div className="max-w-3xl mx-auto flex items-center">
         <div className="flex mx-auto flex-wrap w-full">
           {childImages.data?.map((img) => (
             <div
               key={img.image_id}
               style={{ maxWidth: "33.3333%" }}
-              className="w-full"
+              className="w-full mb-2 mt-2"
             >
               {/* TODO: replace with better alt */}
               <img
                 src={img.imageUrl}
                 alt="children activity"
-                className="w-full"
+                className="w-3/4"
               />
             </div>
           ))}
