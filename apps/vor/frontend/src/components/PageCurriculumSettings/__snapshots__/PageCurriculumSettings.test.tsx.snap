@@ -29,7 +29,7 @@ exports[`PageCurriculumSettings should render correctly 1`] = `
   }
 }
 
-.emotion-16 {
+.emotion-15 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -37,12 +37,12 @@ exports[`PageCurriculumSettings should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-16 {
+  .emotion-15 {
     font-size: 20px;
   }
 }
 
-.emotion-15 {
+.emotion-14 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -248,25 +248,12 @@ exports[`PageCurriculumSettings should render correctly 1`] = `
   height: 6rem;
 }
 
-.emotion-14 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: bold;
-  line-height: heading;
-  color: var(--theme-ui-colors-text,#37383c);
-  text-rendering: optimizeLegibility;
-  font-size: 32px;
-  padding: 16px;
-}
-
 <div>
   <div
-    class="emotion-16"
+    class="emotion-15"
   >
     <div
-      class="emotion-15"
+      class="emotion-14"
     >
       <div
         class="emotion-8"
@@ -330,9 +317,6 @@ exports[`PageCurriculumSettings should render correctly 1`] = `
           class="emotion-10"
         />
       </div>
-      <h4
-        class="emotion-14"
-      />
     </div>
   </div>
 </div>

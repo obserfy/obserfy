@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react"
-import { Box, Button, Flex } from "theme-ui"
+import { Box, Button, Card, Flex } from "theme-ui"
 import Typography from "../Typography/Typography"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import CardLink from "../CardLink/CardLink"
@@ -30,7 +30,7 @@ export const PageCurriculumSettings: FC = () => {
           ]}
         />
         {isLoading && <LoadingState />}
-        <Typography.H4 p={3}>{data?.name}</Typography.H4>
+        {data?.name && <Typography.H4 p={3}>{data.name}</Typography.H4>}
         {!isLoading && data && <CurriculumAreas curriculum={data} />}
         {!isLoading && isError && <SetupCurriculum />}
       </Box>
@@ -42,12 +42,33 @@ const SetupCurriculum: FC = () => {
   const [createDefaultCurriculum] = usePostCreateDefaultCurriculum()
 
   return (
-    <Flex sx={{ alignItems: "center" }} p={3}>
-      <Typography.H6>Setup curriculum</Typography.H6>
-      <Button ml="auto" onClick={async () => createDefaultCurriculum()}>
-        Use default
-      </Button>
-    </Flex>
+    <>
+      <Typography.H6 my={2} sx={{ textAlign: "center" }}>
+        Setup curriculum
+      </Typography.H6>
+      <Flex p={3} sx={{ flexFlow: ["column", "row"] }}>
+        <Card p={3} mr={[0, 3]} mb={[3, 0]} sx={{ width: [undefined, "50%"] }}>
+          <Typography.H6 mb={2}>Use Montessori</Typography.H6>
+          <Typography.Body mb={3}>
+            Start with a basic general Montessori Curriculum. You can modify it
+            to your own needs later.
+          </Typography.Body>
+          <Button
+            variant="outline"
+            onClick={async () => createDefaultCurriculum()}
+          >
+            Use Montessori
+          </Button>
+        </Card>
+        <Card p={3} sx={{ width: [undefined, "50%"] }}>
+          <Typography.H6 mb={2}>Use Custom</Typography.H6>
+          <Typography.Body mb={3}>
+            Start with a blank curriculum that you can customize from scratch.
+          </Typography.Body>
+          <Button variant="outline">Use Custom</Button>
+        </Card>
+      </Flex>
+    </>
   )
 }
 
