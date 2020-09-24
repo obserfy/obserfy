@@ -192,7 +192,7 @@ const NameDataBox: FC<{ value?: string; studentId: string }> = ({
   const [showEditDialog, setShowEditDialog] = useState(false)
   const [name, setName] = useState(value)
   const saveName = async () => {
-    await mutate({ id: studentId, name })
+    await mutate({ name })
     setShowEditDialog(false)
   }
   return (
@@ -235,7 +235,7 @@ const GenderDataBox: FC<{ value?: number; studentId: string }> = ({
   const [showEditDialog, setShowEditDialog] = useState(false)
   const [gender, setGender] = useState(value)
   const saveGender = async () => {
-    await mutate({ id: studentId, gender })
+    await mutate({ gender })
     setShowEditDialog(false)
   }
   return (
@@ -295,7 +295,7 @@ const StudentIdDataBox: FC<{ value?: string; studentId: string }> = ({
   const [showEditDialog, setShowEditDialog] = useState(false)
   const [customId, setCustomId] = useState(value)
   const saveCustomId = async () => {
-    await mutate({ id: studentId, customId })
+    await mutate({ customId })
     setShowEditDialog(false)
   }
   return (
@@ -351,7 +351,6 @@ const DateOfBirthDataBox: FC<{ value?: string; studentId: string }> = ({
           defaultDate={dayjs(value)}
           onConfirm={async (date) => {
             await mutate({
-              id: studentId,
               dateOfBirth: date,
             })
             setShowEditDialog(false)
@@ -382,7 +381,6 @@ const DateOfEntryDataBox: FC<{ value?: string; studentId: string }> = ({
           defaultDate={dayjs(value)}
           onConfirm={async (date) => {
             await mutate({
-              id: studentId,
               dateOfEntry: date,
             })
             setShowEditDialog(false)

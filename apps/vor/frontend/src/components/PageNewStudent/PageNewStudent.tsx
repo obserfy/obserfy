@@ -161,7 +161,7 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
                 gender,
                 profileImageId,
               })
-              if (result.ok) {
+              if (result?.ok) {
                 // reset cache
                 await setNewStudentCache(DEFAULT_FORM_STATE)
                 await navigate(STUDENTS_URL)

@@ -15,7 +15,7 @@ import { usePostUserInvite } from "../../api/usePostUserInvite"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import { useGetSchool } from "../../api/schools/useGetSchool"
 
-export const PageInviteUser: FC = () => {
+const PageInviteUser: FC = () => {
   const schoolDetail = useGetSchool()
   const [emails, setEmails] = useImmer([{ id: nanoid(), email: "" }])
   const [mutate, { status }] = usePostUserInvite()
@@ -27,6 +27,7 @@ export const PageInviteUser: FC = () => {
       })
     )
   }
+
   const editItem = (id: string, email: string): void => {
     const index = emails.findIndex((el) => el.id === id)
     if (email) {
@@ -35,12 +36,14 @@ export const PageInviteUser: FC = () => {
       })
     }
   }
+
   const sendInvitation = async (): Promise<void> => {
     const result = await mutate({ email: emails.map((el) => el.email) })
-    if (result.ok) {
+    if (result?.ok) {
       setEmails(() => [{ id: nanoid(), email: "" }])
     }
   }
+
   function shareLink(): void {
     if (window.navigator?.share) {
       window.navigator?.share({

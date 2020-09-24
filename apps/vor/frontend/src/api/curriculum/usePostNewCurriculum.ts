@@ -4,9 +4,13 @@ import { getSchoolId } from "../../hooks/schoolIdState"
 import { invalidateGetCurriculumCache } from "../useGetCurriculum"
 import { invalidateGetCurriculumAreasCache } from "../useGetCurriculumAreas"
 
-const usePostCreateDefaultCurriculum = () => {
+interface UsePostNewCurriculumRequestBody {
+  template: "montessori" | "custom"
+  name?: string
+}
+const usePostNewCurriculum = () => {
   const schoolId = getSchoolId()
-  const postCreateDefaultCurriculum = postApi<undefined>(
+  const postCreateDefaultCurriculum = postApi<UsePostNewCurriculumRequestBody>(
     `/schools/${schoolId}/curriculums`
   )
   return useMutation(postCreateDefaultCurriculum, {
@@ -19,4 +23,4 @@ const usePostCreateDefaultCurriculum = () => {
   })
 }
 
-export default usePostCreateDefaultCurriculum
+export default usePostNewCurriculum

@@ -10,7 +10,8 @@ import Icon from "../Icon/Icon"
 import NewAreaDialog from "../NewAreaDialog/NewAreaDialog"
 import { ADMIN_URL, CURRICULUM_AREA_URL } from "../../routes"
 import TopBar from "../TopBar/TopBar"
-import usePostCreateDefaultCurriculum from "../../api/curriculum/usePostCreateDefaultCurriculum"
+import usePostNewCurriculum from "../../api/curriculum/usePostNewCurriculum"
+import NewCustomCurriculumDialog from "../NewCustomCurriculumDialog/NewCustomCurriculumDialog"
 
 export const PageCurriculumSettings: FC = () => {
   const { data, isLoading, isError } = useGetCurriculum()
@@ -39,7 +40,10 @@ export const PageCurriculumSettings: FC = () => {
 }
 
 const SetupCurriculum: FC = () => {
-  const [createDefaultCurriculum] = usePostCreateDefaultCurriculum()
+  const [postNewCurriculum] = usePostNewCurriculum()
+  const [showCustomCurriculumDialog, setShowCustomCurriculumDialog] = useState(
+    false
+  )
 
   return (
     <>
@@ -48,26 +52,36 @@ const SetupCurriculum: FC = () => {
       </Typography.H6>
       <Flex p={3} sx={{ flexFlow: ["column", "row"] }}>
         <Card p={3} mr={[0, 3]} mb={[3, 0]} sx={{ width: [undefined, "50%"] }}>
-          <Typography.H6 mb={2}>Use Montessori</Typography.H6>
+          <Typography.H6 mb={2}>Montessori</Typography.H6>
           <Typography.Body mb={3}>
-            Start with a basic general Montessori Curriculum. You can modify it
-            to your own needs later.
+            Start with a basic Montessori Curriculum that you can modify to your
+            needs.
           </Typography.Body>
           <Button
             variant="outline"
-            onClick={async () => createDefaultCurriculum()}
+            onClick={() => postNewCurriculum({ template: "montessori" })}
           >
             Use Montessori
           </Button>
         </Card>
         <Card p={3} sx={{ width: [undefined, "50%"] }}>
-          <Typography.H6 mb={2}>Use Custom</Typography.H6>
+          <Typography.H6 mb={2}>Custom</Typography.H6>
           <Typography.Body mb={3}>
             Start with a blank curriculum that you can customize from scratch.
           </Typography.Body>
-          <Button variant="outline">Use Custom</Button>
+          <Button
+            variant="outline"
+            onClick={() => setShowCustomCurriculumDialog(true)}
+          >
+            Use Custom
+          </Button>
         </Card>
       </Flex>
+      {showCustomCurriculumDialog && (
+        <NewCustomCurriculumDialog
+          onDismiss={() => setShowCustomCurriculumDialog(false)}
+        />
+      )}
     </>
   )
 }
