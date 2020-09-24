@@ -20,13 +20,9 @@ export const NewAreaDialog: FC<Props> = ({ onDismiss, curriculumId }) => {
         title="New Area"
         onCancel={onDismiss}
         onAccept={async () => {
-          console.log("request start")
           const response = await postNewArea({ name })
-          console.log("request finish")
           if (response?.ok) {
-            console.log("response ok")
             onDismiss()
-            console.log("dialog dismissed")
           }
         }}
       />
@@ -39,6 +35,7 @@ export const NewAreaDialog: FC<Props> = ({ onDismiss, curriculumId }) => {
           sx={{ width: "100%" }}
           value={name}
           onChange={(e) => setName(e.target.value)}
+          placeholder="Ex. Mathematics"
         />
       </Box>
     </Dialog>

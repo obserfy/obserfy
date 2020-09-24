@@ -15,7 +15,7 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   }
 }
 
-.emotion-26 {
+.emotion-24 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -23,12 +23,12 @@ exports[`PageCurriculumArea should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-26 {
+  .emotion-24 {
     font-size: 20px;
   }
 }
 
-.emotion-25 {
+.emotion-23 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -204,11 +204,21 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   display: none;
 }
 
-.emotion-13 {
+.emotion-17 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  padding: 16px;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-top: 16px;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .emotion-12 {
@@ -218,35 +228,101 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   border-radius: 6px;
   -webkit-animation: 1s ease-in-out 0s infinite animation-0;
   animation: 1s ease-in-out 0s infinite animation-0;
-  width: 100%;
-  height: 4rem;
+  width: 10rem;
+  height: 43px;
 }
 
 .emotion-14 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: bold;
-  line-height: heading;
-  color: var(--theme-ui-colors-text,#37383c);
-  text-rendering: optimizeLegibility;
-  font-size: 32px;
-  padding: 16px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  text-align: center;
+  line-height: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: inherit;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
   padding-bottom: 8px;
-}
-
-.emotion-19 {
+  color: white;
+  background-color: var(--theme-ui-colors-primary,#00e399);
+  border: 0;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
   box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  margin-left: 16px;
-  margin-right: 16px;
-  margin-top: 16px;
+  font-size: 14px;
+  color: var(--theme-ui-colors-textPrimary,#027c5b);
+  background-color: transparent;
+  border-radius: 6px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  white-space: nowrap;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  touch-action: manipulation;
+  box-shadow: none;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-style: solid;
+  border-width: 1px;
+  line-height: 1;
+  border: none;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-left: 8px;
+  color: var(--theme-ui-colors-danger,#d50000);
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.emotion-14:disabled {
+  opacity: 0.38;
+  cursor: auto;
+}
+
+.emotion-14:hover,
+.emotion-14:focus {
+  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
+  border-color: var(--theme-ui-colors-primary,#00e399);
+  outline: none;
+}
+
+.emotion-13 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  fill: var(--theme-ui-colors-danger,#d50000);
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
 }
 
 .emotion-16 {
@@ -278,7 +354,7 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   box-sizing: border-box;
   font-size: 14px;
   color: var(--theme-ui-colors-textPrimary,#027c5b);
-  background-color: var(--theme-ui-colors-surface,#fff);
+  background-color: transparent;
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
@@ -306,7 +382,9 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   border-style: solid;
   border-width: 1px;
   line-height: 1;
-  color: var(--theme-ui-colors-danger,#d50000);
+  border: none;
+  padding-left: 8px;
+  padding-right: 8px;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -324,20 +402,13 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   outline: none;
 }
 
-.emotion-16:hover:disabled,
-.emotion-16:focus:disabled {
-  background-color: transparent;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-}
-
 .emotion-15 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   max-width: 100%;
   height: auto;
-  margin-right: 8px;
-  fill: var(--theme-ui-colors-danger,#d50000);
+  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -345,7 +416,46 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   height: 20px;
 }
 
+.emotion-22 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-top: 16px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .emotion-18 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: bold;
+  line-height: heading;
+  color: var(--theme-ui-colors-text,#37383c);
+  text-rendering: optimizeLegibility;
+  font-size: 20px;
+}
+
+.emotion-19 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  pointer-events: none;
+}
+
+.emotion-21 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -402,32 +512,27 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   border-style: solid;
   border-width: 1px;
   line-height: 1;
-  margin-left: 8px;
-  margin-right: 8px;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
 }
 
-.emotion-18:disabled {
+.emotion-21:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-18:hover,
-.emotion-18:focus {
+.emotion-21:hover,
+.emotion-21:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-18:hover:disabled,
-.emotion-18:focus:disabled {
+.emotion-21:hover:disabled,
+.emotion-21:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-17 {
+.emotion-20 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -442,128 +547,12 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-24 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  margin-left: 16px;
-  margin-right: 16px;
-  margin-top: 32px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.emotion-20 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: bold;
-  line-height: heading;
-  color: var(--theme-ui-colors-text,#37383c);
-  text-rendering: optimizeLegibility;
-  font-size: 20px;
-}
-
-.emotion-21 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  pointer-events: none;
-}
-
-.emotion-23 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  display: inline-block;
-  text-align: center;
-  line-height: inherit;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  font-size: inherit;
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  color: white;
-  background-color: var(--theme-ui-colors-primary,#00e399);
-  border: 0;
-  border-radius: 4px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  box-sizing: border-box;
-  font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
-  background-color: var(--theme-ui-colors-surface,#fff);
-  border-radius: 6px;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 16px;
-  padding-right: 16px;
-  white-space: nowrap;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  touch-action: manipulation;
-  box-shadow: none;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  border-style: solid;
-  border-width: 1px;
-  line-height: 1;
-}
-
-.emotion-23:disabled {
-  opacity: 0.38;
-  cursor: auto;
-}
-
-.emotion-23:hover,
-.emotion-23:focus {
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
-  border-color: var(--theme-ui-colors-primary,#00e399);
-  outline: none;
-}
-
-.emotion-23:hover:disabled,
-.emotion-23:focus:disabled {
-  background-color: transparent;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-}
-
 <div>
   <div
-    class="emotion-26"
+    class="emotion-24"
   >
     <div
-      class="emotion-25"
+      class="emotion-23"
     >
       <div
         class="emotion-11"
@@ -617,7 +606,7 @@ exports[`PageCurriculumArea should render correctly 1`] = `
           <div
             class="emotion-9"
           >
-            Area
+            undefined Area
             <span
               class="splitter"
             >
@@ -627,54 +616,45 @@ exports[`PageCurriculumArea should render correctly 1`] = `
         </div>
       </div>
       <div
-        class="emotion-13"
+        class="emotion-17"
       >
         <div
           class="emotion-12"
         />
-      </div>
-      <h4
-        class="emotion-14"
-      />
-      <div
-        class="emotion-19"
-      >
+        <button
+          class="emotion-14"
+        >
+          <div
+            class="emotion-13"
+          />
+        </button>
         <button
           class="emotion-16"
         >
           <div
             class="emotion-15"
           />
-          Delete
-        </button>
-        <button
-          class="emotion-18"
-        >
-          <div
-            class="emotion-17"
-          />
-          Edit
         </button>
       </div>
       <div
-        class="emotion-24"
+        class="emotion-22"
       >
         <h6
-          class="emotion-20"
+          class="emotion-18"
         >
           Subjects
         </h6>
         <div
-          class="emotion-21"
+          class="emotion-19"
         />
         <a
           href="/dashboard/admin/curriculum/subjects/new?areaId="
         >
           <button
-            class="emotion-23"
+            class="emotion-21"
           >
             <div
-              class="emotion-17"
+              class="emotion-20"
             />
             New
           </button>

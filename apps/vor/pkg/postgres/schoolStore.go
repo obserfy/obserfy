@@ -306,11 +306,10 @@ func (s SchoolStore) NewDefaultCurriculum(schoolId string) error {
 }
 
 func (s SchoolStore) DeleteCurriculum(schoolId string) error {
-	school, err := s.GetSchool(schoolId)
-	if err != nil {
-		return err
-	}
-	if school.CurriculumId == "" {
+	school := School{Id: schoolId}
+	if err := s.Model(&school).WherePK().Select(); err != nil {
+		return richErrors.Wrap(err, "failed to get school data")
+	} else if school.CurriculumId == "" {
 		return cSchool.EmptyCurriculumError
 	}
 	c := Curriculum{Id: school.CurriculumId}

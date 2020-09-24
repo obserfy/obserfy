@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react"
 import { useImmer } from "use-immer"
 import { nanoid } from "nanoid"
-import { Flex, Button, Box } from "theme-ui"
+import { Box, Button, Flex } from "theme-ui"
 import { navigate } from "../Link/Link"
 import { Material } from "../../api/useGetSubjectMaterials"
 import { createSubjectApi } from "../../api/createSubjectApi"
@@ -13,9 +13,13 @@ import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import Input from "../Input/Input"
 import Icon from "../Icon/Icon"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
-import BackNavigation from "../BackNavigation/BackNavigation"
-import { CURRICULUM_AREA_URL } from "../../routes"
+import {
+  ADMIN_CURRICULUM_URL,
+  ADMIN_URL,
+  CURRICULUM_AREA_URL,
+} from "../../routes"
 import { useGetArea } from "../../api/useGetArea"
+import TopBar from "../TopBar/TopBar"
 
 const ITEM_HEIGHT = 48
 
@@ -71,9 +75,19 @@ export const PageNewSubject: FC<Props> = ({ areaId }) => {
       }}
       margin="auto"
     >
-      <BackNavigation
-        to={CURRICULUM_AREA_URL(areaId)}
-        text={area.data?.name ?? ""}
+      <TopBar
+        breadcrumbs={[
+          {
+            text: "Admin",
+            to: ADMIN_URL,
+          },
+          {
+            text: "Curriculum",
+            to: ADMIN_CURRICULUM_URL,
+          },
+          { text: `${area.data?.name} Area`, to: CURRICULUM_AREA_URL(areaId) },
+          { text: "New Subject" },
+        ]}
       />
       <Typography.H6 m={3}>New Subject</Typography.H6>
       <Box

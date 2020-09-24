@@ -2,7 +2,6 @@ import React, { FC, useState } from "react"
 import { Box, Button, Card, Flex } from "theme-ui"
 import Typography from "../Typography/Typography"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
-import CardLink from "../CardLink/CardLink"
 import { useGetCurriculum } from "../../api/useGetCurriculum"
 import { useGetCurriculumAreas } from "../../api/useGetCurriculumAreas"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
@@ -12,9 +11,18 @@ import { ADMIN_URL, CURRICULUM_AREA_URL } from "../../routes"
 import TopBar from "../TopBar/TopBar"
 import usePostNewCurriculum from "../../api/curriculum/usePostNewCurriculum"
 import NewCustomCurriculumDialog from "../NewCustomCurriculumDialog/NewCustomCurriculumDialog"
+import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
+import { Link } from "../Link/Link"
+import { borderBottom } from "../../border"
+import { ReactComponent as DeleteIcon } from "../../icons/trash.svg"
+import { ReactComponent as EditIcon } from "../../icons/edit.svg"
+import DeleteCurriculumDialog from "../DeleteCurriculumDialog/DeleteCurriculumDialog"
 
 export const PageCurriculumSettings: FC = () => {
-  const { data, isLoading, isError } = useGetCurriculum()
+  const { data, isLoading, isError, isSuccess } = useGetCurriculum()
+  const [showCurriculumDeleteDialog, setShowCurriculumDeleteDialog] = useState(
+    false
+  )
 
   return (
     <>
@@ -31,9 +39,43 @@ export const PageCurriculumSettings: FC = () => {
           ]}
         />
         {isLoading && <LoadingState />}
-        {data?.name && <Typography.H4 p={3}>{data.name}</Typography.H4>}
-        {!isLoading && data && <CurriculumAreas curriculum={data} />}
-        {!isLoading && isError && <SetupCurriculum />}
+        {isSuccess && data?.name && (
+          <Flex mx={3} mt={3} sx={{ alignItems: "baseline" }}>
+            {isLoading && !data?.name ? (
+              <LoadingPlaceholder sx={{ width: "10rem", height: 43 }} />
+            ) : (
+              <Typography.H4 sx={{ lineHeight: 1.2 }}>
+                {data?.name}
+              </Typography.H4>
+            )}
+            <Button
+              variant="secondary"
+              onClick={() => setShowCurriculumDeleteDialog(true)}
+              color="danger"
+              sx={{ flexShrink: 0 }}
+              px={2}
+              ml={2}
+            >
+              <Icon as={DeleteIcon} fill="danger" />
+            </Button>
+            <Button
+              variant="secondary"
+              onClick={() => {}}
+              sx={{ flexShrink: 0 }}
+              px={2}
+            >
+              <Icon as={EditIcon} />
+            </Button>
+          </Flex>
+        )}
+        {isSuccess && data && <CurriculumAreas curriculum={data} />}
+        {isError && <SetupCurriculum />}
+        {showCurriculumDeleteDialog && (
+          <DeleteCurriculumDialog
+            onDismiss={() => setShowCurriculumDeleteDialog(false)}
+            name={data?.name ?? ""}
+          />
+        )}
       </Box>
     </>
   )
@@ -93,8 +135,8 @@ const CurriculumAreas: FC<{
   const areas = useGetCurriculumAreas()
 
   return (
-    <Box mx={3}>
-      <Flex mb={2} sx={{ alignItems: "center" }}>
+    <Box mx={[0, 3]} mt={3}>
+      <Flex mx={[3, 0]} mb={2} sx={{ alignItems: "center" }}>
         <Typography.H6>Areas</Typography.H6>
         <Button
           ml="auto"
@@ -106,12 +148,28 @@ const CurriculumAreas: FC<{
         </Button>
       </Flex>
       {areas.data?.map((area) => (
-        <CardLink
+        <Link
           key={area.id}
-          name={area.name}
           to={CURRICULUM_AREA_URL(area.id)}
-          mb={2}
-        />
+          sx={{ display: "block" }}
+        >
+          <Card
+            p={3}
+            mb={[0, 2]}
+            sx={{
+              borderRadius: [0, "default"],
+              ...borderBottom,
+              borderBottomStyle: ["solid", "none"],
+            }}
+          >
+            <Flex sx={{ alignItems: "center" }}>
+              <Typography.Body sx={{ fontSize: [2, 2] }}>
+                {area.name}
+              </Typography.Body>
+              <Icon as={NextIcon} ml="auto" />
+            </Flex>
+          </Card>
+        </Link>
       ))}
       {showNewAreaDialog && (
         <NewAreaDialog

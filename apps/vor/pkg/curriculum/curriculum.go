@@ -85,7 +85,7 @@ func getAreaSubjects(server rest.Server, store Store) rest.Handler {
 		}
 
 		// Write response
-		var response []simplifiedSubject
+		response := make([]simplifiedSubject, 0)
 		for _, subject := range subjects {
 			response = append(response, simplifiedSubject{
 				Id:    subject.Id,
@@ -224,7 +224,7 @@ func getSubjectMaterials(server rest.Server, store Store) rest.Handler {
 		}
 
 		// Write response
-		var response []responseBody
+		var response = make([]responseBody, 0)
 		for _, subject := range materials {
 			response = append(response, responseBody{
 				Id:    subject.Id,
