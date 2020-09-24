@@ -7,7 +7,7 @@ type Store interface {
 	GetAreaSubjects(areaId string) ([]domain.Subject, error)
 	GetSubjectMaterials(subjectId string) ([]domain.Material, error)
 	GetMaterial(materialId string) (*domain.Material, error)
-	NewArea(name string, curriculumId string) (string, error)
+	NewArea(name string, curriculumId string) (*domain.Area, error)
 	NewSubject(name string, areaId string, materials []domain.Material) (*domain.Subject, error)
 	NewMaterial(name string, subjectId string) (*domain.Material, error)
 	GetSubject(id string) (*domain.Subject, error)

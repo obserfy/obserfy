@@ -104,6 +104,10 @@ func createArea(server rest.Server, store Store) rest.Handler {
 	type requestBody struct {
 		Name string `json:"name"`
 	}
+	type responseBody struct {
+		Id   string `json:"id"`
+		Name string `json:"name"`
+	}
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		curriculumId := chi.URLParam(r, "curriculumId")
 		if _, err := uuid.Parse(curriculumId); err != nil {
@@ -134,7 +138,7 @@ func createArea(server rest.Server, store Store) rest.Handler {
 			}
 		}
 
-		areaId, err := store.NewArea(body.Name, curriculumId)
+		area, err := store.NewArea(body.Name, curriculumId)
 		if err != nil {
 			return &rest.Error{
 				http.StatusInternalServerError,
@@ -142,8 +146,14 @@ func createArea(server rest.Server, store Store) rest.Handler {
 				err,
 			}
 		}
+
 		w.WriteHeader(http.StatusCreated)
-		w.Header().Add("Location", r.URL.Path+"/"+areaId)
+		if err = rest.WriteJson(w, &responseBody{
+			Id:   area.Id,
+			Name: area.Name,
+		}); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
 		return nil
 	})
 }

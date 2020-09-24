@@ -117,10 +117,6 @@ const CurriculumAreas: FC<{
         <NewAreaDialog
           curriculumId={curriculum.id}
           onDismiss={() => setShowNewAreaDialog(false)}
-          onSaved={() => {
-            setShowNewAreaDialog(false)
-            areas.refetch()
-          }}
         />
       )}
     </Box>

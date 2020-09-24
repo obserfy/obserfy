@@ -15,3 +15,11 @@ export const invalidateGetCurriculumAreasCache = () => {
   const schoolId = getSchoolId()
   return queryCache.invalidateQueries(["areas", schoolId])
 }
+
+export const getCurriculumAreasCache = () => {
+  return queryCache.getQueryData<Area[]>(["areas", getSchoolId()])
+}
+
+export const setCurriculumAreasCache = (areas: Area[]) => {
+  return queryCache.setQueryData(["areas", getSchoolId()], areas)
+}

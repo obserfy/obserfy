@@ -306,7 +306,7 @@ func (s CurriculumStore) NewSubject(name string, areaId string, materials []doma
 	}, nil
 }
 
-func (s CurriculumStore) NewArea(name string, curriculumId string) (string, error) {
+func (s CurriculumStore) NewArea(name string, curriculumId string) (*domain.Area, error) {
 	id := uuid.New().String()
 	area := Area{
 		Id:           id,
@@ -314,9 +314,12 @@ func (s CurriculumStore) NewArea(name string, curriculumId string) (string, erro
 		Name:         name,
 	}
 	if err := s.Insert(&area); err != nil {
-		return "", err
+		return nil, err
 	}
-	return id, nil
+	return &domain.Area{
+		Id:   area.Id,
+		Name: area.Name,
+	}, nil
 }
 
 func (s CurriculumStore) GetArea(areaId string) (*domain.Area, error) {

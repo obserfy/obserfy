@@ -1,92 +1,46 @@
 import React, { FC, useState } from "react"
-import { Flex, Button, Box } from "theme-ui"
+import { Box } from "theme-ui"
 import Dialog from "../Dialog/Dialog"
 import Input from "../Input/Input"
-
 import Typography from "../Typography/Typography"
-
-import Spacer from "../Spacer/Spacer"
-import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
-import { createAreaApi } from "../../api/createAreaApi"
+import usePostNewArea from "../../api/curriculum/usePostNewArea"
+import DialogHeader from "../DialogHeader/DialogHeader"
 
 interface Props {
   curriculumId: string
   onDismiss: () => void
-  onSaved: () => void
 }
-export const NewAreaDialog: FC<Props> = ({
-  onSaved,
-  onDismiss,
-  curriculumId,
-}) => {
+export const NewAreaDialog: FC<Props> = ({ onDismiss, curriculumId }) => {
   const [name, setName] = useState("")
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(false)
-
-  async function createArea(): Promise<void> {
-    setLoading(true)
-    setError(false)
-    try {
-      const response = await createAreaApi(name, curriculumId)
-      if (response.status === 201) {
-        onSaved()
-      }
-    } catch (e) {
-      setError(true)
-    } finally {
-      setLoading(false)
-    }
-  }
+  const [postNewArea, { isLoading, isError }] = usePostNewArea(curriculumId)
 
   return (
     <Dialog sx={{ backgroundColor: "background" }}>
-      <Flex
-        sx={{
-          flexDirection: "column",
+      <DialogHeader
+        title="New Area"
+        onCancel={onDismiss}
+        onAccept={async () => {
+          console.log("request start")
+          const response = await postNewArea({ name })
+          console.log("request finish")
+          if (response?.ok) {
+            console.log("response ok")
+            onDismiss()
+            console.log("dialog dismissed")
+          }
         }}
-      >
-        <Flex
-          backgroundColor="surface"
-          sx={{
-            alignItems: "center",
-            position: "relative",
-            borderBottomColor: "border",
-            borderBottomWidth: 1,
-            borderBottomStyle: "solid",
-          }}
-        >
-          <Typography.H6
-            sx={{
-              width: "100%",
-              position: "absolute",
-              pointerEvents: "none",
-              textAlign: "center",
-              alignContent: "center",
-            }}
-          >
-            New Area
-          </Typography.H6>
-          <Button variant="outline" color="danger" m={2} onClick={onDismiss}>
-            Cancel
-          </Button>
-          <Spacer />
-          <Button m={2} disabled={name === "" || loading} onClick={createArea}>
-            {loading && <LoadingIndicator />}
-            Save
-          </Button>
-        </Flex>
-        <Box px={3} pb={4} pt={3}>
-          {error && <ErrorMessage />}
-          <Input
-            disabled={loading}
-            autoFocus
-            label="Area name"
-            sx={{ width: "100%" }}
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </Box>
-      </Flex>
+      />
+      <Box px={3} pb={4} pt={3}>
+        {isError && <ErrorMessage />}
+        <Input
+          disabled={isLoading}
+          autoFocus
+          label="Area name"
+          sx={{ width: "100%" }}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+      </Box>
     </Dialog>
   )
 }
