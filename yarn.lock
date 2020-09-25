@@ -4042,22 +4042,22 @@
     schema-utils "^2.6.5"
     source-map "^0.7.3"
 
-"@prefresh/babel-plugin@0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@prefresh/babel-plugin/-/babel-plugin-0.1.0.tgz#9b51e6d87cb1fa45be6b49f9a354e64827a8094c"
-  integrity sha512-YHQO8UTntichl4hbfm029EmZbzk7XaG6Qu3MUXORloCCOHzISey5ovJRn9YhhxGDS9fG0iYqVjQIldDmCC9E8A==
+"@prefresh/babel-plugin@0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@prefresh/babel-plugin/-/babel-plugin-0.2.0.tgz#b6223b1b14cc1b6c18c2bc3f7c613e2230ebca47"
+  integrity sha512-Qd6SpS1IKBsW8dDF7hA58TrWSahOirXRvhlYepXXqLzpQJKUpDSVfzVfZJpKuxSlgK8opYvR4Zr07c9oN5+uzg==
 
 "@prefresh/core@^0.8.1":
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/@prefresh/core/-/core-0.8.1.tgz#d4f15d9e3ee9c16bf420405e2b422774e807a594"
   integrity sha512-woho+Ja8w3pxnZwq68MnWzH9ffdidrpJsV6PDTNIsJOpsLYmfCNxqxGsxIqYw40d1yjg4h6HFGbb6Y9lhyTPNA==
 
-"@prefresh/next@1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@prefresh/next/-/next-1.2.0.tgz#47e0e43ac0fea99fdac84b9cc19bb6b632f8f8e8"
-  integrity sha512-gsVu8SPqaWVGbglI1cQ1kuUEu63Jx0UelPaDdiGBJec0VyuZLf+tPmCVnZeL1K9WZ4/X7Gs6LcfkTNEVxslgQQ==
+"@prefresh/next@1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@prefresh/next/-/next-1.2.1.tgz#f66475841c4959373ec8f8c3b2a543073e365826"
+  integrity sha512-pvYhuY3iO2ukZDBwtkGOUs2ic9Pg/jOJHEa2SorCC7u4b+Gmwv/3izlfnm9jPca/uyArcNVrjq+NFYjeHUZ96g==
   dependencies:
-    "@prefresh/babel-plugin" "0.1.0"
+    "@prefresh/babel-plugin" "0.2.0"
     "@prefresh/core" "^0.8.1"
     "@prefresh/utils" "^0.3.1"
 
