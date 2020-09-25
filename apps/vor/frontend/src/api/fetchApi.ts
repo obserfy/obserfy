@@ -3,7 +3,7 @@ import { navigate } from "gatsby"
 // TODO: rename file to apiHelpers
 const BASE_URL = "/api/v1"
 
-interface ApiError {
+export interface ApiError {
   error?: {
     message: string
   }

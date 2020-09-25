@@ -219,7 +219,7 @@ const UploadImageButton: FC<{
             if (!selectedImage) return
 
             const result = await postNewStudentImage(selectedImage)
-            if (!result.ok) return
+            if (result === undefined || !result.ok) return
             const response = await result.json()
             onUploaded({ id: response.id, file: selectedImage })
           }}
