@@ -1,6 +1,9 @@
 import React from "react"
 import { Meta, Story } from "@storybook/react"
-import EditCurriculumDialog, { EditCurriculumDialogProps } from "./EditCurriculumDialog"
+import { action } from "@storybook/addon-actions"
+import EditCurriculumDialog, {
+  EditCurriculumDialogProps,
+} from "./EditCurriculumDialog"
 
 export default {
   title: "Core/EditCurriculumDialog",
@@ -10,7 +13,12 @@ export default {
   },
 } as Meta
 
-const Template: Story<EditCurriculumDialogProps> = () => <EditCurriculumDialog />
+const Template: Story<EditCurriculumDialogProps> = (args) => (
+  <EditCurriculumDialog {...args} />
+)
 
 export const Default = Template.bind({})
-Default.args = {}
+Default.args = {
+  curriculumId: "",
+  onDismiss: action("dismiss"),
+}

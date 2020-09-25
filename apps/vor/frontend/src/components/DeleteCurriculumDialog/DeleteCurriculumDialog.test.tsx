@@ -4,7 +4,9 @@ import DeleteCurriculumDialog from "./DeleteCurriculumDialog"
 
 describe("DeleteCurriculumDialog", () => {
   it("should render correctly", () => {
-    const { container } = render(<DeleteCurriculumDialog />)
+    const { container } = render(
+      <DeleteCurriculumDialog name="" onDismiss={() => {}} />
+    )
     expect(container).toMatchSnapshot()
   })
 })
