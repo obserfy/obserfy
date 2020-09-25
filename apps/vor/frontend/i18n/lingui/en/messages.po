@@ -13,9 +13,13 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/PageSubscription/PageSubscription.tsx:97
+#: src/components/PageSubscription/PageSubscription.tsx:101
 msgid "90-days free trial"
 msgstr "90-days free trial"
+
+#: src/components/PageInviteUser/PageInviteUser.tsx:71
+msgid "Add more email"
+msgstr "Add more email"
 
 #: src/components/PageAdmin/PageAdmin.tsx:48
 msgid "All Guardians"
@@ -26,11 +30,11 @@ msgstr "All Guardians"
 msgid "All Students"
 msgstr "All Students"
 
-#: src/components/PageSubscription/PageSubscription.tsx:46
+#: src/components/PageSubscription/PageSubscription.tsx:48
 msgid "Amount Due"
 msgstr "Amount Due"
 
-#: src/components/PageSubscription/PageSubscription.tsx:105
+#: src/components/PageSubscription/PageSubscription.tsx:109
 msgid "And more coming..."
 msgstr "And more coming..."
 
@@ -38,7 +42,7 @@ msgstr "And more coming..."
 msgid "Cancel"
 msgstr "Cancel"
 
-#: src/components/PageSubscription/PageSubscription.tsx:66
+#: src/components/PageSubscription/PageSubscription.tsx:68
 msgid "Cancel Plan"
 msgstr "Cancel Plan"
 
@@ -46,12 +50,12 @@ msgstr "Cancel Plan"
 msgid "Class"
 msgstr "Class"
 
-#: src/components/PageSubscription/PageSubscription.tsx:100
+#: src/components/PageSubscription/PageSubscription.tsx:104
 msgid "Create lesson plans"
 msgstr "Create lesson plans"
 
-#: src/components/PageSubscription/PageSubscription.tsx:34
-#: src/components/PageSubscription/PageSubscription.tsx:76
+#: src/components/PageSubscription/PageSubscription.tsx:35
+#: src/components/PageSubscription/PageSubscription.tsx:79
 msgid "Current Plan"
 msgstr "Current Plan"
 
@@ -59,11 +63,15 @@ msgstr "Current Plan"
 msgid "Curriculum"
 msgstr "Curriculum"
 
-#: src/components/PageSubscription/PageSubscription.tsx:74
+#: src/components/PageInviteUser/PageInviteUser.tsx:82
+msgid "Emails sent!"
+msgstr "Emails sent!"
+
+#: src/components/PageSubscription/PageSubscription.tsx:76
 msgid "Free Trial"
 msgstr "Free Trial"
 
-#: src/components/PageSubscription/PageSubscription.tsx:103
+#: src/components/PageSubscription/PageSubscription.tsx:107
 msgid "Image gallery"
 msgstr "Image gallery"
 
@@ -71,33 +79,49 @@ msgstr "Image gallery"
 msgid "Invite Your Team"
 msgstr "Invite Your Team"
 
+#: src/components/PageInviteUser/PageInviteUser.tsx:63
+msgid "Invite using emails"
+msgstr "Invite using emails"
+
+#: src/components/PageInviteUser/PageInviteUser.tsx:96
+msgid "Invite using link"
+msgstr "Invite using link"
+
 #: src/components/PageAdmin/PageAdmin.tsx:57
 msgid "Log Out"
 msgstr "Log Out"
 
-#: src/components/PageSubscription/PageSubscription.tsx:38
+#: src/components/PageSubscription/PageSubscription.tsx:40
 msgid "Next Bill"
 msgstr "Next Bill"
 
-#: src/components/PageSubscription/PageSubscription.tsx:102
+#: src/components/PageInviteUser/PageInviteUser.tsx:85
+msgid "Or"
+msgstr "Or"
+
+#: src/components/PageSubscription/PageSubscription.tsx:106
 msgid "Parent portal"
 msgstr "Parent portal"
 
-#: src/components/PageSubscription/PageSubscription.tsx:57
+#: src/components/PageSubscription/PageSubscription.tsx:59
 msgid "Payment details"
 msgstr "Payment details"
 
-#: src/components/PageSubscription/PageSubscription.tsx:99
+#: src/components/PageSubscription/PageSubscription.tsx:103
 msgid "Record observations"
 msgstr "Record observations"
 
-#: src/components/PageSubscription/PageSubscription.tsx:104
+#: src/components/PageSubscription/PageSubscription.tsx:108
 msgid "Reporting"
 msgstr "Reporting"
 
 #: src/components/SearchBar/SearchBar.tsx:18
 msgid "Search"
 msgstr "Search"
+
+#: src/components/PageInviteUser/PageInviteUser.tsx:74
+msgid "Send invites"
+msgstr "Send invites"
 
 #: src/components/PageListOfStudents/PageListOfStudents.tsx:50
 msgid "Set as active?"
@@ -107,16 +131,17 @@ msgstr "Set as active?"
 msgid "Set as inactive?"
 msgstr "Set as inactive?"
 
+#: src/components/PageInviteUser/PageInviteUser.tsx:61
 #: src/components/PageListOfStudents/PageListOfStudents.tsx:33
 #: src/components/PageSubscription/PageSubscription.tsx:25
 msgid "Settings"
 msgstr "Settings"
 
-#: src/components/PageSubscription/PageSubscription.tsx:93
+#: src/components/PageSubscription/PageSubscription.tsx:97
 msgid "Simple pricing for every school."
 msgstr "Simple pricing for every school."
 
-#: src/components/PageSubscription/PageSubscription.tsx:143
+#: src/components/PageSubscription/PageSubscription.tsx:149
 msgid "Soon"
 msgstr "Soon"
 
@@ -124,15 +149,15 @@ msgstr "Soon"
 msgid "Standard"
 msgstr "Standard"
 
-#: src/components/PageSubscription/PageSubscription.tsx:81
+#: src/components/PageSubscription/PageSubscription.tsx:85
 msgid "Standard Plan"
 msgstr "Standard Plan"
 
-#: src/components/PageSubscription/PageSubscription.tsx:133
+#: src/components/PageSubscription/PageSubscription.tsx:137
 msgid "Start Free Trial"
 msgstr "Start Free Trial"
 
-#: src/components/PageSubscription/PageSubscription.tsx:133
+#: src/components/PageSubscription/PageSubscription.tsx:137
 msgid "Subscribed"
 msgstr "Subscribed"
 
@@ -145,15 +170,15 @@ msgstr "Subscription Plan"
 msgid "Switch school"
 msgstr "Switch school"
 
-#: src/components/PageSubscription/PageSubscription.tsx:101
+#: src/components/PageSubscription/PageSubscription.tsx:105
 msgid "Track curriculum progress"
 msgstr "Track curriculum progress"
 
-#: src/components/PageSubscription/PageSubscription.tsx:98
+#: src/components/PageSubscription/PageSubscription.tsx:102
 msgid "Unlimited students"
 msgstr "Unlimited students"
 
-#: src/components/PageSubscription/PageSubscription.tsx:89
+#: src/components/PageSubscription/PageSubscription.tsx:93
 msgid "User/month"
 msgstr "User/month"
 

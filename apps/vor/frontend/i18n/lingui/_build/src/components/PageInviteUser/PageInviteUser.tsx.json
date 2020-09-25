@@ -1,0 +1,66 @@
+{
+  "Settings": {
+    "origin": [
+      [
+        "src/components/PageInviteUser/PageInviteUser.tsx",
+        61
+      ]
+    ]
+  },
+  "Invite using emails": {
+    "origin": [
+      [
+        "src/components/PageInviteUser/PageInviteUser.tsx",
+        63
+      ]
+    ]
+  },
+  "Add more email": {
+    "origin": [
+      [
+        "src/components/PageInviteUser/PageInviteUser.tsx",
+        71
+      ]
+    ]
+  },
+  "Send invites": {
+    "origin": [
+      [
+        "src/components/PageInviteUser/PageInviteUser.tsx",
+        74
+      ]
+    ]
+  },
+  "Emails sent!": {
+    "origin": [
+      [
+        "src/components/PageInviteUser/PageInviteUser.tsx",
+        82
+      ]
+    ]
+  },
+  "Or": {
+    "origin": [
+      [
+        "src/components/PageInviteUser/PageInviteUser.tsx",
+        85
+      ]
+    ]
+  },
+  "Invite using link": {
+    "origin": [
+      [
+        "src/components/PageInviteUser/PageInviteUser.tsx",
+        96
+      ]
+    ]
+  },
+  "Share this link to your co-workers. Once they register using it, they&apos;ll have access to {0}.": {
+    "origin": [
+      [
+        "src/components/PageInviteUser/PageInviteUser.tsx",
+        99
+      ]
+    ]
+  }
+}
