@@ -156,7 +156,7 @@ func (s *MaterialTestSuite) TestUpdateMaterialOrderBackward() {
 		{Id: uuid.New().String(), Name: "Ground Control", SubjectId: subject.Id, Order: 4},
 	}
 	for _, material := range originalMaterials {
-		err := s.DB.Insert(&material)
+		_, err := s.DB.Model(&material).Insert()
 		assert.NoError(t, err)
 	}
 
@@ -202,7 +202,7 @@ func (s *MaterialTestSuite) TestUpdateMaterialOrderForward() {
 		{Id: uuid.New().String(), Name: "Ground Control", SubjectId: subject.Id, Order: 4},
 	}
 	for _, material := range originalMaterials {
-		err := s.DB.Insert(&material)
+		_, err := s.DB.Model(&material).Insert()
 		assert.NoError(t, err)
 	}
 
@@ -247,7 +247,7 @@ func (s *MaterialTestSuite) TestUpdateMaterialOrderRandomly() {
 		{Id: uuid.New().String(), Name: "Ground Control", SubjectId: subject.Id, Order: 4},
 	}
 	for _, material := range originalMaterials {
-		err := s.DB.Insert(&material)
+		_, err := s.DB.Model(&material).Insert()
 		assert.NoError(t, err)
 	}
 

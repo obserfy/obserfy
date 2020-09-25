@@ -67,7 +67,7 @@ func (s *SchoolTestSuite) SaveNewFile() (*postgres.File, string) {
 		LessonPlans: nil,
 		ObjectKey:   fileKey,
 	}
-	err := s.DB.Insert(&file)
+	_, err := s.DB.Model(&file).Insert()
 	assert.NoError(t, err)
 
 	testfile, _ := s.ReadTestFile(file.Name)

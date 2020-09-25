@@ -146,7 +146,11 @@ func (s ObservationStore) UpdateObservation(
 
 func (s ObservationStore) DeleteObservation(observationId string) error {
 	observation := Observation{Id: observationId}
-	return s.Delete(&observation)
+	_, err := s.Model(&observation).WherePK().Delete()
+	if err != nil {
+		return richErrors.Wrap(err, "failed to delete observation")
+	}
+	return nil
 }
 
 func (s ObservationStore) CreateImage(observationId string, file multipart.File, header *multipart.FileHeader) (*domain.Image, error) {
@@ -178,7 +182,7 @@ func (s ObservationStore) CreateImage(observationId string, file multipart.File,
 	}
 	newImage.ObjectKey = objectKey
 	// save data to db
-	if err := s.RunInTransaction(func(tx *pg.Tx) error {
+	if err := s.RunInTransaction(s.Context(), func(tx *pg.Tx) error {
 		if _, err := tx.Model(&newImage).Insert(); err != nil {
 			return richErrors.Wrap(err, "failed to save image")
 		}

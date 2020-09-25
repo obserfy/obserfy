@@ -30,11 +30,11 @@ func (s SchoolStore) NewSchool(schoolName, userId string) (*cSchool.School, erro
 		SchoolId: id.String(),
 		UserId:   userId,
 	}
-	err := s.RunInTransaction(func(tx *pg.Tx) error {
-		if err := s.Insert(&school); err != nil {
+	err := s.RunInTransaction(s.Context(), func(tx *pg.Tx) error {
+		if _, err := s.Model(&school).Insert(); err != nil {
 			return err
 		}
-		if err := s.Insert(&userToSchoolRelation); err != nil {
+		if _, err := s.Model(&userToSchoolRelation).Insert(); err != nil {
 			return err
 		}
 		return nil
@@ -214,28 +214,28 @@ func (s SchoolStore) NewStudent(student cSchool.Student, classes []string, guard
 		})
 	}
 
-	if err := s.RunInTransaction(func(tx *pg.Tx) error {
-		if err := tx.Insert(&newStudent); err != nil {
+	if err := s.RunInTransaction(s.Context(), func(tx *pg.Tx) error {
+		if _, err := tx.Model(&newStudent).Insert(); err != nil {
 			return richErrors.Wrap(err, "failed to save new student")
 		}
 
 		if len(classRelationships) > 0 {
-			if err := tx.Insert(&classRelationships); err != nil {
+			if _, err := tx.Model(&classRelationships).Insert(); err != nil {
 				return richErrors.Wrap(err, "failed to save student to class relation")
 			}
 		}
 
 		if len(guardianRelationships) > 0 {
-			if err := tx.Insert(&guardianRelationships); err != nil {
+			if _, err := tx.Model(&guardianRelationships).Insert(); err != nil {
 				return richErrors.Wrap(err, "failed to save guardian to student relation")
 			}
 		}
 
 		if student.ProfileImage.Id != "" {
-			if err := tx.Insert(&ImageToStudents{
+			if _, err := tx.Model(&ImageToStudents{
 				StudentId: newStudent.Id,
 				ImageId:   newStudent.ProfileImageId,
-			}); err != nil {
+			}).Insert(); err != nil {
 				return richErrors.Wrap(err, "failed to save student to image relationship")
 			}
 		}
@@ -257,7 +257,7 @@ func (s SchoolStore) RefreshInviteCode(schoolId string) (*cSchool.School, error)
 
 	// Update invite code
 	school.InviteCode = uuid.New().String()
-	if err := s.Update(&school); err != nil {
+	if _, err := s.Model(&school).WherePK().Update(); err != nil {
 		return nil, err
 	}
 	return &cSchool.School{
@@ -269,22 +269,22 @@ func (s SchoolStore) RefreshInviteCode(schoolId string) (*cSchool.School, error)
 
 func (s SchoolStore) NewDefaultCurriculum(schoolId string) error {
 	c := createDefault()
-	err := s.RunInTransaction(
+	err := s.RunInTransaction(s.Context(),
 		func(tx *pg.Tx) error {
 			// Save the curriculum tree.
-			if err := tx.Insert(&c); err != nil {
+			if _, err := tx.Model(&c).Insert(); err != nil {
 				return err
 			}
 			for _, area := range c.Areas {
-				if err := tx.Insert(&area); err != nil {
+				if _, err := tx.Model(&area).Insert(); err != nil {
 					return err
 				}
 				for _, subject := range area.Subjects {
-					if err := tx.Insert(&subject); err != nil {
+					if _, err := tx.Model(&subject).Insert(); err != nil {
 						return err
 					}
 					for _, material := range subject.Materials {
-						if err := tx.Insert(&material); err != nil {
+						if _, err := tx.Model(&material).Insert(); err != nil {
 							return err
 						}
 					}
@@ -313,7 +313,11 @@ func (s SchoolStore) DeleteCurriculum(schoolId string) error {
 		return cSchool.EmptyCurriculumError
 	}
 	c := Curriculum{Id: school.CurriculumId}
-	return s.Delete(&c)
+	_, err := s.Model(&c).WherePK().Delete()
+	if err != nil {
+		return richErrors.Wrap(err, "failed to delete curriculum")
+	}
+	return nil
 }
 
 func (s SchoolStore) GetCurriculum(schoolId string) (*cSchool.Curriculum, error) {
@@ -374,12 +378,12 @@ func (s SchoolStore) NewClass(id string, name string, weekdays []time.Weekday, s
 			Day:     weekday,
 		})
 	}
-	if err := s.DB.RunInTransaction(func(tx *pg.Tx) error {
-		if err := tx.Insert(&newClass); err != nil {
+	if err := s.DB.RunInTransaction(s.Context(), func(tx *pg.Tx) error {
+		if _, err := tx.Model(&newClass).Insert(); err != nil {
 			return richErrors.Wrap(err, "Failed saving new class")
 		}
 		if len(dbWeekdays) > 0 {
-			if err := tx.Insert(&dbWeekdays); err != nil {
+			if _, err := tx.Model(&dbWeekdays).Insert(); err != nil {
 				return richErrors.Wrap(err, "Failed saving weekdays")
 			}
 		}
@@ -429,7 +433,7 @@ func (s SchoolStore) InsertGuardianWithRelation(input cSchool.GuardianWithRelati
 		Note:     input.Note,
 		SchoolId: input.SchoolId,
 	}
-	if err := s.RunInTransaction(func(tx *pg.Tx) error {
+	if err := s.RunInTransaction(s.Context(), func(tx *pg.Tx) error {
 		if _, err := s.Model(&guardian).Insert(); err != nil {
 			return richErrors.Wrap(err, "failed to insert new guardian")
 		}
@@ -544,7 +548,7 @@ func (s SchoolStore) CreateFile(schoolId string, file multipart.File, fileHeader
 		return nil, richErrors.Wrap(err, "failed to save file to s3")
 	}
 	newFile.ObjectKey = fileKey
-	if err := s.Insert(&newFile); err != nil {
+	if _, err := s.Model(&newFile).Insert(); err != nil {
 		return nil, richErrors.Wrap(err, "failed to create file:")
 	}
 	return &newFile.Id, nil
@@ -563,7 +567,10 @@ func (s SchoolStore) DeleteFile(fileId string) error {
 		return richErrors.Wrap(err, "failed to delete file from s3")
 	}
 
-	return s.Delete(&file)
+	if _, err := s.Model(&file).WherePK().Delete(); err != nil {
+		return richErrors.Wrap(err, "failed to delete file")
+	}
+	return nil
 }
 
 func (s SchoolStore) UpdateFile(fileId, fileName string) (*cSchool.File, error) {
@@ -685,25 +692,25 @@ func (s SchoolStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLessonP
 		})
 	}
 
-	if err := s.RunInTransaction(func(tx *pg.Tx) error {
-		if err := tx.Insert(&planDetails); err != nil {
+	if err := s.RunInTransaction(s.Context(), func(tx *pg.Tx) error {
+		if _, err := tx.Model(&planDetails).Insert(); err != nil {
 			return richErrors.Wrap(err, "failed to save lesson plan details")
 		}
-		if err := tx.Insert(&plans); err != nil {
+		if _, err := tx.Model(&plans).Insert(); err != nil {
 			return richErrors.Wrap(err, "failed to save lesson plan")
 		}
 		if len(fileRelations) > 0 {
-			if err := tx.Insert(&fileRelations); err != nil {
+			if _, err := tx.Model(&fileRelations).Insert(); err != nil {
 				return richErrors.Wrap(err, "failed to save file relations")
 			}
 		}
 		if len(studentRelations) > 0 {
-			if err := tx.Insert(&studentRelations); err != nil {
+			if _, err := tx.Model(&studentRelations).Insert(); err != nil {
 				return richErrors.Wrap(err, "failed to save file relations")
 			}
 		}
 		if len(links) > 0 {
-			if err := tx.Insert(&links); err != nil {
+			if _, err := tx.Model(&links).Insert(); err != nil {
 				return richErrors.Wrap(err, "failed to save links")
 			}
 		}
@@ -745,7 +752,7 @@ func (s SchoolStore) CreateImage(schoolId string, image multipart.File, header *
 		return "", richErrors.Wrap(err, "failed to save file to s3")
 	}
 	newImage.ObjectKey = fileKey
-	if err := s.Insert(&newImage); err != nil {
+	if _, err := s.Model(&newImage).Insert(); err != nil {
 		return "", richErrors.Wrap(err, "failed to create file:")
 	}
 	return newImage.Id.String(), nil
@@ -768,7 +775,7 @@ func (s SchoolStore) NewCurriculum(schoolId string, name string) error {
 		Name: name,
 	}
 	school := School{Id: schoolId, CurriculumId: curriculum.Id}
-	if err := s.RunInTransaction(func(tx *pg.Tx) error {
+	if err := s.RunInTransaction(s.Context(), func(tx *pg.Tx) error {
 		if _, err := s.Model(&curriculum).Insert(); err != nil {
 			return richErrors.Wrap(err, "failed to save curriculum")
 		}
