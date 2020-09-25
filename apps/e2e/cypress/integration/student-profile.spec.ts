@@ -132,7 +132,7 @@ describe("test student profile page", () => {
     // Go to settings
     // Go back to curriculum
     // Create default curriculum TODO: This test will be flaky.
-    cy.contains("default").click()
+    cy.contains("Use Montessori").click()
     cy.contains("Math").should("exist")
 
     // Go to a student
