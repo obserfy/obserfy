@@ -18,6 +18,7 @@ func NewRouter(server rest.Server, store Store) *chi.Mux {
 
 	r.Route("/{curriculumId}", func(r chi.Router) {
 		r.Use(curriculumAuthMiddleware(server, store))
+		r.Method("PATCH", "/", patchCurriculum(server, store))
 		r.Method("POST", "/areas", createArea(server, store))
 	})
 
@@ -45,6 +46,38 @@ func NewRouter(server rest.Server, store Store) *chi.Mux {
 	})
 
 	return r
+}
+
+func patchCurriculum(s rest.Server, store Store) rest.Handler {
+	type responseBody struct {
+		Id   string `json:"id"`
+		Name string `json:"name"`
+	}
+	type requestBody struct {
+		Name *string `json:"name"`
+	}
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		curriculumId := chi.URLParam(r, "curriculumId")
+
+		var body requestBody
+		if err := rest.ParseJson(r.Body, &body); err != nil {
+			return rest.NewParseJsonError(err)
+		}
+
+		curriculum, err := store.UpdateCurriculum(curriculumId, body.Name)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "failed to update curriculum",
+				Error:   err,
+			}
+		}
+
+		if err := rest.WriteJson(w, &responseBody{Id: curriculum.Id, Name: curriculum.Name}); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
+		return nil
+	})
 }
 
 func getArea(server rest.Server, store Store) rest.Handler {

@@ -11,6 +11,21 @@ type CurriculumStore struct {
 	*pg.DB
 }
 
+func (s CurriculumStore) UpdateCurriculum(curriculumId string, name *string) (*domain.Curriculum, error) {
+	curriculum := make(PartialUpdateModel)
+	curriculum.AddStringColumn("name", name)
+	if _, err := s.Model(curriculum.GetModel()).
+		TableExpr("curriculum").
+		Where("id = ?", curriculumId).
+		Update(); err != nil {
+		return nil, err
+	}
+	return &domain.Curriculum{
+		Id:   curriculumId,
+		Name: *name,
+	}, nil
+}
+
 func (s CurriculumStore) CheckMaterialPermission(materialId string, userId string) (bool, error) {
 	var material Material
 	var user User

@@ -20,4 +20,5 @@ type Store interface {
 	CheckAreaPermissions(subjectId string, userId string) (bool, error)
 	CheckCurriculumPermission(curriculumId string, userId string) (bool, error)
 	CheckMaterialPermission(materialId string, userId string) (bool, error)
+	UpdateCurriculum(curriculumId string, name *string) (*domain.Curriculum, error)
 }
