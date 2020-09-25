@@ -1,8 +1,13 @@
 import { navigate } from "gatsby"
-import { ApiError } from "./useApi"
 
 // TODO: rename file to apiHelpers
 const BASE_URL = "/api/v1"
+
+interface ApiError {
+  error?: {
+    message: string
+  }
+}
 
 export const getApi = <T>(url: string) => async (): Promise<T> => {
   const result = await fetch(BASE_URL + url, {
@@ -23,7 +28,9 @@ export const getApi = <T>(url: string) => async (): Promise<T> => {
   return json
 }
 
-export const deleteApi = (url: string) => async () => {
+export const deleteApi = (url: string) => async (): Promise<
+  Response | undefined
+> => {
   const result = await fetch(`${BASE_URL}${url}`, {
     credentials: "same-origin",
     method: "DELETE",
@@ -44,7 +51,7 @@ export const deleteApi = (url: string) => async () => {
 
 export const patchApi = <T>(url: string) => async (
   payload: T
-): Promise<Response> => {
+): Promise<Response | undefined> => {
   const result = await fetch(`${BASE_URL}${url}`, {
     credentials: "same-origin",
     method: "PATCH",
@@ -64,7 +71,9 @@ export const patchApi = <T>(url: string) => async (
   return result
 }
 
-export const postApi = <T>(url: string) => async (payload: T) => {
+export const postApi = <T>(url: string) => async (
+  payload: T
+): Promise<Response | undefined> => {
   const result = await fetch(`${BASE_URL}${url}`, {
     credentials: "same-origin",
     method: "POST",

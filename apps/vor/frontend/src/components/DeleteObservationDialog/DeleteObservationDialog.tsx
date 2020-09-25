@@ -32,7 +32,7 @@ export const DeleteObservationDialog: FC<Props> = ({
         onCancel={onDismiss}
         onAccept={async () => {
           const response = await deleteObservation()
-          if (response.ok) {
+          if (response?.ok) {
             analytics.track("Observation Deleted", { observationId })
             onDeleted()
           }

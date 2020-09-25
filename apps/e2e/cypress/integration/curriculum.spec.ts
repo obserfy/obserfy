@@ -41,7 +41,7 @@ describe("test curriculum features", () => {
     ]
     cy.visit("/dashboard/admin/curriculum")
 
-    cy.contains("Use Default", { matchCase: false }).click()
+    cy.contains("Use Montessori", { matchCase: false }).click()
     cy.contains("New Area").click()
     cy.contains("Area Name", { matchCase: false }).type(newAreaName)
     cy.contains("Save").click()

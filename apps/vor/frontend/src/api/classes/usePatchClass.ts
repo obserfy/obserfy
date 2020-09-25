@@ -1,9 +1,4 @@
-import {
-  MutateFunction,
-  MutationResult,
-  queryCache,
-  useMutation,
-} from "react-query"
+import { queryCache, useMutation } from "react-query"
 import { getSchoolId } from "../../hooks/schoolIdState"
 import { patchApi } from "../fetchApi"
 
@@ -13,12 +8,10 @@ interface Class {
   endTime: Date
   weekdays: number[]
 }
-const usePatchClass = (
-  classId: string
-): [MutateFunction<Response, Class>, MutationResult<Response>] => {
+const usePatchClass = (classId: string) => {
   const patchClass = patchApi<Class>(`/classes/${classId}`)
 
-  return useMutation<Response, Class>(patchClass, {
+  return useMutation(patchClass, {
     onSuccess: async () => {
       await Promise.all([
         queryCache.invalidateQueries(["class", classId]),

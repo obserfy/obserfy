@@ -1,9 +1,8 @@
 import React, { FC, useState } from "react"
-import { Box, Flex, Button, Card } from "theme-ui"
+import { Box, Button, Card, Flex } from "theme-ui"
 import { Link, navigate } from "../Link/Link"
 import Typography from "../Typography/Typography"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
-import BackNavigation from "../BackNavigation/BackNavigation"
 import { useGetArea } from "../../api/useGetArea"
 import { Subject, useGetAreaSubjects } from "../../api/useGetAreaSubjects"
 import { useGetSubjectMaterials } from "../../api/useGetSubjectMaterials"
@@ -16,12 +15,14 @@ import DeleteAreaDialog from "../DeleteAreaDialog/DeleteAreaDialog"
 import DeleteSubjectDialog from "../DeleteSubjectDialog/DeleteSubjectDialog"
 import EditAreaDialog from "../EditAreaDialog/EditAreaDialog"
 import {
-  NEW_SUBJECT_URL,
-  EDIT_SUBJECT_URL,
   ADMIN_CURRICULUM_URL,
+  ADMIN_URL,
+  EDIT_SUBJECT_URL,
+  NEW_SUBJECT_URL,
 } from "../../routes"
+import TopBar from "../TopBar/TopBar"
+import { borderTop } from "../../border"
 
-// FIXME: Typescript any typing, and inconsistent loading state should be fixed.
 interface Props {
   id: string
 }
@@ -32,49 +33,54 @@ export const PageCurriculumArea: FC<Props> = ({ id }) => {
   const [showDeleteSubjectDialog, setShowDeleteSubjectDialog] = useState(false)
   const [showEditAreaDialog, setShowEditAreaDialog] = useState(false)
   const [subjectToDelete, setSubjectToDelete] = useState<Subject>()
-  const loading = area.status === "loading" || subjects.status === "loading"
-
-  const subjectList = subjects.data?.map((subject) => (
-    <SubjectListItem
-      key={subject.id}
-      subject={subject}
-      areaId={id}
-      onDeleteClick={() => {
-        setSubjectToDelete(subject)
-        setShowDeleteSubjectDialog(true)
-      }}
-    />
-  ))
+  const loading = area.isLoading || subjects.isLoading
 
   return (
     <>
       <Box sx={{ maxWidth: "maxWidth.sm", margin: "auto" }}>
-        <BackNavigation to={ADMIN_CURRICULUM_URL} text="Curriculum" />
-        {loading && !area.data?.name && <LoadingState />}
-        <Typography.H4 p={3} pb={2}>
-          {area.data?.name}
-        </Typography.H4>
-        <Flex mx={3} mt={3}>
+        <TopBar
+          breadcrumbs={[
+            {
+              text: "Admin",
+              to: ADMIN_URL,
+            },
+            {
+              text: "Curriculum",
+              to: ADMIN_CURRICULUM_URL,
+            },
+            { text: `${area.data?.name} Area` },
+          ]}
+        />
+
+        <Flex mx={3} sx={{ alignItems: "baseline" }} mt={3}>
+          {loading && !area.data?.name ? (
+            <LoadingPlaceholder sx={{ width: "10rem", height: 43 }} />
+          ) : (
+            <Typography.H4 sx={{ lineHeight: 1.2 }}>
+              {area.data?.name}
+            </Typography.H4>
+          )}
           <Button
-            variant="outline"
+            variant="secondary"
             onClick={() => setShowDeleteAreaDialog(true)}
             color="danger"
             sx={{ flexShrink: 0 }}
+            px={2}
+            ml={2}
           >
-            <Icon as={DeleteIcon} fill="danger" mr={2} />
-            Delete
+            <Icon as={DeleteIcon} fill="danger" />
           </Button>
           <Button
-            variant="outline"
+            variant="secondary"
             onClick={() => setShowEditAreaDialog(true)}
-            mx={2}
             sx={{ flexShrink: 0 }}
+            px={2}
           >
-            <Icon as={EditIcon} mr={2} />
-            Edit
+            <Icon as={EditIcon} />
           </Button>
         </Flex>
-        <Flex sx={{ alignItems: "center" }} mx={3} mt={4}>
+
+        <Flex sx={{ alignItems: "center" }} mx={3} mt={3}>
           <Typography.H6>Subjects</Typography.H6>
           <Spacer />
           <Link to={NEW_SUBJECT_URL(id)}>
@@ -84,7 +90,17 @@ export const PageCurriculumArea: FC<Props> = ({ id }) => {
             </Button>
           </Link>
         </Flex>
-        {subjectList}
+        {subjects.data?.map((subject) => (
+          <SubjectListItem
+            key={subject.id}
+            subject={subject}
+            areaId={id}
+            onDeleteClick={() => {
+              setSubjectToDelete(subject)
+              setShowDeleteSubjectDialog(true)
+            }}
+          />
+        ))}
       </Box>
       {showDeleteAreaDialog && (
         <DeleteAreaDialog
@@ -120,12 +136,6 @@ export const PageCurriculumArea: FC<Props> = ({ id }) => {
   )
 }
 
-const LoadingState: FC = () => (
-  <Box p={3}>
-    <LoadingPlaceholder sx={{ width: "100%", height: "4rem" }} />
-  </Box>
-)
-
 interface SubjectListItemProps {
   subject: Subject
   areaId: string
@@ -139,28 +149,12 @@ const SubjectListItem: FC<SubjectListItemProps> = ({
   const materials = useGetSubjectMaterials(subject.id)
 
   const materialList = materials.data?.map((material) => (
-    <Box
-      p={3}
-      px={3}
-      py={2}
-      key={material.id}
-      sx={{
-        borderTopColor: "border",
-        borderTopWidth: "1px",
-        borderTopStyle: "solid",
-      }}
-    >
-      <Typography.Body
-        sx={{
-          fontSize: 1,
-        }}
-      >
-        {material.name}
-      </Typography.Body>
+    <Box p={3} py={2} key={material.id} sx={borderTop}>
+      <Typography.Body sx={{ fontSize: 1 }}>{material.name}</Typography.Body>
     </Box>
   ))
 
-  const loadingPlaceholder = materials.status === "loading" && !materials.data && (
+  const loadingPlaceholder = materials.isLoading && !materials.data && (
     <Box m={3}>
       <LoadingPlaceholder sx={{ width: "100%", height: "4rem" }} mb={3} />
       <LoadingPlaceholder sx={{ width: "100%", height: "4rem" }} mb={3} />
@@ -171,14 +165,13 @@ const SubjectListItem: FC<SubjectListItemProps> = ({
   )
 
   return (
-    <Box py={3} px={[0, 3]}>
+    <Box py={2} px={[0, 3]}>
       <Card sx={{ borderRadius: [0, "default"] }}>
         <Flex sx={{ alignItems: "center" }} m={3} mr={2}>
-          <Typography.Body fontSize={3} mr={3}>
+          <Typography.Body fontSize={3} mr={3} sx={{ fontWeight: "bold" }}>
             {subject.name}
           </Typography.Body>
-          <Spacer />
-          <Flex sx={{ alignItems: "center", flexShrink: 0 }}>
+          <Flex ml="auto" sx={{ alignItems: "center", flexShrink: 0 }}>
             <Button
               sx={{ flexShrink: 0 }}
               variant="secondary"

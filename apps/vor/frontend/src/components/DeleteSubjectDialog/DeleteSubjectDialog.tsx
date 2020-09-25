@@ -1,12 +1,9 @@
-import React, { FC, useState } from "react"
-import { Flex, Button } from "theme-ui"
+import React, { FC } from "react"
 
 import Typography from "../Typography/Typography"
 import Dialog from "../Dialog/Dialog"
-import Spacer from "../Spacer/Spacer"
-
-import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
-import { deleteSubjectApi } from "../../api/deleteSubjectApi"
+import useDeleteSubject from "../../api/curriculum/useDeleteSubject"
+import DialogHeader from "../DialogHeader/DialogHeader"
 
 interface Props {
   subjectId: string
@@ -20,62 +17,23 @@ export const DeleteSubjectDialog: FC<Props> = ({
   subjectId,
   name,
 }) => {
-  const [loading, setLoading] = useState(false)
-
-  async function deleteStudent(): Promise<void> {
-    setLoading(true)
-    const response = await deleteSubjectApi(subjectId)
-    if (response.status === 200 || response.status === 400) {
-      onDeleted()
-      analytics.track("Subject deleted", { statusCode: response.status })
-    } else {
-      analytics.track("Subject delete fail", {
-        statusCode: response.status,
-        subjectId,
-      })
-    }
-    setLoading(false)
-  }
-
-  const header = (
-    <Flex
-      backgroundColor="surface"
-      sx={{
-        alignItems: "center",
-        flexShrink: 0,
-        position: "relative",
-      }}
-    >
-      <Typography.H6
-        sx={{
-          width: "100%",
-          position: "absolute",
-          pointerEvents: "none",
-          textAlign: "center",
-          alignContent: "center",
-        }}
-      >
-        Delete Subject?
-      </Typography.H6>
-      <Button
-        variant="outline"
-        m={2}
-        onClick={onDismiss}
-        sx={{ flexShrink: 0 }}
-      >
-        Cancel
-      </Button>
-      <Spacer />
-      <Button m={2} backgroundColor="danger" onClick={deleteStudent}>
-        {loading && <LoadingIndicator />}
-        Yes
-      </Button>
-    </Flex>
-  )
+  const [deleteSubject, { isLoading }] = useDeleteSubject(subjectId)
 
   return (
     <Dialog sx={{ maxWidth: ["", "maxWidth.xsm"] }}>
-      {header}
+      <DialogHeader
+        title="Delete Subject?"
+        onCancel={onDismiss}
+        onAcceptText="Delete"
+        loading={isLoading}
+        onAccept={async () => {
+          const response = await deleteSubject()
+          if (response) {
+            analytics.track("Deleted Subject")
+            onDeleted()
+          }
+        }}
+      />
       <Typography.Body p={3}>
         <i>&quot;{name}&quot;</i> and student data related to it will be
         permanently deleted. Are you sure?

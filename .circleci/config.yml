@@ -251,6 +251,7 @@ workflows:
             - vor_frontend_build
       - e2e:
           requires:
+            - vor_backend_test
             - vor_frontend_build
             - gaia_build
 

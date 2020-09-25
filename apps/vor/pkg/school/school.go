@@ -538,27 +538,63 @@ func refreshInviteCode(s rest.Server, store Store) http.Handler {
 }
 
 func postNewCurriculum(s rest.Server, store Store) http.Handler {
+	type requestBody struct {
+		Template string `json:"template"`
+		Name     string `json:"name"`
+	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		// Get school id
 		schoolId := chi.URLParam(r, "schoolId")
 
+		var body requestBody
+		if err := rest.ParseJson(r.Body, &body); err != nil {
+			return rest.NewParseJsonError(err)
+		}
+
 		// Return conflict error if school already has curriculum
-		school, err := store.GetSchool(schoolId)
-		if err != nil {
-			return &rest.Error{http.StatusInternalServerError, "Failed to get school data", err}
-		}
-		if school.CurriculumId != "" {
-			return &rest.Error{http.StatusConflict, "School already have curriculum", errors.New("curriculum conflict")}
+		if school, err := store.GetSchool(schoolId); err != nil {
+			return &rest.Error{
+				http.StatusInternalServerError,
+				"Failed to get school data",
+				err,
+			}
+		} else if school.CurriculumId != "" {
+			return &rest.Error{
+				http.StatusConflict,
+				"School already have curriculum",
+				errors.New("curriculum conflict"),
+			}
 		}
 
-		// Save default curriculum using transaction
-		if err := store.NewDefaultCurriculum(schoolId); err != nil {
-			return &rest.Error{http.StatusInternalServerError, "Failed saving newly created curriculum", err}
+		if body.Template == "montessori" {
+			// Save default curriculum using transaction
+			if err := store.NewDefaultCurriculum(schoolId); err != nil {
+				return &rest.Error{
+					http.StatusInternalServerError,
+					"Failed saving default curriculum",
+					err,
+				}
+			}
+			// Return result
+			w.WriteHeader(http.StatusCreated)
+			return nil
+		} else if body.Template == "custom" {
+			if err := store.NewCurriculum(schoolId, body.Name); err != nil {
+				return &rest.Error{
+					http.StatusInternalServerError,
+					"Failed saving new curriculum",
+					err,
+				}
+			}
+			w.WriteHeader(http.StatusCreated)
+			return nil
 		}
 
-		// Return result
-		w.WriteHeader(http.StatusCreated)
-		return nil
+		return &rest.Error{
+			Code:    http.StatusBadRequest,
+			Message: "please choose a template to use",
+			Error:   nil,
+		}
 	})
 }
 

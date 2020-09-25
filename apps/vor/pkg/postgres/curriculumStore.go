@@ -11,6 +11,21 @@ type CurriculumStore struct {
 	*pg.DB
 }
 
+func (s CurriculumStore) UpdateCurriculum(curriculumId string, name *string) (*domain.Curriculum, error) {
+	curriculum := make(PartialUpdateModel)
+	curriculum.AddStringColumn("name", name)
+	if _, err := s.Model(curriculum.GetModel()).
+		TableExpr("curriculums").
+		Where("id = ?", curriculumId).
+		Update(); err != nil {
+		return nil, err
+	}
+	return &domain.Curriculum{
+		Id:   curriculumId,
+		Name: *name,
+	}, nil
+}
+
 func (s CurriculumStore) CheckMaterialPermission(materialId string, userId string) (bool, error) {
 	var material Material
 	var user User
@@ -306,7 +321,7 @@ func (s CurriculumStore) NewSubject(name string, areaId string, materials []doma
 	}, nil
 }
 
-func (s CurriculumStore) NewArea(name string, curriculumId string) (string, error) {
+func (s CurriculumStore) NewArea(name string, curriculumId string) (*domain.Area, error) {
 	id := uuid.New().String()
 	area := Area{
 		Id:           id,
@@ -314,9 +329,12 @@ func (s CurriculumStore) NewArea(name string, curriculumId string) (string, erro
 		Name:         name,
 	}
 	if err := s.Insert(&area); err != nil {
-		return "", err
+		return nil, err
 	}
-	return id, nil
+	return &domain.Area{
+		Id:   area.Id,
+		Name: area.Name,
+	}, nil
 }
 
 func (s CurriculumStore) GetArea(areaId string) (*domain.Area, error) {

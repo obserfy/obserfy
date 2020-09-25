@@ -18,6 +18,7 @@ func NewRouter(server rest.Server, store Store) *chi.Mux {
 
 	r.Route("/{curriculumId}", func(r chi.Router) {
 		r.Use(curriculumAuthMiddleware(server, store))
+		r.Method("PATCH", "/", patchCurriculum(server, store))
 		r.Method("POST", "/areas", createArea(server, store))
 	})
 
@@ -45,6 +46,38 @@ func NewRouter(server rest.Server, store Store) *chi.Mux {
 	})
 
 	return r
+}
+
+func patchCurriculum(s rest.Server, store Store) rest.Handler {
+	type responseBody struct {
+		Id   string `json:"id"`
+		Name string `json:"name"`
+	}
+	type requestBody struct {
+		Name *string `json:"name"`
+	}
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		curriculumId := chi.URLParam(r, "curriculumId")
+
+		var body requestBody
+		if err := rest.ParseJson(r.Body, &body); err != nil {
+			return rest.NewParseJsonError(err)
+		}
+
+		curriculum, err := store.UpdateCurriculum(curriculumId, body.Name)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "failed to update curriculum",
+				Error:   err,
+			}
+		}
+
+		if err := rest.WriteJson(w, &responseBody{Id: curriculum.Id, Name: curriculum.Name}); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
+		return nil
+	})
 }
 
 func getArea(server rest.Server, store Store) rest.Handler {
@@ -85,7 +118,7 @@ func getAreaSubjects(server rest.Server, store Store) rest.Handler {
 		}
 
 		// Write response
-		var response []simplifiedSubject
+		response := make([]simplifiedSubject, 0)
 		for _, subject := range subjects {
 			response = append(response, simplifiedSubject{
 				Id:    subject.Id,
@@ -102,6 +135,10 @@ func getAreaSubjects(server rest.Server, store Store) rest.Handler {
 
 func createArea(server rest.Server, store Store) rest.Handler {
 	type requestBody struct {
+		Name string `json:"name"`
+	}
+	type responseBody struct {
+		Id   string `json:"id"`
 		Name string `json:"name"`
 	}
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
@@ -134,7 +171,7 @@ func createArea(server rest.Server, store Store) rest.Handler {
 			}
 		}
 
-		areaId, err := store.NewArea(body.Name, curriculumId)
+		area, err := store.NewArea(body.Name, curriculumId)
 		if err != nil {
 			return &rest.Error{
 				http.StatusInternalServerError,
@@ -142,8 +179,14 @@ func createArea(server rest.Server, store Store) rest.Handler {
 				err,
 			}
 		}
+
 		w.WriteHeader(http.StatusCreated)
-		w.Header().Add("Location", r.URL.Path+"/"+areaId)
+		if err = rest.WriteJson(w, &responseBody{
+			Id:   area.Id,
+			Name: area.Name,
+		}); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
 		return nil
 	})
 }
@@ -214,7 +257,7 @@ func getSubjectMaterials(server rest.Server, store Store) rest.Handler {
 		}
 
 		// Write response
-		var response []responseBody
+		var response = make([]responseBody, 0)
 		for _, subject := range materials {
 			response = append(response, responseBody{
 				Id:    subject.Id,

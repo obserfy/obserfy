@@ -61,7 +61,7 @@ export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
           isLoading={patchObservationState.isLoading}
           onSave={async (shortDesc) => {
             const result = await patchObservation({ shortDesc })
-            return result.ok
+            return result?.ok
           }}
         />
         <DateDataBox
@@ -69,7 +69,7 @@ export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
           originalValue={dayjs(data?.eventTime)}
           onSave={async (eventTime) => {
             const result = await patchObservation({ eventTime })
-            return result.ok
+            return result?.ok
           }}
         />
         <SingleChoiceDataBox
@@ -77,7 +77,7 @@ export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
           originalValue={data?.area?.id}
           onSave={async (areaId) => {
             const result = await patchObservation({ areaId })
-            return result.ok
+            return result?.ok
           }}
           possibleValues={
             areas.data?.map(({ id, name }) => ({
@@ -95,7 +95,7 @@ export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
           isLoading={patchObservationState.isLoading}
           onSave={async (longDesc) => {
             const result = await patchObservation({ longDesc })
-            return result.ok
+            return result?.ok
           }}
         />
       </Card>
@@ -201,7 +201,6 @@ const ImagesDataBox: FC<{
             accept="image/*"
             disabled={isLoading}
             onChange={async (e) => {
-              console.log(e.target.files)
               if (e.target.files) {
                 await postNewImage(e.target.files[0])
               }
@@ -243,7 +242,7 @@ const ImagesDataBox: FC<{
 const ShortTextDataBox: FC<{
   label: string
   originalValue?: string
-  onSave: (value: string) => Promise<boolean>
+  onSave: (value: string) => Promise<boolean | undefined>
   isLoading?: boolean
 }> = ({ label, originalValue, isLoading, onSave }) => {
   const [isEditing, setIsEditing] = useState(false)
@@ -294,7 +293,7 @@ const ShortTextDataBox: FC<{
 const LongTextDataBox: FC<{
   label: string
   originalValue?: string
-  onSave: (value: string) => Promise<boolean>
+  onSave: (value: string) => Promise<boolean | undefined>
   isLoading?: boolean
 }> = ({ label, originalValue, isLoading, onSave }) => {
   const [isEditing, setIsEditing] = useState(false)
@@ -348,7 +347,7 @@ const SingleChoiceDataBox: FC<{
   label: string
   originalValue?: string
   possibleValues: Array<{ id: string; text: string }>
-  onSave: (value: string) => Promise<boolean>
+  onSave: (value: string) => Promise<boolean | undefined>
   isLoading?: boolean
 }> = ({ possibleValues, label, originalValue, isLoading, onSave }) => {
   const [isEditing, setIsEditing] = useState(false)
@@ -407,7 +406,7 @@ const SingleChoiceDataBox: FC<{
 const DateDataBox: FC<{
   label: string
   originalValue?: Dayjs
-  onSave: (value: Dayjs) => Promise<boolean>
+  onSave: (value: Dayjs) => Promise<boolean | undefined>
   isLoading?: boolean
 }> = ({ label, originalValue, isLoading, onSave }) => {
   const [isEditing, setIsEditing] = useState(false)

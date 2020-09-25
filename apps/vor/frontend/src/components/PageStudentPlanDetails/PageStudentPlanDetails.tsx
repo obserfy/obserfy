@@ -133,7 +133,7 @@ export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
           onNegativeClick={() => setShowDeleteDialog(false)}
           onPositiveClick={async () => {
             const result = await deletePlan()
-            if (result.ok) {
+            if (result?.ok) {
               await navigate(
                 STUDENT_PLANS_URL(studentId, dayjs(plan.data?.date))
               )

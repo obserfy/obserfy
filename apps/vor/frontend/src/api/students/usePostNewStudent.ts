@@ -1,4 +1,4 @@
-import { MutationResultPair, useMutation } from "react-query"
+import { useMutation } from "react-query"
 import { getSchoolId } from "../../hooks/schoolIdState"
 import { postApi } from "../fetchApi"
 import { Dayjs } from "../../dayjs"
@@ -30,11 +30,7 @@ interface NewStudent {
   }>
 }
 
-export const usePostNewStudent = (): MutationResultPair<
-  Response,
-  NewStudent,
-  Error
-> => {
+export const usePostNewStudent = () => {
   const postNewStudent = postApi<NewStudent>(
     `/schools/${getSchoolId()}/students`
   )

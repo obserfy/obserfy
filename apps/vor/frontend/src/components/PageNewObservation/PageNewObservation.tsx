@@ -45,13 +45,11 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
       areaId,
     })
 
-    if (response.ok) {
+    if (response?.ok) {
       analytics.track("Observation Created")
       await navigate(STUDENT_OVERVIEW_PAGE_URL(studentId))
     } else {
-      analytics.track("Create Observation Failed", {
-        responseStatus: response.status,
-      })
+      analytics.track("Create Observation Failed")
     }
   }
 

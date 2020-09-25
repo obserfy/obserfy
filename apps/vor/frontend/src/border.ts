@@ -15,3 +15,9 @@ export const borderFull = {
   borderStyle: "solid",
   borderColor: "border",
 }
+
+export const borderTop = {
+  borderTopColor: "border",
+  borderTopWidth: "1px",
+  borderTopStyle: "solid",
+}

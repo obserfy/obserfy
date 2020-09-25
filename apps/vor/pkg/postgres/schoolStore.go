@@ -306,11 +306,10 @@ func (s SchoolStore) NewDefaultCurriculum(schoolId string) error {
 }
 
 func (s SchoolStore) DeleteCurriculum(schoolId string) error {
-	school, err := s.GetSchool(schoolId)
-	if err != nil {
-		return err
-	}
-	if school.CurriculumId == "" {
+	school := School{Id: schoolId}
+	if err := s.Model(&school).WherePK().Select(); err != nil {
+		return richErrors.Wrap(err, "failed to get school data")
+	} else if school.CurriculumId == "" {
 		return cSchool.EmptyCurriculumError
 	}
 	c := Curriculum{Id: school.CurriculumId}
@@ -758,6 +757,30 @@ func (s SchoolStore) DeleteUser(schoolId string, userId string) error {
 		Where("school_id = ? AND user_id = ?", schoolId, userId).
 		Delete(); err != nil {
 		return richErrors.Wrap(err, "failed to delete user from school relation")
+	}
+	return nil
+}
+
+// TODO: Before Commit verify that this works properly
+func (s SchoolStore) NewCurriculum(schoolId string, name string) error {
+	curriculum := Curriculum{
+		Id:   uuid.New().String(),
+		Name: name,
+	}
+	school := School{Id: schoolId, CurriculumId: curriculum.Id}
+	if err := s.RunInTransaction(func(tx *pg.Tx) error {
+		if _, err := s.Model(&curriculum).Insert(); err != nil {
+			return richErrors.Wrap(err, "failed to save curriculum")
+		}
+		if _, err := s.Model(&school).
+			WherePK().
+			Set("curriculum_id = ?curriculum_id").
+			Update(); err != nil {
+			return richErrors.Wrap(err, "failed to save curriculum")
+		}
+		return nil
+	}); err != nil {
+		return err
 	}
 	return nil
 }
