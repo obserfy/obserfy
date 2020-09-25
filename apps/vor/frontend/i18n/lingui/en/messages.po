@@ -13,18 +13,162 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/PageListOfStudents/PageListOfStudents.tsx:68
+#: src/components/PageSubscription/PageSubscription.tsx:97
+msgid "90-days free trial"
+msgstr "90-days free trial"
+
+#: src/components/PageAdmin/PageAdmin.tsx:48
+msgid "All Guardians"
+msgstr "All Guardians"
+
+#: src/components/PageAdmin/PageAdmin.tsx:47
+#: src/components/PageListOfStudents/PageListOfStudents.tsx:35
+msgid "All Students"
+msgstr "All Students"
+
+#: src/components/PageSubscription/PageSubscription.tsx:46
+msgid "Amount Due"
+msgstr "Amount Due"
+
+#: src/components/PageSubscription/PageSubscription.tsx:105
+msgid "And more coming..."
+msgstr "And more coming..."
+
+#: src/components/PageListOfStudents/PageListOfStudents.tsx:71
 msgid "Cancel"
 msgstr "Cancel"
 
-#: src/components/AlertDialog/AlertDialog.tsx:23
-#~ msgid "{body}"
-#~ msgstr ""
+#: src/components/PageSubscription/PageSubscription.tsx:66
+msgid "Cancel Plan"
+msgstr "Cancel Plan"
 
-#: src/components/DialogHeader/DialogHeader.tsx:20
-#~ msgid "{onCancelText}"
-#~ msgstr ""
+#: src/components/PageAdmin/PageAdmin.tsx:46
+msgid "Class"
+msgstr "Class"
 
-#: src/components/DialogHeader/DialogHeader.tsx:17
-#~ msgid "{title}"
-#~ msgstr ""
+#: src/components/PageSubscription/PageSubscription.tsx:100
+msgid "Create lesson plans"
+msgstr "Create lesson plans"
+
+#: src/components/PageSubscription/PageSubscription.tsx:34
+#: src/components/PageSubscription/PageSubscription.tsx:76
+msgid "Current Plan"
+msgstr "Current Plan"
+
+#: src/components/PageAdmin/PageAdmin.tsx:44
+msgid "Curriculum"
+msgstr "Curriculum"
+
+#: src/components/PageSubscription/PageSubscription.tsx:74
+msgid "Free Trial"
+msgstr "Free Trial"
+
+#: src/components/PageSubscription/PageSubscription.tsx:103
+msgid "Image gallery"
+msgstr "Image gallery"
+
+#: src/components/PageAdmin/PageAdmin.tsx:49
+msgid "Invite Your Team"
+msgstr "Invite Your Team"
+
+#: src/components/PageAdmin/PageAdmin.tsx:57
+msgid "Log Out"
+msgstr "Log Out"
+
+#: src/components/PageSubscription/PageSubscription.tsx:38
+msgid "Next Bill"
+msgstr "Next Bill"
+
+#: src/components/PageSubscription/PageSubscription.tsx:102
+msgid "Parent portal"
+msgstr "Parent portal"
+
+#: src/components/PageSubscription/PageSubscription.tsx:57
+msgid "Payment details"
+msgstr "Payment details"
+
+#: src/components/PageSubscription/PageSubscription.tsx:99
+msgid "Record observations"
+msgstr "Record observations"
+
+#: src/components/PageSubscription/PageSubscription.tsx:104
+msgid "Reporting"
+msgstr "Reporting"
+
+#: src/components/SearchBar/SearchBar.tsx:18
+msgid "Search"
+msgstr "Search"
+
+#: src/components/PageListOfStudents/PageListOfStudents.tsx:50
+msgid "Set as active?"
+msgstr "Set as active?"
+
+#: src/components/PageListOfStudents/PageListOfStudents.tsx:51
+msgid "Set as inactive?"
+msgstr "Set as inactive?"
+
+#: src/components/PageListOfStudents/PageListOfStudents.tsx:33
+#: src/components/PageSubscription/PageSubscription.tsx:25
+msgid "Settings"
+msgstr "Settings"
+
+#: src/components/PageSubscription/PageSubscription.tsx:93
+msgid "Simple pricing for every school."
+msgstr "Simple pricing for every school."
+
+#: src/components/PageSubscription/PageSubscription.tsx:143
+msgid "Soon"
+msgstr "Soon"
+
+#: src/components/PageSubscription/PageSubscription.tsx:32
+msgid "Standard"
+msgstr "Standard"
+
+#: src/components/PageSubscription/PageSubscription.tsx:81
+msgid "Standard Plan"
+msgstr "Standard Plan"
+
+#: src/components/PageSubscription/PageSubscription.tsx:133
+msgid "Start Free Trial"
+msgstr "Start Free Trial"
+
+#: src/components/PageSubscription/PageSubscription.tsx:133
+msgid "Subscribed"
+msgstr "Subscribed"
+
+#: src/components/PageAdmin/PageAdmin.tsx:50
+#: src/components/PageSubscription/PageSubscription.tsx:27
+msgid "Subscription Plan"
+msgstr "Subscription Plan"
+
+#: src/components/PageAdmin/PageAdmin.tsx:54
+msgid "Switch school"
+msgstr "Switch school"
+
+#: src/components/PageSubscription/PageSubscription.tsx:101
+msgid "Track curriculum progress"
+msgstr "Track curriculum progress"
+
+#: src/components/PageSubscription/PageSubscription.tsx:98
+msgid "Unlimited students"
+msgstr "Unlimited students"
+
+#: src/components/PageSubscription/PageSubscription.tsx:89
+msgid "User/month"
+msgstr "User/month"
+
+#: src/components/PageAdmin/PageAdmin.tsx:45
+msgid "Users"
+msgstr "Users"
+
+#: src/components/PageListOfStudents/PageListOfStudents.tsx:71
+msgid "Yes"
+msgstr "Yes"
+
+#: src/components/PageListOfStudents/PageListOfStudents.tsx:69
+msgid "active"
+msgstr "active"
+
+#: src/components/PageListOfStudents/PageListOfStudents.tsx:69
+msgid "inactive"
+msgstr "inactive"

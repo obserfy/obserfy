@@ -1,0 +1,198 @@
+{
+  "Settings": {
+    "origin": [
+      [
+        "src/components/PageSubscription/PageSubscription.tsx",
+        25
+      ]
+    ]
+  },
+  "Subscription Plan": {
+    "origin": [
+      [
+        "src/components/PageSubscription/PageSubscription.tsx",
+        27
+      ]
+    ]
+  },
+  "Standard": {
+    "origin": [
+      [
+        "src/components/PageSubscription/PageSubscription.tsx",
+        32
+      ]
+    ]
+  },
+  "Current Plan": {
+    "origin": [
+      [
+        "src/components/PageSubscription/PageSubscription.tsx",
+        34
+      ],
+      [
+        "src/components/PageSubscription/PageSubscription.tsx",
+        76
+      ]
+    ]
+  },
+  "Next Bill": {
+    "origin": [
+      [
+        "src/components/PageSubscription/PageSubscription.tsx",
+        38
+      ]
+    ]
+  },
+  "Amount Due": {
+    "origin": [
+      [
+        "src/components/PageSubscription/PageSubscription.tsx",
+        46
+      ]
+    ]
+  },
+  "Payment details": {
+    "origin": [
+      [
+        "src/components/PageSubscription/PageSubscription.tsx",
+        57
+      ]
+    ]
+  },
+  "Cancel Plan": {
+    "origin": [
+      [
+        "src/components/PageSubscription/PageSubscription.tsx",
+        66
+      ]
+    ]
+  },
+  "Free Trial": {
+    "origin": [
+      [
+        "src/components/PageSubscription/PageSubscription.tsx",
+        74
+      ]
+    ]
+  },
+  "Standard Plan": {
+    "origin": [
+      [
+        "src/components/PageSubscription/PageSubscription.tsx",
+        81
+      ]
+    ]
+  },
+  "User/month": {
+    "origin": [
+      [
+        "src/components/PageSubscription/PageSubscription.tsx",
+        89
+      ]
+    ]
+  },
+  "Simple pricing for every school.": {
+    "origin": [
+      [
+        "src/components/PageSubscription/PageSubscription.tsx",
+        93
+      ]
+    ]
+  },
+  "90-days free trial": {
+    "origin": [
+      [
+        "src/components/PageSubscription/PageSubscription.tsx",
+        97
+      ]
+    ]
+  },
+  "Unlimited students": {
+    "origin": [
+      [
+        "src/components/PageSubscription/PageSubscription.tsx",
+        98
+      ]
+    ]
+  },
+  "Record observations": {
+    "origin": [
+      [
+        "src/components/PageSubscription/PageSubscription.tsx",
+        99
+      ]
+    ]
+  },
+  "Create lesson plans": {
+    "origin": [
+      [
+        "src/components/PageSubscription/PageSubscription.tsx",
+        100
+      ]
+    ]
+  },
+  "Track curriculum progress": {
+    "origin": [
+      [
+        "src/components/PageSubscription/PageSubscription.tsx",
+        101
+      ]
+    ]
+  },
+  "Parent portal": {
+    "origin": [
+      [
+        "src/components/PageSubscription/PageSubscription.tsx",
+        102
+      ]
+    ]
+  },
+  "Image gallery": {
+    "origin": [
+      [
+        "src/components/PageSubscription/PageSubscription.tsx",
+        103
+      ]
+    ]
+  },
+  "Reporting": {
+    "origin": [
+      [
+        "src/components/PageSubscription/PageSubscription.tsx",
+        104
+      ]
+    ]
+  },
+  "And more coming...": {
+    "origin": [
+      [
+        "src/components/PageSubscription/PageSubscription.tsx",
+        105
+      ]
+    ]
+  },
+  "Subscribed": {
+    "origin": [
+      [
+        "src/components/PageSubscription/PageSubscription.tsx",
+        133
+      ]
+    ]
+  },
+  "Start Free Trial": {
+    "origin": [
+      [
+        "src/components/PageSubscription/PageSubscription.tsx",
+        133
+      ]
+    ]
+  },
+  "Soon": {
+    "origin": [
+      [
+        "src/components/PageSubscription/PageSubscription.tsx",
+        143
+      ]
+    ]
+  }
+}

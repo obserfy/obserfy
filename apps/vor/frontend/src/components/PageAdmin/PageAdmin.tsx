@@ -1,6 +1,8 @@
 import React, { FC } from "react"
 import { navigate } from "gatsby"
 import { Box, Button, Flex, useColorMode } from "theme-ui"
+import { i18nMark } from "@lingui/core"
+import { Trans } from "@lingui/macro"
 import { useGetSchool } from "../../api/schools/useGetSchool"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import Typography from "../Typography/Typography"
@@ -43,13 +45,33 @@ export const PageAdmin: FC = () => {
           {schoolDetail.data?.name}
         </Typography.H5>
       </Box>
-      <CardLink mb={2} name="Curriculum" to={ADMIN_CURRICULUM_URL} />
-      <CardLink mb={2} name="Users" to={ADMIN_USERS_URL} />
-      <CardLink mb={2} name="Class" to={CLASS_SETTINGS_URL} />
-      <CardLink mb={2} name="All Students" to={ADMIN_STUDENTS_URL} />
-      <CardLink mb={2} name="All Guardians" to={ADMIN_GUARDIAN_URL} />
-      <CardLink mb={2} name="Invite Your Team" to={ADMIN_INVITE_USER_URL} />
-      <CardLink mb={2} name="Subscription Plan" to={ADMIN_SUBSCRIPTION_URL} />
+      <CardLink
+        mb={2}
+        name={i18nMark("Curriculum")}
+        to={ADMIN_CURRICULUM_URL}
+      />
+      <CardLink mb={2} name={i18nMark("Users")} to={ADMIN_USERS_URL} />
+      <CardLink mb={2} name={i18nMark("Class")} to={CLASS_SETTINGS_URL} />
+      <CardLink
+        mb={2}
+        name={i18nMark("All Students")}
+        to={ADMIN_STUDENTS_URL}
+      />
+      <CardLink
+        mb={2}
+        name={i18nMark("All Guardians")}
+        to={ADMIN_GUARDIAN_URL}
+      />
+      <CardLink
+        mb={2}
+        name={i18nMark("Invite Your Team")}
+        to={ADMIN_INVITE_USER_URL}
+      />
+      <CardLink
+        mb={2}
+        name={i18nMark("Subscription Plan")}
+        to={ADMIN_SUBSCRIPTION_URL}
+      />
       <Flex mt={2}>
         <ThemeModeButton />
         <Button
@@ -59,7 +81,7 @@ export const PageAdmin: FC = () => {
           onClick={() => navigate("/choose-school")}
           sx={{ flexShrink: 0 }}
         >
-          Switch school
+          <Trans>Switch school</Trans>
         </Button>
         <Button
           variant="outline"
@@ -68,7 +90,7 @@ export const PageAdmin: FC = () => {
           onClick={logout}
           sx={{ flexShrink: 0, flexGrow: 1 }}
         >
-          Log Out
+          <Trans>Log Out</Trans>
         </Button>
       </Flex>
     </Box>

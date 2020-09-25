@@ -1,9 +1,65 @@
 {
+  "Settings": {
+    "origin": [
+      [
+        "src/components/PageListOfStudents/PageListOfStudents.tsx",
+        33
+      ]
+    ]
+  },
+  "All Students": {
+    "origin": [
+      [
+        "src/components/PageListOfStudents/PageListOfStudents.tsx",
+        35
+      ]
+    ]
+  },
+  "Set as active?": {
+    "origin": [
+      [
+        "src/components/PageListOfStudents/PageListOfStudents.tsx",
+        50
+      ]
+    ]
+  },
+  "Set as inactive?": {
+    "origin": [
+      [
+        "src/components/PageListOfStudents/PageListOfStudents.tsx",
+        51
+      ]
+    ]
+  },
+  "active": {
+    "origin": [
+      [
+        "src/components/PageListOfStudents/PageListOfStudents.tsx",
+        69
+      ]
+    ]
+  },
+  "inactive": {
+    "origin": [
+      [
+        "src/components/PageListOfStudents/PageListOfStudents.tsx",
+        69
+      ]
+    ]
+  },
   "Cancel": {
     "origin": [
       [
         "src/components/PageListOfStudents/PageListOfStudents.tsx",
-        68
+        71
+      ]
+    ]
+  },
+  "Yes": {
+    "origin": [
+      [
+        "src/components/PageListOfStudents/PageListOfStudents.tsx",
+        71
       ]
     ]
   }

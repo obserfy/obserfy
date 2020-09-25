@@ -13,18 +13,162 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/PageListOfStudents/PageListOfStudents.tsx:68
+#: src/components/PageSubscription/PageSubscription.tsx:97
+msgid "90-days free trial"
+msgstr "90-hari coba gratis"
+
+#: src/components/PageAdmin/PageAdmin.tsx:48
+msgid "All Guardians"
+msgstr "Semua Wali"
+
+#: src/components/PageAdmin/PageAdmin.tsx:47
+#: src/components/PageListOfStudents/PageListOfStudents.tsx:35
+msgid "All Students"
+msgstr "Semua Murid"
+
+#: src/components/PageSubscription/PageSubscription.tsx:46
+msgid "Amount Due"
+msgstr "Jumlah Jatuh Tempo"
+
+#: src/components/PageSubscription/PageSubscription.tsx:105
+msgid "And more coming..."
+msgstr "Dan masih banyak lagi..."
+
+#: src/components/PageListOfStudents/PageListOfStudents.tsx:71
 msgid "Cancel"
 msgstr "Batal"
 
-#: src/components/AlertDialog/AlertDialog.tsx:23
-#~ msgid "{body}"
-#~ msgstr ""
+#: src/components/PageSubscription/PageSubscription.tsx:66
+msgid "Cancel Plan"
+msgstr "Batalkan Paket"
 
-#: src/components/DialogHeader/DialogHeader.tsx:20
-#~ msgid "{onCancelText}"
-#~ msgstr ""
+#: src/components/PageAdmin/PageAdmin.tsx:46
+msgid "Class"
+msgstr "Kelas"
 
-#: src/components/DialogHeader/DialogHeader.tsx:17
-#~ msgid "{title}"
-#~ msgstr ""
+#: src/components/PageSubscription/PageSubscription.tsx:100
+msgid "Create lesson plans"
+msgstr "Membuat rencana pembelajaran"
+
+#: src/components/PageSubscription/PageSubscription.tsx:34
+#: src/components/PageSubscription/PageSubscription.tsx:76
+msgid "Current Plan"
+msgstr "Paket Sekarang"
+
+#: src/components/PageAdmin/PageAdmin.tsx:44
+msgid "Curriculum"
+msgstr "Kurikulum"
+
+#: src/components/PageSubscription/PageSubscription.tsx:74
+msgid "Free Trial"
+msgstr "Coba Gratis"
+
+#: src/components/PageSubscription/PageSubscription.tsx:103
+msgid "Image gallery"
+msgstr "Galeri gambar"
+
+#: src/components/PageAdmin/PageAdmin.tsx:49
+msgid "Invite Your Team"
+msgstr "Undang Tim Anda"
+
+#: src/components/PageAdmin/PageAdmin.tsx:57
+msgid "Log Out"
+msgstr "Keluar"
+
+#: src/components/PageSubscription/PageSubscription.tsx:38
+msgid "Next Bill"
+msgstr "Tagihan Selanjutnya"
+
+#: src/components/PageSubscription/PageSubscription.tsx:102
+msgid "Parent portal"
+msgstr "Portal orang tua"
+
+#: src/components/PageSubscription/PageSubscription.tsx:57
+msgid "Payment details"
+msgstr "Detil Pembayaran"
+
+#: src/components/PageSubscription/PageSubscription.tsx:99
+msgid "Record observations"
+msgstr "Rekam observasi"
+
+#: src/components/PageSubscription/PageSubscription.tsx:104
+msgid "Reporting"
+msgstr "Laporan"
+
+#: src/components/SearchBar/SearchBar.tsx:18
+msgid "Search"
+msgstr "Cari"
+
+#: src/components/PageListOfStudents/PageListOfStudents.tsx:50
+msgid "Set as active?"
+msgstr "Atur menjadi aktif?"
+
+#: src/components/PageListOfStudents/PageListOfStudents.tsx:51
+msgid "Set as inactive?"
+msgstr "Atur menjadi nonaktif?"
+
+#: src/components/PageListOfStudents/PageListOfStudents.tsx:33
+#: src/components/PageSubscription/PageSubscription.tsx:25
+msgid "Settings"
+msgstr "Pengaturan"
+
+#: src/components/PageSubscription/PageSubscription.tsx:93
+msgid "Simple pricing for every school."
+msgstr "Harga cocok untuk setiap sekolah."
+
+#: src/components/PageSubscription/PageSubscription.tsx:143
+msgid "Soon"
+msgstr "Segera"
+
+#: src/components/PageSubscription/PageSubscription.tsx:32
+msgid "Standard"
+msgstr "Standar"
+
+#: src/components/PageSubscription/PageSubscription.tsx:81
+msgid "Standard Plan"
+msgstr "Paket Standar"
+
+#: src/components/PageSubscription/PageSubscription.tsx:133
+msgid "Start Free Trial"
+msgstr "Coba Gratis Sekarang"
+
+#: src/components/PageSubscription/PageSubscription.tsx:133
+msgid "Subscribed"
+msgstr "Berlangganan"
+
+#: src/components/PageAdmin/PageAdmin.tsx:50
+#: src/components/PageSubscription/PageSubscription.tsx:27
+msgid "Subscription Plan"
+msgstr "Paket Berlangganan"
+
+#: src/components/PageAdmin/PageAdmin.tsx:54
+msgid "Switch school"
+msgstr "Pindah sekolah"
+
+#: src/components/PageSubscription/PageSubscription.tsx:101
+msgid "Track curriculum progress"
+msgstr "Lacak perkembangan kurikulum"
+
+#: src/components/PageSubscription/PageSubscription.tsx:98
+msgid "Unlimited students"
+msgstr "Murid tak terbatas"
+
+#: src/components/PageSubscription/PageSubscription.tsx:89
+msgid "User/month"
+msgstr "Pengguna/bulan"
+
+#: src/components/PageAdmin/PageAdmin.tsx:45
+msgid "Users"
+msgstr "Pengguna"
+
+#: src/components/PageListOfStudents/PageListOfStudents.tsx:71
+msgid "Yes"
+msgstr "Ya"
+
+#: src/components/PageListOfStudents/PageListOfStudents.tsx:69
+msgid "active"
+msgstr "aktif"
+
+#: src/components/PageListOfStudents/PageListOfStudents.tsx:69
+msgid "inactive"
+msgstr "nonaktif"

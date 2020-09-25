@@ -1,5 +1,6 @@
 import React, { FC } from "react"
 import { BoxProps, Box } from "theme-ui"
+import { Trans } from "@lingui/macro"
 import Typography from "../Typography/Typography"
 
 interface Props extends BoxProps {
@@ -32,7 +33,7 @@ export const Pill: FC<Props> = ({ sx, color, text, ...props }) => {
           textTransform: "capitalize",
         }}
       >
-        {text}
+        <Trans id={text} />
       </Typography.Body>
     </Box>
   )

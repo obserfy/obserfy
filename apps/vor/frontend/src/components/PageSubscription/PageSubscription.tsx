@@ -1,5 +1,7 @@
 import React, { FC, useState } from "react"
 import { Box, Button, Card, Flex, useColorMode } from "theme-ui"
+import { Trans } from "@lingui/macro"
+import { i18nMark } from "@lingui/core"
 import dayjs from "../../dayjs"
 import Typography from "../Typography/Typography"
 import BackNavigation from "../BackNavigation/BackNavigation"
@@ -11,6 +13,7 @@ import { useGetSchool } from "../../api/schools/useGetSchool"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import { ReactComponent as CancelIcon } from "../../icons/close.svg"
 import { ReactComponent as CreditCardIcon } from "../../icons/credit-card.svg"
+import { SETTINGS_URL } from "../../routes"
 
 export const PageSubscription: FC = () => {
   const [loading, setLoading] = useState(false)
@@ -21,9 +24,9 @@ export const PageSubscription: FC = () => {
 
   return (
     <Box mx="auto" sx={{ maxWidth: "maxWidth.xsm" }}>
-      <BackNavigation to="../" text="Admin" />
+      <BackNavigation to={SETTINGS_URL} text={i18nMark("Settings")} />
       <Typography.H4 sx={{ fontWeight: "bold", textAlign: "center" }} mb={4}>
-        Subscription Plan
+        <Trans>Subscription Plan</Trans>
       </Typography.H4>
       {school.data?.subscription ? (
         <Card m={3} px={4} sx={{ borderRadius: 16 }}>
@@ -32,15 +35,17 @@ export const PageSubscription: FC = () => {
               color="textPrimary"
               sx={{ fontWeight: "bold", lineHeight: 1 }}
             >
-              Standard
+              <Trans>Standard</Trans>
             </Typography.Body>
-            <Typography.Body ml="auto">Current Plan</Typography.Body>
+            <Typography.Body ml="auto">
+              <Trans>Current Plan</Trans>
+            </Typography.Body>
           </Flex>
           <Box mt={3}>
             <Typography.Body
               sx={{ fontSize: 1, color: "textMediumEmphasis", lineHeight: 1 }}
             >
-              Next Bill
+              <Trans>Next Bill</Trans>
             </Typography.Body>
             <Typography.Body>
               {dayjs(school.data?.subscription?.nextBillDate).format(
@@ -52,7 +57,7 @@ export const PageSubscription: FC = () => {
             <Typography.Body
               sx={{ fontSize: 1, color: "textMediumEmphasis", lineHeight: 1 }}
             >
-              Amount Due
+              <Trans>Amount Due</Trans>
             </Typography.Body>
             <Typography.Body>
               ${3.99 * school.data?.users?.length} ({school.data?.users?.length}{" "}
@@ -68,7 +73,7 @@ export const PageSubscription: FC = () => {
                 fill="transparent"
               />
               <Typography.Body ml={3} sx={{ lineHeight: 1 }}>
-                Payment details
+                <Trans>Payment details</Trans>
               </Typography.Body>
               <Icon as={NextIcon} ml="auto" />
             </Flex>
@@ -77,7 +82,7 @@ export const PageSubscription: FC = () => {
             <Flex py={3} mb={3} sx={{ alignItems: "center" }}>
               <Icon as={CancelIcon} size={24} fill="danger" />
               <Typography.Body ml={3} sx={{ lineHeight: 1 }}>
-                Cancel Plan
+                <Trans>Cancel Plan</Trans>
               </Typography.Body>
               <Icon as={NextIcon} ml="auto" />
             </Flex>
@@ -90,9 +95,11 @@ export const PageSubscription: FC = () => {
               color="textPrimary"
               sx={{ fontWeight: "bold", lineHeight: 1 }}
             >
-              Free Trial
+              <Trans>Free Trial</Trans>
             </Typography.Body>
-            <Typography.Body ml="auto">Current Plan</Typography.Body>
+            <Typography.Body ml="auto">
+              <Trans>Current Plan</Trans>
+            </Typography.Body>
           </Flex>
         </Card>
       )}
@@ -102,7 +109,7 @@ export const PageSubscription: FC = () => {
           sx={{ fontWeight: "bold", lineHeight: 1 }}
           mb={2}
         >
-          Standard Plan
+          <Trans>Standard Plan</Trans>
         </Typography.Body>
 
         <Flex sx={{ alignItems: "baseline" }}>
@@ -110,23 +117,23 @@ export const PageSubscription: FC = () => {
             $3.99
           </Typography.H3>
           <Typography.Body ml={2} color="textMediumEmphasis">
-            User/month
+            <Trans>User/month</Trans>
           </Typography.Body>
         </Flex>
         <Typography.Body my={3}>
-          Simple pricing for every school.
+          <Trans>Simple pricing for every school.</Trans>
         </Typography.Body>
 
         <Box my={3}>
-          <Feature text="90-days free trial" />
-          <Feature text="Unlimited students" />
-          <Feature text="Record observations" />
-          <Feature text="Create lesson plans" />
-          <Feature text="Track curriculum progress" />
-          <Feature text="Parent portal" />
-          <Feature text="Image gallery" />
-          <Feature text="Reporting" comingSoon />
-          <Feature text="And more coming..." />
+          <Feature text={i18nMark("90-days free trial")} />
+          <Feature text={i18nMark("Unlimited students")} />
+          <Feature text={i18nMark("Record observations")} />
+          <Feature text={i18nMark("Create lesson plans")} />
+          <Feature text={i18nMark("Track curriculum progress")} />
+          <Feature text={i18nMark("Parent portal")} />
+          <Feature text={i18nMark("Image gallery")} />
+          <Feature text={i18nMark("Reporting")} comingSoon />
+          <Feature text={i18nMark("And more coming...")} />
         </Box>
 
         <Button
@@ -164,11 +171,11 @@ export const PageSubscription: FC = () => {
         >
           {/* eslint-disable-next-line no-nested-ternary */}
           {isSubscribed ? (
-            "Subscribed"
+            <Trans>Subscribed</Trans>
           ) : loading || user.isLoading ? (
             <LoadingIndicator color="onPrimary" />
           ) : (
-            "Start Free Trial"
+            <Trans>Start Free Trial</Trans>
           )}
         </Button>
       </Card>
@@ -183,10 +190,12 @@ const Feature: FC<{ text: string; comingSoon?: boolean }> = ({
   return (
     <Flex sx={{ alignItems: "center" }}>
       <Icon as={CheckmarkIcon} fill="primary" />
-      <Typography.Body ml={2}>{text}</Typography.Body>
+      <Typography.Body ml={2}>
+        <Trans id={text} />
+      </Typography.Body>
       {comingSoon && (
         <Typography.Body ml={2} color="textPrimary">
-          Soon
+          <Trans>Soon</Trans>
         </Typography.Body>
       )}
     </Flex>
