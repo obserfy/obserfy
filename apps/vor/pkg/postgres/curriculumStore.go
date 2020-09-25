@@ -151,13 +151,14 @@ func (s CurriculumStore) CheckAreaPermissions(areaId string, userId string) (boo
 
 	return false, nil
 }
+
 func (s CurriculumStore) ReplaceSubject(newSubject domain.Subject) error {
 	var materialsToKeep []string
 	for _, material := range newSubject.Materials {
 		materialsToKeep = append(materialsToKeep, material.Id)
 	}
-	if err := s.DB.RunInTransaction(func(tx *pg.Tx) error {
-		if err := tx.Update(&newSubject); err != nil {
+	if err := s.DB.RunInTransaction(s.DB.Context(), func(tx *pg.Tx) error {
+		if _, err := tx.Model(&newSubject).WherePK().Update(); err != nil {
 			return richErrors.Wrap(err, "Failed updating subject")
 		}
 		if len(materialsToKeep) > 0 {
@@ -202,7 +203,7 @@ func (s CurriculumStore) GetMaterial(materialId string) (*domain.Material, error
 }
 
 func (s CurriculumStore) UpdateMaterial(material *domain.Material, order *int) error {
-	if err := s.RunInTransaction(func(tx *pg.Tx) error {
+	if err := s.RunInTransaction(s.DB.Context(), func(tx *pg.Tx) error {
 		// Reorder the order of materials
 		if order != nil {
 			var err error
@@ -224,7 +225,7 @@ func (s CurriculumStore) UpdateMaterial(material *domain.Material, order *int) e
 		}
 
 		// Update the targeted materials with the targeted changes
-		if err := tx.Update(material); err != nil {
+		if _, err := tx.Model(material).WherePK().Update(); err != nil {
 			return err
 		}
 		return nil
@@ -251,7 +252,7 @@ func (s CurriculumStore) NewMaterial(name string, subjectId string) (*domain.Mat
 		Name:      name,
 		Order:     biggestOrder + 1,
 	}
-	if err := s.DB.Insert(&material); err != nil {
+	if _, err := s.DB.Model(&material).Insert(); err != nil {
 		return nil, err
 	}
 
@@ -299,12 +300,12 @@ func (s CurriculumStore) NewSubject(name string, areaId string, materials []doma
 	for i := range materials {
 		materials[i].SubjectId = subject.Id
 	}
-	if err := s.DB.RunInTransaction(func(tx *pg.Tx) error {
-		if err := s.DB.Insert(&subject); err != nil {
+	if err := s.DB.RunInTransaction(s.DB.Context(), func(tx *pg.Tx) error {
+		if _, err := tx.Model(&subject).Insert(); err != nil {
 			return err
 		}
 		if len(materials) != 0 {
-			if err := s.DB.Insert(&materials); err != nil {
+			if _, err := tx.Model(&materials).Insert(); err != nil {
 				return err
 			}
 		}
@@ -328,7 +329,7 @@ func (s CurriculumStore) NewArea(name string, curriculumId string) (*domain.Area
 		CurriculumId: curriculumId,
 		Name:         name,
 	}
-	if err := s.Insert(&area); err != nil {
+	if _, err := s.Model(&area).Insert(); err != nil {
 		return nil, err
 	}
 	return &domain.Area{
@@ -395,7 +396,7 @@ func (s CurriculumStore) GetSubjectMaterials(subjectId string) ([]domain.Materia
 
 func (s CurriculumStore) DeleteArea(id string) error {
 	area := Area{Id: id}
-	if err := s.DB.Delete(&area); err != nil {
+	if _, err := s.DB.Model(&area).WherePK().Delete(); err != nil {
 		return err
 	}
 	return nil
@@ -403,7 +404,7 @@ func (s CurriculumStore) DeleteArea(id string) error {
 
 func (s CurriculumStore) DeleteSubject(id string) error {
 	subject := Subject{Id: id}
-	if err := s.DB.Delete(&subject); err != nil {
+	if _, err := s.DB.Model(&subject).WherePK().Delete(); err != nil {
 		return err
 	}
 	return nil

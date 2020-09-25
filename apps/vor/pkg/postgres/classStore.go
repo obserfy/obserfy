@@ -84,7 +84,7 @@ func (s ClassStore) UpdateClass(id string, name string, weekdays []time.Weekday,
 		EndTime:   endTime,
 	}
 	var rowsEffected int
-	if err := s.DB.RunInTransaction(func(tx *pg.Tx) error {
+	if err := s.DB.RunInTransaction(s.DB.Context(), func(tx *pg.Tx) error {
 		result, err := s.DB.
 			Model(&target).
 			Where("id=?id").

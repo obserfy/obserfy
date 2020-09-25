@@ -50,7 +50,7 @@ func (a AuthStore) GetUserByEmail(email string) (*auth.User, error) {
 
 func (a AuthStore) NewSession(userId string) (*auth.Session, error) {
 	session := Session{uuid.New().String(), userId}
-	if err := a.DB.Insert(&session); err != nil {
+	if _, err := a.DB.Model(&session).Insert(); err != nil {
 		return nil, richErrors.Wrap(err, "user id:"+userId)
 	}
 	return &auth.Session{
@@ -71,7 +71,7 @@ func (a AuthStore) NewUser(email string, password string, name string, inviteCod
 		Name:     name,
 		Password: hashedPassword,
 	}
-	if err := a.DB.Insert(&user); err != nil {
+	if _, err := a.DB.Model(&user).Insert(); err != nil {
 		return nil, richErrors.Wrap(err, "email:"+email)
 	}
 
@@ -87,7 +87,7 @@ func (a AuthStore) NewUser(email string, password string, name string, inviteCod
 		}
 
 		userSchoolRelation := UserToSchool{SchoolId: school.Id, UserId: user.Id}
-		if err := a.DB.Insert(&userSchoolRelation); err != nil {
+		if _, err := a.DB.Model(&userSchoolRelation).Insert(); err != nil {
 			return nil, richErrors.Wrap(err, "invite code:"+inviteCode)
 		}
 	}
@@ -113,7 +113,8 @@ func (a AuthStore) GetSession(token string) (*auth.Session, error) {
 
 func (a AuthStore) DeleteSession(token string) error {
 	session := Session{Token: token}
-	if err := a.DB.Delete(&session); err != nil {
+	// TODO: Make sure this works
+	if _, err := a.DB.Model(&session).WherePK().Delete(); err != nil {
 		return richErrors.Wrap(err, "Failed deleting session")
 	}
 	return nil
@@ -129,7 +130,7 @@ func (a AuthStore) NewPasswordResetToken(userId string) (*auth.PasswordResetToke
 		ExpiredAt: expiredAt,
 		UserId:    userId,
 	}
-	if err := a.DB.Insert(&token); err != nil {
+	if _, err := a.DB.Model(&token).Insert(); err != nil {
 		return nil, richErrors.Wrap(err, "Failed inserting new token")
 	}
 	return &auth.PasswordResetToken{
@@ -169,7 +170,7 @@ func (a AuthStore) DoPasswordReset(userId string, newPassword string, token stri
 	}
 
 	user := User{Id: userId, Password: hashedPassword}
-	if err := a.DB.RunInTransaction(func(tx *pg.Tx) error {
+	if err := a.DB.RunInTransaction(a.DB.Context(), func(tx *pg.Tx) error {
 		// Delete the token being used
 		if _, err := a.DB.Model((*PasswordResetToken)(nil)).
 			Where("token=?", token).
