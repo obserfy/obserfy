@@ -15,7 +15,7 @@ func (s CurriculumStore) UpdateCurriculum(curriculumId string, name *string) (*d
 	curriculum := make(PartialUpdateModel)
 	curriculum.AddStringColumn("name", name)
 	if _, err := s.Model(curriculum.GetModel()).
-		TableExpr("curriculum").
+		TableExpr("curriculums").
 		Where("id = ?", curriculumId).
 		Update(); err != nil {
 		return nil, err

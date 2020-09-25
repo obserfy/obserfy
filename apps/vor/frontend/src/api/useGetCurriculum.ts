@@ -18,6 +18,10 @@ export function useGetCurriculum() {
   })
 }
 
+export const setCurriculumCache = (data: GetCurriculumResponse) => {
+  queryCache.setQueryData(["school", getSchoolId(), "curriculum"], data)
+}
+
 export const invalidateGetCurriculumCache = () => {
   const schoolId = getSchoolId()
   return queryCache.invalidateQueries(["school", schoolId, "curriculum"])

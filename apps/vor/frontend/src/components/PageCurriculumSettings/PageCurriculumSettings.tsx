@@ -17,10 +17,14 @@ import { borderBottom } from "../../border"
 import { ReactComponent as DeleteIcon } from "../../icons/trash.svg"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
 import DeleteCurriculumDialog from "../DeleteCurriculumDialog/DeleteCurriculumDialog"
+import EditCurriculumDialog from "../EditCurriculumDialog/EditCurriculumDialog"
 
 export const PageCurriculumSettings: FC = () => {
   const { data, isLoading, isError, isSuccess } = useGetCurriculum()
   const [showCurriculumDeleteDialog, setShowCurriculumDeleteDialog] = useState(
+    false
+  )
+  const [showCurriculumEditDialog, setShowCurriculumEditDialog] = useState(
     false
   )
 
@@ -60,9 +64,9 @@ export const PageCurriculumSettings: FC = () => {
             </Button>
             <Button
               variant="secondary"
-              onClick={() => {}}
               sx={{ flexShrink: 0 }}
               px={2}
+              onClick={() => setShowCurriculumEditDialog(true)}
             >
               <Icon as={EditIcon} />
             </Button>
@@ -74,6 +78,13 @@ export const PageCurriculumSettings: FC = () => {
           <DeleteCurriculumDialog
             onDismiss={() => setShowCurriculumDeleteDialog(false)}
             name={data?.name ?? ""}
+          />
+        )}
+        {showCurriculumEditDialog && (
+          <EditCurriculumDialog
+            curriculumId={data?.id ?? ""}
+            onDismiss={() => setShowCurriculumEditDialog(false)}
+            originalValue={data?.name}
           />
         )}
       </Box>

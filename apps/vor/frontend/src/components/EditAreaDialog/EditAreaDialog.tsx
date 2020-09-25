@@ -44,11 +44,7 @@ export const EditAreaDialog: FC<Props> = ({
 
   return (
     <Dialog sx={{ backgroundColor: "background" }}>
-      <Flex
-        sx={{
-          flexDirection: "column",
-        }}
-      >
+      <Flex sx={{ flexDirection: "column" }}>
         <Flex
           backgroundColor="surface"
           sx={{
