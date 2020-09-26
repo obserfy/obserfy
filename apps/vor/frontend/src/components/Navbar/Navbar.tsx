@@ -4,10 +4,12 @@ import GatsbyImage from "gatsby-image"
 import { useLocation, useMatch } from "@reach/router"
 import { useMemoryStatus } from "react-adaptive-hooks/memory"
 import { Box, Card, Flex } from "theme-ui"
+import { i18nMark } from "@lingui/core"
+import { Trans } from "@lingui/macro"
+import { LocalizedLink as Link } from "gatsby-theme-i18n"
 import { ReactComponent as SettingsIcon } from "../../icons/settings.svg"
 import { ReactComponent as StudentsIcon } from "../../icons/students.svg"
 import { ReactComponent as MessageIcon } from "../../icons/message.svg"
-import { Link } from "../Link/Link"
 import Icon from "../Icon/Icon"
 import { Typography } from "../Typography/Typography"
 import { SETTINGS_URL, STUDENTS_URL, SUPPORT_URL } from "../../routes"
@@ -107,7 +109,11 @@ const Navbar: FC = () => {
         <Box mx="auto" my={3} sx={{ display: ["none", "block"] }} mb={4}>
           <GatsbyImage fixed={query.file.childImageSharp.fixed} />
         </Box>
-        <NavBarItem title="Students" icon={StudentsIcon} to={STUDENTS_URL} />
+        <NavBarItem
+          title={i18nMark("Students")}
+          icon={StudentsIcon}
+          to={STUDENTS_URL}
+        />
         {/* <NavBarItem title="Plan" icon={CalendarIcon} to="/dashboard/plans" /> */}
         <Box
           sx={{
@@ -115,8 +121,16 @@ const Navbar: FC = () => {
             display: ["none", "block"],
           }}
         />
-        <NavBarItem title="Admin" icon={SettingsIcon} to={SETTINGS_URL} />
-        <NavBarItem title="Support" icon={MessageIcon} to={SUPPORT_URL} />
+        <NavBarItem
+          title={i18nMark("Admin")}
+          icon={SettingsIcon}
+          to={SETTINGS_URL}
+        />
+        <NavBarItem
+          title={i18nMark("Support")}
+          icon={MessageIcon}
+          to={SUPPORT_URL}
+        />
       </Flex>
     </Card>
   )
@@ -178,7 +192,7 @@ const NavBarItem: FC<{
           sx={{ lineHeight: 1, fontSize: ["10px", 0] }}
           color={match ? "textPrimary" : "textMediumEmphasis"}
         >
-          {title}
+          <Trans id={title} />
         </Typography.Body>
       </Flex>
     </Link>

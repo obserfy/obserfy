@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { FC, useEffect } from "react"
 import { jsx, Box, Card, Flex, Button } from "theme-ui"
+import { Trans } from "@lingui/macro"
 import { useGetUserProfile } from "../../api/useGetUserProfile"
 import { loadCanny } from "../../canny"
 import Typography from "../Typography/Typography"
@@ -34,15 +35,17 @@ export const PageSupport: FC = () => {
   return (
     <Box mx="auto" sx={{ maxWidth: "maxWidth.sm" }}>
       <Typography.H6 mx={3} mt={4} mb={2}>
-        Help and Feedbacks
+        <Trans>Help and Feedbacks</Trans>
       </Typography.H6>
       <Card sx={{ borderRadius: [0, "default"] }}>
         <a href="https://feedback.obserfy.com">
           <Flex p={3} sx={{ alignItems: "center" }}>
             <Box mr={3}>
-              <Typography.Body>Go to Canny</Typography.Body>
+              <Typography.Body>
+                <Trans>Go to Canny</Trans>
+              </Typography.Body>
               <Typography.Body color="textMediumEmphasis">
-                Post and upvote suggestions, ideas, and issues.
+                <Trans>Post and upvote suggestions, ideas, and issues.</Trans>
               </Typography.Body>
             </Box>
             <Icon as={NextIcon} ml="auto" />
@@ -51,9 +54,13 @@ export const PageSupport: FC = () => {
 
         <Flex m={3} sx={{ alignItems: "flex-start" }}>
           <Box mr={3}>
-            <Typography.Body>Shoot us an e-mail</Typography.Body>
+            <Typography.Body>
+              <Trans>Shoot us an e-mail</Trans>
+            </Typography.Body>
             <Typography.Body color="textMediumEmphasis">
-              Have a question? Shoot us an email at chrsep@protonmail.com
+              <Trans>
+                Have a question? Shoot us an email at chrsep@protonmail.com
+              </Trans>
             </Typography.Body>
           </Box>
           <a

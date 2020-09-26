@@ -1,0 +1,26 @@
+{
+  "Students": {
+    "origin": [
+      [
+        "src/components/Navbar/Navbar.tsx",
+        98
+      ]
+    ]
+  },
+  "Admin": {
+    "origin": [
+      [
+        "src/components/Navbar/Navbar.tsx",
+        104
+      ]
+    ]
+  },
+  "Support": {
+    "origin": [
+      [
+        "src/components/Navbar/Navbar.tsx",
+        105
+      ]
+    ]
+  }
+}

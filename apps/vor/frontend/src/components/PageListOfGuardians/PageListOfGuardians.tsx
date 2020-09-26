@@ -1,6 +1,8 @@
 /** @jsx jsx */
 import { FC, useState } from "react"
 import { Box, Button, Card, Flex, jsx } from "theme-ui"
+import { Trans } from "@lingui/macro"
+import { LocalizedLink as Link } from "gatsby-theme-i18n"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import {
   SETTINGS_URL,
@@ -12,7 +14,6 @@ import { useGetSchoolGuardians } from "../../api/guardians/useGetSchoolGuardians
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 
 import Icon from "../Icon/Icon"
-import { Link } from "../Link/Link"
 import SearchBar from "../SearchBar/SearchBar"
 
 export const PageListOfGuardians: FC = () => {
@@ -32,7 +33,7 @@ export const PageListOfGuardians: FC = () => {
     >
       <BackNavigation to={SETTINGS_URL} text="Settings" />
       <Typography.H5 m={3} sx={{ lineHeight: 1 }}>
-        All Guardians
+        <Trans>All Guardians</Trans>
       </Typography.H5>
       <Flex p={3} pb={2} pt={2}>
         <SearchBar

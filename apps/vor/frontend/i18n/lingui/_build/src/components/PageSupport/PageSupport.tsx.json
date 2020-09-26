@@ -1,0 +1,42 @@
+{
+  "Help and Feedbacks": {
+    "origin": [
+      [
+        "src/components/PageSupport/PageSupport.tsx",
+        35
+      ]
+    ]
+  },
+  "Go to Canny": {
+    "origin": [
+      [
+        "src/components/PageSupport/PageSupport.tsx",
+        41
+      ]
+    ]
+  },
+  "Post and upvote suggestions, ideas, and issues.": {
+    "origin": [
+      [
+        "src/components/PageSupport/PageSupport.tsx",
+        43
+      ]
+    ]
+  },
+  "Shoot us an e-mail": {
+    "origin": [
+      [
+        "src/components/PageSupport/PageSupport.tsx",
+        52
+      ]
+    ]
+  },
+  "Have a question? Shoot us an email at chrsep@protonmail.com": {
+    "origin": [
+      [
+        "src/components/PageSupport/PageSupport.tsx",
+        54
+      ]
+    ]
+  }
+}

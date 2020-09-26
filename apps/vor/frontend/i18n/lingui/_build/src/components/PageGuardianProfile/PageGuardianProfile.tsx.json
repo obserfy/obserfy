@@ -1,0 +1,110 @@
+{
+  "All Guardians": {
+    "origin": [
+      [
+        "src/components/PageGuardianProfile/PageGuardianProfile.tsx",
+        37
+      ]
+    ]
+  },
+  "Name": {
+    "origin": [
+      [
+        "src/components/PageGuardianProfile/PageGuardianProfile.tsx",
+        55
+      ],
+      [
+        "src/components/PageGuardianProfile/PageGuardianProfile.tsx",
+        59
+      ]
+    ]
+  },
+  "Edit Name": {
+    "origin": [
+      [
+        "src/components/PageGuardianProfile/PageGuardianProfile.tsx",
+        57
+      ]
+    ]
+  },
+  "Save": {
+    "origin": [
+      [
+        "src/components/PageGuardianProfile/PageGuardianProfile.tsx",
+        57
+      ],
+      [
+        "src/components/PageGuardianProfile/PageGuardianProfile.tsx",
+        77
+      ],
+      [
+        "src/components/PageGuardianProfile/PageGuardianProfile.tsx",
+        97
+      ],
+      [
+        "src/components/PageGuardianProfile/PageGuardianProfile.tsx",
+        117
+      ]
+    ]
+  },
+  "Email": {
+    "origin": [
+      [
+        "src/components/PageGuardianProfile/PageGuardianProfile.tsx",
+        75
+      ],
+      [
+        "src/components/PageGuardianProfile/PageGuardianProfile.tsx",
+        79
+      ]
+    ]
+  },
+  "Edit Email": {
+    "origin": [
+      [
+        "src/components/PageGuardianProfile/PageGuardianProfile.tsx",
+        77
+      ]
+    ]
+  },
+  "Phone": {
+    "origin": [
+      [
+        "src/components/PageGuardianProfile/PageGuardianProfile.tsx",
+        95
+      ],
+      [
+        "src/components/PageGuardianProfile/PageGuardianProfile.tsx",
+        99
+      ]
+    ]
+  },
+  "Edit Phone": {
+    "origin": [
+      [
+        "src/components/PageGuardianProfile/PageGuardianProfile.tsx",
+        97
+      ]
+    ]
+  },
+  "Note": {
+    "origin": [
+      [
+        "src/components/PageGuardianProfile/PageGuardianProfile.tsx",
+        115
+      ],
+      [
+        "src/components/PageGuardianProfile/PageGuardianProfile.tsx",
+        119
+      ]
+    ]
+  },
+  "Edit Note": {
+    "origin": [
+      [
+        "src/components/PageGuardianProfile/PageGuardianProfile.tsx",
+        117
+      ]
+    ]
+  }
+}

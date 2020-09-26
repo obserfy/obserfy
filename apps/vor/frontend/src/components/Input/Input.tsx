@@ -1,5 +1,6 @@
 import React, { ChangeEventHandler, FC, PropsWithoutRef } from "react"
 import { Input as BaseInput, InputProps, Label, Flex, Box } from "theme-ui"
+import { Trans } from "@lingui/macro"
 import Icon from "../Icon/Icon"
 
 interface Props extends PropsWithoutRef<InputProps> {
@@ -40,7 +41,11 @@ export const Input: FC<Props> = ({
         fontSize: small ? 0 : undefined,
       }}
     >
-      {label && <Box pb={small ? 2 : 1}>{label}</Box>}
+      {label && (
+        <Box pb={small ? 2 : 1}>
+          <Trans id={label} />
+        </Box>
+      )}
       <Flex sx={{ alignItems: "center" }}>
         {icon && (
           <Icon

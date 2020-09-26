@@ -17,11 +17,17 @@ msgstr ""
 msgid "90-days free trial"
 msgstr "90-hari coba gratis"
 
-#: src/components/PageInviteUser/PageInviteUser.tsx:71
+#: src/components/PageInviteUser/PageInviteUser.tsx:70
 msgid "Add more email"
 msgstr "Tambah email"
 
+#: src/components/Navbar/Navbar.tsx:104
+msgid "Admin"
+msgstr "Admin"
+
 #: src/components/PageAdmin/PageAdmin.tsx:48
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:37
+#: src/components/PageListOfGuardians/PageListOfGuardians.tsx:24
 msgid "All Guardians"
 msgstr "Semua Wali"
 
@@ -63,13 +69,46 @@ msgstr "Paket Sekarang"
 msgid "Curriculum"
 msgstr "Kurikulum"
 
-#: src/components/PageInviteUser/PageInviteUser.tsx:82
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:77
+msgid "Edit Email"
+msgstr "Ubah Email"
+
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:57
+msgid "Edit Name"
+msgstr "Ubah Nama"
+
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:117
+msgid "Edit Note"
+msgstr "Ubah Catatan"
+
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:97
+msgid "Edit Phone"
+msgstr "Ubah Telepon"
+
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:75
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:79
+msgid "Email"
+msgstr "Email"
+
+#: src/components/PageInviteUser/PageInviteUser.tsx:81
 msgid "Emails sent!"
 msgstr "Email dikirim!"
 
 #: src/components/PageSubscription/PageSubscription.tsx:76
 msgid "Free Trial"
 msgstr "Coba Gratis"
+
+#: src/components/PageSupport/PageSupport.tsx:41
+msgid "Go to Canny"
+msgstr "Ke Canny"
+
+#: src/components/PageSupport/PageSupport.tsx:54
+msgid "Have a question? Shoot us an email at chrsep@protonmail.com"
+msgstr "Punya pertanyaan? Kirim email ke chrsep@protonmail.com"
+
+#: src/components/PageSupport/PageSupport.tsx:35
+msgid "Help and Feedbacks"
+msgstr "Bantuan dan Masukan"
 
 #: src/components/PageSubscription/PageSubscription.tsx:107
 msgid "Image gallery"
@@ -79,11 +118,11 @@ msgstr "Galeri gambar"
 msgid "Invite Your Team"
 msgstr "Undang Tim Anda"
 
-#: src/components/PageInviteUser/PageInviteUser.tsx:63
+#: src/components/PageInviteUser/PageInviteUser.tsx:62
 msgid "Invite using emails"
 msgstr "Undang dengan email"
 
-#: src/components/PageInviteUser/PageInviteUser.tsx:96
+#: src/components/PageInviteUser/PageInviteUser.tsx:95
 msgid "Invite using link"
 msgstr "Undang dengan link"
 
@@ -91,11 +130,21 @@ msgstr "Undang dengan link"
 msgid "Log Out"
 msgstr "Keluar"
 
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:55
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:59
+msgid "Name"
+msgstr "Nama"
+
 #: src/components/PageSubscription/PageSubscription.tsx:40
 msgid "Next Bill"
 msgstr "Tagihan Selanjutnya"
 
-#: src/components/PageInviteUser/PageInviteUser.tsx:85
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:115
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:119
+msgid "Note"
+msgstr "Catatan"
+
+#: src/components/PageInviteUser/PageInviteUser.tsx:84
 msgid "Or"
 msgstr "Atau"
 
@@ -107,6 +156,15 @@ msgstr "Portal orang tua"
 msgid "Payment details"
 msgstr "Detil Pembayaran"
 
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:95
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:99
+msgid "Phone"
+msgstr "Telepon"
+
+#: src/components/PageSupport/PageSupport.tsx:43
+msgid "Post and upvote suggestions, ideas, and issues."
+msgstr "Posting dan upvote pada saran, ide, dan masalah"
+
 #: src/components/PageSubscription/PageSubscription.tsx:103
 msgid "Record observations"
 msgstr "Rekam observasi"
@@ -115,11 +173,18 @@ msgstr "Rekam observasi"
 msgid "Reporting"
 msgstr "Laporan"
 
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:57
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:77
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:97
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:117
+msgid "Save"
+msgstr "Simpan"
+
 #: src/components/SearchBar/SearchBar.tsx:18
 msgid "Search"
 msgstr "Cari"
 
-#: src/components/PageInviteUser/PageInviteUser.tsx:74
+#: src/components/PageInviteUser/PageInviteUser.tsx:73
 msgid "Send invites"
 msgstr "Kirim undangan"
 
@@ -131,11 +196,16 @@ msgstr "Atur menjadi aktif?"
 msgid "Set as inactive?"
 msgstr "Atur menjadi nonaktif?"
 
-#: src/components/PageInviteUser/PageInviteUser.tsx:61
+#: src/components/PageInviteUser/PageInviteUser.tsx:60
 #: src/components/PageListOfStudents/PageListOfStudents.tsx:33
 #: src/components/PageSubscription/PageSubscription.tsx:25
+#: src/components/PageUsers/PageUsers.tsx:13
 msgid "Settings"
 msgstr "Pengaturan"
+
+#: src/components/PageSupport/PageSupport.tsx:52
+msgid "Shoot us an e-mail"
+msgstr "Kirim e-mail ke kami"
 
 #: src/components/PageSubscription/PageSubscription.tsx:97
 msgid "Simple pricing for every school."
@@ -157,6 +227,10 @@ msgstr "Paket Standar"
 msgid "Start Free Trial"
 msgstr "Coba Gratis Sekarang"
 
+#: src/components/Navbar/Navbar.tsx:98
+msgid "Students"
+msgstr "Murid"
+
 #: src/components/PageSubscription/PageSubscription.tsx:137
 msgid "Subscribed"
 msgstr "Berlangganan"
@@ -165,6 +239,10 @@ msgstr "Berlangganan"
 #: src/components/PageSubscription/PageSubscription.tsx:27
 msgid "Subscription Plan"
 msgstr "Paket Berlangganan"
+
+#: src/components/Navbar/Navbar.tsx:105
+msgid "Support"
+msgstr "Bantuan"
 
 #: src/components/PageAdmin/PageAdmin.tsx:54
 msgid "Switch school"
@@ -189,6 +267,10 @@ msgstr "Pengguna"
 #: src/components/PageListOfStudents/PageListOfStudents.tsx:71
 msgid "Yes"
 msgstr "Ya"
+
+#: src/components/UserCard/UserCard.tsx:30
+msgid "You"
+msgstr "Anda"
 
 #: src/components/PageListOfStudents/PageListOfStudents.tsx:69
 msgid "active"
