@@ -52,9 +52,9 @@
   "devDependencies": {
     "@babel/preset-typescript": "7.10.4",
     "@istanbuljs/nyc-config-typescript": "1.0.1",
-    "@storybook/addon-actions": "6.0.21",
-    "@storybook/addon-essentials": "6.0.21",
-    "@storybook/react": "6.0.21",
+    "@storybook/addon-actions": "6.0.22",
+    "@storybook/addon-essentials": "6.0.22",
+    "@storybook/react": "6.0.22",
     "@testing-library/react": "11.0.4",
     "@testing-library/react-hooks": "3.4.1",
     "@types/date-fns": "2.6.0",
