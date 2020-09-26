@@ -45,7 +45,7 @@
     "react-adaptive-hooks": "0.0.8",
     "react-dom": "16.13.1",
     "react-helmet": "6.1.0",
-    "react-query": "2.7.0",
+    "react-query": "2.23.0",
     "theme-ui": "0.4.0-rc.5",
     "use-immer": "0.4.1"
   },

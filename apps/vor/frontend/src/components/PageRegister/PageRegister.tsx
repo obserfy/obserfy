@@ -75,7 +75,7 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
           >
             <Typography.Body>You&apos;ve been invited to join</Typography.Body>
             <Typography.H5 py={2} sx={{ fontWeight: "bold" }}>
-              {inviteCodeDetails.data.schoolName}
+              {inviteCodeDetails.data?.schoolName}
               <span role="img" aria-label="Party emoji">
                 {" "}
                 🎊 🎉
@@ -158,7 +158,7 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
               sx={{ textAlign: "center", width: "100%" }}
               color="danger"
             >
-              {error?.message}
+              {(error as Error)?.message}
             </Typography.Body>
             <Typography.Body
               mt={5}

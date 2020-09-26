@@ -95,7 +95,7 @@ export const PagePickGuardian: FC = () => {
                     phone,
                     note,
                   })
-                  if (result.status === 201) {
+                  if (result?.ok) {
                     const resultJson = await result.json()
                     await navigate(NEW_STUDENT_URL, {
                       state: {

@@ -13,7 +13,7 @@ export function useGetCurriculum() {
   )
   return useQuery(["school", schoolId, "curriculum"], getCurriculum, {
     retry: (a, b) => {
-      return b.message !== "School doesn't have curriculum yet"
+      return (b as Error).message !== "School doesn't have curriculum yet"
     },
   })
 }

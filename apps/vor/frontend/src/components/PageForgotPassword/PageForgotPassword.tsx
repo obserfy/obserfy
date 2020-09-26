@@ -67,7 +67,7 @@ export const PageForgotPassword: FC = () => {
               }}
               color="onTintError"
             >
-              {error}
+              {(error as Error).message}
             </Typography.Body>
           </Flex>
         )}

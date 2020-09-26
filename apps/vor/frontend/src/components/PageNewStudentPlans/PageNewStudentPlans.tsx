@@ -73,7 +73,7 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
       students: [studentId, ...otherStudentsId],
       repetition: repetition === 0 ? undefined : { type: repetition, endDate },
     })
-    if (result.ok) {
+    if (result?.ok) {
       await navigate(STUDENT_PLANS_URL(studentId, date))
     }
   }
@@ -153,7 +153,7 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
             }}
           />
         </Box>
-        {areas.status === "success" && areas.data.length === 0 ? (
+        {areas.status === "success" && (areas.data?.length ?? 0) === 0 ? (
           <Box mx={[0, 3]}>
             <InformationalCard
               message="You can enable the curriculum feature to track student progress in your curriculum."

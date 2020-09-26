@@ -7,9 +7,11 @@ const useGetUser = () => {
   const router = useRouter()
   const getUser = getApi<UserData>("/me")
   return useQuery("me", getUser, {
-    retry: (failureCount, error) => !(error.message === "not_authenticated"),
+    retry: (failureCount, error) =>
+      // TODO: Don't use any
+      !((error as any).message === "not_authenticated"),
     onError: (error) => {
-      if (error?.message === "not_authenticated") {
+      if ((error as any)?.message === "not_authenticated") {
         router.push(`/session-expired`)
       }
     },

@@ -230,7 +230,7 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
         <Typography.H5 m={3} mt={4}>
           Classes
         </Typography.H5>
-        {classes.status === "success" && classes.data.length === 0 && (
+        {classes.status === "success" && (classes.data?.length ?? 0) === 0 && (
           <EmptyClassDataPlaceholder />
         )}
         {classes.status === "loading" && <ClassesLoadingPlaceholder />}
