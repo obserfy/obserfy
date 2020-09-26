@@ -1,6 +1,6 @@
 import { queryCache, useQuery } from "react-query"
 import { getSchoolId } from "../hooks/schoolIdState"
-import { ApiError, getApi } from "./fetchApi"
+import { getApi } from "./fetchApi"
 
 interface GetCurriculumResponse {
   id: string
@@ -13,9 +13,7 @@ export function useGetCurriculum() {
   )
   return useQuery(["school", schoolId, "curriculum"], getCurriculum, {
     retry: (a, b) => {
-      return (
-        (b as ApiError).error?.message !== "School doesn't have curriculum yet"
-      )
+      return (b as Error).message !== "School doesn't have curriculum yet"
     },
   })
 }
