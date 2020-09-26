@@ -5619,10 +5619,10 @@
   resolved "https://registry.yarnpkg.com/@types/lingui__core/-/lingui__core-2.7.0.tgz#a93e53338a5a7ae5aa8cdb22ef0111d2053c6ef0"
   integrity sha512-4gx/msI4cVlx1/RI1g6bDREZqflWh4HflMX3A5mMnvM6ymohg5SOzWk+R18N6/44ONPqOI+pcP8xjKLrI2tQhQ==
 
-"@types/lingui__macro@2.7.3":
-  version "2.7.3"
-  resolved "https://registry.yarnpkg.com/@types/lingui__macro/-/lingui__macro-2.7.3.tgz#7671abf5c816b79028e320053a53d13ca6cf7c8e"
-  integrity sha512-/kU4T6F7qNYwao0G2NV2LBt0AZuGcLM2w37pf70QcZDky1TAJIGxB76m4L1jlTW4GZXbvPZbQlws8i8Uctqg3A==
+"@types/lingui__macro@2.7.4":
+  version "2.7.4"
+  resolved "https://registry.yarnpkg.com/@types/lingui__macro/-/lingui__macro-2.7.4.tgz#498f25afa1830a4c480a5295cdf2103adaddbb2a"
+  integrity sha512-psHhx3EFHbZ9NPA/Su2dI4jcnEHcU+wnDi8lU5g0QOMmZiCyY5Q1ntYXulh8/v0dHh2J9Us5T241voRSKAmZfA==
   dependencies:
     "@types/lingui__core" "*"
     "@types/react" "*"
