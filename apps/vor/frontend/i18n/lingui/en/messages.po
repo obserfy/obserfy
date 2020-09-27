@@ -17,7 +17,7 @@ msgstr ""
 msgid "90-days free trial"
 msgstr "90-days free trial"
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:137
+#: src/components/PageNewStudent/PageNewStudent.tsx:145
 msgid "Add"
 msgstr "Add"
 
@@ -64,11 +64,11 @@ msgstr "Cancel Plan"
 msgid "Class"
 msgstr "Class"
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:110
+#: src/components/PageNewStudent/PageNewStudent.tsx:118
 msgid "Classes"
 msgstr "Classes"
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:160
+#: src/components/PageNewStudent/PageNewStudent.tsx:168
 msgid "Clear"
 msgstr "Clear"
 
@@ -89,11 +89,11 @@ msgstr "Current Plan"
 msgid "Curriculum"
 msgstr "Curriculum"
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:99
+#: src/components/PageNewStudent/PageNewStudent.tsx:101
 msgid "Date of Birth"
 msgstr "Date of Birth"
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:100
+#: src/components/PageNewStudent/PageNewStudent.tsx:102
 msgid "Date of Entry"
 msgstr "Date of Entry"
 
@@ -113,8 +113,10 @@ msgstr "Edit Note"
 msgid "Edit Phone"
 msgstr "Edit Phone"
 
+#: src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx:35
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:75
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:79
+#: src/components/PageNewGuardian/PageNewGuardian.tsx:49
 msgid "Email"
 msgstr "Email"
 
@@ -122,7 +124,7 @@ msgstr "Email"
 msgid "Emails sent!"
 msgstr "Emails sent!"
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:104
+#: src/components/PageNewStudent/PageNewStudent.tsx:111
 msgid "Female"
 msgstr "Female"
 
@@ -130,7 +132,7 @@ msgstr "Female"
 msgid "Free Trial"
 msgstr "Free Trial"
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:101
+#: src/components/PageNewStudent/PageNewStudent.tsx:103
 msgid "Gender"
 msgstr "Gender"
 
@@ -142,7 +144,12 @@ msgstr "Go to Canny"
 msgid "Go to Class Settings"
 msgstr "Go to Class Settings"
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:133
+#: src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx:34
+#: src/components/PageNewGuardian/PageNewGuardian.tsx:43
+msgid "Guardian Name"
+msgstr "Guardian Name"
+
+#: src/components/PageNewStudent/PageNewStudent.tsx:141
 msgid "Guardians"
 msgstr "Guardians"
 
@@ -182,7 +189,7 @@ msgstr "Invite using link"
 msgid "Log Out"
 msgstr "Log Out"
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:103
+#: src/components/PageNewStudent/PageNewStudent.tsx:108
 msgid "Male"
 msgstr "Male"
 
@@ -191,11 +198,16 @@ msgstr "Male"
 msgid "Name"
 msgstr "Name"
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:98
+#: src/components/PageNewStudent/PageNewStudent.tsx:100
 msgid "Name (Required)"
 msgstr "Name (Required)"
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:95
+#: src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx:31
+#: src/components/PageNewGuardian/PageNewGuardian.tsx:40
+msgid "New Guardian"
+msgstr "New Guardian"
+
+#: src/components/PageNewStudent/PageNewStudent.tsx:96
 msgid "New Student"
 msgstr "New Student"
 
@@ -203,16 +215,18 @@ msgstr "New Student"
 msgid "Next Bill"
 msgstr "Next Bill"
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:102
+#: src/components/PageNewStudent/PageNewStudent.tsx:105
 msgid "Not Set"
 msgstr "Not Set"
 
+#: src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx:37
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:115
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:119
+#: src/components/PageNewGuardian/PageNewGuardian.tsx:51
 msgid "Note"
 msgstr "Note"
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:107
+#: src/components/PageNewStudent/PageNewStudent.tsx:115
 msgid "Notes"
 msgstr "Notes"
 
@@ -228,8 +242,10 @@ msgstr "Parent portal"
 msgid "Payment details"
 msgstr "Payment details"
 
+#: src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx:36
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:95
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:99
+#: src/components/PageNewGuardian/PageNewGuardian.tsx:50
 msgid "Phone"
 msgstr "Phone"
 
@@ -241,15 +257,21 @@ msgstr "Post and upvote suggestions, ideas, and issues."
 msgid "Record observations"
 msgstr "Record observations"
 
+#: src/components/PageNewGuardian/PageNewGuardian.tsx:44
+msgid "Relationship"
+msgstr "Relationship"
+
 #: src/components/PageSubscription/PageSubscription.tsx:108
 msgid "Reporting"
 msgstr "Reporting"
 
+#: src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx:50
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:57
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:77
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:97
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:117
-#: src/components/PageNewStudent/PageNewStudent.tsx:180
+#: src/components/PageNewGuardian/PageNewGuardian.tsx:66
+#: src/components/PageNewStudent/PageNewStudent.tsx:188
 msgid "Save"
 msgstr "Save"
 
@@ -300,7 +322,7 @@ msgstr "Standard Plan"
 msgid "Start Free Trial"
 msgstr "Start Free Trial"
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:106
+#: src/components/PageNewStudent/PageNewStudent.tsx:114
 msgid "Student ID"
 msgstr "Student ID"
 
@@ -325,7 +347,7 @@ msgstr "Support"
 msgid "Switch school"
 msgstr "Switch school"
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:143
+#: src/components/PageNewStudent/PageNewStudent.tsx:151
 msgid "This student doesn't have a guardian yet."
 msgstr "This student doesn't have a guardian yet."
 

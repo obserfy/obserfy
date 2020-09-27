@@ -1,0 +1,58 @@
+{
+  "New Guardian": {
+    "origin": [
+      [
+        "src/components/PageNewGuardian/PageNewGuardian.tsx",
+        40
+      ]
+    ]
+  },
+  "Guardian Name": {
+    "origin": [
+      [
+        "src/components/PageNewGuardian/PageNewGuardian.tsx",
+        43
+      ]
+    ]
+  },
+  "Relationship": {
+    "origin": [
+      [
+        "src/components/PageNewGuardian/PageNewGuardian.tsx",
+        44
+      ]
+    ]
+  },
+  "Email": {
+    "origin": [
+      [
+        "src/components/PageNewGuardian/PageNewGuardian.tsx",
+        49
+      ]
+    ]
+  },
+  "Phone": {
+    "origin": [
+      [
+        "src/components/PageNewGuardian/PageNewGuardian.tsx",
+        50
+      ]
+    ]
+  },
+  "Note": {
+    "origin": [
+      [
+        "src/components/PageNewGuardian/PageNewGuardian.tsx",
+        51
+      ]
+    ]
+  },
+  "Save": {
+    "origin": [
+      [
+        "src/components/PageNewGuardian/PageNewGuardian.tsx",
+        66
+      ]
+    ]
+  }
+}

@@ -6,6 +6,7 @@ import {
   SelectProps as BaseSelectProps,
   SxProps,
 } from "theme-ui"
+import { Trans } from "@lingui/macro"
 
 export interface SelectProps extends PropsWithoutRef<BaseSelectProps>, SxProps {
   label?: string
@@ -23,7 +24,11 @@ export const Select: FC<SelectProps> = ({
   ...props
 }) => (
   <Label sx={{ ...sx, display: "flex", flexDirection: "column" }}>
-    {label && !hideLabel && <Box pb={1}>{label}</Box>}
+    {label && !hideLabel && (
+      <Box pb={1}>
+        <Trans id={label} />
+      </Box>
+    )}
     <BaseSelect
       onChange={onChange}
       defaultValue={defaultValue}

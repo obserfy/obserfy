@@ -1,0 +1,50 @@
+{
+  "New Guardian": {
+    "origin": [
+      [
+        "src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx",
+        31
+      ]
+    ]
+  },
+  "Guardian Name": {
+    "origin": [
+      [
+        "src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx",
+        34
+      ]
+    ]
+  },
+  "Email": {
+    "origin": [
+      [
+        "src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx",
+        35
+      ]
+    ]
+  },
+  "Phone": {
+    "origin": [
+      [
+        "src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx",
+        36
+      ]
+    ]
+  },
+  "Note": {
+    "origin": [
+      [
+        "src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx",
+        37
+      ]
+    ]
+  },
+  "Save": {
+    "origin": [
+      [
+        "src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx",
+        50
+      ]
+    ]
+  }
+}
