@@ -17,6 +17,14 @@ msgstr ""
 msgid "90-days free trial"
 msgstr "90-hari coba gratis"
 
+#: src/components/PageNewStudent/PageNewStudent.tsx:137
+msgid "Add"
+msgstr "Tambah"
+
+#: src/components/ProfilePicker/ProfilePicker.tsx:52
+msgid "Add Picture"
+msgstr "Tambah Foto"
+
 #: src/components/PageInviteUser/PageInviteUser.tsx:70
 msgid "Add more email"
 msgstr "Tambah email"
@@ -56,9 +64,21 @@ msgstr "Batalkan Paket"
 msgid "Class"
 msgstr "Kelas"
 
+#: src/components/PageNewStudent/PageNewStudent.tsx:110
+msgid "Classes"
+msgstr "Kelas"
+
+#: src/components/PageNewStudent/PageNewStudent.tsx:160
+msgid "Clear"
+msgstr "Hapus"
+
 #: src/components/PageSubscription/PageSubscription.tsx:104
 msgid "Create lesson plans"
 msgstr "Membuat rencana pembelajaran"
+
+#: src/components/EmptyClassDataPlaceholder/EmptyClassDataPlaceholder.tsx:7
+msgid "Create your first class to track your student's class enrollment."
+msgstr "Buat kelas pertama anda untuk melacak pendaftaran siswa."
 
 #: src/components/PageSubscription/PageSubscription.tsx:35
 #: src/components/PageSubscription/PageSubscription.tsx:79
@@ -68,6 +88,14 @@ msgstr "Paket Sekarang"
 #: src/components/PageAdmin/PageAdmin.tsx:44
 msgid "Curriculum"
 msgstr "Kurikulum"
+
+#: src/components/PageNewStudent/PageNewStudent.tsx:99
+msgid "Date of Birth"
+msgstr "Tanggal Lahir"
+
+#: src/components/PageNewStudent/PageNewStudent.tsx:100
+msgid "Date of Entry"
+msgstr "Tanggal Masuk"
 
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:77
 msgid "Edit Email"
@@ -94,15 +122,31 @@ msgstr "Email"
 msgid "Emails sent!"
 msgstr "Email dikirim!"
 
+#: src/components/PageNewStudent/PageNewStudent.tsx:104
+msgid "Female"
+msgstr "Perempuan"
+
 #: src/components/PageSubscription/PageSubscription.tsx:76
 msgid "Free Trial"
 msgstr "Coba Gratis"
 
-#: src/components/PageSupport/PageSupport.tsx:41
+#: src/components/PageNewStudent/PageNewStudent.tsx:101
+msgid "Gender"
+msgstr "Jenis Kelamin"
+
+#: src/components/PageSupport/PageSupport.tsx:42
 msgid "Go to Canny"
 msgstr "Ke Canny"
 
-#: src/components/PageSupport/PageSupport.tsx:54
+#: src/components/EmptyClassDataPlaceholder/EmptyClassDataPlaceholder.tsx:7
+msgid "Go to Class Settings"
+msgstr "Ke Pengaturan Kelas"
+
+#: src/components/PageNewStudent/PageNewStudent.tsx:133
+msgid "Guardians"
+msgstr "Wali"
+
+#: src/components/PageSupport/PageSupport.tsx:58
 msgid "Have a question? Shoot us an email at chrsep@protonmail.com"
 msgstr "Punya pertanyaan? Kirim email ke chrsep@protonmail.com"
 
@@ -110,9 +154,17 @@ msgstr "Punya pertanyaan? Kirim email ke chrsep@protonmail.com"
 msgid "Help and Feedbacks"
 msgstr "Bantuan dan Masukan"
 
+#: src/components/PageNewStudent/PageNewStudent.tsx:92
+msgid "Home"
+msgstr "Beranda"
+
 #: src/components/PageSubscription/PageSubscription.tsx:107
 msgid "Image gallery"
 msgstr "Galeri gambar"
+
+#: src/components/InformationalCard/InformationalCard.tsx:16
+msgid "Info"
+msgstr "Info"
 
 #: src/components/PageAdmin/PageAdmin.tsx:49
 msgid "Invite Your Team"
@@ -130,18 +182,38 @@ msgstr "Undang dengan link"
 msgid "Log Out"
 msgstr "Keluar"
 
+#: src/components/PageNewStudent/PageNewStudent.tsx:103
+msgid "Male"
+msgstr "Laki-laki"
+
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:55
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:59
 msgid "Name"
 msgstr "Nama"
 
+#: src/components/PageNewStudent/PageNewStudent.tsx:98
+msgid "Name (Required)"
+msgstr "Nama (Wajib)"
+
+#: src/components/PageNewStudent/PageNewStudent.tsx:95
+msgid "New Student"
+msgstr "Murid Baru"
+
 #: src/components/PageSubscription/PageSubscription.tsx:40
 msgid "Next Bill"
 msgstr "Tagihan Selanjutnya"
 
+#: src/components/PageNewStudent/PageNewStudent.tsx:102
+msgid "Not Set"
+msgstr "Belum Dipilih"
+
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:115
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:119
 msgid "Note"
+msgstr "Catatan"
+
+#: src/components/PageNewStudent/PageNewStudent.tsx:107
+msgid "Notes"
 msgstr "Catatan"
 
 #: src/components/PageInviteUser/PageInviteUser.tsx:84
@@ -161,7 +233,7 @@ msgstr "Detil Pembayaran"
 msgid "Phone"
 msgstr "Telepon"
 
-#: src/components/PageSupport/PageSupport.tsx:43
+#: src/components/PageSupport/PageSupport.tsx:45
 msgid "Post and upvote suggestions, ideas, and issues."
 msgstr "Posting dan upvote pada saran, ide, dan masalah"
 
@@ -177,6 +249,7 @@ msgstr "Laporan"
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:77
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:97
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:117
+#: src/components/PageNewStudent/PageNewStudent.tsx:180
 msgid "Save"
 msgstr "Simpan"
 
@@ -203,7 +276,7 @@ msgstr "Atur menjadi nonaktif?"
 msgid "Settings"
 msgstr "Pengaturan"
 
-#: src/components/PageSupport/PageSupport.tsx:52
+#: src/components/PageSupport/PageSupport.tsx:55
 msgid "Shoot us an e-mail"
 msgstr "Kirim e-mail ke kami"
 
@@ -227,6 +300,10 @@ msgstr "Paket Standar"
 msgid "Start Free Trial"
 msgstr "Coba Gratis Sekarang"
 
+#: src/components/PageNewStudent/PageNewStudent.tsx:106
+msgid "Student ID"
+msgstr "ID Murid"
+
 #: src/components/Navbar/Navbar.tsx:98
 msgid "Students"
 msgstr "Murid"
@@ -247,6 +324,10 @@ msgstr "Bantuan"
 #: src/components/PageAdmin/PageAdmin.tsx:54
 msgid "Switch school"
 msgstr "Pindah sekolah"
+
+#: src/components/PageNewStudent/PageNewStudent.tsx:143
+msgid "This student doesn't have a guardian yet."
+msgstr "Murid ini belum mempunyai wali."
 
 #: src/components/PageSubscription/PageSubscription.tsx:105
 msgid "Track curriculum progress"

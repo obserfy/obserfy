@@ -1,0 +1,138 @@
+{
+  "Home": {
+    "origin": [
+      [
+        "src/components/PageNewStudent/PageNewStudent.tsx",
+        92
+      ]
+    ]
+  },
+  "New Student": {
+    "origin": [
+      [
+        "src/components/PageNewStudent/PageNewStudent.tsx",
+        95
+      ]
+    ]
+  },
+  "Name (Required)": {
+    "origin": [
+      [
+        "src/components/PageNewStudent/PageNewStudent.tsx",
+        98
+      ]
+    ]
+  },
+  "Date of Birth": {
+    "origin": [
+      [
+        "src/components/PageNewStudent/PageNewStudent.tsx",
+        99
+      ]
+    ]
+  },
+  "Date of Entry": {
+    "origin": [
+      [
+        "src/components/PageNewStudent/PageNewStudent.tsx",
+        100
+      ]
+    ]
+  },
+  "Gender": {
+    "origin": [
+      [
+        "src/components/PageNewStudent/PageNewStudent.tsx",
+        101
+      ]
+    ]
+  },
+  "Not Set": {
+    "origin": [
+      [
+        "src/components/PageNewStudent/PageNewStudent.tsx",
+        102
+      ]
+    ]
+  },
+  "Male": {
+    "origin": [
+      [
+        "src/components/PageNewStudent/PageNewStudent.tsx",
+        103
+      ]
+    ]
+  },
+  "Female": {
+    "origin": [
+      [
+        "src/components/PageNewStudent/PageNewStudent.tsx",
+        104
+      ]
+    ]
+  },
+  "Student ID": {
+    "origin": [
+      [
+        "src/components/PageNewStudent/PageNewStudent.tsx",
+        106
+      ]
+    ]
+  },
+  "Notes": {
+    "origin": [
+      [
+        "src/components/PageNewStudent/PageNewStudent.tsx",
+        107
+      ]
+    ]
+  },
+  "Classes": {
+    "origin": [
+      [
+        "src/components/PageNewStudent/PageNewStudent.tsx",
+        110
+      ]
+    ]
+  },
+  "Guardians": {
+    "origin": [
+      [
+        "src/components/PageNewStudent/PageNewStudent.tsx",
+        133
+      ]
+    ]
+  },
+  "Add": {
+    "origin": [
+      [
+        "src/components/PageNewStudent/PageNewStudent.tsx",
+        137
+      ]
+    ]
+  },
+  "This student doesn't have a guardian yet.": {
+    "origin": [
+      [
+        "src/components/PageNewStudent/PageNewStudent.tsx",
+        143
+      ]
+    ]
+  },
+  "Clear": {
+    "origin": [
+      [
+        "src/components/PageNewStudent/PageNewStudent.tsx",
+        160
+      ]
+    ]
+  },
+  "Save": {
+    "origin": [
+      [
+        "src/components/PageNewStudent/PageNewStudent.tsx",
+        180
+      ]
+    ]
+  }
+}

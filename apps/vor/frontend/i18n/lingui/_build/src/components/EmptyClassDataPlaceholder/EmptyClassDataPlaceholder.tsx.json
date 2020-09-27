@@ -1,0 +1,18 @@
+{
+  "Go to Class Settings": {
+    "origin": [
+      [
+        "src/components/EmptyClassDataPlaceholder/EmptyClassDataPlaceholder.tsx",
+        7
+      ]
+    ]
+  },
+  "Create your first class to track your student's class enrollment.": {
+    "origin": [
+      [
+        "src/components/EmptyClassDataPlaceholder/EmptyClassDataPlaceholder.tsx",
+        7
+      ]
+    ]
+  }
+}

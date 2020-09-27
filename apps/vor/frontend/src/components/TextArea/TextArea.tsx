@@ -1,5 +1,6 @@
 import React, { ChangeEvent, FC, PropsWithoutRef } from "react"
 import { Box, Label, Textarea as BaseTextArea, TextareaProps } from "theme-ui"
+import { Trans } from "@lingui/macro"
 
 interface Props extends PropsWithoutRef<TextareaProps> {
   label?: string
@@ -7,7 +8,11 @@ interface Props extends PropsWithoutRef<TextareaProps> {
 }
 export const TextArea: FC<Props> = ({ label, ...props }) => (
   <Label sx={{ display: "flex", flexDirection: "column" }}>
-    {label && <Box pb={1}>{label}</Box>}
+    {label && (
+      <Box pb={1}>
+        <Trans id={label} />
+      </Box>
+    )}
     <BaseTextArea aria-label={label} {...props} />
   </Label>
 )
