@@ -11,9 +11,5 @@ export default {
 }
 
 export const Basic: FC = () => (
-  <NewAreaDialog
-    onDismiss={action("dismiss")}
-    onSaved={action("Saved")}
-    curriculumId=""
-  />
+  <NewAreaDialog onDismiss={action("dismiss")} curriculumId="" />
 )

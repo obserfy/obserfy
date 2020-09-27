@@ -29,9 +29,16 @@ type (
 	}
 
 	// Curriculum data
+	Curriculum struct {
+		Id    string
+		Name  string
+		Areas []Area
+	}
+
 	Area struct {
-		Id   string
-		Name string
+		Id       string
+		Name     string
+		Subjects []Subject
 	}
 
 	Subject struct {

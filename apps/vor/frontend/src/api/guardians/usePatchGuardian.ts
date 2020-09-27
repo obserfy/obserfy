@@ -1,9 +1,4 @@
-import {
-  MutateFunction,
-  MutationResult,
-  queryCache,
-  useMutation,
-} from "react-query"
+import { queryCache, useMutation } from "react-query"
 import { patchApi } from "../fetchApi"
 
 interface UpdateGuardianRequest {
@@ -13,9 +8,7 @@ interface UpdateGuardianRequest {
   note?: string
 }
 
-export function usePatchGuardian(
-  id: string
-): [MutateFunction<Response, unknown>, MutationResult<Response>] {
+export function usePatchGuardian(id: string) {
   const patchGuardian = patchApi<UpdateGuardianRequest>(`/guardians/${id}`)
 
   return useMutation(patchGuardian, {

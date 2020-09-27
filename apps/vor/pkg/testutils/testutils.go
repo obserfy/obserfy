@@ -111,10 +111,14 @@ func (s *BaseTestSuite) GenerateSchool() *postgres.School {
 	}
 	newSchool.Curriculum = curriculum
 
-	assert.NoError(t, s.DB.Insert(&newUser))
-	assert.NoError(t, s.DB.Insert(&curriculum))
-	assert.NoError(t, s.DB.Insert(&newSchool))
-	assert.NoError(t, s.DB.Insert(&schoolUserRelation))
+	_, err := s.DB.Model(&newUser).Insert()
+	assert.NoError(t, err)
+	_, err = s.DB.Model(&curriculum).Insert()
+	assert.NoError(t, err)
+	_, err = s.DB.Model(&newSchool).Insert()
+	assert.NoError(t, err)
+	_, err = s.DB.Model(&schoolUserRelation).Insert()
+	assert.NoError(t, err)
 	return &newSchool
 }
 
@@ -138,7 +142,7 @@ func (s *BaseTestSuite) GenerateStudent(school *postgres.School) *postgres.Stude
 		Active:      &active,
 		ProfilePic:  "",
 	}
-	err := s.DB.Insert(&student)
+	_, err := s.DB.Model(&student).Insert()
 	assert.NoError(t, err)
 	return &student
 }
@@ -153,7 +157,7 @@ func (s *BaseTestSuite) GenerateMaterial() (postgres.Material, string) {
 		SubjectId: subject.Id,
 		Subject:   subject,
 	}
-	err := s.DB.Insert(&material)
+	_, err := s.DB.Model(&material).Insert()
 	assert.NoError(s.T(), err)
 	return material, userId
 }
@@ -169,7 +173,7 @@ func (s *BaseTestSuite) GenerateSubject() (postgres.Subject, string) {
 		AreaId: area.Id,
 		Area:   area,
 	}
-	err := s.DB.Insert(&originalSubject)
+	_, err := s.DB.Model(&originalSubject).Insert()
 	assert.NoError(s.T(), err)
 	return originalSubject, userId
 }
@@ -183,7 +187,7 @@ func (s *BaseTestSuite) GenerateArea() (postgres.Area, string) {
 		Name:         "",
 		Subjects:     nil,
 	}
-	err := s.DB.Insert(&area)
+	_, err := s.DB.Model(&area).Insert()
 	assert.NoError(s.T(), err)
 	return area, school.Users[0].Id
 }
@@ -207,9 +211,9 @@ func (s *BaseTestSuite) GenerateClass(school *postgres.School) *postgres.Class {
 		{newClass.Id, time.Thursday, newClass},
 		{newClass.Id, time.Friday, newClass},
 	}
-	err := s.DB.Insert(&newClass)
+	_, err := s.DB.Model(&newClass).Insert()
 	assert.NoError(t, err)
-	err = s.DB.Insert(&newClass.Weekdays)
+	_, err = s.DB.Model(&newClass.Weekdays).Insert()
 	assert.NoError(t, err)
 	return &newClass
 }
@@ -301,7 +305,7 @@ func (s *BaseTestSuite) GenerateGuardian(school *postgres.School) (*postgres.Gua
 		SchoolId: school.Id,
 		School:   *school,
 	}
-	err := s.DB.Insert(&newGuardian)
+	_, err := s.DB.Model(&newGuardian).Insert()
 	assert.NoError(t, err)
 
 	return &newGuardian, school.Users[0].Id
@@ -385,10 +389,10 @@ func (s *BaseTestSuite) CreateRequest(method string, path string, bodyJson inter
 	if userId != nil {
 		// Save session to DB
 		sessionToken := uuid.New().String()
-		err := s.DB.Insert(&postgres.Session{
+		_, err := s.DB.Model(&postgres.Session{
 			Token:  sessionToken,
 			UserId: *userId,
-		})
+		}).Insert()
 		assert.NoError(s.T(), err)
 
 		// Save session to context
@@ -412,10 +416,10 @@ func (s *BaseTestSuite) CreateMultipartRequest(url string, multipartForm *bytes.
 	if userId != nil {
 		// Save session to DB
 		sessionToken := uuid.New().String()
-		err := s.DB.Insert(&postgres.Session{
+		_, err := s.DB.Model(&postgres.Session{
 			Token:  sessionToken,
 			UserId: *userId,
-		})
+		}).Insert()
 		assert.NoError(s.T(), err)
 
 		// Save session to context
@@ -441,7 +445,7 @@ func (s *BaseTestSuite) GenerateImage(school *postgres.School) postgres.Image {
 		ObjectKey: uuid.New().String(),
 		CreatedAt: gofakeit.Date(),
 	}
-	err := s.DB.Insert(&image)
+	_, err := s.DB.Model(&image).Insert()
 	assert.NoError(t, err)
 	return image
 }

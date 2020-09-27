@@ -22,14 +22,12 @@ const childHandler = auth0.requireAuthentication(async (req, res) => {
       res.status(404).end("not found")
       return
     }
-
     const response: GetChildResponse = {
       id: result.id,
       name: result.name,
       schoolName: result.school_name,
       schoolId: result.school_id,
-      profilePic:
-        result.profile_pic && generateUrl(result.profile_pic, 100, 100),
+      profilePic: result.object_key && generateUrl(result.object_key, 100, 100),
     }
     res.status(200).json(response)
   } catch (error) {

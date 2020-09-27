@@ -24,7 +24,7 @@ interface Props extends PropsWithoutRef<InputProps> {
   label?: string
   containerSx?: SxStyleProp
 }
-export const Input: ForwardRefRenderFunction<HTMLInputElement, Props> = (
+const Input: ForwardRefRenderFunction<HTMLInputElement, Props> = (
   {
     autoFocus,
     name,

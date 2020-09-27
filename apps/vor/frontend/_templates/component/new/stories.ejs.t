@@ -13,7 +13,7 @@ export default {
   },
 } as Meta
 
-const Template: Story<<%= name%>Props> = () => <<%= name%> />
+const Template: Story<<%= name%>Props> = (args) => <<%= name%> {...args} />
 
 export const Default = Template.bind({})
 Default.args = {}

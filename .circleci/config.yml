@@ -218,7 +218,7 @@ jobs:
           sentry-cli releases -p backend finalize $VERSION
 
 orbs:
-  go: circleci/go@1.3.1
+  go: circleci/go@1.4.0
 
 workflows:
   version: 2
@@ -251,6 +251,7 @@ workflows:
             - vor_frontend_build
       - e2e:
           requires:
+            - vor_backend_test
             - vor_frontend_build
             - gaia_build
 

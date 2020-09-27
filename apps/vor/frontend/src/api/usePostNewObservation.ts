@@ -20,6 +20,7 @@ const usePostNewObservation = (studentId: string) => {
   )
   return useMutation(postNewObservation, {
     onSuccess: async (data) => {
+      if (data === undefined) return
       const newObservation = await data.json()
       const observations = getStudentObservationsCache(studentId) ?? []
       observations.push(newObservation)

@@ -7,7 +7,7 @@ type Store interface {
 	GetAreaSubjects(areaId string) ([]domain.Subject, error)
 	GetSubjectMaterials(subjectId string) ([]domain.Material, error)
 	GetMaterial(materialId string) (*domain.Material, error)
-	NewArea(name string, curriculumId string) (string, error)
+	NewArea(name string, curriculumId string) (*domain.Area, error)
 	NewSubject(name string, areaId string, materials []domain.Material) (*domain.Subject, error)
 	NewMaterial(name string, subjectId string) (*domain.Material, error)
 	GetSubject(id string) (*domain.Subject, error)
@@ -20,4 +20,5 @@ type Store interface {
 	CheckAreaPermissions(subjectId string, userId string) (bool, error)
 	CheckCurriculumPermission(curriculumId string, userId string) (bool, error)
 	CheckMaterialPermission(materialId string, userId string) (bool, error)
+	UpdateCurriculum(curriculumId string, name *string) (*domain.Curriculum, error)
 }

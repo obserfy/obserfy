@@ -41,7 +41,7 @@ export const PageNewStudentClass: FC<Props> = ({ id }) => {
       endTime: dayjs(endTime, "HH:mm").toDate(),
       startTime: dayjs(startTime, "HH:mm").toDate(),
     })
-    if (newClassResult.ok) {
+    if (newClassResult?.ok) {
       const response = await newClassResult.json()
       await mutatePostStudentClassRelation(response.id)
       await navigate(EDIT_STUDENT_CLASS_URL(id))

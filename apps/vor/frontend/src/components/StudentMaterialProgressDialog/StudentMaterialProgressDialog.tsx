@@ -40,7 +40,7 @@ export const StudentMaterialProgressDialog: FC<{
     const response = await patchStudentMaterialProgress({
       stage: selectedStage,
     })
-    if (response.ok) onDismiss()
+    if (response?.ok) onDismiss()
   }
 
   return (

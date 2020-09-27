@@ -47,11 +47,12 @@ export const findChildById = async (guardianEmail: string, childId: string) => {
   // language=PostgreSQL
   const result = await query(
     `
-              select s.id, s.name, school.name as school_name, s.profile_pic, s.school_id
+              select s.id, s.name, school.name as school_name, s.school_id,s.profile_image_id,i.object_key
               from students s
                        join schools school on s.school_id = school.id
                        join guardian_to_students gts on s.id = gts.student_id
                        join guardians g on gts.guardian_id = g.id
+                        join images i on s.profile_image_id = i.id
               where g.email = $1
                 and s.id = $2
     `,

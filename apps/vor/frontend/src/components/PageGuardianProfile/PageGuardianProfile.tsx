@@ -68,7 +68,7 @@ const NameDataBox: FC<{ value?: string; guardianId: string }> = ({
   const [showEditDialog, setShowEditDialog] = useState(false)
   const [name, setName] = useState(value)
   const saveName = async () => {
-    await mutate({ id: guardianId, name })
+    await mutate({ name })
     setShowEditDialog(false)
   }
   return (
@@ -111,7 +111,7 @@ const EmailDataBox: FC<{ value?: string; guardianId: string }> = ({
   const [showEditDialog, setShowEditDialog] = useState(false)
   const [email, setEmail] = useState(value)
   const saveEmail = async () => {
-    await mutate({ id: guardianId, email })
+    await mutate({ email })
     setShowEditDialog(false)
   }
   return (
@@ -154,7 +154,7 @@ const PhoneDataBox: FC<{ value?: string; guardianId: string }> = ({
   const [showEditDialog, setShowEditDialog] = useState(false)
   const [phone, setPhone] = useState(value)
   const savePhone = async () => {
-    await mutate({ id: guardianId, phone })
+    await mutate({ phone })
     setShowEditDialog(false)
   }
   return (
@@ -197,7 +197,7 @@ const NoteDataBox: FC<{ value?: string; guardianId: string }> = ({
   const [showEditDialog, setShowEditDialog] = useState(false)
   const [note, setNote] = useState(value)
   const saveNote = async () => {
-    await mutate({ id: guardianId, note })
+    await mutate({ note })
     setShowEditDialog(false)
   }
   return (

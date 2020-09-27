@@ -28,7 +28,7 @@ func (s SubscriptionStore) SaveNewSubscription(schoolId string, subscription sub
 	}
 	school := School{Id: schoolId, SubscriptionId: newSubscription.Id}
 
-	if err := s.RunInTransaction(func(tx *pg.Tx) error {
+	if err := s.RunInTransaction(s.Context(), func(tx *pg.Tx) error {
 		if _, err := s.Model(&newSubscription).Insert(); err != nil {
 			return richErrors.Wrap(err, "failed to insert subscription")
 		}

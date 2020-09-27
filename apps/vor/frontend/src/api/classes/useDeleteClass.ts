@@ -1,18 +1,11 @@
-import {
-  MutateFunction,
-  MutationResult,
-  queryCache,
-  useMutation,
-} from "react-query"
+import { queryCache, useMutation } from "react-query"
 import { getSchoolId } from "../../hooks/schoolIdState"
 import { deleteApi } from "../fetchApi"
 
-const useDeleteClass = (
-  classId: string
-): [MutateFunction<Response, undefined>, MutationResult<Response>] => {
+const useDeleteClass = (classId: string) => {
   const deleteClass = deleteApi(`/classes/${classId}`)
 
-  return useMutation<Response>(deleteClass, {
+  return useMutation(deleteClass, {
     onSuccess: async () => {
       await queryCache.invalidateQueries(["classes", getSchoolId()])
     },

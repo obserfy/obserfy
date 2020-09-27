@@ -2,7 +2,7 @@
 import { FC, useState } from "react"
 import { Box, Card, Flex, Image, jsx } from "theme-ui"
 import BackNavigation from "../BackNavigation/BackNavigation"
-import { SETTINGS_URL } from "../../routes"
+import { ADMIN_URL } from "../../routes"
 import Typography from "../Typography/Typography"
 import { useGetAllStudents } from "../../api/students/useGetAllStudents"
 import SearchBar from "../SearchBar/SearchBar"
@@ -25,7 +25,7 @@ export const PageListOfStudents: FC = () => {
       }}
       mx="auto"
     >
-      <BackNavigation to={SETTINGS_URL} text="Settings" />
+      <BackNavigation to={ADMIN_URL} text="Settings" />
       <Typography.H5 m={3} sx={{ lineHeight: 1 }}>
         All Students
       </Typography.H5>
