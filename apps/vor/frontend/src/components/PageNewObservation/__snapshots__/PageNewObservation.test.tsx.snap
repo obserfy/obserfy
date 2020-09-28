@@ -927,7 +927,7 @@ exports[`PageNewObservation should render correctly 1`] = `
               class="emotion-24"
               disabled=""
               placeholder="Not set"
-              value="27 June '18"
+              value="Wednesday, 27 Jun 2018"
             />
           </div>
         </label>
