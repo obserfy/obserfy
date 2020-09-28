@@ -52,6 +52,10 @@ msgstr "Amount Due"
 msgid "And more coming..."
 msgstr "And more coming..."
 
+#: src/components/PageNewClass/PageNewClass.tsx:62
+msgid "Available every"
+msgstr "Available every"
+
 #: src/components/PageListOfStudents/PageListOfStudents.tsx:71
 msgid "Cancel"
 msgstr "Cancel"
@@ -64,6 +68,7 @@ msgstr "Cancel Plan"
 msgid "Class"
 msgstr "Class"
 
+#: src/components/PageClassSettings/PageClassSettings.tsx:27
 #: src/components/PageNewStudent/PageNewStudent.tsx:118
 msgid "Classes"
 msgstr "Classes"
@@ -124,6 +129,10 @@ msgstr "Email"
 msgid "Emails sent!"
 msgstr "Emails sent!"
 
+#: src/components/PageNewClass/PageNewClass.tsx:59
+msgid "End Time"
+msgstr "End Time"
+
 #: src/components/PageNewStudent/PageNewStudent.tsx:111
 msgid "Female"
 msgstr "Female"
@@ -131,6 +140,10 @@ msgstr "Female"
 #: src/components/PageSubscription/PageSubscription.tsx:76
 msgid "Free Trial"
 msgstr "Free Trial"
+
+#: src/components/PageNewClass/PageNewClass.tsx:31
+msgid "Friday"
+msgstr "Friday"
 
 #: src/components/PageNewStudent/PageNewStudent.tsx:103
 msgid "Gender"
@@ -193,14 +206,28 @@ msgstr "Log Out"
 msgid "Male"
 msgstr "Male"
 
+#: src/components/PageNewClass/PageNewClass.tsx:27
+msgid "Monday"
+msgstr "Monday"
+
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:55
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:59
+#: src/components/PageNewClass/PageNewClass.tsx:56
 msgid "Name"
 msgstr "Name"
 
 #: src/components/PageNewStudent/PageNewStudent.tsx:100
 msgid "Name (Required)"
 msgstr "Name (Required)"
+
+#: src/components/PageClassSettings/PageClassSettings.tsx:31
+msgid "New"
+msgstr "New"
+
+#: src/components/PageClassSettings/PageClassSettings.tsx:68
+#: src/components/PageNewClass/PageNewClass.tsx:54
+msgid "New Class"
+msgstr "New Class"
 
 #: src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx:31
 #: src/components/PageNewGuardian/PageNewGuardian.tsx:40
@@ -265,11 +292,16 @@ msgstr "Relationship"
 msgid "Reporting"
 msgstr "Reporting"
 
+#: src/components/PageNewClass/PageNewClass.tsx:32
+msgid "Saturday"
+msgstr "Saturday"
+
 #: src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx:50
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:57
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:77
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:97
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:117
+#: src/components/PageNewClass/PageNewClass.tsx:76
 #: src/components/PageNewGuardian/PageNewGuardian.tsx:66
 #: src/components/PageNewStudent/PageNewStudent.tsx:188
 msgid "Save"
@@ -322,6 +354,10 @@ msgstr "Standard Plan"
 msgid "Start Free Trial"
 msgstr "Start Free Trial"
 
+#: src/components/PageNewClass/PageNewClass.tsx:58
+msgid "Start Time"
+msgstr "Start Time"
+
 #: src/components/PageNewStudent/PageNewStudent.tsx:114
 msgid "Student ID"
 msgstr "Student ID"
@@ -339,6 +375,10 @@ msgstr "Subscribed"
 msgid "Subscription Plan"
 msgstr "Subscription Plan"
 
+#: src/components/PageNewClass/PageNewClass.tsx:26
+msgid "Sunday"
+msgstr "Sunday"
+
 #: src/components/Navbar/Navbar.tsx:105
 msgid "Support"
 msgstr "Support"
@@ -347,13 +387,25 @@ msgstr "Support"
 msgid "Switch school"
 msgstr "Switch school"
 
+#: src/components/PageClassSettings/PageClassSettings.tsx:61
+msgid "Tell us about your classes, We'll help you track your students attendance."
+msgstr "Tell us about your classes, We'll help you track your students attendance."
+
 #: src/components/PageNewStudent/PageNewStudent.tsx:151
 msgid "This student doesn't have a guardian yet."
 msgstr "This student doesn't have a guardian yet."
 
+#: src/components/PageNewClass/PageNewClass.tsx:30
+msgid "Thursday"
+msgstr "Thursday"
+
 #: src/components/PageSubscription/PageSubscription.tsx:105
 msgid "Track curriculum progress"
 msgstr "Track curriculum progress"
+
+#: src/components/PageNewClass/PageNewClass.tsx:28
+msgid "Tuesday"
+msgstr "Tuesday"
 
 #: src/components/PageSubscription/PageSubscription.tsx:102
 msgid "Unlimited students"
@@ -366,6 +418,10 @@ msgstr "User/month"
 #: src/components/PageAdmin/PageAdmin.tsx:45
 msgid "Users"
 msgstr "Users"
+
+#: src/components/PageNewClass/PageNewClass.tsx:29
+msgid "Wednesday"
+msgstr "Wednesday"
 
 #: src/components/PageListOfStudents/PageListOfStudents.tsx:71
 msgid "Yes"

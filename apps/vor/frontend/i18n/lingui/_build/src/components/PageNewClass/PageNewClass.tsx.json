@@ -1,0 +1,106 @@
+{
+  "Sunday": {
+    "origin": [
+      [
+        "src/components/PageNewClass/PageNewClass.tsx",
+        26
+      ]
+    ]
+  },
+  "Monday": {
+    "origin": [
+      [
+        "src/components/PageNewClass/PageNewClass.tsx",
+        27
+      ]
+    ]
+  },
+  "Tuesday": {
+    "origin": [
+      [
+        "src/components/PageNewClass/PageNewClass.tsx",
+        28
+      ]
+    ]
+  },
+  "Wednesday": {
+    "origin": [
+      [
+        "src/components/PageNewClass/PageNewClass.tsx",
+        29
+      ]
+    ]
+  },
+  "Thursday": {
+    "origin": [
+      [
+        "src/components/PageNewClass/PageNewClass.tsx",
+        30
+      ]
+    ]
+  },
+  "Friday": {
+    "origin": [
+      [
+        "src/components/PageNewClass/PageNewClass.tsx",
+        31
+      ]
+    ]
+  },
+  "Saturday": {
+    "origin": [
+      [
+        "src/components/PageNewClass/PageNewClass.tsx",
+        32
+      ]
+    ]
+  },
+  "New Class": {
+    "origin": [
+      [
+        "src/components/PageNewClass/PageNewClass.tsx",
+        54
+      ]
+    ]
+  },
+  "Name": {
+    "origin": [
+      [
+        "src/components/PageNewClass/PageNewClass.tsx",
+        56
+      ]
+    ]
+  },
+  "Start Time": {
+    "origin": [
+      [
+        "src/components/PageNewClass/PageNewClass.tsx",
+        58
+      ]
+    ]
+  },
+  "End Time": {
+    "origin": [
+      [
+        "src/components/PageNewClass/PageNewClass.tsx",
+        59
+      ]
+    ]
+  },
+  "Available every": {
+    "origin": [
+      [
+        "src/components/PageNewClass/PageNewClass.tsx",
+        62
+      ]
+    ]
+  },
+  "Save": {
+    "origin": [
+      [
+        "src/components/PageNewClass/PageNewClass.tsx",
+        76
+      ]
+    ]
+  }
+}

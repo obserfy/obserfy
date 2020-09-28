@@ -1,6 +1,8 @@
 import React, { FC, useState } from "react"
 import { useImmer } from "use-immer"
 import { Flex, Button, Box } from "theme-ui"
+import { Trans } from "@lingui/macro"
+import { i18nMark } from "@lingui/core"
 import dayjs from "../../dayjs"
 import { navigate } from "../Link/Link"
 import BackNavigation from "../BackNavigation/BackNavigation"
@@ -15,13 +17,13 @@ import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import ErrorMessage from "../ErrorMessage/ErrorMessage"
 
 export const WEEKDAYS = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
+  i18nMark("Sunday"),
+  i18nMark("Monday"),
+  i18nMark("Tuesday"),
+  i18nMark("Wednesday"),
+  i18nMark("Thursday"),
+  i18nMark("Friday"),
+  i18nMark("Saturday"),
 ]
 
 export const PageNewClass: FC = () => {
@@ -48,10 +50,12 @@ export const PageNewClass: FC = () => {
   return (
     <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto">
       <BackNavigation to={CLASS_SETTINGS_URL} text="Class" />
-      <Typography.H5 m={3}>New Class</Typography.H5>
+      <Typography.H5 m={3}>
+        <Trans>New Class</Trans>
+      </Typography.H5>
       <Box m={3}>
         <Input
-          label="Name"
+          label={i18nMark("Name")}
           sx={{ width: "100%" }}
           mb={3}
           value={name}
@@ -62,7 +66,7 @@ export const PageNewClass: FC = () => {
             type="time"
             value={startTime}
             onChange={(e) => setStartTime(e.target.value)}
-            label="Start Time"
+            label={i18nMark("Start Time")}
             sx={{ width: "100%" }}
             mb={3}
             mr={3}
@@ -71,13 +75,13 @@ export const PageNewClass: FC = () => {
             type="time"
             value={endTime}
             onChange={(e) => setEndTime(e.target.value)}
-            label="End Time"
+            label={i18nMark("End Time")}
             sx={{ width: "100%" }}
             mb={3}
           />
         </Flex>
         <Typography.Body mb={2} color="textMediumEmphasis">
-          Available every
+          <Trans>Available every</Trans>
         </Typography.Body>
         <Flex
           mb={3}
@@ -112,7 +116,7 @@ export const PageNewClass: FC = () => {
           {status === "loading" && (
             <LoadingIndicator mr={2} color="onPrimary" />
           )}
-          Save
+          <Trans>Save</Trans>
         </Button>
         <ErrorMessage error={error} m={3} />
       </Box>

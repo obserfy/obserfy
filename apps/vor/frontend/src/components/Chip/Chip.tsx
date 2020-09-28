@@ -1,5 +1,6 @@
 import React, { FC } from "react"
 import { BoxProps, Box } from "theme-ui"
+import { Trans } from "@lingui/macro"
 import Typography from "../Typography/Typography"
 
 interface Props extends BoxProps {
@@ -38,7 +39,7 @@ export const Chip: FC<Props> = ({
       sx={{ fontSize: 1 }}
       color={isActive ? "onPrimary" : "text"}
     >
-      {text}
+      <Trans id={text} />
     </Typography.Body>
   </Box>
 )

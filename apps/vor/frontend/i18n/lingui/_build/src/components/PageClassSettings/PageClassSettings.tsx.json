@@ -1,0 +1,34 @@
+{
+  "Classes": {
+    "origin": [
+      [
+        "src/components/PageClassSettings/PageClassSettings.tsx",
+        27
+      ]
+    ]
+  },
+  "New": {
+    "origin": [
+      [
+        "src/components/PageClassSettings/PageClassSettings.tsx",
+        31
+      ]
+    ]
+  },
+  "Tell us about your classes, We'll help you track your students attendance.": {
+    "origin": [
+      [
+        "src/components/PageClassSettings/PageClassSettings.tsx",
+        61
+      ]
+    ]
+  },
+  "New Class": {
+    "origin": [
+      [
+        "src/components/PageClassSettings/PageClassSettings.tsx",
+        68
+      ]
+    ]
+  }
+}
