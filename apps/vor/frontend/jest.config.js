@@ -8,7 +8,7 @@ module.exports = {
     ".+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": `<rootDir>/src/__mocks__/file-mock.js`,
   },
   testPathIgnorePatterns: [`node_modules`, `.cache`],
-  transformIgnorePatterns: [`node_modules/(?!(gatsby|react-adaptive-hooks)/)`],
+  transformIgnorePatterns: [`node_modules/(?!(gatsby|gatsby-theme-i18n|react-adaptive-hooks)/)`],
   testMatch: ["**/?(*.)+(test).[jt]s?(x)"],
   globals: {
     __PATH_PREFIX__: ``,
