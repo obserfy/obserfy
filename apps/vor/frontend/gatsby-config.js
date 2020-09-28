@@ -30,6 +30,11 @@ const guessJsPlugin =
       ]
     : []
 
+// Only enable preact on prod. It has inconsistent fast-refresh behaviour and swallows all errors on dev,
+// revisit later.
+const preactPlugin =
+  process.env.NODE_ENV === "production" ? [`gatsby-plugin-preact`] : []
+
 module.exports = {
   siteMetadata: {
     title: `Obserfy`,
@@ -37,10 +42,10 @@ module.exports = {
     author: `@chrsep`,
   },
   plugins: [
+    ...preactPlugin,
     `gatsby-plugin-layout`,
     "gatsby-plugin-theme-ui",
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-preact`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
