@@ -1,9 +1,4 @@
-import {
-  MutateFunction,
-  MutationResult,
-  queryCache,
-  useMutation,
-} from "react-query"
+import { queryCache, useMutation } from "react-query"
 import { navigate } from "gatsby"
 import { ApiError, BASE_URL } from "../useApi"
 import { getSchoolId } from "../../hooks/schoolIdState"
@@ -14,10 +9,7 @@ interface Class {
   endTime: Date
   weekdays: number[]
 }
-const usePostNewClass = (): [
-  MutateFunction<Response, Class>,
-  MutationResult<Response>
-] => {
+const usePostNewClass = () => {
   const schoolId = getSchoolId()
   const fetchApi = async (newClass: Class): Promise<Response> => {
     const result = await fetch(`${BASE_URL}/schools/${schoolId}/classes`, {
@@ -39,7 +31,7 @@ const usePostNewClass = (): [
     return result
   }
 
-  return useMutation<Response, Class>(fetchApi, {
+  return useMutation(fetchApi, {
     onSuccess: async () => {
       await queryCache.invalidateQueries(["classes", schoolId])
     },

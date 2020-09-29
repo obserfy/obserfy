@@ -16,5 +16,6 @@ export const Basic: FC = () => (
     onDeleted={action("deleted")}
     observationId="sadfasdf"
     shortDesc="adsfasdfadsf"
+    studentId="asdf"
   />
 )

@@ -39,6 +39,20 @@ func InitTables(db *pg.DB) error {
 	if err != nil {
 		return richErrors.Wrap(err, "failed to create extension")
 	}
+	// Register many2many tables
+	for _, model := range []interface{}{
+		(*ImageToStudents)(nil),
+		(*StudentToClass)(nil),
+		(*GuardianToStudent)(nil),
+		(*UserToSchool)(nil),
+		(*ObservationToImage)(nil),
+		(*FileToLessonPlan)(nil),
+		(*LessonPlanToStudents)(nil),
+	} {
+		orm.RegisterTable(model)
+	}
+
+	// CreateAll tables
 	for _, model := range []interface{}{
 		(*Curriculum)(nil),
 		(*Area)(nil),
@@ -69,7 +83,7 @@ func InitTables(db *pg.DB) error {
 		(*FileToLessonPlan)(nil),
 		(*LessonPlanToStudents)(nil),
 	} {
-		err := db.CreateTable(model, &orm.CreateTableOptions{IfNotExists: true, FKConstraints: true})
+		err := db.Model(model).CreateTable(&orm.CreateTableOptions{IfNotExists: true, FKConstraints: true})
 		if err != nil {
 			return richErrors.Wrap(err, "Error initializing db")
 		}
@@ -338,7 +352,7 @@ type (
 		SchoolId    string `pg:"type:uuid,on_delete:CASCADE"`
 		School      School
 		Name        string
-		LessonPlans []LessonPlan `pg:"many2many:file_to_lesson_plans,join_fk:lesson_plan_id"`
+		LessonPlans []LessonPlanDetails `pg:"many2many:file_to_lesson_plans,join_fk:lesson_plan_details_id"`
 		ObjectKey   string
 	}
 
@@ -406,6 +420,18 @@ func (u *PartialUpdateModel) AddStringColumn(name string, value *string) {
 func (u *PartialUpdateModel) AddDateColumn(name string, value *time.Time) {
 	if value != nil {
 		(*u)[name] = value
+	}
+}
+
+// If value is nil, we ignore it. If we pass in uuid.Nil, we'll set the value in postgres to NULL
+// otherwise, we just pass in the UUID to postgres normally.
+func (u *PartialUpdateModel) AddUUIDColumn(name string, value *uuid.UUID) {
+	if value != nil {
+		if *value == uuid.Nil {
+			(*u)[name] = nil
+		} else {
+			(*u)[name] = value
+		}
 	}
 }
 

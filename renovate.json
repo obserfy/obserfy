@@ -8,7 +8,8 @@
     },
     {
       "packagePatterns": ["gatsby"],
-      "groupName": "gatsby"
+      "groupName": "gatsby",
+      "schedule": ["every weekend"]
     },
     {
       "packagePatterns": ["@storybook"],

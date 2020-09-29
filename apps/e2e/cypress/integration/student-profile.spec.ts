@@ -53,7 +53,6 @@ describe("test student profile page", () => {
     cy.contains(studentName).should("be.visible")
     cy.contains(studentName).click()
     cy.contains("Observation").click()
-    cy.get("[aria-label=Category]").select("2")
     cy.contains("Short Description").type(shortDesc)
     cy.get("[aria-label=Details]").type(details)
     cy.contains("Save").click()
@@ -110,20 +109,21 @@ describe("test student profile page", () => {
     cy.contains(guardianName).should("be.visible")
 
     // Go back to overview
-    cy.contains("Student Overview").click()
+    cy.get("[data-cy=back-button]").click()
 
     // Edit observation
     cy.url().should("contains", "students")
-    cy.get("[data-cy=edit-observation]").click()
-    cy.get("[aria-label=Details]").type("Some additional text")
+    cy.contains("See More").click()
+    cy.contains("Edit details").click()
+    cy.contains("label", "Details").type("Some additional text")
     cy.contains("Save").click()
     cy.contains("Some additional text").should("be.visible")
 
     // Delete observation
-    cy.get("[data-cy=delete-observation]").should("be.visible")
+    cy.contains("Delete").should("be.visible")
     // TODO: This part is really flaky, try fixing it later.
-    cy.get("[data-cy=delete-observation]").click()
-    cy.get("[data-cy=confirm-delete]").click()
+    cy.contains("Delete").click()
+    cy.contains("button", "Yes").click()
     cy.contains(shortDesc).should("not.be.visible")
 
     // Go to curriculum
@@ -132,7 +132,7 @@ describe("test student profile page", () => {
     // Go to settings
     // Go back to curriculum
     // Create default curriculum TODO: This test will be flaky.
-    cy.contains("default").click()
+    cy.wait(100).contains("Use Montessori").click()
     cy.contains("Math").should("exist")
 
     // Go to a student
@@ -151,21 +151,21 @@ describe("test student profile page", () => {
 
     // Change something to Practiced
     cy.contains("Number Rods").click()
-    cy.contains("Save changes").should("be.disabled")
-    cy.get("[aria-label=Progress]").select("1")
-    cy.contains("Save changes").click()
+    cy.contains("Save").should("be.disabled")
+    cy.contains("Practiced").click()
+    cy.contains("Save").click()
 
     // Go back and see if it shows up
     cy.contains("Practiced").should("be.visible")
-    cy.contains("Student Details").click({ force: true })
+    cy.get("[data-cy=back-button]").click({ force: true })
     // .waitForRouteChange()
 
     // Change to master
     cy.contains("See All Math").should("be.visible")
     cy.contains("Practiced").should("be.visible").click()
 
-    cy.get("[aria-label=Progress]").select("2")
-    cy.contains("Save changes").click()
+    cy.contains("Mastered").click()
+    cy.contains("Save").click()
 
     // Make sure it shows up
     cy.contains("Mastered").should("be.visible")

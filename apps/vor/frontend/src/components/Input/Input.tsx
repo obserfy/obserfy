@@ -1,5 +1,18 @@
-import React, { ChangeEventHandler, FC, PropsWithoutRef } from "react"
-import { Input as BaseInput, InputProps, Label, Flex, Box } from "theme-ui"
+import React, {
+  ChangeEventHandler,
+  FC,
+  forwardRef,
+  ForwardRefRenderFunction,
+  PropsWithoutRef,
+} from "react"
+import {
+  Box,
+  Flex,
+  Input as BaseInput,
+  InputProps,
+  Label,
+  SxStyleProp,
+} from "theme-ui"
 import { Trans } from "@lingui/macro"
 import Icon from "../Icon/Icon"
 
@@ -10,39 +23,45 @@ interface Props extends PropsWithoutRef<InputProps> {
   onChange?: ChangeEventHandler<HTMLInputElement>
   onEnterPressed?: () => void
   label?: string
+  containerSx?: SxStyleProp
 }
-export const Input: FC<Props> = ({
-  autoFocus,
-  name,
-  small,
-  sx,
-  type,
-  icon,
-  disabled,
-  onEnterPressed,
-  backgroundColor,
-  placeholder,
-  width,
-  onChange,
-  value,
-  label,
-  ...props
-}) => {
+const Input: ForwardRefRenderFunction<HTMLInputElement, Props> = (
+  {
+    autoFocus,
+    name,
+    small,
+    sx,
+    type,
+    icon,
+    disabled,
+    onEnterPressed,
+    backgroundColor,
+    placeholder,
+    width,
+    onChange,
+    value,
+    label,
+    containerSx,
+    ...props
+  },
+  ref
+) => {
   let modifiedSx = sx
   if (icon !== undefined) {
     modifiedSx = { ...modifiedSx, pl: small ? 34 : 52 }
   }
   return (
     <Label
-      color={disabled ? "textDisabled" : "textMediumEmphasis"}
+      color="textMediumEmphasis"
       sx={{
         display: "flex",
         flexDirection: "column",
         fontSize: small ? 0 : undefined,
+        ...containerSx,
       }}
     >
       {label && (
-        <Box pb={small ? 2 : 1}>
+        <Box pb={1}>
           <Trans id={label} />
         </Box>
       )}
@@ -56,6 +75,7 @@ export const Input: FC<Props> = ({
           />
         )}
         <BaseInput
+          ref={ref}
           autoFocus={autoFocus}
           name={name}
           onKeyUp={(e) => {
@@ -80,4 +100,4 @@ export const Input: FC<Props> = ({
   )
 }
 
-export default Input
+export default forwardRef(Input)

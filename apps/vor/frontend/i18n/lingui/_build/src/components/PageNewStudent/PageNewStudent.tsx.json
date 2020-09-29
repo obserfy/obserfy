@@ -1,53 +1,5 @@
 {
-  "Home": {
-    "origin": [
-      [
-        "src/components/PageNewStudent/PageNewStudent.tsx",
-        92
-      ]
-    ]
-  },
-  "New Student": {
-    "origin": [
-      [
-        "src/components/PageNewStudent/PageNewStudent.tsx",
-        96
-      ]
-    ]
-  },
-  "Name (Required)": {
-    "origin": [
-      [
-        "src/components/PageNewStudent/PageNewStudent.tsx",
-        100
-      ]
-    ]
-  },
-  "Date of Birth": {
-    "origin": [
-      [
-        "src/components/PageNewStudent/PageNewStudent.tsx",
-        101
-      ]
-    ]
-  },
-  "Date of Entry": {
-    "origin": [
-      [
-        "src/components/PageNewStudent/PageNewStudent.tsx",
-        102
-      ]
-    ]
-  },
-  "Gender": {
-    "origin": [
-      [
-        "src/components/PageNewStudent/PageNewStudent.tsx",
-        103
-      ]
-    ]
-  },
-  "Not Set": {
+  "Students": {
     "origin": [
       [
         "src/components/PageNewStudent/PageNewStudent.tsx",
@@ -55,47 +7,47 @@
       ]
     ]
   },
-  "Male": {
+  "New": {
     "origin": [
       [
         "src/components/PageNewStudent/PageNewStudent.tsx",
-        108
+        106
       ]
     ]
   },
-  "Female": {
+  "New Student": {
     "origin": [
       [
         "src/components/PageNewStudent/PageNewStudent.tsx",
-        111
+        134
       ]
     ]
   },
-  "Student ID": {
+  "Name (Required)": {
     "origin": [
       [
         "src/components/PageNewStudent/PageNewStudent.tsx",
-        114
+        138
       ]
     ]
   },
-  "Notes": {
+  "Date of Birth": {
     "origin": [
       [
         "src/components/PageNewStudent/PageNewStudent.tsx",
-        115
+        139
       ]
     ]
   },
-  "Classes": {
+  "Date of Entry": {
     "origin": [
       [
         "src/components/PageNewStudent/PageNewStudent.tsx",
-        118
+        140
       ]
     ]
   },
-  "Guardians": {
+  "Gender": {
     "origin": [
       [
         "src/components/PageNewStudent/PageNewStudent.tsx",
@@ -103,11 +55,67 @@
       ]
     ]
   },
+  "Not Set": {
+    "origin": [
+      [
+        "src/components/PageNewStudent/PageNewStudent.tsx",
+        143
+      ]
+    ]
+  },
+  "Male": {
+    "origin": [
+      [
+        "src/components/PageNewStudent/PageNewStudent.tsx",
+        146
+      ]
+    ]
+  },
+  "Female": {
+    "origin": [
+      [
+        "src/components/PageNewStudent/PageNewStudent.tsx",
+        149
+      ]
+    ]
+  },
+  "Student ID": {
+    "origin": [
+      [
+        "src/components/PageNewStudent/PageNewStudent.tsx",
+        152
+      ]
+    ]
+  },
+  "Notes": {
+    "origin": [
+      [
+        "src/components/PageNewStudent/PageNewStudent.tsx",
+        153
+      ]
+    ]
+  },
+  "Classes": {
+    "origin": [
+      [
+        "src/components/PageNewStudent/PageNewStudent.tsx",
+        156
+      ]
+    ]
+  },
+  "Guardians": {
+    "origin": [
+      [
+        "src/components/PageNewStudent/PageNewStudent.tsx",
+        179
+      ]
+    ]
+  },
   "Add": {
     "origin": [
       [
         "src/components/PageNewStudent/PageNewStudent.tsx",
-        145
+        183
       ]
     ]
   },
@@ -115,23 +123,15 @@
     "origin": [
       [
         "src/components/PageNewStudent/PageNewStudent.tsx",
-        151
+        189
       ]
     ]
   },
-  "Clear": {
+  "Reset Form": {
     "origin": [
       [
         "src/components/PageNewStudent/PageNewStudent.tsx",
-        168
-      ]
-    ]
-  },
-  "Save": {
-    "origin": [
-      [
-        "src/components/PageNewStudent/PageNewStudent.tsx",
-        188
+        205
       ]
     ]
   }

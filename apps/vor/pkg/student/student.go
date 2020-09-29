@@ -13,15 +13,15 @@ import (
 	richErrors "github.com/pkg/errors"
 )
 
-func NewRouter(s rest.Server, store Store, imgproxyClient *imgproxy.Client) *chi.Mux {
+func NewRouter(s rest.Server, store Store) *chi.Mux {
 	r := chi.NewRouter()
 	r.Route("/{studentId}", func(r chi.Router) {
 		r.Use(authorizationMiddleware(s, store))
-		r.Method("GET", "/", getStudent(s, store, imgproxyClient))
+		r.Method("GET", "/", getStudent(s, store))
 		r.Method("DELETE", "/", deleteStudent(s, store))
 		r.Method("PATCH", "/", patchStudent(s, store))
 
-		r.Method("POST", "/observations", postObservation(s, store, imgproxyClient))
+		r.Method("POST", "/observations", postObservation(s, store))
 		r.Method("GET", "/observations", getObservation(s, store))
 
 		r.Method("POST", "/attendances", postAttaendances(s, store))
@@ -39,7 +39,7 @@ func NewRouter(s rest.Server, store Store, imgproxyClient *imgproxy.Client) *chi
 		r.Method("GET", "/plans", getPlans(s, store))
 
 		r.Method("POST", "/images", postNewImage(s, store))
-		r.Method("GET", "/images", getStudentImages(s, store, imgproxyClient))
+		r.Method("GET", "/images", getStudentImages(s, store))
 	})
 	return r
 }
@@ -195,7 +195,7 @@ func deleteGuardianRelation(s rest.Server, store Store) http.Handler {
 	})
 }
 
-func getStudent(s rest.Server, store Store, imgproxyClient *imgproxy.Client) http.Handler {
+func getStudent(s rest.Server, store Store) http.Handler {
 	type Guardian struct {
 		Id           string `json:"id"`
 		Name         string `json:"name"`
@@ -264,7 +264,7 @@ func getStudent(s rest.Server, store Store, imgproxyClient *imgproxy.Client) htt
 			Active:      *student.Active,
 		}
 		if student.ProfileImage.ObjectKey != "" {
-			response.ProfilePic = imgproxyClient.GenerateUrl(student.ProfileImage.ObjectKey, 80, 80)
+			response.ProfilePic = imgproxy.GenerateUrl(student.ProfileImage.ObjectKey, 80, 80)
 		}
 		if err := rest.WriteJson(w, response); err != nil {
 			return rest.NewWriteJsonError(err)
@@ -285,12 +285,13 @@ func deleteStudent(s rest.Server, store Store) http.Handler {
 
 func patchStudent(s rest.Server, store Store) http.Handler {
 	type requestBody struct {
-		Name        string          `json:"name"`
-		DateOfBirth *time.Time      `json:"dateOfBirth"`
-		DateOfEntry *time.Time      `json:"dateOfEntry"`
-		CustomId    string          `json:"customId"`
-		Gender      postgres.Gender `json:"gender"`
-		Active      *bool           `json:"active"`
+		Name           string          `json:"name"`
+		DateOfBirth    *time.Time      `json:"dateOfBirth"`
+		DateOfEntry    *time.Time      `json:"dateOfEntry"`
+		CustomId       string          `json:"customId"`
+		Gender         postgres.Gender `json:"gender"`
+		Active         *bool           `json:"active"`
+		ProfileImageId string          `json:"profileImageId"`
 	}
 	type responseBody struct {
 		Id          string     `json:"id"`
@@ -318,6 +319,7 @@ func patchStudent(s rest.Server, store Store) http.Handler {
 		newStudent.CustomId = requestBody.CustomId
 		newStudent.DateOfEntry = requestBody.DateOfEntry
 		newStudent.Active = requestBody.Active
+		newStudent.ProfileImageId = requestBody.ProfileImageId
 		if err := store.UpdateStudent(newStudent); err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Failed updating old student data", err}
 		}
@@ -335,7 +337,7 @@ func patchStudent(s rest.Server, store Store) http.Handler {
 	})
 }
 
-func postObservation(s rest.Server, store Store, imgproxyClient *imgproxy.Client) http.Handler {
+func postObservation(s rest.Server, store Store) http.Handler {
 	type requestBody struct {
 		ShortDesc  string      `json:"shortDesc"`
 		LongDesc   string      `json:"longDesc"`
@@ -345,6 +347,10 @@ func postObservation(s rest.Server, store Store, imgproxyClient *imgproxy.Client
 		AreaId     uuid.UUID   `json:"areaId"`
 	}
 
+	type area struct {
+		Id   uuid.UUID `json:"id"`
+		Name string    `json:"name"`
+	}
 	type image struct {
 		Id           uuid.UUID `json:"id"`
 		ThumbnailUrl string    `json:"thumbnailUrl"`
@@ -357,7 +363,7 @@ func postObservation(s rest.Server, store Store, imgproxyClient *imgproxy.Client
 		CreatedDate time.Time `json:"createdDate"`
 		EventTime   time.Time `json:"eventTime"`
 		Images      []image   `json:"images"`
-		AreaId      uuid.UUID `json:"areaId"`
+		Area        *area     `json:"area,omitempty"`
 		CreatorId   string    `json:"creatorId,omitempty"`
 		CreatorName string    `json:"creatorName,omitempty"`
 	}
@@ -402,23 +408,29 @@ func postObservation(s rest.Server, store Store, imgproxyClient *imgproxy.Client
 		for i := range observation.Images {
 			images = append(images, image{
 				Id:           observation.Images[i].Id,
-				ThumbnailUrl: imgproxyClient.GenerateUrl(observation.Images[i].ObjectKey, 80, 80),
-				OriginalUrl:  imgproxyClient.GenerateOriginalUrl(observation.Images[i].ObjectKey),
+				ThumbnailUrl: imgproxy.GenerateUrl(observation.Images[i].ObjectKey, 80, 80),
+				OriginalUrl:  imgproxy.GenerateOriginalUrl(observation.Images[i].ObjectKey),
 			})
 		}
 
-		w.WriteHeader(http.StatusCreated)
-		if err := rest.WriteJson(w, responseBody{
+		response := responseBody{
 			ShortDesc:   observation.ShortDesc,
 			LongDesc:    observation.LongDesc,
 			CategoryId:  observation.CategoryId,
 			EventTime:   observation.EventTime,
 			Images:      images,
-			AreaId:      observation.AreaId,
 			CreatorId:   observation.CreatorId,
 			CreatorName: observation.Creator.Name,
 			CreatedDate: observation.CreatedDate,
-		}); err != nil {
+		}
+		if observation.AreaId != uuid.Nil {
+			response.Area = &area{
+				Id:   observation.AreaId,
+				Name: observation.Area.Name,
+			}
+		}
+		w.WriteHeader(http.StatusCreated)
+		if err := rest.WriteJson(w, response); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
 		return nil
@@ -426,7 +438,16 @@ func postObservation(s rest.Server, store Store, imgproxyClient *imgproxy.Client
 }
 
 func getObservation(s rest.Server, store Store) http.Handler {
-	type observation struct {
+	type image struct {
+		Id           uuid.UUID `json:"id"`
+		ThumbnailUrl string    `json:"thumbnailUrl"`
+		OriginalUrl  string    `json:"originalUrl"`
+	}
+	type area struct {
+		Id   string `json:"id"`
+		Name string `json:"name"`
+	}
+	type responseBody struct {
 		Id          string    `json:"id"`
 		StudentName string    `json:"studentName"`
 		CategoryId  string    `json:"categoryId"`
@@ -436,6 +457,8 @@ func getObservation(s rest.Server, store Store) http.Handler {
 		ShortDesc   string    `json:"shortDesc"`
 		CreatedDate time.Time `json:"createdDate"`
 		EventTime   time.Time `json:"eventTime,omitempty"`
+		Area        *area     `json:"area,omitempty"`
+		Images      []image   `json:"images"`
 	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		id := chi.URLParam(r, "studentId")
@@ -449,22 +472,37 @@ func getObservation(s rest.Server, store Store) http.Handler {
 			}
 		}
 
-		responseBody := make([]observation, len(observations))
+		response := make([]responseBody, len(observations))
 		for i, o := range observations {
-			responseBody[i].Id = o.Id
-			responseBody[i].StudentName = o.Student.Name
-			responseBody[i].CategoryId = o.CategoryId
-			responseBody[i].LongDesc = o.LongDesc
-			responseBody[i].ShortDesc = o.ShortDesc
-			responseBody[i].EventTime = o.EventTime
-			responseBody[i].CreatedDate = o.CreatedDate
+			response[i].Id = o.Id
+			response[i].StudentName = o.Student.Name
+			response[i].CategoryId = o.CategoryId
+			response[i].LongDesc = o.LongDesc
+			response[i].ShortDesc = o.ShortDesc
+			response[i].EventTime = o.EventTime
+			response[i].CreatedDate = o.CreatedDate
+			if o.AreaId != uuid.Nil {
+				response[i].Area = &area{
+					Id:   o.Area.Id,
+					Name: o.Area.Name,
+				}
+			}
 			if o.CreatorId != "" {
-				responseBody[i].CreatorId = o.CreatorId
-				responseBody[i].CreatorName = o.Creator.Name
+				response[i].CreatorId = o.CreatorId
+				response[i].CreatorName = o.Creator.Name
+			}
+			response[i].Images = make([]image, 0)
+			for j := range o.Images {
+				item := o.Images[j]
+				response[i].Images = append(response[i].Images, image{
+					Id:           item.Id,
+					ThumbnailUrl: imgproxy.GenerateUrl(item.ObjectKey, 80, 80),
+					OriginalUrl:  imgproxy.GenerateOriginalUrl(item.ObjectKey),
+				})
 			}
 		}
 
-		if err := rest.WriteJson(w, responseBody); err != nil {
+		if err := rest.WriteJson(w, response); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
 		return nil
@@ -508,6 +546,13 @@ func getMaterialProgress(s rest.Server, store Store) http.Handler {
 }
 
 func upsertMaterialProgress(s rest.Server, store Store) http.Handler {
+	type responseBody struct {
+		AreaId       string    `json:"areaId"`
+		MaterialName string    `json:"materialName"`
+		MaterialId   string    `json:"materialId"`
+		Stage        int       `json:"stage"`
+		UpdatedAt    time.Time `json:"updatedAt"`
+	}
 	type requestBody struct {
 		Stage int `json:"stage"`
 	}
@@ -520,14 +565,28 @@ func upsertMaterialProgress(s rest.Server, store Store) http.Handler {
 			return rest.NewParseJsonError(err)
 		}
 
-		progress := postgres.StudentMaterialProgress{
+		progress, err := store.UpdateProgress(postgres.StudentMaterialProgress{
 			MaterialId: materialId,
 			StudentId:  studentId,
 			Stage:      requestBody.Stage,
 			UpdatedAt:  time.Now(),
+		})
+		if err != nil {
+			return &rest.Error{
+				http.StatusInternalServerError,
+				"Failed updating progress",
+				err,
+			}
 		}
-		if _, err := store.UpdateProgress(progress); err != nil {
-			return &rest.Error{http.StatusInternalServerError, "Failed updating progress", err}
+
+		if err := rest.WriteJson(w, &responseBody{
+			AreaId:       progress.Material.Subject.Area.Id,
+			MaterialName: progress.Material.Name,
+			MaterialId:   progress.MaterialId,
+			Stage:        progress.Stage,
+			UpdatedAt:    progress.UpdatedAt,
+		}); err != nil {
+			return rest.NewWriteJsonError(err)
 		}
 		return nil
 	})
@@ -639,7 +698,7 @@ func postNewImage(s rest.Server, store Store) http.Handler {
 	})
 }
 
-func getStudentImages(s rest.Server, store Store, client *imgproxy.Client) rest.Handler {
+func getStudentImages(s rest.Server, store Store) rest.Handler {
 	type imageJson struct {
 		Id           uuid.UUID `json:"id"`
 		OriginalUrl  string    `json:"originalUrl"`
@@ -660,8 +719,8 @@ func getStudentImages(s rest.Server, store Store, client *imgproxy.Client) rest.
 
 		response := make([]imageJson, 0)
 		for _, image := range images {
-			originalUrl := client.GenerateOriginalUrl(image.ObjectKey)
-			thumbnailUrl := client.GenerateUrl(image.ObjectKey, 400, 400)
+			originalUrl := imgproxy.GenerateOriginalUrl(image.ObjectKey)
+			thumbnailUrl := imgproxy.GenerateUrl(image.ObjectKey, 400, 400)
 			response = append(response, imageJson{
 				Id:           image.Id,
 				CreatedAt:    image.CreatedAt,

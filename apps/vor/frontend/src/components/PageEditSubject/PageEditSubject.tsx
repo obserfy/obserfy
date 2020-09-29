@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from "react"
 import { useImmer } from "use-immer"
 import { nanoid } from "nanoid"
-import { Flex, Box, Button } from "theme-ui"
+import { Box, Button, Flex } from "theme-ui"
 import { navigate } from "../Link/Link"
 import {
   Material,
@@ -9,19 +9,21 @@ import {
 } from "../../api/useGetSubjectMaterials"
 import { useGetArea } from "../../api/useGetArea"
 
-import { CURRICULUM_AREA_URL } from "../../routes"
+import {
+  ADMIN_CURRICULUM_URL,
+  ADMIN_URL,
+  CURRICULUM_AREA_URL,
+} from "../../routes"
 import DraggableMaterialListItem from "../DraggableMaterialListItem/DraggableMaterialListItem"
-import BackNavigation from "../BackNavigation/BackNavigation"
 import Typography from "../Typography/Typography"
-
 import Input from "../Input/Input"
 import Icon from "../Icon/Icon"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
-
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import { useGetSubject } from "../../api/useGetSubject"
 import { updateSubjectApi } from "../../api/updateSubjectApi"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
+import TopBar from "../TopBar/TopBar"
 
 const ITEM_HEIGHT = 48
 
@@ -105,9 +107,19 @@ export const PageEditSubject: FC<Props> = ({ areaId, subjectId }) => {
 
   return (
     <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto">
-      <BackNavigation
-        to={CURRICULUM_AREA_URL(areaId)}
-        text={area.data?.name ?? ""}
+      <TopBar
+        breadcrumbs={[
+          {
+            text: "Admin",
+            to: ADMIN_URL,
+          },
+          {
+            text: "Curriculum",
+            to: ADMIN_CURRICULUM_URL,
+          },
+          { text: `${area.data?.name} Area`, to: CURRICULUM_AREA_URL(areaId) },
+          { text: "Edit Subject" },
+        ]}
       />
       <Typography.H6 m={3}>Edit Subject</Typography.H6>
       <Box p={3}>

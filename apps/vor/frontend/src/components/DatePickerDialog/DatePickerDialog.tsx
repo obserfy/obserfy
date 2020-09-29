@@ -1,5 +1,5 @@
-import React, { FC, useState } from "react"
-import { Button, Flex } from "theme-ui"
+import React, { FC, memo, useState } from "react"
+import { Box, Button, Flex } from "theme-ui"
 import Dialog from "../Dialog/Dialog"
 
 import dayjs, { Dayjs } from "../../dayjs"
@@ -8,125 +8,180 @@ import Typography from "../Typography/Typography"
 import Icon from "../Icon/Icon"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import { ReactComponent as PrevIcon } from "../../icons/arrow-back.svg"
+import { ReactComponent as NestedCircleIcon } from "../../icons/nested-circle.svg"
+import { ReactComponent as RightDoubleArrowIcon } from "../../icons/right-double-arrow.svg"
+import { ReactComponent as LeftDoubleArrowIcon } from "../../icons/left-double-arrow.svg"
+import { borderBottom } from "../../border"
 
-const range = (length: number) => {
-  return [...Array(length).keys()]
-}
+const range = (length: number) => [...Array(length).keys()]
 
-interface Props {
+export interface DatePickerDialogProps {
   defaultDate?: Dayjs
   onDismiss: () => void
   onConfirm: (date: Dayjs) => void
+  isLoading?: boolean
 }
-export const DatePickerDialog: FC<Props> = ({
+export const DatePickerDialog: FC<DatePickerDialogProps> = ({
   defaultDate,
   onDismiss,
   onConfirm,
+  isLoading,
 }) => {
-  const [selectedDate, setSelectedDate] = useState(
-    defaultDate ?? dayjs(Date.now())
-  )
-  const [monthShown, setMonth] = useState(selectedDate.startOf("month"))
-  const isShowingCurrentMonth = monthShown.isSame(dayjs(Date.now()), "month")
+  const currentDate = dayjs()
+  const [selected, setSelectedDate] = useState(defaultDate ?? dayjs())
+  const [month, setMonth] = useState(selected.startOf("month"))
+  const isSelectedToday = selected.isSame(currentDate, "date")
 
   return (
     <Dialog sx={{ maxWidth: ["100%", 400] }}>
       <DialogHeader
+        loading={isLoading}
         onAcceptText="Set"
         title="Pick a Date"
         onCancel={() => onDismiss()}
         onAccept={() => {
-          onConfirm(selectedDate)
+          onConfirm(selected)
         }}
       />
-      <Flex py={3}>
-        <Typography.Body ml={3}>
-          {monthShown.format("MMM YYYY")}
-        </Typography.Body>
+      <Flex py={3} sx={{ alignItems: "center", touchAction: "manipulation" }}>
+        <Typography.Body ml={3}>{month.format("MMM YYYY")}</Typography.Body>
         <Button
           variant="outline"
           p={1}
           ml="auto"
-          onClick={() => setMonth(monthShown.add(-1, "month"))}
-          data-cy="prev"
+          onClick={() => setMonth(month.add(-1, "year"))}
+          data-cy="prev-year"
         >
-          <Icon as={PrevIcon} />
+          <Icon as={LeftDoubleArrowIcon} />
         </Button>
         <Button
           variant="outline"
           p={1}
           ml={1}
-          onClick={() => setMonth(monthShown.add(1, "month"))}
-          data-cy="next"
+          onClick={() => setMonth(month.add(-1, "month"))}
+          data-cy="prev-month"
+        >
+          <Icon as={PrevIcon} />
+        </Button>
+
+        <Button
+          variant="outline"
+          p={1}
+          ml={1}
+          onClick={() => setMonth(month.add(1, "month"))}
+          data-cy="next-month"
         >
           <Icon as={NextIcon} />
         </Button>
         <Button
           variant="outline"
-          py={1}
+          p={1}
+          ml={1}
+          onClick={() => setMonth(month.add(1, "year"))}
+          data-cy="next-year"
+        >
+          <Icon as={RightDoubleArrowIcon} />
+        </Button>
+        <Button
+          variant="outline"
+          p={1}
+          mr={3}
           sx={{ fontSize: 1 }}
           ml={1}
-          mr={3}
-          onClick={() => setMonth(dayjs(Date.now()).startOf("month"))}
-          disabled={isShowingCurrentMonth}
+          onClick={() => {
+            setMonth(dayjs().startOf("month"))
+            setSelectedDate(dayjs())
+          }}
+          disabled={isSelectedToday && month.isSame(currentDate, "month")}
         >
-          This month
+          <Icon as={NestedCircleIcon} fill="textPrimary" />
         </Button>
       </Flex>
-      <Flex
-        px={3}
-        pb={2}
-        sx={{
-          borderBottomWidth: 1,
-          borderBottomStyle: "solid",
-          borderBottomColor: "border",
-          flexWrap: "wrap",
-        }}
+      <DatesTable
+        month={month}
+        onDateClick={(date) => setSelectedDate(date)}
+        selected={selected}
+      />
+      <Typography.Body
+        px={4}
+        py={3}
+        backgroundColor="background"
+        sx={{ fontWeight: "bold" }}
       >
-        {["M", "T", "W", "T", "F", "S", "S"].map((dayInitial) => (
-          <Typography.Body
-            color="textMediumEmphasis"
-            sx={{ textAlign: "center", width: "14.28%" }}
-          >
-            {dayInitial}
-          </Typography.Body>
-        ))}
-      </Flex>
-      <Flex sx={{ flexWrap: "wrap", minHeight: 258 }} px={3} pb={3} pt={2}>
-        {range(monthShown.daysInMonth())
-          .map((date) => date + 1)
-          .map((date) => {
-            const firstDateIndent =
-              date === 1 ? `${14.28 * monthShown.day()}%` : 0
-            const isCurrentDate =
-              isShowingCurrentMonth && dayjs(Date.now()).date() === date
-
-            const isSelected =
-              selectedDate.isSame(monthShown, "month") &&
-              selectedDate.date() === date
-
-            return (
-              <Button
-                variant={isSelected ? "primary" : "secondary"}
-                key={`${date}-${monthShown.month()}`}
-                px={0}
-                sx={{
-                  fontWeight: isCurrentDate || isSelected ? "bold" : undefined,
-                  width: "14.28%",
-                }}
-                color={
-                  isCurrentDate && !isSelected ? "primaryDark" : "onBackground"
-                }
-                ml={firstDateIndent}
-                onClick={() => setSelectedDate(monthShown.set("date", date))}
-              >
-                {date}
-              </Button>
-            )
-          })}
-      </Flex>
+        {selected.format("dddd, DD MMM YYYY")}
+      </Typography.Body>
     </Dialog>
   )
 }
+
+const DatesTable: FC<{
+  selected: Dayjs
+  month: Dayjs
+  onDateClick: (date: Dayjs) => void
+}> = ({ month, onDateClick, selected }) => (
+  <>
+    <WeekDayInitials />
+    <Flex sx={{ flexWrap: "wrap", minHeight: 250 }} mx={3} my={2}>
+      {range(month.daysInMonth()).map((number) => {
+        const date = number + 1
+        const fullDate = month.set("date", date)
+
+        const firstRowIndent = date === 1 ? `${14.28 * month.day()}%` : 0
+
+        const isToday = dayjs().isSame(fullDate, "date")
+
+        const isSelected = selected.isSame(fullDate, "date")
+
+        return (
+          <Flex
+            key={`${date}-${month.unix()}`}
+            sx={{
+              alignItems: "center",
+              justifyContent: "center",
+              width: "14.28%",
+            }}
+            ml={firstRowIndent}
+          >
+            <Button
+              variant={isSelected ? "primary" : "secondary"}
+              color={isSelected ? "onPrimary" : "text"}
+              px={0}
+              sx={{
+                fontWeight: isToday || isSelected ? "bold" : undefined,
+                height: 40,
+                width: 40,
+              }}
+              onClick={() => onDateClick(fullDate)}
+            >
+              <Flex sx={{ flexDirection: "column", alignItems: "center" }}>
+                <Box>{date}</Box>
+                {isToday && (
+                  <Icon
+                    size={10}
+                    as={NestedCircleIcon}
+                    fill={isSelected ? "onPrimary" : "textPrimary"}
+                  />
+                )}
+              </Flex>
+            </Button>
+          </Flex>
+        )
+      })}
+    </Flex>
+  </>
+)
+
+const WeekDayInitials: FC = memo(() => (
+  <Flex px={3} pb={2} sx={{ ...borderBottom, userSelect: "none" }}>
+    {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((weekday) => (
+      <Typography.Body
+        key={weekday}
+        sx={{ textAlign: "center", width: "14.28%" }}
+      >
+        {weekday[0]}
+      </Typography.Body>
+    ))}
+  </Flex>
+))
 
 export default DatePickerDialog

@@ -1,19 +1,24 @@
 html,
 body {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 a,
 a:hover,
 a:focus,
 a:active {
-    text-decoration: none;
-    border: none;
-    outline: none;
-    user-select: none;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  user-select: none;
 }
 
 button::-moz-focus-inner {
-    border: 0;
+  border: 0;
 }

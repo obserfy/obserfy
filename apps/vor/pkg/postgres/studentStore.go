@@ -17,7 +17,7 @@ type StudentStore struct {
 
 func (s StudentStore) NewClassRelation(studentId string, classId string) error {
 	relation := StudentToClass{ClassId: classId, StudentId: studentId}
-	if err := s.Insert(&relation); err != nil {
+	if _, err := s.Model(&relation).Insert(); err != nil {
 		return richErrors.Wrap(err, "failed to save class to student relation")
 	}
 	return nil
@@ -53,12 +53,12 @@ func (s StudentStore) InsertObservation(studentId string, creatorId string, long
 			ImageId:       images[i],
 		})
 	}
-	if err := s.RunInTransaction(func(tx *pg.Tx) error {
-		if err := tx.Insert(&observation); err != nil {
+	if err := s.RunInTransaction(s.Context(), func(tx *pg.Tx) error {
+		if _, err := tx.Model(&observation).Insert(); err != nil {
 			return richErrors.Wrap(err, "failed to save observations")
 		}
 		if len(observationImages) > 0 {
-			if err := tx.Insert(&observationImages); err != nil {
+			if _, err := tx.Model(&observationImages).Insert(); err != nil {
 				return richErrors.Wrap(err, "failed to save observation images")
 			}
 		}
@@ -66,6 +66,7 @@ func (s StudentStore) InsertObservation(studentId string, creatorId string, long
 			WherePK().
 			Relation("Images").
 			Relation("Creator").
+			Relation("Area").
 			Select(); err != nil {
 			return richErrors.Wrap(err, "failed to get complete observation data")
 		}
@@ -84,7 +85,7 @@ func (s StudentStore) InsertAttendance(studentId string, classId string, date ti
 		ClassId:   classId,
 		Date:      date,
 	}
-	if err := s.Insert(&attendance); err != nil {
+	if _, err := s.Model(&attendance).Insert(); err != nil {
 		return nil, err
 	}
 	return &attendance, nil
@@ -118,6 +119,8 @@ func (s StudentStore) GetObservations(studentId string) ([]Observation, error) {
 		Where("student_id=?", studentId).
 		Relation("Student").
 		Relation("Creator").
+		Relation("Area").
+		Relation("Images").
 		Order("created_date").
 		Select(); err != nil {
 		return nil, err
@@ -160,8 +163,20 @@ func (s StudentStore) GetProgress(studentId string) ([]StudentMaterialProgress, 
 	return progresses, nil
 }
 
-func (s StudentStore) UpdateProgress(progress StudentMaterialProgress) (pg.Result, error) {
-	return s.Model(&progress).OnConflict("(material_id, student_id) DO UPDATE").Insert()
+func (s StudentStore) UpdateProgress(progress StudentMaterialProgress) (*StudentMaterialProgress, error) {
+	if _, err := s.Model(&progress).
+		OnConflict("(material_id, student_id) DO UPDATE").
+		Insert(); err != nil {
+		return nil, richErrors.Wrap(err, "failed to upsert material progress")
+	}
+	if err := s.Model(&progress).WherePK().
+		Relation("Material").
+		Relation("Material.Subject").
+		Relation("Material.Subject.Area").
+		Select(); err != nil {
+		return nil, richErrors.Wrap(err, "failed to select the updated material progress")
+	}
+	return &progress, nil
 }
 
 func (s StudentStore) Get(studentId string) (*Student, error) {
@@ -188,7 +203,11 @@ func (s StudentStore) UpdateStudent(student *Student) error {
 
 func (s StudentStore) DeleteStudent(studentId string) error {
 	student := Student{Id: studentId}
-	return s.DB.Delete(&student)
+	_, err := s.DB.Model(&student).WherePK().Delete()
+	if err != nil {
+		return richErrors.Wrap(err, "failed to delete student")
+	}
+	return nil
 }
 
 func (s StudentStore) InsertGuardianRelation(studentId string, guardianId string, relationship int) error {
@@ -197,7 +216,7 @@ func (s StudentStore) InsertGuardianRelation(studentId string, guardianId string
 		GuardianId:   guardianId,
 		Relationship: GuardianRelationship(relationship),
 	}
-	if err := s.Insert(&relation); err != nil {
+	if _, err := s.Model(&relation).Insert(); err != nil {
 		return richErrors.Wrap(err, "failed to save guardian relation")
 	}
 	return nil
@@ -222,7 +241,7 @@ func (s StudentStore) GetLessonPlans(studentId string, date time.Time) ([]Lesson
 		Relation("LessonPlanDetails.Area").
 		Relation("LessonPlanDetails.User").
 		Select(); err != nil {
-		return nil, richErrors.Wrap(err, "Failed to query students's lesson plan")
+		return nil, richErrors.Wrap(err, "Failed to query student's lesson plan")
 	}
 
 	return lessonPlan, nil
@@ -254,7 +273,7 @@ func (s StudentStore) CreateImage(studentId string, image multipart.File, header
 	newImage.ObjectKey = objectKey
 
 	// save data to db
-	if err := s.RunInTransaction(func(tx *pg.Tx) error {
+	if err := s.RunInTransaction(s.Context(), func(tx *pg.Tx) error {
 		if _, err := tx.Model(&newImage).Insert(); err != nil {
 			return richErrors.Wrap(err, "failed to save image")
 		}

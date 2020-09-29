@@ -3,7 +3,8 @@ to: src/components/<%= name%>/<%= name%>.tsx
 ---
 import React, { FC } from "react"
 
-export const <%= name%>: FC = () => (
+export interface <%= name%>Props {}
+const <%= name%>: FC<<%= name%>Props> = () => (
   <div></div>
 )
 

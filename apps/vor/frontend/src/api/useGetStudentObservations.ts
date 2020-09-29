@@ -2,9 +2,8 @@ import { queryCache, QueryResult, useQuery } from "react-query"
 import { getApi } from "./fetchApi"
 
 export interface Observation {
-  id?: string
-  studentId?: string
-  studentName?: string
+  id: string
+  studentName: string
   shortDesc: string
   longDesc: string
   categoryId: string
@@ -12,6 +11,15 @@ export interface Observation {
   creatorId?: string
   creatorName?: string
   eventTime?: string
+  area?: {
+    id: string
+    name: string
+  }
+  images: Array<{
+    id: string
+    thumbnailUrl: string
+    originalUrl: string
+  }>
 }
 
 export const useGetStudentObservations = (

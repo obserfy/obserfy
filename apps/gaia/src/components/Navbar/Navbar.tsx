@@ -38,6 +38,19 @@ const Navbar: FC<Props> = ({ childId }) => {
               </a>
             </Link>
           </li>
+          <li className="mr-1" style={{ marginBottom: -1 }}>
+            <Link href={`/support?childId=${childId}`}>
+              <a
+                className={`${
+                  router.pathname === "/support"
+                    ? "border-b-2 border-black"
+                    : "text-gray-700"
+                } bg-white inline-block p-2 text-sm`}
+              >
+                Support
+              </a>
+            </Link>
+          </li>
         </ul>
       </nav>
     </div>

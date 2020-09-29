@@ -130,10 +130,6 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
       materialName={selected?.materialName}
       materialId={selected?.materialId}
       onDismiss={() => setIsEditing(false)}
-      onSubmitted={async () => {
-        await progress.refetch()
-        setIsEditing(false)
-      }}
     />
   )
 
@@ -141,6 +137,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
     <>
       <Card sx={{ borderRadius: [0, "default"], overflow: "inherit" }}>
         <Tab
+          small
           items={areas.data?.map(({ name }) => name) ?? []}
           onTabClick={setTab}
           selectedItemIdx={tab}

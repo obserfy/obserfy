@@ -2,6 +2,123 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.11.5](https://github.com/obserfy/obserfy/compare/v1.11.4...v1.11.5) (2020-09-18)
+
+
+### Bug Fixes
+
+* change some text. ([27e5afb](https://github.com/obserfy/obserfy/commit/27e5afb9eb30cf406dd19dc5489d613a6d2a65bb))
+* change some text. ([921da61](https://github.com/obserfy/obserfy/commit/921da6147140827c166d573d8ff1aca86cd9f8ba))
+* **deps:** update dependency @sentry/tracing to v5.24.1 ([bd4638a](https://github.com/obserfy/obserfy/commit/bd4638a20becf5839ae932ddf5ffdceb90c89336))
+* nil pointer exception on observations without creator. ([0e3ddc7](https://github.com/obserfy/obserfy/commit/0e3ddc7fea575ea98781f982cfb144f8c40f31b9))
+* sidebar glowing white in dark mode. ([a7e2efa](https://github.com/obserfy/obserfy/commit/a7e2efa0c017e443e72f0f276257f3cbbc10b378))
+* **deps:** update dependency @sentry/tracing to v5.24.0 ([956bf33](https://github.com/obserfy/obserfy/commit/956bf33a56053a0214d7de130d3fd1e6e3bbf181))
+
+### [1.11.4](https://github.com/obserfy/obserfy/compare/v1.11.2...v1.11.4) (2020-09-17)
+
+### [1.11.3](https://github.com/obserfy/obserfy/compare/v1.11.2...v1.11.3) (2020-09-17)
+
+### [1.11.2](https://github.com/obserfy/obserfy/compare/v1.11.1...v1.11.2) (2020-09-17)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @auth0/nextjs-auth0 to v0.16.0 ([5994e5e](https://github.com/obserfy/obserfy/commit/5994e5e4526e546e447b14098f3a3dd9dfd481e4))
+* **deps:** update dependency @prefresh/next to v1 ([fbea955](https://github.com/obserfy/obserfy/commit/fbea9557a29aee720189d5ed42e3e35d9ace58be))
+* **deps:** update dependency dayjs to v1.8.34 ([addaa77](https://github.com/obserfy/obserfy/commit/addaa77ec78388ecf479b5640081eaba4b0d39c9))
+* **deps:** update dependency immer to v7.0.8 ([5b0cfc2](https://github.com/obserfy/obserfy/commit/5b0cfc2b2136b524b4b74b8c0dc5956d3f36bf8a))
+* **deps:** update dependency pg to v8.3.3 ([5b4f14a](https://github.com/obserfy/obserfy/commit/5b4f14aa80d66f6b3af6c2bfc02cb42f72eecce3))
+* **deps:** update dependency preact to v10.4.8 ([7ff47e2](https://github.com/obserfy/obserfy/commit/7ff47e2669f416f1d70a2efc99a25a4f06854c1a))
+* **deps:** update dependency react-query to v2.6.0 ([0c626f2](https://github.com/obserfy/obserfy/commit/0c626f2ce530c0a8304e5ec28d710eddc6e82c47))
+* **deps:** update dependency react-query to v2.7.0 ([8ab1127](https://github.com/obserfy/obserfy/commit/8ab112738f5c4febb5f6f930a8e7982d7d9a85f7))
+* **deps:** update dependency tailwindcss to v1.7.0 ([7151ba7](https://github.com/obserfy/obserfy/commit/7151ba7ad9218ee335601c226f9bcc28d76c642d))
+* **deps:** update dependency tailwindcss to v1.7.1 ([1c2cc78](https://github.com/obserfy/obserfy/commit/1c2cc78708069e5310bd3da8401010d22970bbdc))
+* **deps:** update dependency tailwindcss to v1.7.2 ([b94f655](https://github.com/obserfy/obserfy/commit/b94f65526cead94ce0e20e01ebb5efc17a7b8be0))
+* **deps:** update dependency tailwindcss to v1.7.3 ([42e87ca](https://github.com/obserfy/obserfy/commit/42e87cab1e3518eb7c29729f80544c721f4921e2))
+* **deps:** update dependency tailwindcss to v1.7.4 ([c48cd32](https://github.com/obserfy/obserfy/commit/c48cd32d1ac2f1efb4cc74ede8dc757ff609431b))
+* **deps:** update dependency tailwindcss to v1.7.5 ([c673540](https://github.com/obserfy/obserfy/commit/c67354007f3618766d73ded90259bb50893a6187))
+* **deps:** update dependency tailwindcss to v1.7.6 ([1675b65](https://github.com/obserfy/obserfy/commit/1675b65a9e56ea8b4fad515b2ce139f3d1e9bc73))
+
+### [1.11.1](https://github.com/obserfy/obserfy/compare/v1.11.0...v1.11.1) (2020-08-18)
+
+## [1.11.0](https://github.com/obserfy/obserfy/compare/v1.10.4...v1.11.0) (2020-08-18)
+
+
+### Features
+
+* add "created at" column in school table. ([6b1f7fd](https://github.com/obserfy/obserfy/commit/6b1f7fd63fa32b63fa8c7f9f8d097364dfc864a0))
+
+### [1.10.4](https://github.com/obserfy/obserfy/compare/v1.10.3...v1.10.4) (2020-08-12)
+
+
+### Bug Fixes
+
+* **deps:** update dependency next to v9.5.2 ([89d1d90](https://github.com/obserfy/obserfy/commit/89d1d90ea200e49beac276c8f709cee5f7d1f13f))
+
+### [1.10.3](https://github.com/obserfy/obserfy/compare/v1.10.2...v1.10.3) (2020-08-10)
+
+
+### Bug Fixes
+
+* don't link images to homepage. ([67d587a](https://github.com/obserfy/obserfy/commit/67d587add6931acbe667568d619a86242228a3a8))
+* **deps:** update dependency gatsby to v2.24.23 ([580f71e](https://github.com/obserfy/obserfy/commit/580f71e63f17deae228d3f2d78f8d4c52195f204))
+* **deps:** update dependency gatsby-plugin-webpack-bundle-analyser-v2 to v1.1.11 ([1d67302](https://github.com/obserfy/obserfy/commit/1d673027a70bfb0e7a2d75dab6d5800689b5443d))
+* **deps:** update dependency react-optimized-image to v0.3.4 ([2e200fa](https://github.com/obserfy/obserfy/commit/2e200fada6539e2028af4647bfbcd8e8b902eff2))
+* **deps:** update dependency react-query to v2.5.10 ([ec0fd9a](https://github.com/obserfy/obserfy/commit/ec0fd9a70be8b07f0d83f60445c0281c17f4d8a3))
+* **deps:** update dependency react-query to v2.5.11 ([eabe4e6](https://github.com/obserfy/obserfy/commit/eabe4e638bca5db2be74553ec1f9991d0a59f33d))
+* **deps:** update dependency react-query to v2.5.9 ([7d827b6](https://github.com/obserfy/obserfy/commit/7d827b6b4dd9ad6ac9e1880c11b13908ba5e6a5a))
+* **deps:** update dependency tailwindcss to v1.6.1 ([90a58a9](https://github.com/obserfy/obserfy/commit/90a58a938b42cead0feb2186e27a76c74c6205c9))
+* **deps:** update gatsby ([64fcb2b](https://github.com/obserfy/obserfy/commit/64fcb2b978fc3862f3b4310580455af4e8cc7d11))
+
+### [1.10.2](https://github.com/obserfy/obserfy/compare/v1.10.1...v1.10.2) (2020-07-30)
+
+
+### Bug Fixes
+
+* service worker not caching correctly. ([24c2e98](https://github.com/obserfy/obserfy/commit/24c2e98d56af5c07e48ff08e2feab1f9d18402ec))
+* tweak paddings. ([7fc3b2c](https://github.com/obserfy/obserfy/commit/7fc3b2c817dd3f458ddd99ecfd1a61d1dc2935cc))
+
+### [1.10.1](https://github.com/obserfy/obserfy/compare/v1.10.0...v1.10.1) (2020-07-30)
+
+## [1.10.0](https://github.com/obserfy/obserfy/compare/v1.9.0...v1.10.0) (2020-07-28)
+
+
+### Features
+
+* Add subscription page. ([8e50243](https://github.com/obserfy/obserfy/commit/8e50243a97d65087a1b37787542f21c15f44bde3))
+* Add subscription webhook. ([30ac8aa](https://github.com/obserfy/obserfy/commit/30ac8aa2879c4e93418e232ed160de9313c40a67))
+* improve brand banner. ([2be65bb](https://github.com/obserfy/obserfy/commit/2be65bb16bb3b654e22e8455252ee59d544611a2))
+* Redesigned choose school page. ([6763659](https://github.com/obserfy/obserfy/commit/6763659d71715d9fbbd440be015b31ab6b3331a4))
+* Use register with invite code while being logged in. ([295f446](https://github.com/obserfy/obserfy/commit/295f446e4e78b903df3b5fdf004bbdd8c429acdf))
+
+
+### Bug Fixes
+
+* changing schools doesn't invalidate get students cache. ([17e093a](https://github.com/obserfy/obserfy/commit/17e093aa903f7f8e38727fdefa226a5232d7b4f5))
+* **deps:** pin dependency @sentry/gatsby to 5.20.0 ([dbb98d4](https://github.com/obserfy/obserfy/commit/dbb98d43c66c4109208d4f7ab1394675f974423f))
+* **deps:** update dependency gatsby to v2.24.10 ([050e8c7](https://github.com/obserfy/obserfy/commit/050e8c7cd288fe980851fdf45307b26608716ff4))
+* **deps:** update dependency react-query to v2.5.6 ([b876530](https://github.com/obserfy/obserfy/commit/b8765300582ebe9cfe59827233d103b080c19a20))
+
+## [1.9.0](https://github.com/obserfy/obserfy/compare/v1.8.0...v1.9.0) (2020-07-22)
+
+
+### Features
+
+* Add update notification. ([#710](https://github.com/obserfy/obserfy/issues/710)) ([1a422d0](https://github.com/obserfy/obserfy/commit/1a422d0791390aaebfb5cddc530c8a466e59a084))
+
+
+### Bug Fixes
+
+* **deps:** update dependency dayjs to v1.8.30 ([9eb0477](https://github.com/obserfy/obserfy/commit/9eb047782558f2ff60e30413c0c4cf55313dee74))
+* **deps:** update dependency gatsby to v2.24.5 ([3398f14](https://github.com/obserfy/obserfy/commit/3398f14486b3aca96a53a007d8a41fde2127facb))
+* **deps:** update dependency gatsby-plugin-sharp to v2.6.20 ([e04fe49](https://github.com/obserfy/obserfy/commit/e04fe49902f227131af47350672335b3751156ac))
+* **deps:** update dependency next-optimized-images to v3.0.0-canary.1 ([8373979](https://github.com/obserfy/obserfy/commit/837397974bc06d8d76c566a3ebb95b1906928eb0))
+* **deps:** update dependency react-optimized-image to v0.3.0 ([b72f7a1](https://github.com/obserfy/obserfy/commit/b72f7a17354b3abaf88d4982872cabca2ec066bc))
+* **deps:** update dependency react-optimized-image to v0.3.1 ([2684558](https://github.com/obserfy/obserfy/commit/2684558f1013fdd69b09498dc88898169c5b5888))
+* **deps:** update dependency react-query to v2.5.5 ([08822b1](https://github.com/obserfy/obserfy/commit/08822b115def477bc75ed4d3388d5d21efc1bc2d))
+* **deps:** update dependency tailwindcss to v1.5.2 ([27a16d2](https://github.com/obserfy/obserfy/commit/27a16d26b2fd970fdcf579ada6e816b5dc44f123))
+* **deps:** update gatsby ([f00b718](https://github.com/obserfy/obserfy/commit/f00b7183f4672660964380dab1376e8e16864c2b))
+
 ## [1.8.0](https://github.com/obserfy/obserfy/compare/v1.7.1...v1.8.0) (2020-07-19)
 
 

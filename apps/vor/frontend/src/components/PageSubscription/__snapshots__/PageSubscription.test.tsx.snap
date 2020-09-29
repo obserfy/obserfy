@@ -57,7 +57,7 @@ exports[`PageSubscription should render correctly 1`] = `
   }
 }
 
-.emotion-46 {
+.emotion-42 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -65,12 +65,12 @@ exports[`PageSubscription should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-46 {
+  .emotion-42 {
     font-size: 20px;
   }
 }
 
-.emotion-45 {
+.emotion-41 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -115,17 +115,11 @@ exports[`PageSubscription should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-bottom: 0;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-}
-
-@media screen and (min-width:40em) {
-  .emotion-1 {
-    font-size: 14px;
-  }
 }
 
 .emotion-3 {
@@ -143,7 +137,7 @@ exports[`PageSubscription should render correctly 1`] = `
   text-align: center;
 }
 
-.emotion-7 {
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -157,7 +151,7 @@ exports[`PageSubscription should render correctly 1`] = `
   border-radius: 16px;
 }
 
-.emotion-6 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -178,7 +172,7 @@ exports[`PageSubscription should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   color: var(--theme-ui-colors-textPrimary,#027c5b);
@@ -186,30 +180,7 @@ exports[`PageSubscription should render correctly 1`] = `
   line-height: 1;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-4 {
-    font-size: 14px;
-  }
-}
-
-.emotion-5 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
-  text-rendering: optimizeLegibility;
-  line-height: 1.5;
-  margin-left: auto;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-5 {
-    font-size: 14px;
-  }
-}
-
-.emotion-44 {
+.emotion-40 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -223,12 +194,12 @@ exports[`PageSubscription should render correctly 1`] = `
   border-radius: 16px;
 }
 
-.emotion-8 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-bottom: 8px;
@@ -237,13 +208,7 @@ exports[`PageSubscription should render correctly 1`] = `
   line-height: 1;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-8 {
-    font-size: 14px;
-  }
-}
-
-.emotion-11 {
+.emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -257,7 +222,7 @@ exports[`PageSubscription should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-9 {
+.emotion-8 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -271,43 +236,31 @@ exports[`PageSubscription should render correctly 1`] = `
   line-height: 1;
 }
 
-.emotion-10 {
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-left: 8px;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
 }
 
-@media screen and (min-width:40em) {
-  .emotion-10 {
-    font-size: 14px;
-  }
-}
-
-.emotion-12 {
+.emotion-11 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-top: 16px;
   margin-bottom: 16px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-12 {
-    font-size: 14px;
-  }
-}
-
-.emotion-41 {
+.emotion-37 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -315,7 +268,7 @@ exports[`PageSubscription should render correctly 1`] = `
   margin-bottom: 16px;
 }
 
-.emotion-15 {
+.emotion-14 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -329,7 +282,7 @@ exports[`PageSubscription should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-13 {
+.emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -343,42 +296,30 @@ exports[`PageSubscription should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-14 {
+.emotion-13 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-left: 8px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-14 {
-    font-size: 14px;
-  }
-}
-
-.emotion-36 {
+.emotion-32 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-left: 8px;
   color: var(--theme-ui-colors-textPrimary,#027c5b);
 }
 
-@media screen and (min-width:40em) {
-  .emotion-36 {
-    font-size: 14px;
-  }
-}
-
-.emotion-43 {
+.emotion-39 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -442,23 +383,23 @@ exports[`PageSubscription should render correctly 1`] = `
   border-radius: 16px;
 }
 
-.emotion-43:disabled {
+.emotion-39:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-43:hover,
-.emotion-43:focus {
+.emotion-39:hover,
+.emotion-39:focus {
   background-color: var(--theme-ui-colors-primaryDark,#00a06d);
   outline: none;
 }
 
-.emotion-43:hover:disabled,
-.emotion-43:focus:disabled {
+.emotion-39:hover:disabled,
+.emotion-39:focus:disabled {
   background-color: var(--theme-ui-colors-primary,#00e399);
 }
 
-.emotion-42 {
+.emotion-38 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -470,9 +411,9 @@ exports[`PageSubscription should render correctly 1`] = `
   height: 18px;
 }
 
-.emotion-42 div {
+.emotion-38 div {
   position: absolute;
-  top: 512px;
+  top: 8px;
   width: 3px;
   height: 3px;
   border-radius: 50%;
@@ -481,25 +422,25 @@ exports[`PageSubscription should render correctly 1`] = `
   animation-timing-function: cubic-bezier(0,1,1,0);
 }
 
-.emotion-42 div:nth-child(1) {
+.emotion-38 div:nth-child(1) {
   left: 2px;
   -webkit-animation: animation-0 0.6s infinite;
   animation: animation-0 0.6s infinite;
 }
 
-.emotion-42 div:nth-child(2) {
+.emotion-38 div:nth-child(2) {
   left: 2px;
   -webkit-animation: animation-1 0.6s infinite;
   animation: animation-1 0.6s infinite;
 }
 
-.emotion-42 div:nth-child(3) {
+.emotion-38 div:nth-child(3) {
   left: 8px;
   -webkit-animation: animation-1 0.6s infinite;
   animation: animation-1 0.6s infinite;
 }
 
-.emotion-42 div:nth-child(4) {
+.emotion-38 div:nth-child(4) {
   left: 14px;
   -webkit-animation: animation-2 0.6s infinite;
   animation: animation-2 0.6s infinite;
@@ -507,10 +448,10 @@ exports[`PageSubscription should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-46"
+    class="emotion-42"
   >
     <div
-      class="emotion-45"
+      class="emotion-41"
     >
       <a
         href="/dashboard/admin"
@@ -535,173 +476,156 @@ exports[`PageSubscription should render correctly 1`] = `
         Subscription Plan
       </h4>
       <div
-        class="emotion-7"
+        class="emotion-6"
       >
         <div
-          class="emotion-6"
+          class="emotion-5"
         >
           <p
             class="emotion-4"
           >
-            Free Trial
-          </p>
-          <p
-            class="emotion-5"
-          >
-            Current Plan
+            Early Access
           </p>
         </div>
       </div>
       <div
-        class="emotion-44"
+        class="emotion-40"
       >
         <p
-          class="emotion-8"
+          class="emotion-7"
         >
           Standard Plan
         </p>
         <div
-          class="emotion-11"
+          class="emotion-10"
         >
           <h3
-            class="emotion-9"
+            class="emotion-8"
           >
             $3.99
           </h3>
           <p
-            class="emotion-10"
+            class="emotion-9"
           >
             User/month
           </p>
         </div>
         <p
-          class="emotion-12"
+          class="emotion-11"
         >
           Simple pricing for every school.
         </p>
         <div
-          class="emotion-41"
+          class="emotion-37"
         >
           <div
-            class="emotion-15"
+            class="emotion-14"
           >
             <div
-              class="emotion-13"
+              class="emotion-12"
             />
             <p
-              class="emotion-14"
-            >
-              90-days free trial
-            </p>
-          </div>
-          <div
-            class="emotion-15"
-          >
-            <div
               class="emotion-13"
-            />
-            <p
-              class="emotion-14"
             >
               Unlimited students
             </p>
           </div>
           <div
-            class="emotion-15"
+            class="emotion-14"
           >
             <div
-              class="emotion-13"
+              class="emotion-12"
             />
             <p
-              class="emotion-14"
+              class="emotion-13"
             >
               Record observations
             </p>
           </div>
           <div
-            class="emotion-15"
+            class="emotion-14"
           >
             <div
-              class="emotion-13"
+              class="emotion-12"
             />
             <p
-              class="emotion-14"
+              class="emotion-13"
             >
               Create lesson plans
             </p>
           </div>
           <div
-            class="emotion-15"
+            class="emotion-14"
           >
             <div
-              class="emotion-13"
+              class="emotion-12"
             />
             <p
-              class="emotion-14"
+              class="emotion-13"
             >
               Track curriculum progress
             </p>
           </div>
           <div
-            class="emotion-15"
+            class="emotion-14"
           >
             <div
-              class="emotion-13"
+              class="emotion-12"
             />
             <p
-              class="emotion-14"
+              class="emotion-13"
             >
               Parent portal
             </p>
           </div>
           <div
-            class="emotion-15"
+            class="emotion-14"
           >
             <div
-              class="emotion-13"
+              class="emotion-12"
             />
             <p
-              class="emotion-14"
+              class="emotion-13"
             >
               Image gallery
             </p>
           </div>
           <div
-            class="emotion-15"
+            class="emotion-14"
           >
             <div
-              class="emotion-13"
+              class="emotion-12"
             />
             <p
-              class="emotion-14"
+              class="emotion-13"
             >
               Reporting
             </p>
             <p
-              class="emotion-36"
+              class="emotion-32"
             >
               Soon
             </p>
           </div>
           <div
-            class="emotion-15"
+            class="emotion-14"
           >
             <div
-              class="emotion-13"
+              class="emotion-12"
             />
             <p
-              class="emotion-14"
+              class="emotion-13"
             >
               And more coming...
             </p>
           </div>
         </div>
         <button
-          class="emotion-43"
+          class="emotion-39"
           disabled=""
         >
           <div
-            class="emotion-42"
+            class="emotion-38"
           >
             <div />
             <div />

@@ -55,7 +55,7 @@ func (s LessonPlanStore) UpdateLessonPlan(planInput cLessonPlan.UpdatePlanData) 
 	planDetails.AddIdColumn("class_id", planInput.ClassId)
 
 	rowsAffected := 0
-	if err := s.RunInTransaction(func(tx *pg.Tx) error {
+	if err := s.RunInTransaction(s.Context(), func(tx *pg.Tx) error {
 		if !plan.IsEmpty() {
 			result, err := tx.Model(plan.GetModel()).
 				TableExpr("lesson_plans").
@@ -129,14 +129,22 @@ func (s LessonPlanStore) GetLessonPlan(planId string) (*cLessonPlan.LessonPlan, 
 }
 
 func (s LessonPlanStore) DeleteLessonPlan(planId string) error {
-	return s.Delete(&LessonPlan{Id: planId})
+	_, err := s.Model(&LessonPlan{Id: planId}).WherePK().Delete()
+	if err != nil {
+		return richErrors.Wrap(err, "failed to delete lesson plan")
+	}
+	return nil
 }
 
+// TODO: Make sure this works
 func (s LessonPlanStore) DeleteLessonPlanFile(planId, fileId string) error {
-	return s.Delete(&FileToLessonPlan{
+	if _, err := s.Model(&FileToLessonPlan{
 		LessonPlanDetailsId: planId,
 		FileId:              fileId,
-	})
+	}).Delete(); err != nil {
+		return richErrors.Wrap(err, "failed to delete lesson plan file")
+	}
+	return nil
 }
 func (s LessonPlanStore) CheckPermission(userId string, planId string) (bool, error) {
 	var user User

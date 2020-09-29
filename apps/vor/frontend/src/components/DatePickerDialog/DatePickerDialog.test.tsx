@@ -1,10 +1,10 @@
 import React from "react"
 import { render } from "../../test-utils"
-import { Basic } from "./DatePickerDialog.stories"
+import { Default } from "./DatePickerDialog.stories"
 
 describe("DatePickerDialog", () => {
   it("should render correctly", () => {
-    const { container } = render(<Basic />)
+    const { container } = render(<Default />)
     expect(container).toMatchSnapshot()
   })
 })

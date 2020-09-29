@@ -179,7 +179,7 @@ module.exports = {
       options: {
         dsn: "https://05a5ecaa1d8c4c01b96d2a7993fa9337@sentry.io/1852524",
         release: require("fs").readFileSync("../../../VERSION", "utf8"),
-        tracesSampleRate: 0.1, // this is just to test, you should lower this in production
+        tracesSampleRate: process.env.NODE_ENV === "development" ? 0 : 0.1,
       },
     },
     {

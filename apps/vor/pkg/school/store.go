@@ -163,6 +163,7 @@ type (
 		CreateImage(schoolId string, image multipart.File, header *multipart.FileHeader) (string, error)
 		GetUser(email string) (*User, error)
 		DeleteUser(schoolId string, userId string) error
+		NewCurriculum(schoolId string, name string) error
 	}
 	MailService interface {
 		SendInviteEmail(email string, inviteCode string, schoolName string) error

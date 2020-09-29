@@ -2,6 +2,7 @@ package curriculum
 
 import (
 	"errors"
+	"github.com/chrsep/vor/pkg/domain"
 	"net/http"
 
 	"github.com/go-chi/chi"
@@ -17,6 +18,7 @@ func NewRouter(server rest.Server, store Store) *chi.Mux {
 
 	r.Route("/{curriculumId}", func(r chi.Router) {
 		r.Use(curriculumAuthMiddleware(server, store))
+		r.Method("PATCH", "/", patchCurriculum(server, store))
 		r.Method("POST", "/areas", createArea(server, store))
 	})
 
@@ -44,6 +46,38 @@ func NewRouter(server rest.Server, store Store) *chi.Mux {
 	})
 
 	return r
+}
+
+func patchCurriculum(s rest.Server, store Store) rest.Handler {
+	type responseBody struct {
+		Id   string `json:"id"`
+		Name string `json:"name"`
+	}
+	type requestBody struct {
+		Name *string `json:"name"`
+	}
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		curriculumId := chi.URLParam(r, "curriculumId")
+
+		var body requestBody
+		if err := rest.ParseJson(r.Body, &body); err != nil {
+			return rest.NewParseJsonError(err)
+		}
+
+		curriculum, err := store.UpdateCurriculum(curriculumId, body.Name)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "failed to update curriculum",
+				Error:   err,
+			}
+		}
+
+		if err := rest.WriteJson(w, &responseBody{Id: curriculum.Id, Name: curriculum.Name}); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
+		return nil
+	})
 }
 
 func getArea(server rest.Server, store Store) rest.Handler {
@@ -84,7 +118,7 @@ func getAreaSubjects(server rest.Server, store Store) rest.Handler {
 		}
 
 		// Write response
-		var response []simplifiedSubject
+		response := make([]simplifiedSubject, 0)
 		for _, subject := range subjects {
 			response = append(response, simplifiedSubject{
 				Id:    subject.Id,
@@ -101,6 +135,10 @@ func getAreaSubjects(server rest.Server, store Store) rest.Handler {
 
 func createArea(server rest.Server, store Store) rest.Handler {
 	type requestBody struct {
+		Name string `json:"name"`
+	}
+	type responseBody struct {
+		Id   string `json:"id"`
 		Name string `json:"name"`
 	}
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
@@ -133,7 +171,7 @@ func createArea(server rest.Server, store Store) rest.Handler {
 			}
 		}
 
-		areaId, err := store.NewArea(body.Name, curriculumId)
+		area, err := store.NewArea(body.Name, curriculumId)
 		if err != nil {
 			return &rest.Error{
 				http.StatusInternalServerError,
@@ -141,8 +179,14 @@ func createArea(server rest.Server, store Store) rest.Handler {
 				err,
 			}
 		}
+
 		w.WriteHeader(http.StatusCreated)
-		w.Header().Add("Location", r.URL.Path+"/"+areaId)
+		if err = rest.WriteJson(w, &responseBody{
+			Id:   area.Id,
+			Name: area.Name,
+		}); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
 		return nil
 	})
 }
@@ -168,13 +212,13 @@ func createSubject(server rest.Server, store Store) http.Handler {
 		}
 
 		// Convert Material into proper form
-		var materials []Material
+		var materials []domain.Material
 		orderingNumbers := make(map[int]bool)
 		for _, material := range requestBody.Materials {
 			// For checking duplicated order later
 			orderingNumbers[material.Order] = true
 
-			materials = append(materials, Material{
+			materials = append(materials, domain.Material{
 				Id:    uuid.New().String(),
 				Name:  material.Name,
 				Order: material.Order,
@@ -185,7 +229,7 @@ func createSubject(server rest.Server, store Store) http.Handler {
 			return &rest.Error{
 				http.StatusUnprocessableEntity,
 				"Material order number can't be repeated",
-				richErrors.New("Repeatd order number in list of materials")}
+				richErrors.New("Repeated order number in list of materials")}
 		}
 		subject, err := store.NewSubject(requestBody.Name, areaId, materials)
 		if err != nil {
@@ -213,7 +257,7 @@ func getSubjectMaterials(server rest.Server, store Store) rest.Handler {
 		}
 
 		// Write response
-		var response []responseBody
+		var response = make([]responseBody, 0)
 		for _, subject := range materials {
 			response = append(response, responseBody{
 				Id:    subject.Id,
@@ -387,11 +431,11 @@ func replaceSubject(server rest.Server, store Store) http.Handler {
 				richErrors.New("empty subject name"),
 			}
 		}
-		newSubject := Subject{
+		newSubject := domain.Subject{
 			Id:        subjectId,
 			AreaId:    body.AreaId,
 			Name:      body.Name,
-			Materials: make([]Material, 0),
+			Materials: make([]domain.Material, 0),
 			Order:     body.Order,
 		}
 		materialOrderNumbers := make(map[int]bool)
@@ -411,7 +455,7 @@ func replaceSubject(server rest.Server, store Store) http.Handler {
 			if _, err := uuid.Parse(material.Id); err != nil {
 				material.Id = uuid.New().String()
 			}
-			newSubject.Materials = append(newSubject.Materials, Material{
+			newSubject.Materials = append(newSubject.Materials, domain.Material{
 				Id:        material.Id,
 				SubjectId: subjectId,
 				Subject:   newSubject,

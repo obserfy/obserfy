@@ -5,7 +5,7 @@ import { Trans } from "@lingui/macro"
 import { Link } from "../Link/Link"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import {
-  SETTINGS_URL,
+  ADMIN_URL,
   NEW_GUARDIAN_ADMIN_URL,
   GUARDIAN_PROFILE_URL,
 } from "../../routes"
@@ -31,7 +31,7 @@ export const PageListOfGuardians: FC = () => {
       }}
       mx="auto"
     >
-      <BackNavigation to={SETTINGS_URL} text="Settings" />
+      <BackNavigation to={ADMIN_URL} text="Settings" />
       <Typography.H5 m={3} sx={{ lineHeight: 1 }}>
         <Trans>All Guardians</Trans>
       </Typography.H5>

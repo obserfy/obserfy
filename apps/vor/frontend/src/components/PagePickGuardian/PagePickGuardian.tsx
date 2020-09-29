@@ -32,7 +32,7 @@ export const PagePickGuardian: FC = () => {
   const [mutate, { status }] = usePostNewGuardian()
 
   return (
-    <Box sx={{ maxWidth: "maxWidth.sm" }} mx="auto">
+    <Box sx={{ maxWidth: "maxWidth.sm" }} mx="auto" pb={4}>
       <BackNavigation to={NEW_STUDENT_URL} text="New Student" />
       <Box m={3}>
         <Input
@@ -86,6 +86,7 @@ export const PagePickGuardian: FC = () => {
                 Cancel
               </Button>
               <Button
+                data-cy="save-guardian"
                 disabled={name === ""}
                 onClick={async () => {
                   const result = await mutate({
@@ -94,7 +95,7 @@ export const PagePickGuardian: FC = () => {
                     phone,
                     note,
                   })
-                  if (result.status === 201) {
+                  if (result?.ok) {
                     const resultJson = await result.json()
                     await navigate(NEW_STUDENT_URL, {
                       state: {

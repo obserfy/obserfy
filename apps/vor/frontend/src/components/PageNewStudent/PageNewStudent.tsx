@@ -5,7 +5,6 @@ import { i18nMark } from "@lingui/core"
 import { Trans } from "@lingui/macro"
 import { Link, navigate } from "../Link/Link"
 import { useGetGuardian } from "../../api/guardians/useGetGuardian"
-import BackNavigation from "../BackNavigation/BackNavigation"
 import Input from "../Input/Input"
 import DateInput from "../DateInput/DateInput"
 import TextArea from "../TextArea/TextArea"
@@ -36,6 +35,11 @@ import GuardianRelationshipPickerDialog from "../GuardianRelationshipPickerDialo
 import GuardianRelationshipPill from "../GuardianRelationshipPill/GuardianRelationshipPill"
 import EmptyClassDataPlaceholder from "../EmptyClassDataPlaceholder/EmptyClassDataPlaceholder"
 import { Dayjs } from "../../dayjs"
+import BackButton from "../BackButton/BackButton"
+import Breadcrumb from "../Breadcrumb/Breadcrumb"
+import BreadcrumbItem from "../Breadcrumb/BreadcrumbItem"
+import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
+import TranslucentBar from "../TranslucentBar/TranslucentBar"
 
 export interface NewStudentFormData {
   name: string
@@ -97,7 +101,7 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
   const [selectedClasses, setSelectedClasses] = useImmer(
     cachedData.selectedClasses
   )
-  const [mutate] = usePostNewStudent()
+  const [mutate, { isLoading }] = usePostNewStudent()
   const classes = useGetSchoolClasses()
   const isFormInvalid = name === ""
 
@@ -127,8 +131,55 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
 
   return (
     <>
-      <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={4}>
-        <BackNavigation to={STUDENTS_URL} text={i18nMark("Home")} />
+      <TranslucentBar
+        boxSx={{
+          position: "sticky",
+          top: 0,
+          borderBottomWidth: 1,
+          borderBottomColor: "borderSolid",
+          borderBottomStyle: "solid",
+        }}
+      >
+        <Flex sx={{ alignItems: "center", maxWidth: "maxWidth.sm" }} m="auto">
+          <BackButton to={STUDENTS_URL} />
+          <Breadcrumb>
+            <BreadcrumbItem to={STUDENTS_URL}>
+              <Trans>Students</Trans>
+            </BreadcrumbItem>
+            <BreadcrumbItem>
+              <Trans>New</Trans>
+            </BreadcrumbItem>
+          </Breadcrumb>
+          <Button
+            ml="auto"
+            p={isLoading ? 1 : 2}
+            my={2}
+            mr={3}
+            onClick={async () => {
+              const result = await mutate({
+                classes: selectedClasses,
+                name,
+                customId,
+                dateOfBirth,
+                dateOfEntry,
+                guardians,
+                note,
+                gender,
+                profileImageId,
+              })
+              if (result?.ok) {
+                // reset cache
+                await setNewStudentCache(DEFAULT_FORM_STATE)
+                await navigate(STUDENTS_URL)
+              }
+            }}
+            disabled={isFormInvalid}
+          >
+            {isLoading ? <LoadingIndicator size={22} /> : "Save"}
+          </Button>
+        </Flex>
+      </TranslucentBar>
+      <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={4} pt={3}>
         <Box mx={3}>
           <Flex sx={{ alignItems: "flex-end" }}>
             <Typography.H5 mb={3}>
@@ -193,7 +244,7 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
         <Typography.H5 m={3} mt={4}>
           <Trans>Classes</Trans>
         </Typography.H5>
-        {classes.status === "success" && classes.data.length === 0 && (
+        {classes.status === "success" && (classes.data?.length ?? 0) === 0 && (
           <EmptyClassDataPlaceholder />
         )}
         {classes.status === "loading" && <ClassesLoadingPlaceholder />}
@@ -261,43 +312,19 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
             }}
           />
         ))}
-        <Flex p={3} mt={3}>
-          <Button
-            variant="outline"
-            mr={3}
-            color="danger"
-            onClick={async () => {
-              updateAllFormState(DEFAULT_FORM_STATE)
-              await navigate(NEW_STUDENT_URL)
-            }}
-          >
-            <Trans>Clear</Trans>
-          </Button>
-          <Button
-            sx={{ width: "100%" }}
-            disabled={isFormInvalid}
-            onClick={async () => {
-              const result = await mutate({
-                classes: selectedClasses,
-                name,
-                customId,
-                dateOfBirth,
-                dateOfEntry,
-                guardians,
-                note,
-                gender,
-                profileImageId,
-              })
-              if (result.ok) {
-                // reset cache
-                await setNewStudentCache(DEFAULT_FORM_STATE)
-                await navigate(STUDENTS_URL)
-              }
-            }}
-          >
-            <Trans>Save</Trans>
-          </Button>
-        </Flex>
+        <Button
+          variant="outline"
+          mr={3}
+          my={3}
+          ml="auto"
+          color="danger"
+          onClick={async () => {
+            updateAllFormState(DEFAULT_FORM_STATE)
+            await navigate(NEW_STUDENT_URL)
+          }}
+        >
+          <Trans>Reset Form</Trans>
+        </Button>
       </Box>
     </>
   )

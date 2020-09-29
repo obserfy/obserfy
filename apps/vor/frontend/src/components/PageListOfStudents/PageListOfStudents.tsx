@@ -4,7 +4,7 @@ import { Box, Card, Flex, Image, jsx } from "theme-ui"
 import { i18nMark } from "@lingui/core"
 import { Trans } from "@lingui/macro"
 import BackNavigation from "../BackNavigation/BackNavigation"
-import { SETTINGS_URL } from "../../routes"
+import { ADMIN_URL } from "../../routes"
 import Typography from "../Typography/Typography"
 import { useGetAllStudents } from "../../api/students/useGetAllStudents"
 import SearchBar from "../SearchBar/SearchBar"
@@ -27,7 +27,7 @@ export const PageListOfStudents: FC = () => {
       }}
       mx="auto"
     >
-      <BackNavigation to={SETTINGS_URL} text={i18nMark("Settings")} />
+      <BackNavigation to={ADMIN_URL} text={i18nMark("Settings")} />
       <Typography.H5 m={3} sx={{ lineHeight: 1 }}>
         <Trans>All Students</Trans>
       </Typography.H5>

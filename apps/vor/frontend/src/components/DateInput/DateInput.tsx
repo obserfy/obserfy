@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react"
-import { Button, Flex, BoxProps } from "theme-ui"
+import { Button, Flex, BoxProps, SxStyleProp } from "theme-ui"
 import Input from "../Input/Input"
 import Icon from "../Icon/Icon"
 import { ReactComponent as CalendarIcon } from "../../icons/calendar.svg"
@@ -11,33 +11,42 @@ interface Props extends Omit<BoxProps, "value" | "onChange"> {
   value?: Dayjs
   label?: string
   onChange: (date: Dayjs) => void
+  containerSx?: SxStyleProp
 }
-export const DateInput: FC<Props> = ({ label, value, onChange, ...props }) => {
+export const DateInput: FC<Props> = ({
+  label,
+  value,
+  onChange,
+  containerSx,
+  ...props
+}) => {
   const [showDatePicker, setShowDatePicker] = useState(false)
 
   return (
-    <>
-      <Flex onClick={() => setShowDatePicker(true)} {...props}>
-        <Input
-          label={label}
-          sx={{
-            opacity: "1!important",
-            width: "100%",
-          }}
-          value={!value ? "" : dayjs(value).format("D MMMM 'YY")}
-          placeholder="Not set"
-          disabled
-        />
-        <Button
-          data-cy={label}
-          mt={23}
-          ml={3}
-          variant="outline"
-          sx={{ flexShrink: 0 }}
-        >
-          <Icon as={CalendarIcon} />
-        </Button>
-      </Flex>
+    <Flex
+      sx={{ ...containerSx }}
+      onClick={() => setShowDatePicker(true)}
+      {...props}
+    >
+      <Input
+        label={label}
+        sx={{
+          opacity: "1!important",
+          width: "100%",
+        }}
+        value={!value ? "" : dayjs(value).format("D MMMM 'YY")}
+        placeholder="Not set"
+        disabled
+      />
+      <Button
+        data-cy={label}
+        mt={label ? 23 : 0}
+        ml={2}
+        variant="outline"
+        sx={{ flexShrink: 0 }}
+      >
+        <Icon as={CalendarIcon} />
+      </Button>
       {showDatePicker && (
         <DatePickerDialog
           defaultDate={value}
@@ -48,7 +57,7 @@ export const DateInput: FC<Props> = ({ label, value, onChange, ...props }) => {
           }}
         />
       )}
-    </>
+    </Flex>
   )
 }
 

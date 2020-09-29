@@ -11,6 +11,7 @@ import Navbar from "../Navbar/Navbar"
 import { useGetUserProfile } from "../../api/useGetUserProfile"
 import Typography from "../Typography/Typography"
 import StudentsList from "../StudentsList/StudentsList"
+import { borderRight } from "../../border"
 
 /** Top level component which encapsulate most pages. Provides Appbar and Sidebar for navigation.
  *
@@ -21,6 +22,9 @@ import StudentsList from "../StudentsList/StudentsList"
 export const Layout: FC = ({ children }) => {
   useGetUserProfile()
 
+  const studentSubroute = useMatch("/dashboard/students/*")
+  const breakpoint = useBreakpointIndex({ defaultIndex: 2 })
+
   if (getSchoolId() === SCHOOL_ID_UNDEFINED_PLACEHOLDER) {
     navigate("/choose-school")
   }
@@ -28,19 +32,16 @@ export const Layout: FC = ({ children }) => {
   return (
     <>
       <Navbar />
-      <UpdateNotification />
-      <Flex pl={[0, 64]} pb={[48, 0]}>
-        <StudentsSubrouteSidebar />
+      <Flex pb={[48, 0]}>
+        {studentSubroute && breakpoint > 1 && <StudentsSubrouteSidebar />}
         <Box
           as="main"
-          sx={{
-            backgroundColor: "background",
-            width: "100%",
-            height: [undefined, undefined, "100vh"],
-            overflowY: [undefined, undefined, "scroll"],
-          }}
+          backgroundColor="background"
           mb="env(safe-area-inset-bottom)"
+          pl={studentSubroute ? [0, 64, 364, 364, 484] : [0, 64]}
+          sx={{ flexGrow: 1 }}
         >
+          <UpdateNotification />
           {children}
         </Box>
       </Flex>
@@ -60,14 +61,11 @@ const UpdateNotification = () => {
     }
   }, [])
 
-  if (!updateAvailable) return <div />
+  if (!updateAvailable) return <></>
 
   return (
-    <Box sx={{ backgroundColor: "primary", width: "100%" }}>
-      <Typography.Body
-        color="onPrimary"
-        sx={{ fontSize: 1, textAlign: "center" }}
-      >
+    <Box py={2} sx={{ backgroundColor: "primary", width: "100%" }}>
+      <Typography.Body color="onPrimary" sx={{ textAlign: "center" }}>
         <span role="img" aria-label="hooray">
           🎉🎉
         </span>{" "}
@@ -88,30 +86,25 @@ const UpdateNotification = () => {
   )
 }
 
-const StudentsSubrouteSidebar = () => {
-  const studentSubroute = useMatch("/dashboard/students/*")
-  const breakpoint = useBreakpointIndex({ defaultIndex: 2 })
-
-  if (studentSubroute && breakpoint > 1) {
-    return (
-      <Box
-        sx={{
-          flexShrink: 0,
-          borderRightWidth: 1,
-          borderRightStyle: "solid",
-          borderRightColor: "border",
-          height: "100vh",
-          overflowY: "auto",
-          width: [undefined, 300, 300, 400],
-          display: ["none", "none", "block"],
-        }}
-      >
-        <StudentsList />
-      </Box>
-    )
-  }
-
-  return <></>
-}
+const StudentsSubrouteSidebar = () => (
+  <Box
+    pb={5}
+    sx={{
+      ...borderRight,
+      position: "fixed",
+      top: 0,
+      left: 0,
+      flexShrink: 0,
+      height: "100vh",
+      overflowY: "auto",
+      width: [undefined, 364, 364, 364, 484],
+      display: ["none", "none", "block"],
+      backgroundColor: "background",
+      pl: [0, 64],
+    }}
+  >
+    <StudentsList />
+  </Box>
+)
 
 export default Layout

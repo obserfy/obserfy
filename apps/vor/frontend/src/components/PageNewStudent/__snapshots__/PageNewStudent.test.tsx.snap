@@ -7,7 +7,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   }
 
   50% {
-    background-color: rgba(165,165,165,0.1);
+    background-color: rgba(165,165,165,0.2);
   }
 
   100% {
@@ -15,7 +15,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   }
 }
 
-.emotion-56 {
+.emotion-62 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -23,33 +23,130 @@ exports[`PageNewStudent should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-56 {
+  .emotion-62 {
     font-size: 20px;
   }
 }
 
-.emotion-55 {
+.emotion-10 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  background-color: var(--theme-ui-colors-surfaceBlurNonTransparent,rgba(255,255,255));
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  border-bottom-width: 1px;
+  border-bottom-color: var(--theme-ui-colors-borderSolid,rgba(0,0,0,.1));
+  border-bottom-style: solid;
+}
+
+@supports (-webkit-backdrop-filter:blur(20px)) or (backdrop-filter:blur(20px)) {
+  .emotion-10 {
+    background-color: var(--theme-ui-colors-surfaceBlurTransparent,rgba(255,255,255,0.6));
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: backdrop-filter;
+  }
+}
+
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   margin: auto;
-  padding-bottom: 32px;
-  max-width: 640px;
-}
-
-.emotion-2 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  margin-left: -8px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  max-width: 640px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.emotion-2 {
+  margin: 8px;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.emotion-1 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  text-align: center;
+  line-height: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: inherit;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: white;
+  background-color: var(--theme-ui-colors-primary,#00e399);
+  border: 0;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: var(--theme-ui-colors-textPrimary,#027c5b);
+  background-color: transparent;
+  border-radius: 6px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  white-space: nowrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  touch-action: manipulation;
+  box-shadow: none;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-style: solid;
+  border-width: 1px;
+  line-height: 1;
+  border: none;
+  padding: 4px;
+}
+
+.emotion-1:disabled {
+  opacity: 0.38;
+  cursor: auto;
+}
+
+.emotion-1:hover,
+.emotion-1:focus {
+  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
+  border-color: var(--theme-ui-colors-primary,#00e399);
+  outline: none;
 }
 
 .emotion-0 {
@@ -58,35 +155,164 @@ exports[`PageNewStudent should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
-  margin: 16px;
-  margin-right: 4px;
   fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
+  fill: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
 }
 
-.emotion-1 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
-  text-rendering: optimizeLegibility;
-  line-height: 1.5;
-  margin-bottom: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  overflow-x: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-5 {
+  display: inline-block;
+  font-size: 12px;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  white-space: nowrap;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-1 {
-    font-size: 14px;
-  }
+.emotion-5:last-child {
+  color: var(--theme-ui-colors-textPrimary,#027c5b);
 }
 
-.emotion-42 {
+.emotion-5:last-child > .splitter {
+  display: none;
+}
+
+.emotion-3:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+.emotion-4 {
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+.emotion-6 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: inline-block;
+  font-size: 12px;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  white-space: nowrap;
+}
+
+.emotion-6:last-child {
+  color: var(--theme-ui-colors-textPrimary,#027c5b);
+}
+
+.emotion-6:last-child > .splitter {
+  display: none;
+}
+
+.emotion-8 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  text-align: center;
+  line-height: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: inherit;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: white;
+  background-color: var(--theme-ui-colors-primary,#00e399);
+  border: 0;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: var(--theme-ui-colors-onPrimary,#000);
+  background-color: var(--theme-ui-colors-primary,#00e399);
+  border-radius: 6px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  white-space: nowrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  touch-action: manipulation;
+  box-shadow: rgba(27,31,35,0.1) 0px 1px 0px 0px,rgba(255,255,255,0.03) 0px 1px 0px 0px inset;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-style: solid;
+  border-width: 1px;
+  line-height: 1;
+  margin-left: auto;
+  padding: 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-right: 16px;
+}
+
+.emotion-8:disabled {
+  opacity: 0.38;
+  cursor: auto;
+}
+
+.emotion-8:hover,
+.emotion-8:focus {
+  background-color: var(--theme-ui-colors-primaryDark,#00a06d);
+  outline: none;
+}
+
+.emotion-8:hover:disabled,
+.emotion-8:focus:disabled {
+  background-color: var(--theme-ui-colors-primary,#00e399);
+}
+
+.emotion-61 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin: auto;
+  padding-bottom: 32px;
+  padding-top: 16px;
+  max-width: 640px;
+}
+
+.emotion-50 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -94,7 +320,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   margin-right: 16px;
 }
 
-.emotion-11 {
+.emotion-19 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -108,7 +334,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-3 {
+.emotion-11 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -121,7 +347,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   margin-bottom: 16px;
 }
 
-.emotion-10 {
+.emotion-18 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -132,7 +358,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   flex-shrink: 0;
 }
 
-.emotion-9 {
+.emotion-17 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -150,7 +376,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   user-select: none;
 }
 
-.emotion-7 {
+.emotion-15 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -163,7 +389,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   overflow: hidden;
 }
 
-.emotion-6 {
+.emotion-14 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -186,7 +412,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-4 {
+.emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -202,25 +428,19 @@ exports[`PageNewStudent should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-5 {
+.emotion-13 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   font-size: 12px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-5 {
-    font-size: 14px;
-  }
-}
-
-.emotion-8 {
+.emotion-16 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -247,35 +467,35 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: none;
 }
 
-.emotion-8:hover,
-.emotion-8:focus {
+.emotion-16:hover,
+.emotion-16:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-8::-webkit-input-placeholder {
+.emotion-16::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-8::-moz-placeholder {
+.emotion-16::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-8:-ms-input-placeholder {
+.emotion-16:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-8::placeholder {
+.emotion-16::placeholder {
   font-style: italic;
 }
 
-.emotion-8:disabled {
+.emotion-16:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
-.emotion-15 {
+.emotion-23 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -301,14 +521,14 @@ exports[`PageNewStudent should render correctly 1`] = `
   flex-direction: column;
 }
 
-.emotion-12 {
+.emotion-20 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   padding-bottom: 4px;
 }
 
-.emotion-14 {
+.emotion-22 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -322,7 +542,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-13 {
+.emotion-21 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -350,35 +570,35 @@ exports[`PageNewStudent should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-13:hover,
-.emotion-13:focus {
+.emotion-21:hover,
+.emotion-21:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-13::-webkit-input-placeholder {
+.emotion-21::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-13::-moz-placeholder {
+.emotion-21::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-13:-ms-input-placeholder {
+.emotion-21:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-13::placeholder {
+.emotion-21::placeholder {
   font-style: italic;
 }
 
-.emotion-13:disabled {
+.emotion-21:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
-.emotion-22 {
+.emotion-30 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -389,33 +609,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-19 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-size: 14px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.emotion-17 {
+.emotion-25 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -443,35 +637,35 @@ exports[`PageNewStudent should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-17:hover,
-.emotion-17:focus {
+.emotion-25:hover,
+.emotion-25:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-17::-webkit-input-placeholder {
+.emotion-25::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-17::-moz-placeholder {
+.emotion-25::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-17:-ms-input-placeholder {
+.emotion-25:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-17::placeholder {
+.emotion-25::placeholder {
   font-style: italic;
 }
 
-.emotion-17:disabled {
+.emotion-25:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
-.emotion-21 {
+.emotion-29 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -529,31 +723,31 @@ exports[`PageNewStudent should render correctly 1`] = `
   border-width: 1px;
   line-height: 1;
   margin-top: 23px;
-  margin-left: 16px;
+  margin-left: 8px;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
-.emotion-21:disabled {
+.emotion-29:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-21:hover,
-.emotion-21:focus {
+.emotion-29:hover,
+.emotion-29:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-21:hover:disabled,
-.emotion-21:focus:disabled {
+.emotion-29:hover:disabled,
+.emotion-29:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-20 {
+.emotion-28 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -567,7 +761,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-34 {
+.emotion-42 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -592,7 +786,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   flex-direction: column;
 }
 
-.emotion-31 {
+.emotion-39 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -617,13 +811,13 @@ exports[`PageNewStudent should render correctly 1`] = `
   padding: 12px;
 }
 
-.emotion-31:hover,
-.emotion-31:focus {
+.emotion-39:hover,
+.emotion-39:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-32 {
+.emotion-40 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -634,7 +828,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   pointer-events: none;
 }
 
-.emotion-40 {
+.emotion-48 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -662,33 +856,33 @@ exports[`PageNewStudent should render correctly 1`] = `
   height: 100px;
 }
 
-.emotion-40:hover,
-.emotion-40:focus {
+.emotion-48:hover,
+.emotion-48:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-40::-webkit-input-placeholder {
+.emotion-48::-webkit-input-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-40::-moz-placeholder {
+.emotion-48::-moz-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-40:-ms-input-placeholder {
+.emotion-48:-ms-input-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-40::placeholder {
+.emotion-48::placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-43 {
+.emotion-51 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -702,14 +896,14 @@ exports[`PageNewStudent should render correctly 1`] = `
   margin-top: 32px;
 }
 
-.emotion-45 {
+.emotion-53 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   margin: 16px;
 }
 
-.emotion-44 {
+.emotion-52 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -720,7 +914,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   height: 4rem;
 }
 
-.emotion-46 {
+.emotion-54 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -731,7 +925,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-49 {
+.emotion-57 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -746,7 +940,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-47 {
+.emotion-55 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -760,7 +954,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   margin-right: auto;
 }
 
-.emotion-48 {
+.emotion-56 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -820,25 +1014,25 @@ exports[`PageNewStudent should render correctly 1`] = `
   margin-right: 16px;
 }
 
-.emotion-48:disabled {
+.emotion-56:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-48:hover,
-.emotion-48:focus {
+.emotion-56:hover,
+.emotion-56:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-48:hover:disabled,
-.emotion-48:focus:disabled {
+.emotion-56:hover:disabled,
+.emotion-56:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-51 {
+.emotion-59 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -852,49 +1046,31 @@ exports[`PageNewStudent should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-51 {
+  .emotion-59 {
     margin-left: 16px;
     margin-right: 16px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .emotion-51 {
+  .emotion-59 {
     border-radius: 6px;
   }
 }
 
-.emotion-50 {
+.emotion-58 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin: 16px;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
 }
 
-@media screen and (min-width:40em) {
-  .emotion-50 {
-    font-size: 14px;
-  }
-}
-
-.emotion-54 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  padding: 16px;
-  margin-top: 16px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.emotion-52 {
+.emotion-60 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -952,202 +1128,168 @@ exports[`PageNewStudent should render correctly 1`] = `
   border-width: 1px;
   line-height: 1;
   margin-right: 16px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  margin-left: auto;
   color: var(--theme-ui-colors-danger,#d50000);
 }
 
-.emotion-52:disabled {
+.emotion-60:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-52:hover,
-.emotion-52:focus {
+.emotion-60:hover,
+.emotion-60:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-52:hover:disabled,
-.emotion-52:focus:disabled {
+.emotion-60:hover:disabled,
+.emotion-60:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-53 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  display: inline-block;
-  text-align: center;
-  line-height: inherit;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  font-size: inherit;
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  color: white;
-  background-color: var(--theme-ui-colors-primary,#00e399);
-  border: 0;
-  border-radius: 4px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  box-sizing: border-box;
-  font-size: 14px;
-  color: var(--theme-ui-colors-onPrimary,#000);
-  background-color: var(--theme-ui-colors-primary,#00e399);
-  border-radius: 6px;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 16px;
-  padding-right: 16px;
-  white-space: nowrap;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  touch-action: manipulation;
-  box-shadow: rgba(27,31,35,0.1) 0px 1px 0px 0px,rgba(255,255,255,0.03) 0px 1px 0px 0px inset;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  border-style: solid;
-  border-width: 1px;
-  line-height: 1;
-  width: 100%;
-}
-
-.emotion-53:disabled {
-  opacity: 0.38;
-  cursor: auto;
-}
-
-.emotion-53:hover,
-.emotion-53:focus {
-  background-color: var(--theme-ui-colors-primaryDark,#00a06d);
-  outline: none;
-}
-
-.emotion-53:hover:disabled,
-.emotion-53:focus:disabled {
-  background-color: var(--theme-ui-colors-primary,#00e399);
-}
-
 <div>
   <div
-    class="emotion-56"
+    class="emotion-62"
   >
     <div
-      class="emotion-55"
+      class="emotion-10"
     >
-      <a
-        href="/dashboard/students"
-        style="display: block;"
+      <div
+        class="emotion-9"
       >
-        <div
+        <a
           class="emotion-2"
+          data-cy="back-button"
+          href="/dashboard/students"
         >
-          <div
-            class="emotion-0"
-          />
-          <p
+          <button
             class="emotion-1"
           >
-            Home
-          </p>
+            <div
+              class="emotion-0"
+            />
+          </button>
+        </a>
+        <div
+          class="emotion-7"
+        >
+          <a
+            class="emotion-5"
+            href="/dashboard/students"
+          >
+            <span
+              class="emotion-3"
+            >
+              Students
+            </span>
+            <span
+              class="splitter emotion-4"
+            >
+              /
+            </span>
+          </a>
+          <div
+            class="emotion-6"
+          >
+            New
+            <span
+              class="splitter"
+            >
+              /
+            </span>
+          </div>
         </div>
-      </a>
+        <button
+          class="emotion-8"
+          disabled=""
+        >
+          Save
+        </button>
+      </div>
+    </div>
+    <div
+      class="emotion-61"
+    >
       <div
-        class="emotion-42"
+        class="emotion-50"
       >
         <div
-          class="emotion-11"
+          class="emotion-19"
         >
           <h5
-            class="emotion-3"
+            class="emotion-11"
           >
             New Student
           </h5>
           <div
-            class="emotion-10"
+            class="emotion-18"
           >
             <label
-              class="emotion-9"
+              class="emotion-17"
             >
               <div
-                class="emotion-7"
+                class="emotion-15"
               >
                 <div
-                  class="emotion-6"
+                  class="emotion-14"
                 >
                   <div
-                    class="emotion-4"
+                    class="emotion-12"
                     height="24"
                     width="24"
                   />
                   <p
-                    class="emotion-5"
+                    class="emotion-13"
                   >
                     Add Picture
                   </p>
                 </div>
               </div>
               <input
-                class="emotion-8"
+                class="emotion-16"
                 type="file"
               />
             </label>
           </div>
         </div>
         <label
-          class="emotion-15"
+          class="emotion-23"
         >
           <div
-            class="emotion-12"
+            class="emotion-20"
           >
             Name (Required)
           </div>
           <div
-            class="emotion-14"
+            class="emotion-22"
           >
             <input
-              class="emotion-13"
+              class="emotion-21"
               value=""
             />
           </div>
         </label>
         <div
-          class="emotion-22"
+          class="emotion-30"
         >
           <label
-            class="emotion-19"
+            class="emotion-23"
           >
             <div
-              class="emotion-12"
+              class="emotion-20"
             >
               Date of Birth
             </div>
             <div
-              class="emotion-14"
+              class="emotion-22"
             >
               <input
-                class="emotion-17"
+                class="emotion-25"
                 disabled=""
                 placeholder="Not set"
                 value=""
@@ -1155,30 +1297,30 @@ exports[`PageNewStudent should render correctly 1`] = `
             </div>
           </label>
           <button
-            class="emotion-21"
+            class="emotion-29"
             data-cy="Date of Birth"
           >
             <div
-              class="emotion-20"
+              class="emotion-28"
             />
           </button>
         </div>
         <div
-          class="emotion-22"
+          class="emotion-30"
         >
           <label
-            class="emotion-19"
+            class="emotion-23"
           >
             <div
-              class="emotion-12"
+              class="emotion-20"
             >
               Date of Entry
             </div>
             <div
-              class="emotion-14"
+              class="emotion-22"
             >
               <input
-                class="emotion-17"
+                class="emotion-25"
                 disabled=""
                 placeholder="Not set"
                 value=""
@@ -1186,28 +1328,28 @@ exports[`PageNewStudent should render correctly 1`] = `
             </div>
           </label>
           <button
-            class="emotion-21"
+            class="emotion-29"
             data-cy="Date of Entry"
           >
             <div
-              class="emotion-20"
+              class="emotion-28"
             />
           </button>
         </div>
         <label
-          class="emotion-34"
+          class="emotion-42"
         >
           <div
-            class="emotion-12"
+            class="emotion-20"
           >
             Gender
           </div>
           <div
-            class="emotion-22"
+            class="emotion-30"
           >
             <select
               aria-label="Gender"
-              class="emotion-31"
+              class="emotion-39"
             >
               <option
                 value="0"
@@ -1226,7 +1368,7 @@ exports[`PageNewStudent should render correctly 1`] = `
               </option>
             </select>
             <svg
-              class="emotion-32"
+              class="emotion-40"
               fill="currentcolor"
               height="24"
               viewBox="0 0 24 24"
@@ -1240,56 +1382,56 @@ exports[`PageNewStudent should render correctly 1`] = `
           </div>
         </label>
         <label
-          class="emotion-15"
+          class="emotion-23"
         >
           <div
-            class="emotion-12"
+            class="emotion-20"
           >
             Student ID
           </div>
           <div
-            class="emotion-14"
+            class="emotion-22"
           >
             <input
-              class="emotion-13"
+              class="emotion-21"
               value=""
             />
           </div>
         </label>
         <label
-          class="emotion-34"
+          class="emotion-42"
         >
           <div
-            class="emotion-12"
+            class="emotion-20"
           >
             Notes
           </div>
           <textarea
             aria-label="Notes"
-            class="emotion-40"
+            class="emotion-48"
           />
         </label>
       </div>
       <h5
-        class="emotion-43"
+        class="emotion-51"
       >
         Classes
       </h5>
       <div
-        class="emotion-45"
+        class="emotion-53"
       >
         <div
-          class="emotion-44"
+          class="emotion-52"
         />
       </div>
       <div
-        class="emotion-46"
+        class="emotion-54"
       />
       <div
-        class="emotion-49"
+        class="emotion-57"
       >
         <h5
-          class="emotion-47"
+          class="emotion-55"
         >
           Guardians
         </h5>
@@ -1298,36 +1440,26 @@ exports[`PageNewStudent should render correctly 1`] = `
           href="/dashboard/students/new/pickGuardians"
         >
           <button
-            class="emotion-48"
+            class="emotion-56"
           >
             Add
           </button>
         </a>
       </div>
       <div
-        class="emotion-51"
+        class="emotion-59"
       >
         <p
-          class="emotion-50"
+          class="emotion-58"
         >
           This student doesn't have a guardian yet.
         </p>
       </div>
-      <div
-        class="emotion-54"
+      <button
+        class="emotion-60"
       >
-        <button
-          class="emotion-52"
-        >
-          Clear
-        </button>
-        <button
-          class="emotion-53"
-          disabled=""
-        >
-          Save
-        </button>
-      </div>
+        Reset Form
+      </button>
     </div>
   </div>
 </div>

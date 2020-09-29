@@ -7,11 +7,11 @@ require (
 	github.com/brianvoe/gofakeit/v4 v4.3.0
 	github.com/getsentry/sentry-go v0.7.0
 	github.com/go-chi/chi v4.1.2+incompatible
-	github.com/go-pg/pg/v10 v10.0.0-beta.5
-	github.com/go-playground/validator/v10 v10.3.0
+	github.com/go-pg/pg/v10 v10.3.2
+	github.com/go-playground/validator/v10 v10.4.0
 	github.com/google/uuid v1.1.2
 	github.com/joho/godotenv v1.3.0
-	github.com/mailgun/mailgun-go/v4 v4.1.4
+	github.com/mailgun/mailgun-go/v4 v4.2.0
 	github.com/minio/minio-go/v6 v6.0.57
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.6.1

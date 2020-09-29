@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { FC, useState } from "react"
+import { FC, Fragment, useState } from "react"
 import { Box, Button, Card, Flex, Image, jsx } from "theme-ui"
 import { useImmer } from "use-immer"
 import { nanoid } from "nanoid"
@@ -8,8 +8,12 @@ import usePostNewPlan, {
   PostNewLessonPlanBody,
 } from "../../api/plans/usePostNewPlan"
 import dayjs from "../../dayjs"
-import BackNavigation from "../BackNavigation/BackNavigation"
-import { ADMIN_CURRICULUM_URL, STUDENT_PLANS_URL } from "../../routes"
+import {
+  ADMIN_CURRICULUM_URL,
+  STUDENT_OVERVIEW_PAGE_URL,
+  STUDENT_PLANS_URL,
+  STUDENTS_URL,
+} from "../../routes"
 import { Typography } from "../Typography/Typography"
 import DateInput from "../DateInput/DateInput"
 import Input from "../Input/Input"
@@ -30,6 +34,11 @@ import {
   useGetAllStudents,
 } from "../../api/students/useGetAllStudents"
 import StudentPicturePlaceholder from "../StudentPicturePlaceholder/StudentPicturePlaceholder"
+import BackButton from "../BackButton/BackButton"
+import Breadcrumb from "../Breadcrumb/Breadcrumb"
+import BreadcrumbItem from "../Breadcrumb/BreadcrumbItem"
+import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
+import TranslucentBar from "../TranslucentBar/TranslucentBar"
 
 interface Props {
   studentId: string
@@ -39,7 +48,7 @@ interface Props {
 export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
   const student = useGetStudent(studentId)
   const areas = useGetCurriculumAreas()
-  const [mutate] = usePostNewPlan()
+  const [mutate, { isLoading }] = usePostNewPlan()
 
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
@@ -64,199 +73,213 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
       students: [studentId, ...otherStudentsId],
       repetition: repetition === 0 ? undefined : { type: repetition, endDate },
     })
-    if (result.ok) {
+    if (result?.ok) {
       await navigate(STUDENT_PLANS_URL(studentId, date))
     }
   }
 
   return (
-    <Box sx={{ maxWidth: "maxWidth.sm" }} mx="auto">
-      <BackNavigation
-        to={STUDENT_PLANS_URL(studentId, date)}
-        text="All plans"
-      />
-      <Typography.H5 mx={3} mt={3} color="textDisabled">
-        {student.data?.name}
-      </Typography.H5>
-      <Typography.H5 mx={3} mb={4}>
-        New Plan
-      </Typography.H5>
-      <Box mx={3}>
-        <DateInput label="Date" value={date} onChange={setDate} mb={2} />
-        <Input
-          label="Title"
-          sx={{ width: "100%" }}
-          mb={2}
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <TextArea
-          label="Description"
-          mb={4}
-          value={description}
-          sx={{ width: "100%" }}
-          onChange={(e) => {
-            setDescription(e.target.value)
-          }}
-        />
-      </Box>
-      <Box mx={3} mb={4}>
-        <Typography.H6 mb={2}>Links</Typography.H6>
-        {links.map((link) => (
-          <LinkPreview
-            key={link.id}
-            link={link}
-            onDelete={(id) => {
-              setLinks((draft) => draft.filter((item) => item.id !== id))
-            }}
-          />
-        ))}
-        <UrlField
-          onSave={(url) => {
-            setLinks((draft) => {
-              draft.push({ id: nanoid(), url })
-              return draft
-            })
-          }}
-        />
-      </Box>
-      {areas.status === "success" && areas.data.length === 0 ? (
-        <Box mx={[0, 3]}>
-          <InformationalCard
-            message="You can enable the curriculum feature to track student progress in your curriculum."
-            buttonText=" Go to Curriculum "
-            to={ADMIN_CURRICULUM_URL}
-          />
-        </Box>
-      ) : (
-        <Box mx={3} mb={4}>
-          <Typography.H6 mb={2}>Related Area</Typography.H6>
-          <Flex mb={2} sx={{ flexWrap: "wrap" }}>
-            {areas.data?.map(({ id, name }) => (
-              <Chip
-                key={id}
-                mb={2}
-                mr={2}
-                text={name}
-                activeBackground="primary"
-                onClick={() => setAreaId(id === areaId ? "" : id)}
-                isActive={id === areaId}
-              />
-            ))}
-          </Flex>
-        </Box>
-      )}
-
-      <Box mx={3} mb={4}>
-        <Typography.H6 mb={2}>Repetition</Typography.H6>
-        <Flex>
-          <Chip
-            mr={2}
-            text="None"
-            activeBackground="primary"
-            onClick={() => setRepetition(0)}
-            isActive={repetition === 0}
-          />
-          <Chip
-            mr={2}
-            text="Daily"
-            activeBackground="primary"
-            onClick={() => setRepetition(1)}
-            isActive={repetition === 1}
-          />
-          <Chip
-            mr={2}
-            text="Weekly"
-            activeBackground="primary"
-            onClick={() => setRepetition(2)}
-            isActive={repetition === 2}
-          />
-        </Flex>
-        {repetition > 0 && (
-          <Box mt={3}>
-            <DateInput
-              label="Repeat Until"
-              value={endDate}
-              onChange={setEndDate}
-              mb={2}
-            />
-          </Box>
-        )}
-      </Box>
-
-      <Box mx={3} mb={4}>
-        <Flex sx={{ alignItems: "flex-end" }} mb={2}>
-          <Typography.H6>Other Related Students</Typography.H6>
+    <Fragment>
+      <TranslucentBar
+        boxSx={{
+          position: "sticky",
+          top: 0,
+          borderBottomWidth: 1,
+          borderBottomColor: "borderSolid",
+          borderBottomStyle: "solid",
+        }}
+      >
+        <Flex sx={{ alignItems: "center", maxWidth: "maxWidth.sm" }} m="auto">
+          <BackButton to={STUDENT_PLANS_URL(studentId, date)} />
+          <Breadcrumb>
+            <BreadcrumbItem to={STUDENTS_URL}>Students</BreadcrumbItem>
+            <BreadcrumbItem to={STUDENT_OVERVIEW_PAGE_URL(studentId)}>
+              {student.data?.name.split(" ")[0]}
+            </BreadcrumbItem>
+            <BreadcrumbItem to={STUDENT_PLANS_URL(studentId, date)}>
+              Plans
+            </BreadcrumbItem>
+            <BreadcrumbItem>New</BreadcrumbItem>
+          </Breadcrumb>
           <Button
             ml="auto"
-            variant="outline"
-            onClick={() => setShowStudentPickerDialog(true)}
+            my={2}
+            mr={3}
+            onClick={postNewPlan}
+            disabled={title === ""}
+            p={isLoading ? 1 : 2}
           >
-            Add
+            {isLoading ? <LoadingIndicator size={22} /> : "Save"}
           </Button>
         </Flex>
-        {otherStudents.map((otherStudent) => (
-          <Flex key={otherStudent.id} my={3} sx={{ alignItems: "center" }}>
-            <Box sx={{ flexShrink: 0 }}>
-              {otherStudent.profileImageUrl ? (
-                <Image
-                  src={otherStudent.profileImageUrl}
-                  sx={{
-                    width: 32,
-                    height: 32,
-                    borderRadius: "circle",
-                  }}
+      </TranslucentBar>
+      <Box sx={{ maxWidth: "maxWidth.sm" }} mx="auto">
+        <Box mx={3} mt={2}>
+          <DateInput label="Date" value={date} onChange={setDate} mb={2} />
+          <Input
+            label="Title"
+            sx={{ width: "100%" }}
+            mb={2}
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <TextArea
+            label="Description"
+            mb={4}
+            value={description}
+            sx={{ width: "100%" }}
+            onChange={(e) => {
+              setDescription(e.target.value)
+            }}
+          />
+        </Box>
+        <Box mx={3} mb={4}>
+          <Typography.H6 mb={2}>Links</Typography.H6>
+          {links.map((link) => (
+            <LinkPreview
+              key={link.id}
+              link={link}
+              onDelete={(id) => {
+                setLinks((draft) => draft.filter((item) => item.id !== id))
+              }}
+            />
+          ))}
+          <UrlField
+            onSave={(url) => {
+              setLinks((draft) => {
+                draft.push({ id: nanoid(), url })
+                return draft
+              })
+            }}
+          />
+        </Box>
+        {areas.status === "success" && (areas.data?.length ?? 0) === 0 ? (
+          <Box mx={[0, 3]}>
+            <InformationalCard
+              message="You can enable the curriculum feature to track student progress in your curriculum."
+              buttonText=" Go to Curriculum "
+              to={ADMIN_CURRICULUM_URL}
+            />
+          </Box>
+        ) : (
+          <Box mx={3} mb={4}>
+            <Typography.H6 mb={2}>Related Area</Typography.H6>
+            <Flex mb={2} sx={{ flexWrap: "wrap" }}>
+              {areas.data?.map(({ id, name }) => (
+                <Chip
+                  key={id}
+                  mb={2}
+                  mr={2}
+                  text={name}
+                  activeBackground="primary"
+                  onClick={() => setAreaId(id === areaId ? "" : id)}
+                  isActive={id === areaId}
                 />
-              ) : (
-                <StudentPicturePlaceholder />
-              )}
+              ))}
+            </Flex>
+          </Box>
+        )}
+
+        <Box mx={3} mb={4}>
+          <Typography.H6 mb={2}>Repetition</Typography.H6>
+          <Flex>
+            <Chip
+              mr={2}
+              text="None"
+              activeBackground="primary"
+              onClick={() => setRepetition(0)}
+              isActive={repetition === 0}
+            />
+            <Chip
+              mr={2}
+              text="Daily"
+              activeBackground="primary"
+              onClick={() => setRepetition(1)}
+              isActive={repetition === 1}
+            />
+            <Chip
+              mr={2}
+              text="Weekly"
+              activeBackground="primary"
+              onClick={() => setRepetition(2)}
+              isActive={repetition === 2}
+            />
+          </Flex>
+          {repetition > 0 && (
+            <Box mt={3}>
+              <DateInput
+                label="Repeat Until"
+                value={endDate}
+                onChange={setEndDate}
+                mb={2}
+              />
             </Box>
-            <Typography.Body ml={3} sx={{ width: "100%" }}>
-              {otherStudent.name}
-            </Typography.Body>
+          )}
+        </Box>
+
+        <Box mx={3} mb={4}>
+          <Flex sx={{ alignItems: "flex-end" }} mb={2}>
+            <Typography.H6>Other Related Students</Typography.H6>
             <Button
-              variant="secondary"
-              onClick={() =>
-                setOtherStudents((draft) => {
-                  return draft.filter(({ id }) => id !== otherStudent.id)
-                })
-              }
+              ml="auto"
+              variant="outline"
+              onClick={() => setShowStudentPickerDialog(true)}
             >
-              <Icon as={TrashIcon} fill="danger" />
+              Add
             </Button>
           </Flex>
-        ))}
-        {otherStudents.length === 0 && (
-          <Typography.Body
-            mx={3}
-            my={4}
-            sx={{ textAlign: "center", color: "textMediumEmphasis" }}
-          >
-            No other students added yet.
-          </Typography.Body>
-        )}
-        {showStudentPickerDialog && (
-          <StudentPickerDialog
-            filteredIds={[studentId, ...otherStudentsId]}
-            onDismiss={() => setShowStudentPickerDialog(false)}
-            onAccept={(students) =>
-              setOtherStudents((draft) => [...draft, ...students])
-            }
-          />
-        )}
+          {otherStudents.map((otherStudent) => (
+            <Flex key={otherStudent.id} my={3} sx={{ alignItems: "center" }}>
+              <Box sx={{ flexShrink: 0 }}>
+                {otherStudent.profileImageUrl ? (
+                  <Image
+                    src={otherStudent.profileImageUrl}
+                    sx={{
+                      width: 32,
+                      height: 32,
+                      borderRadius: "circle",
+                    }}
+                  />
+                ) : (
+                  <StudentPicturePlaceholder />
+                )}
+              </Box>
+              <Typography.Body ml={3} sx={{ width: "100%" }}>
+                {otherStudent.name}
+              </Typography.Body>
+              <Button
+                variant="secondary"
+                onClick={() =>
+                  setOtherStudents((draft) => {
+                    return draft.filter(({ id }) => id !== otherStudent.id)
+                  })
+                }
+              >
+                <Icon as={TrashIcon} fill="danger" />
+              </Button>
+            </Flex>
+          ))}
+          {otherStudents.length === 0 && (
+            <Typography.Body
+              mx={3}
+              my={4}
+              sx={{ textAlign: "center", color: "textMediumEmphasis" }}
+            >
+              No other students added yet.
+            </Typography.Body>
+          )}
+          {showStudentPickerDialog && (
+            <StudentPickerDialog
+              filteredIds={[studentId, ...otherStudentsId]}
+              onDismiss={() => setShowStudentPickerDialog(false)}
+              onAccept={(students) =>
+                setOtherStudents((draft) => [...draft, ...students])
+              }
+            />
+          )}
+        </Box>
       </Box>
-
-      <Box mx={3} mb={4}>
-        <Button
-          disabled={title === ""}
-          mt={3}
-          sx={{ width: "100%" }}
-          onClick={postNewPlan}
-        >
-          Save
-        </Button>
-      </Box>
-    </Box>
+    </Fragment>
   )
 }
 

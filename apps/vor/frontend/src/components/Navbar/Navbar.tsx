@@ -2,8 +2,7 @@ import React, { FC, FunctionComponent, useEffect, useState } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import GatsbyImage from "gatsby-image"
 import { useLocation, useMatch } from "@reach/router"
-import { useMemoryStatus } from "react-adaptive-hooks/memory"
-import { Box, Card, Flex } from "theme-ui"
+import { Box, Flex } from "theme-ui"
 import { i18nMark } from "@lingui/core"
 import { Trans } from "@lingui/macro"
 import { Link } from "../Link/Link"
@@ -12,14 +11,12 @@ import { ReactComponent as StudentsIcon } from "../../icons/students.svg"
 import { ReactComponent as MessageIcon } from "../../icons/message.svg"
 import Icon from "../Icon/Icon"
 import { Typography } from "../Typography/Typography"
-import { SETTINGS_URL, STUDENTS_URL, SUPPORT_URL } from "../../routes"
+import { ADMIN_URL, STUDENTS_URL, SUPPORT_URL } from "../../routes"
+import TranslucentBar from "../TranslucentBar/TranslucentBar"
 
 const Navbar: FC = () => {
   const [keyboardShown, setKeyboardShown] = useState(false)
   const [lastVh, setLastVh] = useState(0)
-  const { deviceMemory } = useMemoryStatus({
-    deviceMemory: typeof window === "undefined" ? 0 : 4,
-  })
 
   const query = useStaticQuery(graphql`
     query {
@@ -58,10 +55,9 @@ const Navbar: FC = () => {
   }, [lastVh])
 
   return (
-    <Card
+    <TranslucentBar
       as="nav"
-      backgroundColor="surfaceBlurNonTransparent"
-      sx={{
+      boxSx={{
         height: ["auto", "100%"],
         width: ["100%", "auto"],
         borderRadius: 0,
@@ -74,27 +70,6 @@ const Navbar: FC = () => {
         borderTopStyle: "solid",
         borderTopWidth: "1px",
         borderTopColor: "borderSolid",
-        "@supports (backdrop-filter: blur(20px))":
-          // Only enable on mid to hi end devices, blur is an expensive effect, turned on by default by devices that doesn't
-          // support navigator.deviceMemory.
-          // 1. On iOS <11 devices, this deviceMemory will always be 4 (the default value for the hooks)
-          //    because navigator.deviceMemory is not supported on iOS <11. And the blur effects works
-          //    really well on iOS.
-          // 2. On all firefox browser as of 11/03/2020, the blur effect will be ignored (not supported).
-          // 3. Chrome on android devices, which is where the majority of low end devices lies,
-          //    navigator.deviceMemory is supported. This effects will then be disabled on low end devices
-          //    with memory up-to 2GB, such as Galaxy S5, which performance got hit really bad with this effect,
-          // 4. This will always be turned off before js is loaded, since gatsby's build step will use the default value.
-          //    which means the initial html will always include the blur effect. But it doesn't matter, because at load,
-          //    the html content is pretty simple.
-          deviceMemory > 2
-            ? {
-                backgroundColor: "surfaceBlurTransparent",
-                backdropFilter: "saturate(180%) blur(20px)",
-                transform: "translateZ(0)",
-                willChange: "backdrop-filter",
-              }
-            : {},
       }}
     >
       <Flex
@@ -124,7 +99,7 @@ const Navbar: FC = () => {
         <NavBarItem
           title={i18nMark("Admin")}
           icon={SettingsIcon}
-          to={SETTINGS_URL}
+          to={ADMIN_URL}
         />
         <NavBarItem
           title={i18nMark("Support")}
@@ -132,7 +107,7 @@ const Navbar: FC = () => {
           to={SUPPORT_URL}
         />
       </Flex>
-    </Card>
+    </TranslucentBar>
   )
 }
 

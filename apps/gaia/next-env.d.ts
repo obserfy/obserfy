@@ -21,3 +21,5 @@ declare module "*.ico" {
   const content: string
   export default content
 }
+
+declare const Canny: (method: string, data: any) => void

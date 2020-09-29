@@ -3,7 +3,7 @@
     "origin": [
       [
         "src/components/Navbar/Navbar.tsx",
-        98
+        74
       ]
     ]
   },
@@ -11,7 +11,7 @@
     "origin": [
       [
         "src/components/Navbar/Navbar.tsx",
-        104
+        80
       ]
     ]
   },
@@ -19,7 +19,7 @@
     "origin": [
       [
         "src/components/Navbar/Navbar.tsx",
-        105
+        81
       ]
     ]
   }

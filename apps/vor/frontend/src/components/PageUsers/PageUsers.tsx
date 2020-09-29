@@ -3,7 +3,7 @@ import { Box } from "theme-ui"
 import { i18nMark } from "@lingui/core"
 import UserCard from "../UserCard/UserCard"
 import BackNavigation from "../BackNavigation/BackNavigation"
-import { SETTINGS_URL } from "../../routes"
+import { ADMIN_URL } from "../../routes"
 import { useGetSchool } from "../../api/schools/useGetSchool"
 
 export const PageUsers: FC = () => {
@@ -22,7 +22,7 @@ export const PageUsers: FC = () => {
 
   return (
     <Box sx={{ maxWidth: "maxWidth.sm" }} mx="auto">
-      <BackNavigation to={SETTINGS_URL} text={i18nMark("Settings")} />
+      <BackNavigation to={ADMIN_URL} text={i18nMark("Settings")} />
       <Box px={2}>{userCards}</Box>
     </Box>
   )

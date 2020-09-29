@@ -6,7 +6,7 @@ import { useImmer } from "use-immer"
 import { i18nMark } from "@lingui/core"
 import { Trans } from "@lingui/macro"
 import BackNavigation from "../BackNavigation/BackNavigation"
-import { SETTINGS_URL } from "../../routes"
+import { ADMIN_URL } from "../../routes"
 import Typography from "../Typography/Typography"
 import { ReactComponent as CloseIcon } from "../../icons/close.svg"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
@@ -17,7 +17,7 @@ import { usePostUserInvite } from "../../api/usePostUserInvite"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import { useGetSchool } from "../../api/schools/useGetSchool"
 
-export const PageInviteUser: FC = () => {
+const PageInviteUser: FC = () => {
   const schoolDetail = useGetSchool()
   const [emails, setEmails] = useImmer([{ id: nanoid(), email: "" }])
   const [mutate, { status }] = usePostUserInvite()
@@ -29,6 +29,7 @@ export const PageInviteUser: FC = () => {
       })
     )
   }
+
   const editItem = (id: string, email: string): void => {
     const index = emails.findIndex((el) => el.id === id)
     if (email) {
@@ -37,12 +38,14 @@ export const PageInviteUser: FC = () => {
       })
     }
   }
+
   const sendInvitation = async (): Promise<void> => {
     const result = await mutate({ email: emails.map((el) => el.email) })
-    if (result.ok) {
+    if (result?.ok) {
       setEmails(() => [{ id: nanoid(), email: "" }])
     }
   }
+
   function shareLink(): void {
     if (window.navigator?.share) {
       window.navigator?.share({
@@ -55,7 +58,7 @@ export const PageInviteUser: FC = () => {
 
   return (
     <Box sx={{ maxWidth: "maxWidth.sm" }} mx="auto">
-      <BackNavigation to={SETTINGS_URL} text={i18nMark("Settings")} />
+      <BackNavigation to={ADMIN_URL} text={i18nMark("Settings")} />
       <Typography.H6 m={3} mb={4} sx={{ lineHeight: 1 }}>
         <Trans>Invite using emails</Trans>
       </Typography.H6>

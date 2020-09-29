@@ -13,7 +13,7 @@ import { useGetSchool } from "../../api/schools/useGetSchool"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import { ReactComponent as CancelIcon } from "../../icons/close.svg"
 import { ReactComponent as CreditCardIcon } from "../../icons/credit-card.svg"
-import { SETTINGS_URL } from "../../routes"
+import { ADMIN_URL } from "../../routes"
 
 export const PageSubscription: FC = () => {
   const [loading, setLoading] = useState(false)
@@ -24,7 +24,7 @@ export const PageSubscription: FC = () => {
 
   return (
     <Box mx="auto" sx={{ maxWidth: "maxWidth.xsm" }}>
-      <BackNavigation to={SETTINGS_URL} text={i18nMark("Settings")} />
+      <BackNavigation to={ADMIN_URL} text={i18nMark("Settings")} />
       <Typography.H4 sx={{ fontWeight: "bold", textAlign: "center" }} mb={4}>
         <Trans>Subscription Plan</Trans>
       </Typography.H4>
@@ -95,10 +95,7 @@ export const PageSubscription: FC = () => {
               color="textPrimary"
               sx={{ fontWeight: "bold", lineHeight: 1 }}
             >
-              <Trans>Free Trial</Trans>
-            </Typography.Body>
-            <Typography.Body ml="auto">
-              <Trans>Current Plan</Trans>
+              <Trans>Early Access</Trans>
             </Typography.Body>
           </Flex>
         </Card>
@@ -125,7 +122,6 @@ export const PageSubscription: FC = () => {
         </Typography.Body>
 
         <Box my={3}>
-          <Feature text={i18nMark("90-days free trial")} />
           <Feature text={i18nMark("Unlimited students")} />
           <Feature text={i18nMark("Record observations")} />
           <Feature text={i18nMark("Create lesson plans")} />
@@ -141,9 +137,10 @@ export const PageSubscription: FC = () => {
           mt={4}
           p={3}
           sx={{ width: "100%", fontWeight: "bold", borderRadius: 16 }}
-          disabled={
-            user.isLoading || school.isLoading || isSubscribed !== undefined
-          }
+          // disabled={
+          //   user.isLoading || school.isLoading || isSubscribed !== undefined
+          // }
+          disabled
           onClick={() => {
             setLoading(true)
             const script = document.createElement("script")
@@ -175,7 +172,7 @@ export const PageSubscription: FC = () => {
           ) : loading || user.isLoading ? (
             <LoadingIndicator color="onPrimary" />
           ) : (
-            <Trans>Start Free Trial</Trans>
+            <Trans>(Starting on Jan 1st 2021)</Trans>
           )}
         </Button>
       </Card>

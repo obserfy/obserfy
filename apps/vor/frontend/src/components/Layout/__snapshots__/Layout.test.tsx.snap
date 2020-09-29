@@ -18,10 +18,6 @@ exports[`Layout should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  overflow: auto;
-  background-color: var(--theme-ui-colors-surface,#fff);
-  border-radius: 6px;
-  box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
   background-color: var(--theme-ui-colors-surfaceBlurNonTransparent,rgba(255,255,255));
   height: auto;
   width: 100%;
@@ -34,7 +30,7 @@ exports[`Layout should render correctly 1`] = `
   position: fixed;
   border-top-style: solid;
   border-top-width: 1px;
-  border-top-color: var(--theme-ui-colors-borderSolid,#fff);
+  border-top-color: var(--theme-ui-colors-borderSolid,rgba(0,0,0,.1));
 }
 
 @media screen and (min-width:40em) {
@@ -194,18 +190,12 @@ exports[`Layout should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   line-height: 1;
   font-size: 10px;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-2 {
-    font-size: 14px;
-  }
 }
 
 @media screen and (min-width:40em) {
@@ -232,7 +222,6 @@ exports[`Layout should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  padding-left: 0;
   padding-bottom: 48px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -242,7 +231,6 @@ exports[`Layout should render correctly 1`] = `
 
 @media screen and (min-width:40em) {
   .emotion-14 {
-    padding-left: 64px;
     padding-bottom: 0;
   }
 }
@@ -252,14 +240,17 @@ exports[`Layout should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   margin-bottom: env(safe-area-inset-bottom);
+  padding-left: 0;
   background-color: var(--theme-ui-colors-background,#f2f3f5);
-  width: 100%;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
 }
 
-@media screen and (min-width:52em) {
+@media screen and (min-width:40em) {
   .emotion-13 {
-    height: 100vh;
-    overflow-y: scroll;
+    padding-left: 64px;
   }
 }
 
@@ -369,7 +360,6 @@ exports[`Layout should render correctly 1`] = `
         </a>
       </div>
     </nav>
-    <div />
     <div
       class="emotion-14"
     >

@@ -45,7 +45,7 @@ func (s *SchoolTestSuite) SetupTest() {
 	s.StudentImageStorage = *minio.NewImageStorage(client)
 
 	s.store = postgres.SchoolStore{s.DB, minio.NewFileStorage(s.MinioClient), s.StudentImageStorage}
-	s.Handler = school.NewRouter(s.Server, s.store, nil, &mailServiceMock{}).ServeHTTP
+	s.Handler = school.NewRouter(s.Server, s.store, &mailServiceMock{}).ServeHTTP
 }
 
 func TestSchool(t *testing.T) {
@@ -67,7 +67,7 @@ func (s *SchoolTestSuite) SaveNewFile() (*postgres.File, string) {
 		LessonPlans: nil,
 		ObjectKey:   fileKey,
 	}
-	err := s.DB.Insert(&file)
+	_, err := s.DB.Model(&file).Insert()
 	assert.NoError(t, err)
 
 	testfile, _ := s.ReadTestFile(file.Name)

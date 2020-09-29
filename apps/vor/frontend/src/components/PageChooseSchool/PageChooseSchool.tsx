@@ -37,9 +37,10 @@ export const PageChooseSchool: FC = () => {
   ))
 
   const emptySchoolPlaceholder = schools.data?.length === 0 && (
-    <Typography.H6 mb={4} mt={4}>
-      You have not added any school yet
-    </Typography.H6>
+    <Typography.Body mb={4} mt={4}>
+      Welcome!! Create your first school or use an invitation link to join an
+      existing school.
+    </Typography.Body>
   )
 
   return (

@@ -22,7 +22,7 @@ export const ProfilePicker: FC<Props> = ({ value, onChange, ...props }) => {
         <Card sx={{ height: 100, width: 100, overflow: "hidden" }}>
           {image.status === "success" ? (
             <Image
-              src={image.data.url}
+              src={image.data?.url}
               sx={{
                 height: "100%",
                 width: "100%",
@@ -63,7 +63,7 @@ export const ProfilePicker: FC<Props> = ({ value, onChange, ...props }) => {
             const selectedImage = e.target.files?.[0]
             if (selectedImage) {
               const result = await mutate(selectedImage)
-              if (result.ok) {
+              if (result?.ok) {
                 const response = await result.json()
                 onChange(response.id)
               }

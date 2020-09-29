@@ -5,7 +5,7 @@ import { Flex, Button, Card, Box } from "theme-ui"
 import { Trans } from "@lingui/macro"
 import { Link } from "../Link/Link"
 import BackNavigation from "../BackNavigation/BackNavigation"
-import { SETTINGS_URL, NEW_CLASS_URL, EDIT_CLASS_URL } from "../../routes"
+import { ADMIN_URL, NEW_CLASS_URL, EDIT_CLASS_URL } from "../../routes"
 import Typography from "../Typography/Typography"
 
 import useGetSchoolClasses from "../../api/classes/useGetSchoolClasses"
@@ -25,7 +25,7 @@ export const PageClassSettings: FC = () => {
       }}
       mx="auto"
     >
-      <BackNavigation to={SETTINGS_URL} text="Settings" />
+      <BackNavigation to={ADMIN_URL} text="Settings" />
       {classes.status === "loading" && <LoadingState />}
       {haveNoClass && <NoClassPlaceholder />}
       {(classes.data?.length ?? 0) > 0 && (

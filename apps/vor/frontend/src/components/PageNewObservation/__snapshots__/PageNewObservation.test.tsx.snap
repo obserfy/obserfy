@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageNewObservation should render correctly 1`] = `
-.emotion-28 {
+.emotion-39 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,26 +9,37 @@ exports[`PageNewObservation should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-28 {
+  .emotion-39 {
     font-size: 20px;
   }
 }
 
-.emotion-5 {
+.emotion-13 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  margin-bottom: 16px;
+  background-color: var(--theme-ui-colors-surfaceBlurNonTransparent,rgba(255,255,255));
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  background-color: var(--theme-ui-colors-surface,#fff);
   border-bottom-width: 1px;
-  border-bottom-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-bottom-color: var(--theme-ui-colors-borderSolid,rgba(0,0,0,.1));
   border-bottom-style: solid;
 }
 
-.emotion-4 {
+@supports (-webkit-backdrop-filter:blur(20px)) or (backdrop-filter:blur(20px)) {
+  .emotion-13 {
+    background-color: var(--theme-ui-colors-surfaceBlurTransparent,rgba(255,255,255,0.6));
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: backdrop-filter;
+  }
+}
+
+.emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -44,42 +55,160 @@ exports[`PageNewObservation should render correctly 1`] = `
   max-width: 640px;
 }
 
-.emotion-0 {
-  font-size: 14px;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  margin-left: 16px;
+.emotion-2 {
+  margin: 8px;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
 
 .emotion-1 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  text-align: center;
+  line-height: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: inherit;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: white;
+  background-color: var(--theme-ui-colors-primary,#00e399);
+  border: 0;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: var(--theme-ui-colors-textPrimary,#027c5b);
+  background-color: transparent;
+  border-radius: 6px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  white-space: nowrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  touch-action: manipulation;
+  box-shadow: none;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-style: solid;
+  border-width: 1px;
+  line-height: 1;
+  border: none;
+  padding: 4px;
+}
+
+.emotion-1:disabled {
+  opacity: 0.38;
+  cursor: auto;
+}
+
+.emotion-1:hover,
+.emotion-1:focus {
+  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
+  border-color: var(--theme-ui-colors-primary,#00e399);
+  outline: none;
+}
+
+.emotion-0 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  fill: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+}
+
+.emotion-10 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  overflow-x: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-5 {
+  display: inline-block;
+  font-size: 12px;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  white-space: nowrap;
+}
+
+.emotion-5:last-child {
+  color: var(--theme-ui-colors-textPrimary,#027c5b);
+}
+
+.emotion-5:last-child > .splitter {
+  display: none;
+}
+
+.emotion-3:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+.emotion-4 {
   margin-left: 4px;
   margin-right: 4px;
 }
 
-.emotion-2 {
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
-  text-rendering: optimizeLegibility;
-  line-height: 1.5;
-  font-size: 14px;
-  color: var(--theme-ui-colors-text,#37383c);
+  display: inline-block;
+  font-size: 12px;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  white-space: nowrap;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-2 {
-    font-size: 14px;
-  }
+.emotion-9:last-child {
+  color: var(--theme-ui-colors-textPrimary,#027c5b);
 }
 
-@media screen and (min-width:40em) {
-  .emotion-2 {
-    font-size: 14px;
-  }
+.emotion-9:last-child > .splitter {
+  display: none;
 }
 
-.emotion-3 {
+.emotion-11 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -143,40 +272,35 @@ exports[`PageNewObservation should render correctly 1`] = `
   margin-right: 16px;
 }
 
-.emotion-3:disabled {
+.emotion-11:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-3:hover,
-.emotion-3:focus {
+.emotion-11:hover,
+.emotion-11:focus {
   background-color: var(--theme-ui-colors-primaryDark,#00a06d);
   outline: none;
 }
 
-.emotion-3:hover:disabled,
-.emotion-3:focus:disabled {
+.emotion-11:hover:disabled,
+.emotion-11:focus:disabled {
   background-color: var(--theme-ui-colors-primary,#00e399);
 }
 
-.emotion-27 {
+.emotion-38 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   margin: auto;
   padding-bottom: 32px;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-top: 16px;
   max-width: 640px;
 }
 
-.emotion-18 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  padding-left: 16px;
-  padding-right: 16px;
-}
-
-.emotion-10 {
+.emotion-17 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -192,6 +316,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -199,95 +324,16 @@ exports[`PageNewObservation should render correctly 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-}
-
-.emotion-6 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  padding-bottom: 4px;
-}
-
-.emotion-9 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  margin-bottom: 16px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.emotion-7 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  display: block;
-  width: 100%;
-  padding: 8px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  font-size: inherit;
-  line-height: inherit;
-  border: 1px solid;
-  border-radius: 4px;
-  color: inherit;
-  background-color: transparent;
-  border-radius: 6px;
-  color: var(--theme-ui-colors-text,#37383c);
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface,#fff);
-  font-size: 16px;
-  padding: 12px;
-}
-
-.emotion-7:hover,
-.emotion-7:focus {
-  border-color: var(--theme-ui-colors-primary,#00e399);
-  outline: none;
-}
-
-.emotion-8 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  margin-left: -28px;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
-  pointer-events: none;
 }
 
 .emotion-14 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-size: 14px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  padding-bottom: 4px;
 }
 
-.emotion-13 {
+.emotion-16 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -301,7 +347,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-12 {
+.emotion-15 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -329,35 +375,60 @@ exports[`PageNewObservation should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-12:hover,
-.emotion-12:focus {
+.emotion-15:hover,
+.emotion-15:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-12::-webkit-input-placeholder {
+.emotion-15::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-12::-moz-placeholder {
+.emotion-15::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-12:-ms-input-placeholder {
+.emotion-15:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-12::placeholder {
+.emotion-15::placeholder {
   font-style: italic;
 }
 
-.emotion-12:disabled {
+.emotion-15:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
-.emotion-16 {
+.emotion-20 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.emotion-19 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -385,54 +456,223 @@ exports[`PageNewObservation should render correctly 1`] = `
   margin-bottom: 16px;
 }
 
-.emotion-16:hover,
-.emotion-16:focus {
+.emotion-19:hover,
+.emotion-19:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-16::-webkit-input-placeholder {
+.emotion-19::-webkit-input-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-16::-moz-placeholder {
+.emotion-19::-moz-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-16:-ms-input-placeholder {
+.emotion-19:-ms-input-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-16::placeholder {
+.emotion-19::placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-19 {
+.emotion-21 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   color: var(--theme-ui-colors-text,#37383c);
-  font-size: 16px;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-bottom: 8px;
-  margin-left: 16px;
-  margin-right: 16px;
   font-size: 14px;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
 }
 
-@media screen and (min-width:40em) {
-  .emotion-19 {
-    font-size: 14px;
-  }
+.emotion-22 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-bottom: 8px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
-.emotion-26 {
+.emotion-29 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-bottom: 16px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-24 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: block;
+  width: 100%;
+  padding: 8px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: inherit;
+  line-height: inherit;
+  border: 1px solid;
+  border-radius: 4px;
+  color: inherit;
+  background-color: transparent;
+  border-radius: 6px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  width: auto;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface,#fff);
+  font-size: 16px;
+  padding: 12px;
+  color: var(--theme-ui-colors-text,#37383c);
+  opacity: 1!important;
+  width: 100%;
+}
+
+.emotion-24:hover,
+.emotion-24:focus {
+  border-color: var(--theme-ui-colors-primary,#00e399);
+  outline: none;
+}
+
+.emotion-24::-webkit-input-placeholder {
+  font-style: italic;
+}
+
+.emotion-24::-moz-placeholder {
+  font-style: italic;
+}
+
+.emotion-24:-ms-input-placeholder {
+  font-style: italic;
+}
+
+.emotion-24::placeholder {
+  font-style: italic;
+}
+
+.emotion-24:disabled {
+  opacity: 0.68;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
+}
+
+.emotion-28 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  text-align: center;
+  line-height: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: inherit;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: white;
+  background-color: var(--theme-ui-colors-primary,#00e399);
+  border: 0;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: var(--theme-ui-colors-textPrimary,#027c5b);
+  background-color: var(--theme-ui-colors-surface,#fff);
+  border-radius: 6px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  white-space: nowrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  touch-action: manipulation;
+  box-shadow: none;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-style: solid;
+  border-width: 1px;
+  line-height: 1;
+  margin-top: 23px;
+  margin-left: 8px;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.emotion-28:disabled {
+  opacity: 0.38;
+  cursor: auto;
+}
+
+.emotion-28:hover,
+.emotion-28:focus {
+  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
+  border-color: var(--theme-ui-colors-primary,#00e399);
+  outline: none;
+}
+
+.emotion-28:hover:disabled,
+.emotion-28:focus:disabled {
+  background-color: transparent;
+  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+}
+
+.emotion-27 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.emotion-37 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -449,15 +689,14 @@ exports[`PageNewObservation should render correctly 1`] = `
   flex-wrap: wrap;
 }
 
-.emotion-25 {
+.emotion-36 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  margin-left: 16px;
   margin-bottom: 16px;
 }
 
-.emotion-24 {
+.emotion-35 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -465,6 +704,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   background-color: var(--theme-ui-colors-surface,#fff);
   border-radius: 6px;
   box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
+  margin-right: 16px;
   padding: 16px;
   width: 80px;
   height: 80px;
@@ -490,25 +730,11 @@ exports[`PageNewObservation should render correctly 1`] = `
   border-width: 1px;
 }
 
-.emotion-24:hover {
+.emotion-35:hover {
   border-color: var(--theme-ui-colors-primary,#00e399);
 }
 
-.emotion-20 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  max-width: 100%;
-  height: auto;
-  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  width: 20px;
-  height: 20px;
-}
-
-.emotion-21 {
+.emotion-32 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -535,29 +761,29 @@ exports[`PageNewObservation should render correctly 1`] = `
   display: none;
 }
 
-.emotion-21:hover,
-.emotion-21:focus {
+.emotion-32:hover,
+.emotion-32:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-21::-webkit-input-placeholder {
+.emotion-32::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-21::-moz-placeholder {
+.emotion-32::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-21:-ms-input-placeholder {
+.emotion-32:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-21::placeholder {
+.emotion-32::placeholder {
   font-style: italic;
 }
 
-.emotion-21:disabled {
+.emotion-32:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
@@ -565,162 +791,178 @@ exports[`PageNewObservation should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-28"
+    class="emotion-39"
   >
     <div
-      class="emotion-5"
+      class="emotion-13"
     >
       <div
-        class="emotion-4"
+        class="emotion-12"
       >
         <a
-          class="emotion-0"
-          href="/dashboard/students/overview?studentId="
-        />
-        <span
-          class="emotion-1"
-        >
-          /
-        </span>
-        <p
           class="emotion-2"
+          data-cy="back-button"
+          href="/dashboard/students/overview?studentId="
         >
-          New Observation
-        </p>
+          <button
+            class="emotion-1"
+          >
+            <div
+              class="emotion-0"
+            />
+          </button>
+        </a>
+        <div
+          class="emotion-10"
+        >
+          <a
+            class="emotion-5"
+            href="/dashboard/students"
+          >
+            <span
+              class="emotion-3"
+            >
+              Students
+            </span>
+            <span
+              class="splitter emotion-4"
+            >
+              /
+            </span>
+          </a>
+          <a
+            class="emotion-5"
+            href="/dashboard/students/overview?studentId="
+          >
+            <span
+              class="emotion-3"
+            />
+            <span
+              class="splitter emotion-4"
+            >
+              /
+            </span>
+          </a>
+          <div
+            class="emotion-9"
+          >
+            New Observation
+            <span
+              class="splitter"
+            >
+              /
+            </span>
+          </div>
+        </div>
         <button
-          class="emotion-3"
+          class="emotion-11"
           disabled=""
         >
-           Save
+          Save
         </button>
       </div>
     </div>
     <div
-      class="emotion-27"
+      class="emotion-38"
     >
-      <div
-        class="emotion-18"
+      <label
+        class="emotion-17"
       >
-        <label
-          class="emotion-10"
-        >
-          <div
-            class="emotion-6"
-          >
-            Category
-          </div>
-          <div
-            class="emotion-9"
-          >
-            <select
-              aria-label="Category"
-              class="emotion-7"
-            >
-              <option
-                value="0"
-              >
-                Others
-              </option>
-              <option
-                value="1"
-              >
-                Cultural
-              </option>
-              <option
-                value="2"
-              >
-                Language
-              </option>
-              <option
-                value="3"
-              >
-                Mathematics
-              </option>
-              <option
-                value="4"
-              >
-                Practical Life
-              </option>
-              <option
-                value="5"
-              >
-                Sensorial
-              </option>
-            </select>
-            <svg
-              class="emotion-8"
-              fill="currentcolor"
-              height="24"
-              viewBox="0 0 24 24"
-              width="24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M7 10l5 5 5-5z"
-              />
-            </svg>
-          </div>
-        </label>
-        <label
+        <div
           class="emotion-14"
         >
+          Short Description*
+        </div>
+        <div
+          class="emotion-16"
+        >
+          <input
+            class="emotion-15"
+            placeholder="What have you found?"
+            value=""
+          />
+        </div>
+      </label>
+      <label
+        class="emotion-20"
+      >
+        <div
+          class="emotion-14"
+        >
+          Details
+        </div>
+        <textarea
+          aria-label="Details"
+          class="emotion-19"
+          placeholder="Tell us what you observed"
+        />
+      </label>
+      <p
+        class="emotion-21"
+      >
+        Related Area
+      </p>
+      <div
+        class="emotion-22"
+      />
+      <div
+        class="emotion-29"
+      >
+        <label
+          class="emotion-17"
+        >
           <div
-            class="emotion-6"
+            class="emotion-14"
           >
-            Short Description
+            Event Time
           </div>
           <div
-            class="emotion-13"
+            class="emotion-16"
           >
             <input
-              class="emotion-12"
-              placeholder="What have you found?"
-              value=""
+              class="emotion-24"
+              disabled=""
+              placeholder="Not set"
+              value="27 June '18"
             />
           </div>
         </label>
-        <label
-          class="emotion-10"
+        <button
+          class="emotion-28"
+          data-cy="Event Time"
         >
           <div
-            class="emotion-6"
-          >
-            Details
-          </div>
-          <textarea
-            aria-label="Details"
-            class="emotion-16"
-            placeholder="Tell us what you observed"
+            class="emotion-27"
           />
-        </label>
+        </button>
       </div>
       <p
-        class="emotion-19"
+        class="emotion-21"
       >
         Attached Images
       </p>
       <div
-        class="emotion-26"
+        class="emotion-37"
       >
         <div
-          class="emotion-25"
+          class="emotion-36"
         >
           <label
-            class="emotion-24"
+            class="emotion-35"
           >
             <div
-              class="emotion-20"
+              class="emotion-27"
             />
             Image
             <label
-              class="emotion-14"
+              class="emotion-17"
             >
               <div
-                class="emotion-13"
+                class="emotion-16"
               >
                 <input
                   accept="image/*"
-                  class="emotion-21"
+                  class="emotion-32"
                   type="file"
                   value=""
                 />

@@ -45,7 +45,7 @@ describe("test class related features", () => {
     cy.contains("Name").find("input").should("have.value", className)
     cy.contains("Start Time").find("input").should("have.value", startTime)
     // TODO: Check that selected dates are saved correctly in the future.
-    // cy.get("[cy-data=active]").should("have.text", "Sunday")
+    // cy.get("[data-cy=active]").should("have.text", "Sunday")
 
     cy.contains("Delete").click()
     cy.contains("Yes").click()
