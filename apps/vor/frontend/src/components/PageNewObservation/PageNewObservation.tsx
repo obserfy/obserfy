@@ -151,6 +151,11 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
           {images.map((image) => {
             return (
               <ImagePreview
+                onDeleted={() => {
+                  setImages((draft) =>
+                    draft.filter(({ id }) => id !== image.id)
+                  )
+                }}
                 studentId={studentId}
                 key={image.id}
                 src={URL.createObjectURL(image.file)}
@@ -164,11 +169,12 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
   )
 }
 
-const ImagePreview: FC<{ imageId: string; studentId: string; src: string }> = ({
-  studentId,
-  src,
-  imageId,
-}) => {
+const ImagePreview: FC<{
+  imageId: string
+  studentId: string
+  src: string
+  onDeleted: () => void
+}> = ({ studentId, src, imageId, onDeleted }) => {
   const [showOverlay, setShowOverlay] = useState(false)
 
   return (
@@ -187,6 +193,7 @@ const ImagePreview: FC<{ imageId: string; studentId: string; src: string }> = ({
       />
       {showOverlay && (
         <ImagePreviewOverlay
+          onDeleted={onDeleted}
           imageId={imageId}
           onDismiss={() => setShowOverlay(false)}
           studentId={studentId}

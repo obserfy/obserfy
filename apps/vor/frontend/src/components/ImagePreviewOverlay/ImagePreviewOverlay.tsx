@@ -16,12 +16,14 @@ export interface ImagePreviewOverlayProps {
   studentId: string
   src: string
   onDismiss: () => void
+  onDeleted?: () => void
 }
 const ImagePreviewOverlay: FC<ImagePreviewOverlayProps> = ({
   imageId,
   studentId,
   src,
   onDismiss,
+  onDeleted,
 }) => {
   const [deleteImage, { isLoading }] = useDeleteImage(studentId, imageId)
   const ref = useRef<HTMLDivElement>(null)
@@ -120,6 +122,7 @@ const ImagePreviewOverlay: FC<ImagePreviewOverlayProps> = ({
                   onClick={async () => {
                     const result = await deleteImage()
                     if (result?.ok) {
+                      onDeleted()
                       onDismiss()
                     }
                   }}
