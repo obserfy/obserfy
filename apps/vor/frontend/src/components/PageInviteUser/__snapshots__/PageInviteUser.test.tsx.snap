@@ -598,7 +598,7 @@ exports[`PageInviteUser should render correctly 1`] = `
           <p
             class="emotion-1"
           >
-            Admin / Invite
+            Settings
           </p>
         </div>
       </a>

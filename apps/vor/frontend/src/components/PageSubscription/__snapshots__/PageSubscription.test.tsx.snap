@@ -513,9 +513,7 @@ exports[`PageSubscription should render correctly 1`] = `
       class="emotion-45"
     >
       <a
-        aria-current="page"
-        class=""
-        href="/"
+        href="/dashboard/admin"
         style="display: block;"
       >
         <div
@@ -527,7 +525,7 @@ exports[`PageSubscription should render correctly 1`] = `
           <p
             class="emotion-1"
           >
-            Admin
+            Settings
           </p>
         </div>
       </a>

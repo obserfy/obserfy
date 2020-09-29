@@ -2,7 +2,7 @@
 import { FC, useState } from "react"
 import { Box, Button, Card, Flex, jsx } from "theme-ui"
 import { Trans } from "@lingui/macro"
-import { LocalizedLink as Link } from "gatsby-theme-i18n"
+import { Link } from "../Link/Link"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import {
   SETTINGS_URL,

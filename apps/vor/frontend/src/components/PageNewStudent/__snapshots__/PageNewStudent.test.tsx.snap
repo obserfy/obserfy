@@ -1212,17 +1212,17 @@ exports[`PageNewStudent should render correctly 1`] = `
               <option
                 value="0"
               >
-                Not Set
+                [object Object]
               </option>
               <option
                 value="1"
               >
-                Male
+                [object Object]
               </option>
               <option
                 value="2"
               >
-                Female
+                [object Object]
               </option>
             </select>
             <svg

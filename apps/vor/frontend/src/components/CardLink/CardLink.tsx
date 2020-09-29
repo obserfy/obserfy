@@ -2,7 +2,7 @@
 import { FC, PropsWithoutRef } from "react"
 import { Card, CardProps, Flex, jsx } from "theme-ui"
 import { Trans } from "@lingui/macro"
-import { LocalizedLink as Link } from "gatsby-theme-i18n"
+import { Link } from "../Link/Link"
 import Typography from "../Typography/Typography"
 import Icon from "../Icon/Icon"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"

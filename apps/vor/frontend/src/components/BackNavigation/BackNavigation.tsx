@@ -1,7 +1,7 @@
 import React, { FC } from "react"
 import { Flex } from "theme-ui"
 import { Trans } from "@lingui/macro"
-import { LocalizedLink as Link } from "gatsby-theme-i18n"
+import { Link } from "../Link/Link"
 import Icon from "../Icon/Icon"
 import { ReactComponent as Arrow } from "../../icons/arrow-back.svg"
 import Typography from "../Typography/Typography"
