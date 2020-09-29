@@ -9,8 +9,13 @@ import { Link } from "../Link/Link"
 interface Props {
   observation: Observation
   detailsUrl: string
+  studentId: string
 }
-export const ObservationCard: FC<Props> = ({ detailsUrl, observation }) => (
+export const ObservationCard: FC<Props> = ({
+  studentId,
+  detailsUrl,
+  observation,
+}) => (
   <Card mb={2} sx={{ borderRadius: [0, "default"] }} pt={2}>
     <Typography.Body mt={1} mb={2} mx={3} data-cy="observation-short-desc">
       {observation.shortDesc}
@@ -32,6 +37,8 @@ export const ObservationCard: FC<Props> = ({ detailsUrl, observation }) => (
       <Flex sx={{ alignItems: "baseline", flexWrap: "wrap" }} mx={3}>
         {observation.images.map(({ id, originalUrl, thumbnailUrl }) => (
           <ImagePreview
+            studentId={studentId}
+            imageId={id}
             key={id}
             id={id}
             originalUrl={originalUrl}

@@ -1,6 +1,7 @@
-import React, { FC, PropsWithoutRef, useEffect } from "react"
+import React, { FC, PropsWithoutRef, useEffect, useRef } from "react"
 import { Global, keyframes } from "@emotion/core"
 import { BoxProps, Card, Flex, Box } from "theme-ui"
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock"
 import Portal from "../Portal/Portal"
 
 const dialogEnterAnim = keyframes(`
@@ -23,21 +24,18 @@ const bgEnterAnim = keyframes(`
   }
 `)
 
-function disableScroll(e: TouchEvent): boolean {
-  e.preventDefault()
-  return false
-}
-
 interface Props extends PropsWithoutRef<BoxProps> {
   visible?: boolean
 }
 export const Dialog: FC<Props> = ({ sx, ...props }) => {
+  const ref = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
-    document.body.addEventListener("touchmove", disableScroll, {
-      passive: false,
-    })
+    if (ref.current) {
+      disableBodyScroll(ref.current, { reserveScrollBarGap: true })
+    }
     return () => {
-      document.body.removeEventListener("touchmove", disableScroll)
+      if (ref.current) enableBodyScroll(ref.current)
     }
   }, [])
 
@@ -74,6 +72,7 @@ export const Dialog: FC<Props> = ({ sx, ...props }) => {
         <Card
           backgroundColor="surface"
           pb="env(safe-area-inset-bottom)"
+          ref={ref}
           sx={{
             maxHeight: "100vh",
             width: "100%",

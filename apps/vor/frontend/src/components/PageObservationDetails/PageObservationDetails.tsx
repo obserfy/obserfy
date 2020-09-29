@@ -23,7 +23,7 @@ import Typography from "../Typography/Typography"
 import { borderFull } from "../../border"
 import usePostNewObservationImage from "../../api/observations/usePostNewObservationImage"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
-import useDeleteObservationImage from "../../api/observations/useDeleteObservationImage"
+import ImagePreviewOverlay from "../ImagePreviewOverlay/ImagePreviewOverlay"
 
 export interface PageObservationDetailsProps {
   observationId: string
@@ -110,6 +110,7 @@ export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
           Images
         </Typography.Body>
         <ImagesDataBox
+          studentId={studentId}
           observationId={observationId}
           images={data?.images ?? []}
         />
@@ -140,19 +141,16 @@ export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
 }
 
 const ImagesDataBox: FC<{
+  studentId: string
   images: Array<{ id: string; thumbnailUrl: string; originalUrl: string }>
   observationId: string
-}> = ({ images, observationId }) => {
+}> = ({ studentId, images, observationId }) => {
   const [selectedIdx, setSelectedIdx] = useState<number>()
   const [postNewImage, { isLoading }] = usePostNewObservationImage(
     observationId
   )
   const selectedImage =
     selectedIdx !== undefined ? images[selectedIdx] : undefined
-  const [deleteImage, deleteImageState] = useDeleteObservationImage(
-    observationId,
-    selectedImage?.id
-  )
 
   const fileSelector = useRef<HTMLInputElement>(null)
 
@@ -214,26 +212,12 @@ const ImagesDataBox: FC<{
         </Label>
       </Flex>
       {selectedIdx !== undefined && (
-        <Fragment>
-          <Image src={selectedImage?.originalUrl} sx={{ width: "100%" }} />
-          <Button
-            variant="outline"
-            color="danger"
-            ml="auto"
-            mr={3}
-            my={3}
-            onClick={async () => {
-              await deleteImage()
-              setSelectedIdx(undefined)
-            }}
-          >
-            {deleteImageState.isLoading ? (
-              <LoadingIndicator m="auto" />
-            ) : (
-              <Fragment>Delete Image</Fragment>
-            )}
-          </Button>
-        </Fragment>
+        <ImagePreviewOverlay
+          imageId={selectedImage?.id ?? ""}
+          studentId={studentId}
+          src={selectedImage?.originalUrl ?? ""}
+          onDismiss={() => setSelectedIdx(undefined)}
+        />
       )}
     </Fragment>
   )

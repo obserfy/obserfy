@@ -216,6 +216,7 @@ const ObservationSection: FC<{ studentId: string }> = ({ studentId }) => {
           })
           .map((observation) => (
             <ObservationCard
+              studentId={studentId}
               key={observation.id}
               observation={observation}
               detailsUrl={STUDENT_OVERVIEWS_OBSERVATION_DETAILS_URL(

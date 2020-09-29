@@ -8,6 +8,8 @@ import { ReactComponent as CloseIcon } from "../../icons/close.svg"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
 import Typography from "../Typography/Typography"
 import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
+import useDeleteImage from "../../api/useDeleteImage"
+import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 
 export interface ImagePreviewOverlayProps {
   imageId: string
@@ -16,10 +18,12 @@ export interface ImagePreviewOverlayProps {
   onDismiss: () => void
 }
 const ImagePreviewOverlay: FC<ImagePreviewOverlayProps> = ({
+  imageId,
   studentId,
   src,
   onDismiss,
 }) => {
+  const [deleteImage, { isLoading }] = useDeleteImage(studentId, imageId)
   const ref = useRef<HTMLDivElement>(null)
   const student = useGetStudent(studentId)
   const [hideUI, setHideUI] = useState(false)
@@ -108,8 +112,20 @@ const ImagePreviewOverlay: FC<ImagePreviewOverlayProps> = ({
             >
               <Flex sx={{ alignItems: "center" }}>
                 <Typography.Body m={3}>{student.data?.name}</Typography.Body>
-                <Button variant="outline" p={2} ml="auto" mr={3}>
+                <Button
+                  variant="outline"
+                  p={2}
+                  ml="auto"
+                  mr={3}
+                  onClick={async () => {
+                    const result = await deleteImage()
+                    if (result?.ok) {
+                      onDismiss()
+                    }
+                  }}
+                >
                   <Icon as={TrashIcon} fill="danger" />
+                  {isLoading && <LoadingIndicator color="onSurface" />}
                 </Button>
               </Flex>
             </TranslucentBar>
