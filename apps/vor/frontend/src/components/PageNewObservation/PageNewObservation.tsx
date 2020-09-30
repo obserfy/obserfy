@@ -22,6 +22,7 @@ import { useGetCurriculumAreas } from "../../api/useGetCurriculumAreas"
 import Chip from "../Chip/Chip"
 import BackButton from "../BackButton/BackButton"
 import { borderFull } from "../../border"
+import ImagePreviewOverlay from "../ImagePreviewOverlay/ImagePreviewOverlay"
 
 interface Props {
   studentId: string
@@ -102,10 +103,7 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
           value={longDesc}
           mb={3}
         />
-        <Typography.Body
-          sx={{ fontSize: 1, color: "textMediumEmphasis" }}
-          mb={2}
-        >
+        <Typography.Body sx={{ color: "textMediumEmphasis" }} mb={2}>
           Related Area
         </Typography.Body>
         <Flex mb={2} sx={{ flexWrap: "wrap" }}>
@@ -152,22 +150,49 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
           />
           {images.map((image) => {
             return (
-              <Image
+              <ImagePreview
+                studentId={studentId}
                 key={image.id}
-                mr={3}
-                mb={3}
-                sx={{
-                  height: 40,
-                  width: 40,
-                  objectFit: "cover",
-                  borderRadius: "default",
-                }}
                 src={URL.createObjectURL(image.file)}
+                imageId={image.id}
               />
             )
           })}
         </Flex>
       </Box>
+    </Fragment>
+  )
+}
+
+const ImagePreview: FC<{ imageId: string; studentId: string; src: string }> = ({
+  studentId,
+  src,
+  imageId,
+}) => {
+  const [showOverlay, setShowOverlay] = useState(false)
+
+  return (
+    <Fragment>
+      <Image
+        onClick={() => setShowOverlay(true)}
+        src={src}
+        mr={2}
+        mb={3}
+        sx={{
+          height: 40,
+          width: 40,
+          objectFit: "cover",
+          borderRadius: "default",
+        }}
+      />
+      {showOverlay && (
+        <ImagePreviewOverlay
+          imageId={imageId}
+          onDismiss={() => setShowOverlay(false)}
+          studentId={studentId}
+          src={src}
+        />
+      )}
     </Fragment>
   )
 }
@@ -181,7 +206,7 @@ const UploadImageButton: FC<{
   return (
     <Card
       as="label"
-      mr={3}
+      mr={2}
       mb={3}
       sx={{
         width: 40,

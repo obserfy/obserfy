@@ -32,13 +32,14 @@ interface Props extends PropsWithoutRef<BoxProps> {
   visible?: boolean
 }
 export const Dialog: FC<Props> = ({ sx, ...props }) => {
-  // disable scroll on iOS.
   useEffect(() => {
-    document.body.addEventListener("touchmove", disableScroll)
+    document.body.addEventListener("touchmove", disableScroll, {
+      passive: false,
+    })
     return () => {
       document.body.removeEventListener("touchmove", disableScroll)
     }
-  })
+  }, [])
 
   return (
     <Portal>

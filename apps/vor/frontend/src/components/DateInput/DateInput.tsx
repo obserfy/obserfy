@@ -52,10 +52,7 @@ export const DateInput: FC<Props> = ({
       {showDatePicker && (
         <DatePickerDialog
           defaultDate={value}
-          onDismiss={() => {
-            setShowDatePicker(false)
-            console.log(showDatePicker)
-          }}
+          onDismiss={() => setShowDatePicker(false)}
           onConfirm={(date) => {
             onChange(date)
             setShowDatePicker(false)

@@ -18,6 +18,7 @@ export const ObservationCard: FC<Props> = ({ detailsUrl, observation }) => (
     {observation.longDesc &&
       observation.longDesc.split("\n\n").map((text) => (
         <Typography.Body
+          key={text}
           mb={2}
           mx={3}
           data-cy="observation-long-desc"
