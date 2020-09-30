@@ -101,7 +101,11 @@ const ImagePreviewOverlay: FC<ImagePreviewOverlayProps> = ({
               position: "relative",
             }}
           >
-            <Image width="100%" src={src} onClick={() => setHideUI(!hideUI)} />
+            <Image
+              sx={{ width: "100%" }}
+              src={src}
+              onClick={() => setHideUI(!hideUI)}
+            />
             <TranslucentBar
               boxSx={{
                 mt: -53,
