@@ -5,12 +5,12 @@ import PageStudentProfile from "../../../../components/PageStudentProfile/PageSt
 import { useQueryString } from "../../../../hooks/useQueryString"
 
 const StudentProfile: FC<PageRendererProps> = () => {
-  const id = useQueryString("studentId")
+  const studentId = useQueryString("studentId")
 
   return (
     <>
       <SEO title="Edit Student" />
-      <PageStudentProfile id={id} />
+      <PageStudentProfile studentId={studentId} />
     </>
   )
 }

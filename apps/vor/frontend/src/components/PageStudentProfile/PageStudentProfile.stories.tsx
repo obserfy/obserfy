@@ -9,4 +9,4 @@ export default {
   },
 }
 
-export const Basic: FC = () => <PageStudentProfile id="asdfasdf" />
+export const Basic: FC = () => <PageStudentProfile studentId="asdfasdf" />
