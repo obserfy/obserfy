@@ -21,6 +21,8 @@ import dayjs from "../../dayjs"
 import { useGetCurriculumAreas } from "../../api/useGetCurriculumAreas"
 import Chip from "../Chip/Chip"
 import BackButton from "../BackButton/BackButton"
+import { borderFull } from "../../border"
+import ImagePreviewOverlay from "../ImagePreviewOverlay/ImagePreviewOverlay"
 
 interface Props {
   studentId: string
@@ -101,10 +103,7 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
           value={longDesc}
           mb={3}
         />
-        <Typography.Body
-          sx={{ fontSize: 1, color: "textMediumEmphasis" }}
-          mb={2}
-        >
+        <Typography.Body sx={{ color: "textMediumEmphasis" }} mb={2}>
           Related Area
         </Typography.Body>
         <Flex mb={2} sx={{ flexWrap: "wrap" }}>
@@ -137,11 +136,8 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
           }}
           mb={3}
         />
-        <Typography.Body
-          sx={{ fontSize: 1, color: "textMediumEmphasis" }}
-          mb={2}
-        >
-          Attached Images
+        <Typography.Body sx={{ color: "textMediumEmphasis" }} mb={2}>
+          Attach Images
         </Typography.Body>
         <Flex sx={{ alignItems: "center", flexWrap: "wrap" }}>
           <UploadImageButton
@@ -154,21 +150,56 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
           />
           {images.map((image) => {
             return (
-              <Image
-                mr={3}
-                mb={3}
-                sx={{
-                  height: 80,
-                  width: 80,
-                  objectFit: "cover",
-                  borderRadius: "default",
+              <ImagePreview
+                onDeleted={() => {
+                  setImages((draft) =>
+                    draft.filter(({ id }) => id !== image.id)
+                  )
                 }}
+                studentId={studentId}
+                key={image.id}
                 src={URL.createObjectURL(image.file)}
+                imageId={image.id}
               />
             )
           })}
         </Flex>
       </Box>
+    </Fragment>
+  )
+}
+
+const ImagePreview: FC<{
+  imageId: string
+  studentId: string
+  src: string
+  onDeleted: () => void
+}> = ({ studentId, src, imageId, onDeleted }) => {
+  const [showOverlay, setShowOverlay] = useState(false)
+
+  return (
+    <Fragment>
+      <Image
+        onClick={() => setShowOverlay(true)}
+        src={src}
+        mr={2}
+        mb={3}
+        sx={{
+          height: 40,
+          width: 40,
+          objectFit: "cover",
+          borderRadius: "default",
+        }}
+      />
+      {showOverlay && (
+        <ImagePreviewOverlay
+          onDeleted={onDeleted}
+          imageId={imageId}
+          onDismiss={() => setShowOverlay(false)}
+          studentId={studentId}
+          src={src}
+        />
+      )}
     </Fragment>
   )
 }
@@ -180,52 +211,41 @@ const UploadImageButton: FC<{
   const [postNewStudentImage, { isLoading }] = usePostNewStudentImage(studentId)
 
   return (
-    <Box mb={3}>
-      <Card
-        as="label"
-        mr={3}
-        p={3}
-        sx={{
-          width: 80,
-          height: 80,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          fontSize: 1,
-          justifyContent: "center",
-          cursor: "pointer",
-          borderStyle: "solid",
-          borderColor: "border",
-          borderWidth: 1,
-          "&:hover": {
-            borderColor: "primary",
-          },
-        }}
-      >
-        {isLoading ? (
-          <LoadingIndicator />
-        ) : (
-          <Fragment>
-            <Icon as={PlusIcon} />
-            Image
-          </Fragment>
-        )}
-        <Input
-          type="file"
-          sx={{ display: "none" }}
-          accept="image/*"
-          onChange={async (e) => {
-            const selectedImage = e.target.files?.[0]
-            if (!selectedImage) return
+    <Card
+      as="label"
+      mr={2}
+      mb={3}
+      sx={{
+        width: 40,
+        height: 40,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        cursor: "pointer",
+        "&:hover": {
+          borderColor: "primary",
+        },
+        ...borderFull,
+      }}
+    >
+      {isLoading ? <LoadingIndicator /> : <Icon as={PlusIcon} />}
+      <Input
+        type="file"
+        sx={{ display: "none" }}
+        accept="image/*"
+        onChange={async (e) => {
+          const selectedImage = e.target.files?.[0]
+          if (!selectedImage) return
 
-            const result = await postNewStudentImage(selectedImage)
-            if (result === undefined || !result.ok) return
+          const result = await postNewStudentImage(selectedImage)
+          if (result?.ok) {
             const response = await result.json()
             onUploaded({ id: response.id, file: selectedImage })
-          }}
-        />
-      </Card>
-    </Box>
+          }
+        }}
+      />
+    </Card>
   )
 }
 

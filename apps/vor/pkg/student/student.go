@@ -357,6 +357,7 @@ func postObservation(s rest.Server, store Store) http.Handler {
 		OriginalUrl  string    `json:"originalUrl"`
 	}
 	type responseBody struct {
+		Id          string    `json:"id"`
 		ShortDesc   string    `json:"shortDesc"`
 		LongDesc    string    `json:"longDesc"`
 		CategoryId  string    `json:"categoryId"`
@@ -414,6 +415,7 @@ func postObservation(s rest.Server, store Store) http.Handler {
 		}
 
 		response := responseBody{
+			Id:          observation.Id,
 			ShortDesc:   observation.ShortDesc,
 			LongDesc:    observation.LongDesc,
 			CategoryId:  observation.CategoryId,

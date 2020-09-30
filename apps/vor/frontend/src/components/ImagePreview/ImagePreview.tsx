@@ -1,19 +1,21 @@
 import React, { FC, useState } from "react"
-import { Button, Image, SxStyleProp } from "theme-ui"
-import Dialog from "../Dialog/Dialog"
-import { ReactComponent as CloseIcon } from "../../icons/close.svg"
-import Icon from "../Icon/Icon"
+import { Image, SxStyleProp } from "theme-ui"
+import ImagePreviewOverlay from "../ImagePreviewOverlay/ImagePreviewOverlay"
 
 export interface ImagePreviewProps {
   id: string
   originalUrl: string
   thumbnailUrl: string
   imageSx?: SxStyleProp
+  studentId: string
+  imageId: string
 }
 export const ImagePreview: FC<ImagePreviewProps> = ({
+  studentId,
   thumbnailUrl,
   originalUrl,
   imageSx,
+  imageId,
 }) => {
   const [showOriginal, setShowOriginal] = useState(false)
   return (
@@ -26,25 +28,12 @@ export const ImagePreview: FC<ImagePreviewProps> = ({
         onClick={() => setShowOriginal(true)}
       />
       {showOriginal && (
-        <Dialog
-          sx={{
-            overflowY: "auto",
-            backgroundColor: "background",
-          }}
-        >
-          <Button
-            variant="outline"
-            ml="auto"
-            my={3}
-            mr={3}
-            p={2}
-            onClick={() => setShowOriginal(false)}
-          >
-            <Icon as={CloseIcon} mr={1} />
-            Close
-          </Button>
-          <Image src={originalUrl} />
-        </Dialog>
+        <ImagePreviewOverlay
+          imageId={imageId}
+          studentId={studentId}
+          src={originalUrl}
+          onDismiss={() => setShowOriginal(false)}
+        />
       )}
     </>
   )

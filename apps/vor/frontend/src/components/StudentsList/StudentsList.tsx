@@ -200,8 +200,9 @@ const StudentListItem: FC<{
         <Box ml={3} py={1}>
           <Typography.Body sx={{ lineHeight: 1.6 }}>{name}</Typography.Body>
           <Flex sx={{ flexWrap: "wrap" }}>
-            {classes?.map(({ className }) => (
+            {classes?.map(({ classId, className }) => (
               <Typography.Body
+                key={classId}
                 mt={1}
                 mr={2}
                 mb={1}

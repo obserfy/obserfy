@@ -154,6 +154,7 @@ const ObservationList: FC<{
       }
       result[date].push(
         <ObservationCard
+          studentId={studentId}
           key={observation.id}
           detailsUrl={OBSERVATION_DETAILS_URL(studentId, observation.id)}
           observation={observation}

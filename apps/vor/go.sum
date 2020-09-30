@@ -71,6 +71,8 @@ github.com/go-pg/pg/v10 v10.3.0 h1:w3GJbaRnWJdtdSmY9xr7i3C+OxTdRE6q+x0vatLxTzE=
 github.com/go-pg/pg/v10 v10.3.0/go.mod h1:wY0cRYyO1JfUXBF2XjkbnNvhce3WyunFDhEvZXnHbP0=
 github.com/go-pg/pg/v10 v10.3.1 h1:+OnJL78DHygK0FWr3l2ryfNZ7j+1ZAJOYmH9Nq3fAU4=
 github.com/go-pg/pg/v10 v10.3.1/go.mod h1:wY0cRYyO1JfUXBF2XjkbnNvhce3WyunFDhEvZXnHbP0=
+github.com/go-pg/pg/v10 v10.3.2 h1:2GgewrvOE3G0eQH5V6NhAx5vzI+1If0cupnF9Ls3znY=
+github.com/go-pg/pg/v10 v10.3.2/go.mod h1:wY0cRYyO1JfUXBF2XjkbnNvhce3WyunFDhEvZXnHbP0=
 github.com/go-pg/pg/v9 v9.0.0-beta.14/go.mod h1:T2Sr6bpTCOr2lUqOUMiXLMJqZHSUBKk1LdgSqjwhZfA=
 github.com/go-pg/pg/v9 v9.0.3 h1:dhOAOLlTJJpqeAfRpjZYTV6zf7dmUOnjCkZqjOBYmu0=
 github.com/go-pg/pg/v9 v9.0.3/go.mod h1:Tm/Q3Vt6gdQOH6TTN1H/xLlIXc+Qrka7TZ6uREtu/eA=
@@ -95,6 +97,8 @@ github.com/go-playground/universal-translator v0.17.0 h1:icxd5fm+REJzpZx7ZfpaD87
 github.com/go-playground/universal-translator v0.17.0/go.mod h1:UkSxE5sNxxRwHyU+Scu5vgOQjsIJAF8j9muTVoKLVtA=
 github.com/go-playground/validator/v10 v10.3.0 h1:nZU+7q+yJoFmwvNgv/LnPUkwPal62+b2xXj0AU1Es7o=
 github.com/go-playground/validator/v10 v10.3.0/go.mod h1:uOYAAleCW8F/7oMFd6aG0GOhaH6EGOAJShg8Id5JGkI=
+github.com/go-playground/validator/v10 v10.4.0 h1:72qIR/m8ybvL8L5TIyfgrigqkrw7kVYAvjEvpT85l70=
+github.com/go-playground/validator/v10 v10.4.0/go.mod h1:nlOn6nFhuKACm19sB/8EGNn9GlaMV7XkbRSipzJ0Ii4=
 github.com/gobwas/httphead v0.0.0-20180130184737-2c6c146eadee/go.mod h1:L0fX3K22YWvt/FAX9NnzrNzcI4wNYi9Yku4O0LKYflo=
 github.com/gobwas/pool v0.2.0/go.mod h1:q8bcK0KcYlCgd9e7WYLm9LpyS+YeLd8JVDW6WezmKEw=
 github.com/gobwas/ws v1.0.2/go.mod h1:szmBTxLgaFppYjEmNtny/v3w89xOydFnnZMcgRRu/EM=
