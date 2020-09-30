@@ -1144,7 +1144,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
                 class="emotion-18"
                 disabled=""
                 placeholder="Not set"
-                value="26 May '96"
+                value="Sunday, 26 May 1996"
               />
             </div>
           </label>
