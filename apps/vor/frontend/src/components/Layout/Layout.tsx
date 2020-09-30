@@ -32,7 +32,7 @@ export const Layout: FC = ({ children }) => {
   return (
     <>
       <Navbar />
-      <Flex pb={[80, 0]}>
+      <Flex>
         {studentSubroute && breakpoint > 1 && <StudentsSubrouteSidebar />}
         <Box
           as="main"
@@ -40,6 +40,7 @@ export const Layout: FC = ({ children }) => {
           mb="env(safe-area-inset-bottom)"
           pl={studentSubroute ? [0, 64, 364, 364, 484] : [0, 64]}
           sx={{ flexGrow: 1 }}
+          pb={[80, 0]}
         >
           <UpdateNotification />
           {children}
