@@ -26,7 +26,7 @@ import { borderTop } from "../../border"
 interface Props {
   id: string
 }
-export const PageCurriculumArea: FC<Props> = ({ id }) => {
+const PageCurriculumArea: FC<Props> = ({ id }) => {
   const area = useGetArea(id)
   const subjects = useGetAreaSubjects(id)
   const [showDeleteAreaDialog, setShowDeleteAreaDialog] = useState(false)
