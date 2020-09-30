@@ -222,17 +222,10 @@ exports[`Layout should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  padding-bottom: 80px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-14 {
-    padding-bottom: 0;
-  }
 }
 
 .emotion-13 {
@@ -241,6 +234,7 @@ exports[`Layout should render correctly 1`] = `
   min-width: 0;
   margin-bottom: env(safe-area-inset-bottom);
   padding-left: 0;
+  padding-bottom: 80px;
   background-color: var(--theme-ui-colors-background,#f2f3f5);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
@@ -251,6 +245,7 @@ exports[`Layout should render correctly 1`] = `
 @media screen and (min-width:40em) {
   .emotion-13 {
     padding-left: 64px;
+    padding-bottom: 0;
   }
 }
 
