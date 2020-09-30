@@ -4,7 +4,11 @@ module.exports = {
   theme: {
     fontFamily: {
       heading: ["Crimson Text"],
-      body: ["Open Sans"]
-    }
-  }
+      body: ["Open Sans"],
+    },
+  },
+  future: {
+    removeDeprecatedGapUtilities: true,
+    purgeLayersByDefault: true,
+  },
 }
