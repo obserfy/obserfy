@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.11.7](https://github.com/obserfy/obserfy/compare/v1.11.6...v1.11.7) (2020-09-30)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @prefresh/next to v1.2.4 ([5d9f241](https://github.com/obserfy/obserfy/commit/5d9f241260f03ffead17c2e84eed6bed99e66959))
+* **deps:** update dependency dayjs to v1.9.0 ([5a07502](https://github.com/obserfy/obserfy/commit/5a07502e5e07e5b723892f75b163f221f9bfe0ea))
+* **deps:** update dependency dayjs to v1.9.1 ([f8a9efe](https://github.com/obserfy/obserfy/commit/f8a9efe33eda84b89bb690f566c854945cb33c71))
+* **deps:** update dependency query-string to v6.13.3 ([227ade7](https://github.com/obserfy/obserfy/commit/227ade70088f914e109e600d255f2db18963479f))
+* **deps:** update dependency query-string to v6.13.4 ([ef0dbcd](https://github.com/obserfy/obserfy/commit/ef0dbcd0e43e9a5ccd73429cb1962000eb2e18b9))
+
 ### [1.11.6](https://github.com/obserfy/obserfy/compare/v1.11.5...v1.11.6) (2020-09-27)
 
 
