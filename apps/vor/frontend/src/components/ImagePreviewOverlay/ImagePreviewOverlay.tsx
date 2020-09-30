@@ -122,7 +122,7 @@ const ImagePreviewOverlay: FC<ImagePreviewOverlayProps> = ({
                   onClick={async () => {
                     const result = await deleteImage()
                     if (result?.ok) {
-                      onDeleted()
+                      if (onDeleted) onDeleted()
                       onDismiss()
                     }
                   }}
