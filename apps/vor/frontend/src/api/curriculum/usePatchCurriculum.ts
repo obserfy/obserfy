@@ -11,6 +11,7 @@ const usePatchCurriculum = (curriculumId: string) => {
   )
   return useMutation(patchCurriculum, {
     onSuccess: async (data) => {
+      analytics.track("Curriculum Updated")
       if (data) {
         const updatedCurriculum = await data.json()
         setCurriculumCache(updatedCurriculum)

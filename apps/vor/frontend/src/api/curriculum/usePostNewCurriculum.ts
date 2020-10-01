@@ -14,7 +14,11 @@ const usePostNewCurriculum = () => {
     `/schools/${schoolId}/curriculums`
   )
   return useMutation(postCreateDefaultCurriculum, {
-    onSuccess: async () => {
+    onSuccess: async (data, variables) => {
+      analytics.track("Curriculum Created", {
+        name: variables.name,
+        template: variables.template,
+      })
       await Promise.all([
         invalidateGetCurriculumCache(),
         invalidateGetCurriculumAreasCache(),

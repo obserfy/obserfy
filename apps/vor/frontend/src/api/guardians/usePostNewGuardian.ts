@@ -43,6 +43,9 @@ export const usePostNewGuardian = (
   }
 
   return useMutation(postNewGuardian, {
-    onSuccess: () => queryCache.invalidateQueries(["student", studentId]),
+    onSuccess: async () => {
+      analytics.track("Guardian Created")
+      await queryCache.invalidateQueries(["student", studentId])
+    },
   })
 }

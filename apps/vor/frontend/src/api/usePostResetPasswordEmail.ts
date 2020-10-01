@@ -15,7 +15,11 @@ const usePostResetPasswordEmail = () => {
 
     return result
   }
-  return useMutation(postMailReset)
+  return useMutation(postMailReset, {
+    onSuccess: () => {
+      analytics.track("Password Reset")
+    },
+  })
 }
 
 export default usePostResetPasswordEmail

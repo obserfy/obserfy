@@ -10,6 +10,7 @@ const useDeleteObservationImage = (observationId: string, imageId?: string) => {
 
   return useMutation(deleteObservationImage, {
     onSuccess: async () => {
+      analytics.track("Observation Image Deleted")
       const cached = await getObservationCache(observationId)
       if (cached && cached.images.length > 0) {
         cached.images =

@@ -15,6 +15,7 @@ const usePostNewStudentImage = (studentId: string) => {
 
   return useMutation(postNewImage, {
     onSuccess: async () => {
+      analytics.track("Student Image Uploaded")
       await queryCache.invalidateQueries(["student", studentId, "images"])
     },
   })

@@ -33,6 +33,7 @@ const usePostNewClass = () => {
 
   return useMutation(fetchApi, {
     onSuccess: async () => {
+      analytics.track("Class Created")
       await queryCache.invalidateQueries(["classes", schoolId])
     },
   })

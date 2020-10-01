@@ -16,6 +16,7 @@ const usePatchObservation = (observationId: string) => {
   )
   return useMutation(patchObservation, {
     onSuccess: async (response) => {
+      analytics.track("Observation Updated")
       if (response === undefined) return
       const body = await response.json()
       updateObservationCache(body)

@@ -9,6 +9,7 @@ const useDeleteObservation = (observationId: string, studentId: string) => {
   const deleteObservation = deleteApi(`/observations/${observationId}`)
   return useMutation(deleteObservation, {
     onSuccess: async () => {
+      analytics.track("Observation Deleted")
       const observations = getStudentObservationsCache(studentId)
 
       updateStudentObservationsCache(

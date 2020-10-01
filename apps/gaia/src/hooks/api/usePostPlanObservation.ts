@@ -7,7 +7,10 @@ const usePostPlanObservation = (planId: string) => {
     `/plans/${planId}/observations`
   )
   return useMutation(postPlanObservation, {
-    onSuccess: async () => queryCache.invalidateQueries(["childPlans"]),
+    onSuccess: async () => {
+      analytics.track("Observation Created")
+      await queryCache.invalidateQueries(["childPlans"])
+    },
   })
 }
 

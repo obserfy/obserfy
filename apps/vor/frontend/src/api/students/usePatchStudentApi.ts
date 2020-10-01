@@ -16,6 +16,7 @@ export function usePatchStudentApi(id: string) {
 
   return useMutation(patchStudent, {
     onSuccess: async () => {
+      analytics.track("Student Updated", { id })
       await Promise.all([
         queryCache.invalidateQueries(["student", id]),
         queryCache.invalidateQueries("students"),
