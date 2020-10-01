@@ -16,7 +16,7 @@ require (
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.6.1
 	go.uber.org/zap v1.16.0
-	golang.org/x/crypto v0.0.0-20200930160638-afb6bcd081ae
+	golang.org/x/crypto v0.0.0-20201001193750-eb9a90e9f9cb
 	golang.org/x/lint v0.0.0-20191125180803-fdd1cda4f05f // indirect
 	golang.org/x/tools v0.0.0-20200522201501-cb1345f3a375 // indirect
 )
