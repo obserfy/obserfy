@@ -15,6 +15,15 @@ const useGetUser = () => {
         router.push(`/session-expired`)
       }
     },
+    onSuccess: (data) => {
+      window.analytics.identify(data.sub, {
+        name: data.name,
+        email: data.email,
+        avatar: data.picture,
+        children: data.children.map(({ name }) => name),
+        schools: data.children.map(({ schoolName }) => schoolName),
+      })
+    },
   })
 }
 

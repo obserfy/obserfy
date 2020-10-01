@@ -19,6 +19,7 @@ const usePostNewObservationImage = (observationId: string) => {
 
   return useMutation(postNewImage, {
     onSuccess: async (data) => {
+      analytics.track("Observation Image Uploaded")
       const result = await data.json()
       const cached = await getObservationCache(observationId)
       if (cached) {

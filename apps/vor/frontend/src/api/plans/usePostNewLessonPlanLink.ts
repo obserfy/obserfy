@@ -11,6 +11,7 @@ const usePostNewLessonPlanLink = (lessonPlanId: string) => {
   const postNewLessonPlanLink = postApi<Link>(`/plans/${lessonPlanId}/links`)
   return useMutation(postNewLessonPlanLink, {
     onSuccess: async () => {
+      analytics.track("Plan Link Created")
       await queryCache.invalidateQueries(["plan", lessonPlanId])
     },
   })

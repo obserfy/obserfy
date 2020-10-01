@@ -18,6 +18,7 @@ const usePatchStudentMaterialProgress = (
 
   return useMutation(patchStudentMaterialProgress, {
     onSuccess: async (data) => {
+      analytics.track("Student Material Progress Updated")
       if (data === undefined) return
       const cache = getStudentMaterialProgressCache(studentId)
       const materialIndex = cache?.findIndex(

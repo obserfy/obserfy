@@ -13,6 +13,7 @@ export function usePatchGuardian(id: string) {
 
   return useMutation(patchGuardian, {
     onSuccess: async () => {
+      analytics.track("Guardian Updated")
       await queryCache.invalidateQueries("guardians")
     },
   })

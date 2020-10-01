@@ -1,11 +1,8 @@
 import { useQuery } from "react-query"
 import { useRouter } from "next/router"
 import { getApi } from "../../apiHelpers"
+import { GetChildrenResponse } from "../../pages/api/me/children"
 
-interface GetChildrenResponse {
-  id: string
-  name: string
-}
 const useGetChildren = () => {
   const router = useRouter()
   const getChildren = getApi<GetChildrenResponse[]>("/me/children")
