@@ -34,5 +34,9 @@ export const usePostNewStudent = () => {
   const postNewStudent = postApi<NewStudent>(
     `/schools/${getSchoolId()}/students`
   )
-  return useMutation(postNewStudent)
+  return useMutation(postNewStudent, {
+    onSuccess: () => {
+      analytics.track("Student Created")
+    },
+  })
 }

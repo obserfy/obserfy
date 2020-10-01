@@ -8,6 +8,7 @@ const useDeleteCurriculum = () => {
   const deleteCurriculum = deleteApi(`/schools/${getSchoolId()}/curriculums`)
   return useMutation(deleteCurriculum, {
     onSuccess: async () => {
+      analytics.track("Curriculum Deleted")
       await invalidateGetCurriculumCache()
       setCurriculumAreasCache([])
     },

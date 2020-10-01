@@ -56,8 +56,10 @@ const usePostNewPlan = () => {
   }
 
   return useMutation(postPlan, {
-    onSuccess: () =>
-      queryCache.invalidateQueries(["plans", getSchoolId(), date]),
+    onSuccess: async () => {
+      analytics.track("Plan Created")
+      await queryCache.invalidateQueries(["plans", getSchoolId(), date])
+    },
   })
 }
 

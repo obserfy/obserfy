@@ -28,6 +28,9 @@ export const useDeleteGuardianRelation = (
   }
 
   return useMutation(postGuardianRelation, {
-    onSuccess: () => queryCache.invalidateQueries(["student", studentId]),
+    onSuccess: () => {
+      analytics.track("Guardian Relation Deleted")
+      return queryCache.invalidateQueries(["student", studentId])
+    },
   })
 }

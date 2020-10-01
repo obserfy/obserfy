@@ -25,6 +25,7 @@ export const useDeleteStudentClassRelation = (studentId: string) => {
 
   return useMutation(deleteStudentClassRelation, {
     onSuccess: async () => {
+      analytics.track("Student Class Relation Deleted")
       await queryCache.invalidateQueries(["student", studentId])
     },
   })

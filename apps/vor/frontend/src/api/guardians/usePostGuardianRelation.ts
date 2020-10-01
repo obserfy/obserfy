@@ -35,6 +35,9 @@ export const usePostGuardianRelation = (
   }
 
   return useMutation(postGuardianRelation, {
-    onSuccess: () => queryCache.invalidateQueries(["student", studentId]),
+    onSuccess: async () => {
+      analytics.track("Guardian Relation Created")
+      await queryCache.invalidateQueries(["student", studentId])
+    },
   })
 }

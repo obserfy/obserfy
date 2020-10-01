@@ -9,6 +9,7 @@ const useDeleteArea = (areaId: string) => {
   const deleteArea = deleteApi(`/curriculums/areas/${areaId}`)
   return useMutation(deleteArea, {
     onSuccess: () => {
+      analytics.track("Area Deleted")
       const cache = getCurriculumAreasCache()
       if (cache) {
         setCurriculumAreasCache(cache.filter(({ id }) => id !== areaId))
