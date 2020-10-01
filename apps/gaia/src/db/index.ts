@@ -32,10 +32,11 @@ export const findChildrenByGuardianEmail = async (guardianEmail: string) => {
   // language=PostgreSQL
   const result = await query(
     `
-        select s.id, s.name
+        select s.id, s.name, s2.name as school_name
         from students s
                  join guardian_to_students gts on s.id = gts.student_id
                  join guardians g on gts.guardian_id = g.id
+                 join schools s2 on s2.id = g.school_id
         where g.email = $1
     `,
     [guardianEmail]

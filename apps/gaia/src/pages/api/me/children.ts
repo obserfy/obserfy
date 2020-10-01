@@ -1,6 +1,10 @@
 import { findChildrenByGuardianEmail } from "../../../db"
 import auth0 from "../../../utils/auth0"
 
+export interface GetChildrenResponse {
+  id: string
+  name: string
+}
 const childrenHandler = auth0.requireAuthentication(async (req, res) => {
   try {
     const { user } = await auth0.getSession(req)
