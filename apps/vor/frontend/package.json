@@ -53,9 +53,9 @@
   "devDependencies": {
     "@babel/preset-typescript": "7.10.4",
     "@istanbuljs/nyc-config-typescript": "1.0.1",
-    "@storybook/addon-actions": "6.0.22",
-    "@storybook/addon-essentials": "6.0.22",
-    "@storybook/react": "6.0.22",
+    "@storybook/addon-actions": "6.0.25",
+    "@storybook/addon-essentials": "6.0.25",
+    "@storybook/react": "6.0.25",
     "@testing-library/react": "11.0.4",
     "@testing-library/react-hooks": "3.4.2",
     "@types/body-scroll-lock": "2.6.1",
