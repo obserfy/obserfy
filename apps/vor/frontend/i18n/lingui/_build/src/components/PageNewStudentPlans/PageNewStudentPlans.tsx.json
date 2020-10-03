@@ -11,7 +11,7 @@
     "origin": [
       [
         "src/components/PageNewStudentPlans/PageNewStudentPlans.tsx",
-        93
+        94
       ]
     ]
   },
@@ -19,7 +19,7 @@
     "origin": [
       [
         "src/components/PageNewStudentPlans/PageNewStudentPlans.tsx",
-        121
+        123
       ]
     ]
   },
@@ -27,7 +27,7 @@
     "origin": [
       [
         "src/components/PageNewStudentPlans/PageNewStudentPlans.tsx",
-        121
+        123
       ]
     ]
   },
@@ -35,7 +35,7 @@
     "origin": [
       [
         "src/components/PageNewStudentPlans/PageNewStudentPlans.tsx",
-        123
+        126
       ]
     ]
   },
@@ -43,7 +43,7 @@
     "origin": [
       [
         "src/components/PageNewStudentPlans/PageNewStudentPlans.tsx",
-        130
+        135
       ]
     ]
   },
@@ -51,7 +51,7 @@
     "origin": [
       [
         "src/components/PageNewStudentPlans/PageNewStudentPlans.tsx",
-        143
+        150
       ]
     ]
   },
@@ -59,11 +59,11 @@
     "origin": [
       [
         "src/components/PageNewStudentPlans/PageNewStudentPlans.tsx",
-        145
+        153
       ],
       [
         "src/components/PageNewStudentPlans/PageNewStudentPlans.tsx",
-        217
+        225
       ]
     ]
   },
@@ -71,7 +71,7 @@
     "origin": [
       [
         "src/components/PageNewStudentPlans/PageNewStudentPlans.tsx",
-        166
+        174
       ]
     ]
   },
@@ -79,7 +79,7 @@
     "origin": [
       [
         "src/components/PageNewStudentPlans/PageNewStudentPlans.tsx",
-        217
+        225
       ]
     ]
   },
@@ -87,7 +87,7 @@
     "origin": [
       [
         "src/components/PageNewStudentPlans/PageNewStudentPlans.tsx",
-        228
+        236
       ]
     ]
   }

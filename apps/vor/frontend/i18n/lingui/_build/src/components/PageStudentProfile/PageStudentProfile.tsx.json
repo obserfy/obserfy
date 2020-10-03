@@ -1,0 +1,190 @@
+{
+  "Students": {
+    "origin": [
+      [
+        "src/components/PageStudentProfile/PageStudentProfile.tsx",
+        49
+      ]
+    ]
+  },
+  "Profile": {
+    "origin": [
+      [
+        "src/components/PageStudentProfile/PageStudentProfile.tsx",
+        53
+      ]
+    ]
+  },
+  "Classes": {
+    "origin": [
+      [
+        "src/components/PageStudentProfile/PageStudentProfile.tsx",
+        71
+      ]
+    ]
+  },
+  "Not Set": {
+    "origin": [
+      [
+        "src/components/PageStudentProfile/PageStudentProfile.tsx",
+        76
+      ],
+      [
+        "src/components/PageStudentProfile/PageStudentProfile.tsx",
+        101
+      ],
+      [
+        "src/components/PageStudentProfile/PageStudentProfile.tsx",
+        162
+      ],
+      [
+        "src/components/PageStudentProfile/PageStudentProfile.tsx",
+        173
+      ],
+      [
+        "src/components/PageStudentProfile/PageStudentProfile.tsx",
+        190
+      ]
+    ]
+  },
+  "Guardians": {
+    "origin": [
+      [
+        "src/components/PageStudentProfile/PageStudentProfile.tsx",
+        98
+      ]
+    ]
+  },
+  "Name": {
+    "origin": [
+      [
+        "src/components/PageStudentProfile/PageStudentProfile.tsx",
+        135
+      ],
+      [
+        "src/components/PageStudentProfile/PageStudentProfile.tsx",
+        139
+      ]
+    ]
+  },
+  "Edit Name": {
+    "origin": [
+      [
+        "src/components/PageStudentProfile/PageStudentProfile.tsx",
+        137
+      ]
+    ]
+  },
+  "Save": {
+    "origin": [
+      [
+        "src/components/PageStudentProfile/PageStudentProfile.tsx",
+        137
+      ],
+      [
+        "src/components/PageStudentProfile/PageStudentProfile.tsx",
+        166
+      ],
+      [
+        "src/components/PageStudentProfile/PageStudentProfile.tsx",
+        192
+      ]
+    ]
+  },
+  "Gender": {
+    "origin": [
+      [
+        "src/components/PageStudentProfile/PageStudentProfile.tsx",
+        155
+      ],
+      [
+        "src/components/PageStudentProfile/PageStudentProfile.tsx",
+        170
+      ]
+    ]
+  },
+  "Male": {
+    "origin": [
+      [
+        "src/components/PageStudentProfile/PageStudentProfile.tsx",
+        158
+      ],
+      [
+        "src/components/PageStudentProfile/PageStudentProfile.tsx",
+        174
+      ]
+    ]
+  },
+  "Female": {
+    "origin": [
+      [
+        "src/components/PageStudentProfile/PageStudentProfile.tsx",
+        160
+      ],
+      [
+        "src/components/PageStudentProfile/PageStudentProfile.tsx",
+        175
+      ]
+    ]
+  },
+  "Edit Gender": {
+    "origin": [
+      [
+        "src/components/PageStudentProfile/PageStudentProfile.tsx",
+        166
+      ]
+    ]
+  },
+  "Student ID": {
+    "origin": [
+      [
+        "src/components/PageStudentProfile/PageStudentProfile.tsx",
+        190
+      ],
+      [
+        "src/components/PageStudentProfile/PageStudentProfile.tsx",
+        194
+      ]
+    ]
+  },
+  "Edit Student ID": {
+    "origin": [
+      [
+        "src/components/PageStudentProfile/PageStudentProfile.tsx",
+        192
+      ]
+    ]
+  },
+  "Date of Entry": {
+    "origin": [
+      [
+        "src/components/PageStudentProfile/PageStudentProfile.tsx",
+        219
+      ]
+    ]
+  },
+  "Status": {
+    "origin": [
+      [
+        "src/components/PageStudentProfile/PageStudentProfile.tsx",
+        248
+      ]
+    ]
+  },
+  "Cancel": {
+    "origin": [
+      [
+        "src/components/PageStudentProfile/PageStudentProfile.tsx",
+        257
+      ]
+    ]
+  },
+  "Yes": {
+    "origin": [
+      [
+        "src/components/PageStudentProfile/PageStudentProfile.tsx",
+        257
+      ]
+    ]
+  }
+}

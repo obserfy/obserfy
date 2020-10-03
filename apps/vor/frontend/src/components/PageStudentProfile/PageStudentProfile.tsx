@@ -1,6 +1,8 @@
 /** @jsx jsx */
 import { FC, Fragment, useState } from "react"
 import { Box, Button, Card, Flex, jsx } from "theme-ui"
+import { Trans } from "@lingui/macro"
+import { i18nMark } from "@lingui/core"
 import { useGetStudent } from "../../api/useGetStudent"
 import { usePatchStudentApi } from "../../api/students/usePatchStudentApi"
 
@@ -49,11 +51,15 @@ export const PageStudentProfile: FC<Props> = ({ id }) => {
       <Flex sx={{ height: 48, alignItems: "center" }}>
         <BackButton to={STUDENT_OVERVIEW_PAGE_URL(id)} />
         <Breadcrumb>
-          <BreadcrumbItem to={STUDENTS_URL}>Students</BreadcrumbItem>
+          <BreadcrumbItem to={STUDENTS_URL}>
+            <Trans>Students</Trans>
+          </BreadcrumbItem>
           <BreadcrumbItem to={STUDENT_OVERVIEW_PAGE_URL(id)}>
             {data?.name.split(" ")[0]}
           </BreadcrumbItem>
-          <BreadcrumbItem>Profile</BreadcrumbItem>
+          <BreadcrumbItem>
+            <Trans>Profile</Trans>
+          </BreadcrumbItem>
         </Breadcrumb>
       </Flex>
       <Card sx={{ borderRadius: [0, "default"] }} mb={3}>
@@ -95,7 +101,7 @@ export const PageStudentProfile: FC<Props> = ({ id }) => {
               mb={2}
               color="textMediumEmphasis"
             >
-              Classes
+              <Trans>Classes</Trans>
             </Typography.Body>
             {data?.classes?.length === 0 && (
               <Typography.Body
@@ -103,7 +109,7 @@ export const PageStudentProfile: FC<Props> = ({ id }) => {
                   lineHeight: 1,
                 }}
               >
-                Not set
+                <Trans>Not Set</Trans>
               </Typography.Body>
             )}
             {data?.classes?.map((currentClass) => (
@@ -139,11 +145,11 @@ export const PageStudentProfile: FC<Props> = ({ id }) => {
               }}
               color="textMediumEmphasis"
             >
-              Guardians
+              <Trans>Guardians</Trans>
             </Typography.Body>
             {data?.guardians?.length === 0 && (
               <Typography.Body sx={{ lineHeight: 1 }} mb={3} mt={2}>
-                Not set
+                <Trans>Not Set</Trans>
               </Typography.Body>
             )}
             {data?.guardians?.map(({ email, name }) => {
@@ -198,22 +204,22 @@ const NameDataBox: FC<{ value?: string; studentId: string }> = ({
   return (
     <Fragment>
       <DataBox
-        label="Name"
+        label={i18nMark("Name")}
         value={value ?? ""}
         onEditClick={() => setShowEditDialog(true)}
       />
       {showEditDialog && (
         <Dialog>
           <DialogHeader
-            title="Edit Name"
-            onAcceptText="Save"
+            title={i18nMark("Edit Name")}
+            onAcceptText={i18nMark("Save")}
             onCancel={() => setShowEditDialog(false)}
             onAccept={saveName}
             loading={status === "loading"}
           />
           <Box sx={{ backgroundColor: "background" }} p={3}>
             <Input
-              label="Name"
+              label={i18nMark("Name")}
               sx={{ width: "100%" }}
               onChange={(e) => {
                 setName(e.target.value)
@@ -241,24 +247,24 @@ const GenderDataBox: FC<{ value?: number; studentId: string }> = ({
   return (
     <Fragment>
       <DataBox
-        label="Gender"
+        label={i18nMark("Gender")}
         onEditClick={() => setShowEditDialog(true)}
         value={(() => {
           switch (gender) {
             case 1:
-              return "Male"
+              return i18nMark("Male")
             case 2:
-              return "Female"
+              return i18nMark("Female")
             default:
-              return "Not set"
+              return i18nMark("Not Set")
           }
         })()}
       />
       {showEditDialog && (
         <Dialog>
           <DialogHeader
-            title="Edit Gender"
-            onAcceptText="Save"
+            title={i18nMark("Edit Gender")}
+            onAcceptText={i18nMark("Save")}
             onCancel={() => setShowEditDialog(false)}
             onAccept={saveGender}
             loading={status === "loading"}
@@ -270,15 +276,21 @@ const GenderDataBox: FC<{ value?: number; studentId: string }> = ({
             p={3}
           >
             <Select
-              label="Gender"
+              label={i18nMark("Gender")}
               value={gender}
               onChange={(e) => {
                 setGender(parseInt(e.target.value, 10))
               }}
             >
-              <option value={Gender.NotSet}>Not Set</option>
-              <option value={Gender.Male}>Male</option>
-              <option value={Gender.Female}>Female</option>
+              <option value={Gender.NotSet}>
+                <Trans>Not Set</Trans>
+              </option>
+              <option value={Gender.Male}>
+                <Trans>Male</Trans>
+              </option>
+              <option value={Gender.Female}>
+                <Trans>Female</Trans>
+              </option>
             </Select>
           </Box>
         </Dialog>
@@ -301,22 +313,22 @@ const StudentIdDataBox: FC<{ value?: string; studentId: string }> = ({
   return (
     <Fragment>
       <DataBox
-        label="Student ID"
-        value={customId || "Not set"}
+        label={i18nMark("Student ID")}
+        value={customId || i18nMark("Not Set")}
         onEditClick={() => setShowEditDialog(true)}
       />
       {showEditDialog && (
         <Dialog>
           <DialogHeader
-            title="Edit Student ID"
-            onAcceptText="Save"
+            title={i18nMark("Edit Student ID")}
+            onAcceptText={i18nMark("Save")}
             onCancel={() => setShowEditDialog(false)}
             onAccept={saveCustomId}
             loading={status === "loading"}
           />
           <Box sx={{ backgroundColor: "background" }} p={3}>
             <Input
-              label="Student ID"
+              label={i18nMark("Student ID")}
               sx={{ width: "100%" }}
               value={customId}
               onChange={(e) => {
@@ -372,7 +384,7 @@ const DateOfEntryDataBox: FC<{ value?: string; studentId: string }> = ({
   return (
     <Fragment>
       <DataBox
-        label="Date of Entry"
+        label={i18nMark("Date of Entry")}
         value={value ? dayjs(value).format("D MMMM YYYY") : "N/A"}
         onEditClick={() => setShowEditDialog(true)}
       />
@@ -402,6 +414,8 @@ const SetStatusDataBox: FC<{
     await mutate({ active: !active })
     setShowStatusDialog(false)
   }
+  const setActiveText = "Set as active?"
+  const setInactiveText = "Set as inactive?"
   return (
     <Card
       p={3}
@@ -419,10 +433,10 @@ const SetStatusDataBox: FC<{
             lineHeight: 1.4,
           }}
         >
-          Status
+          <Trans>Status</Trans>
         </Typography.Body>
         <Typography.Body sx={{ color: !active ? "warning" : undefined }}>
-          {active ? "Active" : "Inactive"}
+          <Trans id={active ? "Active" : "Inactive"} />
         </Typography.Body>
       </Box>
       <Button
@@ -432,13 +446,13 @@ const SetStatusDataBox: FC<{
         sx={{ color: active ? "warning" : undefined }}
         data-cy={active ? "inactive-button" : "active-button"}
       >
-        Set as {active ? "Inactive" : "Active"}
+        <Trans id={active ? setInactiveText : setActiveText} />
       </Button>
       {showStatusDialog && (
         <AlertDialog
-          title={`Set as ${active ? "inactive" : "active"}?`}
-          negativeText="Cancel"
-          positiveText="Yes"
+          title={active ? setInactiveText : setActiveText}
+          negativeText={i18nMark("Cancel")}
+          positiveText={i18nMark("Yes")}
           body={`Are you sure you want to set ${name} as ${
             active ? "inactive" : "active"
           }?`}
@@ -462,9 +476,11 @@ const DataBox: FC<{
         mb={1}
         color="textMediumEmphasis"
       >
-        {label}
+        <Trans id={label} />
       </Typography.Body>
-      <Typography.Body lineHeight={1.6}>{value}</Typography.Body>
+      <Typography.Body lineHeight={1.6}>
+        <Trans id={value} />
+      </Typography.Body>
     </Box>
     <Button
       variant="outline"

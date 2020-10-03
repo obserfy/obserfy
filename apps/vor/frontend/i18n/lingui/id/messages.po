@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:121
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:123
 #: src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx:41
 msgid " Go to Curriculum "
 msgstr " Ke Kurikulum "
@@ -22,9 +22,13 @@ msgstr " Ke Kurikulum "
 msgid "(Starting on Jan 1st 2021)"
 msgstr "(Mulai 1 Jan 2021)"
 
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:251
+#~ msgid "Active"
+#~ msgstr "Aktif"
+
 #: src/components/PageNewStudent/PageNewStudent.tsx:187
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:145
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:217
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:153
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:225
 msgid "Add"
 msgstr "Tambah"
 
@@ -40,7 +44,7 @@ msgstr "Tambah email"
 msgid "Admin"
 msgstr "Admin"
 
-#: src/components/PageStudentOverview/PageStudentOverview.tsx:119
+#: src/components/PageStudentOverview/PageStudentOverview.tsx:121
 msgid "All"
 msgstr "Semua"
 
@@ -68,6 +72,7 @@ msgid "Available every"
 msgstr "Tersedia setiap"
 
 #: src/components/PageListOfStudents/PageListOfStudents.tsx:71
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:257
 msgid "Cancel"
 msgstr "Batal"
 
@@ -81,6 +86,7 @@ msgstr "Kelas"
 
 #: src/components/PageClassSettings/PageClassSettings.tsx:27
 #: src/components/PageNewStudent/PageNewStudent.tsx:160
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:71
 msgid "Classes"
 msgstr "Kelas"
 
@@ -100,7 +106,7 @@ msgstr "Paket Sekarang"
 msgid "Curriculum"
 msgstr "Kurikulum"
 
-#: src/components/PageStudentOverview/PageStudentOverview.tsx:80
+#: src/components/PageStudentOverview/PageStudentOverview.tsx:82
 msgid "Curriculum Progress"
 msgstr "Perkembangan Kurikulum"
 
@@ -109,6 +115,7 @@ msgid "Date of Birth"
 msgstr "Tanggal Lahir"
 
 #: src/components/PageNewStudent/PageNewStudent.tsx:144
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:219
 msgid "Date of Entry"
 msgstr "Tanggal Masuk"
 
@@ -120,7 +127,12 @@ msgstr "Akses Awal"
 msgid "Edit Email"
 msgstr "Ubah Email"
 
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:166
+msgid "Edit Gender"
+msgstr "Ubah Jenis Kelamin"
+
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:57
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:137
 msgid "Edit Name"
 msgstr "Ubah Nama"
 
@@ -131,6 +143,10 @@ msgstr "Ubah Catatan"
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:97
 msgid "Edit Phone"
 msgstr "Ubah Telepon"
+
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:192
+msgid "Edit Student ID"
+msgstr "Ubah ID Murid"
 
 #: src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx:35
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:75
@@ -148,6 +164,8 @@ msgid "End Time"
 msgstr "Waktu Selesai"
 
 #: src/components/PageNewStudent/PageNewStudent.tsx:153
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:160
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:175
 msgid "Female"
 msgstr "Perempuan"
 
@@ -155,11 +173,13 @@ msgstr "Perempuan"
 msgid "Friday"
 msgstr "Jumat"
 
-#: src/components/PageStudentOverview/PageStudentOverview.tsx:64
+#: src/components/PageStudentOverview/PageStudentOverview.tsx:66
 msgid "Gallery"
 msgstr "Galeri"
 
 #: src/components/PageNewStudent/PageNewStudent.tsx:145
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:155
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:170
 msgid "Gender"
 msgstr "Jenis Kelamin"
 
@@ -177,6 +197,7 @@ msgid "Guardian Name"
 msgstr "Nama Wali"
 
 #: src/components/PageNewStudent/PageNewStudent.tsx:183
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:98
 msgid "Guardians"
 msgstr "Wali"
 
@@ -195,6 +216,10 @@ msgstr "Galeri gambar"
 #: src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx:74
 msgid "In Progress"
 msgstr "Dalam Proses"
+
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:251
+#~ msgid "Inactive"
+#~ msgstr "Nonaktif"
 
 #: src/components/InformationalCard/InformationalCard.tsx:16
 msgid "Info"
@@ -217,6 +242,8 @@ msgid "Log Out"
 msgstr "Keluar"
 
 #: src/components/PageNewStudent/PageNewStudent.tsx:150
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:158
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:174
 msgid "Male"
 msgstr "Laki-laki"
 
@@ -227,6 +254,8 @@ msgstr "Senin"
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:55
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:59
 #: src/components/PageNewClass/PageNewClass.tsx:58
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:135
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:139
 msgid "Name"
 msgstr "Nama"
 
@@ -236,7 +265,7 @@ msgstr "Nama (Wajib)"
 
 #: src/components/PageClassSettings/PageClassSettings.tsx:31
 #: src/components/PageNewStudent/PageNewStudent.tsx:109
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:93
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:94
 msgid "New"
 msgstr "Baru"
 
@@ -262,19 +291,24 @@ msgstr "Tagihan Selanjutnya"
 msgid "No materials in progress."
 msgstr "Tidak materi yang sedang dalam proses."
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:228
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:236
 msgid "No more students to add"
 msgstr "Tidak ada lagi murid untuk ditambahkan"
 
-#: src/components/PageStudentOverview/PageStudentOverview.tsx:109
+#: src/components/PageStudentOverview/PageStudentOverview.tsx:111
 msgid "No observation have been added yet"
 msgstr "Belum ada observasi ditambahkan"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:166
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:174
 msgid "No other students added yet."
 msgstr "Belum ada murid lain ditambahkan."
 
 #: src/components/PageNewStudent/PageNewStudent.tsx:147
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:76
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:101
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:162
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:173
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:190
 msgid "Not Set"
 msgstr "Belum Dipilih"
 
@@ -289,11 +323,11 @@ msgstr "Catatan"
 msgid "Notes"
 msgstr "Catatan"
 
-#: src/components/PageStudentOverview/PageStudentOverview.tsx:72
+#: src/components/PageStudentOverview/PageStudentOverview.tsx:74
 msgid "Observation"
 msgstr "Observasi"
 
-#: src/components/PageStudentOverview/PageStudentOverview.tsx:127
+#: src/components/PageStudentOverview/PageStudentOverview.tsx:129
 msgid "Observations"
 msgstr "Observasi"
 
@@ -301,7 +335,7 @@ msgstr "Observasi"
 msgid "Or"
 msgstr "Atau"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:143
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:150
 msgid "Other Related Students"
 msgstr "Siswa Terkait Lainnya"
 
@@ -321,7 +355,7 @@ msgid "Phone"
 msgstr "Telepon"
 
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:91
-#: src/components/PageStudentOverview/PageStudentOverview.tsx:58
+#: src/components/PageStudentOverview/PageStudentOverview.tsx:60
 msgid "Plans"
 msgstr "Rencana"
 
@@ -329,7 +363,8 @@ msgstr "Rencana"
 msgid "Post and upvote suggestions, ideas, and issues."
 msgstr "Posting dan upvote pada saran, ide, dan masalah"
 
-#: src/components/PageStudentOverview/PageStudentOverview.tsx:52
+#: src/components/PageStudentOverview/PageStudentOverview.tsx:54
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:53
 msgid "Profile"
 msgstr "Profil"
 
@@ -341,7 +376,7 @@ msgstr "Baru saja Dikuasai"
 msgid "Record observations"
 msgstr "Rekam observasi"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:123
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:126
 msgid "Related Area"
 msgstr "Area Terkait"
 
@@ -349,7 +384,7 @@ msgstr "Area Terkait"
 msgid "Relationship"
 msgstr "Hubungan"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:130
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:135
 msgid "Repetition"
 msgstr "Pengulangan"
 
@@ -372,6 +407,9 @@ msgstr "Sabtu"
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:117
 #: src/components/PageNewClass/PageNewClass.tsx:78
 #: src/components/PageNewGuardian/PageNewGuardian.tsx:66
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:137
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:166
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:192
 msgid "Save"
 msgstr "Simpan"
 
@@ -379,7 +417,7 @@ msgstr "Simpan"
 msgid "Search"
 msgstr "Cari"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:217
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:225
 msgid "Select Students"
 msgstr "Pilih Murid"
 
@@ -426,13 +464,20 @@ msgstr "Paket Standar"
 msgid "Start Time"
 msgstr "Waktu Mulai"
 
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:248
+msgid "Status"
+msgstr "Status"
+
 #: src/components/PageNewStudent/PageNewStudent.tsx:156
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:190
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:194
 msgid "Student ID"
 msgstr "ID Murid"
 
 #: src/components/Navbar/Navbar.tsx:74
 #: src/components/PageNewStudent/PageNewStudent.tsx:106
-#: src/components/PageStudentOverview/PageStudentOverview.tsx:36
+#: src/components/PageStudentOverview/PageStudentOverview.tsx:37
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:49
 msgid "Students"
 msgstr "Murid"
 
@@ -494,6 +539,7 @@ msgid "Wednesday"
 msgstr "Rabu"
 
 #: src/components/PageListOfStudents/PageListOfStudents.tsx:71
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:257
 msgid "Yes"
 msgstr "Ya"
 
@@ -501,7 +547,7 @@ msgstr "Ya"
 msgid "You"
 msgstr "Anda"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:121
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:123
 #: src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx:41
 msgid "You can enable the curriculum feature to track student progress in your curriculum."
 msgstr "Anda dapat mengaktifkan fitur kurikulum untuk melacak perkembangan murid di kurikulum Anda."
@@ -514,6 +560,6 @@ msgstr "aktif"
 msgid "inactive"
 msgstr "nonaktif"
 
-#: src/components/PageStudentOverview/PageStudentOverview.tsx:109
+#: src/components/PageStudentOverview/PageStudentOverview.tsx:111
 msgid "new observation"
 msgstr "observasi baru"
