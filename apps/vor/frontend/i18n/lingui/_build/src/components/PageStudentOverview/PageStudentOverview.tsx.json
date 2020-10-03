@@ -1,0 +1,82 @@
+{
+  "Students": {
+    "origin": [
+      [
+        "src/components/PageStudentOverview/PageStudentOverview.tsx",
+        36
+      ]
+    ]
+  },
+  "Profile": {
+    "origin": [
+      [
+        "src/components/PageStudentOverview/PageStudentOverview.tsx",
+        52
+      ]
+    ]
+  },
+  "Plans": {
+    "origin": [
+      [
+        "src/components/PageStudentOverview/PageStudentOverview.tsx",
+        58
+      ]
+    ]
+  },
+  "Gallery": {
+    "origin": [
+      [
+        "src/components/PageStudentOverview/PageStudentOverview.tsx",
+        64
+      ]
+    ]
+  },
+  "Observation": {
+    "origin": [
+      [
+        "src/components/PageStudentOverview/PageStudentOverview.tsx",
+        72
+      ]
+    ]
+  },
+  "Curriculum Progress": {
+    "origin": [
+      [
+        "src/components/PageStudentOverview/PageStudentOverview.tsx",
+        80
+      ]
+    ]
+  },
+  "No observation have been added yet": {
+    "origin": [
+      [
+        "src/components/PageStudentOverview/PageStudentOverview.tsx",
+        109
+      ]
+    ]
+  },
+  "new observation": {
+    "origin": [
+      [
+        "src/components/PageStudentOverview/PageStudentOverview.tsx",
+        109
+      ]
+    ]
+  },
+  "All": {
+    "origin": [
+      [
+        "src/components/PageStudentOverview/PageStudentOverview.tsx",
+        119
+      ]
+    ]
+  },
+  "Observations": {
+    "origin": [
+      [
+        "src/components/PageStudentOverview/PageStudentOverview.tsx",
+        127
+      ]
+    ]
+  }
+}

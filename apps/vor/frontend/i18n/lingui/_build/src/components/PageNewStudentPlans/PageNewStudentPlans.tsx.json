@@ -1,0 +1,94 @@
+{
+  "Plans": {
+    "origin": [
+      [
+        "src/components/PageNewStudentPlans/PageNewStudentPlans.tsx",
+        91
+      ]
+    ]
+  },
+  "New": {
+    "origin": [
+      [
+        "src/components/PageNewStudentPlans/PageNewStudentPlans.tsx",
+        93
+      ]
+    ]
+  },
+  "You can enable the curriculum feature to track student progress in your curriculum.": {
+    "origin": [
+      [
+        "src/components/PageNewStudentPlans/PageNewStudentPlans.tsx",
+        121
+      ]
+    ]
+  },
+  " Go to Curriculum ": {
+    "origin": [
+      [
+        "src/components/PageNewStudentPlans/PageNewStudentPlans.tsx",
+        121
+      ]
+    ]
+  },
+  "Related Area": {
+    "origin": [
+      [
+        "src/components/PageNewStudentPlans/PageNewStudentPlans.tsx",
+        123
+      ]
+    ]
+  },
+  "Repetition": {
+    "origin": [
+      [
+        "src/components/PageNewStudentPlans/PageNewStudentPlans.tsx",
+        130
+      ]
+    ]
+  },
+  "Other Related Students": {
+    "origin": [
+      [
+        "src/components/PageNewStudentPlans/PageNewStudentPlans.tsx",
+        143
+      ]
+    ]
+  },
+  "Add": {
+    "origin": [
+      [
+        "src/components/PageNewStudentPlans/PageNewStudentPlans.tsx",
+        145
+      ],
+      [
+        "src/components/PageNewStudentPlans/PageNewStudentPlans.tsx",
+        217
+      ]
+    ]
+  },
+  "No other students added yet.": {
+    "origin": [
+      [
+        "src/components/PageNewStudentPlans/PageNewStudentPlans.tsx",
+        166
+      ]
+    ]
+  },
+  "Select Students": {
+    "origin": [
+      [
+        "src/components/PageNewStudentPlans/PageNewStudentPlans.tsx",
+        217
+      ]
+    ]
+  },
+  "No more students to add": {
+    "origin": [
+      [
+        "src/components/PageNewStudentPlans/PageNewStudentPlans.tsx",
+        228
+      ]
+    ]
+  }
+}

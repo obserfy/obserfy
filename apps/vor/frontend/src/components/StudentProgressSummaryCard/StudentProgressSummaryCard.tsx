@@ -1,5 +1,7 @@
 import React, { FC, useState } from "react"
 import { Box, Button, Card, Flex } from "theme-ui"
+import { i18nMark } from "@lingui/core"
+import { Trans } from "@lingui/macro"
 import { Link } from "../Link/Link"
 import Spacer from "../Spacer/Spacer"
 import Typography from "../Typography/Typography"
@@ -63,8 +65,10 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
     return (
       <Box mx={[0, 3]}>
         <InformationalCard
-          message="You can enable the curriculum feature to track student progress in your curriculum."
-          buttonText=" Go to Curriculum "
+          message={i18nMark(
+            "You can enable the curriculum feature to track student progress in your curriculum."
+          )}
+          buttonText={i18nMark(" Go to Curriculum ")}
           to={ADMIN_CURRICULUM_URL}
         />
       </Box>
@@ -82,7 +86,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
       }}
       color="textMediumEmphasis"
     >
-      No materials in progress.
+      <Trans>No materials in progress.</Trans>
     </Typography.Body>
   )
 
@@ -149,7 +153,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
               mx={3}
               sx={{ fontSize: 0, color: "textMediumEmphasis" }}
             >
-              In Progress
+              <Trans>In Progress</Trans>
             </Typography.Body>
           )}
           {listOfInProgress}
@@ -160,7 +164,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
               mx={3}
               sx={{ fontSize: 0, color: "textMediumEmphasis" }}
             >
-              Recently Mastered
+              <Trans>Recently Mastered</Trans>
             </Typography.Body>
           )}
           {listOfMastered}

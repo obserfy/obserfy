@@ -13,15 +13,18 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:121
+#: src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx:41
+msgid " Go to Curriculum "
+msgstr " Go to Curriculum "
+
 #: src/components/PageSubscription/PageSubscription.tsx:137
 msgid "(Starting on Jan 1st 2021)"
 msgstr "(Mulai Tanggal 1 Jan 2021)"
 
-#: src/components/PageSubscription/PageSubscription.tsx:101
-#~ msgid "90-days free trial"
-#~ msgstr "90-days free trial"
-
-#: src/components/PageNewStudent/PageNewStudent.tsx:183
+#: src/components/PageNewStudent/PageNewStudent.tsx:187
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:145
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:217
 msgid "Add"
 msgstr "Add"
 
@@ -36,6 +39,10 @@ msgstr "Add more email"
 #: src/components/Navbar/Navbar.tsx:80
 msgid "Admin"
 msgstr "Admin"
+
+#: src/components/PageStudentOverview/PageStudentOverview.tsx:119
+msgid "All"
+msgstr "All"
 
 #: src/components/PageAdmin/PageAdmin.tsx:48
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:37
@@ -73,13 +80,9 @@ msgid "Class"
 msgstr "Class"
 
 #: src/components/PageClassSettings/PageClassSettings.tsx:27
-#: src/components/PageNewStudent/PageNewStudent.tsx:156
+#: src/components/PageNewStudent/PageNewStudent.tsx:160
 msgid "Classes"
 msgstr "Classes"
-
-#: src/components/PageNewStudent/PageNewStudent.tsx:168
-#~ msgid "Clear"
-#~ msgstr "Clear"
 
 #: src/components/PageSubscription/PageSubscription.tsx:100
 msgid "Create lesson plans"
@@ -97,11 +100,15 @@ msgstr "Current Plan"
 msgid "Curriculum"
 msgstr "Curriculum"
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:139
+#: src/components/PageStudentOverview/PageStudentOverview.tsx:80
+msgid "Curriculum Progress"
+msgstr "Curriculum Progress"
+
+#: src/components/PageNewStudent/PageNewStudent.tsx:143
 msgid "Date of Birth"
 msgstr "Date of Birth"
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:140
+#: src/components/PageNewStudent/PageNewStudent.tsx:144
 msgid "Date of Entry"
 msgstr "Date of Entry"
 
@@ -140,19 +147,19 @@ msgstr "Emails sent!"
 msgid "End Time"
 msgstr "End Time"
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:149
+#: src/components/PageNewStudent/PageNewStudent.tsx:153
 msgid "Female"
 msgstr "Female"
-
-#: src/components/PageSubscription/PageSubscription.tsx:76
-#~ msgid "Free Trial"
-#~ msgstr "Free Trial"
 
 #: src/components/PageNewClass/PageNewClass.tsx:31
 msgid "Friday"
 msgstr "Friday"
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:141
+#: src/components/PageStudentOverview/PageStudentOverview.tsx:64
+msgid "Gallery"
+msgstr "Gallery"
+
+#: src/components/PageNewStudent/PageNewStudent.tsx:145
 msgid "Gender"
 msgstr "Gender"
 
@@ -169,7 +176,7 @@ msgstr "Go to Class Settings"
 msgid "Guardian Name"
 msgstr "Guardian Name"
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:179
+#: src/components/PageNewStudent/PageNewStudent.tsx:183
 msgid "Guardians"
 msgstr "Guardians"
 
@@ -181,13 +188,13 @@ msgstr "Have a question? Shoot us an email at chrsep@protonmail.com"
 msgid "Help and Feedbacks"
 msgstr "Help and Feedbacks"
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:92
-#~ msgid "Home"
-#~ msgstr "Home"
-
 #: src/components/PageSubscription/PageSubscription.tsx:103
 msgid "Image gallery"
 msgstr "Image gallery"
+
+#: src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx:74
+msgid "In Progress"
+msgstr "In Progress"
 
 #: src/components/InformationalCard/InformationalCard.tsx:16
 msgid "Info"
@@ -209,7 +216,7 @@ msgstr "Invite using link"
 msgid "Log Out"
 msgstr "Log Out"
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:146
+#: src/components/PageNewStudent/PageNewStudent.tsx:150
 msgid "Male"
 msgstr "Male"
 
@@ -223,12 +230,13 @@ msgstr "Monday"
 msgid "Name"
 msgstr "Name"
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:138
+#: src/components/PageNewStudent/PageNewStudent.tsx:142
 msgid "Name (Required)"
 msgstr "Name (Required)"
 
 #: src/components/PageClassSettings/PageClassSettings.tsx:31
-#: src/components/PageNewStudent/PageNewStudent.tsx:106
+#: src/components/PageNewStudent/PageNewStudent.tsx:109
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:93
 msgid "New"
 msgstr "New"
 
@@ -242,7 +250,7 @@ msgstr "New Class"
 msgid "New Guardian"
 msgstr "New Guardian"
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:134
+#: src/components/PageNewStudent/PageNewStudent.tsx:138
 msgid "New Student"
 msgstr "New Student"
 
@@ -250,7 +258,23 @@ msgstr "New Student"
 msgid "Next Bill"
 msgstr "Next Bill"
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:143
+#: src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx:50
+msgid "No materials in progress."
+msgstr "No materials in progress."
+
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:228
+msgid "No more students to add"
+msgstr "No more students to add"
+
+#: src/components/PageStudentOverview/PageStudentOverview.tsx:109
+msgid "No observation have been added yet"
+msgstr "No observation have been added yet"
+
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:166
+msgid "No other students added yet."
+msgstr "No other students added yet."
+
+#: src/components/PageNewStudent/PageNewStudent.tsx:147
 msgid "Not Set"
 msgstr "Not Set"
 
@@ -261,13 +285,25 @@ msgstr "Not Set"
 msgid "Note"
 msgstr "Note"
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:153
+#: src/components/PageNewStudent/PageNewStudent.tsx:157
 msgid "Notes"
 msgstr "Notes"
+
+#: src/components/PageStudentOverview/PageStudentOverview.tsx:72
+msgid "Observation"
+msgstr "Observation"
+
+#: src/components/PageStudentOverview/PageStudentOverview.tsx:127
+msgid "Observations"
+msgstr "Observations"
 
 #: src/components/PageInviteUser/PageInviteUser.tsx:84
 msgid "Or"
 msgstr "Or"
+
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:143
+msgid "Other Related Students"
+msgstr "Other Related Students"
 
 #: src/components/PageSubscription/PageSubscription.tsx:102
 msgid "Parent portal"
@@ -284,23 +320,44 @@ msgstr "Payment details"
 msgid "Phone"
 msgstr "Phone"
 
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:91
+#: src/components/PageStudentOverview/PageStudentOverview.tsx:58
+msgid "Plans"
+msgstr "Plans"
+
 #: src/components/PageSupport/PageSupport.tsx:45
 msgid "Post and upvote suggestions, ideas, and issues."
 msgstr "Post and upvote suggestions, ideas, and issues."
+
+#: src/components/PageStudentOverview/PageStudentOverview.tsx:52
+msgid "Profile"
+msgstr "Profile"
+
+#: src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx:79
+msgid "Recently Mastered"
+msgstr "Recently Mastered"
 
 #: src/components/PageSubscription/PageSubscription.tsx:99
 msgid "Record observations"
 msgstr "Record observations"
 
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:123
+msgid "Related Area"
+msgstr "Related Area"
+
 #: src/components/PageNewGuardian/PageNewGuardian.tsx:44
 msgid "Relationship"
 msgstr "Relationship"
+
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:130
+msgid "Repetition"
+msgstr "Repetition"
 
 #: src/components/PageSubscription/PageSubscription.tsx:104
 msgid "Reporting"
 msgstr "Reporting"
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:205
+#: src/components/PageNewStudent/PageNewStudent.tsx:209
 msgid "Reset Form"
 msgstr "Ulang Formulir"
 
@@ -321,6 +378,10 @@ msgstr "Save"
 #: src/components/SearchBar/SearchBar.tsx:18
 msgid "Search"
 msgstr "Search"
+
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:217
+msgid "Select Students"
+msgstr "Select Students"
 
 #: src/components/PageInviteUser/PageInviteUser.tsx:73
 msgid "Send invites"
@@ -361,20 +422,17 @@ msgstr "Standard"
 msgid "Standard Plan"
 msgstr "Standard Plan"
 
-#: src/components/PageSubscription/PageSubscription.tsx:137
-#~ msgid "Start Free Trial"
-#~ msgstr "Start Free Trial"
-
 #: src/components/PageNewClass/PageNewClass.tsx:60
 msgid "Start Time"
 msgstr "Start Time"
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:152
+#: src/components/PageNewStudent/PageNewStudent.tsx:156
 msgid "Student ID"
 msgstr "Student ID"
 
 #: src/components/Navbar/Navbar.tsx:74
-#: src/components/PageNewStudent/PageNewStudent.tsx:105
+#: src/components/PageNewStudent/PageNewStudent.tsx:106
+#: src/components/PageStudentOverview/PageStudentOverview.tsx:36
 msgid "Students"
 msgstr "Students"
 
@@ -403,7 +461,7 @@ msgstr "Switch school"
 msgid "Tell us about your classes, We'll help you track your students attendance."
 msgstr "Tell us about your classes, We'll help you track your students attendance."
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:189
+#: src/components/PageNewStudent/PageNewStudent.tsx:193
 msgid "This student doesn't have a guardian yet."
 msgstr "This student doesn't have a guardian yet."
 
@@ -443,6 +501,11 @@ msgstr "Yes"
 msgid "You"
 msgstr "You"
 
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:121
+#: src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx:41
+msgid "You can enable the curriculum feature to track student progress in your curriculum."
+msgstr "You can enable the curriculum feature to track student progress in your curriculum."
+
 #: src/components/PageListOfStudents/PageListOfStudents.tsx:69
 msgid "active"
 msgstr "active"
@@ -450,3 +513,7 @@ msgstr "active"
 #: src/components/PageListOfStudents/PageListOfStudents.tsx:69
 msgid "inactive"
 msgstr "inactive"
+
+#: src/components/PageStudentOverview/PageStudentOverview.tsx:109
+msgid "new observation"
+msgstr "new observation"

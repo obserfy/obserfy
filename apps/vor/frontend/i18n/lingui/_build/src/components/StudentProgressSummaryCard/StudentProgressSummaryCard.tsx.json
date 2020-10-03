@@ -1,0 +1,42 @@
+{
+  "You can enable the curriculum feature to track student progress in your curriculum.": {
+    "origin": [
+      [
+        "src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx",
+        41
+      ]
+    ]
+  },
+  " Go to Curriculum ": {
+    "origin": [
+      [
+        "src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx",
+        41
+      ]
+    ]
+  },
+  "No materials in progress.": {
+    "origin": [
+      [
+        "src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx",
+        50
+      ]
+    ]
+  },
+  "In Progress": {
+    "origin": [
+      [
+        "src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx",
+        74
+      ]
+    ]
+  },
+  "Recently Mastered": {
+    "origin": [
+      [
+        "src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx",
+        79
+      ]
+    ]
+  }
+}
