@@ -162,7 +162,7 @@ export const PageStudentProfile: FC<Props> = ({ id }) => {
                     sx={{ lineHeight: 1, fontSize: 1 }}
                     color="textMediumEmphasis"
                   >
-                    {email || "No email"}
+                    <Trans id={email || i18nMark("No email")} />
                   </Typography.Body>
                 </Box>
               )

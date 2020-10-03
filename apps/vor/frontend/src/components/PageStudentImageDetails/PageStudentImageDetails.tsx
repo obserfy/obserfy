@@ -1,5 +1,7 @@
 import React, { FC, useState } from "react"
 import { Box, Button, Flex, Image } from "theme-ui"
+import { i18nMark } from "@lingui/core"
+import { Trans } from "@lingui/macro"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { STUDENT_IMAGES_URL } from "../../routes"
 import useGetImage from "../../api/useGetImage"
@@ -28,7 +30,7 @@ export const PageStudentImageDetails: FC<Props> = ({ studentId, imageId }) => {
       <Box sx={{ maxWidth: "maxWidth.md" }} margin="auto">
         <BackNavigation
           to={STUDENT_IMAGES_URL(studentId)}
-          text="Image Gallery"
+          text={i18nMark("Image gallery")}
         />
         <Typography.H5 m={3}>{student.data?.name}</Typography.H5>
         <Box px={[0, 3]}>
@@ -37,7 +39,8 @@ export const PageStudentImageDetails: FC<Props> = ({ studentId, imageId }) => {
         {!image.isLoading && (
           <Flex sx={{ alignItems: "center" }} mx={3} my={2}>
             <Typography.Body sx={{ fontSize: 1 }}>
-              Posted on {dayjs(image.data?.createdAt).format("ddd, D MMM 'YY")}
+              <Trans>Posted on</Trans>{" "}
+              {dayjs(image.data?.createdAt).format("ddd, D MMM 'YY")}
             </Typography.Body>
             <Flex ml="auto">
               <Button
@@ -45,14 +48,14 @@ export const PageStudentImageDetails: FC<Props> = ({ studentId, imageId }) => {
                 mr={2}
                 onClick={() => setShowSetProfileDialog(true)}
               >
-                Set as Profile
+                <Trans>Set as Profile</Trans>
               </Button>
               <Button
                 variant="outline"
                 color="danger"
                 onClick={() => setShowDeleteDialog(true)}
               >
-                Delete
+                <Trans>Delete</Trans>
               </Button>
             </Flex>
           </Flex>
@@ -60,10 +63,10 @@ export const PageStudentImageDetails: FC<Props> = ({ studentId, imageId }) => {
       </Box>
       {showDeleteDialog && (
         <AlertDialog
-          title="Delete image?"
-          positiveText="Delete"
-          body="Are you sure you want to delete this image?"
-          negativeText="Cancel"
+          title={i18nMark("Delete image?")}
+          positiveText={i18nMark("Delete")}
+          body={i18nMark("Are you sure you want to delete this image?")}
+          negativeText={i18nMark("Cancel")}
           onDismiss={() => setShowDeleteDialog(false)}
           onNegativeClick={() => setShowDeleteDialog(false)}
           loading={isLoading}
@@ -78,10 +81,12 @@ export const PageStudentImageDetails: FC<Props> = ({ studentId, imageId }) => {
 
       {showSetProfileDialog && (
         <AlertDialog
-          title="Set as profile?"
-          positiveText="Yes"
-          body="Are you sure you want to set this image as profile picture?"
-          negativeText="Cancel"
+          title={i18nMark("Set as profile?")}
+          positiveText={i18nMark("Yes")}
+          body={i18nMark(
+            "Are you sure you want to set this image as profile picture?"
+          )}
+          negativeText={i18nMark("Cancel")}
           onDismiss={() => setShowSetProfileDialog(false)}
           onNegativeClick={() => setShowSetProfileDialog(false)}
           loading={status === "loading"}

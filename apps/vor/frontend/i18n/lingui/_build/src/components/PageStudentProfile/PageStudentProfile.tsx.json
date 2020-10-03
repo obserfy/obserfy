@@ -3,7 +3,7 @@
     "origin": [
       [
         "src/components/PageStudentProfile/PageStudentProfile.tsx",
-        49
+        50
       ]
     ]
   },
@@ -11,7 +11,7 @@
     "origin": [
       [
         "src/components/PageStudentProfile/PageStudentProfile.tsx",
-        53
+        56
       ]
     ]
   },
@@ -19,7 +19,7 @@
     "origin": [
       [
         "src/components/PageStudentProfile/PageStudentProfile.tsx",
-        71
+        75
       ]
     ]
   },
@@ -27,23 +27,23 @@
     "origin": [
       [
         "src/components/PageStudentProfile/PageStudentProfile.tsx",
-        76
+        80
       ],
       [
         "src/components/PageStudentProfile/PageStudentProfile.tsx",
-        101
+        105
       ],
       [
         "src/components/PageStudentProfile/PageStudentProfile.tsx",
-        162
+        166
       ],
       [
         "src/components/PageStudentProfile/PageStudentProfile.tsx",
-        173
+        178
       ],
       [
         "src/components/PageStudentProfile/PageStudentProfile.tsx",
-        190
+        200
       ]
     ]
   },
@@ -51,7 +51,15 @@
     "origin": [
       [
         "src/components/PageStudentProfile/PageStudentProfile.tsx",
-        98
+        102
+      ]
+    ]
+  },
+  "No email": {
+    "origin": [
+      [
+        "src/components/PageStudentProfile/PageStudentProfile.tsx",
+        113
       ]
     ]
   },
@@ -59,11 +67,11 @@
     "origin": [
       [
         "src/components/PageStudentProfile/PageStudentProfile.tsx",
-        135
+        139
       ],
       [
         "src/components/PageStudentProfile/PageStudentProfile.tsx",
-        139
+        143
       ]
     ]
   },
@@ -71,7 +79,7 @@
     "origin": [
       [
         "src/components/PageStudentProfile/PageStudentProfile.tsx",
-        137
+        141
       ]
     ]
   },
@@ -79,15 +87,15 @@
     "origin": [
       [
         "src/components/PageStudentProfile/PageStudentProfile.tsx",
-        137
+        141
       ],
       [
         "src/components/PageStudentProfile/PageStudentProfile.tsx",
-        166
+        170
       ],
       [
         "src/components/PageStudentProfile/PageStudentProfile.tsx",
-        192
+        202
       ]
     ]
   },
@@ -95,19 +103,7 @@
     "origin": [
       [
         "src/components/PageStudentProfile/PageStudentProfile.tsx",
-        155
-      ],
-      [
-        "src/components/PageStudentProfile/PageStudentProfile.tsx",
-        170
-      ]
-    ]
-  },
-  "Male": {
-    "origin": [
-      [
-        "src/components/PageStudentProfile/PageStudentProfile.tsx",
-        158
+        159
       ],
       [
         "src/components/PageStudentProfile/PageStudentProfile.tsx",
@@ -115,15 +111,27 @@
       ]
     ]
   },
+  "Male": {
+    "origin": [
+      [
+        "src/components/PageStudentProfile/PageStudentProfile.tsx",
+        162
+      ],
+      [
+        "src/components/PageStudentProfile/PageStudentProfile.tsx",
+        181
+      ]
+    ]
+  },
   "Female": {
     "origin": [
       [
         "src/components/PageStudentProfile/PageStudentProfile.tsx",
-        160
+        164
       ],
       [
         "src/components/PageStudentProfile/PageStudentProfile.tsx",
-        175
+        184
       ]
     ]
   },
@@ -131,7 +139,7 @@
     "origin": [
       [
         "src/components/PageStudentProfile/PageStudentProfile.tsx",
-        166
+        170
       ]
     ]
   },
@@ -139,11 +147,11 @@
     "origin": [
       [
         "src/components/PageStudentProfile/PageStudentProfile.tsx",
-        190
+        200
       ],
       [
         "src/components/PageStudentProfile/PageStudentProfile.tsx",
-        194
+        204
       ]
     ]
   },
@@ -151,7 +159,7 @@
     "origin": [
       [
         "src/components/PageStudentProfile/PageStudentProfile.tsx",
-        192
+        202
       ]
     ]
   },
@@ -159,7 +167,7 @@
     "origin": [
       [
         "src/components/PageStudentProfile/PageStudentProfile.tsx",
-        219
+        229
       ]
     ]
   },
@@ -167,7 +175,7 @@
     "origin": [
       [
         "src/components/PageStudentProfile/PageStudentProfile.tsx",
-        248
+        258
       ]
     ]
   },
@@ -175,7 +183,7 @@
     "origin": [
       [
         "src/components/PageStudentProfile/PageStudentProfile.tsx",
-        257
+        267
       ]
     ]
   },
@@ -183,7 +191,7 @@
     "origin": [
       [
         "src/components/PageStudentProfile/PageStudentProfile.tsx",
-        257
+        267
       ]
     ]
   }

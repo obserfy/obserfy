@@ -1,0 +1,90 @@
+{
+  "Image gallery": {
+    "origin": [
+      [
+        "src/components/PageStudentImageDetails/PageStudentImageDetails.tsx",
+        34
+      ]
+    ]
+  },
+  "Posted on": {
+    "origin": [
+      [
+        "src/components/PageStudentImageDetails/PageStudentImageDetails.tsx",
+        41
+      ]
+    ]
+  },
+  "Set as Profile": {
+    "origin": [
+      [
+        "src/components/PageStudentImageDetails/PageStudentImageDetails.tsx",
+        45
+      ]
+    ]
+  },
+  "Delete": {
+    "origin": [
+      [
+        "src/components/PageStudentImageDetails/PageStudentImageDetails.tsx",
+        48
+      ],
+      [
+        "src/components/PageStudentImageDetails/PageStudentImageDetails.tsx",
+        53
+      ]
+    ]
+  },
+  "Delete image?": {
+    "origin": [
+      [
+        "src/components/PageStudentImageDetails/PageStudentImageDetails.tsx",
+        53
+      ]
+    ]
+  },
+  "Are you sure you want to delete this image?": {
+    "origin": [
+      [
+        "src/components/PageStudentImageDetails/PageStudentImageDetails.tsx",
+        53
+      ]
+    ]
+  },
+  "Cancel": {
+    "origin": [
+      [
+        "src/components/PageStudentImageDetails/PageStudentImageDetails.tsx",
+        53
+      ],
+      [
+        "src/components/PageStudentImageDetails/PageStudentImageDetails.tsx",
+        60
+      ]
+    ]
+  },
+  "Set as profile?": {
+    "origin": [
+      [
+        "src/components/PageStudentImageDetails/PageStudentImageDetails.tsx",
+        60
+      ]
+    ]
+  },
+  "Yes": {
+    "origin": [
+      [
+        "src/components/PageStudentImageDetails/PageStudentImageDetails.tsx",
+        60
+      ]
+    ]
+  },
+  "Are you sure you want to set this image as profile picture?": {
+    "origin": [
+      [
+        "src/components/PageStudentImageDetails/PageStudentImageDetails.tsx",
+        60
+      ]
+    ]
+  }
+}

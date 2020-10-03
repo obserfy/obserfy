@@ -1,0 +1,34 @@
+{
+  "Students": {
+    "origin": [
+      [
+        "src/components/PageStudentImages/PageStudentImages.tsx",
+        33
+      ]
+    ]
+  },
+  "Image gallery": {
+    "origin": [
+      [
+        "src/components/PageStudentImages/PageStudentImages.tsx",
+        37
+      ]
+    ]
+  },
+  "Gallery": {
+    "origin": [
+      [
+        "src/components/PageStudentImages/PageStudentImages.tsx",
+        44
+      ]
+    ]
+  },
+  "Upload Photo": {
+    "origin": [
+      [
+        "src/components/PageStudentImages/PageStudentImages.tsx",
+        58
+      ]
+    ]
+  }
+}
