@@ -145,7 +145,7 @@ const AddObservationForm: FC<{
             setLoading(true)
             const result = await postObservation({ observation, childId })
             setLoading(false)
-            if (result.ok) {
+            if (result?.ok) {
               onDismiss()
             }
           }}
@@ -234,7 +234,7 @@ const EditObservationForm: FC<{
           disabled={observation === original || patching.isLoading}
           onClick={async () => {
             const result = await patchObservation({ observation })
-            if (result.ok) {
+            if (result?.ok) {
               onDismiss()
             }
           }}
@@ -257,7 +257,7 @@ const EditObservationForm: FC<{
               className="w-full bg-red-700 text-white ml-2"
               onClick={async () => {
                 const result = await deleteObservation()
-                if (result.ok) {
+                if (result?.ok) {
                   onDismiss()
                 }
               }}

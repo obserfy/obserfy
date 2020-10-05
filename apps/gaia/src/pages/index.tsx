@@ -63,7 +63,7 @@ const IndexPage = () => {
             childId={childId}
             planId={plan.id}
             name={plan.title}
-            area={plan.area?.name}
+            area={plan.area?.name ?? ""}
             description={plan.description}
             links={plan.links}
             observations={plan.observations}

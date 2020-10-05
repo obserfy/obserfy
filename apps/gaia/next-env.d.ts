@@ -23,3 +23,10 @@ declare module "*.ico" {
 }
 
 declare const Canny: (method: string, data: any) => void
+
+declare module "formidable-serverless" {
+  // eslint-disable-next-line import/no-extraneous-dependencies
+  export * from "formidable"
+}
+
+declare module "@segment/snippet"

@@ -23,10 +23,10 @@
     "eslint-plugin-jest": "23.20.0",
     "eslint-plugin-jsx-a11y": "6.3.1",
     "eslint-plugin-prettier": "3.1.4",
-    "eslint-plugin-react": "7.21.2",
+    "eslint-plugin-react": "7.21.3",
     "eslint-plugin-react-hooks": "4.1.2",
     "faker": "5.1.0",
-    "gatsby-cypress": "0.4.11"
+    "gatsby-cypress": "0.4.12"
   },
   "scripts": {
     "cy:open": "cypress open",

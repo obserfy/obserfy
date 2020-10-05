@@ -7,8 +7,8 @@ const pgPool = new Pool({
   host: process.env.PG_HOST,
   database: process.env.PG_DATABASE,
   password: process.env.PG_PASSWORD,
-  port: parseInt(process.env.PG_PORT, 10),
-  max: parseInt(process.env.MAX_CLIENTS, 10) || 10,
+  port: parseInt(process.env.PG_PORT ?? "5432", 10),
+  max: parseInt(process.env.MAX_CLIENTS ?? "10", 10),
   ssl: process.env.NODE_ENV === "production" && {
     cert: process.env.PG_CERT,
     rejectUnauthorized: false,
@@ -99,6 +99,7 @@ export const findLessonPlanByChildIdAndDate = async (
     [childId, date]
   )
 
+  // TODO: Fix typings
   return plans.rows.map((plan) => ({
     id: plan.id,
     title: plan.title,
@@ -110,7 +111,7 @@ export const findLessonPlanByChildIdAndDate = async (
       name: plan.areaname,
     },
     observations: plan.observation_ids
-      .map((id, idx) => {
+      .map((id: string, idx: number) => {
         if (id) {
           return {
             id,
@@ -120,16 +121,16 @@ export const findLessonPlanByChildIdAndDate = async (
         }
         return null
       })
-      .filter((observation) => observation),
+      .filter((observation: any) => observation),
     links:
       plan.urls
-        ?.map((url, idx) => {
+        ?.map((url: string, idx: number) => {
           if (url) {
             return { url, id: plan.url_ids[idx] }
           }
           return null
         })
-        ?.filter((url) => url) ?? [],
+        ?.filter((url: string) => url) ?? [],
   }))
 }
 export const getChildImages = async (childId: string) => {
@@ -139,7 +140,8 @@ export const getChildImages = async (childId: string) => {
         select i.student_id, image.object_key, i.image_id
         from image_to_students i
                  join images image on image.id = i.image_id
-        where i.student_id = $1
+        where i.student_id = $1 
+        order by image.created_at desc
     `,
     [childId]
   )
@@ -196,7 +198,7 @@ export const insertObservationToPlan = async (
   return result.rowCount
 }
 
-export const deleteObservation = async (id) => {
+export const deleteObservation = async (id: string) => {
   // language=PostgreSQL
   const result = await query(
     `
@@ -209,7 +211,7 @@ export const deleteObservation = async (id) => {
   return result.rowCount
 }
 
-export const updateObservation = async (id, observation: string) => {
+export const updateObservation = async (id: string, observation: string) => {
   // language=PostgreSQL
   const result = await query(
     `
@@ -223,9 +225,9 @@ export const updateObservation = async (id, observation: string) => {
 }
 
 export const insertImage = async (
-  imageId,
-  objectKey,
-  schoolId,
+  imageId: string,
+  objectKey: string,
+  schoolId: string,
   studentId: string
 ) => {
   try {

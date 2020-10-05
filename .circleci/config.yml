@@ -177,46 +177,63 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-      - run: |
-          echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
-          echo ' [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
-      - run: |
-          nvm install v12
-          nvm alias default v12
-      - run: |
-          git config --global user.email "chrsep@protonmail.com"
-          git config --global user.name "Chrisando Pramudhita"
-      - run: |
-          npm install -g standard-version @sentry/cli
-      - run: |
-          standard-version -m 'chore(release): %s [skip ci]' --releaseCommitMessageFormat --no-verify
-      - run: |
-          echo "GA_CLIENT_EMAIL=$GA_CLIENT_EMAIL" >> .env
-          echo "GA_PRIVATE_KEY=$GA_PRIVATE_KEY" >> .env
-      - run: |
-          VERSION=$(cat VERSION)
-          DOCKER_BUILDKIT=1 docker build -f ./docker/vor/prod.dockerfile  -t "obserfy/vor:$VERSION" . --secret id=env,src=.env
-          DOCKER_BUILDKIT=1 docker build --build-arg NEXT_PUBLIC_GAIA_SEGMENT_KEY -f ./docker/gaia/prod.dockerfile  -t "obserfy/gaia:$VERSION"  .
-      - run: |
-          VERSION=$(cat VERSION)
-          echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_LOGIN" --password-stdin
-          docker push obserfy/vor:$VERSION
-          docker push obserfy/gaia:$VERSION
-      - run: |
-          VERSION=$(cat VERSION)
-          sentry-cli releases -p vor-frontend new $VERSION
-          sentry-cli releases -p vor-frontend set-commits --auto $VERSION
-          sentry-cli releases -p vor-frontend finalize $VERSION
+      - run:
+          name: Setup NVM
+          command: |
+            echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
+            echo ' [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
+      - run:
+          name: Install node
+          command: |
+            nvm install v12
+            nvm alias default v12
+      - run:
+          name: Setup git creds
+          command: |
+            git config --global user.email "chrsep@protonmail.com"
+            git config --global user.name "Chrisando Pramudhita"
+      - run:
+          name: Install sentry and standard-version
+          command: npm install -g standard-version @sentry/cli
+      - run:
+          name: Generate changelog
+          command: "standard-version -m 'chore(release): %s [skip ci]' --releaseCommitMessageFormat --no-verify"
+      - run:
+          name: Setup guessjs envs
+          command: |
+            echo "GA_CLIENT_EMAIL=$GA_CLIENT_EMAIL" >> .env
+            echo "GA_PRIVATE_KEY=$GA_PRIVATE_KEY" >> .env
+      - run:
+          name: Build docker images
+          command: |
+            VERSION=$(cat VERSION)
+            DOCKER_BUILDKIT=1 docker build -f ./docker/vor/prod.dockerfile  -t "obserfy/vor:$VERSION" . --secret id=env,src=.env
+            DOCKER_BUILDKIT=1 docker build --build-arg NEXT_PUBLIC_GAIA_SEGMENT_KEY -f ./docker/gaia/prod.dockerfile  -t "obserfy/gaia:$VERSION"  .
+      - run:
+          name: Push docker images
+          command: |
+            VERSION=$(cat VERSION)
+            echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_LOGIN" --password-stdin
+            docker push obserfy/vor:$VERSION
+            docker push obserfy/gaia:$VERSION
+      - run:
+          name: Push updated version number and release tag
+          command: git push --follow-tags origin master
+      - run:
+          name: Create sentry release
+          command: |
+            VERSION=$(cat VERSION)
+            sentry-cli releases -p vor-frontend new $VERSION
+            sentry-cli releases -p vor-frontend set-commits --auto $VERSION
+            sentry-cli releases -p vor-frontend finalize $VERSION
 
-          sentry-cli releases -p vor-backend new $VERSION
-          sentry-cli releases -p vor-backend set-commits --auto $VERSION
-          sentry-cli releases -p vor-backend finalize $VERSION
+            sentry-cli releases -p vor-backend new $VERSION
+            sentry-cli releases -p vor-backend set-commits --auto $VERSION
+            sentry-cli releases -p vor-backend finalize $VERSION
 
-          sentry-cli releases -p gaia new $VERSION
-          sentry-cli releases -p gaia set-commits --auto $VERSION
-          sentry-cli releases -p gaia finalize $VERSION
-      - run: |
-          git push --follow-tags origin master
+            sentry-cli releases -p gaia new $VERSION
+            sentry-cli releases -p gaia set-commits --auto $VERSION
+            sentry-cli releases -p gaia finalize $VERSION
 
 orbs:
   go: circleci/go@1.4.0

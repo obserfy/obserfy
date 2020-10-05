@@ -9,7 +9,7 @@ const Navbar: FC<Props> = ({ childId }) => {
   const router = useRouter()
 
   return (
-    <div className="sticky top-0 bg-surface border-b">
+    <div className="sticky top-0 bg-surface border-b z-50">
       <nav className="w-full flex max-w-3xl mx-auto pl-1">
         <ul className="flex">
           <li className="mr-1" style={{ marginBottom: -1 }}>

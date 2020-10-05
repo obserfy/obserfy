@@ -35,14 +35,19 @@ const handleDelete = async (
 
 const observationHandler = auth0.requireAuthentication(
   async (req: NextApiRequest, res: NextApiResponse) => {
-    const { user } = await auth0.getSession(req)
+    const session = await auth0.getSession(req)
+    if (!session) {
+      res.status(401).end("unauthorized")
+      return
+    }
+
     const {
       query: { observationId },
     } = req
 
     try {
       if (req.method === "PATCH") {
-        await handlePatch(res, req, user, observationId as string)
+        await handlePatch(res, req, session.user, observationId as string)
       } else if (req.method === "DELETE") {
         await handleDelete(res, req, observationId as string)
       } else {

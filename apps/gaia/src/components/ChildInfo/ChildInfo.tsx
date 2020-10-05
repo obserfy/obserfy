@@ -12,7 +12,7 @@ const ChildInfo: FC<Props> = ({ childId }) => {
   return child.status === "success" ? (
     <>
       <div className="flex px-3 py-3 max-w-3xl mx-auto items-center">
-        <div>
+        <div className="flex-shrink-0">
           {child.data?.profilePic ? (
             <img
               alt="profile"

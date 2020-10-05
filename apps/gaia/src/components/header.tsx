@@ -21,8 +21,8 @@ const Header: FC = () => {
   return (
     <>
       <div className="px-3 flex items-center max-w-3xl mx-auto h-16">
-        <ProfilePicture className="" src={user.data.picture} />
-        <div className="ml-2 text-sm font-bold">{user.data.name}</div>
+        <ProfilePicture src={user.data?.picture ?? ""} />
+        <div className="ml-2 text-sm font-bold">{user.data?.name}</div>
         <div
           tabIndex={0}
           role="button"
