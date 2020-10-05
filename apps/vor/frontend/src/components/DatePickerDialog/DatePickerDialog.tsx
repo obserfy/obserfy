@@ -1,5 +1,6 @@
 import React, { FC, memo, useState } from "react"
 import { Box, Button, Flex } from "theme-ui"
+import { i18nMark } from "@lingui/core"
 import Dialog from "../Dialog/Dialog"
 
 import dayjs, { Dayjs } from "../../dayjs"
@@ -36,8 +37,8 @@ export const DatePickerDialog: FC<DatePickerDialogProps> = ({
     <Dialog sx={{ maxWidth: ["100%", 400] }}>
       <DialogHeader
         loading={isLoading}
-        onAcceptText="Set"
-        title="Pick a Date"
+        onAcceptText={i18nMark("Set")}
+        title={i18nMark("Pick a Date")}
         onCancel={() => onDismiss()}
         onAccept={() => {
           onConfirm(selected)

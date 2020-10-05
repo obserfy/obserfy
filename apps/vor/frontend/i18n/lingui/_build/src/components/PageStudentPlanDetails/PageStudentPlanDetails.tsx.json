@@ -1,0 +1,42 @@
+{
+  "Plans": {
+    "origin": [
+      [
+        "src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx",
+        58
+      ]
+    ]
+  },
+  "Details": {
+    "origin": [
+      [
+        "src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx",
+        60
+      ]
+    ]
+  },
+  "Links": {
+    "origin": [
+      [
+        "src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx",
+        84
+      ]
+    ]
+  },
+  "No links attached yet": {
+    "origin": [
+      [
+        "src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx",
+        86
+      ]
+    ]
+  },
+  "Date": {
+    "origin": [
+      [
+        "src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx",
+        110
+      ]
+    ]
+  }
+}

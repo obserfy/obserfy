@@ -19,7 +19,7 @@
     "origin": [
       [
         "src/components/PageStudentImageDetails/PageStudentImageDetails.tsx",
-        45
+        46
       ]
     ]
   },
@@ -27,11 +27,11 @@
     "origin": [
       [
         "src/components/PageStudentImageDetails/PageStudentImageDetails.tsx",
-        48
+        49
       ],
       [
         "src/components/PageStudentImageDetails/PageStudentImageDetails.tsx",
-        53
+        54
       ]
     ]
   },
@@ -39,7 +39,7 @@
     "origin": [
       [
         "src/components/PageStudentImageDetails/PageStudentImageDetails.tsx",
-        53
+        54
       ]
     ]
   },
@@ -47,7 +47,7 @@
     "origin": [
       [
         "src/components/PageStudentImageDetails/PageStudentImageDetails.tsx",
-        53
+        54
       ]
     ]
   },
@@ -55,11 +55,11 @@
     "origin": [
       [
         "src/components/PageStudentImageDetails/PageStudentImageDetails.tsx",
-        53
+        54
       ],
       [
         "src/components/PageStudentImageDetails/PageStudentImageDetails.tsx",
-        60
+        61
       ]
     ]
   },
@@ -67,7 +67,7 @@
     "origin": [
       [
         "src/components/PageStudentImageDetails/PageStudentImageDetails.tsx",
-        60
+        61
       ]
     ]
   },
@@ -75,7 +75,7 @@
     "origin": [
       [
         "src/components/PageStudentImageDetails/PageStudentImageDetails.tsx",
-        60
+        61
       ]
     ]
   },
@@ -83,7 +83,7 @@
     "origin": [
       [
         "src/components/PageStudentImageDetails/PageStudentImageDetails.tsx",
-        60
+        61
       ]
     ]
   }

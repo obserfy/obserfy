@@ -3,7 +3,7 @@
     "origin": [
       [
         "src/components/PageStudentImages/PageStudentImages.tsx",
-        33
+        34
       ]
     ]
   },
@@ -11,7 +11,7 @@
     "origin": [
       [
         "src/components/PageStudentImages/PageStudentImages.tsx",
-        37
+        40
       ]
     ]
   },
@@ -19,7 +19,7 @@
     "origin": [
       [
         "src/components/PageStudentImages/PageStudentImages.tsx",
-        44
+        48
       ]
     ]
   },
@@ -27,7 +27,7 @@
     "origin": [
       [
         "src/components/PageStudentImages/PageStudentImages.tsx",
-        58
+        62
       ]
     ]
   }

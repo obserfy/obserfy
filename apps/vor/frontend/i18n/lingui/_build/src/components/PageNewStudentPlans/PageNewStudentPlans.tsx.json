@@ -15,6 +15,30 @@
       ]
     ]
   },
+  "Title": {
+    "origin": [
+      [
+        "src/components/PageNewStudentPlans/PageNewStudentPlans.tsx",
+        105
+      ]
+    ]
+  },
+  "Description": {
+    "origin": [
+      [
+        "src/components/PageNewStudentPlans/PageNewStudentPlans.tsx",
+        106
+      ]
+    ]
+  },
+  "Links": {
+    "origin": [
+      [
+        "src/components/PageNewStudentPlans/PageNewStudentPlans.tsx",
+        111
+      ]
+    ]
+  },
   "You can enable the curriculum feature to track student progress in your curriculum.": {
     "origin": [
       [
@@ -44,6 +68,38 @@
       [
         "src/components/PageNewStudentPlans/PageNewStudentPlans.tsx",
         135
+      ]
+    ]
+  },
+  "None": {
+    "origin": [
+      [
+        "src/components/PageNewStudentPlans/PageNewStudentPlans.tsx",
+        138
+      ]
+    ]
+  },
+  "Daily": {
+    "origin": [
+      [
+        "src/components/PageNewStudentPlans/PageNewStudentPlans.tsx",
+        139
+      ]
+    ]
+  },
+  "Weekly": {
+    "origin": [
+      [
+        "src/components/PageNewStudentPlans/PageNewStudentPlans.tsx",
+        140
+      ]
+    ]
+  },
+  "Repeat Until": {
+    "origin": [
+      [
+        "src/components/PageNewStudentPlans/PageNewStudentPlans.tsx",
+        143
       ]
     ]
   },

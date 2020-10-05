@@ -121,14 +121,14 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
         <Box mx={3} mt={2}>
           <DateInput label="Date" value={date} onChange={setDate} mb={2} />
           <Input
-            label="Title"
+            label={i18nMark("Title")}
             sx={{ width: "100%" }}
             mb={2}
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
           <TextArea
-            label="Description"
+            label={i18nMark("Description")}
             mb={4}
             value={description}
             sx={{ width: "100%" }}
@@ -138,7 +138,9 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
           />
         </Box>
         <Box mx={3} mb={4}>
-          <Typography.H6 mb={2}>Links</Typography.H6>
+          <Typography.H6 mb={2}>
+            <Trans>Links</Trans>
+          </Typography.H6>
           {links.map((link) => (
             <LinkPreview
               key={link.id}
@@ -195,21 +197,21 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
           <Flex>
             <Chip
               mr={2}
-              text="None"
+              text={i18nMark("None")}
               activeBackground="primary"
               onClick={() => setRepetition(0)}
               isActive={repetition === 0}
             />
             <Chip
               mr={2}
-              text="Daily"
+              text={i18nMark("Daily")}
               activeBackground="primary"
               onClick={() => setRepetition(1)}
               isActive={repetition === 1}
             />
             <Chip
               mr={2}
-              text="Weekly"
+              text={i18nMark("Weekly")}
               activeBackground="primary"
               onClick={() => setRepetition(2)}
               isActive={repetition === 2}
@@ -218,7 +220,7 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
           {repetition > 0 && (
             <Box mt={3}>
               <DateInput
-                label="Repeat Until"
+                label={i18nMark("Repeat Until")}
                 value={endDate}
                 onChange={setEndDate}
                 mb={2}
