@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.11.11](https://github.com/obserfy/obserfy/compare/v1.11.10...v1.11.11) (2020-10-05)
+
+
+### Bug Fixes
+
+* **deps:** pin dependencies ([8fd35dd](https://github.com/obserfy/obserfy/commit/8fd35ddbd5412b34e45cbad02cc6dd9bbc10cd1c))
+* **deps:** update dependency @sentry/tracing to v5.25.0 ([3763ba1](https://github.com/obserfy/obserfy/commit/3763ba1de43a82d76878dcaeadeda21f6cdef83a))
+* **deps:** update dependency gatsby-plugin-postcss to v3 ([d464233](https://github.com/obserfy/obserfy/commit/d4642334503e01e41d37f801c3274a7d1d8137f6))
+* **deps:** update dependency next-pwa to v3.1.5 ([50dfddc](https://github.com/obserfy/obserfy/commit/50dfddc3d6b7c11748f1944d17ff3f8dd05feddc))
+* **deps:** update dependency pg to v8.4.0 ([d60c296](https://github.com/obserfy/obserfy/commit/d60c296cfc92dd525d4db5e0277cc166d129b9ba))
+* **deps:** update dependency query-string to v6.13.5 ([d707384](https://github.com/obserfy/obserfy/commit/d70738465b471b7b48fd23c2786145fa796886bb))
+* **deps:** update dependency react-query to v2.23.1 ([780faf1](https://github.com/obserfy/obserfy/commit/780faf15676796b4c40b440516ccee9c71527a7f))
+* **deps:** update dependency uuid to v8.3.1 ([5bccfda](https://github.com/obserfy/obserfy/commit/5bccfda44c0d1bf6095c7b6f4d15d85ef54ed9d1))
+
 ### [1.11.10](https://github.com/obserfy/obserfy/compare/v1.11.9...v1.11.10) (2020-10-01)
 
 
