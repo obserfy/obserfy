@@ -9,7 +9,9 @@ import NoImagesIllustration from "../images/no-images-illustration.svg"
 
 const GalleryPage = () => {
   const childId = useQueryString("childId")
+  console.log(childId)
   const childImages = useGetChildImages(childId)
+
   return (
     <>
       <Head>
@@ -21,17 +23,12 @@ const GalleryPage = () => {
             <div
               key={img.image_id}
               style={{ maxWidth: "33.3333%" }}
-              className="w-full mb-2 mt-2"
+              className="w-full"
             >
-              {/* TODO: replace with better alt */}
-              <img
-                src={img.imageUrl}
-                alt="children activity"
-                className="w-3/4"
-              />
+              <img src={img.imageUrl} alt="children activity" />
             </div>
           ))}
-          {childImages.data?.length === 0 && (
+          {childImages.isSuccess && childImages.data?.length === 0 && (
             <EmptyGalleryIllustration loading={childImages.isLoading} />
           )}
         </div>
