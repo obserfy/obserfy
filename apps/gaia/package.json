@@ -34,7 +34,7 @@
     "next-pwa": "3.1.5",
     "pg": "8.4.0",
     "postcss-preset-env": "6.7.0",
-    "preact": "10.4.8",
+    "preact": "10.5.4",
     "preact-render-to-string": "5.1.10",
     "react": "github:preact-compat/react#1.0.0",
     "react-dom": "github:preact-compat/react-dom#1.0.0",
