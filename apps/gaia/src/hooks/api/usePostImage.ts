@@ -1,7 +1,7 @@
 import { queryCache, useMutation } from "react-query"
 import { postFile } from "../../apiHelpers"
 
-const usePostImage = (studentId, schoolId: string) => {
+const usePostImage = (studentId: string, schoolId: string) => {
   const postImage = postFile(
     `/image?schoolId=${schoolId}&studentId=${studentId}`
   )

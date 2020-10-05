@@ -5,12 +5,14 @@ const SALT = process.env.IMGPROXY_SALT
 const URL = process.env.IMGPROXY_URL
 const BUCKET = process.env.IMGPROXY_BUCKET
 
+if (!KEY || !SALT || !URL || !BUCKET) throw new Error("Incomplete imgproxy env")
+
 export const generateUrl = (
   imagePath: string,
   width: number,
   height: number
 ) => {
-  const urlSafeBase64 = (string) => {
+  const urlSafeBase64 = (string: Buffer | string) => {
     return Buffer.from(string)
       .toString("base64")
       .replace(/=/g, "")
@@ -18,9 +20,9 @@ export const generateUrl = (
       .replace(/\//g, "_")
   }
 
-  const hexDecode = (hex) => Buffer.from(hex, "hex")
+  const hexDecode = (hex: string) => Buffer.from(hex, "hex")
 
-  const sign = (salt, target, secret) => {
+  const sign = (salt: string, target: string, secret: string) => {
     const hmac = createHmac("sha256", hexDecode(secret))
     hmac.update(hexDecode(salt))
     hmac.update(target)

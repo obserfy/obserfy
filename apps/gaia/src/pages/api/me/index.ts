@@ -21,11 +21,15 @@ export interface UserData {
 
 export default auth0.requireAuthentication(async function me(req, res) {
   try {
-    const { user } = await auth0.getSession(req)
-    const result = await findChildrenByGuardianEmail(user.email)
+    const session = await auth0.getSession(req)
+    if (!session) {
+      res.status(401).end("unauthorized")
+      return
+    }
+    const result = await findChildrenByGuardianEmail(session.user.email)
 
     res.json({
-      ...user,
+      ...session.user,
       children: result.map(({ id, name, school_name }) => ({
         id,
         name,

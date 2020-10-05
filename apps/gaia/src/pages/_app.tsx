@@ -1,9 +1,10 @@
 import React from "react"
+import { AppComponent } from "next/dist/next-server/lib/router/router"
 import Layout from "../components/layout"
 import "../global.css"
 import ErrorBoundary from "../components/ErrorBoundary"
 
-function App({ Component, pageProps }) {
+const App: AppComponent = ({ Component, pageProps }) => {
   return (
     <ErrorBoundary>
       <Layout>
