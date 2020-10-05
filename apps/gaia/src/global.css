@@ -33,7 +33,7 @@ html {
 }
 
 body {
-  @apply bg-background;
+  @apply bg-background text-sm;
 }
 
 .loading-placeholder {

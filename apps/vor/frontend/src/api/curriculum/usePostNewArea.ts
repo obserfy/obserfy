@@ -15,6 +15,7 @@ const usePostNewArea = (curriculumId: string) => {
 
   return useMutation(postNewArea, {
     onSuccess: async (data) => {
+      analytics.track("Area Created")
       if (data) {
         const newArea = await data.json()
         const cache = getCurriculumAreasCache() ?? []

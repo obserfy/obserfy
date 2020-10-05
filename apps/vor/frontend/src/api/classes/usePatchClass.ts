@@ -13,6 +13,7 @@ const usePatchClass = (classId: string) => {
 
   return useMutation(patchClass, {
     onSuccess: async () => {
+      analytics.track("Class Updated")
       await Promise.all([
         queryCache.invalidateQueries(["class", classId]),
         queryCache.invalidateQueries(["classes", getSchoolId()]),

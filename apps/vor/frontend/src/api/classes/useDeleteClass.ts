@@ -7,6 +7,7 @@ const useDeleteClass = (classId: string) => {
 
   return useMutation(deleteClass, {
     onSuccess: async () => {
+      analytics.track("Class Deleted")
       await queryCache.invalidateQueries(["classes", getSchoolId()])
     },
   })

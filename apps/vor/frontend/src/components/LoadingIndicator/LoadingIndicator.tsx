@@ -58,19 +58,19 @@ export const LoadingIndicator: FC<Props> = ({
           borderRadius: "50%",
           backgroundColor: color,
           animationTimingFunction: "cubic-bezier(0, 1, 1, 0)",
-          "&:nth-child(1)": {
+          "&:nth-of-type(1)": {
             left: `${gapSize}px`,
             animation: `${ellipsis1} 0.6s infinite`,
           },
-          "&:nth-child(2)": {
+          "&:nth-of-type(2)": {
             left: `${gapSize}px`,
             animation: `${ellipsis2(gapSize)} 0.6s infinite`,
           },
-          "&:nth-child(3)": {
+          "&:nth-of-type(3)": {
             left: `${gapSize * 4}px`,
             animation: `${ellipsis2(gapSize)} 0.6s infinite`,
           },
-          "&:nth-child(4)": {
+          "&:nth-of-type(4)": {
             left: `${gapSize * 7}px`,
             animation: `${ellipsis3} 0.6s infinite`,
           },

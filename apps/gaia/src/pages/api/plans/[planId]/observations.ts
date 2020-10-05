@@ -7,7 +7,11 @@ export interface PostPlanObservationRequest {
 }
 const childHandler = auth0.requireAuthentication(async (req, res) => {
   try {
-    const { user } = await auth0.getSession(req)
+    const session = await auth0.getSession(req)
+    if (!session) {
+      res.status(401).end("unauthorized")
+      return
+    }
     const {
       query: { planId },
     } = req
@@ -16,7 +20,7 @@ const childHandler = auth0.requireAuthentication(async (req, res) => {
       const body: PostPlanObservationRequest = JSON.parse(req.body)
       await insertObservationToPlan(
         planId as string,
-        user.email,
+        session.user.email,
         body.childId,
         body.observation
       )

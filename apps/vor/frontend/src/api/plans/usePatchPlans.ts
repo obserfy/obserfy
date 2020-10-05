@@ -14,6 +14,7 @@ const usePatchPlan = (planId: string) => {
 
   return useMutation(patchPlan, {
     onSuccess: async () => {
+      analytics.track("Plan Updated")
       await queryCache.invalidateQueries(["plan", planId])
     },
   })

@@ -1,15 +1,19 @@
 import React, { FC } from "react"
 import Head from "next/head"
-import Img from "react-optimized-image"
+import Img, { Svg } from "react-optimized-image"
 import useGetChildImages from "../hooks/useGetChildImages"
 import { useQueryString } from "../hooks/useQueryString"
 import NoImagesIllustration from "../images/no-images-illustration.svg"
-// import usePostImage from "../hooks/api/usePostImage"
-// import useGetChild from "../hooks/api/useGetChild"
+import UploadIcon from "../icons/upload.svg"
+import usePostImage from "../hooks/api/usePostImage"
+import useGetChild from "../hooks/api/useGetChild"
 
 const GalleryPage = () => {
   const childId = useQueryString("childId")
   const childImages = useGetChildImages(childId)
+  const child = useGetChild(childId)
+  const [postImage] = usePostImage(childId, child.data?.schoolId ?? "")
+
   return (
     <>
       <Head>
@@ -17,21 +21,32 @@ const GalleryPage = () => {
       </Head>
       <div className="max-w-3xl mx-auto flex items-center">
         <div className="flex mx-auto flex-wrap w-full">
-          {childImages.data?.map((img) => (
-            <div
-              key={img.image_id}
-              style={{ maxWidth: "33.3333%" }}
-              className="w-full mb-2 mt-2"
+          <div className="w-1/3 md:w-1/5 p-3">
+            <label
+              htmlFor="upload-image"
+              className="flex flex-col items-center justify-center font-bold text-sm border rounded w-full h-full bg-white p-0"
             >
-              {/* TODO: replace with better alt */}
-              <img
-                src={img.imageUrl}
-                alt="children activity"
-                className="w-3/4"
+              <Svg src={UploadIcon} />
+              <span>
+                Upload <span className="hidden md:inline">Image</span>
+              </span>
+              <input
+                id="upload-image"
+                type="file"
+                accept="image/*"
+                className="hidden"
+                onChange={async (e) => {
+                  await postImage(e.target.files?.[0])
+                }}
               />
+            </label>
+          </div>
+          {childImages.data?.map((img) => (
+            <div key={img.id} className="w-1/3 md:w-1/5">
+              <img src={img.imageUrl} alt="children activity" />
             </div>
           ))}
-          {childImages.data?.length === 0 && (
+          {childImages.isSuccess && childImages.data?.length === 0 && (
             <EmptyGalleryIllustration loading={childImages.isLoading} />
           )}
         </div>

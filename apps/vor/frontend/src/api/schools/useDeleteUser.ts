@@ -6,6 +6,7 @@ const useDeleteUser = (userId: string) => {
   const deleteUser = deleteApi(`/schools/${getSchoolId()}/users/${userId}`)
   return useMutation(deleteUser, {
     onSuccess: async () => {
+      analytics.track("User Deleted")
       await queryCache.invalidateQueries(["school"])
     },
   })

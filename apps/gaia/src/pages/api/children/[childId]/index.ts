@@ -12,12 +12,17 @@ export interface GetChildResponse {
 
 const childHandler = auth0.requireAuthentication(async (req, res) => {
   try {
-    const { user } = await auth0.getSession(req)
+    const session = await auth0.getSession(req)
+    if (!session) {
+      res.status(401).end("unauthorized")
+      return
+    }
+
     const {
       query: { childId },
     } = req
 
-    const result = await findChildById(user.email, childId as string)
+    const result = await findChildById(session.user.email, childId as string)
     if (!result) {
       res.status(404).end("not found")
       return

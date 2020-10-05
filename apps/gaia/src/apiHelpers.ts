@@ -8,6 +8,11 @@ export const getApi = <T>(url: string) => async (): Promise<T> => {
 
   const json = await result.json()
   if (!result.ok) {
+    analytics.track("Request Failed", {
+      method: "GET",
+      status: result.status,
+      message: json.error.message,
+    })
     throw Error(json.error)
   }
 
@@ -23,6 +28,11 @@ export const deleteApi = (url: string) => async () => {
 
   if (!result.ok) {
     const body = await result.json()
+    analytics.track("Request Failed", {
+      method: "DELETE",
+      status: result.status,
+      message: body?.error?.message,
+    })
     throw Error(body?.error ?? "")
   }
 
@@ -38,6 +48,11 @@ export const patchApi = <T>(url: string) => async (payload: T) => {
 
   if (!result.ok) {
     const body = await result.json()
+    analytics.track("Request Failed", {
+      method: "PATCH",
+      status: result.status,
+      message: body?.error?.message,
+    })
     throw Error(body?.error ?? "")
   }
 
@@ -53,11 +68,17 @@ export const postApi = <T>(url: string) => async (payload: T) => {
 
   if (!result.ok) {
     const body = await result.json()
+    analytics.track("Request Failed", {
+      method: "POST",
+      status: result.status,
+      message: body?.error?.message,
+    })
     throw Error(body?.error ?? "")
   }
 
   return result
 }
+
 export const postFile = (url: string) => async (image: File) => {
   const payload = new FormData()
   payload.append("image", image)
@@ -70,6 +91,11 @@ export const postFile = (url: string) => async (image: File) => {
 
   if (!result.ok) {
     const body = await result.json()
+    analytics.track("Request Failed", {
+      method: "POST FILE",
+      status: result.status,
+      message: body?.error?.message,
+    })
     throw Error(body?.error ?? "")
   }
 

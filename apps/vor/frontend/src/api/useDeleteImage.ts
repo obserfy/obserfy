@@ -5,7 +5,16 @@ const useDeleteImage = (studentId: string, imageId: string) => {
   const deleteImage = deleteApi(`/images/${imageId}`)
   return useMutation(deleteImage, {
     onSuccess: async () => {
-      await queryCache.invalidateQueries(["student", studentId, "images"])
+      analytics.track("Image Deleted")
+      await Promise.all([
+        await queryCache.invalidateQueries(["student", studentId, "images"]),
+        await queryCache.invalidateQueries(["observation"]),
+        await queryCache.invalidateQueries([
+          "student",
+          studentId,
+          "observations",
+        ]),
+      ])
     },
   })
 }

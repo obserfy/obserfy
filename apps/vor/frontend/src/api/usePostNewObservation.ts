@@ -20,6 +20,7 @@ const usePostNewObservation = (studentId: string) => {
   )
   return useMutation(postNewObservation, {
     onSuccess: async (data) => {
+      analytics.track("Observation Created")
       if (data === undefined) return
       const newObservation = await data.json()
       const observations = getStudentObservationsCache(studentId) ?? []

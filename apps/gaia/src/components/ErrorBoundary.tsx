@@ -18,6 +18,7 @@ export class ErrorBoundary extends Component<{}, State> {
     if (process.env.NODE_ENV !== "production") {
       console.error(error)
     }
+    analytics.track("Javascript Error", { error, errorInfo })
   }
 
   render(): ReactNode {

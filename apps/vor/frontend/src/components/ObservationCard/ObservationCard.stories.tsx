@@ -21,5 +21,6 @@ export const Basic: FC = () => (
       images: [],
     }}
     detailsUrl=""
+    studentId=""
   />
 )

@@ -9,7 +9,9 @@ const useGetChildPlans = (childId: string, date: Dayjs) => {
     `/children/${childId}/plans?date=${formattedDate}`
   )
 
-  return useQuery(["childPlans", childId, formattedDate], getChildPlans)
+  return useQuery(["childPlans", childId, formattedDate], getChildPlans, {
+    enabled: childId,
+  })
 }
 
 export default useGetChildPlans

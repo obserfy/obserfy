@@ -1,13 +1,14 @@
 import { useQuery } from "react-query"
+import { getApi } from "../apiHelpers"
+import { GetChildImagesResponse } from "../pages/api/children/[childId]/images"
 
 const useGetChildImages = (childId: string) => {
-  const getChildImages = async () => {
-    const result = await fetch(`/api/children/${childId}/images`)
-    return result.json()
-  }
+  const getChildImages = getApi<GetChildImagesResponse[]>(
+    `/children/${childId}/images`
+  )
+
   return useQuery(["childImages", childId], getChildImages, {
     enabled: childId,
-    initialData: [],
   })
 }
 

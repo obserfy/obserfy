@@ -417,34 +417,34 @@ exports[`PageStudentImages should render correctly 1`] = `
   }
 }
 
-.emotion-19 :nth-child(3n) {
+.emotion-19 :nth-of-type(3n) {
   margin-right: 0;
 }
 
 @media screen and (min-width:40em) {
-  .emotion-19 :nth-child(3n) {
+  .emotion-19 :nth-of-type(3n) {
     margin-right: 0;
   }
 }
 
 @media screen and (min-width:52em) {
-  .emotion-19 :nth-child(3n) {
+  .emotion-19 :nth-of-type(3n) {
     margin-right: 16px;
   }
 }
 
-.emotion-19 :nth-child(4n) {
+.emotion-19 :nth-of-type(4n) {
   margin-right: 4px;
 }
 
 @media screen and (min-width:40em) {
-  .emotion-19 :nth-child(4n) {
+  .emotion-19 :nth-of-type(4n) {
     margin-right: 4px;
   }
 }
 
 @media screen and (min-width:52em) {
-  .emotion-19 :nth-child(4n) {
+  .emotion-19 :nth-of-type(4n) {
     margin-right: 0;
   }
 }

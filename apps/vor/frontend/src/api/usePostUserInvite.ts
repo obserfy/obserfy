@@ -7,5 +7,11 @@ interface Payload {
 }
 export const usePostUserInvite = () => {
   const sendInvite = postApi<Payload>(`/schools/${getSchoolId()}/invite-user`)
-  return useMutation(sendInvite)
+  return useMutation(sendInvite, {
+    onSuccess: (data, variables) => {
+      analytics.track("Users Invited", {
+        count: variables.email.length,
+      })
+    },
+  })
 }

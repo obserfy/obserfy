@@ -2,6 +2,42 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.11.9](https://github.com/obserfy/obserfy/compare/v1.11.8...v1.11.9) (2020-09-30)
+
+
+### Bug Fixes
+
+* fix layout bottom padding not showing on prod ([d5ca90c](https://github.com/obserfy/obserfy/commit/d5ca90c5301bc091574f7a8d77acee158fc7e667))
+
+### [1.11.8](https://github.com/obserfy/obserfy/compare/v1.11.7...v1.11.8) (2020-09-30)
+
+### [1.11.7](https://github.com/obserfy/obserfy/compare/v1.11.6...v1.11.7) (2020-09-30)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @prefresh/next to v1.2.4 ([5d9f241](https://github.com/obserfy/obserfy/commit/5d9f241260f03ffead17c2e84eed6bed99e66959))
+* **deps:** update dependency dayjs to v1.9.0 ([5a07502](https://github.com/obserfy/obserfy/commit/5a07502e5e07e5b723892f75b163f221f9bfe0ea))
+* **deps:** update dependency dayjs to v1.9.1 ([f8a9efe](https://github.com/obserfy/obserfy/commit/f8a9efe33eda84b89bb690f566c854945cb33c71))
+* **deps:** update dependency query-string to v6.13.3 ([227ade7](https://github.com/obserfy/obserfy/commit/227ade70088f914e109e600d255f2db18963479f))
+* **deps:** update dependency query-string to v6.13.4 ([ef0dbcd](https://github.com/obserfy/obserfy/commit/ef0dbcd0e43e9a5ccd73429cb1962000eb2e18b9))
+
+### [1.11.6](https://github.com/obserfy/obserfy/compare/v1.11.5...v1.11.6) (2020-09-27)
+
+
+### Bug Fixes
+
+* **deps:** pin dependency preact-render-to-string to 5.1.10 ([cac1e5e](https://github.com/obserfy/obserfy/commit/cac1e5e6a54bda1a939c423e64f9d1b777d1fea0))
+* **deps:** update dependency @prefresh/next to v1.2.0 ([9fadc66](https://github.com/obserfy/obserfy/commit/9fadc6641be0736cb111126835ed62c83c35c376))
+* **deps:** update dependency @prefresh/next to v1.2.1 ([e9f8ae7](https://github.com/obserfy/obserfy/commit/e9f8ae7fe6c092fd18f16899d27033928b9bc010))
+* **deps:** update dependency @prefresh/next to v1.2.2 ([f627044](https://github.com/obserfy/obserfy/commit/f627044d6939e253cca487eec5d39ad10b1bcb0b))
+* **deps:** update dependency @sentry/tracing to v5.24.2 ([1d2e9e2](https://github.com/obserfy/obserfy/commit/1d2e9e2315b3bb4f19eabc554c69277d053338f7))
+* **deps:** update dependency @types/lingui__macro to v2.7.4 ([e46fb78](https://github.com/obserfy/obserfy/commit/e46fb787bd86fa8970da2bebe86e630f5599f17b))
+* **deps:** update dependency img-loader to v3.0.2 ([ffdf880](https://github.com/obserfy/obserfy/commit/ffdf880ff110853446bd0623bf6abaab750dd129))
+* **deps:** update dependency react-query to v2.23.0 ([74f7624](https://github.com/obserfy/obserfy/commit/74f7624262475f55bf6d71192a429ba25efc9927))
+* **deps:** update gatsby ([ceaf679](https://github.com/obserfy/obserfy/commit/ceaf67961ae824cc688afde5d355010997dcc1e7))
+* **deps:** update gatsby ([fa67b49](https://github.com/obserfy/obserfy/commit/fa67b498ec3c3cb584d989507a4328718fd78d68))
+
 ### [1.11.5](https://github.com/obserfy/obserfy/compare/v1.11.4...v1.11.5) (2020-09-18)
 
 

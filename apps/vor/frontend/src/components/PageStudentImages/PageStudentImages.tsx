@@ -75,8 +75,8 @@ export const PageStudentImages: FC<Props> = ({ studentId }) => {
         mx={[0, 3]}
         sx={{
           flexWrap: "wrap",
-          "& :nth-child(3n)": { mr: [0, 0, 3] },
-          "& :nth-child(4n)": { mr: [1, 1, 0] },
+          "& :nth-of-type(3n)": { mr: [0, 0, 3] },
+          "& :nth-of-type(4n)": { mr: [1, 1, 0] },
         }}
       >
         {images.data?.map((image) => {
@@ -84,6 +84,7 @@ export const PageStudentImages: FC<Props> = ({ studentId }) => {
           //  due to the calc and decimal points, revisit later.
           return (
             <Link
+              key={image.id}
               to={STUDENT_IMAGE_DETAILS_URL(studentId, image.id)}
               sx={{
                 mr: [1, 3],

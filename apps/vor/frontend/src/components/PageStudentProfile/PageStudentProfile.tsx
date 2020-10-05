@@ -30,10 +30,10 @@ import Breadcrumb from "../Breadcrumb/Breadcrumb"
 import BreadcrumbItem from "../Breadcrumb/BreadcrumbItem"
 
 interface Props {
-  id: string
+  studentId: string
 }
-export const PageStudentProfile: FC<Props> = ({ id }) => {
-  const { data, status } = useGetStudent(id)
+export const PageStudentProfile: FC<Props> = ({ studentId }) => {
+  const { data, status } = useGetStudent(studentId)
 
   if (status === "loading") {
     return (
@@ -49,12 +49,12 @@ export const PageStudentProfile: FC<Props> = ({ id }) => {
   return (
     <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={4}>
       <Flex sx={{ height: 48, alignItems: "center" }}>
-        <BackButton to={STUDENT_OVERVIEW_PAGE_URL(id)} />
+        <BackButton to={STUDENT_OVERVIEW_PAGE_URL(studentId)} />
         <Breadcrumb>
           <BreadcrumbItem to={STUDENTS_URL}>
             <Trans>Students</Trans>
           </BreadcrumbItem>
-          <BreadcrumbItem to={STUDENT_OVERVIEW_PAGE_URL(id)}>
+          <BreadcrumbItem to={STUDENT_OVERVIEW_PAGE_URL(studentId)}>
             {data?.name.split(" ")[0]}
           </BreadcrumbItem>
           <BreadcrumbItem>
@@ -66,27 +66,27 @@ export const PageStudentProfile: FC<Props> = ({ id }) => {
         <NameDataBox
           value={data?.name}
           key={`name${data?.name}`}
-          studentId={id}
+          studentId={studentId}
         />
         <GenderDataBox
           value={data?.gender}
           key={`gender${data?.gender}`}
-          studentId={id}
+          studentId={studentId}
         />
         <StudentIdDataBox
           value={data?.customId}
           key={`id${data?.customId}`}
-          studentId={id}
+          studentId={studentId}
         />
         <DateOfBirthDataBox
           value={data?.dateOfBirth}
           key={`dob${data?.dateOfBirth}`}
-          studentId={id}
+          studentId={studentId}
         />
         <DateOfEntryDataBox
           value={data?.dateOfEntry}
           key={`doe${data?.dateOfEntry}`}
-          studentId={id}
+          studentId={studentId}
         />
       </Card>
 
@@ -124,7 +124,7 @@ export const PageStudentProfile: FC<Props> = ({ id }) => {
           </Box>
 
           <Link
-            to={EDIT_STUDENT_CLASS_URL(id)}
+            to={EDIT_STUDENT_CLASS_URL(studentId)}
             sx={{ ml: "auto", mt: 3, mr: 3 }}
             data-cy="edit-classes"
           >
@@ -152,9 +152,9 @@ export const PageStudentProfile: FC<Props> = ({ id }) => {
                 <Trans>Not Set</Trans>
               </Typography.Body>
             )}
-            {data?.guardians?.map(({ email, name }) => {
+            {data?.guardians?.map(({ id, email, name }) => {
               return (
-                <Box py={3}>
+                <Box py={3} key={id}>
                   <Typography.Body sx={{ lineHeight: 1 }} mb={2}>
                     {name}
                   </Typography.Body>
@@ -169,7 +169,7 @@ export const PageStudentProfile: FC<Props> = ({ id }) => {
             })}
           </Box>
           <Link
-            to={EDIT_GUARDIANS_URL(id)}
+            to={EDIT_GUARDIANS_URL(studentId)}
             sx={{ ml: "auto", mt: 3, mr: 3 }}
             data-cy="edit-guardians"
           >
@@ -181,7 +181,7 @@ export const PageStudentProfile: FC<Props> = ({ id }) => {
       </Card>
       <Box mt={3}>
         <SetStatusDataBox
-          studentId={id}
+          studentId={studentId}
           active={data?.active ?? false}
           name={data?.name ?? ""}
         />
