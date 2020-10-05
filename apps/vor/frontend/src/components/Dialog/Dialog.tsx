@@ -32,7 +32,10 @@ export const Dialog: FC<Props> = ({ sx, ...props }) => {
 
   useEffect(() => {
     if (ref.current) {
-      disableBodyScroll(ref.current, { reserveScrollBarGap: true })
+      disableBodyScroll(ref.current, {
+        reserveScrollBarGap: true,
+        allowTouchMove: (el) => el.tagName === "TEXTAREA",
+      })
     }
     return () => {
       if (ref.current) enableBodyScroll(ref.current)
