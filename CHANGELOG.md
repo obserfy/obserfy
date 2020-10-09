@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.11.12](https://github.com/obserfy/obserfy/compare/v1.11.11...v1.11.12) (2020-10-09)
+
+
+### Bug Fixes
+
+* **deps:** pin dependencies ([34d600c](https://github.com/obserfy/obserfy/commit/34d600c6e7db13055eab43257011b383738136dc))
+* **deps:** update dependency @types/node to v14.11.4 ([63524f4](https://github.com/obserfy/obserfy/commit/63524f47c0c1cb2af2c2651d1781088ca3042ad7))
+* **deps:** update dependency @types/node to v14.11.7 ([902ac7e](https://github.com/obserfy/obserfy/commit/902ac7eceaf0027209c46c900e1ab38667015bf4))
+* **deps:** update dependency @types/node to v14.11.8 ([133a923](https://github.com/obserfy/obserfy/commit/133a9232a9d21fcf4ee342e2e9c9dfe14aa6030a))
+* **deps:** update dependency pg to v8.4.1 ([6128012](https://github.com/obserfy/obserfy/commit/61280127897419542cd3cc001dcffe5159b0abd3))
+* **deps:** update dependency preact to v10.5.4 ([bedc4b7](https://github.com/obserfy/obserfy/commit/bedc4b73824c5dd08925acf4960561d1c8a21758))
+* **deps:** update dependency tailwindcss to v1.8.11 ([d6f3520](https://github.com/obserfy/obserfy/commit/d6f35208bfb99989df8150331a348e4e56dce577))
+* **deps:** update dependency tailwindcss to v1.8.12 ([9c328b3](https://github.com/obserfy/obserfy/commit/9c328b30926ae5ea0b12a20e959fc53ef1d60291))
+
 ### [1.11.11](https://github.com/obserfy/obserfy/compare/v1.11.10...v1.11.11) (2020-10-05)
 
 
