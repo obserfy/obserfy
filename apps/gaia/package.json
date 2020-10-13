@@ -19,7 +19,7 @@
     "@types/react": "16.9.41",
     "@types/segment-analytics": "0.0.32",
     "@types/uuid": "8.3.0",
-    "dayjs": "1.9.1",
+    "dayjs": "1.9.3",
     "formidable-serverless": "1.0.3",
     "imagemin-mozjpeg": "9.0.0",
     "imagemin-optipng": "8.0.0",
