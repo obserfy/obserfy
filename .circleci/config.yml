@@ -40,38 +40,38 @@ jobs:
       - store_test_results:
           path: apps/vor/test_result
 
-#  install_js_deps:
-#    docker:
-#      - image: node:12
-#    working_directory: ~/repo
-#    steps:
-#      - checkout
-#      - restore_cache:
-#          name: Restore Yarn Package Cache
-#          keys:
-#            - build-v10-{{ checksum "yarn.lock" }}
-#      - run: |
-#          yarn install
-#      - persist_to_workspace:
-#          root: ../
-#          paths:
-#            - repo/.yarn/
-#            - repo/.pnp.js
-#            - repo/apps/vor/frontend/.cache
-#            - repo/apps/vor/frontend/public
-#            - .cache/Cypress
-#      - save_cache:
-#          when: always
-#          name: Save Yarn Package Cache
-#          key: build-v10-{{ checksum "yarn.lock" }}
-#          paths:
-#            - ./.yarn/
-#            - ./.pnp.js
-#            - ./apps/vor/frontend/.cache
-#            - ./apps/vor/frontend/public
-#            - ~/.cache/Cypress
-#      - store_artifacts:
-#          path: ./vor/frontend/public
+  install_js_deps:
+    docker:
+      - image: node:12
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - build-v10-{{ checksum "yarn.lock" }}
+      - run: |
+          yarn install
+      - persist_to_workspace:
+          root: ../
+          paths:
+            - repo/.yarn/
+            - repo/.pnp.js
+            - repo/apps/vor/frontend/.cache
+            - repo/apps/vor/frontend/public
+            - .cache/Cypress
+      - save_cache:
+          when: always
+          name: Save Yarn Package Cache
+          key: build-v10-{{ checksum "yarn.lock" }}
+          paths:
+            - ./.yarn/
+            - ./.pnp.js
+            - ./apps/vor/frontend/.cache
+            - ./apps/vor/frontend/public
+            - ~/.cache/Cypress
+      - store_artifacts:
+          path: ./vor/frontend/public
 
   vor_frontend_build:
     docker:
@@ -79,8 +79,8 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-#      - attach_workspace:
-#          at: ../
+      - attach_workspace:
+          at: ../
       - run: |
           mv ./apps/vor/frontend/.babelrc.ci.json ./apps/vor/frontend/.babelrc
       - run: |
@@ -96,8 +96,8 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-#      - attach_workspace:
-#          at: ../
+      - attach_workspace:
+          at: ../
       - run: |
           yarn workspace gaia build
       - persist_to_workspace:
@@ -111,8 +111,8 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-#      - attach_workspace:
-#          at: ../
+      - attach_workspace:
+          at: ../
       - run: |
           yarn workspace vor test -w 1
       - run: bash <(curl -s https://codecov.io/bash)
@@ -123,8 +123,8 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-#      - attach_workspace:
-#          at: ../
+      - attach_workspace:
+          at: ../
       - run: |
           yarn workspaces foreach -p run lint
 
@@ -134,8 +134,8 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-#      - attach_workspace:
-#          at: ../
+      - attach_workspace:
+          at: ../
       - run: |
           yarn workspaces foreach -p run typecheck
 
@@ -150,8 +150,8 @@ jobs:
       - run:
           command: COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose up db vor_app nginx minio
           background: true
-#      - attach_workspace:
-#          at: ../
+      - attach_workspace:
+          at: ../
       - run: |
           echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
           echo ' [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
