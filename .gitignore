@@ -13,10 +13,10 @@ package-lock.json
 # Local Netlify folder
 .netlify
 
-# don't use zero install (causes repository size to explode)
+# Use zero install
 .yarn/*
+!.yarn/cache
 !.yarn/releases
 !.yarn/plugins
 !.yarn/sdks
 !.yarn/versions
-.pnp.*
