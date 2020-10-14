@@ -117,7 +117,7 @@
   "scripts": {
     "lint": "eslint --ext .tsx,.ts src/",
     "typecheck": "tsc --noemit",
-    "build": "gatsby build",
+    "build": "yarn i18n:compile && gatsby build",
     "build:ci": "cross-env CYPRESS_SUPPORT=y gatsby build",
     "develop": "cross-env CYPRESS_SUPPORT=y gatsby develop -H 0.0.0.0 -p 8001",
     "develop:preact": "cross-env CYPRESS_SUPPORT=y gatsby develop -H 0.0.0.0 -p 8001",
@@ -132,8 +132,8 @@
     "test": "cp -r ./public/page-data/sq/d ./public/static && TZ=UTC jest --coverage --passWithNoTests --coverageReporters json clover",
     "deploy-storybook": "storybook-to-ghpages",
     "add-locale": "lingui add-locale",
-    "extract": "lingui extract",
-    "compile": "lingui compile"
+    "i18n:extract": "lingui extract",
+    "i18ncompile": "lingui compile"
   },
   "nyc": {
     "extends": "@istanbuljs/nyc-config-typescript",

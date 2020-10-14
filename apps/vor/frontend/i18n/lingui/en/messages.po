@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:123
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:125
 #: src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx:41
 msgid " Go to Curriculum "
 msgstr " Go to Curriculum "
@@ -23,8 +23,8 @@ msgid "(Starting on Jan 1st 2021)"
 msgstr "(Mulai Tanggal 1 Jan 2021)"
 
 #: src/components/PageNewStudent/PageNewStudent.tsx:187
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:153
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:225
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:155
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:227
 msgid "Add"
 msgstr "Add"
 
@@ -124,11 +124,11 @@ msgstr "Curriculum"
 msgid "Curriculum Progress"
 msgstr "Curriculum Progress"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:139
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:141
 msgid "Daily"
 msgstr "Daily"
 
-#: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:110
+#: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:114
 msgid "Date"
 msgstr "Date"
 
@@ -154,7 +154,7 @@ msgstr "Delete image?"
 msgid "Description"
 msgstr "Description"
 
-#: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:60
+#: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:61
 msgid "Details"
 msgstr "Details"
 
@@ -275,8 +275,8 @@ msgstr "Invite using emails"
 msgid "Invite using link"
 msgstr "Invite using link"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:111
-#: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:84
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:112
+#: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:86
 msgid "Links"
 msgstr "Links"
 
@@ -334,7 +334,7 @@ msgstr "Next Bill"
 msgid "No email"
 msgstr "No email"
 
-#: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:86
+#: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:89
 msgid "No links attached yet"
 msgstr "No links attached yet"
 
@@ -342,7 +342,7 @@ msgstr "No links attached yet"
 msgid "No materials in progress."
 msgstr "No materials in progress."
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:236
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:238
 msgid "No more students to add"
 msgstr "No more students to add"
 
@@ -350,11 +350,11 @@ msgstr "No more students to add"
 msgid "No observation have been added yet"
 msgstr "No observation have been added yet"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:174
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:176
 msgid "No other students added yet."
 msgstr "No other students added yet."
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:138
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:140
 msgid "None"
 msgstr "None"
 
@@ -390,7 +390,7 @@ msgstr "Observations"
 msgid "Or"
 msgstr "Or"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:150
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:152
 msgid "Other Related Students"
 msgstr "Other Related Students"
 
@@ -440,7 +440,7 @@ msgstr "Recently Mastered"
 msgid "Record observations"
 msgstr "Record observations"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:126
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:128
 msgid "Related Area"
 msgstr "Related Area"
 
@@ -448,11 +448,11 @@ msgstr "Related Area"
 msgid "Relationship"
 msgstr "Relationship"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:143
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:145
 msgid "Repeat Until"
 msgstr "Repeat Until"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:135
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:137
 msgid "Repetition"
 msgstr "Repetition"
 
@@ -485,7 +485,7 @@ msgstr "Save"
 msgid "Search"
 msgstr "Search"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:225
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:227
 msgid "Select Students"
 msgstr "Select Students"
 
@@ -631,7 +631,7 @@ msgstr "Users"
 msgid "Wednesday"
 msgstr "Wednesday"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:140
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:142
 msgid "Weekly"
 msgstr "Weekly"
 
@@ -645,7 +645,7 @@ msgstr "Yes"
 msgid "You"
 msgstr "You"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:123
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:125
 #: src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx:41
 msgid "You can enable the curriculum feature to track student progress in your curriculum."
 msgstr "You can enable the curriculum feature to track student progress in your curriculum."

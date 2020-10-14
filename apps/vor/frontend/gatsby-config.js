@@ -40,7 +40,7 @@ module.exports = {
     title: `Obserfy`,
     description: `Obserfy`,
     author: `@chrsep`,
-    siteUrl: `https://app.obserfy.com`
+    siteUrl: `https://app.obserfy.com`,
   },
   plugins: [
     ...preactPlugin,
@@ -214,7 +214,7 @@ module.exports = {
       resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
       options: {
         analyzerPort: 3300,
-        disable: true,
+        disable: false,
       },
     },
   ],

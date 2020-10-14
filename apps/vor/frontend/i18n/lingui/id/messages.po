@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:123
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:125
 #: src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx:41
 msgid " Go to Curriculum "
 msgstr " Ke Kurikulum "
@@ -23,8 +23,8 @@ msgid "(Starting on Jan 1st 2021)"
 msgstr "(Mulai 1 Jan 2021)"
 
 #: src/components/PageNewStudent/PageNewStudent.tsx:187
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:153
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:225
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:155
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:227
 msgid "Add"
 msgstr "Tambah"
 
@@ -124,11 +124,11 @@ msgstr "Kurikulum"
 msgid "Curriculum Progress"
 msgstr "Perkembangan Kurikulum"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:139
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:141
 msgid "Daily"
 msgstr "Harian"
 
-#: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:110
+#: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:114
 msgid "Date"
 msgstr "Tanggal"
 
@@ -154,7 +154,7 @@ msgstr "Hapus gambar?"
 msgid "Description"
 msgstr "Deskripsi"
 
-#: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:60
+#: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:61
 msgid "Details"
 msgstr "Detil"
 
@@ -275,8 +275,8 @@ msgstr "Undang dengan email"
 msgid "Invite using link"
 msgstr "Undang dengan link"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:111
-#: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:84
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:112
+#: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:86
 msgid "Links"
 msgstr "Tautan"
 
@@ -334,7 +334,7 @@ msgstr "Tagihan Selanjutnya"
 msgid "No email"
 msgstr "Tidak ada email"
 
-#: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:86
+#: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:89
 msgid "No links attached yet"
 msgstr "Belum ada tautan terpasang"
 
@@ -342,7 +342,7 @@ msgstr "Belum ada tautan terpasang"
 msgid "No materials in progress."
 msgstr "Tidak materi yang sedang dalam proses."
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:236
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:238
 msgid "No more students to add"
 msgstr "Tidak ada lagi murid untuk ditambahkan"
 
@@ -350,11 +350,11 @@ msgstr "Tidak ada lagi murid untuk ditambahkan"
 msgid "No observation have been added yet"
 msgstr "Belum ada observasi ditambahkan"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:174
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:176
 msgid "No other students added yet."
 msgstr "Belum ada murid lain ditambahkan."
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:138
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:140
 msgid "None"
 msgstr "Tidak ada"
 
@@ -390,7 +390,7 @@ msgstr "Observasi"
 msgid "Or"
 msgstr "Atau"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:150
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:152
 msgid "Other Related Students"
 msgstr "Siswa Terkait Lainnya"
 
@@ -440,7 +440,7 @@ msgstr "Baru saja Dikuasai"
 msgid "Record observations"
 msgstr "Rekam observasi"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:126
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:128
 msgid "Related Area"
 msgstr "Area Terkait"
 
@@ -448,11 +448,11 @@ msgstr "Area Terkait"
 msgid "Relationship"
 msgstr "Hubungan"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:143
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:145
 msgid "Repeat Until"
 msgstr "Ulang sampai"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:135
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:137
 msgid "Repetition"
 msgstr "Pengulangan"
 
@@ -485,7 +485,7 @@ msgstr "Simpan"
 msgid "Search"
 msgstr "Cari"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:225
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:227
 msgid "Select Students"
 msgstr "Pilih Murid"
 
@@ -631,7 +631,7 @@ msgstr "Pengguna"
 msgid "Wednesday"
 msgstr "Rabu"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:140
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:142
 msgid "Weekly"
 msgstr "Mingguan"
 
@@ -645,7 +645,7 @@ msgstr "Ya"
 msgid "You"
 msgstr "Anda"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:123
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:125
 #: src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx:41
 msgid "You can enable the curriculum feature to track student progress in your curriculum."
 msgstr "Anda dapat mengaktifkan fitur kurikulum untuk melacak perkembangan murid di kurikulum Anda."
