@@ -1,4 +1,6 @@
 import React from "react"
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { ReactQueryDevtools } from "react-query-devtools"
 import { AppComponent } from "next/dist/next-server/lib/router/router"
 import Layout from "../components/layout"
 import "../global.css"
@@ -10,6 +12,7 @@ const App: AppComponent = ({ Component, pageProps }) => {
       <Layout>
         <Component {...pageProps} />
       </Layout>
+      <ReactQueryDevtools initialIsOpen={false} />
     </ErrorBoundary>
   )
 }

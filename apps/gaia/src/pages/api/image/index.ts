@@ -13,9 +13,20 @@ export const config = {
 }
 
 const handlePost = async (res: NextApiResponse, req: NextApiRequest) => {
-  const { studentId, schoolId } = req.query
-  const imageId = uuidv4()
-  const key = `images/${schoolId}/${imageId}`
+  const { childId, schoolId, imageId } = req.query
+
+  if (!childId || Array.isArray(childId)) {
+    res.status(400).end("invalid childId")
+    return
+  }
+  if (!schoolId || Array.isArray(schoolId)) {
+    res.status(400).end("invalid schoolId")
+    return
+  }
+  if (Array.isArray(imageId)) {
+    res.status(400).end("don't use multiple imageId")
+    return
+  }
 
   // Parse form
   const data = await new Promise<File>((resolve, reject) => {
@@ -27,10 +38,16 @@ const handlePost = async (res: NextApiResponse, req: NextApiRequest) => {
     })
   })
 
+  if (!data) {
+    res.status(400).end("request must include an image file")
+    return
+  }
+
   // Save image
+  const key = `images/${schoolId}/${imageId}`
   const file = await fs.readFile(data.path)
   await uploadFile(key, file)
-  await insertImage(imageId, key, schoolId as string, studentId as string)
+  await insertImage(imageId ?? uuidv4(), key, schoolId, childId)
   res.status(200).end()
 }
 

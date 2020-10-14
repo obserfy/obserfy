@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.11.10](https://github.com/obserfy/obserfy/compare/v1.11.9...v1.11.10) (2020-10-01)
+
+
+### Bug Fixes
+
+* useGetChildPlans fetching invalid url. ([fde962c](https://github.com/obserfy/obserfy/commit/fde962c77a1806b4e93649ce4b9711530be4eaff))
+* **deps:** pin dependency next-pwa to 3.1.4 ([3072205](https://github.com/obserfy/obserfy/commit/3072205292ea7ba9ed0db6017cbf37adf173c67a))
+
 ### [1.11.9](https://github.com/obserfy/obserfy/compare/v1.11.8...v1.11.9) (2020-09-30)
 
 
