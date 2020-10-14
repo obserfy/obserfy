@@ -133,7 +133,7 @@
     "deploy-storybook": "storybook-to-ghpages",
     "add-locale": "lingui add-locale",
     "i18n:extract": "lingui extract",
-    "i18ncompile": "lingui compile"
+    "i18n:compile": "lingui compile"
   },
   "nyc": {
     "extends": "@istanbuljs/nyc-config-typescript",
