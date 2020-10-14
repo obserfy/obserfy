@@ -43,5 +43,6 @@ declare module "gatsby-theme-i18n" {
   type LocalizedLink<T> = Link<T>
 
   const LocalizedLink
-  export { LocalizedLink }
+  const useLocalization: () => { locale: string }
+  export { LocalizedLink, useLocalization }
 }

@@ -5,6 +5,7 @@ import { useLocation, useMatch } from "@reach/router"
 import { Box, Flex } from "theme-ui"
 import { i18nMark } from "@lingui/core"
 import { Trans } from "@lingui/macro"
+import { useLocalization } from "gatsby-theme-i18n"
 import { Link } from "../Link/Link"
 import { ReactComponent as SettingsIcon } from "../../icons/settings.svg"
 import { ReactComponent as StudentsIcon } from "../../icons/students.svg"
@@ -116,7 +117,8 @@ const NavBarItem: FC<{
   icon: FunctionComponent
   to: string
 }> = ({ title, icon, to }) => {
-  const match = useMatch(`${to}/*`)
+  const { locale } = useLocalization()
+  const match = useMatch(`/${locale}${to}/*`)
   const [target, setTarget] = useState(to)
   const location = useLocation()
   const url = `${match?.uri}/${match?.["*"]}${location.search}` ?? ""
