@@ -25,7 +25,9 @@ export const Layout: FC = ({ children }) => {
 
   const { locale } = useLocalization()
 
-  const studentSubroute = useMatch(`/${locale}/dashboard/students/*`)
+  const studentSubroute = useMatch(
+    `${locale !== "en" ? `/${locale}` : ""}/dashboard/students/*`
+  )
   const breakpoint = useBreakpointIndex({ defaultIndex: 2 })
 
   if (getSchoolId() === SCHOOL_ID_UNDEFINED_PLACEHOLDER) {

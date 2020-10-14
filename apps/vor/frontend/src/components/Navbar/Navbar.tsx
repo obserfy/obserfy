@@ -118,7 +118,7 @@ const NavBarItem: FC<{
   to: string
 }> = ({ title, icon, to }) => {
   const { locale } = useLocalization()
-  const match = useMatch(`/${locale}${to}/*`)
+  const match = useMatch(`${locale !== "en" ? `/${locale}` : ""}${to}/*`)
   const [target, setTarget] = useState(to)
   const location = useLocation()
   const url = `${match?.uri}/${match?.["*"]}${location.search}` ?? ""
