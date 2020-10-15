@@ -3,8 +3,8 @@ import { FC, Fragment, useState } from "react"
 import { Box, Button, Card, Flex, Image, jsx } from "theme-ui"
 import { useImmer } from "use-immer"
 import { nanoid } from "nanoid"
-import { i18nMark } from "@lingui/core"
-import { Trans } from "@lingui/macro"
+
+import { t, Trans } from "@lingui/macro"
 import { useGetCurriculumAreas } from "../../api/useGetCurriculumAreas"
 import usePostNewPlan, {
   PostNewLessonPlanBody,
@@ -121,14 +121,14 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
         <Box mx={3} mt={2}>
           <DateInput label="Date" value={date} onChange={setDate} mb={2} />
           <Input
-            label={i18nMark("Title")}
+            label={t`Title`}
             sx={{ width: "100%" }}
             mb={2}
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
           <TextArea
-            label={i18nMark("Description")}
+            label={t`Description`}
             mb={4}
             value={description}
             sx={{ width: "100%" }}
@@ -162,10 +162,10 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
         {areas.status === "success" && (areas.data?.length ?? 0) === 0 ? (
           <Box mx={[0, 3]}>
             <InformationalCard
-              message={i18nMark(
-                "You can enable the curriculum feature to track student progress in your curriculum."
-              )}
-              buttonText={i18nMark(" Go to Curriculum ")}
+              message={t`
+                You can enable the curriculum feature to track student progress in your curriculum.
+              `}
+              buttonText={t` Go to Curriculum `}
               to={ADMIN_CURRICULUM_URL}
             />
           </Box>
@@ -197,21 +197,21 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
           <Flex>
             <Chip
               mr={2}
-              text={i18nMark("None")}
+              text={t`None`}
               activeBackground="primary"
               onClick={() => setRepetition(0)}
               isActive={repetition === 0}
             />
             <Chip
               mr={2}
-              text={i18nMark("Daily")}
+              text={t`Daily`}
               activeBackground="primary"
               onClick={() => setRepetition(1)}
               isActive={repetition === 1}
             />
             <Chip
               mr={2}
-              text={i18nMark("Weekly")}
+              text={t`Weekly`}
               activeBackground="primary"
               onClick={() => setRepetition(2)}
               isActive={repetition === 2}
@@ -220,7 +220,7 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
           {repetition > 0 && (
             <Box mt={3}>
               <DateInput
-                label={i18nMark("Repeat Until")}
+                label={t`Repeat Until`}
                 value={endDate}
                 onChange={setEndDate}
                 mb={2}
@@ -381,8 +381,8 @@ const StudentPickerDialog: FC<{
   return (
     <Dialog>
       <DialogHeader
-        onAcceptText={i18nMark("Add")}
-        title={i18nMark("Select Students")}
+        onAcceptText={t`Add`}
+        title={t`Select Students`}
         onCancel={onDismiss}
         onAccept={() => {
           onAccept(selected)

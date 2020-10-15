@@ -1,8 +1,7 @@
 /** @jsx jsx */
 import { FC, Fragment, useState } from "react"
 import { Box, Button, Card, Flex, jsx } from "theme-ui"
-import { Trans } from "@lingui/macro"
-import { i18nMark } from "@lingui/core"
+import { t, Trans } from "@lingui/macro"
 import useGetPlan, { GetPlanResponseBody } from "../../api/plans/useGetPlan"
 import useDeletePlans from "../../api/plans/useDeletePlan"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
@@ -161,7 +160,7 @@ const DateDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
   return (
     <Fragment>
       <DataBox
-        label={i18nMark("Date")}
+        label={t`Date`}
         onEditClick={() => setShowEditDialog(true)}
         value={value ? dayjs(value).format("D MMMM YYYY") : "N/A"}
       />

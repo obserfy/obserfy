@@ -1,8 +1,8 @@
 import React, { FC, useState } from "react"
 import { useImmer } from "use-immer"
 import { Box, Button, Card, Flex } from "theme-ui"
-import { i18nMark } from "@lingui/core"
-import { Trans } from "@lingui/macro"
+
+import {t, Trans } from "@lingui/macro"
 import { Link, navigate } from "../Link/Link"
 import { useGetGuardian } from "../../api/guardians/useGetGuardian"
 import Input from "../Input/Input"
@@ -193,26 +193,26 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
             />
           </Flex>
           <Input
-            label={i18nMark("Name (Required)")}
+            label={t`Name (Required)`}
             sx={{ width: "100%" }}
             value={name}
             onChange={(e) => setName(e.target.value)}
             mb={3}
           />
           <DateInput
-            label={i18nMark("Date of Birth")}
+            label={t`Date of Birth`}
             value={dateOfBirth}
             onChange={setDateOfBirth}
             mb={3}
           />
           <DateInput
-            label={i18nMark("Date of Entry")}
+            label={t`Date of Entry`}
             value={dateOfEntry}
             onChange={setDateOfEntry}
             mb={3}
           />
           <Select
-            label={i18nMark("Gender")}
+            label={t`Gender`}
             mb={3}
             value={gender}
             onChange={(e) => setGender(parseInt(e.target.value, 10))}
@@ -230,14 +230,14 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
           <Input
             value={customId}
             onChange={(e) => setCustomId(e.target.value)}
-            label={i18nMark("Student ID")}
+            label={t`Student ID`}
             sx={{ width: "100%" }}
             mb={3}
           />
           <TextArea
             value={note}
             onChange={(e) => setNotes(e.target.value)}
-            label={i18nMark("Notes")}
+            label={t`Notes`}
             sx={{ height: 100 }}
           />
         </Box>

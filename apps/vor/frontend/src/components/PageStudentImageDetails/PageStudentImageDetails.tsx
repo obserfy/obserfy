@@ -1,7 +1,6 @@
 import React, { FC, useState } from "react"
 import { Box, Button, Flex, Image } from "theme-ui"
-import { i18nMark } from "@lingui/core"
-import { Trans } from "@lingui/macro"
+import { t, Trans } from "@lingui/macro"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { STUDENT_IMAGES_URL } from "../../routes"
 import useGetImage from "../../api/useGetImage"
@@ -30,7 +29,7 @@ export const PageStudentImageDetails: FC<Props> = ({ studentId, imageId }) => {
       <Box sx={{ maxWidth: "maxWidth.md" }} margin="auto">
         <BackNavigation
           to={STUDENT_IMAGES_URL(studentId)}
-          text={i18nMark("Image gallery")}
+          text={t`Image gallery`}
         />
         <Typography.H5 m={3}>{student.data?.name}</Typography.H5>
         <Box px={[0, 3]}>
@@ -63,10 +62,10 @@ export const PageStudentImageDetails: FC<Props> = ({ studentId, imageId }) => {
       </Box>
       {showDeleteDialog && (
         <AlertDialog
-          title={i18nMark("Delete image?")}
-          positiveText={i18nMark("Delete")}
-          body={i18nMark("Are you sure you want to delete this image?")}
-          negativeText={i18nMark("Cancel")}
+          title={t`Delete image?`}
+          positiveText={t`Delete`}
+          body={t`Are you sure you want to delete this image?`}
+          negativeText={t`Cancel`}
           onDismiss={() => setShowDeleteDialog(false)}
           onNegativeClick={() => setShowDeleteDialog(false)}
           loading={isLoading}
@@ -81,12 +80,12 @@ export const PageStudentImageDetails: FC<Props> = ({ studentId, imageId }) => {
 
       {showSetProfileDialog && (
         <AlertDialog
-          title={i18nMark("Set as profile?")}
-          positiveText={i18nMark("Yes")}
-          body={i18nMark(
+          title={t`Set as profile?`}
+          positiveText={t`Yes`}
+          body={t`
             "Are you sure you want to set this image as profile picture?"
-          )}
-          negativeText={i18nMark("Cancel")}
+          `}
+          negativeText={t`Cancel`}
           onDismiss={() => setShowSetProfileDialog(false)}
           onNegativeClick={() => setShowSetProfileDialog(false)}
           loading={status === "loading"}

@@ -66,7 +66,7 @@ export function materialStageToString(stage?: MaterialProgressStage) {
       status = t`Presented`
       break
     default:
-      return undefined
+      return ""
   }
   return status
 }

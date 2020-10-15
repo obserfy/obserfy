@@ -1,8 +1,7 @@
 /** @jsx jsx */
 import { FC, Fragment, useState } from "react"
 import { Box, Button, Card, Flex, jsx } from "theme-ui"
-import { i18nMark } from "@lingui/core"
-import { Trans } from "@lingui/macro"
+import { t, Trans } from "@lingui/macro"
 import { useGetGuardian } from "../../api/guardians/useGetGuardian"
 import { usePatchGuardian } from "../../api/guardians/usePatchGuardian"
 import { ADMIN_GUARDIAN_URL } from "../../routes"
@@ -35,10 +34,7 @@ export const PageGuardianProfile: FC<Props> = ({ guardianId }) => {
 
   return (
     <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={4}>
-      <BackNavigation
-        to={ADMIN_GUARDIAN_URL}
-        text={i18nMark("All Guardians")}
-      />
+      <BackNavigation to={ADMIN_GUARDIAN_URL} text={t`All Guardians`} />
       <Card sx={{ borderRadius: [0, "default"] }} mb={3}>
         <NameDataBox
           value={data?.name}
@@ -79,22 +75,22 @@ const NameDataBox: FC<{ value?: string; guardianId: string }> = ({
   return (
     <Fragment>
       <DataBox
-        label={i18nMark("Name")}
+        label={t`Name`}
         value={value ?? ""}
         onEditClick={() => setShowEditDialog(true)}
       />
       {showEditDialog && (
         <Dialog>
           <DialogHeader
-            title={i18nMark("Edit Name")}
-            onAcceptText={i18nMark("Save")}
+            title={t`Edit Name`}
+            onAcceptText={t`Save`}
             onCancel={() => setShowEditDialog(false)}
             onAccept={saveName}
             loading={status === "loading"}
           />
           <Box sx={{ backgroundColor: "background" }} p={3}>
             <Input
-              label={i18nMark("Name")}
+              label={t`Name`}
               sx={{ width: "100%" }}
               onChange={(e) => {
                 setName(e.target.value)
@@ -122,22 +118,22 @@ const EmailDataBox: FC<{ value?: string; guardianId: string }> = ({
   return (
     <Fragment>
       <DataBox
-        label={i18nMark("Email")}
+        label={t`Email`}
         value={value ?? ""}
         onEditClick={() => setShowEditDialog(true)}
       />
       {showEditDialog && (
         <Dialog>
           <DialogHeader
-            title={i18nMark("Edit Email")}
-            onAcceptText={i18nMark("Save")}
+            title={t`Edit Email`}
+            onAcceptText={t`Save`}
             onCancel={() => setShowEditDialog(false)}
             onAccept={saveEmail}
             loading={status === "loading"}
           />
           <Box sx={{ backgroundColor: "background" }} p={3}>
             <Input
-              label={i18nMark("Email")}
+              label={t`Email`}
               sx={{ width: "100%" }}
               onChange={(e) => {
                 setEmail(e.target.value)
@@ -165,22 +161,22 @@ const PhoneDataBox: FC<{ value?: string; guardianId: string }> = ({
   return (
     <Fragment>
       <DataBox
-        label={i18nMark("Phone")}
+        label={t`Phone`}
         value={value ?? ""}
         onEditClick={() => setShowEditDialog(true)}
       />
       {showEditDialog && (
         <Dialog>
           <DialogHeader
-            title={i18nMark("Edit Phone")}
-            onAcceptText={i18nMark("Save")}
+            title={t`Edit Phone`}
+            onAcceptText={t`Save`}
             onCancel={() => setShowEditDialog(false)}
             onAccept={savePhone}
             loading={status === "loading"}
           />
           <Box sx={{ backgroundColor: "background" }} p={3}>
             <Input
-              label={i18nMark("Phone")}
+              label={t`Phone`}
               sx={{ width: "100%" }}
               onChange={(e) => {
                 setPhone(e.target.value)
@@ -208,22 +204,22 @@ const NoteDataBox: FC<{ value?: string; guardianId: string }> = ({
   return (
     <Fragment>
       <DataBox
-        label={i18nMark("Note")}
+        label={t`Note`}
         value={value ?? ""}
         onEditClick={() => setShowEditDialog(true)}
       />
       {showEditDialog && (
         <Dialog>
           <DialogHeader
-            title={i18nMark("Edit Note")}
-            onAcceptText={i18nMark("Save")}
+            title={t`Edit Note`}
+            onAcceptText={t`Save`}
             onCancel={() => setShowEditDialog(false)}
             onAccept={saveNote}
             loading={status === "loading"}
           />
           <Box sx={{ backgroundColor: "background" }} p={3}>
             <Input
-              label={i18nMark("Note")}
+              label={t`Note`}
               sx={{ width: "100%" }}
               onChange={(e) => {
                 setNote(e.target.value)

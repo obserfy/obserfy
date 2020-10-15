@@ -1,11 +1,10 @@
 import React, { FC } from "react"
-import { BoxProps, Box } from "theme-ui"
+import { Box, BoxProps } from "theme-ui"
 import { Trans } from "@lingui/macro"
-import { MessageDescriptor } from "@lingui/core"
 import Typography from "../Typography/Typography"
 
 interface Props extends BoxProps {
-  text?: string | MessageDescriptor
+  text?: string
 }
 export const Pill: FC<Props> = ({ sx, color, text, ...props }) => {
   const borderProps = {

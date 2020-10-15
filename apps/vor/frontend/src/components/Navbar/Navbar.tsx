@@ -3,8 +3,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import GatsbyImage from "gatsby-image"
 import { useLocation, useMatch } from "@reach/router"
 import { Box, Flex } from "theme-ui"
-import { i18nMark } from "@lingui/core"
-import { Trans } from "@lingui/macro"
+import { Trans, t } from "@lingui/macro"
 import { useLocalization } from "gatsby-theme-i18n"
 import { Link } from "../Link/Link"
 import { ReactComponent as SettingsIcon } from "../../icons/settings.svg"
@@ -85,11 +84,7 @@ const Navbar: FC = () => {
         <Box mx="auto" my={3} sx={{ display: ["none", "block"] }} mb={4}>
           <GatsbyImage fixed={query.file.childImageSharp.fixed} />
         </Box>
-        <NavBarItem
-          title={i18nMark("Students")}
-          icon={StudentsIcon}
-          to={STUDENTS_URL}
-        />
+        <NavBarItem title={t`Students`} icon={StudentsIcon} to={STUDENTS_URL} />
         {/* <NavBarItem title="Plan" icon={CalendarIcon} to="/dashboard/plans" /> */}
         <Box
           sx={{
@@ -97,16 +92,8 @@ const Navbar: FC = () => {
             display: ["none", "block"],
           }}
         />
-        <NavBarItem
-          title={i18nMark("Admin")}
-          icon={SettingsIcon}
-          to={ADMIN_URL}
-        />
-        <NavBarItem
-          title={i18nMark("Support")}
-          icon={MessageIcon}
-          to={SUPPORT_URL}
-        />
+        <NavBarItem title={t`Admin`} icon={SettingsIcon} to={ADMIN_URL} />
+        <NavBarItem title={t`Support`} icon={MessageIcon} to={SUPPORT_URL} />
       </Flex>
     </TranslucentBar>
   )

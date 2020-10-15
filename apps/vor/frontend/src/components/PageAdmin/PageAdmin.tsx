@@ -1,8 +1,7 @@
 import React, { FC } from "react"
 import { navigate } from "gatsby"
 import { Box, Button, Flex, useColorMode } from "theme-ui"
-import { i18nMark } from "@lingui/core"
-import { Trans } from "@lingui/macro"
+import { t, Trans } from "@lingui/macro"
 import { useGetSchool } from "../../api/schools/useGetSchool"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import Typography from "../Typography/Typography"
@@ -45,31 +44,15 @@ export const PageAdmin: FC = () => {
           {schoolDetail.data?.name}
         </Typography.H5>
       </Box>
+      <CardLink mb={2} name={t`Curriculum`} to={ADMIN_CURRICULUM_URL} />
+      <CardLink mb={2} name={t`Users`} to={ADMIN_USERS_URL} />
+      <CardLink mb={2} name={t`Class`} to={CLASS_SETTINGS_URL} />
+      <CardLink mb={2} name={t`All Students`} to={ADMIN_STUDENTS_URL} />
+      <CardLink mb={2} name={t`All Guardians`} to={ADMIN_GUARDIAN_URL} />
+      <CardLink mb={2} name={t`Invite Your Team`} to={ADMIN_INVITE_USER_URL} />
       <CardLink
         mb={2}
-        name={i18nMark("Curriculum")}
-        to={ADMIN_CURRICULUM_URL}
-      />
-      <CardLink mb={2} name={i18nMark("Users")} to={ADMIN_USERS_URL} />
-      <CardLink mb={2} name={i18nMark("Class")} to={CLASS_SETTINGS_URL} />
-      <CardLink
-        mb={2}
-        name={i18nMark("All Students")}
-        to={ADMIN_STUDENTS_URL}
-      />
-      <CardLink
-        mb={2}
-        name={i18nMark("All Guardians")}
-        to={ADMIN_GUARDIAN_URL}
-      />
-      <CardLink
-        mb={2}
-        name={i18nMark("Invite Your Team")}
-        to={ADMIN_INVITE_USER_URL}
-      />
-      <CardLink
-        mb={2}
-        name={i18nMark("Subscription Plan")}
+        name={t`Subscription Plan`}
         to={ADMIN_SUBSCRIPTION_URL}
       />
       <Flex mt={2}>

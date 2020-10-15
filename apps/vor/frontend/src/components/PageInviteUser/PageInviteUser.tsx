@@ -3,8 +3,7 @@ import { FC } from "react"
 import { Box, Button, Flex, jsx } from "theme-ui"
 import { nanoid } from "nanoid"
 import { useImmer } from "use-immer"
-import { i18nMark } from "@lingui/core"
-import { Trans } from "@lingui/macro"
+import {t, Trans } from "@lingui/macro"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { ADMIN_URL } from "../../routes"
 import Typography from "../Typography/Typography"
@@ -58,7 +57,7 @@ const PageInviteUser: FC = () => {
 
   return (
     <Box sx={{ maxWidth: "maxWidth.sm" }} mx="auto">
-      <BackNavigation to={ADMIN_URL} text={i18nMark("Settings")} />
+      <BackNavigation to={ADMIN_URL} text={t`Settings`} />
       <Typography.H6 m={3} mb={4} sx={{ lineHeight: 1 }}>
         <Trans>Invite using emails</Trans>
       </Typography.H6>

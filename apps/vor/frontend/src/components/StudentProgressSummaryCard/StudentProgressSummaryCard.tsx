@@ -1,7 +1,6 @@
 import React, { FC, useState } from "react"
 import { Box, Button, Card, Flex } from "theme-ui"
-import { i18nMark } from "@lingui/core"
-import { Trans } from "@lingui/macro"
+import { t, Trans } from "@lingui/macro"
 import { Link } from "../Link/Link"
 import Spacer from "../Spacer/Spacer"
 import Typography from "../Typography/Typography"
@@ -65,10 +64,10 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
     return (
       <Box mx={[0, 3]}>
         <InformationalCard
-          message={i18nMark(
-            "You can enable the curriculum feature to track student progress in your curriculum."
-          )}
-          buttonText={i18nMark(" Go to Curriculum ")}
+          message={t`
+            You can enable the curriculum feature to track student progress in your curriculum.
+          `}
+          buttonText={t`Go to Curriculum `}
           to={ADMIN_CURRICULUM_URL}
         />
       </Box>

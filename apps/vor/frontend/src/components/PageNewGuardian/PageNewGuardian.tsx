@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react"
 import { Button, Box } from "theme-ui"
-import { i18nMark } from "@lingui/core"
-import { Trans } from "@lingui/macro"
+
+import {t, Trans } from "@lingui/macro"
 import Select from "../Select/Select"
 import { GuardianRelationship } from "../../api/students/usePostNewStudent"
 import Input from "../Input/Input"
@@ -41,12 +41,12 @@ export const PageNewGuardian: FC<Props> = ({ id }) => {
         <Input
           value={name}
           mb={2}
-          label={i18nMark("Guardian Name")}
+          label={t`Guardian Name`}
           sx={{ width: "100%" }}
           onChange={(e) => setName(e.target.value)}
         />
         <Select
-          label={i18nMark("Relationship")}
+          label={t`Relationship`}
           mb={2}
           onChange={(e) => setRelationship(parseInt(e.target.value, 10))}
           value={relationship}
@@ -59,7 +59,7 @@ export const PageNewGuardian: FC<Props> = ({ id }) => {
           type="email"
           value={email}
           mb={2}
-          label={i18nMark("Email")}
+          label={t`Email`}
           sx={{ width: "100%" }}
           onChange={(event) => setEmail(event.target.value)}
         />
@@ -67,13 +67,13 @@ export const PageNewGuardian: FC<Props> = ({ id }) => {
           type="phone"
           value={phone}
           mb={3}
-          label={i18nMark("Phone")}
+          label={t`Phone`}
           sx={{ width: "100%" }}
           onChange={(event) => setPhone(event.target.value)}
         />
         <TextArea
           mb={3}
-          label={i18nMark("Note")}
+          label={t`Note`}
           value={note}
           onChange={(e) => setNote(e.target.value)}
         />

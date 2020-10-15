@@ -1,7 +1,6 @@
 import React, { FC, useState } from "react"
 import { Box, Button, Card, Flex, useColorMode } from "theme-ui"
-import { Trans } from "@lingui/macro"
-import { i18nMark } from "@lingui/core"
+import { t, Trans } from "@lingui/macro"
 import dayjs from "../../dayjs"
 import Typography from "../Typography/Typography"
 import BackNavigation from "../BackNavigation/BackNavigation"
@@ -24,7 +23,7 @@ export const PageSubscription: FC = () => {
 
   return (
     <Box mx="auto" sx={{ maxWidth: "maxWidth.xsm" }}>
-      <BackNavigation to={ADMIN_URL} text={i18nMark("Settings")} />
+      <BackNavigation to={ADMIN_URL} text={t`Settings`} />
       <Typography.H4 sx={{ fontWeight: "bold", textAlign: "center" }} mb={4}>
         <Trans>Subscription Plan</Trans>
       </Typography.H4>
@@ -119,14 +118,14 @@ export const PageSubscription: FC = () => {
         </Flex>
 
         <Box my={3}>
-          <Feature text={i18nMark("Unlimited students")} />
-          <Feature text={i18nMark("Record observations")} />
-          <Feature text={i18nMark("Create lesson plans")} />
-          <Feature text={i18nMark("Track curriculum progress")} />
-          <Feature text={i18nMark("Parent portal")} />
-          <Feature text={i18nMark("Image gallery")} />
-          <Feature text={i18nMark("Reporting")} comingSoon />
-          <Feature text={i18nMark("And more coming...")} />
+          <Feature text={t`Unlimited students`} />
+          <Feature text={t`Record observations`} />
+          <Feature text={t`Create lesson plans`} />
+          <Feature text={t`Track curriculum progress`} />
+          <Feature text={t`Parent portal`} />
+          <Feature text={t`Image gallery`} />
+          <Feature text={t`Reporting`} comingSoon />
+          <Feature text={t`And more coming...`} />
         </Box>
 
         <Button

@@ -163,8 +163,8 @@ const SubjectMaterials: FC<{
               <Pill
                 mx={2}
                 text={stage}
-                color={`materialStage.on${stage.id}`}
-                backgroundColor={`materialStage.${stage?.id?.toLocaleLowerCase()}`}
+                color={`materialStage.on${stage}`}
+                backgroundColor={`materialStage.${stage.toLocaleLowerCase()}`}
               />
             )}
             <Icon as={NextIcon} mr={3} />

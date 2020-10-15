@@ -1,8 +1,7 @@
 /** @jsx jsx */
 import { FC, Fragment, useState } from "react"
 import { Box, Button, Card, Flex, jsx } from "theme-ui"
-import { Trans } from "@lingui/macro"
-import { i18nMark } from "@lingui/core"
+import { t, Trans } from "@lingui/macro"
 import { useGetStudent } from "../../api/useGetStudent"
 import { usePatchStudentApi } from "../../api/students/usePatchStudentApi"
 
@@ -162,7 +161,7 @@ export const PageStudentProfile: FC<Props> = ({ studentId }) => {
                     sx={{ lineHeight: 1, fontSize: 1 }}
                     color="textMediumEmphasis"
                   >
-                    <Trans id={email || i18nMark("No email")} />
+                    <Trans id={email || t`No email`} />
                   </Typography.Body>
                 </Box>
               )
@@ -204,22 +203,22 @@ const NameDataBox: FC<{ value?: string; studentId: string }> = ({
   return (
     <Fragment>
       <DataBox
-        label={i18nMark("Name")}
+        label={t`Name`}
         value={value ?? ""}
         onEditClick={() => setShowEditDialog(true)}
       />
       {showEditDialog && (
         <Dialog>
           <DialogHeader
-            title={i18nMark("Edit Name")}
-            onAcceptText={i18nMark("Save")}
+            title={t`Edit Name`}
+            onAcceptText={t`Save`}
             onCancel={() => setShowEditDialog(false)}
             onAccept={saveName}
             loading={status === "loading"}
           />
           <Box sx={{ backgroundColor: "background" }} p={3}>
             <Input
-              label={i18nMark("Name")}
+              label={t`Name`}
               sx={{ width: "100%" }}
               onChange={(e) => {
                 setName(e.target.value)
@@ -247,24 +246,24 @@ const GenderDataBox: FC<{ value?: number; studentId: string }> = ({
   return (
     <Fragment>
       <DataBox
-        label={i18nMark("Gender")}
+        label={t`Gender`}
         onEditClick={() => setShowEditDialog(true)}
         value={(() => {
           switch (gender) {
             case 1:
-              return i18nMark("Male")
+              return t`Male`
             case 2:
-              return i18nMark("Female")
+              return t`Female`
             default:
-              return i18nMark("Not Set")
+              return t`Not Set`
           }
         })()}
       />
       {showEditDialog && (
         <Dialog>
           <DialogHeader
-            title={i18nMark("Edit Gender")}
-            onAcceptText={i18nMark("Save")}
+            title={t`Edit Gender`}
+            onAcceptText={t`Save`}
             onCancel={() => setShowEditDialog(false)}
             onAccept={saveGender}
             loading={status === "loading"}
@@ -276,7 +275,7 @@ const GenderDataBox: FC<{ value?: number; studentId: string }> = ({
             p={3}
           >
             <Select
-              label={i18nMark("Gender")}
+              label={t`Gender`}
               value={gender}
               onChange={(e) => {
                 setGender(parseInt(e.target.value, 10))
@@ -313,22 +312,22 @@ const StudentIdDataBox: FC<{ value?: string; studentId: string }> = ({
   return (
     <Fragment>
       <DataBox
-        label={i18nMark("Student ID")}
-        value={customId || i18nMark("Not Set")}
+        label={t`Student ID`}
+        value={customId || t`Not Set`}
         onEditClick={() => setShowEditDialog(true)}
       />
       {showEditDialog && (
         <Dialog>
           <DialogHeader
-            title={i18nMark("Edit Student ID")}
-            onAcceptText={i18nMark("Save")}
+            title={t`Edit Student ID`}
+            onAcceptText={t`Save`}
             onCancel={() => setShowEditDialog(false)}
             onAccept={saveCustomId}
             loading={status === "loading"}
           />
           <Box sx={{ backgroundColor: "background" }} p={3}>
             <Input
-              label={i18nMark("Student ID")}
+              label={t`Student ID`}
               sx={{ width: "100%" }}
               value={customId}
               onChange={(e) => {
@@ -384,7 +383,7 @@ const DateOfEntryDataBox: FC<{ value?: string; studentId: string }> = ({
   return (
     <Fragment>
       <DataBox
-        label={i18nMark("Date of Entry")}
+        label={t`Date of Entry`}
         value={value ? dayjs(value).format("D MMMM YYYY") : "N/A"}
         onEditClick={() => setShowEditDialog(true)}
       />
@@ -451,8 +450,8 @@ const SetStatusDataBox: FC<{
       {showStatusDialog && (
         <AlertDialog
           title={active ? setInactiveText : setActiveText}
-          negativeText={i18nMark("Cancel")}
-          positiveText={i18nMark("Yes")}
+          negativeText={t`Cancel`}
+          positiveText={t`Yes`}
           body={`Are you sure you want to set ${name} as ${
             active ? "inactive" : "active"
           }?`}

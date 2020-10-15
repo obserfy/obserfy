@@ -30,6 +30,20 @@ const guessJsPlugin =
       ]
     : []
 
+const sentryPlugin =
+  process.env.NODE_ENV === "production"
+    ? [
+        {
+          resolve: "@sentry/gatsby",
+          options: {
+            dsn: "https://05a5ecaa1d8c4c01b96d2a7993fa9337@sentry.io/1852524",
+            release: require("fs").readFileSync("../../../VERSION", "utf8"),
+            tracesSampleRate: 0.1,
+          },
+        },
+      ]
+    : []
+
 // Only enable preact on prod. It has inconsistent fast-refresh behaviour and swallows all errors on dev,
 // revisit later.
 const preactPlugin =
@@ -179,14 +193,7 @@ module.exports = {
         showSpinner: false,
       },
     },
-    {
-      resolve: "@sentry/gatsby",
-      options: {
-        dsn: "https://05a5ecaa1d8c4c01b96d2a7993fa9337@sentry.io/1852524",
-        release: require("fs").readFileSync("../../../VERSION", "utf8"),
-        tracesSampleRate: process.env.NODE_ENV === "development" ? 0 : 0.1,
-      },
-    },
+    ...sentryPlugin,
     {
       resolve: `gatsby-plugin-graphql-codegen`,
       options: {

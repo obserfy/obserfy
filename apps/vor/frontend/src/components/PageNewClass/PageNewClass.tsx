@@ -1,8 +1,7 @@
 import React, { FC, useState } from "react"
 import { useImmer } from "use-immer"
 import { Flex, Button, Box } from "theme-ui"
-import { Trans } from "@lingui/macro"
-import { i18nMark } from "@lingui/core"
+import { Trans, t } from "@lingui/macro"
 import dayjs from "../../dayjs"
 import { navigate } from "../Link/Link"
 import BackNavigation from "../BackNavigation/BackNavigation"
@@ -17,13 +16,13 @@ import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import ErrorMessage from "../ErrorMessage/ErrorMessage"
 
 export const WEEKDAYS = [
-  i18nMark("Sunday"),
-  i18nMark("Monday"),
-  i18nMark("Tuesday"),
-  i18nMark("Wednesday"),
-  i18nMark("Thursday"),
-  i18nMark("Friday"),
-  i18nMark("Saturday"),
+  t`Sunday`,
+  t`Monday`,
+  t`Tuesday`,
+  t`Wednesday`,
+  t`Thursday`,
+  t`Friday`,
+  t`Saturday`,
 ]
 
 export const PageNewClass: FC = () => {
@@ -55,7 +54,7 @@ export const PageNewClass: FC = () => {
       </Typography.H5>
       <Box m={3}>
         <Input
-          label={i18nMark("Name")}
+          label={t`Name`}
           sx={{ width: "100%" }}
           mb={3}
           value={name}
@@ -66,7 +65,7 @@ export const PageNewClass: FC = () => {
             type="time"
             value={startTime}
             onChange={(e) => setStartTime(e.target.value)}
-            label={i18nMark("Start Time")}
+            label={t`Start Time`}
             sx={{ width: "100%" }}
             mb={3}
             mr={3}
@@ -75,7 +74,7 @@ export const PageNewClass: FC = () => {
             type="time"
             value={endTime}
             onChange={(e) => setEndTime(e.target.value)}
-            label={i18nMark("End Time")}
+            label={t`End Time`}
             sx={{ width: "100%" }}
             mb={3}
           />

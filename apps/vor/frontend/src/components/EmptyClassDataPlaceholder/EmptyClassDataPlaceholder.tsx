@@ -1,16 +1,17 @@
 import React, { FC } from "react"
 import { Box } from "theme-ui"
-import { i18nMark } from "@lingui/core"
+
+import { t } from "@lingui/macro"
 import InformationalCard from "../InformationalCard/InformationalCard"
 import { CLASS_SETTINGS_URL } from "../../routes"
 
 export const EmptyClassDataPlaceholder: FC = () => (
   <Box mx={[0, 3]}>
     <InformationalCard
-      buttonText={i18nMark("Go to Class Settings")}
-      message={i18nMark(
+      buttonText={t`Go to Class Settings`}
+      message={t`
         "Create your first class to track your student's class enrollment."
-      )}
+      `}
       to={CLASS_SETTINGS_URL}
     />
   </Box>

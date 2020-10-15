@@ -2,8 +2,7 @@
 import { FC, Fragment, useMemo, useState } from "react"
 import { navigate } from "gatsby"
 import { Box, Button, Flex, Image, jsx } from "theme-ui"
-import { Trans } from "@lingui/macro"
-import { i18nMark } from "@lingui/core"
+import { t, Trans } from "@lingui/macro"
 import { Link } from "../Link/Link"
 import { useGetStudent } from "../../api/useGetStudent"
 import Typography from "../Typography/Typography"
@@ -150,8 +149,8 @@ const ObservationSection: FC<{ studentId: string }> = ({ studentId }) => {
     <EmptyListPlaceholder
       my={3}
       sx={{ borderRadius: [0, "default"] }}
-      text={i18nMark("No observation have been added yet")}
-      callToActionText={i18nMark("new observation")}
+      text={t`No observation have been added yet`}
+      callToActionText={t`new observation`}
       onActionClick={() => navigate(NEW_OBSERVATION_URL(studentId))}
     />
   )
