@@ -83,7 +83,7 @@ export const PageStudentImageDetails: FC<Props> = ({ studentId, imageId }) => {
           title={t`Set as profile?`}
           positiveText={t`Yes`}
           body={t`
-            "Are you sure you want to set this image as profile picture?"
+            Are you sure you want to set this image as profile picture?
           `}
           negativeText={t`Cancel`}
           onDismiss={() => setShowSetProfileDialog(false)}

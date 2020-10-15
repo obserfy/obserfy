@@ -8,7 +8,7 @@ import BreadcrumbItem from "../Breadcrumb/BreadcrumbItem"
 export interface TopBarProps {
   breadcrumbs: Array<{
     to?: string
-    text?: string
+    text: string
   }>
 }
 export const TopBar: FC<TopBarProps> = ({ breadcrumbs }) => (

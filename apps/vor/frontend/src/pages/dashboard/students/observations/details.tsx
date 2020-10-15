@@ -1,5 +1,6 @@
 import React, { FC } from "react"
 import { Box } from "theme-ui"
+import { t } from "@lingui/macro"
 import SEO from "../../../../components/seo"
 import { useQueryString } from "../../../../hooks/useQueryString"
 import PageObservationDetails from "../../../../components/PageObservationDetails/PageObservationDetails"
@@ -22,16 +23,16 @@ const ObservationDetails: FC = () => {
       <SEO title="Edit Student" />
       <TopBar
         breadcrumbs={[
-          { to: STUDENTS_URL, text: "Students" },
+          { to: STUDENTS_URL, text: t`Students` },
           {
             to: STUDENT_OVERVIEW_PAGE_URL(studentId),
-            text: student.data?.name?.split(" ")[0],
+            text: student.data?.name?.split(" ")[0] ?? "",
           },
           {
             to: ALL_OBSERVATIONS_PAGE_URL(studentId),
-            text: "Observations",
+            text: t`Observations`,
           },
-          { text: "Details" },
+          { text: t`Details` },
         ]}
       />
       <PageObservationDetails

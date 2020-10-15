@@ -9,9 +9,7 @@ export const EmptyClassDataPlaceholder: FC = () => (
   <Box mx={[0, 3]}>
     <InformationalCard
       buttonText={t`Go to Class Settings`}
-      message={t`
-        "Create your first class to track your student's class enrollment."
-      `}
+      message={t` Create your first class to track your student's class enrollment.`}
       to={CLASS_SETTINGS_URL}
     />
   </Box>

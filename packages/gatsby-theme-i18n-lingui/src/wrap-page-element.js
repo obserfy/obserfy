@@ -8,7 +8,7 @@ const wrapPageElement = ({ element, props }) => {
 
   const catalog = require(`${GATSBY_THEME_I18N_LINGUI}/${locale}/messages.js`);
   const i18n = setupI18n();
-  i18n.load(catalog);
+  i18n.load(locale, catalog.messages);
   i18n.activate(locale);
 
   return <I18nProvider i18n={i18n}>{element}</I18nProvider>;
