@@ -18,9 +18,9 @@ msgstr ""
 msgid " Go to Curriculum "
 msgstr " Go to Curriculum "
 
-#: src/components/PageSubscription/PageSubscription.tsx:137
+#: src/components/PageSubscription/PageSubscription.tsx:134
 msgid "(Starting on Jan 1st 2021)"
-msgstr "(Mulai Tanggal 1 Jan 2021)"
+msgstr "(Starting on Jan 1st 2021)"
 
 #: src/components/PageNewStudent/PageNewStudent.tsx:187
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:155
@@ -40,7 +40,7 @@ msgstr "Add more email"
 msgid "Add new plan"
 msgstr "Add new plan"
 
-#: src/components/Navbar/Navbar.tsx:80
+#: src/components/Navbar/Navbar.tsx:81
 msgid "Admin"
 msgstr "Admin"
 
@@ -63,7 +63,7 @@ msgstr "All Students"
 msgid "Amount Due"
 msgstr "Amount Due"
 
-#: src/components/PageSubscription/PageSubscription.tsx:105
+#: src/components/PageSubscription/PageSubscription.tsx:102
 msgid "And more coming..."
 msgstr "And more coming..."
 
@@ -100,7 +100,7 @@ msgstr "Class"
 msgid "Classes"
 msgstr "Classes"
 
-#: src/components/PageSubscription/PageSubscription.tsx:100
+#: src/components/PageSubscription/PageSubscription.tsx:97
 msgid "Create lesson plans"
 msgstr "Create lesson plans"
 
@@ -251,7 +251,7 @@ msgstr "Help and Feedbacks"
 
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:34
 #: src/components/PageStudentImages/PageStudentImages.tsx:40
-#: src/components/PageSubscription/PageSubscription.tsx:103
+#: src/components/PageSubscription/PageSubscription.tsx:100
 msgid "Image gallery"
 msgstr "Image gallery"
 
@@ -289,6 +289,10 @@ msgstr "Log Out"
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:181
 msgid "Male"
 msgstr "Male"
+
+#: src/api/useGetStudentMaterialProgress.ts:44
+msgid "Mastered"
+msgstr "Mastered"
 
 #: src/components/PageNewClass/PageNewClass.tsx:27
 msgid "Monday"
@@ -394,7 +398,7 @@ msgstr "Or"
 msgid "Other Related Students"
 msgstr "Other Related Students"
 
-#: src/components/PageSubscription/PageSubscription.tsx:102
+#: src/components/PageSubscription/PageSubscription.tsx:99
 msgid "Parent portal"
 msgstr "Parent portal"
 
@@ -427,6 +431,14 @@ msgstr "Post and upvote suggestions, ideas, and issues."
 msgid "Posted on"
 msgstr "Posted on"
 
+#: src/api/useGetStudentMaterialProgress.ts:47
+msgid "Practiced"
+msgstr "Practiced"
+
+#: src/api/useGetStudentMaterialProgress.ts:50
+msgid "Presented"
+msgstr "Presented"
+
 #: src/components/PageStudentOverview/PageStudentOverview.tsx:54
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:56
 msgid "Profile"
@@ -436,7 +448,7 @@ msgstr "Profile"
 msgid "Recently Mastered"
 msgstr "Recently Mastered"
 
-#: src/components/PageSubscription/PageSubscription.tsx:99
+#: src/components/PageSubscription/PageSubscription.tsx:96
 msgid "Record observations"
 msgstr "Record observations"
 
@@ -456,7 +468,7 @@ msgstr "Repeat Until"
 msgid "Repetition"
 msgstr "Repetition"
 
-#: src/components/PageSubscription/PageSubscription.tsx:104
+#: src/components/PageSubscription/PageSubscription.tsx:101
 msgid "Reporting"
 msgstr "Reporting"
 
@@ -484,6 +496,14 @@ msgstr "Save"
 #: src/components/SearchBar/SearchBar.tsx:18
 msgid "Search"
 msgstr "Search"
+
+#: src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx:64
+msgid "See All {0} Progress"
+msgstr "See All {0} Progress"
+
+#: src/components/ObservationCard/ObservationCard.tsx:25
+msgid "See More"
+msgstr "See More"
 
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:227
 msgid "Select Students"
@@ -525,10 +545,10 @@ msgid "Shoot us an e-mail"
 msgstr "Shoot us an e-mail"
 
 #: src/components/PageSubscription/PageSubscription.tsx:94
-msgid "Simple pricing for every school."
-msgstr "Simple pricing for every school."
+#~ msgid "Simple pricing for every school."
+#~ msgstr "Simple pricing for every school."
 
-#: src/components/PageSubscription/PageSubscription.tsx:149
+#: src/components/PageSubscription/PageSubscription.tsx:146
 msgid "Soon"
 msgstr "Soon"
 
@@ -554,7 +574,7 @@ msgstr "Status"
 msgid "Student ID"
 msgstr "Student ID"
 
-#: src/components/Navbar/Navbar.tsx:74
+#: src/components/Navbar/Navbar.tsx:75
 #: src/components/PageNewStudent/PageNewStudent.tsx:106
 #: src/components/PageStudentImages/PageStudentImages.tsx:34
 #: src/components/PageStudentOverview/PageStudentOverview.tsx:37
@@ -562,7 +582,7 @@ msgstr "Student ID"
 msgid "Students"
 msgstr "Students"
 
-#: src/components/PageSubscription/PageSubscription.tsx:137
+#: src/components/PageSubscription/PageSubscription.tsx:134
 msgid "Subscribed"
 msgstr "Subscribed"
 
@@ -575,7 +595,7 @@ msgstr "Subscription Plan"
 msgid "Sunday"
 msgstr "Sunday"
 
-#: src/components/Navbar/Navbar.tsx:81
+#: src/components/Navbar/Navbar.tsx:82
 msgid "Support"
 msgstr "Support"
 
@@ -603,7 +623,7 @@ msgstr "Title"
 msgid "Today"
 msgstr "Today"
 
-#: src/components/PageSubscription/PageSubscription.tsx:101
+#: src/components/PageSubscription/PageSubscription.tsx:98
 msgid "Track curriculum progress"
 msgstr "Track curriculum progress"
 
@@ -611,7 +631,7 @@ msgstr "Track curriculum progress"
 msgid "Tuesday"
 msgstr "Tuesday"
 
-#: src/components/PageSubscription/PageSubscription.tsx:98
+#: src/components/PageSubscription/PageSubscription.tsx:95
 msgid "Unlimited students"
 msgstr "Unlimited students"
 

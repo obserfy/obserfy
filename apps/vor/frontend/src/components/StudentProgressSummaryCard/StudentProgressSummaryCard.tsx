@@ -120,7 +120,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
       <Spacer />
       <Link to={STUDENT_PROGRESS_URL(studentId, selectedAreaId ?? "")}>
         <Button variant="secondary" sx={{ fontSize: 1 }}>
-          See All {areas.data?.[tab]?.name} Progress
+          <Trans>See All {areas.data?.[tab]?.name} Progress</Trans>
         </Button>
       </Link>
     </Flex>

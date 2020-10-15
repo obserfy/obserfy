@@ -1,5 +1,6 @@
 import { queryCache, QueryResult, useQuery } from "react-query"
 import { navigate } from "gatsby"
+import { t } from "@lingui/macro"
 import { BASE_URL } from "./useApi"
 
 export enum MaterialProgressStage {
@@ -52,20 +53,20 @@ export function setStudentMaterialProgressCache(
   return queryCache.setQueryData(["studentCurriculumProgress", studentId], data)
 }
 
-export function materialStageToString(stage?: MaterialProgressStage): string {
-  let status = ""
+export function materialStageToString(stage?: MaterialProgressStage) {
+  let status
   switch (stage) {
     case MaterialProgressStage.MASTERED:
-      status = "Mastered"
+      status = t`Mastered`
       break
     case MaterialProgressStage.PRACTICED:
-      status = "Practiced"
+      status = t`Practiced`
       break
     case MaterialProgressStage.PRESENTED:
-      status = "Presented"
+      status = t`Presented`
       break
     default:
-      status = ""
+      return undefined
   }
   return status
 }

@@ -26,8 +26,8 @@ const MaterialProgressItem: FC<Props> = ({ value, onClick }) => {
         {value.materialName}
       </Typography.Body>
       <Pill
-        color={`materialStage.on${stage}`}
-        backgroundColor={`materialStage.${stage.toLowerCase()}`}
+        color={`materialStage.on${stage?.id}`}
+        backgroundColor={`materialStage.${stage?.id.toLowerCase()}`}
         text={stage}
         mr={2}
         ml="auto"

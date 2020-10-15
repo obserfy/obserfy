@@ -142,6 +142,7 @@ const SubjectMaterials: FC<{
       {materials.data?.map((material) => {
         const match = progress.find((item) => item.materialId === material.id)
         const stage = materialStageToString(match?.stage)
+
         return (
           <Flex
             key={material.id}
@@ -162,8 +163,8 @@ const SubjectMaterials: FC<{
               <Pill
                 mx={2}
                 text={stage}
-                color={`materialStage.on${stage}`}
-                backgroundColor={`materialStage.${stage.toLocaleLowerCase()}`}
+                color={`materialStage.on${stage.id}`}
+                backgroundColor={`materialStage.${stage?.id?.toLocaleLowerCase()}`}
               />
             )}
             <Icon as={NextIcon} mr={3} />

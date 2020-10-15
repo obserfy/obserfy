@@ -117,9 +117,6 @@ export const PageSubscription: FC = () => {
             <Trans>User/month</Trans>
           </Typography.Body>
         </Flex>
-        <Typography.Body my={3}>
-          <Trans>Simple pricing for every school.</Trans>
-        </Typography.Body>
 
         <Box my={3}>
           <Feature text={i18nMark("Unlimited students")} />
