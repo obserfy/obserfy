@@ -64,7 +64,7 @@ export const PageChooseSchool: FC = () => {
             data-cy="newSchool"
           >
             <Icon as={PlusIcon} mr={2} />
-            New school
+            <Trans>New school</Trans>
           </Button>
         </Link>
       </Box>

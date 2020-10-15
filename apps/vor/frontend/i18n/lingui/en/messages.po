@@ -88,6 +88,7 @@ msgid "Available every"
 msgstr "Available every"
 
 #: src/components/PageListOfStudents/PageListOfStudents.tsx:70
+#: src/components/PageNewSchool/PageNewSchool.tsx:47
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:53
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:62
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:266
@@ -344,6 +345,10 @@ msgstr "New Guardian"
 msgid "New Student"
 msgstr "New Student"
 
+#: src/components/PageChooseSchool/PageChooseSchool.tsx:46
+msgid "New school"
+msgstr "New school"
+
 #: src/components/PageSubscription/PageSubscription.tsx:39
 msgid "Next Bill"
 msgstr "Next Bill"
@@ -503,6 +508,7 @@ msgstr "Saturday"
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:116
 #: src/components/PageNewClass/PageNewClass.tsx:77
 #: src/components/PageNewGuardian/PageNewGuardian.tsx:65
+#: src/components/PageNewSchool/PageNewSchool.tsx:50
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:140
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:169
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:201
@@ -711,6 +717,10 @@ msgstr "Your Schools"
 #: src/components/PageListOfStudents/PageListOfStudents.tsx:68
 msgid "active"
 msgstr "active"
+
+#: src/components/BrandBanner/BrandBanner.tsx:27
+msgid "for Teachers"
+msgstr "for Teachers"
 
 #: src/components/PageListOfStudents/PageListOfStudents.tsx:68
 msgid "inactive"
