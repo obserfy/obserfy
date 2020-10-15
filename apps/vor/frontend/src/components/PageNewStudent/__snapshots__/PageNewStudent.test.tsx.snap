@@ -1452,13 +1452,13 @@ exports[`PageNewStudent should render correctly 1`] = `
         <p
           class="emotion-58"
         >
-          This student doesn't have a guardian yet.
+          This student doesn&apos;t have a guardian yet.
         </p>
       </div>
       <button
         class="emotion-60"
       >
-        Reset Form
+        Ulang Formulir
       </button>
     </div>
   </div>
