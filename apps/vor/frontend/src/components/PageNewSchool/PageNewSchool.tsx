@@ -21,8 +21,8 @@ export const PageNewSchool: FC = () => {
   const [name, setName] = useState("")
 
   async function handleSubmit(e: FormEvent) {
-    await submitNewSchoolForm(name)
     e.preventDefault()
+    await submitNewSchoolForm(name)
   }
 
   return (
