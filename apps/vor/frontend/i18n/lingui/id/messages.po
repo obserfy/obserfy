@@ -60,7 +60,7 @@ msgstr "Semua"
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:36
 #: src/components/PageListOfGuardians/PageListOfGuardians.tsx:24
 msgid "All Guardians"
-msgstr "Semua Wali"
+msgstr "Semua Wali Murid"
 
 #: src/components/PageAdmin/PageAdmin.tsx:46
 #: src/components/PageListOfStudents/PageListOfStudents.tsx:34
@@ -249,12 +249,12 @@ msgstr ""
 #: src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx:33
 #: src/components/PageNewGuardian/PageNewGuardian.tsx:42
 msgid "Guardian Name"
-msgstr "Nama Wali"
+msgstr "Nama Wali Murid"
 
 #: src/components/PageNewStudent/PageNewStudent.tsx:182
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:101
 msgid "Guardians"
-msgstr "Wali"
+msgstr "Wali Murid"
 
 #: src/components/PageSupport/PageSupport.tsx:58
 msgid "Have a question? Shoot us an email at chrsep@protonmail.com"
@@ -633,7 +633,7 @@ msgstr "Pindah sekolah"
 
 #: src/components/PageClassSettings/PageClassSettings.tsx:61
 msgid "Tell us about your classes, We&apos;ll help you track your students attendance."
-msgstr ""
+msgstr "Beri tahu kami tentang kelas anda."
 
 #: src/components/PageClassSettings/PageClassSettings.tsx:61
 #~ msgid "Tell us about your classes, We'll help you track your students attendance."
@@ -641,7 +641,7 @@ msgstr ""
 
 #: src/components/PageNewStudent/PageNewStudent.tsx:192
 msgid "This student doesn&apos;t have a guardian yet."
-msgstr "Murid ini belum memiliki data orang tua."
+msgstr "Murid ini belum memiliki data wali."
 
 #: src/components/PageNewStudent/PageNewStudent.tsx:193
 #~ msgid "This student doesn't have a guardian yet."
@@ -724,7 +724,7 @@ msgstr "untuk Guru"
 
 #: src/components/PageListOfStudents/PageListOfStudents.tsx:68
 msgid "inactive"
-msgstr "nonaktif"
+msgstr "tidak aktif"
 
 #: src/components/PageStudentOverview/PageStudentOverview.tsx:110
 msgid "new observation"
