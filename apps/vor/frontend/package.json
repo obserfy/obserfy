@@ -6,6 +6,7 @@
   "author": "Chrisando Eka Pramudhita <chrsep@protonmail.com>",
   "dependencies": {
     "@emotion/core": "10.0.28",
+    "@lingui/cli": "^3.0.0-18",
     "@lingui/core": "^3.0.0-18",
     "@lingui/macro": "^3.0.0-18",
     "@lingui/react": "^3.0.0-18",

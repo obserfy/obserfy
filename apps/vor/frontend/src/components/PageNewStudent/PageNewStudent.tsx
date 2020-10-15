@@ -2,7 +2,7 @@ import React, { FC, useState } from "react"
 import { useImmer } from "use-immer"
 import { Box, Button, Card, Flex } from "theme-ui"
 
-import {t, Trans } from "@lingui/macro"
+import { t, Trans } from "@lingui/macro"
 import { Link, navigate } from "../Link/Link"
 import { useGetGuardian } from "../../api/guardians/useGetGuardian"
 import Input from "../Input/Input"

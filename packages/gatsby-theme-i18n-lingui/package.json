@@ -27,5 +27,9 @@
     "directory": "packages/gatsby-theme-i18n-lingui",
     "url": "https://github.com/gatsbyjs/themes.git"
   },
-  "homepage": "https://github.com/gatsbyjs/themes/tree/master/packages/gatsby-theme-i18n-lingui#readme"
+  "homepage": "https://github.com/gatsbyjs/themes/tree/master/packages/gatsby-theme-i18n-lingui#readme",
+  "scripts": {
+    "lint": "echo 'linting skipped'",
+    "typecheck": "echo 'typecheck skipped'"
+  }
 }
