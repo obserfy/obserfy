@@ -6,7 +6,7 @@ name: Build and Test
 on: [ push ]
 
 jobs:
-  build-vor:
+  build-vor-frontend:
     runs-on: ubuntu-latest
 
     steps:
@@ -56,4 +56,26 @@ jobs:
         if: steps.cache-deps.outputs.cache-hit != 'true'
         run: yarn workspaces focus gaia --production
       - run: yarn workspace gaia run build
+
+  test-vor-backend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cache nextjs and deps
+        id: cache-deps
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-build-gaia
+        with:
+          path: |
+            .yarn
+            .pnp.js
+            apps/gaia/.next
+          key: v1-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+      - name: Use Node.js 14
+        uses: actions/setup-go@v1
+        with:
+          go-version: 1.15.3
+      - run: cd apps/vor/ && go test ./...
 
