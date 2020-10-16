@@ -38,10 +38,10 @@
     "typecheck": "cd cypress && tsc --noemit"
   },
   "dependencies": {
-    "@babel/preset-env": "^7.12.1",
-    "@cypress/webpack-preprocessor": "^5.4.8",
-    "babel-loader": "^8.1.0",
-    "pnp-webpack-plugin": "^1.6.4",
+    "@babel/preset-env": "7.12.1",
+    "@cypress/webpack-preprocessor": "5.4.8",
+    "babel-loader": "8.1.0",
+    "pnp-webpack-plugin": "1.6.4",
     "typescript": "4.0.3"
   }
 }
