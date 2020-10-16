@@ -8,6 +8,7 @@ WORKDIR /usr/src
 COPY . /usr/src
 RUN yarn install
 # Build the project
+RUN chmod -R 777 ./apps/vor/frontend
 RUN --mount=type=secret,id=env,dst=/usr/src/apps/vor/frontend/.env yarn workspace vor run build
 # Move the build artifact so its easier to be copied
 # on the final build
@@ -28,7 +29,7 @@ RUN go build -o ./app ./pkg/*.go
 ####################################
 FROM gcr.io/distroless/base
 WORKDIR /usr/src/apps/vor
-COPY --from=frontend-builder /frontend/public ./frontend/public
+COPY --from=frontend-builder /frontend ./frontend
 COPY --from=api-builder /usr/src/apps/vor/app ./app
 COPY --from=api-builder /usr/src/apps/vor/mailTemplates ./mailTemplates
 
