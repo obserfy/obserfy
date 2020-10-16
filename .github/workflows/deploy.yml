@@ -1,0 +1,15 @@
+name: Release
+
+on: [ push ]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 14
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - run: "npx standard-version -m 'chore(release): %s [skip ci]' --releaseCommitMessageFormat --no-verify"
