@@ -96,7 +96,7 @@ jobs:
       - checkout
       - attach_workspace:
           at: ../
-     - restore_cache:
+      - restore_cache:
           keys:
             - vor-frontend-
       - run: |
