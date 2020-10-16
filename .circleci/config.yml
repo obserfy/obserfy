@@ -49,29 +49,25 @@ jobs:
       - restore_cache:
           name: Restore Yarn Package Cache
           keys:
-            - build-v11-{{ checksum "yarn.lock" }}
+            - build-v12-{{ checksum "yarn.lock" }}
       - run: |
           yarn install --immutable --immutable-cache
       - persist_to_workspace:
           root: ../
           paths:
-            - repo/.yarn/
-            - repo/.pnp.js
-            - repo/apps/vor/frontend/.cache
-            - repo/apps/vor/frontend/public
+            - repo/.yarn/unplugged
+            - repo/.yarn/install-state.gz
+            - repo/.yarn/build-state.yml
             - .cache/Cypress
       - save_cache:
           when: always
           name: Save Yarn Package Cache
-          key: build-v11-{{ checksum "yarn.lock" }}
+          key: build-v12-{{ checksum "yarn.lock" }}
           paths:
-            - ./.yarn/
-            - ./.pnp.js
-            - ./apps/vor/frontend/.cache
-            - ./apps/vor/frontend/public
-            - ~/.cache/Cypress
-      - store_artifacts:
-          path: ./vor/frontend/public
+            - repo/.yarn/unplugged
+            - repo/.yarn/install-state.gz
+            - repo/.yarn/build-state.yml
+            - .cache/Cypress
 
   vor_frontend_build:
     docker:
@@ -84,11 +80,13 @@ jobs:
       - run: |
           mv ./apps/vor/frontend/.babelrc.ci.json ./apps/vor/frontend/.babelrc
       - run: |
-          yarn workspace vor build
+          yarn workspace vor build:ci
       - persist_to_workspace:
           root: ../
           paths:
             - ./repo/apps/vor/frontend/public
+      - store_artifacts:
+          path: ./vor/frontend/public
 
   gaia_build:
     docker:
