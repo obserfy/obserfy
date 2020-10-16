@@ -12,5 +12,3 @@ dayjs.extend(localeData)
 
 export default dayjs
 export { Dayjs }
-
-will github actions break?
