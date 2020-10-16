@@ -66,16 +66,15 @@ jobs:
         id: cache-deps
         uses: actions/cache@v2
         env:
-          cache-name: cache-build-gaia
+          cache-name: cache-vor-backend-deps
         with:
           path: |
-            .yarn
-            .pnp.js
-            apps/gaia/.next
-          key: v1-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
-      - name: Use Node.js 14
+            apps/vor/vendor
+          key: v2-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+      - name: Use Go 15
         uses: actions/setup-go@v1
         with:
           go-version: 1.15.3
+      - run: cd apps/vor/ && go mod vendor
       - run: cd apps/vor/ && go test ./...
 
