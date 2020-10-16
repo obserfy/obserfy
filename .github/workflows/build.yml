@@ -15,7 +15,6 @@ jobs:
         env:
           cache-name: cache-build-vor
         with:
-          # yarn cache files are stored in `~/.yarn` on Linux/macOS
           path: |
             .yarn
             .pnp.js
@@ -43,12 +42,9 @@ jobs:
         env:
           cache-name: cache-build-gaia
         with:
-          # yarn cache files are stored in `~/.yarn` on Linux/macOS
           path: |
             .yarn
             .pnp.js
-            apps/vor/frontend/public
-            apps/vor/frontend/.cache
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
