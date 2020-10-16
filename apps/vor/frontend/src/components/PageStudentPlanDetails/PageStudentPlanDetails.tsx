@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { FC, Fragment, useState } from "react"
 import { Box, Button, Card, Flex, jsx } from "theme-ui"
+import { t, Trans } from "@lingui/macro"
 import useGetPlan, { GetPlanResponseBody } from "../../api/plans/useGetPlan"
 import useDeletePlans from "../../api/plans/useDeletePlan"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
@@ -56,9 +57,11 @@ export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
         <BreadcrumbItem
           to={STUDENT_PLANS_URL(studentId, dayjs(plan.data?.date))}
         >
-          Plans
+          <Trans>Plans</Trans>
         </BreadcrumbItem>
-        <BreadcrumbItem>Details</BreadcrumbItem>
+        <BreadcrumbItem>
+          <Trans>Details</Trans>
+        </BreadcrumbItem>
       </Breadcrumb>
     </Flex>
   )
@@ -97,10 +100,12 @@ export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
             color="textMediumEmphasis"
             sx={{ lineHeight: 1, fontSize: 1 }}
           >
-            Links
+            <Trans>Links</Trans>
           </Typography.Body>
           {(plan.data?.links?.length ?? 0) === 0 && (
-            <Typography.Body m={3}>No links attached yet</Typography.Body>
+            <Typography.Body m={3}>
+              <Trans>No links attached yet</Trans>
+            </Typography.Body>
           )}
           {plan.data?.links?.map((link) => {
             return (
@@ -155,7 +160,7 @@ const DateDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
   return (
     <Fragment>
       <DataBox
-        label="Date"
+        label={t`Date`}
         onEditClick={() => setShowEditDialog(true)}
         value={value ? dayjs(value).format("D MMMM YYYY") : "N/A"}
       />

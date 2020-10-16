@@ -3,6 +3,7 @@
   "workspaces": {
     "packages": [
       "apps/*",
+     "packages/*",
       "apps/vor/*"
     ]
   }

@@ -1,5 +1,6 @@
 import React, { FC, useState } from "react"
 import { Box, Button, Card, Flex } from "theme-ui"
+import { t, Trans } from "@lingui/macro"
 import { Link } from "../Link/Link"
 import Spacer from "../Spacer/Spacer"
 import Typography from "../Typography/Typography"
@@ -63,8 +64,10 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
     return (
       <Box mx={[0, 3]}>
         <InformationalCard
-          message="You can enable the curriculum feature to track student progress in your curriculum."
-          buttonText=" Go to Curriculum "
+          message={t`
+            You can enable the curriculum feature to track student progress in your curriculum.
+          `}
+          buttonText={t`Go to Curriculum `}
           to={ADMIN_CURRICULUM_URL}
         />
       </Box>
@@ -82,7 +85,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
       }}
       color="textMediumEmphasis"
     >
-      No materials in progress.
+      <Trans>No materials in progress.</Trans>
     </Typography.Body>
   )
 
@@ -116,7 +119,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
       <Spacer />
       <Link to={STUDENT_PROGRESS_URL(studentId, selectedAreaId ?? "")}>
         <Button variant="secondary" sx={{ fontSize: 1 }}>
-          See All {areas.data?.[tab]?.name} Progress
+          <Trans>See All {areas.data?.[tab]?.name} Progress</Trans>
         </Button>
       </Link>
     </Flex>
@@ -149,7 +152,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
               mx={3}
               sx={{ fontSize: 0, color: "textMediumEmphasis" }}
             >
-              In Progress
+              <Trans>In Progress</Trans>
             </Typography.Body>
           )}
           {listOfInProgress}
@@ -160,7 +163,7 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
               mx={3}
               sx={{ fontSize: 0, color: "textMediumEmphasis" }}
             >
-              Recently Mastered
+              <Trans>Recently Mastered</Trans>
             </Typography.Body>
           )}
           {listOfMastered}

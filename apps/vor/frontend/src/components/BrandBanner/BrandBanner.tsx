@@ -3,6 +3,7 @@ import { FC } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import GatsbyImage from "gatsby-image"
 import { Flex, jsx, Box } from "theme-ui"
+import { Trans } from "@lingui/macro"
 import { Typography } from "../Typography/Typography"
 
 export const BrandBanner: FC = () => {
@@ -34,7 +35,7 @@ export const BrandBanner: FC = () => {
           >
             Obserfy{" "}
             <span sx={{ fontWeight: "normal", whiteSpace: "nowrap" }}>
-              for Teachers
+              <Trans>for Teachers</Trans>
             </span>
           </Typography.Body>
         </Flex>

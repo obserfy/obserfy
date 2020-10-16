@@ -11,6 +11,7 @@ import {
   Textarea as BaseTextArea,
   TextareaProps,
 } from "theme-ui"
+import { Trans } from "@lingui/macro"
 
 interface Props extends PropsWithoutRef<TextareaProps> {
   label?: string
@@ -22,7 +23,11 @@ export const TextArea: ForwardRefRenderFunction<HTMLTextAreaElement, Props> = (
   ref
 ) => (
   <Label sx={{ display: "flex", flexDirection: "column", ...containerSx }}>
-    {label && <Box pb={1}>{label}</Box>}
+    {label && (
+      <Box pb={1}>
+        <Trans id={label} />
+      </Box>
+    )}
     <BaseTextArea ref={ref} aria-label={label} {...props} />
   </Label>
 )

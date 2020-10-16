@@ -3,10 +3,12 @@ import { graphql, useStaticQuery } from "gatsby"
 import GatsbyImage from "gatsby-image"
 import { useLocation, useMatch } from "@reach/router"
 import { Box, Flex } from "theme-ui"
+import { Trans, t } from "@lingui/macro"
+import { useLocalization } from "gatsby-theme-i18n"
+import { Link } from "../Link/Link"
 import { ReactComponent as SettingsIcon } from "../../icons/settings.svg"
 import { ReactComponent as StudentsIcon } from "../../icons/students.svg"
 import { ReactComponent as MessageIcon } from "../../icons/message.svg"
-import { Link } from "../Link/Link"
 import Icon from "../Icon/Icon"
 import { Typography } from "../Typography/Typography"
 import { ADMIN_URL, STUDENTS_URL, SUPPORT_URL } from "../../routes"
@@ -82,7 +84,7 @@ const Navbar: FC = () => {
         <Box mx="auto" my={3} sx={{ display: ["none", "block"] }} mb={4}>
           <GatsbyImage fixed={query.file.childImageSharp.fixed} />
         </Box>
-        <NavBarItem title="Students" icon={StudentsIcon} to={STUDENTS_URL} />
+        <NavBarItem title={t`Students`} icon={StudentsIcon} to={STUDENTS_URL} />
         {/* <NavBarItem title="Plan" icon={CalendarIcon} to="/dashboard/plans" /> */}
         <Box
           sx={{
@@ -90,8 +92,8 @@ const Navbar: FC = () => {
             display: ["none", "block"],
           }}
         />
-        <NavBarItem title="Admin" icon={SettingsIcon} to={ADMIN_URL} />
-        <NavBarItem title="Support" icon={MessageIcon} to={SUPPORT_URL} />
+        <NavBarItem title={t`Admin`} icon={SettingsIcon} to={ADMIN_URL} />
+        <NavBarItem title={t`Support`} icon={MessageIcon} to={SUPPORT_URL} />
       </Flex>
     </TranslucentBar>
   )
@@ -102,7 +104,8 @@ const NavBarItem: FC<{
   icon: FunctionComponent
   to: string
 }> = ({ title, icon, to }) => {
-  const match = useMatch(`${to}/*`)
+  const { locale } = useLocalization()
+  const match = useMatch(`${locale !== "en" ? `/${locale}` : ""}${to}/*`)
   const [target, setTarget] = useState(to)
   const location = useLocation()
   const url = `${match?.uri}/${match?.["*"]}${location.search}` ?? ""
@@ -153,7 +156,7 @@ const NavBarItem: FC<{
           sx={{ lineHeight: 1, fontSize: ["10px", 0] }}
           color={match ? "textPrimary" : "textMediumEmphasis"}
         >
-          {title}
+          <Trans id={title} />
         </Typography.Body>
       </Flex>
     </Link>
