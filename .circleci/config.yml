@@ -49,7 +49,7 @@ jobs:
       - restore_cache:
           name: Restore Yarn Package Cache
           keys:
-            - build-v12-{{ checksum "yarn.lock" }}
+            - build-v13-{{ checksum "yarn.lock" }}
       - run: |
           yarn install --immutable --immutable-cache
       - persist_to_workspace:
@@ -62,12 +62,12 @@ jobs:
       - save_cache:
           when: always
           name: Save Yarn Package Cache
-          key: build-v12-{{ checksum "yarn.lock" }}
+          key: build-v13-{{ checksum "yarn.lock" }}
           paths:
-            - repo/.yarn/unplugged
-            - repo/.yarn/install-state.gz
-            - repo/.yarn/build-state.yml
-            - .cache/Cypress
+            - .yarn/unplugged
+            - .yarn/install-state.gz
+            - .yarn/build-state.yml
+            - ../.cache/Cypress
 
   vor_frontend_build:
     docker:
