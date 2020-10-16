@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Cache node modules
+      - name: Cache gatsby and deps
         uses: actions/cache@v2
         env:
           cache-name: cache-build-vor
@@ -21,10 +21,6 @@ jobs:
             apps/vor/frontend/public
             apps/vor/frontend/.cache
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
       - uses: actions/checkout@v2
       - name: Use Node.js 14
         uses: actions/setup-node@v1
@@ -37,7 +33,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Cache node modules
+      - name: Cache nextjs and deps
         uses: actions/cache@v2
         env:
           cache-name: cache-build-gaia
@@ -46,10 +42,6 @@ jobs:
             .yarn
             .pnp.js
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
       - uses: actions/checkout@v2
       - name: Use Node.js 14
         uses: actions/setup-node@v1
