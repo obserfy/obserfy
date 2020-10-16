@@ -101,14 +101,15 @@ jobs:
             apps/vor/vendor
           key: v2-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
       - name: Use Go 15
-        uses: actions/setup-go@v1
+        uses: actions/setup-go@v2
         with:
           go-version: 1.15.3
+      - run: cd apps/vor/ && go get gotest.tools/gotestsum
       - run: cd apps/vor/ && go mod vendor
       - run: |
           cd apps/vor/
           mkdir test_result
           mkdir test_result/go
           PACKAGE_NAMES=$(go list ./...)
-          go get gotest.tools/gotestsum && gotestsum --junitfile test_result/go/gotestsum-report.xml -- $PACKAGE_NAMES -v -coverprofile=coverage.txt -covermode=atomic -coverpkg $(go list ./... | grep -v "test" | paste -s -d",")
+          gotestsum --junitfile test_result/go/gotestsum-report.xml -- $PACKAGE_NAMES -v -coverprofile=coverage.txt -covermode=atomic -coverpkg $(go list ./... | grep -v "test" | paste -s -d",")
 
