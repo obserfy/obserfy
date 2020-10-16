@@ -10,8 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Cache node modules
+      - name: Cache lint deps
         uses: actions/cache@v2
+        id: cache-deps
         env:
           cache-name: cache-lint
         with:
@@ -19,24 +20,23 @@ jobs:
             .yarn
             .pnp.js
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
       - uses: actions/checkout@v2
       - name: Use Node.js 14
         uses: actions/setup-node@v1
         with:
           node-version: 14
-      - run: yarn
+      - name: Install Dependencies
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        run: yarn
       - run: yarn workspaces foreach -p run typecheck
 
   eslint:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Cache node modules
+      - name: Cache typescript deps
         uses: actions/cache@v2
+        id: cache-deps
         env:
           cache-name: cache-typecheck
         with:
@@ -44,14 +44,12 @@ jobs:
             .yarn
             .pnp.js
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
       - uses: actions/checkout@v2
       - name: Use Node.js 14
         uses: actions/setup-node@v1
         with:
           node-version: 14
-      - run: yarn
+      - name: Install Dependencies
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        run: yarn
       - run: yarn workspaces foreach -p run lint
