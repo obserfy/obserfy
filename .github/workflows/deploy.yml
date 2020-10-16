@@ -15,8 +15,10 @@ jobs:
         run: |
           echo "GA_CLIENT_EMAIL=$GA_CLIENT_EMAIL" >> .env
           echo "GA_PRIVATE_KEY=$GA_PRIVATE_KEY" >> .env
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF#refs/*/}
       - name: Build docker image
         run: |
-          VERSION=${{GITHUB_REF}}
           echo $VERSION
-          DOCKER_BUILDKIT=1 docker build -f ./docker/vor/prod.dockerfile  -t "obserfy/vor:$VERSION" . --secret id=env,src=.env
+          DOCKER_BUILDKIT=1 docker build -f ./docker/vor/prod.dockerfile  -t "obserfy/vor:${{ steps.branch_name.outputs.VERSION  }}" . --secret id=env,src=.env
