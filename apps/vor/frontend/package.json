@@ -131,7 +131,7 @@
     "storybook": "cp -r ./public/page-data/sq/d ./public/static && start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s .storybook/static/",
     "gen:component": "hygen component new --name",
-    "test": "cp -r ./public/page-data/sq/d ./public/static && TZ=UTC jest --coverage --passWithNoTests --coverageReporters json clover",
+    "test": "yarn i18n:build && cp -r ./public/page-data/sq/d ./public/static && TZ=UTC jest --coverage --passWithNoTests --coverageReporters json clover",
     "deploy-storybook": "storybook-to-ghpages",
     "i18n:add-locale": "lingui add-locale",
     "i18n:extract": "lingui extract",

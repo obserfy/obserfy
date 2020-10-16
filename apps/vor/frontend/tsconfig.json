@@ -18,7 +18,8 @@
     "noUnusedLocals": true,
     "downlevelIteration": true,
     "resolveJsonModule": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "allowJs": true
   },
-  "include": ["src", "graphql-types.ts"]
+  "include": ["src", "i18n", "graphql-types.ts"]
 }

@@ -10,11 +10,12 @@ import {
 import { I18nProvider } from "@lingui/react"
 import { setupI18n } from "@lingui/core"
 import Theme from "./gatsby-plugin-theme-ui"
-// @ts-ignore
 import enCatalog from "../i18n/lingui/en/messages.js"
 
 const i18n = setupI18n()
-i18n.load("en", enCatalog.messages)
+// any used here because the catalogs are generated b lingui
+// not our responsibility
+i18n.load("en", enCatalog.messages as any)
 i18n.activate("en")
 
 const AllProviders: FC = ({ children }) => {
