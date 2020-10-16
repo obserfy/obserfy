@@ -63,9 +63,7 @@ jobs:
           name: Save Yarn Package Cache
           key: build-v15-{{ checksum "yarn.lock" }}
           paths:
-            - .yarn/unplugged
-            - .yarn/install-state.gz
-            - .yarn/build-state.yml
+            - .yarn
             - .pnp.js
             - ../.cache/Cypress
 
