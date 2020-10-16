@@ -1,6 +1,7 @@
 import React, { FC } from "react"
 import { Button, Flex } from "theme-ui"
 
+import { Trans } from "@lingui/macro"
 import Typography from "../Typography/Typography"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 
@@ -40,7 +41,7 @@ export const DialogHeader: FC<Props> = ({
         alignContent: "center",
       }}
     >
-      {title}
+      <Trans id={title} />
     </Typography.H6>
     <Button
       variant="secondary"
@@ -50,7 +51,7 @@ export const DialogHeader: FC<Props> = ({
       ml={2}
       data-cy="cancel"
     >
-      {onCancelText}
+      <Trans id={onCancelText} />
     </Button>
     <Button
       variant="secondary"
@@ -61,7 +62,7 @@ export const DialogHeader: FC<Props> = ({
       data-cy="confirm"
       disabled={disableAccept}
     >
-      {loading && <LoadingIndicator />} {onAcceptText}
+      {loading && <LoadingIndicator />} <Trans id={onAcceptText} />
     </Button>
   </Flex>
 )

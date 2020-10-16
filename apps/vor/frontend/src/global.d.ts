@@ -36,3 +36,13 @@ declare const Paddle: any
 interface Window {
   updateAvailable?: () => void
 }
+
+// TODO: stub gatsby-theme-i18n until proper typing is released.
+declare module "gatsby-theme-i18n" {
+  import { navigate, Link } from "gatsby"
+  type LocalizedLink<T> = Link<T>
+
+  const LocalizedLink
+  const useLocalization: () => { locale: string }
+  export { LocalizedLink, useLocalization, navigate }
+}

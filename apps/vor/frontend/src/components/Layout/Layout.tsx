@@ -3,6 +3,7 @@ import { navigate } from "gatsby"
 import { Box, Flex } from "theme-ui"
 import { useMatch } from "@reach/router"
 import { useBreakpointIndex } from "@theme-ui/match-media"
+import { useLocalization } from "gatsby-theme-i18n"
 import {
   getSchoolId,
   SCHOOL_ID_UNDEFINED_PLACEHOLDER,
@@ -22,7 +23,11 @@ import { borderRight } from "../../border"
 export const Layout: FC = ({ children }) => {
   useGetUserProfile()
 
-  const studentSubroute = useMatch("/dashboard/students/*")
+  const { locale } = useLocalization()
+
+  const studentSubroute = useMatch(
+    `${locale !== "en" ? `/${locale}` : ""}/dashboard/students/*`
+  )
   const breakpoint = useBreakpointIndex({ defaultIndex: 2 })
 
   if (getSchoolId() === SCHOOL_ID_UNDEFINED_PLACEHOLDER) {

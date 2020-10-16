@@ -12,3 +12,11 @@ package-lock.json
 
 # Local Netlify folder
 .netlify
+
+# Use zero install
+.yarn/*
+!.yarn/cache
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions

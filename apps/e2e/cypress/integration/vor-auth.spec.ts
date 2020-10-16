@@ -2,13 +2,11 @@ describe("test authentication", () => {
   const faker = require("faker")
 
   beforeEach(() => {
-    window?.navigator?.serviceWorker
-      .getRegistrations()
-      .then((registrations) => {
-        registrations.forEach((registration) => {
-          registration.unregister()
-        })
+    window.navigator.serviceWorker.getRegistrations().then((registrations) => {
+      registrations.forEach((registration) => {
+        registration.unregister()
       })
+    })
   })
 
   it("should be able to login and register", () => {
@@ -29,11 +27,8 @@ describe("test authentication", () => {
     cy.contains("Wrong").should("be.visible")
 
     // Register account
-    cy.contains("Sign Up")
-      .click()
-      // cy.waitForRouteChange()
-      .url()
-      .should("contains", "register")
+    cy.contains("Sign Up").click()
+
     cy.get("[data-cy=register-email]").type(email)
     cy.contains("Password").type(password)
     cy.contains("Name").type(name)

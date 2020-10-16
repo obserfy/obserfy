@@ -1,5 +1,6 @@
 import React, { FC } from "react"
 import { Box, BoxProps, Card, Flex, Image, Input, Label } from "theme-ui"
+import { Trans } from "@lingui/macro"
 import Typography from "../Typography/Typography"
 import { ReactComponent as CameraIcon } from "../../icons/camera.svg"
 import Icon from "../Icon/Icon"
@@ -48,7 +49,7 @@ export const ProfilePicker: FC<Props> = ({ value, onChange, ...props }) => {
                     color="textMediumEmphasis"
                     sx={{ fontSize: 0 }}
                   >
-                    Add Picture
+                    <Trans>Add Picture</Trans>
                   </Typography.Body>
                 </>
               )}

@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { FC, useState } from "react"
 import { Box, Card, Flex, Image, jsx } from "theme-ui"
+import { t, Trans } from "@lingui/macro"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { ADMIN_URL } from "../../routes"
 import Typography from "../Typography/Typography"
@@ -25,9 +26,9 @@ export const PageListOfStudents: FC = () => {
       }}
       mx="auto"
     >
-      <BackNavigation to={ADMIN_URL} text="Settings" />
+      <BackNavigation to={ADMIN_URL} text={t`Settings`} />
       <Typography.H5 m={3} sx={{ lineHeight: 1 }}>
-        All Students
+        <Trans>All Students</Trans>
       </Typography.H5>
       <Box px={3} pb={2} pt={2}>
         <SearchBar
@@ -61,6 +62,8 @@ const StudentCard: FC<{
     await mutate({ active: !active })
     setShowStatusDialog(false)
   }
+  const setActiveText = t`Set as active?`
+  const setInactiveText = t`Set as inactive?`
   return (
     <Card
       p={3}
@@ -94,7 +97,7 @@ const StudentCard: FC<{
         </Typography.Body>
         <Pill
           style={{ width: "fit-content", cursor: "pointer" }}
-          text={active ? "active" : "inactive"}
+          text={active ? t`active` : t`inactive`}
           backgroundColor={active ? "primary" : "warning"}
           color={active ? "onPrimary" : "onWarning"}
           mx={3}
@@ -102,9 +105,9 @@ const StudentCard: FC<{
       </Flex>
       {showStatusDialog && (
         <AlertDialog
-          title={`Set as ${active ? "inactive" : "active"}?`}
-          negativeText="Cancel"
-          positiveText="Yes"
+          title={active ? setInactiveText : setActiveText}
+          negativeText={t`Cancel`}
+          positiveText={t`Yes`}
           body={`Are you sure you want to set ${name} as ${
             active ? "inactive" : "active"
           }?`}
