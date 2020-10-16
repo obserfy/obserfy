@@ -4,9 +4,6 @@
     "packages": [
       "apps/*",
       "apps/vor/*"
-    ],
-    "nohoist": [
-      "gaia/**"
     ]
   }
 }
