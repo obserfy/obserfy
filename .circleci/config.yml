@@ -43,7 +43,7 @@ jobs:
       - checkout
       - run:
           name: Setup .yarn ownership to restore cache.
-          command: chmod -R 777 ./yarn
+          command: chmod -R 777 ./.yarn
       - restore_cache:
           name: Restore Yarn Package Cache
           keys:
