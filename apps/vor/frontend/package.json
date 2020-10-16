@@ -118,7 +118,7 @@
     "lint": "eslint --ext .tsx,.ts src/",
     "typecheck": "tsc --noemit",
     "build": "gatsby build",
-    "build:ci": "CYPRESS_SUPPORT=y gatsby build",
+    "build:ci": "CYPRESS_SUPPORT=y GATSBY_CPU_COUNT=2 gatsby build",
     "develop": "CYPRESS_SUPPORT=y gatsby develop -H 0.0.0.0 -p 8001",
     "develop:preact": "CYPRESS_SUPPORT=y gatsby develop -H 0.0.0.0 -p 8001",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
