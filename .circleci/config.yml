@@ -76,7 +76,7 @@ jobs:
           at: ../
       - restore_cache:
           keys:
-            - vor-frontend-
+            - vor-frontend-v2-
       - run: |
           mv ./apps/vor/frontend/.babelrc.ci.json ./apps/vor/frontend/.babelrc
       - run: |
@@ -87,7 +87,7 @@ jobs:
             - ./repo/apps/vor/frontend/public
             - ./repo/apps/vor/frontend/i18n
       - save_cache:
-          key: vor-frontend-{{ epoch }}
+          key: vor-frontend-v2-{{ epoch }}
           paths:
             - ./apps/vor/frontend/public
             - ./apps/vor/frontend/.cache
