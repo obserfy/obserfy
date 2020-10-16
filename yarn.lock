@@ -19745,11 +19745,15 @@ fsevents@^1.2.7:
   version: 0.0.0-use.local
   resolution: "gatsby-theme-i18n-lingui@workspace:packages/gatsby-theme-i18n-lingui"
   dependencies:
+    "@lingui/core": ^3.0.0-18
     "@lingui/react": ^3.0.0-18
   peerDependencies:
+    "@emotion/core": ^10.0.28
+    "@lingui/core": ^3.0.0-18
     "@lingui/react": ^3.0.0-18
     gatsby: ">=2.21.26"
     make-plural: ^6.2.2
+    preact: ^10.5.4
     react: ">=16.13.1"
     react-dom: ">=16.13.1"
   languageName: unknown
