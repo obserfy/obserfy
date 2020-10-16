@@ -20,13 +20,13 @@ jobs:
             .pnp.js
             apps/vor/frontend/public
             apps/vor/frontend/.cache
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+          key: v1-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
       - uses: actions/checkout@v2
       - name: Use Node.js 14
         uses: actions/setup-node@v1
         with:
           node-version: 14
-      - run: yarn workspaces focus vor
+      - run: yarn workspaces focus vor --production
       - run: yarn workspace vor run build
 
   build-gaia:
@@ -41,12 +41,12 @@ jobs:
           path: |
             .yarn
             .pnp.js
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+          key: v1-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
       - uses: actions/checkout@v2
       - name: Use Node.js 14
         uses: actions/setup-node@v1
         with:
           node-version: 14
-      - run: yarn workspaces focus gaia
+      - run: yarn workspaces focus gaia --production
       - run: yarn workspace gaia run build
 
