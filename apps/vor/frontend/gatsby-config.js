@@ -63,6 +63,10 @@ const graphqlCodeGen =
 const preactPlugin =
   process.env.NODE_ENV === "production" ? [`gatsby-plugin-preact`] : []
 
+const disableSourceMap = process.env.DISABLE_SOURCEMAPS
+  ? [`gatsby-plugin-no-sourcemaps`]
+  : []
+
 module.exports = {
   siteMetadata: {
     title: `Obserfy`,
@@ -223,6 +227,7 @@ module.exports = {
       },
     },
     ...guessJsPlugin,
+    ...disableSourceMap,
     // DEVTOOLS ================================================================
     // {
     //   resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
