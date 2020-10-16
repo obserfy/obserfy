@@ -7,13 +7,11 @@ describe("test pwa works correctly", () => {
   let schoolName
 
   beforeEach(() => {
-    window?.navigator?.serviceWorker
-      .getRegistrations()
-      .then((registrations) => {
-        registrations.forEach((registration) => {
-          registration.unregister()
-        })
+    window.navigator.serviceWorker.getRegistrations().then((registrations) => {
+      registrations.forEach((registration) => {
+        registration.unregister()
       })
+    })
 
     name = faker.name.firstName()
     email = faker.internet.email()
