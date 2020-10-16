@@ -126,6 +126,37 @@ jobs:
           PACKAGE_NAMES=$(go list ./...)
           gotestsum --junitfile test_result/go/gotestsum-report.xml -- $PACKAGE_NAMES -v -coverprofile=coverage.txt -covermode=atomic -coverpkg $(go list ./... | grep -v "test" | paste -s -d",")
 
+  vor-snapshot-test:
+    runs-on: ubuntu-latest
+
+    needs:
+      - build-vor-frontend
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cache deps
+        id: cache-deps
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-vor-snapshot-test
+        with:
+          path: |
+            .yarn
+            .pnp.js
+          key: v1-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+      - name: Use Node.js 14
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - name: Install Dependencies
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        run: yarn workspaces focus vor
+      - uses: actions/download-artifact@v2
+        with:
+          name: vor
+          path: apps/vor/frontend/public
+      - run: yarn workspace vor run test
+
   e2e:
     needs:
       - build-gaia
