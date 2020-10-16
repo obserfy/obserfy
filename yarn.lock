@@ -37465,7 +37465,7 @@ typescript@4.0.3:
     url-loader: 4.1.1
     use-immer: 0.4.1
     wait-on: 5.2.0
-    webpack: 5.1.2
+    webpack: 5.1.3
   languageName: unknown
   linkType: soft
 
@@ -37960,9 +37960,9 @@ typescript@4.0.3:
   languageName: node
   linkType: hard
 
-"webpack@npm:5.1.2":
-  version: 5.1.2
-  resolution: "webpack@npm:5.1.2"
+"webpack@npm:5.1.3":
+  version: 5.1.3
+  resolution: "webpack@npm:5.1.3"
   dependencies:
     "@types/eslint-scope": ^3.7.0
     "@types/estree": ^0.0.45
@@ -37992,8 +37992,8 @@ typescript@4.0.3:
     webpack-cli:
       optional: true
   bin:
-    webpack: ./bin/webpack.js
-  checksum: 4d7d7a2511df2892db3010b0cb74f869d05acd7920ea90b391d19bf7fceeb75451dc345005b48c20bedf7c0370396066a10e7895447d76eb60190d848cb8b743
+    webpack: bin/webpack.js
+  checksum: 4c741af3831bb216b8a51a3a5586f134318a0106fd38b6bbafdd609b65cb1e594d7ae58daa794b8de5bb5b1dcbf0b98b3f8e9fde848f95d5f2971657d57d581e
   languageName: node
   linkType: hard
 
