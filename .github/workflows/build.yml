@@ -133,7 +133,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: docker-compose up -d
       - uses: actions/checkout@v2
       - name: Cache e2e deps
         id: cache-deps
@@ -161,5 +160,6 @@ jobs:
         with:
           name: gaia
           path: apps/gaia/.next
+      - run: docker-compose up -d
       - run: yarn workspace gaia run start &
       - run: yarn workspace e2e run cy:ci
