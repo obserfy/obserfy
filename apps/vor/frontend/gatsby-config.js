@@ -44,6 +44,20 @@ const sentryPlugin =
       ]
     : []
 
+const graphqlCodeGen =
+  process.env.NODE_ENV === "development"
+    ? [
+        {
+          resolve: `gatsby-plugin-graphql-codegen`,
+          options: {
+            codegen: process.env.NODE_ENV === "development",
+            fileName: `./graphql-types.ts`,
+            documentPaths: ["./src/**/*.{ts,tsx}"],
+          },
+        },
+      ]
+    : []
+
 // Only enable preact on prod. It has inconsistent fast-refresh behaviour and swallows all errors on dev,
 // revisit later.
 const preactPlugin =
@@ -194,14 +208,7 @@ module.exports = {
       },
     },
     ...sentryPlugin,
-    {
-      resolve: `gatsby-plugin-graphql-codegen`,
-      options: {
-        codegen: process.env.NODE_ENV === "development",
-        fileName: `./graphql-types.ts`,
-        documentPaths: ["./src/**/*.{ts,tsx}"],
-      },
-    },
+    ...graphqlCodeGen,
     {
       resolve: `gatsby-theme-i18n`,
       options: {
@@ -217,13 +224,13 @@ module.exports = {
     },
     ...guessJsPlugin,
     // DEVTOOLS ================================================================
-    {
-      resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
-      options: {
-        analyzerPort: 3300,
-        disable: true,
-      },
-    },
+    // {
+    //   resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
+    //   options: {
+    //     analyzerPort: 3300,
+    //     disable: true,
+    //   },
+    // },
   ],
   developMiddleware: (app) => {
     app.use(
