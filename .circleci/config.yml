@@ -90,6 +90,7 @@ jobs:
           root: ../
           paths:
             - ./repo/apps/vor/frontend/public
+            - ./repo/apps/vor/frontend/i18n
 
   gaia_build:
     docker:

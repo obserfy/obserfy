@@ -1,5 +1,6 @@
 import React, { FC, useState } from "react"
 import { Button, Flex, Card } from "theme-ui"
+import { t } from "@lingui/macro"
 import Typography from "../Typography/Typography"
 import Spacer from "../Spacer/Spacer"
 import Pill from "../Pill/Pill"
@@ -29,7 +30,7 @@ export const UserCard: FC<Props> = ({ userId, email, name, isCurrentUser }) => {
         <Spacer />
         {isCurrentUser && (
           <Pill
-            text="You"
+            text={t`You`}
             m={1}
             color="onPrimary"
             sx={{ backgroundColor: "primary" }}

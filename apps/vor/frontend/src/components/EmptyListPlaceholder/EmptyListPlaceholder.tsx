@@ -1,5 +1,6 @@
 import React, { FC, PropsWithoutRef } from "react"
 import { Button, Flex, Card, CardProps } from "theme-ui"
+import { Trans } from "@lingui/macro"
 import { Typography } from "../Typography/Typography"
 import Icon from "../Icon/Icon"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
@@ -27,11 +28,11 @@ export const EmptyListPlaceholder: FC<Props> = ({
       }}
     >
       <Typography.Body mb={4} mt={3} sx={{ textAlign: "center" }}>
-        {text}
+        <Trans id={text} />
       </Typography.Body>
       <Button variant="outline" onClick={onActionClick}>
         <Icon as={PlusIcon} mr={2} />
-        {callToActionText}
+        <Trans id={callToActionText} />
       </Button>
     </Flex>
   </Card>

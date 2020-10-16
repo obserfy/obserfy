@@ -1,5 +1,7 @@
 import React, { FC, memo, useState } from "react"
 import { Box, Button, Flex } from "theme-ui"
+
+import { t } from "@lingui/macro"
 import Dialog from "../Dialog/Dialog"
 
 import dayjs, { Dayjs } from "../../dayjs"
@@ -36,8 +38,8 @@ export const DatePickerDialog: FC<DatePickerDialogProps> = ({
     <Dialog sx={{ maxWidth: ["100%", 400] }}>
       <DialogHeader
         loading={isLoading}
-        onAcceptText="Set"
-        title="Pick a Date"
+        onAcceptText={t`Set`}
+        title={t`Pick a Date`}
         onCancel={() => onDismiss()}
         onAccept={() => {
           onConfirm(selected)

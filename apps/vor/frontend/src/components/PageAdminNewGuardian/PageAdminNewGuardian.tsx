@@ -1,5 +1,6 @@
 import React, { FC, useState } from "react"
 import { Button, Box } from "theme-ui"
+import { t, Trans } from "@lingui/macro"
 import Input from "../Input/Input"
 import TextArea from "../TextArea/TextArea"
 import { navigate } from "../Link/Link"
@@ -22,13 +23,13 @@ export const PageAdminNewGuardian: FC = () => {
     <Box mx="auto" sx={{ maxWidth: "maxWidth.sm" }}>
       <BackNavigation to={ADMIN_GUARDIAN_URL} text="All Guardians" />
       <Typography.H5 mx={3} mb={3}>
-        New Guardian
+        <Trans>New Guardian</Trans>
       </Typography.H5>
       <Box p={3}>
         <Input
           value={name}
           mb={2}
-          label="Guardian Name"
+          label={t`Guardian Name`}
           sx={{ width: "100%" }}
           onChange={(e) => setName(e.target.value)}
         />
@@ -36,7 +37,7 @@ export const PageAdminNewGuardian: FC = () => {
           type="email"
           value={email}
           mb={2}
-          label="Email"
+          label={t`Email`}
           sx={{ width: "100%" }}
           onChange={(event) => setEmail(event.target.value)}
         />
@@ -44,13 +45,13 @@ export const PageAdminNewGuardian: FC = () => {
           type="phone"
           value={phone}
           mb={3}
-          label="Phone"
+          label={t`Phone`}
           sx={{ width: "100%" }}
           onChange={(event) => setPhone(event.target.value)}
         />
         <TextArea
           mb={3}
-          label="Note"
+          label={t`Note`}
           value={note}
           onChange={(e) => setNote(e.target.value)}
         />
@@ -70,7 +71,7 @@ export const PageAdminNewGuardian: FC = () => {
           }}
         >
           {status === "loading" && <LoadingIndicator color="onPrimary" />}
-          Save
+          <Trans>Save</Trans>
         </Button>
       </Box>
     </Box>

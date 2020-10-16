@@ -1,6 +1,8 @@
 import React, { FC, useState } from "react"
 import { useImmer } from "use-immer"
 import { Box, Button, Card, Flex } from "theme-ui"
+
+import { t, Trans } from "@lingui/macro"
 import { Link, navigate } from "../Link/Link"
 import { useGetGuardian } from "../../api/guardians/useGetGuardian"
 import Input from "../Input/Input"
@@ -141,8 +143,12 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
         <Flex sx={{ alignItems: "center", maxWidth: "maxWidth.sm" }} m="auto">
           <BackButton to={STUDENTS_URL} />
           <Breadcrumb>
-            <BreadcrumbItem to={STUDENTS_URL}>Students</BreadcrumbItem>
-            <BreadcrumbItem>New</BreadcrumbItem>
+            <BreadcrumbItem to={STUDENTS_URL}>
+              <Trans>Students</Trans>
+            </BreadcrumbItem>
+            <BreadcrumbItem>
+              <Trans>New</Trans>
+            </BreadcrumbItem>
           </Breadcrumb>
           <Button
             ml="auto"
@@ -176,7 +182,9 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
       <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={4} pt={3}>
         <Box mx={3}>
           <Flex sx={{ alignItems: "flex-end" }}>
-            <Typography.H5 mb={3}>New Student</Typography.H5>
+            <Typography.H5 mb={3}>
+              <Trans>New Student</Trans>
+            </Typography.H5>
             <ProfilePicker
               ml="auto"
               onChange={setProfileImageId}
@@ -185,50 +193,56 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
             />
           </Flex>
           <Input
-            label="Name (Required)"
+            label={t`Name (Required)`}
             sx={{ width: "100%" }}
             value={name}
             onChange={(e) => setName(e.target.value)}
             mb={3}
           />
           <DateInput
-            label="Date of Birth"
+            label={t`Date of Birth`}
             value={dateOfBirth}
             onChange={setDateOfBirth}
             mb={3}
           />
           <DateInput
-            label="Date of Entry"
+            label={t`Date of Entry`}
             value={dateOfEntry}
             onChange={setDateOfEntry}
             mb={3}
           />
           <Select
-            label="Gender"
+            label={t`Gender`}
             mb={3}
             value={gender}
             onChange={(e) => setGender(parseInt(e.target.value, 10))}
           >
-            <option value={Gender.NotSet}>Not Set</option>
-            <option value={Gender.Male}>Male</option>
-            <option value={Gender.Female}>Female</option>
+            <option value={Gender.NotSet}>
+              <Trans>Not Set</Trans>
+            </option>
+            <option value={Gender.Male}>
+              <Trans>Male</Trans>
+            </option>
+            <option value={Gender.Female}>
+              <Trans>Female</Trans>
+            </option>
           </Select>
           <Input
             value={customId}
             onChange={(e) => setCustomId(e.target.value)}
-            label="Student ID"
+            label={t`Student ID`}
             sx={{ width: "100%" }}
             mb={3}
           />
           <TextArea
             value={note}
             onChange={(e) => setNotes(e.target.value)}
-            label="Notes"
+            label={t`Notes`}
             sx={{ height: 100 }}
           />
         </Box>
         <Typography.H5 m={3} mt={4}>
-          Classes
+          <Trans>Classes</Trans>
         </Typography.H5>
         {classes.status === "success" && (classes.data?.length ?? 0) === 0 && (
           <EmptyClassDataPlaceholder />
@@ -266,18 +280,18 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
         )}
         <Flex sx={{ alignItems: "center" }} mt={3}>
           <Typography.H5 m={3} mr="auto">
-            Guardians
+            <Trans>Guardians</Trans>
           </Typography.H5>
           <Link to={PICK_GUARDIAN_URL} data-cy="add-student">
             <Button variant="outline" mr={3}>
-              Add
+              <Trans>Add</Trans>
             </Button>
           </Link>
         </Flex>
         {guardians.length === 0 && (
           <Card sx={{ borderRadius: [0, "default"] }} mx={[0, 3]}>
             <Typography.Body m={3} color="textMediumEmphasis">
-              This student doesn&apos;t have a guardian yet.
+              <Trans>This student doesn&apos;t have a guardian yet.</Trans>
             </Typography.Body>
           </Card>
         )}
@@ -309,7 +323,7 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
             await navigate(NEW_STUDENT_URL)
           }}
         >
-          Reset Form
+          <Trans>Reset Form</Trans>
         </Button>
       </Box>
     </>

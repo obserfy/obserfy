@@ -13,6 +13,7 @@ import {
   Label,
   SxStyleProp,
 } from "theme-ui"
+import { Trans } from "@lingui/macro"
 import Icon from "../Icon/Icon"
 
 interface Props extends PropsWithoutRef<InputProps> {
@@ -59,7 +60,11 @@ const Input: ForwardRefRenderFunction<HTMLInputElement, Props> = (
         ...containerSx,
       }}
     >
-      {label && <Box pb={1}>{label}</Box>}
+      {label && (
+        <Box pb={1}>
+          <Trans id={label} />
+        </Box>
+      )}
       <Flex sx={{ alignItems: "center" }}>
         {icon && (
           <Icon
