@@ -42,55 +42,58 @@ jobs:
 
   install_js_deps:
     docker:
-      - image: node:12
+      - image: node:14
     working_directory: ~/repo
     steps:
       - checkout
       - restore_cache:
           name: Restore Yarn Package Cache
           keys:
-            - build-v8-{{ checksum "yarn.lock" }}
+            - build-v13-{{ checksum "yarn.lock" }}
       - run: |
-          yarn install --frozen-lockfile
+          yarn install --immutable --immutable-cache
       - persist_to_workspace:
           root: ../
           paths:
-            - repo/node_modules
-            - repo/apps/gaia/node_modules
-            - repo/apps/freyr/node_modules
-            - repo/apps/e2e/node_modules
-            - repo/apps/vor/frontend/node_modules
+            - repo/.yarn/unplugged
+            - repo/.yarn/install-state.gz
+            - repo/.yarn/build-state.yml
             - .cache/Cypress
       - save_cache:
           when: always
           name: Save Yarn Package Cache
-          key: build-v8-{{ checksum "yarn.lock" }}
+          key: build-v13-{{ checksum "yarn.lock" }}
           paths:
-            - ~/.cache/yarn
-            - ~/.cache/Cypress
-            - ./node_modules
-            - ./apps/gaia/node_modules
-            - ./apps/freyr/node_modules
-            - ./apps/e2e/node_modules
-            - ./apps/vor/frontend/node_modules
+            - .yarn/unplugged
+            - .yarn/install-state.gz
+            - .yarn/build-state.yml
+            - ../.cache/Cypress
 
   vor_frontend_build:
     docker:
-      - image: node:12
+      - image: node:14
     working_directory: ~/repo
     steps:
       - checkout
       - attach_workspace:
           at: ../
+      - restore_cache:
+          keys:
+            - vor-frontend-
       - run: |
           mv ./apps/vor/frontend/.babelrc.ci.json ./apps/vor/frontend/.babelrc
       - run: |
-          yarn workspace vor build
+          yarn workspace vor build:ci
       - persist_to_workspace:
           root: ../
           paths:
             - ./repo/apps/vor/frontend/public
             - ./repo/apps/vor/frontend/i18n
+      - save_cache:
+          key: vor-frontend-{{ epoch }}
+          paths:
+            - ./apps/vor/frontend/public
+            - ./apps/vor/frontend/.cache
 
   gaia_build:
     docker:
@@ -109,7 +112,7 @@ jobs:
 
   vor_snapshot_test:
     docker:
-      - image: node:12
+      - image: node:14
     working_directory: ~/repo
     steps:
       - checkout
@@ -121,25 +124,25 @@ jobs:
 
   node_lint:
     docker:
-      - image: node:12
+      - image: node:14
     working_directory: ~/repo
     steps:
       - checkout
       - attach_workspace:
           at: ../
       - run: |
-          yarn workspaces run lint
+          yarn workspaces foreach -p run lint
 
   node_typecheck:
     docker:
-      - image: node:12
+      - image: node:14
     working_directory: ~/repo
     steps:
       - checkout
       - attach_workspace:
           at: ../
       - run: |
-          yarn workspaces run typecheck
+          yarn workspaces foreach -p run typecheck
 
   e2e:
     machine:
@@ -158,9 +161,9 @@ jobs:
           echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
           echo ' [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
       - run: |
-          nvm install v12
+          nvm install v14
           node -v
-          nvm alias default v12
+          nvm alias default v14
       - run: npm install -g yarn
       - run:
           command: yarn workspace gaia start
@@ -186,8 +189,8 @@ jobs:
       - run:
           name: Install node
           command: |
-            nvm install v12
-            nvm alias default v12
+            nvm install v14
+            nvm alias default v14
       - run:
           name: Setup git creds
           command: |

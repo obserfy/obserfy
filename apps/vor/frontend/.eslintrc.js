@@ -52,6 +52,7 @@ module.exports = {
       },
     ],
     "import/no-named-as-default": "off",
+    "import/namespace": "off",
     "import/no-cycle": "off",
     "import/extensions": "off",
     "import/prefer-default-export": 0,

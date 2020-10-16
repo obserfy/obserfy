@@ -21,7 +21,7 @@ export class ErrorBoundary extends Component<{}, State> {
       console.error(error)
       return
     }
-    Sentry.configureScope((scope) => {
+    Sentry.configureScope((scope: any) => {
       Object.keys(errorInfo).forEach((key) => {
         scope.setExtra(key, errorInfo[key])
       })
