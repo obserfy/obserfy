@@ -11,8 +11,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Cache gatsby and deps
+      - name: Cache deps and gatsby
         uses: actions/cache@v2
+        id: cache-deps-and-gatsby
         env:
           cache-name: cache-build-vor
         with:
@@ -26,7 +27,9 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 14
-      - run: yarn workspaces focus vor --production
+      - name: Install Dependencies
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        run: yarn workspaces focus vor --production
       - run: yarn workspace vor run build
 
   build-gaia:
@@ -35,6 +38,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Cache nextjs and deps
+        id: cache-deps
         uses: actions/cache@v2
         env:
           cache-name: cache-build-gaia
@@ -42,11 +46,14 @@ jobs:
           path: |
             .yarn
             .pnp.js
+            apps/gaia/.next
           key: v1-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
       - name: Use Node.js 14
         uses: actions/setup-node@v1
         with:
           node-version: 14
-      - run: yarn workspaces focus gaia --production
+      - name: Install Dependencies
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        run: yarn workspaces focus gaia --production
       - run: yarn workspace gaia run build
 
