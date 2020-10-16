@@ -52,4 +52,5 @@ jobs:
       - name: Install Dependencies
         if: steps.cache-deps.outputs.cache-hit != 'true'
         run: yarn
+      - run: ls .yarn && ls .yarn/cache/ && .yarn/unplugged/
       - run: yarn workspaces foreach -p run lint
