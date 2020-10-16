@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v2
       - name: Cache lint deps
         uses: actions/cache@v2
         id: cache-deps
@@ -17,10 +18,9 @@ jobs:
           cache-name: cache-lint
         with:
           path: |
-            **/.yarn
-            **/.pnp.js
+            .yarn
+            .pnp.js
           key: ${{ runner.os }}-build-${{ env.cache-name }}-v1-${{ hashFiles('**/yarn.lock') }}
-      - uses: actions/checkout@v2
       - name: Use Node.js 14
         uses: actions/setup-node@v1
         with:
@@ -34,6 +34,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v2
       - name: Cache typescript deps
         uses: actions/cache@v2
         id: cache-deps
@@ -41,10 +42,9 @@ jobs:
           cache-name: cache-typecheck
         with:
           path: |
-            **/.yarn
-            **/.pnp.js
+            .yarn
+            .pnp.js
           key: ${{ runner.os }}-build-${{ env.cache-name }}-v1-${{ hashFiles('**/yarn.lock') }}
-      - uses: actions/checkout@v2
       - name: Use Node.js 14
         uses: actions/setup-node@v1
         with:
