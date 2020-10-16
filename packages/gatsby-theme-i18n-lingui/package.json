@@ -6,14 +6,18 @@
   "description": "A Gatsby theme for providing localization support via Lingui. This theme sets up Lingui's context provider so that you can access your translations on every page. Works best together with gatsby-theme-i18n.",
   "license": "MIT",
   "devDependencies": {
+    "@lingui/core": "^3.0.0-18",
     "@lingui/react": "^3.0.0-18"
   },
   "peerDependencies": {
+    "@emotion/core": "^10.0.28",
+    "@lingui/core": "^3.0.0-18",
     "@lingui/react": "^3.0.0-18",
     "gatsby": ">=2.21.26",
+    "make-plural": "^6.2.2",
+    "preact": "^10.5.4",
     "react": ">=16.13.1",
-    "react-dom": ">=16.13.1",
-    "make-plural": "^6.2.2"
+    "react-dom": ">=16.13.1"
   },
   "keywords": [
     "i18n",
