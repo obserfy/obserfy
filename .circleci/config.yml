@@ -49,7 +49,7 @@ jobs:
       - restore_cache:
           name: Restore Yarn Package Cache
           keys:
-            - build-v10-{{ checksum "yarn.lock" }}
+            - build-v11-{{ checksum "yarn.lock" }}
       - run: |
           yarn install
       - persist_to_workspace:
@@ -63,7 +63,7 @@ jobs:
       - save_cache:
           when: always
           name: Save Yarn Package Cache
-          key: build-v10-{{ checksum "yarn.lock" }}
+          key: build-v11-{{ checksum "yarn.lock" }}
           paths:
             - ./.yarn/
             - ./.pnp.js
