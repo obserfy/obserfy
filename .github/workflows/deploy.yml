@@ -1,0 +1,22 @@
+name: Deploy
+
+on: [ push ]
+
+jobs:
+  deploy-vor:
+    runs-on: ubuntu-latest
+
+    env:
+      DOCKER_BUILDKIT: 1
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup guessjs envs
+        run: |
+          echo "GA_CLIENT_EMAIL=$GA_CLIENT_EMAIL" >> .env
+          echo "GA_PRIVATE_KEY=$GA_PRIVATE_KEY" >> .env
+      - name: Build docker image
+        run: |
+          VERSION=${GITHUB_REF}
+          echo $VERSION
+          DOCKER_BUILDKIT=1 docker build -f ./docker/vor/prod.dockerfile  -t "obserfy/vor:$VERSION" . --secret id=env,src=.env
