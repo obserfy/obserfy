@@ -160,6 +160,7 @@ jobs:
         with:
           name: gaia
           path: apps/gaia/.next
+      - run: cp .env.example .env
       - run: docker-compose up -d
       - run: yarn workspace gaia run start &
       - run: yarn workspace e2e run cy:ci
