@@ -1,24 +1,26 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: Build
+name: Build and Test
 
 on: [ push ]
 
 jobs:
-  vor:
+  build-vor:
     runs-on: ubuntu-latest
 
     steps:
       - name: Cache node modules
         uses: actions/cache@v2
         env:
-          cache-name: cache-yarn
+          cache-name: cache-build-vor
         with:
           # yarn cache files are stored in `~/.yarn` on Linux/macOS
           path: |
             .yarn
             .pnp.js
+            apps/vor/frontend/public
+            apps/vor/frontend/.cache
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
@@ -31,4 +33,32 @@ jobs:
           node-version: 14
       - run: yarn workspaces focus vor
       - run: yarn workspace vor run build
+
+  build-gaia:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-build-gaia
+        with:
+          # yarn cache files are stored in `~/.yarn` on Linux/macOS
+          path: |
+            .yarn
+            .pnp.js
+            apps/vor/frontend/public
+            apps/vor/frontend/.cache
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - uses: actions/checkout@v2
+      - name: Use Node.js 14
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - run: yarn workspaces focus gaia
+      - run: yarn workspace gaia run build
 

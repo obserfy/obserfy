@@ -13,7 +13,7 @@ jobs:
       - name: Cache node modules
         uses: actions/cache@v2
         env:
-          cache-name: cache-yarn
+          cache-name: cache-lint
         with:
           # yarn cache files are stored in `~/.yarn` on Linux/macOS
           path: |
@@ -39,7 +39,7 @@ jobs:
       - name: Cache node modules
         uses: actions/cache@v2
         env:
-          cache-name: cache-node-modules
+          cache-name: cache-typecheck
         with:
           # yarn cache files are stored in `~/.yarn` on Linux/macOS
           path: |
