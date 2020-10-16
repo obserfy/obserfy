@@ -49,7 +49,7 @@ jobs:
           keys:
             - build-v14-{{ checksum "yarn.lock" }}
       - run: |
-          yarn install --immutable --immutable-cache
+          yarn install --immutable
       - persist_to_workspace:
           root: ../
           paths:
