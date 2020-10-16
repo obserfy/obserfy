@@ -1,5 +1,6 @@
 import React, { FC } from "react"
 import { Flex } from "theme-ui"
+import { Trans } from "@lingui/macro"
 import BackButton from "../BackButton/BackButton"
 import Breadcrumb from "../Breadcrumb/Breadcrumb"
 import BreadcrumbItem from "../Breadcrumb/BreadcrumbItem"
@@ -7,7 +8,7 @@ import BreadcrumbItem from "../Breadcrumb/BreadcrumbItem"
 export interface TopBarProps {
   breadcrumbs: Array<{
     to?: string
-    text?: string
+    text: string
   }>
 }
 export const TopBar: FC<TopBarProps> = ({ breadcrumbs }) => (
@@ -18,7 +19,7 @@ export const TopBar: FC<TopBarProps> = ({ breadcrumbs }) => (
     <Breadcrumb>
       {breadcrumbs.map(({ to, text }) => (
         <BreadcrumbItem key={text + (to ?? "empty")} to={to}>
-          {text}
+          <Trans id={text} />
         </BreadcrumbItem>
       ))}
     </Breadcrumb>

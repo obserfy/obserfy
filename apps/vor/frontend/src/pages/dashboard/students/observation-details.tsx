@@ -26,7 +26,7 @@ const ObservationDetails: FC = () => {
           { to: STUDENTS_URL, text: "Students" },
           {
             to: STUDENT_OVERVIEW_PAGE_URL(studentId),
-            text: student.data?.name?.split(" ")[0],
+            text: student.data?.name?.split(" ")[0] ?? "",
           },
           { text: "Observations Details" },
         ]}

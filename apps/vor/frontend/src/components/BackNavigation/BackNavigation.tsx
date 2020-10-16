@@ -1,5 +1,6 @@
 import React, { FC } from "react"
 import { Flex } from "theme-ui"
+import { Trans } from "@lingui/macro"
 import { Link } from "../Link/Link"
 import Icon from "../Icon/Icon"
 import { ReactComponent as Arrow } from "../../icons/arrow-back.svg"
@@ -20,7 +21,7 @@ export const BackNavigation: FC<Props> = ({ to, text }) => (
         sx={{ fill: "textMediumEmphasis" }}
       />
       <Typography.Body mb={0} color="textMediumEmphasis">
-        {text}
+        <Trans id={text} />
       </Typography.Body>
     </Flex>
   </Link>

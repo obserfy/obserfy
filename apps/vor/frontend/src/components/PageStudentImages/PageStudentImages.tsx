@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { FC } from "react"
 import { Box, Button, Flex, Image, Input, jsx, Label } from "theme-ui"
+import { Trans } from "@lingui/macro"
 import {
   STUDENT_IMAGE_DETAILS_URL,
   STUDENT_OVERVIEW_PAGE_URL,
@@ -31,18 +32,22 @@ export const PageStudentImages: FC<Props> = ({ studentId }) => {
       <Flex sx={{ height: 48, alignItems: "center" }}>
         <BackButton to={STUDENT_OVERVIEW_PAGE_URL(studentId)} />
         <Breadcrumb>
-          <BreadcrumbItem to={STUDENTS_URL}>Students</BreadcrumbItem>
+          <BreadcrumbItem to={STUDENTS_URL}>
+            <Trans>Students</Trans>
+          </BreadcrumbItem>
           <BreadcrumbItem to={STUDENT_OVERVIEW_PAGE_URL(studentId)}>
             {student.data?.name.split(" ")[0]}
           </BreadcrumbItem>
-          <BreadcrumbItem>Image Gallery</BreadcrumbItem>
+          <BreadcrumbItem>
+            <Trans>Image gallery</Trans>
+          </BreadcrumbItem>
         </Breadcrumb>
       </Flex>
       <Typography.H5 mx={3} mt={3} color="textDisabled">
         {student.data?.name}
       </Typography.H5>
       <Typography.H5 mx={3} mb={4}>
-        Gallery
+        <Trans>Gallery</Trans>
       </Typography.H5>
       <Box px={3}>
         <Label>
@@ -61,7 +66,7 @@ export const PageStudentImages: FC<Props> = ({ studentId }) => {
           <Button as="div" sx={{ width: "100%" }} disabled={isLoading}>
             {isLoading && <LoadingIndicator />}
             <Icon as={PlusIcon} mr={2} fill="onPrimary" />
-            Upload Photo
+            <Trans>Upload Photo</Trans>
           </Button>
         </Label>
       </Box>

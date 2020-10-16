@@ -19,8 +19,9 @@ export class ErrorBoundary extends Component<{}, State> {
     if (process.env.NODE_ENV !== "production") {
       // eslint-disable-next-line no-console
       console.error(error)
+      return
     }
-    Sentry.configureScope((scope) => {
+    Sentry.configureScope((scope: any) => {
       Object.keys(errorInfo).forEach((key) => {
         scope.setExtra(key, errorInfo[key])
       })

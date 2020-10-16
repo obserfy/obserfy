@@ -2,6 +2,7 @@ import React, { FC } from "react"
 import GatsbyImage, { FixedObject } from "gatsby-image"
 import { graphql, useStaticQuery } from "gatsby"
 import { Flex, Button, Card, Box } from "theme-ui"
+import { Trans } from "@lingui/macro"
 import { Link } from "../Link/Link"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { ADMIN_URL, NEW_CLASS_URL, EDIT_CLASS_URL } from "../../routes"
@@ -35,10 +36,12 @@ export const PageClassSettings: FC = () => {
               lineHeight: 1,
             }}
           >
-            Classes
+            <Trans>Classes</Trans>
           </Typography.H4>
           <Link to={NEW_CLASS_URL}>
-            <Button>New</Button>
+            <Button>
+              <Trans>New</Trans>
+            </Button>
           </Link>
         </Flex>
       )}
@@ -84,11 +87,15 @@ const NoClassPlaceholder: FC = () => {
         sx={{ textAlign: "center" }}
         maxWidth={300}
       >
-        Tell us about your classes, We&apos;ll help you track your students
-        attendance.
+        <Trans>
+          Tell us about your classes, We&apos;ll help you track your students
+          attendance.
+        </Trans>
       </Typography.Body>
       <Link to={NEW_CLASS_URL}>
-        <Button>New Class</Button>
+        <Button>
+          <Trans>New Class</Trans>
+        </Button>
       </Link>
     </Flex>
   )

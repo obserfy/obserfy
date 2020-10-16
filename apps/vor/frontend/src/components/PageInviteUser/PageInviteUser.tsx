@@ -3,6 +3,7 @@ import { FC } from "react"
 import { Box, Button, Flex, jsx } from "theme-ui"
 import { nanoid } from "nanoid"
 import { useImmer } from "use-immer"
+import { t, Trans } from "@lingui/macro"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { ADMIN_URL } from "../../routes"
 import Typography from "../Typography/Typography"
@@ -56,9 +57,9 @@ const PageInviteUser: FC = () => {
 
   return (
     <Box sx={{ maxWidth: "maxWidth.sm" }} mx="auto">
-      <BackNavigation to={ADMIN_URL} text="Admin / Invite" />
+      <BackNavigation to={ADMIN_URL} text={t`Settings`} />
       <Typography.H6 m={3} mb={4} sx={{ lineHeight: 1 }}>
-        Invite using emails
+        <Trans>Invite using emails</Trans>
       </Typography.H6>
       {emails?.map(({ id, email }) => (
         <EmailInput
@@ -82,10 +83,10 @@ const PageInviteUser: FC = () => {
           }
         >
           <Icon as={PlusIcon} mr={2} fill="textPrimary" />
-          Add more email
+          <Trans>Add more email</Trans>
         </Button>
         <Button sx={{ width: "100%" }} onClick={sendInvitation}>
-          Send invites
+          <Trans>Send invites</Trans>
         </Button>
       </Box>
       {status === "success" && (
@@ -97,11 +98,11 @@ const PageInviteUser: FC = () => {
             fontWeight: "bold",
           }}
         >
-          Emails sent!
+          <Trans>Emails sent!</Trans>
         </Typography.Body>
       )}
       <Typography.Body my={3} sx={{ textAlign: "center" }}>
-        Or
+        <Trans>Or</Trans>
       </Typography.Body>
       <Box
         m={3}
@@ -116,7 +117,7 @@ const PageInviteUser: FC = () => {
         }}
       >
         <Typography.Body color="textMediumEmphasis" fontSize={1}>
-          Invite using link
+          <Trans>Invite using link</Trans>
         </Typography.Body>
         <Typography.Body mb={3}>
           Share this link to your co-workers. Once they register using it,

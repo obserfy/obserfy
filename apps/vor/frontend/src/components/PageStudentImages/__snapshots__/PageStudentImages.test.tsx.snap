@@ -506,7 +506,7 @@ exports[`PageStudentImages should render correctly 1`] = `
           <div
             class="emotion-9"
           >
-            Image Gallery
+            Image gallery
             <span
               class="splitter"
             >
