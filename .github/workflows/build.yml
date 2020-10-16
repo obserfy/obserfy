@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v2
       - name: Cache gatsby and deps
         uses: actions/cache@v2
         env:
@@ -21,7 +22,6 @@ jobs:
             apps/vor/frontend/public
             apps/vor/frontend/.cache
           key: v1-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
-      - uses: actions/checkout@v2
       - name: Use Node.js 14
         uses: actions/setup-node@v1
         with:
@@ -33,6 +33,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v2
       - name: Cache nextjs and deps
         uses: actions/cache@v2
         env:
@@ -42,7 +43,6 @@ jobs:
             .yarn
             .pnp.js
           key: v1-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
-      - uses: actions/checkout@v2
       - name: Use Node.js 14
         uses: actions/setup-node@v1
         with:
