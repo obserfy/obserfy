@@ -21,4 +21,4 @@ jobs:
       - name: Build docker image
         run: |
           echo $VERSION
-          DOCKER_BUILDKIT=1 docker build -f ./docker/vor/prod.dockerfile  -t "obserfy/vor:${{ steps.branch_name.outputs.VERSION  }}" . --secret id=env,src=.env
+          DOCKER_BUILDKIT=1 docker build -f ./docker/vor/prod.dockerfile  -t "obserfy/vor:${{ steps.get_version.outputs.VERSION  }}" . --secret id=env,src=.env
