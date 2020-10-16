@@ -174,8 +174,8 @@ jobs:
           path: |
             .yarn
             .pnp.js
-            apps/vor/vendor
-          key: v1-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+            ~/.cache/Cypress
+          key: v2-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
       - name: Use Node.js 14
         uses: actions/setup-node@v1
         with:
