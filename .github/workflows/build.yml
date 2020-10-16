@@ -105,5 +105,11 @@ jobs:
         with:
           go-version: 1.15.3
       - run: cd apps/vor/ && go mod vendor
-      - run: cd apps/vor/ && go test ./...
+      - run: |
+          cd apps/vor/
+          mkdir test_result
+          mkdir test_result/go
+          go get gotest.tools/gotestsum
+          PACKAGE_NAMES=$(go list ./...)
+          gotestsum --junitfile test_result/go/gotestsum-report.xml -- $PACKAGE_NAMES -v -coverprofile=coverage.txt -covermode=atomic -coverpkg $(go list ./... | grep -v "test" | paste -s -d",")
 
