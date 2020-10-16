@@ -2,10 +2,11 @@ import React, { FC, FormEvent, useState } from "react"
 import { navigate } from "gatsby"
 import { Flex, Box, Button } from "theme-ui"
 
+import { Trans } from "@lingui/macro"
 import { Typography } from "../Typography/Typography"
 import Input from "../Input/Input"
 
-async function submitNewSchoolForm(name: string): Promise<void> {
+async function submitNewSchoolForm(name: string) {
   const data = { name }
   const response = await fetch("/api/v1/schools", {
     method: "POST",
@@ -13,15 +14,15 @@ async function submitNewSchoolForm(name: string): Promise<void> {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   })
-  if (response.status === 201) navigate("/choose-school")
+  if (response.status === 201) await navigate("/choose-school")
 }
 
 export const PageNewSchool: FC = () => {
   const [name, setName] = useState("")
 
-  function handleSubmit(e: FormEvent): void {
-    submitNewSchoolForm(name)
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault()
+    await submitNewSchoolForm(name)
   }
 
   return (
@@ -57,10 +58,10 @@ export const PageNewSchool: FC = () => {
             mr={3}
             onClick={() => navigate("/choose-school")}
           >
-            Cancel
+            <Trans>Cancel</Trans>
           </Button>
           <Button variant="primaryBig" sx={{ width: "100%" }}>
-            Save
+            <Trans>Save</Trans>
           </Button>
         </Flex>
       </Box>

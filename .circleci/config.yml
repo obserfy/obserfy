@@ -88,6 +88,7 @@ jobs:
           root: ../
           paths:
             - ./repo/apps/vor/frontend/public
+            - ./repo/apps/vor/frontend/i18n
       - save_cache:
           key: vor-frontend-{{ epoch }}
           paths:

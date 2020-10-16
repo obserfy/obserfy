@@ -1,6 +1,7 @@
 import React, { FC } from "react"
 import { navigate } from "gatsby"
 import { Button, Box, Card, Flex } from "theme-ui"
+import { Trans } from "@lingui/macro"
 import { useGetSchools } from "../../api/schools/useGetSchools"
 import { Typography } from "../Typography/Typography"
 import Icon from "../Icon/Icon"
@@ -38,8 +39,10 @@ export const PageChooseSchool: FC = () => {
 
   const emptySchoolPlaceholder = schools.data?.length === 0 && (
     <Typography.Body mb={4} mt={4}>
-      Welcome!! Create your first school or use an invitation link to join an
-      existing school.
+      <Trans>
+        Welcome!! Create your first school or use an invitation link to join an
+        existing school.
+      </Trans>
     </Typography.Body>
   )
 
@@ -48,7 +51,7 @@ export const PageChooseSchool: FC = () => {
       <BrandBanner />
       <Box mx="auto" p={3} sx={{ maxWidth: "maxWidth.xsm", width: "100%" }}>
         <Typography.H5 mb={3} sx={{ fontWeight: "bold" }}>
-          Your Schools
+          <Trans>Your Schools</Trans>
         </Typography.H5>
         {schools.isLoading && <LoadingState />}
         {availableSchools}
@@ -61,7 +64,7 @@ export const PageChooseSchool: FC = () => {
             data-cy="newSchool"
           >
             <Icon as={PlusIcon} mr={2} />
-            New school
+            <Trans>New school</Trans>
           </Button>
         </Link>
       </Box>

@@ -2,6 +2,7 @@
 import { FC, Fragment, useMemo, useState } from "react"
 import { navigate } from "gatsby"
 import { Box, Button, Flex, Image, jsx } from "theme-ui"
+import { t, Trans } from "@lingui/macro"
 import { Link } from "../Link/Link"
 import { useGetStudent } from "../../api/useGetStudent"
 import Typography from "../Typography/Typography"
@@ -47,7 +48,9 @@ export const PageStudentOverview: FC<Props> = ({ id }) => {
         <Flex sx={{ height: 48, alignItems: "center" }}>
           <BackButton to={STUDENTS_URL} />
           <Breadcrumb>
-            <BreadcrumbItem to={STUDENTS_URL}>Students</BreadcrumbItem>
+            <BreadcrumbItem to={STUDENTS_URL}>
+              <Trans>Students</Trans>
+            </BreadcrumbItem>
             <BreadcrumbItem>{student.data?.name.split(" ")[0]}</BreadcrumbItem>
           </Breadcrumb>
         </Flex>
@@ -76,19 +79,19 @@ export const PageStudentOverview: FC<Props> = ({ id }) => {
           <Link sx={{ mr: 2, flexGrow: 1 }} to={STUDENT_PROFILE_URL(id)}>
             <Button data-cy="edit" variant="outline" sx={{ width: "100%" }}>
               <Icon as={PersonIcon} fill="textPrimary" mr={2} />
-              Profile
+              <Trans>Profile</Trans>
             </Button>
           </Link>
           <Link sx={{ mr: 2, flexGrow: 1 }} to={STUDENT_PLANS_URL(id)}>
             <Button data-cy="edit" variant="outline" sx={{ width: "100%" }}>
               <Icon as={CalendarIcon} fill="textPrimary" mr={2} />
-              Plans
+              <Trans>Plans</Trans>
             </Button>
           </Link>
           <Link sx={{ flexGrow: 1 }} to={STUDENT_IMAGES_URL(id)}>
             <Button data-cy="edit" variant="outline" sx={{ width: "100%" }}>
               <Icon as={ImageIcon} fill="textPrimary" mr={2} />
-              Gallery
+              <Trans>Gallery</Trans>
             </Button>
           </Link>
         </Flex>
@@ -96,7 +99,7 @@ export const PageStudentOverview: FC<Props> = ({ id }) => {
           <Link sx={{ width: "100%" }} to={NEW_OBSERVATION_URL(id)}>
             <Button sx={{ width: "100%" }}>
               <Icon as={PlusIcon} mr={2} fill="onPrimary" />
-              Observation
+              <Trans>Observation</Trans>
             </Button>
           </Link>
         </Flex>
@@ -104,7 +107,7 @@ export const PageStudentOverview: FC<Props> = ({ id }) => {
         <ObservationSection studentId={id} />
 
         <Typography.H6 px={3} pt={4} pb={3} sx={{ fontWeight: "bold" }}>
-          Curriculum Progress
+          <Trans>Curriculum Progress</Trans>
         </Typography.H6>
         <Box mx={[0, 3]}>
           <StudentProgressSummaryCard studentId={id} />
@@ -146,8 +149,8 @@ const ObservationSection: FC<{ studentId: string }> = ({ studentId }) => {
     <EmptyListPlaceholder
       my={3}
       sx={{ borderRadius: [0, "default"] }}
-      text="No observation have been added yet"
-      callToActionText="new observation"
+      text={t`No observation have been added yet`}
+      callToActionText={t`new observation`}
       onActionClick={() => navigate(NEW_OBSERVATION_URL(studentId))}
     />
   )
@@ -179,7 +182,7 @@ const ObservationSection: FC<{ studentId: string }> = ({ studentId }) => {
         to={ALL_OBSERVATIONS_PAGE_URL(studentId)}
       >
         <Button variant="outline" py={1} px={3} sx={{ height: 30 }}>
-          All
+          <Trans>All</Trans>
         </Button>
       </Link>
     </Flex>
@@ -190,7 +193,7 @@ const ObservationSection: FC<{ studentId: string }> = ({ studentId }) => {
       <Flex sx={{ alignItems: "flex-end" }} pt={4} px={3} mb={2}>
         <Box>
           <Typography.H6 mr="auto" sx={{ fontWeight: "bold" }} mb={1}>
-            Observations
+            <Trans>Observations</Trans>
           </Typography.H6>
           {dataLength > 0 && (
             <Typography.Body

@@ -1,0 +1,18 @@
+[
+  {
+    "code": "en",
+    "hrefLang": "en-US",
+    "name": "English",
+    "localName": "English",
+    "langDir": "ltr",
+    "dateFormat": "MM/DD/YYYY"
+  },
+  {
+    "code": "id",
+    "hrefLang": "id-ID",
+    "name": "Indonesia",
+    "localName": "Indonesia",
+    "langDir": "ltr",
+    "dateFormat": "MM/DD/YYYY"
+  }
+]

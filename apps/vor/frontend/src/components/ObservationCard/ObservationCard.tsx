@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { FC } from "react"
 import { Card, Flex, jsx } from "theme-ui"
+import { Trans } from "@lingui/macro"
 import Typography from "../Typography/Typography"
 import { Observation } from "../../api/useGetStudentObservations"
 import ImagePreview from "../ImagePreview/ImagePreview"
@@ -70,7 +71,7 @@ export const ObservationCard: FC<Props> = ({
         to={detailsUrl}
         sx={{ color: "textPrimary", ml: "auto", mr: 3, fontSize: 0 }}
       >
-        See More
+        <Trans>See More</Trans>
       </Link>
     </Flex>
   </Card>

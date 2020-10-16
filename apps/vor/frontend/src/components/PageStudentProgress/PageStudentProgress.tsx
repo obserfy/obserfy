@@ -142,6 +142,7 @@ const SubjectMaterials: FC<{
       {materials.data?.map((material) => {
         const match = progress.find((item) => item.materialId === material.id)
         const stage = materialStageToString(match?.stage)
+
         return (
           <Flex
             key={material.id}

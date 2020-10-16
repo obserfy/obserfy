@@ -1,6 +1,8 @@
 /** @jsx jsx */
 import { FC, Fragment, useState } from "react"
 import { Box, Button, Card, Flex, Image, jsx } from "theme-ui"
+import { useLingui } from "@lingui/react"
+import { t } from "@lingui/macro"
 import { useGetAllStudents } from "../../api/students/useGetAllStudents"
 import useGetSchoolClasses from "../../api/classes/useGetSchoolClasses"
 import { Link } from "../Link/Link"
@@ -19,6 +21,7 @@ export const StudentsList: FC = () => {
   const [filterClass, setFilterClass] = useState("")
   const students = useGetAllStudents(filterClass, true)
   const allClass = useGetSchoolClasses()
+  const { i18n } = useLingui()
 
   const matches = !students.isError
     ? students.data?.filter((student) =>
@@ -49,7 +52,7 @@ export const StudentsList: FC = () => {
       <Flex p={3} pt={3} pb={2}>
         <SearchBar
           mr={2}
-          placeholder="Search students"
+          placeholder={i18n._(t`Search students`)}
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           sx={{ width: "100%" }}

@@ -5,10 +5,13 @@
  */
 
 // You can delete this file if you're not using it
-exports.onCreatePage = ({ page, actions }) => {
+exports.onCreatePage = ({ graphql, page, actions }) => {
   const { createPage } = actions
 
-  if (!page.path.startsWith("/dashboard")) {
+  if (
+    !page.path.startsWith("/dashboard") &&
+    !page.path.startsWith("/" + page.context.locale + "/dashboard")
+  ) {
     // eslint-disable-next-line no-param-reassign
     page.context.layout = "open"
     createPage(page)

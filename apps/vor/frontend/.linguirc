@@ -1,0 +1,20 @@
+{
+  "locales": [
+    "en",
+    "id"
+  ],
+  "sourceLocale": "en",
+  "catalogs": [
+    {
+      "path": "./i18n/lingui/{locale}/messages",
+      "include": [
+        "./src"
+      ]
+    }
+  ],
+  "extractBabelOptions": {
+    "presets": [
+      "babel-preset-gatsby"
+    ]
+  }
+}

@@ -27,11 +27,8 @@ describe("test authentication", () => {
     cy.contains("Wrong").should("be.visible")
 
     // Register account
-    cy.contains("Sign Up")
-      .click()
-      // cy.waitForRouteChange()
-      .url()
-      .should("contains", "register")
+    cy.contains("Sign Up").click()
+
     cy.get("[data-cy=register-email]").type(email)
     cy.contains("Password").type(password)
     cy.contains("Name").type(name)

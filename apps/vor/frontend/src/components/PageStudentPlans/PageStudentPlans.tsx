@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { FC, useState } from "react"
 import { Box, Button, Card, Flex, jsx } from "theme-ui"
+import { t, Trans } from "@lingui/macro"
 import {
   NEW_STUDENT_PLANS_URL,
   STUDENT_OVERVIEW_PAGE_URL,
@@ -32,12 +33,12 @@ export const PageStudentPlans: FC<Props> = ({ studentId, date }) => {
     <Box mx="auto" sx={{ maxWidth: "maxWidth.sm" }}>
       <TopBar
         breadcrumbs={[
-          { to: STUDENTS_URL, text: "Students" },
+          { to: STUDENTS_URL, text: t`Students` },
           {
             to: STUDENT_OVERVIEW_PAGE_URL(studentId),
-            text: student.data?.name.split(" ")[0],
+            text: student.data?.name.split(" ")[0] ?? "",
           },
-          { text: "Plans" },
+          { text: t`Plans` },
         ]}
       />
       <Flex px={3} pb={2} sx={{ alignItems: "flex-end" }}>
@@ -99,7 +100,7 @@ export const PageStudentPlans: FC<Props> = ({ studentId, date }) => {
           }}
           disabled={selectedDate.isSame(dayjs(), "day")}
         >
-          Today
+          <Trans>Today</Trans>
         </Button>
       </Flex>
       {data?.map((plan) => {
@@ -120,7 +121,7 @@ export const PageStudentPlans: FC<Props> = ({ studentId, date }) => {
                   sx={{ fontSize: 0, color: "textMediumEmphasis" }}
                   mt={2}
                 >
-                  Created by {plan.user.name.split(" ")[0]}
+                  <Trans>Created by</Trans> {plan.user.name.split(" ")[0]}
                 </Typography.Body>
               )}
             </Card>
@@ -133,7 +134,7 @@ export const PageStudentPlans: FC<Props> = ({ studentId, date }) => {
       >
         <Button variant="outline" sx={{ ml: "auto" }}>
           <Icon as={PlusIcon} mr={2} fill="onBackground" />
-          Add new plan
+          <Trans>Add new plan</Trans>
         </Button>
       </Link>
     </Box>

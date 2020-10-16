@@ -3,6 +3,8 @@ import { FC, Fragment, useState } from "react"
 import { Box, Button, Card, Flex, Image, jsx } from "theme-ui"
 import { useImmer } from "use-immer"
 import { nanoid } from "nanoid"
+
+import { t, Trans } from "@lingui/macro"
 import { useGetCurriculumAreas } from "../../api/useGetCurriculumAreas"
 import usePostNewPlan, {
   PostNewLessonPlanBody,
@@ -97,9 +99,11 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
               {student.data?.name.split(" ")[0]}
             </BreadcrumbItem>
             <BreadcrumbItem to={STUDENT_PLANS_URL(studentId, date)}>
-              Plans
+              <Trans>Plans</Trans>
             </BreadcrumbItem>
-            <BreadcrumbItem>New</BreadcrumbItem>
+            <BreadcrumbItem>
+              <Trans>New</Trans>
+            </BreadcrumbItem>
           </Breadcrumb>
           <Button
             ml="auto"
@@ -117,14 +121,14 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
         <Box mx={3} mt={2}>
           <DateInput label="Date" value={date} onChange={setDate} mb={2} />
           <Input
-            label="Title"
+            label={t`Title`}
             sx={{ width: "100%" }}
             mb={2}
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
           <TextArea
-            label="Description"
+            label={t`Description`}
             mb={4}
             value={description}
             sx={{ width: "100%" }}
@@ -134,7 +138,9 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
           />
         </Box>
         <Box mx={3} mb={4}>
-          <Typography.H6 mb={2}>Links</Typography.H6>
+          <Typography.H6 mb={2}>
+            <Trans>Links</Trans>
+          </Typography.H6>
           {links.map((link) => (
             <LinkPreview
               key={link.id}
@@ -156,14 +162,18 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
         {areas.status === "success" && (areas.data?.length ?? 0) === 0 ? (
           <Box mx={[0, 3]}>
             <InformationalCard
-              message="You can enable the curriculum feature to track student progress in your curriculum."
-              buttonText=" Go to Curriculum "
+              message={t`
+                You can enable the curriculum feature to track student progress in your curriculum.
+              `}
+              buttonText={t` Go to Curriculum `}
               to={ADMIN_CURRICULUM_URL}
             />
           </Box>
         ) : (
           <Box mx={3} mb={4}>
-            <Typography.H6 mb={2}>Related Area</Typography.H6>
+            <Typography.H6 mb={2}>
+              <Trans>Related Area</Trans>
+            </Typography.H6>
             <Flex mb={2} sx={{ flexWrap: "wrap" }}>
               {areas.data?.map(({ id, name }) => (
                 <Chip
@@ -181,25 +191,27 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
         )}
 
         <Box mx={3} mb={4}>
-          <Typography.H6 mb={2}>Repetition</Typography.H6>
+          <Typography.H6 mb={2}>
+            <Trans>Repetition</Trans>
+          </Typography.H6>
           <Flex>
             <Chip
               mr={2}
-              text="None"
+              text={t`None`}
               activeBackground="primary"
               onClick={() => setRepetition(0)}
               isActive={repetition === 0}
             />
             <Chip
               mr={2}
-              text="Daily"
+              text={t`Daily`}
               activeBackground="primary"
               onClick={() => setRepetition(1)}
               isActive={repetition === 1}
             />
             <Chip
               mr={2}
-              text="Weekly"
+              text={t`Weekly`}
               activeBackground="primary"
               onClick={() => setRepetition(2)}
               isActive={repetition === 2}
@@ -208,7 +220,7 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
           {repetition > 0 && (
             <Box mt={3}>
               <DateInput
-                label="Repeat Until"
+                label={t`Repeat Until`}
                 value={endDate}
                 onChange={setEndDate}
                 mb={2}
@@ -219,13 +231,15 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
 
         <Box mx={3} mb={4}>
           <Flex sx={{ alignItems: "flex-end" }} mb={2}>
-            <Typography.H6>Other Related Students</Typography.H6>
+            <Typography.H6>
+              <Trans>Other Related Students</Trans>
+            </Typography.H6>
             <Button
               ml="auto"
               variant="outline"
               onClick={() => setShowStudentPickerDialog(true)}
             >
-              Add
+              <Trans>Add</Trans>
             </Button>
           </Flex>
           {otherStudents.map((otherStudent) => (
@@ -265,7 +279,7 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
               my={4}
               sx={{ textAlign: "center", color: "textMediumEmphasis" }}
             >
-              No other students added yet.
+              <Trans>No other students added yet.</Trans>
             </Typography.Body>
           )}
           {showStudentPickerDialog && (
@@ -367,8 +381,8 @@ const StudentPickerDialog: FC<{
   return (
     <Dialog>
       <DialogHeader
-        onAcceptText="Add"
-        title="Select Students"
+        onAcceptText={t`Add`}
+        title={t`Select Students`}
         onCancel={onDismiss}
         onAccept={() => {
           onAccept(selected)
@@ -394,7 +408,7 @@ const StudentPickerDialog: FC<{
         />
         {unselectedStudents?.length === 0 && (
           <Typography.Body m={3} sx={{ width: "100%", textAlign: "center" }}>
-            No more students to add
+            <Trans>No more students to add</Trans>
           </Typography.Body>
         )}
         {matched?.map((student) => {
