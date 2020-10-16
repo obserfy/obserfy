@@ -29,6 +29,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 14
-      - run: yarn
+      - run: yarn workspaces focus vor
       - run: yarn workspace vor run build
 
