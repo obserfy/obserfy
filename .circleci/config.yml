@@ -77,6 +77,9 @@ jobs:
       - checkout
       - attach_workspace:
           at: ../
+      - restore_cache:
+          keys:
+            - vor-frontend-
       - run: |
           mv ./apps/vor/frontend/.babelrc.ci.json ./apps/vor/frontend/.babelrc
       - run: |
@@ -85,8 +88,11 @@ jobs:
           root: ../
           paths:
             - ./repo/apps/vor/frontend/public
-      - store_artifacts:
-          path: ./vor/frontend/public
+      - save_cache:
+          key: vor-frontend-{{ epoch }}
+          paths:
+            - ./apps/vor/frontend/public
+            - ./apps/vor/frontend/.cache
 
   gaia_build:
     docker:
@@ -96,20 +102,12 @@ jobs:
       - checkout
       - attach_workspace:
           at: ../
-      - restore_cache:
-          keys:
-            - vor-frontend-
       - run: |
           yarn workspace gaia build
       - persist_to_workspace:
           root: ../
           paths:
             - ./repo/apps/gaia/.next
-      - save_cache:
-          key: vor-frontend-{{ epoch }}
-          paths:
-            - ./apps/vor/frontend/public
-            - ./apps/vor/frontend/.cache
 
   vor_snapshot_test:
     docker:
