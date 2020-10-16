@@ -96,12 +96,20 @@ jobs:
       - checkout
       - attach_workspace:
           at: ../
+     - restore_cache:
+          keys:
+            - vor-frontend-
       - run: |
           yarn workspace gaia build
       - persist_to_workspace:
           root: ../
           paths:
             - ./repo/apps/gaia/.next
+      - save_cache:
+          key: vor-frontend-{{ epoch }}
+          paths:
+            - ./apps/vor/frontend/public
+            - ./apps/vor/frontend/.cache
 
   vor_snapshot_test:
     docker:
