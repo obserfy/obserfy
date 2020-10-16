@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   vor_backend_test:
     docker:
-      - image: golang:1.15
+      - image: cimg/go:1.15.3
       - image: minio/minio:latest
         entrypoint: sh
         command: -c 'mkdir -p /data/media && /usr/bin/minio server /data'
@@ -67,7 +67,6 @@ jobs:
             - .yarn/unplugged
             - .yarn/install-state.gz
             - .yarn/build-state.yml
-            - ../.cache/Cypress
 
   vor_frontend_build:
     docker:
