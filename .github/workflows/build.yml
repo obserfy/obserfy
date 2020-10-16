@@ -139,7 +139,7 @@ jobs:
         id: cache-deps
         uses: actions/cache@v2
         env:
-          cache-name: cache-build-gaia
+          cache-name: cache-build-e2e
         with:
           path: |
             .yarn
