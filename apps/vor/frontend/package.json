@@ -117,8 +117,8 @@
   },
   "license": "GNU GPL v3",
   "scripts": {
-    "lint": "eslint --ext .tsx,.ts src/",
-    "typecheck": "tsc --noemit",
+    "lint": "yarn i18n:compile && eslint --ext .tsx,.ts src/",
+    "typecheck": "yarn i18n:compile && tsc --noemit",
     "build": "yarn i18n:compile && gatsby build",
     "build:ci": "cross-env CYPRESS_SUPPORT=y gatsby build",
     "develop": "cross-env CYPRESS_SUPPORT=y gatsby develop -H 0.0.0.0 -p 8001",
