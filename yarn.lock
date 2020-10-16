@@ -3,7 +3,7 @@
 
 __metadata:
   version: 4
-  cacheKey: 5
+  cacheKey: 7
 
 "@ampproject/toolbox-core@npm:^2.6.0":
   version: 2.6.0
@@ -3184,7 +3184,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/types@npm:7.11.5, @babel/types@npm:^7.0.0-beta.49, @babel/types@npm:^7.11.5":
+"@babel/types@npm:7.11.5, @babel/types@npm:^7.0.0-beta.49, @babel/types@npm:^7.11.5, @babel/types@npm:^7.8.3":
   version: 7.11.5
   resolution: "@babel/types@npm:7.11.5"
   dependencies:
@@ -17878,20 +17878,20 @@ fsevents@^1.2.7:
 
 "fsevents@patch:fsevents@^1.2.7#builtin<compat/fsevents>":
   version: 1.2.13
-  resolution: "fsevents@patch:fsevents@npm%3A1.2.13#builtin<compat/fsevents>::version=1.2.13&hash=495457"
+  resolution: "fsevents@patch:fsevents@npm%3A1.2.13#builtin<compat/fsevents>::version=1.2.13&hash=127e8e"
   dependencies:
     bindings: ^1.5.0
     nan: ^2.12.1
-  checksum: 508a7e7e1e365236a7a0478392827145ba05c0181b1928b73b20c1a5212d15f6529735db897d617d7b0b051248c5720160f74c113bd727fc02de4f6cf885e1ff
+  checksum: 7bc048c164eb72f91b18ba7cd2ba30679a0afe57e9cd6352eac4bdbc4ddd4ca2ea98674d0bd3a80e96427469adc433c13532494b36aea40fceab36e198982182
   languageName: node
   linkType: hard
 
 "fsevents@patch:fsevents@^2.1.2#builtin<compat/fsevents>, fsevents@patch:fsevents@~2.1.2#builtin<compat/fsevents>":
   version: 2.1.3
-  resolution: "fsevents@patch:fsevents@npm%3A2.1.3#builtin<compat/fsevents>::version=2.1.3&hash=495457"
+  resolution: "fsevents@patch:fsevents@npm%3A2.1.3#builtin<compat/fsevents>::version=2.1.3&hash=127e8e"
   dependencies:
     node-gyp: latest
-  checksum: 0005677b72f38a129a3cbe8c3794bdc83081a2bec53dfc03b085c2e5e4ca7a33a861a779d623313652df89746d97f79d24e4fef3b101c11c39ce1ea8a9690e18
+  checksum: e2b8c379340e21a786d32c653854c8876f94eb1202dd5be378fd42c062bc123aab5051c32bf0011865257c85982c41ded203f9fe8c9f9c8f8c84dc4672abc0e0
   languageName: node
   linkType: hard
 
@@ -17987,8 +17987,8 @@ fsevents@^1.2.7:
     postcss-preset-env: 6.7.0
     preact: 10.5.4
     preact-render-to-string: 5.1.10
-    react: "github:preact-compat/react#1.0.0"
-    react-dom: "github:preact-compat/react-dom#1.0.0"
+    react: "npm:@preact/compat@0.0.3"
+    react-dom: "npm:@preact/compat@0.0.3"
     react-optimized-image: ^0.4.1
     react-query: 2.23.1
     react-query-devtools: 2.6.0
@@ -30133,15 +30133,6 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"react-dom@github:preact-compat/react-dom#1.0.0":
-  version: 1.0.0
-  resolution: "react-dom@https://github.com/preact-compat/react-dom.git#commit:75804a834f55de5350c175f9646631dabac258ae"
-  peerDependencies:
-    preact: ">=10"
-  checksum: 3cac76790a5baa34dff7761c15e4bdee2c7fcc3fe9672d977bbbd5cf86151ffef09f45f228471c1c66de735aa5c597005af4f4d413b135792a22d7c3af0f1c8b
-  languageName: node
-  linkType: hard
-
 "react-dom@npm:16.13.1, react-dom@npm:^16.3.0, react-dom@npm:^16.8.3":
   version: 16.13.1
   resolution: "react-dom@npm:16.13.1"
@@ -30153,6 +30144,15 @@ mocha@latest:
   peerDependencies:
     react: ^16.13.1
   checksum: fb5c3ad41360c6a8674f33916aa895d05e79d063d31a6963074220c1cda9e07e880799d01670b4ebd570b4d3457584f13cc898b5033a05641e8e801f5611607e
+  languageName: node
+  linkType: hard
+
+"react-dom@npm:@preact/compat@0.0.3, react@npm:@preact/compat@0.0.3":
+  version: 0.0.3
+  resolution: "@preact/compat@npm:0.0.3"
+  peerDependencies:
+    preact: "*"
+  checksum: 82e25edb27f50d16e96910fb9b0ef7c7231e8bcd9f78c0f4c27a499665c3271032090e34e8c350f2733e58c6caf5617737d8ecdb92c1b7ebbeb24c3fe84ad24d
   languageName: node
   linkType: hard
 
@@ -30661,15 +30661,6 @@ mocha@latest:
     react: ^15.3.0 || ^16.0.0-alpha
     react-dom: ^15.3.0 || ^16.0.0-alpha
   checksum: f2e9476db8cff71a056aac66032e79a05c7417a2786cdc3ab4a314ae40d181a206fefaeca1f03a84bc51d76be94455cd24a442ea84e2af52a3b1332f05494927
-  languageName: node
-  linkType: hard
-
-"react@github:preact-compat/react#1.0.0":
-  version: 1.0.0
-  resolution: "react@https://github.com/preact-compat/react.git#commit:acfe2cc2acc677d08fb8edf8ce04796634d8edf8"
-  peerDependencies:
-    preact: ">=10"
-  checksum: 0118ff77897d69ece28a15a6773fb844675d92a0928c1fd2798566b3d42dca6807ce898800e4d9018a15e185d1c5fb868ebe8ce94aed30d2afb4f76fc254df6e
   languageName: node
   linkType: hard
 
@@ -35312,7 +35303,7 @@ typescript@4.0.3:
 
 "typescript@patch:typescript@4.0.3#builtin<compat/typescript>":
   version: 4.0.3
-  resolution: "typescript@patch:typescript@npm%3A4.0.3#builtin<compat/typescript>::version=4.0.3&hash=5b02a2"
+  resolution: "typescript@patch:typescript@npm%3A4.0.3#builtin<compat/typescript>::version=4.0.3&hash=5bf698"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
