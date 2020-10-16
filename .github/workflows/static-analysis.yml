@@ -15,7 +15,6 @@ jobs:
         env:
           cache-name: cache-lint
         with:
-          # yarn cache files are stored in `~/.yarn` on Linux/macOS
           path: |
             .yarn
             .pnp.js
@@ -41,7 +40,6 @@ jobs:
         env:
           cache-name: cache-typecheck
         with:
-          # yarn cache files are stored in `~/.yarn` on Linux/macOS
           path: |
             .yarn
             .pnp.js
