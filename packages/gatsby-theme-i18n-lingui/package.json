@@ -11,9 +11,9 @@
   "peerDependencies": {
     "@lingui/react": "^3.0.0-18",
     "gatsby": ">=2.21.26",
+    "make-plural": "^6.2.2",
     "react": ">=16.13.1",
-    "react-dom": ">=16.13.1",
-    "make-plural": "^6.2.2"
+    "react-dom": ">=16.13.1"
   },
   "keywords": [
     "i18n",
