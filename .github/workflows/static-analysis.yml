@@ -15,12 +15,12 @@ jobs:
         uses: actions/cache@v2
         id: cache-deps
         env:
-          cache-name: cache-lint
+          cache-name: cache-typecheck
         with:
           path: |
             .yarn
             .pnp.js
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-v1-${{ hashFiles('**/yarn.lock') }}
+          key: v1-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
       - name: Use Node.js 14
         uses: actions/setup-node@v1
         with:
@@ -39,12 +39,12 @@ jobs:
         uses: actions/cache@v2
         id: cache-deps
         env:
-          cache-name: cache-typecheck
+          cache-name: cache-lint
         with:
           path: |
             .yarn
             .pnp.js
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-v1-${{ hashFiles('**/yarn.lock') }}
+          key: v1-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
       - name: Use Node.js 14
         uses: actions/setup-node@v1
         with:
