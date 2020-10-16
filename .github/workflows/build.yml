@@ -60,7 +60,6 @@ jobs:
   test-vor-backend:
     runs-on: ubuntu-latest
 
-    container: golang:1.15.3
     services:
       minio:
         image: chrsep/minio:latest
@@ -87,12 +86,12 @@ jobs:
     env:
       MINIO_ACCESS_KEY: AKIAIOSFODNN7EXAMPLE
       MINIO_SECRET_KEY: wJalrXUtnFEMIK7MDENGbPxRfiCYEXAMPLEKEY
-      MINIO_ENDPOINT: minio:9000
+      MINIO_ENDPOINT: localhost:9000
       MINIO_BUCKET_NAME: media
       MINIO_BUCKET_LOCATION: us-east-1
       DB_USERNAME: postgres
       DB_PASSWORD: postgres
-      DB_HOST: postgres
+      DB_HOST: localhost
       DB_PORT: 5432
 
     steps:
@@ -105,7 +104,11 @@ jobs:
         with:
           path: |
             apps/vor/vendor
-          key: v2-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/go.mod') }}
+          key: v2-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+      - name: Use Go 15
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.15.3
       - run: cd apps/vor/ && go get gotest.tools/gotestsum
       - run: cd apps/vor/ && go mod vendor
       - run: |
