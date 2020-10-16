@@ -47,23 +47,23 @@ jobs:
       - restore_cache:
           name: Restore Yarn Package Cache
           keys:
-            - build-v15-{{ checksum "yarn.lock" }}
+            - build-v16-{{ checksum "yarn.lock" }}
       - run: |
           yarn install
       - persist_to_workspace:
           root: ../
           paths:
-            - repo/.yarn/unplugged
-            - repo/.yarn/install-state.gz
-            - repo/.yarn/build-state.yml
+            - repo/.yarn
             - repo/.pnp.js
             - .cache/Cypress
       - save_cache:
           when: always
           name: Save Yarn Package Cache
-          key: build-v15-{{ checksum "yarn.lock" }}
+          key: build-v16-{{ checksum "yarn.lock" }}
           paths:
-            - .yarn
+            - .yarn/unplugged
+            - .yarn/install-state.gz
+            - .yarn/build-state.yml
             - .pnp.js
             - ../.cache/Cypress
 
