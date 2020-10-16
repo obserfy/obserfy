@@ -42,7 +42,7 @@ jobs:
 
   install_js_deps:
     docker:
-      - image: node:12
+      - image: node:14
     working_directory: ~/repo
     steps:
       - checkout
@@ -51,7 +51,7 @@ jobs:
           keys:
             - build-v11-{{ checksum "yarn.lock" }}
       - run: |
-          yarn install
+          yarn install --immutable --immutable-cache
       - persist_to_workspace:
           root: ../
           paths:
@@ -75,7 +75,7 @@ jobs:
 
   vor_frontend_build:
     docker:
-      - image: node:12
+      - image: node:14
     working_directory: ~/repo
     steps:
       - checkout
@@ -107,7 +107,7 @@ jobs:
 
   vor_snapshot_test:
     docker:
-      - image: node:12
+      - image: node:14
     working_directory: ~/repo
     steps:
       - checkout
@@ -119,7 +119,7 @@ jobs:
 
   node_lint:
     docker:
-      - image: node:12
+      - image: node:14
     working_directory: ~/repo
     steps:
       - checkout
@@ -130,7 +130,7 @@ jobs:
 
   node_typecheck:
     docker:
-      - image: node:12
+      - image: node:14
     working_directory: ~/repo
     steps:
       - checkout
@@ -156,9 +156,9 @@ jobs:
           echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
           echo ' [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
       - run: |
-          nvm install v12
+          nvm install v14
           node -v
-          nvm alias default v12
+          nvm alias default v14
       - run: npm install -g yarn
       - run:
           command: yarn workspace gaia start
@@ -184,8 +184,8 @@ jobs:
       - run:
           name: Install node
           command: |
-            nvm install v12
-            nvm alias default v12
+            nvm install v14
+            nvm alias default v14
       - run:
           name: Setup git creds
           command: |
