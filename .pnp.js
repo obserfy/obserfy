@@ -4791,6 +4791,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:1.2.0"
       ],
       [
+        "gatsby-plugin-no-sourcemaps",
+        "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:2.2.1"
+      ],
+      [
         "gatsby-plugin-nprogress",
         "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:2.3.13"
       ],
@@ -38299,6 +38303,21 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["gatsby-plugin-no-sourcemaps", [
+        ["virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:2.2.1", {
+          "packageLocation": "./.yarn/$$virtual/gatsby-plugin-no-sourcemaps-virtual-93c5351e95/0/cache/gatsby-plugin-no-sourcemaps-npm-2.2.1-7e51dd1d54-41eb6280fe.zip/node_modules/gatsby-plugin-no-sourcemaps/",
+          "packageDependencies": [
+            ["gatsby-plugin-no-sourcemaps", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:2.2.1"],
+            ["@types/gatsby", null],
+            ["gatsby", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:2.24.78"]
+          ],
+          "packagePeers": [
+            "@types/gatsby",
+            "gatsby"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["gatsby-plugin-nprogress", [
         ["virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:2.3.13", {
           "packageLocation": "./.yarn/$$virtual/gatsby-plugin-nprogress-virtual-f800135837/0/cache/gatsby-plugin-nprogress-npm-2.3.13-9bb47d4068-8609b9fc07.zip/node_modules/gatsby-plugin-nprogress/",
@@ -58858,6 +58877,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["gatsby-plugin-guess-js", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:1.3.15"],
             ["gatsby-plugin-layout", "npm:1.3.13"],
             ["gatsby-plugin-manifest", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:2.4.34"],
+            ["gatsby-plugin-no-sourcemaps", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:2.2.1"],
             ["gatsby-plugin-nprogress", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:2.3.13"],
             ["gatsby-plugin-offline", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:3.2.32"],
             ["gatsby-plugin-portal", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:1.0.65"],
