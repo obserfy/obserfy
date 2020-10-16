@@ -28,7 +28,7 @@ jobs:
         with:
           node-version: 14
       - name: Install Dependencies
-        if: steps.cache-deps.outputs.cache-hit != 'true'
+        if: steps.cache-deps-and-gatsby.outputs.cache-hit != 'true'
         run: yarn workspaces focus vor --production
       - run: yarn workspace vor run build
 
@@ -62,7 +62,7 @@ jobs:
 
     services:
       minio:
-        image: minio/minio:latest
+        image: chrsep/minio:latest
         env:
           MINIO_ACCESS_KEY: AKIAIOSFODNN7EXAMPLE
           MINIO_SECRET_KEY: wJalrXUtnFEMIK7MDENGbPxRfiCYEXAMPLEKEY
@@ -91,7 +91,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Cache nextjs and deps
+      - name: Cache deps
         id: cache-deps
         uses: actions/cache@v2
         env:
