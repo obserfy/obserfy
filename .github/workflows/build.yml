@@ -60,6 +60,35 @@ jobs:
   test-vor-backend:
     runs-on: ubuntu-latest
 
+    services:
+      minio:
+        image: minio/minio:latest
+        env:
+          MINIO_ACCESS_KEY: AKIAIOSFODNN7EXAMPLE
+          MINIO_SECRET_KEY: wJalrXUtnFEMIK7MDENGbPxRfiCYEXAMPLEKEY
+          MINIO_HTTP_TRACE: "/dev/stdout"
+        ports:
+          - 9000:9000
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: postgres
+          POSTGRES_DB: defaultdb
+        ports:
+          - 5432:5432
+
+    env:
+      MINIO_ACCESS_KEY: AKIAIOSFODNN7EXAMPLE
+      MINIO_SECRET_KEY: wJalrXUtnFEMIK7MDENGbPxRfiCYEXAMPLEKEY
+      MINIO_ENDPOINT: minio:9000
+      MINIO_BUCKET_NAME: media
+      MINIO_BUCKET_LOCATION: us-east-1
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgres
+      DB_HOST: postgres
+      DB_PORT: 5432
+
     steps:
       - uses: actions/checkout@v2
       - name: Cache nextjs and deps
