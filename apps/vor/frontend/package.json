@@ -15,7 +15,7 @@
     "@sentry/gatsby": "5.26.0",
     "@sentry/tracing": "5.26.0",
     "@svgr/webpack": "5.4.0",
-    "@theme-ui/match-media": "0.4.0-rc.5",
+    "@theme-ui/match-media": "0.4.0-rc.6",
     "babel-plugin-remove-graphql-queries": "2.9.20",
     "body-scroll-lock": "3.1.5",
     "dayjs": "1.9.3",
