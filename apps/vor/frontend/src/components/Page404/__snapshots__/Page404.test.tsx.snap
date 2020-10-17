@@ -65,6 +65,7 @@ exports[`Page404 should render correctly 1`] = `
   margin: 16px;
   margin-bottom: 32px;
   text-align: center;
+  line-height: 1.2;
 }
 
 .emotion-1 {
