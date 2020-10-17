@@ -173,6 +173,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/download-artifact@v2
+        with:
+          name: vor
+          path: apps/vor/frontend/public
+      - uses: actions/download-artifact@v2
+        with:
+          name: gaia
+          path: apps/gaia/.next
+      - run: cp .env.example .env
+      - run: docker-compose up -d &
       - name: Cache e2e deps
         id: cache-deps
         uses: actions/cache@v2
@@ -191,15 +201,5 @@ jobs:
       - name: Install Dependencies
         if: steps.cache-deps.outputs.cache-hit != 'true'
         run: yarn workspaces focus e2e gaia
-      - uses: actions/download-artifact@v2
-        with:
-          name: vor
-          path: apps/vor/frontend/public
-      - uses: actions/download-artifact@v2
-        with:
-          name: gaia
-          path: apps/gaia/.next
-      - run: cp .env.example .env
-      - run: docker-compose up -d
       - run: yarn workspace gaia run start &
       - run: yarn workspace e2e run cy:ci
