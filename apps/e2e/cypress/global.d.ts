@@ -3,7 +3,7 @@
 /// <reference types="@types/faker" />
 
 declare namespace Cypress {
-  interface Chainable<Subject> {
+  interface Chainable<> {
     // cypress-axe custom commands
     injectAxe(): Chainable<object>
     checkA11y(): Chainable<object>

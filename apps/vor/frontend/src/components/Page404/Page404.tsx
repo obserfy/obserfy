@@ -37,8 +37,7 @@ export const Page404: FC = () => {
         }}
       >
         <Typography.H1
-          sx={{ textAlign: "center" }}
-          lineHeight={1.2}
+          sx={{ textAlign: "center", lineHeight: 1.2 }}
           m={3}
           mb={4}
         >
