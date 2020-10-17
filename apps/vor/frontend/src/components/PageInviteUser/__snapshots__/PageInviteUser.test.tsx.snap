@@ -513,6 +513,7 @@ exports[`PageInviteUser should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  font-size: 14px;
 }
 
 .emotion-16 {
@@ -629,7 +630,6 @@ exports[`PageInviteUser should render correctly 1`] = `
       >
         <p
           class="emotion-15"
-          font-size="1"
         >
           Invite using link
         </p>

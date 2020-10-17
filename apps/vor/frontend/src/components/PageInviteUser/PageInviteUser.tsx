@@ -116,7 +116,7 @@ const PageInviteUser: FC = () => {
           borderWidth: 1,
         }}
       >
-        <Typography.Body color="textMediumEmphasis" fontSize={1}>
+        <Typography.Body color="textMediumEmphasis" sx={{ fontSize: 1 }}>
           <Trans>Invite using link</Trans>
         </Typography.Body>
         <Typography.Body mb={3}>
