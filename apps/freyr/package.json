@@ -30,8 +30,8 @@
     "gatsby-transformer-sharp": "2.5.18",
     "postcss-preset-env": "6.7.0",
     "preact": "10.5.4",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
     "react-helmet": "6.1.0"
   },
   "devDependencies": {
