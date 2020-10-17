@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "author": "Chrisando Eka Pramudhita <chrsep@protonmail.com>",
   "dependencies": {
-    "@babel/runtime": "7.11.0",
+    "@babel/runtime": "7.12.1",
     "@emotion/core": "10.0.28",
     "@lingui/cli": "3.0.0-18",
     "@lingui/core": "3.0.0-18",
