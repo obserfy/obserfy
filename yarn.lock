@@ -4962,7 +4962,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hapi/address@npm:^4.0.1, @hapi/address@npm:^4.1.0":
+"@hapi/address@npm:^4.1.0":
   version: 4.1.0
   resolution: "@hapi/address@npm:4.1.0"
   dependencies:
@@ -5048,19 +5048,6 @@ __metadata:
     "@hapi/hoek": 8.x.x
     "@hapi/topo": 3.x.x
   checksum: 7edbb0d5a5c1ff376b66243427a3b98a559e9ea89f7d40ee55916e0519bc1be56a9ac69f1e446a2c39c153fe835c57e4ee71297d4266b0ca82c49f7a2e90f681
-  languageName: node
-  linkType: hard
-
-"@hapi/joi@npm:^17.1.1":
-  version: 17.1.1
-  resolution: "@hapi/joi@npm:17.1.1"
-  dependencies:
-    "@hapi/address": ^4.0.1
-    "@hapi/formula": ^2.0.0
-    "@hapi/hoek": ^9.0.0
-    "@hapi/pinpoint": ^2.0.0
-    "@hapi/topo": ^5.0.0
-  checksum: 7547ccf2a8168e4f68f630069ab069f94d0689bd18a034a6dea40cc9c7e88776665670316f65bdd29068dccde111f3d7164504cfaf6db183110b64f36c5643dd
   languageName: node
   linkType: hard
 
@@ -8954,10 +8941,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:14.11.8":
-  version: 14.11.8
-  resolution: "@types/node@npm:14.11.8"
-  checksum: 5139c07ba76d791b4930fa02ec746656dacf78b43c431d56a7514a8285962d0511bf356bee870968a541033c14967b58f7b2a58c48ac81646ce4eb28d2ff433d
+"@types/node@npm:14.11.10":
+  version: 14.11.10
+  resolution: "@types/node@npm:14.11.10"
+  checksum: 74c50cfd07b5e4bbc4303c063acf8524048f5035161f009ea2ceeb12001d278fd43a1e399d03f6277caa5c67c61a785bf406f0541b8fc2252e1bcaaa2f2d414b
   languageName: node
   linkType: hard
 
@@ -16340,7 +16327,7 @@ __metadata:
     "@cypress/code-coverage": 3.8.1
     "@cypress/webpack-preprocessor": 5.4.8
     "@types/faker": 5.1.2
-    "@types/node": 14.11.8
+    "@types/node": 14.11.10
     "@typescript-eslint/eslint-plugin": 3.10.1
     "@typescript-eslint/parser": 3.10.1
     babel-loader: 8.1.0
@@ -16362,7 +16349,7 @@ __metadata:
     gatsby-cypress: 0.4.12
     pnp-webpack-plugin: 1.6.4
     typescript: 4.0.3
-    wait-on: 5.1.0
+    wait-on: 5.2.0
   languageName: unknown
   linkType: soft
 
@@ -19018,7 +19005,7 @@ fsevents@^1.2.7:
     "@types/formidable": 1.0.31
     "@types/minio": 7.0.6
     "@types/nanoid": 2.1.0
-    "@types/node": 14.11.8
+    "@types/node": 14.11.10
     "@types/pg": 7.14.5
     "@types/react": 16.9.41
     "@types/react-query": 1.1.2
@@ -37262,21 +37249,6 @@ typescript@4.0.3:
   dependencies:
     xml-name-validator: ^3.0.0
   checksum: 2327c8a6c7302ed4b685125c193f4b4b859ee12cd6e1938407a02dda9cfcfff7f0c103de387b268444c4b61d7892d5260b5c684eb7519886fb3a07798bd565ba
-  languageName: node
-  linkType: hard
-
-"wait-on@npm:5.1.0":
-  version: 5.1.0
-  resolution: "wait-on@npm:5.1.0"
-  dependencies:
-    "@hapi/joi": ^17.1.1
-    axios: ^0.19.2
-    lodash: ^4.17.19
-    minimist: ^1.2.5
-    rxjs: ^6.5.5
-  bin:
-    wait-on: bin/wait-on
-  checksum: 370136ebfce63c8df20a85b2b167856b3b49c49d2a58164e45e999d5e42f591bd677de8e3efda8fdaf15218bc1be18eb0b953a1e11fcc4dd85a52f0e9ebb3ab9
   languageName: node
   linkType: hard
 
