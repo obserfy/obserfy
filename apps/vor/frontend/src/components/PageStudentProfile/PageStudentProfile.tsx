@@ -477,7 +477,7 @@ const DataBox: FC<{
       >
         <Trans id={label} />
       </Typography.Body>
-      <Typography.Body lineHeight={1.6}>
+      <Typography.Body sx={{ lineHeight: 1.6 }}>
         <Trans id={value} />
       </Typography.Body>
     </Box>
