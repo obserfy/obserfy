@@ -13,6 +13,10 @@ jobs:
 
     env:
       DOCKER_BUILDKIT: 1
+      GA_CLIENT_EMAIL: ${{ secrets.GA_CLIENT_EMAIL }}
+      GA_PRIVATE_KEY: ${{ secrets.GA_PRIVATE_KEY }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      DOCKER_LOGIN: ${{ secrets.DOCKER_LOGIN }}
 
     steps:
       - uses: actions/checkout@v2
@@ -27,20 +31,19 @@ jobs:
         run: docker build -f ./docker/vor/prod.dockerfile  -t "obserfy/vor:latest" . --secret id=env,src=.env
 #          docker build -f ./docker/vor/prod.dockerfile  -t "obserfy/vor:${{ steps.get_version.outputs.VERSION  }}" . --secret id=env,src=.env
       - name: Docker login
-        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.$DOCKER_LOGIN }}"  --password-stdin
+        run: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_LOGIN"  --password-stdin
 
   deploy-gaia:
     runs-on: ubuntu-latest
 
     env:
       DOCKER_BUILDKIT: 1
+      NEXT_PUBLIC_GAIA_SEGMENT_KEY: ${{ secrets.NEXT_PUBLIC_GAIA_SEGMENT_KEY }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      DOCKER_LOGIN: ${{ secrets.DOCKER_LOGIN }}
 
     steps:
       - uses: actions/checkout@v2
-      - name: Setup guessjs envs
-        run: |
-          echo "GA_CLIENT_EMAIL=$GA_CLIENT_EMAIL" >> .env
-          echo "GA_PRIVATE_KEY=$GA_PRIVATE_KEY" >> .env
       - name: Get the version
         id: get_version
         run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
@@ -48,5 +51,5 @@ jobs:
         run: docker build --build-arg NEXT_PUBLIC_GAIA_SEGMENT_KEY -f ./docker/gaia/prod.dockerfile  -t "obserfy/gaia:latest"  .
 #        run: docker build --build-arg NEXT_PUBLIC_GAIA_SEGMENT_KEY -f ./docker/gaia/prod.dockerfile  -t "obserfy/gaia:${{ steps.get_version.outputs.VERSION  }}"  .
       - name: Docker login
-        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.$DOCKER_LOGIN }}"  --password-stdin
+        run: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_LOGIN"  --password-stdin
 
