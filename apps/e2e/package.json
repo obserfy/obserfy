@@ -6,7 +6,7 @@
   "license": "GPL-3",
   "private": true,
   "devDependencies": {
-    "@cypress/code-coverage": "3.8.1",
+    "@cypress/code-coverage": "3.8.2",
     "@types/faker": "5.1.2",
     "@types/node": "14.11.8",
     "@typescript-eslint/eslint-plugin": "3.10.1",
