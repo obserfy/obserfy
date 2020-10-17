@@ -171,6 +171,10 @@ jobs:
       - build-vor-frontend
     runs-on: ubuntu-latest
 
+    env:
+      COMPOSE_DOCKER_CLI_BUILD: 1
+      DOCKER_BUILDKIT: 1
+
     steps:
       - uses: actions/checkout@v2
       - uses: actions/download-artifact@v2
