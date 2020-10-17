@@ -4971,6 +4971,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@hapi/accept@npm:5.0.1":
+  version: 5.0.1
+  resolution: "@hapi/accept@npm:5.0.1"
+  dependencies:
+    "@hapi/boom": 9.x.x
+    "@hapi/hoek": 9.x.x
+  checksum: 29e3281bd823fbb36d3b838cc25df4c26a9e5db4ed5b36919cf51fe63110e7cddfe3f3b1a88acf31dfe6c0f9c4be449cbe7e58429fa3597698aa1b1ea653d57a
+  languageName: node
+  linkType: hard
+
 "@hapi/address@npm:2.x.x":
   version: 2.1.4
   resolution: "@hapi/address@npm:2.1.4"
@@ -5005,6 +5015,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@hapi/boom@npm:9.x.x":
+  version: 9.1.0
+  resolution: "@hapi/boom@npm:9.1.0"
+  dependencies:
+    "@hapi/hoek": 9.x.x
+  checksum: 77b566e295e7571d7c9b525b7c840016e6edeaa5c1e473af758ca945668d8a87a34c7452f29c3694495925d7af9f0a9bffbf217650051273abb3e77eb0c2716f
+  languageName: node
+  linkType: hard
+
 "@hapi/bourne@npm:1.x.x":
   version: 1.3.2
   resolution: "@hapi/bourne@npm:1.3.2"
@@ -5032,6 +5051,13 @@ __metadata:
   version: 8.5.1
   resolution: "@hapi/hoek@npm:8.5.1"
   checksum: 17bf9a0b6f2f9ecb248824dab838c66c50b16b00b1d3785233fafd5abacb06cc6cdcbd6f4c7be87babb227fc02fff46ad1c23de3f5b6f48ffe36b6aac829d82c
+  languageName: node
+  linkType: hard
+
+"@hapi/hoek@npm:9.x.x":
+  version: 9.1.0
+  resolution: "@hapi/hoek@npm:9.1.0"
+  checksum: c77ac8f0c1ae6e21b3d77fa63f462dc1b0c84481388f5e54c651e86cf565d58cb701c396a1fa86a746d5dc278013ad5b3513a58c4cb19a493802d17b68c90740
   languageName: node
   linkType: hard
 
@@ -6509,23 +6535,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/env@npm:9.5.4":
-  version: 9.5.4
-  resolution: "@next/env@npm:9.5.4"
-  checksum: 865cab9d3897297cce63c0bae1d11c7975f86513a18d043277dacc38595a5f994e1c21bd44c7fc605d599f06634a670c60be02947e68d3e533569bbab7dafcf3
+"@next/env@npm:9.5.5":
+  version: 9.5.5
+  resolution: "@next/env@npm:9.5.5"
+  checksum: f4bbd466081f9af06db0e5c03ec97d2c15a59899a08f390a24b0473d3645dac32c05293e809ef5f3982d70f1669f54596b1c20daeebac3056f7ed087f4b64d9e
   languageName: node
   linkType: hard
 
-"@next/polyfill-module@npm:9.5.4":
-  version: 9.5.4
-  resolution: "@next/polyfill-module@npm:9.5.4"
-  checksum: e19e51558d3780ff917d28f1b4e1083c26fc970f7b2faa1cbca9e00e99593e2192e7d10c0ef3dbc7c47e31612f58d15d9236509357ae87a759c8590c8984d9df
+"@next/polyfill-module@npm:9.5.5":
+  version: 9.5.5
+  resolution: "@next/polyfill-module@npm:9.5.5"
+  checksum: c2e2ffe48bef71e6b83a7b3babacc68c70800a2fbf90a71c6e4de195a9d8824415762625ccb557f26c06f0035f148ea1b2e68a8cd615180ab2db2bbd2d660871
   languageName: node
   linkType: hard
 
-"@next/react-dev-overlay@npm:9.5.4":
-  version: 9.5.4
-  resolution: "@next/react-dev-overlay@npm:9.5.4"
+"@next/react-dev-overlay@npm:9.5.5":
+  version: 9.5.5
+  resolution: "@next/react-dev-overlay@npm:9.5.5"
   dependencies:
     "@babel/code-frame": 7.10.4
     ally.js: 1.4.1
@@ -6541,17 +6567,17 @@ __metadata:
     react: ^16.9.0
     react-dom: ^16.9.0
     webpack: ^4 || ^5
-  checksum: c617506d3bda1afce84e1b048f15180d0693eed69a5ff369800e146df65b108cf527f2086fb392bc0b80fa0ee299d1784881311dd636b3288fc6f5ea5800c865
+  checksum: 1b02026e5788ab6c24235ca813cf7d453f6a72408b0d0ac1abc27bd8ee6d543f5fe4d51d48311e89eebc9bbb7d95c30a9cee7f390a686af8f8d04b57ea51b791
   languageName: node
   linkType: hard
 
-"@next/react-refresh-utils@npm:9.5.4":
-  version: 9.5.4
-  resolution: "@next/react-refresh-utils@npm:9.5.4"
+"@next/react-refresh-utils@npm:9.5.5":
+  version: 9.5.5
+  resolution: "@next/react-refresh-utils@npm:9.5.5"
   peerDependencies:
     react-refresh: 0.8.3
     webpack: ^4 || ^5
-  checksum: d0091f82ed5d80c275c2b3921b09d05cb6aee2487ecb4298eda02620819593baa704303f21f75804c23396382336bd4767f52749c8b4f310513dfc19ec837c07
+  checksum: 11700d11625c88a05a9ba77ce59424f6bde1d8c2919a821d271b8e688359cabc1416981932de17a1727fcda9f9884aa768ea409cf3af10282bf0baa1e76d630b
   languageName: node
   linkType: hard
 
@@ -19091,7 +19117,7 @@ fsevents@^1.2.7:
     lqip-loader: 2.2.1
     minio: 7.0.16
     nanoid: 3.1.12
-    next: 9.5.4
+    next: 9.5.5
     next-compose-plugins: 2.2.0
     next-optimized-images: 3.0.0-canary.10
     next-pwa: 3.1.5
@@ -26896,9 +26922,9 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"next@npm:9.5.4":
-  version: 9.5.4
-  resolution: "next@npm:9.5.4"
+"next@npm:9.5.5":
+  version: 9.5.5
+  resolution: "next@npm:9.5.5"
   dependencies:
     "@ampproject/toolbox-optimizer": 2.6.0
     "@babel/code-frame": 7.10.4
@@ -26918,10 +26944,11 @@ mocha@latest:
     "@babel/preset-typescript": 7.10.4
     "@babel/runtime": 7.11.2
     "@babel/types": 7.11.5
-    "@next/env": 9.5.4
-    "@next/polyfill-module": 9.5.4
-    "@next/react-dev-overlay": 9.5.4
-    "@next/react-refresh-utils": 9.5.4
+    "@hapi/accept": 5.0.1
+    "@next/env": 9.5.5
+    "@next/polyfill-module": 9.5.5
+    "@next/react-dev-overlay": 9.5.5
+    "@next/react-refresh-utils": 9.5.5
     ast-types: 0.13.2
     babel-plugin-transform-define: 2.0.0
     babel-plugin-transform-react-remove-prop-types: 0.4.24
@@ -26964,7 +26991,7 @@ mocha@latest:
     react-dom: ^16.6.0
   bin:
     next: dist/bin/next
-  checksum: 810090d42d219e5d2b1217d94efacc6cfe899adaadf425a4a804ab8eb88ea001bcde09e4fd2fdd594cec613cce39d4387c49bd1229a42c61af3ded9ed2fa3a42
+  checksum: 83075eb68105069c0e198d9c6c57c4f0ce22720af2fa43e0640bf6cedf7138d7396e434fa750d7df8520b032900b5dc3508c8c96c4fe2d437827ac10692f3176
   languageName: node
   linkType: hard
 
