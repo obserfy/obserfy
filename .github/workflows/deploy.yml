@@ -1,10 +1,10 @@
 name: Deploy Docker Images
 
-on: [ push ]
-#on:
-#  push:
-#    tags:
-#      - '*'
+#on: [ push ]
+on:
+  push:
+    tags:
+      - '*'
 
 jobs:
   deploy-vor:
@@ -21,9 +21,9 @@ jobs:
         id: get_version
         run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
       - name: Build docker image
-        run: docker build -f ./docker/vor/prod.dockerfile  -t "obserfy/vor:latest" .
 #        run: docker build -f ./docker/vor/prod.dockerfile  -t "obserfy/vor:latest" .
-#          docker build -f ./docker/vor/prod.dockerfile  -t "obserfy/vor:${{ steps.get_version.outputs.VERSION  }}" .
+#        run: docker build -f ./docker/vor/prod.dockerfile  -t "obserfy/vor:latest" .
+        run: docker build -f ./docker/vor/prod.dockerfile  -t "obserfy/vor:${{ steps.get_version.outputs.VERSION  }}" .
       - name: Docker login
         run: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_LOGIN"  --password-stdin
 
@@ -42,8 +42,8 @@ jobs:
         id: get_version
         run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
       - name: Build docker image
-        run: docker build --build-arg NEXT_PUBLIC_GAIA_SEGMENT_KEY -f ./docker/gaia/prod.dockerfile  -t "obserfy/gaia:latest"  .
-#        run: docker build --build-arg NEXT_PUBLIC_GAIA_SEGMENT_KEY -f ./docker/gaia/prod.dockerfile  -t "obserfy/gaia:${{ steps.get_version.outputs.VERSION  }}"  .
+#        run: docker build --build-arg NEXT_PUBLIC_GAIA_SEGMENT_KEY -f ./docker/gaia/prod.dockerfile  -t "obserfy/gaia:latest"  .
+        run: docker build --build-arg NEXT_PUBLIC_GAIA_SEGMENT_KEY -f ./docker/gaia/prod.dockerfile  -t "obserfy/gaia:${{ steps.get_version.outputs.VERSION  }}"  .
       - name: Docker login
         run: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_LOGIN"  --password-stdin
 
