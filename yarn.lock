@@ -18783,8 +18783,8 @@ __metadata:
     postcss-preset-env: 6.7.0
     preact: 10.5.4
     prettier: 2.1.2
-    react: 16.13.1
-    react-dom: 16.13.1
+    react: 16.14.0
+    react-dom: 16.14.0
     react-helmet: 6.1.0
     stylelint: 13.7.2
     stylelint-config-prettier: 8.0.2
@@ -31062,7 +31062,30 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"react-dom@npm:16.13.1, react-dom@npm:^16.3.0, react-dom@npm:^16.8.3":
+"react-dom@npm:16.14.0":
+  version: 16.14.0
+  resolution: "react-dom@npm:16.14.0"
+  dependencies:
+    loose-envify: ^1.1.0
+    object-assign: ^4.1.1
+    prop-types: ^15.6.2
+    scheduler: ^0.19.1
+  peerDependencies:
+    react: ^16.14.0
+  checksum: a13558f0e7c6d1a98684214460bcd4b9005500015b5048fb1b0d2856786b8764dbc713e6b078a5b1a56e17866400e1d862183c7a0a513ae8351de11f6f6749d2
+  languageName: node
+  linkType: hard
+
+"react-dom@npm:@preact/compat@0.0.3, react@npm:@preact/compat@0.0.3":
+  version: 0.0.3
+  resolution: "@preact/compat@npm:0.0.3"
+  peerDependencies:
+    preact: "*"
+  checksum: 82e25edb27f50d16e96910fb9b0ef7c7231e8bcd9f78c0f4c27a499665c3271032090e34e8c350f2733e58c6caf5617737d8ecdb92c1b7ebbeb24c3fe84ad24d
+  languageName: node
+  linkType: hard
+
+"react-dom@npm:^16.3.0, react-dom@npm:^16.8.3":
   version: 16.13.1
   resolution: "react-dom@npm:16.13.1"
   dependencies:
@@ -31073,15 +31096,6 @@ mocha@latest:
   peerDependencies:
     react: ^16.13.1
   checksum: fb5c3ad41360c6a8674f33916aa895d05e79d063d31a6963074220c1cda9e07e880799d01670b4ebd570b4d3457584f13cc898b5033a05641e8e801f5611607e
-  languageName: node
-  linkType: hard
-
-"react-dom@npm:@preact/compat@0.0.3, react@npm:@preact/compat@0.0.3":
-  version: 0.0.3
-  resolution: "@preact/compat@npm:0.0.3"
-  peerDependencies:
-    preact: "*"
-  checksum: 82e25edb27f50d16e96910fb9b0ef7c7231e8bcd9f78c0f4c27a499665c3271032090e34e8c350f2733e58c6caf5617737d8ecdb92c1b7ebbeb24c3fe84ad24d
   languageName: node
   linkType: hard
 
@@ -31534,17 +31548,17 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"react-test-renderer@npm:16.13.1":
-  version: 16.13.1
-  resolution: "react-test-renderer@npm:16.13.1"
+"react-test-renderer@npm:16.14.0":
+  version: 16.14.0
+  resolution: "react-test-renderer@npm:16.14.0"
   dependencies:
     object-assign: ^4.1.1
     prop-types: ^15.6.2
     react-is: ^16.8.6
     scheduler: ^0.19.1
   peerDependencies:
-    react: ^16.13.1
-  checksum: e9c3c068d09a4252103eed270635d05897e23cbb86c6f0f74beced9345ed1b94a0fff44f16f97526e6f7a8337669156616e1e02eacb6d7b8f40295c92d91be12
+    react: ^16.14.0
+  checksum: 0905787bfd68865098743ca2d18d874ef09929b80730131c017ced55bcf7082e84f66ec76685799a759812d376de6db718f6d643a2705779a491003d01d45956
   languageName: node
   linkType: hard
 
@@ -31590,7 +31604,18 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"react@npm:16.13.1, react@npm:^16.3.0, react@npm:^16.8.0, react@npm:^16.8.1, react@npm:^16.8.3":
+"react@npm:16.14.0":
+  version: 16.14.0
+  resolution: "react@npm:16.14.0"
+  dependencies:
+    loose-envify: ^1.1.0
+    object-assign: ^4.1.1
+    prop-types: ^15.6.2
+  checksum: 2769580b22952a52de3b5b2ea0f09cb904030b762d759739f49ab4da0b1f550e5c087ce3728c4be90f423d09481e0c075483c0c30b1ea9c549445c8b12020fd3
+  languageName: node
+  linkType: hard
+
+"react@npm:^16.3.0, react@npm:^16.8.0, react@npm:^16.8.1, react@npm:^16.8.3":
   version: 16.13.1
   resolution: "react@npm:16.13.1"
   dependencies:
@@ -37269,13 +37294,13 @@ typescript@4.0.3:
     preact-render-to-string: 5.1.10
     prettier: 2.1.2
     query-string: 6.13.5
-    react: 16.13.1
+    react: 16.14.0
     react-adaptive-hooks: 0.0.8
     react-docgen-typescript-loader: 3.7.2
-    react-dom: 16.13.1
+    react-dom: 16.14.0
     react-helmet: 6.1.0
     react-query: 2.23.1
-    react-test-renderer: 16.13.1
+    react-test-renderer: 16.14.0
     regenerator-runtime: 0.13.7
     storybook-addon-deps: 2.1.3
     storybook-addon-i18n: 5.1.13
