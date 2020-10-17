@@ -13,23 +13,19 @@ jobs:
 
     env:
       DOCKER_BUILDKIT: 1
-      GA_CLIENT_EMAIL: ${{ secrets.GA_CLIENT_EMAIL }}
-      GA_PRIVATE_KEY: ${{ secrets.GA_PRIVATE_KEY }}
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       DOCKER_LOGIN: ${{ secrets.DOCKER_LOGIN }}
 
     steps:
       - uses: actions/checkout@v2
       - name: Setup guessjs envs
-        run: |
-          echo "GA_CLIENT_EMAIL=$GA_CLIENT_EMAIL" >> .env
-          echo "GA_PRIVATE_KEY=$GA_PRIVATE_KEY" >> .env
       - name: Get the version
         id: get_version
         run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
       - name: Build docker image
-        run: docker build -f ./docker/vor/prod.dockerfile  -t "obserfy/vor:latest" . --secret id=env,src=.env
-#          docker build -f ./docker/vor/prod.dockerfile  -t "obserfy/vor:${{ steps.get_version.outputs.VERSION  }}" . --secret id=env,src=.env
+        run: docker build -f ./docker/vor/prod.dockerfile  -t "obserfy/vor:latest"
+#        run: docker build -f ./docker/vor/prod.dockerfile  -t "obserfy/vor:latest" .
+#          docker build -f ./docker/vor/prod.dockerfile  -t "obserfy/vor:${{ steps.get_version.outputs.VERSION  }}" .
       - name: Docker login
         run: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_LOGIN"  --password-stdin
 
