@@ -6,10 +6,9 @@
 FROM node:14 AS frontend-builder
 WORKDIR /usr/src
 COPY . /usr/src
-RUN yarn install
-RUN mkdir ./apps/vor/frontend/node_modules/
 # Build the project
 #RUN --mount=type=secret,id=env,dst=/usr/src/apps/vor/frontend/.env yarn workspace vor run build
+RUN yarn workspaces focus vor
 RUN yarn workspace vor run build
 # Move the build artifact so its easier to be copied
 # on the final build
