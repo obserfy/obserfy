@@ -26,11 +26,13 @@ jobs:
           cache-name: cache-build-vor
         with:
           path: |
-            .yarn
+            .yarn/unplugged
+            .yarn/install-state.gz
+            .yarn/build-state.yml
             .pnp.js
             apps/vor/frontend/public
             apps/vor/frontend/.cache
-          key: v1-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+          key: v2-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
       - name: Use Node.js 14
         uses: actions/setup-node@v1
         with:
@@ -56,10 +58,12 @@ jobs:
           cache-name: cache-build-gaia
         with:
           path: |
-            .yarn
+            .yarn/unplugged
+            .yarn/install-state.gz
+            .yarn/build-state.yml
             .pnp.js
             apps/gaia/.next
-          key: v1-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+          key: v2-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
       - name: Use Node.js 14
         uses: actions/setup-node@v1
         with:
@@ -149,9 +153,11 @@ jobs:
           cache-name: cache-vor-snapshot-test
         with:
           path: |
-            .yarn
+            .yarn/unplugged
+            .yarn/install-state.gz
+            .yarn/build-state.yml
             .pnp.js
-          key: v1-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+          key: v2-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
       - name: Use Node.js 14
         uses: actions/setup-node@v1
         with:
@@ -194,10 +200,12 @@ jobs:
           cache-name: cache-build-e2e
         with:
           path: |
-            .yarn
+            .yarn/unplugged
+            .yarn/install-state.gz
+            .yarn/build-state.yml
             .pnp.js
             ~/.cache/Cypress
-          key: v2-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+          key: v3-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
       - name: Use Node.js 14
         uses: actions/setup-node@v1
         with:
