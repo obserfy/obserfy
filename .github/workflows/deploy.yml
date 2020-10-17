@@ -1,9 +1,33 @@
 name: Deploy
 
-on: [ push ]
+#on: [ push ]
+on:
+  push:
+    tags:
+      - '*'
 
 jobs:
   deploy-vor:
+    runs-on: ubuntu-latest
+
+
+    env:
+      DOCKER_BUILDKIT: 1
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup guessjs envs
+        run: |
+          echo "GA_CLIENT_EMAIL=$GA_CLIENT_EMAIL" >> .env
+          echo "GA_PRIVATE_KEY=$GA_PRIVATE_KEY" >> .env
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
+      - name: Build docker image
+        run: docker build -f ./docker/vor/prod.dockerfile  -t "obserfy/vor:latest" . --secret id=env,src=.env
+#          docker build -f ./docker/vor/prod.dockerfile  -t "obserfy/vor:latest${{ steps.get_version.outputs.VERSION  }}" . --secret id=env,src=.env
+
+  deploy-gaia:
     runs-on: ubuntu-latest
 
     env:
@@ -19,7 +43,6 @@ jobs:
         id: get_version
         run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
       - name: Build docker image
-        run: |
-          echo $VERSION
-          docker build -f ./docker/vor/prod.dockerfile  -t "obserfy/vor:latest" . --secret id=env,src=.env
-#          docker build -f ./docker/vor/prod.dockerfile  -t "obserfy/vor:latest${{ steps.get_version.outputs.VERSION  }}" . --secret id=env,src=.env
+        run: docker build --build-arg NEXT_PUBLIC_GAIA_SEGMENT_KEY -f ./docker/gaia/prod.dockerfile  -t "obserfy/gaia:latest"  .
+#        run: docker build --build-arg NEXT_PUBLIC_GAIA_SEGMENT_KEY -f ./docker/gaia/prod.dockerfile  -t "obserfy/gaia:${{ steps.get_version.outputs.VERSION  }}"  .
+
