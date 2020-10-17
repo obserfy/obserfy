@@ -2,6 +2,9 @@ name: Release
 
 on:
   push:
+    paths-ignore:
+      - CHANGELOG.md
+      - VERSION
     branches:
       - master
 
