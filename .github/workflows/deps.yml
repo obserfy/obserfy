@@ -1,4 +1,4 @@
-name: Release
+name: Update Deps
 
 on:
   push:
