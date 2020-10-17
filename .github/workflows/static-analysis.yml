@@ -26,9 +26,11 @@ jobs:
           cache-name: cache-typecheck
         with:
           path: |
-            .yarn
+            .yarn/unplugged
+            .yarn/install-state.gz
+            .yarn/build-state.yml
             .pnp.js
-          key: v1-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+          key: v1-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/.pnp.js') }}
       - name: Use Node.js 14
         uses: actions/setup-node@v1
         with:
@@ -50,9 +52,11 @@ jobs:
           cache-name: cache-lint
         with:
           path: |
-            .yarn
+            .yarn/unplugged
+            .yarn/install-state.gz
+            .yarn/build-state.yml
             .pnp.js
-          key: v1-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+          key: v1-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/.pnp.js') }}
       - name: Use Node.js 14
         uses: actions/setup-node@v1
         with:
