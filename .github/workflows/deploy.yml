@@ -27,7 +27,7 @@ jobs:
           DOCKER_LOGIN: ${{ secrets.DOCKER_LOGIN }}
       - name: Push image
         run: docker push obserfy/vor:${{ steps.get_version.outputs.VERSION  }}
-      - name: Install sentry
+      - name: Sentry Release
         run: |
           yarn dlx sentry-cli releases -p vor-frontend new ${{ steps.get_version.outputs.VERSION  }}
           yarn dlx sentry-cli releases -p vor-frontend set-commits --auto ${{ steps.get_version.outputs.VERSION  }}
@@ -61,7 +61,7 @@ jobs:
           DOCKER_LOGIN: ${{ secrets.DOCKER_LOGIN }}
       - name: Push image
         run: docker push obserfy/gaia:${{ steps.get_version.outputs.VERSION  }}
-      - name: Install sentry
+      - name: Sentry Release
         run: |
           yarn dlx sentry-cli releases -p gaia new ${{ steps.get_version.outputs.VERSION  }}
           yarn dlx sentry-cli releases -p gaia set-commits --auto ${{ steps.get_version.outputs.VERSION  }}
