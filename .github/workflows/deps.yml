@@ -12,6 +12,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+          fetch-depth: 0
       - name: Cache deps
         uses: actions/cache@v2
         id: cache-deps
@@ -45,5 +48,5 @@ jobs:
         if: steps.cache-deps.outputs.cache-hit != 'true'
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.PAT}}
           branch: ${{ github.ref }}
