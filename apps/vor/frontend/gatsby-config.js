@@ -1,34 +1,5 @@
 /* eslint-disable @typescript-eslint/camelcase,@typescript-eslint/no-var-requires,global-require */
-require("dotenv").config({
-  path: `.env`,
-})
-
-// Conditionally load guess js
-const guessJsPlugin =
-  process.env.GA_PRIVATE_KEY &&
-  process.env.GA_CLIENT_EMAIL &&
-  process.env.CYPRESS_SUPPORT !== "y"
-    ? [
-        {
-          resolve: "gatsby-plugin-guess-js",
-          options: {
-            // Find the view id in the GA admin in a section labeled "views"
-            GAViewID: `211863061`,
-            // Add a JWT to get data from GA
-            jwt: {
-              private_key: process.env.GA_PRIVATE_KEY.replace(/\\n/g, "\n"),
-              client_email: process.env.GA_CLIENT_EMAIL,
-            },
-            minimumThreshold: 0.03,
-            // The "period" for fetching analytic data.
-            period: {
-              startDate: new Date("2020-1-1"),
-              endDate: new Date(),
-            },
-          },
-        },
-      ]
-    : []
+require("dotenv").config({ path: `.env` })
 
 const sentryPlugin =
   process.env.NODE_ENV === "production"
@@ -62,10 +33,6 @@ const graphqlCodeGen =
 // revisit later.
 const preactPlugin =
   process.env.NODE_ENV === "production" ? [`gatsby-plugin-preact`] : []
-
-const disableSourceMap = process.env.DISABLE_SOURCEMAPS
-  ? [`gatsby-plugin-no-sourcemaps`]
-  : []
 
 module.exports = {
   siteMetadata: {
@@ -226,8 +193,6 @@ module.exports = {
         localeDir: `./i18n/lingui`,
       },
     },
-    ...guessJsPlugin,
-    ...disableSourceMap,
     // DEVTOOLS ================================================================
     // {
     //   resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
