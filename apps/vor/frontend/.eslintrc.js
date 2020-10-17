@@ -21,8 +21,8 @@ module.exports = {
     {
       // turn off no-new for miragejs use in storybook.
       files: ["*.stories.tsx"],
-      rules: { "no-new": "off" }
-    }
+      rules: { "no-new": "off" },
+    },
   ],
   rules: {
     "no-undef": 0,
@@ -59,6 +59,7 @@ module.exports = {
     "no-unused-expressions": "off",
     "jest/no-mocks-import": "off",
     "react/jsx-fragments": "off",
+    "@typescript-eslint/no-use-before-define": ["error", { variables: false }],
     "no-restricted-imports": [
       "error",
       {

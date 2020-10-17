@@ -1,34 +1,5 @@
 /* eslint-disable @typescript-eslint/camelcase,@typescript-eslint/no-var-requires,global-require */
-require("dotenv").config({
-  path: `.env`,
-})
-
-// Conditionally load guess js
-const guessJsPlugin =
-  process.env.GA_PRIVATE_KEY &&
-  process.env.GA_CLIENT_EMAIL &&
-  process.env.CYPRESS_SUPPORT !== "y"
-    ? [
-        {
-          resolve: "gatsby-plugin-guess-js",
-          options: {
-            // Find the view id in the GA admin in a section labeled "views"
-            GAViewID: `211863061`,
-            // Add a JWT to get data from GA
-            jwt: {
-              private_key: process.env.GA_PRIVATE_KEY.replace(/\\n/g, "\n"),
-              client_email: process.env.GA_CLIENT_EMAIL,
-            },
-            minimumThreshold: 0.03,
-            // The "period" for fetching analytic data.
-            period: {
-              startDate: new Date("2020-1-1"),
-              endDate: new Date(),
-            },
-          },
-        },
-      ]
-    : []
+require("dotenv").config({ path: `.env` })
 
 const sentryPlugin =
   process.env.NODE_ENV === "production"
@@ -39,6 +10,20 @@ const sentryPlugin =
             dsn: "https://05a5ecaa1d8c4c01b96d2a7993fa9337@sentry.io/1852524",
             release: require("fs").readFileSync("../../../VERSION", "utf8"),
             tracesSampleRate: 0.1,
+          },
+        },
+      ]
+    : []
+
+const graphqlCodeGen =
+  process.env.NODE_ENV === "development"
+    ? [
+        {
+          resolve: `gatsby-plugin-graphql-codegen`,
+          options: {
+            codegen: process.env.NODE_ENV === "development",
+            fileName: `./graphql-types.ts`,
+            documentPaths: ["./src/**/*.{ts,tsx}"],
           },
         },
       ]
@@ -194,14 +179,7 @@ module.exports = {
       },
     },
     ...sentryPlugin,
-    {
-      resolve: `gatsby-plugin-graphql-codegen`,
-      options: {
-        codegen: process.env.NODE_ENV === "development",
-        fileName: `./graphql-types.ts`,
-        documentPaths: ["./src/**/*.{ts,tsx}"],
-      },
-    },
+    ...graphqlCodeGen,
     {
       resolve: `gatsby-theme-i18n`,
       options: {
@@ -215,15 +193,14 @@ module.exports = {
         localeDir: `./i18n/lingui`,
       },
     },
-    ...guessJsPlugin,
     // DEVTOOLS ================================================================
-    {
-      resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
-      options: {
-        analyzerPort: 3300,
-        disable: true,
-      },
-    },
+    // {
+    //   resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
+    //   options: {
+    //     analyzerPort: 3300,
+    //     disable: true,
+    //   },
+    // },
   ],
   developMiddleware: (app) => {
     app.use(

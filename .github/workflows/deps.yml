@@ -1,0 +1,49 @@
+name: Update Deps
+
+on:
+  push:
+    branches:
+      - 'renovate/**'
+
+jobs:
+  update-deps:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Use Node.js 14
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - name: Install new deps
+        run: yarn install
+      - name: Cache deps
+        uses: actions/cache@v2
+        id: cache-deps
+        env:
+          cache-name: cache-updated-deps
+        with:
+          path: |
+            .yarn
+            .pnp.js
+          key: v1-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/.pnp.js') }}
+      - name: Setup git creds
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        run: |
+          git config --local user.email "gilfoyle@obserfy.com"
+          git config --local user.name "Gilfoyle"
+      - name: Add new files
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        run: |
+          git add .yarn
+          git add .pnp.js
+          git diff-index --quiet HEAD || git commit -m "Update deps files"
+      - name: Push changes
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.PAT}}
+          branch: ${{ github.ref }}
