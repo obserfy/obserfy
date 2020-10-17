@@ -3,7 +3,10 @@
 
 name: Static Analysis
 
-on: [push]
+on:
+  push:
+    branches-ignore:
+      - master
 
 jobs:
   cancel-previous:
