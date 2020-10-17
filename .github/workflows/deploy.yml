@@ -10,7 +10,6 @@ jobs:
   deploy-vor:
     runs-on: ubuntu-latest
 
-
     env:
       DOCKER_BUILDKIT: 1
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
@@ -22,7 +21,7 @@ jobs:
         id: get_version
         run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
       - name: Build docker image
-        run: docker build -f ./docker/vor/prod.dockerfile  -t "obserfy/vor:latest"
+        run: docker build -f ./docker/vor/prod.dockerfile  -t "obserfy/vor:latest" .
 #        run: docker build -f ./docker/vor/prod.dockerfile  -t "obserfy/vor:latest" .
 #          docker build -f ./docker/vor/prod.dockerfile  -t "obserfy/vor:${{ steps.get_version.outputs.VERSION  }}" .
       - name: Docker login

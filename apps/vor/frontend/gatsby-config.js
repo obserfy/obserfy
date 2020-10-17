@@ -1,7 +1,5 @@
 /* eslint-disable @typescript-eslint/camelcase,@typescript-eslint/no-var-requires,global-require */
-require("dotenv").config({
-  path: `.env`,
-})
+require("dotenv").config({ path: `.env` })
 
 const sentryPlugin =
   process.env.NODE_ENV === "production"
