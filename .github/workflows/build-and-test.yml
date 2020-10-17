@@ -35,7 +35,7 @@ jobs:
             .pnp.js
             apps/vor/frontend/public
             apps/vor/frontend/.cache
-          key: v2-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/pnp.js') }}
+          key: v2-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/.pnp.js') }}
       - name: Use Node.js 14
         uses: actions/setup-node@v1
         with:
