@@ -1,10 +1,10 @@
 name: Deploy
 
-#on: [ push ]
-on:
-  push:
-    tags:
-      - '*'
+on: [ push ]
+#on:
+#  push:
+#    tags:
+#      - '*'
 
 jobs:
   deploy-vor:
@@ -26,6 +26,8 @@ jobs:
       - name: Build docker image
         run: docker build -f ./docker/vor/prod.dockerfile  -t "obserfy/vor:latest" . --secret id=env,src=.env
 #          docker build -f ./docker/vor/prod.dockerfile  -t "obserfy/vor:latest${{ steps.get_version.outputs.VERSION  }}" . --secret id=env,src=.env
+      - name: Docker login
+        run: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_LOGIN" --password-stdin
 
   deploy-gaia:
     runs-on: ubuntu-latest
@@ -45,4 +47,6 @@ jobs:
       - name: Build docker image
         run: docker build --build-arg NEXT_PUBLIC_GAIA_SEGMENT_KEY -f ./docker/gaia/prod.dockerfile  -t "obserfy/gaia:latest"  .
 #        run: docker build --build-arg NEXT_PUBLIC_GAIA_SEGMENT_KEY -f ./docker/gaia/prod.dockerfile  -t "obserfy/gaia:${{ steps.get_version.outputs.VERSION  }}"  .
+      - name: Docker login
+        run: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_LOGIN" --password-stdin
 
