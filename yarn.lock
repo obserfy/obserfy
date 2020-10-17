@@ -4367,7 +4367,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/core@npm:10.0.28, @emotion/core@npm:^10.0.0, @emotion/core@npm:^10.0.14, @emotion/core@npm:^10.0.20, @emotion/core@npm:^10.0.9":
+"@emotion/core@npm:10.0.35":
+  version: 10.0.35
+  resolution: "@emotion/core@npm:10.0.35"
+  dependencies:
+    "@babel/runtime": ^7.5.5
+    "@emotion/cache": ^10.0.27
+    "@emotion/css": ^10.0.27
+    "@emotion/serialize": ^0.11.15
+    "@emotion/sheet": 0.9.4
+    "@emotion/utils": 0.11.3
+  peerDependencies:
+    react: ">=16.3.0"
+  checksum: c47657ac54efba4fca7595cef950164594873345db70abda2a6066e2889aad5f088c7f14ce29a15c4c787494eb3e143c331bf875d849ca9ed7caeda307a8aad9
+  languageName: node
+  linkType: hard
+
+"@emotion/core@npm:^10.0.0, @emotion/core@npm:^10.0.14, @emotion/core@npm:^10.0.20, @emotion/core@npm:^10.0.9":
   version: 10.0.28
   resolution: "@emotion/core@npm:10.0.28"
   dependencies:
@@ -37177,7 +37193,7 @@ typescript@4.0.3:
   dependencies:
     "@babel/preset-typescript": 7.12.1
     "@babel/runtime": 7.12.1
-    "@emotion/core": 10.0.28
+    "@emotion/core": 10.0.35
     "@istanbuljs/nyc-config-typescript": 1.0.1
     "@lingui/cli": 3.0.0-18
     "@lingui/core": 3.0.0-18
