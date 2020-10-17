@@ -8941,10 +8941,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:14.11.8":
-  version: 14.11.8
-  resolution: "@types/node@npm:14.11.8"
-  checksum: 5139c07ba76d791b4930fa02ec746656dacf78b43c431d56a7514a8285962d0511bf356bee870968a541033c14967b58f7b2a58c48ac81646ce4eb28d2ff433d
+"@types/node@npm:14.11.10":
+  version: 14.11.10
+  resolution: "@types/node@npm:14.11.10"
+  checksum: 74c50cfd07b5e4bbc4303c063acf8524048f5035161f009ea2ceeb12001d278fd43a1e399d03f6277caa5c67c61a785bf406f0541b8fc2252e1bcaaa2f2d414b
   languageName: node
   linkType: hard
 
@@ -16339,7 +16339,7 @@ __metadata:
     "@cypress/code-coverage": 3.8.2
     "@cypress/webpack-preprocessor": 5.4.8
     "@types/faker": 5.1.2
-    "@types/node": 14.11.8
+    "@types/node": 14.11.10
     "@typescript-eslint/eslint-plugin": 3.10.1
     "@typescript-eslint/parser": 3.10.1
     babel-loader: 8.1.0
@@ -19044,7 +19044,7 @@ fsevents@^1.2.7:
     "@types/formidable": 1.0.31
     "@types/minio": 7.0.6
     "@types/nanoid": 2.1.0
-    "@types/node": 14.11.8
+    "@types/node": 14.11.10
     "@types/pg": 7.14.5
     "@types/react": 16.9.41
     "@types/react-query": 1.1.2
