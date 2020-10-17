@@ -19,19 +19,17 @@ require("./commands")
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 require("@cypress/code-coverage/support")
-require("cypress-axe")
-require("gatsby-cypress/commands")
 
-Cypress.on('window:before:load', window => {
-  const { XMLHttpRequest } = window;
-  const originalOpen = XMLHttpRequest.prototype.open;
+Cypress.on("window:before:load", (window) => {
+  const { XMLHttpRequest } = window
+  const originalOpen = XMLHttpRequest.prototype.open
   XMLHttpRequest.prototype.open = function open(...args) {
-    this.addEventListener('load', function load() {
-      if (this.url.endsWith('hot-update.json')) {
-        cy.$$('.stop', window.top.document).click();
-        cy.$$('.restart', window.top.document).click();
+    this.addEventListener("load", function load() {
+      if (this.url.endsWith("hot-update.json")) {
+        cy.$$(".stop", window.top.document).click()
+        cy.$$(".restart", window.top.document).click()
       }
-    });
-    originalOpen.apply(this, args);
-  };
-});
+    })
+    originalOpen.apply(this, args)
+  }
+})

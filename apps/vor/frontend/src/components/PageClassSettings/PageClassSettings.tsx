@@ -84,8 +84,7 @@ const NoClassPlaceholder: FC = () => {
       <Typography.Body
         my={4}
         mx={4}
-        sx={{ textAlign: "center" }}
-        maxWidth={300}
+        sx={{ textAlign: "center", maxWidth: 300 }}
       >
         <Trans>
           Tell us about your classes, We&apos;ll help you track your students
