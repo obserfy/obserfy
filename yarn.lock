@@ -4221,9 +4221,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cypress/browserify-preprocessor@npm:3.0.0":
-  version: 3.0.0
-  resolution: "@cypress/browserify-preprocessor@npm:3.0.0"
+"@cypress/browserify-preprocessor@npm:3.0.1":
+  version: 3.0.1
+  resolution: "@cypress/browserify-preprocessor@npm:3.0.1"
   dependencies:
     "@babel/core": 7.4.5
     "@babel/plugin-proposal-class-properties": 7.3.0
@@ -4243,24 +4243,24 @@ __metadata:
     lodash.clonedeep: 4.5.0
     through2: ^2.0.0
     watchify: 3.11.1
-  checksum: cc9a75e3a2074c25ab566029d64da9d27b333ed01ecf0c8f36361bff0aa6f86e2926a381e22d1b17423712fcde1201ae81a18555b4ffada03b20dd808f90555f
+  checksum: ca726af112efac5f8e56026493b681d7ee3fd75788e3d43d4632242b7508a0e0e2cc20b708b19c21d1cbc8544dd3f590070ef5a2293d2224c101d38251828654
   languageName: node
   linkType: hard
 
-"@cypress/code-coverage@npm:3.8.1":
-  version: 3.8.1
-  resolution: "@cypress/code-coverage@npm:3.8.1"
+"@cypress/code-coverage@npm:3.8.2":
+  version: 3.8.2
+  resolution: "@cypress/code-coverage@npm:3.8.2"
   dependencies:
-    "@cypress/browserify-preprocessor": 3.0.0
-    debug: 4.1.1
-    execa: 4.0.2
-    globby: 11.0.0
+    "@cypress/browserify-preprocessor": 3.0.1
+    debug: 4.2.0
+    execa: 4.0.3
+    globby: 11.0.1
     istanbul-lib-coverage: 3.0.0
     js-yaml: 3.14.0
     nyc: 15.1.0
   peerDependencies:
     cypress: "*"
-  checksum: 30154c7f18058295c1c027834ef56aadfc86e1f44e0750a9419fc384ff19a8f7bdf6be376513cf5334221ab8e111cc5ad404e432499cfd62fa753dfbdfe5590e
+  checksum: da86f7578e3bea113bcaef7c9f97ca9863f70bebbc05f5519c0592e4853286f14f756ab2de3a1b26e9f8187d032da641a40d1a96e9cc258ce8322b14355068a5
   languageName: node
   linkType: hard
 
@@ -4962,7 +4962,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hapi/address@npm:^4.0.1, @hapi/address@npm:^4.1.0":
+"@hapi/address@npm:^4.1.0":
   version: 4.1.0
   resolution: "@hapi/address@npm:4.1.0"
   dependencies:
@@ -5048,19 +5048,6 @@ __metadata:
     "@hapi/hoek": 8.x.x
     "@hapi/topo": 3.x.x
   checksum: 7edbb0d5a5c1ff376b66243427a3b98a559e9ea89f7d40ee55916e0519bc1be56a9ac69f1e446a2c39c153fe835c57e4ee71297d4266b0ca82c49f7a2e90f681
-  languageName: node
-  linkType: hard
-
-"@hapi/joi@npm:^17.1.1":
-  version: 17.1.1
-  resolution: "@hapi/joi@npm:17.1.1"
-  dependencies:
-    "@hapi/address": ^4.0.1
-    "@hapi/formula": ^2.0.0
-    "@hapi/hoek": ^9.0.0
-    "@hapi/pinpoint": ^2.0.0
-    "@hapi/topo": ^5.0.0
-  checksum: 7547ccf2a8168e4f68f630069ab069f94d0689bd18a034a6dea40cc9c7e88776665670316f65bdd29068dccde111f3d7164504cfaf6db183110b64f36c5643dd
   languageName: node
   linkType: hard
 
@@ -15379,6 +15366,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"debug@npm:4.2.0":
+  version: 4.2.0
+  resolution: "debug@npm:4.2.0"
+  dependencies:
+    ms: 2.1.2
+  peerDependenciesMeta:
+    supports-color:
+      optional: true
+  checksum: dcfb8ede26b4d899628a75806923ab9ad29daae7db0f6f1ca6227b660693ae0ca085c7f87261793abe0832ad56aff2afc33f907c6b5dc96a41fc208771feb465
+  languageName: node
+  linkType: hard
+
 "debug@npm:=3.1.0, debug@npm:~3.1.0":
   version: 3.1.0
   resolution: "debug@npm:3.1.0"
@@ -16337,7 +16336,7 @@ __metadata:
   resolution: "e2e@workspace:apps/e2e"
   dependencies:
     "@babel/preset-env": 7.12.1
-    "@cypress/code-coverage": 3.8.1
+    "@cypress/code-coverage": 3.8.2
     "@cypress/webpack-preprocessor": 5.4.8
     "@types/faker": 5.1.2
     "@types/node": 14.11.8
@@ -16362,7 +16361,7 @@ __metadata:
     gatsby-cypress: 0.4.12
     pnp-webpack-plugin: 1.6.4
     typescript: 4.0.3
-    wait-on: 5.1.0
+    wait-on: 5.2.0
   languageName: unknown
   linkType: soft
 
@@ -17594,9 +17593,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"execa@npm:4.0.2, execa@npm:^4.0.0, execa@npm:^4.0.2":
-  version: 4.0.2
-  resolution: "execa@npm:4.0.2"
+"execa@npm:4.0.3, execa@npm:^4.0.3":
+  version: 4.0.3
+  resolution: "execa@npm:4.0.3"
   dependencies:
     cross-spawn: ^7.0.0
     get-stream: ^5.0.0
@@ -17607,7 +17606,7 @@ __metadata:
     onetime: ^5.1.0
     signal-exit: ^3.0.2
     strip-final-newline: ^2.0.0
-  checksum: c48f3d6a044daa1bb5d93486e1c8eee12a8724b439b7f8c270c556a37cf7e2ffd528a86d2ef08adcbe78b485956cfca56c6027ec15d8370bef959097b9ba23ba
+  checksum: 65b237d178b468045ee57af6aa4e4124807b28aec9573d9b3b16b02a7e41bd65996236e0c5575d053d3888585ffc795cbed38847c6c9669e9c8481fc44ac05e4
   languageName: node
   linkType: hard
 
@@ -17659,9 +17658,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"execa@npm:^4.0.3":
-  version: 4.0.3
-  resolution: "execa@npm:4.0.3"
+"execa@npm:^4.0.0, execa@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "execa@npm:4.0.2"
   dependencies:
     cross-spawn: ^7.0.0
     get-stream: ^5.0.0
@@ -17672,7 +17671,7 @@ __metadata:
     onetime: ^5.1.0
     signal-exit: ^3.0.2
     strip-final-newline: ^2.0.0
-  checksum: 65b237d178b468045ee57af6aa4e4124807b28aec9573d9b3b16b02a7e41bd65996236e0c5575d053d3888585ffc795cbed38847c6c9669e9c8481fc44ac05e4
+  checksum: c48f3d6a044daa1bb5d93486e1c8eee12a8724b439b7f8c270c556a37cf7e2ffd528a86d2ef08adcbe78b485956cfca56c6027ec15d8370bef959097b9ba23ba
   languageName: node
   linkType: hard
 
@@ -37325,21 +37324,6 @@ typescript@4.0.3:
   dependencies:
     xml-name-validator: ^3.0.0
   checksum: 2327c8a6c7302ed4b685125c193f4b4b859ee12cd6e1938407a02dda9cfcfff7f0c103de387b268444c4b61d7892d5260b5c684eb7519886fb3a07798bd565ba
-  languageName: node
-  linkType: hard
-
-"wait-on@npm:5.1.0":
-  version: 5.1.0
-  resolution: "wait-on@npm:5.1.0"
-  dependencies:
-    "@hapi/joi": ^17.1.1
-    axios: ^0.19.2
-    lodash: ^4.17.19
-    minimist: ^1.2.5
-    rxjs: ^6.5.5
-  bin:
-    wait-on: bin/wait-on
-  checksum: 370136ebfce63c8df20a85b2b167856b3b49c49d2a58164e45e999d5e42f591bd677de8e3efda8fdaf15218bc1be18eb0b953a1e11fcc4dd85a52f0e9ebb3ab9
   languageName: node
   linkType: hard
 
