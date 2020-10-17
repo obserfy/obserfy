@@ -17,5 +17,6 @@ module.exports = {
     "jest/valid-expect-in-promise": 0,
     "jest/expect-expect": 0,
     "global-require": "off",
+    "@typescript-eslint/no-use-before-define": ["error", { variables: false }],
   },
 }

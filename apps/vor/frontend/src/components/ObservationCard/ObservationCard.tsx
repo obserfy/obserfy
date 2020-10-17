@@ -28,8 +28,8 @@ export const ObservationCard: FC<Props> = ({
           mb={2}
           mx={3}
           data-cy="observation-long-desc"
-          lineHeight={1.8}
           color="textMediumEmphasis"
+          sx={{ lineHeight: 1.8 }}
         >
           {text}
         </Typography.Body>

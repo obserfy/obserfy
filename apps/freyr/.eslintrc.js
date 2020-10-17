@@ -11,12 +11,7 @@ module.exports = {
     "plugin:prettier/recommended",
     "prettier/@typescript-eslint",
     "prettier/react",
-    "plugin:jest/recommended",
   ],
-  plugins: ["jest"],
-  env: {
-    "jest/globals": true,
-  },
   rules: {
     "no-undef": 0,
     "react/prop-types": 0,
@@ -50,7 +45,6 @@ module.exports = {
     "import/extensions": "off",
     "import/prefer-default-export": 0,
     "no-unused-expressions": "off",
-    "jest/no-mocks-import": "off",
     "no-restricted-imports": [
       "error",
       {
