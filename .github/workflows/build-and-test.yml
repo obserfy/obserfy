@@ -3,9 +3,17 @@
 
 name: Build and Test
 
-on: [ push ]
+on: [push]
 
 jobs:
+  cancel-previous:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.5.0
+        with:
+          access_token: ${{ github.token }}
+
   build-vor-frontend:
     runs-on: ubuntu-latest
 
