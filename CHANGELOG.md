@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.11.14](https://github.com/obserfy/obserfy/compare/v1.11.13...v1.11.14) (2020-10-17)
+
+### [1.11.13](https://github.com/obserfy/obserfy/compare/v1.11.12...v1.11.13) (2020-10-17)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @prefresh/next to v1.3.0 ([ea367ba](https://github.com/obserfy/obserfy/commit/ea367ba96db52b0a2ddcd0eb8bb781a0d3a71c69))
+* **deps:** update dependency @sentry/tracing to v5.26.0 ([9c43954](https://github.com/obserfy/obserfy/commit/9c4395409226ba5e562890688698159b1fdd6df1))
+* **deps:** update dependency dayjs to v1.9.3 ([29bfe71](https://github.com/obserfy/obserfy/commit/29bfe717f25c6275a5bd7d973178902de6b5e48e))
+* **deps:** update dependency react-query-devtools to v2.6.0 ([f983afa](https://github.com/obserfy/obserfy/commit/f983afaac8ef35a622a389674e3e2659f62c77ff))
+* **deps:** update dependency react-ssr-prepass to v1.1.2 ([9e283ad](https://github.com/obserfy/obserfy/commit/9e283ad1c3753a82a1953c9e12b7a7d200c32f9f))
+* **deps:** update dependency tailwindcss to v1.8.13 ([4a5d6c3](https://github.com/obserfy/obserfy/commit/4a5d6c3bacff448cab41d0bc2e1770b31d6c016e))
+* **deps:** update dependency tailwindcss to v1.9.0 ([b474917](https://github.com/obserfy/obserfy/commit/b4749170da2dcf959b9ed602be019efe29fa9d54))
+* **deps:** update dependency tailwindcss to v1.9.1 ([5453550](https://github.com/obserfy/obserfy/commit/5453550917b669e4637427394b63ddb06bcb96f7))
+* **deps:** update dependency tailwindcss to v1.9.2 ([44e81f8](https://github.com/obserfy/obserfy/commit/44e81f80c3d5ac35166dbf822c52171d92633f9d))
+* **deps:** update gatsby ([ede848c](https://github.com/obserfy/obserfy/commit/ede848c5ff52826c278119434271262a885c4251))
+
 ### [1.11.12](https://github.com/obserfy/obserfy/compare/v1.11.11...v1.11.12) (2020-10-09)
 
 
