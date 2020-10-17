@@ -25,10 +25,8 @@
     "gatsby-plugin-canonical-urls": "2.3.13",
     "gatsby-plugin-emotion": "4.3.14",
     "gatsby-plugin-graphql-codegen": "2.7.1",
-    "gatsby-plugin-guess-js": "1.3.15",
     "gatsby-plugin-layout": "1.3.13",
     "gatsby-plugin-manifest": "2.4.34",
-    "gatsby-plugin-no-sourcemaps": "^2.2.1",
     "gatsby-plugin-nprogress": "2.3.13",
     "gatsby-plugin-offline": "3.2.32",
     "gatsby-plugin-portal": "1.0.65",
@@ -104,7 +102,6 @@
     "fake-indexeddb": "3.1.2",
     "faker": "5.1.0",
     "http-proxy-middleware": "1.0.6",
-    "husky": "4.3.0",
     "hygen": "6.0.4",
     "jest": "26.5.3",
     "jest-date-mock": "1.0.8",
@@ -126,7 +123,7 @@
     "lint": "yarn i18n:compile && eslint --ext .tsx,.ts src/",
     "typecheck": "yarn i18n:compile && tsc --noemit",
     "build": "yarn i18n:compile && gatsby build",
-    "build:ci": "yarn i18n:compile &&  DISABLE_SOURCEMAPS=1 GATSBY_CPU_COUNT=2 gatsby build",
+    "build:ci": "yarn i18n:compile && gatsby build",
     "develop": "CYPRESS_SUPPORT=y gatsby develop -H 0.0.0.0 -p 8001",
     "develop:preact": "CYPRESS_SUPPORT=y gatsby develop -H 0.0.0.0 -p 8001",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
@@ -137,7 +134,7 @@
     "storybook": "cp -r ./public/page-data/sq/d ./public/static && start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s .storybook/static/",
     "gen:component": "hygen component new --name",
-    "test": "cp -r ./public/page-data/sq/d ./public/static && TZ=UTC jest --coverage --passWithNoTests --coverageReporters json clover",
+    "test": "yarn i18n:compile && cp -r ./public/page-data/sq/d ./public/static && TZ=UTC jest --coverage --passWithNoTests --coverageReporters json clover",
     "deploy-storybook": "storybook-to-ghpages",
     "i18n:add-locale": "lingui add-locale",
     "i18n:extract": "lingui extract",
@@ -147,10 +144,5 @@
   "nyc": {
     "extends": "@istanbuljs/nyc-config-typescript",
     "all": true
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn run-p lint typecheck"
-    }
   }
 }
