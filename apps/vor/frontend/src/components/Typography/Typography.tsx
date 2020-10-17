@@ -1,7 +1,11 @@
 import React, { FC, PropsWithoutRef } from "react"
 import { Heading, Text, BoxProps, HeadingProps } from "theme-ui"
 
-interface Typography {
+/**
+ * We group all the typography components here so that we can replace all their
+ * instances at once easily through the Typography component.
+ */
+export const Typography: {
   H1: FC<HeadingProps>
   H2: FC<HeadingProps>
   H3: FC<HeadingProps>
@@ -9,13 +13,7 @@ interface Typography {
   H5: FC<HeadingProps>
   H6: FC<HeadingProps>
   Body: FC<PropsWithoutRef<BoxProps>>
-}
-
-/**
- * We group all the typography components here so that we can replace all their
- * instances at once easily through the Typography component.
- */
-export const Typography: Typography = {
+} = {
   H1: (props) => <Heading as="h1" variant="h1" {...props} />,
   H2: (props) => <Heading as="h2" variant="h2" {...props} />,
   H3: (props) => <Heading as="h3" variant="h3" {...props} />,

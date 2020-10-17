@@ -11,12 +11,7 @@ module.exports = {
     "plugin:prettier/recommended",
     "prettier/@typescript-eslint",
     "prettier/react",
-    "plugin:jest/recommended",
   ],
-  plugins: ["jest"],
-  env: {
-    "jest/globals": true,
-  },
   overrides: [
     {
       // turn off no-new for miragejs use in storybook.
@@ -61,8 +56,8 @@ module.exports = {
     "import/extensions": "off",
     "import/prefer-default-export": 0,
     "no-unused-expressions": "off",
-    "jest/no-mocks-import": "off",
     "react/jsx-fragments": "off",
+    "@typescript-eslint/no-use-before-define": ["error", { variables: false }],
     "no-restricted-imports": [
       "error",
       {
