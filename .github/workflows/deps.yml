@@ -43,7 +43,7 @@ jobs:
         run: |
           git add .yarn
           git add .pnp.js
-          git commit -m "Update deps files"
+          git diff-index --quiet HEAD || git commit -m "Update deps files"
       - name: Push changes
         if: steps.cache-deps.outputs.cache-hit != 'true'
         uses: ad-m/github-push-action@master
