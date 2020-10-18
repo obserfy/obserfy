@@ -33,7 +33,7 @@ jobs:
             .yarn/install-state.gz
             .yarn/build-state.yml
             .pnp.js
-          key: v1-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/.pnp.js') }}
+          key: v1-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/.pnp.js') }}-${{ hashFiles('**/yarn.lock') }}
       - name: Use Node.js 14
         uses: actions/setup-node@v1
         with:
@@ -59,7 +59,7 @@ jobs:
             .yarn/install-state.gz
             .yarn/build-state.yml
             .pnp.js
-          key: v1-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/.pnp.js') }}
+          key: v1-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/.pnp.js') }}-${{ hashFiles('**/yarn.lock') }}
       - name: Use Node.js 14
         uses: actions/setup-node@v1
         with:

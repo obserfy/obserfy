@@ -18835,7 +18835,7 @@ __metadata:
     stylelint: 13.7.2
     stylelint-config-prettier: 8.0.2
     stylelint-config-standard: 20.0.0
-    tailwindcss: 1.9.3
+    tailwindcss: 1.9.4
     typescript: 4.0.3
     typescript-plugin-css-modules: 2.7.0
   languageName: unknown
@@ -19136,7 +19136,7 @@ fsevents@^1.2.7:
     stylelint: 13.7.2
     stylelint-config-prettier: 8.0.2
     stylelint-config-standard: 20.0.0
-    tailwindcss: 1.9.3
+    tailwindcss: 1.9.4
     typescript: 4.0.3
     uuid: 8.3.1
     webp-loader: 0.6.0
@@ -30722,14 +30722,14 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"query-string@npm:6.13.5":
-  version: 6.13.5
-  resolution: "query-string@npm:6.13.5"
+"query-string@npm:6.13.6":
+  version: 6.13.6
+  resolution: "query-string@npm:6.13.6"
   dependencies:
     decode-uri-component: ^0.2.0
     split-on-first: ^1.0.0
     strict-uri-encode: ^2.0.0
-  checksum: a60b70e2612624247e67dd693b2812b3acb3cf2846c7fce369924e9ad4f63a673e2c0bfd6523d189454e93b818ba0ff04886752d4dc664c6402bc1bf69753c67
+  checksum: 0f773349bf9c35719cac801b28a0d98f27ba9d815e92db34c69eb9eaa13ef57d8b6b8bd3f6b81070d8c9b790fa2a1d1311a772d0397838e7ca373bcd4d46ab7f
   languageName: node
   linkType: hard
 
@@ -35237,9 +35237,9 @@ resolve@1.1.7:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:1.9.3":
-  version: 1.9.3
-  resolution: "tailwindcss@npm:1.9.3"
+"tailwindcss@npm:1.9.4":
+  version: 1.9.4
+  resolution: "tailwindcss@npm:1.9.4"
   dependencies:
     "@fullhuman/postcss-purgecss": ^2.1.2
     autoprefixer: ^9.4.5
@@ -35266,7 +35266,7 @@ resolve@1.1.7:
   bin:
     tailwind: lib/cli.js
     tailwindcss: lib/cli.js
-  checksum: f99767250c3ebbb40ae7b9b0e05dd32a4d7e09297da6833f0474412ec210178e95662df8cfe48a070000abc839644881ead203af5055c880d94823dd8c4537c5
+  checksum: 360b2a287ea3f0c05cb106eb09a0e11d001ac48f1d1796b9d367971347834d0c698db9a93a1345bbc3a8adb3a27e7aad87462e98cb04d9a159c9783336db8b01
   languageName: node
   linkType: hard
 
@@ -37321,7 +37321,7 @@ typescript@4.0.3:
     preact: 10.5.4
     preact-render-to-string: 5.1.10
     prettier: 2.1.2
-    query-string: 6.13.5
+    query-string: 6.13.6
     react: 16.14.0
     react-adaptive-hooks: 0.0.8
     react-docgen-typescript-loader: 3.7.2
