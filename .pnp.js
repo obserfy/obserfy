@@ -9139,7 +9139,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "tailwindcss",
-        "npm:1.9.3"
+        "npm:1.9.4"
       ],
       [
         "tapable",
@@ -37337,7 +37337,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["stylelint", "npm:13.7.2"],
             ["stylelint-config-prettier", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:8.0.2"],
             ["stylelint-config-standard", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:20.0.0"],
-            ["tailwindcss", "npm:1.9.3"],
+            ["tailwindcss", "npm:1.9.4"],
             ["typescript", "patch:typescript@npm%3A4.0.3#builtin<compat/typescript>::version=4.0.3&hash=5bf698"],
             ["typescript-plugin-css-modules", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:2.7.0"]
           ],
@@ -37654,7 +37654,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["stylelint", "npm:13.7.2"],
             ["stylelint-config-prettier", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:8.0.2"],
             ["stylelint-config-standard", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:20.0.0"],
-            ["tailwindcss", "npm:1.9.3"],
+            ["tailwindcss", "npm:1.9.4"],
             ["typescript", "patch:typescript@npm%3A4.0.3#builtin<compat/typescript>::version=4.0.3&hash=5bf698"],
             ["uuid", "npm:8.3.1"],
             ["webp-loader", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.6.0"]
@@ -51056,10 +51056,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
-        ["npm:6.13.5", {
-          "packageLocation": "./.yarn/cache/query-string-npm-6.13.5-9cf41f78b4-a60b70e261.zip/node_modules/query-string/",
+        ["npm:6.13.6", {
+          "packageLocation": "./.yarn/cache/query-string-npm-6.13.6-1f06a3ca1c-0f773349bf.zip/node_modules/query-string/",
           "packageDependencies": [
-            ["query-string", "npm:6.13.5"],
+            ["query-string", "npm:6.13.6"],
             ["decode-uri-component", "npm:0.2.0"],
             ["split-on-first", "npm:1.1.0"],
             ["strict-uri-encode", "npm:2.0.0"]
@@ -56334,10 +56334,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["tailwindcss", [
-        ["npm:1.9.3", {
-          "packageLocation": "./.yarn/cache/tailwindcss-npm-1.9.3-bb92d043ba-f99767250c.zip/node_modules/tailwindcss/",
+        ["npm:1.9.4", {
+          "packageLocation": "./.yarn/cache/tailwindcss-npm-1.9.4-e95688ae1f-360b2a287e.zip/node_modules/tailwindcss/",
           "packageDependencies": [
-            ["tailwindcss", "npm:1.9.3"],
+            ["tailwindcss", "npm:1.9.4"],
             ["@fullhuman/postcss-purgecss", "npm:2.3.0"],
             ["autoprefixer", "npm:9.8.4"],
             ["browserslist", "npm:4.12.2"],
@@ -58757,7 +58757,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["preact", "npm:10.5.4"],
             ["preact-render-to-string", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:5.1.10"],
             ["prettier", "npm:2.1.2"],
-            ["query-string", "npm:6.13.5"],
+            ["query-string", "npm:6.13.6"],
             ["react", "npm:16.14.0"],
             ["react-adaptive-hooks", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.0.8"],
             ["react-docgen-typescript-loader", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:3.7.2"],
