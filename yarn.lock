@@ -18764,7 +18764,7 @@ __metadata:
     gatsby-theme-i18n-lingui: 1.0.4
     gatsby-transformer-sharp: 2.5.18
     postcss-preset-env: 6.7.0
-    preact: 10.5.4
+    preact: 10.5.5
     prettier: 2.1.2
     react: 16.14.0
     react-dom: 16.14.0
@@ -19061,7 +19061,7 @@ fsevents@^1.2.7:
     optimized-images-loader: 0.4.0
     pg: 8.4.1
     postcss-preset-env: 6.7.0
-    preact: 10.5.4
+    preact: 10.5.5
     preact-render-to-string: 5.1.10
     react: "npm:@preact/compat@0.0.3"
     react-dom: "npm:@preact/compat@0.0.3"
@@ -30111,10 +30111,10 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"preact@npm:10.5.4":
-  version: 10.5.4
-  resolution: "preact@npm:10.5.4"
-  checksum: 16d31fb7a70af91480b9aa968a8fe0be1ee3d5fb7dd9e54b8b24cf1930ee5baaf899fe765cfafdf71659fe53af08295f477ef91251094eaea02089dc09ae0456
+"preact@npm:10.5.5":
+  version: 10.5.5
+  resolution: "preact@npm:10.5.5"
+  checksum: f44c12f61e1ae0dd3691d291559b7bc41a664193650d3156fd02f1541722bf6cb07bf885e8dd31b7023e5683cdc1a42fe5fba4934433f5811b338e24698d1dc1
   languageName: node
   linkType: hard
 
@@ -37255,7 +37255,7 @@ typescript@4.0.3:
     make-plural: 6.2.2
     nanoid: 3.1.12
     npm-run-all: 4.1.5
-    preact: 10.5.4
+    preact: 10.5.5
     preact-render-to-string: 5.1.10
     prettier: 2.1.2
     query-string: 6.13.6
