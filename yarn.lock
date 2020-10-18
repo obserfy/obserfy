@@ -16392,7 +16392,7 @@ __metadata:
     cypress: 5.4.0
     cypress-intellij-reporter: 0.0.4
     eslint: 7.11.0
-    eslint-config-airbnb-typescript: 11.2.1
+    eslint-config-airbnb-typescript: 11.4.0
     eslint-config-prettier: 6.13.0
     eslint-import-resolver-node: 0.3.4
     eslint-plugin-cypress: 2.11.2
@@ -16979,16 +16979,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-airbnb-typescript@npm:11.2.1":
-  version: 11.2.1
-  resolution: "eslint-config-airbnb-typescript@npm:11.2.1"
+"eslint-config-airbnb-typescript@npm:11.4.0":
+  version: 11.4.0
+  resolution: "eslint-config-airbnb-typescript@npm:11.4.0"
   dependencies:
     "@typescript-eslint/parser": 4.2.0
     eslint-config-airbnb: 18.2.0
     eslint-config-airbnb-base: 14.2.0
   peerDependencies:
     "@typescript-eslint/eslint-plugin": ^4.2.0
-  checksum: a1f2c0c2e31fc70bf3dde3db4afbb7f69f5b7ebeac131c57c9fe98d66103544d883f60ed1ecf7f8bb5f353b73ff25e4adcc42210401292ff504fcc087a694170
+  checksum: 88870a69646e6b2689b4b80d8dabf3cf4fc0b6c2619ae5a4ba0c34a86ef30a5a4debc26e802572184e607d18fa2cdf4194fe0519e8076e1fd3b6c532b6547c56
   languageName: node
   linkType: hard
 
@@ -18798,7 +18798,7 @@ __metadata:
     "@typescript-eslint/parser": 4.4.1
     babel-core: 7.0.0-bridge.0
     eslint: 7.11.0
-    eslint-config-airbnb-typescript: 11.2.1
+    eslint-config-airbnb-typescript: 11.4.0
     eslint-config-prettier: 6.13.0
     eslint-import-resolver-node: 0.3.4
     eslint-plugin-import: 2.22.1
@@ -19100,7 +19100,7 @@ fsevents@^1.2.7:
     "@typescript-eslint/parser": 4.4.1
     dayjs: 1.9.3
     eslint: 7.11.0
-    eslint-config-airbnb-typescript: 11.2.1
+    eslint-config-airbnb-typescript: 11.4.0
     eslint-config-prettier: 6.13.0
     eslint-import-resolver-node: 0.3.4
     eslint-plugin-import: 2.22.1
@@ -37273,7 +37273,7 @@ typescript@4.0.3:
     dayjs: 1.9.3
     dotenv: 8.2.0
     eslint: 7.11.0
-    eslint-config-airbnb-typescript: 11.2.1
+    eslint-config-airbnb-typescript: 11.4.0
     eslint-config-prettier: 6.13.0
     eslint-import-resolver-node: 0.3.4
     eslint-plugin-import: 2.22.1
