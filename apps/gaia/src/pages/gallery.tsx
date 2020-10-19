@@ -1,19 +1,24 @@
-import React, { FC } from "react"
+import React, { FC, useEffect, useRef, useState } from "react"
 import Head from "next/head"
 import Img from "react-optimized-image"
 import { v4 as uuidv4 } from "uuid"
-import useGetChildImages from "../hooks/useGetChildImages"
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock"
+
+import useGetChildImages, { ChildImage } from "../hooks/useGetChildImages"
 import { useQueryString } from "../hooks/useQueryString"
 import NoImagesIllustration from "../images/no-images-illustration.svg"
 import UploadIcon from "../icons/upload.svg"
+import CloseIcon from "../icons/close.svg"
 import usePostImage from "../hooks/api/usePostImage"
 import useGetChild from "../hooks/api/useGetChild"
+import StudentPicPlaceholder from "../images/student_pic_placeholder.jpg"
 
 const GalleryPage = () => {
   const childId = useQueryString("childId")
   const childImages = useGetChildImages(childId)
   const child = useGetChild(childId)
   const [postImage] = usePostImage(childId, child.data?.schoolId ?? "")
+  const [imagePreview, setImagePreview] = useState<ChildImage>()
 
   return (
     <>
@@ -50,10 +55,22 @@ const GalleryPage = () => {
             </div>
           </div>
           {childImages.data?.map((img) => (
-            <div key={img.id} className="w-1/3 md:w-1/5 relative">
+            <div
+              key={img.id}
+              className="w-1/3 md:w-1/5 relative cursor-pointer"
+              onClick={() => setImagePreview(img)}
+            >
               <div style={{ width: "100%", paddingBottom: "100%" }}>
                 {img.isUploading && (
-                  <p className="font-bold left-0 right-0 top-0 bottom-0 absolute flex items-center justify-center z-10">
+                  <p
+                    className="
+                      font-bold
+                      left-0 right-0 top-0 bottom-0
+                      absolute
+                      flex items-center justify-center
+                      z-10
+                    "
+                  >
                     Uploading
                   </p>
                 )}
@@ -73,13 +90,69 @@ const GalleryPage = () => {
           )}
         </div>
       </div>
-      <ImagePreview />
+      {imagePreview && (
+        <ImagePreview
+          img={imagePreview}
+          onDismiss={() => setImagePreview(undefined)}
+        />
+      )}
     </>
   )
 }
 
-const ImagePreview = () => {
-  return <div>tes</div>
+const ImagePreview: FC<{ img: ChildImage; onDismiss: () => void }> = ({
+  img,
+  onDismiss,
+}) => {
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (ref.current) {
+      disableBodyScroll(ref.current, {
+        reserveScrollBarGap: true,
+        allowTouchMove: (el) => el.tagName === "TEXTAREA",
+      })
+    }
+    return () => {
+      if (ref.current) enableBodyScroll(ref.current)
+    }
+  }, [])
+
+  return (
+    <div
+      ref={ref}
+      className="fixed h-screen w-screen bg-overlay top-0 left-0 right-0 bottom-0 z-50 flex md:items-center justify-center overflow-y-auto scrolling-touch"
+      onClick={onDismiss}
+    >
+      <div
+        className="
+          w-full
+          max-w-2xl
+          bg-white
+        "
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex items-center p-3">
+          <Img
+            alt="profile"
+            src={StudentPicPlaceholder}
+            width={40}
+            height={40}
+            className="rounded-full"
+          />
+          <div className="ml-3 font-bold">Name</div>
+          <button className="ml-auto" onClick={onDismiss}>
+            <Img src={CloseIcon} className="w-6 h-6 " />
+          </button>
+        </div>
+        <img
+          src={img.originalImageUrl}
+          alt="preview"
+          className="w-full object-cover"
+        />
+      </div>
+    </div>
+  )
 }
 
 const EmptyGalleryIllustration: FC<{ loading: boolean }> = ({ loading }) => {
