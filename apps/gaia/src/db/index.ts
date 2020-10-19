@@ -137,7 +137,7 @@ export const getChildImages = async (childId: string) => {
   // language=PostgreSQL
   const result = await query(
     `
-        select i.student_id, image.object_key, i.image_id
+        select i.student_id, image.object_key, i.image_id, image.created_at as created_at
         from image_to_students i
                  join images image on image.id = i.image_id
         where i.student_id = $1 

@@ -4,6 +4,7 @@ import Img from "react-optimized-image"
 import { v4 as uuidv4 } from "uuid"
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock"
 
+import dayjs from "dayjs"
 import useGetChildImages, { ChildImage } from "../hooks/useGetChildImages"
 import { useQueryString } from "../hooks/useQueryString"
 import NoImagesIllustration from "../images/no-images-illustration.svg"
@@ -92,6 +93,7 @@ const GalleryPage = () => {
       </div>
       {imagePreview && (
         <ImagePreview
+          childId={childId}
           img={imagePreview}
           onDismiss={() => setImagePreview(undefined)}
         />
@@ -100,11 +102,13 @@ const GalleryPage = () => {
   )
 }
 
-const ImagePreview: FC<{ img: ChildImage; onDismiss: () => void }> = ({
-  img,
-  onDismiss,
-}) => {
+const ImagePreview: FC<{
+  childId: string
+  img: ChildImage
+  onDismiss: () => void
+}> = ({ img, onDismiss, childId }) => {
   const ref = useRef<HTMLDivElement>(null)
+  const child = useGetChild(childId)
 
   useEffect(() => {
     if (ref.current) {
@@ -129,8 +133,10 @@ const ImagePreview: FC<{ img: ChildImage; onDismiss: () => void }> = ({
           w-full
           max-w-2xl
           bg-white
+          max-h-screen
         "
         onClick={(e) => e.stopPropagation()}
+        style={{ minHeight: 300 }}
       >
         <div className="flex items-center p-3">
           <Img
@@ -140,7 +146,12 @@ const ImagePreview: FC<{ img: ChildImage; onDismiss: () => void }> = ({
             height={40}
             className="rounded-full"
           />
-          <div className="ml-3 font-bold">Name</div>
+          <div>
+            <div className="ml-3 font-bold">{child.data?.name}</div>
+            <div className="ml-3 text-xs opacity-75">
+              {dayjs(img.createdAt).format("dddd, DD MMM YYYY")}
+            </div>
+          </div>
           <button className="ml-auto" onClick={onDismiss}>
             <Img src={CloseIcon} className="w-6 h-6 " />
           </button>
