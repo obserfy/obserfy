@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 import Head from "next/head"
-import Img, { Svg } from "react-optimized-image"
+import Img from "react-optimized-image"
 import { v4 as uuidv4 } from "uuid"
 import useGetChildImages from "../hooks/useGetChildImages"
 import { useQueryString } from "../hooks/useQueryString"
@@ -29,7 +29,7 @@ const GalleryPage = () => {
                   htmlFor="upload-image"
                   className="absolute top-0 left-0 flex flex-col items-center justify-center font-bold text-sm border rounded w-full h-full bg-white"
                 >
-                  <Svg src={UploadIcon} />
+                  <Img src={UploadIcon} />
                   <span>
                     Upload <span className="hidden md:inline">Image</span>
                   </span>
@@ -73,8 +73,13 @@ const GalleryPage = () => {
           )}
         </div>
       </div>
+      <ImagePreview />
     </>
   )
+}
+
+const ImagePreview = () => {
+  return <div>tes</div>
 }
 
 const EmptyGalleryIllustration: FC<{ loading: boolean }> = ({ loading }) => {

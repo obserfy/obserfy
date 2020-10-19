@@ -23,7 +23,9 @@
     "@types/segment-analytics": "0.0.32",
     "@types/uuid": "8.3.0",
     "dayjs": "1.9.3",
+    "file-loader": "^6.1.1",
     "formidable-serverless": "1.0.3",
+    "imagemin": "^7.0.1",
     "imagemin-mozjpeg": "9.0.0",
     "imagemin-optipng": "8.0.0",
     "imagemin-svgo": "8.0.0",
@@ -65,6 +67,7 @@
     "eslint-plugin-prettier": "3.1.4",
     "eslint-plugin-react": "7.21.4",
     "eslint-plugin-react-hooks": "4.1.2",
+    "prettier": "^2.1.2",
     "stylelint": "13.7.2",
     "stylelint-config-prettier": "8.0.2",
     "stylelint-config-standard": "20.0.0"
