@@ -36352,7 +36352,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["object.values", "npm:1.1.1"],
             ["read-pkg-up", "npm:2.0.0"],
             ["resolve", "patch:resolve@npm%3A1.17.0#builtin<compat/resolve>::version=1.17.0&hash=3388aa"],
-            ["tsconfig-paths", "npm:3.9.0"]
+            ["tsconfig-paths", "npm:3.9.0"],
+            ["typescript", "patch:typescript@npm%3A4.0.3#builtin<compat/typescript>::version=4.0.3&hash=5bf698"]
           ],
           "packagePeers": [
             "@types/eslint",
@@ -36378,7 +36379,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["object.values", "npm:1.1.1"],
             ["read-pkg-up", "npm:2.0.0"],
             ["resolve", "patch:resolve@npm%3A1.17.0#builtin<compat/resolve>::version=1.17.0&hash=3388aa"],
-            ["tsconfig-paths", "npm:3.9.0"]
+            ["tsconfig-paths", "npm:3.9.0"],
+            ["typescript", "patch:typescript@npm%3A4.0.3#builtin<compat/typescript>::version=4.0.3&hash=5bf698"]
           ],
           "packagePeers": [
             "@types/eslint",
@@ -36461,6 +36463,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/eslint", null],
             ["@types/prettier", null],
             ["eslint", "npm:7.11.0"],
+            ["eslint-config-prettier", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:6.13.0"],
             ["prettier", "npm:2.1.2"],
             ["prettier-linter-helpers", "npm:1.0.0"]
           ],
@@ -47658,6 +47661,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@next/polyfill-module", "npm:9.5.5"],
             ["@next/react-dev-overlay", "virtual:a278a8e98f385cff21bc672bb8debd3247d0ea6a3e5b970556c1ea6e2d990ec35b6d7d17e96ab0197c535fd048022d44431629b729b282ecac70e06592393590#npm:9.5.5"],
             ["@next/react-refresh-utils", "virtual:a278a8e98f385cff21bc672bb8debd3247d0ea6a3e5b970556c1ea6e2d990ec35b6d7d17e96ab0197c535fd048022d44431629b729b282ecac70e06592393590#npm:9.5.5"],
+            ["@types/prop-types", "npm:15.7.3"],
             ["@types/react", "npm:16.9.53"],
             ["@types/react-dom", null],
             ["@types/webpack", "npm:4.41.22"],

@@ -3,8 +3,6 @@ import Head from "next/head"
 import Img from "react-optimized-image"
 import { v4 as uuidv4 } from "uuid"
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock"
-
-import dayjs from "dayjs"
 import useGetChildImages, { ChildImage } from "../hooks/useGetChildImages"
 import { useQueryString } from "../hooks/useQueryString"
 import NoImagesIllustration from "../images/no-images-illustration.svg"
@@ -13,6 +11,7 @@ import CloseIcon from "../icons/close.svg"
 import usePostImage from "../hooks/api/usePostImage"
 import useGetChild from "../hooks/api/useGetChild"
 import StudentPicPlaceholder from "../images/student_pic_placeholder.jpg"
+import dayjs from "../utils/dayjs"
 
 const GalleryPage = () => {
   const childId = useQueryString("childId")
@@ -56,7 +55,7 @@ const GalleryPage = () => {
             </div>
           </div>
           {childImages.data?.map((img) => (
-            <div
+            <button
               key={img.id}
               className="w-1/3 md:w-1/5 relative cursor-pointer"
               onClick={() => setImagePreview(img)}
@@ -84,7 +83,7 @@ const GalleryPage = () => {
                   loading="lazy"
                 />
               </div>
-            </div>
+            </button>
           ))}
           {childImages.isSuccess && childImages.data?.length === 0 && (
             <EmptyGalleryIllustration loading={childImages.isLoading} />
@@ -123,11 +122,13 @@ const ImagePreview: FC<{
   }, [])
 
   return (
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
     <div
       ref={ref}
       className="fixed h-screen w-screen bg-overlay top-0 left-0 right-0 bottom-0 z-50 flex md:items-center justify-center overflow-y-auto scrolling-touch"
       onClick={onDismiss}
     >
+      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions,jsx-a11y/no-static-element-interactions */}
       <div
         className="
           w-full

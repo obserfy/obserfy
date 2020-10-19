@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import React from "react"
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ReactQueryDevtools } from "react-query-devtools"
