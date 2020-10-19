@@ -1,5 +1,5 @@
 import { queryCache, useMutation } from "react-query"
-import dayjs from "dayjs"
+import dayjs from "../../utils/dayjs"
 import { postFile } from "../../apiHelpers"
 import {
   cancelGetChildImageQuery,
