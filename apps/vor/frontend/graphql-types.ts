@@ -2166,8 +2166,6 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___defaultLang'
   | 'pluginCreator___pluginOptions___configPath'
   | 'pluginCreator___pluginOptions___localeDir'
-  | 'pluginCreator___pluginOptions___analyzerPort'
-  | 'pluginCreator___pluginOptions___disable'
   | 'pluginCreator___pluginOptions___pathCheck'
   | 'pluginCreator___nodeAPIs'
   | 'pluginCreator___browserAPIs'
@@ -2392,8 +2390,6 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___defaultLang'
   | 'pluginOptions___configPath'
   | 'pluginOptions___localeDir'
-  | 'pluginOptions___analyzerPort'
-  | 'pluginOptions___disable'
   | 'pluginOptions___pathCheck'
   | 'nodeAPIs'
   | 'browserAPIs'
@@ -2539,8 +2535,6 @@ export type SitePluginPluginOptions = {
   defaultLang?: Maybe<Scalars['String']>;
   configPath?: Maybe<Scalars['String']>;
   localeDir?: Maybe<Scalars['String']>;
-  analyzerPort?: Maybe<Scalars['Int']>;
-  disable?: Maybe<Scalars['Boolean']>;
   pathCheck?: Maybe<Scalars['Boolean']>;
 };
 
@@ -2577,8 +2571,6 @@ export type SitePluginPluginOptionsFilterInput = {
   defaultLang?: Maybe<StringQueryOperatorInput>;
   configPath?: Maybe<StringQueryOperatorInput>;
   localeDir?: Maybe<StringQueryOperatorInput>;
-  analyzerPort?: Maybe<IntQueryOperatorInput>;
-  disable?: Maybe<BooleanQueryOperatorInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
 };
 

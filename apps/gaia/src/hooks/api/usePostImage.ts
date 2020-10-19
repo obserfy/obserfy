@@ -1,4 +1,5 @@
 import { queryCache, useMutation } from "react-query"
+import dayjs from "../../utils/dayjs"
 import { postFile } from "../../apiHelpers"
 import {
   cancelGetChildImageQuery,
@@ -21,7 +22,9 @@ const usePostImage = (childId: string, schoolId: string) => {
         {
           id: variables.id,
           imageUrl: URL.createObjectURL(variables.file),
+          originalImageUrl: URL.createObjectURL(variables.file),
           isUploading: true,
+          createdAt: dayjs().toString(),
         },
         ...old,
       ])
