@@ -2,11 +2,11 @@ import { queryCache, useQuery } from "react-query"
 import { getApi } from "../apiHelpers"
 import { GetChildImagesResponse } from "../pages/api/children/[childId]/images"
 
-interface ChildImages extends GetChildImagesResponse {
+export interface ChildImage extends GetChildImagesResponse {
   isUploading?: boolean
 }
 const useGetChildImages = (childId: string) => {
-  const getChildImages = getApi<ChildImages[]>(`/children/${childId}/images`)
+  const getChildImages = getApi<ChildImage[]>(`/children/${childId}/images`)
 
   return useQuery(["childImages", childId], getChildImages, {
     enabled: childId,
@@ -15,17 +15,14 @@ const useGetChildImages = (childId: string) => {
 }
 
 export const getChildImagesCache = (childId: string) => {
-  return queryCache.getQueryData<ChildImages[]>(["childImages", childId])
+  return queryCache.getQueryData<ChildImage[]>(["childImages", childId])
 }
 
 export const setChildImagesCache = (
   childId: string,
-  update: ChildImages[] | ((old?: ChildImages[]) => ChildImages[])
+  update: ChildImage[] | ((old?: ChildImage[]) => ChildImage[])
 ) => {
-  return queryCache.setQueryData<ChildImages[]>(
-    ["childImages", childId],
-    update
-  )
+  return queryCache.setQueryData<ChildImage[]>(["childImages", childId], update)
 }
 
 export const cancelGetChildImageQuery = (childId: string) => {
