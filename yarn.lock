@@ -18895,7 +18895,7 @@ __metadata:
     stylelint: 13.7.2
     stylelint-config-prettier: 8.0.2
     stylelint-config-standard: 20.0.0
-    tailwindcss: 1.9.4
+    tailwindcss: 1.9.5
     typescript: 4.0.3
     typescript-plugin-css-modules: 2.7.0
   languageName: unknown
@@ -19201,7 +19201,7 @@ fsevents@^1.2.7:
     stylelint: 13.7.2
     stylelint-config-prettier: 8.0.2
     stylelint-config-standard: 20.0.0
-    tailwindcss: 1.9.4
+    tailwindcss: 1.9.5
     typescript: 4.0.3
     uuid: 8.3.1
     webp-loader: 0.6.0
@@ -35302,9 +35302,9 @@ resolve@1.1.7:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:1.9.4":
-  version: 1.9.4
-  resolution: "tailwindcss@npm:1.9.4"
+"tailwindcss@npm:1.9.5":
+  version: 1.9.5
+  resolution: "tailwindcss@npm:1.9.5"
   dependencies:
     "@fullhuman/postcss-purgecss": ^2.1.2
     autoprefixer: ^9.4.5
@@ -35331,7 +35331,7 @@ resolve@1.1.7:
   bin:
     tailwind: lib/cli.js
     tailwindcss: lib/cli.js
-  checksum: 360b2a287ea3f0c05cb106eb09a0e11d001ac48f1d1796b9d367971347834d0c698db9a93a1345bbc3a8adb3a27e7aad87462e98cb04d9a159c9783336db8b01
+  checksum: 073517a35273c4eb42ff8bdad728474207c2454e9270d00c73eaf18c793810899f3f13dfacfdef0e2a0f00e0ed14a23668c9bb19ee3b2d348f4472c16d6baef0
   languageName: node
   linkType: hard
 
