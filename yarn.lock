@@ -8655,7 +8655,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/body-scroll-lock@npm:2.6.1, @types/body-scroll-lock@npm:^2.6.1":
+"@types/body-scroll-lock@npm:2.6.1":
   version: 2.6.1
   resolution: "@types/body-scroll-lock@npm:2.6.1"
   checksum: 7cb4ed5ce6b9d927321e966970b67dfc6cc23836c2eb6b03e0ef6cc4713199ab0f9cbf5a9b56987939b63a0a9e8a2c5678c1d73808e04578446dc3ea24998e32
@@ -12370,7 +12370,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"body-scroll-lock@npm:3.1.5, body-scroll-lock@npm:^3.1.5":
+"body-scroll-lock@npm:3.1.5":
   version: 3.1.5
   resolution: "body-scroll-lock@npm:3.1.5"
   checksum: e8de58edc0fd7d483e3971045ff83fe6d722592d5153e9bfc9da2962a179a6522b432a4b35344bc8ae522eec080cc87301ce4ded4878f26254bf42a4f26d27ed
@@ -18304,6 +18304,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"file-loader@npm:6.1.1":
+  version: 6.1.1
+  resolution: "file-loader@npm:6.1.1"
+  dependencies:
+    loader-utils: ^2.0.0
+    schema-utils: ^3.0.0
+  peerDependencies:
+    webpack: ^4.0.0 || ^5.0.0
+  checksum: 0272335818c26e5c78a9f972ce779c8ed508e815329e4ace4d55045100140d89460d72eec1af78400dd04f2d16e28e29b3649433804619653cf044220afdf45d
+  languageName: node
+  linkType: hard
+
 "file-loader@npm:^1.1.11":
   version: 1.1.11
   resolution: "file-loader@npm:1.1.11"
@@ -18325,18 +18337,6 @@ __metadata:
   peerDependencies:
     webpack: ^4.0.0 || ^5.0.0
   checksum: 745f5ee763fe46f2124921ff4fb7ed601eb1e8d6ac975cf6af321b3957ce8f78afb885c636e64a9031634e85e26dc9e8ef40ebeb532153c6a80a7d06b56876cb
-  languageName: node
-  linkType: hard
-
-"file-loader@npm:^6.1.1":
-  version: 6.1.1
-  resolution: "file-loader@npm:6.1.1"
-  dependencies:
-    loader-utils: ^2.0.0
-    schema-utils: ^3.0.0
-  peerDependencies:
-    webpack: ^4.0.0 || ^5.0.0
-  checksum: 0272335818c26e5c78a9f972ce779c8ed508e815329e4ace4d55045100140d89460d72eec1af78400dd04f2d16e28e29b3649433804619653cf044220afdf45d
   languageName: node
   linkType: hard
 
@@ -19147,7 +19147,7 @@ fsevents@^1.2.7:
     "@auth0/nextjs-auth0": 0.16.0
     "@prefresh/next": 1.3.0
     "@segment/snippet": 4.13.1
-    "@types/body-scroll-lock": ^2.6.1
+    "@types/body-scroll-lock": 2.6.1
     "@types/formidable": 1.0.31
     "@types/minio": 7.0.6
     "@types/nanoid": 2.1.0
@@ -19159,7 +19159,7 @@ fsevents@^1.2.7:
     "@types/uuid": 8.3.0
     "@typescript-eslint/eslint-plugin": 4.4.1
     "@typescript-eslint/parser": 4.4.1
-    body-scroll-lock: ^3.1.5
+    body-scroll-lock: 3.1.5
     dayjs: 1.9.3
     eslint: 7.11.0
     eslint-config-airbnb-typescript: 12.0.0
@@ -19171,9 +19171,9 @@ fsevents@^1.2.7:
     eslint-plugin-prettier: 3.1.4
     eslint-plugin-react: 7.21.4
     eslint-plugin-react-hooks: 4.1.2
-    file-loader: ^6.1.1
+    file-loader: 6.1.1
     formidable-serverless: 1.0.3
-    imagemin: ^7.0.1
+    imagemin: 7.0.1
     imagemin-mozjpeg: 9.0.0
     imagemin-optipng: 8.0.0
     imagemin-svgo: 8.0.0
@@ -19190,7 +19190,7 @@ fsevents@^1.2.7:
     postcss-preset-env: 6.7.0
     preact: 10.5.5
     preact-render-to-string: 5.1.10
-    prettier: ^2.1.2
+    prettier: 2.1.2
     react: "npm:@preact/compat@0.0.3"
     react-dom: "npm:@preact/compat@0.0.3"
     react-optimized-image: 0.4.1
@@ -30308,7 +30308,7 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"prettier@npm:2.1.2, prettier@npm:^2.1.2":
+"prettier@npm:2.1.2":
   version: 2.1.2
   resolution: "prettier@npm:2.1.2"
   bin:
