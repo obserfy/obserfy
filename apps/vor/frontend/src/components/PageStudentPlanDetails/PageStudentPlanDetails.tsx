@@ -23,18 +23,16 @@ import TextArea from "../TextArea/TextArea"
 import Chip from "../Chip/Chip"
 import { useGetCurriculumAreas } from "../../api/useGetCurriculumAreas"
 import { Typography } from "../Typography/Typography"
-import { ReactComponent as EditIcon } from "../../icons/edit.svg"
 import DatePickerDialog from "../DatePickerDialog/DatePickerDialog"
 import { ReactComponent as LinkIcon } from "../../icons/link.svg"
 import useDeleteLessonPlanLink from "../../api/plans/useDeleteLessonPlanLink"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import LinkInput from "../LinkInput/LinkInput"
 import usePostNewLessonPlanLink from "../../api/plans/usePostNewLessonPlanLink"
-import BackButton from "../BackButton/BackButton"
-import Breadcrumb from "../Breadcrumb/Breadcrumb"
-import BreadcrumbItem from "../Breadcrumb/BreadcrumbItem"
 import { useGetStudent } from "../../api/useGetStudent"
 import MultilineDataBox from "../MultilineDataBox/MultilineDataBox"
+import DataBox from "../DataBox/DataBox"
+import TopBar from "../TopBar/TopBar"
 
 interface Props {
   studentId: string
@@ -47,23 +45,23 @@ export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
   const [showDeleteDialog, setShowDeleteDialog] = useState(false)
 
   const appbar = (
-    <Flex sx={{ height: 48, alignItems: "center" }}>
-      <BackButton to={STUDENT_PLANS_URL(studentId, dayjs(plan.data?.date))} />
-      <Breadcrumb>
-        <BreadcrumbItem to={STUDENTS_URL}>Students</BreadcrumbItem>
-        <BreadcrumbItem to={STUDENT_OVERVIEW_PAGE_URL(studentId)}>
-          {student.data?.name.split(" ")[0]}
-        </BreadcrumbItem>
-        <BreadcrumbItem
-          to={STUDENT_PLANS_URL(studentId, dayjs(plan.data?.date))}
-        >
-          <Trans>Plans</Trans>
-        </BreadcrumbItem>
-        <BreadcrumbItem>
-          <Trans>Details</Trans>
-        </BreadcrumbItem>
-      </Breadcrumb>
-    </Flex>
+    <TopBar
+      breadcrumbs={[
+        {
+          text: t`Students`,
+          to: STUDENTS_URL,
+        },
+        {
+          text: student.data?.name.split(" ")[0] ?? "",
+          to: STUDENT_OVERVIEW_PAGE_URL(studentId),
+        },
+        {
+          text: t`Plans`,
+          to: STUDENT_PLANS_URL(studentId, dayjs(plan.data?.date)),
+        },
+        { text: t`Details` },
+      ]}
+    />
   )
 
   if (plan.isLoading) {
@@ -107,15 +105,9 @@ export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
               <Trans>No links attached yet</Trans>
             </Typography.Body>
           )}
-          {plan.data?.links?.map((link) => {
-            return (
-              <LessonPlanLinks
-                key={link.id}
-                link={link}
-                lessonPlanId={planId}
-              />
-            )
-          })}
+          {plan.data?.links?.map((link) => (
+            <LessonPlanLinks key={link.id} link={link} lessonPlanId={planId} />
+          ))}
           <UrlField lessonPlanId={planId} />
         </Card>
         <Button
@@ -126,7 +118,7 @@ export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
           color="danger"
         >
           <Icon as={TrashIcon} mr={2} fill="danger" />
-          Delete
+          <Trans>Delete</Trans>
         </Button>
       </Box>
       {showDeleteDialog && (
@@ -229,7 +221,7 @@ const DescriptionDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
   return (
     <Fragment>
       <MultilineDataBox
-        label="Description"
+        label={t`Description`}
         value={value || ""}
         onEditClick={() => setShowEditDialog(true)}
         placeholder="-"
@@ -237,8 +229,8 @@ const DescriptionDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
       {showEditDialog && (
         <Dialog>
           <DialogHeader
-            title="Edit Description"
-            onAcceptText="Save"
+            title={t`Edit Description`}
+            onAcceptText={t`Save`}
             onCancel={() => setShowEditDialog(false)}
             onAccept={async () => {
               await mutate({ description })
@@ -247,11 +239,11 @@ const DescriptionDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
           />
           <Box sx={{ backgroundColor: "background" }} p={3}>
             <TextArea
-              label="Description"
+              label={t`Description`}
               sx={{ width: "100%", lineHeight: 1.8, minHeight: 400 }}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="Add some description here"
+              placeholder={t`Add some description here`}
             />
           </Box>
         </Dialog>
@@ -272,15 +264,15 @@ const AreaDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
   return (
     <Fragment>
       <DataBox
-        label="Related Area"
+        label={t`Related Area`}
         value={classes.data?.find(({ id }) => id === value)?.name || "Other"}
         onEditClick={() => setShowEditDialog(true)}
       />
       {showEditDialog && (
         <Dialog>
           <DialogHeader
-            title="Change Area"
-            onAcceptText="Save"
+            title={t`Change Area`}
+            onAcceptText={t`Save`}
             onCancel={() => setShowEditDialog(false)}
             onAccept={async () => {
               await mutate({ areaId: selectedArea })
@@ -309,35 +301,6 @@ const AreaDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
     </Fragment>
   )
 }
-
-const DataBox: FC<{
-  label: string
-  value: string
-  onEditClick?: () => void
-}> = ({ label, value, onEditClick }) => (
-  <Flex px={3} py={3} sx={{ alignItems: "flex-start" }}>
-    <Box>
-      <Typography.Body
-        mb={1}
-        color="textMediumEmphasis"
-        sx={{ lineHeight: 1, fontSize: 1 }}
-      >
-        {label}
-      </Typography.Body>
-      <Typography.Body>{value}</Typography.Body>
-    </Box>
-    <Button
-      variant="outline"
-      ml="auto"
-      px={2}
-      onClick={onEditClick}
-      sx={{ flexShrink: 0 }}
-      aria-label={`edit-${label.toLowerCase()}`}
-    >
-      <Icon as={EditIcon} />
-    </Button>
-  </Flex>
-)
 
 const LessonPlanLinks: FC<{
   link: GetPlanResponseBody["links"][0]

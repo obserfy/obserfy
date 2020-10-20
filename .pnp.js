@@ -22970,6 +22970,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             "@types/babel-plugin-macros",
             "@types/babel__core",
             "@types/typescript",
+            "babel-plugin-macros",
             "typescript"
           ],
           "linkType": "HARD",
@@ -23075,7 +23076,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/runtime", "npm:7.11.2"],
             ["@lingui/conf", "npm:3.0.0-18"],
             ["@types/babel-plugin-macros", null],
-            ["babel-plugin-macros", null],
+            ["babel-plugin-macros", "npm:2.8.0"],
             ["ramda", "npm:0.27.1"]
           ],
           "packagePeers": [
@@ -59744,6 +59745,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["babel-jest", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:26.6.0"],
             ["babel-loader", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:8.1.0"],
             ["babel-plugin-istanbul", "npm:6.0.0"],
+            ["babel-plugin-macros", "npm:2.8.0"],
             ["babel-plugin-remove-graphql-queries", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:2.9.20"],
             ["babel-plugin-transform-default-import", "npm:1.0.0"],
             ["babel-preset-gatsby", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.5.14"],
