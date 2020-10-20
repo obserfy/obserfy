@@ -219,7 +219,7 @@ msgstr "Ubah ID Murid"
 
 #: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:125
 msgid "Edit Title"
-msgstr ""
+msgstr "Ubah Judul"
 
 #: src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx:34
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:74
