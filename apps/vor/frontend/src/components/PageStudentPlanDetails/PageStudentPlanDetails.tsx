@@ -4,7 +4,7 @@ import { Box, Button, Card, Flex, jsx } from "theme-ui"
 import { t, Trans } from "@lingui/macro"
 import { useLingui } from "@lingui/react"
 import useGetPlan, { GetPlanResponseBody } from "../../api/plans/useGetPlan"
-import useDeletePlans from "../../api/plans/useDeletePlan"
+import useDeletePlan from "../../api/plans/useDeletePlan"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import {
   STUDENT_OVERVIEW_PAGE_URL,
@@ -42,10 +42,10 @@ interface Props {
 export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
   const plan = useGetPlan(planId)
   const student = useGetStudent(studentId)
-  const [deletePlan] = useDeletePlans(planId)
+  const [deletePlan] = useDeletePlan(planId)
   const [showDeleteDialog, setShowDeleteDialog] = useState(false)
 
-  const appbar = (
+  const topBar = (
     <TopBar
       breadcrumbs={[
         {
@@ -68,7 +68,7 @@ export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
   if (plan.isLoading) {
     return (
       <Box sx={{ maxWidth: "maxWidth.sm" }} pb={3} mx="auto">
-        {appbar}
+        {topBar}
         <LoadingPlaceholder sx={{ width: "100%", height: 213 }} mb={3} />
         <LoadingPlaceholder sx={{ width: "100%", height: 129 }} mb={3} />
         <LoadingPlaceholder sx={{ width: "100%", height: 140 }} mb={3} />
@@ -79,7 +79,7 @@ export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
   return (
     <Fragment>
       <Box sx={{ maxWidth: "maxWidth.sm" }} pb={3} mx="auto">
-        {appbar}
+        {topBar}
         <Card mb={3} sx={{ borderRadius: [0, "default"] }}>
           <DateDataBox value={plan.data?.date} lessonPlanId={planId} />
           <AreaDataBox value={plan.data?.areaId} lessonPlanId={planId} />
@@ -125,10 +125,9 @@ export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
       </Box>
       {showDeleteDialog && (
         <AlertDialog
-          title="Delete plan?"
-          negativeText="Cancel"
-          positiveText="Yes"
-          body={`Are you sure you want to delete ${plan.data?.title}?`}
+          title={t`Delete plan?`}
+          positiveText={t`Delete`}
+          body={t`Are you sure you want to delete ${plan.data?.title}?`}
           onNegativeClick={() => setShowDeleteDialog(false)}
           onPositiveClick={async () => {
             const result = await deletePlan()
