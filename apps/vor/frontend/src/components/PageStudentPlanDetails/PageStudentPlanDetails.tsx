@@ -2,6 +2,7 @@
 import { FC, Fragment, useState } from "react"
 import { Box, Button, Card, Flex, jsx } from "theme-ui"
 import { t, Trans } from "@lingui/macro"
+import { useLingui } from "@lingui/react"
 import useGetPlan, { GetPlanResponseBody } from "../../api/plans/useGetPlan"
 import useDeletePlans from "../../api/plans/useDeletePlan"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
@@ -106,13 +107,14 @@ export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
             </Typography.Body>
           )}
           {plan.data?.links?.map((link) => (
-            <LessonPlanLinks key={link.id} link={link} lessonPlanId={planId} />
+            <LessonPlanLink key={link.id} link={link} lessonPlanId={planId} />
           ))}
           <UrlField lessonPlanId={planId} />
         </Card>
         <Button
           variant="outline"
-          m={3}
+          my={3}
+          mr={[3, 0]}
           ml="auto"
           onClick={() => setShowDeleteDialog(true)}
           color="danger"
@@ -177,6 +179,7 @@ const TitleDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
   const [showEditDialog, setShowEditDialog] = useState(false)
   const [title, setTitle] = useState(value)
   const [mutate] = usePatchPlan(lessonPlanId)
+  const { i18n } = useLingui()
 
   return (
     <Fragment>
@@ -188,8 +191,7 @@ const TitleDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
       {showEditDialog && (
         <Dialog>
           <DialogHeader
-            title="Edit Title"
-            onAcceptText="Save"
+            title={t`Edit Title`}
             onCancel={() => setShowEditDialog(false)}
             onAccept={async () => {
               await mutate({ title })
@@ -198,7 +200,7 @@ const TitleDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
           />
           <Box sx={{ backgroundColor: "background" }} p={3}>
             <Input
-              label="Title"
+              label={i18n._(t`Title`)}
               sx={{ width: "100%" }}
               value={title}
               onChange={(e) => setTitle(e.target.value)}
@@ -217,6 +219,7 @@ const DescriptionDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
   const [showEditDialog, setShowEditDialog] = useState(false)
   const [description, setDescription] = useState(value)
   const [mutate] = usePatchPlan(lessonPlanId)
+  const { i18n } = useLingui()
 
   return (
     <Fragment>
@@ -239,11 +242,11 @@ const DescriptionDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
           />
           <Box sx={{ backgroundColor: "background" }} p={3}>
             <TextArea
-              label={t`Description`}
+              label={i18n._(t`Description`)}
               sx={{ width: "100%", lineHeight: 1.8, minHeight: 400 }}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder={t`Add some description here`}
+              placeholder={i18n._(t`Add some description here`)}
             />
           </Box>
         </Dialog>
@@ -302,7 +305,7 @@ const AreaDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
   )
 }
 
-const LessonPlanLinks: FC<{
+const LessonPlanLink: FC<{
   link: GetPlanResponseBody["links"][0]
   lessonPlanId: string
 }> = ({ link, lessonPlanId }) => {
