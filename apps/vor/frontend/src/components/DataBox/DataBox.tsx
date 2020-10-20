@@ -1,5 +1,6 @@
 import React, { FC } from "react"
 import { Box, Button, Flex } from "theme-ui"
+import { Trans } from "@lingui/macro"
 import Typography from "../Typography/Typography"
 import Icon from "../Icon/Icon"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
@@ -18,7 +19,7 @@ export const DataBox: FC<DataBoxProps> = ({ label, value, onEditClick }) => (
         color="textMediumEmphasis"
         sx={{ lineHeight: 1, fontSize: 0 }}
       >
-        {label}
+        <Trans id={label} />
       </Typography.Body>
       <Typography.Body>{value}</Typography.Body>
     </Box>
