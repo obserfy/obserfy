@@ -54,7 +54,7 @@
     "react-adaptive-hooks": "0.0.8",
     "react-dom": "16.14.0",
     "react-helmet": "6.1.0",
-    "react-query": "2.23.1",
+    "react-query": "2.25.2",
     "regenerator-runtime": "0.13.7",
     "theme-ui": "0.4.0-rc.5",
     "use-immer": "0.4.1"
