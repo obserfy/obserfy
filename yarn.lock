@@ -21966,10 +21966,10 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"immer@npm:7.0.9":
-  version: 7.0.9
-  resolution: "immer@npm:7.0.9"
-  checksum: 20fba3dabd033f9584eb1df9c16210b64c16a536a6376b0dedf153176554d89432ee86409458d8773edd142ddcae75f8e242b1952cd5b61c22767a4538880dd0
+"immer@npm:7.0.10":
+  version: 7.0.10
+  resolution: "immer@npm:7.0.10"
+  checksum: 747000e215a6bdac6ae8ab5aa3c45293e3e009eb09bc0b1c811730b7142bcb613c83536686adb0e043a71ea3317396c0d76d73009b1e8e5ebc8dc45049143ce2
   languageName: node
   linkType: hard
 
@@ -37527,7 +37527,7 @@ resolve@^1.18.1:
     http-proxy-middleware: 1.0.6
     hygen: 6.0.4
     idb-keyval: 3.2.0
-    immer: 7.0.9
+    immer: 7.0.10
     jest: 26.6.0
     jest-date-mock: 1.0.8
     jest-emotion: 10.0.32
