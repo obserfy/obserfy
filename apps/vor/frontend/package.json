@@ -48,7 +48,7 @@
     "make-plural": "6.2.2",
     "nanoid": "3.1.12",
     "preact": "10.5.5",
-    "preact-render-to-string": "5.1.10",
+    "preact-render-to-string": "5.1.11",
     "query-string": "6.13.6",
     "react": "16.14.0",
     "react-adaptive-hooks": "0.0.8",

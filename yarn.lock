@@ -19333,7 +19333,7 @@ fsevents@^1.2.7:
     pg: 8.4.1
     postcss-preset-env: 6.7.0
     preact: 10.5.5
-    preact-render-to-string: 5.1.10
+    preact-render-to-string: 5.1.11
     prettier: 2.1.2
     react: "npm:@preact/compat@0.0.3"
     react-dom: "npm:@preact/compat@0.0.3"
@@ -30400,7 +30400,18 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"preact-render-to-string@npm:5.1.10, preact-render-to-string@npm:^5.1.10":
+"preact-render-to-string@npm:5.1.11":
+  version: 5.1.11
+  resolution: "preact-render-to-string@npm:5.1.11"
+  dependencies:
+    pretty-format: ^3.8.0
+  peerDependencies:
+    preact: ">=10"
+  checksum: 3103e7c4d630012e45cb10d2bb229f3e4081edfa071bf09c86206e7352a1817974fc6ab44d006f1cae3b0a4e6e81b1cacbc8d0f70a98f9c4fe208d16ee3d9738
+  languageName: node
+  linkType: hard
+
+"preact-render-to-string@npm:^5.1.10":
   version: 5.1.10
   resolution: "preact-render-to-string@npm:5.1.10"
   dependencies:
@@ -37595,7 +37606,7 @@ resolve@^1.18.1:
     nanoid: 3.1.12
     npm-run-all: 4.1.5
     preact: 10.5.5
-    preact-render-to-string: 5.1.10
+    preact-render-to-string: 5.1.11
     prettier: 2.1.2
     query-string: 6.13.6
     react: 16.14.0
