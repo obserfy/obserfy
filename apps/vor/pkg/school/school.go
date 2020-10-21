@@ -2,22 +2,19 @@ package school
 
 import (
 	"errors"
-	"net/http"
-	"os"
-	"strconv"
-	"time"
-
-	"github.com/chrsep/vor/pkg/lessonplan"
-
+	"github.com/chrsep/vor/pkg/auth"
+	"github.com/chrsep/vor/pkg/domain"
+	"github.com/chrsep/vor/pkg/imgproxy"
+	"github.com/chrsep/vor/pkg/rest"
 	"github.com/go-chi/chi"
 	"github.com/go-pg/pg/v10"
 	"github.com/go-playground/validator/v10"
 	"github.com/google/uuid"
 	richErrors "github.com/pkg/errors"
-
-	"github.com/chrsep/vor/pkg/auth"
-	"github.com/chrsep/vor/pkg/imgproxy"
-	"github.com/chrsep/vor/pkg/rest"
+	"net/http"
+	"os"
+	"strconv"
+	"time"
 )
 
 func NewRouter(
@@ -1075,7 +1072,7 @@ func postNewLessonPlan(server rest.Server, store Store) http.Handler {
 		if !ok {
 			return auth.NewGetSessionError()
 		}
-		planInput := lessonplan.PlanData{
+		planInput := domain.LessonPlan{
 			ClassId:     body.ClassId,
 			Title:       body.Title,
 			Description: body.Description,
@@ -1083,22 +1080,26 @@ func postNewLessonPlan(server rest.Server, store Store) http.Handler {
 			Date:        body.Date,
 			AreaId:      body.AreaId,
 			MaterialId:  body.MaterialId,
-			Students:    body.Students,
 			SchoolId:    schoolId,
 			UserId:      session.UserId,
 		}
 		if body.Repetition != nil {
-			planInput.Repetition = &lessonplan.RepetitionPattern{
+			planInput.Repetition = domain.RepetitionPattern{
 				Type:    body.Repetition.Type,
 				EndDate: body.Repetition.EndDate,
 			}
 		}
 		for _, link := range body.Links {
-			planInput.Links = append(planInput.Links, lessonplan.Link{
+			planInput.Links = append(planInput.Links, domain.Link{
 				Url:         link.Url,
 				Image:       link.Image,
 				Title:       link.Title,
 				Description: link.Description,
+			})
+		}
+		for _, s := range body.Students {
+			planInput.Students = append(planInput.Students, domain.Student{
+				Id: s,
 			})
 		}
 
