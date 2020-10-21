@@ -1636,7 +1636,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@types/jest",
-        "npm:26.0.14"
+        "npm:26.0.15"
       ],
       [
         "@types/json-schema",
@@ -7780,7 +7780,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "pretty-format",
-        "npm:25.5.0"
+        "npm:26.6.0"
       ],
       [
         "pretty-hrtime",
@@ -26702,12 +26702,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
-        ["npm:26.0.14", {
-          "packageLocation": "./.yarn/cache/@types-jest-npm-26.0.14-4543bb8dd3-bddbe82d12.zip/node_modules/@types/jest/",
+        ["npm:26.0.15", {
+          "packageLocation": "./.yarn/cache/@types-jest-npm-26.0.15-123adbed89-42fe39d582.zip/node_modules/@types/jest/",
           "packageDependencies": [
-            ["@types/jest", "npm:26.0.14"],
-            ["jest-diff", "npm:25.5.0"],
-            ["pretty-format", "npm:25.5.0"]
+            ["@types/jest", "npm:26.0.15"],
+            ["jest-diff", "npm:26.6.0"],
+            ["pretty-format", "npm:26.6.0"]
           ],
           "linkType": "HARD",
         }]
@@ -59730,7 +59730,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/body-scroll-lock", "npm:2.6.1"],
             ["@types/date-fns", "npm:2.6.0"],
             ["@types/faker", "npm:5.1.2"],
-            ["@types/jest", "npm:26.0.14"],
+            ["@types/jest", "npm:26.0.15"],
             ["@types/query-string", "npm:6.3.0"],
             ["@types/reach__router", "npm:1.3.6"],
             ["@types/react", "npm:16.9.53"],
