@@ -3,6 +3,7 @@ package lessonplan
 import (
 	"github.com/chrsep/vor/pkg/auth"
 	"github.com/chrsep/vor/pkg/domain"
+	"github.com/chrsep/vor/pkg/imgproxy"
 	"github.com/chrsep/vor/pkg/rest"
 	"github.com/go-chi/chi"
 	"github.com/go-pg/pg/v10"
@@ -180,7 +181,7 @@ func getLessonPlan(server rest.Server, store Store) http.Handler {
 			response.RelatedStudents = append(response.RelatedStudents, student{
 				Id:                s.Id,
 				Name:              s.Name,
-				ProfilePictureUrl: "", // TODO: Handle profile picture
+				ProfilePictureUrl: imgproxy.GenerateUrl(s.ProfileImage.ObjectKey, 40, 40),
 			})
 		}
 		if err := rest.WriteJson(w, response); err != nil {

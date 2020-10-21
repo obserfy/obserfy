@@ -139,6 +139,10 @@ func (s LessonPlanStore) GetLessonPlan(planId string) (*domain.LessonPlan, error
 		result.Students = append(result.Students, domain.Student{
 			Id:   s.Id,
 			Name: s.Name,
+			ProfileImage: domain.Image{
+				ObjectKey: s.ProfileImage.ObjectKey,
+				Id:        s.ProfileImage.Id,
+			},
 		})
 	}
 	return result, nil
