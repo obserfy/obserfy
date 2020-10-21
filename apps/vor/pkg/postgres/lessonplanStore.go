@@ -1,10 +1,11 @@
 package postgres
 
 import (
-	cLessonPlan "github.com/chrsep/vor/pkg/lessonplan"
+	"github.com/chrsep/vor/pkg/domain"
 	"github.com/go-pg/pg/v10"
 	"github.com/google/uuid"
 	richErrors "github.com/pkg/errors"
+	"time"
 )
 
 type (
@@ -13,7 +14,7 @@ type (
 	}
 )
 
-func (s LessonPlanStore) AddLinkToLessonPlan(id string, link cLessonPlan.Link) error {
+func (s LessonPlanStore) AddLinkToLessonPlan(id string, link domain.Link) error {
 	lessonPlan := LessonPlan{Id: id}
 	if err := s.DB.Model(&lessonPlan).
 		WherePK().
@@ -35,8 +36,16 @@ func (s LessonPlanStore) AddLinkToLessonPlan(id string, link cLessonPlan.Link) e
 	return nil
 }
 
-func (s LessonPlanStore) UpdateLessonPlan(planInput cLessonPlan.UpdatePlanData) (int, error) {
-	originalPlan := LessonPlan{Id: planInput.Id}
+func (s LessonPlanStore) UpdateLessonPlan(Id string,
+	Title *string,
+	Description *string,
+	Date *time.Time,
+	_ *domain.RepetitionPattern,
+	AreaId *string,
+	MaterialId *string,
+	ClassId *string,
+) (int, error) {
+	originalPlan := LessonPlan{Id: Id}
 	if err := s.Model(&originalPlan).
 		WherePK().
 		Column("lesson_plan_details_id").
@@ -45,21 +54,21 @@ func (s LessonPlanStore) UpdateLessonPlan(planInput cLessonPlan.UpdatePlanData) 
 	}
 
 	plan := make(PartialUpdateModel)
-	plan.AddDateColumn("date", planInput.Date)
+	plan.AddDateColumn("date", Date)
 
 	planDetails := make(PartialUpdateModel)
-	planDetails.AddStringColumn("description", planInput.Description)
-	planDetails.AddStringColumn("title", planInput.Title)
-	planDetails.AddIdColumn("area_id", planInput.AreaId)
-	planDetails.AddIdColumn("material_id", planInput.MaterialId)
-	planDetails.AddIdColumn("class_id", planInput.ClassId)
+	planDetails.AddStringColumn("description", Description)
+	planDetails.AddStringColumn("title", Title)
+	planDetails.AddIdColumn("area_id", AreaId)
+	planDetails.AddIdColumn("material_id", MaterialId)
+	planDetails.AddIdColumn("class_id", ClassId)
 
 	rowsAffected := 0
 	if err := s.RunInTransaction(s.Context(), func(tx *pg.Tx) error {
 		if !plan.IsEmpty() {
 			result, err := tx.Model(plan.GetModel()).
 				TableExpr("lesson_plans").
-				Where("id = ?", planInput.Id).
+				Where("id = ?", Id).
 				Update()
 			if err != nil {
 				return richErrors.Wrap(err, "")
@@ -86,9 +95,10 @@ func (s LessonPlanStore) UpdateLessonPlan(planInput cLessonPlan.UpdatePlanData) 
 	return rowsAffected, nil
 }
 
-func (s LessonPlanStore) GetLessonPlan(planId string) (*cLessonPlan.LessonPlan, error) {
+func (s LessonPlanStore) GetLessonPlan(planId string) (*domain.LessonPlan, error) {
 	var plan LessonPlan
 	err := s.Model(&plan).
+		Relation("Students").
 		Relation("LessonPlanDetails").
 		Relation("LessonPlanDetails.Links").
 		//Relation("Users").
@@ -102,7 +112,7 @@ func (s LessonPlanStore) GetLessonPlan(planId string) (*cLessonPlan.LessonPlan, 
 		return nil, richErrors.Wrapf(err, "Failed get lesson plan")
 	}
 
-	result := &cLessonPlan.LessonPlan{
+	result := &domain.LessonPlan{
 		Id:          plan.Id,
 		ClassId:     plan.LessonPlanDetails.ClassId,
 		SchoolId:    plan.LessonPlanDetails.SchoolId,
@@ -111,18 +121,24 @@ func (s LessonPlanStore) GetLessonPlan(planId string) (*cLessonPlan.LessonPlan, 
 		Date:        *plan.Date,
 		AreaId:      plan.LessonPlanDetails.AreaId,
 		MaterialId:  plan.LessonPlanDetails.MaterialId,
-		Repetition: &cLessonPlan.RepetitionPattern{
+		Repetition: domain.RepetitionPattern{
 			Type:    plan.LessonPlanDetails.RepetitionType,
 			EndDate: plan.LessonPlanDetails.RepetitionEndDate,
 		},
 	}
 	for _, link := range plan.LessonPlanDetails.Links {
-		result.Links = append(result.Links, cLessonPlan.Link{
+		result.Links = append(result.Links, domain.Link{
 			Id:          link.Id,
 			Url:         link.Url,
 			Image:       link.Image,
 			Title:       link.Title,
 			Description: link.Description,
+		})
+	}
+	for _, s := range plan.Students {
+		result.Students = append(result.Students, domain.Student{
+			Id:   s.Id,
+			Name: s.Name,
 		})
 	}
 	return result, nil
@@ -146,6 +162,7 @@ func (s LessonPlanStore) DeleteLessonPlanFile(planId, fileId string) error {
 	}
 	return nil
 }
+
 func (s LessonPlanStore) CheckPermission(userId string, planId string) (bool, error) {
 	var user User
 	if err := s.Model(&user).

@@ -2,18 +2,35 @@ package lessonplan
 
 import (
 	"github.com/chrsep/vor/pkg/auth"
-	"github.com/google/uuid"
-	"net/http"
-	"time"
-
+	"github.com/chrsep/vor/pkg/domain"
+	"github.com/chrsep/vor/pkg/rest"
 	"github.com/go-chi/chi"
 	"github.com/go-pg/pg/v10"
 	"github.com/go-playground/validator/v10"
+	"github.com/google/uuid"
 	"github.com/pkg/errors"
-
-	"github.com/chrsep/vor/pkg/rest"
 	richErrors "github.com/pkg/errors"
+	"net/http"
+	"time"
 )
+
+type Store interface {
+	UpdateLessonPlan(
+		Id string,
+		Title *string,
+		Description *string,
+		Date *time.Time,
+		Repetition *domain.RepetitionPattern,
+		AreaId *string,
+		MaterialId *string,
+		ClassId *string,
+	) (int, error)
+	GetLessonPlan(planId string) (*domain.LessonPlan, error)
+	DeleteLessonPlan(planId string) error
+	DeleteLessonPlanFile(planId, fileId string) error
+	AddLinkToLessonPlan(planId string, link domain.Link) error
+	CheckPermission(userId string, planId string) (bool, error)
+}
 
 func NewRouter(server rest.Server, store Store) *chi.Mux {
 	r := chi.NewRouter()
@@ -87,7 +104,7 @@ func postLink(server rest.Server, store Store) http.Handler {
 			return rest.NewParseJsonError(err)
 		}
 
-		if err := store.AddLinkToLessonPlan(planId, Link{
+		if err := store.AddLinkToLessonPlan(planId, domain.Link{
 			Url:         body.Url,
 			Image:       body.Image,
 			Title:       body.Title,
@@ -106,6 +123,11 @@ func postLink(server rest.Server, store Store) http.Handler {
 }
 
 func getLessonPlan(server rest.Server, store Store) http.Handler {
+	type student struct {
+		Id                string `json:"id"`
+		Name              string `json:"name"`
+		ProfilePictureUrl string `json:"profilePictureUrl"`
+	}
 	type link struct {
 		Id          uuid.UUID `json:"id"`
 		Url         string    `json:"url"`
@@ -114,14 +136,15 @@ func getLessonPlan(server rest.Server, store Store) http.Handler {
 		Description string    `json:"description"`
 	}
 	type resBody struct {
-		Id          string    `json:"id"`
-		Title       string    `json:"title"`
-		Description string    `json:"description"`
-		ClassId     string    `json:"classId"`
-		Date        time.Time `json:"date"`
-		AreaId      string    `json:"areaId"`
-		MaterialId  string    `json:"materialId"`
-		Links       []link    `json:"links"`
+		Id              string    `json:"id"`
+		Title           string    `json:"title"`
+		Description     string    `json:"description"`
+		ClassId         string    `json:"classId"`
+		Date            time.Time `json:"date"`
+		AreaId          string    `json:"areaId"`
+		MaterialId      string    `json:"materialId"`
+		Links           []link    `json:"links"`
+		RelatedStudents []student `json:"relatedStudents"`
 	}
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		planId := chi.URLParam(r, "planId")
@@ -153,6 +176,13 @@ func getLessonPlan(server rest.Server, store Store) http.Handler {
 				Description: l.Description,
 			})
 		}
+		for _, s := range plan.Students {
+			response.RelatedStudents = append(response.RelatedStudents, student{
+				Id:                s.Id,
+				Name:              s.Name,
+				ProfilePictureUrl: "", // TODO: Handle profile picture
+			})
+		}
 		if err := rest.WriteJson(w, response); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
@@ -171,7 +201,6 @@ func patchLessonPlan(server rest.Server, store Store) http.Handler {
 	}
 
 	validate := validator.New()
-
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		planId := chi.URLParam(r, "planId")
 
@@ -187,16 +216,16 @@ func patchLessonPlan(server rest.Server, store Store) http.Handler {
 			}
 		}
 
-		planInput := UpdatePlanData{
-			Id:          planId,
-			Title:       body.Title,
-			Description: body.Description,
-			Date:        body.Date,
-			AreaId:      body.AreaId,
-			MaterialId:  body.MaterialId,
-			ClassId:     body.ClassId,
-		}
-		rowsAffected, err := store.UpdateLessonPlan(planInput)
+		rowsAffected, err := store.UpdateLessonPlan(
+			planId,
+			body.Title,
+			body.Description,
+			body.Date,
+			nil, // TODO: we should handle repetition
+			body.AreaId,
+			body.MaterialId,
+			body.ClassId,
+		)
 		if err != nil {
 			return &rest.Error{
 				Code:    http.StatusInternalServerError,
