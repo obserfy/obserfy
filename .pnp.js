@@ -1079,10 +1079,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:9.5.5"
       ],
       [
-        "@next/react-refresh-utils",
-        "virtual:a278a8e98f385cff21bc672bb8debd3247d0ea6a3e5b970556c1ea6e2d990ec35b6d7d17e96ab0197c535fd048022d44431629b729b282ecac70e06592393590#npm:9.5.5"
-      ],
-      [
         "@nodelib/fs.scandir",
         "npm:2.1.3"
       ],
@@ -38614,7 +38610,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-optimized-image", "npm:0.4.1"],
             ["react-query", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.23.1"],
             ["react-query-devtools", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.6.0"],
-            ["react-refresh", "npm:0.8.3"],
+            ["react-refresh", "npm:0.9.0"],
             ["react-ssr-prepass", [
               "preact-ssr-prepass",
               "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:1.1.2"
@@ -53148,6 +53144,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/react-refresh-npm-0.8.3-9b3fb3900b-38f06df8e0.zip/node_modules/react-refresh/",
           "packageDependencies": [
             ["react-refresh", "npm:0.8.3"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:0.9.0", {
+          "packageLocation": "./.yarn/cache/react-refresh-npm-0.9.0-02c61ee045-300dc43138.zip/node_modules/react-refresh/",
+          "packageDependencies": [
+            ["react-refresh", "npm:0.9.0"]
           ],
           "linkType": "HARD",
         }]
