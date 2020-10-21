@@ -7744,7 +7744,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "preact-render-to-string",
-        "virtual:dbe65df42ba0308058d48756a4ce79435c143ce5cac9258555176bc81a2d040a1ada334cc652cb7738bbbd32f4ecbf942eeb41694de7eb81a88c58ea8c966c68#npm:5.1.10"
+        "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:5.1.11"
       ],
       [
         "prebuild-install",
@@ -38645,7 +38645,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["pg", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:8.4.1"],
             ["postcss-preset-env", "npm:6.7.0"],
             ["preact", "npm:10.5.5"],
-            ["preact-render-to-string", "virtual:dbe65df42ba0308058d48756a4ce79435c143ce5cac9258555176bc81a2d040a1ada334cc652cb7738bbbd32f4ecbf942eeb41694de7eb81a88c58ea8c966c68#npm:5.1.10"],
+            ["preact-render-to-string", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:5.1.11"],
             ["prettier", "npm:2.1.2"],
             ["react", [
               "@preact/compat",
@@ -39573,7 +39573,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/preact-render-to-string", null],
             ["gatsby", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:2.24.80"],
             ["preact", "npm:10.5.5"],
-            ["preact-render-to-string", "virtual:dbe65df42ba0308058d48756a4ce79435c143ce5cac9258555176bc81a2d040a1ada334cc652cb7738bbbd32f4ecbf942eeb41694de7eb81a88c58ea8c966c68#npm:5.1.10"]
+            ["preact-render-to-string", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:5.1.11"]
           ],
           "packagePeers": [
             "@types/gatsby",
@@ -51455,6 +51455,20 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["preact-render-to-string", [
+        ["virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:5.1.11", {
+          "packageLocation": "./.yarn/$$virtual/preact-render-to-string-virtual-d84a559840/0/cache/preact-render-to-string-npm-5.1.11-34f0509234-3103e7c4d6.zip/node_modules/preact-render-to-string/",
+          "packageDependencies": [
+            ["preact-render-to-string", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:5.1.11"],
+            ["@types/preact", null],
+            ["preact", "npm:10.5.5"],
+            ["pretty-format", "npm:3.8.0"]
+          ],
+          "packagePeers": [
+            "@types/preact",
+            "preact"
+          ],
+          "linkType": "HARD",
+        }],
         ["virtual:dbe65df42ba0308058d48756a4ce79435c143ce5cac9258555176bc81a2d040a1ada334cc652cb7738bbbd32f4ecbf942eeb41694de7eb81a88c58ea8c966c68#npm:5.1.10", {
           "packageLocation": "./.yarn/$$virtual/preact-render-to-string-virtual-f7a25ae40c/0/cache/preact-render-to-string-npm-5.1.10-6d5a79550e-76dee7cc22.zip/node_modules/preact-render-to-string/",
           "packageDependencies": [
@@ -59850,7 +59864,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["nanoid", "npm:3.1.12"],
             ["npm-run-all", "npm:4.1.5"],
             ["preact", "npm:10.5.5"],
-            ["preact-render-to-string", "virtual:dbe65df42ba0308058d48756a4ce79435c143ce5cac9258555176bc81a2d040a1ada334cc652cb7738bbbd32f4ecbf942eeb41694de7eb81a88c58ea8c966c68#npm:5.1.10"],
+            ["preact-render-to-string", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:5.1.11"],
             ["prettier", "npm:2.1.2"],
             ["query-string", "npm:6.13.6"],
             ["react", "npm:16.14.0"],
