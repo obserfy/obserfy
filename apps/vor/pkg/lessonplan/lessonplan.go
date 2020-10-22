@@ -31,6 +31,7 @@ type Store interface {
 	DeleteLessonPlanFile(planId, fileId string) error
 	AddLinkToLessonPlan(planId string, link domain.Link) error
 	CheckPermission(userId string, planId string) (bool, error)
+	AddRelatedStudents(planId string, studentIds []uuid.UUID) error
 }
 
 func NewRouter(server rest.Server, store Store) *chi.Mux {
@@ -45,9 +46,13 @@ func NewRouter(server rest.Server, store Store) *chi.Mux {
 		r.Method("DELETE", "/file/{fileId}", deleteLessonPlanFile(server, store))
 
 		r.Method("POST", "/links", postLink(server, store))
+
+		r.Method("POST", "/students", postNewRelatedStudents(server, store))
+		r.Method("DELETE", "/students/{studentId}", deleteRelatedStudent(server, store))
 	})
 	return r
 }
+
 func authorizationMiddleware(s rest.Server, store Store) func(next http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
 		return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
@@ -297,6 +302,33 @@ func deleteLessonPlanFile(server rest.Server, store Store) http.Handler {
 		}
 
 		w.WriteHeader(http.StatusOK)
+		return nil
+	})
+}
+
+func postNewRelatedStudents(s rest.Server, store Store) http.Handler {
+	type requestBody struct {
+		StudentIds []uuid.UUID `json:"studentIds"`
+	}
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		planId := chi.URLParam(r, "planId")
+
+		var body requestBody
+		if err := rest.ParseJson(r.Body, &body); err != nil {
+			return rest.NewParseJsonError(err)
+		}
+
+		if err := store.AddRelatedStudents(planId, body.StudentIds); err != nil {
+			return rest.NewInternalServerError(err, "failed to save lesson plan related student to DB")
+		}
+
+		w.WriteHeader(http.StatusCreated)
+		return nil
+	})
+}
+
+func deleteRelatedStudent(s rest.Server, store Store) http.Handler {
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		return nil
 	})
 }

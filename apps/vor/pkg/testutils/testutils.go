@@ -147,8 +147,11 @@ func (s *BaseTestSuite) GenerateStudent(school *postgres.School) *postgres.Stude
 	return &student
 }
 
-func (s *BaseTestSuite) GenerateMaterial() (postgres.Material, string) {
-	subject, userId := s.GenerateSubject()
+func (s *BaseTestSuite) GenerateMaterial(school *postgres.School) (postgres.Material, string) {
+	if school == nil {
+		school = s.GenerateSchool()
+	}
+	subject, userId := s.GenerateSubject(school)
 
 	// save subject
 	material := postgres.Material{
@@ -162,9 +165,12 @@ func (s *BaseTestSuite) GenerateMaterial() (postgres.Material, string) {
 	return material, userId
 }
 
-func (s *BaseTestSuite) GenerateSubject() (postgres.Subject, string) {
+func (s *BaseTestSuite) GenerateSubject(school *postgres.School) (postgres.Subject, string) {
+	if school == nil {
+		school = s.GenerateSchool()
+	}
 	// Save area
-	area, userId := s.GenerateArea()
+	area, userId := s.GenerateArea(school)
 
 	// save subject
 	originalSubject := postgres.Subject{
@@ -178,8 +184,11 @@ func (s *BaseTestSuite) GenerateSubject() (postgres.Subject, string) {
 	return originalSubject, userId
 }
 
-func (s *BaseTestSuite) GenerateArea() (postgres.Area, string) {
-	school := s.GenerateSchool()
+func (s *BaseTestSuite) GenerateArea(school *postgres.School) (postgres.Area, string) {
+	if school == nil {
+		school = s.GenerateSchool()
+	}
+
 	area := postgres.Area{
 		Id:           uuid.New().String(),
 		CurriculumId: school.CurriculumId,
@@ -218,10 +227,12 @@ func (s *BaseTestSuite) GenerateClass(school *postgres.School) *postgres.Class {
 	return &newClass
 }
 
-func (s *BaseTestSuite) GenerateLessonPlan() (postgres.LessonPlan, string) {
+func (s *BaseTestSuite) GenerateLessonPlan(school *postgres.School) (postgres.LessonPlan, string) {
 	t := s.T()
-	material, userid := s.GenerateMaterial()
-	school := &material.Subject.Area.Curriculum.Schools[0]
+	if school == nil {
+		school = s.GenerateSchool()
+	}
+	material, userid := s.GenerateMaterial(school)
 	class := s.GenerateClass(school)
 	student := s.GenerateStudent(school)
 

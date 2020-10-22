@@ -22,7 +22,7 @@ func TestAreaTestSuite(t *testing.T) {
 
 // Not existent area should return 404
 func (s *AreaTestSuite) TestGetExistingArea() {
-	area, _ := s.GenerateArea()
+	area, _ := s.GenerateArea(nil)
 
 	userId := area.Curriculum.Schools[0].Users[0].Id
 	result := s.CreateRequest("GET", "/areas/"+area.Id, nil, &userId)
@@ -63,7 +63,7 @@ func (s *AreaTestSuite) TestCreateValidArea() {
 // Area without curriculum should fail
 func (s *AreaTestSuite) TestCreateAreaWithNoCurriculum() {
 	t := s.T()
-	area, userId := s.GenerateArea()
+	area, userId := s.GenerateArea(nil)
 
 	result := s.CreateRequest("POST", "//areas", area, &userId)
 
@@ -80,7 +80,7 @@ func (s *AreaTestSuite) TestCreateAreaWithNoName() {
 	t := s.T()
 	// Setup data
 
-	area, userId := s.GenerateArea()
+	area, userId := s.GenerateArea(nil)
 
 	// Send request
 	result := s.CreateRequest("POST", "/"+area.CurriculumId+"/areas", area, &userId)
@@ -97,7 +97,7 @@ func (s *AreaTestSuite) TestCreateAreaWithNoName() {
 
 func (s *AreaTestSuite) TestDeleteArea() {
 	t := s.T()
-	area, userId := s.GenerateArea()
+	area, userId := s.GenerateArea(nil)
 	response := s.CreateRequest("DELETE", "/areas/"+area.Id, nil, &userId)
 	assert.Equal(t, http.StatusOK, response.Code)
 	var savedArea postgres.Area
@@ -116,7 +116,7 @@ func (s *AreaTestSuite) TestDeleteUnknownArea() {
 
 func (s *AreaTestSuite) TestUpdateAreaName() {
 	t := s.T()
-	area, userId := s.GenerateArea()
+	area, userId := s.GenerateArea(nil)
 
 	payload := struct {
 		Name string `json:"name"`
@@ -137,7 +137,7 @@ func (s *AreaTestSuite) TestUpdateAreaName() {
 
 func (s *AreaTestSuite) TestUpdateInvalidAreaName() {
 	t := s.T()
-	area, userId := s.GenerateArea()
+	area, userId := s.GenerateArea(nil)
 
 	payload := struct {
 		Name string `json:"name"`
