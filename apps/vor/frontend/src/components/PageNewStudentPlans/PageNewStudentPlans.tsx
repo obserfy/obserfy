@@ -27,20 +27,15 @@ import { ReactComponent as LinkIcon } from "../../icons/link.svg"
 import Icon from "../Icon/Icon"
 import LinkInput from "../LinkInput/LinkInput"
 import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
-import { ReactComponent as CheckmarkIcon } from "../../icons/checkmark-outline.svg"
 import InformationalCard from "../InformationalCard/InformationalCard"
-import Dialog from "../Dialog/Dialog"
-import DialogHeader from "../DialogHeader/DialogHeader"
-import {
-  Student,
-  useGetAllStudents,
-} from "../../api/students/useGetAllStudents"
+import { Student } from "../../api/students/useGetAllStudents"
 import StudentPicturePlaceholder from "../StudentPicturePlaceholder/StudentPicturePlaceholder"
 import BackButton from "../BackButton/BackButton"
 import Breadcrumb from "../Breadcrumb/Breadcrumb"
 import BreadcrumbItem from "../Breadcrumb/BreadcrumbItem"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
+import StudentPickerDialog from "../StudentPickerDialog/StudentPickerDialog"
 
 interface Props {
   studentId: string
@@ -360,96 +355,5 @@ const LinkPreview: FC<{
     </Flex>
   </Card>
 )
-
-const StudentPickerDialog: FC<{
-  filteredIds: string[]
-  onDismiss: () => void
-  onAccept: (student: Student[]) => void
-}> = ({ filteredIds, onDismiss, onAccept }) => {
-  const allStudents = useGetAllStudents("", true)
-  const [search, setSearch] = useState("")
-  const [selected, setSelected] = useImmer<Student[]>([])
-
-  const unselectedStudents = allStudents.data?.filter((student) => {
-    return filteredIds.findIndex((id) => student.id === id) === -1
-  })
-
-  const matched = unselectedStudents?.filter((student) => {
-    return student.name.match(new RegExp(search, "i"))
-  })
-
-  return (
-    <Dialog>
-      <DialogHeader
-        onAcceptText={t`Add`}
-        title={t`Select Students`}
-        onCancel={onDismiss}
-        onAccept={() => {
-          onAccept(selected)
-          onDismiss()
-        }}
-        disableAccept={selected.length === 0}
-      />
-      <Box
-        pt={3}
-        sx={{
-          maxHeight: 300,
-          overflowY: "scroll",
-          WebkitOverflowScrolling: "touch",
-        }}
-      >
-        <Input
-          mx={3}
-          mb={3}
-          sx={{ backgroundColor: "background", width: "100%" }}
-          placeholder="Search student"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        {unselectedStudents?.length === 0 && (
-          <Typography.Body m={3} sx={{ width: "100%", textAlign: "center" }}>
-            <Trans>No more students to add</Trans>
-          </Typography.Body>
-        )}
-        {matched?.map((student) => {
-          const isSelected =
-            selected.findIndex(({ id }) => id === student.id) !== -1
-
-          return (
-            <Flex
-              key={student.id}
-              pl={3}
-              sx={{
-                alignItems: "center",
-                cursor: "pointer",
-                borderBottomStyle: "solid",
-                borderBottomWidth: 1,
-                borderBottomColor: "border",
-              }}
-              onClick={() => {
-                if (!isSelected) {
-                  setSelected((draft) => {
-                    draft.push(student)
-                  })
-                } else {
-                  setSelected((draft) => {
-                    return draft.filter(({ id }) => id !== student.id)
-                  })
-                }
-              }}
-            >
-              <Typography.Body p={3} sx={{ width: "100%" }}>
-                {student.name}
-              </Typography.Body>
-              {isSelected && (
-                <Icon mr={3} as={CheckmarkIcon} fill="primaryDark" />
-              )}
-            </Flex>
-          )
-        })}
-      </Box>
-    </Dialog>
-  )
-}
 
 export default PageNewStudentPlans
