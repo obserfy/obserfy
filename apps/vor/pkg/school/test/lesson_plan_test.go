@@ -14,7 +14,7 @@ import (
 func (s *SchoolTestSuite) TestGetLessonPlan() {
 	t := s.T()
 	gofakeit.Seed(time.Now().UnixNano())
-	lessonPlan, userId := s.GenerateLessonPlan()
+	lessonPlan, userId := s.GenerateLessonPlan(nil)
 
 	url := "/" + lessonPlan.LessonPlanDetails.SchoolId + "/plans?date=" + lessonPlan.Date.Format(time.RFC3339)
 	result := s.CreateRequest("GET", url, nil, &userId)
@@ -211,7 +211,7 @@ func (s *SchoolTestSuite) TestPostNewLessonPlanWithRepetition() {
 
 func (s *SchoolTestSuite) TestPostNewLessonPlanWithCurriculumData() {
 	t := s.T()
-	material, userId := s.GenerateMaterial()
+	material, userId := s.GenerateMaterial(nil)
 	area := material.Subject.Area
 	school := area.Curriculum.Schools[0]
 	class := s.GenerateClass(&school)

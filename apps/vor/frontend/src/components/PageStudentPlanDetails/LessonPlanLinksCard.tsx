@@ -1,4 +1,4 @@
-import { Button, Card, Flex } from "theme-ui"
+import { Link, Button, Card, Flex } from "theme-ui"
 import { Trans } from "@lingui/macro"
 import React, { FC, useState } from "react"
 import { Typography } from "../Typography/Typography"
@@ -37,22 +37,28 @@ const LessonPlanLinksCard: FC<{
       </Typography.Body>
     )}
     {links.map((link) => (
-      <LessonPlanLink key={link.id} link={link} lessonPlanId={planId} />
+      <LinkItem key={link.id} link={link} lessonPlanId={planId} />
     ))}
     <UrlField lessonPlanId={planId} />
   </Card>
 )
 
-const LessonPlanLink: FC<{
+const LinkItem: FC<{
   link: GetPlanResponseBody["links"][0]
   lessonPlanId: string
 }> = ({ link, lessonPlanId }) => {
   const [isLoading, setIsLoading] = useState(false)
   const [deleteLink] = useDeleteLessonPlanLink(link.id, lessonPlanId)
 
+  const handleDelete = async () => {
+    setIsLoading(true)
+    const result = await deleteLink()
+    if (!result?.ok) setIsLoading(false)
+  }
+
   return (
     <Flex my={3} mr={3} sx={{ alignItems: "center", maxHeight: "100%" }}>
-      <a
+      <Link
         href={link.url}
         target="_blank"
         rel="noopener noreferrer"
@@ -73,7 +79,7 @@ const LessonPlanLink: FC<{
         >
           {link.url}
         </Typography.Body>
-      </a>
+      </Link>
       <Button
         variant="outline"
         ml="auto"
@@ -81,13 +87,7 @@ const LessonPlanLink: FC<{
         px={2}
         backgroundColor="surface"
         sx={{ zIndex: 2, flexShrink: 0 }}
-        onClick={async () => {
-          setIsLoading(true)
-          const result = await deleteLink()
-          if (!result?.ok) {
-            setIsLoading(false)
-          }
-        }}
+        onClick={handleDelete}
         disabled={isLoading}
       >
         {isLoading ? (

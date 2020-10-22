@@ -8,11 +8,9 @@ import (
 	"time"
 )
 
-type (
-	LessonPlanStore struct {
-		*pg.DB
-	}
-)
+type LessonPlanStore struct {
+	*pg.DB
+}
 
 func (s LessonPlanStore) AddLinkToLessonPlan(id string, link domain.Link) error {
 	lessonPlan := LessonPlan{Id: id}
@@ -188,4 +186,20 @@ func (s LessonPlanStore) CheckPermission(userId string, planId string) (bool, er
 		}
 	}
 	return false, nil
+}
+
+func (s LessonPlanStore) AddRelatedStudents(planId string, studentIds []uuid.UUID) error {
+	relations := make([]LessonPlanToStudents, 0)
+	for i := range studentIds {
+		relations = append(relations, LessonPlanToStudents{
+			LessonPlanId: planId,
+			StudentId:    studentIds[i].String(),
+		})
+	}
+
+	if _, err := s.DB.Model(&relations).Insert(); err != nil {
+		return richErrors.Wrap(err, "failed to insert relations")
+	}
+
+	return nil
 }
