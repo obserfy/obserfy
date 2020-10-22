@@ -75,7 +75,7 @@ export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
           description={plan?.description}
         />
         <LessonPlanLinksCard planId={planId} links={plan?.links ?? []} />
-        <RelatedStudentsCard students={plan?.relatedStudents ?? []} />
+        <RelatedStudentsCard planId={planId} students={plan?.relatedStudents ?? []} />
         <DeleteLessonPlanButton
           planId={planId}
           title={plan?.title}
