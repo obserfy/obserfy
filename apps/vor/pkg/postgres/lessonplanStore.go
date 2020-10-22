@@ -148,8 +148,9 @@ func (s LessonPlanStore) GetLessonPlan(planId string) (*domain.LessonPlan, error
 }
 
 func (s LessonPlanStore) DeleteLessonPlan(planId string) error {
-	_, err := s.Model(&LessonPlan{Id: planId}).WherePK().Delete()
-	if err != nil {
+	if _, err := s.Model(&LessonPlan{Id: planId}).
+		WherePK().
+		Delete(); err != nil {
 		return richErrors.Wrap(err, "failed to delete lesson plan")
 	}
 	return nil
@@ -188,7 +189,7 @@ func (s LessonPlanStore) CheckPermission(userId string, planId string) (bool, er
 	return false, nil
 }
 
-func (s LessonPlanStore) AddRelatedStudents(planId string, studentIds []uuid.UUID) error {
+func (s LessonPlanStore) AddRelatedStudents(planId string, studentIds []uuid.UUID) ([]domain.Student, error) {
 	relations := make([]LessonPlanToStudents, 0)
 	for i := range studentIds {
 		relations = append(relations, LessonPlanToStudents{
@@ -198,10 +199,30 @@ func (s LessonPlanStore) AddRelatedStudents(planId string, studentIds []uuid.UUI
 	}
 
 	if _, err := s.DB.Model(&relations).Insert(); err != nil {
-		return richErrors.Wrap(err, "failed to insert relations")
+		return []domain.Student{}, richErrors.Wrap(err, "failed to insert relations")
 	}
 
-	return nil
+	lessonPlan := LessonPlan{Id: planId}
+	if err := s.Model(&lessonPlan).
+		Relation("Students").
+		Relation("Students.ProfileImage").
+		WherePK().
+		Select(); err != nil {
+		return []domain.Student{}, richErrors.Wrap(err, "failed to delete lesson plan")
+	}
+	students := make([]domain.Student, 0)
+	for _, s := range lessonPlan.Students {
+		students = append(students, domain.Student{
+			Id:   s.Id,
+			Name: s.Name,
+			ProfileImage: domain.Image{
+				Id:        s.ProfileImage.Id,
+				ObjectKey: s.ProfileImage.ObjectKey,
+				CreatedAt: s.ProfileImage.CreatedAt,
+			},
+		})
+	}
+	return students, nil
 }
 
 func (s LessonPlanStore) DeleteRelatedStudent(planId string, studentId string) error {

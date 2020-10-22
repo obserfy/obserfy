@@ -31,7 +31,7 @@ type Store interface {
 	DeleteLessonPlanFile(planId, fileId string) error
 	AddLinkToLessonPlan(planId string, link domain.Link) error
 	CheckPermission(userId string, planId string) (bool, error)
-	AddRelatedStudents(planId string, studentIds []uuid.UUID) error
+	AddRelatedStudents(planId string, studentIds []uuid.UUID) ([]domain.Student, error)
 	DeleteRelatedStudent(planId string, studentId string) error
 }
 
@@ -131,9 +131,9 @@ func postLink(server rest.Server, store Store) http.Handler {
 
 func getLessonPlan(server rest.Server, store Store) http.Handler {
 	type student struct {
-		Id                string `json:"id"`
-		Name              string `json:"name"`
-		ProfilePictureUrl string `json:"profilePictureUrl,omitempty"`
+		Id              string `json:"id"`
+		Name            string `json:"name"`
+		ProfileImageUrl string `json:"profileImageUrl,omitempty"`
 	}
 	type link struct {
 		Id          uuid.UUID `json:"id"`
@@ -189,7 +189,7 @@ func getLessonPlan(server rest.Server, store Store) http.Handler {
 				Name: s.Name,
 			}
 			if s.ProfileImage.ObjectKey != "" {
-				item.ProfilePictureUrl = imgproxy.GenerateUrl(s.ProfileImage.ObjectKey, 32, 32)
+				item.ProfileImageUrl = imgproxy.GenerateUrl(s.ProfileImage.ObjectKey, 32, 32)
 			}
 			response.RelatedStudents = append(response.RelatedStudents, item)
 		}
@@ -311,6 +311,11 @@ func postNewRelatedStudents(s rest.Server, store Store) http.Handler {
 	type requestBody struct {
 		StudentIds []uuid.UUID `json:"studentIds"`
 	}
+	type student struct {
+		Id              string `json:"id"`
+		Name            string `json:"name"`
+		ProfileImageUrl string `json:"profileImageUrl,omitempty"`
+	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		planId := chi.URLParam(r, "planId")
 
@@ -319,10 +324,26 @@ func postNewRelatedStudents(s rest.Server, store Store) http.Handler {
 			return rest.NewParseJsonError(err)
 		}
 
-		if err := store.AddRelatedStudents(planId, body.StudentIds); err != nil {
+		relatedStudents, err := store.AddRelatedStudents(planId, body.StudentIds)
+		if err != nil {
 			return rest.NewInternalServerError(err, "failed to save lesson plan related student to DB")
 		}
 
+		response := make([]student, 0)
+		for _, s := range relatedStudents {
+			newStudent := student{
+				Id:   s.Id,
+				Name: s.Name,
+			}
+			if s.ProfileImage.ObjectKey != "" {
+				newStudent.ProfileImageUrl = imgproxy.GenerateUrl(s.ProfileImage.ObjectKey, 32, 32)
+			}
+			response = append(response, newStudent)
+		}
+
+		if err := rest.WriteJson(w, &response); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
 		w.WriteHeader(http.StatusCreated)
 		return nil
 	})
