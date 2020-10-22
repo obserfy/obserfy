@@ -9,12 +9,14 @@ import {
 } from "@reach/router"
 import { I18nProvider } from "@lingui/react"
 import { setupI18n } from "@lingui/core"
+import { en } from "make-plural/plurals"
 import Theme from "./gatsby-plugin-theme-ui"
 import enCatalog from "../i18n/lingui/en/messages.js"
 
 const i18n = setupI18n()
 // any used here because the catalogs are generated b lingui
 // not our responsibility
+i18n.loadLocaleData("en", { plurals: en })
 i18n.load("en", enCatalog.messages as any)
 i18n.activate("en")
 

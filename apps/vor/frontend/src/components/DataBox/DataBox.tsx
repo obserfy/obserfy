@@ -7,11 +7,15 @@ import { ReactComponent as EditIcon } from "../../icons/edit.svg"
 
 export interface DataBoxProps {
   label: string
-  value: string
+  value?: string
   onEditClick?: () => void
   isEditing?: boolean
 }
-export const DataBox: FC<DataBoxProps> = ({ label, value, onEditClick }) => (
+export const DataBox: FC<DataBoxProps> = ({
+  label,
+  value = "",
+  onEditClick,
+}) => (
   <Flex px={3} py={3} sx={{ alignItems: "flex-start" }}>
     <Box>
       <Typography.Body
