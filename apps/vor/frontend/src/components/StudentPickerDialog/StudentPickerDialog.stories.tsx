@@ -1,6 +1,8 @@
 import React from "react"
 import { Meta, Story } from "@storybook/react"
-import StudentPickerDialog, { StudentPickerDialogProps } from "./StudentPickerDialog"
+import StudentPickerDialog, {
+  StudentPickerDialogProps,
+} from "./StudentPickerDialog"
 
 export default {
   title: "Core/StudentPickerDialog",
@@ -10,7 +12,9 @@ export default {
   },
 } as Meta
 
-const Template: Story<StudentPickerDialogProps> = (args) => <StudentPickerDialog {...args} />
+const Template: Story<StudentPickerDialogProps> = (args) => (
+  <StudentPickerDialog {...args} />
+)
 
 export const Default = Template.bind({})
 Default.args = {}
