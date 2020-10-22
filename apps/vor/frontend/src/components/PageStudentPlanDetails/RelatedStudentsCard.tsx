@@ -17,8 +17,9 @@ interface Student {
 }
 const RelatedStudentsCard: FC<{
   planId: string
+  studentId: string
   students: Student[]
-}> = ({ planId, students }) => {
+}> = ({ planId, students, studentId }) => {
   const dialog = useVisibilityState()
   const [postNewRelatedStudent] = usePostNewRelatedStudents(planId)
 
@@ -29,12 +30,24 @@ const RelatedStudentsCard: FC<{
     await postNewRelatedStudent(payload)
   }
 
+  const otherStudents = students.filter(({ id }) => id !== studentId)
+
   return (
     <Card p={3} sx={{ borderRadius: [0, "default"] }}>
-      <Typography.Body color="textMediumEmphasis">
-        <Trans>Related Students</Trans>
-      </Typography.Body>
-      {students.map(({ name, profileImageUrl, id }) => (
+      <Flex>
+        <Typography.Body color="textMediumEmphasis">
+          <Trans>Other Related Students</Trans>
+        </Typography.Body>
+        <Button
+          variant="outline"
+          ml="auto"
+          sx={{ color: "textMediumEmphasis", fontSize: 1 }}
+          onClick={dialog.show}
+        >
+          <Trans>Add More</Trans>
+        </Button>
+      </Flex>
+      {otherStudents.map(({ name, profileImageUrl, id }) => (
         <StudentListItem
           key={id}
           studentId={id}
@@ -43,15 +56,12 @@ const RelatedStudentsCard: FC<{
           profilePictureUrl={profileImageUrl}
         />
       ))}
-      <Button
-        variant="outline"
-        ml="auto"
-        sx={{ color: "textMediumEmphasis" }}
-        onClick={dialog.show}
-        mt={2}
-      >
-        <Trans>Add More</Trans>
-      </Button>
+      {otherStudents.length === 0 && (
+        <Typography.Body py={4} sx={{ textAlign: "center" }}>
+          <Trans>No other students added yet.</Trans>
+        </Typography.Body>
+      )}
+
       {dialog.visible && (
         <StudentPickerDialog
           filteredIds={students.map(({ id }) => id)}
