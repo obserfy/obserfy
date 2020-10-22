@@ -15,6 +15,11 @@ export interface GetPlanResponseBody {
     description?: string
     image?: string
   }>
+  relatedStudents: Array<{
+    id: string
+    name: string
+    profilePictureUrl?: string
+  }>
 }
 const useGetPlan = (id: string) => {
   const getPlan = getApi<GetPlanResponseBody>(`/plans/${id}`)

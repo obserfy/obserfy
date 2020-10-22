@@ -99,6 +99,7 @@ func (s LessonPlanStore) GetLessonPlan(planId string) (*domain.LessonPlan, error
 	var plan LessonPlan
 	err := s.Model(&plan).
 		Relation("Students").
+		Relation("Students.ProfileImage").
 		Relation("LessonPlanDetails").
 		Relation("LessonPlanDetails.Links").
 		//Relation("Users").
