@@ -1,10 +1,9 @@
 import { Trans } from "@lingui/macro"
 import React, { FC } from "react"
-import { Image, Button, Card, Flex } from "theme-ui"
+import { Button, Card, Flex, Image } from "theme-ui"
 import { Typography } from "../Typography/Typography"
 import StudentPicturePlaceholder from "../StudentPicturePlaceholder/StudentPicturePlaceholder"
 import Icon from "../Icon/Icon"
-import { ReactComponent as EditIcon } from "../../icons/edit.svg"
 import StudentPickerDialog from "../StudentPickerDialog/StudentPickerDialog"
 import useVisibilityState from "../../hooks/useVisibilityState"
 import useDeleteRelatedStudent from "../../api/plans/useDeleteRelatedStudent"
@@ -14,7 +13,7 @@ import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
 interface Student {
   id: string
   name: string
-  profilePictureUrl?: string
+  profileImageUrl?: string
 }
 const RelatedStudentsCard: FC<{
   planId: string
@@ -35,25 +34,23 @@ const RelatedStudentsCard: FC<{
       <Typography.Body color="textMediumEmphasis">
         <Trans>Related Students</Trans>
       </Typography.Body>
-      {students.map(({ name, profilePictureUrl, id }) => (
+      {students.map(({ name, profileImageUrl, id }) => (
         <StudentListItem
           key={id}
           studentId={id}
           planId={planId}
           name={name}
-          profilePictureUrl={profilePictureUrl}
+          profilePictureUrl={profileImageUrl}
         />
       ))}
       <Button
         variant="outline"
         ml="auto"
-        px={2}
         sx={{ color: "textMediumEmphasis" }}
         onClick={dialog.show}
-        mt={3}
+        mt={2}
       >
-        <Icon as={EditIcon} mr={2} />
-        <Trans>Edit</Trans>
+        <Trans>Add More</Trans>
       </Button>
       {dialog.visible && (
         <StudentPickerDialog

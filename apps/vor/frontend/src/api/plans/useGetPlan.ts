@@ -18,7 +18,7 @@ export interface GetPlanResponseBody {
   relatedStudents: Array<{
     id: string
     name: string
-    profilePictureUrl?: string
+    profileImageUrl?: string
   }>
 }
 const useGetPlan = (id: string) => {
