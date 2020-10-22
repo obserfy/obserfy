@@ -27,15 +27,24 @@ const StudentPickerDialog: FC<StudentPickerDialogProps> = ({
 }) => {
   const { data: students } = useGetAllStudents("", true)
   const [search, setSearch] = useInputState("")
-  const [selected, setSelected] = useImmer<Student[]>([])
+  const [result, setResult] = useImmer<Student[]>([])
 
-  const unselectedStudents = students?.filter(
-    (student) => filteredIds.findIndex((id) => student.id === id) === -1
+  const unselectedStudents =
+    students?.filter(({ id }) => !filteredIds.find((item) => id === item)) ?? []
+
+  const matched = unselectedStudents.filter(({ name }) =>
+    name.match(new RegExp(search, "i"))
   )
 
-  const matched = unselectedStudents?.filter((student) =>
-    student.name.match(new RegExp(search, "i"))
-  )
+  const addStudent = (student: Student) => {
+    setResult((draft) => {
+      draft.push(student)
+    })
+  }
+
+  const removeStudent = (id: string) => {
+    setResult((draft) => draft.filter((item) => item.id !== id))
+  }
 
   return (
     <Dialog>
@@ -44,16 +53,16 @@ const StudentPickerDialog: FC<StudentPickerDialogProps> = ({
         title={t`Select Students`}
         onCancel={onDismiss}
         onAccept={() => {
-          onAccept(selected)
+          onAccept(result)
           onDismiss()
         }}
-        disableAccept={selected.length === 0}
+        disableAccept={result.length === 0}
       />
       <Box
         pt={3}
         sx={{
           maxHeight: 300,
-          overflowY: "scroll",
+          overflowY: "auto",
           WebkitOverflowScrolling: "touch",
         }}
       >
@@ -65,44 +74,48 @@ const StudentPickerDialog: FC<StudentPickerDialogProps> = ({
           value={search}
           onChange={setSearch}
         />
-        {unselectedStudents?.length === 0 && (
-          <Typography.Body m={3} sx={{ width: "100%", textAlign: "center" }}>
+        {unselectedStudents.length === 0 && (
+          <Typography.Body py={4} sx={{ width: "100%", textAlign: "center" }}>
             <Trans>No more students to add</Trans>
           </Typography.Body>
         )}
-        {matched?.map((student) => {
-          const isSelected =
-            selected.findIndex(({ id }) => id === student.id) !== -1
+        {matched.map((student) => {
+          const selected = result.find(({ id }) => id === student.id)
+
+          const toggleStudent = () => {
+            if (!selected) addStudent(student)
+            else removeStudent(student.id)
+          }
 
           return (
-            <Flex
+            <StudentItem
               key={student.id}
-              pl={3}
-              sx={{ ...borderBottom, alignItems: "center", cursor: "pointer" }}
-              onClick={() => {
-                if (!isSelected) {
-                  setSelected((draft) => {
-                    draft.push(student)
-                  })
-                } else {
-                  setSelected((draft) =>
-                    draft.filter(({ id }) => id !== student.id)
-                  )
-                }
-              }}
-            >
-              <Typography.Body p={3} sx={{ width: "100%" }}>
-                {student.name}
-              </Typography.Body>
-              {isSelected && (
-                <Icon mr={3} as={CheckmarkIcon} fill="primaryDark" />
-              )}
-            </Flex>
+              isSelected={selected !== undefined}
+              name={student.name}
+              onClick={toggleStudent}
+            />
           )
         })}
       </Box>
     </Dialog>
   )
 }
+
+const StudentItem: FC<{
+  name: string
+  isSelected: boolean
+  onClick: () => void
+}> = ({ name, isSelected, onClick }) => (
+  <Flex
+    pl={3}
+    sx={{ ...borderBottom, alignItems: "center", cursor: "pointer" }}
+    onClick={onClick}
+  >
+    <Typography.Body p={3} sx={{ width: "100%" }}>
+      {name}
+    </Typography.Body>
+    {isSelected && <Icon mr={3} as={CheckmarkIcon} fill="primaryDark" />}
+  </Flex>
+)
 
 export default StudentPickerDialog
