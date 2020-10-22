@@ -127,7 +127,7 @@ func getLessonPlan(server rest.Server, store Store) http.Handler {
 	type student struct {
 		Id                string `json:"id"`
 		Name              string `json:"name"`
-		ProfilePictureUrl string `json:"profilePictureUrl"`
+		ProfilePictureUrl string `json:"profilePictureUrl,omitempty"`
 	}
 	type link struct {
 		Id          uuid.UUID `json:"id"`
@@ -178,11 +178,14 @@ func getLessonPlan(server rest.Server, store Store) http.Handler {
 			})
 		}
 		for _, s := range plan.Students {
-			response.RelatedStudents = append(response.RelatedStudents, student{
-				Id:                s.Id,
-				Name:              s.Name,
-				ProfilePictureUrl: imgproxy.GenerateUrl(s.ProfileImage.ObjectKey, 40, 40),
-			})
+			item := student{
+				Id:   s.Id,
+				Name: s.Name,
+			}
+			if s.ProfileImage.ObjectKey != "" {
+				item.ProfilePictureUrl = imgproxy.GenerateUrl(s.ProfileImage.ObjectKey, 32, 32)
+			}
+			response.RelatedStudents = append(response.RelatedStudents, item)
 		}
 		if err := rest.WriteJson(w, response); err != nil {
 			return rest.NewWriteJsonError(err)

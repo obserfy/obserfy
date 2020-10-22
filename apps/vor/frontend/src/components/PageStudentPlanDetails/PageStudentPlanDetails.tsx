@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { FC, Fragment, useState } from "react"
-import { Box, Button, Card, Flex, jsx } from "theme-ui"
+import { Image, Box, Button, Card, Flex, jsx } from "theme-ui"
 import { t, Trans } from "@lingui/macro"
 import { useLingui } from "@lingui/react"
 import useGetPlan, { GetPlanResponseBody } from "../../api/plans/useGetPlan"
@@ -34,41 +34,38 @@ import { useGetStudent } from "../../api/useGetStudent"
 import MultilineDataBox from "../MultilineDataBox/MultilineDataBox"
 import DataBox from "../DataBox/DataBox"
 import TopBar from "../TopBar/TopBar"
+import StudentPicturePlaceholder from "../StudentPicturePlaceholder/StudentPicturePlaceholder"
 
 interface Props {
   studentId: string
   planId: string
 }
 export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
-  const plan = useGetPlan(planId)
+  const { data: plan, isLoading: isLoadingPlan } = useGetPlan(planId)
   const student = useGetStudent(studentId)
   const [deletePlan] = useDeletePlan(planId)
   const [showDeleteDialog, setShowDeleteDialog] = useState(false)
 
-  const topBar = (
-    <TopBar
-      breadcrumbs={[
-        {
-          text: t`Students`,
-          to: STUDENTS_URL,
-        },
-        {
-          text: student.data?.name.split(" ")[0] ?? "",
-          to: STUDENT_OVERVIEW_PAGE_URL(studentId),
-        },
-        {
-          text: t`Plans`,
-          to: STUDENT_PLANS_URL(studentId, dayjs(plan.data?.date)),
-        },
-        { text: t`Details` },
-      ]}
-    />
-  )
+  const breadcrumbs = [
+    {
+      text: t`Students`,
+      to: STUDENTS_URL,
+    },
+    {
+      text: student.data?.name.split(" ")[0] ?? "",
+      to: STUDENT_OVERVIEW_PAGE_URL(studentId),
+    },
+    {
+      text: t`Plans`,
+      to: STUDENT_PLANS_URL(studentId, dayjs(plan?.date)),
+    },
+    { text: t`Details` },
+  ]
 
-  if (plan.isLoading) {
+  if (isLoadingPlan) {
     return (
       <Box sx={{ maxWidth: "maxWidth.sm" }} pb={3} mx="auto">
-        {topBar}
+        <TopBar breadcrumbs={breadcrumbs} />
         <LoadingPlaceholder sx={{ width: "100%", height: 213 }} mb={3} />
         <LoadingPlaceholder sx={{ width: "100%", height: 129 }} mb={3} />
         <LoadingPlaceholder sx={{ width: "100%", height: 140 }} mb={3} />
@@ -79,19 +76,18 @@ export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
   return (
     <Fragment>
       <Box sx={{ maxWidth: "maxWidth.sm" }} pb={3} mx="auto">
-        {topBar}
+        <TopBar breadcrumbs={breadcrumbs} />
         <Card mb={3} sx={{ borderRadius: [0, "default"] }}>
-          <DateDataBox value={plan.data?.date} lessonPlanId={planId} />
-          <AreaDataBox value={plan.data?.areaId} lessonPlanId={planId} />
-          <TitleDataBox value={plan.data?.title} lessonPlanId={planId} />
+          <DateDataBox value={plan?.date} lessonPlanId={planId} />
+          <AreaDataBox value={plan?.areaId} lessonPlanId={planId} />
+          <TitleDataBox value={plan?.title} lessonPlanId={planId} />
         </Card>
+
         <Card mb={3} sx={{ borderRadius: [0, "default"] }}>
-          <DescriptionDataBox
-            value={plan.data?.description}
-            lessonPlanId={planId}
-          />
+          <DescriptionDataBox value={plan?.description} lessonPlanId={planId} />
         </Card>
-        <Card sx={{ borderRadius: [0, "default"] }}>
+
+        <Card sx={{ borderRadius: [0, "default"] }} mb={3}>
           <Typography.Body
             mt={3}
             mx={3}
@@ -101,16 +97,36 @@ export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
           >
             <Trans>Links</Trans>
           </Typography.Body>
-          {(plan.data?.links?.length ?? 0) === 0 && (
+          {plan?.links && plan.links.length === 0 && (
             <Typography.Body m={3}>
               <Trans>No links attached yet</Trans>
             </Typography.Body>
           )}
-          {plan.data?.links?.map((link) => (
+          {plan?.links?.map((link) => (
             <LessonPlanLink key={link.id} link={link} lessonPlanId={planId} />
           ))}
           <UrlField lessonPlanId={planId} />
         </Card>
+
+        <Card p={3} sx={{ borderRadius: [0, "default"] }}>
+          <Typography.Body color="textMediumEmphasis">
+            <Trans>Related Students</Trans>
+          </Typography.Body>
+          {plan?.relatedStudents.map(({ name, profilePictureUrl, id }) => (
+            <Flex key={id} sx={{ alignItems: "center" }} mt={3}>
+              {profilePictureUrl ? (
+                <Image
+                  src={profilePictureUrl}
+                  sx={{ borderRadius: "circle" }}
+                />
+              ) : (
+                <StudentPicturePlaceholder />
+              )}
+              <Box ml={3}>{name}</Box>
+            </Flex>
+          ))}
+        </Card>
+
         <Button
           variant="outline"
           my={3}
@@ -127,14 +143,12 @@ export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
         <AlertDialog
           title={t`Delete plan?`}
           positiveText={t`Delete`}
-          body={t`Are you sure you want to delete ${plan.data?.title}?`}
+          body={t`Are you sure you want to delete ${plan?.title}?`}
           onNegativeClick={() => setShowDeleteDialog(false)}
           onPositiveClick={async () => {
             const result = await deletePlan()
             if (result?.ok) {
-              await navigate(
-                STUDENT_PLANS_URL(studentId, dayjs(plan.data?.date))
-              )
+              await navigate(STUDENT_PLANS_URL(studentId, dayjs(plan?.date)))
             }
           }}
         />
