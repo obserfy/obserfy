@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react"
+import React, { FC } from "react"
 import { Box, Button } from "theme-ui"
 import { t, Trans } from "@lingui/macro"
 import useGetPlan from "../../api/plans/useGetPlan"
@@ -20,6 +20,7 @@ import LessonPlanDescriptionCard from "./LessonPlanDescriptionCard"
 import Icon from "../Icon/Icon"
 import AlertDialog from "../AlertDialog/AlertDialog"
 import { navigate } from "../Link/Link"
+import useVisibilityState from "../../hooks/useVisibilityState"
 
 interface Props {
   studentId: string
@@ -91,11 +92,7 @@ const DeleteLessonPlanButton: FC<{
   onDeleted: () => void
 }> = ({ planId, title, onDeleted }) => {
   const [deletePlan] = useDeletePlan(planId)
-  const [dialogVisible, setDialogVisible] = useState(false)
-
-  const showDialog = () => setDialogVisible(true)
-
-  const hideDialog = () => setDialogVisible(false)
+  const dialog = useVisibilityState()
 
   const handleDelete = async () => {
     const result = await deletePlan()
@@ -109,18 +106,18 @@ const DeleteLessonPlanButton: FC<{
         my={3}
         mr={[3, 0]}
         ml="auto"
-        onClick={showDialog}
+        onClick={dialog.show}
         color="danger"
       >
         <Icon as={TrashIcon} mr={2} fill="danger" />
         <Trans>Delete</Trans>
       </Button>
-      {dialogVisible && (
+      {dialog.visible && (
         <AlertDialog
           title={t`Delete plan?`}
           positiveText={t`Delete`}
           body={t`Are you sure you want to delete ${title}?`}
-          onNegativeClick={hideDialog}
+          onNegativeClick={dialog.hide}
           onPositiveClick={handleDelete}
         />
       )}
