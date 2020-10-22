@@ -203,3 +203,16 @@ func (s LessonPlanStore) AddRelatedStudents(planId string, studentIds []uuid.UUI
 
 	return nil
 }
+
+func (s LessonPlanStore) DeleteRelatedStudent(planId string, studentId string) error {
+	relation := LessonPlanToStudents{
+		LessonPlanId: planId,
+		StudentId:    studentId,
+	}
+
+	if _, err := s.DB.Model(&relation).Where("lesson_plan_id=?lesson_plan_id AND student_id=?student_id").Delete(); err != nil {
+		return richErrors.Wrap(err, "failed to delete relations")
+	}
+
+	return nil
+}
