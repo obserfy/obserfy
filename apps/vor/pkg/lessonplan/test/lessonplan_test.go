@@ -150,7 +150,7 @@ func (s *LessonPlansTestSuite) TestPostNewLinks() {
 	assert.Len(t, updatedLessonPlan.LessonPlanDetails.Links, 2)
 }
 
-func (s *LessonPlansTestSuite) TestPostNewLessonPlan() {
+func (s *LessonPlansTestSuite) TestPostNewLessonPlanRelatedStudent() {
 	t := s.T()
 	school := s.GenerateSchool()
 	lessonPlan, userId := s.GenerateLessonPlan(school)
@@ -180,6 +180,26 @@ func (s *LessonPlansTestSuite) TestPostNewLessonPlan() {
 		Select()
 	assert.NoError(t, err)
 	assert.Equal(t, len(students)+1, len(updatedLessonPlan.Students))
+}
+
+func (s *LessonPlansTestSuite) TestDeleteLessonPlanRelatedStudent() {
+	t := s.T()
+	school := s.GenerateSchool()
+	lessonPlan, userId := s.GenerateLessonPlan(school)
+	gofakeit.Seed(time.Now().UnixNano())
+
+	result := s.CreateRequest("DELETE", "/"+lessonPlan.Id+"/students/"+lessonPlan.Students[0].Id, nil, &userId)
+	assert.Equal(t, http.StatusOK, result.Code)
+
+	updatedLessonPlan := postgres.LessonPlan{Id: lessonPlan.Id}
+	err := s.DB.Model(&updatedLessonPlan).
+		Relation("Students").
+		Relation("LessonPlanDetails").
+		Relation("LessonPlanDetails.Links").
+		WherePK().
+		Select()
+	assert.NoError(t, err)
+	assert.Equal(t, 0, len(updatedLessonPlan.Students))
 }
 
 func randomDatePointer() *time.Time {

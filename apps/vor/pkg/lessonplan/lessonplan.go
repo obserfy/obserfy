@@ -32,6 +32,7 @@ type Store interface {
 	AddLinkToLessonPlan(planId string, link domain.Link) error
 	CheckPermission(userId string, planId string) (bool, error)
 	AddRelatedStudents(planId string, studentIds []uuid.UUID) error
+	DeleteRelatedStudent(planId string, studentId string) error
 }
 
 func NewRouter(server rest.Server, store Store) *chi.Mux {
@@ -329,6 +330,14 @@ func postNewRelatedStudents(s rest.Server, store Store) http.Handler {
 
 func deleteRelatedStudent(s rest.Server, store Store) http.Handler {
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		planId := chi.URLParam(r, "planId")
+		studentId := chi.URLParam(r, "studentId")
+
+		if err := store.DeleteRelatedStudent(planId, studentId); err != nil {
+			return rest.NewInternalServerError(err, "failed to delete lesson plan related student to DB")
+		}
+
+		w.WriteHeader(http.StatusOK)
 		return nil
 	})
 }
