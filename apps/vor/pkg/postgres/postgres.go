@@ -34,7 +34,7 @@ func Connect(user string, password string, addr string, tlsConfig *tls.Config) *
 	return db
 }
 
-func InitTables(db *pg.DB) error {
+func InitTables(db *pg.Tx) error {
 	_, err := db.Exec("CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\"")
 	if err != nil {
 		return richErrors.Wrap(err, "failed to create extension")
