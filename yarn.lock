@@ -19324,7 +19324,7 @@ fsevents@^1.2.7:
     img-loader: 3.0.2
     lqip-loader: 2.2.1
     minio: 7.0.16
-    nanoid: 3.1.13
+    nanoid: 3.1.14
     next: 9.5.5
     next-compose-plugins: 2.2.0
     next-optimized-images: 3.0.0-canary.10
@@ -27023,12 +27023,12 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"nanoid@npm:3.1.13":
-  version: 3.1.13
-  resolution: "nanoid@npm:3.1.13"
+"nanoid@npm:3.1.14":
+  version: 3.1.14
+  resolution: "nanoid@npm:3.1.14"
   bin:
     nanoid: bin/nanoid.cjs
-  checksum: bec26d5c3226e5d32ee7a0aa1df5b148d40ce8200626772992d5827f448c35daf65d719e4bf0475dccd9e715121e8ae1152bfb28b21b3f43f603597902978add
+  checksum: 8d372069a029a49be6a87e1229458ca701c82b1e133a549d4a6a42282e5d42b03eedfb4796f020a444a53840bfee2e20f62c66c72a7358cf64384b3c4f93640f
   languageName: node
   linkType: hard
 
@@ -37601,7 +37601,7 @@ resolve@^1.18.1:
     jest-emotion: 10.0.32
     jest-fetch-mock: 3.0.3
     make-plural: 6.2.2
-    nanoid: 3.1.13
+    nanoid: 3.1.14
     npm-run-all: 4.1.5
     preact: 10.5.5
     preact-render-to-string: 5.1.11
