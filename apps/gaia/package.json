@@ -24,7 +24,7 @@
     "@types/segment-analytics": "0.0.32",
     "@types/uuid": "8.3.0",
     "body-scroll-lock": "3.1.5",
-    "dayjs": "1.9.3",
+    "dayjs": "1.9.4",
     "file-loader": "6.1.1",
     "formidable-serverless": "1.0.3",
     "imagemin": "7.0.1",

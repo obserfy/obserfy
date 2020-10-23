@@ -3668,7 +3668,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "dayjs",
-        "npm:1.9.3"
+        "npm:1.9.4"
       ],
       [
         "de-indent",
@@ -34372,10 +34372,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["dayjs", [
-        ["npm:1.9.3", {
-          "packageLocation": "./.yarn/cache/dayjs-npm-1.9.3-815905a9f5-883f5e2734.zip/node_modules/dayjs/",
+        ["npm:1.9.4", {
+          "packageLocation": "./.yarn/cache/dayjs-npm-1.9.4-db527bbd3e-ee3031a7ae.zip/node_modules/dayjs/",
           "packageDependencies": [
-            ["dayjs", "npm:1.9.3"]
+            ["dayjs", "npm:1.9.4"]
           ],
           "linkType": "HARD",
         }]
@@ -38617,7 +38617,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@typescript-eslint/eslint-plugin", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:4.5.0"],
             ["@typescript-eslint/parser", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:4.5.0"],
             ["body-scroll-lock", "npm:3.1.5"],
-            ["dayjs", "npm:1.9.3"],
+            ["dayjs", "npm:1.9.4"],
             ["eslint", "npm:7.11.0"],
             ["eslint-config-airbnb-typescript", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:12.0.0"],
             ["eslint-config-prettier", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:6.13.0"],
@@ -59809,7 +59809,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["body-scroll-lock", "npm:3.1.5"],
             ["chromatic", "npm:5.2.0"],
             ["cross-env", "npm:7.0.2"],
-            ["dayjs", "npm:1.9.3"],
+            ["dayjs", "npm:1.9.4"],
             ["dotenv", "npm:8.2.0"],
             ["eslint", "npm:7.11.0"],
             ["eslint-config-airbnb-typescript", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:12.0.0"],
