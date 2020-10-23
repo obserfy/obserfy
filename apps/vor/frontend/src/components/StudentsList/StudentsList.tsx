@@ -2,7 +2,7 @@
 import { FC, Fragment, useState } from "react"
 import { Box, Button, Card, Flex, Image, jsx } from "theme-ui"
 import { useLingui } from "@lingui/react"
-import { t } from "@lingui/macro"
+import { t, Trans } from "@lingui/macro"
 import { useGetAllStudents } from "../../api/students/useGetAllStudents"
 import useGetSchoolClasses from "../../api/classes/useGetSchoolClasses"
 import { Link } from "../Link/Link"
@@ -97,11 +97,13 @@ export const StudentsList: FC = () => {
       {students.isError && (
         <Fragment>
           <Typography.Body sx={{ textAlign: "center" }} mx={4} mb={3}>
-            Oops, we fail to fetch new student data. Please try again in a
-            minute.
+            <Trans>
+              Oops, we fail to fetch new student data. Please try again in a
+              minute.
+            </Trans>
           </Typography.Body>
           <Button mx="auto" onClick={() => students.refetch}>
-            Try again
+            <Trans>Try again</Trans>
           </Button>
         </Fragment>
       )}
@@ -112,7 +114,9 @@ export const StudentsList: FC = () => {
 const EmptySearchResultPlaceholder: FC<{ term: string }> = ({ term }) => (
   <Flex m={3}>
     <Typography.H6 sx={{ textAlign: "center", maxWidth: "80vw" }}>
-      The term <i>&quot;{term}&quot;</i> does not match any student
+      <Trans>
+        The term <i>&quot;{term}&quot;</i> does not match any student
+      </Trans>
     </Typography.H6>
   </Flex>
 )
@@ -130,12 +134,12 @@ const NoStudentPlaceholder: FC = () => (
       }}
     >
       <Typography.Body mb={4} mt={3} sx={{ textAlign: "center" }}>
-        You have no student enrolled
+        <Trans>You have no student enrolled</Trans>
       </Typography.Body>
       <Link to={NEW_STUDENT_URL} data-cy="new-student-button">
         <Button variant="outline">
           <Icon as={PlusIcon} mr={2} />
-          New Student
+          <Trans>New Student</Trans>
         </Button>
       </Link>
     </Flex>

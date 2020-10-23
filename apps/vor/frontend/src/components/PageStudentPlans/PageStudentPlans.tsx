@@ -103,34 +103,30 @@ export const PageStudentPlans: FC<Props> = ({ studentId, date }) => {
           <Trans>Today</Trans>
         </Button>
       </Flex>
-      {data?.map((plan) => {
-        return (
-          <Link
-            to={STUDENT_PLANS_DETAILS_URL(studentId, plan.id)}
-            sx={{ display: "block", mx: [0, 3], mb: [0, 2] }}
-          >
-            <Card px={3} py={2} sx={{ borderRadius: [0, "default"] }}>
-              <Typography.Body>{plan.title}</Typography.Body>
+      {data?.map((plan) => (
+        <Link
+          to={STUDENT_PLANS_DETAILS_URL(studentId, plan.id)}
+          sx={{ display: "block", mb: [0, 2] }}
+        >
+          <Card px={3} py={2} sx={{ borderRadius: [0, "default"] }}>
+            <Typography.Body>{plan.title}</Typography.Body>
+            <Typography.Body sx={{ fontSize: 1, color: "textMediumEmphasis" }}>
+              {plan.area ? plan.area.name : "Other"}
+            </Typography.Body>
+            {plan.user?.name && (
               <Typography.Body
-                sx={{ fontSize: 1, color: "textMediumEmphasis" }}
+                sx={{ fontSize: 0, color: "textMediumEmphasis" }}
+                mt={2}
               >
-                {plan.area ? plan.area.name : "Other"}
+                <Trans>Created by</Trans> {plan.user.name.split(" ")[0]}
               </Typography.Body>
-              {plan.user?.name && (
-                <Typography.Body
-                  sx={{ fontSize: 0, color: "textMediumEmphasis" }}
-                  mt={2}
-                >
-                  <Trans>Created by</Trans> {plan.user.name.split(" ")[0]}
-                </Typography.Body>
-              )}
-            </Card>
-          </Link>
-        )
-      })}
+            )}
+          </Card>
+        </Link>
+      ))}
       <Link
         to={NEW_STUDENT_PLANS_URL(studentId, selectedDate)}
-        sx={{ display: "block", m: 3 }}
+        sx={{ display: "block", my: 3, mr: [3, 0] }}
       >
         <Button variant="outline" sx={{ ml: "auto" }}>
           <Icon as={PlusIcon} mr={2} fill="onBackground" />

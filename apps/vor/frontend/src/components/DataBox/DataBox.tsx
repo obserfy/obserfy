@@ -1,16 +1,21 @@
 import React, { FC } from "react"
 import { Box, Button, Flex } from "theme-ui"
+import { Trans } from "@lingui/macro"
 import Typography from "../Typography/Typography"
 import Icon from "../Icon/Icon"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
 
 export interface DataBoxProps {
   label: string
-  value: string
+  value?: string
   onEditClick?: () => void
   isEditing?: boolean
 }
-export const DataBox: FC<DataBoxProps> = ({ label, value, onEditClick }) => (
+export const DataBox: FC<DataBoxProps> = ({
+  label,
+  value = "",
+  onEditClick,
+}) => (
   <Flex px={3} py={3} sx={{ alignItems: "flex-start" }}>
     <Box>
       <Typography.Body
@@ -18,7 +23,7 @@ export const DataBox: FC<DataBoxProps> = ({ label, value, onEditClick }) => (
         color="textMediumEmphasis"
         sx={{ lineHeight: 1, fontSize: 0 }}
       >
-        {label}
+        <Trans id={label} />
       </Typography.Body>
       <Typography.Body>{value}</Typography.Body>
     </Box>

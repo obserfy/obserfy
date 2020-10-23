@@ -482,7 +482,15 @@ exports[`PageStudentPlans should render correctly 1`] = `
 
 .emotion-21 {
   display: block;
-  margin: 16px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  margin-right: 16px;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-21 {
+    margin-right: 0;
+  }
 }
 
 .emotion-20 {

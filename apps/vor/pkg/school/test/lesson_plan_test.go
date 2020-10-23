@@ -1,22 +1,20 @@
 package school_test
 
 import (
+	"github.com/brianvoe/gofakeit/v4"
+	"github.com/chrsep/vor/pkg/domain"
+	"github.com/chrsep/vor/pkg/postgres"
+	"github.com/chrsep/vor/pkg/rest"
+	"github.com/stretchr/testify/assert"
 	"net/http"
 	"testing"
 	"time"
-
-	"github.com/brianvoe/gofakeit/v4"
-	"github.com/stretchr/testify/assert"
-
-	"github.com/chrsep/vor/pkg/lessonplan"
-	"github.com/chrsep/vor/pkg/postgres"
-	"github.com/chrsep/vor/pkg/rest"
 )
 
 func (s *SchoolTestSuite) TestGetLessonPlan() {
 	t := s.T()
 	gofakeit.Seed(time.Now().UnixNano())
-	lessonPlan, userId := s.GenerateLessonPlan()
+	lessonPlan, userId := s.GenerateLessonPlan(nil)
 
 	url := "/" + lessonPlan.LessonPlanDetails.SchoolId + "/plans?date=" + lessonPlan.Date.Format(time.RFC3339)
 	result := s.CreateRequest("GET", url, nil, &userId)
@@ -115,7 +113,7 @@ func (s *SchoolTestSuite) TestPostNewLessonPlanWithRepetition() {
 					Type    int       `json:"type"`
 					EndDate time.Time `json:"endDate"`
 				}{
-					Type:    lessonplan.RepetitionNone,
+					Type:    domain.RepetitionNone,
 					EndDate: date.Add(32 * 24 * time.Hour),
 				},
 			},
@@ -133,7 +131,7 @@ func (s *SchoolTestSuite) TestPostNewLessonPlanWithRepetition() {
 					Type    int       `json:"type"`
 					EndDate time.Time `json:"endDate"`
 				}{
-					Type:    lessonplan.RepetitionDaily,
+					Type:    domain.RepetitionDaily,
 					EndDate: date.Add(3 * 24 * time.Hour),
 				},
 			},
@@ -156,7 +154,7 @@ func (s *SchoolTestSuite) TestPostNewLessonPlanWithRepetition() {
 					Type    int       `json:"type"`
 					EndDate time.Time `json:"endDate"`
 				}{
-					Type:    lessonplan.RepetitionWeekly,
+					Type:    domain.RepetitionWeekly,
 					EndDate: date.Add(32 * 24 * time.Hour),
 				},
 			},
@@ -180,7 +178,7 @@ func (s *SchoolTestSuite) TestPostNewLessonPlanWithRepetition() {
 					Type    int       `json:"type"`
 					EndDate time.Time `json:"endDate"`
 				}{
-					Type:    lessonplan.RepetitionMonthly,
+					Type:    domain.RepetitionMonthly,
 					EndDate: date.Add(32 * 24 * time.Hour),
 				},
 			},
@@ -213,7 +211,7 @@ func (s *SchoolTestSuite) TestPostNewLessonPlanWithRepetition() {
 
 func (s *SchoolTestSuite) TestPostNewLessonPlanWithCurriculumData() {
 	t := s.T()
-	material, userId := s.GenerateMaterial()
+	material, userId := s.GenerateMaterial(nil)
 	area := material.Subject.Area
 	school := area.Curriculum.Schools[0]
 	class := s.GenerateClass(&school)
@@ -238,7 +236,7 @@ func (s *SchoolTestSuite) TestPostNewLessonPlanWithCurriculumData() {
 					Type    int       `json:"type"`
 					EndDate time.Time `json:"endDate"`
 				}{
-					Type:    lessonplan.RepetitionNone,
+					Type:    domain.RepetitionNone,
 					EndDate: date.Add(32 * 24 * time.Hour),
 				},
 				AreaId:     area.Id,
@@ -258,7 +256,7 @@ func (s *SchoolTestSuite) TestPostNewLessonPlanWithCurriculumData() {
 					Type    int       `json:"type"`
 					EndDate time.Time `json:"endDate"`
 				}{
-					Type:    lessonplan.RepetitionDaily,
+					Type:    domain.RepetitionDaily,
 					EndDate: date.Add(3 * 24 * time.Hour),
 				},
 				AreaId:     area.Id,
@@ -278,7 +276,7 @@ func (s *SchoolTestSuite) TestPostNewLessonPlanWithCurriculumData() {
 					Type    int       `json:"type"`
 					EndDate time.Time `json:"endDate"`
 				}{
-					Type:    lessonplan.RepetitionMonthly,
+					Type:    domain.RepetitionMonthly,
 					EndDate: date.Add(32 * 24 * time.Hour),
 				},
 				AreaId:     area.Id,
