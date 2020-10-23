@@ -341,10 +341,10 @@ func postNewRelatedStudents(s rest.Server, store Store) http.Handler {
 			response = append(response, newStudent)
 		}
 
+		w.WriteHeader(http.StatusCreated)
 		if err := rest.WriteJson(w, &response); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
-		w.WriteHeader(http.StatusCreated)
 		return nil
 	})
 }
