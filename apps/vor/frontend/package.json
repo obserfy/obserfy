@@ -85,7 +85,7 @@
     "babel-jest": "26.6.0",
     "babel-loader": "8.1.0",
     "babel-plugin-istanbul": "6.0.0",
-    "babel-plugin-macros": "^2.8.0",
+    "babel-plugin-macros": "2.8.0",
     "babel-plugin-transform-default-import": "1.0.0",
     "babel-preset-gatsby": "0.5.14",
     "chromatic": "5.2.0",
