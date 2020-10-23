@@ -1,15 +1,13 @@
 package postgres
 
 import (
-	cLessonPlan "github.com/chrsep/vor/pkg/lessonplan"
-	"mime/multipart"
-	"time"
-
+	"github.com/chrsep/vor/pkg/domain"
+	cSchool "github.com/chrsep/vor/pkg/school"
 	"github.com/go-pg/pg/v10"
 	"github.com/google/uuid"
 	richErrors "github.com/pkg/errors"
-
-	cSchool "github.com/chrsep/vor/pkg/school"
+	"mime/multipart"
+	"time"
 )
 
 type SchoolStore struct {
@@ -594,7 +592,7 @@ func (s SchoolStore) UpdateFile(fileId, fileName string) (*cSchool.File, error) 
 	}, nil
 }
 
-func (s SchoolStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLessonPlan.LessonPlan, error) {
+func (s SchoolStore) CreateLessonPlan(planInput domain.LessonPlan) (*domain.LessonPlan, error) {
 	planDetails := LessonPlanDetails{
 		Id:          uuid.New().String(),
 		ClassId:     planInput.ClassId,
@@ -627,13 +625,13 @@ func (s SchoolStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLessonP
 	for i := range planInput.Students {
 		studentRelations = append(studentRelations, LessonPlanToStudents{
 			LessonPlanId: plan.Id,
-			StudentId:    planInput.Students[i],
+			StudentId:    planInput.Students[i].Id,
 		})
 	}
 	plans = append(plans, plan)
 	// Create all instance of repeating plans and save to db. This will make it easy to
 	// retrieve, modify, and attach metadata to individual instances of the plans down the road
-	if planInput.Repetition != nil && planInput.Repetition.Type != cLessonPlan.RepetitionNone {
+	if planInput.Repetition.Type != domain.RepetitionNone {
 		// If nil, repetition_type column in db will automatically be 0, since it has useZero tag.
 		planDetails.RepetitionType = planInput.Repetition.Type
 		planDetails.RepetitionEndDate = planInput.Repetition.EndDate
@@ -642,11 +640,11 @@ func (s SchoolStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLessonP
 		monthToAdd := 0
 		daysToAdd := 0
 		switch planInput.Repetition.Type {
-		case cLessonPlan.RepetitionDaily:
+		case domain.RepetitionDaily:
 			daysToAdd = 1
-		case cLessonPlan.RepetitionWeekly:
+		case domain.RepetitionWeekly:
 			daysToAdd = 7
-		case cLessonPlan.RepetitionMonthly:
+		case domain.RepetitionMonthly:
 			monthToAdd = 1
 		}
 		for {
@@ -665,7 +663,7 @@ func (s SchoolStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLessonP
 			for i := range planInput.Students {
 				studentRelations = append(studentRelations, LessonPlanToStudents{
 					LessonPlanId: newPlan.Id,
-					StudentId:    planInput.Students[i],
+					StudentId:    planInput.Students[i].Id,
 				})
 			}
 			plans = append(plans, newPlan)
@@ -719,7 +717,7 @@ func (s SchoolStore) CreateLessonPlan(planInput cLessonPlan.PlanData) (*cLessonP
 		return nil, err
 	}
 
-	return &cLessonPlan.LessonPlan{
+	return &domain.LessonPlan{
 		Id:          planDetails.Id,
 		Title:       planDetails.Title,
 		Description: planDetails.Description,

@@ -1,3 +1,4 @@
+import { Trans } from "@lingui/macro"
 import React, { FC } from "react"
 import { Button, Flex, SxStyleProp } from "theme-ui"
 import Input from "../Input/Input"
@@ -26,7 +27,7 @@ const LinkInput: FC<{
       disabled={value === "" || isLoading}
       onClick={onSave}
     >
-      {isLoading ? <LoadingIndicator /> : "Add"}
+      {isLoading ? <LoadingIndicator /> : <Trans>Add</Trans>}
     </Button>
   </Flex>
 )

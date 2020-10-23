@@ -4,6 +4,7 @@ import (
 	"crypto/tls"
 	"github.com/chrsep/vor/pkg/links"
 	"github.com/chrsep/vor/pkg/subscription"
+	"github.com/go-pg/pg/v10"
 	"log"
 	"net/http"
 	"os"
@@ -57,7 +58,13 @@ func runServer() error {
 	}()
 
 	// Initialize tables
-	if err := postgres.InitTables(db); err != nil {
+
+	if err := db.RunInTransaction(db.Context(), func(tx *pg.Tx) error {
+		if err := postgres.InitTables(tx); err != nil {
+			return err
+		}
+		return nil
+	}); err != nil {
 		return err
 	}
 

@@ -33,7 +33,7 @@ func TestLessonPlans(t *testing.T) {
 func (s *LinksTestSuite) TestDeleteLink() {
 	t := s.T()
 	gofakeit.Seed(time.Now().UnixNano())
-	lessonPlan, userId := s.GenerateLessonPlan()
+	lessonPlan, userId := s.GenerateLessonPlan(nil)
 	link := s.GenerateLessonPlanLink(lessonPlan.LessonPlanDetails)
 
 	result := s.CreateRequest("DELETE", "/"+link.Id.String(), nil, &userId)
@@ -47,7 +47,7 @@ func (s *LinksTestSuite) TestDeleteLink() {
 func (s *LinksTestSuite) TestPatchLink() {
 	t := s.T()
 	gofakeit.Seed(time.Now().UnixNano())
-	lessonPlan, userId := s.GenerateLessonPlan()
+	lessonPlan, userId := s.GenerateLessonPlan(nil)
 
 	type Payload struct {
 		Url         string `json:"url,omitempty"`

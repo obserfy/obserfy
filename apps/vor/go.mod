@@ -19,4 +19,5 @@ require (
 	golang.org/x/crypto v0.0.0-20201016220609-9e8e0b390897
 	golang.org/x/lint v0.0.0-20191125180803-fdd1cda4f05f // indirect
 	golang.org/x/tools v0.0.0-20200522201501-cb1345f3a375 // indirect
+	gopkg.in/go-playground/validator.v8 v8.18.2
 )
