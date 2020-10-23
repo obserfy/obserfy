@@ -63,7 +63,7 @@ func connectTestDB() (*pg.DB, error) {
 
 	// Wait until connection is healthy
 	for {
-		_, err := db.Exec("SELECT 1")
+		err := db.Ping(db.Context())
 		if err == nil {
 			break
 		} else {
