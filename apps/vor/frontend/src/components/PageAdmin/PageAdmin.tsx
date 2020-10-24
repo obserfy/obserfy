@@ -102,7 +102,6 @@ export const PageAdmin: FC = () => {
 
       <Card mb={3} sx={{ borderRadius: [0, "default"] }}>
         <I18nButton />
-
         <ThemeModeButton />
       </Card>
 
