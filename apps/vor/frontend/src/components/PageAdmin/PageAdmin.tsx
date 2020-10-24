@@ -106,18 +106,25 @@ export const PageAdmin: FC = () => {
         <ThemeModeButton />
       </Card>
 
-      <Flex mt={2}>
+      <Flex mt={2} px={[3, 0]} sx={{ flexDirection: ["column", "row"] }}>
         <Button
           variant="outline"
           ml="auto"
           color="warning"
           onClick={() => navigate("/choose-school")}
-          sx={{ flexShrink: 0 }}
+          sx={{ width: ["100%", "auto"], flexShrink: 0 }}
           py={2}
+          mb={3}
         >
           <Trans>Switch school</Trans>
         </Button>
-        <Button variant="outline" ml={2} color="danger" onClick={logout}>
+        <Button
+          variant="outline"
+          ml={[0, 2]}
+          color="danger"
+          onClick={logout}
+          mb={3}
+        >
           <Trans>Log Out</Trans>
         </Button>
       </Flex>
