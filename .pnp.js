@@ -2851,6 +2851,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:1.1.0"
       ],
       [
+        "browser-lang",
+        "npm:0.1.0"
+      ],
+      [
         "browser-pack",
         "npm:6.1.0"
       ],
@@ -31197,6 +31201,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/brorand-npm-1.1.0-ea86634c4b-4536dd73f0.zip/node_modules/brorand/",
           "packageDependencies": [
             ["brorand", "npm:1.1.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["browser-lang", [
+        ["npm:0.1.0", {
+          "packageLocation": "./.yarn/cache/browser-lang-npm-0.1.0-2abb9a8c0b-49bc35974f.zip/node_modules/browser-lang/",
+          "packageDependencies": [
+            ["browser-lang", "npm:0.1.0"]
           ],
           "linkType": "HARD",
         }]
@@ -59851,6 +59864,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["babel-plugin-transform-default-import", "npm:1.0.0"],
             ["babel-preset-gatsby", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.5.14"],
             ["body-scroll-lock", "npm:3.1.5"],
+            ["browser-lang", "npm:0.1.0"],
             ["chromatic", "npm:5.2.0"],
             ["cross-env", "npm:7.0.2"],
             ["dayjs", "npm:1.9.3"],
@@ -59878,7 +59892,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["gatsby-plugin-offline", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:3.2.33"],
             ["gatsby-plugin-portal", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:1.0.65"],
             ["gatsby-plugin-preact", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:4.0.16"],
-            ["gatsby-plugin-prefetch-google-fonts", "npm:1.4.3"],
             ["gatsby-plugin-react-helmet", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:3.3.14"],
             ["gatsby-plugin-remove-trailing-slashes", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:2.3.13"],
             ["gatsby-plugin-segment-js", "npm:3.6.0"],

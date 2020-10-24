@@ -15,6 +15,7 @@ export const TopBar: FC<TopBarProps> = ({ breadcrumbs }) => (
   <Flex sx={{ height: 48, alignItems: "center" }}>
     <BackButton
       to={breadcrumbs[Math.max(breadcrumbs.length - 2, 0)].to ?? "/"}
+      state={{ preserveScroll: true }}
     />
     <Breadcrumb>
       {breadcrumbs.map(({ to, text }) => (
