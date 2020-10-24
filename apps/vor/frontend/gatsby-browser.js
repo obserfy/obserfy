@@ -1,10 +1,3 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/browser-apis/
- */
-
-// You can delete this file if you're not using it
 import "./src/global.css"
 
 // Disabled because it currently breaks due to gatsby's changes.
@@ -43,6 +36,10 @@ import "./src/global.css"
 //
 //   return true
 // }
+export const shouldUpdateScroll = ({ routerProps }) => {
+  const { preserveScroll } = routerProps.location.state
+  return !preserveScroll
+}
 
 export const onServiceWorkerUpdateReady = () => {
   if (window.updateAvailable) {
