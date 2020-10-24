@@ -7,7 +7,7 @@ import { Link } from "../Link/Link"
 
 export interface BackButtonProps {
   to: string
-  state: {
+  state?: {
     preserveScroll: boolean
   }
 }
