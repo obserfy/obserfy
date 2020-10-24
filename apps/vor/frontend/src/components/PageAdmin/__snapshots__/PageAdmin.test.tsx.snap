@@ -15,7 +15,7 @@ exports[`PageAdmin should render correctly 1`] = `
   }
 }
 
-.emotion-44 {
+.emotion-40 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -23,36 +23,21 @@ exports[`PageAdmin should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-44 {
+  .emotion-40 {
     font-size: 20px;
   }
 }
 
-.emotion-43 {
+.emotion-39 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   margin: auto;
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-top: 16px;
   padding-bottom: 64px;
   max-width: 640px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-43 {
-    padding-top: 16px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .emotion-43 {
-    padding-top: 32px;
-  }
-}
-
-.emotion-2 {
+.emotion-1 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -75,7 +60,7 @@ exports[`PageAdmin should render correctly 1`] = `
   height: 34px;
 }
 
-.emotion-1 {
+.emotion-2 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -84,18 +69,14 @@ exports[`PageAdmin should render correctly 1`] = `
   line-height: heading;
   color: var(--theme-ui-colors-text,#37383c);
   text-rendering: optimizeLegibility;
-  font-size: 24px;
-  margin-top: 16px;
+  font-size: 20px;
+  margin-left: 16px;
+  margin-right: 16px;
   margin-bottom: 16px;
-  margin-left: 4px;
-  text-align: center;
+  margin-top: 32px;
 }
 
-.emotion-7 {
-  display: block;
-}
-
-.emotion-6 {
+.emotion-15 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -103,22 +84,25 @@ exports[`PageAdmin should render correctly 1`] = `
   background-color: var(--theme-ui-colors-surface,#fff);
   border-radius: 6px;
   box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
-  padding: 16px;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
+  border-radius: 0;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-15 {
+    border-radius: 6px;
+  }
 }
 
 .emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  padding: 16px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .emotion-3 {
@@ -129,13 +113,6 @@ exports[`PageAdmin should render correctly 1`] = `
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
-  font-size: 16px;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-3 {
-    font-size: 16px;
-  }
 }
 
 .emotion-4 {
@@ -153,100 +130,71 @@ exports[`PageAdmin should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-42 {
+.emotion-28 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  margin-top: 8px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.emotion-39 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  display: inline-block;
-  text-align: center;
-  line-height: inherit;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  font-size: inherit;
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  color: white;
-  background-color: var(--theme-ui-colors-primary,#00e399);
-  border: 0;
-  border-radius: 4px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  box-sizing: border-box;
-  font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
-  background-color: var(--theme-ui-colors-surface,#fff);
-  border-radius: 6px;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 16px;
-  padding-right: 16px;
-  white-space: nowrap;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  margin: 16px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  touch-action: manipulation;
-  box-shadow: none;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  border-style: solid;
-  border-width: 1px;
-  line-height: 1;
-  padding: 16px;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-23 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  fill: var(--theme-ui-colors-background,#f2f3f5);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
+  width: 20px;
+  height: 20px;
 }
 
-.emotion-39:disabled {
-  opacity: 0.38;
-  cursor: auto;
+.emotion-26 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-left: 16px;
 }
 
-.emotion-39:hover,
-.emotion-39:focus {
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
-  border-color: var(--theme-ui-colors-primary,#00e399);
-  outline: none;
+.emotion-24 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: var(--theme-ui-colors-text,#37383c);
+  font-size: 14px;
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  font-size: 12px;
 }
 
-.emotion-39:hover:disabled,
-.emotion-39:focus:disabled {
-  background-color: transparent;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+.emotion-34 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin: 16px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
-.emotion-38 {
+.emotion-29 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -260,7 +208,38 @@ exports[`PageAdmin should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-40 {
+.emotion-38 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-top: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media screen and (min-width:40em) {
+  .emotion-38 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .emotion-38 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+.emotion-36 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -317,32 +296,42 @@ exports[`PageAdmin should render correctly 1`] = `
   border-style: solid;
   border-width: 1px;
   line-height: 1;
-  margin-left: 8px;
+  margin-left: auto;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
   color: var(--theme-ui-colors-warning,#ff6d00);
+  width: 100%;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
-.emotion-40:disabled {
+.emotion-36:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-40:hover,
-.emotion-40:focus {
+.emotion-36:hover,
+.emotion-36:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-40:hover:disabled,
-.emotion-40:focus:disabled {
+.emotion-36:hover:disabled,
+.emotion-36:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-41 {
+@media screen and (min-width:40em) {
+  .emotion-36 {
+    width: auto;
+  }
+}
+
+.emotion-37 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -399,58 +388,57 @@ exports[`PageAdmin should render correctly 1`] = `
   border-style: solid;
   border-width: 1px;
   line-height: 1;
-  margin-left: 8px;
+  margin-left: 0;
+  margin-bottom: 16px;
   color: var(--theme-ui-colors-danger,#d50000);
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
 }
 
-.emotion-41:disabled {
+.emotion-37:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-41:hover,
-.emotion-41:focus {
+.emotion-37:hover,
+.emotion-37:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-41:hover:disabled,
-.emotion-41:focus:disabled {
+.emotion-37:hover:disabled,
+.emotion-37:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+}
+
+@media screen and (min-width:40em) {
+  .emotion-37 {
+    margin-left: 8px;
+  }
 }
 
 <div>
   <div
-    class="emotion-44"
+    class="emotion-40"
   >
     <div
-      class="emotion-43"
+      class="emotion-39"
     >
       <div
-        class="emotion-2"
+        class="emotion-1"
       >
         <div
           class="emotion-0"
         />
-        <h5
-          class="emotion-1"
-        />
       </div>
-      <a
-        class="emotion-7"
-        href="/dashboard/admin/curriculum"
+      <h6
+        class="emotion-2"
+      />
+      <div
+        class="emotion-15"
       >
-        <div
-          class="emotion-6"
+        <a
+          href="/dashboard/admin/curriculum"
         >
           <div
             class="emotion-5"
@@ -464,35 +452,9 @@ exports[`PageAdmin should render correctly 1`] = `
               class="emotion-4"
             />
           </div>
-        </div>
-      </a>
-      <a
-        class="emotion-7"
-        href="/dashboard/admin/users"
-      >
-        <div
-          class="emotion-6"
-        >
-          <div
-            class="emotion-5"
-          >
-            <p
-              class="emotion-3"
-            >
-              Users
-            </p>
-            <div
-              class="emotion-4"
-            />
-          </div>
-        </div>
-      </a>
-      <a
-        class="emotion-7"
-        href="/dashboard/admin/class"
-      >
-        <div
-          class="emotion-6"
+        </a>
+        <a
+          href="/dashboard/admin/class"
         >
           <div
             class="emotion-5"
@@ -506,14 +468,9 @@ exports[`PageAdmin should render correctly 1`] = `
               class="emotion-4"
             />
           </div>
-        </div>
-      </a>
-      <a
-        class="emotion-7"
-        href="/dashboard/admin/students"
-      >
-        <div
-          class="emotion-6"
+        </a>
+        <a
+          href="/dashboard/admin/students"
         >
           <div
             class="emotion-5"
@@ -527,14 +484,9 @@ exports[`PageAdmin should render correctly 1`] = `
               class="emotion-4"
             />
           </div>
-        </div>
-      </a>
-      <a
-        class="emotion-7"
-        href="/dashboard/admin/guardians"
-      >
-        <div
-          class="emotion-6"
+        </a>
+        <a
+          href="/dashboard/admin/guardians"
         >
           <div
             class="emotion-5"
@@ -548,68 +500,107 @@ exports[`PageAdmin should render correctly 1`] = `
               class="emotion-4"
             />
           </div>
-        </div>
-      </a>
-      <a
-        class="emotion-7"
-        href="/dashboard/admin/inviteUser"
-      >
-        <div
-          class="emotion-6"
-        >
-          <div
-            class="emotion-5"
-          >
-            <p
-              class="emotion-3"
-            >
-              Invite Your Team
-            </p>
-            <div
-              class="emotion-4"
-            />
-          </div>
-        </div>
-      </a>
-      <a
-        class="emotion-7"
-        href="/dashboard/admin/subscription"
-      >
-        <div
-          class="emotion-6"
-        >
-          <div
-            class="emotion-5"
-          >
-            <p
-              class="emotion-3"
-            >
-              Subscription Plan
-            </p>
-            <div
-              class="emotion-4"
-            />
-          </div>
-        </div>
-      </a>
+        </a>
+      </div>
       <div
-        class="emotion-42"
+        class="emotion-15"
       >
-        <button
-          class="emotion-39"
+        <a
+          href="/dashboard/admin/users"
+        >
+          <div
+            class="emotion-5"
+          >
+            <p
+              class="emotion-3"
+            >
+              Users
+            </p>
+            <div
+              class="emotion-4"
+            />
+          </div>
+        </a>
+        <a
+          href="/dashboard/admin/inviteUser"
+        >
+          <div
+            class="emotion-5"
+          >
+            <p
+              class="emotion-3"
+            >
+              Invite your Team
+            </p>
+            <div
+              class="emotion-4"
+            />
+          </div>
+        </a>
+      </div>
+      <div
+        class="emotion-15"
+      >
+        <div
+          class="emotion-28"
+        >
+          <div
+            class="emotion-23"
+          />
+          <div
+            class="emotion-26"
+          >
+            <p
+              class="emotion-24"
+            >
+              Language
+            </p>
+            <p
+              class="emotion-3"
+            >
+              English
+            </p>
+          </div>
+          <div
+            class="emotion-4"
+          />
+        </div>
+        <div
+          class="emotion-34"
           data-cy="dark-switch"
         >
           <div
-            class="emotion-38"
+            class="emotion-29"
           />
-        </button>
+          <div
+            class="emotion-26"
+          >
+            <p
+              class="emotion-24"
+            >
+              Theme
+            </p>
+            <p
+              class="emotion-3"
+            >
+              Light
+            </p>
+          </div>
+          <div
+            class="emotion-4"
+          />
+        </div>
+      </div>
+      <div
+        class="emotion-38"
+      >
         <button
-          class="emotion-40"
+          class="emotion-36"
         >
           Switch school
         </button>
         <button
-          class="emotion-41"
+          class="emotion-37"
         >
           Log Out
         </button>
