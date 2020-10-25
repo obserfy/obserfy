@@ -4620,9 +4620,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/eslintrc@npm:^0.1.3":
-  version: 0.1.3
-  resolution: "@eslint/eslintrc@npm:0.1.3"
+"@eslint/eslintrc@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "@eslint/eslintrc@npm:0.2.0"
   dependencies:
     ajv: ^6.12.4
     debug: ^4.1.1
@@ -4634,7 +4634,7 @@ __metadata:
     lodash: ^4.17.19
     minimatch: ^3.0.4
     strip-json-comments: ^3.1.1
-  checksum: e9c5eaa5e706bcedbba6e7e1a2bc85faa7e3a9edbe71375e07240d1b6540fbb88d907bd5e5841b42c2a7a9683dcf031ea052c447c3c9d81ba4d0b74f0dd67e5f
+  checksum: bdc8346add0fe57337c09134f19e693fa8a3c03357bf54c05de2270388774b0469b6d6dbd9f368cbd5de53919c4c9e8b644177acc417ea1ff4f99cbf32feefa6
   languageName: node
   linkType: hard
 
@@ -16553,9 +16553,9 @@ __metadata:
     babel-loader: 8.1.0
     cypress: 5.4.0
     cypress-intellij-reporter: 0.0.4
-    eslint: 7.11.0
+    eslint: 7.12.0
     eslint-config-airbnb-typescript: 12.0.0
-    eslint-config-prettier: 6.13.0
+    eslint-config-prettier: 6.14.0
     eslint-import-resolver-node: 0.3.4
     eslint-plugin-cypress: 2.11.2
     eslint-plugin-import: 2.22.1
@@ -16563,7 +16563,7 @@ __metadata:
     eslint-plugin-jsx-a11y: 6.3.1
     eslint-plugin-prettier: 3.1.4
     eslint-plugin-react: 7.21.5
-    eslint-plugin-react-hooks: 4.1.2
+    eslint-plugin-react-hooks: 4.2.0
     faker: 5.1.0
     pnp-webpack-plugin: 1.6.4
     prettier: 2.1.2
@@ -17171,7 +17171,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-prettier@npm:*, eslint-config-prettier@npm:6.13.0":
+"eslint-config-prettier@npm:*":
   version: 6.13.0
   resolution: "eslint-config-prettier@npm:6.13.0"
   dependencies:
@@ -17181,6 +17181,19 @@ __metadata:
   bin:
     eslint-config-prettier-check: bin/cli.js
   checksum: fe88da82a493da579fe57cc7b0be0cac5c84bfb5148d5e35abda99a73e6a0ab1125aa24ceae52144c9382c958f1f33efaadb4b86455cd28fef72172d9046a683
+  languageName: node
+  linkType: hard
+
+"eslint-config-prettier@npm:6.14.0":
+  version: 6.14.0
+  resolution: "eslint-config-prettier@npm:6.14.0"
+  dependencies:
+    get-stdin: ^6.0.0
+  peerDependencies:
+    eslint: ">=3.14.1"
+  bin:
+    eslint-config-prettier-check: bin/cli.js
+  checksum: 8d478429bb6c63a538270b8d2fae13a2ffe5c5bd8401d2f478e9a65e1bc94ed6e0f6ca3d063a8decd0003ad91ef26ca32fadf2d08f3e2d7dd4c76ee8efea6711
   languageName: node
   linkType: hard
 
@@ -17365,12 +17378,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-react-hooks@npm:4.1.2":
-  version: 4.1.2
-  resolution: "eslint-plugin-react-hooks@npm:4.1.2"
+"eslint-plugin-react-hooks@npm:4.2.0":
+  version: 4.2.0
+  resolution: "eslint-plugin-react-hooks@npm:4.2.0"
   peerDependencies:
     eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0
-  checksum: 252496dbaaafa6812fbd3aeaafac1192a1e35238172d8271eb370025b43604e10f04cecec3583da395358a3e6be3ace6958ec938102fe3c1b77caf30f1393c91
+  checksum: 5378d16b5a56431a7a77b56d61464dbbfa343e8607da87b851a6caee44b96e08847147321f5f38de30d20668418691d859f69d9c5262dfb5308856382252096c
   languageName: node
   linkType: hard
 
@@ -17487,12 +17500,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:7.11.0":
-  version: 7.11.0
-  resolution: "eslint@npm:7.11.0"
+"eslint@npm:7.12.0":
+  version: 7.12.0
+  resolution: "eslint@npm:7.12.0"
   dependencies:
     "@babel/code-frame": ^7.0.0
-    "@eslint/eslintrc": ^0.1.3
+    "@eslint/eslintrc": ^0.2.0
     ajv: ^6.10.0
     chalk: ^4.0.0
     cross-spawn: ^7.0.2
@@ -17530,7 +17543,7 @@ __metadata:
     v8-compile-cache: ^2.0.3
   bin:
     eslint: bin/eslint.js
-  checksum: 45ef6dc7b31684ca0f383ed9c6224e763197e1d49745542f4440e37286c947973388a6a7ebbf103eeee91ddb4af2652c5d22718f4130bfbbf4bd16a04103f82a
+  checksum: 22f86c0ebaf75993d197d230a8c35f11ba4ffc7cd0b280aeecb28a04c26446b9e6906eedee264a445311a3b9b31f9bca787ee58546acc087cb2c1056ca89f624
   languageName: node
   linkType: hard
 
@@ -18971,16 +18984,16 @@ __metadata:
     "@typescript-eslint/eslint-plugin": 4.5.0
     "@typescript-eslint/parser": 4.5.0
     babel-core: 7.0.0-bridge.0
-    eslint: 7.11.0
+    eslint: 7.12.0
     eslint-config-airbnb-typescript: 12.0.0
-    eslint-config-prettier: 6.13.0
+    eslint-config-prettier: 6.14.0
     eslint-import-resolver-node: 0.3.4
     eslint-plugin-import: 2.22.1
     eslint-plugin-jest: 24.1.0
     eslint-plugin-jsx-a11y: 6.3.1
     eslint-plugin-prettier: 3.1.4
     eslint-plugin-react: 7.21.5
-    eslint-plugin-react-hooks: 4.1.2
+    eslint-plugin-react-hooks: 4.2.0
     gatsby: 2.24.85
     gatsby-image: 2.4.21
     gatsby-plugin-google-analytics: 2.3.19
@@ -19275,16 +19288,16 @@ fsevents@^1.2.7:
     "@typescript-eslint/parser": 4.5.0
     body-scroll-lock: 3.1.5
     dayjs: 1.9.4
-    eslint: 7.11.0
+    eslint: 7.12.0
     eslint-config-airbnb-typescript: 12.0.0
-    eslint-config-prettier: 6.13.0
+    eslint-config-prettier: 6.14.0
     eslint-import-resolver-node: 0.3.4
     eslint-plugin-import: 2.22.1
     eslint-plugin-jest: 24.1.0
     eslint-plugin-jsx-a11y: 6.3.1
     eslint-plugin-prettier: 3.1.4
     eslint-plugin-react: 7.21.5
-    eslint-plugin-react-hooks: 4.1.2
+    eslint-plugin-react-hooks: 4.2.0
     file-loader: 6.1.1
     formidable-serverless: 1.0.3
     imagemin: 7.0.1
@@ -37561,16 +37574,16 @@ resolve@^1.18.1:
     cross-env: 7.0.2
     dayjs: 1.9.4
     dotenv: 8.2.0
-    eslint: 7.11.0
+    eslint: 7.12.0
     eslint-config-airbnb-typescript: 12.0.0
-    eslint-config-prettier: 6.13.0
+    eslint-config-prettier: 6.14.0
     eslint-import-resolver-node: 0.3.4
     eslint-plugin-import: 2.22.1
     eslint-plugin-jest: 24.1.0
     eslint-plugin-jsx-a11y: 6.3.1
     eslint-plugin-prettier: 3.1.4
     eslint-plugin-react: 7.21.5
-    eslint-plugin-react-hooks: 4.1.2
+    eslint-plugin-react-hooks: 4.2.0
     fake-indexeddb: 3.1.2
     faker: 5.1.0
     gatsby: 2.24.85
