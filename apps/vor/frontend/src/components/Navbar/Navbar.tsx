@@ -108,11 +108,16 @@ const NavBarItem: FC<{
   const match = useMatch(`${locale !== "en" ? `/${locale}` : ""}${to}/*`)
   const [target, setTarget] = useState(to)
   const location = useLocation()
-  const url = `${match?.uri}/${match?.["*"]}${location.search}` ?? ""
+  const url =
+    `${match?.uri}${match?.["*"] ? `/${match?.["*"]}` : ""}${
+      location.search
+    }` ?? ""
 
   // persist navigation state from each top-level sections
   useEffect(() => {
     if (match?.uri) {
+      console.log(match?.uri)
+      console.log(`url:${url}`)
       setTarget(url)
     }
   }, [url, match])

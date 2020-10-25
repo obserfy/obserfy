@@ -1,4 +1,6 @@
+import browserLang from "browser-lang"
 import "./src/global.css"
+import { withPrefix } from "gatsby"
 
 // Disabled because it currently breaks due to gatsby's changes.
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
@@ -36,10 +38,6 @@ import "./src/global.css"
 //
 //   return true
 // }
-export const shouldUpdateScroll = ({ routerProps }) => {
-  const { preserveScroll } = routerProps.location.state
-  return !preserveScroll
-}
 
 export const onServiceWorkerUpdateReady = () => {
   if (window.updateAvailable) {
@@ -74,4 +72,33 @@ export const onClientEntry = () => {
     }
     Sentry.setUser(user)
   })
+}
+
+const LANG_PREFERENCE_KEY = "preferred-lang"
+// For redirecting user to preferred language
+export const wrapPageElement = (params) => {
+  // find user preferred language
+  let preferredLang =
+    window.localStorage.getItem(LANG_PREFERENCE_KEY) ||
+    browserLang({
+      languages: ["en", "id"],
+      fallback: "en",
+    })
+
+  // Generate url with changed language
+  const { search } = params.props.location
+  const queryParams = search || ""
+  const newUrl = withPrefix(
+    `${preferredLang === "id" ? "/id" : ""}${
+      params.props.pageContext.originalPath
+    }${queryParams}`
+  )
+
+  // Save the preferred language and navigate away to it
+  window.localStorage.setItem(LANG_PREFERENCE_KEY, preferredLang)
+  if (window.location.pathname + queryParams !== newUrl) {
+    window.location.replace(newUrl)
+  }
+
+  return params.element
 }
