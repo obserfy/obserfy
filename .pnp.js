@@ -1112,7 +1112,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@prefresh/core",
-        "virtual:ab9b54337215ef94030b83a1d0eb84cfcf33637677e0fc7a09a0c1aa9557e033b4ac4af1cb9c2adf4b565f3f5df3dd4aa0eee80c5b9d204311efe71c97afdf1c#npm:1.0.0"
+        "virtual:ef88d2eb9d0ed9be26ad6323ef55426036d1158d7adcd468ad3ad2a593ab9e2908940c53c476e9bb593365474e4e5672b663414f17876ecc8a731bc28de342ce#npm:1.0.0"
       ],
       [
         "@prefresh/utils",
@@ -23597,10 +23597,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
-        ["virtual:ab9b54337215ef94030b83a1d0eb84cfcf33637677e0fc7a09a0c1aa9557e033b4ac4af1cb9c2adf4b565f3f5df3dd4aa0eee80c5b9d204311efe71c97afdf1c#npm:1.0.0", {
-          "packageLocation": "./.yarn/$$virtual/@prefresh-core-virtual-d33bab8cf5/0/cache/@prefresh-core-npm-1.0.0-5bc682957a-c268fbecdc.zip/node_modules/@prefresh/core/",
+        ["virtual:ef88d2eb9d0ed9be26ad6323ef55426036d1158d7adcd468ad3ad2a593ab9e2908940c53c476e9bb593365474e4e5672b663414f17876ecc8a731bc28de342ce#npm:1.0.0", {
+          "packageLocation": "./.yarn/$$virtual/@prefresh-core-virtual-05895e3c54/0/cache/@prefresh-core-npm-1.0.0-5bc682957a-c268fbecdc.zip/node_modules/@prefresh/core/",
           "packageDependencies": [
-            ["@prefresh/core", "virtual:ab9b54337215ef94030b83a1d0eb84cfcf33637677e0fc7a09a0c1aa9557e033b4ac4af1cb9c2adf4b565f3f5df3dd4aa0eee80c5b9d204311efe71c97afdf1c#npm:1.0.0"],
+            ["@prefresh/core", "virtual:ef88d2eb9d0ed9be26ad6323ef55426036d1158d7adcd468ad3ad2a593ab9e2908940c53c476e9bb593365474e4e5672b663414f17876ecc8a731bc28de342ce#npm:1.0.0"],
             ["@types/preact", null],
             ["preact", "npm:10.5.5"]
           ],
@@ -23612,14 +23612,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@prefresh/next", [
-        ["virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:1.3.0", {
-          "packageLocation": "./.yarn/$$virtual/@prefresh-next-virtual-ab9b543372/0/cache/@prefresh-next-npm-1.3.0-5027289a45-00c34f005f.zip/node_modules/@prefresh/next/",
+        ["virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:1.3.1", {
+          "packageLocation": "./.yarn/$$virtual/@prefresh-next-virtual-ef88d2eb9d/0/cache/@prefresh-next-npm-1.3.1-3b41487c80-cbface278a.zip/node_modules/@prefresh/next/",
           "packageDependencies": [
-            ["@prefresh/next", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:1.3.0"],
+            ["@prefresh/next", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:1.3.1"],
             ["@prefresh/babel-plugin", "npm:0.2.2"],
-            ["@prefresh/core", "virtual:ab9b54337215ef94030b83a1d0eb84cfcf33637677e0fc7a09a0c1aa9557e033b4ac4af1cb9c2adf4b565f3f5df3dd4aa0eee80c5b9d204311efe71c97afdf1c#npm:1.0.0"],
+            ["@prefresh/core", "virtual:ef88d2eb9d0ed9be26ad6323ef55426036d1158d7adcd468ad3ad2a593ab9e2908940c53c476e9bb593365474e4e5672b663414f17876ecc8a731bc28de342ce#npm:1.0.0"],
             ["@prefresh/utils", "npm:1.0.0"],
-            ["@prefresh/webpack", "virtual:ab9b54337215ef94030b83a1d0eb84cfcf33637677e0fc7a09a0c1aa9557e033b4ac4af1cb9c2adf4b565f3f5df3dd4aa0eee80c5b9d204311efe71c97afdf1c#npm:2.1.0"],
+            ["@prefresh/webpack", "virtual:ef88d2eb9d0ed9be26ad6323ef55426036d1158d7adcd468ad3ad2a593ab9e2908940c53c476e9bb593365474e4e5672b663414f17876ecc8a731bc28de342ce#npm:2.1.0"],
             ["@types/next", null],
             ["@types/preact", null],
             ["next", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:9.5.5"],
@@ -23651,29 +23651,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@prefresh/webpack", [
-        ["virtual:ab9b54337215ef94030b83a1d0eb84cfcf33637677e0fc7a09a0c1aa9557e033b4ac4af1cb9c2adf4b565f3f5df3dd4aa0eee80c5b9d204311efe71c97afdf1c#npm:2.1.0", {
-          "packageLocation": "./.yarn/$$virtual/@prefresh-webpack-virtual-3d4d1c57cf/0/cache/@prefresh-webpack-npm-2.1.0-c5aa4fb147-fc10f05d96.zip/node_modules/@prefresh/webpack/",
-          "packageDependencies": [
-            ["@prefresh/webpack", "virtual:ab9b54337215ef94030b83a1d0eb84cfcf33637677e0fc7a09a0c1aa9557e033b4ac4af1cb9c2adf4b565f3f5df3dd4aa0eee80c5b9d204311efe71c97afdf1c#npm:2.1.0"],
-            ["@prefresh/babel-plugin", "npm:0.2.2"],
-            ["@prefresh/core", "virtual:ab9b54337215ef94030b83a1d0eb84cfcf33637677e0fc7a09a0c1aa9557e033b4ac4af1cb9c2adf4b565f3f5df3dd4aa0eee80c5b9d204311efe71c97afdf1c#npm:1.0.0"],
-            ["@prefresh/utils", "npm:1.0.0"],
-            ["@types/preact", null],
-            ["@types/prefresh__babel-plugin", null],
-            ["@types/webpack", null],
-            ["preact", "npm:10.5.5"],
-            ["webpack", null]
-          ],
-          "packagePeers": [
-            "@prefresh/babel-plugin",
-            "@types/preact",
-            "@types/prefresh__babel-plugin",
-            "@types/webpack",
-            "preact",
-            "webpack"
-          ],
-          "linkType": "HARD",
-        }],
         ["virtual:b6edd0c9b0752eb9e06e0d6c1458af8fe1fa9fdb0cfe47d12030b8b05340a7d2e87c25e5339d87db553c09c9b29fc5755ce5f834849aa710737ff39ccc446ff6#npm:1.1.0", {
           "packageLocation": "./.yarn/$$virtual/@prefresh-webpack-virtual-39bf5807e9/0/cache/@prefresh-webpack-npm-1.1.0-0562106d67-13f7949994.zip/node_modules/@prefresh/webpack/",
           "packageDependencies": [
@@ -23687,6 +23664,29 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "packagePeers": [
             "@types/preact",
+            "@types/webpack",
+            "preact",
+            "webpack"
+          ],
+          "linkType": "HARD",
+        }],
+        ["virtual:ef88d2eb9d0ed9be26ad6323ef55426036d1158d7adcd468ad3ad2a593ab9e2908940c53c476e9bb593365474e4e5672b663414f17876ecc8a731bc28de342ce#npm:2.1.0", {
+          "packageLocation": "./.yarn/$$virtual/@prefresh-webpack-virtual-8c5d3cdb62/0/cache/@prefresh-webpack-npm-2.1.0-c5aa4fb147-fc10f05d96.zip/node_modules/@prefresh/webpack/",
+          "packageDependencies": [
+            ["@prefresh/webpack", "virtual:ef88d2eb9d0ed9be26ad6323ef55426036d1158d7adcd468ad3ad2a593ab9e2908940c53c476e9bb593365474e4e5672b663414f17876ecc8a731bc28de342ce#npm:2.1.0"],
+            ["@prefresh/babel-plugin", "npm:0.2.2"],
+            ["@prefresh/core", "virtual:ef88d2eb9d0ed9be26ad6323ef55426036d1158d7adcd468ad3ad2a593ab9e2908940c53c476e9bb593365474e4e5672b663414f17876ecc8a731bc28de342ce#npm:1.0.0"],
+            ["@prefresh/utils", "npm:1.0.0"],
+            ["@types/preact", null],
+            ["@types/prefresh__babel-plugin", null],
+            ["@types/webpack", null],
+            ["preact", "npm:10.5.5"],
+            ["webpack", null]
+          ],
+          "packagePeers": [
+            "@prefresh/babel-plugin",
+            "@types/preact",
+            "@types/prefresh__babel-plugin",
             "@types/webpack",
             "preact",
             "webpack"
@@ -38572,7 +38572,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["gaia", "workspace:apps/gaia"],
             ["@auth0/nextjs-auth0", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.16.0"],
-            ["@prefresh/next", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:1.3.0"],
+            ["@prefresh/next", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:1.3.1"],
             ["@segment/snippet", "npm:4.13.1"],
             ["@types/body-scroll-lock", "npm:2.6.1"],
             ["@types/formidable", "npm:1.0.31"],
