@@ -12581,6 +12581,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"browser-lang@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "browser-lang@npm:0.1.0"
+  checksum: 49bc35974f487dc09d9a83b80a16f7d81b5b4dfbbe6855a015d96e016cf98302c8d0b82824ea90a7b8c3a28cb58000bf966eebb34079841ca38cee4ff3d8cf92
+  languageName: node
+  linkType: hard
+
 "browser-pack@npm:^6.0.1":
   version: 6.1.0
   resolution: "browser-pack@npm:6.1.0"
@@ -37570,6 +37577,7 @@ resolve@^1.18.1:
     babel-plugin-transform-default-import: 1.0.0
     babel-preset-gatsby: 0.5.14
     body-scroll-lock: 3.1.5
+    browser-lang: ^0.1.0
     chromatic: 5.2.0
     cross-env: 7.0.2
     dayjs: 1.9.4
@@ -37597,7 +37605,6 @@ resolve@^1.18.1:
     gatsby-plugin-offline: 3.2.37
     gatsby-plugin-portal: 1.0.65
     gatsby-plugin-preact: 4.0.16
-    gatsby-plugin-prefetch-google-fonts: 1.4.3
     gatsby-plugin-react-helmet: 3.3.14
     gatsby-plugin-remove-trailing-slashes: 2.3.13
     gatsby-plugin-segment-js: 3.6.0

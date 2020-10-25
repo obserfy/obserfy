@@ -1,8 +1,7 @@
 import React, { FC, FormEvent, useState } from "react"
-import { navigate } from "gatsby"
 import { Flex, Box, Button } from "theme-ui"
-
 import { Trans } from "@lingui/macro"
+import { navigate } from "../Link/Link"
 import { Typography } from "../Typography/Typography"
 import Input from "../Input/Input"
 

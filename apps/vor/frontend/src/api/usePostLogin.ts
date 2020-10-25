@@ -1,5 +1,5 @@
 import { useMutation } from "react-query"
-import { navigate } from "gatsby"
+import { navigate } from "../components/Link/Link"
 import { ApiError } from "./useApi"
 
 interface PostLoginRequestBody {

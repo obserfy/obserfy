@@ -1,6 +1,6 @@
-import { navigate } from "gatsby"
-
 // TODO: rename file to apiHelpers
+import { navigate } from "../components/Link/Link"
+
 const BASE_URL = "/api/v1"
 
 interface ApiError {

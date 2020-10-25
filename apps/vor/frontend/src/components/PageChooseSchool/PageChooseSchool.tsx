@@ -1,5 +1,4 @@
 import React, { FC } from "react"
-import { navigate } from "gatsby"
 import { Button, Box, Card, Flex } from "theme-ui"
 import { Trans } from "@lingui/macro"
 import { useGetSchools } from "../../api/schools/useGetSchools"
@@ -10,7 +9,7 @@ import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import { setSchoolIdState } from "../../hooks/schoolIdState"
 import { STUDENTS_URL } from "../../routes"
 import BrandBanner from "../BrandBanner/BrandBanner"
-import { Link } from "../Link/Link"
+import { navigate, Link } from "../Link/Link"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 
 export const PageChooseSchool: FC = () => {

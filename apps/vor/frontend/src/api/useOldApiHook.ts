@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { navigate } from "gatsby"
+import { navigate } from "../components/Link/Link"
 
 const baseUrl = "/api/v1"
 

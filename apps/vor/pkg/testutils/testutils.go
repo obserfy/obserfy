@@ -53,8 +53,8 @@ func (s *BaseTestSuite) SetupSuite() {
 	s.Server = rest.NewServer(zaptest.NewLogger(s.T()))
 }
 
-func connectTestDB() (*pg.DB, error) {
-	db := postgres.Connect(
+func connectTestDB() (db *pg.DB, err error) {
+	db = postgres.Connect(
 		"postgres",
 		"postgres",
 		"localhost:5432",
@@ -63,7 +63,7 @@ func connectTestDB() (*pg.DB, error) {
 
 	// Wait until connection is healthy
 	for {
-		err := db.Ping(db.Context())
+		err = db.Ping(db.Context())
 		if err == nil {
 			break
 		} else {
@@ -73,10 +73,15 @@ func connectTestDB() (*pg.DB, error) {
 		}
 	}
 
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Printf("create table panic captured: %s\n", r)
+		}
+	}()
+
 	// Create table in transaction, if it fails, probably tables are already created, so we can ignore the error.
 	_ = db.RunInTransaction(db.Context(), func(tx *pg.Tx) error {
-		err := postgres.InitTables(tx)
-		if err != nil {
+		if err := postgres.InitTables(tx); err != nil {
 			return err
 		}
 		return nil

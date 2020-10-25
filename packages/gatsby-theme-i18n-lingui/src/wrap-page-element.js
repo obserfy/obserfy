@@ -14,6 +14,10 @@ const wrapPageElement = ({ element, props }) => {
   i18n.load(locale, catalog.messages);
   i18n.activate(locale);
 
+  if (typeof window !== "undefined") {
+    window.__GATSBY_LOCALE = locale;
+  }
+
   return <I18nProvider i18n={i18n}>{element}</I18nProvider>;
 };
 
