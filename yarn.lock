@@ -6843,9 +6843,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@prefresh/next@npm:1.3.0":
-  version: 1.3.0
-  resolution: "@prefresh/next@npm:1.3.0"
+"@prefresh/next@npm:1.3.1":
+  version: 1.3.1
+  resolution: "@prefresh/next@npm:1.3.1"
   dependencies:
     "@prefresh/babel-plugin": 0.2.2
     "@prefresh/core": ^1.0.0
@@ -6854,7 +6854,7 @@ __metadata:
   peerDependencies:
     next: ^9.4.0
     preact: ^10.4.0
-  checksum: 00c34f005fed40fecf19ffd0d7ab0f30a3311da06e69c6338cba25c8b26bc4a7bdc0c7671849df7fe102d17df0a7cfdcce97712c28c217be04bdd1cdeb2f6078
+  checksum: cbface278aed85c8f176425f437ff32f312e13d1e454b6c3fe26e05e3946795ddd8d645fd48e9c95f9292eea895fca764758f1868c694f5f4626fb08e9e762bd
   languageName: node
   linkType: hard
 
@@ -19259,7 +19259,7 @@ fsevents@^1.2.7:
   resolution: "gaia@workspace:apps/gaia"
   dependencies:
     "@auth0/nextjs-auth0": 0.16.0
-    "@prefresh/next": 1.3.0
+    "@prefresh/next": 1.3.1
     "@segment/snippet": 4.13.1
     "@types/body-scroll-lock": 2.6.1
     "@types/formidable": 1.0.31
