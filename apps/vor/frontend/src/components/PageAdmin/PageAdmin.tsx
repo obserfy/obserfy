@@ -135,7 +135,19 @@ const I18nButton = () => {
   const { locale } = useLocalization()
 
   return (
-    <Flex sx={{ alignItems: "center" }} m={3}>
+    <Flex
+      sx={{ alignItems: "center" }}
+      m={3}
+      onClick={() => {
+        window.localStorage.setItem(
+          "preferred-lang",
+          locale === "id" ? "en" : "id"
+        )
+        window.location.replace(
+          `${locale === "id" ? "" : "/id"}/dashboard/admin`
+        )
+      }}
+    >
       <Icon as={GlobeIcon} fill="background" />
       <Box ml={3}>
         <Typography.Body color="textMediumEmphasis" sx={{ fontSize: 0 }}>
