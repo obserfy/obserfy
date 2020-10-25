@@ -135,7 +135,10 @@ const I18nButton = () => {
 
   return (
     <Flex
-      sx={{ alignItems: "center" }}
+      sx={{
+        alignItems: "center",
+        cursor: "pointer",
+      }}
       m={3}
       onClick={() => {
         window.localStorage.setItem(
