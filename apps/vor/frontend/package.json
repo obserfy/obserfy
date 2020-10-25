@@ -18,7 +18,7 @@
     "@theme-ui/match-media": "0.4.0-rc.6",
     "babel-plugin-remove-graphql-queries": "2.9.20",
     "body-scroll-lock": "3.1.5",
-    "browser-lang": "^0.1.0",
+    "browser-lang": "0.1.0",
     "dayjs": "1.9.4",
     "dotenv": "8.2.0",
     "gatsby": "2.24.85",
