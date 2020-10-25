@@ -1,10 +1,10 @@
-import { PageRendererProps, navigate } from "gatsby"
+import { PageRendererProps } from "gatsby"
 import React, { FC, useEffect } from "react"
+import { navigate } from "../components/Link/Link"
 import { STUDENTS_URL } from "../routes"
 
 const IndexPage: FC<PageRendererProps> = () => {
-  // TODO: replace with gatsby's newly exported Redirect component when it lands
-  //  (gatsby #26046)
+  // TODO: replace with gatsby-link <Redirect /> when it lands, gatsby #26046
   useEffect(() => {
     navigate(STUDENTS_URL)
   }, [])

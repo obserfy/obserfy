@@ -1,6 +1,6 @@
 import { queryCache, QueryResult, useQuery } from "react-query"
-import { navigate } from "gatsby"
 import { t } from "@lingui/macro"
+import { navigate } from "../components/Link/Link"
 import { BASE_URL } from "./useApi"
 
 export enum MaterialProgressStage {

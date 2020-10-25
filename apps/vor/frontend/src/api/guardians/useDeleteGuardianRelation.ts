@@ -1,6 +1,6 @@
 import { queryCache, useMutation } from "react-query"
-import { navigate } from "gatsby"
 import { ApiError, BASE_URL } from "../useApi"
+import { navigate } from "../../components/Link/Link"
 
 export const useDeleteGuardianRelation = (
   guardianId: string,

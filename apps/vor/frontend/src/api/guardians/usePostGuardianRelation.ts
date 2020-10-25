@@ -1,5 +1,5 @@
 import { queryCache, useMutation } from "react-query"
-import { navigate } from "gatsby"
+import { navigate } from "../../components/Link/Link"
 import { ApiError, BASE_URL } from "../useApi"
 import { Guardians } from "./useGetSchoolGuardians"
 

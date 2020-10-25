@@ -1,11 +1,6 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/browser-apis/
- */
-
-// You can delete this file if you're not using it
+import browserLang from "browser-lang"
 import "./src/global.css"
+import { withPrefix } from "gatsby"
 
 // Disabled because it currently breaks due to gatsby's changes.
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
@@ -77,4 +72,34 @@ export const onClientEntry = () => {
     }
     Sentry.setUser(user)
   })
+}
+
+const LANG_PREFERENCE_KEY = "preferred-lang"
+// For redirecting user to preferred language
+export const wrapPageElement = (params) => {
+  // find user preferred language
+  let preferredLang =
+    window.localStorage.getItem(LANG_PREFERENCE_KEY) ||
+    browserLang({
+      languages: ["en", "id"],
+      fallback: "en",
+    })
+
+  // Generate url with changed language
+  const { search } = params.props.location
+  const queryParams = search || ""
+  const newUrl = withPrefix(
+    `${preferredLang === "id" ? "/id" : ""}${
+      params.props.pageContext.originalPath
+    }${queryParams}`
+  )
+
+  // Save the preferred language and navigate away to it
+  window.localStorage.setItem(LANG_PREFERENCE_KEY, preferredLang)
+  if (window.location.pathname + queryParams !== newUrl) {
+    console.log(window.location.pathname + queryParams)
+    window.location.replace(newUrl)
+  }
+
+  return params.element
 }

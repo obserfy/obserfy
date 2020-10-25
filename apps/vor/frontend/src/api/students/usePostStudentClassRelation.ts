@@ -1,6 +1,6 @@
-import { navigate } from "gatsby"
 import { queryCache, useMutation } from "react-query"
 import { ApiError, BASE_URL } from "../useApi"
+import { navigate } from "../../components/Link/Link"
 
 const usePostStudentClassRelation = (studentId: string) => {
   const postStudentClassRelation = async (classId: string) => {
