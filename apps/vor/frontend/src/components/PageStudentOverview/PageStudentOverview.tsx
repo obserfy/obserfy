@@ -1,9 +1,8 @@
 /** @jsx jsx */
 import { FC, Fragment, useMemo, useState } from "react"
-import { navigate } from "gatsby"
 import { Box, Button, Flex, Image, jsx } from "theme-ui"
 import { t, Trans } from "@lingui/macro"
-import { Link } from "../Link/Link"
+import { Link, navigate } from "../Link/Link"
 import { useGetStudent } from "../../api/useGetStudent"
 import Typography from "../Typography/Typography"
 import Icon from "../Icon/Icon"
@@ -51,7 +50,7 @@ export const PageStudentOverview: FC<Props> = ({ id }) => {
             <BreadcrumbItem to={STUDENTS_URL}>
               <Trans>Students</Trans>
             </BreadcrumbItem>
-            <BreadcrumbItem>{student.data?.name.split(" ")[0]}</BreadcrumbItem>
+            <BreadcrumbItem>{student.data?.name?.split(" ")[0]}</BreadcrumbItem>
           </Breadcrumb>
         </Flex>
         <Flex sx={{ alignItems: "center" }} mx={3}>

@@ -116,8 +116,6 @@ const NavBarItem: FC<{
   // persist navigation state from each top-level sections
   useEffect(() => {
     if (match?.uri) {
-      console.log(match?.uri)
-      console.log(`url:${url}`)
       setTarget(url)
     }
   }, [url, match])
