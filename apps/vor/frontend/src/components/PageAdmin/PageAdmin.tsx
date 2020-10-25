@@ -92,7 +92,7 @@ export const PageAdmin: FC = () => {
         <Link to={ADMIN_INVITE_USER_URL}>
           <Flex p={3}>
             <Typography.Body>
-              <Trans>Invite your Team</Trans>
+              <Trans>Invite Your Team</Trans>
             </Typography.Body>
             <Icon as={NextIcon} ml="auto" />
           </Flex>
