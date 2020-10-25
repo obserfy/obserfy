@@ -4,9 +4,9 @@ import {
   queryCache,
   useMutation,
 } from "react-query"
-import { navigate } from "gatsby"
 import { ApiError, BASE_URL } from "../useApi"
 import { getSchoolId } from "../../hooks/schoolIdState"
+import { navigate } from "../../components/Link/Link"
 
 interface NewGuardian {
   name: string

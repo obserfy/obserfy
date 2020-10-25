@@ -1,5 +1,4 @@
 import React, { FC } from "react"
-import { navigate } from "gatsby"
 import { Box, Button, Card, Flex, useColorMode } from "theme-ui"
 import { Trans } from "@lingui/macro"
 import { useLocalization } from "gatsby-theme-i18n"
@@ -18,7 +17,7 @@ import Icon from "../Icon/Icon"
 import { ReactComponent as LightModeIcon } from "../../icons/light-mode.svg"
 import { ReactComponent as DarkModeIcon } from "../../icons/dark-mode.svg"
 import { ReactComponent as GlobeIcon } from "../../icons/globe.svg"
-import { Link } from "../Link/Link"
+import { Link, navigate } from "../Link/Link"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 
 export const PageAdmin: FC = () => {

@@ -1,5 +1,5 @@
-import { navigate } from "gatsby"
 import { useMutation } from "react-query"
+import { navigate } from "../components/Link/Link"
 
 interface PostSignUpRequestBody {
   name: string

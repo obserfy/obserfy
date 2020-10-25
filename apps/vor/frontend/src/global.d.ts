@@ -35,6 +35,7 @@ declare const Paddle: any
 
 interface Window {
   updateAvailable?: () => void
+  __GATSBY_LOCALE?: string
 }
 
 // TODO: stub gatsby-theme-i18n until proper typing is released.
