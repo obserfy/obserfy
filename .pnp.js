@@ -6632,7 +6632,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "nanoid",
-        "npm:3.1.14"
+        "npm:3.1.15"
       ],
       [
         "nanomatch",
@@ -38621,7 +38621,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["img-loader", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:3.0.2"],
             ["lqip-loader", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.2.1"],
             ["minio", "npm:7.0.16"],
-            ["nanoid", "npm:3.1.14"],
+            ["nanoid", "npm:3.1.15"],
             ["next", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:9.5.5"],
             ["next-compose-plugins", "npm:2.2.0"],
             ["next-optimized-images", "npm:3.0.0-canary.10"],
@@ -47714,10 +47714,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["nanoid", [
-        ["npm:3.1.14", {
-          "packageLocation": "./.yarn/cache/nanoid-npm-3.1.14-c2deccf4a3-8d372069a0.zip/node_modules/nanoid/",
+        ["npm:3.1.15", {
+          "packageLocation": "./.yarn/cache/nanoid-npm-3.1.15-196d9fcadc-b479fe5093.zip/node_modules/nanoid/",
           "packageDependencies": [
-            ["nanoid", "npm:3.1.14"]
+            ["nanoid", "npm:3.1.15"]
           ],
           "linkType": "HARD",
         }]
@@ -59886,7 +59886,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest-emotion", "npm:10.0.32"],
             ["jest-fetch-mock", "npm:3.0.3"],
             ["make-plural", "npm:6.2.2"],
-            ["nanoid", "npm:3.1.14"],
+            ["nanoid", "npm:3.1.15"],
             ["npm-run-all", "npm:4.1.5"],
             ["preact", "npm:10.5.5"],
             ["preact-render-to-string", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:5.1.11"],
