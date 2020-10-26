@@ -16581,7 +16581,7 @@ __metadata:
     faker: 5.1.0
     pnp-webpack-plugin: 1.6.4
     prettier: 2.1.2
-    typescript: 4.0.3
+    typescript: 4.0.5
     wait-on: 5.2.0
     webpack: 5.2.0
   languageName: unknown
@@ -19058,7 +19058,7 @@ __metadata:
     stylelint-config-prettier: 8.0.2
     stylelint-config-standard: 20.0.0
     tailwindcss: 1.9.6
-    typescript: 4.0.3
+    typescript: 4.0.5
     typescript-plugin-css-modules: 2.7.0
   languageName: unknown
   linkType: soft
@@ -19364,7 +19364,7 @@ fsevents@^1.2.7:
     stylelint-config-prettier: 8.0.2
     stylelint-config-standard: 20.0.0
     tailwindcss: 1.9.6
-    typescript: 4.0.3
+    typescript: 4.0.5
     uuid: 8.3.1
     webp-loader: 0.6.0
   languageName: unknown
@@ -36607,7 +36607,17 @@ resolve@^1.18.1:
   languageName: node
   linkType: hard
 
-"typescript@4.0.3, typescript@^4.0.0":
+typescript@4.0.5:
+  version: 4.0.5
+  resolution: "typescript@npm:4.0.5"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: ce94d4bbb914cc9d6fbd42e1476ab18c3292b262b8ba7ba76cd167a858545207a604e75bf1efbb75b8654c8f85deaa19795c3ef00098d7612855139b4ecc0240
+  languageName: node
+  linkType: hard
+
+typescript@^4.0.0:
   version: 4.0.3
   resolution: "typescript@npm:4.0.3"
   bin:
@@ -36617,7 +36627,17 @@ resolve@^1.18.1:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@4.0.3#builtin<compat/typescript>, typescript@patch:typescript@^4.0.0#builtin<compat/typescript>":
+"typescript@patch:typescript@4.0.5#builtin<compat/typescript>":
+  version: 4.0.5
+  resolution: "typescript@patch:typescript@npm%3A4.0.5#builtin<compat/typescript>::version=4.0.5&hash=5bf698"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: d4be0bd2a2050b2d7b132cb2a40329178f181543e9d2ac6d1f06babd9f047208558a736a7effdeb28759ae2e815f070b61d10ee2f02cc93a6221a1490f21ffce
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@^4.0.0#builtin<compat/typescript>":
   version: 4.0.3
   resolution: "typescript@patch:typescript@npm%3A4.0.3#builtin<compat/typescript>::version=4.0.3&hash=5bf698"
   bin:
@@ -37670,7 +37690,7 @@ resolve@^1.18.1:
     storybook-addon-deps: 2.1.3
     storybook-addon-i18n: 5.1.13
     theme-ui: 0.4.0-rc.5
-    typescript: 4.0.3
+    typescript: 4.0.5
     url-loader: 4.1.1
     use-immer: 0.4.1
     wait-on: 5.2.0
