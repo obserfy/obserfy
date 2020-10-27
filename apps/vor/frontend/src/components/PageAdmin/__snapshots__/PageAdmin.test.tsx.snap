@@ -497,6 +497,7 @@ exports[`PageAdmin should render correctly 1`] = `
       >
         <div
           class="emotion-26"
+          data-cy="switch-indonesian"
         >
           <div
             class="emotion-21"
