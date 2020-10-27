@@ -88,11 +88,14 @@ export const wrapPageElement = (params) => {
   // Generate url with changed language
   const { search } = params.props.location
   const queryParams = search || ""
-  const newUrl = withPrefix(
+  let newUrl = withPrefix(
     `${preferredLang === "id" ? "/id" : ""}${
       params.props.pageContext.originalPath
     }${queryParams}`
   )
+  // if original path is root, it will introduce trailing slashes
+  // this removes it
+  if (newUrl === `/${preferredLang}/`) newUrl = "/id"
 
   // Save the preferred language and navigate away to it
   window.localStorage.setItem(LANG_PREFERENCE_KEY, preferredLang)
