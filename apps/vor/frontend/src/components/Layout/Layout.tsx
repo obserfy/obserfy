@@ -1,5 +1,4 @@
 import React, { FC, useEffect, useState } from "react"
-import { navigate } from "gatsby"
 import { Box, Flex } from "theme-ui"
 import { useMatch } from "@reach/router"
 import { useBreakpointIndex } from "@theme-ui/match-media"
@@ -13,6 +12,7 @@ import { useGetUserProfile } from "../../api/useGetUserProfile"
 import Typography from "../Typography/Typography"
 import StudentsList from "../StudentsList/StudentsList"
 import { borderRight } from "../../border"
+import { navigate } from "../Link/Link"
 
 /** Top level component which encapsulate most pages. Provides Appbar and Sidebar for navigation.
  *

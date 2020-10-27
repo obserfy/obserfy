@@ -53,8 +53,8 @@ func (s *BaseTestSuite) SetupSuite() {
 	s.Server = rest.NewServer(zaptest.NewLogger(s.T()))
 }
 
-func connectTestDB() (*pg.DB, error) {
-	db := postgres.Connect(
+func connectTestDB() (db *pg.DB, err error) {
+	db = postgres.Connect(
 		"postgres",
 		"postgres",
 		"localhost:5432",
@@ -63,7 +63,7 @@ func connectTestDB() (*pg.DB, error) {
 
 	// Wait until connection is healthy
 	for {
-		_, err := db.Exec("SELECT 1")
+		err = db.Ping(db.Context())
 		if err == nil {
 			break
 		} else {
@@ -73,17 +73,19 @@ func connectTestDB() (*pg.DB, error) {
 		}
 	}
 
-	// This is required to reduce the test's flakyness
-	// Sometimes the test will on CI with ERROR #23505 duplicate key value violates unique constraint "pg_type_typname_nsp_index"
-	// We could just retry creating the tables when that happens.
-	err := postgres.InitTables(db)
-	if err != nil {
-		time.Sleep(time.Second)
-		err := postgres.InitTables(db)
-		if err != nil {
-			return nil, err
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Printf("create table panic captured: %s\n", r)
 		}
-	}
+	}()
+
+	// Create table in transaction, if it fails, probably tables are already created, so we can ignore the error.
+	_ = db.RunInTransaction(db.Context(), func(tx *pg.Tx) error {
+		if err := postgres.InitTables(tx); err != nil {
+			return err
+		}
+		return nil
+	})
 	return db, nil
 }
 
@@ -147,8 +149,11 @@ func (s *BaseTestSuite) GenerateStudent(school *postgres.School) *postgres.Stude
 	return &student
 }
 
-func (s *BaseTestSuite) GenerateMaterial() (postgres.Material, string) {
-	subject, userId := s.GenerateSubject()
+func (s *BaseTestSuite) GenerateMaterial(school *postgres.School) (postgres.Material, string) {
+	if school == nil {
+		school = s.GenerateSchool()
+	}
+	subject, userId := s.GenerateSubject(school)
 
 	// save subject
 	material := postgres.Material{
@@ -162,9 +167,12 @@ func (s *BaseTestSuite) GenerateMaterial() (postgres.Material, string) {
 	return material, userId
 }
 
-func (s *BaseTestSuite) GenerateSubject() (postgres.Subject, string) {
+func (s *BaseTestSuite) GenerateSubject(school *postgres.School) (postgres.Subject, string) {
+	if school == nil {
+		school = s.GenerateSchool()
+	}
 	// Save area
-	area, userId := s.GenerateArea()
+	area, userId := s.GenerateArea(school)
 
 	// save subject
 	originalSubject := postgres.Subject{
@@ -178,8 +186,11 @@ func (s *BaseTestSuite) GenerateSubject() (postgres.Subject, string) {
 	return originalSubject, userId
 }
 
-func (s *BaseTestSuite) GenerateArea() (postgres.Area, string) {
-	school := s.GenerateSchool()
+func (s *BaseTestSuite) GenerateArea(school *postgres.School) (postgres.Area, string) {
+	if school == nil {
+		school = s.GenerateSchool()
+	}
+
 	area := postgres.Area{
 		Id:           uuid.New().String(),
 		CurriculumId: school.CurriculumId,
@@ -218,10 +229,12 @@ func (s *BaseTestSuite) GenerateClass(school *postgres.School) *postgres.Class {
 	return &newClass
 }
 
-func (s *BaseTestSuite) GenerateLessonPlan() (postgres.LessonPlan, string) {
+func (s *BaseTestSuite) GenerateLessonPlan(school *postgres.School) (postgres.LessonPlan, string) {
 	t := s.T()
-	material, userid := s.GenerateMaterial()
-	school := &material.Subject.Area.Curriculum.Schools[0]
+	if school == nil {
+		school = s.GenerateSchool()
+	}
+	material, userid := s.GenerateMaterial(school)
 	class := s.GenerateClass(school)
 	student := s.GenerateStudent(school)
 

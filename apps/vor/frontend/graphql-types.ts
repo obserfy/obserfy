@@ -2154,9 +2154,6 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___svgo'
   | 'pluginCreator___pluginOptions___svgoConfig___removeViewBox'
   | 'pluginCreator___pluginOptions___svgoConfig___cleanupIDs'
-  | 'pluginCreator___pluginOptions___fonts'
-  | 'pluginCreator___pluginOptions___fonts___family'
-  | 'pluginCreator___pluginOptions___fonts___variants'
   | 'pluginCreator___pluginOptions___siteUrl'
   | 'pluginCreator___pluginOptions___color'
   | 'pluginCreator___pluginOptions___showSpinner'
@@ -2166,8 +2163,6 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___defaultLang'
   | 'pluginCreator___pluginOptions___configPath'
   | 'pluginCreator___pluginOptions___localeDir'
-  | 'pluginCreator___pluginOptions___analyzerPort'
-  | 'pluginCreator___pluginOptions___disable'
   | 'pluginCreator___pluginOptions___pathCheck'
   | 'pluginCreator___nodeAPIs'
   | 'pluginCreator___browserAPIs'
@@ -2380,9 +2375,6 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___svgo'
   | 'pluginOptions___svgoConfig___removeViewBox'
   | 'pluginOptions___svgoConfig___cleanupIDs'
-  | 'pluginOptions___fonts'
-  | 'pluginOptions___fonts___family'
-  | 'pluginOptions___fonts___variants'
   | 'pluginOptions___siteUrl'
   | 'pluginOptions___color'
   | 'pluginOptions___showSpinner'
@@ -2392,8 +2384,6 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___defaultLang'
   | 'pluginOptions___configPath'
   | 'pluginOptions___localeDir'
-  | 'pluginOptions___analyzerPort'
-  | 'pluginOptions___disable'
   | 'pluginOptions___pathCheck'
   | 'nodeAPIs'
   | 'browserAPIs'
@@ -2529,7 +2519,6 @@ export type SitePluginPluginOptions = {
   prettier?: Maybe<Scalars['Boolean']>;
   svgo?: Maybe<Scalars['Boolean']>;
   svgoConfig?: Maybe<SitePluginPluginOptionsSvgoConfig>;
-  fonts?: Maybe<Array<Maybe<SitePluginPluginOptionsFonts>>>;
   siteUrl?: Maybe<Scalars['String']>;
   color?: Maybe<Scalars['String']>;
   showSpinner?: Maybe<Scalars['Boolean']>;
@@ -2539,8 +2528,6 @@ export type SitePluginPluginOptions = {
   defaultLang?: Maybe<Scalars['String']>;
   configPath?: Maybe<Scalars['String']>;
   localeDir?: Maybe<Scalars['String']>;
-  analyzerPort?: Maybe<Scalars['Int']>;
-  disable?: Maybe<Scalars['Boolean']>;
   pathCheck?: Maybe<Scalars['Boolean']>;
 };
 
@@ -2567,7 +2554,6 @@ export type SitePluginPluginOptionsFilterInput = {
   prettier?: Maybe<BooleanQueryOperatorInput>;
   svgo?: Maybe<BooleanQueryOperatorInput>;
   svgoConfig?: Maybe<SitePluginPluginOptionsSvgoConfigFilterInput>;
-  fonts?: Maybe<SitePluginPluginOptionsFontsFilterListInput>;
   siteUrl?: Maybe<StringQueryOperatorInput>;
   color?: Maybe<StringQueryOperatorInput>;
   showSpinner?: Maybe<BooleanQueryOperatorInput>;
@@ -2577,23 +2563,7 @@ export type SitePluginPluginOptionsFilterInput = {
   defaultLang?: Maybe<StringQueryOperatorInput>;
   configPath?: Maybe<StringQueryOperatorInput>;
   localeDir?: Maybe<StringQueryOperatorInput>;
-  analyzerPort?: Maybe<IntQueryOperatorInput>;
-  disable?: Maybe<BooleanQueryOperatorInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
-};
-
-export type SitePluginPluginOptionsFonts = {
-  family?: Maybe<Scalars['String']>;
-  variants?: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-export type SitePluginPluginOptionsFontsFilterInput = {
-  family?: Maybe<StringQueryOperatorInput>;
-  variants?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePluginPluginOptionsFontsFilterListInput = {
-  elemMatch?: Maybe<SitePluginPluginOptionsFontsFilterInput>;
 };
 
 export type SitePluginPluginOptionsSvgoConfig = {

@@ -1,12 +1,13 @@
 import React, { FC } from "react"
 import { BoxProps } from "theme-ui"
+import { Trans } from "@lingui/macro"
 import Dialog from "../Dialog/Dialog"
 import { Typography } from "../Typography/Typography"
 import DialogHeader from "../DialogHeader/DialogHeader"
 
 interface Props extends BoxProps {
   title: string
-  negativeText: string
+  negativeText?: string
   positiveText: string
   onDismiss?: () => void
   onNegativeClick?: () => void
@@ -35,7 +36,7 @@ export const AlertDialog: FC<Props> = ({
       loading={loading}
     />
     <Typography.Body p={3} sx={{ backgroundColor: "background" }}>
-      {body}
+      <Trans id={body} />
     </Typography.Body>
   </Dialog>
 )

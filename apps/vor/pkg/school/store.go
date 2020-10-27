@@ -1,13 +1,11 @@
 package school
 
 import (
+	"github.com/chrsep/vor/pkg/domain"
 	"github.com/google/uuid"
+	"github.com/pkg/errors"
 	"mime/multipart"
 	"time"
-
-	"github.com/chrsep/vor/pkg/lessonplan"
-
-	"github.com/pkg/errors"
 )
 
 var (
@@ -159,7 +157,7 @@ type (
 		UpdateFile(fileId, fileName string) (*File, error)
 		GetLessonPlans(schoolId string, date time.Time) ([]LessonPlan, error)
 		GetLessonFiles(schoolId string) ([]File, error)
-		CreateLessonPlan(input lessonplan.PlanData) (*lessonplan.LessonPlan, error)
+		CreateLessonPlan(input domain.LessonPlan) (*domain.LessonPlan, error)
 		CreateImage(schoolId string, image multipart.File, header *multipart.FileHeader) (string, error)
 		GetUser(email string) (*User, error)
 		DeleteUser(schoolId string, userId string) error

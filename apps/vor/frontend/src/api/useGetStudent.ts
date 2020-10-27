@@ -1,5 +1,5 @@
-import { navigate } from "gatsby"
 import { QueryResult, useQuery } from "react-query"
+import { navigate } from "../components/Link/Link"
 import { BASE_URL } from "./useApi"
 
 export interface Student {

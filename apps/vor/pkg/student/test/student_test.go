@@ -111,7 +111,7 @@ func (s *StudentTestSuite) TestDeleteGuardian() {
 func (s *StudentTestSuite) TestGetLessonPlan() {
 	t := s.T()
 	gofakeit.Seed(time.Now().UnixNano())
-	lessonPlan, userId := s.GenerateLessonPlan()
+	lessonPlan, userId := s.GenerateLessonPlan(nil)
 
 	url := "/" + lessonPlan.Students[0].Id + "/plans?date=" + lessonPlan.Date.Format(time.RFC3339)
 	result := s.CreateRequest("GET", url, nil, &userId)
