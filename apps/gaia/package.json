@@ -19,7 +19,7 @@
     "@types/nanoid": "2.1.0",
     "@types/node": "14.14.5",
     "@types/pg": "7.14.5",
-    "@types/react": "16.9.53",
+    "@types/react": "16.9.54",
     "@types/react-query": "1.1.2",
     "@types/segment-analytics": "0.0.32",
     "@types/uuid": "8.3.0",
