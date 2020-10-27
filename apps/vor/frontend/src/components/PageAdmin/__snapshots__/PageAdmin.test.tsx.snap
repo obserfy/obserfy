@@ -15,7 +15,7 @@ exports[`PageAdmin should render correctly 1`] = `
   }
 }
 
-.emotion-40 {
+.emotion-38 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -23,12 +23,12 @@ exports[`PageAdmin should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-40 {
+  .emotion-38 {
     font-size: 20px;
   }
 }
 
-.emotion-39 {
+.emotion-37 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -37,46 +37,22 @@ exports[`PageAdmin should render correctly 1`] = `
   max-width: 640px;
 }
 
-.emotion-1 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  margin-bottom: 16px;
-  width: 100%;
-}
-
 .emotion-0 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  border-radius: 6px;
-  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
-  animation: 1s ease-in-out 0s infinite animation-0;
-  margin-top: 16px;
-  margin-bottom: 16px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 18rem;
-  height: 34px;
-}
-
-.emotion-2 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: bold;
-  line-height: heading;
-  color: var(--theme-ui-colors-text,#37383c);
-  text-rendering: optimizeLegibility;
-  font-size: 20px;
   margin-left: 16px;
   margin-right: 16px;
   margin-bottom: 16px;
   margin-top: 32px;
+  border-radius: 6px;
+  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
+  animation: 1s ease-in-out 0s infinite animation-0;
+  width: 10rem;
+  height: 27px;
 }
 
-.emotion-15 {
+.emotion-13 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -89,12 +65,12 @@ exports[`PageAdmin should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-15 {
+  .emotion-13 {
     border-radius: 6px;
   }
 }
 
-.emotion-5 {
+.emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -105,7 +81,7 @@ exports[`PageAdmin should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-3 {
+.emotion-1 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -115,7 +91,7 @@ exports[`PageAdmin should render correctly 1`] = `
   line-height: 1.5;
 }
 
-.emotion-4 {
+.emotion-2 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -130,7 +106,7 @@ exports[`PageAdmin should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-28 {
+.emotion-26 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -146,7 +122,7 @@ exports[`PageAdmin should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-23 {
+.emotion-21 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -160,14 +136,14 @@ exports[`PageAdmin should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-26 {
+.emotion-24 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   margin-left: 16px;
 }
 
-.emotion-24 {
+.emotion-22 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -179,7 +155,7 @@ exports[`PageAdmin should render correctly 1`] = `
   font-size: 12px;
 }
 
-.emotion-29 {
+.emotion-27 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -193,7 +169,7 @@ exports[`PageAdmin should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-38 {
+.emotion-36 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -210,21 +186,21 @@ exports[`PageAdmin should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-38 {
+  .emotion-36 {
     padding-left: 0;
     padding-right: 0;
   }
 }
 
 @media screen and (min-width:40em) {
-  .emotion-38 {
+  .emotion-36 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
   }
 }
 
-.emotion-36 {
+.emotion-34 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -292,31 +268,31 @@ exports[`PageAdmin should render correctly 1`] = `
   flex-shrink: 0;
 }
 
-.emotion-36:disabled {
+.emotion-34:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-36:hover,
-.emotion-36:focus {
+.emotion-34:hover,
+.emotion-34:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-36:hover:disabled,
-.emotion-36:focus:disabled {
+.emotion-34:hover:disabled,
+.emotion-34:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
 @media screen and (min-width:40em) {
-  .emotion-36 {
+  .emotion-34 {
     width: auto;
   }
 }
 
-.emotion-37 {
+.emotion-35 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -378,63 +354,56 @@ exports[`PageAdmin should render correctly 1`] = `
   color: var(--theme-ui-colors-danger,#d50000);
 }
 
-.emotion-37:disabled {
+.emotion-35:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-37:hover,
-.emotion-37:focus {
+.emotion-35:hover,
+.emotion-35:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-37:hover:disabled,
-.emotion-37:focus:disabled {
+.emotion-35:hover:disabled,
+.emotion-35:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
 @media screen and (min-width:40em) {
-  .emotion-37 {
+  .emotion-35 {
     margin-left: 8px;
   }
 }
 
 <div>
   <div
-    class="emotion-40"
+    class="emotion-38"
   >
     <div
-      class="emotion-39"
+      class="emotion-37"
     >
       <div
-        class="emotion-1"
-      >
-        <div
-          class="emotion-0"
-        />
-      </div>
-      <h6
-        class="emotion-2"
+        class="emotion-0"
       />
       <div
-        class="emotion-15"
+        class="emotion-13"
       >
         <a
           href="/dashboard/admin/curriculum"
         >
           <div
-            class="emotion-5"
+            class="emotion-3"
           >
             <p
-              class="emotion-3"
+              class="emotion-1"
             >
               Curriculum
             </p>
             <div
-              class="emotion-4"
+              class="emotion-2"
             />
           </div>
         </a>
@@ -442,15 +411,15 @@ exports[`PageAdmin should render correctly 1`] = `
           href="/dashboard/admin/class"
         >
           <div
-            class="emotion-5"
+            class="emotion-3"
           >
             <p
-              class="emotion-3"
+              class="emotion-1"
             >
               Class
             </p>
             <div
-              class="emotion-4"
+              class="emotion-2"
             />
           </div>
         </a>
@@ -458,15 +427,15 @@ exports[`PageAdmin should render correctly 1`] = `
           href="/dashboard/admin/students"
         >
           <div
-            class="emotion-5"
+            class="emotion-3"
           >
             <p
-              class="emotion-3"
+              class="emotion-1"
             >
               All Students
             </p>
             <div
-              class="emotion-4"
+              class="emotion-2"
             />
           </div>
         </a>
@@ -474,35 +443,35 @@ exports[`PageAdmin should render correctly 1`] = `
           href="/dashboard/admin/guardians"
         >
           <div
-            class="emotion-5"
+            class="emotion-3"
           >
             <p
-              class="emotion-3"
+              class="emotion-1"
             >
               All Guardians
             </p>
             <div
-              class="emotion-4"
+              class="emotion-2"
             />
           </div>
         </a>
       </div>
       <div
-        class="emotion-15"
+        class="emotion-13"
       >
         <a
           href="/dashboard/admin/users"
         >
           <div
-            class="emotion-5"
+            class="emotion-3"
           >
             <p
-              class="emotion-3"
+              class="emotion-1"
             >
               Users
             </p>
             <div
-              class="emotion-4"
+              class="emotion-2"
             />
           </div>
         </a>
@@ -510,82 +479,82 @@ exports[`PageAdmin should render correctly 1`] = `
           href="/dashboard/admin/inviteUser"
         >
           <div
-            class="emotion-5"
+            class="emotion-3"
           >
             <p
-              class="emotion-3"
+              class="emotion-1"
             >
               Invite Your Team
             </p>
             <div
-              class="emotion-4"
+              class="emotion-2"
             />
           </div>
         </a>
       </div>
       <div
-        class="emotion-15"
+        class="emotion-13"
       >
         <div
-          class="emotion-28"
+          class="emotion-26"
         >
           <div
-            class="emotion-23"
+            class="emotion-21"
           />
           <div
-            class="emotion-26"
+            class="emotion-24"
           >
             <p
-              class="emotion-24"
+              class="emotion-22"
             >
               Language
             </p>
             <p
-              class="emotion-3"
+              class="emotion-1"
             >
               English
             </p>
           </div>
           <div
-            class="emotion-4"
+            class="emotion-2"
           />
         </div>
         <div
-          class="emotion-28"
+          class="emotion-26"
           data-cy="dark-switch"
         >
           <div
-            class="emotion-29"
+            class="emotion-27"
           />
           <div
-            class="emotion-26"
+            class="emotion-24"
           >
             <p
-              class="emotion-24"
+              class="emotion-22"
             >
               Theme
             </p>
             <p
-              class="emotion-3"
+              class="emotion-1"
             >
               Light
             </p>
           </div>
           <div
-            class="emotion-4"
+            class="emotion-2"
           />
         </div>
       </div>
       <div
-        class="emotion-38"
+        class="emotion-36"
       >
         <button
-          class="emotion-36"
+          class="emotion-34"
         >
           Switch school
         </button>
         <button
-          class="emotion-37"
+          class="emotion-35"
         >
           Log Out
         </button>

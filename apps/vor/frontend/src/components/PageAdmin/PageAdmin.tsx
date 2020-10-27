@@ -35,16 +35,18 @@ export const PageAdmin: FC = () => {
 
   return (
     <Box sx={{ maxWidth: "maxWidth.sm" }} m="auto" pb={5}>
-      <Box sx={{ width: "100%" }} mb={3}>
-        {schoolDetail.status === "loading" && !schoolDetail.data?.name && (
-          <LoadingPlaceholder
-            sx={{ my: 3, mx: "auto", width: "18rem", height: 34 }}
-          />
-        )}
-      </Box>
-      <Typography.H6 mx={3} mb={3} mt={4}>
-        {schoolDetail.data?.name}
-      </Typography.H6>
+      {schoolDetail.status === "loading" ? (
+        <LoadingPlaceholder
+          sx={{ width: "10rem", height: 27 }}
+          mx={3}
+          mb={3}
+          mt={4}
+        />
+      ) : (
+        <Typography.H6 mx={3} mb={3} mt={4} sx={{ height: 27 }}>
+          {schoolDetail.data?.name}
+        </Typography.H6>
+      )}
       <Card mb={3} sx={{ borderRadius: [0, "default"] }}>
         <Link to={ADMIN_CURRICULUM_URL}>
           <Flex p={3}>
