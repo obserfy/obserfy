@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.11.16](https://github.com/obserfy/obserfy/compare/v1.11.15...v1.11.16) (2020-10-27)
+
+
+### Bug Fixes
+
+* **deps:** pin dependencies ([66bee49](https://github.com/obserfy/obserfy/commit/66bee49dc39f4b62e5de2c8d988466f00167ce9f))
+* **deps:** update dependency @prefresh/next to v1.3.1 ([62d1db9](https://github.com/obserfy/obserfy/commit/62d1db969515b52f99bd12831a43e43ad15a03b7))
+* **deps:** update dependency @sentry/tracing to v5.27.0 ([2a7d354](https://github.com/obserfy/obserfy/commit/2a7d35442dc5655a69b868160297f57792ceab25))
+* **deps:** update dependency @sentry/tracing to v5.27.1 ([3b590b8](https://github.com/obserfy/obserfy/commit/3b590b829f5fea01764f46bd940583ce96b9d5a1))
+* **deps:** update dependency @types/node to v14.11.11 ([#1183](https://github.com/obserfy/obserfy/issues/1183)) ([cd03224](https://github.com/obserfy/obserfy/commit/cd032241e2502c9bd6bf7cab254e2be53876bb3b))
+* **deps:** update dependency @types/node to v14.14.0 ([326f366](https://github.com/obserfy/obserfy/commit/326f366535ea389b773f06ff1088fdec7036ef7c))
+* **deps:** update dependency @types/node to v14.14.1 ([68bf6d7](https://github.com/obserfy/obserfy/commit/68bf6d7b1d96b06314bd4be6e414af341949aba7))
+* **deps:** update dependency @types/node to v14.14.2 ([209bfb2](https://github.com/obserfy/obserfy/commit/209bfb22ff7bba826c66e3a6f0cb184cc21be179))
+* **deps:** update dependency dayjs to v1.9.4 ([00debe3](https://github.com/obserfy/obserfy/commit/00debe366888648ab538b69d4128be06374e4afe))
+* **deps:** update dependency immer to v7.0.10 ([#1189](https://github.com/obserfy/obserfy/issues/1189)) ([6e680e1](https://github.com/obserfy/obserfy/commit/6e680e182d4329765778aafd0fe9bf788af906e3))
+* **deps:** update dependency immer to v7.0.14 ([fd2ff46](https://github.com/obserfy/obserfy/commit/fd2ff4625caeea413849dc9b64eef1e1d5bb9c51))
+* **deps:** update dependency nanoid to v3.1.13 ([c658fc1](https://github.com/obserfy/obserfy/commit/c658fc10b9d8848c66f5e95fc82c52da4a91d464))
+* **deps:** update dependency nanoid to v3.1.14 ([b754337](https://github.com/obserfy/obserfy/commit/b7543373b1fa8d4160f9b4951de6b4c92f2285f7))
+* **deps:** update dependency nanoid to v3.1.15 ([#1206](https://github.com/obserfy/obserfy/issues/1206)) ([6e6e146](https://github.com/obserfy/obserfy/commit/6e6e146ec1fc256cfd00e9ee1906c2e9669a14dd))
+* **deps:** update dependency preact to v10.5.5 ([acc2ff6](https://github.com/obserfy/obserfy/commit/acc2ff642facb481c0a346480761478eadeb0291))
+* **deps:** update dependency preact-render-to-string to v5.1.11 ([9773983](https://github.com/obserfy/obserfy/commit/9773983ec5c292961ac0d04996351423a6f040b1))
+* **deps:** update dependency react-query to v2.25.2 ([fbd58fc](https://github.com/obserfy/obserfy/commit/fbd58fc92cbb1659f04e7010f38e4a1b334786aa))
+* **deps:** update dependency react-refresh to v0.9.0 ([da1712b](https://github.com/obserfy/obserfy/commit/da1712bf391114d0a9f05722f32bbf6619ea6bc2))
+* **deps:** update dependency tailwindcss to v1.9.5 ([#1180](https://github.com/obserfy/obserfy/issues/1180)) ([0d1fd4c](https://github.com/obserfy/obserfy/commit/0d1fd4c166dcb8cb2910f32cc3ccb513225e23fd))
+* **deps:** update dependency tailwindcss to v1.9.6 ([be7c42e](https://github.com/obserfy/obserfy/commit/be7c42ef90565253e2941a74dd86b8e4297f99a4))
+* **deps:** update gatsby ([8d1ee1b](https://github.com/obserfy/obserfy/commit/8d1ee1b96eb51d7ff973c12d554d6419485841d2))
+* **deps:** update lingui monorepo to v3.0.0-21 ([#1185](https://github.com/obserfy/obserfy/issues/1185)) ([90e163a](https://github.com/obserfy/obserfy/commit/90e163ab5be1638f5869f83d6c39eec2d4ab33a5))
+
 ### [1.11.15](https://github.com/obserfy/obserfy/compare/v1.11.14...v1.11.15) (2020-10-18)
 
 ### [1.11.14](https://github.com/obserfy/obserfy/compare/v1.11.13...v1.11.14) (2020-10-17)
