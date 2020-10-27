@@ -184,8 +184,8 @@ exports[`MultilineDataBox should render correctly 1`] = `
         <div
           class="emotion-3"
         />
-        Edit 
-        
+        Edit
+         
       </button>
     </div>
   </div>

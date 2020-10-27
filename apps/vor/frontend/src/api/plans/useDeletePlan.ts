@@ -2,7 +2,7 @@ import { queryCache, useMutation } from "react-query"
 import { getSchoolId } from "../../hooks/schoolIdState"
 import { deleteApi } from "../fetchApi"
 
-const useDeletePlans = (planId: string) => {
+const useDeletePlan = (planId: string) => {
   const deleteClass = deleteApi(`/plans/${planId}`)
 
   return useMutation(deleteClass, {
@@ -13,4 +13,4 @@ const useDeletePlans = (planId: string) => {
   })
 }
 
-export default useDeletePlans
+export default useDeletePlan

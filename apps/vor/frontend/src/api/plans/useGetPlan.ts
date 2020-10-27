@@ -1,4 +1,4 @@
-import { useQuery } from "react-query"
+import { queryCache, useQuery } from "react-query"
 import { getApi } from "../fetchApi"
 
 export interface GetPlanResponseBody {
@@ -15,11 +15,24 @@ export interface GetPlanResponseBody {
     description?: string
     image?: string
   }>
+  relatedStudents: Array<{
+    id: string
+    name: string
+    profileImageUrl?: string
+  }>
 }
 const useGetPlan = (id: string) => {
   const getPlan = getApi<GetPlanResponseBody>(`/plans/${id}`)
 
   return useQuery(["plan", id], getPlan)
+}
+
+export const getPlanCache = (id: string) => {
+  return queryCache.getQueryData<GetPlanResponseBody>(["plan", id])
+}
+
+export const setPlanCache = (id: string, plan: GetPlanResponseBody) => {
+  return queryCache.setQueryData<GetPlanResponseBody>(["plan", id], plan)
 }
 
 export default useGetPlan

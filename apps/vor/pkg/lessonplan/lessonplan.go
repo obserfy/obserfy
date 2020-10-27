@@ -2,18 +2,38 @@ package lessonplan
 
 import (
 	"github.com/chrsep/vor/pkg/auth"
-	"github.com/google/uuid"
-	"net/http"
-	"time"
-
+	"github.com/chrsep/vor/pkg/domain"
+	"github.com/chrsep/vor/pkg/imgproxy"
+	"github.com/chrsep/vor/pkg/rest"
 	"github.com/go-chi/chi"
 	"github.com/go-pg/pg/v10"
 	"github.com/go-playground/validator/v10"
+	"github.com/google/uuid"
 	"github.com/pkg/errors"
-
-	"github.com/chrsep/vor/pkg/rest"
 	richErrors "github.com/pkg/errors"
+	"net/http"
+	"time"
 )
+
+type Store interface {
+	UpdateLessonPlan(
+		Id string,
+		Title *string,
+		Description *string,
+		Date *time.Time,
+		Repetition *domain.RepetitionPattern,
+		AreaId *string,
+		MaterialId *string,
+		ClassId *string,
+	) (int, error)
+	GetLessonPlan(planId string) (*domain.LessonPlan, error)
+	DeleteLessonPlan(planId string) error
+	DeleteLessonPlanFile(planId, fileId string) error
+	AddLinkToLessonPlan(planId string, link domain.Link) error
+	CheckPermission(userId string, planId string) (bool, error)
+	AddRelatedStudents(planId string, studentIds []uuid.UUID) ([]domain.Student, error)
+	DeleteRelatedStudent(planId string, studentId string) error
+}
 
 func NewRouter(server rest.Server, store Store) *chi.Mux {
 	r := chi.NewRouter()
@@ -27,9 +47,13 @@ func NewRouter(server rest.Server, store Store) *chi.Mux {
 		r.Method("DELETE", "/file/{fileId}", deleteLessonPlanFile(server, store))
 
 		r.Method("POST", "/links", postLink(server, store))
+
+		r.Method("POST", "/students", postNewRelatedStudents(server, store))
+		r.Method("DELETE", "/students/{studentId}", deleteRelatedStudent(server, store))
 	})
 	return r
 }
+
 func authorizationMiddleware(s rest.Server, store Store) func(next http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
 		return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
@@ -87,7 +111,7 @@ func postLink(server rest.Server, store Store) http.Handler {
 			return rest.NewParseJsonError(err)
 		}
 
-		if err := store.AddLinkToLessonPlan(planId, Link{
+		if err := store.AddLinkToLessonPlan(planId, domain.Link{
 			Url:         body.Url,
 			Image:       body.Image,
 			Title:       body.Title,
@@ -106,6 +130,11 @@ func postLink(server rest.Server, store Store) http.Handler {
 }
 
 func getLessonPlan(server rest.Server, store Store) http.Handler {
+	type student struct {
+		Id              string `json:"id"`
+		Name            string `json:"name"`
+		ProfileImageUrl string `json:"profileImageUrl,omitempty"`
+	}
 	type link struct {
 		Id          uuid.UUID `json:"id"`
 		Url         string    `json:"url"`
@@ -114,14 +143,15 @@ func getLessonPlan(server rest.Server, store Store) http.Handler {
 		Description string    `json:"description"`
 	}
 	type resBody struct {
-		Id          string    `json:"id"`
-		Title       string    `json:"title"`
-		Description string    `json:"description"`
-		ClassId     string    `json:"classId"`
-		Date        time.Time `json:"date"`
-		AreaId      string    `json:"areaId"`
-		MaterialId  string    `json:"materialId"`
-		Links       []link    `json:"links"`
+		Id              string    `json:"id"`
+		Title           string    `json:"title"`
+		Description     string    `json:"description"`
+		ClassId         string    `json:"classId"`
+		Date            time.Time `json:"date"`
+		AreaId          string    `json:"areaId"`
+		MaterialId      string    `json:"materialId"`
+		Links           []link    `json:"links"`
+		RelatedStudents []student `json:"relatedStudents"`
 	}
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		planId := chi.URLParam(r, "planId")
@@ -153,6 +183,16 @@ func getLessonPlan(server rest.Server, store Store) http.Handler {
 				Description: l.Description,
 			})
 		}
+		for _, s := range plan.Students {
+			item := student{
+				Id:   s.Id,
+				Name: s.Name,
+			}
+			if s.ProfileImage.ObjectKey != "" {
+				item.ProfileImageUrl = imgproxy.GenerateUrl(s.ProfileImage.ObjectKey, 32, 32)
+			}
+			response.RelatedStudents = append(response.RelatedStudents, item)
+		}
 		if err := rest.WriteJson(w, response); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
@@ -171,7 +211,6 @@ func patchLessonPlan(server rest.Server, store Store) http.Handler {
 	}
 
 	validate := validator.New()
-
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		planId := chi.URLParam(r, "planId")
 
@@ -187,16 +226,16 @@ func patchLessonPlan(server rest.Server, store Store) http.Handler {
 			}
 		}
 
-		planInput := UpdatePlanData{
-			Id:          planId,
-			Title:       body.Title,
-			Description: body.Description,
-			Date:        body.Date,
-			AreaId:      body.AreaId,
-			MaterialId:  body.MaterialId,
-			ClassId:     body.ClassId,
-		}
-		rowsAffected, err := store.UpdateLessonPlan(planInput)
+		rowsAffected, err := store.UpdateLessonPlan(
+			planId,
+			body.Title,
+			body.Description,
+			body.Date,
+			nil, // TODO: we should handle repetition
+			body.AreaId,
+			body.MaterialId,
+			body.ClassId,
+		)
 		if err != nil {
 			return &rest.Error{
 				Code:    http.StatusInternalServerError,
@@ -261,6 +300,62 @@ func deleteLessonPlanFile(server rest.Server, store Store) http.Handler {
 				Message: "Failed to delete file on lesson plan",
 				Error:   err,
 			}
+		}
+
+		w.WriteHeader(http.StatusOK)
+		return nil
+	})
+}
+
+func postNewRelatedStudents(s rest.Server, store Store) http.Handler {
+	type requestBody struct {
+		StudentIds []uuid.UUID `json:"studentIds"`
+	}
+	type student struct {
+		Id              string `json:"id"`
+		Name            string `json:"name"`
+		ProfileImageUrl string `json:"profileImageUrl,omitempty"`
+	}
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		planId := chi.URLParam(r, "planId")
+
+		var body requestBody
+		if err := rest.ParseJson(r.Body, &body); err != nil {
+			return rest.NewParseJsonError(err)
+		}
+
+		relatedStudents, err := store.AddRelatedStudents(planId, body.StudentIds)
+		if err != nil {
+			return rest.NewInternalServerError(err, "failed to save lesson plan related student to DB")
+		}
+
+		response := make([]student, 0)
+		for _, s := range relatedStudents {
+			newStudent := student{
+				Id:   s.Id,
+				Name: s.Name,
+			}
+			if s.ProfileImage.ObjectKey != "" {
+				newStudent.ProfileImageUrl = imgproxy.GenerateUrl(s.ProfileImage.ObjectKey, 32, 32)
+			}
+			response = append(response, newStudent)
+		}
+
+		w.WriteHeader(http.StatusCreated)
+		if err := rest.WriteJson(w, &response); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
+		return nil
+	})
+}
+
+func deleteRelatedStudent(s rest.Server, store Store) http.Handler {
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		planId := chi.URLParam(r, "planId")
+		studentId := chi.URLParam(r, "studentId")
+
+		if err := store.DeleteRelatedStudent(planId, studentId); err != nil {
+			return rest.NewInternalServerError(err, "failed to delete lesson plan related student to DB")
 		}
 
 		w.WriteHeader(http.StatusOK)

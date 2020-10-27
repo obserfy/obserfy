@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { FC } from "react"
-import { SxStyleProp, Box, jsx } from "theme-ui"
+import { Box, jsx, SxStyleProp } from "theme-ui"
 import { Link } from "../Link/Link"
 
 interface Props {
@@ -22,7 +22,7 @@ export const BreadcrumbItem: FC<Props> = ({ to, children }) => {
 
   if (to) {
     return (
-      <Link to={to} sx={sx}>
+      <Link to={to} sx={sx} state={{ preserveScroll: true }}>
         <span sx={{ "&:hover": { textDecoration: "underline" } }}>
           {children}
         </span>
