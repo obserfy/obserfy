@@ -28,9 +28,10 @@ describe("test adding new student", () => {
     )
   })
 
-  it("should be able to add student multiple times", () => {
+  it("should be able to switch language", () => {
     cy.visit("/dashboard/admin")
-    cy.contains("English").click()
+    cy.wait(250) // wait for event handler to register
+    cy.get("[data-cy=switch-indonesian]").click()
     cy.contains("Indonesian").should("be.visible")
 
     cy.visit("/")
@@ -40,7 +41,8 @@ describe("test adding new student", () => {
     )
     cy.contains("Admin").click()
 
-    cy.contains("Indonesian").click()
+    cy.contains("Indonesian").should("be.visible")
+    cy.get("[data-cy=switch-english]").click()
     cy.contains("English").should("be.visible")
     cy.visit("/")
     cy.url().should("equals", `${Cypress.config().baseUrl}/dashboard/students`)

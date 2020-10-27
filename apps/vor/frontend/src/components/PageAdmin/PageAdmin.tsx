@@ -151,6 +151,7 @@ const I18nButton = () => {
           `${locale === "id" ? "" : "/id"}/dashboard/admin`
         )
       }}
+      data-cy={locale === "en" ? "switch-indonesian" : "switch-english"}
     >
       <Icon as={GlobeIcon} fill="background" />
       <Box ml={3}>
