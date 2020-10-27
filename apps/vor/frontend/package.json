@@ -90,7 +90,7 @@
     "babel-preset-gatsby": "0.5.14",
     "chromatic": "5.2.0",
     "cross-env": "7.0.2",
-    "eslint": "7.12.0",
+    "eslint": "7.12.1",
     "eslint-config-airbnb-typescript": "12.0.0",
     "eslint-config-prettier": "6.14.0",
     "eslint-import-resolver-node": "0.3.4",
