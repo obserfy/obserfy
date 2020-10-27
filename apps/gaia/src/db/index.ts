@@ -86,7 +86,8 @@ export const findLessonPlanByChildIdAndDate = async (
                           left join lesson_plan_to_students lpts on lp.id = lpts.lesson_plan_id
                           left join areas a on lpd.area_id = a.id
                           left join observations o on lp.id = o.lesson_plan_id
-                 where lpts.student_id = $1
+                 where lpts.student_id = $1 
+                   AND (o.student_id is NULL or o.student_id = $1)
                    AND ($2::date IS NULL OR lp.date::date = $2::date)
                  group by lp.id, lpd.title, lpd.description, a.name, a.id, lp.date, lpd.id
              ) as observations
