@@ -16542,7 +16542,7 @@ __metadata:
     prettier: 2.1.2
     typescript: 4.0.5
     wait-on: 5.2.0
-    webpack: 5.2.0
+    webpack: 5.3.0
   languageName: unknown
   linkType: soft
 
@@ -16796,13 +16796,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"enhanced-resolve@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "enhanced-resolve@npm:5.3.0"
+"enhanced-resolve@npm:^5.3.1":
+  version: 5.3.1
+  resolution: "enhanced-resolve@npm:5.3.1"
   dependencies:
     graceful-fs: ^4.2.4
     tapable: ^2.0.0
-  checksum: 36c06556c43b6fd731ec43c79f67f12cf231f3748d36288dd6728d1a30032d600d97a70cbb4b14dad168837cd1b9a065fc23e5436c0e9c5d37e911278e640348
+  checksum: 1689ec43477bc31b8fd78737ce3f278bebeab0e97426662d966fc722dc5d5dfac8c9279e3467b9918e7e51590e37eb84bc751a67b047e71e8ca34615c729f42e
   languageName: node
   linkType: hard
 
@@ -37744,7 +37744,7 @@ typescript@^4.0.0:
     url-loader: 4.1.1
     use-immer: 0.4.1
     wait-on: 5.2.0
-    webpack: 5.2.0
+    webpack: 5.3.0
   languageName: unknown
   linkType: soft
 
@@ -38097,7 +38097,7 @@ typescript@^4.0.0:
   languageName: node
   linkType: hard
 
-"webpack-sources@npm:*, webpack-sources@npm:^2.0.1":
+"webpack-sources@npm:*":
   version: 2.0.1
   resolution: "webpack-sources@npm:2.0.1"
   dependencies:
@@ -38114,6 +38114,16 @@ typescript@^4.0.0:
     source-list-map: ^2.0.0
     source-map: ~0.6.1
   checksum: 2a753b36adf0ddd4dadf6ff375824108a918d180c4ea5383b377526f543e6db0c1ecd40b4154bae8e94c4b209b7814d764879691a468fe230ef9eb32b27fdde4
+  languageName: node
+  linkType: hard
+
+"webpack-sources@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "webpack-sources@npm:2.1.0"
+  dependencies:
+    source-list-map: ^2.0.1
+    source-map: ^0.6.1
+  checksum: 3950d59661b33ecbfaa0dc4d96a118f2d5e6f9f1b3a24ba5cdb0575758745698035949beac486f52a9e9a69bd94dce5f5a138125632117b1ab708220929e9cda
   languageName: node
   linkType: hard
 
@@ -38174,9 +38184,9 @@ typescript@^4.0.0:
   languageName: node
   linkType: hard
 
-"webpack@npm:5.2.0":
-  version: 5.2.0
-  resolution: "webpack@npm:5.2.0"
+"webpack@npm:5.3.0":
+  version: 5.3.0
+  resolution: "webpack@npm:5.3.0"
   dependencies:
     "@types/eslint-scope": ^3.7.0
     "@types/estree": ^0.0.45
@@ -38187,7 +38197,7 @@ typescript@^4.0.0:
     acorn: ^8.0.4
     browserslist: ^4.14.5
     chrome-trace-event: ^1.0.2
-    enhanced-resolve: ^5.3.0
+    enhanced-resolve: ^5.3.1
     eslint-scope: ^5.1.1
     events: ^3.2.0
     glob-to-regexp: ^0.4.1
@@ -38201,13 +38211,13 @@ typescript@^4.0.0:
     tapable: ^2.0.0
     terser-webpack-plugin: ^5.0.0
     watchpack: ^2.0.0
-    webpack-sources: ^2.0.1
+    webpack-sources: ^2.1.0
   peerDependenciesMeta:
     webpack-cli:
       optional: true
   bin:
     webpack: bin/webpack.js
-  checksum: 1f91563c2512e9068c9d76f45479fd3c6d9652f490c428d36ce9f5311979609e363e58b0cf8f23019185cd335e72d00a48911a9c1da1b34f0d7a6265eab7e5c4
+  checksum: 039d91f1ea7f64d8258d94caf17ac65d5880a1b6474aec2ed8ace109b863fbad9fcf427e14a59d15a7ca61d72248e259a72e4e227fe716685882c7f77ac77fe8
   languageName: node
   linkType: hard
 
