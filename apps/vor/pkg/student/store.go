@@ -8,7 +8,7 @@ import (
 )
 
 type Store interface {
-	InsertObservation(studentId string, creatorId string, longDesc string, shortDesc string, category string, eventTime time.Time, images []uuid.UUID, areaId uuid.UUID) (*postgres.Observation, error)
+	InsertObservation(studentId string, creatorId string, longDesc string, shortDesc string, category string, eventTime time.Time, images []uuid.UUID, areaId uuid.UUID, visibleToGuardians bool) (*postgres.Observation, error)
 	GetObservations(studentId string) ([]postgres.Observation, error)
 	GetProgress(studentId string) ([]postgres.StudentMaterialProgress, error)
 	UpdateProgress(progress postgres.StudentMaterialProgress) (*postgres.StudentMaterialProgress, error)
