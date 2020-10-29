@@ -200,23 +200,24 @@ type StudentToClass struct {
 }
 
 type Observation struct {
-	Id           string `json:"id" pg:",type:uuid,default:uuid_generate_v4()"`
-	StudentId    string `pg:",type:uuid,on_delete:CASCADE"`
-	Student      *Student
-	ShortDesc    string    `json:"shortDesc"`
-	LongDesc     string    `json:"longDesc"`
-	CategoryId   string    `json:"categoryId"`
-	CreatedDate  time.Time `json:"createdDate"`
-	EventTime    time.Time
-	CreatorId    string `pg:",type:uuid,on_delete:SET NULL"`
-	Creator      *User
-	LessonPlan   LessonPlan
-	LessonPlanId string `pg:"type:uuid,on_delete:SET NULL"`
-	Guardian     Guardian
-	GuardianId   string `pg:"type:uuid,on_delete:SET NULL"`
-	Area         Area
-	AreaId       uuid.UUID `pg:"type:uuid,on_delete:SET NULL"`
-	Images       []Image   `pg:"many2many:observation_to_images,join_fk:image_id"`
+	Id              string `json:"id" pg:",type:uuid,default:uuid_generate_v4()"`
+	StudentId       string `pg:",type:uuid,on_delete:CASCADE"`
+	Student         *Student
+	ShortDesc       string    `json:"shortDesc"`
+	LongDesc        string    `json:"longDesc"`
+	CategoryId      string    `json:"categoryId"`
+	CreatedDate     time.Time `json:"createdDate"`
+	EventTime       time.Time
+	CreatorId       string `pg:",type:uuid,on_delete:SET NULL"`
+	Creator         *User
+	LessonPlan      LessonPlan
+	LessonPlanId    string `pg:"type:uuid,on_delete:SET NULL"`
+	Guardian        Guardian
+	GuardianId      string `pg:"type:uuid,on_delete:SET NULL"`
+	Area            Area
+	AreaId          uuid.UUID `pg:"type:uuid,on_delete:SET NULL"`
+	Images          []Image   `pg:"many2many:observation_to_images,join_fk:image_id"`
+	VisibleToParent bool      `pg:"default:false"`
 }
 
 type ObservationToImage struct {
