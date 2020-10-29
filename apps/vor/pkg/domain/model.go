@@ -14,18 +14,19 @@ type (
 	}
 
 	Observation struct {
-		Id          string
-		StudentId   string
-		StudentName string
-		ShortDesc   string
-		LongDesc    string
-		CategoryId  string
-		CreatedDate time.Time
-		EventTime   time.Time
-		CreatorId   string
-		CreatorName string
-		Images      []Image
-		Area        Area
+		Id                 string
+		StudentId          string
+		StudentName        string
+		ShortDesc          string
+		LongDesc           string
+		CategoryId         string
+		CreatedDate        time.Time
+		EventTime          time.Time
+		CreatorId          string
+		CreatorName        string
+		Images             []Image
+		Area               Area
+		VisibleToGuardians bool
 	}
 
 	// Curriculum data

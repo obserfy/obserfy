@@ -24,7 +24,7 @@ func NewRouter(s rest.Server, store Store) *chi.Mux {
 		r.Method("POST", "/observations", postObservation(s, store))
 		r.Method("GET", "/observations", getObservation(s, store))
 
-		r.Method("POST", "/attendances", postAttaendances(s, store))
+		r.Method("POST", "/attendances", postAttendance(s, store))
 		r.Method("GET", "/attendances", getAttendance(s, store))
 
 		r.Method("GET", "/materialsProgress", getMaterialProgress(s, store))
@@ -115,7 +115,7 @@ func authorizationMiddleware(s rest.Server, store Store) func(next http.Handler)
 		})
 	}
 }
-func postAttaendances(s rest.Server, store Store) http.Handler {
+func postAttendance(s rest.Server, store Store) http.Handler {
 	type requestBody struct {
 		StudentId string    `json:"studentId"`
 		ClassId   string    `json:"classId"`
@@ -233,7 +233,7 @@ func getStudent(s rest.Server, store Store) http.Handler {
 			if err != nil {
 				return &rest.Error{
 					Code:    http.StatusInternalServerError,
-					Message: "can't find student to guardian relatin",
+					Message: "can't find student to guardian relation",
 					Error:   err,
 				}
 			}
@@ -339,12 +339,13 @@ func patchStudent(s rest.Server, store Store) http.Handler {
 
 func postObservation(s rest.Server, store Store) http.Handler {
 	type requestBody struct {
-		ShortDesc  string      `json:"shortDesc"`
-		LongDesc   string      `json:"longDesc"`
-		CategoryId string      `json:"categoryId"`
-		EventTime  *time.Time  `json:"eventTime"`
-		Images     []uuid.UUID `json:"images"`
-		AreaId     uuid.UUID   `json:"areaId"`
+		ShortDesc          string      `json:"shortDesc"`
+		LongDesc           string      `json:"longDesc"`
+		CategoryId         string      `json:"categoryId"`
+		EventTime          *time.Time  `json:"eventTime"`
+		Images             []uuid.UUID `json:"images"`
+		AreaId             uuid.UUID   `json:"areaId"`
+		VisibleToGuardians bool        `json:"visibleToGuardians"`
 	}
 
 	type area struct {
@@ -357,16 +358,17 @@ func postObservation(s rest.Server, store Store) http.Handler {
 		OriginalUrl  string    `json:"originalUrl"`
 	}
 	type responseBody struct {
-		Id          string    `json:"id"`
-		ShortDesc   string    `json:"shortDesc"`
-		LongDesc    string    `json:"longDesc"`
-		CategoryId  string    `json:"categoryId"`
-		CreatedDate time.Time `json:"createdDate"`
-		EventTime   time.Time `json:"eventTime"`
-		Images      []image   `json:"images"`
-		Area        *area     `json:"area,omitempty"`
-		CreatorId   string    `json:"creatorId,omitempty"`
-		CreatorName string    `json:"creatorName,omitempty"`
+		Id                 string    `json:"id"`
+		ShortDesc          string    `json:"shortDesc"`
+		LongDesc           string    `json:"longDesc"`
+		CategoryId         string    `json:"categoryId"`
+		CreatedDate        time.Time `json:"createdDate"`
+		EventTime          time.Time `json:"eventTime"`
+		Images             []image   `json:"images"`
+		Area               *area     `json:"area,omitempty"`
+		CreatorId          string    `json:"creatorId,omitempty"`
+		CreatorName        string    `json:"creatorName,omitempty"`
+		VisibleToGuardians bool      `json:"visibleToGuardians"`
 	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		id := chi.URLParam(r, "studentId")
@@ -396,6 +398,7 @@ func postObservation(s rest.Server, store Store) http.Handler {
 			eventTime,
 			body.Images,
 			body.AreaId,
+			body.VisibleToGuardians,
 		)
 		if err != nil {
 			return &rest.Error{
@@ -415,15 +418,16 @@ func postObservation(s rest.Server, store Store) http.Handler {
 		}
 
 		response := responseBody{
-			Id:          observation.Id,
-			ShortDesc:   observation.ShortDesc,
-			LongDesc:    observation.LongDesc,
-			CategoryId:  observation.CategoryId,
-			EventTime:   observation.EventTime,
-			Images:      images,
-			CreatorId:   observation.CreatorId,
-			CreatorName: observation.Creator.Name,
-			CreatedDate: observation.CreatedDate,
+			Id:                 observation.Id,
+			ShortDesc:          observation.ShortDesc,
+			LongDesc:           observation.LongDesc,
+			CategoryId:         observation.CategoryId,
+			EventTime:          observation.EventTime,
+			Images:             images,
+			CreatorId:          observation.CreatorId,
+			CreatorName:        observation.Creator.Name,
+			CreatedDate:        observation.CreatedDate,
+			VisibleToGuardians: observation.VisibleToGuardians,
 		}
 		if observation.AreaId != uuid.Nil {
 			response.Area = &area{
