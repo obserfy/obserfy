@@ -17,13 +17,7 @@ import (
 )
 
 type Store interface {
-	UpdateObservation(observationId string,
-		shortDesc *string,
-		longDesc *string,
-		eventTime *time.Time,
-		areaId *uuid.UUID,
-		categoryId *uuid.UUID,
-	) (*domain.Observation, error)
+	UpdateObservation(observationId string, shortDesc *string, longDesc *string, eventTime *time.Time, areaId *uuid.UUID, categoryId *uuid.UUID, visibleToGuardian *bool) (*domain.Observation, error)
 	DeleteObservation(observationId string) error
 	GetObservation(id string) (*domain.Observation, error)
 	CheckPermissions(observationId string, userId string) (bool, error)
@@ -168,11 +162,12 @@ func getObservation(s rest.Server, store Store) http.Handler {
 
 func patchObservation(s rest.Server, store Store) rest.Handler {
 	type requestBody struct {
-		LongDesc   *string    `json:"longDesc"`
-		ShortDesc  *string    `json:"shortDesc"`
-		EventTime  *time.Time `json:"eventTime,omitempty"`
-		AreaId     *string    `json:"areaId"`
-		CategoryId *string    `json:"categoryId"`
+		LongDesc           *string    `json:"longDesc"`
+		ShortDesc          *string    `json:"shortDesc"`
+		EventTime          *time.Time `json:"eventTime,omitempty"`
+		AreaId             *string    `json:"areaId"`
+		CategoryId         *string    `json:"categoryId"`
+		VisibleToGuardians *bool      `json:"visibleToGuardians"`
 	}
 
 	type area struct {
@@ -185,15 +180,16 @@ func patchObservation(s rest.Server, store Store) rest.Handler {
 		OriginalUrl  string    `json:"originalUrl"`
 	}
 	type responseBody struct {
-		Id          string    `json:"id"`
-		ShortDesc   string    `json:"shortDesc"`
-		LongDesc    string    `json:"longDesc"`
-		CreatedDate time.Time `json:"createdDate"`
-		EventTime   time.Time `json:"eventTime"`
-		Images      []image   `json:"images"`
-		Area        *area     `json:"area,omitempty"`
-		CreatorId   string    `json:"creatorId,omitempty"`
-		CreatorName string    `json:"creatorName,omitempty"`
+		Id                 string    `json:"id"`
+		ShortDesc          string    `json:"shortDesc"`
+		LongDesc           string    `json:"longDesc"`
+		CreatedDate        time.Time `json:"createdDate"`
+		EventTime          time.Time `json:"eventTime"`
+		Images             []image   `json:"images"`
+		Area               *area     `json:"area,omitempty"`
+		CreatorId          string    `json:"creatorId,omitempty"`
+		CreatorName        string    `json:"creatorName,omitempty"`
+		VisibleToGuardians bool      `json:"visibleToGuardians"`
 	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		observationId := chi.URLParam(r, "observationId")
@@ -229,6 +225,7 @@ func patchObservation(s rest.Server, store Store) rest.Handler {
 			body.EventTime,
 			areaId,
 			categoryId,
+			body.VisibleToGuardians,
 		)
 		if err != nil {
 			return &rest.Error{
@@ -239,13 +236,14 @@ func patchObservation(s rest.Server, store Store) rest.Handler {
 		}
 
 		response := responseBody{
-			Id:          observation.Id,
-			ShortDesc:   observation.ShortDesc,
-			LongDesc:    observation.LongDesc,
-			CreatedDate: observation.CreatedDate,
-			EventTime:   observation.EventTime,
-			CreatorId:   observation.CreatorId,
-			CreatorName: observation.CreatorName,
+			Id:                 observation.Id,
+			ShortDesc:          observation.ShortDesc,
+			LongDesc:           observation.LongDesc,
+			CreatedDate:        observation.CreatedDate,
+			EventTime:          observation.EventTime,
+			CreatorId:          observation.CreatorId,
+			CreatorName:        observation.CreatorName,
+			VisibleToGuardians: observation.VisibleToGuardians,
 		}
 		if observation.Area.Id != "" {
 			response.Area = &area{

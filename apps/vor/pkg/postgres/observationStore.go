@@ -80,14 +80,7 @@ func (s ObservationStore) CheckPermissions(observationId string, userId string) 
 	}
 }
 
-func (s ObservationStore) UpdateObservation(
-	observationId string,
-	shortDesc *string,
-	longDesc *string,
-	eventTime *time.Time,
-	areaId *uuid.UUID,
-	categoryId *uuid.UUID,
-) (*domain.Observation, error) {
+func (s ObservationStore) UpdateObservation(observationId string, shortDesc *string, longDesc *string, eventTime *time.Time, areaId *uuid.UUID, categoryId *uuid.UUID, visibleToGuardian *bool) (*domain.Observation, error) {
 	// Create model to update the data
 	model := make(PartialUpdateModel)
 	model.AddStringColumn("long_desc", longDesc)
@@ -95,6 +88,7 @@ func (s ObservationStore) UpdateObservation(
 	model.AddUUIDColumn("category_id", categoryId)
 	model.AddDateColumn("event_time", eventTime)
 	model.AddUUIDColumn("area_id", areaId)
+	model.AddBooleanColumn("visible_to_guardians", visibleToGuardian)
 
 	if _, err := s.Model(model.GetModel()).
 		TableExpr("observations").
@@ -116,14 +110,15 @@ func (s ObservationStore) UpdateObservation(
 	}
 
 	result := domain.Observation{
-		Id:          observation.Id,
-		StudentId:   observation.StudentId,
-		StudentName: observation.Student.Name,
-		ShortDesc:   observation.ShortDesc,
-		LongDesc:    observation.LongDesc,
-		CategoryId:  observation.CategoryId,
-		CreatedDate: observation.CreatedDate,
-		EventTime:   observation.EventTime,
+		Id:                 observation.Id,
+		StudentId:          observation.StudentId,
+		StudentName:        observation.Student.Name,
+		ShortDesc:          observation.ShortDesc,
+		LongDesc:           observation.LongDesc,
+		CategoryId:         observation.CategoryId,
+		CreatedDate:        observation.CreatedDate,
+		EventTime:          observation.EventTime,
+		VisibleToGuardians: observation.VisibleToGuardians,
 	}
 	if observation.AreaId != uuid.Nil {
 		result.Area = domain.Area{
