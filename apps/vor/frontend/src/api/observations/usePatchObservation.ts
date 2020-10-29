@@ -9,6 +9,7 @@ interface RequestBody {
   eventTime?: Dayjs
   areaId?: string
   categoryId?: string
+  visibleToGuardian?: boolean
 }
 const usePatchObservation = (observationId: string) => {
   const patchObservation = patchApi<RequestBody>(
