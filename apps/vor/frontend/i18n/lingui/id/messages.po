@@ -65,13 +65,13 @@ msgstr "Admin"
 msgid "All"
 msgstr "Semua"
 
-#: src/components/PageAdmin/PageAdmin.tsx:73
+#: src/components/PageAdmin/PageAdmin.tsx:70
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:36
 #: src/components/PageListOfGuardians/PageListOfGuardians.tsx:24
 msgid "All Guardians"
 msgstr "Semua Wali Murid"
 
-#: src/components/PageAdmin/PageAdmin.tsx:65
+#: src/components/PageAdmin/PageAdmin.tsx:62
 #: src/components/PageListOfStudents/PageListOfStudents.tsx:34
 msgid "All Students"
 msgstr "Semua Murid"
@@ -120,7 +120,7 @@ msgstr "Batalkan Paket"
 msgid "Change Area"
 msgstr "Ubah area"
 
-#: src/components/PageAdmin/PageAdmin.tsx:57
+#: src/components/PageAdmin/PageAdmin.tsx:54
 msgid "Class"
 msgstr "Kelas"
 
@@ -146,7 +146,7 @@ msgstr "Dibuat oleh"
 msgid "Current Plan"
 msgstr "Paket Sekarang"
 
-#: src/components/PageAdmin/PageAdmin.tsx:49
+#: src/components/PageAdmin/PageAdmin.tsx:46
 msgid "Curriculum"
 msgstr "Kurikulum"
 
@@ -158,7 +158,7 @@ msgstr "Perkembangan Kurikulum"
 msgid "Daily"
 msgstr "Harian"
 
-#: src/components/PageAdmin/PageAdmin.tsx:144
+#: src/components/PageAdmin/PageAdmin.tsx:141
 msgid "Dark"
 msgstr ""
 
@@ -323,7 +323,7 @@ msgstr "Dalam Proses"
 msgid "Info"
 msgstr "Info"
 
-#: src/components/PageAdmin/PageAdmin.tsx:92
+#: src/components/PageAdmin/PageAdmin.tsx:89
 msgid "Invite Your Team"
 msgstr "Undang Tim Anda"
 
@@ -335,11 +335,11 @@ msgstr "Undang dengan email"
 msgid "Invite using link"
 msgstr "Undang dengan link"
 
-#: src/components/PageAdmin/PageAdmin.tsx:126
+#: src/components/PageAdmin/PageAdmin.tsx:123
 msgid "Language"
 msgstr ""
 
-#: src/components/PageAdmin/PageAdmin.tsx:144
+#: src/components/PageAdmin/PageAdmin.tsx:141
 msgid "Light"
 msgstr ""
 
@@ -348,7 +348,7 @@ msgstr ""
 msgid "Links"
 msgstr "Tautan"
 
-#: src/components/PageAdmin/PageAdmin.tsx:109
+#: src/components/PageAdmin/PageAdmin.tsx:106
 msgid "Log Out"
 msgstr "Keluar"
 
@@ -694,7 +694,7 @@ msgstr "Minggu"
 msgid "Support"
 msgstr "Bantuan"
 
-#: src/components/PageAdmin/PageAdmin.tsx:106
+#: src/components/PageAdmin/PageAdmin.tsx:103
 msgid "Switch school"
 msgstr "Pindah sekolah"
 
@@ -710,7 +710,7 @@ msgstr "Beri tahu kami tentang kelas anda."
 msgid "The term <0>&quot;{term}&quot;</0> does not match any student"
 msgstr ""
 
-#: src/components/PageAdmin/PageAdmin.tsx:141
+#: src/components/PageAdmin/PageAdmin.tsx:138
 msgid "Theme"
 msgstr ""
 
@@ -759,7 +759,7 @@ msgstr "Unggah Foto"
 msgid "User/month"
 msgstr "Pengguna/bulan"
 
-#: src/components/PageAdmin/PageAdmin.tsx:84
+#: src/components/PageAdmin/PageAdmin.tsx:81
 msgid "Users"
 msgstr "Pengguna"
 

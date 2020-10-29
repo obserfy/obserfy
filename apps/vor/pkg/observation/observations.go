@@ -90,17 +90,18 @@ func getObservation(s rest.Server, store Store) http.Handler {
 		OriginalUrl  string    `json:"originalUrl"`
 	}
 	type responseBody struct {
-		Id          string    `json:"id"`
-		StudentName string    `json:"studentName"`
-		CategoryId  string    `json:"categoryId"`
-		CreatorId   string    `json:"creatorId,omitempty"`
-		CreatorName string    `json:"creatorName,omitempty"`
-		LongDesc    string    `json:"longDesc"`
-		ShortDesc   string    `json:"shortDesc"`
-		CreatedDate time.Time `json:"createdDate"`
-		EventTime   time.Time `json:"eventTime,omitempty"`
-		Area        *area     `json:"area"`
-		Images      []image   `json:"images"`
+		Id                 string    `json:"id"`
+		StudentName        string    `json:"studentName"`
+		CategoryId         string    `json:"categoryId"`
+		CreatorId          string    `json:"creatorId,omitempty"`
+		CreatorName        string    `json:"creatorName,omitempty"`
+		LongDesc           string    `json:"longDesc"`
+		ShortDesc          string    `json:"shortDesc"`
+		CreatedDate        time.Time `json:"createdDate"`
+		EventTime          time.Time `json:"eventTime,omitempty"`
+		Area               *area     `json:"area"`
+		Images             []image   `json:"images"`
+		VisibleToGuardians bool      `json:"visibleToGuardians"`
 	}
 	validate := validator.New()
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
@@ -131,13 +132,14 @@ func getObservation(s rest.Server, store Store) http.Handler {
 		}
 
 		response := responseBody{
-			Id:          observation.Id,
-			StudentName: observation.StudentName,
-			CategoryId:  observation.CategoryId,
-			LongDesc:    observation.LongDesc,
-			ShortDesc:   observation.ShortDesc,
-			EventTime:   observation.EventTime,
-			CreatedDate: observation.CreatedDate,
+			Id:                 observation.Id,
+			StudentName:        observation.StudentName,
+			CategoryId:         observation.CategoryId,
+			LongDesc:           observation.LongDesc,
+			ShortDesc:          observation.ShortDesc,
+			EventTime:          observation.EventTime,
+			CreatedDate:        observation.CreatedDate,
+			VisibleToGuardians: observation.VisibleToGuardians,
 		}
 		if observation.CreatorId != "" {
 			response.CreatorId = observation.CreatorId
