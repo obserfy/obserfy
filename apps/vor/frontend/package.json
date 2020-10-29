@@ -88,7 +88,7 @@
     "babel-plugin-macros": "2.8.0",
     "babel-plugin-transform-default-import": "1.0.0",
     "babel-preset-gatsby": "0.5.14",
-    "chromatic": "5.2.0",
+    "chromatic": "5.3.0",
     "cross-env": "7.0.2",
     "eslint": "7.12.1",
     "eslint-config-airbnb-typescript": "12.0.0",
