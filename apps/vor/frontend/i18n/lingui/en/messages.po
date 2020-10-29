@@ -65,13 +65,13 @@ msgstr "Admin"
 msgid "All"
 msgstr "All"
 
-#: src/components/PageAdmin/PageAdmin.tsx:73
+#: src/components/PageAdmin/PageAdmin.tsx:70
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:36
 #: src/components/PageListOfGuardians/PageListOfGuardians.tsx:24
 msgid "All Guardians"
 msgstr "All Guardians"
 
-#: src/components/PageAdmin/PageAdmin.tsx:65
+#: src/components/PageAdmin/PageAdmin.tsx:62
 #: src/components/PageListOfStudents/PageListOfStudents.tsx:34
 msgid "All Students"
 msgstr "All Students"
@@ -120,7 +120,7 @@ msgstr "Cancel Plan"
 msgid "Change Area"
 msgstr "Change Area"
 
-#: src/components/PageAdmin/PageAdmin.tsx:57
+#: src/components/PageAdmin/PageAdmin.tsx:54
 msgid "Class"
 msgstr "Class"
 
@@ -146,7 +146,7 @@ msgstr "Created by"
 msgid "Current Plan"
 msgstr "Current Plan"
 
-#: src/components/PageAdmin/PageAdmin.tsx:49
+#: src/components/PageAdmin/PageAdmin.tsx:46
 msgid "Curriculum"
 msgstr "Curriculum"
 
@@ -158,7 +158,7 @@ msgstr "Curriculum Progress"
 msgid "Daily"
 msgstr "Daily"
 
-#: src/components/PageAdmin/PageAdmin.tsx:144
+#: src/components/PageAdmin/PageAdmin.tsx:141
 msgid "Dark"
 msgstr "Dark"
 
@@ -323,7 +323,7 @@ msgstr "In Progress"
 msgid "Info"
 msgstr "Info"
 
-#: src/components/PageAdmin/PageAdmin.tsx:92
+#: src/components/PageAdmin/PageAdmin.tsx:89
 msgid "Invite Your Team"
 msgstr "Invite Your Team"
 
@@ -335,11 +335,11 @@ msgstr "Invite using emails"
 msgid "Invite using link"
 msgstr "Invite using link"
 
-#: src/components/PageAdmin/PageAdmin.tsx:126
+#: src/components/PageAdmin/PageAdmin.tsx:123
 msgid "Language"
 msgstr "Language"
 
-#: src/components/PageAdmin/PageAdmin.tsx:144
+#: src/components/PageAdmin/PageAdmin.tsx:141
 msgid "Light"
 msgstr "Light"
 
@@ -348,7 +348,7 @@ msgstr "Light"
 msgid "Links"
 msgstr "Links"
 
-#: src/components/PageAdmin/PageAdmin.tsx:109
+#: src/components/PageAdmin/PageAdmin.tsx:106
 msgid "Log Out"
 msgstr "Log Out"
 
@@ -694,7 +694,7 @@ msgstr "Sunday"
 msgid "Support"
 msgstr "Support"
 
-#: src/components/PageAdmin/PageAdmin.tsx:106
+#: src/components/PageAdmin/PageAdmin.tsx:103
 msgid "Switch school"
 msgstr "Switch school"
 
@@ -710,7 +710,7 @@ msgstr "Tell us about your classes, We&apos;ll help you track your students atte
 msgid "The term <0>&quot;{term}&quot;</0> does not match any student"
 msgstr "The term <0>&quot;{term}&quot;</0> does not match any student"
 
-#: src/components/PageAdmin/PageAdmin.tsx:141
+#: src/components/PageAdmin/PageAdmin.tsx:138
 msgid "Theme"
 msgstr "Theme"
 
@@ -759,7 +759,7 @@ msgstr "Upload Photo"
 msgid "User/month"
 msgstr "User/month"
 
-#: src/components/PageAdmin/PageAdmin.tsx:84
+#: src/components/PageAdmin/PageAdmin.tsx:81
 msgid "Users"
 msgstr "Users"
 

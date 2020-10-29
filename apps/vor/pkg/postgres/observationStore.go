@@ -30,13 +30,14 @@ func (s ObservationStore) GetObservation(id string) (*domain.Observation, error)
 	}
 
 	result := domain.Observation{
-		Id:          observation.Id,
-		StudentName: observation.Student.Name,
-		CategoryId:  observation.CategoryId,
-		LongDesc:    observation.LongDesc,
-		ShortDesc:   observation.ShortDesc,
-		EventTime:   observation.EventTime,
-		CreatedDate: observation.CreatedDate,
+		Id:                 observation.Id,
+		StudentName:        observation.Student.Name,
+		CategoryId:         observation.CategoryId,
+		LongDesc:           observation.LongDesc,
+		ShortDesc:          observation.ShortDesc,
+		EventTime:          observation.EventTime,
+		CreatedDate:        observation.CreatedDate,
+		VisibleToGuardians: observation.VisibleToGuardians,
 	}
 	if observation.Creator != nil {
 		result.CreatorId = observation.Creator.Id

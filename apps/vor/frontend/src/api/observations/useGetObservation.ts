@@ -20,6 +20,7 @@ interface Observation {
     originalUrl: string
     thumbnailUrl: string
   }>
+  visibleToGuardian: boolean
 }
 const useGetObservation = (observationId: string) => {
   const getObservation = getApi<Observation>(`/observations/${observationId}`)
