@@ -418,6 +418,12 @@ func (u *PartialUpdateModel) AddStringColumn(name string, value *string) {
 	}
 }
 
+func (u *PartialUpdateModel) AddBooleanColumn(name string, value *bool) {
+	if value != nil {
+		(*u)[name] = value
+	}
+}
+
 func (u *PartialUpdateModel) AddDateColumn(name string, value *time.Time) {
 	if value != nil {
 		(*u)[name] = value
