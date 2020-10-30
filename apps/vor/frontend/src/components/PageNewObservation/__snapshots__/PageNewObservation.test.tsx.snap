@@ -23,8 +23,8 @@ exports[`PageNewObservation should render correctly 1`] = `
   position: sticky;
   top: 0;
   border-bottom-width: 1px;
-  border-bottom-color: var(--theme-ui-colors-borderSolid,rgba(0,0,0,.1));
   border-bottom-style: solid;
+  border-bottom-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
 @supports (-webkit-backdrop-filter:blur(20px)) or (backdrop-filter:blur(20px)) {
@@ -44,15 +44,15 @@ exports[`PageNewObservation should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   margin: auto;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   max-width: 640px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .emotion-2 {
@@ -499,13 +499,13 @@ exports[`PageNewObservation should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   margin-bottom: 8px;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .emotion-29 {
@@ -675,10 +675,6 @@ exports[`PageNewObservation should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -686,6 +682,10 @@ exports[`PageNewObservation should render correctly 1`] = `
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .emotion-35 {
