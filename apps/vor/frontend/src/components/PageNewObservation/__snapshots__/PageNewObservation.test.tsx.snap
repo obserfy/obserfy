@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageNewObservation should render correctly 1`] = `
-.emotion-38 {
+.emotion-43 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -9,7 +9,7 @@ exports[`PageNewObservation should render correctly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .emotion-38 {
+  .emotion-43 {
     font-size: 20px;
   }
 }
@@ -288,7 +288,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   background-color: var(--theme-ui-colors-primary,#00e399);
 }
 
-.emotion-37 {
+.emotion-42 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -371,7 +371,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   font-size: 16px;
   padding: 12px;
   color: var(--theme-ui-colors-text,#37383c);
-  margin-bottom: 16px;
+  margin-bottom: 8px;
   width: 100%;
 }
 
@@ -403,7 +403,110 @@ exports[`PageNewObservation should render correctly 1`] = `
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
+.emotion-22 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin-bottom: 16px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.emotion-21 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+}
+
+.emotion-18 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.emotion-19 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: none;
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-right: 8px;
+  border-radius: 4px;
+  color: var(--theme-ui-colors-gray,#dddddf);
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+input:checked ~ .emotion-19 {
+  display: block;
+}
+
+input:checked ~ .emotion-19 {
+  color: var(--theme-ui-colors-primary,#00e399);
+}
+
+input:focus ~ .emotion-19 {
+  color: var(--theme-ui-colors-primary,#00e399);
+  background-color: var(--theme-ui-colors-highlight,hsla(205,100%,40%,0.125));
+}
+
 .emotion-20 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: block;
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-right: 8px;
+  border-radius: 4px;
+  color: var(--theme-ui-colors-gray,#dddddf);
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+input:checked ~ .emotion-20 {
+  display: none;
+}
+
+input:checked ~ .emotion-20 {
+  color: var(--theme-ui-colors-primary,#00e399);
+}
+
+input:focus ~ .emotion-20 {
+  color: var(--theme-ui-colors-primary,#00e399);
+  background-color: var(--theme-ui-colors-highlight,hsla(205,100%,40%,0.125));
+}
+
+.emotion-25 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -428,7 +531,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   flex-direction: column;
 }
 
-.emotion-19 {
+.emotion-24 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -456,33 +559,33 @@ exports[`PageNewObservation should render correctly 1`] = `
   margin-bottom: 16px;
 }
 
-.emotion-19:hover,
-.emotion-19:focus {
+.emotion-24:hover,
+.emotion-24:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-19::-webkit-input-placeholder {
+.emotion-24::-webkit-input-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-19::-moz-placeholder {
+.emotion-24::-moz-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-19:-ms-input-placeholder {
+.emotion-24:-ms-input-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-19::placeholder {
+.emotion-24::placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-21 {
+.emotion-26 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -494,7 +597,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
 }
 
-.emotion-22 {
+.emotion-27 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -508,7 +611,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-29 {
+.emotion-34 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -519,7 +622,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-24 {
+.emotion-29 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -547,35 +650,35 @@ exports[`PageNewObservation should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-24:hover,
-.emotion-24:focus {
+.emotion-29:hover,
+.emotion-29:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-24::-webkit-input-placeholder {
+.emotion-29::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-24::-moz-placeholder {
+.emotion-29::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-24:-ms-input-placeholder {
+.emotion-29:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-24::placeholder {
+.emotion-29::placeholder {
   font-style: italic;
 }
 
-.emotion-24:disabled {
+.emotion-29:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
 }
 
-.emotion-28 {
+.emotion-33 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -639,25 +742,25 @@ exports[`PageNewObservation should render correctly 1`] = `
   flex-shrink: 0;
 }
 
-.emotion-28:disabled {
+.emotion-33:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-28:hover,
-.emotion-28:focus {
+.emotion-33:hover,
+.emotion-33:focus {
   background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-28:hover:disabled,
-.emotion-28:focus:disabled {
+.emotion-33:hover:disabled,
+.emotion-33:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-27 {
+.emotion-32 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -671,7 +774,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-36 {
+.emotion-41 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -688,7 +791,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-35 {
+.emotion-40 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -721,11 +824,11 @@ exports[`PageNewObservation should render correctly 1`] = `
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
 }
 
-.emotion-35:hover {
+.emotion-40:hover {
   border-color: var(--theme-ui-colors-primary,#00e399);
 }
 
-.emotion-32 {
+.emotion-37 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -752,29 +855,29 @@ exports[`PageNewObservation should render correctly 1`] = `
   display: none;
 }
 
-.emotion-32:hover,
-.emotion-32:focus {
+.emotion-37:hover,
+.emotion-37:focus {
   border-color: var(--theme-ui-colors-primary,#00e399);
   outline: none;
 }
 
-.emotion-32::-webkit-input-placeholder {
+.emotion-37::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-32::-moz-placeholder {
+.emotion-37::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-32:-ms-input-placeholder {
+.emotion-37:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-32::placeholder {
+.emotion-37::placeholder {
   font-style: italic;
 }
 
-.emotion-32:disabled {
+.emotion-37:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
@@ -782,7 +885,7 @@ exports[`PageNewObservation should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-38"
+    class="emotion-43"
   >
     <div
       class="emotion-13"
@@ -854,7 +957,7 @@ exports[`PageNewObservation should render correctly 1`] = `
       </div>
     </div>
     <div
-      class="emotion-37"
+      class="emotion-42"
     >
       <label
         class="emotion-17"
@@ -875,7 +978,46 @@ exports[`PageNewObservation should render correctly 1`] = `
         </div>
       </label>
       <label
-        class="emotion-20"
+        class="emotion-22"
+      >
+        <div
+          class="emotion-21"
+        >
+          <input
+            class="emotion-18"
+            type="checkbox"
+          />
+          <svg
+            aria-hidden="true"
+            class="emotion-19"
+            fill="currentcolor"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+            />
+          </svg>
+          <svg
+            aria-hidden="true"
+            class="emotion-20"
+            fill="currentcolor"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+            />
+          </svg>
+        </div>
+        Visible to guardians
+      </label>
+      <label
+        class="emotion-25"
       >
         <div
           class="emotion-14"
@@ -884,20 +1026,20 @@ exports[`PageNewObservation should render correctly 1`] = `
         </div>
         <textarea
           aria-label="Details"
-          class="emotion-19"
+          class="emotion-24"
           placeholder="Tell us what you observed"
         />
       </label>
       <p
-        class="emotion-21"
+        class="emotion-26"
       >
         Related Area
       </p>
       <div
-        class="emotion-22"
+        class="emotion-27"
       />
       <div
-        class="emotion-29"
+        class="emotion-34"
       >
         <label
           class="emotion-17"
@@ -911,7 +1053,7 @@ exports[`PageNewObservation should render correctly 1`] = `
             class="emotion-16"
           >
             <input
-              class="emotion-24"
+              class="emotion-29"
               disabled=""
               placeholder="Not set"
               value="Wednesday, 27 Jun 2018"
@@ -919,27 +1061,27 @@ exports[`PageNewObservation should render correctly 1`] = `
           </div>
         </label>
         <button
-          class="emotion-28"
+          class="emotion-33"
           data-cy="Event Time"
         >
           <div
-            class="emotion-27"
+            class="emotion-32"
           />
         </button>
       </div>
       <p
-        class="emotion-21"
+        class="emotion-26"
       >
         Attach Images
       </p>
       <div
-        class="emotion-36"
+        class="emotion-41"
       >
         <label
-          class="emotion-35"
+          class="emotion-40"
         >
           <div
-            class="emotion-27"
+            class="emotion-32"
           />
           <label
             class="emotion-17"
@@ -949,7 +1091,7 @@ exports[`PageNewObservation should render correctly 1`] = `
             >
               <input
                 accept="image/*"
-                class="emotion-32"
+                class="emotion-37"
                 type="file"
                 value=""
               />

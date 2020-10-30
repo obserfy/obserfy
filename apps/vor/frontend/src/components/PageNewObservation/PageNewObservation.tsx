@@ -25,6 +25,7 @@ import { borderBottom, borderFull } from "../../border"
 import ImagePreviewOverlay from "../ImagePreviewOverlay/ImagePreviewOverlay"
 import { getFirstName } from "../../domain/person"
 import useVisibilityState from "../../hooks/useVisibilityState"
+import Checkbox from "../Checkbox/Checkbox"
 
 interface Props {
   studentId: string
@@ -39,6 +40,7 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
   const [images, setImages] = useImmer<Array<{ id: string; file: File }>>([])
   const [eventTime, setEventTime] = useState(dayjs())
   const [areaId, setAreaId] = useState<string>()
+  const [visibleToGuardians, setVisibleToGuardians] = useState(false)
 
   async function submit(): Promise<void> {
     const response = await postNewObservation({
@@ -47,6 +49,7 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
       shortDesc,
       eventTime,
       areaId,
+      visibleToGuardians,
     })
 
     if (response?.ok) {
@@ -92,7 +95,12 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
           placeholder={t`What have you found?`}
           onChange={(e) => setShortDesc(e.target.value)}
           value={shortDesc}
-          mb={3}
+          mb={2}
+        />
+        <Checkbox
+          label={t` Visible to guardians `}
+          value={visibleToGuardians}
+          onChange={setVisibleToGuardians}
         />
         <TextArea
           label={t`Details`}
