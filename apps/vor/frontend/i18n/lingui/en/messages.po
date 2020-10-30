@@ -699,28 +699,32 @@ msgid "Switch school"
 msgstr "Switch school"
 
 #: src/components/PageClassSettings/PageClassSettings.tsx:61
-msgid "Tell us about your classes, We&apos;ll help you track your students attendance."
-msgstr "Tell us about your classes, We&apos;ll help you track your students attendance."
+#~ msgid "Tell us about your classes, We&apos;ll help you track your students attendance."
+#~ msgstr "Tell us about your classes, We&apos;ll help you track your students attendance."
 
 #: src/components/PageClassSettings/PageClassSettings.tsx:61
-#~ msgid "Tell us about your classes, We'll help you track your students attendance."
-#~ msgstr "Tell us about your classes, We'll help you track your students attendance."
+msgid "Tell us about your classes, We'll help you track your students attendance."
+msgstr "Tell us about your classes, We'll help you track your students attendance."
 
 #: src/components/StudentsList/StudentsList.tsx:62
-msgid "The term <0>&quot;{term}&quot;</0> does not match any student"
-msgstr "The term <0>&quot;{term}&quot;</0> does not match any student"
+msgid "The term <0>\"{term}\"</0> does not match any student"
+msgstr "The term <0>\"{term}\"</0> does not match any student"
+
+#: src/components/StudentsList/StudentsList.tsx:62
+#~ msgid "The term <0>&quot;{term}&quot;</0> does not match any student"
+#~ msgstr "The term <0>&quot;{term}&quot;</0> does not match any student"
 
 #: src/components/PageAdmin/PageAdmin.tsx:138
 msgid "Theme"
 msgstr "Theme"
 
 #: src/components/PageNewStudent/PageNewStudent.tsx:192
-msgid "This student doesn&apos;t have a guardian yet."
-msgstr "This student doesn&apos;t have a guardian yet."
+#~ msgid "This student doesn&apos;t have a guardian yet."
+#~ msgstr "This student doesn&apos;t have a guardian yet."
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:193
-#~ msgid "This student doesn't have a guardian yet."
-#~ msgstr "This student doesn't have a guardian yet."
+#: src/components/PageNewStudent/PageNewStudent.tsx:192
+msgid "This student doesn't have a guardian yet."
+msgstr "This student doesn't have a guardian yet."
 
 #: src/components/PageNewClass/PageNewClass.tsx:29
 msgid "Thursday"
