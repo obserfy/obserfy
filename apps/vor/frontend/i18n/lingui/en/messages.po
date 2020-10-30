@@ -100,6 +100,10 @@ msgstr "Are you sure you want to delete {title}?"
 msgid "Are you sure you want to set this image as profile picture?"
 msgstr "Are you sure you want to set this image as profile picture?"
 
+#: src/components/PageNewObservation/PageNewObservation.tsx:105
+msgid "Attach Images"
+msgstr "Attach Images"
+
 #: src/components/PageNewClass/PageNewClass.tsx:63
 msgid "Available every"
 msgstr "Available every"
@@ -196,6 +200,7 @@ msgstr "Delete plan?"
 msgid "Description"
 msgstr "Description"
 
+#: src/components/PageNewObservation/PageNewObservation.tsx:86
 #: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:47
 #: src/pages/dashboard/students/observations/details.tsx:27
 msgid "Details"
@@ -256,6 +261,10 @@ msgstr "Emails sent!"
 #: src/components/PageNewClass/PageNewClass.tsx:60
 msgid "End Time"
 msgstr "End Time"
+
+#: src/components/PageNewObservation/PageNewObservation.tsx:103
+msgid "Event Time"
+msgstr "Event Time"
 
 #: src/components/PageNewStudent/PageNewStudent.tsx:152
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:163
@@ -393,6 +402,10 @@ msgstr "New Class"
 #: src/components/PageNewGuardian/PageNewGuardian.tsx:39
 msgid "New Guardian"
 msgstr "New Guardian"
+
+#: src/components/PageNewObservation/PageNewObservation.tsx:76
+msgid "New Observation"
+msgstr "New Observation"
 
 #: src/components/PageNewStudent/PageNewStudent.tsx:137
 #: src/components/StudentsList/StudentsList.tsx:80
@@ -533,6 +546,7 @@ msgstr "Recently Mastered"
 msgid "Record observations"
 msgstr "Record observations"
 
+#: src/components/PageNewObservation/PageNewObservation.tsx:88
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:126
 #: src/components/PageStudentPlanDetails/LessonPlanMetaCard.tsx:55
 msgid "Related Area"
@@ -573,6 +587,7 @@ msgstr "Saturday"
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:116
 #: src/components/PageNewClass/PageNewClass.tsx:77
 #: src/components/PageNewGuardian/PageNewGuardian.tsx:65
+#: src/components/PageNewObservation/PageNewObservation.tsx:80
 #: src/components/PageNewSchool/PageNewSchool.tsx:50
 #: src/components/PageStudentPlanDetails/LessonPlanDescriptionCard.tsx:30
 #: src/components/PageStudentPlanDetails/LessonPlanMetaCard.tsx:57
@@ -637,6 +652,10 @@ msgstr "Settings"
 msgid "Shoot us an e-mail"
 msgstr "Shoot us an e-mail"
 
+#: src/components/PageNewObservation/PageNewObservation.tsx:85
+msgid "Short Description*"
+msgstr "Short Description*"
+
 #: src/components/PageSubscription/PageSubscription.tsx:94
 #~ msgid "Simple pricing for every school."
 #~ msgstr "Simple pricing for every school."
@@ -668,6 +687,7 @@ msgid "Student ID"
 msgstr "Student ID"
 
 #: src/components/Navbar/Navbar.tsx:74
+#: src/components/PageNewObservation/PageNewObservation.tsx:70
 #: src/components/PageNewStudent/PageNewStudent.tsx:105
 #: src/components/PageStudentImages/PageStudentImages.tsx:34
 #: src/components/PageStudentOverview/PageStudentOverview.tsx:35
@@ -705,6 +725,10 @@ msgstr "Switch school"
 #: src/components/PageClassSettings/PageClassSettings.tsx:61
 msgid "Tell us about your classes, We'll help you track your students attendance."
 msgstr "Tell us about your classes, We'll help you track your students attendance."
+
+#: src/components/PageNewObservation/PageNewObservation.tsx:86
+msgid "Tell us what you observed"
+msgstr "Tell us what you observed"
 
 #: src/components/StudentsList/StudentsList.tsx:62
 msgid "The term <0>\"{term}\"</0> does not match any student"
@@ -778,6 +802,10 @@ msgstr "Weekly"
 #: src/components/PageChooseSchool/PageChooseSchool.tsx:28
 msgid "Welcome!! Create your first school or use an invitation link to join an existing school."
 msgstr "Welcome!! Create your first school or use an invitation link to join an existing school."
+
+#: src/components/PageNewObservation/PageNewObservation.tsx:85
+msgid "What have you found?"
+msgstr "What have you found?"
 
 #: src/components/PageListOfStudents/PageListOfStudents.tsx:70
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:60
