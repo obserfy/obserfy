@@ -4440,9 +4440,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cypress/webpack-preprocessor@npm:5.4.8":
-  version: 5.4.8
-  resolution: "@cypress/webpack-preprocessor@npm:5.4.8"
+"@cypress/webpack-preprocessor@npm:5.4.10":
+  version: 5.4.10
+  resolution: "@cypress/webpack-preprocessor@npm:5.4.10"
   dependencies:
     bluebird: ^3.7.1
     debug: ^4.1.1
@@ -4452,7 +4452,7 @@ __metadata:
     "@babel/preset-env": ^7.0.0
     babel-loader: ^8.0.2
     webpack: ^4.18.1
-  checksum: 05202682b18b7c05c11d5c4ab5cd7abe7f4002f49c946ad11ab092cf29ed04a59442c60c302a6a697612d56626565f22599d6d707d47f34a16dd7f30454986a9
+  checksum: 18ff9da972c31ce67ada62ff6a97f24b4f640c006413635f3d2d77e468abe173f3128ffaf20af3bb834bf1ab26c9b1c6c6e72f1ee0a518ee9ef872f9ad7868d9
   languageName: node
   linkType: hard
 
@@ -16299,7 +16299,7 @@ __metadata:
     "@babel/core": 7.12.3
     "@babel/preset-env": 7.12.1
     "@cypress/code-coverage": 3.8.2
-    "@cypress/webpack-preprocessor": 5.4.8
+    "@cypress/webpack-preprocessor": 5.4.10
     "@types/faker": 5.1.3
     "@types/node": 14.14.6
     "@typescript-eslint/eslint-plugin": 4.6.0
