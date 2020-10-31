@@ -1,10 +1,10 @@
 import React from "react"
 import { render } from "../../test-utils"
-import { Basic } from "./DeleteObservationDialog.stories"
+import Checkbox from "./Checkbox"
 
-describe("DeleteObservationDialog", () => {
+describe("Checkbox", () => {
   it("should render correctly", () => {
-    const { container } = render(<Basic />)
+    const { container } = render(<Checkbox label="just at test" />)
     expect(container).toMatchSnapshot()
   })
 })

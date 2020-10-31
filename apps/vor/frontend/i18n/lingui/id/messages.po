@@ -26,6 +26,10 @@ msgstr ""
 #~ msgid "\"Create your first class to track your student's class enrollment.\""
 #~ msgstr ""
 
+#: src/components/PageObservationDetails/PageObservationDetails.tsx:47
+msgid "\"{0}\" will be permanently deleted. Are you sure?"
+msgstr ""
+
 #: src/components/PageSubscription/PageSubscription.tsx:135
 msgid "(Starting on Jan 1st 2021)"
 msgstr "(Mulai dari 1 Jan 2021)"
@@ -99,6 +103,14 @@ msgstr ""
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:60
 msgid "Are you sure you want to set this image as profile picture?"
 msgstr "Anda yakin ingin pasang gambar ini profil gambar?"
+
+#: src/components/PageObservationDetails/ObservationMetaCard.tsx:58
+msgid "Area"
+msgstr ""
+
+#: src/components/PageNewObservation/PageNewObservation.tsx:109
+msgid "Attach Images"
+msgstr ""
 
 #: src/components/PageNewClass/PageNewClass.tsx:63
 msgid "Available every"
@@ -175,12 +187,17 @@ msgstr "Tanggal Lahir"
 msgid "Date of Entry"
 msgstr "Tanggal Masuk"
 
+#: src/components/PageObservationDetails/PageObservationDetails.tsx:44
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:48
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:53
 #: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:79
 #: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:81
 msgid "Delete"
 msgstr "Hapus"
+
+#: src/components/PageObservationDetails/PageObservationDetails.tsx:47
+msgid "Delete Observation?"
+msgstr ""
 
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:53
 msgid "Delete image?"
@@ -196,6 +213,9 @@ msgstr ""
 msgid "Description"
 msgstr "Deskripsi"
 
+#: src/components/PageNewObservation/PageNewObservation.tsx:90
+#: src/components/PageObservationDetails/DetailsCard.tsx:27
+#: src/components/PageObservationDetails/DetailsCard.tsx:34
 #: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:47
 #: src/pages/dashboard/students/observations/details.tsx:27
 msgid "Details"
@@ -209,9 +229,17 @@ msgstr "Akses Awal"
 msgid "Edit"
 msgstr "Ubah"
 
+#: src/components/PageObservationDetails/ObservationMetaCard.tsx:60
+msgid "Edit Area"
+msgstr ""
+
 #: src/components/PageStudentPlanDetails/LessonPlanDescriptionCard.tsx:30
 msgid "Edit Description"
 msgstr "Ubah Deskripsi"
+
+#: src/components/PageObservationDetails/DetailsCard.tsx:29
+msgid "Edit Details"
+msgstr ""
 
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:76
 msgid "Edit Email"
@@ -233,6 +261,10 @@ msgstr "Ubah Catatan"
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:96
 msgid "Edit Phone"
 msgstr "Ubah Telepon"
+
+#: src/components/PageObservationDetails/ObservationMetaCard.tsx:40
+msgid "Edit Short Description"
+msgstr ""
 
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:201
 msgid "Edit Student ID"
@@ -256,6 +288,11 @@ msgstr "Email dikirim!"
 #: src/components/PageNewClass/PageNewClass.tsx:60
 msgid "End Time"
 msgstr "Waktu Selesai"
+
+#: src/components/PageNewObservation/PageNewObservation.tsx:107
+#: src/components/PageObservationDetails/ObservationMetaCard.tsx:79
+msgid "Event Time"
+msgstr ""
 
 #: src/components/PageNewStudent/PageNewStudent.tsx:152
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:163
@@ -314,6 +351,10 @@ msgstr "Bantuan dan Masukan"
 #: src/components/PageSubscription/PageSubscription.tsx:101
 msgid "Image gallery"
 msgstr "Galeri gambar"
+
+#: src/components/PageObservationDetails/ImageCard.tsx:23
+msgid "Images"
+msgstr ""
 
 #: src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx:75
 msgid "In Progress"
@@ -394,6 +435,10 @@ msgstr "Kelas Baru"
 msgid "New Guardian"
 msgstr "Wali Baru"
 
+#: src/components/PageNewObservation/PageNewObservation.tsx:79
+msgid "New Observation"
+msgstr ""
+
 #: src/components/PageNewStudent/PageNewStudent.tsx:137
 #: src/components/StudentsList/StudentsList.tsx:80
 msgid "New Student"
@@ -465,6 +510,10 @@ msgstr "Observasi"
 msgid "Observations"
 msgstr "Observasi"
 
+#: src/pages/dashboard/students/observation-details.tsx:28
+msgid "Observations Details"
+msgstr ""
+
 #: src/components/StudentsList/StudentsList.tsx:49
 msgid "Oops, we fail to fetch new student data. Please try again in a minute."
 msgstr ""
@@ -533,6 +582,7 @@ msgstr "Baru saja Dikuasai"
 msgid "Record observations"
 msgstr "Rekam observasi"
 
+#: src/components/PageNewObservation/PageNewObservation.tsx:92
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:126
 #: src/components/PageStudentPlanDetails/LessonPlanMetaCard.tsx:55
 msgid "Related Area"
@@ -573,7 +623,11 @@ msgstr "Sabtu"
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:116
 #: src/components/PageNewClass/PageNewClass.tsx:77
 #: src/components/PageNewGuardian/PageNewGuardian.tsx:65
+#: src/components/PageNewObservation/PageNewObservation.tsx:83
 #: src/components/PageNewSchool/PageNewSchool.tsx:50
+#: src/components/PageObservationDetails/DetailsCard.tsx:29
+#: src/components/PageObservationDetails/ObservationMetaCard.tsx:40
+#: src/components/PageObservationDetails/ObservationMetaCard.tsx:60
 #: src/components/PageStudentPlanDetails/LessonPlanDescriptionCard.tsx:30
 #: src/components/PageStudentPlanDetails/LessonPlanMetaCard.tsx:57
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:140
@@ -637,6 +691,15 @@ msgstr "Pengaturan"
 msgid "Shoot us an e-mail"
 msgstr "Kirim e-mail ke kami"
 
+#: src/components/PageObservationDetails/ObservationMetaCard.tsx:38
+#: src/components/PageObservationDetails/ObservationMetaCard.tsx:46
+msgid "Short Description"
+msgstr ""
+
+#: src/components/PageNewObservation/PageNewObservation.tsx:88
+msgid "Short Description*"
+msgstr ""
+
 #: src/components/PageSubscription/PageSubscription.tsx:94
 #~ msgid "Simple pricing for every school."
 #~ msgstr "Harga cocok untuk setiap sekolah."
@@ -668,12 +731,14 @@ msgid "Student ID"
 msgstr "ID Murid"
 
 #: src/components/Navbar/Navbar.tsx:74
+#: src/components/PageNewObservation/PageNewObservation.tsx:73
 #: src/components/PageNewStudent/PageNewStudent.tsx:105
 #: src/components/PageStudentImages/PageStudentImages.tsx:34
 #: src/components/PageStudentOverview/PageStudentOverview.tsx:35
 #: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:36
 #: src/components/PageStudentPlans/PageStudentPlans.tsx:23
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:49
+#: src/pages/dashboard/students/observation-details.tsx:23
 #: src/pages/dashboard/students/observations/details.tsx:18
 msgid "Students"
 msgstr "Murid"
@@ -705,6 +770,10 @@ msgstr "Pindah sekolah"
 #: src/components/PageClassSettings/PageClassSettings.tsx:61
 msgid "Tell us about your classes, We'll help you track your students attendance."
 msgstr "Beri tahu kami tentang kelas Anda, Kami akan membantu Anda melacak kehadiran siswa Anda."
+
+#: src/components/PageNewObservation/PageNewObservation.tsx:90
+msgid "Tell us what you observed"
+msgstr ""
 
 #: src/components/StudentsList/StudentsList.tsx:62
 msgid "The term <0>\"{term}\"</0> does not match any student"
@@ -767,6 +836,14 @@ msgstr "Pengguna/bulan"
 msgid "Users"
 msgstr "Pengguna"
 
+#: src/components/PageObservationDetails/PageObservationDetails.tsx:41
+msgid "Visible to Guardians"
+msgstr ""
+
+#: src/components/PageNewObservation/PageNewObservation.tsx:89
+msgid "Visible to guardians"
+msgstr ""
+
 #: src/components/PageNewClass/PageNewClass.tsx:28
 msgid "Wednesday"
 msgstr "Rabu"
@@ -778,6 +855,14 @@ msgstr "Mingguan"
 #: src/components/PageChooseSchool/PageChooseSchool.tsx:28
 msgid "Welcome!! Create your first school or use an invitation link to join an existing school."
 msgstr "Selamat Datang!! Buatlah sekolah pertama anda sekarang, atau gunanakan link undangan untuk masuk ke sekolah yang sudah terdaftar."
+
+#: src/components/PageNewObservation/PageNewObservation.tsx:88
+msgid "What have you found?"
+msgstr ""
+
+#: src/components/PageObservationDetails/DetailsCard.tsx:34
+msgid "Write something"
+msgstr ""
 
 #: src/components/PageListOfStudents/PageListOfStudents.tsx:70
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:60

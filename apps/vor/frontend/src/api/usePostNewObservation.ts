@@ -13,7 +13,7 @@ interface PostNewObservationBody {
   images?: string[]
   eventTime?: Dayjs
   areaId?: string
-  visibleToGuardians?: string
+  visibleToGuardians?: boolean
 }
 const usePostNewObservation = (studentId: string) => {
   const postNewObservation = postApi<PostNewObservationBody>(
