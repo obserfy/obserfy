@@ -98,6 +98,7 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
           mb={2}
         />
         <Checkbox
+          sx={{ mb: 3 }}
           label={t` Visible to guardians `}
           value={visibleToGuardians}
           onChange={setVisibleToGuardians}
