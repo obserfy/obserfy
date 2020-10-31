@@ -1,5 +1,6 @@
 import React, { FC, useState } from "react"
 import { Card, Flex } from "theme-ui"
+import { t } from "@lingui/macro"
 import dayjs, { Dayjs } from "../../dayjs"
 import useGetObservation from "../../api/observations/useGetObservation"
 import usePatchObservation from "../../api/observations/usePatchObservation"
@@ -40,20 +41,19 @@ const ShortDescription: FC<{
   const [patchObservation, { isLoading }] = usePatchObservation(observationId)
   const [isEditing, setIsEditing] = useState(false)
   const [shortDesc, setShortDesc] = useState(originalValue)
-  const label = "Short Description"
 
   return (
     <>
       <DataBox
-        label={label}
+        label={t`Short Description`}
         value={originalValue ?? ""}
         onEditClick={() => setIsEditing(true)}
       />
       {isEditing && (
         <Dialog>
           <DialogHeader
-            title={`Edit ${label}`}
-            onAcceptText="Save"
+            title={t`Edit Short Description`}
+            onAcceptText={t`Save`}
             onCancel={() => setIsEditing(false)}
             loading={isLoading}
             onAccept={async () => {
@@ -64,7 +64,7 @@ const ShortDescription: FC<{
             }}
           />
           <Input
-            label={label}
+            label={t`Short Description`}
             sx={{ width: "100%" }}
             onChange={(e) => setShortDesc(e.target.value)}
             value={shortDesc}
@@ -87,20 +87,18 @@ const Area: FC<{
 
   const original = areas?.find((v) => v.id === originalValue)
 
-  const label = "Area"
-
   return (
     <>
       <DataBox
-        label={label}
+        label={t`Area`}
         value={original?.name ?? "-"}
         onEditClick={dialog.show}
       />
       {dialog.visible && (
         <Dialog>
           <DialogHeader
-            title={`Edit ${label}`}
-            onAcceptText="Save"
+            title={t`Edit Area`}
+            onAcceptText={t`Save`}
             onCancel={dialog.hide}
             loading={isLoading}
             onAccept={async () => {
@@ -141,12 +139,11 @@ const EventTime: FC<{
 }> = ({ observationId, originalValue }) => {
   const [patchObservation, { isLoading }] = usePatchObservation(observationId)
   const dialog = useVisibilityState()
-  const label = "Event Time"
 
   return (
     <>
       <DataBox
-        label={label}
+        label={t`Event Time`}
         value={originalValue?.format("dddd, DD MMM YYYY") ?? ""}
         onEditClick={dialog.show}
       />
