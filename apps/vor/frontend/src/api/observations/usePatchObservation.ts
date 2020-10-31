@@ -9,9 +9,9 @@ interface RequestBody {
   eventTime?: Dayjs
   areaId?: string
   categoryId?: string
-  visibleToGuardian?: boolean
+  visibleToGuardians?: boolean
 }
-const usePatchObservation = (observationId: string) => {
+const usePatchObservation = (observationId: string, onError?: () => void) => {
   const patchObservation = patchApi<RequestBody>(
     `/observations/${observationId}`
   )
@@ -22,6 +22,7 @@ const usePatchObservation = (observationId: string) => {
       const body = await response.json()
       updateObservationCache(body)
     },
+    onError,
   })
 }
 
