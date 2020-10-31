@@ -510,6 +510,10 @@ msgstr "Observasi"
 msgid "Observations"
 msgstr "Observasi"
 
+#: src/pages/dashboard/students/observation-details.tsx:28
+msgid "Observations Details"
+msgstr ""
+
 #: src/components/StudentsList/StudentsList.tsx:49
 msgid "Oops, we fail to fetch new student data. Please try again in a minute."
 msgstr ""
@@ -734,6 +738,7 @@ msgstr "ID Murid"
 #: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:36
 #: src/components/PageStudentPlans/PageStudentPlans.tsx:23
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:49
+#: src/pages/dashboard/students/observation-details.tsx:23
 #: src/pages/dashboard/students/observations/details.tsx:18
 msgid "Students"
 msgstr "Murid"
