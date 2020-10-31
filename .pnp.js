@@ -1588,7 +1588,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@types/faker",
-        "npm:5.1.3"
+        "npm:5.1.4"
       ],
       [
         "@types/formidable",
@@ -26024,10 +26024,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@types/faker", [
-        ["npm:5.1.3", {
-          "packageLocation": "./.yarn/cache/@types-faker-npm-5.1.3-9357c74092-8af11ad8e5.zip/node_modules/@types/faker/",
+        ["npm:5.1.4", {
+          "packageLocation": "./.yarn/cache/@types-faker-npm-5.1.4-de64fbc9a1-8203d575d8.zip/node_modules/@types/faker/",
           "packageDependencies": [
-            ["@types/faker", "npm:5.1.3"]
+            ["@types/faker", "npm:5.1.4"]
           ],
           "linkType": "HARD",
         }]
@@ -34649,7 +34649,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/preset-env", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:7.12.1"],
             ["@cypress/code-coverage", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:3.8.3"],
             ["@cypress/webpack-preprocessor", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:5.4.10"],
-            ["@types/faker", "npm:5.1.3"],
+            ["@types/faker", "npm:5.1.4"],
             ["@types/node", "npm:14.14.6"],
             ["@typescript-eslint/eslint-plugin", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:4.6.0"],
             ["@typescript-eslint/parser", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:4.6.0"],
@@ -57790,7 +57790,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@theme-ui/match-media", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.4.0-rc.6"],
             ["@types/body-scroll-lock", "npm:2.6.1"],
             ["@types/date-fns", "npm:2.6.0"],
-            ["@types/faker", "npm:5.1.3"],
+            ["@types/faker", "npm:5.1.4"],
             ["@types/jest", "npm:26.0.15"],
             ["@types/query-string", "npm:6.3.0"],
             ["@types/reach__router", "npm:1.3.6"],
