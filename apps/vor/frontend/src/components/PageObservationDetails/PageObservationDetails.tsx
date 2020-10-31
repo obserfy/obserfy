@@ -71,6 +71,7 @@ export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
           px={2}
           onClick={deleteDialog.show}
           sx={{ flexShrink: 0 }}
+          data-cy="delete-observation"
         >
           <Icon as={TrashIcon} fill="danger" />
         </Button>
@@ -80,6 +81,7 @@ export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
           title={t`Delete Observation?`}
           onNegativeClick={deleteDialog.hide}
           onDismiss={deleteDialog.hide}
+          positiveText="Yes"
           loading={deleteObservationState.isLoading}
           body={t`"${
             data?.shortDesc ?? ""
