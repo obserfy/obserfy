@@ -50,6 +50,7 @@ class MyDocument extends Document {
             crossOrigin="anonymous"
             href="/google-fonts/s/opensans/v17/mem8YaGs126MiZpBA-UFVZ0b.woff2"
           />
+          <link rel="manifest" href="/manifest.webmanifest" />
           {/* eslint-disable-next-line react/no-danger */}
           <script dangerouslySetInnerHTML={{ __html: renderSnippet() }} />
         </Head>
