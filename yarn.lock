@@ -4383,20 +4383,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cypress/code-coverage@npm:3.8.2":
-  version: 3.8.2
-  resolution: "@cypress/code-coverage@npm:3.8.2"
+"@cypress/code-coverage@npm:3.8.3":
+  version: 3.8.3
+  resolution: "@cypress/code-coverage@npm:3.8.3"
   dependencies:
     "@cypress/browserify-preprocessor": 3.0.1
     debug: 4.2.0
-    execa: 4.0.3
+    execa: 4.1.0
     globby: 11.0.1
     istanbul-lib-coverage: 3.0.0
     js-yaml: 3.14.0
     nyc: 15.1.0
   peerDependencies:
     cypress: "*"
-  checksum: da86f7578e3bea113bcaef7c9f97ca9863f70bebbc05f5519c0592e4853286f14f756ab2de3a1b26e9f8187d032da641a40d1a96e9cc258ce8322b14355068a5
+  checksum: e3ad4b13529b55dd0568feda76f428911dbf136cbcefbafd4b1e5e0b24dda95b580eacab2be123ab6b4757659884522dccf771cbc3d168d01fb2807d9ffa4a81
   languageName: node
   linkType: hard
 
@@ -15791,7 +15791,7 @@ __metadata:
   dependencies:
     "@babel/core": 7.12.3
     "@babel/preset-env": 7.12.1
-    "@cypress/code-coverage": 3.8.2
+    "@cypress/code-coverage": 3.8.3
     "@cypress/webpack-preprocessor": 5.4.10
     "@types/faker": 5.1.3
     "@types/node": 14.14.6
@@ -17082,9 +17082,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"execa@npm:4.0.3, execa@npm:^4.0.3":
-  version: 4.0.3
-  resolution: "execa@npm:4.0.3"
+"execa@npm:4.1.0":
+  version: 4.1.0
+  resolution: "execa@npm:4.1.0"
   dependencies:
     cross-spawn: ^7.0.0
     get-stream: ^5.0.0
@@ -17095,7 +17095,7 @@ __metadata:
     onetime: ^5.1.0
     signal-exit: ^3.0.2
     strip-final-newline: ^2.0.0
-  checksum: 65b237d178b468045ee57af6aa4e4124807b28aec9573d9b3b16b02a7e41bd65996236e0c5575d053d3888585ffc795cbed38847c6c9669e9c8481fc44ac05e4
+  checksum: 79bd736acd63aa7c0afb32cc99af21cfd70db696580686c7cd56c177857b93b78bc0b9bb2b4410f377f46c71c566c8e723987e71ef0bc9b23791bfbced02f75c
   languageName: node
   linkType: hard
 
@@ -17161,6 +17161,23 @@ __metadata:
     signal-exit: ^3.0.2
     strip-final-newline: ^2.0.0
   checksum: c48f3d6a044daa1bb5d93486e1c8eee12a8724b439b7f8c270c556a37cf7e2ffd528a86d2ef08adcbe78b485956cfca56c6027ec15d8370bef959097b9ba23ba
+  languageName: node
+  linkType: hard
+
+"execa@npm:^4.0.3":
+  version: 4.0.3
+  resolution: "execa@npm:4.0.3"
+  dependencies:
+    cross-spawn: ^7.0.0
+    get-stream: ^5.0.0
+    human-signals: ^1.1.1
+    is-stream: ^2.0.0
+    merge-stream: ^2.0.0
+    npm-run-path: ^4.0.0
+    onetime: ^5.1.0
+    signal-exit: ^3.0.2
+    strip-final-newline: ^2.0.0
+  checksum: 65b237d178b468045ee57af6aa4e4124807b28aec9573d9b3b16b02a7e41bd65996236e0c5575d053d3888585ffc795cbed38847c6c9669e9c8481fc44ac05e4
   languageName: node
   linkType: hard
 
