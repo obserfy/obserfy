@@ -5,22 +5,25 @@ import { Trans } from "@lingui/macro"
 export interface CheckboxProps {
   label: string
   onChange?: (value: boolean) => void
-  value?: boolean
+  checked?: boolean
   containerSx?: SxStyleProp
   defaultChecked?: boolean
+  disabled?: boolean
 }
 const Checkbox: FC<CheckboxProps> = ({
   defaultChecked,
   containerSx,
   onChange,
-  value,
+  checked,
   label,
+  disabled,
 }) => (
   <Label sx={{ display: "flex", alignItems: "center", ...containerSx }}>
     <BaseCheckbox
       defaultChecked={defaultChecked}
       onChange={(e) => onChange?.(e.target.checked)}
-      checked={value}
+      checked={checked}
+      disabled={disabled}
     />
     <Trans id={label} />
   </Label>

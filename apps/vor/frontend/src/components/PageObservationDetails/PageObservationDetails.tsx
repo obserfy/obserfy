@@ -1,6 +1,6 @@
-import React, { FC } from "react"
+import React, { FC, useState } from "react"
 import { Box, Button, Flex } from "theme-ui"
-import { t, Trans } from "@lingui/macro"
+import { t } from "@lingui/macro"
 import useGetObservation from "../../api/observations/useGetObservation"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import Icon from "../Icon/Icon"
@@ -13,6 +13,8 @@ import AlertDialog from "../AlertDialog/AlertDialog"
 import useDeleteObservation from "../../api/observations/useDeleteObservation"
 import Checkbox from "../Checkbox/Checkbox"
 import DetailsCard from "./DetailsCard"
+import usePatchObservation from "../../api/observations/usePatchObservation"
+import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 
 export interface PageObservationDetailsProps {
   observationId: string
@@ -30,6 +32,11 @@ export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
     observationId,
     studentId
   )
+
+  const callDeleteObservationApi = async () => {
+    const result = await deleteObservation()
+    if (result?.ok) navigate(backUrl)
+  }
 
   if (isLoading) {
     return <Loading />
@@ -51,10 +58,9 @@ export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
       />
 
       <Flex sx={{ alignItems: "center" }}>
-        <Checkbox
-          defaultChecked={data?.visibleToGuardians}
-          label={t`Visible to Guardians`}
-          containerSx={{ mx: [3, 4] }}
+        <VisibleToGuardians
+          observationId={observationId}
+          originalValue={data?.visibleToGuardians ?? false}
         />
         <Button
           variant="outline"
@@ -62,11 +68,11 @@ export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
           ml="auto"
           mr={3}
           my={3}
+          px={2}
           onClick={deleteDialog.show}
           sx={{ flexShrink: 0 }}
         >
-          <Icon as={TrashIcon} fill="danger" mr={2} />
-          <Trans>Delete</Trans>
+          <Icon as={TrashIcon} fill="danger" />
         </Button>
       </Flex>
       {deleteDialog.visible && (
@@ -78,13 +84,45 @@ export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
           body={t`"${
             data?.shortDesc ?? ""
           }" will be permanently deleted. Are you sure?`}
-          onPositiveClick={async () => {
-            const result = await deleteObservation()
-            if (result?.ok) navigate(backUrl)
-          }}
+          onPositiveClick={callDeleteObservationApi}
         />
       )}
     </Box>
+  )
+}
+
+const VisibleToGuardians: FC<{
+  observationId: string
+  originalValue: boolean
+}> = ({ observationId, originalValue }) => {
+  const [value, setValue] = useState(originalValue)
+  const [patchObservation, { isLoading }] = usePatchObservation(
+    observationId,
+    () => setValue(originalValue)
+  )
+
+  const patchVisibleToGuardians = async (visibleToGuardians: boolean) => {
+    setValue(visibleToGuardians)
+    await patchObservation({ visibleToGuardians })
+  }
+
+  return (
+    <Flex
+      sx={{
+        alignItems: "center",
+        opacity: isLoading ? 0.5 : 1,
+        transition: "opacity 200ms ease-in-out",
+      }}
+    >
+      <Checkbox
+        checked={value}
+        label={t`Visible to Guardians`}
+        containerSx={{ ml: [3, 4] }}
+        disabled={isLoading}
+        onChange={patchVisibleToGuardians}
+      />
+      {isLoading && <LoadingIndicator />}
+    </Flex>
   )
 }
 
