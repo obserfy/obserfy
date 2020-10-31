@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { Image, Card, Flex, jsx, Label } from "theme-ui"
 import { FC, Fragment, useState } from "react"
+import { Trans } from "@lingui/macro"
 import Typography from "../Typography/Typography"
 import usePostNewObservationImage from "../../api/observations/usePostNewObservationImage"
 import { borderFull } from "../../border"
@@ -28,7 +29,7 @@ const ImageCard: FC<Props> = ({ originalValue, studentId, observationId }) => (
       sx={{ lineHeight: 1, fontSize: [1, 0] }}
       px={3}
     >
-      Images
+      <Trans>Images</Trans>
     </Typography.Body>
     <ImagesDataBox
       studentId={studentId}

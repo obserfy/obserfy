@@ -1,5 +1,6 @@
 import React, { FC } from "react"
 import { Box, Button, Flex } from "theme-ui"
+import { t, Trans } from "@lingui/macro"
 import useGetObservation from "../../api/observations/useGetObservation"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import Icon from "../Icon/Icon"
@@ -52,7 +53,7 @@ export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
       <Flex sx={{ alignItems: "center" }}>
         <Checkbox
           defaultChecked={data?.visibleToGuardians}
-          label="Visible to Guardians"
+          label={t`Visible to Guardians`}
           containerSx={{ mx: [3, 4] }}
         />
         <Button
@@ -65,16 +66,16 @@ export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
           sx={{ flexShrink: 0 }}
         >
           <Icon as={TrashIcon} fill="danger" mr={2} />
-          Delete
+          <Trans>Delete</Trans>
         </Button>
       </Flex>
       {deleteDialog.visible && (
         <AlertDialog
-          title="Delete Observation?"
+          title={t`Delete Observation?`}
           onNegativeClick={deleteDialog.hide}
           onDismiss={deleteDialog.hide}
           loading={deleteObservationState.isLoading}
-          body={`"${
+          body={t`"${
             data?.shortDesc ?? ""
           }" will be permanently deleted. Are you sure?`}
           onPositiveClick={async () => {

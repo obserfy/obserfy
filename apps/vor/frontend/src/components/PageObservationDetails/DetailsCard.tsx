@@ -1,5 +1,6 @@
 import React, { FC, useState } from "react"
 import { Card } from "theme-ui"
+import { t } from "@lingui/macro"
 import usePatchObservation from "../../api/observations/usePatchObservation"
 import useVisibilityState from "../../hooks/useVisibilityState"
 import MultilineDataBox from "../MultilineDataBox/MultilineDataBox"
@@ -28,12 +29,10 @@ const LongTextDataBox: FC<{
   const [longDesc, setLongDesc] = useState(originalValue ?? "")
   const dialog = useVisibilityState()
 
-  const label = "Details"
-
   return (
     <>
       <MultilineDataBox
-        label={label}
+        label={t`Details`}
         value={originalValue ?? ""}
         onEditClick={dialog.show}
         placeholder="-"
@@ -41,8 +40,8 @@ const LongTextDataBox: FC<{
       {dialog.visible && (
         <Dialog>
           <DialogHeader
-            title={`Edit ${label}`}
-            onAcceptText="Save"
+            title={t`Edit Details`}
+            onAcceptText={t`Save`}
             onCancel={dialog.hide}
             loading={isLoading}
             onAccept={async () => {
@@ -51,12 +50,12 @@ const LongTextDataBox: FC<{
             }}
           />
           <TextArea
-            label={label}
+            label={t`Details`}
             sx={{ width: "100%", lineHeight: 1.8, minHeight: 400 }}
             onChange={(e) => setLongDesc(e.target.value)}
             value={longDesc}
             containerSx={{ p: 3, backgroundColor: "background" }}
-            placeholder="Write something"
+            placeholder={t`Write something`}
           />
         </Dialog>
       )}
