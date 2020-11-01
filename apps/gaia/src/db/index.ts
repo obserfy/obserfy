@@ -1,6 +1,7 @@
-import { Pool } from "pg"
+import { Pool, PoolClient } from "pg"
 import { LessonPlan } from "../domain"
 import dayjs from "../utils/dayjs"
+import { findChildObservationsGroupedByDateQuery } from "./queries"
 
 const pgPool = new Pool({
   user: process.env.PG_USER,
@@ -23,6 +24,18 @@ const query = async (sql: string, params: string[]) => {
   const client = await pgPool.connect()
   try {
     return await client.query(sql, params)
+  } finally {
+    client.release()
+  }
+}
+
+const typedQuery = async <P, R>(
+  sql: (params: P, dbConnection: PoolClient) => Promise<R>,
+  params: P
+): Promise<R> => {
+  const client = await pgPool.connect()
+  try {
+    return await sql(params, client)
   } finally {
     client.release()
   }
@@ -248,16 +261,5 @@ export const insertImage = async (
 }
 
 export const findChildObservationsGroupedByDate = async (childId: string) => {
-  // language=PostgreSQL
-  const result = await query(
-    `
-    select o1.event_time::date, json_agg(o1) from observations as o1
-    where o1.student_id = $1
-    group by o1.event_time::date
-  `,
-    [childId]
-  )
-
-  console.log(result.rows)
-  return result.rows
+  return typedQuery(findChildObservationsGroupedByDateQuery.run, { childId })
 }
