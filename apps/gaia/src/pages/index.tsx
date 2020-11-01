@@ -15,7 +15,7 @@ const IndexPage = () => {
         <div className="border-l ml-8 ">
           <div className="flex items-center font-bold -ml-5 mt-3">
             <div className="w-10 h-10 flex items-center justify-center bg-white rounded-full border">
-              T
+              I
             </div>
             <div className="ml-3">{dayjs().format("dddd, D MMM YYYY")}</div>
           </div>
