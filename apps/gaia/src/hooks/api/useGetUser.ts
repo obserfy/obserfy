@@ -16,7 +16,8 @@ const useGetUser = () => {
       }
     },
     onSuccess: (data) => {
-      window.analytics.identify(data.sub, {
+      mixpanel.identify(data.sub)
+      mixpanel.people.set({
         name: data.name,
         email: data.email,
         avatar: data.picture,

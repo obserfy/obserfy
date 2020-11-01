@@ -8617,6 +8617,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/mixpanel-browser@npm:^2.35.4":
+  version: 2.35.4
+  resolution: "@types/mixpanel-browser@npm:2.35.4"
+  checksum: 7295ea9dd149ce68dc75b91880bd655c104004c25ac28a985230aa37a59ec136c4bd4a9ea6173e4033f5f25b0c3d4b20ecfd58d0e73f4143285d0a9c6eaa1587
+  languageName: node
+  linkType: hard
+
 "@types/mkdirp@npm:^0.5.2":
   version: 0.5.2
   resolution: "@types/mkdirp@npm:0.5.2"
@@ -18517,6 +18524,7 @@ fsevents@^1.2.7:
     "@types/body-scroll-lock": 2.6.1
     "@types/formidable": 1.0.31
     "@types/minio": 7.0.6
+    "@types/mixpanel-browser": ^2.35.4
     "@types/nanoid": 2.1.0
     "@types/node": 14.14.6
     "@types/pg": 7.14.5
