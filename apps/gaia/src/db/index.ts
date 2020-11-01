@@ -1,4 +1,5 @@
 import { Pool } from "pg"
+import { looseToArray } from "next/dist/client/page-loader"
 import { LessonPlan } from "../domain"
 import dayjs from "../utils/dayjs"
 
@@ -245,4 +246,18 @@ export const insertImage = async (
     await query(`ROLLBACK`, [])
     throw e
   }
+}
+
+export const findChildObservationsGroupedByDate = async (childId: string) => {
+  // language=PostgreSQL
+  const result = await query(
+    `
+    select o1.event_time::date, json_agg(o1) from observations as o1
+    where o1.student_id = $1
+    group by o1.event_time::date
+  `,
+    [childId]
+  )
+
+  return result.rows
 }
