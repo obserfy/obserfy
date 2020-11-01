@@ -21,6 +21,19 @@ const Navbar: FC<Props> = ({ childId }) => {
                     : "text-gray-700"
                 } bg-white inline-block p-2 text-sm`}
               >
+                Timeline
+              </a>
+            </Link>
+          </li>
+          <li className="mr-1" style={{ marginBottom: -1 }}>
+            <Link href={`/lesson-plan?childId=${childId}`}>
+              <a
+                className={`${
+                  router.pathname === "/lesson-plan"
+                    ? "border-b-2 border-black"
+                    : "text-gray-700"
+                } bg-white inline-block p-2 text-sm`}
+              >
                 Lesson Plan
               </a>
             </Link>
