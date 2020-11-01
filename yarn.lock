@@ -6532,6 +6532,32 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@pgtyped/query@npm:^0.8.2":
+  version: 0.8.2
+  resolution: "@pgtyped/query@npm:0.8.2"
+  dependencies:
+    "@pgtyped/wire": ^0.8.0
+    "@types/chalk": ^2.2.0
+    "@types/debug": ^4.1.4
+    antlr4ts: ^0.5.0-alpha.3
+    chalk: ^4.1.0
+    debug: ^4.1.1
+  peerDependencies:
+    typescript: ^3.1
+  checksum: 8eb8d8900cd02d73487bc42b4a835866ad4e3d562ac2caa853a4aa31af41024a87c2612d66b3607d663813a54cccfc90befd97b387782a54a180627d940b91e8
+  languageName: node
+  linkType: hard
+
+"@pgtyped/wire@npm:^0.8.0":
+  version: 0.8.0
+  resolution: "@pgtyped/wire@npm:0.8.0"
+  dependencies:
+    "@types/debug": ^4.1.4
+    debug: ^4.1.1
+  checksum: 68f9ccd98cd432a935bddec374b8f55c97e0f4eee16ff13ebe9d852be9850bc3b03fd0e3e38ab9ad407e6212ffabbec2a685f48509f3f3361a2e7b30732b42b0
+  languageName: node
+  linkType: hard
+
 "@pieh/friendly-errors-webpack-plugin@npm:1.7.0-chalk-2":
   version: 1.7.0-chalk-2
   resolution: "@pieh/friendly-errors-webpack-plugin@npm:1.7.0-chalk-2"
@@ -8250,6 +8276,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/chalk@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "@types/chalk@npm:2.2.0"
+  dependencies:
+    chalk: "*"
+  checksum: 9cded9031f180268be59010fc1e13c7b4384e51f0ca8b75bc7a40bdd46f5f3c4859953525fb53663287e5bb25ca5df59396c276ce5c09e1a83aa7a2aec6a9f59
+  languageName: node
+  linkType: hard
+
 "@types/color-name@npm:^1.1.1":
   version: 1.1.1
   resolution: "@types/color-name@npm:1.1.1"
@@ -8284,6 +8319,13 @@ __metadata:
   version: 0.0.30
   resolution: "@types/debug@npm:0.0.30"
   checksum: 0271350ddb252e5cab827925fe98e14c209135eb725e52a47730fed19c6a0b96aead1efd501214b40edff255ad584a64ff286c1248a16ae29ee40a34a4a100e4
+  languageName: node
+  linkType: hard
+
+"@types/debug@npm:^4.1.4":
+  version: 4.1.5
+  resolution: "@types/debug@npm:4.1.5"
+  checksum: 416ad24bc589be0fb8c78bea972aa7d4ffdf6b136239701b1792674463b2dbf8c6707f6055ec484f79ec1f2b528ffef90c87e55df7e4a0f458184cad5bf0cfc8
   languageName: node
   linkType: hard
 
@@ -9965,6 +10007,15 @@ __metadata:
   bin:
     ansi-to-html: bin/ansi-to-html
   checksum: f68b49478d45eecbb77dfe9123dbe2223a6f13362ac45e03e91f9c5de19e340fa48de1c9932a5dd9659dcf00088683c07c4669a9d25765ff1521d2c334280a60
+  languageName: node
+  linkType: hard
+
+"antlr4ts@npm:^0.5.0-alpha.3":
+  version: 0.5.0-dev
+  resolution: "antlr4ts@npm:0.5.0-dev"
+  dependencies:
+    source-map-support: ^0.5.16
+  checksum: 0f206ef5ef5793456de66545a1bf6d8d52343bc6c6689d941cc16ea3f0b6b18a7710b4cc3946a61d021fda51f93b89adcd7c5d7fe249ea1739b0459e7a85b42c
   languageName: node
   linkType: hard
 
@@ -12758,6 +12809,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"chalk@npm:*, chalk@npm:^3.0.0 || ^4.0.0, chalk@npm:^4.0.0, chalk@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "chalk@npm:4.1.0"
+  dependencies:
+    ansi-styles: ^4.1.0
+    supports-color: ^7.1.0
+  checksum: f860285b419f9e925c2db0f45ffa88aa8794c14b80cc5d01ff30930bcfc384996606362706f0829cf557f6d36152a5fb2d227ad63c4bc90e2ec9e9dbed4a3c07
+  languageName: node
+  linkType: hard
+
 "chalk@npm:1.1.3, chalk@npm:^1.0.0, chalk@npm:^1.1.3":
   version: 1.1.3
   resolution: "chalk@npm:1.1.3"
@@ -12799,16 +12860,6 @@ __metadata:
     ansi-styles: ^4.1.0
     supports-color: ^7.1.0
   checksum: 4018b0c812880da595d0d7b8159939527b72f58d3370e2fdc1a24d9abd460bab851695d7eca014082f110d5702d1221b05493fec430ccce375de907d50cc48c1
-  languageName: node
-  linkType: hard
-
-"chalk@npm:^3.0.0 || ^4.0.0, chalk@npm:^4.0.0, chalk@npm:^4.1.0":
-  version: 4.1.0
-  resolution: "chalk@npm:4.1.0"
-  dependencies:
-    ansi-styles: ^4.1.0
-    supports-color: ^7.1.0
-  checksum: f860285b419f9e925c2db0f45ffa88aa8794c14b80cc5d01ff30930bcfc384996606362706f0829cf557f6d36152a5fb2d227ad63c4bc90e2ec9e9dbed4a3c07
   languageName: node
   linkType: hard
 
@@ -18519,6 +18570,7 @@ fsevents@^1.2.7:
   resolution: "gaia@workspace:apps/gaia"
   dependencies:
     "@auth0/nextjs-auth0": 0.16.0
+    "@pgtyped/query": ^0.8.2
     "@prefresh/next": 1.3.1
     "@segment/snippet": 4.13.1
     "@types/body-scroll-lock": 2.6.1
@@ -31256,16 +31308,7 @@ resolve@1.1.7:
   languageName: node
   linkType: hard
 
-"resolve@^1.1.4, resolve@^1.1.6, resolve@^1.10.0, resolve@^1.12.0, resolve@^1.13.1, resolve@^1.14.2, resolve@^1.17.0, resolve@^1.3.2, resolve@^1.3.3, resolve@^1.4.0, resolve@^1.8.1":
-  version: 1.17.0
-  resolution: "resolve@npm:1.17.0"
-  dependencies:
-    path-parse: ^1.0.6
-  checksum: 5e3cdb8cf68c20b0c5edeb6505e7fab20c6776af0cae4b978836e557420aef7bb50acd25339bbb143b7f80533aa1988c7e827a0061aee9c237926a7d2c41f8d0
-  languageName: node
-  linkType: hard
-
-resolve@^1.18.1:
+"resolve@^1.1.4, resolve@^1.1.6, resolve@^1.10.0, resolve@^1.12.0, resolve@^1.13.1, resolve@^1.14.2, resolve@^1.17.0, resolve@^1.18.1, resolve@^1.3.2, resolve@^1.3.3, resolve@^1.4.0, resolve@^1.8.1":
   version: 1.18.1
   resolution: "resolve@npm:1.18.1"
   dependencies:
@@ -31282,16 +31325,7 @@ resolve@^1.18.1:
   languageName: node
   linkType: hard
 
-"resolve@patch:resolve@^1.1.4#builtin<compat/resolve>, resolve@patch:resolve@^1.1.6#builtin<compat/resolve>, resolve@patch:resolve@^1.10.0#builtin<compat/resolve>, resolve@patch:resolve@^1.12.0#builtin<compat/resolve>, resolve@patch:resolve@^1.13.1#builtin<compat/resolve>, resolve@patch:resolve@^1.14.2#builtin<compat/resolve>, resolve@patch:resolve@^1.17.0#builtin<compat/resolve>, resolve@patch:resolve@^1.3.2#builtin<compat/resolve>, resolve@patch:resolve@^1.3.3#builtin<compat/resolve>, resolve@patch:resolve@^1.4.0#builtin<compat/resolve>, resolve@patch:resolve@^1.8.1#builtin<compat/resolve>":
-  version: 1.17.0
-  resolution: "resolve@patch:resolve@npm%3A1.17.0#builtin<compat/resolve>::version=1.17.0&hash=3388aa"
-  dependencies:
-    path-parse: ^1.0.6
-  checksum: 4bcfb568860d0c361fd16c26b6fce429711138ff0de7dd353bdd73fcb5c7eede2f4602d40ccfa08ff45ec7ef9830845eab2021a46036af0a6e5b58bab1ff6399
-  languageName: node
-  linkType: hard
-
-"resolve@patch:resolve@^1.18.1#builtin<compat/resolve>":
+"resolve@patch:resolve@^1.1.4#builtin<compat/resolve>, resolve@patch:resolve@^1.1.6#builtin<compat/resolve>, resolve@patch:resolve@^1.10.0#builtin<compat/resolve>, resolve@patch:resolve@^1.12.0#builtin<compat/resolve>, resolve@patch:resolve@^1.13.1#builtin<compat/resolve>, resolve@patch:resolve@^1.14.2#builtin<compat/resolve>, resolve@patch:resolve@^1.17.0#builtin<compat/resolve>, resolve@patch:resolve@^1.18.1#builtin<compat/resolve>, resolve@patch:resolve@^1.3.2#builtin<compat/resolve>, resolve@patch:resolve@^1.3.3#builtin<compat/resolve>, resolve@patch:resolve@^1.4.0#builtin<compat/resolve>, resolve@patch:resolve@^1.8.1#builtin<compat/resolve>":
   version: 1.18.1
   resolution: "resolve@patch:resolve@npm%3A1.18.1#builtin<compat/resolve>::version=1.18.1&hash=3388aa"
   dependencies:
@@ -34798,7 +34832,7 @@ resolve@^1.18.1:
   languageName: node
   linkType: hard
 
-typescript@4.0.5:
+"typescript@4.0.5, typescript@^4.0.0":
   version: 4.0.5
   resolution: "typescript@npm:4.0.5"
   bin:
@@ -34808,33 +34842,13 @@ typescript@4.0.5:
   languageName: node
   linkType: hard
 
-typescript@^4.0.0:
-  version: 4.0.3
-  resolution: "typescript@npm:4.0.3"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 5c892e132756a83d22030d7fb38be47cde27613f71d233dbe7faf79e4a92852c5146bfddcaf8c2da1a37d35ae8bf7b8c888fdcd763d5ad184cea6b21e7466838
-  languageName: node
-  linkType: hard
-
-"typescript@patch:typescript@4.0.5#builtin<compat/typescript>":
+"typescript@patch:typescript@4.0.5#builtin<compat/typescript>, typescript@patch:typescript@^4.0.0#builtin<compat/typescript>":
   version: 4.0.5
   resolution: "typescript@patch:typescript@npm%3A4.0.5#builtin<compat/typescript>::version=4.0.5&hash=5bf698"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: d4be0bd2a2050b2d7b132cb2a40329178f181543e9d2ac6d1f06babd9f047208558a736a7effdeb28759ae2e815f070b61d10ee2f02cc93a6221a1490f21ffce
-  languageName: node
-  linkType: hard
-
-"typescript@patch:typescript@^4.0.0#builtin<compat/typescript>":
-  version: 4.0.3
-  resolution: "typescript@patch:typescript@npm%3A4.0.3#builtin<compat/typescript>::version=4.0.3&hash=5bf698"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 72db87d09f728c83062d64b5e12ed52effb6278963b6bc5c006219b22c104e02b8ce80164261de554923d3c47d894a1ca937ed542328caccb83ebaedeae98a69
   languageName: node
   linkType: hard
 

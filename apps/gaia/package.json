@@ -7,10 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint --ext .tsx,.ts ./",
-    "typecheck": "tsc --noemit"
+    "typecheck": "tsc --noemit",
+    "db-compile": "pgtyped -c pgtyped.json",
+    "about:db-compile": "echo 'To use this command, you require @pgtyped/cli installed globally. Currently pgtyped does not work with yarn v2 that does not have node_modules.'"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "0.16.0",
+    "@pgtyped/query": "^0.8.2",
     "@prefresh/next": "1.3.1",
     "@segment/snippet": "4.13.1",
     "@types/body-scroll-lock": "2.6.1",
