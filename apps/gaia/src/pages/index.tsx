@@ -1,6 +1,7 @@
 import React, { FC } from "react"
 import Head from "next/head"
 import Img from "react-optimized-image"
+import dayjs from "dayjs"
 import { Dayjs } from "../utils/dayjs"
 import NoPlanIllustration from "../images/no-plan-illustration.svg"
 
@@ -10,7 +11,23 @@ const IndexPage = () => {
       <Head>
         <title>Obserfy for Parents</title>
       </Head>
-      <div className="max-w-3xl mx-auto flex items-center px-3 pt-3 pb-1" />
+      <div className="max-w-3xl mx-auto flex items-center">
+        <div className="border-l ml-8 ">
+          <div className="flex items-center font-bold -ml-5 mt-3">
+            <div className="w-10 h-10 flex items-center justify-center bg-white rounded-full border">
+              T
+            </div>
+            <div className="ml-3">{dayjs().format("dddd, D MMM YYYY")}</div>
+          </div>
+
+          <div className="flex items-center font-bold -ml-5 mt-3">
+            <div className="w-10 h-10 flex items-center justify-center bg-white rounded-full border">
+              I
+            </div>
+            <div className="ml-3">{dayjs().format("dddd, D MMM YYYY")}</div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
