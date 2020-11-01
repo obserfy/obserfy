@@ -18554,7 +18554,7 @@ fsevents@^1.2.7:
     react-dom: "npm:@preact/compat@0.0.3"
     react-optimized-image: 0.4.1
     react-query: 2.25.2
-    react-query-devtools: 2.6.0
+    react-query-devtools: 2.6.1
     react-refresh: 0.9.0
     react-ssr-prepass: "npm:preact-ssr-prepass@1.1.2"
     stylelint: 13.7.2
@@ -30062,15 +30062,15 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"react-query-devtools@npm:2.6.0":
-  version: 2.6.0
-  resolution: "react-query-devtools@npm:2.6.0"
+"react-query-devtools@npm:2.6.1":
+  version: 2.6.1
+  resolution: "react-query-devtools@npm:2.6.1"
   dependencies:
     match-sorter: ^4.1.0
   peerDependencies:
     react: ^16.6.3
     react-query: ^2.0.0
-  checksum: 3c25047ed0502e816149a2a38a6911185be8395854a126741b4a5c2c56c77d8bb426094d0b56928ede46a26a40f0f72934d67cd1f65c043bb133c736c8d4b224
+  checksum: efa00344824af563b8fa571ac611394f9c10ef2edaebff7ace54462f9774922f7e26af0851e91fff2d8c889b42f0844f2ff460a26df2a082f98381ac1cf34e8a
   languageName: node
   linkType: hard
 
