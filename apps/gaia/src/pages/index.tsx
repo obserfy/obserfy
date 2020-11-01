@@ -4,8 +4,13 @@ import Img from "react-optimized-image"
 import dayjs from "dayjs"
 import { Dayjs } from "../utils/dayjs"
 import NoPlanIllustration from "../images/no-plan-illustration.svg"
+import useGetTimeline from "../hooks/api/useGetTimeline"
+import { useQueryString } from "../hooks/useQueryString"
 
 const IndexPage = () => {
+  const childId = useQueryString("childId")
+  const timeline = useGetTimeline(childId)
+
   return (
     <div>
       <Head>
