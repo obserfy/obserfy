@@ -1,5 +1,4 @@
 import { Pool } from "pg"
-import { looseToArray } from "next/dist/client/page-loader"
 import { LessonPlan } from "../domain"
 import dayjs from "../utils/dayjs"
 
@@ -259,5 +258,6 @@ export const findChildObservationsGroupedByDate = async (childId: string) => {
     [childId]
   )
 
+  console.log(result.rows)
   return result.rows
 }
