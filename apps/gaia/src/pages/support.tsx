@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import Head from "next/head"
-import Img, { Svg } from "react-optimized-image"
+import Img from "react-optimized-image"
 import { useQueryString } from "../hooks/useQueryString"
 import LinkIcon from "../icons/external-link.svg"
 import MailIcon from "../icons/mail.svg"
@@ -68,7 +68,7 @@ const SupportPage = () => {
               Have a question? Shoot us an email at support@obserfy.com
             </p>
           </div>
-          <Svg
+          <Img
             className="my-auto h-full ml-auto m-3 text-gray-900"
             src={MailIcon}
             width={24}

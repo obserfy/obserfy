@@ -43,7 +43,12 @@ const Header: FC = () => {
                 Cancel
               </Button>
               <a href="/api/logout" className="block ml-3 w-full">
-                <Button className="w-full bg-red-700 text-white">Yes</Button>
+                <Button
+                  className="w-full bg-red-700 text-white"
+                  onClick={() => mixpanel.reset()}
+                >
+                  Yes
+                </Button>
               </a>
             </div>
           </div>

@@ -1707,6 +1707,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:7.0.6"
       ],
       [
+        "@types/mixpanel-browser",
+        "npm:2.35.4"
+      ],
+      [
         "@types/mkdirp",
         "npm:0.5.2"
       ],
@@ -26377,6 +26381,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["@types/mixpanel-browser", [
+        ["npm:2.35.4", {
+          "packageLocation": "./.yarn/cache/@types-mixpanel-browser-npm-2.35.4-8bf6880414-7295ea9dd1.zip/node_modules/@types/mixpanel-browser/",
+          "packageDependencies": [
+            ["@types/mixpanel-browser", "npm:2.35.4"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["@types/mkdirp", [
         ["npm:0.5.2", {
           "packageLocation": "./.yarn/cache/@types-mkdirp-npm-0.5.2-8180a91a82-3bb3f7ec84.zip/node_modules/@types/mkdirp/",
@@ -37790,6 +37803,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/body-scroll-lock", "npm:2.6.1"],
             ["@types/formidable", "npm:1.0.31"],
             ["@types/minio", "npm:7.0.6"],
+            ["@types/mixpanel-browser", "npm:2.35.4"],
             ["@types/nanoid", "npm:2.1.0"],
             ["@types/node", "npm:14.14.6"],
             ["@types/pg", "npm:7.14.5"],
