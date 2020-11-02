@@ -21,9 +21,22 @@ export type GetChildTimelineResponse = Timeline[]
 export default auth0.requireAuthentication(async (req, res) => {
   try {
     const childId = getFirstQueryValue(req, "childId")
-    const observations = await findChildObservationsGroupedByDate(childId)
+    const result = await findChildObservationsGroupedByDate(childId)
 
-    await res.json(observations)
+    const response: GetChildTimelineResponse = result.map(
+      ({ date, observations }) => {
+        return {
+          date: date.toISOString(),
+          observations: observations.map(({ id, long_desc, short_desc }) => ({
+            id,
+            shortDesc: short_desc,
+            longDesc: long_desc ?? "",
+            images: [],
+          })),
+        }
+      }
+    )
+    await res.json(response)
   } catch (err) {
     console.error(err)
     res.status(err.status || 500).end(err.message)

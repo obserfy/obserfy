@@ -242,8 +242,10 @@ export const findChildObservationsGroupedByDate = async (childId: string) =>
     ChildObservationsGroupedByDate,
     [childId],
     `
-    select o1.event_time::date as date, json_agg(o1) as observations from observations as o1
-    where o1.student_id = $1
-    group by o1.event_time::date
-  `
+              select o1.event_time::date as date, json_agg(o1) as observations
+              from observations as o1
+              where o1.student_id = $1
+              group by o1.event_time::date
+              order by o1.event_time::date desc
+    `
   )
