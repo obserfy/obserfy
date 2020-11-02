@@ -18201,6 +18201,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fp-ts@npm:^2.8.5":
+  version: 2.8.5
+  resolution: "fp-ts@npm:2.8.5"
+  checksum: f844f4e74792e8bc8dd4d78a73ac4b0c0b4e25b9924dcc0e85c60f5535454770ae708eed1d1571bda7d04f873d60bb5be40c5dfc7548f09ed2c423d1dd499a07
+  languageName: node
+  linkType: hard
+
 "fragment-cache@npm:^0.2.1":
   version: 0.2.1
   resolution: "fragment-cache@npm:0.2.1"
@@ -18548,14 +18555,19 @@ fsevents@^1.2.7:
     eslint-plugin-react-hooks: 4.2.0
     file-loader: 6.2.0
     formidable-serverless: 1.0.3
+    fp-ts: ^2.8.5
     imagemin: 7.0.1
     imagemin-mozjpeg: 9.0.0
     imagemin-optipng: 8.0.0
     imagemin-svgo: 8.0.0
     img-loader: 3.0.2
+    io-ts: ^2.2.12
+    io-ts-types: ^0.5.11
     lqip-loader: 2.2.1
     minio: 7.0.16
+    monocle-ts: ^2.3.3
     nanoid: 3.1.16
+    newtype-ts: ^0.3.4
     next: 10.0.0
     next-compose-plugins: 2.2.0
     next-optimized-images: 3.0.0-canary.10
@@ -21443,6 +21455,27 @@ fsevents@^1.2.7:
   dependencies:
     loose-envify: ^1.0.0
   checksum: 96d8a2a4f0ad21020c5847546fc36bec5c0870d99f071aaa93df00c1036439d48211a1823ab6128f78a15ccc4c4f62baf6a65f6c0ed489270dd44d0a04f443a1
+  languageName: node
+  linkType: hard
+
+"io-ts-types@npm:^0.5.11":
+  version: 0.5.11
+  resolution: "io-ts-types@npm:0.5.11"
+  peerDependencies:
+    fp-ts: ^2.0.0
+    io-ts: ^2.0.0
+    monocle-ts: ^2.0.0
+    newtype-ts: ^0.3.2
+  checksum: 36288c3a94217248f6c202ae19d71955c5628dad2a0da131820e5ba8e353ea9d1bed88c5222331f4527a6f98b9c9a28869ce65224804332b6c55e89d6b55069a
+  languageName: node
+  linkType: hard
+
+"io-ts@npm:^2.2.12":
+  version: 2.2.12
+  resolution: "io-ts@npm:2.2.12"
+  peerDependencies:
+    fp-ts: ^2.0.0
+  checksum: c1542902a496000a90bbc8482ccc59d0c2b472834c755666889170b71bd002a837fed354909973f9b549cf5423bc119284ab5bebd8da2f16677ed2aece9a330a
   languageName: node
   linkType: hard
 
@@ -25413,6 +25446,15 @@ mocha@latest:
   languageName: node
   linkType: hard
 
+"monocle-ts@npm:^2.3.3":
+  version: 2.3.3
+  resolution: "monocle-ts@npm:2.3.3"
+  peerDependencies:
+    fp-ts: ^2.0.0
+  checksum: 709993c1d5cdc76c16447f6b3e87ccf22bee5e0b326fee3c5472e0fcd584293750059915d5edabc255f510a8ca9292509e3c324bcadd11e3026efa2cb1ec7bbb
+  languageName: node
+  linkType: hard
+
 "move-concurrently@npm:^1.0.1":
   version: 1.0.1
   resolution: "move-concurrently@npm:1.0.1"
@@ -25595,6 +25637,16 @@ mocha@latest:
   version: 1.1.2
   resolution: "neon-js@npm:1.1.2"
   checksum: 8127b476c8c46073f0e9b81095a76ce642954b7209dbaa76c4cab5c53276ca37899a3552940cadbc3fbfd982a4185b69dab0c5ec9745564a68f7763265010ddb
+  languageName: node
+  linkType: hard
+
+"newtype-ts@npm:^0.3.4":
+  version: 0.3.4
+  resolution: "newtype-ts@npm:0.3.4"
+  peerDependencies:
+    fp-ts: ^2.0.0
+    monocle-ts: ^2.0.0
+  checksum: bfe1a8292c1e4e85a38db90c3c4540acdc55df2625b271ef0c0bf25a71fbd0c0994169d7ce6827966bb99f939068fa2e28b899b4469112cbd63f85567d094206
   languageName: node
   linkType: hard
 

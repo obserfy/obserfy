@@ -1,6 +1,6 @@
 import auth0 from "../../../../utils/auth0"
 import { getFirstQueryValue } from "../../../../utils/rest"
-import { findChildObservationsGroupedByDate } from "../../../../db"
+import { findChildObservationsGroupedByDate } from "../../../../db/queries"
 
 interface Timeline {
   date: string
