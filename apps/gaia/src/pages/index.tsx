@@ -22,6 +22,10 @@ const IndexPage = () => {
           {timeline?.map(({ date, observations }) => (
             <DateItem key={date} date={date} observations={observations} />
           ))}
+
+          <div className="flex items-center font-bold -ml-3">
+            <div className="w-4 h-4  mx-1 bg-white rounded-full border " />
+          </div>
         </div>
       </div>
     </div>
