@@ -62,7 +62,7 @@ const SupportPage = () => {
           href="mailto:support@obserfy.com"
           className="w-full md:rounded p-3 bg-white border border-gray-300 flex items-center hover:border-primary"
         >
-          <div>
+          <div className="mr-3">
             <h6 className="text-gray-900 font-bold text-sm mb-2">Email Us</h6>
             <p className="text-gray-700 text-sm">
               Have a question? Shoot us an email at support@obserfy.com
