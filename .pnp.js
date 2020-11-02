@@ -4595,6 +4595,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:0.1.2"
       ],
       [
+        "fp-ts",
+        "npm:2.8.5"
+      ],
+      [
         "fragment-cache",
         "npm:0.2.1"
       ],
@@ -5445,6 +5449,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       [
         "invariant",
         "npm:2.2.4"
+      ],
+      [
+        "io-ts",
+        "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.2.12"
+      ],
+      [
+        "io-ts-types",
+        "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.5.11"
       ],
       [
         "ip",
@@ -6655,6 +6667,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:2.27.0"
       ],
       [
+        "monocle-ts",
+        "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.3.3"
+      ],
+      [
         "move-concurrently",
         "npm:1.0.1"
       ],
@@ -6717,6 +6733,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       [
         "neon-js",
         "npm:1.1.2"
+      ],
+      [
+        "newtype-ts",
+        "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.3.4"
       ],
       [
         "next-compose-plugins",
@@ -37469,6 +37489,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["fp-ts", [
+        ["npm:2.8.5", {
+          "packageLocation": "./.yarn/cache/fp-ts-npm-2.8.5-94b37e6011-f844f4e747.zip/node_modules/fp-ts/",
+          "packageDependencies": [
+            ["fp-ts", "npm:2.8.5"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["fragment-cache", [
         ["npm:0.2.1", {
           "packageLocation": "./.yarn/cache/fragment-cache-npm-0.2.1-407fe74319-f88983f4bf.zip/node_modules/fragment-cache/",
@@ -37827,14 +37856,19 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-react-hooks", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:4.2.0"],
             ["file-loader", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:6.2.0"],
             ["formidable-serverless", "npm:1.0.3"],
+            ["fp-ts", "npm:2.8.5"],
             ["imagemin", "npm:7.0.1"],
             ["imagemin-mozjpeg", "npm:9.0.0"],
             ["imagemin-optipng", "npm:8.0.0"],
             ["imagemin-svgo", "npm:8.0.0"],
             ["img-loader", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:3.0.2"],
+            ["io-ts", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.2.12"],
+            ["io-ts-types", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.5.11"],
             ["lqip-loader", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.2.1"],
             ["minio", "npm:7.0.16"],
+            ["monocle-ts", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.3.3"],
             ["nanoid", "npm:3.1.16"],
+            ["newtype-ts", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.3.4"],
             ["next", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:10.0.0"],
             ["next-compose-plugins", "npm:2.2.0"],
             ["next-optimized-images", "npm:3.0.0-canary.10"],
@@ -41707,6 +41741,48 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["invariant", "npm:2.2.4"],
             ["loose-envify", "npm:1.4.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["io-ts", [
+        ["virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.2.12", {
+          "packageLocation": "./.yarn/$$virtual/io-ts-virtual-c9fb8a1c9a/0/cache/io-ts-npm-2.2.12-4216dc7f07-c1542902a4.zip/node_modules/io-ts/",
+          "packageDependencies": [
+            ["io-ts", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.2.12"],
+            ["@types/fp-ts", null],
+            ["fp-ts", "npm:2.8.5"]
+          ],
+          "packagePeers": [
+            "@types/fp-ts",
+            "fp-ts"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["io-ts-types", [
+        ["virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.5.11", {
+          "packageLocation": "./.yarn/$$virtual/io-ts-types-virtual-3d66a8a461/0/cache/io-ts-types-npm-0.5.11-52f77d3e27-36288c3a94.zip/node_modules/io-ts-types/",
+          "packageDependencies": [
+            ["io-ts-types", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.5.11"],
+            ["@types/fp-ts", null],
+            ["@types/io-ts", null],
+            ["@types/monocle-ts", null],
+            ["@types/newtype-ts", null],
+            ["fp-ts", "npm:2.8.5"],
+            ["io-ts", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.2.12"],
+            ["monocle-ts", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.3.3"],
+            ["newtype-ts", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.3.4"]
+          ],
+          "packagePeers": [
+            "@types/fp-ts",
+            "@types/io-ts",
+            "@types/monocle-ts",
+            "@types/newtype-ts",
+            "fp-ts",
+            "io-ts",
+            "monocle-ts",
+            "newtype-ts"
           ],
           "linkType": "HARD",
         }]
@@ -46020,6 +46096,21 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["monocle-ts", [
+        ["virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.3.3", {
+          "packageLocation": "./.yarn/$$virtual/monocle-ts-virtual-c93d681a47/0/cache/monocle-ts-npm-2.3.3-1d36cbdc91-709993c1d5.zip/node_modules/monocle-ts/",
+          "packageDependencies": [
+            ["monocle-ts", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.3.3"],
+            ["@types/fp-ts", null],
+            ["fp-ts", "npm:2.8.5"]
+          ],
+          "packagePeers": [
+            "@types/fp-ts",
+            "fp-ts"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["move-concurrently", [
         ["npm:1.0.1", {
           "packageLocation": "./.yarn/cache/move-concurrently-npm-1.0.1-e1e3c7e2cf-0761308ddb.zip/node_modules/move-concurrently/",
@@ -46220,6 +46311,25 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/neon-js-npm-1.1.2-131f830200-8127b476c8.zip/node_modules/neon-js/",
           "packageDependencies": [
             ["neon-js", "npm:1.1.2"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["newtype-ts", [
+        ["virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.3.4", {
+          "packageLocation": "./.yarn/$$virtual/newtype-ts-virtual-f1cef621a3/0/cache/newtype-ts-npm-0.3.4-085f20eaa6-bfe1a8292c.zip/node_modules/newtype-ts/",
+          "packageDependencies": [
+            ["newtype-ts", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.3.4"],
+            ["@types/fp-ts", null],
+            ["@types/monocle-ts", null],
+            ["fp-ts", "npm:2.8.5"],
+            ["monocle-ts", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.3.3"]
+          ],
+          "packagePeers": [
+            "@types/fp-ts",
+            "@types/monocle-ts",
+            "fp-ts",
+            "monocle-ts"
           ],
           "linkType": "HARD",
         }]

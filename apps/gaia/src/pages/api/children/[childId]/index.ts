@@ -1,4 +1,4 @@
-import { findChildById } from "../../../../db"
+import { findChildById } from "../../../../db/queries"
 import { generateUrl } from "../../../../utils/imgproxy"
 import auth0 from "../../../../utils/auth0"
 

@@ -1,32 +1,9 @@
-import { Pool } from "pg"
+import { array, string, type } from "io-ts"
+import { date } from "io-ts-types"
+import { nullable } from "io-ts/Type"
 import { LessonPlan } from "../domain"
 import dayjs from "../utils/dayjs"
-
-const pgPool = new Pool({
-  user: process.env.PG_USER,
-  host: process.env.PG_HOST,
-  database: process.env.PG_DATABASE,
-  password: process.env.PG_PASSWORD,
-  port: parseInt(process.env.PG_PORT ?? "5432", 10),
-  max: parseInt(process.env.MAX_CLIENTS ?? "10", 10),
-  ssl: process.env.NODE_ENV === "production" && {
-    cert: process.env.PG_CERT,
-    rejectUnauthorized: false,
-  },
-})
-
-pgPool.on("error", (err) => {
-  console.error("Unexpected error in PostgresSQL connection pool", err)
-})
-
-const query = async <T>(sql: string, params: string[]) => {
-  const client = await pgPool.connect()
-  try {
-    return await client.query<T>(sql, params)
-  } finally {
-    client.release()
-  }
-}
+import { query, typedQuery } from "./pg"
 
 export const findChildrenByGuardianEmail = async (guardianEmail: string) => {
   // language=PostgreSQL
@@ -64,10 +41,10 @@ export const findChildById = async (guardianEmail: string, childId: string) => {
 
 export const findLessonPlanByChildIdAndDate = async (
   childId: string,
-  date: string
+  selectedDate: string
 ): Promise<LessonPlan[]> => {
   // language=PostgreSQL
-  const plans = await query<any>(
+  const plans = await query(
     `
               select lp.id           as id,
                      lpd.title       as title,
@@ -100,7 +77,7 @@ export const findLessonPlanByChildIdAndDate = async (
                 AND ($2::date IS NULL OR lp.date::date = $2::date)
               group by lp.id, lpd.title, lpd.description, a.name, a.id, lp.date, lpd.id
     `,
-    [childId, date]
+    [childId, selectedDate]
   )
 
   // TODO: Fix typings
@@ -147,7 +124,7 @@ export const insertObservationToPlan = async (
   observation: string
 ) => {
   // language=PostgreSQL
-  const plan = await query<{ title: string; area_id: string }>(
+  const plan = await query(
     `
               select title, area_id
               from lesson_plans lp
@@ -158,7 +135,7 @@ export const insertObservationToPlan = async (
   )
 
   // language=PostgreSQL
-  const parent = await query<{ id: string }>(
+  const parent = await query(
     `
               select id
               from guardians
@@ -247,26 +224,26 @@ export const insertImage = async (
   }
 }
 
-export const findChildObservationsGroupedByDate = async (childId: string) => {
-  // language=PostgreSQL
-  const result = await query<
-    Array<{
-      date: string
-      observations: Array<{
-        id: string
-        long_desc: string
-        short_desc: string
-        event_time: string
-      }>
-    }>
-  >(
+const ChildObservationsGroupedByDate = array(
+  type({
+    date,
+    observations: array(
+      type({
+        id: string,
+        short_desc: string,
+        long_desc: nullable(string),
+        event_time: nullable(string),
+      })
+    ),
+  })
+)
+export const findChildObservationsGroupedByDate = async (childId: string) =>
+  typedQuery(
+    ChildObservationsGroupedByDate,
+    [childId],
     `
     select o1.event_time::date as date, json_agg(o1) as observations from observations as o1
     where o1.student_id = $1
     group by o1.event_time::date
-  `,
-    [childId]
+  `
   )
-
-  return result.rows
-}

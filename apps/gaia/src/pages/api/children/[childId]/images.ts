@@ -1,6 +1,6 @@
 import auth0 from "../../../../utils/auth0"
 import { getFirstQueryValue } from "../../../../utils/rest"
-import { getChildImages } from "../../../../db"
+import { getChildImages } from "../../../../db/queries"
 import { generateOriginalUrll, generateUrl } from "../../../../utils/imgproxy"
 
 export interface GetChildImagesResponse {

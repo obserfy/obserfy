@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next"
 import auth0 from "../../../../utils/auth0"
-import { deleteObservation, updateObservation } from "../../../../db"
+import { deleteObservation, updateObservation } from "../../../../db/queries"
 
 export interface PatchObservationRequestBody {
   observation: string
