@@ -9471,7 +9471,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "typescript-plugin-css-modules",
-        "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:2.7.0"
+        "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:2.8.0"
       ],
       [
         "typeson",
@@ -37493,7 +37493,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["stylelint-config-standard", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:20.0.0"],
             ["tailwindcss", "npm:1.9.6"],
             ["typescript", "patch:typescript@npm%3A4.0.5#builtin<compat/typescript>::version=4.0.5&hash=5bf698"],
-            ["typescript-plugin-css-modules", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:2.7.0"]
+            ["typescript-plugin-css-modules", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:2.8.0"]
           ],
           "linkType": "SOFT",
         }]
@@ -56672,10 +56672,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["typescript-plugin-css-modules", [
-        ["virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:2.7.0", {
-          "packageLocation": "./.yarn/$$virtual/typescript-plugin-css-modules-virtual-f731f4b5aa/0/cache/typescript-plugin-css-modules-npm-2.7.0-2195d49431-00fdfcf74a.zip/node_modules/typescript-plugin-css-modules/",
+        ["virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:2.8.0", {
+          "packageLocation": "./.yarn/$$virtual/typescript-plugin-css-modules-virtual-4bd4fa53f6/0/cache/typescript-plugin-css-modules-npm-2.8.0-0af5259f9f-1ab1a6c619.zip/node_modules/typescript-plugin-css-modules/",
           "packageDependencies": [
-            ["typescript-plugin-css-modules", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:2.7.0"],
+            ["typescript-plugin-css-modules", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:2.8.0"],
             ["@types/typescript", null],
             ["dotenv", "npm:8.2.0"],
             ["icss-utils", "npm:4.1.1"],
@@ -56688,6 +56688,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["reserved-words", "npm:0.1.2"],
             ["sass", "npm:1.26.9"],
             ["stylus", "npm:0.54.7"],
+            ["tsconfig-paths", "npm:3.9.0"],
             ["typescript", "patch:typescript@npm%3A4.0.5#builtin<compat/typescript>::version=4.0.5&hash=5bf698"]
           ],
           "packagePeers": [
