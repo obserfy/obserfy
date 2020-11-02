@@ -2,7 +2,7 @@ import auth0 from "../../../../utils/auth0"
 import { getFirstQueryValue } from "../../../../utils/rest"
 import { findChildObservationsGroupedByDate } from "../../../../db"
 
-export interface GetChildTimelineResponse {
+interface Timeline {
   date: string
   observations: Array<{
     id: string
@@ -15,6 +15,9 @@ export interface GetChildTimelineResponse {
     }>
   }>
 }
+
+export type GetChildTimelineResponse = Timeline[]
+
 export default auth0.requireAuthentication(async (req, res) => {
   try {
     const childId = getFirstQueryValue(req, "childId")

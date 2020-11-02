@@ -19,10 +19,10 @@ pgPool.on("error", (err) => {
   console.error("Unexpected error in PostgresSQL connection pool", err)
 })
 
-const query = async (sql: string, params: string[]) => {
+const query = async <T>(sql: string, params: string[]) => {
   const client = await pgPool.connect()
   try {
-    return await client.query(sql, params)
+    return await client.query<T>(sql, params)
   } finally {
     client.release()
   }
@@ -67,7 +67,7 @@ export const findLessonPlanByChildIdAndDate = async (
   date: string
 ): Promise<LessonPlan[]> => {
   // language=PostgreSQL
-  const plans = await query(
+  const plans = await query<any>(
     `
               select lp.id           as id,
                      lpd.title       as title,
@@ -147,7 +147,7 @@ export const insertObservationToPlan = async (
   observation: string
 ) => {
   // language=PostgreSQL
-  const plan = await query(
+  const plan = await query<{ title: string; area_id: string }>(
     `
               select title, area_id
               from lesson_plans lp
@@ -158,7 +158,7 @@ export const insertObservationToPlan = async (
   )
 
   // language=PostgreSQL
-  const parent = await query(
+  const parent = await query<{ id: string }>(
     `
               select id
               from guardians
@@ -167,7 +167,7 @@ export const insertObservationToPlan = async (
     [parentEmail]
   )
 
-  const now = dayjs()
+  const now = dayjs().toISOString()
   // language=PostgreSQL
   const result = await query(
     `
@@ -249,15 +249,24 @@ export const insertImage = async (
 
 export const findChildObservationsGroupedByDate = async (childId: string) => {
   // language=PostgreSQL
-  const result = await query(
+  const result = await query<
+    Array<{
+      date: string
+      observations: Array<{
+        id: string
+        long_desc: string
+        short_desc: string
+        event_time: string
+      }>
+    }>
+  >(
     `
-    select o1.event_time::date, json_agg(o1) from observations as o1
+    select o1.event_time::date as date, json_agg(o1) as observations from observations as o1
     where o1.student_id = $1
     group by o1.event_time::date
   `,
     [childId]
   )
 
-  console.log(result.rows)
   return result.rows
 }
