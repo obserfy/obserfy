@@ -6,6 +6,7 @@ import useGetTimeline from "../hooks/api/useGetTimeline"
 import { useQueryString } from "../hooks/useQueryString"
 import { GetChildTimelineResponse } from "./api/children/[childId]/timeline"
 import CalendarIcon from "../icons/calendar.svg"
+import EditIcon from "../icons/edit.svg"
 
 const IndexPage = () => {
   const childId = useQueryString("childId")
@@ -17,7 +18,7 @@ const IndexPage = () => {
         <title>Obserfy for Parents</title>
       </Head>
       <div className="max-w-3xl mx-auto flex items-center">
-        <div className="border-l ml-8 ">
+        <div className="border-l ml-8 pt-3">
           {timeline?.map(({ date, observations }) => (
             <DateItem key={date} date={date} observations={observations} />
           ))}
@@ -31,22 +32,24 @@ const DateItem: FC<{
   date: string
   observations: GetChildTimelineResponse[0]["observations"]
 }> = ({ date, observations }) => (
-  <div className="mb-10">
-    <div className="flex items-center font-bold -ml-5 mt-3">
+  <div className="mb-12">
+    <div className="flex items-center font-bold -ml-5 mb-3">
       <div className="w-8 h-8  mx-1 flex items-center justify-center bg-white rounded-full border ">
         <Img src={CalendarIcon} className="w-4 h-4" />
       </div>
-      <div className="ml-3">{dayjs(date).format("dddd, D MMM YYYY")}</div>
+      <div className="ml-3 text-xs text-gray-700">
+        {dayjs(date).format("dddd, D MMM YYYY")}
+      </div>
     </div>
 
     {observations.map(({ id, shortDesc, longDesc }) => (
-      <div className="flex -ml-5 mt-3" key={id}>
+      <div className="flex -ml-5 mb-5" key={id}>
         <div className="w-8 h-8 mx-1 flex items-center justify-center bg-white rounded-full border flex-shrink-0">
-          I
+          <Img src={EditIcon} className="w-3 h-3" />
         </div>
         <div className="pt-1">
-          <div className="ml-3 font-bold">{shortDesc}</div>
-          <div className="ml-3">{longDesc}</div>
+          <div className="mx-3 font-bold">{shortDesc}</div>
+          <div className="mx-3 max-w-md">{longDesc}</div>
         </div>
       </div>
     ))}
