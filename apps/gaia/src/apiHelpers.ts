@@ -8,7 +8,7 @@ export const getApi = <T>(url: string) => async (): Promise<T> => {
 
   const json = await result.json()
   if (!result.ok) {
-    analytics.track("Request Failed", {
+    mixpanel.track("Request Failed", {
       method: "GET",
       status: result.status,
       message: json.error.message,
@@ -28,7 +28,7 @@ export const deleteApi = (url: string) => async () => {
 
   if (!result.ok) {
     const body = await result.json()
-    analytics.track("Request Failed", {
+    mixpanel.track("Request Failed", {
       method: "DELETE",
       status: result.status,
       message: body?.error?.message,
@@ -48,7 +48,7 @@ export const patchApi = <T>(url: string) => async (payload: T) => {
 
   if (!result.ok) {
     const body = await result.json()
-    analytics.track("Request Failed", {
+    mixpanel.track("Request Failed", {
       method: "PATCH",
       status: result.status,
       message: body?.error?.message,
@@ -68,7 +68,7 @@ export const postApi = <T>(url: string) => async (payload: T) => {
 
   if (!result.ok) {
     const body = await result.json()
-    analytics.track("Request Failed", {
+    mixpanel.track("Request Failed", {
       method: "POST",
       status: result.status,
       message: body?.error?.message,
@@ -94,7 +94,7 @@ export const postFile = (url: string) => async (image: {
 
   if (!result.ok) {
     const body = await result.json()
-    analytics.track("Request Failed", {
+    mixpanel.track("Request Failed", {
       method: "POST FILE",
       status: result.status,
       message: body?.error?.message,
