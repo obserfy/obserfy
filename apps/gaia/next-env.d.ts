@@ -30,7 +30,11 @@
 //   export default content
 // }
 
+// eslint-disable-next-line import/no-unresolved
+
 declare const Canny: (method: string, data: any) => void
+
+declare const mixpanel: any
 
 declare module "formidable-serverless" {
   // eslint-disable-next-line import/no-extraneous-dependencies,import/no-unresolved

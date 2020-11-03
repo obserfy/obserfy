@@ -3,6 +3,7 @@ import Head from "next/head"
 import Img from "react-optimized-image"
 import { v4 as uuidv4 } from "uuid"
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock"
+import Image from "next/image"
 import useGetChildImages, { ChildImage } from "../hooks/useGetChildImages"
 import { useQueryString } from "../hooks/useQueryString"
 import NoImagesIllustration from "../images/no-images-illustration.svg"
@@ -60,8 +61,8 @@ const GalleryPage = () => {
               className="w-1/3 md:w-1/5 relative cursor-pointer"
               onClick={() => setImagePreview(img)}
             >
-              <div style={{ width: "100%", paddingBottom: "100%" }}>
-                {img.isUploading && (
+              {img.isUploading ? (
+                <div style={{ width: "100%", paddingBottom: "100%" }}>
                   <p
                     className="
                       font-bold
@@ -73,16 +74,22 @@ const GalleryPage = () => {
                   >
                     Uploading
                   </p>
-                )}
-                <img
-                  src={img.imageUrl}
+                  <img
+                    src={img.imageUrl}
+                    alt="children activity"
+                    className="absolute w-full h-full object-cover opacity-25"
+                  />
+                </div>
+              ) : (
+                <Image
+                  src={img.originalImageUrl}
                   alt="children activity"
-                  className={`absolute w-full h-full object-cover ${
-                    img.isUploading ? "opacity-25" : ""
-                  }`}
+                  className="absolute w-full h-full object-cover border border-white"
+                  height={250}
+                  width={250}
                   loading="lazy"
                 />
-              </div>
+              )}
             </button>
           ))}
           {childImages.isSuccess && childImages.data?.length === 0 && (

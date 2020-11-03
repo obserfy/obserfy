@@ -1,4 +1,4 @@
-import { findChildrenByGuardianEmail } from "../../../db"
+import { findChildrenByGuardianEmail } from "../../../db/queries"
 import auth0 from "../../../utils/auth0"
 
 export interface GetChildrenResponse {
