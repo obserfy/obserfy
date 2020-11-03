@@ -232,7 +232,14 @@ const ChildObservationsGroupedByDate = array(
         id: string,
         short_desc: string,
         long_desc: nullable(string),
-        event_time: nullable(string),
+        images: array(
+          nullable(
+            type({
+              id: string,
+              object_key: string,
+            })
+          )
+        ),
       })
     ),
   })
@@ -242,10 +249,18 @@ export const findChildObservationsGroupedByDate = async (childId: string) =>
     ChildObservationsGroupedByDate,
     [childId],
     `
-              select o1.event_time::date as date, json_agg(o1) as observations
+              select o1.event_time::date as date, json_agg(o3) as observations
               from observations as o1
+                       left join lateral (
+                  select o2.id, o2.short_desc, o2.long_desc, json_agg(i) as images
+                  from observations o2
+                           left outer join observation_to_images oti on o2.id = oti.observation_id
+                           left outer join images i on oti.image_id = i.id
+                  where o2.id = o1.id
+                  group by o2.id
+                  ) o3 on true
               where o1.student_id = $1
-                AND o1.visible_to_guardians = true
+--                 AND o1.visible_to_guardians = true
               group by o1.event_time::date
               order by o1.event_time::date desc
     `
