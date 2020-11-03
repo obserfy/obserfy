@@ -8,7 +8,7 @@
   "devDependencies": {
     "@lingui/core": "3.0.3",
     "@lingui/react": "3.0.3",
-    "react-refresh": "^0.9.0"
+    "react-refresh": "0.9.0"
   },
   "peerDependencies": {
     "@emotion/core": "^10.0.28",
