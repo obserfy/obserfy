@@ -1,13 +1,20 @@
 import React, { FC, useState } from "react"
 import Img from "react-optimized-image"
+import Link from "next/link"
 import ProfilePicture from "./profilePicture"
 import Button from "./Button/Button"
 import LogoutIcon from "../icons/log-out.svg"
+import UsersIcon from "../icons/users.svg"
 import Logo from "../images/logo.svg"
+import CloseIcon from "../icons/close.svg"
+import ChevronRight from "../icons/chevron-right.svg"
 import useGetUser from "../hooks/api/useGetUser"
+import useGetChildren from "../hooks/api/useGetChildren"
+import { useQueryString } from "../hooks/useQueryString"
 
 const Header: FC = () => {
   const [showLogout, setShowLogout] = useState(false)
+  const [showChildPicker, setShowChildPicker] = useState(false)
   const user = useGetUser()
 
   if (user.isLoading) {
@@ -23,15 +30,21 @@ const Header: FC = () => {
       <div className="px-3 flex items-center max-w-3xl mx-auto h-16">
         <ProfilePicture src={user.data?.picture ?? ""} />
         <div className="ml-2 text-sm font-bold">{user.data?.name}</div>
-        <div
-          tabIndex={0}
-          role="button"
-          className="ml-auto p-3 cursor-pointer"
-          onClick={() => setShowLogout(true)}
-          onKeyUp={(e) => e.keyCode === 13 && setShowLogout(true)}
+        <Button
+          outline
+          className="ml-auto p-2 cursor-pointer hover:bg-gray-200"
+          onClick={() => setShowChildPicker(true)}
         >
-          <Img alt="logout icon" src={LogoutIcon} height={18} width={18} />
-        </div>
+          <Img alt="logout icon" src={UsersIcon} height={14} width={14} />
+        </Button>
+
+        <Button
+          outline
+          className="ml-3 p-2 cursor-pointer hover:bg-gray-200"
+          onClick={() => setShowLogout(true)}
+        >
+          <Img alt="logout icon" src={LogoutIcon} height={16} width={16} />
+        </Button>
       </div>
 
       {showLogout && (
@@ -54,7 +67,55 @@ const Header: FC = () => {
           </div>
         </div>
       )}
+
+      {showChildPicker && (
+        <ChildPicker onClose={() => setShowChildPicker(false)} />
+      )}
     </>
+  )
+}
+
+const ChildPicker: FC<{ onClose: () => void }> = ({ onClose }) => {
+  const childId = useQueryString("childId")
+  const { data: children } = useGetChildren()
+
+  return (
+    <div className="fixed h-screen w-screen bg-overlay z-50 top-0 left-0 flex items-center justify-center">
+      <div className="bg-white rounded shadow-md mx-3 overflow-hidden">
+        <div className="flex items-end py-3">
+          <div className="text-xl font-bold px-6">Switch</div>
+
+          <Button outline onClick={onClose} className="p-1 ml-auto mr-3">
+            <Img src={CloseIcon} className="w-6 h-6" />
+          </Button>
+        </div>
+        {children?.map(({ id, name }) => (
+          <Link href={`/?childId=${id}`} key={id}>
+            {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
+            <a
+              className={`flex items-center leading-tight ${
+                id === childId
+                  ? "border-l-4 border-green-700 text-green-800"
+                  : ""
+              } `}
+              onClick={onClose}
+            >
+              <div
+                className={`text-lg py-4 px-6 ${
+                  id === childId ? "font-bold" : ""
+                }`}
+              >
+                {name}
+              </div>
+              <Img
+                src={ChevronRight}
+                className="ml-auto w-6 h-6 mr-4 opacity-50"
+              />
+            </a>
+          </Link>
+        ))}
+      </div>
+    </div>
   )
 }
 

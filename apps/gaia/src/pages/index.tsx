@@ -22,7 +22,11 @@ const IndexPage = () => {
       <div className="max-w-3xl mx-auto">
         <div className="border-l ml-8 pt-3">
           {timeline?.map(({ date, observations }) => (
-            <DateItem key={date} date={date} observations={observations} />
+            <ObservationList
+              key={date}
+              date={date}
+              observations={observations}
+            />
           ))}
 
           <div className="flex items-center font-bold -ml-3">
@@ -30,14 +34,14 @@ const IndexPage = () => {
           </div>
         </div>
         {isSuccess && (timeline?.length ?? 0) === 0 && (
-          <EmptyPlansIllustration loading={isLoading} />
+          <EmptyTimelinePlaceholder loading={isLoading} />
         )}
       </div>
     </div>
   )
 }
 
-const DateItem: FC<{
+const ObservationList: FC<{
   date: string
   observations: GetChildTimelineResponse[0]["observations"]
 }> = ({ date, observations }) => (
@@ -60,8 +64,8 @@ const DateItem: FC<{
           <div className="mx-3 font-bold">{shortDesc}</div>
           <div className="mx-3 max-w-md text-gray-900 mb-2">{longDesc}</div>
           <div className="flex ml-3 flex-wrap">
-            {images.map(({ originalImageUrl }) => (
-              <div className="mr-3 mb-3">
+            {images.map(({ id: imageId, originalImageUrl }) => (
+              <div className="mr-3 mb-3" key={imageId}>
                 <Image
                   src={originalImageUrl}
                   height={60}
@@ -77,13 +81,13 @@ const DateItem: FC<{
   </div>
 )
 
-const EmptyPlansIllustration: FC<{ loading: boolean }> = ({ loading }) => (
+const EmptyTimelinePlaceholder: FC<{ loading: boolean }> = ({ loading }) => (
   <div
     className={`flex flex-col items-center pt-16 ${
       loading && "opacity-50"
     } transition-opacity duration-200 max-w-3xl mx-auto`}
   >
-    <Img src={EmptyTimeline} className="w-64 md:w-1/2 mb-4" />
+    <Img src={EmptyTimeline} className="w-64 md:w-1/2 mb-4 mr-6" />
     <h5
       className={`text-xl mx-4 text-center ${
         loading && "opacity-0"
