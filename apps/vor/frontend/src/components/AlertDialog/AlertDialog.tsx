@@ -8,7 +8,7 @@ import DialogHeader from "../DialogHeader/DialogHeader"
 interface Props extends BoxProps {
   title: string
   negativeText?: string
-  positiveText: string
+  positiveText?: string
   onDismiss?: () => void
   onNegativeClick?: () => void
   onPositiveClick?: () => void

@@ -8,7 +8,7 @@ const usePostPlanObservation = (planId: string) => {
   )
   return useMutation(postPlanObservation, {
     onSuccess: async () => {
-      analytics.track("Observation Created")
+      mixpanel.track("Observation Created")
       await queryCache.invalidateQueries(["childPlans"])
     },
   })

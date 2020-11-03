@@ -48,7 +48,8 @@ func (s *BaseTestSuite) SetupSuite() {
 	}
 	s.MinioClient, err = cMinio.NewClient()
 	if err != nil {
-		panic(err)
+		fmt.Println("connect minio err")
+		fmt.Println(err)
 	}
 	s.Server = rest.NewServer(zaptest.NewLogger(s.T()))
 }

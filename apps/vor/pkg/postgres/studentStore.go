@@ -33,18 +33,29 @@ func (s StudentStore) DeleteClassRelation(studentId string, classId string) erro
 	return nil
 }
 
-func (s StudentStore) InsertObservation(studentId string, creatorId string, longDesc string, shortDesc string, category string, eventTime time.Time, images []uuid.UUID, areaId uuid.UUID) (*Observation, error) {
+func (s StudentStore) InsertObservation(
+	studentId string,
+	creatorId string,
+	longDesc string,
+	shortDesc string,
+	category string,
+	eventTime time.Time,
+	images []uuid.UUID,
+	areaId uuid.UUID,
+	visibleToGuardians bool,
+) (*Observation, error) {
 	observationId := uuid.New()
 	observation := Observation{
-		Id:          observationId.String(),
-		StudentId:   studentId,
-		ShortDesc:   shortDesc,
-		LongDesc:    longDesc,
-		CategoryId:  category,
-		CreatorId:   creatorId,
-		CreatedDate: time.Now(),
-		EventTime:   eventTime,
-		AreaId:      areaId,
+		Id:                 observationId.String(),
+		StudentId:          studentId,
+		ShortDesc:          shortDesc,
+		LongDesc:           longDesc,
+		CategoryId:         category,
+		CreatorId:          creatorId,
+		CreatedDate:        time.Now(),
+		EventTime:          eventTime,
+		AreaId:             areaId,
+		VisibleToGuardians: visibleToGuardians,
 	}
 	observationImages := make([]ObservationToImage, 0)
 	for i := range images {

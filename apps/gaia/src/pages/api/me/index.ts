@@ -1,5 +1,5 @@
 import auth0 from "../../../utils/auth0"
-import { findChildrenByGuardianEmail } from "../../../db"
+import { findChildrenByGuardianEmail } from "../../../db/queries"
 
 export interface UserData {
   family_name: string

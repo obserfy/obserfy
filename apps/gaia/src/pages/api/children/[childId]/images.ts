@@ -1,7 +1,7 @@
 import auth0 from "../../../../utils/auth0"
 import { getFirstQueryValue } from "../../../../utils/rest"
-import { getChildImages } from "../../../../db"
-import { generateOriginalUrll, generateUrl } from "../../../../utils/imgproxy"
+import { getChildImages } from "../../../../db/queries"
+import { generateOriginalUrl, generateUrl } from "../../../../utils/imgproxy"
 
 export interface GetChildImagesResponse {
   id: string
@@ -22,7 +22,7 @@ export default auth0.requireAuthentication(async (req, res) => {
     const response: GetChildImagesResponse[] = images.map((img) => ({
       id: img.image_id,
       imageUrl: generateUrl(img.object_key, 300, 300),
-      originalImageUrl: generateOriginalUrll(img.object_key),
+      originalImageUrl: generateOriginalUrl(img.object_key),
       createdAt: img.created_at,
     }))
 
