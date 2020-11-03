@@ -261,7 +261,7 @@ export const findChildObservationsGroupedByDate = async (childId: string) =>
                   group by o2.id, a.name, o2.short_desc, o2.long_desc
               ) o3 on o3.id = o1.id
               where o1.student_id = $1
---                 AND o1.visible_to_guardians = true
+                AND o1.visible_to_guardians = true
               group by o1.event_time::date
               order by o1.event_time::date desc
     `
