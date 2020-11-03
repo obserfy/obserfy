@@ -1,32 +1,9 @@
-import { Pool } from "pg"
+import { array, string, type } from "io-ts"
+import { date } from "io-ts-types"
+import { nullable } from "io-ts/Type"
 import { LessonPlan } from "../domain"
 import dayjs from "../utils/dayjs"
-
-const pgPool = new Pool({
-  user: process.env.PG_USER,
-  host: process.env.PG_HOST,
-  database: process.env.PG_DATABASE,
-  password: process.env.PG_PASSWORD,
-  port: parseInt(process.env.PG_PORT ?? "5432", 10),
-  max: parseInt(process.env.MAX_CLIENTS ?? "10", 10),
-  ssl: process.env.NODE_ENV === "production" && {
-    cert: process.env.PG_CERT,
-    rejectUnauthorized: false,
-  },
-})
-
-pgPool.on("error", (err) => {
-  console.error("Unexpected error in PostgresSQL connection pool", err)
-})
-
-const query = async (sql: string, params: string[]) => {
-  const client = await pgPool.connect()
-  try {
-    return await client.query(sql, params)
-  } finally {
-    client.release()
-  }
-}
+import { query, typedQuery } from "./pg"
 
 export const findChildrenByGuardianEmail = async (guardianEmail: string) => {
   // language=PostgreSQL
@@ -64,7 +41,7 @@ export const findChildById = async (guardianEmail: string, childId: string) => {
 
 export const findLessonPlanByChildIdAndDate = async (
   childId: string,
-  date: string
+  selectedDate: string
 ): Promise<LessonPlan[]> => {
   // language=PostgreSQL
   const plans = await query(
@@ -100,7 +77,7 @@ export const findLessonPlanByChildIdAndDate = async (
                 AND ($2::date IS NULL OR lp.date::date = $2::date)
               group by lp.id, lpd.title, lpd.description, a.name, a.id, lp.date, lpd.id
     `,
-    [childId, date]
+    [childId, selectedDate]
   )
 
   // TODO: Fix typings
@@ -167,13 +144,13 @@ export const insertObservationToPlan = async (
     [parentEmail]
   )
 
-  const now = dayjs()
+  const now = dayjs().toISOString()
   // language=PostgreSQL
   const result = await query(
     `
               insert into observations (student_id, short_desc, long_desc, created_date, event_time, lesson_plan_id,
-                                        guardian_id, area_id)
-              values ($1, $2, $3, $4, $5, $6, $7, $8)
+                                        guardian_id, area_id, visible_to_guardians)
+              values ($1, $2, $3, $4, $5, $6, $7, $8, true)
     `,
     [
       childId,
@@ -246,3 +223,46 @@ export const insertImage = async (
     throw e
   }
 }
+
+const ChildObservationsGroupedByDate = array(
+  type({
+    date,
+    observations: array(
+      type({
+        id: string,
+        short_desc: string,
+        long_desc: nullable(string),
+        area_name: nullable(string),
+        images: array(
+          nullable(
+            type({
+              id: string,
+              object_key: string,
+            })
+          )
+        ),
+      })
+    ),
+  })
+)
+export const findChildObservationsGroupedByDate = async (childId: string) =>
+  typedQuery(
+    ChildObservationsGroupedByDate,
+    [childId],
+    `
+              select o1.event_time::date as date, json_agg(o3 order by event_time desc) as observations
+              from observations as o1
+                       left join (
+                  select o2.id, o2.short_desc, o2.long_desc, a.name as area_name, json_agg(i) as images
+                  from observations o2
+                           left outer join observation_to_images oti on o2.id = oti.observation_id
+                           left outer join images i on oti.image_id = i.id
+                           left outer join areas a on o2.area_id = a.id
+                  group by o2.id, a.name, o2.short_desc, o2.long_desc
+              ) o3 on o3.id = o1.id
+              where o1.student_id = $1
+                AND o1.visible_to_guardians = true
+              group by o1.event_time::date
+              order by o1.event_time::date desc
+    `
+  )

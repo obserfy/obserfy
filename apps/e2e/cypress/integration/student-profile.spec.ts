@@ -118,9 +118,7 @@ describe("test student profile page", () => {
     cy.contains("Some additional text").should("be.visible")
 
     // Delete observation
-    cy.contains("Delete").should("be.visible")
-    // TODO: This part is really flaky, try fixing it later.
-    cy.contains("Delete").click()
+    cy.get("[data-cy=delete-observation]").should("be.visible").click()
     cy.contains("button", "Yes").click()
     cy.contains(shortDesc).should("not.be.visible")
 

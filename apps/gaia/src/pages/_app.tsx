@@ -1,13 +1,28 @@
 /* eslint-disable react/no-danger */
-import React from "react"
-// eslint-disable-next-line import/no-extraneous-dependencies
+import React, { useEffect } from "react"
 import { ReactQueryDevtools } from "react-query-devtools"
 import { AppComponent } from "next/dist/next-server/lib/router/router"
+import { useRouter } from "next/router"
 import Layout from "../components/layout"
 import "../global.css"
 import ErrorBoundary from "../components/ErrorBoundary"
 
 const App: AppComponent = ({ Component, pageProps }) => {
+  const router = useRouter()
+
+  useEffect(() => {
+    // Setup analytics
+    mixpanel.init("bb93616fa99d71364cdee8cae08d4644")
+    const pageRoutingAnalytics = (url: string) => {
+      mixpanel.track("Loaded a Page", { url })
+    }
+    router.events.on("routeChangeComplete", pageRoutingAnalytics)
+
+    return () => {
+      router.events.off("routeChangeComplete", pageRoutingAnalytics)
+    }
+  }, [])
+
   return (
     <ErrorBoundary>
       <Layout>

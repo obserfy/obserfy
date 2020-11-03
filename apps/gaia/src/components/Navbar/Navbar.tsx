@@ -12,7 +12,7 @@ const Navbar: FC<Props> = ({ childId }) => {
     <div className="sticky top-0 bg-surface border-b z-30">
       <nav className="w-full flex max-w-3xl mx-auto pl-1">
         <ul className="flex">
-          <li className="mr-1" style={{ marginBottom: -1 }}>
+          <li className="mr-1 flex-shrink-0" style={{ marginBottom: -1 }}>
             <Link href={`/?childId=${childId}`}>
               <a
                 className={`${
@@ -21,11 +21,24 @@ const Navbar: FC<Props> = ({ childId }) => {
                     : "text-gray-700"
                 } bg-white inline-block p-2 text-sm`}
               >
+                Timeline
+              </a>
+            </Link>
+          </li>
+          <li className="mr-1 flex-shrink-0" style={{ marginBottom: -1 }}>
+            <Link href={`/lesson-plan?childId=${childId}`}>
+              <a
+                className={`${
+                  router.pathname === "/lesson-plan"
+                    ? "border-b-2 border-black"
+                    : "text-gray-700"
+                } bg-white inline-block p-2 text-sm`}
+              >
                 Lesson Plan
               </a>
             </Link>
           </li>
-          <li className="mr-1" style={{ marginBottom: -1 }}>
+          <li className="mr-1 flex-shrink-0" style={{ marginBottom: -1 }}>
             <Link href={`/gallery?childId=${childId}`}>
               <a
                 className={`${
@@ -38,7 +51,7 @@ const Navbar: FC<Props> = ({ childId }) => {
               </a>
             </Link>
           </li>
-          <li className="mr-1" style={{ marginBottom: -1 }}>
+          <li className="mr-1 flex-shrink-0" style={{ marginBottom: -1 }}>
             <Link href={`/support?childId=${childId}`}>
               <a
                 className={`${
