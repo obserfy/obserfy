@@ -1,6 +1,7 @@
 import React, { FC } from "react"
 import Head from "next/head"
 import Img from "react-optimized-image"
+import Image from "next/image"
 import dayjs from "../utils/dayjs"
 import useGetTimeline from "../hooks/api/useGetTimeline"
 import { useQueryString } from "../hooks/useQueryString"
@@ -50,14 +51,26 @@ const DateItem: FC<{
       </div>
     </div>
 
-    {observations.map(({ id, shortDesc, longDesc }) => (
+    {observations.map(({ id, shortDesc, longDesc, images }) => (
       <div className="flex -ml-5 mb-6" key={id}>
         <div className="w-8 h-8 mx-1 flex items-center justify-center bg-white rounded-full border flex-shrink-0">
           <Img src={EditIcon} className="w-3 h-3" />
         </div>
         <div className="pt-1">
           <div className="mx-3 font-bold">{shortDesc}</div>
-          <div className="mx-3 max-w-md text-gray-900">{longDesc}</div>
+          <div className="mx-3 max-w-md text-gray-900 mb-2">{longDesc}</div>
+          <div className="flex ml-3 flex-wrap">
+            {images.map(({ originalImageUrl }) => (
+              <div className="mr-3 mb-3">
+                <Image
+                  src={originalImageUrl}
+                  height={60}
+                  width={60}
+                  className="rounded border object-cover"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     ))}
