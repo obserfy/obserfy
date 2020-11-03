@@ -23,7 +23,6 @@
     "@types/pino": "^6.3.3",
     "@types/react": "16.9.55",
     "@types/react-query": "1.1.2",
-    "@types/segment-analytics": "0.0.32",
     "@types/uuid": "8.3.0",
     "body-scroll-lock": "3.1.5",
     "dayjs": "1.9.4",

@@ -18621,7 +18621,6 @@ fsevents@^1.2.7:
     "@types/pino": ^6.3.3
     "@types/react": 16.9.55
     "@types/react-query": 1.1.2
-    "@types/segment-analytics": 0.0.32
     "@types/uuid": 8.3.0
     "@typescript-eslint/eslint-plugin": 4.6.1
     "@typescript-eslint/parser": 4.6.1

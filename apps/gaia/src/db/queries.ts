@@ -149,8 +149,8 @@ export const insertObservationToPlan = async (
   const result = await query(
     `
               insert into observations (student_id, short_desc, long_desc, created_date, event_time, lesson_plan_id,
-                                        guardian_id, area_id)
-              values ($1, $2, $3, $4, $5, $6, $7, $8)
+                                        guardian_id, area_id, visible_to_guardians)
+              values ($1, $2, $3, $4, $5, $6, $7, $8, true)
     `,
     [
       childId,
@@ -250,7 +250,7 @@ export const findChildObservationsGroupedByDate = async (childId: string) =>
     ChildObservationsGroupedByDate,
     [childId],
     `
-              select o1.event_time::date as date, json_agg(o3) as observations
+              select o1.event_time::date as date, json_agg(o3 order by event_time desc) as observations
               from observations as o1
                        left join (
                   select o2.id, o2.short_desc, o2.long_desc, a.name as area_name, json_agg(i) as images
