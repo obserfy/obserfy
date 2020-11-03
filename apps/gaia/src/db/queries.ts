@@ -251,14 +251,13 @@ export const findChildObservationsGroupedByDate = async (childId: string) =>
     `
               select o1.event_time::date as date, json_agg(o3) as observations
               from observations as o1
-                       left join lateral (
+                       left join (
                   select o2.id, o2.short_desc, o2.long_desc, json_agg(i) as images
                   from observations o2
                            left outer join observation_to_images oti on o2.id = oti.observation_id
                            left outer join images i on oti.image_id = i.id
-                  where o2.id = o1.id
                   group by o2.id
-                  ) o3 on true
+                  ) o3 on o3.id = o1.id
               where o1.student_id = $1
 --                 AND o1.visible_to_guardians = true
               group by o1.event_time::date

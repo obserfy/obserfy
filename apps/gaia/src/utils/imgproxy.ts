@@ -25,11 +25,11 @@ const sign = (salt: string, target: string, secret: string) => {
 }
 
 export const generateUrl = (
-  imagePath: string,
+  objectKey: string,
   width: number,
   height: number
 ) => {
-  const url = `s3://${BUCKET}/${imagePath}`
+  const url = `s3://${BUCKET}/${objectKey}`
   const resizingType = "fill"
   const gravity = "no"
   const enlarge = 1
@@ -40,8 +40,8 @@ export const generateUrl = (
   return `${URL}/${signature}${path}`
 }
 
-export const generateOriginalUrll = (imagePath: string) => {
-  const url = `s3://${BUCKET}/${imagePath}`
+export const generateOriginalUrl = (objectKey: string) => {
+  const url = `s3://${BUCKET}/${objectKey}`
 
   const path = `/${urlSafeBase64(url)}`
   const signature = sign(SALT, path, KEY)
