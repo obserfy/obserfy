@@ -4055,7 +4055,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:7.12.1":
+"@babel/runtime@npm:7.12.1, @babel/runtime@npm:^7.12.1":
   version: 7.12.1
   resolution: "@babel/runtime@npm:7.12.1"
   dependencies:
@@ -8012,9 +8012,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/dom@npm:^7.26.0":
-  version: 7.26.0
-  resolution: "@testing-library/dom@npm:7.26.0"
+"@testing-library/dom@npm:^7.26.4":
+  version: 7.26.4
+  resolution: "@testing-library/dom@npm:7.26.4"
   dependencies:
     "@babel/code-frame": ^7.10.4
     "@babel/runtime": ^7.10.3
@@ -8024,7 +8024,7 @@ __metadata:
     dom-accessibility-api: ^0.5.1
     lz-string: ^1.4.4
     pretty-format: ^26.4.2
-  checksum: 9f4d67269d32e41ccae0bacad63d72d7a2ae77b77a14dccd30382ea0b670df3b3bd9767cfb1014b01827dd296db50d0d29d96cf11954f712372ea7b96db59e8e
+  checksum: 9d88312d21b2ddc6fb840f5b05c60446ac89133bb7be3d95096edec5bca07e638d77988b6dfd1911369c0ddbd0eae9a6499757aef31ec59626eec7d6b0d07680
   languageName: node
   linkType: hard
 
@@ -8041,16 +8041,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/react@npm:11.1.0":
-  version: 11.1.0
-  resolution: "@testing-library/react@npm:11.1.0"
+"@testing-library/react@npm:11.1.1":
+  version: 11.1.1
+  resolution: "@testing-library/react@npm:11.1.1"
   dependencies:
-    "@babel/runtime": ^7.11.2
-    "@testing-library/dom": ^7.26.0
+    "@babel/runtime": ^7.12.1
+    "@testing-library/dom": ^7.26.4
   peerDependencies:
     react: "*"
     react-dom: "*"
-  checksum: 73976ec3f70542c8fc67da1a0c6ac5bc99d6edcde1f1c87a8fec706df09267b76b698d19900013277bfa91d09cae22c648dd362c19b0095fc8fa1477561d18ec
+  checksum: f09d56355dd86c4bae4ae8a1c7abe5270d6e6ccf9db6089f8efa1529e11272a2073cf19bd801f8f6f2c7ae2b3aeb7ba9c4b44aa1cdb2c76ce6dc3f1c46fc795e
   languageName: node
   linkType: hard
 
@@ -35982,7 +35982,7 @@ typescript@^4.0.0:
     "@storybook/addons": 6.0.28
     "@storybook/react": 6.0.28
     "@svgr/webpack": 5.4.0
-    "@testing-library/react": 11.1.0
+    "@testing-library/react": 11.1.1
     "@testing-library/react-hooks": 3.4.2
     "@theme-ui/match-media": 0.4.0-rc.6
     "@types/body-scroll-lock": 2.6.1
