@@ -1,6 +1,7 @@
 import { Pool } from "pg"
 import { isLeft } from "fp-ts/Either"
 import { Decoder } from "io-ts"
+import logger from "../logger"
 
 const pgPool = new Pool({
   user: process.env.PG_USER,
@@ -16,7 +17,7 @@ const pgPool = new Pool({
 })
 
 pgPool.on("error", (err) => {
-  console.error("Unexpected error in PostgresSQL connection pool", err)
+  logger.error("Unexpected error in PostgresSQL connection pool", err)
 })
 
 export const query = async (sql: string, params: string[]) => {
@@ -38,7 +39,7 @@ export const typedQuery = async <T>(
     const queryResult = await client.query(sql, params)
     const rows = decoder.decode(queryResult.rows)
     if (isLeft(rows)) {
-      console.log(JSON.stringify(rows.left))
+      logger.error(rows.left[0])
       throw Error("query result type mismatch")
     }
     return rows.right

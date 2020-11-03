@@ -1,6 +1,7 @@
 import auth0 from "../../../../utils/auth0"
 import { getFirstQueryValue } from "../../../../utils/rest"
 import { findChildObservationsGroupedByDate } from "../../../../db/queries"
+import logger from "../../../../logger"
 
 interface Timeline {
   date: string
@@ -38,7 +39,7 @@ export default auth0.requireAuthentication(async (req, res) => {
     )
     await res.json(response)
   } catch (err) {
-    console.error(err)
+    logger.error(err)
     res.status(err.status || 500).end(err.message)
   }
 })

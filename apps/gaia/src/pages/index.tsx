@@ -51,37 +51,35 @@ const DateItem: FC<{
     </div>
 
     {observations.map(({ id, shortDesc, longDesc }) => (
-      <div className="flex -ml-5 mb-5" key={id}>
+      <div className="flex -ml-5 mb-6" key={id}>
         <div className="w-8 h-8 mx-1 flex items-center justify-center bg-white rounded-full border flex-shrink-0">
           <Img src={EditIcon} className="w-3 h-3" />
         </div>
         <div className="pt-1">
           <div className="mx-3 font-bold">{shortDesc}</div>
-          <div className="mx-3 max-w-md">{longDesc}</div>
+          <div className="mx-3 max-w-md text-gray-900">{longDesc}</div>
         </div>
       </div>
     ))}
   </div>
 )
 
-const EmptyPlansIllustration: FC<{ loading: boolean }> = ({ loading }) => {
-  return (
-    <div
-      className={`flex flex-col items-center pt-16 ${
-        loading && "opacity-50"
-      } transition-opacity duration-200 max-w-3xl mx-auto`}
+const EmptyPlansIllustration: FC<{ loading: boolean }> = ({ loading }) => (
+  <div
+    className={`flex flex-col items-center pt-16 ${
+      loading && "opacity-50"
+    } transition-opacity duration-200 max-w-3xl mx-auto`}
+  >
+    <Img src={EmptyTimeline} className="w-64 md:w-1/2 mb-4" />
+    <h5
+      className={`text-xl mx-4 text-center ${
+        loading && "opacity-0"
+      } transition-opacity duration-200 font-bold`}
     >
-      <Img src={EmptyTimeline} className="w-64 md:w-1/2 mb-4" />
-      <h5
-        className={`text-xl mx-4 text-center ${
-          loading && "opacity-0"
-        } transition-opacity duration-200 font-bold`}
-      >
-        Timeline is empty right now. <br />
-        Check again later
-      </h5>
-    </div>
-  )
-}
+      Timeline is empty right now. <br />
+      Check again later
+    </h5>
+  </div>
+)
 
 export default IndexPage
