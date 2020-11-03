@@ -1,3 +1,4 @@
+import { isFilled } from "ts-is-present"
 import auth0 from "../../../../utils/auth0"
 import { getFirstQueryValue } from "../../../../utils/rest"
 import { findChildObservationsGroupedByDate } from "../../../../db/queries"
@@ -34,7 +35,7 @@ export default auth0.requireAuthentication(async (req, res) => {
             shortDesc: short_desc,
             longDesc: long_desc ?? "",
             images: images
-              .filter((image) => image)
+              .filter(isFilled)
               .map(({ id: imageId, object_key }) => ({
                 id: imageId,
                 thumbnailUrl: generateUrl(object_key, 100, 100),

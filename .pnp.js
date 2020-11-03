@@ -9482,6 +9482,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:0.4.4"
       ],
       [
+        "ts-is-present",
+        "npm:1.1.5"
+      ],
+      [
         "ts-pnp",
         "virtual:c497046afcbefb679e3fe12575088ec12205b913a36c3d158b27e7cd646d448426540ab27ba98e54ddb75b1ed97de7e3ce5dc0158c9ba4e76ce942c87e5d02d8#npm:1.2.0"
       ],
@@ -38065,6 +38069,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["stylelint-config-prettier", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:8.0.2"],
             ["stylelint-config-standard", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:20.0.0"],
             ["tailwindcss", "npm:1.9.6"],
+            ["ts-is-present", "npm:1.1.5"],
             ["typescript", "patch:typescript@npm%3A4.0.5#builtin<compat/typescript>::version=4.0.5&hash=5bf698"],
             ["uuid", "npm:8.3.1"],
             ["webp-loader", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.6.0"]
@@ -56800,6 +56805,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["ts-invariant", "npm:0.4.4"],
             ["tslib", "npm:1.13.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["ts-is-present", [
+        ["npm:1.1.5", {
+          "packageLocation": "./.yarn/cache/ts-is-present-npm-1.1.5-daf1a49533-edad576177.zip/node_modules/ts-is-present/",
+          "packageDependencies": [
+            ["ts-is-present", "npm:1.1.5"]
           ],
           "linkType": "HARD",
         }]
