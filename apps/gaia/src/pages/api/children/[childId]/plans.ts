@@ -1,5 +1,5 @@
 import auth0 from "../../../../utils/auth0"
-import { findLessonPlanByChildIdAndDate } from "../../../../db"
+import { findLessonPlanByChildIdAndDate } from "../../../../db/queries"
 import { getFirstQueryValue } from "../../../../utils/rest"
 import { Dayjs } from "../../../../utils/dayjs"
 

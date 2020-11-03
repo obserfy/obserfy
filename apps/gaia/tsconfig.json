@@ -16,7 +16,6 @@
   },
   "exclude": ["node_modules"],
   "include": [
-    "@types/segment-analytics",
     "next-env.d.ts",
     "src/**/*.ts",
     "src/**/*.tsx"

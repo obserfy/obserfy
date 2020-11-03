@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid"
 import { File, IncomingForm } from "formidable-serverless"
 import { promises as fs } from "fs"
 import auth0 from "../../../utils/auth0"
-import { insertImage } from "../../../db"
+import { insertImage } from "../../../db/queries"
 import uploadFile from "../../../utils/minio"
 
 export const config = {
