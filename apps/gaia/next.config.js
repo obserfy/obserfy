@@ -5,6 +5,8 @@ const withPrefresh = require("@prefresh/next")
 const withPWA = require("next-pwa")
 const preact = require("preact")
 
+console.log(process.env.IMGPROXY_URL)
+
 module.exports = withPlugins(
   [
     [
@@ -21,6 +23,9 @@ module.exports = withPlugins(
     optimizedImages,
   ],
   {
+    images: {
+      domains: [process.env.IMGPROXY_DOMAIN]
+    },
     experimental: {
       modern: true,
       polyfillsOptimization: true,
