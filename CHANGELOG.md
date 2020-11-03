@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.11.19](https://github.com/obserfy/obserfy/compare/v1.11.18...v1.11.19) (2020-11-03)
+
+
+### Bug Fixes
+
+* properly redirect user ([2699c31](https://github.com/obserfy/obserfy/commit/2699c3130a5e28bffc626f3e4a07b54d7f0e9e97))
+* **deps:** update dependency @cypress/webpack-preprocessor to v5.4.10 ([5a88899](https://github.com/obserfy/obserfy/commit/5a888994a2f94128d15a9aa3a51f3b850d9261a8))
+* **deps:** update dependency @emotion/core to v10.1.0 ([a63ea7f](https://github.com/obserfy/obserfy/commit/a63ea7f567857037f57df5b31ae1b788221a2a42))
+* **deps:** update dependency @emotion/core to v10.1.1 ([cb27903](https://github.com/obserfy/obserfy/commit/cb2790397fffb008b40b642ce0531686231bce13))
+* **deps:** update dependency @sentry/tracing to v5.27.2 ([2059af5](https://github.com/obserfy/obserfy/commit/2059af557b8985f0ec2c0b9270b898e4765441ef))
+* **deps:** update dependency @types/node to v14.14.6 ([cd3cbe5](https://github.com/obserfy/obserfy/commit/cd3cbe5e92487cd9249480861dc63be4a0ef6ddc))
+* **deps:** update dependency file-loader to v6.2.0 ([#1241](https://github.com/obserfy/obserfy/issues/1241)) ([b6f807b](https://github.com/obserfy/obserfy/commit/b6f807bb9c4f53c8d3b5908cdf79349314a24ed1))
+* **deps:** update dependency next to v10 ([3ad0992](https://github.com/obserfy/obserfy/commit/3ad0992ac211d26aeea3dcc397384e447564d892))
+* **deps:** update dependency react-query-devtools to v2.6.1 ([906b4d8](https://github.com/obserfy/obserfy/commit/906b4d80a56a9c204f7080530e48e8627450d6cd))
+* **deps:** update gatsby ([63e36d9](https://github.com/obserfy/obserfy/commit/63e36d9d2ee1f8a14534e00ebb4907bce712c954))
+* **deps:** update lingui monorepo to v3 ([f097424](https://github.com/obserfy/obserfy/commit/f097424d3f228587993fc79b7ec75daaaba46cdb))
+* **deps:** update lingui monorepo to v3.0.0 ([85fa510](https://github.com/obserfy/obserfy/commit/85fa5103c08140c5b32309e7cc19e0fb0acb1eae))
+* **deps:** update lingui monorepo to v3.0.1 ([d076995](https://github.com/obserfy/obserfy/commit/d0769956dbfd57136cc98502f6e65fe24d83cdfa))
+* **deps:** update lingui monorepo to v3.0.2 ([61280a4](https://github.com/obserfy/obserfy/commit/61280a418521e575d9d2474206a0bfb46e3411ea))
+* **deps:** update lingui monorepo to v3.0.3 ([970ab48](https://github.com/obserfy/obserfy/commit/970ab486defd3a0650dede9f1806c2c6d07481ba))
+* **deps:** update react monorepo to v17 ([2cbdc95](https://github.com/obserfy/obserfy/commit/2cbdc95b15685d534104d18a04737a2d876ba973))
+
 ### [1.11.18](https://github.com/obserfy/obserfy/compare/v1.11.17...v1.11.18) (2020-10-27)
 
 ### [1.11.17](https://github.com/obserfy/obserfy/compare/v1.11.16...v1.11.17) (2020-10-27)
