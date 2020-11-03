@@ -24,7 +24,7 @@ module.exports = withPlugins(
   ],
   {
     images: {
-      domains: [process.env.IMGPROXY_DOMAIN]
+      domains: [process.env.NEXT_OPTIMIZED_IMG_DOMAIN ||  "media.obserfy.com"]
     },
     experimental: {
       modern: true,
