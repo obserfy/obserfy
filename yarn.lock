@@ -18666,7 +18666,7 @@ fsevents@^1.2.7:
     react: "npm:@preact/compat@0.0.3"
     react-dom: "npm:@preact/compat@0.0.3"
     react-optimized-image: 0.4.1
-    react-query: 2.25.2
+    react-query: 2.26.1
     react-query-devtools: 2.6.1
     react-refresh: 0.9.0
     react-ssr-prepass: "npm:preact-ssr-prepass@1.1.2"
@@ -30320,9 +30320,9 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"react-query@npm:2.25.2":
-  version: 2.25.2
-  resolution: "react-query@npm:2.25.2"
+"react-query@npm:2.26.1":
+  version: 2.26.1
+  resolution: "react-query@npm:2.26.1"
   dependencies:
     "@babel/runtime": ^7.5.5
   peerDependencies:
@@ -30332,7 +30332,7 @@ mocha@latest:
       optional: true
     react-native:
       optional: true
-  checksum: 9e9df15beb52af3805dca04cf06fb150309dd44091308657bb07a8fffc0c873c84f7b8611f3bd747a45cfe86fccd0a98ccc9b76e8953927a2b1c11e8c09b9659
+  checksum: e0be22093e2d59a4816997dc9d1d470212c0a09f4710683cf6e9ff97dcceef1b05ae6596822166273cc931f141cde03aa806fe73e6cd8c22148e5a7b4380ed34
   languageName: node
   linkType: hard
 
@@ -36066,7 +36066,7 @@ typescript@^4.0.0:
     react-docgen-typescript-loader: 3.7.2
     react-dom: 17.0.1
     react-helmet: 6.1.0
-    react-query: 2.25.2
+    react-query: 2.26.1
     react-refresh: 0.9.0
     react-test-renderer: 17.0.1
     regenerator-runtime: 0.13.7
