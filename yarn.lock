@@ -8624,7 +8624,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/mixpanel-browser@npm:^2.35.4":
+"@types/mixpanel-browser@npm:2.35.4":
   version: 2.35.4
   resolution: "@types/mixpanel-browser@npm:2.35.4"
   checksum: 7295ea9dd149ce68dc75b91880bd655c104004c25ac28a985230aa37a59ec136c4bd4a9ea6173e4033f5f25b0c3d4b20ecfd58d0e73f4143285d0a9c6eaa1587
@@ -8741,7 +8741,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/pino@npm:^6.3.3":
+"@types/pino@npm:6.3.3":
   version: 6.3.3
   resolution: "@types/pino@npm:6.3.3"
   dependencies:
@@ -18284,7 +18284,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fp-ts@npm:^2.8.5":
+"fp-ts@npm:2.8.5":
   version: 2.8.5
   resolution: "fp-ts@npm:2.8.5"
   checksum: f844f4e74792e8bc8dd4d78a73ac4b0c0b4e25b9924dcc0e85c60f5535454770ae708eed1d1571bda7d04f873d60bb5be40c5dfc7548f09ed2c423d1dd499a07
@@ -18614,11 +18614,11 @@ fsevents@^1.2.7:
     "@types/body-scroll-lock": 2.6.1
     "@types/formidable": 1.0.31
     "@types/minio": 7.0.6
-    "@types/mixpanel-browser": ^2.35.4
+    "@types/mixpanel-browser": 2.35.4
     "@types/nanoid": 2.1.0
     "@types/node": 14.14.6
     "@types/pg": 7.14.5
-    "@types/pino": ^6.3.3
+    "@types/pino": 6.3.3
     "@types/react": 16.9.55
     "@types/react-query": 1.1.2
     "@types/uuid": 8.3.0
@@ -18638,27 +18638,27 @@ fsevents@^1.2.7:
     eslint-plugin-react-hooks: 4.2.0
     file-loader: 6.2.0
     formidable-serverless: 1.0.3
-    fp-ts: ^2.8.5
+    fp-ts: 2.8.5
     imagemin: 7.0.1
     imagemin-mozjpeg: 9.0.0
     imagemin-optipng: 8.0.0
     imagemin-svgo: 8.0.0
     img-loader: 3.0.2
-    io-ts: ^2.2.12
-    io-ts-types: ^0.5.11
+    io-ts: 2.2.12
+    io-ts-types: 0.5.11
     lqip-loader: 2.2.1
     minio: 7.0.16
-    monocle-ts: ^2.3.3
+    monocle-ts: 2.3.3
     nanoid: 3.1.16
-    newtype-ts: ^0.3.4
+    newtype-ts: 0.3.4
     next: 10.0.0
     next-compose-plugins: 2.2.0
     next-optimized-images: 3.0.0-canary.10
     next-pwa: 3.1.5
     optimized-images-loader: 0.4.0
     pg: 8.4.2
-    pino: ^6.7.0
-    pino-pretty: ^4.3.0
+    pino: 6.7.0
+    pino-pretty: 4.3.0
     postcss-preset-env: 6.7.0
     preact: 10.5.5
     preact-render-to-string: 5.1.11
@@ -18674,7 +18674,7 @@ fsevents@^1.2.7:
     stylelint-config-prettier: 8.0.2
     stylelint-config-standard: 20.0.0
     tailwindcss: 1.9.6
-    ts-is-present: ^1.1.5
+    ts-is-present: 1.1.5
     typescript: 4.0.5
     uuid: 8.3.1
     webp-loader: 0.6.0
@@ -19293,7 +19293,7 @@ fsevents@^1.2.7:
   dependencies:
     "@lingui/core": 3.0.3
     "@lingui/react": 3.0.3
-    react-refresh: ^0.9.0
+    react-refresh: 0.9.0
   peerDependencies:
     "@emotion/core": ^10.0.28
     "@lingui/core": ^3.0.0-18
@@ -21545,7 +21545,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"io-ts-types@npm:^0.5.11":
+"io-ts-types@npm:0.5.11":
   version: 0.5.11
   resolution: "io-ts-types@npm:0.5.11"
   peerDependencies:
@@ -21557,7 +21557,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"io-ts@npm:^2.2.12":
+"io-ts@npm:2.2.12":
   version: 2.2.12
   resolution: "io-ts@npm:2.2.12"
   peerDependencies:
@@ -25554,7 +25554,7 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"monocle-ts@npm:^2.3.3":
+"monocle-ts@npm:2.3.3":
   version: 2.3.3
   resolution: "monocle-ts@npm:2.3.3"
   peerDependencies:
@@ -25755,7 +25755,7 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"newtype-ts@npm:^0.3.4":
+"newtype-ts@npm:0.3.4":
   version: 0.3.4
   resolution: "newtype-ts@npm:0.3.4"
   peerDependencies:
@@ -27836,7 +27836,7 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"pino-pretty@npm:^4.3.0":
+"pino-pretty@npm:4.3.0":
   version: 4.3.0
   resolution: "pino-pretty@npm:4.3.0"
   dependencies:
@@ -27864,7 +27864,7 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"pino@npm:^6.7.0":
+"pino@npm:6.7.0":
   version: 6.7.0
   resolution: "pino@npm:6.7.0"
   dependencies:
@@ -30343,7 +30343,7 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"react-refresh@npm:0.9.0, react-refresh@npm:^0.9.0":
+"react-refresh@npm:0.9.0":
   version: 0.9.0
   resolution: "react-refresh@npm:0.9.0"
   checksum: 300dc431389f4c532bdfec08d5bc59b591c8c440486a7d5770c8954adf3afe62501b659c5acbdb7831751e8be506eb90a6f72491fab40352f3b3fba16897acf6
@@ -34762,7 +34762,7 @@ resolve@^1.18.1:
   languageName: node
   linkType: hard
 
-"ts-is-present@npm:^1.1.5":
+"ts-is-present@npm:1.1.5":
   version: 1.1.5
   resolution: "ts-is-present@npm:1.1.5"
   checksum: edad5761771d46a41b219f4dc5a29935f07063df4974e3b3fc03a9b55f54a804ca4e2468d1e8a372553349dff1ca9e65b152ddb5a5eb42d176e460c4677907a2
@@ -36067,7 +36067,7 @@ typescript@^4.0.0:
     react-dom: 17.0.1
     react-helmet: 6.1.0
     react-query: 2.25.2
-    react-refresh: ^0.9.0
+    react-refresh: 0.9.0
     react-test-renderer: 17.0.1
     regenerator-runtime: 0.13.7
     storybook-addon-deps: 2.1.3
