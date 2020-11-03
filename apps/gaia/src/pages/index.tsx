@@ -12,7 +12,7 @@ import EmptyTimeline from "../images/undraw_Preparation_re_t0ce.svg"
 
 const IndexPage = () => {
   const childId = useQueryString("childId")
-  const { data: timeline, isLoading } = useGetTimeline(childId)
+  const { data: timeline, isLoading, isSuccess } = useGetTimeline(childId)
 
   return (
     <div>
@@ -29,7 +29,7 @@ const IndexPage = () => {
             <div className="w-4 h-4  mx-1 bg-white rounded-full border " />
           </div>
         </div>
-        {(timeline?.length ?? 0) === 0 && (
+        {isSuccess && (timeline?.length ?? 0) === 0 && (
           <EmptyPlansIllustration loading={isLoading} />
         )}
       </div>
