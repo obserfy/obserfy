@@ -49,5 +49,31 @@
       "sizes": "512x512",
       "type": "image/png"
     }
+  ],
+  "shortcuts": [
+    {
+      "name": "See lesson plans",
+      "short_name": "Lesson Plans",
+      "description": "See your child's lesson plan",
+      "url": "/lesson-plan?source=pwa",
+      "icons": [
+        {
+          "src": "/shortcuts/lesson-plan.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "See Gallery",
+      "short_name": "Gallery",
+      "description": "See your child's photo gallery",
+      "url": "/gallery?source=pwa",
+      "icons": [
+        {
+          "src": "/shortcuts/gallery.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
   ]
 }
