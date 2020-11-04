@@ -140,6 +140,21 @@ export const getChildImages = async (childId: string) => {
   return result.rows
 }
 
+export const getChildObservationByImages = async (imageId: string) => {
+  // language=PostgreSQL
+  const result = await query(
+    `
+              select oi.obsevation_id, oi.long_desc, oi.short_desc, oi.created_date, oi.event_time
+              from images i
+                       join observation_to_images oi on oi.image_id=i.image_id
+              where i.id = $1
+              order by oi.created_date desc
+    `,
+    [imageId]
+  )
+  return result.rows
+}
+
 export const insertObservationToPlan = async (
   planId: string,
   parentEmail: string,
