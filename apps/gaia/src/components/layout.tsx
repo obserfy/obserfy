@@ -1,15 +1,10 @@
 import React, { FC } from "react"
-import { Router, useRouter } from "next/router"
+import { useRouter } from "next/router"
 import Header from "./header"
 import useGetChildren from "../hooks/api/useGetChildren"
 import ChildInfo from "./ChildInfo/ChildInfo"
 import { useQueryString } from "../hooks/useQueryString"
 import Navbar from "./Navbar/Navbar"
-
-// Track client-side page views with Segment
-Router.events.on("routeChangeComplete", (url) => {
-  window.analytics.page(url)
-})
 
 const Layout: FC = ({ children }) => {
   useGetChildren()

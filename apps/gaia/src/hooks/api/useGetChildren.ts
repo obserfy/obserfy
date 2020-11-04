@@ -10,10 +10,14 @@ const useGetChildren = () => {
   return useQuery("children", getChildren, {
     retry: (failureCount, error) =>
       !(error instanceof Error && error.message === "not_authenticated"),
-    onSuccess: (response) => {
+    onSuccess: async (response) => {
       const newId = response[0]?.id
       if (!router.query.childId && newId) {
-        router.push(`/?childId=${newId}`)
+        const path = router.pathname
+
+        const redirectUrl = `${path}?childId=${newId}`
+        console.log(redirectUrl)
+        await router.replace(redirectUrl)
       }
     },
   })

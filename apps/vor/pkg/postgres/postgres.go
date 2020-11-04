@@ -104,9 +104,9 @@ type Curriculum struct {
 }
 
 type Area struct {
-	Id           string `pg:"type:uuid"`
-	CurriculumId string `pg:"type:uuid,on_delete:CASCADE"`
-	Curriculum   Curriculum
+	Id           string     `pg:"type:uuid"`
+	CurriculumId string     `pg:"type:uuid,on_delete:CASCADE"`
+	Curriculum   Curriculum `pg:"rel:has-one"`
 	Name         string
 	Subjects     []Subject `pg:"fk:area_id"`
 }
@@ -114,25 +114,25 @@ type Area struct {
 type Subject struct {
 	Id        string `pg:"type:uuid"`
 	AreaId    string `pg:"type:uuid,on_delete:CASCADE"`
-	Area      Area
+	Area      Area   `pg:"rel:has-one"`
 	Name      string
 	Materials []Material `pg:"fk:subject_id"`
 	Order     int        `pg:",use_zero"`
 }
 
 type Material struct {
-	Id        string `pg:"type:uuid"`
-	SubjectId string `pg:"type:uuid,on_delete:CASCADE"`
-	Subject   Subject
+	Id        string  `pg:"type:uuid"`
+	SubjectId string  `pg:"type:uuid,on_delete:CASCADE"`
+	Subject   Subject `pg:"rel:has-one"`
 	Name      string
 	Order     int `pg:",use_zero"`
 }
 
 type StudentMaterialProgress struct {
-	MaterialId string `pg:",pk,type:uuid,on_delete:CASCADE"`
-	Material   Material
-	StudentId  string `pg:",pk,type:uuid,on_delete:CASCADE"`
-	Student    Student
+	MaterialId string   `pg:",pk,type:uuid,on_delete:CASCADE"`
+	Material   Material `pg:"rel:has-one"`
+	StudentId  string   `pg:",pk,type:uuid,on_delete:CASCADE"`
+	Student    Student  `pg:"rel:has-one"`
 	Stage      int
 	UpdatedAt  time.Time
 }
@@ -149,7 +149,7 @@ type Student struct {
 	Id             string `json:"id" pg:",type:uuid"`
 	Name           string `json:"name"`
 	SchoolId       string `pg:"type:uuid,on_delete:CASCADE"`
-	School         School
+	School         School `pg:"rel:has-one"`
 	DateOfBirth    *time.Time
 	Classes        []Class `pg:"many2many:student_to_classes,join_fk:class_id"`
 	Gender         Gender  `pg:"type:int"`
@@ -162,7 +162,7 @@ type Student struct {
 	LessonPlans    []LessonPlan `pg:"many2many:lesson_plan_to_students,join_fk:lesson_plan_id"`
 	ProfileImageId string       `pg:",type:uuid,on_delete:SET NULL"`
 	Images         []Image      `pg:"many2many:image_to_students,join_fk:image_id"`
-	ProfileImage   Image
+	ProfileImage   Image        `pg:"rel:has-one"`
 }
 
 type Guardian struct {
@@ -171,8 +171,8 @@ type Guardian struct {
 	Email    string
 	Phone    string
 	Note     string
-	SchoolId string `pg:"type:uuid"`
-	School   School
+	SchoolId string    `pg:"type:uuid"`
+	School   School    `pg:"rel:has-one"`
 	Children []Student `pg:"many2many:guardian_to_students,join_fk:student_id"`
 }
 
@@ -185,45 +185,46 @@ const (
 )
 
 type GuardianToStudent struct {
-	StudentId    string `pg:"type:uuid,on_delete:CASCADE"`
-	Student      Student
-	GuardianId   string `pg:"type:uuid,on_delete:CASCADE"`
-	Guardian     Guardian
+	StudentId    string               `pg:"type:uuid,on_delete:CASCADE"`
+	Student      Student              `pg:"rel:has-one"`
+	GuardianId   string               `pg:"type:uuid,on_delete:CASCADE"`
+	Guardian     Guardian             `pg:"rel:has-one"`
 	Relationship GuardianRelationship `pg:"type:int"`
 }
 
 type StudentToClass struct {
-	StudentId string `pg:"type:uuid,on_delete:CASCADE"`
-	Student   Student
-	ClassId   string `pg:"type:uuid,on_delete:CASCADE"`
-	Class     Class
+	StudentId string  `pg:"type:uuid,on_delete:CASCADE"`
+	Student   Student `pg:"rel:has-one"`
+	ClassId   string  `pg:"type:uuid,on_delete:CASCADE"`
+	Class     Class   `pg:"rel:has-one"`
 }
 
 type Observation struct {
-	Id           string `json:"id" pg:",type:uuid,default:uuid_generate_v4()"`
-	StudentId    string `pg:",type:uuid,on_delete:CASCADE"`
-	Student      *Student
-	ShortDesc    string    `json:"shortDesc"`
-	LongDesc     string    `json:"longDesc"`
-	CategoryId   string    `json:"categoryId"`
-	CreatedDate  time.Time `json:"createdDate"`
-	EventTime    time.Time
-	CreatorId    string `pg:",type:uuid,on_delete:SET NULL"`
-	Creator      *User
-	LessonPlan   LessonPlan
-	LessonPlanId string `pg:"type:uuid,on_delete:SET NULL"`
-	Guardian     Guardian
-	GuardianId   string `pg:"type:uuid,on_delete:SET NULL"`
-	Area         Area
-	AreaId       uuid.UUID `pg:"type:uuid,on_delete:SET NULL"`
-	Images       []Image   `pg:"many2many:observation_to_images,join_fk:image_id"`
+	Id                 string `json:"id" pg:",type:uuid,default:uuid_generate_v4()"`
+	StudentId          string `pg:",type:uuid,on_delete:CASCADE"`
+	Student            *Student
+	ShortDesc          string    `json:"shortDesc"`
+	LongDesc           string    `json:"longDesc"`
+	CategoryId         string    `json:"categoryId"`
+	CreatedDate        time.Time `json:"createdDate"`
+	EventTime          time.Time
+	CreatorId          string `pg:",type:uuid,on_delete:SET NULL"`
+	Creator            *User
+	LessonPlan         LessonPlan
+	LessonPlanId       string `pg:"type:uuid,on_delete:SET NULL"`
+	Guardian           Guardian
+	GuardianId         string `pg:"type:uuid,on_delete:SET NULL"`
+	Area               Area
+	AreaId             uuid.UUID `pg:"type:uuid,on_delete:SET NULL"`
+	Images             []Image   `pg:"many2many:observation_to_images,join_fk:image_id"`
+	VisibleToGuardians bool      `pg:",notnull,default:false"`
 }
 
 type ObservationToImage struct {
-	Observation   Observation
-	ObservationId string `pg:"type:uuid,on_delete:CASCADE"`
-	Image         Image
-	ImageId       uuid.UUID `pg:"type:uuid,on_delete:CASCADE"`
+	Observation   Observation `pg:"rel:has-one"`
+	ObservationId string      `pg:"type:uuid,on_delete:CASCADE"`
+	Image         Image       `pg:"rel:has-one"`
+	ImageId       uuid.UUID   `pg:"type:uuid,on_delete:CASCADE"`
 }
 
 type Subscription struct {
@@ -242,32 +243,32 @@ type Subscription struct {
 }
 
 type School struct {
-	Id             string `json:"id" pg:",type:uuid"`
-	Name           string `json:"name"`
-	InviteCode     string `json:"inviteCode"`
-	Users          []User `pg:"many2many:user_to_schools,join_fk:user_id"`
-	CurriculumId   string `pg:",type:uuid,on_delete:SET NULL"`
-	Curriculum     Curriculum
+	Id             string     `json:"id" pg:",type:uuid"`
+	Name           string     `json:"name"`
+	InviteCode     string     `json:"inviteCode"`
+	Users          []User     `pg:"many2many:user_to_schools,join_fk:user_id"`
+	CurriculumId   string     `pg:",type:uuid,on_delete:SET NULL"`
+	Curriculum     Curriculum `pg:"rel:has-one"`
 	Guardian       []Guardian
-	SubscriptionId uuid.UUID `pg:",type:uuid"`
-	Subscription   Subscription
-	CreatedAt      time.Time `pg:"default:now()"`
+	SubscriptionId uuid.UUID    `pg:",type:uuid"`
+	Subscription   Subscription `pg:"rel:has-one"`
+	CreatedAt      time.Time    `pg:"default:now()"`
 }
 
 type Attendance struct {
-	Id        string `json:"id" pg:",type:uuid"`
-	StudentId string `pg:"type:uuid,on_delete:CASCADE"`
-	Student   Student
-	ClassId   string `pg:"type:uuid,on_delete:CASCADE"`
-	Class     Class
+	Id        string    `json:"id" pg:",type:uuid"`
+	StudentId string    `pg:"type:uuid,on_delete:CASCADE"`
+	Student   Student   `pg:"rel:has-one"`
+	ClassId   string    `pg:"type:uuid,on_delete:CASCADE"`
+	Class     Class     `pg:"rel:has-one"`
 	Date      time.Time `json:"date"`
 }
 
 type UserToSchool struct {
 	SchoolId string `pg:",type:uuid,unique:school_user"`
-	School   School
+	School   School `pg:"rel:has-one"`
 	UserId   string `pg:",type:uuid,unique:school_user"`
-	User     User
+	User     User   `pg:"rel:has-one"`
 }
 
 type User struct {
@@ -283,13 +284,13 @@ type PasswordResetToken struct {
 	CreatedAt time.Time `pg:",notnull"`
 	ExpiredAt time.Time `pg:",notnull"`
 	UserId    string    `pg:",type:uuid,on_delete:CASCADE,notnull"`
-	User      User
+	User      User      `pg:"rel:has-one"`
 }
 
 type Class struct {
 	Id       string `pg:"type:uuid"`
 	SchoolId string `pg:"type:uuid,on_delete:CASCADE"`
-	School   School
+	School   School `pg:"rel:has-one"`
 	Name     string
 	// Only use the time of day and timezone (WIB 8.30AM).
 	// Ignore other data
@@ -302,7 +303,7 @@ type Class struct {
 type Weekday struct {
 	ClassId string       `pg:",pk,type:uuid,on_delete:CASCADE"`
 	Day     time.Weekday `pg:",pk,use_zero"`
-	Class   Class
+	Class   Class        `pg:"rel:has-one"`
 }
 
 type (
@@ -312,10 +313,10 @@ type (
 		Title             string
 		Description       string
 		UserId            string `pg:",type:uuid"`
-		User              User
+		User              User   `pg:"rel:has-one"`
 		ClassId           string `pg:"type:uuid,on_delete:SET NULL"`
 		SchoolId          string `pg:"type:uuid,on_delete:CASCADE"`
-		Class             Class
+		Class             Class  `pg:"rel:has-one"`
 		Files             []File `pg:"many2many:file_to_lesson_plans,join_fk:file_id"`
 		RepetitionType    int    `pg:",use_zero"`
 		RepetitionEndDate time.Time
@@ -325,57 +326,57 @@ type (
 		// Why we have area here? because we want to allow users
 		// to be able to select an area, without selecting material.
 		// AreaId should be ignored on application logic when MaterialId is set.
-		Area       Area
-		AreaId     string `pg:"type:uuid,on_delete:SET NULL"`
-		Material   Material
-		MaterialId string `pg:"type:uuid,on_delete:SET NULL"`
+		Area       Area     `pg:"rel:has-one"`
+		AreaId     string   `pg:"type:uuid,on_delete:SET NULL"`
+		Material   Material `pg:"rel:has-one"`
+		MaterialId string   `pg:"type:uuid,on_delete:SET NULL"`
 	}
 
 	// Each plan can have some more additional students attached to it.
 	LessonPlanToStudents struct {
-		LessonPlan   LessonPlan
-		LessonPlanId string `pg:"type:uuid,on_delete:CASCADE"`
-		Student      Student
-		StudentId    string `pg:"type:uuid,on_delete:CASCADE"`
+		LessonPlan   LessonPlan `pg:"rel:has-one"`
+		LessonPlanId string     `pg:"type:uuid,on_delete:CASCADE"`
+		Student      Student    `pg:"rel:has-one"`
+		StudentId    string     `pg:"type:uuid,on_delete:CASCADE"`
 	}
 
 	LessonPlan struct {
-		Id                  string     `pg:"type:uuid"`
-		Date                *time.Time `pg:",notnull"`
-		LessonPlanDetailsId string     `pg:"type:uuid"`
-		LessonPlanDetails   LessonPlanDetails
-		Students            []Student `pg:"many2many:lesson_plan_to_students,join_fk:student_id"`
+		Id                  string            `pg:"type:uuid"`
+		Date                *time.Time        `pg:",notnull"`
+		LessonPlanDetailsId string            `pg:"type:uuid"`
+		LessonPlanDetails   LessonPlanDetails `pg:"rel:has-one"`
+		Students            []Student         `pg:"many2many:lesson_plan_to_students,join_fk:student_id"`
 	}
 
 	File struct {
 		Id          string `pg:"type:uuid,pk"`
 		SchoolId    string `pg:"type:uuid,on_delete:CASCADE"`
-		School      School
+		School      School `pg:"rel:has-one"`
 		Name        string
 		LessonPlans []LessonPlanDetails `pg:"many2many:file_to_lesson_plans,join_fk:lesson_plan_details_id"`
 		ObjectKey   string
 	}
 
 	FileToLessonPlan struct {
-		LessonPlanDetailsId string `pg:"type:uuid,on_delete:CASCADE"`
-		LessonPlanDetails   LessonPlanDetails
-		FileId              string `pg:"type:uuid,on_delete:CASCADE"`
-		File                File
+		LessonPlanDetailsId string            `pg:"type:uuid,on_delete:CASCADE"`
+		LessonPlanDetails   LessonPlanDetails `pg:"rel:has-one"`
+		FileId              string            `pg:"type:uuid,on_delete:CASCADE"`
+		File                File              `pg:"rel:has-one"`
 	}
 
 	Image struct {
 		Id        uuid.UUID `pg:"type:uuid"`
 		SchoolId  string    `pg:"type:uuid,on_delete:cascade"`
-		School    School
+		School    School    `pg:"rel:has-one"`
 		ObjectKey string
 		CreatedAt time.Time `pg:"default:now()"`
 	}
 
 	ImageToStudents struct {
-		StudentId string `pg:"type:uuid,on_delete:CASCADE"`
-		Student   Student
-		ImageId   string `pg:"type:uuid,on_delete:CASCADE"`
-		Image     Image
+		StudentId string  `pg:"type:uuid,on_delete:CASCADE"`
+		Student   Student `pg:"rel:has-one"`
+		ImageId   string  `pg:"type:uuid,on_delete:CASCADE"`
+		Image     Image   `pg:"rel:has-one"`
 	}
 
 	LessonPlanLink struct {
@@ -384,8 +385,8 @@ type (
 		Url                 string
 		Image               string
 		Description         string
-		LessonPlanDetails   LessonPlanDetails
-		LessonPlanDetailsId string `pg:"type:uuid,on_delete:CASCADE"`
+		LessonPlanDetails   LessonPlanDetails `pg:"rel:has-one"`
+		LessonPlanDetailsId string            `pg:"type:uuid,on_delete:CASCADE"`
 	}
 )
 
@@ -412,6 +413,12 @@ type (
 type PartialUpdateModel map[string]interface{}
 
 func (u *PartialUpdateModel) AddStringColumn(name string, value *string) {
+	if value != nil {
+		(*u)[name] = value
+	}
+}
+
+func (u *PartialUpdateModel) AddBooleanColumn(name string, value *bool) {
 	if value != nil {
 		(*u)[name] = value
 	}

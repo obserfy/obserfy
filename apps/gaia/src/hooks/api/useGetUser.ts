@@ -10,13 +10,14 @@ const useGetUser = () => {
     retry: (failureCount, error) =>
       // TODO: Don't use any
       !((error as any).message === "not_authenticated"),
-    onError: (error) => {
+    onError: async (error) => {
       if ((error as any)?.message === "not_authenticated") {
-        router.push(`/session-expired`)
+        await router.push(`/session-expired`)
       }
     },
     onSuccess: (data) => {
-      window.analytics.identify(data.sub, {
+      mixpanel.identify(data.sub)
+      mixpanel.people.set({
         name: data.name,
         email: data.email,
         avatar: data.picture,
