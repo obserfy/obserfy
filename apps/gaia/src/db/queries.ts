@@ -117,7 +117,7 @@ export const getChildImages = async (childId: string) => {
   return result.rows
 }
 
-export const getChildObservationByImages = async (imageId: string) => {
+export const getChildObservationByImage = async (imageId: string) => {
   // language=PostgreSQL
   const result = await query(
     `
