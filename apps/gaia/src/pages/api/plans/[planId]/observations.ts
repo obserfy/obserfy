@@ -1,5 +1,5 @@
 import auth0 from "../../../../utils/auth0"
-import { insertObservationToPlan } from "../../../../db"
+import { insertObservationToPlan } from "../../../../db/queries"
 
 export interface PostPlanObservationRequest {
   childId: string

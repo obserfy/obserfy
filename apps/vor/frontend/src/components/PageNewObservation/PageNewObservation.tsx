@@ -1,7 +1,7 @@
-/** @jsx jsx */
-import { FC, Fragment, useState } from "react"
-import { Box, Button, Card, Flex, Image, jsx } from "theme-ui"
+import React, { FC, useState } from "react"
+import { Box, Button, Card, Flex, Image } from "theme-ui"
 import { useImmer } from "use-immer"
+import { t, Trans } from "@lingui/macro"
 import Input from "../Input/Input"
 import TextArea from "../TextArea/TextArea"
 import Typography from "../Typography/Typography"
@@ -21,22 +21,26 @@ import dayjs from "../../dayjs"
 import { useGetCurriculumAreas } from "../../api/useGetCurriculumAreas"
 import Chip from "../Chip/Chip"
 import BackButton from "../BackButton/BackButton"
-import { borderFull } from "../../border"
+import { borderBottom, borderFull } from "../../border"
 import ImagePreviewOverlay from "../ImagePreviewOverlay/ImagePreviewOverlay"
+import { getFirstName } from "../../domain/person"
+import useVisibilityState from "../../hooks/useVisibilityState"
+import Checkbox from "../Checkbox/Checkbox"
 
 interface Props {
   studentId: string
 }
 export const PageNewObservation: FC<Props> = ({ studentId }) => {
   const [postNewObservation, { isLoading }] = usePostNewObservation(studentId)
-  const student = useGetStudent(studentId)
-  const areas = useGetCurriculumAreas()
+  const { data: student } = useGetStudent(studentId)
+  const { data: areas } = useGetCurriculumAreas()
 
   const [shortDesc, setShortDesc] = useState("")
   const [longDesc, setDetails] = useState("")
   const [images, setImages] = useImmer<Array<{ id: string; file: File }>>([])
   const [eventTime, setEventTime] = useState(dayjs())
   const [areaId, setAreaId] = useState<string>()
+  const [visibleToGuardians, setVisibleToGuardians] = useState(false)
 
   async function submit(): Promise<void> {
     const response = await postNewObservation({
@@ -45,6 +49,7 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
       shortDesc,
       eventTime,
       areaId,
+      visibleToGuardians,
     })
 
     if (response?.ok) {
@@ -56,24 +61,20 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
   }
 
   return (
-    <Fragment>
-      <TranslucentBar
-        boxSx={{
-          position: "sticky",
-          top: 0,
-          borderBottomWidth: 1,
-          borderBottomColor: "borderSolid",
-          borderBottomStyle: "solid",
-        }}
-      >
+    <>
+      <TranslucentBar boxSx={{ position: "sticky", top: 0, ...borderBottom }}>
         <Flex sx={{ alignItems: "center", maxWidth: "maxWidth.sm" }} m="auto">
           <BackButton to={STUDENT_OVERVIEW_PAGE_URL(studentId)} />
           <Breadcrumb>
-            <BreadcrumbItem to={STUDENTS_URL}>Students</BreadcrumbItem>
-            <BreadcrumbItem to={STUDENT_OVERVIEW_PAGE_URL(studentId)}>
-              {student.data?.name.split(" ")[0]}
+            <BreadcrumbItem to={STUDENTS_URL}>
+              <Trans>Students</Trans>
             </BreadcrumbItem>
-            <BreadcrumbItem>New Observation</BreadcrumbItem>
+            <BreadcrumbItem to={STUDENT_OVERVIEW_PAGE_URL(studentId)}>
+              {getFirstName(student)}
+            </BreadcrumbItem>
+            <BreadcrumbItem>
+              <Trans>New Observation</Trans>
+            </BreadcrumbItem>
           </Breadcrumb>
           <Button
             ml="auto"
@@ -83,31 +84,37 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
             onClick={submit}
             disabled={shortDesc === ""}
           >
-            {isLoading ? <LoadingIndicator size={22} /> : "Save"}
+            {isLoading ? <LoadingIndicator size={22} /> : <Trans>Save</Trans>}
           </Button>
         </Flex>
       </TranslucentBar>
       <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={4} px={3} mt={3}>
         <Input
-          label="Short Description*"
+          label={t`Short Description*`}
           sx={{ width: "100%" }}
-          placeholder="What have you found?"
+          placeholder={t`What have you found?`}
           onChange={(e) => setShortDesc(e.target.value)}
           value={shortDesc}
-          mb={3}
+          mb={2}
+        />
+        <Checkbox
+          sx={{ mb: 3 }}
+          label={t` Visible to guardians `}
+          checked={visibleToGuardians}
+          onChange={setVisibleToGuardians}
         />
         <TextArea
-          label="Details"
-          placeholder="Tell us what you observed"
+          label={t`Details`}
+          placeholder={t`Tell us what you observed`}
           onChange={(e) => setDetails(e.target.value)}
           value={longDesc}
           mb={3}
         />
         <Typography.Body sx={{ color: "textMediumEmphasis" }} mb={2}>
-          Related Area
+          <Trans>Related Area</Trans>
         </Typography.Body>
         <Flex mb={2} sx={{ flexWrap: "wrap" }}>
-          {areas.data?.map(({ id, name }) => {
+          {areas?.map(({ id, name }) => {
             const isSelected = id === areaId
             return (
               <Chip
@@ -130,14 +137,12 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
         </Flex>
         <DateInput
           value={eventTime}
-          label="Event Time"
-          onChange={(value) => {
-            setEventTime(value)
-          }}
+          label={t`Event Time`}
+          onChange={(value) => setEventTime(value)}
           mb={3}
         />
         <Typography.Body sx={{ color: "textMediumEmphasis" }} mb={2}>
-          Attach Images
+          <Trans>Attach Images</Trans>
         </Typography.Body>
         <Flex sx={{ alignItems: "center", flexWrap: "wrap" }}>
           <UploadImageButton
@@ -148,24 +153,20 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
               })
             }
           />
-          {images.map((image) => {
-            return (
-              <ImagePreview
-                onDeleted={() => {
-                  setImages((draft) =>
-                    draft.filter(({ id }) => id !== image.id)
-                  )
-                }}
-                studentId={studentId}
-                key={image.id}
-                src={URL.createObjectURL(image.file)}
-                imageId={image.id}
-              />
-            )
-          })}
+          {images.map((image) => (
+            <ImagePreview
+              studentId={studentId}
+              key={image.id}
+              src={URL.createObjectURL(image.file)}
+              imageId={image.id}
+              onDeleted={() =>
+                setImages((draft) => draft.filter(({ id }) => id !== image.id))
+              }
+            />
+          ))}
         </Flex>
       </Box>
-    </Fragment>
+    </>
   )
 }
 
@@ -175,12 +176,12 @@ const ImagePreview: FC<{
   src: string
   onDeleted: () => void
 }> = ({ studentId, src, imageId, onDeleted }) => {
-  const [showOverlay, setShowOverlay] = useState(false)
+  const dialog = useVisibilityState()
 
   return (
-    <Fragment>
+    <>
       <Image
-        onClick={() => setShowOverlay(true)}
+        onClick={dialog.show}
         src={src}
         mr={2}
         mb={3}
@@ -191,16 +192,16 @@ const ImagePreview: FC<{
           borderRadius: "default",
         }}
       />
-      {showOverlay && (
+      {dialog.visible && (
         <ImagePreviewOverlay
           onDeleted={onDeleted}
           imageId={imageId}
-          onDismiss={() => setShowOverlay(false)}
+          onDismiss={dialog.hide}
           studentId={studentId}
           src={src}
         />
       )}
-    </Fragment>
+    </>
   )
 }
 

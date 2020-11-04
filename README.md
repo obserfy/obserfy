@@ -11,8 +11,6 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/obserfy/vor/blob/master/LICENSE">
-    <img src="https://img.shields.io/badge/license-GPL3-blue.svg" alt="Obserfy is released under the GPL-3 license." />
   </a>
   <a href="https://codeclimate.com/github/obserfy/obserfy/maintainability">
     <img src="https://api.codeclimate.com/v1/badges/2457c2aa1fea9cb172fb/maintainability" />
