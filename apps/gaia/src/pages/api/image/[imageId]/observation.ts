@@ -1,6 +1,6 @@
 import auth0 from "../../../../utils/auth0"
 import { getFirstQueryValue } from "../../../../utils/rest"
-import { getChildObservationByImages } from "../../../../db"
+import { getChildObservationByImage } from "../../../../db/queries"
 
 export interface GetChildObservationByImages {
   id: string
@@ -13,7 +13,7 @@ export interface GetChildObservationByImages {
 export default auth0.requireAuthentication(async (req, res) => {
   try {
     const imageId = getFirstQueryValue(req, "imageId")
-    const observations = await getChildObservationByImages(imageId)
+    const observations = await getChildObservationByImage(imageId)
 
     if (!observations) {
       res.status(404).end("not found")
