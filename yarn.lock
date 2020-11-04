@@ -6623,18 +6623,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@prefresh/next@npm:1.3.1":
-  version: 1.3.1
-  resolution: "@prefresh/next@npm:1.3.1"
+"@prefresh/next@npm:1.4.0":
+  version: 1.4.0
+  resolution: "@prefresh/next@npm:1.4.0"
   dependencies:
     "@prefresh/babel-plugin": 0.2.2
     "@prefresh/core": ^1.0.0
     "@prefresh/utils": ^1.0.0
-    "@prefresh/webpack": ^2.1.0
+    "@prefresh/webpack": ^2.2.0
   peerDependencies:
     next: ^9.4.0
     preact: ^10.4.0
-  checksum: cbface278aed85c8f176425f437ff32f312e13d1e454b6c3fe26e05e3946795ddd8d645fd48e9c95f9292eea895fca764758f1868c694f5f4626fb08e9e762bd
+  checksum: 4ce9df0743f8bfaae8a50b11fc362d74d50d161f82fc3840e6c917bd8cca180353a3e8a71230ada1c8a0d87bfeca714f4bb02c76733f5549d87a77a8e99ee208
   languageName: node
   linkType: hard
 
@@ -6665,9 +6665,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@prefresh/webpack@npm:^2.1.0":
-  version: 2.1.0
-  resolution: "@prefresh/webpack@npm:2.1.0"
+"@prefresh/webpack@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "@prefresh/webpack@npm:2.2.0"
   dependencies:
     "@prefresh/core": ^1.0.0
     "@prefresh/utils": ^1.0.0
@@ -6675,7 +6675,7 @@ __metadata:
     "@prefresh/babel-plugin": ^0.2.0
     preact: ^10.4.0
     webpack: ^4.0.0 || ^5.0.0
-  checksum: fc10f05d9627ed1a072e7af2c48caed7a33bac119adb1ca150bca6cf17b47f22359204f537474a462b90334eb4f15e9dcefe52197fad69a4d1e75ecbf74d415b
+  checksum: 3d3a71ba83ed359d293d156d9309fb392c77539bdc0ec570b1e04e0b28c57578a4ea1fdc3ad3979a970f6e4b209db699d8cdb01c4b19cf392ec745f7cbe8048f
   languageName: node
   linkType: hard
 
@@ -18670,7 +18670,7 @@ fsevents@^1.2.7:
   resolution: "gaia@workspace:apps/gaia"
   dependencies:
     "@auth0/nextjs-auth0": 0.16.0
-    "@prefresh/next": 1.3.1
+    "@prefresh/next": 1.4.0
     "@segment/snippet": 4.13.1
     "@types/body-scroll-lock": 2.6.1
     "@types/formidable": 1.0.31
