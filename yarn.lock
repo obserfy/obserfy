@@ -8783,13 +8783,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/pg@npm:7.14.5":
-  version: 7.14.5
-  resolution: "@types/pg@npm:7.14.5"
+"@types/pg@npm:7.14.6":
+  version: 7.14.6
+  resolution: "@types/pg@npm:7.14.6"
   dependencies:
     "@types/node": "*"
     "@types/pg-types": "*"
-  checksum: 45e9af1ebf687cc8bd07e3bec83e90a15a6c33253b9763572e96cc68a181bc660f1e00f566d8c8cd552d33c0317aeff8955f8cce313cb81276f92930237db6d7
+  checksum: f7cfbc372a303c7d1de3c2b4939081a341525a6440ca766f25c13399eb11f8981e7db637ad16b32d027be4ca5154e019bf41854f113b2e639e6f406229bc875c
   languageName: node
   linkType: hard
 
@@ -18678,7 +18678,7 @@ fsevents@^1.2.7:
     "@types/mixpanel-browser": 2.35.4
     "@types/nanoid": 2.1.0
     "@types/node": 14.14.6
-    "@types/pg": 7.14.5
+    "@types/pg": 7.14.6
     "@types/pino": 6.3.3
     "@types/react": 16.9.55
     "@types/react-query": 1.1.2
