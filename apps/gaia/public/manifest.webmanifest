@@ -59,7 +59,7 @@
       "icons": [
         {
           "src": "/shortcuts/lesson-plan.png",
-          "sizes": "96x96"
+          "sizes": "512x512"
         }
       ]
     },
@@ -71,7 +71,7 @@
       "icons": [
         {
           "src": "/shortcuts/gallery.png",
-          "sizes": "96x96"
+          "sizes": "512x512",
         }
       ]
     }

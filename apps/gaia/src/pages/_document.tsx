@@ -18,6 +18,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <meta name="theme-color" content="#ffffff" />
           <link
             rel="preload"
             as="font"
