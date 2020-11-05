@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.11.21](https://github.com/obserfy/obserfy/compare/v1.11.20...v1.11.21) (2020-11-05)
+
+
+### Bug Fixes
+
+* invalid gaia webmanifest ([0d2c3e7](https://github.com/obserfy/obserfy/commit/0d2c3e724183d160d4e1d955f05ae466b4dce1b1))
+* **deps:** update dependency @types/pg to v7.14.6 ([5cb219f](https://github.com/obserfy/obserfy/commit/5cb219f563d827acf2b5e11b4b5e29cd630272b0))
+
 ### [1.11.20](https://github.com/obserfy/obserfy/compare/v1.11.19...v1.11.20) (2020-11-05)
 
 
