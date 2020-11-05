@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.11.20](https://github.com/obserfy/obserfy/compare/v1.11.19...v1.11.20) (2020-11-05)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @babel/runtime to v7.12.5 ([9a0b53a](https://github.com/obserfy/obserfy/commit/9a0b53ab51ccf337e1bf0036591b14a5526d915a))
+* **deps:** update dependency @prefresh/next to v1.4.0 ([d1c2908](https://github.com/obserfy/obserfy/commit/d1c2908a76a273fa8fcd68201eb12a649d5be68e))
+* **deps:** update dependency @sentry/tracing to v5.27.3 ([ad5f1ee](https://github.com/obserfy/obserfy/commit/ad5f1ee91fd620d1b278fb2817a54f5cd8fae484))
+* **deps:** update dependency dayjs to v1.9.5 ([6d46d76](https://github.com/obserfy/obserfy/commit/6d46d76ff14fafbeb70cadf4b55911df1b37b696))
+* **deps:** update dependency next to v10.0.1 ([c3323f1](https://github.com/obserfy/obserfy/commit/c3323f18bed0f0c1b2931d27c24e1532feb5ab09))
+* **deps:** update dependency react-query to v2.26.1 ([a7a33f2](https://github.com/obserfy/obserfy/commit/a7a33f207ebed1838c97ae608ceafc4e6207b1b0))
+
 ### [1.11.19](https://github.com/obserfy/obserfy/compare/v1.11.18...v1.11.19) (2020-11-03)
 
 
