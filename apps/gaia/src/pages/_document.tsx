@@ -19,6 +19,7 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <meta name="theme-color" content="#ffffff" />
+          <link rel="apple-touch-icon" href="/icons/apple-icon-192.png" />
           <link
             rel="preload"
             as="font"
