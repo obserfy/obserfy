@@ -38114,7 +38114,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ]],
             ["react-optimized-image", "npm:0.4.1"],
             ["react-query", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.26.2"],
-            ["react-query-devtools", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.6.2"],
+            ["react-query-devtools", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.6.3"],
             ["react-refresh", "npm:0.9.0"],
             ["react-ssr-prepass", [
               "preact-ssr-prepass",
@@ -51921,10 +51921,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["react-query-devtools", [
-        ["virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.6.2", {
-          "packageLocation": "./.yarn/$$virtual/react-query-devtools-virtual-8acba95f9c/0/cache/react-query-devtools-npm-2.6.2-ac919cc29f-368df39f49.zip/node_modules/react-query-devtools/",
+        ["virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.6.3", {
+          "packageLocation": "./.yarn/$$virtual/react-query-devtools-virtual-9fea3a6f27/0/cache/react-query-devtools-npm-2.6.3-d772adee0f-ce021a2e62.zip/node_modules/react-query-devtools/",
           "packageDependencies": [
-            ["react-query-devtools", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.6.2"],
+            ["react-query-devtools", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.6.3"],
             ["@types/react", "npm:16.9.55"],
             ["@types/react-query", "npm:1.1.2"],
             ["match-sorter", "npm:4.2.1"],
