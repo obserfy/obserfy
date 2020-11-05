@@ -1,0 +1,5 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target" : { "namespace": "android_app", "package_name": "gaia.obserfy.com",
+                   "sha256_cert_fingerprints": ["8C:0C:4B:ED:7D:A6:E0:4C:33:F9:80:69:84:45:1C:25:A1:FE:D8:82:FD:17:D1:1D:2A:A8:05:C9:2E:CD:88:EB"] }
+    }]
