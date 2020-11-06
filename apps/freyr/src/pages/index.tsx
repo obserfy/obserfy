@@ -1,13 +1,15 @@
 import React, { FC } from "react"
 import { LocalizedLink as Link } from "gatsby-theme-i18n"
-import { Trans } from "@lingui/macro"
+import { t, Trans } from "@lingui/macro"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Button from "../components/button"
 
 const IndexPage: FC = () => (
   <Layout>
-    <SEO title="Home" />
+    <SEO
+      title={t`Record Keeping & Communication tool for Montessori Schools`}
+    />
     <div className="px-3 flex-row justify-center my-12 max-w-xl ">
       <div className="prose prose-lg mb-32 mt-20">
         <h1>

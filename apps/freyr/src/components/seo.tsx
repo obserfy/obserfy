@@ -8,6 +8,7 @@
 import React, { FC } from "react"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
+import { useLingui } from "@lingui/react"
 
 interface Props {
   description?: string
@@ -22,6 +23,7 @@ const SEO: FC<Props> = ({
   meta = [],
   description = ``,
 }) => {
+  const { i18n } = useLingui()
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -41,20 +43,20 @@ const SEO: FC<Props> = ({
   return (
     <Helmet
       htmlAttributes={{ lang }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      title={i18n._(title)}
+      titleTemplate={`%s - ${site.siteMetadata.title}`}
       meta={[
         {
           name: `description`,
-          content: metaDescription,
+          content: i18n._(metaDescription),
         },
         {
           property: `og:title`,
-          content: title,
+          content: i18n._(title),
         },
         {
           property: `og:description`,
-          content: metaDescription,
+          content: i18n._(metaDescription),
         },
         {
           property: `og:type`,
@@ -70,11 +72,11 @@ const SEO: FC<Props> = ({
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: i18n._(title),
         },
         {
           name: `twitter:description`,
-          content: metaDescription,
+          content: i18n._(metaDescription),
         },
         ...meta,
       ]}
