@@ -8096,7 +8096,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tailwindcss/typography@npm:^0.2.0":
+"@tailwindcss/typography@npm:0.2.0":
   version: 0.2.0
   resolution: "@tailwindcss/typography@npm:0.2.0"
   peerDependencies:
@@ -11483,7 +11483,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-preset-gatsby@npm:^0.5.16":
+"babel-preset-gatsby@npm:0.5.16":
   version: 0.5.16
   resolution: "babel-preset-gatsby@npm:0.5.16"
   dependencies:
@@ -18460,14 +18460,14 @@ __metadata:
     "@lingui/core": 3.0.2
     "@lingui/macro": 3.0.2
     "@lingui/react": 3.0.2
-    "@tailwindcss/typography": ^0.2.0
+    "@tailwindcss/typography": 0.2.0
     "@types/react": 16.9.56
     "@types/react-helmet": 6.1.0
     "@typescript-eslint/eslint-plugin": 4.6.1
     "@typescript-eslint/parser": 4.6.1
     babel-core: 7.0.0-bridge.0
-    babel-plugin-macros: ^2.8.0
-    babel-preset-gatsby: ^0.5.16
+    babel-plugin-macros: 2.8.0
+    babel-preset-gatsby: 0.5.16
     eslint: 7.12.1
     eslint-config-airbnb-typescript: 12.0.0
     eslint-config-prettier: 6.15.0
@@ -18487,17 +18487,17 @@ __metadata:
     gatsby-plugin-postcss: 3.0.4
     gatsby-plugin-preact: 4.0.16
     gatsby-plugin-prefetch-google-fonts: 1.4.3
-    gatsby-plugin-preload-fonts: ^1.2.30
+    gatsby-plugin-preload-fonts: 1.2.30
     gatsby-plugin-react-helmet: 3.3.14
     gatsby-plugin-remove-trailing-slashes: 2.3.13
     gatsby-plugin-sharp: 2.6.43
-    gatsby-plugin-sitemap: ^2.5.1
+    gatsby-plugin-sitemap: 2.5.1
     gatsby-plugin-webpack-bundle-analyser-v2: 1.1.13
     gatsby-source-filesystem: 2.3.37
     gatsby-theme-i18n: 1.0.4
     gatsby-theme-i18n-lingui: 1.0.4
     gatsby-transformer-sharp: 2.5.20
-    postcss: ^8.1.6
+    postcss: 8.1.6
     postcss-preset-env: 6.7.0
     preact: 10.5.5
     prettier: 2.1.2
@@ -19177,7 +19177,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-preload-fonts@npm:^1.2.30":
+"gatsby-plugin-preload-fonts@npm:1.2.30":
   version: 1.2.30
   resolution: "gatsby-plugin-preload-fonts@npm:1.2.30"
   dependencies:
@@ -19266,7 +19266,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-sitemap@npm:^2.5.1":
+"gatsby-plugin-sitemap@npm:2.5.1":
   version: 2.5.1
   resolution: "gatsby-plugin-sitemap@npm:2.5.1"
   dependencies:
@@ -29220,18 +29220,7 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"postcss@npm:^6.0.1, postcss@npm:^6.0.14, postcss@npm:^6.0.2, postcss@npm:^6.0.23, postcss@npm:^6.0.9":
-  version: 6.0.23
-  resolution: "postcss@npm:6.0.23"
-  dependencies:
-    chalk: ^2.4.1
-    source-map: ^0.6.1
-    supports-color: ^5.4.0
-  checksum: 9b61abdfb366491debc6a633ba3703ae43c674b6c1c64def54e131c8ec01862fc95b3271bde221db805389fc76c3b3f1447b5a9c1d0b332c53cfcc9bfe1b1fa6
-  languageName: node
-  linkType: hard
-
-"postcss@npm:^8.1.6":
+"postcss@npm:8.1.6":
   version: 8.1.6
   resolution: "postcss@npm:8.1.6"
   dependencies:
@@ -29240,6 +29229,17 @@ mocha@latest:
     nanoid: ^3.1.16
     source-map: ^0.6.1
   checksum: f5cf0fdc7364cb3eeb2d3056cd68ef9e74ecbc8874481173491961c2bbe5c79967e71bace1457fafce87f5265da439b3ffb9f0834c9ffeaedcb6946c86026e66
+  languageName: node
+  linkType: hard
+
+"postcss@npm:^6.0.1, postcss@npm:^6.0.14, postcss@npm:^6.0.2, postcss@npm:^6.0.23, postcss@npm:^6.0.9":
+  version: 6.0.23
+  resolution: "postcss@npm:6.0.23"
+  dependencies:
+    chalk: ^2.4.1
+    source-map: ^0.6.1
+    supports-color: ^5.4.0
+  checksum: 9b61abdfb366491debc6a633ba3703ae43c674b6c1c64def54e131c8ec01862fc95b3271bde221db805389fc76c3b3f1447b5a9c1d0b332c53cfcc9bfe1b1fa6
   languageName: node
   linkType: hard
 
