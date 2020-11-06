@@ -54,7 +54,7 @@ msgstr "Privacy Policy"
 
 #: src/pages/index.tsx:8
 msgid "Record Keeping & Communication tool for Montessori Schools"
-msgstr "Alat manajemen data dan komunikasi untuk sekolah Montessori"
+msgstr "Software manajemen data dan komunikasi untuk sekolah Montessori"
 
 #: src/pages/contact.tsx:32
 msgid "Send"

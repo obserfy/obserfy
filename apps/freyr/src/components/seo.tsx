@@ -12,17 +12,11 @@ import { useLingui } from "@lingui/react"
 
 interface Props {
   description?: string
-  lang?: string
   meta?: JSX.IntrinsicElements["meta"][]
   title: string
 }
 
-const SEO: FC<Props> = ({
-  title,
-  lang = `en`,
-  meta = [],
-  description = ``,
-}) => {
+const SEO: FC<Props> = ({ title, meta = [], description = `` }) => {
   const { i18n } = useLingui()
   const { site } = useStaticQuery(
     graphql`
@@ -42,7 +36,7 @@ const SEO: FC<Props> = ({
 
   return (
     <Helmet
-      htmlAttributes={{ lang }}
+      htmlAttributes={{ lang: i18n.locale }}
       title={i18n._(title)}
       titleTemplate={`%s - ${site.siteMetadata.title}`}
       meta={[
