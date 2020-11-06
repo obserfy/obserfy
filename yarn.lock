@@ -6146,29 +6146,29 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lingui/babel-plugin-extract-messages@npm:3.0.3":
-  version: 3.0.3
-  resolution: "@lingui/babel-plugin-extract-messages@npm:3.0.3"
+"@lingui/babel-plugin-extract-messages@npm:3.0.2":
+  version: 3.0.2
+  resolution: "@lingui/babel-plugin-extract-messages@npm:3.0.2"
   dependencies:
     "@babel/generator": ^7.11.6
     "@babel/runtime": ^7.11.2
-    "@lingui/conf": 3.0.3
+    "@lingui/conf": 3.0.2
     mkdirp: ^1.0.4
-  checksum: 8b55d57454974fb73e3ca76fec1b44d7bc57999fbf5baad8a467c42387dd7da2acfea8b0d1ccb6886c9cc9592b984e4683c386c3afc40439c51926257c49c8b7
+  checksum: d5525023e490a0ee82814f5a318087a361899a941dd99af92b71a08826f6d8e67a2e016f621f4c316212b7d5ed07563078185b54a583ebeb9cc669b47b8d30fe
   languageName: node
   linkType: hard
 
-"@lingui/cli@npm:3.0.3":
-  version: 3.0.3
-  resolution: "@lingui/cli@npm:3.0.3"
+"@lingui/cli@npm:3.0.2":
+  version: 3.0.2
+  resolution: "@lingui/cli@npm:3.0.2"
   dependencies:
     "@babel/generator": ^7.11.6
     "@babel/parser": ^7.11.5
     "@babel/plugin-syntax-jsx": ^7.10.4
     "@babel/runtime": ^7.11.2
     "@babel/types": ^7.11.5
-    "@lingui/babel-plugin-extract-messages": 3.0.3
-    "@lingui/conf": 3.0.3
+    "@lingui/babel-plugin-extract-messages": 3.0.2
+    "@lingui/conf": 3.0.2
     babel-plugin-macros: ^2.8.0
     bcp-47: ^1.0.7
     chalk: ^4.1.0
@@ -6195,19 +6195,30 @@ __metadata:
     typescript: 2 || 3 || 4
   bin:
     lingui: lingui.js
-  checksum: e1c0de05fb6e26568cd238f716e9214d29d873aadb3ea30f2f3f4d5c962a3870e0e9906484301ee5732abf853db689bda90811d7e9f637dffc98c634f055f53b
+  checksum: ff4fafed06ccff453a75741beea41f1680f54a032010cfd9115341ffd2ecb9cf9aada7b7f07b4ba27e908bffc37539e45f278c77227b4d329aa67297a2f2f1f1
   languageName: node
   linkType: hard
 
-"@lingui/conf@npm:3.0.3":
-  version: 3.0.3
-  resolution: "@lingui/conf@npm:3.0.3"
+"@lingui/conf@npm:3.0.2":
+  version: 3.0.2
+  resolution: "@lingui/conf@npm:3.0.2"
   dependencies:
     "@babel/runtime": ^7.11.2
     chalk: ^4.1.0
     cosmiconfig: ^7.0.0
     jest-validate: ^26.5.2
-  checksum: 11572344c83cb4b62014389a1651171ca0441449747b1f3ba3a2cae940caedb6f5dc327a6ae3b6512b9f518cf7721dfd92eb17ecda2f217240c7c9ac04af812c
+  checksum: 96136fd5a01994240035d632c102cb053fd57b68b48144555aaff873dfef7dc19d1af39b979d4e39d0c50bf6b51e69b7d83abd80cff5def51a5cc9be621548e7
+  languageName: node
+  linkType: hard
+
+"@lingui/core@npm:3.0.2":
+  version: 3.0.2
+  resolution: "@lingui/core@npm:3.0.2"
+  dependencies:
+    "@babel/runtime": ^7.11.2
+    make-plural: ^6.2.2
+    messageformat-parser: ^4.1.3
+  checksum: 7c682e163aca8dfb65ec0ddf6362479dcfc77aac7e8a2754d3be2cb712ad8c705b7652386778be3786044adb4ac1cd625fb4088356847f4595145c5aced9825d
   languageName: node
   linkType: hard
 
@@ -6222,16 +6233,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lingui/macro@npm:3.0.3":
-  version: 3.0.3
-  resolution: "@lingui/macro@npm:3.0.3"
+"@lingui/macro@npm:3.0.2":
+  version: 3.0.2
+  resolution: "@lingui/macro@npm:3.0.2"
   dependencies:
     "@babel/runtime": ^7.11.2
-    "@lingui/conf": 3.0.3
+    "@lingui/conf": 3.0.2
     ramda: ^0.27.1
   peerDependencies:
     babel-plugin-macros: ^2.5.1
-  checksum: c027d1efb0a780612ef06da789fb13e2f08607b95930a14f36a77b0469c4f4c6eb9f4796d8eaf49829bc4b317c2b30a22acbcaa8b4a289a74df7f7a6bc558682
+  checksum: 7a0501916ea9c2deb70df4ebcbd0064e437d0ed0108e72f86c5c3194cf434011c23d15ff37535397385b30b1b351be8265e9a57a0f0ebfefe8661ce80bf8465f
+  languageName: node
+  linkType: hard
+
+"@lingui/react@npm:3.0.2":
+  version: 3.0.2
+  resolution: "@lingui/react@npm:3.0.2"
+  dependencies:
+    "@babel/runtime": ^7.11.2
+    "@lingui/core": 3.0.2
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+  checksum: 17acc3bd1b7ac9711e369e03ac725c1c8e8ac9c711c089ae78bd11ca8222fe7fbeca4fbcd0e17f5a8cf92fb8912510d4b73aae79b9b2a6c73755d4ccccb53acf
   languageName: node
   linkType: hard
 
@@ -8617,23 +8640,6 @@ __metadata:
   dependencies:
     "@types/node": "*"
   checksum: 3aaf557d5b82e733d5a17b7f55af5d6be953363c3a594f006d64265790fe87c301c6e1400c0b6b1cf72add50a0ceddc25afb8231ab8302a2e5b6ebfbfac30e5d
-  languageName: node
-  linkType: hard
-
-"@types/lingui__core@npm:*":
-  version: 2.7.0
-  resolution: "@types/lingui__core@npm:2.7.0"
-  checksum: 96969c219cadac4be4490d238c90033ffd5b37b6b533927edea6cfc92a19be44b96ea64a41d6738a0f2fd39c733f2b3077d56f4b5d3923dd4fb2dcea69720ad2
-  languageName: node
-  linkType: hard
-
-"@types/lingui__macro@npm:2.7.4":
-  version: 2.7.4
-  resolution: "@types/lingui__macro@npm:2.7.4"
-  dependencies:
-    "@types/lingui__core": "*"
-    "@types/react": "*"
-  checksum: c6d98234c27238acfee23f26ecdd98f0c940f7432e085292f0e265f0e8fb80d28e27f304a4c973b46de2b962d59197e108d9098147d7d23fed051b2f1445c1b6
   languageName: node
   linkType: hard
 
@@ -11458,6 +11464,31 @@ __metadata:
     "@babel/core": ^7.11.6
     core-js: ^3.0.0
   checksum: 3db32f39def5530b24e507a22ed4f40b795e9e50843241d9d1a41425d6bad56b47b16985426ef71516922e204867398346fef981173677d0c6bc2c68e875ab9b
+  languageName: node
+  linkType: hard
+
+"babel-preset-gatsby@npm:^0.5.16":
+  version: 0.5.16
+  resolution: "babel-preset-gatsby@npm:0.5.16"
+  dependencies:
+    "@babel/plugin-proposal-class-properties": ^7.10.4
+    "@babel/plugin-proposal-nullish-coalescing-operator": ^7.10.4
+    "@babel/plugin-proposal-optional-chaining": ^7.11.0
+    "@babel/plugin-syntax-dynamic-import": ^7.8.3
+    "@babel/plugin-transform-runtime": ^7.11.5
+    "@babel/plugin-transform-spread": ^7.11.0
+    "@babel/preset-env": ^7.11.5
+    "@babel/preset-react": ^7.10.4
+    "@babel/runtime": ^7.11.2
+    babel-plugin-dynamic-import-node: ^2.3.3
+    babel-plugin-macros: ^2.8.0
+    babel-plugin-transform-react-remove-prop-types: ^0.4.24
+    gatsby-core-utils: ^1.3.24
+    gatsby-legacy-polyfills: ^0.0.6
+  peerDependencies:
+    "@babel/core": ^7.11.6
+    core-js: ^3.0.0
+  checksum: 9eb9c348a422fffc97295b5e140ea4316cd004ab9ee4824301ce2da40779a55b663096175d99470cf116bc2bffbe19ef2c61bf3e198c8477dc91b606d78b9d7c
   languageName: node
   linkType: hard
 
@@ -18382,17 +18413,18 @@ __metadata:
   resolution: "freyr@workspace:apps/freyr"
   dependencies:
     "@babel/core": 7.12.3
-    "@lingui/cli": 3.0.3
-    "@lingui/macro": 3.0.3
-    "@lingui/react": 3.0.3
+    "@lingui/cli": 3.0.2
+    "@lingui/core": 3.0.2
+    "@lingui/macro": 3.0.2
+    "@lingui/react": 3.0.2
     "@tailwindcss/typography": ^0.2.0
-    "@types/lingui__macro": 2.7.4
     "@types/react": 16.9.56
     "@types/react-helmet": 6.1.0
     "@typescript-eslint/eslint-plugin": 4.6.1
     "@typescript-eslint/parser": 4.6.1
     babel-core: 7.0.0-bridge.0
     babel-plugin-macros: ^2.8.0
+    babel-preset-gatsby: ^0.5.16
     eslint: 7.12.1
     eslint-config-airbnb-typescript: 12.0.0
     eslint-config-prettier: 6.15.0
@@ -18814,6 +18846,21 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"gatsby-core-utils@npm:^1.3.24":
+  version: 1.3.24
+  resolution: "gatsby-core-utils@npm:1.3.24"
+  dependencies:
+    ci-info: 2.0.0
+    configstore: ^5.0.1
+    fs-extra: ^8.1.0
+    node-object-hash: ^2.0.0
+    proper-lockfile: ^4.1.1
+    tmp: ^0.2.1
+    xdg-basedir: ^4.0.0
+  checksum: e6079e1613daae5d79f6c3dc4728f70eb1e6eb193e7b6895f6f36eeb124f407be961963d1f4ebcd55d68877c7a6fcc9c3711c9d201eeb8e562a8ec08aa2be998
+  languageName: node
+  linkType: hard
+
 "gatsby-graphiql-explorer@npm:^0.4.15":
   version: 0.4.15
   resolution: "gatsby-graphiql-explorer@npm:0.4.15"
@@ -18840,6 +18887,15 @@ fsevents@^1.2.7:
   dependencies:
     core-js-compat: ^3.6.5
   checksum: 9da9106088fe8f04640108e47bb99df51afa2f4fbad1f408828c0fa70f18116c198837fd64d5a5001c479cb16d8b94ff03450c026b4349655182d4c60313968b
+  languageName: node
+  linkType: hard
+
+"gatsby-legacy-polyfills@npm:^0.0.6":
+  version: 0.0.6
+  resolution: "gatsby-legacy-polyfills@npm:0.0.6"
+  dependencies:
+    core-js-compat: ^3.6.5
+  checksum: 108d647eafdac26c593c9c580fd7f4bebcbf4651f0862bf0a766ff3f6ef89920209a29328a4cd385f031aac88bc7fbd3db548ea9b3a015abac876fc36b08f683
   languageName: node
   linkType: hard
 
@@ -36026,10 +36082,10 @@ typescript@^4.0.0:
     "@babel/runtime": 7.12.5
     "@emotion/core": 10.1.1
     "@istanbuljs/nyc-config-typescript": 1.0.1
-    "@lingui/cli": 3.0.3
-    "@lingui/core": 3.0.3
-    "@lingui/macro": 3.0.3
-    "@lingui/react": 3.0.3
+    "@lingui/cli": 3.0.2
+    "@lingui/core": 3.0.2
+    "@lingui/macro": 3.0.2
+    "@lingui/react": 3.0.2
     "@reach/router": 1.3.4
     "@sentry/gatsby": 5.27.2
     "@sentry/tracing": 5.27.3

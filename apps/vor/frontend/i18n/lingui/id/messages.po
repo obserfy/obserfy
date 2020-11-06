@@ -26,7 +26,7 @@ msgstr ""
 #~ msgid "\"Create your first class to track your student's class enrollment.\""
 #~ msgstr ""
 
-#: src/components/PageObservationDetails/PageObservationDetails.tsx:47
+#: src/components/PageObservationDetails/PageObservationDetails.tsx:53
 msgid "\"{0}\" will be permanently deleted. Are you sure?"
 msgstr ""
 
@@ -187,7 +187,6 @@ msgstr "Tanggal Lahir"
 msgid "Date of Entry"
 msgstr "Tanggal Masuk"
 
-#: src/components/PageObservationDetails/PageObservationDetails.tsx:44
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:48
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:53
 #: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:79
@@ -195,7 +194,7 @@ msgstr "Tanggal Masuk"
 msgid "Delete"
 msgstr "Hapus"
 
-#: src/components/PageObservationDetails/PageObservationDetails.tsx:47
+#: src/components/PageObservationDetails/PageObservationDetails.tsx:53
 msgid "Delete Observation?"
 msgstr ""
 
@@ -836,7 +835,7 @@ msgstr "Pengguna/bulan"
 msgid "Users"
 msgstr "Pengguna"
 
-#: src/components/PageObservationDetails/PageObservationDetails.tsx:41
+#: src/components/PageObservationDetails/PageObservationDetails.tsx:68
 msgid "Visible to Guardians"
 msgstr ""
 
