@@ -2,7 +2,7 @@ module.exports = {
   important: true,
   theme: {
     fontFamily: {
-      heading: ["Crimson Text"],
+      heading: ["Open Sans"],
       body: ["Open Sans"],
     },
   },

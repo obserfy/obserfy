@@ -20,7 +20,8 @@ const Button: FC<Props> = ({
       className={`
       ${className} 
       ${
-        secondary && "bg-green-100 text-green-900 border-green-900 border-solid"
+        secondary &&
+        "border text-green-900 border-green-900 border-solid bg-transparent"
       }
       `}
       {...props}
