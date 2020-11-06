@@ -7,7 +7,7 @@ const PrivacyPolicyPage = () => {
   return (
     <Layout>
       <SEO title="Privacy Policy" />
-      <div className="max-w-xl md:mx-auto mx-3 prose">
+      <div className="max-w-xl mx-3 prose">
         <h1>
           <Trans>Privacy Policy</Trans>
         </h1>

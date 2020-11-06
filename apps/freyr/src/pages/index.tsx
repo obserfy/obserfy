@@ -8,8 +8,8 @@ import Button from "../components/button"
 const IndexPage: FC = () => (
   <Layout>
     <SEO title="Home" />
-    <div className="flex-row justify-center my-12 max-w-xl ">
-      <div className="prose prose-lg mb-32">
+    <div className="px-3 flex-row justify-center my-12 max-w-xl ">
+      <div className="prose prose-lg mb-32 mt-20">
         <h1>
           <Trans>Observe. Plan. Communicate.</Trans>
         </h1>
