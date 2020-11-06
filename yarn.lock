@@ -8073,6 +8073,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tailwindcss/typography@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "@tailwindcss/typography@npm:0.2.0"
+  peerDependencies:
+    tailwindcss: ^1.5.0
+  checksum: 07b12319171e62151e7212fdf3aeeaff64d282934d6fa37b7c668bc00cb652930ef6841b1a88a927d3c459ab2a0df67a9e94f386a069efd8efa0b6c7b451aec6
+  languageName: node
+  linkType: hard
+
 "@testing-library/dom@npm:^7.26.4":
   version: 7.26.4
   resolution: "@testing-library/dom@npm:7.26.4"
@@ -18376,6 +18385,7 @@ __metadata:
     "@lingui/cli": 3.0.3
     "@lingui/macro": 3.0.3
     "@lingui/react": 3.0.3
+    "@tailwindcss/typography": ^0.2.0
     "@types/lingui__macro": 2.7.4
     "@types/react": 16.9.55
     "@types/react-helmet": 6.1.0
@@ -18394,7 +18404,6 @@ __metadata:
     eslint-plugin-react-hooks: 4.2.0
     gatsby: 2.24.91
     gatsby-image: 2.4.21
-    gatsby-plugin-google-analytics: 2.3.19
     gatsby-plugin-manifest: 2.4.37
     gatsby-plugin-netlify: 2.3.25
     gatsby-plugin-netlify-cache: 1.2.0
@@ -18402,7 +18411,6 @@ __metadata:
     gatsby-plugin-postcss: 3.0.4
     gatsby-plugin-preact: 4.0.16
     gatsby-plugin-prefetch-google-fonts: 1.4.3
-    gatsby-plugin-purgecss: 5.0.0
     gatsby-plugin-react-helmet: 3.3.14
     gatsby-plugin-remove-trailing-slashes: 2.3.13
     gatsby-plugin-sharp: 2.6.43
@@ -18889,20 +18897,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-google-analytics@npm:2.3.19":
-  version: 2.3.19
-  resolution: "gatsby-plugin-google-analytics@npm:2.3.19"
-  dependencies:
-    "@babel/runtime": ^7.11.2
-    minimatch: 3.0.4
-  peerDependencies:
-    gatsby: ^2.0.0
-    react: ^16.4.2
-    react-dom: ^16.4.2
-  checksum: 295cf8e4ab2a61a135728b93945dfec4da3bc84b8c6f348f22cdef88f1a108baf70fa8a1a56f732a3d8f214d153af905a24d4ba306c77948c5fd9f5029d82977
-  languageName: node
-  linkType: hard
-
 "gatsby-plugin-graphql-codegen@npm:2.7.1":
   version: 2.7.1
   resolution: "gatsby-plugin-graphql-codegen@npm:2.7.1"
@@ -19077,19 +19071,6 @@ fsevents@^1.2.7:
     google-fonts-plugin: 2.0.2
     object-hash: ^1.3.0
   checksum: 5d5cbb0e1ac2745c177b3debe67b5c6ba53933ee38aa065bacfad0251930166e1575081999c8ab201c06f55f1df1977965ba1f2580ea672f9d7d5e9abd9bde0a
-  languageName: node
-  linkType: hard
-
-"gatsby-plugin-purgecss@npm:5.0.0":
-  version: 5.0.0
-  resolution: "gatsby-plugin-purgecss@npm:5.0.0"
-  dependencies:
-    fs-extra: ^9.0.0
-    loader-utils: ^2.0.0
-    purgecss: ^2.1.0
-  peerDependencies:
-    gatsby: ">2.0.0-beta"
-  checksum: a032573988d538286554a2f067a315970afcc0d76b9705655e0d781c32c38309eb272695a339e7ef6f0e3f2def453812a5abfa2a893d5f6d98475a9aa2f93256
   languageName: node
   linkType: hard
 
@@ -29666,7 +29647,7 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"purgecss@npm:^2.1.0, purgecss@npm:^2.3.0":
+"purgecss@npm:^2.3.0":
   version: 2.3.0
   resolution: "purgecss@npm:2.3.0"
   dependencies:
