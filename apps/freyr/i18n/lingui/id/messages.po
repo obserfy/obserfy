@@ -40,7 +40,7 @@ msgstr "Pesan"
 
 #: src/pages/index.tsx:12
 msgid "Observe. Plan. Communicate."
-msgstr "Observasi. Rencanakan. Komunikasikan"
+msgstr "Perhatikan. Rencanakan. Bagikan."
 
 #: src/components/header.tsx:23
 msgid "Parents"
@@ -57,7 +57,7 @@ msgstr "Kirim"
 
 #: src/pages/index.tsx:15
 msgid "Store your student data and observations. Plan their lessons. And communicate it all to parents with ease, using one platform built for the need of Montessori Schools."
-msgstr "Simpan data dan observasi murid anda. Rencanakan edukasi mereka. Dan komunikasikan semua kepada orang tua murid dengan mudah, menggunakan satu platform yang dibuat khusus untuk sekolah Montessori"
+msgstr "Simpan data dan observasi murid. Rencanakan edukasi mereka. Dan bagikan semua pada orang tua dengan mudah, semua dalam satu platform yang dibuat untuk kebutuhan sekolah Montessori"
 
 #: src/components/header.tsx:17
 msgid "Teachers"
