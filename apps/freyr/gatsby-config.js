@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
     title: `Obserfy`,
-    description: `Obserfy landing page`,
+    description: `Obserfy is an open-source record keeping and parent communication tool, built for Montessori schools.`,
     author: `@chrsep`,
-    siteUrl: `https://obserfy.com`
+    siteUrl: `https://obserfy.com`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -26,21 +26,14 @@ module.exports = {
         name: `Obserfy`,
         short_name: `Obserfy`,
         start_url: `/`,
-        background_color: `#121212`,
-        theme_color: `#121212`,
+        background_color: `#ffffff`,
+        theme_color: `#ffffff`,
         display: `standalone`,
-        icon: `src/images/logo-standalone.svg`, // This path is relative to the root of the site.
-      },
-    },
-    {
-      resolve: `gatsby-plugin-purgecss`,
-      options: {
-        printRejected: true, // Print removed selectors and processed file names
-        // develop: true, // Enable while using `gatsby develop`
-        tailwind: true, // Enable tailwindcss support
-        // whitelist: ['whitelist'], // Don't remove this selector
-        // ignore: ['/ignored.css', 'prismjs/', 'docsearch.js/'], // Ignore files/folders
-        // purgeOnly : ['components/', '/main.css', 'bootstrap/'], // Purge only these files/folders
+        icon: `src/images/logo-transparent.png`, // This path is relative to the root of the site.
+        icon_options: {
+          // For all the options available, please see the additional resources below.
+          purpose: `any maskable`,
+        },
       },
     },
     {
@@ -49,11 +42,7 @@ module.exports = {
         fonts: [
           {
             family: `Open Sans`,
-            variants: [`400`, `700`],
-          },
-          {
-            family: `Crimson Text`,
-            variants: [`600`],
+            variants: [`400`, `500`, `700`],
           },
         ],
       },
@@ -64,28 +53,7 @@ module.exports = {
         analyzerPort: 3000,
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
     `gatsby-plugin-remove-trailing-slashes`,
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: "UA-158765938-2",
-        // Defines where to place the tracking script - `true` in the head and `false` in the body
-        head: false,
-        // Setting this parameter is optional
-        anonymize: true,
-        // Setting this parameter is also optional
-        respectDNT: true,
-        // Avoids sending pageview hits from custom paths
-        // exclude: ["/preview/**", "/do-not-track/me/too/"],
-        // Delays sending pageview hits on route update (in milliseconds)
-        pageTransitionDelay: 0,
-        // Set Variation ID. 0 for original 1,2,3....
-        variationId: "0",
-      },
-    },
     {
       resolve: `gatsby-theme-i18n`,
       options: {
@@ -99,5 +67,7 @@ module.exports = {
         localeDir: `./i18n/lingui`,
       },
     },
+    `gatsby-plugin-sitemap`,
+    `gatsby-plugin-preload-fonts`,
   ],
 }
