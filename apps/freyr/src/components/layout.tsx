@@ -15,9 +15,9 @@ const Layout: FC = ({ children }) => {
   return (
     <>
       <Header />
-      <div className="px-3 max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <main>{children}</main>
-        <footer className="text-center my-3 flex items-center pt-8 text-gray-700">
+        <footer className="px-3 text-center my-3 flex items-center pt-8 text-gray-700">
           <div>© {new Date().getFullYear()} Obserfy</div>
           <Link to="/privacy-policy" className="ml-3 underline">
             <Trans>Privacy Policy</Trans>
