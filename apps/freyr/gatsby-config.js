@@ -3,7 +3,7 @@ module.exports = {
     title: `Obserfy`,
     description: `Obserfy is an open-source record keeping and parent communication tool, built for Montessori schools.`,
     author: `@chrsep`,
-    siteUrl: `https://obserfy.com`
+    siteUrl: `https://obserfy.com`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -29,7 +29,11 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#ffffff`,
         display: `standalone`,
-        icon: `src/images/logo-standalone.svg`, // This path is relative to the root of the site.
+        icon: `src/images/logo-transparent.png`, // This path is relative to the root of the site.
+        icon_options: {
+          // For all the options available, please see the additional resources below.
+          purpose: `any maskable`,
+        },
       },
     },
     {
@@ -40,10 +44,6 @@ module.exports = {
             family: `Open Sans`,
             variants: [`400`, `500`, `700`],
           },
-          // {
-          //   family: `Crimson Text`,
-          //   variants: [`600`],
-          // },
         ],
       },
     },
@@ -67,5 +67,7 @@ module.exports = {
         localeDir: `./i18n/lingui`,
       },
     },
+    `gatsby-plugin-sitemap`,
+    `gatsby-plugin-preload-fonts`,
   ],
 }

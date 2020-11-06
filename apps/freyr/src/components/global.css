@@ -5,5 +5,5 @@
 @tailwind utilities;
 
 button {
-  @apply py-3 px-6 font-body font-bold shadow-sm rounded bg-green-600 text-white border border-gray-400;
+  @apply py-3 px-6 font-body font-bold shadow-sm rounded bg-primaryDark text-white border border-gray-400;
 }

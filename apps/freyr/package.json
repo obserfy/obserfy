@@ -20,9 +20,11 @@
     "gatsby-plugin-postcss": "3.0.4",
     "gatsby-plugin-preact": "4.0.16",
     "gatsby-plugin-prefetch-google-fonts": "1.4.3",
+    "gatsby-plugin-preload-fonts": "^1.2.30",
     "gatsby-plugin-react-helmet": "3.3.14",
     "gatsby-plugin-remove-trailing-slashes": "2.3.13",
     "gatsby-plugin-sharp": "2.6.43",
+    "gatsby-plugin-sitemap": "^2.5.1",
     "gatsby-plugin-webpack-bundle-analyser-v2": "1.1.13",
     "gatsby-source-filesystem": "2.3.37",
     "gatsby-theme-i18n": "1.0.4",
@@ -67,7 +69,7 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop -p 8001 -H 0.0.0.0",
+    "develop": "gatsby develop -H 0.0.0.0",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
@@ -75,9 +77,11 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "lint": "eslint --ext .tsx,.ts src/",
     "typecheck": "tsc --noemit",
-    "add-locale": "lingui add-locale",
-    "extract": "lingui extract",
-    "compile": "lingui compile"
+    "preload-fonts": "gatsby-preload-fonts",
+    "i18n:add-locale": "lingui add-locale",
+    "i18n:extract": "lingui extract",
+    "i18n:compile": "lingui compile",
+    "i18n:build": "yarn i18n:extract && yarn i18n:compile"
   },
   "repository": {
     "type": "git",
