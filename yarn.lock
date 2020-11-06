@@ -8952,13 +8952,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:16.9.55":
-  version: 16.9.55
-  resolution: "@types/react@npm:16.9.55"
+"@types/react@npm:16.9.56":
+  version: 16.9.56
+  resolution: "@types/react@npm:16.9.56"
   dependencies:
     "@types/prop-types": "*"
     csstype: ^3.0.2
-  checksum: aadc5636d6b58e33422d0f3d275daf25b5456f715a0426ea08399f577ba0229dead47d41dc2c6e1f1659fb01e42c005045f97ed535b3695e05f209bd0b7076c5
+  checksum: 139867e2b3d577723b9361234f105d0cf1b143202f51fef207355332f972dd74030cfb3918037cb311eefd203ee06e0a370c37755204eefdd35734f0fde070a1
   languageName: node
   linkType: hard
 
@@ -18387,7 +18387,7 @@ __metadata:
     "@lingui/react": 3.0.3
     "@tailwindcss/typography": ^0.2.0
     "@types/lingui__macro": 2.7.4
-    "@types/react": 16.9.55
+    "@types/react": 16.9.56
     "@types/react-helmet": 6.1.0
     "@typescript-eslint/eslint-plugin": 4.6.1
     "@typescript-eslint/parser": 4.6.1
@@ -18690,7 +18690,7 @@ fsevents@^1.2.7:
     "@types/node": 14.14.6
     "@types/pg": 7.14.6
     "@types/pino": 6.3.3
-    "@types/react": 16.9.55
+    "@types/react": 16.9.56
     "@types/react-query": 1.1.2
     "@types/uuid": 8.3.0
     "@typescript-eslint/eslint-plugin": 4.6.1
@@ -18737,8 +18737,8 @@ fsevents@^1.2.7:
     react: "npm:@preact/compat@0.0.3"
     react-dom: "npm:@preact/compat@0.0.3"
     react-optimized-image: 0.4.1
-    react-query: 2.26.1
-    react-query-devtools: 2.6.1
+    react-query: 2.26.2
+    react-query-devtools: 2.6.3
     react-refresh: 0.9.0
     react-ssr-prepass: "npm:preact-ssr-prepass@1.1.2"
     stylelint: 13.7.2
@@ -29721,14 +29721,14 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"query-string@npm:6.13.6":
-  version: 6.13.6
-  resolution: "query-string@npm:6.13.6"
+"query-string@npm:6.13.7":
+  version: 6.13.7
+  resolution: "query-string@npm:6.13.7"
   dependencies:
     decode-uri-component: ^0.2.0
     split-on-first: ^1.0.0
     strict-uri-encode: ^2.0.0
-  checksum: 0f773349bf9c35719cac801b28a0d98f27ba9d815e92db34c69eb9eaa13ef57d8b6b8bd3f6b81070d8c9b790fa2a1d1311a772d0397838e7ca373bcd4d46ab7f
+  checksum: b6d9ef79b77640456e764dcb427591e6079616141aa68f1dae444387864cbc44f945d766085a1ebef1e0fa1b0f8faa8925a96eaebf933119b97bacc12c5d22e5
   languageName: node
   linkType: hard
 
@@ -30364,31 +30364,31 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"react-query-devtools@npm:2.6.1":
-  version: 2.6.1
-  resolution: "react-query-devtools@npm:2.6.1"
+"react-query-devtools@npm:2.6.3":
+  version: 2.6.3
+  resolution: "react-query-devtools@npm:2.6.3"
   dependencies:
     match-sorter: ^4.1.0
   peerDependencies:
-    react: ^16.6.3
+    react: ^16.6.3 || ^17.0.0
     react-query: ^2.0.0
-  checksum: efa00344824af563b8fa571ac611394f9c10ef2edaebff7ace54462f9774922f7e26af0851e91fff2d8c889b42f0844f2ff460a26df2a082f98381ac1cf34e8a
+  checksum: ce021a2e62452b96a46f931fa867c0cc4b5a57d0d8743cd1edf658a0ca441748c408a724b0e9ea38114165954cb2109495e998d2c94a2b42cc0816edb8de6786
   languageName: node
   linkType: hard
 
-"react-query@npm:2.26.1":
-  version: 2.26.1
-  resolution: "react-query@npm:2.26.1"
+"react-query@npm:2.26.2":
+  version: 2.26.2
+  resolution: "react-query@npm:2.26.2"
   dependencies:
     "@babel/runtime": ^7.5.5
   peerDependencies:
-    react: ^16.8.0
+    react: ^16.8.0 || ^17.0.0
   peerDependenciesMeta:
     react-dom:
       optional: true
     react-native:
       optional: true
-  checksum: e0be22093e2d59a4816997dc9d1d470212c0a09f4710683cf6e9ff97dcceef1b05ae6596822166273cc931f141cde03aa806fe73e6cd8c22148e5a7b4380ed34
+  checksum: 5d36d8db15a6dc78f948fe347cdfc4d3d5f5110188f4d6bf4d6f279b8d0d397154f94279ebb4996343b5aad978f2a8b498468ace3ab4b99ec543d5b8f158953f
   languageName: node
   linkType: hard
 
@@ -36047,7 +36047,7 @@ typescript@^4.0.0:
     "@types/jest": 26.0.15
     "@types/query-string": 6.3.0
     "@types/reach__router": 1.3.6
-    "@types/react": 16.9.55
+    "@types/react": 16.9.56
     "@types/react-adaptive-hooks": 0.0.0
     "@types/react-dom": 16.9.9
     "@types/react-helmet": 6.1.0
@@ -36116,13 +36116,13 @@ typescript@^4.0.0:
     preact: 10.5.5
     preact-render-to-string: 5.1.11
     prettier: 2.1.2
-    query-string: 6.13.6
+    query-string: 6.13.7
     react: 17.0.1
     react-adaptive-hooks: 0.0.8
     react-docgen-typescript-loader: 3.7.2
     react-dom: 17.0.1
     react-helmet: 6.1.0
-    react-query: 2.26.1
+    react-query: 2.26.2
     react-refresh: 0.9.0
     react-test-renderer: 17.0.1
     regenerator-runtime: 0.13.7
