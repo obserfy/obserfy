@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Obserfy`,
-    description: `Obserfy landing page`,
+    description: `Obserfy is an open-source record keeping and parent communication tool, built for Montessori schools.`,
     author: `@chrsep`,
     siteUrl: `https://obserfy.com`
   },
