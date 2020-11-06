@@ -13,6 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/pages/contact.tsx:7
 #: src/pages/contact.tsx:11
 #: src/pages/index.tsx:30
 msgid "Contact Us"
@@ -28,7 +29,7 @@ msgstr "Coba Gratis"
 
 #: src/pages/contact.tsx:14
 msgid "Have a question? Shoot us a message using this form. We'd love to talk with you about your need."
-msgstr "Punya pertanyaan? Kirimkan pesan ke kami menggunakan form berikut ini."
+msgstr "Punya pertanyaan? Kirimkan pesan ke kami menggunakan form disamping."
 
 #: src/pages/privacy-policy.tsx:14
 msgid "Last updated"
@@ -50,6 +51,10 @@ msgstr "Wali Murid"
 #: src/pages/privacy-policy.tsx:10
 msgid "Privacy Policy"
 msgstr "Privacy Policy"
+
+#: src/pages/index.tsx:8
+msgid "Record Keeping & Communication tool for Montessori Schools"
+msgstr "Alat manajemen data dan komunikasi untuk sekolah Montessori"
 
 #: src/pages/contact.tsx:32
 msgid "Send"

@@ -13,6 +13,11 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/pages/contact.tsx:7
+#~ msgid "\"Contact Us"
+#~ msgstr "\"Contact Us"
+
+#: src/pages/contact.tsx:7
 #: src/pages/contact.tsx:11
 #: src/pages/index.tsx:30
 msgid "Contact Us"
@@ -50,6 +55,18 @@ msgstr "Parents"
 #: src/pages/privacy-policy.tsx:10
 msgid "Privacy Policy"
 msgstr "Privacy Policy"
+
+#: src/pages/index.tsx:8
+msgid "Record Keeping & Communication tool for Montessori Schools"
+msgstr "Record Keeping & Communication tool for Montessori Schools"
+
+#: src/pages/index.tsx:8
+#~ msgid "Record Keeping & Parent Communication tool for Montessori Schools"
+#~ msgstr "Record Keeping & Parent Communication tool for Montessori Schools"
+
+#: src/pages/index.tsx:8
+#~ msgid "Record Keeping and Communication tool for Montessori Schools"
+#~ msgstr "Record Keeping and Communication tool for Montessori Schools"
 
 #: src/pages/contact.tsx:32
 msgid "Send"

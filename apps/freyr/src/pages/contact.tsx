@@ -1,18 +1,18 @@
 import React, { FC } from "react"
-import { Trans } from "@lingui/macro"
+import { Trans, t } from "@lingui/macro"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Button from "../components/button"
 
 const ContactUsPage: FC = () => (
   <Layout>
-    <SEO title="Home" />
-    <div className="flex-row sm:flex my-16">
-      <div className="flex-row justify-center lg:w-1/2 mr-3">
-        <h1 className="text-5xl mb-4 leading-none font-heading font-medium">
+    <SEO title={t`Contact Us`} />
+    <div className="px-3 flex-row sm:flex my-16">
+      <div className="flex-row justify-center lg:w-1/2 mr-3 prose prose-lg">
+        <h1>
           <Trans>Contact Us</Trans>
         </h1>
-        <p className="text-xl mt-8 mb-3 text-gray-700 font-body">
+        <p className="text-xl mt-8 mb-3 text-gray-700 font-body max-w-md">
           <Trans>
             Have a question? Shoot us a message using this form. We&apos;d love
             to talk with you about your need.
