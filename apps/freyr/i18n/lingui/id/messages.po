@@ -40,7 +40,7 @@ msgstr "Pesan"
 
 #: src/pages/index.tsx:12
 msgid "Observe. Plan. Communicate."
-msgstr "Perhatikan. Rencanakan. Bagikan."
+msgstr "Catat. Rencanakan. Bagikan."
 
 #: src/components/header.tsx:23
 msgid "Parents"
