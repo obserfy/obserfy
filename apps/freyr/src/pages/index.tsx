@@ -1,7 +1,5 @@
 import React, { FC } from "react"
-
 import { LocalizedLink as Link } from "gatsby-theme-i18n"
-import { trackCustomEvent } from "gatsby-plugin-google-analytics"
 import { Trans } from "@lingui/macro"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -25,16 +23,7 @@ const IndexPage: FC = () => (
           href="https://app.obserfy.com/register"
           className="block mb-3 sm:mb-0 sm:mr-3"
         >
-          <Button
-            className="w-full sm:w-auto text-lg"
-            onClick={() => {
-              trackCustomEvent({
-                category: "Get Start Button",
-                action: "Click",
-                label: "Get Start",
-              })
-            }}
-          >
+          <Button className="w-full sm:w-auto text-lg">
             <Trans>Get Early Access</Trans>
           </Button>
         </a>
