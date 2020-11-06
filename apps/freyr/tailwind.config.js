@@ -1,4 +1,5 @@
 module.exports = {
+  purge: ["./src/**/*.tsx"],
   important: true,
   theme: {
     fontFamily: {
@@ -9,11 +10,10 @@ module.exports = {
   future: {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true,
+    standardFontWeights: true,
+    defaultLineHeights: true
   },
   plugins: [
     require('@tailwindcss/typography'),
   ],
-  purge: {
-    mode: "all"
-  }
 }
