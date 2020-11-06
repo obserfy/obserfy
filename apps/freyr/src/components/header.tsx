@@ -33,13 +33,19 @@ const Header: FC = () => {
       </div>
       <div className="flex items-center">
         <a href="https://app.obserfy.com/" className="">
-          <Button className="px-3 py-2 mr-3 border bg-transparent text-gray-700 text-sm">
+          <Button
+            secondary
+            className="px-3 py-2 mr-3 border text-gray-700 text-sm"
+          >
             <Trans>Teachers</Trans>
           </Button>
         </a>
 
         <a href="https://parent.obserfy.com/api/login">
-          <Button className="px-3 py-2 border bg-transparent text-gray-700 text-sm">
+          <Button
+            secondary
+            className="px-3 py-2 border bg-transparent text-gray-700 text-sm"
+          >
             <Trans>Parents</Trans>
           </Button>
         </a>

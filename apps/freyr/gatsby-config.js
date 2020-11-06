@@ -38,12 +38,12 @@ module.exports = {
         fonts: [
           {
             family: `Open Sans`,
-            variants: [`400`, `700`],
+            variants: [`400`, `500`, `700`],
           },
-          {
-            family: `Crimson Text`,
-            variants: [`600`],
-          },
+          // {
+          //   family: `Crimson Text`,
+          //   variants: [`600`],
+          // },
         ],
       },
     },
