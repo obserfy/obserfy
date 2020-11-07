@@ -13,7 +13,7 @@
     "@typescript-eslint/parser": "4.6.1",
     "cypress": "5.5.0",
     "cypress-intellij-reporter": "0.0.4",
-    "eslint": "7.12.1",
+    "eslint": "7.13.0",
     "eslint-config-airbnb-typescript": "12.0.0",
     "eslint-config-prettier": "6.15.0",
     "eslint-import-resolver-node": "0.3.4",
