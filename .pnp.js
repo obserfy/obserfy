@@ -3648,7 +3648,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "cypress-intellij-reporter",
-        "npm:0.0.4"
+        "npm:0.0.5"
       ],
       [
         "d",
@@ -34666,10 +34666,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["cypress-intellij-reporter", [
-        ["npm:0.0.4", {
-          "packageLocation": "./.yarn/cache/cypress-intellij-reporter-npm-0.0.4-665965aef2-539284eac6.zip/node_modules/cypress-intellij-reporter/",
+        ["npm:0.0.5", {
+          "packageLocation": "./.yarn/cache/cypress-intellij-reporter-npm-0.0.5-224a3237e2-cd49b17772.zip/node_modules/cypress-intellij-reporter/",
           "packageDependencies": [
-            ["cypress-intellij-reporter", "npm:0.0.4"],
+            ["cypress-intellij-reporter", "npm:0.0.5"],
             ["mocha", "npm:8.0.1"]
           ],
           "linkType": "HARD",
@@ -35916,7 +35916,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@typescript-eslint/parser", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:4.6.1"],
             ["babel-loader", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:8.1.0"],
             ["cypress", "npm:5.5.0"],
-            ["cypress-intellij-reporter", "npm:0.0.4"],
+            ["cypress-intellij-reporter", "npm:0.0.5"],
             ["eslint", "npm:7.13.0"],
             ["eslint-config-airbnb-typescript", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:12.0.0"],
             ["eslint-config-prettier", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:6.15.0"],
