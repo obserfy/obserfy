@@ -14843,12 +14843,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress-intellij-reporter@npm:0.0.4":
-  version: 0.0.4
-  resolution: "cypress-intellij-reporter@npm:0.0.4"
+"cypress-intellij-reporter@npm:0.0.5":
+  version: 0.0.5
+  resolution: "cypress-intellij-reporter@npm:0.0.5"
   dependencies:
     mocha: latest
-  checksum: 539284eac6831e8503eab65926cf84d074d0c034f5e0c7304537dce077bee9dd9fdca03bf2fb5ed4c8e64538f7906eee55962c3e5c78c4dd012689ef831d59ba
+  checksum: cd49b177722519cc1982afd84a57a2501fd9a9fc2c58638df2a6364c1a67639c3d07d01b31263bd3fd84f796725e70e73b63ae12ea0abc47ccb2fabe8e7b3db3
   languageName: node
   linkType: hard
 
@@ -16022,7 +16022,7 @@ __metadata:
     "@typescript-eslint/parser": 4.6.1
     babel-loader: 8.1.0
     cypress: 5.5.0
-    cypress-intellij-reporter: 0.0.4
+    cypress-intellij-reporter: 0.0.5
     eslint: 7.13.0
     eslint-config-airbnb-typescript: 12.0.0
     eslint-config-prettier: 6.15.0
