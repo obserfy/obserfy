@@ -35,7 +35,7 @@
     "imagemin-svgo": "8.0.0",
     "img-loader": "3.0.2",
     "io-ts": "2.2.12",
-    "io-ts-types": "0.5.11",
+    "io-ts-types": "0.5.12",
     "lqip-loader": "2.2.1",
     "minio": "7.0.16",
     "monocle-ts": "2.3.3",
