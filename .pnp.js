@@ -6784,7 +6784,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "next-compose-plugins",
-        "npm:2.2.0"
+        "npm:2.2.1"
       ],
       [
         "next-optimized-images",
@@ -39101,7 +39101,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["nanoid", "npm:3.1.16"],
             ["newtype-ts", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.3.4"],
             ["next", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:10.0.1"],
-            ["next-compose-plugins", "npm:2.2.0"],
+            ["next-compose-plugins", "npm:2.2.1"],
             ["next-optimized-images", "npm:3.0.0-canary.10"],
             ["next-pwa", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:3.1.5"],
             ["optimized-images-loader", "npm:0.4.0"],
@@ -47737,10 +47737,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["next-compose-plugins", [
-        ["npm:2.2.0", {
-          "packageLocation": "./.yarn/cache/next-compose-plugins-npm-2.2.0-daa8cb9862-665899d8ab.zip/node_modules/next-compose-plugins/",
+        ["npm:2.2.1", {
+          "packageLocation": "./.yarn/cache/next-compose-plugins-npm-2.2.1-a9c8f4fdca-bb1376aad7.zip/node_modules/next-compose-plugins/",
           "packageDependencies": [
-            ["next-compose-plugins", "npm:2.2.0"]
+            ["next-compose-plugins", "npm:2.2.1"]
           ],
           "linkType": "HARD",
         }]
