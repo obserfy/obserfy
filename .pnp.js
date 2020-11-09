@@ -27516,6 +27516,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
+        ["npm:14.14.7", {
+          "packageLocation": "./.yarn/cache/@types-node-npm-14.14.7-e4d93f4d9a-4fc8434bfe.zip/node_modules/@types/node/",
+          "packageDependencies": [
+            ["@types/node", "npm:14.14.7"]
+          ],
+          "linkType": "HARD",
+        }],
         ["npm:8.10.61", {
           "packageLocation": "./.yarn/cache/@types-node-npm-8.10.61-4359b050ba-1c16ac591e.zip/node_modules/@types/node/",
           "packageDependencies": [
@@ -35911,7 +35918,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@cypress/code-coverage", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:3.8.3"],
             ["@cypress/webpack-preprocessor", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:5.4.10"],
             ["@types/faker", "npm:5.1.4"],
-            ["@types/node", "npm:14.14.6"],
+            ["@types/node", "npm:14.14.7"],
             ["@typescript-eslint/eslint-plugin", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:4.7.0"],
             ["@typescript-eslint/parser", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:4.7.0"],
             ["babel-loader", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:8.1.0"],
@@ -39058,7 +39065,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/minio", "npm:7.0.6"],
             ["@types/mixpanel-browser", "npm:2.35.4"],
             ["@types/nanoid", "npm:2.1.0"],
-            ["@types/node", "npm:14.14.6"],
+            ["@types/node", "npm:14.14.7"],
             ["@types/pg", "npm:7.14.6"],
             ["@types/pino", "npm:6.3.3"],
             ["@types/react", "npm:16.9.56"],

@@ -8754,7 +8754,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:14.14.6, @types/node@npm:>= 8":
+"@types/node@npm:14.14.7":
+  version: 14.14.7
+  resolution: "@types/node@npm:14.14.7"
+  checksum: 4fc8434bfe81c2a3102fa76777712ecee9e9177d43ec5929ba0dfd5a77a6c459cf10a37df64ea880a328f06973f6210eabf04b312428e309b2e8998147a6cd63
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:>= 8":
   version: 14.14.6
   resolution: "@types/node@npm:14.14.6"
   checksum: 9b06b04ab2ae3761136fb39b573f95d90e748ebcf232e126304d642e4910039a74973547635729b627a0401791a1f2491aa9aa6d4d6bb80922a0b869a2731a63
@@ -16017,7 +16024,7 @@ __metadata:
     "@cypress/code-coverage": 3.8.3
     "@cypress/webpack-preprocessor": 5.4.10
     "@types/faker": 5.1.4
-    "@types/node": 14.14.6
+    "@types/node": 14.14.7
     "@typescript-eslint/eslint-plugin": 4.7.0
     "@typescript-eslint/parser": 4.7.0
     babel-loader: 8.1.0
@@ -18776,7 +18783,7 @@ fsevents@^1.2.7:
     "@types/minio": 7.0.6
     "@types/mixpanel-browser": 2.35.4
     "@types/nanoid": 2.1.0
-    "@types/node": 14.14.6
+    "@types/node": 14.14.7
     "@types/pg": 7.14.6
     "@types/pino": 6.3.3
     "@types/react": 16.9.56
