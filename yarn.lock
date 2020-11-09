@@ -18805,7 +18805,7 @@ fsevents@^1.2.7:
     imagemin-svgo: 8.0.0
     img-loader: 3.0.2
     io-ts: 2.2.12
-    io-ts-types: 0.5.11
+    io-ts-types: 0.5.12
     lqip-loader: 2.2.1
     minio: 7.0.16
     monocle-ts: 2.3.3
@@ -21755,15 +21755,15 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"io-ts-types@npm:0.5.11":
-  version: 0.5.11
-  resolution: "io-ts-types@npm:0.5.11"
+"io-ts-types@npm:0.5.12":
+  version: 0.5.12
+  resolution: "io-ts-types@npm:0.5.12"
   peerDependencies:
     fp-ts: ^2.0.0
     io-ts: ^2.0.0
     monocle-ts: ^2.0.0
     newtype-ts: ^0.3.2
-  checksum: 36288c3a94217248f6c202ae19d71955c5628dad2a0da131820e5ba8e353ea9d1bed88c5222331f4527a6f98b9c9a28869ce65224804332b6c55e89d6b55069a
+  checksum: f2d9544307424441cb0612b0893ee5eca46e38535ff560327a4421fa8c71cddbdf47d3f82a3eeb5c322eb78a4308c53679acfa06d208eae79d8696c8cd8ec4a6
   languageName: node
   linkType: hard
 
