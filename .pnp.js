@@ -1828,7 +1828,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@types/segment-analytics",
-        "npm:0.0.32"
+        "npm:0.0.33"
       ],
       [
         "@types/shallowequal",
@@ -27812,10 +27812,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@types/segment-analytics", [
-        ["npm:0.0.32", {
-          "packageLocation": "./.yarn/cache/@types-segment-analytics-npm-0.0.32-fe7234b079-637f5264bf.zip/node_modules/@types/segment-analytics/",
+        ["npm:0.0.33", {
+          "packageLocation": "./.yarn/cache/@types-segment-analytics-npm-0.0.33-d9e1d2bdb7-503878b7da.zip/node_modules/@types/segment-analytics/",
           "packageDependencies": [
-            ["@types/segment-analytics", "npm:0.0.32"]
+            ["@types/segment-analytics", "npm:0.0.33"]
           ],
           "linkType": "HARD",
         }]
@@ -59440,7 +59440,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-adaptive-hooks", "npm:0.0.0"],
             ["@types/react-dom", "npm:16.9.9"],
             ["@types/react-helmet", "npm:6.1.0"],
-            ["@types/segment-analytics", "npm:0.0.32"],
+            ["@types/segment-analytics", "npm:0.0.33"],
             ["@types/styled-system", "npm:5.1.10"],
             ["@typescript-eslint/eslint-plugin", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:4.6.1"],
             ["@typescript-eslint/parser", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:4.6.1"],

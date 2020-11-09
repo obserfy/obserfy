@@ -9017,10 +9017,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/segment-analytics@npm:0.0.32":
-  version: 0.0.32
-  resolution: "@types/segment-analytics@npm:0.0.32"
-  checksum: 637f5264bf36e0730d88ed3feb23895b9b2556c148e0029ab2e57935c86f131ddadd34d20501eef4b4b9482c23eddbaa18f7cee5f127f30cb9f43ab6d5fe3b3d
+"@types/segment-analytics@npm:0.0.33":
+  version: 0.0.33
+  resolution: "@types/segment-analytics@npm:0.0.33"
+  checksum: 503878b7da4f4f77217cbbfe8fd59d5d5d47b678695b05185e5846ff5d6a788ee661956fab910cf3cc0fca79bc3e0f326dcc600ca0fa11869c1a097522e804e2
   languageName: node
   linkType: hard
 
@@ -36275,7 +36275,7 @@ typescript@^4.0.0:
     "@types/react-adaptive-hooks": 0.0.0
     "@types/react-dom": 16.9.9
     "@types/react-helmet": 6.1.0
-    "@types/segment-analytics": 0.0.32
+    "@types/segment-analytics": 0.0.33
     "@types/styled-system": 5.1.10
     "@typescript-eslint/eslint-plugin": 4.6.1
     "@typescript-eslint/parser": 4.6.1
