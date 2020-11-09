@@ -42,7 +42,7 @@
     "nanoid": "3.1.16",
     "newtype-ts": "0.3.4",
     "next": "10.0.1",
-    "next-compose-plugins": "2.2.0",
+    "next-compose-plugins": "2.2.1",
     "next-optimized-images": "3.0.0-canary.10",
     "next-pwa": "3.1.5",
     "optimized-images-loader": "0.4.0",

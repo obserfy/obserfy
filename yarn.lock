@@ -18819,7 +18819,7 @@ fsevents@^1.2.7:
     nanoid: 3.1.16
     newtype-ts: 0.3.4
     next: 10.0.1
-    next-compose-plugins: 2.2.0
+    next-compose-plugins: 2.2.1
     next-optimized-images: 3.0.0-canary.10
     next-pwa: 3.1.5
     optimized-images-loader: 0.4.0
@@ -25982,10 +25982,10 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"next-compose-plugins@npm:2.2.0":
-  version: 2.2.0
-  resolution: "next-compose-plugins@npm:2.2.0"
-  checksum: 665899d8abfa50b923ea0848d6f72d11e2d9b52ede5e69261a1fc8f970c30cda5c9f6f8ae6dc563786dacbe2c6370c5980b68f922f1213e7bd9c8b4795bd0db5
+"next-compose-plugins@npm:2.2.1":
+  version: 2.2.1
+  resolution: "next-compose-plugins@npm:2.2.1"
+  checksum: bb1376aad78e7a8d6514ebe01842ff4285871ac85b1cf475bee03ddc682426a462ba38659d84de0f9db2b53de1c884aa74969740c5b999adc43654b1371d6e78
   languageName: node
   linkType: hard
 
