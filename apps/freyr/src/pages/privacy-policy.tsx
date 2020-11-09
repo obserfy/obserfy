@@ -13,7 +13,7 @@ const PrivacyPolicyPage = () => {
         </h1>
 
         <p>
-          <Trans>Last updated</Trans>: May 27, 2020
+          <Trans>Last updated</Trans>: November 9, 2020
         </p>
 
         <p>
@@ -26,12 +26,7 @@ const PrivacyPolicyPage = () => {
         <p>
           We use Your Personal data to provide and improve the Service. By using
           the Service, You agree to the collection and use of information in
-          accordance with this Privacy Policy. This Privacy Policy is maintained
-          by the{" "}
-          <a href="https://www.privacypolicies.com/privacy-policy-generator/">
-            Privacy Policy Generator
-          </a>
-          .
+          accordance with this Privacy Policy.
         </p>
 
         <h2>Interpretation and Definitions</h2>
