@@ -17,7 +17,7 @@ const Header: FC = () => {
         </h1>
       </div>
       <div className="flex items-center">
-        <a href="https://app.obserfy.com/" className="">
+        <a href="https://app.obserfy.com" className="">
           <Button secondary className="px-3 py-2 mr-3 text-sm">
             <Trans>Teachers</Trans>
           </Button>
