@@ -47,13 +47,12 @@ module.exports = {
         ],
       },
     },
-    {
-      resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
-      options: {
-        analyzerPort: 3000,
-      },
-    },
-    `gatsby-plugin-remove-trailing-slashes`,
+    // {
+    //   resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
+    //   options: {
+    //     analyzerPort: 3000,
+    //   },
+    // },
     {
       resolve: `gatsby-theme-i18n`,
       options: {
@@ -67,7 +66,19 @@ module.exports = {
         localeDir: `./i18n/lingui`,
       },
     },
-    `gatsby-plugin-sitemap`,
+    `gatsby-plugin-remove-trailing-slashes`,
+    {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl: `https://obserfy.com`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        exclude: [`/id/404*`, `/id/privacy-policy`],
+      },
+    },
     `gatsby-plugin-preload-fonts`,
   ],
 }
