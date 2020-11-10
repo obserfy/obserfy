@@ -39,7 +39,7 @@
     "@babel/core": "7.12.3",
     "@babel/preset-env": "7.12.1",
     "@cypress/webpack-preprocessor": "5.4.11",
-    "babel-loader": "8.1.0",
+    "babel-loader": "8.2.0",
     "pnp-webpack-plugin": "1.6.4",
     "prettier": "2.1.2",
     "typescript": "4.0.5",
