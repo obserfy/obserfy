@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2020-08-02 18:37+0700\n"
+"POT-Creation-Date: 2020-11-07 00:41+0700\n"
 "Mime-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,52 +13,57 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/pages/contact.tsx:7
 #: src/pages/contact.tsx:11
-#: src/pages/index.tsx:34
+#: src/pages/index.tsx:30
 msgid "Contact Us"
-msgstr "Kontak Kami"
+msgstr "Hubungi Kami"
 
 #: src/pages/contact.tsx:24
 msgid "Email"
 msgstr "Email"
 
-#: src/pages/index.tsx:29
+#: src/pages/index.tsx:25
 msgid "Get Early Access"
-msgstr "Dapatkan Akses Dini"
+msgstr "Coba Gratis"
 
 #: src/pages/contact.tsx:14
 msgid "Have a question? Shoot us a message using this form. We'd love to talk with you about your need."
-msgstr "Punya pertanyaan? Kirim pesan ke kami menggunakan form ini. Dengan senang hati kami akan membantu sesuai dengan kebutuhan Anda."
+msgstr "Punya pertanyaan? Kirimkan pesan ke kami menggunakan form disamping."
 
 #: src/pages/privacy-policy.tsx:14
 msgid "Last updated"
-msgstr "Terakhir diperbarui"
+msgstr "Last updated"
 
 #: src/pages/contact.tsx:28
 msgid "Message"
 msgstr "Pesan"
 
-#: src/components/header.tsx:37
+#: src/pages/index.tsx:12
+msgid "Observe. Plan. Communicate."
+msgstr "Catat. Rencanakan. Bagikan."
+
+#: src/components/header.tsx:23
 msgid "Parents"
-msgstr "Orang Tua"
+msgstr "Wali Murid"
 
 #: src/components/layout.tsx:20
 #: src/pages/privacy-policy.tsx:10
 msgid "Privacy Policy"
-msgstr "Kebijakan Privasi"
+msgstr "Privacy Policy"
 
-#: src/pages/index.tsx:12
-msgid "Run your Montessori school efficiently"
-msgstr "Jalankan sekolah Montessori Anda secara efisien"
+#: src/pages/index.tsx:8
+msgid "Record Keeping & Communication tool for Montessori Schools"
+msgstr "Software manajemen data dan komunikasi untuk sekolah Montessori"
 
 #: src/pages/contact.tsx:32
 msgid "Send"
 msgstr "Kirim"
 
-#: src/components/header.tsx:31
+#: src/pages/index.tsx:15
+msgid "Store your student data and observations. Plan their lessons. And communicate it all to parents with ease, using one platform built for the need of Montessori Schools."
+msgstr "Simpan data dan observasi murid. Rencanakan edukasi mereka. Dan bagikan semua pada orang tua dengan mudah, semua dalam satu platform yang dibuat untuk kebutuhan sekolah Montessori"
+
+#: src/components/header.tsx:17
 msgid "Teachers"
 msgstr "Guru"
-
-#: src/pages/index.tsx:15
-msgid "We help Montessori schools manage their records, do reports and communicate with parents efficiently"
-msgstr "Kami membantu sekolah Montessori mengelola catatan mereka, melakukan laporan dan berkomunikasi dengan orang tua secara efisien"

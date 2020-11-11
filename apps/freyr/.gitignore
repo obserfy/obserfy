@@ -68,3 +68,5 @@ yarn-error.log
 # Yarn Integrity file
 .yarn-integrity
 package-lock.json
+i18n/lingui/**/*.js
+i18n/lingui/_build
