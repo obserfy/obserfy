@@ -26,35 +26,66 @@ const GalleryPage = () => {
       <Head>
         <title>Gallery | Obserfy for Parents</title>
       </Head>
-      <div className="max-w-3xl mx-auto flex items-center">
+      <div className="max-w-3xl mx-auto">
         <div className="flex mx-auto flex-wrap w-full">
-          <div className="w-1/3 md:w-1/5 ">
-            <div className="m-3 relative">
-              <div style={{ width: "100%", paddingBottom: "100%" }}>
-                <label
-                  htmlFor="upload-image"
-                  className="absolute top-0 left-0 flex flex-col items-center justify-center font-bold text-sm border rounded w-full h-full bg-white"
-                >
-                  <Img src={UploadIcon} />
-                  <span>
-                    Upload <span className="hidden md:inline">Image</span>
-                  </span>
-                  <input
-                    id="upload-image"
-                    type="file"
-                    accept="image/*"
-                    className="hidden"
-                    onChange={async (e) => {
-                      if (!e.target.files?.length) {
-                        return
-                      }
-                      await postImage({ id: uuidv4(), file: e.target.files[0] })
-                    }}
-                  />
-                </label>
+          {childImages.isSuccess && childImages.data?.length === 0 ? (
+            <div className="flex flex-col mx-auto items-center pb-8">
+              <EmptyGalleryIllustration loading={childImages.isLoading} />
+              <label
+                className="flex py-2 px-6 rounded text-onPrimary bg-primary text-sm border shadow-xs"
+                htmlFor="upload-image-small"
+              >
+                <Img src={UploadIcon} className="mr-3" />
+                Upload Image
+                <input
+                  id="upload-image-small"
+                  type="file"
+                  accept="image/*"
+                  className="hidden"
+                  onChange={async (e) => {
+                    if (!e.target.files?.length) {
+                      return
+                    }
+                    await postImage({
+                      id: uuidv4(),
+                      file: e.target.files[0],
+                    })
+                  }}
+                />
+              </label>
+            </div>
+          ) : (
+            <div className="w-1/3 md:w-1/5 ">
+              <div className="m-3 relative">
+                <div style={{ width: "100%", paddingBottom: "100%" }}>
+                  <label
+                    htmlFor="upload-image"
+                    className="absolute top-0 left-0 flex flex-col items-center justify-center font-bold text-sm border rounded w-full h-full bg-white"
+                  >
+                    <Img src={UploadIcon} />
+                    <span>
+                      Upload <span className="hidden md:inline">Image</span>
+                    </span>
+                    <input
+                      id="upload-image"
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      onChange={async (e) => {
+                        if (!e.target.files?.length) {
+                          return
+                        }
+                        await postImage({
+                          id: uuidv4(),
+                          file: e.target.files[0],
+                        })
+                      }}
+                    />
+                  </label>
+                </div>
               </div>
             </div>
-          </div>
+          )}
           {childImages.data?.map((img) => (
             <button
               key={img.id}
@@ -92,9 +123,6 @@ const GalleryPage = () => {
               )}
             </button>
           ))}
-          {childImages.isSuccess && childImages.data?.length === 0 && (
-            <EmptyGalleryIllustration loading={childImages.isLoading} />
-          )}
         </div>
       </div>
       {imagePreview && (
@@ -177,7 +205,7 @@ const ImagePreview: FC<{
 const EmptyGalleryIllustration: FC<{ loading: boolean }> = ({ loading }) => {
   return (
     <div
-      className={`flex flex-col items-center py-16 ${
+      className={`flex flex-col items-center pt-16 pb-8 ${
         loading && "opacity-50"
       } transition-opacity duration-200 max-w-3xl mx-auto`}
     >
