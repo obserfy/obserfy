@@ -11,6 +11,10 @@ const useGetChildren = () => {
     retry: (failureCount, error) =>
       !(error instanceof Error && error.message === "not_authenticated"),
     onSuccess: async (response) => {
+      if (response.length === 0) {
+        await router.replace("/no-data")
+        return
+      }
       const newId = response[0]?.id
       if (!router.query.childId && newId) {
         const path = router.pathname
