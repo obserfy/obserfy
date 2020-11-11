@@ -6,3 +6,7 @@ declare module "gatsby-theme-i18n" {
   const LocalizedLink
   export { LocalizedLink }
 }
+
+declare module "*.svg" {
+  export default string
+}

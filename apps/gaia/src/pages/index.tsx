@@ -55,13 +55,14 @@ const ObservationList: FC<{
       </div>
     </div>
 
-    {observations.map(({ id, shortDesc, longDesc, images }) => (
+    {observations.map(({ id, shortDesc, longDesc, images, areaName }) => (
       <div className="flex -ml-5 mb-6" key={id}>
         <div className="w-8 h-8 mx-1 flex items-center justify-center bg-white rounded-full border flex-shrink-0">
           <Img src={EditIcon} className="w-3 h-3" />
         </div>
         <div className="pt-1">
-          <div className="mx-3 font-bold">{shortDesc}</div>
+          <div className="mx-3 font-bold mb-1">{shortDesc}</div>
+          <div className="mx-3 max-w-md text-green-900 mb-1">{areaName}</div>
           <div className="mx-3 max-w-md text-gray-900 mb-2">{longDesc}</div>
           <div className="flex ml-3 flex-wrap">
             {images.map(({ id: imageId, originalImageUrl }) => (
