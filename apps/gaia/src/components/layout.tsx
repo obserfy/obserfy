@@ -11,7 +11,10 @@ const Layout: FC = ({ children }) => {
   const childId = useQueryString("childId")
   const router = useRouter()
 
-  if (router.pathname === "/session-expired") {
+  if (
+    router.pathname === "/session-expired" ||
+    router.pathname === "/no-data"
+  ) {
     return (
       <div className="bg-background">
         <div className="bg-surface min-h-screen">
