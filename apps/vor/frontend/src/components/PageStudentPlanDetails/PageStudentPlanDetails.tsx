@@ -39,7 +39,7 @@ export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
       to: STUDENTS_URL,
     },
     {
-      text: student?.name.split(" ")[0] ?? "",
+      text: student?.name?.split(" ")[0] ?? "",
       to: STUDENT_OVERVIEW_PAGE_URL(studentId),
     },
     {
