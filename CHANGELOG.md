@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.11.22](https://github.com/obserfy/obserfy/compare/v1.11.21...v1.11.22) (2020-11-05)
+
+
+### Bug Fixes
+
+* fix apple touch icon and maskable icon problem on gaia and vor. ([84dca48](https://github.com/obserfy/obserfy/commit/84dca48ea45a4e5f4113062138a2bd89ae2911c3))
+
 ### [1.11.21](https://github.com/obserfy/obserfy/compare/v1.11.20...v1.11.21) (2020-11-05)
 
 
