@@ -1,11 +1,11 @@
 import { queryCache, useMutation } from "react-query"
 import dayjs from "../../utils/dayjs"
-import { postFile } from "../../apiHelpers"
+import { postFile } from "./apiHelpers"
 import {
   cancelGetChildImageQuery,
   getChildImagesCache,
   setChildImagesCache,
-} from "../useGetChildImages"
+} from "./useGetChildImages"
 
 const usePostImage = (childId: string, schoolId: string) => {
   const postImage = async (image: { id: string; file: File }) => {
