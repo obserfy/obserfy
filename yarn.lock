@@ -16030,7 +16030,7 @@ __metadata:
     eslint-import-resolver-node: 0.3.4
     eslint-plugin-cypress: 2.11.2
     eslint-plugin-import: 2.22.1
-    eslint-plugin-jest: 24.1.0
+    eslint-plugin-jest: 24.1.1
     eslint-plugin-jsx-a11y: 6.4.1
     eslint-plugin-prettier: 3.1.4
     eslint-plugin-react: 7.21.5
@@ -16805,14 +16805,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-jest@npm:24.1.0":
-  version: 24.1.0
-  resolution: "eslint-plugin-jest@npm:24.1.0"
+"eslint-plugin-jest@npm:24.1.1":
+  version: 24.1.1
+  resolution: "eslint-plugin-jest@npm:24.1.1"
   dependencies:
     "@typescript-eslint/experimental-utils": ^4.0.1
   peerDependencies:
     eslint: ">=5"
-  checksum: 17aa55e6e51e54d170a8846f255e230a9ae17dedb4efa8ce948a4b0401889617d79f2d389e54af50c7bf2eb4e514f51ae3af754bd0f82bbde51378c4190d3b40
+  checksum: 35d241683250e7614fca527a35eb4ed51b8309f16ded42a404c6edbfb6b6dfd0280b0176c5a239cf2e401e5f6a633e505c5d2d35f009883f93a4e34e63f7cc80
   languageName: node
   linkType: hard
 
@@ -18486,7 +18486,7 @@ __metadata:
     eslint-config-prettier: 6.15.0
     eslint-import-resolver-node: 0.3.4
     eslint-plugin-import: 2.22.1
-    eslint-plugin-jest: 24.1.0
+    eslint-plugin-jest: 24.1.1
     eslint-plugin-jsx-a11y: 6.4.1
     eslint-plugin-prettier: 3.1.4
     eslint-plugin-react: 7.21.5
@@ -18794,7 +18794,7 @@ fsevents@^1.2.7:
     eslint-config-prettier: 6.15.0
     eslint-import-resolver-node: 0.3.4
     eslint-plugin-import: 2.22.1
-    eslint-plugin-jest: 24.1.0
+    eslint-plugin-jest: 24.1.1
     eslint-plugin-jsx-a11y: 6.4.1
     eslint-plugin-prettier: 3.1.4
     eslint-plugin-react: 7.21.5
@@ -36300,7 +36300,7 @@ typescript@^4.0.0:
     eslint-config-prettier: 6.15.0
     eslint-import-resolver-node: 0.3.4
     eslint-plugin-import: 2.22.1
-    eslint-plugin-jest: 24.1.0
+    eslint-plugin-jest: 24.1.1
     eslint-plugin-jsx-a11y: 6.4.1
     eslint-plugin-prettier: 3.1.4
     eslint-plugin-react: 7.21.5
