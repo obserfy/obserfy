@@ -8,7 +8,6 @@ import { useQueryString } from "../hooks/useQueryString"
 import { GetChildTimelineResponse } from "./api/children/[childId]/timeline"
 import CalendarIcon from "../icons/calendar.svg"
 import EditIcon from "../icons/edit.svg"
-import EmptyTimeline from "../images/undraw_Preparation_re_t0ce.svg"
 
 const IndexPage = () => {
   const childId = useQueryString("childId")
@@ -69,8 +68,8 @@ const ObservationList: FC<{
               <div className="mr-3 mb-3" key={imageId}>
                 <Image
                   src={originalImageUrl}
-                  height={60}
-                  width={60}
+                  height={80}
+                  width={80}
                   className="rounded border object-cover"
                 />
               </div>
@@ -84,19 +83,17 @@ const ObservationList: FC<{
 
 const EmptyTimelinePlaceholder: FC<{ loading: boolean }> = ({ loading }) => (
   <div
-    className={`flex flex-col items-center pt-16 ${
+    className={`flex flex-col items-center py-8 ${
       loading && "opacity-50"
     } transition-opacity duration-200 max-w-3xl mx-auto`}
   >
-    <Img src={EmptyTimeline} className="w-64 md:w-1/2 mb-4 mr-6" />
+    <Image src="/undraw_Note_list_re_r4u9.svg" width={200} height={200} />
     <h5
-      className={`text-xl mx-4 text-center ${
+      className={`text-xl mx-4 text-center mt-4 ${
         loading && "opacity-0"
       } transition-opacity duration-200 font-bold`}
     >
-      Timeline is empty right now
-      <br />
-      Check again later
+      Timeline is currently <br /> empty, check again later
     </h5>
   </div>
 )
