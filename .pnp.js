@@ -2580,7 +2580,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "babel-plugin-remove-graphql-queries",
-        "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:2.9.20"
+        "virtual:88b9d4e85d6b508d05311153856624c6d4aa3c916ced084ae27715f251be5528dad4e003273b49533c859e1d8bf4e7b710318b65f7a0b06827e63a991ec6ee27#npm:2.9.20"
       ],
       [
         "babel-plugin-require-context-hook",
@@ -30530,10 +30530,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["babel-plugin-remove-graphql-queries", [
-        ["virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:2.9.20", {
-          "packageLocation": "./.yarn/$$virtual/babel-plugin-remove-graphql-queries-virtual-3212347748/0/cache/babel-plugin-remove-graphql-queries-npm-2.9.20-416c40df76-ee82f51370.zip/node_modules/babel-plugin-remove-graphql-queries/",
+        ["virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:2.10.0", {
+          "packageLocation": "./.yarn/$$virtual/babel-plugin-remove-graphql-queries-virtual-29e302f286/0/cache/babel-plugin-remove-graphql-queries-npm-2.10.0-f9c1332135-00dfa17de3.zip/node_modules/babel-plugin-remove-graphql-queries/",
           "packageDependencies": [
-            ["babel-plugin-remove-graphql-queries", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:2.9.20"],
+            ["babel-plugin-remove-graphql-queries", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:2.10.0"],
             ["@types/gatsby", null],
             ["gatsby", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:2.24.91"]
           ],
@@ -30549,6 +30549,19 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["babel-plugin-remove-graphql-queries", "virtual:76cff58c07533e2654a161d0aa088612e7dc61794d45398c44d7d6fb639b50a66e3800fc8aec52d767c18b9484caa3d4dd3c7bb013e16804bc902d63e8cad78e#npm:2.9.20"],
             ["@types/gatsby", null],
             ["gatsby", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:2.24.91"]
+          ],
+          "packagePeers": [
+            "@types/gatsby",
+            "gatsby"
+          ],
+          "linkType": "HARD",
+        }],
+        ["virtual:7cf3303dcce85843003931e0698cf53da6af5ce30130c4bc3e8484250beefb601511db7b386a29710cc13dd7eb63a7161e27a49d70b143bb59cb2b3ff8f6fdb0#npm:2.9.20", {
+          "packageLocation": "./.yarn/$$virtual/babel-plugin-remove-graphql-queries-virtual-1da5f86654/0/cache/babel-plugin-remove-graphql-queries-npm-2.9.20-416c40df76-ee82f51370.zip/node_modules/babel-plugin-remove-graphql-queries/",
+          "packageDependencies": [
+            ["babel-plugin-remove-graphql-queries", "virtual:7cf3303dcce85843003931e0698cf53da6af5ce30130c4bc3e8484250beefb601511db7b386a29710cc13dd7eb63a7161e27a49d70b143bb59cb2b3ff8f6fdb0#npm:2.9.20"],
+            ["@types/gatsby", null],
+            ["gatsby", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:2.24.91"]
           ],
           "packagePeers": [
             "@types/gatsby",
@@ -39167,7 +39180,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["babel-plugin-add-module-exports", "npm:0.3.3"],
             ["babel-plugin-dynamic-import-node", "npm:2.3.3"],
             ["babel-plugin-lodash", "npm:3.3.4"],
-            ["babel-plugin-remove-graphql-queries", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:2.9.20"],
+            ["babel-plugin-remove-graphql-queries", "virtual:7cf3303dcce85843003931e0698cf53da6af5ce30130c4bc3e8484250beefb601511db7b386a29710cc13dd7eb63a7161e27a49d70b143bb59cb2b3ff8f6fdb0#npm:2.9.20"],
             ["babel-preset-gatsby", "virtual:76cff58c07533e2654a161d0aa088612e7dc61794d45398c44d7d6fb639b50a66e3800fc8aec52d767c18b9484caa3d4dd3c7bb013e16804bc902d63e8cad78e#npm:0.5.14"],
             ["better-opn", "npm:2.0.0"],
             ["better-queue", "npm:3.8.10"],
@@ -59465,7 +59478,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["babel-loader", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:8.2.1"],
             ["babel-plugin-istanbul", "npm:6.0.0"],
             ["babel-plugin-macros", "npm:2.8.0"],
-            ["babel-plugin-remove-graphql-queries", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:2.9.20"],
+            ["babel-plugin-remove-graphql-queries", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:2.10.0"],
             ["babel-plugin-transform-default-import", "npm:1.0.0"],
             ["babel-preset-gatsby", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.5.14"],
             ["body-scroll-lock", "npm:3.1.5"],
