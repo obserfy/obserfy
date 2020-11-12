@@ -68,8 +68,8 @@ const ObservationList: FC<{
               <div className="mr-3 mb-3" key={imageId}>
                 <Image
                   src={originalImageUrl}
-                  height={80}
-                  width={80}
+                  height={60}
+                  width={60}
                   className="rounded border object-cover"
                 />
               </div>
