@@ -1,7 +1,7 @@
 import React, { FC } from "react"
 import Image from "next/image"
 
-const Curriculum = () => {
+const Progress = () => {
   return <EmptyCurriculumPlaceholder />
 }
 
@@ -17,10 +17,10 @@ const EmptyCurriculumPlaceholder: FC<{ loading?: boolean }> = ({ loading }) => (
         loading && "opacity-0"
       } transition-opacity duration-200 font-bold`}
     >
-      No curriculum data <br />
+      No curriculum progress data <br />
       available yet
     </h5>
   </div>
 )
 
-export default Curriculum
+export default Progress
