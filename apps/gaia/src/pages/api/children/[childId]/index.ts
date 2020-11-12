@@ -18,9 +18,7 @@ const childHandler = auth0.requireAuthentication(async (req, res) => {
       return
     }
 
-    const {
-      query: { childId },
-    } = req
+    const { childId } = req.query
 
     const result = await findChildById(session.user.email, childId as string)
     if (!result) {
