@@ -94,7 +94,8 @@ const EmptyTimelinePlaceholder: FC<{ loading: boolean }> = ({ loading }) => (
         loading && "opacity-0"
       } transition-opacity duration-200 font-bold`}
     >
-      Timeline is empty right now. <br />
+      Timeline is empty right now
+      <br />
       Check again later
     </h5>
   </div>
