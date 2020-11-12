@@ -32,7 +32,7 @@ const childHandler = auth0.requireAuthentication(async (req, res) => {
       name: result.name,
       schoolName: result.school_name,
       schoolId: result.school_id,
-      profilePic: result.object_key && generateUrl(result.object_key, 100, 100),
+      profilePic: result.object_key && generateUrl(result.object_key, 200, 200),
     }
     res.status(200).json(response)
   } catch (error) {

@@ -1,5 +1,6 @@
 import React, { FC } from "react"
 import Img from "react-optimized-image/lib"
+import Image from "next/image"
 import StudentPicPlaceholder from "../../images/student_pic_placeholder.jpg"
 import useGetChild from "../../hooks/api/useGetChild"
 
@@ -14,12 +15,12 @@ const ChildInfo: FC<Props> = ({ childId }) => {
       <div className="flex px-3 py-3 max-w-3xl mx-auto items-center">
         <div className="flex-shrink-0">
           {child.data?.profilePic ? (
-            <img
+            <Image
               alt="profile"
               src={child.data.profilePic}
               width={60}
               height={60}
-              className="rounded-full"
+              className="rounded-full object-cover"
             />
           ) : (
             <Img
