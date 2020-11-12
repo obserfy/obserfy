@@ -26,15 +26,15 @@ const Navbar: FC<Props> = ({ childId }) => {
             </Link>
           </li>
           <li className="mr-1 flex-shrink-0">
-            <Link href={`/curriculum?childId=${childId}`}>
+            <Link href={`/progress?childId=${childId}`}>
               <a
                 className={`${
-                  router.pathname === "/curriculum"
+                  router.pathname === "/progress"
                     ? "border-b-2 border-black"
                     : "text-gray-700"
                 } bg-white inline-block p-2 text-sm`}
               >
-                Curriculum
+                Progress
               </a>
             </Link>
           </li>
