@@ -18,7 +18,7 @@ interface Area {
   }>
 }
 
-type GetChildProgressResponse = Area[]
+export type GetChildProgressResponse = Area[]
 
 const progress = auth0.requireAuthentication(
   async (req: NextApiRequest, res: NextApiResponse) => {
