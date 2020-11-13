@@ -18828,7 +18828,7 @@ fsevents@^1.2.7:
     next-optimized-images: 3.0.0-canary.10
     next-pwa: 3.1.5
     optimized-images-loader: 0.4.0
-    pg: 8.4.2
+    pg: 8.5.1
     pino: 6.7.0
     pino-pretty: 4.3.0
     postcss-preset-env: 6.7.0
@@ -27949,10 +27949,10 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"pg-protocol@npm:^1.3.0":
-  version: 1.3.0
-  resolution: "pg-protocol@npm:1.3.0"
-  checksum: 2f84434e07560c9d1b1af61c6674f36a0d193aa2ee73929dad649cec96d09e2d4793a3076d59122323554e60a7eefae44e86a089c70d58e7e7d7c27e78464da9
+"pg-protocol@npm:^1.4.0":
+  version: 1.4.0
+  resolution: "pg-protocol@npm:1.4.0"
+  checksum: 2b5ebfccd014a4a9127a04e34a423a9e7fe6f6b96c32698929e0860e32c453e64438c935068405ee923ab99788345b9591a6dbaa30bba70e724d7fc4d5f5d21e
   languageName: node
   linkType: hard
 
@@ -27969,15 +27969,15 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"pg@npm:8.4.2":
-  version: 8.4.2
-  resolution: "pg@npm:8.4.2"
+"pg@npm:8.5.1":
+  version: 8.5.1
+  resolution: "pg@npm:8.5.1"
   dependencies:
     buffer-writer: 2.0.0
     packet-reader: 1.0.0
     pg-connection-string: ^2.4.0
     pg-pool: ^3.2.2
-    pg-protocol: ^1.3.0
+    pg-protocol: ^1.4.0
     pg-types: ^2.1.0
     pgpass: 1.x
   peerDependencies:
@@ -27985,7 +27985,7 @@ mocha@latest:
   peerDependenciesMeta:
     pg-native:
       optional: true
-  checksum: 3b2523bbb7ce3829f8ba940b762f67af5559a518ab2131e7d72993c9cd809cd0b39b136374611015bec49f88f6f8ba2a8e3d083b9431f0177cccd5382801520e
+  checksum: b8eed3cd3831ea8cce051fcc58a56f39e7c24545c18466c89e64e4f90c8c2d386e3c51c33e22b0d2e39bf51156bdd4d5ade16c6e0edad1fbff97bd89f2bd86f2
   languageName: node
   linkType: hard
 
