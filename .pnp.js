@@ -5920,7 +5920,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "jest-emotion",
-        "npm:10.0.32"
+        "npm:11.0.0"
       ],
       [
         "jest-environment-jsdom",
@@ -21649,6 +21649,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@emotion/core", [
+        ["npm:11.0.0", {
+          "packageLocation": "./.yarn/cache/@emotion-core-npm-11.0.0-03ccf93fb4-814026f08c.zip/node_modules/@emotion/core/",
+          "packageDependencies": [
+            ["@emotion/core", "npm:11.0.0"]
+          ],
+          "linkType": "HARD",
+        }],
         ["virtual:145b120df93475559d9cf0b17fbcd2e70643600e83a58ecadb4bf14d7d9d3d933e3c3cd3a24f8661bd99ada715d28d85f25b8a5ca20e282e395a284725dbd651#npm:10.0.28", {
           "packageLocation": "./.yarn/$$virtual/@emotion-core-virtual-1b45080d42/0/cache/@emotion-core-npm-10.0.28-490246e9e8-111f2f47cf.zip/node_modules/@emotion/core/",
           "packageDependencies": [
@@ -21680,25 +21687,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@emotion/utils", "npm:0.11.3"],
             ["@types/react", null],
             ["react", "npm:16.13.1"]
-          ],
-          "packagePeers": [
-            "@types/react",
-            "react"
-          ],
-          "linkType": "HARD",
-        }],
-        ["virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:10.1.1", {
-          "packageLocation": "./.yarn/$$virtual/@emotion-core-virtual-ad00532214/0/cache/@emotion-core-npm-10.1.1-f084e0eeac-78fec4a705.zip/node_modules/@emotion/core/",
-          "packageDependencies": [
-            ["@emotion/core", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:10.1.1"],
-            ["@babel/runtime", "npm:7.10.3"],
-            ["@emotion/cache", "npm:10.0.29"],
-            ["@emotion/css", "npm:10.0.27"],
-            ["@emotion/serialize", "npm:0.11.16"],
-            ["@emotion/sheet", "npm:0.9.4"],
-            ["@emotion/utils", "npm:0.11.3"],
-            ["@types/react", "npm:16.9.56"],
-            ["react", "npm:17.0.1"]
           ],
           "packagePeers": [
             "@types/react",
@@ -27339,13 +27327,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@types/jest", [
-        ["npm:23.3.14", {
-          "packageLocation": "./.yarn/cache/@types-jest-npm-23.3.14-d793744be4-1d28aa15ea.zip/node_modules/@types/jest/",
-          "packageDependencies": [
-            ["@types/jest", "npm:23.3.14"]
-          ],
-          "linkType": "HARD",
-        }],
         ["npm:26.0.15", {
           "packageLocation": "./.yarn/cache/@types-jest-npm-26.0.15-123adbed89-42fe39d582.zip/node_modules/@types/jest/",
           "packageDependencies": [
@@ -39698,7 +39679,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/core", null],
             ["@babel/runtime", "npm:7.11.2"],
             ["@emotion/babel-preset-css-prop", "virtual:895a4c25d51fda2001fad0cf5df1302f5ce2d5138a40c5ba845264e7aa48ef44edb7489e8589d845de98938bff8178267740ade32f4176b2e370480c8c2b64f7#npm:10.0.27"],
-            ["@emotion/core", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:10.1.1"],
+            ["@emotion/core", "npm:11.0.0"],
             ["@types/babel__core", null],
             ["@types/emotion__core", null],
             ["@types/gatsby", null],
@@ -40623,7 +40604,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/gatsby-theme-i18n-lingui-virtual-4a5a1a428d/1/packages/gatsby-theme-i18n-lingui/",
           "packageDependencies": [
             ["gatsby-theme-i18n-lingui", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#workspace:packages/gatsby-theme-i18n-lingui"],
-            ["@emotion/core", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:10.1.1"],
+            ["@emotion/core", "npm:11.0.0"],
             ["@lingui/core", "npm:3.2.1"],
             ["@lingui/react", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:3.2.1"],
             ["@types/emotion__core", null],
@@ -44458,14 +44439,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["jest-emotion", [
-        ["npm:10.0.32", {
-          "packageLocation": "./.yarn/cache/jest-emotion-npm-10.0.32-482af51ad4-a11ed3f3a4.zip/node_modules/jest-emotion/",
+        ["npm:11.0.0", {
+          "packageLocation": "./.yarn/cache/jest-emotion-npm-11.0.0-060c788e9e-98becc020f.zip/node_modules/jest-emotion/",
           "packageDependencies": [
-            ["jest-emotion", "npm:10.0.32"],
-            ["@babel/runtime", "npm:7.10.3"],
-            ["@types/jest", "npm:23.3.14"],
-            ["chalk", "npm:2.4.2"],
-            ["css", "npm:2.2.4"]
+            ["jest-emotion", "npm:11.0.0"]
           ],
           "linkType": "HARD",
         }]
@@ -59443,7 +59420,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["vor", "workspace:apps/vor/frontend"],
             ["@babel/preset-typescript", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:7.12.1"],
             ["@babel/runtime", "npm:7.12.5"],
-            ["@emotion/core", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:10.1.1"],
+            ["@emotion/core", "npm:11.0.0"],
             ["@istanbuljs/nyc-config-typescript", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:1.0.1"],
             ["@lingui/cli", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:3.2.1"],
             ["@lingui/core", "npm:3.2.1"],
@@ -59527,7 +59504,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["immer", "npm:7.0.14"],
             ["jest", "npm:26.6.3"],
             ["jest-date-mock", "npm:1.0.8"],
-            ["jest-emotion", "npm:10.0.32"],
+            ["jest-emotion", "npm:11.0.0"],
             ["jest-fetch-mock", "npm:3.0.3"],
             ["make-plural", "npm:6.2.2"],
             ["nanoid", "npm:3.1.16"],

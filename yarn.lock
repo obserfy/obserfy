@@ -4512,19 +4512,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/core@npm:10.1.1":
-  version: 10.1.1
-  resolution: "@emotion/core@npm:10.1.1"
-  dependencies:
-    "@babel/runtime": ^7.5.5
-    "@emotion/cache": ^10.0.27
-    "@emotion/css": ^10.0.27
-    "@emotion/serialize": ^0.11.15
-    "@emotion/sheet": 0.9.4
-    "@emotion/utils": 0.11.3
-  peerDependencies:
-    react: ">=16.3.0"
-  checksum: 78fec4a70569be2291180eafe3a882303a05285d68fec4d6b6974710f47fa1cc3b105468607e544e4a92bf7a9f94d9e5d2bfd735523a38b90f2d5dd4ce27e308
+"@emotion/core@npm:11.0.0":
+  version: 11.0.0
+  resolution: "@emotion/core@npm:11.0.0"
+  checksum: 814026f08ca46fc19f1343c40f733bdfc4ffcfb7dd95f75b89353c987950db90ce181550e3d404784da764af523f3807c2e892c8859c24229789a91225906d34
   languageName: node
   linkType: hard
 
@@ -8593,13 +8584,6 @@ __metadata:
     jest-diff: ^26.0.0
     pretty-format: ^26.0.0
   checksum: 42fe39d582de1d79f9d6b96f3dee43ba2e9336c9d1f0e31c4f2f58bbaa059c9f4295c42a213ea9450f91400515a3abde4aae2673522fc6e11ea33f7e21c25dbe
-  languageName: node
-  linkType: hard
-
-"@types/jest@npm:^23.0.2":
-  version: 23.3.14
-  resolution: "@types/jest@npm:23.3.14"
-  checksum: 1d28aa15ea6ddc7ff781f1576173e87d78b1e69f405e642048791561fb48b0a2ffef6b7b900795239406626d0c63785f626e8cb9712cfde5556a3e9eabbc6ba3
   languageName: node
   linkType: hard
 
@@ -14634,7 +14618,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"css@npm:^2.0.0, css@npm:^2.2.1":
+"css@npm:^2.0.0":
   version: 2.2.4
   resolution: "css@npm:2.2.4"
   dependencies:
@@ -19498,7 +19482,7 @@ fsevents@^1.2.7:
     "@lingui/react": 3.2.1
     react-refresh: 0.9.0
   peerDependencies:
-    "@emotion/core": ^10.0.28
+    "@emotion/core": ^10.0.28 || ^11.0.0
     "@lingui/core": ^3.0.0-18
     "@lingui/react": ^3.0.0-18
     gatsby: ">=2.21.26"
@@ -23001,15 +22985,10 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"jest-emotion@npm:10.0.32":
-  version: 10.0.32
-  resolution: "jest-emotion@npm:10.0.32"
-  dependencies:
-    "@babel/runtime": ^7.5.5
-    "@types/jest": ^23.0.2
-    chalk: ^2.4.1
-    css: ^2.2.1
-  checksum: a11ed3f3a4ba0ab7a9572d3c3720fdc817bba07dde23245226c2417e54d0e287566bdbc59bae0ac62ba0b418b6321303985b355f03088ea5a76ef5dc1b8da4f1
+"jest-emotion@npm:11.0.0":
+  version: 11.0.0
+  resolution: "jest-emotion@npm:11.0.0"
+  checksum: 98becc020f11e5df72c6e1e0769e5ac8e53640b7d74fbdcd1995038067f757a17f1340505f022811d8d534db384c83a8659ef3bb1e3eb539859e185469a46ff0
   languageName: node
   linkType: hard
 
@@ -36260,7 +36239,7 @@ typescript@^4.0.0:
   dependencies:
     "@babel/preset-typescript": 7.12.1
     "@babel/runtime": 7.12.5
-    "@emotion/core": 10.1.1
+    "@emotion/core": 11.0.0
     "@istanbuljs/nyc-config-typescript": 1.0.1
     "@lingui/cli": 3.2.1
     "@lingui/core": 3.2.1
@@ -36344,7 +36323,7 @@ typescript@^4.0.0:
     immer: 7.0.14
     jest: 26.6.3
     jest-date-mock: 1.0.8
-    jest-emotion: 10.0.32
+    jest-emotion: 11.0.0
     jest-fetch-mock: 3.0.3
     make-plural: 6.2.2
     nanoid: 3.1.16
