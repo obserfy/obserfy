@@ -18745,7 +18745,7 @@ fsevents@^1.2.7:
     pino-pretty: 4.3.0
     postcss-preset-env: 6.7.0
     preact: 10.5.5
-    preact-render-to-string: 5.1.11
+    preact-render-to-string: 5.1.12
     prettier: 2.1.2
     react: "npm:@preact/compat@0.0.3"
     react-dom: "npm:@preact/compat@0.0.3"
@@ -29186,14 +29186,14 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"preact-render-to-string@npm:5.1.11":
-  version: 5.1.11
-  resolution: "preact-render-to-string@npm:5.1.11"
+"preact-render-to-string@npm:5.1.12":
+  version: 5.1.12
+  resolution: "preact-render-to-string@npm:5.1.12"
   dependencies:
     pretty-format: ^3.8.0
   peerDependencies:
     preact: ">=10"
-  checksum: 3103e7c4d630012e45cb10d2bb229f3e4081edfa071bf09c86206e7352a1817974fc6ab44d006f1cae3b0a4e6e81b1cacbc8d0f70a98f9c4fe208d16ee3d9738
+  checksum: 61c84b6de85d59965095d3d474dc3c1c64af383113d7cf326500814a9ae1099a1a734648c7adeba4b458df376a027708c103ca056e21c417f2686b000bd4a28e
   languageName: node
   linkType: hard
 
@@ -36223,7 +36223,7 @@ typescript@^4.0.0:
     nanoid: 3.1.16
     npm-run-all: 4.1.5
     preact: 10.5.5
-    preact-render-to-string: 5.1.11
+    preact-render-to-string: 5.1.12
     prettier: 2.1.2
     query-string: 6.13.7
     react: 17.0.1

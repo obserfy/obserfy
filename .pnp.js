@@ -7856,7 +7856,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "preact-render-to-string",
-        "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:5.1.11"
+        "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:5.1.12"
       ],
       [
         "prebuild-install",
@@ -39035,7 +39035,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["pino-pretty", "npm:4.3.0"],
             ["postcss-preset-env", "npm:6.7.0"],
             ["preact", "npm:10.5.5"],
-            ["preact-render-to-string", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:5.1.11"],
+            ["preact-render-to-string", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:5.1.12"],
             ["prettier", "npm:2.1.2"],
             ["react", [
               "@preact/compat",
@@ -39882,7 +39882,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/preact-render-to-string", null],
             ["gatsby", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:2.26.1"],
             ["preact", "npm:10.5.5"],
-            ["preact-render-to-string", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:5.1.11"]
+            ["preact-render-to-string", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:5.1.12"]
           ],
           "packagePeers": [
             "@types/gatsby",
@@ -51246,10 +51246,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["preact-render-to-string", [
-        ["virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:5.1.11", {
-          "packageLocation": "./.yarn/$$virtual/preact-render-to-string-virtual-d84a559840/0/cache/preact-render-to-string-npm-5.1.11-34f0509234-3103e7c4d6.zip/node_modules/preact-render-to-string/",
+        ["virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:5.1.12", {
+          "packageLocation": "./.yarn/$$virtual/preact-render-to-string-virtual-adc20d020b/0/cache/preact-render-to-string-npm-5.1.12-cebb2a154f-61c84b6de8.zip/node_modules/preact-render-to-string/",
           "packageDependencies": [
-            ["preact-render-to-string", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:5.1.11"],
+            ["preact-render-to-string", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:5.1.12"],
             ["@types/preact", null],
             ["preact", "npm:10.5.5"],
             ["pretty-format", "npm:3.8.0"]
@@ -59408,7 +59408,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["nanoid", "npm:3.1.16"],
             ["npm-run-all", "npm:4.1.5"],
             ["preact", "npm:10.5.5"],
-            ["preact-render-to-string", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:5.1.11"],
+            ["preact-render-to-string", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:5.1.12"],
             ["prettier", "npm:2.1.2"],
             ["query-string", "npm:6.13.7"],
             ["react", "npm:17.0.1"],
