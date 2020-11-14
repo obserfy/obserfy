@@ -18427,7 +18427,7 @@ __metadata:
     gatsby-plugin-remove-trailing-slashes: 2.4.0
     gatsby-plugin-sharp: 2.8.0
     gatsby-plugin-sitemap: 2.6.0
-    gatsby-plugin-webpack-bundle-analyser-v2: 1.1.15
+    gatsby-plugin-webpack-bundle-analyser-v2: 1.1.16
     gatsby-source-filesystem: 2.5.0
     gatsby-theme-i18n: 1.0.4
     gatsby-theme-i18n-lingui: 1.0.4
@@ -19239,15 +19239,15 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-webpack-bundle-analyser-v2@npm:1.1.15":
-  version: 1.1.15
-  resolution: "gatsby-plugin-webpack-bundle-analyser-v2@npm:1.1.15"
+"gatsby-plugin-webpack-bundle-analyser-v2@npm:1.1.16":
+  version: 1.1.16
+  resolution: "gatsby-plugin-webpack-bundle-analyser-v2@npm:1.1.16"
   dependencies:
     "@babel/runtime": ^7.12.5
     webpack-bundle-analyzer: ^4.1.0
   peerDependencies:
     gatsby: ^2.0.0
-  checksum: fdc24cdcc16e3cc9f3ef69993b503e9f1049452ce2b75d159a3a6e85afc042ffbab4d56e4168d2a70eb545ddcbc48a3aafc8546220dc751c9b7c6f5fa53e4a6a
+  checksum: 66eb20a32644d8083b9f7013e784ce7b07f9cb5e4f3b64c262380f7a1059fb4f628831bc9a7251be882c10f7188b0f5ad2c2b419d3cce6f72a89c07d39bd7342
   languageName: node
   linkType: hard
 
@@ -36206,7 +36206,7 @@ typescript@^4.0.0:
     gatsby-plugin-sharp: 2.8.0
     gatsby-plugin-svgr: 2.0.2
     gatsby-plugin-theme-ui: 0.3.3
-    gatsby-plugin-webpack-bundle-analyser-v2: 1.1.15
+    gatsby-plugin-webpack-bundle-analyser-v2: 1.1.16
     gatsby-source-filesystem: 2.5.0
     gatsby-theme-i18n: 1.0.4
     gatsby-theme-i18n-lingui: ^1.0.4

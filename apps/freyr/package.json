@@ -26,7 +26,7 @@
     "gatsby-plugin-remove-trailing-slashes": "2.4.0",
     "gatsby-plugin-sharp": "2.8.0",
     "gatsby-plugin-sitemap": "2.6.0",
-    "gatsby-plugin-webpack-bundle-analyser-v2": "1.1.15",
+    "gatsby-plugin-webpack-bundle-analyser-v2": "1.1.16",
     "gatsby-source-filesystem": "2.5.0",
     "gatsby-theme-i18n": "1.0.4",
     "gatsby-theme-i18n-lingui": "1.0.4",
