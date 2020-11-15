@@ -8171,19 +8171,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/dom@npm:^7.26.4":
-  version: 7.26.4
-  resolution: "@testing-library/dom@npm:7.26.4"
+"@testing-library/dom@npm:^7.26.6":
+  version: 7.26.6
+  resolution: "@testing-library/dom@npm:7.26.6"
   dependencies:
     "@babel/code-frame": ^7.10.4
-    "@babel/runtime": ^7.10.3
+    "@babel/runtime": ^7.12.5
     "@types/aria-query": ^4.2.0
     aria-query: ^4.2.2
     chalk: ^4.1.0
-    dom-accessibility-api: ^0.5.1
+    dom-accessibility-api: ^0.5.4
     lz-string: ^1.4.4
-    pretty-format: ^26.4.2
-  checksum: 9d88312d21b2ddc6fb840f5b05c60446ac89133bb7be3d95096edec5bca07e638d77988b6dfd1911369c0ddbd0eae9a6499757aef31ec59626eec7d6b0d07680
+    pretty-format: ^26.6.2
+  checksum: 4b7b1e2802a685bfee5a7f6dfbf446f4e0c937e1af1e72677c34e514a685d607005a591a575d04ffdff17d3ad7544c7ea7b7be7389bb8a0c6ee9bda4686a0178
   languageName: node
   linkType: hard
 
@@ -8200,16 +8200,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/react@npm:11.1.1":
-  version: 11.1.1
-  resolution: "@testing-library/react@npm:11.1.1"
+"@testing-library/react@npm:11.1.2":
+  version: 11.1.2
+  resolution: "@testing-library/react@npm:11.1.2"
   dependencies:
     "@babel/runtime": ^7.12.1
-    "@testing-library/dom": ^7.26.4
+    "@testing-library/dom": ^7.26.6
   peerDependencies:
     react: "*"
     react-dom: "*"
-  checksum: f09d56355dd86c4bae4ae8a1c7abe5270d6e6ccf9db6089f8efa1529e11272a2073cf19bd801f8f6f2c7ae2b3aeb7ba9c4b44aa1cdb2c76ce6dc3f1c46fc795e
+  checksum: 64895ea94b2a17eb2c9c0b9b25fb45b32100e50939fa2608756a0c4e8475b7ad6885743d8fc29edc466a8a45ff561eccec44c594624f34e64784e8c04a342eec
   languageName: node
   linkType: hard
 
@@ -15779,10 +15779,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dom-accessibility-api@npm:^0.5.1":
-  version: 0.5.1
-  resolution: "dom-accessibility-api@npm:0.5.1"
-  checksum: 55dc97c391cabb8eddaea06222a453c3e96721ef9fb2701e021c252d3594452b43ae98f4a056ddd717d97af870d5ace8bed627611a7028c70894764fee2fc7ed
+"dom-accessibility-api@npm:^0.5.4":
+  version: 0.5.4
+  resolution: "dom-accessibility-api@npm:0.5.4"
+  checksum: 39351d26a3732312f14411effef698204bf6c79a7d5eb0664441897541243f2cdf2e508aca52684ccf3b10df6708a6c265d1fde323eebcb8363a1093f5927b10
   languageName: node
   linkType: hard
 
@@ -29523,18 +29523,6 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"pretty-format@npm:^26.4.2":
-  version: 26.4.2
-  resolution: "pretty-format@npm:26.4.2"
-  dependencies:
-    "@jest/types": ^26.3.0
-    ansi-regex: ^5.0.0
-    ansi-styles: ^4.0.0
-    react-is: ^16.12.0
-  checksum: 06cdf6684cce00fd7df63bac8f29e47bcfaab1a68d41c6e7905c9fa78bfe31c52726b36891b2a3991a1cadab710de8818661464128367332183e3f0c1f86e640
-  languageName: node
-  linkType: hard
-
 "pretty-format@npm:^26.5.2":
   version: 26.5.2
   resolution: "pretty-format@npm:26.5.2"
@@ -36302,7 +36290,7 @@ typescript@^4.0.0:
     "@storybook/addons": 6.0.28
     "@storybook/react": 6.0.28
     "@svgr/webpack": 5.5.0
-    "@testing-library/react": 11.1.1
+    "@testing-library/react": 11.1.2
     "@testing-library/react-hooks": 3.4.2
     "@theme-ui/match-media": 0.4.0-rc.7
     "@types/body-scroll-lock": 2.6.1
