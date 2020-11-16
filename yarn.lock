@@ -11350,13 +11350,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-plugin-require-context-hook@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "babel-plugin-require-context-hook@npm:1.0.0"
-  checksum: 9b938cfa288bff0e05e816736fb9a605c5104b97fd4fa4a60d0cbd2cb5f94129295f720093b0ec9f716cff3df0fd32c96dca0934c4ab80d19fa6ff32a85ed84f
-  languageName: node
-  linkType: hard
-
 "babel-plugin-syntax-jsx@npm:6.18.0, babel-plugin-syntax-jsx@npm:^6.18.0":
   version: 6.18.0
   resolution: "babel-plugin-syntax-jsx@npm:6.18.0"
@@ -13304,20 +13297,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chromatic@npm:5.3.0":
-  version: 5.3.0
-  resolution: "chromatic@npm:5.3.0"
+"chromatic@npm:5.4.0":
+  version: 5.4.0
+  resolution: "chromatic@npm:5.4.0"
   dependencies:
     "@actions/core": ^1.2.4
     "@actions/github": ^4.0.0
-    "@babel/preset-react": ^7.9.4
-    "@babel/runtime": ^7.9.2
+    "@babel/runtime": ^7.12.1
     "@chromaui/localtunnel": 2.0.1
     async-retry: ^1.3.1
-    babel-plugin-require-context-hook: ^1.0.0
     chalk: ^4.0.0
     cross-spawn: ^7.0.2
-    debug: ^4.1.1
+    debug: ^4.2.0
     dotenv: ^8.2.0
     env-ci: ^5.0.2
     esm: ^3.2.25
@@ -13325,33 +13316,31 @@ __metadata:
     fake-tag: ^2.0.0
     fs-extra: ^9.0.0
     jsonfile: ^6.0.1
-    junit-report-builder: 2.0.0
+    junit-report-builder: 2.1.0
     listr: 0.14.3
-    meow: ^6.1.0
+    meow: ^7.1.1
     node-ask: ^1.0.1
     node-fetch: ^2.6.0
     node-loggly-bulk: ^2.2.4
-    p-limit: 2.3.0
+    p-limit: 3.0.2
     picomatch: 2.2.2
     pkg-up: ^3.1.0
     pluralize: ^8.0.0
-    progress: ^2.0.3
     progress-stream: ^2.0.0
     semver: ^7.1.3
     slash: ^3.0.0
     strip-ansi: 6.0.0
-    tmp: ^0.1.0
-    tmp-promise: 2.1.1
+    tmp-promise: 3.0.2
     tree-kill: ^1.2.2
     ts-dedent: ^1.1.1
     util-deprecate: ^1.0.2
-    uuid: ^7.0.3
+    uuid: ^8.3.1
     yarn-or-npm: ^3.0.1
   bin:
     chroma: bin/register.js
     chromatic: bin/register.js
     chromatic-cli: bin/register.js
-  checksum: bc29c87b0fcf3729ef8b80ccc3c286b0ad59faaff99c5b55154adf1d68c2df70cdbfee3b4dd9c7d83cdb2c045b095c103c1a7a325539e81529bd2d792de49c36
+  checksum: 8a0ea05513f1e008d5b0eecd5967b204d3735964e51baa18f5f86db8406023b4c832a60cf3cf541bed099e2041a612d2bad5b2eba7e5cb82e01ae26664e9bd6b
   languageName: node
   linkType: hard
 
@@ -15120,6 +15109,18 @@ __metadata:
   dependencies:
     ms: 2.0.0
   checksum: 1295acd5e0531761255661d325cd0a80ac8c5f6de8942a53bb23c2197ccb97526972de662ed0e5d9393be83f3428a298a6e7185ecb02f0da6282019cd2ffb4a8
+  languageName: node
+  linkType: hard
+
+"debug@npm:^4.2.0":
+  version: 4.3.0
+  resolution: "debug@npm:4.3.0"
+  dependencies:
+    ms: 2.1.2
+  peerDependenciesMeta:
+    supports-color:
+      optional: true
+  checksum: 847d2760d1493cfaef53fb67d8943c6afaba30472d7527450c19919d230dde04f2275dd8dd5c2874c7103787c190d3b5d3dbc2ee7596a12d853a2ce35c4b8b1b
   languageName: node
   linkType: hard
 
@@ -23943,15 +23944,15 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"junit-report-builder@npm:2.0.0":
-  version: 2.0.0
-  resolution: "junit-report-builder@npm:2.0.0"
+"junit-report-builder@npm:2.1.0":
+  version: 2.1.0
+  resolution: "junit-report-builder@npm:2.1.0"
   dependencies:
     date-format: 0.0.2
     lodash: ^4.17.15
     make-dir: ^1.3.0
     xmlbuilder: ^10.0.0
-  checksum: a20c0908d76c26a91c1828dd0eea63e728fc1a9b919b3f2dc17ef16cc4ec74742077252e9a3b75ff1ea3dcd656667b85f1fd42061c1b3e86ebaeefa9147f038e
+  checksum: accf5ff79465bc06da4308faeb3b1385dfab0bd05265b6c79ee04701ad3fe695cf2f4dfd23b86774fe6df53b2de417b37cc5e645ee6338396cbfc6cb6576d36f
   languageName: node
   linkType: hard
 
@@ -25280,25 +25281,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"meow@npm:^6.1.0":
-  version: 6.1.1
-  resolution: "meow@npm:6.1.1"
-  dependencies:
-    "@types/minimist": ^1.2.0
-    camelcase-keys: ^6.2.2
-    decamelize-keys: ^1.1.0
-    hard-rejection: ^2.1.0
-    minimist-options: ^4.0.2
-    normalize-package-data: ^2.5.0
-    read-pkg-up: ^7.0.1
-    redent: ^3.0.0
-    trim-newlines: ^3.0.0
-    type-fest: ^0.13.1
-    yargs-parser: ^18.1.3
-  checksum: 71dc7bff6dbafe09e002cf557b40527e19d3de57712859c55268b300743117515b4c37b7ee1bcf58fa661168e7df8af12e420692ce990cbf4874c99e826ccd15
-  languageName: node
-  linkType: hard
-
 "meow@npm:^7.1.1":
   version: 7.1.1
   resolution: "meow@npm:7.1.1"
@@ -25552,7 +25534,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"minimist-options@npm:4.1.0, minimist-options@npm:^4.0.2":
+"minimist-options@npm:4.1.0":
   version: 4.1.0
   resolution: "minimist-options@npm:4.1.0"
   dependencies:
@@ -34767,21 +34749,12 @@ resolve@^1.18.1:
   languageName: node
   linkType: hard
 
-"tmp-promise@npm:2.1.1":
-  version: 2.1.1
-  resolution: "tmp-promise@npm:2.1.1"
+"tmp-promise@npm:3.0.2":
+  version: 3.0.2
+  resolution: "tmp-promise@npm:3.0.2"
   dependencies:
-    tmp: 0.1.0
-  checksum: 795d20c8c6a62bef5c13388be0970fcfbc5f2ab841b5d1cb306d0218f3158f0be98892e9ed04f8d0806ea59de806514aa1901157ea39f7c947a7c88cd7fb3dcd
-  languageName: node
-  linkType: hard
-
-"tmp@npm:0.1.0, tmp@npm:^0.1.0":
-  version: 0.1.0
-  resolution: "tmp@npm:0.1.0"
-  dependencies:
-    rimraf: ^2.6.3
-  checksum: b505e9f4f5e8076a1789fa1cec50b42220fdb90dec3e44ff0598d74701e340333ef7c28a55ed2d59b24112e2668e98e92852352ad4dc20352250a7be5cc1a973
+    tmp: ^0.2.0
+  checksum: dceb1616b2d97bcc20f84544aa6ad0cb02b975da1cf2336648ea2e5f32e3be14d5c54dfc2dfdeedbd7d077ac99d8889d005db2be29c7c8da5d7a9d9207bda013
   languageName: node
   linkType: hard
 
@@ -34794,7 +34767,7 @@ resolve@^1.18.1:
   languageName: node
   linkType: hard
 
-"tmp@npm:^0.2.1, tmp@npm:~0.2.1":
+"tmp@npm:^0.2.0, tmp@npm:^0.2.1, tmp@npm:~0.2.1":
   version: 0.2.1
   resolution: "tmp@npm:0.2.1"
   dependencies:
@@ -36123,7 +36096,7 @@ typescript@^4.0.0:
   languageName: node
   linkType: hard
 
-"uuid@npm:8.3.1":
+"uuid@npm:8.3.1, uuid@npm:^8.3.1":
   version: 8.3.1
   resolution: "uuid@npm:8.3.1"
   bin:
@@ -36316,7 +36289,7 @@ typescript@^4.0.0:
     babel-preset-gatsby: 0.6.0
     body-scroll-lock: 3.1.5
     browser-lang: 0.1.0
-    chromatic: 5.3.0
+    chromatic: 5.4.0
     cross-env: 7.0.2
     dayjs: 1.9.6
     dotenv: 8.2.0
