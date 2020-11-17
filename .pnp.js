@@ -5372,7 +5372,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "immer",
-        "npm:7.0.15"
+        "npm:8.0.0"
       ],
       [
         "immutable",
@@ -42792,10 +42792,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
-        ["npm:7.0.15", {
-          "packageLocation": "./.yarn/cache/immer-npm-7.0.15-2d18841de1-f6a1e0a34d.zip/node_modules/immer/",
+        ["npm:8.0.0", {
+          "packageLocation": "./.yarn/cache/immer-npm-8.0.0-d9791e8606-99ef306c81.zip/node_modules/immer/",
           "packageDependencies": [
-            ["immer", "npm:7.0.15"]
+            ["immer", "npm:8.0.0"]
           ],
           "linkType": "HARD",
         }]
@@ -59304,7 +59304,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["use-immer", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.4.1"],
             ["@types/immer", null],
             ["@types/react", "npm:16.9.56"],
-            ["immer", "npm:7.0.15"],
+            ["immer", "npm:8.0.0"],
             ["react", "npm:17.0.1"]
           ],
           "packagePeers": [
@@ -59757,7 +59757,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["http-proxy-middleware", "npm:1.0.6"],
             ["hygen", "npm:6.0.4"],
             ["idb-keyval", "npm:3.2.0"],
-            ["immer", "npm:7.0.15"],
+            ["immer", "npm:8.0.0"],
             ["jest", "npm:26.6.3"],
             ["jest-date-mock", "npm:1.0.8"],
             ["jest-emotion", "npm:10.0.32"],
