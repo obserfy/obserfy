@@ -1744,7 +1744,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@types/pg",
-        "npm:7.14.6"
+        "npm:7.14.7"
       ],
       [
         "@types/pg-types",
@@ -27738,10 +27738,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@types/pg", [
-        ["npm:7.14.6", {
-          "packageLocation": "./.yarn/cache/@types-pg-npm-7.14.6-aff35d937e-f7cfbc372a.zip/node_modules/@types/pg/",
+        ["npm:7.14.7", {
+          "packageLocation": "./.yarn/cache/@types-pg-npm-7.14.7-a200b47666-6695ae8ed4.zip/node_modules/@types/pg/",
           "packageDependencies": [
-            ["@types/pg", "npm:7.14.6"],
+            ["@types/pg", "npm:7.14.7"],
             ["@types/node", "npm:14.0.14"],
             ["@types/pg-types", "npm:1.11.5"]
           ],
@@ -39254,7 +39254,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/mixpanel-browser", "npm:2.35.4"],
             ["@types/nanoid", "npm:2.1.0"],
             ["@types/node", "npm:14.14.7"],
-            ["@types/pg", "npm:7.14.6"],
+            ["@types/pg", "npm:7.14.7"],
             ["@types/pino", "npm:6.3.3"],
             ["@types/react", "npm:16.9.56"],
             ["@types/react-query", "npm:1.1.2"],
