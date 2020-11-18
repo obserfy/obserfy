@@ -8162,12 +8162,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tailwindcss/typography@npm:0.2.0":
-  version: 0.2.0
-  resolution: "@tailwindcss/typography@npm:0.2.0"
+"@tailwindcss/typography@npm:0.3.1":
+  version: 0.3.1
+  resolution: "@tailwindcss/typography@npm:0.3.1"
   peerDependencies:
-    tailwindcss: ^1.5.0
-  checksum: 07b12319171e62151e7212fdf3aeeaff64d282934d6fa37b7c668bc00cb652930ef6841b1a88a927d3c459ab2a0df67a9e94f386a069efd8efa0b6c7b451aec6
+    tailwindcss: 2.0.0-alpha.24 || ^2.0.0
+  checksum: 341c009ec5d6a923103f625e73f93ccd5f94c6e11938c04f28d64203cc2c044f129b7afd2ddcf156fb3c144d660cef648bdb957edc3ede0a679583fbd5311017
   languageName: node
   linkType: hard
 
@@ -18576,7 +18576,7 @@ __metadata:
     "@lingui/core": 3.2.1
     "@lingui/macro": 3.2.1
     "@lingui/react": 3.2.1
-    "@tailwindcss/typography": 0.2.0
+    "@tailwindcss/typography": 0.3.1
     "@types/react": 16.9.56
     "@types/react-helmet": 6.1.0
     "@typescript-eslint/eslint-plugin": 4.8.1
@@ -18876,7 +18876,7 @@ fsevents@^1.2.7:
     "@auth0/nextjs-auth0": 0.16.0
     "@prefresh/next": 1.4.1
     "@segment/snippet": 4.13.1
-    "@tailwindcss/typography": 0.2.0
+    "@tailwindcss/typography": 0.3.1
     "@types/body-scroll-lock": 2.6.1
     "@types/formidable": 1.0.31
     "@types/minio": 7.0.6
