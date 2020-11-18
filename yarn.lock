@@ -16106,7 +16106,7 @@ __metadata:
     prettier: 2.1.2
     typescript: 4.0.5
     wait-on: 5.2.0
-    webpack: 5.4.0
+    webpack: 5.5.1
   languageName: unknown
   linkType: soft
 
@@ -36520,7 +36520,7 @@ typescript@^4.0.0:
     url-loader: 4.1.1
     use-immer: 0.4.1
     wait-on: 5.2.0
-    webpack: 5.4.0
+    webpack: 5.5.1
   languageName: unknown
   linkType: soft
 
@@ -36948,9 +36948,9 @@ typescript@^4.0.0:
   languageName: node
   linkType: hard
 
-"webpack@npm:5.4.0":
-  version: 5.4.0
-  resolution: "webpack@npm:5.4.0"
+"webpack@npm:5.5.1":
+  version: 5.5.1
+  resolution: "webpack@npm:5.5.1"
   dependencies:
     "@types/eslint-scope": ^3.7.0
     "@types/estree": ^0.0.45
@@ -36981,7 +36981,7 @@ typescript@^4.0.0:
       optional: true
   bin:
     webpack: bin/webpack.js
-  checksum: 1da5d7f1f0ec1f8f0a0ef2ef4b374805a9abd9a1a30e8834ab4b2f7793ce43251ea5c50b0132884666bd5189711f2049c66bb06ca6c381bfb022355619dc93bc
+  checksum: bc52c1e23fa6d83abdfd47b81e66efde88ddb00ea9b22ca36da1c3f99d0c6d67d4db9d9eb1fc93c1c27394e01dbe47502517cbeb243789f3218975f2f5f8db20
   languageName: node
   linkType: hard
 
