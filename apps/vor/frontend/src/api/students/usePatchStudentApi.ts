@@ -10,6 +10,7 @@ interface UpdateStudentRequestBody {
   gender?: number
   active?: boolean
   profileImageId?: string
+  note?: string
 }
 export function usePatchStudentApi(id: string) {
   const patchStudent = patchApi<UpdateStudentRequestBody>(`/students/${id}`)

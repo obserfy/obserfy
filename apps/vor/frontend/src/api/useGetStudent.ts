@@ -12,6 +12,7 @@ export interface Student {
   customId: string
   active: boolean
   profilePic: string
+  note: string
   classes: Array<{
     id: string
     name: string
