@@ -31,7 +31,7 @@
     "gatsby-theme-i18n": "1.0.4",
     "gatsby-theme-i18n-lingui": "1.0.4",
     "gatsby-transformer-sharp": "2.6.0",
-    "postcss": "8.1.7",
+    "postcss": "8.1.8",
     "postcss-preset-env": "6.7.0",
     "preact": "10.5.5",
     "react": "17.0.1",
