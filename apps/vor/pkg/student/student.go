@@ -292,6 +292,7 @@ func patchStudent(s rest.Server, store Store) http.Handler {
 		Gender         postgres.Gender `json:"gender"`
 		Active         *bool           `json:"active"`
 		ProfileImageId string          `json:"profileImageId"`
+		Note           string          `json:"note"`
 	}
 	type responseBody struct {
 		Id          string     `json:"id"`
@@ -320,6 +321,7 @@ func patchStudent(s rest.Server, store Store) http.Handler {
 		newStudent.DateOfEntry = requestBody.DateOfEntry
 		newStudent.Active = requestBody.Active
 		newStudent.ProfileImageId = requestBody.ProfileImageId
+		newStudent.Note = requestBody.Note
 		if err := store.UpdateStudent(newStudent); err != nil {
 			return &rest.Error{http.StatusInternalServerError, "Failed updating old student data", err}
 		}

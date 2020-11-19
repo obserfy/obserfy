@@ -87,6 +87,11 @@ export const PageStudentProfile: FC<Props> = ({ studentId }) => {
           key={`doe${data?.dateOfEntry}`}
           studentId={studentId}
         />
+          <NotesDataBox
+              value={data?.note}
+              key={`doe${data?.note}`}
+              studentId={studentId}
+          />
       </Card>
 
       <Card sx={{ borderRadius: [0, "default"] }} mb={3}>
@@ -340,6 +345,46 @@ const StudentIdDataBox: FC<{ value?: string; studentId: string }> = ({
       )}
     </Fragment>
   )
+}
+
+const NotesDataBox: FC<{ value?: string; studentId: string }> = ({value, studentId}) => {
+    const [mutate, { status }] = usePatchStudentApi(studentId)
+    const [showEditDialog, setShowEditDialog] = useState(false)
+    const [note, setNote] = useState(value)
+    const saveNote = async () => {
+        await mutate({ note })
+        setShowEditDialog(false)
+    }
+    return (
+        <Fragment>
+            <DataBox
+                label={t`Notes`}
+                value={note || t`Not Set`}
+                onEditClick={() => setShowEditDialog(true)}
+            />
+            {showEditDialog && (
+                <Dialog>
+                    <DialogHeader
+                        title={t`Edit Notes`}
+                        onAcceptText={t`Save`}
+                        onCancel={() => setShowEditDialog(false)}
+                        onAccept={saveNote}
+                        loading={status === "loading"}
+                    />
+                    <Box sx={{ backgroundColor: "background" }} p={3}>
+                        <Input
+                            label={t`Notes`}
+                            sx={{ width: "100%" }}
+                            onChange={(e) => {
+                                setNote(e.target.value)
+                            }}
+                            value={note}
+                        />
+                    </Box>
+                </Dialog>
+            )}
+        </Fragment>
+    )
 }
 
 // TODO: The two components below looks similar, consider refactoring
