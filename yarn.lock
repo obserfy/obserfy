@@ -8266,14 +8266,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@theme-ui/match-media@npm:0.4.0-rc.11":
-  version: 0.4.0-rc.11
-  resolution: "@theme-ui/match-media@npm:0.4.0-rc.11"
+"@theme-ui/match-media@npm:0.4.0-rc.12":
+  version: 0.4.0-rc.12
+  resolution: "@theme-ui/match-media@npm:0.4.0-rc.12"
   peerDependencies:
     "@theme-ui/core": ^0.4.0-alpha.0
     "@theme-ui/css": ^0.4.0-alpha.0
     react: ^16.9.0
-  checksum: d4f23460762f1e5d7ff09ed841affccedad9c2746bd3a8d1f5519fe3c9ea41a407f03f015cf4f260ce9db88d525243ef028ae8f202d205e943e6ef6459a65789
+  checksum: 673aa28f93299180ac196f35d8e54b749360cdf82c2401238ec6b8a0a084a0fb8f7612cae77300864684c418678bbfdc50feb8ce468266fc1ef513275b21e5d5
   languageName: node
   linkType: hard
 
@@ -36754,7 +36754,7 @@ typescript@^4.0.0:
     "@svgr/webpack": 5.5.0
     "@testing-library/react": 11.2.1
     "@testing-library/react-hooks": 3.4.2
-    "@theme-ui/match-media": 0.4.0-rc.11
+    "@theme-ui/match-media": 0.4.0-rc.12
     "@types/body-scroll-lock": 2.6.1
     "@types/date-fns": 2.6.0
     "@types/faker": 5.1.4
