@@ -57,7 +57,7 @@
     "react-query": "2.26.2",
     "regenerator-runtime": "0.13.7",
     "theme-ui": "0.4.0-rc.11",
-    "use-immer": "0.4.1"
+    "use-immer": "0.4.2"
   },
   "devDependencies": {
     "@babel/preset-typescript": "7.12.1",
