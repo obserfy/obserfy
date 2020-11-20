@@ -283,7 +283,7 @@ exports[`PageStudentPlanDetails should render correctly 1`] = `
         <a
           class="emotion-2"
           data-cy="back-button"
-          href="/dashboard/students/plans?studentId=asdfasfd&date=2018-06-27T00:00:00.000Z"
+          href="/dashboard/students/plans?studentId=asdfasfd&date=2018-06-26T17:00:00.000Z"
         >
           <button
             class="emotion-1"
@@ -326,7 +326,7 @@ exports[`PageStudentPlanDetails should render correctly 1`] = `
           </a>
           <a
             class="emotion-5"
-            href="/dashboard/students/plans?studentId=asdfasfd&date=2018-06-27T00:00:00.000Z"
+            href="/dashboard/students/plans?studentId=asdfasfd&date=2018-06-26T17:00:00.000Z"
           >
             <span
               class="emotion-3"
