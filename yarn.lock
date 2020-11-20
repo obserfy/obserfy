@@ -19034,7 +19034,7 @@ fsevents@^1.2.7:
     lqip-loader: 2.2.1
     minio: 7.0.16
     monocle-ts: 2.3.3
-    nanoid: 3.1.16
+    nanoid: 3.1.17
     newtype-ts: 0.3.4
     next: 10.0.1
     next-compose-plugins: 2.2.1
@@ -26188,7 +26188,16 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"nanoid@npm:3.1.16, nanoid@npm:^3.1.12, nanoid@npm:^3.1.16":
+"nanoid@npm:3.1.17":
+  version: 3.1.17
+  resolution: "nanoid@npm:3.1.17"
+  bin:
+    nanoid: bin/nanoid.cjs
+  checksum: 34c77d95c8ebc8d7863011099df765c9c4dba9878bb41c27eab8cfe065b38b1cfc7bf6b32edbcbcd147e61ca8b46664d5040a63d65f719396d0ec86585fa7789
+  languageName: node
+  linkType: hard
+
+"nanoid@npm:^3.1.12, nanoid@npm:^3.1.16":
   version: 3.1.16
   resolution: "nanoid@npm:3.1.16"
   bin:
@@ -36825,7 +36834,7 @@ typescript@^4.0.0:
     jest-emotion: 10.0.32
     jest-fetch-mock: 3.0.3
     make-plural: 6.2.2
-    nanoid: 3.1.16
+    nanoid: 3.1.17
     npm-run-all: 4.1.5
     preact: 10.5.5
     preact-render-to-string: 5.1.12
