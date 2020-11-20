@@ -19029,7 +19029,7 @@ fsevents@^1.2.7:
     imagemin-optipng: 8.0.0
     imagemin-svgo: 8.0.0
     img-loader: 3.0.2
-    io-ts: 2.2.12
+    io-ts: 2.2.13
     io-ts-types: 0.5.12
     lqip-loader: 2.2.1
     minio: 7.0.16
@@ -22023,12 +22023,12 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"io-ts@npm:2.2.12":
-  version: 2.2.12
-  resolution: "io-ts@npm:2.2.12"
+"io-ts@npm:2.2.13":
+  version: 2.2.13
+  resolution: "io-ts@npm:2.2.13"
   peerDependencies:
     fp-ts: ^2.0.0
-  checksum: c1542902a496000a90bbc8482ccc59d0c2b472834c755666889170b71bd002a837fed354909973f9b549cf5423bc119284ab5bebd8da2f16677ed2aece9a330a
+  checksum: 93265e16eaafe56bbb4a8789d9a8fecb0b22c2e55c917c3c0f5c55de20bbe2ff27e5bc1718d615bb892c01c397edcc7907babbc1e7571e3fc169bb30032f6da5
   languageName: node
   linkType: hard
 
