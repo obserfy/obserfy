@@ -9051,13 +9051,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:16.9.56":
-  version: 16.9.56
-  resolution: "@types/react@npm:16.9.56"
+"@types/react@npm:16.14.0":
+  version: 16.14.0
+  resolution: "@types/react@npm:16.14.0"
   dependencies:
     "@types/prop-types": "*"
     csstype: ^3.0.2
-  checksum: 139867e2b3d577723b9361234f105d0cf1b143202f51fef207355332f972dd74030cfb3918037cb311eefd203ee06e0a370c37755204eefdd35734f0fde070a1
+  checksum: 007fc9a3d4528516f65d52e9095096b709de913dc8470298951763452cbc3184405fc82fb2676de961decb0377be5e98b38505270ea05539e739ae352f2c0f3c
   languageName: node
   linkType: hard
 
@@ -18696,7 +18696,7 @@ __metadata:
     "@lingui/macro": 3.2.1
     "@lingui/react": 3.2.1
     "@tailwindcss/typography": 0.3.1
-    "@types/react": 16.9.56
+    "@types/react": 16.14.0
     "@types/react-helmet": 6.1.0
     "@typescript-eslint/eslint-plugin": 4.8.1
     "@typescript-eslint/parser": 4.8.1
@@ -19004,7 +19004,7 @@ fsevents@^1.2.7:
     "@types/node": 14.14.9
     "@types/pg": 7.14.7
     "@types/pino": 6.3.4
-    "@types/react": 16.9.56
+    "@types/react": 16.14.0
     "@types/react-query": 1.1.2
     "@types/uuid": 8.3.0
     "@typescript-eslint/eslint-plugin": 4.8.1
@@ -36770,7 +36770,7 @@ typescript@^4.0.0:
     "@types/jest": 26.0.15
     "@types/query-string": 6.3.0
     "@types/reach__router": 1.3.6
-    "@types/react": 16.9.56
+    "@types/react": 16.14.0
     "@types/react-adaptive-hooks": 0.0.0
     "@types/react-dom": 16.9.9
     "@types/react-helmet": 6.1.0
