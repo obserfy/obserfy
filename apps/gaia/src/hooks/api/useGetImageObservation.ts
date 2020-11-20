@@ -4,7 +4,7 @@ import { getApi } from "../../apiHelpers"
 
 const useGetObservationsByImage = (imageId: string) => {
   const getObservationsByImage = getApi<GetChildObservationByImages>(`/image/${imageId}`)
-  return useQuery(["observations", imageId], getObservationsByImage)
+  return useQuery(["image-observations", imageId], getObservationsByImage)
 }
 
 export default useGetObservationsByImage
