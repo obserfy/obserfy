@@ -16209,7 +16209,7 @@ __metadata:
     eslint-plugin-react-hooks: 4.2.0
     faker: 5.1.0
     pnp-webpack-plugin: 1.6.4
-    prettier: 2.1.2
+    prettier: 2.2.0
     typescript: 4.1.2
     wait-on: 5.2.0
     webpack: 5.6.0
@@ -18736,7 +18736,7 @@ __metadata:
     postcss: 8.1.8
     postcss-preset-env: 6.7.0
     preact: 10.5.5
-    prettier: 2.1.2
+    prettier: 2.2.0
     react: 17.0.1
     react-dom: 17.0.1
     react-helmet: 6.1.0
@@ -19047,7 +19047,7 @@ fsevents@^1.2.7:
     postcss-preset-env: 6.7.0
     preact: 10.5.5
     preact-render-to-string: 5.1.12
-    prettier: 2.1.2
+    prettier: 2.2.0
     react: "npm:@preact/compat@0.0.3"
     react-dom: "npm:@preact/compat@0.0.3"
     react-optimized-image: 0.4.1
@@ -29813,12 +29813,12 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"prettier@npm:2.1.2":
-  version: 2.1.2
-  resolution: "prettier@npm:2.1.2"
+"prettier@npm:2.2.0":
+  version: 2.2.0
+  resolution: "prettier@npm:2.2.0"
   bin:
     prettier: bin-prettier.js
-  checksum: bedc24c568efbcfe45f255558900777e2fabb36bf28ed4c22d2456eb22dfb012d12e566a46472ea5b857a4e9f263e888f7e316527d00bb58188f1820b0b0031a
+  checksum: fe7e2ac725d3b067204700c5fcee415a90e1c1ab01735a7748bce791db61a3242939a032bfe5f8faa2c054571f4e9bac266b766e483648511af72f69fb041a6c
   languageName: node
   linkType: hard
 
@@ -36838,7 +36838,7 @@ typescript@^4.0.0:
     npm-run-all: 4.1.5
     preact: 10.5.5
     preact-render-to-string: 5.1.12
-    prettier: 2.1.2
+    prettier: 2.2.0
     query-string: 6.13.7
     react: 17.0.1
     react-adaptive-hooks: 0.0.8
