@@ -6069,29 +6069,29 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lingui/babel-plugin-extract-messages@npm:3.2.1":
-  version: 3.2.1
-  resolution: "@lingui/babel-plugin-extract-messages@npm:3.2.1"
+"@lingui/babel-plugin-extract-messages@npm:^3.2.2":
+  version: 3.2.2
+  resolution: "@lingui/babel-plugin-extract-messages@npm:3.2.2"
   dependencies:
     "@babel/generator": ^7.11.6
     "@babel/runtime": ^7.11.2
-    "@lingui/conf": 3.2.1
+    "@lingui/conf": ^3.2.2
     mkdirp: ^1.0.4
-  checksum: 473916449c88dbac0e780a2bd208e13c752aa37e4ed73ba593c7ea5ea392ba0cb86ba91982c6c56a6c9d27ed8696eb40036d5061bad84a4ffe5352d7a5127de4
+  checksum: 2492c9e9f1ec37a82e611cd62183656a97770f46c4be0a4fb6c764508296f297bdafac0c54f4c46ac61d48aba71796598443bb26a813cd3278a21aec492595b3
   languageName: node
   linkType: hard
 
-"@lingui/cli@npm:3.2.1":
-  version: 3.2.1
-  resolution: "@lingui/cli@npm:3.2.1"
+"@lingui/cli@npm:3.2.2":
+  version: 3.2.2
+  resolution: "@lingui/cli@npm:3.2.2"
   dependencies:
     "@babel/generator": ^7.11.6
     "@babel/parser": ^7.11.5
     "@babel/plugin-syntax-jsx": ^7.10.4
     "@babel/runtime": ^7.11.2
     "@babel/types": ^7.11.5
-    "@lingui/babel-plugin-extract-messages": 3.2.1
-    "@lingui/conf": 3.2.1
+    "@lingui/babel-plugin-extract-messages": ^3.2.2
+    "@lingui/conf": ^3.2.2
     babel-plugin-macros: ^2.8.0
     bcp-47: ^1.0.7
     chalk: ^4.1.0
@@ -6118,55 +6118,55 @@ __metadata:
     typescript: 2 || 3 || 4
   bin:
     lingui: lingui.js
-  checksum: 3cbbf1dddd18fe2aeecffe5dfeb923de89ebd4433f3e3c4341196977cf0e3fb6386545f55fbc63ead9ca6896205c997eb3967898ccc224373007909cb3b27cbf
+  checksum: 0a6f19d7efc4bcb3e75e21bf80f77834df36b54469cdaa33fb09bbd6de3e23da0fdf46b621806296d5b2954764b310db069c0515576f456fbd2395a4d2803ad6
   languageName: node
   linkType: hard
 
-"@lingui/conf@npm:3.2.1":
-  version: 3.2.1
-  resolution: "@lingui/conf@npm:3.2.1"
+"@lingui/conf@npm:^3.2.2":
+  version: 3.2.2
+  resolution: "@lingui/conf@npm:3.2.2"
   dependencies:
     "@babel/runtime": ^7.11.2
     chalk: ^4.1.0
     cosmiconfig: ^7.0.0
     jest-validate: ^26.5.2
-  checksum: 0a2fee225de1eb3ab03d1ea5cac58eb3bf6ee0197cb83496063c96adc40996042845c2fa8b59fe26f5879b600b897135e20cd1b0ac7a9f84b9d421bdee1d39a8
+  checksum: e8c42c3967bdbb8d76f965b4b1b5cec4dfb3f6ddff34e896c257dc3a9370bf7973a72e8dd7cd4bde95af481e65c44c6bebce55e0ff2fd638ad3ce6de333a05c4
   languageName: node
   linkType: hard
 
-"@lingui/core@npm:3.2.1":
-  version: 3.2.1
-  resolution: "@lingui/core@npm:3.2.1"
+"@lingui/core@npm:3.2.2, @lingui/core@npm:^3.2.2":
+  version: 3.2.2
+  resolution: "@lingui/core@npm:3.2.2"
   dependencies:
     "@babel/runtime": ^7.11.2
     make-plural: ^6.2.2
     messageformat-parser: ^4.1.3
-  checksum: 21475f3f62b8495fbc8c97a0a2d2635de26f28003ff8ceb020cf7460383857d7a6c494ed208b0b878f46d972e447a3b6c754e83ce7219b2156a3db14897c37cc
+  checksum: 5fbbdc36662d5597e2d7518ef2c5c14c258ab229554ed7c876c076ebc4cf040bd24719df57049bd5477be17d041c121fcfc896e3f60bd3d742a5fe260a926ce4
   languageName: node
   linkType: hard
 
-"@lingui/macro@npm:3.2.1":
-  version: 3.2.1
-  resolution: "@lingui/macro@npm:3.2.1"
+"@lingui/macro@npm:3.2.2":
+  version: 3.2.2
+  resolution: "@lingui/macro@npm:3.2.2"
   dependencies:
     "@babel/runtime": ^7.11.2
-    "@lingui/conf": 3.2.1
+    "@lingui/conf": ^3.2.2
     ramda: ^0.27.1
   peerDependencies:
     babel-plugin-macros: ^2.5.1
-  checksum: 7f8c89251eb9845a50074836a5eb0e46dc809430cdd402260a58513c7770232fe32aab741396c78ee3814270b7f6a6edd20d5074d2a9a19e7ad5a12690dae85d
+  checksum: 8e6fc5af6929fba2ecd567aa54ac8d8a6db74d310c1d3a52970219edc45d4e1137ee534996de1c6a83ecb87a85b984ff20962481b351f9dbc9a115b87d1f604e
   languageName: node
   linkType: hard
 
-"@lingui/react@npm:3.2.1":
-  version: 3.2.1
-  resolution: "@lingui/react@npm:3.2.1"
+"@lingui/react@npm:3.2.2":
+  version: 3.2.2
+  resolution: "@lingui/react@npm:3.2.2"
   dependencies:
     "@babel/runtime": ^7.11.2
-    "@lingui/core": 3.2.1
+    "@lingui/core": ^3.2.2
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
-  checksum: 894d854a01d8051c10d14b5adf1d3319e2a78721cd61ad93208b7d2178842fe45684afb99ee9968bcf5fd846ee43b57c9dcec252ebedd6122eff1052a43c72b7
+  checksum: 198e0fd549759a4644c2f0a6c1fd439e2772938f31ae569c45b3e547de60aa08eebb69f3265e5cc8500592fcceab584d3e78ca412cc5cc8333fee695505e8867
   languageName: node
   linkType: hard
 
@@ -18691,10 +18691,10 @@ __metadata:
   resolution: "freyr@workspace:apps/freyr"
   dependencies:
     "@babel/core": 7.12.3
-    "@lingui/cli": 3.2.1
-    "@lingui/core": 3.2.1
-    "@lingui/macro": 3.2.1
-    "@lingui/react": 3.2.1
+    "@lingui/cli": 3.2.2
+    "@lingui/core": 3.2.2
+    "@lingui/macro": 3.2.2
+    "@lingui/react": 3.2.2
     "@tailwindcss/typography": 0.3.1
     "@types/react": 16.14.0
     "@types/react-helmet": 6.1.0
@@ -19682,8 +19682,8 @@ fsevents@^1.2.7:
   version: 0.0.0-use.local
   resolution: "gatsby-theme-i18n-lingui@workspace:packages/gatsby-theme-i18n-lingui"
   dependencies:
-    "@lingui/core": 3.2.1
-    "@lingui/react": 3.2.1
+    "@lingui/core": 3.2.2
+    "@lingui/react": 3.2.2
     react-refresh: 0.9.0
   peerDependencies:
     "@emotion/core": ^10.0.28
@@ -36749,10 +36749,10 @@ typescript@^4.0.0:
     "@babel/runtime": 7.12.5
     "@emotion/core": 10.1.1
     "@istanbuljs/nyc-config-typescript": 1.0.1
-    "@lingui/cli": 3.2.1
-    "@lingui/core": 3.2.1
-    "@lingui/macro": 3.2.1
-    "@lingui/react": 3.2.1
+    "@lingui/cli": 3.2.2
+    "@lingui/core": 3.2.2
+    "@lingui/macro": 3.2.2
+    "@lingui/react": 3.2.2
     "@reach/router": 1.3.4
     "@sentry/gatsby": 5.27.4
     "@sentry/tracing": 5.27.4
