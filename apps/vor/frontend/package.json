@@ -46,7 +46,7 @@
     "idb-keyval": "3.2.0",
     "immer": "8.0.0",
     "make-plural": "6.2.2",
-    "nanoid": "3.1.16",
+    "nanoid": "3.1.17",
     "preact": "10.5.5",
     "preact-render-to-string": "5.1.12",
     "query-string": "6.13.7",
