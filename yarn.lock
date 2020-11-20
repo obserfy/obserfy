@@ -16477,7 +16477,7 @@ __metadata:
     babel-loader: 8.2.1
     cypress: 5.6.0
     cypress-intellij-reporter: 0.0.5
-    eslint: 7.13.0
+    eslint: 7.14.0
     eslint-config-airbnb-typescript: 12.0.0
     eslint-config-prettier: 6.15.0
     eslint-import-resolver-node: 0.3.4
@@ -17470,9 +17470,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:7.13.0":
-  version: 7.13.0
-  resolution: "eslint@npm:7.13.0"
+"eslint@npm:7.14.0":
+  version: 7.14.0
+  resolution: "eslint@npm:7.14.0"
   dependencies:
     "@babel/code-frame": ^7.0.0
     "@eslint/eslintrc": ^0.2.1
@@ -17513,7 +17513,7 @@ __metadata:
     v8-compile-cache: ^2.0.3
   bin:
     eslint: bin/eslint.js
-  checksum: 6ea6c763f1b1e484ec5da67e10125cc9b6ccef5c355470cb71a2e29c70b24c0ef325dd45e775800dd78dbcfba2a9c85b9096f438cdb468b32b6680c2ddebb459
+  checksum: 6c1c9ae3cd1ec1c9238a92380049509e9c18fecfb4c9982d4f4d49ec681ec7a2cbc04bbd354ddf10588727f143a158c7a0a82b2fd662197f554bd435cfdb250f
   languageName: node
   linkType: hard
 
@@ -18998,7 +18998,7 @@ __metadata:
     babel-core: 7.0.0-bridge.0
     babel-plugin-macros: 2.8.0
     babel-preset-gatsby: 0.6.0
-    eslint: 7.13.0
+    eslint: 7.14.0
     eslint-config-airbnb-typescript: 12.0.0
     eslint-config-prettier: 6.15.0
     eslint-import-resolver-node: 0.3.4
@@ -19306,7 +19306,7 @@ fsevents@^1.2.7:
     "@typescript-eslint/parser": 4.8.1
     body-scroll-lock: 3.1.5
     dayjs: 1.9.6
-    eslint: 7.13.0
+    eslint: 7.14.0
     eslint-config-airbnb-typescript: 12.0.0
     eslint-config-prettier: 6.15.0
     eslint-import-resolver-node: 0.3.4
@@ -37093,7 +37093,7 @@ typescript@^4.0.0:
     cross-env: 7.0.2
     dayjs: 1.9.6
     dotenv: 8.2.0
-    eslint: 7.13.0
+    eslint: 7.14.0
     eslint-config-airbnb-typescript: 12.0.0
     eslint-config-prettier: 6.15.0
     eslint-import-resolver-node: 0.3.4
