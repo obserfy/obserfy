@@ -9244,12 +9244,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:16.9.9":
-  version: 16.9.9
-  resolution: "@types/react-dom@npm:16.9.9"
+"@types/react-dom@npm:17.0.0":
+  version: 17.0.0
+  resolution: "@types/react-dom@npm:17.0.0"
   dependencies:
     "@types/react": "*"
-  checksum: d92c166f5bcd483f175311eec9c472893216d486106a5b5402eb293840c0b0d1aafb484a3fe3f0f4622ae1f6dff46c9fe970873d4dac7fdf70a50931d3cab4a0
+  checksum: 7ca9351b6c2523327cd7afe40082a37034898f65e9d86700236682efed910ba7c9cec10e9a3b829aa7b804b18791a28743ce468fcb42e9a788bfc33b84137e45
   languageName: node
   linkType: hard
 
@@ -37074,7 +37074,7 @@ typescript@^4.0.0:
     "@types/reach__router": 1.3.6
     "@types/react": 17.0.0
     "@types/react-adaptive-hooks": 0.0.0
-    "@types/react-dom": 16.9.9
+    "@types/react-dom": 17.0.0
     "@types/react-helmet": 6.1.0
     "@types/segment-analytics": 0.0.33
     "@types/styled-system": 5.1.10
