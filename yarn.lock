@@ -19028,7 +19028,7 @@ __metadata:
     gatsby-theme-i18n: 1.0.4
     gatsby-theme-i18n-lingui: 1.0.4
     gatsby-transformer-sharp: 2.6.0
-    postcss: 8.1.8
+    postcss: 8.1.9
     postcss-preset-env: 6.7.0
     preact: 10.5.5
     prettier: 2.1.2
@@ -26492,12 +26492,21 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"nanoid@npm:^3.1.12, nanoid@npm:^3.1.16":
+"nanoid@npm:^3.1.12":
   version: 3.1.16
   resolution: "nanoid@npm:3.1.16"
   bin:
     nanoid: bin/nanoid.cjs
   checksum: 1903aa0a7602e881ef7015d4c8ccf8a2a92b45b1bd6c4bb9c1dd2119f41ebe08a44c9195ecf4c1fbaef147bd4d050e41adbcb747ec96d7d14c1f662e3ac52790
+  languageName: node
+  linkType: hard
+
+"nanoid@npm:^3.1.18":
+  version: 3.1.18
+  resolution: "nanoid@npm:3.1.18"
+  bin:
+    nanoid: bin/nanoid.cjs
+  checksum: ae87f7a2542cb9cb546410dee7327a1eece71bd4bb6ef62aab30275342947554add78713bed50c9e012e5d45392cc948087c5bfbbae14ee126defb0926c4afd8
   languageName: node
   linkType: hard
 
@@ -29926,15 +29935,15 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"postcss@npm:8.1.8":
-  version: 8.1.8
-  resolution: "postcss@npm:8.1.8"
+"postcss@npm:8.1.9":
+  version: 8.1.9
+  resolution: "postcss@npm:8.1.9"
   dependencies:
     colorette: ^1.2.1
-    line-column: ^1.0.2
-    nanoid: ^3.1.16
+    nanoid: ^3.1.18
     source-map: ^0.6.1
-  checksum: 0db803253f65d1edd27b25fb318a6862d0f256bedd7251485a48aaad4fa0e1daf2ca67754239d96f5ae2c51dd52f26d0da93c1db88ac783347a54e4d311bb05f
+    vfile-location: ^3.2.0
+  checksum: 34f41717f05259fec18f5503816caa3255a557c0b424e865ad973e7b2931e306365dd6e88f473539bcedaa58238b52008e8cb0e4dbc6342f5fba37a4bb61d284
   languageName: node
   linkType: hard
 
