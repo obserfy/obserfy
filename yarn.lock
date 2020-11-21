@@ -4563,12 +4563,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cypress/code-coverage@npm:3.8.3":
-  version: 3.8.3
-  resolution: "@cypress/code-coverage@npm:3.8.3"
+"@cypress/code-coverage@npm:3.8.4":
+  version: 3.8.4
+  resolution: "@cypress/code-coverage@npm:3.8.4"
   dependencies:
     "@cypress/browserify-preprocessor": 3.0.1
-    debug: 4.2.0
+    debug: 4.3.1
     execa: 4.1.0
     globby: 11.0.1
     istanbul-lib-coverage: 3.0.0
@@ -4576,7 +4576,7 @@ __metadata:
     nyc: 15.1.0
   peerDependencies:
     cypress: "*"
-  checksum: e3ad4b13529b55dd0568feda76f428911dbf136cbcefbafd4b1e5e0b24dda95b580eacab2be123ab6b4757659884522dccf771cbc3d168d01fb2807d9ffa4a81
+  checksum: e6d194864343ec3412838321526d9e454c4d453aee96381db5da05ada38dbfd4c4b6f60cca1edeed94e1e887890825e8b5ad4c6a8d459d245a801c48745c3436
   languageName: node
   linkType: hard
 
@@ -15455,15 +15455,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:4.2.0":
-  version: 4.2.0
-  resolution: "debug@npm:4.2.0"
+"debug@npm:4.3.1":
+  version: 4.3.1
+  resolution: "debug@npm:4.3.1"
   dependencies:
     ms: 2.1.2
   peerDependenciesMeta:
     supports-color:
       optional: true
-  checksum: dcfb8ede26b4d899628a75806923ab9ad29daae7db0f6f1ca6227b660693ae0ca085c7f87261793abe0832ad56aff2afc33f907c6b5dc96a41fc208771feb465
+  checksum: 0d41ba5177510e8b388dfd7df143ab0f9312e4abdaba312595461511dac88e9ef8101939d33b4e6d37e10341af6a5301082e4d7d6f3deb4d57bc05fc7d296fad
   languageName: node
   linkType: hard
 
@@ -16468,7 +16468,7 @@ __metadata:
   dependencies:
     "@babel/core": 7.12.7
     "@babel/preset-env": 7.12.7
-    "@cypress/code-coverage": 3.8.3
+    "@cypress/code-coverage": 3.8.4
     "@cypress/webpack-preprocessor": 5.4.11
     "@types/faker": 5.1.4
     "@types/node": 14.14.9
