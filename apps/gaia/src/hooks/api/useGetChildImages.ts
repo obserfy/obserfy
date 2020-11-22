@@ -1,6 +1,6 @@
 import { queryCache, useQuery } from "react-query"
-import { getApi } from "../apiHelpers"
-import { GetChildImagesResponse } from "../pages/api/children/[childId]/images"
+import { getApi } from "./apiHelpers"
+import { GetChildImagesResponse } from "../../pages/api/children/[childId]/images"
 
 export interface ChildImage extends GetChildImagesResponse {
   isUploading?: boolean

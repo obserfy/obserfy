@@ -1,4 +1,4 @@
-import { array, string, type } from "io-ts"
+import { array, number, string, type } from "io-ts"
 import { date } from "io-ts-types"
 import { nullable } from "io-ts/Type"
 import { LessonPlan } from "../domain"
@@ -267,19 +267,65 @@ export const findChildObservationsGroupedByDate = async (childId: string) =>
     ChildObservationsGroupedByDate,
     [childId],
     `
-              select o1.event_time::date as date, json_agg(o3 order by event_time desc) as observations
-              from observations as o1
-                       left join (
-                  select o2.id, o2.short_desc, o2.long_desc, a.name as area_name, json_agg(i) as images
-                  from observations o2
-                           left outer join observation_to_images oti on o2.id = oti.observation_id
-                           left outer join images i on oti.image_id = i.id
-                           left outer join areas a on o2.area_id = a.id
-                  group by o2.id, a.name, o2.short_desc, o2.long_desc
-              ) o3 on o3.id = o1.id
-              where o1.student_id = $1
-                AND o1.visible_to_guardians = true
-              group by o1.event_time::date
-              order by o1.event_time::date desc
+        select o1.event_time::date as date, json_agg(o3 order by event_time desc) as observations
+        from observations as o1
+                 left join (
+            select o2.id, o2.short_desc, o2.long_desc, a.name as area_name, json_agg(i) as images
+            from observations o2
+                     left outer join observation_to_images oti on o2.id = oti.observation_id
+                     left outer join images i on oti.image_id = i.id
+                     left outer join areas a on o2.area_id = a.id
+            group by o2.id, a.name, o2.short_desc, o2.long_desc
+        ) o3 on o3.id = o1.id
+        where o1.student_id = $1
+          AND o1.visible_to_guardians = true
+        group by o1.event_time::date
+        order by o1.event_time::date desc
     `
   )
+
+const ChildCurriculumProgress = array(
+  type({
+    id: string,
+    name: string,
+    subjects: array(
+      type({
+        id: string,
+        name: string,
+        materials: array(
+          type({
+            id: string,
+            name: string,
+            stage: number,
+          })
+        ),
+      })
+    ),
+  })
+)
+export const findChildCurriculumProgress = async (childId: string) => {
+  // language=PostgreSQL
+  return typedQuery(
+    ChildCurriculumProgress,
+    [childId],
+    `
+        select a.id, a.name, json_agg(s2) as subjects
+        from students
+                 join schools s on students.school_id = s.id
+                 join curriculums c on s.curriculum_id = c.id
+                 join areas a on c.id = a.curriculum_id
+                 join (
+            select s3.id, s3.name, s3.area_id, json_agg(m) as materials
+            from subjects as s3
+                     join (select id, name, subject_id, coalesce(smp.stage, -1) as stage
+                           from materials
+                                    join student_material_progresses smp
+                                         on materials.id = smp.material_id and smp.student_id = $1) m
+                          on m.subject_id = s3.id
+            group by s3.id
+        ) s2 on s2.area_id = a.id
+        where students.id = $1
+        group by a.id
+    `
+  )
+}

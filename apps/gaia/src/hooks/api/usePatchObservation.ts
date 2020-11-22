@@ -1,5 +1,5 @@
 import { queryCache, useMutation } from "react-query"
-import { patchApi } from "../../apiHelpers"
+import { patchApi } from "./apiHelpers"
 import { PatchObservationRequestBody } from "../../pages/api/observations/[observationId]"
 
 const usePatchObservation = (id: string) => {
