@@ -1,32 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`UserCard should render correctly 1`] = `
-.emotion-8 {
+.emotion-0 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-size: 16px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-8 {
+@media screen and (min-width: 40em) {
+  .emotion-0 {
     font-size: 20px;
   }
 }
 
-.emotion-7 {
+.emotion-1 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   overflow: auto;
-  background-color: var(--theme-ui-colors-surface,#fff);
+  background-color: var(--theme-ui-colors-surface, #fff);
   border-radius: 6px;
-  box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px,rgba(0, 0, 0, 0.27) 0px 2px 4px -2px;
   padding: 16px;
   margin-top: 8px;
 }
 
-.emotion-6 {
+.emotion-2 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -40,7 +40,7 @@ exports[`UserCard should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-2 {
+.emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -57,31 +57,31 @@ exports[`UserCard should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-0 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: bold;
   line-height: heading;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   text-rendering: optimizeLegibility;
   font-size: 20px;
 }
 
-.emotion-1 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
   font-size: 14px;
 }
 
-.emotion-3 {
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -91,7 +91,7 @@ exports[`UserCard should render correctly 1`] = `
   pointer-events: none;
 }
 
-.emotion-5 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -100,7 +100,7 @@ exports[`UserCard should render correctly 1`] = `
   padding-left: 8px;
   padding-right: 8px;
   margin: 4px;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   border-width: 1px;
   border-style: solid;
   border-radius: 99999px;
@@ -108,61 +108,61 @@ exports[`UserCard should render correctly 1`] = `
   -ms-flex-negative: 0;
   flex-shrink: 0;
   display: inline-block;
-  background-color: var(--theme-ui-colors-primary,#00e399);
+  background-color: var(--theme-ui-colors-primary, #00e399);
 }
 
-.emotion-4 {
+.emotion-8 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
-  color: var(--theme-ui-colors-onPrimary,#000);
+  color: var(--theme-ui-colors-onPrimary, #000);
   font-size: 12px;
   line-height: 1em;
   text-transform: capitalize;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-4 {
+@media screen and (min-width: 40em) {
+  .emotion-8 {
     font-size: 12px;
   }
 }
 
 <div>
   <div
-    class="emotion-8"
+    class="emotion-0"
   >
     <div
-      class="emotion-7"
+      class="emotion-1"
     >
       <div
-        class="emotion-6"
+        class="emotion-2"
       >
         <div
-          class="emotion-2"
+          class="emotion-3"
         >
           <h6
-            class="emotion-0"
+            class="emotion-4"
           >
             Johnny Obviously
           </h6>
           <p
-            class="emotion-1"
+            class="emotion-5"
           >
             johnny@gmail.com
           </p>
         </div>
         <div
-          class="emotion-3"
+          class="emotion-6"
         />
         <div
-          class="emotion-5"
+          class="emotion-7"
         >
           <p
-            class="emotion-4"
+            class="emotion-8"
           >
             You
           </p>

@@ -97,7 +97,6 @@ module.exports = {
       },
     },
     // `gatsby-plugin-remove-serviceworker`,
-    `gatsby-plugin-emotion`,
     `gatsby-plugin-portal`,
     {
       resolve: `gatsby-plugin-segment-js`,
@@ -155,7 +154,6 @@ module.exports = {
     //   resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
     //   options: {
     //     analyzerPort: 3300,
-    //     disable: true,
     //   },
     // },
   ],

@@ -1,20 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageListOfStudents should render correctly 1`] = `
-.emotion-9 {
+.emotion-0 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-size: 16px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-9 {
+@media screen and (min-width: 40em) {
+  .emotion-0 {
     font-size: 20px;
   }
 }
 
-.emotion-8 {
+.emotion-1 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -41,7 +41,7 @@ exports[`PageListOfStudents should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-0 {
+.emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -49,7 +49,7 @@ exports[`PageListOfStudents should render correctly 1`] = `
   height: auto;
   margin: 16px;
   margin-right: 4px;
-  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
+  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -57,33 +57,33 @@ exports[`PageListOfStudents should render correctly 1`] = `
   height: 24px;
 }
 
-.emotion-1 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-bottom: 0;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
 }
 
-.emotion-3 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: bold;
   line-height: heading;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   text-rendering: optimizeLegibility;
   font-size: 24px;
   margin: 16px;
   line-height: 1;
 }
 
-.emotion-7 {
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -93,7 +93,7 @@ exports[`PageListOfStudents should render correctly 1`] = `
   padding-top: 8px;
 }
 
-.emotion-6 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -102,14 +102,14 @@ exports[`PageListOfStudents should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-size: 14px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -120,7 +120,7 @@ exports[`PageListOfStudents should render correctly 1`] = `
   font-size: 12px;
 }
 
-.emotion-5 {
+.emotion-8 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -134,7 +134,7 @@ exports[`PageListOfStudents should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-4 {
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -143,6 +143,7 @@ exports[`PageListOfStudents should render correctly 1`] = `
   padding: 8px;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   font-size: inherit;
   line-height: inherit;
@@ -153,53 +154,53 @@ exports[`PageListOfStudents should render correctly 1`] = `
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface,#fff);
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface, #fff);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   padding-top: 8px;
   padding-bottom: 8px;
-  background-color: var(--theme-ui-colors-surface,#fff);
+  background-color: var(--theme-ui-colors-surface, #fff);
   width: 100%;
   font-size: 14px;
   width: 100%;
 }
 
-.emotion-4:hover,
-.emotion-4:focus {
-  border-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-9:hover,
+.emotion-9:focus {
+  border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-4::-webkit-input-placeholder {
+.emotion-9::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-4::-moz-placeholder {
+.emotion-9::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-4:-ms-input-placeholder {
+.emotion-9:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-4::placeholder {
+.emotion-9::placeholder {
   font-style: italic;
 }
 
-.emotion-4:disabled {
+.emotion-9:disabled {
   opacity: 0.68;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
 }
 
 <div>
   <div
-    class="emotion-9"
+    class="emotion-0"
   >
     <div
-      class="emotion-8"
+      class="emotion-1"
     >
       <a
         href="/dashboard/admin"
@@ -209,31 +210,31 @@ exports[`PageListOfStudents should render correctly 1`] = `
           class="emotion-2"
         >
           <div
-            class="emotion-0"
+            class="emotion-3"
           />
           <p
-            class="emotion-1"
+            class="emotion-4"
           >
             Settings
           </p>
         </div>
       </a>
       <h5
-        class="emotion-3"
+        class="emotion-5"
       >
         All Students
       </h5>
       <div
-        class="emotion-7"
+        class="emotion-6"
       >
         <label
-          class="emotion-6"
+          class="emotion-7"
         >
           <div
-            class="emotion-5"
+            class="emotion-8"
           >
             <input
-              class="emotion-4"
+              class="emotion-9"
               name="name"
               placeholder="Search"
               value=""

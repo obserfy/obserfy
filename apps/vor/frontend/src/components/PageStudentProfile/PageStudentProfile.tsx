@@ -2,6 +2,7 @@
 import { FC, Fragment, useState } from "react"
 import { Box, Button, Card, Flex, jsx } from "theme-ui"
 import { t, Trans } from "@lingui/macro"
+import { useLingui } from "@lingui/react"
 import { useGetStudent } from "../../api/useGetStudent"
 import { usePatchStudentApi } from "../../api/students/usePatchStudentApi"
 
@@ -248,6 +249,7 @@ const GenderDataBox: FC<{ value?: number; studentId: string }> = ({
     await mutate({ gender })
     setShowEditDialog(false)
   }
+  const { i18n } = useLingui()
   return (
     <Fragment>
       <DataBox
@@ -286,15 +288,9 @@ const GenderDataBox: FC<{ value?: number; studentId: string }> = ({
                 setGender(parseInt(e.target.value, 10))
               }}
             >
-              <option value={Gender.NotSet}>
-                <Trans>Not Set</Trans>
-              </option>
-              <option value={Gender.Male}>
-                <Trans>Male</Trans>
-              </option>
-              <option value={Gender.Female}>
-                <Trans>Female</Trans>
-              </option>
+              <option value={Gender.NotSet}>{i18n._(t`Not Set`)}</option>
+              <option value={Gender.Male}>{i18n._(t`Male`)}</option>
+              <option value={Gender.Female}>{i18n._(t`Female`)}</option>
             </Select>
           </Box>
         </Dialog>

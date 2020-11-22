@@ -1,29 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`StudentPicturePlaceholder should render correctly 1`] = `
-.emotion-1 {
+.emotion-0 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-size: 16px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-1 {
+@media screen and (min-width: 40em) {
+  .emotion-0 {
     font-size: 20px;
   }
 }
 
-.emotion-0 {
+.emotion-1 {
   border-radius: 99999px;
 }
 
 <div>
   <div
-    class="emotion-1"
+    class="emotion-0"
   >
     <div
-      class="emotion-0 gatsby-image-wrapper"
+      class="emotion-1 gatsby-image-wrapper"
       style="position: relative; overflow: hidden; display: inline-block; width: 32px; height: 32px;"
     >
       <img
