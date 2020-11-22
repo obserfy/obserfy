@@ -19483,6 +19483,7 @@ fsevents@^1.2.7:
     pg: 8.5.1
     pino: 6.7.0
     pino-pretty: 4.3.0
+    postcss: ^8.1.9
     postcss-preset-env: 6.7.0
     preact: 10.5.5
     preact-render-to-string: 5.1.12
@@ -26626,16 +26627,7 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"nanoid@npm:^3.1.12":
-  version: 3.1.16
-  resolution: "nanoid@npm:3.1.16"
-  bin:
-    nanoid: bin/nanoid.cjs
-  checksum: 1903aa0a7602e881ef7015d4c8ccf8a2a92b45b1bd6c4bb9c1dd2119f41ebe08a44c9195ecf4c1fbaef147bd4d050e41adbcb747ec96d7d14c1f662e3ac52790
-  languageName: node
-  linkType: hard
-
-"nanoid@npm:^3.1.18":
+"nanoid@npm:^3.1.12, nanoid@npm:^3.1.18":
   version: 3.1.18
   resolution: "nanoid@npm:3.1.18"
   bin:
@@ -30063,7 +30055,7 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"postcss@npm:8.1.9, postcss@npm:^8.1.6":
+"postcss@npm:8.1.9, postcss@npm:^8.1.6, postcss@npm:^8.1.9":
   version: 8.1.9
   resolution: "postcss@npm:8.1.9"
   dependencies:
