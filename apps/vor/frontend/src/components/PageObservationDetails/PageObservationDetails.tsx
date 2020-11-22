@@ -118,7 +118,7 @@ const VisibleToGuardians: FC<{
     >
       <Checkbox
         checked={value}
-        label={t`Visible to Guardians`}
+        label={t`Visible to guardians`}
         containerSx={{ ml: [3, 4] }}
         disabled={isLoading}
         onChange={patchVisibleToGuardians}
