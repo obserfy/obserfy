@@ -1,20 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Checkbox should render correctly 1`] = `
-.emotion-5 {
+.emotion-0 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-size: 16px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-5 {
+@media screen and (min-width: 40em) {
+  .emotion-0 {
     font-size: 20px;
   }
 }
 
-.emotion-4 {
+.emotion-1 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -23,7 +23,7 @@ exports[`Checkbox should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-size: 14px;
   -webkit-user-select: none;
@@ -40,13 +40,16 @@ exports[`Checkbox should render correctly 1`] = `
   align-items: center;
 }
 
-.emotion-3 {
+.emotion-2 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  min-width: -webkit-min-content;
+  min-width: -moz-min-content;
+  min-width: min-content;
 }
 
-.emotion-0 {
+.emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -58,7 +61,7 @@ exports[`Checkbox should render correctly 1`] = `
   overflow: hidden;
 }
 
-.emotion-1 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -68,26 +71,26 @@ exports[`Checkbox should render correctly 1`] = `
   min-width: 0;
   margin-right: 8px;
   border-radius: 4px;
-  color: var(--theme-ui-colors-gray,#dddddf);
+  color: var(--theme-ui-colors-gray, #dddddf);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
-input:checked ~ .emotion-1 {
+input:checked~.emotion-4 {
   display: block;
 }
 
-input:checked ~ .emotion-1 {
-  color: var(--theme-ui-colors-primary,#00e399);
+input:checked~.emotion-4 {
+  color: var(--theme-ui-colors-primary, #00e399);
 }
 
-input:focus ~ .emotion-1 {
-  color: var(--theme-ui-colors-primary,#00e399);
-  background-color: var(--theme-ui-colors-highlight,hsla(205,100%,40%,0.125));
+input:focus~.emotion-4 {
+  color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-highlight, hsla(205, 100%, 40%, 0.125));
 }
 
-.emotion-2 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -97,42 +100,42 @@ input:focus ~ .emotion-1 {
   min-width: 0;
   margin-right: 8px;
   border-radius: 4px;
-  color: var(--theme-ui-colors-gray,#dddddf);
+  color: var(--theme-ui-colors-gray, #dddddf);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
-input:checked ~ .emotion-2 {
+input:checked~.emotion-5 {
   display: none;
 }
 
-input:checked ~ .emotion-2 {
-  color: var(--theme-ui-colors-primary,#00e399);
+input:checked~.emotion-5 {
+  color: var(--theme-ui-colors-primary, #00e399);
 }
 
-input:focus ~ .emotion-2 {
-  color: var(--theme-ui-colors-primary,#00e399);
-  background-color: var(--theme-ui-colors-highlight,hsla(205,100%,40%,0.125));
+input:focus~.emotion-5 {
+  color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-highlight, hsla(205, 100%, 40%, 0.125));
 }
 
 <div>
   <div
-    class="emotion-5"
+    class="emotion-0"
   >
     <label
-      class="emotion-4"
+      class="emotion-1"
     >
       <div
-        class="emotion-3"
+        class="emotion-2"
       >
         <input
-          class="emotion-0"
+          class="emotion-3"
           type="checkbox"
         />
         <svg
           aria-hidden="true"
-          class="emotion-1"
+          class="emotion-4"
           fill="currentcolor"
           height="24"
           viewBox="0 0 24 24"
@@ -145,7 +148,7 @@ input:focus ~ .emotion-2 {
         </svg>
         <svg
           aria-hidden="true"
-          class="emotion-2"
+          class="emotion-5"
           fill="currentcolor"
           height="24"
           viewBox="0 0 24 24"

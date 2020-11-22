@@ -1,24 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DraggableListItem should render correctly 1`] = `
-.emotion-4 {
+.emotion-0 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-size: 16px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-4 {
+@media screen and (min-width: 40em) {
+  .emotion-0 {
     font-size: 20px;
   }
 }
 
-.emotion-3 {
+.emotion-1 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  background-color: var(--theme-ui-colors-primaryLightest,rgba(0,120,86,0.05));
+  background-color: var(--theme-ui-colors-primaryLightest, rgba(0,120,86,0.05));
   height: 48px;
 }
 
@@ -26,7 +26,7 @@ exports[`DraggableListItem should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  background-color: var(--theme-ui-colors-background,#f2f3f5);
+  background-color: var(--theme-ui-colors-background, #f2f3f5);
   height: 48px;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -38,13 +38,14 @@ exports[`DraggableListItem should render correctly 1`] = `
   user-select: none;
   width: 100%;
   max-width: 640px;
-  border-bottom-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-bottom-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   border-bottom-width: 1px;
   border-bottom-style: solid;
   -webkit-transition: background-color .1s ease-in,box-shadow .1s ease-in;
   transition: background-color .1s ease-in,box-shadow .1s ease-in;
   position: relative;
   -webkit-transform: translateY(0px);
+  -moz-transform: translateY(0px);
   -ms-transform: translateY(0px);
   transform: translateY(0px);
   z-index: 1;
@@ -55,7 +56,7 @@ exports[`DraggableListItem should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-1 {
+.emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -66,14 +67,14 @@ exports[`DraggableListItem should render correctly 1`] = `
   cursor: move;
 }
 
-.emotion-0 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   max-width: 100%;
   height: auto;
   width: 20px;
-  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
+  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -82,19 +83,19 @@ exports[`DraggableListItem should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-4"
+    class="emotion-0"
   >
     <div
-      class="emotion-3"
+      class="emotion-1"
     >
       <div
         class="emotion-2"
       >
         <div
-          class="emotion-1"
+          class="emotion-3"
         >
           <div
-            class="emotion-0"
+            class="emotion-4"
           />
         </div>
       </div>

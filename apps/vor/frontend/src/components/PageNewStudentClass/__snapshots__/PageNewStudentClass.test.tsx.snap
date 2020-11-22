@@ -1,20 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageNewStudentClass should render correctly 1`] = `
-.emotion-38 {
+.emotion-0 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-size: 16px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-38 {
+@media screen and (min-width: 40em) {
+  .emotion-0 {
     font-size: 20px;
   }
 }
 
-.emotion-37 {
+.emotion-1 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -38,7 +38,7 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-0 {
+.emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -46,7 +46,7 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   height: auto;
   margin: 16px;
   margin-right: 4px;
-  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
+  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -54,42 +54,42 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   height: 24px;
 }
 
-.emotion-1 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-bottom: 0;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
 }
 
-.emotion-3 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: bold;
   line-height: heading;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   text-rendering: optimizeLegibility;
   font-size: 24px;
   margin-left: 16px;
   margin-right: 16px;
   margin-top: 16px;
-  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
+  color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
 }
 
-.emotion-4 {
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: bold;
   line-height: heading;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   text-rendering: optimizeLegibility;
   font-size: 24px;
   margin-left: 16px;
@@ -97,7 +97,7 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   margin-bottom: 16px;
 }
 
-.emotion-36 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -113,14 +113,14 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-size: 14px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -130,14 +130,14 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   flex-direction: column;
 }
 
-.emotion-5 {
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   padding-bottom: 4px;
 }
 
-.emotion-7 {
+.emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -151,7 +151,7 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-6 {
+.emotion-11 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -160,6 +160,7 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   padding: 8px;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   font-size: inherit;
   line-height: inherit;
@@ -170,44 +171,44 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface,#fff);
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface, #fff);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   margin-bottom: 16px;
   width: 100%;
 }
 
-.emotion-6:hover,
-.emotion-6:focus {
-  border-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-11:hover,
+.emotion-11:focus {
+  border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-6::-webkit-input-placeholder {
+.emotion-11::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-6::-moz-placeholder {
+.emotion-11::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-6:-ms-input-placeholder {
+.emotion-11:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-6::placeholder {
+.emotion-11::placeholder {
   font-style: italic;
 }
 
-.emotion-6:disabled {
+.emotion-11:disabled {
   opacity: 0.68;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
 }
 
-.emotion-17 {
+.emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -217,7 +218,7 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-10 {
+.emotion-16 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -226,6 +227,7 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   padding: 8px;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   font-size: inherit;
   line-height: inherit;
@@ -236,61 +238,62 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface,#fff);
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface, #fff);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   margin-bottom: 16px;
   margin-right: 16px;
   width: 100%;
 }
 
-.emotion-10:hover,
-.emotion-10:focus {
-  border-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-16:hover,
+.emotion-16:focus {
+  border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-10::-webkit-input-placeholder {
+.emotion-16::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-10::-moz-placeholder {
+.emotion-16::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-10:-ms-input-placeholder {
+.emotion-16:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-10::placeholder {
+.emotion-16::placeholder {
   font-style: italic;
 }
 
-.emotion-10:disabled {
+.emotion-16:disabled {
   opacity: 0.68;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
 }
 
-.emotion-18 {
+.emotion-21 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-bottom: 8px;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
 }
 
-.emotion-33 {
+.emotion-22 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   margin-bottom: 16px;
+  -webkit-box-flex-wrap: wrap;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
@@ -300,7 +303,7 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-20 {
+.emotion-23 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -310,7 +313,7 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   padding-right: 8px;
   padding-top: 4px;
   padding-bottom: 4px;
-  background-color: var(--theme-ui-colors-surface,#fff);
+  background-color: var(--theme-ui-colors-surface, #fff);
   display: inline-block;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -318,34 +321,35 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   user-select: none;
   cursor: pointer;
   border-radius: 6px;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   border-width: 1px;
   border-style: solid;
   white-space: nowrap;
 }
 
-.emotion-20:hover {
-  background-color: var(--theme-ui-colors-primaryLightest,rgba(0,120,86,0.05));
+.emotion-23:hover {
+  background-color: var(--theme-ui-colors-primaryLightest, rgba(0,120,86,0.05));
 }
 
-.emotion-19 {
+.emotion-24 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   font-size: 14px;
 }
 
-.emotion-34 {
+.emotion-37 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   display: inline-block;
   text-align: center;
@@ -358,7 +362,7 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary,#00e399);
+  background-color: var(--theme-ui-colors-primary, #00e399);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -368,12 +372,12 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-onPrimary,#000);
-  background-color: var(--theme-ui-colors-primary,#00e399);
+  color: var(--theme-ui-colors-onPrimary, #000);
+  background-color: var(--theme-ui-colors-primary, #00e399);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 16px;
@@ -388,53 +392,53 @@ exports[`PageNewStudentClass should render correctly 1`] = `
   -ms-flex-align: center;
   align-items: center;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
   -ms-flex-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
   touch-action: manipulation;
-  box-shadow: rgba(27,31,35,0.1) 0px 1px 0px 0px,rgba(255,255,255,0.03) 0px 1px 0px 0px inset;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  box-shadow: rgba(27, 31, 35, 0.1) 0px 1px 0px 0px,rgba(255, 255, 255, 0.03) 0px 1px 0px 0px inset;
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   border-style: solid;
   border-width: 1px;
   line-height: 1;
   width: 100%;
 }
 
-.emotion-34:disabled {
+.emotion-37:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-34:hover,
-.emotion-34:focus {
-  background-color: var(--theme-ui-colors-primaryDark,#00a06d);
+.emotion-37:hover,
+.emotion-37:focus {
+  background-color: var(--theme-ui-colors-primaryDark, #00a06d);
   outline: none;
 }
 
-.emotion-34:hover:disabled,
-.emotion-34:focus:disabled {
-  background-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-37:hover:disabled,
+.emotion-37:focus:disabled {
+  background-color: var(--theme-ui-colors-primary, #00e399);
 }
 
-.emotion-35 {
+.emotion-38 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin: 16px;
-  color: var(--theme-ui-colors-error,#d50000);
+  color: var(--theme-ui-colors-error, #d50000);
   text-align: center;
 }
 
 <div>
   <div
-    class="emotion-38"
+    class="emotion-0"
   >
     <div
-      class="emotion-37"
+      class="emotion-1"
     >
       <a
         href="/dashboard/students/profile/classes/edit?studentId=adsfnalskfdb"
@@ -444,59 +448,59 @@ exports[`PageNewStudentClass should render correctly 1`] = `
           class="emotion-2"
         >
           <div
-            class="emotion-0"
+            class="emotion-3"
           />
           <p
-            class="emotion-1"
+            class="emotion-4"
           >
             Edit Class
           </p>
         </div>
       </a>
       <h5
-        class="emotion-3"
+        class="emotion-5"
       />
       <h5
-        class="emotion-4"
+        class="emotion-6"
       >
         New Class
       </h5>
       <div
-        class="emotion-36"
+        class="emotion-7"
       >
         <label
           class="emotion-8"
         >
           <div
-            class="emotion-5"
+            class="emotion-9"
           >
             Name
           </div>
           <div
-            class="emotion-7"
+            class="emotion-10"
           >
             <input
-              class="emotion-6"
+              class="emotion-11"
               value=""
             />
           </div>
         </label>
         <div
-          class="emotion-17"
+          class="emotion-12"
         >
           <label
             class="emotion-8"
           >
             <div
-              class="emotion-5"
+              class="emotion-9"
             >
               Start Time
             </div>
             <div
-              class="emotion-7"
+              class="emotion-10"
             >
               <input
-                class="emotion-10"
+                class="emotion-16"
                 type="time"
                 value="09:00"
               />
@@ -506,15 +510,15 @@ exports[`PageNewStudentClass should render correctly 1`] = `
             class="emotion-8"
           >
             <div
-              class="emotion-5"
+              class="emotion-9"
             >
               End Time
             </div>
             <div
-              class="emotion-7"
+              class="emotion-10"
             >
               <input
-                class="emotion-6"
+                class="emotion-11"
                 type="time"
                 value="10:00"
               />
@@ -522,85 +526,85 @@ exports[`PageNewStudentClass should render correctly 1`] = `
           </label>
         </div>
         <p
-          class="emotion-18"
+          class="emotion-21"
         >
           Available every
         </p>
         <div
-          class="emotion-33"
+          class="emotion-22"
         >
           <div
-            class="emotion-20"
+            class="emotion-23"
           >
             <p
-              class="emotion-19"
+              class="emotion-24"
             >
               Sunday
             </p>
           </div>
           <div
-            class="emotion-20"
+            class="emotion-23"
           >
             <p
-              class="emotion-19"
+              class="emotion-24"
             >
               Monday
             </p>
           </div>
           <div
-            class="emotion-20"
+            class="emotion-23"
           >
             <p
-              class="emotion-19"
+              class="emotion-24"
             >
               Tuesday
             </p>
           </div>
           <div
-            class="emotion-20"
+            class="emotion-23"
           >
             <p
-              class="emotion-19"
+              class="emotion-24"
             >
               Wednesday
             </p>
           </div>
           <div
-            class="emotion-20"
+            class="emotion-23"
           >
             <p
-              class="emotion-19"
+              class="emotion-24"
             >
               Thursday
             </p>
           </div>
           <div
-            class="emotion-20"
+            class="emotion-23"
           >
             <p
-              class="emotion-19"
+              class="emotion-24"
             >
               Friday
             </p>
           </div>
           <div
-            class="emotion-20"
+            class="emotion-23"
           >
             <p
-              class="emotion-19"
+              class="emotion-24"
             >
               Saturday
             </p>
           </div>
         </div>
         <button
-          class="emotion-34"
+          class="emotion-37"
           disabled=""
         >
           Save
         </button>
         <p
-          class="emotion-35"
+          class="emotion-38"
         />
       </div>
     </div>

@@ -97,7 +97,6 @@ module.exports = {
       },
     },
     // `gatsby-plugin-remove-serviceworker`,
-    `gatsby-plugin-emotion`,
     `gatsby-plugin-portal`,
     {
       resolve: `gatsby-plugin-segment-js`,

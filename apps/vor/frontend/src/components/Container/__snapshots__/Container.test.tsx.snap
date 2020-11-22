@@ -1,15 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Container should render correctly 1`] = `
-.emotion-2 {
+.emotion-0 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-size: 16px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-2 {
+@media screen and (min-width: 40em) {
+  .emotion-0 {
     font-size: 20px;
   }
 }
@@ -23,24 +23,24 @@ exports[`Container should render correctly 1`] = `
   margin-right: auto;
 }
 
-.emotion-0 {
+.emotion-2 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  background-color: var(--theme-ui-colors-primary,#00e399);
+  background-color: var(--theme-ui-colors-primary, #00e399);
   width: 100%;
   height: 10rem;
 }
 
 <div>
   <div
-    class="emotion-2"
+    class="emotion-0"
   >
     <div
       class="emotion-1"
     >
       <div
-        class="emotion-0"
+        class="emotion-2"
       />
     </div>
   </div>

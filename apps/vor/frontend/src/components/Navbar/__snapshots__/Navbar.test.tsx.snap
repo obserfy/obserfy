@@ -1,24 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Navbar should render correctly 1`] = `
-.emotion-13 {
+.emotion-0 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-size: 16px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-13 {
+@media screen and (min-width: 40em) {
+  .emotion-0 {
     font-size: 20px;
   }
 }
 
-.emotion-12 {
+.emotion-1 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  background-color: var(--theme-ui-colors-surfaceBlurNonTransparent,rgba(255,255,255));
+  background-color: var(--theme-ui-colors-surfaceBlurNonTransparent, rgba(255,255,255));
   height: auto;
   width: 100%;
   border-radius: 0;
@@ -30,11 +30,11 @@ exports[`Navbar should render correctly 1`] = `
   position: fixed;
   border-top-style: solid;
   border-top-width: 1px;
-  border-top-color: var(--theme-ui-colors-borderSolid,rgba(0,0,0,.1));
+  border-top-color: var(--theme-ui-colors-borderSolid, rgba(0,0,0,.1));
 }
 
-@media screen and (min-width:40em) {
-  .emotion-12 {
+@media screen and (min-width: 40em) {
+  .emotion-1 {
     height: 100%;
     width: auto;
     display: block;
@@ -43,27 +43,28 @@ exports[`Navbar should render correctly 1`] = `
   }
 }
 
-@supports (-webkit-backdrop-filter:blur(20px)) or (backdrop-filter:blur(20px)) {
-  .emotion-12 {
-    background-color: var(--theme-ui-colors-surfaceBlurTransparent,rgba(255,255,255,0.6));
+@supports (backdrop-filter: blur(20px)) {
+  .emotion-1 {
+    background-color: var(--theme-ui-colors-surfaceBlurTransparent, rgba(255,255,255,0.6));
     -webkit-backdrop-filter: saturate(180%) blur(20px);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
     -ms-transform: translateZ(0);
     transform: translateZ(0);
     will-change: backdrop-filter;
   }
 }
 
-.emotion-11 {
+.emotion-2 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   padding-bottom: env(safe-area-inset-bottom);
   padding-left: env(safe-area-inset-left);
   -webkit-box-pack: space-evenly;
-  -webkit-justify-content: space-evenly;
   -ms-flex-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
   justify-content: space-evenly;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -75,14 +76,14 @@ exports[`Navbar should render correctly 1`] = `
   display: flex;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-11 {
+@media screen and (min-width: 40em) {
+  .emotion-2 {
     padding-bottom: 0;
   }
 }
 
-@media screen and (min-width:40em) {
-  .emotion-11 {
+@media screen and (min-width: 40em) {
+  .emotion-2 {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -90,7 +91,7 @@ exports[`Navbar should render correctly 1`] = `
   }
 }
 
-.emotion-0 {
+.emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -101,13 +102,13 @@ exports[`Navbar should render correctly 1`] = `
   display: none;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-0 {
+@media screen and (min-width: 40em) {
+  .emotion-3 {
     display: block;
   }
 }
 
-.emotion-3 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -124,8 +125,8 @@ exports[`Navbar should render correctly 1`] = `
   -ms-flex-align: center;
   align-items: center;
   -webkit-box-pack: space-around;
-  -webkit-justify-content: space-around;
   -ms-flex-pack: space-around;
+  -webkit-justify-content: space-around;
   justify-content: space-around;
   position: relative;
   display: -webkit-box;
@@ -134,34 +135,34 @@ exports[`Navbar should render correctly 1`] = `
   display: flex;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-3 {
+@media screen and (min-width: 40em) {
+  .emotion-4 {
     margin-bottom: 8px;
   }
 }
 
-@media screen and (min-width:40em) {
-  .emotion-3 {
+@media screen and (min-width: 40em) {
+  .emotion-4 {
     width: 64px;
     height: 60px;
   }
 }
 
-.emotion-3:after {
+.emotion-4:after {
   top: 0;
   right: inherit;
   position: absolute;
-  background-color: var(--theme-ui-colors-textPrimary,#027c5b);
+  background-color: var(--theme-ui-colors-textPrimary, #027c5b);
   border-radius: 0 0 10px 10px;
   width: 0%;
   height: 2px;
   content: '';
-  -webkit-transition: width 100ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: width 100ms cubic-bezier(0.0,0.0,0.2,1);
+  -webkit-transition: width 100ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  transition: width 100ms cubic-bezier(0.0, 0.0, 0.2, 1);
 }
 
-@media screen and (min-width:40em) {
-  .emotion-3:after {
+@media screen and (min-width: 40em) {
+  .emotion-4:after {
     top: inherit;
     right: 0;
     border-radius: 10px 0 0 10px;
@@ -170,13 +171,13 @@ exports[`Navbar should render correctly 1`] = `
   }
 }
 
-.emotion-1 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   max-width: 100%;
   height: auto;
-  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
+  color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
   fill: transparent;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
@@ -185,26 +186,26 @@ exports[`Navbar should render correctly 1`] = `
   height: 24px;
 }
 
-.emotion-2 {
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
   line-height: 1;
   font-size: 10px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-2 {
+@media screen and (min-width: 40em) {
+  .emotion-6 {
     font-size: 12px;
   }
 }
 
-.emotion-4 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -212,24 +213,24 @@ exports[`Navbar should render correctly 1`] = `
   display: none;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-4 {
+@media screen and (min-width: 40em) {
+  .emotion-7 {
     display: block;
   }
 }
 
 <div>
   <div
-    class="emotion-13"
+    class="emotion-0"
   >
     <nav
-      class="emotion-12"
+      class="emotion-1"
     >
       <div
-        class="emotion-11"
+        class="emotion-2"
       >
         <div
-          class="emotion-0"
+          class="emotion-3"
         >
           <div
             class=" gatsby-image-wrapper"
@@ -273,33 +274,33 @@ exports[`Navbar should render correctly 1`] = `
           style="outline: none;"
         >
           <div
-            class="emotion-3"
+            class="emotion-4"
           >
             <div
-              class="emotion-1"
+              class="emotion-5"
             />
             <p
-              class="emotion-2"
+              class="emotion-6"
             >
               Students
             </p>
           </div>
         </a>
         <div
-          class="emotion-4"
+          class="emotion-7"
         />
         <a
           href="/dashboard/admin"
           style="outline: none;"
         >
           <div
-            class="emotion-3"
+            class="emotion-4"
           >
             <div
-              class="emotion-1"
+              class="emotion-5"
             />
             <p
-              class="emotion-2"
+              class="emotion-6"
             >
               Admin
             </p>
@@ -310,13 +311,13 @@ exports[`Navbar should render correctly 1`] = `
           style="outline: none;"
         >
           <div
-            class="emotion-3"
+            class="emotion-4"
           >
             <div
-              class="emotion-1"
+              class="emotion-5"
             />
             <p
-              class="emotion-2"
+              class="emotion-6"
             >
               Support
             </p>

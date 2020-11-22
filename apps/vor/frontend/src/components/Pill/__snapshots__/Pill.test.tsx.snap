@@ -1,15 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Pill should render correctly 1`] = `
-.emotion-2 {
+.emotion-0 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-size: 16px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-2 {
+@media screen and (min-width: 40em) {
+  .emotion-0 {
     font-size: 20px;
   }
 }
@@ -22,7 +22,7 @@ exports[`Pill should render correctly 1`] = `
   padding-bottom: 4px;
   padding-left: 8px;
   padding-right: 8px;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   border-width: 1px;
   border-style: solid;
   border-radius: 99999px;
@@ -32,11 +32,11 @@ exports[`Pill should render correctly 1`] = `
   display: inline-block;
 }
 
-.emotion-0 {
+.emotion-2 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
@@ -45,21 +45,21 @@ exports[`Pill should render correctly 1`] = `
   text-transform: capitalize;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-0 {
+@media screen and (min-width: 40em) {
+  .emotion-2 {
     font-size: 12px;
   }
 }
 
 <div>
   <div
-    class="emotion-2"
+    class="emotion-0"
   >
     <div
       class="emotion-1"
     >
       <p
-        class="emotion-0"
+        class="emotion-2"
       >
         You
       </p>
