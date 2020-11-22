@@ -684,7 +684,7 @@ exports[`PageStudentPlans should render correctly 1`] = `
       </div>
       <a
         class="emotion-21"
-        href="/dashboard/students/plans/new?studentId=asdfasfd&date=1996-05-25T17:00:00.000Z"
+        href="/dashboard/students/plans/new?studentId=asdfasfd&date=1996-05-26T00:00:00.000Z"
       >
         <button
           class="emotion-20"
