@@ -41610,10 +41610,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/gatsby-theme-i18n-lingui-virtual-4a5a1a428d/1/packages/gatsby-theme-i18n-lingui/",
           "packageDependencies": [
             ["gatsby-theme-i18n-lingui", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#workspace:packages/gatsby-theme-i18n-lingui"],
-            ["@emotion/core", null],
             ["@lingui/core", "npm:3.2.3"],
             ["@lingui/react", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:3.2.3"],
-            ["@types/emotion__core", null],
             ["@types/gatsby", null],
             ["@types/lingui__core", null],
             ["@types/lingui__react", null],
@@ -41629,10 +41627,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-refresh", "npm:0.9.0"]
           ],
           "packagePeers": [
-            "@emotion/core",
             "@lingui/core",
             "@lingui/react",
-            "@types/emotion__core",
             "@types/gatsby",
             "@types/lingui__core",
             "@types/lingui__react",
@@ -41652,10 +41648,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/gatsby-theme-i18n-lingui-virtual-76a3680883/1/packages/gatsby-theme-i18n-lingui/",
           "packageDependencies": [
             ["gatsby-theme-i18n-lingui", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#workspace:packages/gatsby-theme-i18n-lingui"],
-            ["@emotion/core", null],
             ["@lingui/core", "npm:3.2.3"],
             ["@lingui/react", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:3.2.3"],
-            ["@types/emotion__core", null],
             ["@types/gatsby", null],
             ["@types/lingui__core", null],
             ["@types/lingui__react", null],
@@ -41671,10 +41665,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-refresh", "npm:0.9.0"]
           ],
           "packagePeers": [
-            "@emotion/core",
             "@lingui/core",
             "@lingui/react",
-            "@types/emotion__core",
             "@types/gatsby",
             "@types/lingui__core",
             "@types/lingui__react",
