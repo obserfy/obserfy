@@ -1,5 +1,5 @@
 import React, { FC } from "react"
-import { Global } from "@emotion/core"
+import { Global } from "@emotion/react"
 import { Box } from "theme-ui"
 import Layout from "../components/Layout/Layout"
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary"

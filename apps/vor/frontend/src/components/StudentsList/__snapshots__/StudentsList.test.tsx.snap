@@ -3,66 +3,66 @@
 exports[`StudentsList should render correctly 1`] = `
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165,165,165,0.05);
+    background-color: rgba(165, 165, 165, 0.05);
   }
 
   50% {
-    background-color: rgba(165,165,165,0.2);
+    background-color: rgba(165, 165, 165, 0.2);
   }
 
   100% {
-    background-color: rgba(165,165,165,0.05);
+    background-color: rgba(165, 165, 165, 0.05);
   }
 }
 
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165,165,165,0.05);
+    background-color: rgba(165, 165, 165, 0.05);
   }
 
   50% {
-    background-color: rgba(165,165,165,0.2);
+    background-color: rgba(165, 165, 165, 0.2);
   }
 
   100% {
-    background-color: rgba(165,165,165,0.05);
+    background-color: rgba(165, 165, 165, 0.05);
   }
 }
 
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165,165,165,0.05);
+    background-color: rgba(165, 165, 165, 0.05);
   }
 
   50% {
-    background-color: rgba(165,165,165,0.2);
+    background-color: rgba(165, 165, 165, 0.2);
   }
 
   100% {
-    background-color: rgba(165,165,165,0.05);
+    background-color: rgba(165, 165, 165, 0.05);
   }
 }
 
-.emotion-36 {
+.emotion-0 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-size: 16px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-36 {
+@media screen and (min-width: 40em) {
+  .emotion-0 {
     font-size: 20px;
   }
 }
 
-.emotion-35 {
+.emotion-1 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
 }
 
-.emotion-5 {
+.emotion-2 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -75,7 +75,7 @@ exports[`StudentsList should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-2 {
+.emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -84,14 +84,14 @@ exports[`StudentsList should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-size: 14px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -102,7 +102,7 @@ exports[`StudentsList should render correctly 1`] = `
   font-size: 12px;
 }
 
-.emotion-1 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -116,7 +116,7 @@ exports[`StudentsList should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-0 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -125,6 +125,7 @@ exports[`StudentsList should render correctly 1`] = `
   padding: 8px;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   font-size: inherit;
   line-height: inherit;
@@ -135,54 +136,55 @@ exports[`StudentsList should render correctly 1`] = `
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface,#fff);
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface, #fff);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   padding-top: 8px;
   padding-bottom: 8px;
   margin-right: 8px;
-  background-color: var(--theme-ui-colors-surface,#fff);
+  background-color: var(--theme-ui-colors-surface, #fff);
   width: 100%;
   font-size: 14px;
   width: 100%;
 }
 
-.emotion-0:hover,
-.emotion-0:focus {
-  border-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-5:hover,
+.emotion-5:focus {
+  border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-0::-webkit-input-placeholder {
+.emotion-5::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-0::-moz-placeholder {
+.emotion-5::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-0:-ms-input-placeholder {
+.emotion-5:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-0::placeholder {
+.emotion-5::placeholder {
   font-style: italic;
 }
 
-.emotion-0:disabled {
+.emotion-5:disabled {
   opacity: 0.68;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
 }
 
-.emotion-4 {
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   display: inline-block;
   text-align: center;
@@ -195,7 +197,7 @@ exports[`StudentsList should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary,#00e399);
+  background-color: var(--theme-ui-colors-primary, #00e399);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -205,12 +207,12 @@ exports[`StudentsList should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
-  background-color: var(--theme-ui-colors-surface,#fff);
+  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  background-color: var(--theme-ui-colors-surface, #fff);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 16px;
@@ -225,12 +227,12 @@ exports[`StudentsList should render correctly 1`] = `
   -ms-flex-align: center;
   align-items: center;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
   -ms-flex-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
   touch-action: manipulation;
   box-shadow: none;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   border-style: solid;
   border-width: 1px;
   line-height: 1;
@@ -239,31 +241,31 @@ exports[`StudentsList should render correctly 1`] = `
   height: 100%;
 }
 
-.emotion-4:disabled {
+.emotion-6:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-4:hover,
-.emotion-4:focus {
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
-  border-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-6:hover,
+.emotion-6:focus {
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,120,86,0.12));
+  border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-4:hover:disabled,
-.emotion-4:focus:disabled {
+.emotion-6:hover:disabled,
+.emotion-6:focus:disabled {
   background-color: transparent;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
 }
 
-.emotion-3 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   max-width: 100%;
   height: auto;
-  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
+  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -281,12 +283,13 @@ exports[`StudentsList should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-flex-wrap: wrap;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 }
 
-.emotion-7 {
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -296,7 +299,7 @@ exports[`StudentsList should render correctly 1`] = `
   padding-right: 8px;
   padding-top: 4px;
   padding-bottom: 4px;
-  background-color: var(--theme-ui-colors-primary,#00e399);
+  background-color: var(--theme-ui-colors-primary, #00e399);
   display: inline-block;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -304,29 +307,29 @@ exports[`StudentsList should render correctly 1`] = `
   user-select: none;
   cursor: pointer;
   border-radius: 6px;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   border-width: 1px;
   border-style: solid;
   white-space: nowrap;
 }
 
-.emotion-7:hover {
-  background-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-9:hover {
+  background-color: var(--theme-ui-colors-primary, #00e399);
 }
 
-.emotion-6 {
+.emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
-  color: var(--theme-ui-colors-onPrimary,#000);
+  color: var(--theme-ui-colors-onPrimary, #000);
   font-size: 14px;
 }
 
-.emotion-34 {
+.emotion-11 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -334,7 +337,7 @@ exports[`StudentsList should render correctly 1`] = `
   padding-right: 16px;
 }
 
-.emotion-13 {
+.emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -350,7 +353,7 @@ exports[`StudentsList should render correctly 1`] = `
   align-items: center;
 }
 
-.emotion-9 {
+.emotion-13 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -363,14 +366,14 @@ exports[`StudentsList should render correctly 1`] = `
   border-radius: 99999px;
 }
 
-.emotion-12 {
+.emotion-14 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   margin-left: 16px;
 }
 
-.emotion-10 {
+.emotion-15 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -382,7 +385,7 @@ exports[`StudentsList should render correctly 1`] = `
   height: 22px;
 }
 
-.emotion-11 {
+.emotion-16 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -395,22 +398,22 @@ exports[`StudentsList should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-36"
+    class="emotion-0"
   >
     <div
-      class="emotion-35"
+      class="emotion-1"
     >
       <div
-        class="emotion-5"
+        class="emotion-2"
       >
         <label
-          class="emotion-2"
+          class="emotion-3"
         >
           <div
-            class="emotion-1"
+            class="emotion-4"
           >
             <input
-              class="emotion-0"
+              class="emotion-5"
               name="name"
               placeholder="Search students"
               value=""
@@ -422,11 +425,11 @@ exports[`StudentsList should render correctly 1`] = `
           style="flex-shrink: 0;"
         >
           <button
-            class="emotion-4"
+            class="emotion-6"
             data-cy="addStudent"
           >
             <div
-              class="emotion-3"
+              class="emotion-7"
             />
           </button>
         </a>
@@ -435,100 +438,100 @@ exports[`StudentsList should render correctly 1`] = `
         class="emotion-8"
       >
         <div
-          class="emotion-7"
+          class="emotion-9"
         >
           <p
-            class="emotion-6"
+            class="emotion-10"
           >
             All
           </p>
         </div>
       </div>
       <div
-        class="emotion-34"
+        class="emotion-11"
       >
         <div
-          class="emotion-13"
+          class="emotion-12"
         >
           <div
-            class="emotion-9"
+            class="emotion-13"
           />
           <div
-            class="emotion-12"
+            class="emotion-14"
           >
             <div
-              class="emotion-10"
+              class="emotion-15"
             />
             <div
-              class="emotion-11"
+              class="emotion-16"
             />
           </div>
         </div>
         <div
-          class="emotion-13"
+          class="emotion-12"
         >
           <div
-            class="emotion-9"
+            class="emotion-13"
           />
           <div
-            class="emotion-12"
+            class="emotion-14"
           >
             <div
-              class="emotion-10"
+              class="emotion-15"
             />
             <div
-              class="emotion-11"
+              class="emotion-16"
             />
           </div>
         </div>
         <div
-          class="emotion-13"
+          class="emotion-12"
         >
           <div
-            class="emotion-9"
+            class="emotion-13"
           />
           <div
-            class="emotion-12"
+            class="emotion-14"
           >
             <div
-              class="emotion-10"
+              class="emotion-15"
             />
             <div
-              class="emotion-11"
+              class="emotion-16"
             />
           </div>
         </div>
         <div
-          class="emotion-13"
+          class="emotion-12"
         >
           <div
-            class="emotion-9"
+            class="emotion-13"
           />
           <div
-            class="emotion-12"
+            class="emotion-14"
           >
             <div
-              class="emotion-10"
+              class="emotion-15"
             />
             <div
-              class="emotion-11"
+              class="emotion-16"
             />
           </div>
         </div>
         <div
-          class="emotion-13"
+          class="emotion-12"
         >
           <div
-            class="emotion-9"
+            class="emotion-13"
           />
           <div
-            class="emotion-12"
+            class="emotion-14"
           >
             <div
-              class="emotion-10"
+              class="emotion-15"
             />
             <div
-              class="emotion-11"
+              class="emotion-16"
             />
           </div>
         </div>

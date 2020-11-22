@@ -1,27 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Tab should render correctly 1`] = `
-.emotion-6 {
+.emotion-0 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-size: 16px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-6 {
+@media screen and (min-width: 40em) {
+  .emotion-0 {
     font-size: 20px;
   }
 }
 
-.emotion-5 {
+.emotion-1 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  background-color: var(--theme-ui-colors-background,#f2f3f5);
+  background-color: var(--theme-ui-colors-background, #f2f3f5);
 }
 
-.emotion-4 {
+.emotion-2 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -36,8 +36,8 @@ exports[`Tab should render correctly 1`] = `
   min-width: 100%;
   width: 100%;
   -webkit-box-pack: space-around;
-  -webkit-justify-content: space-around;
   -ms-flex-pack: space-around;
+  -webkit-justify-content: space-around;
   justify-content: space-around;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -49,18 +49,18 @@ exports[`Tab should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-0 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-left: 8px;
   margin-right: 8px;
   margin-bottom: 0;
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
+  color: var(--theme-ui-colors-textPrimary, #027c5b);
   font-size: 14px;
   margin-left: 16px;
   margin-right: 16px;
@@ -84,35 +84,35 @@ exports[`Tab should render correctly 1`] = `
   user-select: none;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-0 {
+@media screen and (min-width: 40em) {
+  .emotion-4 {
     font-size: 14px;
   }
 }
 
-.emotion-0:after {
-  background-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-4:after {
+  background-color: var(--theme-ui-colors-primary, #00e399);
   border-radius: 2px 2px 0 0;
   width: 125%;
   height: 3px;
   content: '';
   margin-top: 8px;
-  -webkit-transition: width 100ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: width 100ms cubic-bezier(0.0,0.0,0.2,1);
+  -webkit-transition: width 100ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  transition: width 100ms cubic-bezier(0.0, 0.0, 0.2, 1);
 }
 
-.emotion-1 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-left: 8px;
   margin-right: 8px;
   margin-bottom: 0;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
   font-size: 14px;
   margin-left: 16px;
   margin-right: 16px;
@@ -136,48 +136,48 @@ exports[`Tab should render correctly 1`] = `
   user-select: none;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-1 {
+@media screen and (min-width: 40em) {
+  .emotion-5 {
     font-size: 14px;
   }
 }
 
-.emotion-1:after {
-  background-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-5:after {
+  background-color: var(--theme-ui-colors-primary, #00e399);
   border-radius: 2px 2px 0 0;
   width: 0%;
   height: 3px;
   content: '';
   margin-top: 8px;
-  -webkit-transition: width 100ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: width 100ms cubic-bezier(0.0,0.0,0.2,1);
+  -webkit-transition: width 100ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  transition: width 100ms cubic-bezier(0.0, 0.0, 0.2, 1);
 }
 
 <div>
   <div
-    class="emotion-6"
+    class="emotion-0"
   >
     <div
-      class="emotion-5"
+      class="emotion-1"
     >
       <div
-        class="emotion-4"
+        class="emotion-2"
       >
         <div
           class="emotion-3"
         >
           <p
-            class="emotion-0"
+            class="emotion-4"
           >
             Tab 1
           </p>
           <p
-            class="emotion-1"
+            class="emotion-5"
           >
             Tab 2
           </p>
           <p
-            class="emotion-1"
+            class="emotion-5"
           >
             Tab 3
           </p>

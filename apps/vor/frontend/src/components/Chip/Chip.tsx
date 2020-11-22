@@ -3,7 +3,7 @@ import { BoxProps, Box } from "theme-ui"
 import { Trans } from "@lingui/macro"
 import Typography from "../Typography/Typography"
 
-interface Props extends BoxProps {
+interface Props extends Omit<BoxProps, "css"> {
   text: string
   activeBackground?: string
   isActive?: boolean
