@@ -66,7 +66,7 @@ jobs:
             .yarn/build-state.yml
             .pnp.js
             apps/gaia/.next
-          key: v2-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/.pnp.js') }}-${{ hashFiles('**/yarn.lock') }}
+          key: v3-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/.pnp.js') }}-${{ hashFiles('**/yarn.lock') }}
       - name: Use Node.js 15
         uses: actions/setup-node@v1
         with:
