@@ -1,12 +1,13 @@
 import React, { FC } from "react"
-import { Box, FlexProps, Flex, HeadingProps } from "theme-ui"
+import { Box, Flex, HeadingProps, SxStyleProp } from "theme-ui"
 import { Typography } from "../Typography/Typography"
 
-interface TabProps extends FlexProps {
+interface TabProps {
   items: string[]
   selectedItemIdx: number
   onTabClick: (index: number) => void
   small?: boolean
+  sx?: SxStyleProp
 }
 export const Tab: FC<TabProps> = ({
   items,

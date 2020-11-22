@@ -1,20 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageAdminNewGuardian should render correctly 1`] = `
-.emotion-22 {
+.emotion-0 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-size: 16px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-22 {
+@media screen and (min-width: 40em) {
+  .emotion-0 {
     font-size: 20px;
   }
 }
 
-.emotion-21 {
+.emotion-1 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -38,7 +38,7 @@ exports[`PageAdminNewGuardian should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-0 {
+.emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -46,7 +46,7 @@ exports[`PageAdminNewGuardian should render correctly 1`] = `
   height: auto;
   margin: 16px;
   margin-right: 4px;
-  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
+  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -54,26 +54,26 @@ exports[`PageAdminNewGuardian should render correctly 1`] = `
   height: 24px;
 }
 
-.emotion-1 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-bottom: 0;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
 }
 
-.emotion-3 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: bold;
   line-height: heading;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   text-rendering: optimizeLegibility;
   font-size: 24px;
   margin-left: 16px;
@@ -81,7 +81,7 @@ exports[`PageAdminNewGuardian should render correctly 1`] = `
   margin-bottom: 16px;
 }
 
-.emotion-20 {
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -97,14 +97,14 @@ exports[`PageAdminNewGuardian should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-size: 14px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -114,14 +114,14 @@ exports[`PageAdminNewGuardian should render correctly 1`] = `
   flex-direction: column;
 }
 
-.emotion-4 {
+.emotion-8 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   padding-bottom: 4px;
 }
 
-.emotion-6 {
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -135,7 +135,7 @@ exports[`PageAdminNewGuardian should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-5 {
+.emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -144,6 +144,7 @@ exports[`PageAdminNewGuardian should render correctly 1`] = `
   padding: 8px;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   font-size: inherit;
   line-height: inherit;
@@ -154,44 +155,44 @@ exports[`PageAdminNewGuardian should render correctly 1`] = `
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface,#fff);
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface, #fff);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   margin-bottom: 8px;
   width: 100%;
 }
 
-.emotion-5:hover,
-.emotion-5:focus {
-  border-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-10:hover,
+.emotion-10:focus {
+  border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-5::-webkit-input-placeholder {
+.emotion-10::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-5::-moz-placeholder {
+.emotion-10::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-5:-ms-input-placeholder {
+.emotion-10:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-5::placeholder {
+.emotion-10::placeholder {
   font-style: italic;
 }
 
-.emotion-5:disabled {
+.emotion-10:disabled {
   opacity: 0.68;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
 }
 
-.emotion-13 {
+.emotion-18 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -200,6 +201,7 @@ exports[`PageAdminNewGuardian should render correctly 1`] = `
   padding: 8px;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   font-size: inherit;
   line-height: inherit;
@@ -210,44 +212,44 @@ exports[`PageAdminNewGuardian should render correctly 1`] = `
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface,#fff);
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface, #fff);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   margin-bottom: 16px;
   width: 100%;
 }
 
-.emotion-13:hover,
-.emotion-13:focus {
-  border-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-18:hover,
+.emotion-18:focus {
+  border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-13::-webkit-input-placeholder {
+.emotion-18::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-13::-moz-placeholder {
+.emotion-18::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-13:-ms-input-placeholder {
+.emotion-18:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-13::placeholder {
+.emotion-18::placeholder {
   font-style: italic;
 }
 
-.emotion-13:disabled {
+.emotion-18:disabled {
   opacity: 0.68;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
 }
 
-.emotion-18 {
+.emotion-19 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -256,7 +258,7 @@ exports[`PageAdminNewGuardian should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-size: 14px;
   -webkit-user-select: none;
@@ -272,7 +274,7 @@ exports[`PageAdminNewGuardian should render correctly 1`] = `
   flex-direction: column;
 }
 
-.emotion-17 {
+.emotion-21 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -281,6 +283,7 @@ exports[`PageAdminNewGuardian should render correctly 1`] = `
   padding: 8px;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   font-size: inherit;
   line-height: inherit;
@@ -290,48 +293,49 @@ exports[`PageAdminNewGuardian should render correctly 1`] = `
   background-color: transparent;
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface,#fff);
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface, #fff);
   font-size: 16px;
   padding: 16px;
   height: 180px;
   resize: vertical;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   margin-bottom: 16px;
 }
 
-.emotion-17:hover,
-.emotion-17:focus {
-  border-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-21:hover,
+.emotion-21:focus {
+  border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-17::-webkit-input-placeholder {
+.emotion-21::-webkit-input-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-17::-moz-placeholder {
+.emotion-21::-moz-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-17:-ms-input-placeholder {
+.emotion-21:-ms-input-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-17::placeholder {
+.emotion-21::placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-19 {
+.emotion-22 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   display: inline-block;
   text-align: center;
@@ -344,7 +348,7 @@ exports[`PageAdminNewGuardian should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary,#00e399);
+  background-color: var(--theme-ui-colors-primary, #00e399);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -354,12 +358,12 @@ exports[`PageAdminNewGuardian should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-onPrimary,#000);
-  background-color: var(--theme-ui-colors-primary,#00e399);
+  color: var(--theme-ui-colors-onPrimary, #000);
+  background-color: var(--theme-ui-colors-primary, #00e399);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 16px;
@@ -374,40 +378,40 @@ exports[`PageAdminNewGuardian should render correctly 1`] = `
   -ms-flex-align: center;
   align-items: center;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
   -ms-flex-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
   touch-action: manipulation;
-  box-shadow: rgba(27,31,35,0.1) 0px 1px 0px 0px,rgba(255,255,255,0.03) 0px 1px 0px 0px inset;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  box-shadow: rgba(27, 31, 35, 0.1) 0px 1px 0px 0px,rgba(255, 255, 255, 0.03) 0px 1px 0px 0px inset;
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   border-style: solid;
   border-width: 1px;
   line-height: 1;
   width: 100%;
 }
 
-.emotion-19:disabled {
+.emotion-22:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-19:hover,
-.emotion-19:focus {
-  background-color: var(--theme-ui-colors-primaryDark,#00a06d);
+.emotion-22:hover,
+.emotion-22:focus {
+  background-color: var(--theme-ui-colors-primaryDark, #00a06d);
   outline: none;
 }
 
-.emotion-19:hover:disabled,
-.emotion-19:focus:disabled {
-  background-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-22:hover:disabled,
+.emotion-22:focus:disabled {
+  background-color: var(--theme-ui-colors-primary, #00e399);
 }
 
 <div>
   <div
-    class="emotion-22"
+    class="emotion-0"
   >
     <div
-      class="emotion-21"
+      class="emotion-1"
     >
       <a
         href="/dashboard/admin/guardians"
@@ -417,36 +421,36 @@ exports[`PageAdminNewGuardian should render correctly 1`] = `
           class="emotion-2"
         >
           <div
-            class="emotion-0"
+            class="emotion-3"
           />
           <p
-            class="emotion-1"
+            class="emotion-4"
           >
             All Guardians
           </p>
         </div>
       </a>
       <h5
-        class="emotion-3"
+        class="emotion-5"
       >
         New Guardian
       </h5>
       <div
-        class="emotion-20"
+        class="emotion-6"
       >
         <label
           class="emotion-7"
         >
           <div
-            class="emotion-4"
+            class="emotion-8"
           >
             Guardian Name
           </div>
           <div
-            class="emotion-6"
+            class="emotion-9"
           >
             <input
-              class="emotion-5"
+              class="emotion-10"
               value=""
             />
           </div>
@@ -455,15 +459,15 @@ exports[`PageAdminNewGuardian should render correctly 1`] = `
           class="emotion-7"
         >
           <div
-            class="emotion-4"
+            class="emotion-8"
           >
             Email
           </div>
           <div
-            class="emotion-6"
+            class="emotion-9"
           >
             <input
-              class="emotion-5"
+              class="emotion-10"
               type="email"
               value=""
             />
@@ -473,35 +477,35 @@ exports[`PageAdminNewGuardian should render correctly 1`] = `
           class="emotion-7"
         >
           <div
-            class="emotion-4"
+            class="emotion-8"
           >
             Phone
           </div>
           <div
-            class="emotion-6"
+            class="emotion-9"
           >
             <input
-              class="emotion-13"
+              class="emotion-18"
               type="phone"
               value=""
             />
           </div>
         </label>
         <label
-          class="emotion-18"
+          class="emotion-19"
         >
           <div
-            class="emotion-4"
+            class="emotion-8"
           >
             Note
           </div>
           <textarea
             aria-label="Note"
-            class="emotion-17"
+            class="emotion-21"
           />
         </label>
         <button
-          class="emotion-19"
+          class="emotion-22"
           disabled=""
         >
           Save

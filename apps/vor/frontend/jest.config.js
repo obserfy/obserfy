@@ -20,5 +20,5 @@ module.exports = {
     `jest-date-mock`,
     "fake-indexeddb/auto",
   ],
-  snapshotSerializers: ["jest-emotion"],
+  snapshotSerializers: ["@emotion/jest/serializer"],
 }

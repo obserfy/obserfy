@@ -4,21 +4,18 @@
   "packageRules": [
     {
       "packagePatterns": ["eslint"],
-      "groupName": "eslint"
+      "groupName": "eslint",
+      "extends": ["schedule:monthly"]
     },
     {
       "packagePatterns": ["gatsby"],
       "groupName": "gatsby",
-      "schedule": ["every weekend"]
+      "extends": ["schedule:monthly"]
     },
     {
       "packagePatterns": ["@storybook"],
-      "groupName": "storybook"
-    },
-    {
-      "packagePatterns": ["core-js"],
-      "groupName": "core-js",
-      "automerge": false
+      "groupName": "storybook",
+      "extends": ["schedule:monthly"]
     }
   ]
 }

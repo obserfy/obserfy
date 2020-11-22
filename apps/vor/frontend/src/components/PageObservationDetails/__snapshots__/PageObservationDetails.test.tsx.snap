@@ -3,60 +3,60 @@
 exports[`PageObservationDetails should render correctly 1`] = `
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165,165,165,0.05);
+    background-color: rgba(165, 165, 165, 0.05);
   }
 
   50% {
-    background-color: rgba(165,165,165,0.2);
+    background-color: rgba(165, 165, 165, 0.2);
   }
 
   100% {
-    background-color: rgba(165,165,165,0.05);
+    background-color: rgba(165, 165, 165, 0.05);
   }
 }
 
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165,165,165,0.05);
+    background-color: rgba(165, 165, 165, 0.05);
   }
 
   50% {
-    background-color: rgba(165,165,165,0.2);
+    background-color: rgba(165, 165, 165, 0.2);
   }
 
   100% {
-    background-color: rgba(165,165,165,0.05);
+    background-color: rgba(165, 165, 165, 0.05);
   }
 }
 
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165,165,165,0.05);
+    background-color: rgba(165, 165, 165, 0.05);
   }
 
   50% {
-    background-color: rgba(165,165,165,0.2);
+    background-color: rgba(165, 165, 165, 0.2);
   }
 
   100% {
-    background-color: rgba(165,165,165,0.05);
+    background-color: rgba(165, 165, 165, 0.05);
   }
 }
 
-.emotion-4 {
+.emotion-0 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-size: 16px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-4 {
+@media screen and (min-width: 40em) {
+  .emotion-0 {
     font-size: 20px;
   }
 }
 
-.emotion-3 {
+.emotion-1 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -64,7 +64,7 @@ exports[`PageObservationDetails should render correctly 1`] = `
   margin-right: 16px;
 }
 
-.emotion-0 {
+.emotion-2 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -75,7 +75,7 @@ exports[`PageObservationDetails should render correctly 1`] = `
   height: 210px;
 }
 
-.emotion-1 {
+.emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -86,7 +86,7 @@ exports[`PageObservationDetails should render correctly 1`] = `
   height: 150px;
 }
 
-.emotion-2 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -99,19 +99,19 @@ exports[`PageObservationDetails should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-4"
+    class="emotion-0"
   >
     <div
-      class="emotion-3"
+      class="emotion-1"
     >
       <div
-        class="emotion-0"
-      />
-      <div
-        class="emotion-1"
-      />
-      <div
         class="emotion-2"
+      />
+      <div
+        class="emotion-3"
+      />
+      <div
+        class="emotion-4"
       />
     </div>
   </div>

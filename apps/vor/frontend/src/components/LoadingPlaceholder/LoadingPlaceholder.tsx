@@ -1,5 +1,5 @@
 import React, { FC } from "react"
-import { keyframes } from "@emotion/core"
+import { keyframes } from "@emotion/react"
 import { BoxProps, Box } from "theme-ui"
 
 const fading = keyframes`
@@ -16,7 +16,7 @@ const fading = keyframes`
     rgba(165, 165, 165, 0.05);
   }
 `
-interface Props extends BoxProps {
+interface Props extends Omit<BoxProps, "css"> {
   variant?: "loadingPlaceholder.text"
   m?: number
 }
