@@ -1,5 +1,5 @@
 import { queryCache, useMutation } from "react-query"
-import { postApi } from "../../apiHelpers"
+import { postApi } from "./apiHelpers"
 import { PostPlanObservationRequest } from "../../pages/api/plans/[planId]/observations"
 
 const usePostPlanObservation = (planId: string) => {

@@ -66,6 +66,8 @@ services:
       IMGPROXY_KEY: "${IMGPROXY_KEY}"
       IMGPROXY_SALT: "${IMGPROXY_SALT}"
       IMGPROXY_ENABLE_WEBP_DETECTION: "true"
+
+      IMGPROXY_TTL: "1209600"
     env_file:
       - .env
 

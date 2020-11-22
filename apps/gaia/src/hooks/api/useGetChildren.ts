@@ -1,6 +1,6 @@
 import { useQuery } from "react-query"
 import { useRouter } from "next/router"
-import { getApi } from "../../apiHelpers"
+import { getApi } from "./apiHelpers"
 import { GetChildrenResponse } from "../../pages/api/me/children"
 
 const useGetChildren = () => {
