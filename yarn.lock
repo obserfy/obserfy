@@ -19483,7 +19483,7 @@ fsevents@^1.2.7:
     pg: 8.5.1
     pino: 6.7.0
     pino-pretty: 4.3.0
-    postcss: ^8.1.9
+    postcss: 8.1.9
     postcss-preset-env: 6.7.0
     preact: 10.5.5
     preact-render-to-string: 5.1.12
@@ -30054,7 +30054,7 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"postcss@npm:8.1.9, postcss@npm:^8.1.6, postcss@npm:^8.1.9":
+"postcss@npm:8.1.9, postcss@npm:^8.1.6":
   version: 8.1.9
   resolution: "postcss@npm:8.1.9"
   dependencies:
