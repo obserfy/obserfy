@@ -3,46 +3,46 @@
 exports[`PageCurriculumSettings should render correctly 1`] = `
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165,165,165,0.05);
+    background-color: rgba(165, 165, 165, 0.05);
   }
 
   50% {
-    background-color: rgba(165,165,165,0.2);
+    background-color: rgba(165, 165, 165, 0.2);
   }
 
   100% {
-    background-color: rgba(165,165,165,0.05);
+    background-color: rgba(165, 165, 165, 0.05);
   }
 }
 
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165,165,165,0.05);
+    background-color: rgba(165, 165, 165, 0.05);
   }
 
   50% {
-    background-color: rgba(165,165,165,0.2);
+    background-color: rgba(165, 165, 165, 0.2);
   }
 
   100% {
-    background-color: rgba(165,165,165,0.05);
+    background-color: rgba(165, 165, 165, 0.05);
   }
 }
 
-.emotion-15 {
+.emotion-0 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-size: 16px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-15 {
+@media screen and (min-width: 40em) {
+  .emotion-0 {
     font-size: 20px;
   }
 }
 
-.emotion-14 {
+.emotion-1 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -50,7 +50,7 @@ exports[`PageCurriculumSettings should render correctly 1`] = `
   max-width: 640px;
 }
 
-.emotion-8 {
+.emotion-2 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -65,19 +65,20 @@ exports[`PageCurriculumSettings should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-2 {
+.emotion-3 {
   margin: 8px;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
-.emotion-1 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   display: inline-block;
   text-align: center;
@@ -90,7 +91,7 @@ exports[`PageCurriculumSettings should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary,#00e399);
+  background-color: var(--theme-ui-colors-primary, #00e399);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -100,12 +101,12 @@ exports[`PageCurriculumSettings should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
+  color: var(--theme-ui-colors-textPrimary, #027c5b);
   background-color: transparent;
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 16px;
@@ -120,12 +121,12 @@ exports[`PageCurriculumSettings should render correctly 1`] = `
   -ms-flex-align: center;
   align-items: center;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
   -ms-flex-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
   touch-action: manipulation;
   box-shadow: none;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   border-style: solid;
   border-width: 1px;
   line-height: 1;
@@ -133,34 +134,34 @@ exports[`PageCurriculumSettings should render correctly 1`] = `
   padding: 4px;
 }
 
-.emotion-1:disabled {
+.emotion-4:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-1:hover,
-.emotion-1:focus {
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
-  border-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-4:hover,
+.emotion-4:focus {
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,120,86,0.12));
+  border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-0 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   max-width: 100%;
   height: auto;
-  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
+  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   width: 20px;
   height: 20px;
-  fill: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  fill: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
 }
 
-.emotion-7 {
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -175,57 +176,57 @@ exports[`PageCurriculumSettings should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-5 {
+.emotion-7 {
   display: inline-block;
   font-size: 12px;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
   white-space: nowrap;
 }
 
-.emotion-5:last-child {
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
+.emotion-7:last-child {
+  color: var(--theme-ui-colors-textPrimary, #027c5b);
 }
 
-.emotion-5:last-child > .splitter {
+.emotion-7:last-child>.splitter {
   display: none;
 }
 
-.emotion-3:hover {
+.emotion-8:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
 }
 
-.emotion-4 {
+.emotion-9 {
   margin-left: 4px;
   margin-right: 4px;
 }
 
-.emotion-6 {
+.emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   display: inline-block;
   font-size: 12px;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
   white-space: nowrap;
 }
 
-.emotion-6:last-child {
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
+.emotion-10:last-child {
+  color: var(--theme-ui-colors-textPrimary, #027c5b);
 }
 
-.emotion-6:last-child > .splitter {
+.emotion-10:last-child>.splitter {
   display: none;
 }
 
-.emotion-13 {
+.emotion-11 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   padding: 16px;
 }
 
-.emotion-9 {
+.emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -236,7 +237,7 @@ exports[`PageCurriculumSettings should render correctly 1`] = `
   height: 5rem;
 }
 
-.emotion-10 {
+.emotion-13 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -250,47 +251,47 @@ exports[`PageCurriculumSettings should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-15"
+    class="emotion-0"
   >
     <div
-      class="emotion-14"
+      class="emotion-1"
     >
       <div
-        class="emotion-8"
+        class="emotion-2"
       >
         <a
-          class="emotion-2"
+          class="emotion-3"
           data-cy="back-button"
           href="/dashboard/admin"
         >
           <button
-            class="emotion-1"
+            class="emotion-4"
           >
             <div
-              class="emotion-0"
+              class="emotion-5"
             />
           </button>
         </a>
         <div
-          class="emotion-7"
+          class="emotion-6"
         >
           <a
-            class="emotion-5"
+            class="emotion-7"
             href="/dashboard/admin"
           >
             <span
-              class="emotion-3"
+              class="emotion-8"
             >
               Admin
             </span>
             <span
-              class="splitter emotion-4"
+              class="splitter emotion-9"
             >
               /
             </span>
           </a>
           <div
-            class="emotion-6"
+            class="emotion-10"
           >
             Curriculum
             <span
@@ -302,19 +303,19 @@ exports[`PageCurriculumSettings should render correctly 1`] = `
         </div>
       </div>
       <div
-        class="emotion-13"
+        class="emotion-11"
       >
         <div
-          class="emotion-9"
+          class="emotion-12"
         />
         <div
-          class="emotion-10"
+          class="emotion-13"
         />
         <div
-          class="emotion-10"
+          class="emotion-13"
         />
         <div
-          class="emotion-10"
+          class="emotion-13"
         />
       </div>
     </div>

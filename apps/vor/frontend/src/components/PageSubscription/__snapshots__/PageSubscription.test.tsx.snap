@@ -4,12 +4,14 @@ exports[`PageSubscription should render correctly 1`] = `
 @keyframes animation-0 {
   0% {
     -webkit-transform: scale(0);
+    -moz-transform: scale(0);
     -ms-transform: scale(0);
     transform: scale(0);
   }
 
   100% {
     -webkit-transform: scale(1);
+    -moz-transform: scale(1);
     -ms-transform: scale(1);
     transform: scale(1);
   }
@@ -17,60 +19,66 @@ exports[`PageSubscription should render correctly 1`] = `
 
 @keyframes animation-1 {
   0% {
-    -webkit-transform: translate(0,0);
-    -ms-transform: translate(0,0);
-    transform: translate(0,0);
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    transform: translate(0, 0);
   }
 
   100% {
-    -webkit-transform: translate(6px,0);
-    -ms-transform: translate(6px,0);
-    transform: translate(6px,0);
+    -webkit-transform: translate(6px, 0);
+    -moz-transform: translate(6px, 0);
+    -ms-transform: translate(6px, 0);
+    transform: translate(6px, 0);
   }
 }
 
 @keyframes animation-1 {
   0% {
-    -webkit-transform: translate(0,0);
-    -ms-transform: translate(0,0);
-    transform: translate(0,0);
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    transform: translate(0, 0);
   }
 
   100% {
-    -webkit-transform: translate(6px,0);
-    -ms-transform: translate(6px,0);
-    transform: translate(6px,0);
+    -webkit-transform: translate(6px, 0);
+    -moz-transform: translate(6px, 0);
+    -ms-transform: translate(6px, 0);
+    transform: translate(6px, 0);
   }
 }
 
 @keyframes animation-2 {
   0% {
     -webkit-transform: scale(1);
+    -moz-transform: scale(1);
     -ms-transform: scale(1);
     transform: scale(1);
   }
 
   100% {
     -webkit-transform: scale(0);
+    -moz-transform: scale(0);
     -ms-transform: scale(0);
     transform: scale(0);
   }
 }
 
-.emotion-41 {
+.emotion-0 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-size: 16px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-41 {
+@media screen and (min-width: 40em) {
+  .emotion-0 {
     font-size: 20px;
   }
 }
 
-.emotion-40 {
+.emotion-1 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -94,7 +102,7 @@ exports[`PageSubscription should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-0 {
+.emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -102,7 +110,7 @@ exports[`PageSubscription should render correctly 1`] = `
   height: auto;
   margin: 16px;
   margin-right: 4px;
-  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
+  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -110,26 +118,26 @@ exports[`PageSubscription should render correctly 1`] = `
   height: 24px;
 }
 
-.emotion-1 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-bottom: 0;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
 }
 
-.emotion-3 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: bold;
   line-height: heading;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   text-rendering: optimizeLegibility;
   font-size: 32px;
   margin-bottom: 32px;
@@ -142,16 +150,16 @@ exports[`PageSubscription should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   overflow: auto;
-  background-color: var(--theme-ui-colors-surface,#fff);
+  background-color: var(--theme-ui-colors-surface, #fff);
   border-radius: 6px;
-  box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px,rgba(0, 0, 0, 0.27) 0px 2px 4px -2px;
   margin: 16px;
   padding-left: 32px;
   padding-right: 32px;
   border-radius: 16px;
 }
 
-.emotion-5 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -167,48 +175,48 @@ exports[`PageSubscription should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-4 {
+.emotion-8 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
+  color: var(--theme-ui-colors-textPrimary, #027c5b);
   font-weight: bold;
   line-height: 1;
 }
 
-.emotion-39 {
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   overflow: auto;
-  background-color: var(--theme-ui-colors-surface,#fff);
+  background-color: var(--theme-ui-colors-surface, #fff);
   border-radius: 6px;
-  box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px,rgba(0, 0, 0, 0.27) 0px 2px 4px -2px;
   margin: 16px;
   padding: 32px;
   margin-top: 32px;
   border-radius: 16px;
 }
 
-.emotion-7 {
+.emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-bottom: 8px;
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
+  color: var(--theme-ui-colors-textPrimary, #027c5b);
   font-weight: bold;
   line-height: 1;
 }
 
-.emotion-10 {
+.emotion-11 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -222,33 +230,33 @@ exports[`PageSubscription should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-8 {
+.emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: bold;
   line-height: heading;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   text-rendering: optimizeLegibility;
   font-size: 48px;
   font-weight: bold;
   line-height: 1;
 }
 
-.emotion-9 {
+.emotion-13 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-left: 8px;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
 }
 
-.emotion-36 {
+.emotion-14 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -256,7 +264,7 @@ exports[`PageSubscription should render correctly 1`] = `
   margin-bottom: 16px;
 }
 
-.emotion-13 {
+.emotion-15 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -270,13 +278,13 @@ exports[`PageSubscription should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-11 {
+.emotion-16 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   max-width: 100%;
   height: auto;
-  fill: var(--theme-ui-colors-primary,#00e399);
+  fill: var(--theme-ui-colors-primary, #00e399);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -284,35 +292,36 @@ exports[`PageSubscription should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-12 {
+.emotion-17 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-left: 8px;
 }
 
-.emotion-31 {
+.emotion-36 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-left: 8px;
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
+  color: var(--theme-ui-colors-textPrimary, #027c5b);
 }
 
-.emotion-38 {
+.emotion-40 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   display: inline-block;
   text-align: center;
@@ -325,7 +334,7 @@ exports[`PageSubscription should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary,#00e399);
+  background-color: var(--theme-ui-colors-primary, #00e399);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -335,12 +344,12 @@ exports[`PageSubscription should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-onPrimary,#000);
-  background-color: var(--theme-ui-colors-primary,#00e399);
+  color: var(--theme-ui-colors-onPrimary, #000);
+  background-color: var(--theme-ui-colors-primary, #00e399);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 16px;
@@ -355,12 +364,12 @@ exports[`PageSubscription should render correctly 1`] = `
   -ms-flex-align: center;
   align-items: center;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
   -ms-flex-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
   touch-action: manipulation;
-  box-shadow: rgba(27,31,35,0.1) 0px 1px 0px 0px,rgba(255,255,255,0.03) 0px 1px 0px 0px inset;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  box-shadow: rgba(27, 31, 35, 0.1) 0px 1px 0px 0px,rgba(255, 255, 255, 0.03) 0px 1px 0px 0px inset;
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   border-style: solid;
   border-width: 1px;
   line-height: 1;
@@ -371,23 +380,23 @@ exports[`PageSubscription should render correctly 1`] = `
   border-radius: 16px;
 }
 
-.emotion-38:disabled {
+.emotion-40:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-38:hover,
-.emotion-38:focus {
-  background-color: var(--theme-ui-colors-primaryDark,#00a06d);
+.emotion-40:hover,
+.emotion-40:focus {
+  background-color: var(--theme-ui-colors-primaryDark, #00a06d);
   outline: none;
 }
 
-.emotion-38:hover:disabled,
-.emotion-38:focus:disabled {
-  background-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-40:hover:disabled,
+.emotion-40:focus:disabled {
+  background-color: var(--theme-ui-colors-primary, #00e399);
 }
 
-.emotion-37 {
+.emotion-41 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -399,36 +408,36 @@ exports[`PageSubscription should render correctly 1`] = `
   height: 18px;
 }
 
-.emotion-37 div {
+.emotion-41 div {
   position: absolute;
   top: 8px;
   width: 3px;
   height: 3px;
   border-radius: 50%;
-  background-color: var(--theme-ui-colors-onPrimary,#000);
-  -webkit-animation-timing-function: cubic-bezier(0,1,1,0);
-  animation-timing-function: cubic-bezier(0,1,1,0);
+  background-color: var(--theme-ui-colors-onPrimary, #000);
+  -webkit-animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
 
-.emotion-37 div:nth-of-type(1) {
+.emotion-41 div:nth-of-type(1) {
   left: 2px;
   -webkit-animation: animation-0 0.6s infinite;
   animation: animation-0 0.6s infinite;
 }
 
-.emotion-37 div:nth-of-type(2) {
+.emotion-41 div:nth-of-type(2) {
   left: 2px;
   -webkit-animation: animation-1 0.6s infinite;
   animation: animation-1 0.6s infinite;
 }
 
-.emotion-37 div:nth-of-type(3) {
+.emotion-41 div:nth-of-type(3) {
   left: 8px;
   -webkit-animation: animation-1 0.6s infinite;
   animation: animation-1 0.6s infinite;
 }
 
-.emotion-37 div:nth-of-type(4) {
+.emotion-41 div:nth-of-type(4) {
   left: 14px;
   -webkit-animation: animation-2 0.6s infinite;
   animation: animation-2 0.6s infinite;
@@ -436,10 +445,10 @@ exports[`PageSubscription should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-41"
+    class="emotion-0"
   >
     <div
-      class="emotion-40"
+      class="emotion-1"
     >
       <a
         href="/dashboard/admin"
@@ -449,17 +458,17 @@ exports[`PageSubscription should render correctly 1`] = `
           class="emotion-2"
         >
           <div
-            class="emotion-0"
+            class="emotion-3"
           />
           <p
-            class="emotion-1"
+            class="emotion-4"
           >
             Settings
           </p>
         </div>
       </a>
       <h4
-        class="emotion-3"
+        class="emotion-5"
       >
         Subscription Plan
       </h4>
@@ -467,148 +476,148 @@ exports[`PageSubscription should render correctly 1`] = `
         class="emotion-6"
       >
         <div
-          class="emotion-5"
+          class="emotion-7"
         >
           <p
-            class="emotion-4"
+            class="emotion-8"
           >
             Akses Awal
           </p>
         </div>
       </div>
       <div
-        class="emotion-39"
+        class="emotion-9"
       >
         <p
-          class="emotion-7"
+          class="emotion-10"
         >
           Standard Plan
         </p>
         <div
-          class="emotion-10"
+          class="emotion-11"
         >
           <h3
-            class="emotion-8"
+            class="emotion-12"
           >
             $3.99
           </h3>
           <p
-            class="emotion-9"
+            class="emotion-13"
           >
             User/month
           </p>
         </div>
         <div
-          class="emotion-36"
+          class="emotion-14"
         >
           <div
-            class="emotion-13"
+            class="emotion-15"
           >
             <div
-              class="emotion-11"
+              class="emotion-16"
             />
             <p
-              class="emotion-12"
+              class="emotion-17"
             >
               Unlimited students
             </p>
           </div>
           <div
-            class="emotion-13"
+            class="emotion-15"
           >
             <div
-              class="emotion-11"
+              class="emotion-16"
             />
             <p
-              class="emotion-12"
+              class="emotion-17"
             >
               Record observations
             </p>
           </div>
           <div
-            class="emotion-13"
+            class="emotion-15"
           >
             <div
-              class="emotion-11"
+              class="emotion-16"
             />
             <p
-              class="emotion-12"
+              class="emotion-17"
             >
               Create lesson plans
             </p>
           </div>
           <div
-            class="emotion-13"
+            class="emotion-15"
           >
             <div
-              class="emotion-11"
+              class="emotion-16"
             />
             <p
-              class="emotion-12"
+              class="emotion-17"
             >
               Track curriculum progress
             </p>
           </div>
           <div
-            class="emotion-13"
+            class="emotion-15"
           >
             <div
-              class="emotion-11"
+              class="emotion-16"
             />
             <p
-              class="emotion-12"
+              class="emotion-17"
             >
               Parent portal
             </p>
           </div>
           <div
-            class="emotion-13"
+            class="emotion-15"
           >
             <div
-              class="emotion-11"
+              class="emotion-16"
             />
             <p
-              class="emotion-12"
+              class="emotion-17"
             >
               Image gallery
             </p>
           </div>
           <div
-            class="emotion-13"
+            class="emotion-15"
           >
             <div
-              class="emotion-11"
+              class="emotion-16"
             />
             <p
-              class="emotion-12"
+              class="emotion-17"
             >
               Reporting
             </p>
             <p
-              class="emotion-31"
+              class="emotion-36"
             >
               Soon
             </p>
           </div>
           <div
-            class="emotion-13"
+            class="emotion-15"
           >
             <div
-              class="emotion-11"
+              class="emotion-16"
             />
             <p
-              class="emotion-12"
+              class="emotion-17"
             >
               And more coming...
             </p>
           </div>
         </div>
         <button
-          class="emotion-38"
+          class="emotion-40"
           disabled=""
         >
           <div
-            class="emotion-37"
+            class="emotion-41"
           >
             <div />
             <div />

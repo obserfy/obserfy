@@ -7,7 +7,7 @@ import DatePickerDialog from "../DatePickerDialog/DatePickerDialog"
 
 import dayjs, { Dayjs } from "../../dayjs"
 
-interface Props extends Omit<BoxProps, "value" | "onChange"> {
+interface Props extends Omit<BoxProps, "value" | "onChange" | "css"> {
   value?: Dayjs
   label?: string
   onChange: (date: Dayjs) => void

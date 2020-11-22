@@ -1,20 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PagePickGuardian should render correctly 1`] = `
-.emotion-13 {
+.emotion-0 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-size: 16px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-13 {
+@media screen and (min-width: 40em) {
+  .emotion-0 {
     font-size: 20px;
   }
 }
 
-.emotion-12 {
+.emotion-1 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -39,7 +39,7 @@ exports[`PagePickGuardian should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-0 {
+.emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -47,7 +47,7 @@ exports[`PagePickGuardian should render correctly 1`] = `
   height: auto;
   margin: 16px;
   margin-right: 4px;
-  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
+  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -55,19 +55,19 @@ exports[`PagePickGuardian should render correctly 1`] = `
   height: 24px;
 }
 
-.emotion-1 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-bottom: 0;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
 }
 
-.emotion-7 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -83,14 +83,14 @@ exports[`PagePickGuardian should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-size: 14px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -100,14 +100,14 @@ exports[`PagePickGuardian should render correctly 1`] = `
   flex-direction: column;
 }
 
-.emotion-3 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   padding-bottom: 4px;
 }
 
-.emotion-5 {
+.emotion-8 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -121,7 +121,7 @@ exports[`PagePickGuardian should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-4 {
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -130,6 +130,7 @@ exports[`PagePickGuardian should render correctly 1`] = `
   padding: 8px;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   font-size: inherit;
   line-height: inherit;
@@ -140,48 +141,48 @@ exports[`PagePickGuardian should render correctly 1`] = `
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface,#fff);
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface, #fff);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   margin-bottom: 8px;
   width: 100%;
 }
 
-.emotion-4:hover,
-.emotion-4:focus {
-  border-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-9:hover,
+.emotion-9:focus {
+  border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-4::-webkit-input-placeholder {
+.emotion-9::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-4::-moz-placeholder {
+.emotion-9::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-4:-ms-input-placeholder {
+.emotion-9:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-4::placeholder {
+.emotion-9::placeholder {
   font-style: italic;
 }
 
-.emotion-4:disabled {
+.emotion-9:disabled {
   opacity: 0.68;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
 }
 
-.emotion-8 {
+.emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
@@ -189,7 +190,7 @@ exports[`PagePickGuardian should render correctly 1`] = `
   margin-right: 16px;
   margin-bottom: 8px;
   margin-top: 32px;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
 }
 
 .emotion-11 {
@@ -197,9 +198,9 @@ exports[`PagePickGuardian should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   overflow: auto;
-  background-color: var(--theme-ui-colors-surface,#fff);
+  background-color: var(--theme-ui-colors-surface, #fff);
   border-radius: 6px;
-  box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px,rgba(0, 0, 0, 0.27) 0px 2px 4px -2px;
   padding: 16px;
   margin-left: 0;
   margin-right: 0;
@@ -215,24 +216,24 @@ exports[`PagePickGuardian should render correctly 1`] = `
   cursor: pointer;
 }
 
-@media screen and (min-width:40em) {
+@media screen and (min-width: 40em) {
   .emotion-11 {
     margin-left: 16px;
     margin-right: 16px;
   }
 }
 
-@media screen and (min-width:40em) {
+@media screen and (min-width: 40em) {
   .emotion-11 {
     border-radius: 6px;
   }
 }
 
 .emotion-11:hover {
-  background-color: var(--theme-ui-colors-primaryLightest,rgba(0,120,86,0.05));
+  background-color: var(--theme-ui-colors-primaryLightest, rgba(0,120,86,0.05));
 }
 
-.emotion-9 {
+.emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -240,7 +241,7 @@ exports[`PagePickGuardian should render correctly 1`] = `
   height: auto;
   margin-top: 5px;
   margin-right: 16px;
-  fill: var(--theme-ui-colors-primary,#00e399);
+  fill: var(--theme-ui-colors-primary, #00e399);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -248,11 +249,11 @@ exports[`PagePickGuardian should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-10 {
+.emotion-13 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
@@ -260,10 +261,10 @@ exports[`PagePickGuardian should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-13"
+    class="emotion-0"
   >
     <div
-      class="emotion-12"
+      class="emotion-1"
     >
       <a
         href="/dashboard/students/new"
@@ -273,38 +274,38 @@ exports[`PagePickGuardian should render correctly 1`] = `
           class="emotion-2"
         >
           <div
-            class="emotion-0"
+            class="emotion-3"
           />
           <p
-            class="emotion-1"
+            class="emotion-4"
           >
             New Student
           </p>
         </div>
       </a>
       <div
-        class="emotion-7"
+        class="emotion-5"
       >
         <label
           class="emotion-6"
         >
           <div
-            class="emotion-3"
+            class="emotion-7"
           >
             Guardian Name
           </div>
           <div
-            class="emotion-5"
+            class="emotion-8"
           >
             <input
-              class="emotion-4"
+              class="emotion-9"
               value=""
             />
           </div>
         </label>
       </div>
       <p
-        class="emotion-8"
+        class="emotion-10"
       >
         Select a guardian or create one
       </p>
@@ -312,10 +313,10 @@ exports[`PagePickGuardian should render correctly 1`] = `
         class="emotion-11"
       >
         <div
-          class="emotion-9"
+          class="emotion-12"
         />
         <p
-          class="emotion-10"
+          class="emotion-13"
         >
           Create 
           new guardian

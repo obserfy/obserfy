@@ -1,40 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`InformationalCard should render correctly 1`] = `
-.emotion-7 {
+.emotion-0 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-size: 16px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-7 {
+@media screen and (min-width: 40em) {
+  .emotion-0 {
     font-size: 20px;
   }
 }
 
-.emotion-6 {
+.emotion-1 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   padding: 16px;
   margin-top: 16px;
-  background-color: var(--theme-ui-colors-tintWarning,rgba(255,199,1,0.2));
+  background-color: var(--theme-ui-colors-tintWarning, rgba(255,199,1,0.2));
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   border-width: 1px;
-  border-color: var(--theme-ui-colors-warning,#ff6d00);
+  border-color: var(--theme-ui-colors-warning, #ff6d00);
   border-radius: 0;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-6 {
+@media screen and (min-width: 40em) {
+  .emotion-1 {
     border-radius: 6px;
   }
 }
@@ -54,13 +54,13 @@ exports[`InformationalCard should render correctly 1`] = `
   align-items: center;
 }
 
-.emotion-0 {
+.emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   max-width: 100%;
   height: auto;
-  fill: var(--theme-ui-colors-warning,#ff6d00);
+  fill: var(--theme-ui-colors-warning, #ff6d00);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -68,24 +68,24 @@ exports[`InformationalCard should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-1 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-left: 8px;
-  color: var(--theme-ui-colors-warning,#ff6d00);
+  color: var(--theme-ui-colors-warning, #ff6d00);
   font-size: 14px;
 }
 
-.emotion-3 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
@@ -93,17 +93,18 @@ exports[`InformationalCard should render correctly 1`] = `
   font-size: 14px;
 }
 
-.emotion-5 {
+.emotion-6 {
   margin-left: auto;
   display: inline-block;
 }
 
-.emotion-4 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   display: inline-block;
   text-align: center;
@@ -116,7 +117,7 @@ exports[`InformationalCard should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary,#00e399);
+  background-color: var(--theme-ui-colors-primary, #00e399);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -126,12 +127,12 @@ exports[`InformationalCard should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
-  background-color: var(--theme-ui-colors-surface,#fff);
+  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  background-color: var(--theme-ui-colors-surface, #fff);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 16px;
@@ -146,68 +147,68 @@ exports[`InformationalCard should render correctly 1`] = `
   -ms-flex-align: center;
   align-items: center;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
   -ms-flex-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
   touch-action: manipulation;
   box-shadow: none;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   border-style: solid;
   border-width: 1px;
   line-height: 1;
-  color: var(--theme-ui-colors-warning,#ff6d00);
+  color: var(--theme-ui-colors-warning, #ff6d00);
   font-size: 12px;
 }
 
-.emotion-4:disabled {
+.emotion-7:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-4:hover,
-.emotion-4:focus {
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
-  border-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-7:hover,
+.emotion-7:focus {
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,120,86,0.12));
+  border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-4:hover:disabled,
-.emotion-4:focus:disabled {
+.emotion-7:hover:disabled,
+.emotion-7:focus:disabled {
   background-color: transparent;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
 }
 
 <div>
   <div
-    class="emotion-7"
+    class="emotion-0"
   >
     <div
-      class="emotion-6"
+      class="emotion-1"
     >
       <div
         class="emotion-2"
       >
         <div
-          class="emotion-0"
+          class="emotion-3"
         />
         <p
-          class="emotion-1"
+          class="emotion-4"
         >
           Info
         </p>
       </div>
       <p
-        class="emotion-3"
+        class="emotion-5"
       >
         This is very useful do this.
       </p>
       <a
         aria-current="page"
-        class="emotion-5"
+        class="emotion-6"
         href="/"
       >
         <button
-          class="emotion-4"
+          class="emotion-7"
         >
           A button
         </button>
