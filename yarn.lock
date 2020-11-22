@@ -20084,7 +20084,7 @@ fsevents@^1.2.7:
     "@lingui/react": 3.2.3
     react-refresh: 0.9.0
   peerDependencies:
-    "@emotion/core": ^10.0.28
+    "@emotion/core": ^10.0.28 || ^11.0.0
     "@lingui/core": ^3.0.0-18
     "@lingui/react": ^3.0.0-18
     gatsby: ">=2.21.26"
