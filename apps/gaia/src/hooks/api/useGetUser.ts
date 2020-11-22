@@ -1,7 +1,7 @@
 import { useQuery } from "react-query"
 import { useRouter } from "next/router"
 import { UserData } from "../../pages/api/me"
-import { getApi } from "../../apiHelpers"
+import { getApi } from "./apiHelpers"
 
 const useGetUser = () => {
   const router = useRouter()

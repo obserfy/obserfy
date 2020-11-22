@@ -1,6 +1,6 @@
 import { useQuery } from "react-query"
 import { Dayjs } from "../../utils/dayjs"
-import { getApi } from "../../apiHelpers"
+import { getApi } from "./apiHelpers"
 import { GetChildPlansResponse } from "../../pages/api/children/[childId]/plans"
 
 const useGetChildPlans = (childId: string, date: Dayjs) => {

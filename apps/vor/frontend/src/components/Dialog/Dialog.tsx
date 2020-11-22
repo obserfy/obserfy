@@ -1,5 +1,5 @@
 import React, { FC, PropsWithoutRef, useEffect, useRef } from "react"
-import { Global, keyframes } from "@emotion/core"
+import { Global, keyframes } from "@emotion/react"
 import { BoxProps, Card, Flex, Box } from "theme-ui"
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock"
 import Portal from "../Portal/Portal"

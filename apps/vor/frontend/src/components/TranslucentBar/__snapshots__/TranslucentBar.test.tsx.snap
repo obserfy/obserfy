@@ -1,42 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TranslucentBar should render correctly 1`] = `
-.emotion-21 {
+.emotion-0 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-size: 16px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-21 {
+@media screen and (min-width: 40em) {
+  .emotion-0 {
     font-size: 20px;
   }
 }
 
-.emotion-20 {
+.emotion-1 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
 }
 
-.emotion-4 {
+.emotion-2 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  background-color: var(--theme-ui-colors-surfaceBlurNonTransparent,rgba(255,255,255));
+  background-color: var(--theme-ui-colors-surfaceBlurNonTransparent, rgba(255,255,255));
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
 }
 
-@supports (-webkit-backdrop-filter:blur(20px)) or (backdrop-filter:blur(20px)) {
-  .emotion-4 {
-    background-color: var(--theme-ui-colors-surfaceBlurTransparent,rgba(255,255,255,0.6));
+@supports (backdrop-filter: blur(20px)) {
+  .emotion-2 {
+    background-color: var(--theme-ui-colors-surfaceBlurTransparent, rgba(255,255,255,0.6));
     -webkit-backdrop-filter: saturate(180%) blur(20px);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
     -ms-transform: translateZ(0);
     transform: translateZ(0);
     will-change: backdrop-filter;
@@ -48,8 +49,8 @@ exports[`TranslucentBar should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   -webkit-box-pack: space-around;
-  -webkit-justify-content: space-around;
   -ms-flex-pack: space-around;
+  -webkit-justify-content: space-around;
   justify-content: space-around;
   display: -webkit-box;
   display: -webkit-flex;
@@ -57,14 +58,14 @@ exports[`TranslucentBar should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-0 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   margin: 16px;
 }
 
-.emotion-9 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -74,7 +75,7 @@ exports[`TranslucentBar should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-5 {
+.emotion-8 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -83,7 +84,7 @@ exports[`TranslucentBar should render correctly 1`] = `
   width: 100px;
 }
 
-.emotion-6 {
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -92,7 +93,7 @@ exports[`TranslucentBar should render correctly 1`] = `
   width: 100px;
 }
 
-.emotion-7 {
+.emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -101,7 +102,7 @@ exports[`TranslucentBar should render correctly 1`] = `
   width: 100px;
 }
 
-.emotion-8 {
+.emotion-11 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -112,80 +113,80 @@ exports[`TranslucentBar should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-21"
+    class="emotion-0"
   >
     <div
-      class="emotion-20"
+      class="emotion-1"
     >
       <div
-        class="emotion-4"
+        class="emotion-2"
       >
         <div
           class="emotion-3"
         >
           <div
-            class="emotion-0"
+            class="emotion-4"
           >
             One
           </div>
           <div
-            class="emotion-0"
+            class="emotion-4"
           >
             Two
           </div>
           <div
-            class="emotion-0"
+            class="emotion-4"
           >
             Three
           </div>
         </div>
       </div>
       <div
-        class="emotion-9"
+        class="emotion-7"
       >
         <div
-          class="emotion-5"
-        />
-        <div
-          class="emotion-6"
-        />
-        <div
-          class="emotion-7"
-        />
-        <div
           class="emotion-8"
+        />
+        <div
+          class="emotion-9"
+        />
+        <div
+          class="emotion-10"
+        />
+        <div
+          class="emotion-11"
         />
       </div>
       <div
-        class="emotion-9"
+        class="emotion-7"
       >
+        <div
+          class="emotion-11"
+        />
         <div
           class="emotion-8"
         />
         <div
-          class="emotion-5"
+          class="emotion-10"
         />
         <div
-          class="emotion-7"
-        />
-        <div
-          class="emotion-6"
+          class="emotion-9"
         />
       </div>
       <div
-        class="emotion-9"
+        class="emotion-7"
       >
-        <div
-          class="emotion-5"
-        />
-        <div
-          class="emotion-6"
-        />
         <div
           class="emotion-8"
         />
         <div
-          class="emotion-7"
+          class="emotion-9"
+        />
+        <div
+          class="emotion-11"
+        />
+        <div
+          class="emotion-10"
         />
       </div>
     </div>

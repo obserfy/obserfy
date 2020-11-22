@@ -36,3 +36,16 @@ export interface Observation {
   observation: string
   createdAt: string
 }
+
+export const materialStageToString = (stage: number) => {
+  if (stage === 0) {
+    return "Presented"
+  }
+  if (stage === 1) {
+    return "Practiced"
+  }
+  if (stage === 2) {
+    return "Mastered"
+  }
+  return ""
+}

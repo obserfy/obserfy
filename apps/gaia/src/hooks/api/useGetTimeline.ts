@@ -1,5 +1,5 @@
 import { useQuery } from "react-query"
-import { getApi } from "../../apiHelpers"
+import { getApi } from "./apiHelpers"
 import { GetChildTimelineResponse } from "../../pages/api/children/[childId]/timeline"
 
 const useGetTimeline = (childId: string) => {

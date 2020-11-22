@@ -3,57 +3,58 @@
 exports[`PageNewStudent should render correctly 1`] = `
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165,165,165,0.05);
+    background-color: rgba(165, 165, 165, 0.05);
   }
 
   50% {
-    background-color: rgba(165,165,165,0.2);
+    background-color: rgba(165, 165, 165, 0.2);
   }
 
   100% {
-    background-color: rgba(165,165,165,0.05);
+    background-color: rgba(165, 165, 165, 0.05);
   }
 }
 
-.emotion-62 {
+.emotion-0 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-size: 16px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-62 {
+@media screen and (min-width: 40em) {
+  .emotion-0 {
     font-size: 20px;
   }
 }
 
-.emotion-10 {
+.emotion-1 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  background-color: var(--theme-ui-colors-surfaceBlurNonTransparent,rgba(255,255,255));
-  position: -webkit-sticky;
+  background-color: var(--theme-ui-colors-surfaceBlurNonTransparent, rgba(255,255,255));
+  -webkit-position: sticky;
   position: sticky;
   top: 0;
   border-bottom-width: 1px;
-  border-bottom-color: var(--theme-ui-colors-borderSolid,rgba(0,0,0,.1));
+  border-bottom-color: var(--theme-ui-colors-borderSolid, rgba(0,0,0,.1));
   border-bottom-style: solid;
 }
 
-@supports (-webkit-backdrop-filter:blur(20px)) or (backdrop-filter:blur(20px)) {
-  .emotion-10 {
-    background-color: var(--theme-ui-colors-surfaceBlurTransparent,rgba(255,255,255,0.6));
+@supports (backdrop-filter: blur(20px)) {
+  .emotion-1 {
+    background-color: var(--theme-ui-colors-surfaceBlurTransparent, rgba(255,255,255,0.6));
     -webkit-backdrop-filter: saturate(180%) blur(20px);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
     -ms-transform: translateZ(0);
     transform: translateZ(0);
     will-change: backdrop-filter;
   }
 }
 
-.emotion-9 {
+.emotion-2 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -69,19 +70,20 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-2 {
+.emotion-3 {
   margin: 8px;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
-.emotion-1 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   display: inline-block;
   text-align: center;
@@ -94,7 +96,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary,#00e399);
+  background-color: var(--theme-ui-colors-primary, #00e399);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -104,12 +106,12 @@ exports[`PageNewStudent should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
+  color: var(--theme-ui-colors-textPrimary, #027c5b);
   background-color: transparent;
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 16px;
@@ -124,12 +126,12 @@ exports[`PageNewStudent should render correctly 1`] = `
   -ms-flex-align: center;
   align-items: center;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
   -ms-flex-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
   touch-action: manipulation;
   box-shadow: none;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   border-style: solid;
   border-width: 1px;
   line-height: 1;
@@ -137,34 +139,34 @@ exports[`PageNewStudent should render correctly 1`] = `
   padding: 4px;
 }
 
-.emotion-1:disabled {
+.emotion-4:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-1:hover,
-.emotion-1:focus {
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
-  border-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-4:hover,
+.emotion-4:focus {
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,120,86,0.12));
+  border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-0 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   max-width: 100%;
   height: auto;
-  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
+  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   width: 20px;
   height: 20px;
-  fill: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  fill: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
 }
 
-.emotion-7 {
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -179,55 +181,56 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-5 {
+.emotion-7 {
   display: inline-block;
   font-size: 12px;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
   white-space: nowrap;
 }
 
-.emotion-5:last-child {
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
+.emotion-7:last-child {
+  color: var(--theme-ui-colors-textPrimary, #027c5b);
 }
 
-.emotion-5:last-child > .splitter {
+.emotion-7:last-child>.splitter {
   display: none;
 }
 
-.emotion-3:hover {
+.emotion-8:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
 }
 
-.emotion-4 {
+.emotion-9 {
   margin-left: 4px;
   margin-right: 4px;
 }
 
-.emotion-6 {
+.emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   display: inline-block;
   font-size: 12px;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
   white-space: nowrap;
 }
 
-.emotion-6:last-child {
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
+.emotion-10:last-child {
+  color: var(--theme-ui-colors-textPrimary, #027c5b);
 }
 
-.emotion-6:last-child > .splitter {
+.emotion-10:last-child>.splitter {
   display: none;
 }
 
-.emotion-8 {
+.emotion-11 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   display: inline-block;
   text-align: center;
@@ -240,7 +243,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary,#00e399);
+  background-color: var(--theme-ui-colors-primary, #00e399);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -250,12 +253,12 @@ exports[`PageNewStudent should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-onPrimary,#000);
-  background-color: var(--theme-ui-colors-primary,#00e399);
+  color: var(--theme-ui-colors-onPrimary, #000);
+  background-color: var(--theme-ui-colors-primary, #00e399);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 16px;
@@ -270,12 +273,12 @@ exports[`PageNewStudent should render correctly 1`] = `
   -ms-flex-align: center;
   align-items: center;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
   -ms-flex-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
   touch-action: manipulation;
-  box-shadow: rgba(27,31,35,0.1) 0px 1px 0px 0px,rgba(255,255,255,0.03) 0px 1px 0px 0px inset;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  box-shadow: rgba(27, 31, 35, 0.1) 0px 1px 0px 0px,rgba(255, 255, 255, 0.03) 0px 1px 0px 0px inset;
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   border-style: solid;
   border-width: 1px;
   line-height: 1;
@@ -286,23 +289,23 @@ exports[`PageNewStudent should render correctly 1`] = `
   margin-right: 16px;
 }
 
-.emotion-8:disabled {
+.emotion-11:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-8:hover,
-.emotion-8:focus {
-  background-color: var(--theme-ui-colors-primaryDark,#00a06d);
+.emotion-11:hover,
+.emotion-11:focus {
+  background-color: var(--theme-ui-colors-primaryDark, #00a06d);
   outline: none;
 }
 
-.emotion-8:hover:disabled,
-.emotion-8:focus:disabled {
-  background-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-11:hover:disabled,
+.emotion-11:focus:disabled {
+  background-color: var(--theme-ui-colors-primary, #00e399);
 }
 
-.emotion-61 {
+.emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -312,7 +315,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   max-width: 640px;
 }
 
-.emotion-50 {
+.emotion-13 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -320,7 +323,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   margin-right: 16px;
 }
 
-.emotion-19 {
+.emotion-14 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -334,20 +337,20 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-11 {
+.emotion-15 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: bold;
   line-height: heading;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   text-rendering: optimizeLegibility;
   font-size: 24px;
   margin-bottom: 16px;
 }
 
-.emotion-18 {
+.emotion-16 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -367,7 +370,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-size: 14px;
   -webkit-user-select: none;
@@ -376,26 +379,26 @@ exports[`PageNewStudent should render correctly 1`] = `
   user-select: none;
 }
 
-.emotion-15 {
+.emotion-18 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   overflow: auto;
-  background-color: var(--theme-ui-colors-surface,#fff);
+  background-color: var(--theme-ui-colors-surface, #fff);
   border-radius: 6px;
-  box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px,rgba(0, 0, 0, 0.27) 0px 2px 4px -2px;
   height: 100px;
   width: 100px;
   overflow: hidden;
 }
 
-.emotion-14 {
+.emotion-19 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
   -ms-flex-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
@@ -412,7 +415,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-12 {
+.emotion-20 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -420,7 +423,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   height: auto;
   margin-bottom: 4px;
   margin-top: 16px;
-  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
+  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -428,19 +431,19 @@ exports[`PageNewStudent should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-13 {
+.emotion-21 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
   font-size: 12px;
 }
 
-.emotion-16 {
+.emotion-22 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -449,6 +452,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   padding: 8px;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   font-size: inherit;
   line-height: inherit;
@@ -459,40 +463,40 @@ exports[`PageNewStudent should render correctly 1`] = `
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface,#fff);
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface, #fff);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   display: none;
 }
 
-.emotion-16:hover,
-.emotion-16:focus {
-  border-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-22:hover,
+.emotion-22:focus {
+  border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-16::-webkit-input-placeholder {
+.emotion-22::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-16::-moz-placeholder {
+.emotion-22::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-16:-ms-input-placeholder {
+.emotion-22:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-16::placeholder {
+.emotion-22::placeholder {
   font-style: italic;
 }
 
-.emotion-16:disabled {
+.emotion-22:disabled {
   opacity: 0.68;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
 }
 
 .emotion-23 {
@@ -504,14 +508,14 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-size: 14px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -521,14 +525,14 @@ exports[`PageNewStudent should render correctly 1`] = `
   flex-direction: column;
 }
 
-.emotion-20 {
+.emotion-24 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   padding-bottom: 4px;
 }
 
-.emotion-22 {
+.emotion-25 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -542,7 +546,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-21 {
+.emotion-26 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -551,6 +555,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   padding: 8px;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   font-size: inherit;
   line-height: inherit;
@@ -561,44 +566,44 @@ exports[`PageNewStudent should render correctly 1`] = `
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface,#fff);
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface, #fff);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   margin-bottom: 16px;
   width: 100%;
 }
 
-.emotion-21:hover,
-.emotion-21:focus {
-  border-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-26:hover,
+.emotion-26:focus {
+  border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-21::-webkit-input-placeholder {
+.emotion-26::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-21::-moz-placeholder {
+.emotion-26::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-21:-ms-input-placeholder {
+.emotion-26:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-21::placeholder {
+.emotion-26::placeholder {
   font-style: italic;
 }
 
-.emotion-21:disabled {
+.emotion-26:disabled {
   opacity: 0.68;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
 }
 
-.emotion-30 {
+.emotion-27 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -609,7 +614,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-25 {
+.emotion-31 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -618,6 +623,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   padding: 8px;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   font-size: inherit;
   line-height: inherit;
@@ -628,49 +634,50 @@ exports[`PageNewStudent should render correctly 1`] = `
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface,#fff);
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface, #fff);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   opacity: 1!important;
   width: 100%;
 }
 
-.emotion-25:hover,
-.emotion-25:focus {
-  border-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-31:hover,
+.emotion-31:focus {
+  border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-25::-webkit-input-placeholder {
+.emotion-31::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-25::-moz-placeholder {
+.emotion-31::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-25:-ms-input-placeholder {
+.emotion-31:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-25::placeholder {
+.emotion-31::placeholder {
   font-style: italic;
 }
 
-.emotion-25:disabled {
+.emotion-31:disabled {
   opacity: 0.68;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
 }
 
-.emotion-29 {
+.emotion-32 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   display: inline-block;
   text-align: center;
@@ -683,7 +690,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary,#00e399);
+  background-color: var(--theme-ui-colors-primary, #00e399);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -693,12 +700,12 @@ exports[`PageNewStudent should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
-  background-color: var(--theme-ui-colors-surface,#fff);
+  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  background-color: var(--theme-ui-colors-surface, #fff);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 16px;
@@ -713,12 +720,12 @@ exports[`PageNewStudent should render correctly 1`] = `
   -ms-flex-align: center;
   align-items: center;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
   -ms-flex-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
   touch-action: manipulation;
   box-shadow: none;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   border-style: solid;
   border-width: 1px;
   line-height: 1;
@@ -729,31 +736,31 @@ exports[`PageNewStudent should render correctly 1`] = `
   flex-shrink: 0;
 }
 
-.emotion-29:disabled {
+.emotion-32:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-29:hover,
-.emotion-29:focus {
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
-  border-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-32:hover,
+.emotion-32:focus {
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,120,86,0.12));
+  border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-29:hover:disabled,
-.emotion-29:focus:disabled {
+.emotion-32:hover:disabled,
+.emotion-32:focus:disabled {
   background-color: transparent;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
 }
 
-.emotion-28 {
+.emotion-33 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   max-width: 100%;
   height: auto;
-  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
+  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -761,7 +768,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-42 {
+.emotion-41 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -770,7 +777,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-size: 14px;
   -webkit-user-select: none;
@@ -786,7 +793,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   flex-direction: column;
 }
 
-.emotion-39 {
+.emotion-44 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -795,6 +802,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   padding: 8px;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   font-size: inherit;
   line-height: inherit;
@@ -803,21 +811,21 @@ exports[`PageNewStudent should render correctly 1`] = `
   color: inherit;
   background-color: transparent;
   border-radius: 6px;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface,#fff);
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface, #fff);
   font-size: 16px;
   padding: 12px;
 }
 
-.emotion-39:hover,
-.emotion-39:focus {
-  border-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-44:hover,
+.emotion-44:focus {
+  border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-40 {
+.emotion-45 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -828,7 +836,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   pointer-events: none;
 }
 
-.emotion-48 {
+.emotion-52 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -837,6 +845,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   padding: 8px;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   font-size: inherit;
   line-height: inherit;
@@ -846,64 +855,64 @@ exports[`PageNewStudent should render correctly 1`] = `
   background-color: transparent;
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface,#fff);
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface, #fff);
   font-size: 16px;
   padding: 16px;
   height: 180px;
   resize: vertical;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   height: 100px;
 }
 
-.emotion-48:hover,
-.emotion-48:focus {
-  border-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-52:hover,
+.emotion-52:focus {
+  border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-48::-webkit-input-placeholder {
+.emotion-52::-webkit-input-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-48::-moz-placeholder {
+.emotion-52::-moz-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-48:-ms-input-placeholder {
+.emotion-52:-ms-input-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-48::placeholder {
+.emotion-52::placeholder {
   font-style: italic;
   line-height: 2rem;
-}
-
-.emotion-51 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: bold;
-  line-height: heading;
-  color: var(--theme-ui-colors-text,#37383c);
-  text-rendering: optimizeLegibility;
-  font-size: 24px;
-  margin: 16px;
-  margin-top: 32px;
 }
 
 .emotion-53 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: bold;
+  line-height: heading;
+  color: var(--theme-ui-colors-text, #37383c);
+  text-rendering: optimizeLegibility;
+  font-size: 24px;
+  margin: 16px;
+  margin-top: 32px;
+}
+
+.emotion-54 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
   margin: 16px;
 }
 
-.emotion-52 {
+.emotion-55 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -914,7 +923,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   height: 4rem;
 }
 
-.emotion-54 {
+.emotion-56 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -940,26 +949,27 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-55 {
+.emotion-58 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: bold;
   line-height: heading;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   text-rendering: optimizeLegibility;
   font-size: 24px;
   margin: 16px;
   margin-right: auto;
 }
 
-.emotion-56 {
+.emotion-59 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   display: inline-block;
   text-align: center;
@@ -972,7 +982,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary,#00e399);
+  background-color: var(--theme-ui-colors-primary, #00e399);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -982,12 +992,12 @@ exports[`PageNewStudent should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
-  background-color: var(--theme-ui-colors-surface,#fff);
+  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  background-color: var(--theme-ui-colors-surface, #fff);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 16px;
@@ -1002,80 +1012,81 @@ exports[`PageNewStudent should render correctly 1`] = `
   -ms-flex-align: center;
   align-items: center;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
   -ms-flex-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
   touch-action: manipulation;
   box-shadow: none;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   border-style: solid;
   border-width: 1px;
   line-height: 1;
   margin-right: 16px;
 }
 
-.emotion-56:disabled {
+.emotion-59:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-56:hover,
-.emotion-56:focus {
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
-  border-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-59:hover,
+.emotion-59:focus {
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,120,86,0.12));
+  border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-56:hover:disabled,
-.emotion-56:focus:disabled {
+.emotion-59:hover:disabled,
+.emotion-59:focus:disabled {
   background-color: transparent;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-}
-
-.emotion-59 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  overflow: auto;
-  background-color: var(--theme-ui-colors-surface,#fff);
-  border-radius: 6px;
-  box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
-  margin-left: 0;
-  margin-right: 0;
-  border-radius: 0;
-}
-
-@media screen and (min-width:40em) {
-  .emotion-59 {
-    margin-left: 16px;
-    margin-right: 16px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .emotion-59 {
-    border-radius: 6px;
-  }
-}
-
-.emotion-58 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
-  font-size: 14px;
-  text-rendering: optimizeLegibility;
-  line-height: 1.5;
-  margin: 16px;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
 }
 
 .emotion-60 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  overflow: auto;
+  background-color: var(--theme-ui-colors-surface, #fff);
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px,rgba(0, 0, 0, 0.27) 0px 2px 4px -2px;
+  margin-left: 0;
+  margin-right: 0;
+  border-radius: 0;
+}
+
+@media screen and (min-width: 40em) {
+  .emotion-60 {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
+
+@media screen and (min-width: 40em) {
+  .emotion-60 {
+    border-radius: 6px;
+  }
+}
+
+.emotion-61 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: var(--theme-ui-colors-text, #37383c);
+  font-size: 14px;
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+  margin: 16px;
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+}
+
+.emotion-62 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   display: inline-block;
   text-align: center;
@@ -1088,7 +1099,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary,#00e399);
+  background-color: var(--theme-ui-colors-primary, #00e399);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -1098,12 +1109,12 @@ exports[`PageNewStudent should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
-  background-color: var(--theme-ui-colors-surface,#fff);
+  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  background-color: var(--theme-ui-colors-surface, #fff);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 16px;
@@ -1118,12 +1129,12 @@ exports[`PageNewStudent should render correctly 1`] = `
   -ms-flex-align: center;
   align-items: center;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
   -ms-flex-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
   touch-action: manipulation;
   box-shadow: none;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   border-style: solid;
   border-width: 1px;
   line-height: 1;
@@ -1131,70 +1142,70 @@ exports[`PageNewStudent should render correctly 1`] = `
   margin-top: 16px;
   margin-bottom: 16px;
   margin-left: auto;
-  color: var(--theme-ui-colors-danger,#d50000);
+  color: var(--theme-ui-colors-danger, #d50000);
 }
 
-.emotion-60:disabled {
+.emotion-62:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-60:hover,
-.emotion-60:focus {
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
-  border-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-62:hover,
+.emotion-62:focus {
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,120,86,0.12));
+  border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-60:hover:disabled,
-.emotion-60:focus:disabled {
+.emotion-62:hover:disabled,
+.emotion-62:focus:disabled {
   background-color: transparent;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
 }
 
 <div>
   <div
-    class="emotion-62"
+    class="emotion-0"
   >
     <div
-      class="emotion-10"
+      class="emotion-1"
     >
       <div
-        class="emotion-9"
+        class="emotion-2"
       >
         <a
-          class="emotion-2"
+          class="emotion-3"
           data-cy="back-button"
           href="/dashboard/students"
         >
           <button
-            class="emotion-1"
+            class="emotion-4"
           >
             <div
-              class="emotion-0"
+              class="emotion-5"
             />
           </button>
         </a>
         <div
-          class="emotion-7"
+          class="emotion-6"
         >
           <a
-            class="emotion-5"
+            class="emotion-7"
             href="/dashboard/students"
           >
             <span
-              class="emotion-3"
+              class="emotion-8"
             >
               Students
             </span>
             <span
-              class="splitter emotion-4"
+              class="splitter emotion-9"
             >
               /
             </span>
           </a>
           <div
-            class="emotion-6"
+            class="emotion-10"
           >
             New
             <span
@@ -1205,7 +1216,7 @@ exports[`PageNewStudent should render correctly 1`] = `
           </div>
         </div>
         <button
-          class="emotion-8"
+          class="emotion-11"
           disabled=""
         >
           Save
@@ -1213,45 +1224,45 @@ exports[`PageNewStudent should render correctly 1`] = `
       </div>
     </div>
     <div
-      class="emotion-61"
+      class="emotion-12"
     >
       <div
-        class="emotion-50"
+        class="emotion-13"
       >
         <div
-          class="emotion-19"
+          class="emotion-14"
         >
           <h5
-            class="emotion-11"
+            class="emotion-15"
           >
             New Student
           </h5>
           <div
-            class="emotion-18"
+            class="emotion-16"
           >
             <label
               class="emotion-17"
             >
               <div
-                class="emotion-15"
+                class="emotion-18"
               >
                 <div
-                  class="emotion-14"
+                  class="emotion-19"
                 >
                   <div
-                    class="emotion-12"
+                    class="emotion-20"
                     height="24"
                     width="24"
                   />
                   <p
-                    class="emotion-13"
+                    class="emotion-21"
                   >
                     Add Picture
                   </p>
                 </div>
               </div>
               <input
-                class="emotion-16"
+                class="emotion-22"
                 type="file"
               />
             </label>
@@ -1261,35 +1272,35 @@ exports[`PageNewStudent should render correctly 1`] = `
           class="emotion-23"
         >
           <div
-            class="emotion-20"
+            class="emotion-24"
           >
             Name (Required)
           </div>
           <div
-            class="emotion-22"
+            class="emotion-25"
           >
             <input
-              class="emotion-21"
+              class="emotion-26"
               value=""
             />
           </div>
         </label>
         <div
-          class="emotion-30"
+          class="emotion-27"
         >
           <label
             class="emotion-23"
           >
             <div
-              class="emotion-20"
+              class="emotion-24"
             >
               Date of Birth
             </div>
             <div
-              class="emotion-22"
+              class="emotion-25"
             >
               <input
-                class="emotion-25"
+                class="emotion-31"
                 disabled=""
                 placeholder="Not set"
                 value=""
@@ -1297,30 +1308,30 @@ exports[`PageNewStudent should render correctly 1`] = `
             </div>
           </label>
           <button
-            class="emotion-29"
+            class="emotion-32"
             data-cy="Date of Birth"
           >
             <div
-              class="emotion-28"
+              class="emotion-33"
             />
           </button>
         </div>
         <div
-          class="emotion-30"
+          class="emotion-27"
         >
           <label
             class="emotion-23"
           >
             <div
-              class="emotion-20"
+              class="emotion-24"
             >
               Date of Entry
             </div>
             <div
-              class="emotion-22"
+              class="emotion-25"
             >
               <input
-                class="emotion-25"
+                class="emotion-31"
                 disabled=""
                 placeholder="Not set"
                 value=""
@@ -1328,47 +1339,47 @@ exports[`PageNewStudent should render correctly 1`] = `
             </div>
           </label>
           <button
-            class="emotion-29"
+            class="emotion-32"
             data-cy="Date of Entry"
           >
             <div
-              class="emotion-28"
+              class="emotion-33"
             />
           </button>
         </div>
         <label
-          class="emotion-42"
+          class="emotion-41"
         >
           <div
-            class="emotion-20"
+            class="emotion-24"
           >
             Gender
           </div>
           <div
-            class="emotion-30"
+            class="emotion-27"
           >
             <select
               aria-label="Gender"
-              class="emotion-39"
+              class="emotion-44"
             >
               <option
                 value="0"
               >
-                [object Object]
+                Not Set
               </option>
               <option
                 value="1"
               >
-                [object Object]
+                Male
               </option>
               <option
                 value="2"
               >
-                [object Object]
+                Female
               </option>
             </select>
             <svg
-              class="emotion-40"
+              class="emotion-45"
               fill="currentcolor"
               height="24"
               viewBox="0 0 24 24"
@@ -1385,53 +1396,53 @@ exports[`PageNewStudent should render correctly 1`] = `
           class="emotion-23"
         >
           <div
-            class="emotion-20"
+            class="emotion-24"
           >
             Student ID
           </div>
           <div
-            class="emotion-22"
+            class="emotion-25"
           >
             <input
-              class="emotion-21"
+              class="emotion-26"
               value=""
             />
           </div>
         </label>
         <label
-          class="emotion-42"
+          class="emotion-41"
         >
           <div
-            class="emotion-20"
+            class="emotion-24"
           >
             Notes
           </div>
           <textarea
             aria-label="Notes"
-            class="emotion-48"
+            class="emotion-52"
           />
         </label>
       </div>
       <h5
-        class="emotion-51"
+        class="emotion-53"
       >
         Classes
       </h5>
       <div
-        class="emotion-53"
+        class="emotion-54"
       >
         <div
-          class="emotion-52"
+          class="emotion-55"
         />
       </div>
       <div
-        class="emotion-54"
+        class="emotion-56"
       />
       <div
         class="emotion-57"
       >
         <h5
-          class="emotion-55"
+          class="emotion-58"
         >
           Guardians
         </h5>
@@ -1440,23 +1451,23 @@ exports[`PageNewStudent should render correctly 1`] = `
           href="/dashboard/students/new/pickGuardians"
         >
           <button
-            class="emotion-56"
+            class="emotion-59"
           >
             Add
           </button>
         </a>
       </div>
       <div
-        class="emotion-59"
+        class="emotion-60"
       >
         <p
-          class="emotion-58"
+          class="emotion-61"
         >
           This student doesn't have a guardian yet.
         </p>
       </div>
       <button
-        class="emotion-60"
+        class="emotion-62"
       >
         Ulang Formulir
       </button>

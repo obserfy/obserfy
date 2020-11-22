@@ -3,74 +3,74 @@
 exports[`PageEditSubject should render correctly 1`] = `
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165,165,165,0.05);
+    background-color: rgba(165, 165, 165, 0.05);
   }
 
   50% {
-    background-color: rgba(165,165,165,0.2);
+    background-color: rgba(165, 165, 165, 0.2);
   }
 
   100% {
-    background-color: rgba(165,165,165,0.05);
+    background-color: rgba(165, 165, 165, 0.05);
   }
 }
 
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165,165,165,0.05);
+    background-color: rgba(165, 165, 165, 0.05);
   }
 
   50% {
-    background-color: rgba(165,165,165,0.2);
+    background-color: rgba(165, 165, 165, 0.2);
   }
 
   100% {
-    background-color: rgba(165,165,165,0.05);
+    background-color: rgba(165, 165, 165, 0.05);
   }
 }
 
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165,165,165,0.05);
+    background-color: rgba(165, 165, 165, 0.05);
   }
 
   50% {
-    background-color: rgba(165,165,165,0.2);
+    background-color: rgba(165, 165, 165, 0.2);
   }
 
   100% {
-    background-color: rgba(165,165,165,0.05);
+    background-color: rgba(165, 165, 165, 0.05);
   }
 }
 
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165,165,165,0.05);
+    background-color: rgba(165, 165, 165, 0.05);
   }
 
   50% {
-    background-color: rgba(165,165,165,0.2);
+    background-color: rgba(165, 165, 165, 0.2);
   }
 
   100% {
-    background-color: rgba(165,165,165,0.05);
+    background-color: rgba(165, 165, 165, 0.05);
   }
 }
 
-.emotion-9 {
+.emotion-0 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-size: 16px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-9 {
+@media screen and (min-width: 40em) {
+  .emotion-0 {
     font-size: 20px;
   }
 }
 
-.emotion-8 {
+.emotion-1 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -82,7 +82,7 @@ exports[`PageEditSubject should render correctly 1`] = `
   max-width: 640px;
 }
 
-.emotion-0 {
+.emotion-2 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -94,7 +94,7 @@ exports[`PageEditSubject should render correctly 1`] = `
   height: 3rem;
 }
 
-.emotion-2 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -106,7 +106,7 @@ exports[`PageEditSubject should render correctly 1`] = `
   height: 6rem;
 }
 
-.emotion-3 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -118,7 +118,7 @@ exports[`PageEditSubject should render correctly 1`] = `
   height: 2rem;
 }
 
-.emotion-4 {
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -132,34 +132,34 @@ exports[`PageEditSubject should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-9"
+    class="emotion-0"
   >
     <div
-      class="emotion-8"
+      class="emotion-1"
     >
       <div
-        class="emotion-0"
-      />
-      <div
-        class="emotion-0"
+        class="emotion-2"
       />
       <div
         class="emotion-2"
       />
       <div
-        class="emotion-3"
-      />
-      <div
         class="emotion-4"
       />
       <div
-        class="emotion-4"
+        class="emotion-5"
       />
       <div
-        class="emotion-4"
+        class="emotion-6"
       />
       <div
-        class="emotion-4"
+        class="emotion-6"
+      />
+      <div
+        class="emotion-6"
+      />
+      <div
+        class="emotion-6"
       />
     </div>
   </div>
