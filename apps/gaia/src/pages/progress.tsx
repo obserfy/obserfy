@@ -1,8 +1,13 @@
 import React, { FC } from "react"
 import Image from "next/image"
+import useGetCurriculumProgress from "../hooks/api/useGetCurriculumProgress"
+import { useQueryString } from "../hooks/useQueryString"
 
 const Progress = () => {
-  return <EmptyCurriculumPlaceholder />
+  const childId = useQueryString("childId")
+  const { data: progress, isLoading } = useGetCurriculumProgress(childId)
+
+  return <EmptyCurriculumPlaceholder loading={isLoading} />
 }
 
 const EmptyCurriculumPlaceholder: FC<{ loading?: boolean }> = ({ loading }) => (

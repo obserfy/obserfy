@@ -7,7 +7,7 @@ const useGetCurriculumProgress = (childId: string) => {
     `/children/${childId}/progress`
   )
 
-  return useQuery(getCurriculumProgress)
+  return useQuery(["child", childId, "progress"], getCurriculumProgress)
 }
 
 export default useGetCurriculumProgress

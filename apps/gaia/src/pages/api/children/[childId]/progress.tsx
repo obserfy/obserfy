@@ -37,7 +37,7 @@ const progress = auth0.requireAuthentication(
       }
 
       const response: GetChildProgressResponse = result
-      res.status(200).json(response)
+      res.json(response)
     } catch (error) {
       logger.error(error)
       res.status(error.status || 500).end(error.message)
