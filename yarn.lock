@@ -4563,9 +4563,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cypress/code-coverage@npm:3.8.4":
-  version: 3.8.4
-  resolution: "@cypress/code-coverage@npm:3.8.4"
+"@cypress/code-coverage@npm:3.8.5":
+  version: 3.8.5
+  resolution: "@cypress/code-coverage@npm:3.8.5"
   dependencies:
     "@cypress/browserify-preprocessor": 3.0.1
     debug: 4.3.1
@@ -4576,7 +4576,7 @@ __metadata:
     nyc: 15.1.0
   peerDependencies:
     cypress: "*"
-  checksum: e6d194864343ec3412838321526d9e454c4d453aee96381db5da05ada38dbfd4c4b6f60cca1edeed94e1e887890825e8b5ad4c6a8d459d245a801c48745c3436
+  checksum: 1e95f7fe9ff5aa551ae12fa6585127f65bd3f63c34119cdd092f520c941f887785ec986c1f5bc65f1136c79fcf22a9ae8aa3ccb01a0f36aa2d6d4d1819bb4be3
   languageName: node
   linkType: hard
 
@@ -16664,7 +16664,7 @@ __metadata:
   dependencies:
     "@babel/core": 7.12.7
     "@babel/preset-env": 7.12.7
-    "@cypress/code-coverage": 3.8.4
+    "@cypress/code-coverage": 3.8.5
     "@cypress/webpack-preprocessor": 5.4.11
     "@types/faker": 5.1.4
     "@types/node": 14.14.9
