@@ -29,7 +29,7 @@
     "dayjs": "1.9.6",
     "file-loader": "6.2.0",
     "formidable-serverless": "1.0.3",
-    "fp-ts": "2.8.6",
+    "fp-ts": "2.9.0",
     "imagemin": "7.0.1",
     "imagemin-mozjpeg": "9.0.0",
     "imagemin-optipng": "8.0.0",
