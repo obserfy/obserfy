@@ -7552,7 +7552,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "postcss",
-        "npm:8.1.9"
+        "npm:8.1.10"
       ],
       [
         "postcss-attribute-case-insensitive",
@@ -39881,7 +39881,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["gatsby-theme-i18n", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:1.0.4"],
             ["gatsby-theme-i18n-lingui", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#workspace:packages/gatsby-theme-i18n-lingui"],
             ["gatsby-transformer-sharp", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:2.6.0"],
-            ["postcss", "npm:8.1.9"],
+            ["postcss", "npm:8.1.10"],
             ["postcss-preset-env", "npm:6.7.0"],
             ["preact", "npm:10.5.5"],
             ["prettier", "npm:2.2.0"],
@@ -40199,7 +40199,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["pg", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:8.5.1"],
             ["pino", "npm:6.7.0"],
             ["pino-pretty", "npm:4.3.0"],
-            ["postcss", "npm:8.1.9"],
+            ["postcss", "npm:8.1.10"],
             ["postcss-preset-env", "npm:6.7.0"],
             ["preact", "npm:10.5.5"],
             ["preact-render-to-string", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:5.1.12"],
@@ -41000,7 +41000,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/gatsby", null],
             ["@types/postcss", null],
             ["gatsby", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:2.26.1"],
-            ["postcss", "npm:8.1.9"],
+            ["postcss", "npm:8.1.10"],
             ["postcss-loader", "virtual:256bf579175412ba9726cd81abc72e630fc5186d8c783bf19612bdae43dad80d8881f17060a24d1e421788b86d078bf2e399ea2909d11463fc2199ae4c363e78#npm:4.0.4"]
           ],
           "packagePeers": [
@@ -51450,6 +51450,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
+        ["npm:8.1.10", {
+          "packageLocation": "./.yarn/cache/postcss-npm-8.1.10-db6310d6e3-e8b8258b26.zip/node_modules/postcss/",
+          "packageDependencies": [
+            ["postcss", "npm:8.1.10"],
+            ["colorette", "npm:1.2.1"],
+            ["nanoid", "npm:3.1.18"],
+            ["source-map", "npm:0.6.1"],
+            ["vfile-location", "npm:3.2.0"]
+          ],
+          "linkType": "HARD",
+        }],
         ["npm:8.1.9", {
           "packageLocation": "./.yarn/cache/postcss-npm-8.1.9-54c42665f3-34f41717f0.zip/node_modules/postcss/",
           "packageDependencies": [
@@ -51866,7 +51877,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["cosmiconfig", "npm:7.0.0"],
             ["klona", "npm:2.0.4"],
             ["loader-utils", "npm:2.0.0"],
-            ["postcss", "npm:8.1.9"],
+            ["postcss", "npm:8.1.10"],
             ["schema-utils", "npm:3.0.0"],
             ["semver", "npm:7.3.2"],
             ["webpack", null]
@@ -52086,7 +52097,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["postcss-nested", "virtual:5e889a716ce780edd465bfae3e8e05d3f0353ca71ec6a9989c5dcbe48a5c50a84538ed8faa0cba8bf9940772de736a380591f279c36169e39596c2d716e1dc56#npm:5.0.1"],
             ["@types/postcss", null],
-            ["postcss", "npm:8.1.9"],
+            ["postcss", "npm:8.1.10"],
             ["postcss-selector-parser", "npm:6.0.4"]
           ],
           "packagePeers": [
@@ -58389,7 +58400,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["modern-normalize", "npm:1.0.0"],
             ["node-emoji", "npm:1.10.0"],
             ["object-hash", "npm:2.0.3"],
-            ["postcss", "npm:8.1.9"],
+            ["postcss", "npm:8.1.10"],
             ["postcss-functions", "npm:3.0.0"],
             ["postcss-js", "npm:3.0.3"],
             ["postcss-nested", "virtual:5e889a716ce780edd465bfae3e8e05d3f0353ca71ec6a9989c5dcbe48a5c50a84538ed8faa0cba8bf9940772de736a380591f279c36169e39596c2d716e1dc56#npm:5.0.1"],
