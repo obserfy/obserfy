@@ -19102,10 +19102,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fp-ts@npm:2.8.6":
-  version: 2.8.6
-  resolution: "fp-ts@npm:2.8.6"
-  checksum: b26747e4c1e3e9deeea3c944330ff5cfa78b4090cc20496b8241aadb79d69b7b7c4fb60d727eef10fda049fa9479327c172f0a44e167932594ac96b6da2186b7
+"fp-ts@npm:2.9.0":
+  version: 2.9.0
+  resolution: "fp-ts@npm:2.9.0"
+  checksum: 7695e32896e5fb9103283c97e755d70982f235faed17f4be0fcb4d95b1d7373a10c081b0cf9895b15fecbeaff50669b8a0a037bdf048ee091e842476be03b7b8
   languageName: node
   linkType: hard
 
@@ -19462,7 +19462,7 @@ fsevents@^1.2.7:
     eslint-plugin-react-hooks: 4.2.0
     file-loader: 6.2.0
     formidable-serverless: 1.0.3
-    fp-ts: 2.8.6
+    fp-ts: 2.9.0
     imagemin: 7.0.1
     imagemin-mozjpeg: 9.0.0
     imagemin-optipng: 8.0.0
@@ -26617,16 +26617,7 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"nanoid@npm:3.1.18":
-  version: 3.1.18
-  resolution: "nanoid@npm:3.1.18"
-  bin:
-    nanoid: bin/nanoid.cjs
-  checksum: ae87f7a2542cb9cb546410dee7327a1eece71bd4bb6ef62aab30275342947554add78713bed50c9e012e5d45392cc948087c5bfbbae14ee126defb0926c4afd8
-  languageName: node
-  linkType: hard
-
-"nanoid@npm:^3.1.12, nanoid@npm:^3.1.18":
+"nanoid@npm:3.1.18, nanoid@npm:^3.1.12, nanoid@npm:^3.1.18":
   version: 3.1.18
   resolution: "nanoid@npm:3.1.18"
   bin:
