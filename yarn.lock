@@ -7147,6 +7147,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sentry/hub@npm:5.27.5":
+  version: 5.27.5
+  resolution: "@sentry/hub@npm:5.27.5"
+  dependencies:
+    "@sentry/types": 5.27.5
+    "@sentry/utils": 5.27.5
+    tslib: ^1.9.3
+  checksum: f9ec88ec0132606a595d2e2593e2d825dc7947b2acac1889954dfbaf2d5be73eba8f5e409dfc2e73bda849485eda195666d30782f1b884c46937a7a8369563b0
+  languageName: node
+  linkType: hard
+
 "@sentry/minimal@npm:5.27.4":
   version: 5.27.4
   resolution: "@sentry/minimal@npm:5.27.4"
@@ -7155,6 +7166,17 @@ __metadata:
     "@sentry/types": 5.27.4
     tslib: ^1.9.3
   checksum: f3fed5600c098b4f0b5fbc243186dd97253268f2696d8f81413fb156afd67477ee775470f300c2731b5de7782acc1641e860659b71bb13c46dcdf8d49a288cb9
+  languageName: node
+  linkType: hard
+
+"@sentry/minimal@npm:5.27.5":
+  version: 5.27.5
+  resolution: "@sentry/minimal@npm:5.27.5"
+  dependencies:
+    "@sentry/hub": 5.27.5
+    "@sentry/types": 5.27.5
+    tslib: ^1.9.3
+  checksum: ac2030542802e42a513a520c7ff25607cd510bbaf8eb99107f1d8d085d339e3597abf5c32ec562c4ed3ac9e906945dc470bdcd8e48962c1da4fa9b0e6da595a9
   languageName: node
   linkType: hard
 
@@ -7188,10 +7210,30 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sentry/tracing@npm:5.27.5":
+  version: 5.27.5
+  resolution: "@sentry/tracing@npm:5.27.5"
+  dependencies:
+    "@sentry/hub": 5.27.5
+    "@sentry/minimal": 5.27.5
+    "@sentry/types": 5.27.5
+    "@sentry/utils": 5.27.5
+    tslib: ^1.9.3
+  checksum: 4b09bfc8765b6062eb0e476caf2c19c1dbe3b14e08fe72f9d10d9aff22e409e8a48b45441a93f113cc4da00fab0240483724f314b83fe34225cc9d93954a4352
+  languageName: node
+  linkType: hard
+
 "@sentry/types@npm:5.27.4":
   version: 5.27.4
   resolution: "@sentry/types@npm:5.27.4"
   checksum: 08bf23c4d0cb48630932de8885653934ce7baf921d3cf4d236a87c213b35eadc0a6aba11fad91f4d2b04f79270916e4a77b1bb87a9be9f06ddc4d9f649223688
+  languageName: node
+  linkType: hard
+
+"@sentry/types@npm:5.27.5":
+  version: 5.27.5
+  resolution: "@sentry/types@npm:5.27.5"
+  checksum: 58b394b5b2339e1776e5e42010678bf8313f84012343ca1ae5618140be43871eeae17db1b11399a09640e83bbed55a333408b4468361744f57ebd730331bd602
   languageName: node
   linkType: hard
 
@@ -7202,6 +7244,16 @@ __metadata:
     "@sentry/types": 5.27.4
     tslib: ^1.9.3
   checksum: 7a71b74e3c68fd27d7f59dfa00369e1a4e8601241eff42b9839514fc97ac43d4d99f1244072d90afa17c6bb646c414a935758b0421fbed2f84c29c85dc8e97e2
+  languageName: node
+  linkType: hard
+
+"@sentry/utils@npm:5.27.5":
+  version: 5.27.5
+  resolution: "@sentry/utils@npm:5.27.5"
+  dependencies:
+    "@sentry/types": 5.27.5
+    tslib: ^1.9.3
+  checksum: 13f8dbea5eb9b588906845c7b1b35117f5e7c922661fa8eac30844e0733b2176eaf029fb8d5757d10ee35a86a5b263fc4ac64e9cc425f63481b19af61d0bafad
   languageName: node
   linkType: hard
 
@@ -37205,7 +37257,7 @@ typescript@^4.0.0:
     "@lingui/react": 3.2.3
     "@reach/router": 1.3.4
     "@sentry/gatsby": 5.27.4
-    "@sentry/tracing": 5.27.4
+    "@sentry/tracing": 5.27.5
     "@storybook/addon-actions": 6.1.2
     "@storybook/addon-essentials": 6.1.2
     "@storybook/addons": 6.1.2
