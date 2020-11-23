@@ -7,7 +7,7 @@ require (
 	github.com/brianvoe/gofakeit/v4 v4.3.0
 	github.com/getsentry/sentry-go v0.8.0
 	github.com/go-chi/chi v4.1.2+incompatible
-	github.com/go-pg/pg/v10 v10.7.1
+	github.com/go-pg/pg/v10 v10.7.3
 	github.com/go-playground/validator/v10 v10.4.1
 	github.com/google/uuid v1.1.2
 	github.com/joho/godotenv v1.3.0
