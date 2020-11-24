@@ -1,15 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TextArea should render correctly 1`] = `
-.emotion-2 {
+.emotion-0 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-size: 16px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-2 {
+@media screen and (min-width: 40em) {
+  .emotion-0 {
     font-size: 20px;
   }
 }
@@ -23,7 +23,7 @@ exports[`TextArea should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-size: 14px;
   -webkit-user-select: none;
@@ -39,7 +39,7 @@ exports[`TextArea should render correctly 1`] = `
   flex-direction: column;
 }
 
-.emotion-0 {
+.emotion-2 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -48,6 +48,7 @@ exports[`TextArea should render correctly 1`] = `
   padding: 8px;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   font-size: inherit;
   line-height: inherit;
@@ -57,50 +58,50 @@ exports[`TextArea should render correctly 1`] = `
   background-color: transparent;
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface,#fff);
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface, #fff);
   font-size: 16px;
   padding: 16px;
   height: 180px;
   resize: vertical;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
 }
 
-.emotion-0:hover,
-.emotion-0:focus {
-  border-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-2:hover,
+.emotion-2:focus {
+  border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-0::-webkit-input-placeholder {
+.emotion-2::-webkit-input-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-0::-moz-placeholder {
+.emotion-2::-moz-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-0:-ms-input-placeholder {
+.emotion-2:-ms-input-placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
-.emotion-0::placeholder {
+.emotion-2::placeholder {
   font-style: italic;
   line-height: 2rem;
 }
 
 <div>
   <div
-    class="emotion-2"
+    class="emotion-0"
   >
     <label
       class="emotion-1"
     >
       <textarea
-        class="emotion-0"
+        class="emotion-2"
       />
     </label>
   </div>

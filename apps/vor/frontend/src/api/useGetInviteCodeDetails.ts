@@ -4,9 +4,7 @@ interface GetInviteCodeDetailsResponse {
   schoolName: string
 }
 const useGetInviteCodeDetails = (inviteCode?: string) => {
-  const getInviteCodeDetails = async (): Promise<
-    GetInviteCodeDetailsResponse
-  > => {
+  const getInviteCodeDetails = async (): Promise<GetInviteCodeDetailsResponse> => {
     const result = await fetch(`/auth/invite-code/${inviteCode}`, {
       credentials: "same-origin",
     })

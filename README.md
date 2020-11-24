@@ -1,7 +1,7 @@
 <p align="center">
     <img width="76px" src="./apps/vor/frontend/src/images/logo-standalone.svg" alt="Obserfy logo" />
 </p>
-  
+
 <h1 align="center">
   Obserfy
 </h1>
@@ -20,7 +20,7 @@
   </a>
 </p>
 
-This is the monorepo of [Obserfy](https://obserfy.com). This repo contains every code that you need to run Obserfy on your own. Obserfy is currently still on its early days. If you were to give it a try, we would love to hear any of your feedback through github issue, or email at chrsep@protonmail.com.
+This is the monorepo of [Obserfy](https://obserfy.com). This repo contains every code that you need to run Obserfy on your own. Obserfy is currently still on its early days. If you were to give it a try, we would love to hear any of your feedback through github issue, or email at support@obserfy.com.
 
 ## Codebase
 

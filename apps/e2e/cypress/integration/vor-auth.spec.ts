@@ -105,7 +105,7 @@ describe("test authentication", () => {
         cy.contains("Name").type(name3)
         cy.get("[data-cy=register-button]").click()
         cy.wait(300)
-        cy.contains(schoolName).should("not.be.visible")
+        cy.contains(schoolName).should("not.exist")
 
         cy.visit(inviteUrl)
         cy.contains(`Join as ${name3}`).click()

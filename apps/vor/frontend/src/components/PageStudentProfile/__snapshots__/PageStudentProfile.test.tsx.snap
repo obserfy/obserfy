@@ -3,38 +3,38 @@
 exports[`PageStudentProfile should render correctly 1`] = `
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165,165,165,0.05);
+    background-color: rgba(165, 165, 165, 0.05);
   }
 
   50% {
-    background-color: rgba(165,165,165,0.2);
+    background-color: rgba(165, 165, 165, 0.2);
   }
 
   100% {
-    background-color: rgba(165,165,165,0.05);
+    background-color: rgba(165, 165, 165, 0.05);
   }
 }
 
-.emotion-5 {
+.emotion-0 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-size: 16px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-5 {
+@media screen and (min-width: 40em) {
+  .emotion-0 {
     font-size: 20px;
   }
 }
 
-.emotion-4 {
+.emotion-1 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
 }
 
-.emotion-0 {
+.emotion-2 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -48,22 +48,22 @@ exports[`PageStudentProfile should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-5"
+    class="emotion-0"
   >
     <div
-      class="emotion-4"
+      class="emotion-1"
     >
       <div
-        class="emotion-0"
+        class="emotion-2"
       />
       <div
-        class="emotion-0"
+        class="emotion-2"
       />
       <div
-        class="emotion-0"
+        class="emotion-2"
       />
       <div
-        class="emotion-0"
+        class="emotion-2"
       />
     </div>
   </div>

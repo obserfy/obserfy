@@ -81,7 +81,7 @@ describe("test student profile page", () => {
     cy.contains("Yes").click()
     cy.wait(100)
     cy.get("[data-cy=active-button]").should("be.visible")
-    cy.get("[data-cy=inactive-button]").should("not.be.visible")
+    cy.get("[data-cy=inactive-button]").should("not.exist")
 
     const guardianName = faker.name.firstName()
     cy.get("[data-cy=edit-guardians]").click()
@@ -120,7 +120,7 @@ describe("test student profile page", () => {
     // Delete observation
     cy.get("[data-cy=delete-observation]").should("be.visible").click()
     cy.contains("button", "Yes").click()
-    cy.contains(shortDesc).should("not.be.visible")
+    cy.contains(shortDesc).should("not.exist")
 
     // Go to curriculum
     cy.contains("Go to Curriculum").click()
