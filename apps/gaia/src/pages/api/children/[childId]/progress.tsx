@@ -13,6 +13,7 @@ interface Area {
     materials: Array<{
       id: string
       name: string
+      order: number
       stage: number
     }>
   }>

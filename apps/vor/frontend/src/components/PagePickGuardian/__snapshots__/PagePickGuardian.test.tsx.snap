@@ -318,7 +318,8 @@ exports[`PagePickGuardian should render correctly 1`] = `
         <p
           class="emotion-13"
         >
-          Create 
+          Create
+           
           new guardian
         </p>
       </div>

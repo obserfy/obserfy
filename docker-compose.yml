@@ -21,7 +21,8 @@ services:
     cap_add:
       - "SYS_PTRACE"
     env_file:
-      - .env
+      - .env.development
+      - .env.local
 
   nginx:
     build:
@@ -41,15 +42,14 @@ services:
     entrypoint: sh
     command: -c 'mkdir -p /data/media && /usr/bin/minio server /data'
     environment:
-      MINIO_ACCESS_KEY: "${MINIO_ACCESS_KEY}"
-      MINIO_SECRET_KEY: "${MINIO_SECRET_KEY}"
       MINIO_HTTP_TRACE: "/dev/stdout"
     ports:
       - 9000:9000
     volumes:
       - vor-minio:/data
     env_file:
-      - .env
+      - .env.development
+      - .env.local
 
   imgproxy:
     image: darthsim/imgproxy:latest
@@ -57,19 +57,11 @@ services:
       - minio
     environment:
       IMGPROXY_USE_S3: "true"
-      IMGPROXY_S3_ENDPOINT: http://vor-minio:9000
-      TC_AWS_STORAGE_BUCKET:  "media" # S3 bucket for Storage
-      # credentials for connecting to minio
-      AWS_ACCESS_KEY_ID: "${MINIO_ACCESS_KEY}"
-      AWS_SECRET_ACCESS_KEY: "${MINIO_SECRET_KEY}"
-
-      IMGPROXY_KEY: "${IMGPROXY_KEY}"
-      IMGPROXY_SALT: "${IMGPROXY_SALT}"
       IMGPROXY_ENABLE_WEBP_DETECTION: "true"
-
       IMGPROXY_TTL: "1209600"
     env_file:
-      - .env
+      - .env.development
+      - .env.local
 
   imgproxy-nginx:
     build:
