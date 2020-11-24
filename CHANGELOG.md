@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.12.0](https://github.com/obserfy/obserfy/compare/v1.11.23...v1.12.0) (2020-11-24)
+
+
+### Features
+
+* **gaia:** add new student curriculum progress. ([0e9373b](https://github.com/obserfy/obserfy/commit/0e9373b0054c5b440acb5ae1b6764b7d050d009e))
+
 ### [1.11.23](https://github.com/obserfy/obserfy/compare/v1.11.22...v1.11.23) (2020-11-11)
 
 
