@@ -2217,10 +2217,6 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___theme_color_in_head'
   | 'pluginCreator___pluginOptions___cacheDigest'
   | 'pluginCreator___pluginOptions___workboxConfig___runtimeCaching'
-  | 'pluginCreator___pluginOptions___sourceMap'
-  | 'pluginCreator___pluginOptions___autoLabel'
-  | 'pluginCreator___pluginOptions___labelFormat'
-  | 'pluginCreator___pluginOptions___cssPropOptimization'
   | 'pluginCreator___pluginOptions___prodKey'
   | 'pluginCreator___pluginOptions___devKey'
   | 'pluginCreator___pluginOptions___trackPage'
@@ -2450,10 +2446,6 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___workboxConfig___runtimeCaching'
   | 'pluginOptions___workboxConfig___runtimeCaching___handler'
   | 'pluginOptions___workboxConfig___runtimeCaching___method'
-  | 'pluginOptions___sourceMap'
-  | 'pluginOptions___autoLabel'
-  | 'pluginOptions___labelFormat'
-  | 'pluginOptions___cssPropOptimization'
   | 'pluginOptions___prodKey'
   | 'pluginOptions___devKey'
   | 'pluginOptions___trackPage'
@@ -2607,10 +2599,6 @@ export type SitePluginPluginOptions = {
   theme_color_in_head?: Maybe<Scalars['Boolean']>;
   cacheDigest?: Maybe<Scalars['String']>;
   workboxConfig?: Maybe<SitePluginPluginOptionsWorkboxConfig>;
-  sourceMap?: Maybe<Scalars['Boolean']>;
-  autoLabel?: Maybe<Scalars['Boolean']>;
-  labelFormat?: Maybe<Scalars['String']>;
-  cssPropOptimization?: Maybe<Scalars['Boolean']>;
   prodKey?: Maybe<Scalars['String']>;
   devKey?: Maybe<Scalars['String']>;
   trackPage?: Maybe<Scalars['Boolean']>;
@@ -2654,10 +2642,6 @@ export type SitePluginPluginOptionsFilterInput = {
   theme_color_in_head?: Maybe<BooleanQueryOperatorInput>;
   cacheDigest?: Maybe<StringQueryOperatorInput>;
   workboxConfig?: Maybe<SitePluginPluginOptionsWorkboxConfigFilterInput>;
-  sourceMap?: Maybe<BooleanQueryOperatorInput>;
-  autoLabel?: Maybe<BooleanQueryOperatorInput>;
-  labelFormat?: Maybe<StringQueryOperatorInput>;
-  cssPropOptimization?: Maybe<BooleanQueryOperatorInput>;
   prodKey?: Maybe<StringQueryOperatorInput>;
   devKey?: Maybe<StringQueryOperatorInput>;
   trackPage?: Maybe<BooleanQueryOperatorInput>;
