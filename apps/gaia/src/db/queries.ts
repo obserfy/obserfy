@@ -297,6 +297,7 @@ const ChildCurriculumProgress = array(
             id: string,
             name: string,
             stage: number,
+            order: number,
           })
         ),
       })
@@ -317,10 +318,12 @@ export const findChildCurriculumProgress = async (childId: string) => {
                  join (
             select s3.id, s3.name, s3.area_id, json_agg(m) as materials
             from subjects as s3
-                     join (select id, name, subject_id, coalesce(smp.stage, -1) as stage
+                     join (select id, name, "order", subject_id, coalesce(smp.stage, 0) as stage
                            from materials
-                                    join student_material_progresses smp
-                                         on materials.id = smp.material_id and smp.student_id = $1) m
+                                    left outer join student_material_progresses smp
+                                         on materials.id = smp.material_id and smp.student_id = $1
+                           order by "order" desc
+                         ) m
                           on m.subject_id = s3.id
             group by s3.id
         ) s2 on s2.area_id = a.id
