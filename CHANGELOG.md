@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.12.0](https://github.com/obserfy/obserfy/compare/v1.11.23...v1.12.0) (2020-11-24)
+
+
+### Features
+
+* **gaia:** add new student curriculum progress. ([0e9373b](https://github.com/obserfy/obserfy/commit/0e9373b0054c5b440acb5ae1b6764b7d050d009e))
+
+### [1.11.23](https://github.com/obserfy/obserfy/compare/v1.11.22...v1.11.23) (2020-11-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependency query-string to v6.13.7 ([397f186](https://github.com/obserfy/obserfy/commit/397f186be1b09a97084ce049f13985cd3fef75d7))
+* **deps:** update dependency react-query to v2.26.2 ([59f412f](https://github.com/obserfy/obserfy/commit/59f412fa5d94d207d99916430049dff0ca816992))
+* **deps:** update dependency react-query-devtools to v2.6.2 ([5066c16](https://github.com/obserfy/obserfy/commit/5066c16b03365893b77af2a590846c0a17cfacf4))
+* **deps:** update dependency react-query-devtools to v2.6.3 ([bbaa761](https://github.com/obserfy/obserfy/commit/bbaa761b5691c17253860b7d6903744962881892))
+
 ### [1.11.22](https://github.com/obserfy/obserfy/compare/v1.11.21...v1.11.22) (2020-11-05)
 
 

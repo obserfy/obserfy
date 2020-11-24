@@ -194,7 +194,7 @@ jobs:
         with:
           name: gaia
           path: apps/gaia/.next
-      - run: cp .env.example .env
+      - run: touch .env.local # stop docker-compose from complaining about missing file.
       - run: docker-compose up -d &
       - name: Cache e2e deps
         id: cache-deps

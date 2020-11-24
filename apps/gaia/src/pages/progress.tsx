@@ -52,12 +52,14 @@ const Progress = () => {
         >
           <div className="px-3 my-3 font-bold">{subject.name}</div>
           <div>
-            {subject.materials.map((material) => (
-              <div key={material.id} className="flex px-3 my-3 items-center">
-                <div className="pr-3">{material.name}</div>
-                <Stage stage={material.stage} />
-              </div>
-            ))}
+            {subject.materials
+              .sort((a, b) => a.order - b.order)
+              .map((material) => (
+                <div key={material.id} className="flex px-3 my-3 items-center">
+                  <div className="pr-3">{material.name}</div>
+                  <Stage stage={material.stage} />
+                </div>
+              ))}
           </div>
         </div>
       ))}
@@ -67,18 +69,20 @@ const Progress = () => {
 
 const Stage: FC<{ stage: number }> = ({ stage }) => {
   let color = "text-black"
-  if (stage === 0) {
-    color = "text-orange-700"
+  if (stage === -1) {
+    color = "text-red-600"
   }
   if (stage === 1) {
-    color = "text-yellow-700"
+    color = "text-yellow-600"
   }
   if (stage === 2) {
-    color = "text-green-700"
+    color = "text-green-600"
   }
 
   return (
-    <div className={`ml-auto ${color}`}>{materialStageToString(stage)}</div>
+    <div className={`ml-auto font-bold ${color}`}>
+      {materialStageToString(stage)}
+    </div>
   )
 }
 
