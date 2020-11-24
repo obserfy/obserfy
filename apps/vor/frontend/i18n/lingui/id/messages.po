@@ -13,22 +13,9 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:125
-#: src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx:41
-#~ msgid " Go to Curriculum "
-#~ msgstr " Ke Kurikulum "
-
-#: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:60
-#~ msgid "\"Are you sure you want to set this image as profile picture?\""
-#~ msgstr ""
-
-#: src/components/EmptyClassDataPlaceholder/EmptyClassDataPlaceholder.tsx:7
-#~ msgid "\"Create your first class to track your student's class enrollment.\""
-#~ msgstr ""
-
 #: src/components/PageObservationDetails/PageObservationDetails.tsx:53
 msgid "\"{0}\" will be permanently deleted. Are you sure?"
-msgstr ""
+msgstr "\"{0}\" akan dihapus secara permanen. Apa anda yakin?"
 
 #: src/components/PageSubscription/PageSubscription.tsx:135
 msgid "(Starting on Jan 1st 2021)"
@@ -43,7 +30,7 @@ msgstr "Tambah"
 
 #: src/components/PageStudentPlanDetails/RelatedStudentsCard.tsx:37
 msgid "Add More"
-msgstr ""
+msgstr "Tambah lagi"
 
 #: src/components/ProfilePicker/ProfilePicker.tsx:53
 msgid "Add Picture"
@@ -92,13 +79,9 @@ msgstr "Dan masih banyak lagi..."
 msgid "Are you sure you want to delete this image?"
 msgstr "Anda yakin ingin menghapus gambar ini?"
 
-#: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:97
-#~ msgid "Are you sure you want to delete {0}?"
-#~ msgstr ""
-
 #: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:81
 msgid "Are you sure you want to delete {title}?"
-msgstr ""
+msgstr "Anda yakin mau menghapus {title}?"
 
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:60
 msgid "Are you sure you want to set this image as profile picture?"
@@ -106,11 +89,11 @@ msgstr "Anda yakin ingin pasang gambar ini profil gambar?"
 
 #: src/components/PageObservationDetails/ObservationMetaCard.tsx:58
 msgid "Area"
-msgstr ""
+msgstr "Area"
 
 #: src/components/PageNewObservation/PageNewObservation.tsx:109
 msgid "Attach Images"
-msgstr ""
+msgstr "Lampirkan Gambar"
 
 #: src/components/PageNewClass/PageNewClass.tsx:63
 msgid "Available every"
@@ -130,7 +113,7 @@ msgstr "Batalkan Paket"
 
 #: src/components/PageStudentPlanDetails/LessonPlanMetaCard.tsx:57
 msgid "Change Area"
-msgstr "Ubah area"
+msgstr "Ubah Area"
 
 #: src/components/PageAdmin/PageAdmin.tsx:54
 msgid "Class"
@@ -141,6 +124,10 @@ msgstr "Kelas"
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:73
 msgid "Classes"
 msgstr "Kelas"
+
+#: src/components/PagePickGuardian/PagePickGuardian.tsx:102
+msgid "Create"
+msgstr "Buat"
 
 #: src/components/PageSubscription/PageSubscription.tsx:98
 msgid "Create lesson plans"
@@ -172,7 +159,7 @@ msgstr "Harian"
 
 #: src/components/PageAdmin/PageAdmin.tsx:141
 msgid "Dark"
-msgstr ""
+msgstr "Gelap"
 
 #: src/components/PageStudentPlanDetails/LessonPlanMetaCard.tsx:39
 msgid "Date"
@@ -196,7 +183,7 @@ msgstr "Hapus"
 
 #: src/components/PageObservationDetails/PageObservationDetails.tsx:53
 msgid "Delete Observation?"
-msgstr ""
+msgstr "Hapus Observasi?"
 
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:53
 msgid "Delete image?"
@@ -204,7 +191,7 @@ msgstr "Hapus gambar?"
 
 #: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:81
 msgid "Delete plan?"
-msgstr ""
+msgstr "Hapus rencana?"
 
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:102
 #: src/components/PageStudentPlanDetails/LessonPlanDescriptionCard.tsx:28
@@ -230,7 +217,7 @@ msgstr "Ubah"
 
 #: src/components/PageObservationDetails/ObservationMetaCard.tsx:60
 msgid "Edit Area"
-msgstr ""
+msgstr "Ubah Area"
 
 #: src/components/PageStudentPlanDetails/LessonPlanDescriptionCard.tsx:30
 msgid "Edit Description"
@@ -238,7 +225,7 @@ msgstr "Ubah Deskripsi"
 
 #: src/components/PageObservationDetails/DetailsCard.tsx:29
 msgid "Edit Details"
-msgstr ""
+msgstr "Ubah Detil"
 
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:76
 msgid "Edit Email"
@@ -259,7 +246,7 @@ msgstr "Ubah Catatan"
 
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:211
 msgid "Edit Notes"
-msgstr ""
+msgstr "Ubah catatan"
 
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:96
 msgid "Edit Phone"
@@ -267,7 +254,7 @@ msgstr "Ubah Telepon"
 
 #: src/components/PageObservationDetails/ObservationMetaCard.tsx:40
 msgid "Edit Short Description"
-msgstr ""
+msgstr "Ubah Deskripsi Pendek"
 
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:191
 msgid "Edit Student ID"
@@ -295,7 +282,7 @@ msgstr "Waktu Selesai"
 #: src/components/PageNewObservation/PageNewObservation.tsx:107
 #: src/components/PageObservationDetails/ObservationMetaCard.tsx:79
 msgid "Event Time"
-msgstr ""
+msgstr "Waktu Acara"
 
 #: src/components/PageNewStudent/PageNewStudent.tsx:149
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:159
@@ -361,7 +348,7 @@ msgstr "Galeri gambar"
 
 #: src/components/PageObservationDetails/ImageCard.tsx:23
 msgid "Images"
-msgstr ""
+msgstr "Gambar"
 
 #: src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx:75
 msgid "In Progress"
@@ -385,11 +372,11 @@ msgstr "Undang dengan link"
 
 #: src/components/PageAdmin/PageAdmin.tsx:123
 msgid "Language"
-msgstr ""
+msgstr "Bahasa"
 
 #: src/components/PageAdmin/PageAdmin.tsx:141
 msgid "Light"
-msgstr ""
+msgstr "Terang"
 
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:108
 #: src/components/PageStudentPlanDetails/LessonPlanLinksCard.tsx:23
@@ -444,7 +431,7 @@ msgstr "Wali Baru"
 
 #: src/components/PageNewObservation/PageNewObservation.tsx:79
 msgid "New Observation"
-msgstr ""
+msgstr "Observasi Baru"
 
 #: src/components/PageNewStudent/PageNewStudent.tsx:139
 #: src/components/StudentsList/StudentsList.tsx:80
@@ -521,11 +508,11 @@ msgstr "Observasi"
 
 #: src/pages/dashboard/students/observation-details.tsx:28
 msgid "Observations Details"
-msgstr ""
+msgstr "Detil Observasi"
 
 #: src/components/StudentsList/StudentsList.tsx:49
 msgid "Oops, we fail to fetch new student data. Please try again in a minute."
-msgstr ""
+msgstr "Ups, kami gagal mengambil data murid baru. Silahkan coba beberapa saat lagi."
 
 #: src/components/PageInviteUser/PageInviteUser.tsx:83
 msgid "Or"
@@ -597,10 +584,6 @@ msgstr "Rekam observasi"
 msgid "Related Area"
 msgstr "Area Terkait"
 
-#: src/components/PageStudentPlanDetails/RelatedStudentsCard.tsx:11
-#~ msgid "Related Students"
-#~ msgstr ""
-
 #: src/components/PageNewGuardian/PageNewGuardian.tsx:43
 msgid "Relationship"
 msgstr "Hubungan"
@@ -666,6 +649,10 @@ msgstr "Lebih Lanjut"
 msgid "Select Students"
 msgstr "Pilih Murid"
 
+#: src/components/PagePickGuardian/PagePickGuardian.tsx:84
+msgid "Select a guardian or create one"
+msgstr "Pilih wali atau buat baru"
+
 #: src/components/PageInviteUser/PageInviteUser.tsx:72
 msgid "Send invites"
 msgstr "Kirim undangan"
@@ -704,15 +691,11 @@ msgstr "Kirim e-mail ke kami"
 #: src/components/PageObservationDetails/ObservationMetaCard.tsx:38
 #: src/components/PageObservationDetails/ObservationMetaCard.tsx:46
 msgid "Short Description"
-msgstr ""
+msgstr "Deskripsi Pendek"
 
 #: src/components/PageNewObservation/PageNewObservation.tsx:88
 msgid "Short Description*"
-msgstr ""
-
-#: src/components/PageSubscription/PageSubscription.tsx:94
-#~ msgid "Simple pricing for every school."
-#~ msgstr "Harga cocok untuk setiap sekolah."
+msgstr "Deskripsi Pendek*"
 
 #: src/components/PageSubscription/PageSubscription.tsx:147
 msgid "Soon"
@@ -774,32 +757,20 @@ msgid "Switch school"
 msgstr "Pindah sekolah"
 
 #: src/components/PageClassSettings/PageClassSettings.tsx:61
-#~ msgid "Tell us about your classes, We&apos;ll help you track your students attendance."
-#~ msgstr "Beri tahu kami tentang kelas anda."
-
-#: src/components/PageClassSettings/PageClassSettings.tsx:61
 msgid "Tell us about your classes, We'll help you track your students attendance."
 msgstr "Beri tahu kami tentang kelas Anda, Kami akan membantu Anda melacak kehadiran siswa Anda."
 
 #: src/components/PageNewObservation/PageNewObservation.tsx:90
 msgid "Tell us what you observed"
-msgstr ""
+msgstr "Beri tahu kami apa yang sudah anda amati"
 
 #: src/components/StudentsList/StudentsList.tsx:62
 msgid "The term <0>\"{term}\"</0> does not match any student"
-msgstr ""
-
-#: src/components/StudentsList/StudentsList.tsx:62
-#~ msgid "The term <0>&quot;{term}&quot;</0> does not match any student"
-#~ msgstr ""
+msgstr "Tidak ada murid dengan nama <0>\"{term}\"</0>"
 
 #: src/components/PageAdmin/PageAdmin.tsx:138
 msgid "Theme"
-msgstr ""
-
-#: src/components/PageNewStudent/PageNewStudent.tsx:192
-#~ msgid "This student doesn&apos;t have a guardian yet."
-#~ msgstr "Murid ini belum memiliki data wali."
+msgstr "Tema"
 
 #: src/components/PageNewStudent/PageNewStudent.tsx:188
 msgid "This student doesn't have a guardian yet."
@@ -824,7 +795,7 @@ msgstr "Lacak perkembangan kurikulum"
 
 #: src/components/StudentsList/StudentsList.tsx:55
 msgid "Try again"
-msgstr ""
+msgstr "Coba lagi"
 
 #: src/components/PageNewClass/PageNewClass.tsx:27
 msgid "Tuesday"
@@ -846,13 +817,10 @@ msgstr "Pengguna/bulan"
 msgid "Users"
 msgstr "Pengguna"
 
-#: src/components/PageObservationDetails/PageObservationDetails.tsx:68
-msgid "Visible to Guardians"
-msgstr ""
-
 #: src/components/PageNewObservation/PageNewObservation.tsx:89
+#: src/components/PageObservationDetails/PageObservationDetails.tsx:68
 msgid "Visible to guardians"
-msgstr ""
+msgstr "Dapat dilihat oleh wali"
 
 #: src/components/PageNewClass/PageNewClass.tsx:28
 msgid "Wednesday"
@@ -868,11 +836,11 @@ msgstr "Selamat Datang!! Buatlah sekolah pertama anda sekarang, atau gunanakan l
 
 #: src/components/PageNewObservation/PageNewObservation.tsx:88
 msgid "What have you found?"
-msgstr ""
+msgstr "Apa yang sudah anda temukan?"
 
 #: src/components/PageObservationDetails/DetailsCard.tsx:34
 msgid "Write something"
-msgstr ""
+msgstr "Tulis sesuatu"
 
 #: src/components/PageListOfStudents/PageListOfStudents.tsx:70
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:60
@@ -891,7 +859,7 @@ msgstr "Anda dapat mengaktifkan fitur kurikulum untuk melacak perkembangan murid
 
 #: src/components/StudentsList/StudentsList.tsx:75
 msgid "You have no student enrolled"
-msgstr ""
+msgstr "Tidak ada siswa yang terdaftar"
 
 #: src/components/PageChooseSchool/PageChooseSchool.tsx:37
 msgid "Your Schools"
@@ -908,6 +876,10 @@ msgstr "untuk Guru"
 #: src/components/PageListOfStudents/PageListOfStudents.tsx:68
 msgid "inactive"
 msgstr "tidak aktif"
+
+#: src/components/PagePickGuardian/PagePickGuardian.tsx:102
+msgid "new guardian"
+msgstr "wali baru"
 
 #: src/components/PageStudentOverview/PageStudentOverview.tsx:109
 msgid "new observation"
