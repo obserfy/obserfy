@@ -290,12 +290,12 @@ exports[`PageSupport should render correctly 1`] = `
             <p
               class="emotion-7"
             >
-              Have a question? Shoot us an email at chrsep@protonmail.com
+              Have a question? Shoot us an email at support@obserfy.com
             </p>
           </div>
           <a
             class="emotion-13"
-            href="mailto:chrsep@protonmail.com"
+            href="mailto:support@obserfy.com"
           >
             <button
               class="emotion-14"
