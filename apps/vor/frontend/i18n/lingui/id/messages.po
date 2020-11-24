@@ -1,3 +1,5 @@
+msgid ""
+msgstr ""
 "POT-Creation-Date: 2020-09-21 01:31+0700\n"
 "Mime-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -89,7 +91,7 @@ msgstr "Anda yakin ingin pasang gambar ini profil gambar?"
 msgid "Area"
 msgstr "Area"
 
-#: src/components/PageNewObservation/PageNewObservation.tsx:109
+#: src/components/PageNewObservation/PageNewObservation.tsx:111
 msgid "Attach Images"
 msgstr "Lampirkan Gambar"
 
@@ -131,6 +133,10 @@ msgstr "Buat"
 msgid "Create lesson plans"
 msgstr "Membuat rencana pembelajaran"
 
+#: src/components/PageEditGuardians/PageEditGuardians.tsx:66
+msgid "Create new guardian"
+msgstr "Buat wali baru"
+
 #: src/components/EmptyClassDataPlaceholder/EmptyClassDataPlaceholder.tsx:7
 msgid "Create your first class to track your student's class enrollment."
 msgstr "Buat kelas pertama anda untuk melacak pendaftaran siswa."
@@ -142,6 +148,10 @@ msgstr "Dibuat oleh"
 #: src/components/PageSubscription/PageSubscription.tsx:34
 msgid "Current Plan"
 msgstr "Paket Sekarang"
+
+#: src/components/PageEditGuardians/PageEditGuardians.tsx:49
+msgid "Current guardians"
+msgstr "Wali saat ini"
 
 #: src/components/PageAdmin/PageAdmin.tsx:46
 msgid "Curriculum"
@@ -197,7 +207,7 @@ msgstr "Hapus rencana?"
 msgid "Description"
 msgstr "Deskripsi"
 
-#: src/components/PageNewObservation/PageNewObservation.tsx:90
+#: src/components/PageNewObservation/PageNewObservation.tsx:92
 #: src/components/PageObservationDetails/DetailsCard.tsx:27
 #: src/components/PageObservationDetails/DetailsCard.tsx:34
 #: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:47
@@ -233,6 +243,10 @@ msgstr "Ubah Email"
 msgid "Edit Gender"
 msgstr "Ubah Jenis Kelamin"
 
+#: src/components/PageEditGuardians/PageEditGuardians.tsx:46
+msgid "Edit Guardians"
+msgstr "Ubah Wali"
+
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:56
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:135
 msgid "Edit Name"
@@ -265,7 +279,7 @@ msgstr "Ubah Judul"
 #: src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx:34
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:74
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:78
-#: src/components/PageNewGuardian/PageNewGuardian.tsx:48
+#: src/components/PageNewGuardian/PageNewGuardian.tsx:54
 msgid "Email"
 msgstr "Email"
 
@@ -277,10 +291,15 @@ msgstr "Email dikirim!"
 msgid "End Time"
 msgstr "Waktu Selesai"
 
-#: src/components/PageNewObservation/PageNewObservation.tsx:107
+#: src/components/PageNewObservation/PageNewObservation.tsx:109
 #: src/components/PageObservationDetails/ObservationMetaCard.tsx:79
 msgid "Event Time"
 msgstr "Waktu Acara"
+
+#: src/components/GuardianRelationshipPickerDialog/GuardianRelationshipPickerDialog.tsx:24
+#: src/components/PageNewGuardian/PageNewGuardian.tsx:51
+msgid "Father"
+msgstr "Ayah"
 
 #: src/components/PageNewStudent/PageNewStudent.tsx:149
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:159
@@ -317,7 +336,7 @@ msgid "Go to Curriculum"
 msgstr "Buka Kurikulum"
 
 #: src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx:33
-#: src/components/PageNewGuardian/PageNewGuardian.tsx:42
+#: src/components/PageNewGuardian/PageNewGuardian.tsx:44
 msgid "Guardian Name"
 msgstr "Nama Wali Murid"
 
@@ -325,10 +344,6 @@ msgstr "Nama Wali Murid"
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:98
 msgid "Guardians"
 msgstr "Wali Murid"
-
-#: src/components/PageSupport/PageSupport.tsx:58
-#~ msgid "Have a question? Shoot us an email at chrsep@protonmail.com"
-#~ msgstr "Punya pertanyaan? Kirim email ke chrsep@protonmail.com"
 
 #: src/components/PageSupport/PageSupport.tsx:58
 msgid "Have a question? Shoot us an email at support@obserfy.com"
@@ -399,6 +414,11 @@ msgstr "Dikuasai"
 msgid "Monday"
 msgstr "Senin"
 
+#: src/components/GuardianRelationshipPickerDialog/GuardianRelationshipPickerDialog.tsx:21
+#: src/components/PageNewGuardian/PageNewGuardian.tsx:48
+msgid "Mother"
+msgstr "Ibu"
+
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:54
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:58
 #: src/components/PageNewClass/PageNewClass.tsx:57
@@ -423,11 +443,11 @@ msgid "New Class"
 msgstr "Kelas Baru"
 
 #: src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx:30
-#: src/components/PageNewGuardian/PageNewGuardian.tsx:39
+#: src/components/PageNewGuardian/PageNewGuardian.tsx:41
 msgid "New Guardian"
 msgstr "Wali Baru"
 
-#: src/components/PageNewObservation/PageNewObservation.tsx:79
+#: src/components/PageNewObservation/PageNewObservation.tsx:81
 msgid "New Observation"
 msgstr "Observasi Baru"
 
@@ -447,6 +467,10 @@ msgstr "Tagihan Selanjutnya"
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:108
 msgid "No email"
 msgstr "Tidak ada email"
+
+#: src/components/PageEditGuardians/PageEditGuardians.tsx:55
+msgid "No guardians set yet"
+msgstr "Belum ada wali"
 
 #: src/components/PageStudentPlanDetails/LessonPlanLinksCard.tsx:26
 msgid "No links attached yet"
@@ -473,6 +497,7 @@ msgstr "Belum ada murid lain ditambahkan."
 msgid "None"
 msgstr "Tidak ada"
 
+#: src/components/DateInput/DateInput.tsx:30
 #: src/components/PageNewStudent/PageNewStudent.tsx:147
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:76
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:101
@@ -485,7 +510,7 @@ msgstr "Belum Dipilih"
 #: src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx:36
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:114
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:118
-#: src/components/PageNewGuardian/PageNewGuardian.tsx:50
+#: src/components/PageNewGuardian/PageNewGuardian.tsx:56
 msgid "Note"
 msgstr "Catatan"
 
@@ -516,6 +541,11 @@ msgstr "Ups, kami gagal mengambil data murid baru. Silahkan coba beberapa saat l
 msgid "Or"
 msgstr "Atau"
 
+#: src/components/GuardianRelationshipPickerDialog/GuardianRelationshipPickerDialog.tsx:19
+#: src/components/PageNewGuardian/PageNewGuardian.tsx:46
+msgid "Other"
+msgstr "Yang lain"
+
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:150
 #: src/components/PageStudentPlanDetails/RelatedStudentsCard.tsx:34
 msgid "Other Related Students"
@@ -532,7 +562,7 @@ msgstr "Detil Pembayaran"
 #: src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx:35
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:94
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:98
-#: src/components/PageNewGuardian/PageNewGuardian.tsx:49
+#: src/components/PageNewGuardian/PageNewGuardian.tsx:55
 msgid "Phone"
 msgstr "Telepon"
 
@@ -576,13 +606,13 @@ msgstr "Baru saja Dikuasai"
 msgid "Record observations"
 msgstr "Rekam observasi"
 
-#: src/components/PageNewObservation/PageNewObservation.tsx:92
+#: src/components/PageNewObservation/PageNewObservation.tsx:94
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:126
 #: src/components/PageStudentPlanDetails/LessonPlanMetaCard.tsx:55
 msgid "Related Area"
 msgstr "Area Terkait"
 
-#: src/components/PageNewGuardian/PageNewGuardian.tsx:43
+#: src/components/PageNewGuardian/PageNewGuardian.tsx:45
 msgid "Relationship"
 msgstr "Hubungan"
 
@@ -612,8 +642,8 @@ msgstr "Sabtu"
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:96
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:116
 #: src/components/PageNewClass/PageNewClass.tsx:77
-#: src/components/PageNewGuardian/PageNewGuardian.tsx:65
-#: src/components/PageNewObservation/PageNewObservation.tsx:83
+#: src/components/PageNewGuardian/PageNewGuardian.tsx:71
+#: src/components/PageNewObservation/PageNewObservation.tsx:85
 #: src/components/PageNewSchool/PageNewSchool.tsx:50
 #: src/components/PageObservationDetails/DetailsCard.tsx:29
 #: src/components/PageObservationDetails/ObservationMetaCard.tsx:40
@@ -627,7 +657,7 @@ msgstr "Sabtu"
 msgid "Save"
 msgstr "Simpan"
 
-#: src/components/SearchBar/SearchBar.tsx:18
+#: src/components/SearchBar/SearchBar.tsx:20
 msgid "Search"
 msgstr "Cari"
 
@@ -650,6 +680,10 @@ msgstr "Pilih Murid"
 #: src/components/PagePickGuardian/PagePickGuardian.tsx:84
 msgid "Select a guardian or create one"
 msgstr "Pilih wali atau buat baru"
+
+#: src/components/PageEditGuardians/PageEditGuardians.tsx:73
+msgid "Select from existing guardian"
+msgstr "Pilih dari wali yang ada"
 
 #: src/components/PageInviteUser/PageInviteUser.tsx:72
 msgid "Send invites"
@@ -691,7 +725,7 @@ msgstr "Kirim e-mail ke kami"
 msgid "Short Description"
 msgstr "Deskripsi Pendek"
 
-#: src/components/PageNewObservation/PageNewObservation.tsx:88
+#: src/components/PageNewObservation/PageNewObservation.tsx:90
 msgid "Short Description*"
 msgstr "Deskripsi Pendek*"
 
@@ -722,7 +756,7 @@ msgid "Student ID"
 msgstr "ID Murid"
 
 #: src/components/Navbar/Navbar.tsx:74
-#: src/components/PageNewObservation/PageNewObservation.tsx:73
+#: src/components/PageNewObservation/PageNewObservation.tsx:75
 #: src/components/PageNewStudent/PageNewStudent.tsx:107
 #: src/components/PageStudentImages/PageStudentImages.tsx:34
 #: src/components/PageStudentOverview/PageStudentOverview.tsx:35
@@ -758,7 +792,7 @@ msgstr "Pindah sekolah"
 msgid "Tell us about your classes, We'll help you track your students attendance."
 msgstr "Beri tahu kami tentang kelas Anda, Kami akan membantu Anda melacak kehadiran siswa Anda."
 
-#: src/components/PageNewObservation/PageNewObservation.tsx:90
+#: src/components/PageNewObservation/PageNewObservation.tsx:92
 msgid "Tell us what you observed"
 msgstr "Beri tahu kami apa yang sudah anda amati"
 
@@ -815,7 +849,7 @@ msgstr "Pengguna/bulan"
 msgid "Users"
 msgstr "Pengguna"
 
-#: src/components/PageNewObservation/PageNewObservation.tsx:89
+#: src/components/PageNewObservation/PageNewObservation.tsx:91
 #: src/components/PageObservationDetails/PageObservationDetails.tsx:68
 msgid "Visible to guardians"
 msgstr "Dapat dilihat oleh wali"
@@ -832,7 +866,7 @@ msgstr "Mingguan"
 msgid "Welcome!! Create your first school or use an invitation link to join an existing school."
 msgstr "Selamat Datang!! Buatlah sekolah pertama anda sekarang, atau gunanakan link undangan untuk masuk ke sekolah yang sudah terdaftar."
 
-#: src/components/PageNewObservation/PageNewObservation.tsx:88
+#: src/components/PageNewObservation/PageNewObservation.tsx:90
 msgid "What have you found?"
 msgstr "Apa yang sudah anda temukan?"
 

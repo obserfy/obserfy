@@ -2,6 +2,7 @@ import React, { FC, useState } from "react"
 import { Box, Button, Card, Flex, Image } from "theme-ui"
 import { useImmer } from "use-immer"
 import { t, Trans } from "@lingui/macro"
+import { useLingui } from "@lingui/react"
 import Input from "../Input/Input"
 import TextArea from "../TextArea/TextArea"
 import Typography from "../Typography/Typography"
@@ -60,6 +61,8 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
     }
   }
 
+  const { i18n } = useLingui()
+
   return (
     <>
       <TranslucentBar boxSx={{ position: "sticky", top: 0, ...borderBottom }}>
@@ -92,7 +95,7 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
         <Input
           label={t`Short Description*`}
           sx={{ width: "100%" }}
-          placeholder={t`What have you found?`}
+          placeholder={i18n._(t`What have you found?`)}
           onChange={(e) => setShortDesc(e.target.value)}
           value={shortDesc}
           mb={2}
@@ -105,7 +108,7 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
         />
         <TextArea
           label={t`Details`}
-          placeholder={t`Tell us what you observed`}
+          placeholder={i18n._(t`Tell us what you observed`)}
           onChange={(e) => setDetails(e.target.value)}
           value={longDesc}
           mb={3}

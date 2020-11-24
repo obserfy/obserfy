@@ -1,5 +1,6 @@
 import React, { FC, useState } from "react"
 import { Button, Box, Card, Flex } from "theme-ui"
+import { Trans } from "@lingui/macro"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import {
   Guardians,
@@ -46,10 +47,10 @@ export const PageEditGuardians: FC<Props> = ({ studentId }) => {
         {student.data?.name}
       </Typography.H5>
       <Typography.H5 mx={3} mb={3}>
-        Edit Guardians
+        <Trans>Edit Guardians</Trans>
       </Typography.H5>
       <Typography.Body mx={3} mb={2} color="textMediumEmphasis">
-        Current guardians
+        <Trans>Current guardians</Trans>
       </Typography.Body>
       {(student.data?.guardians.length ?? 0) === 0 && (
         <Card sx={{ borderRadius: [0, "default"] }} mb={2} mx={[0, 3]}>
@@ -60,7 +61,7 @@ export const PageEditGuardians: FC<Props> = ({ studentId }) => {
               fontSize: 1,
             }}
           >
-            No guardians set yet
+            <Trans>No guardians set yet</Trans>
           </Typography.Body>
         </Card>
       )}
@@ -87,14 +88,14 @@ export const PageEditGuardians: FC<Props> = ({ studentId }) => {
                 fontSize: 1,
               }}
             >
-              Create new guardian
+              <Trans>Create new guardian</Trans>
             </Typography.Body>
             <Icon as={LinkIcon} ml="auto" mr={2} fill="textMediumEmphasis" />
           </Flex>
         </Link>
       </Card>
       <Typography.Body mx={3} mt={4} color="textMediumEmphasis">
-        Select from existing guardian
+        <Trans>Select from existing guardian</Trans>
       </Typography.Body>
       <Box px={3} pb={3} pt={2}>
         <SearchBar

@@ -1,5 +1,7 @@
 import React, { FC, useState } from "react"
 import { Button, Flex, BoxProps, SxStyleProp } from "theme-ui"
+import { t } from "@lingui/macro"
+import { useLingui } from "@lingui/react"
 import Input from "../Input/Input"
 import Icon from "../Icon/Icon"
 import { ReactComponent as CalendarIcon } from "../../icons/calendar.svg"
@@ -21,6 +23,7 @@ export const DateInput: FC<Props> = ({
   ...props
 }) => {
   const [showDatePicker, setShowDatePicker] = useState(false)
+  const { i18n } = useLingui()
 
   return (
     <>
@@ -36,7 +39,7 @@ export const DateInput: FC<Props> = ({
             width: "100%",
           }}
           value={!value ? "" : dayjs(value).format("dddd, DD MMM YYYY")}
-          placeholder="Not set"
+          placeholder={i18n._(t`Not Set`)}
           disabled
         />
         <Button
