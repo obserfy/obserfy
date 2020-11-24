@@ -11,6 +11,7 @@ import UploadIcon from "../icons/upload.svg"
 import CloseIcon from "../icons/close.svg"
 import usePostImage from "../hooks/api/usePostImage"
 import useGetChild from "../hooks/api/useGetChild"
+import useGetObservationsByImage from "../hooks/api/useGetImageObservation"
 import StudentPicPlaceholder from "../images/student_pic_placeholder.jpg"
 import dayjs from "../utils/dayjs"
 
@@ -143,6 +144,7 @@ const ImagePreview: FC<{
 }> = ({ img, onDismiss, childId }) => {
   const ref = useRef<HTMLDivElement>(null)
   const child = useGetChild(childId)
+  const observations = useGetObservationsByImage(img.id)
 
   useEffect(() => {
     if (ref.current) {
@@ -197,6 +199,12 @@ const ImagePreview: FC<{
           alt="preview"
           className="w-full object-cover"
         />
+        {observations.data?.map((obv) => (
+          <div className="m-4">
+            <div className="font-bold">{obv.shortDesc}</div>
+            <div className="font-normal">{obv.longDesc}</div>
+          </div>
+        ))}
       </div>
     </div>
   )
