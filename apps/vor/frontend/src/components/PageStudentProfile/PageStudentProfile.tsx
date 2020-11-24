@@ -32,6 +32,7 @@ import BreadcrumbItem from "../Breadcrumb/BreadcrumbItem"
 interface Props {
   studentId: string
 }
+
 export const PageStudentProfile: FC<Props> = ({ studentId }) => {
   const { data, status } = useGetStudent(studentId)
 
@@ -90,7 +91,7 @@ export const PageStudentProfile: FC<Props> = ({ studentId }) => {
         />
         <NotesDataBox
           value={data?.note}
-          key={`doe${data?.note}`}
+          key={`note${data?.note}`}
           studentId={studentId}
         />
       </Card>
@@ -99,21 +100,14 @@ export const PageStudentProfile: FC<Props> = ({ studentId }) => {
         <Flex sx={{ alignItems: "flex-start" }}>
           <Box px={3} py={3}>
             <Typography.Body
-              sx={{
-                fontSize: 0,
-                lineHeight: 1,
-              }}
+              sx={{ lineHeight: 1 }}
               mb={2}
               color="textMediumEmphasis"
             >
               <Trans>Classes</Trans>
             </Typography.Body>
             {data?.classes?.length === 0 && (
-              <Typography.Body
-                sx={{
-                  lineHeight: 1,
-                }}
-              >
+              <Typography.Body sx={{ lineHeight: 1 }}>
                 <Trans>Not Set</Trans>
               </Typography.Body>
             )}
@@ -157,21 +151,19 @@ export const PageStudentProfile: FC<Props> = ({ studentId }) => {
                 <Trans>Not Set</Trans>
               </Typography.Body>
             )}
-            {data?.guardians?.map(({ id, email, name }) => {
-              return (
-                <Box py={3} key={id}>
-                  <Typography.Body sx={{ lineHeight: 1 }} mb={2}>
-                    {name}
-                  </Typography.Body>
-                  <Typography.Body
-                    sx={{ lineHeight: 1, fontSize: 1 }}
-                    color="textMediumEmphasis"
-                  >
-                    <Trans id={email || t`No email`} />
-                  </Typography.Body>
-                </Box>
-              )
-            })}
+            {data?.guardians?.map(({ id, email, name }) => (
+              <Box py={3} key={id}>
+                <Typography.Body sx={{ lineHeight: 1 }} mb={2}>
+                  {name}
+                </Typography.Body>
+                <Typography.Body
+                  sx={{ lineHeight: 1, fontSize: 1 }}
+                  color="textMediumEmphasis"
+                >
+                  <Trans id={email || t`No email`} />
+                </Typography.Body>
+              </Box>
+            ))}
           </Box>
           <Link
             to={EDIT_GUARDIANS_URL(studentId)}
@@ -354,11 +346,12 @@ const NotesDataBox: FC<{ value?: string; studentId: string }> = ({
     await mutate({ note })
     setShowEditDialog(false)
   }
+
   return (
     <Fragment>
       <DataBox
         label={t`Notes`}
-        value={note || t`Not Set`}
+        value={note || "-"}
         onEditClick={() => setShowEditDialog(true)}
       />
       {showEditDialog && (
@@ -374,9 +367,7 @@ const NotesDataBox: FC<{ value?: string; studentId: string }> = ({
             <Input
               label={t`Notes`}
               sx={{ width: "100%" }}
-              onChange={(e) => {
-                setNote(e.target.value)
-              }}
+              onChange={(e) => setNote(e.target.value)}
               value={note}
             />
           </Box>

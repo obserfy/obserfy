@@ -35,7 +35,7 @@ msgid "(Starting on Jan 1st 2021)"
 msgstr "(Starting on Jan 1st 2021)"
 
 #: src/components/LinkInput/LinkInput.tsx:9
-#: src/components/PageNewStudent/PageNewStudent.tsx:188
+#: src/components/PageNewStudent/PageNewStudent.tsx:182
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:153
 #: src/components/StudentPickerDialog/StudentPickerDialog.tsx:30
 msgid "Add"
@@ -120,7 +120,7 @@ msgstr "Available every"
 #: src/components/PageNewSchool/PageNewSchool.tsx:47
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:53
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:62
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:289
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:274
 msgid "Cancel"
 msgstr "Cancel"
 
@@ -137,8 +137,8 @@ msgid "Class"
 msgstr "Class"
 
 #: src/components/PageClassSettings/PageClassSettings.tsx:27
-#: src/components/PageNewStudent/PageNewStudent.tsx:161
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:76
+#: src/components/PageNewStudent/PageNewStudent.tsx:155
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:73
 msgid "Classes"
 msgstr "Classes"
 
@@ -183,7 +183,7 @@ msgid "Date of Birth"
 msgstr "Date of Birth"
 
 #: src/components/PageNewStudent/PageNewStudent.tsx:145
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:251
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:236
 msgid "Date of Entry"
 msgstr "Date of Entry"
 
@@ -244,12 +244,12 @@ msgstr "Edit Details"
 msgid "Edit Email"
 msgstr "Edit Email"
 
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:172
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:165
 msgid "Edit Gender"
 msgstr "Edit Gender"
 
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:56
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:142
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:135
 msgid "Edit Name"
 msgstr "Edit Name"
 
@@ -257,7 +257,7 @@ msgstr "Edit Name"
 msgid "Edit Note"
 msgstr "Edit Note"
 
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:224
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:211
 msgid "Edit Notes"
 msgstr "Edit Notes"
 
@@ -269,7 +269,7 @@ msgstr "Edit Phone"
 msgid "Edit Short Description"
 msgstr "Edit Short Description"
 
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:204
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:191
 msgid "Edit Student ID"
 msgstr "Edit Student ID"
 
@@ -297,9 +297,9 @@ msgstr "End Time"
 msgid "Event Time"
 msgstr "Event Time"
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:154
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:166
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:186
+#: src/components/PageNewStudent/PageNewStudent.tsx:149
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:159
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:174
 msgid "Female"
 msgstr "Female"
 
@@ -313,8 +313,8 @@ msgid "Gallery"
 msgstr "Gallery"
 
 #: src/components/PageNewStudent/PageNewStudent.tsx:146
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:161
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:176
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:154
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:169
 msgid "Gender"
 msgstr "Gender"
 
@@ -336,14 +336,14 @@ msgstr "Go to Curriculum"
 msgid "Guardian Name"
 msgstr "Guardian Name"
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:184
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:103
+#: src/components/PageNewStudent/PageNewStudent.tsx:178
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:98
 msgid "Guardians"
 msgstr "Guardians"
 
 #: src/components/PageSupport/PageSupport.tsx:58
-msgid "Have a question? Shoot us an email at chrsep@protonmail.com"
-msgstr "Have a question? Shoot us an email at chrsep@protonmail.com"
+msgid "Have a question? Shoot us an email at support@obserfy.com"
+msgstr "Have a question? Shoot us an email at support@obserfy.com"
 
 #: src/components/PageSupport/PageSupport.tsx:35
 msgid "Help and Feedbacks"
@@ -396,9 +396,9 @@ msgstr "Links"
 msgid "Log Out"
 msgstr "Log Out"
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:151
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:164
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:183
+#: src/components/PageNewStudent/PageNewStudent.tsx:148
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:157
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:173
 msgid "Male"
 msgstr "Male"
 
@@ -413,8 +413,8 @@ msgstr "Monday"
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:54
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:58
 #: src/components/PageNewClass/PageNewClass.tsx:57
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:140
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:144
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:133
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:137
 msgid "Name"
 msgstr "Name"
 
@@ -455,7 +455,7 @@ msgstr "New school"
 msgid "Next Bill"
 msgstr "Next Bill"
 
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:114
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:108
 msgid "No email"
 msgstr "No email"
 
@@ -484,13 +484,12 @@ msgstr "No other students added yet."
 msgid "None"
 msgstr "None"
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:148
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:81
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:106
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:168
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:180
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:202
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:222
+#: src/components/PageNewStudent/PageNewStudent.tsx:147
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:76
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:101
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:161
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:172
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:189
 msgid "Not Set"
 msgstr "Not Set"
 
@@ -501,9 +500,9 @@ msgstr "Not Set"
 msgid "Note"
 msgstr "Note"
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:158
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:222
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:226
+#: src/components/PageNewStudent/PageNewStudent.tsx:152
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:209
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:213
 msgid "Notes"
 msgstr "Notes"
 
@@ -614,7 +613,7 @@ msgstr "Repetition"
 msgid "Reporting"
 msgstr "Reporting"
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:210
+#: src/components/PageNewStudent/PageNewStudent.tsx:204
 msgid "Reset Form"
 msgstr "Ulang Formulir"
 
@@ -636,10 +635,10 @@ msgstr "Saturday"
 #: src/components/PageObservationDetails/ObservationMetaCard.tsx:60
 #: src/components/PageStudentPlanDetails/LessonPlanDescriptionCard.tsx:30
 #: src/components/PageStudentPlanDetails/LessonPlanMetaCard.tsx:57
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:142
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:172
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:204
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:224
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:135
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:165
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:191
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:211
 msgid "Save"
 msgstr "Save"
 
@@ -727,13 +726,13 @@ msgstr "Standard Plan"
 msgid "Start Time"
 msgstr "Start Time"
 
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:280
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:265
 msgid "Status"
 msgstr "Status"
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:157
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:202
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:206
+#: src/components/PageNewStudent/PageNewStudent.tsx:151
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:189
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:193
 msgid "Student ID"
 msgstr "Student ID"
 
@@ -798,7 +797,7 @@ msgstr "Theme"
 #~ msgid "This student doesn&apos;t have a guardian yet."
 #~ msgstr "This student doesn&apos;t have a guardian yet."
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:194
+#: src/components/PageNewStudent/PageNewStudent.tsx:188
 msgid "This student doesn't have a guardian yet."
 msgstr "This student doesn't have a guardian yet."
 
@@ -873,7 +872,7 @@ msgstr "Write something"
 
 #: src/components/PageListOfStudents/PageListOfStudents.tsx:70
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:60
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:289
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:274
 msgid "Yes"
 msgstr "Yes"
 

@@ -59,12 +59,12 @@ export const PageSupport: FC = () => {
             </Typography.Body>
             <Typography.Body color="textMediumEmphasis">
               <Trans>
-                Have a question? Shoot us an email at chrsep@protonmail.com
+                Have a question? Shoot us an email at support@obserfy.com
               </Trans>
             </Typography.Body>
           </Box>
           <a
-            href="mailto:chrsep@protonmail.com"
+            href="mailto:support@obserfy.com"
             sx={{ ml: "auto", flexShrink: 0 }}
           >
             <Button variant="outline" px={2} py={1}>
