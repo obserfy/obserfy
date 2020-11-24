@@ -32,6 +32,7 @@ import BreadcrumbItem from "../Breadcrumb/BreadcrumbItem"
 interface Props {
   studentId: string
 }
+
 export const PageStudentProfile: FC<Props> = ({ studentId }) => {
   const { data, status } = useGetStudent(studentId)
 
@@ -366,9 +367,7 @@ const NotesDataBox: FC<{ value?: string; studentId: string }> = ({
             <Input
               label={t`Notes`}
               sx={{ width: "100%" }}
-              onChange={(e) => {
-                setNote(e.target.value)
-              }}
+              onChange={(e) => setNote(e.target.value)}
               value={note}
             />
           </Box>
