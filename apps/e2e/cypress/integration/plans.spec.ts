@@ -82,6 +82,6 @@ describe("Test lesson plan features", () => {
     cy.contains(className).click()
     cy.contains("Delete").click()
     cy.contains("Yes").click()
-    cy.contains(className).should("not.be.visible")
+    cy.contains(className).should("not.exist")
   })
 })
