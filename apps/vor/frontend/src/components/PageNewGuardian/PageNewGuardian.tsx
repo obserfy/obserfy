@@ -2,6 +2,7 @@ import React, { FC, useState } from "react"
 import { Button, Box } from "theme-ui"
 
 import { t, Trans } from "@lingui/macro"
+import { useLingui } from "@lingui/react"
 import Select from "../Select/Select"
 import { GuardianRelationship } from "../../api/students/usePostNewStudent"
 import Input from "../Input/Input"
@@ -27,6 +28,7 @@ export const PageNewGuardian: FC<Props> = ({ id }) => {
 
   const student = useGetStudent(id)
   const [mutate, { status }] = usePostNewGuardian(id)
+  const { i18n } = useLingui()
 
   return (
     <Box mx="auto" sx={{ maxWidth: "maxWidth.sm" }}>
@@ -51,9 +53,13 @@ export const PageNewGuardian: FC<Props> = ({ id }) => {
           onChange={(e) => setRelationship(parseInt(e.target.value, 10))}
           value={relationship}
         >
-          <option value={GuardianRelationship.Other}>Other</option>
-          <option value={GuardianRelationship.Mother}>Mother</option>
-          <option value={GuardianRelationship.Father}>Father</option>
+          <option value={GuardianRelationship.Other}>{i18n._(t`Other`)}</option>
+          <option value={GuardianRelationship.Mother}>
+            {i18n._(t`Mother`)}
+          </option>
+          <option value={GuardianRelationship.Father}>
+            {i18n._(t`Father`)}
+          </option>
         </Select>
         <Input
           type="email"
