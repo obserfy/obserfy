@@ -1,45 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageNewStudentPlans should render correctly 1`] = `
-.emotion-57 {
+.emotion-0 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-size: 16px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-57 {
+@media screen and (min-width: 40em) {
+  .emotion-0 {
     font-size: 20px;
   }
 }
 
-.emotion-16 {
+.emotion-1 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  background-color: var(--theme-ui-colors-surfaceBlurNonTransparent,rgba(255,255,255));
-  position: -webkit-sticky;
+  background-color: var(--theme-ui-colors-surfaceBlurNonTransparent, rgba(255,255,255));
+  -webkit-position: sticky;
   position: sticky;
   top: 0;
   border-bottom-width: 1px;
-  border-bottom-color: var(--theme-ui-colors-borderSolid,rgba(0,0,0,.1));
+  border-bottom-color: var(--theme-ui-colors-borderSolid, rgba(0,0,0,.1));
   border-bottom-style: solid;
 }
 
-@supports (-webkit-backdrop-filter:blur(20px)) or (backdrop-filter:blur(20px)) {
-  .emotion-16 {
-    background-color: var(--theme-ui-colors-surfaceBlurTransparent,rgba(255,255,255,0.6));
+@supports (backdrop-filter: blur(20px)) {
+  .emotion-1 {
+    background-color: var(--theme-ui-colors-surfaceBlurTransparent, rgba(255,255,255,0.6));
     -webkit-backdrop-filter: saturate(180%) blur(20px);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
     -ms-transform: translateZ(0);
     transform: translateZ(0);
     will-change: backdrop-filter;
   }
 }
 
-.emotion-15 {
+.emotion-2 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -55,19 +56,20 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   max-width: 640px;
 }
 
-.emotion-2 {
+.emotion-3 {
   margin: 8px;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
-.emotion-1 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   display: inline-block;
   text-align: center;
@@ -80,7 +82,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary,#00e399);
+  background-color: var(--theme-ui-colors-primary, #00e399);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -90,12 +92,12 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
+  color: var(--theme-ui-colors-textPrimary, #027c5b);
   background-color: transparent;
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 16px;
@@ -110,12 +112,12 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   -ms-flex-align: center;
   align-items: center;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
   -ms-flex-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
   touch-action: manipulation;
   box-shadow: none;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   border-style: solid;
   border-width: 1px;
   line-height: 1;
@@ -123,34 +125,34 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   padding: 4px;
 }
 
-.emotion-1:disabled {
+.emotion-4:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-1:hover,
-.emotion-1:focus {
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
-  border-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-4:hover,
+.emotion-4:focus {
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,120,86,0.12));
+  border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-0 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   max-width: 100%;
   height: auto;
-  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
+  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   width: 20px;
   height: 20px;
-  fill: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  fill: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
 }
 
-.emotion-13 {
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -165,55 +167,56 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-5 {
+.emotion-7 {
   display: inline-block;
   font-size: 12px;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
   white-space: nowrap;
 }
 
-.emotion-5:last-child {
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
+.emotion-7:last-child {
+  color: var(--theme-ui-colors-textPrimary, #027c5b);
 }
 
-.emotion-5:last-child > .splitter {
+.emotion-7:last-child>.splitter {
   display: none;
 }
 
-.emotion-3:hover {
+.emotion-8:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
 }
 
-.emotion-4 {
+.emotion-9 {
   margin-left: 4px;
   margin-right: 4px;
 }
 
-.emotion-12 {
+.emotion-16 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   display: inline-block;
   font-size: 12px;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
   white-space: nowrap;
 }
 
-.emotion-12:last-child {
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
+.emotion-16:last-child {
+  color: var(--theme-ui-colors-textPrimary, #027c5b);
 }
 
-.emotion-12:last-child > .splitter {
+.emotion-16:last-child>.splitter {
   display: none;
 }
 
-.emotion-14 {
+.emotion-17 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   display: inline-block;
   text-align: center;
@@ -226,7 +229,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary,#00e399);
+  background-color: var(--theme-ui-colors-primary, #00e399);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -236,12 +239,12 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-onPrimary,#000);
-  background-color: var(--theme-ui-colors-primary,#00e399);
+  color: var(--theme-ui-colors-onPrimary, #000);
+  background-color: var(--theme-ui-colors-primary, #00e399);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 16px;
@@ -256,12 +259,12 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   -ms-flex-align: center;
   align-items: center;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
   -ms-flex-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
   touch-action: manipulation;
-  box-shadow: rgba(27,31,35,0.1) 0px 1px 0px 0px,rgba(255,255,255,0.03) 0px 1px 0px 0px inset;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  box-shadow: rgba(27, 31, 35, 0.1) 0px 1px 0px 0px,rgba(255, 255, 255, 0.03) 0px 1px 0px 0px inset;
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   border-style: solid;
   border-width: 1px;
   line-height: 1;
@@ -272,23 +275,23 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   padding: 8px;
 }
 
-.emotion-14:disabled {
+.emotion-17:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-14:hover,
-.emotion-14:focus {
-  background-color: var(--theme-ui-colors-primaryDark,#00a06d);
+.emotion-17:hover,
+.emotion-17:focus {
+  background-color: var(--theme-ui-colors-primaryDark, #00a06d);
   outline: none;
 }
 
-.emotion-14:hover:disabled,
-.emotion-14:focus:disabled {
-  background-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-17:hover:disabled,
+.emotion-17:focus:disabled {
+  background-color: var(--theme-ui-colors-primary, #00e399);
 }
 
-.emotion-56 {
+.emotion-18 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -297,7 +300,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   max-width: 640px;
 }
 
-.emotion-31 {
+.emotion-19 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -306,7 +309,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   margin-top: 8px;
 }
 
-.emotion-23 {
+.emotion-20 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -317,7 +320,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-20 {
+.emotion-21 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -326,14 +329,14 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-size: 14px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -343,14 +346,14 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   flex-direction: column;
 }
 
-.emotion-17 {
+.emotion-22 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   padding-bottom: 4px;
 }
 
-.emotion-19 {
+.emotion-23 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -364,7 +367,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-18 {
+.emotion-24 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -373,6 +376,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   padding: 8px;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   font-size: inherit;
   line-height: inherit;
@@ -383,49 +387,50 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface,#fff);
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface, #fff);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   opacity: 1!important;
   width: 100%;
 }
 
-.emotion-18:hover,
-.emotion-18:focus {
-  border-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-24:hover,
+.emotion-24:focus {
+  border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-18::-webkit-input-placeholder {
+.emotion-24::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-18::-moz-placeholder {
+.emotion-24::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-18:-ms-input-placeholder {
+.emotion-24:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-18::placeholder {
+.emotion-24::placeholder {
   font-style: italic;
 }
 
-.emotion-18:disabled {
+.emotion-24:disabled {
   opacity: 0.68;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
 }
 
-.emotion-22 {
+.emotion-25 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   display: inline-block;
   text-align: center;
@@ -438,7 +443,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary,#00e399);
+  background-color: var(--theme-ui-colors-primary, #00e399);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -448,12 +453,12 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
-  background-color: var(--theme-ui-colors-surface,#fff);
+  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  background-color: var(--theme-ui-colors-surface, #fff);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 16px;
@@ -468,12 +473,12 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   -ms-flex-align: center;
   align-items: center;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
   -ms-flex-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
   touch-action: manipulation;
   box-shadow: none;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   border-style: solid;
   border-width: 1px;
   line-height: 1;
@@ -484,31 +489,31 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   flex-shrink: 0;
 }
 
-.emotion-22:disabled {
+.emotion-25:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-22:hover,
-.emotion-22:focus {
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
-  border-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-25:hover,
+.emotion-25:focus {
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,120,86,0.12));
+  border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-22:hover:disabled,
-.emotion-22:focus:disabled {
+.emotion-25:hover:disabled,
+.emotion-25:focus:disabled {
   background-color: transparent;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
 }
 
-.emotion-21 {
+.emotion-26 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   max-width: 100%;
   height: auto;
-  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
+  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -516,7 +521,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-25 {
+.emotion-30 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -525,6 +530,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   padding: 8px;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   font-size: inherit;
   line-height: inherit;
@@ -535,44 +541,44 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface,#fff);
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface, #fff);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   margin-bottom: 8px;
   width: 100%;
 }
 
-.emotion-25:hover,
-.emotion-25:focus {
-  border-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-30:hover,
+.emotion-30:focus {
+  border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-25::-webkit-input-placeholder {
+.emotion-30::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-25::-moz-placeholder {
+.emotion-30::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-25:-ms-input-placeholder {
+.emotion-30:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-25::placeholder {
+.emotion-30::placeholder {
   font-style: italic;
 }
 
-.emotion-25:disabled {
+.emotion-30:disabled {
   opacity: 0.68;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
 }
 
-.emotion-30 {
+.emotion-31 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -581,7 +587,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-size: 14px;
   -webkit-user-select: none;
@@ -595,93 +601,6 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-}
-
-.emotion-29 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  display: block;
-  width: 100%;
-  padding: 8px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  font-size: inherit;
-  line-height: inherit;
-  border: 1px solid;
-  border-radius: 4px;
-  color: inherit;
-  background-color: transparent;
-  border-radius: 6px;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface,#fff);
-  font-size: 16px;
-  padding: 16px;
-  height: 180px;
-  resize: vertical;
-  color: var(--theme-ui-colors-text,#37383c);
-  margin-bottom: 32px;
-  width: 100%;
-}
-
-.emotion-29:hover,
-.emotion-29:focus {
-  border-color: var(--theme-ui-colors-primary,#00e399);
-  outline: none;
-}
-
-.emotion-29::-webkit-input-placeholder {
-  font-style: italic;
-  line-height: 2rem;
-}
-
-.emotion-29::-moz-placeholder {
-  font-style: italic;
-  line-height: 2rem;
-}
-
-.emotion-29:-ms-input-placeholder {
-  font-style: italic;
-  line-height: 2rem;
-}
-
-.emotion-29::placeholder {
-  font-style: italic;
-  line-height: 2rem;
-}
-
-.emotion-38 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  margin-left: 16px;
-  margin-right: 16px;
-  margin-bottom: 32px;
-}
-
-.emotion-32 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: bold;
-  line-height: heading;
-  color: var(--theme-ui-colors-text,#37383c);
-  text-rendering: optimizeLegibility;
-  font-size: 20px;
-  margin-bottom: 8px;
-}
-
-.emotion-37 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .emotion-33 {
@@ -693,6 +612,95 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   padding: 8px;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  font-size: inherit;
+  line-height: inherit;
+  border: 1px solid;
+  border-radius: 4px;
+  color: inherit;
+  background-color: transparent;
+  border-radius: 6px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface, #fff);
+  font-size: 16px;
+  padding: 16px;
+  height: 180px;
+  resize: vertical;
+  color: var(--theme-ui-colors-text, #37383c);
+  margin-bottom: 32px;
+  width: 100%;
+}
+
+.emotion-33:hover,
+.emotion-33:focus {
+  border-color: var(--theme-ui-colors-primary, #00e399);
+  outline: none;
+}
+
+.emotion-33::-webkit-input-placeholder {
+  font-style: italic;
+  line-height: 2rem;
+}
+
+.emotion-33::-moz-placeholder {
+  font-style: italic;
+  line-height: 2rem;
+}
+
+.emotion-33:-ms-input-placeholder {
+  font-style: italic;
+  line-height: 2rem;
+}
+
+.emotion-33::placeholder {
+  font-style: italic;
+  line-height: 2rem;
+}
+
+.emotion-34 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-bottom: 32px;
+}
+
+.emotion-35 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: bold;
+  line-height: heading;
+  color: var(--theme-ui-colors-text, #37383c);
+  text-rendering: optimizeLegibility;
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.emotion-36 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-39 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: block;
+  width: 100%;
+  padding: 8px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   font-size: inherit;
   line-height: inherit;
@@ -703,50 +711,51 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface,#fff);
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface, #fff);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   padding: 8px;
   width: 100%;
   padding: 8px;
 }
 
-.emotion-33:hover,
-.emotion-33:focus {
-  border-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-39:hover,
+.emotion-39:focus {
+  border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-33::-webkit-input-placeholder {
+.emotion-39::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-33::-moz-placeholder {
+.emotion-39::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-33:-ms-input-placeholder {
+.emotion-39:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-33::placeholder {
+.emotion-39::placeholder {
   font-style: italic;
 }
 
-.emotion-33:disabled {
+.emotion-39:disabled {
   opacity: 0.68;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
 }
 
-.emotion-36 {
+.emotion-40 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   display: inline-block;
   text-align: center;
@@ -759,7 +768,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary,#00e399);
+  background-color: var(--theme-ui-colors-primary, #00e399);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -769,12 +778,12 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
-  background-color: var(--theme-ui-colors-surface,#fff);
+  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  background-color: var(--theme-ui-colors-surface, #fff);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 16px;
@@ -789,37 +798,37 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   -ms-flex-align: center;
   align-items: center;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
   -ms-flex-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
   touch-action: manipulation;
   box-shadow: none;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   border-style: solid;
   border-width: 1px;
   line-height: 1;
   margin-left: 8px;
 }
 
-.emotion-36:disabled {
+.emotion-40:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-36:hover,
-.emotion-36:focus {
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
-  border-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-40:hover,
+.emotion-40:focus {
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,120,86,0.12));
+  border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-36:hover:disabled,
-.emotion-36:focus:disabled {
+.emotion-40:hover:disabled,
+.emotion-40:focus:disabled {
   background-color: transparent;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
 }
 
-.emotion-40 {
+.emotion-43 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -828,12 +837,13 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-flex-wrap: wrap;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 }
 
-.emotion-44 {
+.emotion-47 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -842,7 +852,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   padding-right: 8px;
   padding-top: 4px;
   padding-bottom: 4px;
-  background-color: var(--theme-ui-colors-primary,#00e399);
+  background-color: var(--theme-ui-colors-primary, #00e399);
   display: inline-block;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -850,29 +860,29 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   user-select: none;
   cursor: pointer;
   border-radius: 6px;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   border-width: 1px;
   border-style: solid;
   white-space: nowrap;
 }
 
-.emotion-44:hover {
-  background-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-47:hover {
+  background-color: var(--theme-ui-colors-primary, #00e399);
 }
 
-.emotion-43 {
+.emotion-48 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
-  color: var(--theme-ui-colors-onPrimary,#000);
+  color: var(--theme-ui-colors-onPrimary, #000);
   font-size: 14px;
 }
 
-.emotion-46 {
+.emotion-49 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -881,7 +891,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   padding-right: 8px;
   padding-top: 4px;
   padding-bottom: 4px;
-  background-color: var(--theme-ui-colors-surface,#fff);
+  background-color: var(--theme-ui-colors-surface, #fff);
   display: inline-block;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -889,29 +899,29 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   user-select: none;
   cursor: pointer;
   border-radius: 6px;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   border-width: 1px;
   border-style: solid;
   white-space: nowrap;
 }
 
-.emotion-46:hover {
-  background-color: var(--theme-ui-colors-primaryLightest,rgba(0,120,86,0.05));
+.emotion-49:hover {
+  background-color: var(--theme-ui-colors-primaryLightest, rgba(0,120,86,0.05));
 }
 
-.emotion-45 {
+.emotion-50 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   font-size: 14px;
 }
 
-.emotion-53 {
+.emotion-54 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -926,24 +936,25 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   align-items: flex-end;
 }
 
-.emotion-51 {
+.emotion-55 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: bold;
   line-height: heading;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   text-rendering: optimizeLegibility;
   font-size: 20px;
 }
 
-.emotion-52 {
+.emotion-56 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   display: inline-block;
   text-align: center;
@@ -956,7 +967,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary,#00e399);
+  background-color: var(--theme-ui-colors-primary, #00e399);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -966,12 +977,12 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
-  background-color: var(--theme-ui-colors-surface,#fff);
+  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  background-color: var(--theme-ui-colors-surface, #fff);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 16px;
@@ -986,41 +997,41 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   -ms-flex-align: center;
   align-items: center;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
   -ms-flex-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
   touch-action: manipulation;
   box-shadow: none;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   border-style: solid;
   border-width: 1px;
   line-height: 1;
   margin-left: auto;
 }
 
-.emotion-52:disabled {
+.emotion-56:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-52:hover,
-.emotion-52:focus {
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
-  border-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-56:hover,
+.emotion-56:focus {
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,120,86,0.12));
+  border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-52:hover:disabled,
-.emotion-52:focus:disabled {
+.emotion-56:hover:disabled,
+.emotion-56:focus:disabled {
   background-color: transparent;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
 }
 
-.emotion-54 {
+.emotion-57 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
@@ -1029,80 +1040,80 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   margin-top: 32px;
   margin-bottom: 32px;
   text-align: center;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
 }
 
 <div>
   <div
-    class="emotion-57"
+    class="emotion-0"
   >
     <div
-      class="emotion-16"
+      class="emotion-1"
     >
       <div
-        class="emotion-15"
+        class="emotion-2"
       >
         <a
-          class="emotion-2"
+          class="emotion-3"
           data-cy="back-button"
           href="/dashboard/students/plans?studentId=adsfasdfsa&date=1996-05-26T00:00:00.000Z"
         >
           <button
-            class="emotion-1"
+            class="emotion-4"
           >
             <div
-              class="emotion-0"
+              class="emotion-5"
             />
           </button>
         </a>
         <div
-          class="emotion-13"
+          class="emotion-6"
         >
           <a
-            class="emotion-5"
+            class="emotion-7"
             href="/dashboard/students"
           >
             <span
-              class="emotion-3"
+              class="emotion-8"
             >
               Students
             </span>
             <span
-              class="splitter emotion-4"
+              class="splitter emotion-9"
             >
               /
             </span>
           </a>
           <a
-            class="emotion-5"
+            class="emotion-7"
             href="/dashboard/students/overview?studentId=adsfasdfsa"
           >
             <span
-              class="emotion-3"
+              class="emotion-8"
             />
             <span
-              class="splitter emotion-4"
+              class="splitter emotion-9"
             >
               /
             </span>
           </a>
           <a
-            class="emotion-5"
+            class="emotion-7"
             href="/dashboard/students/plans?studentId=adsfasdfsa&date=1996-05-26T00:00:00.000Z"
           >
             <span
-              class="emotion-3"
+              class="emotion-8"
             >
               Plans
             </span>
             <span
-              class="splitter emotion-4"
+              class="splitter emotion-9"
             >
               /
             </span>
           </a>
           <div
-            class="emotion-12"
+            class="emotion-16"
           >
             New
             <span
@@ -1113,7 +1124,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
           </div>
         </div>
         <button
-          class="emotion-14"
+          class="emotion-17"
           disabled=""
         >
           Save
@@ -1121,27 +1132,27 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
       </div>
     </div>
     <div
-      class="emotion-56"
+      class="emotion-18"
     >
       <div
-        class="emotion-31"
+        class="emotion-19"
       >
         <div
-          class="emotion-23"
+          class="emotion-20"
         >
           <label
-            class="emotion-20"
+            class="emotion-21"
           >
             <div
-              class="emotion-17"
+              class="emotion-22"
             >
               Date
             </div>
             <div
-              class="emotion-19"
+              class="emotion-23"
             >
               <input
-                class="emotion-18"
+                class="emotion-24"
                 disabled=""
                 placeholder="Not set"
                 value="Sunday, 26 May 1996"
@@ -1149,72 +1160,72 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
             </div>
           </label>
           <button
-            class="emotion-22"
+            class="emotion-25"
             data-cy="Date"
           >
             <div
-              class="emotion-21"
+              class="emotion-26"
             />
           </button>
         </div>
         <label
-          class="emotion-20"
+          class="emotion-21"
         >
           <div
-            class="emotion-17"
+            class="emotion-22"
           >
             Title
           </div>
           <div
-            class="emotion-19"
+            class="emotion-23"
           >
             <input
-              class="emotion-25"
+              class="emotion-30"
               value=""
             />
           </div>
         </label>
         <label
-          class="emotion-30"
+          class="emotion-31"
         >
           <div
-            class="emotion-17"
+            class="emotion-22"
           >
             Description
           </div>
           <textarea
             aria-label="Description"
-            class="emotion-29"
+            class="emotion-33"
           />
         </label>
       </div>
       <div
-        class="emotion-38"
+        class="emotion-34"
       >
         <h6
-          class="emotion-32"
+          class="emotion-35"
         >
           Links
         </h6>
         <div
-          class="emotion-37"
+          class="emotion-36"
         >
           <label
-            class="emotion-20"
+            class="emotion-21"
           >
             <div
-              class="emotion-19"
+              class="emotion-23"
             >
               <input
                 aria-label="URL"
-                class="emotion-33"
+                class="emotion-39"
                 placeholder="https://...."
                 value=""
               />
             </div>
           </label>
           <button
-            class="emotion-36"
+            class="emotion-40"
             disabled=""
           >
             Add
@@ -1222,51 +1233,51 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
         </div>
       </div>
       <div
-        class="emotion-38"
+        class="emotion-34"
       >
         <h6
-          class="emotion-32"
+          class="emotion-35"
         >
           Related Area
         </h6>
         <div
-          class="emotion-40"
+          class="emotion-43"
         />
       </div>
       <div
-        class="emotion-38"
+        class="emotion-34"
       >
         <h6
-          class="emotion-32"
+          class="emotion-35"
         >
           Repetition
         </h6>
         <div
-          class="emotion-37"
+          class="emotion-36"
         >
           <div
-            class="emotion-44"
+            class="emotion-47"
           >
             <p
-              class="emotion-43"
+              class="emotion-48"
             >
               None
             </p>
           </div>
           <div
-            class="emotion-46"
+            class="emotion-49"
           >
             <p
-              class="emotion-45"
+              class="emotion-50"
             >
               Daily
             </p>
           </div>
           <div
-            class="emotion-46"
+            class="emotion-49"
           >
             <p
-              class="emotion-45"
+              class="emotion-50"
             >
               Weekly
             </p>
@@ -1274,24 +1285,24 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
         </div>
       </div>
       <div
-        class="emotion-38"
+        class="emotion-34"
       >
         <div
-          class="emotion-53"
+          class="emotion-54"
         >
           <h6
-            class="emotion-51"
+            class="emotion-55"
           >
             Other Related Students
           </h6>
           <button
-            class="emotion-52"
+            class="emotion-56"
           >
             Add
           </button>
         </div>
         <p
-          class="emotion-54"
+          class="emotion-57"
         >
           No other students added yet.
         </p>

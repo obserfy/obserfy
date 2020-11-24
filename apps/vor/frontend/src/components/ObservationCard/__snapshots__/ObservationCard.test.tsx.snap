@@ -1,43 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ObservationCard should render correctly 1`] = `
-.emotion-4 {
+.emotion-0 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-size: 16px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-4 {
+@media screen and (min-width: 40em) {
+  .emotion-0 {
     font-size: 20px;
   }
 }
 
-.emotion-3 {
+.emotion-1 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   overflow: auto;
-  background-color: var(--theme-ui-colors-surface,#fff);
+  background-color: var(--theme-ui-colors-surface, #fff);
   border-radius: 6px;
-  box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px,rgba(0, 0, 0, 0.27) 0px 2px 4px -2px;
   margin-bottom: 8px;
   padding-top: 8px;
   border-radius: 0;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-3 {
+@media screen and (min-width: 40em) {
+  .emotion-1 {
     border-radius: 6px;
   }
 }
 
-.emotion-0 {
+.emotion-2 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
@@ -47,7 +47,7 @@ exports[`ObservationCard should render correctly 1`] = `
   margin-right: 16px;
 }
 
-.emotion-2 {
+.emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -64,8 +64,8 @@ exports[`ObservationCard should render correctly 1`] = `
   align-items: baseline;
 }
 
-.emotion-1 {
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
+.emotion-4 {
+  color: var(--theme-ui-colors-textPrimary, #027c5b);
   margin-left: auto;
   margin-right: 16px;
   font-size: 12px;
@@ -73,21 +73,21 @@ exports[`ObservationCard should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-4"
+    class="emotion-0"
   >
     <div
-      class="emotion-3"
+      class="emotion-1"
     >
       <p
-        class="emotion-0"
+        class="emotion-2"
         data-cy="observation-short-desc"
       />
       
       <div
-        class="emotion-2"
+        class="emotion-3"
       >
         <a
-          class="emotion-1"
+          class="emotion-4"
           href=""
         >
           See More

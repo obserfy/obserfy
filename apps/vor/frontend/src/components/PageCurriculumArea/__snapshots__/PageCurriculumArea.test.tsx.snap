@@ -3,32 +3,32 @@
 exports[`PageCurriculumArea should render correctly 1`] = `
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165,165,165,0.05);
+    background-color: rgba(165, 165, 165, 0.05);
   }
 
   50% {
-    background-color: rgba(165,165,165,0.2);
+    background-color: rgba(165, 165, 165, 0.2);
   }
 
   100% {
-    background-color: rgba(165,165,165,0.05);
+    background-color: rgba(165, 165, 165, 0.05);
   }
 }
 
-.emotion-24 {
+.emotion-0 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-size: 16px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-24 {
+@media screen and (min-width: 40em) {
+  .emotion-0 {
     font-size: 20px;
   }
 }
 
-.emotion-23 {
+.emotion-1 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -36,7 +36,7 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   margin: auto;
 }
 
-.emotion-11 {
+.emotion-2 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -51,19 +51,20 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-2 {
+.emotion-3 {
   margin: 8px;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
-.emotion-1 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   display: inline-block;
   text-align: center;
@@ -76,7 +77,7 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary,#00e399);
+  background-color: var(--theme-ui-colors-primary, #00e399);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -86,12 +87,12 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
+  color: var(--theme-ui-colors-textPrimary, #027c5b);
   background-color: transparent;
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 16px;
@@ -106,12 +107,12 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   -ms-flex-align: center;
   align-items: center;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
   -ms-flex-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
   touch-action: manipulation;
   box-shadow: none;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   border-style: solid;
   border-width: 1px;
   line-height: 1;
@@ -119,34 +120,34 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   padding: 4px;
 }
 
-.emotion-1:disabled {
+.emotion-4:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-1:hover,
-.emotion-1:focus {
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
-  border-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-4:hover,
+.emotion-4:focus {
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,120,86,0.12));
+  border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-0 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   max-width: 100%;
   height: auto;
-  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
+  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   width: 20px;
   height: 20px;
-  fill: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  fill: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
 }
 
-.emotion-10 {
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -161,50 +162,50 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-5 {
+.emotion-7 {
   display: inline-block;
   font-size: 12px;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
   white-space: nowrap;
 }
 
-.emotion-5:last-child {
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
+.emotion-7:last-child {
+  color: var(--theme-ui-colors-textPrimary, #027c5b);
 }
 
-.emotion-5:last-child > .splitter {
+.emotion-7:last-child>.splitter {
   display: none;
 }
 
-.emotion-3:hover {
+.emotion-8:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
 }
 
-.emotion-4 {
+.emotion-9 {
   margin-left: 4px;
   margin-right: 4px;
 }
 
-.emotion-9 {
+.emotion-13 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   display: inline-block;
   font-size: 12px;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
   white-space: nowrap;
 }
 
-.emotion-9:last-child {
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
+.emotion-13:last-child {
+  color: var(--theme-ui-colors-textPrimary, #027c5b);
 }
 
-.emotion-9:last-child > .splitter {
+.emotion-13:last-child>.splitter {
   display: none;
 }
 
-.emotion-17 {
+.emotion-14 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -221,7 +222,7 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-12 {
+.emotion-15 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -232,12 +233,13 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   height: 43px;
 }
 
-.emotion-14 {
+.emotion-16 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   display: inline-block;
   text-align: center;
@@ -250,7 +252,7 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary,#00e399);
+  background-color: var(--theme-ui-colors-primary, #00e399);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -260,12 +262,12 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
+  color: var(--theme-ui-colors-textPrimary, #027c5b);
   background-color: transparent;
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 16px;
@@ -280,12 +282,12 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   -ms-flex-align: center;
   align-items: center;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
   -ms-flex-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
   touch-action: manipulation;
   box-shadow: none;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   border-style: solid;
   border-width: 1px;
   line-height: 1;
@@ -293,98 +295,7 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   padding-left: 8px;
   padding-right: 8px;
   margin-left: 8px;
-  color: var(--theme-ui-colors-danger,#d50000);
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-}
-
-.emotion-14:disabled {
-  opacity: 0.38;
-  cursor: auto;
-}
-
-.emotion-14:hover,
-.emotion-14:focus {
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
-  border-color: var(--theme-ui-colors-primary,#00e399);
-  outline: none;
-}
-
-.emotion-13 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  max-width: 100%;
-  height: auto;
-  fill: var(--theme-ui-colors-danger,#d50000);
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  width: 20px;
-  height: 20px;
-}
-
-.emotion-16 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  display: inline-block;
-  text-align: center;
-  line-height: inherit;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  font-size: inherit;
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  color: white;
-  background-color: var(--theme-ui-colors-primary,#00e399);
-  border: 0;
-  border-radius: 4px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  box-sizing: border-box;
-  font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
-  background-color: transparent;
-  border-radius: 6px;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 16px;
-  padding-right: 16px;
-  white-space: nowrap;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  touch-action: manipulation;
-  box-shadow: none;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  border-style: solid;
-  border-width: 1px;
-  line-height: 1;
-  border: none;
-  padding-left: 8px;
-  padding-right: 8px;
+  color: var(--theme-ui-colors-danger, #d50000);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -397,18 +308,18 @@ exports[`PageCurriculumArea should render correctly 1`] = `
 
 .emotion-16:hover,
 .emotion-16:focus {
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
-  border-color: var(--theme-ui-colors-primary,#00e399);
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,120,86,0.12));
+  border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-15 {
+.emotion-17 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   max-width: 100%;
   height: auto;
-  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
+  fill: var(--theme-ui-colors-danger, #d50000);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -416,7 +327,99 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-22 {
+.emotion-18 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  display: inline-block;
+  text-align: center;
+  line-height: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: inherit;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: white;
+  background-color: var(--theme-ui-colors-primary, #00e399);
+  border: 0;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  background-color: transparent;
+  border-radius: 6px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  white-space: nowrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  touch-action: manipulation;
+  box-shadow: none;
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-style: solid;
+  border-width: 1px;
+  line-height: 1;
+  border: none;
+  padding-left: 8px;
+  padding-right: 8px;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.emotion-18:disabled {
+  opacity: 0.38;
+  cursor: auto;
+}
+
+.emotion-18:hover,
+.emotion-18:focus {
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,120,86,0.12));
+  border-color: var(--theme-ui-colors-primary, #00e399);
+  outline: none;
+}
+
+.emotion-19 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.emotion-20 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -433,19 +436,19 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-18 {
+.emotion-21 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: bold;
   line-height: heading;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   text-rendering: optimizeLegibility;
   font-size: 20px;
 }
 
-.emotion-19 {
+.emotion-22 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -455,12 +458,13 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   pointer-events: none;
 }
 
-.emotion-21 {
+.emotion-23 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   display: inline-block;
   text-align: center;
@@ -473,7 +477,7 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary,#00e399);
+  background-color: var(--theme-ui-colors-primary, #00e399);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -483,12 +487,12 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
-  background-color: var(--theme-ui-colors-surface,#fff);
+  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  background-color: var(--theme-ui-colors-surface, #fff);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 16px;
@@ -503,43 +507,43 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   -ms-flex-align: center;
   align-items: center;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
   -ms-flex-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
   touch-action: manipulation;
   box-shadow: none;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   border-style: solid;
   border-width: 1px;
   line-height: 1;
 }
 
-.emotion-21:disabled {
+.emotion-23:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-21:hover,
-.emotion-21:focus {
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
-  border-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-23:hover,
+.emotion-23:focus {
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,120,86,0.12));
+  border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-21:hover:disabled,
-.emotion-21:focus:disabled {
+.emotion-23:hover:disabled,
+.emotion-23:focus:disabled {
   background-color: transparent;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
 }
 
-.emotion-20 {
+.emotion-24 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   max-width: 100%;
   height: auto;
   margin-right: 8px;
-  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
+  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -549,62 +553,62 @@ exports[`PageCurriculumArea should render correctly 1`] = `
 
 <div>
   <div
-    class="emotion-24"
+    class="emotion-0"
   >
     <div
-      class="emotion-23"
+      class="emotion-1"
     >
       <div
-        class="emotion-11"
+        class="emotion-2"
       >
         <a
-          class="emotion-2"
+          class="emotion-3"
           data-cy="back-button"
           href="/dashboard/admin/curriculum"
         >
           <button
-            class="emotion-1"
+            class="emotion-4"
           >
             <div
-              class="emotion-0"
+              class="emotion-5"
             />
           </button>
         </a>
         <div
-          class="emotion-10"
+          class="emotion-6"
         >
           <a
-            class="emotion-5"
+            class="emotion-7"
             href="/dashboard/admin"
           >
             <span
-              class="emotion-3"
+              class="emotion-8"
             >
               Admin
             </span>
             <span
-              class="splitter emotion-4"
+              class="splitter emotion-9"
             >
               /
             </span>
           </a>
           <a
-            class="emotion-5"
+            class="emotion-7"
             href="/dashboard/admin/curriculum"
           >
             <span
-              class="emotion-3"
+              class="emotion-8"
             >
               Curriculum
             </span>
             <span
-              class="splitter emotion-4"
+              class="splitter emotion-9"
             >
               /
             </span>
           </a>
           <div
-            class="emotion-9"
+            class="emotion-13"
           >
             undefined Area
             <span
@@ -616,45 +620,45 @@ exports[`PageCurriculumArea should render correctly 1`] = `
         </div>
       </div>
       <div
-        class="emotion-17"
+        class="emotion-14"
       >
         <div
-          class="emotion-12"
+          class="emotion-15"
         />
-        <button
-          class="emotion-14"
-        >
-          <div
-            class="emotion-13"
-          />
-        </button>
         <button
           class="emotion-16"
         >
           <div
-            class="emotion-15"
+            class="emotion-17"
+          />
+        </button>
+        <button
+          class="emotion-18"
+        >
+          <div
+            class="emotion-19"
           />
         </button>
       </div>
       <div
-        class="emotion-22"
+        class="emotion-20"
       >
         <h6
-          class="emotion-18"
+          class="emotion-21"
         >
           Subjects
         </h6>
         <div
-          class="emotion-19"
+          class="emotion-22"
         />
         <a
           href="/dashboard/admin/curriculum/subjects/new?areaId="
         >
           <button
-            class="emotion-21"
+            class="emotion-23"
           >
             <div
-              class="emotion-20"
+              class="emotion-24"
             />
             New
           </button>

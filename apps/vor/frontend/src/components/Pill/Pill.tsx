@@ -3,7 +3,7 @@ import { Box, BoxProps } from "theme-ui"
 import { Trans } from "@lingui/macro"
 import Typography from "../Typography/Typography"
 
-interface Props extends BoxProps {
+interface Props extends Omit<BoxProps, "css"> {
   text?: string
 }
 export const Pill: FC<Props> = ({ sx, color, text, ...props }) => {

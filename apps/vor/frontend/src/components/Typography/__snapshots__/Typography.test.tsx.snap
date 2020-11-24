@@ -1,29 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Typography should render correctly all correctly 1`] = `
-.emotion-7 {
+.emotion-0 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-size: 16px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-7 {
+@media screen and (min-width: 40em) {
+  .emotion-0 {
     font-size: 20px;
   }
-}
-
-.emotion-0 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: bold;
-  line-height: heading;
-  color: var(--theme-ui-colors-text,#37383c);
-  text-rendering: optimizeLegibility;
-  font-size: 96px;
 }
 
 .emotion-1 {
@@ -33,9 +21,9 @@ exports[`Typography should render correctly all correctly 1`] = `
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: bold;
   line-height: heading;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   text-rendering: optimizeLegibility;
-  font-size: 64px;
+  font-size: 96px;
 }
 
 .emotion-2 {
@@ -45,9 +33,9 @@ exports[`Typography should render correctly all correctly 1`] = `
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: bold;
   line-height: heading;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   text-rendering: optimizeLegibility;
-  font-size: 48px;
+  font-size: 64px;
 }
 
 .emotion-3 {
@@ -57,9 +45,9 @@ exports[`Typography should render correctly all correctly 1`] = `
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: bold;
   line-height: heading;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   text-rendering: optimizeLegibility;
-  font-size: 32px;
+  font-size: 48px;
 }
 
 .emotion-4 {
@@ -69,9 +57,9 @@ exports[`Typography should render correctly all correctly 1`] = `
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: bold;
   line-height: heading;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   text-rendering: optimizeLegibility;
-  font-size: 24px;
+  font-size: 32px;
 }
 
 .emotion-5 {
@@ -81,16 +69,28 @@ exports[`Typography should render correctly all correctly 1`] = `
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: bold;
   line-height: heading;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   text-rendering: optimizeLegibility;
-  font-size: 20px;
+  font-size: 24px;
 }
 
 .emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: bold;
+  line-height: heading;
+  color: var(--theme-ui-colors-text, #37383c);
+  text-rendering: optimizeLegibility;
+  font-size: 20px;
+}
+
+.emotion-7 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: var(--theme-ui-colors-text, #37383c);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
@@ -98,40 +98,40 @@ exports[`Typography should render correctly all correctly 1`] = `
 
 <div>
   <div
-    class="emotion-7"
+    class="emotion-0"
   >
     <h1
-      class="emotion-0"
+      class="emotion-1"
     >
       Welcome Jonathan
     </h1>
     <h2
-      class="emotion-1"
+      class="emotion-2"
     >
       Wake Up
     </h2>
     <h3
-      class="emotion-2"
+      class="emotion-3"
     >
       We got a city to burn
     </h3>
     <h4
-      class="emotion-3"
+      class="emotion-4"
     >
       No Way
     </h4>
     <h5
-      class="emotion-4"
+      class="emotion-5"
     >
       Jose
     </h5>
     <h6
-      class="emotion-5"
+      class="emotion-6"
     >
       Heading 6
     </h6>
     <p
-      class="emotion-6"
+      class="emotion-7"
     >
       It is not politic in the commonwealth of nature to preserve virginity. Loss of virginity is rational increase, and there was never virgin got till virginity was first lost. That you were made of is metal to make virgins. Virginity by being once lost may be ten times found; by being ever kept is ever lost. Tis too cold a companion.
     </p>

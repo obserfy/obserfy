@@ -3,32 +3,32 @@
 exports[`PageAdmin should render correctly 1`] = `
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165,165,165,0.05);
+    background-color: rgba(165, 165, 165, 0.05);
   }
 
   50% {
-    background-color: rgba(165,165,165,0.2);
+    background-color: rgba(165, 165, 165, 0.2);
   }
 
   100% {
-    background-color: rgba(165,165,165,0.05);
+    background-color: rgba(165, 165, 165, 0.05);
   }
 }
 
-.emotion-38 {
+.emotion-0 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-size: 16px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-38 {
+@media screen and (min-width: 40em) {
+  .emotion-0 {
     font-size: 20px;
   }
 }
 
-.emotion-37 {
+.emotion-1 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -37,7 +37,7 @@ exports[`PageAdmin should render correctly 1`] = `
   max-width: 640px;
 }
 
-.emotion-0 {
+.emotion-2 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -52,25 +52,25 @@ exports[`PageAdmin should render correctly 1`] = `
   height: 27px;
 }
 
-.emotion-13 {
+.emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   overflow: auto;
-  background-color: var(--theme-ui-colors-surface,#fff);
+  background-color: var(--theme-ui-colors-surface, #fff);
   border-radius: 6px;
-  box-shadow: rgba(0,0,0,0.1) 0px 0px 1px,rgba(0,0,0,0.27) 0px 2px 4px -2px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px,rgba(0, 0, 0, 0.27) 0px 2px 4px -2px;
   margin-bottom: 16px;
   border-radius: 0;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-13 {
+@media screen and (min-width: 40em) {
+  .emotion-3 {
     border-radius: 6px;
   }
 }
 
-.emotion-3 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -81,24 +81,24 @@ exports[`PageAdmin should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-1 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
 }
 
-.emotion-2 {
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   max-width: 100%;
   height: auto;
   margin-left: auto;
-  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
+  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -106,7 +106,7 @@ exports[`PageAdmin should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-26 {
+.emotion-24 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -122,13 +122,13 @@ exports[`PageAdmin should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-21 {
+.emotion-25 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   max-width: 100%;
   height: auto;
-  fill: var(--theme-ui-colors-background,#f2f3f5);
+  fill: var(--theme-ui-colors-background, #f2f3f5);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -136,32 +136,32 @@ exports[`PageAdmin should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-24 {
+.emotion-26 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   margin-left: 16px;
 }
 
-.emotion-22 {
+.emotion-27 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
   font-size: 12px;
 }
 
-.emotion-27 {
+.emotion-31 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   max-width: 100%;
   height: auto;
-  fill: var(--theme-ui-colors-icon,rgba(0,0,0,0.6));
+  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -185,14 +185,14 @@ exports[`PageAdmin should render correctly 1`] = `
   display: flex;
 }
 
-@media screen and (min-width:40em) {
+@media screen and (min-width: 40em) {
   .emotion-36 {
     padding-left: 0;
     padding-right: 0;
   }
 }
 
-@media screen and (min-width:40em) {
+@media screen and (min-width: 40em) {
   .emotion-36 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
@@ -200,12 +200,13 @@ exports[`PageAdmin should render correctly 1`] = `
   }
 }
 
-.emotion-34 {
+.emotion-37 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   display: inline-block;
   text-align: center;
@@ -218,7 +219,7 @@ exports[`PageAdmin should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary,#00e399);
+  background-color: var(--theme-ui-colors-primary, #00e399);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -228,12 +229,12 @@ exports[`PageAdmin should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
-  background-color: var(--theme-ui-colors-surface,#fff);
+  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  background-color: var(--theme-ui-colors-surface, #fff);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 16px;
@@ -248,12 +249,12 @@ exports[`PageAdmin should render correctly 1`] = `
   -ms-flex-align: center;
   align-items: center;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
   -ms-flex-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
   touch-action: manipulation;
   box-shadow: none;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   border-style: solid;
   border-width: 1px;
   line-height: 1;
@@ -261,43 +262,44 @@ exports[`PageAdmin should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   margin-bottom: 16px;
-  color: var(--theme-ui-colors-warning,#ff6d00);
+  color: var(--theme-ui-colors-warning, #ff6d00);
   width: 100%;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
-.emotion-34:disabled {
+.emotion-37:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-34:hover,
-.emotion-34:focus {
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
-  border-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-37:hover,
+.emotion-37:focus {
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,120,86,0.12));
+  border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-34:hover:disabled,
-.emotion-34:focus:disabled {
+.emotion-37:hover:disabled,
+.emotion-37:focus:disabled {
   background-color: transparent;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
 }
 
-@media screen and (min-width:40em) {
-  .emotion-34 {
+@media screen and (min-width: 40em) {
+  .emotion-37 {
     width: auto;
   }
 }
 
-.emotion-35 {
+.emotion-38 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   display: inline-block;
   text-align: center;
@@ -310,7 +312,7 @@ exports[`PageAdmin should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary,#00e399);
+  background-color: var(--theme-ui-colors-primary, #00e399);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -320,12 +322,12 @@ exports[`PageAdmin should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
-  background-color: var(--theme-ui-colors-surface,#fff);
+  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  background-color: var(--theme-ui-colors-surface, #fff);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 16px;
@@ -340,70 +342,70 @@ exports[`PageAdmin should render correctly 1`] = `
   -ms-flex-align: center;
   align-items: center;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
   -ms-flex-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
   touch-action: manipulation;
   box-shadow: none;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   border-style: solid;
   border-width: 1px;
   line-height: 1;
   margin-left: 0;
   margin-bottom: 16px;
-  color: var(--theme-ui-colors-danger,#d50000);
+  color: var(--theme-ui-colors-danger, #d50000);
 }
 
-.emotion-35:disabled {
+.emotion-38:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-35:hover,
-.emotion-35:focus {
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
-  border-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-38:hover,
+.emotion-38:focus {
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,120,86,0.12));
+  border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-35:hover:disabled,
-.emotion-35:focus:disabled {
+.emotion-38:hover:disabled,
+.emotion-38:focus:disabled {
   background-color: transparent;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
 }
 
-@media screen and (min-width:40em) {
-  .emotion-35 {
+@media screen and (min-width: 40em) {
+  .emotion-38 {
     margin-left: 8px;
   }
 }
 
 <div>
   <div
-    class="emotion-38"
+    class="emotion-0"
   >
     <div
-      class="emotion-37"
+      class="emotion-1"
     >
       <div
-        class="emotion-0"
+        class="emotion-2"
       />
       <div
-        class="emotion-13"
+        class="emotion-3"
       >
         <a
           href="/dashboard/admin/curriculum"
         >
           <div
-            class="emotion-3"
+            class="emotion-4"
           >
             <p
-              class="emotion-1"
+              class="emotion-5"
             >
               Curriculum
             </p>
             <div
-              class="emotion-2"
+              class="emotion-6"
             />
           </div>
         </a>
@@ -411,15 +413,15 @@ exports[`PageAdmin should render correctly 1`] = `
           href="/dashboard/admin/class"
         >
           <div
-            class="emotion-3"
+            class="emotion-4"
           >
             <p
-              class="emotion-1"
+              class="emotion-5"
             >
               Class
             </p>
             <div
-              class="emotion-2"
+              class="emotion-6"
             />
           </div>
         </a>
@@ -427,15 +429,15 @@ exports[`PageAdmin should render correctly 1`] = `
           href="/dashboard/admin/students"
         >
           <div
-            class="emotion-3"
+            class="emotion-4"
           >
             <p
-              class="emotion-1"
+              class="emotion-5"
             >
               All Students
             </p>
             <div
-              class="emotion-2"
+              class="emotion-6"
             />
           </div>
         </a>
@@ -443,35 +445,35 @@ exports[`PageAdmin should render correctly 1`] = `
           href="/dashboard/admin/guardians"
         >
           <div
-            class="emotion-3"
+            class="emotion-4"
           >
             <p
-              class="emotion-1"
+              class="emotion-5"
             >
               All Guardians
             </p>
             <div
-              class="emotion-2"
+              class="emotion-6"
             />
           </div>
         </a>
       </div>
       <div
-        class="emotion-13"
+        class="emotion-3"
       >
         <a
           href="/dashboard/admin/users"
         >
           <div
-            class="emotion-3"
+            class="emotion-4"
           >
             <p
-              class="emotion-1"
+              class="emotion-5"
             >
               Users
             </p>
             <div
-              class="emotion-2"
+              class="emotion-6"
             />
           </div>
         </a>
@@ -479,70 +481,70 @@ exports[`PageAdmin should render correctly 1`] = `
           href="/dashboard/admin/inviteUser"
         >
           <div
-            class="emotion-3"
+            class="emotion-4"
           >
             <p
-              class="emotion-1"
+              class="emotion-5"
             >
               Invite Your Team
             </p>
             <div
-              class="emotion-2"
+              class="emotion-6"
             />
           </div>
         </a>
       </div>
       <div
-        class="emotion-13"
+        class="emotion-3"
       >
         <div
-          class="emotion-26"
+          class="emotion-24"
           data-cy="switch-indonesian"
         >
           <div
-            class="emotion-21"
+            class="emotion-25"
           />
           <div
-            class="emotion-24"
+            class="emotion-26"
           >
             <p
-              class="emotion-22"
+              class="emotion-27"
             >
               Language
             </p>
             <p
-              class="emotion-1"
+              class="emotion-5"
             >
               English
             </p>
           </div>
           <div
-            class="emotion-2"
+            class="emotion-6"
           />
         </div>
         <div
-          class="emotion-26"
+          class="emotion-24"
           data-cy="dark-switch"
         >
           <div
-            class="emotion-27"
+            class="emotion-31"
           />
           <div
-            class="emotion-24"
+            class="emotion-26"
           >
             <p
-              class="emotion-22"
+              class="emotion-27"
             >
               Theme
             </p>
             <p
-              class="emotion-1"
+              class="emotion-5"
             >
               Light
             </p>
           </div>
           <div
-            class="emotion-2"
+            class="emotion-6"
           />
         </div>
       </div>
@@ -550,12 +552,12 @@ exports[`PageAdmin should render correctly 1`] = `
         class="emotion-36"
       >
         <button
-          class="emotion-34"
+          class="emotion-37"
         >
           Switch school
         </button>
         <button
-          class="emotion-35"
+          class="emotion-38"
         >
           Log Out
         </button>

@@ -3,6 +3,7 @@ import { useImmer } from "use-immer"
 import { Box, Button, Card, Flex } from "theme-ui"
 
 import { t, Trans } from "@lingui/macro"
+import { useLingui } from "@lingui/react"
 import { Link, navigate } from "../Link/Link"
 import { useGetGuardian } from "../../api/guardians/useGetGuardian"
 import Input from "../Input/Input"
@@ -104,6 +105,7 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
   const [mutate, { isLoading }] = usePostNewStudent()
   const classes = useGetSchoolClasses()
   const isFormInvalid = name === ""
+  const { i18n } = useLingui()
 
   useCacheNewStudentFormData({
     name,
@@ -217,15 +219,9 @@ export const PageNewStudent: FC<Props> = ({ newGuardian }) => {
             value={gender}
             onChange={(e) => setGender(parseInt(e.target.value, 10))}
           >
-            <option value={Gender.NotSet}>
-              <Trans>Not Set</Trans>
-            </option>
-            <option value={Gender.Male}>
-              <Trans>Male</Trans>
-            </option>
-            <option value={Gender.Female}>
-              <Trans>Female</Trans>
-            </option>
+            <option value={Gender.NotSet}>{i18n._(t`Not Set`)}</option>
+            <option value={Gender.Male}>{i18n._(t`Male`)}</option>
+            <option value={Gender.Female}>{i18n._(t`Female`)}</option>
           </Select>
           <Input
             value={customId}

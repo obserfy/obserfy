@@ -1,20 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageError should render correctly 1`] = `
-.emotion-7 {
+.emotion-0 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-size: 16px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-7 {
+@media screen and (min-width: 40em) {
+  .emotion-0 {
     font-size: 20px;
   }
 }
 
-.emotion-6 {
+.emotion-1 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -27,13 +27,13 @@ exports[`PageError should render correctly 1`] = `
   -ms-flex-align: center;
   align-items: center;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
   -ms-flex-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
   height: 100vh;
 }
 
-.emotion-5 {
+.emotion-2 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -50,14 +50,14 @@ exports[`PageError should render correctly 1`] = `
   align-items: center;
 }
 
-.emotion-0 {
+.emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: bold;
   line-height: heading;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   text-rendering: optimizeLegibility;
   font-size: 24px;
   padding-top: 16px;
@@ -67,11 +67,11 @@ exports[`PageError should render correctly 1`] = `
   line-height: 1.2;
 }
 
-.emotion-1 {
+.emotion-4 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
@@ -81,7 +81,7 @@ exports[`PageError should render correctly 1`] = `
   text-align: center;
 }
 
-.emotion-4 {
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -91,12 +91,13 @@ exports[`PageError should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-2 {
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   display: inline-block;
   text-align: center;
@@ -109,7 +110,7 @@ exports[`PageError should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary,#00e399);
+  background-color: var(--theme-ui-colors-primary, #00e399);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -119,12 +120,12 @@ exports[`PageError should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary,#027c5b);
-  background-color: var(--theme-ui-colors-surface,#fff);
+  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  background-color: var(--theme-ui-colors-surface, #fff);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 16px;
@@ -139,41 +140,42 @@ exports[`PageError should render correctly 1`] = `
   -ms-flex-align: center;
   align-items: center;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
   -ms-flex-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
   touch-action: manipulation;
   box-shadow: none;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   border-style: solid;
   border-width: 1px;
   line-height: 1;
 }
 
-.emotion-2:disabled {
+.emotion-6:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-2:hover,
-.emotion-2:focus {
-  background-color: var(--theme-ui-colors-primaryLighter,rgba(0,120,86,0.12));
-  border-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-6:hover,
+.emotion-6:focus {
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,120,86,0.12));
+  border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-2:hover:disabled,
-.emotion-2:focus:disabled {
+.emotion-6:hover:disabled,
+.emotion-6:focus:disabled {
   background-color: transparent;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
 }
 
-.emotion-3 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   display: inline-block;
   text-align: center;
@@ -186,7 +188,7 @@ exports[`PageError should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary,#00e399);
+  background-color: var(--theme-ui-colors-primary, #00e399);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -196,12 +198,12 @@ exports[`PageError should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-onPrimary,#000);
-  background-color: var(--theme-ui-colors-primary,#00e399);
+  color: var(--theme-ui-colors-onPrimary, #000);
+  background-color: var(--theme-ui-colors-primary, #00e399);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
-  transition: background-color 125ms cubic-bezier(0.0,0.0,0.2,1);
+  -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 16px;
@@ -216,43 +218,43 @@ exports[`PageError should render correctly 1`] = `
   -ms-flex-align: center;
   align-items: center;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
   -ms-flex-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
   touch-action: manipulation;
-  box-shadow: rgba(27,31,35,0.1) 0px 1px 0px 0px,rgba(255,255,255,0.03) 0px 1px 0px 0px inset;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
+  box-shadow: rgba(27, 31, 35, 0.1) 0px 1px 0px 0px,rgba(255, 255, 255, 0.03) 0px 1px 0px 0px inset;
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   border-style: solid;
   border-width: 1px;
   line-height: 1;
   margin-left: 8px;
 }
 
-.emotion-3:disabled {
+.emotion-7:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-3:hover,
-.emotion-3:focus {
-  background-color: var(--theme-ui-colors-primaryDark,#00a06d);
+.emotion-7:hover,
+.emotion-7:focus {
+  background-color: var(--theme-ui-colors-primaryDark, #00a06d);
   outline: none;
 }
 
-.emotion-3:hover:disabled,
-.emotion-3:focus:disabled {
-  background-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-7:hover:disabled,
+.emotion-7:focus:disabled {
+  background-color: var(--theme-ui-colors-primary, #00e399);
 }
 
 <div>
   <div
-    class="emotion-7"
+    class="emotion-0"
   >
     <div
-      class="emotion-6"
+      class="emotion-1"
     >
       <div
-        class="emotion-5"
+        class="emotion-2"
       >
         <div
           class=" gatsby-image-wrapper"
@@ -261,7 +263,7 @@ exports[`PageError should render correctly 1`] = `
           <img
             alt=""
             aria-hidden="true"
-            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsSAAALEgHS3X78AAAD/UlEQVQ4y42UDVBUVRTH39u3H5EzLIX7ve8ts9RiKCOwESXgCExtRqn40YiYymRoUhKOktMMNDm2k6NgEgPpSoxhDjXIwshMWQmMVgvRyrrComkMHy7OYhghU+yy+073PvY167RKZ+bMO/e+c3/v3P+57xJE0Lbv3C0gQmxHUTHJx1sKdv07n7tuIzGvAQD3bG67sLC9252KxiI8LiouIS/1DJJ8zmeNnRl87iXHvfCwuoYWrrKN+dvesH7dPXWkphkSk5deTErUy0Lz1uRuePdobdNP/PjLtt6HFkkXFe+bsV3xQGxcoldEEWA0xpcHKxMVvrm7InNFJryz94Pag4frovD82yVlDwUa87dsDzSe62Jzcrf6oh6TwbPL0ixjk7Dm+uj08P4yM2hUijw+udM+Ma+MQi3N9OWsWg8fVtT7v/3hJvx4eWja/QdAXYMVoqTS7FCt5zMT8p+Rz5hezIHOrgHWNTTJjtwJsJZTzRCjN5hxUs3HZqz1ApIkOc0FAsEDgXfxx7EnJaewjdYL0H1lBMxHatnS/WWBfeUVU8bla0cZ/eLvUc77eIFEEsEtdFwfDwt0YphYLA4o5AqQRkayGg0NcYvi/Xbnr9DrGnHGJmSuWpSQkkEJSB1ecLy+SXT15gTpuOYJgj1EbzDGdggDRSLxrGyhjF2d+ypUHz/FWuobA4crq2HaB6MP2hqqUHB5wMOd0/7BO0Rnj5ubX4GBFEWxBoOBLXh9B3v2XAen5cFDVazNPgCuwbunuxzDlp6+W9Zf+t31PX3uUnv/WDwPbu++RX3XNU5+YmkVEAiE/woXhqrVmgDqKBz4qApGJwDQkQFUBYtjdIQAd/32n3Ox88bvPgSvGfMMScJVXz6no2RWq6VZlUrFbt5ayNadboHW8zb2q9aOWfRH+apPfOE/VtsAJz+3gt11Gzz3AGzOcXuDtTfl6jDEnDzTbuKBWOwpDJXLFQEMlUqlfhT7GEY3q9Fo/XKZLKBQqrzR0dFtCoWyZe2G/BsHzJVQdeIs2Pq9M20dv0FR8XsXMYwKQquDzfkbbR10uhigaQY0KGZ0ekhITofnstdDhmnTtmC+iNEqd6586ZW/jn3aBIW79jrQXCR+QYZUia8QEAqFXplM/o1Wy9So1eq3ElOzX8sw5Z9fvnIzpL+QN/lyXsnj/NbS0palPZOS3BItFdKhGvLQVOSlyBeHEzrdlLduaerz3tinni7A4/gE430NQXBBOChne/aUEkqlikINopYkpQvFkghemkrk15Bz15shLo5C2yYzs7LIcEXgLwgxPCLiUQI1hNAwT3AvVPSTZPByWIBcjfwRTkiRmEAwIisrm/jfRuvnFBCixfcZ+d+i/gGRtrVDp9quaAAAAABJRU5ErkJggg=="
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEfklEQVQ4y4WUC1CUVRTHz7fPyIZ1wH0/VEhQth3BlVBYKjDaVCrQsSTKx2hqEpIOoj3EsQgVpZKYZXhs1EjNUtbiyJRkIuMLcFU2cHkEw+yCMImPDEl57Xe69wtMR7Qz85977/ed87v3njvnAIzZ2g2beOX2o3C64Rp03EFYn5LGpG9/DzamfggrVm/kfD61fA+JS5dDXJwZPH8hPNQQkQBT4cfK41Oq63siyFq4ZVsmpKRtZk45OplZ+vmcz5e2mmg6Up1y3poYZj1YwSv+ygbLk1e9Zf+5vj8n/xCGzpl9Miw0QDq+2e7cQkhIXLbts4JDZ8fjyisb4FGmTUnbOnjinAcDg0OHBHxAozEk84CliAKF697elGsymfDd9F0FWfusk4vKjkHq5h2PBBqTV6z12o7UsYsTVw5LJvvjvMio4t6bmNDWPeDZ9kEWqpXypO27rJxzzYXr3MkfZQKNVndpYXwifpJbOlp1qh3PXHQPdPQOYoG1HCdLJAuMRuP/QsbNTHSOaND84mKsqWthm9032a6rXtZSUo7TAoKylyUsAsvn2TziM4lhGDoCj8d7KPAGzT1V2Jxw1mY/jvW/dWH2/gI2Y/sO79bM3H7jM0u6dQH6X4nPThogFvtwgc62vgmBjRQmEom8cpkcJb6+rFqtxeCZIaNnHU3Y0NzVGGiIeXmmITyaz2Om0oDC0kPCpo7rjLP1Cgd1tpGx9T/4XgoUCkUj0ilS9pXEVzG/8Gu2uNTm3bPvAA4MYzeAHHIOWGHN+jT4ox/hvKt3DNTHu9hyhWnquAquzqtQ4+jhgM9RIJ/PZ4OCgtjVa9azPxw5weUya28ee8bhwubOG2V1Tk+x49Jl+3lXT6njUk/GBVdvCIX+edsL1fWX+cfq+pgvig/zgICEBNhMoSqV2kteFD/ak4fd1xHbugaQBLEt7n5s9dzCtu6/sb3nDv5++TY2tl8bJnBL7xW3uOq0G5q6ECylP929dua/eRSPaDRaVqlUsm+sXMdayyrwcFUt+93hEyOkoobzi74Z3Z9nRUuJDWudbmwn4NrGvgsH7Q3hTR6cVvJttXkcSJPdT6EymdxLoRKJZJTMh3W6qSNqtWZUJpV65QrlkL+/f6VcrqhYsiy5fefHOZiTV4a1rqFB+y8tmJL2/kkK449B88ce545SqUICQgJCOtfqpqE+NBLnxSzBaPPrq1TTZ1N/oU6j2LBw0Uu3STniuo3pTvLNl/5g7jklbSEoEAiGpFLZUY1GZ1GpVO+ERix4M9qcXBX5/GtoeiHpZnzSZj8QykDq9wRERUVGPR0+p8JfItDqQ2bczeE4NIIog0gfGxsH5HSgVCjAMPdZiE/eCiZz0tLZEXFDgbPmrtZM10OIwSgOCzWAzE/MBRP4feXD3LvYsiUDFAolnzwQ/6kwk0Ak9uErNIFcnyVqJeLaW1BwMJ9cm4mJjWViYxc8UDV0BwGF+/g8DiSPoNY9CcGG+aDUzmDGmsMkIhXRY1wihSIgMKCwiYATN8sAPQiEYiLR/RdimAd8/wGdhf2zu9ZpxgAAAABJRU5ErkJggg=="
             style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 1; transition-delay: 500ms;"
           />
           <picture>
@@ -299,23 +301,23 @@ exports[`PageError should render correctly 1`] = `
           </noscript>
         </div>
         <h5
-          class="emotion-0"
+          class="emotion-3"
         >
           Oops, Something went wrong
         </h5>
         <p
-          class="emotion-1"
+          class="emotion-4"
         >
           Sorry, please try reloading the page.
         </p>
         <div
-          class="emotion-4"
+          class="emotion-5"
         >
           <a
             href="https://feedback.obserfy.com/bug-reports/create"
           >
             <button
-              class="emotion-2"
+              class="emotion-6"
             >
               Report
             </button>
@@ -324,7 +326,7 @@ exports[`PageError should render correctly 1`] = `
             href="/"
           >
             <button
-              class="emotion-3"
+              class="emotion-7"
             >
               Reload
             </button>

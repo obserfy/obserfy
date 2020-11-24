@@ -8,10 +8,11 @@ import usePostNewImage from "../../api/schools/usePostNewImage"
 import { LoadingIndicator } from "../LoadingIndicator/LoadingIndicator"
 import useGetImage from "../../api/useGetImage"
 
-interface Props extends Omit<BoxProps, "onChange" | "value"> {
+interface Props extends Omit<BoxProps, "onChange" | "value" | "css"> {
   onChange: (imageId: string) => void
   value: string
 }
+
 export const ProfilePicker: FC<Props> = ({ value, onChange, ...props }) => {
   const [mutate, { status }] = usePostNewImage()
   const image = useGetImage(value)

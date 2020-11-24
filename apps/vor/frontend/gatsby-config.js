@@ -1,6 +1,4 @@
 /* eslint-disable @typescript-eslint/camelcase,@typescript-eslint/no-var-requires,global-require */
-require("dotenv").config({ path: `.env` })
-
 const sentryPlugin =
   process.env.NODE_ENV === "production"
     ? [
@@ -97,7 +95,6 @@ module.exports = {
       },
     },
     // `gatsby-plugin-remove-serviceworker`,
-    `gatsby-plugin-emotion`,
     `gatsby-plugin-portal`,
     {
       resolve: `gatsby-plugin-segment-js`,
@@ -155,7 +152,6 @@ module.exports = {
     //   resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
     //   options: {
     //     analyzerPort: 3300,
-    //     disable: true,
     //   },
     // },
   ],

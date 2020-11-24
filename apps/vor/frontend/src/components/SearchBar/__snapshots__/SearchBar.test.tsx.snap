@@ -1,20 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SearchBar should render correctly 1`] = `
-.emotion-3 {
+.emotion-0 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   font-size: 16px;
 }
 
-@media screen and (min-width:40em) {
-  .emotion-3 {
+@media screen and (min-width: 40em) {
+  .emotion-0 {
     font-size: 20px;
   }
 }
 
-.emotion-2 {
+.emotion-1 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -23,14 +23,14 @@ exports[`SearchBar should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-size: 14px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: var(--theme-ui-colors-textMediumEmphasis,rgba(0,0,0,0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -41,7 +41,7 @@ exports[`SearchBar should render correctly 1`] = `
   font-size: 12px;
 }
 
-.emotion-1 {
+.emotion-2 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -55,7 +55,7 @@ exports[`SearchBar should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-0 {
+.emotion-3 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -64,6 +64,7 @@ exports[`SearchBar should render correctly 1`] = `
   padding: 8px;
   -webkit-appearance: none;
   -moz-appearance: none;
+  -ms-appearance: none;
   appearance: none;
   font-size: inherit;
   line-height: inherit;
@@ -74,58 +75,58 @@ exports[`SearchBar should render correctly 1`] = `
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface,#fff);
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface, #fff);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text,#37383c);
+  color: var(--theme-ui-colors-text, #37383c);
   padding-top: 8px;
   padding-bottom: 8px;
-  background-color: var(--theme-ui-colors-surface,#fff);
+  background-color: var(--theme-ui-colors-surface, #fff);
   width: 100%;
   font-size: 14px;
 }
 
-.emotion-0:hover,
-.emotion-0:focus {
-  border-color: var(--theme-ui-colors-primary,#00e399);
+.emotion-3:hover,
+.emotion-3:focus {
+  border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-0::-webkit-input-placeholder {
+.emotion-3::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-0::-moz-placeholder {
+.emotion-3::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-0:-ms-input-placeholder {
+.emotion-3:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-0::placeholder {
+.emotion-3::placeholder {
   font-style: italic;
 }
 
-.emotion-0:disabled {
+.emotion-3:disabled {
   opacity: 0.68;
-  border-color: var(--theme-ui-colors-border,rgba(0,0,0,.1));
-  color: var(--theme-ui-colors-textDisabled,rgba(0,0,0,0.38));
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
 }
 
 <div>
   <div
-    class="emotion-3"
+    class="emotion-0"
   >
     <label
-      class="emotion-2"
+      class="emotion-1"
     >
       <div
-        class="emotion-1"
+        class="emotion-2"
       >
         <input
-          class="emotion-0"
+          class="emotion-3"
           name="name"
           placeholder="Search"
           value=""
