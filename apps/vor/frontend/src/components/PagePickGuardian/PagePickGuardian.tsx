@@ -1,6 +1,7 @@
 import React, { FC, useState } from "react"
 import { Box, Button, Flex, Card } from "theme-ui"
 import { Trans, t } from "@lingui/macro"
+import { useLingui } from "@lingui/react"
 import { navigate } from "../Link/Link"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { NEW_STUDENT_URL } from "../../routes"
@@ -22,6 +23,7 @@ import TextArea from "../TextArea/TextArea"
 import GuardianRelationshipPickerDialog from "../GuardianRelationshipPickerDialog/GuardianRelationshipPickerDialog"
 
 export const PagePickGuardian: FC = () => {
+  const { i18n } = useLingui()
   const guardians = useGetSchoolGuardians()
 
   const [name, setName] = useState("")
@@ -147,7 +149,7 @@ export const PagePickGuardian: FC = () => {
           >
             <Icon as={PlusIcon} mt="5px" mr={3} fill="primary" />
             <Typography.Body>
-              <Trans>Create</Trans> {name || t`new guardian`}
+              <Trans>Create</Trans> {name || i18n._(t`new guardian`)}
             </Typography.Body>
           </Card>
         </>

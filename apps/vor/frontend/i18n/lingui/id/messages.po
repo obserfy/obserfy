@@ -1,3 +1,5 @@
+msgid ""
+msgstr ""
 "POT-Creation-Date: 2020-09-21 01:31+0700\n"
 "Mime-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -123,7 +125,7 @@ msgstr "Kelas"
 msgid "Classes"
 msgstr "Kelas"
 
-#: src/components/PagePickGuardian/PagePickGuardian.tsx:99
+#: src/components/PagePickGuardian/PagePickGuardian.tsx:100
 msgid "Create"
 msgstr "Buat"
 
@@ -640,7 +642,7 @@ msgstr "Lebih Lanjut"
 msgid "Select Students"
 msgstr "Pilih Murid"
 
-#: src/components/PagePickGuardian/PagePickGuardian.tsx:82
+#: src/components/PagePickGuardian/PagePickGuardian.tsx:84
 msgid "Select a guardian or create one"
 msgstr "Pilih wali atau buat baru"
 
@@ -868,7 +870,7 @@ msgstr "untuk Guru"
 msgid "inactive"
 msgstr "tidak aktif"
 
-#: src/components/PagePickGuardian/PagePickGuardian.tsx:99
+#: src/components/PagePickGuardian/PagePickGuardian.tsx:100
 msgid "new guardian"
 msgstr "wali baru"
 
