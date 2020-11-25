@@ -1,5 +1,6 @@
 import React, { FC, useState } from "react"
 import { Box, Button, Card, Flex } from "theme-ui"
+import { Trans } from "@lingui/macro"
 import Typography from "../Typography/Typography"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import { useGetCurriculum } from "../../api/useGetCurriculum"
@@ -101,32 +102,38 @@ const SetupCurriculum: FC = () => {
   return (
     <>
       <Typography.H6 my={2} sx={{ textAlign: "center" }}>
-        Setup curriculum
+        <Trans>Setup curriculum</Trans>
       </Typography.H6>
       <Flex p={3} sx={{ flexFlow: ["column", "row"] }}>
         <Card p={3} mr={[0, 3]} mb={[3, 0]} sx={{ width: [undefined, "50%"] }}>
           <Typography.H6 mb={2}>Montessori</Typography.H6>
           <Typography.Body mb={3}>
-            Start with a basic Montessori Curriculum that you can modify to your
-            needs.
+            <Trans>
+              Start with a basic Montessori Curriculum that you can modify to
+              your needs.
+            </Trans>
           </Typography.Body>
           <Button
             variant="outline"
             onClick={() => postNewCurriculum({ template: "montessori" })}
           >
-            Use Montessori
+            <Trans>Use Montessori</Trans>
           </Button>
         </Card>
         <Card p={3} sx={{ width: [undefined, "50%"] }}>
-          <Typography.H6 mb={2}>Custom</Typography.H6>
+          <Typography.H6 mb={2}>
+            <Trans>Custom</Trans>
+          </Typography.H6>
           <Typography.Body mb={3}>
-            Start with a blank curriculum that you can customize from scratch.
+            <Trans>
+              Start with a blank curriculum that you can customize from scratch.
+            </Trans>
           </Typography.Body>
           <Button
             variant="outline"
             onClick={() => setShowCustomCurriculumDialog(true)}
           >
-            Use Custom
+            <Trans>Use Custom</Trans>
           </Button>
         </Card>
       </Flex>
@@ -148,14 +155,16 @@ const CurriculumAreas: FC<{
   return (
     <Box mx={[0, 3]} mt={3}>
       <Flex mx={[3, 0]} mb={2} sx={{ alignItems: "center" }}>
-        <Typography.H6>Areas</Typography.H6>
+        <Typography.H6>
+          <Trans>Areas</Trans>
+        </Typography.H6>
         <Button
           ml="auto"
           variant="outline"
           onClick={() => setShowNewAreaDialog(true)}
         >
           <Icon as={PlusIcon} mr={2} />
-          New Area
+          <Trans>New Area</Trans>
         </Button>
       </Flex>
       {areas.data?.map((area) => (

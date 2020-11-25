@@ -89,7 +89,11 @@ msgstr "Anda yakin ingin pasang gambar ini profil gambar?"
 
 #: src/components/PageObservationDetails/ObservationMetaCard.tsx:58
 msgid "Area"
-msgstr "Area"
+msgstr "Bidang"
+
+#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:99
+msgid "Areas"
+msgstr "Bidang"
 
 #: src/components/PageNewObservation/PageNewObservation.tsx:111
 msgid "Attach Images"
@@ -113,7 +117,11 @@ msgstr "Batalkan Paket"
 
 #: src/components/PageStudentPlanDetails/LessonPlanMetaCard.tsx:57
 msgid "Change Area"
-msgstr "Ubah Area"
+msgstr "Ubah Bidang"
+
+#: src/components/NewCustomCurriculumDialog/NewCustomCurriculumDialog.tsx:33
+msgid "Choose a Name"
+msgstr "Pilih Nama"
 
 #: src/components/PageAdmin/PageAdmin.tsx:54
 msgid "Class"
@@ -157,9 +165,21 @@ msgstr "Wali saat ini"
 msgid "Curriculum"
 msgstr "Kurikulum"
 
+#: src/components/NewCustomCurriculumDialog/NewCustomCurriculumDialog.tsx:33
+msgid "Curriculum Name"
+msgstr "Nama Kurikulum"
+
 #: src/components/PageStudentOverview/PageStudentOverview.tsx:80
 msgid "Curriculum Progress"
 msgstr "Perkembangan Kurikulum"
+
+#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:78
+msgid "Custom"
+msgstr "Kustom"
+
+#: src/components/NewCustomCurriculumDialog/NewCustomCurriculumDialog.tsx:23
+msgid "Custom Curriculum"
+msgstr "Kustom Kurikulum"
 
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:139
 msgid "Daily"
@@ -225,7 +245,7 @@ msgstr "Ubah"
 
 #: src/components/PageObservationDetails/ObservationMetaCard.tsx:60
 msgid "Edit Area"
-msgstr "Ubah Area"
+msgstr "Ubah Bidang"
 
 #: src/components/PageStudentPlanDetails/LessonPlanDescriptionCard.tsx:30
 msgid "Edit Description"
@@ -437,6 +457,10 @@ msgstr "Nama (Wajib)"
 msgid "New"
 msgstr "Baru"
 
+#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:103
+msgid "New Area"
+msgstr "Bidang Baru"
+
 #: src/components/PageClassSettings/PageClassSettings.tsx:68
 #: src/components/PageNewClass/PageNewClass.tsx:54
 msgid "New Class"
@@ -610,7 +634,7 @@ msgstr "Rekam observasi"
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:126
 #: src/components/PageStudentPlanDetails/LessonPlanMetaCard.tsx:55
 msgid "Related Area"
-msgstr "Area Terkait"
+msgstr "Bidang Terkait"
 
 #: src/components/PageNewGuardian/PageNewGuardian.tsx:45
 msgid "Relationship"
@@ -716,6 +740,10 @@ msgstr "Pasang sebagai profil?"
 msgid "Settings"
 msgstr "Pengaturan"
 
+#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:62
+msgid "Setup curriculum"
+msgstr "Atur kurikulum"
+
 #: src/components/PageSupport/PageSupport.tsx:55
 msgid "Shoot us an e-mail"
 msgstr "Kirim e-mail ke kami"
@@ -744,6 +772,14 @@ msgstr "Paket Standar"
 #: src/components/PageNewClass/PageNewClass.tsx:59
 msgid "Start Time"
 msgstr "Waktu Mulai"
+
+#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:68
+msgid "Start with a basic Montessori Curriculum that you can modify to your needs."
+msgstr "Mulai dengan Kurikulum Montessori dasar yang dapat Anda modifikasi sesuai kebutuhan."
+
+#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:80
+msgid "Start with a blank curriculum that you can customize from scratch."
+msgstr "Mulai dengan kurikulum kosong yang dapat Anda kustom dari awal."
 
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:265
 msgid "Status"
@@ -840,6 +876,14 @@ msgstr "Murid tak terbatas"
 #: src/components/PageStudentImages/PageStudentImages.tsx:62
 msgid "Upload Photo"
 msgstr "Unggah Foto"
+
+#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:85
+msgid "Use Custom"
+msgstr "Gunakan Kustom"
+
+#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:74
+msgid "Use Montessori"
+msgstr "Gunakan Montessori"
 
 #: src/components/PageSubscription/PageSubscription.tsx:91
 msgid "User/month"
