@@ -26622,17 +26622,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
+        ["npm:14.14.10", {
+          "packageLocation": "./.yarn/cache/@types-node-npm-14.14.10-5b464ba9d4-b793aa15e8.zip/node_modules/@types/node/",
+          "packageDependencies": [
+            ["@types/node", "npm:14.14.10"]
+          ],
+          "linkType": "HARD",
+        }],
         ["npm:14.14.6", {
           "packageLocation": "./.yarn/cache/@types-node-npm-14.14.6-6c20289547-9b06b04ab2.zip/node_modules/@types/node/",
           "packageDependencies": [
             ["@types/node", "npm:14.14.6"]
-          ],
-          "linkType": "HARD",
-        }],
-        ["npm:14.14.9", {
-          "packageLocation": "./.yarn/cache/@types-node-npm-14.14.9-7ed4d3e449-df0405c708.zip/node_modules/@types/node/",
-          "packageDependencies": [
-            ["@types/node", "npm:14.14.9"]
           ],
           "linkType": "HARD",
         }],
@@ -35221,7 +35221,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@cypress/code-coverage", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:3.8.5"],
             ["@cypress/webpack-preprocessor", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:5.4.11"],
             ["@types/faker", "npm:5.1.4"],
-            ["@types/node", "npm:14.14.9"],
+            ["@types/node", "npm:14.14.10"],
             ["@typescript-eslint/eslint-plugin", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:4.8.1"],
             ["@typescript-eslint/parser", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:4.8.1"],
             ["babel-loader", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:8.2.1"],
@@ -38439,7 +38439,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/minio", "npm:7.0.6"],
             ["@types/mixpanel-browser", "npm:2.35.4"],
             ["@types/nanoid", "npm:2.1.0"],
-            ["@types/node", "npm:14.14.9"],
+            ["@types/node", "npm:14.14.10"],
             ["@types/pg", "npm:7.14.7"],
             ["@types/pino", "npm:6.3.4"],
             ["@types/react", "npm:17.0.0"],
