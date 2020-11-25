@@ -18492,6 +18492,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fast-xml-parser@npm:^3.17.4":
+  version: 3.17.4
+  resolution: "fast-xml-parser@npm:3.17.4"
+  bin:
+    xml2js: ./cli.js
+  checksum: 382a4b84044f1f17c8dc94fdbceae38debc88b4700a2f782f44b779651fbaccdabf12edf981bb8381737a72d0796b5678616ce9fa190441535ef8ade106d415c
+  languageName: node
+  linkType: hard
+
 "fastest-levenshtein@npm:^1.0.12":
   version: 1.0.12
   resolution: "fastest-levenshtein@npm:1.0.12"
@@ -19547,7 +19556,7 @@ fsevents@^1.2.7:
     io-ts: 2.2.13
     io-ts-types: 0.5.12
     lqip-loader: 2.2.1
-    minio: 7.0.16
+    minio: 7.0.17
     monocle-ts: 2.3.3
     nanoid: 3.1.18
     newtype-ts: 0.3.4
@@ -26316,13 +26325,14 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"minio@npm:7.0.16":
-  version: 7.0.16
-  resolution: "minio@npm:7.0.16"
+"minio@npm:7.0.17":
+  version: 7.0.17
+  resolution: "minio@npm:7.0.17"
   dependencies:
     async: ^3.1.0
     block-stream2: ^2.0.0
     es6-error: ^4.1.1
+    fast-xml-parser: ^3.17.4
     json-stream: ^1.0.0
     lodash: ^4.14.2
     mime-types: ^2.1.14
@@ -26330,8 +26340,7 @@ fsevents@^1.2.7:
     querystring: 0.2.0
     through2: ^3.0.1
     xml: ^1.0.0
-    xml2js: ^0.4.15
-  checksum: e807b190a32beaac377f746b89b862a79f666d97aa8b919f689b636e2242f0007b1738bf29b9ecd47a642bcb740db40ca0009177a4fcffe4ecb9162eb2575df5
+  checksum: bbed7c25b851d32d9bc5a960d1ee406d5d8c82c654769dd5c584be2c13c3870368e677e028e913f768730cbd9296dd9c515f23302efdf2de0ef55b3c1998b4be
   languageName: node
   linkType: hard
 
@@ -38687,7 +38696,7 @@ typescript@^4.0.0:
   languageName: node
   linkType: hard
 
-"xml2js@npm:^0.4.15, xml2js@npm:^0.4.5":
+"xml2js@npm:^0.4.5":
   version: 0.4.23
   resolution: "xml2js@npm:0.4.23"
   dependencies:
