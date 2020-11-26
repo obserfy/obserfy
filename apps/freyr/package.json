@@ -10,7 +10,7 @@
     "@lingui/macro": "3.2.3",
     "@lingui/react": "3.2.3",
     "@tailwindcss/typography": "0.3.1",
-    "babel-plugin-macros": "2.8.0",
+    "babel-plugin-macros": "3.0.0",
     "gatsby": "2.27.1",
     "gatsby-image": "2.6.0",
     "gatsby-plugin-canonical-urls": "2.5.0",
