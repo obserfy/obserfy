@@ -18,9 +18,7 @@ const useGetChildren = () => {
       const newId = response[0]?.id
       if (!router.query.childId && newId) {
         const path = router.pathname
-
         const redirectUrl = `${path}?childId=${newId}`
-        console.log(redirectUrl)
         await router.replace(redirectUrl)
       }
     },
