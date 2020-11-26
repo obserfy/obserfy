@@ -9086,7 +9086,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jest@npm:26.0.15, @types/jest@npm:^26.0.15":
+"@types/jest@npm:26.0.15":
   version: 26.0.15
   resolution: "@types/jest@npm:26.0.15"
   dependencies:
@@ -19522,7 +19522,7 @@ fsevents@^1.2.7:
     "@tailwindcss/typography": 0.3.1
     "@types/body-scroll-lock": 2.6.1
     "@types/formidable": 1.0.31
-    "@types/jest": ^26.0.15
+    "@types/jest": 26.0.15
     "@types/minio": 7.0.6
     "@types/mixpanel-browser": 2.35.4
     "@types/nanoid": 2.1.0
@@ -19536,7 +19536,7 @@ fsevents@^1.2.7:
     "@typescript-eslint/parser": 4.8.1
     body-scroll-lock: 3.1.5
     dayjs: 1.9.6
-    dotenv: ^8.2.0
+    dotenv: 8.2.0
     eslint: 7.14.0
     eslint-config-airbnb-typescript: 12.0.0
     eslint-config-prettier: 6.15.0
@@ -19557,7 +19557,7 @@ fsevents@^1.2.7:
     img-loader: 3.0.2
     io-ts: 2.2.13
     io-ts-types: 0.5.12
-    jest: ^26.6.3
+    jest: 26.6.3
     lqip-loader: 2.2.1
     minio: 7.0.17
     monocle-ts: 2.3.3
@@ -19567,7 +19567,7 @@ fsevents@^1.2.7:
     next-compose-plugins: 2.2.1
     next-optimized-images: 3.0.0-canary.10
     next-pwa: 3.1.5
-    node-mocks-http: ^1.9.0
+    node-mocks-http: 1.9.0
     optimized-images-loader: 0.4.0
     pg: 8.5.1
     pino: 6.7.0
@@ -24226,7 +24226,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"jest@npm:26.6.3, jest@npm:^26.6.3":
+"jest@npm:26.6.3":
   version: 26.6.3
   resolution: "jest@npm:26.6.3"
   dependencies:
@@ -27140,7 +27140,7 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"node-mocks-http@npm:^1.9.0":
+"node-mocks-http@npm:1.9.0":
   version: 1.9.0
   resolution: "node-mocks-http@npm:1.9.0"
   dependencies:
