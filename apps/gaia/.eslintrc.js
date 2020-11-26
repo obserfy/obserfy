@@ -20,8 +20,6 @@ module.exports = {
     },
   ],
   rules: {
-    // api, db, and server related stuffs need to tdo console.log
-    "no-console": "off",
     "global-require": 0,
     "react/button-has-type": 0,
     "no-undef": 0,
