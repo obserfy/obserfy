@@ -27,6 +27,8 @@ module.exports = {
     "react/style-prop-object": 0,
     "react/jsx-props-no-spreading": 0,
     "jsx-a11y/anchor-is-valid": 0,
+    // node-mocks-http uses dangling
+    "no-underscore-dangle": 0,
     // Recommended for immer.
     "no-param-reassign": [
       "error",
