@@ -6,11 +6,7 @@ describe("test student edit", () => {
   let schoolName
 
   beforeEach(() => {
-    window.navigator.serviceWorker.getRegistrations().then((registrations) => {
-      registrations.forEach((registration) => {
-        registration.unregister()
-      })
-    })
+    cy.clearSW()
 
     name = faker.name.firstName()
     email = faker.internet.email()
