@@ -7130,7 +7130,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/browser@npm:5.27.6":
+"@sentry/browser@npm:5.27.6, @sentry/browser@npm:^5.21.3":
   version: 5.27.6
   resolution: "@sentry/browser@npm:5.27.6"
   dependencies:
@@ -7139,6 +7139,21 @@ __metadata:
     "@sentry/utils": 5.27.6
     tslib: ^1.9.3
   checksum: fdfb99db04de943944376efc8e9d60ad19d749b2ad231988961d94f8c86e5d8e95e836026e1b967425c4113b6ca27ecf97b4cb4eaf5dde11ee72a8aec70bc59a
+  languageName: node
+  linkType: hard
+
+"@sentry/cli@npm:^1.58.0":
+  version: 1.59.0
+  resolution: "@sentry/cli@npm:1.59.0"
+  dependencies:
+    https-proxy-agent: ^5.0.0
+    mkdirp: ^0.5.5
+    node-fetch: ^2.6.0
+    progress: ^2.0.3
+    proxy-from-env: ^1.1.0
+  bin:
+    sentry-cli: bin/sentry-cli
+  checksum: 93c43d233236a537adbf142b81c31cf7ece226be8e780c828d2869a8de2d4b125d68a0957cf5576bec4f7c03db91bca2bed42d423b6ac28e1c21be8f186948d0
   languageName: node
   linkType: hard
 
@@ -7178,6 +7193,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sentry/integrations@npm:^5.21.3":
+  version: 5.27.6
+  resolution: "@sentry/integrations@npm:5.27.6"
+  dependencies:
+    "@sentry/types": 5.27.6
+    "@sentry/utils": 5.27.6
+    localforage: 1.8.1
+    tslib: ^1.9.3
+  checksum: ffb348b0a511eeacc4d38468c64ff8f0002b4963c254b36a86984e02cd9fcc8fead0933db918a183d53964cd83850bb0d93f205ac6568f23bf4779098192f115
+  languageName: node
+  linkType: hard
+
 "@sentry/minimal@npm:5.27.6":
   version: 5.27.6
   resolution: "@sentry/minimal@npm:5.27.6"
@@ -7186,6 +7213,23 @@ __metadata:
     "@sentry/types": 5.27.6
     tslib: ^1.9.3
   checksum: bbad97d9051400b41650c7fb6d1c13cde0e8491216ca23e4bc541d8acfd4218ea97f32f6c8973c7021a6d845d586eeaaa19e8596343d01913961b066d17ce913
+  languageName: node
+  linkType: hard
+
+"@sentry/node@npm:^5.21.3":
+  version: 5.27.6
+  resolution: "@sentry/node@npm:5.27.6"
+  dependencies:
+    "@sentry/core": 5.27.6
+    "@sentry/hub": 5.27.6
+    "@sentry/tracing": 5.27.6
+    "@sentry/types": 5.27.6
+    "@sentry/utils": 5.27.6
+    cookie: ^0.4.1
+    https-proxy-agent: ^5.0.0
+    lru_map: ^0.3.3
+    tslib: ^1.9.3
+  checksum: f7e9ecbb104facb3867ca656e9c260f0e17565f7f1c9f9f77f8f7b26472d2b762c07091fed464f9b2310cd8d95cb6057ee649228cc1235c73e33cbb5f64284ac
   languageName: node
   linkType: hard
 
@@ -7233,6 +7277,15 @@ __metadata:
     "@sentry/types": 5.27.6
     tslib: ^1.9.3
   checksum: ea0c9c04104e715a10be0f08f708d534e00084464d67c85f17a5ce83e2b2177cddc1de4e312f80e41da2648b950448870bcb3690748757ae010a7b21ed3a0d58
+  languageName: node
+  linkType: hard
+
+"@sentry/webpack-plugin@npm:^1.12.1":
+  version: 1.13.0
+  resolution: "@sentry/webpack-plugin@npm:1.13.0"
+  dependencies:
+    "@sentry/cli": ^1.58.0
+  checksum: c7091db78123a4d2a326556ddde82a1cdcf537943a637e4254b8c8fc03494e8ecf3c7732a58684a8fa8b3251980a28b1324f62196e82d64d5008264adb993c63
   languageName: node
   linkType: hard
 
@@ -10200,6 +10253,13 @@ __metadata:
   version: 4.2.2
   resolution: "@xtuc/long@npm:4.2.2"
   checksum: ec09a359f98e9f8c47bf6c965e73b520a1a65e93f1febf6472babc8b6b0b425a2084452be103da5be11aec8c502ecfa29400713d55ef774579d04f691db44a2d
+  languageName: node
+  linkType: hard
+
+"@zeit/next-source-maps@npm:0.0.4-canary.1":
+  version: 0.0.4-canary.1
+  resolution: "@zeit/next-source-maps@npm:0.0.4-canary.1"
+  checksum: 29a42ff0d81d508c2b03eefeeb32948ab085faa6ab93aa760a1c705a6eb70858352f705a78e8c4f1f9e1ff68f4f6f5b694fe665836b78a845ad43dd030920ced
   languageName: node
   linkType: hard
 
@@ -19519,6 +19579,10 @@ fsevents@^1.2.7:
     "@auth0/nextjs-auth0": 0.16.0
     "@prefresh/next": 1.4.1
     "@segment/snippet": 4.13.1
+    "@sentry/browser": ^5.21.3
+    "@sentry/integrations": ^5.21.3
+    "@sentry/node": ^5.21.3
+    "@sentry/webpack-plugin": ^1.12.1
     "@tailwindcss/typography": 0.3.1
     "@types/body-scroll-lock": 2.6.1
     "@types/formidable": 1.0.31
@@ -19534,6 +19598,7 @@ fsevents@^1.2.7:
     "@types/uuid": 8.3.0
     "@typescript-eslint/eslint-plugin": 4.8.1
     "@typescript-eslint/parser": 4.8.1
+    "@zeit/next-source-maps": 0.0.4-canary.1
     body-scroll-lock: 3.1.5
     dayjs: 1.9.6
     dotenv: ^8.2.0
@@ -21902,7 +21967,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"https-proxy-agent@npm:5.0.0":
+"https-proxy-agent@npm:5.0.0, https-proxy-agent@npm:^5.0.0":
   version: 5.0.0
   resolution: "https-proxy-agent@npm:5.0.0"
   dependencies:
@@ -22139,6 +22204,13 @@ fsevents@^1.2.7:
   peerDependencies:
     imagemin: ^5.0.0 || ^6.0.0 || ^7.0.0
   checksum: bc50c7d890f10dad06399a4437d5d57363c9c65ab0065c8d51858662397298042707a82ba6b9feed8802d714e7e9b970ea18e4535c90c38312a8610a0d07c3a1
+  languageName: node
+  linkType: hard
+
+"immediate@npm:~3.0.5":
+  version: 3.0.6
+  resolution: "immediate@npm:3.0.6"
+  checksum: e86d4d20e2da86f9a4629d9aee9d56dfae7d3a7ace7f569b0538f2ec2570d86b3cbdc52c546d23be2cfd28306670f44676fc833cd96d9506659b8c5ab8202ca4
   languageName: node
   linkType: hard
 
@@ -24959,6 +25031,15 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"lie@npm:3.1.1":
+  version: 3.1.1
+  resolution: "lie@npm:3.1.1"
+  dependencies:
+    immediate: ~3.0.5
+  checksum: 33a07ffeb7eb5aaec59a5f7a72ba7e6a2ce9d011bd7894f36ed11e2da43f076467019e5f9826c5864500c6a792450aa54b263f31cef0a1774553851dce8a501c
+  languageName: node
+  linkType: hard
+
 "line-column@npm:^1.0.2":
   version: 1.0.2
   resolution: "line-column@npm:1.0.2"
@@ -25149,6 +25230,15 @@ fsevents@^1.2.7:
     emojis-list: ^3.0.0
     json5: ^1.0.1
   checksum: 9fd690e57ad78d32ff2942383b4a7a175eba575280ba5aca3b4d03183fec34aa0db314f49bd3301adf7e60b02471644161bf53149e8f2d18fd6a52627e95a927
+  languageName: node
+  linkType: hard
+
+"localforage@npm:1.8.1":
+  version: 1.8.1
+  resolution: "localforage@npm:1.8.1"
+  dependencies:
+    lie: 3.1.1
+  checksum: 7530b213d2b4c3e40455bc2b69f241f9e8cd7b643e9fc4c67eb522f3a29f44306fc800a30a5513c0444788606e3c72404d9fe68b0cf20e7bf405efad2de449b1
   languageName: node
   linkType: hard
 
@@ -25653,6 +25743,13 @@ fsevents@^1.2.7:
   dependencies:
     yallist: ^3.0.2
   checksum: ffd9a280fa3400e731265db502270c2a65432f3fbfac23d480c72f675ec16dbbeddd57d4baf7aca70ab7af49949fad1bcaaf5a5e6e1cfed7316de71bb5dddf1c
+  languageName: node
+  linkType: hard
+
+"lru_map@npm:^0.3.3":
+  version: 0.3.3
+  resolution: "lru_map@npm:0.3.3"
+  checksum: c1d5347da0658d31f9440496c97e87cc67f201f79e46e9f83dd4cf3766cc93f021c6226f900f096d0e357913cad290c7d464ac632e5e124efbdb2af1da08774c
   languageName: node
   linkType: hard
 
@@ -26468,7 +26565,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"mkdirp@npm:^0.5, mkdirp@npm:^0.5.0, mkdirp@npm:^0.5.1, mkdirp@npm:^0.5.3, mkdirp@npm:^0.5.4, mkdirp@npm:~0.5.1, mkdirp@npm:~0.5.x":
+"mkdirp@npm:^0.5, mkdirp@npm:^0.5.0, mkdirp@npm:^0.5.1, mkdirp@npm:^0.5.3, mkdirp@npm:^0.5.4, mkdirp@npm:^0.5.5, mkdirp@npm:~0.5.1, mkdirp@npm:~0.5.x":
   version: 0.5.5
   resolution: "mkdirp@npm:0.5.5"
   dependencies:
@@ -30695,7 +30792,7 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"proxy-from-env@npm:^1.0.0":
+"proxy-from-env@npm:^1.0.0, proxy-from-env@npm:^1.1.0":
   version: 1.1.0
   resolution: "proxy-from-env@npm:1.1.0"
   checksum: 6459372a57f3e8ef5211f7847ca2fffabcdd6490005892fcc0dcd62fe2b3551900c8a07fad7df9de3897547b1ab4ac7a7197964cd6fa7e76303caa4936bfaf32
