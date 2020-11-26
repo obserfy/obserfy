@@ -2,9 +2,9 @@ import { NextApiHandler, NextApiRequest, NextApiResponse } from "next"
 import * as Sentry from "@sentry/node"
 import logger from "../logger"
 import auth0 from "./auth0"
-import { sentryInit } from "./sentry"
+import { initSentry } from "./sentry"
 
-sentryInit()
+initSentry()
 
 export const getFirstQueryValue = (
   req: NextApiRequest,
