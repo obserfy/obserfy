@@ -8741,14 +8741,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@theme-ui/match-media@npm:0.5.0-alpha.0":
-  version: 0.5.0-alpha.0
-  resolution: "@theme-ui/match-media@npm:0.5.0-alpha.0"
+"@theme-ui/match-media@npm:0.5.0-alpha.1":
+  version: 0.5.0-alpha.1
+  resolution: "@theme-ui/match-media@npm:0.5.0-alpha.1"
   peerDependencies:
-    "@theme-ui/core": ^0.4.0-alpha.0
-    "@theme-ui/css": ^0.4.0-alpha.0
-    react: ^16.9.0
-  checksum: 6c0f9fe14dc48845ddd7e7a49ec7b578d23b2b75f987c28c8ec8ab0a71851d6e589ac693fc559c123ef5281ecdd76dddc255335ae9d4a8d118c8b50810ffc4fa
+    "@theme-ui/core": ^0.5.0-alpha.0
+    "@theme-ui/css": ^0.5.0-alpha.0
+    react: ^16.14.0 || ^17.0.0
+  checksum: abc1012cc0ac679a1d6a6e536e9f5a3a6857e227d59e41e40fea1d9bb115f2fec2fb5975724bb1acfc379b2ffc68b4a6be4fa4a7d1c7e2c4cec566f7bc2fdae8
   languageName: node
   linkType: hard
 
@@ -37557,7 +37557,7 @@ typescript@^4.0.0:
     "@testing-library/react": 11.2.2
     "@testing-library/react-hooks": 3.4.2
     "@theme-ui/components": 0.5.0-alpha.1
-    "@theme-ui/match-media": 0.5.0-alpha.0
+    "@theme-ui/match-media": 0.5.0-alpha.1
     "@types/body-scroll-lock": 2.6.1
     "@types/date-fns": 2.6.0
     "@types/faker": 5.1.4
