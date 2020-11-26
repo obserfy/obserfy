@@ -5,6 +5,7 @@
   "main": "index.js",
   "license": "GPL-3",
   "private": true,
+  "type": "module",
   "devDependencies": {
     "@cypress/code-coverage": "3.8.5",
     "@types/faker": "5.1.4",
@@ -29,19 +30,23 @@
   },
   "scripts": {
     "cy:open": "cypress open",
-    "cy:open-prod": "cypress open --config baseUrl=https://localhost:8000",
     "cy:run": "cypress run",
     "cy:ci": "NODE_TLS_REJECT_UNAUTHORIZED=0 wait-on -t 300000  -lv https://localhost:8000/login && yarn wait-on -t 300000  -lv http://localhost:3000 && yarn cy:run --config baseUrl=https://localhost:8000",
     "lint": "eslint --ext .tsx,.ts ./",
-    "typecheck": "cd cypress && tsc --noemit"
+    "typecheck": "cd cypress && tsc --noemit",
+    "db:reset": "ts-node-script ./scripts/resetDB.ts"
   },
   "dependencies": {
     "@babel/core": "7.12.9",
     "@babel/preset-env": "7.12.7",
     "@cypress/webpack-preprocessor": "5.4.11",
+    "@types/pg": "^7.14.7",
     "babel-loader": "8.2.2",
+    "dotenv": "^8.2.0",
+    "pg": "^8.5.1",
     "pnp-webpack-plugin": "1.6.4",
     "prettier": "2.2.0",
+    "ts-node": "^9.0.0",
     "typescript": "4.1.2",
     "webpack": "5.8.0"
   }

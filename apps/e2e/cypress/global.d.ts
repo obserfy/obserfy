@@ -9,5 +9,7 @@ declare namespace Cypress {
      * @example cy.dataCy('greeting')
      */
     clearSW(): Chainable<Element>
+    visitVor(path: string): Chainable<Element>
+    visitGaia(path: string): Chainable<Element>
   }
 }

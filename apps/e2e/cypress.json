@@ -1,6 +1,11 @@
 {
   "baseUrl": "http://localhost:8001",
-  "blockHosts": ["*segment.com", "*segment.io", "*sentry.io", "*sentry.com"],
+  "blockHosts": [
+    "*segment.com",
+    "*segment.io",
+    "*sentry.io",
+    "*sentry.com"
+  ],
   "projectId": "m9rk94",
   "viewportHeight": 667,
   "viewportWidth": 375,
@@ -9,5 +14,11 @@
   "retries": {
     "runMode": 1,
     "openMode": 0
+  },
+  "env": {
+    "VOR_HOST": "http://localhost:8001",
+    "GAIA_HOST": "http://localhost:3000",
+    "GAIA_USERNAME": "<override this on cypress.env.json>",
+    "GAIA_PASSWORD": "<override this on cypress.env.json>"
   }
 }
