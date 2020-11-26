@@ -7130,7 +7130,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/browser@npm:5.27.6, @sentry/browser@npm:^5.21.3":
+"@sentry/browser@npm:5.27.6":
   version: 5.27.6
   resolution: "@sentry/browser@npm:5.27.6"
   dependencies:
@@ -7193,7 +7193,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/integrations@npm:^5.21.3":
+"@sentry/integrations@npm:5.27.6":
   version: 5.27.6
   resolution: "@sentry/integrations@npm:5.27.6"
   dependencies:
@@ -7216,7 +7216,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/node@npm:^5.21.3":
+"@sentry/node@npm:5.27.6":
   version: 5.27.6
   resolution: "@sentry/node@npm:5.27.6"
   dependencies:
@@ -7280,7 +7280,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/webpack-plugin@npm:^1.12.1":
+"@sentry/webpack-plugin@npm:1.13.0":
   version: 1.13.0
   resolution: "@sentry/webpack-plugin@npm:1.13.0"
   dependencies:
@@ -19606,10 +19606,10 @@ fsevents@^1.2.7:
     "@auth0/nextjs-auth0": 0.16.0
     "@prefresh/next": 1.4.1
     "@segment/snippet": 4.13.1
-    "@sentry/browser": ^5.21.3
-    "@sentry/integrations": ^5.21.3
-    "@sentry/node": ^5.21.3
-    "@sentry/webpack-plugin": ^1.12.1
+    "@sentry/browser": 5.27.6
+    "@sentry/integrations": 5.27.6
+    "@sentry/node": 5.27.6
+    "@sentry/webpack-plugin": 1.13.0
     "@tailwindcss/typography": 0.3.1
     "@types/body-scroll-lock": 2.6.1
     "@types/formidable": 1.0.31
