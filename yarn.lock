@@ -8621,7 +8621,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@theme-ui/components@npm:0.5.0-alpha.0, @theme-ui/components@npm:^0.5.0-alpha.0":
+"@theme-ui/components@npm:0.5.0-alpha.1":
+  version: 0.5.0-alpha.1
+  resolution: "@theme-ui/components@npm:0.5.0-alpha.1"
+  dependencies:
+    "@emotion/react": ^11.1.1
+    "@emotion/styled": ^11.0.0
+    "@styled-system/color": ^5.1.2
+    "@styled-system/should-forward-prop": ^5.1.2
+    "@styled-system/space": ^5.1.2
+    "@theme-ui/css": 0.5.0-alpha.1
+    "@types/styled-system": ^4.2.2
+  peerDependencies:
+    react: ^16.14.0 || ^17.0.0
+  checksum: 300f7ae6e8da105877ea0e2d6088b03efba7a1f9d12d70d601225b852ee33d46ef85fa495ece5cc85236e05eba644cb0fb7dab4c9b96455d1aa7d5ecdb0cd2f3
+  languageName: node
+  linkType: hard
+
+"@theme-ui/components@npm:^0.5.0-alpha.0":
   version: 0.5.0-alpha.0
   resolution: "@theme-ui/components@npm:0.5.0-alpha.0"
   dependencies:
@@ -8648,6 +8665,16 @@ __metadata:
   peerDependencies:
     react: ^16.11.0
   checksum: c6d08509f8e722ce1ad82ca39ebe4f474394cc57de59bf2cc193cce6102245b4ef190d083eb3e25944ca6c150a1bd1f02cb261db4165404ba184c2b99faca796
+  languageName: node
+  linkType: hard
+
+"@theme-ui/css@npm:0.5.0-alpha.1":
+  version: 0.5.0-alpha.1
+  resolution: "@theme-ui/css@npm:0.5.0-alpha.1"
+  dependencies:
+    "@emotion/react": ^11.1.1
+    csstype: ^3.0.5
+  checksum: cdee3eaee06505b205583f74c62033324d4cb5872350111bb0aef6240e6357e0cde9c997031af15a67b48256cf7bddbcc5692544e52f6ca729d7f6981c7e555c
   languageName: node
   linkType: hard
 
@@ -37420,7 +37447,7 @@ typescript@^4.0.0:
     "@svgr/webpack": 5.5.0
     "@testing-library/react": 11.2.2
     "@testing-library/react-hooks": 3.4.2
-    "@theme-ui/components": 0.5.0-alpha.0
+    "@theme-ui/components": 0.5.0-alpha.1
     "@theme-ui/match-media": 0.5.0-alpha.0
     "@types/body-scroll-lock": 2.6.1
     "@types/date-fns": 2.6.0
