@@ -318,7 +318,7 @@ export const findChildCurriculumProgress = async (childId: string) => {
                  join (
             select s3.id, s3.name, s3.area_id, json_agg(m) as materials
             from subjects as s3
-                     join (select id, name, "order", subject_id, coalesce(smp.stage, 0) as stage
+                     join (select id, name, coalesce("order", 0) as "order", subject_id, coalesce(smp.stage, 0) as stage
                            from materials
                                     left outer join student_material_progresses smp
                                          on materials.id = smp.material_id and smp.student_id = $1

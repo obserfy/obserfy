@@ -20,8 +20,6 @@ module.exports = {
     },
   ],
   rules: {
-    // api, db, and server related stuffs need to tdo console.log
-    "no-console": "off",
     "global-require": 0,
     "react/button-has-type": 0,
     "no-undef": 0,
@@ -29,6 +27,8 @@ module.exports = {
     "react/style-prop-object": 0,
     "react/jsx-props-no-spreading": 0,
     "jsx-a11y/anchor-is-valid": 0,
+    // node-mocks-http uses dangling
+    "no-underscore-dangle": 0,
     // Recommended for immer.
     "no-param-reassign": [
       "error",

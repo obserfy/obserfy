@@ -1,5 +1,6 @@
 import auth0 from "../../../utils/auth0"
 import { findChildrenByGuardianEmail } from "../../../db/queries"
+import logger from "../../../logger"
 
 export interface UserData {
   family_name: string
@@ -37,7 +38,7 @@ export default auth0.requireAuthentication(async function me(req, res) {
       })),
     } as UserData)
   } catch (error) {
-    console.error(error)
+    logger.error(error)
     res.status(error.status || 500).end(error.message)
   }
 })
