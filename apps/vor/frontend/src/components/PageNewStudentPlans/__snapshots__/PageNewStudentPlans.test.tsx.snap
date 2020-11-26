@@ -1154,7 +1154,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
               <input
                 class="emotion-24"
                 disabled=""
-                placeholder="Not set"
+                placeholder="Not Set"
                 value="Sunday, 26 May 1996"
               />
             </div>
