@@ -1,5 +1,4 @@
-import auth0 from "../../../../utils/auth0"
-import { getFirstQueryValue } from "../../../../utils/rest"
+import { getFirstQueryValue, protectedApiRoute } from "../../../../utils/rest"
 import { getChildObservationByImage } from "../../../../db/queries"
 
 export interface GetChildObservationByImages {
@@ -10,7 +9,7 @@ export interface GetChildObservationByImages {
   eventTime: string
 }
 
-export default auth0.requireAuthentication(async (req, res) => {
+const getImage = protectedApiRoute(async (req, res) => {
   try {
     const imageId = getFirstQueryValue(req, "imageId")
     const observations = await getChildObservationByImage(imageId)
@@ -34,3 +33,5 @@ export default auth0.requireAuthentication(async (req, res) => {
     res.status(err.status || 500).end(err.message)
   }
 })
+
+export default getImage
