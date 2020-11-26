@@ -6,9 +6,9 @@ config({ path: "../../.env.local" })
 
 const client = new Client({
   user: process.env.DB_USERNAME,
-  host: process.env.DB_HOST,
-  database: "defaultdb",
   password: process.env.DB_PASSWORD,
+  host: "localhost",
+  database: "defaultdb",
   port: parseInt(process.env.DB_PORT ?? "5432", 10),
 })
 
