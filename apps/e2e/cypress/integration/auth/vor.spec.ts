@@ -2,11 +2,7 @@ describe("test authentication", () => {
   const faker = require("faker")
 
   beforeEach(() => {
-    window.navigator.serviceWorker.getRegistrations().then((registrations) => {
-      registrations.forEach((registration) => {
-        registration.unregister()
-      })
-    })
+    cy.clearSW()
   })
 
   it("should be able to login and register", () => {
