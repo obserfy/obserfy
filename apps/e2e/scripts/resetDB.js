@@ -42,9 +42,9 @@ config({ path: "../../.env.development" });
 config({ path: "../../.env.local" });
 var client = new Client({
     user: process.env.DB_USERNAME,
-    host: process.env.DB_HOST,
-    database: "defaultdb",
     password: process.env.DB_PASSWORD,
+    host: "localhost",
+    database: "defaultdb",
     port: parseInt((_a = process.env.DB_PORT) !== null && _a !== void 0 ? _a : "5432", 10)
 });
 var resetDB = function () { return __awaiter(_this, void 0, void 0, function () {
