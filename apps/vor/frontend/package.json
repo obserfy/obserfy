@@ -57,7 +57,7 @@
     "react-helmet": "6.1.0",
     "react-query": "2.26.3",
     "regenerator-runtime": "0.13.7",
-    "theme-ui": "0.5.0-alpha.0",
+    "theme-ui": "0.5.0-alpha.1",
     "use-immer": "0.4.2"
   },
   "devDependencies": {
