@@ -183,6 +183,8 @@ jobs:
     env:
       COMPOSE_DOCKER_CLI_BUILD: 1
       DOCKER_BUILDKIT: 1
+      CYPRESS_VOR_HOST: https://localhost:8000
+      CYPRESS_GAIA_HOST: http://localhost:3000
 
     steps:
       - uses: actions/checkout@v2
