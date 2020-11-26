@@ -14,7 +14,7 @@ export const getFirstQueryValue = (
   return value
 }
 
-export async function apiRoute(handler: NextApiHandler) {
+export function apiRoute(handler: NextApiHandler) {
   return async (req: NextApiRequest, res: NextApiResponse) => {
     try {
       await handler(req, res)
@@ -25,7 +25,7 @@ export async function apiRoute(handler: NextApiHandler) {
   }
 }
 
-export async function protectedApiRoute(handler: NextApiHandler) {
+export function protectedApiRoute(handler: NextApiHandler) {
   return auth0.requireAuthentication(
     async (req: NextApiRequest, res: NextApiResponse) => {
       try {

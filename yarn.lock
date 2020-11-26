@@ -9086,7 +9086,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jest@npm:26.0.15":
+"@types/jest@npm:26.0.15, @types/jest@npm:^26.0.15":
   version: 26.0.15
   resolution: "@types/jest@npm:26.0.15"
   dependencies:
@@ -16006,7 +16006,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"depd@npm:~1.1.2":
+"depd@npm:^1.1.0, depd@npm:~1.1.2":
   version: 1.1.2
   resolution: "depd@npm:1.1.2"
   checksum: f45566ff7019a346852f095768a380778ed544de24e103b479fd5d3e61982d670efbb5234c09d0588d7fdb09c26c48283d7150e4be5e6ce5d3d37cd268d75c4d
@@ -19203,7 +19203,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fresh@npm:0.5.2":
+"fresh@npm:0.5.2, fresh@npm:^0.5.2":
   version: 0.5.2
   resolution: "fresh@npm:0.5.2"
   checksum: 2f76c8505d1ea5a6d5accea3e7aff0b796bfa43364c84929254f33909fa08640948bd1728220d1ff5f4c2b378a65e97da647f2fe0f2b7ddb44001f6e0dc2e91f
@@ -19522,6 +19522,7 @@ fsevents@^1.2.7:
     "@tailwindcss/typography": 0.3.1
     "@types/body-scroll-lock": 2.6.1
     "@types/formidable": 1.0.31
+    "@types/jest": ^26.0.15
     "@types/minio": 7.0.6
     "@types/mixpanel-browser": 2.35.4
     "@types/nanoid": 2.1.0
@@ -19535,6 +19536,7 @@ fsevents@^1.2.7:
     "@typescript-eslint/parser": 4.8.1
     body-scroll-lock: 3.1.5
     dayjs: 1.9.6
+    dotenv: ^8.2.0
     eslint: 7.14.0
     eslint-config-airbnb-typescript: 12.0.0
     eslint-config-prettier: 6.15.0
@@ -19555,6 +19557,7 @@ fsevents@^1.2.7:
     img-loader: 3.0.2
     io-ts: 2.2.13
     io-ts-types: 0.5.12
+    jest: ^26.6.3
     lqip-loader: 2.2.1
     minio: 7.0.17
     monocle-ts: 2.3.3
@@ -19564,6 +19567,7 @@ fsevents@^1.2.7:
     next-compose-plugins: 2.2.1
     next-optimized-images: 3.0.0-canary.10
     next-pwa: 3.1.5
+    node-mocks-http: ^1.9.0
     optimized-images-loader: 0.4.0
     pg: 8.5.1
     pino: 6.7.0
@@ -24222,7 +24226,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"jest@npm:26.6.3":
+"jest@npm:26.6.3, jest@npm:^26.6.3":
   version: 26.6.3
   resolution: "jest@npm:26.6.3"
   dependencies:
@@ -26060,7 +26064,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"merge-descriptors@npm:1.0.1":
+"merge-descriptors@npm:1.0.1, merge-descriptors@npm:^1.0.1":
   version: 1.0.1
   resolution: "merge-descriptors@npm:1.0.1"
   checksum: 2d2a09eaac840a7ceac7a13b44b7c8abf3ecccd93a609c3525d8290cb5d814336cc7c0b1dd485ae3bc471ed354eeefb153475ce2e1604ccdf79eebe74021c192
@@ -26088,7 +26092,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"methods@npm:~1.1.2":
+"methods@npm:^1.1.2, methods@npm:~1.1.2":
   version: 1.1.2
   resolution: "methods@npm:1.1.2"
   checksum: 450e4ea0fd4a0f3de8c0593d753c7d6c8f2ee49766f5ef35c68cc2ac41699d5e295b7d6330fc2b7271b8569a07857e3eb0b5df0599a353c5808265b4b5066168
@@ -27133,6 +27137,23 @@ mocha@latest:
     moment: ^2.18.1
     request: ">=2.76.0 <3.0.0"
   checksum: dc395d6b88f7345dc63dc0461fe7bb6544ede056b75b231e86e69d2218f286df5ecabd453a4f62fe3db14497c0e4b13385805efff4dc94262368e85c13426360
+  languageName: node
+  linkType: hard
+
+"node-mocks-http@npm:^1.9.0":
+  version: 1.9.0
+  resolution: "node-mocks-http@npm:1.9.0"
+  dependencies:
+    accepts: ^1.3.7
+    depd: ^1.1.0
+    fresh: ^0.5.2
+    merge-descriptors: ^1.0.1
+    methods: ^1.1.2
+    mime: ^1.3.4
+    parseurl: ^1.3.3
+    range-parser: ^1.2.0
+    type-is: ^1.6.18
+  checksum: 47602393547d4fae042ea035331188a7f90c8e62bdcb61bce1e082f9aa224aba19408881c3f8ce403dfb8b3bbc959896d7b2ef527975b8a2973a59d03f5aee28
   languageName: node
   linkType: hard
 
@@ -30980,7 +31001,7 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"range-parser@npm:^1.2.1, range-parser@npm:~1.2.1":
+"range-parser@npm:^1.2.0, range-parser@npm:^1.2.1, range-parser@npm:~1.2.1":
   version: 1.2.1
   resolution: "range-parser@npm:1.2.1"
   checksum: 05074f5b23dbdc24acdae9821dd684fbc9c0d770cdaa4469ab529d8e0fc1338aa33561a4c7c14a1f9bdcb3b5e9a3770e5a80318258a72289a7ef05fcda72a707
@@ -36323,7 +36344,7 @@ resolve@^1.19.0:
   languageName: node
   linkType: hard
 
-"type-is@npm:~1.6.17, type-is@npm:~1.6.18":
+"type-is@npm:^1.6.18, type-is@npm:~1.6.17, type-is@npm:~1.6.18":
   version: 1.6.18
   resolution: "type-is@npm:1.6.18"
   dependencies:
