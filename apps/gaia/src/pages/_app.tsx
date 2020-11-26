@@ -6,6 +6,9 @@ import { useRouter } from "next/router"
 import Layout from "../components/layout"
 import "../global.css"
 import ErrorBoundary from "../components/ErrorBoundary"
+import { initSentry } from "../utils/sentry"
+
+initSentry()
 
 const App: AppComponent = ({ Component, pageProps }) => {
   const router = useRouter()
