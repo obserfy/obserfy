@@ -1,6 +1,6 @@
 import auth0 from "../../../utils/auth0"
 import { findChildrenByGuardianEmail } from "../../../db/queries"
-import logger from "../../../logger"
+import { protectedApiRoute } from "../../../utils/rest"
 
 export interface UserData {
   family_name: string
@@ -20,25 +20,23 @@ export interface UserData {
   }>
 }
 
-export default auth0.requireAuthentication(async function me(req, res) {
-  try {
-    const session = await auth0.getSession(req)
-    if (!session) {
-      res.status(401).end("unauthorized")
-      return
-    }
-    const result = await findChildrenByGuardianEmail(session.user.email)
-
-    res.json({
-      ...session.user,
-      children: result.map(({ id, name, school_name }) => ({
-        id,
-        name,
-        schoolName: school_name,
-      })),
-    } as UserData)
-  } catch (error) {
-    logger.error(error)
-    res.status(error.status || 500).end(error.message)
+const me = protectedApiRoute(async (req, res) => {
+  const session = await auth0.getSession(req)
+  if (!session) {
+    res.status(401).end("unauthorized")
+    return
   }
+  const result = await findChildrenByGuardianEmail(session.user.email)
+
+  const response = {
+    ...session.user,
+    children: result.map(({ id, name, school_name }) => ({
+      id,
+      name,
+      schoolName: school_name,
+    })),
+  } as UserData
+  res.json(response)
 })
+
+export default me

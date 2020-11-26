@@ -1,6 +1,5 @@
-import auth0 from "../../../../utils/auth0"
 import { findLessonPlanByChildIdAndDate } from "../../../../db/queries"
-import { getFirstQueryValue } from "../../../../utils/rest"
+import { getFirstQueryValue, protectedApiRoute } from "../../../../utils/rest"
 import { Dayjs } from "../../../../utils/dayjs"
 
 export interface GetChildPlansResponse {
@@ -25,19 +24,16 @@ export interface GetChildPlansResponse {
     createdAt: string
   }>
 }
-export default auth0.requireAuthentication(async (req, res) => {
-  try {
-    const date = getFirstQueryValue(req, "date")
-    const childId = getFirstQueryValue(req, "childId")
+const childPlans = protectedApiRoute(async (req, res) => {
+  const date = getFirstQueryValue(req, "date")
+  const childId = getFirstQueryValue(req, "childId")
 
-    const plans: GetChildPlansResponse[] = await findLessonPlanByChildIdAndDate(
-      childId as string,
-      date
-    )
+  const plans: GetChildPlansResponse[] = await findLessonPlanByChildIdAndDate(
+    childId as string,
+    date
+  )
 
-    res.json(plans)
-  } catch (err) {
-    console.error(err)
-    res.status(err.status || 500).end(err.message)
-  }
+  res.json(plans)
 })
+
+export default childPlans

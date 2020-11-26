@@ -1,4 +1,5 @@
 import React, { Component, ReactNode } from "react"
+import * as Sentry from "@sentry/node"
 
 interface State {
   hasError: boolean
@@ -16,8 +17,10 @@ export class ErrorBoundary extends Component<{}, State> {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
     if (process.env.NODE_ENV !== "production") {
+      // eslint-disable-next-line no-console
       console.error(error)
     }
+    Sentry.captureException(error)
     mixpanel.track("Javascript Error", { error, errorInfo })
   }
 
