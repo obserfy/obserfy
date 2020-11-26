@@ -24,9 +24,19 @@
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 Cypress.Commands.add("clearSW", () => {
-  window.navigator.serviceWorker.getRegistrations().then((registrations) => {
-    registrations.forEach((registration) => {
-      registration.unregister()
+  if (typeof window !== "undefined" && window.navigator.serviceWorker) {
+    window.navigator.serviceWorker.getRegistrations().then((registrations) => {
+      registrations.forEach((registration) => {
+        registration.unregister()
+      })
     })
-  })
+  }
+})
+
+Cypress.Commands.add("visitVor", (path) => {
+  cy.visit(Cypress.env("VOR_HOST") + path)
+})
+
+Cypress.Commands.add("visitGaia", (path) => {
+  cy.visit(Cypress.env("GAIA_HOST") + path)
 })

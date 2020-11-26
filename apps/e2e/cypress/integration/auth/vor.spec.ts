@@ -1,11 +1,11 @@
-describe("test authentication", () => {
+describe("test vor authentication", () => {
   const faker = require("faker")
 
   beforeEach(() => {
     cy.clearSW()
   })
 
-  it("should be able to login and register", () => {
+  it("should be redirected to login", () => {
     // define new user dynamically
     const name = faker.name.firstName()
     const email = faker.internet.email()
@@ -13,7 +13,7 @@ describe("test authentication", () => {
 
     const schoolName = faker.company.companyName()
 
-    cy.visit("/")
+    cy.visitVor("/")
     // cy.waitForRouteChange()
 
     // Try logging in and fail
