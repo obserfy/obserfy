@@ -40,3 +40,9 @@ Cypress.Commands.add("visitVor", (path) => {
 Cypress.Commands.add("visitGaia", (path) => {
   cy.visit(Cypress.env("GAIA_HOST") + path)
 })
+
+Cypress.Commands.add("fixedClearCookies", () => {
+  // workaround for cypress #781
+  // @ts-ignore
+  cy.clearCookies({ domain: null })
+})
