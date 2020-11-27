@@ -30,7 +30,6 @@
   "scripts": {
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "cy:ci": "NODE_TLS_REJECT_UNAUTHORIZED=0 wait-on -t 300000  -lv https://localhost:8000/login && yarn wait-on -t 300000  -lv http://localhost:3000 && yarn cy:run --config baseUrl=https://localhost:8000",
     "lint": "eslint --ext .tsx,.ts ./",
     "typecheck": "cd cypress && tsc --noemit",
     "db:reset": "node ./scripts/resetDB.js"
