@@ -12,5 +12,6 @@ declare namespace Cypress {
     visitVor(path: string): Chainable<Element>
     visitGaia(path: string): Chainable<Element>
     fixedClearCookies(): Chainable<Element>
+    registerVor(): Chainable<Element>
   }
 }

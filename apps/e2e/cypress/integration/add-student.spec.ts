@@ -3,25 +3,7 @@ describe("test adding new student", () => {
 
   beforeEach(() => {
     cy.clearSW()
-
-    const name = faker.name.firstName()
-    const email = faker.internet.email()
-    const password = faker.internet.password()
-
-    const schoolName = faker.company.companyName()
-
-    cy.request({
-      method: "POST",
-      url: "/auth/register",
-      body: { email, password, name },
-      form: true,
-    })
-
-    cy.request("POST", "/api/v1/schools", { name: schoolName }).then(
-      (result) => {
-        window.localStorage.setItem("SCHOOL_ID", result.body.id)
-      }
-    )
+    cy.registerVor()
   })
 
   it("should be able to add student multiple times", () => {
