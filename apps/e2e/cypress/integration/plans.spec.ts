@@ -5,11 +5,7 @@ describe("Test lesson plan features", () => {
   const classStartTime = faker.date.recent()
 
   beforeEach(() => {
-    window.navigator.serviceWorker.getRegistrations().then((registrations) => {
-      registrations.forEach((registration) => {
-        registration.unregister()
-      })
-    })
+    cy.clearSW()
 
     const name = faker.name.firstName()
     const email = faker.internet.email()
@@ -39,7 +35,7 @@ describe("Test lesson plan features", () => {
             name: studentName,
           })
           .then((studentResult) => {
-            cy.visit(
+            cy.visitVor(
               `/dashboard/students/plans?studentId=${studentResult.body.id}`
             )
           })
@@ -78,7 +74,7 @@ describe("Test lesson plan features", () => {
     cy.contains(secondName).should("be.visible")
 
     // Regression test, should be able to delete class
-    cy.visit("/dashboard/admin/class")
+    cy.visitVor("/dashboard/admin/class")
     cy.contains(className).click()
     cy.contains("Delete").click()
     cy.contains("Yes").click()

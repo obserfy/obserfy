@@ -29,20 +29,21 @@
   },
   "scripts": {
     "cy:open": "cypress open",
-    "cy:open-prod": "cypress open --config baseUrl=https://localhost:8000",
     "cy:run": "cypress run",
-    "cy:ci": "NODE_TLS_REJECT_UNAUTHORIZED=0 wait-on -t 300000  -lv https://localhost:8000/login && yarn wait-on -t 300000  -lv http://localhost:3000 && yarn cy:run --config baseUrl=https://localhost:8000",
     "lint": "eslint --ext .tsx,.ts ./",
-    "typecheck": "cd cypress && tsc --noemit"
+    "typecheck": "cd cypress && tsc --noemit",
+    "db:reset": "node ./scripts/resetDB.js"
   },
   "dependencies": {
-    "@babel/core": "7.12.9",
-    "@babel/preset-env": "7.12.7",
     "@cypress/webpack-preprocessor": "5.4.11",
-    "babel-loader": "8.2.2",
+    "@hapi/iron": "^6.0.0",
+    "@types/pg": "^7.14.7",
+    "auth0-js": "^9.14.0",
+    "dotenv": "^8.2.0",
+    "pg": "^8.5.1",
     "pnp-webpack-plugin": "1.6.4",
     "prettier": "2.2.0",
-    "typescript": "4.1.2",
-    "webpack": "5.8.0"
+    "ts-loader": "^8.0.11",
+    "typescript": "4.1.2"
   }
 }
