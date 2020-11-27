@@ -270,3 +270,78 @@ jobs:
           CYPRESS_GAIA_PASSWORD: ${{ secrets.CYPRESS_GAIA_PASSWORD }}
           CYPRESS_VOR_HOST: 'https://localhost:8000'
           CYPRESS_GAIA_HOST: 'http://localhost:3000'
+
+  # runs on renovate build to conserve cypress quota.
+  e2e-sequential:
+    if:  ${{ contains('renovate', github.ref) }}
+    needs:
+      - build-gaia
+      - build-vor-frontend
+    runs-on: ubuntu-latest
+    env:
+      COMPOSE_DOCKER_CLI_BUILD: 1
+      DOCKER_BUILDKIT: 1
+      CYPRESS_VOR_HOST: https://localhost:8000
+      CYPRESS_GAIA_HOST: http://localhost:3000
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/download-artifact@v2
+        with:
+          name: vor
+          path: apps/vor/frontend/public
+      - uses: actions/download-artifact@v2
+        with:
+          name: gaia
+          path: apps/gaia/.next
+      - run: touch .env.local # stop docker-compose from complaining about missing file.
+      - run: docker-compose up -d &
+      - name: Cache e2e deps
+        id: cache-deps
+        uses: pat-s/always-upload-cache@v2.1.3
+        env:
+          cache-name: cache-build-e2e
+        with:
+          path: |
+            .yarn/unplugged
+            .yarn/install-state.gz
+            .yarn/build-state.yml
+            .pnp.js
+            ~/.cache/Cypress
+          key: v3-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/.pnp.js') }}-${{ hashFiles('**/yarn.lock') }}
+      - name: Use Node.js 15
+        uses: actions/setup-node@v1
+        with:
+          node-version: 15
+      - name: Install Dependencies
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        run: yarn workspaces focus e2e gaia
+      - run: yarn workspace gaia run start &
+        env:
+          AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
+          AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
+          AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
+      - name: Cypress parallel run
+        uses: cypress-io/github-action@v2
+        with:
+          command: yarn workspace e2e run cy:run
+          record: true
+          parallel: true
+          group: 'E2E'
+          wait-on: 'https://localhost:8000/login, http://localhost:3000'
+          install: false
+          working-directory: ./apps/e2e
+        env:
+          NODE_TLS_REJECT_UNAUTHORIZED: 0
+          # pass the Dashboard record key as an environment variable
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_KEY }}
+          # Recommended: pass the GitHub token lets this action correctly
+          # determine the unique run id necessary to re-run the checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # secret envs
+          CYPRESS_AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
+          CYPRESS_AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
+          CYPRESS_AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
+          CYPRESS_GAIA_USERNAME: ${{ secrets.CYPRESS_GAIA_USERNAME }}
+          CYPRESS_GAIA_PASSWORD: ${{ secrets.CYPRESS_GAIA_PASSWORD }}
+          CYPRESS_VOR_HOST: 'https://localhost:8000'
+          CYPRESS_GAIA_HOST: 'http://localhost:3000'
