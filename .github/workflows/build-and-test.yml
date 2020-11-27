@@ -186,7 +186,8 @@ jobs:
           path: apps/vor/frontend/public
       - run: yarn workspace vor run test
 
-  e2e:
+  e2e-parallel:
+    if:  !contains('renovate', github.ref)
     needs:
       - build-gaia
       - build-vor-frontend
@@ -244,7 +245,7 @@ jobs:
           AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
           AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
           AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
-      - name: Cypress run
+      - name: Cypress parallel run
         uses: cypress-io/github-action@v2
         with:
           command: yarn workspace e2e run cy:run --record --parallel --config baseUrl=https://localhost:8000
