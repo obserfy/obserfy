@@ -23,6 +23,8 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+const faker = require("faker")
+
 Cypress.Commands.add("clearSW", () => {
   if (typeof window !== "undefined" && window.navigator.serviceWorker) {
     window.navigator.serviceWorker.getRegistrations().then((registrations) => {
@@ -45,4 +47,24 @@ Cypress.Commands.add("fixedClearCookies", () => {
   // workaround for cypress #781
   // @ts-ignore
   cy.clearCookies({ domain: null })
+})
+
+Cypress.Commands.add("registerVor", () => {
+  const name = faker.name.firstName()
+  const email = faker.internet.email()
+  const password = faker.internet.password()
+  const schoolName = faker.company.companyName()
+
+  cy.request({
+    method: "POST",
+    url: "/auth/register",
+    body: { email, password, name },
+    form: true,
+  })
+
+  cy.request("POST", "/api/v1/schools", { name: schoolName }).then(
+    (result) => {
+      window.localStorage.setItem("SCHOOL_ID", result.body.id)
+    }
+  )
 })
