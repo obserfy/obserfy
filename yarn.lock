@@ -5442,6 +5442,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@hapi/iron@npm:6.0.0":
+  version: 6.0.0
+  resolution: "@hapi/iron@npm:6.0.0"
+  dependencies:
+    "@hapi/b64": 5.x.x
+    "@hapi/boom": 9.x.x
+    "@hapi/bourne": 2.x.x
+    "@hapi/cryptiles": 5.x.x
+    "@hapi/hoek": 9.x.x
+  checksum: 427104bcc27df6f28d0c54f8dacbcebbce8ef4d67d1e3f39036af0e989385c63c02184a1f05dead7d3b9b232770d57cbe60df2a92380ea006e2757f96c07527e
+  languageName: node
+  linkType: hard
+
 "@hapi/iron@npm:^5.1.4":
   version: 5.1.4
   resolution: "@hapi/iron@npm:5.1.4"
@@ -5452,19 +5465,6 @@ __metadata:
     "@hapi/cryptiles": 4.x.x
     "@hapi/hoek": 8.x.x
   checksum: 31150d577b92d277692189a186ddd36a2bb5745cac5672d5935313d5db7914b94951507c381bcb123c014c8780d3362b62707b4e0971e31ba2f7ea927e8cf425
-  languageName: node
-  linkType: hard
-
-"@hapi/iron@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "@hapi/iron@npm:6.0.0"
-  dependencies:
-    "@hapi/b64": 5.x.x
-    "@hapi/boom": 9.x.x
-    "@hapi/bourne": 2.x.x
-    "@hapi/cryptiles": 5.x.x
-    "@hapi/hoek": 9.x.x
-  checksum: 427104bcc27df6f28d0c54f8dacbcebbce8ef4d67d1e3f39036af0e989385c63c02184a1f05dead7d3b9b232770d57cbe60df2a92380ea006e2757f96c07527e
   languageName: node
   linkType: hard
 
@@ -9285,7 +9285,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/pg@npm:7.14.7, @types/pg@npm:^7.14.7":
+"@types/pg@npm:7.14.7":
   version: 7.14.7
   resolution: "@types/pg@npm:7.14.7"
   dependencies:
@@ -11168,7 +11168,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"auth0-js@npm:^9.14.0":
+"auth0-js@npm:9.14.0":
   version: 9.14.0
   resolution: "auth0-js@npm:9.14.0"
   dependencies:
@@ -16688,16 +16688,16 @@ __metadata:
   dependencies:
     "@cypress/code-coverage": 3.8.5
     "@cypress/webpack-preprocessor": 5.4.11
-    "@hapi/iron": ^6.0.0
+    "@hapi/iron": 6.0.0
     "@types/faker": 5.1.4
     "@types/node": 14.14.10
-    "@types/pg": ^7.14.7
+    "@types/pg": 7.14.7
     "@typescript-eslint/eslint-plugin": 4.8.1
     "@typescript-eslint/parser": 4.8.1
-    auth0-js: ^9.14.0
+    auth0-js: 9.14.0
     cypress: 6.0.0
     cypress-intellij-reporter: 0.0.5
-    dotenv: ^8.2.0
+    dotenv: 8.2.0
     eslint: 7.14.0
     eslint-config-airbnb-typescript: 12.0.0
     eslint-config-prettier: 6.15.0
@@ -16710,10 +16710,10 @@ __metadata:
     eslint-plugin-react: 7.21.5
     eslint-plugin-react-hooks: 4.2.0
     faker: 5.1.0
-    pg: ^8.5.1
+    pg: 8.5.1
     pnp-webpack-plugin: 1.6.4
     prettier: 2.2.0
-    ts-loader: ^8.0.11
+    ts-loader: 8.0.11
     typescript: 4.1.2
     wait-on: 5.2.0
   languageName: unknown
@@ -28927,7 +28927,7 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"pg@npm:8.5.1, pg@npm:^8.5.1":
+"pg@npm:8.5.1":
   version: 8.5.1
   resolution: "pg@npm:8.5.1"
   dependencies:
@@ -36240,7 +36240,7 @@ resolve@^1.19.0:
   languageName: node
   linkType: hard
 
-"ts-loader@npm:^8.0.11":
+"ts-loader@npm:8.0.11":
   version: 8.0.11
   resolution: "ts-loader@npm:8.0.11"
   dependencies:
