@@ -187,7 +187,7 @@ jobs:
       - run: yarn workspace vor run test
 
   e2e-parallel:
-    if:  !contains('renovate', github.ref)
+    if:  ${{ !contains('renovate', github.ref) }}
     needs:
       - build-gaia
       - build-vor-frontend
