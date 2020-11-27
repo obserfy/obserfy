@@ -55,6 +55,8 @@ Cypress.Commands.add("registerVor", () => {
   const password = faker.internet.password()
   const schoolName = faker.company.companyName()
 
+  cy.wrap({name, email, password, schoolName}).as("vorUser")
+
   cy.request({
     method: "POST",
     url: "/auth/register",

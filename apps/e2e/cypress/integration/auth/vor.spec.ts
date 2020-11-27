@@ -70,7 +70,7 @@ describe("test vor authentication", () => {
       .then((text) => {
         const inviteCode = text.split("=")[1]
         const inviteUrl = `/register?inviteCode=${inviteCode}`
-        cy.visit(inviteUrl)
+        cy.visitVor(inviteUrl)
 
         cy.contains("Join as").click()
         cy.contains(schoolName).should("be.visible")
@@ -83,7 +83,7 @@ describe("test vor authentication", () => {
         const name2 = faker.name.firstName()
         const email2 = faker.internet.email()
         const password2 = faker.internet.password()
-        cy.visit(inviteUrl)
+        cy.visitVor(inviteUrl)
         cy.get("[data-cy=register-email]").type(email2)
         cy.contains("Password").type(password2)
         cy.contains("Name").type(name2)
@@ -95,7 +95,7 @@ describe("test vor authentication", () => {
         const email3 = faker.internet.email()
         const password3 = faker.internet.password()
         cy.clearCookies()
-        cy.visit("/register")
+        cy.visitVor("/register")
         cy.get("[data-cy=register-email]").type(email3)
         cy.contains("Password").type(password3)
         cy.contains("Name").type(name3)
@@ -103,7 +103,7 @@ describe("test vor authentication", () => {
         cy.wait(300)
         cy.contains(schoolName).should("not.exist")
 
-        cy.visit(inviteUrl)
+        cy.visitVor(inviteUrl)
         cy.contains(`Join as ${name3}`).click()
         cy.contains("Your Schools").should("be.visible")
         cy.contains(schoolName).should("be.visible")

@@ -35,7 +35,7 @@ describe("Test lesson plan features", () => {
             name: studentName,
           })
           .then((studentResult) => {
-            cy.visit(
+            cy.visitVor(
               `/dashboard/students/plans?studentId=${studentResult.body.id}`
             )
           })
@@ -74,7 +74,7 @@ describe("Test lesson plan features", () => {
     cy.contains(secondName).should("be.visible")
 
     // Regression test, should be able to delete class
-    cy.visit("/dashboard/admin/class")
+    cy.visitVor("/dashboard/admin/class")
     cy.contains(className).click()
     cy.contains("Delete").click()
     cy.contains("Yes").click()

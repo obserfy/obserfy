@@ -9,7 +9,7 @@ describe("test class related features", () => {
   it("should be able to add, view, and delete class", () => {
     const className = faker.name.firstName()
     const startTime = "12:00"
-    cy.visit("/dashboard/admin/class")
+    cy.visitVor("/dashboard/admin/class")
 
     cy.contains("New Class").click()
     cy.contains("Name").type(className)
