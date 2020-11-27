@@ -38,9 +38,9 @@ jobs:
           key: v3-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/.pnp.js') }}-${{ hashFiles('**/yarn.lock') }}
       - name: Cache translations
         uses: actions/cache@v2
-        id: cache-deps-and-gatsby
+        id: cache-translations
         env:
-          cache-name: cache-translations
+          cache-name: cache-vor-translations
         with:
           path: apps/vor/frontend/i18n
           key: v1-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('apps/vor/frontend/i18n/**/messages.po') }} }}
