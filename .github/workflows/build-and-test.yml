@@ -248,7 +248,7 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           command: yarn workspace e2e run cy:run --record --parallel
-          config: baseUrl=baseUrl=https://localhost:8000
+          config: baseUrl=https://localhost:8000
           record: true
           parallel: true
           group: 'E2E'
@@ -262,6 +262,7 @@ jobs:
           # Recommended: pass the GitHub token lets this action correctly
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # secret envs
           CYPRESS_AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
           CYPRESS_AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
           CYPRESS_AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
