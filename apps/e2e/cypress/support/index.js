@@ -1,3 +1,4 @@
+/* eslint-disable */
 // ***********************************************************
 // This example support/index.js is processed and
 // loaded automatically before your test files.
@@ -14,24 +15,21 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import "./commands"
+require("./commands")
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
-// require("@cypress/code-coverage/support")
+require("@cypress/code-coverage/support")
 
 Cypress.on("window:before:load", (window) => {
   const { XMLHttpRequest } = window
   const originalOpen = XMLHttpRequest.prototype.open
-  // @ts-ignore
   XMLHttpRequest.prototype.open = function open(...args) {
     this.addEventListener("load", function load() {
-      // @ts-ignore
       if (this.url.endsWith("hot-update.json")) {
         cy.$$(".stop", window.top.document).click()
         cy.$$(".restart", window.top.document).click()
       }
     })
-    // @ts-ignore
     originalOpen.apply(this, args)
   }
 })
