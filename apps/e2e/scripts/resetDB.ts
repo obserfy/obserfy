@@ -1,7 +1,7 @@
 const { Client } = require("pg")
 const { config } = require("dotenv")
 
-config({ path: "../../.env.development" })
+config({ path: "../../.env" })
 config({ path: "../../.env.local" })
 
 const [email] = process.argv.slice(2)
