@@ -5,7 +5,6 @@ frontend/cypress/screenshots
 coverage.txt
 test_result
 .env.local
-*.env
 *.iml
 node_modules
 .cache

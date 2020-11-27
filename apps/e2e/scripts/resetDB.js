@@ -38,7 +38,7 @@ var _a;
 var _this = this;
 var Client = require("pg").Client;
 var config = require("dotenv").config;
-config({ path: "../../.env.development" });
+config({ path: "../../.env" });
 config({ path: "../../.env.local" });
 var email = process.argv.slice(2)[0];
 var client = new Client({
