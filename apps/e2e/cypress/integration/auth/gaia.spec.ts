@@ -4,7 +4,7 @@ describe("test gaia authentication", () => {
     // workaround for cypress #781
     // @ts-ignore
     cy.clearCookies({ domain: null })
-    cy.exec("yarn run db:reset")
+    cy.exec(`yarn run db:reset ${Cypress.env("GAIA_USERNAME")}`)
   })
 
   it("should be redirected to login when logged out", () => {
