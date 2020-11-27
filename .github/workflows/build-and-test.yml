@@ -247,11 +247,15 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-          start: yarn workspace e2e run cy:ci
+          command: yarn workspace e2e run cy:run
           record: true
           parallel: true
           group: 'E2E'
+          wait-on: 'https://localhost:8000/login, http://localhost:3000'
+          install: false
+          working-directory: ./apps/e2e
         env:
+          NODE_TLS_REJECT_UNAUTHORIZED: 0
           # pass the Dashboard record key as an environment variable
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_KEY }}
           # Recommended: pass the GitHub token lets this action correctly
