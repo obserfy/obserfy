@@ -197,6 +197,15 @@ jobs:
       DOCKER_BUILDKIT: 1
       CYPRESS_VOR_HOST: https://localhost:8000
       CYPRESS_GAIA_HOST: http://localhost:3000
+    strategy:
+      # when one test fails, DO NOT cancel the other
+      # containers, because this will kill Cypress processes
+      # leaving the Dashboard hanging ...
+      # https://github.com/cypress-io/github-action/issues/48
+      fail-fast: false
+      matrix:
+        # run 3 copies of the current job in parallel
+        containers: [ 1, 2, 3 ]
 
     steps:
       - uses: actions/checkout@v2
@@ -235,6 +244,16 @@ jobs:
           AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
           AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
           AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
-      - run: yarn workspace e2e run cy:ci --key $CYPRESS_KEY
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          start: yarn workspace e2e run cy:ci
+          record: true
+          parallel: true
+          group: 'E2E'
         env:
-          CYPRESS_KEY: ${{ secrets.CYPRESS_KEY }}
+          # pass the Dashboard record key as an environment variable
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_KEY }}
+          # Recommended: pass the GitHub token lets this action correctly
+          # determine the unique run id necessary to re-run the checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
