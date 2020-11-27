@@ -13,7 +13,7 @@ describe("test adding new student", () => {
     cy.visitVor("/")
     cy.url().should(
       "equals",
-      `${Cypress.config().baseUrl}/id/dashboard/students`
+      `${Cypress.env("VOR_HOST")}/id/dashboard/students`
     )
     cy.contains("Admin").click()
 
@@ -21,6 +21,6 @@ describe("test adding new student", () => {
     cy.get("[data-cy=switch-english]").click()
     cy.contains("English").should("be.visible")
     cy.visitVor("/")
-    cy.url().should("equals", `${Cypress.config().baseUrl}/dashboard/students`)
+    cy.url().should("equals", `${Cypress.env("VOR_HOST")}/dashboard/students`)
   })
 })
