@@ -2,35 +2,13 @@
 
 describe("test student profile page", () => {
   const faker = require("faker")
-  let name
-  let email
-  let password
-  let schoolName
-
   beforeEach(() => {
     cy.clearSW()
-
-    name = faker.name.firstName()
-    email = faker.internet.email()
-    password = faker.internet.password()
-    schoolName = faker.company.companyName()
-
-    cy.request({
-      method: "POST",
-      url: "/auth/register",
-      body: { email, password, name },
-      form: true,
-    })
-
-    cy.request("POST", "/api/v1/schools", { name: schoolName }).then(
-      (result) => {
-        window.localStorage.setItem("SCHOOL_ID", result.body.id)
-      }
-    )
+    cy.registerVor()
   })
 
   it("should be able to edit all student data.", () => {
-    cy.visit("/")
+    cy.visitVor("/")
 
     // Create student
     let studentName = "Carol"

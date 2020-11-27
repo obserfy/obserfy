@@ -15,7 +15,7 @@ describe("test curriculum features", () => {
       faker.name.firstName(),
       faker.name.firstName(),
     ]
-    cy.visit("/dashboard/admin/curriculum")
+    cy.visitVor("/dashboard/admin/curriculum")
 
     cy.wait(100)
     cy.contains("Use Montessori", { matchCase: false }).click()
