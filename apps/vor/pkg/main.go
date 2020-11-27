@@ -45,12 +45,7 @@ func runServer() error {
 	defer logger.Sync(l)
 
 	// Setup db connection
-	db := postgres.Connect(
-		os.Getenv("DB_USERNAME"),
-		os.Getenv("DB_PASSWORD"),
-		os.Getenv("DB_HOST")+":"+os.Getenv("DB_PORT"),
-		&tls.Config{InsecureSkipVerify: true},
-	)
+	db := postgres.Connect(os.Getenv("DB_USERNAME"), os.Getenv("DB_PASSWORD"), os.Getenv("DB_HOST")+":"+os.Getenv("DB_PORT"), &tls.Config{InsecureSkipVerify: true}, "defaultdb")
 	defer func() {
 		if err := db.Close(); err != nil {
 			l.Error("Failed closing db", zap.Error(err))

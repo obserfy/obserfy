@@ -60,15 +60,15 @@ func connectTestDB() (db *pg.DB, err error) {
 		"postgres",
 		"localhost:5432",
 		nil,
+		"defaultdb_test",
 	)
-
 	// Wait until connection is healthy
 	for {
 		err = db.Ping(db.Context())
 		if err == nil {
 			break
 		} else {
-			fmt.Println("Error: PostgreSQL is down")
+			fmt.Println("TestError: PostgreSQL is down")
 			fmt.Println(err)
 			time.Sleep(1000 * time.Millisecond)
 		}

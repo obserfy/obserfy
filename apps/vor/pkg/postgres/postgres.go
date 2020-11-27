@@ -11,12 +11,12 @@ import (
 	richErrors "github.com/pkg/errors"
 )
 
-func Connect(user string, password string, addr string, tlsConfig *tls.Config) *pg.DB {
+func Connect(user string, password string, addr string, tlsConfig *tls.Config, database string) *pg.DB {
 	db := pg.Connect(&pg.Options{
 		User:      user,
 		Password:  password,
 		Addr:      addr,
-		Database:  "defaultdb",
+		Database:  database,
 		TLSConfig: tlsConfig,
 	})
 
