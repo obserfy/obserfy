@@ -1,11 +1,10 @@
-describe("test adding new student", () => {
+describe("test guardian access to student data", () => {
   const faker = require("faker")
 
   beforeEach(() => {
     cy.clearSW()
     cy.fixedClearCookies()
     cy.registerVor()
-    //
   })
 
   it("should be able to add student multiple times", () => {
