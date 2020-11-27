@@ -55,18 +55,39 @@ Cypress.Commands.add("registerVor", () => {
   const password = faker.internet.password()
   const schoolName = faker.company.companyName()
 
-  cy.wrap({name, email, password, schoolName}).as("vorUser")
-
   cy.request({
     method: "POST",
-    url: "/auth/register",
+    url: Cypress.env("VOR_HOST") + "/auth/register",
     body: { email, password, name },
     form: true,
   })
 
-  cy.request("POST", "/api/v1/schools", { name: schoolName }).then(
+  cy.request(
+    "POST",
+    Cypress.env("VOR_HOST") + "/api/v1/schools",
+    { name: schoolName },
+  ).then(
     (result) => {
       window.localStorage.setItem("SCHOOL_ID", result.body.id)
-    }
+    },
   )
+
+  cy.wrap({ name, email, password, schoolName }).as("vorUser")
+})
+
+Cypress.Commands.add("createClass", () => {
+  const newClass = {
+    endTime: "2020-04-26T03:00:00.000Z",
+    name: faker.company.companyName(),
+    startTime: "2020-04-26T02:00:00.000Z",
+    weekdays: [1],
+  }
+
+  cy.request(
+    "POST",
+    `${Cypress.env("VOR_HOST")}/api/v1/schools/${localStorage.getItem("SCHOOL_ID")}/classes`,
+    newClass,
+  )
+
+  cy.wrap(newClass).as("newClass")
 })

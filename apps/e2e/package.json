@@ -36,16 +36,13 @@
     "db:reset": "node ./scripts/resetDB.js"
   },
   "dependencies": {
-    "@babel/core": "7.12.9",
-    "@babel/preset-env": "7.12.7",
     "@cypress/webpack-preprocessor": "5.4.11",
     "@types/pg": "^7.14.7",
-    "babel-loader": "8.2.2",
     "dotenv": "^8.2.0",
     "pg": "^8.5.1",
     "pnp-webpack-plugin": "1.6.4",
     "prettier": "2.2.0",
-    "typescript": "4.1.2",
-    "webpack": "5.8.0"
+    "ts-loader": "^8.0.11",
+    "typescript": "4.1.2"
   }
 }
