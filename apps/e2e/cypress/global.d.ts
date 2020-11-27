@@ -11,5 +11,6 @@ declare namespace Cypress {
     clearSW(): Chainable<Element>
     visitVor(path: string): Chainable<Element>
     visitGaia(path: string): Chainable<Element>
+    fixedClearCookies(): Chainable<Element>
   }
 }
