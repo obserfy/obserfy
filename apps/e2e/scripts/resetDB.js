@@ -40,6 +40,7 @@ var Client = require("pg").Client;
 var config = require("dotenv").config;
 config({ path: "../../.env.development" });
 config({ path: "../../.env.local" });
+var email = process.argv.slice(2)[0];
 var client = new Client({
     user: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
@@ -65,7 +66,7 @@ var resetDB = function () { return __awaiter(_this, void 0, void 0, function () 
                 // language=PostgreSQL
                 _a.sent();
                 // language=PostgreSQL
-                return [4 /*yield*/, client.query("\n      truncate table weekdays cascade;\n\n      truncate table image_to_students cascade;\n\n      truncate table student_to_classes cascade;\n\n      truncate table guardian_to_students cascade;\n\n      truncate table student_material_progresses cascade;\n\n      truncate table sessions cascade;\n\n      truncate table user_to_schools cascade;\n\n      truncate table attendances cascade;\n\n      truncate table password_reset_tokens cascade;\n\n      truncate table lesson_plan_links cascade;\n\n      truncate table observation_to_images cascade;\n\n      truncate table observations cascade;\n\n      truncate table guardians cascade;\n\n      truncate table file_to_lesson_plans cascade;\n\n      truncate table files cascade;\n\n      truncate table lesson_plan_to_students cascade;\n\n      truncate table students cascade;\n\n      truncate table images cascade;\n\n      truncate table lesson_plans cascade;\n\n      truncate table lesson_plan_details cascade;\n\n      truncate table materials cascade;\n\n      truncate table subjects cascade;\n\n      truncate table areas cascade;\n\n      truncate table classes cascade;\n\n      truncate table schools cascade;\n\n      truncate table curriculums cascade;\n\n      truncate table subscriptions cascade;\n\n      truncate table users cascade;\n  ")
+                return [4 /*yield*/, client.query("\n        delete\n        from guardians\n        where email = '" + (email !== null && email !== void 0 ? email : "") + "'\n    ")
                     // language=PostgreSQL
                 ];
             case 4:
