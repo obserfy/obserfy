@@ -21,7 +21,7 @@ services:
     cap_add:
       - "SYS_PTRACE"
     env_file:
-      - .env.development
+      - .env
       - .env.local
 
   nginx:
@@ -48,7 +48,7 @@ services:
     volumes:
       - vor-minio:/data
     env_file:
-      - .env.development
+      - .env
       - .env.local
 
   imgproxy:
@@ -60,7 +60,7 @@ services:
       IMGPROXY_ENABLE_WEBP_DETECTION: "true"
       IMGPROXY_TTL: "1209600"
     env_file:
-      - .env.development
+      - .env
       - .env.local
 
   imgproxy-nginx:

@@ -18,18 +18,19 @@
 require("./commands")
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
-require("@cypress/code-coverage/support")
-
-Cypress.on("window:before:load", (window) => {
-  const { XMLHttpRequest } = window
-  const originalOpen = XMLHttpRequest.prototype.open
-  XMLHttpRequest.prototype.open = function open(...args) {
-    this.addEventListener("load", function load() {
-      if (this.url.endsWith("hot-update.json")) {
-        cy.$$(".stop", window.top.document).click()
-        cy.$$(".restart", window.top.document).click()
-      }
-    })
-    originalOpen.apply(this, args)
-  }
-})
+// require("@cypress/code-coverage/support")
+//
+// runs everytime we hot reload app, disabled cause it also got triggered when cypress hot reload
+// Cypress.on("window:before:load", (window) => {
+//   const { XMLHttpRequest } = window
+//   const originalOpen = XMLHttpRequest.prototype.open
+//   XMLHttpRequest.prototype.open = function open(...args) {
+//     this.addEventListener("load", function load() {
+//       if (this.url.endsWith("hot-update.json")) {
+//         cy.$$(".stop", window.top.document).click()
+//         cy.$$(".restart", window.top.document).click()
+//       }
+//     })
+//     originalOpen.apply(this, args)
+//   }
+// })

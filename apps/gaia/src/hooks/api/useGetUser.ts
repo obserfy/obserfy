@@ -12,7 +12,7 @@ const useGetUser = () => {
       !((error as any).message === "not_authenticated"),
     onError: async (error) => {
       if ((error as any)?.message === "not_authenticated") {
-        await router.push(`/session-expired`)
+        await router.push("/api/login")
       }
     },
     onSuccess: (data) => {
