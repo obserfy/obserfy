@@ -9,7 +9,6 @@
   "projectId": "bs4um5",
   "viewportHeight": 667,
   "viewportWidth": 375,
-  "video": false,
   "chromeWebSecurity": false,
   "retries": {
     "runMode": 1,
@@ -17,8 +16,13 @@
   },
   "env": {
     "VOR_HOST": "http://localhost:8001",
+    "GAIA_DOMAIN": "localhost",
     "GAIA_HOST": "http://localhost:3000",
     "GAIA_USERNAME": "<override this on cypress.env.json>",
-    "GAIA_PASSWORD": "<override this on cypress.env.json>"
+    "GAIA_PASSWORD": "<override this on cypress.env.json>",
+    "AUTH0_DOMAIN": "<override this on cypress.env.json>",
+    "AUTH0_CLIENT_ID": "<override this on cypress.env.json>",
+    "AUTH0_CLIENT_SECRET": "<override this on cypress.env.json>",
+    "AUTH0_COOKIE_SECRET": "asdhfkjalsf8934ewui32fn982iu3nf398434inv983fhnv489f843nv84398nurei9843"
   }
 }

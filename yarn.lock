@@ -5355,6 +5355,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@hapi/b64@npm:5.x.x":
+  version: 5.0.0
+  resolution: "@hapi/b64@npm:5.0.0"
+  dependencies:
+    "@hapi/hoek": 9.x.x
+  checksum: 45bed36a8ae3ca17e4b9676aa7bd2eafea148137e8ac94b8752e1a3c02e52d192687888f678597cc37acf80f9b60eefe3ba9e1571c2229a3f505e91419d433ba
+  languageName: node
+  linkType: hard
+
 "@hapi/boom@npm:7.x.x":
   version: 7.4.11
   resolution: "@hapi/boom@npm:7.4.11"
@@ -5380,7 +5389,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hapi/bourne@npm:^2.0.0":
+"@hapi/bourne@npm:2.x.x, @hapi/bourne@npm:^2.0.0":
   version: 2.0.0
   resolution: "@hapi/bourne@npm:2.0.0"
   checksum: 97a3e6d44c63debbb170f5966a8076022e2855f1c4fa81edc8c6fd255ba56ce047c3dcce5055858188610eafd77e6420c67ece7fd17e3192830e2fbca7766fd0
@@ -5393,6 +5402,15 @@ __metadata:
   dependencies:
     "@hapi/boom": 7.x.x
   checksum: d7b7c9adab0aebc49b80d41b1fb54a1dd058ee280b15117ce6564da1a5b6dee4d2f25ca0da019da24ad64d92868c653b361bbfc44285fd55e46a2949d795997b
+  languageName: node
+  linkType: hard
+
+"@hapi/cryptiles@npm:5.x.x":
+  version: 5.1.0
+  resolution: "@hapi/cryptiles@npm:5.1.0"
+  dependencies:
+    "@hapi/boom": 9.x.x
+  checksum: 36bfea3cc71087bf99b6911b873136de0dd85c30d5147b53147be5b68783985a304a8a5e76800d9d3031ab9d2a3722dce971092e27d526a607c6d168ddc4e7c0
   languageName: node
   linkType: hard
 
@@ -5434,6 +5452,19 @@ __metadata:
     "@hapi/cryptiles": 4.x.x
     "@hapi/hoek": 8.x.x
   checksum: 31150d577b92d277692189a186ddd36a2bb5745cac5672d5935313d5db7914b94951507c381bcb123c014c8780d3362b62707b4e0971e31ba2f7ea927e8cf425
+  languageName: node
+  linkType: hard
+
+"@hapi/iron@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "@hapi/iron@npm:6.0.0"
+  dependencies:
+    "@hapi/b64": 5.x.x
+    "@hapi/boom": 9.x.x
+    "@hapi/bourne": 2.x.x
+    "@hapi/cryptiles": 5.x.x
+    "@hapi/hoek": 9.x.x
+  checksum: 427104bcc27df6f28d0c54f8dacbcebbce8ef4d67d1e3f39036af0e989385c63c02184a1f05dead7d3b9b232770d57cbe60df2a92380ea006e2757f96c07527e
   languageName: node
   linkType: hard
 
@@ -11137,6 +11168,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"auth0-js@npm:^9.14.0":
+  version: 9.14.0
+  resolution: "auth0-js@npm:9.14.0"
+  dependencies:
+    base64-js: ^1.3.0
+    idtoken-verifier: ^2.0.3
+    js-cookie: ^2.2.0
+    qs: ^6.7.0
+    superagent: ^5.3.1
+    url-join: ^4.0.1
+    winchan: ^0.2.2
+  checksum: 90f1ffc2b155d9e04559cf36f6e23ede32fc4dca8b44296d54bbd574b3d570404cabca32dafcfeeb67f0823257e6d43a28145ccc172503191d1686d806360fc4
+  languageName: node
+  linkType: hard
+
 "auto-bind@npm:~4.0.0":
   version: 4.0.0
   resolution: "auto-bind@npm:4.0.0"
@@ -12166,6 +12212,13 @@ __metadata:
   version: 1.3.1
   resolution: "base64-js@npm:1.3.1"
   checksum: 8a0cc69d7c7c0ab75c164d3e2eccc3dd65fbaba17bcf440aab54636afd31255287ac3cd16a111e98d741c4a6e0b5631774b0c32818355089e645df3ae96a49bb
+  languageName: node
+  linkType: hard
+
+"base64-js@npm:^1.3.0":
+  version: 1.5.1
+  resolution: "base64-js@npm:1.5.1"
+  checksum: c1b41a26ddc6620eb7f1ee6c29c812f5942a4e328e74263f995872cfb8ca3aee08542beb25cd10fd7ef16e4f16603e25c35a26e776c01fd55277e5035e829e0e
   languageName: node
   linkType: hard
 
@@ -14322,7 +14375,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"component-emitter@npm:^1.2.1, component-emitter@npm:~1.3.0":
+"component-emitter@npm:^1.2.1, component-emitter@npm:^1.3.0, component-emitter@npm:~1.3.0":
   version: 1.3.0
   resolution: "component-emitter@npm:1.3.0"
   checksum: fc4edbf1014f0aed88dcec33ca02d2938734e428423f640d8a3f94975615b8e8c506c19e29b93949637c5a281353e75fa79e299e0d57732f42a9fe346cb2cad6
@@ -14582,6 +14635,13 @@ __metadata:
   version: 0.4.1
   resolution: "cookie@npm:0.4.1"
   checksum: b8e0928e3e7aba013087974b33a6eec730b0a68b7ec00fc3c089a56ba2883bcf671252fc2ed64775aa1ca64796b6e1f6fdddba25a66808aef77614d235fd3e06
+  languageName: node
+  linkType: hard
+
+"cookiejar@npm:^2.1.2":
+  version: 2.1.2
+  resolution: "cookiejar@npm:2.1.2"
+  checksum: 4c733c15c190798bc1fb724f3044959cabc1565dee7dfc00f99219c7a4189b21cc243ccab52e0708994923f684189a4afa6b01b6b157f8c99273f1001602ac6f
   languageName: node
   linkType: hard
 
@@ -14948,6 +15008,13 @@ __metadata:
     randombytes: ^2.0.0
     randomfill: ^1.0.3
   checksum: 8b558367b3759652b7c8dfd8fa0dc55a69362ae3efe039ac44d4b010bc63143708f4748ef8efc079945bf61dbc53c829cda968cd2abc1f34fcf43f669a414f73
+  languageName: node
+  linkType: hard
+
+"crypto-js@npm:^3.2.1":
+  version: 3.3.0
+  resolution: "crypto-js@npm:3.3.0"
+  checksum: 7cf8de489f9f25084a3b22cc6e944e2e11e03b6374777a7a554739ee27e3b35d5dfdac490e0a66bc191c9ecbbea13ad716f59345657335b39d95f9bc19c40ac5
   languageName: node
   linkType: hard
 
@@ -16621,11 +16688,13 @@ __metadata:
   dependencies:
     "@cypress/code-coverage": 3.8.5
     "@cypress/webpack-preprocessor": 5.4.11
+    "@hapi/iron": ^6.0.0
     "@types/faker": 5.1.4
     "@types/node": 14.14.10
     "@types/pg": ^7.14.7
     "@typescript-eslint/eslint-plugin": 4.8.1
     "@typescript-eslint/parser": 4.8.1
+    auth0-js: ^9.14.0
     cypress: 6.0.0
     cypress-intellij-reporter: 0.0.5
     dotenv: ^8.2.0
@@ -17127,6 +17196,13 @@ __metadata:
   version: 3.3.1
   resolution: "es6-promise@npm:3.3.1"
   checksum: 49fefad27ef0cb6a6cdf62dd0040c96596a50b5e0d3901ca1fa1faa5caa690068d5c789c8bcd1d71f917311f67d0d11f617d97957551936575dad0c5154c721e
+  languageName: node
+  linkType: hard
+
+"es6-promise@npm:^4.2.8":
+  version: 4.2.8
+  resolution: "es6-promise@npm:4.2.8"
+  checksum: b85e5faab1b3785b8bf1a6c91b5f176cf3e5e4550359508ef54dd58b19ad2b831e04607e2a0a464f2a1407bf02897d5c88daf6e3d94c2ee4510e8191b44b64ef
   languageName: node
   linkType: hard
 
@@ -19104,7 +19180,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"formidable@npm:^1.2.1":
+"formidable@npm:^1.2.1, formidable@npm:^1.2.2":
   version: 1.2.2
   resolution: "formidable@npm:1.2.2"
   checksum: 9fe5ef38d5881ac16cc8ca78bd3229fbf32b10e0fd3b718ec20f86ea1de7302aa0ffcfa9a9163cec02fc3f825faf9d0533f24539bb20ae6d73b580b526c25edb
@@ -21936,6 +22012,20 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"idtoken-verifier@npm:^2.0.3":
+  version: 2.1.0
+  resolution: "idtoken-verifier@npm:2.1.0"
+  dependencies:
+    base64-js: ^1.3.0
+    crypto-js: ^3.2.1
+    es6-promise: ^4.2.8
+    jsbn: ^1.1.0
+    unfetch: ^4.1.0
+    url-join: ^4.0.1
+  checksum: 949dac3ce1d2ee5eeb17ced900e7283a44a32e0ea5065e4fdc69a7c652591826dcea9cabe2d44559d933a38df1132c5c5acebe93e68f403533a6aab1b5dd2700
+  languageName: node
+  linkType: hard
+
 "ieee754@npm:^1.1.13, ieee754@npm:^1.1.4":
   version: 1.1.13
   resolution: "ieee754@npm:1.1.13"
@@ -24289,6 +24379,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"js-cookie@npm:^2.2.0":
+  version: 2.2.1
+  resolution: "js-cookie@npm:2.2.1"
+  checksum: c110f78427cb7715f67c69df0b3430f7cf9dafb5ddb13014df171d4fb61ccda0b1caf9767412cde63cab4bad697a5d4ce83b0c2e7ec650ec9929ed70750d20ae
+  languageName: node
+  linkType: hard
+
 "js-levenshtein@npm:^1.1.3":
   version: 1.1.6
   resolution: "js-levenshtein@npm:1.1.6"
@@ -24338,6 +24435,13 @@ fsevents@^1.2.7:
   bin:
     js-yaml: bin/js-yaml.js
   checksum: 2eb95464e5263aedc20ae2d9280f0e29b00adab15ece080ec42473d7055efaab24b904108644d115f687efe05a5bde02972b883aafa93607c4c108f667a56fa7
+  languageName: node
+  linkType: hard
+
+"jsbn@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "jsbn@npm:1.1.0"
+  checksum: 1400c412cdb40a703be30ec4faaaba99cdc63cb61caf8b8d5898d968d3ec50c2154fca5a7e4b950d1f55ee50668221001cf4054da5f49f73a05616361ff0a1c1
   languageName: node
   linkType: hard
 
@@ -30814,7 +30918,7 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"qs@npm:^6.5.2, qs@npm:^6.6.0":
+"qs@npm:^6.5.2, qs@npm:^6.6.0, qs@npm:^6.7.0, qs@npm:^6.9.4":
   version: 6.9.4
   resolution: "qs@npm:6.9.4"
   checksum: beba62d1e1c66e9888cc08a488eb95771c252a92289a96bff4b767a49e4e7afe9487d7ee3269b856292d8281b855ac5eac927c2e77f845e407ee4fe54743fea7
@@ -35163,6 +35267,25 @@ resolve@^1.19.0:
   languageName: node
   linkType: hard
 
+"superagent@npm:^5.3.1":
+  version: 5.3.1
+  resolution: "superagent@npm:5.3.1"
+  dependencies:
+    component-emitter: ^1.3.0
+    cookiejar: ^2.1.2
+    debug: ^4.1.1
+    fast-safe-stringify: ^2.0.7
+    form-data: ^3.0.0
+    formidable: ^1.2.2
+    methods: ^1.1.2
+    mime: ^2.4.6
+    qs: ^6.9.4
+    readable-stream: ^3.6.0
+    semver: ^7.3.2
+  checksum: 369d3727aa400b590854481a4811d7ed4a8224f3ce3ec4a1dac92f573345d3785f173c7cb822560b8a799b9981dcef16c19d1bf175f5e72cc555695d20588e16
+  languageName: node
+  linkType: hard
+
 "supports-color@npm:*, supports-color@npm:7.1.0, supports-color@npm:^7.0.0, supports-color@npm:^7.1.0":
   version: 7.1.0
   resolution: "supports-color@npm:7.1.0"
@@ -36933,6 +37056,13 @@ typescript@^4.0.0:
   languageName: node
   linkType: hard
 
+"url-join@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "url-join@npm:4.0.1"
+  checksum: 278de41c66a739862dd3b0d8f01c18a72d1bdfbc1e1f0d3d72e68aeba54193c3c740c07cc9d32a81491d59cc1c09e38763ab7cc72c6f685549ec98e5c9cd9cc1
+  languageName: node
+  linkType: hard
+
 "url-loader@npm:4.1.1":
   version: 4.1.1
   resolution: "url-loader@npm:4.1.1"
@@ -38151,6 +38281,13 @@ typescript@^4.0.0:
   dependencies:
     string-width: ^4.0.0
   checksum: 729c30582e49bdcb1372216eedfd71d1640a1344a4b4e970bc9f33d575b56b130f530b383fbab2cf2bcffb76ea4357e6a66939778d8de91ca66037651d94e01a
+  languageName: node
+  linkType: hard
+
+"winchan@npm:^0.2.2":
+  version: 0.2.2
+  resolution: "winchan@npm:0.2.2"
+  checksum: 81c4983f7e52e27e0dba7a7775bebdda449786abcb4c584ce13627e6d1bf29839d61e21fe9fe148cb5aeddd8d589608cb26611204a497c8974ec4ac32e6b36e1
   languageName: node
   linkType: hard
 
