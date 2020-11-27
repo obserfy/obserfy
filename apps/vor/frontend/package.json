@@ -124,7 +124,7 @@
     "lint": "yarn i18n:compile && eslint --ext .tsx,.ts src/",
     "typecheck": "yarn i18n:compile && tsc --noemit",
     "build": "yarn i18n:compile && gatsby build",
-    "build:ci": "yarn i18n:compile && gatsby build",
+    "build:ci": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build",
     "develop": "GATSBY_HOT_LOADER=fast-refresh CYPRESS_SUPPORT=y gatsby develop -H 0.0.0.0 -p 8001",
     "develop:preact": "CYPRESS_SUPPORT=y gatsby develop -H 0.0.0.0 -p 8001",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
