@@ -1248,7 +1248,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@sentry/webpack-plugin",
-        "npm:1.13.0"
+        "npm:1.14.0"
       ],
       [
         "@sindresorhus/df",
@@ -24337,10 +24337,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@sentry/webpack-plugin", [
-        ["npm:1.13.0", {
-          "packageLocation": "./.yarn/cache/@sentry-webpack-plugin-npm-1.13.0-521f4267a5-c7091db781.zip/node_modules/@sentry/webpack-plugin/",
+        ["npm:1.14.0", {
+          "packageLocation": "./.yarn/cache/@sentry-webpack-plugin-npm-1.14.0-d838f9d123-81e2e90ea5.zip/node_modules/@sentry/webpack-plugin/",
           "packageDependencies": [
-            ["@sentry/webpack-plugin", "npm:1.13.0"],
+            ["@sentry/webpack-plugin", "npm:1.14.0"],
             ["@sentry/cli", "npm:1.59.0"]
           ],
           "linkType": "HARD",
@@ -38591,7 +38591,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@sentry/browser", "npm:5.27.6"],
             ["@sentry/integrations", "npm:5.27.6"],
             ["@sentry/node", "npm:5.27.6"],
-            ["@sentry/webpack-plugin", "npm:1.13.0"],
+            ["@sentry/webpack-plugin", "npm:1.14.0"],
             ["@tailwindcss/typography", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:0.3.1"],
             ["@types/body-scroll-lock", "npm:2.6.1"],
             ["@types/formidable", "npm:1.0.31"],

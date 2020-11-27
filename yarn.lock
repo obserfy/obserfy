@@ -7280,12 +7280,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/webpack-plugin@npm:1.13.0":
-  version: 1.13.0
-  resolution: "@sentry/webpack-plugin@npm:1.13.0"
+"@sentry/webpack-plugin@npm:1.14.0":
+  version: 1.14.0
+  resolution: "@sentry/webpack-plugin@npm:1.14.0"
   dependencies:
     "@sentry/cli": ^1.58.0
-  checksum: c7091db78123a4d2a326556ddde82a1cdcf537943a637e4254b8c8fc03494e8ecf3c7732a58684a8fa8b3251980a28b1324f62196e82d64d5008264adb993c63
+  checksum: 81e2e90ea5615fbb15d5ad3ecfb08b0646a32ab7261fdbe00f4690e6c5824b240475e6c6c8c0df60dc2233e17ec3590c9b466e65da6f52ca2049496dd163be6b
   languageName: node
   linkType: hard
 
@@ -19620,7 +19620,7 @@ fsevents@^1.2.7:
     "@sentry/browser": 5.27.6
     "@sentry/integrations": 5.27.6
     "@sentry/node": 5.27.6
-    "@sentry/webpack-plugin": 1.13.0
+    "@sentry/webpack-plugin": 1.14.0
     "@tailwindcss/typography": 0.3.1
     "@types/body-scroll-lock": 2.6.1
     "@types/formidable": 1.0.31
