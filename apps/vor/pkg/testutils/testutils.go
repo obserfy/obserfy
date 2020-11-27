@@ -60,19 +60,6 @@ func connectTestDB() (db *pg.DB, err error) {
 		"postgres",
 		"localhost:5432",
 		nil,
-		"defaultdb",
-	)
-	_, _ = db.Exec("create database defaultdb_test")
-	err = db.Close()
-	if err != nil {
-		return nil, err
-	}
-
-	db = postgres.Connect(
-		"postgres",
-		"postgres",
-		"localhost:5432",
-		nil,
 		"defaultdb_test",
 	)
 	// Wait until connection is healthy

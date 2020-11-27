@@ -77,13 +77,14 @@ services:
     image: obserfy/postgres-dev:latest
     container_name: vor-postgres
     environment:
+      POSTGRES_MULTIPLE_DATABASES: defaultdb,defaultdb_test
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: defaultdb
     command: ["postgres", "-c", "log_statement=all"]
     ports:
       - "5432:5432"
     volumes:
       - vor:/var/lib/postgresql/data
+      - ./docker/postgres/scripts:/docker-entrypoint-initdb.d
 
 volumes:
   vor:
