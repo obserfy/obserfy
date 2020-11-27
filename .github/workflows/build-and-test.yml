@@ -219,4 +219,10 @@ jobs:
         if: steps.cache-deps.outputs.cache-hit != 'true'
         run: yarn workspaces focus e2e gaia
       - run: yarn workspace gaia run start &
-      - run: yarn workspace e2e run cy:ci
+        env:
+          AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
+          AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
+          AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
+      - run: yarn workspace e2e run cy:ci --key $CYPRES_KEY
+        env:
+          CYPRES_KEY: ${{ secrets.CYPRES_KEY }}
