@@ -84,7 +84,6 @@ services:
       - "5432:5432"
     volumes:
       - vor:/var/lib/postgresql/data
-      - ./docker/postgres/scripts:/docker-entrypoint-initdb.d
 
 volumes:
   vor:
