@@ -187,7 +187,7 @@ jobs:
       - run: yarn workspace vor run test
 
   e2e-parallel:
-    if:  ${{ !startsWith('ref/heads/renovate', github.ref) }}
+    if:  ${{ !startsWith(github.ref, 'ref/heads/renovate') && !startsWith(github.ref, 'ref/heads/develop')}}
     needs:
       - build-gaia
       - build-vor-frontend
@@ -273,7 +273,7 @@ jobs:
 
   # runs on renovate build to conserve cypress quota.
   e2e-sequential:
-    if:  ${{ startsWith('ref/heads/renovate', github.ref) }}
+    if:  ${{ startsWith(github.ref, 'ref/heads/renovate') || startsWith(github.ref, 'ref/heads/develop')}}
     needs:
       - build-gaia
       - build-vor-frontend
