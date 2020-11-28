@@ -323,7 +323,7 @@ jobs:
       - name: Cypress parallel run
         uses: cypress-io/github-action@v2
         with:
-          command: yarn workspace e2e run cy:run
+          command: yarn workspace e2e run cy:run --config baseUrl=https://localhost:8000
           record: true
           parallel: true
           group: 'E2E'
