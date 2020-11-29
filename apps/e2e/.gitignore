@@ -5,3 +5,4 @@ cypress/videos
 cypress/screenshots
 yarn-error.log
 package-lock.json
+cypress.env.json

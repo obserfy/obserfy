@@ -1,5 +1,7 @@
 import React, { FC, useState } from "react"
 import { Box } from "theme-ui"
+import { t } from "@lingui/macro"
+import { useLingui } from "@lingui/react"
 import DialogHeader from "../DialogHeader/DialogHeader"
 import Dialog from "../Dialog/Dialog"
 import Input from "../Input/Input"
@@ -13,11 +15,12 @@ const NewCustomCurriculumDialog: FC<NewCustomCurriculumDialogProps> = ({
 }) => {
   const [postNewCurriculum, { isLoading }] = usePostNewCurriculum()
   const [name, setName] = useState("")
+  const { i18n } = useLingui()
 
   return (
     <Dialog>
       <DialogHeader
-        title="Custom Curriculum"
+        title={i18n._(t`Custom Curriculum`)}
         onAccept={async () => {
           const response = await postNewCurriculum({
             template: "custom",
@@ -32,11 +35,11 @@ const NewCustomCurriculumDialog: FC<NewCustomCurriculumDialogProps> = ({
       />
       <Box p={3} sx={{ backgroundColor: "background" }}>
         <Input
-          label="Curriculum Name"
+          label={i18n._(t`Curriculum Name`)}
           value={name}
           onChange={(e) => setName(e.target.value)}
           sx={{ width: "100%" }}
-          placeholder="Choose a Name"
+          placeholder={i18n._(t`Choose a Name`)}
         />
       </Box>
     </Dialog>

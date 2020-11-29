@@ -1067,7 +1067,7 @@ input:focus~.emotion-24 {
             <input
               class="emotion-34"
               disabled=""
-              placeholder="Not set"
+              placeholder="Not Set"
               value="Wednesday, 27 Jun 2018"
             />
           </div>

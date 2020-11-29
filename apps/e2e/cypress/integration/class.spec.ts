@@ -1,37 +1,15 @@
-describe("test class related features", () => {
+describe("test class related features", function () {
   const faker = require("faker")
 
-  beforeEach(() => {
-    window.navigator.serviceWorker.getRegistrations().then((registrations) => {
-      registrations.forEach((registration) => {
-        registration.unregister()
-      })
-    })
-
-    const name = faker.name.firstName()
-    const email = faker.internet.email()
-    const password = faker.internet.password()
-
-    const schoolName = faker.company.companyName()
-
-    cy.request({
-      method: "POST",
-      url: "/auth/register",
-      body: { email, password, name },
-      form: true,
-    })
-
-    cy.request("POST", "/api/v1/schools", { name: schoolName }).then(
-      (result) => {
-        window.localStorage.setItem("SCHOOL_ID", result.body.id)
-      }
-    )
+  beforeEach(function () {
+    cy.clearSW()
+    cy.registerVor()
   })
 
-  it("should be able to add, view, and delete class", () => {
+  it("should be able to add, view, and delete class", function () {
     const className = faker.name.firstName()
     const startTime = "12:00"
-    cy.visit("/dashboard/admin/class")
+    cy.visitVor("/dashboard/admin/class")
 
     cy.contains("New Class").click()
     cy.contains("Name").type(className)

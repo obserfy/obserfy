@@ -1,40 +1,14 @@
 // Test the whole happy path
 
-describe("test student profile page", () => {
+describe("test student profile page", function () {
   const faker = require("faker")
-  let name
-  let email
-  let password
-  let schoolName
-
-  beforeEach(() => {
-    window.navigator.serviceWorker.getRegistrations().then((registrations) => {
-      registrations.forEach((registration) => {
-        registration.unregister()
-      })
-    })
-
-    name = faker.name.firstName()
-    email = faker.internet.email()
-    password = faker.internet.password()
-    schoolName = faker.company.companyName()
-
-    cy.request({
-      method: "POST",
-      url: "/auth/register",
-      body: { email, password, name },
-      form: true,
-    })
-
-    cy.request("POST", "/api/v1/schools", { name: schoolName }).then(
-      (result) => {
-        window.localStorage.setItem("SCHOOL_ID", result.body.id)
-      }
-    )
+  beforeEach(function () {
+    cy.clearSW()
+    cy.registerVor()
   })
 
-  it("should be able to edit all student data.", () => {
-    cy.visit("/")
+  it("should be able to edit all student data.", function () {
+    cy.visitVor("/")
 
     // Create student
     let studentName = "Carol"

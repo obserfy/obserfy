@@ -1,53 +1,15 @@
-describe("Test lesson plan features", () => {
-  const faker = require("faker")
-
-  const className = faker.company.companyName()
-  const classStartTime = faker.date.recent()
-
-  beforeEach(() => {
-    window.navigator.serviceWorker.getRegistrations().then((registrations) => {
-      registrations.forEach((registration) => {
-        registration.unregister()
-      })
+describe("Test lesson plan features", function () {
+  beforeEach(function () {
+    cy.clearSW()
+    cy.registerVor()
+    cy.createSchool()
+    cy.createClass()
+    cy.createStudent().then(() => {
+      cy.visitVor(`/dashboard/students/plans?studentId=${this.student.id}`)
     })
-
-    const name = faker.name.firstName()
-    const email = faker.internet.email()
-    const password = faker.internet.password()
-
-    const schoolName = faker.company.companyName()
-
-    const studentName = faker.name.firstName()
-
-    cy.request({
-      method: "POST",
-      url: "/auth/register",
-      body: { email, password, name },
-      form: true,
-    })
-
-    cy.request("POST", "/api/v1/schools", { name: schoolName }).then(
-      (result) => {
-        window.localStorage.setItem("SCHOOL_ID", result.body.id)
-        return cy
-          .request("POST", `/api/v1/schools/${result.body.id}/classes`, {
-            name: className,
-            startTime: classStartTime.toISOString(),
-            endTime: classStartTime.toISOString(),
-          })
-          .request("POST", `/api/v1/schools/${result.body.id}/students`, {
-            name: studentName,
-          })
-          .then((studentResult) => {
-            cy.visit(
-              `/dashboard/students/plans?studentId=${studentResult.body.id}`
-            )
-          })
-      }
-    )
   })
 
-  it("should be able to edit, create, and delete plans.", () => {
+  it("should be able to edit, create, and delete plans.", function () {
     const firstName = "A Bold New Plan"
 
     const secondName = "A bolder plan"
@@ -78,10 +40,10 @@ describe("Test lesson plan features", () => {
     cy.contains(secondName).should("be.visible")
 
     // Regression test, should be able to delete class
-    cy.visit("/dashboard/admin/class")
-    cy.contains(className).click()
+    cy.visitVor("/dashboard/admin/class")
+    cy.contains(this.class.name).click()
     cy.contains("Delete").click()
     cy.contains("Yes").click()
-    cy.contains(className).should("not.exist")
+    cy.contains(this.class.name).should("not.exist")
   })
 })

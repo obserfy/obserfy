@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef, useState } from "react"
+import React, { FC, useLayoutEffect, useRef, useState } from "react"
 import { Box, Button, Flex, Image } from "theme-ui"
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock"
 import { useGetStudent } from "../../api/useGetStudent"
@@ -30,7 +30,7 @@ const ImagePreviewOverlay: FC<ImagePreviewOverlayProps> = ({
   const student = useGetStudent(studentId)
   const [hideUI, setHideUI] = useState(false)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (ref.current) {
       disableBodyScroll(ref.current, { reserveScrollBarGap: true })
     }
