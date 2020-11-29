@@ -18843,7 +18843,7 @@ __metadata:
     stylelint-config-standard: 20.0.0
     tailwindcss: 2.0.1
     typescript: 4.1.2
-    typescript-plugin-css-modules: 2.8.0
+    typescript-plugin-css-modules: 3.0.1
   languageName: unknown
   linkType: soft
 
@@ -28793,6 +28793,17 @@ mocha@latest:
   languageName: node
   linkType: hard
 
+"postcss-icss-keyframes@npm:^0.2.1":
+  version: 0.2.1
+  resolution: "postcss-icss-keyframes@npm:0.2.1"
+  dependencies:
+    icss-utils: ^3.0.1
+    postcss: ^6.0.2
+    postcss-value-parser: ^3.3.0
+  checksum: 11751440dfda0483947135934aa1d63107edf1368d23ea507a8339ca3470e276ce2cf03e7a37575f92d9a5bd476cf824a8dc1ad2283207c8f7695b4962663a20
+  languageName: node
+  linkType: hard
+
 "postcss-icss-selectors@npm:^2.0.3":
   version: 2.0.3
   resolution: "postcss-icss-selectors@npm:2.0.3"
@@ -35676,9 +35687,9 @@ resolve@^1.19.0:
   languageName: node
   linkType: hard
 
-"typescript-plugin-css-modules@npm:2.8.0":
-  version: 2.8.0
-  resolution: "typescript-plugin-css-modules@npm:2.8.0"
+"typescript-plugin-css-modules@npm:3.0.1":
+  version: 3.0.1
+  resolution: "typescript-plugin-css-modules@npm:3.0.1"
   dependencies:
     dotenv: ^8.2.0
     icss-utils: ^4.1.1
@@ -35686,6 +35697,7 @@ resolve@^1.19.0:
     lodash.camelcase: ^4.3.0
     postcss: ^7.0.27
     postcss-filter-plugins: ^3.0.1
+    postcss-icss-keyframes: ^0.2.1
     postcss-icss-selectors: ^2.0.3
     postcss-load-config: ^2.1.0
     reserved-words: ^0.1.2
@@ -35694,7 +35706,7 @@ resolve@^1.19.0:
     tsconfig-paths: ^3.9.0
   peerDependencies:
     typescript: ">=3.0.0"
-  checksum: 1ab1a6c61916173f265408a8b560c40124aca09cb3ef56815921421a9850a441f88ad9bfaa4a22e240731a6a5953cb35373561c9b4512bfe4f9c98884369a43e
+  checksum: efc02f2f81f6e0f92bd4b5f9a0736c75c0e35d77e65c3f5d8b5acfa7e3f32353b3fd8ee6345bacc4baa8c93109b0bb3d563827ab45dd484deae08bb7b377a2a9
   languageName: node
   linkType: hard
 

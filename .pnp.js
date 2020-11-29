@@ -7639,6 +7639,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:2.0.0"
       ],
       [
+        "postcss-icss-keyframes",
+        "npm:0.2.1"
+      ],
+      [
         "postcss-icss-selectors",
         "npm:2.0.3"
       ],
@@ -9575,7 +9579,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "typescript-plugin-css-modules",
-        "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:2.8.0"
+        "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:3.0.1"
       ],
       [
         "typeson",
@@ -37580,7 +37584,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["stylelint-config-standard", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:20.0.0"],
             ["tailwindcss", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:2.0.1"],
             ["typescript", "patch:typescript@npm%3A4.1.2#builtin<compat/typescript>::version=4.1.2&hash=5bf698"],
-            ["typescript-plugin-css-modules", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:2.8.0"]
+            ["typescript-plugin-css-modules", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:3.0.1"]
           ],
           "linkType": "SOFT",
         }]
@@ -49276,6 +49280,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["postcss-icss-keyframes", [
+        ["npm:0.2.1", {
+          "packageLocation": "./.yarn/cache/postcss-icss-keyframes-npm-0.2.1-a32383a302-11751440df.zip/node_modules/postcss-icss-keyframes/",
+          "packageDependencies": [
+            ["postcss-icss-keyframes", "npm:0.2.1"],
+            ["icss-utils", "npm:3.0.1"],
+            ["postcss", "npm:6.0.23"],
+            ["postcss-value-parser", "npm:3.3.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["postcss-icss-selectors", [
         ["npm:2.0.3", {
           "packageLocation": "./.yarn/cache/postcss-icss-selectors-npm-2.0.3-ca110be58d-e5db6c7b4a.zip/node_modules/postcss-icss-selectors/",
@@ -57060,10 +57076,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["typescript-plugin-css-modules", [
-        ["virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:2.8.0", {
-          "packageLocation": "./.yarn/$$virtual/typescript-plugin-css-modules-virtual-4bd4fa53f6/0/cache/typescript-plugin-css-modules-npm-2.8.0-0af5259f9f-1ab1a6c619.zip/node_modules/typescript-plugin-css-modules/",
+        ["virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:3.0.1", {
+          "packageLocation": "./.yarn/$$virtual/typescript-plugin-css-modules-virtual-13b1fcad2c/0/cache/typescript-plugin-css-modules-npm-3.0.1-c5099e38e2-efc02f2f81.zip/node_modules/typescript-plugin-css-modules/",
           "packageDependencies": [
-            ["typescript-plugin-css-modules", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:2.8.0"],
+            ["typescript-plugin-css-modules", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:3.0.1"],
             ["@types/typescript", null],
             ["dotenv", "npm:8.2.0"],
             ["icss-utils", "npm:4.1.1"],
@@ -57071,6 +57087,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["lodash.camelcase", "npm:4.3.0"],
             ["postcss", "npm:7.0.32"],
             ["postcss-filter-plugins", "npm:3.0.1"],
+            ["postcss-icss-keyframes", "npm:0.2.1"],
             ["postcss-icss-selectors", "npm:2.0.3"],
             ["postcss-load-config", "npm:2.1.0"],
             ["reserved-words", "npm:0.1.2"],
