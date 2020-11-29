@@ -38,14 +38,13 @@ func (s *BaseTestSuite) TearDownSuite() {
 }
 
 func (s *BaseTestSuite) SetupSuite() {
-	err := godotenv.Load("../../../../../.env")
-	if err != nil {
-		panic(err)
-	}
-	err = godotenv.Load("../../../../../.env.local")
-	if err != nil {
-		panic(err)
-	}
+	_ = godotenv.Load(
+		"../../../../../.env.test",
+		"../../../../../.env.local",
+		"../../../../../.env",
+	)
+
+	var err error
 	s.DB, err = connectTestDB()
 	if err != nil {
 		panic(err)
