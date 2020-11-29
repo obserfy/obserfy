@@ -70,7 +70,7 @@ const ImagePreview: FC<{
           className="w-full object-cover"
         />
         {observations.data?.map((obv) => (
-          <div className="m-4">
+          <div className="p-4 bg-white">
             <div className="font-bold">{obv.shortDesc}</div>
             <div className="font-normal">{obv.longDesc}</div>
           </div>
