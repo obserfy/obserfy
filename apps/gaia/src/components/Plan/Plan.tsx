@@ -1,14 +1,12 @@
 import React, { FC, useState } from "react"
-import { Svg } from "react-optimized-image/lib"
-import LinkIcon from "../../icons/link.svg"
 import Button from "../Button/Button"
 import Textarea from "../Textarea/Textarea"
 import usePostPlanObservation from "../../hooks/api/usePostPlanObservation"
 import dayjs, { Dayjs } from "../../utils/dayjs"
-import TrashIcon from "../../icons/trash.svg"
 import usePatchObservation from "../../hooks/api/usePatchObservation"
 import useDeleteObservation from "../../hooks/api/useDeleteObservation"
 import Dialog from "../Dialog/Dialog"
+import Icon from "../Icon/Icon"
 
 interface Props {
   planId: string
@@ -59,7 +57,10 @@ const Plan: FC<Props> = ({
       rel="noopener noreferrer"
       target="_blank"
     >
-      <Svg src={LinkIcon} className="w-5 h-5 mr-2 fill-current flex-shrink-0" />
+      <Icon
+        src="/icons/link.svg"
+        className="w-5 h-5 mr-2 fill-current flex-shrink-0"
+      />
       <div className="whitespace-no-wrap">{link.url}</div>
     </a>
   ))
@@ -220,7 +221,7 @@ const EditObservationForm: FC<{
           onClick={() => setShowDeleteDialog(true)}
           disabled={patching.isLoading}
         >
-          <Svg src={TrashIcon} width={20} height={20} />
+          <Icon src="/icons/trash.svg" />
         </Button>
         <Button
           outline

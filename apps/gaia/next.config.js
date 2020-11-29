@@ -1,7 +1,6 @@
 // next.config.js
 const withSourceMaps = require("@zeit/next-source-maps")()
 const withPlugins = require("next-compose-plugins")
-const optimizedImages = require("next-optimized-images")
 const withPrefresh = require("@prefresh/next")
 const withPWA = require("next-pwa")
 const preact = require("preact")
@@ -34,7 +33,6 @@ const pwaConfig = {
 module.exports = withPlugins([
     [withPWA, pwaConfig],
     withPrefresh,
-    optimizedImages,
     withSourceMaps,
   ],
   {

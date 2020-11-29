@@ -1,12 +1,10 @@
 import React, { useEffect } from "react"
 import Head from "next/head"
-import Img from "react-optimized-image"
 import { useQueryString } from "../hooks/useQueryString"
-import LinkIcon from "../icons/external-link.svg"
-import MailIcon from "../icons/mail.svg"
 import loadCanny from "../utils/canny"
 import useGetUser from "../hooks/api/useGetUser"
 import useGetChild from "../hooks/api/useGetChild"
+import Icon from "../components/Icon/Icon"
 
 const SupportPage = () => {
   const childId = useQueryString("childId")
@@ -51,11 +49,10 @@ const SupportPage = () => {
               Send us suggestions on how to improve obserfy.
             </p>
           </div>
-          <Img
+          <Icon
             className="my-auto h-full ml-auto m-3"
             alt="logout icon"
-            src={LinkIcon}
-            width={20}
+            src="/icons/external-link.svg"
           />
         </a>
         <a
@@ -68,10 +65,9 @@ const SupportPage = () => {
               Have a question? Shoot us an email at support@obserfy.com
             </p>
           </div>
-          <Img
+          <Icon
             className="my-auto h-full ml-auto m-3 text-gray-900"
-            src={MailIcon}
-            width={24}
+            src="/icons/mail.svg"
           />
         </a>
       </div>

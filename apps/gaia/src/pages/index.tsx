@@ -1,13 +1,11 @@
 import React, { FC } from "react"
 import Head from "next/head"
-import Img from "react-optimized-image"
 import Image from "next/image"
 import dayjs from "../utils/dayjs"
 import useGetTimeline from "../hooks/api/useGetTimeline"
 import { useQueryString } from "../hooks/useQueryString"
 import { GetChildTimelineResponse } from "./api/children/[childId]/timeline"
-import CalendarIcon from "../icons/calendar.svg"
-import EditIcon from "../icons/edit.svg"
+import Icon from "../components/Icon/Icon"
 
 const IndexPage = () => {
   const childId = useQueryString("childId")
@@ -47,7 +45,7 @@ const ObservationList: FC<{
   <div className="mb-12">
     <div className="flex items-center font-bold -ml-5 mb-3">
       <div className="w-8 h-8  mx-1 flex items-center justify-center bg-white rounded-full border ">
-        <Img src={CalendarIcon} className="w-4 h-4" />
+        <Icon src="/icons/calendar.svg" />
       </div>
       <div className="ml-3 text-xs text-gray-700">
         {dayjs(date).format("dddd, D MMM YYYY")}
@@ -57,7 +55,7 @@ const ObservationList: FC<{
     {observations.map(({ id, shortDesc, longDesc, images, areaName }) => (
       <div className="flex -ml-5 mb-6" key={id}>
         <div className="w-8 h-8 mx-1 flex items-center justify-center bg-white rounded-full border flex-shrink-0">
-          <Img src={EditIcon} className="w-3 h-3" />
+          <Icon src="/icons/edit.svg" />
         </div>
         <div className="pt-1">
           <div className="mx-3 font-bold mb-1">{shortDesc}</div>
