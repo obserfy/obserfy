@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import React, { FC, useState } from "react"
 import Head from "next/head"
 import Image from "next/image"
 import dayjs from "../utils/dayjs"
@@ -6,11 +6,13 @@ import useGetTimeline from "../hooks/api/useGetTimeline"
 import { useQueryString } from "../hooks/useQueryString"
 import { GetChildTimelineResponse } from "./api/children/[childId]/timeline"
 import Icon from "../components/Icon/Icon"
+import ImagePreview from "../components/ImagePreview/ImagePreview"
+import { ChildImage } from "../hooks/api/useGetChildImages"
 
 const IndexPage = () => {
   const childId = useQueryString("childId")
   const { data: timeline, isLoading, isSuccess } = useGetTimeline(childId)
-
+  const [imagePreview, setImagePreview] = useState<ChildImage>()
   return (
     <div>
       <Head>
@@ -23,6 +25,7 @@ const IndexPage = () => {
               key={date}
               date={date}
               observations={observations}
+              setImagePreview={setImagePreview}
             />
           ))}
 
@@ -33,6 +36,14 @@ const IndexPage = () => {
         {isSuccess && (timeline?.length ?? 0) === 0 && (
           <EmptyTimelinePlaceholder loading={isLoading} />
         )}
+
+        {imagePreview && (
+          <ImagePreview
+            childId={childId}
+            img={imagePreview}
+            onDismiss={() => setImagePreview(undefined)}
+          />
+        )}
       </div>
     </div>
   )
@@ -41,7 +52,8 @@ const IndexPage = () => {
 const ObservationList: FC<{
   date: string
   observations: GetChildTimelineResponse[0]["observations"]
-}> = ({ date, observations }) => (
+  setImagePreview: Function
+}> = ({ date, observations, setImagePreview }) => (
   <div className="mb-12">
     <div className="flex items-center font-bold -ml-5 mb-3">
       <div className="w-8 h-8  mx-1 flex items-center justify-center bg-white rounded-full border ">
@@ -62,14 +74,19 @@ const ObservationList: FC<{
           <div className="mx-3 max-w-md text-green-900 mb-1">{areaName}</div>
           <div className="mx-3 max-w-md text-gray-900 mb-2">{longDesc}</div>
           <div className="flex ml-3 flex-wrap">
-            {images.map(({ id: imageId, originalImageUrl }) => (
-              <div className="mr-3 mb-3" key={imageId}>
-                <Image
-                  src={originalImageUrl}
-                  height={60}
-                  width={60}
-                  className="rounded border object-cover"
-                />
+            {images.map((img) => (
+              <div className="mr-3 mb-3" key={img.id}>
+                <button
+                  className="cursor-pointer"
+                  onClick={() => setImagePreview(img)}
+                >
+                  <Image
+                    src={img.originalImageUrl}
+                    height={60}
+                    width={60}
+                    className="rounded border object-cover"
+                  />
+                </button>
               </div>
             ))}
           </div>
