@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.12.3](https://github.com/obserfy/obserfy/compare/v1.12.2...v1.12.3) (2020-11-29)
+
+
+### Bug Fixes
+
+* broken gaia docker build. ([27defa0](https://github.com/obserfy/obserfy/commit/27defa03112643bfe624849114e232a018bc4b43))
+* fix transparent image observation background ([3ee7c0a](https://github.com/obserfy/obserfy/commit/3ee7c0ad3b1ca951b9073f991d4d9b74849ec43e))
+* **deps:** pin dependencies ([1442023](https://github.com/obserfy/obserfy/commit/144202386b4fb1ce22a9084cb03450b431bf7d3b))
+
 ### [1.12.2](https://github.com/obserfy/obserfy/compare/v1.12.1...v1.12.2) (2020-11-29)
 
 
