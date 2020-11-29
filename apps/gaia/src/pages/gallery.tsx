@@ -1,19 +1,15 @@
 import React, { FC, useEffect, useRef, useState } from "react"
 import Head from "next/head"
-import Img from "react-optimized-image"
 import { v4 as uuidv4 } from "uuid"
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock"
 import Image from "next/image"
 import useGetChildImages, { ChildImage } from "../hooks/api/useGetChildImages"
 import { useQueryString } from "../hooks/useQueryString"
-import NoImagesIllustration from "../images/no-images-illustration.svg"
-import UploadIcon from "../icons/upload.svg"
-import CloseIcon from "../icons/close.svg"
 import usePostImage from "../hooks/api/usePostImage"
 import useGetChild from "../hooks/api/useGetChild"
 import useGetObservationsByImage from "../hooks/api/useGetImageObservation"
-import StudentPicPlaceholder from "../images/student_pic_placeholder.jpg"
 import dayjs from "../utils/dayjs"
+import Icon from "../components/Icon/Icon"
 
 const GalleryPage = () => {
   const childId = useQueryString("childId")
@@ -36,7 +32,7 @@ const GalleryPage = () => {
                 className="flex py-2 px-6 rounded text-onPrimary bg-primary text-sm border shadow-xs"
                 htmlFor="upload-image-small"
               >
-                <Img src={UploadIcon} className="mr-3" />
+                <Icon src="/icons/upload.svg" className="mr-3" size={20} />
                 Upload Image
                 <input
                   id="upload-image-small"
@@ -63,7 +59,7 @@ const GalleryPage = () => {
                     htmlFor="upload-image"
                     className="absolute top-0 left-0 flex flex-col items-center justify-center font-bold text-sm border rounded w-full h-full bg-white"
                   >
-                    <Img src={UploadIcon} />
+                    <Icon src="/icons/upload.svg" size={20} />
                     <span>
                       Upload <span className="hidden md:inline">Image</span>
                     </span>
@@ -177,9 +173,9 @@ const ImagePreview: FC<{
         style={{ minHeight: 300 }}
       >
         <div className="flex items-center p-3">
-          <Img
+          <Image
             alt="profile"
-            src={StudentPicPlaceholder}
+            src="/images/student_pic_placeholder.jpg"
             width={40}
             height={40}
             className="rounded-full"
@@ -191,7 +187,7 @@ const ImagePreview: FC<{
             </div>
           </div>
           <button className="ml-auto" onClick={onDismiss}>
-            <Img src={CloseIcon} className="w-6 h-6 " />
+            <Icon src="/icons/close.svg" size={20} />
           </button>
         </div>
         <img
@@ -217,7 +213,12 @@ const EmptyGalleryIllustration: FC<{ loading: boolean }> = ({ loading }) => {
         loading && "opacity-50"
       } transition-opacity duration-200 max-w-3xl mx-auto`}
     >
-      <Img src={NoImagesIllustration} className="w-64 md:w-1/2 mb-3" />
+      <Image
+        src="/images/no-images-illustration.svg"
+        className="w-64 md:w-1/2 mb-3"
+        height={200}
+        width={200}
+      />
       <h6
         className={`text-xl mx-4 text-center ${
           loading && "opacity-0"

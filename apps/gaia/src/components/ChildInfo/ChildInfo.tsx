@@ -1,7 +1,5 @@
 import React, { FC } from "react"
-import Img from "react-optimized-image/lib"
 import Image from "next/image"
-import StudentPicPlaceholder from "../../images/student_pic_placeholder.jpg"
 import useGetChild from "../../hooks/api/useGetChild"
 
 interface Props {
@@ -23,9 +21,9 @@ const ChildInfo: FC<Props> = ({ childId }) => {
               className="rounded-full object-cover"
             />
           ) : (
-            <Img
+            <Image
               alt="profile"
-              src={StudentPicPlaceholder}
+              src="/images/student_pic_placeholder.jpg"
               width={60}
               height={60}
               className="rounded-full"
