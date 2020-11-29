@@ -42,6 +42,10 @@ func (s *BaseTestSuite) SetupSuite() {
 	if err != nil {
 		panic(err)
 	}
+	err = godotenv.Load("../../../../../.env.local")
+	if err != nil {
+		panic(err)
+	}
 	s.DB, err = connectTestDB()
 	if err != nil {
 		panic(err)
