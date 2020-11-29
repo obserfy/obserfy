@@ -1,6 +1,6 @@
-import React, { FC, PropsWithoutRef, useEffect, useRef } from "react"
-import { Global, keyframes } from "@emotion/react"
-import { BoxProps, Card, Flex, Box } from "theme-ui"
+import React, { FC, PropsWithoutRef, useLayoutEffect, useRef } from "react"
+import { keyframes } from "@emotion/react"
+import { Box, BoxProps, Card, Flex } from "theme-ui"
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock"
 import Portal from "../Portal/Portal"
 
@@ -30,7 +30,7 @@ interface Props extends PropsWithoutRef<BoxProps> {
 export const Dialog: FC<Props> = ({ sx, ...props }) => {
   const ref = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (ref.current) {
       disableBodyScroll(ref.current, {
         reserveScrollBarGap: true,
@@ -90,14 +90,9 @@ export const Dialog: FC<Props> = ({ sx, ...props }) => {
           }}
           {...props}
         />
-        <GlobalStyle />
       </Flex>
     </Portal>
   )
 }
-
-const GlobalStyle: FC = () => (
-  <Global styles={{ body: { overflow: "hidden" } }} />
-)
 
 export default Dialog
