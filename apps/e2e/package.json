@@ -24,7 +24,6 @@
     "eslint-plugin-prettier": "3.1.4",
     "eslint-plugin-react": "7.21.5",
     "eslint-plugin-react-hooks": "4.2.0",
-    "faker": "5.1.0",
     "wait-on": "5.2.0"
   },
   "scripts": {
@@ -37,9 +36,11 @@
   "dependencies": {
     "@cypress/webpack-preprocessor": "5.4.11",
     "@hapi/iron": "6.0.0",
+    "@types/auth0-js": "^9.14.2",
     "@types/pg": "7.14.7",
     "auth0-js": "9.14.0",
     "dotenv": "8.2.0",
+    "faker": "5.1.0",
     "pg": "8.5.1",
     "pnp-webpack-plugin": "1.6.4",
     "prettier": "2.2.1",
