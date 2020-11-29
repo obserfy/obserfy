@@ -13,22 +13,18 @@ services:
     ports:
       - "40000:40000"
       - "8080:8080"
-    restart: on-failure
-    # Might not be necessary for all projects, but these
-    # fixes delve crash on circleci
     security_opt:
       - "apparmor=unconfined"
     cap_add:
       - "SYS_PTRACE"
     env_file:
-      - .env.development
+      - .env
       - .env.local
 
   nginx:
     build:
       context: .
       dockerfile: docker/nginx/dev.dockerfile
-    restart: unless-stopped
     depends_on:
       - vor_app
     ports:
@@ -48,7 +44,7 @@ services:
     volumes:
       - vor-minio:/data
     env_file:
-      - .env.development
+      - .env
       - .env.local
 
   imgproxy:
@@ -60,7 +56,7 @@ services:
       IMGPROXY_ENABLE_WEBP_DETECTION: "true"
       IMGPROXY_TTL: "1209600"
     env_file:
-      - .env.development
+      - .env
       - .env.local
 
   imgproxy-nginx:
@@ -77,8 +73,8 @@ services:
     image: obserfy/postgres-dev:latest
     container_name: vor-postgres
     environment:
+      POSTGRES_MULTIPLE_DATABASES: defaultdb,defaultdb_test
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: defaultdb
     command: ["postgres", "-c", "log_statement=all"]
     ports:
       - "5432:5432"

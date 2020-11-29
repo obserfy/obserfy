@@ -1,10 +1,12 @@
 import { NextApiRequest, NextApiResponse } from "next"
 import auth0 from "../../../../utils/auth0"
 import { deleteObservation, updateObservation } from "../../../../db/queries"
+import { protectedApiRoute } from "../../../../utils/rest"
 
 export interface PatchObservationRequestBody {
   observation: string
 }
+
 const handlePatch = async (
   res: NextApiResponse,
   req: NextApiRequest,
@@ -33,31 +35,22 @@ const handleDelete = async (
   res.status(404).end()
 }
 
-const observationHandler = auth0.requireAuthentication(
-  async (req: NextApiRequest, res: NextApiResponse) => {
-    const session = await auth0.getSession(req)
-    if (!session) {
-      res.status(401).end("unauthorized")
-      return
-    }
-
-    const {
-      query: { observationId },
-    } = req
-
-    try {
-      if (req.method === "PATCH") {
-        await handlePatch(res, req, session.user, observationId as string)
-      } else if (req.method === "DELETE") {
-        await handleDelete(res, req, observationId as string)
-      } else {
-        res.status(405)
-      }
-    } catch (error) {
-      console.error(error)
-      res.status(error.status || 500).end(error.message)
-    }
+const observationHandler = protectedApiRoute(async (req, res) => {
+  const session = await auth0.getSession(req)
+  if (!session) {
+    res.status(401).end("unauthorized")
+    return
   }
-)
+
+  const { observationId } = req.query
+
+  if (req.method === "PATCH") {
+    await handlePatch(res, req, session.user, observationId as string)
+  } else if (req.method === "DELETE") {
+    await handleDelete(res, req, observationId as string)
+  } else {
+    res.status(405)
+  }
+})
 
 export default observationHandler

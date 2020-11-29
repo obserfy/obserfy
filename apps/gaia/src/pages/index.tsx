@@ -1,18 +1,18 @@
-import React, { FC } from "react"
+import React, { FC, useState } from "react"
 import Head from "next/head"
-import Img from "react-optimized-image"
 import Image from "next/image"
 import dayjs from "../utils/dayjs"
 import useGetTimeline from "../hooks/api/useGetTimeline"
 import { useQueryString } from "../hooks/useQueryString"
 import { GetChildTimelineResponse } from "./api/children/[childId]/timeline"
-import CalendarIcon from "../icons/calendar.svg"
-import EditIcon from "../icons/edit.svg"
+import Icon from "../components/Icon/Icon"
+import ImagePreview from "../components/ImagePreview/ImagePreview"
+import { ChildImage } from "../hooks/api/useGetChildImages"
 
 const IndexPage = () => {
   const childId = useQueryString("childId")
   const { data: timeline, isLoading, isSuccess } = useGetTimeline(childId)
-
+  const [imagePreview, setImagePreview] = useState<ChildImage>()
   return (
     <div>
       <Head>
@@ -25,6 +25,7 @@ const IndexPage = () => {
               key={date}
               date={date}
               observations={observations}
+              setImagePreview={setImagePreview}
             />
           ))}
 
@@ -35,6 +36,14 @@ const IndexPage = () => {
         {isSuccess && (timeline?.length ?? 0) === 0 && (
           <EmptyTimelinePlaceholder loading={isLoading} />
         )}
+
+        {imagePreview && (
+          <ImagePreview
+            childId={childId}
+            img={imagePreview}
+            onDismiss={() => setImagePreview(undefined)}
+          />
+        )}
       </div>
     </div>
   )
@@ -43,11 +52,12 @@ const IndexPage = () => {
 const ObservationList: FC<{
   date: string
   observations: GetChildTimelineResponse[0]["observations"]
-}> = ({ date, observations }) => (
+  setImagePreview: Function
+}> = ({ date, observations, setImagePreview }) => (
   <div className="mb-12">
     <div className="flex items-center font-bold -ml-5 mb-3">
       <div className="w-8 h-8  mx-1 flex items-center justify-center bg-white rounded-full border ">
-        <Img src={CalendarIcon} className="w-4 h-4" />
+        <Icon src="/icons/calendar.svg" />
       </div>
       <div className="ml-3 text-xs text-gray-700">
         {dayjs(date).format("dddd, D MMM YYYY")}
@@ -57,21 +67,26 @@ const ObservationList: FC<{
     {observations.map(({ id, shortDesc, longDesc, images, areaName }) => (
       <div className="flex -ml-5 mb-6" key={id}>
         <div className="w-8 h-8 mx-1 flex items-center justify-center bg-white rounded-full border flex-shrink-0">
-          <Img src={EditIcon} className="w-3 h-3" />
+          <Icon src="/icons/edit.svg" />
         </div>
         <div className="pt-1">
           <div className="mx-3 font-bold mb-1">{shortDesc}</div>
           <div className="mx-3 max-w-md text-green-900 mb-1">{areaName}</div>
           <div className="mx-3 max-w-md text-gray-900 mb-2">{longDesc}</div>
           <div className="flex ml-3 flex-wrap">
-            {images.map(({ id: imageId, originalImageUrl }) => (
-              <div className="mr-3 mb-3" key={imageId}>
-                <Image
-                  src={originalImageUrl}
-                  height={60}
-                  width={60}
-                  className="rounded border object-cover"
-                />
+            {images.map((img) => (
+              <div className="mr-3 mb-3" key={img.id}>
+                <button
+                  className="cursor-pointer"
+                  onClick={() => setImagePreview(img)}
+                >
+                  <Image
+                    src={img.originalImageUrl}
+                    height={60}
+                    width={60}
+                    className="rounded border object-cover"
+                  />
+                </button>
               </div>
             ))}
           </div>

@@ -234,7 +234,7 @@ exports[`DateInput should render correctly 1`] = `
           <input
             class="emotion-4"
             disabled=""
-            placeholder="Not set"
+            placeholder="Not Set"
             value=""
           />
         </div>

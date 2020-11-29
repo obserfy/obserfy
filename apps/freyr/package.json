@@ -10,7 +10,7 @@
     "@lingui/macro": "3.2.3",
     "@lingui/react": "3.2.3",
     "@tailwindcss/typography": "0.3.1",
-    "babel-plugin-macros": "2.8.0",
+    "babel-plugin-macros": "3.0.0",
     "gatsby": "2.27.1",
     "gatsby-image": "2.6.0",
     "gatsby-plugin-canonical-urls": "2.5.0",
@@ -39,7 +39,7 @@
     "react-helmet": "6.1.0"
   },
   "devDependencies": {
-    "@babel/core": "7.12.8",
+    "@babel/core": "7.12.9",
     "@types/react": "17.0.0",
     "@types/react-helmet": "6.1.0",
     "@typescript-eslint/eslint-plugin": "4.8.1",
@@ -56,7 +56,7 @@
     "eslint-plugin-prettier": "3.1.4",
     "eslint-plugin-react": "7.21.5",
     "eslint-plugin-react-hooks": "4.2.0",
-    "prettier": "2.2.0",
+    "prettier": "2.2.1",
     "stylelint": "13.8.0",
     "stylelint-config-prettier": "8.0.2",
     "stylelint-config-standard": "20.0.0",

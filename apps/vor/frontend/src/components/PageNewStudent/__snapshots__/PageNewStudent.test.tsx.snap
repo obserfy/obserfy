@@ -1302,7 +1302,7 @@ exports[`PageNewStudent should render correctly 1`] = `
               <input
                 class="emotion-31"
                 disabled=""
-                placeholder="Not set"
+                placeholder="Not Set"
                 value=""
               />
             </div>
@@ -1333,7 +1333,7 @@ exports[`PageNewStudent should render correctly 1`] = `
               <input
                 class="emotion-31"
                 disabled=""
-                placeholder="Not set"
+                placeholder="Not Set"
                 value=""
               />
             </div>
