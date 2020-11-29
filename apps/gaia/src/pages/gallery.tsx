@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef, useState } from "react"
+import React, { FC, useLayoutEffect, useRef, useState } from "react"
 import Head from "next/head"
 import { v4 as uuidv4 } from "uuid"
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock"
@@ -142,7 +142,7 @@ const ImagePreview: FC<{
   const child = useGetChild(childId)
   const observations = useGetObservationsByImage(img.id)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (ref.current) {
       disableBodyScroll(ref.current, {
         reserveScrollBarGap: true,
