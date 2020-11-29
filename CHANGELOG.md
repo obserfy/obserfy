@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.12.2](https://github.com/obserfy/obserfy/compare/v1.12.1...v1.12.2) (2020-11-29)
+
+
+### Bug Fixes
+
+* fix scrolling stuck after opening dialogs. ([c49fbfa](https://github.com/obserfy/obserfy/commit/c49fbfaa8172cf551f08b913533b9f23eb7fb47f))
+* **deps:** update dependency @sentry/webpack-plugin to v1.14.0 ([983ae68](https://github.com/obserfy/obserfy/commit/983ae68cc17e5b5e42ed29788f08d835961052e2))
+* remove colon from env. ([b45dd1e](https://github.com/obserfy/obserfy/commit/b45dd1e537b48cb6d7ca98bffcbbf4d9f7b7f828))
+* **deps:** pin dependencies ([8fd739e](https://github.com/obserfy/obserfy/commit/8fd739e53b39f04ff31103390a47a83cd6eb0f8c))
+* **deps:** pin dependencies ([d030c0b](https://github.com/obserfy/obserfy/commit/d030c0b86f2c06fb61b3695d9404943865e2c10c))
+* **deps:** update dependency @theme-ui/components to v0.5.0-alpha.1 ([d724117](https://github.com/obserfy/obserfy/commit/d72411756e95f77b389cfab88332213fe8d757e4))
+* **deps:** update dependency @theme-ui/match-media to v0.5.0-alpha.1 ([f093899](https://github.com/obserfy/obserfy/commit/f093899bcba2abe3b8296b29cd3fdfda80613b7e))
+* fix progress api failing. ([f4d24be](https://github.com/obserfy/obserfy/commit/f4d24bee8810ad89dec3ddcd72a9242dae493977))
+* **deps:** update dependency @types/node to v14.14.10 ([2ffc019](https://github.com/obserfy/obserfy/commit/2ffc01907114016dc3b0acd78950522ed5fbaa4e))
+* **deps:** update dependency minio to v7.0.17 ([a3098f5](https://github.com/obserfy/obserfy/commit/a3098f50430730737d9bb5a67ec904d0618eda0e))
+* fix trailing spaces loaded by .env on windows. ([5aaf9ed](https://github.com/obserfy/obserfy/commit/5aaf9ed41e1609550252f8d1046529eaff113464))
+
 ### [1.12.1](https://github.com/obserfy/obserfy/compare/v1.12.0...v1.12.1) (2020-11-24)
 
 ## [1.12.0](https://github.com/obserfy/obserfy/compare/v1.11.23...v1.12.0) (2020-11-24)
