@@ -38,7 +38,7 @@ func (s *BaseTestSuite) TearDownSuite() {
 }
 
 func (s *BaseTestSuite) SetupSuite() {
-	err := godotenv.Load("../../../../../.env.test")
+	err := godotenv.Load("../../../../../.env")
 	if err != nil {
 		panic(err)
 	}

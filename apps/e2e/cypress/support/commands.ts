@@ -20,6 +20,8 @@ declare namespace Cypress {
   }
 }
 
+const vorApi = (path: string) => `${Cypress.env("VOR_HOST")}/api/v1${path}`
+
 // Test helper commands ===============================================================
 // @ts-ignore
 const fixedClearCookies = () => cy.clearCookies({ domain: null })
@@ -91,7 +93,7 @@ const gaiaLogin = () => {
 // Data Input Commands ===============================================================
 const createSchool = () => {
   const schoolName = faker.company.companyName()
-  cy.request("POST", `${Cypress.env("VOR_HOST")}/api/v1/schools`, {
+  cy.request("POST", vorApi("/schools"), {
     name: schoolName,
   }).then((result) => {
     window.localStorage.setItem("SCHOOL_ID", result.body.id)
@@ -102,11 +104,9 @@ const createSchool = () => {
 const createStudent = () => {
   const studentName = faker.name.firstName()
   const schoolId = localStorage.getItem("SCHOOL_ID")
-  cy.request(
-    "POST",
-    `${Cypress.env("VOR_HOST")}/api/v1/schools/${schoolId}/students`,
-    { name: studentName }
-  ).then((response) => {
+  cy.request("POST", vorApi(`/schools/${schoolId}/students`), {
+    name: studentName,
+  }).then((response) => {
     cy.wrap({ id: response.body.id, name: studentName }).as("student")
   })
 }
@@ -119,13 +119,11 @@ const createClass = () => {
     weekdays: [1],
   }
   const schoolId = localStorage.getItem("SCHOOL_ID")
-  cy.request(
-    "POST",
-    `${Cypress.env("VOR_HOST")}/api/v1/schools/${schoolId}/classes`,
-    newClass
-  ).then((response) => {
-    cy.wrap({ id: response.body.id, ...newClass }).as("class")
-  })
+  cy.request("POST", vorApi(`/schools/${schoolId}/classes`), newClass).then(
+    (response) => {
+      cy.wrap({ id: response.body.id, ...newClass }).as("class")
+    }
+  )
 }
 
 Cypress.Commands.add("clearSW", clearSW)

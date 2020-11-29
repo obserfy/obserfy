@@ -1,10 +1,10 @@
-describe("test pwa works correctly", () => {
-  beforeEach(() => {
+describe("test pwa works correctly", function () {
+  beforeEach(function () {
     cy.clearSW()
     cy.registerVor()
   })
 
-  it("should handle redirect correctly", () => {
+  it("should handle redirect correctly", function () {
     // first visit, should install service worker and caches stuffs
     cy.visitVor("/")
 

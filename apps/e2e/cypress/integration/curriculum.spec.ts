@@ -1,12 +1,12 @@
-describe("test curriculum features", () => {
+describe("test curriculum features", function () {
   const faker = require("faker")
 
-  beforeEach(() => {
+  beforeEach(function () {
     cy.clearSW()
     cy.registerVor()
   })
 
-  it("should be able to add, view, and delete class", () => {
+  it("should be able to add, view, and delete class", function () {
     const newAreaName = faker.name.firstName()
     const newSubjectName = faker.name.firstName()
     const newMaterialNames = [

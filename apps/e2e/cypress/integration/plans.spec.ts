@@ -1,16 +1,15 @@
-describe("Test lesson plan features", () => {
-  beforeEach(() => {
+describe("Test lesson plan features", function () {
+  beforeEach(function () {
     cy.clearSW()
     cy.registerVor()
     cy.createSchool()
     cy.createClass()
-    cy.createStudent()
-    cy.get<{ id: string }>("@student").then((student) => {
-      cy.visitVor(`/dashboard/students/plans?studentId=${student.id}`)
+    cy.createStudent().then(() => {
+      cy.visitVor(`/dashboard/students/plans?studentId=${this.student.id}`)
     })
   })
 
-  it("should be able to edit, create, and delete plans.", () => {
+  it("should be able to edit, create, and delete plans.", function () {
     const firstName = "A Bold New Plan"
 
     const secondName = "A bolder plan"
@@ -42,11 +41,9 @@ describe("Test lesson plan features", () => {
 
     // Regression test, should be able to delete class
     cy.visitVor("/dashboard/admin/class")
-    cy.get<{ name: string }>("@class").then((classData) => {
-      cy.contains(classData.name).click()
-      cy.contains("Delete").click()
-      cy.contains("Yes").click()
-      cy.contains(classData.name).should("not.exist")
-    })
+    cy.contains(this.class.name).click()
+    cy.contains("Delete").click()
+    cy.contains("Yes").click()
+    cy.contains(this.class.name).should("not.exist")
   })
 })
