@@ -48,7 +48,7 @@
     "immer": "8.0.0",
     "make-plural": "6.2.2",
     "nanoid": "3.1.18",
-    "preact": "10.5.5",
+    "preact": "10.5.7",
     "preact-render-to-string": "5.1.12",
     "query-string": "6.13.7",
     "react": "17.0.1",
