@@ -1,13 +1,13 @@
-describe("test adding new student", () => {
+describe("test adding new student", function () {
   const faker = require("faker")
 
-  beforeEach(() => {
+  beforeEach(function () {
     cy.clearSW()
     cy.fixedClearCookies()
     cy.registerVor()
   })
 
-  it("should be able to add student multiple times", () => {
+  it("should be able to add student multiple times", function () {
     const studentName = faker.name.firstName()
     const studentId = faker.phone.phoneNumber()
     const notes = faker.lorem.lines(1)
@@ -59,7 +59,7 @@ describe("test adding new student", () => {
     cy.contains("button", "5").click()
     cy.get(`[data-cy=confirm]`).click()
 
-    cy.get("@newClass").then((newClass: any) => {
+    cy.get("@class").then((newClass: any) => {
       cy.contains(newClass.name).click()
     })
     cy.get("[data-cy=add-student]").click()

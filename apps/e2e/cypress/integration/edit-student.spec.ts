@@ -1,10 +1,10 @@
-describe("test edit student", () => {
-  beforeEach(() => {
+describe("test edit student", function () {
+  beforeEach(function () {
     cy.clearSW()
     cy.registerVor()
   })
 
-  it("should be able to edit student successfully", () => {
+  it("should be able to edit student successfully", function () {
     cy.visitVor("/")
 
     // Create student

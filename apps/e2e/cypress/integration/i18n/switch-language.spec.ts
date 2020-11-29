@@ -1,10 +1,10 @@
-describe("test adding new student", () => {
-  beforeEach(() => {
+describe("test adding new student", function () {
+  beforeEach(function () {
     cy.clearSW()
     cy.registerVor()
   })
 
-  it("should be able to switch language", () => {
+  it("should be able to switch language", function () {
     cy.visitVor("/dashboard/admin")
     cy.wait(250) // wait for event handler to register
     cy.get("[data-cy=switch-indonesian]").click()
