@@ -13,6 +13,7 @@ COPY apps/gaia/package.json apps/gaia/package.json
 RUN yarn install
 
 COPY apps/gaia/ apps/gaia
+COPY VERSION VERSION
 RUN yarn workspace gaia build
 
 ENTRYPOINT ["yarn", "workspace", "gaia", "start"]
