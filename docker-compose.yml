@@ -13,9 +13,6 @@ services:
     ports:
       - "40000:40000"
       - "8080:8080"
-    restart: on-failure
-    # Might not be necessary for all projects, but these
-    # fixes delve crash on circleci
     security_opt:
       - "apparmor=unconfined"
     cap_add:
@@ -28,7 +25,6 @@ services:
     build:
       context: .
       dockerfile: docker/nginx/dev.dockerfile
-    restart: unless-stopped
     depends_on:
       - vor_app
     ports:

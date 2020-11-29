@@ -1563,6 +1563,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:2.0.0"
       ],
       [
+        "@types/auth0-js",
+        "npm:9.14.2"
+      ],
+      [
         "@types/babel__core",
         "npm:7.1.9"
       ],
@@ -25754,6 +25758,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["@types/auth0-js", [
+        ["npm:9.14.2", {
+          "packageLocation": "./.yarn/cache/@types-auth0-js-npm-9.14.2-01fceba81a-e11c33e2ac.zip/node_modules/@types/auth0-js/",
+          "packageDependencies": [
+            ["@types/auth0-js", "npm:9.14.2"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["@types/babel__core", [
         ["npm:7.1.9", {
           "packageLocation": "./.yarn/cache/@types-babel__core-npm-7.1.9-23e959fd72-251c4d3c2a.zip/node_modules/@types/babel__core/",
@@ -34634,6 +34647,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@cypress/code-coverage", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:3.8.5"],
             ["@cypress/webpack-preprocessor", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:5.4.11"],
             ["@hapi/iron", "npm:6.0.0"],
+            ["@types/auth0-js", "npm:9.14.2"],
             ["@types/faker", "npm:5.1.4"],
             ["@types/node", "npm:14.14.10"],
             ["@types/pg", "npm:7.14.7"],
