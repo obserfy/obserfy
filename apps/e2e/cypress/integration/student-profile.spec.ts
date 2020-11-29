@@ -1,13 +1,13 @@
 // Test the whole happy path
 
-describe("test student profile page", () => {
+describe("test student profile page", function () {
   const faker = require("faker")
-  beforeEach(() => {
+  beforeEach(function () {
     cy.clearSW()
     cy.registerVor()
   })
 
-  it("should be able to edit all student data.", () => {
+  it("should be able to edit all student data.", function () {
     cy.visitVor("/")
 
     // Create student

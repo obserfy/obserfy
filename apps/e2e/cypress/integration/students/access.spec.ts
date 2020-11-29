@@ -1,13 +1,13 @@
-describe("test guardian access to student data", () => {
+describe("test guardian access to student data", function () {
   const faker = require("faker")
 
-  beforeEach(() => {
+  beforeEach(function () {
     cy.clearSW()
     cy.fixedClearCookies()
     cy.registerVor()
   })
 
-  it("should be able to add student multiple times", () => {
+  it("should be able to add student multiple times", function () {
     const studentName = faker.name.firstName()
     const studentId = faker.phone.phoneNumber()
     const notes = faker.lorem.lines(1)

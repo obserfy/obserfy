@@ -1,11 +1,11 @@
-describe("test vor authentication", () => {
+describe("test vor authentication", function () {
   const faker = require("faker")
 
-  beforeEach(() => {
+  beforeEach(function () {
     cy.clearSW()
   })
 
-  it("should be redirected to login", () => {
+  it("should be redirected to login", function () {
     // define new user dynamically
     const name = faker.name.firstName()
     const email = faker.internet.email()

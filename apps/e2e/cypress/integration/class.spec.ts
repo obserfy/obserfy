@@ -1,12 +1,12 @@
-describe("test class related features", () => {
+describe("test class related features", function () {
   const faker = require("faker")
 
-  beforeEach(() => {
+  beforeEach(function () {
     cy.clearSW()
     cy.registerVor()
   })
 
-  it("should be able to add, view, and delete class", () => {
+  it("should be able to add, view, and delete class", function () {
     const className = faker.name.firstName()
     const startTime = "12:00"
     cy.visitVor("/dashboard/admin/class")
