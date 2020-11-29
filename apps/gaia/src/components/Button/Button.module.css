@@ -1,5 +1,5 @@
 .base {
-  @apply py-2 px-6 rounded text-onPrimary bg-primary text-sm border shadow-sm;
+  @apply py-2 px-6 rounded text-onPrimary bg-primary text-sm border shadow-sm flex items-center;
 
   border-color: rgba(0, 0, 0, 0.1);
   touch-action: manipulation;

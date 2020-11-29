@@ -1,14 +1,12 @@
 import React, { FC, useState } from "react"
 import Head from "next/head"
-import Img from "react-optimized-image"
+import Image from "next/image"
 import dayjs, { Dayjs } from "../utils/dayjs"
 import Button from "../components/Button/Button"
-import ChevronRight from "../icons/chevron-right.svg"
-import ChevronLeft from "../icons/chevron-left.svg"
 import useGetChildPlans from "../hooks/api/useGetChildPlans"
 import { useQueryString } from "../hooks/useQueryString"
-import NoPlanIllustration from "../images/no-plan-illustration.svg"
 import Plan from "../components/Plan/Plan"
+import Icon from "../components/Icon/Icon"
 
 const IndexPage = () => {
   const [date, setDate] = useState(dayjs())
@@ -30,7 +28,7 @@ const IndexPage = () => {
           iconOnly
           onClick={() => setDate(date.add(-1, "day"))}
         >
-          <Img src={ChevronLeft} />
+          <Icon src="/icons/chevron-left.svg" size={16} />
         </Button>
         <Button
           className="ml-1"
@@ -38,7 +36,7 @@ const IndexPage = () => {
           iconOnly
           onClick={() => setDate(date.add(1, "day"))}
         >
-          <Img alt="Next date" src={ChevronRight} />
+          <Icon alt="Next date" src="/icons/chevron-right.svg" size={16} />
         </Button>
         <Button
           className="ml-1 font-normal text-sm"
@@ -85,7 +83,12 @@ const EmptyPlansIllustration: FC<{ loading: boolean; date: Dayjs }> = ({
         loading && "opacity-50"
       } transition-opacity duration-200 max-w-3xl mx-auto`}
     >
-      <Img src={NoPlanIllustration} className="w-64 md:w-1/2 mb-3" />
+      <Image
+        src="/images/no-plan-illustration.svg"
+        className="w-64 md:w-1/2 mb-3"
+        width={200}
+        height={200}
+      />
       <h5
         className={`text-xl mx-4 text-center ${
           loading && "opacity-0"

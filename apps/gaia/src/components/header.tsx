@@ -1,16 +1,12 @@
 import React, { FC, useState } from "react"
-import Img from "react-optimized-image"
+import Image from "next/image"
 import Link from "next/link"
 import ProfilePicture from "./profilePicture"
 import Button from "./Button/Button"
-import LogoutIcon from "../icons/log-out.svg"
-import UsersIcon from "../icons/users.svg"
-import Logo from "../images/logo.svg"
-import CloseIcon from "../icons/close.svg"
-import ChevronRight from "../icons/chevron-right.svg"
 import useGetUser from "../hooks/api/useGetUser"
 import useGetChildren from "../hooks/api/useGetChildren"
 import { useQueryString } from "../hooks/useQueryString"
+import Icon from "./Icon/Icon"
 
 const Header: FC = () => {
   const [showLogout, setShowLogout] = useState(false)
@@ -35,7 +31,7 @@ const Header: FC = () => {
           className="ml-auto p-2 cursor-pointer hover:bg-gray-200"
           onClick={() => setShowChildPicker(true)}
         >
-          <Img alt="logout icon" src={UsersIcon} height={14} width={14} />
+          <Icon alt="logout icon" src="/icons/users.svg" />
         </Button>
 
         <Button
@@ -43,7 +39,7 @@ const Header: FC = () => {
           className="ml-3 p-2 cursor-pointer hover:bg-gray-200"
           onClick={() => setShowLogout(true)}
         >
-          <Img alt="logout icon" src={LogoutIcon} height={16} width={16} />
+          <Icon alt="logout icon" src="/icons/log-out.svg" />
         </Button>
       </div>
 
@@ -86,7 +82,7 @@ const ChildPicker: FC<{ onClose: () => void }> = ({ onClose }) => {
           <div className="text-xl font-bold px-6">Switch</div>
 
           <Button outline onClick={onClose} className="p-1 ml-auto mr-3">
-            <Img src={CloseIcon} className="w-6 h-6" />
+            <Icon src="/icons/close.svg" size={20} />
           </Button>
         </div>
         {children?.map(({ id, name }) => (
@@ -107,8 +103,8 @@ const ChildPicker: FC<{ onClose: () => void }> = ({ onClose }) => {
               >
                 {name}
               </div>
-              <Img
-                src={ChevronRight}
+              <Icon
+                src="/icons/chevron-right.svg"
                 className="ml-auto w-6 h-6 mr-4 opacity-50"
               />
             </a>
@@ -131,7 +127,7 @@ const LoadingPlaceholder = () => (
 
 const ErrorPlaceholder = () => (
   <div className="h-16 px-3 flex items-center max-w-3xl mx-auto">
-    <Img alt="obserfy logo" src={Logo} height={30} width={30} />
+    <Image alt="obserfy logo" src="/images/logo.svg" height={30} width={30} />
     <h1 className="ml-3 text-lg font-bold">
       Obserfy <span className="font-normal">for Parents</span>
     </h1>
