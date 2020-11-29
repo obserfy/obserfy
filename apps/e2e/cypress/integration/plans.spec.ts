@@ -1,46 +1,13 @@
 describe("Test lesson plan features", () => {
-  const faker = require("faker")
-
-  const className = faker.company.companyName()
-  const classStartTime = faker.date.recent()
-
   beforeEach(() => {
     cy.clearSW()
-
-    const name = faker.name.firstName()
-    const email = faker.internet.email()
-    const password = faker.internet.password()
-
-    const schoolName = faker.company.companyName()
-
-    const studentName = faker.name.firstName()
-
-    cy.request({
-      method: "POST",
-      url: "/auth/register",
-      body: { email, password, name },
-      form: true,
+    cy.registerVor()
+    cy.createSchool()
+    cy.createClass()
+    cy.createStudent()
+    cy.get<{ id: string }>("@student").then((student) => {
+      cy.visitVor(`/dashboard/students/plans?studentId=${student.id}`)
     })
-
-    cy.request("POST", "/api/v1/schools", { name: schoolName }).then(
-      (result) => {
-        window.localStorage.setItem("SCHOOL_ID", result.body.id)
-        return cy
-          .request("POST", `/api/v1/schools/${result.body.id}/classes`, {
-            name: className,
-            startTime: classStartTime.toISOString(),
-            endTime: classStartTime.toISOString(),
-          })
-          .request("POST", `/api/v1/schools/${result.body.id}/students`, {
-            name: studentName,
-          })
-          .then((studentResult) => {
-            cy.visitVor(
-              `/dashboard/students/plans?studentId=${studentResult.body.id}`
-            )
-          })
-      }
-    )
   })
 
   it("should be able to edit, create, and delete plans.", () => {
@@ -75,9 +42,11 @@ describe("Test lesson plan features", () => {
 
     // Regression test, should be able to delete class
     cy.visitVor("/dashboard/admin/class")
-    cy.contains(className).click()
-    cy.contains("Delete").click()
-    cy.contains("Yes").click()
-    cy.contains(className).should("not.exist")
+    cy.get<{ name: string }>("@class").then((classData) => {
+      cy.contains(classData.name).click()
+      cy.contains("Delete").click()
+      cy.contains("Yes").click()
+      cy.contains(classData.name).should("not.exist")
+    })
   })
 })
