@@ -59,7 +59,7 @@ describe("test adding new student", () => {
     cy.contains("button", "5").click()
     cy.get(`[data-cy=confirm]`).click()
 
-    cy.get("@newClass").then((newClass: any) => {
+    cy.get("@class").then((newClass: any) => {
       cy.contains(newClass.name).click()
     })
     cy.get("[data-cy=add-student]").click()
