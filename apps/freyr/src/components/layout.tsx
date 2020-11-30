@@ -15,7 +15,7 @@ const Layout: FC = ({ children }) => {
   return (
     <>
       <Header />
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <main>{children}</main>
         <footer className="px-3 text-center my-3 flex items-center pt-8 text-gray-700">
           <div>© {new Date().getFullYear()} Obserfy</div>
