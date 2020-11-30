@@ -8413,9 +8413,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@theme-ui/components@npm:0.5.0-alpha.1":
-  version: 0.5.0-alpha.1
-  resolution: "@theme-ui/components@npm:0.5.0-alpha.1"
+"@theme-ui/components@npm:0.5.0-alpha.2":
+  version: 0.5.0-alpha.2
+  resolution: "@theme-ui/components@npm:0.5.0-alpha.2"
   dependencies:
     "@emotion/react": ^11.1.1
     "@emotion/styled": ^11.0.0
@@ -8426,7 +8426,7 @@ __metadata:
     "@types/styled-system": ^4.2.2
   peerDependencies:
     react: ^16.14.0 || ^17.0.0
-  checksum: 300f7ae6e8da105877ea0e2d6088b03efba7a1f9d12d70d601225b852ee33d46ef85fa495ece5cc85236e05eba644cb0fb7dab4c9b96455d1aa7d5ecdb0cd2f3
+  checksum: c2d20c2edb965052806e1adda226cddc225e1e1eddea73bed47edc0244d670cfdeece573afc3854803be39dcc74e8da6a855e57d859f63b529a7ccb99f54592a
   languageName: node
   linkType: hard
 
@@ -36699,7 +36699,7 @@ typescript@^4.0.0:
     "@svgr/webpack": 5.5.0
     "@testing-library/react": 11.2.2
     "@testing-library/react-hooks": 3.4.2
-    "@theme-ui/components": 0.5.0-alpha.1
+    "@theme-ui/components": 0.5.0-alpha.2
     "@theme-ui/match-media": 0.5.0-alpha.1
     "@types/body-scroll-lock": 2.6.1
     "@types/date-fns": 2.6.0
