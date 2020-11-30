@@ -44,6 +44,7 @@ module.exports = {
     "import/no-cycle": "off",
     "import/extensions": "off",
     "import/prefer-default-export": 0,
+    "@typescript-eslint/no-use-before-define": ["error", { variables: false }],
     "no-unused-expressions": "off",
     "no-restricted-imports": [
       "error",
