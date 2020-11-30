@@ -10,6 +10,18 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Open Sans Bold"), local("OpenSans-Bold"),
+  url(/google-fonts/s/opensans/v17/mem5YaGs126MiZpBA-UN7rgOUuhp.woff2)
+  format("woff2"),
+  url(/google-fonts/s/opensans/v17/mem5YaGs126MiZpBA-UN7rgOUuhv.woff)
+  format("woff");
+  font-display: swap;
+}
+
 @tailwind base;
 
 @tailwind components;
