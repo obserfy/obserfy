@@ -17,6 +17,11 @@
       "packagePatterns": ["@storybook"],
       "groupName": "storybook",
       "extends": ["schedule:monthly"]
+    },
+    {
+      "packagePatterns": ["@storybook"],
+      "groupName": "storybook",
+      "extends": ["schedule:weekly"]
     }
   ]
 }
