@@ -33,7 +33,7 @@ const IndexPage: FC = () => {
       <SEO
         title={t`Record Keeping & Communication tool for Montessori Schools`}
       />
-      <div className="flex-row justify-center my-12">
+      <div className="flex-row justify-center my-12 overflow-x-hidden">
         <div className="prose prose-lg md:prose-lg mb-32 mt-20 max-w-xl px-4">
           <h1 className="text-4xl md:text-5xl">
             <Trans>Run your Montessori School efficiently</Trans>
@@ -79,7 +79,7 @@ const IndexPage: FC = () => {
               <p>
                 <Trans>
                   Managing student records using paper and spreadsheets can be
-                  messy. Data can sometimes slip through the cracks.
+                  messy. Data can easily slip through the cracks.
                 </Trans>
               </p>
               <p>
@@ -92,9 +92,9 @@ const IndexPage: FC = () => {
                   shareable to parents.
                 </Trans>
               </p>
-              <Button className="py-2 px-3 text-base">
-                <Trans>Learn More</Trans>
-              </Button>
+              {/* <Button className="py-2 px-3 text-base"> */}
+              {/*  <Trans>Learn More</Trans> */}
+              {/* </Button> */}
             </div>
           </div>
         </div>
@@ -178,9 +178,9 @@ const IndexPage: FC = () => {
                   parents on their child&apos;s education.
                 </GreenBold>
               </p>
-              <Button className="py-2 px-3 text-base">
-                <Trans>Learn More</Trans>
-              </Button>
+              {/* <Button className="py-2 px-3 text-base"> */}
+              {/*  <Trans>Learn More</Trans> */}
+              {/* </Button> */}
             </div>
           </div>
         </div>
