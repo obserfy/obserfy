@@ -668,7 +668,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@emotion/styled",
-        "virtual:156d257f63d6243bc147a144991bbb487a43d3ba2874121a9759a8234b41ec14ea5983a0052db12fc7c95f2677a0b93be168bc755066417dc774c9426bde3f55#npm:11.0.0"
+        "virtual:eb96698db3c5ab964c4bd07716c13041bd21aa2f2d2f61af7acfdcd3c131f406789456e02076919ba2cababe78cd03a69be6412126b005ca5442e307bc0e19e5#npm:10.0.27"
       ],
       [
         "@emotion/styled-base",
@@ -1504,7 +1504,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@theme-ui/color-modes",
-        "virtual:85cfcf32da7535d876c936e0282f8e628de8190817cfc9aa0583357308f645a3f7720c83cb4319a3fc40f16a6498a8cad02b9de67006b7146aa430da115587ef#npm:0.5.0-alpha.0"
+        "virtual:ca16043a8879fb5f9248d0496aebbe7c934032c0e536c19d2d3eb78b57b475b9f23f5fd0984631247e155b55f1802126d1b3e0db0d0df6fda2f69bd8c1465a62#npm:0.5.0-alpha.1"
       ],
       [
         "@theme-ui/components",
@@ -1512,11 +1512,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@theme-ui/core",
-        "virtual:85cfcf32da7535d876c936e0282f8e628de8190817cfc9aa0583357308f645a3f7720c83cb4319a3fc40f16a6498a8cad02b9de67006b7146aa430da115587ef#npm:0.5.0-alpha.0"
+        "virtual:ca16043a8879fb5f9248d0496aebbe7c934032c0e536c19d2d3eb78b57b475b9f23f5fd0984631247e155b55f1802126d1b3e0db0d0df6fda2f69bd8c1465a62#npm:0.5.0-alpha.1"
       ],
       [
         "@theme-ui/css",
-        "npm:0.5.0-alpha.0"
+        "npm:0.5.0-alpha.1"
       ],
       [
         "@theme-ui/match-media",
@@ -1524,11 +1524,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@theme-ui/mdx",
-        "virtual:85cfcf32da7535d876c936e0282f8e628de8190817cfc9aa0583357308f645a3f7720c83cb4319a3fc40f16a6498a8cad02b9de67006b7146aa430da115587ef#npm:0.5.0-alpha.0"
+        "virtual:ca16043a8879fb5f9248d0496aebbe7c934032c0e536c19d2d3eb78b57b475b9f23f5fd0984631247e155b55f1802126d1b3e0db0d0df6fda2f69bd8c1465a62#npm:0.5.0-alpha.1"
+      ],
+      [
+        "@theme-ui/parse-props",
+        "virtual:048a443139647cd523db4d0b2be48a6ef4303bb005c0aee3548ea044199f6057d931fe4570c0505d7bc9d6be4964b7244db9b3c853036876f812fdd6bcdaafa6#npm:0.5.0-alpha.1"
       ],
       [
         "@theme-ui/theme-provider",
-        "virtual:85cfcf32da7535d876c936e0282f8e628de8190817cfc9aa0583357308f645a3f7720c83cb4319a3fc40f16a6498a8cad02b9de67006b7146aa430da115587ef#npm:0.5.0-alpha.0"
+        "virtual:ca16043a8879fb5f9248d0496aebbe7c934032c0e536c19d2d3eb78b57b475b9f23f5fd0984631247e155b55f1802126d1b3e0db0d0df6fda2f69bd8c1465a62#npm:0.5.0-alpha.1"
       ],
       [
         "@tokenizer/token",
@@ -9279,7 +9283,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "theme-ui",
-        "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.5.0-alpha.0"
+        "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.5.0-alpha.2"
       ],
       [
         "throat",
@@ -22199,10 +22203,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
-        ["virtual:9570152f544fe3b563fb53a82277f1d9a813a53c73c69712e99019fd9d10807acf726f78b0f4a5bcc9fccf255fb2340bfcac50407f9cc28dc3f093a60e9c5a02#npm:1.6.6", {
-          "packageLocation": "./.yarn/$$virtual/@mdx-js-react-virtual-2a2628adda/0/cache/@mdx-js-react-npm-1.6.6-fe98124e4d-54114be961.zip/node_modules/@mdx-js/react/",
+        ["virtual:9711e8f130517e8360ef903c4bfd4aab9bf512643ad8959470afb05d0cc5b33ec9700d2a09a8f4668371ebe5ec48055d0d4302f18b76fe9bdf1cf44e54324238#npm:1.6.6", {
+          "packageLocation": "./.yarn/$$virtual/@mdx-js-react-virtual-9ff6cb98c6/0/cache/@mdx-js-react-npm-1.6.6-fe98124e4d-54114be961.zip/node_modules/@mdx-js/react/",
           "packageDependencies": [
-            ["@mdx-js/react", "virtual:9570152f544fe3b563fb53a82277f1d9a813a53c73c69712e99019fd9d10807acf726f78b0f4a5bcc9fccf255fb2340bfcac50407f9cc28dc3f093a60e9c5a02#npm:1.6.6"],
+            ["@mdx-js/react", "virtual:9711e8f130517e8360ef903c4bfd4aab9bf512643ad8959470afb05d0cc5b33ec9700d2a09a8f4668371ebe5ec48055d0d4302f18b76fe9bdf1cf44e54324238#npm:1.6.6"],
             ["@types/react", "npm:17.0.0"],
             ["react", "npm:17.0.1"]
           ],
@@ -24679,13 +24683,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@theme-ui/color-modes", [
-        ["virtual:85cfcf32da7535d876c936e0282f8e628de8190817cfc9aa0583357308f645a3f7720c83cb4319a3fc40f16a6498a8cad02b9de67006b7146aa430da115587ef#npm:0.5.0-alpha.0", {
-          "packageLocation": "./.yarn/$$virtual/@theme-ui-color-modes-virtual-eec9676754/0/cache/@theme-ui-color-modes-npm-0.5.0-alpha.0-fecbda65a9-6094dd1395.zip/node_modules/@theme-ui/color-modes/",
+        ["virtual:ca16043a8879fb5f9248d0496aebbe7c934032c0e536c19d2d3eb78b57b475b9f23f5fd0984631247e155b55f1802126d1b3e0db0d0df6fda2f69bd8c1465a62#npm:0.5.0-alpha.1", {
+          "packageLocation": "./.yarn/$$virtual/@theme-ui-color-modes-virtual-2c78c5dd76/0/cache/@theme-ui-color-modes-npm-0.5.0-alpha.1-4c23fc1d62-ad45de2a7f.zip/node_modules/@theme-ui/color-modes/",
           "packageDependencies": [
-            ["@theme-ui/color-modes", "virtual:85cfcf32da7535d876c936e0282f8e628de8190817cfc9aa0583357308f645a3f7720c83cb4319a3fc40f16a6498a8cad02b9de67006b7146aa430da115587ef#npm:0.5.0-alpha.0"],
+            ["@theme-ui/color-modes", "virtual:ca16043a8879fb5f9248d0496aebbe7c934032c0e536c19d2d3eb78b57b475b9f23f5fd0984631247e155b55f1802126d1b3e0db0d0df6fda2f69bd8c1465a62#npm:0.5.0-alpha.1"],
             ["@emotion/react", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:11.1.1"],
-            ["@theme-ui/core", "virtual:85cfcf32da7535d876c936e0282f8e628de8190817cfc9aa0583357308f645a3f7720c83cb4319a3fc40f16a6498a8cad02b9de67006b7146aa430da115587ef#npm:0.5.0-alpha.0"],
-            ["@theme-ui/css", "npm:0.5.0-alpha.0"],
+            ["@theme-ui/core", "virtual:ca16043a8879fb5f9248d0496aebbe7c934032c0e536c19d2d3eb78b57b475b9f23f5fd0984631247e155b55f1802126d1b3e0db0d0df6fda2f69bd8c1465a62#npm:0.5.0-alpha.1"],
+            ["@theme-ui/css", "npm:0.5.0-alpha.1"],
             ["@types/react", "npm:17.0.0"],
             ["deepmerge", "npm:4.2.2"],
             ["react", "npm:17.0.1"]
@@ -24717,35 +24721,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             "react"
           ],
           "linkType": "HARD",
-        }],
-        ["virtual:85cfcf32da7535d876c936e0282f8e628de8190817cfc9aa0583357308f645a3f7720c83cb4319a3fc40f16a6498a8cad02b9de67006b7146aa430da115587ef#npm:0.5.0-alpha.0", {
-          "packageLocation": "./.yarn/$$virtual/@theme-ui-components-virtual-b6a8999369/0/cache/@theme-ui-components-npm-0.5.0-alpha.0-f67f69fdf8-814b74fad3.zip/node_modules/@theme-ui/components/",
-          "packageDependencies": [
-            ["@theme-ui/components", "virtual:85cfcf32da7535d876c936e0282f8e628de8190817cfc9aa0583357308f645a3f7720c83cb4319a3fc40f16a6498a8cad02b9de67006b7146aa430da115587ef#npm:0.5.0-alpha.0"],
-            ["@emotion/react", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:11.1.1"],
-            ["@emotion/styled", "virtual:156d257f63d6243bc147a144991bbb487a43d3ba2874121a9759a8234b41ec14ea5983a0052db12fc7c95f2677a0b93be168bc755066417dc774c9426bde3f55#npm:11.0.0"],
-            ["@styled-system/color", "npm:5.1.2"],
-            ["@styled-system/should-forward-prop", "npm:5.1.5"],
-            ["@styled-system/space", "npm:5.1.2"],
-            ["@theme-ui/css", "npm:0.5.0-alpha.0"],
-            ["@types/react", "npm:17.0.0"],
-            ["@types/styled-system", "npm:4.2.2"],
-            ["react", "npm:17.0.1"]
-          ],
-          "packagePeers": [
-            "@types/react",
-            "react"
-          ],
-          "linkType": "HARD",
         }]
       ]],
       ["@theme-ui/core", [
-        ["virtual:85cfcf32da7535d876c936e0282f8e628de8190817cfc9aa0583357308f645a3f7720c83cb4319a3fc40f16a6498a8cad02b9de67006b7146aa430da115587ef#npm:0.5.0-alpha.0", {
-          "packageLocation": "./.yarn/$$virtual/@theme-ui-core-virtual-b92cf6c335/0/cache/@theme-ui-core-npm-0.5.0-alpha.0-41c00032c4-c6d08509f8.zip/node_modules/@theme-ui/core/",
+        ["virtual:ca16043a8879fb5f9248d0496aebbe7c934032c0e536c19d2d3eb78b57b475b9f23f5fd0984631247e155b55f1802126d1b3e0db0d0df6fda2f69bd8c1465a62#npm:0.5.0-alpha.1", {
+          "packageLocation": "./.yarn/$$virtual/@theme-ui-core-virtual-048a443139/0/cache/@theme-ui-core-npm-0.5.0-alpha.1-a425eee3ad-b58f58309c.zip/node_modules/@theme-ui/core/",
           "packageDependencies": [
-            ["@theme-ui/core", "virtual:85cfcf32da7535d876c936e0282f8e628de8190817cfc9aa0583357308f645a3f7720c83cb4319a3fc40f16a6498a8cad02b9de67006b7146aa430da115587ef#npm:0.5.0-alpha.0"],
+            ["@theme-ui/core", "virtual:ca16043a8879fb5f9248d0496aebbe7c934032c0e536c19d2d3eb78b57b475b9f23f5fd0984631247e155b55f1802126d1b3e0db0d0df6fda2f69bd8c1465a62#npm:0.5.0-alpha.1"],
             ["@emotion/react", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:11.1.1"],
-            ["@theme-ui/css", "npm:0.5.0-alpha.0"],
+            ["@theme-ui/css", "npm:0.5.0-alpha.1"],
+            ["@theme-ui/parse-props", "virtual:048a443139647cd523db4d0b2be48a6ef4303bb005c0aee3548ea044199f6057d931fe4570c0505d7bc9d6be4964b7244db9b3c853036876f812fdd6bcdaafa6#npm:0.5.0-alpha.1"],
             ["@types/react", "npm:17.0.0"],
             ["deepmerge", "npm:4.2.2"],
             ["react", "npm:17.0.1"]
@@ -24758,15 +24743,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@theme-ui/css", [
-        ["npm:0.5.0-alpha.0", {
-          "packageLocation": "./.yarn/cache/@theme-ui-css-npm-0.5.0-alpha.0-a0905ceab4-fc33370627.zip/node_modules/@theme-ui/css/",
-          "packageDependencies": [
-            ["@theme-ui/css", "npm:0.5.0-alpha.0"],
-            ["@emotion/react", "virtual:7b58acb1aa8e65181898a28fc270d25bfe05361aae3d9c86489ff2df8664551ab78e024a0a01737d09a1188d4f7c6d89ade96a0253492344f677338def69db55#npm:11.1.1"],
-            ["csstype", "npm:3.0.5"]
-          ],
-          "linkType": "HARD",
-        }],
         ["npm:0.5.0-alpha.1", {
           "packageLocation": "./.yarn/cache/@theme-ui-css-npm-0.5.0-alpha.1-7b58acb1aa-cdee3eaee0.zip/node_modules/@theme-ui/css/",
           "packageDependencies": [
@@ -24801,15 +24777,32 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@theme-ui/mdx", [
-        ["virtual:85cfcf32da7535d876c936e0282f8e628de8190817cfc9aa0583357308f645a3f7720c83cb4319a3fc40f16a6498a8cad02b9de67006b7146aa430da115587ef#npm:0.5.0-alpha.0", {
-          "packageLocation": "./.yarn/$$virtual/@theme-ui-mdx-virtual-9570152f54/0/cache/@theme-ui-mdx-npm-0.5.0-alpha.0-413ff6fb4e-264f7dace3.zip/node_modules/@theme-ui/mdx/",
+        ["virtual:ca16043a8879fb5f9248d0496aebbe7c934032c0e536c19d2d3eb78b57b475b9f23f5fd0984631247e155b55f1802126d1b3e0db0d0df6fda2f69bd8c1465a62#npm:0.5.0-alpha.1", {
+          "packageLocation": "./.yarn/$$virtual/@theme-ui-mdx-virtual-9711e8f130/0/cache/@theme-ui-mdx-npm-0.5.0-alpha.1-c44b4f4828-a83051b2e9.zip/node_modules/@theme-ui/mdx/",
           "packageDependencies": [
-            ["@theme-ui/mdx", "virtual:85cfcf32da7535d876c936e0282f8e628de8190817cfc9aa0583357308f645a3f7720c83cb4319a3fc40f16a6498a8cad02b9de67006b7146aa430da115587ef#npm:0.5.0-alpha.0"],
+            ["@theme-ui/mdx", "virtual:ca16043a8879fb5f9248d0496aebbe7c934032c0e536c19d2d3eb78b57b475b9f23f5fd0984631247e155b55f1802126d1b3e0db0d0df6fda2f69bd8c1465a62#npm:0.5.0-alpha.1"],
             ["@emotion/react", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:11.1.1"],
             ["@emotion/styled", "virtual:156d257f63d6243bc147a144991bbb487a43d3ba2874121a9759a8234b41ec14ea5983a0052db12fc7c95f2677a0b93be168bc755066417dc774c9426bde3f55#npm:11.0.0"],
-            ["@mdx-js/react", "virtual:9570152f544fe3b563fb53a82277f1d9a813a53c73c69712e99019fd9d10807acf726f78b0f4a5bcc9fccf255fb2340bfcac50407f9cc28dc3f093a60e9c5a02#npm:1.6.6"],
-            ["@theme-ui/core", "virtual:85cfcf32da7535d876c936e0282f8e628de8190817cfc9aa0583357308f645a3f7720c83cb4319a3fc40f16a6498a8cad02b9de67006b7146aa430da115587ef#npm:0.5.0-alpha.0"],
-            ["@theme-ui/css", "npm:0.5.0-alpha.0"],
+            ["@mdx-js/react", "virtual:9711e8f130517e8360ef903c4bfd4aab9bf512643ad8959470afb05d0cc5b33ec9700d2a09a8f4668371ebe5ec48055d0d4302f18b76fe9bdf1cf44e54324238#npm:1.6.6"],
+            ["@theme-ui/core", "virtual:ca16043a8879fb5f9248d0496aebbe7c934032c0e536c19d2d3eb78b57b475b9f23f5fd0984631247e155b55f1802126d1b3e0db0d0df6fda2f69bd8c1465a62#npm:0.5.0-alpha.1"],
+            ["@theme-ui/css", "npm:0.5.0-alpha.1"],
+            ["@types/react", "npm:17.0.0"],
+            ["react", "npm:17.0.1"]
+          ],
+          "packagePeers": [
+            "@types/react",
+            "react"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@theme-ui/parse-props", [
+        ["virtual:048a443139647cd523db4d0b2be48a6ef4303bb005c0aee3548ea044199f6057d931fe4570c0505d7bc9d6be4964b7244db9b3c853036876f812fdd6bcdaafa6#npm:0.5.0-alpha.1", {
+          "packageLocation": "./.yarn/$$virtual/@theme-ui-parse-props-virtual-8a24fe44de/0/cache/@theme-ui-parse-props-npm-0.5.0-alpha.1-228d1efc3d-e5df4d4adf.zip/node_modules/@theme-ui/parse-props/",
+          "packageDependencies": [
+            ["@theme-ui/parse-props", "virtual:048a443139647cd523db4d0b2be48a6ef4303bb005c0aee3548ea044199f6057d931fe4570c0505d7bc9d6be4964b7244db9b3c853036876f812fdd6bcdaafa6#npm:0.5.0-alpha.1"],
+            ["@emotion/react", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:11.1.1"],
+            ["@theme-ui/css", "npm:0.5.0-alpha.1"],
             ["@types/react", "npm:17.0.0"],
             ["react", "npm:17.0.1"]
           ],
@@ -24821,15 +24814,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@theme-ui/theme-provider", [
-        ["virtual:85cfcf32da7535d876c936e0282f8e628de8190817cfc9aa0583357308f645a3f7720c83cb4319a3fc40f16a6498a8cad02b9de67006b7146aa430da115587ef#npm:0.5.0-alpha.0", {
-          "packageLocation": "./.yarn/$$virtual/@theme-ui-theme-provider-virtual-62954f73e9/0/cache/@theme-ui-theme-provider-npm-0.5.0-alpha.0-06ecaa91d0-d01ef94dd3.zip/node_modules/@theme-ui/theme-provider/",
+        ["virtual:ca16043a8879fb5f9248d0496aebbe7c934032c0e536c19d2d3eb78b57b475b9f23f5fd0984631247e155b55f1802126d1b3e0db0d0df6fda2f69bd8c1465a62#npm:0.5.0-alpha.1", {
+          "packageLocation": "./.yarn/$$virtual/@theme-ui-theme-provider-virtual-fe1feb6053/0/cache/@theme-ui-theme-provider-npm-0.5.0-alpha.1-53b38225e2-7d5efd370b.zip/node_modules/@theme-ui/theme-provider/",
           "packageDependencies": [
-            ["@theme-ui/theme-provider", "virtual:85cfcf32da7535d876c936e0282f8e628de8190817cfc9aa0583357308f645a3f7720c83cb4319a3fc40f16a6498a8cad02b9de67006b7146aa430da115587ef#npm:0.5.0-alpha.0"],
+            ["@theme-ui/theme-provider", "virtual:ca16043a8879fb5f9248d0496aebbe7c934032c0e536c19d2d3eb78b57b475b9f23f5fd0984631247e155b55f1802126d1b3e0db0d0df6fda2f69bd8c1465a62#npm:0.5.0-alpha.1"],
             ["@emotion/react", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:11.1.1"],
-            ["@theme-ui/color-modes", "virtual:85cfcf32da7535d876c936e0282f8e628de8190817cfc9aa0583357308f645a3f7720c83cb4319a3fc40f16a6498a8cad02b9de67006b7146aa430da115587ef#npm:0.5.0-alpha.0"],
-            ["@theme-ui/core", "virtual:85cfcf32da7535d876c936e0282f8e628de8190817cfc9aa0583357308f645a3f7720c83cb4319a3fc40f16a6498a8cad02b9de67006b7146aa430da115587ef#npm:0.5.0-alpha.0"],
-            ["@theme-ui/css", "npm:0.5.0-alpha.0"],
-            ["@theme-ui/mdx", "virtual:85cfcf32da7535d876c936e0282f8e628de8190817cfc9aa0583357308f645a3f7720c83cb4319a3fc40f16a6498a8cad02b9de67006b7146aa430da115587ef#npm:0.5.0-alpha.0"],
+            ["@theme-ui/color-modes", "virtual:ca16043a8879fb5f9248d0496aebbe7c934032c0e536c19d2d3eb78b57b475b9f23f5fd0984631247e155b55f1802126d1b3e0db0d0df6fda2f69bd8c1465a62#npm:0.5.0-alpha.1"],
+            ["@theme-ui/core", "virtual:ca16043a8879fb5f9248d0496aebbe7c934032c0e536c19d2d3eb78b57b475b9f23f5fd0984631247e155b55f1802126d1b3e0db0d0df6fda2f69bd8c1465a62#npm:0.5.0-alpha.1"],
+            ["@theme-ui/css", "npm:0.5.0-alpha.1"],
+            ["@theme-ui/mdx", "virtual:ca16043a8879fb5f9248d0496aebbe7c934032c0e536c19d2d3eb78b57b475b9f23f5fd0984631247e155b55f1802126d1b3e0db0d0df6fda2f69bd8c1465a62#npm:0.5.0-alpha.1"],
             ["@types/react", "npm:17.0.0"],
             ["@types/theme-ui__css", null],
             ["react", "npm:17.0.1"]
@@ -38085,7 +38078,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/gatsby", null],
             ["@types/theme-ui", null],
             ["gatsby", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:2.27.5"],
-            ["theme-ui", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.5.0-alpha.0"]
+            ["theme-ui", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.5.0-alpha.2"]
           ],
           "packagePeers": [
             "@types/gatsby",
@@ -55194,16 +55187,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["theme-ui", [
-        ["virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.5.0-alpha.0", {
-          "packageLocation": "./.yarn/$$virtual/theme-ui-virtual-85cfcf32da/0/cache/theme-ui-npm-0.5.0-alpha.0-0ddc7562ad-b1c8349428.zip/node_modules/theme-ui/",
+        ["virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.5.0-alpha.2", {
+          "packageLocation": "./.yarn/$$virtual/theme-ui-virtual-ca16043a88/0/cache/theme-ui-npm-0.5.0-alpha.2-5d207cc7e2-62d7201326.zip/node_modules/theme-ui/",
           "packageDependencies": [
-            ["theme-ui", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.5.0-alpha.0"],
-            ["@theme-ui/color-modes", "virtual:85cfcf32da7535d876c936e0282f8e628de8190817cfc9aa0583357308f645a3f7720c83cb4319a3fc40f16a6498a8cad02b9de67006b7146aa430da115587ef#npm:0.5.0-alpha.0"],
-            ["@theme-ui/components", "virtual:85cfcf32da7535d876c936e0282f8e628de8190817cfc9aa0583357308f645a3f7720c83cb4319a3fc40f16a6498a8cad02b9de67006b7146aa430da115587ef#npm:0.5.0-alpha.0"],
-            ["@theme-ui/core", "virtual:85cfcf32da7535d876c936e0282f8e628de8190817cfc9aa0583357308f645a3f7720c83cb4319a3fc40f16a6498a8cad02b9de67006b7146aa430da115587ef#npm:0.5.0-alpha.0"],
-            ["@theme-ui/css", "npm:0.5.0-alpha.0"],
-            ["@theme-ui/mdx", "virtual:85cfcf32da7535d876c936e0282f8e628de8190817cfc9aa0583357308f645a3f7720c83cb4319a3fc40f16a6498a8cad02b9de67006b7146aa430da115587ef#npm:0.5.0-alpha.0"],
-            ["@theme-ui/theme-provider", "virtual:85cfcf32da7535d876c936e0282f8e628de8190817cfc9aa0583357308f645a3f7720c83cb4319a3fc40f16a6498a8cad02b9de67006b7146aa430da115587ef#npm:0.5.0-alpha.0"],
+            ["theme-ui", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.5.0-alpha.2"],
+            ["@theme-ui/color-modes", "virtual:ca16043a8879fb5f9248d0496aebbe7c934032c0e536c19d2d3eb78b57b475b9f23f5fd0984631247e155b55f1802126d1b3e0db0d0df6fda2f69bd8c1465a62#npm:0.5.0-alpha.1"],
+            ["@theme-ui/components", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.5.0-alpha.2"],
+            ["@theme-ui/core", "virtual:ca16043a8879fb5f9248d0496aebbe7c934032c0e536c19d2d3eb78b57b475b9f23f5fd0984631247e155b55f1802126d1b3e0db0d0df6fda2f69bd8c1465a62#npm:0.5.0-alpha.1"],
+            ["@theme-ui/css", "npm:0.5.0-alpha.1"],
+            ["@theme-ui/mdx", "virtual:ca16043a8879fb5f9248d0496aebbe7c934032c0e536c19d2d3eb78b57b475b9f23f5fd0984631247e155b55f1802126d1b3e0db0d0df6fda2f69bd8c1465a62#npm:0.5.0-alpha.1"],
+            ["@theme-ui/theme-provider", "virtual:ca16043a8879fb5f9248d0496aebbe7c934032c0e536c19d2d3eb78b57b475b9f23f5fd0984631247e155b55f1802126d1b3e0db0d0df6fda2f69bd8c1465a62#npm:0.5.0-alpha.1"],
             ["@types/react", "npm:17.0.0"],
             ["react", "npm:17.0.1"]
           ],
@@ -57203,7 +57196,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["regenerator-runtime", "npm:0.13.7"],
             ["storybook-addon-deps", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:2.1.3"],
             ["storybook-addon-i18n", "npm:5.1.13"],
-            ["theme-ui", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.5.0-alpha.0"],
+            ["theme-ui", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.5.0-alpha.2"],
             ["typescript", "patch:typescript@npm%3A4.1.2#builtin<compat/typescript>::version=4.1.2&hash=5bf698"],
             ["url-loader", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:4.1.1"],
             ["use-immer", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.4.2"],
