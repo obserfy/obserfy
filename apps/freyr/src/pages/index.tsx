@@ -274,6 +274,7 @@ const IndexPage: FC = () => {
             py-8
             px-4
             flex flex-col items-center
+            bg-primary
             bg-cover
             bg-center
             shadow-lg
