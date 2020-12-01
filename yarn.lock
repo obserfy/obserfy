@@ -14202,15 +14202,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cross-env@npm:7.0.2":
-  version: 7.0.2
-  resolution: "cross-env@npm:7.0.2"
+"cross-env@npm:7.0.3":
+  version: 7.0.3
+  resolution: "cross-env@npm:7.0.3"
   dependencies:
     cross-spawn: ^7.0.1
   bin:
     cross-env: src/bin/cross-env.js
     cross-env-shell: src/bin/cross-env-shell.js
-  checksum: 624d638db3b4b6b221f32238aeb6785b865365bf41154f01d46a23b6d78f807ca5588a3b32e9af5f17384b866fed3752d0e3ecf8c4a8cfca2935d363d27ba058
+  checksum: af4fa4dab3ddf6c25ed5e0c95ef53ea363aceb41741e22b7eae83a12cc10cb2416e3aba29c95f2f2c3a1aa918d3444fe92fab318a8ba761e8d52ae88388496cc
   languageName: node
   linkType: hard
 
@@ -36269,7 +36269,7 @@ typescript@^4.0.0:
     body-scroll-lock: 3.1.5
     browser-lang: 0.1.0
     chromatic: 5.4.0
-    cross-env: 7.0.2
+    cross-env: 7.0.3
     dayjs: 1.9.6
     dotenv: 8.2.0
     eslint: 7.14.0
