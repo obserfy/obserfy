@@ -1,4 +1,5 @@
 import React, { ButtonHTMLAttributes, DetailedHTMLProps, FC } from "react"
+import styles from "./Button.module.css"
 
 interface Props
   extends DetailedHTMLProps<
@@ -18,8 +19,9 @@ const Button: FC<Props> = ({
     <button
       type={type}
       className={`
-      ${className} 
-      ${secondary && "text-black border-solid bg-transparent"}
+      ${className || ""} 
+      ${secondary ? styles.secondary : ""}
+      ${styles.base}
       `}
       {...props}
     />

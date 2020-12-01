@@ -1,7 +1,7 @@
 import { LocalizedLink as Link } from "gatsby-theme-i18n"
 import React, { FC } from "react"
 import { Trans } from "@lingui/macro"
-import Button from "./button"
+import Button from "./Button/Button"
 import Logo from "../images/logo-standalone.svg"
 
 const Header: FC = () => (

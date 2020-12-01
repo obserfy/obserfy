@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import { Trans, t } from "@lingui/macro"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Button from "../components/button"
+import Button from "../components/Button/Button"
 
 const ContactUsPage: FC = () => (
   <Layout>
