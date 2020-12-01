@@ -41,7 +41,7 @@
     "io-ts-types": "0.5.12",
     "minio": "7.0.17",
     "monocle-ts": "2.3.3",
-    "nanoid": "3.1.18",
+    "nanoid": "3.1.19",
     "newtype-ts": "0.3.4",
     "next": "10.0.1",
     "next-compose-plugins": "2.2.1",
