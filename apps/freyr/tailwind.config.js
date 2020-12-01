@@ -1,10 +1,5 @@
 module.exports = {
-  purge: {
-    mode: "all",
-    content: [
-      "./src/**/*.tsx",
-    ],
-  },
+  purge: ["./src/**/*.tsx"],
   important: true,
   theme: {
     extend: {
@@ -17,12 +12,6 @@ module.exports = {
         primaryDark: "#01815c",
       },
     },
-  },
-  future: {
-    removeDeprecatedGapUtilities: true,
-    purgeLayersByDefault: true,
-    standardFontWeights: true,
-    defaultLineHeights: true,
   },
   plugins: [
     require("@tailwindcss/typography"),
