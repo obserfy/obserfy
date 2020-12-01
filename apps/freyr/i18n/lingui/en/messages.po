@@ -25,7 +25,7 @@ msgstr ""
 msgid "<0>Store</0> your student's data. <1>Plan</1> their lessons. And <2>share</2> it all with parents with ease, on one platform built for the need of Montessori Schools."
 msgstr "<0>Store</0> your student's data. <1>Plan</1> their lessons. And <2>share</2> it all with parents with ease, on one platform built for the need of Montessori Schools."
 
-#: src/pages/index.tsx:220
+#: src/pages/index.tsx:217
 msgid "Allow parents to post observations at home about their children's task, and see observations that teachers had created."
 msgstr "Allow parents to post observations at home about their children's task, and see observations that teachers had created."
 
@@ -33,7 +33,7 @@ msgstr "Allow parents to post observations at home about their children's task, 
 msgid "Built with speed and simplicity in mind"
 msgstr "Built with speed and simplicity in mind"
 
-#: src/pages/index.tsx:217
+#: src/pages/index.tsx:214
 msgid "Collaborate on Observations"
 msgstr "Collaborate on Observations"
 
@@ -59,7 +59,7 @@ msgstr "Digital record keeping"
 msgid "Easily keep track of your student's progress through your curriculum in one place, making building reports easier."
 msgstr "Easily keep track of your student's progress through your curriculum in one place, making building reports easier."
 
-#: src/pages/index.tsx:233
+#: src/pages/index.tsx:230
 msgid "Easily share photos of your students with their parents, and allow parents to post photos of their children doing tasks assigned to them outside of school."
 msgstr "Easily share photos of your students with their parents, and allow parents to post photos of their children doing tasks assigned to them outside of school."
 
@@ -79,7 +79,7 @@ msgstr "Email"
 #~ msgid "Give it a try and see how we can help improve your school."
 #~ msgstr "Give it a try and see how we can help improve your school."
 
-#: src/pages/index.tsx:260
+#: src/pages/index.tsx:258
 msgid "Give it a try now with a 30-days free trial"
 msgstr "Give it a try now with a 30-days free trial"
 
@@ -108,7 +108,7 @@ msgstr "Last updated"
 #~ msgid "Let parents see and keep track of their child's progress through through your school's curriculum."
 #~ msgstr "Let parents see and keep track of their child's progress through through your school's curriculum."
 
-#: src/pages/index.tsx:196
+#: src/pages/index.tsx:193
 msgid "Let parents see and keep track of their child's progress through your school's curriculum in realtime."
 msgstr "Let parents see and keep track of their child's progress through your school's curriculum in realtime."
 
@@ -144,7 +144,7 @@ msgstr "Plan student's lesson"
 msgid "Plan your student's lesson ahead of time, and share them with other teachers, and even with parents."
 msgstr "Plan your student's lesson ahead of time, and share them with other teachers, and even with parents."
 
-#: src/components/layout.tsx:20
+#: src/components/layout.tsx:25
 #: src/pages/privacy-policy.tsx:10
 msgid "Privacy Policy"
 msgstr "Privacy Policy"
@@ -173,19 +173,19 @@ msgstr "Run your Montessori School efficiently"
 msgid "Send"
 msgstr "Send"
 
-#: src/pages/index.tsx:193
+#: src/pages/index.tsx:190
 msgid "Share curriculum progress with parents"
 msgstr "Share curriculum progress with parents"
 
-#: src/pages/index.tsx:205
+#: src/pages/index.tsx:202
 msgid "Share lesson plans"
 msgstr "Share lesson plans"
 
-#: src/pages/index.tsx:208
+#: src/pages/index.tsx:205
 msgid "Share lesson plans/tasks that parents can execute at home, along with some resources to guide them."
 msgstr "Share lesson plans/tasks that parents can execute at home, along with some resources to guide them."
 
-#: src/pages/index.tsx:230
+#: src/pages/index.tsx:227
 msgid "Share photos"
 msgstr "Share photos"
 
@@ -214,11 +214,11 @@ msgid "Track student's curriculum progress"
 msgstr "Track student's curriculum progress"
 
 #: src/pages/index.tsx:58
-#: src/pages/index.tsx:265
+#: src/pages/index.tsx:263
 msgid "Try for Free"
 msgstr "Try for Free"
 
-#: src/pages/index.tsx:257
+#: src/pages/index.tsx:255
 msgid "Try it now"
 msgstr "Try it now"
 
