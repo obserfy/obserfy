@@ -17,23 +17,23 @@ msgstr ""
 #~ msgid "<0>Store</0> your student data and observations. <1>Plan</1> their lessons. And <2>share</2> your data with parents with ease, on one platform built for the need of Montessori Schools."
 #~ msgstr ""
 
-#: src/pages/index.tsx:37
+#: src/pages/index.tsx:48
 msgid "<0>Store</0> your student's data. <1>Plan</1> their lessons. And <2>share</2> it all with parents with ease, on one platform built for the need of Montessori Schools."
 msgstr ""
 
-#: src/pages/index.tsx:211
+#: src/pages/index.tsx:220
 msgid "Allow parents to post observations at home about their children's task, and see observations that teachers had created."
 msgstr ""
 
-#: src/pages/index.tsx:133
+#: src/pages/index.tsx:142
 msgid "Built with speed and simplicity in mind"
 msgstr ""
 
-#: src/pages/index.tsx:208
+#: src/pages/index.tsx:217
 msgid "Collaborate on Observations"
 msgstr ""
 
-#: src/pages/index.tsx:161
+#: src/pages/index.tsx:170
 msgid "Collaboration between parents and schools are important, especially in the post-COVID 19 world."
 msgstr ""
 
@@ -43,19 +43,19 @@ msgstr ""
 
 #: src/pages/contact.tsx:7
 #: src/pages/contact.tsx:11
-#: src/pages/index.tsx:52
+#: src/pages/index.tsx:63
 msgid "Contact Us"
 msgstr "Hubungi Kami"
 
-#: src/pages/index.tsx:65
+#: src/pages/index.tsx:77
 msgid "Digital record keeping"
 msgstr ""
 
-#: src/pages/index.tsx:124
+#: src/pages/index.tsx:133
 msgid "Easily keep track of your student's progress through your curriculum in one place, making building reports easier."
 msgstr ""
 
-#: src/pages/index.tsx:224
+#: src/pages/index.tsx:233
 msgid "Easily share photos of your students with their parents, and allow parents to post photos of their children doing tasks assigned to them outside of school."
 msgstr ""
 
@@ -68,11 +68,15 @@ msgstr "Email"
 #~ msgstr "Coba Gratis"
 
 #: src/pages/index.tsx:247
-msgid "Get started now"
-msgstr ""
+#~ msgid "Get started now"
+#~ msgstr ""
 
 #: src/pages/index.tsx:250
-msgid "Give it a try and see how we can help improve your school."
+#~ msgid "Give it a try and see how we can help improve your school."
+#~ msgstr ""
+
+#: src/pages/index.tsx:260
+msgid "Give it a try now with a 30-days free trial"
 msgstr ""
 
 #: src/pages/contact.tsx:14
@@ -84,8 +88,8 @@ msgstr "Punya pertanyaan? Kirimkan pesan ke kami menggunakan form disamping."
 #~ msgstr ""
 
 #: src/pages/index.tsx:69
-msgid "Helping to simplify the work that teachers do"
-msgstr ""
+#~ msgid "Helping to simplify the work that teachers do"
+#~ msgstr ""
 
 #: src/pages/privacy-policy.tsx:14
 msgid "Last updated"
@@ -100,11 +104,11 @@ msgstr "Last updated"
 #~ msgid "Let parents see and keep track of their child's progress through through your school's curriculum."
 #~ msgstr ""
 
-#: src/pages/index.tsx:187
+#: src/pages/index.tsx:196
 msgid "Let parents see and keep track of their child's progress through your school's curriculum in realtime."
 msgstr ""
 
-#: src/pages/index.tsx:72
+#: src/pages/index.tsx:84
 msgid "Managing student records using paper and spreadsheets can be messy. Data can easily slip through the cracks."
 msgstr ""
 
@@ -120,7 +124,7 @@ msgstr "Pesan"
 #~ msgid "Observe. Plan. Communicate."
 #~ msgstr "Catat. Rencanakan. Bagikan."
 
-#: src/pages/index.tsx:151
+#: src/pages/index.tsx:160
 msgid "Parent communication"
 msgstr ""
 
@@ -128,11 +132,11 @@ msgstr ""
 msgid "Parents"
 msgstr "Wali Murid"
 
-#: src/pages/index.tsx:109
+#: src/pages/index.tsx:118
 msgid "Plan student's lesson"
 msgstr ""
 
-#: src/pages/index.tsx:112
+#: src/pages/index.tsx:121
 msgid "Plan your student's lesson ahead of time, and share them with other teachers, and even with parents."
 msgstr ""
 
@@ -141,15 +145,15 @@ msgstr ""
 msgid "Privacy Policy"
 msgstr "Privacy Policy"
 
-#: src/pages/index.tsx:30
+#: src/pages/index.tsx:37
 msgid "Record Keeping & Communication tool for Montessori Schools"
 msgstr "Software manajemen data dan komunikasi untuk sekolah Montessori"
 
-#: src/pages/index.tsx:97
+#: src/pages/index.tsx:106
 msgid "Record Observations"
 msgstr ""
 
-#: src/pages/index.tsx:34
+#: src/pages/index.tsx:45
 msgid "Run your Montessori School efficiently"
 msgstr ""
 
@@ -157,20 +161,24 @@ msgstr ""
 msgid "Send"
 msgstr "Kirim"
 
-#: src/pages/index.tsx:184
+#: src/pages/index.tsx:193
 msgid "Share curriculum progress with parents"
 msgstr ""
 
-#: src/pages/index.tsx:196
+#: src/pages/index.tsx:205
 msgid "Share lesson plans"
 msgstr ""
 
-#: src/pages/index.tsx:199
+#: src/pages/index.tsx:208
 msgid "Share lesson plans/tasks that parents can execute at home, along with some resources to guide them."
 msgstr ""
 
-#: src/pages/index.tsx:221
+#: src/pages/index.tsx:230
 msgid "Share photos"
+msgstr ""
+
+#: src/pages/index.tsx:81
+msgid "Simplifying the work that teachers do"
 msgstr ""
 
 #: src/pages/index.tsx:15
@@ -181,7 +189,7 @@ msgstr ""
 msgid "Teachers"
 msgstr "Guru"
 
-#: src/pages/index.tsx:155
+#: src/pages/index.tsx:164
 msgid "Tools for building a more transparent and collaborative schools"
 msgstr ""
 
@@ -189,23 +197,27 @@ msgstr ""
 #~ msgid "Tools to build more transparent and collaborative schools"
 #~ msgstr ""
 
-#: src/pages/index.tsx:121
+#: src/pages/index.tsx:130
 msgid "Track student's curriculum progress"
 msgstr ""
 
-#: src/pages/index.tsx:47
-#: src/pages/index.tsx:257
+#: src/pages/index.tsx:58
+#: src/pages/index.tsx:265
 msgid "Try for Free"
 msgstr ""
 
-#: src/pages/index.tsx:136
+#: src/pages/index.tsx:257
+msgid "Try it now"
+msgstr ""
+
+#: src/pages/index.tsx:145
 msgid "We focus on keeping Obserfy fast to help you get your job done faster, and easy to use even if you are new to Montessori."
 msgstr ""
 
-#: src/pages/index.tsx:78
+#: src/pages/index.tsx:90
 msgid "We help simplify teacher's work by providing <0>one simple place for you to keep your student records</0> so that your data are accessible for all teachers, and easily shareable to parents."
 msgstr ""
 
-#: src/pages/index.tsx:100
+#: src/pages/index.tsx:109
 msgid "We help you keep your student observation in one place, so its available to every teachers, anytime, anywhere."
 msgstr ""
