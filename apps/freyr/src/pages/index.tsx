@@ -12,14 +12,14 @@ const IndexPage: FC = () => {
     query landingImages {
       hero: file(relativePath: { eq: "hero.png" }) {
         childImageSharp {
-          fluid(maxWidth: 1200) {
+          fluid(maxWidth: 1200, quality: 100) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
       vor: file(relativePath: { eq: "vor.png" }) {
         childImageSharp {
-          fluid(maxWidth: 855) {
+          fluid(maxWidth: 855, quality: 100) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
@@ -27,7 +27,7 @@ const IndexPage: FC = () => {
 
       gaia: file(relativePath: { eq: "gaia.png" }) {
         childImageSharp {
-          fluid(maxWidth: 855) {
+          fluid(maxWidth: 855, quality: 100) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
@@ -42,7 +42,7 @@ const IndexPage: FC = () => {
       />
       <div className="justify-center">
         <div className="md:flex flex-row-reverse items-center mb-32">
-          <div className="w-full bg-cover bg-center p-3 mb-4 md:mb-0">
+          <div className="w-full bg-cover bg-center mb-4 md:mb-0">
             <Img fluid={images.hero.childImageSharp.fluid} className="w-full" />
           </div>
           <div className="prose prose-lg md:prose-lg max-w-xl px-4">
@@ -89,9 +89,9 @@ const IndexPage: FC = () => {
           </svg>
           <Img
             fluid={images.vor.childImageSharp.fluid}
-            className="md:-ml-4 mb-4 md:mb-0 w-full"
+            className="md:-ml-4 w-full"
           />
-          <div className="px-5">
+          <div className="px-5 mt-5">
             <p className="font-bold text-lg text-green-700 mb-5">
               <Trans>Digital record keeping</Trans>
             </p>
@@ -183,9 +183,9 @@ const IndexPage: FC = () => {
           </svg>
           <Img
             fluid={images.gaia.childImageSharp.fluid}
-            className="w-full mb-4 md:mb-0"
+            className="w-full"
           />
-          <div className="px-5">
+          <div className="px-5 mt-5">
             <p className="font-bold text-lg text-green-700 mb-5">
               <Trans>Parent communication</Trans>
             </p>
@@ -204,15 +204,12 @@ const IndexPage: FC = () => {
               </p>
               <p>
                 We help you empower parents, providing custom dashboard for them
-                to access{" "}
+                to access and making it{" "}
                 <GreenBold>
-                  and making it easy to share your data and collaborate with
-                  parents on their child&apos;s education.
+                  easy to share your data and collaborate with parents on their
+                  child&apos;s education.
                 </GreenBold>
               </p>
-              {/* <Button className="py-2 px-3 text-base"> */}
-              {/*  <Trans>Learn More</Trans> */}
-              {/* </Button> */}
             </div>
           </div>
         </div>
