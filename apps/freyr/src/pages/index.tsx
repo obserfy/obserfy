@@ -12,7 +12,7 @@ const IndexPage: FC = () => {
     query landingImages {
       vor: file(relativePath: { eq: "vor.png" }) {
         childImageSharp {
-          fluid(maxWidth: 1800) {
+          fluid(maxWidth: 855) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
@@ -20,7 +20,7 @@ const IndexPage: FC = () => {
 
       gaia: file(relativePath: { eq: "gaia.png" }) {
         childImageSharp {
-          fluid(maxWidth: 1800) {
+          fluid(maxWidth: 855) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
@@ -33,7 +33,7 @@ const IndexPage: FC = () => {
       <SEO
         title={t`Record Keeping & Communication tool for Montessori Schools`}
       />
-      <div className="flex-row justify-center my-12 overflow-x-hidden">
+      <div className="flex-row justify-center my-16">
         <div className="prose prose-lg md:prose-lg mb-32 mt-20 max-w-xl px-4">
           <h1 className="text-4xl md:text-5xl">
             <Trans>Run your Montessori School efficiently</Trans>
@@ -63,7 +63,18 @@ const IndexPage: FC = () => {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row md:items-center pb-20">
+        <div className="flex flex-col md:flex-row md:items-center mb-20 md:mt-64 relative">
+          <svg
+            viewBox="0 0 200 200"
+            xmlns="http://www.w3.org/2000/svg"
+            className="absolute w-1/2 -left-8 -top-16 md:-left-32 md:-top-32"
+          >
+            <path
+              fill="#00E399"
+              d="M38.7,-72.5C46.5,-62.6,46.7,-44.8,48.9,-31.4C51.1,-18,55.4,-9,59,2.1C62.5,13.1,65.3,26.2,62.7,38.9C60.1,51.6,52,63.9,40.7,66.9C29.3,70,14.6,63.9,2.5,59.5C-9.6,55.2,-19.3,52.6,-26.7,47.3C-34.1,41.9,-39.3,33.8,-50.6,25.5C-61.9,17.1,-79.3,8.6,-79.2,0C-79.2,-8.5,-61.7,-17,-53.4,-30.5C-45,-43.9,-45.8,-62.2,-38.4,-72.4C-31,-82.5,-15.5,-84.3,0,-84.3C15.5,-84.3,30.9,-82.3,38.7,-72.5Z"
+              transform="translate(100 100)"
+            />
+          </svg>
           <Img
             fluid={images.vor.childImageSharp.fluid}
             className="md:-ml-4 mb-4 md:mb-0 w-full"
@@ -74,7 +85,7 @@ const IndexPage: FC = () => {
             </p>
             <div className="prose prose-lg pr-6 max-w-xl">
               <h2>
-                <Trans>We help simplify the work that teachers do</Trans>
+                <Trans>Helping to simplify the work that teachers do</Trans>
               </h2>
               <p>
                 <Trans>
@@ -99,7 +110,7 @@ const IndexPage: FC = () => {
           </div>
         </div>
 
-        <div className="prose md:flex justify-between max-w-full pb-20 px-5">
+        <div className="prose md:flex justify-between max-w-full mb-16 px-5">
           <div className="w-full pr-6">
             <h3>
               <Trans>Record Observations</Trans>
@@ -149,10 +160,21 @@ const IndexPage: FC = () => {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row-reverse md:items-center py-20 ">
+        <div className="flex flex-col md:flex-row-reverse md:items-start relative mb-16 mt-32">
+          <svg
+            viewBox="0 0 200 200"
+            xmlns="http://www.w3.org/2000/svg"
+            className="absolute w-1/2 -top-16 md:-top-32"
+          >
+            <path
+              fill="#00E399"
+              d="M23.8,-40.4C35,-34.8,51,-36.7,56.3,-31.3C61.6,-25.8,56.3,-12.9,52.7,-2.1C49.1,8.7,47.2,17.5,46.7,31.4C46.3,45.3,47.2,64.3,39.7,74.1C32.1,83.9,16.1,84.4,4.8,76C-6.4,67.6,-12.7,50.3,-19.8,40.3C-26.9,30.2,-34.8,27.4,-45.9,21.9C-57,16.4,-71.3,8.2,-71.7,-0.3C-72.2,-8.7,-58.7,-17.4,-52.1,-30.6C-45.4,-43.8,-45.6,-61.5,-38,-69.1C-30.5,-76.8,-15.2,-74.5,-4.4,-66.8C6.3,-59.1,12.7,-46,23.8,-40.4Z"
+              transform="translate(100 100)"
+            />
+          </svg>
           <Img
             fluid={images.gaia.childImageSharp.fluid}
-            className="md:-mr-4 w-full mb-4 md:mb-0"
+            className="w-full mb-4 md:mb-0"
           />
           <div className="px-5">
             <p className="font-bold text-lg text-green-700 mb-5">
@@ -194,7 +216,7 @@ const IndexPage: FC = () => {
             <p>
               <Trans>
                 Let parents see and keep track of their child&apos;s progress
-                through through your school&apos;s curriculum.
+                through your school&apos;s curriculum in realtime.
               </Trans>
             </p>
           </div>
