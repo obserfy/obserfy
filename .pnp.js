@@ -3476,7 +3476,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "cross-env",
-        "npm:7.0.2"
+        "npm:7.0.3"
       ],
       [
         "cross-fetch",
@@ -31889,10 +31889,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["cross-env", [
-        ["npm:7.0.2", {
-          "packageLocation": "./.yarn/cache/cross-env-npm-7.0.2-1e9c9fdbca-624d638db3.zip/node_modules/cross-env/",
+        ["npm:7.0.3", {
+          "packageLocation": "./.yarn/cache/cross-env-npm-7.0.3-96d81820f4-af4fa4dab3.zip/node_modules/cross-env/",
           "packageDependencies": [
-            ["cross-env", "npm:7.0.2"],
+            ["cross-env", "npm:7.0.3"],
             ["cross-spawn", "npm:7.0.3"]
           ],
           "linkType": "HARD",
@@ -57213,7 +57213,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["body-scroll-lock", "npm:3.1.5"],
             ["browser-lang", "npm:0.1.0"],
             ["chromatic", "npm:5.4.0"],
-            ["cross-env", "npm:7.0.2"],
+            ["cross-env", "npm:7.0.3"],
             ["dayjs", "npm:1.9.6"],
             ["dotenv", "npm:8.2.0"],
             ["eslint", "npm:7.14.0"],
