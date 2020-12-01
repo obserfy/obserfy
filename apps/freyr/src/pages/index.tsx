@@ -10,6 +10,13 @@ import Button from "../components/Button/Button"
 const IndexPage: FC = () => {
   const images = useStaticQuery(graphql`
     query landingImages {
+      hero: file(relativePath: { eq: "hero.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1200) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
       vor: file(relativePath: { eq: "vor.png" }) {
         childImageSharp {
           fluid(maxWidth: 855) {
@@ -33,37 +40,42 @@ const IndexPage: FC = () => {
       <SEO
         title={t`Record Keeping & Communication tool for Montessori Schools`}
       />
-      <div className="flex-row justify-center my-16">
-        <div className="prose prose-lg md:prose-lg mb-32 mt-20 max-w-xl px-4">
-          <h1 className="text-4xl md:text-5xl">
-            <Trans>Run your Montessori School efficiently</Trans>
-          </h1>
-          <p className="my-8 text-gray-700 font-body">
-            <Trans>
-              <GreenBold>Store</GreenBold> your student&apos;s data.{" "}
-              <GreenBold>Plan</GreenBold> their lessons. And{" "}
-              <GreenBold>share</GreenBold> it all with parents with ease, on one
-              platform built for the need of Montessori Schools.
-            </Trans>
-          </p>
-          <div className="sm:flex">
-            <a
-              href="https://app.obserfy.com/register"
-              className="block mb-3 sm:mb-0 sm:mr-3"
-            >
-              <Button className="w-full sm:w-auto ">
-                <Trans>Try for Free</Trans>
-              </Button>
-            </a>
-            <Link to="/contact">
-              <Button secondary className="w-full sm:w-auto ">
-                <Trans>Contact Us</Trans>
-              </Button>
-            </Link>
+      <div className="justify-center">
+        <div className="md:flex flex-row-reverse items-center mb-32">
+          <div className="w-full bg-cover bg-center p-3 mb-4 md:mb-0">
+            <Img fluid={images.hero.childImageSharp.fluid} className="w-full" />
+          </div>
+          <div className="prose prose-lg md:prose-lg max-w-xl px-4">
+            <h1 className="text-4xl md:text-5xl">
+              <Trans>Run your Montessori School efficiently</Trans>
+            </h1>
+            <p className="my-8 text-gray-700 font-body">
+              <Trans>
+                <GreenBold>Store</GreenBold> your student&apos;s data.{" "}
+                <GreenBold>Plan</GreenBold> their lessons. And{" "}
+                <GreenBold>share</GreenBold> it all with parents with ease, on
+                one platform built for the need of Montessori Schools.
+              </Trans>
+            </p>
+            <div className="sm:flex">
+              <a
+                href="https://app.obserfy.com/register"
+                className="block mb-3 sm:mb-0 sm:mr-3"
+              >
+                <Button className="w-full sm:w-auto ">
+                  <Trans>Try for Free</Trans>
+                </Button>
+              </a>
+              <Link to="/contact">
+                <Button secondary className="w-full sm:w-auto ">
+                  <Trans>Contact Us</Trans>
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row md:items-center mb-20 md:mt-64 relative">
+        <div className="flex flex-col md:flex-row md:items-start mb-16 lg:mb-0 md:mt-64 relative">
           <svg
             viewBox="0 0 200 200"
             xmlns="http://www.w3.org/2000/svg"
@@ -85,7 +97,7 @@ const IndexPage: FC = () => {
             </p>
             <div className="prose prose-lg pr-6 max-w-xl">
               <h2>
-                <Trans>Helping to simplify the work that teachers do</Trans>
+                <Trans>Simplifying the work that teachers do</Trans>
               </h2>
               <p>
                 <Trans>
@@ -103,14 +115,11 @@ const IndexPage: FC = () => {
                   shareable to parents.
                 </Trans>
               </p>
-              {/* <Button className="py-2 px-3 text-base"> */}
-              {/*  <Trans>Learn More</Trans> */}
-              {/* </Button> */}
             </div>
           </div>
         </div>
 
-        <div className="prose md:flex justify-between max-w-full mb-16 px-5">
+        <div className="prose md:flex justify-between max-w-full mb-40 px-5">
           <div className="w-full pr-6">
             <h3>
               <Trans>Record Observations</Trans>
@@ -160,7 +169,7 @@ const IndexPage: FC = () => {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row-reverse md:items-start relative mb-16 mt-32">
+        <div className="flex flex-col md:flex-row-reverse md:items-start relative lg:mb-0 mb-16 mt-32">
           <svg
             viewBox="0 0 200 200"
             xmlns="http://www.w3.org/2000/svg"
@@ -208,7 +217,7 @@ const IndexPage: FC = () => {
           </div>
         </div>
 
-        <div className="prose md:flex justify-between max-w-full px-4">
+        <div className="prose md:flex justify-between max-w-full px-4 mb-24">
           <div className="w-full pr-6">
             <h3>
               <Trans>Share curriculum progress with parents</Trans>
@@ -265,7 +274,8 @@ const IndexPage: FC = () => {
           className="
             border border-green-600
             rounded-3xl w-full
-            p-8
+            py-8
+            px-4
             flex flex-col items-center
             bg-cover
             bg-center
@@ -277,12 +287,10 @@ const IndexPage: FC = () => {
         >
           <div className="prose prose-lg mb-6">
             <h2 className="text-center text-black mb-2">
-              <Trans>Get started now</Trans>
+              <Trans>Try it now</Trans>
             </h2>
             <p className="text-center text-black">
-              <Trans>
-                Give it a try and see how we can help improve your school.
-              </Trans>
+              <Trans>Give it a try now with a 30-days free trial</Trans>
             </p>
           </div>
           <a href="https://app.obserfy.com/register" className="block">
