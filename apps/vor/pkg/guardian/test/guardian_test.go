@@ -164,7 +164,7 @@ func (s *GuardianTestSuite) TestUpdateGuardian() {
 			Email: "",
 			Phone: "",
 			Note:  "",
-		}, http.StatusNoContent},
+		}, http.StatusBadRequest},
 		{"update address", requestBody{
 			Name:    "",
 			Email:   "",

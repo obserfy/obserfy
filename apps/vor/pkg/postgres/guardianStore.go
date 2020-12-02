@@ -62,18 +62,25 @@ func (s GuardianStore) DeleteGuardian(id string) (int, error) {
 	return result.RowsAffected(), nil
 }
 
-func (s GuardianStore) UpdateGuardian(guardian guardian.Guardian) (int, error) {
-	target := Guardian{
-		Id:      guardian.Id,
-		Name:    guardian.Name,
-		Email:   guardian.Email,
-		Phone:   guardian.Phone,
-		Note:    guardian.Note,
-		Address: guardian.Address,
-	}
-	if _, err := s.Model(&target).
-		WherePK().
-		UpdateNotZero(); err != nil {
+func (s GuardianStore) UpdateGuardian(
+	id string,
+	name *string,
+	email *string,
+	phone *string,
+	note *string,
+	address *string,
+) (int, error) {
+	guardianModel := make(PartialUpdateModel)
+	guardianModel.AddStringColumn("name", name)
+	guardianModel.AddStringColumn("email", email)
+	guardianModel.AddStringColumn("phone", phone)
+	guardianModel.AddStringColumn("note", note)
+	guardianModel.AddStringColumn("address", address)
+
+	if _, err := s.Model(guardianModel.GetModel()).
+		TableExpr("guardians").
+		Where("id = ?", id).
+		Update(); err != nil {
 		return 0, richErrors.Wrap(err, "failed to update guardian")
 	}
 	return 0, nil
