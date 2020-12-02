@@ -171,6 +171,7 @@ type Guardian struct {
 	Email    string
 	Phone    string
 	Note     string
+	Address  string
 	SchoolId string    `pg:"type:uuid"`
 	School   School    `pg:"rel:has-one"`
 	Children []Student `pg:"many2many:guardian_to_students,join_fk:student_id"`
