@@ -25,7 +25,7 @@ msgstr ""
 msgid "Allow parents to post observations at home about their children's task, and see observations that teachers had created."
 msgstr ""
 
-#: src/components/header.tsx:28
+#: src/components/header.tsx:31
 msgid "Blog"
 msgstr ""
 
@@ -55,7 +55,7 @@ msgstr "Hubungi Kami"
 msgid "Digital record keeping"
 msgstr ""
 
-#: src/components/header.tsx:27
+#: src/components/header.tsx:30
 msgid "Docs"
 msgstr ""
 
@@ -136,7 +136,7 @@ msgstr "Pesan"
 msgid "Parent communication"
 msgstr ""
 
-#: src/components/header.tsx:40
+#: src/components/header.tsx:43
 msgid "Parents"
 msgstr "Wali Murid"
 
@@ -148,7 +148,7 @@ msgstr ""
 msgid "Plan your student's lesson ahead of time, and share them with other teachers, and even with parents."
 msgstr ""
 
-#: src/components/header.tsx:24
+#: src/components/header.tsx:27
 msgid "Pricing"
 msgstr ""
 
@@ -165,7 +165,7 @@ msgstr "Software manajemen data dan komunikasi untuk sekolah Montessori"
 msgid "Record Observations"
 msgstr ""
 
-#: src/components/header.tsx:25
+#: src/components/header.tsx:28
 msgid "Roadmap"
 msgstr ""
 
@@ -201,7 +201,7 @@ msgstr ""
 #~ msgid "Store your student data and observations. Plan their lessons. And communicate it all to parents with ease, using one platform built for the need of Montessori Schools."
 #~ msgstr "Simpan data dan observasi murid. Rencanakan edukasi mereka. Dan bagikan semua pada orang tua dengan mudah, semua dalam satu platform yang dibuat untuk kebutuhan sekolah Montessori"
 
-#: src/components/header.tsx:34
+#: src/components/header.tsx:37
 msgid "Teachers"
 msgstr "Guru"
 
@@ -238,7 +238,7 @@ msgstr ""
 msgid "We help you keep your student observation in one place, so its available to every teachers, anytime, anywhere."
 msgstr ""
 
-#: src/components/header.tsx:26
+#: src/components/header.tsx:29
 msgid "What's New"
 msgstr ""
 
