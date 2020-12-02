@@ -64,11 +64,12 @@ func (s GuardianStore) DeleteGuardian(id string) (int, error) {
 
 func (s GuardianStore) UpdateGuardian(guardian guardian.Guardian) (int, error) {
 	target := Guardian{
-		Id:    guardian.Id,
-		Name:  guardian.Name,
-		Email: guardian.Email,
-		Phone: guardian.Phone,
-		Note:  guardian.Note,
+		Id:      guardian.Id,
+		Name:    guardian.Name,
+		Email:   guardian.Email,
+		Phone:   guardian.Phone,
+		Note:    guardian.Note,
+		Address: guardian.Address,
 	}
 	if _, err := s.Model(&target).
 		WherePK().

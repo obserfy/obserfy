@@ -121,10 +121,11 @@ func deleteGuardian(server rest.Server, store Store) http.Handler {
 
 func patchGuardian(server rest.Server, store Store) http.Handler {
 	type requestBody struct {
-		Name  string `json:"name"`
-		Email string `json:"email"`
-		Phone string `json:"phone"`
-		Note  string `json:"note"`
+		Name    string `json:"name"`
+		Email   string `json:"email"`
+		Phone   string `json:"phone"`
+		Note    string `json:"note"`
+		Address string `json:"address"`
 	}
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		guardianId := chi.URLParam(r, "guardianId")
@@ -138,17 +139,18 @@ func patchGuardian(server rest.Server, store Store) http.Handler {
 			}
 		}
 
-		if body.Name == "" && body.Phone == "" && body.Email == "" && body.Note == "" {
+		if body.Name == "" && body.Phone == "" && body.Email == "" && body.Note == "" && body.Address == "" {
 			w.WriteHeader(http.StatusNoContent)
 			return nil
 		}
 
 		_, err := store.UpdateGuardian(Guardian{
-			Id:    guardianId,
-			Name:  body.Name,
-			Email: body.Email,
-			Phone: body.Phone,
-			Note:  body.Note,
+			Id:      guardianId,
+			Name:    body.Name,
+			Email:   body.Email,
+			Phone:   body.Phone,
+			Note:    body.Note,
+			Address: body.Address,
 		})
 		if err != nil {
 			return &rest.Error{

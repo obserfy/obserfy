@@ -2,11 +2,12 @@ package guardian
 
 type (
 	Guardian struct {
-		Id    string `json:"id"`
-		Name  string `json:"name"`
-		Email string `json:"email"`
-		Phone string `json:"phone"`
-		Note  string `json:"note"`
+		Id      string `json:"id"`
+		Name    string `json:"name"`
+		Email   string `json:"email"`
+		Phone   string `json:"phone"`
+		Note    string `json:"note"`
+		Address string `json:"address"`
 	}
 
 	Store interface {
