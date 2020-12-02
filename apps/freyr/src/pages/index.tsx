@@ -181,10 +181,7 @@ const IndexPage: FC = () => {
               transform="translate(100 100)"
             />
           </svg>
-          <Img
-            fluid={images.gaia.childImageSharp.fluid}
-            className="w-full"
-          />
+          <Img fluid={images.gaia.childImageSharp.fluid} className="w-full" />
           <div className="px-5 mt-5">
             <p className="font-bold text-lg text-green-700 mb-5">
               <Trans>Parent communication</Trans>
