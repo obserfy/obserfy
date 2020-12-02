@@ -13,6 +13,7 @@ interface NewGuardian {
   email: string
   phone: string
   note: string
+  address: string
   studentId?: string
   relationship?: number
 }
