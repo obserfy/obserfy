@@ -678,20 +678,22 @@ func getCurriculumAreas(s rest.Server, store Store) rest.Handler {
 
 func postNewGuardian(server rest.Server, store Store) http.Handler {
 	type requestBody struct {
-		Name  string `json:"name" validate:"required"`
-		Email string `json:"email"`
-		Phone string `json:"phone"`
-		Note  string `json:"note"`
+		Name    string `json:"name" validate:"required"`
+		Email   string `json:"email"`
+		Phone   string `json:"phone"`
+		Note    string `json:"note"`
+		Address string `json:"address"`
 		// Uses pointer to allow nil, relation is optional
 		StudentId    *string `json:"studentId"`
 		Relationship *int    `json:"relationship"`
 	}
 	type responseBody struct {
-		Id    string `json:"id"`
-		Name  string `json:"name"`
-		Email string `json:"email"`
-		Phone string `json:"phone"`
-		Note  string `json:"note"`
+		Id      string `json:"id"`
+		Name    string `json:"name"`
+		Email   string `json:"email"`
+		Phone   string `json:"phone"`
+		Note    string `json:"note"`
+		Address string `json:"address"`
 	}
 	validate := validator.New()
 
@@ -718,6 +720,7 @@ func postNewGuardian(server rest.Server, store Store) http.Handler {
 			Note:         body.Note,
 			Relationship: body.Relationship,
 			StudentId:    body.StudentId,
+			Address:      body.Address,
 		}
 
 		newGuardian, err := store.InsertGuardianWithRelation(guardianInput)
@@ -731,11 +734,12 @@ func postNewGuardian(server rest.Server, store Store) http.Handler {
 
 		w.WriteHeader(http.StatusCreated)
 		if err := rest.WriteJson(w, &responseBody{
-			Id:    newGuardian.Id,
-			Name:  newGuardian.Name,
-			Email: newGuardian.Email,
-			Phone: newGuardian.Phone,
-			Note:  newGuardian.Note,
+			Id:      newGuardian.Id,
+			Name:    newGuardian.Name,
+			Email:   newGuardian.Email,
+			Phone:   newGuardian.Phone,
+			Note:    newGuardian.Note,
+			Address: newGuardian.Address,
 		}); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
