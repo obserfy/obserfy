@@ -29,7 +29,7 @@ msgstr "<0>Store</0> your student's data. <1>Plan</1> their lessons. And <2>shar
 msgid "Allow parents to post observations at home about their children's task, and see observations that teachers had created."
 msgstr "Allow parents to post observations at home about their children's task, and see observations that teachers had created."
 
-#: src/components/header.tsx:28
+#: src/components/header.tsx:31
 msgid "Blog"
 msgstr "Blog"
 
@@ -59,7 +59,7 @@ msgstr "Contact Us"
 msgid "Digital record keeping"
 msgstr "Digital record keeping"
 
-#: src/components/header.tsx:27
+#: src/components/header.tsx:30
 msgid "Docs"
 msgstr "Docs"
 
@@ -140,7 +140,7 @@ msgstr "Message"
 msgid "Parent communication"
 msgstr "Parent communication"
 
-#: src/components/header.tsx:40
+#: src/components/header.tsx:43
 msgid "Parents"
 msgstr "Parents"
 
@@ -152,7 +152,7 @@ msgstr "Plan student's lesson"
 msgid "Plan your student's lesson ahead of time, and share them with other teachers, and even with parents."
 msgstr "Plan your student's lesson ahead of time, and share them with other teachers, and even with parents."
 
-#: src/components/header.tsx:24
+#: src/components/header.tsx:27
 msgid "Pricing"
 msgstr "Pricing"
 
@@ -177,7 +177,7 @@ msgstr "Record Keeping & Communication tool for Montessori Schools"
 msgid "Record Observations"
 msgstr "Record Observations"
 
-#: src/components/header.tsx:25
+#: src/components/header.tsx:28
 msgid "Roadmap"
 msgstr "Roadmap"
 
@@ -213,7 +213,7 @@ msgstr "Simplifying the work that teachers do"
 #~ msgid "Store your student data and observations. Plan their lessons. And communicate it all to parents with ease, using one platform built for the need of Montessori Schools."
 #~ msgstr "Store your student data and observations. Plan their lessons. And communicate it all to parents with ease, using one platform built for the need of Montessori Schools."
 
-#: src/components/header.tsx:34
+#: src/components/header.tsx:37
 msgid "Teachers"
 msgstr "Teachers"
 
@@ -250,6 +250,6 @@ msgstr "We help simplify teacher's work by providing <0>one simple place for you
 msgid "We help you keep your student observation in one place, so its available to every teachers, anytime, anywhere."
 msgstr "We help you keep your student observation in one place, so its available to every teachers, anytime, anywhere."
 
-#: src/components/header.tsx:26
+#: src/components/header.tsx:29
 msgid "What's New"
 msgstr "What's New"
