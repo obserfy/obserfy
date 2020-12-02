@@ -37,22 +37,11 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
       options: {
-        fonts: [
-          {
-            family: `Open Sans`,
-            variants: [`400`, `500`, `700`],
-          },
-        ],
+        analyzerPort: 3000,
       },
     },
-    // {
-    //   resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
-    //   options: {
-    //     analyzerPort: 3000,
-    //   },
-    // },
     {
       resolve: `gatsby-theme-i18n`,
       options: {
