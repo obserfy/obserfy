@@ -104,6 +104,7 @@ type (
 		Note         string
 		Relationship *int
 		StudentId    *string
+		Address      string
 	}
 
 	Guardian struct {
@@ -115,6 +116,7 @@ type (
 		Note         string
 		Relationship *int
 		StudentId    *string
+		Address      string
 	}
 
 	LessonPlan struct {

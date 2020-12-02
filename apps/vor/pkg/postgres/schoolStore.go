@@ -430,6 +430,7 @@ func (s SchoolStore) InsertGuardianWithRelation(input cSchool.GuardianWithRelati
 		Phone:    input.Phone,
 		Note:     input.Note,
 		SchoolId: input.SchoolId,
+		Address:  input.Address,
 	}
 	if err := s.RunInTransaction(s.Context(), func(tx *pg.Tx) error {
 		if _, err := s.Model(&guardian).Insert(); err != nil {
@@ -459,6 +460,7 @@ func (s SchoolStore) InsertGuardianWithRelation(input cSchool.GuardianWithRelati
 		Phone:    guardian.Phone,
 		Note:     guardian.Note,
 		SchoolId: guardian.SchoolId,
+		Address:  input.Address,
 	}, nil
 }
 

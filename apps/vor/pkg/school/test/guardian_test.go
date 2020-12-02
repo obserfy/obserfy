@@ -16,10 +16,11 @@ func (s *SchoolTestSuite) TestCreateNewGuardian() {
 	t := s.T()
 	gofakeit.Seed(time.Now().UnixNano())
 	type requestBody struct {
-		Name  string `json:"name"`
-		Email string `json:"email"`
-		Phone string `json:"phone"`
-		Note  string `json:"note"`
+		Name    string `json:"name"`
+		Email   string `json:"email"`
+		Phone   string `json:"phone"`
+		Note    string `json:"note"`
+		Address string `json:"address"`
 	}
 	tests := []struct {
 		name       string
@@ -28,10 +29,11 @@ func (s *SchoolTestSuite) TestCreateNewGuardian() {
 		resultCode int
 	}{
 		{"complete", *s.GenerateSchool(), requestBody{
-			Name:  gofakeit.Name(),
-			Email: gofakeit.Email(),
-			Phone: gofakeit.Phone(),
-			Note:  gofakeit.Sentence(10),
+			Name:    gofakeit.Name(),
+			Email:   gofakeit.Email(),
+			Phone:   gofakeit.Phone(),
+			Note:    gofakeit.Sentence(10),
+			Address: gofakeit.Address().Address,
 		}, http.StatusCreated},
 		{"only name", *s.GenerateSchool(), requestBody{
 			Name: gofakeit.Name(),
@@ -57,6 +59,7 @@ func (s *SchoolTestSuite) TestCreateNewGuardian() {
 				assert.Equal(t, test.body.Phone, savedGuardian.Phone)
 				assert.Equal(t, test.body.Email, savedGuardian.Email)
 				assert.Equal(t, test.body.Note, savedGuardian.Note)
+				assert.Equal(t, test.body.Address, savedGuardian.Address)
 				assert.Equal(t, test.school.Id, savedGuardian.SchoolId)
 			} else {
 				assert.Error(t, err)
