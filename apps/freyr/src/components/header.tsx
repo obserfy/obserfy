@@ -16,13 +16,14 @@ const Header: FC = () => (
       </h1>
     </div>
 
-    <nav className="invisible md:visible flex mx-auto absolute w-full left-0 right-0 justify-center">
+    <nav className="invisible lg:visible flex mx-auto absolute w-full left-0 right-0 justify-center pointer-events-none">
       <NavLinks href="https://feedback.obserfy.com">Roadmap</NavLinks>
       <NavLinks href="https://feedback.obserfy.com/changelog">
         What&apos;s New
       </NavLinks>
       <InternalNavLinks href="/docs">Documentation</InternalNavLinks>
       <InternalNavLinks href="/blogs">Blog</InternalNavLinks>
+      <InternalNavLinks href="/blogs">Pricing</InternalNavLinks>
     </nav>
 
     <div className="flex items-center ml-auto">
@@ -44,7 +45,7 @@ const Header: FC = () => (
 const NavLinks: FC<{ href: string }> = ({ href, children }) => (
   <a
     href={href}
-    className="hover:text-green-700 transition-colors duration-200 ease-in-out p-3"
+    className="hover:text-green-700 transition-colors duration-200 ease-in-out p-3 pointer-events-auto"
   >
     <Trans>{children}</Trans>
   </a>
@@ -53,7 +54,7 @@ const NavLinks: FC<{ href: string }> = ({ href, children }) => (
 const InternalNavLinks: FC<{ href: string }> = ({ href, children }) => (
   <a
     href={href}
-    className="hover:text-green-700 transition-colors duration-200 ease-in-out p-3"
+    className="hover:text-green-700 transition-colors duration-200 ease-in-out p-3 pointer-events-auto"
   >
     <Trans>{children}</Trans>
   </a>
