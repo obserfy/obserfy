@@ -28,3 +28,6 @@
 
 @tailwind utilities;
 
+.blurred-bg {
+  backdrop-filter: saturate(280%) blur(20px);
+}
