@@ -6,6 +6,7 @@ interface UpdateGuardianRequest {
   email?: string
   phone?: string
   note?: string
+  address?: string
 }
 
 export function usePatchGuardian(id: string) {

@@ -23,7 +23,7 @@ type GuardianTestSuite struct {
 func (s *GuardianTestSuite) SetupTest() {
 	s.Handler = guardian.NewRouter(
 		s.Server,
-		postgres.GuardianStore{s.DB},
+		postgres.GuardianStore{DB: s.DB},
 	).ServeHTTP
 }
 
@@ -118,10 +118,11 @@ func (s *GuardianTestSuite) TestUpdateGuardian() {
 	t := s.T()
 	gofakeit.Seed(time.Now().UnixNano())
 	type requestBody struct {
-		Name  string `json:"name,omitempty"`
-		Email string `json:"email,omitempty"`
-		Phone string `json:"phone,omitempty"`
-		Note  string `json:"note,omitempty"`
+		Name    string `json:"name,omitempty"`
+		Email   string `json:"email,omitempty"`
+		Phone   string `json:"phone,omitempty"`
+		Note    string `json:"note,omitempty"`
+		Address string `json:"address,omitempty"`
 	}
 	tests := []struct {
 		name       string
@@ -164,6 +165,13 @@ func (s *GuardianTestSuite) TestUpdateGuardian() {
 			Phone: "",
 			Note:  "",
 		}, http.StatusNoContent},
+		{"update address", requestBody{
+			Name:    "",
+			Email:   "",
+			Phone:   "",
+			Note:    "",
+			Address: "New Address",
+		}, http.StatusNoContent},
 	}
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
@@ -171,6 +179,45 @@ func (s *GuardianTestSuite) TestUpdateGuardian() {
 			newGuardian, userId := s.GenerateGuardian(newSchool)
 			result := s.CreateRequest("PATCH", "/"+newGuardian.Id, test.body, &userId)
 			assert.Equal(t, test.resultCode, result.Code)
+
+			savedGuardian := postgres.Guardian{Id: newGuardian.Id}
+			err := s.DB.Model(&savedGuardian).WherePK().Select()
+			assert.NoError(t, err)
+
+			// check name
+			if test.body.Name != "" {
+				assert.Equal(t, test.body.Name, savedGuardian.Name)
+			} else {
+				assert.Equal(t, newGuardian.Name, savedGuardian.Name)
+			}
+
+			// check email
+			if test.body.Email != "" {
+				assert.Equal(t, test.body.Email, savedGuardian.Email)
+			} else {
+				assert.Equal(t, newGuardian.Email, savedGuardian.Email)
+			}
+
+			// check phone
+			if test.body.Phone != "" {
+				assert.Equal(t, test.body.Phone, savedGuardian.Phone)
+			} else {
+				assert.Equal(t, newGuardian.Phone, savedGuardian.Phone)
+			}
+
+			// check note
+			if test.body.Note != "" {
+				assert.Equal(t, test.body.Note, savedGuardian.Note)
+			} else {
+				assert.Equal(t, newGuardian.Note, savedGuardian.Note)
+			}
+
+			// check Address
+			if test.body.Address != "" {
+				assert.Equal(t, test.body.Address, savedGuardian.Address)
+			} else {
+				assert.Equal(t, newGuardian.Address, savedGuardian.Address)
+			}
 		})
 	}
 }
