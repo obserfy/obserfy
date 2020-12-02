@@ -40,7 +40,7 @@ const IndexPage: FC = () => {
       <SEO
         title={t`Record Keeping & Communication tool for Montessori Schools`}
       />
-      <div className="justify-center">
+      <div className="justify-center pt-8 md:pt-16">
         <div className="md:flex flex-row-reverse items-center mb-32">
           <div className="w-full bg-cover bg-center mb-4 md:mb-0">
             <Img fluid={images.hero.childImageSharp.fluid} className="w-full" />
