@@ -1,6 +1,6 @@
 import { LocalizedLink as Link } from "gatsby-theme-i18n"
 import React, { FC } from "react"
-import { Trans } from "@lingui/macro"
+import { t, Trans } from "@lingui/macro"
 import Button from "./Button/Button"
 import Logo from "../images/logo-standalone.svg"
 import MenuIcon from "../icons/menu.svg"
@@ -12,7 +12,7 @@ const Header: FC = () => (
     mb-8
     max-w-7xl p-3 mx-auto
     flex flex-row items-center
-    sticky top-0 bg-white bg-opacity-80 border-b
+    sticky top-0 bg-white bg-opacity-90 border-b
     md:relative md:bg-transparent md:border-none
     z-10
     "
@@ -25,13 +25,14 @@ const Header: FC = () => (
     </div>
 
     <nav className="hidden md:flex mx-auto absolute w-full left-0 right-0 justify-center pointer-events-none">
-      <InternalNavLinks href="/blogs">Pricing</InternalNavLinks>
-      <NavLinks href="https://feedback.obserfy.com">Roadmap</NavLinks>
-      <NavLinks href="https://feedback.obserfy.com/changelog">
-        What&apos;s New
-      </NavLinks>
-      <InternalNavLinks href="/docs">Docs</InternalNavLinks>
-      <InternalNavLinks href="/blogs">Blog</InternalNavLinks>
+      <InternalNavLinks href="/blogs" text={t`Pricing`} />
+      <NavLinks href="https://feedback.obserfy.com" text={t`Roadmap`} />
+      <NavLinks
+        href="https://feedback.obserfy.com/changelog"
+        text={t`What's New`}
+      />
+      <InternalNavLinks href="/docs" text={t`Docs`} />
+      <InternalNavLinks href="/blogs" text={t`Blog`} />
     </nav>
 
     <div className="hidden md:flex items-center ml-auto">
@@ -57,21 +58,24 @@ const Header: FC = () => (
   </header>
 )
 
-const NavLinks: FC<{ href: string }> = ({ href, children }) => (
+const NavLinks: FC<{ href: string; text: string }> = ({ href, text }) => (
   <a
     href={href}
     className="hover:text-green-700 transition-colors duration-200 ease-in-out p-2 lg:p-3 pointer-events-auto"
   >
-    <Trans>{children}</Trans>
+    <Trans id={text} />
   </a>
 )
 
-const InternalNavLinks: FC<{ href: string }> = ({ href, children }) => (
+const InternalNavLinks: FC<{ href: string; text: string }> = ({
+  href,
+  text,
+}) => (
   <a
     href={href}
     className="hover:text-green-700 transition-colors duration-200 ease-in-out p-2 lg:p-3 pointer-events-auto"
   >
-    <Trans>{children}</Trans>
+    <Trans id={text} />
   </a>
 )
 
