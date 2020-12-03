@@ -42,15 +42,14 @@ const Header: FC = () => {
           </nav>
 
           <div className="hidden md:flex items-center ml-auto">
-            <a href="https://app.obserfy.com" className="ml-2">
-              <Button secondary className="px-3 py-2 text-sm">
-                <Trans>Teachers</Trans>
-              </Button>
-            </a>
-
             <a href="https://parent.obserfy.com/api/login" className="ml-2">
               <Button secondary className="px-3 py-2 text-sm border">
                 <Trans>Parents</Trans>
+              </Button>
+            </a>
+            <a href="https://app.obserfy.com" className="ml-2">
+              <Button secondary className="px-3 py-2 text-sm text-green-700">
+                <Trans>Teachers</Trans>
               </Button>
             </a>
           </div>
@@ -74,13 +73,13 @@ const Header: FC = () => {
         {showSignInButton && (
           <div className="flex mt-3 md:hidden">
             <a href="https://parent.obserfy.com" className="w-full mr-3 block">
-              <Button secondary className="w-full">
-                I am a Parent
+              <Button secondary className="w-full text-sm">
+                <Trans>For Parents</Trans>
               </Button>
             </a>
             <a href="https://app.obserfy.com" className="w-full block">
-              <Button secondary className="text-green-700 w-full">
-                I am a Teacher
+              <Button secondary className="text-green-700 w-full text-sm">
+                <Trans>For Teachers</Trans>
               </Button>
             </a>
           </div>
@@ -122,14 +121,28 @@ const Sidebar: FC<{ show: boolean; onClose: () => void }> = ({
         show ? "" : "-right-full"
       } top-0 bottom-0 bg-white z-50 transition-all duration-200 ease-in-out md:hidden border-l`}
     >
-      <div className="flex m-2 mb-8 items-start">
+      <div className="m-2 mb-8 items-start">
+        <div className="flex items-center">
+          <div className="prose pl-6 opacity-60">
+            <h2 className="m-0">
+              <Trans>Links</Trans>
+            </h2>
+          </div>
+          <Button
+            secondary
+            className="flex-shrink-0 mx-1 px-3 ml-auto"
+            onClick={onClose}
+          >
+            <img alt="open menu" src={CloseIcon} />
+          </Button>
+        </div>
         <div className="prose flex flex-col ml-6">
           <h3 className="my-2">
             <Link
               to="/pricing"
               className="no-underline font-bold hover:text-green-700 transition-colors"
             >
-              Pricing
+              <Trans>Pricing</Trans>
             </Link>
           </h3>
           {/* <h2> */}
@@ -145,7 +158,7 @@ const Sidebar: FC<{ show: boolean; onClose: () => void }> = ({
               href="https://feedback.obserfy.com"
               className="no-underline font-bold hover:text-green-700 transition-colors"
             >
-              Roadmap
+              <Trans>Roadmap</Trans>
             </a>
           </h3>
           <h3 className="my-2">
@@ -153,7 +166,7 @@ const Sidebar: FC<{ show: boolean; onClose: () => void }> = ({
               href="https://feedback.obserfy.com/changelog"
               className="no-underline font-bold hover:text-green-700 transition-colors"
             >
-              What&apos;s New
+              <Trans>What&apos;s New</Trans>
             </a>
           </h3>
           {/* <h2> */}
@@ -169,18 +182,10 @@ const Sidebar: FC<{ show: boolean; onClose: () => void }> = ({
               to="/contact"
               className="no-underline font-bold hover:text-green-700 transition-colors"
             >
-              Contact Us
+              <Trans>Contact Us</Trans>
             </Link>
           </h3>
         </div>
-
-        <Button
-          secondary
-          className="flex-shrink-0 mx-1 px-3 ml-auto"
-          onClick={onClose}
-        >
-          <img alt="open menu" src={CloseIcon} />
-        </Button>
       </div>
     </div>
   )
