@@ -6,50 +6,52 @@ import Button from "../components/Button/Button"
 const PricingPage: FC = () => {
   return (
     <Layout>
-      <div className="prose mx-auto my-16">
-        <h1 className="text-4xl md:text-5xl text-center">
-          <Trans>Simple affordable pricing</Trans>
-        </h1>
-      </div>
+      <div className="max-w-2xl mx-auto">
+        <div className="sm:flex">
+          <div className="prose sm:mt-5 mt-16 mb-16 mx-4">
+            <h1 className="text-4xl sm:text-5xl text-center sm:text-left">
+              <Trans>Simple affordable pricing</Trans>
+            </h1>
+          </div>
 
-      <div className="sm:flex max-w-2xl mx-auto">
-        <div className="p-4">
-          <div className="rounded-2xl prose bg-white mx-auto border shadow sm:w-80  border-primary">
-            <h4 className="text-center my-6">
-              <Trans>Standard plan</Trans>
-            </h4>
-            <h2 className="mr-1 m-0 text-center mb-8">
-              <Trans>$4 per User/month</Trans>
-            </h2>
-            <p className="m-3 text-center">
-              <Trans>Unlimited students</Trans>
-            </p>
-            <p className="m-3 text-center">
-              <Trans>Record observations</Trans>
-            </p>
-            <p className="m-3 text-center">
-              <Trans>Create lesson plans</Trans>
-            </p>
-            <p className="m-3 text-center">
-              <Trans>Track curriculum progress</Trans>
-            </p>
-            <p className="m-3 text-center">
-              <Trans>Parent dashboard</Trans>
-            </p>
-            <p className="m-3 text-center">
-              <Trans>Image gallery</Trans>
-            </p>
-            <a
-              className="px-3 pt-3 mb-1 block"
-              href="https://app.obserfy.com/register"
-            >
-              <Button className="w-full">
-                <Trans>Try for Free</Trans>
-              </Button>
-            </a>
-            <p className="m-0 mb-1 text-center prose-sm">
-              <Trans>Free 30-day trial</Trans>
-            </p>
+          <div className="p-4">
+            <div className="rounded-2xl prose bg-white mx-auto border shadow sm:w-80  border-primary">
+              <h4 className="text-center my-6">
+                <Trans>Standard plan</Trans>
+              </h4>
+              <h2 className="mr-1 m-0 text-center mb-8">
+                <Trans>$4 per User/month</Trans>
+              </h2>
+              <p className="m-3 text-center">
+                <Trans>Unlimited students</Trans>
+              </p>
+              <p className="m-3 text-center">
+                <Trans>Record observations</Trans>
+              </p>
+              <p className="m-3 text-center">
+                <Trans>Create lesson plans</Trans>
+              </p>
+              <p className="m-3 text-center">
+                <Trans>Track curriculum progress</Trans>
+              </p>
+              <p className="m-3 text-center">
+                <Trans>Parent dashboard</Trans>
+              </p>
+              <p className="m-3 text-center">
+                <Trans>Image gallery</Trans>
+              </p>
+              <a
+                className="px-3 pt-3 mb-1 block"
+                href="https://app.obserfy.com/register"
+              >
+                <Button className="w-full">
+                  <Trans>Try for Free</Trans>
+                </Button>
+              </a>
+              <p className="m-0 mb-1 text-center prose-sm">
+                <Trans>Free 30-day trial</Trans>
+              </p>
+            </div>
           </div>
         </div>
 
