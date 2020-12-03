@@ -74,14 +74,15 @@ const PricingPage: FC = () => {
           </h3>
           <p>
             <Trans>
-              We don&apos;t put limitation to the number of students or parents
-              you can work with.
+              We don&apos;t charge or limit the number of students or parents
+              that you work with.
             </Trans>
           </p>
           <p>
             <Trans>
               You can track as many students as you want and share access to the
-              parent dashboard to as many people as you need.
+              parent dashboard to as many people as you need without increasing
+              the cost.
             </Trans>
           </p>
         </div>
