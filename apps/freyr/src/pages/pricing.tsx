@@ -60,12 +60,12 @@ const PricingPage: FC = () => {
             <Trans>FAQ</Trans>
           </h2>
           <h3>
-            <Trans>What counts as a User?</Trans>
+            <Trans>Who counts as a User?</Trans>
           </h3>
           <p>
             <Trans>
-              A user is anyone who has access to the school&apos;s dashboard,
-              such as teachers and teaching assistants.
+              A user is anyone with their own login access to the school&apos;s
+              dashboard, such as teachers and teaching assistants.
             </Trans>
           </p>
 
