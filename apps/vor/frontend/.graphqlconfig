@@ -1,5 +1,5 @@
 {
-  "name": "Silverhand Gatsby Graphql Schema",
+  "name": "Vor Gatsby Graphql Schema",
   "schemaPath": "schema.graphql",
   "includes": ["./**/*.ts","./**/*.tsx", "./**/*.js", "./.cache/**/*.js"],
   "extensions": {

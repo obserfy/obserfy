@@ -1,8 +1,9 @@
 import React, { FC } from "react"
 import { LocalizedLink as Link } from "gatsby-theme-i18n"
 import { t, Trans } from "@lingui/macro"
-import { StaticImage } from "gatsby-plugin-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import { useLingui } from "@lingui/react"
+import { graphql, useStaticQuery } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Button from "../components/Button/Button"
@@ -10,6 +11,26 @@ import WaveyBg from "../images/wavey-bg.svg"
 
 const IndexPage: FC = () => {
   const { i18n } = useLingui()
+
+  const images = useStaticQuery<GatsbyTypes.LandingPageImagesQuery>(graphql`
+    query LandingPageImages {
+      hero: file(relativePath: { eq: "hero.png" }) {
+        childImageSharp {
+          gatsbyImageData(maxWidth: 704, layout: FLUID, placeholder: BLURRED)
+        }
+      }
+      vor: file(relativePath: { eq: "vor.png" }) {
+        childImageSharp {
+          gatsbyImageData(maxWidth: 860, layout: FLUID, placeholder: BLURRED)
+        }
+      }
+      gaia: file(relativePath: { eq: "gaia.png" }) {
+        childImageSharp {
+          gatsbyImageData(maxWidth: 855, layout: FLUID, placeholder: BLURRED)
+        }
+      }
+    }
+  `)
 
   return (
     <Layout>
@@ -19,14 +40,10 @@ const IndexPage: FC = () => {
       <div className="justify-center pt-8 md:pt-16">
         <div className="md:flex flex-row-reverse items-center mb-32">
           <div className="w-full bg-cover bg-center mb-4 md:mb-0">
-            <StaticImage
-              src="../images/hero.png"
+            <GatsbyImage
+              image={images.hero?.childImageSharp?.gatsbyImageData as any}
               className="w-full"
               alt={i18n._(t`Montessori record keeping on phone and laptop`)}
-              transformOptions={{ fit: "cover" }}
-              blurredOptions={{}}
-              layout="fluid"
-              quality={80}
             />
           </div>
           <div className="prose prose-lg md:prose-lg max-w-xl px-4">
@@ -71,14 +88,10 @@ const IndexPage: FC = () => {
               transform="translate(100 100)"
             />
           </svg>
-          <StaticImage
-            src="../images/vor.png"
-            className="md:-ml-4 w-full"
-            layout="fluid"
+          <GatsbyImage
+            image={images.vor?.childImageSharp?.gatsbyImageData as any}
+            className="md:-ml-2 w-full"
             alt={i18n._(t`Teacher dashboard for managing observations data`)}
-            transformOptions={{ fit: "cover" }}
-            blurredOptions={{}}
-            quality={80}
           />
           <div className="px-5 mt-5">
             <p className="font-bold text-lg text-green-700 mb-5">
@@ -170,16 +183,12 @@ const IndexPage: FC = () => {
               transform="translate(100 100)"
             />
           </svg>
-          <StaticImage
-            src="../images/gaia.png"
+          <GatsbyImage
+            image={images.gaia?.childImageSharp?.gatsbyImageData as any}
             className="w-full"
             alt={i18n._(
               t`Dashboard for parents to see their child's progress in realtime`
             )}
-            transformOptions={{ fit: "cover" }}
-            blurredOptions={{}}
-            quality={80}
-            layout="fluid"
           />
           <div className="px-5 mt-5">
             <p className="font-bold text-lg text-green-700 mb-5">

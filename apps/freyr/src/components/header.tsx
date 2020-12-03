@@ -12,13 +12,13 @@ const Header: FC = () => {
     <>
       <header
         className="
-      blurred-bg
-      mb-8
-      max-w-7xl p-3 mx-auto
-      flex flex-row items-center
-      sticky top-0 bg-white bg-opacity-95 border-b
-      md:relative md:bg-transparent md:border-none
-      z-10
+        backdrop-blur md:backdrop-none
+        mb-8
+        max-w-7xl p-3 mx-auto
+        flex flex-row items-center
+        sticky top-0 bg-white bg-opacity-95 border-b
+        md:relative md:bg-transparent md:border-none
+        z-10
       "
       >
         <div className="flex items-center ml-1">
