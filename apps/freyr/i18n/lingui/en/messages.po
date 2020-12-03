@@ -18,8 +18,8 @@ msgstr ""
 #~ msgstr "\"Contact Us"
 
 #: src/pages/index.tsx:132
-msgid "../images/gaia.png"
-msgstr "../images/gaia.png"
+#~ msgid "../images/gaia.png"
+#~ msgstr "../images/gaia.png"
 
 #: src/pages/index.tsx:37
 #~ msgid "<0>Store</0> your student data and observations. <1>Plan</1> their lessons. And <2>share</2> your data with parents with ease, on one platform built for the need of Montessori Schools."
@@ -58,6 +58,10 @@ msgstr "Collaboration between parents and schools are important, especially in t
 #: src/pages/index.tsx:38
 msgid "Contact Us"
 msgstr "Contact Us"
+
+#: src/pages/index.tsx:132
+msgid "Dashboard for parents to see their child's progress in realtime"
+msgstr "Dashboard for parents to see their child's progress in realtime"
 
 #: src/pages/index.tsx:52
 msgid "Digital record keeping"

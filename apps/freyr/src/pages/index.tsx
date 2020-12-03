@@ -170,9 +170,11 @@ const IndexPage: FC = () => {
             />
           </svg>
           <StaticImage
-            src={i18n._(t`../images/gaia.png`)}
+            src="../images/gaia.png"
             className="w-full"
-            alt="Dashboard for parents to see their child's progress in realtime"
+            alt={i18n._(
+              t`Dashboard for parents to see their child's progress in realtime`
+            )}
             transformOptions={{ fit: "cover" }}
             blurredOptions={{}}
             quality={80}
