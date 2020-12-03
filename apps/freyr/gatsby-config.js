@@ -17,6 +17,7 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-netlify`,
@@ -36,12 +37,12 @@ module.exports = {
         },
       },
     },
-    {
-      resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
-      options: {
-        analyzerPort: 3000,
-      },
-    },
+    // {
+    //   resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
+    //   options: {
+    //     analyzerPort: 3000,
+    //   },
+    // },
     {
       resolve: `gatsby-theme-i18n`,
       options: {
@@ -69,5 +70,13 @@ module.exports = {
       },
     },
     `gatsby-plugin-preload-fonts`,
+    {
+      resolve: `gatsby-plugin-typegen`,
+      options: {
+        emitSchema: {
+          "src/__generated__/gatsby-schema.graphql": true,
+        },
+      },
+    },
   ],
 }
