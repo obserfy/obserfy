@@ -29,13 +29,13 @@ const Header: FC = () => {
         </div>
 
         <nav className="hidden md:flex mx-auto absolute w-full left-0 right-0 justify-center pointer-events-none">
-          <InternalNavLinks href="/blogs" text={t`Pricing`} />
+          <InternalNavLinks href="/pricing" text={t`Pricing`} />
+          <InternalNavLinks href="/docs" text={t`Docs`} />
           <NavLinks href="https://feedback.obserfy.com" text={t`Roadmap`} />
           <NavLinks
             href="https://feedback.obserfy.com/changelog"
             text={t`What's New`}
           />
-          <InternalNavLinks href="/docs" text={t`Docs`} />
           <InternalNavLinks href="/blogs" text={t`Blog`} />
         </nav>
 
@@ -125,6 +125,14 @@ const Sidebar: FC<{ show: boolean; onClose: () => void }> = ({
           </Link>
         </h2>
         <h2>
+          <Link
+            to="/docs"
+            className="no-underline font-bold hover:text-green-700 transition-colors"
+          >
+            Documentation
+          </Link>
+        </h2>
+        <h2>
           <a
             href="https://feedback.obserfy.com"
             className="no-underline font-bold hover:text-green-700 transition-colors"
@@ -139,14 +147,6 @@ const Sidebar: FC<{ show: boolean; onClose: () => void }> = ({
           >
             What&apos;s New
           </a>
-        </h2>
-        <h2>
-          <Link
-            to="/docs"
-            className="no-underline font-bold hover:text-green-700 transition-colors"
-          >
-            Documentation
-          </Link>
         </h2>
         <h2>
           <Link
