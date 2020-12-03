@@ -93,7 +93,7 @@ const Header: FC = () => {
 const NavLinks: FC<{ href: string; text: string }> = ({ href, text }) => (
   <a
     href={href}
-    className="hover:text-green-700 transition-colors duration-200 ease-in-out p-2 lg:p-3 pointer-events-auto"
+    className="hover:text-green-700 transition-colors duration-200 ease-in-out p-2 lg:p-3 pointer-events-auto font-body"
   >
     <Trans id={text} />
   </a>
@@ -105,7 +105,7 @@ const InternalNavLinks: FC<{ href: string; text: string }> = ({
 }) => (
   <Link
     to={href}
-    className="hover:text-green-700 transition-colors duration-200 ease-in-out p-2 lg:p-3 pointer-events-auto"
+    className="hover:text-green-700 transition-colors duration-200 ease-in-out p-2 lg:p-3 pointer-events-auto font-body"
   >
     <Trans id={text} />
   </Link>
