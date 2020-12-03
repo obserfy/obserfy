@@ -316,8 +316,12 @@ msgid "Unlimited students"
 msgstr ""
 
 #: src/pages/pricing.tsx:71
-msgid "We don't put limitation to the number of students or parents you can work with."
+msgid "We don't charge or limit the number of students or parents that you work with."
 msgstr ""
+
+#: src/pages/pricing.tsx:71
+#~ msgid "We don't put limitation to the number of students or parents you can work with."
+#~ msgstr ""
 
 #: src/pages/index.tsx:142
 msgid "We focus on keeping Obserfy fast to help you get your job done faster, and easy to use even if you are new to Montessori."
@@ -345,8 +349,12 @@ msgid "Who counts as a User?"
 msgstr ""
 
 #: src/pages/pricing.tsx:77
-msgid "You can track as many students as you want and share access to the parent dashboard to as many people as you need."
+msgid "You can track as many students as you want and share access to the parent dashboard to as many people as you need without increasing the cost."
 msgstr ""
+
+#: src/pages/pricing.tsx:77
+#~ msgid "You can track as many students as you want and share access to the parent dashboard to as many people as you need."
+#~ msgstr ""
 
 #: src/components/header.tsx:55
 #: src/components/header.tsx:58
