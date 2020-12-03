@@ -34,8 +34,12 @@ msgid "<0>Store</0> your student's data. <1>Plan</1> their lessons. And <2>share
 msgstr "<0>Store</0> your student's data. <1>Plan</1> their lessons. And <2>share</2> it all with parents with ease, on one platform built for the need of Montessori Schools."
 
 #: src/pages/pricing.tsx:61
-msgid "A user is anyone who has access to the school's dashboard, such as teachers and teaching assistants."
-msgstr "A user is anyone who has access to the school's dashboard, such as teachers and teaching assistants."
+#~ msgid "A user is anyone who has access to the school's dashboard, such as teachers and teaching assistants."
+#~ msgstr "A user is anyone who has access to the school's dashboard, such as teachers and teaching assistants."
+
+#: src/pages/pricing.tsx:61
+msgid "A user is anyone with their own login access to the school's dashboard, such as teachers and teaching assistants."
+msgstr "A user is anyone with their own login access to the school's dashboard, such as teachers and teaching assistants."
 
 #: src/pages/index.tsx:214
 msgid "Allow parents to post observations at home about their children's task, and see observations that teachers had created."
@@ -340,13 +344,17 @@ msgid "We help you keep your student observation in one place, so its available 
 msgstr "We help you keep your student observation in one place, so its available to every teachers, anytime, anywhere."
 
 #: src/pages/pricing.tsx:58
-msgid "What counts as a User?"
-msgstr "What counts as a User?"
+#~ msgid "What counts as a User?"
+#~ msgstr "What counts as a User?"
 
 #: src/components/header.tsx:32
 #: src/components/header.tsx:113
 msgid "What's New"
 msgstr "What's New"
+
+#: src/pages/pricing.tsx:58
+msgid "Who counts as a User?"
+msgstr "Who counts as a User?"
 
 #: src/pages/pricing.tsx:77
 msgid "You can track as many students as you want and share access to the parent dashboard to as many people as you need."
