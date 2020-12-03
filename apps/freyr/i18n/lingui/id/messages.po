@@ -58,6 +58,7 @@ msgstr ""
 #~ msgstr ""
 
 #: src/components/header.tsx:34
+#: src/components/header.tsx:126
 #: src/pages/contact.tsx:7
 #: src/pages/contact.tsx:11
 #: src/pages/index.tsx:60
@@ -94,6 +95,14 @@ msgstr "Email"
 
 #: src/pages/pricing.tsx:55
 msgid "FAQ"
+msgstr ""
+
+#: src/components/header.tsx:60
+msgid "For Parents"
+msgstr ""
+
+#: src/components/header.tsx:65
+msgid "For Teachers"
 msgstr ""
 
 #: src/pages/pricing.tsx:47
@@ -153,6 +162,10 @@ msgstr "Last updated"
 msgid "Let parents see and keep track of their child's progress through your school's curriculum in realtime."
 msgstr ""
 
+#: src/components/header.tsx:85
+msgid "Links"
+msgstr ""
+
 #: src/pages/index.tsx:81
 msgid "Managing student records using paper and spreadsheets can be messy. Data can easily slip through the cracks."
 msgstr ""
@@ -181,7 +194,7 @@ msgstr ""
 msgid "Parent dashboard"
 msgstr ""
 
-#: src/components/header.tsx:46
+#: src/components/header.tsx:40
 msgid "Parents"
 msgstr "Wali Murid"
 
@@ -194,6 +207,7 @@ msgid "Plan your student's lesson ahead of time, and share them with other teach
 msgstr ""
 
 #: src/components/header.tsx:29
+#: src/components/header.tsx:95
 msgid "Pricing"
 msgstr ""
 
@@ -215,6 +229,7 @@ msgid "Record observations"
 msgstr ""
 
 #: src/components/header.tsx:31
+#: src/components/header.tsx:108
 msgid "Roadmap"
 msgstr ""
 
@@ -262,7 +277,7 @@ msgstr ""
 msgid "Teacher dashboard for managing observations data"
 msgstr ""
 
-#: src/components/header.tsx:40
+#: src/components/header.tsx:45
 msgid "Teachers"
 msgstr "Guru"
 
@@ -317,6 +332,7 @@ msgid "What counts as a User?"
 msgstr ""
 
 #: src/components/header.tsx:32
+#: src/components/header.tsx:113
 msgid "What's New"
 msgstr ""
 
