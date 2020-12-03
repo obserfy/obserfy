@@ -46,7 +46,7 @@ const IndexPage: FC = () => {
               alt={i18n._(t`Montessori record keeping on phone and laptop`)}
             />
           </div>
-          <div className="prose prose-lg md:prose-lg max-w-xl px-4">
+          <div className="prose prose-lg md:prose-lg max-w-xl px-4 w-full">
             <h1 className="text-4xl md:text-5xl">
               <Trans>Run your Montessori School efficiently</Trans>
             </h1>
@@ -94,7 +94,7 @@ const IndexPage: FC = () => {
             alt={i18n._(t`Teacher dashboard for managing observations data`)}
           />
           <div className="px-5 mt-5">
-            <p className="font-bold text-lg text-green-700 mb-5">
+            <p className="font-bold text-lg text-green-700 mb-5 font-body">
               <Trans>Digital record keeping</Trans>
             </p>
             <div className="prose prose-lg pr-6 max-w-xl">
@@ -191,7 +191,7 @@ const IndexPage: FC = () => {
             )}
           />
           <div className="px-5 mt-5">
-            <p className="font-bold text-lg text-green-700 mb-5">
+            <p className="font-bold text-lg text-green-700 mb-5 font-body">
               <Trans>Parent communication</Trans>
             </p>
             <div className="prose prose-lg pr-6 max-w-xl">
