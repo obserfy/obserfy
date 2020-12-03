@@ -14,7 +14,7 @@ const PricingPage: FC = () => {
 
       <div className="sm:flex max-w-2xl mx-auto">
         <div className="p-4">
-          <div className="rounded-lg prose bg-white mx-auto border shadow sm:w-80  border-primary">
+          <div className="rounded-2xl prose bg-white mx-auto border shadow sm:w-80  border-primary">
             <h4 className="text-center my-6">
               <Trans>Standard plan</Trans>
             </h4>
