@@ -55,7 +55,7 @@ const PricingPage: FC = () => {
           </div>
         </div>
 
-        <div className="m-4 mt-8 prose">
+        <div className="m-4 mt-8 prose prose-lg">
           <h2>
             <Trans>FAQ</Trans>
           </h2>
