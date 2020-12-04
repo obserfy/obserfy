@@ -8,8 +8,8 @@
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions
 
-  const blogTemplate = require.resolve(`./src/templates/help.js`)
-
+  // Generate /help pages
+  const helpTemplate = require.resolve(`./src/templates/help.js`)
   const result = await graphql(`
     {
       help: allFile(filter: { sourceInstanceName: { eq: "help" } }) {
@@ -23,18 +23,15 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       }
     }
   `)
-
   if (result.errors) {
     reporter.panicOnBuild(result.errors)
     return
   }
-
-  const blogPosts = result.data.help.nodes
-
-  blogPosts.forEach(({ childMdx: node }) => {
+  const helpPosts = result.data.help.nodes
+  helpPosts.forEach(({ childMdx: node }) => {
     createPage({
-      path: node.frontmatter.slug,
-      component: blogTemplate,
+      path: "/help" + node.frontmatter.slug,
+      component: helpTemplate,
       context: {
         slug: node.frontmatter.slug,
       },
