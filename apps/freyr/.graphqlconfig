@@ -1,7 +1,7 @@
 {
   "name": "Freyr Gatsby Graphql Schema",
   "schemaPath": "src/__generated__/gatsby-schema.graphql",
-  "includes": ["./src/**/*.ts","./src/**/*.tsx"],
+  "includes": ["./src/**/*.ts","./src/**/*.tsx", "./src/**/*.js"],
   "extensions": {
     "endpoints": {
       "Default GraphQL Endpoint": {
