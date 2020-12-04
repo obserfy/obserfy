@@ -6,29 +6,6 @@ module.exports = {
     siteUrl: `https://obserfy.com`,
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-preact`,
-    `gatsby-plugin-postcss`,
-    `gatsby-plugin-netlify-cache`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
-      },
-    },
-    `gatsby-plugin-image`,
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    `gatsby-plugin-netlify`,
-    {
-      resolve: `gatsby-plugin-mdx`,
-      options: {
-        defaultLayouts: {
-          default: require.resolve("./src/layouts/HelpPage.tsx"),
-        },
-      },
-    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -45,12 +22,6 @@ module.exports = {
         },
       },
     },
-    // {
-    //   resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
-    //   options: {
-    //     analyzerPort: 3000,
-    //   },
-    // },
     {
       resolve: `gatsby-theme-i18n`,
       options: {
@@ -64,7 +35,29 @@ module.exports = {
         localeDir: `./i18n/lingui`,
       },
     },
-    `gatsby-plugin-remove-trailing-slashes`,
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-preact`,
+    `gatsby-plugin-postcss`,
+    `gatsby-plugin-netlify-cache`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`,
+      },
+    },
+
+    `gatsby-plugin-image`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/help`,
+        name: `help`,
+      },
+    },
+    `gatsby-plugin-mdx`,
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
@@ -92,5 +85,12 @@ module.exports = {
        domain: `obserfy.com`,
      },
    },
+    `gatsby-plugin-netlify`,
+    // {
+    //   resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
+    //   options: {
+    //     analyzerPort: 3000,
+    //   },
+    // },
   ],
 }
