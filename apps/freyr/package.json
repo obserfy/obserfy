@@ -9,6 +9,8 @@
     "@lingui/core": "3.2.3",
     "@lingui/macro": "3.2.3",
     "@lingui/react": "3.2.3",
+    "@mdx-js/mdx": "^1.6.22",
+    "@mdx-js/react": "^1.6.22",
     "@tailwindcss/typography": "0.3.1",
     "babel-plugin-macros": "3.0.0",
     "gatsby": "next",
@@ -16,6 +18,7 @@
     "gatsby-plugin-canonical-urls": "2.5.0",
     "gatsby-plugin-image": "next",
     "gatsby-plugin-manifest": "2.7.0",
+    "gatsby-plugin-mdx": "^1.6.0",
     "gatsby-plugin-netlify": "2.6.0",
     "gatsby-plugin-netlify-cache": "1.2.0",
     "gatsby-plugin-offline": "3.5.0",
@@ -38,7 +41,8 @@
     "preact": "10.5.5",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "react-helmet": "6.1.0"
+    "react-helmet": "6.1.0",
+    "socket.io-client": "^3.0.3"
   },
   "devDependencies": {
     "@babel/core": "7.12.9",

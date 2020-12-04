@@ -880,6 +880,15 @@ input FloatQueryOperatorInput {
   nin: [Float]
 }
 
+enum HeadingsMdx {
+  h1
+  h2
+  h3
+  h4
+  h5
+  h6
+}
+
 enum ImageCropFocus {
   CENTER
   NORTH
@@ -1466,6 +1475,212 @@ input LocaleFilterListInput {
   elemMatch: LocaleFilterInput
 }
 
+type Mdx implements Node {
+  rawBody: String!
+  fileAbsolutePath: String!
+  frontmatter: MdxFrontmatter
+  slug: String
+  body: String!
+  excerpt(pruneLength: Int = 140, truncate: Boolean = false): String!
+  headings(depth: HeadingsMdx): [MdxHeadingMdx]
+  html: String
+  mdxAST: JSON
+  tableOfContents(maxDepth: Int): JSON
+  timeToRead: Int
+  wordCount: MdxWordCount
+  id: ID!
+  parent: Node
+  children: [Node!]!
+  internal: Internal!
+}
+
+type MdxConnection {
+  totalCount: Int!
+  edges: [MdxEdge!]!
+  nodes: [Mdx!]!
+  pageInfo: PageInfo!
+  distinct(field: MdxFieldsEnum!): [String!]!
+  group(skip: Int, limit: Int, field: MdxFieldsEnum!): [MdxGroupConnection!]!
+}
+
+type MdxEdge {
+  next: Mdx
+  node: Mdx!
+  previous: Mdx
+}
+
+enum MdxFieldsEnum {
+  rawBody
+  fileAbsolutePath
+  frontmatter___title
+  slug
+  body
+  excerpt @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  headings @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  headings___value @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  headings___depth @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  html @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  mdxAST @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  tableOfContents @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  timeToRead @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  wordCount___paragraphs @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  wordCount___sentences @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  wordCount___words @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  parent___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  parent___parent___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  parent___parent___parent___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  parent___parent___parent___children @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  parent___parent___children @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  parent___parent___children___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  parent___parent___children___children @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  parent___parent___internal___content @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  parent___parent___internal___contentDigest @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  parent___parent___internal___description @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  parent___parent___internal___fieldOwners @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  parent___parent___internal___ignoreType @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  parent___parent___internal___mediaType @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  parent___parent___internal___owner @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  parent___parent___internal___type @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  parent___children @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  parent___children___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  parent___children___parent___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  parent___children___parent___children @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  parent___children___children @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  parent___children___children___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  parent___children___children___children @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  parent___children___internal___content @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  parent___children___internal___contentDigest @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  parent___children___internal___description @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  parent___children___internal___fieldOwners @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  parent___children___internal___ignoreType @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  parent___children___internal___mediaType @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  parent___children___internal___owner @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  parent___children___internal___type @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  parent___internal___content @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  parent___internal___contentDigest @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  parent___internal___description @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  parent___internal___fieldOwners @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  parent___internal___ignoreType @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  parent___internal___mediaType @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  parent___internal___owner @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  parent___internal___type @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children___parent___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children___parent___parent___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children___parent___parent___children @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children___parent___children @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children___parent___children___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children___parent___children___children @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children___parent___internal___content @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children___parent___internal___contentDigest @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children___parent___internal___description @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children___parent___internal___fieldOwners @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children___parent___internal___ignoreType @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children___parent___internal___mediaType @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children___parent___internal___owner @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children___parent___internal___type @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children___children @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children___children___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children___children___parent___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children___children___parent___children @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children___children___children @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children___children___children___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children___children___children___children @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children___children___internal___content @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children___children___internal___contentDigest @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children___children___internal___description @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children___children___internal___fieldOwners @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children___children___internal___ignoreType @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children___children___internal___mediaType @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children___children___internal___owner @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children___children___internal___type @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children___internal___content @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children___internal___contentDigest @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children___internal___description @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children___internal___fieldOwners @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children___internal___ignoreType @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children___internal___mediaType @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children___internal___owner @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  children___internal___type @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  internal___content @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  internal___contentDigest @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  internal___description @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  internal___fieldOwners @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  internal___ignoreType @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  internal___mediaType @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  internal___owner @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  internal___type @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+}
+
+input MdxFilterInput {
+  rawBody: StringQueryOperatorInput
+  fileAbsolutePath: StringQueryOperatorInput
+  frontmatter: MdxFrontmatterFilterInput
+  slug: StringQueryOperatorInput
+  body: StringQueryOperatorInput
+  excerpt: StringQueryOperatorInput
+  headings: MdxHeadingMdxFilterListInput
+  html: StringQueryOperatorInput
+  mdxAST: JSONQueryOperatorInput
+  tableOfContents: JSONQueryOperatorInput
+  timeToRead: IntQueryOperatorInput
+  wordCount: MdxWordCountFilterInput
+  id: StringQueryOperatorInput
+  parent: NodeFilterInput
+  children: NodeFilterListInput
+  internal: InternalFilterInput
+}
+
+type MdxFrontmatter {
+  title: String!
+}
+
+input MdxFrontmatterFilterInput {
+  title: StringQueryOperatorInput
+}
+
+type MdxGroupConnection {
+  totalCount: Int!
+  edges: [MdxEdge!]!
+  nodes: [Mdx!]!
+  pageInfo: PageInfo!
+  field: String!
+  fieldValue: String
+}
+
+type MdxHeadingMdx {
+  value: String
+  depth: Int
+}
+
+input MdxHeadingMdxFilterInput {
+  value: StringQueryOperatorInput
+  depth: IntQueryOperatorInput
+}
+
+input MdxHeadingMdxFilterListInput {
+  elemMatch: MdxHeadingMdxFilterInput
+}
+
+input MdxSortInput {
+  fields: [MdxFieldsEnum]
+  order: [SortOrderEnum] = [ASC]
+}
+
+type MdxWordCount {
+  paragraphs: Int
+  sentences: Int
+  words: Int
+}
+
+input MdxWordCountFilterInput {
+  paragraphs: IntQueryOperatorInput
+  sentences: IntQueryOperatorInput
+  words: IntQueryOperatorInput
+}
+
 # Node Interface
 interface Node {
   id: ID!
@@ -1534,6 +1749,8 @@ type Query {
   allImageSharp(filter: ImageSharpFilterInput, sort: ImageSharpSortInput, skip: Int, limit: Int): ImageSharpConnection!
   themeI18N(defaultLang: StringQueryOperatorInput, configPath: StringQueryOperatorInput, config: LocaleFilterListInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): ThemeI18n
   allThemeI18N(filter: ThemeI18nFilterInput, sort: ThemeI18nSortInput, skip: Int, limit: Int): ThemeI18nConnection!
+  mdx(rawBody: StringQueryOperatorInput, fileAbsolutePath: StringQueryOperatorInput, frontmatter: MdxFrontmatterFilterInput, slug: StringQueryOperatorInput, body: StringQueryOperatorInput, excerpt: StringQueryOperatorInput, headings: MdxHeadingMdxFilterListInput, html: StringQueryOperatorInput, mdxAST: JSONQueryOperatorInput, tableOfContents: JSONQueryOperatorInput, timeToRead: IntQueryOperatorInput, wordCount: MdxWordCountFilterInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): Mdx
+  allMdx(filter: MdxFilterInput, sort: MdxSortInput, skip: Int, limit: Int): MdxConnection!
   siteBuildMetadata(id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, buildTime: DateQueryOperatorInput): SiteBuildMetadata
   allSiteBuildMetadata(filter: SiteBuildMetadataFilterInput, sort: SiteBuildMetadataSortInput, skip: Int, limit: Int): SiteBuildMetadataConnection!
   sitePlugin(id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, resolve: StringQueryOperatorInput, name: StringQueryOperatorInput, version: StringQueryOperatorInput, pluginOptions: SitePluginPluginOptionsFilterInput, nodeAPIs: StringQueryOperatorInput, browserAPIs: StringQueryOperatorInput, ssrAPIs: StringQueryOperatorInput, pluginFilepath: StringQueryOperatorInput, packageJson: SitePluginPackageJsonFilterInput): SitePlugin
@@ -1886,6 +2103,7 @@ type SitePageContext {
   hrefLang: String
   originalPath: String
   dateFormat: String
+  frontmatter: SitePageContextFrontmatter
 }
 
 input SitePageContextFilterInput {
@@ -1893,6 +2111,15 @@ input SitePageContextFilterInput {
   hrefLang: StringQueryOperatorInput
   originalPath: StringQueryOperatorInput
   dateFormat: StringQueryOperatorInput
+  frontmatter: SitePageContextFrontmatterFilterInput
+}
+
+type SitePageContextFrontmatter {
+  title: String
+}
+
+input SitePageContextFrontmatterFilterInput {
+  title: StringQueryOperatorInput
 }
 
 type SitePageEdge {
@@ -1998,6 +2225,7 @@ enum SitePageFieldsEnum {
   context___hrefLang
   context___originalPath
   context___dateFormat
+  context___frontmatter___title
   pluginCreator___id
   pluginCreator___parent___id
   pluginCreator___parent___parent___id
@@ -2045,6 +2273,10 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___stripMetadata
   pluginCreator___pluginOptions___defaultQuality
   pluginCreator___pluginOptions___failOnError
+  pluginCreator___pluginOptions___defaultLayouts___default
+  pluginCreator___pluginOptions___extensions
+  pluginCreator___pluginOptions___lessBabel
+  pluginCreator___pluginOptions___mediaTypes
   pluginCreator___pluginOptions___short_name
   pluginCreator___pluginOptions___start_url
   pluginCreator___pluginOptions___background_color
@@ -2252,6 +2484,10 @@ enum SitePluginFieldsEnum {
   pluginOptions___stripMetadata
   pluginOptions___defaultQuality
   pluginOptions___failOnError
+  pluginOptions___defaultLayouts___default
+  pluginOptions___extensions
+  pluginOptions___lessBabel
+  pluginOptions___mediaTypes
   pluginOptions___short_name
   pluginOptions___start_url
   pluginOptions___background_color
@@ -2397,6 +2633,10 @@ type SitePluginPluginOptions {
   stripMetadata: Boolean
   defaultQuality: Int
   failOnError: Boolean
+  defaultLayouts: SitePluginPluginOptionsDefaultLayouts
+  extensions: [String]
+  lessBabel: Boolean
+  mediaTypes: [String]
   short_name: String
   start_url: String
   background_color: String
@@ -2425,6 +2665,14 @@ type SitePluginPluginOptions {
   jsxPragma: String
 }
 
+type SitePluginPluginOptionsDefaultLayouts {
+  default: String
+}
+
+input SitePluginPluginOptionsDefaultLayoutsFilterInput {
+  default: StringQueryOperatorInput
+}
+
 type SitePluginPluginOptionsEmitSchema {
   src___generated___gatsby_schema_graphql: Boolean
 }
@@ -2440,6 +2688,10 @@ input SitePluginPluginOptionsFilterInput {
   stripMetadata: BooleanQueryOperatorInput
   defaultQuality: IntQueryOperatorInput
   failOnError: BooleanQueryOperatorInput
+  defaultLayouts: SitePluginPluginOptionsDefaultLayoutsFilterInput
+  extensions: StringQueryOperatorInput
+  lessBabel: BooleanQueryOperatorInput
+  mediaTypes: StringQueryOperatorInput
   short_name: StringQueryOperatorInput
   start_url: StringQueryOperatorInput
   background_color: StringQueryOperatorInput

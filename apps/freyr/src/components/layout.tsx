@@ -8,7 +8,7 @@
 import React, { FC } from "react"
 import { LocalizedLink as Link } from "gatsby-theme-i18n"
 import { Trans } from "@lingui/macro"
-import Header from "./header"
+import Header from "./Header"
 import "./global.css"
 import TopDecoration from "../images/top-bg.svg"
 
