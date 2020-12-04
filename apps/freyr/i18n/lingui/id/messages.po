@@ -8,7 +8,7 @@ msgstr ""
 "Language: id\n"
 "Project-Id-Version: a9762ad8ff131d2a39fce5fce9d2fb91\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2020-12-04 12:18\n"
+"PO-Revision-Date: 2020-12-04 13:35\n"
 "Last-Translator: \n"
 "Language-Team: Indonesian\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -103,19 +103,19 @@ msgstr ""
 
 #: src/pages/contact.tsx:24
 msgid "Email"
-msgstr ""
+msgstr "Email"
 
 #: src/pages/pricing.tsx:55
 msgid "FAQ"
-msgstr ""
+msgstr "FAQ"
 
 #: src/components/Header.tsx:60
 msgid "For Parents"
-msgstr ""
+msgstr "Untuk Wali Murid"
 
 #: src/components/Header.tsx:65
 msgid "For Teachers"
-msgstr ""
+msgstr "Untuk Guru"
 
 #: src/pages/pricing.tsx:47
 msgid "Free 30-day trial"
@@ -155,7 +155,7 @@ msgstr ""
 
 #: src/pages/pricing.tsx:68
 msgid "How many student/parents can we have?"
-msgstr ""
+msgstr "Berapa banyak murid/wali murid yang bisa kita masukan?"
 
 #: src/pages/pricing.tsx:39
 msgid "Image gallery"
@@ -163,7 +163,7 @@ msgstr ""
 
 #: src/pages/privacy-policy.tsx:14
 msgid "Last updated"
-msgstr ""
+msgstr "Perubahan terakhir"
 
 #: src/pages/index.tsx:85
 #: src/pages/index.tsx:168
@@ -225,12 +225,12 @@ msgstr ""
 #: src/components/Header.tsx:30
 #: src/components/Header.tsx:100
 msgid "Pricing"
-msgstr ""
+msgstr "Harga"
 
 #: src/components/layout.tsx:22
 #: src/pages/privacy-policy.tsx:10
 msgid "Privacy Policy"
-msgstr ""
+msgstr "Kebijakan Privasi"
 
 #: src/pages/index.tsx:34
 msgid "Record Keeping & Communication tool for Montessori Schools"
@@ -246,20 +246,20 @@ msgstr "Software manajemen data dan komunikasi untuk sekolah Montessori"
 
 #: src/pages/index.tsx:103
 msgid "Record Observations"
-msgstr ""
+msgstr "Catat Observasi"
 
 #: src/pages/pricing.tsx:27
 msgid "Record observations"
-msgstr ""
+msgstr "Catat observasi"
 
 #: src/components/Header.tsx:31
 #: src/components/Header.tsx:105
 msgid "Roadmap"
-msgstr ""
+msgstr "Roadmap"
 
 #: src/pages/index.tsx:42
 msgid "Run your Montessori School efficiently"
-msgstr ""
+msgstr "Jalankan sekolah Montessori anda dengan efisien"
 
 #: src/pages/contact.tsx:32
 msgid "Send"
@@ -325,11 +325,11 @@ msgstr ""
 #: src/pages/index.tsx:261
 #: src/pages/pricing.tsx:43
 msgid "Try for Free"
-msgstr ""
+msgstr "Coba Gratis"
 
 #: src/pages/index.tsx:253
 msgid "Try it now"
-msgstr ""
+msgstr "Coba sekarang"
 
 #: src/pages/pricing.tsx:24
 msgid "Unlimited students"
