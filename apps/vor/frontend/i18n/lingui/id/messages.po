@@ -8,7 +8,7 @@ msgstr ""
 "Language: id\n"
 "Project-Id-Version: a9762ad8ff131d2a39fce5fce9d2fb91\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2020-12-04 12:40\n"
+"PO-Revision-Date: 2020-12-04 13:35\n"
 "Last-Translator: \n"
 "Language-Team: Indonesian\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -69,7 +69,7 @@ msgstr "Tambahkan deskripsi disini"
 
 #: src/components/Navbar/Navbar.tsx:80
 msgid "Admin"
-msgstr ""
+msgstr "Admin"
 
 #: src/components/PageStudentOverview/PageStudentOverview.tsx:119
 msgid "All"
@@ -375,7 +375,7 @@ msgstr "Ubah Judul"
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:78
 #: src/components/PageNewGuardian/PageNewGuardian.tsx:54
 msgid "Email"
-msgstr ""
+msgstr "Email"
 
 #: src/components/PageInviteUser/PageInviteUser.tsx:80
 msgid "Emails sent!"
@@ -467,7 +467,7 @@ msgstr "Dalam Proses"
 
 #: src/components/InformationalCard/InformationalCard.tsx:16
 msgid "Info"
-msgstr ""
+msgstr "Info"
 
 #: src/components/PageAdmin/PageAdmin.tsx:89
 msgid "Invite Your Team"
@@ -893,7 +893,7 @@ msgstr "Mulai dengan kurikulum kosong yang dapat Anda kustom dari awal."
 
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:265
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #: src/components/PageNewStudent/PageNewStudent.tsx:151
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:189
