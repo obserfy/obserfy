@@ -15069,10 +15069,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dayjs@npm:1.9.6":
-  version: 1.9.6
-  resolution: "dayjs@npm:1.9.6"
-  checksum: aaf343022da53b09044327150f1c8546f3a977daa152d027edf7e0f4af5af1697bd5215de9b74f38800c884bbcf02055d7af5c5583ba8e96f41d1c0ac9d169e1
+"dayjs@npm:1.9.7":
+  version: 1.9.7
+  resolution: "dayjs@npm:1.9.7"
+  checksum: 20922ca19bd5d0076e823c0a255bff2bcd3f29e8208461ea799e1b556c9dbd53b0c153dd212dfce4e68daeb359630fec06f421a0271081f7ff6612587f60452f
   languageName: node
   linkType: hard
 
@@ -18966,7 +18966,7 @@ fsevents@^1.2.7:
     "@typescript-eslint/parser": 4.8.1
     "@zeit/next-source-maps": 0.0.4-canary.1
     body-scroll-lock: 3.1.5
-    dayjs: 1.9.6
+    dayjs: 1.9.7
     dotenv: 8.2.0
     eslint: 7.14.0
     eslint-config-airbnb-typescript: 12.0.0
@@ -37006,7 +37006,7 @@ typescript@^4.0.0:
     browser-lang: 0.1.0
     chromatic: 5.4.0
     cross-env: 7.0.3
-    dayjs: 1.9.6
+    dayjs: 1.9.7
     dotenv: 8.2.0
     eslint: 7.14.0
     eslint-config-airbnb-typescript: 12.0.0
