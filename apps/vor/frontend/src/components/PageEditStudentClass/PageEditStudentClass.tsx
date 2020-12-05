@@ -1,5 +1,6 @@
 import React, { FC, useState } from "react"
 import { Button, Box, Card, Flex } from "theme-ui"
+import { t, Trans } from "@lingui/macro"
 import { BackNavigation } from "../BackNavigation/BackNavigation"
 import { NEW_STUDENT_CLASS_URL, STUDENT_PROFILE_URL } from "../../routes"
 import { useGetStudent } from "../../api/useGetStudent"
@@ -41,10 +42,10 @@ export const PageEditStudentClass: FC<Props> = ({ studentId }) => {
         {student.data?.name}
       </Typography.H5>
       <Typography.H5 mx={3} mb={3}>
-        Edit Classes
+        <Trans>Edit Classes</Trans>
       </Typography.H5>
       <Typography.Body mx={3} mb={2} color="textMediumEmphasis">
-        Current classes
+        <Trans>Current classes</Trans>
       </Typography.Body>
       {(student.data?.classes.length ?? 0) === 0 && (
         <Card sx={{ borderRadius: [0, "default"] }} mb={2} mx={[0, 3]}>
@@ -55,7 +56,7 @@ export const PageEditStudentClass: FC<Props> = ({ studentId }) => {
               fontSize: 1,
             }}
           >
-            No classes selected yet
+            <Trans>No classes selected yet</Trans>
           </Typography.Body>
         </Card>
       )}
@@ -83,14 +84,14 @@ export const PageEditStudentClass: FC<Props> = ({ studentId }) => {
                 fontSize: 1,
               }}
             >
-              Create new class
+              <Trans>Create new class</Trans>
             </Typography.Body>
             <Icon as={LinkIcon} ml="auto" mr={2} fill="textMediumEmphasis" />
           </Flex>
         </Link>
       </Card>
       <Typography.Body mx={3} mt={4} color="textMediumEmphasis">
-        Select from existing class
+        <Trans>Select from existing class</Trans>
       </Typography.Body>
       <Box px={3} pb={3} pt={2}>
         <SearchBar
@@ -149,8 +150,8 @@ const CurrentClass: FC<{
       {showDialog && (
         <Dialog>
           <DialogHeader
-            title="Remove Class?"
-            onAcceptText="Yes"
+            title={t`Remove Class?`}
+            onAcceptText={t`Yes`}
             loading={status === "loading"}
             onAccept={async () => {
               await mutate(classId)
@@ -166,7 +167,7 @@ const CurrentClass: FC<{
               backgroundColor: "background",
             }}
           >
-            Are you sure you want to remove {name}?
+            <Trans>Are you sure you want to remove {name}?</Trans>
           </Typography.Body>
         </Dialog>
       )}
