@@ -1,5 +1,6 @@
 import React, { FC, useState } from "react"
 import { Box } from "theme-ui"
+import { t } from "@lingui/macro"
 import Dialog from "../Dialog/Dialog"
 import Input from "../Input/Input"
 import DialogHeader from "../DialogHeader/DialogHeader"
@@ -21,7 +22,7 @@ const EditCurriculumDialog: FC<EditCurriculumDialogProps> = ({
   return (
     <Dialog>
       <DialogHeader
-        title="Edit Curriculum"
+        title={t`Edit Curriculum`}
         onCancel={onDismiss}
         onAccept={async () => {
           const response = await patchCurriculum({ name })
@@ -34,7 +35,7 @@ const EditCurriculumDialog: FC<EditCurriculumDialogProps> = ({
         <Input
           disabled={isLoading}
           autoFocus
-          label="Curriculum name"
+          label={t`Curriculum name`}
           sx={{ width: "100%" }}
           value={name}
           onChange={(e) => setName(e.target.value)}

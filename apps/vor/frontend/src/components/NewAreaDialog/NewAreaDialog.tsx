@@ -1,5 +1,7 @@
 import React, { FC, useState } from "react"
 import { Box } from "theme-ui"
+import { t } from "@lingui/macro"
+import { useLingui } from "@lingui/react"
 import Dialog from "../Dialog/Dialog"
 import Input from "../Input/Input"
 import Typography from "../Typography/Typography"
@@ -13,11 +15,12 @@ interface Props {
 export const NewAreaDialog: FC<Props> = ({ onDismiss, curriculumId }) => {
   const [name, setName] = useState("")
   const [postNewArea, { isLoading, isError }] = usePostNewArea(curriculumId)
+  const { i18n } = useLingui()
 
   return (
     <Dialog sx={{ backgroundColor: "background" }}>
       <DialogHeader
-        title="New Area"
+        title={t`New Area`}
         onCancel={onDismiss}
         onAccept={async () => {
           const response = await postNewArea({ name })
@@ -31,11 +34,11 @@ export const NewAreaDialog: FC<Props> = ({ onDismiss, curriculumId }) => {
         <Input
           disabled={isLoading}
           autoFocus
-          label="Area name"
+          label={t`Area name`}
           sx={{ width: "100%" }}
           value={name}
           onChange={(e) => setName(e.target.value)}
-          placeholder="Ex. Mathematics"
+          placeholder={i18n._(t`Ex. Mathematics`)}
         />
       </Box>
     </Dialog>
