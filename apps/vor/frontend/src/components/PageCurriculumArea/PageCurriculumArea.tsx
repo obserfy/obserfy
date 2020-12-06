@@ -1,5 +1,6 @@
 import React, { FC, useState } from "react"
 import { Box, Button, Card, Flex } from "theme-ui"
+import { Trans } from "@lingui/macro"
 import { Link, navigate } from "../Link/Link"
 import Typography from "../Typography/Typography"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
@@ -81,12 +82,14 @@ const PageCurriculumArea: FC<Props> = ({ id }) => {
         </Flex>
 
         <Flex sx={{ alignItems: "center" }} mx={3} mt={3}>
-          <Typography.H6>Subjects</Typography.H6>
+          <Typography.H6>
+            <Trans>Subjects</Trans>
+          </Typography.H6>
           <Spacer />
           <Link to={NEW_SUBJECT_URL(id)}>
             <Button variant="outline">
               <Icon as={PlusIcon} mr={2} />
-              New
+              <Trans>New</Trans>
             </Button>
           </Link>
         </Flex>

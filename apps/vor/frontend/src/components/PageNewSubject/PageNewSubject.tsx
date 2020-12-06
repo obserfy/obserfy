@@ -2,6 +2,8 @@ import React, { FC, useState } from "react"
 import { useImmer } from "use-immer"
 import { nanoid } from "nanoid"
 import { Box, Button, Flex } from "theme-ui"
+import { t, Trans } from "@lingui/macro"
+import { useLingui } from "@lingui/react"
 import { navigate } from "../Link/Link"
 import { Material } from "../../api/useGetSubjectMaterials"
 import { createSubjectApi } from "../../api/createSubjectApi"
@@ -31,6 +33,7 @@ export const PageNewSubject: FC<Props> = ({ areaId }) => {
   const [subjectName, setSubjectName] = useState("")
   const [materials, setMaterials] = useImmer<Material[]>([])
   const area = useGetArea(areaId)
+  const { i18n } = useLingui()
 
   const isValid =
     materials.every((material) => material.name !== "") && subjectName !== ""
@@ -86,10 +89,12 @@ export const PageNewSubject: FC<Props> = ({ areaId }) => {
             to: ADMIN_CURRICULUM_URL,
           },
           { text: `${area.data?.name} Area`, to: CURRICULUM_AREA_URL(areaId) },
-          { text: "New Subject" },
+          { text: i18n._(`New Subject`) },
         ]}
       />
-      <Typography.H6 m={3}>New Subject</Typography.H6>
+      <Typography.H6 m={3}>
+        <Trans>New Subject</Trans>
+      </Typography.H6>
       <Box
         sx={{
           backgroundColor: "background",
@@ -99,7 +104,7 @@ export const PageNewSubject: FC<Props> = ({ areaId }) => {
           <Box p={3}>
             <Input
               sx={{ width: "100%" }}
-              label="Subject name"
+              label={t`Subject name`}
               value={subjectName}
               onChange={(e) => setSubjectName(e.target.value)}
             />
@@ -112,7 +117,7 @@ export const PageNewSubject: FC<Props> = ({ areaId }) => {
             }}
             color="textMediumEmphasis"
           >
-            Materials
+            <Trans>Materials</Trans>
           </Typography.Body>
           <Box sx={{ width: "100%", overflow: "hidden" }}>{list}</Box>
           <Flex
@@ -142,7 +147,7 @@ export const PageNewSubject: FC<Props> = ({ areaId }) => {
                 fontSize: 1,
               }}
             >
-              Add material
+              <Trans>Add material</Trans>
             </Typography.Body>
           </Flex>
         </Box>
@@ -150,7 +155,7 @@ export const PageNewSubject: FC<Props> = ({ areaId }) => {
       <Flex sx={{ justifyContent: "flex-end", width: "100%" }} p={3}>
         <Button disabled={!isValid} onClick={createSubject}>
           {loading && <LoadingIndicator />}
-          Save
+          <Trans>Save</Trans>
         </Button>
       </Flex>
     </Flex>
