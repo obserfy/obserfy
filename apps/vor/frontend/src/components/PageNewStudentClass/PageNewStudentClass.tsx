@@ -1,6 +1,7 @@
 import React, { FC, useState } from "react"
 import { useImmer } from "use-immer"
 import { Flex, Button, Box } from "theme-ui"
+import { Trans } from "@lingui/macro"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { EDIT_STUDENT_CLASS_URL } from "../../routes"
 
@@ -59,7 +60,7 @@ export const PageNewStudentClass: FC<Props> = ({ id }) => {
         {student.data?.name}
       </Typography.H5>
       <Typography.H5 mx={3} mb={3}>
-        New Class
+        <Trans>New Class</Trans>
       </Typography.H5>
       <Box m={3}>
         <Input
@@ -89,7 +90,7 @@ export const PageNewStudentClass: FC<Props> = ({ id }) => {
           />
         </Flex>
         <Typography.Body mb={2} color="textMediumEmphasis">
-          Available every
+          <Trans>Available every</Trans>
         </Typography.Body>
         <Flex
           mb={3}
@@ -122,7 +123,7 @@ export const PageNewStudentClass: FC<Props> = ({ id }) => {
           onClick={postNewClass}
         >
           {isLoading && <LoadingIndicator mr={2} color="onPrimary" />}
-          Save
+          <Trans>Save</Trans>
         </Button>
         <ErrorMessage error={newClass.error} m={3} />
       </Box>
