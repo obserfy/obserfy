@@ -8,7 +8,7 @@ msgstr ""
 "Language: id\n"
 "Project-Id-Version: a9762ad8ff131d2a39fce5fce9d2fb91\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2020-12-04 13:35\n"
+"PO-Revision-Date: 2020-12-06 12:02\n"
 "Last-Translator: \n"
 "Language-Team: Indonesian\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -175,6 +175,10 @@ msgstr "Buat rencana pembelajaran"
 msgid "Create new class"
 msgstr "Buat kelas baru"
 
+#: src/components/PageEditStudentClass/PageEditStudentClass.tsx:65
+msgid "Create new class"
+msgstr ""
+
 #: src/components/PageEditGuardians/PageEditGuardians.tsx:66
 msgid "Create new guardian"
 msgstr "Buat wali baru"
@@ -194,6 +198,10 @@ msgstr "Paket saat ini"
 #: src/components/PageEditStudentClass/PageEditStudentClass.tsx:48
 msgid "Current classes"
 msgstr "Kelas saat ini"
+
+#: src/components/PageEditStudentClass/PageEditStudentClass.tsx:48
+msgid "Current classes"
+msgstr ""
 
 #: src/components/PageEditGuardians/PageEditGuardians.tsx:49
 msgid "Current guardians"
