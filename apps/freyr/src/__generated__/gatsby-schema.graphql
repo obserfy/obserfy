@@ -2060,6 +2060,7 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___output
   pluginCreator___pluginOptions___createLinkInHead
   pluginCreator___pluginOptions___emitSchema___src___generated___gatsby_schema_graphql
+  pluginCreator___pluginOptions___domain
   pluginCreator___pluginOptions___pathCheck
   pluginCreator___pluginOptions___allExtensions
   pluginCreator___pluginOptions___isTSX
@@ -2266,6 +2267,7 @@ enum SitePluginFieldsEnum {
   pluginOptions___output
   pluginOptions___createLinkInHead
   pluginOptions___emitSchema___src___generated___gatsby_schema_graphql
+  pluginOptions___domain
   pluginOptions___pathCheck
   pluginOptions___allExtensions
   pluginOptions___isTSX
@@ -2410,6 +2412,7 @@ type SitePluginPluginOptions {
   output: String
   createLinkInHead: Boolean
   emitSchema: SitePluginPluginOptionsEmitSchema
+  domain: String
   pathCheck: Boolean
   allExtensions: Boolean
   isTSX: Boolean
@@ -2452,6 +2455,7 @@ input SitePluginPluginOptionsFilterInput {
   output: StringQueryOperatorInput
   createLinkInHead: BooleanQueryOperatorInput
   emitSchema: SitePluginPluginOptionsEmitSchemaFilterInput
+  domain: StringQueryOperatorInput
   pathCheck: BooleanQueryOperatorInput
   allExtensions: BooleanQueryOperatorInput
   isTSX: BooleanQueryOperatorInput
