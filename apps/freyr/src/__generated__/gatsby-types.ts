@@ -3243,4 +3243,34 @@ type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 type PagesQueryQuery = { readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
 
+type LandingPageImagesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type LandingPageImagesQuery = { readonly hero: Maybe<{ readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }>, readonly vor: Maybe<{ readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }>, readonly gaia: Maybe<{ readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }> };
+
+type LocalizationSEOQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type LocalizationSEOQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'siteUrl'>> }> };
+
+type LocalizationConfigQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type LocalizationConfigQueryQuery = { readonly themeI18N: Maybe<(
+    Pick<ThemeI18n, 'defaultLang'>
+    & { readonly config: Maybe<ReadonlyArray<Maybe<Pick<Locale, 'code' | 'hrefLang' | 'dateFormat' | 'langDir' | 'localName' | 'name'>>>> }
+  )> };
+
+type GatsbyImageSharpFluidFragment = Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
+
+type homechrisintSrcobserfyappsfreyrsrccomponentsImageTsx1132682437QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type homechrisintSrcobserfyappsfreyrsrccomponentsImageTsx1132682437Query = { readonly placeholderImage: Maybe<{ readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluidFragment> }> }> };
+
+type homechrisintSrcobserfyappsfreyrsrccomponentsseoTsx63159454QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type homechrisintSrcobserfyappsfreyrsrccomponentsseoTsx63159454Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
+
 }
