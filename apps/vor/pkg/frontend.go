@@ -18,6 +18,7 @@ func createFrontendAuthMiddleware(db *pg.DB, folder string) func(next http.Handl
 	return func(next http.Handler) http.Handler {
 		fn := func(w http.ResponseWriter, r *http.Request) {
 			path := r.URL.Path
+			query := r.URL.RawQuery
 
 			// Make sure all request to path under dashboard has a valid session,
 			// else redirect to login.
@@ -55,7 +56,11 @@ func createFrontendAuthMiddleware(db *pg.DB, folder string) func(next http.Handl
 
 			// Remove trailing slashes
 			if strings.HasSuffix(path, "/") && path != "/" {
-				http.Redirect(w, r, strings.TrimSuffix(path, "/"), http.StatusMovedPermanently)
+				if query != "" {
+					http.Redirect(w, r, strings.TrimSuffix(path, "/")+"?"+query, http.StatusMovedPermanently)
+				} else {
+					http.Redirect(w, r, strings.TrimSuffix(path, "/")+query, http.StatusMovedPermanently)
+				}
 				return
 			}
 
