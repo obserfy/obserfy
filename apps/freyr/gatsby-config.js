@@ -80,11 +80,11 @@ module.exports = {
       },
     },
     {
-     resolve: `gatsby-plugin-plausible`,
-     options: {
-       domain: `obserfy.com`,
-     },
-   },
+      resolve: `gatsby-plugin-plausible`,
+      options: {
+        domain: `obserfy.com`,
+      },
+    },
     `gatsby-plugin-netlify`,
     // {
     //   resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
