@@ -6,6 +6,7 @@ module.exports = {
     siteUrl: `https://obserfy.com`,
   },
   plugins: [
+    `gatsby-plugin-remove-trailing-slashes`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
