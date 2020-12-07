@@ -1365,31 +1365,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-proposal-object-rest-spread@npm:^7.12.1":
-  version: 7.12.1
-  resolution: "@babel/plugin-proposal-object-rest-spread@npm:7.12.1"
-  dependencies:
-    "@babel/helper-plugin-utils": ^7.10.4
-    "@babel/plugin-syntax-object-rest-spread": ^7.8.0
-    "@babel/plugin-transform-parameters": ^7.12.1
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: d14fc95dad725b72bc1d29f6ea3eee0ff436fa5ab2ac2dd486acb9c1e4cda9f68424581c87857fe4e2c58bf48386b38b3eac542157b040b0f25c1fbbd98dd8f0
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-proposal-optional-catch-binding@npm:^7.10.4":
-  version: 7.10.4
-  resolution: "@babel/plugin-proposal-optional-catch-binding@npm:7.10.4"
-  dependencies:
-    "@babel/helper-plugin-utils": ^7.10.4
-    "@babel/plugin-syntax-optional-catch-binding": ^7.8.0
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 56a3a62131cdc7b7481a005dacd26f83ae10936e2dbe0b06a98cb767b13cdc859504d862a166be8d1e2ac4bc0ddfc7aa9fa7135a68e126bfcba1bcb0585928d0
-  languageName: node
-  linkType: hard
-
 "@babel/plugin-proposal-optional-catch-binding@npm:^7.12.1":
   version: 7.12.1
   resolution: "@babel/plugin-proposal-optional-catch-binding@npm:7.12.1"
