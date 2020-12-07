@@ -187,7 +187,7 @@ jobs:
       - run: yarn workspace vor run test
 
   e2e-parallel:
-    if:  ${{ !contains(github.ref, 'renovate') &&  github.ref != 'refs/heads/develop' }}
+    if:  ${{ !contains(github.ref, 'renovate') &&  github.ref != 'refs/heads/develop' &&  github.ref != 'refs/heads/feat/i10n' }}
     needs:
       - build-gaia
       - build-vor-frontend
@@ -206,7 +206,7 @@ jobs:
       fail-fast: false
       matrix:
         # run 3 copies of the current job in parallel
-        containers: [ 1, 2, 3 ]
+        containers: [ 1, 2, 3, 4 ]
 
     steps:
       - uses: actions/checkout@v2
@@ -273,7 +273,7 @@ jobs:
 
   # runs on renovate build to conserve cypress quota.
   e2e-sequential:
-    if:  ${{ contains(github.ref, 'renovate') || github.ref == 'refs/heads/develop' }}
+    if:  ${{ contains(github.ref, 'renovate') || github.ref == 'refs/heads/develop'  || github.ref == 'refs/heads/feat/i10n'}}
     needs:
       - build-gaia
       - build-vor-frontend
