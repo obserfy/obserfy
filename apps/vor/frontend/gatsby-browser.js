@@ -1,6 +1,6 @@
 import browserLang from "browser-lang"
 import "./src/global.css"
-import { withPrefix } from "gatsby"
+import { navigate, withPrefix } from "gatsby";
 
 // Disabled because it currently breaks due to gatsby's changes.
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
@@ -99,7 +99,10 @@ export const wrapPageElement = (params) => {
 
   // Save the preferred language and navigate away to it
   window.localStorage.setItem(LANG_PREFERENCE_KEY, preferredLang)
-  if (window.location.pathname.replace(/\/$/, "") + queryParams !== newUrl) window.location.replace(newUrl)
+  if (
+    window.location.pathname + queryParams !== newUrl &&
+    window.location.pathname.replace(/\/$/, "") + queryParams !== newUrl
+  ) navigate(newUrl)
 
   return params.element
 }
