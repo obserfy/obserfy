@@ -19,6 +19,7 @@
     "gatsby-plugin-netlify": "2.6.0",
     "gatsby-plugin-netlify-cache": "1.2.0",
     "gatsby-plugin-offline": "3.5.0",
+    "gatsby-plugin-plausible": "^0.0.7",
     "gatsby-plugin-postcss": "3.2.0",
     "gatsby-plugin-preact": "4.2.0",
     "gatsby-plugin-preload-fonts": "1.4.0",
