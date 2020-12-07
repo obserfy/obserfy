@@ -5,7 +5,6 @@ import { t, Trans } from "@lingui/macro"
 import { useLingui } from "@lingui/react"
 import { useGetStudent } from "../../api/useGetStudent"
 import { usePatchStudentApi } from "../../api/students/usePatchStudentApi"
-
 import Typography from "../Typography/Typography"
 import {
   EDIT_GUARDIANS_URL,
@@ -15,6 +14,7 @@ import {
 } from "../../routes"
 import dayjs from "../../dayjs"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
+import { ReactComponent as ChevronRight } from "../../icons/next-arrow.svg"
 import Icon from "../Icon/Icon"
 import Dialog from "../Dialog/Dialog"
 import Input from "../Input/Input"
@@ -144,7 +144,9 @@ export const PageStudentProfile: FC<Props> = ({ studentId }) => {
             sx={{ ml: "auto" }}
             data-cy="edit-guardians"
           >
-            <Button variant="secondary">Add</Button>
+            <Button variant="secondary" p={2}>
+              <Trans>Add</Trans>
+            </Button>
           </Link>
         </Flex>
 
@@ -156,7 +158,14 @@ export const PageStudentProfile: FC<Props> = ({ studentId }) => {
 
         {data?.guardians?.map(({ id, email, name }) => (
           <Flex p={2} key={id} sx={{ ...borderTop, alignItems: "center" }}>
-            <Typography.Body p={2} sx={{ width: "100%" }}>
+            <Typography.Body
+              p={2}
+              sx={{
+                width: "80%",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+              }}
+            >
               {name}
             </Typography.Body>
             <Typography.Body
@@ -168,10 +177,13 @@ export const PageStudentProfile: FC<Props> = ({ studentId }) => {
                 width: "100%",
                 borderRadius: "default",
                 fontWeight: email ? "normal" : "bold",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
               }}
             >
               {email || <Trans>No email set</Trans>}
             </Typography.Body>
+            <Icon as={ChevronRight} mx={2} />
           </Flex>
         ))}
       </Card>
