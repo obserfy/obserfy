@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import React, { FC, useEffect } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import GatsbyImage, { FixedObject } from "gatsby-image"
 import { Flex, Button, Box } from "theme-ui"
@@ -19,6 +19,10 @@ export const Page404: FC = () => {
       }
     }
   `)
+
+  useEffect(() => {
+    analytics.track("404 visited")
+  }, [])
 
   return (
     <Flex
