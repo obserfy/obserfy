@@ -99,13 +99,7 @@ export const wrapPageElement = (params) => {
 
   // Save the preferred language and navigate away to it
   window.localStorage.setItem(LANG_PREFERENCE_KEY, preferredLang)
-  if (
-    window.location.pathname + queryParams !== newUrl &&
-    window.location.pathname + "/" + queryParams !== newUrl
-  ) {
-    console.log(window.location.pathname + queryParams)
-    window.location.replace(newUrl)
-  }
+  if (window.location.pathname.replace(/\/$/, "") + queryParams !== newUrl) window.location.replace(newUrl)
 
   return params.element
 }

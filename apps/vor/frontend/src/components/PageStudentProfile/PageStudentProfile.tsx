@@ -28,6 +28,7 @@ import DatePickerDialog from "../DatePickerDialog/DatePickerDialog"
 import BackButton from "../BackButton/BackButton"
 import Breadcrumb from "../Breadcrumb/Breadcrumb"
 import BreadcrumbItem from "../Breadcrumb/BreadcrumbItem"
+import { borderTop } from "../../border"
 
 interface Props {
   studentId: string
@@ -95,7 +96,6 @@ export const PageStudentProfile: FC<Props> = ({ studentId }) => {
           studentId={studentId}
         />
       </Card>
-
       <Card sx={{ borderRadius: [0, "default"] }} mb={3}>
         <Flex sx={{ alignItems: "flex-start" }}>
           <Box px={3} py={3}>
@@ -127,7 +127,7 @@ export const PageStudentProfile: FC<Props> = ({ studentId }) => {
             sx={{ ml: "auto", mt: 3, mr: 3 }}
             data-cy="edit-classes"
           >
-            <Button variant="outline" ml="auto" px={2}>
+            <Button variant="outline" ml="auto">
               <Icon as={EditIcon} />
             </Button>
           </Link>
@@ -135,47 +135,47 @@ export const PageStudentProfile: FC<Props> = ({ studentId }) => {
       </Card>
 
       <Card sx={{ borderRadius: [0, "default"] }}>
-        <Flex sx={{ alignItems: "flex-start" }}>
-          <Box px={3} pt={3}>
-            <Typography.Body
-              sx={{
-                fontSize: 0,
-                lineHeight: 1,
-              }}
-              color="textMediumEmphasis"
-            >
-              <Trans>Guardians</Trans>
-            </Typography.Body>
-            {data?.guardians?.length === 0 && (
-              <Typography.Body sx={{ lineHeight: 1 }} mb={3} mt={2}>
-                <Trans>Not Set</Trans>
-              </Typography.Body>
-            )}
-            {data?.guardians?.map(({ id, email, name }) => (
-              <Box py={3} key={id}>
-                <Typography.Body sx={{ lineHeight: 1 }} mb={2}>
-                  {name}
-                </Typography.Body>
-                <Typography.Body
-                  sx={{ lineHeight: 1, fontSize: 1 }}
-                  color="textMediumEmphasis"
-                >
-                  <Trans id={email || t`No email`} />
-                </Typography.Body>
-              </Box>
-            ))}
-          </Box>
+        <Flex sx={{ alignItems: "center" }} p={3}>
+          <Typography.H6>
+            <Trans>Guardians</Trans>
+          </Typography.H6>
           <Link
             to={EDIT_GUARDIANS_URL(studentId)}
-            sx={{ ml: "auto", mt: 3, mr: 3 }}
+            sx={{ ml: "auto" }}
             data-cy="edit-guardians"
           >
-            <Button variant="outline" px={2}>
-              <Icon as={EditIcon} />
-            </Button>
+            <Button variant="secondary">Add</Button>
           </Link>
         </Flex>
+
+        {data?.guardians?.length === 0 && (
+          <Typography.Body>
+            <Trans>Not Set</Trans>
+          </Typography.Body>
+        )}
+
+        {data?.guardians?.map(({ id, email, name }) => (
+          <Flex p={2} key={id} sx={{ ...borderTop, alignItems: "center" }}>
+            <Typography.Body p={2} sx={{ width: "100%" }}>
+              {name}
+            </Typography.Body>
+            <Typography.Body
+              py={1}
+              px={2}
+              color="textMediumEmphasis"
+              backgroundColor={email ? "transparent" : "tintWarning"}
+              sx={{
+                width: "100%",
+                borderRadius: "default",
+                fontWeight: email ? "normal" : "bold",
+              }}
+            >
+              {email || <Trans>No email set</Trans>}
+            </Typography.Body>
+          </Flex>
+        ))}
       </Card>
+
       <Box mt={3}>
         <SetStatusDataBox
           studentId={studentId}
