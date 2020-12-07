@@ -18011,6 +18011,7 @@ __metadata:
     gatsby-plugin-netlify: 2.6.0
     gatsby-plugin-netlify-cache: 1.2.0
     gatsby-plugin-offline: 3.5.0
+    gatsby-plugin-plausible: ^0.0.7
     gatsby-plugin-postcss: 3.2.0
     gatsby-plugin-preact: 4.2.0
     gatsby-plugin-preload-fonts: 1.4.0
@@ -18761,6 +18762,21 @@ fsevents@^1.2.7:
   peerDependencies:
     gatsby: ^2.0.0
   checksum: 9aee68dd3a8cc51087691fc6bcb6d0fd76be79e267c8215182ac897a55c3c734f6e49657f93afd2cd641b05353d7efdc2ea4b3454fd03f1e64196182bab91690
+  languageName: node
+  linkType: hard
+
+"gatsby-plugin-plausible@npm:^0.0.7":
+  version: 0.0.7
+  resolution: "gatsby-plugin-plausible@npm:0.0.7"
+  dependencies:
+    "@babel/runtime": ^7.9.2
+    minimatch: 3.0.4
+    react: ^16.13.1
+  peerDependencies:
+    gatsby: ">=2.0.0"
+    react: ">=16.0.0"
+    react-dom: ">=16.0.0"
+  checksum: e51a310e50df90ecc340178a4c81f1060e4036e34f423771ed91b8bb9b1c4663afd16db217babadafd2f05c719cf8f29be74174a55f736d76dfc9d93a9abf447
   languageName: node
   linkType: hard
 
@@ -30703,6 +30719,17 @@ mocha@latest:
     loose-envify: ^1.1.0
     object-assign: ^4.1.1
   checksum: a76d86ec973eb4b25a46071ac7f974adfd66ed89ad1db63043be1d976ec25417520a210e6d724b0ad937422b706afcf9962cedda9e92125992a8c0e8a95f2051
+  languageName: node
+  linkType: hard
+
+"react@npm:^16.13.1":
+  version: 16.14.0
+  resolution: "react@npm:16.14.0"
+  dependencies:
+    loose-envify: ^1.1.0
+    object-assign: ^4.1.1
+    prop-types: ^15.6.2
+  checksum: 2769580b22952a52de3b5b2ea0f09cb904030b762d759739f49ab4da0b1f550e5c087ce3728c4be90f423d09481e0c075483c0c30b1ea9c549445c8b12020fd3
   languageName: node
   linkType: hard
 
