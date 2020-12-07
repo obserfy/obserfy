@@ -175,10 +175,6 @@ msgstr "Buat rencana pembelajaran"
 msgid "Create new class"
 msgstr "Buat kelas baru"
 
-#: src/components/PageEditStudentClass/PageEditStudentClass.tsx:65
-msgid "Create new class"
-msgstr ""
-
 #: src/components/PageEditGuardians/PageEditGuardians.tsx:66
 msgid "Create new guardian"
 msgstr "Buat wali baru"
@@ -198,10 +194,6 @@ msgstr "Paket saat ini"
 #: src/components/PageEditStudentClass/PageEditStudentClass.tsx:48
 msgid "Current classes"
 msgstr "Kelas saat ini"
-
-#: src/components/PageEditStudentClass/PageEditStudentClass.tsx:48
-msgid "Current classes"
-msgstr ""
 
 #: src/components/PageEditGuardians/PageEditGuardians.tsx:49
 msgid "Current guardians"
@@ -1088,4 +1080,3 @@ msgstr "wali baru"
 #: src/components/PageStudentOverview/PageStudentOverview.tsx:109
 msgid "new observation"
 msgstr "observasi baru"
-
