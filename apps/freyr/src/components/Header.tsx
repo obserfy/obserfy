@@ -30,15 +30,15 @@ const Header: FC = () => {
           </div>
 
           <nav className="hidden md:flex mx-auto absolute w-full left-0 right-0 justify-center pointer-events-none">
+            <InternalNavLinks href="/help" text={t`Help Center`} />
             <InternalNavLinks href="/pricing" text={t`Pricing`} />
-            {/* <InternalNavLinks href="/docs" text={t`Help Center`} /> */}
             <NavLinks href="https://feedback.obserfy.com" text={t`Roadmap`} />
             <NavLinks
               href="https://feedback.obserfy.com/changelog"
               text={t`What's New`}
             />
             {/* <InternalNavLinks href="/blogs" text={t`Blog`} /> */}
-            <InternalNavLinks href="/contact" text={t`Contact Us`} />
+            {/* <InternalNavLinks href="/contact" text={t`Contact Us`} /> */}
           </nav>
 
           <div className="hidden md:flex items-center ml-auto">
@@ -139,20 +139,20 @@ const Sidebar: FC<{ show: boolean; onClose: () => void }> = ({
         <div className="prose flex flex-col ml-6">
           <h3 className="my-2">
             <Link
+              to="/help"
+              className="no-underline font-bold hover:text-green-700 transition-colors"
+            >
+              Help Center
+            </Link>
+          </h3>
+          <h3 className="my-2">
+            <Link
               to="/pricing"
               className="no-underline font-bold hover:text-green-700 transition-colors"
             >
               <Trans>Pricing</Trans>
             </Link>
           </h3>
-          {/* <h2> */}
-          {/*  <Link */}
-          {/*    to="/docs" */}
-          {/*    className="no-underline font-bold hover:text-green-700 transition-colors" */}
-          {/*  > */}
-          {/*    Help Center */}
-          {/*  </Link> */}
-          {/* </h2> */}
           <h3 className="my-2">
             <a
               href="https://feedback.obserfy.com"
