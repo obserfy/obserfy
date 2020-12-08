@@ -58,7 +58,6 @@ export const PageChooseSchool: FC = () => {
         <Link to="/new-school">
           <Button
             mt={3}
-            variant="outlineBig"
             sx={{ width: "100%" }}
             data-cy="newSchool"
           >

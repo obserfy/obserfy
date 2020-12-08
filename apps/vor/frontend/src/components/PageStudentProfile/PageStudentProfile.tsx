@@ -98,41 +98,33 @@ export const PageStudentProfile: FC<Props> = ({ studentId }) => {
       </Card>
 
       <Card sx={{ borderRadius: [0, "default"] }} mb={3} mx={[0, 3]}>
-        <Flex sx={{ alignItems: "flex-start" }}>
-          <Box px={3} py={3}>
-            <Typography.Body
-              sx={{ lineHeight: 1 }}
-              mb={2}
-              color="textMediumEmphasis"
-            >
-              <Trans>Classes</Trans>
-            </Typography.Body>
-            {data?.classes?.length === 0 && (
-              <Typography.Body sx={{ lineHeight: 1 }}>
-                <Trans>Not Set</Trans>
-              </Typography.Body>
-            )}
-            {data?.classes?.map((currentClass) => (
-              <Typography.Body
-                sx={{ lineHeight: 1 }}
-                key={currentClass.id}
-                mt={3}
-              >
-                {currentClass.name}
-              </Typography.Body>
-            ))}
-          </Box>
-
+        <Flex p={3} sx={{ alignItems: "center" }}>
+          <Typography.H6>
+            <Trans>Classes</Trans>
+          </Typography.H6>
           <Link
             to={EDIT_STUDENT_CLASS_URL(studentId)}
-            sx={{ ml: "auto", mt: 3, mr: 3 }}
+            sx={{ ml: "auto" }}
             data-cy="edit-classes"
           >
-            <Button variant="outline" ml="auto">
-              <Icon as={EditIcon} />
+            <Button variant="secondary" ml="auto" p={2}>
+              <Trans>Edit</Trans>
             </Button>
           </Link>
         </Flex>
+
+        <Box>
+          {data?.classes?.length === 0 && (
+            <Typography.Body sx={{ lineHeight: 1 }}>
+              <Trans>Not Set</Trans>
+            </Typography.Body>
+          )}
+          {data?.classes?.map(({ id, name }) => (
+            <Flex key={id} sx={{ ...borderTop }}>
+              <Typography.Body p={3}>{name}</Typography.Body>
+            </Flex>
+          ))}
+        </Box>
       </Card>
 
       <Card sx={{ borderRadius: [0, "default"] }} mx={[0, 3]}>
