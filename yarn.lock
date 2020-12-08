@@ -18235,7 +18235,7 @@ __metadata:
     gatsby-theme-i18n: 1.0.4
     gatsby-theme-i18n-lingui: 1.0.4
     gatsby-transformer-sharp: next
-    postcss: 8.1.14
+    postcss: 8.2.0
     postcss-preset-env: 6.7.0
     preact: 10.5.5
     prettier: 2.2.1
@@ -18547,7 +18547,7 @@ fsevents@^1.2.7:
     pg: 8.5.1
     pino: 6.7.0
     pino-pretty: 4.3.0
-    postcss: 8.1.14
+    postcss: 8.2.0
     postcss-preset-env: 6.7.0
     preact: 10.5.5
     preact-render-to-string: 5.1.12
@@ -29617,17 +29617,6 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"postcss@npm:8.1.14":
-  version: 8.1.14
-  resolution: "postcss@npm:8.1.14"
-  dependencies:
-    colorette: ^1.2.1
-    nanoid: ^3.1.20
-    source-map: ^0.6.1
-  checksum: 1d28f12c6f18306f5bc374b3d9f360eded798ea9d893a7873cf40005b737464a610f7aa850fc6bb0db14ab3e2eadb99710009c827160f2d13ce5251414510edd
-  languageName: node
-  linkType: hard
-
 "postcss@npm:8.1.7":
   version: 8.1.7
   resolution: "postcss@npm:8.1.7"
@@ -29637,6 +29626,17 @@ mocha@latest:
     nanoid: ^3.1.16
     source-map: ^0.6.1
   checksum: 45ebaeb2814655d69439932169dd297957128c424a1533347a450c1f68a7f21e132d1658c7640bfb00cd880885662b15b85641556829b682f563f932b1f1a7e9
+  languageName: node
+  linkType: hard
+
+"postcss@npm:8.2.0":
+  version: 8.2.0
+  resolution: "postcss@npm:8.2.0"
+  dependencies:
+    colorette: ^1.2.1
+    nanoid: ^3.1.20
+    source-map: ^0.6.1
+  checksum: 9d1b5b76144fdbf7eb17c4e12acb8302ab56806895ab320e55cd48c564b7df47a0a7655ca019d94e12a9464812c7112a7df6ab086a68f53c7c6af15e986a0c08
   languageName: node
   linkType: hard
 
