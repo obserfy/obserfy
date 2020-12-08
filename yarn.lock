@@ -8086,13 +8086,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jest@npm:26.0.17":
-  version: 26.0.17
-  resolution: "@types/jest@npm:26.0.17"
+"@types/jest@npm:26.0.18":
+  version: 26.0.18
+  resolution: "@types/jest@npm:26.0.18"
   dependencies:
     jest-diff: ^26.0.0
     pretty-format: ^26.0.0
-  checksum: 025af4f5b584e15097c96ff1b1873a75f785a3c4f7700609ed131ca1a74f05c94c08f112a2b5a0585c753e9163d26346d459f10c10f9d600e1d23e92cde65e9e
+  checksum: 942433a3bebfcc88f0d7e9662ef2157826e8018b0c30191f9ca56bc75703652e614c5019d8bc43950abacf304777204e35d968a6e28a35ad98d9f1bdb9442390
   languageName: node
   linkType: hard
 
@@ -18505,7 +18505,7 @@ fsevents@^1.2.7:
     "@tailwindcss/typography": 0.3.1
     "@types/body-scroll-lock": 2.6.1
     "@types/formidable": 1.0.31
-    "@types/jest": 26.0.17
+    "@types/jest": 26.0.18
     "@types/minio": 7.0.6
     "@types/mixpanel-browser": 2.35.4
     "@types/nanoid": 2.1.0
@@ -37059,7 +37059,7 @@ typescript@^4.0.0:
     "@types/body-scroll-lock": 2.6.1
     "@types/date-fns": 2.6.0
     "@types/faker": 5.1.5
-    "@types/jest": 26.0.17
+    "@types/jest": 26.0.18
     "@types/query-string": 6.3.0
     "@types/reach__router": 1.3.6
     "@types/react": 17.0.0
