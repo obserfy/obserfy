@@ -21,7 +21,7 @@
     "@tailwindcss/typography": "0.3.1",
     "@types/body-scroll-lock": "2.6.1",
     "@types/formidable": "1.0.31",
-    "@types/jest": "26.0.16",
+    "@types/jest": "26.0.17",
     "@types/minio": "7.0.6",
     "@types/mixpanel-browser": "2.35.4",
     "@types/nanoid": "2.1.0",
