@@ -35607,7 +35607,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["tailwindcss", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:2.0.1"],
             ["ts-is-present", "npm:1.1.5"],
             ["typescript", "patch:typescript@npm%3A4.1.2#builtin<compat/typescript>::version=4.1.2&hash=5bf698"],
-            ["uuid", "npm:8.3.1"]
+            ["uuid", "npm:8.3.2"]
           ],
           "linkType": "SOFT",
         }]
@@ -56395,6 +56395,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/uuid-npm-8.3.1-8a5b02e900-6a5d07c556.zip/node_modules/uuid/",
           "packageDependencies": [
             ["uuid", "npm:8.3.1"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:8.3.2", {
+          "packageLocation": "./.yarn/cache/uuid-npm-8.3.2-eca0baba53-aed2bcef34.zip/node_modules/uuid/",
+          "packageDependencies": [
+            ["uuid", "npm:8.3.2"]
           ],
           "linkType": "HARD",
         }]
