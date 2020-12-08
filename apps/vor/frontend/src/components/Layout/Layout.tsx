@@ -1,7 +1,6 @@
 import React, { FC, useEffect, useState } from "react"
 import { Box, Flex } from "theme-ui"
 import { useMatch } from "@reach/router"
-import { useBreakpointIndex } from "@theme-ui/match-media"
 import { useLocalization } from "gatsby-theme-i18n"
 import {
   getSchoolId,
@@ -28,8 +27,6 @@ export const Layout: FC = ({ children }) => {
   const studentSubroute = useMatch(
     `${locale !== "en" ? `/${locale}` : ""}/dashboard/students/*`
   )
-  const breakpoint = useBreakpointIndex({ defaultIndex: 2 })
-
   if (getSchoolId() === SCHOOL_ID_UNDEFINED_PLACEHOLDER) {
     navigate("/choose-school")
   }
@@ -38,7 +35,7 @@ export const Layout: FC = ({ children }) => {
     <>
       <Navbar />
       <Flex>
-        {studentSubroute && breakpoint > 1 && <StudentsSubrouteSidebar />}
+        <StudentsSubrouteSidebar />
         <Box
           as="main"
           backgroundColor="background"
