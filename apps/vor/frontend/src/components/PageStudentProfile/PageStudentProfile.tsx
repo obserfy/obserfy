@@ -7,8 +7,8 @@ import { useGetStudent } from "../../api/useGetStudent"
 import { usePatchStudentApi } from "../../api/students/usePatchStudentApi"
 import Typography from "../Typography/Typography"
 import {
-  EDIT_GUARDIANS_URL,
   EDIT_STUDENT_CLASS_URL,
+  ADD_GUARDIAN_URL,
   STUDENT_OVERVIEW_PAGE_URL,
   STUDENTS_URL,
 } from "../../routes"
@@ -64,7 +64,7 @@ export const PageStudentProfile: FC<Props> = ({ studentId }) => {
           </BreadcrumbItem>
         </Breadcrumb>
       </Flex>
-      <Card sx={{ borderRadius: [0, "default"] }} mb={3}>
+      <Card sx={{ borderRadius: [0, "default"] }} mb={3} mx={[0, 3]}>
         <NameDataBox
           value={data?.name}
           key={`name${data?.name}`}
@@ -96,7 +96,8 @@ export const PageStudentProfile: FC<Props> = ({ studentId }) => {
           studentId={studentId}
         />
       </Card>
-      <Card sx={{ borderRadius: [0, "default"] }} mb={3}>
+
+      <Card sx={{ borderRadius: [0, "default"] }} mb={3} mx={[0, 3]}>
         <Flex sx={{ alignItems: "flex-start" }}>
           <Box px={3} py={3}>
             <Typography.Body
@@ -134,13 +135,13 @@ export const PageStudentProfile: FC<Props> = ({ studentId }) => {
         </Flex>
       </Card>
 
-      <Card sx={{ borderRadius: [0, "default"] }}>
+      <Card sx={{ borderRadius: [0, "default"] }} mx={[0, 3]}>
         <Flex sx={{ alignItems: "center" }} p={3}>
           <Typography.H6>
             <Trans>Guardians</Trans>
           </Typography.H6>
           <Link
-            to={EDIT_GUARDIANS_URL(studentId)}
+            to={ADD_GUARDIAN_URL(studentId)}
             sx={{ ml: "auto" }}
             data-cy="edit-guardians"
           >
@@ -170,8 +171,7 @@ export const PageStudentProfile: FC<Props> = ({ studentId }) => {
             </Typography.Body>
             <Typography.Body
               py={1}
-              px={2}
-              color="textMediumEmphasis"
+              px={email ? 0 : 2}
               backgroundColor={email ? "transparent" : "tintWarning"}
               sx={{
                 width: "100%",
@@ -188,7 +188,7 @@ export const PageStudentProfile: FC<Props> = ({ studentId }) => {
         ))}
       </Card>
 
-      <Box mt={3}>
+      <Box mt={3} mx={[0, 3]}>
         <SetStatusDataBox
           studentId={studentId}
           active={data?.active ?? false}

@@ -27,4 +27,9 @@ export const TopBar: FC<TopBarProps> = ({ breadcrumbs }) => (
   </Flex>
 )
 
+export const breadCrumb = (text?: string, to?: string) => ({
+  text: text ?? "",
+  to,
+})
+
 export default TopBar

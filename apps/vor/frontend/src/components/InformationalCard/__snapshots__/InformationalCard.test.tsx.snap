@@ -167,7 +167,7 @@ exports[`InformationalCard should render correctly 1`] = `
 
 .emotion-7:hover,
 .emotion-7:focus {
-  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,120,86,0.12));
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
   border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }

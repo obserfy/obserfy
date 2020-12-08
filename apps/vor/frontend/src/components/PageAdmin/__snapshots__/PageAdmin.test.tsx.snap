@@ -276,7 +276,7 @@ exports[`PageAdmin should render correctly 1`] = `
 
 .emotion-37:hover,
 .emotion-37:focus {
-  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,120,86,0.12));
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
   border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
@@ -363,7 +363,7 @@ exports[`PageAdmin should render correctly 1`] = `
 
 .emotion-38:hover,
 .emotion-38:focus {
-  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,120,86,0.12));
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
   border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }

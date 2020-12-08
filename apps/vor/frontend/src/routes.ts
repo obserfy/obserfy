@@ -85,8 +85,8 @@ export const ALL_PLANS_URL = (date?: Dayjs) =>
 export const PLANS_DETAILS_URL = (id: string) =>
   `/dashboard/plans/details?id=${id}`
 
-export const NEW_GUARDIANS_URL = (studentId: string): string =>
-  `/dashboard/students/profile/guardians/new?studentId=${studentId}`
+export const ADD_GUARDIAN_URL = (studentId: string): string =>
+  `/dashboard/students/profile/guardians/add?studentId=${studentId}`
 
 export const EDIT_STUDENT_CLASS_URL = (id: string) =>
   `/dashboard/students/profile/classes/edit?studentId=${id}`

@@ -21,7 +21,7 @@ export const Page404: FC = () => {
   `)
 
   useEffect(() => {
-    analytics.track("404 visited")
+    if (window.analytics) window.analytics.track("404 visited")
   }, [])
 
   return (
