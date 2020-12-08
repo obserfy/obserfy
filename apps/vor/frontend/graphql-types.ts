@@ -2217,7 +2217,6 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___crossOrigin'
   | 'pluginCreator___pluginOptions___include_favicon'
   | 'pluginCreator___pluginOptions___cacheDigest'
-  | 'pluginCreator___pluginOptions___workboxConfig___runtimeCaching'
   | 'pluginCreator___pluginOptions___prodKey'
   | 'pluginCreator___pluginOptions___devKey'
   | 'pluginCreator___pluginOptions___trackPage'
@@ -2445,9 +2444,6 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___crossOrigin'
   | 'pluginOptions___include_favicon'
   | 'pluginOptions___cacheDigest'
-  | 'pluginOptions___workboxConfig___runtimeCaching'
-  | 'pluginOptions___workboxConfig___runtimeCaching___handler'
-  | 'pluginOptions___workboxConfig___runtimeCaching___method'
   | 'pluginOptions___prodKey'
   | 'pluginOptions___devKey'
   | 'pluginOptions___trackPage'
@@ -2601,7 +2597,6 @@ export type SitePluginPluginOptions = {
   crossOrigin?: Maybe<Scalars['String']>;
   include_favicon?: Maybe<Scalars['Boolean']>;
   cacheDigest?: Maybe<Scalars['String']>;
-  workboxConfig?: Maybe<SitePluginPluginOptionsWorkboxConfig>;
   prodKey?: Maybe<Scalars['String']>;
   devKey?: Maybe<Scalars['String']>;
   trackPage?: Maybe<Scalars['Boolean']>;
@@ -2645,7 +2640,6 @@ export type SitePluginPluginOptionsFilterInput = {
   crossOrigin?: Maybe<StringQueryOperatorInput>;
   include_favicon?: Maybe<BooleanQueryOperatorInput>;
   cacheDigest?: Maybe<StringQueryOperatorInput>;
-  workboxConfig?: Maybe<SitePluginPluginOptionsWorkboxConfigFilterInput>;
   prodKey?: Maybe<StringQueryOperatorInput>;
   devKey?: Maybe<StringQueryOperatorInput>;
   trackPage?: Maybe<BooleanQueryOperatorInput>;
@@ -2685,52 +2679,6 @@ export type SitePluginPluginOptionsSvgoConfig = {
 export type SitePluginPluginOptionsSvgoConfigFilterInput = {
   removeViewBox?: Maybe<BooleanQueryOperatorInput>;
   cleanupIDs?: Maybe<BooleanQueryOperatorInput>;
-};
-
-export type SitePluginPluginOptionsWorkboxConfig = {
-  runtimeCaching?: Maybe<Array<Maybe<SitePluginPluginOptionsWorkboxConfigRuntimeCaching>>>;
-};
-
-export type SitePluginPluginOptionsWorkboxConfigFilterInput = {
-  runtimeCaching?: Maybe<SitePluginPluginOptionsWorkboxConfigRuntimeCachingFilterListInput>;
-};
-
-export type SitePluginPluginOptionsWorkboxConfigRuntimeCaching = {
-  handler?: Maybe<Scalars['String']>;
-  method?: Maybe<Scalars['String']>;
-  options?: Maybe<SitePluginPluginOptionsWorkboxConfigRuntimeCachingOptions>;
-};
-
-export type SitePluginPluginOptionsWorkboxConfigRuntimeCachingFilterInput = {
-  handler?: Maybe<StringQueryOperatorInput>;
-  method?: Maybe<StringQueryOperatorInput>;
-  options?: Maybe<SitePluginPluginOptionsWorkboxConfigRuntimeCachingOptionsFilterInput>;
-};
-
-export type SitePluginPluginOptionsWorkboxConfigRuntimeCachingFilterListInput = {
-  elemMatch?: Maybe<SitePluginPluginOptionsWorkboxConfigRuntimeCachingFilterInput>;
-};
-
-export type SitePluginPluginOptionsWorkboxConfigRuntimeCachingOptions = {
-  cacheName?: Maybe<Scalars['String']>;
-  expiration?: Maybe<SitePluginPluginOptionsWorkboxConfigRuntimeCachingOptionsExpiration>;
-  networkTimeoutSeconds?: Maybe<Scalars['Int']>;
-};
-
-export type SitePluginPluginOptionsWorkboxConfigRuntimeCachingOptionsExpiration = {
-  maxEntries?: Maybe<Scalars['Int']>;
-  maxAgeSeconds?: Maybe<Scalars['Int']>;
-};
-
-export type SitePluginPluginOptionsWorkboxConfigRuntimeCachingOptionsExpirationFilterInput = {
-  maxEntries?: Maybe<IntQueryOperatorInput>;
-  maxAgeSeconds?: Maybe<IntQueryOperatorInput>;
-};
-
-export type SitePluginPluginOptionsWorkboxConfigRuntimeCachingOptionsFilterInput = {
-  cacheName?: Maybe<StringQueryOperatorInput>;
-  expiration?: Maybe<SitePluginPluginOptionsWorkboxConfigRuntimeCachingOptionsExpirationFilterInput>;
-  networkTimeoutSeconds?: Maybe<IntQueryOperatorInput>;
 };
 
 export type SitePluginSortInput = {

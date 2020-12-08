@@ -132,7 +132,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
 
 .emotion-4:hover,
 .emotion-4:focus {
-  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,120,86,0.12));
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
   border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
@@ -496,7 +496,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
 
 .emotion-25:hover,
 .emotion-25:focus {
-  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,120,86,0.12));
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
   border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
@@ -817,7 +817,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
 
 .emotion-40:hover,
 .emotion-40:focus {
-  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,120,86,0.12));
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
   border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
@@ -906,7 +906,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
 }
 
 .emotion-49:hover {
-  background-color: var(--theme-ui-colors-primaryLightest, rgba(0,120,86,0.05));
+  background-color: var(--theme-ui-colors-primaryLightest, rgba(0,227,153,0.05));
 }
 
 .emotion-50 {
@@ -1016,7 +1016,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
 
 .emotion-56:hover,
 .emotion-56:focus {
-  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,120,86,0.12));
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
   border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
