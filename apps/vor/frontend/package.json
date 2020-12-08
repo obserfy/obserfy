@@ -7,7 +7,7 @@
   "dependencies": {
     "@babel/runtime": "7.12.5",
     "@emotion/jest": "11.1.0",
-    "@emotion/react": "11.1.1",
+    "@emotion/react": "11.1.2",
     "@lingui/cli": "3.2.3",
     "@lingui/core": "3.2.3",
     "@lingui/macro": "3.2.3",
@@ -39,7 +39,7 @@
     "gatsby-plugin-segment-js": "3.6.0",
     "gatsby-plugin-sharp": "2.9.1",
     "gatsby-plugin-svgr": "2.0.2",
-    "gatsby-plugin-theme-ui": "0.3.4",
+    "gatsby-plugin-theme-ui": "0.6.0-alpha.3",
     "gatsby-plugin-webpack-bundle-analyser-v2": "1.1.17",
     "gatsby-source-filesystem": "2.6.1",
     "gatsby-theme-i18n": "1.0.4",
@@ -58,7 +58,7 @@
     "react-helmet": "6.1.0",
     "react-query": "2.26.3",
     "regenerator-runtime": "0.13.7",
-    "theme-ui": "0.5.0-alpha.0",
+    "theme-ui": "0.6.0-alpha.3",
     "use-immer": "0.4.2"
   },
   "devDependencies": {

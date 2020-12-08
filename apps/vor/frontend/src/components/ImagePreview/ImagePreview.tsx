@@ -1,12 +1,12 @@
 import React, { FC, useState } from "react"
-import { Image, SxStyleProp } from "theme-ui"
+import { Image, ThemeUIStyleObject } from "theme-ui"
 import ImagePreviewOverlay from "../ImagePreviewOverlay/ImagePreviewOverlay"
 
 export interface ImagePreviewProps {
   id: string
   originalUrl: string
   thumbnailUrl: string
-  imageSx?: SxStyleProp
+  imageSx?: ThemeUIStyleObject
   studentId: string
   imageId: string
 }

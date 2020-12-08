@@ -7,7 +7,7 @@ import React, {
 import {
   Box,
   Label,
-  SxStyleProp,
+  ThemeUIStyleObject,
   Textarea as BaseTextArea,
   TextareaProps,
 } from "theme-ui"
@@ -16,7 +16,7 @@ import { Trans } from "@lingui/macro"
 interface Props extends PropsWithoutRef<TextareaProps> {
   label?: string
   onChange?: (event: ChangeEvent<HTMLTextAreaElement>) => void
-  containerSx?: SxStyleProp
+  containerSx?: ThemeUIStyleObject
 }
 export const TextArea: ForwardRefRenderFunction<HTMLTextAreaElement, Props> = (
   { label, containerSx, ...props },
