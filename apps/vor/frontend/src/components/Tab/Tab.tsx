@@ -1,5 +1,5 @@
 import React, { FC } from "react"
-import { Box, Flex, HeadingProps, SxStyleProp } from "theme-ui"
+import { Box, Flex, HeadingProps, ThemeUIStyleObject } from "theme-ui"
 import { Typography } from "../Typography/Typography"
 
 interface TabProps {
@@ -7,7 +7,7 @@ interface TabProps {
   selectedItemIdx: number
   onTabClick: (index: number) => void
   small?: boolean
-  sx?: SxStyleProp
+  sx?: ThemeUIStyleObject
 }
 export const Tab: FC<TabProps> = ({
   items,

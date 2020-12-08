@@ -1,6 +1,6 @@
 import { Trans } from "@lingui/macro"
 import React, { FC } from "react"
-import { Button, Flex, SxStyleProp } from "theme-ui"
+import { Button, Flex, ThemeUIStyleObject } from "theme-ui"
 import Input from "../Input/Input"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 
@@ -9,8 +9,8 @@ const LinkInput: FC<{
   onChange: (value: string) => void
   onSave: () => void
   isLoading?: boolean
-  containerSx?: SxStyleProp
-  inputSx?: SxStyleProp
+  containerSx?: ThemeUIStyleObject
+  inputSx?: ThemeUIStyleObject
 }> = ({ inputSx, containerSx, value, onChange, onSave, isLoading }) => (
   <Flex sx={containerSx}>
     <Input

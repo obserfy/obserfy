@@ -1,8 +1,8 @@
 import React, { FC } from "react"
-import { Flex, SxStyleProp } from "theme-ui"
+import { Flex, ThemeUIStyleObject } from "theme-ui"
 
 export interface BreadcrumbProps {
-  sx?: SxStyleProp
+  sx?: ThemeUIStyleObject
 }
 export const Breadcrumb: FC<BreadcrumbProps> = ({ sx, children }) => (
   <Flex sx={{ ...sx, alignItems: "center", overflowX: "auto" }}>

@@ -1,12 +1,12 @@
 import React, { FC } from "react"
-import { SxStyleProp, Checkbox as BaseCheckbox, Label } from "theme-ui"
+import { ThemeUIStyleObject, Checkbox as BaseCheckbox, Label } from "theme-ui"
 import { Trans } from "@lingui/macro"
 
 export interface CheckboxProps {
   label: string
   onChange?: (value: boolean) => void
   checked?: boolean
-  containerSx?: SxStyleProp
+  containerSx?: ThemeUIStyleObject
   defaultChecked?: boolean
   disabled?: boolean
 }

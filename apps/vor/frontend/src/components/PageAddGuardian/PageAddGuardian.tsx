@@ -1,9 +1,7 @@
 import React, { FC, useState } from "react"
-import { Box, Button, Flex } from "theme-ui"
-
+import { Card, Box, Button, Flex } from "theme-ui"
 import { t, Trans } from "@lingui/macro"
 import { useLingui } from "@lingui/react"
-import { Card } from "@theme-ui/components"
 import Select from "../Select/Select"
 import { GuardianRelationship } from "../../api/students/usePostNewStudent"
 import Input from "../Input/Input"
