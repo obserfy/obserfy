@@ -1,8 +1,8 @@
 import React, { FC } from "react"
-import PageAddGuardian from "../../../../components/PageAddGuardian/PageAddGuardian"
+import PageNewStudentAddGuardian from "../../../../components/PageNewStudentAddGuardian/PageNewStudentAddGuardian"
 
 const PickGuardian: FC = () => {
-  return <PageAddGuardian id="" />
+  return <PageNewStudentAddGuardian />
 }
 
 export default PickGuardian

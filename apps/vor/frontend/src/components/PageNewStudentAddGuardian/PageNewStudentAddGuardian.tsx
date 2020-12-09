@@ -1,16 +1,9 @@
 import { t, Trans } from "@lingui/macro"
 import React, { FC, useState } from "react"
 import { Box, Flex } from "theme-ui"
-import { usePostGuardianRelation } from "../../api/guardians/usePostGuardianRelation"
 import { usePostNewGuardian } from "../../api/guardians/usePostNewGuardian"
 import { GuardianRelationship } from "../../api/students/usePostNewStudent"
-import { useGetStudent } from "../../api/useGetStudent"
-import { getFirstName } from "../../domain/person"
-import {
-  STUDENT_OVERVIEW_PAGE_URL,
-  STUDENT_PROFILE_URL,
-  STUDENTS_URL,
-} from "../../routes"
+import { NEW_STUDENT_URL, STUDENTS_URL } from "../../routes"
 import Chip from "../Chip/Chip"
 import GuardianRelationshipSelector from "../GuardianRelationshipSelector/GuardianRelationshipSelector"
 import { navigate } from "../Link/Link"
@@ -18,6 +11,7 @@ import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import NewGuardianForm, {
   useNewGuardianFormState,
 } from "../NewGuardianForm/NewGuardianForm"
+import { useNewStudentFormContext } from "../PageNewStudent/NewStudentForm"
 import SimpleGuardiansSelector from "../SimpleGuardiansSelector/SimpleGuardiansSelector"
 import { breadCrumb } from "../TopBar/TopBar"
 import TopBarWithAction from "../TopBarWithAction/TopBarWithAction"
@@ -28,38 +22,34 @@ enum Mode {
   EXISTING,
 }
 
-interface Props {
-  id: string
-}
-
-export const PageAddGuardian: FC<Props> = ({ id: studentId }) => {
-  const { data: student } = useGetStudent(studentId)
-  const [postNewGuardian, { isLoading }] = usePostNewGuardian(studentId)
-
+const PageNewStudentAddGuardian: FC = () => {
+  const { state, setState } = useNewStudentFormContext()
+  const [postNewGuardian, { isLoading }] = usePostNewGuardian()
   const [mode, setMode] = useState(Mode.NEW)
+
   const [relation, setRelation] = useState(GuardianRelationship.Mother)
   const [newGuardian, setNewGuardian] = useNewGuardianFormState()
   const [guardianId, setGuardianId] = useState("")
-  const [postNewGuardianRelation] = usePostGuardianRelation(
-    { id: guardianId },
-    studentId
-  )
 
   const isFormValid =
     mode === Mode.NEW ? newGuardian.name !== "" : guardianId !== ""
 
   const createNewGuardian = async () => {
-    const result = await postNewGuardian({
-      ...newGuardian,
-      studentId,
-      relationship: relation,
-    })
-    if (result?.status === 201) await navigate(STUDENT_PROFILE_URL(studentId))
+    const result = await postNewGuardian(newGuardian)
+    if (result?.ok) {
+      const { id } = await result.json()
+      setState((draft) => {
+        draft.guardians.push({ id, relationship: relation })
+      })
+      await navigate(NEW_STUDENT_URL)
+    }
   }
 
   const createNewGuardianRelation = async () => {
-    const result = await postNewGuardianRelation(relation)
-    if (result?.status === 201) await navigate(STUDENT_PROFILE_URL(studentId))
+    setState((draft) => {
+      draft.guardians.push({ id: guardianId, relationship: relation })
+    })
+    await navigate(NEW_STUDENT_URL)
   }
 
   return (
@@ -72,11 +62,7 @@ export const PageAddGuardian: FC<Props> = ({ id: studentId }) => {
         }}
         breadcrumbs={[
           breadCrumb(t`Students`, STUDENTS_URL),
-          breadCrumb(
-            getFirstName(student),
-            STUDENT_OVERVIEW_PAGE_URL(studentId)
-          ),
-          breadCrumb(t`Profile`, STUDENT_PROFILE_URL(studentId)),
+          breadCrumb("Create New", NEW_STUDENT_URL),
           breadCrumb(t`Add Guardian`),
         ]}
         buttonContent={
@@ -109,7 +95,7 @@ export const PageAddGuardian: FC<Props> = ({ id: studentId }) => {
           <SimpleGuardiansSelector
             onChange={setGuardianId}
             selectedId={guardianId}
-            currentGuardianIds={student?.guardians.map(({ id }) => id)}
+            currentGuardianIds={state.guardians.map(({ id }) => id)}
           />
         )}
       </Box>
@@ -137,4 +123,4 @@ const ModeSelector: FC<{
   </Flex>
 )
 
-export default PageAddGuardian
+export default PageNewStudentAddGuardian
