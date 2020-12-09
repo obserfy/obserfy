@@ -103,3 +103,9 @@ export const STUDENT_PROGRESS_URL = (
 
 export const GUARDIAN_PROFILE_URL = (id: string) =>
   `/dashboard/admin/guardians/profile?id=${id}`
+
+export const STUDENT_PROFILE_GUARDIAN_PROFILE_URL = (
+  studentId: string,
+  guardianId: string
+) =>
+  `/dashboard/students/profile/guardians/profile?studentId=${studentId}&&guardianId=${guardianId}`
