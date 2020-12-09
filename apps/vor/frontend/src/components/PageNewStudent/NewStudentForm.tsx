@@ -1,31 +1,31 @@
-import React, { createContext, FC, useContext, useState } from "react"
 import { t, Trans } from "@lingui/macro"
-import { Box, Button, Card, Flex } from "theme-ui"
 import { useLingui } from "@lingui/react"
+import React, { createContext, FC, useContext, useState } from "react"
+import { Box, Button, Card, Flex } from "theme-ui"
 import { Updater, useImmer } from "use-immer"
-import { Dayjs } from "../../dayjs"
-import { Typography } from "../Typography/Typography"
-import ProfilePicker from "../ProfilePicker/ProfilePicker"
-import Input from "../Input/Input"
-import DateInput from "../DateInput/DateInput"
-import Select from "../Select/Select"
+import useGetSchoolClasses from "../../api/classes/useGetSchoolClasses"
+import { useGetGuardian } from "../../api/guardians/useGetGuardian"
 import {
   Gender,
   GuardianRelationship,
 } from "../../api/students/usePostNewStudent"
-import TextArea from "../TextArea/TextArea"
-import EmptyClassDataPlaceholder from "../EmptyClassDataPlaceholder/EmptyClassDataPlaceholder"
-import Chip from "../Chip/Chip"
-import { Link } from "../Link/Link"
+import { borderTop } from "../../border"
+import { Dayjs } from "../../dayjs"
+import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
 import { NEW_STUDENT_ADD_GUARDIAN_URL } from "../../routes"
-import useGetSchoolClasses from "../../api/classes/useGetSchoolClasses"
-import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
-import { useGetGuardian } from "../../api/guardians/useGetGuardian"
+import Chip from "../Chip/Chip"
+import DateInput from "../DateInput/DateInput"
+import EmptyClassDataPlaceholder from "../EmptyClassDataPlaceholder/EmptyClassDataPlaceholder"
 import GuardianRelationshipPill from "../GuardianRelationshipPill/GuardianRelationshipPill"
 import Icon from "../Icon/Icon"
-import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
+import Input from "../Input/Input"
+import { Link } from "../Link/Link"
+import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
+import ProfilePicker from "../ProfilePicker/ProfilePicker"
+import Select from "../Select/Select"
+import TextArea from "../TextArea/TextArea"
+import { Typography } from "../Typography/Typography"
 import WarningDialog from "../WarningDialog/WarningDialog"
-import GuardianRelationshipPickerDialog from "../GuardianRelationshipPickerDialog/GuardianRelationshipPickerDialog"
 
 export const newStudentFormDefaultState = {
   classes: [] as string[],
@@ -150,77 +150,79 @@ export const NewStudentForm = () => {
           }
         />
       </Box>
-      <Typography.H5 m={3} mt={4}>
-        <Trans>Classes</Trans>
-      </Typography.H5>
-      {classes.status === "success" && (classes.data?.length ?? 0) === 0 && (
-        <EmptyClassDataPlaceholder />
-      )}
-      {classes.status === "loading" && <ClassesLoadingPlaceholder />}
-      {classes.status !== "error" && (
-        <Flex m={3}>
-          {classes.data?.map((item) => {
-            const selected = state.classes.includes(item.id)
-            return (
-              <Chip
-                mr={2}
-                mb={2}
-                key={item.id}
-                text={item.name}
-                activeBackground="primary"
-                isActive={selected}
-                onClick={() => {
-                  if (selected) {
-                    setState((draft) => {
-                      draft.classes = draft.classes.filter(
-                        (selection) => selection !== item.id
-                      )
-                    })
-                  } else {
-                    setState((draft) => {
-                      draft.classes.push(item.id)
-                    })
-                  }
-                }}
-              />
-            )
-          })}
+
+      <Card mt={4} mx={[0, 3]} sx={{ borderRadius: [0, "default"] }}>
+        <Typography.H6 m={3}>
+          <Trans>Classes</Trans>
+        </Typography.H6>
+        {classes.status === "success" && (classes.data?.length ?? 0) === 0 && (
+          <EmptyClassDataPlaceholder />
+        )}
+        {classes.status === "loading" && <ClassesLoadingPlaceholder />}
+        {classes.status !== "error" && (
+          <Flex sx={{ ...borderTop }} pt={2} pb={3} px={3}>
+            {classes.data?.map((item) => {
+              const selected = state.classes.includes(item.id)
+              return (
+                <Chip
+                  mr={2}
+                  mt={2}
+                  key={item.id}
+                  text={item.name}
+                  activeBackground="primary"
+                  isActive={selected}
+                  backgroundColor="background"
+                  onClick={() => {
+                    if (selected) {
+                      setState((draft) => {
+                        draft.classes = draft.classes.filter(
+                          (selection) => selection !== item.id
+                        )
+                      })
+                    } else {
+                      setState((draft) => {
+                        draft.classes.push(item.id)
+                      })
+                    }
+                  }}
+                />
+              )
+            })}
+          </Flex>
+        )}
+      </Card>
+
+      <Card mx={[0, 3]} sx={{ borderRadius: [0, "default"] }} mt={3}>
+        <Flex sx={{ alignItems: "center" }} p={3}>
+          <Typography.H6 mr="auto">
+            <Trans>Guardians</Trans>
+          </Typography.H6>
+          <Link to={NEW_STUDENT_ADD_GUARDIAN_URL} data-cy="add-student">
+            <Button variant="secondary">
+              <Trans>Add</Trans>
+            </Button>
+          </Link>
         </Flex>
-      )}
-      <Flex sx={{ alignItems: "center" }} mt={3}>
-        <Typography.H5 m={3} mr="auto">
-          <Trans>Guardians</Trans>
-        </Typography.H5>
-        <Link to={NEW_STUDENT_ADD_GUARDIAN_URL} data-cy="add-student">
-          <Button variant="outline" mr={3}>
-            <Trans>Add</Trans>
-          </Button>
-        </Link>
-      </Flex>
-      {state.guardians.length === 0 && (
-        <Card sx={{ borderRadius: [0, "default"] }} mx={[0, 3]}>
+
+        {state.guardians.length === 0 && (
           <Typography.Body m={3} color="textMediumEmphasis">
             <Trans>This student doesn&apos;t have a guardian yet.</Trans>
           </Typography.Body>
-        </Card>
-      )}
-      {state.guardians.map((guardian, idx) => (
-        <GuardianCard
-          key={guardian.id}
-          id={guardian.id}
-          relationship={guardian.relationship}
-          changeRelationship={(relationship) => {
-            setState((draft) => {
-              draft.guardians[idx].relationship = relationship
-            })
-          }}
-          onRemove={() => {
-            setState((draft) => {
-              draft.guardians.splice(idx, 1)
-            })
-          }}
-        />
-      ))}
+        )}
+
+        {state.guardians.map((guardian, idx) => (
+          <GuardianCard
+            key={guardian.id}
+            id={guardian.id}
+            relationship={guardian.relationship}
+            onRemove={() => {
+              setState((draft) => {
+                draft.guardians.splice(idx, 1)
+              })
+            }}
+          />
+        ))}
+      </Card>
     </>
   )
 }
@@ -228,69 +230,57 @@ export const NewStudentForm = () => {
 const GuardianCard: FC<{
   id: string
   relationship: GuardianRelationship
-  changeRelationship: (relationship: GuardianRelationship) => void
   onRemove: () => void
-}> = ({ id, relationship, onRemove, changeRelationship }) => {
+}> = ({ id, relationship, onRemove }) => {
   const guardian = useGetGuardian(id)
   const [showRemoveDialog, setShowRemoveDialog] = useState(false)
-  const [showRelationshipDialog, setShowRelationShipDialog] = useState(false)
 
   return (
-    <Card
-      py={3}
-      pr={2}
-      mb={2}
-      mx={[0, 3]}
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        borderRadius: [0, "default"],
-      }}
-    >
-      <Flex
-        onClick={() => setShowRelationShipDialog(true)}
+    <Flex px={3} py={2} sx={{ alignItems: "center", ...borderTop }}>
+      <Flex sx={{ width: "100%", alignItems: "center" }} mr={3}>
+        <GuardianRelationshipPill
+          mr={3}
+          relationship={relationship}
+          sx={{ display: ["none", "block"] }}
+        />
+        <Typography.Body>{guardian.data?.name}</Typography.Body>
+      </Flex>
+      <Typography.Body
+        py={1}
+        px={2}
+        ml="auto"
         sx={{
-          flexDirection: "column",
-          width: "100%",
-          alignItems: "start",
+          borderRadius: "default",
+          fontWeight: guardian.data?.email ? "normal" : "bold",
+          width: "80%",
+          backgroundColor: guardian.data?.email ? undefined : "tintWarning",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
         }}
       >
-        <Typography.Body sx={{ lineHeight: 1 }} mb={3} ml={3}>
-          {guardian.data?.name}
-        </Typography.Body>
-        <GuardianRelationshipPill relationship={relationship} ml={3} />
-      </Flex>
+        {guardian.data?.email || "No Email Set"}
+      </Typography.Body>
       <Button
+        p={2}
         variant="secondary"
-        ml="auto"
+        ml={2}
         onClick={() => setShowRemoveDialog(true)}
+        sx={{ flexShrink: 0 }}
       >
-        <Icon as={TrashIcon} />
+        <Icon as={TrashIcon} size={20} />
       </Button>
       {showRemoveDialog && (
         <WarningDialog
           onDismiss={() => setShowRemoveDialog(false)}
-          title="Remove Guardian?"
-          description={`Are you sure you want to remove ${guardian.data?.name} from the list of guardians?`}
+          title={t`Remove Guardian?`}
+          description={t`Are you sure you want to remove ${guardian.data?.name} from the list of guardians?`}
           onAccept={() => {
             onRemove()
             setShowRemoveDialog(false)
           }}
         />
       )}
-      {showRelationshipDialog && (
-        <GuardianRelationshipPickerDialog
-          defaultValue={relationship}
-          onAccept={(newRelationship) => {
-            changeRelationship(newRelationship)
-            setShowRelationShipDialog(false)
-          }}
-          onDismiss={() => {
-            setShowRelationShipDialog(false)
-          }}
-        />
-      )}
-    </Card>
+    </Flex>
   )
 }
 

@@ -781,7 +781,7 @@ exports[`PageNewStudentAddGuardian should render correctly 1`] = `
               <span
                 class="emotion-9"
               >
-                Create New
+                New Student
               </span>
               <span
                 class="splitter emotion-10"
