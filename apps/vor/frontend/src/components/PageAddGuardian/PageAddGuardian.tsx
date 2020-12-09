@@ -1,31 +1,30 @@
 import React, { FC, useState } from "react"
-import { Card, Box, Button, Flex } from "theme-ui"
 import { t, Trans } from "@lingui/macro"
 import { useLingui } from "@lingui/react"
-import Select from "../Select/Select"
+import { Box, Card, Flex } from "theme-ui"
+import { useGetSchoolGuardians } from "../../api/guardians/useGetSchoolGuardians"
+import { usePostGuardianRelation } from "../../api/guardians/usePostGuardianRelation"
+import { usePostNewGuardian } from "../../api/guardians/usePostNewGuardian"
 import { GuardianRelationship } from "../../api/students/usePostNewStudent"
-import Input from "../Input/Input"
-import TextArea from "../TextArea/TextArea"
-import { navigate } from "../Link/Link"
+import { useGetStudent } from "../../api/useGetStudent"
+import { borderTop } from "../../border"
+import { getFirstName } from "../../domain/person"
 import {
   STUDENT_OVERVIEW_PAGE_URL,
   STUDENT_PROFILE_URL,
   STUDENTS_URL,
 } from "../../routes"
-import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
-
-import { usePostNewGuardian } from "../../api/guardians/usePostNewGuardian"
-import { Typography } from "../Typography/Typography"
-import { useGetStudent } from "../../api/useGetStudent"
-import TopBar, { breadCrumb } from "../TopBar/TopBar"
-import { getFirstName } from "../../domain/person"
 import Chip from "../Chip/Chip"
-import TranslucentBar from "../TranslucentBar/TranslucentBar"
-import { borderBottom, borderTop } from "../../border"
-import { useGetSchoolGuardians } from "../../api/guardians/useGetSchoolGuardians"
-import SearchBar from "../SearchBar/SearchBar"
+import Input from "../Input/Input"
+import { navigate } from "../Link/Link"
+import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
-import { usePostGuardianRelation } from "../../api/guardians/usePostGuardianRelation"
+import SearchBar from "../SearchBar/SearchBar"
+import Select from "../Select/Select"
+import TextArea from "../TextArea/TextArea"
+import { breadCrumb } from "../TopBar/TopBar"
+import TopBarWithAction from "../TopBarWithAction/TopBarWithAction"
+import { Typography } from "../Typography/Typography"
 
 interface Props {
   id: string
@@ -33,7 +32,7 @@ interface Props {
 export const PageAddGuardian: FC<Props> = ({ id }) => {
   const { i18n } = useLingui()
   const student = useGetStudent(id)
-  const [postNewGuardian, { status }] = usePostNewGuardian(id)
+  const [postNewGuardian, { isLoading }] = usePostNewGuardian(id)
   const [mode, setMode] = useState(0)
   const [relationship, setRelationship] = useState(GuardianRelationship.Mother)
   const [newGuardian, setNewGuardian] = useState({
@@ -72,31 +71,22 @@ export const PageAddGuardian: FC<Props> = ({ id }) => {
 
   return (
     <>
-      <TranslucentBar boxSx={{ position: "sticky", top: 0, ...borderBottom }}>
-        <Flex sx={{ alignItems: "center", maxWidth: "maxWidth.sm" }} mx="auto">
-          <TopBar
-            breadcrumbs={[
-              breadCrumb(t`Students`, STUDENTS_URL),
-              breadCrumb(
-                getFirstName(student.data),
-                STUDENT_OVERVIEW_PAGE_URL(id)
-              ),
-              breadCrumb(t`Profile`, STUDENT_PROFILE_URL(id)),
-              breadCrumb(t`Add Guardian`),
-            ]}
-          />
-          <Button
-            ml="auto"
-            mr={2}
-            px={2}
-            onClick={handleSubmit}
-            disabled={!isFormValid()}
-          >
-            {status === "loading" && <LoadingIndicator color="onPrimary" />}
+      <TopBarWithAction
+        onActionClick={handleSubmit}
+        disableAction={!isFormValid()}
+        breadcrumbs={[
+          breadCrumb(t`Students`, STUDENTS_URL),
+          breadCrumb(getFirstName(student.data), STUDENT_OVERVIEW_PAGE_URL(id)),
+          breadCrumb(t`Profile`, STUDENT_PROFILE_URL(id)),
+          breadCrumb(t`Add Guardian`),
+        ]}
+        buttonContent={
+          <>
+            {isLoading && <LoadingIndicator color="onPrimary" />}
             <Trans>Add</Trans>
-          </Button>
-        </Flex>
-      </TranslucentBar>
+          </>
+        }
+      />
 
       <Box mx="auto" sx={{ maxWidth: "maxWidth.sm" }}>
         <Typography.H5 mx={3} mt={4} mb={2}>
@@ -159,6 +149,7 @@ interface NewGuardian {
   note: string
   address: string
 }
+
 const CreateNewForm: FC<{
   newGuardian: NewGuardian
   onChange: (guardian: NewGuardian) => void
