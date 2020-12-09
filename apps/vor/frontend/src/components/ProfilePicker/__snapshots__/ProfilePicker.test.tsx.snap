@@ -91,7 +91,6 @@ exports[`ProfilePicker should render correctly 1`] = `
   max-width: 100%;
   height: auto;
   margin-bottom: 4px;
-  margin-top: 16px;
   fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
@@ -200,6 +199,7 @@ exports[`ProfilePicker should render correctly 1`] = `
             </div>
           </div>
           <input
+            accept="image/*"
             class="emotion-8"
             type="file"
           />

@@ -37,8 +37,8 @@ exports[`PageNewStudent should render correctly 1`] = `
   position: sticky;
   top: 0;
   border-bottom-width: 1px;
-  border-bottom-color: var(--theme-ui-colors-borderSolid, rgba(0,0,0,.1));
   border-bottom-style: solid;
+  border-bottom-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
 }
 
 @supports (backdrop-filter: blur(20px)) {
@@ -422,7 +422,6 @@ exports[`PageNewStudent should render correctly 1`] = `
   max-width: 100%;
   height: auto;
   margin-bottom: 4px;
-  margin-top: 16px;
   fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
@@ -1207,7 +1206,7 @@ exports[`PageNewStudent should render correctly 1`] = `
           <div
             class="emotion-10"
           >
-            New
+            Create New
             <span
               class="splitter"
             >
@@ -1262,6 +1261,7 @@ exports[`PageNewStudent should render correctly 1`] = `
                 </div>
               </div>
               <input
+                accept="image/*"
                 class="emotion-22"
                 type="file"
               />

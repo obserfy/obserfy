@@ -12,6 +12,7 @@ import Typography from "../Typography/Typography"
 import StudentsList from "../StudentsList/StudentsList"
 import { borderRight } from "../../border"
 import { navigate } from "../Link/Link"
+import { NewStudentFormProvider } from "../PageNewStudent/NewStudentForm";
 
 /** Top level component which encapsulate most pages. Provides Appbar and Sidebar for navigation.
  *
@@ -45,7 +46,7 @@ export const Layout: FC = ({ children }) => {
           pb={[80, 0]}
         >
           <UpdateNotification />
-          {children}
+          <NewStudentFormProvider>{children}</NewStudentFormProvider>
         </Box>
       </Flex>
     </>
