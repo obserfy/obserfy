@@ -17,7 +17,7 @@ import TextArea from "../TextArea/TextArea"
 import EmptyClassDataPlaceholder from "../EmptyClassDataPlaceholder/EmptyClassDataPlaceholder"
 import Chip from "../Chip/Chip"
 import { Link } from "../Link/Link"
-import { PICK_GUARDIAN_URL } from "../../routes"
+import { NEW_STUDENT_ADD_GUARDIAN_URL } from "../../routes"
 import useGetSchoolClasses from "../../api/classes/useGetSchoolClasses"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import { useGetGuardian } from "../../api/guardians/useGetGuardian"
@@ -191,7 +191,7 @@ export const NewStudentForm = () => {
         <Typography.H5 m={3} mr="auto">
           <Trans>Guardians</Trans>
         </Typography.H5>
-        <Link to={PICK_GUARDIAN_URL} data-cy="add-student">
+        <Link to={NEW_STUDENT_ADD_GUARDIAN_URL} data-cy="add-student">
           <Button variant="outline" mr={3}>
             <Trans>Add</Trans>
           </Button>
