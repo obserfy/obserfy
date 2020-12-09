@@ -45,7 +45,7 @@ export const ProfilePicker: FC<Props> = ({ value, onChange, ...props }) => {
                 <LoadingIndicator size={40} />
               ) : (
                 <>
-                  <Icon as={CameraIcon} width={24} height={24} mb={1} mt={3} />
+                  <Icon as={CameraIcon} width={24} height={24} mb={1} />
                   <Typography.Body
                     color="textMediumEmphasis"
                     sx={{ fontSize: 0 }}
@@ -60,6 +60,7 @@ export const ProfilePicker: FC<Props> = ({ value, onChange, ...props }) => {
         <Input
           sx={{ display: "none" }}
           type="file"
+          accept="image/*"
           onChange={async (e) => {
             const selectedImage = e.target.files?.[0]
             if (selectedImage) {
