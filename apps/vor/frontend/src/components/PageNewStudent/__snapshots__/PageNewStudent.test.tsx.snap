@@ -1448,7 +1448,7 @@ exports[`PageNewStudent should render correctly 1`] = `
         </h5>
         <a
           data-cy="add-student"
-          href="/dashboard/students/new/pickGuardians"
+          href="/dashboard/students/new/add-guardian"
         >
           <button
             class="emotion-59"

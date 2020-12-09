@@ -1,13 +1,11 @@
-import React, { FC, useState } from "react"
 import { t, Trans } from "@lingui/macro"
 import { useLingui } from "@lingui/react"
-import { Box, Card, Flex } from "theme-ui"
-import { useGetSchoolGuardians } from "../../api/guardians/useGetSchoolGuardians"
+import React, { FC, useState } from "react"
+import { Box, Flex } from "theme-ui"
 import { usePostGuardianRelation } from "../../api/guardians/usePostGuardianRelation"
 import { usePostNewGuardian } from "../../api/guardians/usePostNewGuardian"
 import { GuardianRelationship } from "../../api/students/usePostNewStudent"
 import { useGetStudent } from "../../api/useGetStudent"
-import { borderTop } from "../../border"
 import { getFirstName } from "../../domain/person"
 import {
   STUDENT_OVERVIEW_PAGE_URL,
@@ -15,69 +13,73 @@ import {
   STUDENTS_URL,
 } from "../../routes"
 import Chip from "../Chip/Chip"
-import Input from "../Input/Input"
 import { navigate } from "../Link/Link"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
-import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
-import SearchBar from "../SearchBar/SearchBar"
+import NewGuardianForm, {
+  useNewGuardianFormState,
+} from "../NewGuardianForm/NewGuardianForm"
 import Select from "../Select/Select"
-import TextArea from "../TextArea/TextArea"
+import SimpleGuardiansSelector from "../SimpleGuardiansSelector/SimpleGuardiansSelector"
 import { breadCrumb } from "../TopBar/TopBar"
 import TopBarWithAction from "../TopBarWithAction/TopBarWithAction"
 import { Typography } from "../Typography/Typography"
 
+enum Mode {
+  NEW,
+  EXISTING,
+}
+
 interface Props {
   id: string
 }
-export const PageAddGuardian: FC<Props> = ({ id }) => {
+
+export const PageAddGuardian: FC<Props> = ({ id: studentId }) => {
   const { i18n } = useLingui()
-  const student = useGetStudent(id)
-  const [postNewGuardian, { isLoading }] = usePostNewGuardian(id)
-  const [mode, setMode] = useState(0)
-  const [relationship, setRelationship] = useState(GuardianRelationship.Mother)
-  const [newGuardian, setNewGuardian] = useState({
-    email: "",
-    name: "",
-    phone: "",
-    note: "",
-    address: "",
-  })
-  const [selectedGuardian, setSelectedGuardian] = useState("")
+
+  const { data: student } = useGetStudent(studentId)
+  const [postNewGuardian, { isLoading }] = usePostNewGuardian(studentId)
+
+  const [mode, setMode] = useState(Mode.NEW)
+  const [relation, setRelation] = useState(GuardianRelationship.Mother)
+  const [newGuardian, setNewGuardian] = useNewGuardianFormState()
+  const [guardianId, setGuardianId] = useState("")
   const [postNewGuardianRelation] = usePostGuardianRelation(
-    { id: selectedGuardian },
-    id
+    { id: guardianId },
+    studentId
   )
 
-  const handleSubmit = async () => {
-    if (mode === 0) {
-      const result = await postNewGuardian({
-        ...newGuardian,
-        studentId: id,
-        relationship,
-      })
-      if (result?.status === 201) await navigate(STUDENT_PROFILE_URL(id))
-    } else {
-      const result = await postNewGuardianRelation(relationship)
-      if (result?.status === 201) await navigate(STUDENT_PROFILE_URL(id))
-    }
+  const isFormValid =
+    mode === Mode.NEW ? newGuardian.name !== "" : guardianId !== ""
+
+  const createNewGuardian = async () => {
+    const result = await postNewGuardian({
+      ...newGuardian,
+      studentId,
+      relationship: relation,
+    })
+    if (result?.status === 201) await navigate(STUDENT_PROFILE_URL(studentId))
   }
 
-  const isFormValid = (): boolean => {
-    if (mode === 0) {
-      return newGuardian.name !== ""
-    }
-    return selectedGuardian !== ""
+  const createNewGuardianRelation = async () => {
+    const result = await postNewGuardianRelation(relation)
+    if (result?.status === 201) await navigate(STUDENT_PROFILE_URL(studentId))
   }
 
   return (
     <>
       <TopBarWithAction
-        onActionClick={handleSubmit}
-        disableAction={!isFormValid()}
+        disableAction={!isFormValid}
+        onActionClick={async () => {
+          if (mode === Mode.NEW) await createNewGuardian()
+          else await createNewGuardianRelation()
+        }}
         breadcrumbs={[
           breadCrumb(t`Students`, STUDENTS_URL),
-          breadCrumb(getFirstName(student.data), STUDENT_OVERVIEW_PAGE_URL(id)),
-          breadCrumb(t`Profile`, STUDENT_PROFILE_URL(id)),
+          breadCrumb(
+            getFirstName(student),
+            STUDENT_OVERVIEW_PAGE_URL(studentId)
+          ),
+          breadCrumb(t`Profile`, STUDENT_PROFILE_URL(studentId)),
           breadCrumb(t`Add Guardian`),
         ]}
         buttonContent={
@@ -92,26 +94,14 @@ export const PageAddGuardian: FC<Props> = ({ id }) => {
         <Typography.H5 mx={3} mt={4} mb={2}>
           <Trans>Add Guardian</Trans>
         </Typography.H5>
-        <Flex mb={3}>
-          <Chip
-            text="Create new"
-            ml={3}
-            isActive={mode === 0}
-            onClick={() => setMode(0)}
-          />
-          <Chip
-            text="From existing"
-            ml={2}
-            isActive={mode === 1}
-            onClick={() => setMode(1)}
-          />
-        </Flex>
+
+        <ModeSelector mode={mode} onClick={setMode} />
 
         <Box px={3} pt={3}>
           <Select
             label={t`Relationship`}
-            value={relationship}
-            onChange={(e) => setRelationship(parseInt(e.target.value, 10))}
+            value={relation}
+            onChange={(e) => setRelation(parseInt(e.target.value, 10))}
           >
             <option value={GuardianRelationship.Other}>
               {i18n._(t`Other`)}
@@ -125,16 +115,17 @@ export const PageAddGuardian: FC<Props> = ({ id }) => {
           </Select>
         </Box>
 
-        {mode === 0 && (
-          <CreateNewForm newGuardian={newGuardian} onChange={setNewGuardian} />
+        {mode === Mode.NEW && (
+          <NewGuardianForm
+            newGuardian={newGuardian}
+            onChange={setNewGuardian}
+          />
         )}
-        {mode === 1 && (
-          <GuardianSelectorForm
-            currentGuardianIds={student.data?.guardians.map(
-              ({ id: guardianId }) => guardianId
-            )}
-            onChange={setSelectedGuardian}
-            selectedId={selectedGuardian}
+        {mode === Mode.EXISTING && (
+          <SimpleGuardiansSelector
+            onChange={setGuardianId}
+            selectedId={guardianId}
+            currentGuardianIds={student?.guardians.map(({ id }) => id)}
           />
         )}
       </Box>
@@ -142,151 +133,24 @@ export const PageAddGuardian: FC<Props> = ({ id }) => {
   )
 }
 
-interface NewGuardian {
-  name: string
-  email: string
-  phone: string
-  note: string
-  address: string
-}
-
-const CreateNewForm: FC<{
-  newGuardian: NewGuardian
-  onChange: (guardian: NewGuardian) => void
-}> = ({ newGuardian, onChange }) => {
-  const { name, note, email, phone, address } = newGuardian
-
-  const handleChange = (newData: Partial<NewGuardian>) => {
-    onChange({
-      ...newGuardian,
-      ...newData,
-    })
-  }
-
-  return (
-    <Box p={3}>
-      <Input
-        value={name}
-        mb={2}
-        label={t`Guardian Name`}
-        sx={{ width: "100%" }}
-        onChange={(e) => handleChange({ name: e.target.value })}
-      />
-      <Input
-        type="email"
-        value={email}
-        mb={2}
-        label={t`Email`}
-        sx={{ width: "100%" }}
-        onChange={(e) => handleChange({ email: e.target.value })}
-      />
-      <Input
-        type="phone"
-        value={phone}
-        mb={3}
-        label={t`Phone`}
-        sx={{ width: "100%" }}
-        onChange={(e) => handleChange({ phone: e.target.value })}
-      />
-      <Input
-        value={address}
-        mb={3}
-        label={t`Address`}
-        sx={{ width: "100%" }}
-        onChange={(e) => handleChange({ address: e.target.value })}
-      />
-      <TextArea
-        mb={3}
-        label={t`Note`}
-        value={note}
-        onChange={(e) => handleChange({ note: e.target.value })}
-      />
-    </Box>
-  )
-}
-
-const GuardianSelectorForm: FC<{
-  selectedId: string
-  onChange: (value: string) => void
-  currentGuardianIds?: string[]
-}> = ({ selectedId, onChange, currentGuardianIds = [] }) => {
-  const { data: guardians, isLoading } = useGetSchoolGuardians()
-
-  const [filter, setFilter] = useState("")
-
-  return (
-    <Box pb={4}>
-      <Card mt={3} mx={[0, 3]} sx={{ borderRadius: [0, "default"] }}>
-        <Box p={3}>
-          <SearchBar
-            sx={{ backgroundColor: "background" }}
-            value={filter}
-            onChange={(e) => setFilter(e.target.value)}
-          />
-        </Box>
-
-        {isLoading && <GuardianListLoadingPlaceholder />}
-
-        {guardians
-          ?.filter(
-            ({ id, name }) =>
-              name.match(new RegExp(filter, "i")) &&
-              !currentGuardianIds.includes(id)
-          )
-          .map(({ id, name, email }) => (
-            <Flex
-              pl={3}
-              pr={2}
-              py={2}
-              key={id}
-              onClick={() => onChange(id)}
-              sx={{
-                ...borderTop,
-                alignItems: "center",
-                cursor: "pointer",
-                backgroundColor: id === selectedId ? "primaryLight" : undefined,
-                "&:hover": {
-                  backgroundColor:
-                    id === selectedId ? "primaryLight" : "primaryLightest",
-                },
-                transition: "background-color 150ms ease-in-out",
-              }}
-            >
-              <Typography.Body sx={{ width: "100%" }}>{name}</Typography.Body>
-              <Typography.Body
-                py={1}
-                px={email ? 0 : 2}
-                backgroundColor={email ? "transparent" : "tintWarning"}
-                color="textMediumEmphasis"
-                sx={{
-                  width: "100%",
-                  borderRadius: "default",
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
-                  fontWeight: email ? "normal" : "bold",
-                }}
-              >
-                {email || <Trans>No email set</Trans>}
-              </Typography.Body>
-            </Flex>
-          ))}
-      </Card>
-    </Box>
-  )
-}
-
-const GuardianListLoadingPlaceholder = () => {
-  return (
-    <Box>
-      <LoadingPlaceholder sx={{ height: 34 }} m={3} mt={0} />
-      <LoadingPlaceholder sx={{ height: 34 }} m={3} />
-      <LoadingPlaceholder sx={{ height: 34 }} m={3} />
-      <LoadingPlaceholder sx={{ height: 34 }} m={3} />
-      <LoadingPlaceholder sx={{ height: 34 }} m={3} />
-      <LoadingPlaceholder sx={{ height: 34 }} m={3} />
-      <LoadingPlaceholder sx={{ height: 34 }} m={3} />
-    </Box>
-  )
-}
+const ModeSelector: FC<{
+  mode: Mode
+  onClick: (mode: Mode) => void
+}> = ({ mode, onClick }) => (
+  <Flex mb={3}>
+    <Chip
+      text="Create new"
+      ml={3}
+      isActive={mode === Mode.NEW}
+      onClick={() => onClick(Mode.NEW)}
+    />
+    <Chip
+      text="From existing"
+      ml={2}
+      isActive={mode === Mode.EXISTING}
+      onClick={() => onClick(Mode.NEW)}
+    />
+  </Flex>
+)
 
 export default PageAddGuardian
