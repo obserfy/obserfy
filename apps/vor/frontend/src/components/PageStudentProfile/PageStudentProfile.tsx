@@ -1,34 +1,34 @@
 /** @jsx jsx */
-import { FC, Fragment, useState } from "react"
-import { Box, Button, Card, Flex, jsx } from "theme-ui"
 import { t, Trans } from "@lingui/macro"
 import { useLingui } from "@lingui/react"
-import { useGetStudent } from "../../api/useGetStudent"
+import { FC, Fragment, useState } from "react"
+import { Box, Button, Card, Flex, jsx } from "theme-ui"
 import { usePatchStudentApi } from "../../api/students/usePatchStudentApi"
-import Typography from "../Typography/Typography"
-import {
-  EDIT_STUDENT_CLASS_URL,
-  ADD_GUARDIAN_URL,
-  STUDENT_OVERVIEW_PAGE_URL,
-  STUDENTS_URL,
-} from "../../routes"
+import { Gender } from "../../api/students/usePostNewStudent"
+import { useGetStudent } from "../../api/useGetStudent"
+import { borderTop } from "../../border"
 import dayjs from "../../dayjs"
+import { getFirstName } from "../../domain/person"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
 import { ReactComponent as ChevronRight } from "../../icons/next-arrow.svg"
-import Icon from "../Icon/Icon"
-import Dialog from "../Dialog/Dialog"
-import Input from "../Input/Input"
-import DialogHeader from "../DialogHeader/DialogHeader"
-import { Gender } from "../../api/students/usePostNewStudent"
-import Select from "../Select/Select"
-import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
-import { Link } from "../Link/Link"
+import {
+  ADD_GUARDIAN_URL,
+  EDIT_STUDENT_CLASS_URL,
+  STUDENT_OVERVIEW_PAGE_URL,
+  STUDENT_PROFILE_GUARDIAN_PROFILE_URL,
+  STUDENTS_URL,
+} from "../../routes"
 import AlertDialog from "../AlertDialog/AlertDialog"
 import DatePickerDialog from "../DatePickerDialog/DatePickerDialog"
-import BackButton from "../BackButton/BackButton"
-import Breadcrumb from "../Breadcrumb/Breadcrumb"
-import BreadcrumbItem from "../Breadcrumb/BreadcrumbItem"
-import { borderTop } from "../../border"
+import Dialog from "../Dialog/Dialog"
+import DialogHeader from "../DialogHeader/DialogHeader"
+import Icon from "../Icon/Icon"
+import Input from "../Input/Input"
+import { Link } from "../Link/Link"
+import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
+import Select from "../Select/Select"
+import TopBar, { breadCrumb } from "../TopBar/TopBar"
+import Typography from "../Typography/Typography"
 
 interface Props {
   studentId: string
@@ -50,20 +50,13 @@ export const PageStudentProfile: FC<Props> = ({ studentId }) => {
 
   return (
     <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={4}>
-      <Flex sx={{ height: 48, alignItems: "center" }}>
-        <BackButton to={STUDENT_OVERVIEW_PAGE_URL(studentId)} />
-        <Breadcrumb>
-          <BreadcrumbItem to={STUDENTS_URL}>
-            <Trans>Students</Trans>
-          </BreadcrumbItem>
-          <BreadcrumbItem to={STUDENT_OVERVIEW_PAGE_URL(studentId)}>
-            {data?.name.split(" ")[0]}
-          </BreadcrumbItem>
-          <BreadcrumbItem>
-            <Trans>Profile</Trans>
-          </BreadcrumbItem>
-        </Breadcrumb>
-      </Flex>
+      <TopBar
+        breadcrumbs={[
+          breadCrumb(t`Students`, STUDENTS_URL),
+          breadCrumb(getFirstName(data), STUDENT_OVERVIEW_PAGE_URL(studentId)),
+          breadCrumb(t`Profile`),
+        ]}
+      />
       <Card sx={{ borderRadius: [0, "default"] }} mb={3} mx={[0, 3]}>
         <NameDataBox
           value={data?.name}
@@ -150,33 +143,48 @@ export const PageStudentProfile: FC<Props> = ({ studentId }) => {
         )}
 
         {data?.guardians?.map(({ id, email, name }) => (
-          <Flex p={2} key={id} sx={{ ...borderTop, alignItems: "center" }}>
-            <Typography.Body
+          <Link
+            key={id}
+            to={STUDENT_PROFILE_GUARDIAN_PROFILE_URL(studentId, id)}
+          >
+            <Flex
               p={2}
               sx={{
-                width: "80%",
-                overflow: "hidden",
-                textOverflow: "ellipsis",
+                ...borderTop,
+                alignItems: "center",
+                transition: "background-color 100ms ease-in-out",
+                "&:hover": {
+                  backgroundColor: "primaryLightest",
+                },
               }}
             >
-              {name}
-            </Typography.Body>
-            <Typography.Body
-              py={1}
-              px={email ? 0 : 2}
-              backgroundColor={email ? "transparent" : "tintWarning"}
-              sx={{
-                width: "100%",
-                borderRadius: "default",
-                fontWeight: email ? "normal" : "bold",
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-              }}
-            >
-              {email || <Trans>No email set</Trans>}
-            </Typography.Body>
-            <Icon as={ChevronRight} mx={2} />
-          </Flex>
+              <Typography.Body
+                p={2}
+                sx={{
+                  width: "80%",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                }}
+              >
+                {name}
+              </Typography.Body>
+              <Typography.Body
+                py={1}
+                px={email ? 0 : 2}
+                backgroundColor={email ? "transparent" : "tintWarning"}
+                sx={{
+                  width: "100%",
+                  borderRadius: "default",
+                  fontWeight: email ? "normal" : "bold",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                }}
+              >
+                {email || <Trans>No email set</Trans>}
+              </Typography.Body>
+              <Icon as={ChevronRight} mx={2} />
+            </Flex>
+          </Link>
         ))}
       </Card>
 
