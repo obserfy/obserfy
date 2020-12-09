@@ -62,7 +62,7 @@ const PageNewStudentAddGuardian: FC = () => {
         }}
         breadcrumbs={[
           breadCrumb(t`Students`, STUDENTS_URL),
-          breadCrumb("Create New", NEW_STUDENT_URL),
+          breadCrumb("New Student", NEW_STUDENT_URL),
           breadCrumb(t`Add Guardian`),
         ]}
         buttonContent={

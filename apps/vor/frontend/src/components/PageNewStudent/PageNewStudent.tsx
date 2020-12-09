@@ -1,20 +1,17 @@
+import { t, Trans } from "@lingui/macro"
 import React, { FC } from "react"
-import { Box, Button, Flex } from "theme-ui"
-import { Trans } from "@lingui/macro"
-import { navigate } from "../Link/Link"
-import { STUDENTS_URL } from "../../routes"
+import { Box, Button } from "theme-ui"
 import { usePostNewStudent } from "../../api/students/usePostNewStudent"
-import BackButton from "../BackButton/BackButton"
-import Breadcrumb from "../Breadcrumb/Breadcrumb"
-import BreadcrumbItem from "../Breadcrumb/BreadcrumbItem"
+import { NEW_STUDENT_URL, STUDENTS_URL } from "../../routes"
+import { navigate } from "../Link/Link"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
-import TranslucentBar from "../TranslucentBar/TranslucentBar"
+import { breadCrumb } from "../TopBar/TopBar"
+import TopBarWithAction from "../TopBarWithAction/TopBarWithAction"
 import {
   NewStudentForm,
   newStudentFormDefaultState,
   useNewStudentFormContext,
 } from "./NewStudentForm"
-import { borderBottom } from "../../border"
 
 export const PageNewStudent: FC = () => {
   const { state, setState } = useNewStudentFormContext()
@@ -23,35 +20,23 @@ export const PageNewStudent: FC = () => {
 
   return (
     <>
-      <TranslucentBar boxSx={{ position: "sticky", top: 0, ...borderBottom }}>
-        <Flex sx={{ alignItems: "center", maxWidth: "maxWidth.sm" }} m="auto">
-          <BackButton to={STUDENTS_URL} />
-          <Breadcrumb>
-            <BreadcrumbItem to={STUDENTS_URL}>
-              <Trans>Students</Trans>
-            </BreadcrumbItem>
-            <BreadcrumbItem>
-              <Trans>Create New</Trans>
-            </BreadcrumbItem>
-          </Breadcrumb>
-          <Button
-            ml="auto"
-            p={isLoading ? 1 : 2}
-            my={2}
-            mr={3}
-            disabled={isFormInvalid}
-            onClick={async () => {
-              const result = await mutate(state)
-              if (result?.ok) {
-                setState(() => newStudentFormDefaultState)
-                await navigate(STUDENTS_URL)
-              }
-            }}
-          >
-            {isLoading ? <LoadingIndicator size={22} /> : "Save"}
-          </Button>
-        </Flex>
-      </TranslucentBar>
+      <TopBarWithAction
+        disableAction={isFormInvalid}
+        breadcrumbs={[
+          breadCrumb(t`Students`, STUDENTS_URL),
+          breadCrumb("New Student", NEW_STUDENT_URL),
+        ]}
+        onActionClick={async () => {
+          const result = await mutate(state)
+          if (result?.ok) {
+            setState(() => newStudentFormDefaultState)
+            await navigate(STUDENTS_URL)
+          }
+        }}
+        buttonContent={
+          isLoading ? <LoadingIndicator size={22} /> : <Trans>Save</Trans>
+        }
+      />
 
       <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={4} pt={3}>
         <NewStudentForm />
