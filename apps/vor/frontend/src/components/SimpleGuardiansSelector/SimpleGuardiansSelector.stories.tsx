@@ -1,6 +1,8 @@
 import React from "react"
 import { Meta, Story } from "@storybook/react"
-import SimpleGuardiansSelector, { SimpleGuardiansSelectorProps } from "./SimpleGuardiansSelector"
+import SimpleGuardiansSelector, {
+  SimpleGuardiansSelectorProps,
+} from "./SimpleGuardiansSelector"
 
 export default {
   title: "Core/SimpleGuardiansSelector",
@@ -10,7 +12,9 @@ export default {
   },
 } as Meta
 
-const Template: Story<SimpleGuardiansSelectorProps> = (args) => <SimpleGuardiansSelector {...args} />
+const Template: Story<SimpleGuardiansSelectorProps> = (args) => (
+  <SimpleGuardiansSelector {...args} />
+)
 
 export const Default = Template.bind({})
 Default.args = {}

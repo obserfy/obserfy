@@ -10,7 +10,9 @@ export default {
   },
 } as Meta
 
-const Template: Story<NewGuardianFormProps> = (args) => <NewGuardianForm {...args} />
+const Template: Story<NewGuardianFormProps> = (args) => (
+  <NewGuardianForm {...args} />
+)
 
 export const Default = Template.bind({})
 Default.args = {}
