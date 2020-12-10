@@ -35,7 +35,7 @@
     "db:reset": "node ./scripts/resetDB.js"
   },
   "dependencies": {
-    "@cypress/webpack-preprocessor": "5.4.11",
+    "@cypress/webpack-preprocessor": "5.5.0",
     "@hapi/iron": "6.0.0",
     "@types/auth0-js": "9.14.2",
     "@types/pg": "7.14.7",
