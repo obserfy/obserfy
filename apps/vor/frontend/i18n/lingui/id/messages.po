@@ -157,7 +157,7 @@ msgstr "Tersedia setiap"
 #: src/components/PagePickGuardian/PagePickGuardian.tsx:56
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:53
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:62
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:276
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:277
 #: src/components/WarningDialog/WarningDialog.tsx:25
 msgid "Cancel"
 msgstr "Batal"
@@ -871,6 +871,14 @@ msgstr "Kirim undangan"
 msgid "Set"
 msgstr "Pasang"
 
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:258
+msgid "Set as Active"
+msgstr "Ubah jadi aktif"
+
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:259
+msgid "Set as Inactive"
+msgstr "Ubah jadi non-aktif"
+
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:45
 msgid "Set as Profile"
 msgstr "Pasang sebagai Profil"
@@ -935,7 +943,7 @@ msgstr "Mulai dengan Kurikulum Montessori dasar yang dapat Anda modifikasi sesua
 msgid "Start with a blank curriculum that you can customize from scratch."
 msgstr "Mulai dengan kurikulum kosong yang dapat Anda kustom dari awal."
 
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:267
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:268
 msgid "Status"
 msgstr "Status"
 
@@ -1087,7 +1095,7 @@ msgstr "Tulis sesuatu"
 #: src/components/PageEditStudentClass/PageEditStudentClass.tsx:99
 #: src/components/PageListOfStudents/PageListOfStudents.tsx:70
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:60
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:276
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:277
 #: src/components/WarningDialog/WarningDialog.tsx:30
 msgid "Yes"
 msgstr "Ya"
