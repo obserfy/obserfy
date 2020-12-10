@@ -14,13 +14,6 @@ type (
 		CheckPermission(userId string, guardianId string) (bool, error)
 		GetGuardian(id string) (*Guardian, error)
 		DeleteGuardian(id string) (int, error)
-		UpdateGuardian(
-			id string,
-			name *string,
-			email *string,
-			phone *string,
-			note *string,
-			address *string,
-		) (int, error)
+		UpdateGuardian(id string, name *string, email *string, phone *string, note *string, address *string) (*Guardian, error)
 	}
 )

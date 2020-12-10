@@ -31,13 +31,12 @@ export const Layout: FC = ({ children }) => {
   return (
     <>
       <Navbar />
-      <Flex>
+      <Flex pl={[0, 64]}>
         <StudentsSubrouteSidebar />
         <Box
           as="main"
           backgroundColor="background"
           mb="env(safe-area-inset-bottom)"
-          pl={[0, 64, 0]}
           sx={{ flexGrow: 1 }}
           pb={[80, 0]}
         >
@@ -97,7 +96,6 @@ const StudentsSubrouteSidebar = () => {
   if (studentSubroute && breakpoint > 1) {
     return (
       <Box
-        pb={6}
         sx={{
           ...borderRight,
           position: "sticky",
@@ -109,7 +107,6 @@ const StudentsSubrouteSidebar = () => {
           overflowY: "auto",
           width: [undefined, 364, 364, 484],
           backgroundColor: "background",
-          pl: [0, 64],
         }}
       >
         <StudentsList />

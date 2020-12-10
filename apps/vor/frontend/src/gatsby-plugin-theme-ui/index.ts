@@ -257,6 +257,7 @@ const theme: Theme = {
       bg: "transparent",
       border: "none",
       boxShadow: "none",
+      fontWeight: "bold",
       "&:hover, &:focus": {
         backgroundColor: "primaryLighter",
         borderColor: "primary",

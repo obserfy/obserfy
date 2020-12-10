@@ -79,6 +79,7 @@ exports[`PageHome should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  padding-bottom: 32px;
 }
 
 .emotion-3 {

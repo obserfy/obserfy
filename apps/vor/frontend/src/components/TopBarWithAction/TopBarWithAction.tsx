@@ -23,7 +23,7 @@ const TopBarWithAction: FC<TopBarWithActionProps> = ({
       <Button
         data-cy="finish-cta"
         ml="auto"
-        mr={2}
+        mr={3}
         px={2}
         onClick={onActionClick}
         disabled={disableAction}

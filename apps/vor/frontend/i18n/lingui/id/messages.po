@@ -79,6 +79,7 @@ msgid "Add some description here"
 msgstr "Tambahkan deskripsi disini"
 
 #: src/components/NewGuardianForm/NewGuardianForm.tsx:15
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:49
 msgid "Address"
 msgstr "Alamat"
 
@@ -91,8 +92,7 @@ msgid "All"
 msgstr "Semua"
 
 #: src/components/PageAdmin/PageAdmin.tsx:70
-#: src/components/PageListOfGuardians/PageListOfGuardians.tsx:24
-#: src/pages/dashboard/admin/guardians/profile.tsx:11
+#: src/components/PageListOfGuardians/PageListOfGuardians.tsx:28
 msgid "All Guardians"
 msgstr "Semua Wali Murid"
 
@@ -187,6 +187,10 @@ msgstr "Kelas"
 #: src/components/PagePickGuardian/PagePickGuardian.tsx:100
 msgid "Create"
 msgstr "Buat"
+
+#: src/components/PageListOfGuardians/PageListOfGuardians.tsx:33
+msgid "Create New"
+msgstr "Buat baru"
 
 #: src/components/PageSubscription/PageSubscription.tsx:98
 msgid "Create lesson plans"
@@ -347,9 +351,9 @@ msgstr "Ubah Deskripsi"
 msgid "Edit Details"
 msgstr "Ubah Detil"
 
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:71
-msgid "Edit Email"
-msgstr "Ubah Email"
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:100
+#~ msgid "Edit Email"
+#~ msgstr "Ubah Email"
 
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:170
 msgid "Edit Gender"
@@ -359,12 +363,12 @@ msgstr "Ubah Jenis Kelamin"
 #~ msgid "Edit Guardians"
 #~ msgstr "Ubah Wali"
 
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:51
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:64
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:140
 msgid "Edit Name"
 msgstr "Ubah Nama"
 
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:111
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:90
 msgid "Edit Note"
 msgstr "Ubah Catatan"
 
@@ -372,9 +376,9 @@ msgstr "Ubah Catatan"
 msgid "Edit Notes"
 msgstr "Ubah Catatan"
 
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:91
-msgid "Edit Phone"
-msgstr "Ubah Telepon"
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:120
+#~ msgid "Edit Phone"
+#~ msgstr "Ubah Telepon"
 
 #: src/components/PageObservationDetails/ObservationMetaCard.tsx:40
 msgid "Edit Short Description"
@@ -395,8 +399,7 @@ msgstr "Ubah Judul"
 
 #: src/components/NewGuardianForm/NewGuardianForm.tsx:13
 #: src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx:34
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:69
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:73
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:39
 msgid "Email"
 msgstr "Email"
 
@@ -554,8 +557,7 @@ msgstr "Senin"
 msgid "Mother"
 msgstr "Ibu"
 
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:49
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:53
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:34
 #: src/components/PageNewClass/PageNewClass.tsx:57
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:138
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:142
@@ -620,14 +622,15 @@ msgstr "Belum ada kelas terpilih"
 #~ msgid "No email"
 #~ msgstr "Tidak ada email"
 
+#: src/components/PageListOfGuardians/PageListOfGuardians.tsx:59
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:117
 #: src/components/SimpleGuardiansSelector/SimpleGuardiansSelector.tsx:32
 msgid "No email set"
-msgstr "Belum ada email terpasang"
+msgstr "Email belum terpasang"
 
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:96
 msgid "No guardians has been set"
-msgstr "Belum ada wali murid terpasang"
+msgstr "wali murid belum terpasang"
 
 #: src/components/PageEditGuardians/PageEditGuardians.tsx:55
 #~ msgid "No guardians set yet"
@@ -654,6 +657,10 @@ msgstr "Belum ada observasi ditambahkan"
 msgid "No other students added yet."
 msgstr "Belum ada murid lain ditambahkan."
 
+#: src/components/PageListOfGuardians/PageListOfGuardians.tsx:71
+msgid "No phone set"
+msgstr "Telfon belum terpasang"
+
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:138
 msgid "None"
 msgstr "Tidak ada"
@@ -668,8 +675,8 @@ msgstr "Belum Dipilih"
 
 #: src/components/NewGuardianForm/NewGuardianForm.tsx:16
 #: src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx:36
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:109
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:113
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:88
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:92
 msgid "Note"
 msgstr "Catatan"
 
@@ -720,8 +727,7 @@ msgstr "Detil Pembayaran"
 
 #: src/components/NewGuardianForm/NewGuardianForm.tsx:14
 #: src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx:35
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:89
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:93
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:44
 msgid "Phone"
 msgstr "Telepon"
 
@@ -808,10 +814,7 @@ msgstr "Sabtu"
 #: src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx:49
 #: src/components/PageEditClass/PageEditClass.tsx:94
 #: src/components/PageEditSubject/PageEditSubject.tsx:139
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:51
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:71
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:91
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:111
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:90
 #: src/components/PageNewClass/PageNewClass.tsx:77
 #: src/components/PageNewObservation/PageNewObservation.tsx:85
 #: src/components/PageNewSchool/PageNewSchool.tsx:50

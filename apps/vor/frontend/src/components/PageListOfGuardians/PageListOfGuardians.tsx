@@ -2,17 +2,17 @@
 import { FC, useState } from "react"
 import { Box, Button, Card, Flex, jsx } from "theme-ui"
 import { Trans } from "@lingui/macro"
+import { borderTop } from "../../border"
+import { ReactComponent as ChevronRight } from "../../icons/next-arrow.svg"
 import { Link } from "../Link/Link"
-import BackNavigation from "../BackNavigation/BackNavigation"
 import {
   ADMIN_URL,
   NEW_GUARDIAN_ADMIN_URL,
   GUARDIAN_PROFILE_URL,
 } from "../../routes"
+import TopBar, { breadCrumb } from "../TopBar/TopBar"
 import Typography from "../Typography/Typography"
 import { useGetSchoolGuardians } from "../../api/guardians/useGetSchoolGuardians"
-import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
-
 import Icon from "../Icon/Icon"
 import SearchBar from "../SearchBar/SearchBar"
 
@@ -24,38 +24,44 @@ export const PageListOfGuardians: FC = () => {
   )
 
   return (
-    <Box
-      sx={{
-        flexDirection: "column",
-        maxWidth: "maxWidth.md",
-      }}
-      mx="auto"
-    >
-      <BackNavigation to={ADMIN_URL} text="Settings" />
-      <Typography.H5 m={3} sx={{ lineHeight: 1 }}>
-        <Trans>All Guardians</Trans>
-      </Typography.H5>
-      <Flex p={3} pb={2} pt={2}>
-        <SearchBar
-          mr={2}
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-        <Link to={NEW_GUARDIAN_ADMIN_URL} style={{ flexShrink: 0 }}>
-          <Button
-            variant="outline"
-            data-cy="addGuardian"
-            sx={{
-              height: "100%",
-            }}
-          >
-            <Icon as={PlusIcon} />
-          </Button>
-        </Link>
-      </Flex>
-      {filteredGuardians?.map(({ id, name }) => (
-        <GuardianCard key={id} guardianId={id} name={name} />
-      ))}
+    <Box sx={{ maxWidth: "maxWidth.lg" }} mx="auto" pb={5}>
+      <TopBar
+        breadcrumbs={[
+          breadCrumb("Admin", ADMIN_URL),
+          breadCrumb("All Guardians"),
+        ]}
+      />
+
+      <Card mx={[0, 3]} sx={{ borderRadius: [0, "default"] }}>
+        <Flex sx={{ alignItems: "center" }}>
+          <Typography.H6 m={3}>
+            <Trans>All Guardians</Trans>
+          </Typography.H6>
+
+          <Link to={NEW_GUARDIAN_ADMIN_URL} sx={{ ml: "auto", mr: 3 }}>
+            <Button variant="secondary" data-cy="addGuardian">
+              <Trans>Create New</Trans>
+            </Button>
+          </Link>
+        </Flex>
+
+        <Flex p={3} pt={0}>
+          <SearchBar
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            sx={{ backgroundColor: "background" }}
+          />
+        </Flex>
+        {filteredGuardians?.map(({ id, name, email, phone }) => (
+          <GuardianCard
+            key={id}
+            guardianId={id}
+            name={name}
+            email={email}
+            phone={phone}
+          />
+        ))}
+      </Card>
     </Box>
   )
 }
@@ -63,28 +69,60 @@ export const PageListOfGuardians: FC = () => {
 const GuardianCard: FC<{
   guardianId: string
   name: string
-}> = ({ guardianId, name }) => {
+  email?: string
+  phone?: string
+}> = ({ guardianId, name, email, phone }) => {
   return (
     <Link to={GUARDIAN_PROFILE_URL(guardianId)} sx={{ display: "block" }}>
-      <Card
+      <Flex
         p={3}
-        mx={[0, 3]}
-        mb={[0, 2]}
         sx={{
-          backgroundColor: ["background", "surface"],
-          borderRadius: [0, "default"],
-          cursor: "pointer",
-          boxShadow: ["none", "low"],
-          display: "flex",
+          ...borderTop,
           alignItems: "center",
+          transition: "background-color 100ms ease-in-out",
+          "&:hover": {
+            backgroundColor: "primaryLightest",
+          },
         }}
       >
-        <Flex sx={{ flexDirection: "column", alignItems: "start" }}>
-          <Typography.Body ml={[0, 3]} sx={{ lineHeight: 1.6 }}>
-            {name}
-          </Typography.Body>
-        </Flex>
-      </Card>
+        <Typography.Body sx={{ width: "100%" }}>{name}</Typography.Body>
+        <Typography.Body
+          py={1}
+          mx={2}
+          px={email ? 0 : 2}
+          backgroundColor={email ? "transparent" : "tintWarning"}
+          sx={{
+            width: "100%",
+            borderRadius: "default",
+            fontWeight: email ? "normal" : "bold",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            color: "textMediumEmphasis",
+          }}
+        >
+          {email || <Trans>No email set</Trans>}
+        </Typography.Body>
+
+        <Typography.Body
+          mx={2}
+          py={1}
+          px={email ? 0 : 2}
+          backgroundColor={phone ? "transparent" : "tintWarning"}
+          sx={{
+            display: ["none", "block"],
+            width: "100%",
+            borderRadius: "default",
+            fontWeight: phone ? "normal" : "bold",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            color: "textMediumEmphasis",
+          }}
+        >
+          {phone || <Trans>No phone set</Trans>}
+        </Typography.Body>
+
+        <Icon as={ChevronRight} ml={2} />
+      </Flex>
     </Link>
   )
 }

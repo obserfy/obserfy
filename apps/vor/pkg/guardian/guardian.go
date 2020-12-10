@@ -147,7 +147,7 @@ func patchGuardian(server rest.Server, store Store) http.Handler {
 			}
 		}
 
-		_, err := store.UpdateGuardian(
+		newGuardian, err := store.UpdateGuardian(
 			guardianId,
 			body.Name,
 			body.Email,
@@ -163,7 +163,9 @@ func patchGuardian(server rest.Server, store Store) http.Handler {
 			}
 		}
 
-		w.WriteHeader(http.StatusNoContent)
+		if err := rest.WriteJson(w, newGuardian); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
 		return nil
 	})
 }
