@@ -22,9 +22,9 @@ exports[`Pill should render correctly 1`] = `
   padding-bottom: 4px;
   padding-left: 8px;
   padding-right: 8px;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   border-width: 1px;
   border-style: solid;
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   border-radius: 99999px;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;

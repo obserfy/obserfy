@@ -5,7 +5,8 @@ export const ADMIN_URL = "/dashboard/admin"
 export const NEW_CLASS_URL = "/dashboard/admin/class/new"
 export const CLASS_SETTINGS_URL = "/dashboard/admin/class"
 export const STUDENTS_URL = "/dashboard/students"
-export const PICK_GUARDIAN_URL = "/dashboard/students/new/pickGuardians"
+export const NEW_STUDENT_ADD_GUARDIAN_URL =
+  "/dashboard/students/new/add-guardian"
 export const ADMIN_CURRICULUM_URL = "/dashboard/admin/curriculum"
 export const ADMIN_USERS_URL = "/dashboard/admin/users"
 export const ADMIN_STUDENTS_URL = "/dashboard/admin/students"
@@ -85,8 +86,8 @@ export const ALL_PLANS_URL = (date?: Dayjs) =>
 export const PLANS_DETAILS_URL = (id: string) =>
   `/dashboard/plans/details?id=${id}`
 
-export const NEW_GUARDIANS_URL = (studentId: string): string =>
-  `/dashboard/students/profile/guardians/new?studentId=${studentId}`
+export const ADD_GUARDIAN_URL = (studentId: string): string =>
+  `/dashboard/students/profile/guardians/add?studentId=${studentId}`
 
 export const EDIT_STUDENT_CLASS_URL = (id: string) =>
   `/dashboard/students/profile/classes/edit?studentId=${id}`
@@ -102,3 +103,9 @@ export const STUDENT_PROGRESS_URL = (
 
 export const GUARDIAN_PROFILE_URL = (id: string) =>
   `/dashboard/admin/guardians/profile?id=${id}`
+
+export const STUDENT_PROFILE_GUARDIAN_PROFILE_URL = (
+  studentId: string,
+  guardianId: string
+) =>
+  `/dashboard/students/profile/guardians/profile?studentId=${studentId}&&guardianId=${guardianId}`

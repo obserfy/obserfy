@@ -1,13 +1,13 @@
 /** @jsx jsx */
 import { FC } from "react"
-import { Box, jsx, SxStyleProp } from "theme-ui"
+import { Box, jsx, ThemeUIStyleObject } from "theme-ui"
 import { Link } from "../Link/Link"
 
 interface Props {
   to?: string
 }
 export const BreadcrumbItem: FC<Props> = ({ to, children }) => {
-  const sx: SxStyleProp = {
+  const sx: ThemeUIStyleObject = {
     display: "inline-block",
     fontSize: 0,
     color: "textMediumEmphasis",

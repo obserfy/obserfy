@@ -186,9 +186,9 @@ const (
 )
 
 type GuardianToStudent struct {
-	StudentId    string               `pg:"type:uuid,on_delete:CASCADE"`
+	StudentId    string               `pg:"type:uuid,on_delete:CASCADE,pk"`
 	Student      Student              `pg:"rel:has-one"`
-	GuardianId   string               `pg:"type:uuid,on_delete:CASCADE"`
+	GuardianId   string               `pg:"type:uuid,on_delete:CASCADE,pk"`
 	Guardian     Guardian             `pg:"rel:has-one"`
 	Relationship GuardianRelationship `pg:"type:int"`
 }

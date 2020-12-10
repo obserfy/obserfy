@@ -4,11 +4,11 @@ import {
   Label,
   Select as BaseSelect,
   SelectProps as BaseSelectProps,
-  SxProps,
+  SxProp,
 } from "theme-ui"
 import { Trans } from "@lingui/macro"
 
-export interface SelectProps extends PropsWithoutRef<BaseSelectProps>, SxProps {
+export interface SelectProps extends PropsWithoutRef<BaseSelectProps>, SxProp {
   label?: string
   hideLabel?: boolean
   onChange?: ChangeEventHandler<HTMLSelectElement>

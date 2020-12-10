@@ -4,10 +4,7 @@ import { Box, Button, Card, Flex, jsx } from "theme-ui"
 import { t, Trans } from "@lingui/macro"
 import { useGetGuardian } from "../../api/guardians/useGetGuardian"
 import { usePatchGuardian } from "../../api/guardians/usePatchGuardian"
-import { ADMIN_GUARDIAN_URL } from "../../routes"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
-
-import BackNavigation from "../BackNavigation/BackNavigation"
 import Dialog from "../Dialog/Dialog"
 import Icon from "../Icon/Icon"
 import Input from "../Input/Input"
@@ -33,31 +30,28 @@ export const PageGuardianProfile: FC<Props> = ({ guardianId }) => {
   }
 
   return (
-    <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={4}>
-      <BackNavigation to={ADMIN_GUARDIAN_URL} text={t`All Guardians`} />
-      <Card sx={{ borderRadius: [0, "default"] }} mb={3}>
-        <NameDataBox
-          value={data?.name}
-          key={`name${data?.name}`}
-          guardianId={guardianId}
-        />
-        <EmailDataBox
-          value={data?.email}
-          key={`email${data?.email}`}
-          guardianId={guardianId}
-        />
-        <PhoneDataBox
-          value={data?.phone}
-          key={`phone${data?.phone}`}
-          guardianId={guardianId}
-        />
-        <NoteDataBox
-          value={data?.note}
-          key={`note${data?.note}`}
-          guardianId={guardianId}
-        />
-      </Card>
-    </Box>
+    <Card sx={{ borderRadius: [0, "default"] }} mb={3} mx={[0, 3]}>
+      <NameDataBox
+        value={data?.name}
+        key={`name${data?.name}`}
+        guardianId={guardianId}
+      />
+      <EmailDataBox
+        value={data?.email}
+        key={`email${data?.email}`}
+        guardianId={guardianId}
+      />
+      <PhoneDataBox
+        value={data?.phone}
+        key={`phone${data?.phone}`}
+        guardianId={guardianId}
+      />
+      <NoteDataBox
+        value={data?.note}
+        key={`note${data?.note}`}
+        guardianId={guardianId}
+      />
+    </Card>
   )
 }
 
@@ -119,7 +113,7 @@ const EmailDataBox: FC<{ value?: string; guardianId: string }> = ({
     <Fragment>
       <DataBox
         label={t`Email`}
-        value={value ?? ""}
+        value={value || "-"}
         onEditClick={() => setShowEditDialog(true)}
       />
       {showEditDialog && (
@@ -205,7 +199,7 @@ const NoteDataBox: FC<{ value?: string; guardianId: string }> = ({
     <Fragment>
       <DataBox
         label={t`Note`}
-        value={value ?? ""}
+        value={value || "-"}
         onEditClick={() => setShowEditDialog(true)}
       />
       {showEditDialog && (

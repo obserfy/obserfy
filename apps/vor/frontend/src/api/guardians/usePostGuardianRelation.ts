@@ -1,10 +1,9 @@
 import { queryCache, useMutation } from "react-query"
 import { navigate } from "../../components/Link/Link"
 import { ApiError, BASE_URL } from "../useApi"
-import { Guardians } from "./useGetSchoolGuardians"
 
 export const usePostGuardianRelation = (
-  guardian: Guardians,
+  guardian: { id: string },
   studentId: string
 ) => {
   const postGuardianRelation = async (

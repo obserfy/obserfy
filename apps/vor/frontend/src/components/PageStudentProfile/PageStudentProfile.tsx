@@ -1,33 +1,34 @@
 /** @jsx jsx */
-import { FC, Fragment, useState } from "react"
-import { Box, Button, Card, Flex, jsx } from "theme-ui"
 import { t, Trans } from "@lingui/macro"
 import { useLingui } from "@lingui/react"
-import { useGetStudent } from "../../api/useGetStudent"
+import { FC, Fragment, useState } from "react"
+import { Box, Button, Card, Flex, jsx } from "theme-ui"
 import { usePatchStudentApi } from "../../api/students/usePatchStudentApi"
-
-import Typography from "../Typography/Typography"
+import { Gender } from "../../api/students/usePostNewStudent"
+import { useGetStudent } from "../../api/useGetStudent"
+import { borderTop } from "../../border"
+import dayjs from "../../dayjs"
+import { getFirstName } from "../../domain/person"
+import { ReactComponent as EditIcon } from "../../icons/edit.svg"
+import { ReactComponent as ChevronRight } from "../../icons/next-arrow.svg"
 import {
-  EDIT_GUARDIANS_URL,
+  ADD_GUARDIAN_URL,
   EDIT_STUDENT_CLASS_URL,
   STUDENT_OVERVIEW_PAGE_URL,
+  STUDENT_PROFILE_GUARDIAN_PROFILE_URL,
   STUDENTS_URL,
 } from "../../routes"
-import dayjs from "../../dayjs"
-import { ReactComponent as EditIcon } from "../../icons/edit.svg"
-import Icon from "../Icon/Icon"
-import Dialog from "../Dialog/Dialog"
-import Input from "../Input/Input"
-import DialogHeader from "../DialogHeader/DialogHeader"
-import { Gender } from "../../api/students/usePostNewStudent"
-import Select from "../Select/Select"
-import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
-import { Link } from "../Link/Link"
 import AlertDialog from "../AlertDialog/AlertDialog"
 import DatePickerDialog from "../DatePickerDialog/DatePickerDialog"
-import BackButton from "../BackButton/BackButton"
-import Breadcrumb from "../Breadcrumb/Breadcrumb"
-import BreadcrumbItem from "../Breadcrumb/BreadcrumbItem"
+import Dialog from "../Dialog/Dialog"
+import DialogHeader from "../DialogHeader/DialogHeader"
+import Icon from "../Icon/Icon"
+import Input from "../Input/Input"
+import { Link } from "../Link/Link"
+import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
+import Select from "../Select/Select"
+import TopBar, { breadCrumb } from "../TopBar/TopBar"
+import Typography from "../Typography/Typography"
 
 interface Props {
   studentId: string
@@ -49,21 +50,14 @@ export const PageStudentProfile: FC<Props> = ({ studentId }) => {
 
   return (
     <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={4}>
-      <Flex sx={{ height: 48, alignItems: "center" }}>
-        <BackButton to={STUDENT_OVERVIEW_PAGE_URL(studentId)} />
-        <Breadcrumb>
-          <BreadcrumbItem to={STUDENTS_URL}>
-            <Trans>Students</Trans>
-          </BreadcrumbItem>
-          <BreadcrumbItem to={STUDENT_OVERVIEW_PAGE_URL(studentId)}>
-            {data?.name.split(" ")[0]}
-          </BreadcrumbItem>
-          <BreadcrumbItem>
-            <Trans>Profile</Trans>
-          </BreadcrumbItem>
-        </Breadcrumb>
-      </Flex>
-      <Card sx={{ borderRadius: [0, "default"] }} mb={3}>
+      <TopBar
+        breadcrumbs={[
+          breadCrumb(t`Students`, STUDENTS_URL),
+          breadCrumb(getFirstName(data), STUDENT_OVERVIEW_PAGE_URL(studentId)),
+          breadCrumb(t`Profile`),
+        ]}
+      />
+      <Card sx={{ borderRadius: [0, "default"] }} mb={3} mx={[0, 3]}>
         <NameDataBox
           value={data?.name}
           key={`name${data?.name}`}
@@ -96,87 +90,105 @@ export const PageStudentProfile: FC<Props> = ({ studentId }) => {
         />
       </Card>
 
-      <Card sx={{ borderRadius: [0, "default"] }} mb={3}>
-        <Flex sx={{ alignItems: "flex-start" }}>
-          <Box px={3} py={3}>
-            <Typography.Body
-              sx={{ lineHeight: 1 }}
-              mb={2}
-              color="textMediumEmphasis"
-            >
-              <Trans>Classes</Trans>
-            </Typography.Body>
-            {data?.classes?.length === 0 && (
-              <Typography.Body sx={{ lineHeight: 1 }}>
-                <Trans>Not Set</Trans>
-              </Typography.Body>
-            )}
-            {data?.classes?.map((currentClass) => (
-              <Typography.Body
-                sx={{ lineHeight: 1 }}
-                key={currentClass.id}
-                mt={3}
-              >
-                {currentClass.name}
-              </Typography.Body>
-            ))}
-          </Box>
-
+      <Card sx={{ borderRadius: [0, "default"] }} mb={3} mx={[0, 3]}>
+        <Flex p={3} sx={{ alignItems: "center" }}>
+          <Typography.H6>
+            <Trans>Classes</Trans>
+          </Typography.H6>
           <Link
             to={EDIT_STUDENT_CLASS_URL(studentId)}
-            sx={{ ml: "auto", mt: 3, mr: 3 }}
+            sx={{ ml: "auto" }}
             data-cy="edit-classes"
           >
-            <Button variant="outline" ml="auto" px={2}>
-              <Icon as={EditIcon} />
+            <Button variant="secondary" ml="auto" p={2}>
+              <Trans>Edit</Trans>
             </Button>
           </Link>
         </Flex>
+
+        <Box>
+          {data?.classes?.length === 0 && (
+            <Typography.Body m={3}>
+              <Trans>No class has been set</Trans>
+            </Typography.Body>
+          )}
+          {data?.classes?.map(({ id, name }) => (
+            <Flex key={id} sx={{ ...borderTop }}>
+              <Typography.Body p={3}>{name}</Typography.Body>
+            </Flex>
+          ))}
+        </Box>
       </Card>
 
-      <Card sx={{ borderRadius: [0, "default"] }}>
-        <Flex sx={{ alignItems: "flex-start" }}>
-          <Box px={3} pt={3}>
-            <Typography.Body
-              sx={{
-                fontSize: 0,
-                lineHeight: 1,
-              }}
-              color="textMediumEmphasis"
-            >
-              <Trans>Guardians</Trans>
-            </Typography.Body>
-            {data?.guardians?.length === 0 && (
-              <Typography.Body sx={{ lineHeight: 1 }} mb={3} mt={2}>
-                <Trans>Not Set</Trans>
-              </Typography.Body>
-            )}
-            {data?.guardians?.map(({ id, email, name }) => (
-              <Box py={3} key={id}>
-                <Typography.Body sx={{ lineHeight: 1 }} mb={2}>
-                  {name}
-                </Typography.Body>
-                <Typography.Body
-                  sx={{ lineHeight: 1, fontSize: 1 }}
-                  color="textMediumEmphasis"
-                >
-                  <Trans id={email || t`No email`} />
-                </Typography.Body>
-              </Box>
-            ))}
-          </Box>
+      <Card sx={{ borderRadius: [0, "default"] }} mx={[0, 3]}>
+        <Flex sx={{ alignItems: "center" }} p={3}>
+          <Typography.H6>
+            <Trans>Guardians</Trans>
+          </Typography.H6>
           <Link
-            to={EDIT_GUARDIANS_URL(studentId)}
-            sx={{ ml: "auto", mt: 3, mr: 3 }}
-            data-cy="edit-guardians"
+            to={ADD_GUARDIAN_URL(studentId)}
+            sx={{ ml: "auto" }}
+            data-cy="add-guardian"
           >
-            <Button variant="outline" px={2}>
-              <Icon as={EditIcon} />
+            <Button variant="secondary" p={2}>
+              <Trans>Add</Trans>
             </Button>
           </Link>
         </Flex>
+
+        {data?.guardians?.length === 0 && (
+          <Typography.Body m={3}>
+            <Trans>No guardians has been set</Trans>
+          </Typography.Body>
+        )}
+
+        {data?.guardians?.map(({ id, email, name }) => (
+          <Link
+            key={id}
+            to={STUDENT_PROFILE_GUARDIAN_PROFILE_URL(studentId, id)}
+          >
+            <Flex
+              p={2}
+              sx={{
+                ...borderTop,
+                alignItems: "center",
+                transition: "background-color 100ms ease-in-out",
+                "&:hover": {
+                  backgroundColor: "primaryLightest",
+                },
+              }}
+            >
+              <Typography.Body
+                p={2}
+                sx={{
+                  width: "80%",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                }}
+              >
+                {name}
+              </Typography.Body>
+              <Typography.Body
+                py={1}
+                px={email ? 0 : 2}
+                backgroundColor={email ? "transparent" : "tintWarning"}
+                sx={{
+                  width: "100%",
+                  borderRadius: "default",
+                  fontWeight: email ? "normal" : "bold",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                }}
+              >
+                {email || <Trans>No email set</Trans>}
+              </Typography.Body>
+              <Icon as={ChevronRight} mx={2} />
+            </Flex>
+          </Link>
+        ))}
       </Card>
-      <Box mt={3}>
+
+      <Box mt={3} mx={[0, 3]}>
         <SetStatusDataBox
           studentId={studentId}
           active={data?.active ?? false}
@@ -442,14 +454,16 @@ const SetStatusDataBox: FC<{
   active: boolean
   name: string
 }> = ({ studentId, active, name }) => {
+  const { i18n } = useLingui()
   const [mutate] = usePatchStudentApi(studentId)
   const [showStatusDialog, setShowStatusDialog] = useState(false)
   const saveStatus = async () => {
     await mutate({ active: !active })
     setShowStatusDialog(false)
   }
-  const setActiveText = "Set as active?"
-  const setInactiveText = "Set as inactive?"
+  const setActiveText = i18n._(t`Set as Active`)
+  const setInactiveText = i18n._(t`Set as Inactive`)
+
   return (
     <Card
       p={3}
@@ -461,12 +475,7 @@ const SetStatusDataBox: FC<{
       }}
     >
       <Box>
-        <Typography.Body
-          sx={{
-            fontSize: 0,
-            lineHeight: 1.4,
-          }}
-        >
+        <Typography.Body sx={{ fontSize: 0 }}>
           <Trans>Status</Trans>
         </Typography.Body>
         <Typography.Body sx={{ color: !active ? "warning" : undefined }}>
@@ -484,7 +493,7 @@ const SetStatusDataBox: FC<{
       </Button>
       {showStatusDialog && (
         <AlertDialog
-          title={active ? setInactiveText : setActiveText}
+          title={active ? `${setInactiveText}?` : `${setActiveText}?`}
           negativeText={t`Cancel`}
           positiveText={t`Yes`}
           body={`Are you sure you want to set ${name} as ${

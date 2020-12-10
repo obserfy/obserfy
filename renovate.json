@@ -9,19 +9,19 @@
       "extends": ["schedule:monthly"]
     },
     {
+      "packagePatterns": ["theme-ui"],
+      "groupName": "gatsby",
+      "extends": ["schedule:weekly"]
+    },
+    {
       "packagePatterns": ["gatsby"],
       "groupName": "gatsby",
-      "extends": ["schedule:monthly"]
-    },
-    {
-      "packagePatterns": ["@storybook"],
-      "groupName": "storybook",
-      "extends": ["schedule:monthly"]
-    },
-    {
-      "packagePatterns": ["@storybook"],
-      "groupName": "storybook",
       "extends": ["schedule:weekly"]
+    },
+    {
+      "packagePatterns": ["@storybook"],
+      "groupName": "storybook",
+      "extends": ["schedule:monthly"]
     }
   ]
 }
