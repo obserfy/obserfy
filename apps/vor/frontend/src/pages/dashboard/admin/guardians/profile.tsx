@@ -1,17 +1,22 @@
-import { t } from "@lingui/macro"
 import React from "react"
 import { Box } from "theme-ui"
-import BackNavigation from "../../../../components/BackNavigation/BackNavigation"
-import { useQueryString } from "../../../../hooks/useQueryString"
 import PageGuardianProfile from "../../../../components/PageGuardianProfile/PageGuardianProfile"
-import { ADMIN_GUARDIAN_URL } from "../../../../routes"
+import TopBar, { breadCrumb } from "../../../../components/TopBar/TopBar"
+import { useQueryString } from "../../../../hooks/useQueryString"
+import { ADMIN_GUARDIAN_URL, ADMIN_URL } from "../../../../routes"
 
 const GuardianProfile = () => {
   const id = useQueryString("id")
 
   return (
     <Box sx={{ maxWidth: "maxWidth.sm" }} mx="auto">
-      <BackNavigation to={ADMIN_GUARDIAN_URL} text={t`All Guardians`} />
+      <TopBar
+        breadcrumbs={[
+          breadCrumb("Admin", ADMIN_URL),
+          breadCrumb("All Guardians", ADMIN_GUARDIAN_URL),
+          breadCrumb("Mario"),
+        ]}
+      />
       <PageGuardianProfile guardianId={id} />
     </Box>
   )

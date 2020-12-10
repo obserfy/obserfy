@@ -48,7 +48,7 @@ export const StudentsList: FC = () => {
     ))
 
   return (
-    <Box>
+    <Box pb={4}>
       <Flex p={3} pt={3} pb={2}>
         <SearchBar
           mr={2}

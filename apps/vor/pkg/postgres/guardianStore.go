@@ -41,11 +41,12 @@ func (s GuardianStore) GetGuardian(id string) (*guardian.Guardian, error) {
 		return nil, richErrors.Wrap(err, "can't find guardian with the specified id")
 	}
 	return &guardian.Guardian{
-		Id:    result.Id,
-		Name:  result.Name,
-		Email: result.Email,
-		Phone: result.Phone,
-		Note:  result.Note,
+		Id:      result.Id,
+		Name:    result.Name,
+		Email:   result.Email,
+		Phone:   result.Phone,
+		Note:    result.Note,
+		Address: result.Address,
 	}, nil
 }
 
@@ -62,14 +63,7 @@ func (s GuardianStore) DeleteGuardian(id string) (int, error) {
 	return result.RowsAffected(), nil
 }
 
-func (s GuardianStore) UpdateGuardian(
-	id string,
-	name *string,
-	email *string,
-	phone *string,
-	note *string,
-	address *string,
-) (int, error) {
+func (s GuardianStore) UpdateGuardian(id string, name *string, email *string, phone *string, note *string, address *string) (*guardian.Guardian, error) {
 	guardianModel := make(PartialUpdateModel)
 	guardianModel.AddStringColumn("name", name)
 	guardianModel.AddStringColumn("email", email)
@@ -81,7 +75,22 @@ func (s GuardianStore) UpdateGuardian(
 		TableExpr("guardians").
 		Where("id = ?", id).
 		Update(); err != nil {
-		return 0, richErrors.Wrap(err, "failed to update guardian")
+		return nil, richErrors.Wrap(err, "failed to update guardian")
 	}
-	return 0, nil
+
+	var result Guardian
+	if err := s.Model(&result).
+		Where("id=?", id).
+		Select(); err != nil {
+		return nil, richErrors.Wrap(err, "can't find guardian with the specified id")
+	}
+
+	return &guardian.Guardian{
+		Id:      result.Id,
+		Name:    result.Name,
+		Email:   result.Email,
+		Phone:   result.Phone,
+		Note:    result.Note,
+		Address: result.Address,
+	}, nil
 }
