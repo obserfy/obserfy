@@ -454,14 +454,16 @@ const SetStatusDataBox: FC<{
   active: boolean
   name: string
 }> = ({ studentId, active, name }) => {
+  const { i18n } = useLingui()
   const [mutate] = usePatchStudentApi(studentId)
   const [showStatusDialog, setShowStatusDialog] = useState(false)
   const saveStatus = async () => {
     await mutate({ active: !active })
     setShowStatusDialog(false)
   }
-  const setActiveText = "Set as Active"
-  const setInactiveText = "Set as Inactive"
+  const setActiveText = i18n._(t`Set as Active`)
+  const setInactiveText = i18n._(t`Set as Inactive`)
+
   return (
     <Card
       p={3}
