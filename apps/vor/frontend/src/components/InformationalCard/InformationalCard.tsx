@@ -1,18 +1,24 @@
 /** @jsx jsx */
-import { FC } from "react"
-import { Button, Flex, jsx } from "theme-ui"
 import { Trans } from "@lingui/macro"
-import { Link } from "../Link/Link"
-import Icon from "../Icon/Icon"
+import { FC } from "react"
+import { Button, Flex, ThemeUIStyleObject, jsx } from "theme-ui"
 import { ReactComponent as InfoIcon } from "../../icons/info.svg"
+import Icon from "../Icon/Icon"
+import { Link } from "../Link/Link"
 import Typography from "../Typography/Typography"
 
 interface Props {
   message: string
   buttonText: string
   to: string
+  containerSx?: ThemeUIStyleObject
 }
-export const InformationalCard: FC<Props> = ({ message, buttonText, to }) => (
+export const InformationalCard: FC<Props> = ({
+  message,
+  buttonText,
+  to,
+  containerSx,
+}) => (
   <Flex
     p={3}
     mt={3}
@@ -22,6 +28,7 @@ export const InformationalCard: FC<Props> = ({ message, buttonText, to }) => (
       borderColor: "warning",
       borderRadius: [0, "default"],
       flexDirection: "column",
+      ...containerSx,
     }}
   >
     <Flex sx={{ alignItems: "center" }} mb={1}>

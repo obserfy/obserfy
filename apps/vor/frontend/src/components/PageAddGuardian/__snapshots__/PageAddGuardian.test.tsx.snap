@@ -816,6 +816,7 @@ exports[`PageNewGuardian should render correctly 1`] = `
         </div>
         <button
           class="emotion-18"
+          data-cy="finish-cta"
           disabled=""
         >
           Add

@@ -421,6 +421,7 @@ exports[`PageHome should render correctly 1`] = `
   >
     <div
       class="emotion-1"
+      data-cy="mobile-students"
     >
       <div
         class="emotion-2"

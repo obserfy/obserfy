@@ -128,7 +128,7 @@ export const PageStudentProfile: FC<Props> = ({ studentId }) => {
           <Link
             to={ADD_GUARDIAN_URL(studentId)}
             sx={{ ml: "auto" }}
-            data-cy="edit-guardians"
+            data-cy="add-guardian"
           >
             <Button variant="secondary" p={2}>
               <Trans>Add</Trans>

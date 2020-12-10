@@ -7692,6 +7692,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@theme-ui/match-media@npm:0.6.0-alpha.1":
+  version: 0.6.0-alpha.1
+  resolution: "@theme-ui/match-media@npm:0.6.0-alpha.1"
+  peerDependencies:
+    "@theme-ui/core": ^0.5.0-alpha.0
+    "@theme-ui/css": ^0.5.0-alpha.0
+    react: ^16.14.0 || ^17.0.0
+  checksum: bab2d354aa4a0377271b84f18e7b0bdeb3111eda67b3e924fb14311a007d1c1c2b827f7266749976b6027d668f3c664422406aab44c802d7ccc4cb29f9b09beb
+  languageName: node
+  linkType: hard
+
 "@theme-ui/mdx@npm:0.6.0-alpha.1":
   version: 0.6.0-alpha.1
   resolution: "@theme-ui/mdx@npm:0.6.0-alpha.1"
@@ -37116,6 +37127,7 @@ typescript@^4.0.0:
     "@svgr/webpack": 5.5.0
     "@testing-library/react": 11.2.2
     "@testing-library/react-hooks": 3.7.0
+    "@theme-ui/match-media": 0.6.0-alpha.1
     "@types/body-scroll-lock": 2.6.1
     "@types/date-fns": 2.6.0
     "@types/faker": 5.1.5

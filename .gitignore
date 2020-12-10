@@ -1,4 +1,5 @@
 .idea
+.run
 tmp
 frontend/cypress/videos
 frontend/cypress/screenshots

@@ -44,7 +44,7 @@ export const PageNewStudent: FC = () => {
         <Button
           variant="outline"
           mr={3}
-          my={3}
+          my={4}
           ml="auto"
           color="danger"
           onClick={() => {

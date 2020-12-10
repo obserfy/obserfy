@@ -803,6 +803,7 @@ exports[`PageNewStudentAddGuardian should render correctly 1`] = `
         </div>
         <button
           class="emotion-15"
+          data-cy="finish-cta"
           disabled=""
         >
           Add

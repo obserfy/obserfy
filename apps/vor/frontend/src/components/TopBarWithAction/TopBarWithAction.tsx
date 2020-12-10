@@ -21,6 +21,7 @@ const TopBarWithAction: FC<TopBarWithActionProps> = ({
     <Flex sx={{ alignItems: "center", maxWidth: "maxWidth.sm" }} mx="auto">
       <TopBar breadcrumbs={breadcrumbs} />
       <Button
+        data-cy="finish-cta"
         ml="auto"
         mr={2}
         px={2}

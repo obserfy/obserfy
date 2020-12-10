@@ -932,37 +932,25 @@ exports[`PageNewStudent should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   margin: 16px;
-}
-
-.emotion-59 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  border-radius: 6px;
-  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
-  animation: 1s ease-in-out 0s infinite animation-0;
-  width: 100%;
-  height: 4rem;
-}
-
-.emotion-60 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  padding-top: 8px;
-  padding-bottom: 16px;
-  padding-left: 16px;
-  padding-right: 16px;
-  border-top-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  border-top-width: 1px;
-  border-top-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.emotion-61 {
+.emotion-59 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-right: 16px;
+  border-radius: 6px;
+  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
+  animation: 1s ease-in-out 0s infinite animation-0;
+  width: 42px;
+  height: 2rem;
+}
+
+.emotion-60 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -972,24 +960,24 @@ exports[`PageNewStudent should render correctly 1`] = `
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px,rgba(0, 0, 0, 0.27) 0px 2px 4px -2px;
   margin-left: 0;
   margin-right: 0;
-  margin-top: 16px;
+  margin-top: 32px;
   border-radius: 0;
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-61 {
+  .emotion-60 {
     margin-left: 16px;
     margin-right: 16px;
   }
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-61 {
+  .emotion-60 {
     border-radius: 6px;
   }
 }
 
-.emotion-62 {
+.emotion-61 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -1004,7 +992,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-63 {
+.emotion-62 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -1017,7 +1005,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   margin-right: auto;
 }
 
-.emotion-64 {
+.emotion-63 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -1078,19 +1066,19 @@ exports[`PageNewStudent should render correctly 1`] = `
   border: none;
 }
 
-.emotion-64:disabled {
+.emotion-63:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-64:hover,
-.emotion-64:focus {
+.emotion-63:hover,
+.emotion-63:focus {
   background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
   border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-65 {
+.emotion-64 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -1102,7 +1090,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
 }
 
-.emotion-66 {
+.emotion-65 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -1161,26 +1149,26 @@ exports[`PageNewStudent should render correctly 1`] = `
   border-width: 1px;
   line-height: 1;
   margin-right: 16px;
-  margin-top: 16px;
-  margin-bottom: 16px;
+  margin-top: 32px;
+  margin-bottom: 32px;
   margin-left: auto;
   color: var(--theme-ui-colors-danger, #d50000);
 }
 
-.emotion-66:disabled {
+.emotion-65:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-66:hover,
-.emotion-66:focus {
+.emotion-65:hover,
+.emotion-65:focus {
   background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
   border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-66:hover:disabled,
-.emotion-66:focus:disabled {
+.emotion-65:hover:disabled,
+.emotion-65:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
 }
@@ -1248,6 +1236,7 @@ exports[`PageNewStudent should render correctly 1`] = `
         </div>
         <button
           class="emotion-14"
+          data-cy="finish-cta"
           disabled=""
         >
           Save
@@ -1470,40 +1459,37 @@ exports[`PageNewStudent should render correctly 1`] = `
             class="emotion-59"
           />
         </div>
-        <div
-          class="emotion-60"
-        />
       </div>
       <div
-        class="emotion-61"
+        class="emotion-60"
       >
         <div
-          class="emotion-62"
+          class="emotion-61"
         >
           <h6
-            class="emotion-63"
+            class="emotion-62"
           >
             Guardians
           </h6>
           <a
-            data-cy="add-student"
+            data-cy="add-guardian"
             href="/dashboard/students/new/add-guardian"
           >
             <button
-              class="emotion-64"
+              class="emotion-63"
             >
               Add
             </button>
           </a>
         </div>
         <p
-          class="emotion-65"
+          class="emotion-64"
         >
           This student doesn't have a guardian yet.
         </p>
       </div>
       <button
-        class="emotion-66"
+        class="emotion-65"
       >
         Ulang Formulir
       </button>
