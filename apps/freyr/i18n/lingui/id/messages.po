@@ -8,7 +8,7 @@ msgstr ""
 "Language: id\n"
 "Project-Id-Version: a9762ad8ff131d2a39fce5fce9d2fb91\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2020-12-04 13:35\n"
+"PO-Revision-Date: 2020-12-10 10:23\n"
 "Last-Translator: \n"
 "Language-Team: Indonesian\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -371,3 +371,8 @@ msgstr ""
 #: src/pages/pricing.tsx:77
 msgid "You can track as many students as you want and share access to the parent dashboard to as many people as you need without increasing the cost."
 msgstr ""
+
+#: src/pages/pricing.tsx:77
+#~ msgid "You can track as many students as you want and share access to the parent dashboard to as many people as you need."
+#~ msgstr "You can track as many students as you want and share access to the parent dashboard to as many people as you need."
+
