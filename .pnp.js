@@ -36411,7 +36411,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react", "npm:17.0.1"],
             ["react-dom", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:17.0.1"],
             ["react-helmet", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:6.1.0"],
-            ["socket.io-client", "npm:3.0.3"],
+            ["socket.io-client", "npm:3.0.4"],
             ["stylelint", "npm:13.8.0"],
             ["stylelint-config-prettier", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:8.0.2"],
             ["stylelint-config-standard", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:20.0.0"],
@@ -53679,10 +53679,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
-        ["npm:3.0.3", {
-          "packageLocation": "./.yarn/cache/socket.io-client-npm-3.0.3-512b232ec1-8bb891554f.zip/node_modules/socket.io-client/",
+        ["npm:3.0.4", {
+          "packageLocation": "./.yarn/cache/socket.io-client-npm-3.0.4-d98ba3da09-73d21e1148.zip/node_modules/socket.io-client/",
           "packageDependencies": [
-            ["socket.io-client", "npm:3.0.3"],
+            ["socket.io-client", "npm:3.0.4"],
             ["@types/component-emitter", "npm:1.2.10"],
             ["backo2", "npm:1.0.2"],
             ["component-bind", "npm:1.0.0"],
