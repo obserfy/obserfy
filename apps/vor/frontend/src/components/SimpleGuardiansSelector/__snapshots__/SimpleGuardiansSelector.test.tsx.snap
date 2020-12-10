@@ -1,0 +1,274 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SimpleGuardiansSelector should render correctly 1`] = `
+@keyframes animation-0 {
+  0% {
+    background-color: rgba(165, 165, 165, 0.05);
+  }
+
+  50% {
+    background-color: rgba(165, 165, 165, 0.2);
+  }
+
+  100% {
+    background-color: rgba(165, 165, 165, 0.05);
+  }
+}
+
+@keyframes animation-0 {
+  0% {
+    background-color: rgba(165, 165, 165, 0.05);
+  }
+
+  50% {
+    background-color: rgba(165, 165, 165, 0.2);
+  }
+
+  100% {
+    background-color: rgba(165, 165, 165, 0.05);
+  }
+}
+
+.emotion-0 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 16px;
+}
+
+@media screen and (min-width: 40em) {
+  .emotion-0 {
+    font-size: 20px;
+  }
+}
+
+.emotion-1 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding-bottom: 32px;
+}
+
+.emotion-2 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  overflow: auto;
+  background-color: var(--theme-ui-colors-surface, #fff);
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px,rgba(0, 0, 0, 0.27) 0px 2px 4px -2px;
+  margin-top: 16px;
+  margin-left: 0;
+  margin-right: 0;
+  border-radius: 0;
+}
+
+@media screen and (min-width: 40em) {
+  .emotion-2 {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
+
+@media screen and (min-width: 40em) {
+  .emotion-2 {
+    border-radius: 6px;
+  }
+}
+
+.emotion-3 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding: 16px;
+}
+
+.emotion-4 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  font-size: 12px;
+}
+
+.emotion-5 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-6 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: block;
+  width: 100%;
+  padding: 8px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  font-size: inherit;
+  line-height: inherit;
+  border: 1px solid;
+  border-radius: 4px;
+  color: inherit;
+  background-color: transparent;
+  border-radius: 6px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  width: auto;
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-surface, #fff);
+  font-size: 16px;
+  padding: 12px;
+  color: var(--theme-ui-colors-text, #37383c);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  background-color: var(--theme-ui-colors-surface, #fff);
+  background-color: var(--theme-ui-colors-background, #f2f3f5);
+  width: 100%;
+  font-size: 14px;
+}
+
+.emotion-6:hover,
+.emotion-6:focus {
+  border-color: var(--theme-ui-colors-primary, #00e399);
+  outline: none;
+}
+
+.emotion-6::-webkit-input-placeholder {
+  font-style: italic;
+}
+
+.emotion-6::-moz-placeholder {
+  font-style: italic;
+}
+
+.emotion-6:-ms-input-placeholder {
+  font-style: italic;
+}
+
+.emotion-6::placeholder {
+  font-style: italic;
+}
+
+.emotion-6:disabled {
+  opacity: 0.68;
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
+}
+
+.emotion-7 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+}
+
+.emotion-8 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin: 16px;
+  margin-top: 0;
+  border-radius: 6px;
+  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
+  animation: 1s ease-in-out 0s infinite animation-0;
+  height: 34px;
+}
+
+.emotion-9 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin: 16px;
+  border-radius: 6px;
+  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
+  animation: 1s ease-in-out 0s infinite animation-0;
+  height: 34px;
+}
+
+<div>
+  <div
+    class="emotion-0"
+  >
+    <div
+      class="emotion-1"
+    >
+      <div
+        class="emotion-2"
+      >
+        <div
+          class="emotion-3"
+        >
+          <label
+            class="emotion-4"
+          >
+            <div
+              class="emotion-5"
+            >
+              <input
+                class="emotion-6"
+                name="name"
+                placeholder="Search"
+                value=""
+              />
+            </div>
+          </label>
+        </div>
+        <div
+          class="emotion-7"
+        >
+          <div
+            class="emotion-8"
+          />
+          <div
+            class="emotion-9"
+          />
+          <div
+            class="emotion-9"
+          />
+          <div
+            class="emotion-9"
+          />
+          <div
+            class="emotion-9"
+          />
+          <div
+            class="emotion-9"
+          />
+          <div
+            class="emotion-9"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

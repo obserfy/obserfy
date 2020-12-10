@@ -18,7 +18,7 @@ exports[`DraggableListItem should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  background-color: var(--theme-ui-colors-primaryLightest, rgba(0,120,86,0.05));
+  background-color: var(--theme-ui-colors-primaryLightest, rgba(0,227,153,0.05));
   height: 48px;
 }
 

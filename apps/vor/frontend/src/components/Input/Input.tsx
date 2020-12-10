@@ -11,7 +11,7 @@ import {
   Input as BaseInput,
   InputProps,
   Label,
-  SxStyleProp,
+  ThemeUIStyleObject,
 } from "theme-ui"
 import { Trans } from "@lingui/macro"
 import Icon from "../Icon/Icon"
@@ -23,7 +23,7 @@ interface Props extends PropsWithoutRef<InputProps> {
   onChange?: ChangeEventHandler<HTMLInputElement>
   onEnterPressed?: () => void
   label?: string
-  containerSx?: SxStyleProp
+  containerSx?: ThemeUIStyleObject
 }
 const Input: ForwardRefRenderFunction<HTMLInputElement, Props> = (
   {

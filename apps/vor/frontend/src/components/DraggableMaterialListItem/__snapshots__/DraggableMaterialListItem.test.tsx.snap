@@ -18,7 +18,7 @@ exports[`DraggableMaterialListItem should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  background-color: var(--theme-ui-colors-primaryLightest, rgba(0,120,86,0.05));
+  background-color: var(--theme-ui-colors-primaryLightest, rgba(0,227,153,0.05));
   height: 48px;
 }
 
@@ -252,7 +252,7 @@ exports[`DraggableMaterialListItem should render correctly 1`] = `
 
 .emotion-8:hover,
 .emotion-8:focus {
-  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,120,86,0.12));
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
   border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }

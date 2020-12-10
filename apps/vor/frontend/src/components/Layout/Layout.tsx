@@ -13,6 +13,7 @@ import Typography from "../Typography/Typography"
 import StudentsList from "../StudentsList/StudentsList"
 import { borderRight } from "../../border"
 import { navigate } from "../Link/Link"
+import { NewStudentFormProvider } from "../PageNewStudent/NewStudentForm"
 
 /** Top level component which encapsulate most pages. Provides Appbar and Sidebar for navigation.
  *
@@ -23,13 +24,6 @@ import { navigate } from "../Link/Link"
 export const Layout: FC = ({ children }) => {
   useGetUserProfile()
 
-  const { locale } = useLocalization()
-
-  const studentSubroute = useMatch(
-    `${locale !== "en" ? `/${locale}` : ""}/dashboard/students/*`
-  )
-  const breakpoint = useBreakpointIndex({ defaultIndex: 2 })
-
   if (getSchoolId() === SCHOOL_ID_UNDEFINED_PLACEHOLDER) {
     navigate("/choose-school")
   }
@@ -38,17 +32,17 @@ export const Layout: FC = ({ children }) => {
     <>
       <Navbar />
       <Flex>
-        {studentSubroute && breakpoint > 1 && <StudentsSubrouteSidebar />}
+        <StudentsSubrouteSidebar />
         <Box
           as="main"
           backgroundColor="background"
           mb="env(safe-area-inset-bottom)"
-          pl={studentSubroute ? [0, 64, 364, 364, 484] : [0, 64]}
+          pl={[0, 64, 0]}
           sx={{ flexGrow: 1 }}
           pb={[80, 0]}
         >
           <UpdateNotification />
-          {children}
+          <NewStudentFormProvider>{children}</NewStudentFormProvider>
         </Box>
       </Flex>
     </>
@@ -92,25 +86,37 @@ const UpdateNotification = () => {
   )
 }
 
-const StudentsSubrouteSidebar = () => (
-  <Box
-    pb={5}
-    sx={{
-      ...borderRight,
-      position: "fixed",
-      top: 0,
-      left: 0,
-      flexShrink: 0,
-      height: "100vh",
-      overflowY: "auto",
-      width: [undefined, 364, 364, 364, 484],
-      display: ["none", "none", "block"],
-      backgroundColor: "background",
-      pl: [0, 64],
-    }}
-  >
-    <StudentsList />
-  </Box>
-)
+const StudentsSubrouteSidebar = () => {
+  const breakpoint = useBreakpointIndex({ defaultIndex: 2 })
+  const { locale } = useLocalization()
+
+  const studentSubroute = useMatch(
+    `${locale !== "en" ? `/${locale}` : ""}/dashboard/students/*`
+  )
+
+  if (studentSubroute && breakpoint > 1) {
+    return (
+      <Box
+        pb={6}
+        sx={{
+          ...borderRight,
+          position: "sticky",
+          top: 0,
+          left: 0,
+          bottom: 0,
+          flexShrink: 0,
+          height: "100vh",
+          overflowY: "auto",
+          width: [undefined, 364, 364, 484],
+          backgroundColor: "background",
+          pl: [0, 64],
+        }}
+      >
+        <StudentsList />
+      </Box>
+    )
+  }
+  return <div />
+}
 
 export default Layout

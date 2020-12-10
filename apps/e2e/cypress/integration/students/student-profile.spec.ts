@@ -58,26 +58,27 @@ describe("test student profile page", function () {
     cy.get("[data-cy=inactive-button]").should("not.exist")
 
     const guardianName = faker.name.firstName()
-    cy.get("[data-cy=edit-guardians]").click()
-    cy.get("[data-cy=new-guardian]").click()
+    cy.get("[data-cy=add-guardian]").click()
+    cy.contains("Create").click()
     cy.contains("Guardian Name").type(guardianName)
-    cy.contains("Save").click()
+    cy.contains("button", "Add").click()
     cy.contains(guardianName).should("be.visible")
 
+    // TODO: enable this after we can remove guardian
     // Remove guardian
-    cy.get("[data-cy=remove-guardian]").click()
-    cy.get("[data-cy=remove]").click()
-    cy.contains(guardianName).should("be.visible")
+    // cy.get("[data-cy=remove-guardian]").click()
+    // cy.get("[data-cy=remove]").click()
+    // cy.contains(guardianName).should("be.visible")
 
     // Re-add guardian
-    cy.wait(500)
-    cy.get("[data-cy=add-guardian]").click()
-    cy.get("[aria-label=Relationship]").select("1")
-    cy.contains("Save").click()
-    cy.contains(guardianName).should("be.visible")
+    // cy.wait(500)
+    // cy.get("[data-cy=add-guardian]").click()
+    // cy.get("[aria-label=Relationship]").select("1")
+    // cy.contains("Save").click()
+    // cy.contains(guardianName).should("be.visible")
 
     // Go back to student profile page.
-    cy.contains("Student Profile").click()
+    // cy.contains("Student Profile").click()
     cy.contains(guardianName).should("be.visible")
 
     // Go back to overview

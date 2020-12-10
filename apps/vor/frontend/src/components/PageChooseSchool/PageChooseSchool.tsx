@@ -56,12 +56,7 @@ export const PageChooseSchool: FC = () => {
         {availableSchools}
         {emptySchoolPlaceholder}
         <Link to="/new-school">
-          <Button
-            mt={3}
-            variant="outlineBig"
-            sx={{ width: "100%" }}
-            data-cy="newSchool"
-          >
+          <Button mt={3} sx={{ width: "100%" }} data-cy="newSchool">
             <Icon as={PlusIcon} mr={2} />
             <Trans>New school</Trans>
           </Button>
