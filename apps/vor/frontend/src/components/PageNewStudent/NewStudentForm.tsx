@@ -12,12 +12,12 @@ import {
 import { borderTop } from "../../border"
 import { Dayjs } from "../../dayjs"
 import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
-import { NEW_STUDENT_ADD_GUARDIAN_URL } from "../../routes"
+import { CLASS_SETTINGS_URL, NEW_STUDENT_ADD_GUARDIAN_URL } from "../../routes"
 import Chip from "../Chip/Chip"
 import DateInput from "../DateInput/DateInput"
-import EmptyClassDataPlaceholder from "../EmptyClassDataPlaceholder/EmptyClassDataPlaceholder"
 import GuardianRelationshipPill from "../GuardianRelationshipPill/GuardianRelationshipPill"
 import Icon from "../Icon/Icon"
+import InformationalCard from "../InformationalCard/InformationalCard"
 import Input from "../Input/Input"
 import { Link } from "../Link/Link"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
@@ -155,18 +155,17 @@ export const NewStudentForm = () => {
         <Typography.H6 m={3}>
           <Trans>Classes</Trans>
         </Typography.H6>
-        {classes.status === "success" && (classes.data?.length ?? 0) === 0 && (
-          <EmptyClassDataPlaceholder />
-        )}
-        {classes.status === "loading" && <ClassesLoadingPlaceholder />}
-        {classes.status !== "error" && (
-          <Flex sx={{ ...borderTop }} pt={2} pb={3} px={3}>
+
+        {classes.isLoading && <ClassesLoadingPlaceholder />}
+
+        {classes.isSuccess && (
+          <Flex sx={{ ...borderTop }} px={3}>
             {classes.data?.map((item) => {
               const selected = state.classes.includes(item.id)
               return (
                 <Chip
                   mr={2}
-                  mt={2}
+                  my={3}
                   key={item.id}
                   text={item.name}
                   activeBackground="primary"
@@ -190,14 +189,23 @@ export const NewStudentForm = () => {
             })}
           </Flex>
         )}
+
+        {classes.isSuccess && classes.data && classes.data.length === 0 && (
+          <InformationalCard
+            buttonText={t`Go to Class Settings`}
+            message={t` Create your first class to track your student's class enrollment.`}
+            to={CLASS_SETTINGS_URL}
+            containerSx={{ borderRadius: 0, mt: 0 }}
+          />
+        )}
       </Card>
 
-      <Card mx={[0, 3]} sx={{ borderRadius: [0, "default"] }} mt={3}>
+      <Card mx={[0, 3]} sx={{ borderRadius: [0, "default"] }} mt={4}>
         <Flex sx={{ alignItems: "center" }} p={3}>
           <Typography.H6 mr="auto">
             <Trans>Guardians</Trans>
           </Typography.H6>
-          <Link to={NEW_STUDENT_ADD_GUARDIAN_URL} data-cy="add-student">
+          <Link to={NEW_STUDENT_ADD_GUARDIAN_URL} data-cy="add-guardian">
             <Button variant="secondary">
               <Trans>Add</Trans>
             </Button>
@@ -285,7 +293,7 @@ const GuardianCard: FC<{
 }
 
 const ClassesLoadingPlaceholder: FC = () => (
-  <Box m={3}>
-    <LoadingPlaceholder sx={{ width: "100%", height: "4rem" }} />
-  </Box>
+  <Flex m={3}>
+    <LoadingPlaceholder mr={3} sx={{ width: 42, height: "2rem" }} />
+  </Flex>
 )

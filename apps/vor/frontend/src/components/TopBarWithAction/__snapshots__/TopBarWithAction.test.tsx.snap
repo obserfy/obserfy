@@ -338,6 +338,7 @@ exports[`TopBarWithAction should render correctly 1`] = `
         </div>
         <button
           class="emotion-11"
+          data-cy="finish-cta"
         >
           Add
         </button>

@@ -250,6 +250,12 @@ exports[`Layout should render correctly 1`] = `
   }
 }
 
+@media screen and (min-width: 52em) {
+  .emotion-15 {
+    padding-left: 0;
+  }
+}
+
 <div>
   <div
     class="emotion-0"
@@ -359,6 +365,7 @@ exports[`Layout should render correctly 1`] = `
     <div
       class="emotion-14"
     >
+      <div />
       <main
         class="emotion-15"
       />

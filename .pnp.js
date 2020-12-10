@@ -1543,6 +1543,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:0.6.0-alpha.1"
       ],
       [
+        "@theme-ui/match-media",
+        "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.6.0-alpha.1"
+      ],
+      [
         "@theme-ui/mdx",
         "virtual:4b02b1bdb7cb737d56d311aa7343cf13b44c48268c355ce70f59526dbf61357385225bf4f503d142da51769e2bbeefe8cde73de980a4d181d30b073e6d721e17#npm:0.6.0-alpha.1"
       ],
@@ -24162,6 +24166,29 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@theme-ui/css", "npm:0.6.0-alpha.1"],
             ["@emotion/react", "virtual:fed86b5922646f8434893d805d014b85a7ee5f2359a3c4f7ae2f83b5c723f8ceb7495ba4430c12729d3ec8de45c2b29cbc98f386cc0ebc374e11069bac931a3a#npm:11.1.1"],
             ["csstype", "npm:3.0.5"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@theme-ui/match-media", [
+        ["virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.6.0-alpha.1", {
+          "packageLocation": "./.yarn/$$virtual/@theme-ui-match-media-virtual-d7288331e8/0/cache/@theme-ui-match-media-npm-0.6.0-alpha.1-62b45f6087-bab2d354aa.zip/node_modules/@theme-ui/match-media/",
+          "packageDependencies": [
+            ["@theme-ui/match-media", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.6.0-alpha.1"],
+            ["@theme-ui/core", null],
+            ["@theme-ui/css", null],
+            ["@types/react", "npm:17.0.0"],
+            ["@types/theme-ui__core", null],
+            ["@types/theme-ui__css", null],
+            ["react", "npm:17.0.1"]
+          ],
+          "packagePeers": [
+            "@theme-ui/core",
+            "@theme-ui/css",
+            "@types/react",
+            "@types/theme-ui__core",
+            "@types/theme-ui__css",
+            "react"
           ],
           "linkType": "HARD",
         }]
@@ -57684,6 +57711,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@svgr/webpack", "npm:5.5.0"],
             ["@testing-library/react", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:11.2.2"],
             ["@testing-library/react-hooks", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:3.7.0"],
+            ["@theme-ui/match-media", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.6.0-alpha.1"],
             ["@types/body-scroll-lock", "npm:2.6.1"],
             ["@types/date-fns", "npm:2.6.0"],
             ["@types/faker", "npm:5.1.5"],
