@@ -91,7 +91,7 @@ msgid "All"
 msgstr "Semua"
 
 #: src/components/PageAdmin/PageAdmin.tsx:70
-#: src/components/PageListOfGuardians/PageListOfGuardians.tsx:24
+#: src/components/PageListOfGuardians/PageListOfGuardians.tsx:28
 #: src/pages/dashboard/admin/guardians/profile.tsx:11
 msgid "All Guardians"
 msgstr "Semua Wali Murid"
@@ -187,6 +187,10 @@ msgstr "Kelas"
 #: src/components/PagePickGuardian/PagePickGuardian.tsx:100
 msgid "Create"
 msgstr "Buat"
+
+#: src/components/PageListOfGuardians/PageListOfGuardians.tsx:33
+msgid "Create New"
+msgstr "Buat baru"
 
 #: src/components/PageSubscription/PageSubscription.tsx:98
 msgid "Create lesson plans"
@@ -620,14 +624,15 @@ msgstr "Belum ada kelas terpilih"
 #~ msgid "No email"
 #~ msgstr "Tidak ada email"
 
+#: src/components/PageListOfGuardians/PageListOfGuardians.tsx:59
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:117
 #: src/components/SimpleGuardiansSelector/SimpleGuardiansSelector.tsx:32
 msgid "No email set"
-msgstr "Belum ada email terpasang"
+msgstr "Email belum terpasang"
 
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:96
 msgid "No guardians has been set"
-msgstr "Belum ada wali murid terpasang"
+msgstr "wali murid belum terpasang"
 
 #: src/components/PageEditGuardians/PageEditGuardians.tsx:55
 #~ msgid "No guardians set yet"
@@ -653,6 +658,10 @@ msgstr "Belum ada observasi ditambahkan"
 #: src/components/PageStudentPlanDetails/RelatedStudentsCard.tsx:42
 msgid "No other students added yet."
 msgstr "Belum ada murid lain ditambahkan."
+
+#: src/components/PageListOfGuardians/PageListOfGuardians.tsx:70
+msgid "No phone set"
+msgstr "Telfon belum terpasang"
 
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:138
 msgid "None"

@@ -86,7 +86,7 @@ msgid "All"
 msgstr "All"
 
 #: src/components/PageAdmin/PageAdmin.tsx:70
-#: src/components/PageListOfGuardians/PageListOfGuardians.tsx:24
+#: src/components/PageListOfGuardians/PageListOfGuardians.tsx:28
 #: src/pages/dashboard/admin/guardians/profile.tsx:11
 msgid "All Guardians"
 msgstr "All Guardians"
@@ -183,9 +183,9 @@ msgstr "Classes"
 msgid "Create"
 msgstr "Create"
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:36
-#~ msgid "Create New"
-#~ msgstr "Create New"
+#: src/components/PageListOfGuardians/PageListOfGuardians.tsx:33
+msgid "Create New"
+msgstr "Create New"
 
 #: src/components/PageSubscription/PageSubscription.tsx:98
 msgid "Create lesson plans"
@@ -619,6 +619,7 @@ msgstr "No classes selected yet"
 #~ msgid "No email"
 #~ msgstr "No email"
 
+#: src/components/PageListOfGuardians/PageListOfGuardians.tsx:59
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:117
 #: src/components/SimpleGuardiansSelector/SimpleGuardiansSelector.tsx:32
 msgid "No email set"
@@ -652,6 +653,10 @@ msgstr "No observation have been added yet"
 #: src/components/PageStudentPlanDetails/RelatedStudentsCard.tsx:42
 msgid "No other students added yet."
 msgstr "No other students added yet."
+
+#: src/components/PageListOfGuardians/PageListOfGuardians.tsx:70
+msgid "No phone set"
+msgstr "No phone set"
 
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:138
 msgid "None"
