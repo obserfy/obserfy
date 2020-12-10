@@ -74,6 +74,7 @@ msgid "Add some description here"
 msgstr "Add some description here"
 
 #: src/components/NewGuardianForm/NewGuardianForm.tsx:15
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:49
 msgid "Address"
 msgstr "Address"
 
@@ -86,8 +87,7 @@ msgid "All"
 msgstr "All"
 
 #: src/components/PageAdmin/PageAdmin.tsx:70
-#: src/components/PageListOfGuardians/PageListOfGuardians.tsx:24
-#: src/pages/dashboard/admin/guardians/profile.tsx:11
+#: src/components/PageListOfGuardians/PageListOfGuardians.tsx:28
 msgid "All Guardians"
 msgstr "All Guardians"
 
@@ -183,9 +183,9 @@ msgstr "Classes"
 msgid "Create"
 msgstr "Create"
 
-#: src/components/PageNewStudent/PageNewStudent.tsx:36
-#~ msgid "Create New"
-#~ msgstr "Create New"
+#: src/components/PageListOfGuardians/PageListOfGuardians.tsx:33
+msgid "Create New"
+msgstr "Create New"
 
 #: src/components/PageSubscription/PageSubscription.tsx:98
 msgid "Create lesson plans"
@@ -346,9 +346,9 @@ msgstr "Edit Description"
 msgid "Edit Details"
 msgstr "Edit Details"
 
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:71
-msgid "Edit Email"
-msgstr "Edit Email"
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:100
+#~ msgid "Edit Email"
+#~ msgstr "Edit Email"
 
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:170
 msgid "Edit Gender"
@@ -358,12 +358,12 @@ msgstr "Edit Gender"
 #~ msgid "Edit Guardians"
 #~ msgstr "Edit Guardians"
 
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:51
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:64
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:140
 msgid "Edit Name"
 msgstr "Edit Name"
 
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:111
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:90
 msgid "Edit Note"
 msgstr "Edit Note"
 
@@ -371,9 +371,9 @@ msgstr "Edit Note"
 msgid "Edit Notes"
 msgstr "Edit Notes"
 
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:91
-msgid "Edit Phone"
-msgstr "Edit Phone"
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:120
+#~ msgid "Edit Phone"
+#~ msgstr "Edit Phone"
 
 #: src/components/PageObservationDetails/ObservationMetaCard.tsx:40
 msgid "Edit Short Description"
@@ -394,8 +394,7 @@ msgstr "Edit Title"
 
 #: src/components/NewGuardianForm/NewGuardianForm.tsx:13
 #: src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx:34
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:69
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:73
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:39
 msgid "Email"
 msgstr "Email"
 
@@ -553,8 +552,7 @@ msgstr "Monday"
 msgid "Mother"
 msgstr "Mother"
 
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:49
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:53
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:34
 #: src/components/PageNewClass/PageNewClass.tsx:57
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:138
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:142
@@ -619,6 +617,7 @@ msgstr "No classes selected yet"
 #~ msgid "No email"
 #~ msgstr "No email"
 
+#: src/components/PageListOfGuardians/PageListOfGuardians.tsx:59
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:117
 #: src/components/SimpleGuardiansSelector/SimpleGuardiansSelector.tsx:32
 msgid "No email set"
@@ -653,6 +652,10 @@ msgstr "No observation have been added yet"
 msgid "No other students added yet."
 msgstr "No other students added yet."
 
+#: src/components/PageListOfGuardians/PageListOfGuardians.tsx:71
+msgid "No phone set"
+msgstr "No phone set"
+
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:138
 msgid "None"
 msgstr "None"
@@ -667,8 +670,8 @@ msgstr "Not Set"
 
 #: src/components/NewGuardianForm/NewGuardianForm.tsx:16
 #: src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx:36
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:109
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:113
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:88
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:92
 msgid "Note"
 msgstr "Note"
 
@@ -719,8 +722,7 @@ msgstr "Payment details"
 
 #: src/components/NewGuardianForm/NewGuardianForm.tsx:14
 #: src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx:35
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:89
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:93
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:44
 msgid "Phone"
 msgstr "Phone"
 
@@ -807,10 +809,7 @@ msgstr "Saturday"
 #: src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx:49
 #: src/components/PageEditClass/PageEditClass.tsx:94
 #: src/components/PageEditSubject/PageEditSubject.tsx:139
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:51
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:71
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:91
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:111
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:90
 #: src/components/PageNewClass/PageNewClass.tsx:77
 #: src/components/PageNewObservation/PageNewObservation.tsx:85
 #: src/components/PageNewSchool/PageNewSchool.tsx:50

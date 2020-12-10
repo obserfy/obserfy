@@ -134,31 +134,31 @@ func (s *GuardianTestSuite) TestUpdateGuardian() {
 			Email: gofakeit.Email(),
 			Phone: gofakeit.Phone(),
 			Note:  gofakeit.Sentence(10),
-		}, http.StatusNoContent},
+		}, http.StatusOK},
 		{"update name", requestBody{
 			Name:  gofakeit.Name(),
 			Email: "",
 			Phone: "",
 			Note:  "",
-		}, http.StatusNoContent},
+		}, http.StatusOK},
 		{"update note", requestBody{
 			Name:  "",
 			Email: "",
 			Phone: "",
 			Note:  gofakeit.Sentence(10),
-		}, http.StatusNoContent},
+		}, http.StatusOK},
 		{"update email and phone", requestBody{
 			Name:  "",
 			Email: gofakeit.Email(),
 			Phone: gofakeit.Phone(),
 			Note:  "",
-		}, http.StatusNoContent},
+		}, http.StatusOK},
 		{"update note", requestBody{
 			Name:  "",
 			Email: "",
 			Phone: "",
 			Note:  gofakeit.Sentence(10),
-		}, http.StatusNoContent},
+		}, http.StatusOK},
 		{"update none", requestBody{
 			Name:  "",
 			Email: "",
@@ -171,7 +171,7 @@ func (s *GuardianTestSuite) TestUpdateGuardian() {
 			Phone:   "",
 			Note:    "",
 			Address: "New Address",
-		}, http.StatusNoContent},
+		}, http.StatusOK},
 	}
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {

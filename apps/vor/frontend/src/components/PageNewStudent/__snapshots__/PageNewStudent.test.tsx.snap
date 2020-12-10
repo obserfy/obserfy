@@ -152,6 +152,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   border-width: 1px;
   line-height: 1;
   border: none;
+  font-weight: bold;
   padding: 4px;
 }
 
@@ -281,7 +282,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   border-width: 1px;
   line-height: 1;
   margin-left: auto;
-  margin-right: 8px;
+  margin-right: 16px;
   padding-left: 8px;
   padding-right: 8px;
 }
@@ -1064,6 +1065,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   border-width: 1px;
   line-height: 1;
   border: none;
+  font-weight: bold;
 }
 
 .emotion-63:disabled {
