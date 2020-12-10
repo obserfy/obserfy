@@ -108,8 +108,8 @@ export const PageStudentProfile: FC<Props> = ({ studentId }) => {
 
         <Box>
           {data?.classes?.length === 0 && (
-            <Typography.Body sx={{ lineHeight: 1 }}>
-              <Trans>Not Set</Trans>
+            <Typography.Body m={3}>
+              <Trans>No class has been set</Trans>
             </Typography.Body>
           )}
           {data?.classes?.map(({ id, name }) => (
@@ -137,8 +137,8 @@ export const PageStudentProfile: FC<Props> = ({ studentId }) => {
         </Flex>
 
         {data?.guardians?.length === 0 && (
-          <Typography.Body>
-            <Trans>Not Set</Trans>
+          <Typography.Body m={3}>
+            <Trans>No guardians has been set</Trans>
           </Typography.Body>
         )}
 
@@ -460,8 +460,8 @@ const SetStatusDataBox: FC<{
     await mutate({ active: !active })
     setShowStatusDialog(false)
   }
-  const setActiveText = "Set as active?"
-  const setInactiveText = "Set as inactive?"
+  const setActiveText = "Set as Active"
+  const setInactiveText = "Set as Inactive"
   return (
     <Card
       p={3}
@@ -473,12 +473,7 @@ const SetStatusDataBox: FC<{
       }}
     >
       <Box>
-        <Typography.Body
-          sx={{
-            fontSize: 0,
-            lineHeight: 1.4,
-          }}
-        >
+        <Typography.Body sx={{ fontSize: 0 }}>
           <Trans>Status</Trans>
         </Typography.Body>
         <Typography.Body sx={{ color: !active ? "warning" : undefined }}>
@@ -496,7 +491,7 @@ const SetStatusDataBox: FC<{
       </Button>
       {showStatusDialog && (
         <AlertDialog
-          title={active ? setInactiveText : setActiveText}
+          title={active ? `${setInactiveText}?` : `${setActiveText}?`}
           negativeText={t`Cancel`}
           positiveText={t`Yes`}
           body={`Are you sure you want to set ${name} as ${
