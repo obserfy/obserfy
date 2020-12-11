@@ -5996,7 +5996,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@prefresh/babel-plugin@npm:0.2.2, @prefresh/babel-plugin@npm:^0.2.2":
+"@prefresh/babel-plugin@npm:0.3.0":
+  version: 0.3.0
+  resolution: "@prefresh/babel-plugin@npm:0.3.0"
+  checksum: 53468a3dd26928eba105d612ea3883693a3d800e1f23ea616eac536d9d9fd52d5761160973d6f415c4afba8fa9d0109cdcf09765869cbffce880f9dc2ba9290e
+  languageName: node
+  linkType: hard
+
+"@prefresh/babel-plugin@npm:^0.2.2":
   version: 0.2.2
   resolution: "@prefresh/babel-plugin@npm:0.2.2"
   checksum: eab1e0a50f6af07a873e56ac57d881d6aad01c46be707a6593479cc4fd21214997fe22f4b99abeaa780a60cfd9d78c9a80bd691608ffd1a9dac78a1041da873d
@@ -6021,19 +6028,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@prefresh/next@npm:1.4.1":
-  version: 1.4.1
-  resolution: "@prefresh/next@npm:1.4.1"
+"@prefresh/next@npm:1.4.3":
+  version: 1.4.3
+  resolution: "@prefresh/next@npm:1.4.3"
   dependencies:
-    "@prefresh/babel-plugin": 0.2.2
+    "@prefresh/babel-plugin": 0.3.0
     "@prefresh/core": ^1.0.0
     "@prefresh/utils": ^1.0.0
-    "@prefresh/webpack": ^2.2.0
+    "@prefresh/webpack": ^2.3.0
   peerDependencies:
     next: ^9.4.0
     preact: ^10.4.0
     webpack: ^4.0.0 || ^5.0.0
-  checksum: aa5c6e16f57f0b9bd972a9e6249703e6cac0251ad2c5d8324ab0b22d5d737c1cba71b4d3d4dae1ac1507115f25d41829a503ee90c4021a32bb139b08cb7e382b
+  checksum: 8dd949fa51f373e08dc4974a14e83308565341f6feb1e0a7d797d64f182bc7ba5cf22d580f66a2575c5eb5c8d9e54e9bcd9130eab232adad0ab784b4a11a4a64
   languageName: node
   linkType: hard
 
@@ -6064,17 +6071,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@prefresh/webpack@npm:^2.2.0":
-  version: 2.2.0
-  resolution: "@prefresh/webpack@npm:2.2.0"
+"@prefresh/webpack@npm:^2.3.0":
+  version: 2.3.0
+  resolution: "@prefresh/webpack@npm:2.3.0"
   dependencies:
     "@prefresh/core": ^1.0.0
     "@prefresh/utils": ^1.0.0
   peerDependencies:
-    "@prefresh/babel-plugin": ^0.2.0
+    "@prefresh/babel-plugin": ^0.3.0
     preact: ^10.4.0
     webpack: ^4.0.0 || ^5.0.0
-  checksum: 3d3a71ba83ed359d293d156d9309fb392c77539bdc0ec570b1e04e0b28c57578a4ea1fdc3ad3979a970f6e4b209db699d8cdb01c4b19cf392ec745f7cbe8048f
+  checksum: c6f4125f4b2e89d73eda3a44ee80914631bb1ce20ee10b6d72b1ff41f50b1588716e4ca429688ed58cc026c599bf4826907d8987f6551374b3009abb4e4998a4
   languageName: node
   linkType: hard
 
@@ -18585,7 +18592,7 @@ fsevents@^1.2.7:
   resolution: "gaia@workspace:apps/gaia"
   dependencies:
     "@auth0/nextjs-auth0": 0.16.0
-    "@prefresh/next": 1.4.1
+    "@prefresh/next": 1.4.3
     "@segment/snippet": 4.13.1
     "@sentry/browser": 5.29.0
     "@sentry/integrations": 5.29.0
