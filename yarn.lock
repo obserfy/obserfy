@@ -15748,7 +15748,7 @@ __metadata:
     pnp-webpack-plugin: 1.6.4
     prettier: 2.2.1
     ts-loader: 8.0.12
-    typescript: 4.1.2
+    typescript: 4.1.3
     wait-on: 5.2.0
   languageName: unknown
   linkType: soft
@@ -18343,7 +18343,7 @@ __metadata:
     stylelint-config-prettier: 8.0.2
     stylelint-config-standard: 20.0.0
     tailwindcss: 2.0.2
-    typescript: 4.1.2
+    typescript: 4.1.3
     typescript-plugin-css-modules: 3.0.1
   languageName: unknown
   linkType: soft
@@ -18659,7 +18659,7 @@ fsevents@^1.2.7:
     stylelint-config-standard: 20.0.0
     tailwindcss: 2.0.2
     ts-is-present: 1.1.5
-    typescript: 4.1.2
+    typescript: 4.1.3
     uuid: 8.3.2
   languageName: unknown
   linkType: soft
@@ -36095,13 +36095,13 @@ resolve@^1.19.0:
   languageName: node
   linkType: hard
 
-typescript@4.1.2:
-  version: 4.1.2
-  resolution: "typescript@npm:4.1.2"
+typescript@4.1.3:
+  version: 4.1.3
+  resolution: "typescript@npm:4.1.3"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: d2ac373b469e973448c7287d0fbc732dbd34d00d07911b9506bbf81469a80db6613361fc9293d021da357cb7c7da2ee32f56d8ef76446361231374200cd6aee9
+  checksum: 4f7ab1506ea22c7a1c313ec5b4285e93ce08d709ad6086d02d3096adb399ca339972ee56d1e578213c51dd0fb7b0fad50283c2d3c39642405644458ae29774f8
   languageName: node
   linkType: hard
 
@@ -36115,13 +36115,13 @@ typescript@^4.0.0:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@4.1.2#builtin<compat/typescript>":
-  version: 4.1.2
-  resolution: "typescript@patch:typescript@npm%3A4.1.2#builtin<compat/typescript>::version=4.1.2&hash=5bf698"
+"typescript@patch:typescript@4.1.3#builtin<compat/typescript>":
+  version: 4.1.3
+  resolution: "typescript@patch:typescript@npm%3A4.1.3#builtin<compat/typescript>::version=4.1.3&hash=5bf698"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: acfc7be6a091806432f324ad258c4a7d2a63996106a4c001db1eebb2661608a9fd0d109d0d29249c3e6890e3547a97b8580cbe0833aa64b2fb83f66e4d88a466
+  checksum: 5637a1074cdaed15dbdc109d7e495f00971742fc169b06e758181ac6b091d086f6a7d60d9977dc4572357038c7d798e0786a043eda37d7776537a3d939416a8d
   languageName: node
   linkType: hard
 
@@ -37269,7 +37269,7 @@ typescript@^4.0.0:
     storybook-addon-deps: 2.1.3
     storybook-addon-i18n: 5.1.13
     theme-ui: 0.6.0-alpha.3
-    typescript: 4.1.2
+    typescript: 4.1.3
     url-loader: 4.1.1
     use-immer: 0.4.2
     wait-on: 5.2.0
