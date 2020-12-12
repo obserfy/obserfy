@@ -604,7 +604,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@cypress/code-coverage",
-        "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:3.8.6"
+        "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:3.8.7"
       ],
       [
         "@cypress/listr-verbose-renderer",
@@ -18595,18 +18595,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@cypress/code-coverage", [
-        ["virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:3.8.6", {
-          "packageLocation": "./.yarn/$$virtual/@cypress-code-coverage-virtual-3d2a931df4/0/cache/@cypress-code-coverage-npm-3.8.6-cd44088e29-ca90e80bc2.zip/node_modules/@cypress/code-coverage/",
+        ["virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:3.8.7", {
+          "packageLocation": "./.yarn/$$virtual/@cypress-code-coverage-virtual-ef0bdb2e67/0/cache/@cypress-code-coverage-npm-3.8.7-d0f44926e6-7916e2c2b1.zip/node_modules/@cypress/code-coverage/",
           "packageDependencies": [
-            ["@cypress/code-coverage", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:3.8.6"],
+            ["@cypress/code-coverage", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:3.8.7"],
             ["@cypress/browserify-preprocessor", "npm:3.0.1"],
             ["@types/cypress", null],
             ["cypress", "npm:6.1.0"],
-            ["debug", "virtual:3d2a931df4e6820f969c87f431fcfcfcfa31525b03815979d1181a2f435ed8a82a42ca09efa828e0dc019ae762833f5f521c687f162a238a74a916ee6875af3e#npm:4.3.1"],
+            ["debug", "virtual:ef0bdb2e67fdb8ff835be1a460f3ebc2504273c26f6df320c84756c44ed923cf9ee9b651efb1d816554cdb8828264439341fd22d0c1eb92510b9c8337eaa3071#npm:4.3.1"],
             ["execa", "npm:4.1.0"],
             ["globby", "npm:11.0.1"],
             ["istanbul-lib-coverage", "npm:3.0.0"],
-            ["js-yaml", "npm:3.14.0"],
+            ["js-yaml", "npm:3.14.1"],
             ["nyc", "npm:15.1.0"]
           ],
           "packagePeers": [
@@ -32485,15 +32485,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
-        ["virtual:3d2a931df4e6820f969c87f431fcfcfcfa31525b03815979d1181a2f435ed8a82a42ca09efa828e0dc019ae762833f5f521c687f162a238a74a916ee6875af3e#npm:4.3.1", {
-          "packageLocation": "./.yarn/$$virtual/debug-virtual-28871d1b67/0/cache/debug-npm-4.3.1-22e08d605e-0d41ba5177.zip/node_modules/debug/",
-          "packageDependencies": [
-            ["debug", "virtual:3d2a931df4e6820f969c87f431fcfcfcfa31525b03815979d1181a2f435ed8a82a42ca09efa828e0dc019ae762833f5f521c687f162a238a74a916ee6875af3e#npm:4.3.1"],
-            ["ms", "npm:2.1.2"],
-            ["supports-color", "npm:7.1.0"]
-          ],
-          "linkType": "HARD",
-        }],
         ["virtual:55ee18c8e19977a11885a1650a9c8ace082bef4651cd58ef3e97ffc7de2aaf65e03612f920e86a6f65dfa15bbf2d3bdccc8e9e16aa19b1a44602031e5ce3dc78#npm:3.2.6", {
           "packageLocation": "./.yarn/$$virtual/debug-virtual-178bf3b13b/0/cache/debug-npm-3.2.6-6214e40f12-619feb53b1.zip/node_modules/debug/",
           "packageDependencies": [
@@ -32554,6 +32545,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "packagePeers": [
             "supports-color"
+          ],
+          "linkType": "HARD",
+        }],
+        ["virtual:ef0bdb2e67fdb8ff835be1a460f3ebc2504273c26f6df320c84756c44ed923cf9ee9b651efb1d816554cdb8828264439341fd22d0c1eb92510b9c8337eaa3071#npm:4.3.1", {
+          "packageLocation": "./.yarn/$$virtual/debug-virtual-ff7d58d333/0/cache/debug-npm-4.3.1-22e08d605e-0d41ba5177.zip/node_modules/debug/",
+          "packageDependencies": [
+            ["debug", "virtual:ef0bdb2e67fdb8ff835be1a460f3ebc2504273c26f6df320c84756c44ed923cf9ee9b651efb1d816554cdb8828264439341fd22d0c1eb92510b9c8337eaa3071#npm:4.3.1"],
+            ["ms", "npm:2.1.2"],
+            ["supports-color", "npm:7.1.0"]
           ],
           "linkType": "HARD",
         }]
@@ -33622,7 +33622,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./apps/e2e/",
           "packageDependencies": [
             ["e2e", "workspace:apps/e2e"],
-            ["@cypress/code-coverage", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:3.8.6"],
+            ["@cypress/code-coverage", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:3.8.7"],
             ["@cypress/webpack-preprocessor", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:5.5.0"],
             ["@hapi/iron", "npm:6.0.0"],
             ["@types/auth0-js", "npm:9.14.2"],
@@ -43143,6 +43143,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/js-yaml-npm-3.14.0-7ecf74b3d2-2eb95464e5.zip/node_modules/js-yaml/",
           "packageDependencies": [
             ["js-yaml", "npm:3.14.0"],
+            ["argparse", "npm:1.0.10"],
+            ["esprima", "npm:4.0.1"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:3.14.1", {
+          "packageLocation": "./.yarn/cache/js-yaml-npm-3.14.1-b968c6095e-46b61f8897.zip/node_modules/js-yaml/",
+          "packageDependencies": [
+            ["js-yaml", "npm:3.14.1"],
             ["argparse", "npm:1.0.10"],
             ["esprima", "npm:4.0.1"]
           ],
