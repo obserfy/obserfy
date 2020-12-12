@@ -3409,20 +3409,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cypress/code-coverage@npm:3.8.6":
-  version: 3.8.6
-  resolution: "@cypress/code-coverage@npm:3.8.6"
+"@cypress/code-coverage@npm:3.8.7":
+  version: 3.8.7
+  resolution: "@cypress/code-coverage@npm:3.8.7"
   dependencies:
     "@cypress/browserify-preprocessor": 3.0.1
     debug: 4.3.1
     execa: 4.1.0
     globby: 11.0.1
     istanbul-lib-coverage: 3.0.0
-    js-yaml: 3.14.0
+    js-yaml: 3.14.1
     nyc: 15.1.0
   peerDependencies:
     cypress: "*"
-  checksum: ca90e80bc2348357dd0421dc532450b828d7cf8a42a7a21d55db41555938959953d3ad7158e866a34922c32c165b66e6cfba6b8eda22d601ed907235b5f1c0b2
+  checksum: 7916e2c2b1ba4adea006b60d586fb18d797d5aa84c6f4853ec69ae28f085c866bda127b2d9e39a46750ce0f3524f26b4a0510873dab4fdaeb344c128bc526f31
   languageName: node
   linkType: hard
 
@@ -15899,7 +15899,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "e2e@workspace:apps/e2e"
   dependencies:
-    "@cypress/code-coverage": 3.8.6
+    "@cypress/code-coverage": 3.8.7
     "@cypress/webpack-preprocessor": 5.5.0
     "@hapi/iron": 6.0.0
     "@types/auth0-js": 9.14.2
@@ -24118,7 +24118,19 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"js-yaml@npm:3.14.0, js-yaml@npm:^3.11.0, js-yaml@npm:^3.13.1":
+"js-yaml@npm:3.14.1":
+  version: 3.14.1
+  resolution: "js-yaml@npm:3.14.1"
+  dependencies:
+    argparse: ^1.0.7
+    esprima: ^4.0.0
+  bin:
+    js-yaml: bin/js-yaml.js
+  checksum: 46b61f889796a20d16b0b64580a01b6a02b2e45c1a2744906346da54d07e14cde764e887ab6d1512d8b2541c63711bd4b75859c28eb99605baf59fa173fc38c2
+  languageName: node
+  linkType: hard
+
+"js-yaml@npm:^3.11.0, js-yaml@npm:^3.13.1":
   version: 3.14.0
   resolution: "js-yaml@npm:3.14.0"
   dependencies:
