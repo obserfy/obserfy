@@ -106,7 +106,7 @@ const GuardianCard: FC<{
         <Typography.Body
           mx={2}
           py={1}
-          px={email ? 0 : 2}
+          px={phone ? 0 : 2}
           backgroundColor={phone ? "transparent" : "tintWarning"}
           sx={{
             display: ["none", "block"],
