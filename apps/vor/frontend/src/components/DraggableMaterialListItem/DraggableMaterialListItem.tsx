@@ -1,6 +1,8 @@
 import React, { FC, memo, useCallback } from "react"
 import { Button } from "theme-ui"
-import { Material } from "../../api/useGetSubjectMaterials"
+import { t } from "@lingui/macro"
+import { useLingui } from "@lingui/react"
+import { Material } from "../../hooks/api/useGetSubjectMaterials"
 import Input from "../Input/Input"
 import Icon from "../Icon/Icon"
 import { ReactComponent as DeleteIcon } from "../../icons/trash.svg"
@@ -22,6 +24,7 @@ export const DraggableMaterialListItem: FC<Props> = ({
   autofocus,
   height,
 }) => {
+  const { i18n } = useLingui()
   const onNameChange = useCallback(
     (e) => {
       const name = e.target.value
@@ -112,7 +115,7 @@ export const DraggableMaterialListItem: FC<Props> = ({
         data-cy={
           material.name === "" ? "materialNameInputEmpty" : "materialNameInput"
         }
-        placeholder="Material name"
+        placeholder={i18n._(t`Material name`)}
         p={0}
         value={material.name}
         onChange={onNameChange}

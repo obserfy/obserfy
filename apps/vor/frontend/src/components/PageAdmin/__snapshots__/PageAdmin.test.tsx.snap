@@ -61,7 +61,16 @@ exports[`PageAdmin should render correctly 1`] = `
   border-radius: 6px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px,rgba(0, 0, 0, 0.27) 0px 2px 4px -2px;
   margin-bottom: 16px;
+  margin-left: 0;
+  margin-right: 0;
   border-radius: 0;
+}
+
+@media screen and (min-width: 40em) {
+  .emotion-3 {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
 }
 
 @media screen and (min-width: 40em) {
@@ -176,6 +185,8 @@ exports[`PageAdmin should render correctly 1`] = `
   margin-top: 8px;
   padding-left: 16px;
   padding-right: 16px;
+  margin-left: 0;
+  margin-right: 0;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -189,6 +200,8 @@ exports[`PageAdmin should render correctly 1`] = `
   .emotion-36 {
     padding-left: 0;
     padding-right: 0;
+    margin-left: 16px;
+    margin-right: 16px;
   }
 }
 
@@ -244,6 +257,9 @@ exports[`PageAdmin should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -259,8 +275,6 @@ exports[`PageAdmin should render correctly 1`] = `
   border-width: 1px;
   line-height: 1;
   margin-left: auto;
-  padding-top: 8px;
-  padding-bottom: 8px;
   margin-bottom: 16px;
   color: var(--theme-ui-colors-warning, #ff6d00);
   width: 100%;
@@ -276,7 +290,7 @@ exports[`PageAdmin should render correctly 1`] = `
 
 .emotion-37:hover,
 .emotion-37:focus {
-  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,120,86,0.12));
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
   border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
@@ -337,6 +351,9 @@ exports[`PageAdmin should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -363,7 +380,7 @@ exports[`PageAdmin should render correctly 1`] = `
 
 .emotion-38:hover,
 .emotion-38:focus {
-  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,120,86,0.12));
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
   border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }

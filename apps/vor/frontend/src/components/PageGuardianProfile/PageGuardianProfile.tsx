@@ -1,25 +1,28 @@
 /** @jsx jsx */
 import { FC, Fragment, useState } from "react"
-import { Box, Button, Card, Flex, jsx } from "theme-ui"
+import { Box, Card, Flex, jsx } from "theme-ui"
 import { t, Trans } from "@lingui/macro"
-import { useGetGuardian } from "../../api/guardians/useGetGuardian"
-import { usePatchGuardian } from "../../api/guardians/usePatchGuardian"
-import { ADMIN_GUARDIAN_URL } from "../../routes"
-import { ReactComponent as EditIcon } from "../../icons/edit.svg"
-
-import BackNavigation from "../BackNavigation/BackNavigation"
+import { useGetGuardian } from "../../hooks/api/guardians/useGetGuardian"
+import { usePatchGuardian } from "../../hooks/api/guardians/usePatchGuardian"
+import { borderTop } from "../../border"
+import useVisibilityState from "../../hooks/useVisibilityState"
+import { STUDENT_PROFILE_URL } from "../../routes"
+import DataBox from "../DataBox/DataBox"
+import { ReactComponent as ChevronRight } from "../../icons/next-arrow.svg"
 import Dialog from "../Dialog/Dialog"
 import Icon from "../Icon/Icon"
 import Input from "../Input/Input"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
-import Typography from "../Typography/Typography"
 import DialogHeader from "../DialogHeader/DialogHeader"
+import Typography from "../Typography/Typography"
+import { Link } from "../Link/Link"
 
 interface Props {
   guardianId: string
 }
 export const PageGuardianProfile: FC<Props> = ({ guardianId }) => {
-  const { data, status } = useGetGuardian(guardianId)
+  const { data, status, isSuccess } = useGetGuardian(guardianId)
+  const [mutate] = usePatchGuardian(guardianId)
 
   if (status === "loading") {
     return (
@@ -33,23 +36,39 @@ export const PageGuardianProfile: FC<Props> = ({ guardianId }) => {
   }
 
   return (
-    <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={4}>
-      <BackNavigation to={ADMIN_GUARDIAN_URL} text={t`All Guardians`} />
-      <Card sx={{ borderRadius: [0, "default"] }} mb={3}>
-        <NameDataBox
-          value={data?.name}
-          key={`name${data?.name}`}
-          guardianId={guardianId}
+    <Fragment>
+      <Card sx={{ borderRadius: [0, "default"] }} mb={3} mx={[0, 3]}>
+        <EditableTextAttribute
+          currentValue={data?.name}
+          label={t`Name`}
+          onSubmit={async (name) => {
+            const result = await mutate({ name })
+            return result?.ok ?? false
+          }}
         />
-        <EmailDataBox
-          value={data?.email}
-          key={`email${data?.email}`}
-          guardianId={guardianId}
+        <EditableTextAttribute
+          currentValue={data?.email}
+          label={t`Email`}
+          onSubmit={async (email) => {
+            const result = await mutate({ email })
+            return result?.ok ?? false
+          }}
         />
-        <PhoneDataBox
-          value={data?.phone}
-          key={`phone${data?.phone}`}
-          guardianId={guardianId}
+        <EditableTextAttribute
+          currentValue={data?.phone}
+          label={t`Phone`}
+          onSubmit={async (phone) => {
+            const result = await mutate({ phone })
+            return result?.ok ?? false
+          }}
+        />
+        <EditableTextAttribute
+          label={t`Address`}
+          currentValue={data?.address}
+          onSubmit={async (address) => {
+            const result = await mutate({ address })
+            return result?.ok ?? false
+          }}
         />
         <NoteDataBox
           value={data?.note}
@@ -57,131 +76,76 @@ export const PageGuardianProfile: FC<Props> = ({ guardianId }) => {
           guardianId={guardianId}
         />
       </Card>
-    </Box>
+
+      <Card sx={{ borderRadius: [0, "default"] }} mb={3} mx={[0, 3]}>
+        <Typography.H6 m={3}>Children</Typography.H6>
+        {data?.children.map(({ id, name }) => (
+          <Link to={STUDENT_PROFILE_URL(id)} key={id}>
+            <Flex
+              p={3}
+              sx={{
+                ...borderTop,
+                "&:hover": {
+                  backgroundColor: "primaryLight",
+                },
+              }}
+            >
+              <Typography.Body>{name}</Typography.Body>
+              <Icon as={ChevronRight} ml="auto" />
+            </Flex>
+          </Link>
+        ))}
+
+        {isSuccess && data?.children.length === 0 && (
+          <Typography.Body m={3} sx={{ color: "textMediumEmphasis" }}>
+            <Trans>
+              This guardian doesn&apos;t have any children registered yet.
+            </Trans>
+          </Typography.Body>
+        )}
+      </Card>
+    </Fragment>
   )
 }
 
-const NameDataBox: FC<{ value?: string; guardianId: string }> = ({
-  value,
-  guardianId,
-}) => {
-  const [mutate, { status }] = usePatchGuardian(guardianId)
-  const [showEditDialog, setShowEditDialog] = useState(false)
-  const [name, setName] = useState(value)
-  const saveName = async () => {
-    await mutate({ name })
-    setShowEditDialog(false)
-  }
+const EditableTextAttribute: FC<{
+  currentValue?: string
+  label: string
+  onSubmit: (value: string) => Promise<boolean>
+}> = ({ currentValue = "", onSubmit, label }) => {
+  const dialog = useVisibilityState()
+  const [value, setValue] = useState(currentValue)
+  const [isLoading, setIsLoading] = useState(false)
+
   return (
     <Fragment>
       <DataBox
-        label={t`Name`}
-        value={value ?? ""}
-        onEditClick={() => setShowEditDialog(true)}
+        label={label}
+        value={currentValue || "-"}
+        onEditClick={dialog.show}
       />
-      {showEditDialog && (
+      {dialog.visible && (
         <Dialog>
           <DialogHeader
             title={t`Edit Name`}
-            onAcceptText={t`Save`}
-            onCancel={() => setShowEditDialog(false)}
-            onAccept={saveName}
-            loading={status === "loading"}
+            onCancel={dialog.hide}
+            loading={isLoading}
+            onAccept={async () => {
+              setIsLoading(true)
+              const ok = await onSubmit(value)
+              if (ok) {
+                dialog.hide()
+                setValue(currentValue)
+              }
+              setIsLoading(false)
+            }}
           />
           <Box sx={{ backgroundColor: "background" }} p={3}>
             <Input
-              label={t`Name`}
+              label={label}
               sx={{ width: "100%" }}
-              onChange={(e) => {
-                setName(e.target.value)
-              }}
-              value={name}
-            />
-          </Box>
-        </Dialog>
-      )}
-    </Fragment>
-  )
-}
-
-const EmailDataBox: FC<{ value?: string; guardianId: string }> = ({
-  value,
-  guardianId,
-}) => {
-  const [mutate, { status }] = usePatchGuardian(guardianId)
-  const [showEditDialog, setShowEditDialog] = useState(false)
-  const [email, setEmail] = useState(value)
-  const saveEmail = async () => {
-    await mutate({ email })
-    setShowEditDialog(false)
-  }
-  return (
-    <Fragment>
-      <DataBox
-        label={t`Email`}
-        value={value ?? ""}
-        onEditClick={() => setShowEditDialog(true)}
-      />
-      {showEditDialog && (
-        <Dialog>
-          <DialogHeader
-            title={t`Edit Email`}
-            onAcceptText={t`Save`}
-            onCancel={() => setShowEditDialog(false)}
-            onAccept={saveEmail}
-            loading={status === "loading"}
-          />
-          <Box sx={{ backgroundColor: "background" }} p={3}>
-            <Input
-              label={t`Email`}
-              sx={{ width: "100%" }}
-              onChange={(e) => {
-                setEmail(e.target.value)
-              }}
-              value={email}
-            />
-          </Box>
-        </Dialog>
-      )}
-    </Fragment>
-  )
-}
-
-const PhoneDataBox: FC<{ value?: string; guardianId: string }> = ({
-  value,
-  guardianId,
-}) => {
-  const [mutate, { status }] = usePatchGuardian(guardianId)
-  const [showEditDialog, setShowEditDialog] = useState(false)
-  const [phone, setPhone] = useState(value)
-  const savePhone = async () => {
-    await mutate({ phone })
-    setShowEditDialog(false)
-  }
-  return (
-    <Fragment>
-      <DataBox
-        label={t`Phone`}
-        value={value ?? ""}
-        onEditClick={() => setShowEditDialog(true)}
-      />
-      {showEditDialog && (
-        <Dialog>
-          <DialogHeader
-            title={t`Edit Phone`}
-            onAcceptText={t`Save`}
-            onCancel={() => setShowEditDialog(false)}
-            onAccept={savePhone}
-            loading={status === "loading"}
-          />
-          <Box sx={{ backgroundColor: "background" }} p={3}>
-            <Input
-              label={t`Phone`}
-              sx={{ width: "100%" }}
-              onChange={(e) => {
-                setPhone(e.target.value)
-              }}
-              value={phone}
+              onChange={(e) => setValue(e.target.value)}
+              value={value}
             />
           </Box>
         </Dialog>
@@ -205,7 +169,7 @@ const NoteDataBox: FC<{ value?: string; guardianId: string }> = ({
     <Fragment>
       <DataBox
         label={t`Note`}
-        value={value ?? ""}
+        value={value || "-"}
         onEditClick={() => setShowEditDialog(true)}
       />
       {showEditDialog && (
@@ -232,33 +196,5 @@ const NoteDataBox: FC<{ value?: string; guardianId: string }> = ({
     </Fragment>
   )
 }
-
-const DataBox: FC<{
-  label: string
-  value: string
-  onEditClick?: () => void
-}> = ({ label, value, onEditClick }) => (
-  <Flex px={3} py={3} sx={{ alignItems: "center" }}>
-    <Box>
-      <Typography.Body
-        sx={{ fontSize: 0, lineHeight: 1.4 }}
-        mb={1}
-        color="textMediumEmphasis"
-      >
-        <Trans id={label} />
-      </Typography.Body>
-      <Typography.Body sx={{ lineHeight: 1.6 }}>{value}</Typography.Body>
-    </Box>
-    <Button
-      variant="outline"
-      ml="auto"
-      px={2}
-      onClick={onEditClick}
-      aria-label={`edit-${label.toLowerCase()}`}
-    >
-      <Icon as={EditIcon} />
-    </Button>
-  </Flex>
-)
 
 export default PageGuardianProfile

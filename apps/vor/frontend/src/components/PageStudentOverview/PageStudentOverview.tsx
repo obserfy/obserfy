@@ -3,7 +3,7 @@ import { FC, Fragment, useMemo, useState } from "react"
 import { Box, Button, Flex, Image, jsx } from "theme-ui"
 import { t, Trans } from "@lingui/macro"
 import { Link, navigate } from "../Link/Link"
-import { useGetStudent } from "../../api/useGetStudent"
+import { useGetStudent } from "../../hooks/api/useGetStudent"
 import Typography from "../Typography/Typography"
 import Icon from "../Icon/Icon"
 import EmptyListPlaceholder from "../EmptyListPlaceholder/EmptyListPlaceholder"
@@ -11,7 +11,7 @@ import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import {
   Observation,
   useGetStudentObservations,
-} from "../../api/useGetStudentObservations"
+} from "../../hooks/api/useGetStudentObservations"
 import ObservationCard from "../ObservationCard/ObservationCard"
 import StudentProgressSummaryCard from "../StudentProgressSummaryCard/StudentProgressSummaryCard"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"

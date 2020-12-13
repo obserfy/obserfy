@@ -1,0 +1,16 @@
+{
+  "name": "Freyr Gatsby Graphql Schema",
+  "schemaPath": "src/__generated__/gatsby-schema.graphql",
+  "includes": ["./src/**/*.ts","./src/**/*.tsx", "./src/**/*.js"],
+  "extensions": {
+    "endpoints": {
+      "Default GraphQL Endpoint": {
+        "url": "http://localhost:8002/___graphql",
+        "headers": {
+          "user-agent": "JS GraphQL"
+        },
+        "introspect": false
+      }
+    }
+  }
+}

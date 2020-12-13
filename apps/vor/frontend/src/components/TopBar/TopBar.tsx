@@ -5,11 +5,12 @@ import BackButton from "../BackButton/BackButton"
 import Breadcrumb from "../Breadcrumb/Breadcrumb"
 import BreadcrumbItem from "../Breadcrumb/BreadcrumbItem"
 
+export interface BreadcrumbData {
+  to?: string
+  text: string
+}
 export interface TopBarProps {
-  breadcrumbs: Array<{
-    to?: string
-    text: string
-  }>
+  breadcrumbs: BreadcrumbData[]
 }
 export const TopBar: FC<TopBarProps> = ({ breadcrumbs }) => (
   <Flex sx={{ height: 48, alignItems: "center" }}>
@@ -26,5 +27,10 @@ export const TopBar: FC<TopBarProps> = ({ breadcrumbs }) => (
     </Breadcrumb>
   </Flex>
 )
+
+export const breadCrumb = (text?: string, to?: string): BreadcrumbData => ({
+  text: text ?? "",
+  to,
+})
 
 export default TopBar

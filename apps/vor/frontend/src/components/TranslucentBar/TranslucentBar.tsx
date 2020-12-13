@@ -1,10 +1,10 @@
 import React, { FC } from "react"
-import { Box, SxStyleProp } from "theme-ui"
+import { Box, ThemeUIStyleObject } from "theme-ui"
 import { useMemoryStatus } from "react-adaptive-hooks/memory"
 
 export interface TranslucentBarProps {
   as?: React.ElementType
-  boxSx?: SxStyleProp
+  boxSx?: ThemeUIStyleObject
 }
 export const TranslucentBar: FC<TranslucentBarProps> = ({
   boxSx,

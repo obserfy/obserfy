@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react"
 import { Card } from "theme-ui"
 import { t } from "@lingui/macro"
-import usePatchObservation from "../../api/observations/usePatchObservation"
+import usePatchObservation from "../../hooks/api/observations/usePatchObservation"
 import useVisibilityState from "../../hooks/useVisibilityState"
 import MultilineDataBox from "../MultilineDataBox/MultilineDataBox"
 import Dialog from "../Dialog/Dialog"

@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react"
-import { Button, Flex, BoxProps, SxStyleProp } from "theme-ui"
+import { Button, Flex, BoxProps, ThemeUIStyleObject } from "theme-ui"
 import { t } from "@lingui/macro"
 import { useLingui } from "@lingui/react"
 import Input from "../Input/Input"
@@ -13,7 +13,7 @@ interface Props extends Omit<BoxProps, "value" | "onChange" | "css"> {
   value?: Dayjs
   label?: string
   onChange: (date: Dayjs) => void
-  containerSx?: SxStyleProp
+  containerSx?: ThemeUIStyleObject
 }
 export const DateInput: FC<Props> = ({
   label,

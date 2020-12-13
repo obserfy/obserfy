@@ -5,11 +5,11 @@ import { t, Trans } from "@lingui/macro"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { ADMIN_URL } from "../../routes"
 import Typography from "../Typography/Typography"
-import { useGetAllStudents } from "../../api/students/useGetAllStudents"
+import { useGetAllStudents } from "../../hooks/api/students/useGetAllStudents"
 import SearchBar from "../SearchBar/SearchBar"
 import Pill from "../Pill/Pill"
 import AlertDialog from "../AlertDialog/AlertDialog"
-import { usePatchStudentApi } from "../../api/students/usePatchStudentApi"
+import { usePatchStudentApi } from "../../hooks/api/students/usePatchStudentApi"
 import StudentPicturePlaceholder from "../StudentPicturePlaceholder/StudentPicturePlaceholder"
 
 export const PageListOfStudents: FC = () => {

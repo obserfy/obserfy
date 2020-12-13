@@ -7,24 +7,26 @@ import BackNavigation from "../BackNavigation/BackNavigation"
 import { NEW_STUDENT_URL } from "../../routes"
 import Input from "../Input/Input"
 import Select from "../Select/Select"
-import { GuardianRelationship } from "../../api/students/usePostNewStudent"
+import { GuardianRelationship } from "../../hooks/api/students/usePostNewStudent"
 import Typography from "../Typography/Typography"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 
 import Icon from "../Icon/Icon"
 
-import { usePostNewGuardian } from "../../api/guardians/usePostNewGuardian"
+import { usePostNewGuardian } from "../../hooks/api/guardians/usePostNewGuardian"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import {
   Guardians,
   useGetSchoolGuardians,
-} from "../../api/guardians/useGetSchoolGuardians"
+} from "../../hooks/api/guardians/useGetSchoolGuardians"
 import TextArea from "../TextArea/TextArea"
 import GuardianRelationshipPickerDialog from "../GuardianRelationshipPickerDialog/GuardianRelationshipPickerDialog"
+import { useNewStudentFormContext } from "../PageNewStudent/NewStudentForm"
 
 export const PagePickGuardian: FC = () => {
   const { i18n } = useLingui()
   const guardians = useGetSchoolGuardians()
+  const { setState } = useNewStudentFormContext()
 
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
@@ -32,7 +34,7 @@ export const PagePickGuardian: FC = () => {
   const [note, setNote] = useState("")
   const [relationship, setRelationship] = useState(GuardianRelationship.Other)
   const [createNew, setCreateNew] = useState(false)
-  const [mutate, { status }] = usePostNewGuardian()
+  const [mutate, { isLoading }] = usePostNewGuardian()
 
   return (
     <Box sx={{ maxWidth: "maxWidth.sm" }} mx="auto" pb={4}>
@@ -86,34 +88,30 @@ export const PagePickGuardian: FC = () => {
                 mr={2}
                 onClick={() => setCreateNew(false)}
               >
-                Cancel
+                <Trans>Cancel</Trans>
               </Button>
               <Button
                 data-cy="save-guardian"
                 disabled={name === ""}
                 onClick={async () => {
-                  const result = await mutate({
-                    email,
-                    name,
-                    phone,
-                    note,
-                  })
+                  const payload = { email, name, phone, note }
+                  const result = await mutate(payload)
                   if (result?.ok) {
                     const resultJson = await result.json()
+                    setState((draft) => {
+                      draft.guardians.push({
+                        id: resultJson.id,
+                        relationship,
+                      })
+                    })
                     await navigate(NEW_STUDENT_URL, {
-                      state: {
-                        guardian: {
-                          id: resultJson.id,
-                          relationship,
-                        },
-                        preserveScroll: true,
-                      },
+                      state: { preserveScroll: true },
                     })
                   }
                 }}
               >
-                {status === "loading" && <LoadingIndicator color="onPrimary" />}
-                Save
+                {isLoading && <LoadingIndicator color="onPrimary" />}
+                <Trans>Save </Trans>
               </Button>
             </Flex>
           </>
@@ -159,6 +157,7 @@ export const PagePickGuardian: FC = () => {
 }
 
 const GuardianCard: FC<{ guardian: Guardians }> = ({ guardian }) => {
+  const { setState } = useNewStudentFormContext()
   const [showGuardianSelector, setShowGuardianSelector] = useState(false)
 
   return (
@@ -184,14 +183,14 @@ const GuardianCard: FC<{ guardian: Guardians }> = ({ guardian }) => {
         <GuardianRelationshipPickerDialog
           onDismiss={() => setShowGuardianSelector(false)}
           onAccept={(relationship) => {
+            setState((draft) => {
+              draft.guardians.push({
+                id: guardian.id,
+                relationship,
+              })
+            })
             navigate(NEW_STUDENT_URL, {
-              state: {
-                guardian: {
-                  id: guardian.id,
-                  relationship,
-                },
-                preserveScroll: true,
-              },
+              state: { preserveScroll: true },
             })
           }}
         />

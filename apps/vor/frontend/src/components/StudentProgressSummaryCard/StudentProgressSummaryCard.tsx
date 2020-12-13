@@ -10,12 +10,12 @@ import StudentMaterialProgressDialog from "../StudentMaterialProgressDialog/Stud
 
 import InformationalCard from "../InformationalCard/InformationalCard"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
-import { useGetCurriculumAreas } from "../../api/useGetCurriculumAreas"
+import { useGetCurriculumAreas } from "../../hooks/api/useGetCurriculumAreas"
 import {
   MaterialProgress,
   MaterialProgressStage,
   useGetStudentMaterialProgress,
-} from "../../api/useGetStudentMaterialProgress"
+} from "../../hooks/api/useGetStudentMaterialProgress"
 import MaterialProgressItem from "./MaterialProgressItem"
 import { ADMIN_CURRICULUM_URL, STUDENT_PROGRESS_URL } from "../../routes"
 

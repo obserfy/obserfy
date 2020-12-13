@@ -6,7 +6,7 @@ import TextArea from "../TextArea/TextArea"
 import { navigate } from "../Link/Link"
 import { ADMIN_GUARDIAN_URL } from "../../routes"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
-import { usePostNewGuardian } from "../../api/guardians/usePostNewGuardian"
+import { usePostNewGuardian } from "../../hooks/api/guardians/usePostNewGuardian"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { Typography } from "../Typography/Typography"
 

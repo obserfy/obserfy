@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import { Box, Button, Card, Flex, useColorMode } from "theme-ui"
 import { Trans } from "@lingui/macro"
 import { useLocalization } from "gatsby-theme-i18n"
-import { useGetSchool } from "../../api/schools/useGetSchool"
+import { useGetSchool } from "../../hooks/api/schools/useGetSchool"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import Typography from "../Typography/Typography"
 import {
@@ -47,7 +47,7 @@ export const PageAdmin: FC = () => {
           {schoolDetail.data?.name}
         </Typography.H6>
       )}
-      <Card mb={3} sx={{ borderRadius: [0, "default"] }}>
+      <Card mb={3} mx={[0, 3]} sx={{ borderRadius: [0, "default"] }}>
         <Link to={ADMIN_CURRICULUM_URL}>
           <Flex p={3}>
             <Typography.Body>
@@ -82,7 +82,7 @@ export const PageAdmin: FC = () => {
         </Link>
       </Card>
 
-      <Card mb={3} sx={{ borderRadius: [0, "default"] }}>
+      <Card mb={3} mx={[0, 3]} sx={{ borderRadius: [0, "default"] }}>
         <Link to={ADMIN_USERS_URL}>
           <Flex p={3}>
             <Typography.Body>
@@ -101,19 +101,23 @@ export const PageAdmin: FC = () => {
         </Link>
       </Card>
 
-      <Card mb={3} sx={{ borderRadius: [0, "default"] }}>
+      <Card mb={3} mx={[0, 3]} sx={{ borderRadius: [0, "default"] }}>
         <I18nButton />
         <ThemeModeButton />
       </Card>
 
-      <Flex mt={2} px={[3, 0]} sx={{ flexDirection: ["column", "row"] }}>
+      <Flex
+        mt={2}
+        px={[3, 0]}
+        mx={[0, 3]}
+        sx={{ flexDirection: ["column", "row"] }}
+      >
         <Button
           variant="outline"
           ml="auto"
           color="warning"
           onClick={() => navigate("/choose-school")}
           sx={{ width: ["100%", "auto"], flexShrink: 0 }}
-          py={2}
           mb={3}
         >
           <Trans>Switch school</Trans>

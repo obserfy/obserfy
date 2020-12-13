@@ -1,7 +1,7 @@
 package postgres
 
 import (
-	"github.com/chrsep/vor/pkg/guardian"
+	"github.com/chrsep/vor/pkg/domain"
 	"github.com/go-pg/pg/v10"
 	"github.com/go-pg/pg/v10/orm"
 	richErrors "github.com/pkg/errors"
@@ -31,21 +31,37 @@ func (s GuardianStore) CheckPermission(userId string, guardianId string) (bool, 
 	return true, nil
 }
 
-func (s GuardianStore) GetGuardian(id string) (*guardian.Guardian, error) {
+func (s GuardianStore) GetGuardian(id string) (*domain.Guardian, error) {
 	var result Guardian
 	if err := s.Model(&result).
 		Where("id=?", id).
+		Relation("Children").
 		Select(); err == pg.ErrNoRows {
 		return nil, nil
 	} else if err != nil {
 		return nil, richErrors.Wrap(err, "can't find guardian with the specified id")
 	}
-	return &guardian.Guardian{
-		Id:    result.Id,
-		Name:  result.Name,
-		Email: result.Email,
-		Phone: result.Phone,
-		Note:  result.Note,
+
+	children := make([]domain.Student, 0)
+	for _, child := range result.Children {
+		children = append(children, domain.Student{
+			Id:       child.Id,
+			Name:     child.Name,
+			Note:     child.Note,
+			CustomId: child.CustomId,
+			//DateOfBirth:  *child.DateOfBirth,
+			//DateOfEntry:  *child.DateOfEntry,
+			//Active:       *child.Active,
+		})
+	}
+	return &domain.Guardian{
+		Id:       result.Id,
+		Name:     result.Name,
+		Email:    result.Email,
+		Phone:    result.Phone,
+		Note:     result.Note,
+		Address:  result.Address,
+		Children: children,
 	}, nil
 }
 
@@ -62,18 +78,49 @@ func (s GuardianStore) DeleteGuardian(id string) (int, error) {
 	return result.RowsAffected(), nil
 }
 
-func (s GuardianStore) UpdateGuardian(guardian guardian.Guardian) (int, error) {
-	target := Guardian{
-		Id:    guardian.Id,
-		Name:  guardian.Name,
-		Email: guardian.Email,
-		Phone: guardian.Phone,
-		Note:  guardian.Note,
+func (s GuardianStore) UpdateGuardian(id string, name *string, email *string, phone *string, note *string, address *string) (*domain.Guardian, error) {
+	guardianModel := make(PartialUpdateModel)
+	guardianModel.AddStringColumn("name", name)
+	guardianModel.AddStringColumn("email", email)
+	guardianModel.AddStringColumn("phone", phone)
+	guardianModel.AddStringColumn("note", note)
+	guardianModel.AddStringColumn("address", address)
+
+	if _, err := s.Model(guardianModel.GetModel()).
+		TableExpr("guardians").
+		Where("id = ?", id).
+		Update(); err != nil {
+		return nil, richErrors.Wrap(err, "failed to update guardian")
 	}
-	if _, err := s.Model(&target).
-		WherePK().
-		UpdateNotZero(); err != nil {
-		return 0, richErrors.Wrap(err, "failed to update guardian")
+
+	var result Guardian
+	if err := s.Model(&result).
+		Where("id=?", id).
+		Relation("Children").
+		Select(); err != nil {
+		return nil, richErrors.Wrap(err, "can't find guardian with the specified id")
 	}
-	return 0, nil
+
+	children := make([]domain.Student, 0)
+	for _, child := range result.Children {
+		children = append(children, domain.Student{
+			Id:       child.Id,
+			Name:     child.Name,
+			Note:     child.Note,
+			CustomId: child.CustomId,
+			//DateOfBirth:  *child.DateOfBirth,
+			//DateOfEntry:  *child.DateOfEntry,
+			//Active:       *child.Active,
+		})
+	}
+
+	return &domain.Guardian{
+		Id:       result.Id,
+		Name:     result.Name,
+		Email:    result.Email,
+		Phone:    result.Phone,
+		Note:     result.Note,
+		Address:  result.Address,
+		Children: children,
+	}, nil
 }

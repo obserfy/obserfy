@@ -1,7 +1,7 @@
 import React, { FC } from "react"
 import Dialog from "../Dialog/Dialog"
 import Typography from "../Typography/Typography"
-import useDeleteArea from "../../api/curriculum/useDeleteArea"
+import useDeleteArea from "../../hooks/api/curriculum/useDeleteArea"
 import DialogHeader from "../DialogHeader/DialogHeader"
 import { borderBottom } from "../../border"
 

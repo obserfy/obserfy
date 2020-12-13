@@ -26,14 +26,14 @@ describe("test adding new student", function () {
 
     cy.contains("Save").click()
 
-    cy.contains(studentName).should("be.visible")
+    cy.contains(studentName).should("exist")
 
     cy.createClass()
 
     const studentName2 = faker.name.firstName()
     const studentId2 = faker.phone.phoneNumber()
     const notes2 = faker.lorem.lines(1)
-    cy.get("[data-cy=addStudent]").click()
+    cy.get("[data-cy=addStudent]").first().click({ force: true })
 
     cy.contains("Name")
       .find("input")
@@ -49,9 +49,6 @@ describe("test adding new student", function () {
     cy.contains("Student ID").type(studentId2)
     cy.contains("Notes").type(notes2)
 
-    cy.visitVor("/dashboard/students")
-    cy.contains(studentName).should("be.visible")
-    cy.visitVor("/dashboard/students/new")
     cy.contains("Name").find("input").should("have.value", studentName2)
     cy.get(`[data-cy="Date of Entry"]`).click()
     cy.get(`[data-cy="prev-month"]`).click()
@@ -60,14 +57,15 @@ describe("test adding new student", function () {
     cy.get(`[data-cy=confirm]`).click()
 
     cy.get("@class").then((newClass: any) => {
+      // don't select the student's list
       cy.contains(newClass.name).click()
     })
-    cy.get("[data-cy=add-student]").click()
+    cy.get("[data-cy=add-guardian]").click()
 
     const newGuardianName = faker.name.firstName()
     cy.contains("Guardian Name").type(newGuardianName)
     cy.contains("Create").click()
-    cy.get("[data-cy=save-guardian]").click()
+    cy.get("[data-cy=finish-cta]").click()
 
     cy.contains(newGuardianName).should("be.visible")
 

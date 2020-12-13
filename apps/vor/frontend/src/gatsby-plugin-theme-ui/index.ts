@@ -20,13 +20,13 @@ const theme: Theme = {
     primaryDark: "#00a06d",
     onPrimaryDark: "#fff",
 
-    primaryLight: "rgba(0,120,86,0.24)",
+    primaryLight: "rgba(0,227,153,0.24)",
     onPrimaryLight: "text",
 
-    primaryLighter: "rgba(0,120,86,0.12)",
+    primaryLighter: "rgba(0,227,153,0.12)",
     onPrimaryLighter: "text",
 
-    primaryLightest: "rgba(0,120,86,0.05)",
+    primaryLightest: "rgba(0,227,153,0.05)",
     onPrimaryLightest: "text",
 
     secondary: "#30c",
@@ -226,6 +226,7 @@ const theme: Theme = {
       px: 3,
       whiteSpace: "nowrap",
       display: "flex",
+      flexShrink: 0,
       alignItems: "center",
       justifyContent: "center",
       touchAction: "manipulation",
@@ -256,7 +257,9 @@ const theme: Theme = {
       color: "textPrimary",
       bg: "transparent",
       border: "none",
+      flexShrink: 0,
       boxShadow: "none",
+      fontWeight: "bold",
       "&:hover, &:focus": {
         backgroundColor: "primaryLighter",
         borderColor: "primary",
@@ -268,6 +271,7 @@ const theme: Theme = {
       backgroundColor: "surface",
       color: "textPrimary",
       boxShadow: "none",
+      flexShrink: 0,
       "&:hover, &:focus": {
         backgroundColor: "primaryLighter",
         borderColor: "primary",

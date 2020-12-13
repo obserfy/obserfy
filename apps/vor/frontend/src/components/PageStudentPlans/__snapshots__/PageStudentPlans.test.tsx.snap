@@ -89,6 +89,9 @@ exports[`PageStudentPlans should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -104,6 +107,7 @@ exports[`PageStudentPlans should render correctly 1`] = `
   border-width: 1px;
   line-height: 1;
   border: none;
+  font-weight: bold;
   padding: 4px;
 }
 
@@ -114,7 +118,7 @@ exports[`PageStudentPlans should render correctly 1`] = `
 
 .emotion-4:hover,
 .emotion-4:focus {
-  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,120,86,0.12));
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
   border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
@@ -265,6 +269,9 @@ exports[`PageStudentPlans should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -294,7 +301,7 @@ exports[`PageStudentPlans should render correctly 1`] = `
 
 .emotion-16:hover,
 .emotion-16:focus {
-  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,120,86,0.12));
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
   border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
@@ -363,6 +370,9 @@ exports[`PageStudentPlans should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -391,7 +401,7 @@ exports[`PageStudentPlans should render correctly 1`] = `
 
 .emotion-18:hover,
 .emotion-18:focus {
-  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,120,86,0.12));
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
   border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
@@ -446,6 +456,9 @@ exports[`PageStudentPlans should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -473,7 +486,7 @@ exports[`PageStudentPlans should render correctly 1`] = `
 
 .emotion-20:hover,
 .emotion-20:focus {
-  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,120,86,0.12));
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
   border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
@@ -541,6 +554,9 @@ exports[`PageStudentPlans should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -565,7 +581,7 @@ exports[`PageStudentPlans should render correctly 1`] = `
 
 .emotion-22:hover,
 .emotion-22:focus {
-  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,120,86,0.12));
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
   border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
