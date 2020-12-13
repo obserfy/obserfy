@@ -109,6 +109,11 @@ msgstr "Jumlah Jatuh Tempo"
 msgid "And more coming..."
 msgstr "Dan masih banyak lagi..."
 
+#: src/pages/dashboard/admin/guardians/profile.tsx:35
+#: src/pages/dashboard/students/profile/guardians/profile.tsx:40
+msgid "Are you sure you want to delete this guardian completely?"
+msgstr ""
+
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:53
 msgid "Are you sure you want to delete this image?"
 msgstr "Anda yakin ingin menghapus gambar ini?"
@@ -278,6 +283,8 @@ msgstr "Tanggal Masuk"
 #: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:79
 #: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:81
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:142
+#: src/pages/dashboard/admin/guardians/profile.tsx:35
+#: src/pages/dashboard/students/profile/guardians/profile.tsx:40
 msgid "Delete"
 msgstr "Hapus"
 
@@ -296,6 +303,11 @@ msgstr "Hapus Observasi?"
 #: src/components/DeleteSubjectDialog/DeleteSubjectDialog.tsx:19
 msgid "Delete Subject?"
 msgstr "Hapus Mata Pelajaran?"
+
+#: src/pages/dashboard/admin/guardians/profile.tsx:35
+#: src/pages/dashboard/students/profile/guardians/profile.tsx:40
+msgid "Delete guardian?"
+msgstr ""
 
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:53
 msgid "Delete image?"
@@ -320,7 +332,11 @@ msgid "Details"
 msgstr "Detil"
 
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:142
-msgid "Do you really want to remove {name}?"
+#~ msgid "Do you really want to remove {name}?"
+#~ msgstr ""
+
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:142
+msgid "Do you want to remove {name} from  {studentName}'s list of guardians?"
 msgstr ""
 
 #: src/components/PageSubscription/PageSubscription.tsx:77
@@ -470,7 +486,7 @@ msgstr "Buka Kurikulum"
 msgid "Guardian Name"
 msgstr "Nama Wali Murid"
 
-#: src/pages/dashboard/students/profile/guardians/profile.tsx:19
+#: src/pages/dashboard/students/profile/guardians/profile.tsx:34
 msgid "Guardian Profile"
 msgstr "Profil Wali"
 
@@ -766,7 +782,7 @@ msgstr "Telah ditunjukan"
 #: src/components/PageAddGuardian/PageAddGuardian.tsx:61
 #: src/components/PageStudentOverview/PageStudentOverview.tsx:52
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:52
-#: src/pages/dashboard/students/profile/guardians/profile.tsx:18
+#: src/pages/dashboard/students/profile/guardians/profile.tsx:33
 msgid "Profile"
 msgstr "Profil"
 
@@ -977,7 +993,7 @@ msgstr "ID Murid"
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:50
 #: src/pages/dashboard/students/observation-details.tsx:23
 #: src/pages/dashboard/students/observations/details.tsx:18
-#: src/pages/dashboard/students/profile/guardians/profile.tsx:16
+#: src/pages/dashboard/students/profile/guardians/profile.tsx:31
 msgid "Students"
 msgstr "Murid"
 

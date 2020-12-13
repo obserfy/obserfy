@@ -151,6 +151,7 @@ export const PageStudentProfile: FC<Props> = ({ studentId }) => {
             guardianId={id}
             name={name}
             email={email}
+            studentName={data?.name}
           />
         ))}
       </Card>
@@ -168,10 +169,11 @@ export const PageStudentProfile: FC<Props> = ({ studentId }) => {
 
 const GuardianItem: FC<{
   studentId: string
+  studentName: string
   guardianId: string
   name: string
   email: string
-}> = ({ studentId, guardianId, name, email }) => {
+}> = ({ studentId, studentName, guardianId, name, email }) => {
   const dialog = useVisibilityState()
   const [removeGuardian, { isLoading }] = useDeleteGuardianRelation(
     guardianId,
@@ -233,7 +235,7 @@ const GuardianItem: FC<{
       {dialog.visible && (
         <AlertDialog
           title={t`Remove guardian?`}
-          body={t`Do you really want to remove ${name}?`}
+          body={t`Do you want to remove ${name} from  ${studentName}'s list of guardians?`}
           positiveText={t`Delete`}
           loading={isLoading}
           onDismiss={dialog.hide}
