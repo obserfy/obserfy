@@ -97,21 +97,29 @@ type (
 	}
 )
 
-type (
-	Student struct {
-		Id           string
-		Name         string
-		DateOfBirth  time.Time
-		DateOfEntry  time.Time
-		Note         string
-		CustomId     string
-		Active       bool
-		LessonPlans  []LessonPlan
-		Images       []Image
-		ProfileImage Image
-		//TODO: Guardians      []Guardian
-		//TODO: School         School
-		//TODO: Classes        []Class
-		//TODO: Gender         Gender
-	}
-)
+type Student struct {
+	Id           string
+	Name         string
+	DateOfBirth  time.Time
+	DateOfEntry  time.Time
+	Note         string
+	CustomId     string
+	Active       bool
+	LessonPlans  []LessonPlan
+	Images       []Image
+	ProfileImage Image
+	Guardians    []Guardian
+	//TODO: School         School
+	//TODO: Classes        []Class
+	//TODO: Gender         Gender
+}
+
+type Guardian struct {
+	Id       string
+	Name     string
+	Email    string
+	Phone    string
+	Note     string
+	Address  string
+	Children []Student
+}
