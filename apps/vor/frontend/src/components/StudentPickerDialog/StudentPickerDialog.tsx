@@ -5,7 +5,7 @@ import { Box, Flex } from "theme-ui"
 import {
   Student,
   useGetAllStudents,
-} from "../../api/students/useGetAllStudents"
+} from "../../hooks/api/students/useGetAllStudents"
 import Dialog from "../Dialog/Dialog"
 import DialogHeader from "../DialogHeader/DialogHeader"
 import Input from "../Input/Input"

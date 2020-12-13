@@ -1,14 +1,14 @@
 import React, { FC, useLayoutEffect, useRef, useState } from "react"
 import { Box, Button, Flex, Image } from "theme-ui"
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock"
-import { useGetStudent } from "../../api/useGetStudent"
+import { useGetStudent } from "../../hooks/api/useGetStudent"
 import Portal from "../Portal/Portal"
 import Icon from "../Icon/Icon"
 import { ReactComponent as CloseIcon } from "../../icons/close.svg"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
 import Typography from "../Typography/Typography"
 import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
-import useDeleteImage from "../../api/useDeleteImage"
+import useDeleteImage from "../../hooks/api/useDeleteImage"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 
 export interface ImagePreviewOverlayProps {

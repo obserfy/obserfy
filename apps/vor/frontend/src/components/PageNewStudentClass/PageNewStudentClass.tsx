@@ -5,9 +5,9 @@ import { Trans } from "@lingui/macro"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { EDIT_STUDENT_CLASS_URL } from "../../routes"
 
-import { useGetStudent } from "../../api/useGetStudent"
+import { useGetStudent } from "../../hooks/api/useGetStudent"
 import { Typography } from "../Typography/Typography"
-import usePostNewClass from "../../api/classes/usePostNewClass"
+import usePostNewClass from "../../hooks/api/classes/usePostNewClass"
 import Input from "../Input/Input"
 import Chip from "../Chip/Chip"
 
@@ -16,7 +16,7 @@ import ErrorMessage from "../ErrorMessage/ErrorMessage"
 import { WEEKDAYS } from "../PageNewClass/PageNewClass"
 import dayjs from "../../dayjs"
 import { navigate } from "../Link/Link"
-import usePostStudentClassRelation from "../../api/students/usePostStudentClassRelation"
+import usePostStudentClassRelation from "../../hooks/api/students/usePostStudentClassRelation"
 
 interface Props {
   id: string

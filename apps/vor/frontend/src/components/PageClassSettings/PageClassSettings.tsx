@@ -8,7 +8,7 @@ import BackNavigation from "../BackNavigation/BackNavigation"
 import { ADMIN_URL, NEW_CLASS_URL, EDIT_CLASS_URL } from "../../routes"
 import Typography from "../Typography/Typography"
 
-import useGetSchoolClasses from "../../api/classes/useGetSchoolClasses"
+import useGetSchoolClasses from "../../hooks/api/classes/useGetSchoolClasses"
 
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 

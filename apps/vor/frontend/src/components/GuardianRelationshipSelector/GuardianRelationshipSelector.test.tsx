@@ -1,5 +1,5 @@
 import React from "react"
-import { GuardianRelationship } from "../../api/students/usePostNewStudent"
+import { GuardianRelationship } from "../../hooks/api/students/usePostNewStudent"
 import { render } from "../../test-utils"
 import GuardianRelationshipSelector from "./GuardianRelationshipSelector"
 

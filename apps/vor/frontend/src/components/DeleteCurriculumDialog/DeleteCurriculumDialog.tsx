@@ -4,7 +4,7 @@ import Dialog from "../Dialog/Dialog"
 import DialogHeader from "../DialogHeader/DialogHeader"
 import Typography from "../Typography/Typography"
 import { borderBottom } from "../../border"
-import useDeleteCurriculum from "../../api/curriculum/useDeleteCurriculum"
+import useDeleteCurriculum from "../../hooks/api/curriculum/useDeleteCurriculum"
 
 export interface DeleteCurriculumDialogProps {
   onDismiss: () => void

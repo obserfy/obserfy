@@ -7,7 +7,7 @@ import Typography from "../Typography/Typography"
 import Spacer from "../Spacer/Spacer"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import Dialog from "../Dialog/Dialog"
-import useDeleteClass from "../../api/classes/useDeleteClass"
+import useDeleteClass from "../../hooks/api/classes/useDeleteClass"
 import { CLASS_SETTINGS_URL } from "../../routes"
 
 interface Props {

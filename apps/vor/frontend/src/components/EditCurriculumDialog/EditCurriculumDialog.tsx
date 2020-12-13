@@ -4,7 +4,7 @@ import { t } from "@lingui/macro"
 import Dialog from "../Dialog/Dialog"
 import Input from "../Input/Input"
 import DialogHeader from "../DialogHeader/DialogHeader"
-import usePatchCurriculum from "../../api/curriculum/usePatchCurriculum"
+import usePatchCurriculum from "../../hooks/api/curriculum/usePatchCurriculum"
 
 export interface EditCurriculumDialogProps {
   curriculumId: string

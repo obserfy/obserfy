@@ -5,10 +5,10 @@ import { useImmer } from "use-immer"
 import { nanoid } from "nanoid"
 
 import { t, Trans } from "@lingui/macro"
-import { useGetCurriculumAreas } from "../../api/useGetCurriculumAreas"
+import { useGetCurriculumAreas } from "../../hooks/api/useGetCurriculumAreas"
 import usePostNewPlan, {
   PostNewLessonPlanBody,
-} from "../../api/plans/usePostNewPlan"
+} from "../../hooks/api/plans/usePostNewPlan"
 import dayjs from "../../dayjs"
 import {
   ADMIN_CURRICULUM_URL,
@@ -22,13 +22,13 @@ import Input from "../Input/Input"
 import TextArea from "../TextArea/TextArea"
 import Chip from "../Chip/Chip"
 import { navigate } from "../Link/Link"
-import { useGetStudent } from "../../api/useGetStudent"
+import { useGetStudent } from "../../hooks/api/useGetStudent"
 import { ReactComponent as LinkIcon } from "../../icons/link.svg"
 import Icon from "../Icon/Icon"
 import LinkInput from "../LinkInput/LinkInput"
 import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
 import InformationalCard from "../InformationalCard/InformationalCard"
-import { Student } from "../../api/students/useGetAllStudents"
+import { Student } from "../../hooks/api/students/useGetAllStudents"
 import StudentPicturePlaceholder from "../StudentPicturePlaceholder/StudentPicturePlaceholder"
 import BackButton from "../BackButton/BackButton"
 import Breadcrumb from "../Breadcrumb/Breadcrumb"
