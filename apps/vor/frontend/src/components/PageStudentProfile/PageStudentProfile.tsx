@@ -3,14 +3,16 @@ import { t, Trans } from "@lingui/macro"
 import { useLingui } from "@lingui/react"
 import { FC, Fragment, useState } from "react"
 import { Box, Button, Card, Flex, jsx } from "theme-ui"
+import { useDeleteGuardianRelation } from "../../api/guardians/useDeleteGuardianRelation"
 import { usePatchStudentApi } from "../../api/students/usePatchStudentApi"
 import { Gender } from "../../api/students/usePostNewStudent"
 import { useGetStudent } from "../../api/useGetStudent"
 import { borderTop } from "../../border"
 import dayjs from "../../dayjs"
 import { getFirstName } from "../../domain/person"
+import useVisibilityState from "../../hooks/useVisibilityState"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
-import { ReactComponent as ChevronRight } from "../../icons/next-arrow.svg"
+import { ReactComponent as CloseIcon } from "../../icons/close.svg"
 import {
   ADD_GUARDIAN_URL,
   EDIT_STUDENT_CLASS_URL,
@@ -143,48 +145,13 @@ export const PageStudentProfile: FC<Props> = ({ studentId }) => {
         )}
 
         {data?.guardians?.map(({ id, email, name }) => (
-          <Link
+          <GuardianItem
             key={id}
-            to={STUDENT_PROFILE_GUARDIAN_PROFILE_URL(studentId, id)}
-          >
-            <Flex
-              p={2}
-              sx={{
-                ...borderTop,
-                alignItems: "center",
-                transition: "background-color 100ms ease-in-out",
-                "&:hover": {
-                  backgroundColor: "primaryLightest",
-                },
-              }}
-            >
-              <Typography.Body
-                p={2}
-                sx={{
-                  width: "80%",
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
-                }}
-              >
-                {name}
-              </Typography.Body>
-              <Typography.Body
-                py={1}
-                px={email ? 0 : 2}
-                backgroundColor={email ? "transparent" : "tintWarning"}
-                sx={{
-                  width: "100%",
-                  borderRadius: "default",
-                  fontWeight: email ? "normal" : "bold",
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
-                }}
-              >
-                {email || <Trans>No email set</Trans>}
-              </Typography.Body>
-              <Icon as={ChevronRight} mx={2} />
-            </Flex>
-          </Link>
+            studentId={studentId}
+            guardianId={id}
+            name={name}
+            email={email}
+          />
         ))}
       </Card>
 
@@ -196,6 +163,88 @@ export const PageStudentProfile: FC<Props> = ({ studentId }) => {
         />
       </Box>
     </Box>
+  )
+}
+
+const GuardianItem: FC<{
+  studentId: string
+  guardianId: string
+  name: string
+  email: string
+}> = ({ studentId, guardianId, name, email }) => {
+  const dialog = useVisibilityState()
+  const [removeGuardian, { isLoading }] = useDeleteGuardianRelation(
+    guardianId,
+    studentId
+  )
+
+  return (
+    <Fragment>
+      <Link to={STUDENT_PROFILE_GUARDIAN_PROFILE_URL(studentId, guardianId)}>
+        <Flex
+          p={2}
+          sx={{
+            ...borderTop,
+            alignItems: "center",
+            transition: "background-color 100ms ease-in-out",
+            "&:hover": {
+              backgroundColor: "primaryLightest",
+            },
+          }}
+        >
+          <Typography.Body
+            p={2}
+            sx={{
+              width: "80%",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+            }}
+          >
+            {name}
+          </Typography.Body>
+          <Typography.Body
+            py={1}
+            px={email ? 0 : 2}
+            backgroundColor={email ? "transparent" : "tintWarning"}
+            sx={{
+              width: "100%",
+              borderRadius: "default",
+              fontWeight: email ? "normal" : "bold",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {email || <Trans>No email set</Trans>}
+          </Typography.Body>
+          <Button
+            variant="outline"
+            p={1}
+            mx={2}
+            onClick={(e) => {
+              e.preventDefault()
+              dialog.show()
+            }}
+          >
+            <Icon as={CloseIcon} fill="danger" />
+          </Button>
+        </Flex>
+      </Link>
+      {dialog.visible && (
+        <AlertDialog
+          title={t`Remove guardian?`}
+          body={t`Do you really want to remove ${name}?`}
+          positiveText={t`Delete`}
+          loading={isLoading}
+          onDismiss={dialog.hide}
+          onNegativeClick={dialog.hide}
+          onPositiveClick={async () => {
+            const result = await removeGuardian()
+            if (result?.ok) dialog.hide()
+          }}
+        />
+      )}
+    </Fragment>
   )
 }
 

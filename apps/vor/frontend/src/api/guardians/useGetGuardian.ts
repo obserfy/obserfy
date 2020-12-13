@@ -8,6 +8,10 @@ interface Guardian {
   note: string
   phone: string
   address: string
+  children: Array<{
+    id: string
+    name: string
+  }>
 }
 export const useGetGuardian = (guardianId: string): QueryResult<Guardian> => {
   const fetchGuardian = getApi<Guardian>(`/guardians/${guardianId}`)
