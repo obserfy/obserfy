@@ -8,7 +8,7 @@ msgstr ""
 "Language: id\n"
 "Project-Id-Version: a9762ad8ff131d2a39fce5fce9d2fb91\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2020-12-10 13:35\n"
+"PO-Revision-Date: 2020-12-13 12:42\n"
 "Last-Translator: \n"
 "Language-Team: Indonesian\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -40,7 +40,7 @@ msgstr ""
 #: src/components/PageNewStudent/NewStudentForm.tsx:122
 #: src/components/PageNewStudentAddGuardian/PageNewStudentAddGuardian.tsx:67
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:153
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:90
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:92
 #: src/components/StudentPickerDialog/StudentPickerDialog.tsx:30
 #: src/components/TopBarWithAction/TopBarWithAction.tsx:11
 msgid "Add"
@@ -79,7 +79,7 @@ msgid "Add some description here"
 msgstr "Tambahkan deskripsi disini"
 
 #: src/components/NewGuardianForm/NewGuardianForm.tsx:15
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:49
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:56
 msgid "Address"
 msgstr ""
 
@@ -108,6 +108,11 @@ msgstr "Jumlah Jatuh Tempo"
 #: src/components/PageSubscription/PageSubscription.tsx:103
 msgid "And more coming..."
 msgstr "Dan masih banyak lagi..."
+
+#: src/pages/dashboard/admin/guardians/profile.tsx:35
+#: src/pages/dashboard/students/profile/guardians/profile.tsx:40
+msgid "Are you sure you want to delete this guardian completely?"
+msgstr ""
 
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:53
 msgid "Are you sure you want to delete this image?"
@@ -157,7 +162,7 @@ msgstr "Tersedia setiap"
 #: src/components/PagePickGuardian/PagePickGuardian.tsx:56
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:53
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:62
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:277
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:297
 #: src/components/WarningDialog/WarningDialog.tsx:25
 msgid "Cancel"
 msgstr "Batal"
@@ -180,7 +185,7 @@ msgstr "Kelas"
 
 #: src/components/PageClassSettings/PageClassSettings.tsx:27
 #: src/components/PageNewStudent/NewStudentForm.tsx:89
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:64
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:66
 msgid "Classes"
 msgstr "Kelas"
 
@@ -266,7 +271,7 @@ msgid "Date of Birth"
 msgstr "Tanggal Lahir"
 
 #: src/components/PageNewStudent/NewStudentForm.tsx:69
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:241
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:261
 msgid "Date of Entry"
 msgstr "Tanggal Masuk"
 
@@ -277,6 +282,9 @@ msgstr "Tanggal Masuk"
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:53
 #: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:79
 #: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:81
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:142
+#: src/pages/dashboard/admin/guardians/profile.tsx:35
+#: src/pages/dashboard/students/profile/guardians/profile.tsx:40
 msgid "Delete"
 msgstr "Hapus"
 
@@ -294,6 +302,11 @@ msgstr "Hapus Observasi?"
 
 #: src/components/DeleteSubjectDialog/DeleteSubjectDialog.tsx:19
 msgid "Delete Subject?"
+msgstr ""
+
+#: src/pages/dashboard/admin/guardians/profile.tsx:35
+#: src/pages/dashboard/students/profile/guardians/profile.tsx:40
+msgid "Delete guardian?"
 msgstr ""
 
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:53
@@ -318,12 +331,20 @@ msgstr "Deskripsi"
 msgid "Details"
 msgstr "Detil"
 
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:142
+#~ msgid "Do you really want to remove {name}?"
+#~ msgstr "Do you really want to remove {name}?"
+
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:142
+msgid "Do you want to remove {name} from  {studentName}'s list of guardians?"
+msgstr ""
+
 #: src/components/PageSubscription/PageSubscription.tsx:77
 msgid "Early Access"
 msgstr "Akses Awal"
 
 #: src/components/MultilineDataBox/MultilineDataBox.tsx:21
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:68
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:70
 msgid "Edit"
 msgstr "Ubah"
 
@@ -355,7 +376,7 @@ msgstr "Ubah Detil"
 #~ msgid "Edit Email"
 #~ msgstr "Edit Email"
 
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:170
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:190
 msgid "Edit Gender"
 msgstr "Ubah Jenis Kelamin"
 
@@ -363,16 +384,16 @@ msgstr "Ubah Jenis Kelamin"
 #~ msgid "Edit Guardians"
 #~ msgstr "Edit Guardians"
 
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:64
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:140
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:90
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:160
 msgid "Edit Name"
 msgstr "Ubah Nama"
 
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:90
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:116
 msgid "Edit Note"
 msgstr "Ubah Catatan"
 
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:216
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:236
 msgid "Edit Notes"
 msgstr "Ubah Catatan"
 
@@ -384,7 +405,7 @@ msgstr "Ubah Catatan"
 msgid "Edit Short Description"
 msgstr "Ubah Deskripsi Pendek"
 
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:196
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:216
 msgid "Edit Student ID"
 msgstr "Ubah ID Murid"
 
@@ -399,7 +420,7 @@ msgstr "Ubah Judul"
 
 #: src/components/NewGuardianForm/NewGuardianForm.tsx:13
 #: src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx:34
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:39
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:46
 msgid "Email"
 msgstr "Email"
 
@@ -426,8 +447,8 @@ msgid "Father"
 msgstr "Ayah"
 
 #: src/components/PageNewStudent/NewStudentForm.tsx:77
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:164
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:179
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:184
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:199
 msgid "Female"
 msgstr "Perempuan"
 
@@ -441,8 +462,8 @@ msgid "Gallery"
 msgstr "Galeri"
 
 #: src/components/PageNewStudent/NewStudentForm.tsx:72
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:159
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:174
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:179
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:194
 msgid "Gender"
 msgstr "Jenis Kelamin"
 
@@ -465,12 +486,12 @@ msgstr "Buka Kurikulum"
 msgid "Guardian Name"
 msgstr "Nama Wali Murid"
 
-#: src/pages/dashboard/students/profile/guardians/profile.tsx:19
+#: src/pages/dashboard/students/profile/guardians/profile.tsx:34
 msgid "Guardian Profile"
 msgstr ""
 
 #: src/components/PageNewStudent/NewStudentForm.tsx:118
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:86
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:88
 msgid "Guardians"
 msgstr "Wali Murid"
 
@@ -530,12 +551,12 @@ msgid "Log Out"
 msgstr "Keluar"
 
 #: src/components/PageNewStudent/NewStudentForm.tsx:76
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:162
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:178
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:182
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:198
 msgid "Male"
 msgstr "Laki-laki"
 
-#: src/api/useGetStudentMaterialProgress.ts:44
+#: src/hooks/api/useGetStudentMaterialProgress.ts:44
 msgid "Mastered"
 msgstr "Dikuasai"
 
@@ -557,10 +578,10 @@ msgstr "Senin"
 msgid "Mother"
 msgstr "Ibu"
 
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:34
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:41
 #: src/components/PageNewClass/PageNewClass.tsx:57
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:138
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:142
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:158
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:162
 msgid "Name"
 msgstr "Nama"
 
@@ -610,7 +631,7 @@ msgstr "Buat sekolah baru"
 msgid "Next Bill"
 msgstr "Tagihan Selanjutnya"
 
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:75
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:77
 msgid "No class has been set"
 msgstr ""
 
@@ -623,12 +644,12 @@ msgstr ""
 #~ msgstr "No email"
 
 #: src/components/PageListOfGuardians/PageListOfGuardians.tsx:59
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:117
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:132
 #: src/components/SimpleGuardiansSelector/SimpleGuardiansSelector.tsx:32
 msgid "No email set"
 msgstr ""
 
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:96
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:98
 msgid "No guardians has been set"
 msgstr ""
 
@@ -667,22 +688,22 @@ msgstr "Tidak ada"
 
 #: src/components/DateInput/DateInput.tsx:30
 #: src/components/PageNewStudent/NewStudentForm.tsx:75
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:166
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:177
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:194
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:186
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:197
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:214
 msgid "Not Set"
 msgstr "Belum Dipilih"
 
 #: src/components/NewGuardianForm/NewGuardianForm.tsx:16
 #: src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx:36
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:88
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:92
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:114
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:118
 msgid "Note"
 msgstr "Catatan"
 
 #: src/components/PageNewStudent/NewStudentForm.tsx:82
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:214
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:218
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:234
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:238
 msgid "Notes"
 msgstr "Catatan"
 
@@ -727,7 +748,7 @@ msgstr "Detil Pembayaran"
 
 #: src/components/NewGuardianForm/NewGuardianForm.tsx:14
 #: src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx:35
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:44
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:51
 msgid "Phone"
 msgstr "Telepon"
 
@@ -750,18 +771,18 @@ msgstr "Posting dan upvote pada saran, ide, dan masalah"
 msgid "Posted on"
 msgstr "Diunggah pada"
 
-#: src/api/useGetStudentMaterialProgress.ts:47
+#: src/hooks/api/useGetStudentMaterialProgress.ts:47
 msgid "Practiced"
 msgstr "Telah dilatih"
 
-#: src/api/useGetStudentMaterialProgress.ts:50
+#: src/hooks/api/useGetStudentMaterialProgress.ts:50
 msgid "Presented"
 msgstr "Telah ditunjukan"
 
 #: src/components/PageAddGuardian/PageAddGuardian.tsx:61
 #: src/components/PageStudentOverview/PageStudentOverview.tsx:52
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:50
-#: src/pages/dashboard/students/profile/guardians/profile.tsx:18
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:52
+#: src/pages/dashboard/students/profile/guardians/profile.tsx:33
 msgid "Profile"
 msgstr "Profil"
 
@@ -791,6 +812,10 @@ msgstr ""
 msgid "Remove Guardian?"
 msgstr ""
 
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:142
+msgid "Remove guardian?"
+msgstr ""
+
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:143
 msgid "Repeat Until"
 msgstr "Ulang sampai"
@@ -814,7 +839,7 @@ msgstr "Sabtu"
 #: src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx:49
 #: src/components/PageEditClass/PageEditClass.tsx:94
 #: src/components/PageEditSubject/PageEditSubject.tsx:139
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:90
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:116
 #: src/components/PageNewClass/PageNewClass.tsx:77
 #: src/components/PageNewObservation/PageNewObservation.tsx:85
 #: src/components/PageNewSchool/PageNewSchool.tsx:50
@@ -827,10 +852,10 @@ msgstr "Sabtu"
 #: src/components/PagePickGuardian/PagePickGuardian.tsx:75
 #: src/components/PageStudentPlanDetails/LessonPlanDescriptionCard.tsx:30
 #: src/components/PageStudentPlanDetails/LessonPlanMetaCard.tsx:57
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:140
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:170
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:196
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:160
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:190
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:216
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:236
 msgid "Save"
 msgstr "Simpan"
 
@@ -874,11 +899,11 @@ msgstr "Kirim undangan"
 msgid "Set"
 msgstr "Pasang"
 
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:258
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:278
 msgid "Set as Active"
 msgstr ""
 
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:259
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:279
 msgid "Set as Inactive"
 msgstr ""
 
@@ -946,13 +971,13 @@ msgstr "Mulai dengan Kurikulum Montessori dasar yang dapat Anda modifikasi sesua
 msgid "Start with a blank curriculum that you can customize from scratch."
 msgstr "Mulai dengan kurikulum kosong yang dapat Anda kustom dari awal."
 
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:268
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:288
 msgid "Status"
 msgstr "Status"
 
 #: src/components/PageNewStudent/NewStudentForm.tsx:79
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:194
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:198
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:214
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:218
 msgid "Student ID"
 msgstr "ID Murid"
 
@@ -965,10 +990,10 @@ msgstr "ID Murid"
 #: src/components/PageStudentOverview/PageStudentOverview.tsx:35
 #: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:36
 #: src/components/PageStudentPlans/PageStudentPlans.tsx:23
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:48
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:50
 #: src/pages/dashboard/students/observation-details.tsx:23
 #: src/pages/dashboard/students/observations/details.tsx:18
-#: src/pages/dashboard/students/profile/guardians/profile.tsx:16
+#: src/pages/dashboard/students/profile/guardians/profile.tsx:31
 msgid "Students"
 msgstr "Murid"
 
@@ -1015,6 +1040,10 @@ msgstr "Tidak ada murid dengan nama <0>\"{term}\"</0>"
 #: src/components/PageAdmin/PageAdmin.tsx:138
 msgid "Theme"
 msgstr "Tema"
+
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:76
+msgid "This guardian doesn't have any children registered yet."
+msgstr ""
 
 #: src/components/PageNewStudent/NewStudentForm.tsx:128
 msgid "This student doesn't have a guardian yet."
@@ -1098,7 +1127,7 @@ msgstr "Tulis sesuatu"
 #: src/components/PageEditStudentClass/PageEditStudentClass.tsx:99
 #: src/components/PageListOfStudents/PageListOfStudents.tsx:70
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:60
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:277
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:297
 #: src/components/WarningDialog/WarningDialog.tsx:30
 msgid "Yes"
 msgstr "Ya"
