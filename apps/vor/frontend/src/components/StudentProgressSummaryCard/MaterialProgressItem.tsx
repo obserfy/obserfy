@@ -3,7 +3,7 @@ import { Flex } from "theme-ui"
 import {
   MaterialProgress,
   materialStageToString,
-} from "../../api/useGetStudentMaterialProgress"
+} from "../../hooks/api/useGetStudentMaterialProgress"
 import Typography from "../Typography/Typography"
 import Pill from "../Pill/Pill"
 import Icon from "../Icon/Icon"

@@ -1,7 +1,7 @@
 import { t } from "@lingui/macro"
 import React from "react"
 import { Box } from "theme-ui"
-import { useGetStudent } from "../../../../../api/useGetStudent"
+import { useGetStudent } from "../../../../../hooks/api/useGetStudent"
 import PageGuardianProfile from "../../../../../components/PageGuardianProfile/PageGuardianProfile"
 import TopBar, { breadCrumb } from "../../../../../components/TopBar/TopBar"
 import { getFirstName } from "../../../../../domain/person"

@@ -3,7 +3,7 @@ import { Box } from "theme-ui"
 import { t } from "@lingui/macro"
 import { useLingui } from "@lingui/react"
 import Dialog from "../Dialog/Dialog"
-import { GuardianRelationship } from "../../api/students/usePostNewStudent"
+import { GuardianRelationship } from "../../hooks/api/students/usePostNewStudent"
 import Select from "../Select/Select"
 import DialogHeader from "../DialogHeader/DialogHeader"
 

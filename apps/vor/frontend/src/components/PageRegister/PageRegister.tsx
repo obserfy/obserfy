@@ -8,11 +8,11 @@ import BrandBanner from "../BrandBanner/BrandBanner"
 import { Link, navigate } from "../Link/Link"
 import Icon from "../Icon/Icon"
 import { ReactComponent as InfoIcon } from "../../icons/info.svg"
-import usePostRegister from "../../api/usePostRegister"
+import usePostRegister from "../../hooks/api/usePostRegister"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
-import useGetInviteCodeDetails from "../../api/useGetInviteCodeDetails"
-import { BASE_URL } from "../../api/useApi"
-import { postApi } from "../../api/fetchApi"
+import useGetInviteCodeDetails from "../../hooks/api/useGetInviteCodeDetails"
+import { BASE_URL } from "../../hooks/api/useApi"
+import { postApi } from "../../hooks/api/fetchApi"
 
 const useGetUser = () => {
   const getUser = async () => {

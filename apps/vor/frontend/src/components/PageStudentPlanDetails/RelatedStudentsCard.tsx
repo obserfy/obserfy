@@ -6,8 +6,8 @@ import StudentPicturePlaceholder from "../StudentPicturePlaceholder/StudentPictu
 import Icon from "../Icon/Icon"
 import StudentPickerDialog from "../StudentPickerDialog/StudentPickerDialog"
 import useVisibilityState from "../../hooks/useVisibilityState"
-import useDeleteRelatedStudent from "../../api/plans/useDeleteRelatedStudent"
-import usePostNewRelatedStudents from "../../api/plans/usePostNewRelatedStudents"
+import useDeleteRelatedStudent from "../../hooks/api/plans/useDeleteRelatedStudent"
+import usePostNewRelatedStudents from "../../hooks/api/plans/usePostNewRelatedStudents"
 import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
 
 interface Student {

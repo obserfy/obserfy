@@ -3,7 +3,7 @@ import { FC } from "react"
 import { Card, Flex, jsx } from "theme-ui"
 import { Trans } from "@lingui/macro"
 import Typography from "../Typography/Typography"
-import { Observation } from "../../api/useGetStudentObservations"
+import { Observation } from "../../hooks/api/useGetStudentObservations"
 import ImagePreview from "../ImagePreview/ImagePreview"
 import { Link } from "../Link/Link"
 

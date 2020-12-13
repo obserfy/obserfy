@@ -1,10 +1,10 @@
 import { t, Trans } from "@lingui/macro"
 import React, { FC, useState } from "react"
 import { Box, Flex } from "theme-ui"
-import { usePostGuardianRelation } from "../../api/guardians/usePostGuardianRelation"
-import { usePostNewGuardian } from "../../api/guardians/usePostNewGuardian"
-import { GuardianRelationship } from "../../api/students/usePostNewStudent"
-import { useGetStudent } from "../../api/useGetStudent"
+import { usePostGuardianRelation } from "../../hooks/api/guardians/usePostGuardianRelation"
+import { usePostNewGuardian } from "../../hooks/api/guardians/usePostNewGuardian"
+import { GuardianRelationship } from "../../hooks/api/students/usePostNewStudent"
+import { useGetStudent } from "../../hooks/api/useGetStudent"
 import { getFirstName } from "../../domain/person"
 import {
   STUDENT_OVERVIEW_PAGE_URL,

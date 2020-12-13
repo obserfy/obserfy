@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import { Box, Button, Card, Flex, useColorMode } from "theme-ui"
 import { Trans } from "@lingui/macro"
 import { useLocalization } from "gatsby-theme-i18n"
-import { useGetSchool } from "../../api/schools/useGetSchool"
+import { useGetSchool } from "../../hooks/api/schools/useGetSchool"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import Typography from "../Typography/Typography"
 import {

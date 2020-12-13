@@ -16,8 +16,8 @@ import { ReactComponent as PrevIcon } from "../../icons/arrow-back.svg"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import { Link } from "../Link/Link"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
-import { useGetStudent } from "../../api/useGetStudent"
-import useGetStudentPlans from "../../api/students/useGetStudentPlans"
+import { useGetStudent } from "../../hooks/api/useGetStudent"
+import useGetStudentPlans from "../../hooks/api/students/useGetStudentPlans"
 import TopBar from "../TopBar/TopBar"
 
 interface Props {

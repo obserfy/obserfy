@@ -12,7 +12,7 @@ import {
 } from "../../routes"
 import TopBar, { breadCrumb } from "../TopBar/TopBar"
 import Typography from "../Typography/Typography"
-import { useGetSchoolGuardians } from "../../api/guardians/useGetSchoolGuardians"
+import { useGetSchoolGuardians } from "../../hooks/api/guardians/useGetSchoolGuardians"
 import Icon from "../Icon/Icon"
 import SearchBar from "../SearchBar/SearchBar"
 

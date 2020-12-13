@@ -6,7 +6,7 @@ import { useQueryString } from "../../../hooks/useQueryString"
 import PageObservationDetails from "../../../components/PageObservationDetails/PageObservationDetails"
 import TopBar from "../../../components/TopBar/TopBar"
 import { STUDENT_OVERVIEW_PAGE_URL, STUDENTS_URL } from "../../../routes"
-import { useGetStudent } from "../../../api/useGetStudent"
+import { useGetStudent } from "../../../hooks/api/useGetStudent"
 
 // TODO: this page is a temporary hack, replace with proper solution that doesn't requires duplicating page plz.
 // This is the same with the ./observation/details.tsx with a difference in the breadcrumb.

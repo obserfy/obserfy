@@ -5,7 +5,7 @@ import { useLingui } from "@lingui/react"
 import DialogHeader from "../DialogHeader/DialogHeader"
 import Dialog from "../Dialog/Dialog"
 import Input from "../Input/Input"
-import usePostNewCurriculum from "../../api/curriculum/usePostNewCurriculum"
+import usePostNewCurriculum from "../../hooks/api/curriculum/usePostNewCurriculum"
 
 export interface NewCustomCurriculumDialogProps {
   onDismiss: () => void

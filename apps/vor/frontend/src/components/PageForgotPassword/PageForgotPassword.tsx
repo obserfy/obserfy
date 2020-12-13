@@ -11,7 +11,7 @@ import { ReactComponent as BackIcon } from "../../icons/arrow-back.svg"
 import { ReactComponent as AlertIcon } from "../../icons/alert.svg"
 import Icon from "../Icon/Icon"
 import BrandBanner from "../BrandBanner/BrandBanner"
-import usePostResetPasswordEmail from "../../api/usePostResetPasswordEmail"
+import usePostResetPasswordEmail from "../../hooks/api/usePostResetPasswordEmail"
 
 export const PageForgotPassword: FC = () => {
   const [email, setEmail] = useState("")
