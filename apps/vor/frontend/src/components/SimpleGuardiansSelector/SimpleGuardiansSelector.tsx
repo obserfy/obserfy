@@ -1,7 +1,7 @@
 import { Trans } from "@lingui/macro"
 import React, { FC, useState } from "react"
 import { Box, Card, Flex } from "theme-ui"
-import { useGetSchoolGuardians } from "../../api/guardians/useGetSchoolGuardians"
+import { useGetSchoolGuardians } from "../../hooks/api/guardians/useGetSchoolGuardians"
 import { borderTop } from "../../border"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import SearchBar from "../SearchBar/SearchBar"

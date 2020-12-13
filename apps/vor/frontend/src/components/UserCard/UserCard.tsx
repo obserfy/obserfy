@@ -4,7 +4,7 @@ import { t } from "@lingui/macro"
 import Typography from "../Typography/Typography"
 import Spacer from "../Spacer/Spacer"
 import Pill from "../Pill/Pill"
-import useDeleteUser from "../../api/schools/useDeleteUser"
+import useDeleteUser from "../../hooks/api/schools/useDeleteUser"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 
 interface Props {

@@ -3,7 +3,7 @@ import { Box, Flex } from "theme-ui"
 import {
   Observation,
   useGetStudentObservations,
-} from "../../api/useGetStudentObservations"
+} from "../../hooks/api/useGetStudentObservations"
 import {
   OBSERVATION_DETAILS_URL,
   STUDENT_OVERVIEW_PAGE_URL,
@@ -11,7 +11,7 @@ import {
 } from "../../routes"
 import Chip from "../Chip/Chip"
 import Typography from "../Typography/Typography"
-import { useGetStudent } from "../../api/useGetStudent"
+import { useGetStudent } from "../../hooks/api/useGetStudent"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import ObservationCard from "../ObservationCard/ObservationCard"
 import dayjs from "../../dayjs"

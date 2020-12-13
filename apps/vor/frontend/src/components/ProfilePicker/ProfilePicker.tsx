@@ -4,9 +4,9 @@ import { Trans } from "@lingui/macro"
 import Typography from "../Typography/Typography"
 import { ReactComponent as CameraIcon } from "../../icons/camera.svg"
 import Icon from "../Icon/Icon"
-import usePostNewImage from "../../api/schools/usePostNewImage"
+import usePostNewImage from "../../hooks/api/schools/usePostNewImage"
 import { LoadingIndicator } from "../LoadingIndicator/LoadingIndicator"
-import useGetImage from "../../api/useGetImage"
+import useGetImage from "../../hooks/api/useGetImage"
 
 interface Props extends Omit<BoxProps, "onChange" | "value" | "css"> {
   onChange: (imageId: string) => void

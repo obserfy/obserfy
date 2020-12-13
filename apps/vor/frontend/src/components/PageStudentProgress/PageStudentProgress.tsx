@@ -1,14 +1,14 @@
 import React, { FC, useState } from "react"
 import { Box, Card, Flex } from "theme-ui"
-import { useGetStudent } from "../../api/useGetStudent"
+import { useGetStudent } from "../../hooks/api/useGetStudent"
 import Typography from "../Typography/Typography"
 import { BackNavigation } from "../BackNavigation/BackNavigation"
-import { useGetArea } from "../../api/useGetArea"
-import { Subject, useGetAreaSubjects } from "../../api/useGetAreaSubjects"
+import { useGetArea } from "../../hooks/api/useGetArea"
+import { Subject, useGetAreaSubjects } from "../../hooks/api/useGetAreaSubjects"
 import {
   Material,
   useGetSubjectMaterials,
-} from "../../api/useGetSubjectMaterials"
+} from "../../hooks/api/useGetSubjectMaterials"
 
 import Icon from "../Icon/Icon"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
@@ -16,7 +16,7 @@ import {
   MaterialProgress,
   materialStageToString,
   useGetStudentMaterialProgress,
-} from "../../api/useGetStudentMaterialProgress"
+} from "../../hooks/api/useGetStudentMaterialProgress"
 import Pill from "../Pill/Pill"
 import StudentMaterialProgressDialog from "../StudentMaterialProgressDialog/StudentMaterialProgressDialog"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"

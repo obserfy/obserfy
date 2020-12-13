@@ -4,7 +4,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import GatsbyImage, { FixedObject } from "gatsby-image"
 import { Button, Flex, jsx } from "theme-ui"
 import Typography from "../Typography/Typography"
-import { useGetUserProfile } from "../../api/useGetUserProfile"
+import { useGetUserProfile } from "../../hooks/api/useGetUserProfile"
 import { loadCanny } from "../../canny"
 
 export const PageError: FC = () => {

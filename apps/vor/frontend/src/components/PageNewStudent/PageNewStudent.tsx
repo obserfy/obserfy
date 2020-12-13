@@ -1,7 +1,7 @@
 import { t, Trans } from "@lingui/macro"
 import React, { FC } from "react"
 import { Box, Button } from "theme-ui"
-import { usePostNewStudent } from "../../api/students/usePostNewStudent"
+import { usePostNewStudent } from "../../hooks/api/students/usePostNewStudent"
 import { NEW_STUDENT_URL, STUDENTS_URL } from "../../routes"
 import { navigate } from "../Link/Link"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"

@@ -5,8 +5,8 @@ import { Box, Button, Flex } from "theme-ui"
 import { t, Trans } from "@lingui/macro"
 import { useLingui } from "@lingui/react"
 import { navigate } from "../Link/Link"
-import { Material } from "../../api/useGetSubjectMaterials"
-import { createSubjectApi } from "../../api/createSubjectApi"
+import { Material } from "../../hooks/api/useGetSubjectMaterials"
+import { createSubjectApi } from "../../hooks/api/createSubjectApi"
 import DraggableMaterialListItem from "../DraggableMaterialListItem/DraggableMaterialListItem"
 import Typography from "../Typography/Typography"
 
@@ -20,7 +20,7 @@ import {
   ADMIN_URL,
   CURRICULUM_AREA_URL,
 } from "../../routes"
-import { useGetArea } from "../../api/useGetArea"
+import { useGetArea } from "../../hooks/api/useGetArea"
 import TopBar from "../TopBar/TopBar"
 
 const ITEM_HEIGHT = 48

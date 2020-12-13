@@ -7,18 +7,18 @@ import BackNavigation from "../BackNavigation/BackNavigation"
 import { NEW_STUDENT_URL } from "../../routes"
 import Input from "../Input/Input"
 import Select from "../Select/Select"
-import { GuardianRelationship } from "../../api/students/usePostNewStudent"
+import { GuardianRelationship } from "../../hooks/api/students/usePostNewStudent"
 import Typography from "../Typography/Typography"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 
 import Icon from "../Icon/Icon"
 
-import { usePostNewGuardian } from "../../api/guardians/usePostNewGuardian"
+import { usePostNewGuardian } from "../../hooks/api/guardians/usePostNewGuardian"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import {
   Guardians,
   useGetSchoolGuardians,
-} from "../../api/guardians/useGetSchoolGuardians"
+} from "../../hooks/api/guardians/useGetSchoolGuardians"
 import TextArea from "../TextArea/TextArea"
 import GuardianRelationshipPickerDialog from "../GuardianRelationshipPickerDialog/GuardianRelationshipPickerDialog"
 import { useNewStudentFormContext } from "../PageNewStudent/NewStudentForm"

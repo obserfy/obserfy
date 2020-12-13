@@ -226,6 +226,7 @@ const theme: Theme = {
       px: 3,
       whiteSpace: "nowrap",
       display: "flex",
+      flexShrink: 0,
       alignItems: "center",
       justifyContent: "center",
       touchAction: "manipulation",
@@ -256,6 +257,7 @@ const theme: Theme = {
       color: "textPrimary",
       bg: "transparent",
       border: "none",
+      flexShrink: 0,
       boxShadow: "none",
       fontWeight: "bold",
       "&:hover, &:focus": {
@@ -269,6 +271,7 @@ const theme: Theme = {
       backgroundColor: "surface",
       color: "textPrimary",
       boxShadow: "none",
+      flexShrink: 0,
       "&:hover, &:focus": {
         backgroundColor: "primaryLighter",
         borderColor: "primary",

@@ -184,35 +184,30 @@ func (s *GuardianTestSuite) TestUpdateGuardian() {
 			err := s.DB.Model(&savedGuardian).WherePK().Select()
 			assert.NoError(t, err)
 
-			// check name
 			if test.body.Name != "" {
 				assert.Equal(t, test.body.Name, savedGuardian.Name)
 			} else {
 				assert.Equal(t, newGuardian.Name, savedGuardian.Name)
 			}
 
-			// check email
 			if test.body.Email != "" {
 				assert.Equal(t, test.body.Email, savedGuardian.Email)
 			} else {
 				assert.Equal(t, newGuardian.Email, savedGuardian.Email)
 			}
 
-			// check phone
 			if test.body.Phone != "" {
 				assert.Equal(t, test.body.Phone, savedGuardian.Phone)
 			} else {
 				assert.Equal(t, newGuardian.Phone, savedGuardian.Phone)
 			}
 
-			// check note
 			if test.body.Note != "" {
 				assert.Equal(t, test.body.Note, savedGuardian.Note)
 			} else {
 				assert.Equal(t, newGuardian.Note, savedGuardian.Note)
 			}
 
-			// check Address
 			if test.body.Address != "" {
 				assert.Equal(t, test.body.Address, savedGuardian.Address)
 			} else {
