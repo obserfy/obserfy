@@ -7,7 +7,7 @@ import { Typography } from "../Typography/Typography"
 import Icon from "../Icon/Icon"
 import { ReactComponent as InfoIcon } from "../../icons/info.svg"
 import BrandBanner from "../BrandBanner/BrandBanner"
-import usePostLogin from "../../api/usePostLogin"
+import usePostLogin from "../../hooks/api/usePostLogin"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 
 export const PageLogin: FC = () => {

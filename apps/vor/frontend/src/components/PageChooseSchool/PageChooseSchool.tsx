@@ -1,7 +1,7 @@
 import React, { FC } from "react"
 import { Button, Box, Card, Flex } from "theme-ui"
 import { Trans } from "@lingui/macro"
-import { useGetSchools } from "../../api/schools/useGetSchools"
+import { useGetSchools } from "../../hooks/api/schools/useGetSchools"
 import { Typography } from "../Typography/Typography"
 import Icon from "../Icon/Icon"
 import { ReactComponent as ArrowNextIcon } from "../../icons/next-arrow.svg"

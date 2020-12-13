@@ -2,7 +2,7 @@
 import { FC, useEffect } from "react"
 import { jsx, Box, Card, Flex, Button } from "theme-ui"
 import { Trans } from "@lingui/macro"
-import { useGetUserProfile } from "../../api/useGetUserProfile"
+import { useGetUserProfile } from "../../hooks/api/useGetUserProfile"
 import { loadCanny } from "../../canny"
 import Typography from "../Typography/Typography"
 import Icon from "../Icon/Icon"

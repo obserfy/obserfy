@@ -4,7 +4,7 @@ import { t } from "@lingui/macro"
 import UserCard from "../UserCard/UserCard"
 import BackNavigation from "../BackNavigation/BackNavigation"
 import { ADMIN_URL } from "../../routes"
-import { useGetSchool } from "../../api/schools/useGetSchool"
+import { useGetSchool } from "../../hooks/api/schools/useGetSchool"
 
 export const PageUsers: FC = () => {
   const schoolDetail = useGetSchool()

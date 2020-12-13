@@ -2,7 +2,7 @@ import { t } from "@lingui/macro"
 import { useLingui } from "@lingui/react"
 import React, { ChangeEventHandler, FC } from "react"
 import { Box } from "theme-ui"
-import { GuardianRelationship } from "../../api/students/usePostNewStudent"
+import { GuardianRelationship } from "../../hooks/api/students/usePostNewStudent"
 import Select from "../Select/Select"
 
 export interface GuardianRelationshipSelectorProps {

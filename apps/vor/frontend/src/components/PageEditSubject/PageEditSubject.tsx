@@ -8,8 +8,8 @@ import { navigate } from "../Link/Link"
 import {
   Material,
   useGetSubjectMaterials,
-} from "../../api/useGetSubjectMaterials"
-import { useGetArea } from "../../api/useGetArea"
+} from "../../hooks/api/useGetSubjectMaterials"
+import { useGetArea } from "../../hooks/api/useGetArea"
 
 import {
   ADMIN_CURRICULUM_URL,
@@ -22,8 +22,8 @@ import Input from "../Input/Input"
 import Icon from "../Icon/Icon"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
-import { useGetSubject } from "../../api/useGetSubject"
-import { updateSubjectApi } from "../../api/updateSubjectApi"
+import { useGetSubject } from "../../hooks/api/useGetSubject"
+import { updateSubjectApi } from "../../hooks/api/updateSubjectApi"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import TopBar from "../TopBar/TopBar"
 

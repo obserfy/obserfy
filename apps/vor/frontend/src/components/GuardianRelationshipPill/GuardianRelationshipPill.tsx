@@ -1,7 +1,7 @@
 import React, { FC } from "react"
 import { BoxProps } from "theme-ui"
 import Pill from "../Pill/Pill"
-import { GuardianRelationship } from "../../api/students/usePostNewStudent"
+import { GuardianRelationship } from "../../hooks/api/students/usePostNewStudent"
 
 interface Props extends BoxProps {
   relationship: GuardianRelationship

@@ -5,7 +5,7 @@ import { useLingui } from "@lingui/react"
 import Dialog from "../Dialog/Dialog"
 import Input from "../Input/Input"
 import Typography from "../Typography/Typography"
-import usePostNewArea from "../../api/curriculum/usePostNewArea"
+import usePostNewArea from "../../hooks/api/curriculum/usePostNewArea"
 import DialogHeader from "../DialogHeader/DialogHeader"
 
 interface Props {

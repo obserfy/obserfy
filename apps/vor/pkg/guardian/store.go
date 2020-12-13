@@ -1,5 +1,7 @@
 package guardian
 
+import "github.com/chrsep/vor/pkg/domain"
+
 type (
 	Guardian struct {
 		Id      string `json:"id"`
@@ -12,8 +14,8 @@ type (
 
 	Store interface {
 		CheckPermission(userId string, guardianId string) (bool, error)
-		GetGuardian(id string) (*Guardian, error)
+		GetGuardian(id string) (*domain.Guardian, error)
 		DeleteGuardian(id string) (int, error)
-		UpdateGuardian(id string, name *string, email *string, phone *string, note *string, address *string) (*Guardian, error)
+		UpdateGuardian(id string, name *string, email *string, phone *string, note *string, address *string) (*domain.Guardian, error)
 	}
 )

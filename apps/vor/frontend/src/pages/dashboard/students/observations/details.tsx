@@ -10,7 +10,7 @@ import {
   STUDENT_OVERVIEW_PAGE_URL,
   STUDENTS_URL,
 } from "../../../../routes"
-import { useGetStudent } from "../../../../api/useGetStudent"
+import { useGetStudent } from "../../../../hooks/api/useGetStudent"
 
 const ObservationDetails: FC = () => {
   const studentId = useQueryString("studentId")

@@ -8,7 +8,7 @@ import {
   SCHOOL_ID_UNDEFINED_PLACEHOLDER,
 } from "../../hooks/schoolIdState"
 import Navbar from "../Navbar/Navbar"
-import { useGetUserProfile } from "../../api/useGetUserProfile"
+import { useGetUserProfile } from "../../hooks/api/useGetUserProfile"
 import Typography from "../Typography/Typography"
 import StudentsList from "../StudentsList/StudentsList"
 import { borderRight } from "../../border"

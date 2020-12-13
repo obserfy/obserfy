@@ -3,12 +3,12 @@ import { useLingui } from "@lingui/react"
 import React, { createContext, FC, useContext, useState } from "react"
 import { Box, Button, Card, Flex } from "theme-ui"
 import { Updater, useImmer } from "use-immer"
-import useGetSchoolClasses from "../../api/classes/useGetSchoolClasses"
-import { useGetGuardian } from "../../api/guardians/useGetGuardian"
+import useGetSchoolClasses from "../../hooks/api/classes/useGetSchoolClasses"
+import { useGetGuardian } from "../../hooks/api/guardians/useGetGuardian"
 import {
   Gender,
   GuardianRelationship,
-} from "../../api/students/usePostNewStudent"
+} from "../../hooks/api/students/usePostNewStudent"
 import { borderTop } from "../../border"
 import { Dayjs } from "../../dayjs"
 import { ReactComponent as TrashIcon } from "../../icons/trash.svg"

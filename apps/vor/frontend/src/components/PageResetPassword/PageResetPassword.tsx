@@ -10,7 +10,7 @@ import { ReactComponent as CheckmarkIcon } from "../../icons/checkmark.svg"
 
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
-import { doPasswordResetApi } from "../../api/doPasswordResetApi"
+import { doPasswordResetApi } from "../../hooks/api/doPasswordResetApi"
 import Spacer from "../Spacer/Spacer"
 
 interface Props {
