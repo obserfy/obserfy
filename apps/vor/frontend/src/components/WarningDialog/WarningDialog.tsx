@@ -1,10 +1,12 @@
+import { Trans } from "@lingui/macro"
 import React, { FC } from "react"
-import { Flex, Button } from "theme-ui"
-import Typography from "../Typography/Typography"
+import { Button, Flex } from "theme-ui"
+import { borderBottom } from "../../border"
+import Dialog from "../Dialog/Dialog"
+import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 
 import Spacer from "../Spacer/Spacer"
-import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
-import Dialog from "../Dialog/Dialog"
+import Typography from "../Typography/Typography"
 
 interface Props {
   onDismiss: () => void
@@ -38,7 +40,7 @@ export const WarningDialog: FC<Props> = ({
           alignContent: "center",
         }}
       >
-        {title}
+        <Trans id={title} />
       </Typography.H6>
       <Button
         variant="outline"
@@ -46,23 +48,16 @@ export const WarningDialog: FC<Props> = ({
         onClick={onDismiss}
         sx={{ flexShrink: 0 }}
       >
-        Cancel
+        <Trans>Cancel</Trans>
       </Button>
       <Spacer />
       <Button m={2} backgroundColor="danger" onClick={onAccept}>
         {loading && <LoadingIndicator />}
-        Yes
+        <Trans>Yes</Trans>
       </Button>
     </Flex>
-    <Typography.Body
-      p={3}
-      sx={{
-        borderBottomColor: "border",
-        borderBottomWidth: 1,
-        borderBottomStyle: "solid",
-      }}
-    >
-      {description}
+    <Typography.Body p={3} sx={borderBottom}>
+      <Trans id={description} />
     </Typography.Body>
   </Dialog>
 )

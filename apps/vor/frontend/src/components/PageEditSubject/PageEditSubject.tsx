@@ -2,12 +2,14 @@ import React, { FC, useEffect, useState } from "react"
 import { useImmer } from "use-immer"
 import { nanoid } from "nanoid"
 import { Box, Button, Flex } from "theme-ui"
+import { t, Trans } from "@lingui/macro"
+import { useLingui } from "@lingui/react"
 import { navigate } from "../Link/Link"
 import {
   Material,
   useGetSubjectMaterials,
-} from "../../api/useGetSubjectMaterials"
-import { useGetArea } from "../../api/useGetArea"
+} from "../../hooks/api/useGetSubjectMaterials"
+import { useGetArea } from "../../hooks/api/useGetArea"
 
 import {
   ADMIN_CURRICULUM_URL,
@@ -20,8 +22,8 @@ import Input from "../Input/Input"
 import Icon from "../Icon/Icon"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
-import { useGetSubject } from "../../api/useGetSubject"
-import { updateSubjectApi } from "../../api/updateSubjectApi"
+import { useGetSubject } from "../../hooks/api/useGetSubject"
+import { updateSubjectApi } from "../../hooks/api/updateSubjectApi"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import TopBar from "../TopBar/TopBar"
 
@@ -35,6 +37,7 @@ export const PageEditSubject: FC<Props> = ({ areaId, subjectId }) => {
   const [submitting, setSubmitting] = useState(false)
   const [subjectName, setSubjectName] = useState("")
   const [materials, setMaterials] = useImmer<Material[]>([])
+  const { i18n } = useLingui()
 
   const startingMaterials = useGetSubjectMaterials(subjectId)
   const area = useGetArea(areaId)
@@ -118,10 +121,12 @@ export const PageEditSubject: FC<Props> = ({ areaId, subjectId }) => {
             to: ADMIN_CURRICULUM_URL,
           },
           { text: `${area.data?.name} Area`, to: CURRICULUM_AREA_URL(areaId) },
-          { text: "Edit Subject" },
+          { text: i18n._(t`Edit Subject`) },
         ]}
       />
-      <Typography.H6 m={3}>Edit Subject</Typography.H6>
+      <Typography.H6 m={3}>
+        <Trans>Edit Subject</Trans>
+      </Typography.H6>
       <Box p={3}>
         <Input
           sx={{ width: "100%" }}
@@ -137,7 +142,7 @@ export const PageEditSubject: FC<Props> = ({ areaId, subjectId }) => {
         }}
         color="textMediumEmphasis"
       >
-        Materials
+        <Trans>Materials</Trans>
       </Typography.Body>
       <Box sx={{ width: "100%", overflow: "hidden" }}>{list}</Box>
       <Flex
@@ -167,13 +172,13 @@ export const PageEditSubject: FC<Props> = ({ areaId, subjectId }) => {
             fontSize: 1,
           }}
         >
-          Add material
+          <Trans>Add material</Trans>
         </Typography.Body>
       </Flex>
       <Flex sx={{ width: "100%", justifyContent: "flex-end" }} p={3}>
         <Button disabled={!isValid} onClick={updateSubject}>
           {submitting && <LoadingIndicator />}
-          Save
+          <Trans>Save</Trans>
         </Button>
       </Flex>
     </Box>

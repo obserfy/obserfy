@@ -10,3 +10,7 @@ declare module "gatsby-theme-i18n" {
 declare module "*.svg" {
   export default string
 }
+
+declare module "*.css" {
+  export default string
+}

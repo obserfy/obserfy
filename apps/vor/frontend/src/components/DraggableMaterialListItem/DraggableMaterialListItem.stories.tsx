@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import { nanoid } from "nanoid"
 import { action } from "@storybook/addon-actions"
 import DraggableMaterialListItem from "./DraggableMaterialListItem"
-import { Material } from "../../api/useGetSubjectMaterials"
+import { Material } from "../../hooks/api/useGetSubjectMaterials"
 
 export default {
   title: "Core/DraggableMaterialListItem",

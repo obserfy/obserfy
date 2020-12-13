@@ -3,8 +3,8 @@ import { FC, Fragment, useState } from "react"
 import { Box, Button, Card, Flex, Image, jsx } from "theme-ui"
 import { useLingui } from "@lingui/react"
 import { t, Trans } from "@lingui/macro"
-import { useGetAllStudents } from "../../api/students/useGetAllStudents"
-import useGetSchoolClasses from "../../api/classes/useGetSchoolClasses"
+import { useGetAllStudents } from "../../hooks/api/students/useGetAllStudents"
+import useGetSchoolClasses from "../../hooks/api/classes/useGetSchoolClasses"
 import { Link } from "../Link/Link"
 import { NEW_STUDENT_URL, STUDENT_OVERVIEW_PAGE_URL } from "../../routes"
 import StudentPicturePlaceholder from "../StudentPicturePlaceholder/StudentPicturePlaceholder"
@@ -48,7 +48,7 @@ export const StudentsList: FC = () => {
     ))
 
   return (
-    <Box>
+    <Box pb={4}>
       <Flex p={3} pt={3} pb={2}>
         <SearchBar
           mr={2}

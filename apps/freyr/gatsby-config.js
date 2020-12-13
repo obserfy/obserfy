@@ -6,20 +6,7 @@ module.exports = {
     siteUrl: `https://obserfy.com`,
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-preact`,
-    `gatsby-plugin-postcss`,
-    `gatsby-plugin-netlify-cache`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
-      },
-    },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    `gatsby-plugin-netlify`,
+    `gatsby-plugin-remove-trailing-slashes`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -37,23 +24,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
-      options: {
-        fonts: [
-          {
-            family: `Open Sans`,
-            variants: [`400`, `500`, `700`],
-          },
-        ],
-      },
-    },
-    // {
-    //   resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
-    //   options: {
-    //     analyzerPort: 3000,
-    //   },
-    // },
-    {
       resolve: `gatsby-theme-i18n`,
       options: {
         defaultLang: `en`,
@@ -66,7 +36,28 @@ module.exports = {
         localeDir: `./i18n/lingui`,
       },
     },
-    `gatsby-plugin-remove-trailing-slashes`,
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-preact`,
+    `gatsby-plugin-postcss`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`,
+      },
+    },
+
+    `gatsby-plugin-image`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/help`,
+        name: `help`,
+      },
+    },
+    `gatsby-plugin-mdx`,
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
@@ -80,5 +71,26 @@ module.exports = {
       },
     },
     `gatsby-plugin-preload-fonts`,
+    {
+      resolve: `gatsby-plugin-typegen`,
+      options: {
+        emitSchema: {
+          "src/__generated__/gatsby-schema.graphql": true,
+        },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-plausible`,
+      options: {
+        domain: `obserfy.com`,
+      },
+    },
+    `gatsby-plugin-netlify`,
+    // {
+    //   resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
+    //   options: {
+    //     analyzerPort: 3000,
+    //   },
+    // },
   ],
 }

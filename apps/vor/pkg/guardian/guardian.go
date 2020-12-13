@@ -29,18 +29,18 @@ func authorizationMiddleware(s rest.Server, store Store) func(next http.Handler)
 
 			if _, err := uuid.Parse(guardianId); err != nil {
 				return &rest.Error{
-					http.StatusNotFound,
-					"Can't find the specified guardian",
-					err,
+					Code:    http.StatusNotFound,
+					Message: "Can't find the specified guardian",
+					Error:   err,
 				}
 			}
 
 			session, ok := auth.GetSessionFromCtx(r.Context())
 			if !ok {
 				return &rest.Error{
-					http.StatusUnauthorized,
-					"You're not logged in",
-					richErrors.New("no session found"),
+					Code:    http.StatusUnauthorized,
+					Message: "You're not logged in",
+					Error:   richErrors.New("no session found"),
 				}
 			}
 
@@ -67,6 +67,19 @@ func authorizationMiddleware(s rest.Server, store Store) func(next http.Handler)
 }
 
 func getGuardian(server rest.Server, store Store) http.Handler {
+	type child struct {
+		Id   string `json:"id"`
+		Name string `json:"name"`
+	}
+	type responseBody struct {
+		Id       string  `json:"id"`
+		Name     string  `json:"name"`
+		Email    string  `json:"email"`
+		Phone    string  `json:"phone"`
+		Note     string  `json:"note"`
+		Address  string  `json:"address"`
+		Children []child `json:"children"`
+	}
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		guardianId := chi.URLParam(r, "guardianId")
 
@@ -86,10 +99,24 @@ func getGuardian(server rest.Server, store Store) http.Handler {
 			}
 		}
 
-		if err := rest.WriteJson(w, guardian); err != nil {
+		response := &responseBody{
+			Id:       guardian.Id,
+			Name:     guardian.Name,
+			Email:    guardian.Email,
+			Phone:    guardian.Phone,
+			Note:     guardian.Note,
+			Address:  guardian.Address,
+			Children: make([]child, 0),
+		}
+		for _, c := range guardian.Children {
+			response.Children = append(response.Children, child{
+				Id:   c.Id,
+				Name: c.Name,
+			})
+		}
+		if err := rest.WriteJson(w, response); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
-
 		return nil
 	})
 }
@@ -121,10 +148,25 @@ func deleteGuardian(server rest.Server, store Store) http.Handler {
 
 func patchGuardian(server rest.Server, store Store) http.Handler {
 	type requestBody struct {
-		Name  string `json:"name"`
-		Email string `json:"email"`
-		Phone string `json:"phone"`
-		Note  string `json:"note"`
+		Name    *string `json:"name"`
+		Email   *string `json:"email"`
+		Phone   *string `json:"phone"`
+		Note    *string `json:"note"`
+		Address *string `json:"address"`
+	}
+
+	type child struct {
+		Id   string `json:"id"`
+		Name string `json:"name"`
+	}
+	type responseBody struct {
+		Id       string  `json:"id"`
+		Name     string  `json:"name"`
+		Email    string  `json:"email"`
+		Phone    string  `json:"phone"`
+		Note     string  `json:"note"`
+		Address  string  `json:"address"`
+		Children []child `json:"children"`
 	}
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		guardianId := chi.URLParam(r, "guardianId")
@@ -138,18 +180,22 @@ func patchGuardian(server rest.Server, store Store) http.Handler {
 			}
 		}
 
-		if body.Name == "" && body.Phone == "" && body.Email == "" && body.Note == "" {
-			w.WriteHeader(http.StatusNoContent)
-			return nil
+		if (requestBody{}) == body {
+			return &rest.Error{
+				Code:    http.StatusBadRequest,
+				Message: "request body can't be empty",
+				Error:   richErrors.New("empty request body"),
+			}
 		}
 
-		_, err := store.UpdateGuardian(Guardian{
-			Id:    guardianId,
-			Name:  body.Name,
-			Email: body.Email,
-			Phone: body.Phone,
-			Note:  body.Note,
-		})
+		newGuardian, err := store.UpdateGuardian(
+			guardianId,
+			body.Name,
+			body.Email,
+			body.Phone,
+			body.Note,
+			body.Address,
+		)
 		if err != nil {
 			return &rest.Error{
 				Code:    http.StatusNotFound,
@@ -158,7 +204,23 @@ func patchGuardian(server rest.Server, store Store) http.Handler {
 			}
 		}
 
-		w.WriteHeader(http.StatusNoContent)
+		response := &responseBody{
+			Id:      newGuardian.Id,
+			Name:    newGuardian.Name,
+			Email:   newGuardian.Email,
+			Phone:   newGuardian.Phone,
+			Note:    newGuardian.Note,
+			Address: newGuardian.Address,
+		}
+		for _, c := range newGuardian.Children {
+			response.Children = append(response.Children, child{
+				Id:   c.Id,
+				Name: c.Name,
+			})
+		}
+		if err := rest.WriteJson(w, response); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
 		return nil
 	})
 }

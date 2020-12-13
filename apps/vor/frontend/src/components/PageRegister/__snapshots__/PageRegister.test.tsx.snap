@@ -306,6 +306,9 @@ exports[`PageRegister should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -377,7 +380,7 @@ exports[`PageRegister should render correctly 1`] = `
   min-width: 0;
   margin-top: 16px;
   padding: 16px;
-  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,120,86,0.12));
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

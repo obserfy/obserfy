@@ -1,8 +1,8 @@
 import React, { FC } from "react"
 import { Box, Button } from "theme-ui"
 import { t, Trans } from "@lingui/macro"
-import useGetPlan from "../../api/plans/useGetPlan"
-import useDeletePlan from "../../api/plans/useDeletePlan"
+import useGetPlan from "../../hooks/api/plans/useGetPlan"
+import useDeletePlan from "../../hooks/api/plans/useDeletePlan"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import {
   STUDENT_OVERVIEW_PAGE_URL,
@@ -11,7 +11,7 @@ import {
 } from "../../routes"
 import dayjs from "../../dayjs"
 import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
-import { useGetStudent } from "../../api/useGetStudent"
+import { useGetStudent } from "../../hooks/api/useGetStudent"
 import TopBar from "../TopBar/TopBar"
 import RelatedStudentsCard from "./RelatedStudentsCard"
 import LessonPlanLinksCard from "./LessonPlanLinksCard"

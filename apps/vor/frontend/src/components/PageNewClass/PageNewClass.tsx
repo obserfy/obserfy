@@ -11,7 +11,7 @@ import Input from "../Input/Input"
 
 import { Typography } from "../Typography/Typography"
 import Chip from "../Chip/Chip"
-import usePostNewClass from "../../api/classes/usePostNewClass"
+import usePostNewClass from "../../hooks/api/classes/usePostNewClass"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import ErrorMessage from "../ErrorMessage/ErrorMessage"
 

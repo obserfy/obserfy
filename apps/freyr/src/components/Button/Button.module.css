@@ -1,0 +1,7 @@
+.base {
+    @apply py-3 px-6 font-body font-bold shadow-sm rounded-lg bg-primaryDark text-white border border-green-800;
+}
+.secondary {
+    @apply text-black border-solid bg-transparent border-gray-300 bg-white transition-colors flex-shrink-0 whitespace-nowrap;
+    @apply hover:bg-green-100
+}

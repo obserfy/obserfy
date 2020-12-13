@@ -11,7 +11,7 @@ export const PageHome: FC = () => {
   }
 
   return (
-    <Box sx={{ display: ["block", "block", "none"] }}>
+    <Box sx={{ display: ["block", "block", "none"] }} data-cy="mobile-students">
       <StudentsList />
     </Box>
   )

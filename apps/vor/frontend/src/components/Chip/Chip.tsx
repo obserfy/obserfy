@@ -7,17 +7,19 @@ interface Props extends Omit<BoxProps, "css"> {
   text: string
   activeBackground?: string
   isActive?: boolean
+  backgroundColor?: string
 }
 export const Chip: FC<Props> = ({
   isActive,
   activeBackground = "primary",
   text,
   sx,
+  backgroundColor = "surface",
   ...props
 }) => (
   <Box
     {...props}
-    backgroundColor={isActive ? activeBackground : "surface"}
+    backgroundColor={isActive ? activeBackground : backgroundColor}
     px={2}
     py={1}
     sx={{

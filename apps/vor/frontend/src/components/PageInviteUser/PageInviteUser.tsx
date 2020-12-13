@@ -12,9 +12,9 @@ import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 
 import Icon from "../Icon/Icon"
 import Input from "../Input/Input"
-import { usePostUserInvite } from "../../api/usePostUserInvite"
+import { usePostUserInvite } from "../../hooks/api/usePostUserInvite"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
-import { useGetSchool } from "../../api/schools/useGetSchool"
+import { useGetSchool } from "../../hooks/api/schools/useGetSchool"
 
 const PageInviteUser: FC = () => {
   const schoolDetail = useGetSchool()

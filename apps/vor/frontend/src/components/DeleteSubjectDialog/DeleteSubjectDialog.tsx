@@ -1,8 +1,9 @@
 import React, { FC } from "react"
 
+import { t, Trans } from "@lingui/macro"
 import Typography from "../Typography/Typography"
 import Dialog from "../Dialog/Dialog"
-import useDeleteSubject from "../../api/curriculum/useDeleteSubject"
+import useDeleteSubject from "../../hooks/api/curriculum/useDeleteSubject"
 import DialogHeader from "../DialogHeader/DialogHeader"
 
 interface Props {
@@ -22,9 +23,9 @@ export const DeleteSubjectDialog: FC<Props> = ({
   return (
     <Dialog sx={{ maxWidth: ["", "maxWidth.xsm"] }}>
       <DialogHeader
-        title="Delete Subject?"
+        title={t`Delete Subject?`}
         onCancel={onDismiss}
-        onAcceptText="Delete"
+        onAcceptText={t`Delete`}
         loading={isLoading}
         onAccept={async () => {
           const response = await deleteSubject()
@@ -35,8 +36,10 @@ export const DeleteSubjectDialog: FC<Props> = ({
         }}
       />
       <Typography.Body p={3}>
-        <i>&quot;{name}&quot;</i> and student data related to it will be
-        permanently deleted. Are you sure?
+        <Trans>
+          <i>&quot;{name}&quot;</i> and student data related to it will be
+          permanently deleted. Are you sure?
+        </Trans>
       </Typography.Body>
     </Dialog>
   )

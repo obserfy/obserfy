@@ -1,12 +1,12 @@
 import React, { FC, useState } from "react"
 import { Box } from "theme-ui"
-import { MaterialProgressStage } from "../../api/useGetStudentMaterialProgress"
+import { MaterialProgressStage } from "../../hooks/api/useGetStudentMaterialProgress"
 import dayjs from "../../dayjs"
 import Dialog from "../Dialog/Dialog"
 import DialogHeader from "../DialogHeader/DialogHeader"
 import Typography from "../Typography/Typography"
 import Chip from "../Chip/Chip"
-import usePatchStudentMaterialProgress from "../../api/students/usePatchStudentMaterialProgress"
+import usePatchStudentMaterialProgress from "../../hooks/api/students/usePatchStudentMaterialProgress"
 
 export const StudentMaterialProgressDialog: FC<{
   studentId: string

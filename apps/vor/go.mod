@@ -5,7 +5,7 @@ go 1.15
 require (
 	github.com/benbjohnson/clock v1.0.3
 	github.com/brianvoe/gofakeit/v4 v4.3.0
-	github.com/getsentry/sentry-go v0.8.0
+	github.com/getsentry/sentry-go v0.9.0
 	github.com/go-chi/chi v4.1.2+incompatible
 	github.com/go-pg/pg/v10 v10.7.3
 	github.com/go-playground/validator/v10 v10.4.1
@@ -16,5 +16,5 @@ require (
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.6.1
 	go.uber.org/zap v1.16.0
-	golang.org/x/crypto v0.0.0-20201124201722-c8d3bf9c5392
+	golang.org/x/crypto v0.0.0-20201208171446-5f87f3452ae9
 )

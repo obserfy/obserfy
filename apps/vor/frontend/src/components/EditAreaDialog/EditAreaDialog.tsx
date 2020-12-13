@@ -7,7 +7,7 @@ import Spacer from "../Spacer/Spacer"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 
 import Input from "../Input/Input"
-import { updateAreaApi } from "../../api/updateAreaApi"
+import { updateAreaApi } from "../../hooks/api/updateAreaApi"
 
 interface Props {
   onDismiss: () => void

@@ -1,0 +1,5 @@
+files:
+  - source: /apps/freyr/i18n/lingui/en/messages.po
+    translation: /apps/freyr/i18n/lingui/%two_letters_code%/%original_file_name%
+  - source: /apps/vor/frontend/i18n/lingui/en/messages.po
+    translation: /apps/vor/frontend/i18n/lingui/%two_letters_code%/%original_file_name%

@@ -171,6 +171,7 @@ type Guardian struct {
 	Email    string
 	Phone    string
 	Note     string
+	Address  string
 	SchoolId string    `pg:"type:uuid"`
 	School   School    `pg:"rel:has-one"`
 	Children []Student `pg:"many2many:guardian_to_students,join_fk:student_id"`
@@ -185,9 +186,9 @@ const (
 )
 
 type GuardianToStudent struct {
-	StudentId    string               `pg:"type:uuid,on_delete:CASCADE"`
+	StudentId    string               `pg:"type:uuid,on_delete:CASCADE,pk"`
 	Student      Student              `pg:"rel:has-one"`
-	GuardianId   string               `pg:"type:uuid,on_delete:CASCADE"`
+	GuardianId   string               `pg:"type:uuid,on_delete:CASCADE,pk"`
 	Guardian     Guardian             `pg:"rel:has-one"`
 	Relationship GuardianRelationship `pg:"type:int"`
 }

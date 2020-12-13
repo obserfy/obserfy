@@ -230,7 +230,7 @@ exports[`PagePickGuardian should render correctly 1`] = `
 }
 
 .emotion-11:hover {
-  background-color: var(--theme-ui-colors-primaryLightest, rgba(0,120,86,0.05));
+  background-color: var(--theme-ui-colors-primaryLightest, rgba(0,227,153,0.05));
 }
 
 .emotion-12 {

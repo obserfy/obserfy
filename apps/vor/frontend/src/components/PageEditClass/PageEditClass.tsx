@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useRef, useState } from "react"
 import { useImmer } from "use-immer"
 import { Flex, Button, Box } from "theme-ui"
+import { Trans } from "@lingui/macro"
 import { navigate } from "../Link/Link"
 import { CLASS_SETTINGS_URL } from "../../routes"
 import BackNavigation from "../BackNavigation/BackNavigation"
@@ -8,9 +9,9 @@ import { Typography } from "../Typography/Typography"
 import Input from "../Input/Input"
 import Chip from "../Chip/Chip"
 import { WEEKDAYS } from "../PageNewClass/PageNewClass"
-import useGetClass from "../../api/classes/useGetClass"
+import useGetClass from "../../hooks/api/classes/useGetClass"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
-import usePatchClass from "../../api/classes/usePatchClass"
+import usePatchClass from "../../hooks/api/classes/usePatchClass"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import DeleteClassDialog from "../DeleteClassDialog/DeleteClassDialog"
 import ErrorMessage from "../ErrorMessage/ErrorMessage"
@@ -58,7 +59,9 @@ export const PageEditClass: FC<Props> = ({ classId }) => {
     <>
       <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto">
         <BackNavigation to={CLASS_SETTINGS_URL} text="Class" />
-        <Typography.H5 m={3}>Edit Class</Typography.H5>
+        <Typography.H5 m={3}>
+          <Trans>Edit Class</Trans>
+        </Typography.H5>
         {classes.status === "loading" && <LoadingState />}
         {classes.status === "success" && (
           <Box m={3}>
@@ -89,7 +92,7 @@ export const PageEditClass: FC<Props> = ({ classId }) => {
               />
             </Flex>
             <Typography.Body mb={2} color="textMediumEmphasis">
-              Available every
+              <Trans>Available every</Trans>
             </Typography.Body>
             <Flex
               mb={3}
@@ -124,7 +127,7 @@ export const PageEditClass: FC<Props> = ({ classId }) => {
                 sx={{ flexShrink: 0 }}
                 onClick={() => setShowDeleteDialog(true)}
               >
-                Delete
+                <Trans>Delete</Trans>
               </Button>
               <Button
                 sx={{ width: "100%" }}
@@ -134,7 +137,7 @@ export const PageEditClass: FC<Props> = ({ classId }) => {
                 {status === "loading" && (
                   <LoadingIndicator mr={2} color="onPrimary" />
                 )}
-                Save
+                <Trans>Save</Trans>
               </Button>
             </Flex>
             <ErrorMessage error={error} />
