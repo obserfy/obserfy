@@ -62,6 +62,7 @@ const TabItem: FC<TabItemProps> = ({ isSelected, onClick, sx, ...props }) => (
       whiteSpace: "nowrap",
       cursor: "pointer",
       display: "flex",
+      flexShrink: 0,
       flexDirection: "column",
       alignItems: "center",
       paddingTop: 12,
