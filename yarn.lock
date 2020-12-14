@@ -3409,9 +3409,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cypress/code-coverage@npm:3.8.7":
-  version: 3.8.7
-  resolution: "@cypress/code-coverage@npm:3.8.7"
+"@cypress/code-coverage@npm:3.8.8":
+  version: 3.8.8
+  resolution: "@cypress/code-coverage@npm:3.8.8"
   dependencies:
     "@cypress/browserify-preprocessor": 3.0.1
     debug: 4.3.1
@@ -3422,7 +3422,7 @@ __metadata:
     nyc: 15.1.0
   peerDependencies:
     cypress: "*"
-  checksum: 7916e2c2b1ba4adea006b60d586fb18d797d5aa84c6f4853ec69ae28f085c866bda127b2d9e39a46750ce0f3524f26b4a0510873dab4fdaeb344c128bc526f31
+  checksum: b206e01e29220e45dcba31f467b3092f7669d756b8de4211a48d810c04fe612ea80b84d28331852b5cc367496c7130add4b7c0cb952137c85eb4a9b879b879f6
   languageName: node
   linkType: hard
 
@@ -15820,7 +15820,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "e2e@workspace:apps/e2e"
   dependencies:
-    "@cypress/code-coverage": 3.8.7
+    "@cypress/code-coverage": 3.8.8
     "@cypress/webpack-preprocessor": 5.5.0
     "@hapi/iron": 6.0.0
     "@types/auth0-js": 9.14.2
