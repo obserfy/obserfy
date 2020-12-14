@@ -1,5 +1,9 @@
 import React, { FC, Fragment, ReactNode, useMemo, useState } from "react"
-import { Box, Flex } from "theme-ui"
+import { Box, Card, Flex } from "theme-ui"
+import { borderTop } from "../../border"
+import dayjs from "../../dayjs"
+import { useGetCurriculumAreas } from "../../hooks/api/useGetCurriculumAreas"
+import { useGetStudent } from "../../hooks/api/useGetStudent"
 import {
   Observation,
   useGetStudentObservations,
@@ -9,135 +13,75 @@ import {
   STUDENT_OVERVIEW_PAGE_URL,
   STUDENTS_URL,
 } from "../../routes"
-import Chip from "../Chip/Chip"
-import Typography from "../Typography/Typography"
-import { useGetStudent } from "../../hooks/api/useGetStudent"
+import ImagePreview from "../ImagePreview/ImagePreview"
+import { Link } from "../Link/Link"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
-import ObservationCard from "../ObservationCard/ObservationCard"
-import dayjs from "../../dayjs"
-import BackButton from "../BackButton/BackButton"
-import Breadcrumb from "../Breadcrumb/Breadcrumb"
-import BreadcrumbItem from "../Breadcrumb/BreadcrumbItem"
+import Tab from "../Tab/Tab"
+import TopBar, { breadCrumb } from "../TopBar/TopBar"
+import Typography from "../Typography/Typography"
 
 interface Props {
   studentId: string
 }
 export const PageAllObservations: FC<Props> = ({ studentId }) => {
-  const [selectedArea, setSelectedArea] = useState("")
   const observations = useGetStudentObservations(studentId)
   const student = useGetStudent(studentId)
+  const areas = useGetCurriculumAreas()
+
+  const [areaFilter, setAreaFilter] = useState(0)
+  const areaFilterId =
+    areaFilter > 0 ? areas.data?.[areaFilter - 1].id ?? "" : ""
 
   const parsedData = useMemo(() => {
-    const areaNames: { [key: string]: string } = {}
     const observationsByArea: { [key: string]: Observation[] } = {}
     observations.data?.forEach((observation) => {
       const areaId = observation.area?.id ?? "Other"
-      const areaName = observation.area?.name ?? "Other"
       if (observationsByArea[areaId] === undefined) {
         observationsByArea[areaId] = []
       }
       observationsByArea[areaId].push(observation)
-      areaNames[areaId] = areaName
     })
-    return { areaNames, observationsByArea }
+    return { observationsByArea }
   }, [observations.data])
 
   return (
-    <>
-      <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto">
-        <Flex sx={{ height: 48, alignItems: "center" }}>
-          <BackButton to={STUDENT_OVERVIEW_PAGE_URL(studentId)} />
-          <Breadcrumb>
-            <BreadcrumbItem to={STUDENTS_URL}>Students</BreadcrumbItem>
-            <BreadcrumbItem to={STUDENT_OVERVIEW_PAGE_URL(studentId)}>
-              {student.data?.name.split(" ")[0]}
-            </BreadcrumbItem>
-            <BreadcrumbItem>Observations</BreadcrumbItem>
-          </Breadcrumb>
-        </Flex>
-        <Flex pl={3} pr={2} py={2} sx={{ flexWrap: "wrap" }}>
-          <Chip
-            mr={2}
-            mb={2}
-            isActive={selectedArea === ""}
-            activeBackground="primary"
-            text={`all (${observations.data?.length ?? 0})`}
-            onClick={() => setSelectedArea("")}
-          />
-          {Object.keys(parsedData.areaNames).map((areaId) => {
-            const isSelected = areaId === selectedArea
+    <Box sx={{ maxWidth: "maxWidth.lg" }} mx="auto" pb={6}>
+      <TopBar
+        breadcrumbs={[
+          breadCrumb("Students", STUDENTS_URL),
+          breadCrumb(
+            student.data?.name.split(" ")[0],
+            STUDENT_OVERVIEW_PAGE_URL(studentId)
+          ),
+          breadCrumb("Observations"),
+        ]}
+      />
 
-            return (
-              <Chip
-                mr={2}
-                mb={2}
-                key={areaId}
-                isActive={areaId === selectedArea}
-                activeBackground="primary"
-                text={`${parsedData.areaNames[areaId]} (${parsedData.observationsByArea[areaId].length})`}
-                onClick={() => {
-                  setSelectedArea(isSelected ? "" : areaId)
-                }}
-              />
-            )
-          })}
-        </Flex>
-        {observations.status === "loading" && !observations.data && (
-          <Box mb={2} pt={4}>
-            <LoadingPlaceholder
-              sx={{
-                width: "100%",
-                height: "5rem",
-                borderRadius: [0, "default"],
-              }}
-              mb={3}
-            />
-            <LoadingPlaceholder
-              sx={{
-                width: "100%",
-                height: "5rem",
-                borderRadius: [0, "default"],
-              }}
-              mb={3}
-            />
-            <LoadingPlaceholder
-              sx={{
-                width: "100%",
-                height: "5rem",
-                borderRadius: [0, "default"],
-              }}
-              mb={3}
-            />
-            <LoadingPlaceholder
-              sx={{
-                width: "100%",
-                height: "5rem",
-                borderRadius: [0, "default"],
-              }}
-              mb={3}
-            />
-            <LoadingPlaceholder
-              sx={{
-                width: "100%",
-                height: "5rem",
-                borderRadius: [0, "default"],
-              }}
-              mb={3}
-            />
-          </Box>
-        )}
+      <Card mx={[0, 3]} sx={{ borderRadius: [0, "default"] }}>
+        <Typography.H6 mx={3} mt={3} mb={2}>
+          Observations
+        </Typography.H6>
+        <Tab
+          items={["All", ...(areas.data?.map((area) => area.name) ?? [])]}
+          selectedItemIdx={areaFilter}
+          onTabClick={(idx) => {
+            setAreaFilter(idx)
+          }}
+        />
         {observations.isSuccess && (
           <ObservationList
             studentId={studentId}
             observations={
-              selectedArea !== ""
-                ? parsedData.observationsByArea[selectedArea] ?? []
+              areaFilter !== 0
+                ? parsedData.observationsByArea[areaFilterId] ?? []
                 : observations.data ?? []
             }
           />
         )}
-      </Box>
-    </>
+
+        {observations.isLoading && !observations.data && <LoadingState />}
+      </Card>
+    </Box>
   )
 }
 
@@ -147,38 +91,119 @@ const ObservationList: FC<{
 }> = ({ observations, studentId }) => {
   const observationsByDate = useMemo(() => {
     const result: { [key: number]: ReactNode[] } = {}
-    observations?.forEach((observation) => {
+
+    observations.forEach((observation) => {
       const date = dayjs(observation.eventTime).startOf("day").unix()
-      if (result[date] === undefined) {
-        result[date] = []
-      }
+      result[date] ??= []
       result[date].push(
-        <ObservationCard
-          studentId={studentId}
-          key={observation.id}
-          detailsUrl={OBSERVATION_DETAILS_URL(studentId, observation.id)}
-          observation={observation}
-        />
+        <Link to={OBSERVATION_DETAILS_URL(studentId, observation.id)}>
+          <Box
+            pb={3}
+            sx={{
+              ...borderTop,
+              "&:hover": { backgroundColor: "primaryLighter" },
+            }}
+          >
+            <Typography.Body mt={3} mx={3} data-cy="observation-short-desc">
+              {observation.shortDesc}
+            </Typography.Body>
+            {observation.longDesc &&
+              observation.longDesc.split("\n\n").map((text) => (
+                <Typography.Body
+                  key={text}
+                  mx={3}
+                  mt={2}
+                  data-cy="observation-long-desc"
+                  color="textMediumEmphasis"
+                  sx={{ lineHeight: 1.8 }}
+                >
+                  {text}
+                </Typography.Body>
+              ))}
+
+            <Flex>
+              {observation.area && (
+                <Typography.Body
+                  mt={2}
+                  ml={3}
+                  sx={{ fontSize: 0, lineHeight: 1 }}
+                  color="textPrimary"
+                >
+                  {observation.area.name} {observation.creatorName && "|"}
+                </Typography.Body>
+              )}
+              {observation.creatorName && (
+                <Typography.Body
+                  mt={2}
+                  ml={3}
+                  sx={{ fontSize: 0, lineHeight: 1 }}
+                  color="textMediumEmphasis"
+                >
+                  {observation.creatorName}
+                </Typography.Body>
+              )}
+            </Flex>
+
+            {observation.images.length > 0 && (
+              <Flex
+                sx={{ alignItems: "baseline", flexWrap: "wrap" }}
+                mx={3}
+                mt={2}
+              >
+                {observation.images.map(({ id, originalUrl, thumbnailUrl }) => (
+                  <ImagePreview
+                    studentId={studentId}
+                    imageId={id}
+                    key={id}
+                    id={id}
+                    originalUrl={originalUrl}
+                    thumbnailUrl={thumbnailUrl}
+                    imageSx={{ mr: 2, mt: 2 }}
+                  />
+                ))}
+              </Flex>
+            )}
+          </Box>
+        </Link>
       )
     })
     return result
   }, [observations])
 
   return (
-    <Box m={[0, 3]}>
+    <Box>
       {Object.keys(observationsByDate)
         .reverse()
         .map((date) => {
           const dateUnix = parseInt(date, 10)
           return (
             <Fragment key={date}>
-              <Typography.Body my={2} sx={{ textAlign: "center", fontSize: 1 }}>
+              <Typography.Body
+                py={2}
+                sx={{
+                  textAlign: "center",
+                  fontSize: 1,
+                  backgroundColor: "background",
+                }}
+              >
                 {dayjs.unix(dateUnix).format("D MMMM YYYY")}
               </Typography.Body>
               {observationsByDate[dateUnix]}
             </Fragment>
           )
         })}
+    </Box>
+  )
+}
+
+const LoadingState = () => {
+  return (
+    <Box m={3}>
+      <LoadingPlaceholder mb={3} sx={{ width: "100%", height: "2rem" }} />
+      <LoadingPlaceholder mb={3} sx={{ width: "100%", height: "5rem" }} />
+      <LoadingPlaceholder mb={3} sx={{ width: "100%", height: "5rem" }} />
+      <LoadingPlaceholder mb={3} sx={{ width: "100%", height: "5rem" }} />
+      <LoadingPlaceholder mb={3} sx={{ width: "100%", height: "5rem" }} />
     </Box>
   )
 }
