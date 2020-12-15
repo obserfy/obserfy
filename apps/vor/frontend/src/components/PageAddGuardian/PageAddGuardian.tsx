@@ -7,7 +7,7 @@ import { GuardianRelationship } from "../../hooks/api/students/usePostNewStudent
 import { useGetStudent } from "../../hooks/api/useGetStudent"
 import { getFirstName } from "../../domain/person"
 import {
-  STUDENT_OVERVIEW_PAGE_URL,
+  STUDENT_OVERVIEW_URL,
   STUDENT_PROFILE_URL,
   STUDENTS_URL,
 } from "../../routes"
@@ -74,7 +74,7 @@ export const PageAddGuardian: FC<Props> = ({ id: studentId }) => {
           breadCrumb(t`Students`, STUDENTS_URL),
           breadCrumb(
             getFirstName(student),
-            STUDENT_OVERVIEW_PAGE_URL(studentId)
+            STUDENT_OVERVIEW_URL(studentId)
           ),
           breadCrumb(t`Profile`, STUDENT_PROFILE_URL(studentId)),
           breadCrumb(t`Add Guardian`),

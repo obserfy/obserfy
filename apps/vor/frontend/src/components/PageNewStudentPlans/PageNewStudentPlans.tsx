@@ -12,7 +12,7 @@ import usePostNewPlan, {
 import dayjs from "../../dayjs"
 import {
   ADMIN_CURRICULUM_URL,
-  STUDENT_OVERVIEW_PAGE_URL,
+  STUDENT_OVERVIEW_URL,
   STUDENT_PLANS_URL,
   STUDENTS_URL,
 } from "../../routes"
@@ -90,7 +90,7 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
           <BackButton to={STUDENT_PLANS_URL(studentId, date)} />
           <Breadcrumb>
             <BreadcrumbItem to={STUDENTS_URL}>Students</BreadcrumbItem>
-            <BreadcrumbItem to={STUDENT_OVERVIEW_PAGE_URL(studentId)}>
+            <BreadcrumbItem to={STUDENT_OVERVIEW_URL(studentId)}>
               {student.data?.name.split(" ")[0]}
             </BreadcrumbItem>
             <BreadcrumbItem to={STUDENT_PLANS_URL(studentId, date)}>

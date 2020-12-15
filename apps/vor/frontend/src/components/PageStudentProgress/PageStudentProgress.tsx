@@ -20,7 +20,7 @@ import {
 import Pill from "../Pill/Pill"
 import StudentMaterialProgressDialog from "../StudentMaterialProgressDialog/StudentMaterialProgressDialog"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
-import { STUDENT_OVERVIEW_PAGE_URL, STUDENTS_URL } from "../../routes"
+import { STUDENT_OVERVIEW_URL, STUDENTS_URL } from "../../routes"
 import BackButton from "../BackButton/BackButton"
 import Breadcrumb from "../Breadcrumb/Breadcrumb"
 import BreadcrumbItem from "../Breadcrumb/BreadcrumbItem"
@@ -45,7 +45,7 @@ export const PageStudentProgress: FC<Props> = ({ areaId, studentId }) => {
   const backNavigation = (
     <BackNavigation
       text="Student Details"
-      to={STUDENT_OVERVIEW_PAGE_URL(studentId)}
+      to={STUDENT_OVERVIEW_URL(studentId)}
     />
   )
 
@@ -75,10 +75,10 @@ export const PageStudentProgress: FC<Props> = ({ areaId, studentId }) => {
     <>
       <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={5}>
         <Flex sx={{ height: 48, alignItems: "center" }}>
-          <BackButton to={STUDENT_OVERVIEW_PAGE_URL(studentId)} />
+          <BackButton to={STUDENT_OVERVIEW_URL(studentId)} />
           <Breadcrumb>
             <BreadcrumbItem to={STUDENTS_URL}>Students</BreadcrumbItem>
-            <BreadcrumbItem to={STUDENT_OVERVIEW_PAGE_URL(studentId)}>
+            <BreadcrumbItem to={STUDENT_OVERVIEW_URL(studentId)}>
               {student.data?.name.split(" ")[0]}
             </BreadcrumbItem>
             <BreadcrumbItem>{` ${area.data?.name} Progress`}</BreadcrumbItem>
