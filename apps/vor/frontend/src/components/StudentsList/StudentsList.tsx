@@ -6,7 +6,7 @@ import { t, Trans } from "@lingui/macro"
 import { useGetAllStudents } from "../../hooks/api/students/useGetAllStudents"
 import useGetSchoolClasses from "../../hooks/api/classes/useGetSchoolClasses"
 import { Link } from "../Link/Link"
-import { NEW_STUDENT_URL, STUDENT_OVERVIEW_PAGE_URL } from "../../routes"
+import { NEW_STUDENT_URL, STUDENT_OVERVIEW_URL } from "../../routes"
 import StudentPicturePlaceholder from "../StudentPicturePlaceholder/StudentPicturePlaceholder"
 import { Typography } from "../Typography/Typography"
 import SearchBar from "../SearchBar/SearchBar"
@@ -176,7 +176,7 @@ const StudentListItem: FC<{
   const selected = studentId === id
 
   return (
-    <Link to={STUDENT_OVERVIEW_PAGE_URL(id)} sx={{ display: "block" }}>
+    <Link to={STUDENT_OVERVIEW_URL(id)} sx={{ display: "block" }}>
       <Box
         px={3}
         py={2}
