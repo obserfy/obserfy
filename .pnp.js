@@ -24852,10 +24852,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
-        ["npm:14.14.13", {
-          "packageLocation": "./.yarn/cache/@types-node-npm-14.14.13-9e58dadb81-a879dae2e0.zip/node_modules/@types/node/",
+        ["npm:14.14.14", {
+          "packageLocation": "./.yarn/cache/@types-node-npm-14.14.14-83cbbb70d3-dea8d257d4.zip/node_modules/@types/node/",
           "packageDependencies": [
-            ["@types/node", "npm:14.14.13"]
+            ["@types/node", "npm:14.14.14"]
           ],
           "linkType": "HARD",
         }],
@@ -33563,7 +33563,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@hapi/iron", "npm:6.0.0"],
             ["@types/auth0-js", "npm:9.14.2"],
             ["@types/faker", "npm:5.1.5"],
-            ["@types/node", "npm:14.14.13"],
+            ["@types/node", "npm:14.14.14"],
             ["@types/pg", "npm:7.14.7"],
             ["@typescript-eslint/eslint-plugin", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:4.9.1"],
             ["@typescript-eslint/parser", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:4.9.1"],
@@ -36817,7 +36817,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/minio", "npm:7.0.6"],
             ["@types/mixpanel-browser", "npm:2.35.4"],
             ["@types/nanoid", "npm:2.1.0"],
-            ["@types/node", "npm:14.14.13"],
+            ["@types/node", "npm:14.14.14"],
             ["@types/pg", "npm:7.14.7"],
             ["@types/pino", "npm:6.3.4"],
             ["@types/react", "npm:17.0.0"],
