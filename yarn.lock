@@ -7964,6 +7964,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/dompurify@npm:^2.0.4":
+  version: 2.0.4
+  resolution: "@types/dompurify@npm:2.0.4"
+  dependencies:
+    "@types/trusted-types": "*"
+  checksum: a2500864c39b9b6f0fa624e5971c6dddb32437d4c7dbea743aa310adb768bbb7b6406c05be6bf38591cf5f9c4fb1964ec6681d3a3de6b8c67b7d83e808bcdfbf
+  languageName: node
+  linkType: hard
+
 "@types/eslint-scope@npm:^3.7.0":
   version: 3.7.0
   resolution: "@types/eslint-scope@npm:3.7.0"
@@ -8688,6 +8697,13 @@ __metadata:
   version: 4.0.0
   resolution: "@types/tough-cookie@npm:4.0.0"
   checksum: 5a0cccc6d073b84dbb48d603e692b55ac30cea1653a7fc813e97a3bcaa9edd97c703c15727378d632e416a90178e6da657151eba8175cbb201a9a98de22ac3a8
+  languageName: node
+  linkType: hard
+
+"@types/trusted-types@npm:*":
+  version: 1.0.6
+  resolution: "@types/trusted-types@npm:1.0.6"
+  checksum: a2eb3e307d4fa212888285de782e96bd083dbabb991c3803aed124d50c9637529699299319ec8be301b3c5668067f6ea07785c3c6099f99d92783a3dab48de29
   languageName: node
   linkType: hard
 
@@ -15716,6 +15732,13 @@ __metadata:
   dependencies:
     domelementtype: 1
   checksum: dbe99b096aaf6e0618efc2e7e39d46448cba00999b08ba14970ee4d7a8916c4d4d463fcc1b4a7f247b34f47d1c115eec8fa5f8a4d1e430b2207da32bdf41f49a
+  languageName: node
+  linkType: hard
+
+"dompurify@npm:^2.2.4":
+  version: 2.2.4
+  resolution: "dompurify@npm:2.2.4"
+  checksum: 67f661e1a5689022c58f2975ff88f800e1e4d92f82d1f3e0babf99aa0b453b6af6c9e64596af88c106efbfd4878d3cc3a4c111ec18f044b6802a9d48de75717c
   languageName: node
   linkType: hard
 
@@ -33728,6 +33751,13 @@ resolve@^1.19.0:
   languageName: node
   linkType: hard
 
+"snarkdown@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "snarkdown@npm:2.0.0"
+  checksum: 19f60cf586ace41efd321e1f720254718381d270746fcd439a55cc8c77968cf1e742810ed11e13d0e9ca24e18a9260df56ca94a7bdd6024ea0a14b87143e06ca
+  languageName: node
+  linkType: hard
+
 "socket.io-adapter@npm:~1.1.0":
   version: 1.1.2
   resolution: "socket.io-adapter@npm:1.1.2"
@@ -37352,6 +37382,7 @@ typescript@^4.0.0:
     "@theme-ui/match-media": 0.6.0-alpha.1
     "@types/body-scroll-lock": 2.6.1
     "@types/date-fns": 2.6.0
+    "@types/dompurify": ^2.0.4
     "@types/faker": 5.1.5
     "@types/jest": 26.0.19
     "@types/query-string": 6.3.0
@@ -37375,6 +37406,7 @@ typescript@^4.0.0:
     chromatic: 5.5.0
     cross-env: 7.0.3
     dayjs: 1.9.7
+    dompurify: ^2.2.4
     dotenv: 8.2.0
     eslint: 7.15.0
     eslint-config-airbnb-typescript: 12.0.0
@@ -37433,6 +37465,7 @@ typescript@^4.0.0:
     react-refresh: 0.9.0
     react-test-renderer: 17.0.1
     regenerator-runtime: 0.13.7
+    snarkdown: ^2.0.0
     storybook-addon-deps: 2.1.3
     storybook-addon-i18n: 5.1.13
     theme-ui: 0.6.0-alpha.3
