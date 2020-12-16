@@ -22,11 +22,9 @@
   font-display: swap;
 }
 
-html,
-body {
-  padding: 0;
-  margin: 0;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 body {
   overflow-y: scroll;

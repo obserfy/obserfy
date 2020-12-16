@@ -1,7 +1,8 @@
 import React, { FC } from "react"
-import { Box, Button } from "theme-ui"
+import { Box, Button, Flex } from "theme-ui"
 import { Trans } from "@lingui/macro"
 import { useLingui } from "@lingui/react"
+import { borderBottom } from "../../border"
 import { Typography } from "../Typography/Typography"
 import Icon from "../Icon/Icon"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
@@ -22,28 +23,24 @@ export const MultilineDataBox: FC<MultilineDataBoxProps> = ({
   const { i18n } = useLingui()
 
   return (
-    <Box px={3} py={3} sx={{ alignItems: "flex-start" }}>
-      <Box mb={2}>
-        <Typography.Body
-          mb={2}
-          color="textMediumEmphasis"
-          sx={{ lineHeight: 1, fontSize: 1 }}
-        >
+    <Box sx={{ alignItems: "flex-start" }}>
+      <Flex sx={{ ...borderBottom, alignItems: "center" }}>
+        <Typography.H6 m={3}>
           <Trans id={label} />
-        </Typography.Body>
-        <Markdown markdown={value || i18n._(placeholder)} mb={3} />
-      </Box>
-      <Button
-        variant="outline"
-        ml="auto"
-        px={2}
-        onClick={onEditClick}
-        sx={{ flexShrink: 0, fontSize: 1, color: "textMediumEmphasis" }}
-        aria-label={`edit-${label.toLowerCase()}`}
-      >
-        <Icon as={EditIcon} mr={2} />
-        <Trans>Edit</Trans> <Trans id={label} />
-      </Button>
+        </Typography.H6>
+        <Button
+          variant="outline"
+          ml="auto"
+          mr={3}
+          p={2}
+          onClick={onEditClick}
+          aria-label={`edit-${label.toLowerCase()}`}
+          sx={{ color: "textMediumEmphasis" }}
+        >
+          <Icon as={EditIcon} />
+        </Button>
+      </Flex>
+      <Markdown markdown={value || i18n._(placeholder)} m={3} />
     </Box>
   )
 }
