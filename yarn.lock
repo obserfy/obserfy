@@ -17693,12 +17693,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-xml-parser@npm:^3.17.4":
-  version: 3.17.4
-  resolution: "fast-xml-parser@npm:3.17.4"
+"fast-xml-parser@npm:^3.17.5":
+  version: 3.17.5
+  resolution: "fast-xml-parser@npm:3.17.5"
   bin:
-    xml2js: ./cli.js
-  checksum: 382a4b84044f1f17c8dc94fdbceae38debc88b4700a2f782f44b779651fbaccdabf12edf981bb8381737a72d0796b5678616ce9fa190441535ef8ade106d415c
+    xml2js: cli.js
+  checksum: 58c05bff31bf57eb8ec12df7ee4e1338a54c852220aceeaf60f183f3b98e058506b6eb42c8824a27eb0edf12b2c4296206cfa7537d52baf28e757771a0a049b1
   languageName: node
   linkType: hard
 
@@ -18761,7 +18761,7 @@ fsevents@^1.2.7:
     io-ts: 2.2.13
     io-ts-types: 0.5.12
     jest: 26.6.3
-    minio: 7.0.17
+    minio: 7.0.18
     monocle-ts: 2.3.3
     nanoid: 3.1.20
     newtype-ts: 0.3.4
@@ -25107,17 +25107,17 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"lodash@npm:^4.14.2, lodash@npm:^4.17.20, lodash@npm:~4.17.20":
-  version: 4.17.20
-  resolution: "lodash@npm:4.17.20"
-  checksum: c62101d2500c383b5f174a7e9e6fe8098149ddd6e9ccfa85f36d4789446195f5c4afd3cfba433026bcaf3da271256566b04a2bf2618e5a39f6e67f8c12030cb6
-  languageName: node
-  linkType: hard
-
 "lodash@npm:^4.17.10, lodash@npm:^4.17.19":
   version: 4.17.19
   resolution: "lodash@npm:4.17.19"
   checksum: ff2b7a95f0129dba9101e346d44e0eda0f159d76bbbf23721eec1969b87a32bde3de0cfef0733218c64620e9be08040a973278d46a686540233b356115f3527c
+  languageName: node
+  linkType: hard
+
+"lodash@npm:^4.17.20, lodash@npm:~4.17.20":
+  version: 4.17.20
+  resolution: "lodash@npm:4.17.20"
+  checksum: c62101d2500c383b5f174a7e9e6fe8098149ddd6e9ccfa85f36d4789446195f5c4afd3cfba433026bcaf3da271256566b04a2bf2618e5a39f6e67f8c12030cb6
   languageName: node
   linkType: hard
 
@@ -26075,22 +26075,23 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"minio@npm:7.0.17":
-  version: 7.0.17
-  resolution: "minio@npm:7.0.17"
+"minio@npm:7.0.18":
+  version: 7.0.18
+  resolution: "minio@npm:7.0.18"
   dependencies:
     async: ^3.1.0
     block-stream2: ^2.0.0
     es6-error: ^4.1.1
-    fast-xml-parser: ^3.17.4
+    fast-xml-parser: ^3.17.5
     json-stream: ^1.0.0
-    lodash: ^4.14.2
+    lodash: ^4.17.20
     mime-types: ^2.1.14
     mkdirp: ^0.5.1
     querystring: 0.2.0
     through2: ^3.0.1
     xml: ^1.0.0
-  checksum: bbed7c25b851d32d9bc5a960d1ee406d5d8c82c654769dd5c584be2c13c3870368e677e028e913f768730cbd9296dd9c515f23302efdf2de0ef55b3c1998b4be
+    xml2js: ^0.4.15
+  checksum: f2bafc8c918f010039715bde42cb37bedc32430ed9e5f36816e0448da6358ffc43aac1decc49397e223909bdc47a9e5bc8708ae379e3562a81e2c5a4473d168d
   languageName: node
   linkType: hard
 
@@ -38588,7 +38589,7 @@ typescript@^4.0.0:
   languageName: node
   linkType: hard
 
-"xml2js@npm:^0.4.5":
+"xml2js@npm:^0.4.15, xml2js@npm:^0.4.5":
   version: 0.4.23
   resolution: "xml2js@npm:0.4.23"
   dependencies:
