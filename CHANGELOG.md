@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.13.2](https://github.com/obserfy/obserfy/compare/v1.13.1...v1.13.2) (2020-12-16)
+
+
+### Bug Fixes
+
+* **deps:** update sentry monorepo to v5.29.1 ([25e8f05](https://github.com/obserfy/obserfy/commit/25e8f057cfa3167f4096b936fecb2e0bf7d4f5f7))
+
 ### [1.13.1](https://github.com/obserfy/obserfy/compare/v1.13.0...v1.13.1) (2020-12-16)
 
 
