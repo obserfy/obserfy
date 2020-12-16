@@ -4,7 +4,7 @@ import { Box, Button, Card, Flex, jsx } from "theme-ui"
 import { t, Trans } from "@lingui/macro"
 import {
   NEW_STUDENT_PLANS_URL,
-  STUDENT_OVERVIEW_PAGE_URL,
+  STUDENT_OVERVIEW_URL,
   STUDENT_PLANS_DETAILS_URL,
   STUDENT_PLANS_URL,
   STUDENTS_URL,
@@ -35,7 +35,7 @@ export const PageStudentPlans: FC<Props> = ({ studentId, date }) => {
         breadcrumbs={[
           { to: STUDENTS_URL, text: t`Students` },
           {
-            to: STUDENT_OVERVIEW_PAGE_URL(studentId),
+            to: STUDENT_OVERVIEW_URL(studentId),
             text: student.data?.name.split(" ")[0] ?? "",
           },
           { text: t`Plans` },

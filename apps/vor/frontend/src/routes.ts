@@ -28,7 +28,7 @@ export const EDIT_SUBJECT_URL = (areaId: string, subjectId: string): string =>
 export const EDIT_CLASS_URL = (classId: string): string =>
   `/dashboard/admin/class/edit?classId=${classId}`
 
-export const STUDENT_OVERVIEW_PAGE_URL = (studentId: string): string =>
+export const STUDENT_OVERVIEW_URL = (studentId: string): string =>
   `/dashboard/students/overview?studentId=${studentId}`
 
 export const STUDENT_IMAGES_URL = (studentId: string): string =>

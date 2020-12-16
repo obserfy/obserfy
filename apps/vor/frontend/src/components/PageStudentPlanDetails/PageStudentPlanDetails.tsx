@@ -5,7 +5,7 @@ import useGetPlan from "../../hooks/api/plans/useGetPlan"
 import useDeletePlan from "../../hooks/api/plans/useDeletePlan"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import {
-  STUDENT_OVERVIEW_PAGE_URL,
+  STUDENT_OVERVIEW_URL,
   STUDENT_PLANS_URL,
   STUDENTS_URL,
 } from "../../routes"
@@ -40,7 +40,7 @@ export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
     },
     {
       text: student?.name?.split(" ")[0] ?? "",
-      to: STUDENT_OVERVIEW_PAGE_URL(studentId),
+      to: STUDENT_OVERVIEW_URL(studentId),
     },
     {
       text: t`Plans`,

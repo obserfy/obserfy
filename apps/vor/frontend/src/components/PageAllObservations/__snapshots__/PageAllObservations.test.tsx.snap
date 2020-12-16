@@ -231,43 +231,21 @@ exports[`PageAllObservations should render correctly 1`] = `
   min-width: 0;
   overflow: auto;
   background-color: var(--theme-ui-colors-surface, #fff);
-  border-radius: 6px;
+  border-radius: 0;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px,rgba(0, 0, 0, 0.27) 0px 2px 4px -2px;
   margin-left: 0;
   margin-right: 0;
-  border-radius: 0;
-}
-
-@media screen and (min-width: 40em) {
-  .emotion-14 {
-    margin-left: 16px;
-    margin-right: 16px;
-  }
 }
 
 @media screen and (min-width: 40em) {
   .emotion-14 {
     border-radius: 6px;
+    margin-left: 16px;
+    margin-right: 16px;
   }
 }
 
 .emotion-15 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: bold;
-  line-height: heading;
-  color: var(--theme-ui-colors-text, #37383c);
-  text-rendering: optimizeLegibility;
-  font-size: 20px;
-  margin-left: 16px;
-  margin-right: 16px;
-  margin-top: 16px;
-  margin-bottom: 8px;
-}
-
-.emotion-16 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -277,7 +255,7 @@ exports[`PageAllObservations should render correctly 1`] = `
   border-bottom-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
 }
 
-.emotion-17 {
+.emotion-16 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -298,7 +276,7 @@ exports[`PageAllObservations should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-18 {
+.emotion-17 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -337,12 +315,12 @@ exports[`PageAllObservations should render correctly 1`] = `
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-18 {
+  .emotion-17 {
     font-size: 14px;
   }
 }
 
-.emotion-18:after {
+.emotion-17:after {
   background-color: var(--theme-ui-colors-primary, #00e399);
   border-radius: 2px 2px 0 0;
   width: 125%;
@@ -353,14 +331,14 @@ exports[`PageAllObservations should render correctly 1`] = `
   transition: width 100ms cubic-bezier(0.0, 0.0, 0.2, 1);
 }
 
-.emotion-19 {
+.emotion-18 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   margin: 16px;
 }
 
-.emotion-20 {
+.emotion-19 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -372,7 +350,7 @@ exports[`PageAllObservations should render correctly 1`] = `
   height: 2rem;
 }
 
-.emotion-21 {
+.emotion-20 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -453,41 +431,36 @@ exports[`PageAllObservations should render correctly 1`] = `
       <div
         class="emotion-14"
       >
-        <h6
+        <div
           class="emotion-15"
         >
-          Observations
-        </h6>
-        <div
-          class="emotion-16"
-        >
           <div
-            class="emotion-17"
+            class="emotion-16"
           >
             <p
-              class="emotion-18"
+              class="emotion-17"
             >
               All
             </p>
           </div>
         </div>
         <div
-          class="emotion-19"
+          class="emotion-18"
         >
+          <div
+            class="emotion-19"
+          />
           <div
             class="emotion-20"
           />
           <div
-            class="emotion-21"
+            class="emotion-20"
           />
           <div
-            class="emotion-21"
+            class="emotion-20"
           />
           <div
-            class="emotion-21"
-          />
-          <div
-            class="emotion-21"
+            class="emotion-20"
           />
         </div>
       </div>
