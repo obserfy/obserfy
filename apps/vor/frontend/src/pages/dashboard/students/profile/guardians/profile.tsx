@@ -30,10 +30,7 @@ const GuardianProfile = () => {
       <TopBar
         breadcrumbs={[
           breadCrumb(t`Students`, STUDENTS_URL),
-          breadCrumb(
-            getFirstName(student),
-            STUDENT_OVERVIEW_URL(studentId)
-          ),
+          breadCrumb(getFirstName(student), STUDENT_OVERVIEW_URL(studentId)),
           breadCrumb(t`Profile`, STUDENT_PROFILE_URL(studentId)),
           breadCrumb(t`Guardian Profile`),
         ]}
