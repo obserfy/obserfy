@@ -26,6 +26,9 @@ exports[`Tab should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   overflow-x: auto;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
 }
 
 .emotion-3 {
@@ -57,8 +60,8 @@ exports[`Tab should render correctly 1`] = `
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
-  margin-left: 8px;
-  margin-right: 8px;
+  padding-left: 4px;
+  padding-right: 4px;
   margin-bottom: 0;
   color: var(--theme-ui-colors-textPrimary, #027c5b);
   font-size: 14px;
@@ -70,6 +73,9 @@ exports[`Tab should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -109,8 +115,8 @@ exports[`Tab should render correctly 1`] = `
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
-  margin-left: 8px;
-  margin-right: 8px;
+  padding-left: 4px;
+  padding-right: 4px;
   margin-bottom: 0;
   color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
   font-size: 14px;
@@ -122,6 +128,9 @@ exports[`Tab should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;

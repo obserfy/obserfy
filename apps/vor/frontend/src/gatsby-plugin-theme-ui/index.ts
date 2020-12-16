@@ -172,6 +172,11 @@ const theme: Theme = {
       boxShadow:
         "rgba(0, 0, 0, 0.1) 0px 0px 1px, rgba(0, 0, 0, 0.27) 0px 2px 4px -2px",
     },
+    responsive: {
+      variant: "cards.primary",
+      mx: [0, 3],
+      borderRadius: [0, "default"],
+    },
   },
   text: {
     h1: {

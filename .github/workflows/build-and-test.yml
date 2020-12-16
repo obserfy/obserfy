@@ -45,7 +45,7 @@ jobs:
           path: apps/vor/frontend/i18n
           key: v1-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('apps/vor/frontend/i18n/**/messages.po') }} }}
       - name: Use Node.js 15
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: 15
       - name: Install Dependencies
@@ -80,7 +80,7 @@ jobs:
             apps/gaia/.next
           key: v3-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/.pnp.js') }}-${{ hashFiles('**/yarn.lock') }}
       - name: Use Node.js 15
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: 15
       - name: Install Dependencies
@@ -174,7 +174,7 @@ jobs:
             .pnp.js
           key: v2-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/.pnp.js') }}-${{ hashFiles('**/yarn.lock') }}
       - name: Use Node.js 15
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: 15
       - name: Install Dependencies
@@ -235,7 +235,7 @@ jobs:
             ~/.cache/Cypress
           key: v3-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/.pnp.js') }}-${{ hashFiles('**/yarn.lock') }}
       - name: Use Node.js 15
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: 15
       - name: Install Dependencies
@@ -311,7 +311,7 @@ jobs:
             ~/.cache/Cypress
           key: v3-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/.pnp.js') }}-${{ hashFiles('**/yarn.lock') }}
       - name: Use Node.js 15
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: 15
       - name: Install Dependencies

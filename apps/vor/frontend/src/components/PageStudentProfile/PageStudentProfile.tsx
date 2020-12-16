@@ -16,7 +16,7 @@ import { ReactComponent as CloseIcon } from "../../icons/close.svg"
 import {
   ADD_GUARDIAN_URL,
   EDIT_STUDENT_CLASS_URL,
-  STUDENT_OVERVIEW_PAGE_URL,
+  STUDENT_OVERVIEW_URL,
   STUDENT_PROFILE_GUARDIAN_PROFILE_URL,
   STUDENTS_URL,
 } from "../../routes"
@@ -55,7 +55,7 @@ export const PageStudentProfile: FC<Props> = ({ studentId }) => {
       <TopBar
         breadcrumbs={[
           breadCrumb(t`Students`, STUDENTS_URL),
-          breadCrumb(getFirstName(data), STUDENT_OVERVIEW_PAGE_URL(studentId)),
+          breadCrumb(getFirstName(data), STUDENT_OVERVIEW_URL(studentId)),
           breadCrumb(t`Profile`),
         ]}
       />

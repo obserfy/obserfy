@@ -4,7 +4,7 @@ import { Box, Button, Flex, Image, Input, jsx, Label } from "theme-ui"
 import { Trans } from "@lingui/macro"
 import {
   STUDENT_IMAGE_DETAILS_URL,
-  STUDENT_OVERVIEW_PAGE_URL,
+  STUDENT_OVERVIEW_URL,
   STUDENTS_URL,
 } from "../../routes"
 import Typography from "../Typography/Typography"
@@ -30,12 +30,12 @@ export const PageStudentImages: FC<Props> = ({ studentId }) => {
   return (
     <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={5}>
       <Flex sx={{ height: 48, alignItems: "center" }}>
-        <BackButton to={STUDENT_OVERVIEW_PAGE_URL(studentId)} />
+        <BackButton to={STUDENT_OVERVIEW_URL(studentId)} />
         <Breadcrumb>
           <BreadcrumbItem to={STUDENTS_URL}>
             <Trans>Students</Trans>
           </BreadcrumbItem>
-          <BreadcrumbItem to={STUDENT_OVERVIEW_PAGE_URL(studentId)}>
+          <BreadcrumbItem to={STUDENT_OVERVIEW_URL(studentId)}>
             {student.data?.name.split(" ")[0]}
           </BreadcrumbItem>
           <BreadcrumbItem>
