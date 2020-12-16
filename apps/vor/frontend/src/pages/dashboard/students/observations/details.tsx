@@ -7,7 +7,7 @@ import PageObservationDetails from "../../../../components/PageObservationDetail
 import TopBar from "../../../../components/TopBar/TopBar"
 import {
   ALL_OBSERVATIONS_PAGE_URL,
-  STUDENT_OVERVIEW_PAGE_URL,
+  STUDENT_OVERVIEW_URL,
   STUDENTS_URL,
 } from "../../../../routes"
 import { useGetStudent } from "../../../../hooks/api/useGetStudent"
@@ -25,7 +25,7 @@ const ObservationDetails: FC = () => {
         breadcrumbs={[
           { to: STUDENTS_URL, text: t`Students` },
           {
-            to: STUDENT_OVERVIEW_PAGE_URL(studentId),
+            to: STUDENT_OVERVIEW_URL(studentId),
             text: student.data?.name?.split(" ")[0] ?? "",
           },
           {

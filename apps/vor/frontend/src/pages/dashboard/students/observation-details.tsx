@@ -5,7 +5,7 @@ import SEO from "../../../components/seo"
 import { useQueryString } from "../../../hooks/useQueryString"
 import PageObservationDetails from "../../../components/PageObservationDetails/PageObservationDetails"
 import TopBar from "../../../components/TopBar/TopBar"
-import { STUDENT_OVERVIEW_PAGE_URL, STUDENTS_URL } from "../../../routes"
+import { STUDENT_OVERVIEW_URL, STUDENTS_URL } from "../../../routes"
 import { useGetStudent } from "../../../hooks/api/useGetStudent"
 
 // TODO: this page is a temporary hack, replace with proper solution that doesn't requires duplicating page plz.
@@ -26,7 +26,7 @@ const ObservationDetails: FC = () => {
         breadcrumbs={[
           { to: STUDENTS_URL, text: t`Students` },
           {
-            to: STUDENT_OVERVIEW_PAGE_URL(studentId),
+            to: STUDENT_OVERVIEW_URL(studentId),
             text: student.data?.name?.split(" ")[0] ?? "",
           },
           { text: t`Observations Details` },
@@ -35,7 +35,7 @@ const ObservationDetails: FC = () => {
       <PageObservationDetails
         studentId={studentId}
         observationId={observationId}
-        backUrl={STUDENT_OVERVIEW_PAGE_URL(studentId)}
+        backUrl={STUDENT_OVERVIEW_URL(studentId)}
       />
     </Box>
   )
