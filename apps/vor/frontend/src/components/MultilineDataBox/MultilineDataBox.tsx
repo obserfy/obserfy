@@ -5,6 +5,7 @@ import { useLingui } from "@lingui/react"
 import { Typography } from "../Typography/Typography"
 import Icon from "../Icon/Icon"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
+import Markdown from "../Markdown/Markdown"
 
 export interface MultilineDataBoxProps {
   label: string
@@ -30,11 +31,7 @@ export const MultilineDataBox: FC<MultilineDataBoxProps> = ({
         >
           <Trans id={label} />
         </Typography.Body>
-        {value.split("\n\n").map((text) => (
-          <Typography.Body key={text} mb={3}>
-            {text || i18n._(placeholder)}
-          </Typography.Body>
-        ))}
+        <Markdown markdown={value || i18n._(placeholder)} mb={3} />
       </Box>
       <Button
         variant="outline"
