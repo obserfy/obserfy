@@ -343,7 +343,6 @@ msgstr ""
 msgid "Early Access"
 msgstr "Akses Awal"
 
-#: src/components/MultilineDataBox/MultilineDataBox.tsx:21
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:70
 msgid "Edit"
 msgstr "Ubah"

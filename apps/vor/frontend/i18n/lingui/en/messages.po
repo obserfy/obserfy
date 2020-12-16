@@ -338,7 +338,6 @@ msgstr "Do you want to remove {name} from  {studentName}'s list of guardians?"
 msgid "Early Access"
 msgstr "Akses Awal"
 
-#: src/components/MultilineDataBox/MultilineDataBox.tsx:21
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:70
 msgid "Edit"
 msgstr "Edit"
