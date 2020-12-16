@@ -10,7 +10,7 @@ import { useGetStudent } from "../../hooks/api/useGetStudent"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import usePostNewObservation from "../../hooks/api/usePostNewObservation"
 import { navigate } from "../Link/Link"
-import { STUDENT_OVERVIEW_PAGE_URL, STUDENTS_URL } from "../../routes"
+import { STUDENT_OVERVIEW_URL, STUDENTS_URL } from "../../routes"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import Icon from "../Icon/Icon"
 import usePostNewStudentImage from "../../hooks/api/students/usePostNewStudentImage"
@@ -55,7 +55,7 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
 
     if (response?.ok) {
       analytics.track("Observation Created")
-      await navigate(STUDENT_OVERVIEW_PAGE_URL(studentId))
+      await navigate(STUDENT_OVERVIEW_URL(studentId))
     } else {
       analytics.track("Create Observation Failed")
     }
@@ -67,12 +67,12 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
     <>
       <TranslucentBar boxSx={{ position: "sticky", top: 0, ...borderBottom }}>
         <Flex sx={{ alignItems: "center", maxWidth: "maxWidth.sm" }} m="auto">
-          <BackButton to={STUDENT_OVERVIEW_PAGE_URL(studentId)} />
+          <BackButton to={STUDENT_OVERVIEW_URL(studentId)} />
           <Breadcrumb>
             <BreadcrumbItem to={STUDENTS_URL}>
               <Trans>Students</Trans>
             </BreadcrumbItem>
-            <BreadcrumbItem to={STUDENT_OVERVIEW_PAGE_URL(studentId)}>
+            <BreadcrumbItem to={STUDENT_OVERVIEW_URL(studentId)}>
               {getFirstName(student)}
             </BreadcrumbItem>
             <BreadcrumbItem>

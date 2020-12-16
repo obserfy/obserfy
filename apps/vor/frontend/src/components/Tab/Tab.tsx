@@ -1,5 +1,6 @@
 import React, { FC } from "react"
 import { Box, Flex, HeadingProps, ThemeUIStyleObject } from "theme-ui"
+import { borderBottom } from "../../border"
 import { Typography } from "../Typography/Typography"
 
 interface TabProps {
@@ -17,7 +18,7 @@ export const Tab: FC<TabProps> = ({
   small,
   ...props
 }) => (
-  <Box sx={{ overflowX: "auto" }} {...props}>
+  <Box sx={{ overflowX: "auto", ...borderBottom }} {...props}>
     <Flex
       sx={{
         ...sx,
@@ -54,7 +55,7 @@ const TabItem: FC<TabItemProps> = ({ isSelected, onClick, sx, ...props }) => (
   <Typography.Body
     {...props}
     onClick={onClick}
-    mx={2}
+    px={1}
     mb={0}
     color={isSelected ? "textPrimary" : "textMediumEmphasis"}
     sx={{
@@ -62,6 +63,7 @@ const TabItem: FC<TabItemProps> = ({ isSelected, onClick, sx, ...props }) => (
       whiteSpace: "nowrap",
       cursor: "pointer",
       display: "flex",
+      flexShrink: 0,
       flexDirection: "column",
       alignItems: "center",
       paddingTop: 12,

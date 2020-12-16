@@ -11,7 +11,7 @@ import { getFirstName } from "../../../../../domain/person"
 import { useQueryString } from "../../../../../hooks/useQueryString"
 import useVisibilityState from "../../../../../hooks/useVisibilityState"
 import {
-  STUDENT_OVERVIEW_PAGE_URL,
+  STUDENT_OVERVIEW_URL,
   STUDENT_PROFILE_URL,
   STUDENTS_URL,
 } from "../../../../../routes"
@@ -30,10 +30,7 @@ const GuardianProfile = () => {
       <TopBar
         breadcrumbs={[
           breadCrumb(t`Students`, STUDENTS_URL),
-          breadCrumb(
-            getFirstName(student),
-            STUDENT_OVERVIEW_PAGE_URL(studentId)
-          ),
+          breadCrumb(getFirstName(student), STUDENT_OVERVIEW_URL(studentId)),
           breadCrumb(t`Profile`, STUDENT_PROFILE_URL(studentId)),
           breadCrumb(t`Guardian Profile`),
         ]}
