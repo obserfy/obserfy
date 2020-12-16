@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.13.1](https://github.com/obserfy/obserfy/compare/v1.13.0...v1.13.1) (2020-12-16)
+
+
+### Bug Fixes
+
+* **deps:** pin dependency gatsby-plugin-remove-serviceworker to 1.0.0 ([46a29a8](https://github.com/obserfy/obserfy/commit/46a29a8d4d8021cf3db55d0b188993dc2defd420))
+* **deps:** update dependency @types/node to v14.14.14 ([5e44fd8](https://github.com/obserfy/obserfy/commit/5e44fd837001e87492c4df7c205454a483f56ab5))
+* **deps:** update dependency babel-plugin-remove-graphql-queries to v2.13.0 ([5516468](https://github.com/obserfy/obserfy/commit/5516468803a2e973c9e580e8eaae40f33ddd5da1))
+* **deps:** update dependency minio to v7.0.18 ([dbb2973](https://github.com/obserfy/obserfy/commit/dbb297338110f9b9fec9e1984ab68a69ec5e7da0))
+* **deps:** update gatsby ([249862d](https://github.com/obserfy/obserfy/commit/249862d4a7e76d291c42f9f47129431b7fb69ce5))
+
 ## [1.13.0](https://github.com/obserfy/obserfy/compare/v1.12.3...v1.13.0) (2020-12-13)
 
 
