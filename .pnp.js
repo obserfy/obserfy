@@ -4492,7 +4492,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "fast-xml-parser",
-        "npm:3.17.4"
+        "npm:3.17.5"
       ],
       [
         "fastest-levenshtein",
@@ -6712,7 +6712,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "minio",
-        "npm:7.0.17"
+        "npm:7.0.18"
       ],
       [
         "minipass",
@@ -35699,10 +35699,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["fast-xml-parser", [
-        ["npm:3.17.4", {
-          "packageLocation": "./.yarn/cache/fast-xml-parser-npm-3.17.4-6bf93722ea-382a4b8404.zip/node_modules/fast-xml-parser/",
+        ["npm:3.17.5", {
+          "packageLocation": "./.yarn/cache/fast-xml-parser-npm-3.17.5-01f47424dd-58c05bff31.zip/node_modules/fast-xml-parser/",
           "packageDependencies": [
-            ["fast-xml-parser", "npm:3.17.4"]
+            ["fast-xml-parser", "npm:3.17.5"]
           ],
           "linkType": "HARD",
         }]
@@ -36857,7 +36857,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["io-ts", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.2.13"],
             ["io-ts-types", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.5.12"],
             ["jest", "npm:26.6.3"],
-            ["minio", "npm:7.0.17"],
+            ["minio", "npm:7.0.18"],
             ["monocle-ts", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.3.3"],
             ["nanoid", "npm:3.1.20"],
             ["newtype-ts", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.3.4"],
@@ -45306,21 +45306,22 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["minio", [
-        ["npm:7.0.17", {
-          "packageLocation": "./.yarn/cache/minio-npm-7.0.17-789b1b39a6-bbed7c25b8.zip/node_modules/minio/",
+        ["npm:7.0.18", {
+          "packageLocation": "./.yarn/cache/minio-npm-7.0.18-9cfd770f10-f2bafc8c91.zip/node_modules/minio/",
           "packageDependencies": [
-            ["minio", "npm:7.0.17"],
+            ["minio", "npm:7.0.18"],
             ["async", "npm:3.2.0"],
             ["block-stream2", "npm:2.0.0"],
             ["es6-error", "npm:4.1.1"],
-            ["fast-xml-parser", "npm:3.17.4"],
+            ["fast-xml-parser", "npm:3.17.5"],
             ["json-stream", "npm:1.0.0"],
             ["lodash", "npm:4.17.20"],
             ["mime-types", "npm:2.1.27"],
             ["mkdirp", "npm:0.5.5"],
             ["querystring", "npm:0.2.0"],
             ["through2", "npm:3.0.2"],
-            ["xml", "npm:1.0.1"]
+            ["xml", "npm:1.0.1"],
+            ["xml2js", "npm:0.4.23"]
           ],
           "linkType": "HARD",
         }]
