@@ -2,6 +2,48 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.13.0](https://github.com/obserfy/obserfy/compare/v1.12.3...v1.13.0) (2020-12-13)
+
+
+### Features
+
+* more comprehensive guardians table. UI tweak. ([2b8fa49](https://github.com/obserfy/obserfy/commit/2b8fa4921d4683113b2b90e5652ab66a31b7516a))
+* **freyr:** add chatwoot. ([8ca56b8](https://github.com/obserfy/obserfy/commit/8ca56b8db0d970d66218632dadc7b262ae55aaca))
+* **freyr:** setup MDX support ([46c1b76](https://github.com/obserfy/obserfy/commit/46c1b76655509736df726a55d5d0e5f2e2f7f5ea))
+
+
+### Bug Fixes
+
+* **deps:** pin dependencies ([4a0eab4](https://github.com/obserfy/obserfy/commit/4a0eab4a14c00b977d3a7eef40b00a0580856adf))
+* **deps:** update dependency @cypress/webpack-preprocessor to v5.5.0 ([d7fc02d](https://github.com/obserfy/obserfy/commit/d7fc02d86f03c1bc54965e8474993df6677633b5))
+* **deps:** update dependency @emotion/react to v11.1.2 ([09fc09d](https://github.com/obserfy/obserfy/commit/09fc09d6ca87b369cf2792b9b1e4db4dffb63edc))
+* **deps:** update dependency @prefresh/next to v1.4.3 ([15dc8ef](https://github.com/obserfy/obserfy/commit/15dc8ef6cb03814462df14bea53df4fbd09e99cb))
+* **deps:** update dependency @theme-ui/components to v0.5.0-alpha.2 ([3a49686](https://github.com/obserfy/obserfy/commit/3a49686da8a799f1906cc07381b2c638a924770a))
+* **deps:** update dependency @types/node to v14.14.13 ([f5a7750](https://github.com/obserfy/obserfy/commit/f5a7750b172210685887f4e7a5ca8dda11fbc503))
+* **deps:** update dependency babel-plugin-remove-graphql-queries to v2.12.0 ([e9fdc9c](https://github.com/obserfy/obserfy/commit/e9fdc9cb900bca9ecc2961b81ea4f3e95d54586e))
+* **deps:** update dependency dayjs to v1.9.7 ([ae74e3c](https://github.com/obserfy/obserfy/commit/ae74e3c9a9d254696952ad753925f7c0320858bf))
+* **deps:** update dependency fp-ts to v2.9.1 ([0021a34](https://github.com/obserfy/obserfy/commit/0021a34c69007b5fc33b85d89dfb79de11d1bfa6))
+* **deps:** update dependency nanoid to v3.1.19 ([835ed7f](https://github.com/obserfy/obserfy/commit/835ed7f4a797d2c438f0fb18db1fbd11b87d2748))
+* **deps:** update dependency nanoid to v3.1.20 ([7dfa6be](https://github.com/obserfy/obserfy/commit/7dfa6be4af124781b9df67cc0ec252bbbd71fff1))
+* **deps:** update dependency next-pwa to v5 ([b6f0a6b](https://github.com/obserfy/obserfy/commit/b6f0a6ba65b6e4021020b89cae400594d63eac06))
+* **deps:** update dependency pino to v6.8.0 ([13c4643](https://github.com/obserfy/obserfy/commit/13c46436f912732f9236d1cc30d5e0cb7960b61b))
+* **deps:** update dependency postcss to v8.1.14 ([6ea5cc7](https://github.com/obserfy/obserfy/commit/6ea5cc7134e330fba90349671191a71b23f74519))
+* **deps:** update dependency postcss to v8.2.0 ([bfac846](https://github.com/obserfy/obserfy/commit/bfac84681aedcc9948e3a99c65f892a4083d1d11))
+* **deps:** update dependency postcss to v8.2.1 ([0e4c98d](https://github.com/obserfy/obserfy/commit/0e4c98d7557d007bea6d4cd03306652c1eb331da))
+* **deps:** update dependency react-query to v2.26.4 ([2fc9a3b](https://github.com/obserfy/obserfy/commit/2fc9a3b35261625ec954666bdf6279cdd7a7d7ed))
+* **deps:** update dependency socket.io-client to v3.0.4 ([f3a15f0](https://github.com/obserfy/obserfy/commit/f3a15f0bff244f8f10541024189a6bc2adc4ad0b))
+* **deps:** update dependency tailwindcss to v2.0.2 ([b6acdfa](https://github.com/obserfy/obserfy/commit/b6acdfabd143f2d9ccd0865783594c53b3adbb9b))
+* **deps:** update dependency ts-loader to v8.0.12 ([6e039fa](https://github.com/obserfy/obserfy/commit/6e039fab647a0c93219aaf3ba77e260fb97c2ace))
+* **deps:** update lingui monorepo to v3.3.0 ([65e9b16](https://github.com/obserfy/obserfy/commit/65e9b167ab1ca9255d292120f2eff74e6c4984b0))
+* can't add multiple guardians when creating a new student. ([6b14cc2](https://github.com/obserfy/obserfy/commit/6b14cc294f1280f08bc11cde46baa3f51977415f))
+* fix sidebar popping out everywhere. ([ab5d928](https://github.com/obserfy/obserfy/commit/ab5d928578da140238a56d29ee388fae7f314f70))
+* redirects sometimes doesn't include query params. ([02fdc28](https://github.com/obserfy/obserfy/commit/02fdc28b5d10dabeb74a83614ab94c3468667cf1))
+* users getting thrown to 404 page. temporarily disable service worker. ([1ef4387](https://github.com/obserfy/obserfy/commit/1ef4387766e21564cb11fc5a0e78231dbc5da894))
+* **deps:** update dependency uuid to v8.3.2 ([367f0f8](https://github.com/obserfy/obserfy/commit/367f0f87d102d4f8a3b8128571d79aeabd2f4818))
+* **deps:** update gatsby ([3bbcbe4](https://github.com/obserfy/obserfy/commit/3bbcbe4442274367f2b4bb55b9a620de3e1302e0))
+* **deps:** update sentry monorepo to v5.28.0 ([65a8506](https://github.com/obserfy/obserfy/commit/65a8506fc133f9884bcd3b3f6b011ea16ec1337c))
+* **deps:** update sentry monorepo to v5.29.0 ([b9cda62](https://github.com/obserfy/obserfy/commit/b9cda6216f55e1c0ac8189476e32dac7330229ff))
+
 ### [1.12.3](https://github.com/obserfy/obserfy/compare/v1.12.2...v1.12.3) (2020-11-29)
 
 
