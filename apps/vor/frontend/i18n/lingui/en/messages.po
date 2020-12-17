@@ -83,8 +83,8 @@ msgid "Admin"
 msgstr "Admin"
 
 #: src/components/PageStudentOverview/PageStudentOverview.tsx:119
-msgid "All"
-msgstr "All"
+#~ msgid "All"
+#~ msgstr "All"
 
 #: src/components/PageAdmin/PageAdmin.tsx:70
 #: src/components/PageListOfGuardians/PageListOfGuardians.tsx:28
@@ -204,6 +204,10 @@ msgstr "Create new class"
 #~ msgid "Create new guardian"
 #~ msgstr "Create new guardian"
 
+#: src/components/PageStudentOverview/DailyObservationCard.tsx:83
+msgid "Create observation"
+msgstr "Create observation"
+
 #: src/components/EmptyClassDataPlaceholder/EmptyClassDataPlaceholder.tsx:7
 #: src/components/PageNewStudent/NewStudentForm.tsx:112
 msgid "Create your first class to track your student's class enrollment."
@@ -233,7 +237,7 @@ msgstr "Curriculum"
 msgid "Curriculum Name"
 msgstr "Curriculum Name"
 
-#: src/components/PageStudentOverview/PageStudentOverview.tsx:80
+#: src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx:85
 msgid "Curriculum Progress"
 msgstr "Curriculum Progress"
 
@@ -451,7 +455,7 @@ msgid "Friday"
 msgstr "Friday"
 
 #: src/components/PageStudentImages/PageStudentImages.tsx:48
-#: src/components/PageStudentOverview/PageStudentOverview.tsx:64
+#: src/components/PageStudentOverview/PageStudentOverview.tsx:55
 msgid "Gallery"
 msgstr "Gallery"
 
@@ -471,7 +475,7 @@ msgid "Go to Class Settings"
 msgstr "Go to Class Settings"
 
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:123
-#: src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx:42
+#: src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx:54
 msgid "Go to Curriculum"
 msgstr "Go to Curriculum"
 
@@ -507,7 +511,7 @@ msgstr "Image gallery"
 msgid "Images"
 msgstr "Images"
 
-#: src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx:75
+#: src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx:90
 msgid "In Progress"
 msgstr "In Progress"
 
@@ -655,7 +659,7 @@ msgstr "No guardians has been set"
 msgid "No links attached yet"
 msgstr "No links attached yet"
 
-#: src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx:51
+#: src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx:63
 msgid "No materials in progress."
 msgstr "No materials in progress."
 
@@ -663,7 +667,7 @@ msgstr "No materials in progress."
 msgid "No more students to add"
 msgstr "No more students to add"
 
-#: src/components/PageStudentOverview/PageStudentOverview.tsx:109
+#: src/components/PageStudentOverview/DailyObservationCard.tsx:79
 msgid "No observation have been added yet"
 msgstr "No observation have been added yet"
 
@@ -701,11 +705,11 @@ msgstr "Note"
 msgid "Notes"
 msgstr "Notes"
 
-#: src/components/PageStudentOverview/PageStudentOverview.tsx:72
+#: src/components/PageStudentOverview/PageStudentOverview.tsx:64
 msgid "Observation"
 msgstr "Observation"
 
-#: src/components/PageStudentOverview/PageStudentOverview.tsx:127
+#: src/components/PageStudentOverview/DailyObservationCard.tsx:35
 #: src/pages/dashboard/students/observations/details.tsx:25
 msgid "Observations"
 msgstr "Observations"
@@ -751,7 +755,7 @@ msgid "Pick a Date"
 msgstr "Pick a Date"
 
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:87
-#: src/components/PageStudentOverview/PageStudentOverview.tsx:58
+#: src/components/PageStudentOverview/PageStudentOverview.tsx:48
 #: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:44
 #: src/components/PageStudentPlans/PageStudentPlans.tsx:28
 msgid "Plans"
@@ -774,13 +778,13 @@ msgid "Presented"
 msgstr "Presented"
 
 #: src/components/PageAddGuardian/PageAddGuardian.tsx:61
-#: src/components/PageStudentOverview/PageStudentOverview.tsx:52
+#: src/components/PageStudentOverview/PageStudentOverview.tsx:41
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:52
 #: src/pages/dashboard/students/profile/guardians/profile.tsx:33
 msgid "Profile"
 msgstr "Profile"
 
-#: src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx:80
+#: src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx:95
 msgid "Recently Mastered"
 msgstr "Recently Mastered"
 
@@ -861,13 +865,17 @@ msgstr "Search"
 msgid "Search students"
 msgstr "Search students"
 
-#: src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx:65
+#: src/components/PageStudentOverview/DailyObservationCard.tsx:40
+msgid "See All"
+msgstr "See All"
+
+#: src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx:77
 msgid "See All {0} Progress"
 msgstr "See All {0} Progress"
 
 #: src/components/ObservationCard/ObservationCard.tsx:25
-msgid "See More"
-msgstr "See More"
+#~ msgid "See More"
+#~ msgstr "See More"
 
 #: src/components/StudentPickerDialog/StudentPickerDialog.tsx:30
 msgid "Select Students"
@@ -981,7 +989,6 @@ msgstr "Student ID"
 #: src/components/PageNewStudent/PageNewStudent.tsx:26
 #: src/components/PageNewStudentAddGuardian/PageNewStudentAddGuardian.tsx:62
 #: src/components/PageStudentImages/PageStudentImages.tsx:34
-#: src/components/PageStudentOverview/PageStudentOverview.tsx:35
 #: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:36
 #: src/components/PageStudentPlans/PageStudentPlans.tsx:23
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:50
@@ -1131,7 +1138,7 @@ msgid "You"
 msgstr "You"
 
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:121
-#: src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx:40
+#: src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx:52
 msgid "You can enable the curriculum feature to track student progress in your curriculum."
 msgstr "You can enable the curriculum feature to track student progress in your curriculum."
 
@@ -1160,5 +1167,5 @@ msgid "new guardian"
 msgstr "new guardian"
 
 #: src/components/PageStudentOverview/PageStudentOverview.tsx:109
-msgid "new observation"
-msgstr "new observation"
+#~ msgid "new observation"
+#~ msgstr "new observation"

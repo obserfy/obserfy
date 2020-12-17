@@ -50,14 +50,16 @@ const DailyObservationCard: FC<{ studentId: string }> = ({ studentId }) => {
           <Trans>Observations</Trans>
         </Typography.H6>
 
-        <Link
-          to={ALL_OBSERVATIONS_PAGE_URL(studentId)}
-          sx={{ display: "inline-block", ml: "auto", mr: 3 }}
-        >
-          <Button variant="outline">
-            <Trans>All</Trans>
-          </Button>
-        </Link>
+        {!isLoading && dataLength !== 0 && (
+          <Link
+            to={ALL_OBSERVATIONS_PAGE_URL(studentId)}
+            sx={{ display: "inline-block", ml: "auto", mr: 3 }}
+          >
+            <Button variant="secondary">
+              <Trans>See All</Trans>
+            </Button>
+          </Link>
+        )}
       </Flex>
 
       {!isLoading && dataLength !== 0 && (
@@ -68,13 +70,13 @@ const DailyObservationCard: FC<{ studentId: string }> = ({ studentId }) => {
             backgroundColor: "background",
             borderColor: "borderSolid",
           }}
-          py={2}
-          px={3}
+          py={1}
+          px={2}
         >
           <Button
             disabled={selectionIdx >= dates.length - 1}
             onClick={() => setSelectionIdx(selectionIdx + 1)}
-            variant="outline"
+            variant="secondary"
             p={1}
           >
             <Icon as={PrevIcon} />
@@ -91,7 +93,7 @@ const DailyObservationCard: FC<{ studentId: string }> = ({ studentId }) => {
           <Button
             disabled={selectionIdx < 1}
             onClick={() => setSelectionIdx(selectionIdx - 1)}
-            variant="outline"
+            variant="secondary"
             p={1}
           >
             <Icon as={NextIcon} />
