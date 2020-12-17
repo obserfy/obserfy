@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react"
-import { Box, Button, Card, Flex } from "theme-ui"
+import { Box, Button, Card, CardProps, Flex } from "theme-ui"
 import { t, Trans } from "@lingui/macro"
 import { Link } from "../Link/Link"
 import Spacer from "../Spacer/Spacer"
@@ -19,10 +19,13 @@ import {
 import MaterialProgressItem from "./MaterialProgressItem"
 import { ADMIN_CURRICULUM_URL, STUDENT_PROGRESS_URL } from "../../routes"
 
-interface Props {
+interface Props extends CardProps {
   studentId: string
 }
-export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
+export const StudentProgressSummaryCard: FC<Props> = ({
+  studentId,
+  ...props
+}) => {
   const [tab, setTab] = useState(0)
   const [isEditing, setIsEditing] = useState(false)
   const [selected, setSelected] = useState<MaterialProgress>()
@@ -138,7 +141,13 @@ export const StudentProgressSummaryCard: FC<Props> = ({ studentId }) => {
 
   return (
     <>
-      <Card sx={{ borderRadius: [0, "default"], overflow: "inherit" }}>
+      <Card
+        sx={{ borderRadius: [0, "default"], overflow: "inherit" }}
+        {...props}
+      >
+        <Typography.H6 p={3} pb={2}>
+          <Trans>Curriculum Progress</Trans>
+        </Typography.H6>
         <Tab
           small
           items={areas.data?.map(({ name }) => name) ?? []}
