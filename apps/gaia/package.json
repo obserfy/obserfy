@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "0.16.0",
-    "@prefresh/next": "1.4.3",
+    "@prefresh/next": "1.4.4",
     "@segment/snippet": "4.13.1",
     "@sentry/browser": "5.29.2",
     "@sentry/integrations": "5.29.2",
