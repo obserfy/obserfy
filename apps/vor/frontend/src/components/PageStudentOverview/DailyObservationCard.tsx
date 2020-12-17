@@ -63,9 +63,10 @@ const DailyObservationCard: FC<{ studentId: string }> = ({ studentId }) => {
       {!isLoading && dataLength !== 0 && (
         <Flex
           sx={{
+            ...borderTop,
             alignItems: "center",
             backgroundColor: "background",
-            ...borderTop,
+            borderColor: "borderSolid",
           }}
           py={2}
           px={3}
@@ -154,38 +155,10 @@ const EmptyState: FC<{
 
 const LoadingState: FC = () => (
   <Box mx={3}>
-    <LoadingPlaceholder
-      mb={3}
-      sx={{
-        height: 40,
-        width: "100%",
-        borderRadius: [0, "default"],
-      }}
-    />
-    <LoadingPlaceholder
-      mb={3}
-      sx={{
-        height: 21,
-        width: "15%",
-        borderRadius: [0, "default"],
-      }}
-    />
-    <LoadingPlaceholder
-      mb={3}
-      sx={{
-        height: 21,
-        width: "25%",
-        borderRadius: [0, "default"],
-      }}
-    />
-    <LoadingPlaceholder
-      mb={2}
-      sx={{
-        height: 21,
-        width: "10%",
-        borderRadius: [0, "default"],
-      }}
-    />
+    <LoadingPlaceholder mb={3} sx={{ height: 40, width: "100%" }} />
+    <LoadingPlaceholder mb={3} sx={{ height: 21, width: "15%" }} />
+    <LoadingPlaceholder mb={3} sx={{ height: 21, width: "25%" }} />
+    <LoadingPlaceholder mb={2} sx={{ height: 21, width: "10%" }} />
   </Box>
 )
 

@@ -23,7 +23,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   position: sticky;
   top: 0;
   border-bottom-width: 1px;
-  border-bottom-color: var(--theme-ui-colors-borderSolid, rgba(0,0,0,.1));
+  border-bottom-color: var(--theme-ui-colors-borderSolid, #e5e5e5);
   border-bottom-style: solid;
 }
 
