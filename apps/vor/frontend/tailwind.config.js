@@ -47,6 +47,9 @@ module.exports = {
         DEFAULT: {
           css: {
             color: "inherit",
+            p: {
+              opacity: 0.9,
+            },
             strong: {
               color: "inherit",
             },

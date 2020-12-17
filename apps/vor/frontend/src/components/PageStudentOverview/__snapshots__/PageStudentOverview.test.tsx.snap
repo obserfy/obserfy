@@ -623,8 +623,10 @@ exports[`PageStudentOverview should render correctly 1`] = `
 }
 
 .emotion-33 {
-  display: inline-block;
-  margin-left: auto;
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-left: 16px;
   margin-right: 16px;
 }
 
@@ -632,89 +634,24 @@ exports[`PageStudentOverview should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-appearance: none;
-  appearance: none;
-  display: inline-block;
-  text-align: center;
-  line-height: inherit;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  font-size: inherit;
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  color: white;
-  background-color: var(--theme-ui-colors-primary, #00e399);
-  border: 0;
-  border-radius: 4px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  box-sizing: border-box;
-  font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary, #027c5b);
-  background-color: var(--theme-ui-colors-surface, #fff);
+  margin-bottom: 16px;
   border-radius: 6px;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
-  transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 16px;
-  padding-right: 16px;
-  white-space: nowrap;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  touch-action: manipulation;
-  box-shadow: none;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  border-style: solid;
-  border-width: 1px;
-  line-height: 1;
-}
-
-.emotion-34:disabled {
-  opacity: 0.38;
-  cursor: auto;
-}
-
-.emotion-34:hover,
-.emotion-34:focus {
-  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
-  border-color: var(--theme-ui-colors-primary, #00e399);
-  outline: none;
-}
-
-.emotion-34:hover:disabled,
-.emotion-34:focus:disabled {
-  background-color: transparent;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
+  animation: 1s ease-in-out 0s infinite animation-0;
+  height: 40px;
+  width: 100%;
 }
 
 .emotion-35 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  margin-left: 16px;
-  margin-right: 16px;
+  margin-bottom: 16px;
+  border-radius: 6px;
+  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
+  animation: 1s ease-in-out 0s infinite animation-0;
+  height: 21px;
+  width: 15%;
 }
 
 .emotion-36 {
@@ -725,56 +662,11 @@ exports[`PageStudentOverview should render correctly 1`] = `
   border-radius: 6px;
   -webkit-animation: 1s ease-in-out 0s infinite animation-0;
   animation: 1s ease-in-out 0s infinite animation-0;
-  height: 40px;
-  width: 100%;
-  border-radius: 0;
-}
-
-@media screen and (min-width: 40em) {
-  .emotion-36 {
-    border-radius: 6px;
-  }
+  height: 21px;
+  width: 25%;
 }
 
 .emotion-37 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  margin-bottom: 16px;
-  border-radius: 6px;
-  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
-  animation: 1s ease-in-out 0s infinite animation-0;
-  height: 21px;
-  width: 15%;
-  border-radius: 0;
-}
-
-@media screen and (min-width: 40em) {
-  .emotion-37 {
-    border-radius: 6px;
-  }
-}
-
-.emotion-38 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  margin-bottom: 16px;
-  border-radius: 6px;
-  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
-  animation: 1s ease-in-out 0s infinite animation-0;
-  height: 21px;
-  width: 25%;
-  border-radius: 0;
-}
-
-@media screen and (min-width: 40em) {
-  .emotion-38 {
-    border-radius: 6px;
-  }
-}
-
-.emotion-39 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -784,23 +676,16 @@ exports[`PageStudentOverview should render correctly 1`] = `
   animation: 1s ease-in-out 0s infinite animation-0;
   height: 21px;
   width: 10%;
-  border-radius: 0;
 }
 
-@media screen and (min-width: 40em) {
-  .emotion-39 {
-    border-radius: 6px;
-  }
-}
-
-.emotion-40 {
+.emotion-38 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   margin-top: 16px;
 }
 
-.emotion-41 {
+.emotion-39 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -812,7 +697,7 @@ exports[`PageStudentOverview should render correctly 1`] = `
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-41 {
+  .emotion-39 {
     border-radius: 6px;
   }
 }
@@ -994,39 +879,29 @@ exports[`PageStudentOverview should render correctly 1`] = `
           >
             Observations
           </h6>
-          <a
-            class="emotion-33"
-            href="/dashboard/students/observations/all?studentId=asdfadsf"
-          >
-            <button
-              class="emotion-34"
-            >
-              All
-            </button>
-          </a>
         </div>
         <div
-          class="emotion-35"
+          class="emotion-33"
         >
+          <div
+            class="emotion-34"
+          />
+          <div
+            class="emotion-35"
+          />
           <div
             class="emotion-36"
           />
           <div
             class="emotion-37"
           />
-          <div
-            class="emotion-38"
-          />
-          <div
-            class="emotion-39"
-          />
         </div>
       </div>
       <div
-        class="emotion-40"
+        class="emotion-38"
       >
         <div
-          class="emotion-41"
+          class="emotion-39"
         />
       </div>
     </div>
