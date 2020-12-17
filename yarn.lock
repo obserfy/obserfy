@@ -5996,10 +5996,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@prefresh/babel-plugin@npm:0.3.0":
-  version: 0.3.0
-  resolution: "@prefresh/babel-plugin@npm:0.3.0"
-  checksum: 53468a3dd26928eba105d612ea3883693a3d800e1f23ea616eac536d9d9fd52d5761160973d6f415c4afba8fa9d0109cdcf09765869cbffce880f9dc2ba9290e
+"@prefresh/babel-plugin@npm:0.4.0":
+  version: 0.4.0
+  resolution: "@prefresh/babel-plugin@npm:0.4.0"
+  checksum: 1971aea0134bc19c5567722b3d18aaf37ddd0ca587fd49ba8ac4396915cd998fc8f241e9c23a38f5c21633547c22a5ac8eed4b0ea18ab8be09043769fbe5e153
   languageName: node
   linkType: hard
 
@@ -6019,28 +6019,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@prefresh/core@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "@prefresh/core@npm:1.0.0"
+"@prefresh/core@npm:^1.3.0":
+  version: 1.3.0
+  resolution: "@prefresh/core@npm:1.3.0"
   peerDependencies:
     preact: ^10.0.0
-  checksum: c268fbecdcb37464f99b352a8c41e8147b80145de01446e05d938567a92638dd41c92f6330378195c6abfe2a201c20a6d0a2f34e9e7da3667922684d5649f86a
+  checksum: 25f2eef28ab08510fb0b89a6fea0c09589873803248ada85ec0a2f4a27f0da94b35ccf1944641bdc12dc8360173aeb513ca871f7dfd82dae20f998db1e99dec7
   languageName: node
   linkType: hard
 
-"@prefresh/next@npm:1.4.3":
-  version: 1.4.3
-  resolution: "@prefresh/next@npm:1.4.3"
+"@prefresh/next@npm:1.4.4":
+  version: 1.4.4
+  resolution: "@prefresh/next@npm:1.4.4"
   dependencies:
-    "@prefresh/babel-plugin": 0.3.0
-    "@prefresh/core": ^1.0.0
+    "@prefresh/babel-plugin": 0.4.0
+    "@prefresh/core": ^1.3.0
     "@prefresh/utils": ^1.0.0
-    "@prefresh/webpack": ^2.3.0
+    "@prefresh/webpack": ^3.0.0
   peerDependencies:
     next: ^9.4.0
     preact: ^10.4.0
     webpack: ^4.0.0 || ^5.0.0
-  checksum: 8dd949fa51f373e08dc4974a14e83308565341f6feb1e0a7d797d64f182bc7ba5cf22d580f66a2575c5eb5c8d9e54e9bcd9130eab232adad0ab784b4a11a4a64
+  checksum: f84993dfdba2af4dcde9d213a9896bacc1228b76db191c40715e35297a0f7c182dc8a64dfc1b8b1fcdac0bedd2c84ff672c4eb1d816cd05cee1eb6901f10fe05
   languageName: node
   linkType: hard
 
@@ -6058,6 +6058,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@prefresh/utils@npm:^1.1.0":
+  version: 1.1.1
+  resolution: "@prefresh/utils@npm:1.1.1"
+  checksum: cf906ad24d578b5a446059f4834e4a65cb3cc2ee9a62fcc97f565c2c01567abc0c8f6f9991532ed595e33c0e5c7eb459cfb912d7d4de20f79a9ab48c18ce6000
+  languageName: node
+  linkType: hard
+
 "@prefresh/webpack@npm:^1.1.0":
   version: 1.1.0
   resolution: "@prefresh/webpack@npm:1.1.0"
@@ -6071,17 +6078,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@prefresh/webpack@npm:^2.3.0":
-  version: 2.3.0
-  resolution: "@prefresh/webpack@npm:2.3.0"
+"@prefresh/webpack@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@prefresh/webpack@npm:3.0.0"
   dependencies:
-    "@prefresh/core": ^1.0.0
-    "@prefresh/utils": ^1.0.0
+    "@prefresh/core": ^1.3.0
+    "@prefresh/utils": ^1.1.0
   peerDependencies:
-    "@prefresh/babel-plugin": ^0.3.0
+    "@prefresh/babel-plugin": ^0.4.0
     preact: ^10.4.0
     webpack: ^4.0.0 || ^5.0.0
-  checksum: c6f4125f4b2e89d73eda3a44ee80914631bb1ce20ee10b6d72b1ff41f50b1588716e4ca429688ed58cc026c599bf4826907d8987f6551374b3009abb4e4998a4
+  checksum: 480346a5988a0dd16a4e08b7b445021f2e5c2c6088b6b7dac22f5e48ebda946c3e4383595617e45a31aba8640ce334b469cc6ab3fac35f03d6b6cac5a98dcd22
   languageName: node
   linkType: hard
 
@@ -18797,7 +18804,7 @@ fsevents@^1.2.7:
   resolution: "gaia@workspace:apps/gaia"
   dependencies:
     "@auth0/nextjs-auth0": 0.16.0
-    "@prefresh/next": 1.4.3
+    "@prefresh/next": 1.4.4
     "@segment/snippet": 4.13.1
     "@sentry/browser": 5.29.2
     "@sentry/integrations": 5.29.2
