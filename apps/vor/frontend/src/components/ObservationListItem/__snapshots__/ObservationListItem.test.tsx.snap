@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ObservationListItem should render correctly 1`] = `
+.emotion-0 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 16px;
+}
+
+@media screen and (min-width: 40em) {
+  .emotion-0 {
+    font-size: 20px;
+  }
+}
+
+.emotion-1 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding-top: 16px;
+  border-top-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-top-width: 1px;
+  border-top-style: solid;
+}
+
+.emotion-1:hover {
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
+}
+
+.emotion-2 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: var(--theme-ui-colors-text, #37383c);
+  font-size: 14px;
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+  margin-bottom: 8px;
+  margin-left: 16px;
+  margin-right: 16px;
+  font-weight: bold;
+}
+
+.emotion-3 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-left: 16px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-4 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-left: 16px;
+  margin-right: 16px;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  -webkit-box-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+<div>
+  <div
+    class="emotion-0"
+  >
+    <a
+      href=""
+    >
+      <div
+        class="emotion-1"
+      >
+        <p
+          class="emotion-2"
+          data-cy="observation-short-desc"
+        />
+        
+        <div
+          class="emotion-3"
+        />
+        <div
+          class="emotion-4"
+        />
+      </div>
+    </a>
+  </div>
+</div>
+`;
