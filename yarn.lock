@@ -10876,15 +10876,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-plugin-macros@npm:3.0.0":
-  version: 3.0.0
-  resolution: "babel-plugin-macros@npm:3.0.0"
+"babel-plugin-macros@npm:3.0.1":
+  version: 3.0.1
+  resolution: "babel-plugin-macros@npm:3.0.1"
   dependencies:
     "@babel/runtime": ^7.12.5
-    "@babel/traverse": ^7.12.9
     cosmiconfig: ^7.0.0
     resolve: ^1.19.0
-  checksum: 87f8ad06049385e6073853741936f138a70868ad9785c6f5d0f7a077932df6111b3e4f8c590887430ecca47653b4af00e93ad76c53f7802c4e4f65e43c5704bb
+  checksum: f1a523136365b5bfb23bfc05d3d0b91358adc854a3440d3ea6220b6427bf43d8ea25b7f01ade618af943005d82f449389d02446a4b097a87ccd7eeab14921e03
   languageName: node
   linkType: hard
 
@@ -18502,7 +18501,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": 4.9.1
     "@typescript-eslint/parser": 4.9.1
     babel-core: 7.0.0-bridge.0
-    babel-plugin-macros: 3.0.0
+    babel-plugin-macros: 3.0.1
     babel-preset-gatsby: 0.8.0
     eslint: 7.15.0
     eslint-config-airbnb-typescript: 12.0.0
@@ -37366,7 +37365,7 @@ typescript@^4.0.0:
     babel-jest: 26.6.3
     babel-loader: 8.2.2
     babel-plugin-istanbul: 6.0.0
-    babel-plugin-macros: 3.0.0
+    babel-plugin-macros: 3.0.1
     babel-plugin-remove-graphql-queries: 2.13.0
     babel-plugin-transform-default-import: 1.0.0
     babel-preset-gatsby: 0.8.0
