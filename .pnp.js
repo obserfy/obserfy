@@ -1192,15 +1192,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@prefresh/babel-plugin",
-        "npm:0.3.0"
+        "npm:0.4.0"
       ],
       [
         "@prefresh/core",
-        "virtual:2fba4424e54e5f48f409ca101f0a686d5f2816b91508828f5cf0be15444713506828ec8bc13d687d8a946cd82f23de2c45a6c070900f0b76b10da82897c7522a#npm:1.0.0"
+        "virtual:afc61c7457f4da59255616f14be1d87732a85c3f4f9b110ea74bb68915919a54e591cd6df59a754c27b7ff6cfacdc77f437ca7a04771a783ce651c8aaa58cb28#npm:1.3.0"
       ],
       [
         "@prefresh/utils",
-        "npm:1.0.0"
+        "npm:0.3.1"
       ],
       [
         "@prefresh/webpack",
@@ -22056,10 +22056,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
-        ["npm:0.3.0", {
-          "packageLocation": "./.yarn/cache/@prefresh-babel-plugin-npm-0.3.0-ee50d9165d-53468a3dd2.zip/node_modules/@prefresh/babel-plugin/",
+        ["npm:0.4.0", {
+          "packageLocation": "./.yarn/cache/@prefresh-babel-plugin-npm-0.4.0-c8f05b9c8d-1971aea013.zip/node_modules/@prefresh/babel-plugin/",
           "packageDependencies": [
-            ["@prefresh/babel-plugin", "npm:0.3.0"]
+            ["@prefresh/babel-plugin", "npm:0.4.0"]
           ],
           "linkType": "HARD",
         }]
@@ -22078,10 +22078,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
-        ["virtual:2fba4424e54e5f48f409ca101f0a686d5f2816b91508828f5cf0be15444713506828ec8bc13d687d8a946cd82f23de2c45a6c070900f0b76b10da82897c7522a#npm:1.0.0", {
-          "packageLocation": "./.yarn/$$virtual/@prefresh-core-virtual-c2faec266b/0/cache/@prefresh-core-npm-1.0.0-5bc682957a-c268fbecdc.zip/node_modules/@prefresh/core/",
+        ["virtual:afc61c7457f4da59255616f14be1d87732a85c3f4f9b110ea74bb68915919a54e591cd6df59a754c27b7ff6cfacdc77f437ca7a04771a783ce651c8aaa58cb28#npm:1.3.0", {
+          "packageLocation": "./.yarn/$$virtual/@prefresh-core-virtual-ea709aa3a3/0/cache/@prefresh-core-npm-1.3.0-b7a61ef98b-25f2eef28a.zip/node_modules/@prefresh/core/",
           "packageDependencies": [
-            ["@prefresh/core", "virtual:2fba4424e54e5f48f409ca101f0a686d5f2816b91508828f5cf0be15444713506828ec8bc13d687d8a946cd82f23de2c45a6c070900f0b76b10da82897c7522a#npm:1.0.0"],
+            ["@prefresh/core", "virtual:afc61c7457f4da59255616f14be1d87732a85c3f4f9b110ea74bb68915919a54e591cd6df59a754c27b7ff6cfacdc77f437ca7a04771a783ce651c8aaa58cb28#npm:1.3.0"],
             ["@types/preact", null],
             ["preact", "npm:10.5.5"]
           ],
@@ -22093,14 +22093,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@prefresh/next", [
-        ["virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:1.4.3", {
-          "packageLocation": "./.yarn/$$virtual/@prefresh-next-virtual-2fba4424e5/0/cache/@prefresh-next-npm-1.4.3-6971c1984b-8dd949fa51.zip/node_modules/@prefresh/next/",
+        ["virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:1.4.4", {
+          "packageLocation": "./.yarn/$$virtual/@prefresh-next-virtual-afc61c7457/0/cache/@prefresh-next-npm-1.4.4-61b8f1f5a4-f84993dfdb.zip/node_modules/@prefresh/next/",
           "packageDependencies": [
-            ["@prefresh/next", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:1.4.3"],
-            ["@prefresh/babel-plugin", "npm:0.3.0"],
-            ["@prefresh/core", "virtual:2fba4424e54e5f48f409ca101f0a686d5f2816b91508828f5cf0be15444713506828ec8bc13d687d8a946cd82f23de2c45a6c070900f0b76b10da82897c7522a#npm:1.0.0"],
+            ["@prefresh/next", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:1.4.4"],
+            ["@prefresh/babel-plugin", "npm:0.4.0"],
+            ["@prefresh/core", "virtual:afc61c7457f4da59255616f14be1d87732a85c3f4f9b110ea74bb68915919a54e591cd6df59a754c27b7ff6cfacdc77f437ca7a04771a783ce651c8aaa58cb28#npm:1.3.0"],
             ["@prefresh/utils", "npm:1.0.0"],
-            ["@prefresh/webpack", "virtual:2fba4424e54e5f48f409ca101f0a686d5f2816b91508828f5cf0be15444713506828ec8bc13d687d8a946cd82f23de2c45a6c070900f0b76b10da82897c7522a#npm:2.3.0"],
+            ["@prefresh/webpack", "virtual:afc61c7457f4da59255616f14be1d87732a85c3f4f9b110ea74bb68915919a54e591cd6df59a754c27b7ff6cfacdc77f437ca7a04771a783ce651c8aaa58cb28#npm:3.0.0"],
             ["@types/next", null],
             ["@types/preact", null],
             ["@types/webpack", null],
@@ -22133,32 +22133,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@prefresh/utils", "npm:1.0.0"]
           ],
           "linkType": "HARD",
+        }],
+        ["npm:1.1.1", {
+          "packageLocation": "./.yarn/cache/@prefresh-utils-npm-1.1.1-8557b33c36-cf906ad24d.zip/node_modules/@prefresh/utils/",
+          "packageDependencies": [
+            ["@prefresh/utils", "npm:1.1.1"]
+          ],
+          "linkType": "HARD",
         }]
       ]],
       ["@prefresh/webpack", [
-        ["virtual:2fba4424e54e5f48f409ca101f0a686d5f2816b91508828f5cf0be15444713506828ec8bc13d687d8a946cd82f23de2c45a6c070900f0b76b10da82897c7522a#npm:2.3.0", {
-          "packageLocation": "./.yarn/$$virtual/@prefresh-webpack-virtual-8f82e6391d/0/cache/@prefresh-webpack-npm-2.3.0-c0be8eadf4-c6f4125f4b.zip/node_modules/@prefresh/webpack/",
-          "packageDependencies": [
-            ["@prefresh/webpack", "virtual:2fba4424e54e5f48f409ca101f0a686d5f2816b91508828f5cf0be15444713506828ec8bc13d687d8a946cd82f23de2c45a6c070900f0b76b10da82897c7522a#npm:2.3.0"],
-            ["@prefresh/babel-plugin", "npm:0.3.0"],
-            ["@prefresh/core", "virtual:2fba4424e54e5f48f409ca101f0a686d5f2816b91508828f5cf0be15444713506828ec8bc13d687d8a946cd82f23de2c45a6c070900f0b76b10da82897c7522a#npm:1.0.0"],
-            ["@prefresh/utils", "npm:1.0.0"],
-            ["@types/preact", null],
-            ["@types/prefresh__babel-plugin", null],
-            ["@types/webpack", null],
-            ["preact", "npm:10.5.5"],
-            ["webpack", null]
-          ],
-          "packagePeers": [
-            "@prefresh/babel-plugin",
-            "@types/preact",
-            "@types/prefresh__babel-plugin",
-            "@types/webpack",
-            "preact",
-            "webpack"
-          ],
-          "linkType": "HARD",
-        }],
         ["virtual:39f431682b67a95ebef0a6e0f395c8c154e43a4d630b7d9133715e67ff5cf977619691cb999f65e0ee22408a5b261cc20405a5a0c9d7e5fcda537777f9cb526e#npm:1.1.0", {
           "packageLocation": "./.yarn/$$virtual/@prefresh-webpack-virtual-29c68970f5/0/cache/@prefresh-webpack-npm-1.1.0-0562106d67-13f7949994.zip/node_modules/@prefresh/webpack/",
           "packageDependencies": [
@@ -22172,6 +22156,29 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "packagePeers": [
             "@types/preact",
+            "@types/webpack",
+            "preact",
+            "webpack"
+          ],
+          "linkType": "HARD",
+        }],
+        ["virtual:afc61c7457f4da59255616f14be1d87732a85c3f4f9b110ea74bb68915919a54e591cd6df59a754c27b7ff6cfacdc77f437ca7a04771a783ce651c8aaa58cb28#npm:3.0.0", {
+          "packageLocation": "./.yarn/$$virtual/@prefresh-webpack-virtual-36e96d75ac/0/cache/@prefresh-webpack-npm-3.0.0-1d629f3510-480346a598.zip/node_modules/@prefresh/webpack/",
+          "packageDependencies": [
+            ["@prefresh/webpack", "virtual:afc61c7457f4da59255616f14be1d87732a85c3f4f9b110ea74bb68915919a54e591cd6df59a754c27b7ff6cfacdc77f437ca7a04771a783ce651c8aaa58cb28#npm:3.0.0"],
+            ["@prefresh/babel-plugin", "npm:0.4.0"],
+            ["@prefresh/core", "virtual:afc61c7457f4da59255616f14be1d87732a85c3f4f9b110ea74bb68915919a54e591cd6df59a754c27b7ff6cfacdc77f437ca7a04771a783ce651c8aaa58cb28#npm:1.3.0"],
+            ["@prefresh/utils", "npm:1.1.1"],
+            ["@types/preact", null],
+            ["@types/prefresh__babel-plugin", null],
+            ["@types/webpack", null],
+            ["preact", "npm:10.5.5"],
+            ["webpack", null]
+          ],
+          "packagePeers": [
+            "@prefresh/babel-plugin",
+            "@types/preact",
+            "@types/prefresh__babel-plugin",
             "@types/webpack",
             "preact",
             "webpack"
@@ -36887,7 +36894,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["gaia", "workspace:apps/gaia"],
             ["@auth0/nextjs-auth0", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.16.0"],
-            ["@prefresh/next", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:1.4.3"],
+            ["@prefresh/next", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:1.4.4"],
             ["@segment/snippet", "npm:4.13.1"],
             ["@sentry/browser", "npm:5.29.2"],
             ["@sentry/integrations", "npm:5.29.2"],
