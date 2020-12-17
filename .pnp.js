@@ -2580,7 +2580,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "babel-plugin-macros",
-        "npm:3.0.0"
+        "npm:3.0.1"
       ],
       [
         "babel-plugin-minify-builtins",
@@ -21313,7 +21313,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/babel-plugin-macros", null],
             ["@types/babel__core", null],
             ["@types/typescript", null],
-            ["babel-plugin-macros", "npm:3.0.0"],
+            ["babel-plugin-macros", "npm:3.0.1"],
             ["bcp-47", "npm:1.0.7"],
             ["chalk", "npm:4.1.0"],
             ["cli-table", "npm:0.3.1"],
@@ -21362,7 +21362,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/babel-plugin-macros", null],
             ["@types/babel__core", null],
             ["@types/typescript", null],
-            ["babel-plugin-macros", "npm:3.0.0"],
+            ["babel-plugin-macros", "npm:3.0.1"],
             ["bcp-47", "npm:1.0.7"],
             ["chalk", "npm:4.1.0"],
             ["cli-table", "npm:0.3.1"],
@@ -21430,7 +21430,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/runtime", "npm:7.11.2"],
             ["@lingui/conf", "npm:3.3.0"],
             ["@types/babel-plugin-macros", null],
-            ["babel-plugin-macros", "npm:3.0.0"],
+            ["babel-plugin-macros", "npm:3.0.1"],
             ["ramda", "npm:0.27.1"]
           ],
           "packagePeers": [
@@ -27952,12 +27952,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
-        ["npm:3.0.0", {
-          "packageLocation": "./.yarn/cache/babel-plugin-macros-npm-3.0.0-7c980faa52-87f8ad0604.zip/node_modules/babel-plugin-macros/",
+        ["npm:3.0.1", {
+          "packageLocation": "./.yarn/cache/babel-plugin-macros-npm-3.0.1-b6bee694f8-f1a5231363.zip/node_modules/babel-plugin-macros/",
           "packageDependencies": [
-            ["babel-plugin-macros", "npm:3.0.0"],
+            ["babel-plugin-macros", "npm:3.0.1"],
             ["@babel/runtime", "npm:7.12.5"],
-            ["@babel/traverse", "npm:7.12.9"],
             ["cosmiconfig", "npm:7.0.0"],
             ["resolve", "patch:resolve@npm%3A1.19.0#builtin<compat/resolve>::version=1.19.0&hash=3388aa"]
           ],
@@ -36585,7 +36584,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@typescript-eslint/eslint-plugin", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:4.9.1"],
             ["@typescript-eslint/parser", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:4.9.1"],
             ["babel-core", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:7.0.0-bridge.0"],
-            ["babel-plugin-macros", "npm:3.0.0"],
+            ["babel-plugin-macros", "npm:3.0.1"],
             ["babel-preset-gatsby", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:0.8.0"],
             ["eslint", "npm:7.15.0"],
             ["eslint-config-airbnb-typescript", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:12.0.0"],
@@ -57964,7 +57963,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["babel-jest", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:26.6.3"],
             ["babel-loader", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:8.2.2"],
             ["babel-plugin-istanbul", "npm:6.0.0"],
-            ["babel-plugin-macros", "npm:3.0.0"],
+            ["babel-plugin-macros", "npm:3.0.1"],
             ["babel-plugin-remove-graphql-queries", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:2.13.0"],
             ["babel-plugin-transform-default-import", "npm:1.0.0"],
             ["babel-preset-gatsby", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.8.0"],
