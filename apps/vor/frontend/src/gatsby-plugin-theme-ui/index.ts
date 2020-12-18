@@ -99,7 +99,7 @@ const theme: Theme = {
         background: "#101010",
         onBackground: "rgba(255,255,255, 0.87)",
 
-        surface: "#1d1d1d",
+        surface: "#242424",
         onSurface: "rgba(255,255,255, 0.87)",
 
         darkSurface: "#1a1a1a",
