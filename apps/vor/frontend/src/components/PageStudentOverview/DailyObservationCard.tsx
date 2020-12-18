@@ -2,7 +2,7 @@
 import { Trans } from "@lingui/macro"
 import { FC, useState } from "react"
 import { Box, Button, Card, Flex, jsx } from "theme-ui"
-import { borderTop } from "../../border"
+import { borderBottom, borderTop } from "../../border"
 import dayjs from "../../dayjs"
 import {
   Observation,
@@ -66,9 +66,13 @@ const DailyObservationCard: FC<{ studentId: string }> = ({ studentId }) => {
         <Flex
           sx={{
             ...borderTop,
+            ...borderBottom,
             alignItems: "center",
-            backgroundColor: "background",
+            backgroundColor: "darkSurface",
             borderColor: "borderSolid",
+            position: "sticky",
+            top: 0,
+            zIndex: 10,
           }}
           py={1}
           px={2}
@@ -147,7 +151,7 @@ const EmptyState: FC<{
       <Typography.Body mb={4} mt={3} sx={{ textAlign: "center" }}>
         <Trans> No observation have been added yet</Trans>
       </Typography.Body>
-      <Button variant="outline" onClick={onActionClick}>
+      <Button variant="outline" onClick={onActionClick} mb={4}>
         <Icon as={PlusIcon} mr={2} />
         <Trans>Create observation</Trans>
       </Button>
@@ -156,7 +160,7 @@ const EmptyState: FC<{
 )
 
 const LoadingState: FC = () => (
-  <Box mx={3}>
+  <Box mx={3} pb={2}>
     <LoadingPlaceholder mb={3} sx={{ height: 40, width: "100%" }} />
     <LoadingPlaceholder mb={3} sx={{ height: 21, width: "15%" }} />
     <LoadingPlaceholder mb={3} sx={{ height: 21, width: "25%" }} />

@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 import { Box, Flex } from "theme-ui"
-import { borderTop } from "../../border"
+import { borderBottom } from "../../border"
 import { Observation } from "../../hooks/api/useGetStudentObservations"
 import ImagePreview from "../ImagePreview/ImagePreview"
 import { Link } from "../Link/Link"
@@ -22,7 +22,7 @@ const ObservationListItem: FC<ObservationListItemProps> = ({
       <Box
         pt={3}
         sx={{
-          ...borderTop,
+          ...borderBottom,
           "&:hover": { backgroundColor: "primaryLighter" },
         }}
       >

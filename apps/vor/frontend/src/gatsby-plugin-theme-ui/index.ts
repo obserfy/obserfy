@@ -35,6 +35,9 @@ const theme: Theme = {
     surface: "#fff",
     onSurface: "rgba(0,0,0,0.87)",
 
+    darkSurface: "#f8f8f8",
+    onDarkSurface: "rgba(0,0,0,0.87)",
+
     surfaceBlurNonTransparent: "rgba(255,255,255)",
     onSurfaceBlurNonTransparent: "#87000000",
     surfaceBlurTransparent: "rgba(255,255,255,0.6)",
@@ -98,6 +101,9 @@ const theme: Theme = {
 
         surface: "#1d1d1d",
         onSurface: "rgba(255,255,255, 0.87)",
+
+        darkSurface: "#1a1a1a",
+        onDarkSurface: "rgba(255,255,255, 0.87)",
 
         surfaceBlurNonTransparent: "rgba(23,23,23)",
         onSurfaceBlurNonTransparent: "rgba(255,255,255, 0.87)",
@@ -166,7 +172,6 @@ const theme: Theme = {
   },
   cards: {
     primary: {
-      overflow: "auto",
       backgroundColor: "surface",
       borderRadius: "default",
       boxShadow:
