@@ -12,7 +12,7 @@ const LessonPlanDescriptionCard: FC<{
   planId: string
   description?: string
 }> = ({ planId, description }) => (
-  <Card mb={3} sx={{ borderRadius: [0, "default"] }}>
+  <Card mb={3} pb={3} sx={{ borderRadius: [0, "default"] }}>
     <DescriptionDataBox value={description} lessonPlanId={planId} />
   </Card>
 )

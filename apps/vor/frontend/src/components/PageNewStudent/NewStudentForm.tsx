@@ -152,7 +152,7 @@ export const NewStudentForm = () => {
       </Box>
 
       <Card mt={4} mx={[0, 3]} sx={{ borderRadius: [0, "default"] }}>
-        <Typography.H6 m={3}>
+        <Typography.H6 p={3}>
           <Trans>Classes</Trans>
         </Typography.H6>
 
@@ -213,7 +213,7 @@ export const NewStudentForm = () => {
         </Flex>
 
         {state.guardians.length === 0 && (
-          <Typography.Body m={3} color="textMediumEmphasis">
+          <Typography.Body p={3} color="textMediumEmphasis">
             <Trans>This student doesn&apos;t have a guardian yet.</Trans>
           </Typography.Body>
         )}

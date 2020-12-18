@@ -20,6 +20,7 @@ export interface Observation {
     thumbnailUrl: string
     originalUrl: string
   }>
+  visibleToGuardians: boolean
 }
 
 export const useGetStudentObservations = (

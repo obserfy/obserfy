@@ -456,17 +456,18 @@ func getObservation(s rest.Server, store Store) http.Handler {
 		Name string `json:"name"`
 	}
 	type responseBody struct {
-		Id          string    `json:"id"`
-		StudentName string    `json:"studentName"`
-		CategoryId  string    `json:"categoryId"`
-		CreatorId   string    `json:"creatorId,omitempty"`
-		CreatorName string    `json:"creatorName,omitempty"`
-		LongDesc    string    `json:"longDesc"`
-		ShortDesc   string    `json:"shortDesc"`
-		CreatedDate time.Time `json:"createdDate"`
-		EventTime   time.Time `json:"eventTime,omitempty"`
-		Area        *area     `json:"area,omitempty"`
-		Images      []image   `json:"images"`
+		Id                 string    `json:"id"`
+		StudentName        string    `json:"studentName"`
+		CategoryId         string    `json:"categoryId"`
+		CreatorId          string    `json:"creatorId,omitempty"`
+		CreatorName        string    `json:"creatorName,omitempty"`
+		LongDesc           string    `json:"longDesc"`
+		ShortDesc          string    `json:"shortDesc"`
+		CreatedDate        time.Time `json:"createdDate"`
+		EventTime          time.Time `json:"eventTime,omitempty"`
+		Area               *area     `json:"area,omitempty"`
+		Images             []image   `json:"images"`
+		VisibleToGuardians bool      `json:"visibleToGuardians"`
 	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		id := chi.URLParam(r, "studentId")
@@ -474,9 +475,9 @@ func getObservation(s rest.Server, store Store) http.Handler {
 		observations, err := store.GetObservations(id)
 		if err != nil {
 			return &rest.Error{
-				http.StatusInternalServerError,
-				"Fail to query students",
-				err,
+				Code:    http.StatusInternalServerError,
+				Message: "Fail to query students",
+				Error:   err,
 			}
 		}
 
@@ -489,6 +490,7 @@ func getObservation(s rest.Server, store Store) http.Handler {
 			response[i].ShortDesc = o.ShortDesc
 			response[i].EventTime = o.EventTime
 			response[i].CreatedDate = o.CreatedDate
+			response[i].VisibleToGuardians = o.VisibleToGuardians
 			if o.AreaId != uuid.Nil {
 				response[i].Area = &area{
 					Id:   o.Area.Id,

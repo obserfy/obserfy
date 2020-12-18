@@ -53,7 +53,7 @@ const ImagesDataBox: FC<{
 
   return (
     <Fragment>
-      <Flex px={3} mb={2} sx={{ flexWrap: "wrap", alignItems: "center" }}>
+      <Flex px={3} pb={2} sx={{ flexWrap: "wrap", alignItems: "center" }}>
         {images.map((image, idx) => {
           const isSelected = selectedIdx === idx
           return (

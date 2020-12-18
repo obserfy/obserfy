@@ -1,6 +1,6 @@
-import React, { FC, Fragment, ReactNode, useMemo, useState } from "react"
+import React, { FC, ReactNode, useMemo, useState } from "react"
 import { Box, Card } from "theme-ui"
-import { borderTop } from "../../border"
+import { borderBottom } from "../../border"
 import dayjs from "../../dayjs"
 import { useGetCurriculumAreas } from "../../hooks/api/useGetCurriculumAreas"
 import {
@@ -81,21 +81,24 @@ const ObservationList: FC<{
       {dates.map((date) => {
         const dateUnix = parseInt(date, 10)
         return (
-          <Fragment key={date}>
+          <Box key={date}>
             <Typography.Body
               py={2}
               sx={{
                 textAlign: "center",
-                backgroundColor: "background",
-                ...borderTop,
+                backgroundColor: "darkSurface",
+                ...borderBottom,
                 borderColor: "borderSolid",
+                position: "sticky",
+                top: 0,
+                zIndex: 100,
               }}
             >
               {dayjs.unix(dateUnix).format("D MMMM YYYY")}
             </Typography.Body>
 
             {observationsByDate[dateUnix]}
-          </Fragment>
+          </Box>
         )
       })}
     </Box>

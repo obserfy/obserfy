@@ -32,6 +32,7 @@ export const PageSupport: FC = () => {
       })
     }
   }, [status, data])
+
   return (
     <Box mx="auto" sx={{ maxWidth: "maxWidth.sm" }}>
       <Typography.H6 mx={3} mt={4} mb={2}>
@@ -52,7 +53,7 @@ export const PageSupport: FC = () => {
           </Flex>
         </a>
 
-        <Flex m={3} sx={{ alignItems: "flex-start" }}>
+        <Flex p={3} sx={{ alignItems: "flex-start" }}>
           <Box mr={3}>
             <Typography.Body>
               <Trans>Shoot us an e-mail</Trans>
