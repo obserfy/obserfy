@@ -1171,6 +1171,3 @@ msgstr "tidak aktif"
 msgid "new guardian"
 msgstr "wali baru"
 
-#: src/components/PageStudentOverview/PageStudentOverview.tsx:109
-#~ msgid "new observation"
-#~ msgstr "observasi baru"
