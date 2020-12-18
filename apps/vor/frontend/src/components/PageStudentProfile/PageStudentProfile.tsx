@@ -51,7 +51,7 @@ export const PageStudentProfile: FC<Props> = ({ studentId }) => {
   }
 
   return (
-    <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={4}>
+    <Box sx={{ maxWidth: "maxWidth.md" }} margin="auto" pb={4}>
       <TopBar
         breadcrumbs={[
           breadCrumb(t`Students`, STUDENTS_URL),

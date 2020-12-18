@@ -41,7 +41,7 @@ const theme: Theme = {
     onSurfaceBlurTransparent: "#87000000",
 
     border: "rgba(0,0,0,.1)",
-    borderSolid: "rgba(0,0,0,.1)",
+    borderSolid: "#e5e5e5",
 
     overlay: "rgba(0,0,0,.7)",
     onOverlay: "#fff",
@@ -107,7 +107,7 @@ const theme: Theme = {
         icon: "#979797",
 
         border: "rgba(232,232,232, 0.07)",
-        borderSolid: "#000",
+        borderSolid: "#2c2c2c",
 
         muted: "#222222",
         mutedLight: "#212121",
