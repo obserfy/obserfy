@@ -233,7 +233,7 @@ jobs:
             .yarn/build-state.yml
             .pnp.js
             ~/.cache/Cypress
-          key: v3-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/.pnp.js') }}-${{ hashFiles('**/yarn.lock') }}
+          key: v4-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/.pnp.js') }}-${{ hashFiles('**/yarn.lock') }}
       - name: Use Node.js 15
         uses: actions/setup-node@v2
         with:
@@ -309,7 +309,7 @@ jobs:
             .yarn/build-state.yml
             .pnp.js
             ~/.cache/Cypress
-          key: v3-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/.pnp.js') }}-${{ hashFiles('**/yarn.lock') }}
+          key: v4-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/.pnp.js') }}-${{ hashFiles('**/yarn.lock') }}
       - name: Use Node.js 15
         uses: actions/setup-node@v2
         with:
