@@ -7632,7 +7632,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tailwindcss/typography@npm:0.3.1":
+"@tailwindcss/typography@npm:0.3.1, @tailwindcss/typography@npm:^0.3.1":
   version: 0.3.1
   resolution: "@tailwindcss/typography@npm:0.3.1"
   peerDependencies:
@@ -7968,6 +7968,15 @@ __metadata:
   version: 4.1.5
   resolution: "@types/debug@npm:4.1.5"
   checksum: 416ad24bc589be0fb8c78bea972aa7d4ffdf6b136239701b1792674463b2dbf8c6707f6055ec484f79ec1f2b528ffef90c87e55df7e4a0f458184cad5bf0cfc8
+  languageName: node
+  linkType: hard
+
+"@types/dompurify@npm:^2.0.4":
+  version: 2.0.4
+  resolution: "@types/dompurify@npm:2.0.4"
+  dependencies:
+    "@types/trusted-types": "*"
+  checksum: a2500864c39b9b6f0fa624e5971c6dddb32437d4c7dbea743aa310adb768bbb7b6406c05be6bf38591cf5f9c4fb1964ec6681d3a3de6b8c67b7d83e808bcdfbf
   languageName: node
   linkType: hard
 
@@ -8695,6 +8704,13 @@ __metadata:
   version: 4.0.0
   resolution: "@types/tough-cookie@npm:4.0.0"
   checksum: 5a0cccc6d073b84dbb48d603e692b55ac30cea1653a7fc813e97a3bcaa9edd97c703c15727378d632e416a90178e6da657151eba8175cbb201a9a98de22ac3a8
+  languageName: node
+  linkType: hard
+
+"@types/trusted-types@npm:*":
+  version: 1.0.6
+  resolution: "@types/trusted-types@npm:1.0.6"
+  checksum: a2eb3e307d4fa212888285de782e96bd083dbabb991c3803aed124d50c9637529699299319ec8be301b3c5668067f6ea07785c3c6099f99d92783a3dab48de29
   languageName: node
   linkType: hard
 
@@ -15725,6 +15741,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dompurify@npm:^2.2.4":
+  version: 2.2.4
+  resolution: "dompurify@npm:2.2.4"
+  checksum: 67f661e1a5689022c58f2975ff88f800e1e4d92f82d1f3e0babf99aa0b453b6af6c9e64596af88c106efbfd4878d3cc3a4c111ec18f044b6802a9d48de75717c
+  languageName: node
+  linkType: hard
+
 "domutils@npm:1.5.1":
   version: 1.5.1
   resolution: "domutils@npm:1.5.1"
@@ -19366,6 +19389,19 @@ fsevents@^1.2.7:
     gatsby: ^2.0.0
     postcss: ^8.0.5
   checksum: 240f1339e01b1a3d512ddbb054d4090b4485f7acea2fd4c1b99611c9d9d2f358afd428d0721845d962e2ecb37df608ab4f82a946fa1c88e33f4ee93da50d964a
+  languageName: node
+  linkType: hard
+
+"gatsby-plugin-postcss@npm:^3.4.0":
+  version: 3.4.0
+  resolution: "gatsby-plugin-postcss@npm:3.4.0"
+  dependencies:
+    "@babel/runtime": ^7.12.5
+    postcss-loader: ^4.0.4
+  peerDependencies:
+    gatsby: ^2.0.0
+    postcss: ^8.0.5
+  checksum: 20d321caa6fc823f208fa423c92d05b0319f7e8a59238258755929aa7626edf536195f3ebc789dde78a5dc1ec71de29b312518bf7e9474dbcedc67ecaccbf913
   languageName: node
   linkType: hard
 
@@ -29956,7 +29992,7 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"postcss@npm:8.2.1":
+"postcss@npm:8.2.1, postcss@npm:^8.2.1":
   version: 8.2.1
   resolution: "postcss@npm:8.2.1"
   dependencies:
@@ -33734,6 +33770,13 @@ resolve@^1.19.0:
   languageName: node
   linkType: hard
 
+"snarkdown@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "snarkdown@npm:2.0.0"
+  checksum: 19f60cf586ace41efd321e1f720254718381d270746fcd439a55cc8c77968cf1e742810ed11e13d0e9ca24e18a9260df56ca94a7bdd6024ea0a14b87143e06ca
+  languageName: node
+  linkType: hard
+
 "socket.io-adapter@npm:~1.1.0":
   version: 1.1.2
   resolution: "socket.io-adapter@npm:1.1.2"
@@ -35252,7 +35295,7 @@ resolve@^1.19.0:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:2.0.2":
+"tailwindcss@npm:2.0.2, tailwindcss@npm:^2.0.2":
   version: 2.0.2
   resolution: "tailwindcss@npm:2.0.2"
   dependencies:
@@ -37353,11 +37396,13 @@ typescript@^4.0.0:
     "@storybook/addons": 6.1.10
     "@storybook/react": 6.1.10
     "@svgr/webpack": 5.5.0
+    "@tailwindcss/typography": ^0.3.1
     "@testing-library/react": 11.2.2
     "@testing-library/react-hooks": 3.7.0
     "@theme-ui/match-media": 0.6.0-alpha.1
     "@types/body-scroll-lock": 2.6.1
     "@types/date-fns": 2.6.0
+    "@types/dompurify": ^2.0.4
     "@types/faker": 5.1.5
     "@types/jest": 26.0.19
     "@types/query-string": 6.3.0
@@ -37381,6 +37426,7 @@ typescript@^4.0.0:
     chromatic: 5.5.0
     cross-env: 7.0.3
     dayjs: 1.9.7
+    dompurify: ^2.2.4
     dotenv: 8.2.0
     eslint: 7.15.0
     eslint-config-airbnb-typescript: 12.0.0
@@ -37403,6 +37449,7 @@ typescript@^4.0.0:
     gatsby-plugin-nprogress: 2.6.0
     gatsby-plugin-offline: 3.6.0
     gatsby-plugin-portal: 1.0.65
+    gatsby-plugin-postcss: ^3.4.0
     gatsby-plugin-preact: 4.3.0
     gatsby-plugin-react-helmet: 3.6.0
     gatsby-plugin-remove-serviceworker: 1.0.0
@@ -37426,6 +37473,7 @@ typescript@^4.0.0:
     make-plural: 6.2.2
     nanoid: 3.1.20
     npm-run-all: 4.1.5
+    postcss: ^8.2.1
     preact: 10.5.5
     preact-render-to-string: 5.1.12
     prettier: 2.2.1
@@ -37439,8 +37487,10 @@ typescript@^4.0.0:
     react-refresh: 0.9.0
     react-test-renderer: 17.0.1
     regenerator-runtime: 0.13.7
+    snarkdown: ^2.0.0
     storybook-addon-deps: 2.1.3
     storybook-addon-i18n: 5.1.13
+    tailwindcss: ^2.0.2
     theme-ui: 0.6.0-alpha.3
     typescript: 4.1.3
     url-loader: 4.1.1

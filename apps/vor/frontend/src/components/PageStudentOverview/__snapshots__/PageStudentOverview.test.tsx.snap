@@ -43,6 +43,48 @@ exports[`PageStudentOverview should render correctly 1`] = `
   }
 }
 
+@keyframes animation-0 {
+  0% {
+    background-color: rgba(165, 165, 165, 0.05);
+  }
+
+  50% {
+    background-color: rgba(165, 165, 165, 0.2);
+  }
+
+  100% {
+    background-color: rgba(165, 165, 165, 0.05);
+  }
+}
+
+@keyframes animation-0 {
+  0% {
+    background-color: rgba(165, 165, 165, 0.05);
+  }
+
+  50% {
+    background-color: rgba(165, 165, 165, 0.2);
+  }
+
+  100% {
+    background-color: rgba(165, 165, 165, 0.05);
+  }
+}
+
+@keyframes animation-0 {
+  0% {
+    background-color: rgba(165, 165, 165, 0.05);
+  }
+
+  50% {
+    background-color: rgba(165, 165, 165, 0.2);
+  }
+
+  100% {
+    background-color: rgba(165, 165, 165, 0.05);
+  }
+}
+
 .emotion-0 {
   box-sizing: border-box;
   margin: 0;
@@ -62,22 +104,22 @@ exports[`PageStudentOverview should render correctly 1`] = `
   min-width: 0;
   margin: auto;
   padding-bottom: 64px;
-  max-width: 640px;
+  max-width: 700px;
 }
 
 .emotion-2 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   height: 48px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .emotion-3 {
@@ -427,7 +469,7 @@ exports[`PageStudentOverview should render correctly 1`] = `
   min-width: 0;
   margin: 16px;
   margin-top: 8px;
-  margin-bottom: 8px;
+  margin-bottom: 32px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -537,24 +579,34 @@ exports[`PageStudentOverview should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  padding-top: 32px;
-  padding-left: 16px;
-  padding-right: 16px;
-  margin-bottom: 8px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
+  overflow: auto;
+  background-color: var(--theme-ui-colors-surface, #fff);
+  border-radius: 0;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px,rgba(0, 0, 0, 0.27) 0px 2px 4px -2px;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+@media screen and (min-width: 40em) {
+  .emotion-30 {
+    border-radius: 6px;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
 }
 
 .emotion-31 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .emotion-32 {
@@ -567,34 +619,54 @@ exports[`PageStudentOverview should render correctly 1`] = `
   color: var(--theme-ui-colors-text, #37383c);
   text-rendering: optimizeLegibility;
   font-size: 20px;
-  margin-right: auto;
-  margin-bottom: 4px;
-  font-weight: bold;
+  margin: 16px;
 }
 
 .emotion-33 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  margin-left: 0;
-  margin-right: 0;
-}
-
-@media screen and (min-width: 40em) {
-  .emotion-33 {
-    margin-left: 16px;
-    margin-right: 16px;
-  }
+  margin-left: 16px;
+  margin-right: 16px;
 }
 
 .emotion-34 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  margin-top: 32px;
+  margin-bottom: 16px;
+  border-radius: 6px;
+  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
+  animation: 1s ease-in-out 0s infinite animation-0;
+  height: 40px;
+  width: 100%;
 }
 
 .emotion-35 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-bottom: 16px;
+  border-radius: 6px;
+  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
+  animation: 1s ease-in-out 0s infinite animation-0;
+  height: 21px;
+  width: 15%;
+}
+
+.emotion-36 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-bottom: 16px;
+  border-radius: 6px;
+  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
+  animation: 1s ease-in-out 0s infinite animation-0;
+  height: 21px;
+  width: 25%;
+}
+
+.emotion-37 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -602,42 +674,18 @@ exports[`PageStudentOverview should render correctly 1`] = `
   border-radius: 6px;
   -webkit-animation: 1s ease-in-out 0s infinite animation-0;
   animation: 1s ease-in-out 0s infinite animation-0;
-  height: 116px;
-  width: 100%;
-  border-radius: 0;
-}
-
-@media screen and (min-width: 40em) {
-  .emotion-35 {
-    border-radius: 6px;
-  }
+  height: 21px;
+  width: 10%;
 }
 
 .emotion-38 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: bold;
-  line-height: heading;
-  color: var(--theme-ui-colors-text, #37383c);
-  text-rendering: optimizeLegibility;
-  font-size: 20px;
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-top: 32px;
-  padding-bottom: 16px;
-  font-weight: bold;
-}
-
-.emotion-40 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
   margin-top: 16px;
 }
 
-.emotion-41 {
+.emotion-39 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -649,7 +697,7 @@ exports[`PageStudentOverview should render correctly 1`] = `
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-41 {
+  .emotion-39 {
     border-radius: 6px;
   }
 }
@@ -832,39 +880,29 @@ exports[`PageStudentOverview should render correctly 1`] = `
             Observations
           </h6>
         </div>
-      </div>
-      <div
-        class="emotion-33"
-      >
         <div
-          class="emotion-34"
+          class="emotion-33"
         >
           <div
-            class="emotion-35"
+            class="emotion-34"
           />
           <div
             class="emotion-35"
           />
           <div
-            class="emotion-35"
+            class="emotion-36"
+          />
+          <div
+            class="emotion-37"
           />
         </div>
       </div>
-      <h6
+      <div
         class="emotion-38"
       >
-        Curriculum Progress
-      </h6>
-      <div
-        class="emotion-33"
-      >
         <div
-          class="emotion-40"
-        >
-          <div
-            class="emotion-41"
-          />
-        </div>
+          class="emotion-39"
+        />
       </div>
     </div>
   </div>

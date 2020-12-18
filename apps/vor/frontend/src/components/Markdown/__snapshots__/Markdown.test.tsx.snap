@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Markdown should render correctly 1`] = `
+.emotion-0 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 16px;
+}
+
+@media screen and (min-width: 40em) {
+  .emotion-0 {
+    font-size: 20px;
+  }
+}
+
+.emotion-1 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+}
+
+<div>
+  <div
+    class="emotion-0"
+  >
+    <div
+      class="prose prose-sm max-w-none undefined emotion-1"
+    >
+      <h1>
+        testing
+      </h1>
+    </div>
+  </div>
+</div>
+`;
