@@ -64,7 +64,7 @@ export const PageEditClass: FC<Props> = ({ classId }) => {
         </Typography.H5>
         {classes.status === "loading" && <LoadingState />}
         {classes.status === "success" && (
-          <Box m={3}>
+          <Box p={3}>
             <Input
               label="Name"
               sx={{ width: "100%" }}
@@ -130,7 +130,7 @@ export const PageEditClass: FC<Props> = ({ classId }) => {
                 <Trans>Delete</Trans>
               </Button>
               <Button
-                sx={{ width: "100%" }}
+                sx={{ flexGrow: 1 }}
                 disabled={!valid || status === "loading"}
                 onClick={patchClass}
               >

@@ -1,11 +1,13 @@
 import React, { FC } from "react"
 import { Box, Flex } from "theme-ui"
-import { borderTop } from "../../border"
+import { borderBottom } from "../../border"
 import { Observation } from "../../hooks/api/useGetStudentObservations"
+import Icon from "../Icon/Icon"
 import ImagePreview from "../ImagePreview/ImagePreview"
 import { Link } from "../Link/Link"
 import Markdown from "../Markdown/Markdown"
 import Typography from "../Typography/Typography"
+import { ReactComponent as EyeIcon } from "../../icons/eye.svg"
 
 export interface ObservationListItemProps {
   observation: Observation
@@ -22,18 +24,19 @@ const ObservationListItem: FC<ObservationListItemProps> = ({
       <Box
         pt={3}
         sx={{
-          ...borderTop,
+          ...borderBottom,
           "&:hover": { backgroundColor: "primaryLighter" },
         }}
       >
-        <Typography.Body
-          mb={2}
-          mx={3}
-          data-cy="observation-short-desc"
-          sx={{ fontWeight: "bold" }}
-        >
-          {observation.shortDesc}
-        </Typography.Body>
+        <Flex mb={2} mx={3}>
+          <Typography.Body
+            data-cy="observation-short-desc"
+            sx={{ fontWeight: "bold", alignItems: "center" }}
+          >
+            {observation.shortDesc}
+          </Typography.Body>
+          {observation.visibleToGuardians && <Icon as={EyeIcon} ml="auto" />}
+        </Flex>
         {observation.longDesc && (
           <Markdown
             mx={3}

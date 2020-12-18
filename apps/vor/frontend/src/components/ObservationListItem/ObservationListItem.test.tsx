@@ -9,6 +9,7 @@ describe("ObservationListItem", () => {
     const { container } = render(
       <ObservationListItem
         observation={{
+          visibleToGuardians: false,
           studentName: "Angelica",
           createdDate: "2019-12-10T11:53:02.050339Z",
           id: "",

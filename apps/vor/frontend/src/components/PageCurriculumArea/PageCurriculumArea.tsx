@@ -170,7 +170,7 @@ const SubjectListItem: FC<SubjectListItemProps> = ({
   return (
     <Box py={2} px={[0, 3]}>
       <Card sx={{ borderRadius: [0, "default"] }}>
-        <Flex sx={{ alignItems: "center" }} m={3} mr={2}>
+        <Flex sx={{ alignItems: "center" }} m={3} mr={2} pt={3}>
           <Typography.Body mr={3} sx={{ fontSize: 3, fontWeight: "bold" }}>
             {subject.name}
           </Typography.Body>

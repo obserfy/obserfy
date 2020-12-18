@@ -78,7 +78,7 @@ export const PageGuardianProfile: FC<Props> = ({ guardianId }) => {
       </Card>
 
       <Card sx={{ borderRadius: [0, "default"] }} mb={3} mx={[0, 3]}>
-        <Typography.H6 m={3}>Children</Typography.H6>
+        <Typography.H6 p={3}>Children</Typography.H6>
         {data?.children.map(({ id, name }) => (
           <Link to={STUDENT_PROFILE_URL(id)} key={id}>
             <Flex
@@ -97,7 +97,7 @@ export const PageGuardianProfile: FC<Props> = ({ guardianId }) => {
         ))}
 
         {isSuccess && data?.children.length === 0 && (
-          <Typography.Body m={3} sx={{ color: "textMediumEmphasis" }}>
+          <Typography.Body p={3} sx={{ color: "textMediumEmphasis" }}>
             <Trans>
               This guardian doesn&apos;t have any children registered yet.
             </Trans>

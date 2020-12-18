@@ -387,7 +387,6 @@ exports[`PageNewStudent should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  overflow: auto;
   background-color: var(--theme-ui-colors-surface, #fff);
   border-radius: 6px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px,rgba(0, 0, 0, 0.27) 0px 2px 4px -2px;
@@ -901,7 +900,6 @@ exports[`PageNewStudent should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  overflow: auto;
   background-color: var(--theme-ui-colors-surface, #fff);
   border-radius: 6px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px,rgba(0, 0, 0, 0.27) 0px 2px 4px -2px;
@@ -934,7 +932,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   color: var(--theme-ui-colors-text, #37383c);
   text-rendering: optimizeLegibility;
   font-size: 20px;
-  margin: 16px;
+  padding: 16px;
 }
 
 .emotion-58 {
@@ -964,7 +962,6 @@ exports[`PageNewStudent should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  overflow: auto;
   background-color: var(--theme-ui-colors-surface, #fff);
   border-radius: 6px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px,rgba(0, 0, 0, 0.27) 0px 2px 4px -2px;
@@ -1100,7 +1097,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
-  margin: 16px;
+  padding: 16px;
   color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
 }
 
