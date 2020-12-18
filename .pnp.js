@@ -3996,7 +3996,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "dompurify",
-        "npm:2.2.5"
+        "npm:2.2.6"
       ],
       [
         "domutils",
@@ -33463,10 +33463,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["dompurify", [
-        ["npm:2.2.5", {
-          "packageLocation": "./.yarn/cache/dompurify-npm-2.2.5-a91c000eb5-cc5aa58808.zip/node_modules/dompurify/",
+        ["npm:2.2.6", {
+          "packageLocation": "./.yarn/cache/dompurify-npm-2.2.6-2ef52db318-dfc77c2c60.zip/node_modules/dompurify/",
           "packageDependencies": [
-            ["dompurify", "npm:2.2.5"]
+            ["dompurify", "npm:2.2.6"]
           ],
           "linkType": "HARD",
         }]
@@ -58053,7 +58053,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["chromatic", "npm:5.5.0"],
             ["cross-env", "npm:7.0.3"],
             ["dayjs", "npm:1.9.7"],
-            ["dompurify", "npm:2.2.5"],
+            ["dompurify", "npm:2.2.6"],
             ["dotenv", "npm:8.2.0"],
             ["eslint", "npm:7.15.0"],
             ["eslint-config-airbnb-typescript", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:12.0.0"],
