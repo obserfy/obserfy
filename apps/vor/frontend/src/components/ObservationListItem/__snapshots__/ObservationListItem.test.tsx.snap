@@ -19,9 +19,9 @@ exports[`ObservationListItem should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   padding-top: 16px;
-  border-top-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  border-top-width: 1px;
-  border-top-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
 }
 
 .emotion-1:hover {
