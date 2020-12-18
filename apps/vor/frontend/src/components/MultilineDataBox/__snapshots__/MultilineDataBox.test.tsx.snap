@@ -176,6 +176,7 @@ exports[`MultilineDataBox should render correctly 1`] = `
         <button
           aria-label="edit-"
           class="emotion-4"
+          data-cy="edit-"
         >
           <div
             class="emotion-5"
