@@ -1166,6 +1166,3 @@ msgstr "inactive"
 msgid "new guardian"
 msgstr "new guardian"
 
-#: src/components/PageStudentOverview/PageStudentOverview.tsx:109
-#~ msgid "new observation"
-#~ msgstr "new observation"
