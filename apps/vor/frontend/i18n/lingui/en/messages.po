@@ -121,7 +121,7 @@ msgstr "Are you sure you want to delete {title}?"
 msgid "Are you sure you want to remove {0} from the list of guardians?"
 msgstr "Are you sure you want to remove {0} from the list of guardians?"
 
-#: src/components/PageEditStudentClass/PageEditStudentClass.tsx:108
+#: src/components/PageEditStudentClass/PageEditStudentClass.tsx:106
 msgid "Are you sure you want to remove {name}?"
 msgstr "Are you sure you want to remove {name}?"
 
@@ -152,7 +152,7 @@ msgid "Available every"
 msgstr "Available every"
 
 #: src/components/DeleteClassDialog/DeleteClassDialog.tsx:45
-#: src/components/PageListOfStudents/PageListOfStudents.tsx:70
+#: src/components/PageListOfStudents/PageListOfStudents.tsx:72
 #: src/components/PageNewSchool/PageNewSchool.tsx:47
 #: src/components/PagePickGuardian/PagePickGuardian.tsx:56
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:53
@@ -196,7 +196,7 @@ msgstr "Create New"
 msgid "Create lesson plans"
 msgstr "Create lesson plans"
 
-#: src/components/PageEditStudentClass/PageEditStudentClass.tsx:65
+#: src/components/PageEditStudentClass/PageEditStudentClass.tsx:63
 msgid "Create new class"
 msgstr "Create new class"
 
@@ -257,7 +257,7 @@ msgstr "Custom Curriculum"
 msgid "Daily"
 msgstr "Daily"
 
-#: src/components/PageAdmin/PageAdmin.tsx:141
+#: src/components/PageAdmin/PageAdmin.tsx:138
 msgid "Dark"
 msgstr "Dark"
 
@@ -531,11 +531,11 @@ msgstr "Invite using emails"
 msgid "Invite using link"
 msgstr "Invite using link"
 
-#: src/components/PageAdmin/PageAdmin.tsx:123
+#: src/components/PageAdmin/PageAdmin.tsx:120
 msgid "Language"
 msgstr "Language"
 
-#: src/components/PageAdmin/PageAdmin.tsx:141
+#: src/components/PageAdmin/PageAdmin.tsx:138
 msgid "Light"
 msgstr "Light"
 
@@ -633,7 +633,7 @@ msgstr "Next Bill"
 msgid "No class has been set"
 msgstr "No class has been set"
 
-#: src/components/PageEditStudentClass/PageEditStudentClass.tsx:54
+#: src/components/PageEditStudentClass/PageEditStudentClass.tsx:52
 msgid "No classes selected yet"
 msgstr "No classes selected yet"
 
@@ -802,7 +802,7 @@ msgstr "Related Area"
 msgid "Relationship"
 msgstr "Relationship"
 
-#: src/components/PageEditStudentClass/PageEditStudentClass.tsx:99
+#: src/components/PageEditStudentClass/PageEditStudentClass.tsx:97
 msgid "Remove Class?"
 msgstr "Remove Class?"
 
@@ -885,7 +885,7 @@ msgstr "Select Students"
 msgid "Select a guardian or create one"
 msgstr "Select a guardian or create one"
 
-#: src/components/PageEditStudentClass/PageEditStudentClass.tsx:72
+#: src/components/PageEditStudentClass/PageEditStudentClass.tsx:70
 msgid "Select from existing class"
 msgstr "Select from existing class"
 
@@ -1038,7 +1038,7 @@ msgstr "Tell us what you observed"
 msgid "The term <0>\"{term}\"</0> does not match any student"
 msgstr "The term <0>\"{term}\"</0> does not match any student"
 
-#: src/components/PageAdmin/PageAdmin.tsx:138
+#: src/components/PageAdmin/PageAdmin.tsx:135
 msgid "Theme"
 msgstr "Theme"
 
@@ -1125,15 +1125,15 @@ msgid "Write something"
 msgstr "Write something"
 
 #: src/components/DeleteClassDialog/DeleteClassDialog.tsx:50
-#: src/components/PageEditStudentClass/PageEditStudentClass.tsx:99
-#: src/components/PageListOfStudents/PageListOfStudents.tsx:70
+#: src/components/PageEditStudentClass/PageEditStudentClass.tsx:97
+#: src/components/PageListOfStudents/PageListOfStudents.tsx:72
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:60
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:297
 #: src/components/WarningDialog/WarningDialog.tsx:30
 msgid "Yes"
 msgstr "Yes"
 
-#: src/components/UserCard/UserCard.tsx:30
+#: src/components/UserCard/UserCard.tsx:28
 msgid "You"
 msgstr "You"
 
@@ -1150,7 +1150,7 @@ msgstr "You have no student enrolled"
 msgid "Your Schools"
 msgstr "Your Schools"
 
-#: src/components/PageListOfStudents/PageListOfStudents.tsx:68
+#: src/components/PageListOfStudents/PageListOfStudents.tsx:69
 msgid "active"
 msgstr "active"
 
@@ -1158,11 +1158,10 @@ msgstr "active"
 msgid "for Teachers"
 msgstr "for Teachers"
 
-#: src/components/PageListOfStudents/PageListOfStudents.tsx:68
+#: src/components/PageListOfStudents/PageListOfStudents.tsx:69
 msgid "inactive"
 msgstr "inactive"
 
 #: src/components/PagePickGuardian/PagePickGuardian.tsx:100
 msgid "new guardian"
 msgstr "new guardian"
-
