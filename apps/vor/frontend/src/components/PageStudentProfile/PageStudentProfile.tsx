@@ -110,7 +110,7 @@ export const PageStudentProfile: FC<Props> = ({ studentId }) => {
 
         <Box>
           {data?.classes?.length === 0 && (
-            <Typography.Body m={3}>
+            <Typography.Body p={3}>
               <Trans>No class has been set</Trans>
             </Typography.Body>
           )}
@@ -139,7 +139,7 @@ export const PageStudentProfile: FC<Props> = ({ studentId }) => {
         </Flex>
 
         {data?.guardians?.length === 0 && (
-          <Typography.Body m={3}>
+          <Typography.Body p={3}>
             <Trans>No guardians has been set</Trans>
           </Typography.Body>
         )}

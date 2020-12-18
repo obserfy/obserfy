@@ -21,9 +21,9 @@ const LessonPlanLinksCard: FC<{
     image?: string
   }>
 }> = ({ links, planId }) => (
-  <Card sx={{ borderRadius: [0, "default"] }} mb={3}>
+  <Card sx={{ borderRadius: [0, "default"] }} mb={3} pb={3}>
     <Typography.Body
-      mt={3}
+      pt={3}
       mx={3}
       mb={1}
       color="textMediumEmphasis"

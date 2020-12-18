@@ -145,9 +145,8 @@ exports[`PageEditStudentClass should render correctly 1`] = `
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
-  margin: 16px;
+  padding: 16px;
   color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
-  font-size: 14px;
 }
 
 .emotion-11 {

@@ -117,7 +117,7 @@ exports[`PageSupport should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  margin: 16px;
+  padding: 16px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
