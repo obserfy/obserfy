@@ -15741,10 +15741,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dompurify@npm:2.2.5":
-  version: 2.2.5
-  resolution: "dompurify@npm:2.2.5"
-  checksum: cc5aa588088e0a467d144392cb6bb2203a9aaf2e4c764b4de6d1d9be985df73d87db82634a72b32d031ff9d1b6dc8146afd760297e6c32145ed147e7f2f99c94
+"dompurify@npm:2.2.6":
+  version: 2.2.6
+  resolution: "dompurify@npm:2.2.6"
+  checksum: dfc77c2c603d84d4385a419acbda3f14777bf97f7a33a1de43d8a4f264171d12c916eda923715bc0199bcece20d3d6d3de730f3470d178c8ffdf25ba7ca18aee
   languageName: node
   linkType: hard
 
@@ -37426,7 +37426,7 @@ typescript@^4.0.0:
     chromatic: 5.5.0
     cross-env: 7.0.3
     dayjs: 1.9.7
-    dompurify: 2.2.5
+    dompurify: 2.2.6
     dotenv: 8.2.0
     eslint: 7.15.0
     eslint-config-airbnb-typescript: 12.0.0
