@@ -35,6 +35,7 @@ export const MultilineDataBox: FC<MultilineDataBoxProps> = ({
           p={2}
           onClick={onEditClick}
           aria-label={`edit-${label.toLowerCase()}`}
+          data-cy={`edit-${label.toLowerCase()}`}
           sx={{ color: "textMediumEmphasis" }}
         >
           <Icon as={EditIcon} />
