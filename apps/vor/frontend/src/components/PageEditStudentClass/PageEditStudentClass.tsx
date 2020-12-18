@@ -49,13 +49,7 @@ export const PageEditStudentClass: FC<Props> = ({ studentId }) => {
       </Typography.Body>
       {(student.data?.classes.length ?? 0) === 0 && (
         <Card sx={{ borderRadius: [0, "default"] }} mb={2} mx={[0, 3]}>
-          <Typography.Body
-            m={3}
-            color="textMediumEmphasis"
-            sx={{
-              fontSize: 1,
-            }}
-          >
+          <Typography.Body p={3} color="textMediumEmphasis">
             <Trans>No classes selected yet</Trans>
           </Typography.Body>
         </Card>

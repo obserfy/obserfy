@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { FC, useState } from "react"
+import { FC, Fragment, useState } from "react"
 import { Box, Card, Flex, Image, jsx } from "theme-ui"
 import { t, Trans } from "@lingui/macro"
 import BackNavigation from "../BackNavigation/BackNavigation"
@@ -65,44 +65,46 @@ const StudentCard: FC<{
   const setActiveText = t`Set as active?`
   const setInactiveText = t`Set as inactive?`
   return (
-    <Card
-      p={3}
-      mx={[0, 3]}
-      mb={[0, 2]}
-      sx={{
-        backgroundColor: ["background", "surface"],
-        borderRadius: [0, "default"],
-        cursor: "pointer",
-        boxShadow: ["none", "low"],
-        display: "flex",
-        alignItems: "center",
-      }}
-      onClick={() => setShowStatusDialog(true)}
-    >
-      {profilePicUrl ? (
-        <Image
-          src={profilePicUrl}
-          sx={{
-            width: 32,
-            height: 32,
-            borderRadius: "circle",
-          }}
-        />
-      ) : (
-        <StudentPicturePlaceholder />
-      )}
-      <Flex sx={{ flexDirection: "column", alignItems: "start" }}>
-        <Typography.Body ml={3} mb={2} sx={{ lineHeight: 1.6 }}>
-          {name}
-        </Typography.Body>
-        <Pill
-          style={{ width: "fit-content", cursor: "pointer" }}
-          text={active ? t`active` : t`inactive`}
-          backgroundColor={active ? "primary" : "warning"}
-          color={active ? "onPrimary" : "onWarning"}
-          mx={3}
-        />
-      </Flex>
+    <Fragment>
+      <Card
+        p={3}
+        mx={[0, 3]}
+        mb={[0, 2]}
+        sx={{
+          backgroundColor: ["background", "surface"],
+          borderRadius: [0, "default"],
+          cursor: "pointer",
+          boxShadow: ["none", "low"],
+          display: "flex",
+          alignItems: "center",
+        }}
+        onClick={() => setShowStatusDialog(true)}
+      >
+        {profilePicUrl ? (
+          <Image
+            src={profilePicUrl}
+            sx={{
+              width: 32,
+              height: 32,
+              borderRadius: "circle",
+            }}
+          />
+        ) : (
+          <StudentPicturePlaceholder />
+        )}
+        <Flex sx={{ flexDirection: "column", alignItems: "start" }}>
+          <Typography.Body ml={3} mb={2} sx={{ lineHeight: 1.6 }}>
+            {name}
+          </Typography.Body>
+          <Pill
+            style={{ width: "fit-content", cursor: "pointer" }}
+            text={active ? t`active` : t`inactive`}
+            backgroundColor={active ? "primary" : "warning"}
+            color={active ? "onPrimary" : "onWarning"}
+            mx={3}
+          />
+        </Flex>
+      </Card>
       {showStatusDialog && (
         <AlertDialog
           title={active ? setInactiveText : setActiveText}
@@ -115,7 +117,7 @@ const StudentCard: FC<{
           onPositiveClick={() => saveStatus()}
         />
       )}
-    </Card>
+    </Fragment>
   )
 }
 

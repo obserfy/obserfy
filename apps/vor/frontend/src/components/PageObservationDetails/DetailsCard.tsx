@@ -13,7 +13,7 @@ interface Props {
   observationId: string
 }
 const DetailsCard: FC<Props> = ({ originalValue, observationId }) => (
-  <Card variant="responsive" mb={3}>
+  <Card variant="responsive" mb={3} pb={3}>
     <LongTextDataBox
       originalValue={originalValue}
       observationId={observationId}

@@ -932,7 +932,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   color: var(--theme-ui-colors-text, #37383c);
   text-rendering: optimizeLegibility;
   font-size: 20px;
-  margin: 16px;
+  padding: 16px;
 }
 
 .emotion-58 {
@@ -1097,7 +1097,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
-  margin: 16px;
+  padding: 16px;
   color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
 }
 
