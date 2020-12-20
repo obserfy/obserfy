@@ -1,5 +1,6 @@
 import React, { FC, useState } from "react"
 import Button from "../Button/Button"
+import Markdown from "../Markdown/Markdown"
 import Textarea from "../Textarea/Textarea"
 import usePostPlanObservation from "../../hooks/api/usePostPlanObservation"
 import dayjs, { Dayjs } from "../../utils/dayjs"
@@ -44,49 +45,29 @@ const Plan: FC<Props> = ({
 }) => {
   const [showAddObservationForm, setShowAddObservationForm] = useState(false)
 
-  const renderedDescription = description
-    ?.split("\n")
-    ?.filter((text) => text !== "")
-    ?.map((text) => <div className="text-gray-700 my-2 px-3">{text}</div>)
-
-  const renderedLinks = links.map((link) => (
-    <a
-      key={link.id}
-      href={link.url}
-      className="overflow-x-auto max-w-full px-3 py-2 flex items-center text-sm leading-tight"
-      rel="noopener noreferrer"
-      target="_blank"
-    >
-      <Icon
-        src="/icons/link.svg"
-        className="w-5 h-5 mr-2 fill-current flex-shrink-0"
-      />
-      <div className="whitespace-no-wrap">{link.url}</div>
-    </a>
-  ))
-
-  const renderedObservations = observations.map(
-    ({ id, observation, createdAt }) => (
-      <Observation
-        key={id}
-        id={id}
-        createdAt={dayjs(createdAt)}
-        observation={observation}
-      />
-    )
-  )
-
-  const renderedFiles = files.length > 0 && (
-    <div className="text-sm text-gray-700 mb-1">Files</div>
-  )
-
   return (
     <div className="flex flex-col items-start bg-surface md:rounded mb-2 border py-3">
       {area && <div className="text-sm text-green-700 px-3 mb-2">{area}</div>}
-      <div className="text-md px-3">{name}</div>
-      {renderedDescription}
-      {renderedLinks}
-      {renderedFiles}
+      <div className="text-md px-3 font-bold">{name}</div>
+      <Markdown
+        className="text-gray-700 my-2 px-3"
+        markdown={description ?? ""}
+      />
+      {links.map((link) => (
+        <a
+          key={link.id}
+          href={link.url}
+          className="overflow-x-auto max-w-full px-3 py-2 flex items-center text-sm leading-tight block"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <Icon src="/icons/link.svg" className="flex-shrink-0" size={16} />
+          <div className="whitespace-no-wrap ml-2">{link.url}</div>
+        </a>
+      ))}
+      {files.length > 0 && (
+        <div className="text-sm text-gray-700 mb-1">Files</div>
+      )}
       {showAddObservationForm ? (
         <AddObservationForm
           planId={planId}
@@ -105,7 +86,14 @@ const Plan: FC<Props> = ({
       {observations.length > 0 && (
         <div className="mx-3 text-sm">Observations</div>
       )}
-      {renderedObservations}
+      {observations.map(({ id, observation, createdAt }) => (
+        <Observation
+          key={id}
+          id={id}
+          createdAt={dayjs(createdAt)}
+          observation={observation}
+        />
+      ))}
     </div>
   )
 }
@@ -177,7 +165,7 @@ const Observation: FC<{
         )}
         {!isEditing && (
           <>
-            <div>{observation}</div>
+            <Markdown markdown={observation} />
             <div className="flex mt-2 item-center w-full">
               <div className="text-sm">{createdAt.format("HH:mm")}</div>
               <Button

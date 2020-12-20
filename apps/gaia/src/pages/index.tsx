@@ -1,6 +1,7 @@
 import React, { FC, useState } from "react"
 import Head from "next/head"
 import Image from "next/image"
+import Markdown from "../components/Markdown/Markdown"
 import dayjs from "../utils/dayjs"
 import useGetTimeline from "../hooks/api/useGetTimeline"
 import { useQueryString } from "../hooks/useQueryString"
@@ -71,8 +72,11 @@ const ObservationList: FC<{
         </div>
         <div className="pt-1">
           <div className="mx-3 font-bold mb-1">{shortDesc}</div>
-          <div className="mx-3 max-w-md text-green-900 mb-1">{areaName}</div>
-          <div className="mx-3 max-w-md text-gray-900 mb-2">{longDesc}</div>
+          <Markdown
+            className="mx-3 max-w-md text-gray-900 mb-2"
+            markdown={longDesc}
+          />
+          <div className="mx-3 max-w-md text-green-900 mb-3">{areaName}</div>
           <div className="flex ml-3 flex-wrap">
             {images.map((img) => (
               <div className="mr-3 mb-3" key={img.id}>
