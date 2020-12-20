@@ -19,6 +19,7 @@ const range = (length: number) => [...Array(length).keys()]
 
 export interface DatePickerDialogProps {
   defaultDate?: Dayjs
+  enabledDates?: Dayjs[]
   onDismiss: () => void
   onConfirm: (date: Dayjs) => void
   isLoading?: boolean
@@ -28,6 +29,7 @@ export const DatePickerDialog: FC<DatePickerDialogProps> = ({
   onDismiss,
   onConfirm,
   isLoading,
+  enabledDates,
 }) => {
   const currentDate = dayjs()
   const [selected, setSelectedDate] = useState(defaultDate ?? dayjs())
@@ -91,8 +93,12 @@ export const DatePickerDialog: FC<DatePickerDialogProps> = ({
           sx={{ fontSize: 1 }}
           ml={1}
           onClick={() => {
-            setMonth(dayjs().startOf("month"))
-            setSelectedDate(dayjs())
+            const today = dayjs().startOf("day")
+            setMonth(today.startOf("month"))
+            const idx = enabledDates?.findIndex((d) => d.isSame(today, "day"))
+            if (idx === undefined || idx !== -1) {
+              setSelectedDate(today)
+            }
           }}
           disabled={isSelectedToday && month.isSame(currentDate, "month")}
         >
@@ -103,6 +109,7 @@ export const DatePickerDialog: FC<DatePickerDialogProps> = ({
         month={month}
         onDateClick={(date) => setSelectedDate(date)}
         selected={selected}
+        enabledDates={enabledDates}
       />
       <Typography.Body
         px={4}
@@ -120,7 +127,8 @@ const DatesTable: FC<{
   selected: Dayjs
   month: Dayjs
   onDateClick: (date: Dayjs) => void
-}> = ({ month, onDateClick, selected }) => (
+  enabledDates?: Dayjs[]
+}> = ({ month, onDateClick, selected, enabledDates }) => (
   <>
     <WeekDayInitials />
     <Flex sx={{ flexWrap: "wrap", minHeight: 250 }} mx={3} my={2}>
@@ -134,15 +142,20 @@ const DatesTable: FC<{
 
         const isSelected = selected.isSame(fullDate, "date")
 
+        const disabled =
+          enabledDates === undefined
+            ? false
+            : enabledDates.findIndex((d) => d.isSame(fullDate, "day")) === -1
+
         return (
           <Flex
             key={`${date}-${month.unix()}`}
+            ml={firstRowIndent}
             sx={{
               alignItems: "center",
               justifyContent: "center",
               width: "14.28%",
             }}
-            ml={firstRowIndent}
           >
             <Button
               variant={isSelected ? "primary" : "secondary"}
@@ -154,6 +167,7 @@ const DatesTable: FC<{
                 width: 40,
               }}
               onClick={() => onDateClick(fullDate)}
+              disabled={disabled}
             >
               <Flex sx={{ flexDirection: "column", alignItems: "center" }}>
                 <Box>{date}</Box>

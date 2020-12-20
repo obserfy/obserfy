@@ -8,6 +8,7 @@ import {
   Observation,
   useGetStudentObservations,
 } from "../../hooks/api/useGetStudentObservations"
+import useVisibilityState from "../../hooks/useVisibilityState"
 import { ReactComponent as PrevIcon } from "../../icons/arrow-back.svg"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
@@ -16,6 +17,7 @@ import {
   NEW_OBSERVATION_URL,
   STUDENT_OVERVIEWS_OBSERVATION_DETAILS_URL,
 } from "../../routes"
+import DatePickerDialog from "../DatePickerDialog/DatePickerDialog"
 import Icon from "../Icon/Icon"
 import { Link, navigate } from "../Link/Link"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
@@ -23,11 +25,11 @@ import ObservationListItem from "../ObservationListItem/ObservationListItem"
 import Typography from "../Typography/Typography"
 
 const DailyObservationCard: FC<{ studentId: string }> = ({ studentId }) => {
+  const datePicker = useVisibilityState()
   const { data, isLoading } = useGetStudentObservations(studentId)
   const [selectionIdx, setSelectionIdx] = useState(0)
 
-  const dataLength = data?.length ?? 0
-
+  // group observations by date
   const observationsByDate: { [key: number]: Observation[] } = {}
   data?.forEach((observation) => {
     const date = dayjs(observation.eventTime).startOf("day").unix()
@@ -35,13 +37,12 @@ const DailyObservationCard: FC<{ studentId: string }> = ({ studentId }) => {
     observationsByDate[date].push(observation)
   })
 
-  const dates = Object.keys(observationsByDate).sort((a, b) =>
-    b.localeCompare(a)
-  )
+  // get all dates sorted in descending order
+  const dates = Object.keys(observationsByDate).sort().reverse()
 
   const selectedDate = dayjs.unix(parseInt(dates[selectionIdx], 10))
-
   const observations: Observation[] = observationsByDate[dates[selectionIdx]]
+  const dataLength = data?.length ?? 0
 
   return (
     <Card variant="responsive">
@@ -85,15 +86,17 @@ const DailyObservationCard: FC<{ studentId: string }> = ({ studentId }) => {
           >
             <Icon as={PrevIcon} />
           </Button>
-          <Typography.Body
+          <Button
+            variant="secondary"
             color="textMediumEmphasis"
             mx="auto"
             sx={{ fontSize: 0 }}
+            onClick={datePicker.show}
           >
             {!selectedDate.isSame(Date.now(), "date")
               ? selectedDate.format("dddd, D MMM YYYY")
               : `Today, ${selectedDate.format("D MMM YYYY")}`}
-          </Typography.Body>
+          </Button>
           <Button
             disabled={selectionIdx < 1}
             onClick={() => setSelectionIdx(selectionIdx - 1)}
@@ -130,6 +133,21 @@ const DailyObservationCard: FC<{ studentId: string }> = ({ studentId }) => {
       )}
 
       {isLoading && !data && <LoadingState />}
+      {datePicker.visible && (
+        <DatePickerDialog
+          enabledDates={dates.map((d) => dayjs.unix(parseInt(d, 10)))}
+          defaultDate={selectedDate}
+          onDismiss={datePicker.hide}
+          onConfirm={(date) => {
+            const unixDate = date.unix()
+            const idx = dates.findIndex((d) => d === unixDate.toString())
+            if (idx !== -1) {
+              setSelectionIdx(idx)
+              datePicker.hide()
+            }
+          }}
+        />
+      )}
     </Card>
   )
 }
