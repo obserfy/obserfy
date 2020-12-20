@@ -120,7 +120,6 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   border-width: 1px;
   line-height: 1;
   border: none;
-  font-weight: bold;
   padding: 4px;
 }
 
@@ -299,7 +298,6 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   border-width: 1px;
   line-height: 1;
   border: none;
-  font-weight: bold;
   padding-left: 8px;
   padding-right: 8px;
   margin-left: 8px;
@@ -397,7 +395,6 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   border-width: 1px;
   line-height: 1;
   border: none;
-  font-weight: bold;
   padding-left: 8px;
   padding-right: 8px;
   -webkit-flex-shrink: 0;

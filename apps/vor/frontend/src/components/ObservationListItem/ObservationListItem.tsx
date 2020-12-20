@@ -1,5 +1,6 @@
 import React, { FC } from "react"
 import { Box, Flex } from "theme-ui"
+import { Trans } from "@lingui/macro"
 import { borderBottom } from "../../border"
 import { Observation } from "../../hooks/api/useGetStudentObservations"
 import Icon from "../Icon/Icon"
@@ -63,7 +64,7 @@ const ObservationListItem: FC<ObservationListItemProps> = ({
               sx={{ fontSize: 0, lineHeight: 1 }}
               color="textMediumEmphasis"
             >
-              {observation.creatorName}
+              <Trans>By {observation.creatorName}</Trans>
             </Typography.Body>
           )}
         </Flex>

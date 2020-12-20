@@ -269,7 +269,6 @@ const theme: Theme = {
       border: "none",
       flexShrink: 0,
       boxShadow: "none",
-      fontWeight: "bold",
       "&:hover, &:focus": {
         backgroundColor: "primaryLighter",
         borderColor: "primary",
