@@ -16,7 +16,6 @@
     "@sentry/gatsby": "5.29.0",
     "@sentry/tracing": "5.29.2",
     "@svgr/webpack": "5.5.0",
-    "tailwindcss": "2.0.2",
     "@tailwindcss/typography": "0.3.1",
     "@theme-ui/match-media": "0.6.0-alpha.1",
     "@types/dompurify": "2.0.4",
@@ -64,6 +63,7 @@
     "react-query": "2.26.4",
     "regenerator-runtime": "0.13.7",
     "snarkdown": "2.0.0",
+    "tailwindcss": "2.0.2",
     "theme-ui": "0.6.0-alpha.3",
     "use-immer": "0.4.2"
   },

@@ -7971,7 +7971,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/dompurify@npm:2.0.4":
+"@types/dompurify@npm:2.0.4, @types/dompurify@npm:^2.0.4":
   version: 2.0.4
   resolution: "@types/dompurify@npm:2.0.4"
   dependencies:
@@ -15741,7 +15741,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dompurify@npm:2.2.6":
+"dompurify@npm:2.2.6, dompurify@npm:^2.2.6":
   version: 2.2.6
   resolution: "dompurify@npm:2.2.6"
   checksum: dfc77c2c603d84d4385a419acbda3f14777bf97f7a33a1de43d8a4f264171d12c916eda923715bc0199bcece20d3d6d3de730f3470d178c8ffdf25ba7ca18aee
@@ -18835,6 +18835,7 @@ fsevents@^1.2.7:
     "@sentry/webpack-plugin": 1.14.0
     "@tailwindcss/typography": 0.3.1
     "@types/body-scroll-lock": 2.6.1
+    "@types/dompurify": ^2.0.4
     "@types/formidable": 1.0.31
     "@types/jest": 26.0.19
     "@types/minio": 7.0.6
@@ -18851,6 +18852,7 @@ fsevents@^1.2.7:
     "@zeit/next-source-maps": 0.0.4-canary.1
     body-scroll-lock: 3.1.5
     dayjs: 1.9.7
+    dompurify: ^2.2.6
     dotenv: 8.2.0
     eslint: 7.15.0
     eslint-config-airbnb-typescript: 12.0.0
@@ -18889,6 +18891,7 @@ fsevents@^1.2.7:
     react-query-devtools: 2.6.3
     react-refresh: 0.9.0
     react-ssr-prepass: "npm:preact-ssr-prepass@1.1.2"
+    snarkdown: ^2.0.0
     stylelint: 13.8.0
     stylelint-config-prettier: 8.0.2
     stylelint-config-standard: 20.0.0
@@ -33770,7 +33773,7 @@ resolve@^1.19.0:
   languageName: node
   linkType: hard
 
-"snarkdown@npm:2.0.0":
+"snarkdown@npm:2.0.0, snarkdown@npm:^2.0.0":
   version: 2.0.0
   resolution: "snarkdown@npm:2.0.0"
   checksum: 19f60cf586ace41efd321e1f720254718381d270746fcd439a55cc8c77968cf1e742810ed11e13d0e9ca24e18a9260df56ca94a7bdd6024ea0a14b87143e06ca
