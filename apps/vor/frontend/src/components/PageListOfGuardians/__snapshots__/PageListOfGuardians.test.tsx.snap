@@ -108,7 +108,6 @@ exports[`PageListOfGuardians should render correctly 1`] = `
   border-width: 1px;
   line-height: 1;
   border: none;
-  font-weight: bold;
   padding: 4px;
 }
 
@@ -316,7 +315,6 @@ exports[`PageListOfGuardians should render correctly 1`] = `
   border-width: 1px;
   line-height: 1;
   border: none;
-  font-weight: bold;
 }
 
 .emotion-15:disabled {
