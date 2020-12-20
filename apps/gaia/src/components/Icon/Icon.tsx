@@ -8,7 +8,7 @@ interface Props {
   size?: number
 }
 const Icon: FC<Props> = ({ alt, src, className, size = 14 }) => (
-  <Image alt={alt} src={src} width={size} height={size} className={className} />
+  <Image alt={alt} src={src} width={size} height={size} className={className}  />
 )
 
 export default Icon
