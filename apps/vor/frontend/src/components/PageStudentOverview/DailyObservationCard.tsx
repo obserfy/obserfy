@@ -135,6 +135,7 @@ const DailyObservationCard: FC<{ studentId: string }> = ({ studentId }) => {
       {isLoading && !data && <LoadingState />}
       {datePicker.visible && (
         <DatePickerDialog
+          enabledDates={dates.map((d) => dayjs.unix(parseInt(d, 10)))}
           defaultDate={selectedDate}
           onDismiss={datePicker.hide}
           onConfirm={(date) => {
