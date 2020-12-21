@@ -8,7 +8,7 @@ msgstr ""
 "Language: id\n"
 "Project-Id-Version: a9762ad8ff131d2a39fce5fce9d2fb91\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2020-12-18 14:58\n"
+"PO-Revision-Date: 2020-12-21 12:29\n"
 "Last-Translator: \n"
 "Language-Team: Indonesian\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -156,6 +156,14 @@ msgstr "Lampirkan Gambar"
 msgid "Available every"
 msgstr "Tersedia setiap"
 
+#: src/components/ObservationListItem/ObservationListItem.tsx:27
+msgid "By"
+msgstr ""
+
+#: src/components/ObservationListItem/ObservationListItem.tsx:27
+#~ msgid "By {0}"
+#~ msgstr "By {0}"
+
 #: src/components/DeleteClassDialog/DeleteClassDialog.tsx:45
 #: src/components/PageListOfStudents/PageListOfStudents.tsx:72
 #: src/components/PageNewSchool/PageNewSchool.tsx:47
@@ -209,7 +217,7 @@ msgstr ""
 #~ msgid "Create new guardian"
 #~ msgstr "Create new guardian"
 
-#: src/components/PageStudentOverview/DailyObservationCard.tsx:83
+#: src/components/PageStudentOverview/DailyObservationCard.tsx:96
 msgid "Create observation"
 msgstr ""
 
@@ -672,7 +680,7 @@ msgstr "Tidak materi yang sedang dalam proses."
 msgid "No more students to add"
 msgstr "Tidak ada lagi murid untuk ditambahkan"
 
-#: src/components/PageStudentOverview/DailyObservationCard.tsx:79
+#: src/components/PageStudentOverview/DailyObservationCard.tsx:92
 msgid "No observation have been added yet"
 msgstr "Belum ada observasi ditambahkan"
 
@@ -714,7 +722,7 @@ msgstr "Catatan"
 msgid "Observation"
 msgstr "Observasi"
 
-#: src/components/PageStudentOverview/DailyObservationCard.tsx:35
+#: src/components/PageStudentOverview/DailyObservationCard.tsx:40
 #: src/pages/dashboard/students/observations/details.tsx:25
 msgid "Observations"
 msgstr "Observasi"
@@ -870,7 +878,7 @@ msgstr "Cari"
 msgid "Search students"
 msgstr "Cari murid"
 
-#: src/components/PageStudentOverview/DailyObservationCard.tsx:40
+#: src/components/PageStudentOverview/DailyObservationCard.tsx:45
 msgid "See All"
 msgstr ""
 
