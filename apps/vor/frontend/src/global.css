@@ -22,16 +22,10 @@
   font-display: swap;
 }
 
-html,
-body {
-  padding: 0;
-  margin: 0;
-}
 
-body {
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 a,
 a:hover,
@@ -41,6 +35,11 @@ a:active {
   border: none;
   outline: none;
   user-select: none;
+}
+
+body {
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 button::-moz-focus-inner {

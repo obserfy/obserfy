@@ -107,7 +107,6 @@ exports[`PageStudentPlans should render correctly 1`] = `
   border-width: 1px;
   line-height: 1;
   border: none;
-  font-weight: bold;
   padding: 4px;
 }
 

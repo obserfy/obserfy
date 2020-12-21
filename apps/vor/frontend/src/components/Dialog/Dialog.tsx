@@ -77,6 +77,7 @@ export const Dialog: FC<Props> = ({ sx, ...props }) => {
           pb="env(safe-area-inset-bottom)"
           ref={ref}
           sx={{
+            overflow: "auto",
             maxHeight: "100vh",
             width: "100%",
             maxWidth: "maxWidth.xsm",

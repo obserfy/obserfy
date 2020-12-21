@@ -105,7 +105,7 @@ const StudentsSubrouteSidebar = () => {
           flexShrink: 0,
           height: "100vh",
           overflowY: "auto",
-          width: [0, 0, 364, 484],
+          width: [0, 0, 380, 420],
           backgroundColor: "background",
         }}
       >
