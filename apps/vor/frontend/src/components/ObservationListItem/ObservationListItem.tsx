@@ -64,7 +64,8 @@ const ObservationListItem: FC<ObservationListItemProps> = ({
               sx={{ fontSize: 0, lineHeight: 1 }}
               color="textMediumEmphasis"
             >
-              <Trans>By {observation.creatorName}</Trans>
+              <Trans>By </Trans>
+              {` ${observation.creatorName}`}
             </Typography.Body>
           )}
         </Flex>
