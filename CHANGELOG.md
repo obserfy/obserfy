@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.14.0](https://github.com/obserfy/obserfy/compare/v1.13.2...v1.14.0) (2020-12-21)
+
+
+### Features
+
+* add markdown support. ([92204ce](https://github.com/obserfy/obserfy/commit/92204cea8681cf0ac4ac70d4d3e854bc09017714))
+
+
+### Bug Fixes
+
+* **deps:** pin dependencies ([d1f2581](https://github.com/obserfy/obserfy/commit/d1f25811e7996d8665d1109d63a5d3cc2035ad05))
+* **deps:** pin dependencies ([970b752](https://github.com/obserfy/obserfy/commit/970b752d6b83728c392fbf916829e88539c7c961))
+* **deps:** update dependency @prefresh/next to v1.4.4 ([bd905ff](https://github.com/obserfy/obserfy/commit/bd905ff5503ddc044455b6205a420453d165d1eb))
+* **deps:** update dependency dompurify to v2.2.5 ([4db32a4](https://github.com/obserfy/obserfy/commit/4db32a4c8e0a3136ed0bccc15db7ed6b512b146b))
+* **deps:** update dependency dompurify to v2.2.6 ([5e68b06](https://github.com/obserfy/obserfy/commit/5e68b064ebdc905bf430b930fc59a6c58c4bec75))
+* **deps:** update dependency ts-is-present to v1.2.1 ([d539e73](https://github.com/obserfy/obserfy/commit/d539e734799aa242af22a3555fa8813efad865ed))
+* **deps:** update sentry monorepo to v5.29.2 ([3d689fd](https://github.com/obserfy/obserfy/commit/3d689fd7aa022721f50640687c27584aa64cbe55))
+
 ### [1.13.2](https://github.com/obserfy/obserfy/compare/v1.13.1...v1.13.2) (2020-12-16)
 
 
