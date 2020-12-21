@@ -9587,7 +9587,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "ts-is-present",
-        "npm:1.1.5"
+        "npm:1.2.1"
       ],
       [
         "ts-loader",
@@ -37016,7 +37016,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["stylelint-config-prettier", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:8.0.2"],
             ["stylelint-config-standard", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:20.0.0"],
             ["tailwindcss", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:2.0.2"],
-            ["ts-is-present", "npm:1.1.5"],
+            ["ts-is-present", "npm:1.2.1"],
             ["typescript", "patch:typescript@npm%3A4.1.3#builtin<compat/typescript>::version=4.1.3&hash=5bf698"],
             ["uuid", "npm:8.3.2"]
           ],
@@ -56517,10 +56517,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["ts-is-present", [
-        ["npm:1.1.5", {
-          "packageLocation": "./.yarn/cache/ts-is-present-npm-1.1.5-daf1a49533-edad576177.zip/node_modules/ts-is-present/",
+        ["npm:1.2.1", {
+          "packageLocation": "./.yarn/cache/ts-is-present-npm-1.2.1-a6e36d233c-fb408b3c0e.zip/node_modules/ts-is-present/",
           "packageDependencies": [
-            ["ts-is-present", "npm:1.1.5"]
+            ["ts-is-present", "npm:1.2.1"]
           ],
           "linkType": "HARD",
         }]
