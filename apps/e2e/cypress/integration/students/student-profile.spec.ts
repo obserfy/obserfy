@@ -86,8 +86,8 @@ describe("test student profile page", function () {
 
     // Edit observation
     cy.url().should("contains", "students")
-    cy.contains("See More").click()
-    cy.contains("Edit Details").click()
+    cy.contains(shortDesc).click()
+    cy.get("[data-cy=edit-details]").click()
     cy.contains("label", "Details").type("Some additional text")
     cy.contains("Save").click()
     cy.contains("Some additional text").should("be.visible")

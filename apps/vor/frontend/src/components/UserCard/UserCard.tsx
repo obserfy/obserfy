@@ -22,10 +22,8 @@ export const UserCard: FC<Props> = ({ userId, email, name, isCurrentUser }) => {
     <Card p={3} mt={2}>
       <Flex sx={{ alignItems: "start" }}>
         <Flex sx={{ flexDirection: "column", alignItems: "start" }}>
-          <Typography.H6>{name}</Typography.H6>
-          <Typography.Body sx={{ fontSize: 1 }} color="textMediumEmphasis">
-            {email}
-          </Typography.Body>
+          <Typography.Body sx={{ fontWeight: "bold" }}>{name}</Typography.Body>
+          <Typography.Body color="textMediumEmphasis">{email}</Typography.Body>
         </Flex>
         <Spacer />
         {isCurrentUser && (

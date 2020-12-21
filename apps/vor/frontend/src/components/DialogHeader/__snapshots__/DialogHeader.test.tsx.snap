@@ -114,7 +114,6 @@ exports[`DialogHeader should render correctly 1`] = `
   border-width: 1px;
   line-height: 1;
   border: none;
-  font-weight: bold;
   margin-top: 4px;
   margin-bottom: 4px;
   margin-left: 8px;
@@ -195,7 +194,6 @@ exports[`DialogHeader should render correctly 1`] = `
   border-width: 1px;
   line-height: 1;
   border: none;
-  font-weight: bold;
   margin-left: auto;
   margin-top: 4px;
   margin-bottom: 4px;

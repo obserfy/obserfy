@@ -141,11 +141,8 @@ const I18nButton = () => {
 
   return (
     <Flex
-      sx={{
-        alignItems: "center",
-        cursor: "pointer",
-      }}
-      m={3}
+      sx={{ alignItems: "center", cursor: "pointer" }}
+      p={3}
       onClick={() => {
         window.localStorage.setItem(
           "preferred-lang",
@@ -175,7 +172,7 @@ const ThemeModeButton: FC = () => {
   const [colorMode, setColorMode] = useColorMode()
   return (
     <Flex
-      m={3}
+      p={3}
       onClick={() => setColorMode(colorMode === "dark" ? "default" : "dark")}
       data-cy={colorMode === "dark" ? "light-switch" : "dark-switch"}
       sx={{ alignItems: "center", cursor: "pointer" }}

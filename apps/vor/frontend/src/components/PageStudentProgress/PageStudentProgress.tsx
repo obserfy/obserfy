@@ -91,7 +91,7 @@ export const PageStudentProgress: FC<Props> = ({ areaId, studentId }) => {
             mx={[0, 3]}
             sx={{ borderRadius: [0, "default"] }}
           >
-            <Typography.H6 m={3}>{subject.name}</Typography.H6>
+            <Typography.H6 p={3}>{subject.name}</Typography.H6>
             <SubjectMaterials
               subject={subject}
               progress={progress.data ?? []}

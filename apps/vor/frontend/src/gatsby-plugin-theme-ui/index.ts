@@ -35,13 +35,16 @@ const theme: Theme = {
     surface: "#fff",
     onSurface: "rgba(0,0,0,0.87)",
 
+    darkSurface: "#f8f8f8",
+    onDarkSurface: "rgba(0,0,0,0.87)",
+
     surfaceBlurNonTransparent: "rgba(255,255,255)",
     onSurfaceBlurNonTransparent: "#87000000",
     surfaceBlurTransparent: "rgba(255,255,255,0.6)",
     onSurfaceBlurTransparent: "#87000000",
 
     border: "rgba(0,0,0,.1)",
-    borderSolid: "rgba(0,0,0,.1)",
+    borderSolid: "#e5e5e5",
 
     overlay: "rgba(0,0,0,.7)",
     onOverlay: "#fff",
@@ -96,8 +99,11 @@ const theme: Theme = {
         background: "#101010",
         onBackground: "rgba(255,255,255, 0.87)",
 
-        surface: "#1d1d1d",
+        surface: "#242424",
         onSurface: "rgba(255,255,255, 0.87)",
+
+        darkSurface: "#1a1a1a",
+        onDarkSurface: "rgba(255,255,255, 0.87)",
 
         surfaceBlurNonTransparent: "rgba(23,23,23)",
         onSurfaceBlurNonTransparent: "rgba(255,255,255, 0.87)",
@@ -107,7 +113,7 @@ const theme: Theme = {
         icon: "#979797",
 
         border: "rgba(232,232,232, 0.07)",
-        borderSolid: "#000",
+        borderSolid: "#2c2c2c",
 
         muted: "#222222",
         mutedLight: "#212121",
@@ -166,7 +172,6 @@ const theme: Theme = {
   },
   cards: {
     primary: {
-      overflow: "auto",
       backgroundColor: "surface",
       borderRadius: "default",
       boxShadow:
@@ -264,7 +269,6 @@ const theme: Theme = {
       border: "none",
       flexShrink: 0,
       boxShadow: "none",
-      fontWeight: "bold",
       "&:hover, &:focus": {
         backgroundColor: "primaryLighter",
         borderColor: "primary",

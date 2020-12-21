@@ -41,7 +41,7 @@ const SupportPage = () => {
           href="https://feedback.obserfy.com/parent-dashboard"
           className="block w-full md:rounded p-3 bg-white border border-gray-300 mb-2 md:mb-0 flex items-center md:mr-2 hover:border-primary"
         >
-          <div>
+          <div className="mr-3">
             <h6 className="text-gray-900 font-bold text-sm mb-2">
               Send feedback
             </h6>
@@ -50,9 +50,10 @@ const SupportPage = () => {
             </p>
           </div>
           <Icon
-            className="my-auto h-full ml-auto m-3"
+            className="my-auto h-full ml-auto"
             alt="logout icon"
             src="/icons/external-link.svg"
+            size={20}
           />
         </a>
         <a
@@ -66,8 +67,9 @@ const SupportPage = () => {
             </p>
           </div>
           <Icon
-            className="my-auto h-full ml-auto m-3 text-gray-900"
+            className="my-auto h-full ml-auto text-gray-900 flex-shrink-0"
             src="/icons/mail.svg"
+            size={24}
           />
         </a>
       </div>
