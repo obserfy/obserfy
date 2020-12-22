@@ -1,3 +1,4 @@
+import { t } from "@lingui/macro"
 import React, { FC } from "react"
 import queryString from "query-string"
 import { PageRendererProps } from "gatsby"
@@ -15,7 +16,10 @@ export const Register: FC<PageRendererProps> = ({ location }) => {
 
   return (
     <>
-      <SEO title="Sign Up" />
+      <SEO
+        title={t`Register for Free`}
+        description={t`Get started now with 30-days free trial`}
+      />
       <PageRegister inviteCode={inviteCode} />
     </>
   )

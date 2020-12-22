@@ -2259,7 +2259,6 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___include_favicon'
   | 'pluginCreator___pluginOptions___cacheDigest'
   | 'pluginCreator___pluginOptions___prodKey'
-  | 'pluginCreator___pluginOptions___devKey'
   | 'pluginCreator___pluginOptions___trackPage'
   | 'pluginCreator___pluginOptions___delayLoad'
   | 'pluginCreator___pluginOptions___delayLoadTime'
@@ -2486,7 +2485,6 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___include_favicon'
   | 'pluginOptions___cacheDigest'
   | 'pluginOptions___prodKey'
-  | 'pluginOptions___devKey'
   | 'pluginOptions___trackPage'
   | 'pluginOptions___delayLoad'
   | 'pluginOptions___delayLoadTime'
@@ -2639,7 +2637,6 @@ export type SitePluginPluginOptions = {
   include_favicon?: Maybe<Scalars['Boolean']>;
   cacheDigest?: Maybe<Scalars['String']>;
   prodKey?: Maybe<Scalars['String']>;
-  devKey?: Maybe<Scalars['String']>;
   trackPage?: Maybe<Scalars['Boolean']>;
   delayLoad?: Maybe<Scalars['Boolean']>;
   delayLoadTime?: Maybe<Scalars['Int']>;
@@ -2682,7 +2679,6 @@ export type SitePluginPluginOptionsFilterInput = {
   include_favicon?: Maybe<BooleanQueryOperatorInput>;
   cacheDigest?: Maybe<StringQueryOperatorInput>;
   prodKey?: Maybe<StringQueryOperatorInput>;
-  devKey?: Maybe<StringQueryOperatorInput>;
   trackPage?: Maybe<BooleanQueryOperatorInput>;
   delayLoad?: Maybe<BooleanQueryOperatorInput>;
   delayLoadTime?: Maybe<IntQueryOperatorInput>;
@@ -3108,6 +3104,11 @@ export type Unnamed_5_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type Unnamed_5_Query = { file?: Maybe<{ childImageSharp?: Maybe<{ fixed?: Maybe<GatsbyImageSharpFixedFragment> }> }> };
+
+export type Unnamed_6_QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type Unnamed_6_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
 
 export type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 

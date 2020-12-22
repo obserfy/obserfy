@@ -367,6 +367,3 @@ msgstr "Who counts as a User?"
 msgid "You can track as many students as you want and share access to the parent dashboard to as many people as you need without increasing the cost."
 msgstr "You can track as many students as you want and share access to the parent dashboard to as many people as you need without increasing the cost."
 
-#: src/pages/pricing.tsx:77
-#~ msgid "You can track as many students as you want and share access to the parent dashboard to as many people as you need."
-#~ msgstr "You can track as many students as you want and share access to the parent dashboard to as many people as you need."
