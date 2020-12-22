@@ -1,7 +1,7 @@
 import { useMutation } from "react-query"
 import { patchApi } from "../fetchApi"
 import { Dayjs } from "../../../dayjs"
-import { updateObservationCache } from "./useGetObservation"
+import { useGetObservationCache } from "./useGetObservation"
 
 interface RequestBody {
   longDesc?: string
@@ -12,6 +12,7 @@ interface RequestBody {
   visibleToGuardians?: boolean
 }
 const usePatchObservation = (observationId: string, onError?: () => void) => {
+  const cache = useGetObservationCache(observationId)
   const patchObservation = patchApi<RequestBody>(
     `/observations/${observationId}`
   )
@@ -20,7 +21,7 @@ const usePatchObservation = (observationId: string, onError?: () => void) => {
       analytics.track("Observation Updated")
       if (response === undefined) return
       const body = await response.json()
-      updateObservationCache(body)
+      cache.setData(body)
     },
     onError,
   })

@@ -1,7 +1,9 @@
-import { queryCache, QueryResult, useQuery } from "react-query"
+import { useQuery } from "react-query"
 import { getSchoolId } from "../../schoolIdState"
+import { useQueryCache } from "../../useQueryCache"
 import { getApi } from "../fetchApi"
 
+const KEY = (schoolId: string) => ["guardians", { schoolId }]
 export interface Guardians {
   id: string
   name: string
@@ -9,21 +11,12 @@ export interface Guardians {
   note: string
   phone: string
 }
-export const useGetSchoolGuardians = (): QueryResult<Guardians[]> => {
+export const useGetSchoolGuardians = () => {
   const schoolId = getSchoolId()
   const fetchGuardians = getApi<Guardians[]>(`/schools/${schoolId}/guardians`)
-  return useQuery(["guardians", { schoolId }], fetchGuardians)
+  return useQuery(KEY(schoolId), fetchGuardians)
 }
 
-export const getSchoolGuardiansCache = () => {
-  const schoolId = getSchoolId()
-  return queryCache.getQueryData<Guardians[]>(["guardians", { schoolId }])
-}
-
-export const setSchoolGuardiansCache = (guardians: Guardians[]) => {
-  const schoolId = getSchoolId()
-  return queryCache.setQueryData<Guardians[]>(
-    ["guardians", { schoolId }],
-    guardians
-  )
+export const useGetSchoolGuardiansCache = () => {
+  return useQueryCache<Guardians[]>(getSchoolId())
 }

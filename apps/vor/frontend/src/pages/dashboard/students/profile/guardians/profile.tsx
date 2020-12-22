@@ -20,10 +20,9 @@ const GuardianProfile = () => {
   const guardianId = useQueryString("guardianId")
   const studentId = useQueryString("studentId")
 
-  const [deleteGuardian] = useDeleteGuardian(guardianId)
-  const deleteDialog = useVisibilityState()
-
   const { data: student } = useGetStudent(studentId)
+  const deleteGuardian = useDeleteGuardian(guardianId)
+  const deleteDialog = useVisibilityState()
 
   return (
     <Box sx={{ maxWidth: "maxWidth.sm" }} mx="auto">
@@ -51,8 +50,12 @@ const GuardianProfile = () => {
           body={t`Are you sure you want to delete this guardian completely?`}
           positiveText={t`Delete`}
           onPositiveClick={async () => {
-            const result = await deleteGuardian()
-            if (result?.ok) navigate(STUDENT_PROFILE_URL(studentId))
+            try {
+              await deleteGuardian.mutateAsync()
+              navigate(STUDENT_PROFILE_URL(studentId))
+            } catch (e) {
+              Sentry.captureException(e)
+            }
           }}
           onDismiss={deleteDialog.hide}
           onNegativeClick={deleteDialog.hide}

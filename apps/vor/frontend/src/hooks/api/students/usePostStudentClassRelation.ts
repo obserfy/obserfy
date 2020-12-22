@@ -1,8 +1,9 @@
-import { queryCache, useMutation } from "react-query"
+import { useMutation, useQueryClient } from "react-query"
 import { ApiError, BASE_URL } from "../useApi"
 import { navigate } from "../../../components/Link/Link"
 
 const usePostStudentClassRelation = (studentId: string) => {
+  const queryClient = useQueryClient()
   const postStudentClassRelation = async (classId: string) => {
     const result = await fetch(`${BASE_URL}/students/${studentId}/classes`, {
       credentials: "same-origin",
@@ -25,7 +26,7 @@ const usePostStudentClassRelation = (studentId: string) => {
 
   return useMutation(postStudentClassRelation, {
     onSuccess: async () => {
-      await queryCache.invalidateQueries(["student", studentId])
+      await queryClient.invalidateQueries(["student", studentId])
     },
   })
 }

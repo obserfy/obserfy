@@ -1,14 +1,17 @@
 import { useMutation } from "react-query"
 import { postApi } from "../fetchApi"
 import { getSchoolId } from "../../schoolIdState"
-import { invalidateGetCurriculumCache } from "../useGetCurriculum"
-import { invalidateGetCurriculumAreasCache } from "../useGetCurriculumAreas"
+import { useGetCurriculumCache } from "../useGetCurriculum"
+import { useGetCurriculumAreasCache } from "../useGetCurriculumAreas"
 
 interface UsePostNewCurriculumRequestBody {
   template: "montessori" | "custom"
   name?: string
 }
 const usePostNewCurriculum = () => {
+  const curriculumCache = useGetCurriculumCache()
+  const areaCache = useGetCurriculumAreasCache()
+
   const schoolId = getSchoolId()
   const postCreateDefaultCurriculum = postApi<UsePostNewCurriculumRequestBody>(
     `/schools/${schoolId}/curriculums`
@@ -19,10 +22,7 @@ const usePostNewCurriculum = () => {
         name: variables.name,
         template: variables.template,
       })
-      await Promise.all([
-        invalidateGetCurriculumCache(),
-        invalidateGetCurriculumAreasCache(),
-      ])
+      await Promise.all([curriculumCache.invalidate(), areaCache.invalidate()])
     },
   })
 }

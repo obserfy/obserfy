@@ -1,11 +1,12 @@
 import { useMutation } from "react-query"
 import { patchApi } from "../fetchApi"
-import { setCurriculumCache } from "../useGetCurriculum"
+import { useGetCurriculumAreasCache } from "../useGetCurriculumAreas"
 
 interface PatchCurriculumRequest {
   name: string
 }
 const usePatchCurriculum = (curriculumId: string) => {
+  const curriculumCache = useGetCurriculumAreasCache()
   const patchCurriculum = patchApi<PatchCurriculumRequest>(
     `/curriculums/${curriculumId}`
   )
@@ -14,7 +15,7 @@ const usePatchCurriculum = (curriculumId: string) => {
       analytics.track("Curriculum Updated")
       if (data) {
         const updatedCurriculum = await data.json()
-        setCurriculumCache(updatedCurriculum)
+        curriculumCache.setData(updatedCurriculum)
       }
     },
   })

@@ -12,7 +12,7 @@ import { ADMIN_GUARDIAN_URL, ADMIN_URL } from "../../../../routes"
 
 const GuardianProfile = () => {
   const id = useQueryString("id")
-  const [deleteGuardian] = useDeleteGuardian(id)
+  const deleteGuardian = useDeleteGuardian(id)
   const deleteDialog = useVisibilityState()
 
   return (
@@ -40,8 +40,12 @@ const GuardianProfile = () => {
           body={t`Are you sure you want to delete this guardian completely?`}
           positiveText={t`Delete`}
           onPositiveClick={async () => {
-            const result = await deleteGuardian()
-            if (result?.ok) navigate(ADMIN_GUARDIAN_URL)
+            try {
+              await deleteGuardian.mutateAsync()
+              navigate(ADMIN_GUARDIAN_URL)
+            } catch (e) {
+              Sentry.captureException(e)
+            }
           }}
           onDismiss={deleteDialog.hide}
           onNegativeClick={deleteDialog.hide}

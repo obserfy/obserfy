@@ -1,14 +1,12 @@
 import { useMutation } from "react-query"
 import { postApi } from "../fetchApi"
-import {
-  getCurriculumAreasCache,
-  setCurriculumAreasCache,
-} from "../useGetCurriculumAreas"
+import { useGetCurriculumAreasCache } from "../useGetCurriculumAreas"
 
 interface PostNewAreaRequestBody {
   name: string
 }
 const usePostNewArea = (curriculumId: string) => {
+  const cache = useGetCurriculumAreasCache()
   const postNewArea = postApi<PostNewAreaRequestBody>(
     `/curriculums/${curriculumId}/areas`
   )
@@ -18,9 +16,9 @@ const usePostNewArea = (curriculumId: string) => {
       analytics.track("Area Created")
       if (data) {
         const newArea = await data.json()
-        const cache = getCurriculumAreasCache() ?? []
-        cache.push(newArea)
-        setCurriculumAreasCache(cache)
+        const old = cache.getData() ?? []
+        old.push(newArea)
+        cache.setData(old)
       }
     },
   })

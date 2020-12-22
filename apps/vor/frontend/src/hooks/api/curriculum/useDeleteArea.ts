@@ -1,18 +1,16 @@
 import { useMutation } from "react-query"
 import { deleteApi } from "../fetchApi"
-import {
-  getCurriculumAreasCache,
-  setCurriculumAreasCache,
-} from "../useGetCurriculumAreas"
+import { useGetCurriculumAreasCache } from "../useGetCurriculumAreas"
 
 const useDeleteArea = (areaId: string) => {
+  const cache = useGetCurriculumAreasCache()
   const deleteArea = deleteApi(`/curriculums/areas/${areaId}`)
   return useMutation(deleteArea, {
     onSuccess: () => {
       analytics.track("Area Deleted")
-      const cache = getCurriculumAreasCache()
-      if (cache) {
-        setCurriculumAreasCache(cache.filter(({ id }) => id !== areaId))
+      const old = cache.getData()
+      if (old) {
+        cache.setData(old.filter(({ id }) => id !== areaId))
       }
     },
   })

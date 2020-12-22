@@ -1,11 +1,9 @@
 import { useMutation } from "react-query"
 import { BASE_URL } from "../useApi"
-import {
-  getObservationCache,
-  updateObservationCache,
-} from "./useGetObservation"
+import { useGetObservationCache } from "./useGetObservation"
 
 const usePostNewObservationImage = (observationId: string) => {
+  const cache = useGetObservationCache(observationId)
   const postNewImage = async (image: File) => {
     const payload = new FormData()
     payload.append("image", image)
@@ -21,14 +19,14 @@ const usePostNewObservationImage = (observationId: string) => {
     onSuccess: async (data) => {
       analytics.track("Observation Image Uploaded")
       const result = await data.json()
-      const cached = await getObservationCache(observationId)
+      const cached = await cache.getData()
       if (cached) {
         if (cached.images?.length) {
           cached.images.push(result)
         } else {
           cached.images = [result]
         }
-        updateObservationCache(cached)
+        cache.setData(cached)
       }
     },
   })

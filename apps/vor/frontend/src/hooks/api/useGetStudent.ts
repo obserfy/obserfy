@@ -1,4 +1,4 @@
-import { QueryResult, useQuery } from "react-query"
+import { useQuery } from "react-query"
 import { navigate } from "../../components/Link/Link"
 import { BASE_URL } from "./useApi"
 
@@ -24,7 +24,7 @@ export interface Student {
     email: string
   }>
 }
-export const useGetStudent = (studentId: string): QueryResult<Student> => {
+export const useGetStudent = (studentId: string) => {
   async function fetchStudent(): Promise<Student> {
     const url = `/students/${studentId}`
     const result = await fetch(`${BASE_URL}${url}`, {
