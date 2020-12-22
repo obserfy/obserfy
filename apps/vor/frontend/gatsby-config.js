@@ -40,8 +40,8 @@ module.exports = {
     PRESERVE_FILE_DOWNLOAD_CACHE: true,
   },
   siteMetadata: {
-    title: `Obserfy`,
-    description: `Obserfy`,
+    title: `Obserfy for Teachers`,
+    description: `Record keeping tool for montessori schools.`,
     author: `@chrsep`,
     siteUrl: `https://app.obserfy.com`,
   },
@@ -84,7 +84,6 @@ module.exports = {
       resolve: `gatsby-plugin-segment-js`,
       options: {
         prodKey: `a2pLn3x1wfkoSpgCxAb1sHiMRPraq6hW`,
-        devKey: `mmWAsCJqhsbHOArCtFhRCUvtAkr8WkzR`,
         trackPage: true,
         delayLoad: true,
         delayLoadTime: 1000,
