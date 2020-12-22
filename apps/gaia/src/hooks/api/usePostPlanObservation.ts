@@ -1,15 +1,16 @@
-import { queryCache, useMutation } from "react-query"
-import { postApi } from "./apiHelpers"
+import { useMutation, useQueryClient } from "react-query"
 import { PostPlanObservationRequest } from "../../pages/api/plans/[planId]/observations"
+import { postApi } from "./apiHelpers"
 
 const usePostPlanObservation = (planId: string) => {
+  const queryClient = useQueryClient()
   const postPlanObservation = postApi<PostPlanObservationRequest>(
     `/plans/${planId}/observations`
   )
   return useMutation(postPlanObservation, {
     onSuccess: async () => {
       mixpanel.track("Observation Created")
-      await queryCache.invalidateQueries(["childPlans"])
+      await queryClient.invalidateQueries(["childPlans"])
     },
   })
 }
