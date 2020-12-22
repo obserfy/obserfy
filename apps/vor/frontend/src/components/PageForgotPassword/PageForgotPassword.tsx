@@ -15,10 +15,12 @@ import usePostResetPasswordEmail from "../../hooks/api/usePostResetPasswordEmail
 
 export const PageForgotPassword: FC = () => {
   const [email, setEmail] = useState("")
-  const [
-    postResetPasswordEmail,
-    { error, isLoading, isSuccess },
-  ] = usePostResetPasswordEmail()
+  const {
+    mutateAsync,
+    error,
+    isLoading,
+    isSuccess,
+  } = usePostResetPasswordEmail()
 
   return (
     <Box>
@@ -28,9 +30,13 @@ export const PageForgotPassword: FC = () => {
         as="form"
         px={3}
         sx={{ maxWidth: "maxWidth.xsm", width: "100%" }}
-        onSubmit={(e) => {
-          e.preventDefault()
-          postResetPasswordEmail(email)
+        onSubmit={async (event) => {
+          try {
+            event.preventDefault()
+            await mutateAsync(email)
+          } catch (e) {
+            Sentry.captureException(e)
+          }
         }}
       >
         <Typography.H5 sx={{ fontWeight: "bold" }} my={3}>

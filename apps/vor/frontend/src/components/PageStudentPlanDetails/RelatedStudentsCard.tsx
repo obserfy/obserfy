@@ -21,13 +21,17 @@ const RelatedStudentsCard: FC<{
   students: Student[]
 }> = ({ planId, students, studentId }) => {
   const dialog = useVisibilityState()
-  const [postNewRelatedStudent] = usePostNewRelatedStudents(planId)
+  const postNewRelatedStudent = usePostNewRelatedStudents(planId)
 
   const handlePostNewStudent = async (value: Student[]) => {
     const payload = {
       studentIds: value.map(({ id }) => id),
     }
-    await postNewRelatedStudent(payload)
+    try {
+      await postNewRelatedStudent.mutateAsync(payload)
+    } catch (e) {
+      Sentry.captureException(e)
+    }
   }
 
   const otherStudents = students.filter(({ id }) => id !== studentId)
@@ -79,10 +83,14 @@ const StudentListItem: FC<{
   name: string
   profilePictureUrl?: string
 }> = ({ planId, studentId, profilePictureUrl, name }) => {
-  const [deleteRelatedStudent] = useDeleteRelatedStudent(planId, studentId)
+  const deleteRelatedStudent = useDeleteRelatedStudent(planId, studentId)
 
   const handleDeleteRelatedStudent = async () => {
-    await deleteRelatedStudent()
+    try {
+      await deleteRelatedStudent.mutateAsync()
+    } catch (e) {
+      Sentry.captureException(e)
+    }
   }
 
   return (

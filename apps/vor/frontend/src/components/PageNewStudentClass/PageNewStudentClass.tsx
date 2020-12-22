@@ -28,30 +28,28 @@ export const PageNewStudentClass: FC<Props> = ({ id }) => {
   const [startTime, setStartTime] = useState("09:00")
   const [endTime, setEndTime] = useState("10:00")
   const [weekdays, setWeekdays] = useImmer<number[]>([])
-  const [mutatePostNewClass, newClass] = usePostNewClass()
-  const [
-    mutatePostStudentClassRelation,
-    newStudentClassRelation,
-  ] = usePostStudentClassRelation(id)
+  const postNewClass = usePostNewClass()
+  const postStudentClassRelation = usePostStudentClassRelation(id)
   const valid = name !== ""
 
-  const postNewClass = async (): Promise<void> => {
-    const newClassResult = await mutatePostNewClass({
-      name,
-      weekdays,
-      endTime: dayjs(endTime, "HH:mm").toDate(),
-      startTime: dayjs(startTime, "HH:mm").toDate(),
-    })
-    if (newClassResult?.ok) {
+  const handleSubmit = async (): Promise<void> => {
+    try {
+      const newClassResult = await postNewClass.mutateAsync({
+        name,
+        weekdays,
+        endTime: dayjs(endTime, "HH:mm").toDate(),
+        startTime: dayjs(startTime, "HH:mm").toDate(),
+      })
+
       const response = await newClassResult.json()
-      await mutatePostStudentClassRelation(response.id)
+      await postStudentClassRelation.mutateAsync(response.id)
       await navigate(EDIT_STUDENT_CLASS_URL(id))
+    } catch (e) {
+      Sentry.captureException(e)
     }
   }
 
-  const isLoading =
-    newClass.status === "loading" ||
-    newStudentClassRelation.status === "loading"
+  const isLoading = postNewClass.isLoading || postStudentClassRelation.isLoading
 
   return (
     <Box mx="auto" sx={{ maxWidth: "maxWidth.sm" }}>
@@ -120,12 +118,12 @@ export const PageNewStudentClass: FC<Props> = ({ id }) => {
         <Button
           sx={{ width: "100%" }}
           disabled={!valid || isLoading}
-          onClick={postNewClass}
+          onClick={handleSubmit}
         >
           {isLoading && <LoadingIndicator mr={2} color="onPrimary" />}
           <Trans>Save</Trans>
         </Button>
-        <ErrorMessage error={newClass.error} m={3} />
+        <ErrorMessage error={postNewClass.error} m={3} />
       </Box>
     </Box>
   )

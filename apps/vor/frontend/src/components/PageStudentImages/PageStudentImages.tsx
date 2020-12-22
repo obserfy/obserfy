@@ -25,7 +25,7 @@ interface Props {
 export const PageStudentImages: FC<Props> = ({ studentId }) => {
   const student = useGetStudent(studentId)
   const images = useGetStudentImages(studentId)
-  const [postNewStudentImage, { isLoading }] = usePostNewStudentImage(studentId)
+  const postNewStudentImage = usePostNewStudentImage(studentId)
 
   return (
     <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={5}>
@@ -55,16 +55,24 @@ export const PageStudentImages: FC<Props> = ({ studentId }) => {
             type="file"
             accept="image/*"
             sx={{ display: "none" }}
-            disabled={isLoading}
-            onChange={async (e) => {
-              const selectedImage = e.target.files?.[0]
+            disabled={postNewStudentImage.isLoading}
+            onChange={async (event) => {
+              const selectedImage = event.target.files?.[0]
               if (selectedImage) {
-                await postNewStudentImage(selectedImage)
+                try {
+                  await postNewStudentImage.mutateAsync(selectedImage)
+                } catch (e) {
+                  Sentry.captureException(e)
+                }
               }
             }}
           />
-          <Button as="div" sx={{ width: "100%" }} disabled={isLoading}>
-            {isLoading && <LoadingIndicator />}
+          <Button
+            as="div"
+            sx={{ width: "100%" }}
+            disabled={postNewStudentImage.isLoading}
+          >
+            {postNewStudentImage.isLoading && <LoadingIndicator />}
             <Icon as={PlusIcon} mr={2} fill="onPrimary" />
             <Trans>Upload Photo</Trans>
           </Button>

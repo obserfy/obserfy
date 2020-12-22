@@ -32,7 +32,7 @@ interface Props {
   studentId: string
 }
 export const PageNewObservation: FC<Props> = ({ studentId }) => {
-  const [postNewObservation, { isLoading }] = usePostNewObservation(studentId)
+  const postNewObservation = usePostNewObservation(studentId)
   const { data: student } = useGetStudent(studentId)
   const { data: areas } = useGetCurriculumAreas()
 
@@ -44,20 +44,20 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
   const [visibleToGuardians, setVisibleToGuardians] = useState(false)
 
   async function submit(): Promise<void> {
-    const response = await postNewObservation({
-      images: images.map((image) => image.id),
-      longDesc,
-      shortDesc,
-      eventTime,
-      areaId,
-      visibleToGuardians,
-    })
-
-    if (response?.ok) {
-      analytics.track("Observation Created")
+    try {
+      await postNewObservation.mutateAsync({
+        images: images.map((image) => image.id),
+        longDesc,
+        shortDesc,
+        eventTime,
+        areaId,
+        visibleToGuardians,
+      })
       await navigate(STUDENT_OVERVIEW_URL(studentId))
-    } else {
+      analytics.track("Observation Created")
+    } catch (e) {
       analytics.track("Create Observation Failed")
+      Sentry.captureException(e)
     }
   }
 
@@ -81,13 +81,17 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
           </Breadcrumb>
           <Button
             ml="auto"
-            p={isLoading ? 1 : 2}
+            p={postNewObservation.isLoading ? 1 : 2}
             my={2}
             mr={3}
             onClick={submit}
             disabled={shortDesc === ""}
           >
-            {isLoading ? <LoadingIndicator size={22} /> : <Trans>Save</Trans>}
+            {postNewObservation.isLoading ? (
+              <LoadingIndicator size={22} />
+            ) : (
+              <Trans>Save</Trans>
+            )}
           </Button>
         </Flex>
       </TranslucentBar>
@@ -212,7 +216,7 @@ const UploadImageButton: FC<{
   studentId: string
   onUploaded: (image: { id: string; file: File }) => void
 }> = ({ onUploaded, studentId }) => {
-  const [postNewStudentImage, { isLoading }] = usePostNewStudentImage(studentId)
+  const postNewStudentImage = usePostNewStudentImage(studentId)
 
   return (
     <Card
@@ -233,19 +237,25 @@ const UploadImageButton: FC<{
         ...borderFull,
       }}
     >
-      {isLoading ? <LoadingIndicator /> : <Icon as={PlusIcon} />}
+      {postNewStudentImage.isLoading ? (
+        <LoadingIndicator />
+      ) : (
+        <Icon as={PlusIcon} />
+      )}
       <Input
         type="file"
         sx={{ display: "none" }}
         accept="image/*"
-        onChange={async (e) => {
-          const selectedImage = e.target.files?.[0]
+        onChange={async (event) => {
+          const selectedImage = event.target.files?.[0]
           if (!selectedImage) return
 
-          const result = await postNewStudentImage(selectedImage)
-          if (result?.ok) {
+          try {
+            const result = await postNewStudentImage.mutateAsync(selectedImage)
             const response = await result.json()
             onUploaded({ id: response.id, file: selectedImage })
+          } catch (e) {
+            Sentry.captureException(e)
           }
         }}
       />
