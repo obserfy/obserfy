@@ -1,20 +1,22 @@
 import { useMutation } from "react-query"
 import { deleteApi } from "../fetchApi"
-import { getPlanCache, setPlanCache } from "./useGetPlan"
+import { useGetPlanCache } from "./useGetPlan"
 
 const useDeleteRelatedStudent = (planId: string, studentId: string) => {
+  const cache = useGetPlanCache(planId)
   const postNewRelatedStudents = deleteApi(
     `/plans/${planId}/students/${studentId}`
   )
 
   return useMutation(postNewRelatedStudents, {
     onSuccess: () => {
-      const plan = getPlanCache(planId)
+      const plan = cache.getData()
+
       if (plan) {
         plan.relatedStudents = plan.relatedStudents.filter(
           ({ id }) => id !== studentId
         )
-        setPlanCache(planId, plan)
+        cache.setData(plan)
       }
     },
   })

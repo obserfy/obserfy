@@ -16,7 +16,7 @@ interface Props {
 
 export const UserCard: FC<Props> = ({ userId, email, name, isCurrentUser }) => {
   const [isLoading, setIsLoading] = useState(false)
-  const [deleteUser] = useDeleteUser(userId)
+  const deleteUser = useDeleteUser(userId)
 
   return (
     <Card p={3} mt={2}>
@@ -42,8 +42,13 @@ export const UserCard: FC<Props> = ({ userId, email, name, isCurrentUser }) => {
             disabled={isLoading}
             onClick={async () => {
               setIsLoading(true)
-              await deleteUser()
-              setIsLoading(false)
+              try {
+                await deleteUser.mutateAsync()
+              } catch (e) {
+                Sentry.captureException(e)
+              } finally {
+                setIsLoading(false)
+              }
             }}
           >
             {isLoading ? <LoadingIndicator /> : "Remove"}

@@ -95,12 +95,16 @@ const DeleteLessonPlanButton: FC<{
   title?: string
   onDeleted: () => void
 }> = ({ planId, title, onDeleted }) => {
-  const [deletePlan] = useDeletePlan(planId)
+  const deletePlan = useDeletePlan(planId)
   const dialog = useVisibilityState()
 
   const handleDelete = async () => {
-    const result = await deletePlan()
-    if (result?.ok) onDeleted()
+    try {
+      await deletePlan.mutateAsync()
+      onDeleted()
+    } catch (e) {
+      Sentry.captureException(e)
+    }
   }
 
   return (

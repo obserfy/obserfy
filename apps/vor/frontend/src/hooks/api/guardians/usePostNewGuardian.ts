@@ -1,26 +1,20 @@
-import {
-  MutateFunction,
-  MutationResult,
-  queryCache,
-  useMutation,
-} from "react-query"
-import { ApiError, BASE_URL } from "../useApi"
-import { getSchoolId } from "../../schoolIdState"
+import { useMutation, useQueryClient } from "react-query"
 import { navigate } from "../../../components/Link/Link"
+import { getSchoolId } from "../../schoolIdState"
+import { ApiError, BASE_URL } from "../useApi"
 
 interface NewGuardian {
   name: string
   email: string
   phone: string
   note: string
-  address: string
+  address?: string
   studentId?: string
   relationship?: number
 }
 
-export const usePostNewGuardian = (
-  studentId?: string
-): [MutateFunction<Response, NewGuardian>, MutationResult<Response>] => {
+export const usePostNewGuardian = (studentId?: string) => {
+  const queryCache = useQueryClient()
   const postNewGuardian = async (guardian: NewGuardian): Promise<Response> => {
     const schoolId = getSchoolId()
     const result = await fetch(`${BASE_URL}/schools/${schoolId}/guardians`, {

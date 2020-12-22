@@ -45,7 +45,7 @@ interface Props {
 export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
   const student = useGetStudent(studentId)
   const areas = useGetCurriculumAreas()
-  const [mutate, { isLoading }] = usePostNewPlan()
+  const { mutateAsync, isLoading } = usePostNewPlan()
 
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
@@ -61,17 +61,20 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
   const [endDate, setEndDate] = useState(date)
 
   async function postNewPlan() {
-    const result = await mutate({
-      areaId,
-      title,
-      description,
-      date,
-      links,
-      students: [studentId, ...otherStudentsId],
-      repetition: repetition === 0 ? undefined : { type: repetition, endDate },
-    })
-    if (result?.ok) {
+    try {
+      await mutateAsync({
+        areaId,
+        title,
+        description,
+        date,
+        links,
+        students: [studentId, ...otherStudentsId],
+        repetition:
+          repetition === 0 ? undefined : { type: repetition, endDate },
+      })
       await navigate(STUDENT_PLANS_URL(studentId, date))
+    } catch (e) {
+      Sentry.captureException(e)
     }
   }
 

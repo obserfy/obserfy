@@ -14,7 +14,7 @@ interface Props extends Omit<BoxProps, "onChange" | "value" | "css"> {
 }
 
 export const ProfilePicker: FC<Props> = ({ value, onChange, ...props }) => {
-  const [mutate, { status }] = usePostNewImage()
+  const postNewImage = usePostNewImage()
   const image = useGetImage(value)
 
   return (
@@ -41,7 +41,7 @@ export const ProfilePicker: FC<Props> = ({ value, onChange, ...props }) => {
                 height: "100%",
               }}
             >
-              {status === "loading" ? (
+              {postNewImage.isLoading ? (
                 <LoadingIndicator size={40} />
               ) : (
                 <>
@@ -61,17 +61,21 @@ export const ProfilePicker: FC<Props> = ({ value, onChange, ...props }) => {
           sx={{ display: "none" }}
           type="file"
           accept="image/*"
-          onChange={async (e) => {
-            const selectedImage = e.target.files?.[0]
+          onChange={async (event) => {
+            const selectedImage = event.target.files?.[0]
             if (selectedImage) {
-              const result = await mutate(selectedImage)
-              if (result?.ok) {
-                const response = await result.json()
-                onChange(response.id)
+              try {
+                const result = await postNewImage.mutateAsync(selectedImage)
+                if (result?.ok) {
+                  const response = await result.json()
+                  onChange(response.id)
+                }
+              } catch (e) {
+                Sentry.captureException(e)
               }
             }
           }}
-          disabled={status === "loading"}
+          disabled={postNewImage.isLoading}
         />
       </Label>
     </Box>

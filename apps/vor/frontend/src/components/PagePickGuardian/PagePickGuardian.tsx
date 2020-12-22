@@ -34,7 +34,7 @@ export const PagePickGuardian: FC = () => {
   const [note, setNote] = useState("")
   const [relationship, setRelationship] = useState(GuardianRelationship.Other)
   const [createNew, setCreateNew] = useState(false)
-  const [mutate, { isLoading }] = usePostNewGuardian()
+  const { mutateAsync, isLoading } = usePostNewGuardian()
 
   return (
     <Box sx={{ maxWidth: "maxWidth.sm" }} mx="auto" pb={4}>
@@ -95,8 +95,8 @@ export const PagePickGuardian: FC = () => {
                 disabled={name === ""}
                 onClick={async () => {
                   const payload = { email, name, phone, note }
-                  const result = await mutate(payload)
-                  if (result?.ok) {
+                  try {
+                    const result = await mutateAsync(payload)
                     const resultJson = await result.json()
                     setState((draft) => {
                       draft.guardians.push({
@@ -107,6 +107,8 @@ export const PagePickGuardian: FC = () => {
                     await navigate(NEW_STUDENT_URL, {
                       state: { preserveScroll: true },
                     })
+                  } catch (e) {
+                    Sentry.captureException(e)
                   }
                 }}
               >

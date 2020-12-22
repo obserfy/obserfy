@@ -1,4 +1,5 @@
-import { queryCache, QueryResult, useQuery } from "react-query"
+import { useQuery } from "react-query"
+import { useQueryCache } from "../useQueryCache"
 import { getApi } from "./fetchApi"
 
 export interface Observation {
@@ -22,28 +23,16 @@ export interface Observation {
   }>
   visibleToGuardians: boolean
 }
-
-export const useGetStudentObservations = (
-  studentId: string
-): QueryResult<Observation[]> => {
+export const useGetStudentObservations = (studentId: string) => {
   const getStudentObservations = getApi<Observation[]>(
     `/students/${studentId}/observations`
   )
 
-  return useQuery(
-    ["student", studentId, "observations"],
-    getStudentObservations
-  )
+  return useQuery(KEY(studentId), getStudentObservations)
 }
 
-export const getStudentObservationsCache = (studentId: string) =>
-  queryCache.getQueryData<Observation[]>(["student", studentId, "observations"])
+export const useGetStudentObservationsCache = (studentId: string) => {
+  return useQueryCache<Observation[]>(KEY(studentId))
+}
 
-export const updateStudentObservationsCache = (
-  studentId: string,
-  observations: Observation[]
-) =>
-  queryCache.setQueryData<Observation[]>(
-    ["student", studentId, "observations"],
-    observations
-  )
+const KEY = (studentId: string) => ["student", studentId, "observations"]

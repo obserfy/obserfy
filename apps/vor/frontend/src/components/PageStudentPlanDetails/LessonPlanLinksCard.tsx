@@ -48,12 +48,16 @@ const LinkItem: FC<{
   lessonPlanId: string
 }> = ({ link, lessonPlanId }) => {
   const [isLoading, setIsLoading] = useState(false)
-  const [deleteLink] = useDeleteLessonPlanLink(link.id, lessonPlanId)
+  const deleteLink = useDeleteLessonPlanLink(link.id, lessonPlanId)
 
   const handleDelete = async () => {
     setIsLoading(true)
-    const result = await deleteLink()
-    if (!result?.ok) setIsLoading(false)
+    try {
+      await deleteLink.mutateAsync()
+      setIsLoading(false)
+    } catch (e) {
+      Sentry.captureException(e)
+    }
   }
 
   return (
@@ -102,16 +106,19 @@ const LinkItem: FC<{
 
 const UrlField: FC<{ lessonPlanId: string }> = ({ lessonPlanId }) => {
   const [isLoading, setIsLoading] = useState(false)
-  const [postNewLink] = usePostNewLessonPlanLink(lessonPlanId)
+  const postNewLink = usePostNewLessonPlanLink(lessonPlanId)
   const [url, setUrl] = useState("")
 
   async function sendPostNewLinkRequest() {
     setIsLoading(true)
-    const result = await postNewLink({ url })
-    if (result?.ok) {
+    try {
+      await postNewLink.mutateAsync({ url })
       setUrl("")
+    } catch (e) {
+      Sentry.captureException(e)
+    } finally {
+      setIsLoading(false)
     }
-    setIsLoading(false)
   }
 
   return (

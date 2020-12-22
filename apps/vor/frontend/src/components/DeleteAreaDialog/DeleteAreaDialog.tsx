@@ -17,7 +17,7 @@ export const DeleteAreaDialog: FC<Props> = ({
   onDismiss,
   name,
 }) => {
-  const [deleteArea, { isLoading }] = useDeleteArea(areaId)
+  const deleteArea = useDeleteArea(areaId)
 
   return (
     <Dialog sx={{ maxWidth: ["", "maxWidth.xsm"] }}>
@@ -25,12 +25,14 @@ export const DeleteAreaDialog: FC<Props> = ({
         title="Delete Area?"
         onCancel={onDismiss}
         onAccept={async () => {
-          const response = await deleteArea()
-          if (response?.ok) {
+          try {
+            await deleteArea.mutateAsync()
             onDeleted()
+          } catch (e) {
+            Sentry.captureException(e)
           }
         }}
-        loading={isLoading}
+        loading={deleteArea.isLoading}
         onAcceptText="Delete"
       />
       <Typography.Body p={3} sx={{ ...borderBottom }}>

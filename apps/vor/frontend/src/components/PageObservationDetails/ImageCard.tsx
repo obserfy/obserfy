@@ -45,9 +45,7 @@ const ImagesDataBox: FC<{
   observationId: string
 }> = ({ studentId, images, observationId }) => {
   const [selectedIdx, setSelectedIdx] = useState<number>()
-  const [postNewImage, { isLoading }] = usePostNewObservationImage(
-    observationId
-  )
+  const postNewImage = usePostNewObservationImage(observationId)
   const selectedImage =
     selectedIdx !== undefined ? images[selectedIdx] : undefined
 
@@ -83,7 +81,7 @@ const ImagesDataBox: FC<{
             borderRadius: "default",
             cursor: "pointer",
             "&:hover": { borderColor: "primary" },
-            opacity: isLoading ? 0.5 : 1,
+            opacity: postNewImage.isLoading ? 0.5 : 1,
             ...borderFull,
           }}
           variant="outline"
@@ -93,14 +91,18 @@ const ImagesDataBox: FC<{
             type="file"
             sx={{ display: "none" }}
             accept="image/*"
-            disabled={isLoading}
-            onChange={async (e) => {
-              if (e.target.files) {
-                await postNewImage(e.target.files[0])
+            disabled={postNewImage.isLoading}
+            onChange={async (event) => {
+              if (event.target.files) {
+                try {
+                  await postNewImage.mutateAsync(event.target.files[0])
+                } catch (e) {
+                  Sentry.captureException(e)
+                }
               }
             }}
           />
-          {isLoading ? (
+          {postNewImage.isLoading ? (
             <LoadingIndicator m="auto" />
           ) : (
             <Icon as={PlusIcon} m="auto" />

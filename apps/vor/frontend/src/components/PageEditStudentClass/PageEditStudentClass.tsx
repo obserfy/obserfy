@@ -113,7 +113,7 @@ const CurrentClass: FC<{
   classId: string
   name: string
 }> = ({ studentId, classId, name }) => {
-  const [mutate, { status }] = useDeleteStudentClassRelation(studentId)
+  const { mutateAsync, status } = useDeleteStudentClassRelation(studentId)
   const [showDialog, setShowDialog] = useState(false)
 
   return (
@@ -148,8 +148,12 @@ const CurrentClass: FC<{
             onAcceptText={t`Yes`}
             loading={status === "loading"}
             onAccept={async () => {
-              await mutate(classId)
-              setShowDialog(false)
+              try {
+                await mutateAsync(classId)
+                setShowDialog(false)
+              } catch (e) {
+                Sentry.captureException(e)
+              }
             }}
             onCancel={() => {
               setShowDialog(false)
@@ -174,7 +178,7 @@ const OtherClass: FC<{ studentId: string; classId: string; name: string }> = ({
   studentId,
   name,
 }) => {
-  const [mutate, { status }] = usePostStudentClassRelation(studentId)
+  const { mutateAsync, status } = usePostStudentClassRelation(studentId)
 
   return (
     <>
@@ -195,7 +199,13 @@ const OtherClass: FC<{ studentId: string; classId: string; name: string }> = ({
             px={1}
             py={1}
             data-cy="remove-guardian"
-            onClick={() => mutate(classId)}
+            onClick={async () => {
+              try {
+                await mutateAsync(classId)
+              } catch (e) {
+                Sentry.captureException(e)
+              }
+            }}
           >
             {status === "loading" ? (
               <LoadingIndicator ml={2} />

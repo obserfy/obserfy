@@ -1,4 +1,5 @@
 import React, { FC, useState } from "react"
+import * as Sentry from "@sentry/node"
 import Button from "../Button/Button"
 import Markdown from "../Markdown/Markdown"
 import Textarea from "../Textarea/Textarea"
@@ -104,7 +105,7 @@ const AddObservationForm: FC<{
   childId: string
 }> = ({ onDismiss, planId, childId }) => {
   const [loading, setLoading] = useState(false)
-  const [postObservation] = usePostPlanObservation(planId)
+  const postObservation = usePostPlanObservation(planId)
   const [observation, setObservation] = useState("")
 
   return (
@@ -131,11 +132,17 @@ const AddObservationForm: FC<{
           className="ml-auto mr-3 mt-3"
           disabled={loading}
           onClick={async () => {
-            setLoading(true)
-            const result = await postObservation({ observation, childId })
-            setLoading(false)
-            if (result?.ok) {
+            try {
+              setLoading(true)
+              await postObservation.mutateAsync({
+                observation,
+                childId,
+              })
               onDismiss()
+            } catch (e) {
+              Sentry.captureException(e)
+            } finally {
+              setLoading(false)
             }
           }}
         >
@@ -188,8 +195,8 @@ const EditObservationForm: FC<{
   onDismiss: () => void
   original: string
 }> = ({ observationId, original, onDismiss }) => {
-  const [patchObservation, patching] = usePatchObservation(observationId)
-  const [deleteObservation, deleting] = useDeleteObservation(observationId)
+  const patchObservation = usePatchObservation(observationId)
+  const deleteObservation = useDeleteObservation(observationId)
   const [showDeleteDialog, setShowDeleteDialog] = useState(false)
 
   const [observation, setObservation] = useState(original)
@@ -207,7 +214,7 @@ const EditObservationForm: FC<{
           outline
           className="mr-2 text-red-700 px-2"
           onClick={() => setShowDeleteDialog(true)}
-          disabled={patching.isLoading}
+          disabled={patchObservation.isLoading}
         >
           <Icon src="/icons/trash.svg" />
         </Button>
@@ -215,20 +222,22 @@ const EditObservationForm: FC<{
           outline
           className="ml-auto mr-2"
           onClick={onDismiss}
-          disabled={patching.isLoading}
+          disabled={patchObservation.isLoading}
         >
           Cancel
         </Button>
         <Button
-          disabled={observation === original || patching.isLoading}
+          disabled={observation === original || patchObservation.isLoading}
           onClick={async () => {
-            const result = await patchObservation({ observation })
-            if (result?.ok) {
+            try {
+              await patchObservation.mutateAsync({ observation })
               onDismiss()
+            } catch (e) {
+              Sentry.captureException(e)
             }
           }}
         >
-          {patching.isLoading ? "Loading" : "Save"}
+          {patchObservation.isLoading ? "Loading" : "Save"}
         </Button>
       </div>
       {showDeleteDialog && (
@@ -238,21 +247,23 @@ const EditObservationForm: FC<{
             <Button
               outline
               onClick={() => setShowDeleteDialog(false)}
-              disabled={deleting.isLoading}
+              disabled={deleteObservation.isLoading}
             >
               Cancel
             </Button>
             <Button
               className="w-full bg-red-700 text-white ml-2"
               onClick={async () => {
-                const result = await deleteObservation()
-                if (result?.ok) {
+                try {
+                  await deleteObservation.mutateAsync()
                   onDismiss()
+                } catch (e) {
+                  Sentry.captureException(e)
                 }
               }}
-              disabled={deleting.isLoading}
+              disabled={deleteObservation.isLoading}
             >
-              {deleting.isLoading ? "Loading" : "Yes"}
+              {deleteObservation.isLoading ? "Loading" : "Yes"}
             </Button>
           </div>
         </Dialog>

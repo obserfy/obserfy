@@ -14,7 +14,7 @@ interface Props {
 }
 export const NewAreaDialog: FC<Props> = ({ onDismiss, curriculumId }) => {
   const [name, setName] = useState("")
-  const [postNewArea, { isLoading, isError }] = usePostNewArea(curriculumId)
+  const postNewArea = usePostNewArea(curriculumId)
   const { i18n } = useLingui()
 
   return (
@@ -23,16 +23,18 @@ export const NewAreaDialog: FC<Props> = ({ onDismiss, curriculumId }) => {
         title={t`New Area`}
         onCancel={onDismiss}
         onAccept={async () => {
-          const response = await postNewArea({ name })
-          if (response?.ok) {
+          try {
+            await postNewArea.mutateAsync({ name })
             onDismiss()
+          } catch (e) {
+            Sentry.captureException(e)
           }
         }}
       />
       <Box px={3} pb={4} pt={3}>
-        {isError && <ErrorMessage />}
+        {postNewArea.isError && <ErrorMessage />}
         <Input
-          disabled={isLoading}
+          disabled={postNewArea.isLoading}
           autoFocus
           label={t`Area name`}
           sx={{ width: "100%" }}

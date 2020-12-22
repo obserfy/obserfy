@@ -1,6 +1,6 @@
 import { useMutation } from "react-query"
 import { postApi } from "../fetchApi"
-import { getPlanCache, setPlanCache } from "./useGetPlan"
+import { useGetPlanCache } from "./useGetPlan"
 
 type PostNewRelatedStudentsResponseBody = Array<{
   id: string
@@ -11,6 +11,7 @@ interface PostNewRelatedStudentsRequestBody {
   studentIds: string[]
 }
 const usePostNewRelatedStudents = (planId: string) => {
+  const cache = useGetPlanCache(planId)
   const postNewRelatedStudents = postApi<PostNewRelatedStudentsRequestBody>(
     `/plans/${planId}/students`
   )
@@ -19,10 +20,10 @@ const usePostNewRelatedStudents = (planId: string) => {
     onSuccess: async (data) => {
       if (!data) return
       const response: PostNewRelatedStudentsResponseBody = await data.json()
-      const plan = getPlanCache(planId)
+      const plan = cache.getData()
       if (plan) {
         plan.relatedStudents = response
-        setPlanCache(planId, plan)
+        cache.setData(plan)
       }
     },
   })
