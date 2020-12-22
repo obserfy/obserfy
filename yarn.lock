@@ -3539,6 +3539,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@emotion/cache@npm:^11.1.3":
+  version: 11.1.3
+  resolution: "@emotion/cache@npm:11.1.3"
+  dependencies:
+    "@emotion/memoize": ^0.7.4
+    "@emotion/sheet": ^1.0.0
+    "@emotion/utils": ^1.0.0
+    "@emotion/weak-memoize": ^0.2.5
+    stylis: ^4.0.3
+  checksum: 1d206ecfe280146a4bafb3d3cc0a4e1fdc2040cf1d1961631d1136dcbf2499a5ec531892e47335f3f6bc097b17afd0587cbbf0a7f486ce875f08e86625b96837
+  languageName: node
+  linkType: hard
+
 "@emotion/core@npm:^10.0.9":
   version: 10.0.28
   resolution: "@emotion/core@npm:10.0.28"
@@ -3645,12 +3658,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/react@npm:11.1.2":
-  version: 11.1.2
-  resolution: "@emotion/react@npm:11.1.2"
+"@emotion/react@npm:11.1.4":
+  version: 11.1.4
+  resolution: "@emotion/react@npm:11.1.4"
   dependencies:
     "@babel/runtime": ^7.7.2
-    "@emotion/cache": ^11.0.0
+    "@emotion/cache": ^11.1.3
     "@emotion/serialize": ^1.0.0
     "@emotion/sheet": ^1.0.1
     "@emotion/utils": ^1.0.0
@@ -3664,7 +3677,7 @@ __metadata:
       optional: true
     "@types/react":
       optional: true
-  checksum: 149e0a613991e7a9868ab3ef55bcae9b2a38ae26f678d1db64ad0492ee0ec593fdb0e1b87af4ef0277d543da7861230df7f5dc4392a736389448a241ae852359
+  checksum: a75d76ba0ba9479241ddfcfc58d98ef1403897e1f8f949d67c408701fb1d39c52585b882808857c09ff9cdb622c5edf1924ed74f74bbb26896e0afb7f01c848e
   languageName: node
   linkType: hard
 
@@ -37385,7 +37398,7 @@ typescript@^4.0.0:
     "@babel/preset-typescript": 7.12.7
     "@babel/runtime": 7.12.5
     "@emotion/jest": 11.1.0
-    "@emotion/react": 11.1.2
+    "@emotion/react": 11.1.4
     "@istanbuljs/nyc-config-typescript": 1.0.1
     "@lingui/cli": 3.3.0
     "@lingui/core": 3.3.0
