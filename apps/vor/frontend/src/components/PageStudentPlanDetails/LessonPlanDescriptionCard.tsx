@@ -23,7 +23,7 @@ const DescriptionDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
 }) => {
   const [showEditDialog, setShowEditDialog] = useState(false)
   const [description, setDescription] = useState(value)
-  const [mutate] = usePatchPlan(lessonPlanId)
+  const { mutateAsync } = usePatchPlan(lessonPlanId)
   const { i18n } = useLingui()
 
   return (
@@ -41,8 +41,12 @@ const DescriptionDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
             onAcceptText={t`Save`}
             onCancel={() => setShowEditDialog(false)}
             onAccept={async () => {
-              await mutate({ description })
-              setShowEditDialog(false)
+              try {
+                await mutateAsync({ description })
+                setShowEditDialog(false)
+              } catch (e) {
+                Sentry.captureException(e)
+              }
             }}
           />
           <Box sx={{ backgroundColor: "background" }} p={3}>

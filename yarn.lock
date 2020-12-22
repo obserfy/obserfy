@@ -18900,7 +18900,7 @@ fsevents@^1.2.7:
     prettier: 2.2.1
     react: "npm:@preact/compat@0.0.3"
     react-dom: "npm:@preact/compat@0.0.3"
-    react-query: 2.26.4
+    react-query: 3.4.0
     react-query-devtools: 2.6.3
     react-refresh: 0.9.0
     react-ssr-prepass: "npm:preact-ssr-prepass@1.1.2"
@@ -25660,6 +25660,16 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"match-sorter@npm:^6.0.2":
+  version: 6.0.2
+  resolution: "match-sorter@npm:6.0.2"
+  dependencies:
+    "@babel/runtime": ^7.12.5
+    remove-accents: 0.4.2
+  checksum: ec8b497c296889fe8331bbf35a4efa63a202daa6aae74de12c8cbb212d6fbddfe77fbd117cd627b338ecef8e186b2f33df03ae2a1f875c1a385d318e060ef2b1
+  languageName: node
+  linkType: hard
+
 "material-colors@npm:^1.2.1":
   version: 1.2.6
   resolution: "material-colors@npm:1.2.6"
@@ -31379,11 +31389,12 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"react-query@npm:2.26.4":
-  version: 2.26.4
-  resolution: "react-query@npm:2.26.4"
+"react-query@npm:3.4.0":
+  version: 3.4.0
+  resolution: "react-query@npm:3.4.0"
   dependencies:
     "@babel/runtime": ^7.5.5
+    match-sorter: ^6.0.2
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
   peerDependenciesMeta:
@@ -31391,7 +31402,7 @@ mocha@latest:
       optional: true
     react-native:
       optional: true
-  checksum: c6cc87b9c83c7695199d79ace8ddbaeb3f90adb3d00c2a7eb0034c402d12edb3449740fc48fc0a00f9c050f4c6cccf1adc8fa6d802f7c15683c945dcc4b428a1
+  checksum: 64062c641dc1e5e9ba762c349d875fc0e1b3c9ebcf2a8f2e209b054e7e43e0f1f35f9a086b767d61be9f59358f7b96bce14ccf3f2f9bdcaeaa0ebdbd3dc64a96
   languageName: node
   linkType: hard
 
@@ -37499,7 +37510,7 @@ typescript@^4.0.0:
     react-docgen-typescript-loader: 3.7.2
     react-dom: 17.0.1
     react-helmet: 6.1.0
-    react-query: 2.26.4
+    react-query: 3.4.0
     react-refresh: 0.9.0
     react-test-renderer: 17.0.1
     regenerator-runtime: 0.13.7

@@ -56,11 +56,15 @@ const StudentCard: FC<{
   name: string
   profilePicUrl?: string
 }> = ({ studentId, active, name, profilePicUrl }) => {
-  const [mutate] = usePatchStudentApi(studentId)
+  const { mutateAsync } = usePatchStudentApi(studentId)
   const [showStatusDialog, setShowStatusDialog] = useState(false)
   const saveStatus = async () => {
-    await mutate({ active: !active })
-    setShowStatusDialog(false)
+    try {
+      await mutateAsync({ active: !active })
+      setShowStatusDialog(false)
+    } catch (e) {
+      Sentry.captureException(e)
+    }
   }
   const setActiveText = t`Set as active?`
   const setInactiveText = t`Set as inactive?`

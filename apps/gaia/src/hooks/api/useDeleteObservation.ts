@@ -1,10 +1,13 @@
-import { queryCache, useMutation } from "react-query"
+import { useMutation } from "react-query"
 import { deleteApi } from "./apiHelpers"
+import { useGetChildPlansCache } from "./useGetChildPlans"
 
 const useDeleteObservation = (id: string) => {
+  const cache = useGetChildPlansCache()
   const deleteObservation = deleteApi(`/observations/${id}`)
+
   return useMutation(deleteObservation, {
-    onSuccess: () => queryCache.invalidateQueries(["childPlans"]),
+    onSuccess: () => cache.invalidateAll(),
   })
 }
 

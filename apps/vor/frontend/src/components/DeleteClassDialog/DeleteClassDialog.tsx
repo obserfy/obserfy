@@ -16,12 +16,14 @@ interface Props {
   name: string
 }
 export const DeleteClassDialog: FC<Props> = ({ classId, onDismiss, name }) => {
-  const [mutate, { status }] = useDeleteClass(classId)
+  const { mutateAsync, status } = useDeleteClass(classId)
 
   async function deleteClass(): Promise<void> {
-    const result = await mutate()
-    if (result) {
+    try {
+      await mutateAsync()
       await navigate(CLASS_SETTINGS_URL)
+    } catch (e) {
+      Sentry.captureException(e)
     }
   }
 

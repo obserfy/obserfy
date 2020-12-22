@@ -1,6 +1,7 @@
-import { queryCache, useMutation } from "react-query"
+import { useMutation } from "react-query"
 import { patchApi } from "../fetchApi"
 import { Dayjs } from "../../../dayjs"
+import { useGetPlanCache } from "./useGetPlan"
 
 interface PatchPlanPayload {
   title?: string
@@ -10,12 +11,13 @@ interface PatchPlanPayload {
   areaId?: string
 }
 const usePatchPlan = (planId: string) => {
+  const cache = useGetPlanCache(planId)
   const patchPlan = patchApi<PatchPlanPayload>(`/plans/${planId}`)
 
   return useMutation(patchPlan, {
     onSuccess: async () => {
       analytics.track("Plan Updated")
-      await queryCache.invalidateQueries(["plan", planId])
+      await cache.invalidate()
     },
   })
 }

@@ -1,14 +1,16 @@
 /* eslint-disable react/no-danger */
-import React, { useEffect } from "react"
-import { ReactQueryDevtools } from "react-query-devtools"
 import { AppComponent } from "next/dist/next-server/lib/router/router"
 import { useRouter } from "next/router"
+import React, { useEffect } from "react"
+import { QueryClient, QueryClientProvider } from "react-query"
+import { ReactQueryDevtools } from "react-query-devtools"
+import ErrorBoundary from "../components/ErrorBoundary"
 import Layout from "../components/layout"
 import "../global.css"
-import ErrorBoundary from "../components/ErrorBoundary"
 import { initSentry } from "../utils/sentry"
 
 initSentry()
+const queryClient = new QueryClient()
 
 const App: AppComponent = ({ Component, pageProps }) => {
   const router = useRouter()
@@ -28,11 +30,13 @@ const App: AppComponent = ({ Component, pageProps }) => {
 
   return (
     <ErrorBoundary>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-      <ReactQueryDevtools initialIsOpen={false} />
-      <LoadFonts />
+      <QueryClientProvider client={queryClient}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+        <ReactQueryDevtools initialIsOpen={false} />
+        <LoadFonts />
+      </QueryClientProvider>
     </ErrorBoundary>
   )
 }

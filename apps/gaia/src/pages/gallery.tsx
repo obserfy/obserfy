@@ -13,7 +13,7 @@ const GalleryPage = () => {
   const childId = useQueryString("childId")
   const childImages = useGetChildImages(childId)
   const child = useGetChild(childId)
-  const [postImage] = usePostImage(childId, child.data?.schoolId ?? "")
+  const postImage = usePostImage(childId, child.data?.schoolId ?? "")
   const [imagePreview, setImagePreview] = useState<ChildImage>()
 
   return (
@@ -41,7 +41,7 @@ const GalleryPage = () => {
                     if (!e.target.files?.length) {
                       return
                     }
-                    await postImage({
+                    await postImage.mutate({
                       id: uuidv4(),
                       file: e.target.files[0],
                     })
@@ -70,7 +70,7 @@ const GalleryPage = () => {
                         if (!e.target.files?.length) {
                           return
                         }
-                        await postImage({
+                        await postImage.mutate({
                           id: uuidv4(),
                           file: e.target.files[0],
                         })

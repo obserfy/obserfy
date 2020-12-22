@@ -24,7 +24,7 @@ enum Mode {
 
 const PageNewStudentAddGuardian: FC = () => {
   const { state, setState } = useNewStudentFormContext()
-  const [postNewGuardian, { isLoading }] = usePostNewGuardian()
+  const postNewGuardian = usePostNewGuardian()
   const [mode, setMode] = useState(Mode.NEW)
 
   const [relation, setRelation] = useState(GuardianRelationship.Mother)
@@ -35,13 +35,15 @@ const PageNewStudentAddGuardian: FC = () => {
     mode === Mode.NEW ? newGuardian.name !== "" : guardianId !== ""
 
   const createNewGuardian = async () => {
-    const result = await postNewGuardian(newGuardian)
-    if (result?.ok) {
+    try {
+      const result = await postNewGuardian.mutateAsync(newGuardian)
       const { id } = await result.json()
       setState((draft) => {
         draft.guardians.push({ id, relationship: relation })
       })
       await navigate(NEW_STUDENT_URL)
+    } catch (e) {
+      Sentry.captureException(e)
     }
   }
 
@@ -67,7 +69,9 @@ const PageNewStudentAddGuardian: FC = () => {
         ]}
         buttonContent={
           <>
-            {isLoading && <LoadingIndicator color="onPrimary" />}
+            {postNewGuardian.isLoading && (
+              <LoadingIndicator color="onPrimary" />
+            )}
             <Trans>Add</Trans>
           </>
         }

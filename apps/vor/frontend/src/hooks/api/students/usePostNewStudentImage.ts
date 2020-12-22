@@ -1,7 +1,8 @@
-import { useMutation, queryCache } from "react-query"
+import { useMutation, useQueryClient } from "react-query"
 import { BASE_URL } from "../useApi"
 
 const usePostNewStudentImage = (studentId: string) => {
+  const queryClient = useQueryClient()
   const postNewImage = async (image: File) => {
     const payload = new FormData()
     payload.append("image", image)
@@ -16,7 +17,7 @@ const usePostNewStudentImage = (studentId: string) => {
   return useMutation(postNewImage, {
     onSuccess: async () => {
       analytics.track("Student Image Uploaded")
-      await queryCache.invalidateQueries(["student", studentId, "images"])
+      await queryClient.invalidateQueries(["student", studentId, "images"])
     },
   })
 }
