@@ -1,3 +1,4 @@
+import { t } from "@lingui/macro"
 import React, { FC } from "react"
 import queryString from "query-string"
 import { PageRendererProps } from "gatsby"
@@ -16,7 +17,7 @@ export const ResetPassword: FC<PageRendererProps> = ({ location }) => {
 
   return (
     <>
-      <SEO title="Reset Password" />
+      <SEO title={t`Reset Password`} />
       <PageResetPassword token={token} />
     </>
   )

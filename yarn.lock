@@ -19932,19 +19932,23 @@ fsevents@^1.2.7:
   languageName: unknown
   linkType: soft
 
-"gatsby-theme-i18n@npm:1.0.4":
-  version: 1.0.4
-  resolution: "gatsby-theme-i18n@npm:1.0.4"
+"gatsby-theme-i18n@1.0.4, gatsby-theme-i18n@workspace:packages/gatsby-theme-i18n":
+  version: 0.0.0-use.local
+  resolution: "gatsby-theme-i18n@workspace:packages/gatsby-theme-i18n"
   dependencies:
     gatsby-plugin-react-helmet: ^3.3.10
+    mkdirp: ^1.0.4
     react-helmet: ^6.1.0
+    react-refresh: ^0.9.0
   peerDependencies:
+    "@babel/runtime": ^7.12.5
+    "@reach/router": ^1.3.4
     gatsby: ">=2.21.26"
+    preact: ^10.5.7
     react: ">=16.13.1"
     react-dom: ">=16.13.1"
-  checksum: 7655aaf846aad8c41c1324cccd73fccb9e9d2f01f4eac278eddfe018a7db29304dd1579cd0ce833d73460dd917f9ec00f718ade2dcbb9ce5da64772b65be68f3
-  languageName: node
-  linkType: hard
+  languageName: unknown
+  linkType: soft
 
 "gatsby-transformer-sharp@npm:2.8.0":
   version: 2.8.0
@@ -31420,7 +31424,7 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"react-refresh@npm:0.9.0":
+"react-refresh@npm:0.9.0, react-refresh@npm:^0.9.0":
   version: 0.9.0
   resolution: "react-refresh@npm:0.9.0"
   checksum: 300dc431389f4c532bdfec08d5bc59b591c8c440486a7d5770c8954adf3afe62501b659c5acbdb7831751e8be506eb90a6f72491fab40352f3b3fba16897acf6
