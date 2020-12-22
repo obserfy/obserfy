@@ -12,7 +12,7 @@ import WaveyBg from "../images/wavey-bg.svg"
 const IndexPage: FC = () => {
   const { i18n } = useLingui()
 
-  const images = useStaticQuery(graphql`
+  const images = useStaticQuery<GatsbyTypes.LandingPageImagesQuery>(graphql`
     query LandingPageImages {
       hero: file(relativePath: { eq: "hero.png" }) {
         childImageSharp {
