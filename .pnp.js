@@ -38822,7 +38822,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["preact", "npm:10.5.5"],
             ["react", "npm:17.0.1"],
             ["react-dom", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:17.0.1"],
-            ["react-helmet", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:6.1.0"]
+            ["react-helmet", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:6.1.0"],
+            ["react-refresh", "npm:0.9.0"]
           ],
           "packagePeers": [
             "@types/gatsby",
@@ -38850,7 +38851,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["preact", "npm:10.5.5"],
             ["react", "npm:17.0.1"],
             ["react-dom", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:17.0.1"],
-            ["react-helmet", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:6.1.0"]
+            ["react-helmet", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:6.1.0"],
+            ["react-refresh", "npm:0.9.0"]
           ],
           "packagePeers": [
             "@types/gatsby",
@@ -38870,7 +38872,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["gatsby-theme-i18n", "workspace:packages/gatsby-theme-i18n"],
             ["gatsby-plugin-react-helmet", "virtual:5d8264c6e98327951583e4d2c066e27d88acddc677e423875660123948b366e74806529867aa7bdc831a18ba1b4720def38d7b6da55229d6134ecb9d8376217e#npm:3.3.10"],
             ["mkdirp", "npm:1.0.4"],
-            ["react-helmet", "virtual:5d8264c6e98327951583e4d2c066e27d88acddc677e423875660123948b366e74806529867aa7bdc831a18ba1b4720def38d7b6da55229d6134ecb9d8376217e#npm:6.1.0"]
+            ["react-helmet", "virtual:5d8264c6e98327951583e4d2c066e27d88acddc677e423875660123948b366e74806529867aa7bdc831a18ba1b4720def38d7b6da55229d6134ecb9d8376217e#npm:6.1.0"],
+            ["react-refresh", "npm:0.9.0"]
           ],
           "linkType": "SOFT",
         }]

@@ -8,7 +8,8 @@
   "dependencies": {
     "gatsby-plugin-react-helmet": "^3.3.10",
     "mkdirp": "^1.0.4",
-    "react-helmet": "^6.1.0"
+    "react-helmet": "^6.1.0",
+    "react-refresh": "^0.9.0"
   },
   "peerDependencies": {
     "gatsby": ">=2.21.26",
