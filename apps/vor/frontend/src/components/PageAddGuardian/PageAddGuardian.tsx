@@ -34,13 +34,13 @@ interface Props {
 
 export const PageAddGuardian: FC<Props> = ({ id: studentId }) => {
   const { data: student } = useGetStudent(studentId)
-  const [postNewGuardian, { isLoading }] = usePostNewGuardian(studentId)
+  const postNewGuardian = usePostNewGuardian(studentId)
 
   const [mode, setMode] = useState(Mode.NEW)
   const [relation, setRelation] = useState(GuardianRelationship.Mother)
   const [newGuardian, setNewGuardian] = useNewGuardianFormState()
   const [guardianId, setGuardianId] = useState("")
-  const [postNewGuardianRelation] = usePostGuardianRelation(
+  const postNewGuardianRelation = usePostGuardianRelation(
     { id: guardianId },
     studentId
   )
@@ -49,17 +49,25 @@ export const PageAddGuardian: FC<Props> = ({ id: studentId }) => {
     mode === Mode.NEW ? newGuardian.name !== "" : guardianId !== ""
 
   const createNewGuardian = async () => {
-    const result = await postNewGuardian({
-      ...newGuardian,
-      studentId,
-      relationship: relation,
-    })
-    if (result?.status === 201) await navigate(STUDENT_PROFILE_URL(studentId))
+    try {
+      await postNewGuardian.mutateAsync({
+        ...newGuardian,
+        studentId,
+        relationship: relation,
+      })
+      await navigate(STUDENT_PROFILE_URL(studentId))
+    } catch (e) {
+      Sentry.captureException(e)
+    }
   }
 
   const createNewGuardianRelation = async () => {
-    const result = await postNewGuardianRelation(relation)
-    if (result?.status === 201) await navigate(STUDENT_PROFILE_URL(studentId))
+    try {
+      await postNewGuardianRelation.mutateAsync(relation)
+      await navigate(STUDENT_PROFILE_URL(studentId))
+    } catch (e) {
+      Sentry.captureException(e)
+    }
   }
 
   return (
@@ -78,7 +86,9 @@ export const PageAddGuardian: FC<Props> = ({ id: studentId }) => {
         ]}
         buttonContent={
           <>
-            {isLoading && <LoadingIndicator color="onPrimary" />}
+            {postNewGuardian.isLoading && (
+              <LoadingIndicator color="onPrimary" />
+            )}
             <Trans>Add</Trans>
           </>
         }

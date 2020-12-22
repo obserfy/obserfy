@@ -14,7 +14,7 @@ const DeleteCurriculumDialog: FC<DeleteCurriculumDialogProps> = ({
   onDismiss,
   name,
 }) => {
-  const [deleteCurriculum, { isLoading }] = useDeleteCurriculum()
+  const deleteCurriculum = useDeleteCurriculum()
 
   return (
     <Dialog sx={{ maxWidth: ["", "maxWidth.xsm"] }}>
@@ -22,12 +22,14 @@ const DeleteCurriculumDialog: FC<DeleteCurriculumDialogProps> = ({
         title={t`Delete Curriculum?`}
         onCancel={onDismiss}
         onAccept={async () => {
-          const response = await deleteCurriculum()
-          if (response?.ok) {
+          try {
+            await deleteCurriculum.mutateAsync()
             onDismiss()
+          } catch (e) {
+            Sentry.captureException(e)
           }
         }}
-        loading={isLoading}
+        loading={deleteCurriculum.isLoading}
         onAcceptText={t`Delete`}
       />
       <Typography.Body p={3} sx={{ ...borderBottom }}>

@@ -21,8 +21,8 @@ export const PageStudentImageDetails: FC<Props> = ({ studentId, imageId }) => {
   const image = useGetImage(imageId)
   const [showDeleteDialog, setShowDeleteDialog] = useState(false)
   const [showSetProfileDialog, setShowSetProfileDialog] = useState(false)
-  const [deleteImage, { isLoading }] = useDeleteImage(studentId, imageId)
-  const [updateStudentImage, { status }] = usePatchStudentApi(studentId)
+  const deleteImage = useDeleteImage(studentId, imageId)
+  const updateStudentImage = usePatchStudentApi(studentId)
 
   return (
     <>
@@ -68,11 +68,13 @@ export const PageStudentImageDetails: FC<Props> = ({ studentId, imageId }) => {
           negativeText={t`Cancel`}
           onDismiss={() => setShowDeleteDialog(false)}
           onNegativeClick={() => setShowDeleteDialog(false)}
-          loading={isLoading}
+          loading={deleteImage.isLoading}
           onPositiveClick={async () => {
-            const result = await deleteImage()
-            if (result?.ok) {
+            try {
+              await deleteImage.mutateAsync()
               await navigate(STUDENT_IMAGES_URL(studentId))
+            } catch (e) {
+              Sentry.captureException(e)
             }
           }}
         />
@@ -88,12 +90,16 @@ export const PageStudentImageDetails: FC<Props> = ({ studentId, imageId }) => {
           negativeText={t`Cancel`}
           onDismiss={() => setShowSetProfileDialog(false)}
           onNegativeClick={() => setShowSetProfileDialog(false)}
-          loading={status === "loading"}
+          loading={updateStudentImage.isLoading}
           onPositiveClick={async () => {
-            await updateStudentImage({
-              profileImageId: imageId,
-            })
-            setShowSetProfileDialog(false)
+            try {
+              await updateStudentImage.mutateAsync({
+                profileImageId: imageId,
+              })
+              setShowSetProfileDialog(false)
+            } catch (e) {
+              Sentry.captureException(e)
+            }
           }}
         />
       )}

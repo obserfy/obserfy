@@ -22,7 +22,7 @@ interface Props {
 }
 export const PageGuardianProfile: FC<Props> = ({ guardianId }) => {
   const { data, status, isSuccess } = useGetGuardian(guardianId)
-  const [mutate] = usePatchGuardian(guardianId)
+  const { mutateAsync } = usePatchGuardian(guardianId)
 
   if (status === "loading") {
     return (
@@ -42,32 +42,49 @@ export const PageGuardianProfile: FC<Props> = ({ guardianId }) => {
           currentValue={data?.name}
           label={t`Name`}
           onSubmit={async (name) => {
-            const result = await mutate({ name })
-            return result?.ok ?? false
+            try {
+              await mutateAsync({ name })
+              return true
+            } catch (e) {
+              Sentry.captureException(e)
+              return false
+            }
           }}
         />
         <EditableTextAttribute
           currentValue={data?.email}
           label={t`Email`}
           onSubmit={async (email) => {
-            const result = await mutate({ email })
-            return result?.ok ?? false
+            try {
+              await mutateAsync({ email })
+              return true
+            } catch (e) {
+              return false
+            }
           }}
         />
         <EditableTextAttribute
           currentValue={data?.phone}
           label={t`Phone`}
           onSubmit={async (phone) => {
-            const result = await mutate({ phone })
-            return result?.ok ?? false
+            try {
+              await mutateAsync({ phone })
+              return true
+            } catch (e) {
+              return false
+            }
           }}
         />
         <EditableTextAttribute
           label={t`Address`}
           currentValue={data?.address}
           onSubmit={async (address) => {
-            const result = await mutate({ address })
-            return result?.ok ?? false
+            try {
+              await mutateAsync({ address })
+              return true
+            } catch (e) {
+              return false
+            }
           }}
         />
         <NoteDataBox
@@ -158,12 +175,16 @@ const NoteDataBox: FC<{ value?: string; guardianId: string }> = ({
   value,
   guardianId,
 }) => {
-  const [mutate, { status }] = usePatchGuardian(guardianId)
+  const { mutateAsync, status } = usePatchGuardian(guardianId)
   const [showEditDialog, setShowEditDialog] = useState(false)
   const [note, setNote] = useState(value)
   const saveNote = async () => {
-    await mutate({ note })
-    setShowEditDialog(false)
+    try {
+      await mutateAsync({ note })
+      setShowEditDialog(false)
+    } catch (e) {
+      Sentry.captureException(e)
+    }
   }
   return (
     <Fragment>
