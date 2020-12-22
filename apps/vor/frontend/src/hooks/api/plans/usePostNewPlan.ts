@@ -1,4 +1,4 @@
-import { queryCache, useMutation } from "react-query"
+import { useMutation, useQueryClient } from "react-query"
 import { ApiError, BASE_URL } from "../useApi"
 import { Dayjs } from "../../../dayjs"
 import { getSchoolId } from "../../schoolIdState"
@@ -24,6 +24,7 @@ export interface PostNewLessonPlanBody {
   }>
 }
 const usePostNewPlan = () => {
+  const queryCache = useQueryClient()
   let date: string
   const postPlan = async (newPlan: PostNewLessonPlanBody) => {
     const schoolId = getSchoolId()

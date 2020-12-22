@@ -1,6 +1,9 @@
-import { queryCache, useQuery } from "react-query"
+import { useQuery } from "react-query"
 import { getSchoolId } from "../schoolIdState"
+import { useQueryCache } from "../useQueryCache"
 import { getApi } from "./fetchApi"
+
+const KEY = (schoolId: string) => ["school", schoolId, "curriculum"]
 
 interface GetCurriculumResponse {
   id: string
@@ -11,18 +14,13 @@ export function useGetCurriculum() {
   const getCurriculum = getApi<GetCurriculumResponse>(
     `/schools/${schoolId}/curriculums`
   )
-  return useQuery(["school", schoolId, "curriculum"], getCurriculum, {
+  return useQuery(KEY(schoolId), getCurriculum, {
     retry: (a, b) => {
       return (b as Error).message !== "School doesn't have curriculum yet"
     },
   })
 }
 
-export const setCurriculumCache = (data: GetCurriculumResponse) => {
-  queryCache.setQueryData(["school", getSchoolId(), "curriculum"], data)
-}
-
-export const invalidateGetCurriculumCache = () => {
-  const schoolId = getSchoolId()
-  return queryCache.invalidateQueries(["school", schoolId, "curriculum"])
+export const useGetCurriculumCache = () => {
+  return useQueryCache<GetCurriculumResponse>(KEY(getSchoolId()))
 }

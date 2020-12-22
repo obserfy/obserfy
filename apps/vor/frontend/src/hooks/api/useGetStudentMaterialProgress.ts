@@ -1,6 +1,7 @@
-import { queryCache, QueryResult, useQuery } from "react-query"
+import { useQuery } from "react-query"
 import { t } from "@lingui/macro"
 import { navigate } from "../../components/Link/Link"
+import { useQueryCache } from "../useQueryCache"
 import { BASE_URL } from "./useApi"
 
 export enum MaterialProgressStage {
@@ -16,6 +17,8 @@ export interface MaterialProgress {
   updatedAt: string
 }
 
+const KEY = (studentId: string) => ["studentCurriculumProgress", studentId]
+
 const fetchMaterialProgress = (studentId: string) => async (): Promise<
   MaterialProgress[]
 > => {
@@ -30,27 +33,12 @@ const fetchMaterialProgress = (studentId: string) => async (): Promise<
   return result.json()
 }
 
-export function useGetStudentMaterialProgress(
-  studentId: string
-): QueryResult<MaterialProgress[]> {
-  return useQuery(
-    ["studentCurriculumProgress", studentId],
-    fetchMaterialProgress(studentId)
-  )
+export function useGetStudentMaterialProgress(studentId: string) {
+  return useQuery(KEY(studentId), fetchMaterialProgress(studentId))
 }
 
-export function getStudentMaterialProgressCache(studentId: string) {
-  return queryCache.getQueryData<MaterialProgress[]>([
-    "studentCurriculumProgress",
-    studentId,
-  ])
-}
-
-export function setStudentMaterialProgressCache(
-  studentId: string,
-  data: MaterialProgress[]
-) {
-  return queryCache.setQueryData(["studentCurriculumProgress", studentId], data)
+export const useGetStudentMaterialProgressCache = (studentId: string) => {
+  return useQueryCache<MaterialProgress[]>(KEY(studentId))
 }
 
 export function materialStageToString(stage?: MaterialProgressStage) {

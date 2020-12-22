@@ -1,10 +1,7 @@
 import { useMutation } from "react-query"
 import { postApi } from "./fetchApi"
-import {
-  getStudentObservationsCache,
-  updateStudentObservationsCache,
-} from "./useGetStudentObservations"
 import { Dayjs } from "../../dayjs"
+import { useGetStudentObservationsCache } from "./useGetStudentObservations"
 
 interface PostNewObservationBody {
   shortDesc: string
@@ -16,6 +13,7 @@ interface PostNewObservationBody {
   visibleToGuardians?: boolean
 }
 const usePostNewObservation = (studentId: string) => {
+  const cache = useGetStudentObservationsCache(studentId)
   const postNewObservation = postApi<PostNewObservationBody>(
     `/students/${studentId}/observations`
   )
@@ -24,9 +22,10 @@ const usePostNewObservation = (studentId: string) => {
       analytics.track("Observation Created")
       if (data === undefined) return
       const newObservation = await data.json()
-      const observations = getStudentObservationsCache(studentId) ?? []
+
+      const observations = cache.getData() ?? []
       observations.push(newObservation)
-      updateStudentObservationsCache(studentId, observations)
+      cache.setData(observations)
     },
   })
 }

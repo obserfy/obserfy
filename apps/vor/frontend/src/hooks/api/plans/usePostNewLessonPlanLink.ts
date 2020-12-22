@@ -1,4 +1,4 @@
-import { queryCache, useMutation } from "react-query"
+import { useMutation, useQueryClient } from "react-query"
 import { postApi } from "../fetchApi"
 
 interface Link {
@@ -8,6 +8,7 @@ interface Link {
   image?: string
 }
 const usePostNewLessonPlanLink = (lessonPlanId: string) => {
+  const queryCache = useQueryClient()
   const postNewLessonPlanLink = postApi<Link>(`/plans/${lessonPlanId}/links`)
   return useMutation(postNewLessonPlanLink, {
     onSuccess: async () => {

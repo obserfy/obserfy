@@ -1,4 +1,4 @@
-import { queryCache, useMutation } from "react-query"
+import { useMutation, useQueryClient } from "react-query"
 import { navigate } from "../../../components/Link/Link"
 import { ApiError, BASE_URL } from "../useApi"
 
@@ -6,6 +6,7 @@ export const usePostGuardianRelation = (
   guardian: { id: string },
   studentId: string
 ) => {
+  const queryCache = useQueryClient()
   const postGuardianRelation = async (
     relationship: number
   ): Promise<Response> => {

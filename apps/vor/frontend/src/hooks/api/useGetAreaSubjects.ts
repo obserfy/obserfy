@@ -1,4 +1,4 @@
-import { QueryResult, useQuery } from "react-query"
+import { useQuery } from "react-query"
 import { getApi } from "./fetchApi"
 
 export interface Subject {
@@ -6,7 +6,7 @@ export interface Subject {
   name: string
   order: number
 }
-export function useGetAreaSubjects(areaId: string): QueryResult<Subject[]> {
+export function useGetAreaSubjects(areaId: string) {
   const fetchAreaSubjects = getApi<Subject[]>(
     `/curriculums/areas/${areaId}/subjects`
   )

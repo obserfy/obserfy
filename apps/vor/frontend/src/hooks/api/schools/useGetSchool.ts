@@ -1,4 +1,4 @@
-import { QueryResult, useQuery } from "react-query"
+import { useQuery } from "react-query"
 import { getApi } from "../fetchApi"
 import { getSchoolId } from "../../schoolIdState"
 
@@ -19,7 +19,7 @@ export interface GetSchoolResponse {
     updateUrl: string
   }
 }
-export const useGetSchool = (): QueryResult<GetSchoolResponse> => {
+export const useGetSchool = () => {
   const fetchSchool = getApi<GetSchoolResponse>(`/schools/${getSchoolId()}`)
   return useQuery("school", fetchSchool)
 }

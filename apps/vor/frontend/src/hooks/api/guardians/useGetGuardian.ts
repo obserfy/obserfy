@@ -1,5 +1,8 @@
-import { queryCache, QueryResult, useQuery } from "react-query"
+import { useQuery } from "react-query"
+import { useQueryCache } from "../../useQueryCache"
 import { getApi } from "../fetchApi"
+
+const KEY = (guardianId: string) => ["guardians", guardianId]
 
 interface Guardian {
   id: string
@@ -13,11 +16,11 @@ interface Guardian {
     name: string
   }>
 }
-export const useGetGuardian = (guardianId: string): QueryResult<Guardian> => {
+export const useGetGuardian = (guardianId: string) => {
   const fetchGuardian = getApi<Guardian>(`/guardians/${guardianId}`)
-  return useQuery(["guardians", guardianId], fetchGuardian)
+  return useQuery(KEY(guardianId), fetchGuardian)
 }
 
-export const updateGuardianCache = (guardian: Guardian) => {
-  queryCache.setQueryData<Guardian>(["guardians", guardian.id], guardian)
+export const useGetGuardianCache = (guardianId: string) => {
+  return useQueryCache<Guardian>(KEY(guardianId))
 }

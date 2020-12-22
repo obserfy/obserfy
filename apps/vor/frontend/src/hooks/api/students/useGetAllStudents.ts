@@ -1,4 +1,4 @@
-import { QueryResult, useQuery } from "react-query"
+import { useQuery } from "react-query"
 import { ApiError, BASE_URL } from "../useApi"
 import { getSchoolId } from "../../schoolIdState"
 import { navigate } from "../../../components/Link/Link"
@@ -14,10 +14,7 @@ export interface Student {
   }[]
 }
 
-export const useGetAllStudents = (
-  classId = "",
-  active?: boolean
-): QueryResult<Student[]> => {
+export const useGetAllStudents = (classId = "", active?: boolean) => {
   const schoolId = getSchoolId()
   const fetchStudents = async (): Promise<Student[]> => {
     const url = `/schools/${schoolId}/students?classId=${classId}&active=${

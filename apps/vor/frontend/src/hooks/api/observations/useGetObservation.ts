@@ -1,5 +1,8 @@
-import { queryCache, useQuery } from "react-query"
+import { useQuery } from "react-query"
+import { useQueryCache } from "../../useQueryCache"
 import { getApi } from "../fetchApi"
+
+const KEY = (observationId: string) => ["observation", observationId]
 
 interface Observation {
   id: string
@@ -24,20 +27,12 @@ interface Observation {
 }
 const useGetObservation = (observationId: string) => {
   const getObservation = getApi<Observation>(`/observations/${observationId}`)
-  return useQuery(["observation", observationId], getObservation, {
+  return useQuery(KEY(observationId), getObservation, {
     refetchOnWindowFocus: false,
   })
 }
 
-export const updateObservationCache = (observation: Observation) => {
-  queryCache.setQueryData<Observation>(
-    ["observation", observation.id],
-    observation
-  )
-}
-
-export const getObservationCache = (observationId: string) => {
-  return queryCache.getQueryData<Observation>(["observation", observationId])
-}
+export const useGetObservationCache = (observationId: string) =>
+  useQueryCache<Observation>(KEY(observationId))
 
 export default useGetObservation

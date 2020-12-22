@@ -1,4 +1,4 @@
-import { queryCache, useMutation } from "react-query"
+import { useMutation, useQueryClient } from "react-query"
 import { ApiError, BASE_URL } from "../useApi"
 import { navigate } from "../../../components/Link/Link"
 
@@ -6,6 +6,7 @@ export const useDeleteGuardianRelation = (
   guardianId: string,
   studentId: string
 ) => {
+  const queryCache = useQueryClient()
   const postGuardianRelation = async (): Promise<Response> => {
     const result = await fetch(
       `${BASE_URL}/students/${studentId}/guardianRelations/${guardianId}`,
