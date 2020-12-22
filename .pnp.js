@@ -557,7 +557,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@babel/runtime",
-        "npm:7.10.3"
+        "npm:7.12.5"
       ],
       [
         "@babel/runtime-corejs3",
@@ -38812,8 +38812,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/gatsby-theme-i18n-virtual-93c4d8872e/1/packages/gatsby-theme-i18n/",
           "packageDependencies": [
             ["gatsby-theme-i18n", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#workspace:packages/gatsby-theme-i18n"],
+            ["@babel/runtime", "npm:7.12.5"],
+            ["@reach/router", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:1.3.4"],
+            ["@types/babel__runtime", null],
             ["@types/gatsby", null],
             ["@types/preact", null],
+            ["@types/reach__router", "npm:1.3.6"],
             ["@types/react", "npm:17.0.0"],
             ["@types/react-dom", "npm:17.0.0"],
             ["gatsby", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:2.28.2"],
@@ -38826,8 +38830,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-refresh", "npm:0.9.0"]
           ],
           "packagePeers": [
+            "@babel/runtime",
+            "@reach/router",
+            "@types/babel__runtime",
             "@types/gatsby",
             "@types/preact",
+            "@types/reach__router",
             "@types/react-dom",
             "@types/react",
             "gatsby",
@@ -38841,8 +38849,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/gatsby-theme-i18n-virtual-bee0a021b3/1/packages/gatsby-theme-i18n/",
           "packageDependencies": [
             ["gatsby-theme-i18n", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#workspace:packages/gatsby-theme-i18n"],
+            ["@babel/runtime", null],
+            ["@reach/router", null],
+            ["@types/babel__runtime", null],
             ["@types/gatsby", null],
             ["@types/preact", null],
+            ["@types/reach__router", null],
             ["@types/react", "npm:17.0.0"],
             ["@types/react-dom", null],
             ["gatsby", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:2.29.0-next.1"],
@@ -38855,8 +38867,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-refresh", "npm:0.9.0"]
           ],
           "packagePeers": [
+            "@babel/runtime",
+            "@reach/router",
+            "@types/babel__runtime",
             "@types/gatsby",
             "@types/preact",
+            "@types/reach__router",
             "@types/react-dom",
             "@types/react",
             "gatsby",
