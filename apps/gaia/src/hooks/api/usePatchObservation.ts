@@ -1,13 +1,16 @@
-import { queryCache, useMutation } from "react-query"
-import { patchApi } from "./apiHelpers"
+import { useMutation } from "react-query"
 import { PatchObservationRequestBody } from "../../pages/api/observations/[observationId]"
+import { patchApi } from "./apiHelpers"
+import { useGetChildPlansCache } from "./useGetChildPlans"
 
 const usePatchObservation = (id: string) => {
+  const cache = useGetChildPlansCache()
+
   const patchObservation = patchApi<PatchObservationRequestBody>(
     `/observations/${id}`
   )
   return useMutation(patchObservation, {
-    onSuccess: () => queryCache.invalidateQueries(["childPlans"]),
+    onSuccess: () => cache.invalidateAll(),
   })
 }
 

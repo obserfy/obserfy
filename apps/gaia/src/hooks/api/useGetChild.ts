@@ -5,7 +5,7 @@ import { getApi } from "./apiHelpers"
 const useGetChild = (childId: string) => {
   const getChild = getApi<GetChildResponse>(`/children/${childId}`)
   return useQuery(["child", childId], getChild, {
-    enabled: childId,
+    enabled: childId !== "",
   })
 }
 
