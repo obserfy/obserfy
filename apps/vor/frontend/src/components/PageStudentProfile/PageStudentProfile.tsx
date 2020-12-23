@@ -235,7 +235,6 @@ const GuardianItem: FC<{
           body={t`Do you want to remove ${name} from  ${studentName}'s list of guardians?`}
           positiveText={t`Delete`}
           loading={removeGuardian.isLoading}
-          onDismiss={dialog.hide}
           onNegativeClick={dialog.hide}
           onPositiveClick={async () => {
             try {
