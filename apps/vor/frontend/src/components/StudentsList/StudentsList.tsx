@@ -223,16 +223,7 @@ const StudentListItem: FC<{
             ml="auto"
           >
             {classes[0].className}
-          </Typography.Body>
-        )}
-
-        {classes.length > 1 && (
-          <Typography.Body
-            color="textPrimary"
-            sx={{ fontSize: 0, flexShrink: 0 }}
-            ml={1}
-          >
-            (+{classes.length - 1})
+            {classes.length > 1 && ` & +${classes.length - 1}`}
           </Typography.Body>
         )}
       </Flex>
