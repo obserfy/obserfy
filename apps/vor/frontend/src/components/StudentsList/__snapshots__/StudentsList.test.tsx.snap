@@ -361,7 +361,6 @@ exports[`StudentsList should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  margin-bottom: 8px;
   border-radius: 6px;
   -webkit-animation: 1s ease-in-out 0s infinite animation-0;
   animation: 1s ease-in-out 0s infinite animation-0;
@@ -375,13 +374,7 @@ exports[`StudentsList should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   margin-left: 16px;
-}
-
-.emotion-15 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  margin-bottom: 8px;
+  margin-right: auto;
   border-radius: 6px;
   -webkit-animation: 1s ease-in-out 0s infinite animation-0;
   animation: 1s ease-in-out 0s infinite animation-0;
@@ -389,7 +382,7 @@ exports[`StudentsList should render correctly 1`] = `
   height: 22px;
 }
 
-.emotion-16 {
+.emotion-15 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -462,14 +455,10 @@ exports[`StudentsList should render correctly 1`] = `
           />
           <div
             class="emotion-14"
-          >
-            <div
-              class="emotion-15"
-            />
-            <div
-              class="emotion-16"
-            />
-          </div>
+          />
+          <div
+            class="emotion-15"
+          />
         </div>
         <div
           class="emotion-12"
@@ -479,14 +468,10 @@ exports[`StudentsList should render correctly 1`] = `
           />
           <div
             class="emotion-14"
-          >
-            <div
-              class="emotion-15"
-            />
-            <div
-              class="emotion-16"
-            />
-          </div>
+          />
+          <div
+            class="emotion-15"
+          />
         </div>
         <div
           class="emotion-12"
@@ -496,14 +481,10 @@ exports[`StudentsList should render correctly 1`] = `
           />
           <div
             class="emotion-14"
-          >
-            <div
-              class="emotion-15"
-            />
-            <div
-              class="emotion-16"
-            />
-          </div>
+          />
+          <div
+            class="emotion-15"
+          />
         </div>
         <div
           class="emotion-12"
@@ -513,14 +494,10 @@ exports[`StudentsList should render correctly 1`] = `
           />
           <div
             class="emotion-14"
-          >
-            <div
-              class="emotion-15"
-            />
-            <div
-              class="emotion-16"
-            />
-          </div>
+          />
+          <div
+            class="emotion-15"
+          />
         </div>
         <div
           class="emotion-12"
@@ -530,14 +507,62 @@ exports[`StudentsList should render correctly 1`] = `
           />
           <div
             class="emotion-14"
-          >
-            <div
-              class="emotion-15"
-            />
-            <div
-              class="emotion-16"
-            />
-          </div>
+          />
+          <div
+            class="emotion-15"
+          />
+        </div>
+        <div
+          class="emotion-12"
+        >
+          <div
+            class="emotion-13"
+          />
+          <div
+            class="emotion-14"
+          />
+          <div
+            class="emotion-15"
+          />
+        </div>
+        <div
+          class="emotion-12"
+        >
+          <div
+            class="emotion-13"
+          />
+          <div
+            class="emotion-14"
+          />
+          <div
+            class="emotion-15"
+          />
+        </div>
+        <div
+          class="emotion-12"
+        >
+          <div
+            class="emotion-13"
+          />
+          <div
+            class="emotion-14"
+          />
+          <div
+            class="emotion-15"
+          />
+        </div>
+        <div
+          class="emotion-12"
+        >
+          <div
+            class="emotion-13"
+          />
+          <div
+            class="emotion-14"
+          />
+          <div
+            class="emotion-15"
+          />
         </div>
       </div>
     </div>
