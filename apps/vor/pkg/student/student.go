@@ -498,9 +498,14 @@ func getObservation(s rest.Server, store Store) http.Handler {
 		VisibleToGuardians bool      `json:"visibleToGuardians"`
 	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
-		id := chi.URLParam(r, "studentId")
+		studentId := chi.URLParam(r, "studentId")
 
-		observations, err := store.GetObservations(id)
+		queries := r.URL.Query()
+		searchQuery := queries.Get("search")
+		startDateQuery := queries.Get("startDate")
+		endDateQuery := queries.Get("endDate")
+
+		observations, err := store.GetObservations(studentId, searchQuery, startDateQuery, endDateQuery)
 		if err != nil {
 			return &rest.Error{
 				Code:    http.StatusInternalServerError,
