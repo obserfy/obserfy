@@ -104,10 +104,18 @@ func authorizationMiddleware(s rest.Server, store Store) func(next http.Handler)
 			// Check if user is related to the school
 			userHasAccess, err := store.CheckPermissions(studentId, session.UserId)
 			if err != nil {
-				return &rest.Error{http.StatusInternalServerError, "Internal Server Error", err}
+				return &rest.Error{
+					Code:    http.StatusInternalServerError,
+					Message: "Internal Server Error",
+					Error:   err,
+				}
 			}
 			if !userHasAccess {
-				return &rest.Error{http.StatusNotFound, "We can't find the specified student", err}
+				return &rest.Error{
+					Code:    http.StatusNotFound,
+					Message: "We can't find the specified student",
+					Error:   err,
+				}
 			}
 
 			next.ServeHTTP(w, r)
@@ -128,7 +136,11 @@ func postAttendance(s rest.Server, store Store) http.Handler {
 		}
 		attendance, err := store.InsertAttendance(requestBody.StudentId, requestBody.ClassId, requestBody.Date)
 		if err != nil {
-			return &rest.Error{http.StatusNotFound, "Can't create attendance", err}
+			return &rest.Error{
+				Code:    http.StatusNotFound,
+				Message: "Can't create attendance",
+				Error:   err,
+			}
 		}
 		if err := rest.WriteJson(w, attendance); err != nil {
 			return rest.NewWriteJsonError(err)
@@ -142,7 +154,11 @@ func getAttendance(s rest.Server, store Store) http.Handler {
 		id := chi.URLParam(r, "studentId")
 		attendance, err := store.GetAttendance(id)
 		if err != nil {
-			return &rest.Error{http.StatusNotFound, "Can't find attendance", err}
+			return &rest.Error{
+				Code:    http.StatusNotFound,
+				Message: "Can't find attendance",
+				Error:   err,
+			}
 		}
 		if err := rest.WriteJson(w, attendance); err != nil {
 			return rest.NewWriteJsonError(err)
@@ -224,7 +240,11 @@ func getStudent(s rest.Server, store Store) http.Handler {
 
 		student, err := store.Get(id)
 		if err != nil {
-			return &rest.Error{http.StatusNotFound, "Can't find student with specified id", err}
+			return &rest.Error{
+				Code:    http.StatusNotFound,
+				Message: "Can't find student with specified id",
+				Error:   err,
+			}
 		}
 
 		guardians := make([]Guardian, len(student.Guardians))
@@ -277,7 +297,11 @@ func deleteStudent(s rest.Server, store Store) http.Handler {
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		studentId := chi.URLParam(r, "studentId") // from a route like /users/{userID}
 		if err := store.DeleteStudent(studentId); err != nil {
-			return &rest.Error{http.StatusInternalServerError, "Failed deleting student", err}
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "Failed deleting student",
+				Error:   err,
+			}
 		}
 		return nil
 	})
@@ -310,7 +334,11 @@ func patchStudent(s rest.Server, store Store) http.Handler {
 
 		oldStudent, err := store.Get(targetId)
 		if err != nil {
-			return &rest.Error{http.StatusNotFound, "Can't find old student data", err}
+			return &rest.Error{
+				Code:    http.StatusNotFound,
+				Message: "Can't find old student data",
+				Error:   err,
+			}
 		}
 
 		newStudent := oldStudent
@@ -323,7 +351,7 @@ func patchStudent(s rest.Server, store Store) http.Handler {
 		newStudent.ProfileImageId = requestBody.ProfileImageId
 		newStudent.Note = requestBody.Note
 		if err := store.UpdateStudent(newStudent); err != nil {
-			return &rest.Error{http.StatusInternalServerError, "Failed updating old student data", err}
+			return &rest.Error{Code: http.StatusInternalServerError, Message: "Failed updating old student data", Error: err}
 		}
 
 		response := responseBody{
@@ -377,9 +405,9 @@ func postObservation(s rest.Server, store Store) http.Handler {
 		session, ok := auth.GetSessionFromCtx(r.Context())
 		if !ok {
 			return &rest.Error{
-				http.StatusUnauthorized,
-				"You don't have access to this student",
-				richErrors.New("user is not authorized to add observation."),
+				Code:    http.StatusUnauthorized,
+				Message: "You don't have access to this student",
+				Error:   richErrors.New("user is not authorized to add observation."),
 			}
 		}
 
@@ -404,9 +432,9 @@ func postObservation(s rest.Server, store Store) http.Handler {
 		)
 		if err != nil {
 			return &rest.Error{
-				http.StatusInternalServerError,
-				"Failed inserting observation",
-				err,
+				Code:    http.StatusInternalServerError,
+				Message: "Failed inserting observation",
+				Error:   err,
 			}
 		}
 
@@ -533,7 +561,11 @@ func getMaterialProgress(s rest.Server, store Store) http.Handler {
 
 		progress, err := store.GetProgress(studentId)
 		if err != nil {
-			return &rest.Error{http.StatusInternalServerError, "Failed querying material", err}
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "Failed querying material",
+				Error:   err,
+			}
 		}
 
 		// return empty array when there is no data
@@ -583,9 +615,9 @@ func upsertMaterialProgress(s rest.Server, store Store) http.Handler {
 		})
 		if err != nil {
 			return &rest.Error{
-				http.StatusInternalServerError,
-				"Failed updating progress",
-				err,
+				Code:    http.StatusInternalServerError,
+				Message: "Failed updating progress",
+				Error:   err,
 			}
 		}
 
