@@ -23,16 +23,24 @@ export interface Observation {
   }>
   visibleToGuardians: boolean
 }
-export const useGetStudentObservations = (studentId: string) => {
+
+export const useGetStudentObservations = (
+  studentId: string,
+  search: string = ""
+) => {
   const getStudentObservations = getApi<Observation[]>(
-    `/students/${studentId}/observations`
+    `/students/${studentId}/observations?search=${search}`
   )
 
-  return useQuery(KEY(studentId), getStudentObservations)
+  return useQuery(KEY(studentId, search), getStudentObservations)
 }
 
 export const useGetStudentObservationsCache = (studentId: string) => {
   return useQueryCache<Observation[]>(KEY(studentId))
 }
 
-const KEY = (studentId: string) => ["student", studentId, "observations"]
+const KEY = (studentId: string, search?: string) => {
+  const key = ["student", studentId, "observations"]
+  if (search) key.push(search)
+  return key
+}

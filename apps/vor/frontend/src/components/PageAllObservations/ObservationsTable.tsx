@@ -1,5 +1,5 @@
 import { t, Trans } from "@lingui/macro"
-import React, { FC, ReactNode, useState } from "react"
+import React, { FC, memo, ReactNode, useState } from "react"
 import { Box, Button, Card, Flex } from "theme-ui"
 import { borderBottom, borderFull } from "../../border"
 import dayjs, { Dayjs } from "../../dayjs"
@@ -8,6 +8,7 @@ import {
   Observation,
   useGetStudentObservations,
 } from "../../hooks/api/useGetStudentObservations"
+import useDebounce from "../../hooks/useDebounce"
 import useVisibilityState from "../../hooks/useVisibilityState"
 import { OBSERVATION_DETAILS_URL } from "../../routes"
 import { ReactComponent as CalendarIcon } from "../../icons/calendar.svg"
@@ -21,10 +22,13 @@ import Tab from "../Tab/Tab"
 import Typography from "../Typography/Typography"
 
 export const ObservationsTable: FC<{ studentId: string }> = ({ studentId }) => {
+  const [searchTerm, setSearchTerm] = useState("")
   const [startDate, setStartDate] = useState<Dayjs>()
   const [endDate, setEndDate] = useState<Dayjs>()
 
-  const observations = useGetStudentObservations(studentId)
+  const debouncedSearchTerm = useDebounce(searchTerm, 250)
+
+  const observations = useGetStudentObservations(studentId, debouncedSearchTerm)
   const areas = useGetCurriculumAreas()
   const [areaFilter, setAreaFilter] = useState(0)
 
@@ -57,6 +61,8 @@ export const ObservationsTable: FC<{ studentId: string }> = ({ studentId }) => {
           <SearchBar
             mr={3}
             sx={{ backgroundColor: "darkSurface", height: 40 }}
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
           />
           {observations.isSuccess && (
             <DateRangeSelector
@@ -188,7 +194,7 @@ const DateRangeSelector: FC<{
 const ObservationList: FC<{
   studentId: string
   observations: Observation[]
-}> = ({ observations, studentId }) => {
+}> = memo(({ observations, studentId }) => {
   const observationsByDate: { [key: number]: ReactNode[] } = {}
 
   observations.forEach((observation) => {
@@ -233,7 +239,7 @@ const ObservationList: FC<{
       })}
     </Box>
   )
-}
+})
 
 const LoadingState = () => (
   <Box p={3}>
