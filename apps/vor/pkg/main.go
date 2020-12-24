@@ -25,8 +25,6 @@ import (
 	"github.com/chrsep/vor/pkg/school"
 	"github.com/chrsep/vor/pkg/student"
 	"github.com/chrsep/vor/pkg/user"
-	"github.com/getsentry/sentry-go"
-	sentryhttp "github.com/getsentry/sentry-go/http"
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
 	_ "github.com/joho/godotenv/autoload"
@@ -53,7 +51,6 @@ func runServer() error {
 	}()
 
 	// Initialize tables
-
 	if err := db.RunInTransaction(db.Context(), func(tx *pg.Tx) error {
 		if err := postgres.InitTables(tx); err != nil {
 			return err
@@ -64,35 +61,36 @@ func runServer() error {
 	}
 
 	// Setup sentry
-	sentryOptions := sentry.ClientOptions{Dsn: os.Getenv("SENTRY_DSN")}
-	if err := sentry.Init(sentryOptions); err != nil {
+	sentryHandler, err := initSentry()
+	if err != nil {
 		return err
 	}
-	sentryHandler := sentryhttp.New(sentryhttp.Options{Repanic: true})
 
-	// Setup server and data stores
-	server := rest.NewServer(l)
-	userStore := postgres.UserStore{db}
-	curriculumStore := postgres.CurriculumStore{db}
-	authStore := postgres.AuthStore{db}
-	classStore := postgres.ClassStore{db}
-	guardianStore := postgres.GuardianStore{db}
-	lessonPlanStore := postgres.LessonPlanStore{db}
-	subscriptionStore := postgres.SubscriptionStore{db}
-	linksStore := postgres.LinksStore{db}
-	mailService := mailgun.NewService()
-	//attendanceStore:=postgres.AttendanceStore{db}
+	// Setup minio
 	minioClient, err := minio.NewClient()
 	if err != nil {
 		l.Error("failed connecting to minio", zap.Error(err))
 		return err
 	}
+
+	// Setup server and data stores
+	server := rest.NewServer(l)
+	userStore := postgres.UserStore{DB: db}
+	curriculumStore := postgres.CurriculumStore{DB: db}
+	authStore := postgres.AuthStore{DB: db}
+	classStore := postgres.ClassStore{DB: db}
+	guardianStore := postgres.GuardianStore{DB: db}
+	lessonPlanStore := postgres.LessonPlanStore{DB: db}
+	subscriptionStore := postgres.SubscriptionStore{DB: db}
+	linksStore := postgres.LinksStore{DB: db}
+	mailService := mailgun.NewService()
 	minioImageStorage := minio.NewImageStorage(minioClient)
 	fileStorage := minio.NewFileStorage(minioClient)
-	schoolStore := postgres.SchoolStore{db, fileStorage, minioImageStorage}
-	studentStore := postgres.StudentStore{db, minioImageStorage}
-	imageStore := postgres.ImageStore{db, minioImageStorage}
-	observationStore := postgres.ObservationStore{db, minioImageStorage}
+	schoolStore := postgres.SchoolStore{DB: db, FileStorage: fileStorage, ImageStorage: minioImageStorage}
+	studentStore := postgres.StudentStore{DB: db, ImageStorage: minioImageStorage}
+	imageStore := postgres.ImageStore{DB: db, ImageStorage: minioImageStorage}
+	observationStore := postgres.ObservationStore{DB: db, ImageStorage: minioImageStorage}
+	//attendanceStore:=postgres.AttendanceStore{db}
 
 	// Setup routing
 	r := chi.NewRouter()
@@ -120,6 +118,7 @@ func runServer() error {
 		r.Mount("/images", images.NewRouter(server, imageStore))
 		r.Mount("/links", links.NewRouter(server, linksStore))
 	})
+
 	// Serve gatsby static frontend assets
 	r.Group(func(r chi.Router) {
 		frontendFolder := "./frontend/public"
