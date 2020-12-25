@@ -17,7 +17,7 @@ const EditCurriculumDialog: FC<EditCurriculumDialogProps> = ({
   originalValue = "",
 }) => {
   const [name, setName] = useState(originalValue)
-  const [patchCurriculum, { isLoading }] = usePatchCurriculum(curriculumId)
+  const patchCurriculum = usePatchCurriculum(curriculumId)
 
   return (
     <Dialog>
@@ -25,15 +25,17 @@ const EditCurriculumDialog: FC<EditCurriculumDialogProps> = ({
         title={t`Edit Curriculum`}
         onCancel={onDismiss}
         onAccept={async () => {
-          const response = await patchCurriculum({ name })
-          if (response?.ok) {
+          try {
+            await patchCurriculum.mutateAsync({ name })
             onDismiss()
+          } catch (e) {
+            Sentry.captureException(e)
           }
         }}
       />
       <Box px={3} pb={3} pt={3} sx={{ backgroundColor: "background" }}>
         <Input
-          disabled={isLoading}
+          disabled={patchCurriculum.isLoading}
           autoFocus
           label={t`Curriculum name`}
           sx={{ width: "100%" }}

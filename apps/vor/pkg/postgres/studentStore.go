@@ -3,6 +3,7 @@ package postgres
 import (
 	richErrors "github.com/pkg/errors"
 	"mime/multipart"
+	"strings"
 	"time"
 
 	"github.com/go-pg/pg/v10"
@@ -124,16 +125,27 @@ func (s StudentStore) DeleteGuardianRelation(studentId string, guardianId string
 	return nil
 }
 
-func (s StudentStore) GetObservations(studentId string) ([]Observation, error) {
+func (s StudentStore) GetObservations(studentId string, search string, startDate string, endDate string) ([]Observation, error) {
 	var observations []Observation
-	if err := s.Model(&observations).
-		Where("student_id=?", studentId).
+	query := s.Model(&observations).
 		Relation("Student").
 		Relation("Creator").
 		Relation("Area").
 		Relation("Images").
 		Order("created_date").
-		Select(); err != nil {
+		Where("student_id=?", studentId)
+
+	if startDate != "" {
+		query = query.Where("event_time >= ?", startDate)
+	}
+	if endDate != "" {
+		query = query.Where("event_time <= ?", endDate)
+	}
+	if search != "" {
+		query = query.Where("to_tsvector(coalesce(long_desc, '') || ' ' || short_desc) @@ to_tsquery(?)", strings.ReplaceAll(search, " ", " & ")+":*")
+	}
+
+	if err := query.Select(); err != nil {
 		return nil, err
 	}
 	return observations, nil

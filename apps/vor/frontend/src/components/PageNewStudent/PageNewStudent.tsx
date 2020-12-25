@@ -15,7 +15,7 @@ import {
 
 export const PageNewStudent: FC = () => {
   const { state, setState } = useNewStudentFormContext()
-  const [mutate, { isLoading }] = usePostNewStudent()
+  const { mutateAsync, isLoading } = usePostNewStudent()
   const isFormInvalid = state.name === ""
 
   return (
@@ -27,10 +27,12 @@ export const PageNewStudent: FC = () => {
           breadCrumb("New Student", NEW_STUDENT_URL),
         ]}
         onActionClick={async () => {
-          const result = await mutate(state)
-          if (result?.ok) {
+          try {
+            await mutateAsync(state)
             setState(() => newStudentFormDefaultState)
             await navigate(STUDENTS_URL)
+          } catch (e) {
+            Sentry.captureException(e)
           }
         }}
         buttonContent={

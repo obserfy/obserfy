@@ -1,8 +1,9 @@
-import { queryCache, useMutation } from "react-query"
+import { useMutation, useQueryClient } from "react-query"
 import { navigate } from "../../../components/Link/Link"
 import { ApiError, BASE_URL } from "../useApi"
 
 export const useDeleteStudentClassRelation = (studentId: string) => {
+  const queryCache = useQueryClient()
   const deleteStudentClassRelation = async (classId: string) => {
     const result = await fetch(`${BASE_URL}/students/${studentId}/classes`, {
       credentials: "same-origin",

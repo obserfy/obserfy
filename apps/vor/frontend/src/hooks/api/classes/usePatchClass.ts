@@ -1,4 +1,4 @@
-import { queryCache, useMutation } from "react-query"
+import { useMutation, useQueryClient } from "react-query"
 import { getSchoolId } from "../../schoolIdState"
 import { patchApi } from "../fetchApi"
 
@@ -9,6 +9,7 @@ interface Class {
   weekdays: number[]
 }
 const usePatchClass = (classId: string) => {
+  const queryCache = useQueryClient()
   const patchClass = patchApi<Class>(`/classes/${classId}`)
 
   return useMutation(patchClass, {

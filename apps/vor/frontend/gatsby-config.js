@@ -40,8 +40,8 @@ module.exports = {
     PRESERVE_FILE_DOWNLOAD_CACHE: true,
   },
   siteMetadata: {
-    title: `Obserfy`,
-    description: `Obserfy`,
+    title: `Obserfy for Teachers`,
+    description: `Record keeping tool for montessori schools.`,
     author: `@chrsep`,
     siteUrl: `https://app.obserfy.com`,
   },

@@ -38,7 +38,7 @@ const ShortDescription: FC<{
   originalValue?: string
   observationId: string
 }> = ({ originalValue, observationId }) => {
-  const [patchObservation, { isLoading }] = usePatchObservation(observationId)
+  const patchObservation = usePatchObservation(observationId)
   const [isEditing, setIsEditing] = useState(false)
   const [shortDesc, setShortDesc] = useState(originalValue)
 
@@ -55,11 +55,13 @@ const ShortDescription: FC<{
             title={t`Edit Short Description`}
             onAcceptText={t`Save`}
             onCancel={() => setIsEditing(false)}
-            loading={isLoading}
+            loading={patchObservation.isLoading}
             onAccept={async () => {
-              const result = await patchObservation({ shortDesc })
-              if (result?.ok) {
+              try {
+                await patchObservation.mutateAsync({ shortDesc })
                 setIsEditing(false)
+              } catch (e) {
+                Sentry.captureException(e)
               }
             }}
           />
@@ -81,7 +83,7 @@ const Area: FC<{
   observationId: string
 }> = ({ originalValue, observationId }) => {
   const { data: areas } = useGetCurriculumAreas()
-  const [patchObservation, { isLoading }] = usePatchObservation(observationId)
+  const patchObservation = usePatchObservation(observationId)
   const dialog = useVisibilityState()
   const [areaId, setValue] = useState(originalValue ?? "")
 
@@ -100,10 +102,14 @@ const Area: FC<{
             title={t`Edit Area`}
             onAcceptText={t`Save`}
             onCancel={dialog.hide}
-            loading={isLoading}
+            loading={patchObservation.isLoading}
             onAccept={async () => {
-              const result = await patchObservation({ areaId })
-              if (result?.ok) dialog.hide()
+              try {
+                await patchObservation.mutateAsync({ areaId })
+                dialog.hide()
+              } catch (e) {
+                Sentry.captureException(e)
+              }
             }}
           />
           <Flex
@@ -137,7 +143,7 @@ const EventTime: FC<{
   originalValue?: Dayjs
   observationId: string
 }> = ({ observationId, originalValue }) => {
-  const [patchObservation, { isLoading }] = usePatchObservation(observationId)
+  const patchObservation = usePatchObservation(observationId)
   const dialog = useVisibilityState()
 
   return (
@@ -149,12 +155,16 @@ const EventTime: FC<{
       />
       {dialog.visible && (
         <DatePickerDialog
-          isLoading={isLoading}
+          isLoading={patchObservation.isLoading}
           defaultDate={originalValue}
           onDismiss={dialog.hide}
           onConfirm={async (eventTime) => {
-            const result = await patchObservation({ eventTime })
-            if (result?.ok) dialog.hide()
+            try {
+              await patchObservation.mutateAsync({ eventTime })
+              dialog.hide()
+            } catch (e) {
+              Sentry.captureException(e)
+            }
           }}
         />
       )}

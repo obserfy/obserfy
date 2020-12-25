@@ -1,24 +1,22 @@
-import { queryCache, useMutation } from "react-query"
+import { useMutation } from "react-query"
 import dayjs from "../../utils/dayjs"
 import { postFile } from "./apiHelpers"
-import {
-  cancelGetChildImageQuery,
-  getChildImagesCache,
-  setChildImagesCache,
-} from "./useGetChildImages"
+import { useChildImagesCache } from "./useGetChildImages"
 
 const usePostImage = (childId: string, schoolId: string) => {
+  const childImagesCache = useChildImagesCache(childId)
   const postImage = async (image: { id: string; file: File }) => {
     return postFile(
       `/image?schoolId=${schoolId}&childId=${childId}&imageId=${image.id}`
     )(image)
   }
+
   return useMutation(postImage, {
     onMutate: async (variables) => {
-      cancelGetChildImageQuery(childId)
-      const old = getChildImagesCache(childId) ?? []
+      await childImagesCache.cancelQueries()
+      const old = childImagesCache.getData() ?? []
 
-      setChildImagesCache(childId, () => [
+      childImagesCache.setData([
         {
           id: variables.id,
           imageUrl: URL.createObjectURL(variables.file),
@@ -29,10 +27,12 @@ const usePostImage = (childId: string, schoolId: string) => {
         ...old,
       ])
 
-      return () => setChildImagesCache(childId, old)
+      return { previousImages: old }
     },
-    onError: (err, variables, rollback: () => void) => rollback(),
-    onSettled: () => queryCache.invalidateQueries(["childImages", childId]),
+    onError: (err, variables, context: any) => {
+      childImagesCache.setData(context.previousImages)
+    },
+    onSettled: () => childImagesCache.invalidate(),
   })
 }
 

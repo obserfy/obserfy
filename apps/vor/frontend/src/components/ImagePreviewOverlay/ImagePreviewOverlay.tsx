@@ -25,7 +25,7 @@ const ImagePreviewOverlay: FC<ImagePreviewOverlayProps> = ({
   onDismiss,
   onDeleted,
 }) => {
-  const [deleteImage, { isLoading }] = useDeleteImage(studentId, imageId)
+  const deleteImage = useDeleteImage(studentId, imageId)
   const ref = useRef<HTMLDivElement>(null)
   const student = useGetStudent(studentId)
   const [hideUI, setHideUI] = useState(false)
@@ -125,15 +125,19 @@ const ImagePreviewOverlay: FC<ImagePreviewOverlayProps> = ({
                   ml="auto"
                   mr={3}
                   onClick={async () => {
-                    const result = await deleteImage()
-                    if (result?.ok) {
+                    try {
+                      await deleteImage.mutateAsync()
                       if (onDeleted) onDeleted()
                       onDismiss()
+                    } catch (e) {
+                      Sentry.captureException(e)
                     }
                   }}
                 >
                   <Icon as={TrashIcon} fill="danger" />
-                  {isLoading && <LoadingIndicator color="onSurface" />}
+                  {deleteImage.isLoading && (
+                    <LoadingIndicator color="onSurface" />
+                  )}
                 </Button>
               </Flex>
             </TranslucentBar>

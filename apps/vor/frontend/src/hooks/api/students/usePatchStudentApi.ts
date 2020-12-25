@@ -1,4 +1,4 @@
-import { queryCache, useMutation } from "react-query"
+import { useMutation, useQueryClient } from "react-query"
 import { patchApi } from "../fetchApi"
 import { Dayjs } from "../../../dayjs"
 
@@ -13,6 +13,7 @@ interface UpdateStudentRequestBody {
   note?: string
 }
 export function usePatchStudentApi(id: string) {
+  const queryCache = useQueryClient()
   const patchStudent = patchApi<UpdateStudentRequestBody>(`/students/${id}`)
 
   return useMutation(patchStudent, {

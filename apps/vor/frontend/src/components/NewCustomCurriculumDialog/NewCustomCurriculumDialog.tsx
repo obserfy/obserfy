@@ -13,7 +13,7 @@ export interface NewCustomCurriculumDialogProps {
 const NewCustomCurriculumDialog: FC<NewCustomCurriculumDialogProps> = ({
   onDismiss,
 }) => {
-  const [postNewCurriculum, { isLoading }] = usePostNewCurriculum()
+  const postNewCurriculum = usePostNewCurriculum()
   const [name, setName] = useState("")
   const { i18n } = useLingui()
 
@@ -21,17 +21,16 @@ const NewCustomCurriculumDialog: FC<NewCustomCurriculumDialogProps> = ({
     <Dialog>
       <DialogHeader
         title={i18n._(t`Custom Curriculum`)}
+        onCancel={onDismiss}
+        loading={postNewCurriculum.isLoading}
         onAccept={async () => {
-          const response = await postNewCurriculum({
-            template: "custom",
-            name,
-          })
-          if (response?.ok) {
+          try {
+            await postNewCurriculum.mutateAsync({ template: "custom", name })
             onDismiss()
+          } catch (e) {
+            Sentry.captureException(e)
           }
         }}
-        onCancel={onDismiss}
-        loading={isLoading}
       />
       <Box p={3} sx={{ backgroundColor: "background" }}>
         <Input

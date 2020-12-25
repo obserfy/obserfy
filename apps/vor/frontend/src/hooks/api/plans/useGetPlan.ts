@@ -1,5 +1,8 @@
-import { queryCache, useQuery } from "react-query"
+import { useQuery } from "react-query"
+import { useQueryCache } from "../../useQueryCache"
 import { getApi } from "../fetchApi"
+
+const KEY = (planId: string) => ["plan", planId]
 
 export interface GetPlanResponseBody {
   id: string
@@ -24,15 +27,11 @@ export interface GetPlanResponseBody {
 const useGetPlan = (id: string) => {
   const getPlan = getApi<GetPlanResponseBody>(`/plans/${id}`)
 
-  return useQuery(["plan", id], getPlan)
+  return useQuery(KEY(id), getPlan)
 }
 
-export const getPlanCache = (id: string) => {
-  return queryCache.getQueryData<GetPlanResponseBody>(["plan", id])
-}
-
-export const setPlanCache = (id: string, plan: GetPlanResponseBody) => {
-  return queryCache.setQueryData<GetPlanResponseBody>(["plan", id], plan)
+export const useGetPlanCache = (planId: string) => {
+  return useQueryCache<GetPlanResponseBody>(KEY(planId))
 }
 
 export default useGetPlan

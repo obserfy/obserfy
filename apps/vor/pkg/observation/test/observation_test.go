@@ -25,7 +25,10 @@ type ObservationTestSuite struct {
 func (s *ObservationTestSuite) SetupTest() {
 	client, err := minio.NewClient()
 	assert.NoError(s.T(), err)
-	s.store = postgres.ObservationStore{s.DB, minio.NewImageStorage(client)}
+	s.store = postgres.ObservationStore{
+		DB:           s.DB,
+		ImageStorage: minio.NewImageStorage(client),
+	}
 	s.Handler = observation.NewRouter(s.Server, s.store).ServeHTTP
 }
 

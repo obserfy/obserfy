@@ -13,7 +13,7 @@ import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 export const PageLogin: FC = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const [mutate, { error, isLoading }] = usePostLogin()
+  const { mutateAsync, error, isLoading } = usePostLogin()
 
   return (
     <Box>
@@ -24,9 +24,13 @@ export const PageLogin: FC = () => {
           as="form"
           px={3}
           sx={{ width: "100%", maxWidth: "maxWidth.xsm" }}
-          onSubmit={(e) => {
-            e.preventDefault()
-            mutate({ email, password })
+          onSubmit={async (event) => {
+            try {
+              event.preventDefault()
+              await mutateAsync({ email, password })
+            } catch (e) {
+              Sentry.captureException(e)
+            }
           }}
         >
           <Typography.H5 sx={{ fontWeight: "bold" }} my={3}>

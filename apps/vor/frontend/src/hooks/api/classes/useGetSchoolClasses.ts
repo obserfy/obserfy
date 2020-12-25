@@ -1,4 +1,4 @@
-import { QueryResult, useQuery } from "react-query"
+import { useQuery } from "react-query"
 import { getApi } from "../fetchApi"
 import { getSchoolId } from "../../schoolIdState"
 
@@ -9,7 +9,7 @@ export interface Class {
   endTime: Date
   weekdays: number[]
 }
-const useGetSchoolClasses = (): QueryResult<Class[]> => {
+const useGetSchoolClasses = () => {
   const schoolId = getSchoolId()
   const getClass = getApi<Class[]>(`/schools/${schoolId}/classes`)
   return useQuery(["classes", schoolId], getClass)

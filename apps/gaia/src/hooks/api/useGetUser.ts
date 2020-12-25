@@ -1,5 +1,6 @@
 import { useQuery } from "react-query"
 import { useRouter } from "next/router"
+import * as Sentry from "@sentry/node"
 import { UserData } from "../../pages/api/me"
 import { getApi } from "./apiHelpers"
 
@@ -16,11 +17,16 @@ const useGetUser = () => {
       }
     },
     onSuccess: (data) => {
+      Sentry.setUser({
+        id: data.sub,
+        email: data.email,
+        username: data.name,
+      })
       mixpanel.identify(data.sub)
       mixpanel.people.set({
-        name: data.name,
-        email: data.email,
-        avatar: data.picture,
+        Name: data.name,
+        Email: data.email,
+        $avatar: data.picture,
         children: data.children.map(({ name }) => name),
         schools: data.children.map(({ schoolName }) => schoolName),
       })

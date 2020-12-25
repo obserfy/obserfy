@@ -30,19 +30,21 @@ export const PageNewClass: FC = () => {
   const [startTime, setStartTime] = useState("09:00")
   const [endTime, setEndTime] = useState("10:00")
   const [weekdays, setWeekdays] = useImmer<number[]>([])
-  const [mutate, { status, error }] = usePostNewClass()
+  const { mutateAsync, status, error } = usePostNewClass()
 
   const valid = name !== ""
 
   const postNewClass = async (): Promise<void> => {
-    const result = await mutate({
-      name,
-      weekdays,
-      endTime: dayjs(endTime, "HH:mm").toDate(),
-      startTime: dayjs(startTime, "HH:mm").toDate(),
-    })
-    if (result) {
+    try {
+      await mutateAsync({
+        name,
+        weekdays,
+        endTime: dayjs(endTime, "HH:mm").toDate(),
+        startTime: dayjs(startTime, "HH:mm").toDate(),
+      })
       await navigate(CLASS_SETTINGS_URL)
+    } catch (e) {
+      Sentry.captureException(e)
     }
   }
 

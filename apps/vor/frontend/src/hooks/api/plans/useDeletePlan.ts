@@ -1,8 +1,9 @@
-import { queryCache, useMutation } from "react-query"
+import { useMutation, useQueryClient } from "react-query"
 import { getSchoolId } from "../../schoolIdState"
 import { deleteApi } from "../fetchApi"
 
 const useDeletePlan = (planId: string) => {
+  const queryCache = useQueryClient()
   const deleteClass = deleteApi(`/plans/${planId}`)
 
   return useMutation(deleteClass, {
