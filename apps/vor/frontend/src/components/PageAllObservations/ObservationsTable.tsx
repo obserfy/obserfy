@@ -12,7 +12,7 @@ import useDebounce from "../../hooks/useDebounce"
 import useVisibilityState from "../../hooks/useVisibilityState"
 import { OBSERVATION_DETAILS_URL } from "../../routes"
 import { ReactComponent as CalendarIcon } from "../../icons/calendar.svg"
-import AlertDialog from "../AlertDialog/AlertDialog"
+// import AlertDialog from "../AlertDialog/AlertDialog"
 import DatePickerDialog from "../DatePickerDialog/DatePickerDialog"
 import Icon from "../Icon/Icon"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
@@ -58,7 +58,7 @@ export const ObservationsTable: FC<{ studentId: string }> = ({ studentId }) => {
           <Trans>Observations </Trans>
         </Typography.H5>
 
-        <ExportButton />
+        {/* <ExportButton /> */}
       </Flex>
 
       <Card variant="responsive">
@@ -110,25 +110,25 @@ export const ObservationsTable: FC<{ studentId: string }> = ({ studentId }) => {
   )
 }
 
-const ExportButton = () => {
-  const exportDialog = useVisibilityState()
-
-  return (
-    <>
-      <Button ml="auto" onClick={exportDialog.show}>
-        <Trans>Export</Trans>
-      </Button>
-      {exportDialog.visible && (
-        <AlertDialog
-          title={t`Export Observations`}
-          body={t`This will export all currently visible observations as a csv file, continue?`}
-          onNegativeClick={exportDialog.hide}
-          onPositiveClick={exportDialog.hide}
-        />
-      )}
-    </>
-  )
-}
+// const ExportButton = () => {
+//   const exportDialog = useVisibilityState()
+//
+//   return (
+//     <>
+//       <Button ml="auto" onClick={exportDialog.show}>
+//         <Trans>Export</Trans>
+//       </Button>
+//       {exportDialog.visible && (
+//         <AlertDialog
+//           title={t`Export Observations`}
+//           body={t`This will export all currently visible observations as a csv file, continue?`}
+//           onNegativeClick={exportDialog.hide}
+//           onPositiveClick={exportDialog.hide}
+//         />
+//       )}
+//     </>
+//   )
+// }
 
 const DateRangeSelector: FC<{
   startDate: dayjs.Dayjs
