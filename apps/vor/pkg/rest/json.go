@@ -14,6 +14,7 @@ func NewErrorJson(message string) ErrorJson {
 }
 
 func WriteJson(w http.ResponseWriter, object interface{}) error {
+	w.Header().Add("Content-Type", "application/json")
 	res, err := json.Marshal(object)
 	if err != nil {
 		return err
@@ -21,7 +22,6 @@ func WriteJson(w http.ResponseWriter, object interface{}) error {
 	if _, err = w.Write(res); err != nil {
 		return err
 	}
-	w.Header().Add("Content-Type", "application/json")
 	return nil
 }
 
