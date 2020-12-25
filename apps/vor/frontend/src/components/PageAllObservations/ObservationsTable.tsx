@@ -115,7 +115,9 @@ const ExportButton = () => {
 
   return (
     <>
-      <Button ml="auto">Export</Button>
+      <Button ml="auto" onClick={exportDialog.show}>
+        <Trans>Export</Trans>
+      </Button>
       {exportDialog.visible && (
         <AlertDialog
           title={t`Export Observations`}
