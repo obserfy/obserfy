@@ -28,7 +28,12 @@ export const ObservationsTable: FC<{ studentId: string }> = ({ studentId }) => {
 
   const debouncedSearchTerm = useDebounce(searchTerm, 250)
 
-  const observations = useGetStudentObservations(studentId, debouncedSearchTerm)
+  const observations = useGetStudentObservations(
+    studentId,
+    debouncedSearchTerm,
+    startDate,
+    endDate
+  )
   const areas = useGetCurriculumAreas()
   const [areaFilter, setAreaFilter] = useState(0)
 
@@ -128,7 +133,7 @@ const DateRangeSelector: FC<{
   endDate: dayjs.Dayjs
   onStartDateChange: (date: Dayjs) => void
   onEndDateChange: (date: Dayjs) => void
-}> = ({ startDate, endDate }) => {
+}> = ({ startDate, endDate, onStartDateChange, onEndDateChange }) => {
   const startDateDialog = useVisibilityState()
   const endDateDialog = useVisibilityState()
 
@@ -171,7 +176,8 @@ const DateRangeSelector: FC<{
           title={t`Pick start date`}
           defaultDate={startDate}
           onDismiss={startDateDialog.hide}
-          onConfirm={() => {
+          onConfirm={(date) => {
+            onStartDateChange(date)
             startDateDialog.hide()
           }}
         />
@@ -182,7 +188,8 @@ const DateRangeSelector: FC<{
           title={t`Pick end date`}
           defaultDate={endDate}
           onDismiss={endDateDialog.hide}
-          onConfirm={() => {
+          onConfirm={(date) => {
+            onEndDateChange(date)
             endDateDialog.hide()
           }}
         />

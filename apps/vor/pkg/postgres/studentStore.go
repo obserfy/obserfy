@@ -135,6 +135,12 @@ func (s StudentStore) GetObservations(studentId string, search string, startDate
 		Order("created_date").
 		Where("student_id=?", studentId)
 
+	if startDate != "" {
+		query = query.Where("event_time >= ?", startDate)
+	}
+	if endDate != "" {
+		query = query.Where("event_time <= ?", endDate)
+	}
 	if search != "" {
 		query = query.Where("to_tsvector(coalesce(long_desc, '') || ' ' || short_desc) @@ to_tsquery(?)", strings.ReplaceAll(search, " ", " & ")+":*")
 	}
