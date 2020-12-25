@@ -19,7 +19,6 @@ export const Basic: FC = () => (
       title="Kill shepard?"
       body="Killing shepard will have rippling effect across the world, continue?"
       onNegativeClick={action("Shepard spared")}
-      onDismiss={action("dismissed")}
       onPositiveClick={action("Shepard killed")}
     />
   </Box>

@@ -47,7 +47,6 @@ const GuardianProfile = () => {
               Sentry.captureException(e)
             }
           }}
-          onDismiss={deleteDialog.hide}
           onNegativeClick={deleteDialog.hide}
         />
       )}
