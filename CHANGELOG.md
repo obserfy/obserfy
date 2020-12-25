@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.14.2](https://github.com/obserfy/obserfy/compare/v1.14.1...v1.14.2) (2020-12-25)
+
+
+### Bug Fixes
+
+* fix json api returning plain text response type. ([1284e22](https://github.com/obserfy/obserfy/commit/1284e22ff617fc76530ee856c70e404fb39bc5bd))
+* **deps:** update dependency @emotion/react to v11.1.4 ([968b01e](https://github.com/obserfy/obserfy/commit/968b01e6a6591e821d77df5dbd0fe172a335497d))
+* **deps:** update dependency @types/dompurify to v2.1.0 ([f314a2f](https://github.com/obserfy/obserfy/commit/f314a2f377d243a94d62ae680e0decddb756d9b4))
+* **deps:** update dependency @types/node to v14.14.16 ([50615a8](https://github.com/obserfy/obserfy/commit/50615a85e9186220c5d672b7f1f2e2d293b5b604))
+* **deps:** update dependency next to v10.0.4 ([811afa4](https://github.com/obserfy/obserfy/commit/811afa475ff69e9e321521feb711b91a8139df03))
+* **deps:** update dependency next-pwa to v5.0.1 ([d7d2eab](https://github.com/obserfy/obserfy/commit/d7d2eab9dc9337597b33f2a00118d3b52ce68d8c))
+* **deps:** update dependency react-query to v3 ([8f164ba](https://github.com/obserfy/obserfy/commit/8f164babc049a4112e3f42def55472d39091a9f7))
+* **deps:** update dependency react-query to v3.4.1 ([6669a76](https://github.com/obserfy/obserfy/commit/6669a76a7fc88dd92116c2e1a793b2ba9707e0d0))
+* **deps:** update dependency react-query to v3.5.0 ([ef69f2f](https://github.com/obserfy/obserfy/commit/ef69f2f3d51ea8a0a23ba7276344d8dc3b1a7ebf))
+* **deps:** update dependency react-query to v3.5.1 ([ab6cd36](https://github.com/obserfy/obserfy/commit/ab6cd36ad279571f3bf23e1af88e22156f01cc7a))
+* **deps:** update dependency react-query to v3.5.4 ([fe7ec5c](https://github.com/obserfy/obserfy/commit/fe7ec5c50f51ea7cb784bd228eceeb40b390087b))
+* **deps:** update dependency react-query to v3.5.5 ([edcf045](https://github.com/obserfy/obserfy/commit/edcf0458b18559141b82ed997fc3a354c925afef))
+* broken vor develop ([#1559](https://github.com/obserfy/obserfy/issues/1559)) ([a6b4777](https://github.com/obserfy/obserfy/commit/a6b477710180952b93309a58503be48022b96ade))
+
 ### [1.14.1](https://github.com/obserfy/obserfy/compare/v1.14.0...v1.14.1) (2020-12-21)
 
 
