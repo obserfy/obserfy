@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.14.1](https://github.com/obserfy/obserfy/compare/v1.14.0...v1.14.1) (2020-12-21)
+
+
+### Bug Fixes
+
+* fix observation creator name doesn't shows up. ([9fb40a3](https://github.com/obserfy/obserfy/commit/9fb40a3e932cabc8105a770c2d9e252298455f10))
+
 ## [1.14.0](https://github.com/obserfy/obserfy/compare/v1.13.2...v1.14.0) (2020-12-21)
 
 
