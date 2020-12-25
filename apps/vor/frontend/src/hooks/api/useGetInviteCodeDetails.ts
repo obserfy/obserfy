@@ -3,7 +3,7 @@ import { useQuery } from "react-query"
 interface GetInviteCodeDetailsResponse {
   schoolName: string
 }
-const useGetInviteCodeDetails = (inviteCode?: string) => {
+const useGetInviteCodeDetails = (inviteCode: string = "") => {
   const getInviteCodeDetails = async (): Promise<GetInviteCodeDetailsResponse> => {
     const result = await fetch(`/auth/invite-code/${inviteCode}`, {
       credentials: "same-origin",
@@ -19,7 +19,7 @@ const useGetInviteCodeDetails = (inviteCode?: string) => {
   }
 
   return useQuery(["invite-code", inviteCode], getInviteCodeDetails, {
-    enabled: inviteCode,
+    enabled: inviteCode !== "",
   })
 }
 

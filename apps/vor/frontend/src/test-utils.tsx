@@ -1,5 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { FC, ReactElement } from "react"
+import { QueryClient, QueryClientProvider } from "react-query"
 import { ThemeProvider, Box } from "theme-ui"
 import { render, RenderOptions, RenderResult } from "@testing-library/react"
 import {
@@ -20,16 +21,20 @@ i18n.loadLocaleData("en", { plurals: en })
 i18n.load("en", enCatalog.messages as any)
 i18n.activate("en")
 
+const queryClient = new QueryClient()
+
 const AllProviders: FC = ({ children }) => {
   // TODO: Maybe this better be outside
   const history = createHistory(createMemorySource("/"))
   return (
     <I18nProvider i18n={i18n}>
-      <LocationProvider history={history}>
-        <ThemeProvider theme={Theme}>
-          <Box sx={{ fontSize: [16, 20] }}>{children}</Box>
-        </ThemeProvider>
-      </LocationProvider>
+      <QueryClientProvider client={queryClient}>
+        <LocationProvider history={history}>
+          <ThemeProvider theme={Theme}>
+            <Box sx={{ fontSize: [16, 20] }}>{children}</Box>
+          </ThemeProvider>
+        </LocationProvider>
+      </QueryClientProvider>
     </I18nProvider>
   )
 }

@@ -1,4 +1,6 @@
-import { queryCache, QueryResult, useQuery } from "react-query"
+import { useQuery } from "react-query"
+import { Dayjs } from "../../dayjs"
+import { useQueryCache } from "../useQueryCache"
 import { getApi } from "./fetchApi"
 
 export interface Observation {
@@ -24,26 +26,36 @@ export interface Observation {
 }
 
 export const useGetStudentObservations = (
-  studentId: string
-): QueryResult<Observation[]> => {
+  studentId: string,
+  search: string = "",
+  startDate?: Dayjs,
+  endDate?: Dayjs
+) => {
   const getStudentObservations = getApi<Observation[]>(
-    `/students/${studentId}/observations`
+    `/students/${studentId}/observations?search=${search}&startDate=${
+      startDate?.toISOString() ?? ""
+    }&endDate=${endDate?.toISOString() ?? ""}`
   )
 
   return useQuery(
-    ["student", studentId, "observations"],
+    KEY(studentId, search, startDate, endDate),
     getStudentObservations
   )
 }
 
-export const getStudentObservationsCache = (studentId: string) =>
-  queryCache.getQueryData<Observation[]>(["student", studentId, "observations"])
+export const useGetStudentObservationsCache = (studentId: string) => {
+  return useQueryCache<Observation[]>(KEY(studentId))
+}
 
-export const updateStudentObservationsCache = (
+const KEY = (
   studentId: string,
-  observations: Observation[]
-) =>
-  queryCache.setQueryData<Observation[]>(
-    ["student", studentId, "observations"],
-    observations
-  )
+  search?: string,
+  startDate?: Dayjs,
+  endDate?: Dayjs
+) => {
+  const key = ["student", studentId, "observations"]
+  if (search && search !== "") key.push(search)
+  if (startDate) key.push(startDate.toISOString())
+  if (endDate) key.push(endDate.toISOString())
+  return key
+}

@@ -18,7 +18,7 @@ export const DeleteSubjectDialog: FC<Props> = ({
   subjectId,
   name,
 }) => {
-  const [deleteSubject, { isLoading }] = useDeleteSubject(subjectId)
+  const deleteSubject = useDeleteSubject(subjectId)
 
   return (
     <Dialog sx={{ maxWidth: ["", "maxWidth.xsm"] }}>
@@ -26,12 +26,14 @@ export const DeleteSubjectDialog: FC<Props> = ({
         title={t`Delete Subject?`}
         onCancel={onDismiss}
         onAcceptText={t`Delete`}
-        loading={isLoading}
+        loading={deleteSubject.isLoading}
         onAccept={async () => {
-          const response = await deleteSubject()
-          if (response) {
-            analytics.track("Deleted Subject")
+          try {
+            await deleteSubject.mutateAsync()
             onDeleted()
+            analytics.track("Deleted Subject")
+          } catch (e) {
+            Sentry.captureException(e)
           }
         }}
       />

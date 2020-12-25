@@ -18,7 +18,6 @@ export const DeleteStudentDialog: FC<Props> = ({
     body={`"${student.name}" will be permanently deleted.`}
     onPositiveClick={onConfirm}
     onNegativeClick={onCancel}
-    onDismiss={onCancel}
   />
 )
 

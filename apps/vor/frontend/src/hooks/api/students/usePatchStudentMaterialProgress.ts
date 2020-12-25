@@ -1,9 +1,6 @@
 import { useMutation } from "react-query"
 import { patchApi } from "../fetchApi"
-import {
-  getStudentMaterialProgressCache,
-  setStudentMaterialProgressCache,
-} from "../useGetStudentMaterialProgress"
+import { useGetStudentMaterialProgressCache } from "../useGetStudentMaterialProgress"
 
 interface RequestBody {
   stage: number
@@ -12,6 +9,7 @@ const usePatchStudentMaterialProgress = (
   studentId: string,
   materialId: string
 ) => {
+  const cache = useGetStudentMaterialProgressCache(studentId)
   const patchStudentMaterialProgress = patchApi<RequestBody>(
     `/students/${studentId}/materialsProgress/${materialId}`
   )
@@ -20,28 +18,28 @@ const usePatchStudentMaterialProgress = (
     onSuccess: async (data) => {
       analytics.track("Student Material Progress Updated")
       if (data === undefined) return
-      const cache = getStudentMaterialProgressCache(studentId)
-      const materialIndex = cache?.findIndex(
+      const old = cache.getData()
+      const materialIndex = old?.findIndex(
         (material) => materialId === material.materialId
       )
       const result = await data.json()
 
       // populate cache if empty
-      if (cache === undefined) {
-        setStudentMaterialProgressCache(studentId, [result])
+      if (old === undefined) {
+        cache.setData([result])
         return
       }
 
       // if material progress exists in cache, update it
       if (materialIndex !== undefined && materialIndex >= 0) {
-        cache[materialIndex] = result
-        setStudentMaterialProgressCache(studentId, cache)
+        old[materialIndex] = result
+        cache.setData(old)
         return
       }
 
       // if material progress doesn't exists in cache, create it
-      cache.push(result)
-      setStudentMaterialProgressCache(studentId, cache)
+      old.push(result)
+      cache.setData(old)
     },
   })
 }

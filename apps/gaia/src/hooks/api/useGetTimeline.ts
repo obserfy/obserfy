@@ -7,7 +7,7 @@ const useGetTimeline = (childId: string) => {
     `/children/${childId}/timeline`
   )
   return useQuery(["child", childId, "timeline"], getTimeline, {
-    enabled: childId,
+    enabled: childId !== "",
   })
 }
 

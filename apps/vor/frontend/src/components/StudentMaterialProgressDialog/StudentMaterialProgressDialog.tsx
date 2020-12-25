@@ -26,10 +26,10 @@ export const StudentMaterialProgressDialog: FC<{
   onDismiss,
   // progress,
 }) => {
-  const [
-    patchStudentMaterialProgress,
-    { isLoading },
-  ] = usePatchStudentMaterialProgress(studentId, materialId)
+  const patchStudentMaterialProgress = usePatchStudentMaterialProgress(
+    studentId,
+    materialId
+  )
   const [selectedStage, setSelectedStage] = useState(stage)
   const subtext = lastUpdated
     ? `Updated ${dayjs(lastUpdated).format("DD MMM YYYY")}`
@@ -37,10 +37,14 @@ export const StudentMaterialProgressDialog: FC<{
 
   async function submitProgressUpdate(): Promise<void> {
     if (selectedStage === undefined) return
-    const response = await patchStudentMaterialProgress({
-      stage: selectedStage,
-    })
-    if (response?.ok) onDismiss()
+    try {
+      await patchStudentMaterialProgress.mutateAsync({
+        stage: selectedStage,
+      })
+      onDismiss()
+    } catch (e) {
+      Sentry.captureException(e)
+    }
   }
 
   return (
@@ -51,7 +55,7 @@ export const StudentMaterialProgressDialog: FC<{
         onCancel={onDismiss}
         onAccept={submitProgressUpdate}
         disableAccept={stage === selectedStage}
-        loading={isLoading}
+        loading={patchStudentMaterialProgress.isLoading}
       />
       <Box p={3} sx={{ backgroundColor: "background" }}>
         <Typography.Body mb={2}>{materialName}</Typography.Body>

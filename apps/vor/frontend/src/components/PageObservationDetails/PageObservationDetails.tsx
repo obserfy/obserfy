@@ -28,14 +28,15 @@ export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
 }) => {
   const deleteDialog = useVisibilityState()
   const { data, isLoading } = useGetObservation(observationId)
-  const [deleteObservation, deleteObservationState] = useDeleteObservation(
-    observationId,
-    studentId
-  )
+  const deleteObservation = useDeleteObservation(observationId, studentId)
 
   const callDeleteObservationApi = async () => {
-    const result = await deleteObservation()
-    if (result?.ok) navigate(backUrl)
+    try {
+      await deleteObservation.mutate()
+      navigate(backUrl)
+    } catch (e) {
+      Sentry.captureException(e)
+    }
   }
 
   if (isLoading) {
@@ -80,9 +81,8 @@ export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
         <AlertDialog
           title={t`Delete Observation?`}
           onNegativeClick={deleteDialog.hide}
-          onDismiss={deleteDialog.hide}
           positiveText="Yes"
-          loading={deleteObservationState.isLoading}
+          loading={deleteObservation.isLoading}
           body={t`"${
             data?.shortDesc ?? ""
           }" will be permanently deleted. Are you sure?`}
@@ -98,21 +98,24 @@ const VisibleToGuardians: FC<{
   originalValue: boolean
 }> = ({ observationId, originalValue }) => {
   const [value, setValue] = useState(originalValue)
-  const [patchObservation, { isLoading }] = usePatchObservation(
-    observationId,
-    () => setValue(originalValue)
+  const patchObservation = usePatchObservation(observationId, () =>
+    setValue(originalValue)
   )
 
   const patchVisibleToGuardians = async (visibleToGuardians: boolean) => {
-    setValue(visibleToGuardians)
-    await patchObservation({ visibleToGuardians })
+    try {
+      setValue(visibleToGuardians)
+      await patchObservation.mutateAsync({ visibleToGuardians })
+    } catch (e) {
+      Sentry.captureException(e)
+    }
   }
 
   return (
     <Flex
       sx={{
         alignItems: "center",
-        opacity: isLoading ? 0.5 : 1,
+        opacity: patchObservation.isLoading ? 0.5 : 1,
         transition: "opacity 200ms ease-in-out",
       }}
     >
@@ -120,10 +123,10 @@ const VisibleToGuardians: FC<{
         checked={value}
         label={t`Visible to guardians`}
         containerSx={{ ml: [3, 4] }}
-        disabled={isLoading}
+        disabled={patchObservation.isLoading}
         onChange={patchVisibleToGuardians}
       />
-      {isLoading && <LoadingIndicator />}
+      {patchObservation.isLoading && <LoadingIndicator />}
     </Flex>
   )
 }

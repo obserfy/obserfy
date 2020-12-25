@@ -148,16 +148,17 @@ const NoStudentPlaceholder: FC = () => (
 
 const StudentLoadingPlaceholder: FC = () => (
   <Box px={3}>
-    {[1, 2, 3, 4, 5].map((i) => (
+    {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
       <Flex key={i} sx={{ alignItems: "center" }} py={2}>
         <LoadingPlaceholder
           sx={{ width: 32, height: 32, borderRadius: "circle" }}
-          mb={2}
         />
-        <Box ml={3}>
-          <LoadingPlaceholder sx={{ width: "10rem", height: 22 }} mb={2} />
-          <LoadingPlaceholder sx={{ width: "4rem", height: 22 }} />
-        </Box>
+        <LoadingPlaceholder
+          sx={{ width: "10rem", height: 22 }}
+          ml={3}
+          mr="auto"
+        />
+        <LoadingPlaceholder sx={{ width: "4rem", height: 22 }} />
       </Flex>
     ))}
   </Box>
@@ -177,11 +178,10 @@ const StudentListItem: FC<{
 
   return (
     <Link to={STUDENT_OVERVIEW_URL(id)} sx={{ display: "block" }}>
-      <Box
+      <Flex
         px={3}
         py={2}
         sx={{
-          display: "flex",
           alignItems: "center",
           borderRightColor: "primaryDark",
           borderRightWidth: 2,
@@ -204,24 +204,29 @@ const StudentListItem: FC<{
             <StudentPicturePlaceholder />
           )}
         </Box>
-        <Box ml={3} py={1}>
-          <Typography.Body sx={{ lineHeight: 1.6 }}>{name}</Typography.Body>
-          <Flex sx={{ flexWrap: "wrap" }}>
-            {classes?.map(({ classId, className }) => (
-              <Typography.Body
-                key={classId}
-                mt={1}
-                mr={2}
-                mb={1}
-                color="textMediumEmphasis"
-                sx={{ lineHeight: 1, fontSize: 1 }}
-              >
-                {className}
-              </Typography.Body>
-            ))}
-          </Flex>
-        </Box>
-      </Box>
+
+        <Typography.Body
+          mx={3}
+          sx={{
+            overflowX: "hidden",
+            whiteSpace: "nowrap",
+            textOverflow: "ellipsis",
+          }}
+        >
+          {name}
+        </Typography.Body>
+
+        {classes.length > 0 && (
+          <Typography.Body
+            color="textMediumEmphasis"
+            sx={{ fontSize: 0, flexShrink: 0 }}
+            ml="auto"
+          >
+            {classes[0].className}
+            {classes.length > 1 && ` & +${classes.length - 1}`}
+          </Typography.Body>
+        )}
+      </Flex>
     </Link>
   )
 }

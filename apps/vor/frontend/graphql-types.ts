@@ -3109,6 +3109,11 @@ export type Unnamed_5_QueryVariables = Exact<{ [key: string]: never; }>;
 
 export type Unnamed_5_Query = { file?: Maybe<{ childImageSharp?: Maybe<{ fixed?: Maybe<GatsbyImageSharpFixedFragment> }> }> };
 
+export type Unnamed_6_QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type Unnamed_6_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
+
 export type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
 export type GatsbyImageSharpFixed_TracedSvgFragment = Pick<ImageSharpFixed, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet'>;

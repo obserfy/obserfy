@@ -94,7 +94,7 @@ export const PageCurriculumSettings: FC = () => {
 }
 
 const SetupCurriculum: FC = () => {
-  const [postNewCurriculum] = usePostNewCurriculum()
+  const postNewCurriculum = usePostNewCurriculum()
   const [showCustomCurriculumDialog, setShowCustomCurriculumDialog] = useState(
     false
   )
@@ -115,7 +115,13 @@ const SetupCurriculum: FC = () => {
           </Typography.Body>
           <Button
             variant="outline"
-            onClick={() => postNewCurriculum({ template: "montessori" })}
+            onClick={async () => {
+              try {
+                await postNewCurriculum.mutateAsync({ template: "montessori" })
+              } catch (e) {
+                Sentry.captureException(e)
+              }
+            }}
           >
             <Trans>Use Montessori</Trans>
           </Button>

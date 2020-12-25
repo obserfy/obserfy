@@ -9,6 +9,7 @@ require (
 	github.com/go-chi/chi v4.1.2+incompatible
 	github.com/go-pg/pg/v10 v10.7.3
 	github.com/go-playground/validator/v10 v10.4.1
+	github.com/gocarina/gocsv v0.0.0-20201208093247-67c824bc04d4
 	github.com/google/uuid v1.1.2
 	github.com/joho/godotenv v1.3.0
 	github.com/mailgun/mailgun-go/v4 v4.3.0
@@ -16,5 +17,5 @@ require (
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.6.1
 	go.uber.org/zap v1.16.0
-	golang.org/x/crypto v0.0.0-20201217014255-9d1352758620
+	golang.org/x/crypto v0.0.0-20201221181555-eec23a3978ad
 )

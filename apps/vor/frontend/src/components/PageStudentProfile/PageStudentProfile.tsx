@@ -175,10 +175,7 @@ const GuardianItem: FC<{
   email: string
 }> = ({ studentId, studentName, guardianId, name, email }) => {
   const dialog = useVisibilityState()
-  const [removeGuardian, { isLoading }] = useDeleteGuardianRelation(
-    guardianId,
-    studentId
-  )
+  const removeGuardian = useDeleteGuardianRelation(guardianId, studentId)
 
   return (
     <Fragment>
@@ -237,12 +234,15 @@ const GuardianItem: FC<{
           title={t`Remove guardian?`}
           body={t`Do you want to remove ${name} from  ${studentName}'s list of guardians?`}
           positiveText={t`Delete`}
-          loading={isLoading}
-          onDismiss={dialog.hide}
+          loading={removeGuardian.isLoading}
           onNegativeClick={dialog.hide}
           onPositiveClick={async () => {
-            const result = await removeGuardian()
-            if (result?.ok) dialog.hide()
+            try {
+              await removeGuardian.mutateAsync()
+              dialog.hide()
+            } catch (e) {
+              Sentry.captureException(e)
+            }
           }}
         />
       )}
@@ -254,13 +254,18 @@ const NameDataBox: FC<{ value?: string; studentId: string }> = ({
   value,
   studentId,
 }) => {
-  const [mutate, { status }] = usePatchStudentApi(studentId)
+  const { mutateAsync, status } = usePatchStudentApi(studentId)
   const [showEditDialog, setShowEditDialog] = useState(false)
   const [name, setName] = useState(value)
   const saveName = async () => {
-    await mutate({ name })
-    setShowEditDialog(false)
+    try {
+      await mutateAsync({ name })
+      setShowEditDialog(false)
+    } catch (e) {
+      Sentry.captureException(e)
+    }
   }
+
   return (
     <Fragment>
       <DataBox
@@ -297,12 +302,16 @@ const GenderDataBox: FC<{ value?: number; studentId: string }> = ({
   value,
   studentId,
 }) => {
-  const [mutate, { status }] = usePatchStudentApi(studentId)
+  const { mutateAsync, status } = usePatchStudentApi(studentId)
   const [showEditDialog, setShowEditDialog] = useState(false)
   const [gender, setGender] = useState(value)
   const saveGender = async () => {
-    await mutate({ gender })
-    setShowEditDialog(false)
+    try {
+      await mutateAsync({ gender })
+      setShowEditDialog(false)
+    } catch (e) {
+      Sentry.captureException(e)
+    }
   }
   const { i18n } = useLingui()
   return (
@@ -358,13 +367,18 @@ const StudentIdDataBox: FC<{ value?: string; studentId: string }> = ({
   value,
   studentId,
 }) => {
-  const [mutate, { status }] = usePatchStudentApi(studentId)
+  const { mutateAsync, status } = usePatchStudentApi(studentId)
   const [showEditDialog, setShowEditDialog] = useState(false)
   const [customId, setCustomId] = useState(value)
   const saveCustomId = async () => {
-    await mutate({ customId })
-    setShowEditDialog(false)
+    try {
+      await mutateAsync({ customId })
+      setShowEditDialog(false)
+    } catch (e) {
+      Sentry.captureException(e)
+    }
   }
+
   return (
     <Fragment>
       <DataBox
@@ -402,12 +416,16 @@ const NotesDataBox: FC<{ value?: string; studentId: string }> = ({
   value,
   studentId,
 }) => {
-  const [mutate, { status }] = usePatchStudentApi(studentId)
+  const { mutateAsync, status } = usePatchStudentApi(studentId)
   const [showEditDialog, setShowEditDialog] = useState(false)
   const [note, setNote] = useState(value)
   const saveNote = async () => {
-    await mutate({ note })
-    setShowEditDialog(false)
+    try {
+      await mutateAsync({ note })
+      setShowEditDialog(false)
+    } catch (e) {
+      Sentry.captureException(e)
+    }
   }
 
   return (
@@ -445,7 +463,7 @@ const DateOfBirthDataBox: FC<{ value?: string; studentId: string }> = ({
   value,
   studentId,
 }) => {
-  const [mutate] = usePatchStudentApi(studentId)
+  const { mutateAsync } = usePatchStudentApi(studentId)
   const [showEditDialog, setShowEditDialog] = useState(false)
 
   return (
@@ -459,10 +477,14 @@ const DateOfBirthDataBox: FC<{ value?: string; studentId: string }> = ({
         <DatePickerDialog
           defaultDate={dayjs(value)}
           onConfirm={async (date) => {
-            await mutate({
-              dateOfBirth: date,
-            })
-            setShowEditDialog(false)
+            try {
+              await mutateAsync({
+                dateOfBirth: date,
+              })
+              setShowEditDialog(false)
+            } catch (e) {
+              Sentry.captureException(e)
+            }
           }}
           onDismiss={() => setShowEditDialog(false)}
         />
@@ -475,7 +497,7 @@ const DateOfEntryDataBox: FC<{ value?: string; studentId: string }> = ({
   value,
   studentId,
 }) => {
-  const [mutate] = usePatchStudentApi(studentId)
+  const { mutateAsync } = usePatchStudentApi(studentId)
   const [showEditDialog, setShowEditDialog] = useState(false)
 
   return (
@@ -489,10 +511,12 @@ const DateOfEntryDataBox: FC<{ value?: string; studentId: string }> = ({
         <DatePickerDialog
           defaultDate={dayjs(value)}
           onConfirm={async (date) => {
-            await mutate({
-              dateOfEntry: date,
-            })
-            setShowEditDialog(false)
+            try {
+              await mutateAsync({ dateOfEntry: date })
+              setShowEditDialog(false)
+            } catch (e) {
+              Sentry.captureException(e)
+            }
           }}
           onDismiss={() => setShowEditDialog(false)}
         />
@@ -506,11 +530,15 @@ const SetStatusDataBox: FC<{
   name: string
 }> = ({ studentId, active, name }) => {
   const { i18n } = useLingui()
-  const [mutate] = usePatchStudentApi(studentId)
+  const { mutateAsync } = usePatchStudentApi(studentId)
   const [showStatusDialog, setShowStatusDialog] = useState(false)
   const saveStatus = async () => {
-    await mutate({ active: !active })
-    setShowStatusDialog(false)
+    try {
+      await mutateAsync({ active: !active })
+      setShowStatusDialog(false)
+    } catch (e) {
+      Sentry.captureException(e)
+    }
   }
   const setActiveText = i18n._(t`Set as Active`)
   const setInactiveText = i18n._(t`Set as Inactive`)

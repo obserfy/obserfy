@@ -2,12 +2,10 @@ package rest
 
 import "net/http"
 
-type ErrorJson struct {
-	Error ErrorPayload `json:"error"`
-}
-
-type ErrorPayload struct {
-	Message string `json:"message"`
+type Error struct {
+	Code    int    // Status code of the http response
+	Message string // Message to be shown to user
+	Error   error  // Error to be reported to sentry/log
 }
 
 func NewInternalServerError(err error, message string) *Error {

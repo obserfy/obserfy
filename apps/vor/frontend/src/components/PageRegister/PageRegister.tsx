@@ -18,9 +18,7 @@ const useGetUser = () => {
   const getUser = async () => {
     const result = await fetch(`${BASE_URL}/users`)
     if (result.status === 401) {
-      return {
-        isLoggedIn: false,
-      }
+      return { isLoggedIn: false }
     }
     if (!result.ok) {
       throw new Error("failed to fetch user data")
@@ -48,12 +46,9 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
   const [password, setPassword] = useState("")
   const [name, setName] = useState("")
   const inviteCodeDetails = useGetInviteCodeDetails(inviteCode)
-  const [postRegister, { error, isLoading }] = usePostRegister()
   const user = useGetUser()
-  const [
-    postRegisterUserToSchool,
-    registerUserToSchool,
-  ] = usePostRegisterUserToSchool()
+  const postRegister = usePostRegister()
+  const postRegisterUserToSchool = usePostRegisterUserToSchool()
 
   return (
     <Box>
@@ -87,15 +82,17 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
               mt={3}
               sx={{ width: "100%" }}
               onClick={async () => {
-                const result = await postRegisterUserToSchool({
-                  inviteCode,
-                })
-                if (result?.ok) {
+                try {
+                  await postRegisterUserToSchool.mutateAsync({
+                    inviteCode,
+                  })
                   await navigate("/choose-school")
+                } catch (e) {
+                  Sentry.captureException(e)
                 }
               }}
             >
-              {registerUserToSchool.isLoading ? (
+              {postRegisterUserToSchool.isLoading ? (
                 <LoadingIndicator />
               ) : (
                 `Join as ${user.data?.name}`
@@ -109,9 +106,18 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
         as="form"
         px={3}
         sx={{ width: "100%", maxWidth: "maxWidth.xsm" }}
-        onSubmit={(e) => {
-          e.preventDefault()
-          postRegister({ name, password, email, inviteCode })
+        onSubmit={async (event) => {
+          event.preventDefault()
+          try {
+            await postRegister.mutateAsync({
+              name,
+              password,
+              email,
+              inviteCode,
+            })
+          } catch (e) {
+            Sentry.captureException(e)
+          }
         }}
       >
         {(!user.data?.isLoggedIn || !inviteCode) && (
@@ -150,7 +156,7 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
               mb={3}
             />
             <Button sx={{ width: "100%" }} data-cy="register-button">
-              {isLoading && <LoadingIndicator />}
+              {postRegister.isLoading && <LoadingIndicator />}
               Sign Up
             </Button>
             <Typography.Body
@@ -158,7 +164,7 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
               sx={{ textAlign: "center", width: "100%" }}
               color="danger"
             >
-              {(error as Error)?.message}
+              {(postRegister.error as Error)?.message}
             </Typography.Body>
             <Typography.Body
               mt={5}

@@ -34,11 +34,15 @@ const DateDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
   lessonPlanId,
 }) => {
   const dialog = useVisibilityState()
-  const [patchPlan, { isLoading }] = usePatchPlan(lessonPlanId)
+  const patchPlan = usePatchPlan(lessonPlanId)
 
   const updateDate = async (date: Dayjs) => {
-    const result = await patchPlan({ date })
-    if (result?.ok) dialog.hide()
+    try {
+      await patchPlan.mutateAsync({ date })
+      dialog.hide()
+    } catch (e) {
+      Sentry.captureException(e)
+    }
   }
 
   return (
@@ -50,7 +54,7 @@ const DateDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
       />
       {dialog.visible && (
         <DatePickerDialog
-          isLoading={isLoading}
+          isLoading={patchPlan.isLoading}
           defaultDate={dayjs(value)}
           onConfirm={updateDate}
           onDismiss={dialog.hide}
@@ -66,12 +70,16 @@ const AreaDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
 }) => {
   const classes = useGetCurriculumAreas()
   const [areaId, setAreaId] = useState(value)
-  const [patchPlan, { isLoading }] = usePatchPlan(lessonPlanId)
+  const patchPlan = usePatchPlan(lessonPlanId)
   const dialog = useVisibilityState()
 
   const updateArea = async () => {
-    const result = await patchPlan({ areaId })
-    if (result?.ok) dialog.hide()
+    try {
+      await patchPlan.mutateAsync({ areaId })
+      dialog.hide()
+    } catch (e) {
+      Sentry.captureException(e)
+    }
   }
 
   return (
@@ -88,7 +96,7 @@ const AreaDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
             onAcceptText={t`Save`}
             onCancel={dialog.hide}
             onAccept={updateArea}
-            loading={isLoading}
+            loading={patchPlan.isLoading}
           />
           <Flex
             backgroundColor="background"
@@ -119,12 +127,16 @@ const TitleDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
 }) => {
   const dialog = useVisibilityState()
   const [title, setTitle] = useInputState(value)
-  const [patchPlan, { isLoading }] = usePatchPlan(lessonPlanId)
+  const patchPlan = usePatchPlan(lessonPlanId)
   const { i18n } = useLingui()
 
   const updateTitle = async () => {
-    const result = await patchPlan({ title })
-    if (result?.ok) dialog.hide()
+    try {
+      await patchPlan.mutateAsync({ title })
+      dialog.hide()
+    } catch (e) {
+      Sentry.captureException(e)
+    }
   }
 
   return (
@@ -136,7 +148,7 @@ const TitleDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
             title={t`Edit Title`}
             onCancel={dialog.hide}
             onAccept={updateTitle}
-            loading={isLoading}
+            loading={patchPlan.isLoading}
           />
           <Box backgroundColor="background" p={3}>
             <Input

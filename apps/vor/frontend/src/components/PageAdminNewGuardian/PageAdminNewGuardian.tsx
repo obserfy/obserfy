@@ -16,7 +16,7 @@ export const PageAdminNewGuardian: FC = () => {
   const [phone, setPhone] = useState("")
   const [note, setNote] = useState("")
 
-  const [mutate, { status }] = usePostNewGuardian()
+  const { mutateAsync, status } = usePostNewGuardian()
 
   return (
     <Box mx="auto" sx={{ maxWidth: "maxWidth.sm" }}>
@@ -58,14 +58,16 @@ export const PageAdminNewGuardian: FC = () => {
           sx={{ width: "100%" }}
           disabled={name === ""}
           onClick={async () => {
-            const result = await mutate({
-              email,
-              name,
-              phone,
-              note,
-            })
-            if (result?.status === 201) {
+            try {
+              await mutateAsync({
+                email,
+                name,
+                phone,
+                note,
+              })
               await navigate(ADMIN_GUARDIAN_URL)
+            } catch (e) {
+              Sentry.captureException(e)
             }
           }}
         >

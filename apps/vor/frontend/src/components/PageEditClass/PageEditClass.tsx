@@ -26,7 +26,7 @@ export const PageEditClass: FC<Props> = ({ classId }) => {
   const [endTime, setEndTime] = useState("10:00")
   const [weekdays, setWeekdays] = useImmer<number[]>([])
   const [showDeleteDialog, setShowDeleteDialog] = useState(false)
-  const [mutate, { status, error }] = usePatchClass(classId)
+  const { mutateAsync, status, error } = usePatchClass(classId)
   const classes = useGetClass(classId)
   const isLoaded = useRef(false)
   const valid = name !== ""
@@ -44,14 +44,16 @@ export const PageEditClass: FC<Props> = ({ classId }) => {
   }, [classes.data, setWeekdays])
 
   const patchClass = async (): Promise<void> => {
-    const result = await mutate({
-      name,
-      weekdays,
-      endTime: dayjs(endTime, "HH:mm").toDate(),
-      startTime: dayjs(startTime, "HH:mm").toDate(),
-    })
-    if (result) {
+    try {
+      await mutateAsync({
+        name,
+        weekdays,
+        endTime: dayjs(endTime, "HH:mm").toDate(),
+        startTime: dayjs(startTime, "HH:mm").toDate(),
+      })
       await navigate(CLASS_SETTINGS_URL)
+    } catch (e) {
+      Sentry.captureException(e)
     }
   }
 

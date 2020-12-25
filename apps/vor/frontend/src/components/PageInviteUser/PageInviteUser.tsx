@@ -19,7 +19,7 @@ import { useGetSchool } from "../../hooks/api/schools/useGetSchool"
 const PageInviteUser: FC = () => {
   const schoolDetail = useGetSchool()
   const [emails, setEmails] = useImmer([{ id: nanoid(), email: "" }])
-  const [mutate, { status }] = usePostUserInvite()
+  const { mutateAsync, status } = usePostUserInvite()
 
   const removeItem = (id: string): void => {
     setEmails((draft) =>
@@ -39,9 +39,11 @@ const PageInviteUser: FC = () => {
   }
 
   const sendInvitation = async (): Promise<void> => {
-    const result = await mutate({ email: emails.map((el) => el.email) })
-    if (result?.ok) {
+    try {
+      await mutateAsync({ email: emails.map((el) => el.email) })
       setEmails(() => [{ id: nanoid(), email: "" }])
+    } catch (e) {
+      Sentry.captureException(e)
     }
   }
 
@@ -123,10 +125,9 @@ const PageInviteUser: FC = () => {
           Share this link to your co-workers. Once they register using it,
           they&apos;ll have access to {schoolDetail.data?.name}.
         </Typography.Body>
-        {schoolDetail.status === "loading" &&
-          !schoolDetail.data?.inviteLink && (
-            <LoadingPlaceholder sx={{ width: "100%", height: 60 }} />
-          )}
+        {schoolDetail.status === "loading" && (
+          <LoadingPlaceholder sx={{ width: "100%", height: 60 }} />
+        )}
         <Typography.Body sx={{ width: "100%" }} onClick={shareLink}>
           {schoolDetail.data?.inviteLink}
         </Typography.Body>

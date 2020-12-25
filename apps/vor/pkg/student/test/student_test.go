@@ -29,7 +29,10 @@ func (s *StudentTestSuite) SetupTest() {
 	assert.NoError(t, err)
 
 	s.StudentImageStorage = *minio.NewImageStorage(client)
-	s.store = postgres.StudentStore{s.DB, s.StudentImageStorage}
+	s.store = postgres.StudentStore{
+		DB:           s.DB,
+		ImageStorage: s.StudentImageStorage,
+	}
 	s.Handler = student.NewRouter(s.Server, s.store).ServeHTTP
 }
 
@@ -101,12 +104,6 @@ func (s *StudentTestSuite) TestDeleteGuardian() {
 
 	assert.Len(t, modifiedStudent.Guardians, 0)
 }
-
-//func (s *StudentTestSuite) ReplaceGuardian() {
-//	t := s.T()
-//	newSchool := s.SaveNewSchool()
-//	newStudent := s.GenerateStudent(*newSchool)
-//}
 
 func (s *StudentTestSuite) TestGetLessonPlan() {
 	t := s.T()

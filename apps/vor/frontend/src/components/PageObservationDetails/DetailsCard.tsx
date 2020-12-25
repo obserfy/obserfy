@@ -25,7 +25,7 @@ const LongTextDataBox: FC<{
   originalValue?: string
   observationId: string
 }> = ({ originalValue, observationId }) => {
-  const [patchObservation, { isLoading }] = usePatchObservation(observationId)
+  const patchObservation = usePatchObservation(observationId)
   const [longDesc, setLongDesc] = useState(originalValue ?? "")
   const dialog = useVisibilityState()
 
@@ -43,10 +43,14 @@ const LongTextDataBox: FC<{
             title={t`Edit Details`}
             onAcceptText={t`Save`}
             onCancel={dialog.hide}
-            loading={isLoading}
+            loading={patchObservation.isLoading}
             onAccept={async () => {
-              const result = await patchObservation({ longDesc })
-              if (result?.ok) dialog.hide()
+              try {
+                await patchObservation.mutateAsync({ longDesc })
+                dialog.hide()
+              } catch (e) {
+                Sentry.captureException(e)
+              }
             }}
           />
           <TextArea
