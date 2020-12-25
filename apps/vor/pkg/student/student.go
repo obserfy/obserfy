@@ -2,6 +2,7 @@ package student
 
 import (
 	"github.com/chrsep/vor/pkg/imgproxy"
+	"github.com/getsentry/sentry-go"
 	"github.com/google/uuid"
 	"net/http"
 	"time"
@@ -505,7 +506,10 @@ func getObservation(s rest.Server, store Store) http.Handler {
 		startDateQuery := queries.Get("startDate")
 		endDateQuery := queries.Get("endDate")
 
+		plan := sentry.StartSpan(r.Context(), "query_observations")
 		observations, err := store.GetObservations(studentId, searchQuery, startDateQuery, endDateQuery)
+		plan.Finish()
+
 		if err != nil {
 			return &rest.Error{
 				Code:    http.StatusInternalServerError,
