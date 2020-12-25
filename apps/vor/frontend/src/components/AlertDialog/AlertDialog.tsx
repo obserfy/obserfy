@@ -9,7 +9,6 @@ interface Props extends BoxProps {
   title: string
   negativeText?: string
   positiveText?: string
-  onDismiss?: () => void
   onNegativeClick?: () => void
   onPositiveClick?: () => void
   body: string
@@ -19,7 +18,6 @@ export const AlertDialog: FC<Props> = ({
   positiveText,
   negativeText,
   onPositiveClick,
-  onDismiss,
   title,
   body,
   onNegativeClick,

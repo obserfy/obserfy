@@ -66,7 +66,6 @@ export const PageStudentImageDetails: FC<Props> = ({ studentId, imageId }) => {
           positiveText={t`Delete`}
           body={t`Are you sure you want to delete this image?`}
           negativeText={t`Cancel`}
-          onDismiss={() => setShowDeleteDialog(false)}
           onNegativeClick={() => setShowDeleteDialog(false)}
           loading={deleteImage.isLoading}
           onPositiveClick={async () => {
@@ -88,7 +87,6 @@ export const PageStudentImageDetails: FC<Props> = ({ studentId, imageId }) => {
             Are you sure you want to set this image as profile picture?
           `}
           negativeText={t`Cancel`}
-          onDismiss={() => setShowSetProfileDialog(false)}
           onNegativeClick={() => setShowSetProfileDialog(false)}
           loading={updateStudentImage.isLoading}
           onPositiveClick={async () => {

@@ -81,7 +81,6 @@ export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
         <AlertDialog
           title={t`Delete Observation?`}
           onNegativeClick={deleteDialog.hide}
-          onDismiss={deleteDialog.hide}
           positiveText="Yes"
           loading={deleteObservation.isLoading}
           body={t`"${

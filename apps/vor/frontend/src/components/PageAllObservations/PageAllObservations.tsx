@@ -22,11 +22,6 @@ export const PageAllObservations: FC<Props> = ({ studentId }) => {
         ]}
       />
 
-      {/* <Flex sx={{ alignItems: "center" }} mx={3} mb={3} mt={3}> */}
-      {/*  <Typography.H6>Observations</Typography.H6> */}
-      {/*  <Button ml="auto">Export</Button> */}
-      {/* </Flex> */}
-
       <ObservationsTable studentId={studentId} />
     </Box>
   )

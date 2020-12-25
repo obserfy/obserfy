@@ -23,6 +23,7 @@ export interface DatePickerDialogProps {
   onDismiss: () => void
   onConfirm: (date: Dayjs) => void
   isLoading?: boolean
+  title?: string
 }
 export const DatePickerDialog: FC<DatePickerDialogProps> = ({
   defaultDate,
@@ -30,6 +31,7 @@ export const DatePickerDialog: FC<DatePickerDialogProps> = ({
   onConfirm,
   isLoading,
   enabledDates,
+  title,
 }) => {
   const currentDate = dayjs()
   const [selected, setSelectedDate] = useState(defaultDate ?? dayjs())
@@ -41,7 +43,7 @@ export const DatePickerDialog: FC<DatePickerDialogProps> = ({
       <DialogHeader
         loading={isLoading}
         onAcceptText={t`Set`}
-        title={t`Pick a Date`}
+        title={title || t`Pick a Date`}
         onCancel={() => onDismiss()}
         onAccept={() => {
           onConfirm(selected)
