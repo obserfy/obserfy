@@ -223,6 +223,12 @@ const ObservationList: FC<{
 
   return (
     <Box>
+      {observations.length === 0 && (
+        <Typography.Body p={3}>
+          <Trans>No observations found</Trans>
+        </Typography.Body>
+      )}
+
       {dates.map((date) => {
         const dateUnix = parseInt(date, 10)
         return (
