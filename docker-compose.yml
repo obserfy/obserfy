@@ -2,7 +2,7 @@
 version: "3"
 services:
   vor_app:
-    image: chrsep/go-devtools:latest
+    image: chrsep/go-devtools:1.15.0
     container_name: vor_app
     working_dir: /src/vor
     environment:
