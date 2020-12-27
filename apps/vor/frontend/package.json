@@ -22,7 +22,7 @@
     "babel-plugin-remove-graphql-queries": "2.13.0",
     "body-scroll-lock": "3.1.5",
     "browser-lang": "0.1.0",
-    "dayjs": "1.9.7",
+    "dayjs": "1.9.8",
     "dompurify": "2.2.6",
     "dotenv": "8.2.0",
     "gatsby": "2.28.2",
