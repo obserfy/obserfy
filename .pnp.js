@@ -3761,7 +3761,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "dayjs",
-        "npm:1.9.7"
+        "npm:1.9.8"
       ],
       [
         "de-indent",
@@ -32577,10 +32577,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["dayjs", [
-        ["npm:1.9.7", {
-          "packageLocation": "./.yarn/cache/dayjs-npm-1.9.7-c511f94469-20922ca19b.zip/node_modules/dayjs/",
+        ["npm:1.9.8", {
+          "packageLocation": "./.yarn/cache/dayjs-npm-1.9.8-142953c171-bae85991d0.zip/node_modules/dayjs/",
           "packageDependencies": [
-            ["dayjs", "npm:1.9.7"]
+            ["dayjs", "npm:1.9.8"]
           ],
           "linkType": "HARD",
         }]
@@ -37044,7 +37044,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@typescript-eslint/parser", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:4.9.1"],
             ["@zeit/next-source-maps", "npm:0.0.4-canary.1"],
             ["body-scroll-lock", "npm:3.1.5"],
-            ["dayjs", "npm:1.9.7"],
+            ["dayjs", "npm:1.9.8"],
             ["dompurify", "npm:2.2.6"],
             ["dotenv", "npm:8.2.0"],
             ["eslint", "npm:7.15.0"],
@@ -58237,7 +58237,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["browser-lang", "npm:0.1.0"],
             ["chromatic", "npm:5.5.0"],
             ["cross-env", "npm:7.0.3"],
-            ["dayjs", "npm:1.9.7"],
+            ["dayjs", "npm:1.9.8"],
             ["dompurify", "npm:2.2.6"],
             ["dotenv", "npm:8.2.0"],
             ["eslint", "npm:7.15.0"],
