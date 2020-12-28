@@ -2,6 +2,7 @@ package main
 
 import (
 	"crypto/tls"
+	"github.com/chrsep/vor/pkg/exports"
 	"github.com/chrsep/vor/pkg/links"
 	"github.com/chrsep/vor/pkg/subscription"
 	"github.com/go-pg/pg/v10"
@@ -90,6 +91,7 @@ func runServer() error {
 	studentStore := postgres.StudentStore{DB: db, ImageStorage: minioImageStorage}
 	imageStore := postgres.ImageStore{DB: db, ImageStorage: minioImageStorage}
 	observationStore := postgres.ObservationStore{DB: db, ImageStorage: minioImageStorage}
+	exportsStore := postgres.ExportsStore{DB: db}
 	//attendanceStore:=postgres.AttendanceStore{db}
 
 	// Setup routing
@@ -117,6 +119,7 @@ func runServer() error {
 		r.Mount("/plans", lessonplan.NewRouter(server, lessonPlanStore))
 		r.Mount("/images", images.NewRouter(server, imageStore))
 		r.Mount("/links", links.NewRouter(server, linksStore))
+		r.Mount("/exports", exports.NewRouter(server, exportsStore))
 	})
 
 	// Serve gatsby static frontend assets
