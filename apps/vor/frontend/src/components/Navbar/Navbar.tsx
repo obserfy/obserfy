@@ -62,7 +62,7 @@ const Navbar: FC = () => {
         width: ["100%", "auto"],
         borderRadius: 0,
         display: [keyboardShown ? "none" : "block", "block"],
-        zIndex: 5,
+        zIndex: 500,
         top: ["auto", 0],
         bottom: [0, "auto"],
         left: 0,
