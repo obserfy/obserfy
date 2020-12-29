@@ -151,10 +151,10 @@ const I18nButton = () => {
       onClick={() => {
         window.localStorage.setItem(
           "preferred-lang",
-          locale === "id" ? "en" : "id",
+          locale === "id" ? "en" : "id"
         )
         window.location.replace(
-          `${locale === "id" ? "" : "/id"}/dashboard/admin`,
+          `${locale === "id" ? "" : "/id"}/dashboard/admin`
         )
       }}
       data-cy={locale === "en" ? "switch-indonesian" : "switch-english"}
