@@ -23,7 +23,7 @@ exports[`Navbar should render correctly 1`] = `
   width: 100%;
   border-radius: 0;
   display: block;
-  z-index: 5;
+  z-index: 500;
   top: auto;
   bottom: 0;
   left: 0;
