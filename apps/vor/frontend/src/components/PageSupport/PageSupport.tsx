@@ -43,7 +43,7 @@ export const PageSupport: FC = () => {
           <Flex p={3} sx={{ alignItems: "center" }}>
             <Box mr={3}>
               <Typography.Body>
-                <Trans>Go to Canny</Trans>
+                <Trans>Give Feedback</Trans>
               </Typography.Body>
               <Typography.Body color="textMediumEmphasis">
                 <Trans>Post and upvote suggestions, ideas, and issues.</Trans>
