@@ -8,7 +8,7 @@ import { useLocalization } from "gatsby-theme-i18n"
 import { Link } from "../Link/Link"
 import { ReactComponent as SettingsIcon } from "../../icons/settings.svg"
 import { ReactComponent as StudentsIcon } from "../../icons/students.svg"
-import { ReactComponent as MessageIcon } from "../../icons/message.svg"
+import { ReactComponent as QuestionMarkIcon } from "../../icons/question-mark.svg"
 import Icon from "../Icon/Icon"
 import { Typography } from "../Typography/Typography"
 import { ADMIN_URL, STUDENTS_URL, SUPPORT_URL } from "../../routes"
@@ -81,7 +81,7 @@ const Navbar: FC = () => {
         pb={["env(safe-area-inset-bottom)", 0]}
         pl="env(safe-area-inset-left)"
       >
-        <Box mx="auto" my={3} sx={{ display: ["none", "block"] }} mb={4}>
+        <Box mx="auto" my={2} sx={{ display: ["none", "block"] }} mb={4}>
           <GatsbyImage fixed={query.file.childImageSharp.fixed} />
         </Box>
         <NavBarItem title={t`Students`} icon={StudentsIcon} to={STUDENTS_URL} />
@@ -93,7 +93,11 @@ const Navbar: FC = () => {
           }}
         />
         <NavBarItem title={t`Admin`} icon={SettingsIcon} to={ADMIN_URL} />
-        <NavBarItem title={t`Support`} icon={MessageIcon} to={SUPPORT_URL} />
+        <NavBarItem
+          title={t`Support`}
+          icon={QuestionMarkIcon}
+          to={SUPPORT_URL}
+        />
       </Flex>
     </TranslucentBar>
   )
@@ -130,7 +134,7 @@ const NavBarItem: FC<{
         mb={[0, 2]}
         py={1}
         sx={{
-          width: [60, 64],
+          width: 60,
           height: [48, 60],
           flexDirection: "column",
           alignItems: "center",
@@ -156,7 +160,10 @@ const NavBarItem: FC<{
           sx={{ color: match ? "textPrimary" : "textDisabled" }}
         />
         <Typography.Body
-          sx={{ lineHeight: 1, fontSize: ["10px", 0] }}
+          sx={{
+            lineHeight: 1,
+            fontSize: ["10px", "11px"],
+          }}
           color={match ? "textPrimary" : "textMediumEmphasis"}
         >
           <Trans id={title} />
