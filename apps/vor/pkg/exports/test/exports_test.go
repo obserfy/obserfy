@@ -59,5 +59,5 @@ func (s *ImagesTestSuite) TestUnauthorizedObservationExport() {
 	body := make([]responseBody, 0)
 	err := gocsv.UnmarshalBytes(result.Body.Bytes(), &body)
 	assert.NoError(t, err)
-	assert.Len(t, body, 1)
+	assert.Len(t, body, 0)
 }
