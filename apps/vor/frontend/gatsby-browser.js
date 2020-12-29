@@ -1,6 +1,9 @@
 import browserLang from "browser-lang"
 import "./src/global.css"
-import { navigate, withPrefix } from "gatsby";
+import { navigate, withPrefix } from "gatsby"
+import { getApi } from "./src/hooks/api/fetchApi"
+import { getSchoolId } from "./src/hooks/schoolIdState"
+import { GetSchoolResponse } from "./src/hooks/api/schools/useGetSchool"
 
 // Disabled because it currently breaks due to gatsby's changes.
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
@@ -75,15 +78,19 @@ export const onClientEntry = () => {
 }
 
 const LANG_PREFERENCE_KEY = "preferred-lang"
-// For redirecting user to preferred language
-export const wrapPageElement = (params) => {
-  // find user preferred language
-  let preferredLang =
+const getPreferredLang = () => {
+  return (
     window.localStorage.getItem(LANG_PREFERENCE_KEY) ||
     browserLang({
       languages: ["en", "id"],
       fallback: "en",
     })
+  )
+}
+// For redirecting user to preferred language
+export const wrapPageElement = (params) => {
+  // find user preferred language
+  let preferredLang = getPreferredLang()
 
   // Generate url with changed language
   const { search } = params.props.location
@@ -102,7 +109,82 @@ export const wrapPageElement = (params) => {
   if (
     window.location.pathname + queryParams !== newUrl &&
     window.location.pathname.replace(/\/$/, "") + queryParams !== newUrl
-  ) navigate(newUrl)
+  )
+    navigate(newUrl)
 
   return params.element
+}
+
+const detectTouchscreen = () => {
+  let hasTouchScreen
+  if ("maxTouchPoints" in navigator) {
+    hasTouchScreen = navigator.maxTouchPoints > 0
+  } else if ("msMaxTouchPoints" in navigator) {
+    hasTouchScreen = navigator.msMaxTouchPoints > 0
+  } else {
+    const mQ = window.matchMedia && matchMedia("(pointer:coarse)")
+    if (mQ && mQ.media === "(pointer:coarse)") {
+      hasTouchScreen = !!mQ.matches
+    } else if ("orientation" in window) {
+      hasTouchScreen = true // deprecated, but good fallback
+    } else {
+      // Only as a last resort, fall back to user agent sniffing
+      const UA = navigator.userAgent
+      hasTouchScreen =
+        /\b(BlackBerry|webOS|iPhone|IEMobile)\b/i.test(UA) ||
+        /\b(Android|Windows Phone|iPad|iPod)\b/i.test(UA)
+    }
+  }
+  return hasTouchScreen
+}
+
+const loadChatwoot = () => {
+  window.chatwootSettings = {
+    locale: getPreferredLang(),
+  }
+
+  window.addEventListener("chatwoot:ready", function () {
+    getApi("/users")().then((user) => {
+      window.$chatwoot.setUser(user.id, {
+        email: user.email,
+        name: user.name,
+      })
+
+      getApi(`/schools/${getSchoolId()}`)().then((school) => {
+        window.$chatwoot.setCustomAttributes({
+          company: school.name,
+        })
+      })
+    })
+  })
+
+  setTimeout(() => {
+    const t = "script"
+    const BASE_URL = "https://app.chatwoot.com"
+    const g = document.createElement(t)
+    const s = document.getElementsByTagName(t)[0]
+    g.src = BASE_URL + "/packs/js/sdk.js"
+    g.async = true
+    s.parentNode.insertBefore(g, s)
+    g.onload = function () {
+      let websiteToken
+      if (process.env.NODE_ENV === "development") {
+        websiteToken = "M3Q1fEiitx7xPHEh12xdvGQR"
+      } else {
+        websiteToken = "Hs61XyryoFYVv39MienCG2Ei"
+      }
+      window.chatwootSDK.run({
+        websiteToken,
+        baseUrl: BASE_URL,
+      })
+    }
+  }, 2000)
+}
+
+// Add chatwoot
+export const onInitialClientRender = () => {
+  const hasTouchScreen = detectTouchscreen()
+  if (!hasTouchScreen) {
+    loadChatwoot()
+  }
 }
