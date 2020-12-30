@@ -1,3 +1,4 @@
+import { t } from "@lingui/macro"
 import React, { FC } from "react"
 import { Box } from "theme-ui"
 import { getFirstName } from "../../domain/person"
@@ -16,9 +17,9 @@ export const PageAllObservations: FC<Props> = ({ studentId }) => {
     <Box sx={{ maxWidth: "maxWidth.lg" }} mx="auto" pb={6}>
       <TopBar
         breadcrumbs={[
-          breadCrumb("Students", STUDENTS_URL),
+          breadCrumb(t`Students`, STUDENTS_URL),
           breadCrumb(getFirstName(student), STUDENT_OVERVIEW_URL(studentId)),
-          breadCrumb("Observations"),
+          breadCrumb(t`Observations`),
         ]}
       />
 
