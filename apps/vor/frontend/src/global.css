@@ -1,25 +1,21 @@
 @font-face {
-  font-family: "Open Sans";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Open Sans Regular"), local("OpenSans-Regular"),
-    url(/google-fonts/s/opensans/v17/mem8YaGs126MiZpBA-UFVZ0b.woff2)
-      format("woff2"),
-    url(/google-fonts/s/opensans/v17/mem8YaGs126MiZpBA-UFVZ0d.woff)
-      format("woff");
-  font-display: swap;
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 400;
+    src: local("Open Sans Regular"), local("OpenSans-Regular"),
+    url(/google-fonts/s/opensans/v17/mem8YaGs126MiZpBA-UFVZ0b.woff2) format("woff2"),
+    url(/google-fonts/s/opensans/v17/mem8YaGs126MiZpBA-UFVZ0d.woff) format("woff");
+    font-display: swap;
 }
 
 @font-face {
-  font-family: "Open Sans";
-  font-style: normal;
-  font-weight: 700;
-  src: local("Open Sans Bold"), local("OpenSans-Bold"),
-    url(/google-fonts/s/opensans/v17/mem5YaGs126MiZpBA-UN7rgOUuhp.woff2)
-      format("woff2"),
-    url(/google-fonts/s/opensans/v17/mem5YaGs126MiZpBA-UN7rgOUuhv.woff)
-      format("woff");
-  font-display: swap;
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 700;
+    src: local("Open Sans Bold"), local("OpenSans-Bold"),
+    url(/google-fonts/s/opensans/v17/mem5YaGs126MiZpBA-UN7rgOUuhp.woff2) format("woff2"),
+    url(/google-fonts/s/opensans/v17/mem5YaGs126MiZpBA-UN7rgOUuhv.woff) format("woff");
+    font-display: swap;
 }
 
 
@@ -31,17 +27,23 @@ a,
 a:hover,
 a:focus,
 a:active {
-  text-decoration: none;
-  border: none;
-  outline: none;
-  user-select: none;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    user-select: none;
 }
 
 body {
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
 }
 
 button::-moz-focus-inner {
-  border: 0;
+    border: 0;
+}
+
+@media only screen and (max-width: 640px) {
+    .woot-widget-bubble {
+        bottom: 68px !important;
+    }
 }
