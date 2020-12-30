@@ -231,7 +231,10 @@ exports[`PageNewSchool should render correctly 1`] = `
   border-width: 1px;
   line-height: 1;
   margin-right: 16px;
-  width: 100%;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
 }
 
 .emotion-9:disabled {
@@ -313,7 +316,10 @@ exports[`PageNewSchool should render correctly 1`] = `
   border-style: solid;
   border-width: 1px;
   line-height: 1;
-  width: 100%;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
 }
 
 .emotion-10:disabled {

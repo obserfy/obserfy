@@ -24,6 +24,11 @@ export const PageAdmin: FC = () => {
   const schoolDetail = useGetSchool()
 
   async function logout(): Promise<void> {
+    // @ts-ignore
+    if (window.$chatwoot) {
+      // @ts-ignore
+      window.$chatwoot.reset()
+    }
     const response = await fetch("/auth/logout", {
       method: "POST",
       credentials: "same-origin",

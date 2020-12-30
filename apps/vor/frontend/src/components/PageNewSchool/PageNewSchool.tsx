@@ -53,13 +53,13 @@ export const PageNewSchool: FC = () => {
           <Button
             type="button"
             variant="outline"
-            sx={{ width: "100%" }}
             mr={3}
             onClick={() => navigate("/choose-school")}
+            sx={{ flexGrow: 1 }}
           >
             <Trans>Cancel</Trans>
           </Button>
-          <Button variant="primaryBig" sx={{ width: "100%" }}>
+          <Button variant="primaryBig" sx={{ flexGrow: 1 }}>
             <Trans>Save</Trans>
           </Button>
         </Flex>

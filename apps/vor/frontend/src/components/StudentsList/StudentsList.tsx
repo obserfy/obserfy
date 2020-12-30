@@ -124,7 +124,7 @@ const EmptySearchResultPlaceholder: FC<{ term: string }> = ({ term }) => (
 const NoStudentPlaceholder: FC = () => (
   <Card mx={3}>
     <Flex
-      m={3}
+      p={3}
       px={4}
       sx={{
         flexDirection: "column",
