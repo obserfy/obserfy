@@ -114,7 +114,53 @@ exports[`PageAdmin should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-24 {
+.emotion-17 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding: 16px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-18 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  margin-right: 16px;
+  fill: var(--theme-ui-colors-text, #37383c);
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.emotion-22 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  margin-right: 16px;
+  color: var(--theme-ui-colors-text, #37383c);
+  fill: transparent;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.emotion-31 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -130,7 +176,7 @@ exports[`PageAdmin should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-25 {
+.emotion-32 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -144,14 +190,14 @@ exports[`PageAdmin should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-26 {
+.emotion-33 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   margin-left: 16px;
 }
 
-.emotion-27 {
+.emotion-34 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -163,7 +209,7 @@ exports[`PageAdmin should render correctly 1`] = `
   font-size: 12px;
 }
 
-.emotion-31 {
+.emotion-38 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -177,7 +223,7 @@ exports[`PageAdmin should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-36 {
+.emotion-43 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -196,7 +242,7 @@ exports[`PageAdmin should render correctly 1`] = `
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-36 {
+  .emotion-43 {
     padding-left: 0;
     padding-right: 0;
     margin-left: 16px;
@@ -205,14 +251,14 @@ exports[`PageAdmin should render correctly 1`] = `
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-36 {
+  .emotion-43 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
   }
 }
 
-.emotion-37 {
+.emotion-44 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -282,31 +328,31 @@ exports[`PageAdmin should render correctly 1`] = `
   flex-shrink: 0;
 }
 
-.emotion-37:disabled {
+.emotion-44:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-37:hover,
-.emotion-37:focus {
+.emotion-44:hover,
+.emotion-44:focus {
   background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
   border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-37:hover:disabled,
-.emotion-37:focus:disabled {
+.emotion-44:hover:disabled,
+.emotion-44:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-37 {
+  .emotion-44 {
     width: auto;
   }
 }
 
-.emotion-38 {
+.emotion-45 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -372,26 +418,26 @@ exports[`PageAdmin should render correctly 1`] = `
   color: var(--theme-ui-colors-danger, #d50000);
 }
 
-.emotion-38:disabled {
+.emotion-45:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-38:hover,
-.emotion-38:focus {
+.emotion-45:hover,
+.emotion-45:focus {
   background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
   border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-38:hover:disabled,
-.emotion-38:focus:disabled {
+.emotion-45:hover:disabled,
+.emotion-45:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-38 {
+  .emotion-45 {
     margin-left: 8px;
   }
 }
@@ -481,8 +527,11 @@ exports[`PageAdmin should render correctly 1`] = `
           href="/dashboard/admin/users"
         >
           <div
-            class="emotion-4"
+            class="emotion-17"
           >
+            <div
+              class="emotion-18"
+            />
             <p
               class="emotion-5"
             >
@@ -497,8 +546,11 @@ exports[`PageAdmin should render correctly 1`] = `
           href="/dashboard/admin/inviteUser"
         >
           <div
-            class="emotion-4"
+            class="emotion-17"
           >
+            <div
+              class="emotion-22"
+            />
             <p
               class="emotion-5"
             >
@@ -513,18 +565,41 @@ exports[`PageAdmin should render correctly 1`] = `
       <div
         class="emotion-3"
       >
+        <a
+          href="/dashboard/admin/subscription"
+        >
+          <div
+            class="emotion-17"
+          >
+            <div
+              class="emotion-22"
+            />
+            <p
+              class="emotion-5"
+            >
+              Subscription
+            </p>
+            <div
+              class="emotion-6"
+            />
+          </div>
+        </a>
+      </div>
+      <div
+        class="emotion-3"
+      >
         <div
-          class="emotion-24"
+          class="emotion-31"
           data-cy="switch-indonesian"
         >
           <div
-            class="emotion-25"
+            class="emotion-32"
           />
           <div
-            class="emotion-26"
+            class="emotion-33"
           >
             <p
-              class="emotion-27"
+              class="emotion-34"
             >
               Language
             </p>
@@ -539,17 +614,17 @@ exports[`PageAdmin should render correctly 1`] = `
           />
         </div>
         <div
-          class="emotion-24"
+          class="emotion-31"
           data-cy="dark-switch"
         >
           <div
-            class="emotion-31"
+            class="emotion-38"
           />
           <div
-            class="emotion-26"
+            class="emotion-33"
           >
             <p
-              class="emotion-27"
+              class="emotion-34"
             >
               Theme
             </p>
@@ -565,15 +640,15 @@ exports[`PageAdmin should render correctly 1`] = `
         </div>
       </div>
       <div
-        class="emotion-36"
+        class="emotion-43"
       >
         <button
-          class="emotion-37"
+          class="emotion-44"
         >
           Switch school
         </button>
         <button
-          class="emotion-38"
+          class="emotion-45"
         >
           Log Out
         </button>

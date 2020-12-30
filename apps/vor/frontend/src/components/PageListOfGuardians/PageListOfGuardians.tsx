@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { FC, useState } from "react"
 import { Box, Button, Card, Flex, jsx } from "theme-ui"
-import { Trans } from "@lingui/macro"
+import { t, Trans } from "@lingui/macro"
 import { borderTop } from "../../border"
 import { ReactComponent as ChevronRight } from "../../icons/next-arrow.svg"
 import { Link } from "../Link/Link"
@@ -27,8 +27,8 @@ export const PageListOfGuardians: FC = () => {
     <Box sx={{ maxWidth: "maxWidth.lg" }} mx="auto" pb={5}>
       <TopBar
         breadcrumbs={[
-          breadCrumb("Admin", ADMIN_URL),
-          breadCrumb("All Guardians"),
+          breadCrumb(t`Admin`, ADMIN_URL),
+          breadCrumb(t`All Guardians`),
         ]}
       />
 

@@ -1,18 +1,18 @@
+import { t, Trans } from "@lingui/macro"
 import React, { FC, useState } from "react"
 import { Box, Button, Card, Flex, useColorMode } from "theme-ui"
-import { t, Trans } from "@lingui/macro"
 import dayjs from "../../dayjs"
-import Typography from "../Typography/Typography"
-import BackNavigation from "../BackNavigation/BackNavigation"
-import Icon from "../Icon/Icon"
-import { ReactComponent as CheckmarkIcon } from "../../icons/checkmark-outline.svg"
-import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
-import { useGetUserProfile } from "../../hooks/api/useGetUserProfile"
 import { useGetSchool } from "../../hooks/api/schools/useGetSchool"
-import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
+import { useGetUserProfile } from "../../hooks/api/useGetUserProfile"
+import { ReactComponent as CheckmarkIcon } from "../../icons/checkmark-outline.svg"
 import { ReactComponent as CancelIcon } from "../../icons/close.svg"
 import { ReactComponent as CreditCardIcon } from "../../icons/credit-card.svg"
+import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import { ADMIN_URL } from "../../routes"
+import Icon from "../Icon/Icon"
+import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
+import TopBar, { breadCrumb } from "../TopBar/TopBar"
+import Typography from "../Typography/Typography"
 
 export const PageSubscription: FC = () => {
   const [loading, setLoading] = useState(false)
@@ -23,10 +23,13 @@ export const PageSubscription: FC = () => {
 
   return (
     <Box mx="auto" sx={{ maxWidth: "maxWidth.xsm" }}>
-      <BackNavigation to={ADMIN_URL} text={t`Settings`} />
-      <Typography.H4 sx={{ fontWeight: "bold", textAlign: "center" }} mb={4}>
-        <Trans>Subscription Plan</Trans>
-      </Typography.H4>
+      <TopBar
+        breadcrumbs={[
+          breadCrumb(t`Admin`, ADMIN_URL),
+          breadCrumb(t`Subscription`),
+        ]}
+      />
+
       {school.data?.subscription ? (
         <Card m={3} px={4} sx={{ borderRadius: 16 }}>
           <Flex my={4} sx={{ alignItems: "center" }}>
@@ -59,7 +62,7 @@ export const PageSubscription: FC = () => {
               <Trans>Amount Due</Trans>
             </Typography.Body>
             <Typography.Body>
-              ${3.99 * school.data?.users?.length} ({school.data?.users?.length}{" "}
+              ${4 * school.data?.users?.length} ({school.data?.users?.length}{" "}
               users)
             </Typography.Body>
           </Box>
@@ -91,17 +94,17 @@ export const PageSubscription: FC = () => {
         </Card>
       ) : (
         <Card m={3} px={4} sx={{ borderRadius: 16 }}>
-          <Flex my={4} sx={{ alignItems: "center" }}>
-            <Typography.Body
-              color="textPrimary"
-              sx={{ fontWeight: "bold", lineHeight: 1 }}
-            >
-              <Trans>Early Access</Trans>
+          <Flex py={4} sx={{ alignItems: "center" }}>
+            <Typography.Body color="textPrimary" sx={{ fontWeight: "bold" }}>
+              <Trans>Free Trial</Trans>
+            </Typography.Body>
+            <Typography.Body ml="auto">
+              <Trans>Current Plan</Trans>
             </Typography.Body>
           </Flex>
         </Card>
       )}
-      <Card m={3} p={4} mt={4} sx={{ borderRadius: 16 }}>
+      <Card m={3} p={4} mt={3} sx={{ borderRadius: 16 }}>
         <Typography.Body
           color="textPrimary"
           sx={{ fontWeight: "bold", lineHeight: 1 }}
@@ -112,7 +115,7 @@ export const PageSubscription: FC = () => {
 
         <Flex sx={{ alignItems: "baseline" }}>
           <Typography.H3 sx={{ fontWeight: "bold", lineHeight: 1 }}>
-            $3.99
+            $4
           </Typography.H3>
           <Typography.Body ml={2} color="textMediumEmphasis">
             <Trans>User/month</Trans>
@@ -126,8 +129,6 @@ export const PageSubscription: FC = () => {
           <Feature text={t`Track curriculum progress`} />
           <Feature text={t`Parent portal`} />
           <Feature text={t`Image gallery`} />
-          <Feature text={t`Reporting`} comingSoon />
-          <Feature text={t`And more coming...`} />
         </Box>
 
         <Button
@@ -135,10 +136,9 @@ export const PageSubscription: FC = () => {
           mt={4}
           p={3}
           sx={{ width: "100%", fontWeight: "bold", borderRadius: 16 }}
-          // disabled={
-          //   user.isLoading || school.isLoading || isSubscribed !== undefined
-          // }
-          disabled
+          disabled={
+            user.isLoading || school.isLoading || isSubscribed !== undefined
+          }
           onClick={() => {
             setLoading(true)
             const script = document.createElement("script")
@@ -170,7 +170,7 @@ export const PageSubscription: FC = () => {
           ) : loading || user.isLoading ? (
             <LoadingIndicator color="onPrimary" />
           ) : (
-            <Trans>(Starting on Jan 1st 2021)</Trans>
+            <Trans>Subscribe</Trans>
           )}
         </Button>
       </Card>
@@ -184,7 +184,7 @@ const Feature: FC<{ text: string; comingSoon?: boolean }> = ({
 }) => {
   return (
     <Flex sx={{ alignItems: "center" }}>
-      <Icon as={CheckmarkIcon} fill="primary" />
+      <Icon as={CheckmarkIcon} fill="textPrimary" />
       <Typography.Body ml={2}>
         <Trans id={text} />
       </Typography.Body>
