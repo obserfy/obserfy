@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { Trans } from "@lingui/macro"
+import { t, Trans } from "@lingui/macro"
 import { FC } from "react"
 import { Box, Button, Flex, Image, jsx } from "theme-ui"
 import { getFirstName } from "../../domain/person"
@@ -34,7 +34,7 @@ export const PageStudentOverview: FC<Props> = ({ id }) => {
     <Box sx={{ maxWidth: "maxWidth.md" }} margin="auto" pb={5}>
       <TopBar
         breadcrumbs={[
-          breadCrumb("Students", STUDENTS_URL),
+          breadCrumb(t`Students`, STUDENTS_URL),
           breadCrumb(getFirstName(student.data)),
         ]}
       />

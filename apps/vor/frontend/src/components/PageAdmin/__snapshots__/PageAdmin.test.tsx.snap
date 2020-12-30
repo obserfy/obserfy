@@ -114,7 +114,7 @@ exports[`PageAdmin should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-24 {
+.emotion-35 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -130,7 +130,7 @@ exports[`PageAdmin should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-25 {
+.emotion-36 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -144,14 +144,14 @@ exports[`PageAdmin should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-26 {
+.emotion-37 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   margin-left: 16px;
 }
 
-.emotion-27 {
+.emotion-38 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -163,7 +163,7 @@ exports[`PageAdmin should render correctly 1`] = `
   font-size: 12px;
 }
 
-.emotion-31 {
+.emotion-42 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -177,7 +177,7 @@ exports[`PageAdmin should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-36 {
+.emotion-47 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -196,7 +196,7 @@ exports[`PageAdmin should render correctly 1`] = `
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-36 {
+  .emotion-47 {
     padding-left: 0;
     padding-right: 0;
     margin-left: 16px;
@@ -205,14 +205,14 @@ exports[`PageAdmin should render correctly 1`] = `
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-36 {
+  .emotion-47 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
   }
 }
 
-.emotion-37 {
+.emotion-48 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -282,31 +282,31 @@ exports[`PageAdmin should render correctly 1`] = `
   flex-shrink: 0;
 }
 
-.emotion-37:disabled {
+.emotion-48:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-37:hover,
-.emotion-37:focus {
+.emotion-48:hover,
+.emotion-48:focus {
   background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
   border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-37:hover:disabled,
-.emotion-37:focus:disabled {
+.emotion-48:hover:disabled,
+.emotion-48:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-37 {
+  .emotion-48 {
     width: auto;
   }
 }
 
-.emotion-38 {
+.emotion-49 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -372,26 +372,26 @@ exports[`PageAdmin should render correctly 1`] = `
   color: var(--theme-ui-colors-danger, #d50000);
 }
 
-.emotion-38:disabled {
+.emotion-49:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-38:hover,
-.emotion-38:focus {
+.emotion-49:hover,
+.emotion-49:focus {
   background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
   border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-38:hover:disabled,
-.emotion-38:focus:disabled {
+.emotion-49:hover:disabled,
+.emotion-49:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-38 {
+  .emotion-49 {
     margin-left: 8px;
   }
 }
@@ -513,18 +513,74 @@ exports[`PageAdmin should render correctly 1`] = `
       <div
         class="emotion-3"
       >
+        <a
+          href="/dashboard/admin/users"
+        >
+          <div
+            class="emotion-4"
+          >
+            <p
+              class="emotion-5"
+            >
+              Users
+            </p>
+            <div
+              class="emotion-6"
+            />
+          </div>
+        </a>
+        <a
+          href="/dashboard/admin/inviteUser"
+        >
+          <div
+            class="emotion-4"
+          >
+            <p
+              class="emotion-5"
+            >
+              Invite Your Team
+            </p>
+            <div
+              class="emotion-6"
+            />
+          </div>
+        </a>
+      </div>
+      <div
+        class="emotion-3"
+      >
+        <a
+          href="/dashboard/admin/subscription"
+        >
+          <div
+            class="emotion-4"
+          >
+            <p
+              class="emotion-5"
+            >
+              Subscription
+            </p>
+            <div
+              class="emotion-6"
+            />
+          </div>
+        </a>
+      </div>
+      <div
+        class="emotion-3"
+      >
         <div
-          class="emotion-24"
+          class="emotion-35"
           data-cy="switch-indonesian"
         >
           <div
-            class="emotion-25"
+            class="emotion-36"
           />
           <div
-            class="emotion-26"
+            class="emotion-37"
           >
             <p
-              class="emotion-27"
+              class="emotion-38"
             >
               Language
             </p>
@@ -539,17 +595,17 @@ exports[`PageAdmin should render correctly 1`] = `
           />
         </div>
         <div
-          class="emotion-24"
+          class="emotion-35"
           data-cy="dark-switch"
         >
           <div
-            class="emotion-31"
+            class="emotion-42"
           />
           <div
-            class="emotion-26"
+            class="emotion-37"
           >
             <p
-              class="emotion-27"
+              class="emotion-38"
             >
               Theme
             </p>
@@ -565,15 +621,15 @@ exports[`PageAdmin should render correctly 1`] = `
         </div>
       </div>
       <div
-        class="emotion-36"
+        class="emotion-47"
       >
         <button
-          class="emotion-37"
+          class="emotion-48"
         >
           Switch school
         </button>
         <button
-          class="emotion-38"
+          class="emotion-49"
         >
           Log Out
         </button>
