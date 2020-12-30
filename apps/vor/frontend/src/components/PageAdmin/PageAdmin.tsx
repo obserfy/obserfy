@@ -18,8 +18,11 @@ import Icon from "../Icon/Icon"
 import { ReactComponent as LightModeIcon } from "../../icons/light-mode.svg"
 import { ReactComponent as DarkModeIcon } from "../../icons/dark-mode.svg"
 import { ReactComponent as GlobeIcon } from "../../icons/globe.svg"
+import { ReactComponent as CreditCardIcon } from "../../icons/credit-card.svg"
 import { Link, navigate } from "../Link/Link"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
+import { ReactComponent as SendIcon } from "../../icons/send.svg"
+import { ReactComponent as PersonIcon } from "../../icons/person.svg"
 
 export const PageAdmin: FC = () => {
   const schoolDetail = useGetSchool()
@@ -90,7 +93,8 @@ export const PageAdmin: FC = () => {
 
       <Card mb={3} mx={[0, 3]} sx={{ borderRadius: [0, "default"] }}>
         <Link to={ADMIN_USERS_URL}>
-          <Flex p={3}>
+          <Flex p={3} sx={{ alignItems: "center" }}>
+            <Icon as={PersonIcon} mr={3} fill="text" size={20} />
             <Typography.Body>
               <Trans>Users</Trans>
             </Typography.Body>
@@ -98,26 +102,14 @@ export const PageAdmin: FC = () => {
           </Flex>
         </Link>
         <Link to={ADMIN_INVITE_USER_URL}>
-          <Flex p={3}>
-            <Typography.Body>
-              <Trans>Invite Your Team</Trans>
-            </Typography.Body>
-            <Icon as={NextIcon} ml="auto" />
-          </Flex>
-        </Link>
-      </Card>
-
-      <Card mb={3} mx={[0, 3]} sx={{ borderRadius: [0, "default"] }}>
-        <Link to={ADMIN_USERS_URL}>
-          <Flex p={3}>
-            <Typography.Body>
-              <Trans>Users</Trans>
-            </Typography.Body>
-            <Icon as={NextIcon} ml="auto" />
-          </Flex>
-        </Link>
-        <Link to={ADMIN_INVITE_USER_URL}>
-          <Flex p={3}>
+          <Flex p={3} sx={{ alignItems: "center" }}>
+            <Icon
+              as={SendIcon}
+              mr={3}
+              fill="transparent"
+              color="text"
+              size={20}
+            />
             <Typography.Body>
               <Trans>Invite Your Team</Trans>
             </Typography.Body>
@@ -128,7 +120,14 @@ export const PageAdmin: FC = () => {
 
       <Card mb={3} mx={[0, 3]} sx={{ borderRadius: [0, "default"] }}>
         <Link to={ADMIN_SUBSCRIPTION_URL}>
-          <Flex p={3}>
+          <Flex p={3} sx={{ alignItems: "center" }}>
+            <Icon
+              as={CreditCardIcon}
+              mr={3}
+              fill="transparent"
+              color="text"
+              size={20}
+            />
             <Typography.Body>
               <Trans>Subscription</Trans>
             </Typography.Body>
