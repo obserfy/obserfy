@@ -41,7 +41,9 @@ export const Layout: FC = ({ children }) => {
           pb={[80, 0]}
         >
           <UpdateNotification />
-          <NewStudentFormProvider>{children}</NewStudentFormProvider>
+          <NewStudentFormProvider>
+            <Box pb={84}>{children}</Box>
+          </NewStudentFormProvider>
         </Box>
       </Flex>
     </>

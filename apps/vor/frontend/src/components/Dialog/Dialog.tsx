@@ -58,7 +58,7 @@ export const Dialog: FC<Props> = ({ sx, ...props }) => {
           border: "none",
           top: 0,
           left: 0,
-          zIndex: 1000001,
+          zIndex: 2147483001,
           position: "fixed",
         }}
       >
@@ -68,7 +68,7 @@ export const Dialog: FC<Props> = ({ sx, ...props }) => {
             backgroundColor: "overlay",
             width: "100%",
             height: "100%",
-            zIndex: 1000002,
+            zIndex: 2147483002,
             animation: `${bgEnterAnim} 0.25s cubic-bezier(0.4, 0.0, 0.2, 1);`,
           }}
         />
@@ -86,7 +86,7 @@ export const Dialog: FC<Props> = ({ sx, ...props }) => {
             borderBottomLeftRadius: [0, "default"],
             borderBottomRightRadius: [0, "default"],
             animation: `${dialogEnterAnim} 0.25s cubic-bezier(0.4, 0.0, 0.2, 1);`,
-            zIndex: 1000003,
+            zIndex: 2147483003,
             ...sx,
           }}
           {...props}

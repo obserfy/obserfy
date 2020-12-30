@@ -86,12 +86,12 @@ msgstr "Admin"
 #~ msgid "All"
 #~ msgstr "All"
 
-#: src/components/PageAdmin/PageAdmin.tsx:70
+#: src/components/PageAdmin/PageAdmin.tsx:75
 #: src/components/PageListOfGuardians/PageListOfGuardians.tsx:28
 msgid "All Guardians"
 msgstr "All Guardians"
 
-#: src/components/PageAdmin/PageAdmin.tsx:62
+#: src/components/PageAdmin/PageAdmin.tsx:67
 #: src/components/PageListOfStudents/PageListOfStudents.tsx:34
 msgid "All Students"
 msgstr "All Students"
@@ -182,7 +182,7 @@ msgstr "Change Area"
 msgid "Choose a Name"
 msgstr "Choose a Name"
 
-#: src/components/PageAdmin/PageAdmin.tsx:54
+#: src/components/PageAdmin/PageAdmin.tsx:59
 msgid "Class"
 msgstr "Class"
 
@@ -237,7 +237,7 @@ msgstr "Current classes"
 #~ msgid "Current guardians"
 #~ msgstr "Current guardians"
 
-#: src/components/PageAdmin/PageAdmin.tsx:46
+#: src/components/PageAdmin/PageAdmin.tsx:51
 msgid "Curriculum"
 msgstr "Curriculum"
 
@@ -265,7 +265,7 @@ msgstr "Custom Curriculum"
 msgid "Daily"
 msgstr "Daily"
 
-#: src/components/PageAdmin/PageAdmin.tsx:138
+#: src/components/PageAdmin/PageAdmin.tsx:143
 msgid "Dark"
 msgstr "Dark"
 
@@ -482,8 +482,12 @@ msgid "Get started now with 30-days free trial"
 msgstr "Get started now with 30-days free trial"
 
 #: src/components/PageSupport/PageSupport.tsx:42
-msgid "Go to Canny"
-msgstr "Go to Canny"
+msgid "Give Feedback"
+msgstr "Give Feedback"
+
+#: src/components/PageSupport/PageSupport.tsx:42
+#~ msgid "Go to Canny"
+#~ msgstr "Go to Canny"
 
 #: src/components/EmptyClassDataPlaceholder/EmptyClassDataPlaceholder.tsx:7
 #: src/components/PageNewStudent/NewStudentForm.tsx:112
@@ -535,7 +539,7 @@ msgstr "In Progress"
 msgid "Info"
 msgstr "Info"
 
-#: src/components/PageAdmin/PageAdmin.tsx:89
+#: src/components/PageAdmin/PageAdmin.tsx:94
 msgid "Invite Your Team"
 msgstr "Invite Your Team"
 
@@ -547,11 +551,11 @@ msgstr "Invite using emails"
 msgid "Invite using link"
 msgstr "Invite using link"
 
-#: src/components/PageAdmin/PageAdmin.tsx:120
+#: src/components/PageAdmin/PageAdmin.tsx:125
 msgid "Language"
 msgstr "Language"
 
-#: src/components/PageAdmin/PageAdmin.tsx:138
+#: src/components/PageAdmin/PageAdmin.tsx:143
 msgid "Light"
 msgstr "Light"
 
@@ -560,7 +564,7 @@ msgstr "Light"
 msgid "Links"
 msgstr "Links"
 
-#: src/components/PageAdmin/PageAdmin.tsx:106
+#: src/components/PageAdmin/PageAdmin.tsx:111
 msgid "Log Out"
 msgstr "Log Out"
 
@@ -695,6 +699,10 @@ msgstr "No more students to add"
 msgid "No observation have been added yet"
 msgstr "No observation have been added yet"
 
+#: src/components/PageAllObservations/ObservationsTable.tsx:121
+msgid "No observations found"
+msgstr "No observations found"
+
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:177
 #: src/components/PageStudentPlanDetails/RelatedStudentsCard.tsx:47
 msgid "No other students added yet."
@@ -733,6 +741,7 @@ msgstr "Notes"
 msgid "Observation"
 msgstr "Observation"
 
+#: src/components/PageAllObservations/ObservationsTable.tsx:41
 #: src/components/PageStudentOverview/DailyObservationCard.tsx:40
 #: src/pages/dashboard/students/observations/details.tsx:25
 msgid "Observations"
@@ -777,6 +786,14 @@ msgstr "Phone"
 #: src/components/DatePickerDialog/DatePickerDialog.tsx:22
 msgid "Pick a Date"
 msgstr "Pick a Date"
+
+#: src/components/PageAllObservations/ObservationsTable.tsx:104
+msgid "Pick end date"
+msgstr "Pick end date"
+
+#: src/components/PageAllObservations/ObservationsTable.tsx:99
+msgid "Pick start date"
+msgstr "Pick start date"
 
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:90
 #: src/components/PageStudentOverview/PageStudentOverview.tsx:48
@@ -1054,7 +1071,7 @@ msgstr "Sunday"
 msgid "Support"
 msgstr "Support"
 
-#: src/components/PageAdmin/PageAdmin.tsx:103
+#: src/components/PageAdmin/PageAdmin.tsx:108
 msgid "Switch school"
 msgstr "Switch school"
 
@@ -1070,7 +1087,7 @@ msgstr "Tell us what you observed"
 msgid "The term <0>\"{term}\"</0> does not match any student"
 msgstr "The term <0>\"{term}\"</0> does not match any student"
 
-#: src/components/PageAdmin/PageAdmin.tsx:135
+#: src/components/PageAdmin/PageAdmin.tsx:140
 msgid "Theme"
 msgstr "Theme"
 
@@ -1127,7 +1144,7 @@ msgstr "Use Montessori"
 msgid "User/month"
 msgstr "User/month"
 
-#: src/components/PageAdmin/PageAdmin.tsx:81
+#: src/components/PageAdmin/PageAdmin.tsx:86
 msgid "Users"
 msgstr "Users"
 
