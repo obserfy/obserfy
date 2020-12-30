@@ -8,7 +8,7 @@ msgstr ""
 "Language: id\n"
 "Project-Id-Version: a9762ad8ff131d2a39fce5fce9d2fb91\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2020-12-22 18:45\n"
+"PO-Revision-Date: 2020-12-30 06:43\n"
 "Last-Translator: \n"
 "Language-Team: Indonesian\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -91,12 +91,12 @@ msgstr "Admin"
 #~ msgid "All"
 #~ msgstr "All"
 
-#: src/components/PageAdmin/PageAdmin.tsx:70
+#: src/components/PageAdmin/PageAdmin.tsx:75
 #: src/components/PageListOfGuardians/PageListOfGuardians.tsx:28
 msgid "All Guardians"
 msgstr "Semua Wali Murid"
 
-#: src/components/PageAdmin/PageAdmin.tsx:62
+#: src/components/PageAdmin/PageAdmin.tsx:67
 #: src/components/PageListOfStudents/PageListOfStudents.tsx:34
 msgid "All Students"
 msgstr "Semua Murid"
@@ -187,7 +187,7 @@ msgstr "Ubah Bidang"
 msgid "Choose a Name"
 msgstr "Pilih Nama"
 
-#: src/components/PageAdmin/PageAdmin.tsx:54
+#: src/components/PageAdmin/PageAdmin.tsx:59
 msgid "Class"
 msgstr "Kelas"
 
@@ -242,7 +242,7 @@ msgstr ""
 #~ msgid "Current guardians"
 #~ msgstr "Current guardians"
 
-#: src/components/PageAdmin/PageAdmin.tsx:46
+#: src/components/PageAdmin/PageAdmin.tsx:51
 msgid "Curriculum"
 msgstr "Kurikulum"
 
@@ -270,7 +270,7 @@ msgstr "Kustom Kurikulum"
 msgid "Daily"
 msgstr "Harian"
 
-#: src/components/PageAdmin/PageAdmin.tsx:138
+#: src/components/PageAdmin/PageAdmin.tsx:143
 msgid "Dark"
 msgstr "Gelap"
 
@@ -487,8 +487,12 @@ msgid "Get started now with 30-days free trial"
 msgstr ""
 
 #: src/components/PageSupport/PageSupport.tsx:42
-msgid "Go to Canny"
-msgstr "Ke Canny"
+msgid "Give Feedback"
+msgstr ""
+
+#: src/components/PageSupport/PageSupport.tsx:42
+#~ msgid "Go to Canny"
+#~ msgstr "Go to Canny"
 
 #: src/components/EmptyClassDataPlaceholder/EmptyClassDataPlaceholder.tsx:7
 #: src/components/PageNewStudent/NewStudentForm.tsx:112
@@ -540,7 +544,7 @@ msgstr "Dalam Proses"
 msgid "Info"
 msgstr "Info"
 
-#: src/components/PageAdmin/PageAdmin.tsx:89
+#: src/components/PageAdmin/PageAdmin.tsx:94
 msgid "Invite Your Team"
 msgstr "Undang Tim Anda"
 
@@ -552,11 +556,11 @@ msgstr "Undang dengan email"
 msgid "Invite using link"
 msgstr "Undang dengan link"
 
-#: src/components/PageAdmin/PageAdmin.tsx:120
+#: src/components/PageAdmin/PageAdmin.tsx:125
 msgid "Language"
 msgstr "Bahasa"
 
-#: src/components/PageAdmin/PageAdmin.tsx:138
+#: src/components/PageAdmin/PageAdmin.tsx:143
 msgid "Light"
 msgstr "Terang"
 
@@ -565,7 +569,7 @@ msgstr "Terang"
 msgid "Links"
 msgstr "Tautan"
 
-#: src/components/PageAdmin/PageAdmin.tsx:106
+#: src/components/PageAdmin/PageAdmin.tsx:111
 msgid "Log Out"
 msgstr "Keluar"
 
@@ -700,6 +704,10 @@ msgstr "Tidak ada lagi murid untuk ditambahkan"
 msgid "No observation have been added yet"
 msgstr "Belum ada observasi ditambahkan"
 
+#: src/components/PageAllObservations/ObservationsTable.tsx:121
+msgid "No observations found"
+msgstr ""
+
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:177
 #: src/components/PageStudentPlanDetails/RelatedStudentsCard.tsx:47
 msgid "No other students added yet."
@@ -738,6 +746,7 @@ msgstr "Catatan"
 msgid "Observation"
 msgstr "Observasi"
 
+#: src/components/PageAllObservations/ObservationsTable.tsx:41
 #: src/components/PageStudentOverview/DailyObservationCard.tsx:40
 #: src/pages/dashboard/students/observations/details.tsx:25
 msgid "Observations"
@@ -782,6 +791,14 @@ msgstr "Telepon"
 #: src/components/DatePickerDialog/DatePickerDialog.tsx:22
 msgid "Pick a Date"
 msgstr "Pilih Tanggal"
+
+#: src/components/PageAllObservations/ObservationsTable.tsx:104
+msgid "Pick end date"
+msgstr ""
+
+#: src/components/PageAllObservations/ObservationsTable.tsx:99
+msgid "Pick start date"
+msgstr ""
 
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:90
 #: src/components/PageStudentOverview/PageStudentOverview.tsx:48
@@ -1059,7 +1076,7 @@ msgstr "Minggu"
 msgid "Support"
 msgstr "Bantuan"
 
-#: src/components/PageAdmin/PageAdmin.tsx:103
+#: src/components/PageAdmin/PageAdmin.tsx:108
 msgid "Switch school"
 msgstr "Pindah sekolah"
 
@@ -1075,7 +1092,7 @@ msgstr "Beri tahu kami apa yang sudah anda amati"
 msgid "The term <0>\"{term}\"</0> does not match any student"
 msgstr "Tidak ada murid dengan nama <0>\"{term}\"</0>"
 
-#: src/components/PageAdmin/PageAdmin.tsx:135
+#: src/components/PageAdmin/PageAdmin.tsx:140
 msgid "Theme"
 msgstr "Tema"
 
@@ -1132,7 +1149,7 @@ msgstr "Gunakan Montessori"
 msgid "User/month"
 msgstr "Pengguna/bulan"
 
-#: src/components/PageAdmin/PageAdmin.tsx:81
+#: src/components/PageAdmin/PageAdmin.tsx:86
 msgid "Users"
 msgstr "Pengguna"
 
