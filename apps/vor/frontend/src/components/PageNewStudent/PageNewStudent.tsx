@@ -24,7 +24,7 @@ export const PageNewStudent: FC = () => {
         disableAction={isFormInvalid}
         breadcrumbs={[
           breadCrumb(t`Students`, STUDENTS_URL),
-          breadCrumb("New Student", NEW_STUDENT_URL),
+          breadCrumb(t`New Student`, NEW_STUDENT_URL),
         ]}
         onActionClick={async () => {
           try {

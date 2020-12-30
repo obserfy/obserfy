@@ -114,7 +114,7 @@ export const PageGuardianProfile: FC<Props> = ({ guardianId }) => {
         ))}
 
         {isSuccess && data?.children.length === 0 && (
-          <Typography.Body p={3} sx={{ color: "textMediumEmphasis" }}>
+          <Typography.Body p={3} pt={0} sx={{ color: "textMediumEmphasis" }}>
             <Trans>
               This guardian doesn&apos;t have any children registered yet.
             </Trans>
