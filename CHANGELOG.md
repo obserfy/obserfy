@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.15.0](https://github.com/obserfy/obserfy/compare/v1.14.2...v1.15.0) (2020-12-30)
+
+
+### Features
+
+* add export endpoint. ([253d98a](https://github.com/obserfy/obserfy/commit/253d98a23a7ef90b80b61a7b4e694f9ff4163fd7))
+
+
+### Bug Fixes
+
+* **deps:** update dependency dayjs to v1.9.8 ([280968d](https://github.com/obserfy/obserfy/commit/280968d1129658902402f765eff0929c34624151))
+* **deps:** update dependency fp-ts to v2.9.2 ([b70ad62](https://github.com/obserfy/obserfy/commit/b70ad62d2e97527b8b82ab5319795ca70daf5520))
+* **deps:** update dependency fp-ts to v2.9.3 ([79808e5](https://github.com/obserfy/obserfy/commit/79808e52f9746253751ceec8846f67095cce7c5f))
+* **deps:** update dependency postcss to v8.2.2 ([f0b6a5f](https://github.com/obserfy/obserfy/commit/f0b6a5ff5427c6ec2cc49edd6cb9f147537a804c))
+* **deps:** update dependency react-query to v3.5.6 ([22ec34e](https://github.com/obserfy/obserfy/commit/22ec34ea178c435c985ece77ade8ed2527908d85))
+
 ### [1.14.2](https://github.com/obserfy/obserfy/compare/v1.14.1...v1.14.2) (2020-12-25)
 
 
