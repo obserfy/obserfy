@@ -10,6 +10,7 @@ import {
   ADMIN_GUARDIAN_URL,
   ADMIN_INVITE_USER_URL,
   ADMIN_STUDENTS_URL,
+  ADMIN_SUBSCRIPTION_URL,
   ADMIN_USERS_URL,
   CLASS_SETTINGS_URL,
 } from "../../routes"
@@ -100,6 +101,36 @@ export const PageAdmin: FC = () => {
           <Flex p={3}>
             <Typography.Body>
               <Trans>Invite Your Team</Trans>
+            </Typography.Body>
+            <Icon as={NextIcon} ml="auto" />
+          </Flex>
+        </Link>
+      </Card>
+
+      <Card mb={3} mx={[0, 3]} sx={{ borderRadius: [0, "default"] }}>
+        <Link to={ADMIN_USERS_URL}>
+          <Flex p={3}>
+            <Typography.Body>
+              <Trans>Users</Trans>
+            </Typography.Body>
+            <Icon as={NextIcon} ml="auto" />
+          </Flex>
+        </Link>
+        <Link to={ADMIN_INVITE_USER_URL}>
+          <Flex p={3}>
+            <Typography.Body>
+              <Trans>Invite Your Team</Trans>
+            </Typography.Body>
+            <Icon as={NextIcon} ml="auto" />
+          </Flex>
+        </Link>
+      </Card>
+
+      <Card mb={3} mx={[0, 3]} sx={{ borderRadius: [0, "default"] }}>
+        <Link to={ADMIN_SUBSCRIPTION_URL}>
+          <Flex p={3}>
+            <Typography.Body>
+              <Trans>Subscription</Trans>
             </Typography.Body>
             <Icon as={NextIcon} ml="auto" />
           </Flex>
