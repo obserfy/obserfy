@@ -91,12 +91,12 @@ msgstr "Admin"
 #~ msgid "All"
 #~ msgstr "Semua"
 
-#: src/components/PageAdmin/PageAdmin.tsx:70
+#: src/components/PageAdmin/PageAdmin.tsx:75
 #: src/components/PageListOfGuardians/PageListOfGuardians.tsx:28
 msgid "All Guardians"
 msgstr "Semua Wali Murid"
 
-#: src/components/PageAdmin/PageAdmin.tsx:62
+#: src/components/PageAdmin/PageAdmin.tsx:67
 #: src/components/PageListOfStudents/PageListOfStudents.tsx:34
 msgid "All Students"
 msgstr "Semua Murid"
@@ -187,7 +187,7 @@ msgstr "Ubah Bidang"
 msgid "Choose a Name"
 msgstr "Pilih Nama"
 
-#: src/components/PageAdmin/PageAdmin.tsx:54
+#: src/components/PageAdmin/PageAdmin.tsx:59
 msgid "Class"
 msgstr "Kelas"
 
@@ -242,7 +242,7 @@ msgstr "Kelas saat ini"
 #~ msgid "Current guardians"
 #~ msgstr "Wali saat ini"
 
-#: src/components/PageAdmin/PageAdmin.tsx:46
+#: src/components/PageAdmin/PageAdmin.tsx:51
 msgid "Curriculum"
 msgstr "Kurikulum"
 
@@ -270,7 +270,7 @@ msgstr "Kustom Kurikulum"
 msgid "Daily"
 msgstr "Harian"
 
-#: src/components/PageAdmin/PageAdmin.tsx:138
+#: src/components/PageAdmin/PageAdmin.tsx:143
 msgid "Dark"
 msgstr "Gelap"
 
@@ -465,7 +465,7 @@ msgstr "Perempuan"
 
 #: src/pages/forgot-password.tsx:6
 msgid "Forgot Password"
-msgstr ""
+msgstr "Lupa Password"
 
 #: src/components/PageNewClass/PageNewClass.tsx:30
 msgid "Friday"
@@ -484,11 +484,15 @@ msgstr "Jenis Kelamin"
 
 #: src/pages/register.tsx:17
 msgid "Get started now with 30-days free trial"
-msgstr ""
+msgstr "Mulai sekarang dengan free trial 30-hari"
 
 #: src/components/PageSupport/PageSupport.tsx:42
-msgid "Go to Canny"
-msgstr "Ke Canny"
+msgid "Give Feedback"
+msgstr "Beri kritik dan saran"
+
+#: src/components/PageSupport/PageSupport.tsx:42
+#~ msgid "Go to Canny"
+#~ msgstr "Ke Canny"
 
 #: src/components/EmptyClassDataPlaceholder/EmptyClassDataPlaceholder.tsx:7
 #: src/components/PageNewStudent/NewStudentForm.tsx:112
@@ -540,7 +544,7 @@ msgstr "Dalam Proses"
 msgid "Info"
 msgstr "Info"
 
-#: src/components/PageAdmin/PageAdmin.tsx:89
+#: src/components/PageAdmin/PageAdmin.tsx:94
 msgid "Invite Your Team"
 msgstr "Undang Tim Anda"
 
@@ -552,11 +556,11 @@ msgstr "Undang dengan email"
 msgid "Invite using link"
 msgstr "Undang dengan link"
 
-#: src/components/PageAdmin/PageAdmin.tsx:120
+#: src/components/PageAdmin/PageAdmin.tsx:125
 msgid "Language"
 msgstr "Bahasa"
 
-#: src/components/PageAdmin/PageAdmin.tsx:138
+#: src/components/PageAdmin/PageAdmin.tsx:143
 msgid "Light"
 msgstr "Terang"
 
@@ -565,13 +569,13 @@ msgstr "Terang"
 msgid "Links"
 msgstr "Tautan"
 
-#: src/components/PageAdmin/PageAdmin.tsx:106
+#: src/components/PageAdmin/PageAdmin.tsx:111
 msgid "Log Out"
 msgstr "Keluar"
 
 #: src/pages/login.tsx:6
 msgid "Login for Teachers"
-msgstr ""
+msgstr "Login untuk guru"
 
 #: src/components/PageNewStudent/NewStudentForm.tsx:76
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:196
@@ -581,7 +585,7 @@ msgstr "Laki-laki"
 
 #: src/pages/login.tsx:6
 msgid "Manage your student data"
-msgstr ""
+msgstr "Kelola data murid anda"
 
 #: src/hooks/api/useGetStudentMaterialProgress.ts:40
 msgid "Mastered"
@@ -700,6 +704,10 @@ msgstr "Tidak ada lagi murid untuk ditambahkan"
 msgid "No observation have been added yet"
 msgstr "Belum ada observasi ditambahkan"
 
+#: src/components/PageAllObservations/ObservationsTable.tsx:121
+msgid "No observations found"
+msgstr "Tidak ada observasi yang ditemukan"
+
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:177
 #: src/components/PageStudentPlanDetails/RelatedStudentsCard.tsx:47
 msgid "No other students added yet."
@@ -738,6 +746,7 @@ msgstr "Catatan"
 msgid "Observation"
 msgstr "Observasi"
 
+#: src/components/PageAllObservations/ObservationsTable.tsx:41
 #: src/components/PageStudentOverview/DailyObservationCard.tsx:40
 #: src/pages/dashboard/students/observations/details.tsx:25
 msgid "Observations"
@@ -783,6 +792,14 @@ msgstr "Telepon"
 msgid "Pick a Date"
 msgstr "Pilih Tanggal"
 
+#: src/components/PageAllObservations/ObservationsTable.tsx:104
+msgid "Pick end date"
+msgstr "Pilih tanggal akhir"
+
+#: src/components/PageAllObservations/ObservationsTable.tsx:99
+msgid "Pick start date"
+msgstr "Pilih tanggal awal"
+
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:90
 #: src/components/PageStudentOverview/PageStudentOverview.tsx:48
 #: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:44
@@ -823,7 +840,7 @@ msgstr "Rekam observasi"
 
 #: src/pages/register.tsx:17
 msgid "Register for Free"
-msgstr ""
+msgstr "Daftar dengan gratis"
 
 #: src/components/PageNewObservation/PageNewObservation.tsx:95
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:129
@@ -1059,7 +1076,7 @@ msgstr "Minggu"
 msgid "Support"
 msgstr "Bantuan"
 
-#: src/components/PageAdmin/PageAdmin.tsx:103
+#: src/components/PageAdmin/PageAdmin.tsx:108
 msgid "Switch school"
 msgstr "Pindah sekolah"
 
@@ -1075,7 +1092,7 @@ msgstr "Beri tahu kami apa yang sudah anda amati"
 msgid "The term <0>\"{term}\"</0> does not match any student"
 msgstr "Tidak ada murid dengan nama <0>\"{term}\"</0>"
 
-#: src/components/PageAdmin/PageAdmin.tsx:135
+#: src/components/PageAdmin/PageAdmin.tsx:140
 msgid "Theme"
 msgstr "Tema"
 
@@ -1132,7 +1149,7 @@ msgstr "Gunakan Montessori"
 msgid "User/month"
 msgstr "Pengguna/bulan"
 
-#: src/components/PageAdmin/PageAdmin.tsx:81
+#: src/components/PageAdmin/PageAdmin.tsx:86
 msgid "Users"
 msgstr "Pengguna"
 
