@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.15.1](https://github.com/obserfy/obserfy/compare/v1.15.0...v1.15.1) (2020-12-30)
+
+
+### Bug Fixes
+
+* **deps:** update dependency query-string to v6.13.8 ([76a9303](https://github.com/obserfy/obserfy/commit/76a9303c13927a3986526ea8fbc351d71ecf5f3a))
+
 ## [1.15.0](https://github.com/obserfy/obserfy/compare/v1.14.2...v1.15.0) (2020-12-30)
 
 
