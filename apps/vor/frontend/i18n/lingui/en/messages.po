@@ -421,11 +421,11 @@ msgstr "Event Time"
 msgid "Ex. Mathematics"
 msgstr "Ex. Mathematics"
 
-#: src/components/PageAllObservations/ObservationsTable.tsx:82
+#: src/components/PageAllObservations/ObservationsTable.tsx:83
 msgid "Export"
 msgstr "Export"
 
-#: src/components/PageAllObservations/ObservationsTable.tsx:84
+#: src/components/PageAllObservations/ObservationsTable.tsx:85
 msgid "Export Observations"
 msgstr "Export Observations"
 
@@ -683,7 +683,7 @@ msgstr "No more students to add"
 msgid "No observation have been added yet"
 msgstr "No observation have been added yet"
 
-#: src/components/PageAllObservations/ObservationsTable.tsx:124
+#: src/components/PageAllObservations/ObservationsTable.tsx:125
 msgid "No observations found"
 msgstr "No observations found"
 
@@ -726,6 +726,7 @@ msgid "Observation"
 msgstr "Observation"
 
 #: src/components/PageAllObservations/ObservationsTable.tsx:51
+#: src/components/PageAllObservations/PageAllObservations.tsx:15
 #: src/components/PageStudentOverview/DailyObservationCard.tsx:40
 #: src/pages/dashboard/students/observations/details.tsx:25
 msgid "Observations"
@@ -775,11 +776,11 @@ msgstr "Phone"
 msgid "Pick a Date"
 msgstr "Pick a Date"
 
-#: src/components/PageAllObservations/ObservationsTable.tsx:107
+#: src/components/PageAllObservations/ObservationsTable.tsx:108
 msgid "Pick end date"
 msgstr "Pick end date"
 
-#: src/components/PageAllObservations/ObservationsTable.tsx:102
+#: src/components/PageAllObservations/ObservationsTable.tsx:103
 msgid "Pick start date"
 msgstr "Pick start date"
 
@@ -1097,7 +1098,7 @@ msgstr "This guardian doesn't have any children registered yet."
 msgid "This student doesn't have a guardian yet."
 msgstr "This student doesn't have a guardian yet."
 
-#: src/components/PageAllObservations/ObservationsTable.tsx:84
+#: src/components/PageAllObservations/ObservationsTable.tsx:85
 msgid "This will export all currently visible observations as a csv file, continue?"
 msgstr "This will export all currently visible observations as a csv file, continue?"
 
