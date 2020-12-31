@@ -12,7 +12,7 @@ import useDebounce from "../../hooks/useDebounce"
 import useVisibilityState from "../../hooks/useVisibilityState"
 import { OBSERVATION_DETAILS_URL } from "../../routes"
 import { ReactComponent as CalendarIcon } from "../../icons/calendar.svg"
-// import AlertDialog from "../AlertDialog/AlertDialog"
+import AlertDialog from "../AlertDialog/AlertDialog"
 import DatePickerDialog from "../DatePickerDialog/DatePickerDialog"
 import Icon from "../Icon/Icon"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
@@ -20,6 +20,7 @@ import ObservationListItem from "../ObservationListItem/ObservationListItem"
 import SearchBar from "../SearchBar/SearchBar"
 import Tab from "../Tab/Tab"
 import Typography from "../Typography/Typography"
+import { useExportObservation } from "../../hooks/api/observations/useExportObservations"
 
 export const ObservationsTable: FC<{ studentId: string }> = ({ studentId }) => {
   const [searchTerm, setSearchTerm] = useState("")
@@ -58,7 +59,12 @@ export const ObservationsTable: FC<{ studentId: string }> = ({ studentId }) => {
           <Trans>Observations </Trans>
         </Typography.H5>
 
-        {/* <ExportButton /> */}
+        <ExportButton
+          studentId={studentId}
+          search={searchTerm}
+          startDate={startDate || dayjs(dates[0])}
+          endDate={endDate || dayjs(dates[dates.length - 1])}
+        />
       </Flex>
 
       <Card variant="responsive">
@@ -110,25 +116,34 @@ export const ObservationsTable: FC<{ studentId: string }> = ({ studentId }) => {
   )
 }
 
-// const ExportButton = () => {
-//   const exportDialog = useVisibilityState()
-//
-//   return (
-//     <>
-//       <Button ml="auto" onClick={exportDialog.show}>
-//         <Trans>Export</Trans>
-//       </Button>
-//       {exportDialog.visible && (
-//         <AlertDialog
-//           title={t`Export Observations`}
-//           body={t`This will export all currently visible observations as a csv file, continue?`}
-//           onNegativeClick={exportDialog.hide}
-//           onPositiveClick={exportDialog.hide}
-//         />
-//       )}
-//     </>
-//   )
-// }
+const ExportButton: FC<{
+  studentId: string
+  search: string | ""
+  startDate: dayjs.Dayjs
+  endDate: dayjs.Dayjs
+}> = ({ studentId, search, startDate, endDate }) => {
+  const exportDialog = useVisibilityState()
+
+  const handleExport = async () => {
+    await useExportObservation(studentId, startDate, endDate, search)
+  }
+
+  return (
+    <>
+      <Button ml="auto" onClick={exportDialog.show}>
+        <Trans>Export</Trans>
+      </Button>
+      {exportDialog.visible && (
+        <AlertDialog
+          title={t`Export Observations`}
+          body={t`This will export all currently visible observations as a csv file, continue?`}
+          onNegativeClick={exportDialog.hide}
+          onPositiveClick={handleExport}
+        />
+      )}
+    </>
+  )
+}
 
 const DateRangeSelector: FC<{
   startDate: dayjs.Dayjs
