@@ -10,7 +10,7 @@ export async function useExportObservation(
 ) {
   console.log("export func")
   const res = await fetch(
-    `${BASE_URL}/exports/${getSchoolId()}/observations?&studentId=${studentId}&search=${search}&startDate=${startDate}&endDate=${endDate}`
+    `${BASE_URL}/exports/${getSchoolId()}/observations?&studentId=${studentId}&search=${search}&startDate=${startDate.toISOString()}&endDate=${endDate.toISOString()}`
   )
 
   const blob = new Blob([await res.blob()], { type: "text/csv" })
