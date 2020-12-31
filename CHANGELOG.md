@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.15.2](https://github.com/obserfy/obserfy/compare/v1.15.1...v1.15.2) (2020-12-31)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @types/node to v14.14.17 ([d45ca37](https://github.com/obserfy/obserfy/commit/d45ca37c01272fa34065ccb0b014c95dfeb12032))
+* **deps:** update dependency next-pwa to v5.0.2 ([733470d](https://github.com/obserfy/obserfy/commit/733470d94a3f8566720d086f76ec2fc154ee622c))
+* **deps:** update dependency pino to v6.9.0 ([60c0a02](https://github.com/obserfy/obserfy/commit/60c0a02502b9ed6081ec9acb8089524c682eca48))
+* **deps:** update dependency ts-loader to v8.0.13 ([68e577c](https://github.com/obserfy/obserfy/commit/68e577cfb6d14770d9c528c6454ca659ba36cae0))
+
 ### [1.15.1](https://github.com/obserfy/obserfy/compare/v1.15.0...v1.15.1) (2020-12-30)
 
 
