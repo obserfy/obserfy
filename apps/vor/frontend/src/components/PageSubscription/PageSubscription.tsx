@@ -48,11 +48,11 @@ export const PageSubscription: FC = () => {
             <Typography.Body
               sx={{ fontSize: 1, color: "textMediumEmphasis", lineHeight: 1 }}
             >
-              <Trans>Next Bill</Trans>
+              <Trans>Next billing date</Trans>
             </Typography.Body>
             <Typography.Body>
               {dayjs(school.data?.subscription?.nextBillDate).format(
-                "ddd, DD MMMM YYYY"
+                "D MMMM YYYY"
               )}
             </Typography.Body>
           </Box>
@@ -60,11 +60,11 @@ export const PageSubscription: FC = () => {
             <Typography.Body
               sx={{ fontSize: 1, color: "textMediumEmphasis", lineHeight: 1 }}
             >
-              <Trans>Amount Due</Trans>
+              <Trans>Price</Trans>
             </Typography.Body>
             <Typography.Body>
               ${4 * school.data?.users?.length} ({school.data?.users?.length}{" "}
-              users)
+              users) / month
             </Typography.Body>
           </Box>
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
