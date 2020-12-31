@@ -251,7 +251,7 @@ type School struct {
 	CurriculumId   string     `pg:",type:uuid,on_delete:SET NULL"`
 	Curriculum     Curriculum `pg:"rel:has-one"`
 	Guardian       []Guardian
-	SubscriptionId uuid.UUID    `pg:",type:uuid"`
+	SubscriptionId uuid.UUID    `pg:",type:uuid,on_delete:SET NULL"`
 	Subscription   Subscription `pg:"rel:has-one"`
 	CreatedAt      time.Time    `pg:"default:now()"`
 }
