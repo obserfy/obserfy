@@ -129,7 +129,7 @@ export const PageAdmin: FC = () => {
               size={20}
             />
             <Typography.Body>
-              <Trans>Subscription</Trans>
+              <Trans>Plans & Billing</Trans>
             </Typography.Body>
             <Icon as={NextIcon} ml="auto" />
           </Flex>

@@ -582,7 +582,7 @@ exports[`PageSubscription should render correctly 1`] = `
           <div
             class="emotion-10"
           >
-            Subscription
+            Plans & Billing
             <span
               class="splitter"
             >
@@ -680,7 +680,7 @@ exports[`PageSubscription should render correctly 1`] = `
             <p
               class="emotion-21"
             >
-              Parent portal
+              Parent dashboard
             </p>
           </div>
           <div

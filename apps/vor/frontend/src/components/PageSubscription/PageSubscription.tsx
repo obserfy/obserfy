@@ -27,7 +27,7 @@ export const PageSubscription: FC = () => {
       <TopBar
         breadcrumbs={[
           breadCrumb(t`Admin`, ADMIN_URL),
-          breadCrumb(t`Subscription`),
+          breadCrumb(t`Plans & Billing`),
         ]}
       />
 
@@ -48,11 +48,11 @@ export const PageSubscription: FC = () => {
             <Typography.Body
               sx={{ fontSize: 1, color: "textMediumEmphasis", lineHeight: 1 }}
             >
-              <Trans>Next Bill</Trans>
+              <Trans>Next billing date</Trans>
             </Typography.Body>
             <Typography.Body>
               {dayjs(school.data?.subscription?.nextBillDate).format(
-                "ddd, DD MMMM YYYY"
+                "D MMMM YYYY"
               )}
             </Typography.Body>
           </Box>
@@ -60,11 +60,11 @@ export const PageSubscription: FC = () => {
             <Typography.Body
               sx={{ fontSize: 1, color: "textMediumEmphasis", lineHeight: 1 }}
             >
-              <Trans>Amount Due</Trans>
+              <Trans>Price</Trans>
             </Typography.Body>
             <Typography.Body>
               ${4 * school.data?.users?.length} ({school.data?.users?.length}{" "}
-              users)
+              users) / month
             </Typography.Body>
           </Box>
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
@@ -139,7 +139,7 @@ export const PageSubscription: FC = () => {
           <Feature text={t`Record observations`} />
           <Feature text={t`Create lesson plans`} />
           <Feature text={t`Track curriculum progress`} />
-          <Feature text={t`Parent portal`} />
+          <Feature text={t`Parent dashboard`} />
           <Feature text={t`Image gallery`} />
         </Box>
 
@@ -166,9 +166,10 @@ export const PageSubscription: FC = () => {
                 displayModeTheme: colorMode === "dark" ? "dark" : "light",
                 quantity: school.data?.users?.length ?? 1,
                 message:
-                  "Qty and price will be updated later based on your school's user count.",
+                  "Quantity and price will be adjusted later based on your school's user count.",
                 successCallback: () => {
                   school.refetch()
+                  window.location.reload()
                 },
               })
             }
