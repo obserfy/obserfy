@@ -6,7 +6,8 @@ export async function useExportObservation(
   studentId: string,
   startDate: dayjs.Dayjs,
   endDate: dayjs.Dayjs,
-  search: string
+  search: string,
+  studentName: string
 ) {
   console.log("export func")
   const res = await fetch(
@@ -18,7 +19,12 @@ export async function useExportObservation(
   const a = document.createElement("a")
   a.setAttribute("hidden", "")
   a.setAttribute("href", url)
-  a.setAttribute("download", "download.csv")
+  a.setAttribute(
+    "download",
+    `${studentName}_${startDate.format("DD-MMM-YY")}_${endDate.format(
+      "DD-MMM-YY"
+    )}.csv`
+  )
   document.body.appendChild(a)
   a.click()
   document.body.removeChild(a)

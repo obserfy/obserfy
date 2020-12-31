@@ -22,7 +22,10 @@ import Tab from "../Tab/Tab"
 import Typography from "../Typography/Typography"
 import { useExportObservation } from "../../hooks/api/observations/useExportObservations"
 
-export const ObservationsTable: FC<{ studentId: string }> = ({ studentId }) => {
+export const ObservationsTable: FC<{
+  studentId: string
+  studentName: string
+}> = ({ studentId, studentName }) => {
   const [searchTerm, setSearchTerm] = useState("")
   const [startDate, setStartDate] = useState<Dayjs>()
   const [endDate, setEndDate] = useState<Dayjs>()
@@ -64,6 +67,7 @@ export const ObservationsTable: FC<{ studentId: string }> = ({ studentId }) => {
           search={searchTerm}
           startDate={startDate || dayjs(dates[0])}
           endDate={endDate || dayjs(dates[dates.length - 1])}
+          studentName={studentName}
         />
       </Flex>
 
@@ -121,11 +125,19 @@ const ExportButton: FC<{
   search: string | ""
   startDate: dayjs.Dayjs
   endDate: dayjs.Dayjs
-}> = ({ studentId, search, startDate, endDate }) => {
+  studentName: string
+}> = ({ studentId, search, startDate, endDate, studentName }) => {
   const exportDialog = useVisibilityState()
 
   const handleExport = async () => {
-    await useExportObservation(studentId, startDate, endDate, search)
+    await useExportObservation(
+      studentId,
+      startDate,
+      endDate,
+      search,
+      studentName
+    )
+    exportDialog.hide()
   }
 
   return (
