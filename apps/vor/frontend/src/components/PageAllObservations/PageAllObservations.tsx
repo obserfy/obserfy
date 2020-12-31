@@ -23,7 +23,10 @@ export const PageAllObservations: FC<Props> = ({ studentId }) => {
         ]}
       />
 
-      <ObservationsTable studentId={studentId} />
+      <ObservationsTable
+        studentId={studentId}
+        studentName={getFirstName(student)}
+      />
     </Box>
   )
 }
