@@ -27,7 +27,7 @@ export const PageSubscription: FC = () => {
       <TopBar
         breadcrumbs={[
           breadCrumb(t`Admin`, ADMIN_URL),
-          breadCrumb(t`Subscription`),
+          breadCrumb(t`Plans & Billing`),
         ]}
       />
 
@@ -139,7 +139,7 @@ export const PageSubscription: FC = () => {
           <Feature text={t`Record observations`} />
           <Feature text={t`Create lesson plans`} />
           <Feature text={t`Track curriculum progress`} />
-          <Feature text={t`Parent portal`} />
+          <Feature text={t`Parent dashboard`} />
           <Feature text={t`Image gallery`} />
         </Box>
 
