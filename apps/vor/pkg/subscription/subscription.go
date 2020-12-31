@@ -132,7 +132,13 @@ func handleSubscriptionUpdated(form url.Values, store Store) *rest.Error {
 	return nil
 }
 
-func handleSubscriptionCancelled(form url.Values, store Store) *rest.Error {
+func handleSubscriptionCancelled(values url.Values, store Store) *rest.Error {
+	subscriptionId := values.Get("subscription_id")
+
+	if err := store.DeleteSubscription(subscriptionId); err != nil {
+		return rest.NewInternalServerError(err, "failed to delete subscription ("+subscriptionId+")")
+	}
+
 	return nil
 }
 
@@ -215,4 +221,5 @@ type Subscription struct {
 
 type Store interface {
 	SaveNewSubscription(schoolId string, subscription Subscription) error
+	DeleteSubscription(id string) error
 }

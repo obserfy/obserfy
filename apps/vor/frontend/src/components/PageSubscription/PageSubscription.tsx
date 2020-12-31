@@ -166,9 +166,10 @@ export const PageSubscription: FC = () => {
                 displayModeTheme: colorMode === "dark" ? "dark" : "light",
                 quantity: school.data?.users?.length ?? 1,
                 message:
-                  "Qty and price will be updated later based on your school's user count.",
+                  "Quantity and price will be adjusted later based on your school's user count.",
                 successCallback: () => {
                   school.refetch()
+                  window.location.reload()
                 },
               })
             }

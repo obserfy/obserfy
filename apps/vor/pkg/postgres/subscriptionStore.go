@@ -42,3 +42,11 @@ func (s SubscriptionStore) SaveNewSubscription(schoolId string, subscription sub
 
 	return nil
 }
+
+func (s SubscriptionStore) DeleteSubscription(id string) error {
+	var target Subscription
+	if _, err := s.Model(&target).Where("subscription_id=?", id).Delete(); err != nil {
+		return richErrors.Wrap(err, "failed to delete subscription")
+	}
+	return nil
+}
