@@ -11,6 +11,7 @@ import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import { ADMIN_URL } from "../../routes"
 import Icon from "../Icon/Icon"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
+import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import TopBar, { breadCrumb } from "../TopBar/TopBar"
 import Typography from "../Typography/Typography"
 
@@ -26,13 +27,13 @@ export const PageSubscription: FC = () => {
       <TopBar
         breadcrumbs={[
           breadCrumb(t`Admin`, ADMIN_URL),
-          breadCrumb(t`Subscription`),
+          breadCrumb(t`Plans & Billing`),
         ]}
       />
 
-      {school.data?.subscription ? (
+      {school.data?.subscription && (
         <Card m={3} px={4} sx={{ borderRadius: 16 }}>
-          <Flex my={4} sx={{ alignItems: "center" }}>
+          <Flex pt={4} pb={3} sx={{ alignItems: "center" }}>
             <Typography.Body
               color="textPrimary"
               sx={{ fontWeight: "bold", lineHeight: 1 }}
@@ -47,11 +48,11 @@ export const PageSubscription: FC = () => {
             <Typography.Body
               sx={{ fontSize: 1, color: "textMediumEmphasis", lineHeight: 1 }}
             >
-              <Trans>Next Bill</Trans>
+              <Trans>Next billing date</Trans>
             </Typography.Body>
             <Typography.Body>
               {dayjs(school.data?.subscription?.nextBillDate).format(
-                "ddd, DD MMMM YYYY"
+                "D MMMM YYYY"
               )}
             </Typography.Body>
           </Box>
@@ -59,11 +60,11 @@ export const PageSubscription: FC = () => {
             <Typography.Body
               sx={{ fontSize: 1, color: "textMediumEmphasis", lineHeight: 1 }}
             >
-              <Trans>Amount Due</Trans>
+              <Trans>Price</Trans>
             </Typography.Body>
             <Typography.Body>
               ${4 * school.data?.users?.length} ({school.data?.users?.length}{" "}
-              users)
+              users) / month
             </Typography.Body>
           </Box>
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
@@ -83,7 +84,7 @@ export const PageSubscription: FC = () => {
           </a>
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
           <a href={school.data?.subscription.cancelUrl}>
-            <Flex py={3} mb={3} sx={{ alignItems: "center" }}>
+            <Flex py={3} pb={4} sx={{ alignItems: "center" }}>
               <Icon as={CancelIcon} size={24} fill="danger" />
               <Typography.Body ml={3} sx={{ lineHeight: 1 }}>
                 <Trans>Cancel Plan</Trans>
@@ -92,7 +93,9 @@ export const PageSubscription: FC = () => {
             </Flex>
           </a>
         </Card>
-      ) : (
+      )}
+
+      {school.isSuccess && !school.data?.subscription && (
         <Card m={3} px={4} sx={{ borderRadius: 16 }}>
           <Flex py={4} sx={{ alignItems: "center" }}>
             <Typography.Body color="textPrimary" sx={{ fontWeight: "bold" }}>
@@ -104,6 +107,15 @@ export const PageSubscription: FC = () => {
           </Flex>
         </Card>
       )}
+
+      {school.isLoading && (
+        <Box px={3} pt={3}>
+          <LoadingPlaceholder
+            sx={{ width: "100%", height: "16rem", borderRadius: 16 }}
+          />
+        </Box>
+      )}
+
       <Card m={3} p={4} mt={3} sx={{ borderRadius: 16 }}>
         <Typography.Body
           color="textPrimary"
@@ -127,7 +139,7 @@ export const PageSubscription: FC = () => {
           <Feature text={t`Record observations`} />
           <Feature text={t`Create lesson plans`} />
           <Feature text={t`Track curriculum progress`} />
-          <Feature text={t`Parent portal`} />
+          <Feature text={t`Parent dashboard`} />
           <Feature text={t`Image gallery`} />
         </Box>
 
@@ -154,9 +166,10 @@ export const PageSubscription: FC = () => {
                 displayModeTheme: colorMode === "dark" ? "dark" : "light",
                 quantity: school.data?.users?.length ?? 1,
                 message:
-                  "Qty and price will be updated later based on your school's user count.",
+                  "Quantity and price will be adjusted later based on your school's user count.",
                 successCallback: () => {
                   school.refetch()
+                  window.location.reload()
                 },
               })
             }

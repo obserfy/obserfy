@@ -231,7 +231,7 @@ exports[`Layout should render correctly 1`] = `
 
 @media screen and (min-width: 40em) {
   .emotion-14 {
-    padding-left: 64px;
+    padding-left: 60px;
   }
 }
 

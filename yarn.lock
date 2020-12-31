@@ -8389,10 +8389,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:14.14.16":
-  version: 14.14.16
-  resolution: "@types/node@npm:14.14.16"
-  checksum: 220a7496ec73861ad7fb4ae762618bb46ac9d5d5f92f3a2fcebfd1a81a509ff558eface7bcd1d632598a8a28f856a74b324e7165918e8334a59c221cb06d15e3
+"@types/node@npm:14.14.17":
+  version: 14.14.17
+  resolution: "@types/node@npm:14.14.17"
+  checksum: 2bb32c683d8446128cf3240b4af6cc884c6ee006a845d1901becadc46255d1263bf265abde5ccb37a09d9a318fc3964d07afc941d52544f2d7f249dbb28d9420
   languageName: node
   linkType: hard
 
@@ -16002,7 +16002,7 @@ __metadata:
     "@hapi/iron": 6.0.0
     "@types/auth0-js": 9.14.2
     "@types/faker": 5.1.5
-    "@types/node": 14.14.16
+    "@types/node": 14.14.17
     "@types/pg": 7.14.7
     "@typescript-eslint/eslint-plugin": 4.9.1
     "@typescript-eslint/parser": 4.9.1
@@ -16026,7 +16026,7 @@ __metadata:
     pg: 8.5.1
     pnp-webpack-plugin: 1.6.4
     prettier: 2.2.1
-    ts-loader: 8.0.12
+    ts-loader: 8.0.13
     typescript: 4.1.3
     wait-on: 5.2.1
   languageName: unknown
@@ -18891,7 +18891,7 @@ fsevents@^1.2.7:
     "@types/minio": 7.0.6
     "@types/mixpanel-browser": 2.35.4
     "@types/nanoid": 2.1.0
-    "@types/node": 14.14.16
+    "@types/node": 14.14.17
     "@types/pg": 7.14.7
     "@types/pino": 6.3.4
     "@types/react": 17.0.0
@@ -18925,10 +18925,10 @@ fsevents@^1.2.7:
     newtype-ts: 0.3.4
     next: 10.0.4
     next-compose-plugins: 2.2.1
-    next-pwa: 5.0.1
+    next-pwa: 5.0.2
     node-mocks-http: 1.9.0
     pg: 8.5.1
-    pino: 6.8.0
+    pino: 6.9.0
     pino-pretty: 4.3.0
     postcss: 8.2.2
     postcss-preset-env: 6.7.0
@@ -26691,9 +26691,9 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"next-pwa@npm:5.0.1":
-  version: 5.0.1
-  resolution: "next-pwa@npm:5.0.1"
+"next-pwa@npm:5.0.2":
+  version: 5.0.2
+  resolution: "next-pwa@npm:5.0.2"
   dependencies:
     clean-webpack-plugin: ^3.0.0
     globby: ^11.0.1
@@ -26702,7 +26702,7 @@ mocha@latest:
   peerDependencies:
     next: ">=7.0.0"
     webpack: ">=4.0.0"
-  checksum: 77c9c821e8db050fc1539010e2c7f2751aace948a0daf56c998a180c397bb1d309469da3f54a216177558d01d1a3af5784dd0f25401543bf54f6f39e5cf2a031
+  checksum: b9f8c7ad3c04c503ad1037b47a025579403cda82f2c27b930b0a42e214ce60286296e9b539001020f125894c1a68e40695081ae070c8d217218f8b380f76dd4e
   languageName: node
   linkType: hard
 
@@ -28870,9 +28870,9 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"pino@npm:6.8.0":
-  version: 6.8.0
-  resolution: "pino@npm:6.8.0"
+"pino@npm:6.9.0":
+  version: 6.9.0
+  resolution: "pino@npm:6.9.0"
   dependencies:
     fast-redact: ^3.0.0
     fast-safe-stringify: ^2.0.7
@@ -28882,7 +28882,7 @@ mocha@latest:
     sonic-boom: ^1.0.2
   bin:
     pino: bin.js
-  checksum: 6e1721fe8a250d2e2158e6aaa36396737d511928bebb9c0e90f692d0fc401458234b7063f0cef485f5e1c2b44441e14f96bf42d57eefa4015b61c2dd37bce67d
+  checksum: 841b6ba6ac2efabaf9b40d425f508074d2b2044b1f9518508203b3d1040007e30c89f22d46eb9e85daee0a39cd96c96c6ebd1bbc3e0c2c7acfae85953e79bbd8
   languageName: node
   linkType: hard
 
@@ -36130,9 +36130,9 @@ resolve@^1.19.0:
   languageName: node
   linkType: hard
 
-"ts-loader@npm:8.0.12":
-  version: 8.0.12
-  resolution: "ts-loader@npm:8.0.12"
+"ts-loader@npm:8.0.13":
+  version: 8.0.13
+  resolution: "ts-loader@npm:8.0.13"
   dependencies:
     chalk: ^2.3.0
     enhanced-resolve: ^4.0.0
@@ -36142,7 +36142,7 @@ resolve@^1.19.0:
   peerDependencies:
     typescript: "*"
     webpack: "*"
-  checksum: 70da090dacb77ff51eb71ddb506a63e4617487855637441f99e8f66553933c410af1a54e71316caa0b05522fb47eaf2c9a6aaa3a0abb8b6a12ebf50b6a80f54e
+  checksum: 269c38f684b533e7547bc6994c9e174f2a374bd2ff6ec24cb9be6d2b7468d57f3108d177141be49726b5d348f466f2d6c6a02d5117d66c258e980727b762e70c
   languageName: node
   linkType: hard
 
