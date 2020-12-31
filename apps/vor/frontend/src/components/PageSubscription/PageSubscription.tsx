@@ -11,6 +11,7 @@ import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import { ADMIN_URL } from "../../routes"
 import Icon from "../Icon/Icon"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
+import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import TopBar, { breadCrumb } from "../TopBar/TopBar"
 import Typography from "../Typography/Typography"
 
@@ -30,9 +31,9 @@ export const PageSubscription: FC = () => {
         ]}
       />
 
-      {school.data?.subscription ? (
+      {school.data?.subscription && (
         <Card m={3} px={4} sx={{ borderRadius: 16 }}>
-          <Flex my={4} sx={{ alignItems: "center" }}>
+          <Flex pt={4} pb={3} sx={{ alignItems: "center" }}>
             <Typography.Body
               color="textPrimary"
               sx={{ fontWeight: "bold", lineHeight: 1 }}
@@ -83,7 +84,7 @@ export const PageSubscription: FC = () => {
           </a>
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
           <a href={school.data?.subscription.cancelUrl}>
-            <Flex py={3} mb={3} sx={{ alignItems: "center" }}>
+            <Flex py={3} pb={4} sx={{ alignItems: "center" }}>
               <Icon as={CancelIcon} size={24} fill="danger" />
               <Typography.Body ml={3} sx={{ lineHeight: 1 }}>
                 <Trans>Cancel Plan</Trans>
@@ -92,7 +93,9 @@ export const PageSubscription: FC = () => {
             </Flex>
           </a>
         </Card>
-      ) : (
+      )}
+
+      {school.isSuccess && !school.data?.subscription && (
         <Card m={3} px={4} sx={{ borderRadius: 16 }}>
           <Flex py={4} sx={{ alignItems: "center" }}>
             <Typography.Body color="textPrimary" sx={{ fontWeight: "bold" }}>
@@ -104,6 +107,15 @@ export const PageSubscription: FC = () => {
           </Flex>
         </Card>
       )}
+
+      {school.isLoading && (
+        <Box px={3} pt={3}>
+          <LoadingPlaceholder
+            sx={{ width: "100%", height: "16rem", borderRadius: 16 }}
+          />
+        </Box>
+      )}
+
       <Card m={3} p={4} mt={3} sx={{ borderRadius: 16 }}>
         <Typography.Body
           color="textPrimary"
