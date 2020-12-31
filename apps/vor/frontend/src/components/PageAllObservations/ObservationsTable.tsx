@@ -3,6 +3,7 @@ import React, { FC, memo, ReactNode, useState } from "react"
 import { Box, Button, Card, Flex } from "theme-ui"
 import { borderBottom, borderFull } from "../../border"
 import dayjs, { Dayjs } from "../../dayjs"
+import { exportStudentObservations } from "../../export"
 import { useGetCurriculumAreas } from "../../hooks/api/useGetCurriculumAreas"
 import {
   Observation,
@@ -20,7 +21,6 @@ import ObservationListItem from "../ObservationListItem/ObservationListItem"
 import SearchBar from "../SearchBar/SearchBar"
 import Tab from "../Tab/Tab"
 import Typography from "../Typography/Typography"
-import { useExportObservation } from "../../hooks/api/observations/useExportObservations"
 
 export const ObservationsTable: FC<{
   studentId: string
@@ -130,7 +130,7 @@ const ExportButton: FC<{
   const exportDialog = useVisibilityState()
 
   const handleExport = async () => {
-    await useExportObservation(
+    await exportStudentObservations(
       studentId,
       startDate,
       endDate,

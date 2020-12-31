@@ -1,15 +1,14 @@
-import dayjs from "../../../dayjs"
-import { getSchoolId } from "../../schoolIdState"
-import { BASE_URL } from "../useApi"
+import dayjs from "./dayjs"
+import { BASE_URL } from "./hooks/api/useApi"
+import { getSchoolId } from "./hooks/schoolIdState"
 
-export async function useExportObservation(
+export async function exportStudentObservations(
   studentId: string,
   startDate: dayjs.Dayjs,
   endDate: dayjs.Dayjs,
   search: string,
   studentName: string
 ) {
-  console.log("export func")
   const res = await fetch(
     `${BASE_URL}/exports/${getSchoolId()}/observations?&studentId=${studentId}&search=${search}&startDate=${startDate.toISOString()}&endDate=${endDate.toISOString()}`
   )
