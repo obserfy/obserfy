@@ -85,10 +85,6 @@ msgstr "Address"
 msgid "Admin"
 msgstr "Admin"
 
-#: src/components/PageStudentOverview/PageStudentOverview.tsx:119
-#~ msgid "All"
-#~ msgstr "All"
-
 #: src/components/PageAdmin/PageAdmin.tsx:78
 #: src/components/PageListOfGuardians/PageListOfGuardians.tsx:22
 #: src/components/PageListOfGuardians/PageListOfGuardians.tsx:28
@@ -160,10 +156,6 @@ msgstr "Available every"
 msgid "By"
 msgstr "By"
 
-#: src/components/ObservationListItem/ObservationListItem.tsx:27
-#~ msgid "By {0}"
-#~ msgstr "By {0}"
-
 #: src/components/DeleteClassDialog/DeleteClassDialog.tsx:48
 #: src/components/PageListOfStudents/PageListOfStudents.tsx:77
 #: src/components/PageNewSchool/PageNewSchool.tsx:47
@@ -213,10 +205,6 @@ msgstr "Create lesson plans"
 msgid "Create new class"
 msgstr "Create new class"
 
-#: src/components/PageEditGuardians/PageEditGuardians.tsx:66
-#~ msgid "Create new guardian"
-#~ msgstr "Create new guardian"
-
 #: src/components/PageStudentOverview/DailyObservationCard.tsx:96
 msgid "Create observation"
 msgstr "Create observation"
@@ -238,10 +226,6 @@ msgstr "Current Plan"
 #: src/components/PageEditStudentClass/PageEditStudentClass.tsx:48
 msgid "Current classes"
 msgstr "Current classes"
-
-#: src/components/PageEditGuardians/PageEditGuardians.tsx:49
-#~ msgid "Current guardians"
-#~ msgstr "Current guardians"
 
 #: src/components/PageAdmin/PageAdmin.tsx:54
 msgid "Curriculum"
@@ -345,10 +329,6 @@ msgid "Details"
 msgstr "Details"
 
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:142
-#~ msgid "Do you really want to remove {name}?"
-#~ msgstr "Do you really want to remove {name}?"
-
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:142
 msgid "Do you want to remove {name} from  {studentName}'s list of guardians?"
 msgstr "Do you want to remove {name} from  {studentName}'s list of guardians?"
 
@@ -384,17 +364,9 @@ msgstr "Edit Description"
 msgid "Edit Details"
 msgstr "Edit Details"
 
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:100
-#~ msgid "Edit Email"
-#~ msgstr "Edit Email"
-
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:204
 msgid "Edit Gender"
 msgstr "Edit Gender"
-
-#: src/components/PageEditGuardians/PageEditGuardians.tsx:46
-#~ msgid "Edit Guardians"
-#~ msgstr "Edit Guardians"
 
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:107
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:169
@@ -408,10 +380,6 @@ msgstr "Edit Note"
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:260
 msgid "Edit Notes"
 msgstr "Edit Notes"
-
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:120
-#~ msgid "Edit Phone"
-#~ msgstr "Edit Phone"
 
 #: src/components/PageObservationDetails/ObservationMetaCard.tsx:40
 msgid "Edit Short Description"
@@ -452,6 +420,14 @@ msgstr "Event Time"
 #: src/components/NewAreaDialog/NewAreaDialog.tsx:35
 msgid "Ex. Mathematics"
 msgstr "Ex. Mathematics"
+
+#: src/components/PageAllObservations/ObservationsTable.tsx:83
+msgid "Export"
+msgstr "Export"
+
+#: src/components/PageAllObservations/ObservationsTable.tsx:85
+msgid "Export Observations"
+msgstr "Export Observations"
 
 #: src/components/GuardianRelationshipPickerDialog/GuardianRelationshipPickerDialog.tsx:24
 #: src/components/GuardianRelationshipSelector/GuardianRelationshipSelector.tsx:13
@@ -494,10 +470,6 @@ msgstr "Get started now with 30-days free trial"
 #: src/components/PageSupport/PageSupport.tsx:42
 msgid "Give Feedback"
 msgstr "Give Feedback"
-
-#: src/components/PageSupport/PageSupport.tsx:42
-#~ msgid "Go to Canny"
-#~ msgstr "Go to Canny"
 
 #: src/components/EmptyClassDataPlaceholder/EmptyClassDataPlaceholder.tsx:7
 #: src/components/PageNewStudent/NewStudentForm.tsx:112
@@ -685,10 +657,6 @@ msgstr "No class has been set"
 msgid "No classes selected yet"
 msgstr "No classes selected yet"
 
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:108
-#~ msgid "No email"
-#~ msgstr "No email"
-
 #: src/components/PageListOfGuardians/PageListOfGuardians.tsx:59
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:132
 #: src/components/SimpleGuardiansSelector/SimpleGuardiansSelector.tsx:32
@@ -698,10 +666,6 @@ msgstr "No email set"
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:98
 msgid "No guardians has been set"
 msgstr "No guardians has been set"
-
-#: src/components/PageEditGuardians/PageEditGuardians.tsx:55
-#~ msgid "No guardians set yet"
-#~ msgstr "No guardians set yet"
 
 #: src/components/PageStudentPlanDetails/LessonPlanLinksCard.tsx:26
 msgid "No links attached yet"
@@ -719,7 +683,7 @@ msgstr "No more students to add"
 msgid "No observation have been added yet"
 msgstr "No observation have been added yet"
 
-#: src/components/PageAllObservations/ObservationsTable.tsx:121
+#: src/components/PageAllObservations/ObservationsTable.tsx:125
 msgid "No observations found"
 msgstr "No observations found"
 
@@ -761,7 +725,7 @@ msgstr "Notes"
 msgid "Observation"
 msgstr "Observation"
 
-#: src/components/PageAllObservations/ObservationsTable.tsx:41
+#: src/components/PageAllObservations/ObservationsTable.tsx:51
 #: src/components/PageAllObservations/PageAllObservations.tsx:15
 #: src/components/PageStudentOverview/DailyObservationCard.tsx:40
 #: src/pages/dashboard/students/observations/details.tsx:25
@@ -812,11 +776,11 @@ msgstr "Phone"
 msgid "Pick a Date"
 msgstr "Pick a Date"
 
-#: src/components/PageAllObservations/ObservationsTable.tsx:104
+#: src/components/PageAllObservations/ObservationsTable.tsx:108
 msgid "Pick end date"
 msgstr "Pick end date"
 
-#: src/components/PageAllObservations/ObservationsTable.tsx:99
+#: src/components/PageAllObservations/ObservationsTable.tsx:103
 msgid "Pick start date"
 msgstr "Pick start date"
 
@@ -956,10 +920,6 @@ msgstr "See All"
 msgid "See All {0} Progress"
 msgstr "See All {0} Progress"
 
-#: src/components/ObservationCard/ObservationCard.tsx:25
-#~ msgid "See More"
-#~ msgstr "See More"
-
 #: src/components/StudentPickerDialog/StudentPickerDialog.tsx:30
 msgid "Select Students"
 msgstr "Select Students"
@@ -971,10 +931,6 @@ msgstr "Select a guardian or create one"
 #: src/components/PageEditStudentClass/PageEditStudentClass.tsx:70
 msgid "Select from existing class"
 msgstr "Select from existing class"
-
-#: src/components/PageEditGuardians/PageEditGuardians.tsx:73
-#~ msgid "Select from existing guardian"
-#~ msgstr "Select from existing guardian"
 
 #: src/components/PageInviteUser/PageInviteUser.tsx:75
 msgid "Send invites"
@@ -1141,6 +1097,10 @@ msgstr "This guardian doesn't have any children registered yet."
 #: src/components/PageNewStudent/NewStudentForm.tsx:128
 msgid "This student doesn't have a guardian yet."
 msgstr "This student doesn't have a guardian yet."
+
+#: src/components/PageAllObservations/ObservationsTable.tsx:85
+msgid "This will export all currently visible observations as a csv file, continue?"
+msgstr "This will export all currently visible observations as a csv file, continue?"
 
 #: src/components/PageNewClass/PageNewClass.tsx:29
 msgid "Thursday"

@@ -3,6 +3,7 @@ import React, { FC, memo, ReactNode, useState } from "react"
 import { Box, Button, Card, Flex } from "theme-ui"
 import { borderBottom, borderFull } from "../../border"
 import dayjs, { Dayjs } from "../../dayjs"
+import { exportStudentObservations } from "../../export"
 import { useGetCurriculumAreas } from "../../hooks/api/useGetCurriculumAreas"
 import {
   Observation,
@@ -12,7 +13,7 @@ import useDebounce from "../../hooks/useDebounce"
 import useVisibilityState from "../../hooks/useVisibilityState"
 import { OBSERVATION_DETAILS_URL } from "../../routes"
 import { ReactComponent as CalendarIcon } from "../../icons/calendar.svg"
-// import AlertDialog from "../AlertDialog/AlertDialog"
+import AlertDialog from "../AlertDialog/AlertDialog"
 import DatePickerDialog from "../DatePickerDialog/DatePickerDialog"
 import Icon from "../Icon/Icon"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
@@ -21,7 +22,10 @@ import SearchBar from "../SearchBar/SearchBar"
 import Tab from "../Tab/Tab"
 import Typography from "../Typography/Typography"
 
-export const ObservationsTable: FC<{ studentId: string }> = ({ studentId }) => {
+export const ObservationsTable: FC<{
+  studentId: string
+  studentName: string
+}> = ({ studentId, studentName }) => {
   const [searchTerm, setSearchTerm] = useState("")
   const [startDate, setStartDate] = useState<Dayjs>()
   const [endDate, setEndDate] = useState<Dayjs>()
@@ -58,7 +62,13 @@ export const ObservationsTable: FC<{ studentId: string }> = ({ studentId }) => {
           <Trans>Observations </Trans>
         </Typography.H5>
 
-        {/* <ExportButton /> */}
+        <ExportButton
+          studentId={studentId}
+          search={searchTerm}
+          startDate={startDate || dayjs(dates[0])}
+          endDate={endDate || dayjs(dates[dates.length - 1])}
+          studentName={studentName}
+        />
       </Flex>
 
       <Card variant="responsive">
@@ -110,25 +120,42 @@ export const ObservationsTable: FC<{ studentId: string }> = ({ studentId }) => {
   )
 }
 
-// const ExportButton = () => {
-//   const exportDialog = useVisibilityState()
-//
-//   return (
-//     <>
-//       <Button ml="auto" onClick={exportDialog.show}>
-//         <Trans>Export</Trans>
-//       </Button>
-//       {exportDialog.visible && (
-//         <AlertDialog
-//           title={t`Export Observations`}
-//           body={t`This will export all currently visible observations as a csv file, continue?`}
-//           onNegativeClick={exportDialog.hide}
-//           onPositiveClick={exportDialog.hide}
-//         />
-//       )}
-//     </>
-//   )
-// }
+const ExportButton: FC<{
+  studentId: string
+  search: string | ""
+  startDate: dayjs.Dayjs
+  endDate: dayjs.Dayjs
+  studentName: string
+}> = ({ studentId, search, startDate, endDate, studentName }) => {
+  const exportDialog = useVisibilityState()
+
+  const handleExport = async () => {
+    await exportStudentObservations(
+      studentId,
+      startDate,
+      endDate,
+      search,
+      studentName
+    )
+    exportDialog.hide()
+  }
+
+  return (
+    <>
+      <Button ml="auto" onClick={exportDialog.show}>
+        <Trans>Export</Trans>
+      </Button>
+      {exportDialog.visible && (
+        <AlertDialog
+          title={t`Export Observations`}
+          body={t`This will export all currently visible observations as a csv file, continue?`}
+          onNegativeClick={exportDialog.hide}
+          onPositiveClick={handleExport}
+        />
+      )}
+    </>
+  )
+}
 
 const DateRangeSelector: FC<{
   startDate: dayjs.Dayjs
