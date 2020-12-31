@@ -192,7 +192,7 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
                   href="https://parent.obserfy.com/api/login"
                   sx={{ color: "textPrimary" }}
                 >
-                  Go to parent portal
+                  Go to parent dashboard
                 </a>
               </Typography.Body>
             </Flex>

@@ -577,7 +577,7 @@ exports[`PageAdmin should render correctly 1`] = `
             <p
               class="emotion-5"
             >
-              Subscription
+              Plans & Billing
             </p>
             <div
               class="emotion-6"

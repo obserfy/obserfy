@@ -51,7 +51,7 @@ func (s ExportsStore) GetObservations(schoolId string, studentId string, search 
 			VisibleToGuardians: observation.VisibleToGuardians,
 		}
 
-		if observation.Creator.Id != "" {
+		if observation.CreatorId != "" {
 			newObservation.CreatorId = observation.Creator.Id
 			newObservation.CreatorName = observation.Creator.Name
 		}

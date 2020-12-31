@@ -620,7 +620,7 @@ exports[`PageLogin should render correctly 1`] = `
               class="emotion-22"
               href="https://parent.obserfy.com/api/login"
             >
-              Go to parent portal
+              Go to parent dashboard
             </a>
           </p>
         </div>
