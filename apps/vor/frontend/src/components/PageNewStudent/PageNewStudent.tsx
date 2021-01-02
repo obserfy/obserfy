@@ -7,11 +7,11 @@ import { navigate } from "../Link/Link"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import { breadCrumb } from "../TopBar/TopBar"
 import TopBarWithAction from "../TopBarWithAction/TopBarWithAction"
+import { NewStudentForm } from "./NewStudentForm"
 import {
-  NewStudentForm,
   newStudentFormDefaultState,
   useNewStudentFormContext,
-} from "./NewStudentForm"
+} from "./NewStudentFormContext"
 
 export const PageNewStudent: FC = () => {
   const { state, setState } = useNewStudentFormContext()
