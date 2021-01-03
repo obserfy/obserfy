@@ -29,7 +29,8 @@ export const initSentry = () => {
 
     Sentry.init({
       enabled: process.env.NODE_ENV === "production",
-      dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
+      dsn:
+        "https://cb901298e868441898d8717f07a20188@o330610.ingest.sentry.io/5447244",
       release: process.env.NEXT_PUBLIC_RELEASE,
       integrations,
     })
