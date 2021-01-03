@@ -67,9 +67,13 @@ const Navbar: FC = () => {
         bottom: [0, "auto"],
         left: 0,
         position: "fixed",
-        borderTopStyle: "solid",
-        borderTopWidth: "1px",
-        borderTopColor: "borderSolid",
+
+        borderTopStyle: ["solid", "none"],
+        borderRightStyle: ["none", "solid"],
+        borderBottomStyle: "none",
+        borderLeftStyle: "none",
+        borderWidth: "1px",
+        borderColor: "borderBold",
       }}
     >
       <Flex

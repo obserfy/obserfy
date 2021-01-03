@@ -1,6 +1,9 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React, { FC } from "react"
+import { Box } from "theme-ui"
 import { PaymentSuccessQuery } from "../../../graphql-types"
+import { ADMIN_SUBSCRIPTION_URL, ADMIN_URL } from "../../routes"
+import TopBar, { breadCrumb } from "../TopBar/TopBar"
 
 export interface PagePaymentSuccessProps {}
 
@@ -17,7 +20,17 @@ const PagePaymentSuccess: FC<PagePaymentSuccessProps> = () => {
     }
   `)
 
-  return <div />
+  return (
+    <Box mx="auto" sx={{ maxWidth: "maxWidth.xsm" }}>
+      <TopBar
+        breadcrumbs={[
+          breadCrumb("Admin", ADMIN_URL),
+          breadCrumb("Subscription", ADMIN_SUBSCRIPTION_URL),
+          breadCrumb("Success"),
+        ]}
+      />
+    </Box>
+  )
 }
 
 export default PagePaymentSuccess
