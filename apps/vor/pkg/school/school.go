@@ -335,6 +335,7 @@ func getSchool(s rest.Server, store Store) rest.Handler {
 		InviteCode   string        `json:"inviteCode"`
 		Users        []user        `json:"users"`
 		Subscription *subscription `json:"subscription,omitempty"`
+		CreatedAt    time.Time     `json:"createdAt"`
 	}
 
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
@@ -348,9 +349,9 @@ func getSchool(s rest.Server, store Store) rest.Handler {
 		school, err := store.GetSchool(schoolId)
 		if err != nil {
 			return &rest.Error{
-				http.StatusInternalServerError,
-				"Failed getting school data",
-				err,
+				Code:    http.StatusInternalServerError,
+				Message: "Failed getting school data",
+				Error:   err,
 			}
 		}
 
@@ -366,6 +367,7 @@ func getSchool(s rest.Server, store Store) rest.Handler {
 			InviteLink: "https://" + os.Getenv("SITE_URL") + "/register?inviteCode=" + school.InviteCode,
 			InviteCode: school.InviteCode,
 			Users:      users,
+			CreatedAt:  school.CreatedAt,
 		}
 		if (Subscription{}) != school.Subscription {
 			response.Subscription = &subscription{
@@ -378,7 +380,11 @@ func getSchool(s rest.Server, store Store) rest.Handler {
 		}
 
 		if err := rest.WriteJson(w, response); err != nil {
-			return &rest.Error{http.StatusInternalServerError, "Failed writing message", err}
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "Failed writing message",
+				Error:   err,
+			}
 		}
 		return nil
 	})
