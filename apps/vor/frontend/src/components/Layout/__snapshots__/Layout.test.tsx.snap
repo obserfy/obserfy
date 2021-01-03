@@ -29,8 +29,11 @@ exports[`Layout should render correctly 1`] = `
   left: 0;
   position: fixed;
   border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: var(--theme-ui-colors-borderSolid, #e5e5e5);
+  border-right-style: none;
+  border-bottom-style: none;
+  border-left-style: none;
+  border-width: 1px;
+  border-color: var(--theme-ui-colors-borderBold, #e5e5e5);
 }
 
 @media screen and (min-width: 40em) {
@@ -40,6 +43,8 @@ exports[`Layout should render correctly 1`] = `
     display: block;
     top: 0;
     bottom: auto;
+    border-top-style: none;
+    border-right-style: solid;
   }
 }
 

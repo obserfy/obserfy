@@ -5,7 +5,7 @@ import PageAdmin from "../../../components/PageAdmin/PageAdmin"
 const Settings: FC = () => {
   return (
     <>
-      <SEO title="Settings" />
+      <SEO title="Admin" />
       <PageAdmin />
     </>
   )
