@@ -1,6 +1,8 @@
+import { t } from "@lingui/macro"
 import React from "react"
 import { Helmet } from "react-helmet"
 import PageSubscription from "../../../../components/PageSubscription/PageSubscription"
+import SEO from "../../../../components/seo"
 
 const SubscriptionPage = () => {
   return (
@@ -13,6 +15,7 @@ const SubscriptionPage = () => {
         />
         <link rel="preconnect" href="https://create-checkout.paddle.com" />
       </Helmet>
+      <SEO title={t`Plans & Billing`} />
       <PageSubscription />
     </>
   )

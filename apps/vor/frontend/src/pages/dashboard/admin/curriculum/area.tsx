@@ -1,3 +1,4 @@
+import { t } from "@lingui/macro"
 import React, { FC } from "react"
 import queryString from "query-string"
 import { PageRendererProps } from "gatsby"
@@ -15,7 +16,7 @@ const Settings: FC<PageRendererProps> = ({ location }) => {
 
   return (
     <>
-      <SEO title="Settings" />
+      <SEO title={t`Areas`} />
       <PageCurriculumArea id={id} />
     </>
   )
