@@ -72,6 +72,7 @@ func (s SchoolStore) GetSchool(schoolId string) (*cSchool.School, error) {
 		Name:       school.Name,
 		InviteCode: school.InviteCode,
 		Users:      userData,
+		CreatedAt:  school.CreatedAt,
 	}
 	if (Subscription{}) != school.Subscription {
 		result.Subscription = cSchool.Subscription{
