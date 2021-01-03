@@ -182,7 +182,7 @@ export const PageSubscription: FC = () => {
                 successCallback: () => {
                   setTimeout(() => {
                     navigate(ADMIN_SUBSCRIPTION_SUCCESS_URL)
-                  }, 100)
+                  }, 500)
                 },
               })
             }
