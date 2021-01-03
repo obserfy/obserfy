@@ -137,6 +137,15 @@ export const PageSubscription: FC = () => {
           </Typography.Body>
         </Flex>
 
+        <Typography.Body my={3}>
+          <Trans>Get full access to all features.</Trans>{" "}
+          <a href="https://obserfy.com/pricing">
+            <u>
+              <Trans>Learn more.</Trans>
+            </u>
+          </a>
+        </Typography.Body>
+
         <Box my={3}>
           <Feature text={t`Unlimited students`} />
           <Feature text={t`Record observations`} />
