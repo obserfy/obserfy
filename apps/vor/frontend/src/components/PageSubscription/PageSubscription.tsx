@@ -67,6 +67,7 @@ export const PageSubscription: FC = () => {
               users) / month
             </Typography.Body>
           </Box>
+
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
           <a href={school.data?.subscription.updateUrl}>
             <Flex py={3} sx={{ alignItems: "center" }}>
@@ -76,17 +77,18 @@ export const PageSubscription: FC = () => {
                 color="textPrimary"
                 fill="transparent"
               />
-              <Typography.Body ml={3} sx={{ lineHeight: 1 }}>
+              <Typography.Body ml={3}>
                 <Trans>Payment details</Trans>
               </Typography.Body>
               <Icon as={NextIcon} ml="auto" />
             </Flex>
           </a>
+
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
           <a href={school.data?.subscription.cancelUrl}>
             <Flex py={3} pb={4} sx={{ alignItems: "center" }}>
               <Icon as={CancelIcon} size={24} fill="danger" />
-              <Typography.Body ml={3} sx={{ lineHeight: 1 }}>
+              <Typography.Body ml={3}>
                 <Trans>Cancel Plan</Trans>
               </Typography.Body>
               <Icon as={NextIcon} ml="auto" />

@@ -5,7 +5,7 @@ import PageUsers from "../../../components/PageUsers/PageUsers"
 const Users: FC = () => {
   return (
     <>
-      <SEO title="Settings" />
+      <SEO title="Users" />
       <PageUsers />
     </>
   )

@@ -3104,6 +3104,11 @@ export type AstronautImageQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type AstronautImageQuery = { file?: Maybe<{ childImageSharp?: Maybe<{ fixed?: Maybe<GatsbyImageSharpFixed_WithWebpFragment> }> }> };
 
+export type PaymentSuccessQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type PaymentSuccessQuery = { file?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluid_WithWebpFragment> }> }> };
+
 export type Unnamed_5_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
