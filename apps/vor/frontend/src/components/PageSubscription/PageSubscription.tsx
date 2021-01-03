@@ -8,8 +8,9 @@ import { ReactComponent as CheckmarkIcon } from "../../icons/checkmark-outline.s
 import { ReactComponent as CancelIcon } from "../../icons/close.svg"
 import { ReactComponent as CreditCardIcon } from "../../icons/credit-card.svg"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
-import { ADMIN_URL } from "../../routes"
+import { ADMIN_SUBSCRIPTION_SUCCESS_URL, ADMIN_URL } from "../../routes"
 import Icon from "../Icon/Icon"
+import { navigate } from "../Link/Link"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import TopBar, { breadCrumb } from "../TopBar/TopBar"
@@ -170,8 +171,9 @@ export const PageSubscription: FC = () => {
                 message:
                   "Quantity and price will be adjusted later based on your school's user count.",
                 successCallback: () => {
-                  school.refetch()
-                  window.location.reload()
+                  setTimeout(() => {
+                    navigate(ADMIN_SUBSCRIPTION_SUCCESS_URL)
+                  }, 100)
                 },
               })
             }
