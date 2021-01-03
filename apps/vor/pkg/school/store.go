@@ -21,6 +21,7 @@ type (
 		CurriculumId string
 		Curriculum   Curriculum
 		Subscription Subscription
+		CreatedAt    time.Time
 	}
 
 	Subscription struct {

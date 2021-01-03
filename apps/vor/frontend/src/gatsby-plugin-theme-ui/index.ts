@@ -45,6 +45,7 @@ const theme: Theme = {
 
     border: "rgba(0,0,0,.1)",
     borderSolid: "#e5e5e5",
+    borderBold: "#e5e5e5",
 
     overlay: "rgba(0,0,0,.7)",
     onOverlay: "#fff",
@@ -114,6 +115,7 @@ const theme: Theme = {
 
         border: "rgba(232,232,232, 0.07)",
         borderSolid: "#2c2c2c",
+        borderBold: "black",
 
         muted: "#222222",
         mutedLight: "#212121",

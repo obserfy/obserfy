@@ -1,16 +1,14 @@
 import { t, Trans } from "@lingui/macro"
 import { useLingui } from "@lingui/react"
-import React, { createContext, FC, useContext, useState } from "react"
+import React, { FC, useState } from "react"
 import { Box, Button, Card, Flex } from "theme-ui"
-import { Updater, useImmer } from "use-immer"
+import { borderTop } from "../../border"
 import useGetSchoolClasses from "../../hooks/api/classes/useGetSchoolClasses"
 import { useGetGuardian } from "../../hooks/api/guardians/useGetGuardian"
 import {
   Gender,
   GuardianRelationship,
 } from "../../hooks/api/students/usePostNewStudent"
-import { borderTop } from "../../border"
-import { Dayjs } from "../../dayjs"
 import { ReactComponent as TrashIcon } from "../../icons/trash.svg"
 import { CLASS_SETTINGS_URL, NEW_STUDENT_ADD_GUARDIAN_URL } from "../../routes"
 import Chip from "../Chip/Chip"
@@ -26,39 +24,7 @@ import Select from "../Select/Select"
 import TextArea from "../TextArea/TextArea"
 import { Typography } from "../Typography/Typography"
 import WarningDialog from "../WarningDialog/WarningDialog"
-
-export const newStudentFormDefaultState = {
-  classes: [] as string[],
-  guardians: [] as Array<{
-    id: string
-    relationship: GuardianRelationship
-  }>,
-  dateOfEntry: undefined as Dayjs | undefined,
-  dateOfBirth: undefined as Dayjs | undefined,
-  gender: 0,
-  note: "",
-  customId: "",
-  profileImageId: "",
-  name: "",
-}
-
-// Context to persist and share form state across pages
-const NewStudentFormContext = createContext({
-  state: newStudentFormDefaultState,
-  setState: (() => {}) as Updater<typeof newStudentFormDefaultState>,
-})
-
-export const NewStudentFormProvider: FC = ({ children }) => {
-  const [state, setState] = useImmer(newStudentFormDefaultState)
-
-  return (
-    <NewStudentFormContext.Provider value={{ state, setState }}>
-      {children}
-    </NewStudentFormContext.Provider>
-  )
-}
-
-export const useNewStudentFormContext = () => useContext(NewStudentFormContext)
+import { useNewStudentFormContext } from "./NewStudentFormContext"
 
 export const NewStudentForm = () => {
   const { i18n } = useLingui()

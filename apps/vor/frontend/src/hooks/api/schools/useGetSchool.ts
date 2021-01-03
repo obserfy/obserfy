@@ -5,6 +5,7 @@ import { getSchoolId } from "../../schoolIdState"
 export interface GetSchoolResponse {
   name: string
   inviteLink: string
+  createdAt: string
   users: Array<{
     id: string
     name: string

@@ -1,3 +1,4 @@
+import { t } from "@lingui/macro"
 import React, { FC } from "react"
 import SEO from "../../../../components/seo"
 import PageCurriculumSettings from "../../../../components/PageCurriculumSettings/PageCurriculumSettings"
@@ -5,7 +6,7 @@ import PageCurriculumSettings from "../../../../components/PageCurriculumSetting
 const Settings: FC = () => {
   return (
     <>
-      <SEO title="Settings" />
+      <SEO title={t`Curriculum`} />
       <PageCurriculumSettings />
     </>
   )
