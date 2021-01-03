@@ -1,3 +1,4 @@
+import { Trans } from "@lingui/macro"
 import { useMatch } from "@reach/router"
 import { useBreakpointIndex } from "@theme-ui/match-media"
 import { useLocalization } from "gatsby-theme-i18n"
@@ -103,8 +104,8 @@ const TrialOverdueNotification = () => {
       sx={{ backgroundColor: "warning", width: "100%", ...borderBottom }}
     >
       <Flex sx={{ alignItems: "center", justifyContent: "center" }}>
-        <Typography.Body color="onWarning" mr={3}>
-          Trial period has ended.
+        <Typography.Body color="onWarning" mr={3} sx={{ fontWeight: "bold" }}>
+          <Trans>Trial period has ended.</Trans>
         </Typography.Body>
 
         <Link to={ADMIN_SUBSCRIPTION_URL}>
@@ -117,7 +118,7 @@ const TrialOverdueNotification = () => {
               color: "textWarning",
             }}
           >
-            Choose a plan
+            <Trans>Subscribe</Trans>
           </Button>
         </Link>
       </Flex>
