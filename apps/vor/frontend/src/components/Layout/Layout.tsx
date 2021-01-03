@@ -1,19 +1,21 @@
-import React, { FC, useEffect, useState } from "react"
-import { Box, Flex } from "theme-ui"
 import { useMatch } from "@reach/router"
 import { useBreakpointIndex } from "@theme-ui/match-media"
 import { useLocalization } from "gatsby-theme-i18n"
+import React, { FC, useEffect, useState } from "react"
+import { Box, Button, Flex } from "theme-ui"
+import { borderBottom, borderFull, borderRight } from "../../border"
+import { useGetUserProfile } from "../../hooks/api/useGetUserProfile"
 import {
   getSchoolId,
   SCHOOL_ID_UNDEFINED_PLACEHOLDER,
 } from "../../hooks/schoolIdState"
+import useIsTrialOverdue from "../../hooks/useIsTrialOverdue"
+import { ADMIN_SUBSCRIPTION_URL } from "../../routes"
+import { Link, navigate } from "../Link/Link"
 import Navbar from "../Navbar/Navbar"
-import { useGetUserProfile } from "../../hooks/api/useGetUserProfile"
 import { NewStudentFormProvider } from "../PageNewStudent/NewStudentFormContext"
-import Typography from "../Typography/Typography"
 import StudentsList from "../StudentsList/StudentsList"
-import { borderRight } from "../../border"
-import { navigate } from "../Link/Link"
+import Typography from "../Typography/Typography"
 
 /** Top level component which encapsulate most pages. Provides Appbar and Sidebar for navigation.
  *
@@ -41,6 +43,7 @@ export const Layout: FC = ({ children }) => {
           pb={[80, 0]}
         >
           <UpdateNotification />
+          <TrialOverdueNotification />
           <NewStudentFormProvider>
             <Box pb={84}>{children}</Box>
           </NewStudentFormProvider>
@@ -83,6 +86,41 @@ const UpdateNotification = () => {
           Update Now
         </Box>
       </Typography.Body>
+    </Box>
+  )
+}
+
+const TrialOverdueNotification = () => {
+  const trialOverdue = useIsTrialOverdue()
+
+  if (!trialOverdue) {
+    return <></>
+  }
+
+  return (
+    <Box
+      py={2}
+      sx={{ backgroundColor: "warning", width: "100%", ...borderBottom }}
+    >
+      <Flex sx={{ alignItems: "center", justifyContent: "center" }}>
+        <Typography.Body color="onWarning" mr={3}>
+          Trial period has ended.
+        </Typography.Body>
+
+        <Link to={ADMIN_SUBSCRIPTION_URL}>
+          <Button
+            variant="outline"
+            sx={{
+              ...borderFull,
+              fontWeight: "bold",
+              backgroundColor: "white",
+              color: "textWarning",
+            }}
+          >
+            Choose a plan
+          </Button>
+        </Link>
+      </Flex>
     </Box>
   )
 }
