@@ -1,6 +1,8 @@
 import React from "react"
 import { Meta, Story } from "@storybook/react"
-import PagePaymentSuccess, { PagePaymentSuccessProps } from "./PagePaymentSuccess"
+import PagePaymentSuccess, {
+  PagePaymentSuccessProps,
+} from "./PagePaymentSuccess"
 
 export default {
   title: "Core/PagePaymentSuccess",
@@ -10,7 +12,9 @@ export default {
   },
 } as Meta
 
-const Template: Story<PagePaymentSuccessProps> = (args) => <PagePaymentSuccess {...args} />
+const Template: Story<PagePaymentSuccessProps> = (args) => (
+  <PagePaymentSuccess {...args} />
+)
 
 export const Default = Template.bind({})
 Default.args = {}
