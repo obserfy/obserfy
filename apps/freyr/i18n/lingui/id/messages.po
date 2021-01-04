@@ -24,7 +24,7 @@ msgstr ""
 
 #: src/pages/pricing.tsx:21
 msgid "$4 per User/month"
-msgstr ""
+msgstr "4 USD per Pengguna/bulan"
 
 #: src/pages/index.tsx:132
 #~ msgid "../images/gaia.png"
@@ -89,9 +89,9 @@ msgstr ""
 msgid "Digital record keeping"
 msgstr ""
 
-#: src/components/header.tsx:31
-#~ msgid "Docs"
-#~ msgstr "Docs"
+#: src/components/Header.tsx:29
+msgid "Docs"
+msgstr "Docs"
 
 #: src/pages/index.tsx:130
 msgid "Easily keep track of your student's progress through your curriculum in one place, making building reports easier."
@@ -119,7 +119,7 @@ msgstr "Untuk Guru"
 
 #: src/pages/pricing.tsx:47
 msgid "Free 30-day trial"
-msgstr ""
+msgstr "Gratis uji coba 30-hari"
 
 #: src/pages/index.tsx:25
 #~ msgid "Get Early Access"
@@ -135,15 +135,15 @@ msgstr ""
 
 #: src/pages/index.tsx:256
 msgid "Give it a try now with a 30-days free trial"
-msgstr ""
+msgstr "Mulai sekarang dengan uji coba gratis selama 30-hari"
 
 #: src/pages/contact.tsx:14
 msgid "Have a question? Shoot us a message using this form. We'd love to talk with you about your need."
 msgstr "Punya pertanyaan? Kirimkan pesan ke kami menggunakan form disamping."
 
 #: src/components/Header.tsx:29
-msgid "Help Center"
-msgstr ""
+#~ msgid "Help Center"
+#~ msgstr ""
 
 #: src/pages/index.tsx:66
 #~ msgid "Helping teachers to be more productive"
@@ -159,7 +159,7 @@ msgstr "Berapa banyak murid/wali murid yang bisa kita masukan?"
 
 #: src/pages/pricing.tsx:39
 msgid "Image gallery"
-msgstr ""
+msgstr "Galeri Gambar"
 
 #: src/pages/privacy-policy.tsx:14
 msgid "Last updated"
@@ -362,11 +362,11 @@ msgstr ""
 #: src/components/Header.tsx:32
 #: src/components/Header.tsx:110
 msgid "What's New"
-msgstr ""
+msgstr "Update Terbaru"
 
 #: src/pages/pricing.tsx:58
 msgid "Who counts as a User?"
-msgstr ""
+msgstr "Siapa yang termasuk sebagai Pengguna?"
 
 #: src/pages/pricing.tsx:77
 msgid "You can track as many students as you want and share access to the parent dashboard to as many people as you need without increasing the cost."

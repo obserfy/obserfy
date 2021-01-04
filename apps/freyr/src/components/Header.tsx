@@ -30,7 +30,7 @@ const Header: FC = () => {
           </div>
 
           <nav className="hidden md:flex mx-auto absolute w-full left-0 right-0 justify-center pointer-events-none">
-            <InternalNavLinks href="/help" text={t`Help Center`} />
+            <InternalNavLinks href="/docs" text={t`Docs`} />
             <InternalNavLinks href="/pricing" text={t`Pricing`} />
             <NavLinks href="https://feedback.obserfy.com" text={t`Roadmap`} />
             <NavLinks
@@ -139,10 +139,10 @@ const Sidebar: FC<{ show: boolean; onClose: () => void }> = ({
         <div className="prose flex flex-col ml-6">
           <h3 className="my-2">
             <Link
-              to="/help"
+              to="/docs"
               className="no-underline font-bold hover:text-green-700 transition-colors"
             >
-              Help Center
+              Documentation
             </Link>
           </h3>
           <h3 className="my-2">

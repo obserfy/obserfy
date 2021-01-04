@@ -84,9 +84,9 @@ msgstr "Dashboard for parents to see their child's progress in realtime"
 msgid "Digital record keeping"
 msgstr "Digital record keeping"
 
-#: src/components/header.tsx:31
-#~ msgid "Docs"
-#~ msgstr "Docs"
+#: src/components/Header.tsx:29
+msgid "Docs"
+msgstr "Docs"
 
 #: src/pages/index.tsx:130
 msgid "Easily keep track of your student's progress through your curriculum in one place, making building reports easier."
@@ -137,8 +137,8 @@ msgid "Have a question? Shoot us a message using this form. We'd love to talk wi
 msgstr "Have a question? Shoot us a message using this form. We'd love to talk with you about your need."
 
 #: src/components/Header.tsx:29
-msgid "Help Center"
-msgstr "Help Center"
+#~ msgid "Help Center"
+#~ msgstr "Help Center"
 
 #: src/pages/index.tsx:66
 #~ msgid "Helping teachers to be more productive"
@@ -366,4 +366,3 @@ msgstr "Who counts as a User?"
 #: src/pages/pricing.tsx:77
 msgid "You can track as many students as you want and share access to the parent dashboard to as many people as you need without increasing the cost."
 msgstr "You can track as many students as you want and share access to the parent dashboard to as many people as you need without increasing the cost."
-

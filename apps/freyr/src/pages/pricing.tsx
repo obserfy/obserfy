@@ -1,11 +1,13 @@
-import { Trans } from "@lingui/macro"
+import { t, Trans } from "@lingui/macro"
 import React, { FC } from "react"
 import Layout from "../components/layout"
 import Button from "../components/Button/Button"
+import SEO from "../components/seo"
 
 const PricingPage: FC = () => {
   return (
     <Layout>
+      <SEO title={t`Pricing`} description={t`Simple and affordable pricing`} />
       <div className="max-w-2xl mx-auto">
         <div className="sm:flex">
           <div className="prose sm:mt-5 mt-16 mb-16 mx-4">
