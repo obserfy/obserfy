@@ -57,9 +57,11 @@ func observationAuthMiddleware(s rest.Server, store Store) func(next http.Handle
 }
 
 func exportObservations(s rest.Server, store Store) http.Handler {
-	type response struct {
-		ShortDesc string `csv:"shortDesc"`
-		LongDesc  string `csv:"longDesc"`
+	type observationItem struct {
+		Date      string `csv:"Date"`
+		Area      string `csv:"Area"`
+		ShortDesc string `csv:"Short Description"`
+		Details   string `csv:"Details"`
 	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		queries := r.URL.Query()
@@ -74,12 +76,17 @@ func exportObservations(s rest.Server, store Store) http.Handler {
 			return rest.NewInternalServerError(err, "failed to get observations")
 		}
 
-		body := make([]response, 0)
+		body := make([]observationItem, 0)
 		for _, observation := range observations {
-			body = append(body, response{
-				LongDesc:  observation.LongDesc,
+			o := observationItem{
+				Date:      observation.EventTime.Format("2006-01-02"),
+				Details:   observation.LongDesc,
 				ShortDesc: observation.ShortDesc,
-			})
+			}
+			if observation.Area.Id != "" {
+				o.Area = observation.Area.Name
+			}
+			body = append(body, o)
 		}
 		if err := rest.WriteCsv(w, body); err != nil {
 			return rest.NewWriteCsvError(err)

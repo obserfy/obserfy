@@ -33,14 +33,16 @@ func (s *ImagesTestSuite) TestObservationExport() {
 	assert.Equal(t, result.Code, http.StatusOK)
 
 	type responseBody struct {
-		ShortDesc string `csv:"shortDesc"`
-		LongDesc  string `csv:"longDesc"`
+		Date      string `csv:"Date"`
+		Area      string `csv:"Area"`
+		ShortDesc string `csv:"Short Description"`
+		Details   string `csv:"Details"`
 	}
 	body := make([]responseBody, 0)
 	err := gocsv.UnmarshalBytes(result.Body.Bytes(), &body)
 	assert.NoError(t, err)
 	assert.Len(t, body, 1)
-	assert.Equal(t, body[0].LongDesc, observation.LongDesc)
+	assert.Equal(t, body[0].Details, observation.LongDesc)
 	assert.Equal(t, body[0].ShortDesc, observation.ShortDesc)
 }
 
@@ -53,8 +55,10 @@ func (s *ImagesTestSuite) TestUnauthorizedObservationExport() {
 	assert.Equal(t, result.Code, http.StatusOK)
 
 	type responseBody struct {
-		ShortDesc string `csv:"shortDesc"`
-		LongDesc  string `csv:"longDesc"`
+		Date      string `csv:"Date"`
+		Area      string `csv:"Area"`
+		ShortDesc string `csv:"Short Description"`
+		Details   string `csv:"Details"`
 	}
 	body := make([]responseBody, 0)
 	err := gocsv.UnmarshalBytes(result.Body.Bytes(), &body)
