@@ -103,6 +103,10 @@ msgstr "Semua Wali Murid"
 msgid "All Students"
 msgstr "Semua Murid"
 
+#: src/components/PageRegister/PageRegister.tsx:113
+msgid "Already have an account?"
+msgstr "Sudah punya akun?"
+
 #: src/components/PageSubscription/PageSubscription.tsx:48
 #~ msgid "Amount Due"
 #~ msgstr "Jumlah Jatuh Tempo"
@@ -110,6 +114,10 @@ msgstr "Semua Murid"
 #: src/components/PageSubscription/PageSubscription.tsx:103
 #~ msgid "And more coming..."
 #~ msgstr "Dan masih banyak lagi..."
+
+#: src/components/PageRegister/PageRegister.tsx:124
+msgid "Are you a parent or guardian?"
+msgstr "Apakah anda orang tua atau wali murid?"
 
 #: src/pages/dashboard/admin/guardians/profile.tsx:38
 #: src/pages/dashboard/students/profile/guardians/profile.tsx:40
@@ -497,6 +505,10 @@ msgstr "Ke Pengaturan Kelas"
 msgid "Go to Curriculum"
 msgstr "Buka Kurikulum"
 
+#: src/components/PageRegister/PageRegister.tsx:126
+msgid "Go to parent dashboard"
+msgstr "Kunjungi dashboard untuk orang tua"
+
 #: src/components/NewGuardianForm/NewGuardianForm.tsx:12
 #: src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx:33
 msgid "Guardian Name"
@@ -570,9 +582,14 @@ msgstr "Tautan"
 msgid "Log Out"
 msgstr "Keluar"
 
+#: src/components/PageRegister/PageRegister.tsx:115
 #: src/pages/login.tsx:6
-msgid "Login for Teachers"
-msgstr "Login untuk guru"
+msgid "Login"
+msgstr "Masuk"
+
+#: src/pages/login.tsx:6
+#~ msgid "Login for Teachers"
+#~ msgstr "Login untuk guru"
 
 #: src/components/PageNewStudent/NewStudentForm.tsx:53
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:196
@@ -1008,6 +1025,11 @@ msgstr "Deskripsi Pendek"
 #: src/components/PageNewObservation/PageNewObservation.tsx:91
 msgid "Short Description*"
 msgstr "Deskripsi Pendek*"
+
+#: src/components/PageRegister/PageRegister.tsx:100
+#: src/components/PageRegister/PageRegister.tsx:107
+msgid "Sign Up"
+msgstr "Daftar"
 
 #: src/components/PageSubscription/PageSubscription.tsx:167
 msgid "Soon"

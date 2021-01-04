@@ -1,4 +1,5 @@
 /** @jsx jsx */
+import { Trans } from "@lingui/macro"
 import { FC, useState, Fragment } from "react"
 import { Box, Button, Card, Flex, jsx } from "theme-ui"
 import { useMutation, useQuery } from "react-query"
@@ -41,6 +42,7 @@ const usePostRegisterUserToSchool = () => {
 interface Props {
   inviteCode?: string
 }
+
 export const PageRegister: FC<Props> = ({ inviteCode }) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -123,7 +125,7 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
         {(!user.data?.isLoggedIn || !inviteCode) && (
           <Fragment>
             <Typography.H5 sx={{ fontWeight: "bold" }} my={3}>
-              Sign Up
+              <Trans>Sign Up</Trans>
             </Typography.H5>
             <Input
               sx={{ width: "100%" }}
@@ -157,7 +159,7 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
             />
             <Button sx={{ width: "100%" }} data-cy="register-button">
               {postRegister.isLoading && <LoadingIndicator />}
-              Sign Up
+              <Trans>Sign Up</Trans>
             </Button>
             <Typography.Body
               my={3}
@@ -171,9 +173,9 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
               color="textMediumEmphasis"
               sx={{ textAlign: "center" }}
             >
-              Already have an account?{" "}
+              <Trans>Already have an account?</Trans>{" "}
               <Link to="/login" sx={{ color: "textPrimary" }}>
-                Login
+                <Trans>Login</Trans>
               </Link>
             </Typography.Body>
             <Flex
@@ -187,12 +189,12 @@ export const PageRegister: FC<Props> = ({ inviteCode }) => {
             >
               <Icon as={InfoIcon} fill="primaryDark" />
               <Typography.Body sx={{ fontSize: 1, lineHeight: 1.4 }} ml={2}>
-                Are you a parent?{" "}
+                <Trans>Are you a parent or guardian?</Trans>{" "}
                 <a
                   href="https://parent.obserfy.com/api/login"
                   sx={{ color: "textPrimary" }}
                 >
-                  Go to parent dashboard
+                  <Trans>Go to parent dashboard</Trans>
                 </a>
               </Typography.Body>
             </Flex>
