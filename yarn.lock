@@ -8023,12 +8023,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/dompurify@npm:2.1.0":
-  version: 2.1.0
-  resolution: "@types/dompurify@npm:2.1.0"
+"@types/dompurify@npm:2.2.0":
+  version: 2.2.0
+  resolution: "@types/dompurify@npm:2.2.0"
   dependencies:
     "@types/trusted-types": "*"
-  checksum: 3c2db1463aeafd72101d85906f07a2f9c5e324cb2c9f34e7f82d5caa9a827e0b41e08e5849a1d8854412027850381f457fe3eecd586a3fec0da98c2154ab8f31
+  checksum: 672b5ce40551252b1188af9c55fd1b290d1ff1af59a9822a9fcdf66ba8a79a896a2f72377c6297114aa8f8f334743f42b48a4af0cface732d328e91b74d02cce
   languageName: node
   linkType: hard
 
@@ -18886,7 +18886,7 @@ fsevents@^1.2.7:
     "@sentry/webpack-plugin": 1.14.0
     "@tailwindcss/typography": 0.3.1
     "@types/body-scroll-lock": 2.6.1
-    "@types/dompurify": 2.1.0
+    "@types/dompurify": 2.2.0
     "@types/formidable": 1.0.31
     "@types/jest": 26.0.19
     "@types/minio": 7.0.6
@@ -37485,7 +37485,7 @@ typescript@^4.0.0:
     "@theme-ui/match-media": 0.6.0-alpha.1
     "@types/body-scroll-lock": 2.6.1
     "@types/date-fns": 2.6.0
-    "@types/dompurify": 2.1.0
+    "@types/dompurify": 2.2.0
     "@types/faker": 5.1.5
     "@types/jest": 26.0.19
     "@types/query-string": 6.3.0
