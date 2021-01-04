@@ -35,7 +35,8 @@ const IndexPage: FC = () => {
   return (
     <Layout>
       <SEO
-        title={t`Record Keeping & Communication tool for Montessori Schools`}
+        title={t`Montessori record keeping software`}
+        description={t`Montessori record keeping and parent communication software. Obserfy tries to bridge the gap between schools and parents.`}
       />
       <div className="justify-center pt-8 md:pt-16">
         <div className="md:flex flex-row-reverse items-center mb-32">

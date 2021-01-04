@@ -2,7 +2,7 @@ import React from "react"
 import Header from "../components/Header"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
-const Help = ({ data }) => (
+const Docs = ({ data }) => (
   <div className="max-w-7xl mx-auto relative">
     <Header />
     <main className="prose px-5">
@@ -13,7 +13,7 @@ const Help = ({ data }) => (
   </div>
 )
 
-export default Help
+export default Docs
 
 export const query = graphql`
   query($locale: String!, $slug: String!) {
