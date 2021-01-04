@@ -29,7 +29,7 @@ const useIsTrialOverdue = () => {
         isTrialOverdue(school.data.createdAt, school.data.subscription)
       )
     }
-  })
+  }, [school.data?.createdAt, school.data?.subscription, school.isSuccess])
 
   return trialOverdue
 }
