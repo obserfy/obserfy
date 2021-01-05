@@ -14753,9 +14753,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress@npm:6.2.0":
-  version: 6.2.0
-  resolution: "cypress@npm:6.2.0"
+"cypress@npm:6.2.1":
+  version: 6.2.1
+  resolution: "cypress@npm:6.2.1"
   dependencies:
     "@cypress/listr-verbose-renderer": ^0.4.1
     "@cypress/request": ^2.88.5
@@ -14797,7 +14797,7 @@ __metadata:
     yauzl: ^2.10.0
   bin:
     cypress: bin/cypress
-  checksum: 9244333e30bf6e0d85107b698124ec6b369bb725ad417ae5ebccf2bdc2064789ea3874d79a1518f1fc48eddec1a657d19e3e0862006247ed2eacbb2528288b01
+  checksum: 3c6e9ae747e84d0e505b33e8d28ef302a81424ab716fd8fa5620f29bbb35f079827470e0668fb24ace23c4e976523b2da2177675828f21101291a75e4a0137c5
   languageName: node
   linkType: hard
 
@@ -16007,7 +16007,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": 4.11.1
     "@typescript-eslint/parser": 4.11.1
     auth0-js: 9.14.0
-    cypress: 6.2.0
+    cypress: 6.2.1
     cypress-intellij-reporter: 0.0.5
     dotenv: 8.2.0
     eslint: 7.16.0
