@@ -11100,12 +11100,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-plugin-remove-graphql-queries@npm:2.13.0":
-  version: 2.13.0
-  resolution: "babel-plugin-remove-graphql-queries@npm:2.13.0"
+"babel-plugin-remove-graphql-queries@npm:2.14.0":
+  version: 2.14.0
+  resolution: "babel-plugin-remove-graphql-queries@npm:2.14.0"
   peerDependencies:
     gatsby: ^2.0.0
-  checksum: 9ea84a75fcc2d22ca37055dd533b567231811982781f1a00c023d24b219abe5803173a58df236250efcc4c5dd56b77bacdd67f6f084725145fe6de6f658e6859
+  checksum: 8a12e051a4b4dabf87dcbea7a83996b341c5fa4d54a6fc6a06be9e95d5b19160403014e055efe51c32d8d5b4803adafe0a5deabf562bb3041f6b8d0e2b7ee219
   languageName: node
   linkType: hard
 
@@ -37500,7 +37500,7 @@ typescript@^4.0.0:
     babel-loader: 8.2.2
     babel-plugin-istanbul: 6.0.0
     babel-plugin-macros: 3.0.1
-    babel-plugin-remove-graphql-queries: 2.13.0
+    babel-plugin-remove-graphql-queries: 2.14.0
     babel-plugin-transform-default-import: 1.0.0
     babel-preset-gatsby: 0.8.0
     body-scroll-lock: 3.1.5
