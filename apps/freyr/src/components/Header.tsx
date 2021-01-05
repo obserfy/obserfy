@@ -16,7 +16,7 @@ const Header: FC = () => {
         backdrop-blur md:backdrop-none
         mb-8
         max-w-7xl p-3 mx-auto
-        sticky top-0 bg-white bg-opacity-95 border-b
+        sticky top-0
         md:relative md:bg-transparent md:border-none
         z-10
       "
