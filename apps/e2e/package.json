@@ -8,7 +8,7 @@
   "devDependencies": {
     "@cypress/code-coverage": "3.8.8",
     "@types/faker": "5.1.5",
-    "@types/node": "14.14.19",
+    "@types/node": "14.14.20",
     "@typescript-eslint/eslint-plugin": "4.11.1",
     "@typescript-eslint/parser": "4.11.1",
     "cypress": "6.2.0",
