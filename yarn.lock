@@ -18921,7 +18921,7 @@ fsevents@^1.2.7:
     io-ts-types: 0.5.12
     jest: 26.6.3
     minio: 7.0.18
-    monocle-ts: 2.3.3
+    monocle-ts: 2.3.4
     nanoid: 3.1.20
     newtype-ts: 0.3.4
     next: 10.0.4
@@ -26465,12 +26465,12 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"monocle-ts@npm:2.3.3":
-  version: 2.3.3
-  resolution: "monocle-ts@npm:2.3.3"
+"monocle-ts@npm:2.3.4":
+  version: 2.3.4
+  resolution: "monocle-ts@npm:2.3.4"
   peerDependencies:
     fp-ts: ^2.0.0
-  checksum: 709993c1d5cdc76c16447f6b3e87ccf22bee5e0b326fee3c5472e0fcd584293750059915d5edabc255f510a8ca9292509e3c324bcadd11e3026efa2cb1ec7bbb
+  checksum: 64b3250a4985bc1a44f63a349d1778bcead94e8c61946f7ef8e693dd923c8500564c267b5f0d2635617391d0e7570e98879c50a7af46f52f96230c79aead23f8
   languageName: node
   linkType: hard
 
