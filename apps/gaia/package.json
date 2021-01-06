@@ -42,7 +42,7 @@
     "io-ts": "2.2.13",
     "io-ts-types": "0.5.12",
     "minio": "7.0.18",
-    "monocle-ts": "2.3.3",
+    "monocle-ts": "2.3.4",
     "nanoid": "3.1.20",
     "newtype-ts": "0.3.4",
     "next": "10.0.4",
