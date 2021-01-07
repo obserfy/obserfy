@@ -1761,7 +1761,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@types/jest",
-        "npm:26.0.19"
+        "npm:26.0.20"
       ],
       [
         "@types/json-schema",
@@ -18907,7 +18907,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/runtime", "npm:7.10.3"],
             ["@emotion/css-prettifier", "npm:1.0.0"],
             ["@types/enzyme-to-json", null],
-            ["@types/jest", "npm:26.0.19"],
+            ["@types/jest", "npm:26.0.20"],
             ["@types/types__jest", null],
             ["chalk", "npm:4.1.0"],
             ["enzyme-to-json", null],
@@ -24889,10 +24889,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@types/jest", [
-        ["npm:26.0.19", {
-          "packageLocation": "../../../../../tmp/renovate-cache/others/yarn/@types-jest-npm-26.0.19-add5d117dd-98c8daaf89.zip/node_modules/@types/jest/",
+        ["npm:26.0.20", {
+          "packageLocation": "../../../../../tmp/renovate-cache/others/yarn/@types-jest-npm-26.0.20-e4c9c054bf-221e39c7c9.zip/node_modules/@types/jest/",
           "packageDependencies": [
-            ["@types/jest", "npm:26.0.19"],
+            ["@types/jest", "npm:26.0.20"],
             ["jest-diff", "npm:26.6.0"],
             ["pretty-format", "npm:26.6.0"]
           ],
@@ -37067,7 +37067,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/body-scroll-lock", "npm:2.6.1"],
             ["@types/dompurify", "npm:2.2.0"],
             ["@types/formidable", "npm:1.0.31"],
-            ["@types/jest", "npm:26.0.19"],
+            ["@types/jest", "npm:26.0.20"],
             ["@types/minio", "npm:7.0.6"],
             ["@types/mixpanel-browser", "npm:2.35.4"],
             ["@types/nanoid", "npm:2.1.0"],
@@ -58236,7 +58236,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/date-fns", "npm:2.6.0"],
             ["@types/dompurify", "npm:2.2.0"],
             ["@types/faker", "npm:5.1.5"],
-            ["@types/jest", "npm:26.0.19"],
+            ["@types/jest", "npm:26.0.20"],
             ["@types/query-string", "npm:6.3.0"],
             ["@types/reach__router", "npm:1.3.6"],
             ["@types/react", "npm:17.0.0"],
