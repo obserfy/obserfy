@@ -2,10 +2,10 @@ import React from "react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { t, Trans } from "@lingui/macro"
 import { Link } from "../components/Link"
-import Footer from "../components/Footer"
 import SEO from "../components/seo"
 import DocsHeader from "../components/DocsHeader"
 import Logo from "../images/logo-standalone.svg"
+import DocsFooter from "../components/DocsFooter"
 
 const Docs = ({ data }) => (
   <div className="min-h-screen bg-white">
@@ -26,7 +26,7 @@ const Docs = ({ data }) => (
       </div>
     </div>
 
-    <Footer />
+    <DocsFooter />
   </div>
 )
 
