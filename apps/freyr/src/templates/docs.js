@@ -5,7 +5,7 @@ import DocsHeader from "../components/DocsHeader"
 import DocsFooter from "../components/DocsFooter"
 import DocsSidebar from "../components/DocsSidebar"
 import DocsLogo from "../components/DocsLogo"
-import TopDecoration from "../images/top-bg.svg";
+import TopDecoration from "../images/top-bg.svg"
 
 const Docs = ({ data }) => (
   <div className="min-h-screen bg-white">
@@ -25,9 +25,11 @@ const Docs = ({ data }) => (
       <div className={"w-full"}>
         <DocsHeader />
 
-        <main className="prose p-6 pb-16">
-          <MDXRenderer>{data.mdx.body}</MDXRenderer>
-        </main>
+        <div className={"p-6 pb-16 max-w-7xl mx-auto"}>
+          <main className="prose">
+            <MDXRenderer>{data.mdx.body}</MDXRenderer>
+          </main>
+        </div>
       </div>
     </div>
 
