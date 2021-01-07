@@ -4,9 +4,14 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import { t, Trans } from "@lingui/macro"
 import { Link } from "../components/Link"
 import Footer from "../components/Footer"
+import SEO from "../components/seo"
 
 const Docs = ({ data }) => (
   <div className="min-h-screen bg-white">
+    <SEO
+      title={data.mdx.frontmatter.title}
+      description={data.mdx.frontmatter.description}
+    />
     <Header />
 
     <div className="max-w-7xl mx-auto relative">
@@ -84,6 +89,7 @@ export const query = graphql`
       frontmatter {
         slug
         title
+        description
       }
       body
     }
