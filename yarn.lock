@@ -7719,16 +7719,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/react-hooks@npm:3.7.0":
-  version: 3.7.0
-  resolution: "@testing-library/react-hooks@npm:3.7.0"
+"@testing-library/react-hooks@npm:4.0.0":
+  version: 4.0.0
+  resolution: "@testing-library/react-hooks@npm:4.0.0"
   dependencies:
     "@babel/runtime": ^7.12.5
-    "@types/testing-library__react-hooks": ^3.4.0
+    "@types/react": ">=16.9.0"
+    "@types/react-test-renderer": ">=16.9.0"
   peerDependencies:
     react: ">=16.9.0"
     react-test-renderer: ">=16.9.0"
-  checksum: 0ab518489cb5a141f82cf26ddaf2e35dcdc87685ce14c2084dea3cd1734c877793a873fe75c0aa75b8b455eced58cd1eab49001194f8a9557d93b068582dfd5f
+  checksum: e4cf72c99c74fd227b19f75f533d96c0d0baeb604a6059931eedf787e81fbf9e1c1f7378ab61b88b0e6a48c7a75758ea0581e344705103da8d3931d129281472
   languageName: node
   linkType: hard
 
@@ -8603,12 +8604,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-test-renderer@npm:*":
-  version: 16.9.2
-  resolution: "@types/react-test-renderer@npm:16.9.2"
+"@types/react-test-renderer@npm:>=16.9.0":
+  version: 17.0.0
+  resolution: "@types/react-test-renderer@npm:17.0.0"
   dependencies:
     "@types/react": "*"
-  checksum: d8a45e1be5208221eaa612e6de8638575011b18f7b3a1dadb70e560d376086656ab89934d35d1be9194fd3238e5ff169322a6f15e6c27bc796a205ac8331eb88
+  checksum: 4931f75cfd17a43d257e9b6a021d1b01f8c859e8ee76353ab881cc3a8f6842c238b68ed643cfd69998193a16536b31f9dae329d8beca1e7c8425f6663f853750
   languageName: node
   linkType: hard
 
@@ -8622,7 +8623,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:17.0.0":
+"@types/react@npm:17.0.0, @types/react@npm:>=16.9.0":
   version: 17.0.0
   resolution: "@types/react@npm:17.0.0"
   dependencies:
@@ -8743,15 +8744,6 @@ __metadata:
   version: 1.0.6
   resolution: "@types/tapable@npm:1.0.6"
   checksum: 01709a2f8dbea665a39c008ba6995c76210fabb52434815e7632c7fff22ecad1dd49a1d75b8f5b2e9b365c6d7a6407127bed834587df4777b800110c2a74fc36
-  languageName: node
-  linkType: hard
-
-"@types/testing-library__react-hooks@npm:^3.4.0":
-  version: 3.4.1
-  resolution: "@types/testing-library__react-hooks@npm:3.4.1"
-  dependencies:
-    "@types/react-test-renderer": "*"
-  checksum: dba2d75c168f6377cb4bbb5443b4238bb0db85271998ef5d9297ee13719df044b0f0af088eb15dca14f8551cee88c6587ce85d9d60f5c7c1e218d50aa63395a5
   languageName: node
   linkType: hard
 
@@ -37445,7 +37437,7 @@ typescript@^4.0.0:
     "@svgr/webpack": 5.5.0
     "@tailwindcss/typography": 0.3.1
     "@testing-library/react": 11.2.2
-    "@testing-library/react-hooks": 3.7.0
+    "@testing-library/react-hooks": 4.0.0
     "@theme-ui/match-media": 0.6.0-alpha.1
     "@types/body-scroll-lock": 2.6.1
     "@types/date-fns": 2.6.0

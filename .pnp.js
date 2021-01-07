@@ -1549,7 +1549,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@testing-library/react-hooks",
-        "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:3.7.0"
+        "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:4.0.0"
       ],
       [
         "@theme-ui/color-modes",
@@ -1913,7 +1913,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@types/react-test-renderer",
-        "npm:16.9.2"
+        "npm:17.0.0"
       ],
       [
         "@types/reactcss",
@@ -1970,10 +1970,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       [
         "@types/tapable",
         "npm:1.0.6"
-      ],
-      [
-        "@types/testing-library__react-hooks",
-        "npm:3.4.1"
       ],
       [
         "@types/tmp",
@@ -24245,19 +24241,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@testing-library/react-hooks", [
-        ["virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:3.7.0", {
-          "packageLocation": "./.yarn/$$virtual/@testing-library-react-hooks-virtual-c41c56c883/6/tmp/renovate-cache/others/yarn/@testing-library-react-hooks-npm-3.7.0-fb4bd22c3e-0ab518489c.zip/node_modules/@testing-library/react-hooks/",
+        ["virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:4.0.0", {
+          "packageLocation": "./.yarn/$$virtual/@testing-library-react-hooks-virtual-84979f4561/6/tmp/renovate-cache/others/yarn/@testing-library-react-hooks-npm-4.0.0-af0e9db20b-e4cf72c99c.zip/node_modules/@testing-library/react-hooks/",
           "packageDependencies": [
-            ["@testing-library/react-hooks", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:3.7.0"],
+            ["@testing-library/react-hooks", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:4.0.0"],
             ["@babel/runtime", "npm:7.12.5"],
             ["@types/react", "npm:17.0.0"],
-            ["@types/react-test-renderer", null],
-            ["@types/testing-library__react-hooks", "npm:3.4.1"],
+            ["@types/react-test-renderer", "npm:17.0.0"],
             ["react", "npm:17.0.1"],
             ["react-test-renderer", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:17.0.1"]
           ],
           "packagePeers": [
-            "@types/react-test-renderer",
             "@types/react",
             "react-test-renderer",
             "react"
@@ -25313,10 +25307,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@types/react-test-renderer", [
-        ["npm:16.9.2", {
-          "packageLocation": "../../../../../tmp/renovate-cache/others/yarn/@types-react-test-renderer-npm-16.9.2-5d597edc57-d8a45e1be5.zip/node_modules/@types/react-test-renderer/",
+        ["npm:17.0.0", {
+          "packageLocation": "../../../../../tmp/renovate-cache/others/yarn/@types-react-test-renderer-npm-17.0.0-bda0bc48c1-4931f75cfd.zip/node_modules/@types/react-test-renderer/",
           "packageDependencies": [
-            ["@types/react-test-renderer", "npm:16.9.2"],
+            ["@types/react-test-renderer", "npm:17.0.0"],
             ["@types/react", "npm:16.9.41"]
           ],
           "linkType": "HARD",
@@ -25453,16 +25447,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "../../../../../tmp/renovate-cache/others/yarn/@types-tapable-npm-1.0.6-394f282d8c-01709a2f8d.zip/node_modules/@types/tapable/",
           "packageDependencies": [
             ["@types/tapable", "npm:1.0.6"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["@types/testing-library__react-hooks", [
-        ["npm:3.4.1", {
-          "packageLocation": "../../../../../tmp/renovate-cache/others/yarn/@types-testing-library__react-hooks-npm-3.4.1-54a792c5f4-dba2d75c16.zip/node_modules/@types/testing-library__react-hooks/",
-          "packageDependencies": [
-            ["@types/testing-library__react-hooks", "npm:3.4.1"],
-            ["@types/react-test-renderer", "npm:16.9.2"]
           ],
           "linkType": "HARD",
         }]
@@ -58246,7 +58230,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@svgr/webpack", "npm:5.5.0"],
             ["@tailwindcss/typography", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:0.3.1"],
             ["@testing-library/react", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:11.2.2"],
-            ["@testing-library/react-hooks", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:3.7.0"],
+            ["@testing-library/react-hooks", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:4.0.0"],
             ["@theme-ui/match-media", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.6.0-alpha.1"],
             ["@types/body-scroll-lock", "npm:2.6.1"],
             ["@types/date-fns", "npm:2.6.0"],
