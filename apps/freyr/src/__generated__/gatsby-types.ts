@@ -708,6 +708,7 @@ enum FileFieldsEnum {
   childMdx___fileAbsolutePath = 'childMdx.fileAbsolutePath',
   childMdx___frontmatter___title = 'childMdx.frontmatter.title',
   childMdx___frontmatter___slug = 'childMdx.frontmatter.slug',
+  childMdx___frontmatter___description = 'childMdx.frontmatter.description',
   childMdx___slug = 'childMdx.slug',
   childMdx___body = 'childMdx.body',
   childMdx___excerpt = 'childMdx.excerpt',
@@ -1522,6 +1523,7 @@ enum MdxFieldsEnum {
   fileAbsolutePath = 'fileAbsolutePath',
   frontmatter___title = 'frontmatter.title',
   frontmatter___slug = 'frontmatter.slug',
+  frontmatter___description = 'frontmatter.description',
   slug = 'slug',
   body = 'body',
   excerpt = 'excerpt',
@@ -1653,11 +1655,13 @@ type MdxFilterInput = {
 type MdxFrontmatter = {
   readonly title: Scalars['String'];
   readonly slug: Maybe<Scalars['String']>;
+  readonly description: Maybe<Scalars['String']>;
 };
 
 type MdxFrontmatterFilterInput = {
   readonly title: Maybe<StringQueryOperatorInput>;
   readonly slug: Maybe<StringQueryOperatorInput>;
+  readonly description: Maybe<StringQueryOperatorInput>;
 };
 
 type MdxGroupConnection = {
@@ -3231,15 +3235,15 @@ type WebPOptions = {
   readonly quality: Maybe<Scalars['Int']>;
 };
 
-type homechrisintSrcobserfyappsfreyrsrctemplatesdocsJs1753807277QueryVariables = Exact<{
+type homechrisintSrcobserfyappsfreyrsrctemplatesdocsJs2568242176QueryVariables = Exact<{
   locale: Scalars['String'];
   slug: Scalars['String'];
 }>;
 
 
-type homechrisintSrcobserfyappsfreyrsrctemplatesdocsJs1753807277Query = { readonly mdx: Maybe<(
+type homechrisintSrcobserfyappsfreyrsrctemplatesdocsJs2568242176Query = { readonly mdx: Maybe<(
     Pick<Mdx, 'body'>
-    & { readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'slug' | 'title'>> }
+    & { readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'slug' | 'title' | 'description'>> }
   )> };
 
 type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
