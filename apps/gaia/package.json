@@ -45,7 +45,7 @@
     "monocle-ts": "2.3.4",
     "nanoid": "3.1.20",
     "newtype-ts": "0.3.4",
-    "next": "10.0.4",
+    "next": "10.0.5",
     "next-compose-plugins": "2.2.1",
     "next-pwa": "5.0.2",
     "pg": "8.5.1",
