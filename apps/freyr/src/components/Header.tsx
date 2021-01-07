@@ -1,10 +1,10 @@
-import { LocalizedLink as Link } from "gatsby-theme-i18n"
 import React, { FC, useState } from "react"
 import { t, Trans } from "@lingui/macro"
 import Button from "./Button/Button"
 import Logo from "../images/logo-standalone.svg"
 import MenuIcon from "../icons/menu.svg"
 import CloseIcon from "../icons/close.svg"
+import { Link } from "./Link"
 
 const Header: FC = () => {
   const [showSidebar, setShowSidebar] = useState(false)
