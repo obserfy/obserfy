@@ -22,7 +22,7 @@
     "@types/body-scroll-lock": "2.6.1",
     "@types/dompurify": "2.2.0",
     "@types/formidable": "1.0.31",
-    "@types/jest": "26.0.19",
+    "@types/jest": "26.0.20",
     "@types/minio": "7.0.6",
     "@types/mixpanel-browser": "2.35.4",
     "@types/nanoid": "2.1.0",
