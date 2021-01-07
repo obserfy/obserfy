@@ -21,7 +21,7 @@ const Layout: FC = ({ children }) => {
       />
       <Header />
 
-      <div className="max-w-7xl mx-auto relative">
+      <div className="max-w-7xl mx-auto relative pb-16">
         <main>{children}</main>
       </div>
 

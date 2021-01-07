@@ -4,7 +4,7 @@ import Logo from "../images/logo-standalone.svg"
 import { Link } from "./Link"
 
 const Footer = () => (
-  <footer className="px-3 py-8 md:py-16 mt-16 text-gray-700 bg-gray-50">
+  <footer className="px-3 py-8 md:py-16 text-gray-700 bg-gray-50">
     <div className="md:flex max-w-7xl mx-auto">
       <div className="mr-16">
         <div className="flex items-center">
