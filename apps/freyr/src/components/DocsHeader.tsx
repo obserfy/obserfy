@@ -29,7 +29,7 @@ const DocsHeader: FC = () => {
             </a>
             <a href="https://app.obserfy.com" className="ml-2">
               <Button secondary className="px-3 py-2 text-xs text-green-700">
-                <Trans>Sign in for Teachers</Trans>
+                <Trans>Sign In for Teachers</Trans>
               </Button>
             </a>
           </div>
