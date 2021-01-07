@@ -7,7 +7,7 @@ import Button from "../components/Button/Button"
 const ContactUsPage: FC = () => (
   <Layout>
     <SEO title={t`Contact Us`} />
-    <div className="px-3 flex-row sm:flex my-16">
+    <div className="px-3 flex-row sm:flex mt-16 mb-40">
       <div className="flex-row justify-center lg:w-1/2 mr-3 prose prose-lg">
         <h1>
           <Trans>Contact Us</Trans>
