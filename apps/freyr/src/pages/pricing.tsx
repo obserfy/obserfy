@@ -7,7 +7,10 @@ import SEO from "../components/seo"
 const PricingPage: FC = () => {
   return (
     <Layout>
-      <SEO title={t`Pricing`} description={t`Simple and affordable pricing`} />
+      <SEO
+        title={t`Pricing`}
+        description={t`Simple and affordable user based pricing`}
+      />
       <div className="max-w-2xl mx-auto">
         <div className="sm:flex">
           <div className="prose sm:mt-5 mt-16 mb-16 mx-4">
