@@ -72,9 +72,9 @@ const SidebarHeader = ({ text }) => (
   </h4>
 )
 
-const SidebarEntry = ({ text, to = "/" }) => (
-  <Link to={to} className="no-underline hover:underline block border-l pl-3">
-    <h5>{text}</h5>
+const SidebarEntry = ({ text, to = "/docs/coming-soon" }) => (
+  <Link to={to} className="no-underline hover:underline block border-l pl-3 py-1">
+    <h5 className={"text-gray-700"}>{text}</h5>
   </Link>
 )
 
