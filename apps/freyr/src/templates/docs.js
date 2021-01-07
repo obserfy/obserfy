@@ -5,12 +5,18 @@ import DocsHeader from "../components/DocsHeader"
 import DocsFooter from "../components/DocsFooter"
 import DocsSidebar from "../components/DocsSidebar"
 import DocsLogo from "../components/DocsLogo"
+import TopDecoration from "../images/top-bg.svg";
 
 const Docs = ({ data }) => (
   <div className="min-h-screen bg-white">
     <SEO
       title={data.mdx.frontmatter.title}
       description={data.mdx.frontmatter.description}
+    />
+    <img
+      alt="decoration"
+      src={TopDecoration}
+      className="absolute top-0 left-0 right-0 -z-50 w-screen opacity-30"
     />
 
     <div className="flex">
