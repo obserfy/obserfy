@@ -29,7 +29,7 @@ const Header: FC = () => {
             </Link>
           </div>
 
-          <nav className="hidden md:flex mx-auto absolute w-full left-0 right-0 justify-center pointer-events-none">
+          <nav className="hidden md:flex ml-3 lg:mx-auto lg:absolute lg:w-full left-0 right-0 justify-center pointer-events-none">
             <InternalNavLinks href="/docs" text={t`Docs`} />
             <InternalNavLinks href="/pricing" text={t`Pricing`} />
             <NavLinks href="https://feedback.obserfy.com" text={t`Roadmap`} />
@@ -42,14 +42,14 @@ const Header: FC = () => {
           </nav>
 
           <div className="hidden md:flex items-center ml-auto">
-            <a href="https://parent.obserfy.com/api/login" className="ml-2">
-              <Button secondary className="px-3 py-2 text-sm border">
-                <Trans>Parents</Trans>
+            <a href="https://parent.obserfy.com/api/login">
+              <Button secondary className="px-3 py-2 text-xs border">
+                <Trans>Sign In for Parents</Trans>
               </Button>
             </a>
             <a href="https://app.obserfy.com" className="ml-2">
-              <Button secondary className="px-3 py-2 text-sm text-green-700">
-                <Trans>Teachers</Trans>
+              <Button secondary className="px-3 py-2 text-xs text-green-700">
+                <Trans>Sign In for Teachers</Trans>
               </Button>
             </a>
           </div>
@@ -93,7 +93,7 @@ const Header: FC = () => {
 const NavLinks: FC<{ href: string; text: string }> = ({ href, text }) => (
   <a
     href={href}
-    className="hover:text-green-700 transition-colors duration-200 ease-in-out p-2 lg:p-3 pointer-events-auto font-body"
+    className="hover:text-green-700 transition-colors duration-200 ease-in-out p-2 lg:p-3 pointer-events-auto font-body whitespace-nowrap"
   >
     <Trans id={text} />
   </a>
