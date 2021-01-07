@@ -4,7 +4,7 @@ import Logo from "../images/logo-standalone.svg"
 import { Link } from "./Link"
 
 const Footer = () => (
-  <footer className="px-3 py-3 py-16 mt-16 text-gray-700 bg-gray-50">
+  <footer className="px-3 py-8 md:py-16 mt-16 text-gray-700 bg-gray-50">
     <div className="md:flex max-w-7xl mx-auto">
       <div className="mr-16">
         <div className="flex items-center">
@@ -20,26 +20,28 @@ const Footer = () => (
         </p>
       </div>
 
-      <div className="mr-16">
-        <InternalFooterLink to="/docs" text={t`Documentation`} />
-        <InternalFooterLink to="/pricing" text={t`Pricing`} />
-        <ExternalFooterLink
-          text={t`Roadmap`}
-          to="https://feedback.obserfy.com"
-        />
-        <ExternalFooterLink
-          text={t`What's New`}
-          to="https://feedback.obserfy.com/changelog"
-        />
-      </div>
+      <div className="flex my-8 md:my-0">
+        <div className="mr-16 flex-1">
+          <InternalFooterLink to="/docs" text={t`Documentation`} />
+          <InternalFooterLink to="/pricing" text={t`Pricing`} />
+          <ExternalFooterLink
+            text={t`Roadmap`}
+            to="https://feedback.obserfy.com"
+          />
+          <ExternalFooterLink
+            text={t`What's New`}
+            to="https://feedback.obserfy.com/changelog"
+          />
+        </div>
 
-      <div className="mr-16">
-        <ExternalFooterLink
-          text={t`GitHub`}
-          to="https://github.com/obserfy/obserfy"
-        />
-        <InternalFooterLink to="/contact" text={t`Contact Us`} />
-        <InternalFooterLink to="/privacy-policy" text={t`Privacy Policy`} />
+        <div className="mr-16 flex-1">
+          <ExternalFooterLink
+            text={t`GitHub`}
+            to="https://github.com/obserfy/obserfy"
+          />
+          <InternalFooterLink to="/contact" text={t`Contact Us`} />
+          <InternalFooterLink to="/privacy-policy" text={t`Privacy Policy`} />
+        </div>
       </div>
     </div>
 
@@ -54,7 +56,7 @@ const InternalFooterLink: FC<{ to?: string; text: string }> = ({
   text,
 }) => (
   <Link to={to} className="hover:underline">
-    <h5 className="mb-3">
+    <h5 className="mb-3 font-bold">
       <Trans id={text} />
     </h5>
   </Link>
@@ -65,7 +67,7 @@ const ExternalFooterLink: FC<{ to?: string; text: string }> = ({
   text,
 }) => (
   <a href={to} className="hover:underline">
-    <h5 className="mb-3">
+    <h5 className="mb-3 font-bold">
       <Trans id={text} />
     </h5>
   </a>
