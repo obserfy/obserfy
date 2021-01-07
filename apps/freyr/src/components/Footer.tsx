@@ -1,7 +1,7 @@
 import { t, Trans } from "@lingui/macro"
-import { LocalizedLink as Link } from "gatsby-theme-i18n"
 import React, { FC } from "react"
 import Logo from "../images/logo-standalone.svg"
+import { Link } from "./Link"
 
 const Footer = () => (
   <footer className="px-3 py-3 py-16 mt-16 text-gray-700 bg-gray-50">
