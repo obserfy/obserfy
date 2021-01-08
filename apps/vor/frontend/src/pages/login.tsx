@@ -5,10 +5,7 @@ import SEO from "../components/seo"
 
 export const Login: FC = () => (
   <>
-    <SEO
-      title={t`Login for Teachers`}
-      description={t`Manage your student data`}
-    />
+    <SEO title={t`Login`} description={t`Manage your student data`} />
     <PageLogin />
   </>
 )
