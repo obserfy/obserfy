@@ -17,7 +17,7 @@ msgstr ""
 #~ msgid "\"Contact Us"
 #~ msgstr "\"Contact Us"
 
-#: src/pages/pricing.tsx:21
+#: src/pages/pricing.tsx:23
 msgid "$4 per User/month"
 msgstr "$4 per User/month"
 
@@ -37,7 +37,7 @@ msgstr "<0>Store</0> your student's data. <1>Plan</1> their lessons. And <2>shar
 #~ msgid "A user is anyone who has access to the school's dashboard, such as teachers and teaching assistants."
 #~ msgstr "A user is anyone who has access to the school's dashboard, such as teachers and teaching assistants."
 
-#: src/pages/pricing.tsx:61
+#: src/pages/pricing.tsx:63
 msgid "A user is anyone with their own login access to the school's dashboard, such as teachers and teaching assistants."
 msgstr "A user is anyone with their own login access to the school's dashboard, such as teachers and teaching assistants."
 
@@ -53,9 +53,17 @@ msgstr "Allow parents to post observations at home about their children's task, 
 msgid "Built with speed and simplicity in mind"
 msgstr "Built with speed and simplicity in mind"
 
+#: src/templates/docs.js:30
+msgid "Classes"
+msgstr "Classes"
+
 #: src/pages/index.tsx:211
 msgid "Collaborate on Observations"
 msgstr "Collaborate on Observations"
+
+#: src/templates/docs.js:40
+msgid "Collaborating with parents"
+msgstr "Collaborating with parents"
 
 #: src/pages/index.tsx:167
 msgid "Collaboration between parents and schools are important, especially in the post-COVID 19 world."
@@ -65,6 +73,11 @@ msgstr "Collaboration between parents and schools are important, especially in t
 #~ msgid "Collaboration between parents and schools are important, especially in the post-COVID 19 world. We help you empower parents by providing custom dashboard for them to access, <0>making it easy to share your data and collaborate with parents on their child's education.</0>"
 #~ msgstr "Collaboration between parents and schools are important, especially in the post-COVID 19 world. We help you empower parents by providing custom dashboard for them to access, <0>making it easy to share your data and collaborate with parents on their child's education.</0>"
 
+#: src/templates/docs.js:23
+msgid "Concepts"
+msgstr "Concepts"
+
+#: src/components/Footer.tsx:31
 #: src/components/Header.tsx:123
 #: src/pages/contact.tsx:7
 #: src/pages/contact.tsx:11
@@ -72,9 +85,25 @@ msgstr "Collaboration between parents and schools are important, especially in t
 msgid "Contact Us"
 msgstr "Contact Us"
 
-#: src/pages/pricing.tsx:30
+#: src/templates/docs.js:51
+msgid "Contacting us"
+msgstr "Contacting us"
+
+#: src/templates/docs.js:55
+msgid "Contributing"
+msgstr "Contributing"
+
+#: src/pages/pricing.tsx:32
 msgid "Create lesson plans"
 msgstr "Create lesson plans"
+
+#: src/templates/docs.js:43
+msgid "Creating Lesson plan"
+msgstr "Creating Lesson plan"
+
+#: src/templates/docs.js:29
+msgid "Curriculum"
+msgstr "Curriculum"
 
 #: src/pages/index.tsx:154
 msgid "Dashboard for parents to see their child's progress in realtime"
@@ -84,9 +113,17 @@ msgstr "Dashboard for parents to see their child's progress in realtime"
 msgid "Digital record keeping"
 msgstr "Digital record keeping"
 
-#: src/components/header.tsx:31
-#~ msgid "Docs"
-#~ msgstr "Docs"
+#: src/components/Header.tsx:29
+msgid "Docs"
+msgstr "Docs"
+
+#: src/components/Footer.tsx:23
+msgid "Documentation"
+msgstr "Documentation"
+
+#: src/templates/docs.js:21
+msgid "Documentations"
+msgstr "Documentations"
 
 #: src/pages/index.tsx:130
 msgid "Easily keep track of your student's progress through your curriculum in one place, making building reports easier."
@@ -100,7 +137,7 @@ msgstr "Easily share photos of your students with their parents, and allow paren
 msgid "Email"
 msgstr "Email"
 
-#: src/pages/pricing.tsx:55
+#: src/pages/pricing.tsx:57
 msgid "FAQ"
 msgstr "FAQ"
 
@@ -112,7 +149,7 @@ msgstr "For Parents"
 msgid "For Teachers"
 msgstr "For Teachers"
 
-#: src/pages/pricing.tsx:47
+#: src/pages/pricing.tsx:49
 msgid "Free 30-day trial"
 msgstr "Free 30-day trial"
 
@@ -124,6 +161,10 @@ msgstr "Free 30-day trial"
 #~ msgid "Get started now"
 #~ msgstr "Get started now"
 
+#: src/components/Footer.tsx:30
+msgid "GitHub"
+msgstr "GitHub"
+
 #: src/pages/index.tsx:250
 #~ msgid "Give it a try and see how we can help improve your school."
 #~ msgstr "Give it a try and see how we can help improve your school."
@@ -132,13 +173,25 @@ msgstr "Free 30-day trial"
 msgid "Give it a try now with a 30-days free trial"
 msgstr "Give it a try now with a 30-days free trial"
 
+#: src/templates/docs.js:50
+msgid "Giving feedbacks"
+msgstr "Giving feedbacks"
+
+#: src/templates/docs.js:28
+msgid "Giving parents access"
+msgstr "Giving parents access"
+
+#: src/templates/docs.js:35
+msgid "Guardian profiles"
+msgstr "Guardian profiles"
+
 #: src/pages/contact.tsx:14
 msgid "Have a question? Shoot us a message using this form. We'd love to talk with you about your need."
 msgstr "Have a question? Shoot us a message using this form. We'd love to talk with you about your need."
 
 #: src/components/Header.tsx:29
-msgid "Help Center"
-msgstr "Help Center"
+#~ msgid "Help Center"
+#~ msgstr "Help Center"
 
 #: src/pages/index.tsx:66
 #~ msgid "Helping teachers to be more productive"
@@ -148,13 +201,21 @@ msgstr "Help Center"
 #~ msgid "Helping to simplify the work that teachers do"
 #~ msgstr "Helping to simplify the work that teachers do"
 
-#: src/pages/pricing.tsx:68
+#: src/pages/pricing.tsx:70
 msgid "How many student/parents can we have?"
 msgstr "How many student/parents can we have?"
 
-#: src/pages/pricing.tsx:39
+#: src/pages/pricing.tsx:41
 msgid "Image gallery"
 msgstr "Image gallery"
+
+#: src/templates/docs.js:24
+msgid "Introductions"
+msgstr "Introductions"
+
+#: src/templates/docs.js:27
+msgid "Inviting your team"
+msgstr "Inviting your team"
 
 #: src/pages/privacy-policy.tsx:14
 msgid "Last updated"
@@ -164,6 +225,10 @@ msgstr "Last updated"
 #: src/pages/index.tsx:168
 #~ msgid "Learn More"
 #~ msgstr "Learn More"
+
+#: src/templates/docs.js:42
+msgid "Lesson Plans"
+msgstr "Lesson Plans"
 
 #: src/pages/index.tsx:180
 #~ msgid "Let parents see and keep track of their child's progress through through your school's curriculum."
@@ -193,15 +258,35 @@ msgstr "Message"
 msgid "Montessori record keeping on phone and laptop"
 msgstr "Montessori record keeping on phone and laptop"
 
+#: src/pages/index.tsx:34
+msgid "Montessori record keeping software"
+msgstr "Montessori record keeping software"
+
+#: src/pages/index.tsx:34
+msgid "Montessori record keeping software and parent communication tool. Bridging the gap between schools and parents."
+msgstr "Montessori record keeping software and parent communication tool. Bridging the gap between schools and parents."
+
+#: src/templates/docs.js:38
+msgid "Observations"
+msgstr "Observations"
+
 #: src/pages/index.tsx:12
 #~ msgid "Observe. Plan. Communicate."
 #~ msgstr "Observe. Plan. Communicate."
+
+#: src/templates/docs.js:53
+msgid "Open source"
+msgstr "Open source"
+
+#: src/templates/docs.js:54
+msgid "Open-source by default"
+msgstr "Open-source by default"
 
 #: src/pages/index.tsx:157
 msgid "Parent communication"
 msgstr "Parent communication"
 
-#: src/pages/pricing.tsx:36
+#: src/pages/pricing.tsx:38
 msgid "Parent dashboard"
 msgstr "Parent dashboard"
 
@@ -217,19 +302,25 @@ msgstr "Plan student's lesson"
 msgid "Plan your student's lesson ahead of time, and share them with other teachers, and even with parents."
 msgstr "Plan your student's lesson ahead of time, and share them with other teachers, and even with parents."
 
+#: src/components/Footer.tsx:24
 #: src/components/Header.tsx:30
 #: src/components/Header.tsx:100
+#: src/pages/pricing.tsx:8
 msgid "Pricing"
 msgstr "Pricing"
 
-#: src/components/layout.tsx:22
+#: src/templates/docs.js:31
+msgid "Pricing & Billing"
+msgstr "Pricing & Billing"
+
+#: src/components/Footer.tsx:32
 #: src/pages/privacy-policy.tsx:10
 msgid "Privacy Policy"
 msgstr "Privacy Policy"
 
 #: src/pages/index.tsx:34
-msgid "Record Keeping & Communication tool for Montessori Schools"
-msgstr "Record Keeping & Communication tool for Montessori Schools"
+#~ msgid "Record Keeping & Communication tool for Montessori Schools"
+#~ msgstr "Record Keeping & Communication tool for Montessori Schools"
 
 #: src/pages/index.tsx:8
 #~ msgid "Record Keeping & Parent Communication tool for Montessori Schools"
@@ -243,10 +334,15 @@ msgstr "Record Keeping & Communication tool for Montessori Schools"
 msgid "Record Observations"
 msgstr "Record Observations"
 
-#: src/pages/pricing.tsx:27
+#: src/pages/pricing.tsx:29
 msgid "Record observations"
 msgstr "Record observations"
 
+#: src/templates/docs.js:44
+msgid "Repetitions"
+msgstr "Repetitions"
+
+#: src/components/Footer.tsx:25
 #: src/components/Header.tsx:31
 #: src/components/Header.tsx:105
 msgid "Roadmap"
@@ -255,6 +351,14 @@ msgstr "Roadmap"
 #: src/pages/index.tsx:42
 msgid "Run your Montessori School efficiently"
 msgstr "Run your Montessori School efficiently"
+
+#: src/templates/docs.js:26
+msgid "School"
+msgstr "School"
+
+#: src/templates/docs.js:56
+msgid "Self-hosting Obserfy"
+msgstr "Self-hosting Obserfy"
 
 #: src/pages/contact.tsx:32
 msgid "Send"
@@ -276,21 +380,45 @@ msgstr "Share lesson plans/tasks that parents can execute at home, along with so
 msgid "Share photos"
 msgstr "Share photos"
 
-#: src/pages/pricing.tsx:11
+#: src/templates/docs.js:36
+msgid "Sharing data to guardians"
+msgstr "Sharing data to guardians"
+
+#: src/templates/docs.js:45
+msgid "Sharing with parents"
+msgstr "Sharing with parents"
+
+#: src/pages/pricing.tsx:13
 msgid "Simple affordable pricing"
 msgstr "Simple affordable pricing"
+
+#: src/pages/pricing.tsx:8
+msgid "Simple and affordable user based pricing"
+msgstr "Simple and affordable user based pricing"
 
 #: src/pages/index.tsx:78
 msgid "Simplifying the work that teachers do"
 msgstr "Simplifying the work that teachers do"
 
-#: src/pages/pricing.tsx:18
+#: src/pages/pricing.tsx:20
 msgid "Standard plan"
 msgstr "Standard plan"
 
 #: src/pages/index.tsx:15
 #~ msgid "Store your student data and observations. Plan their lessons. And communicate it all to parents with ease, using one platform built for the need of Montessori Schools."
 #~ msgstr "Store your student data and observations. Plan their lessons. And communicate it all to parents with ease, using one platform built for the need of Montessori Schools."
+
+#: src/templates/docs.js:34
+msgid "Student profiles"
+msgstr "Student profiles"
+
+#: src/templates/docs.js:33
+msgid "Students"
+msgstr "Students"
+
+#: src/templates/docs.js:49
+msgid "Support"
+msgstr "Support"
 
 #: src/pages/index.tsx:71
 msgid "Teacher dashboard for managing observations data"
@@ -308,7 +436,7 @@ msgstr "Tools for building a more transparent and collaborative schools"
 #~ msgid "Tools to build more transparent and collaborative schools"
 #~ msgstr "Tools to build more transparent and collaborative schools"
 
-#: src/pages/pricing.tsx:33
+#: src/pages/pricing.tsx:35
 msgid "Track curriculum progress"
 msgstr "Track curriculum progress"
 
@@ -318,7 +446,7 @@ msgstr "Track student's curriculum progress"
 
 #: src/pages/index.tsx:55
 #: src/pages/index.tsx:261
-#: src/pages/pricing.tsx:43
+#: src/pages/pricing.tsx:45
 msgid "Try for Free"
 msgstr "Try for Free"
 
@@ -326,11 +454,11 @@ msgstr "Try for Free"
 msgid "Try it now"
 msgstr "Try it now"
 
-#: src/pages/pricing.tsx:24
+#: src/pages/pricing.tsx:26
 msgid "Unlimited students"
 msgstr "Unlimited students"
 
-#: src/pages/pricing.tsx:71
+#: src/pages/pricing.tsx:73
 msgid "We don't charge or limit the number of students or parents that you work with."
 msgstr "We don't charge or limit the number of students or parents that you work with."
 
@@ -354,16 +482,20 @@ msgstr "We help you keep your student observation in one place, so its available
 #~ msgid "What counts as a User?"
 #~ msgstr "What counts as a User?"
 
+#: src/components/Footer.tsx:26
 #: src/components/Header.tsx:32
 #: src/components/Header.tsx:110
 msgid "What's New"
 msgstr "What's New"
 
-#: src/pages/pricing.tsx:58
+#: src/pages/pricing.tsx:60
 msgid "Who counts as a User?"
 msgstr "Who counts as a User?"
 
-#: src/pages/pricing.tsx:77
+#: src/templates/docs.js:39
+msgid "Writing observations"
+msgstr "Writing observations"
+
+#: src/pages/pricing.tsx:79
 msgid "You can track as many students as you want and share access to the parent dashboard to as many people as you need without increasing the cost."
 msgstr "You can track as many students as you want and share access to the parent dashboard to as many people as you need without increasing the cost."
-

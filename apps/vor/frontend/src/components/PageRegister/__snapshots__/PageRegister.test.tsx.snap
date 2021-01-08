@@ -584,7 +584,7 @@ exports[`PageRegister should render correctly 1`] = `
           <p
             class="emotion-28"
           >
-            Are you a parent?
+            Are you a parent or guardian?
              
             <a
               class="emotion-25"

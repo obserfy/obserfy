@@ -1,10 +1,10 @@
-import { LocalizedLink as Link } from "gatsby-theme-i18n"
 import React, { FC, useState } from "react"
 import { t, Trans } from "@lingui/macro"
 import Button from "./Button/Button"
 import Logo from "../images/logo-standalone.svg"
 import MenuIcon from "../icons/menu.svg"
 import CloseIcon from "../icons/close.svg"
+import { Link } from "./Link"
 
 const Header: FC = () => {
   const [showSidebar, setShowSidebar] = useState(false)
@@ -16,7 +16,7 @@ const Header: FC = () => {
         backdrop-blur md:backdrop-none
         mb-8
         max-w-7xl p-3 mx-auto
-        sticky top-0 bg-white bg-opacity-95 border-b
+        sticky top-0
         md:relative md:bg-transparent md:border-none
         z-10
       "
@@ -29,8 +29,8 @@ const Header: FC = () => {
             </Link>
           </div>
 
-          <nav className="hidden md:flex mx-auto absolute w-full left-0 right-0 justify-center pointer-events-none">
-            <InternalNavLinks href="/help" text={t`Help Center`} />
+          <nav className="hidden md:flex ml-3 lg:mx-auto lg:absolute lg:w-full left-0 right-0 justify-center pointer-events-none">
+            <InternalNavLinks href="/docs" text={t`Docs`} />
             <InternalNavLinks href="/pricing" text={t`Pricing`} />
             <NavLinks href="https://feedback.obserfy.com" text={t`Roadmap`} />
             <NavLinks
@@ -42,14 +42,14 @@ const Header: FC = () => {
           </nav>
 
           <div className="hidden md:flex items-center ml-auto">
-            <a href="https://parent.obserfy.com/api/login" className="ml-2">
-              <Button secondary className="px-3 py-2 text-sm border">
-                <Trans>Parents</Trans>
+            <a href="https://parent.obserfy.com/api/login">
+              <Button secondary className="px-3 py-2 text-xs border">
+                <Trans>Sign In for Parents</Trans>
               </Button>
             </a>
             <a href="https://app.obserfy.com" className="ml-2">
-              <Button secondary className="px-3 py-2 text-sm text-green-700">
-                <Trans>Teachers</Trans>
+              <Button secondary className="px-3 py-2 text-xs text-green-700">
+                <Trans>Sign In for Teachers</Trans>
               </Button>
             </a>
           </div>
@@ -93,7 +93,7 @@ const Header: FC = () => {
 const NavLinks: FC<{ href: string; text: string }> = ({ href, text }) => (
   <a
     href={href}
-    className="hover:text-green-700 transition-colors duration-200 ease-in-out p-2 lg:p-3 pointer-events-auto font-body"
+    className="hover:text-green-700 transition-colors duration-200 ease-in-out p-2 lg:p-3 pointer-events-auto font-body whitespace-nowrap"
   >
     <Trans id={text} />
   </a>
@@ -139,10 +139,10 @@ const Sidebar: FC<{ show: boolean; onClose: () => void }> = ({
         <div className="prose flex flex-col ml-6">
           <h3 className="my-2">
             <Link
-              to="/help"
+              to="/docs"
               className="no-underline font-bold hover:text-green-700 transition-colors"
             >
-              Help Center
+              Documentation
             </Link>
           </h3>
           <h3 className="my-2">

@@ -1,9 +1,7 @@
 import browserLang from "browser-lang"
 import "./src/global.css"
 import { navigate, withPrefix } from "gatsby"
-import { getApi } from "./src/hooks/api/fetchApi"
 import { getSchoolId } from "./src/hooks/schoolIdState"
-import { GetSchoolResponse } from "./src/hooks/api/schools/useGetSchool"
 
 // Disabled because it currently breaks due to gatsby's changes.
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
@@ -137,18 +135,25 @@ const loadChatwoot = () => {
   }
 
   window.addEventListener("chatwoot:ready", function () {
-    getApi("/users")().then((user) => {
-      window.$chatwoot.setUser(user.id, {
-        email: user.email,
-        name: user.name,
+    fetch("/api/v1/users", { credentials: "same-origin" })
+      .then((user) => {
+        return user.json()
       })
+      .then((user) => {
+        window.$chatwoot.setUser(user.id, {
+          email: user.email,
+          name: user.name,
+        })
 
-      getApi(`/schools/${getSchoolId()}`)().then((school) => {
+        return fetch(`/api/v1/schools/${getSchoolId()}`, {
+          credentials: "same-origin",
+        })
+      })
+      .then((school) => {
         window.$chatwoot.setCustomAttributes({
           company: school.name,
         })
       })
-    })
   })
 
   setTimeout(() => {
