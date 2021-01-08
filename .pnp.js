@@ -7589,7 +7589,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "pino",
-        "npm:6.9.0"
+        "npm:6.10.0"
       ],
       [
         "pino-pretty",
@@ -7597,7 +7597,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "pino-std-serializers",
-        "npm:2.5.0"
+        "npm:3.1.0"
       ],
       [
         "pirates",
@@ -37283,7 +37283,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["next-pwa", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:5.0.2"],
             ["node-mocks-http", "npm:1.9.0"],
             ["pg", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:8.5.1"],
-            ["pino", "npm:6.9.0"],
+            ["pino", "npm:6.10.0"],
             ["pino-pretty", "npm:4.3.0"],
             ["postcss", "npm:8.2.3"],
             ["postcss-preset-env", "npm:6.7.0"],
@@ -48712,14 +48712,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["pino", [
-        ["npm:6.9.0", {
-          "packageLocation": "../../../../../tmp/renovate-cache/others/yarn/pino-npm-6.9.0-0dda908238-841b6ba6ac.zip/node_modules/pino/",
+        ["npm:6.10.0", {
+          "packageLocation": "../../../../../tmp/renovate-cache/others/yarn/pino-npm-6.10.0-73d3709220-178a18b1e2.zip/node_modules/pino/",
           "packageDependencies": [
-            ["pino", "npm:6.9.0"],
+            ["pino", "npm:6.10.0"],
             ["fast-redact", "npm:3.0.0"],
             ["fast-safe-stringify", "npm:2.0.7"],
             ["flatstr", "npm:1.0.12"],
-            ["pino-std-serializers", "npm:2.5.0"],
+            ["pino-std-serializers", "npm:3.1.0"],
             ["quick-format-unescaped", "npm:4.0.1"],
             ["sonic-boom", "npm:1.3.0"]
           ],
@@ -48747,10 +48747,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["pino-std-serializers", [
-        ["npm:2.5.0", {
-          "packageLocation": "../../../../../tmp/renovate-cache/others/yarn/pino-std-serializers-npm-2.5.0-1e1542926e-c7605e6b9d.zip/node_modules/pino-std-serializers/",
+        ["npm:3.1.0", {
+          "packageLocation": "../../../../../tmp/renovate-cache/others/yarn/pino-std-serializers-npm-3.1.0-3d5bbcfa09-9e5e8e9f48.zip/node_modules/pino-std-serializers/",
           "packageDependencies": [
-            ["pino-std-serializers", "npm:2.5.0"]
+            ["pino-std-serializers", "npm:3.1.0"]
           ],
           "linkType": "HARD",
         }]

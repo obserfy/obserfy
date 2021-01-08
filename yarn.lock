@@ -19042,7 +19042,7 @@ fsevents@^1.2.7:
     next-pwa: 5.0.2
     node-mocks-http: 1.9.0
     pg: 8.5.1
-    pino: 6.9.0
+    pino: 6.10.0
     pino-pretty: 4.3.0
     postcss: 8.2.3
     postcss-preset-env: 6.7.0
@@ -29012,26 +29012,26 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"pino-std-serializers@npm:^2.4.2":
-  version: 2.5.0
-  resolution: "pino-std-serializers@npm:2.5.0"
-  checksum: c7605e6b9dd3b2e6898059da0bca93277ed9139f0b884d9f7c922f22f011ba4a930389a71728e7c682ee5c3bf786aa67a90f10b1eb8eadc0467c5b78883a43bc
+"pino-std-serializers@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "pino-std-serializers@npm:3.1.0"
+  checksum: 9e5e8e9f483690596c7e45ba36d638a6599cefd176a9c8ad586ac1c78132b77299297c6801b81cfdcd83c500998598cd4e6fe92a6d3f6ae629c33034a19c5b32
   languageName: node
   linkType: hard
 
-"pino@npm:6.9.0":
-  version: 6.9.0
-  resolution: "pino@npm:6.9.0"
+"pino@npm:6.10.0":
+  version: 6.10.0
+  resolution: "pino@npm:6.10.0"
   dependencies:
     fast-redact: ^3.0.0
     fast-safe-stringify: ^2.0.7
     flatstr: ^1.0.12
-    pino-std-serializers: ^2.4.2
+    pino-std-serializers: ^3.1.0
     quick-format-unescaped: ^4.0.1
     sonic-boom: ^1.0.2
   bin:
     pino: bin.js
-  checksum: 841b6ba6ac2efabaf9b40d425f508074d2b2044b1f9518508203b3d1040007e30c89f22d46eb9e85daee0a39cd96c96c6ebd1bbc3e0c2c7acfae85953e79bbd8
+  checksum: 178a18b1e26463db61a6bb270631a691cbcc8052585f915de6ee0a62fb8d82261702930a6ce8ce91389ed7e6e624160f20edec45be299f55a98b87adc3b553d8
   languageName: node
   linkType: hard
 
