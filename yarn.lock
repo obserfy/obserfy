@@ -19727,13 +19727,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-svgr@npm:2.0.2":
-  version: 2.0.2
-  resolution: "gatsby-plugin-svgr@npm:2.0.2"
+"gatsby-plugin-svgr@npm:2.1.0":
+  version: 2.1.0
+  resolution: "gatsby-plugin-svgr@npm:2.1.0"
   peerDependencies:
     "@svgr/webpack": ">=2.0.0"
-    gatsby: ">2.0.0-alpha"
-  checksum: 6fb2c050bf76a207d2e7c1e2fe3028cadd98af59f40148485fcab5f023f4452e11d40d43c91ef7492dc761879f6f8cd6eb557613a23cdea43dbd6867238b8e5f
+    gatsby: ">=2.0.0"
+  checksum: 624cb0f92f7bb6cf5a3cf0dc95fd4145410d389d61ccbe667ec4b5309e8b5d48230c57ad0b5a54e884b52c7c3bdc15d245216e5e5e0ce7b9aeca14caa4a3eb12
   languageName: node
   linkType: hard
 
@@ -37667,7 +37667,7 @@ typescript@^4.0.0:
     gatsby-plugin-remove-trailing-slashes: 2.6.0
     gatsby-plugin-segment-js: 3.6.0
     gatsby-plugin-sharp: 2.10.1
-    gatsby-plugin-svgr: 2.0.2
+    gatsby-plugin-svgr: 2.1.0
     gatsby-plugin-theme-ui: 0.6.0-alpha.3
     gatsby-plugin-webpack-bundle-analyser-v2: 1.1.18
     gatsby-source-filesystem: 2.7.0
