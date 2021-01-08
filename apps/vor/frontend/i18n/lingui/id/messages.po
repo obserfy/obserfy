@@ -8,7 +8,7 @@ msgstr ""
 "Language: id\n"
 "Project-Id-Version: a9762ad8ff131d2a39fce5fce9d2fb91\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2021-01-03 18:24\n"
+"PO-Revision-Date: 2021-01-08 07:13\n"
 "Last-Translator: \n"
 "Language-Team: Indonesian\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -103,6 +103,10 @@ msgstr "Semua Wali Murid"
 msgid "All Students"
 msgstr "Semua Murid"
 
+#: src/components/PageRegister/PageRegister.tsx:113
+msgid "Already have an account?"
+msgstr ""
+
 #: src/components/PageSubscription/PageSubscription.tsx:48
 #~ msgid "Amount Due"
 #~ msgstr "Amount Due"
@@ -110,6 +114,10 @@ msgstr "Semua Murid"
 #: src/components/PageSubscription/PageSubscription.tsx:103
 #~ msgid "And more coming..."
 #~ msgstr "And more coming..."
+
+#: src/components/PageRegister/PageRegister.tsx:124
+msgid "Are you a parent or guardian?"
+msgstr ""
 
 #: src/pages/dashboard/admin/guardians/profile.tsx:38
 #: src/pages/dashboard/students/profile/guardians/profile.tsx:40
@@ -497,6 +505,10 @@ msgstr "Ke Pengaturan Kelas"
 msgid "Go to Curriculum"
 msgstr "Buka Kurikulum"
 
+#: src/components/PageRegister/PageRegister.tsx:126
+msgid "Go to parent dashboard"
+msgstr ""
+
 #: src/components/NewGuardianForm/NewGuardianForm.tsx:12
 #: src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx:33
 msgid "Guardian Name"
@@ -570,9 +582,14 @@ msgstr "Tautan"
 msgid "Log Out"
 msgstr "Keluar"
 
+#: src/components/PageRegister/PageRegister.tsx:115
 #: src/pages/login.tsx:6
-msgid "Login for Teachers"
+msgid "Login"
 msgstr ""
+
+#: src/pages/login.tsx:6
+#~ msgid "Login for Teachers"
+#~ msgstr "Login for Teachers"
 
 #: src/components/PageNewStudent/NewStudentForm.tsx:53
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:196
@@ -1012,6 +1029,11 @@ msgstr "Deskripsi Pendek"
 #: src/components/PageNewObservation/PageNewObservation.tsx:91
 msgid "Short Description*"
 msgstr "Deskripsi Pendek*"
+
+#: src/components/PageRegister/PageRegister.tsx:100
+#: src/components/PageRegister/PageRegister.tsx:107
+msgid "Sign Up"
+msgstr ""
 
 #: src/components/PageSubscription/PageSubscription.tsx:167
 msgid "Soon"
