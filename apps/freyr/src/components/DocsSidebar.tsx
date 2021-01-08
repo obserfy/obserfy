@@ -7,12 +7,13 @@ const DocsSidebar = () => (
     <SidebarHeader text={t`Concepts`} />
     <SidebarEntry text={t`Introductions`} to="/docs" />
 
-    <SidebarHeader text={t`School`} />
-    <SidebarEntry text={t`Inviting your team`} />
+    <SidebarHeader text={t`Getting Started`} />
+    <SidebarEntry text={t`Inviting your team`} to="/docs/inviting-your-team" />
     <SidebarEntry text={t`Giving parents access`} />
+
+    <SidebarHeader text={t`School`} />
     <SidebarEntry text={t`Curriculum`} />
     <SidebarEntry text={t`Classes`} />
-    <SidebarEntry text={t`Pricing & Billing`} />
 
     <SidebarHeader text={t`Students`} />
     <SidebarEntry text={t`Student profiles`} />
