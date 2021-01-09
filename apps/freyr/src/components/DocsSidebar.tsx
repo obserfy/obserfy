@@ -3,13 +3,18 @@ import React, { FC } from "react"
 import { Link } from "./Link"
 
 const DocsSidebar = () => (
-  <div className="prose prose-sm">
+  <div className="prose prose-sm pb-6">
     <SidebarHeader text={t`Concepts`} />
     <SidebarEntry text={t`Introductions`} to="/docs" />
 
-    <SidebarHeader text={t`Getting Started`} />
+    <SidebarHeader text={t`Basics`} />
     <SidebarEntry text={t`Inviting your team`} to="/docs/inviting-your-team" />
-    <SidebarEntry text={t`Giving parents access`} />
+    <SidebarEntry
+      text={t`Giving access to parent`}
+      to="/docs/giving-access-to-parents"
+    />
+    <SidebarEntry text={t`Getting support`} />
+    <SidebarEntry text={t`Text formatting`} />
 
     <SidebarHeader text={t`School`} />
     <SidebarEntry text={t`Curriculum`} />
@@ -19,26 +24,16 @@ const DocsSidebar = () => (
     <SidebarEntry text={t`Student profiles`} />
     <SidebarEntry text={t`Guardian profiles`} />
     <SidebarEntry text={t`Sharing data to guardians`} />
+    <SidebarEntry text={t`Media gallery`} />
 
     <SidebarHeader text={t`Observations`} />
-    <SidebarEntry text={t`Writing observations`} />
-    <SidebarEntry text={t`Collaborating with parents`} />
+    <SidebarEntry text={t`Manage observations`} />
+    <SidebarEntry text={t`Exporting observations`} />
 
     <SidebarHeader text={t`Lesson Plans`} />
     <SidebarEntry text={t`Creating Lesson plan`} />
     <SidebarEntry text={t`Repetitions`} />
-    <SidebarEntry text={t`Sharing with parents`} />
-
-    {/* <SidebarHeader text={t`Billing`} /> */}
-
-    <SidebarHeader text={t`Support`} />
-    <SidebarEntry text={t`Giving feedbacks`} />
-    <SidebarEntry text={t`Contacting us`} />
-
-    <SidebarHeader text={t`Open source`} />
-    <SidebarEntry text={t`Open-source by default`} />
-    <SidebarEntry text={t`Contributing`} />
-    <SidebarEntry text={t`Self-hosting Obserfy`} />
+    <SidebarEntry text={t`Related students`} />
   </div>
 )
 
