@@ -24,7 +24,7 @@ msgstr ""
 
 #: src/pages/pricing.tsx:23
 msgid "$4 per User/month"
-msgstr "4 USD per Pengguna/bulan"
+msgstr "$4 per Pengguna/bulan"
 
 #: src/pages/index.tsx:132
 #~ msgid "../images/gaia.png"
@@ -164,7 +164,7 @@ msgstr "Gratis uji coba 30-hari"
 
 #: src/components/DocsSidebar.tsx:11
 msgid "Getting support"
-msgstr "Cara mendapatkan bantuan"
+msgstr "Dapatkan bantuan"
 
 #: src/components/DocsFooter.tsx:30
 #: src/components/Footer.tsx:30

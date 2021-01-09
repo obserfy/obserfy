@@ -6,6 +6,14 @@ module.exports = {
     siteUrl: `https://obserfy.com`,
   },
   plugins: [
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/docs`,
+        name: `docs`,
+      },
+    },
+    `gatsby-plugin-mdx`,
     `gatsby-plugin-remove-trailing-slashes`,
     {
       resolve: `gatsby-plugin-manifest`,
@@ -49,14 +57,6 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/src/docs`,
-        name: `docs`,
-      },
-    },
-    `gatsby-plugin-mdx`,
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
