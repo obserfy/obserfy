@@ -3287,6 +3287,17 @@ type LandingPageImagesQueryVariables = Exact<{ [key: string]: never; }>;
 
 type LandingPageImagesQuery = { readonly hero: Maybe<{ readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }>, readonly vor: Maybe<{ readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }>, readonly gaia: Maybe<{ readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }> };
 
+type Unnamed_2_QueryVariables = Exact<{
+  locale: Scalars['String'];
+  slug: Scalars['String'];
+}>;
+
+
+type Unnamed_2_Query = { readonly mdx: Maybe<(
+    Pick<Mdx, 'body'>
+    & { readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'slug' | 'title' | 'description'>> }
+  )> };
+
 type LocalizationSEOQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -3298,17 +3309,6 @@ type LocalizationConfigQueryQueryVariables = Exact<{ [key: string]: never; }>;
 type LocalizationConfigQueryQuery = { readonly themeI18N: Maybe<(
     Pick<ThemeI18n, 'defaultLang'>
     & { readonly config: Maybe<ReadonlyArray<Maybe<Pick<Locale, 'code' | 'hrefLang' | 'dateFormat' | 'langDir' | 'localName' | 'name'>>>> }
-  )> };
-
-type Unnamed_2_QueryVariables = Exact<{
-  locale: Scalars['String'];
-  slug: Scalars['String'];
-}>;
-
-
-type Unnamed_2_Query = { readonly mdx: Maybe<(
-    Pick<Mdx, 'body'>
-    & { readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'slug' | 'title' | 'description'>> }
   )> };
 
 }
