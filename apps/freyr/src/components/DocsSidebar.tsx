@@ -16,24 +16,24 @@ const DocsSidebar = () => (
     <SidebarEntry text={t`Getting support`} />
     <SidebarEntry text={t`Text formatting`} />
 
-    <SidebarHeader text={t`School`} />
-    <SidebarEntry text={t`Curriculum`} />
-    <SidebarEntry text={t`Classes`} />
+    {/* <SidebarHeader text={t`School`} /> */}
+    {/* <SidebarEntry text={t`Curriculum`} /> */}
+    {/* <SidebarEntry text={t`Classes`} /> */}
 
-    <SidebarHeader text={t`Students`} />
-    <SidebarEntry text={t`Student profiles`} />
-    <SidebarEntry text={t`Guardian profiles`} />
-    <SidebarEntry text={t`Sharing data to guardians`} />
-    <SidebarEntry text={t`Media gallery`} />
+    {/* <SidebarHeader text={t`Students`} /> */}
+    {/* <SidebarEntry text={t`Student profiles`} /> */}
+    {/* <SidebarEntry text={t`Guardian profiles`} /> */}
+    {/* <SidebarEntry text={t`Sharing data to guardians`} /> */}
+    {/* <SidebarEntry text={t`Media gallery`} /> */}
 
-    <SidebarHeader text={t`Observations`} />
-    <SidebarEntry text={t`Manage observations`} />
-    <SidebarEntry text={t`Exporting observations`} />
+    {/* <SidebarHeader text={t`Observations`} /> */}
+    {/* <SidebarEntry text={t`Manage observations`} /> */}
+    {/* <SidebarEntry text={t`Exporting observations`} /> */}
 
-    <SidebarHeader text={t`Lesson Plans`} />
-    <SidebarEntry text={t`Creating Lesson plan`} />
-    <SidebarEntry text={t`Repetitions`} />
-    <SidebarEntry text={t`Related students`} />
+    {/* <SidebarHeader text={t`Lesson Plans`} /> */}
+    {/* <SidebarEntry text={t`Creating Lesson plan`} /> */}
+    {/* <SidebarEntry text={t`Repetitions`} /> */}
+    {/* <SidebarEntry text={t`Related students`} /> */}
   </div>
 )
 
