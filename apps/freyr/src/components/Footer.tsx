@@ -34,7 +34,7 @@ const Footer = () => (
           />
         </div>
 
-        <div className="mr-16 flex-1">
+        <div className="flex-1">
           <ExternalFooterLink
             text={t`GitHub`}
             to="https://github.com/obserfy/obserfy"

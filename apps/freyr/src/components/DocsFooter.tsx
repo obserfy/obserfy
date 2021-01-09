@@ -34,7 +34,7 @@ const DocsFooter = () => (
           />
         </div>
 
-        <div className="mr-16 flex-1">
+        <div className="flex-1">
           <ExternalFooterLink
             text={t`GitHub`}
             to="https://github.com/obserfy/obserfy"
@@ -56,7 +56,7 @@ const InternalFooterLink: FC<{ to?: string; text: string }> = ({
   text,
 }) => (
   <Link to={to} className="hover:underline">
-    <h5 className="mb-3 font-bold">
+    <h5 className="mb-3 font-bold whitespace-nowrap">
       <Trans id={text} />
     </h5>
   </Link>
@@ -67,7 +67,7 @@ const ExternalFooterLink: FC<{ to?: string; text: string }> = ({
   text,
 }) => (
   <a href={to} className="hover:underline">
-    <h5 className="mb-3 font-bold">
+    <h5 className="mb-3 font-bold whitespace-nowrap">
       <Trans id={text} />
     </h5>
   </a>
