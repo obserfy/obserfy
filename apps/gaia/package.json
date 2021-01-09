@@ -34,7 +34,7 @@
     "@types/uuid": "8.3.0",
     "@zeit/next-source-maps": "0.0.4-canary.1",
     "body-scroll-lock": "3.1.5",
-    "dayjs": "1.10.2",
+    "dayjs": "1.10.3",
     "dompurify": "2.2.6",
     "dotenv": "8.2.0",
     "formidable-serverless": "1.0.3",
