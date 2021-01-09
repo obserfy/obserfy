@@ -6,7 +6,7 @@ import { Link } from "./Link"
 const DocsFooter = () => (
   <footer className="px-6 py-8 md:py-16 text-gray-700 bg-gray-50">
     <div className="md:flex">
-      <div className="mr-16">
+      <div className="mr-16 flex-1">
         <div className="flex items-center">
           <Link to="/" className="flex items-center">
             <img src={Logo} className="w-8" alt="logo" />
@@ -20,7 +20,7 @@ const DocsFooter = () => (
         </p>
       </div>
 
-      <div className="flex my-8 md:my-0">
+      <div className="flex my-8 md:my-0 flex-1">
         <div className="mr-16 flex-1">
           <InternalFooterLink to="/docs" text={t`Documentation`} />
           <InternalFooterLink to="/pricing" text={t`Pricing`} />
