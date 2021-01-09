@@ -707,8 +707,8 @@ enum FileFieldsEnum {
   childMdx___rawBody = 'childMdx.rawBody',
   childMdx___fileAbsolutePath = 'childMdx.fileAbsolutePath',
   childMdx___frontmatter___title = 'childMdx.frontmatter.title',
-  childMdx___frontmatter___slug = 'childMdx.frontmatter.slug',
   childMdx___frontmatter___description = 'childMdx.frontmatter.description',
+  childMdx___frontmatter___slug = 'childMdx.frontmatter.slug',
   childMdx___slug = 'childMdx.slug',
   childMdx___body = 'childMdx.body',
   childMdx___excerpt = 'childMdx.excerpt',
@@ -1522,8 +1522,8 @@ enum MdxFieldsEnum {
   rawBody = 'rawBody',
   fileAbsolutePath = 'fileAbsolutePath',
   frontmatter___title = 'frontmatter.title',
-  frontmatter___slug = 'frontmatter.slug',
   frontmatter___description = 'frontmatter.description',
+  frontmatter___slug = 'frontmatter.slug',
   slug = 'slug',
   body = 'body',
   excerpt = 'excerpt',
@@ -1654,14 +1654,14 @@ type MdxFilterInput = {
 
 type MdxFrontmatter = {
   readonly title: Scalars['String'];
-  readonly slug: Maybe<Scalars['String']>;
   readonly description: Maybe<Scalars['String']>;
+  readonly slug: Maybe<Scalars['String']>;
 };
 
 type MdxFrontmatterFilterInput = {
   readonly title: Maybe<StringQueryOperatorInput>;
-  readonly slug: Maybe<StringQueryOperatorInput>;
   readonly description: Maybe<StringQueryOperatorInput>;
+  readonly slug: Maybe<StringQueryOperatorInput>;
 };
 
 type MdxGroupConnection = {
@@ -2572,15 +2572,15 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___cacheDigest = 'pluginCreator.pluginOptions.cacheDigest',
   pluginCreator___pluginOptions___defaultLang = 'pluginCreator.pluginOptions.defaultLang',
   pluginCreator___pluginOptions___configPath = 'pluginCreator.pluginOptions.configPath',
-  pluginCreator___pluginOptions___localeDir = 'pluginCreator.pluginOptions.localeDir',
   pluginCreator___pluginOptions___path = 'pluginCreator.pluginOptions.path',
+  pluginCreator___pluginOptions___extensions = 'pluginCreator.pluginOptions.extensions',
+  pluginCreator___pluginOptions___lessBabel = 'pluginCreator.pluginOptions.lessBabel',
+  pluginCreator___pluginOptions___mediaTypes = 'pluginCreator.pluginOptions.mediaTypes',
+  pluginCreator___pluginOptions___localeDir = 'pluginCreator.pluginOptions.localeDir',
   pluginCreator___pluginOptions___base64Width = 'pluginCreator.pluginOptions.base64Width',
   pluginCreator___pluginOptions___stripMetadata = 'pluginCreator.pluginOptions.stripMetadata',
   pluginCreator___pluginOptions___defaultQuality = 'pluginCreator.pluginOptions.defaultQuality',
   pluginCreator___pluginOptions___failOnError = 'pluginCreator.pluginOptions.failOnError',
-  pluginCreator___pluginOptions___extensions = 'pluginCreator.pluginOptions.extensions',
-  pluginCreator___pluginOptions___lessBabel = 'pluginCreator.pluginOptions.lessBabel',
-  pluginCreator___pluginOptions___mediaTypes = 'pluginCreator.pluginOptions.mediaTypes',
   pluginCreator___pluginOptions___siteUrl = 'pluginCreator.pluginOptions.siteUrl',
   pluginCreator___pluginOptions___exclude = 'pluginCreator.pluginOptions.exclude',
   pluginCreator___pluginOptions___output = 'pluginCreator.pluginOptions.output',
@@ -2794,15 +2794,15 @@ enum SitePluginFieldsEnum {
   pluginOptions___cacheDigest = 'pluginOptions.cacheDigest',
   pluginOptions___defaultLang = 'pluginOptions.defaultLang',
   pluginOptions___configPath = 'pluginOptions.configPath',
-  pluginOptions___localeDir = 'pluginOptions.localeDir',
   pluginOptions___path = 'pluginOptions.path',
+  pluginOptions___extensions = 'pluginOptions.extensions',
+  pluginOptions___lessBabel = 'pluginOptions.lessBabel',
+  pluginOptions___mediaTypes = 'pluginOptions.mediaTypes',
+  pluginOptions___localeDir = 'pluginOptions.localeDir',
   pluginOptions___base64Width = 'pluginOptions.base64Width',
   pluginOptions___stripMetadata = 'pluginOptions.stripMetadata',
   pluginOptions___defaultQuality = 'pluginOptions.defaultQuality',
   pluginOptions___failOnError = 'pluginOptions.failOnError',
-  pluginOptions___extensions = 'pluginOptions.extensions',
-  pluginOptions___lessBabel = 'pluginOptions.lessBabel',
-  pluginOptions___mediaTypes = 'pluginOptions.mediaTypes',
   pluginOptions___siteUrl = 'pluginOptions.siteUrl',
   pluginOptions___exclude = 'pluginOptions.exclude',
   pluginOptions___output = 'pluginOptions.output',
@@ -2942,15 +2942,15 @@ type SitePluginPluginOptions = {
   readonly cacheDigest: Maybe<Scalars['String']>;
   readonly defaultLang: Maybe<Scalars['String']>;
   readonly configPath: Maybe<Scalars['String']>;
-  readonly localeDir: Maybe<Scalars['String']>;
   readonly path: Maybe<Scalars['String']>;
+  readonly extensions: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
+  readonly lessBabel: Maybe<Scalars['Boolean']>;
+  readonly mediaTypes: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
+  readonly localeDir: Maybe<Scalars['String']>;
   readonly base64Width: Maybe<Scalars['Int']>;
   readonly stripMetadata: Maybe<Scalars['Boolean']>;
   readonly defaultQuality: Maybe<Scalars['Int']>;
   readonly failOnError: Maybe<Scalars['Boolean']>;
-  readonly extensions: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
-  readonly lessBabel: Maybe<Scalars['Boolean']>;
-  readonly mediaTypes: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly siteUrl: Maybe<Scalars['String']>;
   readonly exclude: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly output: Maybe<Scalars['String']>;
@@ -2988,15 +2988,15 @@ type SitePluginPluginOptionsFilterInput = {
   readonly cacheDigest: Maybe<StringQueryOperatorInput>;
   readonly defaultLang: Maybe<StringQueryOperatorInput>;
   readonly configPath: Maybe<StringQueryOperatorInput>;
-  readonly localeDir: Maybe<StringQueryOperatorInput>;
   readonly path: Maybe<StringQueryOperatorInput>;
+  readonly extensions: Maybe<StringQueryOperatorInput>;
+  readonly lessBabel: Maybe<BooleanQueryOperatorInput>;
+  readonly mediaTypes: Maybe<StringQueryOperatorInput>;
+  readonly localeDir: Maybe<StringQueryOperatorInput>;
   readonly base64Width: Maybe<IntQueryOperatorInput>;
   readonly stripMetadata: Maybe<BooleanQueryOperatorInput>;
   readonly defaultQuality: Maybe<IntQueryOperatorInput>;
   readonly failOnError: Maybe<BooleanQueryOperatorInput>;
-  readonly extensions: Maybe<StringQueryOperatorInput>;
-  readonly lessBabel: Maybe<BooleanQueryOperatorInput>;
-  readonly mediaTypes: Maybe<StringQueryOperatorInput>;
   readonly siteUrl: Maybe<StringQueryOperatorInput>;
   readonly exclude: Maybe<StringQueryOperatorInput>;
   readonly output: Maybe<StringQueryOperatorInput>;
@@ -3277,15 +3277,15 @@ type GatsbyImageSharpSizes_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio
 
 type GatsbyImageSharpSizes_withWebp_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
 
-type LandingPageImagesQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type LandingPageImagesQuery = { readonly hero: Maybe<{ readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }>, readonly vor: Maybe<{ readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }>, readonly gaia: Maybe<{ readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }> };
-
 type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type Unnamed_1_Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
+
+type LandingPageImagesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type LandingPageImagesQuery = { readonly hero: Maybe<{ readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }>, readonly vor: Maybe<{ readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }>, readonly gaia: Maybe<{ readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }> };
 
 type Unnamed_2_QueryVariables = Exact<{
   locale: Scalars['String'];
@@ -3298,6 +3298,11 @@ type Unnamed_2_Query = { readonly mdx: Maybe<(
     & { readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'slug' | 'title' | 'description'>> }
   )> };
 
+type LocalizationSEOQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type LocalizationSEOQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'siteUrl'>> }> };
+
 type LocalizationConfigQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -3305,10 +3310,5 @@ type LocalizationConfigQueryQuery = { readonly themeI18N: Maybe<(
     Pick<ThemeI18n, 'defaultLang'>
     & { readonly config: Maybe<ReadonlyArray<Maybe<Pick<Locale, 'code' | 'hrefLang' | 'dateFormat' | 'langDir' | 'localName' | 'name'>>>> }
   )> };
-
-type LocalizationSEOQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type LocalizationSEOQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'siteUrl'>> }> };
 
 }
