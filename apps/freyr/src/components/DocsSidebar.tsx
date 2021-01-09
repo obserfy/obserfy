@@ -10,11 +10,11 @@ const DocsSidebar = () => (
     <SidebarHeader text={t`Basics`} />
     <SidebarEntry text={t`Inviting your team`} to="/docs/inviting-your-team" />
     <SidebarEntry
-      text={t`Giving access to parent`}
+      text={t`Giving access to parents`}
       to="/docs/giving-access-to-parents"
     />
-    <SidebarEntry text={t`Getting support`} />
-    <SidebarEntry text={t`Text formatting`} />
+    <SidebarEntry text={t`Getting support`} to="/docs/getting-support" />
+    {/* <SidebarEntry text={t`Text formatting`} /> */}
 
     {/* <SidebarHeader text={t`School`} /> */}
     {/* <SidebarEntry text={t`Curriculum`} /> */}
