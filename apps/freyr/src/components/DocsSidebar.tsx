@@ -52,7 +52,9 @@ const SidebarEntry: FC<{ text: string; to?: string }> = ({
     className="no-underline hover:underline block border-l pl-3 py-1 text-gray-700"
     // activeClassName="border-primary text-green-600 font-bold"
   >
-    <h5>{text}</h5>
+    <h5>
+      <Trans id={text} />
+    </h5>
   </Link>
 )
 
