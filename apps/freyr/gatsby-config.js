@@ -31,6 +31,14 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/docs`,
+        name: `docs`,
+      },
+    },
+    `gatsby-plugin-mdx`,
+    {
       resolve: `gatsby-theme-i18n-lingui`,
       options: {
         localeDir: `./i18n/lingui`,
@@ -49,14 +57,6 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/src/docs`,
-        name: `docs`,
-      },
-    },
-    `gatsby-plugin-mdx`,
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {

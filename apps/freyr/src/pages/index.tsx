@@ -209,12 +209,14 @@ const IndexPage: FC = () => {
                 </Trans>
               </p>
               <p>
-                We help you empower parents, providing custom dashboard for them
-                to access and making it{" "}
-                <GreenBold>
-                  easy to share your data and collaborate with parents on their
-                  child&apos;s education.
-                </GreenBold>
+                <Trans>
+                  We help you empower parents, providing custom dashboard for
+                  them to access and making it{" "}
+                  <GreenBold>
+                    easy to share your data and collaborate with parents on
+                    their child&apos;s education.
+                  </GreenBold>
+                </Trans>
               </p>
             </div>
           </div>

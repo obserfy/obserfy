@@ -25,7 +25,7 @@ const Header: FC = () => {
           <div className="flex items-center ml-1">
             <Link to="/" className="flex items-center">
               <img src={Logo} className="w-8" alt="logo" />
-              <h1 className="text-xl ml-2 font-bold font-body">Obserfy</h1>
+              <p className="text-xl ml-2 font-bold font-body">Obserfy</p>
             </Link>
           </div>
 
