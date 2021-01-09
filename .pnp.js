@@ -609,7 +609,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@cypress/code-coverage",
-        "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:3.9.0"
+        "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:3.9.1"
       ],
       [
         "@cypress/listr-verbose-renderer",
@@ -18753,16 +18753,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@cypress/code-coverage", [
-        ["virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:3.9.0", {
-          "packageLocation": "./.yarn/$$virtual/@cypress-code-coverage-virtual-54f98c6436/6/tmp/renovate-cache/others/yarn/@cypress-code-coverage-npm-3.9.0-c7f54f815b-fac6c18df8.zip/node_modules/@cypress/code-coverage/",
+        ["virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:3.9.1", {
+          "packageLocation": "./.yarn/$$virtual/@cypress-code-coverage-virtual-ab0612387a/6/tmp/renovate-cache/others/yarn/@cypress-code-coverage-npm-3.9.1-8a153dd6f3-d1fbf7754b.zip/node_modules/@cypress/code-coverage/",
           "packageDependencies": [
-            ["@cypress/code-coverage", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:3.9.0"],
+            ["@cypress/code-coverage", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:3.9.1"],
             ["@cypress/browserify-preprocessor", "npm:3.0.1"],
             ["@types/cypress", null],
             ["cypress", "npm:6.2.1"],
-            ["debug", "virtual:54f98c643637628774e33fc571207414c1e04442b75fe034ee2ddf5a99d1ec183e6bdefee0fdbf4a31ae904a50b2da41660e2e75d794d0857de4f862d1c4d3f9#npm:4.3.1"],
+            ["debug", "virtual:ab0612387af06bbe49c6d23edabe5afa8bb67db4fa012a3e22bd2b9fcb9be73abf9caf96715c27ee278ffa83f9054563864ab010d13d9b8dcf0ec0e28d01af2f#npm:4.3.1"],
             ["execa", "npm:4.1.0"],
-            ["globby", "npm:11.0.1"],
+            ["globby", "npm:11.0.2"],
             ["istanbul-lib-coverage", "npm:3.0.0"],
             ["js-yaml", "npm:3.14.1"],
             ["nyc", "npm:15.1.0"]
@@ -32770,15 +32770,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
-        ["virtual:54f98c643637628774e33fc571207414c1e04442b75fe034ee2ddf5a99d1ec183e6bdefee0fdbf4a31ae904a50b2da41660e2e75d794d0857de4f862d1c4d3f9#npm:4.3.1", {
-          "packageLocation": "./.yarn/$$virtual/debug-virtual-c70a6f9129/6/tmp/renovate-cache/others/yarn/debug-npm-4.3.1-22e08d605e-0d41ba5177.zip/node_modules/debug/",
-          "packageDependencies": [
-            ["debug", "virtual:54f98c643637628774e33fc571207414c1e04442b75fe034ee2ddf5a99d1ec183e6bdefee0fdbf4a31ae904a50b2da41660e2e75d794d0857de4f862d1c4d3f9#npm:4.3.1"],
-            ["ms", "npm:2.1.2"],
-            ["supports-color", "npm:7.1.0"]
-          ],
-          "linkType": "HARD",
-        }],
         ["virtual:55ee18c8e19977a11885a1650a9c8ace082bef4651cd58ef3e97ffc7de2aaf65e03612f920e86a6f65dfa15bbf2d3bdccc8e9e16aa19b1a44602031e5ce3dc78#npm:3.2.6", {
           "packageLocation": "./.yarn/$$virtual/debug-virtual-178bf3b13b/6/tmp/renovate-cache/others/yarn/debug-npm-3.2.6-6214e40f12-619feb53b1.zip/node_modules/debug/",
           "packageDependencies": [
@@ -32818,6 +32809,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "packagePeers": [
             "supports-color"
+          ],
+          "linkType": "HARD",
+        }],
+        ["virtual:ab0612387af06bbe49c6d23edabe5afa8bb67db4fa012a3e22bd2b9fcb9be73abf9caf96715c27ee278ffa83f9054563864ab010d13d9b8dcf0ec0e28d01af2f#npm:4.3.1", {
+          "packageLocation": "./.yarn/$$virtual/debug-virtual-f5a0706d9a/6/tmp/renovate-cache/others/yarn/debug-npm-4.3.1-22e08d605e-0d41ba5177.zip/node_modules/debug/",
+          "packageDependencies": [
+            ["debug", "virtual:ab0612387af06bbe49c6d23edabe5afa8bb67db4fa012a3e22bd2b9fcb9be73abf9caf96715c27ee278ffa83f9054563864ab010d13d9b8dcf0ec0e28d01af2f#npm:4.3.1"],
+            ["ms", "npm:2.1.2"],
+            ["supports-color", "npm:7.1.0"]
           ],
           "linkType": "HARD",
         }],
@@ -33919,7 +33919,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./apps/e2e/",
           "packageDependencies": [
             ["e2e", "workspace:apps/e2e"],
-            ["@cypress/code-coverage", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:3.9.0"],
+            ["@cypress/code-coverage", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:3.9.1"],
             ["@cypress/webpack-preprocessor", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:5.5.0"],
             ["@hapi/iron", "npm:6.0.0"],
             ["@types/auth0-js", "npm:9.14.2"],
@@ -39771,6 +39771,19 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "../../../../../tmp/renovate-cache/others/yarn/globby-npm-11.0.1-b32c0f1cff-e7239e9e46.zip/node_modules/globby/",
           "packageDependencies": [
             ["globby", "npm:11.0.1"],
+            ["array-union", "npm:2.1.0"],
+            ["dir-glob", "npm:3.0.1"],
+            ["fast-glob", "npm:3.2.4"],
+            ["ignore", "npm:5.1.8"],
+            ["merge2", "npm:1.4.1"],
+            ["slash", "npm:3.0.0"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:11.0.2", {
+          "packageLocation": "../../../../../tmp/renovate-cache/others/yarn/globby-npm-11.0.2-7ff8329b4b-d23f2a6b88.zip/node_modules/globby/",
+          "packageDependencies": [
+            ["globby", "npm:11.0.2"],
             ["array-union", "npm:2.1.0"],
             ["dir-glob", "npm:3.0.1"],
             ["fast-glob", "npm:3.2.4"],
