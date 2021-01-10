@@ -18632,16 +18632,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"formidable-serverless@npm:1.0.3":
-  version: 1.0.3
-  resolution: "formidable-serverless@npm:1.0.3"
+"formidable-serverless@npm:1.1.1":
+  version: 1.1.1
+  resolution: "formidable-serverless@npm:1.1.1"
   dependencies:
-    formidable: ^1.2.1
-  checksum: 8e8bdb840566e9fc12d836a8274fe67ab4f1fb18fd39e13a288ea8fd72e88f26f5c94d5935494d7821508ec20a31b82ef475d3778cd49b61866540cc24fe8ff5
+    formidable: ^1.2.2
+  checksum: 5347567f3ae09d54c88c9764b850f29c3efed5940f522a4909c153973faff634492d33b266e47834876b7a0579e3809f836ea02f4014bb7ad1c1f04259ce64bc
   languageName: node
   linkType: hard
 
-"formidable@npm:^1.2.1, formidable@npm:^1.2.2":
+"formidable@npm:^1.2.2":
   version: 1.2.2
   resolution: "formidable@npm:1.2.2"
   checksum: 9fe5ef38d5881ac16cc8ca78bd3229fbf32b10e0fd3b718ec20f86ea1de7302aa0ffcfa9a9163cec02fc3f825faf9d0533f24539bb20ae6d73b580b526c25edb
@@ -19028,7 +19028,7 @@ fsevents@^1.2.7:
     eslint-plugin-prettier: 3.3.0
     eslint-plugin-react: 7.22.0
     eslint-plugin-react-hooks: 4.2.0
-    formidable-serverless: 1.0.3
+    formidable-serverless: 1.1.1
     fp-ts: 2.9.3
     io-ts: 2.2.13
     io-ts-types: 0.5.12
