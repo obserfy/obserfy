@@ -36,8 +36,6 @@ module.exports = {
   flags: {
     FAST_DEV: true,
     FAST_REFRESH: true,
-    PRESERVE_WEBPACK_CACHE: true,
-    PRESERVE_FILE_DOWNLOAD_CACHE: true,
   },
   siteMetadata: {
     title: `Obserfy for Teachers`,
@@ -58,6 +56,7 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-remove-trailing-slashes`,

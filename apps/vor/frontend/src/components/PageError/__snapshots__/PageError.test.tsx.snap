@@ -262,50 +262,6 @@ exports[`PageError should render correctly 1`] = `
       <div
         class="emotion-2"
       >
-        <div
-          class=" gatsby-image-wrapper"
-          style="position: relative; overflow: hidden; display: inline-block; width: 180px; height: 180px;"
-        >
-          <img
-            alt=""
-            aria-hidden="true"
-            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEfklEQVQ4y4WUC1CUVRTHz7fPyIZ1wH0/VEhQth3BlVBYKjDaVCrQsSTKx2hqEpIOoj3EsQgVpZKYZXhs1EjNUtbiyJRkIuMLcFU2cHkEw+yCMImPDEl57Xe69wtMR7Qz85977/ed87v3njvnAIzZ2g2beOX2o3C64Rp03EFYn5LGpG9/DzamfggrVm/kfD61fA+JS5dDXJwZPH8hPNQQkQBT4cfK41Oq63siyFq4ZVsmpKRtZk45OplZ+vmcz5e2mmg6Up1y3poYZj1YwSv+ygbLk1e9Zf+5vj8n/xCGzpl9Miw0QDq+2e7cQkhIXLbts4JDZ8fjyisb4FGmTUnbOnjinAcDg0OHBHxAozEk84CliAKF697elGsymfDd9F0FWfusk4vKjkHq5h2PBBqTV6z12o7UsYsTVw5LJvvjvMio4t6bmNDWPeDZ9kEWqpXypO27rJxzzYXr3MkfZQKNVndpYXwifpJbOlp1qh3PXHQPdPQOYoG1HCdLJAuMRuP/QsbNTHSOaND84mKsqWthm9032a6rXtZSUo7TAoKylyUsAsvn2TziM4lhGDoCj8d7KPAGzT1V2Jxw1mY/jvW/dWH2/gI2Y/sO79bM3H7jM0u6dQH6X4nPThogFvtwgc62vgmBjRQmEom8cpkcJb6+rFqtxeCZIaNnHU3Y0NzVGGiIeXmmITyaz2Om0oDC0kPCpo7rjLP1Cgd1tpGx9T/4XgoUCkUj0ilS9pXEVzG/8Gu2uNTm3bPvAA4MYzeAHHIOWGHN+jT4ox/hvKt3DNTHu9hyhWnquAquzqtQ4+jhgM9RIJ/PZ4OCgtjVa9azPxw5weUya28ee8bhwubOG2V1Tk+x49Jl+3lXT6njUk/GBVdvCIX+edsL1fWX+cfq+pgvig/zgICEBNhMoSqV2kteFD/ak4fd1xHbugaQBLEt7n5s9dzCtu6/sb3nDv5++TY2tl8bJnBL7xW3uOq0G5q6ECylP929dua/eRSPaDRaVqlUsm+sXMdayyrwcFUt+93hEyOkoobzi74Z3Z9nRUuJDWudbmwn4NrGvgsH7Q3hTR6cVvJttXkcSJPdT6EymdxLoRKJZJTMh3W6qSNqtWZUJpV65QrlkL+/f6VcrqhYsiy5fefHOZiTV4a1rqFB+y8tmJL2/kkK449B88ce545SqUICQgJCOtfqpqE+NBLnxSzBaPPrq1TTZ1N/oU6j2LBw0Uu3STniuo3pTvLNl/5g7jklbSEoEAiGpFLZUY1GZ1GpVO+ERix4M9qcXBX5/GtoeiHpZnzSZj8QykDq9wRERUVGPR0+p8JfItDqQ2bczeE4NIIog0gfGxsH5HSgVCjAMPdZiE/eCiZz0tLZEXFDgbPmrtZM10OIwSgOCzWAzE/MBRP4feXD3LvYsiUDFAolnzwQ/6kwk0Ak9uErNIFcnyVqJeLaW1BwMJ9cm4mJjWViYxc8UDV0BwGF+/g8DiSPoNY9CcGG+aDUzmDGmsMkIhXRY1wihSIgMKCwiYATN8sAPQiEYiLR/RdimAd8/wGdhf2zu9ZpxgAAAABJRU5ErkJggg=="
-            style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 1; transition-delay: 500ms;"
-          />
-          <picture>
-            <source
-              srcset="/static/9cf0a1adee34b11d10d8c8d2e3e53438/88812/astronaut.webp 1x,
-/static/9cf0a1adee34b11d10d8c8d2e3e53438/3ee92/astronaut.webp 1.5x,
-/static/9cf0a1adee34b11d10d8c8d2e3e53438/72d08/astronaut.webp 2x"
-              type="image/webp"
-            />
-            <source
-              srcset="/static/9cf0a1adee34b11d10d8c8d2e3e53438/d8216/astronaut.png 1x,
-/static/9cf0a1adee34b11d10d8c8d2e3e53438/9cb01/astronaut.png 1.5x,
-/static/9cf0a1adee34b11d10d8c8d2e3e53438/6e29c/astronaut.png 2x"
-            />
-            <img
-              alt=""
-              height="180"
-              loading="lazy"
-              src="/static/9cf0a1adee34b11d10d8c8d2e3e53438/d8216/astronaut.png"
-              srcset="/static/9cf0a1adee34b11d10d8c8d2e3e53438/d8216/astronaut.png 1x,
-/static/9cf0a1adee34b11d10d8c8d2e3e53438/9cb01/astronaut.png 1.5x,
-/static/9cf0a1adee34b11d10d8c8d2e3e53438/6e29c/astronaut.png 2x"
-              style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0; transition: opacity 500ms;"
-              width="180"
-            />
-          </picture>
-          <noscript>
-            &lt;picture&gt;&lt;source type='image/webp' srcset="/static/9cf0a1adee34b11d10d8c8d2e3e53438/88812/astronaut.webp 1x,
-/static/9cf0a1adee34b11d10d8c8d2e3e53438/3ee92/astronaut.webp 1.5x,
-/static/9cf0a1adee34b11d10d8c8d2e3e53438/72d08/astronaut.webp 2x" /&gt;&lt;source srcset="/static/9cf0a1adee34b11d10d8c8d2e3e53438/d8216/astronaut.png 1x,
-/static/9cf0a1adee34b11d10d8c8d2e3e53438/9cb01/astronaut.png 1.5x,
-/static/9cf0a1adee34b11d10d8c8d2e3e53438/6e29c/astronaut.png 2x" /&gt;&lt;img loading="lazy" width="180" height="180" srcset="/static/9cf0a1adee34b11d10d8c8d2e3e53438/d8216/astronaut.png 1x,
-/static/9cf0a1adee34b11d10d8c8d2e3e53438/9cb01/astronaut.png 1.5x,
-/static/9cf0a1adee34b11d10d8c8d2e3e53438/6e29c/astronaut.png 2x" src="/static/9cf0a1adee34b11d10d8c8d2e3e53438/d8216/astronaut.png" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/&gt;&lt;/picture&gt;
-          </noscript>
-        </div>
         <h5
           class="emotion-3"
         >
