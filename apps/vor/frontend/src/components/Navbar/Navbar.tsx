@@ -1,36 +1,21 @@
-import React, { FC, FunctionComponent, useEffect, useState } from "react"
-import { graphql, useStaticQuery } from "gatsby"
-import GatsbyImage from "gatsby-image"
+import { t, Trans } from "@lingui/macro"
 import { useLocation, useMatch } from "@reach/router"
-import { Box, Flex } from "theme-ui"
-import { Trans, t } from "@lingui/macro"
+import { StaticImage } from "gatsby-plugin-image"
 import { useLocalization } from "gatsby-theme-i18n"
-import { Link } from "../Link/Link"
+import React, { FC, FunctionComponent, useEffect, useState } from "react"
+import { Box, Flex } from "theme-ui"
+import { ReactComponent as QuestionMarkIcon } from "../../icons/question-mark.svg"
 import { ReactComponent as SettingsIcon } from "../../icons/settings.svg"
 import { ReactComponent as StudentsIcon } from "../../icons/students.svg"
-import { ReactComponent as QuestionMarkIcon } from "../../icons/question-mark.svg"
-import Icon from "../Icon/Icon"
-import { Typography } from "../Typography/Typography"
 import { ADMIN_URL, STUDENTS_URL, SUPPORT_URL } from "../../routes"
+import Icon from "../Icon/Icon"
+import { Link } from "../Link/Link"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
+import { Typography } from "../Typography/Typography"
 
 const Navbar: FC = () => {
   const [keyboardShown, setKeyboardShown] = useState(false)
   const [lastVh, setLastVh] = useState(0)
-
-  const query = useStaticQuery(graphql`
-    query {
-      file(relativePath: { eq: "logo-transparent.png" }) {
-        childImageSharp {
-          # Specify the image processing specifications right in the query.
-          # Makes it trivial to update as your page's design changes.
-          fixed(width: 40, height: 40) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-    }
-  `)
 
   // Hide navbar when keyboard is shown.
   useEffect(() => {
@@ -86,7 +71,11 @@ const Navbar: FC = () => {
         pl="env(safe-area-inset-left)"
       >
         <Box mx="auto" my={2} sx={{ display: ["none", "block"] }} mb={4}>
-          <GatsbyImage fixed={query.file.childImageSharp.fixed} />
+          <StaticImage
+            src="../../images/logo-transparent.png"
+            alt="obserfy logo"
+            maxWidth={40}
+          />
         </Box>
         <NavBarItem title={t`Students`} icon={StudentsIcon} to={STUDENTS_URL} />
         {/* <NavBarItem title="Plan" icon={CalendarIcon} to="/dashboard/plans" /> */}

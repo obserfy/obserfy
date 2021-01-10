@@ -1,16 +1,15 @@
-import React, { FC } from "react"
-import GatsbyImage, { FixedObject } from "gatsby-image"
-import { graphql, useStaticQuery } from "gatsby"
-import { Flex, Button, Card, Box } from "theme-ui"
 import { Trans } from "@lingui/macro"
-import { Link } from "../Link/Link"
-import BackNavigation from "../BackNavigation/BackNavigation"
-import { ADMIN_URL, NEW_CLASS_URL, EDIT_CLASS_URL } from "../../routes"
-import Typography from "../Typography/Typography"
+import { StaticImage } from "gatsby-plugin-image"
+import React, { FC } from "react"
+import { Box, Button, Card, Flex } from "theme-ui"
 
 import useGetSchoolClasses from "../../hooks/api/classes/useGetSchoolClasses"
+import { ADMIN_URL, EDIT_CLASS_URL, NEW_CLASS_URL } from "../../routes"
+import BackNavigation from "../BackNavigation/BackNavigation"
+import { Link } from "../Link/Link"
 
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
+import Typography from "../Typography/Typography"
 
 export const PageClassSettings: FC = () => {
   const classes = useGetSchoolClasses()
@@ -56,49 +55,33 @@ export const PageClassSettings: FC = () => {
   )
 }
 
-const NoClassPlaceholder: FC = () => {
-  const illustration = useStaticQuery(graphql`
-    query {
-      file: file(relativePath: { eq: "calendar-colour.png" }) {
-        childImageSharp {
-          fixed(width: 230, height: 230) {
-            ...GatsbyImageSharpFixed_withWebp
-          }
-        }
-      }
-    }
-  `)
-
-  return (
-    <Flex
-      m={3}
-      pt={4}
-      sx={{
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
-      <GatsbyImage
-        fixed={illustration?.file?.childImageSharp?.fixed as FixedObject}
-      />
-      <Typography.Body
-        my={4}
-        mx={4}
-        sx={{ textAlign: "center", maxWidth: 300 }}
-      >
-        <Trans>
-          Tell us about your classes, We&apos;ll help you track your students
-          attendance.
-        </Trans>
-      </Typography.Body>
-      <Link to={NEW_CLASS_URL}>
-        <Button>
-          <Trans>New Class</Trans>
-        </Button>
-      </Link>
-    </Flex>
-  )
-}
+const NoClassPlaceholder: FC = () => (
+  <Flex
+    m={3}
+    pt={4}
+    sx={{
+      flexDirection: "column",
+      alignItems: "center",
+    }}
+  >
+    <StaticImage
+      src="../../images/calendar-colour.png"
+      maxWidth={230}
+      alt="a person pointing at a calendar"
+    />
+    <Typography.Body my={4} mx={4} sx={{ textAlign: "center", maxWidth: 300 }}>
+      <Trans>
+        Tell us about your classes, We&apos;ll help you track your students
+        attendance.
+      </Trans>
+    </Typography.Body>
+    <Link to={NEW_CLASS_URL}>
+      <Button>
+        <Trans>New Class</Trans>
+      </Button>
+    </Link>
+  </Flex>
+)
 
 const LoadingState: FC = () => (
   <Box m={3}>
