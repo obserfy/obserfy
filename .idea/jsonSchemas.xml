@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JsonSchemaMappingsProjectConfiguration">
+    <state>
+      <map>
+        <entry key="OpenAPI 3">
+          <value>
+            <SchemaInfo>
+              <option name="name" value="OpenAPI 3" />
+              <option name="relativePathToSchema" value="https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/schemas/v3.0/schema.json" />
+              <option name="applicationDefined" value="true" />
+              <option name="patterns">
+                <list>
+                  <Item>
+                    <option name="path" value="apps/vor/openapi/api.yml" />
+                  </Item>
+                </list>
+              </option>
+            </SchemaInfo>
+          </value>
+        </entry>
+        <entry key="circleciconfig">
+          <value>
+            <SchemaInfo>
+              <option name="name" value="circleciconfig" />
+              <option name="relativePathToSchema" value="http://json.schemastore.org/circleciconfig" />
+              <option name="applicationDefined" value="true" />
+              <option name="patterns">
+                <list>
+                  <Item>
+                    <option name="path" value=".circleci/config.yml" />
+                  </Item>
+                </list>
+              </option>
+            </SchemaInfo>
+          </value>
+        </entry>
+        <entry key="cypress">
+          <value>
+            <SchemaInfo>
+              <option name="name" value="cypress" />
+              <option name="relativePathToSchema" value="https://raw.githubusercontent.com/cypress-io/cypress/develop/cli/schema/cypress.schema.json" />
+              <option name="applicationDefined" value="true" />
+              <option name="patterns">
+                <list>
+                  <Item>
+                    <option name="path" value="apps/e2e/cypress.json" />
+                  </Item>
+                </list>
+              </option>
+            </SchemaInfo>
+          </value>
+        </entry>
+        <entry key="web-manifest-combined">
+          <value>
+            <SchemaInfo>
+              <option name="name" value="web-manifest-combined" />
+              <option name="relativePathToSchema" value="https://json.schemastore.org/web-manifest-combined" />
+              <option name="applicationDefined" value="true" />
+              <option name="patterns">
+                <list>
+                  <Item>
+                    <option name="path" value="apps/gaia/public/manifest.json" />
+                  </Item>
+                </list>
+              </option>
+            </SchemaInfo>
+          </value>
+        </entry>
+      </map>
+    </state>
+  </component>
+</project>
