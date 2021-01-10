@@ -3737,7 +3737,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "cypress-intellij-reporter",
-        "npm:0.0.5"
+        "npm:0.0.6"
       ],
       [
         "d",
@@ -32555,10 +32555,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["cypress-intellij-reporter", [
-        ["npm:0.0.5", {
-          "packageLocation": "../../../../../tmp/renovate-cache/others/yarn/cypress-intellij-reporter-npm-0.0.5-224a3237e2-cd49b17772.zip/node_modules/cypress-intellij-reporter/",
+        ["npm:0.0.6", {
+          "packageLocation": "../../../../../tmp/renovate-cache/others/yarn/cypress-intellij-reporter-npm-0.0.6-177284ed22-39e73b221b.zip/node_modules/cypress-intellij-reporter/",
           "packageDependencies": [
-            ["cypress-intellij-reporter", "npm:0.0.5"],
+            ["cypress-intellij-reporter", "npm:0.0.6"],
             ["mocha", "npm:8.0.1"]
           ],
           "linkType": "HARD",
@@ -33890,7 +33890,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@typescript-eslint/parser", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:4.11.1"],
             ["auth0-js", "npm:9.14.0"],
             ["cypress", "npm:6.2.1"],
-            ["cypress-intellij-reporter", "npm:0.0.5"],
+            ["cypress-intellij-reporter", "npm:0.0.6"],
             ["dotenv", "npm:8.2.0"],
             ["eslint", "npm:7.16.0"],
             ["eslint-config-airbnb-typescript", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:12.0.0"],
