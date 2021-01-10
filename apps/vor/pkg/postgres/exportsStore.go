@@ -4,6 +4,7 @@ import (
 	"github.com/chrsep/vor/pkg/domain"
 	"github.com/go-pg/pg/v10"
 	"github.com/go-pg/pg/v10/orm"
+	"github.com/google/uuid"
 	richErrors "github.com/pkg/errors"
 	"strings"
 )
@@ -54,6 +55,13 @@ func (s ExportsStore) GetObservations(schoolId string, studentId string, search 
 		if observation.CreatorId != "" {
 			newObservation.CreatorId = observation.Creator.Id
 			newObservation.CreatorName = observation.Creator.Name
+		}
+
+		if observation.AreaId != uuid.Nil {
+			newObservation.Area = domain.Area{
+				Id:   observation.Area.Id,
+				Name: observation.Area.Name,
+			}
 		}
 
 		result = append(result, newObservation)

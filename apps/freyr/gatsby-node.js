@@ -9,10 +9,10 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions
 
   // Generate /help pages
-  const helpTemplate = require.resolve(`./src/templates/help.js`)
+  const docsTemplate = require.resolve(`./src/templates/docs.js`)
   const result = await graphql(`
     {
-      help: allFile(filter: { sourceInstanceName: { eq: "help" } }) {
+      help: allFile(filter: { sourceInstanceName: { eq: "docs" } }) {
         nodes {
           childMdx {
             frontmatter {
@@ -30,8 +30,8 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const helpPosts = result.data.help.nodes
   helpPosts.forEach(({ childMdx: node }) => {
     createPage({
-      path: "/help" + node.frontmatter.slug,
-      component: helpTemplate,
+      path: "/docs" + node.frontmatter.slug,
+      component: docsTemplate,
       context: {
         slug: node.frontmatter.slug,
       },

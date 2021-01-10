@@ -1,20 +1,25 @@
-import { Trans } from "@lingui/macro"
+import { t, Trans } from "@lingui/macro"
 import React, { FC } from "react"
 import Layout from "../components/layout"
 import Button from "../components/Button/Button"
+import SEO from "../components/seo"
 
 const PricingPage: FC = () => {
   return (
     <Layout>
+      <SEO
+        title={t`Pricing`}
+        description={t`Simple and affordable user based pricing`}
+      />
       <div className="max-w-2xl mx-auto">
         <div className="sm:flex">
-          <div className="prose sm:mt-5 mt-16 mb-16 mx-4">
+          <div className="prose sm:mt-5 mt-16 mb-16 mx-3">
             <h1 className="text-4xl sm:text-5xl text-center sm:text-left">
               <Trans>Simple affordable pricing</Trans>
             </h1>
           </div>
 
-          <div className="p-4">
+          <div className="p-3">
             <div className="rounded-2xl prose bg-white mx-auto border shadow sm:w-80  border-primary">
               <h4 className="text-center my-6">
                 <Trans>Standard plan</Trans>
@@ -55,7 +60,7 @@ const PricingPage: FC = () => {
           </div>
         </div>
 
-        <div className="m-4 mt-8 prose prose-lg">
+        <div className="m-3 mt-8 prose prose-lg">
           <h2>
             <Trans>FAQ</Trans>
           </h2>

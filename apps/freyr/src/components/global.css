@@ -25,8 +25,17 @@
 @tailwind utilities;
 
 .backdrop-blur {
-    backdrop-filter: saturate(280%) blur(20px);
+    @apply bg-white border-b;
 }
+@supports (backdrop-filter: blur()) {
+    .backdrop-blur {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: saturate(280%) blur(20px);
+        border-color: rgba(0, 0, 0, 0.1);
+    }
+}
+
+
 
 @responsive {
     .backdrop-none {
