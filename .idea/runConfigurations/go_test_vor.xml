@@ -1,0 +1,23 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="go test vor" type="GoTestRunConfiguration" factoryName="Go Test" singleton="false" nameIsGenerated="true">
+    <module name="vor-backend" />
+    <working_directory value="$PROJECT_DIR$/apps/vor" />
+    <go_parameters value="-i" />
+    <EXTENSION ID="net.ashald.envfile">
+      <option name="IS_ENABLED" value="false" />
+      <option name="IS_SUBST" value="false" />
+      <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+      <option name="IS_IGNORE_MISSING_FILES" value="false" />
+      <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+      <ENTRIES>
+        <ENTRY IS_ENABLED="true" PARSER="runconfig" />
+      </ENTRIES>
+    </EXTENSION>
+    <framework value="gotest" />
+    <kind value="DIRECTORY" />
+    <package value="github.com/chrsep/vor" />
+    <directory value="$PROJECT_DIR$/apps/vor" />
+    <filePath value="$PROJECT_DIR$" />
+    <method v="2" />
+  </configuration>
+</component>
