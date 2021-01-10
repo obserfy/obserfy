@@ -14800,12 +14800,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress-intellij-reporter@npm:0.0.5":
-  version: 0.0.5
-  resolution: "cypress-intellij-reporter@npm:0.0.5"
+"cypress-intellij-reporter@npm:0.0.6":
+  version: 0.0.6
+  resolution: "cypress-intellij-reporter@npm:0.0.6"
   dependencies:
     mocha: latest
-  checksum: cd49b177722519cc1982afd84a57a2501fd9a9fc2c58638df2a6364c1a67639c3d07d01b31263bd3fd84f796725e70e73b63ae12ea0abc47ccb2fabe8e7b3db3
+  checksum: 39e73b221b0169156faf027b3f24a57e6daf17549d027a34df869983987b8ef10c9c12e3c36d4c67f3a8ac9b55fb9e1481137edadd27acb7c9c1ab1adbb1a92b
   languageName: node
   linkType: hard
 
@@ -16062,7 +16062,7 @@ __metadata:
     "@typescript-eslint/parser": 4.11.1
     auth0-js: 9.14.0
     cypress: 6.2.1
-    cypress-intellij-reporter: 0.0.5
+    cypress-intellij-reporter: 0.0.6
     dotenv: 8.2.0
     eslint: 7.16.0
     eslint-config-airbnb-typescript: 12.0.0
