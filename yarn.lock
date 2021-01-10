@@ -18655,10 +18655,10 @@ __metadata:
     eslint-plugin-prettier: 3.3.0
     eslint-plugin-react: 7.22.0
     eslint-plugin-react-hooks: 4.2.0
-    gatsby: ^2.30.1
+    gatsby: 2.30.1
     gatsby-image: 2.9.0
     gatsby-plugin-canonical-urls: 2.8.0
-    gatsby-plugin-image: ^0.5.0
+    gatsby-plugin-image: 0.5.0
     gatsby-plugin-manifest: 2.10.0
     gatsby-plugin-mdx: 1.8.0
     gatsby-plugin-netlify: 2.9.0
@@ -18670,14 +18670,14 @@ __metadata:
     gatsby-plugin-preload-fonts: 1.7.0
     gatsby-plugin-react-helmet: 3.8.0
     gatsby-plugin-remove-trailing-slashes: 2.8.0
-    gatsby-plugin-sharp: ^2.12.0
+    gatsby-plugin-sharp: 2.12.0
     gatsby-plugin-sitemap: 2.10.0
     gatsby-plugin-typegen: 2.2.2
     gatsby-plugin-webpack-bundle-analyser-v2: 1.1.18
     gatsby-source-filesystem: 2.9.0
     gatsby-theme-i18n: 1.0.4
     gatsby-theme-i18n-lingui: 1.0.4
-    gatsby-transformer-sharp: ^2.10.0
+    gatsby-transformer-sharp: 2.10.0
     postcss: 8.2.4
     postcss-preset-env: 6.7.0
     preact: 10.5.5
@@ -19173,7 +19173,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-image@npm:^0.5.0":
+"gatsby-plugin-image@npm:0.5.0":
   version: 0.5.0
   resolution: "gatsby-plugin-image@npm:0.5.0"
   dependencies:
@@ -19462,7 +19462,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-sharp@npm:2.12.0, gatsby-plugin-sharp@npm:^2.12.0":
+"gatsby-plugin-sharp@npm:2.12.0":
   version: 2.12.0
   resolution: "gatsby-plugin-sharp@npm:2.12.0"
   dependencies:
@@ -19748,7 +19748,7 @@ fsevents@^1.2.7:
   languageName: unknown
   linkType: soft
 
-"gatsby-transformer-sharp@npm:2.10.0, gatsby-transformer-sharp@npm:^2.10.0":
+"gatsby-transformer-sharp@npm:2.10.0":
   version: 2.10.0
   resolution: "gatsby-transformer-sharp@npm:2.10.0"
   dependencies:
@@ -19766,7 +19766,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"gatsby@npm:2.30.1, gatsby@npm:^2.30.1":
+"gatsby@npm:2.30.1":
   version: 2.30.1
   resolution: "gatsby@npm:2.30.1"
   dependencies:
@@ -37166,7 +37166,7 @@ typescript@^4.0.0:
     gatsby-image: 2.9.0
     gatsby-plugin-canonical-urls: 2.8.0
     gatsby-plugin-graphql-codegen: 2.7.1
-    gatsby-plugin-image: ^0.5.0
+    gatsby-plugin-image: 0.5.0
     gatsby-plugin-layout: 1.8.0
     gatsby-plugin-manifest: 2.10.0
     gatsby-plugin-nprogress: 2.8.0
