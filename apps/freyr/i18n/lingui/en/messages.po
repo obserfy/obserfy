@@ -29,7 +29,7 @@ msgstr "$4 per User/month"
 #~ msgid "<0>Store</0> your student data and observations. <1>Plan</1> their lessons. And <2>share</2> your data with parents with ease, on one platform built for the need of Montessori Schools."
 #~ msgstr "<0>Store</0> your student data and observations. <1>Plan</1> their lessons. And <2>share</2> your data with parents with ease, on one platform built for the need of Montessori Schools."
 
-#: src/pages/index.tsx:45
+#: src/pages/index.tsx:60
 msgid "<0>Store</0> your student's data. <1>Plan</1> their lessons. And <2>share</2> it all with parents with ease, on one platform built for the need of Montessori Schools."
 msgstr "<0>Store</0> your student's data. <1>Plan</1> their lessons. And <2>share</2> it all with parents with ease, on one platform built for the need of Montessori Schools."
 
@@ -41,7 +41,7 @@ msgstr "<0>Store</0> your student's data. <1>Plan</1> their lessons. And <2>shar
 msgid "A user is anyone with their own login access to the school's dashboard, such as teachers and teaching assistants."
 msgstr "A user is anyone with their own login access to the school's dashboard, such as teachers and teaching assistants."
 
-#: src/pages/index.tsx:216
+#: src/pages/index.tsx:231
 msgid "Allow parents to post observations at home about their children's task, and see observations that teachers had created."
 msgstr "Allow parents to post observations at home about their children's task, and see observations that teachers had created."
 
@@ -53,7 +53,7 @@ msgstr "Basics"
 #~ msgid "Blog"
 #~ msgstr "Blog"
 
-#: src/pages/index.tsx:139
+#: src/pages/index.tsx:154
 msgid "Built with speed and simplicity in mind"
 msgstr "Built with speed and simplicity in mind"
 
@@ -61,7 +61,7 @@ msgstr "Built with speed and simplicity in mind"
 #~ msgid "Classes"
 #~ msgstr "Classes"
 
-#: src/pages/index.tsx:213
+#: src/pages/index.tsx:228
 msgid "Collaborate on Observations"
 msgstr "Collaborate on Observations"
 
@@ -69,7 +69,7 @@ msgstr "Collaborate on Observations"
 #~ msgid "Collaborating with parents"
 #~ msgstr "Collaborating with parents"
 
-#: src/pages/index.tsx:167
+#: src/pages/index.tsx:182
 msgid "Collaboration between parents and schools are important, especially in the post-COVID 19 world."
 msgstr "Collaboration between parents and schools are important, especially in the post-COVID 19 world."
 
@@ -86,7 +86,7 @@ msgstr "Concepts"
 #: src/components/Header.tsx:123
 #: src/pages/contact.tsx:7
 #: src/pages/contact.tsx:11
-#: src/pages/index.tsx:60
+#: src/pages/index.tsx:75
 msgid "Contact Us"
 msgstr "Contact Us"
 
@@ -110,11 +110,11 @@ msgstr "Create lesson plans"
 #~ msgid "Curriculum"
 #~ msgstr "Curriculum"
 
-#: src/pages/index.tsx:154
+#: src/pages/index.tsx:169
 msgid "Dashboard for parents to see their child's progress in realtime"
 msgstr "Dashboard for parents to see their child's progress in realtime"
 
-#: src/pages/index.tsx:74
+#: src/pages/index.tsx:89
 msgid "Digital record keeping"
 msgstr "Digital record keeping"
 
@@ -131,11 +131,11 @@ msgstr "Documentation"
 #~ msgid "Documentations"
 #~ msgstr "Documentations"
 
-#: src/pages/index.tsx:130
+#: src/pages/index.tsx:145
 msgid "Easily keep track of your student's progress through your curriculum in one place, making building reports easier."
 msgstr "Easily keep track of your student's progress through your curriculum in one place, making building reports easier."
 
-#: src/pages/index.tsx:229
+#: src/pages/index.tsx:244
 msgid "Easily share photos of your students with their parents, and allow parents to post photos of their children doing tasks assigned to them outside of school."
 msgstr "Easily share photos of your students with their parents, and allow parents to post photos of their children doing tasks assigned to them outside of school."
 
@@ -182,7 +182,7 @@ msgstr "GitHub"
 #~ msgid "Give it a try and see how we can help improve your school."
 #~ msgstr "Give it a try and see how we can help improve your school."
 
-#: src/pages/index.tsx:258
+#: src/pages/index.tsx:273
 msgid "Give it a try now with a 30-days free trial"
 msgstr "Give it a try now with a 30-days free trial"
 
@@ -251,7 +251,7 @@ msgstr "Last updated"
 #~ msgid "Let parents see and keep track of their child's progress through through your school's curriculum."
 #~ msgstr "Let parents see and keep track of their child's progress through through your school's curriculum."
 
-#: src/pages/index.tsx:192
+#: src/pages/index.tsx:207
 msgid "Let parents see and keep track of their child's progress through your school's curriculum in realtime."
 msgstr "Let parents see and keep track of their child's progress through your school's curriculum in realtime."
 
@@ -259,7 +259,7 @@ msgstr "Let parents see and keep track of their child's progress through your sc
 msgid "Links"
 msgstr "Links"
 
-#: src/pages/index.tsx:81
+#: src/pages/index.tsx:96
 msgid "Managing student records using paper and spreadsheets can be messy. Data can easily slip through the cracks."
 msgstr "Managing student records using paper and spreadsheets can be messy. Data can easily slip through the cracks."
 
@@ -271,15 +271,15 @@ msgstr "Managing student records using paper and spreadsheets can be messy. Data
 msgid "Message"
 msgstr "Message"
 
-#: src/pages/index.tsx:38
+#: src/pages/index.tsx:53
 msgid "Montessori record keeping on phone and laptop"
 msgstr "Montessori record keeping on phone and laptop"
 
-#: src/pages/index.tsx:34
+#: src/pages/index.tsx:49
 msgid "Montessori record keeping software"
 msgstr "Montessori record keeping software"
 
-#: src/pages/index.tsx:34
+#: src/pages/index.tsx:49
 msgid "Montessori record keeping software and parent communication tool. Bridging the gap between schools and parents."
 msgstr "Montessori record keeping software and parent communication tool. Bridging the gap between schools and parents."
 
@@ -299,7 +299,7 @@ msgstr "Montessori record keeping software and parent communication tool. Bridgi
 #~ msgid "Open-source by default"
 #~ msgstr "Open-source by default"
 
-#: src/pages/index.tsx:157
+#: src/pages/index.tsx:172
 msgid "Parent communication"
 msgstr "Parent communication"
 
@@ -311,11 +311,11 @@ msgstr "Parent dashboard"
 #~ msgid "Parents"
 #~ msgstr "Parents"
 
-#: src/pages/index.tsx:115
+#: src/pages/index.tsx:130
 msgid "Plan student's lesson"
 msgstr "Plan student's lesson"
 
-#: src/pages/index.tsx:118
+#: src/pages/index.tsx:133
 msgid "Plan your student's lesson ahead of time, and share them with other teachers, and even with parents."
 msgstr "Plan your student's lesson ahead of time, and share them with other teachers, and even with parents."
 
@@ -349,7 +349,7 @@ msgstr "Privacy Policy"
 #~ msgid "Record Keeping and Communication tool for Montessori Schools"
 #~ msgstr "Record Keeping and Communication tool for Montessori Schools"
 
-#: src/pages/index.tsx:103
+#: src/pages/index.tsx:118
 msgid "Record Observations"
 msgstr "Record Observations"
 
@@ -368,7 +368,7 @@ msgstr "Record observations"
 msgid "Roadmap"
 msgstr "Roadmap"
 
-#: src/pages/index.tsx:42
+#: src/pages/index.tsx:57
 msgid "Run your Montessori School efficiently"
 msgstr "Run your Montessori School efficiently"
 
@@ -384,19 +384,19 @@ msgstr "Run your Montessori School efficiently"
 msgid "Send"
 msgstr "Send"
 
-#: src/pages/index.tsx:189
+#: src/pages/index.tsx:204
 msgid "Share curriculum progress with parents"
 msgstr "Share curriculum progress with parents"
 
-#: src/pages/index.tsx:201
+#: src/pages/index.tsx:216
 msgid "Share lesson plans"
 msgstr "Share lesson plans"
 
-#: src/pages/index.tsx:204
+#: src/pages/index.tsx:219
 msgid "Share lesson plans/tasks that parents can execute at home, along with some resources to guide them."
 msgstr "Share lesson plans/tasks that parents can execute at home, along with some resources to guide them."
 
-#: src/pages/index.tsx:226
+#: src/pages/index.tsx:241
 msgid "Share photos"
 msgstr "Share photos"
 
@@ -426,7 +426,7 @@ msgstr "Simple affordable pricing"
 msgid "Simple and affordable user based pricing"
 msgstr "Simple and affordable user based pricing"
 
-#: src/pages/index.tsx:78
+#: src/pages/index.tsx:93
 msgid "Simplifying the work that teachers do"
 msgstr "Simplifying the work that teachers do"
 
@@ -450,7 +450,7 @@ msgstr "Standard plan"
 #~ msgid "Support"
 #~ msgstr "Support"
 
-#: src/pages/index.tsx:71
+#: src/pages/index.tsx:86
 msgid "Teacher dashboard for managing observations data"
 msgstr "Teacher dashboard for managing observations data"
 
@@ -458,7 +458,7 @@ msgstr "Teacher dashboard for managing observations data"
 #~ msgid "Teachers"
 #~ msgstr "Teachers"
 
-#: src/pages/index.tsx:161
+#: src/pages/index.tsx:176
 msgid "Tools for building a more transparent and collaborative schools"
 msgstr "Tools for building a more transparent and collaborative schools"
 
@@ -470,17 +470,17 @@ msgstr "Tools for building a more transparent and collaborative schools"
 msgid "Track curriculum progress"
 msgstr "Track curriculum progress"
 
-#: src/pages/index.tsx:127
+#: src/pages/index.tsx:142
 msgid "Track student's curriculum progress"
 msgstr "Track student's curriculum progress"
 
-#: src/pages/index.tsx:55
-#: src/pages/index.tsx:263
+#: src/pages/index.tsx:70
+#: src/pages/index.tsx:278
 #: src/pages/pricing.tsx:45
 msgid "Try for Free"
 msgstr "Try for Free"
 
-#: src/pages/index.tsx:255
+#: src/pages/index.tsx:270
 msgid "Try it now"
 msgstr "Try it now"
 
@@ -496,19 +496,19 @@ msgstr "We don't charge or limit the number of students or parents that you work
 #~ msgid "We don't put limitation to the number of students or parents you can work with."
 #~ msgstr "We don't put limitation to the number of students or parents you can work with."
 
-#: src/pages/index.tsx:142
+#: src/pages/index.tsx:157
 msgid "We focus on keeping Obserfy fast to help you get your job done faster, and easy to use even if you are new to Montessori."
 msgstr "We focus on keeping Obserfy fast to help you get your job done faster, and easy to use even if you are new to Montessori."
 
-#: src/pages/index.tsx:87
+#: src/pages/index.tsx:102
 msgid "We help simplify teacher's work by providing <0>one simple place for you to keep your student records</0> so that your data are accessible for all teachers, and easily shareable to parents."
 msgstr "We help simplify teacher's work by providing <0>one simple place for you to keep your student records</0> so that your data are accessible for all teachers, and easily shareable to parents."
 
-#: src/pages/index.tsx:173
+#: src/pages/index.tsx:188
 msgid "We help you empower parents, providing custom dashboard for them to access and making it <0>easy to share your data and collaborate with parents on their child's education.</0>"
 msgstr "We help you empower parents, providing custom dashboard for them to access and making it <0>easy to share your data and collaborate with parents on their child's education.</0>"
 
-#: src/pages/index.tsx:106
+#: src/pages/index.tsx:121
 msgid "We help you keep your student observation in one place, so its available to every teachers, anytime, anywhere."
 msgstr "We help you keep your student observation in one place, so its available to every teachers, anytime, anywhere."
 
