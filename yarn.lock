@@ -8390,12 +8390,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/minio@npm:7.0.6":
-  version: 7.0.6
-  resolution: "@types/minio@npm:7.0.6"
+"@types/minio@npm:7.0.7":
+  version: 7.0.7
+  resolution: "@types/minio@npm:7.0.7"
   dependencies:
     "@types/node": "*"
-  checksum: 5db67839b2069ee370309fc1b6d8bfbe18cc5d2946cfde70475e96df35caaf66ffba74eb551cb75f7fa3b84b4c978465309f7d817285f78a512205d3d6c3d771
+  checksum: 94cdf0c8a665176bcf7586a59ae47d539c6eaf3019ec9425e2116e405632a01942f89da3805c10a659d8f896450eb942acc507b8e5086bbf889407c63ff36bcd
   languageName: node
   linkType: hard
 
@@ -19002,7 +19002,7 @@ fsevents@^1.2.7:
     "@types/dompurify": 2.2.0
     "@types/formidable": 1.0.31
     "@types/jest": 26.0.20
-    "@types/minio": 7.0.6
+    "@types/minio": 7.0.7
     "@types/mixpanel-browser": 2.35.4
     "@types/nanoid": 2.1.0
     "@types/node": 14.14.20

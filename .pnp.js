@@ -1801,7 +1801,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@types/minio",
-        "npm:7.0.6"
+        "npm:7.0.7"
       ],
       [
         "@types/mixpanel-browser",
@@ -25074,10 +25074,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@types/minio", [
-        ["npm:7.0.6", {
-          "packageLocation": "../../../../../tmp/renovate-cache/others/yarn/@types-minio-npm-7.0.6-7605160fac-5db67839b2.zip/node_modules/@types/minio/",
+        ["npm:7.0.7", {
+          "packageLocation": "../../../../../tmp/renovate-cache/others/yarn/@types-minio-npm-7.0.7-8755e7a05e-94cdf0c8a6.zip/node_modules/@types/minio/",
           "packageDependencies": [
-            ["@types/minio", "npm:7.0.6"],
+            ["@types/minio", "npm:7.0.7"],
             ["@types/events", "npm:3.0.0"],
             ["@types/node", "npm:14.0.14"]
           ],
@@ -37243,7 +37243,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/dompurify", "npm:2.2.0"],
             ["@types/formidable", "npm:1.0.31"],
             ["@types/jest", "npm:26.0.20"],
-            ["@types/minio", "npm:7.0.6"],
+            ["@types/minio", "npm:7.0.7"],
             ["@types/mixpanel-browser", "npm:2.35.4"],
             ["@types/nanoid", "npm:2.1.0"],
             ["@types/node", "npm:14.14.20"],
