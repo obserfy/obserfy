@@ -278,44 +278,7 @@ exports[`Layout should render correctly 1`] = `
       >
         <div
           class="emotion-3"
-        >
-          <div
-            class=" gatsby-image-wrapper"
-            style="position: relative; overflow: hidden; display: inline-block; width: 40px; height: 40px;"
-          >
-            <img
-              alt=""
-              aria-hidden="true"
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAACGUlEQVQ4y31UPU8cMRC11yClpUh/XSRS8A8oT4K/kA4lvwPpOq5B8va0iAaJgh9AmYpot6ZKSR0O9jjIG88b7ywhWHqy1zt+8z0h+NXlEAmem9C3KfY5BSCWc4s7/CfwHf5ZsfxQhK4VomTkQR6YApwLIAOyxt9/RNgoUSE9BJbABXAOLCCzL4RRFaWqSN6U9YaMFs6BDsKvEC6AnDu3N9j3PGn1RC/bkazPP0Amj+TxGkJPuF9hX+k5P1PRAMxpbTL3LS6J+7xY0AnyGudns8pBCIegSh+wfyGZxrSYqhDS4ibJXsRNnG+BE+AUuCPpRkhVeb6iMY1Z2EQlPKSAWqbEpzWzGqNPwKWTe2UIdquVcM/8XwYVeKLgLUkkrlvANuV2gHvKDPToiP+SD+gFhVbcT2jZlqu3RCVm5SP3BRUnb+E5k2GE5u72O4TXbwiPa7ad0CJOXb5jzEwmab22M+CPlQ5d/lZdrunu8j6FJMhWLuLazthyWch+urKSXchn5IiTHsX5xgV7wyTdS8yKm+Vxuds4T84mZTMpyi7vufoaihWT9istuHZkv4HP1brvB2GcFn225MyBh9oZXYnTIxMwVHIl+zoaxF6ejKWxhKSdrlzfGonGrM9n1TJLqg0HG6yjpW0dSeyAI9bZMbM5i3VGapfFCZmf1qOmpga5t+k9GbRNidl/ycLUUofGjf7E2RfLv1/LUc6tv9eQncCg6asRAAAAAElFTkSuQmCC"
-              style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 1; transition-delay: 500ms;"
-            />
-            <picture>
-              <source
-                srcset="/static/fe67918dbda465cf53640b9ec939e54c/ff4be/logo-transparent.png 1x,
-/static/fe67918dbda465cf53640b9ec939e54c/183c2/logo-transparent.png 1.5x,
-/static/fe67918dbda465cf53640b9ec939e54c/829e2/logo-transparent.png 2x"
-              />
-              <img
-                alt=""
-                height="40"
-                loading="lazy"
-                src="/static/fe67918dbda465cf53640b9ec939e54c/ff4be/logo-transparent.png"
-                srcset="/static/fe67918dbda465cf53640b9ec939e54c/ff4be/logo-transparent.png 1x,
-/static/fe67918dbda465cf53640b9ec939e54c/183c2/logo-transparent.png 1.5x,
-/static/fe67918dbda465cf53640b9ec939e54c/829e2/logo-transparent.png 2x"
-                style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0; transition: opacity 500ms;"
-                width="40"
-              />
-            </picture>
-            <noscript>
-              &lt;picture&gt;&lt;source srcset="/static/fe67918dbda465cf53640b9ec939e54c/ff4be/logo-transparent.png 1x,
-/static/fe67918dbda465cf53640b9ec939e54c/183c2/logo-transparent.png 1.5x,
-/static/fe67918dbda465cf53640b9ec939e54c/829e2/logo-transparent.png 2x" /&gt;&lt;img loading="lazy" width="40" height="40" srcset="/static/fe67918dbda465cf53640b9ec939e54c/ff4be/logo-transparent.png 1x,
-/static/fe67918dbda465cf53640b9ec939e54c/183c2/logo-transparent.png 1.5x,
-/static/fe67918dbda465cf53640b9ec939e54c/829e2/logo-transparent.png 2x" src="/static/fe67918dbda465cf53640b9ec939e54c/ff4be/logo-transparent.png" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/&gt;&lt;/picture&gt;
-            </noscript>
-          </div>
-        </div>
+        />
         <a
           href="/dashboard/students"
           style="outline: none;"

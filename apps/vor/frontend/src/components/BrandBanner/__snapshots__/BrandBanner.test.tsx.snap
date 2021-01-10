@@ -44,12 +44,6 @@ exports[`BrandBanner should render correctly 1`] = `
 }
 
 .emotion-4 {
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-}
-
-.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -63,7 +57,7 @@ exports[`BrandBanner should render correctly 1`] = `
   line-height: 1.2;
 }
 
-.emotion-6 {
+.emotion-5 {
   font-weight: normal;
   white-space: nowrap;
 }
@@ -82,49 +76,13 @@ exports[`BrandBanner should render correctly 1`] = `
         <div
           class="emotion-3"
         >
-          <div
-            class="emotion-4 gatsby-image-wrapper"
-            style="position: relative; overflow: hidden; display: inline-block; width: 32px; height: 32px;"
-          >
-            <img
-              alt=""
-              aria-hidden="true"
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAACo0lEQVQ4y2VVy3IaMRAcecEFnwcXfIPvycYOSHGSQ+7JCX6CQ2727lKVVKpShck/cPA+nO6ZWR6Vg9CsNNPq6RkJkSrJaZTxJpg9xjwPZVpLmV5CFWvYDew95g32FrBHfcwVBn/gELLiHTcFATOs/cXaG4DehKNMOofT4B4PSneMyZ7fK8YJMNtxIdJeqnNJkPgKIDJrsddh7vDdcs32DNhiAPp07wyVsoGJAdWwG2VXRoDEBvuvDtJwTQ+sKEGsxWzGGpamCeoOUMPunCGYkR0Zpz5Njla4bgw7j6HPLHjKI+rhJzV2OsEUlGOL7xxzrjaBVFMDhQSeTTpIkcZkt1AtkJIXodWAMh4xJjwV3xKseMxoCp9jD2oHQA7FSHM6bBwQ2kEfTUmZTV2ODMEDzAPMmWs18ZRb17l2jDU39/7BzcbtrbIiAAv2/FXk12ehDaDMmW7dt3G9yfBFtGEr1aWztNUp9xQH8vtRCyc7gP35pGsOmPdSaeX7LHkLRKsY/wdEqsMfXyQUrl+xIsOBHlCl3NuH+p1bSdjx9nGd8g4gO2qGuXiQ7GcualdMWbXdXvSjpxz3pL4+0UXacGafUYKJXUsAgBXmAaTJ/KpOXSYW8LIoGwo9t01L1504HxkYND0bzoytdLRDo/kybevZBRmOMQ59xcKFo9jN2FIvsIdmautjEc5p9jLxcozE+2rml73uK6aPAoOscc8vjQKdwDqPoa0vD4T/eONtsPS7WtuDoDehU9E1JR2NanZmVvsVXWpX7JI9DsPqAyq5UtD+WVJdtKWi3QYTv9UCANwZGljxKLdP3xG/kj7lcIvWcKZ3rsf1K3NhO9CBUjFmWH0jWDBAA7FnDOlb00JcVqxCG7C37E2s/SD8LaAzrJiWJoE4qpX8Az4IKA74epA1AAAAAElFTkSuQmCC"
-              style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 1; transition-delay: 500ms;"
-            />
-            <picture>
-              <source
-                srcset="/static/3e94836dd0b0c2444aac67e3738ae9bc/c1598/logo-standalone.png 1x,
-/static/3e94836dd0b0c2444aac67e3738ae9bc/aff39/logo-standalone.png 1.5x,
-/static/3e94836dd0b0c2444aac67e3738ae9bc/ea22a/logo-standalone.png 2x"
-              />
-              <img
-                alt=""
-                height="32"
-                loading="lazy"
-                src="/static/3e94836dd0b0c2444aac67e3738ae9bc/c1598/logo-standalone.png"
-                srcset="/static/3e94836dd0b0c2444aac67e3738ae9bc/c1598/logo-standalone.png 1x,
-/static/3e94836dd0b0c2444aac67e3738ae9bc/aff39/logo-standalone.png 1.5x,
-/static/3e94836dd0b0c2444aac67e3738ae9bc/ea22a/logo-standalone.png 2x"
-                style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0; transition: opacity 500ms;"
-                width="32"
-              />
-            </picture>
-            <noscript>
-              &lt;picture&gt;&lt;source srcset="/static/3e94836dd0b0c2444aac67e3738ae9bc/c1598/logo-standalone.png 1x,
-/static/3e94836dd0b0c2444aac67e3738ae9bc/aff39/logo-standalone.png 1.5x,
-/static/3e94836dd0b0c2444aac67e3738ae9bc/ea22a/logo-standalone.png 2x" /&gt;&lt;img loading="lazy" width="32" height="32" srcset="/static/3e94836dd0b0c2444aac67e3738ae9bc/c1598/logo-standalone.png 1x,
-/static/3e94836dd0b0c2444aac67e3738ae9bc/aff39/logo-standalone.png 1.5x,
-/static/3e94836dd0b0c2444aac67e3738ae9bc/ea22a/logo-standalone.png 2x" src="/static/3e94836dd0b0c2444aac67e3738ae9bc/c1598/logo-standalone.png" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/&gt;&lt;/picture&gt;
-            </noscript>
-          </div>
           <p
-            class="emotion-5"
+            class="emotion-4"
           >
             Obserfy
              
             <span
-              class="emotion-6"
+              class="emotion-5"
             >
               for Teachers
             </span>

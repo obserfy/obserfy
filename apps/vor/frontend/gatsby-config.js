@@ -33,6 +33,10 @@ const preactPlugin =
   process.env.NODE_ENV === "production" ? [`gatsby-plugin-preact`] : []
 
 module.exports = {
+  flags: {
+    FAST_DEV: true,
+    FAST_REFRESH: true,
+  },
   siteMetadata: {
     title: `Obserfy for Teachers`,
     description: `Record keeping tool for montessori schools.`,

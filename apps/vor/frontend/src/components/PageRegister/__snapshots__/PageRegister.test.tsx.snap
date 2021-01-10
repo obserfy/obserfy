@@ -50,12 +50,6 @@ exports[`PageRegister should render correctly 1`] = `
 }
 
 .emotion-5 {
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-}
-
-.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -69,12 +63,12 @@ exports[`PageRegister should render correctly 1`] = `
   line-height: 1.2;
 }
 
-.emotion-7 {
+.emotion-6 {
   font-weight: normal;
   white-space: nowrap;
 }
 
-.emotion-8 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -86,7 +80,7 @@ exports[`PageRegister should render correctly 1`] = `
   max-width: 500px;
 }
 
-.emotion-9 {
+.emotion-8 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -101,7 +95,7 @@ exports[`PageRegister should render correctly 1`] = `
   font-weight: bold;
 }
 
-.emotion-10 {
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -127,14 +121,14 @@ exports[`PageRegister should render correctly 1`] = `
   flex-direction: column;
 }
 
-.emotion-11 {
+.emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   padding-bottom: 4px;
 }
 
-.emotion-12 {
+.emotion-11 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -148,7 +142,7 @@ exports[`PageRegister should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-13 {
+.emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -177,35 +171,35 @@ exports[`PageRegister should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-13:hover,
-.emotion-13:focus {
+.emotion-12:hover,
+.emotion-12:focus {
   border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-13::-webkit-input-placeholder {
+.emotion-12::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-13::-moz-placeholder {
+.emotion-12::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-13:-ms-input-placeholder {
+.emotion-12:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-13::placeholder {
+.emotion-12::placeholder {
   font-style: italic;
 }
 
-.emotion-13:disabled {
+.emotion-12:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
 }
 
-.emotion-21 {
+.emotion-20 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -234,35 +228,35 @@ exports[`PageRegister should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-21:hover,
-.emotion-21:focus {
+.emotion-20:hover,
+.emotion-20:focus {
   border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-21::-webkit-input-placeholder {
+.emotion-20::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-21::-moz-placeholder {
+.emotion-20::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-21:-ms-input-placeholder {
+.emotion-20:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-21::placeholder {
+.emotion-20::placeholder {
   font-style: italic;
 }
 
-.emotion-21:disabled {
+.emotion-20:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
 }
 
-.emotion-22 {
+.emotion-21 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -326,23 +320,23 @@ exports[`PageRegister should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-22:disabled {
+.emotion-21:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-22:hover,
-.emotion-22:focus {
+.emotion-21:hover,
+.emotion-21:focus {
   background-color: var(--theme-ui-colors-primaryDark, #00a06d);
   outline: none;
 }
 
-.emotion-22:hover:disabled,
-.emotion-22:focus:disabled {
+.emotion-21:hover:disabled,
+.emotion-21:focus:disabled {
   background-color: var(--theme-ui-colors-primary, #00e399);
 }
 
-.emotion-23 {
+.emotion-22 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -357,7 +351,7 @@ exports[`PageRegister should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-24 {
+.emotion-23 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -370,11 +364,11 @@ exports[`PageRegister should render correctly 1`] = `
   text-align: center;
 }
 
-.emotion-25 {
+.emotion-24 {
   color: var(--theme-ui-colors-textPrimary, #027c5b);
 }
 
-.emotion-26 {
+.emotion-25 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -392,7 +386,7 @@ exports[`PageRegister should render correctly 1`] = `
   align-items: center;
 }
 
-.emotion-27 {
+.emotion-26 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -406,7 +400,7 @@ exports[`PageRegister should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-28 {
+.emotion-27 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -436,49 +430,13 @@ exports[`PageRegister should render correctly 1`] = `
           <div
             class="emotion-4"
           >
-            <div
-              class="emotion-5 gatsby-image-wrapper"
-              style="position: relative; overflow: hidden; display: inline-block; width: 32px; height: 32px;"
-            >
-              <img
-                alt=""
-                aria-hidden="true"
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAACo0lEQVQ4y2VVy3IaMRAcecEFnwcXfIPvycYOSHGSQ+7JCX6CQ2727lKVVKpShck/cPA+nO6ZWR6Vg9CsNNPq6RkJkSrJaZTxJpg9xjwPZVpLmV5CFWvYDew95g32FrBHfcwVBn/gELLiHTcFATOs/cXaG4DehKNMOofT4B4PSneMyZ7fK8YJMNtxIdJeqnNJkPgKIDJrsddh7vDdcs32DNhiAPp07wyVsoGJAdWwG2VXRoDEBvuvDtJwTQ+sKEGsxWzGGpamCeoOUMPunCGYkR0Zpz5Njla4bgw7j6HPLHjKI+rhJzV2OsEUlGOL7xxzrjaBVFMDhQSeTTpIkcZkt1AtkJIXodWAMh4xJjwV3xKseMxoCp9jD2oHQA7FSHM6bBwQ2kEfTUmZTV2ODMEDzAPMmWs18ZRb17l2jDU39/7BzcbtrbIiAAv2/FXk12ehDaDMmW7dt3G9yfBFtGEr1aWztNUp9xQH8vtRCyc7gP35pGsOmPdSaeX7LHkLRKsY/wdEqsMfXyQUrl+xIsOBHlCl3NuH+p1bSdjx9nGd8g4gO2qGuXiQ7GcualdMWbXdXvSjpxz3pL4+0UXacGafUYKJXUsAgBXmAaTJ/KpOXSYW8LIoGwo9t01L1504HxkYND0bzoytdLRDo/kybevZBRmOMQ59xcKFo9jN2FIvsIdmautjEc5p9jLxcozE+2rml73uK6aPAoOscc8vjQKdwDqPoa0vD4T/eONtsPS7WtuDoDehU9E1JR2NanZmVvsVXWpX7JI9DsPqAyq5UtD+WVJdtKWi3QYTv9UCANwZGljxKLdP3xG/kj7lcIvWcKZ3rsf1K3NhO9CBUjFmWH0jWDBAA7FnDOlb00JcVqxCG7C37E2s/SD8LaAzrJiWJoE4qpX8Az4IKA74epA1AAAAAElFTkSuQmCC"
-                style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 1; transition-delay: 500ms;"
-              />
-              <picture>
-                <source
-                  srcset="/static/3e94836dd0b0c2444aac67e3738ae9bc/c1598/logo-standalone.png 1x,
-/static/3e94836dd0b0c2444aac67e3738ae9bc/aff39/logo-standalone.png 1.5x,
-/static/3e94836dd0b0c2444aac67e3738ae9bc/ea22a/logo-standalone.png 2x"
-                />
-                <img
-                  alt=""
-                  height="32"
-                  loading="lazy"
-                  src="/static/3e94836dd0b0c2444aac67e3738ae9bc/c1598/logo-standalone.png"
-                  srcset="/static/3e94836dd0b0c2444aac67e3738ae9bc/c1598/logo-standalone.png 1x,
-/static/3e94836dd0b0c2444aac67e3738ae9bc/aff39/logo-standalone.png 1.5x,
-/static/3e94836dd0b0c2444aac67e3738ae9bc/ea22a/logo-standalone.png 2x"
-                  style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0; transition: opacity 500ms;"
-                  width="32"
-                />
-              </picture>
-              <noscript>
-                &lt;picture&gt;&lt;source srcset="/static/3e94836dd0b0c2444aac67e3738ae9bc/c1598/logo-standalone.png 1x,
-/static/3e94836dd0b0c2444aac67e3738ae9bc/aff39/logo-standalone.png 1.5x,
-/static/3e94836dd0b0c2444aac67e3738ae9bc/ea22a/logo-standalone.png 2x" /&gt;&lt;img loading="lazy" width="32" height="32" srcset="/static/3e94836dd0b0c2444aac67e3738ae9bc/c1598/logo-standalone.png 1x,
-/static/3e94836dd0b0c2444aac67e3738ae9bc/aff39/logo-standalone.png 1.5x,
-/static/3e94836dd0b0c2444aac67e3738ae9bc/ea22a/logo-standalone.png 2x" src="/static/3e94836dd0b0c2444aac67e3738ae9bc/c1598/logo-standalone.png" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/&gt;&lt;/picture&gt;
-              </noscript>
-            </div>
             <p
-              class="emotion-6"
+              class="emotion-5"
             >
               Obserfy
                
               <span
-                class="emotion-7"
+                class="emotion-6"
               >
                 for Teachers
               </span>
@@ -487,26 +445,26 @@ exports[`PageRegister should render correctly 1`] = `
         </a>
       </div>
       <form
-        class="emotion-8"
+        class="emotion-7"
       >
         <h5
-          class="emotion-9"
+          class="emotion-8"
         >
           Sign Up
         </h5>
         <label
-          class="emotion-10"
+          class="emotion-9"
         >
           <div
-            class="emotion-11"
+            class="emotion-10"
           >
             Name
           </div>
           <div
-            class="emotion-12"
+            class="emotion-11"
           >
             <input
-              class="emotion-13"
+              class="emotion-12"
               name="name"
               required=""
               value=""
@@ -514,18 +472,18 @@ exports[`PageRegister should render correctly 1`] = `
           </div>
         </label>
         <label
-          class="emotion-10"
+          class="emotion-9"
         >
           <div
-            class="emotion-11"
+            class="emotion-10"
           >
             Email
           </div>
           <div
-            class="emotion-12"
+            class="emotion-11"
           >
             <input
-              class="emotion-13"
+              class="emotion-12"
               data-cy="register-email"
               name="email"
               required=""
@@ -535,18 +493,18 @@ exports[`PageRegister should render correctly 1`] = `
           </div>
         </label>
         <label
-          class="emotion-10"
+          class="emotion-9"
         >
           <div
-            class="emotion-11"
+            class="emotion-10"
           >
             Password
           </div>
           <div
-            class="emotion-12"
+            class="emotion-11"
           >
             <input
-              class="emotion-21"
+              class="emotion-20"
               name="password"
               required=""
               type="password"
@@ -555,39 +513,39 @@ exports[`PageRegister should render correctly 1`] = `
           </div>
         </label>
         <button
-          class="emotion-22"
+          class="emotion-21"
           data-cy="register-button"
         >
           Sign Up
         </button>
         <p
-          class="emotion-23"
+          class="emotion-22"
         />
         <p
-          class="emotion-24"
+          class="emotion-23"
         >
           Already have an account?
            
           <a
-            class="emotion-25"
+            class="emotion-24"
             href="/login"
           >
             Login
           </a>
         </p>
         <div
-          class="emotion-26"
+          class="emotion-25"
         >
           <div
-            class="emotion-27"
+            class="emotion-26"
           />
           <p
-            class="emotion-28"
+            class="emotion-27"
           >
             Are you a parent or guardian?
              
             <a
-              class="emotion-25"
+              class="emotion-24"
               href="https://parent.obserfy.com/api/login"
             >
               Go to parent dashboard
