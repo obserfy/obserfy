@@ -98,6 +98,10 @@ msgstr "All Guardians"
 msgid "All Students"
 msgstr "All Students"
 
+#: src/components/PageRegister/PageRegister.tsx:113
+msgid "Already have an account?"
+msgstr "Already have an account?"
+
 #: src/components/PageSubscription/PageSubscription.tsx:48
 #~ msgid "Amount Due"
 #~ msgstr "Amount Due"
@@ -105,6 +109,10 @@ msgstr "All Students"
 #: src/components/PageSubscription/PageSubscription.tsx:103
 #~ msgid "And more coming..."
 #~ msgstr "And more coming..."
+
+#: src/components/PageRegister/PageRegister.tsx:124
+msgid "Are you a parent or guardian?"
+msgstr "Are you a parent or guardian?"
 
 #: src/pages/dashboard/admin/guardians/profile.tsx:38
 #: src/pages/dashboard/students/profile/guardians/profile.tsx:40
@@ -492,6 +500,10 @@ msgstr "Go to Class Settings"
 msgid "Go to Curriculum"
 msgstr "Go to Curriculum"
 
+#: src/components/PageRegister/PageRegister.tsx:126
+msgid "Go to parent dashboard"
+msgstr "Go to parent dashboard"
+
 #: src/components/NewGuardianForm/NewGuardianForm.tsx:12
 #: src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx:33
 msgid "Guardian Name"
@@ -565,9 +577,14 @@ msgstr "Links"
 msgid "Log Out"
 msgstr "Log Out"
 
+#: src/components/PageRegister/PageRegister.tsx:115
 #: src/pages/login.tsx:6
-msgid "Login for Teachers"
-msgstr "Login for Teachers"
+msgid "Login"
+msgstr "Login"
+
+#: src/pages/login.tsx:6
+#~ msgid "Login for Teachers"
+#~ msgstr "Login for Teachers"
 
 #: src/components/PageNewStudent/NewStudentForm.tsx:53
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:196
@@ -1007,6 +1024,11 @@ msgstr "Short Description"
 #: src/components/PageNewObservation/PageNewObservation.tsx:91
 msgid "Short Description*"
 msgstr "Short Description*"
+
+#: src/components/PageRegister/PageRegister.tsx:100
+#: src/components/PageRegister/PageRegister.tsx:107
+msgid "Sign Up"
+msgstr "Sign Up"
 
 #: src/components/PageSubscription/PageSubscription.tsx:167
 msgid "Soon"

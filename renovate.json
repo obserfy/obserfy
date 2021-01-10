@@ -10,13 +10,7 @@
     },
     {
       "packagePatterns": ["theme-ui"],
-      "groupName": "gatsby",
-      "extends": ["schedule:weekly"]
-    },
-    {
-      "packagePatterns": ["gatsby"],
-      "groupName": "gatsby",
-      "extends": ["schedule:weekly"]
+      "groupName": "theme-ui"
     },
     {
       "packagePatterns": ["@storybook"],

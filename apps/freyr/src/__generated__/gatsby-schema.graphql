@@ -815,6 +815,7 @@ enum FileFieldsEnum {
   childMdx___rawBody
   childMdx___fileAbsolutePath
   childMdx___frontmatter___title
+  childMdx___frontmatter___description
   childMdx___frontmatter___slug
   childMdx___slug
   childMdx___body
@@ -1578,6 +1579,7 @@ enum MdxFieldsEnum {
   rawBody
   fileAbsolutePath
   frontmatter___title
+  frontmatter___description
   frontmatter___slug
   slug
   body
@@ -1709,11 +1711,13 @@ input MdxFilterInput {
 
 type MdxFrontmatter {
   title: String!
+  description: String
   slug: String
 }
 
 input MdxFrontmatterFilterInput {
   title: StringQueryOperatorInput
+  description: StringQueryOperatorInput
   slug: StringQueryOperatorInput
 }
 
@@ -2345,15 +2349,15 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___cacheDigest
   pluginCreator___pluginOptions___defaultLang
   pluginCreator___pluginOptions___configPath
-  pluginCreator___pluginOptions___localeDir
   pluginCreator___pluginOptions___path
+  pluginCreator___pluginOptions___extensions
+  pluginCreator___pluginOptions___lessBabel
+  pluginCreator___pluginOptions___mediaTypes
+  pluginCreator___pluginOptions___localeDir
   pluginCreator___pluginOptions___base64Width
   pluginCreator___pluginOptions___stripMetadata
   pluginCreator___pluginOptions___defaultQuality
   pluginCreator___pluginOptions___failOnError
-  pluginCreator___pluginOptions___extensions
-  pluginCreator___pluginOptions___lessBabel
-  pluginCreator___pluginOptions___mediaTypes
   pluginCreator___pluginOptions___siteUrl
   pluginCreator___pluginOptions___exclude
   pluginCreator___pluginOptions___output
@@ -2555,15 +2559,15 @@ enum SitePluginFieldsEnum {
   pluginOptions___cacheDigest
   pluginOptions___defaultLang
   pluginOptions___configPath
-  pluginOptions___localeDir
   pluginOptions___path
+  pluginOptions___extensions
+  pluginOptions___lessBabel
+  pluginOptions___mediaTypes
+  pluginOptions___localeDir
   pluginOptions___base64Width
   pluginOptions___stripMetadata
   pluginOptions___defaultQuality
   pluginOptions___failOnError
-  pluginOptions___extensions
-  pluginOptions___lessBabel
-  pluginOptions___mediaTypes
   pluginOptions___siteUrl
   pluginOptions___exclude
   pluginOptions___output
@@ -2703,15 +2707,15 @@ type SitePluginPluginOptions {
   cacheDigest: String
   defaultLang: String
   configPath: String
-  localeDir: String
   path: String
+  extensions: [String]
+  lessBabel: Boolean
+  mediaTypes: [String]
+  localeDir: String
   base64Width: Int
   stripMetadata: Boolean
   defaultQuality: Int
   failOnError: Boolean
-  extensions: [String]
-  lessBabel: Boolean
-  mediaTypes: [String]
   siteUrl: String
   exclude: [String]
   output: String
@@ -2749,15 +2753,15 @@ input SitePluginPluginOptionsFilterInput {
   cacheDigest: StringQueryOperatorInput
   defaultLang: StringQueryOperatorInput
   configPath: StringQueryOperatorInput
-  localeDir: StringQueryOperatorInput
   path: StringQueryOperatorInput
+  extensions: StringQueryOperatorInput
+  lessBabel: BooleanQueryOperatorInput
+  mediaTypes: StringQueryOperatorInput
+  localeDir: StringQueryOperatorInput
   base64Width: IntQueryOperatorInput
   stripMetadata: BooleanQueryOperatorInput
   defaultQuality: IntQueryOperatorInput
   failOnError: BooleanQueryOperatorInput
-  extensions: StringQueryOperatorInput
-  lessBabel: BooleanQueryOperatorInput
-  mediaTypes: StringQueryOperatorInput
   siteUrl: StringQueryOperatorInput
   exclude: StringQueryOperatorInput
   output: StringQueryOperatorInput
