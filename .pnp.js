@@ -49954,7 +49954,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }],
         ["npm:10.5.9", {
-          "packageLocation": "../../../../../tmp/renovate-cache/others/yarn/preact-npm-10.5.9-b5a420feb5-2b268b2cea.zip/node_modules/preact/",
+          "packageLocation": "./.yarn/cache/preact-npm-10.5.9-b5a420feb5-2b268b2cea.zip/node_modules/preact/",
           "packageDependencies": [
             ["preact", "npm:10.5.9"],
             ["preact-render-to-string", "virtual:b5a420feb540cd08974081cb2d5cfafd56fbf3e0c046c4df468ef8d1440bb799f7abfc8176acc562189b037f674d437bff33747857daf1903c512d80bd5798cd#npm:5.1.10"]
@@ -49978,7 +49978,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }],
         ["virtual:b5a420feb540cd08974081cb2d5cfafd56fbf3e0c046c4df468ef8d1440bb799f7abfc8176acc562189b037f674d437bff33747857daf1903c512d80bd5798cd#npm:5.1.10", {
-          "packageLocation": "./.yarn/$$virtual/preact-render-to-string-virtual-4567d7af6c/6/tmp/renovate-cache/others/yarn/preact-render-to-string-npm-5.1.10-6d5a79550e-76dee7cc22.zip/node_modules/preact-render-to-string/",
+          "packageLocation": "./.yarn/$$virtual/preact-render-to-string-virtual-4567d7af6c/0/cache/preact-render-to-string-npm-5.1.10-6d5a79550e-76dee7cc22.zip/node_modules/preact-render-to-string/",
           "packageDependencies": [
             ["preact-render-to-string", "virtual:b5a420feb540cd08974081cb2d5cfafd56fbf3e0c046c4df468ef8d1440bb799f7abfc8176acc562189b037f674d437bff33747857daf1903c512d80bd5798cd#npm:5.1.10"],
             ["@types/preact", null],
