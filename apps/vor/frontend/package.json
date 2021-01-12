@@ -49,7 +49,7 @@
     "gatsby-theme-i18n": "1.0.4",
     "gatsby-theme-i18n-lingui": "^1.0.4",
     "gatsby-transformer-sharp": "2.10.0",
-    "idb-keyval": "3.2.0",
+    "idb-keyval": "4.0.1",
     "immer": "8.0.0",
     "make-plural": "6.2.2",
     "nanoid": "3.1.20",
