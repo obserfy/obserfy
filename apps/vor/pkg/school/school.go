@@ -21,6 +21,7 @@ func NewRouter(
 	server rest.Server,
 	store Store,
 	email MailService,
+	videos domain.VideoService,
 ) *chi.Mux {
 	r := chi.NewRouter()
 	r.Method("POST", "/", postNewSchool(server, store))
@@ -55,9 +56,11 @@ func NewRouter(
 		r.Method("PATCH", "/files/{fileId}", patchFile(server, store))
 		r.Method("DELETE", "/files/{fileId}", deleteFile(server, store))
 
+		r.Method("DELETE", "/users/{userId}", deleteUser(server, store))
+
 		r.Method("POST", "/images", postNewImage(server, store))
 
-		r.Method("DELETE", "/users/{userId}", deleteUser(server, store))
+		r.Method("GET", "/videos/upload", getNewVideoUploadLink(server, store, videos))
 	})
 	return r
 }
@@ -1169,6 +1172,26 @@ func postNewImage(server rest.Server, store Store) http.Handler {
 
 		w.WriteHeader(http.StatusCreated)
 		if err := rest.WriteJson(w, &responseBody{id}); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
+		return nil
+	})
+}
+
+func getNewVideoUploadLink(server rest.Server, store Store, videos domain.VideoService) http.Handler {
+	type responseBody struct {
+		Url string `json:"url"`
+	}
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		schoolId := chi.URLParam(r, "schoolId")
+
+		url, err := videos.CreateUploadLink(schoolId)
+		if err != nil {
+			return rest.NewInternalServerError(err, "failed to create upload link")
+		}
+
+		w.WriteHeader(http.StatusCreated)
+		if err := rest.WriteJson(w, &responseBody{url}); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
 		return nil

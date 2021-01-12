@@ -2,18 +2,24 @@ package mux
 
 import (
 	muxgo "github.com/muxinc/mux-go"
-	richErrors "github.com/pkg/errors"
 	"go.uber.org/zap"
 	"os"
 )
 
 // NewBillingService creates a new paddle.BillingService
-func NewVideoService(logger *zap.Logger) (VideoService, error) {
+func NewVideoService(logger *zap.Logger) VideoService {
 	accessToken := os.Getenv("MUX_ACCESS_TOKEN")
 	secretKey := os.Getenv("MUX_SECRET_KEY")
+	corsOrigin := os.Getenv("MUX_CORS_ORIGIN")
 
-	if accessToken == "" || secretKey == "" {
-		return VideoService{}, richErrors.New("empty paddle credentials")
+	if accessToken == "" {
+		logger.Warn("invalid mux access token")
+	}
+	if secretKey == "" {
+		logger.Warn("invalid mux secret")
+	}
+	if corsOrigin == "" {
+		logger.Warn("invalid mux cors domain")
 	}
 
 	client := muxgo.NewAPIClient(
@@ -23,12 +29,36 @@ func NewVideoService(logger *zap.Logger) (VideoService, error) {
 	)
 
 	return VideoService{
-		client: client,
-		logger: logger,
-	}, nil
+		log:        logger,
+		corsOrigin: corsOrigin,
+		client:     client,
+	}
 }
 
 type VideoService struct {
-	client *muxgo.APIClient
-	logger *zap.Logger
+	corsOrigin string
+	client     *muxgo.APIClient
+	log        *zap.Logger
+}
+
+func (s VideoService) CreateUploadLink(schoolId string) (string, error) {
+	response, err := s.client.DirectUploadsApi.CreateDirectUpload(muxgo.CreateUploadRequest{
+		Timeout:    3600,
+		CorsOrigin: s.corsOrigin,
+		NewAssetSettings: muxgo.CreateAssetRequest{
+			Input:          nil,
+			PlaybackPolicy: nil,
+			PerTitleEncode: false,
+			Passthrough:    schoolId,
+			Mp4Support:     "",
+			NormalizeAudio: false,
+			MasterAccess:   "",
+			Test:           false,
+		},
+		Test: false,
+	})
+	if err != nil {
+		return "", err
+	}
+	return response.Data.Url, nil
 }
