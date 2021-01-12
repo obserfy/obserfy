@@ -1553,7 +1553,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@testing-library/react-hooks",
-        "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:4.0.0"
+        "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:4.0.1"
       ],
       [
         "@theme-ui/color-modes",
@@ -24351,10 +24351,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@testing-library/react-hooks", [
-        ["virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:4.0.0", {
-          "packageLocation": "./.yarn/$$virtual/@testing-library-react-hooks-virtual-84979f4561/6/tmp/renovate-cache/others/yarn/@testing-library-react-hooks-npm-4.0.0-af0e9db20b-e4cf72c99c.zip/node_modules/@testing-library/react-hooks/",
+        ["virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:4.0.1", {
+          "packageLocation": "./.yarn/$$virtual/@testing-library-react-hooks-virtual-18824292f6/6/tmp/renovate-cache/others/yarn/@testing-library-react-hooks-npm-4.0.1-7cde2b806a-7bf7561951.zip/node_modules/@testing-library/react-hooks/",
           "packageDependencies": [
-            ["@testing-library/react-hooks", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:4.0.0"],
+            ["@testing-library/react-hooks", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:4.0.1"],
             ["@babel/runtime", "npm:7.12.5"],
             ["@types/react", "npm:17.0.0"],
             ["@types/react-test-renderer", "npm:17.0.0"],
@@ -58269,7 +58269,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@svgr/webpack", "npm:5.5.0"],
             ["@tailwindcss/typography", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:0.3.1"],
             ["@testing-library/react", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:11.2.3"],
-            ["@testing-library/react-hooks", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:4.0.0"],
+            ["@testing-library/react-hooks", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:4.0.1"],
             ["@theme-ui/match-media", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.6.0-alpha.1"],
             ["@types/body-scroll-lock", "npm:2.6.1"],
             ["@types/date-fns", "npm:2.6.0"],
