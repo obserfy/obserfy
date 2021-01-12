@@ -8403,7 +8403,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "react-ssr-prepass",
         [
           "preact-ssr-prepass",
-          "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:1.1.2"
+          "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:1.1.3"
         ]
       ],
       [
@@ -37241,7 +37241,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-refresh", "npm:0.9.0"],
             ["react-ssr-prepass", [
               "preact-ssr-prepass",
-              "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:1.1.2"
+              "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:1.1.3"
             ]],
             ["snarkdown", "npm:2.0.0"],
             ["stylelint", "npm:13.8.0"],
@@ -49985,10 +49985,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["preact-ssr-prepass", [
-        ["virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:1.1.2", {
-          "packageLocation": "./.yarn/$$virtual/preact-ssr-prepass-virtual-520092a83a/6/tmp/renovate-cache/others/yarn/preact-ssr-prepass-npm-1.1.2-797c92b25e-d9a8cd2cfc.zip/node_modules/preact-ssr-prepass/",
+        ["virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:1.1.3", {
+          "packageLocation": "./.yarn/$$virtual/preact-ssr-prepass-virtual-2931fdf0a6/6/tmp/renovate-cache/others/yarn/preact-ssr-prepass-npm-1.1.3-57d371f9a1-4bf50cfd5b.zip/node_modules/preact-ssr-prepass/",
           "packageDependencies": [
-            ["preact-ssr-prepass", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:1.1.2"],
+            ["preact-ssr-prepass", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:1.1.3"],
             ["@types/preact", null],
             ["preact", "npm:10.5.5"]
           ],

@@ -18972,7 +18972,7 @@ fsevents@^1.2.7:
     react-query: 3.5.11
     react-query-devtools: 2.6.3
     react-refresh: 0.9.0
-    react-ssr-prepass: "npm:preact-ssr-prepass@1.1.2"
+    react-ssr-prepass: "npm:preact-ssr-prepass@1.1.3"
     snarkdown: 2.0.0
     stylelint: 13.8.0
     stylelint-config-prettier: 8.0.2
@@ -31111,12 +31111,12 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"react-ssr-prepass@npm:preact-ssr-prepass@1.1.2":
-  version: 1.1.2
-  resolution: "preact-ssr-prepass@npm:1.1.2"
+"react-ssr-prepass@npm:preact-ssr-prepass@1.1.3":
+  version: 1.1.3
+  resolution: "preact-ssr-prepass@npm:1.1.3"
   peerDependencies:
     preact: ">=10 || ^10.0.0-beta.0 || ^10.0.0-alpha.0"
-  checksum: d9a8cd2cfc42d0ff692c11a0db60fdd7c3eb2d10b0bbb45f493ab17db41fd75e0f0f50903eb39e364b7a79194b153fde50fff5e9c5656aa740aed9cb620fc075
+  checksum: 4bf50cfd5ba6f176e1b7c29371626a0b29f3182f04eb14271614508b978ace7bdde4b2f7b58ca2277ff9d629acf92032efa4d3b08ac7dfca48a2fb30ce5bb85d
   languageName: node
   linkType: hard
 
