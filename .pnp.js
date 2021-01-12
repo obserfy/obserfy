@@ -1669,7 +1669,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@types/dompurify",
-        "npm:2.2.0"
+        "npm:2.2.1"
       ],
       [
         "@types/eslint",
@@ -24738,10 +24738,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@types/dompurify", [
-        ["npm:2.2.0", {
-          "packageLocation": "../../../../../tmp/renovate-cache/others/yarn/@types-dompurify-npm-2.2.0-efee45a955-672b5ce405.zip/node_modules/@types/dompurify/",
+        ["npm:2.2.1", {
+          "packageLocation": "../../../../../tmp/renovate-cache/others/yarn/@types-dompurify-npm-2.2.1-2c1184ef9f-fa26caccb9.zip/node_modules/@types/dompurify/",
           "packageDependencies": [
-            ["@types/dompurify", "npm:2.2.0"],
+            ["@types/dompurify", "npm:2.2.1"],
             ["@types/trusted-types", "npm:1.0.6"]
           ],
           "linkType": "HARD",
@@ -37178,7 +37178,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@sentry/webpack-plugin", "npm:1.14.0"],
             ["@tailwindcss/typography", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:0.3.1"],
             ["@types/body-scroll-lock", "npm:2.6.1"],
-            ["@types/dompurify", "npm:2.2.0"],
+            ["@types/dompurify", "npm:2.2.1"],
             ["@types/formidable", "npm:1.0.31"],
             ["@types/jest", "npm:26.0.20"],
             ["@types/minio", "npm:7.0.7"],
@@ -58273,7 +58273,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@theme-ui/match-media", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.6.0-alpha.1"],
             ["@types/body-scroll-lock", "npm:2.6.1"],
             ["@types/date-fns", "npm:2.6.0"],
-            ["@types/dompurify", "npm:2.2.0"],
+            ["@types/dompurify", "npm:2.2.1"],
             ["@types/faker", "npm:5.1.5"],
             ["@types/jest", "npm:26.0.20"],
             ["@types/query-string", "npm:6.3.0"],
