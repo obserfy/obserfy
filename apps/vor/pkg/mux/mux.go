@@ -19,7 +19,7 @@ func NewVideoService(logger *zap.Logger) VideoService {
 		logger.Warn("invalid mux secret")
 	}
 	if corsOrigin == "" {
-		logger.Warn("invalid mux cors domain")
+		logger.Warn("invalid mux cors origin")
 	}
 
 	client := muxgo.NewAPIClient(
