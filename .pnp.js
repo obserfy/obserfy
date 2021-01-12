@@ -3221,7 +3221,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "chromatic",
-        "npm:5.5.0"
+        "npm:5.6.0"
       ],
       [
         "chrome-trace-event",
@@ -30622,10 +30622,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["chromatic", [
-        ["npm:5.5.0", {
-          "packageLocation": "../../../../../tmp/renovate-cache/others/yarn/chromatic-npm-5.5.0-5cc6d64a18-a9c406e616.zip/node_modules/chromatic/",
+        ["npm:5.6.0", {
+          "packageLocation": "../../../../../tmp/renovate-cache/others/yarn/chromatic-npm-5.6.0-5c01e96968-fd16849e51.zip/node_modules/chromatic/",
           "packageDependencies": [
-            ["chromatic", "npm:5.5.0"],
+            ["chromatic", "npm:5.6.0"],
             ["@actions/core", "npm:1.2.6"],
             ["@actions/github", "npm:4.0.0"],
             ["@babel/runtime", "npm:7.12.1"],
@@ -58294,7 +58294,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["babel-preset-gatsby", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.10.0"],
             ["body-scroll-lock", "npm:3.1.5"],
             ["browser-lang", "npm:0.1.0"],
-            ["chromatic", "npm:5.5.0"],
+            ["chromatic", "npm:5.6.0"],
             ["cross-env", "npm:7.0.3"],
             ["dayjs", "npm:1.10.3"],
             ["dompurify", "npm:2.2.6"],
