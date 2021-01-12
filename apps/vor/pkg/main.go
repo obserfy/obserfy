@@ -4,6 +4,7 @@ import (
 	"crypto/tls"
 	"github.com/chrsep/vor/pkg/exports"
 	"github.com/chrsep/vor/pkg/links"
+	"github.com/chrsep/vor/pkg/mux"
 	"github.com/chrsep/vor/pkg/subscription"
 	"github.com/go-pg/pg/v10"
 	"log"
@@ -74,6 +75,12 @@ func runServer() error {
 		return err
 	}
 
+	// Setup external services
+	mailService := mailgun.NewService()
+	minioImageStorage := minio.NewImageStorage(minioClient)
+	fileStorage := minio.NewFileStorage(minioClient)
+	videoService := mux.NewVideoService(l)
+
 	// Setup server and data stores
 	server := rest.NewServer(l)
 	userStore := postgres.UserStore{DB: db}
@@ -84,9 +91,6 @@ func runServer() error {
 	lessonPlanStore := postgres.LessonPlanStore{DB: db}
 	subscriptionStore := postgres.SubscriptionStore{DB: db}
 	linksStore := postgres.LinksStore{DB: db}
-	mailService := mailgun.NewService()
-	minioImageStorage := minio.NewImageStorage(minioClient)
-	fileStorage := minio.NewFileStorage(minioClient)
 	schoolStore := postgres.SchoolStore{DB: db, FileStorage: fileStorage, ImageStorage: minioImageStorage}
 	studentStore := postgres.StudentStore{DB: db, ImageStorage: minioImageStorage}
 	imageStore := postgres.ImageStore{DB: db, ImageStorage: minioImageStorage}
@@ -111,7 +115,7 @@ func runServer() error {
 		r.Use(auth.NewMiddleware(server, authStore))
 		r.Mount("/students", student.NewRouter(server, studentStore))
 		r.Mount("/observations", observation.NewRouter(server, observationStore))
-		r.Mount("/schools", school.NewRouter(server, schoolStore, mailService))
+		r.Mount("/schools", school.NewRouter(server, schoolStore, mailService, videoService))
 		r.Mount("/users", user.NewRouter(server, userStore))
 		r.Mount("/curriculums", curriculum.NewRouter(server, curriculumStore))
 		r.Mount("/classes", class.NewRouter(server, classStore, lessonPlanStore))

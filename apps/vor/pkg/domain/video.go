@@ -1,15 +1,11 @@
 package domain
 
-import "go.uber.org/zap"
-
-type VideoService interface{}
-
-func NewNoopVideoService(logger *zap.Logger) NoopVideoService {
-	return NoopVideoService{
-		logger: logger,
-	}
+type VideoService interface {
+	CreateUploadLink(schoolId string) (string, error)
 }
 
-type NoopVideoService struct {
-	logger *zap.Logger
+type NoopVideoService struct{}
+
+func (n NoopVideoService) CreateUploadLink(schoolId string) (string, error) {
+	return "/" + schoolId, nil
 }
