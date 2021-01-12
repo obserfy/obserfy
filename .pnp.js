@@ -5445,7 +5445,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "idb-keyval",
-        "npm:3.2.0"
+        "npm:4.0.1"
       ],
       [
         "idtoken-verifier",
@@ -40859,6 +40859,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["idb-keyval", "npm:3.2.0"]
           ],
           "linkType": "HARD",
+        }],
+        ["npm:4.0.1", {
+          "packageLocation": "../../../../../tmp/renovate-cache/others/yarn/idb-keyval-npm-4.0.1-6f2fe364ba-28d9034b1c.zip/node_modules/idb-keyval/",
+          "packageDependencies": [
+            ["idb-keyval", "npm:4.0.1"]
+          ],
+          "linkType": "HARD",
         }]
       ]],
       ["idtoken-verifier", [
@@ -58342,7 +58349,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["gatsby-transformer-sharp", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:2.10.0"],
             ["http-proxy-middleware", "npm:1.0.6"],
             ["hygen", "npm:6.0.4"],
-            ["idb-keyval", "npm:3.2.0"],
+            ["idb-keyval", "npm:4.0.1"],
             ["immer", "npm:8.0.0"],
             ["jest", "npm:26.6.3"],
             ["jest-date-mock", "npm:1.0.8"],
