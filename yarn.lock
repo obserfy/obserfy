@@ -18957,7 +18957,7 @@ fsevents@^1.2.7:
     newtype-ts: 0.3.4
     next: 10.0.5
     next-compose-plugins: 2.2.1
-    next-pwa: 5.0.2
+    next-pwa: 5.0.3
     node-mocks-http: 1.9.0
     pg: 8.5.1
     pino: 6.10.0
@@ -20325,7 +20325,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"globby@npm:11.0.2":
+"globby@npm:11.0.2, globby@npm:^11.0.2":
   version: 11.0.2
   resolution: "globby@npm:11.0.2"
   dependencies:
@@ -26272,18 +26272,19 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"next-pwa@npm:5.0.2":
-  version: 5.0.2
-  resolution: "next-pwa@npm:5.0.2"
+"next-pwa@npm:5.0.3":
+  version: 5.0.3
+  resolution: "next-pwa@npm:5.0.3"
   dependencies:
     clean-webpack-plugin: ^3.0.0
-    globby: ^11.0.1
+    globby: ^11.0.2
     workbox-webpack-plugin: ^6.0.2
     workbox-window: ^6.0.2
+    worker-loader: ^3.0.7
   peerDependencies:
     next: ">=7.0.0"
     webpack: ">=4.0.0"
-  checksum: b9f8c7ad3c04c503ad1037b47a025579403cda82f2c27b930b0a42e214ce60286296e9b539001020f125894c1a68e40695081ae070c8d217218f8b380f76dd4e
+  checksum: f6ecca9a759b1454a1f161cd219c7726de6b647ca67425d35060ee9e3d1575d07b518a21727f2ca6af16cae97486db5389d2ccd38dde6eb83245a0746ad75efc
   languageName: node
   linkType: hard
 
@@ -38209,6 +38210,18 @@ typescript@^4.0.0:
   dependencies:
     errno: ~0.1.7
   checksum: ef76a6892bdf6a4231e6d657c13e2e960278535915d6235d9e0e3e23b65da94a56e5bed17ac5fda282370601d4cd18f4cba9552aa52f4fa9a25cc9fd3fcf58a9
+  languageName: node
+  linkType: hard
+
+"worker-loader@npm:^3.0.7":
+  version: 3.0.7
+  resolution: "worker-loader@npm:3.0.7"
+  dependencies:
+    loader-utils: ^2.0.0
+    schema-utils: ^3.0.0
+  peerDependencies:
+    webpack: ^4.0.0 || ^5.0.0
+  checksum: 7ebb465529f0d75e4f49aade24be8b655a865bd7ecb079eb42fa1b17407a929f7422e2c5e3ce95c1ff3a445e5d3b6108b33bab8380cd1ebe39320016d122067e
   languageName: node
   linkType: hard
 
