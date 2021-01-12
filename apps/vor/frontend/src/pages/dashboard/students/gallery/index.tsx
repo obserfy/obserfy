@@ -1,10 +1,10 @@
 import React from "react"
+import PageGallery from "../../../../components/PageGallery/PageGallery"
 import { useQueryString } from "../../../../hooks/useQueryString"
-import PageStudentImages from "../../../../components/PageStudentImages/PageStudentImages"
 
 const GalleryPage = () => {
   const studentId = useQueryString("studentId")
-  return <PageStudentImages studentId={studentId} />
+  return <PageGallery studentId={studentId} />
 }
 
 export default GalleryPage
