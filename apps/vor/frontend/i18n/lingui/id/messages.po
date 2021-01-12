@@ -8,7 +8,7 @@ msgstr ""
 "Language: id\n"
 "Project-Id-Version: a9762ad8ff131d2a39fce5fce9d2fb91\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2021-01-08 07:13\n"
+"PO-Revision-Date: 2021-01-12 10:22\n"
 "Last-Translator: \n"
 "Language-Team: Indonesian\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -83,7 +83,7 @@ msgstr "Tambahkan deskripsi disini"
 msgid "Address"
 msgstr ""
 
-#: src/components/Navbar/Navbar.tsx:83
+#: src/components/Navbar/Navbar.tsx:69
 #: src/components/PageListOfGuardians/PageListOfGuardians.tsx:21
 #: src/components/PagePaymentSuccess/PagePaymentSuccess.tsx:14
 #: src/components/PageSubscription/PageSubscription.tsx:27
@@ -202,7 +202,7 @@ msgstr "Pilih Nama"
 msgid "Class"
 msgstr "Kelas"
 
-#: src/components/PageClassSettings/PageClassSettings.tsx:27
+#: src/components/PageClassSettings/PageClassSettings.tsx:26
 #: src/components/PageNewStudent/NewStudentForm.tsx:66
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:66
 msgid "Classes"
@@ -638,7 +638,7 @@ msgstr "Nama"
 msgid "Name (Required)"
 msgstr "Nama (Wajib)"
 
-#: src/components/PageClassSettings/PageClassSettings.tsx:31
+#: src/components/PageClassSettings/PageClassSettings.tsx:30
 #: src/components/PageCurriculumArea/PageCurriculumArea.tsx:73
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:93
 msgid "New"
@@ -649,7 +649,7 @@ msgstr "Baru"
 msgid "New Area"
 msgstr "Bidang Baru"
 
-#: src/components/PageClassSettings/PageClassSettings.tsx:68
+#: src/components/PageClassSettings/PageClassSettings.tsx:54
 #: src/components/PageNewClass/PageNewClass.tsx:57
 #: src/components/PageNewStudentClass/PageNewStudentClass.tsx:60
 msgid "New Class"
@@ -1069,7 +1069,7 @@ msgstr "Status"
 msgid "Student ID"
 msgstr "ID Murid"
 
-#: src/components/Navbar/Navbar.tsx:77
+#: src/components/Navbar/Navbar.tsx:63
 #: src/components/PageAddGuardian/PageAddGuardian.tsx:67
 #: src/components/PageAllObservations/PageAllObservations.tsx:13
 #: src/components/PageNewObservation/PageNewObservation.tsx:76
@@ -1115,7 +1115,7 @@ msgstr "Berlangganan"
 msgid "Sunday"
 msgstr "Minggu"
 
-#: src/components/Navbar/Navbar.tsx:84
+#: src/components/Navbar/Navbar.tsx:70
 msgid "Support"
 msgstr "Bantuan"
 
@@ -1123,7 +1123,7 @@ msgstr "Bantuan"
 msgid "Switch school"
 msgstr "Pindah sekolah"
 
-#: src/components/PageClassSettings/PageClassSettings.tsx:61
+#: src/components/PageClassSettings/PageClassSettings.tsx:47
 msgid "Tell us about your classes, We'll help you track your students attendance."
 msgstr "Beri tahu kami tentang kelas Anda, Kami akan membantu Anda melacak kehadiran siswa Anda."
 
@@ -1267,7 +1267,7 @@ msgstr ""
 msgid "active"
 msgstr "aktif"
 
-#: src/components/BrandBanner/BrandBanner.tsx:27
+#: src/components/BrandBanner/BrandBanner.tsx:13
 msgid "for Teachers"
 msgstr "untuk Guru"
 
