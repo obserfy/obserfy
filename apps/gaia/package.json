@@ -55,7 +55,7 @@
     "postcss-preset-env": "6.7.0",
     "preact": "10.5.5",
     "preact-render-to-string": "5.1.12",
-    "react": "npm:@preact/compat@0.0.3",
+    "react": "npm:@preact/compat@0.0.4",
     "react-dom": "npm:@preact/compat@0.0.3",
     "react-query": "3.5.12",
     "react-query-devtools": "2.6.3",
