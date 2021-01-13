@@ -21942,7 +21942,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ]],
             ["react-dom", [
               "@preact/compat",
-              "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.0.3"
+              "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.0.4"
             ]],
             ["shell-quote", "npm:1.7.2"],
             ["source-map", "npm:0.8.0-beta.0"],
@@ -22292,19 +22292,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@preact/compat", [
-        ["virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.0.3", {
-          "packageLocation": "./.yarn/$$virtual/@preact-compat-virtual-b67557b3af/6/tmp/renovate-cache/others/yarn/@preact-compat-npm-0.0.3-5679f86b71-82e25edb27.zip/node_modules/@preact/compat/",
-          "packageDependencies": [
-            ["@preact/compat", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.0.3"],
-            ["@types/preact", null],
-            ["preact", "npm:10.5.5"]
-          ],
-          "packagePeers": [
-            "@types/preact",
-            "preact"
-          ],
-          "linkType": "HARD",
-        }],
         ["virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.0.4", {
           "packageLocation": "./.yarn/$$virtual/@preact-compat-virtual-f80cca6684/6/tmp/renovate-cache/others/yarn/@preact-compat-npm-0.0.4-298e16c315-1f25fd5f12.zip/node_modules/@preact/compat/",
           "packageDependencies": [
@@ -37251,7 +37238,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ]],
             ["react-dom", [
               "@preact/compat",
-              "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.0.3"
+              "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.0.4"
             ]],
             ["react-query", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:3.5.12"],
             ["react-query-devtools", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.6.3"],
@@ -46160,7 +46147,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ]],
             ["react-dom", [
               "@preact/compat",
-              "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.0.3"
+              "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.0.4"
             ]],
             ["react-is", "npm:16.13.1"],
             ["react-refresh", "npm:0.8.3"],
@@ -51597,7 +51584,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ]],
             ["react-dom", [
               "@preact/compat",
-              "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.0.3"
+              "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.0.4"
             ]],
             ["react-native", null]
           ],
