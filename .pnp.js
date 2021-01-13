@@ -1553,7 +1553,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@testing-library/react-hooks",
-        "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:4.0.1"
+        "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:5.0.0"
       ],
       [
         "@theme-ui/color-modes",
@@ -4642,6 +4642,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       [
         "fill-range",
         "npm:4.0.0"
+      ],
+      [
+        "filter-console",
+        "npm:0.1.1"
       ],
       [
         "finalhandler",
@@ -8322,6 +8326,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       [
         "react-element-to-jsx-string",
         "virtual:dd58a75725e84164768fb8cda3defce44598b8baed31022941b384c206e225c060bac693f61cb7f45a758a88a0a19606a8902cf184295eabf333fbd15deef933#npm:14.3.1"
+      ],
+      [
+        "react-error-boundary",
+        "virtual:fb1fb9534ef9bbc3c1290769843f657dd026dde5107cea645481f751640b0e4c24538dc128f379104b9e1748af15130b0100853b18189d93a0b001588abc6be8#npm:3.1.0"
       ],
       [
         "react-error-overlay",
@@ -24368,18 +24376,24 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@testing-library/react-hooks", [
-        ["virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:4.0.1", {
-          "packageLocation": "./.yarn/$$virtual/@testing-library-react-hooks-virtual-18824292f6/6/tmp/renovate-cache/others/yarn/@testing-library-react-hooks-npm-4.0.1-7cde2b806a-7bf7561951.zip/node_modules/@testing-library/react-hooks/",
+        ["virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:5.0.0", {
+          "packageLocation": "./.yarn/$$virtual/@testing-library-react-hooks-virtual-fb1fb9534e/6/tmp/renovate-cache/others/yarn/@testing-library-react-hooks-npm-5.0.0-d67de184d6-69b856d1dd.zip/node_modules/@testing-library/react-hooks/",
           "packageDependencies": [
-            ["@testing-library/react-hooks", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:4.0.1"],
+            ["@testing-library/react-hooks", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:5.0.0"],
             ["@babel/runtime", "npm:7.12.5"],
             ["@types/react", "npm:17.0.0"],
+            ["@types/react-dom", "npm:17.0.0"],
             ["@types/react-test-renderer", "npm:17.0.0"],
+            ["filter-console", "npm:0.1.1"],
             ["react", "npm:17.0.1"],
+            ["react-dom", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:17.0.1"],
+            ["react-error-boundary", "virtual:fb1fb9534ef9bbc3c1290769843f657dd026dde5107cea645481f751640b0e4c24538dc128f379104b9e1748af15130b0100853b18189d93a0b001588abc6be8#npm:3.1.0"],
             ["react-test-renderer", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:17.0.1"]
           ],
           "packagePeers": [
+            "@types/react-dom",
             "@types/react",
+            "react-dom",
             "react-test-renderer",
             "react"
           ],
@@ -36456,6 +36470,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["fill-range", "npm:7.0.1"],
             ["to-regex-range", "npm:5.0.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["filter-console", [
+        ["npm:0.1.1", {
+          "packageLocation": "../../../../../tmp/renovate-cache/others/yarn/filter-console-npm-0.1.1-022d33b3ad-f9def51f7e.zip/node_modules/filter-console/",
+          "packageDependencies": [
+            ["filter-console", "npm:0.1.1"]
           ],
           "linkType": "HARD",
         }]
@@ -51196,6 +51219,22 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["react-error-boundary", [
+        ["virtual:fb1fb9534ef9bbc3c1290769843f657dd026dde5107cea645481f751640b0e4c24538dc128f379104b9e1748af15130b0100853b18189d93a0b001588abc6be8#npm:3.1.0", {
+          "packageLocation": "./.yarn/$$virtual/react-error-boundary-virtual-fdaaec84e1/6/tmp/renovate-cache/others/yarn/react-error-boundary-npm-3.1.0-a06f6e8361-0df44cd3ac.zip/node_modules/react-error-boundary/",
+          "packageDependencies": [
+            ["react-error-boundary", "virtual:fb1fb9534ef9bbc3c1290769843f657dd026dde5107cea645481f751640b0e4c24538dc128f379104b9e1748af15130b0100853b18189d93a0b001588abc6be8#npm:3.1.0"],
+            ["@babel/runtime", "npm:7.12.5"],
+            ["@types/react", "npm:17.0.0"],
+            ["react", "npm:17.0.1"]
+          ],
+          "packagePeers": [
+            "@types/react",
+            "react"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["react-error-overlay", [
         ["npm:3.0.0", {
           "packageLocation": "../../../../../tmp/renovate-cache/others/yarn/react-error-overlay-npm-3.0.0-224dc6ed17-4d68c71112.zip/node_modules/react-error-overlay/",
@@ -58294,7 +58333,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@svgr/webpack", "npm:5.5.0"],
             ["@tailwindcss/typography", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:0.3.1"],
             ["@testing-library/react", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:11.2.3"],
-            ["@testing-library/react-hooks", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:4.0.1"],
+            ["@testing-library/react-hooks", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:5.0.0"],
             ["@theme-ui/match-media", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.6.0-alpha.1"],
             ["@types/body-scroll-lock", "npm:2.6.1"],
             ["@types/date-fns", "npm:2.6.0"],
