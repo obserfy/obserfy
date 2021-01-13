@@ -7775,17 +7775,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/react-hooks@npm:4.0.1":
-  version: 4.0.1
-  resolution: "@testing-library/react-hooks@npm:4.0.1"
+"@testing-library/react-hooks@npm:5.0.0":
+  version: 5.0.0
+  resolution: "@testing-library/react-hooks@npm:5.0.0"
   dependencies:
     "@babel/runtime": ^7.12.5
     "@types/react": ">=16.9.0"
+    "@types/react-dom": ">=16.9.0"
     "@types/react-test-renderer": ">=16.9.0"
+    filter-console: ^0.1.1
+    react-error-boundary: ^3.1.0
   peerDependencies:
     react: ">=16.9.0"
+    react-dom: ">=16.9.0"
     react-test-renderer: ">=16.9.0"
-  checksum: 7bf756195130055bbd48d3c0f46523de195496f7fa6115a2b4dcfa6c4169f306312cfd2fe01d137737cd44775ca59d79a1f6f856d33febb3d7a36db607ec9a32
+  peerDependenciesMeta:
+    react-dom:
+      optional: true
+    react-test-renderer:
+      optional: true
+  checksum: 69b856d1dda147d640dd1ae092c4a77464ee7fbf26b37e2d46080ba779833c8c75d0027171ba5da2036f0277c3d4926cde09039e78397e716e1b69dfeaa0e408
   languageName: node
   linkType: hard
 
@@ -8623,7 +8632,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:17.0.0":
+"@types/react-dom@npm:17.0.0, @types/react-dom@npm:>=16.9.0":
   version: 17.0.0
   resolution: "@types/react-dom@npm:17.0.0"
   dependencies:
@@ -18276,6 +18285,13 @@ __metadata:
   dependencies:
     to-regex-range: ^5.0.1
   checksum: efca43d59b487ad4bc0b2b1cb9e51617c75a7b0159db51fa190c75c3d634ea5fad1ff4750d7c14346add4cd065e3c46e8f99af333edf2b4ec2a424f87e491a85
+  languageName: node
+  linkType: hard
+
+"filter-console@npm:^0.1.1":
+  version: 0.1.1
+  resolution: "filter-console@npm:0.1.1"
+  checksum: f9def51f7ece9c9c469f78e1551ce33dfde02fd32bd70a6fbe8da4a9377ebb65a2a4fc6196ebf8e6ea8668a5465bde7fe3459101d1042e73bb9e3e1eb3f22fb6
   languageName: node
   linkType: hard
 
@@ -30843,6 +30859,17 @@ mocha@latest:
   languageName: node
   linkType: hard
 
+"react-error-boundary@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "react-error-boundary@npm:3.1.0"
+  dependencies:
+    "@babel/runtime": ^7.12.5
+  peerDependencies:
+    react: ">=16.13.1"
+  checksum: 0df44cd3ac6fb9990b500eb052544cbf166bf5b544ca415fd8ed3c39b67daf5376c977ee03da4a34478af22809fe99a82a7ed53719b8a16c87ad53211508b461
+  languageName: node
+  linkType: hard
+
 "react-error-overlay@npm:^3.0.0":
   version: 3.0.0
   resolution: "react-error-overlay@npm:3.0.0"
@@ -37151,7 +37178,7 @@ typescript@^4.0.0:
     "@svgr/webpack": 5.5.0
     "@tailwindcss/typography": 0.3.1
     "@testing-library/react": 11.2.3
-    "@testing-library/react-hooks": 4.0.1
+    "@testing-library/react-hooks": 5.0.0
     "@theme-ui/match-media": 0.6.0-alpha.1
     "@types/body-scroll-lock": 2.6.1
     "@types/date-fns": 2.6.0
