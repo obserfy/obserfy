@@ -164,8 +164,8 @@ msgstr "Bidang"
 msgid "Area name"
 msgstr "Nama bidang"
 
-#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:69
-#: src/pages/dashboard/admin/curriculum/area.tsx:18
+#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:121
+#: src/pages/dashboard/admin/curriculum/area.tsx:17
 msgid "Areas"
 msgstr "Bidang"
 
@@ -281,7 +281,7 @@ msgstr "Perkembangan Kurikulum"
 msgid "Curriculum name"
 msgstr "Nama kurikulum"
 
-#: src/components/PageCurriculumSettings/SetupCurriculum.tsx:51
+#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:99
 msgid "Custom"
 msgstr "Kustom"
 
@@ -558,6 +558,14 @@ msgstr "Galeri gambar"
 msgid "Images"
 msgstr "Gambar"
 
+#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:157
+msgid "Import"
+msgstr ""
+
+#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:159
+msgid "Import Curriculum"
+msgstr ""
+
 #: src/components/PageStudentOverview/AssessmentCard.tsx:48
 msgid "In Progress"
 msgstr "Dalam Proses"
@@ -661,11 +669,13 @@ msgid "Name (Required)"
 msgstr "Nama (Wajib)"
 
 #: src/components/PageClassSettings/PageClassSettings.tsx:30
+#: src/components/PageCurriculumArea/PageCurriculumArea.tsx:73
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:93
 msgid "New"
 msgstr "Baru"
 
 #: src/components/NewAreaDialog/NewAreaDialog.tsx:24
+#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:125
 msgid "New Area"
 msgstr "Bidang Baru"
 
@@ -1038,7 +1048,7 @@ msgstr "Pasang sebagai profil?"
 msgid "Settings"
 msgstr "Pengaturan"
 
-#: src/components/PageCurriculumSettings/SetupCurriculum.tsx:34
+#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:74
 msgid "Setup curriculum"
 msgstr "Atur kurikulum"
 
@@ -1076,11 +1086,11 @@ msgstr "Paket Standar"
 msgid "Start Time"
 msgstr "Waktu Mulai"
 
-#: src/components/PageCurriculumSettings/SetupCurriculum.tsx:40
+#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:81
 msgid "Start with a basic Montessori Curriculum that you can modify to your needs."
 msgstr "Mulai dengan Kurikulum Montessori dasar yang dapat Anda modifikasi sesuai kebutuhan."
 
-#: src/components/PageCurriculumSettings/SetupCurriculum.tsx:54
+#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:102
 msgid "Start with a blank curriculum that you can customize from scratch."
 msgstr "Mulai dengan kurikulum kosong yang dapat Anda kustom dari awal."
 
@@ -1179,6 +1189,7 @@ msgid "This student doesn't have a guardian yet."
 msgstr "Murid ini belum mempunyai wali."
 
 #: src/components/PageAllObservations/ObservationsTable.tsx:85
+#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:159
 msgid "This will export all currently visible observations as a csv file, continue?"
 msgstr "Ini akan mengekspor semua observasi yang terlihat saat ini sebagai file csv, lanjut?"
 
@@ -1219,6 +1230,7 @@ msgstr "Murid tak terbatas"
 msgid "Upload Photo"
 msgstr "Unggah Foto"
 
+#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:107
 #: src/components/PageGallery/PageGallery.tsx:156
 msgid "Upload Video"
 msgstr ""
@@ -1231,6 +1243,7 @@ msgstr ""
 msgid "Use Custom"
 msgstr "Gunakan Kustom"
 
+#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:94
 #: src/components/PageCurriculumSettings/SetupCurriculum.tsx:46
 msgid "Use Montessori"
 msgstr "Gunakan Montessori"
