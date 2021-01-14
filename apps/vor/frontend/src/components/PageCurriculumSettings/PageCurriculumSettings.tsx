@@ -185,9 +185,21 @@ const LoadingState: FC = () => (
 )
 
 const ImportButton: FC = () => {
+  const importCurriculum = useImportCurriculum()
   const importDialog = useVisibilityState()
+  const [file, setFile] = useState<File>()
 
   const handleImport = async () => {
+    if (file) {
+      try {
+        const result = await importCurriculum.mutateAsync(file)
+        if (result?.ok) {
+          console.log("success")
+        }
+      } catch (e) {
+        Sentry.captureException(e)
+      }
+    }
     importDialog.hide()
   }
 
@@ -195,7 +207,12 @@ const ImportButton: FC = () => {
     <>
       <Box p={3}>
         <Flex>
-          <Input type="file" accept=".csv" />
+          <Input
+            type="file"
+            accept=".csv"
+            onChange={async (e) => setFile(e.target.files?.[0])
+            }
+          />
           <Button onClick={importDialog.show}>
             <Trans>Import</Trans>
           </Button>
