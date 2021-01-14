@@ -46,16 +46,10 @@ func (s VideoService) CreateUploadLink(schoolId string) (string, error) {
 		Timeout:    60,
 		CorsOrigin: s.corsOrigin,
 		NewAssetSettings: muxgo.CreateAssetRequest{
-			Input:          nil,
-			PlaybackPolicy: nil,
-			PerTitleEncode: false,
+			PlaybackPolicy: []muxgo.PlaybackPolicy{muxgo.PUBLIC},
+			PerTitleEncode: true,
 			Passthrough:    schoolId,
-			Mp4Support:     "",
-			NormalizeAudio: false,
-			MasterAccess:   "",
-			Test:           false,
 		},
-		Test: false,
 	})
 	if err != nil {
 		return "", err
