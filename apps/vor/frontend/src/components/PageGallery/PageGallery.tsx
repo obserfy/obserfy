@@ -1,7 +1,7 @@
 /** @jsx jsx * */
 import { keyframes } from "@emotion/react"
 import { Trans } from "@lingui/macro"
-import { ChangeEvent, FC } from "react"
+import { ChangeEvent, FC, useState } from "react"
 import { Box, Button, Flex, Image, Label, jsx } from "theme-ui"
 import { getFirstName } from "../../domain/person"
 import useGetStudentImages, {
@@ -26,8 +26,14 @@ export interface PageGalleryProps {
   studentId: string
 }
 
+enum View {
+  IMAGES,
+  VIDEOS,
+}
+
 const PageGallery: FC<PageGalleryProps> = ({ studentId }) => {
   const student = useGetStudent(studentId)
+  const [selectedView, setSelectedView] = useState(View.IMAGES)
 
   return (
     <Box>
@@ -44,18 +50,21 @@ const PageGallery: FC<PageGalleryProps> = ({ studentId }) => {
         />
 
         <Tab
-          items={["Photos", "Videos"]}
-          selectedItemIdx={0}
-          onTabClick={() => {}}
+          items={["Images", "Videos"]}
+          selectedItemIdx={selectedView}
+          onTabClick={(idx) => {
+            setSelectedView(idx)
+          }}
         />
       </TranslucentBar>
 
-      <ImageView studentId={studentId} />
+      {selectedView === View.IMAGES && <ImagesView studentId={studentId} />}
+      {selectedView === View.VIDEOS && <VideosView studentId={studentId} />}
     </Box>
   )
 }
 
-const ImageView: FC<{ studentId: string }> = ({ studentId }) => {
+const ImagesView: FC<{ studentId: string }> = ({ studentId }) => {
   const postNewStudentImage = usePostNewStudentImage(studentId)
   const images = useGetStudentImages(studentId)
 
@@ -72,26 +81,24 @@ const ImageView: FC<{ studentId: string }> = ({ studentId }) => {
 
   return (
     <Box>
-      <Flex>
-        <Label px={3} pt={3} pb={[3, 2]}>
-          <input
-            type="file"
-            accept="image/*"
-            style={{ display: "none" }}
-            disabled={postNewStudentImage.isLoading}
-            onChange={handleImageUpload}
-          />
-          <Button
-            as="div"
-            disabled={postNewStudentImage.isLoading}
-            sx={{ width: ["100%", "auto"] }}
-          >
-            {postNewStudentImage.isLoading && <LoadingIndicator />}
-            <Icon as={PlusIcon} mr={2} fill="onPrimary" />
-            <Trans>Upload Photo</Trans>
-          </Button>
-        </Label>
-      </Flex>
+      <Label px={3} pt={3} pb={[3, 2]}>
+        <input
+          type="file"
+          accept="image/*"
+          style={{ display: "none" }}
+          disabled={postNewStudentImage.isLoading}
+          onChange={handleImageUpload}
+        />
+        <Button
+          as="div"
+          disabled={postNewStudentImage.isLoading}
+          sx={{ width: ["100%", "auto"] }}
+        >
+          {postNewStudentImage.isLoading && <LoadingIndicator />}
+          <Icon as={PlusIcon} mr={2} fill="onPrimary" />
+          <Trans>Upload Photo</Trans>
+        </Button>
+      </Label>
 
       <Flex px={[2, 2]} sx={{ width: "100%", flexWrap: "wrap" }}>
         {images.data?.map((image) => (
@@ -145,5 +152,43 @@ const ImageItem: FC<{ studentId: string; image: StudentImage }> = ({
     </Link>
   </Box>
 )
+
+const VideosView: FC<{ studentId: string }> = ({ studentId }) => {
+  const postNewStudentImage = usePostNewStudentImage(studentId)
+
+  const handleImageUpload = async (event: ChangeEvent<HTMLInputElement>) => {
+    const selectedImage = event.target.files?.[0]
+    if (selectedImage) {
+      try {
+        await postNewStudentImage.mutateAsync(selectedImage)
+      } catch (e) {
+        Sentry.captureException(e)
+      }
+    }
+  }
+
+  return (
+    <div>
+      <Label px={3} pt={3} pb={[3, 2]}>
+        <input
+          type="file"
+          accept="image/*"
+          style={{ display: "none" }}
+          disabled={postNewStudentImage.isLoading}
+          onChange={handleImageUpload}
+        />
+        <Button
+          as="div"
+          disabled={postNewStudentImage.isLoading}
+          sx={{ width: ["100%", "auto"] }}
+        >
+          {postNewStudentImage.isLoading && <LoadingIndicator />}
+          <Icon as={PlusIcon} mr={2} fill="onPrimary" />
+          <Trans>Upload Video</Trans>
+        </Button>
+      </Label>
+    </div>
+  )
+}
 
 export default PageGallery
