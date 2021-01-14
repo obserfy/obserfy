@@ -312,7 +312,12 @@ func (s StudentStore) CreateImage(studentId string, image multipart.File, header
 
 func (s StudentStore) FindStudentImages(id string) ([]Image, error) {
 	queriedStudent := Student{Id: id}
-	if err := s.Model(&queriedStudent).WherePK().Relation("Images").Select(); err != nil {
+	if err := s.Model(&queriedStudent).
+		WherePK().
+		Relation("Images", func(query *orm.Query) (*orm.Query, error) {
+			return query.Order("image.created_at DESC"), nil
+		}).
+		Select(); err != nil {
 		return nil, richErrors.Wrap(err, "failed to find student")
 	}
 	return queriedStudent.Images, nil
