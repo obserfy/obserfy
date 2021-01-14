@@ -21,6 +21,7 @@ import TopBar, { breadCrumb } from "../TopBar/TopBar"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
 import Typography from "../Typography/Typography"
 import SetupCurriculum from "./SetupCurriculum"
+import useImportCurriculum from "../../hooks/api/curriculum/useImportCurriculum"
 
 export const PageCurriculumSettings: FC<{ sx?: ThemeUIStyleObject }> = ({
   sx,
@@ -182,5 +183,34 @@ const LoadingState: FC = () => (
     <LoadingPlaceholder sx={{ width: "100%", height: "6rem" }} mt={3} />
   </Box>
 )
+
+const ImportButton: FC = () => {
+  const importDialog = useVisibilityState()
+
+  const handleImport = async () => {
+    importDialog.hide()
+  }
+
+  return (
+    <>
+      <Box p={3}>
+        <Flex>
+          <Input type="file" accept=".csv" />
+          <Button onClick={importDialog.show}>
+            <Trans>Import</Trans>
+          </Button>
+          {importDialog.visible && (
+            <AlertDialog
+              title={t`Import Curriculum`}
+              body={t`This will import all data in csv file to a new curriculum, continue?`}
+              onNegativeClick={importDialog.hide}
+              onPositiveClick={handleImport}
+            />
+          )}
+        </Flex>
+      </Box>
+    </>
+  )
+}
 
 export default PageCurriculumSettings

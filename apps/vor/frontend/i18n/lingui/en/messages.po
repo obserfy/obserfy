@@ -159,8 +159,8 @@ msgstr "Area"
 msgid "Area name"
 msgstr "Area name"
 
-#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:69
-#: src/pages/dashboard/admin/curriculum/area.tsx:18
+#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:121
+#: src/pages/dashboard/admin/curriculum/area.tsx:17
 msgid "Areas"
 msgstr "Areas"
 
@@ -277,6 +277,7 @@ msgid "Curriculum name"
 msgstr "Curriculum name"
 
 #: src/components/PageCurriculumSettings/SetupCurriculum.tsx:51
+#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:99
 msgid "Custom"
 msgstr "Custom"
 
@@ -553,6 +554,14 @@ msgstr "Image gallery"
 msgid "Images"
 msgstr "Images"
 
+#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:157
+msgid "Import"
+msgstr "Import"
+
+#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:159
+msgid "Import Curriculum"
+msgstr "Import Curriculum"
+
 #: src/components/PageStudentOverview/AssessmentCard.tsx:48
 msgid "In Progress"
 msgstr "In Progress"
@@ -660,11 +669,14 @@ msgid "Name (Required)"
 msgstr "Name (Required)"
 
 #: src/components/PageClassSettings/PageClassSettings.tsx:30
+#: src/components/PageCurriculumArea/PageCurriculumArea.tsx:73
+#: src/components/PageClassSettings/PageClassSettings.tsx:30
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:93
 msgid "New"
 msgstr "New"
 
 #: src/components/NewAreaDialog/NewAreaDialog.tsx:24
+#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:125
 msgid "New Area"
 msgstr "New Area"
 
@@ -1037,6 +1049,7 @@ msgstr "Set as profile?"
 msgid "Settings"
 msgstr "Settings"
 
+#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:74
 #: src/components/PageCurriculumSettings/SetupCurriculum.tsx:34
 msgid "Setup curriculum"
 msgstr "Setup curriculum"
@@ -1076,9 +1089,11 @@ msgid "Start Time"
 msgstr "Start Time"
 
 #: src/components/PageCurriculumSettings/SetupCurriculum.tsx:40
+#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:81
 msgid "Start with a basic Montessori Curriculum that you can modify to your needs."
 msgstr "Start with a basic Montessori Curriculum that you can modify to your needs."
 
+#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:102
 #: src/components/PageCurriculumSettings/SetupCurriculum.tsx:54
 msgid "Start with a blank curriculum that you can customize from scratch."
 msgstr "Start with a blank curriculum that you can customize from scratch."
@@ -1182,6 +1197,7 @@ msgid "This student doesn't have a guardian yet."
 msgstr "This student doesn't have a guardian yet."
 
 #: src/components/PageAllObservations/ObservationsTable.tsx:85
+#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:159
 msgid "This will export all currently visible observations as a csv file, continue?"
 msgstr "This will export all currently visible observations as a csv file, continue?"
 
@@ -1222,6 +1238,7 @@ msgstr "Unlimited students"
 msgid "Upload Photo"
 msgstr "Upload Photo"
 
+#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:107
 #: src/components/PageGallery/PageGallery.tsx:156
 msgid "Upload Video"
 msgstr "Upload Video"
@@ -1234,6 +1251,7 @@ msgstr "Uploading"
 msgid "Use Custom"
 msgstr "Use Custom"
 
+#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:94
 #: src/components/PageCurriculumSettings/SetupCurriculum.tsx:46
 msgid "Use Montessori"
 msgstr "Use Montessori"

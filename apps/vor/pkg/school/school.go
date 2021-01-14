@@ -11,6 +11,8 @@ import (
 	"github.com/go-playground/validator/v10"
 	"github.com/google/uuid"
 	richErrors "github.com/pkg/errors"
+	"io/ioutil"
+	"log"
 	"net/http"
 	"os"
 	"strconv"
@@ -1190,7 +1192,7 @@ func importBulkCurriculum(s rest.Server, store Store) rest.Handler {
 			}
 		}
 
-		_, _, err := r.FormFile("csvFile")
+		file, fileHeader, err := r.FormFile("csvFile")
 		if err != nil {
 			return &rest.Error{
 				Code:    http.StatusBadRequest,
@@ -1198,7 +1200,10 @@ func importBulkCurriculum(s rest.Server, store Store) rest.Handler {
 				Error:   richErrors.Wrap(err, "invalid payload"),
 			}
 		}
-
+		log.Println("FILE:",file)
+		log.Println("FILE HEADER:",fileHeader)
+		fileBytes, _ := ioutil.ReadAll(file)
+		log.Println("BYTES:",fileBytes)
 		w.WriteHeader(http.StatusCreated)
 		if err := rest.WriteJson(w, "test"); err != nil {
 			return rest.NewWriteJsonError(err)
