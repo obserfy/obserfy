@@ -119,15 +119,11 @@ const ImageItem: FC<{ studentId: string; image: StudentImage }> = ({
   studentId,
   image,
 }) => (
-  <Box
-    p={[1, 2]}
-    sx={{
-      width: ["33.333%", "25%", "20%", "14.285%"],
-    }}
-  >
+  <Box p={[1, 2]} sx={{ width: ["33.333%", "25%", "20%", "14.285%"] }}>
     <Link
       to={STUDENT_IMAGE_URL(studentId, image.id)}
       sx={{
+        display: "block",
         animation: `1s ease-in-out 0s infinite ${fading}`,
       }}
     >
@@ -136,6 +132,7 @@ const ImageItem: FC<{ studentId: string; image: StudentImage }> = ({
           loading="lazy"
           src={image.thumbnailUrl}
           sx={{
+            backgroundColor: "surface",
             position: "absolute",
             top: 0,
             bottom: 0,
