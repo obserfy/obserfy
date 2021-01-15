@@ -96,6 +96,7 @@ func runServer() error {
 	imageStore := postgres.ImageStore{DB: db, ImageStorage: minioImageStorage}
 	observationStore := postgres.ObservationStore{DB: db, ImageStorage: minioImageStorage}
 	exportsStore := postgres.ExportsStore{DB: db}
+	videoStore := postgres.VideoStore{DB: db}
 	//attendanceStore:=postgres.AttendanceStore{db}
 
 	// Setup routing
@@ -110,7 +111,7 @@ func runServer() error {
 	r.Mount("/auth", auth.NewRouter(server, authStore, mailService, clock.New()))
 	r.Route("/webhooks/v1", func(r chi.Router) {
 		r.Mount("/subscriptions", paddle.NewWebhookRouter(server, subscriptionStore))
-		r.Mount("/mux", mux.NewWebhookRouter(server))
+		r.Mount("/mux", mux.NewWebhookRouter(server, videoStore))
 	})
 	r.Route("/api/v1", func(r chi.Router) {
 		r.Use(auth.NewMiddleware(server, authStore))

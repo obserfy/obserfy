@@ -45,7 +45,7 @@ type VideoService struct {
 	log        *zap.Logger
 }
 
-func (s VideoService) CreateUploadLink(schoolId string) (domain.Video, error) {
+func (s VideoService) CreateUploadLink() (domain.Video, error) {
 	id := uuid.New()
 	response, err := s.client.DirectUploadsApi.CreateDirectUpload(muxgo.CreateUploadRequest{
 		Timeout:    60,
