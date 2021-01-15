@@ -5,7 +5,7 @@ import (
 	"github.com/chrsep/vor/pkg/exports"
 	"github.com/chrsep/vor/pkg/links"
 	"github.com/chrsep/vor/pkg/mux"
-	"github.com/chrsep/vor/pkg/subscription"
+	"github.com/chrsep/vor/pkg/paddle"
 	"github.com/go-pg/pg/v10"
 	"log"
 	"net/http"
@@ -109,7 +109,7 @@ func runServer() error {
 	r.Use(sentryHandler.Handle)          // Panic goes to sentry first, who catch it than re-panics
 	r.Mount("/auth", auth.NewRouter(server, authStore, mailService, clock.New()))
 	r.Route("/webhooks/v1", func(r chi.Router) {
-		r.Mount("/subscriptions", subscription.NewRouter(server, subscriptionStore))
+		r.Mount("/subscriptions", paddle.NewWebhookRouter(server, subscriptionStore))
 		r.Mount("/mux", mux.NewWebhookRouter(server))
 	})
 	r.Route("/api/v1", func(r chi.Router) {

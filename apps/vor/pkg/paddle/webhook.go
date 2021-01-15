@@ -1,4 +1,4 @@
-package subscription
+package paddle
 
 import (
 	"bytes"
@@ -9,6 +9,7 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"encoding/pem"
+	"github.com/chrsep/vor/pkg/domain"
 	"github.com/chrsep/vor/pkg/rest"
 	"github.com/go-chi/chi"
 	"github.com/google/uuid"
@@ -21,7 +22,7 @@ import (
 	"time"
 )
 
-func NewRouter(server rest.Server, store Store) *chi.Mux {
+func NewWebhookRouter(server rest.Server, store Store) *chi.Mux {
 	r := chi.NewRouter()
 	r.Method("POST", "/", postWebhook(server, store))
 	return r
@@ -103,7 +104,7 @@ func handleSubscriptionCreated(values url.Values, store Store) *rest.Error {
 		}
 	}
 
-	subscription := Subscription{
+	subscription := domain.Subscription{
 		CancelUrl:          values.Get("cancel_url"),
 		Currency:           values.Get("currency"),
 		Email:              values.Get("email"),
@@ -204,22 +205,7 @@ func verifySignature(values url.Values, publicKeyPEM string) error {
 	return nil
 }
 
-type Subscription struct {
-	Id                 uuid.UUID
-	CancelUrl          string
-	Currency           string
-	Email              string
-	EventTime          time.Time
-	NextBillDate       time.Time
-	Status             string
-	SubscriptionId     string
-	SubscriptionPlanId string
-	PaddleUserId       string
-	UpdateUrl          string
-	MarketingConsent   bool
-}
-
 type Store interface {
-	SaveNewSubscription(schoolId string, subscription Subscription) error
+	SaveNewSubscription(schoolId string, subscription domain.Subscription) error
 	DeleteSubscription(id string) error
 }

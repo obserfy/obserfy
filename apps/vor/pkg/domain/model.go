@@ -136,3 +136,18 @@ type Video struct {
 	AssetId       string
 	PlaybackId    string
 }
+
+type Subscription struct {
+	Id                 uuid.UUID
+	CancelUrl          string
+	Currency           string
+	Email              string
+	EventTime          time.Time
+	NextBillDate       time.Time
+	Status             string
+	SubscriptionId     string
+	SubscriptionPlanId string
+	PaddleUserId       string
+	UpdateUrl          string
+	MarketingConsent   bool
+}
