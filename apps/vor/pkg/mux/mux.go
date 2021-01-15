@@ -46,13 +46,14 @@ type VideoService struct {
 }
 
 func (s VideoService) CreateUploadLink(schoolId string) (domain.Video, error) {
+	id := uuid.New()
 	response, err := s.client.DirectUploadsApi.CreateDirectUpload(muxgo.CreateUploadRequest{
 		Timeout:    60,
 		CorsOrigin: s.corsOrigin,
 		NewAssetSettings: muxgo.CreateAssetRequest{
 			PlaybackPolicy: []muxgo.PlaybackPolicy{muxgo.PUBLIC},
 			PerTitleEncode: true,
-			Passthrough:    schoolId,
+			Passthrough:    id.String(),
 		},
 	})
 
@@ -62,7 +63,7 @@ func (s VideoService) CreateUploadLink(schoolId string) (domain.Video, error) {
 	}
 
 	return domain.Video{
-		Id:            uuid.New(),
+		Id:            id,
 		Status:        response.Data.Status,
 		UploadUrl:     response.Data.Url,
 		UploadId:      response.Data.Id,

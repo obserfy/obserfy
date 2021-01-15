@@ -110,6 +110,7 @@ func runServer() error {
 	r.Mount("/auth", auth.NewRouter(server, authStore, mailService, clock.New()))
 	r.Route("/webhooks/v1", func(r chi.Router) {
 		r.Mount("/subscriptions", subscription.NewRouter(server, subscriptionStore))
+		r.Mount("/mux", mux.NewWebhookRouter(server))
 	})
 	r.Route("/api/v1", func(r chi.Router) {
 		r.Use(auth.NewMiddleware(server, authStore))
