@@ -1,11 +1,11 @@
 package domain
 
 type VideoService interface {
-	CreateUploadLink(schoolId string) (string, error)
+	CreateUploadLink(schoolId string) (Video, error)
 }
 
 type NoopVideoService struct{}
 
-func (n NoopVideoService) CreateUploadLink(schoolId string) (string, error) {
-	return "/" + schoolId, nil
+func (n NoopVideoService) CreateUploadLink(_ string) (Video, error) {
+	return Video{}, nil
 }

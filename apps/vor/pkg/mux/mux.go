@@ -1,9 +1,13 @@
 package mux
 
 import (
+	"github.com/chrsep/vor/pkg/domain"
+	"github.com/google/uuid"
 	muxgo "github.com/muxinc/mux-go"
+	richErrors "github.com/pkg/errors"
 	"go.uber.org/zap"
 	"os"
+	"time"
 )
 
 // NewBillingService creates a new paddle.BillingService
@@ -41,7 +45,7 @@ type VideoService struct {
 	log        *zap.Logger
 }
 
-func (s VideoService) CreateUploadLink(schoolId string) (string, error) {
+func (s VideoService) CreateUploadLink(schoolId string) (domain.Video, error) {
 	response, err := s.client.DirectUploadsApi.CreateDirectUpload(muxgo.CreateUploadRequest{
 		Timeout:    60,
 		CorsOrigin: s.corsOrigin,
@@ -51,8 +55,19 @@ func (s VideoService) CreateUploadLink(schoolId string) (string, error) {
 			Passthrough:    schoolId,
 		},
 	})
+
 	if err != nil {
-		return "", err
+		message := response.Data.Error.Message
+		return domain.Video{}, richErrors.Wrap(err, message)
 	}
-	return response.Data.Url, nil
+
+	return domain.Video{
+		Id:            uuid.New(),
+		Status:        response.Data.Status,
+		UploadUrl:     response.Data.Url,
+		UploadId:      response.Data.Id,
+		UploadTimeout: response.Data.Timeout,
+		AssetId:       response.Data.AssetId,
+		CreatedAt:     time.Now(),
+	}, nil
 }
