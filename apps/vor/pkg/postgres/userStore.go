@@ -48,7 +48,7 @@ func (u UserStore) GetUser(userId string) (*user.User, error) {
 }
 
 func (u UserStore) GetSchools(userId string) ([]user.UserSchool, error) {
-	res := []user.UserSchool{}
+	var res []user.UserSchool
 	var model User
 	if err := u.Model(&model).
 		Relation("Schools").

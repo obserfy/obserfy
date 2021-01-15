@@ -1201,7 +1201,7 @@ func postCreateVideoUploadLink(server rest.Server, store Store, videos domain.Vi
 			return rest.NewParseJsonError(err)
 		}
 
-		video, err := videos.CreateUploadLink(schoolId)
+		video, err := videos.CreateUploadLink()
 		if err != nil {
 			return rest.NewInternalServerError(err, "failed to create upload link")
 		}

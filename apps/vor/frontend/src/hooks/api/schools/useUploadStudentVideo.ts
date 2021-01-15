@@ -9,6 +9,7 @@ const uploadFile = (file: File, url: string) => {
     const upload = createUpload({
       file,
       endpoint: url,
+      chunkSize: 20480,
     })
 
     upload.on("success", () => {
