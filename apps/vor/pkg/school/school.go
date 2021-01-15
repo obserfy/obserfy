@@ -1179,19 +1179,41 @@ func postNewImage(server rest.Server, store Store) http.Handler {
 }
 
 func postCreateVideoUploadLink(server rest.Server, store Store, videos domain.VideoService) http.Handler {
+	type requestBody struct {
+		StudentId string `json:"studentId"`
+	}
 	type responseBody struct {
 		Url string `json:"url"`
 	}
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		schoolId := chi.URLParam(r, "schoolId")
+		session, ok := auth.GetSessionFromCtx(r.Context())
+		if !ok {
+			return &rest.Error{
+				Code:    http.StatusUnauthorized,
+				Message: "invalid session",
+				Error:   richErrors.New("invalid session"),
+			}
+		}
 
-		url, err := videos.CreateUploadLink(schoolId)
+		var body requestBody
+		if err := rest.ParseJson(r.Body, &body); err != nil {
+			return rest.NewParseJsonError(err)
+		}
+
+		video, err := videos.CreateUploadLink(schoolId)
 		if err != nil {
 			return rest.NewInternalServerError(err, "failed to create upload link")
 		}
+		video.SchoolId = schoolId
+		video.UserId = session.UserId
+
+		if err := store.CreateStudentVideo(schoolId, body.StudentId, video); err != nil {
+			return rest.NewInternalServerError(err, "failed to save video to db")
+		}
 
 		w.WriteHeader(http.StatusCreated)
-		if err := rest.WriteJson(w, &responseBody{url}); err != nil {
+		if err := rest.WriteJson(w, &responseBody{video.UploadUrl}); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
 		return nil

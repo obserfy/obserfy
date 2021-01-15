@@ -4,7 +4,7 @@ import { Trans } from "@lingui/macro"
 import { ChangeEvent, FC, useState } from "react"
 import { Box, Button, Flex, Image, Label, jsx } from "theme-ui"
 import { getFirstName } from "../../domain/person"
-import { useUploadVideo } from "../../hooks/api/schools/useUploadVideo"
+import { useUploadStudentVideo } from "../../hooks/api/schools/useUploadStudentVideo"
 import useGetStudentImages, {
   StudentImage,
 } from "../../hooks/api/students/useGetStudentImages"
@@ -154,8 +154,8 @@ const ImageItem: FC<{ studentId: string; image: StudentImage }> = ({
   </Box>
 )
 
-const VideosView: FC<{ studentId: string }> = () => {
-  const postCreateUploadLink = useUploadVideo()
+const VideosView: FC<{ studentId: string }> = ({ studentId }) => {
+  const postCreateUploadLink = useUploadStudentVideo(studentId)
 
   const handleImageUpload = async (event: ChangeEvent<HTMLInputElement>) => {
     const selectedVideo = event.target.files?.[0]

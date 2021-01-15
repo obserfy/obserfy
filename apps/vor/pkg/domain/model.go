@@ -123,3 +123,16 @@ type Guardian struct {
 	Address  string
 	Children []Student
 }
+
+type Video struct {
+	Id            uuid.UUID
+	UploadUrl     string
+	UploadId      string
+	Status        string
+	UploadTimeout int32
+	CreatedAt     time.Time
+	UserId        string
+	SchoolId      string
+	AssetId       string
+	PlaybackId    string
+}

@@ -48,6 +48,7 @@ func InitTables(db *pg.Tx) error {
 		(*ObservationToImage)(nil),
 		(*FileToLessonPlan)(nil),
 		(*LessonPlanToStudents)(nil),
+		(*VideoToStudents)(nil),
 	} {
 		orm.RegisterTable(model)
 	}
@@ -82,6 +83,8 @@ func InitTables(db *pg.Tx) error {
 		(*File)(nil),
 		(*FileToLessonPlan)(nil),
 		(*LessonPlanToStudents)(nil),
+		(*Video)(nil),
+		(*VideoToStudents)(nil),
 	} {
 		err := db.Model(model).CreateTable(&orm.CreateTableOptions{IfNotExists: true, FKConstraints: true})
 		if err != nil {
@@ -99,8 +102,8 @@ type Session struct {
 type Curriculum struct {
 	Id      string `pg:"type:uuid"`
 	Name    string
-	Areas   []Area `pg:"fk:curriculum_id"`
-	Schools []School
+	Areas   []Area   `pg:"rel:has-many,fk:curriculum_id"`
+	Schools []School `pg:"rel:has-many"`
 }
 
 type Area struct {
@@ -108,7 +111,7 @@ type Area struct {
 	CurriculumId string     `pg:"type:uuid,on_delete:CASCADE"`
 	Curriculum   Curriculum `pg:"rel:has-one"`
 	Name         string
-	Subjects     []Subject `pg:"fk:area_id"`
+	Subjects     []Subject `pg:"rel:has-many,fk:area_id"`
 }
 
 type Subject struct {
@@ -116,7 +119,7 @@ type Subject struct {
 	AreaId    string `pg:"type:uuid,on_delete:CASCADE"`
 	Area      Area   `pg:"rel:has-one"`
 	Name      string
-	Materials []Material `pg:"fk:subject_id"`
+	Materials []Material `pg:"rel:has-many,fk:subject_id"`
 	Order     int        `pg:",use_zero"`
 }
 
@@ -201,24 +204,24 @@ type StudentToClass struct {
 }
 
 type Observation struct {
-	Id                 string `json:"id" pg:",type:uuid,default:uuid_generate_v4()"`
-	StudentId          string `pg:",type:uuid,on_delete:CASCADE"`
-	Student            *Student
+	Id                 string    `json:"id" pg:",type:uuid,default:uuid_generate_v4()"`
+	StudentId          string    `pg:",type:uuid,on_delete:CASCADE"`
+	Student            *Student  `pg:"rel:has-one"`
 	ShortDesc          string    `json:"shortDesc"`
 	LongDesc           string    `json:"longDesc"`
 	CategoryId         string    `json:"categoryId"`
 	CreatedDate        time.Time `json:"createdDate"`
 	EventTime          time.Time
-	CreatorId          string `pg:",type:uuid,on_delete:SET NULL"`
-	Creator            *User
-	LessonPlan         LessonPlan
-	LessonPlanId       string `pg:"type:uuid,on_delete:SET NULL"`
-	Guardian           Guardian
-	GuardianId         string `pg:"type:uuid,on_delete:SET NULL"`
-	Area               Area
-	AreaId             uuid.UUID `pg:"type:uuid,on_delete:SET NULL"`
-	Images             []Image   `pg:"many2many:observation_to_images,join_fk:image_id"`
-	VisibleToGuardians bool      `pg:",notnull,default:false"`
+	CreatorId          string     `pg:",type:uuid,on_delete:SET NULL"`
+	Creator            *User      `pg:"rel:has-one"`
+	LessonPlan         LessonPlan `pg:"rel:has-one"`
+	LessonPlanId       string     `pg:"type:uuid,on_delete:SET NULL"`
+	Guardian           Guardian   `pg:"rel:has-one"`
+	GuardianId         string     `pg:"type:uuid,on_delete:SET NULL"`
+	Area               Area       `pg:"rel:has-one"`
+	AreaId             uuid.UUID  `pg:"type:uuid,on_delete:SET NULL"`
+	Images             []Image    `pg:"many2many:observation_to_images,join_fk:image_id"`
+	VisibleToGuardians bool       `pg:",notnull,default:false"`
 }
 
 type ObservationToImage struct {
@@ -244,13 +247,13 @@ type Subscription struct {
 }
 
 type School struct {
-	Id             string     `json:"id" pg:",type:uuid"`
-	Name           string     `json:"name"`
-	InviteCode     string     `json:"inviteCode"`
-	Users          []User     `pg:"many2many:user_to_schools,join_fk:user_id"`
-	CurriculumId   string     `pg:",type:uuid,on_delete:SET NULL"`
-	Curriculum     Curriculum `pg:"rel:has-one"`
-	Guardian       []Guardian
+	Id             string       `json:"id" pg:",type:uuid"`
+	Name           string       `json:"name"`
+	InviteCode     string       `json:"inviteCode"`
+	Users          []User       `pg:"many2many:user_to_schools,join_fk:user_id"`
+	CurriculumId   string       `pg:",type:uuid,on_delete:SET NULL"`
+	Curriculum     Curriculum   `pg:"rel:has-one"`
+	Guardian       []Guardian   `pg:"rel:has-many"`
 	SubscriptionId uuid.UUID    `pg:",type:uuid,on_delete:SET NULL"`
 	Subscription   Subscription `pg:"rel:has-one"`
 	CreatedAt      time.Time    `pg:"default:now()"`
@@ -297,7 +300,7 @@ type Class struct {
 	// Ignore other data
 	StartTime time.Time `pg:",notnull"`
 	EndTime   time.Time `pg:",notnull"`
-	Weekdays  []Weekday
+	Weekdays  []Weekday `pg:"rel:has-many"`
 	Students  []Student `pg:"many2many:student_to_classes,join_fk:student_id"`
 }
 
@@ -321,8 +324,8 @@ type (
 		Files             []File `pg:"many2many:file_to_lesson_plans,join_fk:file_id"`
 		RepetitionType    int    `pg:",use_zero"`
 		RepetitionEndDate time.Time
-		LessonPlans       []*LessonPlan
-		Links             []LessonPlanLink
+		LessonPlans       []*LessonPlan    `pg:"rel:has-many"`
+		Links             []LessonPlanLink `pg:"rel:has-many"`
 
 		// Why we have area here? because we want to allow users
 		// to be able to select an area, without selecting material.
@@ -388,6 +391,28 @@ type (
 		Description         string
 		LessonPlanDetails   LessonPlanDetails `pg:"rel:has-one"`
 		LessonPlanDetailsId string            `pg:"type:uuid,on_delete:CASCADE"`
+	}
+
+	Video struct {
+		Id            uuid.UUID `pg:"type:uuid"`
+		AssetId       string
+		PlaybackId    string
+		UploadUrl     string
+		UploadId      string
+		Status        string
+		UploadTimeout int32
+		CreatedAt     time.Time
+		User          User   `pg:"rel:has-one"`
+		UserId        string `pg:"type:uuid,on_delete:SET NULL"`
+		School        School `pg:"rel:has-one"`
+		SchoolId      string `pg:"type:uuid,on_delete:SET NULL"`
+	}
+
+	VideoToStudents struct {
+		StudentId string    `pg:"type:uuid,on_delete:CASCADE"`
+		Student   Student   `pg:"rel:has-one"`
+		VideoId   uuid.UUID `pg:"type:uuid,on_delete:CASCADE"`
+		Video     Video     `pg:"rel:has-one"`
 	}
 )
 
