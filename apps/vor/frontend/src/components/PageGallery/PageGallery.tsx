@@ -1,8 +1,8 @@
 /** @jsx jsx * */
 import { keyframes } from "@emotion/react"
 import { Trans } from "@lingui/macro"
-import { Suspense, ChangeEvent, FC, Fragment, useState } from "react"
-import { Box, Button, Flex, Image, Label, jsx } from "theme-ui"
+import { ChangeEvent, FC, Fragment, useState } from "react"
+import { Box, Button, Flex, Image, jsx, Label } from "theme-ui"
 import { getFirstName } from "../../domain/person"
 import { useUploadStudentVideo } from "../../hooks/api/schools/useUploadStudentVideo"
 import useGetStudentImages, {
@@ -18,17 +18,13 @@ import {
   STUDENT_OVERVIEW_URL,
   STUDENTS_URL,
 } from "../../routes"
-import Dialog from "../Dialog/Dialog"
 import Icon from "../Icon/Icon"
 import { Link } from "../Link/Link"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
-import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import Tab from "../Tab/Tab"
 import TopBar, { breadCrumb } from "../TopBar/TopBar"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
-import { Typography } from "../Typography/Typography"
-import LazyVideoPlayer from "../VideoPlayer/LazyVideoPlayer"
-import { ReactComponent as CloseIcon } from "../../icons/close.svg"
+import VideoPlayerDialog from "../VideoPlayerDialog/VideoPlayerDialog"
 
 export interface PageGalleryProps {
   studentId: string
@@ -253,43 +249,13 @@ const VideoItem: FC<{
         </Box>
       </Box>
       {videoDialog.visible && (
-        <VideoPlayerDialogs
+        <VideoPlayerDialog
           studentId={studentId}
           src={playbackUrl}
           onClose={videoDialog.hide}
         />
       )}
     </Fragment>
-  )
-}
-
-const VideoPlayerDialogs: FC<{
-  studentId: string
-  src: string
-  onClose: () => void
-}> = ({ src, studentId, onClose }) => {
-  const student = useGetStudent(studentId)
-
-  return (
-    <Dialog sx={{ maxWidth: ["maxWidth.sm", "maxWidth.lg"] }}>
-      <Flex sx={{ alignItems: "center" }}>
-        <Typography.Body p={3} sx={{ fontWeight: "bold" }}>
-          {student.data?.name || ""}
-        </Typography.Body>
-        <Button variant="secondary" ml="auto" px={2} mr={3} onClick={onClose}>
-          <Icon as={CloseIcon} />
-        </Button>
-      </Flex>
-      <Box sx={{ height: ["100vh", "auto"] }}>
-        <Suspense
-          fallback={
-            <LoadingPlaceholder sx={{ width: "100%", pt: [0, "42.8571%"] }} />
-          }
-        >
-          <LazyVideoPlayer src={src} />
-        </Suspense>
-      </Box>
-    </Dialog>
   )
 }
 

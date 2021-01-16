@@ -163,6 +163,7 @@ const theme: Theme = {
       sm: 640,
       md: 700,
       lg: 900,
+      xl: 1200,
     },
   },
   radii: {

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`VideoPlayer should render correctly 1`] = `
+exports[`VideoPlayerDialog should render correctly 1`] = `
 .emotion-0 {
   box-sizing: border-box;
   margin: 0;
@@ -14,20 +14,9 @@ exports[`VideoPlayer should render correctly 1`] = `
   }
 }
 
-.emotion-1 {
-  width: 100%;
-  height: 100%;
-}
-
 <div>
   <div
     class="emotion-0"
-  >
-    <video
-      class="emotion-1"
-      controls=""
-      id="VideoPlayer"
-    />
-  </div>
+  />
 </div>
 `;
