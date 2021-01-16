@@ -1,6 +1,6 @@
-import dayjs from "../../dayjs"
 import { advanceTo } from "jest-date-mock"
 import React from "react"
+import dayjs from "../../dayjs"
 import { render } from "../../test-utils"
 import VideoPlayerDialog from "./VideoPlayerDialog"
 
