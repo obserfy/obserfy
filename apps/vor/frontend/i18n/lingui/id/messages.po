@@ -8,7 +8,7 @@ msgstr ""
 "Language: id\n"
 "Project-Id-Version: a9762ad8ff131d2a39fce5fce9d2fb91\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2021-01-12 10:22\n"
+"PO-Revision-Date: 2021-01-16 20:51\n"
 "Last-Translator: \n"
 "Language-Team: Indonesian\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -1188,9 +1188,14 @@ msgstr "Selasa"
 msgid "Unlimited students"
 msgstr "Murid tak terbatas"
 
+#: src/components/PageGallery/PageGallery.tsx:79
 #: src/components/PageStudentImages/PageStudentImages.tsx:67
 msgid "Upload Photo"
 msgstr "Unggah Foto"
+
+#: src/components/PageGallery/PageGallery.tsx:141
+msgid "Upload Video"
+msgstr ""
 
 #: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:103
 msgid "Use Custom"
