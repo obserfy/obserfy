@@ -438,7 +438,7 @@ func getStudents(s rest.Server, store Store) rest.Handler {
 		for _, student := range students {
 			profileImageUrl := ""
 			if student.ProfileImage.ObjectKey != "" {
-				profileImageUrl = imgproxy.GenerateUrl(student.ProfileImage.ObjectKey, 80, 80)
+				profileImageUrl = imgproxy.GenerateUrlFromS3(student.ProfileImage.ObjectKey, 80, 80)
 			}
 
 			classes := make([]class, 0)

@@ -287,7 +287,7 @@ func getStudent(s rest.Server, store Store) http.Handler {
 			Active:      *student.Active,
 		}
 		if student.ProfileImage.ObjectKey != "" {
-			response.ProfilePic = imgproxy.GenerateUrl(student.ProfileImage.ObjectKey, 80, 80)
+			response.ProfilePic = imgproxy.GenerateUrlFromS3(student.ProfileImage.ObjectKey, 80, 80)
 		}
 		if err := rest.WriteJson(w, response); err != nil {
 			return rest.NewWriteJsonError(err)
@@ -445,8 +445,8 @@ func postObservation(s rest.Server, store Store) http.Handler {
 		for i := range observation.Images {
 			images = append(images, image{
 				Id:           observation.Images[i].Id,
-				ThumbnailUrl: imgproxy.GenerateUrl(observation.Images[i].ObjectKey, 80, 80),
-				OriginalUrl:  imgproxy.GenerateOriginalUrl(observation.Images[i].ObjectKey),
+				ThumbnailUrl: imgproxy.GenerateUrlFromS3(observation.Images[i].ObjectKey, 80, 80),
+				OriginalUrl:  imgproxy.GenerateOriginalUrlFromS3(observation.Images[i].ObjectKey),
 			})
 		}
 
@@ -545,8 +545,8 @@ func getObservation(s rest.Server, store Store) http.Handler {
 				item := o.Images[j]
 				response[i].Images = append(response[i].Images, image{
 					Id:           item.Id,
-					ThumbnailUrl: imgproxy.GenerateUrl(item.ObjectKey, 80, 80),
-					OriginalUrl:  imgproxy.GenerateOriginalUrl(item.ObjectKey),
+					ThumbnailUrl: imgproxy.GenerateUrlFromS3(item.ObjectKey, 80, 80),
+					OriginalUrl:  imgproxy.GenerateOriginalUrlFromS3(item.ObjectKey),
 				})
 			}
 		}
@@ -772,8 +772,8 @@ func getStudentImages(s rest.Server, store Store) rest.Handler {
 
 		response := make([]imageJson, 0)
 		for _, image := range images {
-			originalUrl := imgproxy.GenerateOriginalUrl(image.ObjectKey)
-			thumbnailUrl := imgproxy.GenerateUrl(image.ObjectKey, 400, 400)
+			originalUrl := imgproxy.GenerateOriginalUrlFromS3(image.ObjectKey)
+			thumbnailUrl := imgproxy.GenerateUrlFromS3(image.ObjectKey, 400, 400)
 			response = append(response, imageJson{
 				Id:           image.Id,
 				CreatedAt:    image.CreatedAt,
@@ -811,7 +811,7 @@ func getStudentVideos(s rest.Server, store Store) http.Handler {
 			response = append(response, video{
 				Id:           v.PlaybackId,
 				PlaybackUrl:  v.PlaybackUrl,
-				ThumbnailUrl: v.ThumbnailUrl,
+				ThumbnailUrl: imgproxy.GenerateUrlFromHttp(v.ThumbnailUrl, 400, 400),
 				Status:       v.Status,
 			})
 		}

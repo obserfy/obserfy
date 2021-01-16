@@ -7,7 +7,8 @@ import (
 	"fmt"
 )
 
-func GenerateUrl(imageObjectKey string, width int, height int) string {
+//GenerateUrlFromS3 generates a URL for an imgproxy optimized image use S3 as source
+func GenerateUrlFromS3(imageObjectKey string, width int, height int) string {
 	// Create sane default transformation
 	gravity := "no"
 	enlarge := 1
@@ -20,24 +21,27 @@ func GenerateUrl(imageObjectKey string, width int, height int) string {
 	}
 
 	// Create image's S3 URL
-	S3Url := generateBase64S3Url(imageObjectKey)
+	S3Url := generateFullS3Url(imageObjectKey)
 	imgproxyUrl := fmt.Sprintf("/%s/%d/%d/%s/%d/%s", resize, width, height, gravity, enlarge, S3Url)
 	return signUrl(imgproxyUrl)
 }
 
-func GenerateOriginalUrl(imageObjectKey string) string {
-	S3Url := generateBase64S3Url(imageObjectKey)
+//GenerateOriginalUrlFromS3 generates the URL for an optimized image from imgproxy at maximum quality, using an S3 object as source
+func GenerateOriginalUrlFromS3(imageObjectKey string) string {
+	S3Url := generateFullS3Url(imageObjectKey)
 	imgproxyUrl := fmt.Sprintf("/%s", S3Url)
 	return signUrl(imgproxyUrl)
 }
 
-func generateBase64S3Url(objectKey string) string {
+//generateFullS3Url generates a full S3 url from an object key
+func generateFullS3Url(objectKey string) string {
 	config := mustGetConfig()
 	return base64.RawURLEncoding.EncodeToString(
 		[]byte("s3://" + config.minioBucket + "/" + objectKey),
 	)
 }
 
+//signUrl sign the imgproxy URL
 func signUrl(url string) string {
 	config := mustGetConfig()
 
@@ -49,4 +53,23 @@ func signUrl(url string) string {
 
 	// Create signed url
 	return config.baseUrl + "/" + signature + url
+}
+
+//GenerateUrlFromHttp
+func GenerateUrlFromHttp(url string, width int, height int) string {
+	// Create sane default transformation
+	gravity := "no"
+	enlarge := 1
+	resize := "fill"
+	if width == 0 {
+		width = 100
+	}
+	if height == 0 {
+		height = 100
+	}
+
+	// Create base64 image url
+	S3Url := base64.RawURLEncoding.EncodeToString([]byte(url))
+	imgproxyUrl := fmt.Sprintf("/%s/%d/%d/%s/%d/%s", resize, width, height, gravity, enlarge, S3Url)
+	return signUrl(imgproxyUrl)
 }
