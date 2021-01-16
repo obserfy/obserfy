@@ -72,11 +72,15 @@ func getSchools(server rest.Server, store Store) rest.Handler {
 
 		schools, err := store.GetSchools(session.UserId)
 		if err != nil {
-			return &rest.Error{http.StatusInternalServerError, "Can't get user data", err}
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "Can't get user data",
+				Error:   err,
+			}
 		}
 
 		// TODO: Don't return SQL objects
-		if err := rest.WriteJson(w, schools); err != nil {
+		if err := rest.WriteJson(w, &schools); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
 		return nil

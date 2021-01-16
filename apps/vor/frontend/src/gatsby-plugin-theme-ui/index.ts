@@ -40,7 +40,7 @@ const theme: Theme = {
 
     surfaceBlurNonTransparent: "rgba(255,255,255)",
     onSurfaceBlurNonTransparent: "#87000000",
-    surfaceBlurTransparent: "rgba(255,255,255,0.6)",
+    surfaceBlurTransparent: "rgba(255,255,255,0.9)",
     onSurfaceBlurTransparent: "#87000000",
 
     border: "rgba(0,0,0,.1)",
@@ -108,7 +108,7 @@ const theme: Theme = {
 
         surfaceBlurNonTransparent: "rgba(23,23,23)",
         onSurfaceBlurNonTransparent: "rgba(255,255,255, 0.87)",
-        surfaceBlurTransparent: "rgba(29,29,29,0.6)",
+        surfaceBlurTransparent: "rgba(29,29,29,0.8)",
         onSurfaceBlurTransparent: "rgba(255,255,255, 0.87)",
 
         icon: "#979797",
@@ -163,6 +163,7 @@ const theme: Theme = {
       sm: 640,
       md: 700,
       lg: 900,
+      xl: 1200,
     },
   },
   radii: {

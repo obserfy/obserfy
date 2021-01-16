@@ -80,7 +80,7 @@ export const Dialog: FC<Props> = ({ sx, ...props }) => {
             overflow: "auto",
             maxHeight: "100vh",
             width: "100%",
-            maxWidth: "maxWidth.xsm",
+            maxWidth: ["maxWidth.sm", "maxWidth.xsm"],
             borderTopLeftRadius: "default",
             borderTopRightRadius: "default",
             borderBottomLeftRadius: [0, "default"],

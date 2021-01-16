@@ -3,7 +3,7 @@ import { FC } from "react"
 import { Box, Button, Flex, Image, Input, jsx, Label } from "theme-ui"
 import { Trans } from "@lingui/macro"
 import {
-  STUDENT_IMAGE_DETAILS_URL,
+  STUDENT_IMAGE_URL,
   STUDENT_OVERVIEW_URL,
   STUDENTS_URL,
 } from "../../routes"
@@ -93,7 +93,7 @@ export const PageStudentImages: FC<Props> = ({ studentId }) => {
           return (
             <Link
               key={image.id}
-              to={STUDENT_IMAGE_DETAILS_URL(studentId, image.id)}
+              to={STUDENT_IMAGE_URL(studentId, image.id)}
               sx={{
                 mr: [1, 3],
                 mb: [1, 3],

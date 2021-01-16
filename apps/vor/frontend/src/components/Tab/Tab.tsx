@@ -1,6 +1,6 @@
+import { Trans } from "@lingui/macro"
 import React, { FC } from "react"
 import { Box, Flex, HeadingProps, ThemeUIStyleObject } from "theme-ui"
-import { borderBottom } from "../../border"
 import { Typography } from "../Typography/Typography"
 
 interface TabProps {
@@ -18,7 +18,7 @@ export const Tab: FC<TabProps> = ({
   small,
   ...props
 }) => (
-  <Box sx={{ overflowX: "auto", ...borderBottom }} {...props}>
+  <Box sx={{ position: "relative", overflowX: "auto" }} {...props}>
     <Flex
       sx={{
         ...sx,
@@ -41,10 +41,11 @@ export const Tab: FC<TabProps> = ({
             mx: small ? 2 : 3,
           }}
         >
-          {item}
+          <Trans id={item} />
         </TabItem>
       ))}
     </Flex>
+    <Border />
   </Box>
 )
 
@@ -68,8 +69,9 @@ const TabItem: FC<TabItemProps> = ({ isSelected, onClick, sx, ...props }) => (
       alignItems: "center",
       paddingTop: 12,
       userSelect: "none",
+      zIndex: 10,
       "&:after": {
-        backgroundColor: "primary",
+        backgroundColor: "textPrimary",
         borderRadius: "2px 2px 0 0",
         width: isSelected ? "125%" : "0%",
         height: 3,
@@ -77,6 +79,18 @@ const TabItem: FC<TabItemProps> = ({ isSelected, onClick, sx, ...props }) => (
         marginTop: 2,
         transition: "width 100ms cubic-bezier(0.0, 0.0, 0.2, 1)",
       },
+    }}
+  />
+)
+
+const Border = () => (
+  <Box
+    sx={{
+      height: "1px",
+      width: "100%",
+      backgroundColor: "border",
+      position: "absolute",
+      bottom: 0,
     }}
   />
 )
