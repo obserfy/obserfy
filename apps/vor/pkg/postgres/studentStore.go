@@ -1,6 +1,7 @@
 package postgres
 
 import (
+	"github.com/chrsep/vor/pkg/domain"
 	richErrors "github.com/pkg/errors"
 	"mime/multipart"
 	"strings"
@@ -311,9 +312,45 @@ func (s StudentStore) CreateImage(studentId string, image multipart.File, header
 }
 
 func (s StudentStore) FindStudentImages(id string) ([]Image, error) {
-	queriedStudent := Student{Id: id}
-	if err := s.Model(&queriedStudent).WherePK().Relation("Images").Select(); err != nil {
+	student := Student{Id: id}
+	if err := s.Model(&student).
+		WherePK().
+		Relation("Images", func(query *orm.Query) (*orm.Query, error) {
+			return query.Order("image.created_at DESC"), nil
+		}).
+		Select(); err != nil {
 		return nil, richErrors.Wrap(err, "failed to find student")
 	}
-	return queriedStudent.Images, nil
+	return student.Images, nil
+}
+
+func (s StudentStore) FindStudentVideos(studentId string) ([]domain.Video, error) {
+	student := Student{Id: studentId}
+	if err := s.Model(&student).
+		WherePK().
+		Relation("Videos", func(query *orm.Query) (*orm.Query, error) {
+			return query.Order("video.created_at DESC"), nil
+		}).
+		Select(); err != nil {
+		return nil, richErrors.Wrap(err, "failed to query video to db")
+	}
+
+	videos := make([]domain.Video, 0)
+	for _, video := range student.Videos {
+		videos = append(videos, domain.Video{
+			Id:            video.Id,
+			UploadUrl:     video.UploadUrl,
+			UploadId:      video.UploadId,
+			Status:        video.Status,
+			UploadTimeout: video.UploadTimeout,
+			CreatedAt:     video.CreatedAt,
+			UserId:        video.UserId,
+			SchoolId:      video.SchoolId,
+			AssetId:       video.AssetId,
+			PlaybackId:    video.PlaybackId,
+			PlaybackUrl:   video.PlaybackUrl,
+			ThumbnailUrl:  video.ThumbnailUrl,
+		})
+	}
+	return videos, nil
 }

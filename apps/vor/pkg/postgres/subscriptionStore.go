@@ -1,7 +1,7 @@
 package postgres
 
 import (
-	"github.com/chrsep/vor/pkg/subscription"
+	"github.com/chrsep/vor/pkg/domain"
 	"github.com/go-pg/pg/v10"
 	"github.com/google/uuid"
 	richErrors "github.com/pkg/errors"
@@ -11,7 +11,7 @@ type SubscriptionStore struct {
 	*pg.DB
 }
 
-func (s SubscriptionStore) SaveNewSubscription(schoolId string, subscription subscription.Subscription) error {
+func (s SubscriptionStore) SaveNewSubscription(schoolId string, subscription domain.Subscription) error {
 	newSubscription := Subscription{
 		Id:                 uuid.New(),
 		CancelUrl:          subscription.CancelUrl,

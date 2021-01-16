@@ -189,7 +189,7 @@ func getLessonPlan(server rest.Server, store Store) http.Handler {
 				Name: s.Name,
 			}
 			if s.ProfileImage.ObjectKey != "" {
-				item.ProfileImageUrl = imgproxy.GenerateUrl(s.ProfileImage.ObjectKey, 32, 32)
+				item.ProfileImageUrl = imgproxy.GenerateUrlFromS3(s.ProfileImage.ObjectKey, 32, 32)
 			}
 			response.RelatedStudents = append(response.RelatedStudents, item)
 		}
@@ -336,7 +336,7 @@ func postNewRelatedStudents(s rest.Server, store Store) http.Handler {
 				Name: s.Name,
 			}
 			if s.ProfileImage.ObjectKey != "" {
-				newStudent.ProfileImageUrl = imgproxy.GenerateUrl(s.ProfileImage.ObjectKey, 32, 32)
+				newStudent.ProfileImageUrl = imgproxy.GenerateUrlFromS3(s.ProfileImage.ObjectKey, 32, 32)
 			}
 			response = append(response, newStudent)
 		}

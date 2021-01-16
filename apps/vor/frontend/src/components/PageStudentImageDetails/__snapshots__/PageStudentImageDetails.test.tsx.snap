@@ -110,7 +110,7 @@ exports[`PageStudentImageDetails should render correctly 1`] = `
       class="emotion-1"
     >
       <a
-        href="/dashboard/students/images?studentId=asdfasdf"
+        href="/dashboard/students/gallery?studentId=asdfasdf"
         style="display: block;"
       >
         <div

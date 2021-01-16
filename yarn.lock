@@ -5835,6 +5835,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mux/upchunk@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "@mux/upchunk@npm:2.2.0"
+  dependencies:
+    event-target-shim: ^4.0.3
+    xhr: ^2.6.0
+  checksum: 2e407ea6100eea7817ef22791ce01b8e705be7852ec48d1cb84cd6267ba8cd97ad131a878a271ff14d744db324955184220323b6a676bea457bb46d3ad3813df
+  languageName: node
+  linkType: hard
+
 "@ndhoule/each@npm:^2.0.1":
   version: 2.0.1
   resolution: "@ndhoule/each@npm:2.0.1"
@@ -8246,6 +8256,13 @@ __metadata:
   version: 4.7.6
   resolution: "@types/history@npm:4.7.6"
   checksum: 8782d92953946314f7a4c76c2f47168f2fe6e43f01c31d44acac128638d8d5cd599247d2e593c3ed829387e8d48d8bf67155a3d0f7ce57e1920b9c1f2de10783
+  languageName: node
+  linkType: hard
+
+"@types/hls.js@npm:^0.13.3":
+  version: 0.13.3
+  resolution: "@types/hls.js@npm:0.13.3"
+  checksum: 220d72ed84a296060c97bd175468f9b83d8b30244af9bea128287ad8cb0f0b7c7383e8b81903398cd7e46201d3a421d0a0748f3bd638ea2fc6c88bd463f542ca
   languageName: node
   linkType: hard
 
@@ -14104,6 +14121,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"core-js@npm:^3.8.2":
+  version: 3.8.2
+  resolution: "core-js@npm:3.8.2"
+  checksum: 8fa2c580b77b9d54d3f6ee147be4d9ae01ea6d77f35f16b05962161e9bec02d846449cce4c68b9d190145edc8ded71142f6fd99e35b53fc642b20a3bf47bbd07
+  languageName: node
+  linkType: hard
+
 "core-util-is@npm:1.0.2, core-util-is@npm:~1.0.0":
   version: 1.0.2
   resolution: "core-util-is@npm:1.0.2"
@@ -17335,6 +17359,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"event-target-shim@npm:^4.0.3":
+  version: 4.0.3
+  resolution: "event-target-shim@npm:4.0.3"
+  checksum: 73c4a5033fa874e439b576137b04ad581b55f302f8384f9f013d53a34549d4e8431815366dfb23ddfde8cb19207cfd5df48b63185b03b2e436bbae57f3f73a35
+  languageName: node
+  linkType: hard
+
 "event-target-shim@npm:^5.0.0":
   version: 5.0.1
   resolution: "event-target-shim@npm:5.0.1"
@@ -17363,7 +17394,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eventemitter3@npm:^4.0.4":
+"eventemitter3@npm:^4.0.4, eventemitter3@npm:^4.0.7":
   version: 4.0.7
   resolution: "eventemitter3@npm:4.0.7"
   checksum: 1fc12c7bc3b4194c50975827e72d56ff57c32b75a4c7dbf4d5eebf3c8371f6f1aad6799150b609de1b867c0d8a9885c08b6ca5e7e0dc437d6152f3063b2607dd
@@ -18898,7 +18929,7 @@ fsevents@^1.2.7:
 
 "fsevents@patch:fsevents@^1.2.7#builtin<compat/fsevents>":
   version: 1.2.13
-  resolution: "fsevents@patch:fsevents@npm%3A1.2.13#builtin<compat/fsevents>::version=1.2.13&hash=127e8e"
+  resolution: "fsevents@patch:fsevents@npm%3A1.2.13#builtin<compat/fsevents>::version=1.2.13&hash=11e9ea"
   dependencies:
     bindings: ^1.5.0
     nan: ^2.12.1
@@ -18908,7 +18939,7 @@ fsevents@^1.2.7:
 
 "fsevents@patch:fsevents@^2.1.2#builtin<compat/fsevents>, fsevents@patch:fsevents@~2.1.2#builtin<compat/fsevents>":
   version: 2.1.3
-  resolution: "fsevents@patch:fsevents@npm%3A2.1.3#builtin<compat/fsevents>::version=2.1.3&hash=127e8e"
+  resolution: "fsevents@patch:fsevents@npm%3A2.1.3#builtin<compat/fsevents>::version=2.1.3&hash=11e9ea"
   dependencies:
     node-gyp: latest
   checksum: e2b8c379340e21a786d32c653854c8876f94eb1202dd5be378fd42c062bc123aab5051c32bf0011865257c85982c41ded203f9fe8c9f9c8f8c84dc4672abc0e0
@@ -19745,6 +19776,7 @@ fsevents@^1.2.7:
   dependencies:
     "@lingui/core": 3.4.0
     "@lingui/react": 3.4.0
+    core-js: ^3.8.2
     react-refresh: 0.9.0
   peerDependencies:
     "@lingui/core": ^3.0.0-18
@@ -19761,6 +19793,7 @@ fsevents@^1.2.7:
   version: 0.0.0-use.local
   resolution: "gatsby-theme-i18n@workspace:packages/gatsby-theme-i18n"
   dependencies:
+    core-js: ^3.8.2
     gatsby-plugin-react-helmet: ^3.3.10
     mkdirp: ^1.0.4
     react-helmet: ^6.1.0
@@ -20309,7 +20342,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"global@npm:^4.3.0, global@npm:^4.3.2, global@npm:^4.4.0":
+"global@npm:^4.3.0, global@npm:^4.3.2, global@npm:^4.4.0, global@npm:~4.4.0":
   version: 4.4.0
   resolution: "global@npm:4.4.0"
   dependencies:
@@ -21139,6 +21172,16 @@ fsevents@^1.2.7:
   version: 9.12.0
   resolution: "highlight.js@npm:9.12.0"
   checksum: cce35377b95ed153c66bd617ea72cb3e6b5ed91c2ae1d5a9791a39258140afaf79538541e186192b650cdacc03eb91ebc6c023208d550e5d6ed4e056c6d7b01c
+  languageName: node
+  linkType: hard
+
+"hls.js@npm:beta":
+  version: 1.0.0-beta.3
+  resolution: "hls.js@npm:1.0.0-beta.3"
+  dependencies:
+    eventemitter3: ^4.0.7
+    url-toolkit: ^2.2.1
+  checksum: 3d4360bd1bd4a1cacdd4bc9ebad1d439be0aa4473310f2d1fdaea97f06d02ed36393ecd9692f4757d0dee86566e25ee3aa96cd7419abbcd1c5ecc36329c85bc0
   languageName: node
   linkType: hard
 
@@ -26217,6 +26260,13 @@ mocha@latest:
   version: 0.0.8
   resolution: "mute-stream@npm:0.0.8"
   checksum: 315c40f463ec31deee54c5b8779207feb6b63dd4c58fe0f84ad46abdd6dac1ada578d53efde4a47b0ae4d29d453d35bb39ecdd98ee9ebf538929039a3a9945df
+  languageName: node
+  linkType: hard
+
+"mux-embed@npm:^3.4.3":
+  version: 3.4.3
+  resolution: "mux-embed@npm:3.4.3"
+  checksum: 8989a276c6fd064fab61e2c047f292a181c1c391b8c38c6549945dd4dba380a5bee493c78202a40115fc78d7feb128d3c62045cc4159f00ee69b2b4e5d7cc7be
   languageName: node
   linkType: hard
 
@@ -36162,21 +36212,21 @@ typescript@^4.0.0:
 
 "typescript@patch:typescript@4.1.3#builtin<compat/typescript>":
   version: 4.1.3
-  resolution: "typescript@patch:typescript@npm%3A4.1.3#builtin<compat/typescript>::version=4.1.3&hash=5bf698"
+  resolution: "typescript@patch:typescript@npm%3A4.1.3#builtin<compat/typescript>::version=4.1.3&hash=cc6730"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 5637a1074cdaed15dbdc109d7e495f00971742fc169b06e758181ac6b091d086f6a7d60d9977dc4572357038c7d798e0786a043eda37d7776537a3d939416a8d
+  checksum: 017af992148346e671d5b83b041773825888e9c94db8d2b9472cdbb6d6f0ee85927817473121524d319f8be6ffe5a6904d27ff6ef21356d2274fcadd52e17938
   languageName: node
   linkType: hard
 
 "typescript@patch:typescript@^4.0.0#builtin<compat/typescript>":
   version: 4.0.3
-  resolution: "typescript@patch:typescript@npm%3A4.0.3#builtin<compat/typescript>::version=4.0.3&hash=5bf698"
+  resolution: "typescript@patch:typescript@npm%3A4.0.3#builtin<compat/typescript>::version=4.0.3&hash=cc6730"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 72db87d09f728c83062d64b5e12ed52effb6278963b6bc5c006219b22c104e02b8ce80164261de554923d3c47d894a1ca937ed542328caccb83ebaedeae98a69
+  checksum: c92843a6af50170f49158b6eb5726b80c5c22074a337d066eee278a7d08d1109667e435e96207ab1314f63f4629555e89c26645ef55b937ea6baf80d190768f6
   languageName: node
   linkType: hard
 
@@ -36817,6 +36867,13 @@ typescript@^4.0.0:
   languageName: node
   linkType: hard
 
+"url-toolkit@npm:^2.2.1":
+  version: 2.2.1
+  resolution: "url-toolkit@npm:2.2.1"
+  checksum: 2558ba9b44cf68294444b89063464f7cd84c5f9c5c871a2906ff8e2074b93383029605fc33a2de1455b6ef6307c28ed41408bcc719158a91f7037745f8abc673
+  languageName: node
+  linkType: hard
+
 "url@npm:^0.11.0, url@npm:~0.11.0":
   version: 0.11.0
   resolution: "url@npm:0.11.0"
@@ -37187,6 +37244,7 @@ typescript@^4.0.0:
     "@lingui/core": 3.4.0
     "@lingui/macro": 3.4.0
     "@lingui/react": 3.4.0
+    "@mux/upchunk": ^2.2.0
     "@reach/router": 1.3.4
     "@sentry/gatsby": 5.30.0
     "@sentry/tracing": 5.30.0
@@ -37203,6 +37261,7 @@ typescript@^4.0.0:
     "@types/date-fns": 2.6.0
     "@types/dompurify": 2.2.1
     "@types/faker": 5.1.5
+    "@types/hls.js": ^0.13.3
     "@types/jest": 26.0.20
     "@types/query-string": 6.3.0
     "@types/reach__router": 1.3.6
@@ -37223,6 +37282,7 @@ typescript@^4.0.0:
     body-scroll-lock: 3.1.5
     browser-lang: 0.1.0
     chromatic: 5.6.0
+    core-js: ^3.8.2
     cross-env: 7.0.3
     dayjs: 1.10.3
     dompurify: 2.2.6
@@ -37263,6 +37323,7 @@ typescript@^4.0.0:
     gatsby-theme-i18n: 1.0.4
     gatsby-theme-i18n-lingui: ^1.0.4
     gatsby-transformer-sharp: 2.10.1
+    hls.js: beta
     http-proxy-middleware: 1.0.6
     hygen: 6.0.4
     idb-keyval: 5.0.1
@@ -37271,6 +37332,7 @@ typescript@^4.0.0:
     jest-date-mock: 1.0.8
     jest-fetch-mock: 3.0.3
     make-plural: 6.2.2
+    mux-embed: ^3.4.3
     nanoid: 3.1.20
     npm-run-all: 4.1.5
     postcss: 8.2.4
@@ -38507,6 +38569,18 @@ typescript@^4.0.0:
     parse-headers: ^2.0.0
     xtend: ^4.0.0
   checksum: 8f3ffd3a6e5d3c526647697907b9040387debbea29300da6c42431adebff5156474a947ccd71c1d17ce60e985598bcf4e0a4d67f73322049418ebb72cd741876
+  languageName: node
+  linkType: hard
+
+"xhr@npm:^2.6.0":
+  version: 2.6.0
+  resolution: "xhr@npm:2.6.0"
+  dependencies:
+    global: ~4.4.0
+    is-function: ^1.0.1
+    parse-headers: ^2.0.0
+    xtend: ^4.0.0
+  checksum: 55300253438f6305a16ead5e4327c277e6c862d44dd8eb93e2a8f6ac3d916e5d46534ff3d8d143a3a6e597e56fc34201a51ec7fb9370d783974a630be213c578
   languageName: node
   linkType: hard
 

@@ -123,3 +123,33 @@ type Guardian struct {
 	Address  string
 	Children []Student
 }
+
+type Video struct {
+	Id            uuid.UUID
+	UploadUrl     string
+	UploadId      string
+	Status        string
+	UploadTimeout int32
+	CreatedAt     time.Time
+	UserId        string
+	SchoolId      string
+	AssetId       string
+	PlaybackId    string
+	PlaybackUrl   string
+	ThumbnailUrl  string
+}
+
+type Subscription struct {
+	Id                 uuid.UUID
+	CancelUrl          string
+	Currency           string
+	Email              string
+	EventTime          time.Time
+	NextBillDate       time.Time
+	Status             string
+	SubscriptionId     string
+	SubscriptionPlanId string
+	PaddleUserId       string
+	UpdateUrl          string
+	MarketingConsent   bool
+}

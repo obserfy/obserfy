@@ -1183,9 +1183,14 @@ msgstr "Tuesday"
 msgid "Unlimited students"
 msgstr "Unlimited students"
 
+#: src/components/PageGallery/PageGallery.tsx:79
 #: src/components/PageStudentImages/PageStudentImages.tsx:67
 msgid "Upload Photo"
 msgstr "Upload Photo"
+
+#: src/components/PageGallery/PageGallery.tsx:141
+msgid "Upload Video"
+msgstr "Upload Video"
 
 #: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:103
 msgid "Use Custom"

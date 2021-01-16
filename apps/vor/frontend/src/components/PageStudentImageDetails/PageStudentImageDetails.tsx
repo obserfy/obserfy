@@ -2,7 +2,7 @@ import React, { FC, useState } from "react"
 import { Box, Button, Flex, Image } from "theme-ui"
 import { t, Trans } from "@lingui/macro"
 import BackNavigation from "../BackNavigation/BackNavigation"
-import { STUDENT_IMAGES_URL } from "../../routes"
+import { STUDENT_GALLERY_URL } from "../../routes"
 import useGetImage from "../../hooks/api/useGetImage"
 import Typography from "../Typography/Typography"
 import { useGetStudent } from "../../hooks/api/useGetStudent"
@@ -28,7 +28,7 @@ export const PageStudentImageDetails: FC<Props> = ({ studentId, imageId }) => {
     <>
       <Box sx={{ maxWidth: "maxWidth.md" }} margin="auto">
         <BackNavigation
-          to={STUDENT_IMAGES_URL(studentId)}
+          to={STUDENT_GALLERY_URL(studentId)}
           text={t`Image gallery`}
         />
         <Typography.H5 m={3}>{student.data?.name}</Typography.H5>
@@ -71,7 +71,7 @@ export const PageStudentImageDetails: FC<Props> = ({ studentId, imageId }) => {
           onPositiveClick={async () => {
             try {
               await deleteImage.mutateAsync()
-              await navigate(STUDENT_IMAGES_URL(studentId))
+              await navigate(STUDENT_GALLERY_URL(studentId))
             } catch (e) {
               Sentry.captureException(e)
             }
