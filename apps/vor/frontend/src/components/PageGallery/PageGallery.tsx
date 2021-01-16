@@ -228,7 +228,14 @@ const VideoItem: FC<{
           }}
           onClick={videoDialog.show}
         >
-          <Box pt="100%" sx={{ width: "100%", position: "relative" }}>
+          <Box
+            pt="100%"
+            sx={{
+              width: "100%",
+              position: "relative",
+              animation: `1s ease-in-out 0s infinite ${fading}`,
+            }}
+          >
             <Image
               loading="lazy"
               src={`${thumbnailUrl}`}
@@ -276,7 +283,7 @@ const VideoPlayerDialogs: FC<{
       <Box sx={{ height: ["100vh", "auto"] }}>
         <Suspense
           fallback={
-            <LoadingPlaceholder sx={{ width: "100%", height: "100%" }} />
+            <LoadingPlaceholder sx={{ width: "100%", pt: [0, "42.8571%"] }} />
           }
         >
           <LazyVideoPlayer src={src} />

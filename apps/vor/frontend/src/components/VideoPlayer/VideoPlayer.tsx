@@ -1,6 +1,8 @@
+/** @jsx jsx */
 /* eslint-disable jsx-a11y/media-has-caption */
 import Hls from "hls.js/dist/hls.light"
-import React, { FC, useEffect, useRef } from "react"
+import { jsx } from "theme-ui"
+import { FC, useEffect, useRef } from "react"
 // @ts-ignore
 import mux from "mux-embed"
 
@@ -45,7 +47,12 @@ const VideoPlayer: FC<VideoPlayerProps> = ({ src }) => {
   }, [src, video.current])
 
   return (
-    <video id="VideoPlayer" ref={video} controls width="100%" height="100%" />
+    <video
+      id="VideoPlayer"
+      ref={video}
+      controls
+      sx={{ width: "100%", height: "100%" }}
+    />
   )
 }
 
