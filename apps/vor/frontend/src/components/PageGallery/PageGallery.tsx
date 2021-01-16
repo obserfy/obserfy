@@ -22,10 +22,13 @@ import Dialog from "../Dialog/Dialog"
 import Icon from "../Icon/Icon"
 import { Link } from "../Link/Link"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
+import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import Tab from "../Tab/Tab"
 import TopBar, { breadCrumb } from "../TopBar/TopBar"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
+import { Typography } from "../Typography/Typography"
 import LazyVideoPlayer from "../VideoPlayer/LazyVideoPlayer"
+import { ReactComponent as CloseIcon } from "../../icons/close.svg"
 
 export interface PageGalleryProps {
   studentId: string
@@ -212,7 +215,7 @@ const VideoItem: FC<{
   studentId: string
   playbackUrl: string
   thumbnailUrl: string
-}> = ({ thumbnailUrl, playbackUrl }) => {
+}> = ({ thumbnailUrl, studentId, playbackUrl }) => {
   const videoDialog = useVisibilityState()
 
   return (
@@ -243,13 +246,43 @@ const VideoItem: FC<{
         </Box>
       </Box>
       {videoDialog.visible && (
-        <Dialog>
-          <Suspense fallback={<div>....loading</div>}>
-            <LazyVideoPlayer src={playbackUrl} />
-          </Suspense>
-        </Dialog>
+        <VideoPlayerDialogs
+          studentId={studentId}
+          src={playbackUrl}
+          onClose={videoDialog.hide}
+        />
       )}
     </Fragment>
+  )
+}
+
+const VideoPlayerDialogs: FC<{
+  studentId: string
+  src: string
+  onClose: () => void
+}> = ({ src, studentId, onClose }) => {
+  const student = useGetStudent(studentId)
+
+  return (
+    <Dialog sx={{ maxWidth: ["maxWidth.sm", "maxWidth.lg"] }}>
+      <Flex sx={{ alignItems: "center" }}>
+        <Typography.Body p={3} sx={{ fontWeight: "bold" }}>
+          {student.data?.name || ""}
+        </Typography.Body>
+        <Button variant="secondary" ml="auto" px={2} mr={3} onClick={onClose}>
+          <Icon as={CloseIcon} />
+        </Button>
+      </Flex>
+      <Box sx={{ height: ["100vh", "auto"] }}>
+        <Suspense
+          fallback={
+            <LoadingPlaceholder sx={{ width: "100%", height: "100%" }} />
+          }
+        >
+          <LazyVideoPlayer src={src} />
+        </Suspense>
+      </Box>
+    </Dialog>
   )
 }
 
