@@ -135,6 +135,8 @@ type Video struct {
 	SchoolId      string
 	AssetId       string
 	PlaybackId    string
+	PlaybackUrl   string
+	ThumbnailUrl  string
 }
 
 type Subscription struct {

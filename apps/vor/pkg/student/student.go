@@ -41,6 +41,8 @@ func NewRouter(s rest.Server, store Store) *chi.Mux {
 
 		r.Method("POST", "/images", postNewImage(s, store))
 		r.Method("GET", "/images", getStudentImages(s, store))
+
+		r.Method("GET", "/videos", getStudentVideos(s, store))
 	})
 	return r
 }
@@ -777,6 +779,40 @@ func getStudentImages(s rest.Server, store Store) rest.Handler {
 				CreatedAt:    image.CreatedAt,
 				OriginalUrl:  originalUrl,
 				ThumbnailUrl: thumbnailUrl,
+			})
+		}
+
+		if err := rest.WriteJson(w, &response); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
+		return nil
+	})
+}
+
+func getStudentVideos(s rest.Server, store Store) http.Handler {
+	type video struct {
+		Id           string `json:"id"`
+		PlaybackUrl  string `json:"playbackUrl"`
+		ThumbnailUrl string `json:"thumbnailUrl"`
+		Status       string `json:"status"`
+	}
+	type responseBody []video
+
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		studentId := chi.URLParam(r, "studentId")
+
+		videos, err := store.FindStudentVideos(studentId)
+		if err != nil {
+			return rest.NewInternalServerError(err, "failed to query videos")
+		}
+
+		response := make(responseBody, 0)
+		for _, v := range videos {
+			response = append(response, video{
+				Id:           v.PlaybackId,
+				PlaybackUrl:  v.PlaybackUrl,
+				ThumbnailUrl: v.ThumbnailUrl,
+				Status:       v.Status,
 			})
 		}
 
