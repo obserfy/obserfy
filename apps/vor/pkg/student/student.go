@@ -791,10 +791,12 @@ func getStudentImages(s rest.Server, store Store) rest.Handler {
 
 func getStudentVideos(s rest.Server, store Store) http.Handler {
 	type video struct {
-		Id           string `json:"id"`
-		PlaybackUrl  string `json:"playbackUrl"`
-		ThumbnailUrl string `json:"thumbnailUrl"`
-		Status       string `json:"status"`
+		Id                   string    `json:"id"`
+		PlaybackUrl          string    `json:"playbackUrl"`
+		ThumbnailUrl         string    `json:"thumbnailUrl"`
+		OriginalThumbnailUrl string    `json:"originalThumbnailUrl"`
+		Status               string    `json:"status"`
+		CreatedAt            time.Time `json:"createdAt"`
 	}
 	type responseBody []video
 
@@ -809,10 +811,12 @@ func getStudentVideos(s rest.Server, store Store) http.Handler {
 		response := make(responseBody, 0)
 		for _, v := range videos {
 			response = append(response, video{
-				Id:           v.PlaybackId,
-				PlaybackUrl:  v.PlaybackUrl,
-				ThumbnailUrl: imgproxy.GenerateUrlFromHttp(v.ThumbnailUrl, 400, 400),
-				Status:       v.Status,
+				Id:                   v.PlaybackId,
+				PlaybackUrl:          v.PlaybackUrl,
+				ThumbnailUrl:         imgproxy.GenerateUrlFromHttp(v.ThumbnailUrl, 400, 400),
+				OriginalThumbnailUrl: v.ThumbnailUrl,
+				Status:               v.Status,
+				CreatedAt:            v.CreatedAt,
 			})
 		}
 

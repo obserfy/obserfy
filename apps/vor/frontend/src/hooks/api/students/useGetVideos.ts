@@ -2,6 +2,8 @@ import { useQuery } from "react-query"
 import { getApi } from "../fetchApi"
 
 interface GetStudentVideosResponse {
+  createdAt: string
+  originalThumbnailUrl: string
   id: string
   playbackUrl: string
   thumbnailUrl: string

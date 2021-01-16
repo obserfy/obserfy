@@ -200,6 +200,8 @@ const VideosView: FC<{ studentId: string }> = ({ studentId }) => {
             studentId={studentId}
             thumbnailUrl={video.thumbnailUrl}
             playbackUrl={video.playbackUrl}
+            originalThumbnailUrl={video.originalThumbnailUrl}
+            createdAt={video.createdAt}
           />
         ))}
       </Flex>
@@ -211,7 +213,15 @@ const VideoItem: FC<{
   studentId: string
   playbackUrl: string
   thumbnailUrl: string
-}> = ({ thumbnailUrl, studentId, playbackUrl }) => {
+  originalThumbnailUrl: string
+  createdAt: string
+}> = ({
+  createdAt,
+  thumbnailUrl,
+  studentId,
+  playbackUrl,
+  originalThumbnailUrl,
+}) => {
   const videoDialog = useVisibilityState()
 
   return (
@@ -253,6 +263,8 @@ const VideoItem: FC<{
           studentId={studentId}
           src={playbackUrl}
           onClose={videoDialog.hide}
+          thumbnailUrl={originalThumbnailUrl}
+          createdAt={createdAt}
         />
       )}
     </Fragment>
