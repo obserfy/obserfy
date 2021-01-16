@@ -49,7 +49,7 @@
     "next-compose-plugins": "2.2.1",
     "next-pwa": "5.0.3",
     "pg": "8.5.1",
-    "pino": "6.10.0",
+    "pino": "6.11.0",
     "pino-pretty": "4.3.0",
     "postcss": "8.2.4",
     "postcss-preset-env": "6.7.0",
