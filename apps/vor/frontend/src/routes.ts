@@ -36,10 +36,7 @@ export const STUDENT_OVERVIEW_URL = (studentId: string): string =>
 export const STUDENT_GALLERY_URL = (studentId: string): string =>
   `/dashboard/students/gallery?studentId=${studentId}`
 
-export const STUDENT_IMAGE_URL = (
-  studentId: string,
-  imageId: string
-): string =>
+export const STUDENT_IMAGE_URL = (studentId: string, imageId: string): string =>
   `/dashboard/students/gallery/image?studentId=${studentId}&imageId=${imageId}`
 
 export const ALL_OBSERVATIONS_PAGE_URL = (studentId: string): string =>

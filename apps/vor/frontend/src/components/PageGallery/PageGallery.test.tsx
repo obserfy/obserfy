@@ -4,7 +4,7 @@ import PageGallery from "./PageGallery"
 
 describe("PageGallery", () => {
   it("should render correctly", () => {
-    const { container } = render(<PageGallery />)
+    const { container } = render(<PageGallery studentId="asdfasd" />)
     expect(container).toMatchSnapshot()
   })
 })
