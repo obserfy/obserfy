@@ -1,13 +1,14 @@
 package mux
 
 import (
+	"bytes"
 	"encoding/json"
 	"github.com/chrsep/vor/pkg/domain"
 	"github.com/chrsep/vor/pkg/rest"
 	"github.com/go-chi/chi"
 	"github.com/google/uuid"
-	muxgo "github.com/muxinc/mux-go"
 	richErrors "github.com/pkg/errors"
+	"io/ioutil"
 	"net/http"
 	"time"
 )
@@ -17,12 +18,46 @@ type Store interface {
 	DeleteVideo(id uuid.UUID) error
 }
 
+// NewWebhookRouter setups routes that handles events from mux
 func NewWebhookRouter(server rest.Server, store Store) *chi.Mux {
 	r := chi.NewRouter()
+	r.Use(verifySignatureMiddleware(server))
 	r.Method("POST", "/", postEventWebhook(server, store))
 	return r
 }
 
+func verifySignatureMiddleware(s rest.Server) func(next http.Handler) http.Handler {
+	return func(next http.Handler) http.Handler {
+		return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+			muxSignature := r.Header.Get("Mux-Signature")
+			bodyBytes, err := ioutil.ReadAll(r.Body)
+			if err != nil {
+				return &rest.Error{
+					Code:    http.StatusBadRequest,
+					Message: "invalid body",
+					Error:   err,
+				}
+			}
+
+			// verify signature
+			body := string(bodyBytes)
+			if err := VerifySignature(body, muxSignature); err != nil {
+				return &rest.Error{
+					Code:    http.StatusUnauthorized,
+					Message: "you're not authorized to access this endpoint",
+					Error:   err,
+				}
+			}
+
+			// restore original body
+			r.Body = ioutil.NopCloser(bytes.NewBuffer(bodyBytes))
+			next.ServeHTTP(w, r)
+			return nil
+		})
+	}
+}
+
+// postEventWebhook handles various mux events
 func postEventWebhook(s rest.Server, store Store) http.Handler {
 	type requestBody struct {
 		Type      string    `json:"type"`
@@ -77,11 +112,7 @@ func postEventWebhook(s rest.Server, store Store) http.Handler {
 	})
 }
 
-type Asset struct {
-	*muxgo.Asset
-	CreatedAt int64 `json:"created_at"`
-}
-
+// handleAssetDeleted got called when an asset on mux is deleted, either manually or using the API
 func handleAssetDeleted(store Store, rawAsset json.RawMessage) error {
 	var asset struct {
 		Passthrough string `json:"passthrough"`
@@ -103,6 +134,7 @@ func handleAssetDeleted(store Store, rawAsset json.RawMessage) error {
 	return nil
 }
 
+// handleAssetReady got called when an asset is ready to be played from mux after being processed
 func handleAssetReady(store Store, rawAsset json.RawMessage, assetId string) error {
 	var asset struct {
 		Passthrough string `json:"passthrough"`
