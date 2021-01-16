@@ -4,7 +4,7 @@ import VideoPlayer from "./VideoPlayer"
 
 describe("VideoPlayer", () => {
   it("should render correctly", () => {
-    const { container } = render(<VideoPlayer />)
+    const { container } = render(<VideoPlayer src="" />)
     expect(container).toMatchSnapshot()
   })
 })
