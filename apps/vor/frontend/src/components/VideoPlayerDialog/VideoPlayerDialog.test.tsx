@@ -5,7 +5,12 @@ import VideoPlayerDialog from "./VideoPlayerDialog"
 describe("VideoPlayerDialog", () => {
   it("should render correctly", () => {
     const { container } = render(
-      <VideoPlayerDialog onClose={() => {}} src="" studentId="" />
+      <VideoPlayerDialog
+        onClose={() => {}}
+        src=""
+        studentId=""
+        thumbnailUrl=""
+      />
     )
     expect(container).toMatchSnapshot()
   })

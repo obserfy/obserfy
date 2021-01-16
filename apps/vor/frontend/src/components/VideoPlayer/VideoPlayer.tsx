@@ -8,8 +8,9 @@ import mux from "mux-embed"
 
 export interface VideoPlayerProps {
   src: string
+  poster?: string
 }
-const VideoPlayer: FC<VideoPlayerProps> = ({ src }) => {
+const VideoPlayer: FC<VideoPlayerProps> = ({ src, poster }) => {
   const video = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
@@ -52,6 +53,7 @@ const VideoPlayer: FC<VideoPlayerProps> = ({ src }) => {
       ref={video}
       controls
       sx={{ width: "100%", height: "100%" }}
+      poster={poster}
     />
   )
 }
