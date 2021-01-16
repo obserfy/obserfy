@@ -44,7 +44,9 @@ const VideoPlayer: FC<VideoPlayerProps> = ({ src }) => {
     }
   }, [src, video.current])
 
-  return <video id="VideoPlayer" ref={video} controls />
+  return (
+    <video id="VideoPlayer" ref={video} controls width="100%" height="100%" />
+  )
 }
 
 export default VideoPlayer
