@@ -8,7 +8,9 @@ export interface StudentImage {
   createdAt: string
 }
 const useGetStudentImages = (studentId: string) => {
-  const getStudentImages = getApi<StudentImage[]>(`/students/${studentId}/images`)
+  const getStudentImages = getApi<StudentImage[]>(
+    `/students/${studentId}/images`
+  )
   return useQuery(["student", studentId, "images"], getStudentImages)
 }
 

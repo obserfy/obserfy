@@ -60,7 +60,7 @@ func NewRouter(
 
 		r.Method("POST", "/images", postNewImage(server, store))
 
-		r.Method("GET", "/videos/upload", getNewVideoUploadLink(server, store, videos))
+		r.Method("POST", "/videos/upload", postCreateVideoUploadLink(server, store, videos))
 	})
 	return r
 }
@@ -1178,7 +1178,7 @@ func postNewImage(server rest.Server, store Store) http.Handler {
 	})
 }
 
-func getNewVideoUploadLink(server rest.Server, store Store, videos domain.VideoService) http.Handler {
+func postCreateVideoUploadLink(server rest.Server, store Store, videos domain.VideoService) http.Handler {
 	type responseBody struct {
 		Url string `json:"url"`
 	}
