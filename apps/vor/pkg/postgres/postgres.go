@@ -165,6 +165,7 @@ type Student struct {
 	LessonPlans    []LessonPlan `pg:"many2many:lesson_plan_to_students,join_fk:lesson_plan_id"`
 	ProfileImageId string       `pg:",type:uuid,on_delete:SET NULL"`
 	Images         []Image      `pg:"many2many:image_to_students,join_fk:image_id"`
+	Videos         []Video      `pg:"many2many:video_to_students"`
 	ProfileImage   Image        `pg:"rel:has-one"`
 }
 

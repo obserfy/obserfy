@@ -64,6 +64,7 @@ func NewRouter(
 	})
 	return r
 }
+
 func inviteUser(server rest.Server, store Store, mail MailService) http.Handler {
 	type requestBody struct {
 		Email []string `json:"email" validate:"required,dive,email,required"`
