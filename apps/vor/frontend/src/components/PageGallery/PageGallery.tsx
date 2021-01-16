@@ -4,6 +4,7 @@ import { Trans } from "@lingui/macro"
 import { ChangeEvent, FC, useState } from "react"
 import { Box, Button, Flex, Image, Label, jsx } from "theme-ui"
 import { getFirstName } from "../../domain/person"
+import { useUploadVideo } from "../../hooks/api/schools/useUploadVideo"
 import useGetStudentImages, {
   StudentImage,
 } from "../../hooks/api/students/useGetStudentImages"
@@ -153,14 +154,14 @@ const ImageItem: FC<{ studentId: string; image: StudentImage }> = ({
   </Box>
 )
 
-const VideosView: FC<{ studentId: string }> = ({ studentId }) => {
-  const postNewStudentImage = usePostNewStudentImage(studentId)
+const VideosView: FC<{ studentId: string }> = () => {
+  const postCreateUploadLink = useUploadVideo()
 
   const handleImageUpload = async (event: ChangeEvent<HTMLInputElement>) => {
-    const selectedImage = event.target.files?.[0]
-    if (selectedImage) {
+    const selectedVideo = event.target.files?.[0]
+    if (selectedVideo) {
       try {
-        await postNewStudentImage.mutateAsync(selectedImage)
+        await postCreateUploadLink.mutateAsync(selectedVideo)
       } catch (e) {
         Sentry.captureException(e)
       }
@@ -172,17 +173,17 @@ const VideosView: FC<{ studentId: string }> = ({ studentId }) => {
       <Label px={3} pt={3} pb={[3, 2]}>
         <input
           type="file"
-          accept="image/*"
+          accept="video/*"
           style={{ display: "none" }}
-          disabled={postNewStudentImage.isLoading}
+          disabled={postCreateUploadLink.isLoading}
           onChange={handleImageUpload}
         />
         <Button
           as="div"
-          disabled={postNewStudentImage.isLoading}
+          disabled={postCreateUploadLink.isLoading}
           sx={{ width: ["100%", "auto"] }}
         >
-          {postNewStudentImage.isLoading && <LoadingIndicator />}
+          {postCreateUploadLink.isLoading && <LoadingIndicator />}
           <Icon as={PlusIcon} mr={2} fill="onPrimary" />
           <Trans>Upload Video</Trans>
         </Button>

@@ -43,7 +43,7 @@ type VideoService struct {
 
 func (s VideoService) CreateUploadLink(schoolId string) (string, error) {
 	response, err := s.client.DirectUploadsApi.CreateDirectUpload(muxgo.CreateUploadRequest{
-		Timeout:    3600,
+		Timeout:    60,
 		CorsOrigin: s.corsOrigin,
 		NewAssetSettings: muxgo.CreateAssetRequest{
 			Input:          nil,
