@@ -217,7 +217,7 @@ const VideoItem: FC<{ studentId: string; thumbnailUrl: string }> = ({
       <Box pt="100%" sx={{ width: "100%", position: "relative" }}>
         <Image
           loading="lazy"
-          src={`${thumbnailUrl}?width=400&height=400&fit_mode=smartcrop`}
+          src={`${thumbnailUrl}`}
           sx={{
             backgroundColor: "surface",
             position: "absolute",
