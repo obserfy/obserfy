@@ -537,7 +537,7 @@ exports[`PageGallery should render correctly 1`] = `
           <a
             class="emotion-4"
             data-cy="back-button"
-            href="/dashboard/students/overview?studentId=undefined"
+            href="/dashboard/students/overview?studentId=asdfasd"
           >
             <button
               class="emotion-5"
@@ -567,7 +567,7 @@ exports[`PageGallery should render correctly 1`] = `
             </a>
             <a
               class="emotion-8"
-              href="/dashboard/students/overview?studentId=undefined"
+              href="/dashboard/students/overview?studentId=asdfasd"
             >
               <span
                 class="emotion-9"

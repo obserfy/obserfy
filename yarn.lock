@@ -8254,6 +8254,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/hls.js@npm:^0.13.3":
+  version: 0.13.3
+  resolution: "@types/hls.js@npm:0.13.3"
+  checksum: 220d72ed84a296060c97bd175468f9b83d8b30244af9bea128287ad8cb0f0b7c7383e8b81903398cd7e46201d3a421d0a0748f3bd638ea2fc6c88bd463f542ca
+  languageName: node
+  linkType: hard
+
 "@types/hoist-non-react-statics@npm:^3.3.1":
   version: 3.3.1
   resolution: "@types/hoist-non-react-statics@npm:3.3.1"
@@ -17375,7 +17382,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eventemitter3@npm:^4.0.4":
+"eventemitter3@npm:^4.0.4, eventemitter3@npm:^4.0.7":
   version: 4.0.7
   resolution: "eventemitter3@npm:4.0.7"
   checksum: 1fc12c7bc3b4194c50975827e72d56ff57c32b75a4c7dbf4d5eebf3c8371f6f1aad6799150b609de1b867c0d8a9885c08b6ca5e7e0dc437d6152f3063b2607dd
@@ -21151,6 +21158,16 @@ fsevents@^1.2.7:
   version: 9.12.0
   resolution: "highlight.js@npm:9.12.0"
   checksum: cce35377b95ed153c66bd617ea72cb3e6b5ed91c2ae1d5a9791a39258140afaf79538541e186192b650cdacc03eb91ebc6c023208d550e5d6ed4e056c6d7b01c
+  languageName: node
+  linkType: hard
+
+"hls.js@npm:beta":
+  version: 1.0.0-beta.3
+  resolution: "hls.js@npm:1.0.0-beta.3"
+  dependencies:
+    eventemitter3: ^4.0.7
+    url-toolkit: ^2.2.1
+  checksum: 3d4360bd1bd4a1cacdd4bc9ebad1d439be0aa4473310f2d1fdaea97f06d02ed36393ecd9692f4757d0dee86566e25ee3aa96cd7419abbcd1c5ecc36329c85bc0
   languageName: node
   linkType: hard
 
@@ -26215,6 +26232,13 @@ mocha@latest:
   version: 0.0.8
   resolution: "mute-stream@npm:0.0.8"
   checksum: 315c40f463ec31deee54c5b8779207feb6b63dd4c58fe0f84ad46abdd6dac1ada578d53efde4a47b0ae4d29d453d35bb39ecdd98ee9ebf538929039a3a9945df
+  languageName: node
+  linkType: hard
+
+"mux-embed@npm:^3.4.3":
+  version: 3.4.3
+  resolution: "mux-embed@npm:3.4.3"
+  checksum: 8989a276c6fd064fab61e2c047f292a181c1c391b8c38c6549945dd4dba380a5bee493c78202a40115fc78d7feb128d3c62045cc4159f00ee69b2b4e5d7cc7be
   languageName: node
   linkType: hard
 
@@ -36815,6 +36839,13 @@ typescript@^4.0.0:
   languageName: node
   linkType: hard
 
+"url-toolkit@npm:^2.2.1":
+  version: 2.2.1
+  resolution: "url-toolkit@npm:2.2.1"
+  checksum: 2558ba9b44cf68294444b89063464f7cd84c5f9c5c871a2906ff8e2074b93383029605fc33a2de1455b6ef6307c28ed41408bcc719158a91f7037745f8abc673
+  languageName: node
+  linkType: hard
+
 "url@npm:^0.11.0, url@npm:~0.11.0":
   version: 0.11.0
   resolution: "url@npm:0.11.0"
@@ -37202,6 +37233,7 @@ typescript@^4.0.0:
     "@types/date-fns": 2.6.0
     "@types/dompurify": 2.2.1
     "@types/faker": 5.1.5
+    "@types/hls.js": ^0.13.3
     "@types/jest": 26.0.20
     "@types/query-string": 6.3.0
     "@types/reach__router": 1.3.6
@@ -37262,6 +37294,7 @@ typescript@^4.0.0:
     gatsby-theme-i18n: 1.0.4
     gatsby-theme-i18n-lingui: ^1.0.4
     gatsby-transformer-sharp: 2.10.1
+    hls.js: beta
     http-proxy-middleware: 1.0.6
     hygen: 6.0.4
     idb-keyval: 5.0.1
@@ -37270,6 +37303,7 @@ typescript@^4.0.0:
     jest-date-mock: 1.0.8
     jest-fetch-mock: 3.0.3
     make-plural: 6.2.2
+    mux-embed: ^3.4.3
     nanoid: 3.1.20
     npm-run-all: 4.1.5
     postcss: 8.2.4
