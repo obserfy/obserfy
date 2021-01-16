@@ -372,16 +372,6 @@ exports[`PageGallery should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.emotion-22 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -401,12 +391,12 @@ exports[`PageGallery should render correctly 1`] = `
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-22 {
+  .emotion-21 {
     padding-bottom: 8px;
   }
 }
 
-.emotion-23 {
+.emotion-22 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -470,29 +460,29 @@ exports[`PageGallery should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-23:disabled {
+.emotion-22:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-23:hover,
-.emotion-23:focus {
+.emotion-22:hover,
+.emotion-22:focus {
   background-color: var(--theme-ui-colors-primaryDark, #00a06d);
   outline: none;
 }
 
-.emotion-23:hover:disabled,
-.emotion-23:focus:disabled {
+.emotion-22:hover:disabled,
+.emotion-22:focus:disabled {
   background-color: var(--theme-ui-colors-primary, #00e399);
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-23 {
+  .emotion-22 {
     width: auto;
   }
 }
 
-.emotion-24 {
+.emotion-23 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -507,7 +497,7 @@ exports[`PageGallery should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-25 {
+.emotion-24 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -525,7 +515,7 @@ exports[`PageGallery should render correctly 1`] = `
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-25 {
+  .emotion-24 {
     padding-left: 8px;
     padding-right: 8px;
   }
@@ -609,7 +599,7 @@ exports[`PageGallery should render correctly 1`] = `
             <p
               class="emotion-17"
             >
-              Photos
+              Images
             </p>
             <p
               class="emotion-18"
@@ -625,29 +615,25 @@ exports[`PageGallery should render correctly 1`] = `
       <div
         class="emotion-1"
       >
-        <div
+        <label
           class="emotion-21"
         >
-          <label
+          <input
+            accept="image/*"
+            style="display: none;"
+            type="file"
+          />
+          <div
             class="emotion-22"
           >
-            <input
-              accept="image/*"
-              style="display: none;"
-              type="file"
-            />
             <div
               class="emotion-23"
-            >
-              <div
-                class="emotion-24"
-              />
-              Upload Photo
-            </div>
-          </label>
-        </div>
+            />
+            Upload Photo
+          </div>
+        </label>
         <div
-          class="emotion-25"
+          class="emotion-24"
         />
       </div>
     </div>

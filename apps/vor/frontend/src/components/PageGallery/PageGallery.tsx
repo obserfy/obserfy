@@ -8,6 +8,7 @@ import { useUploadStudentVideo } from "../../hooks/api/schools/useUploadStudentV
 import useGetStudentImages, {
   StudentImage,
 } from "../../hooks/api/students/useGetStudentImages"
+import useGetVideos from "../../hooks/api/students/useGetVideos"
 import usePostNewStudentImage from "../../hooks/api/students/usePostNewStudentImage"
 import { useGetStudent } from "../../hooks/api/useGetStudent"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
@@ -155,6 +156,7 @@ const ImageItem: FC<{ studentId: string; image: StudentImage }> = ({
 )
 
 const VideosView: FC<{ studentId: string }> = ({ studentId }) => {
+  const videos = useGetVideos(studentId)
   const postCreateUploadLink = useUploadStudentVideo(studentId)
 
   const handleImageUpload = async (event: ChangeEvent<HTMLInputElement>) => {
@@ -188,8 +190,47 @@ const VideosView: FC<{ studentId: string }> = ({ studentId }) => {
           <Trans>Upload Video</Trans>
         </Button>
       </Label>
+
+      <Flex px={[2, 2]} sx={{ width: "100%", flexWrap: "wrap" }}>
+        {videos.data?.map((video) => (
+          <VideoItem
+            key={video.id}
+            studentId={studentId}
+            thumbnailUrl={video.thumbnailUrl}
+          />
+        ))}
+      </Flex>
     </div>
   )
 }
+
+const VideoItem: FC<{ studentId: string; thumbnailUrl: string }> = ({
+  thumbnailUrl,
+}) => (
+  <Box p={[1, 2]} sx={{ width: ["33.333%", "25%", "20%", "14.285%"] }}>
+    <Box
+      sx={{
+        display: "block",
+        animation: `1s ease-in-out 0s infinite ${fading}`,
+      }}
+    >
+      <Box pt="100%" sx={{ width: "100%", position: "relative" }}>
+        <Image
+          loading="lazy"
+          src={`${thumbnailUrl}?width=400&height=400&fit_mode=smartcrop`}
+          sx={{
+            backgroundColor: "surface",
+            position: "absolute",
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            cursor: "pointer",
+          }}
+        />
+      </Box>
+    </Box>
+  </Box>
+)
 
 export default PageGallery

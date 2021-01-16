@@ -161,7 +161,7 @@ func handleAssetReady(store Store, rawAsset json.RawMessage, assetId string) err
 		AssetId:      assetId,
 		PlaybackId:   asset.PlaybackIds[0].ID,
 		PlaybackUrl:  "https://stream.mux.com/" + asset.PlaybackIds[0].ID + ".m3u8",
-		ThumbnailUrl: "https://image.mux.com/" + asset.PlaybackIds[0].ID,
+		ThumbnailUrl: "https://image.mux.com/" + asset.PlaybackIds[0].ID + "/thumbnail.jpg",
 	}); err != nil {
 		return err
 	}
