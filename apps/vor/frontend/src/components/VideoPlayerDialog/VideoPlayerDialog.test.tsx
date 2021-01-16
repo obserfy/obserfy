@@ -1,4 +1,4 @@
-import dayjs from "dayjs"
+import dayjs from "../../dayjs"
 import { advanceTo } from "jest-date-mock"
 import React from "react"
 import { render } from "../../test-utils"
