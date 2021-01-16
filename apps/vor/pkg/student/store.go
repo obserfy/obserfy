@@ -1,6 +1,7 @@
 package student
 
 import (
+	"github.com/chrsep/vor/pkg/domain"
 	"github.com/chrsep/vor/pkg/postgres"
 	"github.com/google/uuid"
 	"mime/multipart"
@@ -26,4 +27,5 @@ type Store interface {
 	GetLessonPlans(studentId string, date time.Time) ([]postgres.LessonPlan, error)
 	CreateImage(studentId string, file multipart.File, header *multipart.FileHeader) (string, error)
 	FindStudentImages(id string) ([]postgres.Image, error)
+	FindStudentVideos(studentId string) ([]domain.Video, error)
 }

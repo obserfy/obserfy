@@ -13,10 +13,12 @@ type VideoStore struct {
 
 func (s VideoStore) UpdateVideo(video domain.Video) error {
 	v := Video{
-		Id:         video.Id,
-		Status:     video.Status,
-		AssetId:    video.AssetId,
-		PlaybackId: video.PlaybackId,
+		Id:           video.Id,
+		Status:       video.Status,
+		AssetId:      video.AssetId,
+		PlaybackId:   video.PlaybackId,
+		PlaybackUrl:  video.PlaybackUrl,
+		ThumbnailUrl: video.ThumbnailUrl,
 	}
 	if _, err := s.Model(&v).WherePK().UpdateNotZero(); err != nil {
 		return richErrors.Wrap(err, "failed to update video")

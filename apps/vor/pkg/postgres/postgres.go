@@ -398,6 +398,8 @@ type (
 		Id            uuid.UUID `pg:"type:uuid"`
 		AssetId       string
 		PlaybackId    string
+		PlaybackUrl   string
+		ThumbnailUrl  string
 		UploadUrl     string
 		UploadId      string
 		Status        string

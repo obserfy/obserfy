@@ -1,6 +1,7 @@
 package postgres
 
 import (
+	"github.com/chrsep/vor/pkg/domain"
 	richErrors "github.com/pkg/errors"
 	"mime/multipart"
 	"strings"
@@ -321,4 +322,8 @@ func (s StudentStore) FindStudentImages(id string) ([]Image, error) {
 		return nil, richErrors.Wrap(err, "failed to find student")
 	}
 	return queriedStudent.Images, nil
+}
+
+func (s StudentStore) FindStudentVideos(studentId string) ([]domain.Video, error) {
+	panic("implement me")
 }

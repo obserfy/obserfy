@@ -156,10 +156,12 @@ func handleAssetReady(store Store, rawAsset json.RawMessage, assetId string) err
 	}
 
 	if err := store.UpdateVideo(domain.Video{
-		Id:         id,
-		Status:     "ready",
-		AssetId:    assetId,
-		PlaybackId: asset.PlaybackIds[0].ID,
+		Id:           id,
+		Status:       "ready",
+		AssetId:      assetId,
+		PlaybackId:   asset.PlaybackIds[0].ID,
+		PlaybackUrl:  "https://stream.mux.com/" + asset.PlaybackIds[0].ID + ".m3u8",
+		ThumbnailUrl: "https://image.mux.com/" + asset.PlaybackIds[0].ID,
 	}); err != nil {
 		return err
 	}
