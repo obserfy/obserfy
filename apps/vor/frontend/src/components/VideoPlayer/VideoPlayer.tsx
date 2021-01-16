@@ -14,7 +14,10 @@ const VideoPlayer: FC<VideoPlayerProps> = ({ src }) => {
     mux.monitor("#VideoPlayer", {
       debug: false,
       data: {
-        env_key: "0pt3cncsn0aocpprvn2bntisq",
+        env_key:
+          process.env.NODE_ENV === "development"
+            ? "0pt3cncsn0aocpprvn2bntisq"
+            : "i2d2c3g7o9tt3tas4svflc1ce",
         player_name: "Vor VideoPlayer",
       },
     })
