@@ -1,7 +1,7 @@
 /** @jsx jsx * */
 import { keyframes } from "@emotion/react"
 import { Trans } from "@lingui/macro"
-import { ChangeEvent, FC, useState } from "react"
+import { Suspense, ChangeEvent, FC, Fragment, useState } from "react"
 import { Box, Button, Flex, Image, Label, jsx } from "theme-ui"
 import { getFirstName } from "../../domain/person"
 import { useUploadStudentVideo } from "../../hooks/api/schools/useUploadStudentVideo"
@@ -11,18 +11,21 @@ import useGetStudentImages, {
 import useGetVideos from "../../hooks/api/students/useGetVideos"
 import usePostNewStudentImage from "../../hooks/api/students/usePostNewStudentImage"
 import { useGetStudent } from "../../hooks/api/useGetStudent"
+import useVisibilityState from "../../hooks/useVisibilityState"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import {
   STUDENT_IMAGE_URL,
   STUDENT_OVERVIEW_URL,
   STUDENTS_URL,
 } from "../../routes"
+import Dialog from "../Dialog/Dialog"
 import Icon from "../Icon/Icon"
 import { Link } from "../Link/Link"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import Tab from "../Tab/Tab"
 import TopBar, { breadCrumb } from "../TopBar/TopBar"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
+import LazyVideoPlayer from "../VideoPlayer/LazyVideoPlayer"
 
 export interface PageGalleryProps {
   studentId: string
@@ -197,6 +200,7 @@ const VideosView: FC<{ studentId: string }> = ({ studentId }) => {
             key={video.id}
             studentId={studentId}
             thumbnailUrl={video.thumbnailUrl}
+            playbackUrl={video.playbackUrl}
           />
         ))}
       </Flex>
@@ -204,33 +208,49 @@ const VideosView: FC<{ studentId: string }> = ({ studentId }) => {
   )
 }
 
-const VideoItem: FC<{ studentId: string; thumbnailUrl: string }> = ({
-  thumbnailUrl,
-}) => (
-  <Box p={[1, 2]} sx={{ width: ["33.333%", "25%", "20%", "14.285%"] }}>
-    <Box
-      sx={{
-        display: "block",
-        animation: `1s ease-in-out 0s infinite ${fading}`,
-      }}
-    >
-      <Box pt="100%" sx={{ width: "100%", position: "relative" }}>
-        <Image
-          loading="lazy"
-          src={`${thumbnailUrl}`}
+const VideoItem: FC<{
+  studentId: string
+  playbackUrl: string
+  thumbnailUrl: string
+}> = ({ thumbnailUrl, playbackUrl }) => {
+  const videoDialog = useVisibilityState()
+
+  return (
+    <Fragment>
+      <Box p={[1, 2]} sx={{ width: ["33.333%", "25%", "20%", "14.285%"] }}>
+        <Box
           sx={{
-            backgroundColor: "surface",
-            position: "absolute",
-            top: 0,
-            bottom: 0,
-            left: 0,
-            right: 0,
-            cursor: "pointer",
+            display: "block",
+            animation: `1s ease-in-out 0s infinite ${fading}`,
           }}
-        />
+          onClick={videoDialog.show}
+        >
+          <Box pt="100%" sx={{ width: "100%", position: "relative" }}>
+            <Image
+              loading="lazy"
+              src={`${thumbnailUrl}`}
+              sx={{
+                backgroundColor: "surface",
+                position: "absolute",
+                top: 0,
+                bottom: 0,
+                left: 0,
+                right: 0,
+                cursor: "pointer",
+              }}
+            />
+          </Box>
+        </Box>
       </Box>
-    </Box>
-  </Box>
-)
+      {videoDialog.visible && (
+        <Dialog>
+          <Suspense fallback={<div>....loading</div>}>
+            <LazyVideoPlayer src={playbackUrl} />
+          </Suspense>
+        </Dialog>
+      )}
+    </Fragment>
+  )
+}
 
 export default PageGallery

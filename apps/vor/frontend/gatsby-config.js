@@ -131,12 +131,12 @@ module.exports = {
       },
     },
     // DEVTOOLS ================================================================
-    // {
-    //   resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
-    //   options: {
-    //     analyzerPort: 3300,
-    //   },
-    // },
+    {
+      resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
+      options: {
+        analyzerPort: 3300,
+      },
+    },
   ],
   developMiddleware: (app) => {
     app.use(

@@ -1,0 +1,10 @@
+import React from "react"
+import { render } from "../../test-utils"
+import VideoPlayer from "./VideoPlayer"
+
+describe("VideoPlayer", () => {
+  it("should render correctly", () => {
+    const { container } = render(<VideoPlayer />)
+    expect(container).toMatchSnapshot()
+  })
+})

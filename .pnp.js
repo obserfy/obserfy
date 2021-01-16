@@ -1736,6 +1736,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:4.7.6"
       ],
       [
+        "@types/hls.js",
+        "npm:0.13.3"
+      ],
+      [
         "@types/hoist-non-react-statics",
         "npm:3.3.1"
       ],
@@ -5348,6 +5352,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:9.12.0"
       ],
       [
+        "hls.js",
+        "npm:1.0.0-beta.3"
+      ],
+      [
         "hmac-drbg",
         "npm:1.0.1"
       ],
@@ -6914,6 +6922,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       [
         "mute-stream",
         "npm:0.0.8"
+      ],
+      [
+        "mux-embed",
+        "npm:3.4.3"
       ],
       [
         "name-all-modules-plugin",
@@ -10001,6 +10013,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       [
         "url-to-options",
         "npm:1.0.1"
+      ],
+      [
+        "url-toolkit",
+        "npm:2.2.1"
       ],
       [
         "use",
@@ -27045,6 +27061,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["@types/hls.js", [
+        ["npm:0.13.3", {
+          "packageLocation": "./.yarn/cache/@types-hls.js-npm-0.13.3-7e318f97f9-220d72ed84.zip/node_modules/@types/hls.js/",
+          "packageDependencies": [
+            ["@types/hls.js", "npm:0.13.3"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["@types/hoist-non-react-statics", [
         ["npm:3.3.1", {
           "packageLocation": "./.yarn/cache/@types-hoist-non-react-statics-npm-3.3.1-c0081332b2-16ab4c45d4.zip/node_modules/@types/hoist-non-react-statics/",
@@ -43441,6 +43466,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["hls.js", [
+        ["npm:1.0.0-beta.3", {
+          "packageLocation": "./.yarn/cache/hls.js-npm-1.0.0-beta.3-d0bb27d122-3d4360bd1b.zip/node_modules/hls.js/",
+          "packageDependencies": [
+            ["hls.js", "npm:1.0.0-beta.3"],
+            ["eventemitter3", "npm:4.0.7"],
+            ["url-toolkit", "npm:2.2.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["hmac-drbg", [
         ["npm:1.0.1", {
           "packageLocation": "./.yarn/cache/hmac-drbg-npm-1.0.1-3499ad31cd-729d5a55bf.zip/node_modules/hmac-drbg/",
@@ -49048,6 +49084,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/mute-stream-npm-0.0.8-489a7d6c2b-315c40f463.zip/node_modules/mute-stream/",
           "packageDependencies": [
             ["mute-stream", "npm:0.0.8"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["mux-embed", [
+        ["npm:3.4.3", {
+          "packageLocation": "./.yarn/cache/mux-embed-npm-3.4.3-29ab19cf58-8989a276c6.zip/node_modules/mux-embed/",
+          "packageDependencies": [
+            ["mux-embed", "npm:3.4.3"]
           ],
           "linkType": "HARD",
         }]
@@ -61611,6 +61656,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["url-toolkit", [
+        ["npm:2.2.1", {
+          "packageLocation": "./.yarn/cache/url-toolkit-npm-2.2.1-66ec140114-2558ba9b44.zip/node_modules/url-toolkit/",
+          "packageDependencies": [
+            ["url-toolkit", "npm:2.2.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["use", [
         ["npm:3.1.1", {
           "packageLocation": "./.yarn/cache/use-npm-3.1.1-7ba643714c-8dd3bdeeda.zip/node_modules/use/",
@@ -62069,6 +62123,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/date-fns", "npm:2.6.0"],
             ["@types/dompurify", "npm:2.2.1"],
             ["@types/faker", "npm:5.1.5"],
+            ["@types/hls.js", "npm:0.13.3"],
             ["@types/jest", "npm:26.0.20"],
             ["@types/query-string", "npm:6.3.0"],
             ["@types/reach__router", "npm:1.3.6"],
@@ -62129,6 +62184,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["gatsby-theme-i18n", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#workspace:packages/gatsby-theme-i18n"],
             ["gatsby-theme-i18n-lingui", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#workspace:packages/gatsby-theme-i18n-lingui"],
             ["gatsby-transformer-sharp", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:2.10.1"],
+            ["hls.js", "npm:1.0.0-beta.3"],
             ["http-proxy-middleware", "npm:1.0.6"],
             ["hygen", "npm:6.0.4"],
             ["idb-keyval", "npm:5.0.1"],
@@ -62137,6 +62193,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest-date-mock", "npm:1.0.8"],
             ["jest-fetch-mock", "npm:3.0.3"],
             ["make-plural", "npm:6.2.2"],
+            ["mux-embed", "npm:3.4.3"],
             ["nanoid", "npm:3.1.20"],
             ["npm-run-all", "npm:4.1.5"],
             ["postcss", "npm:8.2.4"],
