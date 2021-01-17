@@ -329,7 +329,10 @@ func (s StudentStore) FindStudentVideos(studentId string) ([]domain.Video, error
 	if err := s.Model(&student).
 		WherePK().
 		Relation("Videos", func(query *orm.Query) (*orm.Query, error) {
-			return query.Order("video.created_at DESC"), nil
+			q := query.
+				Order("video.created_at DESC").
+				Where("video.status = 'ready' or extract(epoch from (now() - video.created_at)) < video.upload_timeout")
+			return q, nil
 		}).
 		Select(); err != nil {
 		return nil, richErrors.Wrap(err, "failed to query video to db")

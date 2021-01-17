@@ -13,13 +13,8 @@ import (
 	"time"
 )
 
-type Store interface {
-	UpdateVideo(video domain.Video) error
-	DeleteVideo(id uuid.UUID) error
-}
-
 // NewWebhookRouter setups routes that handles events from mux
-func NewWebhookRouter(server rest.Server, store Store) *chi.Mux {
+func NewWebhookRouter(server rest.Server, store domain.VideoStore) *chi.Mux {
 	r := chi.NewRouter()
 	r.Use(verifySignatureMiddleware(server))
 	r.Method("POST", "/", postEventWebhook(server, store))
@@ -58,7 +53,7 @@ func verifySignatureMiddleware(s rest.Server) func(next http.Handler) http.Handl
 }
 
 // postEventWebhook handles various mux events
-func postEventWebhook(s rest.Server, store Store) http.Handler {
+func postEventWebhook(s rest.Server, store domain.VideoStore) http.Handler {
 	type requestBody struct {
 		Type      string    `json:"type"`
 		CreatedAt time.Time `json:"created_at"`
@@ -113,7 +108,7 @@ func postEventWebhook(s rest.Server, store Store) http.Handler {
 }
 
 // handleAssetDeleted got called when an asset on mux is deleted, either manually or using the API
-func handleAssetDeleted(store Store, rawAsset json.RawMessage) error {
+func handleAssetDeleted(store domain.VideoStore, rawAsset json.RawMessage) error {
 	var asset struct {
 		Passthrough string `json:"passthrough"`
 	}
@@ -135,7 +130,7 @@ func handleAssetDeleted(store Store, rawAsset json.RawMessage) error {
 }
 
 // handleAssetReady got called when an asset is ready to be played from mux after being processed
-func handleAssetReady(store Store, rawAsset json.RawMessage, assetId string) error {
+func handleAssetReady(store domain.VideoStore, rawAsset json.RawMessage, assetId string) error {
 	var asset struct {
 		Passthrough string `json:"passthrough"`
 		PlaybackIds []struct {

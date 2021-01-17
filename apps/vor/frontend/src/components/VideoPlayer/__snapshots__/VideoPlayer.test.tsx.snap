@@ -19,6 +19,12 @@ exports[`VideoPlayer should render correctly 1`] = `
   height: 100%;
 }
 
+@media screen and (min-width: 40em) {
+  .emotion-1 {
+    width: auto;
+  }
+}
+
 <div>
   <div
     class="emotion-0"

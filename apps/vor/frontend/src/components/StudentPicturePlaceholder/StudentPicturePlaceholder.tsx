@@ -9,6 +9,7 @@ export const StudentPicturePlaceholder: FC = () => (
     alt="empty student photo"
     maxWidth={32}
     sx={{ borderRadius: "circle" }}
+    className="test"
   />
 )
 
