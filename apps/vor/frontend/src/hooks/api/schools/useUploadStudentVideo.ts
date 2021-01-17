@@ -2,6 +2,7 @@ import { createUpload } from "@mux/upchunk"
 import { useMutation } from "react-query"
 import { navigate } from "../../../components/Link/Link"
 import { getSchoolId } from "../../schoolIdState"
+import { useGetStudentVideosCache } from "../students/useGetVideos"
 import { BASE_URL } from "../useApi"
 
 const uploadFile = (file: File, url: string) => {
@@ -23,6 +24,8 @@ const uploadFile = (file: File, url: string) => {
 }
 
 export const useUploadStudentVideo = (studentId: string) => {
+  const cache = useGetStudentVideosCache(studentId)
+
   const postCreateUploadLink = async (file: File) => {
     const result = await fetch(
       `${BASE_URL}/schools/${getSchoolId()}/videos/upload`,
@@ -52,5 +55,9 @@ export const useUploadStudentVideo = (studentId: string) => {
     await uploadFile(file, body.url)
   }
 
-  return useMutation(postCreateUploadLink)
+  return useMutation(postCreateUploadLink, {
+    onSuccess: () => {
+      setTimeout(() => cache.invalidate(), 1000)
+    },
+  })
 }
