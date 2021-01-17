@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.15.5](https://github.com/obserfy/obserfy/compare/v1.15.4...v1.15.5) (2021-01-10)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @sentry/gatsby to v5.29.2 ([7c99988](https://github.com/obserfy/obserfy/commit/7c9998865406148374328102881224a4fb19bcf0))
+* **deps:** update dependency @types/dompurify to v2.2.0 ([9805720](https://github.com/obserfy/obserfy/commit/9805720e6107418e8935116288a74618430f8aa9))
+* **deps:** update dependency @types/minio to v7.0.7 ([4052333](https://github.com/obserfy/obserfy/commit/40523338f40bc9f1a4dd75ae16cbf217bc1f0eaa))
+* **deps:** update dependency @types/node to v14.14.20 ([bfe3474](https://github.com/obserfy/obserfy/commit/bfe3474028ea90b5168c8c4ae1d461ea28a79211))
+* **deps:** update dependency @types/pino to v6.3.5 ([710d46f](https://github.com/obserfy/obserfy/commit/710d46f0463326601b08c36c9bdecbb1990de2ab))
+* **deps:** update dependency babel-plugin-remove-graphql-queries to v2.14.0 ([bf42460](https://github.com/obserfy/obserfy/commit/bf424601606d920bd299e6e5ce460591e1b5c8de))
+* **deps:** update dependency dayjs to v1.10.2 ([1716df7](https://github.com/obserfy/obserfy/commit/1716df7b5d05078f28dd41657766568a5c4b367d))
+* **deps:** update dependency gatsby-plugin-svgr to v2.1.0 ([de8877b](https://github.com/obserfy/obserfy/commit/de8877b6ad7bbea918fbe09e78f1f057e56ba86a))
+* **deps:** update dependency gatsby-plugin-typegen to v2.2.2 ([e1b7c25](https://github.com/obserfy/obserfy/commit/e1b7c25c70b17ff64b4ce2301c5b50b6f7410cf1))
+* **deps:** update dependency monocle-ts to v2.3.4 ([6531424](https://github.com/obserfy/obserfy/commit/6531424c7250e208198a07468b13cf00394eba6c))
+* **deps:** update dependency next to v10.0.5 ([ec7fe2a](https://github.com/obserfy/obserfy/commit/ec7fe2a6da03ccac3d6bc0cfaa38d245d1ba16cc))
+* **deps:** update dependency pino to v6.10.0 ([539d8b3](https://github.com/obserfy/obserfy/commit/539d8b3302f0a8322b473c0ce8fce1732f2b0dca))
+* **deps:** update dependency postcss to v8.2.3 ([9af68a7](https://github.com/obserfy/obserfy/commit/9af68a7872183d9f5f6c6f76c73ca115993df7ab))
+* **deps:** update dependency react-query to v3.5.10 ([18bc9c5](https://github.com/obserfy/obserfy/commit/18bc9c53c4a4fb3ef85b812750a5144eb61a4b9f))
+* **deps:** update dependency react-query to v3.5.11 ([2f39122](https://github.com/obserfy/obserfy/commit/2f39122ee48d23ccef1ccd1b6f89c808497510d0))
+* **deps:** update dependency socket.io-client to v3.0.5 ([b41b8cf](https://github.com/obserfy/obserfy/commit/b41b8cfccaa122b860f23d2279ca59039647d6b0))
+* **deps:** update dependency ts-loader to v8.0.14 ([2305fed](https://github.com/obserfy/obserfy/commit/2305fedabdd51b7c2a38685b4a7c2bc286fece3b))
+
 ### [1.15.4](https://github.com/obserfy/obserfy/compare/v1.15.3...v1.15.4) (2021-01-03)
 
 ### [1.15.3](https://github.com/obserfy/obserfy/compare/v1.15.2...v1.15.3) (2021-01-03)
