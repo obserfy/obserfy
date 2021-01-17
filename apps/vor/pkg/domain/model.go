@@ -137,6 +137,7 @@ type Video struct {
 	PlaybackId    string
 	PlaybackUrl   string
 	ThumbnailUrl  string
+	School        School
 }
 
 type Subscription struct {
@@ -152,4 +153,23 @@ type Subscription struct {
 	PaddleUserId       string
 	UpdateUrl          string
 	MarketingConsent   bool
+}
+
+type User struct {
+	Id    string
+	Name  string
+	Email string
+}
+
+type School struct {
+	Id    uuid.UUID
+	Name  string
+	Users []User
+}
+
+type VideoStore interface {
+	UpdateVideo(video Video) error
+	DeleteVideo(id uuid.UUID) error
+	GetVideo(id uuid.UUID) (Video, error)
+	GetVideoSchool(videoId uuid.UUID) (School, error)
 }
