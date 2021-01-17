@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/apps/e2e/e2e.iml" filepath="$PROJECT_DIR$/apps/e2e/e2e.iml" />
+      <module fileurl="file://$PROJECT_DIR$/apps/freyr/freyr.iml" filepath="$PROJECT_DIR$/apps/freyr/freyr.iml" />
+      <module fileurl="file://$PROJECT_DIR$/apps/gaia/gaia.iml" filepath="$PROJECT_DIR$/apps/gaia/gaia.iml" />
+      <module fileurl="file://$PROJECT_DIR$/apps/vor/vor-backend.iml" filepath="$PROJECT_DIR$/apps/vor/vor-backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/apps/vor/frontend/vor-frontend.iml" filepath="$PROJECT_DIR$/apps/vor/frontend/vor-frontend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/workspace.iml" filepath="$PROJECT_DIR$/workspace.iml" />
+    </modules>
+  </component>
+</project>

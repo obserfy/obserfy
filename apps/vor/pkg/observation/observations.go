@@ -149,8 +149,8 @@ func getObservation(s rest.Server, store Store) http.Handler {
 			item := observation.Images[i]
 			response.Images = append(response.Images, image{
 				Id:           item.Id,
-				ThumbnailUrl: imgproxy.GenerateUrl(observation.Images[i].ObjectKey, 80, 80),
-				OriginalUrl:  imgproxy.GenerateOriginalUrl(observation.Images[i].ObjectKey),
+				ThumbnailUrl: imgproxy.GenerateUrlFromS3(observation.Images[i].ObjectKey, 80, 80),
+				OriginalUrl:  imgproxy.GenerateOriginalUrlFromS3(observation.Images[i].ObjectKey),
 			})
 		}
 		if err := rest.WriteJson(w, response); err != nil {
@@ -255,8 +255,8 @@ func patchObservation(s rest.Server, store Store) rest.Handler {
 			item := observation.Images[i]
 			response.Images = append(response.Images, image{
 				Id:           item.Id,
-				ThumbnailUrl: imgproxy.GenerateUrl(observation.Images[i].ObjectKey, 80, 80),
-				OriginalUrl:  imgproxy.GenerateOriginalUrl(observation.Images[i].ObjectKey),
+				ThumbnailUrl: imgproxy.GenerateUrlFromS3(observation.Images[i].ObjectKey, 80, 80),
+				OriginalUrl:  imgproxy.GenerateOriginalUrlFromS3(observation.Images[i].ObjectKey),
 			})
 		}
 		if err := rest.WriteJson(w, &response); err != nil {
@@ -294,8 +294,8 @@ func postNewImage(s rest.Server, store Store) rest.Handler {
 		w.WriteHeader(http.StatusCreated)
 		if err := rest.WriteJson(w, &response{
 			Id:           image.Id,
-			ThumbnailUrl: imgproxy.GenerateUrl(image.ObjectKey, 80, 80),
-			OriginalUrl:  imgproxy.GenerateOriginalUrl(image.ObjectKey),
+			ThumbnailUrl: imgproxy.GenerateUrlFromS3(image.ObjectKey, 80, 80),
+			OriginalUrl:  imgproxy.GenerateOriginalUrlFromS3(image.ObjectKey),
 		}); err != nil {
 			return rest.NewWriteJsonError(err)
 		}

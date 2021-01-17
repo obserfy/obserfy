@@ -41,6 +41,8 @@ func NewRouter(s rest.Server, store Store) *chi.Mux {
 
 		r.Method("POST", "/images", postNewImage(s, store))
 		r.Method("GET", "/images", getStudentImages(s, store))
+
+		r.Method("GET", "/videos", getStudentVideos(s, store))
 	})
 	return r
 }
@@ -285,7 +287,7 @@ func getStudent(s rest.Server, store Store) http.Handler {
 			Active:      *student.Active,
 		}
 		if student.ProfileImage.ObjectKey != "" {
-			response.ProfilePic = imgproxy.GenerateUrl(student.ProfileImage.ObjectKey, 80, 80)
+			response.ProfilePic = imgproxy.GenerateUrlFromS3(student.ProfileImage.ObjectKey, 80, 80)
 		}
 		if err := rest.WriteJson(w, response); err != nil {
 			return rest.NewWriteJsonError(err)
@@ -443,8 +445,8 @@ func postObservation(s rest.Server, store Store) http.Handler {
 		for i := range observation.Images {
 			images = append(images, image{
 				Id:           observation.Images[i].Id,
-				ThumbnailUrl: imgproxy.GenerateUrl(observation.Images[i].ObjectKey, 80, 80),
-				OriginalUrl:  imgproxy.GenerateOriginalUrl(observation.Images[i].ObjectKey),
+				ThumbnailUrl: imgproxy.GenerateUrlFromS3(observation.Images[i].ObjectKey, 80, 80),
+				OriginalUrl:  imgproxy.GenerateOriginalUrlFromS3(observation.Images[i].ObjectKey),
 			})
 		}
 
@@ -543,8 +545,8 @@ func getObservation(s rest.Server, store Store) http.Handler {
 				item := o.Images[j]
 				response[i].Images = append(response[i].Images, image{
 					Id:           item.Id,
-					ThumbnailUrl: imgproxy.GenerateUrl(item.ObjectKey, 80, 80),
-					OriginalUrl:  imgproxy.GenerateOriginalUrl(item.ObjectKey),
+					ThumbnailUrl: imgproxy.GenerateUrlFromS3(item.ObjectKey, 80, 80),
+					OriginalUrl:  imgproxy.GenerateOriginalUrlFromS3(item.ObjectKey),
 				})
 			}
 		}
@@ -770,13 +772,52 @@ func getStudentImages(s rest.Server, store Store) rest.Handler {
 
 		response := make([]imageJson, 0)
 		for _, image := range images {
-			originalUrl := imgproxy.GenerateOriginalUrl(image.ObjectKey)
-			thumbnailUrl := imgproxy.GenerateUrl(image.ObjectKey, 400, 400)
+			originalUrl := imgproxy.GenerateOriginalUrlFromS3(image.ObjectKey)
+			thumbnailUrl := imgproxy.GenerateUrlFromS3(image.ObjectKey, 400, 400)
 			response = append(response, imageJson{
 				Id:           image.Id,
 				CreatedAt:    image.CreatedAt,
 				OriginalUrl:  originalUrl,
 				ThumbnailUrl: thumbnailUrl,
+			})
+		}
+
+		if err := rest.WriteJson(w, &response); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
+		return nil
+	})
+}
+
+func getStudentVideos(s rest.Server, store Store) http.Handler {
+	type video struct {
+		Id                   string    `json:"id"`
+		PlaybackUrl          string    `json:"playbackUrl"`
+		ThumbnailUrl         string    `json:"thumbnailUrl"`
+		OriginalThumbnailUrl string    `json:"originalThumbnailUrl"`
+		Status               string    `json:"status"`
+		CreatedAt            time.Time `json:"createdAt"`
+	}
+	type responseBody []video
+
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		studentId := chi.URLParam(r, "studentId")
+
+		videos, err := store.FindStudentVideos(studentId)
+		if err != nil {
+			return rest.NewInternalServerError(err, "failed to query videos")
+		}
+
+		response := make(responseBody, 0)
+		for _, v := range videos {
+			response = append(response, video{
+				Id:           v.Id.String(),
+				PlaybackUrl:  v.PlaybackUrl,
+				ThumbnailUrl: v.ThumbnailUrl + "?height=400&width=400&fit_mode=smartcrop",
+				//ThumbnailUrl:         imgproxy.GenerateUrlFromHttp(v.ThumbnailUrl, 400, 400),
+				OriginalThumbnailUrl: v.ThumbnailUrl,
+				Status:               v.Status,
+				CreatedAt:            v.CreatedAt,
 			})
 		}
 

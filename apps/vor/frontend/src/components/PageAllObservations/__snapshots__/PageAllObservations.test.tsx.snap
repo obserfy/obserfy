@@ -514,10 +514,8 @@ exports[`PageAllObservations should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  position: relative;
   overflow-x: auto;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-bottom-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
 }
 
 .emotion-24 {
@@ -578,6 +576,7 @@ exports[`PageAllObservations should render correctly 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  z-index: 10;
 }
 
 @media screen and (min-width: 40em) {
@@ -587,7 +586,7 @@ exports[`PageAllObservations should render correctly 1`] = `
 }
 
 .emotion-25:after {
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-textPrimary, #027c5b);
   border-radius: 2px 2px 0 0;
   width: 125%;
   height: 3px;
@@ -601,19 +600,18 @@ exports[`PageAllObservations should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  padding: 16px;
+  height: 1px;
+  width: 100%;
+  background-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  position: absolute;
+  bottom: 0;
 }
 
 .emotion-27 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  margin-bottom: 16px;
-  border-radius: 6px;
-  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
-  animation: 1s ease-in-out 0s infinite animation-0;
-  width: 100%;
-  height: 2rem;
+  padding: 16px;
 }
 
 .emotion-28 {
@@ -625,10 +623,22 @@ exports[`PageAllObservations should render correctly 1`] = `
   -webkit-animation: 1s ease-in-out 0s infinite animation-0;
   animation: 1s ease-in-out 0s infinite animation-0;
   width: 100%;
+  height: 2rem;
+}
+
+.emotion-29 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-bottom: 16px;
+  border-radius: 6px;
+  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
+  animation: 1s ease-in-out 0s infinite animation-0;
+  width: 100%;
   height: 5rem;
 }
 
-.emotion-31 {
+.emotion-32 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -755,24 +765,27 @@ exports[`PageAllObservations should render correctly 1`] = `
               All
             </p>
           </div>
+          <div
+            class="emotion-26"
+          />
         </div>
         <div
-          class="emotion-26"
+          class="emotion-27"
         >
           <div
-            class="emotion-27"
-          />
-          <div
             class="emotion-28"
           />
           <div
-            class="emotion-28"
+            class="emotion-29"
           />
           <div
-            class="emotion-28"
+            class="emotion-29"
           />
           <div
-            class="emotion-31"
+            class="emotion-29"
+          />
+          <div
+            class="emotion-32"
           />
         </div>
       </div>

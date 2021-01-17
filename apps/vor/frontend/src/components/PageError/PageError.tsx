@@ -1,25 +1,12 @@
 /** @jsx jsx */
+import { StaticImage } from "gatsby-plugin-image"
 import { FC, useEffect } from "react"
-import { graphql, useStaticQuery } from "gatsby"
-import GatsbyImage, { FixedObject } from "gatsby-image"
 import { Button, Flex, jsx } from "theme-ui"
 import Typography from "../Typography/Typography"
 import { useGetUserProfile } from "../../hooks/api/useGetUserProfile"
 import { loadCanny } from "../../canny"
 
 export const PageError: FC = () => {
-  const astronaut = useStaticQuery(graphql`
-    query AstronautImage {
-      file: file(relativePath: { eq: "astronaut.png" }) {
-        childImageSharp {
-          fixed(width: 180, height: 180) {
-            ...GatsbyImageSharpFixed_withWebp
-          }
-        }
-      }
-    }
-  `)
-
   const { data, status } = useGetUserProfile()
 
   useEffect(() => {
@@ -57,8 +44,11 @@ export const PageError: FC = () => {
           alignItems: "center",
         }}
       >
-        <GatsbyImage
-          fixed={astronaut?.file?.childImageSharp?.fixed as FixedObject}
+        <StaticImage
+          width={180}
+          height={180}
+          src="../../images/astronaut.png"
+          alt="Illustration of something that went wrong"
         />
         <Typography.H5
           pt={3}

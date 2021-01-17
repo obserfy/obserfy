@@ -2,6 +2,7 @@ package school_test
 
 import (
 	"bytes"
+	"github.com/chrsep/vor/pkg/domain"
 	"github.com/stretchr/testify/mock"
 	"io/ioutil"
 	"mime/multipart"
@@ -44,8 +45,12 @@ func (s *SchoolTestSuite) SetupTest() {
 	assert.NoError(t, err)
 	s.StudentImageStorage = *minio.NewImageStorage(client)
 
-	s.store = postgres.SchoolStore{s.DB, minio.NewFileStorage(s.MinioClient), s.StudentImageStorage}
-	s.Handler = school.NewRouter(s.Server, s.store, &mailServiceMock{}).ServeHTTP
+	s.store = postgres.SchoolStore{
+		DB:           s.DB,
+		FileStorage:  minio.NewFileStorage(s.MinioClient),
+		ImageStorage: s.StudentImageStorage,
+	}
+	s.Handler = school.NewRouter(s.Server, s.store, &mailServiceMock{}, domain.NoopVideoService{}).ServeHTTP
 }
 
 func TestSchool(t *testing.T) {

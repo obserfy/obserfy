@@ -10,7 +10,7 @@ import { ReactComponent as PersonIcon } from "../../icons/person.svg"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import {
   NEW_OBSERVATION_URL,
-  STUDENT_IMAGES_URL,
+  STUDENT_GALLERY_URL,
   STUDENT_PLANS_URL,
   STUDENT_PROFILE_URL,
   STUDENTS_URL,
@@ -76,7 +76,7 @@ export const PageStudentOverview: FC<Props> = ({ id }) => {
           </Button>
         </Link>
 
-        <Link sx={{ flexGrow: 1 }} to={STUDENT_IMAGES_URL(id)}>
+        <Link sx={{ flexGrow: 1 }} to={STUDENT_GALLERY_URL(id)}>
           <Button data-cy="edit" variant="outline" sx={{ width: "100%" }}>
             <Icon as={ImageIcon} fill="textPrimary" mr={2} />
             <Trans>Gallery</Trans>

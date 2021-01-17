@@ -1,25 +1,12 @@
+import { StaticImage } from "gatsby-plugin-image"
 import React, { FC, useEffect } from "react"
-import { graphql, useStaticQuery } from "gatsby"
-import GatsbyImage, { FixedObject } from "gatsby-image"
-import { Flex, Button, Box } from "theme-ui"
-import Typography from "../Typography/Typography"
-
-import { Link } from "../Link/Link"
+import { Box, Button, Flex } from "theme-ui"
 import { STUDENTS_URL } from "../../routes"
 
-export const Page404: FC = () => {
-  const notFound = useStaticQuery(graphql`
-    query {
-      file: file(relativePath: { eq: "not-found.png" }) {
-        childImageSharp {
-          fixed(width: 230, height: 180) {
-            ...GatsbyImageSharpFixed_withWebp
-          }
-        }
-      }
-    }
-  `)
+import { Link } from "../Link/Link"
+import Typography from "../Typography/Typography"
 
+export const Page404: FC = () => {
   useEffect(() => {
     if (window.analytics) window.analytics.track("404 visited")
   }, [])
@@ -48,8 +35,10 @@ export const Page404: FC = () => {
           404
         </Typography.H1>
         <Box mb={4}>
-          <GatsbyImage
-            fixed={notFound?.file?.childImageSharp?.fixed as FixedObject}
+          <StaticImage
+            src="../../images/not-found.png"
+            maxWidth={180}
+            alt="A missing page"
           />
         </Box>
         <Typography.Body mb={4} mx={5} sx={{ textAlign: "center" }}>

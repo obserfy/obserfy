@@ -466,3 +466,28 @@ func (s *BaseTestSuite) GenerateImage(school *postgres.School) postgres.Image {
 	assert.NoError(t, err)
 	return image
 }
+
+func (s *BaseTestSuite) GenerateVideo(school *postgres.School, status *string) postgres.Video {
+	t := s.T()
+	gofakeit.Seed(time.Now().UnixNano())
+	video := postgres.Video{
+		Id:            uuid.New(),
+		AssetId:       uuid.New().String(),
+		PlaybackId:    gofakeit.UUID(),
+		PlaybackUrl:   gofakeit.URL(),
+		ThumbnailUrl:  gofakeit.URL(),
+		UploadUrl:     gofakeit.URL(),
+		UploadId:      gofakeit.UUID(),
+		Status:        "ready",
+		UploadTimeout: 60,
+		CreatedAt:     time.Now(),
+		School:        *school,
+		SchoolId:      school.Id,
+	}
+	if status != nil {
+		video.Status = *status
+	}
+	_, err := s.DB.Model(&video).Insert()
+	assert.NoError(t, err)
+	return video
+}

@@ -78,7 +78,7 @@ msgstr "Add some description here"
 msgid "Address"
 msgstr "Address"
 
-#: src/components/Navbar/Navbar.tsx:83
+#: src/components/Navbar/Navbar.tsx:69
 #: src/components/PageListOfGuardians/PageListOfGuardians.tsx:21
 #: src/components/PagePaymentSuccess/PagePaymentSuccess.tsx:14
 #: src/components/PageSubscription/PageSubscription.tsx:27
@@ -197,7 +197,7 @@ msgstr "Choose a Name"
 msgid "Class"
 msgstr "Class"
 
-#: src/components/PageClassSettings/PageClassSettings.tsx:27
+#: src/components/PageClassSettings/PageClassSettings.tsx:26
 #: src/components/PageNewStudent/NewStudentForm.tsx:66
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:66
 msgid "Classes"
@@ -633,7 +633,7 @@ msgstr "Name"
 msgid "Name (Required)"
 msgstr "Name (Required)"
 
-#: src/components/PageClassSettings/PageClassSettings.tsx:31
+#: src/components/PageClassSettings/PageClassSettings.tsx:30
 #: src/components/PageCurriculumArea/PageCurriculumArea.tsx:73
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:93
 msgid "New"
@@ -644,7 +644,7 @@ msgstr "New"
 msgid "New Area"
 msgstr "New Area"
 
-#: src/components/PageClassSettings/PageClassSettings.tsx:68
+#: src/components/PageClassSettings/PageClassSettings.tsx:54
 #: src/components/PageNewClass/PageNewClass.tsx:57
 #: src/components/PageNewStudentClass/PageNewStudentClass.tsx:60
 msgid "New Class"
@@ -1064,7 +1064,7 @@ msgstr "Status"
 msgid "Student ID"
 msgstr "Student ID"
 
-#: src/components/Navbar/Navbar.tsx:77
+#: src/components/Navbar/Navbar.tsx:63
 #: src/components/PageAddGuardian/PageAddGuardian.tsx:67
 #: src/components/PageAllObservations/PageAllObservations.tsx:13
 #: src/components/PageNewObservation/PageNewObservation.tsx:76
@@ -1110,7 +1110,7 @@ msgstr "Subscribed"
 msgid "Sunday"
 msgstr "Sunday"
 
-#: src/components/Navbar/Navbar.tsx:84
+#: src/components/Navbar/Navbar.tsx:70
 msgid "Support"
 msgstr "Support"
 
@@ -1118,7 +1118,7 @@ msgstr "Support"
 msgid "Switch school"
 msgstr "Switch school"
 
-#: src/components/PageClassSettings/PageClassSettings.tsx:61
+#: src/components/PageClassSettings/PageClassSettings.tsx:47
 msgid "Tell us about your classes, We'll help you track your students attendance."
 msgstr "Tell us about your classes, We'll help you track your students attendance."
 
@@ -1183,9 +1183,14 @@ msgstr "Tuesday"
 msgid "Unlimited students"
 msgstr "Unlimited students"
 
+#: src/components/PageGallery/PageGallery.tsx:79
 #: src/components/PageStudentImages/PageStudentImages.tsx:67
 msgid "Upload Photo"
 msgstr "Upload Photo"
+
+#: src/components/PageGallery/PageGallery.tsx:141
+msgid "Upload Video"
+msgstr "Upload Video"
 
 #: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:103
 msgid "Use Custom"
@@ -1262,7 +1267,7 @@ msgstr "Your purchase is complete. A receipt of your order will be sent to you b
 msgid "active"
 msgstr "active"
 
-#: src/components/BrandBanner/BrandBanner.tsx:27
+#: src/components/BrandBanner/BrandBanner.tsx:13
 msgid "for Teachers"
 msgstr "for Teachers"
 
