@@ -84,8 +84,10 @@ func deleteVideo(server rest.Server, store domain.VideoStore, service domain.Vid
 			return rest.NewInternalServerError(err, "failed to query video details")
 		}
 
-		if err := service.DeleteAsset(video.AssetId); err != nil {
-			return rest.NewInternalServerError(err, "failed to delete asset")
+		if video.Status != "waiting" {
+			if err := service.DeleteAsset(video.AssetId); err != nil {
+				return rest.NewInternalServerError(err, "failed to delete asset")
+			}
 		}
 
 		if err := store.DeleteVideo(videoId); err != nil {
