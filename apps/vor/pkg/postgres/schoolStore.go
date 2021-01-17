@@ -792,3 +792,36 @@ func (s SchoolStore) NewCurriculum(schoolId string, name string) error {
 	}
 	return nil
 }
+
+func (s SchoolStore) CreateStudentVideo(schoolId string, studentId string, video domain.Video) error {
+	newVideo := Video{
+		Id:            video.Id,
+		UploadUrl:     video.UploadUrl,
+		UploadId:      video.UploadId,
+		Status:        video.Status,
+		UploadTimeout: video.UploadTimeout,
+		CreatedAt:     video.CreatedAt,
+		UserId:        video.UserId,
+		SchoolId:      schoolId,
+	}
+
+	if err := s.RunInTransaction(s.Context(), func(tx *pg.Tx) error {
+		if _, err := tx.Model(&newVideo).Insert(); err != nil {
+			return richErrors.Wrap(err, "failed to save video metadata to db")
+		}
+		if studentId != "" {
+			studentRelation := VideoToStudents{
+				StudentId: studentId,
+				VideoId:   video.Id,
+			}
+			if _, err := tx.Model(&studentRelation).Insert(); err != nil {
+				return richErrors.Wrap(err, "failed to save video to student relation to DB")
+			}
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+
+	return nil
+}

@@ -21,7 +21,7 @@ func (s *ImagesTestSuite) SetupTest() {
 	t := s.T()
 	minioClient, err := minio.NewClient()
 	assert.NoError(t, err)
-	s.store = postgres.ImageStore{s.DB, minio.NewImageStorage(minioClient)}
+	s.store = postgres.ImageStore{DB: s.DB, ImageStorage: minio.NewImageStorage(minioClient)}
 	s.Handler = images.NewRouter(s.Server, s.store).ServeHTTP
 }
 

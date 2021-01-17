@@ -30,5 +30,8 @@
     "directory": "packages/gatsby-theme-i18n",
     "url": "https://github.com/gatsbyjs/themes.git"
   },
-  "homepage": "https://github.com/gatsbyjs/themes/tree/master/packages/gatsby-theme-i18n#readme"
+  "homepage": "https://github.com/gatsbyjs/themes/tree/master/packages/gatsby-theme-i18n#readme",
+  "devDependencies": {
+    "core-js": "3.8.2"
+  }
 }

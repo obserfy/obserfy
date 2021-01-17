@@ -27,18 +27,7 @@ const graphqlCodeGen =
       ]
     : []
 
-// Only enable preact on prod. It has inconsistent fast-refresh behaviour and swallows all errors on dev,
-// revisit later.
-const preactPlugin =
-  process.env.NODE_ENV === "production" ? [`gatsby-plugin-preact`] : []
-
 module.exports = {
-  flags: {
-    FAST_DEV: true,
-    FAST_REFRESH: true,
-    PRESERVE_WEBPACK_CACHE: true,
-    PRESERVE_FILE_DOWNLOAD_CACHE: true,
-  },
   siteMetadata: {
     title: `Obserfy for Teachers`,
     description: `Record keeping tool for montessori schools.`,
@@ -46,7 +35,7 @@ module.exports = {
     siteUrl: `https://app.obserfy.com`,
   },
   plugins: [
-    ...preactPlugin,
+    `gatsby-plugin-preact`,
     `gatsby-plugin-layout`,
     "gatsby-plugin-theme-ui",
     `gatsby-plugin-react-helmet`,
@@ -58,6 +47,7 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-remove-trailing-slashes`,
@@ -132,12 +122,12 @@ module.exports = {
       },
     },
     // DEVTOOLS ================================================================
-    // {
-    //   resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
-    //   options: {
-    //     analyzerPort: 3300,
-    //   },
-    // },
+    {
+      resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
+      options: {
+        analyzerPort: 3300,
+      },
+    },
   ],
   developMiddleware: (app) => {
     app.use(

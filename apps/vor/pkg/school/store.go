@@ -165,6 +165,7 @@ type (
 		GetUser(email string) (*User, error)
 		DeleteUser(schoolId string, userId string) error
 		NewCurriculum(schoolId string, name string) error
+		CreateStudentVideo(schoolId string, studentId string, video domain.Video) error
 	}
 	MailService interface {
 		SendInviteEmail(email string, inviteCode string, schoolName string) error

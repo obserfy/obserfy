@@ -59,8 +59,8 @@ func getImage(server rest.Server, store Store) http.Handler {
 
 		response := &responseBody{
 			Id:          image.Id.String(),
-			Url:         imgproxy.GenerateUrl(image.ObjectKey, 100, 100),
-			OriginalUrl: imgproxy.GenerateOriginalUrl(image.ObjectKey),
+			Url:         imgproxy.GenerateUrlFromS3(image.ObjectKey, 100, 100),
+			OriginalUrl: imgproxy.GenerateOriginalUrlFromS3(image.ObjectKey),
 			CreatedAt:   image.CreatedAt,
 		}
 		if err := rest.WriteJson(w, response); err != nil {

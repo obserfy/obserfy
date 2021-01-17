@@ -21,6 +21,7 @@ func NewRouter(
 	server rest.Server,
 	store Store,
 	email MailService,
+	videos domain.VideoService,
 ) *chi.Mux {
 	r := chi.NewRouter()
 	r.Method("POST", "/", postNewSchool(server, store))
@@ -55,12 +56,15 @@ func NewRouter(
 		r.Method("PATCH", "/files/{fileId}", patchFile(server, store))
 		r.Method("DELETE", "/files/{fileId}", deleteFile(server, store))
 
+		r.Method("DELETE", "/users/{userId}", deleteUser(server, store))
+
 		r.Method("POST", "/images", postNewImage(server, store))
 
-		r.Method("DELETE", "/users/{userId}", deleteUser(server, store))
+		r.Method("POST", "/videos/upload", postCreateVideoUploadLink(server, store, videos))
 	})
 	return r
 }
+
 func inviteUser(server rest.Server, store Store, mail MailService) http.Handler {
 	type requestBody struct {
 		Email []string `json:"email" validate:"required,dive,email,required"`
@@ -434,7 +438,7 @@ func getStudents(s rest.Server, store Store) rest.Handler {
 		for _, student := range students {
 			profileImageUrl := ""
 			if student.ProfileImage.ObjectKey != "" {
-				profileImageUrl = imgproxy.GenerateUrl(student.ProfileImage.ObjectKey, 80, 80)
+				profileImageUrl = imgproxy.GenerateUrlFromS3(student.ProfileImage.ObjectKey, 80, 80)
 			}
 
 			classes := make([]class, 0)
@@ -1169,6 +1173,48 @@ func postNewImage(server rest.Server, store Store) http.Handler {
 
 		w.WriteHeader(http.StatusCreated)
 		if err := rest.WriteJson(w, &responseBody{id}); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
+		return nil
+	})
+}
+
+func postCreateVideoUploadLink(server rest.Server, store Store, videos domain.VideoService) http.Handler {
+	type requestBody struct {
+		StudentId string `json:"studentId"`
+	}
+	type responseBody struct {
+		Url string `json:"url"`
+	}
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		schoolId := chi.URLParam(r, "schoolId")
+		session, ok := auth.GetSessionFromCtx(r.Context())
+		if !ok {
+			return &rest.Error{
+				Code:    http.StatusUnauthorized,
+				Message: "invalid session",
+				Error:   richErrors.New("invalid session"),
+			}
+		}
+
+		var body requestBody
+		if err := rest.ParseJson(r.Body, &body); err != nil {
+			return rest.NewParseJsonError(err)
+		}
+
+		video, err := videos.CreateUploadLink()
+		if err != nil {
+			return rest.NewInternalServerError(err, "failed to create upload link")
+		}
+		video.SchoolId = schoolId
+		video.UserId = session.UserId
+
+		if err := store.CreateStudentVideo(schoolId, body.StudentId, video); err != nil {
+			return rest.NewInternalServerError(err, "failed to save video to db")
+		}
+
+		w.WriteHeader(http.StatusCreated)
+		if err := rest.WriteJson(w, &responseBody{video.UploadUrl}); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
 		return nil

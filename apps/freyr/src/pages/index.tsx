@@ -16,17 +16,32 @@ const IndexPage: FC = () => {
     query LandingPageImages {
       hero: file(relativePath: { eq: "hero.png" }) {
         childImageSharp {
-          gatsbyImageData(maxWidth: 704, layout: FLUID, placeholder: BLURRED)
+          gatsbyImageData(
+            maxWidth: 704
+            layout: FLUID
+            placeholder: BLURRED
+            formats: [AUTO, WEBP, AVIF]
+          )
         }
       }
       vor: file(relativePath: { eq: "vor.png" }) {
         childImageSharp {
-          gatsbyImageData(maxWidth: 860, layout: FLUID, placeholder: BLURRED)
+          gatsbyImageData(
+            maxWidth: 860
+            layout: FLUID
+            placeholder: BLURRED
+            formats: [AUTO, WEBP, AVIF]
+          )
         }
       }
       gaia: file(relativePath: { eq: "gaia.png" }) {
         childImageSharp {
-          gatsbyImageData(maxWidth: 855, layout: FLUID, placeholder: BLURRED)
+          gatsbyImageData(
+            maxWidth: 855
+            layout: FLUID
+            placeholder: BLURRED
+            formats: [AUTO, WEBP, AVIF]
+          )
         }
       }
     }
