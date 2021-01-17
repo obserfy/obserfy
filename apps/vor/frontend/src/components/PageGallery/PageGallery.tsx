@@ -4,6 +4,7 @@ import { Trans } from "@lingui/macro"
 import { ChangeEvent, FC, Fragment, useState } from "react"
 import { Box, Button, Flex, Image, jsx, Label } from "theme-ui"
 import { getFirstName } from "../../domain/person"
+import { VideoStatus } from "../../domain/video"
 import { useUploadStudentVideo } from "../../hooks/api/schools/useUploadStudentVideo"
 import useGetStudentImages, {
   StudentImage,
@@ -24,6 +25,7 @@ import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import Tab from "../Tab/Tab"
 import TopBar, { breadCrumb } from "../TopBar/TopBar"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
+import Typography from "../Typography/Typography"
 import VideoPlayerDialog from "../VideoPlayerDialog/VideoPlayerDialog"
 
 export interface PageGalleryProps {
@@ -221,6 +223,7 @@ const VideosView: FC<{ studentId: string }> = ({ studentId }) => {
         {videos.data?.map((video) => (
           <VideoItem
             key={video.id}
+            status={video.status}
             videoId={video.id}
             studentId={studentId}
             thumbnailUrl={video.thumbnailUrl}
@@ -241,6 +244,7 @@ const VideoItem: FC<{
   originalThumbnailUrl: string
   createdAt: string
   videoId: string
+  status: string
 }> = ({
   createdAt,
   thumbnailUrl,
@@ -248,8 +252,11 @@ const VideoItem: FC<{
   playbackUrl,
   originalThumbnailUrl,
   videoId,
+  status,
 }) => {
   const videoDialog = useVisibilityState()
+
+  const isReady = status === VideoStatus.READY
 
   return (
     <Fragment>
@@ -259,7 +266,9 @@ const VideoItem: FC<{
             display: "block",
             animation: `1s ease-in-out 0s infinite ${fading}`,
           }}
-          onClick={videoDialog.show}
+          onClick={() => {
+            if (isReady) videoDialog.show()
+          }}
         >
           <Box
             pt="100%"
@@ -269,19 +278,38 @@ const VideoItem: FC<{
               animation: `1s ease-in-out 0s infinite ${fading}`,
             }}
           >
-            <Image
-              loading="lazy"
-              src={`${thumbnailUrl}`}
-              sx={{
-                backgroundColor: "surface",
-                position: "absolute",
-                top: 0,
-                bottom: 0,
-                left: 0,
-                right: 0,
-                cursor: "pointer",
-              }}
-            />
+            {isReady ? (
+              <Image
+                loading="lazy"
+                src={`${thumbnailUrl}`}
+                sx={{
+                  backgroundColor: "surface",
+                  position: "absolute",
+                  top: 0,
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  cursor: "pointer",
+                }}
+              />
+            ) : (
+              <Typography.Body
+                sx={{
+                  display: "flex",
+                  position: "absolute",
+                  top: 0,
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontWeight: "bold",
+                  color: "textDisabled",
+                }}
+              >
+                Processing
+              </Typography.Body>
+            )}
           </Box>
         </Box>
       </Box>

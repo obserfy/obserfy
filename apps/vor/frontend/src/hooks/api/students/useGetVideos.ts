@@ -1,4 +1,5 @@
 import { useQuery } from "react-query"
+import { VideoStatus } from "../../../domain/video"
 import { useQueryCache } from "../../useQueryCache"
 import { getApi } from "../fetchApi"
 
@@ -8,7 +9,7 @@ interface GetStudentVideosResponse {
   id: string
   playbackUrl: string
   thumbnailUrl: string
-  status: string
+  status: VideoStatus
 }
 const useGetVideos = (studentId: string) => {
   const getVideos = getApi<GetStudentVideosResponse[]>(
