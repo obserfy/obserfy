@@ -85,24 +85,32 @@ const ImagesView: FC<{ studentId: string }> = ({ studentId }) => {
 
   return (
     <Box>
-      <Label px={3} pt={3} pb={[3, 2]}>
-        <input
-          type="file"
-          accept="image/*"
-          style={{ display: "none" }}
-          disabled={postNewStudentImage.isLoading}
-          onChange={handleImageUpload}
-        />
-        <Button
-          as="div"
-          disabled={postNewStudentImage.isLoading}
-          sx={{ width: ["100%", "auto"] }}
+      <Flex>
+        <Label
+          px={3}
+          pt={3}
+          pb={[3, 2]}
+          ml={[0, "auto"]}
+          sx={{ width: ["100%", "auto"], display: "inline-block" }}
         >
-          {postNewStudentImage.isLoading && <LoadingIndicator />}
-          <Icon as={PlusIcon} mr={2} fill="onPrimary" />
-          <Trans>Upload Photo</Trans>
-        </Button>
-      </Label>
+          <input
+            type="file"
+            accept="image/*"
+            style={{ display: "none" }}
+            disabled={postNewStudentImage.isLoading}
+            onChange={handleImageUpload}
+          />
+          <Button
+            as="div"
+            disabled={postNewStudentImage.isLoading}
+            sx={{ width: ["100%", "auto"] }}
+          >
+            {postNewStudentImage.isLoading && <LoadingIndicator />}
+            <Icon as={PlusIcon} mr={2} fill="onPrimary" />
+            <Trans>Upload Photo</Trans>
+          </Button>
+        </Label>
+      </Flex>
 
       <Flex px={[2, 2]} sx={{ width: "100%", flexWrap: "wrap" }}>
         {images.data?.map((image) => (
@@ -174,32 +182,40 @@ const VideosView: FC<{ studentId: string }> = ({ studentId }) => {
 
   return (
     <div>
-      <Label px={3} pt={3} pb={[3, 2]}>
-        <input
-          type="file"
-          accept="video/*"
-          style={{ display: "none" }}
-          disabled={postCreateUploadLink.isLoading}
-          onChange={handleImageUpload}
-        />
-        <Button
-          as="div"
-          disabled={postCreateUploadLink.isLoading}
-          sx={{ width: ["100%", "auto"] }}
+      <Flex>
+        <Label
+          px={3}
+          pt={3}
+          pb={[3, 2]}
+          ml={[0, "auto"]}
+          sx={{ width: ["100%", "auto"], display: "inline-block" }}
         >
-          {postCreateUploadLink.isLoading ? (
-            <Fragment>
-              <LoadingIndicator mr={2} />
-              <Trans>Uploading</Trans>
-            </Fragment>
-          ) : (
-            <Fragment>
-              <Icon as={PlusIcon} mr={2} fill="onPrimary" />
-              <Trans>Upload Video</Trans>
-            </Fragment>
-          )}
-        </Button>
-      </Label>
+          <input
+            type="file"
+            accept="video/*"
+            style={{ display: "none" }}
+            disabled={postCreateUploadLink.isLoading}
+            onChange={handleImageUpload}
+          />
+          <Button
+            as="div"
+            disabled={postCreateUploadLink.isLoading}
+            sx={{ width: ["100%", "auto"] }}
+          >
+            {postCreateUploadLink.isLoading ? (
+              <Fragment>
+                <LoadingIndicator mr={2} />
+                <Trans>Uploading</Trans>
+              </Fragment>
+            ) : (
+              <Fragment>
+                <Icon as={PlusIcon} mr={2} fill="onPrimary" />
+                <Trans>Upload Video</Trans>
+              </Fragment>
+            )}
+          </Button>
+        </Label>
+      </Flex>
 
       <Flex px={[2, 2]} sx={{ width: "100%", flexWrap: "wrap" }}>
         {videos.data?.map((video) => (
