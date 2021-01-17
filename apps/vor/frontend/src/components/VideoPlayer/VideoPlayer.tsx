@@ -52,7 +52,7 @@ const VideoPlayer: FC<VideoPlayerProps> = ({ src, poster }) => {
       id="VideoPlayer"
       ref={video}
       controls
-      sx={{ width: "100%", height: "100%" }}
+      sx={{ width: ["100%", "auto"], height: "100%" }}
       poster={poster}
     />
   )

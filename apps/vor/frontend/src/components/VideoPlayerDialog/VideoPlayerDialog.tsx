@@ -27,7 +27,7 @@ const VideoPlayerDialog: FC<VideoPlayerDialogProps> = ({
   const student = useGetStudent(studentId)
 
   return (
-    <Dialog sx={{ maxWidth: ["maxWidth.sm", "maxWidth.xl"] }}>
+    <Dialog sx={{ maxWidth: ["maxWidth.sm", "maxWidth.xl"], width: "auto" }}>
       <Flex sx={{ alignItems: "center", display: ["flex", "flex", "none"] }}>
         <Typography.Body p={3} sx={{ fontWeight: "bold" }}>
           {student.data?.name || ""}
@@ -38,7 +38,7 @@ const VideoPlayerDialog: FC<VideoPlayerDialogProps> = ({
       </Flex>
 
       <Flex sx={{ height: ["100vh", "auto"], alignItems: "flex-start" }}>
-        <Box sx={{ flex: 6 }}>
+        <Box sx={{ flex: 6, maxHeight: "80vh" }}>
           <Suspense
             fallback={
               <LoadingPlaceholder sx={{ width: "100%", pt: "62.8571%" }} />
@@ -48,7 +48,9 @@ const VideoPlayerDialog: FC<VideoPlayerDialogProps> = ({
           </Suspense>
         </Box>
 
-        <Box sx={{ display: ["none", "none", "block"], flex: 2 }}>
+        <Box
+          sx={{ display: ["none", "none", "block"], flex: 2, minWidth: 250 }}
+        >
           <Flex sx={{ alignItems: "center" }}>
             <Box p={3}>
               <Typography.Body sx={{ fontWeight: "bold" }} mb={1}>
