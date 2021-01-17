@@ -15,6 +15,7 @@ describe("VideoPlayerDialog", () => {
         studentId=""
         thumbnailUrl=""
         createdAt={dayjs().toISOString()}
+        videoId=""
       />
     )
     expect(container).toMatchSnapshot()

@@ -6,6 +6,7 @@ import (
 	"github.com/chrsep/vor/pkg/links"
 	"github.com/chrsep/vor/pkg/mux"
 	"github.com/chrsep/vor/pkg/paddle"
+	"github.com/chrsep/vor/pkg/videos"
 	"github.com/go-pg/pg/v10"
 	"log"
 	"net/http"
@@ -126,6 +127,7 @@ func runServer() error {
 		r.Mount("/images", images.NewRouter(server, imageStore))
 		r.Mount("/links", links.NewRouter(server, linksStore))
 		r.Mount("/exports", exports.NewRouter(server, exportsStore))
+		r.Mount("/videos", videos.NewRouter(server, videoStore, videoService))
 	})
 
 	// Serve gatsby static frontend assets

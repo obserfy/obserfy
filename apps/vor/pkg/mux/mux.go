@@ -44,11 +44,19 @@ func NewVideoService(logger *zap.Logger) VideoService {
 	}
 }
 
-// mux.VideoService is a
+// mux.VideoService is a video service that uses mux as the backend
 type VideoService struct {
 	corsOrigin string
 	client     *muxgo.APIClient
 	log        *zap.Logger
+}
+
+func (s VideoService) DeleteAsset(assetId string) error {
+	if err := s.client.AssetsApi.DeleteAsset(assetId); err != nil {
+		return richErrors.Wrap(err, "failed to delete asset from mux")
+	}
+
+	return nil
 }
 
 func (s VideoService) CreateUploadLink() (domain.Video, error) {

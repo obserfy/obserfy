@@ -4,6 +4,7 @@ import { Trans } from "@lingui/macro"
 import { ChangeEvent, FC, Fragment, useState } from "react"
 import { Box, Button, Flex, Image, jsx, Label } from "theme-ui"
 import { getFirstName } from "../../domain/person"
+import { VideoStatus } from "../../domain/video"
 import { useUploadStudentVideo } from "../../hooks/api/schools/useUploadStudentVideo"
 import useGetStudentImages, {
   StudentImage,
@@ -24,6 +25,7 @@ import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import Tab from "../Tab/Tab"
 import TopBar, { breadCrumb } from "../TopBar/TopBar"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
+import Typography from "../Typography/Typography"
 import VideoPlayerDialog from "../VideoPlayerDialog/VideoPlayerDialog"
 
 export interface PageGalleryProps {
@@ -85,24 +87,32 @@ const ImagesView: FC<{ studentId: string }> = ({ studentId }) => {
 
   return (
     <Box>
-      <Label px={3} pt={3} pb={[3, 2]}>
-        <input
-          type="file"
-          accept="image/*"
-          style={{ display: "none" }}
-          disabled={postNewStudentImage.isLoading}
-          onChange={handleImageUpload}
-        />
-        <Button
-          as="div"
-          disabled={postNewStudentImage.isLoading}
-          sx={{ width: ["100%", "auto"] }}
+      <Flex>
+        <Label
+          px={3}
+          pt={3}
+          pb={[3, 2]}
+          ml={[0, "auto"]}
+          sx={{ width: ["100%", "auto"], display: "inline-block" }}
         >
-          {postNewStudentImage.isLoading && <LoadingIndicator />}
-          <Icon as={PlusIcon} mr={2} fill="onPrimary" />
-          <Trans>Upload Photo</Trans>
-        </Button>
-      </Label>
+          <input
+            type="file"
+            accept="image/*"
+            style={{ display: "none" }}
+            disabled={postNewStudentImage.isLoading}
+            onChange={handleImageUpload}
+          />
+          <Button
+            as="div"
+            disabled={postNewStudentImage.isLoading}
+            sx={{ width: ["100%", "auto"] }}
+          >
+            {postNewStudentImage.isLoading && <LoadingIndicator />}
+            <Icon as={PlusIcon} mr={2} fill="onPrimary" />
+            <Trans>Upload Photo</Trans>
+          </Button>
+        </Label>
+      </Flex>
 
       <Flex px={[2, 2]} sx={{ width: "100%", flexWrap: "wrap" }}>
         {images.data?.map((image) => (
@@ -174,29 +184,47 @@ const VideosView: FC<{ studentId: string }> = ({ studentId }) => {
 
   return (
     <div>
-      <Label px={3} pt={3} pb={[3, 2]}>
-        <input
-          type="file"
-          accept="video/*"
-          style={{ display: "none" }}
-          disabled={postCreateUploadLink.isLoading}
-          onChange={handleImageUpload}
-        />
-        <Button
-          as="div"
-          disabled={postCreateUploadLink.isLoading}
-          sx={{ width: ["100%", "auto"] }}
+      <Flex>
+        <Label
+          px={3}
+          pt={3}
+          pb={[3, 2]}
+          ml={[0, "auto"]}
+          sx={{ width: ["100%", "auto"], display: "inline-block" }}
         >
-          {postCreateUploadLink.isLoading && <LoadingIndicator />}
-          <Icon as={PlusIcon} mr={2} fill="onPrimary" />
-          <Trans>Upload Video</Trans>
-        </Button>
-      </Label>
+          <input
+            type="file"
+            accept="video/*"
+            style={{ display: "none" }}
+            disabled={postCreateUploadLink.isLoading}
+            onChange={handleImageUpload}
+          />
+          <Button
+            as="div"
+            disabled={postCreateUploadLink.isLoading}
+            sx={{ width: ["100%", "auto"] }}
+          >
+            {postCreateUploadLink.isLoading ? (
+              <Fragment>
+                <LoadingIndicator mr={2} />
+                <Trans>Uploading</Trans>
+              </Fragment>
+            ) : (
+              <Fragment>
+                <Icon as={PlusIcon} mr={2} fill="onPrimary" />
+                <Trans>Upload Video</Trans>
+              </Fragment>
+            )}
+          </Button>
+        </Label>
+      </Flex>
 
       <Flex px={[2, 2]} sx={{ width: "100%", flexWrap: "wrap" }}>
         {videos.data?.map((video) => (
           <VideoItem
             key={video.id}
+            status={video.status}
+            videoId={video.id}
             studentId={studentId}
             thumbnailUrl={video.thumbnailUrl}
             playbackUrl={video.playbackUrl}
@@ -215,14 +243,20 @@ const VideoItem: FC<{
   thumbnailUrl: string
   originalThumbnailUrl: string
   createdAt: string
+  videoId: string
+  status: string
 }> = ({
   createdAt,
   thumbnailUrl,
   studentId,
   playbackUrl,
   originalThumbnailUrl,
+  videoId,
+  status,
 }) => {
   const videoDialog = useVisibilityState()
+
+  const isReady = status === VideoStatus.READY
 
   return (
     <Fragment>
@@ -232,7 +266,9 @@ const VideoItem: FC<{
             display: "block",
             animation: `1s ease-in-out 0s infinite ${fading}`,
           }}
-          onClick={videoDialog.show}
+          onClick={() => {
+            if (isReady) videoDialog.show()
+          }}
         >
           <Box
             pt="100%"
@@ -242,19 +278,38 @@ const VideoItem: FC<{
               animation: `1s ease-in-out 0s infinite ${fading}`,
             }}
           >
-            <Image
-              loading="lazy"
-              src={`${thumbnailUrl}`}
-              sx={{
-                backgroundColor: "surface",
-                position: "absolute",
-                top: 0,
-                bottom: 0,
-                left: 0,
-                right: 0,
-                cursor: "pointer",
-              }}
-            />
+            {isReady ? (
+              <Image
+                loading="lazy"
+                src={`${thumbnailUrl}`}
+                sx={{
+                  backgroundColor: "surface",
+                  position: "absolute",
+                  top: 0,
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  cursor: "pointer",
+                }}
+              />
+            ) : (
+              <Typography.Body
+                sx={{
+                  display: "flex",
+                  position: "absolute",
+                  top: 0,
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontWeight: "bold",
+                  color: "textDisabled",
+                }}
+              >
+                Processing
+              </Typography.Body>
+            )}
           </Box>
         </Box>
       </Box>
@@ -265,6 +320,7 @@ const VideoItem: FC<{
           onClose={videoDialog.hide}
           thumbnailUrl={originalThumbnailUrl}
           createdAt={createdAt}
+          videoId={videoId}
         />
       )}
     </Fragment>
