@@ -372,6 +372,16 @@ exports[`PageGallery should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-22 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -388,15 +398,25 @@ exports[`PageGallery should render correctly 1`] = `
   padding-right: 16px;
   padding-top: 16px;
   padding-bottom: 16px;
+  margin-left: 0;
+  width: 100%;
+  display: inline-block;
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-21 {
+  .emotion-22 {
     padding-bottom: 8px;
+    margin-left: auto;
   }
 }
 
-.emotion-22 {
+@media screen and (min-width: 40em) {
+  .emotion-22 {
+    width: auto;
+  }
+}
+
+.emotion-23 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -460,29 +480,29 @@ exports[`PageGallery should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-22:disabled {
+.emotion-23:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-22:hover,
-.emotion-22:focus {
+.emotion-23:hover,
+.emotion-23:focus {
   background-color: var(--theme-ui-colors-primaryDark, #00a06d);
   outline: none;
 }
 
-.emotion-22:hover:disabled,
-.emotion-22:focus:disabled {
+.emotion-23:hover:disabled,
+.emotion-23:focus:disabled {
   background-color: var(--theme-ui-colors-primary, #00e399);
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-22 {
+  .emotion-23 {
     width: auto;
   }
 }
 
-.emotion-23 {
+.emotion-24 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -497,7 +517,7 @@ exports[`PageGallery should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-24 {
+.emotion-25 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -515,7 +535,7 @@ exports[`PageGallery should render correctly 1`] = `
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-24 {
+  .emotion-25 {
     padding-left: 8px;
     padding-right: 8px;
   }
@@ -615,25 +635,29 @@ exports[`PageGallery should render correctly 1`] = `
       <div
         class="emotion-1"
       >
-        <label
+        <div
           class="emotion-21"
         >
-          <input
-            accept="image/*"
-            style="display: none;"
-            type="file"
-          />
-          <div
+          <label
             class="emotion-22"
           >
+            <input
+              accept="image/*"
+              style="display: none;"
+              type="file"
+            />
             <div
               class="emotion-23"
-            />
-            Upload Photo
-          </div>
-        </label>
+            >
+              <div
+                class="emotion-24"
+              />
+              Upload Photo
+            </div>
+          </label>
+        </div>
         <div
-          class="emotion-24"
+          class="emotion-25"
         />
       </div>
     </div>

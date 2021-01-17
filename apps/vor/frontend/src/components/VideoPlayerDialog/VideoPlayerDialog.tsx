@@ -46,7 +46,14 @@ const VideoPlayerDialog: FC<VideoPlayerDialogProps> = ({
   }
 
   return (
-    <Dialog sx={{ maxWidth: ["maxWidth.sm", "maxWidth.xl"], width: "auto" }}>
+    <Dialog
+      sx={{
+        maxWidth: ["maxWidth.sm", "maxWidth.xl"],
+        width: "auto",
+        minHeight: 200,
+        minWidth: 200,
+      }}
+    >
       <Flex sx={{ alignItems: "center", display: ["flex", "flex", "none"] }}>
         <Typography.Body p={3} sx={{ fontWeight: "bold" }}>
           {student.data?.name || ""}
