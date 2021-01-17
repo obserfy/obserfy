@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.15.6](https://github.com/obserfy/obserfy/compare/v1.15.5...v1.15.6) (2021-01-17)
+
+
+### Bug Fixes
+
+* **deps:** pin dependencies ([87db59f](https://github.com/obserfy/obserfy/commit/87db59f9687720883c65a116f645e81033d3f586))
+* **deps:** update dependency @tailwindcss/typography to v0.4.0 ([2276295](https://github.com/obserfy/obserfy/commit/2276295f873882172ff6413075c79a783f130824))
+* **deps:** update dependency @types/dompurify to v2.2.1 ([b125df4](https://github.com/obserfy/obserfy/commit/b125df46070576847a8638c386b375c9dd68472c))
+* **deps:** update dependency @types/node to v14.14.21 ([5ee97af](https://github.com/obserfy/obserfy/commit/5ee97afc003b368866f8507540b08e5ebc825b76))
+* **deps:** update dependency auth0-js to v9.14.2 ([4d2e1b7](https://github.com/obserfy/obserfy/commit/4d2e1b7ae1f6f83a81a482df7dfcb6c94a846fab))
+* **deps:** update dependency formidable-serverless to v1.1.1 ([1f84e1f](https://github.com/obserfy/obserfy/commit/1f84e1fa42f06d3b5c21be39cb2636de7355a1d9))
+* **deps:** update dependency idb-keyval to v4 ([540dae8](https://github.com/obserfy/obserfy/commit/540dae86c3d98ccbfe4e9a7b20032b79f9defec8))
+* **deps:** update dependency idb-keyval to v5 ([d0c6b9f](https://github.com/obserfy/obserfy/commit/d0c6b9fb702eca932182dfa9c2a552443f72f421))
+* **deps:** update dependency next-pwa to v5.0.3 ([9abb045](https://github.com/obserfy/obserfy/commit/9abb045acbe849cf4a3da50a1da2361cd0b1fe7a))
+* **deps:** update dependency pino to v6.11.0 ([ccd39a2](https://github.com/obserfy/obserfy/commit/ccd39a28a4207b3cd6f4191488a8e699631053bd))
+* **deps:** update dependency preact to v10.5.9 ([#1467](https://github.com/obserfy/obserfy/issues/1467)) ([bdbe988](https://github.com/obserfy/obserfy/commit/bdbe988d9f554e89529a5aef6a7e7266110a2d08))
+* **deps:** update dependency react to v0.0.4 ([112ffb7](https://github.com/obserfy/obserfy/commit/112ffb75c50b82a7352bdf78d9dcdbd99e0a8224))
+* **deps:** update dependency react-dom to v0.0.4 ([ffc715f](https://github.com/obserfy/obserfy/commit/ffc715fccf29fca6b37748874a4e4c2d2d2a265d))
+* **deps:** update dependency react-query to v3.5.12 ([c5cb894](https://github.com/obserfy/obserfy/commit/c5cb8949e5b74924824340a827be4f93cdcc5fc9))
+* **deps:** update dependency react-query to v3.5.14 ([96ca14a](https://github.com/obserfy/obserfy/commit/96ca14aff8350f0be466f61a7ad6e267cad576ff))
+* **deps:** update dependency react-ssr-prepass to v1.1.3 ([886a1bd](https://github.com/obserfy/obserfy/commit/886a1bd61cd6438534e6c7471a3b72c234dbde71))
+* **deps:** update dependency socket.io-client to v3.1.0 ([7cc41a5](https://github.com/obserfy/obserfy/commit/7cc41a5fe89c704d5ff79edec2902732fb4d793a))
+* **deps:** update gatsby monorepo ([627075d](https://github.com/obserfy/obserfy/commit/627075d5e2bf9ca0785c15a42678ea8cf02b7567))
+* **deps:** update gatsby monorepo ([f81a9ae](https://github.com/obserfy/obserfy/commit/f81a9aedd8165ad94f4268093dd6cedccc9f1a03))
+* **deps:** update lingui monorepo to v3.4.0 ([95f1067](https://github.com/obserfy/obserfy/commit/95f106703e5a024e15985a0a2a73a9d875a9de53))
+* **deps:** update sentry monorepo to v5.30.0 ([b5864b0](https://github.com/obserfy/obserfy/commit/b5864b0195c00be790684932e2f10aa529a4d60e))
+
 ### [1.15.5](https://github.com/obserfy/obserfy/compare/v1.15.4...v1.15.5) (2021-01-10)
 
 
