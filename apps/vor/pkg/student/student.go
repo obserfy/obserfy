@@ -811,9 +811,10 @@ func getStudentVideos(s rest.Server, store Store) http.Handler {
 		response := make(responseBody, 0)
 		for _, v := range videos {
 			response = append(response, video{
-				Id:                   v.Id.String(),
-				PlaybackUrl:          v.PlaybackUrl,
-				ThumbnailUrl:         imgproxy.GenerateUrlFromHttp(v.ThumbnailUrl, 400, 400),
+				Id:           v.Id.String(),
+				PlaybackUrl:  v.PlaybackUrl,
+				ThumbnailUrl: v.ThumbnailUrl + "?height=400&width=400&fit_mode=smartcrop",
+				//ThumbnailUrl:         imgproxy.GenerateUrlFromHttp(v.ThumbnailUrl, 400, 400),
 				OriginalThumbnailUrl: v.ThumbnailUrl,
 				Status:               v.Status,
 				CreatedAt:            v.CreatedAt,
