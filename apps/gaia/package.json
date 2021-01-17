@@ -57,7 +57,7 @@
     "preact-render-to-string": "5.1.12",
     "react": "npm:@preact/compat@0.0.4",
     "react-dom": "npm:@preact/compat@0.0.4",
-    "react-query": "3.5.14",
+    "react-query": "3.5.15",
     "react-query-devtools": "2.6.3",
     "react-refresh": "0.9.0",
     "react-ssr-prepass": "npm:preact-ssr-prepass@1.1.3",
