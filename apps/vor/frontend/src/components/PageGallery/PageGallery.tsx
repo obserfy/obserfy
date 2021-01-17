@@ -187,9 +187,17 @@ const VideosView: FC<{ studentId: string }> = ({ studentId }) => {
           disabled={postCreateUploadLink.isLoading}
           sx={{ width: ["100%", "auto"] }}
         >
-          {postCreateUploadLink.isLoading && <LoadingIndicator />}
-          <Icon as={PlusIcon} mr={2} fill="onPrimary" />
-          <Trans>Upload Video</Trans>
+          {postCreateUploadLink.isLoading ? (
+            <Fragment>
+              <LoadingIndicator mr={2} />
+              <Trans>Uploading</Trans>
+            </Fragment>
+          ) : (
+            <Fragment>
+              <Icon as={PlusIcon} mr={2} fill="onPrimary" />
+              <Trans>Upload Video</Trans>
+            </Fragment>
+          )}
         </Button>
       </Label>
 
@@ -197,6 +205,7 @@ const VideosView: FC<{ studentId: string }> = ({ studentId }) => {
         {videos.data?.map((video) => (
           <VideoItem
             key={video.id}
+            videoId={video.id}
             studentId={studentId}
             thumbnailUrl={video.thumbnailUrl}
             playbackUrl={video.playbackUrl}
@@ -215,12 +224,14 @@ const VideoItem: FC<{
   thumbnailUrl: string
   originalThumbnailUrl: string
   createdAt: string
+  videoId: string
 }> = ({
   createdAt,
   thumbnailUrl,
   studentId,
   playbackUrl,
   originalThumbnailUrl,
+  videoId,
 }) => {
   const videoDialog = useVisibilityState()
 
@@ -265,6 +276,7 @@ const VideoItem: FC<{
           onClose={videoDialog.hide}
           thumbnailUrl={originalThumbnailUrl}
           createdAt={createdAt}
+          videoId={videoId}
         />
       )}
     </Fragment>
