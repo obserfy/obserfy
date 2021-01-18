@@ -1,3 +1,4 @@
+# syntax = docker/dockerfile:1.0-experimental
 FROM node:15
 
 # Setup environment
@@ -18,6 +19,6 @@ RUN yarn workspaces focus gaia
 # Build gaia
 COPY apps/gaia/ apps/gaia
 COPY VERSION VERSION
-RUN yarn workspace gaia build
+RUN --mount=type=secret,id=sentrysecret,dst=/usr/src/apps/gaia/.env yarn workspace gaia build
 
 ENTRYPOINT ["yarn", "workspace", "gaia", "start"]
