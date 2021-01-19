@@ -34,7 +34,7 @@ export const Layout: FC = ({ children }) => {
   return (
     <>
       <Navbar />
-      <Flex pl={[0, 60]}>
+      <Flex pl={[0, 56]}>
         <StudentsSubrouteSidebar />
         <Box
           as="main"

@@ -19,7 +19,7 @@ import Icon from "../Icon/Icon"
 import { Link } from "../Link/Link"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import StudentPicturePlaceholder from "../StudentPicturePlaceholder/StudentPicturePlaceholder"
-import StudentProgressSummaryCard from "../StudentProgressSummaryCard/StudentProgressSummaryCard"
+import AssessmentCard from "./AssessmentCard"
 import TopBar, { breadCrumb } from "../TopBar/TopBar"
 import Typography from "../Typography/Typography"
 import DailyObservationCard from "./DailyObservationCard"
@@ -84,7 +84,7 @@ export const PageStudentOverview: FC<Props> = ({ id }) => {
         </Link>
       </Flex>
 
-      <Flex m={3} my={2} mb={4}>
+      <Flex m={3} my={2} mb={3}>
         <Link sx={{ width: "100%" }} to={NEW_OBSERVATION_URL(id)}>
           <Button sx={{ width: "100%" }}>
             <Icon as={PlusIcon} mr={2} fill="onPrimary" />
@@ -93,9 +93,9 @@ export const PageStudentOverview: FC<Props> = ({ id }) => {
         </Link>
       </Flex>
 
-      <DailyObservationCard key={id} studentId={id} />
+      <DailyObservationCard studentId={id} />
 
-      <StudentProgressSummaryCard studentId={id} mx={[0, 3]} mt={4} />
+      <AssessmentCard studentId={id} />
     </Box>
   )
 }

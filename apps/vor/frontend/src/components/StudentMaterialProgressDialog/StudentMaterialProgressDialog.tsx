@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react"
 import { Box } from "theme-ui"
-import { MaterialProgressStage } from "../../hooks/api/useGetStudentMaterialProgress"
+import { Assessment } from "../../hooks/api/useGetStudentMaterialProgress"
 import dayjs from "../../dayjs"
 import Dialog from "../Dialog/Dialog"
 import DialogHeader from "../DialogHeader/DialogHeader"
@@ -62,39 +62,33 @@ export const StudentMaterialProgressDialog: FC<{
         <Chip
           onClick={() => {
             setSelectedStage(
-              selectedStage === MaterialProgressStage.PRESENTED
-                ? -1
-                : MaterialProgressStage.PRESENTED
+              selectedStage === Assessment.PRESENTED ? -1 : Assessment.PRESENTED
             )
           }}
           text="Presented"
-          isActive={selectedStage === MaterialProgressStage.PRESENTED}
+          isActive={selectedStage === Assessment.PRESENTED}
           mr={2}
           mb={2}
         />
         <Chip
           onClick={() =>
             setSelectedStage(
-              selectedStage === MaterialProgressStage.PRACTICED
-                ? -1
-                : MaterialProgressStage.PRACTICED
+              selectedStage === Assessment.PRACTICED ? -1 : Assessment.PRACTICED
             )
           }
           text="Practiced"
-          isActive={selectedStage === MaterialProgressStage.PRACTICED}
+          isActive={selectedStage === Assessment.PRACTICED}
           mr={2}
           mb={2}
         />
         <Chip
           onClick={() =>
             setSelectedStage(
-              selectedStage === MaterialProgressStage.MASTERED
-                ? -1
-                : MaterialProgressStage.MASTERED
+              selectedStage === Assessment.MASTERED ? -1 : Assessment.MASTERED
             )
           }
           text="Mastered"
-          isActive={selectedStage === MaterialProgressStage.MASTERED}
+          isActive={selectedStage === Assessment.MASTERED}
           mr={2}
           mb={2}
         />

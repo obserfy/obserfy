@@ -120,7 +120,7 @@ exports[`Layout should render correctly 1`] = `
   margin-bottom: 0;
   padding-top: 4px;
   padding-bottom: 4px;
-  width: 60px;
+  width: 56px;
   height: 48px;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
@@ -148,7 +148,7 @@ exports[`Layout should render correctly 1`] = `
 
 @media screen and (min-width: 40em) {
   .emotion-4 {
-    height: 60px;
+    height: 56px;
   }
 }
 
@@ -236,7 +236,7 @@ exports[`Layout should render correctly 1`] = `
 
 @media screen and (min-width: 40em) {
   .emotion-14 {
-    padding-left: 60px;
+    padding-left: 56px;
   }
 }
 

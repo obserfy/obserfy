@@ -177,6 +177,7 @@ msgstr "By"
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:53
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:65
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:334
+#: src/components/VideoPlayerDialog/VideoPlayerDialog.tsx:83
 #: src/components/WarningDialog/WarningDialog.tsx:25
 msgid "Cancel"
 msgstr "Cancel"
@@ -202,6 +203,10 @@ msgstr "Class"
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:66
 msgid "Classes"
 msgstr "Classes"
+
+#: src/components/VideoPlayerDialog/VideoPlayerDialog.tsx:90
+msgid "Confirm Deletion"
+msgstr "Confirm Deletion"
 
 #: src/components/PagePickGuardian/PagePickGuardian.tsx:103
 msgid "Create"
@@ -707,7 +712,7 @@ msgstr "No links attached yet"
 msgid "No materials in progress."
 msgstr "No materials in progress."
 
-#: src/components/StudentPickerDialog/StudentPickerDialog.tsx:41
+#: src/components/StudentPickerDialog/StudentPickerDialog.tsx:42
 msgid "No more students to add"
 msgstr "No more students to add"
 
@@ -1183,14 +1188,18 @@ msgstr "Tuesday"
 msgid "Unlimited students"
 msgstr "Unlimited students"
 
-#: src/components/PageGallery/PageGallery.tsx:79
+#: src/components/PageGallery/PageGallery.tsx:81
 #: src/components/PageStudentImages/PageStudentImages.tsx:67
 msgid "Upload Photo"
 msgstr "Upload Photo"
 
-#: src/components/PageGallery/PageGallery.tsx:141
+#: src/components/PageGallery/PageGallery.tsx:148
 msgid "Upload Video"
 msgstr "Upload Video"
+
+#: src/components/PageGallery/PageGallery.tsx:145
+msgid "Uploading"
+msgstr "Uploading"
 
 #: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:103
 msgid "Use Custom"
