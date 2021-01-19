@@ -10,7 +10,7 @@ const StudentOverview: FC<PageRendererProps> = () => {
   return (
     <>
       <SEO title="Student Overview" />
-      <PageStudentOverview id={studentId} />
+      <PageStudentOverview id={studentId} key={studentId} />
     </>
   )
 }
