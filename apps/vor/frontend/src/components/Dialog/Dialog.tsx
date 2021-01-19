@@ -27,6 +27,7 @@ const bgEnterAnim = keyframes(`
 interface Props extends PropsWithoutRef<BoxProps> {
   visible?: boolean
 }
+
 export const Dialog: FC<Props> = ({ sx, ...props }) => {
   const ref = useRef<HTMLDivElement>(null)
 
@@ -34,7 +35,19 @@ export const Dialog: FC<Props> = ({ sx, ...props }) => {
     if (ref.current) {
       disableBodyScroll(ref.current, {
         reserveScrollBarGap: true,
-        allowTouchMove: (el) => el.tagName === "TEXTAREA",
+        allowTouchMove: (el) => {
+          let currentEl = el
+          if (currentEl.tagName === "TEXTAREA") return true
+          while (currentEl && currentEl !== document.body) {
+            if (currentEl.getAttribute("body-scroll-lock-ignore") !== null) {
+              return true
+            }
+
+            if (currentEl.parentElement == null) return false
+            currentEl = currentEl.parentElement
+          }
+          return false
+        },
       })
     }
     return () => {

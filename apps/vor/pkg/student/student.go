@@ -713,7 +713,10 @@ func getPlans(s rest.Server, store Store) http.Handler {
 
 func postNewImage(s rest.Server, store Store) http.Handler {
 	type responseBody struct {
-		Id string `json:"id"`
+		Id           string    `json:"id"`
+		OriginalUrl  string    `json:"originalUrl"`
+		ThumbnailUrl string    `json:"thumbnailUrl"`
+		CreatedAt    time.Time `json:"createdAt"`
 	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		studentId := chi.URLParam(r, "studentId")
@@ -735,7 +738,7 @@ func postNewImage(s rest.Server, store Store) http.Handler {
 			}
 		}
 
-		id, err := store.CreateImage(studentId, file, fileHeader)
+		image, err := store.CreateImage(studentId, file, fileHeader)
 		if err != nil {
 			return &rest.Error{
 				Code:    http.StatusInternalServerError,
@@ -743,8 +746,16 @@ func postNewImage(s rest.Server, store Store) http.Handler {
 				Error:   err,
 			}
 		}
+
+		body := &responseBody{
+			Id:           image.Id.String(),
+			OriginalUrl:  imgproxy.GenerateOriginalUrlFromS3(image.ObjectKey),
+			ThumbnailUrl: imgproxy.GenerateUrlFromS3(image.ObjectKey, 400, 400),
+			CreatedAt:    time.Time{},
+		}
+
 		w.WriteHeader(http.StatusCreated)
-		if err := rest.WriteJson(w, &responseBody{id}); err != nil {
+		if err := rest.WriteJson(w, &body); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
 		return nil
