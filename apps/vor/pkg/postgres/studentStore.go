@@ -271,18 +271,19 @@ func (s StudentStore) GetLessonPlans(studentId string, date time.Time) ([]Lesson
 	return lessonPlan, nil
 }
 
-func (s StudentStore) CreateImage(studentId string, image multipart.File, header *multipart.FileHeader) (string, error) {
+func (s StudentStore) CreateImage(studentId string, image multipart.File, header *multipart.FileHeader) (domain.Image, error) {
 	queriedStudent := Student{Id: studentId}
 	if err := s.Model(&queriedStudent).
 		WherePK().
 		Select(); err != nil {
-		return "", richErrors.Wrap(err, "failed to query student")
+		return domain.Image{}, richErrors.Wrap(err, "failed to query student")
 	}
 
 	// db data
 	newImage := Image{
-		Id:       uuid.New(),
-		SchoolId: queriedStudent.SchoolId,
+		Id:        uuid.New(),
+		SchoolId:  queriedStudent.SchoolId,
+		CreatedAt: time.Now(),
 	}
 	studentImageRelation := ImageToStudents{
 		StudentId: queriedStudent.Id,
@@ -292,7 +293,7 @@ func (s StudentStore) CreateImage(studentId string, image multipart.File, header
 	// save image to s3
 	objectKey, err := s.ImageStorage.Save(queriedStudent.SchoolId, newImage.Id.String(), image, header.Size)
 	if err != nil {
-		return "", richErrors.Wrap(err, "failed to save file to s3")
+		return domain.Image{}, richErrors.Wrap(err, "failed to save file to s3")
 	}
 	newImage.ObjectKey = objectKey
 
@@ -306,9 +307,13 @@ func (s StudentStore) CreateImage(studentId string, image multipart.File, header
 		}
 		return nil
 	}); err != nil {
-		return "", err
+		return domain.Image{}, err
 	}
-	return newImage.Id.String(), nil
+	return domain.Image{
+		Id:        newImage.Id,
+		ObjectKey: newImage.ObjectKey,
+		CreatedAt: newImage.CreatedAt,
+	}, nil
 }
 
 func (s StudentStore) FindStudentImages(id string) ([]Image, error) {
