@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.15.9](https://github.com/obserfy/obserfy/compare/v1.15.8...v1.15.9) (2021-01-19)
+
+
+### Bug Fixes
+
+* observation date index does not reset when switching student. ([b2452aa](https://github.com/obserfy/obserfy/commit/b2452aac4f02003e1975b0c6cd15a0f7d0218ada))
+
 ### [1.15.8](https://github.com/obserfy/obserfy/compare/v1.15.7...v1.15.8) (2021-01-19)
 
 
