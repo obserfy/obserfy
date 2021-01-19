@@ -1,6 +1,8 @@
+/** @jsx jsx */
 import { t, Trans } from "@lingui/macro"
-import React, { FC, useState } from "react"
-import { Box, Button, Card, Flex, useColorMode } from "theme-ui"
+import { FC, useState } from "react"
+import { Box, Button, Card, Flex, useColorMode, jsx } from "theme-ui"
+import { borderTop } from "../../border"
 import dayjs from "../../dayjs"
 import { useGetSchool } from "../../hooks/api/schools/useGetSchool"
 import { useGetUserProfile } from "../../hooks/api/useGetUserProfile"
@@ -8,9 +10,13 @@ import { ReactComponent as CheckmarkIcon } from "../../icons/checkmark-outline.s
 import { ReactComponent as CancelIcon } from "../../icons/close.svg"
 import { ReactComponent as CreditCardIcon } from "../../icons/credit-card.svg"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
-import { ADMIN_SUBSCRIPTION_SUCCESS_URL, ADMIN_URL } from "../../routes"
+import {
+  ADMIN_SUBSCRIPTION_SUCCESS_URL,
+  ADMIN_URL,
+  ADMIN_USERS_URL,
+} from "../../routes"
 import Icon from "../Icon/Icon"
-import { navigate } from "../Link/Link"
+import { Link, navigate } from "../Link/Link"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import TopBar, { breadCrumb } from "../TopBar/TopBar"
@@ -133,7 +139,7 @@ export const PageSubscription: FC = () => {
             $4
           </Typography.H3>
           <Typography.Body ml={2} color="textMediumEmphasis">
-            <Trans>User/month</Trans>
+            <Trans>User / Month</Trans>
           </Typography.Body>
         </Flex>
 
@@ -153,6 +159,32 @@ export const PageSubscription: FC = () => {
           <Feature text={t`Track curriculum progress`} />
           <Feature text={t`Parent dashboard`} />
           <Feature text={t`Image gallery`} />
+          <Feature text={t`Video gallery`} />
+        </Box>
+
+        <Box mt={3} mb={3} sx={{ ...borderTop }} pt={3}>
+          <Flex>
+            <Typography.Body>Your currently have</Typography.Body>
+            <Link
+              to={ADMIN_USERS_URL}
+              sx={{ fontSize: 1, textDecoration: "underline", ml: "auto" }}
+            >
+              <Trans>Manage users</Trans>
+            </Link>
+          </Flex>
+          <Typography.Body sx={{ opacity: school.data ? 1 : 0.5 }}>
+            {school.data?.users.length ?? "... "} User(s)
+          </Typography.Body>
+        </Box>
+
+        <Box>
+          <Typography.Body sx={{ fontWeight: "bold" }}>Total</Typography.Body>
+          <Typography.Body
+            ml="auto"
+            sx={{ fontWeight: "bold", opacity: school.data ? 1 : 0.5 }}
+          >
+            {school.data ? school.data?.users.length * 4 : "... "}$ / month
+          </Typography.Body>
         </Box>
 
         <Button
@@ -196,7 +228,7 @@ export const PageSubscription: FC = () => {
           ) : loading || user.isLoading ? (
             <LoadingIndicator color="onPrimary" />
           ) : (
-            <Trans>Subscribe</Trans>
+            <Trans>Subscribe Now</Trans>
           )}
         </Button>
       </Card>
