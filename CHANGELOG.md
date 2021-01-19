@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.15.8](https://github.com/obserfy/obserfy/compare/v1.15.7...v1.15.8) (2021-01-19)
+
+
+### Bug Fixes
+
+* can't scroll student list when selecting related student on lesson plans ([2b0ed65](https://github.com/obserfy/obserfy/commit/2b0ed65aa88aa4f31c745516ff11b419460234c6)), closes [#1658](https://github.com/obserfy/obserfy/issues/1658)
+* guardian editabletext dialog doesn't get updated after successful edit ([bc0f96c](https://github.com/obserfy/obserfy/commit/bc0f96c602546fb125d48ea7bc9a9ef00b5ed61b)), closes [#1657](https://github.com/obserfy/obserfy/issues/1657)
+* make photo upload ux more reliable. ([01390fc](https://github.com/obserfy/obserfy/commit/01390fc5abfe3e4e4450c818fce8dc36a6a44d06)), closes [#1676](https://github.com/obserfy/obserfy/issues/1676)
+* **deps:** update sentry monorepo to v6 ([46966f9](https://github.com/obserfy/obserfy/commit/46966f9ae8c2081070ae9f3eaad78a349291a3f7))
+
 ### [1.15.7](https://github.com/obserfy/obserfy/compare/v1.15.6...v1.15.7) (2021-01-18)
 
 ### [1.15.6](https://github.com/obserfy/obserfy/compare/v1.15.5...v1.15.6) (2021-01-17)
