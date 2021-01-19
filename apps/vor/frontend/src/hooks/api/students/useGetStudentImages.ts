@@ -1,4 +1,5 @@
 import { useQuery } from "react-query"
+import { useQueryCache } from "../../useQueryCache"
 import { getApi } from "../fetchApi"
 
 export interface StudentImage {
@@ -15,3 +16,7 @@ const useGetStudentImages = (studentId: string) => {
 }
 
 export default useGetStudentImages
+
+export const useGetStudentImagesCache = (studentId: string) => {
+  return useQueryCache<StudentImage[]>(["student", studentId, "images"])
+}
