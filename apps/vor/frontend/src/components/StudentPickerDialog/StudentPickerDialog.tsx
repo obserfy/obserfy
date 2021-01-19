@@ -58,45 +58,47 @@ const StudentPickerDialog: FC<StudentPickerDialogProps> = ({
         }}
         disableAccept={result.length === 0}
       />
-      <Box
-        pt={3}
-        sx={{
-          maxHeight: 300,
-          overflowY: "auto",
-          WebkitOverflowScrolling: "touch",
-        }}
-      >
-        <Input
-          mx={3}
-          mb={3}
-          sx={{ backgroundColor: "background", width: "100%" }}
-          placeholder="Search student"
-          value={search}
-          onChange={setSearch}
-        />
-        {unselectedStudents.length === 0 && (
-          <Typography.Body py={4} sx={{ width: "100%", textAlign: "center" }}>
-            <Trans>No more students to add</Trans>
-          </Typography.Body>
-        )}
-        {matched.map((student) => {
-          const selected = result.find(({ id }) => id === student.id)
+      <div body-scroll-lock-ignore>
+        <Box
+          pt={3}
+          sx={{
+            maxHeight: 300,
+            overflowY: "auto",
+            WebkitOverflowScrolling: "touch",
+          }}
+        >
+          <Input
+            mx={3}
+            mb={3}
+            sx={{ backgroundColor: "background", width: "100%" }}
+            placeholder="Search student"
+            value={search}
+            onChange={setSearch}
+          />
+          {unselectedStudents.length === 0 && (
+            <Typography.Body py={4} sx={{ width: "100%", textAlign: "center" }}>
+              <Trans>No more students to add</Trans>
+            </Typography.Body>
+          )}
+          {matched.map((student) => {
+            const selected = result.find(({ id }) => id === student.id)
 
-          const toggleStudent = () => {
-            if (!selected) addStudent(student)
-            else removeStudent(student.id)
-          }
+            const toggleStudent = () => {
+              if (!selected) addStudent(student)
+              else removeStudent(student.id)
+            }
 
-          return (
-            <StudentItem
-              key={student.id}
-              isSelected={selected !== undefined}
-              name={student.name}
-              onClick={toggleStudent}
-            />
-          )
-        })}
-      </Box>
+            return (
+              <StudentItem
+                key={student.id}
+                isSelected={selected !== undefined}
+                name={student.name}
+                onClick={toggleStudent}
+              />
+            )
+          })}
+        </Box>
+      </div>
     </Dialog>
   )
 }
