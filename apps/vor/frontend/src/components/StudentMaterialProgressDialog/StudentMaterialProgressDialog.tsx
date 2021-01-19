@@ -62,9 +62,7 @@ export const StudentMaterialProgressDialog: FC<{
         <Chip
           onClick={() => {
             setSelectedStage(
-              selectedStage === Assessment.PRESENTED
-                ? -1
-                : Assessment.PRESENTED
+              selectedStage === Assessment.PRESENTED ? -1 : Assessment.PRESENTED
             )
           }}
           text="Presented"
@@ -75,9 +73,7 @@ export const StudentMaterialProgressDialog: FC<{
         <Chip
           onClick={() =>
             setSelectedStage(
-              selectedStage === Assessment.PRACTICED
-                ? -1
-                : Assessment.PRACTICED
+              selectedStage === Assessment.PRACTICED ? -1 : Assessment.PRACTICED
             )
           }
           text="Practiced"
@@ -88,9 +84,7 @@ export const StudentMaterialProgressDialog: FC<{
         <Chip
           onClick={() =>
             setSelectedStage(
-              selectedStage === Assessment.MASTERED
-                ? -1
-                : Assessment.MASTERED
+              selectedStage === Assessment.MASTERED ? -1 : Assessment.MASTERED
             )
           }
           text="Mastered"
