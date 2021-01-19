@@ -25,7 +25,7 @@ type Store interface {
 	NewClassRelation(studentId string, classId string) error
 	DeleteClassRelation(studentId string, classId string) error
 	GetLessonPlans(studentId string, date time.Time) ([]postgres.LessonPlan, error)
-	CreateImage(studentId string, file multipart.File, header *multipart.FileHeader) (string, error)
+	CreateImage(studentId string, file multipart.File, header *multipart.FileHeader) (domain.Image, error)
 	FindStudentImages(id string) ([]postgres.Image, error)
 	FindStudentVideos(studentId string) ([]domain.Video, error)
 }

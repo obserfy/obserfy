@@ -1,23 +1,30 @@
-import { useMutation, useQueryClient } from "react-query"
+import { useMutation } from "react-query"
 import { BASE_URL } from "../useApi"
+import { useGetStudentImagesCache } from "./useGetStudentImages"
 
 const usePostNewStudentImage = (studentId: string) => {
-  const queryClient = useQueryClient()
+  const cache = useGetStudentImagesCache(studentId)
+
   const postNewImage = async (image: File) => {
-    const payload = new FormData()
-    payload.append("image", image)
+    const body = new FormData()
+    body.append("image", image)
 
     return fetch(`${BASE_URL}/students/${studentId}/images`, {
       credentials: "same-origin",
       method: "POST",
-      body: payload,
+      body,
     })
   }
 
   return useMutation(postNewImage, {
-    onSuccess: async () => {
+    onSuccess: async (response) => {
       analytics.track("Student Image Uploaded")
-      await queryClient.invalidateQueries(["student", studentId, "images"])
+
+      const responseBody = await response.json()
+
+      const images = cache.getData() ?? []
+      images.push(responseBody)
+      cache.setData(images)
     },
   })
 }

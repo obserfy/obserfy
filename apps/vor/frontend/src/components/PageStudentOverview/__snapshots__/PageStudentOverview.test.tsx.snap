@@ -85,6 +85,90 @@ exports[`PageStudentOverview should render correctly 1`] = `
   }
 }
 
+@keyframes animation-0 {
+  0% {
+    background-color: rgba(165, 165, 165, 0.05);
+  }
+
+  50% {
+    background-color: rgba(165, 165, 165, 0.2);
+  }
+
+  100% {
+    background-color: rgba(165, 165, 165, 0.05);
+  }
+}
+
+@keyframes animation-0 {
+  0% {
+    background-color: rgba(165, 165, 165, 0.05);
+  }
+
+  50% {
+    background-color: rgba(165, 165, 165, 0.2);
+  }
+
+  100% {
+    background-color: rgba(165, 165, 165, 0.05);
+  }
+}
+
+@keyframes animation-0 {
+  0% {
+    background-color: rgba(165, 165, 165, 0.05);
+  }
+
+  50% {
+    background-color: rgba(165, 165, 165, 0.2);
+  }
+
+  100% {
+    background-color: rgba(165, 165, 165, 0.05);
+  }
+}
+
+@keyframes animation-0 {
+  0% {
+    background-color: rgba(165, 165, 165, 0.05);
+  }
+
+  50% {
+    background-color: rgba(165, 165, 165, 0.2);
+  }
+
+  100% {
+    background-color: rgba(165, 165, 165, 0.05);
+  }
+}
+
+@keyframes animation-0 {
+  0% {
+    background-color: rgba(165, 165, 165, 0.05);
+  }
+
+  50% {
+    background-color: rgba(165, 165, 165, 0.2);
+  }
+
+  100% {
+    background-color: rgba(165, 165, 165, 0.05);
+  }
+}
+
+@keyframes animation-0 {
+  0% {
+    background-color: rgba(165, 165, 165, 0.05);
+  }
+
+  50% {
+    background-color: rgba(165, 165, 165, 0.2);
+  }
+
+  100% {
+    background-color: rgba(165, 165, 165, 0.05);
+  }
+}
+
 .emotion-0 {
   box-sizing: border-box;
   margin: 0;
@@ -464,7 +548,7 @@ exports[`PageStudentOverview should render correctly 1`] = `
   min-width: 0;
   margin: 16px;
   margin-top: 8px;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -677,24 +761,164 @@ exports[`PageStudentOverview should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  background-color: var(--theme-ui-colors-surface, #fff);
+  border-radius: 0;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px,rgba(0, 0, 0, 0.27) 0px 2px 4px -2px;
+  margin-left: 0;
+  margin-right: 0;
   margin-top: 16px;
+}
+
+@media screen and (min-width: 40em) {
+  .emotion-37 {
+    border-radius: 6px;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
 }
 
 .emotion-38 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  border-radius: 0;
-  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
-  animation: 1s ease-in-out 0s infinite animation-0;
-  height: 17rem;
-  width: 100%;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: bold;
+  line-height: heading;
+  color: var(--theme-ui-colors-text, #37383c);
+  text-rendering: optimizeLegibility;
+  font-size: 20px;
+  padding: 16px;
 }
 
-@media screen and (min-width: 40em) {
-  .emotion-38 {
-    border-radius: 6px;
-  }
+.emotion-39 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 16px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-40 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-right: 8px;
+  border-radius: 6px;
+  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
+  animation: 1s ease-in-out 0s infinite animation-0;
+  height: 1.5rem;
+  width: 4rem;
+}
+
+.emotion-44 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding: 16px;
+}
+
+.emotion-45 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-bottom: 16px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-46 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-right: 8px;
+  border-radius: 6px;
+  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
+  animation: 1s ease-in-out 0s infinite animation-0;
+  height: 1.5rem;
+  width: 10rem;
+}
+
+.emotion-47 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-left: auto;
+  margin-right: 8px;
+  border-radius: 6px;
+  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
+  animation: 1s ease-in-out 0s infinite animation-0;
+  height: 1.5rem;
+  width: 8rem;
+}
+
+.emotion-49 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-right: 8px;
+  border-radius: 6px;
+  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
+  animation: 1s ease-in-out 0s infinite animation-0;
+  height: 1.5rem;
+  width: 8rem;
+}
+
+.emotion-50 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-left: auto;
+  margin-right: 8px;
+  border-radius: 6px;
+  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
+  animation: 1s ease-in-out 0s infinite animation-0;
+  height: 1.5rem;
+  width: 6rem;
+}
+
+.emotion-51 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-52 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-right: 8px;
+  border-radius: 6px;
+  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
+  animation: 1s ease-in-out 0s infinite animation-0;
+  height: 1.5rem;
+  width: 14rem;
+}
+
+.emotion-53 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-left: auto;
+  margin-right: 8px;
+  border-radius: 6px;
+  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
+  animation: 1s ease-in-out 0s infinite animation-0;
+  height: 1.5rem;
+  width: 5rem;
 }
 
 <div>
@@ -858,9 +1082,61 @@ exports[`PageStudentOverview should render correctly 1`] = `
       <div
         class="emotion-37"
       >
-        <div
+        <h6
           class="emotion-38"
-        />
+        >
+          Curriculum Progress
+        </h6>
+        <div
+          class="emotion-39"
+        >
+          <div
+            class="emotion-40"
+          />
+          <div
+            class="emotion-40"
+          />
+          <div
+            class="emotion-40"
+          />
+          <div
+            class="emotion-40"
+          />
+        </div>
+        <div
+          class="emotion-44"
+        >
+          <div
+            class="emotion-45"
+          >
+            <div
+              class="emotion-46"
+            />
+            <div
+              class="emotion-47"
+            />
+          </div>
+          <div
+            class="emotion-45"
+          >
+            <div
+              class="emotion-49"
+            />
+            <div
+              class="emotion-50"
+            />
+          </div>
+          <div
+            class="emotion-51"
+          >
+            <div
+              class="emotion-52"
+            />
+            <div
+              class="emotion-53"
+            />
+          </div>
+        </div>
       </div>
     </div>
   </div>

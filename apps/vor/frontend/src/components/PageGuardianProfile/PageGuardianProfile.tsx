@@ -145,14 +145,16 @@ const EditableTextAttribute: FC<{
         <Dialog>
           <DialogHeader
             title={t`Edit Name`}
-            onCancel={dialog.hide}
+            onCancel={() => {
+              setValue(currentValue)
+              dialog.hide()
+            }}
             loading={isLoading}
             onAccept={async () => {
               setIsLoading(true)
               const ok = await onSubmit(value)
               if (ok) {
                 dialog.hide()
-                setValue(currentValue)
               }
               setIsLoading(false)
             }}
