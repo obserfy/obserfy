@@ -4,7 +4,7 @@ import { navigate } from "../../components/Link/Link"
 import { useQueryCache } from "../useQueryCache"
 import { BASE_URL } from "./useApi"
 
-export enum MaterialProgressStage {
+export enum Assessment {
   PRESENTED,
   PRACTICED,
   MASTERED,
@@ -13,7 +13,7 @@ export interface MaterialProgress {
   areaId: string
   materialName: string
   materialId: string
-  stage: MaterialProgressStage
+  stage: Assessment
   updatedAt: string
 }
 
@@ -41,16 +41,16 @@ export const useGetStudentMaterialProgressCache = (studentId: string) => {
   return useQueryCache<MaterialProgress[]>(KEY(studentId))
 }
 
-export function materialStageToString(stage?: MaterialProgressStage) {
+export function materialStageToString(stage?: Assessment) {
   let status
   switch (stage) {
-    case MaterialProgressStage.MASTERED:
+    case Assessment.MASTERED:
       status = t`Mastered`
       break
-    case MaterialProgressStage.PRACTICED:
+    case Assessment.PRACTICED:
       status = t`Practiced`
       break
-    case MaterialProgressStage.PRESENTED:
+    case Assessment.PRESENTED:
       status = t`Presented`
       break
     default:
