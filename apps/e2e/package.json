@@ -38,7 +38,7 @@
     "@cypress/webpack-preprocessor": "5.5.0",
     "@hapi/iron": "6.0.0",
     "@types/auth0-js": "9.14.2",
-    "@types/pg": "7.14.8",
+    "@types/pg": "7.14.9",
     "auth0-js": "9.14.2",
     "dotenv": "8.2.0",
     "faker": "5.1.0",
