@@ -9,22 +9,25 @@ const usePostNewStudentImage = (studentId: string) => {
     const body = new FormData()
     body.append("image", image)
 
-    return fetch(`${BASE_URL}/students/${studentId}/images`, {
+    const result = await fetch(`${BASE_URL}/students/${studentId}/images`, {
       credentials: "same-origin",
       method: "POST",
       body,
     })
+
+    const json = await result.json()
+    return json
   }
 
   return useMutation(postNewImage, {
     onSuccess: async (response) => {
       analytics.track("Student Image Uploaded")
 
-      const responseBody = await response.json()
-
       const images = cache.getData() ?? []
-      images.push(responseBody)
+      images.push(response)
       cache.setData(images)
+
+      await cache.refetchQueries()
     },
   })
 }

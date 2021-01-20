@@ -7,5 +7,6 @@ export const useQueryCache = <T>(key: QueryKey) => {
     getData: () => client.getQueryData<T>(key),
     setData: (data: T) => client.setQueryData(key, data),
     invalidate: () => client.invalidateQueries(key),
+    refetchQueries: () => client.refetchQueries(key),
   }
 }

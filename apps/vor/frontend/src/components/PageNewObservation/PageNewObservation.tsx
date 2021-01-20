@@ -251,8 +251,9 @@ const UploadImageButton: FC<{
           if (!selectedImage) return
 
           try {
-            const result = await postNewStudentImage.mutateAsync(selectedImage)
-            const response = await result.json()
+            const response = await postNewStudentImage.mutateAsync(
+              selectedImage
+            )
             onUploaded({ id: response.id, file: selectedImage })
           } catch (e) {
             Sentry.captureException(e)
