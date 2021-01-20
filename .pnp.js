@@ -7057,7 +7057,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "node-mocks-http",
-        "npm:1.10.0"
+        "npm:1.10.1"
       ],
       [
         "node-modules-regexp",
@@ -40036,7 +40036,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["next", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:10.0.5"],
             ["next-compose-plugins", "npm:2.2.1"],
             ["next-pwa", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:5.0.3"],
-            ["node-mocks-http", "npm:1.10.0"],
+            ["node-mocks-http", "npm:1.10.1"],
             ["pg", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:8.5.1"],
             ["pino", "npm:6.11.0"],
             ["pino-pretty", "npm:4.3.0"],
@@ -49738,10 +49738,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["node-mocks-http", [
-        ["npm:1.10.0", {
-          "packageLocation": "./.yarn/cache/node-mocks-http-npm-1.10.0-4a2e5e669d-63b977fe7c.zip/node_modules/node-mocks-http/",
+        ["npm:1.10.1", {
+          "packageLocation": "./.yarn/cache/node-mocks-http-npm-1.10.1-bf742b32ef-50f3f26e76.zip/node_modules/node-mocks-http/",
           "packageDependencies": [
-            ["node-mocks-http", "npm:1.10.0"],
+            ["node-mocks-http", "npm:1.10.1"],
             ["accepts", "npm:1.3.7"],
             ["depd", "npm:1.1.2"],
             ["fresh", "npm:0.5.2"],
