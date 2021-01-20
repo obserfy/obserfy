@@ -26,8 +26,8 @@
     "@types/minio": "7.0.7",
     "@types/mixpanel-browser": "2.35.4",
     "@types/nanoid": "2.1.0",
-    "@types/node": "14.14.21",
-    "@types/pg": "7.14.8",
+    "@types/node": "14.14.22",
+    "@types/pg": "7.14.9",
     "@types/pino": "6.3.5",
     "@types/react": "17.0.0",
     "@types/react-query": "1.1.2",
@@ -83,7 +83,7 @@
     "jest": "26.6.3",
     "node-mocks-http": "1.10.0",
     "prettier": "2.2.1",
-    "stylelint": "13.8.0",
+    "stylelint": "13.9.0",
     "stylelint-config-prettier": "8.0.2",
     "stylelint-config-standard": "20.0.0"
   }
