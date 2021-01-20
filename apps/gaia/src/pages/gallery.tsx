@@ -22,7 +22,7 @@ const GalleryPage = () => {
         <title>Gallery | Obserfy for Parents</title>
       </Head>
       <div className="max-w-3xl mx-auto">
-        <div className="flex mx-auto flex-wrap w-full">
+        <div className="flex mx-auto flex-wrap w-full px-1">
           {childImages.isSuccess && childImages.data?.length === 0 ? (
             <div className="flex flex-col mx-auto items-center pb-8">
               <EmptyGalleryIllustration loading={childImages.isLoading} />
@@ -84,7 +84,7 @@ const GalleryPage = () => {
           {childImages.data?.map((img) => (
             <button
               key={img.id}
-              className="w-1/3 md:w-1/5 relative cursor-pointer"
+              className="w-1/3 md:w-1/5 relative cursor-pointer p-1 md:p-2 md:pb-1 pb-0"
               onClick={() => setImagePreview(img)}
             >
               {img.isUploading ? (
@@ -110,7 +110,8 @@ const GalleryPage = () => {
                 <Image
                   src={img.originalImageUrl}
                   alt="children activity"
-                  className="absolute w-full h-full object-cover border border-white"
+                  className="absolute w-full h-full object-cover bg-white"
+                  objectFit="fill"
                   height={250}
                   width={250}
                   loading="lazy"
@@ -131,28 +132,26 @@ const GalleryPage = () => {
   )
 }
 
-const EmptyGalleryIllustration: FC<{ loading: boolean }> = ({ loading }) => {
-  return (
-    <div
-      className={`flex flex-col items-center pt-16 pb-8 ${
-        loading && "opacity-50"
-      } transition-opacity duration-200 max-w-3xl mx-auto`}
+const EmptyGalleryIllustration: FC<{ loading: boolean }> = ({ loading }) => (
+  <div
+    className={`flex flex-col items-center pt-16 pb-8 ${
+      loading && "opacity-50"
+    } transition-opacity duration-200 max-w-3xl mx-auto`}
+  >
+    <Image
+      src="/images/no-images-illustration.svg"
+      className="w-64 md:w-1/2 mb-3"
+      height={200}
+      width={200}
+    />
+    <h6
+      className={`text-xl mx-4 text-center ${
+        loading && "opacity-0"
+      } transition-opacity duration-200 font-bold`}
     >
-      <Image
-        src="/images/no-images-illustration.svg"
-        className="w-64 md:w-1/2 mb-3"
-        height={200}
-        width={200}
-      />
-      <h6
-        className={`text-xl mx-4 text-center ${
-          loading && "opacity-0"
-        } transition-opacity duration-200 font-bold`}
-      >
-        No images yet
-      </h6>
-    </div>
-  )
-}
+      No images yet
+    </h6>
+  </div>
+)
 
 export default GalleryPage
