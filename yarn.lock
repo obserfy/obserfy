@@ -15008,10 +15008,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dayjs@npm:1.10.3":
-  version: 1.10.3
-  resolution: "dayjs@npm:1.10.3"
-  checksum: df7d13e99a2932c12efb3fc9c36e537ee6722ed1763fb2b74559bf9a864828b3d3eac6d3ae59f0c1dbef8dae52444059d8c8bc540c7edb13d665fcd2b08028e6
+"dayjs@npm:1.10.4":
+  version: 1.10.4
+  resolution: "dayjs@npm:1.10.4"
+  checksum: 3b7bb2232fff808209870bc72d4b2000941a1aa45f0226e2907f9dd1dda306d4b3a1eb9058450fd2c324b01a007a37809ac6f9b525806a86902c55e2934cd5d5
   languageName: node
   linkType: hard
 
@@ -19049,7 +19049,7 @@ fsevents@^1.2.7:
     "@typescript-eslint/parser": 4.11.1
     "@zeit/next-source-maps": 0.0.4-canary.1
     body-scroll-lock: 3.1.5
-    dayjs: 1.10.3
+    dayjs: 1.10.4
     dompurify: 2.2.6
     dotenv: 8.2.0
     eslint: 7.16.0
@@ -37346,7 +37346,7 @@ typescript@^4.0.0:
     chromatic: 5.6.0
     core-js: 3.8.3
     cross-env: 7.0.3
-    dayjs: 1.10.3
+    dayjs: 1.10.4
     dompurify: 2.2.6
     dotenv: 8.2.0
     eslint: 7.16.0
