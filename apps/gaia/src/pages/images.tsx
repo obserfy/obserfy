@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react"
+import React, { ChangeEventHandler, FC, useState } from "react"
 import Head from "next/head"
 import { v4 as uuidv4 } from "uuid"
 import Image from "next/image"
@@ -14,7 +14,16 @@ const GalleryPage = () => {
   const childImages = useGetChildImages(childId)
   const child = useGetChild(childId)
   const postImage = usePostImage(childId, child.data?.schoolId ?? "")
-  const [imagePreview, setImagePreview] = useState<ChildImage>()
+
+  const handleImageUpload: ChangeEventHandler<HTMLInputElement> = async (e) => {
+    if (!e.target.files?.length) {
+      return
+    }
+    await postImage.mutate({
+      id: uuidv4(),
+      file: e.target.files[0],
+    })
+  }
 
   return (
     <>
@@ -37,15 +46,7 @@ const GalleryPage = () => {
                   type="file"
                   accept="image/*"
                   className="hidden"
-                  onChange={async (e) => {
-                    if (!e.target.files?.length) {
-                      return
-                    }
-                    await postImage.mutate({
-                      id: uuidv4(),
-                      file: e.target.files[0],
-                    })
-                  }}
+                  onChange={handleImageUpload}
                 />
               </label>
             </div>
@@ -66,15 +67,7 @@ const GalleryPage = () => {
                       type="file"
                       accept="image/*"
                       className="hidden"
-                      onChange={async (e) => {
-                        if (!e.target.files?.length) {
-                          return
-                        }
-                        await postImage.mutate({
-                          id: uuidv4(),
-                          file: e.target.files[0],
-                        })
-                      }}
+                      onChange={handleImageUpload}
                     />
                   </label>
                 </div>
@@ -82,50 +75,55 @@ const GalleryPage = () => {
             </div>
           )}
           {childImages.data?.map((img) => (
-            <button
-              key={img.id}
-              className="w-1/3 md:w-1/5 relative cursor-pointer p-1 md:p-2 md:pb-1 pb-0"
-              onClick={() => setImagePreview(img)}
-            >
-              {img.isUploading ? (
-                <div style={{ width: "100%", paddingBottom: "100%" }}>
-                  <p
-                    className="
-                      font-bold
-                      left-0 right-0 top-0 bottom-0
-                      absolute
-                      flex items-center justify-center
-                      z-10
-                    "
-                  >
-                    Uploading
-                  </p>
-                  <img
-                    src={img.imageUrl}
-                    alt="children activity"
-                    className="absolute w-full h-full object-cover opacity-25"
-                  />
-                </div>
-              ) : (
-                <div className="w-full" style={{ paddingTop: "100%" }}>
-                  <Image
-                    src={img.originalImageUrl}
-                    alt="children activity"
-                    className="absolute w-full h-full object-cover bg-white m-1 md:m-2"
-                    loading="lazy"
-                    layout="fill"
-                  />
-                </div>
-              )}
-            </button>
+            <ImageItems key={img.id} img={img} childId={childId} />
           ))}
         </div>
       </div>
-      {imagePreview && (
+    </>
+  )
+}
+
+const ImageItems: FC<{ childId: string; img: ChildImage }> = ({
+  img,
+  childId,
+}) => {
+  const [showPreview, setShowPreview] = useState(false)
+
+  return (
+    <>
+      <button
+        className="w-1/3 md:w-1/5 relative cursor-pointer p-1 md:p-2 md:pb-1 pb-0"
+        onClick={() => setShowPreview(true)}
+      >
+        {img.isUploading ? (
+          <div style={{ width: "100%", paddingBottom: "100%" }}>
+            <p className=" font-bold left-0 right-0 top-0 bottom-0 absolute flex items-center justify-center z-10 ">
+              Uploading
+            </p>
+            <img
+              src={img.imageUrl}
+              alt="children activity"
+              className="absolute w-full h-full object-cover opacity-25"
+            />
+          </div>
+        ) : (
+          <div className="w-full" style={{ paddingTop: "100%" }}>
+            <Image
+              src={img.originalImageUrl}
+              alt="children activity"
+              className="absolute w-full h-full object-cover bg-white m-1 md:m-2"
+              loading="lazy"
+              layout="fill"
+            />
+          </div>
+        )}
+      </button>
+
+      {showPreview && (
         <ImagePreview
           childId={childId}
-          img={imagePreview}
-          onDismiss={() => setImagePreview(undefined)}
+          img={img}
+          onDismiss={() => setShowPreview(false)}
         />
       )}
     </>
