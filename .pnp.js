@@ -6897,7 +6897,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "monocle-ts",
-        "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.3.4"
+        "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.3.5"
       ],
       [
         "move-concurrently",
@@ -40038,7 +40038,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["io-ts-types", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.5.12"],
             ["jest", "npm:26.6.3"],
             ["minio", "npm:7.0.18"],
-            ["monocle-ts", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.3.4"],
+            ["monocle-ts", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.3.5"],
             ["nanoid", "npm:3.1.20"],
             ["newtype-ts", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.3.4"],
             ["next", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:10.0.5"],
@@ -44577,7 +44577,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/newtype-ts", null],
             ["fp-ts", "npm:2.9.3"],
             ["io-ts", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.2.13"],
-            ["monocle-ts", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.3.4"],
+            ["monocle-ts", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.3.5"],
             ["newtype-ts", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.3.4"]
           ],
           "packagePeers": [
@@ -49064,17 +49064,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["monocle-ts", [
-        ["npm:2.3.4", {
-          "packageLocation": "./.yarn/cache/monocle-ts-npm-2.3.4-2debc42357-64b3250a49.zip/node_modules/monocle-ts/",
+        ["npm:2.3.5", {
+          "packageLocation": "./.yarn/cache/monocle-ts-npm-2.3.5-4204264e34-b2ee0a27de.zip/node_modules/monocle-ts/",
           "packageDependencies": [
-            ["monocle-ts", "npm:2.3.4"]
+            ["monocle-ts", "npm:2.3.5"]
           ],
           "linkType": "SOFT",
         }],
-        ["virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.3.4", {
-          "packageLocation": "./.yarn/$$virtual/monocle-ts-virtual-e914a9c47a/0/cache/monocle-ts-npm-2.3.4-2debc42357-64b3250a49.zip/node_modules/monocle-ts/",
+        ["virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.3.5", {
+          "packageLocation": "./.yarn/$$virtual/monocle-ts-virtual-bca1183f19/0/cache/monocle-ts-npm-2.3.5-4204264e34-b2ee0a27de.zip/node_modules/monocle-ts/",
           "packageDependencies": [
-            ["monocle-ts", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.3.4"],
+            ["monocle-ts", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.3.5"],
             ["@types/fp-ts", null],
             ["fp-ts", "npm:2.9.3"]
           ],
@@ -49329,7 +49329,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/fp-ts", null],
             ["@types/monocle-ts", null],
             ["fp-ts", "npm:2.9.3"],
-            ["monocle-ts", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.3.4"]
+            ["monocle-ts", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.3.5"]
           ],
           "packagePeers": [
             "@types/fp-ts",
