@@ -8266,7 +8266,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/hls.js@npm:0.13.3, @types/hls.js@npm:^0.13.3":
+"@types/hls.js@npm:0.13.3":
   version: 0.13.3
   resolution: "@types/hls.js@npm:0.13.3"
   checksum: 220d72ed84a296060c97bd175468f9b83d8b30244af9bea128287ad8cb0f0b7c7383e8b81903398cd7e46201d3a421d0a0748f3bd638ea2fc6c88bd463f542ca
@@ -19032,7 +19032,7 @@ fsevents@^1.2.7:
     "@types/body-scroll-lock": 2.6.1
     "@types/dompurify": 2.2.1
     "@types/formidable": 1.0.31
-    "@types/hls.js": ^0.13.3
+    "@types/hls.js": 0.13.3
     "@types/jest": 26.0.20
     "@types/minio": 7.0.7
     "@types/mixpanel-browser": 2.35.4
@@ -19068,7 +19068,7 @@ fsevents@^1.2.7:
     jest: 26.6.3
     minio: 7.0.18
     monocle-ts: 2.3.5
-    mux-embed: ^3.4.3
+    mux-embed: 3.4.3
     nanoid: 3.1.20
     newtype-ts: 0.3.4
     next: 10.0.5
@@ -26307,7 +26307,7 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"mux-embed@npm:3.4.3, mux-embed@npm:^3.4.3":
+"mux-embed@npm:3.4.3":
   version: 3.4.3
   resolution: "mux-embed@npm:3.4.3"
   checksum: 8989a276c6fd064fab61e2c047f292a181c1c391b8c38c6549945dd4dba380a5bee493c78202a40115fc78d7feb128d3c62045cc4159f00ee69b2b4e5d7cc7be
