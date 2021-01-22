@@ -8,7 +8,7 @@ export interface ChildImage extends GetChildImagesResponse {
 const useGetChildImages = (childId: string = "") => {
   const getChildImages = getApi<ChildImage[]>(`/children/${childId}/images`)
 
-  return useQuery(["childImages", childId], getChildImages, {
+  return useQuery(["child", childId, "images"], getChildImages, {
     enabled: childId !== "",
     refetchOnWindowFocus: false,
   })
@@ -16,7 +16,7 @@ const useGetChildImages = (childId: string = "") => {
 
 export const useChildImagesCache = (childId: string) => {
   const client = useQueryClient()
-  const key = ["childImages", childId]
+  const key = ["child", childId, "images"]
 
   return {
     getData: () => client.getQueryData<ChildImage[]>(key),

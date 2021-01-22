@@ -1,12 +1,11 @@
-import React, { FC, Suspense, useState } from "react"
 import Image from "next/image"
+import React, { FC, Suspense, useState } from "react"
+import Button from "../components/Button/Button"
 import Icon from "../components/Icon/Icon"
+import { LazyVideoPlayer } from "../components/LazyVideoPlayer"
 import LoadingPlaceholder from "../components/LoadingPlaceholder/LoadingPlaceholder"
-import VideoPlayer from "../components/VideoPlayer"
 import useGetChildVideos from "../hooks/api/useGetChildVideos"
 import { useQueryString } from "../hooks/useQueryString"
-import Button from "../components/Button/Button"
-import { LazyVideoPlayer } from "../components/LazyVideoPlayer"
 
 const VideosPage = () => {
   const childId = useQueryString("childId")
@@ -15,15 +14,13 @@ const VideosPage = () => {
   return (
     <div className="max-w-3xl mx-auto">
       <div className="flex">
-        {videos.data?.map((v) => {
-          return (
-            <Video
-              key={v.id}
-              thumbnailSrc={v.thumbnailUrl}
-              playbackUrl={v.playbackUrl}
-            />
-          )
-        })}
+        {videos.data?.map((v) => (
+          <Video
+            key={v.id}
+            thumbnailSrc={v.thumbnailUrl}
+            playbackUrl={v.playbackUrl}
+          />
+        ))}
       </div>
     </div>
   )
