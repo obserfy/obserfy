@@ -7,7 +7,7 @@ const useGetChildVideos = (childId: string) => {
     `/children/${childId}/videos`
   )
 
-  return useQuery(["childImages", childId], getChildVideos)
+  return useQuery(["child", childId, "videos"], getChildVideos)
 }
 
 export default useGetChildVideos
