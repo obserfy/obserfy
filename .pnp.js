@@ -1893,7 +1893,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@types/reach__router",
-        "npm:1.3.6"
+        "npm:1.3.7"
       ],
       [
         "@types/react",
@@ -27503,6 +27503,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react", "npm:16.9.41"]
           ],
           "linkType": "HARD",
+        }],
+        ["npm:1.3.7", {
+          "packageLocation": "./.yarn/cache/@types-reach__router-npm-1.3.7-6023df92b3-a17679f85c.zip/node_modules/@types/reach__router/",
+          "packageDependencies": [
+            ["@types/reach__router", "npm:1.3.7"],
+            ["@types/react", "npm:16.9.41"]
+          ],
+          "linkType": "HARD",
         }]
       ]],
       ["@types/react", [
@@ -41890,7 +41898,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/babel__runtime", null],
             ["@types/gatsby", null],
             ["@types/preact", null],
-            ["@types/reach__router", "npm:1.3.6"],
+            ["@types/reach__router", "npm:1.3.7"],
             ["@types/react", "npm:17.0.0"],
             ["@types/react-dom", "npm:17.0.0"],
             ["core-js", "npm:3.8.3"],
@@ -62219,7 +62227,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/hls.js", "npm:0.13.3"],
             ["@types/jest", "npm:26.0.20"],
             ["@types/query-string", "npm:6.3.0"],
-            ["@types/reach__router", "npm:1.3.6"],
+            ["@types/reach__router", "npm:1.3.7"],
             ["@types/react", "npm:17.0.0"],
             ["@types/react-adaptive-hooks", "npm:0.0.0"],
             ["@types/react-dom", "npm:17.0.0"],
