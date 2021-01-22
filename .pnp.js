@@ -589,7 +589,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@chromaui/localtunnel",
-        "npm:2.0.1"
+        "npm:2.0.2"
       ],
       [
         "@cnakazawa/watch",
@@ -3233,7 +3233,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "chromatic",
-        "npm:5.6.0"
+        "npm:5.6.1"
       ],
       [
         "chrome-trace-event",
@@ -19811,11 +19811,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@chromaui/localtunnel", [
-        ["npm:2.0.1", {
-          "packageLocation": "./.yarn/cache/@chromaui-localtunnel-npm-2.0.1-4a2b881b65-6e22237124.zip/node_modules/@chromaui/localtunnel/",
+        ["npm:2.0.2", {
+          "packageLocation": "./.yarn/cache/@chromaui-localtunnel-npm-2.0.2-693a80119f-4954185d56.zip/node_modules/@chromaui/localtunnel/",
           "packageDependencies": [
-            ["@chromaui/localtunnel", "npm:2.0.1"],
-            ["axios", "npm:0.19.0"],
+            ["@chromaui/localtunnel", "npm:2.0.2"],
+            ["axios", "npm:0.21.1"],
             ["debug", "virtual:55ee18c8e19977a11885a1650a9c8ace082bef4651cd58ef3e97ffc7de2aaf65e03612f920e86a6f65dfa15bbf2d3bdccc8e9e16aa19b1a44602031e5ce3dc78#npm:3.2.6"],
             ["openurl", "npm:1.1.1"],
             ["yargs", "npm:13.3.2"]
@@ -30138,15 +30138,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["axios", [
-        ["npm:0.19.0", {
-          "packageLocation": "./.yarn/cache/axios-npm-0.19.0-3dc3d92067-be5f8504a1.zip/node_modules/axios/",
-          "packageDependencies": [
-            ["axios", "npm:0.19.0"],
-            ["follow-redirects", "npm:1.5.10"],
-            ["is-buffer", "npm:2.0.4"]
-          ],
-          "linkType": "HARD",
-        }],
         ["npm:0.19.2", {
           "packageLocation": "./.yarn/cache/axios-npm-0.19.2-e4e8599895-bad346deea.zip/node_modules/axios/",
           "packageDependencies": [
@@ -33092,14 +33083,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["chromatic", [
-        ["npm:5.6.0", {
-          "packageLocation": "./.yarn/cache/chromatic-npm-5.6.0-5c01e96968-fd16849e51.zip/node_modules/chromatic/",
+        ["npm:5.6.1", {
+          "packageLocation": "./.yarn/cache/chromatic-npm-5.6.1-e4d8db825d-2d194f05df.zip/node_modules/chromatic/",
           "packageDependencies": [
-            ["chromatic", "npm:5.6.0"],
+            ["chromatic", "npm:5.6.1"],
             ["@actions/core", "npm:1.2.6"],
             ["@actions/github", "npm:4.0.0"],
             ["@babel/runtime", "npm:7.12.1"],
-            ["@chromaui/localtunnel", "npm:2.0.1"],
+            ["@chromaui/localtunnel", "npm:2.0.2"],
             ["async-retry", "npm:1.3.1"],
             ["chalk", "npm:4.1.0"],
             ["cross-spawn", "npm:7.0.3"],
@@ -62244,7 +62235,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["babel-preset-gatsby", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.10.0"],
             ["body-scroll-lock", "npm:3.1.5"],
             ["browser-lang", "npm:0.1.0"],
-            ["chromatic", "npm:5.6.0"],
+            ["chromatic", "npm:5.6.1"],
             ["core-js", "npm:3.8.3"],
             ["cross-env", "npm:7.0.3"],
             ["dayjs", "npm:1.10.4"],
