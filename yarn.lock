@@ -5779,21 +5779,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mdx-js/react@npm:1.6.22":
+"@mdx-js/react@npm:1.6.22, @mdx-js/react@npm:^1.6.22":
   version: 1.6.22
   resolution: "@mdx-js/react@npm:1.6.22"
   peerDependencies:
     react: ^16.13.1 || ^17.0.0
   checksum: 3a0a189aa04a3b73e4846f8311573d45404c4ec74a1a4b196e7829492fedabe38b869016125620403bcf5f999f58ab75c9f54279f7557e361c239b57e5ed2267
-  languageName: node
-  linkType: hard
-
-"@mdx-js/react@npm:^1.0.0":
-  version: 1.6.6
-  resolution: "@mdx-js/react@npm:1.6.6"
-  peerDependencies:
-    react: ^16.9.0
-  checksum: 54114be9615a18cf718a1c6c923927439b6e70889ed71cb12fb2185667f66bc39069e396d8639abd038cf78e3308ca1bbc3724eea9f2f24c890dd39d3d041328
   languageName: node
   linkType: hard
 
@@ -7826,111 +7817,111 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@theme-ui/color-modes@npm:^0.6.0-alpha.3":
-  version: 0.6.0-alpha.3
-  resolution: "@theme-ui/color-modes@npm:0.6.0-alpha.3"
+"@theme-ui/color-modes@npm:0.6.0-alpha.6":
+  version: 0.6.0-alpha.6
+  resolution: "@theme-ui/color-modes@npm:0.6.0-alpha.6"
   dependencies:
     "@emotion/react": ^11.1.1
-    "@theme-ui/core": 0.6.0-alpha.1
-    "@theme-ui/css": 0.6.0-alpha.1
+    "@theme-ui/core": 0.6.0-alpha.6
+    "@theme-ui/css": 0.6.0-alpha.6
     deepmerge: ^4.2.2
   peerDependencies:
     react: ^16.14.0 || ^17.0.0
-  checksum: ddba292ae1dd6d15c8606d9a2da21f92f60439b41adab4d58a07a434abb53c103893cc50fa262dd5e37a7ae50b0c182f980ce9954901824430349de275abcc91
+  checksum: 729e6c94c6525faf034486a39cc2b5d1c64a38c4c125b614390f4a9a2f476bb334b653f09fb50efc80e65e28a1d0ac9bc895c490ab1a838f94b3f527d482c542
   languageName: node
   linkType: hard
 
-"@theme-ui/components@npm:^0.6.0-alpha.3":
-  version: 0.6.0-alpha.3
-  resolution: "@theme-ui/components@npm:0.6.0-alpha.3"
+"@theme-ui/components@npm:0.6.0-alpha.6":
+  version: 0.6.0-alpha.6
+  resolution: "@theme-ui/components@npm:0.6.0-alpha.6"
   dependencies:
     "@emotion/react": ^11.1.1
     "@emotion/styled": ^11.0.0
     "@styled-system/color": ^5.1.2
     "@styled-system/should-forward-prop": ^5.1.2
     "@styled-system/space": ^5.1.2
-    "@theme-ui/css": 0.6.0-alpha.1
+    "@theme-ui/css": 0.6.0-alpha.6
     "@types/styled-system": ^5.1.10
   peerDependencies:
     react: ^16.14.0 || ^17.0.0
-  checksum: 33dfbfc003b92722d8944eb3dcf7a005822829c8fdcec3d956da595362e558538ee0e62c5007e9e0d576f9e6cb50f34fa143e29906771816f6335b1c8e01c63b
+  checksum: 9f660cd293e365889195f290dde936b06c69f0dfeb85bf6ed99e307ab705f3c9d42d0a41debd056b83c68ea7660578568c431f306aec0b925afc382ed3e0fffc
   languageName: node
   linkType: hard
 
-"@theme-ui/core@npm:0.6.0-alpha.1":
-  version: 0.6.0-alpha.1
-  resolution: "@theme-ui/core@npm:0.6.0-alpha.1"
+"@theme-ui/core@npm:0.6.0-alpha.6":
+  version: 0.6.0-alpha.6
+  resolution: "@theme-ui/core@npm:0.6.0-alpha.6"
   dependencies:
     "@emotion/react": ^11.1.1
-    "@theme-ui/css": 0.6.0-alpha.1
-    "@theme-ui/parse-props": 0.6.0-alpha.1
+    "@theme-ui/css": 0.6.0-alpha.6
+    "@theme-ui/parse-props": 0.6.0-alpha.6
     deepmerge: ^4.2.2
   peerDependencies:
     react: ^16.14.0 || ^17.0.0
-  checksum: 57178e00f1ee913b34ac5cf29ee1fb0061c6f7b9cfead4e253eb50d0af0b8b2de0a1462ad8a6d3cd650195a7f312cbe2a42d129928ea083df038ef347d52619a
+  checksum: fd78f8076c4c80a6ed0bdac0ecca56dc8912231a5a3196421e0912b1d315726ab5d400019a0c951ba55028ae64859dd8fb6007a4bc44d73800011e8c61652544
   languageName: node
   linkType: hard
 
-"@theme-ui/css@npm:0.6.0-alpha.1":
-  version: 0.6.0-alpha.1
-  resolution: "@theme-ui/css@npm:0.6.0-alpha.1"
+"@theme-ui/css@npm:0.6.0-alpha.6":
+  version: 0.6.0-alpha.6
+  resolution: "@theme-ui/css@npm:0.6.0-alpha.6"
   dependencies:
     "@emotion/react": ^11.1.1
     csstype: ^3.0.5
-  checksum: 47d497cc112fe9ef3f4c92e760a76d4709d70e7e01cda13f68cc61d0fe9effeb3231c1cb253503801f226ba017a9f6980dbff5e8f2193bbdc4cc2277edf6142f
+  checksum: a471c8a615fda57911f1b78d6430178e2243c53fa3fa9d5cea15ed7a43e7a0b2f60e1cca7671987362ffba8620ed3d1819df8e4ae7447d594b06a8913b8db5c3
   languageName: node
   linkType: hard
 
-"@theme-ui/match-media@npm:0.6.0-alpha.1":
-  version: 0.6.0-alpha.1
-  resolution: "@theme-ui/match-media@npm:0.6.0-alpha.1"
+"@theme-ui/match-media@npm:0.6.0-alpha.6":
+  version: 0.6.0-alpha.6
+  resolution: "@theme-ui/match-media@npm:0.6.0-alpha.6"
   peerDependencies:
     "@theme-ui/core": ^0.5.0-alpha.0
     "@theme-ui/css": ^0.5.0-alpha.0
     react: ^16.14.0 || ^17.0.0
-  checksum: bab2d354aa4a0377271b84f18e7b0bdeb3111eda67b3e924fb14311a007d1c1c2b827f7266749976b6027d668f3c664422406aab44c802d7ccc4cb29f9b09beb
+  checksum: d330228cc684d452cd102e7ecde0bcf94563bf0e2a53be74897ab5a113dd495d8e8453bdb210c8f08d877056f2185d5ce8df8e4cd93b9f4c4f383d2105ee32d4
   languageName: node
   linkType: hard
 
-"@theme-ui/mdx@npm:0.6.0-alpha.1":
-  version: 0.6.0-alpha.1
-  resolution: "@theme-ui/mdx@npm:0.6.0-alpha.1"
+"@theme-ui/mdx@npm:0.6.0-alpha.6":
+  version: 0.6.0-alpha.6
+  resolution: "@theme-ui/mdx@npm:0.6.0-alpha.6"
   dependencies:
     "@emotion/react": ^11.1.1
     "@emotion/styled": ^11.0.0
-    "@mdx-js/react": ^1.0.0
-    "@theme-ui/core": 0.6.0-alpha.1
-    "@theme-ui/css": 0.6.0-alpha.1
+    "@mdx-js/react": ^1.6.22
+    "@theme-ui/core": 0.6.0-alpha.6
+    "@theme-ui/css": 0.6.0-alpha.6
   peerDependencies:
     react: ^16.14.0 || ^17.0.0
-  checksum: 31e6a47f62fe7686a833e97fe9e32c4b2ccc74c20ca64d8a172f0e53a84b60994810e7ce2ca7e10be3b89c45405cec9cf880cd9891a762b0e89800205fac625b
+  checksum: 483e8afaaf3877430229a4086fdf45a5ec38f8cdc39e1c38edfd90cf040bc04af35227e82254dd794a37e5ffcd220c67f7594546e83ba814cc06b9989229acca
   languageName: node
   linkType: hard
 
-"@theme-ui/parse-props@npm:0.6.0-alpha.1":
-  version: 0.6.0-alpha.1
-  resolution: "@theme-ui/parse-props@npm:0.6.0-alpha.1"
+"@theme-ui/parse-props@npm:0.6.0-alpha.6":
+  version: 0.6.0-alpha.6
+  resolution: "@theme-ui/parse-props@npm:0.6.0-alpha.6"
   dependencies:
     "@emotion/react": ^11.1.1
-    "@theme-ui/css": 0.6.0-alpha.1
+    "@theme-ui/css": 0.6.0-alpha.6
   peerDependencies:
     react: ^16.14.0 || ^17.0.0
-  checksum: 6b7402403675992c8a7a563e4240f6373dcded78a4da3e48bfd2ddc6f0a2451ba899d373bb39b875cda4099bfe50ef3fef5e8d425e03ef8e87ba4e1db92c672f
+  checksum: 97668b3f8183ee3e1507a9807b006d06f5e0ce8fde0ecd05ed43fc73da54e3e569520949f55684021ecc8ff158c49ee0a6594f1189bd6dfe32edc9c7ee158091
   languageName: node
   linkType: hard
 
-"@theme-ui/theme-provider@npm:^0.6.0-alpha.3":
-  version: 0.6.0-alpha.3
-  resolution: "@theme-ui/theme-provider@npm:0.6.0-alpha.3"
+"@theme-ui/theme-provider@npm:0.6.0-alpha.6":
+  version: 0.6.0-alpha.6
+  resolution: "@theme-ui/theme-provider@npm:0.6.0-alpha.6"
   dependencies:
     "@emotion/react": ^11.1.1
-    "@theme-ui/color-modes": ^0.6.0-alpha.3
-    "@theme-ui/core": 0.6.0-alpha.1
-    "@theme-ui/mdx": 0.6.0-alpha.1
+    "@theme-ui/color-modes": 0.6.0-alpha.6
+    "@theme-ui/core": 0.6.0-alpha.6
+    "@theme-ui/mdx": 0.6.0-alpha.6
   peerDependencies:
     "@theme-ui/css": "*"
     react: ^16.14.0 || ^17.0.0
-  checksum: c5587f149bed9062d9c8d044e15ecdfc4c0c3d68d0e82488bda61378c6bd9968db6cc4f70855debe6195e722d7fda715d3355f426ac5fe81d127e302efdf9455
+  checksum: 02e66fdb5f837af31f1019e58e4de28795aca563514b964b972a23148e9e07d12a077f915ee5c3924ecd4072c2dad76d9d68c7d01192e6017a8bf47acb35a0b0
   languageName: node
   linkType: hard
 
@@ -19601,13 +19592,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-theme-ui@npm:0.6.0-alpha.3":
-  version: 0.6.0-alpha.3
-  resolution: "gatsby-plugin-theme-ui@npm:0.6.0-alpha.3"
+"gatsby-plugin-theme-ui@npm:0.6.0-alpha.6":
+  version: 0.6.0-alpha.6
+  resolution: "gatsby-plugin-theme-ui@npm:0.6.0-alpha.6"
   peerDependencies:
     gatsby: ^2.13.1
     theme-ui: ^0.5.0-alpha.0
-  checksum: 6df63179c9d16cf6fd3abb5ec2ee26ca966b631dc80a3dd0ddd6be3e9acf85f82354ae3373cbb6bd464518ed7a3d90932c89fc3499606d0ac6a38baf9ab9dab6
+  checksum: 92079502997e7eef5a8b0be7b2bb6806379e5500416df4425d1abe26195b9da33ce69310ee039de0b66ab43e0c8574e9e8c1744e4ba8993cd71a714f361ed68f
   languageName: node
   linkType: hard
 
@@ -35503,19 +35494,19 @@ resolve@^1.19.0:
   languageName: node
   linkType: hard
 
-"theme-ui@npm:0.6.0-alpha.3":
-  version: 0.6.0-alpha.3
-  resolution: "theme-ui@npm:0.6.0-alpha.3"
+"theme-ui@npm:0.6.0-alpha.6":
+  version: 0.6.0-alpha.6
+  resolution: "theme-ui@npm:0.6.0-alpha.6"
   dependencies:
-    "@theme-ui/color-modes": ^0.6.0-alpha.3
-    "@theme-ui/components": ^0.6.0-alpha.3
-    "@theme-ui/core": 0.6.0-alpha.1
-    "@theme-ui/css": 0.6.0-alpha.1
-    "@theme-ui/mdx": 0.6.0-alpha.1
-    "@theme-ui/theme-provider": ^0.6.0-alpha.3
+    "@theme-ui/color-modes": 0.6.0-alpha.6
+    "@theme-ui/components": 0.6.0-alpha.6
+    "@theme-ui/core": 0.6.0-alpha.6
+    "@theme-ui/css": 0.6.0-alpha.6
+    "@theme-ui/mdx": 0.6.0-alpha.6
+    "@theme-ui/theme-provider": 0.6.0-alpha.6
   peerDependencies:
     react: ^16.14.0 || ^17.0.0
-  checksum: 4c3eb45af8b921a0bee9b0b5c6431e37f1feade1bfce8796bfa32ccc84ed77a8930f0f2f78743015856854f25797edc93bd5a243e883db62541ef3c5b6a31e43
+  checksum: 221645e74f3676f1bb419516ce31bf3b7a97ef145cc64d6098a5a392438861075086dd49b24de1d9630de7959234ae1c2038f7e73fab608187776f2d2cd818cf
   languageName: node
   linkType: hard
 
@@ -37295,7 +37286,7 @@ typescript@^4.0.0:
     "@tailwindcss/typography": 0.4.0
     "@testing-library/react": 11.2.3
     "@testing-library/react-hooks": 5.0.2
-    "@theme-ui/match-media": 0.6.0-alpha.1
+    "@theme-ui/match-media": 0.6.0-alpha.6
     "@types/body-scroll-lock": 2.6.1
     "@types/date-fns": 2.6.0
     "@types/dompurify": 2.2.1
@@ -37356,7 +37347,7 @@ typescript@^4.0.0:
     gatsby-plugin-segment-js: 3.6.0
     gatsby-plugin-sharp: 2.12.2
     gatsby-plugin-svgr: 2.1.0
-    gatsby-plugin-theme-ui: 0.6.0-alpha.3
+    gatsby-plugin-theme-ui: 0.6.0-alpha.6
     gatsby-plugin-webpack-bundle-analyser-v2: 1.1.18
     gatsby-source-filesystem: 2.9.1
     gatsby-theme-i18n: 1.0.4
@@ -37392,7 +37383,7 @@ typescript@^4.0.0:
     storybook-addon-deps: 2.1.3
     storybook-addon-i18n: 5.1.13
     tailwindcss: 2.0.2
-    theme-ui: 0.6.0-alpha.3
+    theme-ui: 0.6.0-alpha.6
     typescript: 4.1.3
     url-loader: 4.1.1
     use-immer: 0.4.2
