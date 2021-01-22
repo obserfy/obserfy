@@ -3060,7 +3060,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.10.0, @babel/runtime@npm:^7.10.5, @babel/runtime@npm:^7.11.2":
+"@babel/runtime@npm:^7.10.0, @babel/runtime@npm:^7.11.2":
   version: 7.11.2
   resolution: "@babel/runtime@npm:7.11.2"
   dependencies:
@@ -8266,7 +8266,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/hls.js@npm:0.13.3":
+"@types/hls.js@npm:0.13.3, @types/hls.js@npm:^0.13.3":
   version: 0.13.3
   resolution: "@types/hls.js@npm:0.13.3"
   checksum: 220d72ed84a296060c97bd175468f9b83d8b30244af9bea128287ad8cb0f0b7c7383e8b81903398cd7e46201d3a421d0a0748f3bd638ea2fc6c88bd463f542ca
@@ -19032,6 +19032,7 @@ fsevents@^1.2.7:
     "@types/body-scroll-lock": 2.6.1
     "@types/dompurify": 2.2.1
     "@types/formidable": 1.0.31
+    "@types/hls.js": ^0.13.3
     "@types/jest": 26.0.20
     "@types/minio": 7.0.7
     "@types/mixpanel-browser": 2.35.4
@@ -19061,11 +19062,13 @@ fsevents@^1.2.7:
     eslint-plugin-react-hooks: 4.2.0
     formidable-serverless: 1.1.1
     fp-ts: 2.9.3
+    hls.js: beta
     io-ts: 2.2.13
     io-ts-types: 0.5.12
     jest: 26.6.3
     minio: 7.0.18
     monocle-ts: 2.3.5
+    mux-embed: ^3.4.3
     nanoid: 3.1.20
     newtype-ts: 0.3.4
     next: 10.0.5
@@ -19083,7 +19086,6 @@ fsevents@^1.2.7:
     react: "npm:@preact/compat@0.0.4"
     react-dom: "npm:@preact/compat@0.0.4"
     react-query: 3.6.0
-    react-query-devtools: 2.6.3
     react-refresh: 0.9.0
     react-ssr-prepass: "npm:preact-ssr-prepass@1.1.3"
     snarkdown: 2.0.0
@@ -25416,16 +25418,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"match-sorter@npm:^4.1.0":
-  version: 4.2.1
-  resolution: "match-sorter@npm:4.2.1"
-  dependencies:
-    "@babel/runtime": ^7.10.5
-    remove-accents: 0.4.2
-  checksum: 7b28e050cb4ee14e96e7233fb37f2d4587e9addbda10c10832d50e10cca0b99b49fd77669d094b8c42779442b8db7c2b52197ee4733422df3a3bf170d311c8c2
-  languageName: node
-  linkType: hard
-
 "match-sorter@npm:^6.0.2":
   version: 6.0.2
   resolution: "match-sorter@npm:6.0.2"
@@ -26315,7 +26307,7 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"mux-embed@npm:3.4.3":
+"mux-embed@npm:3.4.3, mux-embed@npm:^3.4.3":
   version: 3.4.3
   resolution: "mux-embed@npm:3.4.3"
   checksum: 8989a276c6fd064fab61e2c047f292a181c1c391b8c38c6549945dd4dba380a5bee493c78202a40115fc78d7feb128d3c62045cc4159f00ee69b2b4e5d7cc7be
@@ -31201,18 +31193,6 @@ mocha@latest:
     "@popperjs/core": ^2.0.0
     react: ^16.8.0 || ^17
   checksum: 0b1303d3285e93245fb7e0460996c4dfd53b66152d09e41b1dcb6c9f99932513bf891b4359511aeb3b17eaa2ae8555129631ca2f61337d461e691104cc454898
-  languageName: node
-  linkType: hard
-
-"react-query-devtools@npm:2.6.3":
-  version: 2.6.3
-  resolution: "react-query-devtools@npm:2.6.3"
-  dependencies:
-    match-sorter: ^4.1.0
-  peerDependencies:
-    react: ^16.6.3 || ^17.0.0
-    react-query: ^2.0.0
-  checksum: ce021a2e62452b96a46f931fa867c0cc4b5a57d0d8743cd1edf658a0ca441748c408a724b0e9ea38114165954cb2109495e998d2c94a2b42cc0816edb8de6786
   languageName: node
   linkType: hard
 

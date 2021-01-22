@@ -16,6 +16,7 @@ const ImagePreview: FC<{
   const ref = useRef<HTMLDivElement>(null)
   const child = useGetChild(childId)
   const observations = useGetObservationsByImage(img.id)
+
   useLayoutEffect(() => {
     if (ref.current) {
       disableBodyScroll(ref.current, {
