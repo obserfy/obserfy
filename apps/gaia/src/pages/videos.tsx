@@ -40,7 +40,7 @@ const Video: FC<{ thumbnailSrc: string; playbackUrl: string }> = ({
             src={thumbnailSrc}
             layout="fill"
             objectFit="cover"
-            className="cursor-pointer p-1"
+            className="cursor-pointer m-1 md:m-2"
             onClick={() => setShowPlayer(true)}
           />
         </div>

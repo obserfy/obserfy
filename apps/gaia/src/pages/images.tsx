@@ -107,15 +107,15 @@ const GalleryPage = () => {
                   />
                 </div>
               ) : (
-                <Image
-                  src={img.originalImageUrl}
-                  alt="children activity"
-                  className="absolute w-full h-full object-cover bg-white"
-                  objectFit="fill"
-                  height={250}
-                  width={250}
-                  loading="lazy"
-                />
+                <div className="w-full" style={{ paddingTop: "100%" }}>
+                  <Image
+                    src={img.originalImageUrl}
+                    alt="children activity"
+                    className="absolute w-full h-full object-cover bg-white m-1 md:m-2"
+                    loading="lazy"
+                    layout="fill"
+                  />
+                </div>
               )}
             </button>
           ))}
