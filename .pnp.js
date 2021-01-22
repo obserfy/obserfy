@@ -5473,7 +5473,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "idb-keyval",
-        "npm:5.0.1"
+        "npm:5.0.2"
       ],
       [
         "idtoken-verifier",
@@ -43985,10 +43985,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
-        ["npm:5.0.1", {
-          "packageLocation": "./.yarn/cache/idb-keyval-npm-5.0.1-419e72d18c-9e60939cc3.zip/node_modules/idb-keyval/",
+        ["npm:5.0.2", {
+          "packageLocation": "./.yarn/cache/idb-keyval-npm-5.0.2-8cee375049-dec1ebfbef.zip/node_modules/idb-keyval/",
           "packageDependencies": [
-            ["idb-keyval", "npm:5.0.1"]
+            ["idb-keyval", "npm:5.0.2"]
           ],
           "linkType": "HARD",
         }]
@@ -62289,7 +62289,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["hls.js", "npm:1.0.0-beta.3"],
             ["http-proxy-middleware", "npm:1.0.6"],
             ["hygen", "npm:6.0.4"],
-            ["idb-keyval", "npm:5.0.1"],
+            ["idb-keyval", "npm:5.0.2"],
             ["immer", "npm:8.0.1"],
             ["jest", "npm:26.6.3"],
             ["jest-date-mock", "npm:1.0.8"],
