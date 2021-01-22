@@ -44,7 +44,7 @@ module.exports = withPlugins([
       NEXT_PUBLIC_RELEASE: release,
     },
     images: {
-      domains: [process.env.NEXT_OPTIMIZED_IMG_DOMAIN || "media.obserfy.com"],
+      domains: [process.env.NEXT_OPTIMIZED_IMG_DOMAIN || "media.obserfy.com", "image.mux.com"],
     },
     experimental: {
       modern: true,
