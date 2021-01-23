@@ -11,11 +11,13 @@ interface GetStudentVideosResponse {
   thumbnailUrl: string
   status: VideoStatus
 }
-const useGetVideos = (studentId: string) => {
+const useGetVideos = (studentId: string, shouldPoll?: boolean) => {
   const getVideos = getApi<GetStudentVideosResponse[]>(
     `/students/${studentId}/videos`
   )
-  return useQuery(["students", studentId, "videos"], getVideos)
+  return useQuery(["students", studentId, "videos"], getVideos, {
+    refetchInterval: shouldPoll ? 2000 : false,
+  })
 }
 
 export const useGetStudentVideosCache = (studentId: string) => {

@@ -1,32 +1,19 @@
 /* eslint-disable react/no-danger */
 import { AppComponent } from "next/dist/next-server/lib/router/router"
-import { useRouter } from "next/router"
-import React, { useEffect } from "react"
+import React from "react"
 import { QueryClient, QueryClientProvider } from "react-query"
-import { ReactQueryDevtools } from "react-query-devtools"
+import { ReactQueryDevtools } from "react-query/devtools"
 import ErrorBoundary from "../components/ErrorBoundary"
 import Layout from "../components/layout"
 import "../global.css"
+import useInitAnalytics from "../hooks/useInitAnalytics"
 import { initSentry } from "../utils/sentry"
 
 initSentry()
 const queryClient = new QueryClient()
 
 const App: AppComponent = ({ Component, pageProps }) => {
-  const router = useRouter()
-
-  useEffect(() => {
-    // Setup analytics
-    mixpanel.init("bb93616fa99d71364cdee8cae08d4644")
-    const pageRoutingAnalytics = (url: string) => {
-      mixpanel.track("Loaded a Page", { url })
-    }
-    router.events.on("routeChangeComplete", pageRoutingAnalytics)
-
-    return () => {
-      router.events.off("routeChangeComplete", pageRoutingAnalytics)
-    }
-  }, [])
+  useInitAnalytics()
 
   return (
     <ErrorBoundary>

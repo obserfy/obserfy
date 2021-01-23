@@ -57,7 +57,7 @@ export const useUploadStudentVideo = (studentId: string) => {
 
   return useMutation(postCreateUploadLink, {
     onSuccess: () => {
-      setTimeout(() => cache.invalidate(), 1000)
+      setTimeout(() => cache.refetchQueries(), 1000)
     },
   })
 }
