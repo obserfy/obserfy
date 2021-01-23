@@ -28,7 +28,7 @@ const GalleryPage = () => {
   return (
     <>
       <Head>
-        <title>Gallery | Obserfy for Parents</title>
+        <title>Images | Obserfy for Parents</title>
       </Head>
       <div className="max-w-3xl mx-auto">
         <div className="flex flex-wrap w-full pr-1">

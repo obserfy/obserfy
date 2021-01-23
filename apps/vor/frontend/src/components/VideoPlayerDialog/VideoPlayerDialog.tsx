@@ -73,7 +73,7 @@ const VideoPlayerDialog: FC<VideoPlayerDialogProps> = ({
           <LazyVideoPlayer
             src={src}
             poster={thumbnailUrl}
-            sx={{ flex: 6, backgroundColor: "black", height: "100%" }}
+            sx={{ flex: 6, backgroundColor: "black", width: "100%" }}
           />
         </Suspense>
 
