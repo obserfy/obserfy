@@ -21,23 +21,25 @@ const VideosPage = () => {
   }
 
   return (
-    <div className="max-w-3xl mx-auto">
+    <>
       <Head>
         <title>Videos | Obserfy for Parents</title>
       </Head>
 
-      <div className="flex flex-wrap pr-1">
-        {videos.data?.map((v) => (
-          <Video
-            key={`${v.id}1`}
-            thumbnailSrc={v.thumbnailUrl}
-            playbackUrl={v.playbackUrl}
-            childName={child.data?.name}
-            createdAt={v.createdAt}
-          />
-        ))}
+      <div className="max-w-3xl mx-auto">
+        <div className="flex flex-wrap pr-1">
+          {videos.data?.map((v) => (
+            <Video
+              key={`${v.id}1`}
+              thumbnailSrc={v.thumbnailUrl}
+              playbackUrl={v.playbackUrl}
+              childName={child.data?.name}
+              createdAt={v.createdAt}
+            />
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 
