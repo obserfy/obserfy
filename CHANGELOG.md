@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.15.10](https://github.com/obserfy/obserfy/compare/v1.15.9...v1.15.10) (2021-01-20)
+
+
+### Bug Fixes
+
+* fix can't attach image to observations. ([b5849ca](https://github.com/obserfy/obserfy/commit/b5849ca627bb0391ff661df023e85b4d9b291775))
+* **deps:** update dependency @types/node to v14.14.22 ([ba8f27d](https://github.com/obserfy/obserfy/commit/ba8f27dad0d5a5e85615869b31c8e25224ee3bab))
+* **deps:** update dependency @types/pg to v7.14.9 ([9841405](https://github.com/obserfy/obserfy/commit/984140544f8de6fded69eb3ab36c9639e9930794))
+
 ### [1.15.9](https://github.com/obserfy/obserfy/compare/v1.15.8...v1.15.9) (2021-01-19)
 
 
