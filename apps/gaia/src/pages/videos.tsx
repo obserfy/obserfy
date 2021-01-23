@@ -1,5 +1,6 @@
 import Image from "next/image"
 import React, { FC, Suspense, useState } from "react"
+import Head from "next/head"
 import dayjs from "../utils/dayjs"
 import Button from "../components/Button/Button"
 import Icon from "../components/Icon/Icon"
@@ -15,8 +16,16 @@ const VideosPage = () => {
   const child = useGetChild(childId)
   const videos = useGetChildVideos(childId)
 
+  if (videos.isLoading || (videos.isSuccess && videos.data.length === 0)) {
+    return <EmptyState loading={videos.isLoading} />
+  }
+
   return (
     <div className="max-w-3xl mx-auto">
+      <Head>
+        <title>Videos | Obserfy for Parents</title>
+      </Head>
+
       <div className="flex flex-wrap pr-1">
         {videos.data?.map((v) => (
           <Video
@@ -101,5 +110,27 @@ const VideoPlayerDialog: FC<{
     </div>
   )
 }
+
+const EmptyState: FC<{ loading: boolean }> = ({ loading }) => (
+  <div
+    className={`flex flex-col items-center pt-16 pb-8 ${
+      loading && "opacity-50"
+    } transition-opacity duration-200 max-w-3xl mx-auto`}
+  >
+    <Image
+      src="/images/no-videos-illustrations.svg"
+      className="w-64 md:w-1/2 mb-3"
+      height={250}
+      width={200}
+    />
+    <h6
+      className={`text-xl mx-4 text-center ${
+        loading && "opacity-0"
+      } transition-opacity duration-200 font-bold`}
+    >
+      No videos uploaded yet
+    </h6>
+  </div>
+)
 
 export default VideosPage

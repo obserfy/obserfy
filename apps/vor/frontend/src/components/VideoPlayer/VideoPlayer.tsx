@@ -48,15 +48,7 @@ const VideoPlayer: FC<VideoPlayerProps> = ({ src, poster, sx }) => {
     }
   }, [src, video.current])
 
-  return (
-    <video
-      id="VideoPlayer"
-      ref={video}
-      controls
-      sx={{ width: ["100%", "auto"], height: "100%", ...sx }}
-      poster={poster}
-    />
-  )
+  return <video id="VideoPlayer" ref={video} controls sx={sx} poster={poster} />
 }
 
 export default VideoPlayer
