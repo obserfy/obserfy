@@ -11210,6 +11210,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"babel-plugin-remove-graphql-queries@npm:^2.16.0-next.0":
+  version: 2.16.0-next.0
+  resolution: "babel-plugin-remove-graphql-queries@npm:2.16.0-next.0"
+  peerDependencies:
+    gatsby: ^2.0.0
+  checksum: dea7c667703dbe894b5331d0cb2e733aebac6bd9d9216204011f03e4dee89f1d44a37f62816c5818b289a06669a6ed65d69f00c570c5674d5160bbe7af2293d7
+  languageName: node
+  linkType: hard
+
 "babel-plugin-syntax-jsx@npm:6.18.0, babel-plugin-syntax-jsx@npm:^6.18.0":
   version: 6.18.0
   resolution: "babel-plugin-syntax-jsx@npm:6.18.0"
@@ -19093,6 +19102,21 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"gatsby-core-utils@npm:^1.10.0-next.0":
+  version: 1.10.0-next.0
+  resolution: "gatsby-core-utils@npm:1.10.0-next.0"
+  dependencies:
+    ci-info: 2.0.0
+    configstore: ^5.0.1
+    fs-extra: ^8.1.0
+    node-object-hash: ^2.0.0
+    proper-lockfile: ^4.1.1
+    tmp: ^0.2.1
+    xdg-basedir: ^4.0.0
+  checksum: 648cde4dbafd6c6f2f01a4e34cb3bc649ee91080123f460929da7dda01274e1501b879ed4fab978cc1bae90c4847b38b79715da99c9ff25f51ae1d342f2ceb84
+  languageName: node
+  linkType: hard
+
 "gatsby-core-utils@npm:^1.9.0":
   version: 1.9.0
   resolution: "gatsby-core-utils@npm:1.9.0"
@@ -19225,6 +19249,30 @@ fsevents@^1.2.7:
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
   checksum: 61da86223f336f3054511bb07ff36e34eeb95c1d84e8f49ca712981170343f0b1cec28ddcf400068a48dee89512c051d7aa921f395c0a87f8474faf3cde8dfea
+  languageName: node
+  linkType: hard
+
+"gatsby-plugin-image@npm:next":
+  version: 0.7.0-next.0
+  resolution: "gatsby-plugin-image@npm:0.7.0-next.0"
+  dependencies:
+    "@babel/parser": ^7.12.5
+    "@babel/traverse": ^7.12.5
+    babel-jsx-utils: ^1.0.1
+    babel-plugin-remove-graphql-queries: ^2.16.0-next.0
+    camelcase: ^5.3.1
+    chokidar: ^3.4.3
+    fs-extra: ^8.1.0
+    gatsby-core-utils: ^1.10.0-next.0
+    prop-types: ^15.7.2
+  peerDependencies:
+    gatsby: ">=2"
+    gatsby-image: "*"
+    gatsby-plugin-sharp: "*"
+    gatsby-source-filesystem: "*"
+    react: ">=16.8.0"
+    react-dom: ">=16.8.0"
+  checksum: 81cc234fe7bf9f521c8c401dc75308e8e50af0618b957fc5693232ebfcf19ab865316f9f994394840e353628afecff3738ca13c203ca312ed9ea2685db35caf4
   languageName: node
   linkType: hard
 
@@ -37267,7 +37315,7 @@ typescript@^4.0.0:
     gatsby-image: 2.10.0
     gatsby-plugin-canonical-urls: 2.9.0
     gatsby-plugin-graphql-codegen: 2.7.1
-    gatsby-plugin-image: 0.6.1
+    gatsby-plugin-image: next
     gatsby-plugin-layout: 1.9.0
     gatsby-plugin-manifest: 2.11.0
     gatsby-plugin-nprogress: 2.9.0

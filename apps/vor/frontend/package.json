@@ -31,7 +31,7 @@
     "gatsby-image": "2.10.0",
     "gatsby-plugin-canonical-urls": "2.9.0",
     "gatsby-plugin-graphql-codegen": "2.7.1",
-    "gatsby-plugin-image": "0.6.1",
+    "gatsby-plugin-image": "next",
     "gatsby-plugin-layout": "1.9.0",
     "gatsby-plugin-manifest": "2.11.0",
     "gatsby-plugin-nprogress": "2.9.0",

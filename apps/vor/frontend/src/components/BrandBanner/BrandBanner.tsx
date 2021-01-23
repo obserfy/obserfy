@@ -11,7 +11,7 @@ export const BrandBanner: FC = () => (
       <Flex sx={{ alignItems: "center" }}>
         <StaticImage
           src="../../images/logo-standalone.png"
-          maxWidth={32}
+          width={32}
           alt="obserfy logo"
           sx={{ flexShrink: 0 }}
         />

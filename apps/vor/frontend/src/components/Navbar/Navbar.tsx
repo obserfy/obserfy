@@ -74,7 +74,7 @@ const Navbar: FC = () => {
           <StaticImage
             src="../../images/logo-transparent.png"
             alt="obserfy logo"
-            maxWidth={40}
+            width={40}
           />
         </Box>
         <NavBarItem title={t`Students`} icon={StudentsIcon} to={STUDENTS_URL} />

@@ -37,7 +37,7 @@ export const Page404: FC = () => {
         <Box mb={4}>
           <StaticImage
             src="../../images/not-found.png"
-            maxWidth={180}
+            width={180}
             alt="A missing page"
           />
         </Box>
