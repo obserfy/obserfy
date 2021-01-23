@@ -1,17 +1,15 @@
-/** @jsx jsx */
 /* eslint-disable jsx-a11y/media-has-caption */
 import Hls from "hls.js/dist/hls.light"
-import { jsx, ThemeUIStyleObject } from "theme-ui"
-import { FC, useEffect, useRef } from "react"
+import React, { FC, useEffect, useRef } from "react"
 // @ts-ignore
 import mux from "mux-embed"
+import * as Sentry from "@sentry/node"
 
 export interface VideoPlayerProps {
   src: string
   poster?: string
-  sx?: ThemeUIStyleObject
 }
-const VideoPlayer: FC<VideoPlayerProps> = ({ src, poster, sx }) => {
+const VideoPlayer: FC<VideoPlayerProps> = ({ src, poster }) => {
   const video = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
@@ -38,7 +36,11 @@ const VideoPlayer: FC<VideoPlayerProps> = ({ src, poster, sx }) => {
     }
 
     if (video.current && video.current.paused) {
-      video.current.play()
+      video.current.play().catch(() => {
+        Sentry.captureEvent({
+          message: "video autoplay rejected",
+        })
+      })
     }
 
     return () => {
@@ -48,7 +50,15 @@ const VideoPlayer: FC<VideoPlayerProps> = ({ src, poster, sx }) => {
     }
   }, [src, video.current])
 
-  return <video id="VideoPlayer" ref={video} controls sx={sx} poster={poster} />
+  return (
+    <video
+      id="VideoPlayer"
+      ref={video}
+      controls
+      className="w-full h-full bg-black"
+      poster={poster}
+    />
+  )
 }
 
 export default VideoPlayer

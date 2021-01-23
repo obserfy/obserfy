@@ -1,8 +1,8 @@
 /** @jsx jsx * */
 import { keyframes } from "@emotion/react"
 import { Trans } from "@lingui/macro"
-import { ChangeEvent, FC, Fragment, useState } from "react"
-import { Box, Button, Flex, Image, jsx, Label } from "theme-ui"
+import { ChangeEvent, FC, Fragment, useEffect, useState } from "react"
+import { Box, Button, Flex, Image, Label, jsx } from "theme-ui"
 import { getFirstName } from "../../domain/person"
 import { VideoStatus } from "../../domain/video"
 import { useUploadStudentVideo } from "../../hooks/api/schools/useUploadStudentVideo"
@@ -19,6 +19,7 @@ import {
   STUDENT_OVERVIEW_URL,
   STUDENTS_URL,
 } from "../../routes"
+import Dialog from "../Dialog/Dialog"
 import Icon from "../Icon/Icon"
 import { Link } from "../Link/Link"
 import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
@@ -168,72 +169,96 @@ const ImageItem: FC<{ studentId: string; image: StudentImage }> = ({
 )
 
 const VideosView: FC<{ studentId: string }> = ({ studentId }) => {
-  const videos = useGetVideos(studentId)
-  const postCreateUploadLink = useUploadStudentVideo(studentId)
+  const [shouldPoll, setShouldPoll] = useState(false)
+  const videos = useGetVideos(studentId, shouldPoll)
+  const uploadVideo = useUploadStudentVideo(studentId)
 
-  const handleImageUpload = async (event: ChangeEvent<HTMLInputElement>) => {
+  const handleVideoUpload = async (event: ChangeEvent<HTMLInputElement>) => {
     const selectedVideo = event.target.files?.[0]
     if (selectedVideo) {
       try {
-        await postCreateUploadLink.mutateAsync(selectedVideo)
+        await uploadVideo.mutateAsync(selectedVideo)
       } catch (e) {
         Sentry.captureException(e)
       }
     }
   }
 
-  return (
-    <div>
-      <Flex>
-        <Label
-          px={3}
-          pt={3}
-          pb={[3, 2]}
-          ml={[0, "auto"]}
-          sx={{ width: ["100%", "auto"], display: "inline-block" }}
-        >
-          <input
-            type="file"
-            accept="video/*"
-            style={{ display: "none" }}
-            disabled={postCreateUploadLink.isLoading}
-            onChange={handleImageUpload}
-          />
-          <Button
-            as="div"
-            disabled={postCreateUploadLink.isLoading}
-            sx={{ width: ["100%", "auto"] }}
-          >
-            {postCreateUploadLink.isLoading ? (
-              <Fragment>
-                <LoadingIndicator mr={2} />
-                <Trans>Uploading</Trans>
-              </Fragment>
-            ) : (
-              <Fragment>
-                <Icon as={PlusIcon} mr={2} fill="onPrimary" />
-                <Trans>Upload Video</Trans>
-              </Fragment>
-            )}
-          </Button>
-        </Label>
-      </Flex>
+  useEffect(() => {
+    const imageNotReady = videos.data?.find(
+      (v) => v.status !== VideoStatus.READY
+    )
+    if (imageNotReady) {
+      setShouldPoll(true)
+    } else {
+      setShouldPoll(false)
+    }
+  }, [videos.data])
 
-      <Flex px={[2, 2]} sx={{ width: "100%", flexWrap: "wrap" }}>
-        {videos.data?.map((video) => (
-          <VideoItem
-            key={video.id}
-            status={video.status}
-            videoId={video.id}
-            studentId={studentId}
-            thumbnailUrl={video.thumbnailUrl}
-            playbackUrl={video.playbackUrl}
-            originalThumbnailUrl={video.originalThumbnailUrl}
-            createdAt={video.createdAt}
-          />
-        ))}
-      </Flex>
-    </div>
+  return (
+    <Fragment>
+      <div>
+        <Flex>
+          <Label
+            px={3}
+            pt={3}
+            pb={[3, 2]}
+            ml={[0, "auto"]}
+            sx={{ width: ["100%", "auto"], display: "inline-block" }}
+          >
+            <input
+              type="file"
+              accept="video/*"
+              style={{ display: "none" }}
+              disabled={uploadVideo.isLoading}
+              onChange={handleVideoUpload}
+            />
+            <Button
+              as="div"
+              disabled={uploadVideo.isLoading}
+              sx={{ width: ["100%", "auto"] }}
+            >
+              {uploadVideo.isLoading ? (
+                <Fragment>
+                  <LoadingIndicator mr={2} />
+                  <Trans>Uploading</Trans>
+                </Fragment>
+              ) : (
+                <Fragment>
+                  <Icon as={PlusIcon} mr={2} fill="onPrimary" />
+                  <Trans>Upload Video</Trans>
+                </Fragment>
+              )}
+            </Button>
+          </Label>
+        </Flex>
+
+        <Flex px={[2, 2]} sx={{ width: "100%", flexWrap: "wrap" }}>
+          {videos.data?.map((video) => (
+            <VideoItem
+              key={video.id}
+              status={video.status}
+              videoId={video.id}
+              studentId={studentId}
+              thumbnailUrl={video.thumbnailUrl}
+              playbackUrl={video.playbackUrl}
+              originalThumbnailUrl={video.originalThumbnailUrl}
+              createdAt={video.createdAt}
+            />
+          ))}
+        </Flex>
+      </div>
+      {uploadVideo.isLoading && (
+        <Dialog>
+          <Flex p={3} sx={{ alignItems: "center" }}>
+            <Typography.H6 sx={{ alignText: "center" }}>
+              Uploading video
+            </Typography.H6>
+            <LoadingIndicator ml="auto" size={30} color="primary" />
+          </Flex>
+        </Dialog>
+      )}
+    </Fragment>
   )
 }
 

@@ -321,14 +321,36 @@ export const findChildCurriculumProgress = async (childId: string) => {
                      join (select id, name, coalesce("order", 0) as "order", subject_id, coalesce(smp.stage, 0) as stage
                            from materials
                                     left outer join student_material_progresses smp
-                                         on materials.id = smp.material_id and smp.student_id = $1
+                                                    on materials.id = smp.material_id and smp.student_id = $1
                            order by "order" desc
-                         ) m
+            ) m
                           on m.subject_id = s3.id
             group by s3.id
         ) s2 on s2.area_id = a.id
         where students.id = $1
         group by a.id
+    `
+  )
+}
+
+const ChildVideos = array(
+  type({
+    id: string,
+    playback_url: string,
+    thumbnail_url: string,
+    created_at: date,
+  })
+)
+export const findChildVideos = async (childId: string) => {
+  // language=PostgreSQL
+  return typedQuery(
+    ChildVideos,
+    [childId],
+    `
+        select v.id, v.playback_url, v.thumbnail_url, v.created_at
+        from video_to_students
+        join videos v on v.id = video_to_students.video_id
+        where student_id = $1 and v.status = 'ready'
     `
   )
 }
