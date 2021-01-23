@@ -18718,7 +18718,7 @@ __metadata:
     gatsby-transformer-sharp: 2.11.0
     postcss: 8.2.4
     postcss-preset-env: 6.7.0
-    preact: 10.5.5
+    preact: 10.5.11
     prettier: 2.2.1
     react: 17.0.1
     react-dom: 17.0.1
@@ -19035,7 +19035,7 @@ fsevents@^1.2.7:
     pino-pretty: 4.3.0
     postcss: 8.2.4
     postcss-preset-env: 6.7.0
-    preact: 10.5.5
+    preact: 10.5.11
     preact-render-to-string: 5.1.12
     prettier: 2.2.1
     react: "npm:@preact/compat@0.0.4"
@@ -29939,6 +29939,13 @@ mocha@latest:
   languageName: node
   linkType: hard
 
+"preact@npm:10.5.11":
+  version: 10.5.11
+  resolution: "preact@npm:10.5.11"
+  checksum: 3a3a4807f4658cd71ee68157282ce931e2c14083d90e5050bb11c3c187914d9cc32744b67a9a3ae69825f0ecb547f946d71f0076f1753c3ec01b62df335932ba
+  languageName: node
+  linkType: hard
+
 "prebuild-install@npm:^6.0.0":
   version: 6.0.0
   resolution: "prebuild-install@npm:6.0.0"
@@ -37348,7 +37355,7 @@ typescript@^4.0.0:
     nanoid: 3.1.20
     npm-run-all: 4.1.5
     postcss: 8.2.4
-    preact: 10.5.5
+    preact: 10.5.11
     preact-render-to-string: 5.1.12
     prettier: 2.2.1
     query-string: 6.13.8
