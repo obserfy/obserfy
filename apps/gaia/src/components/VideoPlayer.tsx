@@ -3,6 +3,7 @@ import Hls from "hls.js/dist/hls.light"
 import React, { FC, useEffect, useRef } from "react"
 // @ts-ignore
 import mux from "mux-embed"
+import * as Sentry from "@sentry/node"
 
 export interface VideoPlayerProps {
   src: string
@@ -35,7 +36,11 @@ const VideoPlayer: FC<VideoPlayerProps> = ({ src, poster }) => {
     }
 
     if (video.current && video.current.paused) {
-      video.current.play()
+      video.current.play().catch(() => {
+        Sentry.captureEvent({
+          message: "video autoplay rejected",
+        })
+      })
     }
 
     return () => {
@@ -50,7 +55,7 @@ const VideoPlayer: FC<VideoPlayerProps> = ({ src, poster }) => {
       id="VideoPlayer"
       ref={video}
       controls
-      className="w-full h-full"
+      className="w-full h-full bg-black"
       poster={poster}
     />
   )
