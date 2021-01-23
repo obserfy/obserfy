@@ -8,7 +8,7 @@ msgstr ""
 "Language: id\n"
 "Project-Id-Version: a9762ad8ff131d2a39fce5fce9d2fb91\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2021-01-19 17:41\n"
+"PO-Revision-Date: 2021-01-23 16:51\n"
 "Last-Translator: \n"
 "Language-Team: Indonesian\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -86,7 +86,7 @@ msgstr ""
 #: src/components/Navbar/Navbar.tsx:69
 #: src/components/PageListOfGuardians/PageListOfGuardians.tsx:21
 #: src/components/PagePaymentSuccess/PagePaymentSuccess.tsx:14
-#: src/components/PageSubscription/PageSubscription.tsx:27
+#: src/components/PageSubscription/PageSubscription.tsx:29
 #: src/pages/dashboard/admin/guardians/profile.tsx:30
 msgid "Admin"
 msgstr "Admin"
@@ -182,12 +182,12 @@ msgstr ""
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:53
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:65
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:334
-#: src/components/VideoPlayerDialog/VideoPlayerDialog.tsx:83
+#: src/components/VideoPlayerDialog/VideoPlayerDialog.tsx:82
 #: src/components/WarningDialog/WarningDialog.tsx:25
 msgid "Cancel"
 msgstr "Batal"
 
-#: src/components/PageSubscription/PageSubscription.tsx:74
+#: src/components/PageSubscription/PageSubscription.tsx:76
 msgid "Cancel Plan"
 msgstr "Batalkan Paket"
 
@@ -209,7 +209,7 @@ msgstr "Kelas"
 msgid "Classes"
 msgstr "Kelas"
 
-#: src/components/VideoPlayerDialog/VideoPlayerDialog.tsx:90
+#: src/components/VideoPlayerDialog/VideoPlayerDialog.tsx:89
 msgid "Confirm Deletion"
 msgstr ""
 
@@ -221,7 +221,7 @@ msgstr "Buat"
 msgid "Create New"
 msgstr ""
 
-#: src/components/PageSubscription/PageSubscription.tsx:122
+#: src/components/PageSubscription/PageSubscription.tsx:124
 msgid "Create lesson plans"
 msgstr "Membuat rencana pembelajaran"
 
@@ -242,8 +242,8 @@ msgstr "Buat kelas pertama anda untuk melacak pendaftaran siswa."
 msgid "Created by"
 msgstr "Dibuat oleh"
 
-#: src/components/PageSubscription/PageSubscription.tsx:37
-#: src/components/PageSubscription/PageSubscription.tsx:87
+#: src/components/PageSubscription/PageSubscription.tsx:39
+#: src/components/PageSubscription/PageSubscription.tsx:89
 msgid "Current Plan"
 msgstr "Paket Sekarang"
 
@@ -260,7 +260,8 @@ msgstr "Kurikulum"
 msgid "Curriculum Name"
 msgstr "Nama Kurikulum"
 
-#: src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx:85
+#: src/components/PageStudentOverview/AssessmentCard.tsx:42
+#: src/components/PageStudentOverview/AssessmentCard.tsx:70
 msgid "Curriculum Progress"
 msgstr "Perkembangan Kurikulum"
 
@@ -398,7 +399,7 @@ msgstr "Ubah Jenis Kelamin"
 msgid "Edit Name"
 msgstr "Ubah Nama"
 
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:138
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:140
 msgid "Edit Note"
 msgstr "Ubah Catatan"
 
@@ -469,7 +470,7 @@ msgstr "Perempuan"
 msgid "Forgot Password"
 msgstr ""
 
-#: src/components/PageSubscription/PageSubscription.tsx:84
+#: src/components/PageSubscription/PageSubscription.tsx:86
 msgid "Free Trial"
 msgstr ""
 
@@ -477,7 +478,6 @@ msgstr ""
 msgid "Friday"
 msgstr "Jumat"
 
-#: src/components/PageStudentImages/PageStudentImages.tsx:48
 #: src/components/PageStudentOverview/PageStudentOverview.tsx:55
 msgid "Gallery"
 msgstr "Galeri"
@@ -488,7 +488,7 @@ msgstr "Galeri"
 msgid "Gender"
 msgstr "Jenis Kelamin"
 
-#: src/components/PageSubscription/PageSubscription.tsx:111
+#: src/components/PageSubscription/PageSubscription.tsx:113
 msgid "Get full access to all features."
 msgstr ""
 
@@ -506,7 +506,7 @@ msgid "Go to Class Settings"
 msgstr "Ke Pengaturan Kelas"
 
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:126
-#: src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx:54
+#: src/components/PageStudentOverview/AssessmentCard.tsx:100
 msgid "Go to Curriculum"
 msgstr "Buka Kurikulum"
 
@@ -537,8 +537,7 @@ msgid "Help and Feedbacks"
 msgstr "Bantuan dan Masukan"
 
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:33
-#: src/components/PageStudentImages/PageStudentImages.tsx:40
-#: src/components/PageSubscription/PageSubscription.tsx:125
+#: src/components/PageSubscription/PageSubscription.tsx:127
 msgid "Image gallery"
 msgstr "Galeri gambar"
 
@@ -546,7 +545,7 @@ msgstr "Galeri gambar"
 msgid "Images"
 msgstr "Gambar"
 
-#: src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx:90
+#: src/components/PageStudentOverview/AssessmentCard.tsx:48
 msgid "In Progress"
 msgstr "Dalam Proses"
 
@@ -570,7 +569,7 @@ msgstr "Undang dengan link"
 msgid "Language"
 msgstr "Bahasa"
 
-#: src/components/PageSubscription/PageSubscription.tsx:114
+#: src/components/PageSubscription/PageSubscription.tsx:116
 msgid "Learn more."
 msgstr ""
 
@@ -601,6 +600,10 @@ msgstr ""
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:212
 msgid "Male"
 msgstr "Laki-laki"
+
+#: src/components/PageSubscription/PageSubscription.tsx:135
+msgid "Manage users"
+msgstr ""
 
 #: src/pages/login.tsx:6
 msgid "Manage your student data"
@@ -687,7 +690,7 @@ msgstr "Buat sekolah baru"
 #~ msgid "Next Bill"
 #~ msgstr "Next Bill"
 
-#: src/components/PageSubscription/PageSubscription.tsx:42
+#: src/components/PageSubscription/PageSubscription.tsx:44
 msgid "Next billing date"
 msgstr ""
 
@@ -713,7 +716,7 @@ msgstr ""
 msgid "No links attached yet"
 msgstr "Belum ada tautan terpasang"
 
-#: src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx:63
+#: src/components/PageStudentOverview/AssessmentCard.tsx:97
 msgid "No materials in progress."
 msgstr "Tidak materi yang sedang dalam proses."
 
@@ -752,8 +755,8 @@ msgstr "Belum Dipilih"
 
 #: src/components/NewGuardianForm/NewGuardianForm.tsx:16
 #: src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx:36
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:136
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:140
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:138
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:142
 msgid "Note"
 msgstr "Catatan"
 
@@ -796,7 +799,7 @@ msgstr "Yang lain"
 msgid "Other Related Students"
 msgstr "Siswa Terkait Lainnya"
 
-#: src/components/PageSubscription/PageSubscription.tsx:124
+#: src/components/PageSubscription/PageSubscription.tsx:126
 msgid "Parent dashboard"
 msgstr ""
 
@@ -808,7 +811,7 @@ msgstr ""
 msgid "Payment Success"
 msgstr ""
 
-#: src/components/PageSubscription/PageSubscription.tsx:63
+#: src/components/PageSubscription/PageSubscription.tsx:65
 msgid "Payment details"
 msgstr "Detil Pembayaran"
 
@@ -839,7 +842,7 @@ msgstr "Rencana"
 
 #: src/components/PageAdmin/PageAdmin.tsx:111
 #: src/components/PagePaymentSuccess/PagePaymentSuccess.tsx:15
-#: src/components/PageSubscription/PageSubscription.tsx:28
+#: src/components/PageSubscription/PageSubscription.tsx:30
 #: src/pages/dashboard/admin/subscription/index.tsx:13
 msgid "Plans & Billing"
 msgstr ""
@@ -860,7 +863,7 @@ msgstr "Telah dilatih"
 msgid "Presented"
 msgstr "Telah ditunjukan"
 
-#: src/components/PageSubscription/PageSubscription.tsx:50
+#: src/components/PageSubscription/PageSubscription.tsx:52
 msgid "Price"
 msgstr ""
 
@@ -871,11 +874,11 @@ msgstr ""
 msgid "Profile"
 msgstr "Profil"
 
-#: src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx:95
+#: src/components/PageStudentOverview/AssessmentCard.tsx:51
 msgid "Recently Mastered"
 msgstr "Baru saja Dikuasai"
 
-#: src/components/PageSubscription/PageSubscription.tsx:121
+#: src/components/PageSubscription/PageSubscription.tsx:123
 msgid "Record observations"
 msgstr "Rekam observasi"
 
@@ -932,7 +935,7 @@ msgstr "Sabtu"
 #: src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx:52
 #: src/components/PageEditClass/PageEditClass.tsx:97
 #: src/components/PageEditSubject/PageEditSubject.tsx:139
-#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:138
+#: src/components/PageGuardianProfile/PageGuardianProfile.tsx:140
 #: src/components/PageNewClass/PageNewClass.tsx:80
 #: src/components/PageNewObservation/PageNewObservation.tsx:86
 #: src/components/PageNewSchool/PageNewSchool.tsx:50
@@ -964,7 +967,7 @@ msgstr "Cari murid"
 msgid "See All"
 msgstr ""
 
-#: src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx:77
+#: src/components/PageStudentOverview/AssessmentCard.tsx:59
 msgid "See All {0} Progress"
 msgstr "Lihat Semua Progress {0}"
 
@@ -1040,15 +1043,15 @@ msgstr "Deskripsi Pendek*"
 msgid "Sign Up"
 msgstr ""
 
-#: src/components/PageSubscription/PageSubscription.tsx:167
+#: src/components/PageSubscription/PageSubscription.tsx:189
 msgid "Soon"
 msgstr "Segera Hadir"
 
-#: src/components/PageSubscription/PageSubscription.tsx:34
+#: src/components/PageSubscription/PageSubscription.tsx:36
 msgid "Standard"
 msgstr "Standar"
 
-#: src/components/PageSubscription/PageSubscription.tsx:98
+#: src/components/PageSubscription/PageSubscription.tsx:100
 msgid "Standard Plan"
 msgstr "Paket Standar"
 
@@ -1080,7 +1083,6 @@ msgstr "ID Murid"
 #: src/components/PageNewObservation/PageNewObservation.tsx:76
 #: src/components/PageNewStudent/PageNewStudent.tsx:27
 #: src/components/PageNewStudentAddGuardian/PageNewStudentAddGuardian.tsx:65
-#: src/components/PageStudentImages/PageStudentImages.tsx:34
 #: src/components/PageStudentOverview/PageStudentOverview.tsx:24
 #: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:36
 #: src/components/PageStudentPlans/PageStudentPlans.tsx:23
@@ -1100,11 +1102,14 @@ msgid "Subjects"
 msgstr ""
 
 #: src/components/Layout/Layout.tsx:84
-#: src/components/PageSubscription/PageSubscription.tsx:155
 msgid "Subscribe"
 msgstr ""
 
-#: src/components/PageSubscription/PageSubscription.tsx:155
+#: src/components/PageSubscription/PageSubscription.tsx:177
+msgid "Subscribe Now"
+msgstr ""
+
+#: src/components/PageSubscription/PageSubscription.tsx:177
 msgid "Subscribed"
 msgstr "Berlangganan"
 
@@ -1173,7 +1178,7 @@ msgstr "Judul"
 msgid "Today"
 msgstr "Hari ini"
 
-#: src/components/PageSubscription/PageSubscription.tsx:123
+#: src/components/PageSubscription/PageSubscription.tsx:125
 msgid "Track curriculum progress"
 msgstr "Lacak perkembangan kurikulum"
 
@@ -1189,20 +1194,19 @@ msgstr "Coba lagi"
 msgid "Tuesday"
 msgstr "Selasa"
 
-#: src/components/PageSubscription/PageSubscription.tsx:120
+#: src/components/PageSubscription/PageSubscription.tsx:122
 msgid "Unlimited students"
 msgstr "Murid tak terbatas"
 
-#: src/components/PageGallery/PageGallery.tsx:81
-#: src/components/PageStudentImages/PageStudentImages.tsx:67
+#: src/components/PageGallery/PageGallery.tsx:82
 msgid "Upload Photo"
 msgstr "Unggah Foto"
 
-#: src/components/PageGallery/PageGallery.tsx:148
+#: src/components/PageGallery/PageGallery.tsx:161
 msgid "Upload Video"
 msgstr ""
 
-#: src/components/PageGallery/PageGallery.tsx:145
+#: src/components/PageGallery/PageGallery.tsx:158
 msgid "Uploading"
 msgstr ""
 
@@ -1214,13 +1218,21 @@ msgstr "Gunakan Kustom"
 msgid "Use Montessori"
 msgstr "Gunakan Montessori"
 
+#: src/components/PageSubscription/PageSubscription.tsx:108
+msgid "User / Month"
+msgstr ""
+
 #: src/components/PageSubscription/PageSubscription.tsx:106
-msgid "User/month"
-msgstr "Pengguna/bulan"
+#~ msgid "User/month"
+#~ msgstr "User/month"
 
 #: src/components/PageAdmin/PageAdmin.tsx:90
 msgid "Users"
 msgstr "Pengguna"
+
+#: src/components/PageSubscription/PageSubscription.tsx:128
+msgid "Video gallery"
+msgstr ""
 
 #: src/components/PageNewObservation/PageNewObservation.tsx:92
 #: src/components/PageObservationDetails/PageObservationDetails.tsx:77
@@ -1261,7 +1273,7 @@ msgid "You"
 msgstr "Anda"
 
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:124
-#: src/components/StudentProgressSummaryCard/StudentProgressSummaryCard.tsx:52
+#: src/components/PageStudentOverview/AssessmentCard.tsx:100
 msgid "You can enable the curriculum feature to track student progress in your curriculum."
 msgstr "Anda dapat mengaktifkan fitur kurikulum untuk melacak perkembangan murid di kurikulum Anda."
 
