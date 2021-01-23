@@ -1,7 +1,7 @@
-import { Head } from "next/document"
 import React, { useEffect } from "react"
 import Image from "next/image"
 import { useRouter } from "next/router"
+import Head from "next/head"
 import useGetUser from "../hooks/api/useGetUser"
 import useGetChildren from "../hooks/api/useGetChildren"
 
