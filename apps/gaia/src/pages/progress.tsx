@@ -1,5 +1,6 @@
 import React, { FC, useState } from "react"
 import Image from "next/image"
+import Head from "next/head"
 import useGetCurriculumProgress from "../hooks/api/useGetCurriculumProgress"
 import { useQueryString } from "../hooks/useQueryString"
 import Button from "../components/Button/Button"
@@ -30,40 +31,49 @@ const Progress = () => {
   }
 
   return (
-    <div className="mx-auto max-w-3xl">
-      <div className="font-bold px-3 pt-3">CURRICULUM AREAS</div>
-      <div className="flex flex-wrap pt-2 md-rounded pl-1">
-        {progress.map((area, idx) => (
-          <Chip
-            key={area.id}
-            containerStyle="ml-2 mb-2"
-            isActive={idx === areaId}
-            onClick={() => setAreaId(idx)}
+    <>
+      <Head>
+        <title>Videos | Obserfy for Parents</title>
+      </Head>
+
+      <div className="mx-auto max-w-3xl">
+        <div className="font-bold px-3 pt-3">CURRICULUM AREAS</div>
+        <div className="flex flex-wrap pt-2 md-rounded pl-1">
+          {progress.map((area, idx) => (
+            <Chip
+              key={area.id}
+              containerStyle="ml-2 mb-2"
+              isActive={idx === areaId}
+              onClick={() => setAreaId(idx)}
+            >
+              {area.name}
+            </Chip>
+          ))}
+        </div>
+        <div className="font-bold px-3 pb-3 pt-6">MATERIALS</div>
+        {progress[areaId].subjects.map((subject) => (
+          <div
+            key={subject.id}
+            className="bg-white mb-6 border md:rounded md:mx-3"
           >
-            {area.name}
-          </Chip>
+            <div className="px-3 my-3 font-bold">{subject.name}</div>
+            <div>
+              {subject.materials
+                .sort((a, b) => a.order - b.order)
+                .map((material) => (
+                  <div
+                    key={material.id}
+                    className="flex px-3 my-3 items-center"
+                  >
+                    <div className="pr-3">{material.name}</div>
+                    <Stage stage={material.stage} />
+                  </div>
+                ))}
+            </div>
+          </div>
         ))}
       </div>
-      <div className="font-bold px-3 pb-3 pt-6">MATERIALS</div>
-      {progress[areaId].subjects.map((subject) => (
-        <div
-          key={subject.id}
-          className="bg-white mb-6 border md:rounded md:mx-3"
-        >
-          <div className="px-3 my-3 font-bold">{subject.name}</div>
-          <div>
-            {subject.materials
-              .sort((a, b) => a.order - b.order)
-              .map((material) => (
-                <div key={material.id} className="flex px-3 my-3 items-center">
-                  <div className="pr-3">{material.name}</div>
-                  <Stage stage={material.stage} />
-                </div>
-              ))}
-          </div>
-        </div>
-      ))}
-    </div>
+    </>
   )
 }
 
