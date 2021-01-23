@@ -21,23 +21,25 @@ const VideosPage = () => {
   }
 
   return (
-    <div className="max-w-3xl mx-auto">
+    <>
       <Head>
         <title>Videos | Obserfy for Parents</title>
       </Head>
 
-      <div className="flex flex-wrap pr-1">
-        {videos.data?.map((v) => (
-          <Video
-            key={`${v.id}1`}
-            thumbnailSrc={v.thumbnailUrl}
-            playbackUrl={v.playbackUrl}
-            childName={child.data?.name}
-            createdAt={v.createdAt}
-          />
-        ))}
+      <div className="max-w-3xl mx-auto">
+        <div className="flex flex-wrap pr-1">
+          {videos.data?.map((v) => (
+            <Video
+              key={`${v.id}1`}
+              thumbnailSrc={v.thumbnailUrl}
+              playbackUrl={v.playbackUrl}
+              childName={child.data?.name}
+              createdAt={v.createdAt}
+            />
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 
@@ -88,7 +90,7 @@ const VideoPlayerDialog: FC<{
   return (
     <div className="bg-overlay fixed top-0 left-0 right-0 bottom-0 z-50 flex items-center ">
       <div
-        className="bg-white md:max-w-2xl w-full md:mx-auto flex flex-col md:flex-row-reverse md:items-start md:rounded-lg overflow-hidden h-screen md:h-auto"
+        className="bg-white md:max-w-2xl w-full md:mx-auto flex flex-col md:flex-row-reverse md:items-start md:rounded-lg overflow-hidden md:h-auto top-0 fixed bottom-0 left-0 right-0 md:relative max-h-screen"
         ref={ref}
         style={{ minHeight: 200 }}
       >
@@ -104,7 +106,7 @@ const VideoPlayerDialog: FC<{
           </Button>
         </div>
 
-        <Suspense fallback={<LoadingPlaceholder className="h-96 w-80" />}>
+        <Suspense fallback={<LoadingPlaceholder className="h-96 w-full" />}>
           <LazyVideoPlayer src={src} poster={poster} />
         </Suspense>
       </div>
