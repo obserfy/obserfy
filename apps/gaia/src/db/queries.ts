@@ -338,6 +338,7 @@ const ChildVideos = array(
     id: string,
     playback_url: string,
     thumbnail_url: string,
+    created_at: date,
   })
 )
 export const findChildVideos = async (childId: string) => {
@@ -346,7 +347,7 @@ export const findChildVideos = async (childId: string) => {
     ChildVideos,
     [childId],
     `
-        select v.id, v.playback_url, v.thumbnail_url
+        select v.id, v.playback_url, v.thumbnail_url, v.created_at
         from video_to_students
         join videos v on v.id = video_to_students.video_id
         where student_id = $1 and v.status = 'ready'
