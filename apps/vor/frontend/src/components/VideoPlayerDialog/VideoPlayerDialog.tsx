@@ -52,6 +52,7 @@ const VideoPlayerDialog: FC<VideoPlayerDialogProps> = ({
         width: "auto",
         minHeight: 200,
         minWidth: 200,
+        maxHeight: "100vh",
       }}
     >
       <Flex sx={{ alignItems: "center", display: ["flex", "flex", "none"] }}>
@@ -63,16 +64,18 @@ const VideoPlayerDialog: FC<VideoPlayerDialogProps> = ({
         </Button>
       </Flex>
 
-      <Flex sx={{ height: ["100vh", "auto"], alignItems: "flex-start" }}>
-        <Box sx={{ flex: 6, maxHeight: "80vh" }}>
-          <Suspense
-            fallback={
-              <LoadingPlaceholder sx={{ width: "100%", pt: "62.8571%" }} />
-            }
-          >
-            <LazyVideoPlayer src={src} poster={thumbnailUrl} />
-          </Suspense>
-        </Box>
+      <Flex sx={{ alignItems: "flex-start" }}>
+        <Suspense
+          fallback={
+            <LoadingPlaceholder sx={{ width: "100%", pt: "62.8571%" }} />
+          }
+        >
+          <LazyVideoPlayer
+            src={src}
+            poster={thumbnailUrl}
+            sx={{ flex: 6, backgroundColor: "black", height: "100%" }}
+          />
+        </Suspense>
 
         <Box
           sx={{ display: ["none", "none", "block"], flex: 2, minWidth: 250 }}

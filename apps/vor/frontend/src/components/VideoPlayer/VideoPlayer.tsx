@@ -1,7 +1,7 @@
 /** @jsx jsx */
 /* eslint-disable jsx-a11y/media-has-caption */
 import Hls from "hls.js/dist/hls.light"
-import { jsx } from "theme-ui"
+import { jsx, ThemeUIStyleObject } from "theme-ui"
 import { FC, useEffect, useRef } from "react"
 // @ts-ignore
 import mux from "mux-embed"
@@ -9,8 +9,9 @@ import mux from "mux-embed"
 export interface VideoPlayerProps {
   src: string
   poster?: string
+  sx?: ThemeUIStyleObject
 }
-const VideoPlayer: FC<VideoPlayerProps> = ({ src, poster }) => {
+const VideoPlayer: FC<VideoPlayerProps> = ({ src, poster, sx }) => {
   const video = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
@@ -52,7 +53,7 @@ const VideoPlayer: FC<VideoPlayerProps> = ({ src, poster }) => {
       id="VideoPlayer"
       ref={video}
       controls
-      sx={{ width: ["100%", "auto"], height: "100%" }}
+      sx={{ width: ["100%", "auto"], height: "100%", ...sx }}
       poster={poster}
     />
   )
