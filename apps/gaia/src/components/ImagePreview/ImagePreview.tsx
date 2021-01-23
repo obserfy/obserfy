@@ -2,9 +2,9 @@ import React, { FC, useLayoutEffect, useRef } from "react"
 import Image from "next/image"
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock"
 import { ChildImage } from "../../hooks/api/useGetChildImages"
-
 import useGetChild from "../../hooks/api/useGetChild"
 import useGetObservationsByImage from "../../hooks/api/useGetImageObservation"
+import useBodyScrollLock from "../../hooks/useBodyScrollLock"
 import dayjs from "../../utils/dayjs"
 import Icon from "../Icon/Icon"
 
@@ -13,21 +13,9 @@ const ImagePreview: FC<{
   img: ChildImage
   onDismiss: () => void
 }> = ({ img, onDismiss, childId }) => {
-  const ref = useRef<HTMLDivElement>(null)
+  const ref = useBodyScrollLock()
   const child = useGetChild(childId)
   const observations = useGetObservationsByImage(img.id)
-
-  useLayoutEffect(() => {
-    if (ref.current) {
-      disableBodyScroll(ref.current, {
-        reserveScrollBarGap: true,
-        allowTouchMove: (el) => el.tagName === "TEXTAREA",
-      })
-    }
-    return () => {
-      if (ref.current) enableBodyScroll(ref.current)
-    }
-  }, [])
 
   return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions

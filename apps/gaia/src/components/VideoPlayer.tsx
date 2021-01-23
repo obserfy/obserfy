@@ -50,7 +50,7 @@ const VideoPlayer: FC<VideoPlayerProps> = ({ src, poster }) => {
       id="VideoPlayer"
       ref={video}
       controls
-      className="w-full h-full"
+      className="w-full h-full bg-black"
       poster={poster}
     />
   )

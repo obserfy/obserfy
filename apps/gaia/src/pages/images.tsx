@@ -31,7 +31,7 @@ const GalleryPage = () => {
         <title>Gallery | Obserfy for Parents</title>
       </Head>
       <div className="max-w-3xl mx-auto">
-        <div className="flex mx-auto flex-wrap w-full px-1">
+        <div className="flex flex-wrap w-full pr-1">
           {childImages.isSuccess && childImages.data?.length === 0 ? (
             <div className="flex flex-col mx-auto items-center pb-8">
               <EmptyGalleryIllustration loading={childImages.isLoading} />
@@ -92,7 +92,7 @@ const ImageItems: FC<{ childId: string; img: ChildImage }> = ({
   return (
     <>
       <button
-        className="w-1/3 md:w-1/5 relative cursor-pointer p-1 md:p-2 md:pb-1 pb-0"
+        className="w-1/3 md:w-1/5 relative cursor-pointer"
         onClick={() => setShowPreview(true)}
       >
         {img.isUploading ? (

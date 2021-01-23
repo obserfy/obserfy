@@ -3,6 +3,7 @@ import auth0 from "../../../../utils/auth0"
 import { getFirstQueryValue, protectedApiRoute } from "../../../../utils/rest"
 
 interface Video {
+  createdAt: string
   id: string
   thumbnailUrl: string
   playbackUrl: string
@@ -29,6 +30,7 @@ const getChildVideos = protectedApiRoute(async (req, res) => {
     id: video.id,
     playbackUrl: video.playback_url,
     thumbnailUrl: video.thumbnail_url,
+    createdAt: video.created_at.toISOString(),
   }))
 
   res.json(response)
