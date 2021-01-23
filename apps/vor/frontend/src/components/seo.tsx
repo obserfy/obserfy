@@ -30,7 +30,7 @@ const SEO: FC<Props> = ({ title, meta = [], description = `` }) => {
     <Helmet
       htmlAttributes={{ lang: i18n.locale }}
       title={i18n._(title)}
-      titleTemplate={`%s - ${site.siteMetadata.title}`}
+      titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[
         {
           name: `description`,

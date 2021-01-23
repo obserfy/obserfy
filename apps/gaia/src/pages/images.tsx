@@ -30,6 +30,7 @@ const GalleryPage = () => {
       <Head>
         <title>Images | Obserfy for Parents</title>
       </Head>
+
       <div className="max-w-3xl mx-auto">
         <div className="flex flex-wrap w-full pr-1">
           {childImages.isSuccess && childImages.data?.length === 0 ? (

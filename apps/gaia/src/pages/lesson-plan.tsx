@@ -16,7 +16,7 @@ const IndexPage = () => {
   return (
     <div>
       <Head>
-        <title>Home | Obserfy for Parents</title>
+        <title>Lesson Plans | Obserfy for Parents</title>
       </Head>
       <div className="max-w-3xl mx-auto flex items-center px-3 pt-3 pb-1">
         <div className="text-sm text-gray-700">
