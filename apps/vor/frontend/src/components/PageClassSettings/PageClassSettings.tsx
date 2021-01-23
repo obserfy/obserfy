@@ -66,7 +66,7 @@ const NoClassPlaceholder: FC = () => (
   >
     <StaticImage
       src="../../images/calendar-colour.png"
-      maxWidth={230}
+      width={230}
       alt="a person pointing at a calendar"
     />
     <Typography.Body my={4} mx={4} sx={{ textAlign: "center", maxWidth: 300 }}>
