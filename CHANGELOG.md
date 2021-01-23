@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.15.11](https://github.com/obserfy/obserfy/compare/v1.15.10...v1.15.11) (2021-01-23)
+
+
+### Bug Fixes
+
+* **deps:** update dependency dayjs to v1.10.4 ([93c202f](https://github.com/obserfy/obserfy/commit/93c202fe640f6181553358b5e841a3aef1ae3800))
+* **deps:** update dependency idb-keyval to v5.0.2 ([a48bb60](https://github.com/obserfy/obserfy/commit/a48bb60e39fd4d49a5a07215ec68a61d5a19aef9))
+* **deps:** update dependency immer to v8.0.1 ([88ec553](https://github.com/obserfy/obserfy/commit/88ec55346b52d110c70025e4db687fc0f9fd9fd0))
+* **deps:** update dependency monocle-ts to v2.3.5 ([1792932](https://github.com/obserfy/obserfy/commit/1792932896dfb75246e635b5b3fe2d8f2a709074))
+* **deps:** update dependency react-query to v3.6.0 ([45404e8](https://github.com/obserfy/obserfy/commit/45404e847acf487d3abe6060d10b4ebd5e0350c7))
+* **deps:** update sentry monorepo to v6.0.1 ([05f4671](https://github.com/obserfy/obserfy/commit/05f4671fcb76a1145b2631d468a48d17161b9734))
+* **deps:** update theme-ui to v0.6.0-alpha.6 ([a54bd10](https://github.com/obserfy/obserfy/commit/a54bd108c843a96512787ca884884cbf5fdc02b5))
+
 ### [1.15.10](https://github.com/obserfy/obserfy/compare/v1.15.9...v1.15.10) (2021-01-20)
 
 
