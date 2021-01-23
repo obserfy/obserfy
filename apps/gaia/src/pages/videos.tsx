@@ -90,6 +90,7 @@ const VideoPlayerDialog: FC<{
       <div
         className="bg-white md:max-w-2xl w-full md:mx-auto flex flex-col md:flex-row-reverse md:items-start md:rounded-lg overflow-hidden h-screen md:h-auto"
         ref={ref}
+        style={{ minHeight: 200 }}
       >
         <div className="bg-white md:w-1/2 p-3 flex items-center items-start">
           <div className="w-full">
