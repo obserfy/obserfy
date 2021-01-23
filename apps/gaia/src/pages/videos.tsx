@@ -60,6 +60,7 @@ const Video: FC<{
           date={createdAt}
           onClick={() => setShowPlayer(false)}
           src={playbackUrl}
+          poster={thumbnailSrc}
         />
       )}
     </>
@@ -71,7 +72,8 @@ const VideoPlayerDialog: FC<{
   date: string
   onClick: () => void
   src: string
-}> = ({ childName, date, onClick, src }) => {
+  poster: string
+}> = ({ childName, date, onClick, src, poster }) => {
   const ref = useBodyScrollLock()
 
   return (
@@ -93,7 +95,7 @@ const VideoPlayerDialog: FC<{
         </div>
 
         <Suspense fallback={<LoadingPlaceholder className="h-96 w-80" />}>
-          <LazyVideoPlayer src={src} />
+          <LazyVideoPlayer src={src} poster={poster} />
         </Suspense>
       </div>
     </div>
