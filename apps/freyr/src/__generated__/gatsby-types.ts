@@ -1040,7 +1040,7 @@ enum ImageFormat {
 
 enum ImageLayout {
   FIXED = 'fixed',
-  FLUID = 'fluid',
+  FULL_WIDTH = 'fullWidth',
   CONSTRAINED = 'constrained'
 }
 
@@ -1166,16 +1166,16 @@ type ImageSharp_sizesArgs = {
 
 type ImageSharp_gatsbyImageDataArgs = {
   layout?: Maybe<ImageLayout>;
-  maxWidth: Maybe<Scalars['Int']>;
-  maxHeight: Maybe<Scalars['Int']>;
   width: Maybe<Scalars['Int']>;
   height: Maybe<Scalars['Int']>;
+  aspectRatio: Maybe<Scalars['Float']>;
   placeholder?: Maybe<ImagePlaceholder>;
   blurredOptions: Maybe<BlurredOptions>;
   tracedSVGOptions: Maybe<Potrace>;
   formats?: Maybe<ReadonlyArray<Maybe<ImageFormat>>>;
   outputPixelDensities: Maybe<ReadonlyArray<Maybe<Scalars['Float']>>>;
-  sizes?: Maybe<Scalars['String']>;
+  breakpoints: Maybe<ReadonlyArray<Maybe<Scalars['Int']>>>;
+  sizes: Maybe<Scalars['String']>;
   quality: Maybe<Scalars['Int']>;
   jpgOptions: Maybe<JPGOptions>;
   pngOptions: Maybe<PNGOptions>;
@@ -2777,6 +2777,7 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___extensions = 'pluginCreator.pluginOptions.extensions',
   pluginCreator___pluginOptions___lessBabel = 'pluginCreator.pluginOptions.lessBabel',
   pluginCreator___pluginOptions___mediaTypes = 'pluginCreator.pluginOptions.mediaTypes',
+  pluginCreator___pluginOptions___root = 'pluginCreator.pluginOptions.root',
   pluginCreator___pluginOptions___localeDir = 'pluginCreator.pluginOptions.localeDir',
   pluginCreator___pluginOptions___base64Width = 'pluginCreator.pluginOptions.base64Width',
   pluginCreator___pluginOptions___stripMetadata = 'pluginCreator.pluginOptions.stripMetadata',
@@ -2999,6 +3000,7 @@ enum SitePluginFieldsEnum {
   pluginOptions___extensions = 'pluginOptions.extensions',
   pluginOptions___lessBabel = 'pluginOptions.lessBabel',
   pluginOptions___mediaTypes = 'pluginOptions.mediaTypes',
+  pluginOptions___root = 'pluginOptions.root',
   pluginOptions___localeDir = 'pluginOptions.localeDir',
   pluginOptions___base64Width = 'pluginOptions.base64Width',
   pluginOptions___stripMetadata = 'pluginOptions.stripMetadata',
@@ -3147,6 +3149,7 @@ type SitePluginPluginOptions = {
   readonly extensions: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly lessBabel: Maybe<Scalars['Boolean']>;
   readonly mediaTypes: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
+  readonly root: Maybe<Scalars['String']>;
   readonly localeDir: Maybe<Scalars['String']>;
   readonly base64Width: Maybe<Scalars['Int']>;
   readonly stripMetadata: Maybe<Scalars['Boolean']>;
@@ -3193,6 +3196,7 @@ type SitePluginPluginOptionsFilterInput = {
   readonly extensions: Maybe<StringQueryOperatorInput>;
   readonly lessBabel: Maybe<BooleanQueryOperatorInput>;
   readonly mediaTypes: Maybe<StringQueryOperatorInput>;
+  readonly root: Maybe<StringQueryOperatorInput>;
   readonly localeDir: Maybe<StringQueryOperatorInput>;
   readonly base64Width: Maybe<IntQueryOperatorInput>;
   readonly stripMetadata: Maybe<BooleanQueryOperatorInput>;
@@ -3477,44 +3481,5 @@ type GatsbyImageSharpSizes_withWebp_tracedSVGFragment = Pick<ImageSharpSizes, 't
 type GatsbyImageSharpSizes_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
 
 type GatsbyImageSharpSizes_withWebp_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
-
-type Unnamed_1_QueryVariables = Exact<{
-  locale: Scalars['String'];
-  slug: Scalars['String'];
-}>;
-
-
-type Unnamed_1_Query = { readonly mdx: Maybe<(
-    Pick<Mdx, 'body'>
-    & { readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'slug' | 'title' | 'description'>> }
-  )> };
-
-type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type PagesQueryQuery = { readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
-
-type LandingPageImagesQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type LandingPageImagesQuery = { readonly hero: Maybe<{ readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }>, readonly vor: Maybe<{ readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }>, readonly gaia: Maybe<{ readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }> };
-
-type Unnamed_2_QueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type Unnamed_2_Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
-
-type LocalizationConfigQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type LocalizationConfigQueryQuery = { readonly themeI18N: Maybe<(
-    Pick<ThemeI18n, 'defaultLang'>
-    & { readonly config: Maybe<ReadonlyArray<Maybe<Pick<Locale, 'code' | 'hrefLang' | 'dateFormat' | 'langDir' | 'localName' | 'name'>>>> }
-  )> };
-
-type LocalizationSEOQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type LocalizationSEOQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'siteUrl'>> }> };
 
 }

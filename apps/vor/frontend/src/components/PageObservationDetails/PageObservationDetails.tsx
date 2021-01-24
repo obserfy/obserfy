@@ -64,6 +64,7 @@ export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
           originalValue={data?.visibleToGuardians ?? false}
         />
         <Button
+          data-cy="delete-observation"
           variant="outline"
           color="danger"
           ml="auto"
@@ -72,7 +73,6 @@ export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
           px={2}
           onClick={deleteDialog.show}
           sx={{ flexShrink: 0 }}
-          data-cy="delete-observation"
         >
           <Icon as={TrashIcon} fill="danger" />
         </Button>
