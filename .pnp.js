@@ -9804,7 +9804,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "typescript-plugin-css-modules",
-        "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:3.0.1"
+        "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:3.1.0"
       ],
       [
         "typeson",
@@ -39705,7 +39705,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["stylelint-config-standard", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:20.0.0"],
             ["tailwindcss", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:2.0.2"],
             ["typescript", "patch:typescript@npm%3A4.1.3#builtin<compat/typescript>::version=4.1.3&hash=cc6730"],
-            ["typescript-plugin-css-modules", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:3.0.1"]
+            ["typescript-plugin-css-modules", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:3.1.0"]
           ],
           "linkType": "SOFT",
         }]
@@ -60906,17 +60906,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["typescript-plugin-css-modules", [
-        ["npm:3.0.1", {
-          "packageLocation": "./.yarn/cache/typescript-plugin-css-modules-npm-3.0.1-c5099e38e2-efc02f2f81.zip/node_modules/typescript-plugin-css-modules/",
+        ["npm:3.1.0", {
+          "packageLocation": "./.yarn/cache/typescript-plugin-css-modules-npm-3.1.0-c52fb61199-41900f54af.zip/node_modules/typescript-plugin-css-modules/",
           "packageDependencies": [
-            ["typescript-plugin-css-modules", "npm:3.0.1"]
+            ["typescript-plugin-css-modules", "npm:3.1.0"]
           ],
           "linkType": "SOFT",
         }],
-        ["virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:3.0.1", {
-          "packageLocation": "./.yarn/$$virtual/typescript-plugin-css-modules-virtual-13b1fcad2c/0/cache/typescript-plugin-css-modules-npm-3.0.1-c5099e38e2-efc02f2f81.zip/node_modules/typescript-plugin-css-modules/",
+        ["virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:3.1.0", {
+          "packageLocation": "./.yarn/$$virtual/typescript-plugin-css-modules-virtual-f08f6c2c3e/0/cache/typescript-plugin-css-modules-npm-3.1.0-c52fb61199-41900f54af.zip/node_modules/typescript-plugin-css-modules/",
           "packageDependencies": [
-            ["typescript-plugin-css-modules", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:3.0.1"],
+            ["typescript-plugin-css-modules", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:3.1.0"],
             ["@types/typescript", null],
             ["dotenv", "npm:8.2.0"],
             ["icss-utils", "npm:4.1.1"],
