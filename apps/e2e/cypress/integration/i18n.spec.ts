@@ -1,4 +1,4 @@
-describe("test adding new student", function () {
+describe("test i18n", function () {
   beforeEach(function () {
     cy.clearSW()
     cy.registerVor()

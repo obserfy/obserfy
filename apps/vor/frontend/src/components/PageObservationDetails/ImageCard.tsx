@@ -56,6 +56,7 @@ const ImagesDataBox: FC<{
           const isSelected = selectedIdx === idx
           return (
             <Image
+              data-cy="image"
               key={image.id}
               src={image.thumbnailUrl}
               mr={2}
@@ -88,6 +89,7 @@ const ImagesDataBox: FC<{
           p={0}
         >
           <input
+            data-cy="upload-image"
             type="file"
             sx={{ display: "none" }}
             accept="image/*"

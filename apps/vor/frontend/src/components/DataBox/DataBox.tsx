@@ -33,7 +33,7 @@ export const DataBox: FC<DataBoxProps> = ({
       px={2}
       onClick={onEditClick}
       sx={{ flexShrink: 0 }}
-      aria-label={`edit-${label.toLowerCase()}`}
+      aria-label={`edit-${label.toLowerCase().replace(" ", "-")}`}
     >
       <Icon as={EditIcon} />
     </Button>
