@@ -113,29 +113,30 @@ const CurrentClass: FC<{
   classId: string
   name: string
 }> = ({ studentId, classId, name }) => {
-  const { mutateAsync, status } = useDeleteStudentClassRelation(studentId)
+  const { mutateAsync, isLoading } = useDeleteStudentClassRelation(studentId)
   const [showDialog, setShowDialog] = useState(false)
+
+  const handleRemove = async () => {
+    try {
+      await mutateAsync(classId)
+      setShowDialog(false)
+    } catch (e) {
+      Sentry.captureException(e)
+    }
+  }
 
   return (
     <>
-      <Card sx={{ borderRadius: [0, "default"] }} mb={2} mx={[0, 3]}>
+      <Card variant="responsive" mb={2}>
         <Flex sx={{ alignItems: "center" }} py={3}>
-          <Typography.Body
-            sx={{
-              lineHeight: 1,
-            }}
-            ml={3}
-          >
-            {name}
-          </Typography.Body>
+          <Typography.Body ml={3}>{name}</Typography.Body>
           <Button
             mr={3}
             ml="auto"
             variant="outline"
-            px={1}
-            py={1}
+            p={1}
             onClick={() => setShowDialog(true)}
-            data-cy="remove-guardian"
+            data-cy="remove-class"
           >
             <Icon as={RemoveIcon} fill="danger" />
           </Button>
@@ -146,25 +147,11 @@ const CurrentClass: FC<{
           <DialogHeader
             title={t`Remove Class?`}
             onAcceptText={t`Yes`}
-            loading={status === "loading"}
-            onAccept={async () => {
-              try {
-                await mutateAsync(classId)
-                setShowDialog(false)
-              } catch (e) {
-                Sentry.captureException(e)
-              }
-            }}
-            onCancel={() => {
-              setShowDialog(false)
-            }}
+            loading={isLoading}
+            onAccept={handleRemove}
+            onCancel={() => setShowDialog(false)}
           />
-          <Typography.Body
-            p={3}
-            sx={{
-              backgroundColor: "background",
-            }}
-          >
+          <Typography.Body p={3} sx={{ backgroundColor: "background" }}>
             <Trans>Are you sure you want to remove {name}?</Trans>
           </Typography.Body>
         </Dialog>
@@ -178,36 +165,30 @@ const OtherClass: FC<{ studentId: string; classId: string; name: string }> = ({
   studentId,
   name,
 }) => {
-  const { mutateAsync, status } = usePostStudentClassRelation(studentId)
+  const { mutateAsync, isLoading } = usePostStudentClassRelation(studentId)
+
+  const handleAddClass = async () => {
+    try {
+      await mutateAsync(classId)
+    } catch (e) {
+      Sentry.captureException(e)
+    }
+  }
 
   return (
     <>
-      <Card sx={{ borderRadius: [0, "default"] }} mb={2} mx={[0, 3]}>
+      <Card variant="responsive" mb={2}>
         <Flex sx={{ alignItems: "center" }} py={3}>
-          <Typography.Body
-            sx={{
-              lineHeight: 1,
-            }}
-            ml={3}
-          >
-            {name}
-          </Typography.Body>
+          <Typography.Body ml={3}>{name}</Typography.Body>
           <Button
             ml="auto"
             mr={3}
             variant="outline"
-            px={1}
-            py={1}
-            data-cy="remove-guardian"
-            onClick={async () => {
-              try {
-                await mutateAsync(classId)
-              } catch (e) {
-                Sentry.captureException(e)
-              }
-            }}
+            p={1}
+            data-cy="add-class"
+            onClick={handleAddClass}
           >
-            {status === "loading" ? (
+            {isLoading ? (
               <LoadingIndicator ml={2} />
             ) : (
               <Icon as={PlusIcon} fill="primary" />
