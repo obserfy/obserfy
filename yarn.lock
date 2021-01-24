@@ -14812,7 +14812,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress-file-upload@npm:^5.0.2":
+"cypress-file-upload@npm:5.0.2":
   version: 5.0.2
   resolution: "cypress-file-upload@npm:5.0.2"
   dependencies:
@@ -16087,7 +16087,7 @@ __metadata:
     "@typescript-eslint/parser": 4.11.1
     auth0-js: 9.14.2
     cypress: 6.3.0
-    cypress-file-upload: ^5.0.2
+    cypress-file-upload: 5.0.2
     cypress-intellij-reporter: 0.0.6
     dotenv: 8.2.0
     eslint: 7.16.0
