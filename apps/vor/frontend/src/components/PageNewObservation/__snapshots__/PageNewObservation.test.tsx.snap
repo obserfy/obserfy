@@ -1113,6 +1113,7 @@ input:focus~.emotion-24 {
               <input
                 accept="image/*"
                 class="emotion-43"
+                data-cy="upload-image"
                 type="file"
                 value=""
               />
