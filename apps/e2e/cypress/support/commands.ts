@@ -8,6 +8,10 @@ declare namespace Cypress {
   ) => Chainable<Element>
 
   interface Chainable {
+    // from plugins
+    attachFile: CustomCommand<(fixturePath: string) => void>
+
+    // our custom made commands
     clearSW: CustomCommand<typeof clearSW>
     visitVor: CustomCommand<typeof visitVor>
     visitGaia: CustomCommand<typeof visitGaia>
