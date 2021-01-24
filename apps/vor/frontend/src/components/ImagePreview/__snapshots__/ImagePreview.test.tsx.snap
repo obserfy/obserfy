@@ -29,6 +29,7 @@ exports[`ImagePreview should render correctly 1`] = `
   >
     <img
       class="emotion-1"
+      data-cy="observation-image"
       height="32"
       src=""
       width="32"

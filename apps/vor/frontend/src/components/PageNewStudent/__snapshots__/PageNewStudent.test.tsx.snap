@@ -1296,6 +1296,7 @@ exports[`PageNewStudent should render correctly 1`] = `
               <input
                 accept="image/*"
                 class="emotion-25"
+                data-cy="upload-profile-pic"
                 type="file"
               />
             </label>
