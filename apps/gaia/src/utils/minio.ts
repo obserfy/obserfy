@@ -5,7 +5,7 @@ const minioClient = new Minio.Client({
   port: process.env.MINIO_PORT
     ? parseInt(process.env.MINIO_PORT, 10)
     : undefined,
-  useSSL: process.env.NODE_ENV === "production",
+  useSSL: process.env.NODE_ENV === "production" && process.env.CI !== "true",
   accessKey: process.env.MINIO_ACCESS_KEY ?? "",
   secretKey: process.env.MINIO_SECRET_KEY ?? "",
 })

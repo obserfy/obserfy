@@ -5,6 +5,7 @@ describe("test student features", function () {
     cy.clearSW()
     cy.fixedClearCookies()
     cy.registerVor()
+    cy.gaiaLogin()
   })
 
   it("should be able to create, edit, and delete students", function () {
@@ -91,5 +92,83 @@ describe("test student features", function () {
     cy.contains("label", "Student ID").find("input").clear().type("test")
     cy.contains("Save").click()
     cy.contains("test").should("be.visible")
+
+    cy.get('[aria-label="edit-date of birth"]').click()
+    cy.contains("6").click()
+    cy.get("[data-cy=confirm]").click()
+    cy.contains("6").should("be.visible")
+
+    cy.get('[aria-label="edit-date of entry"]').click()
+    cy.contains("7").click()
+    cy.get("[data-cy=confirm]").click()
+    cy.contains("7").should("be.visible")
+
+    cy.get("[data-cy=edit-class]").click()
+    cy.get(`[data-cy=remove-class]`).click()
+    cy.contains("Yes").click()
+
+    cy.get(`[data-cy=remove-class]`).should("not.exist")
+    cy.get(`[data-cy=add-class]`).click()
+    cy.get(`[data-cy=add-class]`).should("not.exist")
+    cy.get(`[data-cy=remove-class]`).should("be.visible")
+    cy.get(`[data-cy=remove-class]`).click()
+    cy.contains("Yes").click()
+
+    cy.contains("Student Profile").click()
+    cy.get("@class").then((newClass: any) => {
+      cy.contains(newClass.name).should("not.exist")
+    })
+
+    const guardian = {
+      name: faker.name.firstName(),
+      email: "gilfoyle@obserfy.com",
+      phone: faker.phone.phoneNumber(),
+      address: faker.address.streetAddress(true),
+      note: faker.lorem.paragraph(2),
+    }
+    cy.get("[data-cy=add-guardian]").click()
+    cy.contains("label", "Relationship").find("select").select("Father")
+    cy.contains("Guardian Name").type(guardian.name)
+    cy.contains("Email").type(guardian.email)
+    cy.contains("Phone").type(guardian.phone)
+    cy.contains("Address").type(guardian.address)
+    cy.contains("Note").type(guardian.note)
+    cy.contains("button", "Add").click()
+    cy.contains(student2.guardianName).should("be.visible")
+    cy.contains(guardian.name).should("be.visible")
+
+    cy.get(`[data-cy=remove-${guardian.name}]`).click()
+    cy.contains("Delete").click()
+    cy.get(`[data-cy=remove-${student2.guardianName}]`).click()
+    cy.contains("Delete").click()
+    cy.contains(student2.guardianName).should("not.exist")
+    cy.contains(guardian.name).should("not.exist")
+
+    cy.get("[data-cy=add-guardian]").click()
+    cy.contains("From existing").click()
+    cy.contains(guardian.name).should("be.visible")
+    cy.contains(student2.guardianName).should("be.visible")
+    cy.contains(guardian.name).should("be.visible").click()
+    cy.contains("button", "Add").click()
+
+    cy.contains(guardian.name).should("be.visible")
+
+    // ==== test inactive
+    cy.contains(newName).should("be.visible")
+    cy.contains("Set as Inactive").click()
+    cy.contains("Yes").click()
+    cy.visitVor("/dashboard/students")
+    cy.contains(newName).should("not.exist")
+  })
+
+  it("should be able to show student to parent", function () {
+    cy.exec(`yarn run db:reset ${Cypress.env("GAIA_USERNAME")}`)
+    cy.createStudent()
+      .then(() => cy.createGuardian(this.student.id))
+      .then(() => cy.gaiaLogin())
+      .then(() => {
+        cy.visitGaia("/")
+        cy.contains(this.student.name).should("be.visible")
+      })
   })
 })
