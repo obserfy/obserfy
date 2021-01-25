@@ -140,14 +140,17 @@ const ImageItem: FC<{ studentId: string; image: StudentImage }> = ({
   studentId,
   image,
 }) => (
-  <Box p={[1, 2]} sx={{ width: ["33.333%", "25%", "20%", "14.285%"] }}>
+  <Box
+    data-cy="image"
+    p={[1, 2]}
+    sx={{ width: ["33.333%", "25%", "20%", "14.285%"] }}
+  >
     <Link
       to={STUDENT_IMAGE_URL(studentId, image.id)}
       sx={{ animation: `1s ease-in-out 0s infinite ${fading}` }}
     >
       <Box pt="100%" sx={{ width: "100%", position: "relative" }}>
         <Image
-          data-cy="image"
           loading="lazy"
           src={image.thumbnailUrl}
           sx={{

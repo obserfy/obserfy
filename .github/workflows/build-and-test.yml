@@ -272,10 +272,12 @@ jobs:
           CYPRESS_VOR_HOST: 'https://localhost:8000'
           CYPRESS_GAIA_HOST: 'http://localhost:3000'
       - uses: actions/upload-artifact@v2
+        if: always()
         with:
           name: e2e-videos
           path: apps/e2e/cypress/videos
       - uses: actions/upload-artifact@v2
+        if: always()
         with:
           name: e2e-screenshots
           path: apps/e2e/cypress/screenshots
@@ -356,10 +358,12 @@ jobs:
           CYPRESS_VOR_HOST: 'https://localhost:8000'
           CYPRESS_GAIA_HOST: 'http://localhost:3000'
       - uses: actions/upload-artifact@v2
+        if: always()
         with:
           name: e2e-videos
           path: apps/e2e/cypress/videos
       - uses: actions/upload-artifact@v2
+        if: always()
         with:
           name: e2e-screenshots
           path: apps/e2e/cypress/screenshots
