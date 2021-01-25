@@ -23,6 +23,7 @@ declare namespace Cypress {
     createStudent: CustomCommand<typeof createStudent>
     createGuardian: CustomCommand<typeof createGuardian>
     createObservation: CustomCommand<typeof createObservation>
+    createLessonPlan: CustomCommand<typeof createLessonPlan>
   }
 }
 
@@ -134,7 +135,7 @@ const createClass = () => {
 
 const createGuardian = (studentId: string) => {
   const schoolId = localStorage.getItem("SCHOOL_ID")
-  const newGuardian = {
+  const guardian = {
     name: faker.name.firstName(),
     email: "gilfoyle@obserfy.com",
     phone: faker.phone.phoneNumber(),
@@ -143,17 +144,15 @@ const createGuardian = (studentId: string) => {
     relationship: 1,
     studentId,
   }
-  cy.request(
-    "POST",
-    vorApi(`/schools/${schoolId}/guardians`),
-    newGuardian
-  ).then((response) => {
-    cy.wrap({ id: response.body.id, ...newGuardian }).as("guardian")
-  })
+  cy.request("POST", vorApi(`/schools/${schoolId}/guardians`), guardian).then(
+    (response) => {
+      cy.wrap({ id: response.body.id, ...guardian }).as("guardian")
+    }
+  )
 }
 
 const createObservation = (studentId: string, visibleToGuardians?: boolean) => {
-  const newObservation = {
+  const observation = {
     shortDesc: faker.lorem.paragraph(1),
     longDesc: faker.lorem.paragraph(1),
     visibleToGuardians,
@@ -161,10 +160,24 @@ const createObservation = (studentId: string, visibleToGuardians?: boolean) => {
   cy.request(
     "POST",
     vorApi(`/students/${studentId}/observations`),
-    newObservation
+    observation
   ).then((response) => {
-    cy.wrap({ id: response.body.id, ...newObservation }).as("observation")
+    cy.wrap({ id: response.body.id, ...observation }).as("observation")
   })
+}
+
+const createLessonPlan = (studentId: string) => {
+  const schoolId = localStorage.getItem("SCHOOL_ID")
+  const plan = {
+    date: new Date().toDateString(),
+    title: faker.lorem.paragraph(1),
+    students: [studentId],
+  }
+  cy.request("POST", vorApi(`/schools/${schoolId}/plans`), plan).then(
+    (response) => {
+      cy.wrap({ id: response.body.id, ...plan }).as("observation")
+    }
+  )
 }
 
 Cypress.Commands.add("clearSW", clearSW)
@@ -178,5 +191,4 @@ Cypress.Commands.add("createSchool", createSchool)
 Cypress.Commands.add("createStudent", createStudent)
 Cypress.Commands.add("createGuardian", createGuardian)
 Cypress.Commands.add("createObservation", createObservation)
-// createObservation gaia
-// createLessonPlan
+Cypress.Commands.add("createLessonPlan", createLessonPlan)
