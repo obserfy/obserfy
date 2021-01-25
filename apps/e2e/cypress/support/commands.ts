@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+const dayjs = require("dayjs")
 const faker = require("faker")
 const { seal, loginTestUser, getUserInfo } = require("./auth0")
 
@@ -21,6 +22,9 @@ declare namespace Cypress {
     gaiaLogin: CustomCommand<typeof gaiaLogin>
     createSchool: CustomCommand<typeof createSchool>
     createStudent: CustomCommand<typeof createStudent>
+    createGuardian: CustomCommand<typeof createGuardian>
+    createObservation: CustomCommand<typeof createObservation>
+    createLessonPlan: CustomCommand<typeof createLessonPlan>
   }
 }
 
@@ -130,6 +134,54 @@ const createClass = () => {
   )
 }
 
+const createGuardian = (studentId: string) => {
+  const schoolId = localStorage.getItem("SCHOOL_ID")
+  const guardian = {
+    name: faker.name.firstName(),
+    email: "gilfoyle@obserfy.com",
+    phone: faker.phone.phoneNumber(),
+    address: faker.address.streetAddress(true),
+    note: faker.lorem.paragraph(2),
+    relationship: 1,
+    studentId,
+  }
+  cy.request("POST", vorApi(`/schools/${schoolId}/guardians`), guardian).then(
+    (response) => {
+      cy.wrap({ id: response.body.id, ...guardian }).as("guardian")
+    }
+  )
+}
+
+const createObservation = (studentId: string, visibleToGuardians?: boolean) => {
+  const observation = {
+    shortDesc: faker.lorem.paragraph(1),
+    longDesc: faker.lorem.paragraph(1),
+    visibleToGuardians,
+  }
+  cy.request(
+    "POST",
+    vorApi(`/students/${studentId}/observations`),
+    observation
+  ).then((response) => {
+    cy.wrap(response.body).as("observation")
+  })
+}
+
+const createLessonPlan = (studentId: string) => {
+  const schoolId = localStorage.getItem("SCHOOL_ID")
+  const plan = {
+    date: dayjs().startOf("day").toISOString(),
+    title: faker.lorem.paragraph(1),
+    description: faker.lorem.paragraph(1),
+    students: [studentId],
+  }
+  cy.request("POST", vorApi(`/schools/${schoolId}/plans`), plan).then(
+    (response) => {
+      cy.wrap(response.body).as("lessonPlan")
+    }
+  )
+}
+
 Cypress.Commands.add("clearSW", clearSW)
 Cypress.Commands.add("visitVor", visitVor)
 Cypress.Commands.add("visitGaia", visitGaia)
@@ -139,3 +191,6 @@ Cypress.Commands.add("createClass", createClass)
 Cypress.Commands.add("gaiaLogin", gaiaLogin)
 Cypress.Commands.add("createSchool", createSchool)
 Cypress.Commands.add("createStudent", createStudent)
+Cypress.Commands.add("createGuardian", createGuardian)
+Cypress.Commands.add("createObservation", createObservation)
+Cypress.Commands.add("createLessonPlan", createLessonPlan)

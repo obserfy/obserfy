@@ -14980,7 +14980,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dayjs@npm:1.10.4":
+"dayjs@npm:1.10.4, dayjs@npm:^1.10.4":
   version: 1.10.4
   resolution: "dayjs@npm:1.10.4"
   checksum: 3b7bb2232fff808209870bc72d4b2000941a1aa45f0226e2907f9dd1dda306d4b3a1eb9058450fd2c324b01a007a37809ac6f9b525806a86902c55e2934cd5d5
@@ -16089,6 +16089,7 @@ __metadata:
     cypress: 6.3.0
     cypress-file-upload: 5.0.2
     cypress-intellij-reporter: 0.0.6
+    dayjs: ^1.10.4
     dotenv: 8.2.0
     eslint: 7.16.0
     eslint-config-airbnb-typescript: 12.0.0

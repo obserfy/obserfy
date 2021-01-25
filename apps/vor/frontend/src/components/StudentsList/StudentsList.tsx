@@ -193,6 +193,7 @@ const StudentListItem: FC<{
         <Box sx={{ flexShrink: 0, width: 32, height: 32 }}>
           {profileImageUrl ? (
             <Image
+              data-cy="profile-pic-image"
               src={profileImageUrl}
               sx={{
                 width: 32,

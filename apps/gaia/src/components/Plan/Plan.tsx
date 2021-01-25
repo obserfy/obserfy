@@ -210,6 +210,7 @@ const EditObservationForm: FC<{
       />
       <div className="flex mt-2">
         <Button
+          data-cy="delete-observation"
           iconOnly
           outline
           className="mr-2 text-red-700 px-2"
