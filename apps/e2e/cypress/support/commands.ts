@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+const dayjs = require("dayjs")
 const faker = require("faker")
 const { seal, loginTestUser, getUserInfo } = require("./auth0")
 
@@ -162,20 +163,21 @@ const createObservation = (studentId: string, visibleToGuardians?: boolean) => {
     vorApi(`/students/${studentId}/observations`),
     observation
   ).then((response) => {
-    cy.wrap({ id: response.body.id, ...observation }).as("observation")
+    cy.wrap(response.body).as("observation")
   })
 }
 
 const createLessonPlan = (studentId: string) => {
   const schoolId = localStorage.getItem("SCHOOL_ID")
   const plan = {
-    date: new Date().toDateString(),
+    date: dayjs().startOf("day").toISOString(),
     title: faker.lorem.paragraph(1),
+    description: faker.lorem.paragraph(1),
     students: [studentId],
   }
   cy.request("POST", vorApi(`/schools/${schoolId}/plans`), plan).then(
     (response) => {
-      cy.wrap({ id: response.body.id, ...plan }).as("observation")
+      cy.wrap(response.body).as("lessonPlan")
     }
   )
 }
