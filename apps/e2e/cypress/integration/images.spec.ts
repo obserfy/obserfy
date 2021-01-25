@@ -10,7 +10,7 @@ describe("test image features", function () {
     cy.get("[data-cy=upload-image]").attachFile("icon.png")
     cy.get("[data-cy=upload-image]").attachFile("icon.png")
     cy.get("[data-cy=upload-image]").attachFile("icon.png")
-    cy.wait(500)
+    cy.wait(1000)
     cy.get("[data-cy=image]").should("have.lengthOf", 3)
 
     cy.get("[data-cy=image]").first().click()
