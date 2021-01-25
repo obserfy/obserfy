@@ -59,9 +59,7 @@ const PageGallery: FC<PageGalleryProps> = ({ studentId }) => {
         <Tab
           items={["Images", "Videos"]}
           selectedItemIdx={selectedView}
-          onTabClick={(idx) => {
-            setSelectedView(idx)
-          }}
+          onTabClick={(idx) => setSelectedView(idx)}
         />
       </TranslucentBar>
 
@@ -97,6 +95,7 @@ const ImagesView: FC<{ studentId: string }> = ({ studentId }) => {
           sx={{ width: ["100%", "auto"], display: "inline-block" }}
         >
           <input
+            data-cy="upload-image"
             type="file"
             accept="image/*"
             style={{ display: "none" }}
@@ -144,13 +143,11 @@ const ImageItem: FC<{ studentId: string; image: StudentImage }> = ({
   <Box p={[1, 2]} sx={{ width: ["33.333%", "25%", "20%", "14.285%"] }}>
     <Link
       to={STUDENT_IMAGE_URL(studentId, image.id)}
-      sx={{
-        display: "block",
-        animation: `1s ease-in-out 0s infinite ${fading}`,
-      }}
+      sx={{ animation: `1s ease-in-out 0s infinite ${fading}` }}
     >
       <Box pt="100%" sx={{ width: "100%", position: "relative" }}>
         <Image
+          data-cy="image"
           loading="lazy"
           src={image.thumbnailUrl}
           sx={{
