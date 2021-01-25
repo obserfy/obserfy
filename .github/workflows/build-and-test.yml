@@ -241,7 +241,7 @@ jobs:
       - name: Install Dependencies
         if: steps.cache-deps.outputs.cache-hit != 'true'
         run: yarn workspaces focus e2e gaia
-      - run: NODE_ENV=test yarn workspace gaia run start &
+      - run: yarn workspace gaia run start &
         env:
           AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
           AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
@@ -317,7 +317,7 @@ jobs:
       - name: Install Dependencies
         if: steps.cache-deps.outputs.cache-hit != 'true'
         run: yarn workspaces focus e2e gaia
-      - run: NODE_ENV=test yarn workspace gaia run start &
+      - run: yarn workspace gaia run start &
         env:
           AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
           AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
