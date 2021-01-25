@@ -21,6 +21,7 @@ declare namespace Cypress {
     gaiaLogin: CustomCommand<typeof gaiaLogin>
     createSchool: CustomCommand<typeof createSchool>
     createStudent: CustomCommand<typeof createStudent>
+    createGuardian: CustomCommand<typeof createGuardian>
   }
 }
 
@@ -130,6 +131,26 @@ const createClass = () => {
   )
 }
 
+const createGuardian = (studentId: string) => {
+  const schoolId = localStorage.getItem("SCHOOL_ID")
+  const newGuardian = {
+    name: faker.name.firstName(),
+    email: "gilfoyle@obserfy.com",
+    phone: faker.phone.phoneNumber(),
+    address: faker.address.streetAddress(true),
+    note: faker.lorem.paragraph(2),
+    relationship: 1,
+    studentId,
+  }
+  cy.request(
+    "POST",
+    vorApi(`/schools/${schoolId}/guardians`),
+    newGuardian
+  ).then((response) => {
+    cy.wrap({ id: response.body.id, ...newGuardian }).as("guardian")
+  })
+}
+
 Cypress.Commands.add("clearSW", clearSW)
 Cypress.Commands.add("visitVor", visitVor)
 Cypress.Commands.add("visitGaia", visitGaia)
@@ -139,3 +160,4 @@ Cypress.Commands.add("createClass", createClass)
 Cypress.Commands.add("gaiaLogin", gaiaLogin)
 Cypress.Commands.add("createSchool", createSchool)
 Cypress.Commands.add("createStudent", createStudent)
+Cypress.Commands.add("createGuardian", createGuardian)
