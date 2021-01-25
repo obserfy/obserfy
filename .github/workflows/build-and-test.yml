@@ -271,6 +271,14 @@ jobs:
           CYPRESS_GAIA_PASSWORD: ${{ secrets.CYPRESS_GAIA_PASSWORD }}
           CYPRESS_VOR_HOST: 'https://localhost:8000'
           CYPRESS_GAIA_HOST: 'http://localhost:3000'
+      - uses: actions/upload-artifact@v2
+        with:
+          name: e2e-videos
+          path: apps/vor/e2e/cypress/videos
+      - uses: actions/upload-artifact@v2
+        with:
+          name: e2e-screenshots
+          path: apps/vor/e2e/cypress/videos
 
   # runs on renovate build to conserve cypress quota.
   e2e-sequential:
@@ -347,3 +355,11 @@ jobs:
           CYPRESS_GAIA_PASSWORD: ${{ secrets.CYPRESS_GAIA_PASSWORD }}
           CYPRESS_VOR_HOST: 'https://localhost:8000'
           CYPRESS_GAIA_HOST: 'http://localhost:3000'
+      - uses: actions/upload-artifact@v2
+        with:
+          name: e2e-videos
+          path: apps/vor/e2e/cypress/videos
+      - uses: actions/upload-artifact@v2
+        with:
+          name: e2e-screenshots
+          path: apps/vor/e2e/cypress/videos
