@@ -7,10 +7,11 @@ describe("test image features", function () {
 
   it("should be able to add and delete images", function () {
     cy.visitVor(`/dashboard/students/gallery?studentId=${this.student.id}`)
-    cy.get("[data-cy=upload-image]").attachFile("icon.png")
-    cy.get("[data-cy=upload-image]").attachFile("icon.png")
-    cy.get("[data-cy=upload-image]").attachFile("icon.png")
     cy.wait(1000)
+    cy.get("[data-cy=upload-image]").attachFile("icon.png")
+    cy.get("[data-cy=upload-image]").attachFile("icon.png")
+    cy.get("[data-cy=upload-image]").attachFile("icon.png")
+    cy.wait(200)
     cy.get("[data-cy=image]").should("have.lengthOf", 3)
 
     cy.get("[data-cy=image]").first().click()
