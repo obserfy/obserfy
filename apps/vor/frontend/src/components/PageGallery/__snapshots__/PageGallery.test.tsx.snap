@@ -643,6 +643,7 @@ exports[`PageGallery should render correctly 1`] = `
           >
             <input
               accept="image/*"
+              data-cy="upload-image"
               style="display: none;"
               type="file"
             />
