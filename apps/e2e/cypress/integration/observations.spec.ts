@@ -78,7 +78,7 @@ describe("test observation features", function () {
       })
   })
 
-  it.only("should be able to post and delete observation to lesson plan", function () {
+  it("should be able to post and delete observation to lesson plan", function () {
     cy.exec(`yarn run db:reset ${Cypress.env("GAIA_USERNAME")}`)
     cy.createLessonPlan(this.student.id)
       .then(() => cy.createGuardian(this.student.id))
