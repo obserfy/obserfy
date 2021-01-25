@@ -41,7 +41,7 @@
     "@types/pg": "7.14.9",
     "auth0-js": "9.14.2",
     "cypress-file-upload": "5.0.2",
-    "dayjs": "^1.10.4",
+    "dayjs": "1.10.4",
     "dotenv": "8.2.0",
     "faker": "5.1.0",
     "pg": "8.5.1",
