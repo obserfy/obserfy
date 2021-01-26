@@ -98,7 +98,7 @@ describe("Test lesson plan features", function () {
     cy.get("[data-cy=confirm]").click()
     cy.contains(lessonPlan2.title).should("not.exist")
 
-    cy.contains("Today").click()
+    cy.contains("Today").click({ force: true })
     const repeatingPlan = {
       title: "A Bold Repeating New Plan",
       description: "A Bold Repeating New description",
