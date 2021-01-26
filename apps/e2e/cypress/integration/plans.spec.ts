@@ -4,12 +4,12 @@ describe("Test lesson plan features", function () {
     cy.registerVor()
     cy.createSchool()
     cy.createClass()
-    cy.createStudent().then(() => {
-      cy.visitVor(`/dashboard/students/plans?studentId=${this.student.id}`)
-    })
+    cy.createStudent()
   })
 
   it("should be able to edit, create, and delete plans.", function () {
+    cy.visitVor(`/dashboard/students/plans?studentId=${this.student.id}`)
+
     const firstName = "A Bold New Plan"
 
     const secondName = "A bolder plan"
