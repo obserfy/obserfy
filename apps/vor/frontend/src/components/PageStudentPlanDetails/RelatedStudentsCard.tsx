@@ -102,6 +102,7 @@ const StudentListItem: FC<{
       )}
       <Typography.Body ml={3}>{name}</Typography.Body>
       <Button
+        data-cy="delete-student"
         variant="secondary"
         ml="auto"
         onClick={handleDeleteRelatedStudent}

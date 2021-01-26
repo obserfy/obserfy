@@ -1,5 +1,5 @@
 import { StaticImage } from "gatsby-plugin-image"
-import React, { FC } from "react"
+import React, { FC, memo } from "react"
 
 export const StudentPicturePlaceholder: FC = () => (
   <StaticImage
@@ -11,4 +11,4 @@ export const StudentPicturePlaceholder: FC = () => (
   />
 )
 
-export default StudentPicturePlaceholder
+export default memo(StudentPicturePlaceholder)

@@ -25,6 +25,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   border-bottom-width: 1px;
   border-bottom-color: var(--theme-ui-colors-borderSolid, #e5e5e5);
   border-bottom-style: solid;
+  z-index: 100;
 }
 
 @supports (backdrop-filter: blur(20px)) {
@@ -1241,6 +1242,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
           </label>
           <button
             class="emotion-40"
+            data-cy="add-link"
             disabled=""
           >
             Add
@@ -1312,6 +1314,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
           </h6>
           <button
             class="emotion-56"
+            data-cy="add-student"
           >
             Add
           </button>

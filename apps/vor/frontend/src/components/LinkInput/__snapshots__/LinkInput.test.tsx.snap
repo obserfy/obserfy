@@ -226,6 +226,7 @@ exports[`LinkInput should render correctly 1`] = `
       </label>
       <button
         class="emotion-5"
+        data-cy="add-link"
       >
         Add
       </button>

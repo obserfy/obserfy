@@ -94,12 +94,13 @@ describe("test student features", function () {
     cy.contains("test").should("be.visible")
 
     cy.get('[aria-label="edit-date of birth"]').click()
-    cy.contains("6").click()
+    cy.wait(100)
+    cy.contains("button:visible", "6").click()
     cy.get("[data-cy=confirm]").click()
     cy.contains("6").should("be.visible")
 
     cy.get('[aria-label="edit-date of entry"]').click()
-    cy.contains("7").click()
+    cy.contains("button:visible", "7").click()
     cy.get("[data-cy=confirm]").click()
     cy.contains("7").should("be.visible")
 

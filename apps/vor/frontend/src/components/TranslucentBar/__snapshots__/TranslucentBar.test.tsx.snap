@@ -29,6 +29,7 @@ exports[`TranslucentBar should render correctly 1`] = `
   top: 0;
   left: 0;
   right: 0;
+  z-index: 100;
 }
 
 @supports (backdrop-filter: blur(20px)) {
