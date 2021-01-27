@@ -49,6 +49,7 @@ export const PageError: FC = () => {
           height={180}
           src="../../images/astronaut.png"
           alt="Illustration of something that went wrong"
+          placeholder="blurred"
         />
         <Typography.H5
           pt={3}

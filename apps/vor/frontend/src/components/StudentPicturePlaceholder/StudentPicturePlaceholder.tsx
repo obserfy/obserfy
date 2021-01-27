@@ -8,6 +8,7 @@ export const StudentPicturePlaceholder: FC = () => (
     alt="empty student photo"
     width={32}
     className="rounded-full"
+    placeholder="blurred"
   />
 )
 
