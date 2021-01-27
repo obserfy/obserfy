@@ -27,6 +27,7 @@ const IndexPage: FC = () => {
               layout="constrained"
               width={704}
               formats={["auto", "webp", "avif"]}
+              placeholder="blurred"
             />
           </div>
           <div className="prose prose-lg md:prose-lg max-w-xl px-4 w-full">
@@ -79,6 +80,7 @@ const IndexPage: FC = () => {
             layout="constrained"
             width={900}
             formats={["auto", "webp", "avif"]}
+            placeholder="blurred"
           />
 
           <div className="px-5 mt-5 flex-2">
@@ -179,6 +181,7 @@ const IndexPage: FC = () => {
             layout="constrained"
             width={900}
             formats={["auto", "webp", "avif"]}
+            placeholder="blurred"
           />
           <div className="px-5 mt-5">
             <p className="font-bold text-lg text-green-700 mb-5 font-body">
