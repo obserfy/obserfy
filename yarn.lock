@@ -19015,10 +19015,10 @@ fsevents@^1.2.7:
     preact: 10.5.12
     preact-render-to-string: 5.1.12
     prettier: 2.2.1
-    react: "npm:@preact/compat@0.0.3"
-    react-dom: "npm:@preact/compat@0.0.3"
+    react: "npm:@preact/compat@0.0.4"
+    react-dom: "npm:@preact/compat@0.0.4"
     react-query: 3.6.0
-    react-ssr-prepass: "npm:preact-ssr-prepass@^1.1.2"
+    react-ssr-prepass: "npm:preact-ssr-prepass@^1.1.3"
     snarkdown: 2.0.0
     stylelint: 13.9.0
     stylelint-config-prettier: 8.0.2
@@ -30894,12 +30894,12 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"react-dom@npm:@preact/compat@0.0.3, react@npm:@preact/compat@0.0.3":
-  version: 0.0.3
-  resolution: "@preact/compat@npm:0.0.3"
+"react-dom@npm:@preact/compat@0.0.4, react@npm:@preact/compat@0.0.4":
+  version: 0.0.4
+  resolution: "@preact/compat@npm:0.0.4"
   peerDependencies:
     preact: "*"
-  checksum: 82e25edb27f50d16e96910fb9b0ef7c7231e8bcd9f78c0f4c27a499665c3271032090e34e8c350f2733e58c6caf5617737d8ecdb92c1b7ebbeb24c3fe84ad24d
+  checksum: 1f25fd5f12bbea1552545f4e1d925bc6e673c5ee3f1cadfe2577c2c3136acaca91b791c21fd19be41bbc96613d845fe5a7336bd9fbee21250c986f6ba084bdd1
   languageName: node
   linkType: hard
 
@@ -31251,7 +31251,7 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"react-ssr-prepass@npm:preact-ssr-prepass@^1.1.2":
+"react-ssr-prepass@npm:preact-ssr-prepass@^1.1.3":
   version: 1.1.3
   resolution: "preact-ssr-prepass@npm:1.1.3"
   peerDependencies:
