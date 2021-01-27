@@ -10861,7 +10861,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-loader@npm:8.2.2":
+"babel-loader@npm:8.2.2, babel-loader@npm:^8.2.2":
   version: 8.2.2
   resolution: "babel-loader@npm:8.2.2"
   dependencies:
@@ -19005,7 +19005,7 @@ fsevents@^1.2.7:
     next: 10.0.5
     next-compose-plugins: 2.2.1
     next-plugin-preact: ^3.0.3
-    next-pwa: 5.0.3
+    next-pwa: 5.0.4
     node-mocks-http: 1.10.1
     pg: 8.5.1
     pino: 6.11.0
@@ -26432,19 +26432,19 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"next-pwa@npm:5.0.3":
-  version: 5.0.3
-  resolution: "next-pwa@npm:5.0.3"
+"next-pwa@npm:5.0.4":
+  version: 5.0.4
+  resolution: "next-pwa@npm:5.0.4"
   dependencies:
+    babel-loader: ^8.2.2
     clean-webpack-plugin: ^3.0.0
     globby: ^11.0.2
     workbox-webpack-plugin: ^6.0.2
     workbox-window: ^6.0.2
-    worker-loader: ^3.0.7
   peerDependencies:
     next: ">=7.0.0"
     webpack: ">=4.0.0"
-  checksum: f6ecca9a759b1454a1f161cd219c7726de6b647ca67425d35060ee9e3d1575d07b518a21727f2ca6af16cae97486db5389d2ccd38dde6eb83245a0746ad75efc
+  checksum: 11d178731af743a2ef4c71c1fc7915931f2ef340bbf94f4a0b31b31647dea84ade1be2f6843dae451834db9d1745e2cb66fd3cee2364fc85a21b688161f124d8
   languageName: node
   linkType: hard
 
@@ -38380,18 +38380,6 @@ typescript@^4.0.0:
   dependencies:
     errno: ~0.1.7
   checksum: ef76a6892bdf6a4231e6d657c13e2e960278535915d6235d9e0e3e23b65da94a56e5bed17ac5fda282370601d4cd18f4cba9552aa52f4fa9a25cc9fd3fcf58a9
-  languageName: node
-  linkType: hard
-
-"worker-loader@npm:^3.0.7":
-  version: 3.0.7
-  resolution: "worker-loader@npm:3.0.7"
-  dependencies:
-    loader-utils: ^2.0.0
-    schema-utils: ^3.0.0
-  peerDependencies:
-    webpack: ^4.0.0 || ^5.0.0
-  checksum: 7ebb465529f0d75e4f49aade24be8b655a865bd7ecb079eb42fa1b17407a929f7422e2c5e3ce95c1ff3a445e5d3b6108b33bab8380cd1ebe39320016d122067e
   languageName: node
   linkType: hard
 
