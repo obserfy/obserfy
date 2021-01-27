@@ -68,6 +68,7 @@ const NoClassPlaceholder: FC = () => (
       src="../../images/calendar-colour.png"
       width={230}
       alt="a person pointing at a calendar"
+      placeholder="blurred"
     />
     <Typography.Body my={4} mx={4} sx={{ textAlign: "center", maxWidth: 300 }}>
       <Trans>
