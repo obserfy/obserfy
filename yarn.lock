@@ -7688,7 +7688,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@svgr/webpack@npm:5.5.0":
+"@svgr/webpack@npm:5.5.0, @svgr/webpack@npm:^5.5.0":
   version: 5.5.0
   resolution: "@svgr/webpack@npm:5.5.0"
   dependencies:
@@ -18959,6 +18959,7 @@ fsevents@^1.2.7:
     "@sentry/integrations": 6.0.3
     "@sentry/node": 6.0.3
     "@sentry/webpack-plugin": 1.14.0
+    "@svgr/webpack": ^5.5.0
     "@tailwindcss/typography": 0.4.0
     "@types/body-scroll-lock": 2.6.1
     "@types/dompurify": 2.2.1

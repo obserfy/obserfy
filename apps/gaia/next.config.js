@@ -24,17 +24,19 @@ const pwaConfig = {
   pwa: {
     disable: process.env.NODE_ENV !== "production",
     dest: "public",
-    publicExcludes: ['!icons/**/*', '!images/**/*', '!google-fonts/**/*', '!shortcuts/**/*'],
+    publicExcludes: [
+      "!icons/**/*",
+      "!images/**/*",
+      "!google-fonts/**/*",
+      "!shortcuts/**/*",
+    ],
     buildExcludes: [/.*\.map$/],
     runtimeCaching,
   },
 }
 
-module.exports = withPlugins([
-    [withPWA, pwaConfig],
-    withPreact,
-    withSourceMaps,
-  ],
+module.exports = withPlugins(
+  [[withPWA, pwaConfig], withPreact, withSourceMaps],
   {
     env: {
       // Make the COMMIT_SHA available to the client so that Sentry events can be
@@ -43,7 +45,10 @@ module.exports = withPlugins([
       NEXT_PUBLIC_RELEASE: release,
     },
     images: {
-      domains: [process.env.NEXT_OPTIMIZED_IMG_DOMAIN || "media.obserfy.com", "image.mux.com"],
+      domains: [
+        process.env.NEXT_OPTIMIZED_IMG_DOMAIN || "media.obserfy.com",
+        "image.mux.com",
+      ],
     },
     experimental: {
       modern: true,
@@ -59,10 +64,8 @@ module.exports = withPlugins([
       // it's running on the server so we can correctly initialize Sentry
       config.plugins.push(
         new webpack.DefinePlugin({
-          "process.env.NEXT_IS_SERVER": JSON.stringify(
-            isServer.toString(),
-          ),
-        }),
+          "process.env.NEXT_IS_SERVER": JSON.stringify(isServer.toString()),
+        })
       )
       // When all the Sentry configuration env variables are available/configured
       // The Sentry webpack plugin gets pushed to the webpack plugins to build
@@ -83,11 +86,17 @@ module.exports = withPlugins([
             stripPrefix: ["webpack://_N_E/"],
             urlPrefix: `~${basePath}/_next`,
             release: release,
-          }),
+          })
         )
       }
 
+      // support svg component
+      config.module.rules.push({
+        test: /\.svg$/,
+        use: ["@svgr/webpack"],
+      })
+
       return config
     },
-  },
+  }
 )
