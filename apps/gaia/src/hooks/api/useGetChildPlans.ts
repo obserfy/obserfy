@@ -1,26 +1,15 @@
-import { useQuery, useQueryClient } from "react-query"
-import { Dayjs } from "../../utils/dayjs"
-import { getApi } from "./apiHelpers"
+import { useQuery } from "react-query"
 import { GetChildPlansResponse } from "../../pages/api/children/[childId]/plans"
+import { getApi } from "./apiHelpers"
 
-const useGetChildPlans = (childId: string, date: Dayjs) => {
-  const formattedDate = date.startOf("day").toISOString()
+const useGetChildPlans = (childId: string) => {
   const getChildPlans = getApi<GetChildPlansResponse[]>(
-    `/children/${childId}/plans?date=${formattedDate}`
+    `/children/${childId}/plans`
   )
 
-  return useQuery(["childPlans", childId, formattedDate], getChildPlans, {
+  return useQuery(["child", childId, "plans"], getChildPlans, {
     enabled: childId !== "",
   })
-}
-
-export const useGetChildPlansCache = () => {
-  const client = useQueryClient()
-  const key = ["childPlans"]
-
-  return {
-    invalidateAll: () => client.invalidateQueries(key),
-  }
 }
 
 export default useGetChildPlans
