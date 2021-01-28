@@ -16074,7 +16074,7 @@ __metadata:
     eslint-plugin-prettier: 3.3.0
     eslint-plugin-react: 7.22.0
     eslint-plugin-react-hooks: 4.2.0
-    faker: 5.1.0
+    faker: 5.2.0
     pg: 8.5.1
     pnp-webpack-plugin: 1.6.4
     prettier: 2.2.1
@@ -17832,10 +17832,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"faker@npm:5.1.0":
-  version: 5.1.0
-  resolution: "faker@npm:5.1.0"
-  checksum: cc0a0c2b2952d0e7ddad67ec6302aa097d916c0bbb7baa2240a02ecdee4f42df260a233c5be108f782302e63b246add181d859ead9026687db9284050672084a
+"faker@npm:5.2.0":
+  version: 5.2.0
+  resolution: "faker@npm:5.2.0"
+  checksum: 425bb97cadb50c79a25cee166082d5292c4a4a7bfae599f9ef301de1fb4c530c34d96a747173a30d3949491c4ff15590e7c4d71b2ed7fc1e8d7b68e300a0b602
   languageName: node
   linkType: hard
 
@@ -37323,7 +37323,7 @@ typescript@^4.0.0:
     eslint-plugin-react: 7.22.0
     eslint-plugin-react-hooks: 4.2.0
     fake-indexeddb: 3.1.2
-    faker: 5.1.0
+    faker: 5.2.0
     gatsby: 2.31.1
     gatsby-image: 2.10.0
     gatsby-plugin-canonical-urls: 2.9.0
