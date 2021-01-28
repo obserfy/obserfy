@@ -46,17 +46,16 @@ export const findLessonPlanByChildIdAndDate = async (
   // language=PostgreSQL
   const plans = await query(
     `
-        select lp.id           as id,
-               lpd.title       as title,
-               lpd.description as description,
-               a.name          as area_name,
-               a.id            as area_id,
-               lp.date         as date,
-               lpd.id          as lpd_id,
-               json_agg(o)     as observations,
-               json_agg(lpl)   as links
-        from lesson_plans lp
-                 left join lesson_plan_details lpd on lp.lesson_plan_details_id = lpd.id
+        select lpd.id              as id,
+               lpd.title           as title,
+               lpd.description     as description,
+               a.name              as area_name,
+               a.id                as area_id,
+               lpd.repetition_type as repetition_type,
+               json_agg(o)         as observations,
+               json_agg(lpl)       as links
+        from lesson_plan_details lpd
+                 left join lesson_plans lp on lp.lesson_plan_details_id = lpd.id
                  left join lesson_plan_to_students lpts on lp.id = lpts.lesson_plan_id
                  left join areas a on lpd.area_id = a.id
 
@@ -75,7 +74,7 @@ export const findLessonPlanByChildIdAndDate = async (
 
         where lpts.student_id = $1
           AND ($2::date IS NULL OR lp.date::date = $2::date)
-        group by lp.id, lpd.title, lpd.description, a.name, a.id, lp.date, lpd.id
+        group by lpd.id, lpd.title, lpd.description, a.name, a.id
     `,
     [childId, selectedDate]
   )
@@ -85,7 +84,7 @@ export const findLessonPlanByChildIdAndDate = async (
     id: plan.id,
     title: plan.title,
     description: plan.description,
-    date: dayjs(plan.date),
+    repetitionType: plan.repetition_type,
     student: [],
     area: {
       id: plan.area_id,
@@ -349,8 +348,9 @@ export const findChildVideos = async (childId: string) => {
     `
         select v.id, v.playback_url, v.thumbnail_url, v.created_at
         from video_to_students
-        join videos v on v.id = video_to_students.video_id
-        where student_id = $1 and v.status = 'ready'
+                 join videos v on v.id = video_to_students.video_id
+        where student_id = $1
+          and v.status = 'ready'
     `
   )
 }
