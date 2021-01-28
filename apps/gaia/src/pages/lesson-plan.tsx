@@ -1,41 +1,81 @@
-import React, { FC, useState } from "react"
 import Head from "next/head"
-import Image from "next/image"
-import dayjs, { Dayjs } from "../utils/dayjs"
+import React, { useState } from "react"
 import Button from "../components/Button/Button"
+import EmptyPlaceholder from "../components/EmptyPlaceholder/EmptyPlaceholder"
+import Icon from "../components/Icon/Icon"
+import Plan from "../components/Plan/Plan"
 import useGetChildPlans from "../hooks/api/useGetChildPlans"
 import { useQueryString } from "../hooks/useQueryString"
-import Plan from "../components/Plan/Plan"
-import Icon from "../components/Icon/Icon"
+import { isEmpty } from "../utils/array"
+import dayjs from "../utils/dayjs"
+import CalendarIcon from "../icons/calendar.svg"
+import ListIcon from "../icons/list.svg"
+
+enum ViewMode {
+  ByDates,
+  Overview,
+}
 
 const IndexPage = () => {
-  const [date, setDate] = useState(dayjs())
-  const childId = useQueryString("childId")
-  const childPlans = useGetChildPlans(childId, date)
+  const [viewMode, setViewMode] = useState(ViewMode.ByDates)
 
   return (
     <div>
       <Head>
         <title>Lesson Plans | Obserfy for Parents</title>
       </Head>
+
+      <div className="w-full border-b flex ">
+        <div className="w-full max-w-3xl mx-auto flex px-3">
+          <button
+            onClick={() => setViewMode(ViewMode.ByDates)}
+            className="ml-auto m-1 hover:text-green-700"
+          >
+            <CalendarIcon
+              className={`
+              w-4 h-4 m-2
+              ${viewMode === ViewMode.ByDates ? "text-green-700" : "opacity-80"}
+            `}
+            />
+          </button>
+          <button
+            onClick={() => setViewMode(ViewMode.Overview)}
+            className="m-1 hover:text-green-700"
+          >
+            <ListIcon
+              className={`
+              w-4 h-4 m-2
+              ${
+                viewMode === ViewMode.Overview ? "text-green-700" : "opacity-80"
+              }
+            `}
+            />
+          </button>
+        </div>
+      </div>
+
+      {viewMode === ViewMode.ByDates && <LessonPlansByDate />}
+    </div>
+  )
+}
+
+const LessonPlansByDate = () => {
+  const childId = useQueryString("childId")
+  const [date, setDate] = useState(dayjs())
+  const childPlans = useGetChildPlans(childId, date)
+
+  const changeDate = (count: number) => () => setDate(date.add(count, "day"))
+
+  return (
+    <>
       <div className="max-w-3xl mx-auto flex items-center px-3 pt-3 pb-1">
         <div className="text-sm text-gray-700">
           {date.format("ddd, DD MMM YYYY")}
         </div>
-        <Button
-          className="ml-auto"
-          outline
-          iconOnly
-          onClick={() => setDate(date.add(-1, "day"))}
-        >
+        <Button className="ml-auto" outline iconOnly onClick={changeDate(-1)}>
           <Icon src="/icons/chevron-left.svg" size={16} />
         </Button>
-        <Button
-          className="ml-1"
-          outline
-          iconOnly
-          onClick={() => setDate(date.add(1, "day"))}
-        >
+        <Button className="ml-1" outline iconOnly onClick={changeDate(1)}>
           <Icon alt="Next date" src="/icons/chevron-right.svg" size={16} />
         </Button>
         <Button
@@ -48,12 +88,16 @@ const IndexPage = () => {
           Today
         </Button>
       </div>
-      {(childPlans.data?.length ?? 0) === 0 && (
-        <EmptyPlansIllustration
-          loading={childPlans.status === "loading"}
+
+      {isEmpty(childPlans.data) && (
+        <EmptyPlaceholder
+          imageSrc="/images/no-plan-illustration.svg"
+          text={`No plans for ${date.format("MMMM D")}`}
+          loading={childPlans.isLoading}
           date={date}
         />
       )}
+
       <div className="max-w-3xl mx-auto">
         {childPlans.data?.map((plan) => (
           <Plan
@@ -69,34 +113,7 @@ const IndexPage = () => {
           />
         ))}
       </div>
-    </div>
-  )
-}
-
-const EmptyPlansIllustration: FC<{ loading: boolean; date: Dayjs }> = ({
-  loading,
-  date,
-}) => {
-  return (
-    <div
-      className={`flex flex-col items-center py-16 ${
-        loading && "opacity-50"
-      } transition-opacity duration-200 max-w-3xl mx-auto`}
-    >
-      <Image
-        src="/images/no-plan-illustration.svg"
-        className="w-64 md:w-1/2 mb-3"
-        width={200}
-        height={200}
-      />
-      <h5
-        className={`text-xl mx-4 text-center ${
-          loading && "opacity-0"
-        } transition-opacity duration-200 font-bold`}
-      >
-        No plans for {date.format("MMMM D")}
-      </h5>
-    </div>
+    </>
   )
 }
 
