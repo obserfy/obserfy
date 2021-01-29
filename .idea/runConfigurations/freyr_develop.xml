@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="vor:develop" type="js.build_tools.npm">
-    <package-json value="$PROJECT_DIR$/apps/vor/frontend/package.json" />
+  <configuration default="false" name="freyr develop" type="js.build_tools.npm">
+    <package-json value="$PROJECT_DIR$/apps/freyr/package.json" />
     <command value="run" />
     <scripts>
       <script value="develop" />
