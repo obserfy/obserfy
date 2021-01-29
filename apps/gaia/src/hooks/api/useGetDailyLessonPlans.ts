@@ -1,12 +1,12 @@
 import { useQuery, useQueryClient } from "react-query"
 import { Dayjs } from "../../utils/dayjs"
 import { getApi } from "./apiHelpers"
-import { GetChildPlansResponse } from "../../pages/api/children/[childId]/plans"
+import { GetChildPlansResponse } from "../../pages/api/children/[childId]/plans/daily"
 
-const useGetChildPlansByDate = (childId: string, date: Dayjs) => {
+const useGetDailyLessonPlans = (childId: string, date: Dayjs) => {
   const formattedDate = date.startOf("day").toISOString()
   const getChildPlans = getApi<GetChildPlansResponse[]>(
-    `/children/${childId}/plans?date=${formattedDate}`
+    `/children/${childId}/plans/daily?date=${formattedDate}`
   )
 
   return useQuery(["childPlans", childId, formattedDate], getChildPlans, {
@@ -23,4 +23,4 @@ export const useGetChildPlansCache = () => {
   }
 }
 
-export default useGetChildPlansByDate
+export default useGetDailyLessonPlans

@@ -1,6 +1,6 @@
 import { useMutation } from "react-query"
 import { deleteApi } from "./apiHelpers"
-import { useGetChildPlansCache } from "./useGetChildPlansByDate"
+import { useGetChildPlansCache } from "./useGetDailyLessonPlans"
 
 const useDeleteObservation = (id: string) => {
   const cache = useGetChildPlansCache()

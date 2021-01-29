@@ -1,15 +1,15 @@
 import dayjs from "dayjs"
 import React, { FC, useState } from "react"
-import useGetChildPlans from "../../hooks/api/useGetChildPlans"
+import useGetAllLessonPlans from "../../hooks/api/useGetAllLessonPlans"
 import { useQueryString } from "../../hooks/useQueryString"
 import SearchIcon from "../../icons/search.svg"
-import { GetChildPlansResponse } from "../../pages/api/children/[childId]/plans"
+import { GetChildPlansResponse } from "../../pages/api/children/[childId]/plans/all"
 import { isEmpty } from "../../utils/array"
 
-const LessonPlanOverview: FC = () => {
+const AllLessonPlans: FC = () => {
   const [search, setSearch] = useState("")
   const childId = useQueryString("childId")
-  const childPlans = useGetChildPlans(childId)
+  const childPlans = useGetAllLessonPlans(childId)
 
   const plans = childPlans.data?.filter(({ title }) =>
     title.match(new RegExp(search, "i"))
@@ -56,4 +56,4 @@ const Plan: FC<{ plan: GetChildPlansResponse }> = ({ plan }) => {
   )
 }
 
-export default LessonPlanOverview
+export default AllLessonPlans
