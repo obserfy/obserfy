@@ -6,6 +6,8 @@ export interface GetChildPlansResponse {
   title: string
   description: string
   repetitionType: number
+  startDate: string
+  endDate: string
   area?: {
     id: string
     name: string
