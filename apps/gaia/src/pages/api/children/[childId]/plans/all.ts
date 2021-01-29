@@ -1,4 +1,4 @@
-import { findLessonPlanByChildIdAndDate } from "../../../../../db/queries"
+import { findChildLessonPlans } from "../../../../../db/queries"
 import {
   getFirstQueryValue,
   protectedApiRoute,
@@ -7,7 +7,6 @@ import {
 export interface GetChildPlansResponse {
   id: string
   title: string
-  description: string
   repetitionType: number
   startDate: string
   endDate: string
@@ -15,26 +14,12 @@ export interface GetChildPlansResponse {
     id: string
     name: string
   }
-  links: Array<{
-    id: string
-    url: string
-    title?: string
-    description?: string
-    image?: string
-  }>
-  observations: Array<{
-    id: string
-    observation: string
-    createdAt: string
-  }>
 }
 const childPlans = protectedApiRoute(async (req, res) => {
-  const date = getFirstQueryValue(req, "date")
   const childId = getFirstQueryValue(req, "childId")
 
-  const plans: GetChildPlansResponse[] = await findLessonPlanByChildIdAndDate(
-    childId as string,
-    date
+  const plans: GetChildPlansResponse[] = await findChildLessonPlans(
+    childId as string
   )
 
   res.json(plans)
