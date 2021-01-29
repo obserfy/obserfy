@@ -46,18 +46,17 @@ export const findLessonPlanByChildIdAndDate = async (
   // language=PostgreSQL
   const plans = await query(
     `
-        select lpd.id              as id,
+        select lp.id               as id,
                lpd.title           as title,
                lpd.description     as description,
                a.name              as area_name,
                a.id                as area_id,
-               lpd.repetition_type as repetition_type,
                max(lp.date)        as end_date,
                min(lp.date)        as start_date,
                json_agg(o)         as observations,
                json_agg(lpl)       as links
-        from lesson_plan_details lpd
-                 left join lesson_plans lp on lp.lesson_plan_details_id = lpd.id
+        from lesson_plans lp
+                 left join lesson_plan_details lpd on lp.lesson_plan_details_id = lpd.id
                  left join lesson_plan_to_students lpts on lp.id = lpts.lesson_plan_id
                  left join areas a on lpd.area_id = a.id
 
@@ -76,7 +75,7 @@ export const findLessonPlanByChildIdAndDate = async (
 
         where lpts.student_id = $1
           AND ($2::date IS NULL OR lp.date::date = $2::date)
-        group by lpd.id, lpd.title, lpd.description, a.name, a.id
+        group by lp.id, lpd.title, lpd.description, a.name, a.id
         order by start_date desc
     `,
     [childId, selectedDate]
@@ -103,6 +102,44 @@ export const findLessonPlanByChildIdAndDate = async (
         createdAt: created_at,
       })),
     links: plan.links.filter((url: string) => url),
+  }))
+}
+
+export const findChildLessonPlans = async (childId: string) => {
+  // language=PostgreSQL
+  const plans = await query(
+    `
+        select lpd.id              as id,
+               lpd.title           as title,
+               lpd.description     as description,
+               a.name              as area_name,
+               a.id                as area_id,
+               lpd.repetition_type as repetition_type,
+               max(lp.date)        as end_date,
+               min(lp.date)        as start_date
+        from lesson_plan_details lpd
+                 left join lesson_plans lp on lp.lesson_plan_details_id = lpd.id
+                 left join lesson_plan_to_students lpts on lp.id = lpts.lesson_plan_id
+                 left join areas a on lpd.area_id = a.id
+
+        where lpts.student_id = $1
+        group by lpd.id, lpd.title, lpd.description, a.name, a.id
+        order by start_date desc
+    `,
+    [childId]
+  )
+
+  // TODO: Fix typings, bring data manipulation complexity to sql
+  return plans.rows.map((plan) => ({
+    id: plan.id,
+    title: plan.title,
+    repetitionType: plan.repetition_type,
+    startDate: plan.start_date,
+    endDate: plan.end_date,
+    area: {
+      id: plan.area_id,
+      name: plan.area_name,
+    },
   }))
 }
 
