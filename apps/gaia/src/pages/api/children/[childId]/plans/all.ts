@@ -7,7 +7,7 @@ import {
 export interface GetChildPlansResponse {
   id: string
   title: string
-  repetitionType: number
+  repetitionType: string
   startDate: string
   endDate: string
   area?: {

@@ -47,10 +47,12 @@ const Plan: FC<{ plan: GetChildPlansResponse }> = ({ plan }) => {
         <div className="ml-auto">
           {dayjs(plan.startDate).format("D MMM YYYY")}
         </div>
-        <div className="ml-1">
-          {" - "}
-          {dayjs(plan.endDate).format("D MMM YYYY")}
-        </div>
+        {plan.repetitionType !== "0" && (
+          <div className="ml-1">
+            {" - "}
+            {dayjs(plan.endDate).format("D MMM YYYY")}
+          </div>
+        )}
       </div>
     </div>
   )
