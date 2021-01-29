@@ -1,10 +1,10 @@
 import { useQuery } from "react-query"
-import { GetChildPlansResponse } from "../../pages/api/children/[childId]/plans"
+import { GetChildPlansResponse } from "../../pages/api/children/[childId]/plans/all"
 import { getApi } from "./apiHelpers"
 
-const useGetChildPlans = (childId: string) => {
+const useGetAllLessonPlans = (childId: string) => {
   const getChildPlans = getApi<GetChildPlansResponse[]>(
-    `/children/${childId}/plans`
+    `/children/${childId}/plans/all`
   )
 
   return useQuery(["child", childId, "plans"], getChildPlans, {
@@ -12,4 +12,4 @@ const useGetChildPlans = (childId: string) => {
   })
 }
 
-export default useGetChildPlans
+export default useGetAllLessonPlans

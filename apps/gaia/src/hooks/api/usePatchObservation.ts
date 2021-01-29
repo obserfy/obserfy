@@ -1,7 +1,7 @@
 import { useMutation } from "react-query"
 import { PatchObservationRequestBody } from "../../pages/api/observations/[observationId]"
 import { patchApi } from "./apiHelpers"
-import { useGetChildPlansCache } from "./useGetChildPlansByDate"
+import { useGetChildPlansCache } from "./useGetDailyLessonPlans"
 
 const usePatchObservation = (id: string) => {
   const cache = useGetChildPlansCache()

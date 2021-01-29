@@ -1,5 +1,8 @@
-import { findLessonPlanByChildIdAndDate } from "../../../../db/queries"
-import { getFirstQueryValue, protectedApiRoute } from "../../../../utils/rest"
+import { findLessonPlanByChildIdAndDate } from "../../../../../db/queries"
+import {
+  getFirstQueryValue,
+  protectedApiRoute,
+} from "../../../../../utils/rest"
 
 export interface GetChildPlansResponse {
   id: string

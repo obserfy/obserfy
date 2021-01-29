@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react"
-import useGetChildPlansByDate from "../../hooks/api/useGetChildPlansByDate"
+import useGetDailyLessonPlans from "../../hooks/api/useGetDailyLessonPlans"
 import { useQueryString } from "../../hooks/useQueryString"
 import { isEmpty } from "../../utils/array"
 import dayjs from "../../utils/dayjs"
@@ -8,10 +8,10 @@ import EmptyPlaceholder from "../EmptyPlaceholder/EmptyPlaceholder"
 import Icon from "../Icon/Icon"
 import Plan from "./Plan"
 
-const LessonPlansByDate: FC = () => {
+const DailyLessonPlans: FC = () => {
   const childId = useQueryString("childId")
   const [date, setDate] = useState(dayjs())
-  const childPlans = useGetChildPlansByDate(childId, date)
+  const childPlans = useGetDailyLessonPlans(childId, date)
 
   const changeDate = (count: number) => () => setDate(date.add(count, "day"))
 
@@ -66,4 +66,4 @@ const LessonPlansByDate: FC = () => {
   )
 }
 
-export default LessonPlansByDate
+export default DailyLessonPlans

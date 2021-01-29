@@ -1,17 +1,17 @@
 import Head from "next/head"
 import React, { useState } from "react"
-import LessonPlansByDate from "../components/LessonPlanByDates/LessonPlanByDates"
-import LessonPlanOverview from "../components/LessonPlanOverview/LessonPlanOverview"
+import AllLessonPlans from "../components/AllLessonPlans/AllLessonPlans"
+import DailyLessonPlans from "../components/DailyLessonPlans/DailyLessonPlans"
 import CalendarIcon from "../icons/calendar.svg"
 import ListIcon from "../icons/list.svg"
 
 enum ViewMode {
-  ByDates,
-  Overview,
+  Daily,
+  All,
 }
 
 const IndexPage = () => {
-  const [viewMode, setViewMode] = useState(ViewMode.Overview)
+  const [viewMode, setViewMode] = useState(ViewMode.Daily)
 
   return (
     <div>
@@ -22,34 +22,32 @@ const IndexPage = () => {
       <div className="w-full border-b flex ">
         <div className="w-full max-w-3xl mx-auto flex px-1">
           <button
-            onClick={() => setViewMode(ViewMode.ByDates)}
+            onClick={() => setViewMode(ViewMode.Daily)}
             className="ml-auto m-1 hover:text-green-700"
           >
             <CalendarIcon
               className={`
               w-4 h-4 m-2
-              ${viewMode === ViewMode.ByDates ? "text-green-700" : "opacity-80"}
+              ${viewMode === ViewMode.Daily ? "text-green-700" : "opacity-80"}
             `}
             />
           </button>
           <button
-            onClick={() => setViewMode(ViewMode.Overview)}
+            onClick={() => setViewMode(ViewMode.All)}
             className="m-1 hover:text-green-700"
           >
             <ListIcon
               className={`
               w-4 h-4 m-2
-              ${
-                viewMode === ViewMode.Overview ? "text-green-700" : "opacity-80"
-              }
+              ${viewMode === ViewMode.All ? "text-green-700" : "opacity-80"}
             `}
             />
           </button>
         </div>
       </div>
 
-      {viewMode === ViewMode.ByDates && <LessonPlansByDate />}
-      {viewMode === ViewMode.Overview && <LessonPlanOverview />}
+      {viewMode === ViewMode.Daily && <DailyLessonPlans />}
+      {viewMode === ViewMode.All && <AllLessonPlans />}
     </div>
   )
 }
