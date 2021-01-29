@@ -52,6 +52,8 @@ export const findLessonPlanByChildIdAndDate = async (
                a.name              as area_name,
                a.id                as area_id,
                lpd.repetition_type as repetition_type,
+               max(lp.date)        as end_date,
+               min(lp.date)        as start_date,
                json_agg(o)         as observations,
                json_agg(lpl)       as links
         from lesson_plan_details lpd
@@ -75,16 +77,19 @@ export const findLessonPlanByChildIdAndDate = async (
         where lpts.student_id = $1
           AND ($2::date IS NULL OR lp.date::date = $2::date)
         group by lpd.id, lpd.title, lpd.description, a.name, a.id
+        order by start_date desc
     `,
     [childId, selectedDate]
   )
 
-  // TODO: Fix typings
+  // TODO: Fix typings, bring data manipulation complexity to sql
   return plans.rows.map((plan) => ({
     id: plan.id,
     title: plan.title,
     description: plan.description,
     repetitionType: plan.repetition_type,
+    startDate: plan.start_date,
+    endDate: plan.end_date,
     student: [],
     area: {
       id: plan.area_id,
