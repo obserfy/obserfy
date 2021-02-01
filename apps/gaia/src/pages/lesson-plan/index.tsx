@@ -1,9 +1,9 @@
 import Head from "next/head"
 import React, { useState } from "react"
-import AllLessonPlans from "../components/AllLessonPlans/AllLessonPlans"
-import DailyLessonPlans from "../components/DailyLessonPlans/DailyLessonPlans"
-import CalendarIcon from "../icons/calendar.svg"
-import ListIcon from "../icons/list.svg"
+import AllLessonPlans from "../../components/AllLessonPlans/AllLessonPlans"
+import DailyLessonPlans from "../../components/DailyLessonPlans/DailyLessonPlans"
+import CalendarIcon from "../../icons/calendar.svg"
+import ListIcon from "../../icons/list.svg"
 
 enum ViewMode {
   Daily,
@@ -11,7 +11,7 @@ enum ViewMode {
 }
 
 const IndexPage = () => {
-  const [viewMode, setViewMode] = useState(ViewMode.Daily)
+  const [viewMode, setViewMode] = useState(ViewMode.All)
 
   return (
     <div>
