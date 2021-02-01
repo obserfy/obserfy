@@ -1,6 +1,8 @@
 import Head from "next/head"
 import Link from "next/link"
+import { Suspense } from "preact/compat/src/suspense"
 import React, { useState } from "react"
+import Markdown from "../../components/Markdown/Markdown"
 import useGetLessonPlan from "../../hooks/api/useGetlessonPlan"
 import { useQueryString } from "../../hooks/useQueryString"
 import BackIcon from "../../icons/arrow-back.svg"
@@ -24,7 +26,7 @@ const LessonPlanDetails = () => {
 
       <div className="w-full border-b flex ">
         <div className="w-full max-w-3xl mx-auto flex px-1 items-center">
-          <Link href={`/lesson-plans?childId=${childId}`}>
+          <Link href={`/lesson-plan?childId=${childId}`}>
             <button
               onClick={() => setViewMode(ViewMode.Daily)}
               className="m-1 hover:text-green-700"
@@ -37,7 +39,7 @@ const LessonPlanDetails = () => {
               />
             </button>
           </Link>
-          <Link href={`/lesson-plans?childId=${childId}`}>
+          <Link href={`/lesson-plan?childId=${childId}`}>
             <div className="text-xs">Lesson Plans</div>
           </Link>
           <div className="mx-3">/</div>
@@ -45,7 +47,14 @@ const LessonPlanDetails = () => {
         </div>
       </div>
 
-      <div />
+      <div className="max-w-3xl mx-auto">
+        <div className="prose px-3 pt-3">
+          <h2>{lessonPlan.data?.title}</h2>
+        </div>
+        {lessonPlan.data?.description && (
+          <Markdown className="p-3" markdown={lessonPlan.data.description} />
+        )}
+      </div>
     </div>
   )
 }
