@@ -7,16 +7,13 @@ export interface PostPlanObservationRequest {
   observation: string
 }
 
-const childHandler = protectedApiRoute(async (req, res) => {
+const observation = protectedApiRoute(async (req, res) => {
   const session = await auth0.getSession(req)
   if (!session) {
     res.status(401).end("unauthorized")
     return
   }
-  const {
-    query: { planId },
-  } = req
-
+  const { planId } = req.query
   if (req.method === "POST") {
     const body: PostPlanObservationRequest = JSON.parse(req.body)
     await insertObservationToPlan(
@@ -31,4 +28,4 @@ const childHandler = protectedApiRoute(async (req, res) => {
   }
 })
 
-export default childHandler
+export default observation

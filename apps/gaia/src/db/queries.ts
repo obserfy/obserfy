@@ -46,15 +46,15 @@ export const findLessonPlanByChildIdAndDate = async (
   // language=PostgreSQL
   const plans = await query(
     `
-        select lp.id               as id,
-               lpd.title           as title,
-               lpd.description     as description,
-               a.name              as area_name,
-               a.id                as area_id,
-               max(lp.date)        as end_date,
-               min(lp.date)        as start_date,
-               json_agg(o)         as observations,
-               json_agg(lpl)       as links
+        select lp.id           as id,
+               lpd.title       as title,
+               lpd.description as description,
+               a.name          as area_name,
+               a.id            as area_id,
+               max(lp.date)    as end_date,
+               min(lp.date)    as start_date,
+               json_agg(o)     as observations,
+               json_agg(lpl)   as links
         from lesson_plans lp
                  left join lesson_plan_details lpd on lp.lesson_plan_details_id = lpd.id
                  left join lesson_plan_to_students lpts on lp.id = lpts.lesson_plan_id
@@ -393,6 +393,44 @@ export const findChildVideos = async (childId: string) => {
                  join videos v on v.id = video_to_students.video_id
         where student_id = $1
           and v.status = 'ready'
+    `
+  )
+}
+
+const LessonPlans = array(
+  type({
+    id: string,
+    title: string,
+    description: nullable(string),
+    links: array(nullable(string)),
+    area_name: nullable(string),
+    start_date: date,
+    end_date: date,
+    repetition_type: string,
+  })
+)
+export const findLessonPlanById = async (planId: string) => {
+  // language=PostgreSQL
+  return typedQuery(
+    LessonPlans,
+    [planId],
+    `
+        select lpd.id,
+               lpd.title,
+               lpd.description,
+               repetition_type,
+               area_id,
+               material_id,
+               a.name              as area_name,
+               min(lp.date)        as start_date,
+               max(lp.date)        as end_date,
+               array_agg(lpl.url)  as links
+        from lesson_plan_details lpd
+                 join lesson_plans lp on lpd.id = lp.lesson_plan_details_id
+                 left join lesson_plan_links lpl on lpd.id = lpl.lesson_plan_details_id
+                 left join areas a on a.id = lpd.area_id
+        where lpd.id = $1
+        group by lpd.id, a.name
     `
   )
 }

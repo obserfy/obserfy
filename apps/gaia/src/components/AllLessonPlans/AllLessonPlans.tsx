@@ -1,5 +1,6 @@
-import dayjs from "dayjs"
 import React, { FC, useState } from "react"
+import Link from "next/link"
+import dayjs from "../../utils/dayjs"
 import useGetAllLessonPlans from "../../hooks/api/useGetAllLessonPlans"
 import { useQueryString } from "../../hooks/useQueryString"
 import SearchIcon from "../../icons/search.svg"
@@ -32,14 +33,17 @@ const AllLessonPlans: FC = () => {
       )}
 
       {plans?.map((plan) => (
-        <Plan key={plan.id} plan={plan} />
+        <Plan key={plan.id} plan={plan} childId={childId} />
       ))}
     </div>
   )
 }
 
-const Plan: FC<{ plan: GetChildPlansResponse }> = ({ plan }) => {
-  return (
+const Plan: FC<{ plan: GetChildPlansResponse; childId: string }> = ({
+  plan,
+  childId,
+}) => (
+  <Link href={`/lesson-plan/details?childId=${childId}&planId=${plan.id}`}>
     <div className="p-3 border-t hover:bg-gray-100">
       <div className="flex-1 font-bold text-gray-700">{plan.title}</div>
       <div className="flex text-xs opacity-70 pt-2">
@@ -55,7 +59,7 @@ const Plan: FC<{ plan: GetChildPlansResponse }> = ({ plan }) => {
         )}
       </div>
     </div>
-  )
-}
+  </Link>
+)
 
 export default AllLessonPlans
