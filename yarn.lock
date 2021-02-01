@@ -8140,10 +8140,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/faker@npm:5.1.5":
-  version: 5.1.5
-  resolution: "@types/faker@npm:5.1.5"
-  checksum: 583413e94d6ef461cfe35220c983a3e788a2643b0effbbda094faf7810dd5300eae45bca55e8943f2a8c996c6f6d5fb977b6108011a44ad9b8bf87571e9e883f
+"@types/faker@npm:5.1.6":
+  version: 5.1.6
+  resolution: "@types/faker@npm:5.1.6"
+  checksum: 4fb5005a7292270ada198cb731ce7dde94a91a671b0e6bd0a4fa04e995ed93f83f357ef60dca8ec79ce42401c285e28eed4907226293a4154f83b830fb7adf60
   languageName: node
   linkType: hard
 
@@ -16051,7 +16051,7 @@ __metadata:
     "@cypress/webpack-preprocessor": 5.5.0
     "@hapi/iron": 6.0.0
     "@types/auth0-js": 9.14.2
-    "@types/faker": 5.1.5
+    "@types/faker": 5.1.6
     "@types/node": 14.14.22
     "@types/pg": 7.14.9
     "@typescript-eslint/eslint-plugin": 4.11.1
@@ -37285,7 +37285,7 @@ typescript@^4.0.0:
     "@types/body-scroll-lock": 2.6.1
     "@types/date-fns": 2.6.0
     "@types/dompurify": 2.2.1
-    "@types/faker": 5.1.5
+    "@types/faker": 5.1.6
     "@types/hls.js": 0.13.3
     "@types/jest": 26.0.20
     "@types/query-string": 6.3.0

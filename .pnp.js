@@ -1713,7 +1713,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@types/faker",
-        "npm:5.1.5"
+        "npm:5.1.6"
       ],
       [
         "@types/formidable",
@@ -26955,10 +26955,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@types/faker", [
-        ["npm:5.1.5", {
-          "packageLocation": "./.yarn/cache/@types-faker-npm-5.1.5-027f5dce9e-583413e94d.zip/node_modules/@types/faker/",
+        ["npm:5.1.6", {
+          "packageLocation": "./.yarn/cache/@types-faker-npm-5.1.6-8254c3c94e-4fb5005a72.zip/node_modules/@types/faker/",
           "packageDependencies": [
-            ["@types/faker", "npm:5.1.5"]
+            ["@types/faker", "npm:5.1.6"]
           ],
           "linkType": "HARD",
         }]
@@ -36469,7 +36469,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@cypress/webpack-preprocessor", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:5.5.0"],
             ["@hapi/iron", "npm:6.0.0"],
             ["@types/auth0-js", "npm:9.14.2"],
-            ["@types/faker", "npm:5.1.5"],
+            ["@types/faker", "npm:5.1.6"],
             ["@types/node", "npm:14.14.22"],
             ["@types/pg", "npm:7.14.9"],
             ["@typescript-eslint/eslint-plugin", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:4.11.1"],
@@ -62243,7 +62243,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/body-scroll-lock", "npm:2.6.1"],
             ["@types/date-fns", "npm:2.6.0"],
             ["@types/dompurify", "npm:2.2.1"],
-            ["@types/faker", "npm:5.1.5"],
+            ["@types/faker", "npm:5.1.6"],
             ["@types/hls.js", "npm:0.13.3"],
             ["@types/jest", "npm:26.0.20"],
             ["@types/query-string", "npm:6.3.0"],
