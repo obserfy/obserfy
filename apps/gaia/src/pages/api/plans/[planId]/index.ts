@@ -2,7 +2,7 @@ import { isPresent } from "ts-is-present"
 import { findLessonPlanById } from "../../../../db/queries"
 import { protectedApiRoute } from "../../../../utils/rest"
 
-interface GetLessonPlanResponse {
+export interface GetLessonPlanResponse {
   id: string
   title: string
   areaName: string
