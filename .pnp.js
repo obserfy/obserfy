@@ -2529,7 +2529,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "auth0-js",
-        "npm:9.14.2"
+        "npm:9.14.3"
       ],
       [
         "auto-bind",
@@ -29937,10 +29937,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["auth0-js", [
-        ["npm:9.14.2", {
-          "packageLocation": "./.yarn/cache/auth0-js-npm-9.14.2-1a9fa1eb4b-6d85898337.zip/node_modules/auth0-js/",
+        ["npm:9.14.3", {
+          "packageLocation": "./.yarn/cache/auth0-js-npm-9.14.3-e917d16ec2-bcebcce015.zip/node_modules/auth0-js/",
           "packageDependencies": [
-            ["auth0-js", "npm:9.14.2"],
+            ["auth0-js", "npm:9.14.3"],
             ["base64-js", "npm:1.5.1"],
             ["idtoken-verifier", "npm:2.1.0"],
             ["js-cookie", "npm:2.2.1"],
@@ -36355,7 +36355,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/pg", "npm:7.14.9"],
             ["@typescript-eslint/eslint-plugin", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:4.11.1"],
             ["@typescript-eslint/parser", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:4.11.1"],
-            ["auth0-js", "npm:9.14.2"],
+            ["auth0-js", "npm:9.14.3"],
             ["cypress", "npm:6.3.0"],
             ["cypress-file-upload", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:5.0.2"],
             ["cypress-intellij-reporter", "npm:0.0.6"],
