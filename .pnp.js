@@ -7273,7 +7273,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "openid-client",
-        "npm:3.15.5"
+        "npm:3.15.10"
       ],
       [
         "opentracing",
@@ -10620,23 +10620,23 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@auth0/nextjs-auth0", [
-        ["npm:0.16.0", {
-          "packageLocation": "./.yarn/cache/@auth0-nextjs-auth0-npm-0.16.0-abd6791280-41f18df50b.zip/node_modules/@auth0/nextjs-auth0/",
+        ["npm:0.16.1", {
+          "packageLocation": "./.yarn/cache/@auth0-nextjs-auth0-npm-0.16.1-9a23e30328-f36f9e322c.zip/node_modules/@auth0/nextjs-auth0/",
           "packageDependencies": [
-            ["@auth0/nextjs-auth0", "npm:0.16.0"]
+            ["@auth0/nextjs-auth0", "npm:0.16.1"]
           ],
           "linkType": "SOFT",
         }],
-        ["virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.16.0", {
-          "packageLocation": "./.yarn/$$virtual/@auth0-nextjs-auth0-virtual-712c85bf75/0/cache/@auth0-nextjs-auth0-npm-0.16.0-abd6791280-41f18df50b.zip/node_modules/@auth0/nextjs-auth0/",
+        ["virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.16.1", {
+          "packageLocation": "./.yarn/$$virtual/@auth0-nextjs-auth0-virtual-a3fc12c42a/0/cache/@auth0-nextjs-auth0-npm-0.16.1-9a23e30328-f36f9e322c.zip/node_modules/@auth0/nextjs-auth0/",
           "packageDependencies": [
-            ["@auth0/nextjs-auth0", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.16.0"],
+            ["@auth0/nextjs-auth0", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.16.1"],
             ["@hapi/iron", "npm:5.1.4"],
             ["@types/next", null],
             ["base64url", "npm:3.0.1"],
             ["cookie", "npm:0.4.1"],
             ["next", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:10.0.6"],
-            ["openid-client", "npm:3.15.5"],
+            ["openid-client", "npm:3.15.10"],
             ["tslib", "npm:2.0.3"]
           ],
           "packagePeers": [
@@ -39898,7 +39898,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./apps/gaia/",
           "packageDependencies": [
             ["gaia", "workspace:apps/gaia"],
-            ["@auth0/nextjs-auth0", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.16.0"],
+            ["@auth0/nextjs-auth0", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.16.1"],
             ["@segment/snippet", "npm:4.13.1"],
             ["@sentry/browser", "npm:6.0.3"],
             ["@sentry/integrations", "npm:6.0.3"],
@@ -50406,15 +50406,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["openid-client", [
-        ["npm:3.15.5", {
-          "packageLocation": "./.yarn/cache/openid-client-npm-3.15.5-71805d4c7a-a90bd20b8d.zip/node_modules/openid-client/",
+        ["npm:3.15.10", {
+          "packageLocation": "./.yarn/cache/openid-client-npm-3.15.10-29ac641f8d-31740dd4e8.zip/node_modules/openid-client/",
           "packageDependencies": [
-            ["openid-client", "npm:3.15.5"],
+            ["openid-client", "npm:3.15.10"],
             ["@types/got", "npm:9.6.11"],
             ["base64url", "npm:3.0.1"],
             ["got", "npm:9.6.0"],
             ["jose", "npm:1.27.1"],
-            ["lru-cache", "npm:5.1.1"],
+            ["lru-cache", "npm:6.0.0"],
             ["make-error", "npm:1.3.6"],
             ["object-hash", "npm:2.0.3"],
             ["oidc-token-hash", "npm:5.0.0"],
