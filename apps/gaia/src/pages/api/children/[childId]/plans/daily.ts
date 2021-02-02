@@ -1,12 +1,16 @@
-import { findLessonPlanByChildIdAndDate } from "../../../../db/queries"
-import { getFirstQueryValue, protectedApiRoute } from "../../../../utils/rest"
-import { Dayjs } from "../../../../utils/dayjs"
+import { findLessonPlanByChildIdAndDate } from "../../../../../db/queries"
+import {
+  getFirstQueryValue,
+  protectedApiRoute,
+} from "../../../../../utils/rest"
 
 export interface GetChildPlansResponse {
   id: string
   title: string
   description: string
-  date: Dayjs
+  repetitionType: number
+  startDate: string
+  endDate: string
   area?: {
     id: string
     name: string

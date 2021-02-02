@@ -2,6 +2,7 @@ import { array, number, string, type } from "io-ts"
 import { date } from "io-ts-types"
 import { nullable } from "io-ts/Type"
 import { LessonPlan } from "../domain"
+import { isEmpty } from "../utils/array"
 import dayjs from "../utils/dayjs"
 import { query, typedQuery } from "./pg"
 
@@ -46,15 +47,15 @@ export const findLessonPlanByChildIdAndDate = async (
   // language=PostgreSQL
   const plans = await query(
     `
-        select lp.id           as id,
-               lpd.title       as title,
-               lpd.description as description,
-               a.name          as area_name,
-               a.id            as area_id,
-               lp.date         as date,
-               lpd.id          as lpd_id,
-               json_agg(o)     as observations,
-               json_agg(lpl)   as links
+        select lp.id                  as id,
+               lpd.title              as title,
+               lpd.description        as description,
+               a.name                 as area_name,
+               a.id                   as area_id,
+               max(lp.date)           as end_date,
+               min(lp.date)           as start_date,
+               json_agg(distinct o)   as observations,
+               json_agg(distinct lpl) as links
         from lesson_plans lp
                  left join lesson_plan_details lpd on lp.lesson_plan_details_id = lpd.id
                  left join lesson_plan_to_students lpts on lp.id = lpts.lesson_plan_id
@@ -75,17 +76,20 @@ export const findLessonPlanByChildIdAndDate = async (
 
         where lpts.student_id = $1
           AND ($2::date IS NULL OR lp.date::date = $2::date)
-        group by lp.id, lpd.title, lpd.description, a.name, a.id, lp.date, lpd.id
+        group by lp.id, lpd.title, lpd.description, a.name, a.id
+        order by start_date desc
     `,
     [childId, selectedDate]
   )
 
-  // TODO: Fix typings
+  // TODO: Fix typings, bring data manipulation complexity to sql
   return plans.rows.map((plan) => ({
     id: plan.id,
     title: plan.title,
     description: plan.description,
-    date: dayjs(plan.date),
+    repetitionType: plan.repetition_type,
+    startDate: plan.start_date,
+    endDate: plan.end_date,
     student: [],
     area: {
       id: plan.area_id,
@@ -99,6 +103,44 @@ export const findLessonPlanByChildIdAndDate = async (
         createdAt: created_at,
       })),
     links: plan.links.filter((url: string) => url),
+  }))
+}
+
+export const findChildLessonPlans = async (childId: string) => {
+  // language=PostgreSQL
+  const plans = await query(
+    `
+        select lpd.id              as id,
+               lpd.title           as title,
+               lpd.description     as description,
+               a.name              as area_name,
+               a.id                as area_id,
+               lpd.repetition_type as repetition_type,
+               max(lp.date)        as end_date,
+               min(lp.date)        as start_date
+        from lesson_plan_details lpd
+                 left join lesson_plans lp on lp.lesson_plan_details_id = lpd.id
+                 left join lesson_plan_to_students lpts on lp.id = lpts.lesson_plan_id
+                 left join areas a on lpd.area_id = a.id
+
+        where lpts.student_id = $1
+        group by lpd.id, lpd.title, lpd.description, a.name, a.id
+        order by start_date desc
+    `,
+    [childId]
+  )
+
+  // TODO: Fix typings, bring data manipulation complexity to sql
+  return plans.rows.map((plan) => ({
+    id: plan.id,
+    title: plan.title,
+    repetitionType: plan.repetition_type,
+    startDate: plan.start_date,
+    endDate: plan.end_date,
+    area: {
+      id: plan.area_id,
+      name: plan.area_name,
+    },
   }))
 }
 
@@ -349,8 +391,68 @@ export const findChildVideos = async (childId: string) => {
     `
         select v.id, v.playback_url, v.thumbnail_url, v.created_at
         from video_to_students
-        join videos v on v.id = video_to_students.video_id
-        where student_id = $1 and v.status = 'ready'
+                 join videos v on v.id = video_to_students.video_id
+        where student_id = $1
+          and v.status = 'ready'
     `
   )
+}
+
+const LessonPlans = array(
+  type({
+    id: string,
+    title: string,
+    description: nullable(string),
+    area_name: nullable(string),
+    start_date: date,
+    end_date: date,
+    repetition_type: string,
+  })
+)
+const LessonPlanLinks = array(
+  type({
+    id: string,
+    url: string,
+  })
+)
+export const findLessonPlanById = async (planId: string) => {
+  // language=PostgreSQL
+  const lessonPlan = await typedQuery(
+    LessonPlans,
+    [planId],
+    `
+        select lpd.id,
+               lpd.title,
+               lpd.description,
+               repetition_type,
+               area_id,
+               material_id,
+               a.name       as area_name,
+               min(lp.date) as start_date,
+               max(lp.date) as end_date
+        from lesson_plan_details lpd
+                 join lesson_plans lp on lpd.id = lp.lesson_plan_details_id
+                 left join areas a on a.id = lpd.area_id
+        where lpd.id = $1
+        group by lpd.id, a.name
+    `
+  )
+
+  if (isEmpty(lessonPlan)) return null
+
+  // language=PostgreSQL
+  const links = await typedQuery(
+    LessonPlanLinks,
+    [planId],
+    `
+        select id, url
+        from lesson_plan_links
+        where lesson_plan_details_id = $1
+    `
+  )
+
+  return {
+    ...lessonPlan[0],
+    links,
+  }
 }

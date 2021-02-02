@@ -24,7 +24,9 @@ export interface LessonPlan {
   id: string
   title: string
   description: string
-  date: Dayjs
+  repetitionType: number
+  startDate: string
+  endDate: string
   area?: Area
   student: Children[]
   links: Link[]
