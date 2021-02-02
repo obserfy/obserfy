@@ -30,7 +30,7 @@
     "gatsby-plugin-remove-trailing-slashes": "2.9.0",
     "gatsby-plugin-sharp": "2.13.4",
     "gatsby-plugin-sitemap": "2.11.0",
-    "gatsby-plugin-typegen": "2.2.2",
+    "gatsby-plugin-typegen": "2.2.4",
     "gatsby-plugin-webpack-bundle-analyser-v2": "1.1.20",
     "gatsby-source-filesystem": "2.10.0",
     "gatsby-theme-i18n": "1.0.4",
