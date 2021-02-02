@@ -54,7 +54,7 @@ export const findLessonPlanByChildIdAndDate = async (
                a.id                   as area_id,
                max(lp.date)           as end_date,
                min(lp.date)           as start_date,
-               json_agg(distinct o)            as observations,
+               json_agg(distinct o)   as observations,
                json_agg(distinct lpl) as links
         from lesson_plans lp
                  left join lesson_plan_details lpd on lp.lesson_plan_details_id = lpd.id
