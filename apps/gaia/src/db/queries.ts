@@ -47,15 +47,15 @@ export const findLessonPlanByChildIdAndDate = async (
   // language=PostgreSQL
   const plans = await query(
     `
-        select lp.id           as id,
-               lpd.title       as title,
-               lpd.description as description,
-               a.name          as area_name,
-               a.id            as area_id,
-               max(lp.date)    as end_date,
-               min(lp.date)    as start_date,
-               json_agg(o)     as observations,
-               json_agg(lpl)   as links
+        select lp.id                  as id,
+               lpd.title              as title,
+               lpd.description        as description,
+               a.name                 as area_name,
+               a.id                   as area_id,
+               max(lp.date)           as end_date,
+               min(lp.date)           as start_date,
+               json_agg(distinct o)            as observations,
+               json_agg(distinct lpl) as links
         from lesson_plans lp
                  left join lesson_plan_details lpd on lp.lesson_plan_details_id = lpd.id
                  left join lesson_plan_to_students lpts on lp.id = lpts.lesson_plan_id
