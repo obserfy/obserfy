@@ -10634,9 +10634,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"auth0-js@npm:9.14.2":
-  version: 9.14.2
-  resolution: "auth0-js@npm:9.14.2"
+"auth0-js@npm:9.14.3":
+  version: 9.14.3
+  resolution: "auth0-js@npm:9.14.3"
   dependencies:
     base64-js: ^1.3.0
     idtoken-verifier: ^2.0.3
@@ -10645,7 +10645,7 @@ __metadata:
     superagent: ^5.3.1
     url-join: ^4.0.1
     winchan: ^0.2.2
-  checksum: 6d85898337bc8e3181cf6b30fedae3c63526fbe8f547a19eeda921817fb95f513974c2b109986ab5b6e70d8a8edc5e0089fa1cc7a5d855a7b29de03f87ad99af
+  checksum: bcebcce015c7342a3bd985ffc8ec912266aa5f590f8a74d4fc1caf8add49ebc2a0fe76fac7c22897b56b8fefe49a7f6ace48a888e92db45a15e5b26efaaf9096
   languageName: node
   linkType: hard
 
@@ -16033,7 +16033,7 @@ __metadata:
     "@types/pg": 7.14.9
     "@typescript-eslint/eslint-plugin": 4.11.1
     "@typescript-eslint/parser": 4.11.1
-    auth0-js: 9.14.2
+    auth0-js: 9.14.3
     cypress: 6.3.0
     cypress-file-upload: 5.0.2
     cypress-intellij-reporter: 0.0.6
