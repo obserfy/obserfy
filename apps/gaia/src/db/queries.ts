@@ -2,6 +2,7 @@ import { array, number, string, type } from "io-ts"
 import { date } from "io-ts-types"
 import { nullable } from "io-ts/Type"
 import { LessonPlan } from "../domain"
+import { isEmpty } from "../utils/array"
 import dayjs from "../utils/dayjs"
 import { query, typedQuery } from "./pg"
 
@@ -402,16 +403,21 @@ const LessonPlans = array(
     id: string,
     title: string,
     description: nullable(string),
-    links: array(nullable(string)),
     area_name: nullable(string),
     start_date: date,
     end_date: date,
     repetition_type: string,
   })
 )
+const LessonPlanLinks = array(
+  type({
+    id: string,
+    url: string,
+  })
+)
 export const findLessonPlanById = async (planId: string) => {
   // language=PostgreSQL
-  return typedQuery(
+  const lessonPlan = await typedQuery(
     LessonPlans,
     [planId],
     `
@@ -421,16 +427,32 @@ export const findLessonPlanById = async (planId: string) => {
                repetition_type,
                area_id,
                material_id,
-               a.name              as area_name,
-               min(lp.date)        as start_date,
-               max(lp.date)        as end_date,
-               array_agg(lpl.url)  as links
+               a.name       as area_name,
+               min(lp.date) as start_date,
+               max(lp.date) as end_date
         from lesson_plan_details lpd
                  join lesson_plans lp on lpd.id = lp.lesson_plan_details_id
-                 left join lesson_plan_links lpl on lpd.id = lpl.lesson_plan_details_id
                  left join areas a on a.id = lpd.area_id
         where lpd.id = $1
         group by lpd.id, a.name
     `
   )
+
+  if (isEmpty(lessonPlan)) return null
+
+  // language=PostgreSQL
+  const links = await typedQuery(
+    LessonPlanLinks,
+    [planId],
+    `
+        select id, url
+        from lesson_plan_links
+        where lesson_plan_details_id = $1
+    `
+  )
+
+  return {
+    ...lessonPlan[0],
+    links,
+  }
 }

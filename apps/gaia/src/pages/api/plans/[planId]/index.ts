@@ -8,7 +8,7 @@ export interface GetLessonPlanResponse {
   areaName: string
   description: string
   endDate: string
-  links: string[]
+  links: Array<{ id: string; url: string }>
   repetitionType: string
   startDate: string
 }
@@ -17,24 +17,22 @@ const handleLessonPlan = protectedApiRoute(async (req, res) => {
 
   if (req.method === "GET") {
     const plan = await findLessonPlanById(planId as string)
-    if (plan.length === 0) {
-      return res.status(404).end()
+    if (plan) {
+      const response: GetLessonPlanResponse = {
+        id: plan.id,
+        title: plan.title,
+        description: plan.description ?? "",
+        links: plan.links.filter(isPresent),
+        areaName: plan.area_name ?? "",
+        endDate: plan.end_date.toISOString(),
+        startDate: plan.start_date.toISOString(),
+        repetitionType: plan.repetition_type,
+      }
+      return res.json(response)
     }
-
-    const response: GetLessonPlanResponse = {
-      id: plan[0].id,
-      title: plan[0].title,
-      description: plan[0].description ?? "",
-      links: plan[0].links.filter(isPresent),
-      areaName: plan[0].area_name ?? "",
-      endDate: plan[0].end_date.toISOString(),
-      startDate: plan[0].start_date.toISOString(),
-      repetitionType: plan[0].repetition_type,
-    }
-    res.json(response)
-  } else {
-    res.status(405).end()
+    return res.status(404).end()
   }
+  return res.status(405).end()
 })
 
 export default handleLessonPlan

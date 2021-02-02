@@ -11,7 +11,6 @@ enum ViewMode {
   Daily,
   All,
 }
-
 const LessonPlanDetails = () => {
   const childId = useQueryString("childId")
   const planId = useQueryString("planId")
@@ -62,14 +61,14 @@ const LessonPlanDetails = () => {
         <div>
           {lessonPlan.data?.links.map((l) => (
             <a
-              key={l}
-              href={l}
+              key={l.id}
+              href={l.url}
               className="overflow-x-auto max-w-full px-3 py-2 flex items-center text-sm leading-tight block hover:underline"
               rel="noopener noreferrer"
               target="_blank"
             >
               <Icon src="/icons/link.svg" className="flex-shrink-0" size={16} />
-              <div className="whitespace-no-wrap ml-2">{l}</div>
+              <div className="whitespace-no-wrap ml-2">{l.url}</div>
             </a>
           ))}
         </div>

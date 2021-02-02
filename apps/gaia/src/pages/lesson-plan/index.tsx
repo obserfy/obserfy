@@ -11,7 +11,7 @@ enum ViewMode {
 }
 
 const IndexPage = () => {
-  const [viewMode, setViewMode] = useState(ViewMode.All)
+  const [viewMode, setViewMode] = useState(ViewMode.Daily)
 
   return (
     <div>
