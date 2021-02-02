@@ -1,7 +1,7 @@
 import Head from "next/head"
 import Link from "next/link"
-import { Suspense } from "preact/compat/src/suspense"
 import React, { useState } from "react"
+import Icon from "../../components/Icon/Icon"
 import Markdown from "../../components/Markdown/Markdown"
 import useGetLessonPlan from "../../hooks/api/useGetlessonPlan"
 import { useQueryString } from "../../hooks/useQueryString"
@@ -51,9 +51,28 @@ const LessonPlanDetails = () => {
         <div className="prose px-3 pt-3">
           <h2>{lessonPlan.data?.title}</h2>
         </div>
+
         {lessonPlan.data?.description && (
-          <Markdown className="p-3" markdown={lessonPlan.data.description} />
+          <Markdown
+            className="p-3 max-w-lg"
+            markdown={lessonPlan.data.description}
+          />
         )}
+
+        <div>
+          {lessonPlan.data?.links.map((l) => (
+            <a
+              key={l}
+              href={l}
+              className="overflow-x-auto max-w-full px-3 py-2 flex items-center text-sm leading-tight block hover:underline"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <Icon src="/icons/link.svg" className="flex-shrink-0" size={16} />
+              <div className="whitespace-no-wrap ml-2">{l}</div>
+            </a>
+          ))}
+        </div>
       </div>
     </div>
   )

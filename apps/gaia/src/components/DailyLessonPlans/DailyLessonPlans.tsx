@@ -17,7 +17,7 @@ const DailyLessonPlans: FC = () => {
 
   return (
     <>
-      <div className="max-w-3xl mx-auto flex items-center p-3">
+      <div className="max-w-3xl mx-auto flex items-center p-3 border-t">
         <div className="text-xs font-bold text-gray-700">
           {date.format("dddd, DD MMM YYYY")}
         </div>
