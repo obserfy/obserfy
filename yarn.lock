@@ -115,17 +115,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@auth0/nextjs-auth0@npm:0.16.0":
-  version: 0.16.0
-  resolution: "@auth0/nextjs-auth0@npm:0.16.0"
+"@auth0/nextjs-auth0@npm:0.16.1":
+  version: 0.16.1
+  resolution: "@auth0/nextjs-auth0@npm:0.16.1"
   dependencies:
     "@hapi/iron": ^5.1.4
     base64url: ^3.0.1
     cookie: ^0.4.1
-    openid-client: ^3.15.0
+    openid-client: ^3.15.10
   peerDependencies:
     next: ^9.0.0
-  checksum: 41f18df50b192479bc43d7f1d462fe7838f1c47dec6c9349ba4e0e674efc66c454292758bbeb527d33459a77652a63f3eb676dd7795c92ccd601b6b493c6915c
+  checksum: f36f9e322c8a6030c5c249e269d0ae6aeadeb964d9e1f6944fd072cb55a8f517ff827d8650da84f6007eac7309be972f498411de72f4622fb4a2949286186ea9
   languageName: node
   linkType: hard
 
@@ -18959,7 +18959,7 @@ fsevents@~2.3.1:
   version: 0.0.0-use.local
   resolution: "gaia@workspace:apps/gaia"
   dependencies:
-    "@auth0/nextjs-auth0": 0.16.0
+    "@auth0/nextjs-auth0": 0.16.1
     "@segment/snippet": 4.13.1
     "@sentry/browser": 6.0.3
     "@sentry/integrations": 6.0.3
@@ -27405,20 +27405,20 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"openid-client@npm:^3.15.0":
-  version: 3.15.5
-  resolution: "openid-client@npm:3.15.5"
+"openid-client@npm:^3.15.10":
+  version: 3.15.10
+  resolution: "openid-client@npm:3.15.10"
   dependencies:
     "@types/got": ^9.6.9
     base64url: ^3.0.1
     got: ^9.6.0
     jose: ^1.27.1
-    lru-cache: ^5.1.1
+    lru-cache: ^6.0.0
     make-error: ^1.3.6
     object-hash: ^2.0.1
     oidc-token-hash: ^5.0.0
     p-any: ^3.0.0
-  checksum: a90bd20b8d851326f311a933092167aa993a605835440d5d8a77ecea0af4f851bfb908ca476e6fe461bd563110df3b5f168558214422cf55d9b9365bf0389ebe
+  checksum: 31740dd4e83cb6111e59fce7079821c2c0125a70b67b9a7f0ff2e9b01b6edaa1e387a835e4e1f793b1b2e7ccf09d32db4c488e1fb3f567d9c6876b93f57cac18
   languageName: node
   linkType: hard
 
