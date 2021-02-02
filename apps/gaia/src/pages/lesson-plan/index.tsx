@@ -19,7 +19,7 @@ const IndexPage = () => {
         <title>Lesson Plans | Obserfy for Parents</title>
       </Head>
 
-      <div className="w-full border-b flex ">
+      <div className="w-full flex ">
         <div className="w-full max-w-3xl mx-auto flex px-1">
           <button
             onClick={() => setViewMode(ViewMode.Daily)}

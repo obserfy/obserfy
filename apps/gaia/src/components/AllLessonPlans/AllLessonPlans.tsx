@@ -17,7 +17,7 @@ const AllLessonPlans: FC = () => {
   )
 
   return (
-    <div className="max-w-3xl mx-auto border w-full m-3 md:rounded bg-surface">
+    <div className="max-w-3xl mx-auto border w-full mx-3 mb-5 md:rounded bg-surface">
       <div className="flex items-center border rounded focus-within:border-primary bg-gray-100 m-3">
         <SearchIcon className="w-4 h-4 m-2 opacity-70" />
         <input
@@ -46,13 +46,13 @@ const Plan: FC<{ plan: GetChildPlansResponse; childId: string }> = ({
   <Link href={`/lesson-plan/details?childId=${childId}&planId=${plan.id}`}>
     <div className="p-3 border-t hover:bg-gray-100">
       <div className="flex-1 font-bold text-gray-700">{plan.title}</div>
-      <div className="flex text-xs opacity-70 pt-2">
-        <div>{plan.area?.name}</div>
-        <div className="ml-auto">
+      <div className="flex text-xs pt-2">
+        <div className="text-green-700">{plan.area?.name}</div>
+        <div className="ml-auto opacity-70 ">
           {dayjs(plan.startDate).format("D MMM YYYY")}
         </div>
         {plan.repetitionType !== "0" && (
-          <div className="ml-1">
+          <div className="ml-1 opacity-70 ">
             {" - "}
             {dayjs(plan.endDate).format("D MMM YYYY")}
           </div>
