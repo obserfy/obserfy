@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import React, { ChangeEventHandler, FC } from "react"
 import { Box, BoxProps, Card, Flex, Image, Input, Label } from "theme-ui"
 import { Trans } from "@lingui/macro"
 import Typography from "../Typography/Typography"
@@ -16,6 +16,21 @@ interface Props extends Omit<BoxProps, "onChange" | "value" | "css"> {
 export const ProfilePicker: FC<Props> = ({ value, onChange, ...props }) => {
   const postNewImage = usePostNewImage()
   const image = useGetImage(value)
+
+  const handleImageUpload: ChangeEventHandler<HTMLInputElement> = async (
+    event
+  ) => {
+    try {
+      const selectedImage = event.target.files?.[0]
+      if (!selectedImage) return
+      const result = await postNewImage.mutateAsync(selectedImage)
+      if (!result?.ok) return
+      const response = await result.json()
+      onChange(response.id)
+    } catch (e) {
+      Sentry.captureException(e)
+    }
+  }
 
   return (
     <Box {...props} sx={{ flexShrink: 0 }}>
@@ -58,23 +73,11 @@ export const ProfilePicker: FC<Props> = ({ value, onChange, ...props }) => {
           )}
         </Card>
         <Input
+          data-cy="upload-profile-pic"
           sx={{ display: "none" }}
           type="file"
           accept="image/*"
-          onChange={async (event) => {
-            const selectedImage = event.target.files?.[0]
-            if (selectedImage) {
-              try {
-                const result = await postNewImage.mutateAsync(selectedImage)
-                if (result?.ok) {
-                  const response = await result.json()
-                  onChange(response.id)
-                }
-              } catch (e) {
-                Sentry.captureException(e)
-              }
-            }
-          }}
+          onChange={handleImageUpload}
           disabled={postNewImage.isLoading}
         />
       </Label>

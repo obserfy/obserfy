@@ -233,6 +233,7 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
               <Trans>Other Related Students</Trans>
             </Typography.H6>
             <Button
+              data-cy="add-student"
               ml="auto"
               variant="outline"
               onClick={() => setShowStudentPickerDialog(true)}
@@ -260,6 +261,7 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
                 {otherStudent.name}
               </Typography.Body>
               <Button
+                data-cy="delete-student"
                 variant="secondary"
                 onClick={() =>
                   setOtherStudents((draft) => {
@@ -334,16 +336,14 @@ const LinkPreview: FC<{
         <Icon as={LinkIcon} ml={3} my={3} />
         <Typography.Body
           ml={2}
-          sx={{
-            whiteSpace: "nowrap",
-            display: "inline-block",
-          }}
+          sx={{ whiteSpace: "nowrap", display: "inline-block" }}
         >
           {link.url}
         </Typography.Body>
       </a>
 
       <Button
+        data-cy="delete-link"
         variant="outline"
         ml="auto"
         color="danger"

@@ -28,7 +28,7 @@ exports[`PageGallery should render correctly 1`] = `
   -webkit-position: sticky;
   position: sticky;
   top: -48px;
-  z-index: 10;
+  z-index: 100;
 }
 
 @supports (backdrop-filter: blur(20px)) {
@@ -643,6 +643,7 @@ exports[`PageGallery should render correctly 1`] = `
           >
             <input
               accept="image/*"
+              data-cy="upload-image"
               style="display: none;"
               type="file"
             />

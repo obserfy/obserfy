@@ -2,6 +2,8 @@
   "extends": ["config:base"],
   "automerge": true,
   "dependencyDashboard": true,
+  "stabilityDays": 3,
+  "prCreation": "not-pending",
   "packageRules": [
     {
       "packagePatterns": ["eslint"],

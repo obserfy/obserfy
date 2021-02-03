@@ -1152,7 +1152,7 @@ enum ImageFormat {
 
 enum ImageLayout {
   FIXED
-  FLUID
+  FULL_WIDTH
   CONSTRAINED
 }
 
@@ -1219,45 +1219,43 @@ type ImageSharp implements Node {
   gatsbyImageData(
     # The layout for the image.
     # FIXED: A static image sized, that does not resize according to the screen width
-    # FLUID: The image resizes to fit its container. Pass a "sizes" option if it
-    # isn't going to be the full width of the screen. 
+    # FULL_WIDTH: The image resizes to fit its container. Pass a "sizes" option if
+    # it isn't going to be the full width of the screen. 
     # CONSTRAINED: Resizes to fit its container, up to a maximum width, at which point it will remain fixed in size.
     layout: ImageLayout = CONSTRAINED
 
-    # Maximum display width of generated files. 
-    # The actual largest image resolution will be this value multipled by the largest value in outputPixelDensities
-    # This only applies when layout = FLUID or CONSTRAINED. For other layout types, use "width"
-    maxWidth: Int
-
-    # If set, the generated image is a maximum of this height, cropping if necessary. 
-    # If the image layout is "constrained" then the image will be limited to this height. 
-    # If the aspect ratio of the image is different than the source, then the image will be cropped.
-    maxHeight: Int
-
-    # The display width of the generated image. 
-    # The actual largest image resolution will be this value multipled by the largest value in outputPixelDensities
-    # Ignored if layout = FLUID or CONSTRAINED, where you should use "maxWidth" instead.
+    # The display width of the generated image for layout = FIXED, and the maximum
+    # display width of the largest image for layout = CONSTRAINED.  
+    # Ignored if layout = FLUID.
     width: Int
 
-    # If set, the height of the generated image. If omitted, it is calculated from
-    # the supplied width, matching the aspect ratio of the source image.
+    # The display height of the generated image for layout = FIXED, and the
+    # maximum display height of the largest image for layout = CONSTRAINED.  
+    # The image will be cropped if the aspect ratio does not match the source
+    # image. If omitted, it is calculated from the supplied width, 
+    # matching the aspect ratio of the source image.
     height: Int
+
+    # If set along with width or height, this will set the value of the other
+    # dimension to match the provided aspect ratio, cropping the image if needed. 
+    # If neither width or height is provided, height will be set based on the intrinsic width of the source image.
+    aspectRatio: Float
 
     # Format of generated placeholder image, displayed while the main image loads. 
     # BLURRED: a blurred, low resolution image, encoded as a base64 data URI (default)
     # DOMINANT_COLOR: a solid color, calculated from the dominant color of the image. 
     # TRACED_SVG: a low-resolution traced SVG of the image.
     # NONE: no placeholder. Set "background" to use a fixed background color.
-    placeholder: ImagePlaceholder = BLURRED
+    placeholder: ImagePlaceholder = DOMINANT_COLOR
 
     # Options for the low-resolution placeholder image. Set placeholder to "BLURRED" to use this
     blurredOptions: BlurredOptions
 
-    # Options for traced placeholder SVGs. You also should set placeholder to "SVG".
+    # Options for traced placeholder SVGs. You also should set placeholder to "TRACED_SVG".
     tracedSVGOptions: Potrace
 
     # The image formats to generate. Valid values are "AUTO" (meaning the same
-    # format as the source image), "JPG", "PNG" and "WEBP". 
+    # format as the source image), "JPG", "PNG", "WEBP" and "AVIF". 
     # The default value is [AUTO, WEBP], and you should rarely need to change
     # this. Take care if you specify JPG or PNG when you do
     # not know the formats of the source images, as this could lead to unwanted
@@ -1267,19 +1265,26 @@ type ImageSharp implements Node {
 
     # A list of image pixel densities to generate. It will never generate images
     # larger than the source, and will always include a 1x image. 
-    # Default is [ 1, 2 ] for fixed images, meaning 1x, 2x, 3x, and [0.25, 0.5, 1,
-    # 2] for fluid. In this case, an image with a fluid layout and width = 400
-    # would generate images at 100, 200, 400 and 800px wide
+    # Default is [ 1, 2 ] for FIXED images, meaning 1x and 2x and [0.25, 0.5, 1,
+    # 2] for CONSTRAINED. In this case, an image with a constrained layout 
+    # and width = 400 would generate images at 100, 200, 400 and 800px wide.
+    # Ignored for FULL_WIDTH images, which use breakpoints instead
     outputPixelDensities: [Float]
 
-    # The "sizes" property, passed to the img tag. This describes the display size of the image. 
-    # This does not affect the generated images, but is used by the browser to
-    # decide which images to download. You can leave this blank for fixed images,
-    # or if the responsive image
-    # container will be the full width of the screen. In these cases we will generate an appropriate value.
-    sizes: String = ""
+    # Specifies the image widths to generate. For FIXED and CONSTRAINED images it
+    # is better to allow these to be determined automatically,
+    # based on the image size. For FULL_WIDTH images this can be used to override
+    # the default, which is [750, 1080, 1366, 1920].
+    # It will never generate any images larger than the source.
+    breakpoints: [Int]
 
-    # The default quality. This is overriden by any format-specific options
+    # The "sizes" property, passed to the img tag. This describes the display size of the image. 
+    # This does not affect the generated images, but is used by the browser to decide which images to download. 
+    # You should usually leave this blank, and a suitable value will be calculated. The exception is if a FULL_WIDTH image
+    # does not actually span the full width of the screen, in which case you should pass the correct size here.
+    sizes: String
+
+    # The default quality. This is overridden by any format-specific options
     quality: Int
 
     # Options to pass to sharp when generating JPG images.
@@ -2555,6 +2560,7 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___extensions
   pluginCreator___pluginOptions___lessBabel
   pluginCreator___pluginOptions___mediaTypes
+  pluginCreator___pluginOptions___root
   pluginCreator___pluginOptions___localeDir
   pluginCreator___pluginOptions___base64Width
   pluginCreator___pluginOptions___stripMetadata
@@ -2765,6 +2771,7 @@ enum SitePluginFieldsEnum {
   pluginOptions___extensions
   pluginOptions___lessBabel
   pluginOptions___mediaTypes
+  pluginOptions___root
   pluginOptions___localeDir
   pluginOptions___base64Width
   pluginOptions___stripMetadata
@@ -2913,6 +2920,7 @@ type SitePluginPluginOptions {
   extensions: [String]
   lessBabel: Boolean
   mediaTypes: [String]
+  root: String
   localeDir: String
   base64Width: Int
   stripMetadata: Boolean
@@ -2959,6 +2967,7 @@ input SitePluginPluginOptionsFilterInput {
   extensions: StringQueryOperatorInput
   lessBabel: BooleanQueryOperatorInput
   mediaTypes: StringQueryOperatorInput
+  root: StringQueryOperatorInput
   localeDir: StringQueryOperatorInput
   base64Width: IntQueryOperatorInput
   stripMetadata: BooleanQueryOperatorInput

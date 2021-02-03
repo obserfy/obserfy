@@ -48,7 +48,7 @@ const ImagePreview: FC<{
               {dayjs(img.createdAt).format("dddd, DD MMM YYYY")}
             </div>
           </div>
-          <button className="ml-auto" onClick={onDismiss}>
+          <button data-cy="close" className="ml-auto" onClick={onDismiss}>
             <Icon src="/icons/close.svg" size={20} />
           </button>
         </div>
