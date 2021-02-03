@@ -188,6 +188,7 @@ const ImagePreview: FC<{
   return (
     <>
       <Image
+        data-cy="image"
         onClick={dialog.show}
         src={src}
         mr={2}
@@ -243,6 +244,7 @@ const UploadImageButton: FC<{
         <Icon as={PlusIcon} />
       )}
       <Input
+        data-cy="upload-image"
         type="file"
         sx={{ display: "none" }}
         accept="image/*"

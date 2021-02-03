@@ -75,6 +75,7 @@ const Navbar: FC = () => {
             src="../../images/logo-transparent.png"
             alt="obserfy logo"
             width={40}
+            placeholder="blurred"
           />
         </Box>
         <NavBarItem title={t`Students`} icon={StudentsIcon} to={STUDENTS_URL} />

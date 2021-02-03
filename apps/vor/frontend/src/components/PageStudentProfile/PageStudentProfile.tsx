@@ -102,7 +102,7 @@ export const PageStudentProfile: FC<Props> = ({ studentId }) => {
             sx={{ ml: "auto" }}
             data-cy="edit-classes"
           >
-            <Button variant="secondary" ml="auto" p={2}>
+            <Button data-cy="edit-class" variant="secondary" ml="auto" p={2}>
               <Trans>Edit</Trans>
             </Button>
           </Link>
@@ -132,7 +132,7 @@ export const PageStudentProfile: FC<Props> = ({ studentId }) => {
             sx={{ ml: "auto" }}
             data-cy="add-guardian"
           >
-            <Button variant="secondary" p={2}>
+            <Button data-cy="add-guardians" variant="secondary" p={2}>
               <Trans>Add</Trans>
             </Button>
           </Link>
@@ -177,6 +177,15 @@ const GuardianItem: FC<{
   const dialog = useVisibilityState()
   const removeGuardian = useDeleteGuardianRelation(guardianId, studentId)
 
+  const handleRemoveGuardian = async () => {
+    try {
+      await removeGuardian.mutateAsync()
+      dialog.hide()
+    } catch (e) {
+      Sentry.captureException(e)
+    }
+  }
+
   return (
     <Fragment>
       <Link to={STUDENT_PROFILE_GUARDIAN_PROFILE_URL(studentId, guardianId)}>
@@ -217,6 +226,7 @@ const GuardianItem: FC<{
             {email || <Trans>No email set</Trans>}
           </Typography.Body>
           <Button
+            data-cy={`remove-${name}`}
             variant="outline"
             p={1}
             mx={2}
@@ -236,14 +246,7 @@ const GuardianItem: FC<{
           positiveText={t`Delete`}
           loading={removeGuardian.isLoading}
           onNegativeClick={dialog.hide}
-          onPositiveClick={async () => {
-            try {
-              await removeGuardian.mutateAsync()
-              dialog.hide()
-            } catch (e) {
-              Sentry.captureException(e)
-            }
-          }}
+          onPositiveClick={handleRemoveGuardian}
         />
       )}
     </Fragment>

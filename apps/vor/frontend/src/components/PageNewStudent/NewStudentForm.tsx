@@ -185,7 +185,7 @@ export const NewStudentForm = () => {
         )}
 
         {state.guardians.map((guardian, idx) => (
-          <GuardianCard
+          <Guardian
             key={guardian.id}
             id={guardian.id}
             relationship={guardian.relationship}
@@ -201,7 +201,7 @@ export const NewStudentForm = () => {
   )
 }
 
-const GuardianCard: FC<{
+const Guardian: FC<{
   id: string
   relationship: GuardianRelationship
   onRemove: () => void
@@ -235,6 +235,7 @@ const GuardianCard: FC<{
         {guardian.data?.email || "No Email Set"}
       </Typography.Body>
       <Button
+        data-cy={`delete-${guardian.data?.name ?? ""}`}
         p={2}
         variant="secondary"
         ml={2}

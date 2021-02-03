@@ -93,6 +93,7 @@ const ImageItems: FC<{ childId: string; img: ChildImage }> = ({
   return (
     <>
       <button
+        data-cy="image"
         className="w-1/3 md:w-1/5 relative cursor-pointer"
         onClick={() => setShowPreview(true)}
       >

@@ -200,6 +200,7 @@ exports[`ProfilePicker should render correctly 1`] = `
           <input
             accept="image/*"
             class="emotion-8"
+            data-cy="upload-profile-pic"
             type="file"
           />
         </label>

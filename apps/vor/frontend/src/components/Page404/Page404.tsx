@@ -39,6 +39,7 @@ export const Page404: FC = () => {
             src="../../images/not-found.png"
             width={180}
             alt="A missing page"
+            placeholder="blurred"
           />
         </Box>
         <Typography.Body mb={4} mx={5} sx={{ textAlign: "center" }}>

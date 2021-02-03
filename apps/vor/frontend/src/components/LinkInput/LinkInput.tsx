@@ -22,6 +22,7 @@ const LinkInput: FC<{
       onChange={(e) => onChange(e.target.value)}
     />
     <Button
+      data-cy="add-link"
       ml={2}
       variant="outline"
       disabled={value === "" || isLoading}

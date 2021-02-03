@@ -3,7 +3,9 @@ import Error from "next/error"
 
 export default function NotFound() {
   useEffect(() => {
-    mixpanel.track("404 visited")
+    if (mixpanel.track) {
+      mixpanel.track("404 visited")
+    }
   }, [])
 
   // Opinionated: do not record an exception in Sentry for 404

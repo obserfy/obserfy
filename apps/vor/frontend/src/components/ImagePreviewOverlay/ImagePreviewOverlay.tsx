@@ -119,6 +119,7 @@ const ImagePreviewOverlay: FC<ImagePreviewOverlayProps> = ({
               <Flex sx={{ alignItems: "center" }}>
                 <Typography.Body m={3}>{student.data?.name}</Typography.Body>
                 <Button
+                  data-cy="delete-image"
                   disabled={hideUI}
                   variant="outline"
                   p={2}

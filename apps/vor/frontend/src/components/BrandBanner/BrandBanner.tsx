@@ -14,6 +14,7 @@ export const BrandBanner: FC = () => (
           width={32}
           alt="obserfy logo"
           sx={{ flexShrink: 0 }}
+          placeholder="blurred"
         />
         <Typography.Body
           ml={2}

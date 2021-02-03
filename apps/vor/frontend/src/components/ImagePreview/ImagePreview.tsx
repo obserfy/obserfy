@@ -21,6 +21,7 @@ export const ImagePreview: FC<ImagePreviewProps> = ({
   return (
     <>
       <Image
+        data-cy="observation-image"
         src={thumbnailUrl}
         height={32}
         width={32}
