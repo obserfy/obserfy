@@ -55,8 +55,6 @@ github.com/go-chi/chi v4.1.2+incompatible/go.mod h1:eB3wogJHnLi3x/kFX2A+IbTBlXxm
 github.com/go-errors/errors v1.0.1 h1:LUHzmkK3GUKUrL/1gfBUxAHzcev3apQlezX/+O7ma6w=
 github.com/go-errors/errors v1.0.1/go.mod h1:f4zRHt4oKfwPJE5k8C9vpYG+aDHdBFUsgrm6/TyX73Q=
 github.com/go-martini/martini v0.0.0-20170121215854-22fa46961aab/go.mod h1:/P9AEU963A2AYjv4d1V5eVL1CQbEJq6aCNHDDjibzu8=
-github.com/go-pg/pg/v10 v10.7.4 h1:mlEZibLDMH20k5BK0iXp4KOpLytSjnknBw3rPEuJb4c=
-github.com/go-pg/pg/v10 v10.7.4/go.mod h1:lKGGb3/k9tK5NBMPTcEuFJf9MQJOZIk6qrDOknygYVo=
 github.com/go-pg/pg/v10 v10.7.5 h1:+Cv/UAduYqzxiLXvVqxMZj7ZcCQl0CIPhQfuJgY6ZrI=
 github.com/go-pg/pg/v10 v10.7.5/go.mod h1:lKGGb3/k9tK5NBMPTcEuFJf9MQJOZIk6qrDOknygYVo=
 github.com/go-pg/pg/v10 v10.7.6 h1:pR/qDgffBrIida8DcUGv/7HcOhfSRSmXt11bBpUrwrs=
@@ -159,8 +157,6 @@ github.com/labstack/gommon v0.3.0/go.mod h1:MULnywXg0yavhxWKc+lOruYdAhDwPK9wf0OL
 github.com/leodido/go-urn v1.2.0 h1:hpXL4XnriNwQ/ABnpepYM/1vCLWNDfUNts8dX3xTG6Y=
 github.com/leodido/go-urn v1.2.0/go.mod h1:+8+nEpDfqqsY+g338gtMEUOtuK+4dEMhiQEgxpxOKII=
 github.com/magiconair/properties v1.8.0/go.mod h1:PppfXfuXeibc/6YijjN8zIbojt8czPbwD3XqdrwzmxQ=
-github.com/mailgun/mailgun-go/v4 v4.3.2 h1:GWX7z4R9kRuTKKnf06KIUr5Do0mbfFXUo4oHrsHFFBs=
-github.com/mailgun/mailgun-go/v4 v4.3.2/go.mod h1:fWuBI2iaS/pSSyo6+EBpHjatQO3lV8onwqcRy7joSJI=
 github.com/mailgun/mailgun-go/v4 v4.3.3 h1:fS51t6ZQSkpK0t9irwHtcfzyVj4iR8u+m3oa0R+a12E=
 github.com/mailgun/mailgun-go/v4 v4.3.3/go.mod h1:fWuBI2iaS/pSSyo6+EBpHjatQO3lV8onwqcRy7joSJI=
 github.com/mattn/go-colorable v0.1.2/go.mod h1:U0ppj6V5qS13XJ6of8GYAs25YV2eR4EVcfRqFIhoBtE=
