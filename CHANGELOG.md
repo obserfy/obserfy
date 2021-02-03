@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.15.12](https://github.com/obserfy/obserfy/compare/v1.15.11...v1.15.12) (2021-01-23)
+
+
+### Bug Fixes
+
+* **deps:** update gatsby monorepo ([#1705](https://github.com/obserfy/obserfy/issues/1705)) ([eaff967](https://github.com/obserfy/obserfy/commit/eaff967deda87e7c6b0e16f62cc9d73680ba2988))
+
 ### [1.15.11](https://github.com/obserfy/obserfy/compare/v1.15.10...v1.15.11) (2021-01-23)
 
 
