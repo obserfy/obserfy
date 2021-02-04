@@ -1,206 +1,126 @@
-import React, { FC, useState } from "react"
-import { Box, Button, Card, Flex } from "theme-ui"
 import { Trans } from "@lingui/macro"
-import Typography from "../Typography/Typography"
-import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
+import React, { FC } from "react"
+import { Box, Button, Flex } from "theme-ui"
+import { borderBottom, borderRight } from "../../border"
 import { useGetCurriculum } from "../../hooks/api/useGetCurriculum"
 import { useGetCurriculumAreas } from "../../hooks/api/useGetCurriculumAreas"
-import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
-import Icon from "../Icon/Icon"
-import NewAreaDialog from "../NewAreaDialog/NewAreaDialog"
-import { ADMIN_URL, CURRICULUM_AREA_URL } from "../../routes"
-import TopBar from "../TopBar/TopBar"
-import usePostNewCurriculum from "../../hooks/api/curriculum/usePostNewCurriculum"
-import NewCustomCurriculumDialog from "../NewCustomCurriculumDialog/NewCustomCurriculumDialog"
-import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
-import { Link } from "../Link/Link"
-import { borderBottom } from "../../border"
-import { ReactComponent as DeleteIcon } from "../../icons/trash.svg"
+import useVisibilityState from "../../hooks/useVisibilityState"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
+import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
+import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
+import { ReactComponent as DeleteIcon } from "../../icons/trash.svg"
+import { ADMIN_URL, CURRICULUM_AREA_URL } from "../../routes"
 import DeleteCurriculumDialog from "../DeleteCurriculumDialog/DeleteCurriculumDialog"
 import EditCurriculumDialog from "../EditCurriculumDialog/EditCurriculumDialog"
+import Icon from "../Icon/Icon"
+import { Link } from "../Link/Link"
+import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
+import NewAreaDialog from "../NewAreaDialog/NewAreaDialog"
+import TopBar, { breadCrumb } from "../TopBar/TopBar"
+import TranslucentBar from "../TranslucentBar/TranslucentBar"
+import Typography from "../Typography/Typography"
+import SetupCurriculum from "./SetupCurriculum"
 
 export const PageCurriculumSettings: FC = () => {
   const { data, isLoading, isError, isSuccess } = useGetCurriculum()
-  const [showCurriculumDeleteDialog, setShowCurriculumDeleteDialog] = useState(
-    false
-  )
-  const [showCurriculumEditDialog, setShowCurriculumEditDialog] = useState(
-    false
-  )
+  const editDialog = useVisibilityState()
+  const deleteDialog = useVisibilityState()
 
   return (
-    <>
-      <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto">
+    <Box
+      sx={{
+        minHeight: "100vh",
+        maxWidth: ["100%", "100%", 320],
+        ...borderRight,
+      }}
+    >
+      <TranslucentBar boxSx={{ ...borderBottom, position: "sticky", top: 0 }}>
         <TopBar
           breadcrumbs={[
-            {
-              text: "Admin",
-              to: ADMIN_URL,
-            },
-            {
-              text: "Curriculum",
-            },
+            breadCrumb("Admin", ADMIN_URL),
+            breadCrumb("Curriculum"),
           ]}
         />
-        {isLoading && <LoadingState />}
-        {isSuccess && data?.name && (
-          <Flex mx={3} mt={3} sx={{ alignItems: "baseline" }}>
-            {isLoading && !data?.name ? (
-              <LoadingPlaceholder sx={{ width: "10rem", height: 43 }} />
-            ) : (
-              <Typography.H4 sx={{ lineHeight: 1.2 }}>
-                {data?.name}
-              </Typography.H4>
-            )}
+        {isSuccess && data && (
+          <Flex px={3} pb={3} sx={{ alignItems: "center" }}>
+            <Typography.H5 sx={{ lineHeight: 1.2 }}>{data.name}</Typography.H5>
             <Button
-              variant="secondary"
-              onClick={() => setShowCurriculumDeleteDialog(true)}
+              variant="outline"
+              onClick={deleteDialog.show}
               color="danger"
-              sx={{ flexShrink: 0 }}
               px={2}
-              ml={2}
+              ml="auto"
             >
               <Icon as={DeleteIcon} fill="danger" />
             </Button>
-            <Button
-              variant="secondary"
-              sx={{ flexShrink: 0 }}
-              px={2}
-              onClick={() => setShowCurriculumEditDialog(true)}
-            >
+            <Button variant="outline" px={2} ml={2} onClick={editDialog.show}>
               <Icon as={EditIcon} />
             </Button>
           </Flex>
         )}
-        {isSuccess && data && <CurriculumAreas curriculum={data} />}
-        {isError && <SetupCurriculum />}
-        {showCurriculumDeleteDialog && (
-          <DeleteCurriculumDialog
-            onDismiss={() => setShowCurriculumDeleteDialog(false)}
-            name={data?.name ?? ""}
-          />
-        )}
-        {showCurriculumEditDialog && (
-          <EditCurriculumDialog
-            curriculumId={data?.id ?? ""}
-            onDismiss={() => setShowCurriculumEditDialog(false)}
-            originalValue={data?.name}
-          />
-        )}
-      </Box>
-    </>
-  )
-}
+      </TranslucentBar>
 
-const SetupCurriculum: FC = () => {
-  const postNewCurriculum = usePostNewCurriculum()
-  const [showCustomCurriculumDialog, setShowCustomCurriculumDialog] = useState(
-    false
-  )
+      {isError && <SetupCurriculum />}
 
-  return (
-    <>
-      <Typography.H6 my={2} sx={{ textAlign: "center" }}>
-        <Trans>Setup curriculum</Trans>
-      </Typography.H6>
-      <Flex p={3} sx={{ flexFlow: ["column", "row"] }}>
-        <Card p={3} mr={[0, 3]} mb={[3, 0]} sx={{ width: [undefined, "50%"] }}>
-          <Typography.H6 mb={2}>Montessori</Typography.H6>
-          <Typography.Body mb={3}>
-            <Trans>
-              Start with a basic Montessori Curriculum that you can modify to
-              your needs.
-            </Trans>
-          </Typography.Body>
-          <Button
-            variant="outline"
-            onClick={async () => {
-              try {
-                await postNewCurriculum.mutateAsync({ template: "montessori" })
-              } catch (e) {
-                Sentry.captureException(e)
-              }
-            }}
-          >
-            <Trans>Use Montessori</Trans>
-          </Button>
-        </Card>
-        <Card p={3} sx={{ width: [undefined, "50%"] }}>
-          <Typography.H6 mb={2}>
-            <Trans>Custom</Trans>
-          </Typography.H6>
-          <Typography.Body mb={3}>
-            <Trans>
-              Start with a blank curriculum that you can customize from scratch.
-            </Trans>
-          </Typography.Body>
-          <Button
-            variant="outline"
-            onClick={() => setShowCustomCurriculumDialog(true)}
-          >
-            <Trans>Use Custom</Trans>
-          </Button>
-        </Card>
-      </Flex>
-      {showCustomCurriculumDialog && (
-        <NewCustomCurriculumDialog
-          onDismiss={() => setShowCustomCurriculumDialog(false)}
+      {isLoading && <LoadingState />}
+
+      {isSuccess && data && (
+        <CurriculumAreas curriculumName={data.name} curriculumId={data.id} />
+      )}
+
+      {data && deleteDialog.visible && (
+        <DeleteCurriculumDialog
+          onDismiss={deleteDialog.hide}
+          name={data.name}
         />
       )}
-    </>
+
+      {data && editDialog.visible && (
+        <EditCurriculumDialog
+          curriculumId={data.id}
+          onDismiss={editDialog.hide}
+          originalValue={data.name}
+        />
+      )}
+    </Box>
   )
 }
 
 const CurriculumAreas: FC<{
-  curriculum: { id: string }
-}> = ({ curriculum }) => {
-  const [showNewAreaDialog, setShowNewAreaDialog] = useState(false)
+  curriculumId: string
+  curriculumName: string
+}> = ({ curriculumId }) => {
+  const newAreaDialog = useVisibilityState()
   const areas = useGetCurriculumAreas()
 
   return (
-    <Box mx={[0, 3]} mt={3}>
-      <Flex mx={[3, 0]} mb={2} sx={{ alignItems: "center" }}>
+    <Box>
+      <Flex p={3} sx={{ alignItems: "center", ...borderBottom }}>
         <Typography.H6>
           <Trans>Areas</Trans>
         </Typography.H6>
-        <Button
-          ml="auto"
-          variant="outline"
-          onClick={() => setShowNewAreaDialog(true)}
-        >
-          <Icon as={PlusIcon} mr={2} />
-          <Trans>New Area</Trans>
+        <Button ml="auto" variant="outline" onClick={newAreaDialog.show} px={2}>
+          <Icon as={PlusIcon} />
         </Button>
       </Flex>
+
       {areas.data?.map((area) => (
         <Link
           key={area.id}
           to={CURRICULUM_AREA_URL(area.id)}
           sx={{ display: "block" }}
         >
-          <Card
-            p={3}
-            mb={[0, 2]}
-            sx={{
-              borderRadius: [0, "default"],
-              ...borderBottom,
-              borderBottomStyle: ["solid", "none"],
-            }}
-          >
-            <Flex sx={{ alignItems: "center" }}>
-              <Typography.Body sx={{ fontSize: [2, 2] }}>
-                {area.name}
-              </Typography.Body>
-              <Icon as={NextIcon} ml="auto" />
-            </Flex>
-          </Card>
+          <Flex p={3} sx={{ alignItems: "center", ...borderBottom }}>
+            <Typography.Body>{area.name}</Typography.Body>
+            <Icon as={NextIcon} ml="auto" />
+          </Flex>
         </Link>
       ))}
-      {showNewAreaDialog && (
+
+      {newAreaDialog.visible && (
         <NewAreaDialog
-          curriculumId={curriculum.id}
-          onDismiss={() => setShowNewAreaDialog(false)}
+          curriculumId={curriculumId}
+          onDismiss={newAreaDialog.hide}
         />
       )}
     </Box>
