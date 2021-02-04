@@ -91,7 +91,11 @@ func getArea(server rest.Server, store Store) rest.Handler {
 		// Get area
 		area, err := store.GetArea(areaId)
 		if err != nil {
-			return &rest.Error{http.StatusNotFound, " Can't find area with specified ID", err}
+			return &rest.Error{
+				Code:    http.StatusNotFound,
+				Message: " Can't find area with specified ID",
+				Error:   err,
+			}
 		}
 
 		// Write response
@@ -114,7 +118,11 @@ func getAreaSubjects(server rest.Server, store Store) rest.Handler {
 
 		subjects, err := store.GetAreaSubjects(areaId)
 		if err != nil {
-			return &rest.Error{http.StatusNotFound, " Can't find subject with specified area ID", err}
+			return &rest.Error{
+				Code:    http.StatusNotFound,
+				Message: " Can't find subject with specified area ID",
+				Error:   err,
+			}
 		}
 
 		// Write response
@@ -145,9 +153,9 @@ func createArea(server rest.Server, store Store) rest.Handler {
 		curriculumId := chi.URLParam(r, "curriculumId")
 		if _, err := uuid.Parse(curriculumId); err != nil {
 			return &rest.Error{
-				http.StatusBadRequest,
-				"Invalid curriculum ID",
-				err,
+				Code:    http.StatusBadRequest,
+				Message: "Invalid curriculum ID",
+				Error:   err,
 			}
 		}
 
@@ -158,25 +166,25 @@ func createArea(server rest.Server, store Store) rest.Handler {
 
 		if curriculumId == "" {
 			return &rest.Error{
-				http.StatusBadRequest,
-				"Curriculum ID is required",
-				errors.New("empty curriculum ID"),
+				Code:    http.StatusBadRequest,
+				Message: "Curriculum ID is required",
+				Error:   errors.New("empty curriculum ID"),
 			}
 		}
 		if body.Name == "" {
 			return &rest.Error{
-				http.StatusBadRequest,
-				"Area needs a name",
-				errors.New("empty area name"),
+				Code:    http.StatusBadRequest,
+				Message: "Area needs a name",
+				Error:   errors.New("empty area name"),
 			}
 		}
 
 		area, err := store.NewArea(body.Name, curriculumId)
 		if err != nil {
 			return &rest.Error{
-				http.StatusInternalServerError,
-				"Failed saving area",
-				err,
+				Code:    http.StatusInternalServerError,
+				Message: "Failed saving area",
+				Error:   err,
 			}
 		}
 
@@ -208,7 +216,11 @@ func createSubject(server rest.Server, store Store) http.Handler {
 			return rest.NewParseJsonError(err)
 		}
 		if requestBody.Name == "" {
-			return &rest.Error{http.StatusBadRequest, "Name cannot be empty", richErrors.New("name can't be empty")}
+			return &rest.Error{
+				Code:    http.StatusBadRequest,
+				Message: "Name cannot be empty",
+				Error:   richErrors.New("name can't be empty"),
+			}
 		}
 
 		// Convert Material into proper form
@@ -227,13 +239,17 @@ func createSubject(server rest.Server, store Store) http.Handler {
 		// Make sure no order number is repeated.
 		if len(orderingNumbers) != len(materials) {
 			return &rest.Error{
-				http.StatusUnprocessableEntity,
-				"Material order number can't be repeated",
-				richErrors.New("Repeated order number in list of materials")}
+				Code:    http.StatusUnprocessableEntity,
+				Message: "Material order number can't be repeated",
+				Error:   richErrors.New("Repeated order number in list of materials")}
 		}
 		subject, err := store.NewSubject(requestBody.Name, areaId, materials)
 		if err != nil {
-			return &rest.Error{http.StatusInternalServerError, "Failed saving subject", err}
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "Failed saving subject",
+				Error:   err,
+			}
 		}
 
 		w.WriteHeader(http.StatusCreated)
@@ -253,7 +269,11 @@ func getSubjectMaterials(server rest.Server, store Store) rest.Handler {
 
 		materials, err := store.GetSubjectMaterials(subjectId)
 		if err != nil {
-			return &rest.Error{http.StatusNotFound, " Can't find materials with the specified subject id", err}
+			return &rest.Error{
+				Code:    http.StatusNotFound,
+				Message: " Can't find materials with the specified subject id",
+				Error:   err,
+			}
 		}
 
 		// Write response
@@ -284,30 +304,46 @@ func createNewMaterial(server rest.Server, store Store) http.Handler {
 		}
 		if body.Name == "" {
 			return &rest.Error{
-				http.StatusUnprocessableEntity,
-				"Name can't be empty",
-				errors.New("empty name field"),
+				Code:    http.StatusUnprocessableEntity,
+				Message: "Name can't be empty",
+				Error:   errors.New("empty name field"),
 			}
 		}
 
 		// Make sure subject id is valid (better as middleware)
 		subjectId := chi.URLParam(r, "subjectId")
 		if _, err := uuid.Parse(subjectId); err != nil {
-			return &rest.Error{http.StatusNotFound, "Can't find the specified subject", err}
+			return &rest.Error{
+				Code:    http.StatusNotFound,
+				Message: "Can't find the specified subject",
+				Error:   err,
+			}
 		}
 
 		// Make sure subject exists
 		subject, err := store.GetSubject(subjectId)
 		if err == pg.ErrNoRows {
-			return &rest.Error{http.StatusNotFound, "Can't find the specified subject", err}
+			return &rest.Error{
+				Code:    http.StatusNotFound,
+				Message: "Can't find the specified subject",
+				Error:   err,
+			}
 		} else if err != nil {
-			return &rest.Error{http.StatusInternalServerError, "Failed retrieving subject", err}
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "Failed retrieving subject",
+				Error:   err,
+			}
 		}
 
 		// Create and save the requested material (default order is on the bottom of list.
 		material, err := store.NewMaterial(body.Name, subject.Id)
 		if err != nil {
-			return &rest.Error{http.StatusInternalServerError, "Failed saving new material", err}
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "Failed saving new material",
+				Error:   err,
+			}
 		}
 
 		w.Header().Add("Location", r.URL.Path+"/"+material.Id)
@@ -332,15 +368,27 @@ func updateMaterial(server rest.Server, store Store) http.Handler {
 		materialId := chi.URLParam(r, "materialId")
 		material, err := store.GetMaterial(materialId)
 		if err == pg.ErrNoRows {
-			return &rest.Error{http.StatusNotFound, "Can' find material with the specified ID", err}
+			return &rest.Error{
+				Code:    http.StatusNotFound,
+				Message: "Can' find material with the specified ID",
+				Error:   err,
+			}
 		} else if err != nil {
-			return &rest.Error{http.StatusInternalServerError, "Can' retrieve material", err}
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "Can' retrieve material",
+				Error:   err,
+			}
 		}
 
 		// Validate material name
 		if body.Name != nil {
 			if *body.Name == "" {
-				return &rest.Error{http.StatusUnprocessableEntity, "Name can't be empty", errors.New("empty name field")}
+				return &rest.Error{
+					Code:    http.StatusUnprocessableEntity,
+					Message: "Name can't be empty",
+					Error:   errors.New("empty name field"),
+				}
 			}
 			material.Name = *body.Name
 		}
@@ -348,13 +396,25 @@ func updateMaterial(server rest.Server, store Store) http.Handler {
 		// Validate subject ID
 		if body.SubjectId != nil {
 			if _, err := uuid.Parse(*body.SubjectId); err != nil {
-				return &rest.Error{http.StatusUnprocessableEntity, "Can't find the specified subject", errors.New("empty name field")}
+				return &rest.Error{
+					Code:    http.StatusUnprocessableEntity,
+					Message: "Can't find the specified subject",
+					Error:   errors.New("empty name field"),
+				}
 			}
 			subject, err := store.GetSubject(*body.SubjectId)
 			if err == pg.ErrNoRows {
-				return &rest.Error{http.StatusUnprocessableEntity, "Can't find the specified subject", errors.New("empty name field")}
+				return &rest.Error{
+					Code:    http.StatusUnprocessableEntity,
+					Message: "Can't find the specified subject",
+					Error:   errors.New("empty name field"),
+				}
 			} else if err != nil {
-				return &rest.Error{http.StatusInternalServerError, "Can' retrieve subject", err}
+				return &rest.Error{
+					Code:    http.StatusInternalServerError,
+					Message: "Can' retrieve subject",
+					Error:   err,
+				}
 			} else {
 				material.SubjectId = subject.Id
 			}
@@ -366,7 +426,11 @@ func updateMaterial(server rest.Server, store Store) http.Handler {
 		}
 
 		if err := store.UpdateMaterial(material, newOrder); err != nil {
-			return &rest.Error{http.StatusInternalServerError, "Failed updating material", err}
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "Failed updating material",
+				Error:   err,
+			}
 		}
 		w.WriteHeader(http.StatusNoContent)
 		return nil
@@ -379,9 +443,9 @@ func deleteSubject(server rest.Server, store Store) http.Handler {
 
 		if err := store.DeleteSubject(subjectId); err != nil {
 			return &rest.Error{
-				http.StatusNotFound,
-				"Can't find the specified subject",
-				err,
+				Code:    http.StatusNotFound,
+				Message: "Can't find the specified subject",
+				Error:   err,
 			}
 		}
 		return nil
@@ -394,9 +458,9 @@ func deleteArea(server rest.Server, store Store) http.Handler {
 
 		if err := store.DeleteArea(areaId); err != nil {
 			return &rest.Error{
-				http.StatusNotFound,
-				"Can't find the specified subject",
-				err,
+				Code:    http.StatusNotFound,
+				Message: "Can't find the specified subject",
+				Error:   err,
 			}
 		}
 
@@ -426,9 +490,9 @@ func replaceSubject(server rest.Server, store Store) http.Handler {
 		// Validate that request body is valid
 		if body.Name == "" {
 			return &rest.Error{
-				http.StatusBadRequest,
-				"Name cannot be empty",
-				richErrors.New("empty subject name"),
+				Code:    http.StatusBadRequest,
+				Message: "Name cannot be empty",
+				Error:   richErrors.New("empty subject name"),
 			}
 		}
 		newSubject := domain.Subject{
@@ -442,9 +506,9 @@ func replaceSubject(server rest.Server, store Store) http.Handler {
 		for _, material := range body.Materials {
 			if material.Name == "" {
 				return &rest.Error{
-					http.StatusBadRequest,
-					"Material name cannot be empty",
-					richErrors.New("empty material name"),
+					Code:    http.StatusBadRequest,
+					Message: "Material name cannot be empty",
+					Error:   richErrors.New("empty material name"),
 				}
 			}
 			// Validate that the id is a valid uuid since we get this from client
@@ -467,9 +531,9 @@ func replaceSubject(server rest.Server, store Store) http.Handler {
 		// Make sure no order are repeated
 		if len(materialOrderNumbers) != len(body.Materials) {
 			return &rest.Error{
-				http.StatusBadRequest,
-				"Material order number can't be repeated",
-				richErrors.New("Repeated order number"),
+				Code:    http.StatusBadRequest,
+				Message: "Material order number can't be repeated",
+				Error:   richErrors.New("Repeated order number"),
 			}
 		}
 
@@ -477,18 +541,18 @@ func replaceSubject(server rest.Server, store Store) http.Handler {
 		_, err := store.GetArea(body.AreaId)
 		if err != nil {
 			return &rest.Error{
-				http.StatusBadRequest,
-				"Can't find the specified area",
-				err,
+				Code:    http.StatusBadRequest,
+				Message: "Can't find the specified area",
+				Error:   err,
 			}
 		}
 
 		// Replace subject
 		if err := store.ReplaceSubject(newSubject); err != nil {
 			return &rest.Error{
-				http.StatusInternalServerError,
-				"Failed replacing subject",
-				err,
+				Code:    http.StatusInternalServerError,
+				Message: "Failed replacing subject",
+				Error:   err,
 			}
 		}
 		return nil
@@ -508,17 +572,17 @@ func patchArea(server rest.Server, store Store) http.Handler {
 		}
 		if body.Name == "" {
 			return &rest.Error{
-				http.StatusBadRequest,
-				"Name can't be empty",
-				richErrors.New("Empty name field"),
+				Code:    http.StatusBadRequest,
+				Message: "Name can't be empty",
+				Error:   richErrors.New("Empty name field"),
 			}
 		}
 
 		if err := store.UpdateArea(areaId, body.Name); err != nil {
 			return &rest.Error{
-				http.StatusInternalServerError,
-				"Failed updating area",
-				err,
+				Code:    http.StatusInternalServerError,
+				Message: "Failed updating area",
+				Error:   err,
 			}
 		}
 
@@ -537,7 +601,11 @@ func getSubject(server rest.Server, store Store) http.Handler {
 
 		subject, err := store.GetSubject(subjectId)
 		if err != nil {
-			return &rest.Error{http.StatusNotFound, " Can't find subject with specified area ID", err}
+			return &rest.Error{
+				Code:    http.StatusNotFound,
+				Message: " Can't find subject with specified area ID",
+				Error:   err,
+			}
 		}
 
 		// Write response
