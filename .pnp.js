@@ -7657,7 +7657,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "pino-pretty",
-        "npm:4.3.0"
+        "npm:4.5.0"
       ],
       [
         "pino-std-serializers",
@@ -40039,7 +40039,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["node-mocks-http", "npm:1.10.1"],
             ["pg", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:8.5.1"],
             ["pino", "npm:6.11.0"],
-            ["pino-pretty", "npm:4.3.0"],
+            ["pino-pretty", "npm:4.5.0"],
             ["postcss", "npm:8.2.4"],
             ["postcss-preset-env", "npm:6.7.0"],
             ["preact", "npm:10.5.12"],
@@ -51845,10 +51845,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["pino-pretty", [
-        ["npm:4.3.0", {
-          "packageLocation": "./.yarn/cache/pino-pretty-npm-4.3.0-82afc87015-5568775825.zip/node_modules/pino-pretty/",
+        ["npm:4.5.0", {
+          "packageLocation": "./.yarn/cache/pino-pretty-npm-4.5.0-034b3935d5-72d23a4bf1.zip/node_modules/pino-pretty/",
           "packageDependencies": [
-            ["pino-pretty", "npm:4.3.0"],
+            ["pino-pretty", "npm:4.5.0"],
             ["@hapi/bourne", "npm:2.0.0"],
             ["args", "npm:5.0.1"],
             ["chalk", "npm:4.1.0"],
