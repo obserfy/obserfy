@@ -50,11 +50,13 @@ func NewRouter(server rest.Server, store Store) *chi.Mux {
 
 func patchCurriculum(s rest.Server, store Store) rest.Handler {
 	type responseBody struct {
-		Id   string `json:"id"`
-		Name string `json:"name"`
+		Id          string `json:"id"`
+		Name        string `json:"name"`
+		Description string `json:"description"`
 	}
 	type requestBody struct {
-		Name *string `json:"name"`
+		Name        *string `json:"name"`
+		Description *string `json:"description"`
 	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		curriculumId := chi.URLParam(r, "curriculumId")
@@ -64,7 +66,7 @@ func patchCurriculum(s rest.Server, store Store) rest.Handler {
 			return rest.NewParseJsonError(err)
 		}
 
-		curriculum, err := store.UpdateCurriculum(curriculumId, body.Name)
+		curriculum, err := store.UpdateCurriculum(curriculumId, body.Name, body.Description)
 		if err != nil {
 			return &rest.Error{
 				Code:    http.StatusInternalServerError,
@@ -82,8 +84,9 @@ func patchCurriculum(s rest.Server, store Store) rest.Handler {
 
 func getArea(server rest.Server, store Store) rest.Handler {
 	type responseBody struct {
-		Id   string `json:"id"`
-		Name string `json:"name"`
+		Id          string `json:"id"`
+		Name        string `json:"name"`
+		Description string `json:"description"`
 	}
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		areaId := chi.URLParam(r, "areaId")
@@ -99,7 +102,11 @@ func getArea(server rest.Server, store Store) rest.Handler {
 		}
 
 		// Write response
-		response := responseBody{area.Id, area.Name}
+		response := responseBody{
+			Id:          area.Id,
+			Name:        area.Name,
+			Description: area.Description,
+		}
 		if err := rest.WriteJson(w, response); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
@@ -109,9 +116,10 @@ func getArea(server rest.Server, store Store) rest.Handler {
 
 func getAreaSubjects(server rest.Server, store Store) rest.Handler {
 	type simplifiedSubject struct {
-		Id    string `json:"id"`
-		Name  string `json:"name"`
-		Order int    `json:"order"`
+		Id          string `json:"id"`
+		Name        string `json:"name"`
+		Order       int    `json:"order"`
+		Description string `json:"description"`
 	}
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		areaId := chi.URLParam(r, "areaId")
@@ -129,9 +137,10 @@ func getAreaSubjects(server rest.Server, store Store) rest.Handler {
 		response := make([]simplifiedSubject, 0)
 		for _, subject := range subjects {
 			response = append(response, simplifiedSubject{
-				Id:    subject.Id,
-				Name:  subject.Name,
-				Order: subject.Order,
+				Id:          subject.Id,
+				Name:        subject.Name,
+				Order:       subject.Order,
+				Description: subject.Description,
 			})
 		}
 		if err := rest.WriteJson(w, response); err != nil {
@@ -143,11 +152,13 @@ func getAreaSubjects(server rest.Server, store Store) rest.Handler {
 
 func createArea(server rest.Server, store Store) rest.Handler {
 	type requestBody struct {
-		Name string `json:"name"`
+		Name        string `json:"name"`
+		Description string `json:"description"`
 	}
 	type responseBody struct {
-		Id   string `json:"id"`
-		Name string `json:"name"`
+		Id          string `json:"id"`
+		Name        string `json:"name"`
+		Description string `json:"description"`
 	}
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		curriculumId := chi.URLParam(r, "curriculumId")
@@ -179,7 +190,7 @@ func createArea(server rest.Server, store Store) rest.Handler {
 			}
 		}
 
-		area, err := store.NewArea(body.Name, curriculumId)
+		area, err := store.NewArea(curriculumId, body.Name, body.Description)
 		if err != nil {
 			return &rest.Error{
 				Code:    http.StatusInternalServerError,
@@ -190,8 +201,9 @@ func createArea(server rest.Server, store Store) rest.Handler {
 
 		w.WriteHeader(http.StatusCreated)
 		if err = rest.WriteJson(w, &responseBody{
-			Id:   area.Id,
-			Name: area.Name,
+			Id:          area.Id,
+			Name:        area.Name,
+			Description: area.Description,
 		}); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
@@ -201,10 +213,12 @@ func createArea(server rest.Server, store Store) rest.Handler {
 
 func createSubject(server rest.Server, store Store) http.Handler {
 	type requestBody struct {
-		Name      string `json:"name"`
-		Materials []struct {
-			Name  string `json:"name"`
-			Order int    `json:"order"`
+		Name        string `json:"name"`
+		Description string `json:"description"`
+		Materials   []struct {
+			Name        string `json:"name"`
+			Order       int    `json:"order"`
+			Description string `json:"description"`
 		} `json:"materials"`
 	}
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
@@ -243,7 +257,7 @@ func createSubject(server rest.Server, store Store) http.Handler {
 				Message: "Material order number can't be repeated",
 				Error:   richErrors.New("Repeated order number in list of materials")}
 		}
-		subject, err := store.NewSubject(requestBody.Name, areaId, materials)
+		subject, err := store.NewSubject(requestBody.Name, areaId, materials, requestBody.Description)
 		if err != nil {
 			return &rest.Error{
 				Code:    http.StatusInternalServerError,
@@ -260,9 +274,10 @@ func createSubject(server rest.Server, store Store) http.Handler {
 
 func getSubjectMaterials(server rest.Server, store Store) rest.Handler {
 	type responseBody struct {
-		Id    string `json:"id"`
-		Name  string `json:"name"`
-		Order int    `json:"order"`
+		Id          string `json:"id"`
+		Name        string `json:"name"`
+		Order       int    `json:"order"`
+		Description string `json:"description"`
 	}
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		subjectId := chi.URLParam(r, "subjectId")
@@ -277,12 +292,13 @@ func getSubjectMaterials(server rest.Server, store Store) rest.Handler {
 		}
 
 		// Write response
-		var response = make([]responseBody, 0)
-		for _, subject := range materials {
+		response := make([]responseBody, 0)
+		for _, m := range materials {
 			response = append(response, responseBody{
-				Id:    subject.Id,
-				Name:  subject.Name,
-				Order: subject.Order,
+				Id:          m.Id,
+				Name:        m.Name,
+				Order:       m.Order,
+				Description: m.Description,
 			})
 		}
 		if err := rest.WriteJson(w, response); err != nil {
@@ -294,7 +310,8 @@ func getSubjectMaterials(server rest.Server, store Store) rest.Handler {
 
 func createNewMaterial(server rest.Server, store Store) http.Handler {
 	type requestBody struct {
-		Name string `json:"name"`
+		Name        string `json:"name"`
+		Description string `json:"description"`
 	}
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		// Parse body, make sure it's valid
@@ -322,13 +339,7 @@ func createNewMaterial(server rest.Server, store Store) http.Handler {
 
 		// Make sure subject exists
 		subject, err := store.GetSubject(subjectId)
-		if err == pg.ErrNoRows {
-			return &rest.Error{
-				Code:    http.StatusNotFound,
-				Message: "Can't find the specified subject",
-				Error:   err,
-			}
-		} else if err != nil {
+		if err != nil {
 			return &rest.Error{
 				Code:    http.StatusInternalServerError,
 				Message: "Failed retrieving subject",
@@ -337,7 +348,7 @@ func createNewMaterial(server rest.Server, store Store) http.Handler {
 		}
 
 		// Create and save the requested material (default order is on the bottom of list.
-		material, err := store.NewMaterial(body.Name, subject.Id)
+		material, err := store.NewMaterial(subject.Id, body.Name, body.Description)
 		if err != nil {
 			return &rest.Error{
 				Code:    http.StatusInternalServerError,
