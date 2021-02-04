@@ -823,7 +823,7 @@ exports[`PageSubscription should render correctly 1`] = `
             <p
               class="emotion-43"
             >
-              Your currently have
+              You currently have
             </p>
             <a
               class="emotion-44"

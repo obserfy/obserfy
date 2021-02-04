@@ -52,7 +52,7 @@ msgstr "Add Guardian"
 msgid "Add More"
 msgstr "Add More"
 
-#: src/components/ProfilePicker/ProfilePicker.tsx:53
+#: src/components/ProfilePicker/ProfilePicker.tsx:69
 msgid "Add Picture"
 msgstr "Add Picture"
 
@@ -131,7 +131,7 @@ msgstr "Are you sure you want to delete {title}?"
 msgid "Are you sure you want to remove {0} from the list of guardians?"
 msgstr "Are you sure you want to remove {0} from the list of guardians?"
 
-#: src/components/PageEditStudentClass/PageEditStudentClass.tsx:111
+#: src/components/PageEditStudentClass/PageEditStudentClass.tsx:104
 msgid "Are you sure you want to remove {name}?"
 msgstr "Are you sure you want to remove {name}?"
 
@@ -176,7 +176,7 @@ msgstr "By"
 #: src/components/PagePickGuardian/PagePickGuardian.tsx:56
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:53
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:65
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:334
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:335
 #: src/components/VideoPlayerDialog/VideoPlayerDialog.tsx:82
 #: src/components/WarningDialog/WarningDialog.tsx:25
 msgid "Cancel"
@@ -289,7 +289,7 @@ msgid "Date of Birth"
 msgstr "Date of Birth"
 
 #: src/components/PageNewStudent/NewStudentForm.tsx:46
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:290
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:291
 msgid "Date of Entry"
 msgstr "Date of Entry"
 
@@ -300,7 +300,7 @@ msgstr "Date of Entry"
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:53
 #: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:83
 #: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:85
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:142
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:151
 #: src/pages/dashboard/admin/guardians/profile.tsx:38
 #: src/pages/dashboard/students/profile/guardians/profile.tsx:40
 msgid "Delete"
@@ -349,7 +349,7 @@ msgstr "Description"
 msgid "Details"
 msgstr "Details"
 
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:142
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:151
 msgid "Do you want to remove {name} from  {studentName}'s list of guardians?"
 msgstr "Do you want to remove {name} from  {studentName}'s list of guardians?"
 
@@ -385,12 +385,12 @@ msgstr "Edit Description"
 msgid "Edit Details"
 msgstr "Edit Details"
 
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:204
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:205
 msgid "Edit Gender"
 msgstr "Edit Gender"
 
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:107
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:169
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:170
 msgid "Edit Name"
 msgstr "Edit Name"
 
@@ -398,7 +398,7 @@ msgstr "Edit Name"
 msgid "Edit Note"
 msgstr "Edit Note"
 
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:260
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:261
 msgid "Edit Notes"
 msgstr "Edit Notes"
 
@@ -406,7 +406,7 @@ msgstr "Edit Notes"
 msgid "Edit Short Description"
 msgstr "Edit Short Description"
 
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:235
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:236
 msgid "Edit Student ID"
 msgstr "Edit Student ID"
 
@@ -456,8 +456,8 @@ msgid "Father"
 msgstr "Father"
 
 #: src/components/PageNewStudent/NewStudentForm.tsx:54
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:198
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:213
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:199
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:214
 msgid "Female"
 msgstr "Female"
 
@@ -478,8 +478,8 @@ msgid "Gallery"
 msgstr "Gallery"
 
 #: src/components/PageNewStudent/NewStudentForm.tsx:49
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:193
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:208
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:194
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:209
 msgid "Gender"
 msgstr "Gender"
 
@@ -591,8 +591,8 @@ msgstr "Login"
 #~ msgstr "Login for Teachers"
 
 #: src/components/PageNewStudent/NewStudentForm.tsx:53
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:196
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:212
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:197
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:213
 msgid "Male"
 msgstr "Male"
 
@@ -632,8 +632,8 @@ msgstr "Mother"
 
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:41
 #: src/components/PageNewClass/PageNewClass.tsx:60
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:167
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:171
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:168
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:172
 msgid "Name"
 msgstr "Name"
 
@@ -698,7 +698,7 @@ msgid "No classes selected yet"
 msgstr "No classes selected yet"
 
 #: src/components/PageListOfGuardians/PageListOfGuardians.tsx:59
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:132
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:141
 #: src/components/SimpleGuardiansSelector/SimpleGuardiansSelector.tsx:32
 msgid "No email set"
 msgstr "No email set"
@@ -742,9 +742,9 @@ msgstr "None"
 
 #: src/components/DateInput/DateInput.tsx:30
 #: src/components/PageNewStudent/NewStudentForm.tsx:52
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:200
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:211
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:233
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:201
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:212
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:234
 msgid "Not Set"
 msgstr "Not Set"
 
@@ -756,8 +756,8 @@ msgid "Note"
 msgstr "Note"
 
 #: src/components/PageNewStudent/NewStudentForm.tsx:59
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:258
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:262
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:259
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:263
 msgid "Notes"
 msgstr "Notes"
 
@@ -891,7 +891,7 @@ msgstr "Related Area"
 msgid "Relationship"
 msgstr "Relationship"
 
-#: src/components/PageEditStudentClass/PageEditStudentClass.tsx:97
+#: src/components/PageEditStudentClass/PageEditStudentClass.tsx:102
 msgid "Remove Class?"
 msgstr "Remove Class?"
 
@@ -899,7 +899,7 @@ msgstr "Remove Class?"
 msgid "Remove Guardian?"
 msgstr "Remove Guardian?"
 
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:142
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:151
 msgid "Remove guardian?"
 msgstr "Remove guardian?"
 
@@ -943,10 +943,10 @@ msgstr "Saturday"
 #: src/components/PagePickGuardian/PagePickGuardian.tsx:78
 #: src/components/PageStudentPlanDetails/LessonPlanDescriptionCard.tsx:30
 #: src/components/PageStudentPlanDetails/LessonPlanMetaCard.tsx:65
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:169
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:204
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:235
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:260
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:170
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:205
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:236
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:261
 msgid "Save"
 msgstr "Save"
 
@@ -986,11 +986,11 @@ msgstr "Send invites"
 msgid "Set"
 msgstr "Set"
 
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:315
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:316
 msgid "Set as Active"
 msgstr "Set as Active"
 
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:316
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:317
 msgid "Set as Inactive"
 msgstr "Set as Inactive"
 
@@ -1062,13 +1062,13 @@ msgstr "Start with a basic Montessori Curriculum that you can modify to your nee
 msgid "Start with a blank curriculum that you can customize from scratch."
 msgstr "Start with a blank curriculum that you can customize from scratch."
 
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:325
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:326
 msgid "Status"
 msgstr "Status"
 
 #: src/components/PageNewStudent/NewStudentForm.tsx:56
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:233
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:237
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:234
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:238
 msgid "Student ID"
 msgstr "Student ID"
 
@@ -1193,15 +1193,15 @@ msgstr "Tuesday"
 msgid "Unlimited students"
 msgstr "Unlimited students"
 
-#: src/components/PageGallery/PageGallery.tsx:82
+#: src/components/PageGallery/PageGallery.tsx:80
 msgid "Upload Photo"
 msgstr "Upload Photo"
 
-#: src/components/PageGallery/PageGallery.tsx:161
+#: src/components/PageGallery/PageGallery.tsx:156
 msgid "Upload Video"
 msgstr "Upload Video"
 
-#: src/components/PageGallery/PageGallery.tsx:158
+#: src/components/PageGallery/PageGallery.tsx:153
 msgid "Uploading"
 msgstr "Uploading"
 
@@ -1255,10 +1255,10 @@ msgid "Write something"
 msgstr "Write something"
 
 #: src/components/DeleteClassDialog/DeleteClassDialog.tsx:53
-#: src/components/PageEditStudentClass/PageEditStudentClass.tsx:97
+#: src/components/PageEditStudentClass/PageEditStudentClass.tsx:102
 #: src/components/PageListOfStudents/PageListOfStudents.tsx:77
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:63
-#: src/components/PageStudentProfile/PageStudentProfile.tsx:334
+#: src/components/PageStudentProfile/PageStudentProfile.tsx:335
 #: src/components/WarningDialog/WarningDialog.tsx:30
 msgid "Yes"
 msgstr "Yes"
