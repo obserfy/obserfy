@@ -19070,7 +19070,7 @@ fsevents@~2.3.1:
     node-mocks-http: 1.10.1
     pg: 8.5.1
     pino: 6.11.0
-    pino-pretty: 4.3.0
+    pino-pretty: 4.5.0
     postcss: 8.2.4
     postcss-preset-env: 6.7.0
     preact: 10.5.12
@@ -28649,9 +28649,9 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"pino-pretty@npm:4.3.0":
-  version: 4.3.0
-  resolution: "pino-pretty@npm:4.3.0"
+"pino-pretty@npm:4.5.0":
+  version: 4.5.0
+  resolution: "pino-pretty@npm:4.5.0"
   dependencies:
     "@hapi/bourne": ^2.0.0
     args: ^5.0.1
@@ -28666,7 +28666,7 @@ mocha@latest:
     strip-json-comments: ^3.1.1
   bin:
     pino-pretty: bin.js
-  checksum: 5568775825f7261aa40b9c334d694e1570d8641f3dd9df06a0ee3f73e526304cfd74d70993913313be55cc2e0ab16b581312132963444e075078d862ef8b3be3
+  checksum: 72d23a4bf133f0cafad89b3d0d605b1a942dde541dc89a260a6b62cf704b6933e6544707fd24cb86cc178fd96a6180a8cc23428e8ca7daf48dea90c9f0ff008e
   languageName: node
   linkType: hard
 
