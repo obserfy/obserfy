@@ -164,7 +164,7 @@ export const PageSubscription: FC = () => {
 
         <Box mt={3} mb={3} sx={{ ...borderTop }} pt={3}>
           <Flex>
-            <Typography.Body>Your currently have</Typography.Body>
+            <Typography.Body>You currently have</Typography.Body>
             <Link
               to={ADMIN_USERS_URL}
               sx={{ fontSize: 1, textDecoration: "underline", ml: "auto" }}
