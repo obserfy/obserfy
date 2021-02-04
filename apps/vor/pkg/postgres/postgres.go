@@ -113,26 +113,26 @@ type Area struct {
 	Curriculum   Curriculum `pg:"rel:has-one"`
 	Name         string
 	Subjects     []Subject `pg:"rel:has-many,fk:area_id"`
-	Descriptions string
+	Description  string
 }
 
 type Subject struct {
-	Id           string `pg:"type:uuid"`
-	AreaId       string `pg:"type:uuid,on_delete:CASCADE"`
-	Area         Area   `pg:"rel:has-one"`
-	Name         string
-	Materials    []Material `pg:"rel:has-many,fk:subject_id"`
-	Order        int        `pg:",use_zero"`
-	Descriptions string
+	Id          string `pg:"type:uuid"`
+	AreaId      string `pg:"type:uuid,on_delete:CASCADE"`
+	Area        Area   `pg:"rel:has-one"`
+	Name        string
+	Materials   []Material `pg:"rel:has-many,fk:subject_id"`
+	Order       int        `pg:",use_zero"`
+	Description string
 }
 
 type Material struct {
-	Id           string  `pg:"type:uuid"`
-	SubjectId    string  `pg:"type:uuid,on_delete:CASCADE"`
-	Subject      Subject `pg:"rel:has-one"`
-	Name         string
-	Order        int `pg:",use_zero"`
-	Descriptions string
+	Id          string  `pg:"type:uuid"`
+	SubjectId   string  `pg:"type:uuid,on_delete:CASCADE"`
+	Subject     Subject `pg:"rel:has-one"`
+	Name        string
+	Order       int `pg:",use_zero"`
+	Description string
 }
 
 type StudentMaterialProgress struct {
