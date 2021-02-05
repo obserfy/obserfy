@@ -31,7 +31,12 @@ export const PageCurriculumSettings: FC = () => {
   return (
     <Box
       sx={{
-        minHeight: "100vh",
+        position: "sticky",
+        left: 0,
+        right: 0,
+        width: "100%",
+        overflow: "auto",
+        height: ["auto", "auto", "100vh"],
         maxWidth: ["100%", "100%", 340],
         ...borderRight,
       }}
@@ -47,7 +52,7 @@ export const PageCurriculumSettings: FC = () => {
         />
         {isSuccess && data && (
           <Flex px={3} pb={3} sx={{ alignItems: "center" }}>
-            <Typography.H5 sx={{ lineHeight: 1.2 }}>{data.name}</Typography.H5>
+            <Typography.H6 sx={{ lineHeight: 1.2 }}>{data.name}</Typography.H6>
             <Button
               variant="outline"
               onClick={deleteDialog.show}
@@ -55,10 +60,10 @@ export const PageCurriculumSettings: FC = () => {
               px={2}
               ml="auto"
             >
-              <Icon as={DeleteIcon} fill="danger" />
+              <Icon size={16} as={DeleteIcon} fill="danger" />
             </Button>
             <Button variant="outline" px={2} ml={2} onClick={editDialog.show}>
-              <Icon as={EditIcon} />
+              <Icon size={16} as={EditIcon} />
             </Button>
           </Flex>
         )}
@@ -102,7 +107,7 @@ const CurriculumAreas: FC<{
           <Trans>Areas</Trans>
         </Typography.H6>
         <Button ml="auto" variant="outline" onClick={newAreaDialog.show} px={2}>
-          <Icon as={PlusIcon} />
+          <Icon size={16} as={PlusIcon} />
         </Button>
       </Flex>
 

@@ -1,23 +1,22 @@
 import { t } from "@lingui/macro"
-import React, { FC } from "react"
-import queryString from "query-string"
 import { PageRendererProps } from "gatsby"
-import SEO from "../../../../components/seo"
+import React, { FC } from "react"
+import { Flex } from "theme-ui"
 import PageCurriculumArea from "../../../../components/PageCurriculumArea/PageCurriculumArea"
+import PageCurriculumSettings from "../../../../components/PageCurriculumSettings/PageCurriculumSettings"
+import SEO from "../../../../components/seo"
+import { useQueryString } from "../../../../hooks/useQueryString"
 
-const Settings: FC<PageRendererProps> = ({ location }) => {
-  const query = queryString.parse(location.search)
-  let id: string
-  if (Array.isArray(query?.id)) {
-    id = query?.id[0] ?? ""
-  } else {
-    id = query?.id ?? ""
-  }
+const Settings: FC<PageRendererProps> = () => {
+  const id = useQueryString("id")
 
   return (
     <>
       <SEO title={t`Areas`} />
-      <PageCurriculumArea id={id} />
+      <Flex>
+        <PageCurriculumSettings />
+        <PageCurriculumArea id={id} />
+      </Flex>
     </>
   )
 }
