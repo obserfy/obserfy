@@ -43,7 +43,7 @@
     "cypress-file-upload": "5.0.2",
     "dayjs": "1.10.4",
     "dotenv": "8.2.0",
-    "faker": "5.2.0",
+    "faker": "5.3.1",
     "pg": "8.5.1",
     "pnp-webpack-plugin": "1.6.4",
     "prettier": "2.2.1",
