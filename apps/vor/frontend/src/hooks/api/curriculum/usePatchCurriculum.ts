@@ -1,12 +1,12 @@
 import { useMutation } from "react-query"
 import { patchApi } from "../fetchApi"
-import { useGetCurriculumAreasCache } from "../useGetCurriculumAreas"
+import { useGetCurriculumCache } from "../useGetCurriculum"
 
 interface PatchCurriculumRequest {
   name: string
 }
 const usePatchCurriculum = (curriculumId: string) => {
-  const curriculumCache = useGetCurriculumAreasCache()
+  const curriculumCache = useGetCurriculumCache()
   const patchCurriculum = patchApi<PatchCurriculumRequest>(
     `/curriculums/${curriculumId}`
   )

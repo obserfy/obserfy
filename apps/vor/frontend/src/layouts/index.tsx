@@ -10,16 +10,16 @@ const queryClient = new QueryClient()
 // Used by gatsby-plugin-layout
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const LayoutManager: FC<any> = ({ children, pageContext }) => (
-  <ErrorBoundary>
-    <QueryClientProvider client={queryClient}>
+  <QueryClientProvider client={queryClient}>
+    <ErrorBoundary>
       <GlobalStyle />
       {pageContext.layout === "open" ? (
         <Box sx={{ backgroundColor: "background" }}>{children}</Box>
       ) : (
         <Layout>{children}</Layout>
       )}
-    </QueryClientProvider>
-  </ErrorBoundary>
+    </ErrorBoundary>
+  </QueryClientProvider>
 )
 
 const GlobalStyle: FC = () => (
