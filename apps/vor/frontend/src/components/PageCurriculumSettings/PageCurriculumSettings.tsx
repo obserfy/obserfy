@@ -26,15 +26,19 @@ export const PageCurriculumSettings: FC = () => {
   const editDialog = useVisibilityState()
   const deleteDialog = useVisibilityState()
 
+  if (isError) return <SetupCurriculum />
+
   return (
     <Box
       sx={{
         minHeight: "100vh",
-        maxWidth: ["100%", "100%", 320],
+        maxWidth: ["100%", "100%", 340],
         ...borderRight,
       }}
     >
-      <TranslucentBar boxSx={{ ...borderBottom, position: "sticky", top: 0 }}>
+      <TranslucentBar
+        boxSx={{ ...borderBottom, zIndex: 0, position: "sticky", top: 0 }}
+      >
         <TopBar
           breadcrumbs={[
             breadCrumb("Admin", ADMIN_URL),
@@ -59,8 +63,6 @@ export const PageCurriculumSettings: FC = () => {
           </Flex>
         )}
       </TranslucentBar>
-
-      {isError && <SetupCurriculum />}
 
       {isLoading && <LoadingState />}
 
@@ -110,7 +112,16 @@ const CurriculumAreas: FC<{
           to={CURRICULUM_AREA_URL(area.id)}
           sx={{ display: "block" }}
         >
-          <Flex p={3} sx={{ alignItems: "center", ...borderBottom }}>
+          <Flex
+            p={3}
+            sx={{
+              ...borderBottom,
+              alignItems: "center",
+              "&:hover": {
+                backgroundColor: "primaryLightest",
+              },
+            }}
+          >
             <Typography.Body>{area.name}</Typography.Body>
             <Icon as={NextIcon} ml="auto" />
           </Flex>

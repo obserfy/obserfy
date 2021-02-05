@@ -1,9 +1,11 @@
 import { Trans } from "@lingui/macro"
-import { Button, Card, Flex } from "theme-ui"
 import React, { FC } from "react"
+import { Box, Button, Card, Flex } from "theme-ui"
 import usePostNewCurriculum from "../../hooks/api/curriculum/usePostNewCurriculum"
 import useVisibilityState from "../../hooks/useVisibilityState"
+import { ADMIN_URL } from "../../routes"
 import NewCustomCurriculumDialog from "../NewCustomCurriculumDialog/NewCustomCurriculumDialog"
+import TopBar, { breadCrumb } from "../TopBar/TopBar"
 import Typography from "../Typography/Typography"
 
 const SetupCurriculum: FC = () => {
@@ -19,7 +21,11 @@ const SetupCurriculum: FC = () => {
   }
 
   return (
-    <>
+    <Box sx={{ maxWidth: "maxWidth.sm" }} mx="auto">
+      <TopBar
+        breadcrumbs={[breadCrumb("Admin", ADMIN_URL), breadCrumb("Curriculum")]}
+      />
+
       <Typography.H6 my={2} sx={{ textAlign: "center" }}>
         <Trans>Setup curriculum</Trans>
       </Typography.H6>
@@ -54,7 +60,7 @@ const SetupCurriculum: FC = () => {
       {newDialog.visible && (
         <NewCustomCurriculumDialog onDismiss={newDialog.hide} />
       )}
-    </>
+    </Box>
   )
 }
 

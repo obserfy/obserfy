@@ -12,21 +12,28 @@ type CurriculumStore struct {
 }
 
 func (s CurriculumStore) UpdateCurriculum(curriculumId string, name *string, description *string) (*domain.Curriculum, error) {
-	curriculum := make(PartialUpdateModel)
-	curriculum.AddStringColumn("name", name)
-	curriculum.AddStringColumn("description", description)
+	updateQuery := make(PartialUpdateModel)
+	updateQuery.AddStringColumn("name", name)
+	updateQuery.AddStringColumn("description", description)
 
-	if _, err := s.Model(curriculum.GetModel()).
+	if _, err := s.Model(updateQuery.GetModel()).
 		TableExpr("curriculums").
 		Where("id = ?", curriculumId).
 		Update(); err != nil {
 		return nil, err
 	}
 
+	curriculum := Curriculum{Id: curriculumId}
+	if err := s.Model(&curriculum).
+		WherePK().
+		Select(); err != nil {
+		return nil, err
+	}
+
 	return &domain.Curriculum{
-		Id:          curriculumId,
-		Name:        *name,
-		Description: *description,
+		Id:          curriculum.Id,
+		Name:        curriculum.Name,
+		Description: curriculum.Name,
 	}, nil
 }
 
