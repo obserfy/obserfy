@@ -18881,10 +18881,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fp-ts@npm:2.9.3":
-  version: 2.9.3
-  resolution: "fp-ts@npm:2.9.3"
-  checksum: d32ea0a319fa50f8760aabf455da4d633f3736cec284b44fc11ba28362a9b51912a15c5ffea415f31f04bbedddd009b15e4547d8b67cda171a43c59c033497c1
+"fp-ts@npm:2.9.5":
+  version: 2.9.5
+  resolution: "fp-ts@npm:2.9.5"
+  checksum: de7dfc21068ad4254b05f558c67b3abafc442b7756933b0932d0de593cf172c0d52a38bd8eab4c19ab1a7c33ac6c3a1d4f8723dcf3cdbee01c3f7e1d3199b793
   languageName: node
   linkType: hard
 
@@ -19274,7 +19274,7 @@ fsevents@~2.3.1:
     eslint-plugin-react: 7.22.0
     eslint-plugin-react-hooks: 4.2.0
     formidable-serverless: 1.1.1
-    fp-ts: 2.9.3
+    fp-ts: 2.9.5
     hls.js: beta
     io-ts: 2.2.13
     io-ts-types: 0.5.12
