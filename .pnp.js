@@ -4753,7 +4753,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "fp-ts",
-        "npm:2.9.3"
+        "npm:2.9.5"
       ],
       [
         "fragment-cache",
@@ -39816,10 +39816,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["fp-ts", [
-        ["npm:2.9.3", {
-          "packageLocation": "./.yarn/cache/fp-ts-npm-2.9.3-600235b229-d32ea0a319.zip/node_modules/fp-ts/",
+        ["npm:2.9.5", {
+          "packageLocation": "./.yarn/cache/fp-ts-npm-2.9.5-2058b93e83-de7dfc2106.zip/node_modules/fp-ts/",
           "packageDependencies": [
-            ["fp-ts", "npm:2.9.3"]
+            ["fp-ts", "npm:2.9.5"]
           ],
           "linkType": "HARD",
         }]
@@ -40218,7 +40218,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-react", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:7.22.0"],
             ["eslint-plugin-react-hooks", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:4.2.0"],
             ["formidable-serverless", "npm:1.1.1"],
-            ["fp-ts", "npm:2.9.3"],
+            ["fp-ts", "npm:2.9.5"],
             ["hls.js", "npm:1.0.0-beta.3"],
             ["io-ts", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.2.13"],
             ["io-ts-types", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.5.12"],
@@ -44766,7 +44766,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["io-ts", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.2.13"],
             ["@types/fp-ts", null],
-            ["fp-ts", "npm:2.9.3"]
+            ["fp-ts", "npm:2.9.5"]
           ],
           "packagePeers": [
             "@types/fp-ts",
@@ -44791,7 +44791,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/io-ts", null],
             ["@types/monocle-ts", null],
             ["@types/newtype-ts", null],
-            ["fp-ts", "npm:2.9.3"],
+            ["fp-ts", "npm:2.9.5"],
             ["io-ts", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.2.13"],
             ["monocle-ts", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.3.5"],
             ["newtype-ts", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.3.4"]
@@ -49280,7 +49280,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["monocle-ts", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.3.5"],
             ["@types/fp-ts", null],
-            ["fp-ts", "npm:2.9.3"]
+            ["fp-ts", "npm:2.9.5"]
           ],
           "packagePeers": [
             "@types/fp-ts",
@@ -49544,7 +49544,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["newtype-ts", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.3.4"],
             ["@types/fp-ts", null],
             ["@types/monocle-ts", null],
-            ["fp-ts", "npm:2.9.3"],
+            ["fp-ts", "npm:2.9.5"],
             ["monocle-ts", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.3.5"]
           ],
           "packagePeers": [
