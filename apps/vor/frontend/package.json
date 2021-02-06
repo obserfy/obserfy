@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "author": "Chrisando Eka Pramudhita <chrsep@protonmail.com>",
   "dependencies": {
-    "@babel/runtime": "7.12.5",
+    "@babel/runtime": "7.12.13",
     "@emotion/jest": "11.1.0",
     "@emotion/react": "11.1.4",
     "@lingui/cli": "3.5.0",
@@ -73,7 +73,7 @@
     "use-immer": "0.4.2"
   },
   "devDependencies": {
-    "@babel/preset-typescript": "7.12.7",
+    "@babel/preset-typescript": "7.12.13",
     "@istanbuljs/nyc-config-typescript": "1.0.1",
     "@storybook/addon-actions": "6.1.11",
     "@storybook/addon-essentials": "6.1.11",
