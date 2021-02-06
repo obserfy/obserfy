@@ -5625,7 +5625,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "io-ts-types",
-        "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.5.12"
+        "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.5.13"
       ],
       [
         "ip",
@@ -40221,7 +40221,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["fp-ts", "npm:2.9.5"],
             ["hls.js", "npm:1.0.0-beta.3"],
             ["io-ts", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.2.14"],
-            ["io-ts-types", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.5.12"],
+            ["io-ts-types", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.5.13"],
             ["jest", "npm:26.6.3"],
             ["minio", "npm:7.0.18"],
             ["monocle-ts", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.3.5"],
@@ -44776,17 +44776,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["io-ts-types", [
-        ["npm:0.5.12", {
-          "packageLocation": "./.yarn/cache/io-ts-types-npm-0.5.12-34a655b9aa-f2d9544307.zip/node_modules/io-ts-types/",
+        ["npm:0.5.13", {
+          "packageLocation": "./.yarn/cache/io-ts-types-npm-0.5.13-28877a72c5-55dbc037fc.zip/node_modules/io-ts-types/",
           "packageDependencies": [
-            ["io-ts-types", "npm:0.5.12"]
+            ["io-ts-types", "npm:0.5.13"]
           ],
           "linkType": "SOFT",
         }],
-        ["virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.5.12", {
-          "packageLocation": "./.yarn/$$virtual/io-ts-types-virtual-3688ed1f98/0/cache/io-ts-types-npm-0.5.12-34a655b9aa-f2d9544307.zip/node_modules/io-ts-types/",
+        ["virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.5.13", {
+          "packageLocation": "./.yarn/$$virtual/io-ts-types-virtual-203a1dc7b0/0/cache/io-ts-types-npm-0.5.13-28877a72c5-55dbc037fc.zip/node_modules/io-ts-types/",
           "packageDependencies": [
-            ["io-ts-types", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.5.12"],
+            ["io-ts-types", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.5.13"],
             ["@types/fp-ts", null],
             ["@types/io-ts", null],
             ["@types/monocle-ts", null],
