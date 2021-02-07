@@ -18969,7 +18969,7 @@ __metadata:
     stylelint-config-standard: 20.0.0
     tailwindcss: 2.0.2
     typescript: 4.1.3
-    typescript-plugin-css-modules: 3.1.0
+    typescript-plugin-css-modules: 3.2.0
   languageName: unknown
   linkType: soft
 
@@ -36365,9 +36365,9 @@ resolve@^1.19.0:
   languageName: node
   linkType: hard
 
-"typescript-plugin-css-modules@npm:3.1.0":
-  version: 3.1.0
-  resolution: "typescript-plugin-css-modules@npm:3.1.0"
+"typescript-plugin-css-modules@npm:3.2.0":
+  version: 3.2.0
+  resolution: "typescript-plugin-css-modules@npm:3.2.0"
   dependencies:
     dotenv: ^8.2.0
     icss-utils: ^4.1.1
@@ -36384,7 +36384,7 @@ resolve@^1.19.0:
     tsconfig-paths: ^3.9.0
   peerDependencies:
     typescript: ">=3.0.0"
-  checksum: 41900f54af9a6f94df281b633368c07ebac7b58a6afe58fe64e0953fb2336813c94f15668c2c77eaf654da2538a3f9aa219f0c13c7075503f3de1ac34dc13bb0
+  checksum: a3dabdd5c97bd2f2fc392263c54193b6838981de72f63d7d5586f4aca3225322ae5ccab150b842f3d9827c96a19ab368e314554fcd2574663ca9092f0509d601
   languageName: node
   linkType: hard
 
