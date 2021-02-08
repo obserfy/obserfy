@@ -13,7 +13,6 @@ import {
   CURRICULUM_AREA_URL,
 } from "../../routes"
 import Icon from "../Icon/Icon"
-import { Link } from "../Link/Link"
 import TopBar, { breadCrumb } from "../TopBar/TopBar"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
 import Typography from "../Typography/Typography"
@@ -38,7 +37,8 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
           breadcrumbs={[
             breadCrumb("Admin", ADMIN_URL),
             breadCrumb("Curriculum", ADMIN_CURRICULUM_URL),
-            breadCrumb(`${area.data?.name} Area`),
+            breadCrumb(area.data?.name, CURRICULUM_AREA_URL(areaId)),
+            breadCrumb(subject.data?.name),
           ]}
         />
 
@@ -62,16 +62,14 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
         </Flex>
       </TranslucentBar>
 
-      {materials.data?.map((material) => {
-        return (
-          <Material
-            key={material.id}
-            name={material.name}
-            description=""
-            areaId={areaId}
-          />
-        )
-      })}
+      {materials.data?.map((material) => (
+        <Material
+          key={material.id}
+          name={material.name}
+          description=""
+          areaId={areaId}
+        />
+      ))}
     </Box>
   )
 }
@@ -81,21 +79,19 @@ const Material: FC<{
   name: string
   description: string
 }> = ({ areaId, name }) => (
-  <Link to={CURRICULUM_AREA_URL(areaId)} sx={{ display: "block" }}>
-    <Flex
-      p={3}
-      sx={{
-        ...borderBottom,
-        alignItems: "center",
-        "&:hover": {
-          backgroundColor: "primaryLightest",
-        },
-      }}
-    >
-      <Typography.Body>{name}</Typography.Body>
-      <Icon as={NextIcon} ml="auto" />
-    </Flex>
-  </Link>
+  <Flex
+    p={3}
+    sx={{
+      ...borderBottom,
+      alignItems: "center",
+      "&:hover": {
+        backgroundColor: "primaryLightest",
+      },
+    }}
+  >
+    <Typography.Body>{name}</Typography.Body>
+    <Icon as={NextIcon} ml="auto" />
+  </Flex>
 )
 
 export default PageCurriculumSubject
