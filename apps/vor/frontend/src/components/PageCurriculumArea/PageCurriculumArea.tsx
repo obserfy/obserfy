@@ -44,7 +44,6 @@ const PageCurriculumArea: FC<Props> = ({ id }) => {
           width: "100%",
           overflow: "auto",
           height: ["auto", "auto", "100vh"],
-          maxWidth: ["100%", "100%", 340],
           pb: 5,
           ...borderRight,
         }}

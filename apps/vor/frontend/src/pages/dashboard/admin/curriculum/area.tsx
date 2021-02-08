@@ -16,8 +16,14 @@ const Settings: FC<PageRendererProps> = () => {
       <SEO title={t`Areas`} />
       <Flex>
         <SideBar />
-
-        <PageCurriculumArea id={id} />
+        <Box
+          sx={{
+            width: "100%",
+            maxWidth: ["100%", "100%", 280],
+          }}
+        >
+          <PageCurriculumArea id={id} />
+        </Box>
       </Flex>
     </>
   )
