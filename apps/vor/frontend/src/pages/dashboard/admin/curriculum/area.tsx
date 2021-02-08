@@ -1,7 +1,7 @@
 import { t } from "@lingui/macro"
 import { PageRendererProps } from "gatsby"
 import React, { FC } from "react"
-import { Flex } from "theme-ui"
+import { Box, Flex } from "theme-ui"
 import PageCurriculumArea from "../../../../components/PageCurriculumArea/PageCurriculumArea"
 import PageCurriculumSettings from "../../../../components/PageCurriculumSettings/PageCurriculumSettings"
 import SEO from "../../../../components/seo"
@@ -14,7 +14,15 @@ const Settings: FC<PageRendererProps> = () => {
     <>
       <SEO title={t`Areas`} />
       <Flex>
-        <PageCurriculumSettings />
+        <Box
+          sx={{
+            width: "100%",
+            maxWidth: ["100%", "100%", 340],
+            display: ["none", "none", "block"],
+          }}
+        >
+          <PageCurriculumSettings />
+        </Box>
         <PageCurriculumArea id={id} />
       </Flex>
     </>
