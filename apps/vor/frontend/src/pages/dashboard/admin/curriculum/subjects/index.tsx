@@ -1,5 +1,6 @@
 import { t } from "@lingui/macro"
-import React from "react"
+import { useBreakpointIndex } from "@theme-ui/match-media"
+import React, { FC } from "react"
 import { Box, Flex } from "theme-ui"
 import PageCurriculumArea from "../../../../../components/PageCurriculumArea/PageCurriculumArea"
 import PageCurriculumSettings from "../../../../../components/PageCurriculumSettings/PageCurriculumSettings"
@@ -15,28 +16,40 @@ const Subject = () => {
     <Box>
       <SEO title={t`Subject`} />
       <Flex>
-        <Box
-          sx={{
-            width: "100%",
-            maxWidth: ["100%", "100%", 340],
-            display: ["none", "none", "block"],
-          }}
-        >
-          <PageCurriculumSettings />
-        </Box>
-        <Box
-          sx={{
-            width: "100%",
-            maxWidth: ["100%", "100%", 340],
-            display: ["none", "none", "block"],
-          }}
-        >
-          <PageCurriculumArea id={areaId} />
-        </Box>
+        <SideBar areaId={areaId} />
 
         <PageCurriculumSubject subjectId={subjectId} areaId={areaId} />
       </Flex>
     </Box>
+  )
+}
+
+const SideBar: FC<{ areaId: string }> = ({ areaId }) => {
+  const breakpoint = useBreakpointIndex({ defaultIndex: 3 })
+
+  if (breakpoint < 2) return <></>
+
+  return (
+    <>
+      <Box
+        sx={{
+          width: "100%",
+          maxWidth: ["100%", "100%", 340],
+          display: ["none", "none", "block"],
+        }}
+      >
+        <PageCurriculumSettings />
+      </Box>
+      <Box
+        sx={{
+          width: "100%",
+          maxWidth: ["100%", "100%", 340],
+          display: ["none", "none", "block"],
+        }}
+      >
+        <PageCurriculumArea id={areaId} />
+      </Box>
+    </>
   )
 }
 

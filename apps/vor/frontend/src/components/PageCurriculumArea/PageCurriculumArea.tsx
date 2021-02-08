@@ -55,7 +55,7 @@ const PageCurriculumArea: FC<Props> = ({ id }) => {
             breadcrumbs={[
               breadCrumb("Admin", ADMIN_URL),
               breadCrumb("Curriculum", ADMIN_CURRICULUM_URL),
-              breadCrumb(`${area.data?.name} Area`),
+              breadCrumb(`${area.data?.name}`),
             ]}
           />
 
