@@ -32,8 +32,7 @@ export const PageCurriculumSettings: FC = () => {
     <Box
       sx={{
         position: "sticky",
-        left: 0,
-        right: 0,
+        top: 0,
         width: "100%",
         overflow: "auto",
         height: ["auto", "auto", "100vh"],
