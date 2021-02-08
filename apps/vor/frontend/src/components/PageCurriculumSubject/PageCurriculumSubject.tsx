@@ -11,11 +11,14 @@ import TopBar, { breadCrumb } from "../TopBar/TopBar"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
 import Typography from "../Typography/Typography"
 
-export interface PageSubjectProps {
+export interface PageCurriculumSubjectProps {
   subjectId: string
   areaId: string
 }
-const PageSubject: FC<PageSubjectProps> = ({ areaId, subjectId }) => {
+const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
+  areaId,
+  subjectId,
+}) => {
   const subject = useGetSubject(subjectId)
   const area = useGetArea(areaId)
 
@@ -66,4 +69,4 @@ const PageSubject: FC<PageSubjectProps> = ({ areaId, subjectId }) => {
   )
 }
 
-export default PageSubject
+export default PageCurriculumSubject
