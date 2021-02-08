@@ -108,3 +108,6 @@ export const STUDENT_PROFILE_GUARDIAN_PROFILE_URL = (
   guardianId: string
 ) =>
   `/dashboard/students/profile/guardians/profile?studentId=${studentId}&&guardianId=${guardianId}`
+
+export const CURRICULUM_SUBJECT_URL = (areaId: string, subjectId: string) =>
+  `/dashboard/admin/curriculum/subjects?areaId=${areaId}&subjectId=${subjectId}`

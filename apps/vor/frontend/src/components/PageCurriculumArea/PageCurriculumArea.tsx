@@ -11,7 +11,7 @@ import { ReactComponent as DeleteIcon } from "../../icons/trash.svg"
 import {
   ADMIN_CURRICULUM_URL,
   ADMIN_URL,
-  CURRICULUM_AREA_URL,
+  CURRICULUM_SUBJECT_URL,
   NEW_SUBJECT_URL,
 } from "../../routes"
 import DeleteAreaDialog from "../DeleteAreaDialog/DeleteAreaDialog"
@@ -153,10 +153,10 @@ interface SubjectListItemProps {
   areaId: string
   onDeleteClick: () => void
 }
-const SubjectListItem: FC<SubjectListItemProps> = ({ subject }) => (
+const SubjectListItem: FC<SubjectListItemProps> = ({ areaId, subject }) => (
   <Link
     key={subject.id}
-    to={CURRICULUM_AREA_URL(subject.id)}
+    to={CURRICULUM_SUBJECT_URL(areaId, subject.id)}
     sx={{ display: "block" }}
   >
     <Flex
