@@ -32,7 +32,7 @@ const SideBar = () => {
     <Box
       sx={{
         width: "100%",
-        maxWidth: ["100%", "100%", 340],
+        maxWidth: ["100%", "100%", 280],
         display: ["none", "none", "block"],
       }}
     >
