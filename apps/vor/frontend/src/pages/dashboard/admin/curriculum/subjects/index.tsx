@@ -34,7 +34,7 @@ const SideBar: FC<{ areaId: string }> = ({ areaId }) => {
       <Box
         sx={{
           width: "100%",
-          maxWidth: ["100%", "100%", 340],
+          maxWidth: ["100%", "100%", 280],
           display: ["none", "none", "block"],
         }}
       >
@@ -43,7 +43,7 @@ const SideBar: FC<{ areaId: string }> = ({ areaId }) => {
       <Box
         sx={{
           width: "100%",
-          maxWidth: ["100%", "100%", 340],
+          maxWidth: ["100%", "100%", 280],
           display: ["none", "none", "block"],
         }}
       >
