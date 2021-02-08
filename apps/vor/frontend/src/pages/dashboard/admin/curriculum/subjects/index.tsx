@@ -3,7 +3,7 @@ import React from "react"
 import { Box, Flex } from "theme-ui"
 import PageCurriculumArea from "../../../../../components/PageCurriculumArea/PageCurriculumArea"
 import PageCurriculumSettings from "../../../../../components/PageCurriculumSettings/PageCurriculumSettings"
-import PageSubject from "../../../../../components/PageSubject/PageSubject"
+import PageCurriculumSubject from "../../../../../components/PageCurriculumSubject/PageCurriculumSubject"
 import SEO from "../../../../../components/seo"
 import { useQueryString } from "../../../../../hooks/useQueryString"
 
@@ -25,7 +25,7 @@ const Subject = () => {
           <PageCurriculumSettings />
         </Box>
         <PageCurriculumArea id={areaId} />
-        <PageSubject subjectId={subjectId} areaId={areaId} />
+        <PageCurriculumSubject subjectId={subjectId} areaId={areaId} />
       </Flex>
     </>
   )
