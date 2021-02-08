@@ -12,7 +12,7 @@ const Subject = () => {
   const subjectId = useQueryString("subjectId")
 
   return (
-    <>
+    <Box>
       <SEO title={t`Subject`} />
       <Flex>
         <Box
@@ -24,10 +24,19 @@ const Subject = () => {
         >
           <PageCurriculumSettings />
         </Box>
-        <PageCurriculumArea id={areaId} />
+        <Box
+          sx={{
+            width: "100%",
+            maxWidth: ["100%", "100%", 340],
+            display: ["none", "none", "block"],
+          }}
+        >
+          <PageCurriculumArea id={areaId} />
+        </Box>
+
         <PageCurriculumSubject subjectId={subjectId} areaId={areaId} />
       </Flex>
-    </>
+    </Box>
   )
 }
 

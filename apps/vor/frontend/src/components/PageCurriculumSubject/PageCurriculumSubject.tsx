@@ -3,10 +3,17 @@ import { Box, Button, Flex } from "theme-ui"
 import { borderBottom, borderRight } from "../../border"
 import { useGetArea } from "../../hooks/api/useGetArea"
 import { useGetSubject } from "../../hooks/api/useGetSubject"
+import { useGetSubjectMaterials } from "../../hooks/api/useGetSubjectMaterials"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
+import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import { ReactComponent as DeleteIcon } from "../../icons/trash.svg"
-import { ADMIN_CURRICULUM_URL, ADMIN_URL } from "../../routes"
+import {
+  ADMIN_CURRICULUM_URL,
+  ADMIN_URL,
+  CURRICULUM_AREA_URL,
+} from "../../routes"
 import Icon from "../Icon/Icon"
+import { Link } from "../Link/Link"
 import TopBar, { breadCrumb } from "../TopBar/TopBar"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
 import Typography from "../Typography/Typography"
@@ -19,23 +26,12 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
   areaId,
   subjectId,
 }) => {
-  const subject = useGetSubject(subjectId)
   const area = useGetArea(areaId)
+  const subject = useGetSubject(subjectId)
+  const materials = useGetSubjectMaterials(subjectId)
 
   return (
-    <Box
-      sx={{
-        position: "sticky",
-        left: 0,
-        right: 0,
-        width: "100%",
-        overflow: "auto",
-        height: ["auto", "auto", "100vh"],
-        maxWidth: ["100%", "100%", 340],
-        pb: 5,
-        ...borderRight,
-      }}
-    >
+    <Box sx={{ width: "100%", pb: 5, ...borderRight }}>
       <TranslucentBar boxSx={{ ...borderBottom }}>
         <TopBar
           sx={{ display: ["block", "flex", "none"] }}
@@ -65,8 +61,41 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
           </Button>
         </Flex>
       </TranslucentBar>
+
+      {materials.data?.map((material) => {
+        return (
+          <Material
+            key={material.id}
+            name={material.name}
+            description=""
+            areaId={areaId}
+          />
+        )
+      })}
     </Box>
   )
 }
+
+const Material: FC<{
+  areaId: string
+  name: string
+  description: string
+}> = ({ areaId, name }) => (
+  <Link to={CURRICULUM_AREA_URL(areaId)} sx={{ display: "block" }}>
+    <Flex
+      p={3}
+      sx={{
+        ...borderBottom,
+        alignItems: "center",
+        "&:hover": {
+          backgroundColor: "primaryLightest",
+        },
+      }}
+    >
+      <Typography.Body>{name}</Typography.Body>
+      <Icon as={NextIcon} ml="auto" />
+    </Flex>
+  </Link>
+)
 
 export default PageCurriculumSubject
