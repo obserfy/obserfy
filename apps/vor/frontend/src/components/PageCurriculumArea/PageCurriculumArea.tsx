@@ -46,11 +46,13 @@ const PageCurriculumArea: FC<Props> = ({ id }) => {
           overflow: "auto",
           height: ["auto", "auto", "100vh"],
           maxWidth: ["100%", "100%", 340],
+          pb: 5,
           ...borderRight,
         }}
       >
         <TranslucentBar boxSx={{ ...borderBottom }}>
           <TopBar
+            sx={{ display: ["block", "flex", "none"] }}
             breadcrumbs={[
               breadCrumb("Admin", ADMIN_URL),
               breadCrumb("Curriculum", ADMIN_CURRICULUM_URL),
@@ -58,7 +60,7 @@ const PageCurriculumArea: FC<Props> = ({ id }) => {
             ]}
           />
 
-          <Flex mx={3} pb={3} sx={{ alignItems: "center" }}>
+          <Flex mx={3} py={3} sx={{ alignItems: "center" }}>
             <Typography.H6 sx={{ lineHeight: 1.2 }}>
               {area.data?.name}
             </Typography.H6>

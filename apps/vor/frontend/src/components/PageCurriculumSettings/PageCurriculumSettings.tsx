@@ -38,20 +38,21 @@ export const PageCurriculumSettings: FC = () => {
         overflow: "auto",
         height: ["auto", "auto", "100vh"],
         maxWidth: ["100%", "100%", 340],
+        pb: 5,
         ...borderRight,
       }}
     >
-      <TranslucentBar
-        boxSx={{ ...borderBottom, zIndex: 0, position: "sticky", top: 0 }}
-      >
+      <TranslucentBar boxSx={{ ...borderBottom }}>
         <TopBar
+          sx={{ display: ["block", "flex", "none"] }}
           breadcrumbs={[
             breadCrumb("Admin", ADMIN_URL),
             breadCrumb("Curriculum"),
           ]}
         />
+
         {isSuccess && data && (
-          <Flex px={3} pb={3} sx={{ alignItems: "center" }}>
+          <Flex px={3} py={3} sx={{ alignItems: "center" }}>
             <Typography.H6 sx={{ lineHeight: 1.2 }}>{data.name}</Typography.H6>
             <Button
               variant="outline"
