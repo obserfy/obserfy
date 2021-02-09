@@ -4,6 +4,7 @@ import { Box, Button, Flex, ThemeUIStyleObject } from "theme-ui"
 import { borderBottom, borderRight } from "../../border"
 import { useGetCurriculum } from "../../hooks/api/useGetCurriculum"
 import { useGetCurriculumAreas } from "../../hooks/api/useGetCurriculumAreas"
+import { useQueryString } from "../../hooks/useQueryString"
 import useVisibilityState from "../../hooks/useVisibilityState"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
@@ -103,6 +104,8 @@ const CurriculumAreas: FC<{
   const newAreaDialog = useVisibilityState()
   const areas = useGetCurriculumAreas()
 
+  const areaId = useQueryString("areaId")
+
   return (
     <Box>
       <Flex p={3} sx={{ alignItems: "center", ...borderBottom }}>
@@ -114,23 +117,34 @@ const CurriculumAreas: FC<{
         </Button>
       </Flex>
 
-      {areas.data?.map((area) => (
-        <Link key={area.id} to={CURRICULUM_AREA_URL(area.id)}>
-          <Flex
-            p={3}
-            sx={{
-              ...borderBottom,
-              alignItems: "center",
-              "&:hover": {
-                backgroundColor: "primaryLightest",
-              },
-            }}
-          >
-            <Typography.Body>{area.name}</Typography.Body>
-            <Icon as={NextIcon} ml="auto" />
-          </Flex>
-        </Link>
-      ))}
+      {areas.data?.map((area) => {
+        const selected = areaId === area.id
+        return (
+          <Link key={area.id} to={CURRICULUM_AREA_URL(area.id)}>
+            <Flex
+              p={3}
+              sx={{
+                ...borderBottom,
+                ...borderRight,
+                borderRightColor: "textPrimary",
+                borderRightWidth: 2,
+                borderRightStyle: selected ? "solid" : "none",
+                backgroundColor: selected ? "primaryLightest" : "background",
+                color: selected ? "textPrimary" : "text",
+                alignItems: "center",
+                "&:hover": {
+                  backgroundColor: "primaryLightest",
+                },
+              }}
+            >
+              <Typography.Body sx={{ color: "inherit" }}>
+                {area.name}
+              </Typography.Body>
+              <Icon as={NextIcon} ml="auto" fill="currentColor" />
+            </Flex>
+          </Link>
+        )
+      })}
 
       {newAreaDialog.visible && (
         <NewAreaDialog

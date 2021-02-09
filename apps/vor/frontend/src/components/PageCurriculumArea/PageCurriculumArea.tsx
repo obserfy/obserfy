@@ -4,6 +4,7 @@ import { Box, Button, Flex, ThemeUIStyleObject } from "theme-ui"
 import { borderBottom, borderRight } from "../../border"
 import { useGetArea } from "../../hooks/api/useGetArea"
 import { Subject, useGetAreaSubjects } from "../../hooks/api/useGetAreaSubjects"
+import { useQueryString } from "../../hooks/useQueryString"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
@@ -154,26 +155,39 @@ interface SubjectListItemProps {
   areaId: string
   onDeleteClick: () => void
 }
-const SubjectListItem: FC<SubjectListItemProps> = ({ areaId, subject }) => (
-  <Link
-    key={subject.id}
-    to={CURRICULUM_SUBJECT_URL(areaId, subject.id)}
-    sx={{ display: "block" }}
-  >
-    <Flex
-      p={3}
-      sx={{
-        ...borderBottom,
-        alignItems: "center",
-        "&:hover": {
-          backgroundColor: "primaryLightest",
-        },
-      }}
+const SubjectListItem: FC<SubjectListItemProps> = ({ areaId, subject }) => {
+  const subjectId = useQueryString("subjectId")
+  const selected = subjectId === subject.id
+
+  return (
+    <Link
+      key={subject.id}
+      to={CURRICULUM_SUBJECT_URL(areaId, subject.id)}
+      sx={{ display: "block" }}
     >
-      <Typography.Body>{subject.name}</Typography.Body>
-      <Icon as={NextIcon} ml="auto" />
-    </Flex>
-  </Link>
-)
+      <Flex
+        p={3}
+        sx={{
+          ...borderBottom,
+          ...borderRight,
+          borderRightColor: "textPrimary",
+          borderRightWidth: 2,
+          borderRightStyle: selected ? "solid" : "none",
+          backgroundColor: selected ? "primaryLightest" : "background",
+          color: selected ? "textPrimary" : "text",
+          alignItems: "center",
+          "&:hover": {
+            backgroundColor: "primaryLightest",
+          },
+        }}
+      >
+        <Typography.Body sx={{ color: "inherit" }}>
+          {subject.name}
+        </Typography.Body>
+        <Icon as={NextIcon} ml="auto" fill="currentColor" />
+      </Flex>
+    </Link>
+  )
+}
 
 export default PageCurriculumArea
