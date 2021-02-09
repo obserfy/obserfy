@@ -2,7 +2,7 @@ import { t } from "@lingui/macro"
 import { useBreakpointIndex } from "@theme-ui/match-media"
 import { PageRendererProps } from "gatsby"
 import React, { FC } from "react"
-import { Box, Flex } from "theme-ui"
+import { Flex } from "theme-ui"
 import PageCurriculumArea from "../../../../components/PageCurriculumArea/PageCurriculumArea"
 import PageCurriculumSettings from "../../../../components/PageCurriculumSettings/PageCurriculumSettings"
 import SEO from "../../../../components/seo"
@@ -16,14 +16,7 @@ const Settings: FC<PageRendererProps> = () => {
       <SEO title={t`Areas`} />
       <Flex>
         <SideBar />
-        <Box
-          sx={{
-            width: "100%",
-            maxWidth: ["100%", "100%", 280],
-          }}
-        >
-          <PageCurriculumArea id={id} />
-        </Box>
+        <PageCurriculumArea id={id} />
       </Flex>
     </>
   )
@@ -34,17 +27,7 @@ const SideBar = () => {
 
   if (breakpoint < 2) return <></>
 
-  return (
-    <Box
-      sx={{
-        width: "100%",
-        maxWidth: ["100%", "100%", 280],
-        display: ["none", "none", "block"],
-      }}
-    >
-      <PageCurriculumSettings />
-    </Box>
-  )
+  return <PageCurriculumSettings sx={{ display: ["none", "none", "block"] }} />
 }
 
 export default Settings

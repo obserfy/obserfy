@@ -17,7 +17,6 @@ const Subject = () => {
       <SEO title={t`Subject`} />
       <Flex>
         <SideBar areaId={areaId} />
-
         <PageCurriculumSubject subjectId={subjectId} areaId={areaId} />
       </Flex>
     </Box>
@@ -31,24 +30,11 @@ const SideBar: FC<{ areaId: string }> = ({ areaId }) => {
 
   return (
     <>
-      <Box
-        sx={{
-          width: "100%",
-          maxWidth: ["100%", "100%", 280],
-          display: ["none", "none", "block"],
-        }}
-      >
-        <PageCurriculumSettings />
-      </Box>
-      <Box
-        sx={{
-          width: "100%",
-          maxWidth: ["100%", "100%", 280],
-          display: ["none", "none", "block"],
-        }}
-      >
-        <PageCurriculumArea id={areaId} />
-      </Box>
+      <PageCurriculumSettings sx={{ display: ["none", "none", "block"] }} />
+      <PageCurriculumArea
+        id={areaId}
+        sx={{ display: ["none", "none", "block"] }}
+      />
     </>
   )
 }
