@@ -2,22 +2,37 @@ import { t } from "@lingui/macro"
 import { useBreakpointIndex } from "@theme-ui/match-media"
 import { PageRendererProps } from "gatsby"
 import React, { FC } from "react"
-import { Flex } from "theme-ui"
+import { Box, Flex } from "theme-ui"
+import CurriculumTopBar from "../../../../components/CurriculumTopBar/CurriculumTopBar"
 import PageCurriculumArea from "../../../../components/PageCurriculumArea/PageCurriculumArea"
 import PageCurriculumSettings from "../../../../components/PageCurriculumSettings/PageCurriculumSettings"
 import SEO from "../../../../components/seo"
+import { breadCrumb } from "../../../../components/TopBar/TopBar"
+import { useGetArea } from "../../../../hooks/api/useGetArea"
 import { useQueryString } from "../../../../hooks/useQueryString"
+import { ADMIN_CURRICULUM_URL, ADMIN_URL } from "../../../../routes"
 
 const Settings: FC<PageRendererProps> = () => {
   const id = useQueryString("id")
 
+  const area = useGetArea(id)
+
   return (
     <>
       <SEO title={t`Areas`} />
-      <Flex>
-        <SideBar />
-        <PageCurriculumArea id={id} />
-      </Flex>
+      <Box>
+        <CurriculumTopBar
+          breadcrumbs={[
+            breadCrumb("Admin", ADMIN_URL),
+            breadCrumb("Curriculum", ADMIN_CURRICULUM_URL),
+            breadCrumb(`${area.data?.name}`),
+          ]}
+        />
+        <Flex>
+          <SideBar />
+          <PageCurriculumArea id={id} />
+        </Flex>
+      </Box>
     </>
   )
 }

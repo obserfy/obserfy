@@ -1,7 +1,7 @@
 import { Trans } from "@lingui/macro"
 import React, { FC } from "react"
 import { Box, Button, Flex } from "theme-ui"
-import { borderBottom, borderRight } from "../../border"
+import { borderBottom } from "../../border"
 import { useGetArea } from "../../hooks/api/useGetArea"
 import { useGetSubject } from "../../hooks/api/useGetSubject"
 import { useGetSubjectMaterials } from "../../hooks/api/useGetSubjectMaterials"
@@ -33,10 +33,10 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
   const materials = useGetSubjectMaterials(subjectId)
 
   return (
-    <Box sx={{ width: "100%", pb: 5, ...borderRight }}>
+    <Box sx={{ width: "100%", pb: 5 }}>
       <TranslucentBar boxSx={{ ...borderBottom }}>
         <TopBar
-          sx={{ display: ["block", "flex", "none"] }}
+          sx={{ display: ["flex", "flex", "none"] }}
           breadcrumbs={[
             breadCrumb("Admin", ADMIN_URL),
             breadCrumb("Curriculum", ADMIN_CURRICULUM_URL),

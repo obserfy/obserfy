@@ -53,7 +53,7 @@ const PageCurriculumArea: FC<Props> = ({ id, sx }) => {
       >
         <TranslucentBar boxSx={{ ...borderBottom }}>
           <TopBar
-            sx={{ display: ["block", "flex", "none"] }}
+            sx={{ display: ["flex", "flex", "none"] }}
             breadcrumbs={[
               breadCrumb("Admin", ADMIN_URL),
               breadCrumb("Curriculum", ADMIN_CURRICULUM_URL),
