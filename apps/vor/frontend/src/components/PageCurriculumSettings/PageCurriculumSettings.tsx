@@ -46,7 +46,7 @@ export const PageCurriculumSettings: FC<{ sx?: ThemeUIStyleObject }> = ({
     >
       <TranslucentBar boxSx={{ ...borderBottom }}>
         <TopBar
-          sx={{ display: ["block", "flex", "none"] }}
+          sx={{ display: ["flex", "flex", "none"] }}
           breadcrumbs={[
             breadCrumb("Admin", ADMIN_URL),
             breadCrumb("Curriculum"),
