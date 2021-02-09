@@ -1,6 +1,6 @@
 import { Trans } from "@lingui/macro"
 import React, { FC, useState } from "react"
-import { Box, Button, Flex } from "theme-ui"
+import { Box, Button, Flex, ThemeUIStyleObject } from "theme-ui"
 import { borderBottom, borderRight } from "../../border"
 import { useGetArea } from "../../hooks/api/useGetArea"
 import { Subject, useGetAreaSubjects } from "../../hooks/api/useGetAreaSubjects"
@@ -26,8 +26,9 @@ import Typography from "../Typography/Typography"
 
 interface Props {
   id: string
+  sx?: ThemeUIStyleObject
 }
-const PageCurriculumArea: FC<Props> = ({ id }) => {
+const PageCurriculumArea: FC<Props> = ({ id, sx }) => {
   const area = useGetArea(id)
   const subjects = useGetAreaSubjects(id)
   const [showDeleteAreaDialog, setShowDeleteAreaDialog] = useState(false)
@@ -44,8 +45,10 @@ const PageCurriculumArea: FC<Props> = ({ id }) => {
           width: "100%",
           overflow: "auto",
           height: ["auto", "auto", "100vh"],
+          maxWidth: ["100%", "100%", 280],
           pb: 5,
           ...borderRight,
+          ...sx,
         }}
       >
         <TranslucentBar boxSx={{ ...borderBottom }}>

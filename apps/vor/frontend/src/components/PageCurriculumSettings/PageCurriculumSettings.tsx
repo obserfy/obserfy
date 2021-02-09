@@ -1,6 +1,6 @@
 import { Trans } from "@lingui/macro"
 import React, { FC } from "react"
-import { Box, Button, Flex } from "theme-ui"
+import { Box, Button, Flex, ThemeUIStyleObject } from "theme-ui"
 import { borderBottom, borderRight } from "../../border"
 import { useGetCurriculum } from "../../hooks/api/useGetCurriculum"
 import { useGetCurriculumAreas } from "../../hooks/api/useGetCurriculumAreas"
@@ -21,7 +21,9 @@ import TranslucentBar from "../TranslucentBar/TranslucentBar"
 import Typography from "../Typography/Typography"
 import SetupCurriculum from "./SetupCurriculum"
 
-export const PageCurriculumSettings: FC = () => {
+export const PageCurriculumSettings: FC<{ sx?: ThemeUIStyleObject }> = ({
+  sx,
+}) => {
   const { data, isLoading, isError, isSuccess } = useGetCurriculum()
   const editDialog = useVisibilityState()
   const deleteDialog = useVisibilityState()
@@ -36,8 +38,10 @@ export const PageCurriculumSettings: FC = () => {
         width: "100%",
         overflow: "auto",
         height: ["auto", "auto", "100vh"],
+        maxWidth: ["100%", "100%", 280],
         pb: 5,
         ...borderRight,
+        ...sx,
       }}
     >
       <TranslucentBar boxSx={{ ...borderBottom }}>
