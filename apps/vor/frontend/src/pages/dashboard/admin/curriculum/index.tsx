@@ -11,7 +11,6 @@ const Settings: FC = () => (
       sx={{
         width: "100%",
         maxWidth: ["100%", "100%", 280],
-        display: ["none", "none", "block"],
       }}
     >
       <PageCurriculumSettings />
