@@ -12,10 +12,10 @@ import { useGetArea } from "../../../../hooks/api/useGetArea"
 import { useQueryString } from "../../../../hooks/useQueryString"
 import { ADMIN_CURRICULUM_URL, ADMIN_URL } from "../../../../routes"
 
-const Settings: FC<PageRendererProps> = () => {
-  const id = useQueryString("id")
+const Area: FC<PageRendererProps> = () => {
+  const areaId = useQueryString("areaId")
 
-  const area = useGetArea(id)
+  const area = useGetArea(areaId)
 
   return (
     <>
@@ -30,7 +30,7 @@ const Settings: FC<PageRendererProps> = () => {
         />
         <Flex>
           <SideBar />
-          <PageCurriculumArea id={id} />
+          <PageCurriculumArea id={areaId} />
         </Flex>
       </Box>
     </>
@@ -45,4 +45,4 @@ const SideBar = () => {
   return <PageCurriculumSettings sx={{ display: ["none", "none", "block"] }} />
 }
 
-export default Settings
+export default Area

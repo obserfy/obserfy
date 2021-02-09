@@ -115,11 +115,7 @@ const CurriculumAreas: FC<{
       </Flex>
 
       {areas.data?.map((area) => (
-        <Link
-          key={area.id}
-          to={CURRICULUM_AREA_URL(area.id)}
-          sx={{ display: "block" }}
-        >
+        <Link key={area.id} to={CURRICULUM_AREA_URL(area.id)}>
           <Flex
             p={3}
             sx={{
