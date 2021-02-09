@@ -1,3 +1,4 @@
+import { Trans } from "@lingui/macro"
 import React, { FC } from "react"
 import { Box, Button, Flex } from "theme-ui"
 import { borderBottom, borderRight } from "../../border"
@@ -6,6 +7,7 @@ import { useGetSubject } from "../../hooks/api/useGetSubject"
 import { useGetSubjectMaterials } from "../../hooks/api/useGetSubjectMaterials"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
+import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import { ReactComponent as DeleteIcon } from "../../icons/trash.svg"
 import {
   ADMIN_CURRICULUM_URL,
@@ -13,6 +15,7 @@ import {
   CURRICULUM_AREA_URL,
 } from "../../routes"
 import Icon from "../Icon/Icon"
+import Spacer from "../Spacer/Spacer"
 import TopBar, { breadCrumb } from "../TopBar/TopBar"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
 import Typography from "../Typography/Typography"
@@ -62,6 +65,17 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
         </Flex>
       </TranslucentBar>
 
+      <Flex sx={{ alignItems: "center", ...borderBottom }} p={3}>
+        <Typography.Body sx={{ fontWeight: "bold" }}>
+          <Trans>Materials</Trans>
+        </Typography.Body>
+        <Spacer />
+
+        <Button variant="outline" px={2}>
+          <Icon size={16} as={PlusIcon} />
+        </Button>
+      </Flex>
+
       {materials.data?.map((material) => (
         <Material
           key={material.id}
@@ -78,7 +92,7 @@ const Material: FC<{
   areaId: string
   name: string
   description: string
-}> = ({ areaId, name }) => (
+}> = ({ name }) => (
   <Flex
     p={3}
     sx={{

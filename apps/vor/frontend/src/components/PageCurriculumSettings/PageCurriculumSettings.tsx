@@ -102,9 +102,9 @@ const CurriculumAreas: FC<{
   return (
     <Box>
       <Flex p={3} sx={{ alignItems: "center", ...borderBottom }}>
-        <Typography.H6>
+        <Typography.Body sx={{ fontWeight: "bold", lineHeight: 1.2 }}>
           <Trans>Areas</Trans>
-        </Typography.H6>
+        </Typography.Body>
         <Button ml="auto" variant="outline" onClick={newAreaDialog.show} px={2}>
           <Icon size={16} as={PlusIcon} />
         </Button>

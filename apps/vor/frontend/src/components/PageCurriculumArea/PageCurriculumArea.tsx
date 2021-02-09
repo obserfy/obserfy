@@ -85,9 +85,9 @@ const PageCurriculumArea: FC<Props> = ({ id }) => {
         </TranslucentBar>
 
         <Flex sx={{ alignItems: "center", ...borderBottom }} p={3}>
-          <Typography.H6>
+          <Typography.Body sx={{ fontWeight: "bold" }}>
             <Trans>Subjects</Trans>
-          </Typography.H6>
+          </Typography.Body>
           <Spacer />
 
           <Link to={NEW_SUBJECT_URL(id)}>
