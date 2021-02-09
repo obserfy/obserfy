@@ -19,7 +19,7 @@ export const ADMIN_GUARDIAN_URL = "/dashboard/admin/guardians"
 export const NEW_GUARDIAN_ADMIN_URL = "/dashboard/admin/guardians/new"
 
 export const CURRICULUM_AREA_URL = (areaId: string): string =>
-  `/dashboard/admin/curriculum/area?id=${areaId}`
+  `/dashboard/admin/curriculum/area?areaId=${areaId}`
 
 export const NEW_SUBJECT_URL = (areaId: string): string =>
   `/dashboard/admin/curriculum/subjects/new?areaId=${areaId}`

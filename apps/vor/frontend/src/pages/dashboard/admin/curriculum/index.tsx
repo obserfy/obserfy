@@ -7,7 +7,7 @@ import SEO from "../../../../components/seo"
 import { breadCrumb } from "../../../../components/TopBar/TopBar"
 import { ADMIN_URL } from "../../../../routes"
 
-const Settings: FC = () => (
+const Curriculum: FC = () => (
   <>
     <SEO title={t`Curriculum`} />
     <Box>
@@ -19,4 +19,4 @@ const Settings: FC = () => (
   </>
 )
 
-export default Settings
+export default Curriculum
