@@ -4,8 +4,8 @@ import React, { FC } from "react"
 import { Box, Flex } from "theme-ui"
 import CurriculumTopBar from "../../../../../components/CurriculumTopBar/CurriculumTopBar"
 import PageCurriculumArea from "../../../../../components/PageCurriculumArea/PageCurriculumArea"
+import PageCurriculumMaterial from "../../../../../components/PageCurriculumMaterial/PageCurriculumMaterial"
 import PageCurriculumSettings from "../../../../../components/PageCurriculumSettings/PageCurriculumSettings"
-import PageCurriculumSubject from "../../../../../components/PageCurriculumSubject/PageCurriculumSubject"
 import SEO from "../../../../../components/seo"
 import { breadCrumb } from "../../../../../components/TopBar/TopBar"
 import { useGetArea } from "../../../../../hooks/api/useGetArea"
@@ -17,7 +17,7 @@ import {
   CURRICULUM_AREA_URL,
 } from "../../../../../routes"
 
-const Subject = () => {
+const Material = () => {
   const areaId = useQueryString("areaId")
   const subjectId = useQueryString("subjectId")
 
@@ -26,7 +26,8 @@ const Subject = () => {
 
   return (
     <Box>
-      <SEO title={t`Subject`} />
+      <SEO title={t`Material`} />
+
       <CurriculumTopBar
         breadcrumbs={[
           breadCrumb("Admin", ADMIN_URL),
@@ -35,9 +36,10 @@ const Subject = () => {
           breadCrumb(subject.data?.name ?? ""),
         ]}
       />
+
       <Flex>
         <SideBar areaId={areaId} />
-        <PageCurriculumSubject subjectId={subjectId} areaId={areaId} />
+        <PageCurriculumMaterial />
       </Flex>
     </Box>
   )
@@ -59,4 +61,4 @@ const SideBar: FC<{ areaId: string }> = ({ areaId }) => {
   )
 }
 
-export default Subject
+export default Material

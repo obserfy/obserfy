@@ -1,10 +1,11 @@
 import { Trans } from "@lingui/macro"
 import React, { FC } from "react"
 import { Box, Button, Flex } from "theme-ui"
-import { borderBottom } from "../../border"
+import { borderBottom, borderRight } from "../../border"
 import { useGetArea } from "../../hooks/api/useGetArea"
 import { useGetSubject } from "../../hooks/api/useGetSubject"
 import { useGetSubjectMaterials } from "../../hooks/api/useGetSubjectMaterials"
+import { useQueryString } from "../../hooks/useQueryString"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
@@ -13,8 +14,10 @@ import {
   ADMIN_CURRICULUM_URL,
   ADMIN_URL,
   CURRICULUM_AREA_URL,
+  CURRICULUM_MATERIAL_URL,
 } from "../../routes"
 import Icon from "../Icon/Icon"
+import { Link } from "../Link/Link"
 import Spacer from "../Spacer/Spacer"
 import TopBar, { breadCrumb } from "../TopBar/TopBar"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
@@ -79,6 +82,8 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
       {materials.data?.map((material) => (
         <Material
           key={material.id}
+          materialId={material.id}
+          subjectId={subjectId}
           name={material.name}
           description=""
           areaId={areaId}
@@ -90,22 +95,37 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
 
 const Material: FC<{
   areaId: string
+  subjectId: string
+  materialId: string
   name: string
   description: string
-}> = ({ name }) => (
-  <Flex
-    p={3}
-    sx={{
-      ...borderBottom,
-      alignItems: "center",
-      "&:hover": {
-        backgroundColor: "primaryLightest",
-      },
-    }}
-  >
-    <Typography.Body>{name}</Typography.Body>
-    <Icon as={NextIcon} ml="auto" />
-  </Flex>
-)
+}> = ({ name, materialId, areaId, subjectId }) => {
+  const currentId = useQueryString("materialId")
+  const selected = materialId === currentId
+
+  return (
+    <Link to={CURRICULUM_MATERIAL_URL(areaId, subjectId, materialId)}>
+      <Flex
+        p={3}
+        sx={{
+          ...borderBottom,
+          ...borderRight,
+          borderRightColor: "textPrimary",
+          borderRightWidth: 2,
+          borderRightStyle: selected ? "solid" : "none",
+          backgroundColor: selected ? "primaryLightest" : "background",
+          color: selected ? "textPrimary" : "text",
+          alignItems: "center",
+          "&:hover": {
+            backgroundColor: "primaryLightest",
+          },
+        }}
+      >
+        <Typography.Body sx={{ color: "inherit" }}>{name}</Typography.Body>
+        <Icon as={NextIcon} ml="auto" fill="currentColor" />
+      </Flex>
+    </Link>
+  )
+}
 
 export default PageCurriculumSubject

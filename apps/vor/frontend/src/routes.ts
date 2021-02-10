@@ -111,3 +111,10 @@ export const STUDENT_PROFILE_GUARDIAN_PROFILE_URL = (
 
 export const CURRICULUM_SUBJECT_URL = (areaId: string, subjectId: string) =>
   `/dashboard/admin/curriculum/subjects?areaId=${areaId}&subjectId=${subjectId}`
+
+export const CURRICULUM_MATERIAL_URL = (
+  areaId: string,
+  subjectId: string,
+  materialId: string
+) =>
+  `/dashboard/admin/curriculum/subjects?areaId=${areaId}&subjectId=${subjectId}&materialId=${materialId}`
