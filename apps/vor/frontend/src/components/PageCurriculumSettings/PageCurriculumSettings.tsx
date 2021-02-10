@@ -56,7 +56,13 @@ export const PageCurriculumSettings: FC<{ sx?: ThemeUIStyleObject }> = ({
 
         {isSuccess && data && (
           <Flex px={3} py={3} sx={{ alignItems: "center" }}>
-            <Typography.H6 mr={3} sx={{ lineHeight: 1.2, fontSize: [3, 3, 1] }}>
+            <Typography.H6
+              mr={3}
+              sx={{
+                lineHeight: 1.2,
+                fontSize: [3, 3, 1],
+              }}
+            >
               {data.name}
             </Typography.H6>
             <Button
@@ -110,16 +116,13 @@ const CurriculumAreas: FC<{
 
   return (
     <Box>
-      <Flex p={3} sx={{ alignItems: "center", ...borderBottom }}>
-        <Typography.Body
-          sx={{ fontWeight: "bold", color: "textMediumEmphasis" }}
-        >
-          <Trans>Areas</Trans>
-        </Typography.Body>
-        <Button ml="auto" variant="outline" onClick={newAreaDialog.show} px={2}>
-          <Icon size={16} as={PlusIcon} />
-        </Button>
-      </Flex>
+      <Typography.Body
+        py={2}
+        px={3}
+        sx={{ fontWeight: "bold", ...borderBottom }}
+      >
+        <Trans>Areas</Trans>
+      </Typography.Body>
 
       {areas.data?.map((area) => {
         const selected = areaId === area.id
@@ -134,7 +137,7 @@ const CurriculumAreas: FC<{
                 borderRightWidth: 2,
                 borderRightStyle: selected ? "solid" : "none",
                 backgroundColor: selected ? "primaryLightest" : "background",
-                color: selected ? "textPrimary" : "text",
+                color: selected ? "textPrimary" : "textMediumEmphasis",
                 alignItems: "center",
                 "&:hover": {
                   backgroundColor: "primaryLightest",
@@ -149,6 +152,17 @@ const CurriculumAreas: FC<{
           </Link>
         )
       })}
+
+      <Flex
+        p={3}
+        sx={{ alignItems: "center", cursor: "pointer", ...borderBottom }}
+        onClick={newAreaDialog.show}
+      >
+        <Icon as={PlusIcon} fill="textPrimary" />
+        <Typography.Body ml={3} sx={{ color: "textMediumEmphasis" }}>
+          <Trans>Add new area</Trans>
+        </Typography.Body>
+      </Flex>
 
       {newAreaDialog.visible && (
         <NewAreaDialog

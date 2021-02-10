@@ -70,18 +70,14 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
         </Flex>
       </TranslucentBar>
 
-      <Flex sx={{ alignItems: "center", ...borderBottom }} p={3}>
-        <Typography.Body
-          sx={{ fontWeight: "bold", color: "textMediumEmphasis" }}
-        >
-          <Trans>Materials</Trans>
-        </Typography.Body>
-        <Spacer />
-
-        <Button variant="outline" px={2}>
-          <Icon size={16} as={PlusIcon} />
-        </Button>
-      </Flex>
+      <Typography.Body
+        px={3}
+        py={2}
+        sx={{ fontWeight: "bold", ...borderBottom }}
+      >
+        <Trans>Materials</Trans>
+      </Typography.Body>
+      <Spacer />
 
       {materials.data?.map((material) => (
         <Material
@@ -93,6 +89,16 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
           areaId={areaId}
         />
       ))}
+
+      <Flex
+        p={3}
+        sx={{ alignItems: "center", ...borderBottom, cursor: "pointer" }}
+      >
+        <Icon as={PlusIcon} fill="textPrimary" />
+        <Typography.Body ml={3} sx={{ color: "textMediumEmphasis" }}>
+          <Trans>Add new material</Trans>
+        </Typography.Body>
+      </Flex>
     </Box>
   )
 }
@@ -118,7 +124,7 @@ const Material: FC<{
           borderRightWidth: 2,
           borderRightStyle: selected ? "solid" : "none",
           backgroundColor: selected ? "primaryLightest" : "background",
-          color: selected ? "textPrimary" : "text",
+          color: selected ? "textPrimary" : "textMediumEmphasis",
           alignItems: "center",
           "&:hover": {
             backgroundColor: "primaryLightest",

@@ -13,14 +13,12 @@ import {
   ADMIN_CURRICULUM_URL,
   ADMIN_URL,
   CURRICULUM_SUBJECT_URL,
-  NEW_SUBJECT_URL,
 } from "../../routes"
 import DeleteAreaDialog from "../DeleteAreaDialog/DeleteAreaDialog"
 import DeleteSubjectDialog from "../DeleteSubjectDialog/DeleteSubjectDialog"
 import EditAreaDialog from "../EditAreaDialog/EditAreaDialog"
 import Icon from "../Icon/Icon"
 import { Link, navigate } from "../Link/Link"
-import Spacer from "../Spacer/Spacer"
 import TopBar, { breadCrumb } from "../TopBar/TopBar"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
 import Typography from "../Typography/Typography"
@@ -63,7 +61,13 @@ const PageCurriculumArea: FC<Props> = ({ id, sx }) => {
           />
 
           <Flex mx={3} py={3} sx={{ alignItems: "center" }}>
-            <Typography.H6 mr={3} sx={{ lineHeight: 1.2, fontSize: [3, 3, 1] }}>
+            <Typography.H6
+              mr={3}
+              sx={{
+                lineHeight: 1.2,
+                fontSize: [3, 3, 1],
+              }}
+            >
               {area.data?.name}
             </Typography.H6>
             <Button
@@ -88,20 +92,28 @@ const PageCurriculumArea: FC<Props> = ({ id, sx }) => {
           </Flex>
         </TranslucentBar>
 
-        <Flex sx={{ alignItems: "center", ...borderBottom }} p={3}>
-          <Typography.Body
-            sx={{ fontWeight: "bold", color: "textMediumEmphasis" }}
-          >
-            <Trans>Subjects</Trans>
-          </Typography.Body>
-          <Spacer />
+        <Typography.Body
+          py={2}
+          px={3}
+          sx={{ fontWeight: "bold", ...borderBottom }}
+        >
+          <Trans>Subjects</Trans>
+        </Typography.Body>
 
-          <Link to={NEW_SUBJECT_URL(id)}>
-            <Button variant="outline" px={2}>
-              <Icon size={16} as={PlusIcon} />
-            </Button>
-          </Link>
-        </Flex>
+        {/* <Flex sx={{ alignItems: "center", ...borderBottom }} p={3}> */}
+        {/*  <Typography.Body */}
+        {/*    sx={{ fontWeight: "bold", color: "textMediumEmphasis" }} */}
+        {/*  > */}
+        {/*    <Trans>Subjects</Trans> */}
+        {/*  </Typography.Body> */}
+        {/* <Spacer /> */}
+
+        {/* <Link to={NEW_SUBJECT_URL(id)}> */}
+        {/*  <Button variant="outline" px={2}> */}
+        {/*    <Icon size={16} as={PlusIcon} /> */}
+        {/*  </Button> */}
+        {/* </Link> */}
+        {/* </Flex> */}
 
         {subjects.data?.map((subject) => (
           <SubjectListItem
@@ -114,6 +126,16 @@ const PageCurriculumArea: FC<Props> = ({ id, sx }) => {
             }}
           />
         ))}
+
+        <Flex
+          p={3}
+          sx={{ alignItems: "center", cursor: "pointer", ...borderBottom }}
+        >
+          <Icon as={PlusIcon} fill="textPrimary" />
+          <Typography.Body ml={3} sx={{ color: "textMediumEmphasis" }}>
+            <Trans>Add new subject</Trans>
+          </Typography.Body>
+        </Flex>
       </Box>
 
       {showDeleteAreaDialog && (
@@ -176,7 +198,7 @@ const SubjectListItem: FC<SubjectListItemProps> = ({ areaId, subject }) => {
           borderRightWidth: 2,
           borderRightStyle: selected ? "solid" : "none",
           backgroundColor: selected ? "primaryLightest" : "background",
-          color: selected ? "textPrimary" : "text",
+          color: selected ? "textPrimary" : "textMediumEmphasis",
           alignItems: "center",
           "&:hover": {
             backgroundColor: "primaryLightest",
