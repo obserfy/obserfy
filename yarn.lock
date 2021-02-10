@@ -19338,7 +19338,7 @@ fsevents@~2.3.1:
     prettier: 2.2.1
     react: "npm:@preact/compat@0.0.4"
     react-dom: "npm:@preact/compat@0.0.4"
-    react-query: 3.6.0
+    react-query: 3.8.2
     react-ssr-prepass: "npm:preact-ssr-prepass@1.1.3"
     snarkdown: 2.0.0
     stylelint: 13.9.0
@@ -31504,9 +31504,9 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"react-query@npm:3.6.0":
-  version: 3.6.0
-  resolution: "react-query@npm:3.6.0"
+"react-query@npm:3.8.2":
+  version: 3.8.2
+  resolution: "react-query@npm:3.8.2"
   dependencies:
     "@babel/runtime": ^7.5.5
     match-sorter: ^6.0.2
@@ -31517,7 +31517,7 @@ mocha@latest:
       optional: true
     react-native:
       optional: true
-  checksum: 5506160682e280edec473379184b85c5f5146422c4c22a8c886c03cd066dbd2cfe11733391fe16b32d3a98d95dfe3d645bd5364c9f3af6d23a781b13255132aa
+  checksum: b5da2c3cffddb7278eb47ae64c8f40673b3e65142298025ae016c3dfea257da0a9665cf462c73a0e81e8bf777830312ff66ef3da83223bd92acb4409d93ee41e
   languageName: node
   linkType: hard
 
@@ -37635,7 +37635,7 @@ typescript@^4.0.0:
     react-docgen-typescript-loader: 3.7.2
     react-dom: 17.0.1
     react-helmet: 6.1.0
-    react-query: 3.6.0
+    react-query: 3.8.2
     react-refresh: 0.9.0
     react-test-renderer: 17.0.1
     regenerator-runtime: 0.13.7
