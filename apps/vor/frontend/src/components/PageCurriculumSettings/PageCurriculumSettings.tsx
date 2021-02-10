@@ -56,7 +56,9 @@ export const PageCurriculumSettings: FC<{ sx?: ThemeUIStyleObject }> = ({
 
         {isSuccess && data && (
           <Flex px={3} py={3} sx={{ alignItems: "center" }}>
-            <Typography.H6 sx={{ lineHeight: 1.2 }}>{data.name}</Typography.H6>
+            <Typography.H6 mr={3} sx={{ lineHeight: 1.2, fontSize: [3, 3, 1] }}>
+              {data.name}
+            </Typography.H6>
             <Button
               variant="outline"
               onClick={deleteDialog.show}
@@ -109,7 +111,9 @@ const CurriculumAreas: FC<{
   return (
     <Box>
       <Flex p={3} sx={{ alignItems: "center", ...borderBottom }}>
-        <Typography.Body sx={{ fontWeight: "bold", lineHeight: 1.2 }}>
+        <Typography.Body
+          sx={{ fontWeight: "bold", color: "textMediumEmphasis" }}
+        >
           <Trans>Areas</Trans>
         </Typography.Body>
         <Button ml="auto" variant="outline" onClick={newAreaDialog.show} px={2}>

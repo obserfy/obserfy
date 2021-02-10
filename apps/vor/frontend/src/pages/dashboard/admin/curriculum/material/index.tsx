@@ -2,6 +2,7 @@ import { t } from "@lingui/macro"
 import { useBreakpointIndex } from "@theme-ui/match-media"
 import React, { FC } from "react"
 import { Box, Flex } from "theme-ui"
+import { borderRight } from "../../../../../border"
 import CurriculumTopBar from "../../../../../components/CurriculumTopBar/CurriculumTopBar"
 import PageCurriculumArea from "../../../../../components/PageCurriculumArea/PageCurriculumArea"
 import PageCurriculumMaterial from "../../../../../components/PageCurriculumMaterial/PageCurriculumMaterial"
@@ -62,13 +63,42 @@ const SideBar: FC<{ areaId: string; subjectId: string }> = ({
   return (
     <>
       <PageCurriculumSettings sx={{ display: ["none", "none", "block"] }} />
+      {/* <CurriculumSideBar /> */}
       <PageCurriculumArea
         id={areaId}
         sx={{ display: ["none", "none", "block"] }}
       />
-      <PageCurriculumSubject subjectId={subjectId} areaId={areaId} />
+      <PageCurriculumSubject
+        subjectId={subjectId}
+        areaId={areaId}
+        sx={{
+          display: ["none", "none", "block"],
+          ...borderRight,
+        }}
+      />
     </>
   )
 }
+
+// const CurriculumSideBar = () => {
+//   const curriculum = useGetCurriculum()
+//
+//   return (
+//     <TranslucentBar
+//       boxSx={{
+//         ...borderRight,
+//         p: 3,
+//         position: "sticky",
+//         top: 0,
+//         height: ["auto", "auto", "100vh"],
+//         display: ["none", "none", "block"],
+//       }}
+//     >
+//       <Typography.H6 sx={{ writingMode: "vertical-rl" }}>
+//         {curriculum.data?.name}
+//       </Typography.H6>
+//     </TranslucentBar>
+//   )
+// }
 
 export default Material

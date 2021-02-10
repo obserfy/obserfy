@@ -1,6 +1,6 @@
 import { Trans } from "@lingui/macro"
 import React, { FC } from "react"
-import { Box, Button, Flex } from "theme-ui"
+import { Box, Button, Flex, ThemeUIStyleObject } from "theme-ui"
 import { borderBottom, borderRight } from "../../border"
 import { useGetArea } from "../../hooks/api/useGetArea"
 import { useGetSubject } from "../../hooks/api/useGetSubject"
@@ -26,17 +26,19 @@ import Typography from "../Typography/Typography"
 export interface PageCurriculumSubjectProps {
   subjectId: string
   areaId: string
+  sx?: ThemeUIStyleObject
 }
 const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
   areaId,
   subjectId,
+  sx,
 }) => {
   const area = useGetArea(areaId)
   const subject = useGetSubject(subjectId)
   const materials = useGetSubjectMaterials(subjectId)
 
   return (
-    <Box sx={{ width: "100%", pb: 5 }}>
+    <Box sx={{ width: "100%", pb: 5, ...sx }}>
       <TranslucentBar boxSx={{ ...borderBottom }}>
         <TopBar
           sx={{ display: ["flex", "flex", "none"] }}
@@ -49,7 +51,7 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
         />
 
         <Flex mx={3} py={3} sx={{ alignItems: "center" }}>
-          <Typography.H6 sx={{ lineHeight: 1.2 }}>
+          <Typography.H6 mr={3} sx={{ lineHeight: 1.2, fontSize: [3, 3, 1] }}>
             {subject.data?.name}
           </Typography.H6>
 
@@ -69,7 +71,9 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
       </TranslucentBar>
 
       <Flex sx={{ alignItems: "center", ...borderBottom }} p={3}>
-        <Typography.Body sx={{ fontWeight: "bold" }}>
+        <Typography.Body
+          sx={{ fontWeight: "bold", color: "textMediumEmphasis" }}
+        >
           <Trans>Materials</Trans>
         </Typography.Body>
         <Spacer />

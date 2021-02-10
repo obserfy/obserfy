@@ -63,7 +63,7 @@ const PageCurriculumArea: FC<Props> = ({ id, sx }) => {
           />
 
           <Flex mx={3} py={3} sx={{ alignItems: "center" }}>
-            <Typography.H6 sx={{ lineHeight: 1.2 }}>
+            <Typography.H6 mr={3} sx={{ lineHeight: 1.2, fontSize: [3, 3, 1] }}>
               {area.data?.name}
             </Typography.H6>
             <Button
@@ -89,7 +89,9 @@ const PageCurriculumArea: FC<Props> = ({ id, sx }) => {
         </TranslucentBar>
 
         <Flex sx={{ alignItems: "center", ...borderBottom }} p={3}>
-          <Typography.Body sx={{ fontWeight: "bold" }}>
+          <Typography.Body
+            sx={{ fontWeight: "bold", color: "textMediumEmphasis" }}
+          >
             <Trans>Subjects</Trans>
           </Typography.Body>
           <Spacer />
