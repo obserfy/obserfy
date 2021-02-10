@@ -117,4 +117,4 @@ export const CURRICULUM_MATERIAL_URL = (
   subjectId: string,
   materialId: string
 ) =>
-  `/dashboard/admin/curriculum/subjects?areaId=${areaId}&subjectId=${subjectId}&materialId=${materialId}`
+  `/dashboard/admin/curriculum/material?areaId=${areaId}&subjectId=${subjectId}&materialId=${materialId}`

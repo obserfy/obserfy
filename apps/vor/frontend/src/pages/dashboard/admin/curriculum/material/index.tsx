@@ -6,6 +6,7 @@ import CurriculumTopBar from "../../../../../components/CurriculumTopBar/Curricu
 import PageCurriculumArea from "../../../../../components/PageCurriculumArea/PageCurriculumArea"
 import PageCurriculumMaterial from "../../../../../components/PageCurriculumMaterial/PageCurriculumMaterial"
 import PageCurriculumSettings from "../../../../../components/PageCurriculumSettings/PageCurriculumSettings"
+import PageCurriculumSubject from "../../../../../components/PageCurriculumSubject/PageCurriculumSubject"
 import SEO from "../../../../../components/seo"
 import { breadCrumb } from "../../../../../components/TopBar/TopBar"
 import { useGetArea } from "../../../../../hooks/api/useGetArea"
@@ -15,6 +16,7 @@ import {
   ADMIN_CURRICULUM_URL,
   ADMIN_URL,
   CURRICULUM_AREA_URL,
+  CURRICULUM_SUBJECT_URL,
 } from "../../../../../routes"
 
 const Material = () => {
@@ -33,19 +35,26 @@ const Material = () => {
           breadCrumb("Admin", ADMIN_URL),
           breadCrumb("Curriculum", ADMIN_CURRICULUM_URL),
           breadCrumb(area.data?.name ?? "", CURRICULUM_AREA_URL(areaId)),
-          breadCrumb(subject.data?.name ?? ""),
+          breadCrumb(
+            subject.data?.name ?? "",
+            CURRICULUM_SUBJECT_URL(areaId, subjectId)
+          ),
+          breadCrumb("Material"),
         ]}
       />
 
       <Flex>
-        <SideBar areaId={areaId} />
+        <SideBar areaId={areaId} subjectId={subjectId} />
         <PageCurriculumMaterial />
       </Flex>
     </Box>
   )
 }
 
-const SideBar: FC<{ areaId: string }> = ({ areaId }) => {
+const SideBar: FC<{ areaId: string; subjectId: string }> = ({
+  areaId,
+  subjectId,
+}) => {
   const breakpoint = useBreakpointIndex({ defaultIndex: 3 })
 
   if (breakpoint < 2) return <></>
@@ -57,6 +66,7 @@ const SideBar: FC<{ areaId: string }> = ({ areaId }) => {
         id={areaId}
         sx={{ display: ["none", "none", "block"] }}
       />
+      <PageCurriculumSubject subjectId={subjectId} areaId={areaId} />
     </>
   )
 }
