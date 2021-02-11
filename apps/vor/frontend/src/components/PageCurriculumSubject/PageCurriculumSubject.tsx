@@ -2,6 +2,7 @@ import { Trans } from "@lingui/macro"
 import React, { FC } from "react"
 import { Box, Button, Flex, ThemeUIStyleObject } from "theme-ui"
 import { borderBottom, borderRight } from "../../border"
+import { compareOrder } from "../../domain/array"
 import { useGetArea } from "../../hooks/api/useGetArea"
 import { useGetSubject } from "../../hooks/api/useGetSubject"
 import { useGetSubjectMaterials } from "../../hooks/api/useGetSubjectMaterials"
@@ -79,7 +80,7 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
       </Typography.Body>
       <Spacer />
 
-      {materials.data?.map((material) => (
+      {materials.data?.sort(compareOrder).map((material) => (
         <Material
           key={material.id}
           materialId={material.id}

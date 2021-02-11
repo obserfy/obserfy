@@ -2,6 +2,7 @@ import { Trans } from "@lingui/macro"
 import React, { FC, useState } from "react"
 import { Box, Button, Flex, ThemeUIStyleObject } from "theme-ui"
 import { borderBottom, borderRight } from "../../border"
+import { compareOrder } from "../../domain/array"
 import { useGetArea } from "../../hooks/api/useGetArea"
 import { Subject, useGetAreaSubjects } from "../../hooks/api/useGetAreaSubjects"
 import { useQueryString } from "../../hooks/useQueryString"
@@ -100,22 +101,7 @@ const PageCurriculumArea: FC<Props> = ({ id, sx }) => {
           <Trans>Subjects</Trans>
         </Typography.Body>
 
-        {/* <Flex sx={{ alignItems: "center", ...borderBottom }} p={3}> */}
-        {/*  <Typography.Body */}
-        {/*    sx={{ fontWeight: "bold", color: "textMediumEmphasis" }} */}
-        {/*  > */}
-        {/*    <Trans>Subjects</Trans> */}
-        {/*  </Typography.Body> */}
-        {/* <Spacer /> */}
-
-        {/* <Link to={NEW_SUBJECT_URL(id)}> */}
-        {/*  <Button variant="outline" px={2}> */}
-        {/*    <Icon size={16} as={PlusIcon} /> */}
-        {/*  </Button> */}
-        {/* </Link> */}
-        {/* </Flex> */}
-
-        {subjects.data?.map((subject) => (
+        {subjects.data?.sort(compareOrder).map((subject) => (
           <SubjectListItem
             key={subject.id}
             subject={subject}
