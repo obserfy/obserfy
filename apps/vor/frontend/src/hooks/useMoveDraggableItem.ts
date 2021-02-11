@@ -15,20 +15,14 @@ const useMoveDraggableItem = (
 ) =>
   useCallback(
     (currOrder: number, offset: number, originalOrder: number) => {
-      const reorderItem = (direction: number, newOrder: number) => (
-        m: Material,
-        idx: number
+      // swap current item position with item on the next position
+      const swapPosition = (direction: number, newOrder: number) => (
+        m: Material
       ) => {
-        if (m.id === item.id) {
-          // eslint-disable-next-line no-param-reassign
-          m.order = newOrder
-        } else if (m.order === newOrder) {
-          // eslint-disable-next-line no-param-reassign
-          m.order += direction
-        } else {
-          // eslint-disable-next-line no-param-reassign
-          m.order = idx
-        }
+        // eslint-disable-next-line no-param-reassign
+        if (m.id === item.id) m.order = newOrder
+        // eslint-disable-next-line no-param-reassign
+        else if (m.order === newOrder) m.order += direction
       }
 
       // Calculate position inside the list while being dragged
@@ -40,25 +34,22 @@ const useMoveDraggableItem = (
       }
       const newPosition = originalOrder + position
 
-      // Reorder list to reflect position after dragging
+      let finalPosition = item.order
+      let direction = 1
       if (newPosition < currOrder) {
-        const finalPosition = Math.max(newPosition, 0)
-        if (item.order !== finalPosition)
-          setItems((draft) => {
-            draft.forEach(reorderItem(1, finalPosition))
-            draft.sort(compareOrder)
-          })
-        return -1
+        finalPosition = Math.max(newPosition, 0)
+      } else if (newPosition > currOrder) {
+        finalPosition = Math.min(newPosition, arrLength - 1)
+        direction = -1
       }
-      if (newPosition > currOrder) {
-        const finalPosition = Math.min(newPosition, arrLength - 1)
-        if (item.order !== finalPosition)
-          setItems((draft) => {
-            draft.forEach(reorderItem(-1, finalPosition))
-            draft.sort(compareOrder)
-          })
+
+      // Reorder list to reflect position after dragging
+      if (item.order !== finalPosition) {
+        setItems((draft) => {
+          draft.forEach(swapPosition(direction, finalPosition))
+          draft.sort(compareOrder)
+        })
       }
-      return 0
     },
     [height, arrLength, item.id, item.order, setItems]
   )
