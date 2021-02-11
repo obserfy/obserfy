@@ -1,15 +1,15 @@
 import { Trans } from "@lingui/macro"
-import React, { FC } from "react"
+import React, { FC, memo } from "react"
 import { Box, Button, Flex, ThemeUIStyleObject } from "theme-ui"
+import { useImmer } from "use-immer"
 import { borderBottom, borderRight } from "../../border"
-import { compareOrder } from "../../domain/array"
 import { useGetArea } from "../../hooks/api/useGetArea"
 import { useGetSubject } from "../../hooks/api/useGetSubject"
-import { ReactComponent as GridIcon } from "../../icons/grid_round.svg"
 import {
   Material,
   useGetSubjectMaterials,
 } from "../../hooks/api/useGetSubjectMaterials"
+import useMoveDraggableItem from "../../hooks/useMoveDraggableItem"
 import { useQueryString } from "../../hooks/useQueryString"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
@@ -21,6 +21,7 @@ import {
   CURRICULUM_AREA_URL,
   CURRICULUM_MATERIAL_URL,
 } from "../../routes"
+import DraggableListItem from "../DraggableListItem/DraggableListItem"
 import Icon from "../Icon/Icon"
 import { Link } from "../Link/Link"
 import Spacer from "../Spacer/Spacer"
@@ -85,6 +86,7 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
       <Spacer />
 
       <MaterialList
+        key={materials.data?.map(({ id }) => id).join(",") ?? ""}
         subjectId={subjectId}
         areaId={areaId}
         materials={materials.data ?? []}
@@ -108,36 +110,60 @@ const MaterialList: FC<{
   subjectId: string
   areaId: string
 }> = ({ materials, subjectId, areaId }) => {
+  const [cachedMaterials, setMaterials] = useImmer(materials)
+
   return (
     <>
-      {materials?.sort(compareOrder).map((material) => (
-        <MaterialItem
+      {cachedMaterials.map((material) => (
+        <DraggableMaterialItem
           key={material.id}
-          materialId={material.id}
-          subjectId={subjectId}
-          name={material.name}
-          description=""
+          material={material}
+          setMaterials={setMaterials}
+          length={materials.length}
           areaId={areaId}
+          subjectId={subjectId}
         />
       ))}
     </>
   )
 }
 
+const height = 54
+
+const DraggableMaterialItem: FC<{
+  material: Material
+  setMaterials: (f: (draft: Material[]) => void) => void
+  length: number
+  subjectId: string
+  areaId: string
+}> = memo(({ material, length, setMaterials, subjectId, areaId }) => {
+  const moveItem = useMoveDraggableItem(height, material, length, setMaterials)
+
+  return (
+    <MaterialItem
+      material={material}
+      subjectId={subjectId}
+      areaId={areaId}
+      onMove={moveItem}
+    />
+  )
+})
+
 const MaterialItem: FC<{
   areaId: string
   subjectId: string
-  materialId: string
-  name: string
-  description: string
-}> = ({ name, materialId, areaId, subjectId }) => {
-  const currentId = useQueryString("materialId")
-  const selected = materialId === currentId
+  material: Material
+  onMove: (order: number, offset: number, originalOrder: number) => void
+}> = ({ areaId, subjectId, material, onMove }) => {
+  const materialId = useQueryString("materialId")
+  const selected = material.id === materialId
 
   return (
-    <Link to={CURRICULUM_MATERIAL_URL(areaId, subjectId, materialId)}>
-      <Flex
-        p={3}
+    <Link to={CURRICULUM_MATERIAL_URL(areaId, subjectId, material.id)}>
+      <DraggableListItem
+        order={material.order}
+        moveItem={onMove}
+        height={54}
         sx={{
           ...borderBottom,
           ...borderRight,
@@ -152,12 +178,13 @@ const MaterialItem: FC<{
           },
         }}
       >
-        <Icon as={GridIcon} />
-        <Typography.Body ml={3} sx={{ color: "inherit" }}>
-          {name}
-        </Typography.Body>
-        <Icon as={NextIcon} ml="auto" fill="currentColor" />
-      </Flex>
+        <Flex sx={{ width: "100%" }} pr={3}>
+          <Typography.Body sx={{ color: "inherit" }}>
+            {material.name}
+          </Typography.Body>
+          <Icon as={NextIcon} ml="auto" fill="currentColor" />
+        </Flex>
+      </DraggableListItem>
     </Link>
   )
 }
