@@ -31,6 +31,7 @@ export const DraggableListItem: FC<Props> = ({
     setIsDragging(true)
     originalOrder.current = order
   }
+
   const onDragging = (
     e: TouchEvent<HTMLDivElement> | MouseEvent<HTMLDivElement>,
     clientY: number
@@ -43,6 +44,7 @@ export const DraggableListItem: FC<Props> = ({
       e.preventDefault()
     }
   }
+
   const onDragStop = () => {
     setDragOffset(0)
     setIsDragging(false)

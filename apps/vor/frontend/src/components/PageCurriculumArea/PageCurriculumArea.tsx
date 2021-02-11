@@ -7,6 +7,7 @@ import { useGetArea } from "../../hooks/api/useGetArea"
 import { Subject, useGetAreaSubjects } from "../../hooks/api/useGetAreaSubjects"
 import { useQueryString } from "../../hooks/useQueryString"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
+import { ReactComponent as GridIcon } from "../../icons/grid_round.svg"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import { ReactComponent as DeleteIcon } from "../../icons/trash.svg"
@@ -191,7 +192,8 @@ const SubjectListItem: FC<SubjectListItemProps> = ({ areaId, subject }) => {
           },
         }}
       >
-        <Typography.Body sx={{ color: "inherit" }}>
+        <Icon as={GridIcon} />
+        <Typography.Body ml={3} sx={{ color: "inherit" }}>
           {subject.name}
         </Typography.Body>
         <Icon as={NextIcon} ml="auto" fill="currentColor" />
