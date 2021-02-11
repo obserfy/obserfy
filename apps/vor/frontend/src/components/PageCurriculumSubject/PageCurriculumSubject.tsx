@@ -5,7 +5,11 @@ import { borderBottom, borderRight } from "../../border"
 import { compareOrder } from "../../domain/array"
 import { useGetArea } from "../../hooks/api/useGetArea"
 import { useGetSubject } from "../../hooks/api/useGetSubject"
-import { useGetSubjectMaterials } from "../../hooks/api/useGetSubjectMaterials"
+import { ReactComponent as GridIcon } from "../../icons/grid_round.svg"
+import {
+  Material,
+  useGetSubjectMaterials,
+} from "../../hooks/api/useGetSubjectMaterials"
 import { useQueryString } from "../../hooks/useQueryString"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
@@ -80,16 +84,11 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
       </Typography.Body>
       <Spacer />
 
-      {materials.data?.sort(compareOrder).map((material) => (
-        <Material
-          key={material.id}
-          materialId={material.id}
-          subjectId={subjectId}
-          name={material.name}
-          description=""
-          areaId={areaId}
-        />
-      ))}
+      <MaterialList
+        subjectId={subjectId}
+        areaId={areaId}
+        materials={materials.data ?? []}
+      />
 
       <Flex
         p={3}
@@ -104,7 +103,28 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
   )
 }
 
-const Material: FC<{
+const MaterialList: FC<{
+  materials: Material[]
+  subjectId: string
+  areaId: string
+}> = ({ materials, subjectId, areaId }) => {
+  return (
+    <>
+      {materials?.sort(compareOrder).map((material) => (
+        <MaterialItem
+          key={material.id}
+          materialId={material.id}
+          subjectId={subjectId}
+          name={material.name}
+          description=""
+          areaId={areaId}
+        />
+      ))}
+    </>
+  )
+}
+
+const MaterialItem: FC<{
   areaId: string
   subjectId: string
   materialId: string
@@ -132,7 +152,10 @@ const Material: FC<{
           },
         }}
       >
-        <Typography.Body sx={{ color: "inherit" }}>{name}</Typography.Body>
+        <Icon as={GridIcon} />
+        <Typography.Body ml={3} sx={{ color: "inherit" }}>
+          {name}
+        </Typography.Body>
         <Icon as={NextIcon} ml="auto" fill="currentColor" />
       </Flex>
     </Link>
