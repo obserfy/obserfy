@@ -1,42 +1,31 @@
 import React, { TouchEvent, MouseEvent, FC, useRef, useState } from "react"
-import { Flex, Box } from "theme-ui"
-
+import { Flex, Box, ThemeUIStyleObject } from "theme-ui"
 import Icon from "../Icon/Icon"
-import { ReactComponent as GridIcon } from "../../icons/grid.svg"
+import { ReactComponent as GridIcon } from "../../icons/grid_round.svg"
 
 interface Props {
   order: number
   moveItem: (order: number, offset: number, originalOrder: number) => void
   height: number
+  sx?: ThemeUIStyleObject
 }
 export const DraggableListItem: FC<Props> = ({
   children,
   moveItem,
   order,
   height,
+  sx,
 }) => {
   const originalOrder = useRef(0)
-  const [isDragging, setIsDragging] = useState(false)
+  const [isGrabbed, setIsGrabbed] = useState(false)
   const [dragOffset, setDragOffset] = useState(0)
   const startingY = useRef(0)
 
-  const onDragStart = (
+  const handleDrag = (
     e: TouchEvent<HTMLDivElement> | MouseEvent<HTMLDivElement>,
     clientY: number
   ) => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop
-
-    setDragOffset(clientY + scrollTop - 24)
-    startingY.current = clientY
-    setIsDragging(true)
-    originalOrder.current = order
-  }
-
-  const onDragging = (
-    e: TouchEvent<HTMLDivElement> | MouseEvent<HTMLDivElement>,
-    clientY: number
-  ) => {
-    if (isDragging) {
+    if (isGrabbed) {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop
       const offset = clientY - startingY.current
       setDragOffset(clientY + scrollTop - 24)
@@ -45,37 +34,44 @@ export const DraggableListItem: FC<Props> = ({
     }
   }
 
-  const onDragStop = () => {
+  const handleMouseDown = (
+    e: TouchEvent<HTMLDivElement> | MouseEvent<HTMLDivElement>,
+    clientY: number
+  ) => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop
+
+    setDragOffset(clientY + scrollTop - 24)
+    startingY.current = clientY
+    setIsGrabbed(true)
+    originalOrder.current = order
+  }
+
+  const handleMouseUp = () => {
     setDragOffset(0)
-    setIsDragging(false)
+    setIsGrabbed(false)
   }
 
   return (
     <Box
-      sx={{ height: 48 }}
-      backgroundColor="primaryLightest"
-      onMouseMove={(e) => {
-        // @ts-ignore
-        onDragging(e, e.clientY)
-      }}
-      onTouchMove={(e) => onDragging(e, e.targetTouches[0].clientY)}
+      sx={{ height, ...sx }}
+      onMouseMove={(e) => handleDrag(e, e.clientY)}
+      onTouchMove={(e) => handleDrag(e, e.targetTouches[0].clientY)}
     >
       <Flex
-        backgroundColor={isDragging ? "surface" : "background"}
+        backgroundColor={isGrabbed ? "surface" : "transparent"}
         sx={{
           height,
           alignItems: "center",
           userSelect: "none",
           width: "100%",
-          maxWidth: 640,
           borderBottomColor: "border",
           borderBottomWidth: 1,
           borderBottomStyle: "solid",
-          boxShadow: isDragging ? "low" : undefined,
+          boxShadow: isGrabbed ? "low" : undefined,
           transition: "background-color .1s ease-in, box-shadow .1s ease-in",
-          position: isDragging ? "absolute" : "relative",
+          position: isGrabbed ? "absolute" : "relative",
           transform: `translateY(${dragOffset}px)`,
-          zIndex: isDragging ? 10 : 1,
+          zIndex: isGrabbed ? 10 : 1,
           top: 0,
         }}
       >
@@ -83,13 +79,11 @@ export const DraggableListItem: FC<Props> = ({
           px={3}
           py={2}
           sx={{ cursor: "move" }}
-          onMouseDown={(e) => {
-            // @ts-ignore
-            onDragStart(e, e.clientY)
-          }}
-          onMouseUp={onDragStop}
-          onTouchEnd={onDragStop}
-          onTouchStart={(e) => onDragStart(e, e.targetTouches[0].clientY)}
+          onClick={(e) => e.preventDefault()}
+          onMouseDown={(e) => handleMouseDown(e, e.clientY)}
+          onMouseUp={handleMouseUp}
+          onTouchStart={(e) => handleMouseDown(e, e.targetTouches[0].clientY)}
+          onTouchEnd={handleMouseUp}
         >
           <Icon as={GridIcon} sx={{ width: 24 }} />
         </Box>
