@@ -7673,7 +7673,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "pino",
-        "npm:6.11.0"
+        "npm:6.11.1"
       ],
       [
         "pino-pretty",
@@ -40343,7 +40343,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["next-pwa", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:5.0.5"],
             ["node-mocks-http", "npm:1.10.1"],
             ["pg", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:8.5.1"],
-            ["pino", "npm:6.11.0"],
+            ["pino", "npm:6.11.1"],
             ["pino-pretty", "npm:4.5.0"],
             ["postcss", "npm:8.2.5"],
             ["postcss-preset-env", "npm:6.7.0"],
@@ -52199,10 +52199,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["pino", [
-        ["npm:6.11.0", {
-          "packageLocation": "./.yarn/cache/pino-npm-6.11.0-451cdb4c5e-73312f020b.zip/node_modules/pino/",
+        ["npm:6.11.1", {
+          "packageLocation": "./.yarn/cache/pino-npm-6.11.1-3e4c379a9f-ba8a3a6336.zip/node_modules/pino/",
           "packageDependencies": [
-            ["pino", "npm:6.11.0"],
+            ["pino", "npm:6.11.1"],
             ["fast-redact", "npm:3.0.0"],
             ["fast-safe-stringify", "npm:2.0.7"],
             ["flatstr", "npm:1.0.12"],
