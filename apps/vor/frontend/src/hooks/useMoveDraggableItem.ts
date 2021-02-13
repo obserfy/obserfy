@@ -1,57 +1,54 @@
+/* eslint-disable no-param-reassign */
 import { Draft } from "immer/compat/pre-3.7/dist/immer"
 import { useCallback } from "react"
 import { compareOrder } from "../domain/array"
-import { Material } from "./api/useGetSubjectMaterials"
+
+enum DragYDirection {
+  DOWN = -1,
+  UP = 1,
+}
 
 interface Item {
   id: string
   order: number
 }
+
+const checkDragDirection = (newOrder: number, currOrder: number) => {
+  return newOrder > currOrder ? DragYDirection.DOWN : DragYDirection.UP
+}
+
+function capOrder(newOrder: number, direction: DragYDirection, max: number) {
+  return direction === DragYDirection.DOWN
+    ? Math.min(newOrder, max)
+    : Math.max(newOrder, 0)
+}
+
+const swapOrder = (
+  currItem: Item,
+  newOrder: number,
+  direction: DragYDirection
+) => (m: Item) => {
+  if (m.id === currItem.id) m.order = newOrder
+  else if (m.order === newOrder) m.order += direction
+}
+
 const useMoveDraggableItem = (
-  height: number,
-  item: Item,
-  arrLength: number,
+  currItem: Item,
   setItems: (f: (draft: Draft<Item[]>) => void) => void
-) =>
-  useCallback(
-    (currOrder: number, offset: number, originalOrder: number) => {
-      // swap current item position with item on the next position
-      const swapPosition = (direction: number, newOrder: number) => (
-        m: Material
-      ) => {
-        // eslint-disable-next-line no-param-reassign
-        if (m.id === item.id) m.order = newOrder
-        // eslint-disable-next-line no-param-reassign
-        else if (m.order === newOrder) m.order += direction
-      }
+) => {
+  const moveItem = (currOrder: number, newOrder: number) => {
+    if (currItem.order === newOrder) return
 
-      // Calculate position inside the list while being dragged
-      let position: number
-      if (offset < 0) {
-        position = Math.ceil((offset - height / 2) / height)
-      } else {
-        position = Math.floor((offset + height / 2) / height)
-      }
-      const newPosition = originalOrder + position
+    // Reorder list to reflect position after dragging
+    setItems((draft) => {
+      const direction = checkDragDirection(newOrder, currOrder)
+      const cappedOrder = capOrder(newOrder, direction, draft.length - 1)
+      draft.forEach(swapOrder(currItem, cappedOrder, direction))
+      draft.sort(compareOrder)
+    })
+  }
 
-      let finalPosition = item.order
-      let direction = 1
-      if (newPosition < currOrder) {
-        finalPosition = Math.max(newPosition, 0)
-      } else if (newPosition > currOrder) {
-        finalPosition = Math.min(newPosition, arrLength - 1)
-        direction = -1
-      }
-
-      // Reorder list to reflect position after dragging
-      if (item.order !== finalPosition) {
-        setItems((draft) => {
-          draft.forEach(swapPosition(direction, finalPosition))
-          draft.sort(compareOrder)
-        })
-      }
-    },
-    [height, arrLength, item.id, item.order, setItems]
-  )
+  return useCallback(moveItem, [currItem.id, currItem.order, setItems])
+}
 
 export default useMoveDraggableItem
