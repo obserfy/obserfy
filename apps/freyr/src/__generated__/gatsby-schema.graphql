@@ -1246,7 +1246,7 @@ type ImageSharp implements Node {
     # DOMINANT_COLOR: a solid color, calculated from the dominant color of the image. 
     # TRACED_SVG: a low-resolution traced SVG of the image.
     # NONE: no placeholder. Set "background" to use a fixed background color.
-    placeholder: ImagePlaceholder = DOMINANT_COLOR
+    placeholder: ImagePlaceholder
 
     # Options for the low-resolution placeholder image. Set placeholder to "BLURRED" to use this
     blurredOptions: BlurredOptions
@@ -1304,7 +1304,7 @@ type ImageSharp implements Node {
 
     # Background color applied to the wrapper. Also passed to sharp to use as a
     # background when "letterboxing" an image to another aspect ratio.
-    background: String = "rgba(0,0,0,0)"
+    backgroundColor: String
   ): JSON!
   original: ImageSharpOriginal
   resize(width: Int, height: Int, quality: Int, jpegQuality: Int, pngQuality: Int, webpQuality: Int, jpegProgressive: Boolean = true, pngCompressionLevel: Int = 9, pngCompressionSpeed: Int = 4, grayscale: Boolean = false, duotone: DuotoneGradient, base64: Boolean = false, traceSVG: Potrace, toFormat: ImageFormat = AUTO, cropFocus: ImageCropFocus = ATTENTION, fit: ImageFit = COVER, background: String = "rgba(0,0,0,1)", rotate: Int = 0, trim: Float = 0): ImageSharpResize
