@@ -119,7 +119,6 @@ const MaterialList: FC<{
           key={material.id}
           material={material}
           setMaterials={setMaterials}
-          length={materials.length}
           areaId={areaId}
           subjectId={subjectId}
         />
@@ -128,65 +127,48 @@ const MaterialList: FC<{
   )
 }
 
-const height = 54
-
 const DraggableMaterialItem: FC<{
+  areaId: string
+  subjectId: string
   material: Material
   setMaterials: (f: (draft: Material[]) => void) => void
-  length: number
-  subjectId: string
-  areaId: string
-}> = memo(({ material, length, setMaterials, subjectId, areaId }) => {
-  const moveItem = useMoveDraggableItem(height, material, length, setMaterials)
-
-  return (
-    <MaterialItem
-      material={material}
-      subjectId={subjectId}
-      areaId={areaId}
-      onMove={moveItem}
-    />
-  )
-})
-
-const MaterialItem: FC<{
-  areaId: string
-  subjectId: string
-  material: Material
-  onMove: (order: number, offset: number, originalOrder: number) => void
-}> = ({ areaId, subjectId, material, onMove }) => {
+}> = memo(({ setMaterials, areaId, subjectId, material }) => {
+  const moveItem = useMoveDraggableItem(material, setMaterials)
   const materialId = useQueryString("materialId")
   const selected = material.id === materialId
 
   return (
-    <Link to={CURRICULUM_MATERIAL_URL(areaId, subjectId, material.id)}>
-      <DraggableListItem
-        order={material.order}
-        moveItem={onMove}
-        height={54}
-        sx={{
-          ...borderBottom,
-          ...borderRight,
-          borderRightColor: "textPrimary",
-          borderRightWidth: 2,
-          borderRightStyle: selected ? "solid" : "none",
-          backgroundColor: selected ? "primaryLightest" : "background",
-          color: selected ? "textPrimary" : "textMediumEmphasis",
-          alignItems: "center",
-          "&:hover": {
-            backgroundColor: "primaryLightest",
-          },
-        }}
+    <DraggableListItem
+      order={material.order}
+      moveItem={moveItem}
+      height={54}
+      sx={{
+        ...borderBottom,
+        ...borderRight,
+        borderRightColor: "textPrimary",
+        borderRightWidth: 2,
+        borderRightStyle: selected ? "solid" : "none",
+        backgroundColor: selected ? "primaryLightest" : "background",
+        color: selected ? "textPrimary" : "textMediumEmphasis",
+        alignItems: "center",
+        "&:hover": {
+          backgroundColor: "primaryLightest",
+        },
+      }}
+    >
+      <Link
+        to={CURRICULUM_MATERIAL_URL(areaId, subjectId, material.id)}
+        style={{ display: "block", width: "100%" }}
       >
-        <Flex sx={{ width: "100%" }} pr={3}>
+        <Flex sx={{ alignItems: "center", width: "100%" }}>
           <Typography.Body sx={{ color: "inherit" }}>
             {material.name}
           </Typography.Body>
-          <Icon as={NextIcon} ml="auto" fill="currentColor" />
+          <Icon as={NextIcon} ml="auto" mr={3} fill="currentColor" />
         </Flex>
-      </DraggableListItem>
-    </Link>
+      </Link>
+    </DraggableListItem>
   )
-}
+})
 
 export default PageCurriculumSubject
