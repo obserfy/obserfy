@@ -138,36 +138,31 @@ const DraggableMaterialItem: FC<{
   const selected = material.id === materialId
 
   return (
-    <DraggableListItem
-      order={material.order}
-      moveItem={moveItem}
-      height={54}
-      sx={{
-        ...borderBottom,
-        ...borderRight,
-        borderRightColor: "textPrimary",
-        borderRightWidth: 2,
-        borderRightStyle: selected ? "solid" : "none",
-        backgroundColor: selected ? "primaryLightest" : "background",
-        color: selected ? "textPrimary" : "textMediumEmphasis",
-        alignItems: "center",
-        "&:hover": {
-          backgroundColor: "primaryLightest",
-        },
-      }}
-    >
-      <Link
-        to={CURRICULUM_MATERIAL_URL(areaId, subjectId, material.id)}
-        style={{ display: "block", width: "100%" }}
+    <Link to={CURRICULUM_MATERIAL_URL(areaId, subjectId, material.id)}>
+      <DraggableListItem
+        order={material.order}
+        moveItem={moveItem}
+        height={54}
+        sx={{
+          ...borderBottom,
+          ...borderRight,
+          borderRightColor: "textPrimary",
+          borderRightWidth: 2,
+          borderRightStyle: selected ? "solid" : "none",
+          backgroundColor: selected ? "primaryLightest" : "background",
+          color: selected ? "textPrimary" : "textMediumEmphasis",
+          alignItems: "center",
+          "&:hover": {
+            backgroundColor: "primaryLightest",
+          },
+        }}
       >
-        <Flex sx={{ alignItems: "center", width: "100%" }}>
-          <Typography.Body sx={{ color: "inherit" }}>
-            {material.name}
-          </Typography.Body>
-          <Icon as={NextIcon} ml="auto" mr={3} fill="currentColor" />
-        </Flex>
-      </Link>
-    </DraggableListItem>
+        <Typography.Body sx={{ color: "inherit" }}>
+          {material.name}
+        </Typography.Body>
+        <Icon as={NextIcon} ml="auto" mr={3} fill="currentColor" />
+      </DraggableListItem>
+    </Link>
   )
 })
 
