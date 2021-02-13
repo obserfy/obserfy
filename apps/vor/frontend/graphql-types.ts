@@ -1043,7 +1043,7 @@ export type ImageSharpGatsbyImageDataArgs = {
   webpOptions?: Maybe<WebPOptions>;
   avifOptions?: Maybe<AvifOptions>;
   transformOptions?: Maybe<TransformOptions>;
-  background?: Maybe<Scalars['String']>;
+  backgroundColor?: Maybe<Scalars['String']>;
 };
 
 
