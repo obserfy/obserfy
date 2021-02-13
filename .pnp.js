@@ -4537,7 +4537,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "faker",
-        "npm:5.3.1"
+        "npm:5.4.0"
       ],
       [
         "fast-copy",
@@ -36705,7 +36705,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-prettier", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:3.3.0"],
             ["eslint-plugin-react", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:7.22.0"],
             ["eslint-plugin-react-hooks", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:4.2.0"],
-            ["faker", "npm:5.3.1"],
+            ["faker", "npm:5.4.0"],
             ["pg", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:8.5.1"],
             ["pnp-webpack-plugin", "npm:1.6.4"],
             ["prettier", "npm:2.2.1"],
@@ -38979,10 +38979,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["faker", [
-        ["npm:5.3.1", {
-          "packageLocation": "./.yarn/cache/faker-npm-5.3.1-bee9bed374-40f3e92fe3.zip/node_modules/faker/",
+        ["npm:5.4.0", {
+          "packageLocation": "./.yarn/cache/faker-npm-5.4.0-5688d351b9-f29deef14c.zip/node_modules/faker/",
           "packageDependencies": [
-            ["faker", "npm:5.3.1"]
+            ["faker", "npm:5.4.0"]
           ],
           "linkType": "HARD",
         }]
@@ -62505,7 +62505,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-react", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:7.22.0"],
             ["eslint-plugin-react-hooks", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:4.2.0"],
             ["fake-indexeddb", "npm:3.1.2"],
-            ["faker", "npm:5.3.1"],
+            ["faker", "npm:5.4.0"],
             ["gatsby", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:2.32.3"],
             ["gatsby-image", "npm:2.11.0"],
             ["gatsby-plugin-canonical-urls", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:2.10.0"],
