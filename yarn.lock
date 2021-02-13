@@ -3211,7 +3211,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:7.12.13":
+"@babel/runtime@npm:7.12.13, @babel/runtime@npm:^7.12.13":
   version: 7.12.13
   resolution: "@babel/runtime@npm:7.12.13"
   dependencies:
@@ -3253,15 +3253,6 @@ __metadata:
   dependencies:
     regenerator-runtime: ^0.13.4
   checksum: 2f127ad60a0f0568faa0044e5b48329d8166c7fd3a0a3ce774070010a1c441ebf5570f526dd6bb26e214fb1a01bb987ab6a4c3f60a00f04d02448939f4c61e1e
-  languageName: node
-  linkType: hard
-
-"@babel/runtime@npm:^7.12.1":
-  version: 7.12.1
-  resolution: "@babel/runtime@npm:7.12.1"
-  dependencies:
-    regenerator-runtime: ^0.13.4
-  checksum: 979d1c099c386031f96a952ee903e7bc3c60ae6e4eefe2bf49e4224014542d4ac2b1e2fb708031da36501a3842d4442dfdab38ab359ab3f46634b3c7cb5f6c6e
   languageName: node
   linkType: hard
 
@@ -13365,13 +13356,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chromatic@npm:5.6.1":
-  version: 5.6.1
-  resolution: "chromatic@npm:5.6.1"
+"chromatic@npm:5.6.2":
+  version: 5.6.2
+  resolution: "chromatic@npm:5.6.2"
   dependencies:
     "@actions/core": ^1.2.4
     "@actions/github": ^4.0.0
-    "@babel/runtime": ^7.12.1
+    "@babel/runtime": ^7.12.13
     "@chromaui/localtunnel": ^2.0.2
     async-retry: ^1.3.1
     chalk: ^4.0.0
@@ -13382,11 +13373,11 @@ __metadata:
     esm: ^3.2.25
     execa: ^5.0.0
     fake-tag: ^2.0.0
-    fs-extra: ^9.0.0
+    fs-extra: ^9.1.0
     jsonfile: ^6.0.1
     junit-report-builder: 2.1.0
     listr: 0.14.3
-    meow: ^8.0.0
+    meow: ^9.0.0
     node-ask: ^1.0.1
     node-fetch: ^2.6.0
     node-loggly-bulk: ^2.2.4
@@ -13408,7 +13399,7 @@ __metadata:
     chroma: bin/register.js
     chromatic: bin/register.js
     chromatic-cli: bin/register.js
-  checksum: 2d194f05df8dcca7098f8d0baa68e3c4e0cf2d326dce7433c1be9a7e0794844bb62b325601852a131fef02ce37882a47f9b4e0f219f9dd08f42628de469821e0
+  checksum: 6b5164633b7b4e3631affa5fc75b5ca08818d7b8fe7e6cbaa8c924ce8772752097c84e1861f5067047f43e80b1c4b4e57430181fad6825e53e66098b683b0289
   languageName: node
   linkType: hard
 
@@ -26010,25 +26001,6 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"meow@npm:^8.0.0":
-  version: 8.0.0
-  resolution: "meow@npm:8.0.0"
-  dependencies:
-    "@types/minimist": ^1.2.0
-    camelcase-keys: ^6.2.2
-    decamelize-keys: ^1.1.0
-    hard-rejection: ^2.1.0
-    minimist-options: 4.1.0
-    normalize-package-data: ^3.0.0
-    read-pkg-up: ^7.0.1
-    redent: ^3.0.0
-    trim-newlines: ^3.0.0
-    type-fest: ^0.18.0
-    yargs-parser: ^20.2.3
-  checksum: 536b8cdff381d619ba4d2647bd15bde3ebbcb289e0c6a5e618d23e6e6d922f6a2febc722a12dee7c6c426f3f37a9a3e7e7b09bf9c217e2eb178e276f9665697d
-  languageName: node
-  linkType: hard
-
 "meow@npm:^9.0.0":
   version: 9.0.0
   resolution: "meow@npm:9.0.0"
@@ -37596,7 +37568,7 @@ typescript@^4.0.0:
     babel-preset-gatsby: 0.12.1
     body-scroll-lock: 3.1.5
     browser-lang: 0.1.0
-    chromatic: 5.6.1
+    chromatic: 5.6.2
     core-js: 3.8.3
     cross-env: 7.0.3
     dayjs: 1.10.4
