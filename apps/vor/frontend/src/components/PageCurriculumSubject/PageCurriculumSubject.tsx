@@ -1,6 +1,8 @@
+/** @jsx jsx */
 import { Trans } from "@lingui/macro"
-import React, { FC, memo } from "react"
-import { Box, Button, Flex, ThemeUIStyleObject } from "theme-ui"
+import { Fragment, FC, memo } from "react"
+
+import { jsx, Box, Button, Flex, ThemeUIStyleObject } from "theme-ui"
 import { useImmer } from "use-immer"
 import { borderBottom, borderRight } from "../../border"
 import { useGetArea } from "../../hooks/api/useGetArea"
@@ -47,7 +49,7 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
     <Box sx={{ width: "100%", pb: 5, ...sx }}>
       <TranslucentBar boxSx={{ ...borderBottom }}>
         <TopBar
-          sx={{ display: ["flex", "flex", "none"] }}
+          containerSx={{ display: ["flex", "flex", "none"] }}
           breadcrumbs={[
             breadCrumb("Admin", ADMIN_URL),
             breadCrumb("Curriculum", ADMIN_CURRICULUM_URL),
@@ -113,7 +115,7 @@ const MaterialList: FC<{
   const [cachedMaterials, setMaterials] = useImmer(materials)
 
   return (
-    <>
+    <Fragment>
       {cachedMaterials.map((material) => (
         <DraggableMaterialItem
           key={material.id}
@@ -123,7 +125,7 @@ const MaterialList: FC<{
           subjectId={subjectId}
         />
       ))}
-    </>
+    </Fragment>
   )
 }
 
@@ -138,12 +140,15 @@ const DraggableMaterialItem: FC<{
   const selected = material.id === materialId
 
   return (
-    <Link to={CURRICULUM_MATERIAL_URL(areaId, subjectId, material.id)}>
+    <Link
+      to={CURRICULUM_MATERIAL_URL(areaId, subjectId, material.id)}
+      sx={{ display: "block", maxWidth: "inherit" }}
+    >
       <DraggableListItem
         order={material.order}
         moveItem={moveItem}
         height={54}
-        sx={{
+        containerSx={{
           ...borderBottom,
           ...borderRight,
           borderRightColor: "textPrimary",

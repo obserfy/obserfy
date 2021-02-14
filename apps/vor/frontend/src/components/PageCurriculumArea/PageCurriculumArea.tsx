@@ -1,6 +1,7 @@
+/** @jsx jsx */
 import { Trans } from "@lingui/macro"
-import React, { FC, useState } from "react"
-import { Box, Button, Flex, ThemeUIStyleObject } from "theme-ui"
+import { FC, Fragment, useState } from "react"
+import { jsx, Box, Button, Flex, ThemeUIStyleObject } from "theme-ui"
 import { useImmer } from "use-immer"
 import { borderBottom, borderRight } from "../../border"
 import { useGetArea } from "../../hooks/api/useGetArea"
@@ -52,7 +53,7 @@ const PageCurriculumArea: FC<Props> = ({ id, sx }) => {
     >
       <TranslucentBar boxSx={{ ...borderBottom }}>
         <TopBar
-          sx={{ display: ["flex", "flex", "none"] }}
+          containerSx={{ display: ["flex", "flex", "none"] }}
           breadcrumbs={[
             breadCrumb("Admin", ADMIN_URL),
             breadCrumb("Curriculum", ADMIN_CURRICULUM_URL),
@@ -147,7 +148,7 @@ const SubjectList: FC<{
   const [cachedSubjects, setSubject] = useImmer(subjects)
 
   return (
-    <>
+    <Fragment>
       {cachedSubjects.map((subject) => (
         <SubjectListItem
           key={subject.id}
@@ -156,7 +157,7 @@ const SubjectList: FC<{
           setSubject={setSubject}
         />
       ))}
-    </>
+    </Fragment>
   )
 }
 
@@ -178,13 +179,13 @@ const SubjectListItem: FC<SubjectListItemProps> = ({
     <Link
       key={subject.id}
       to={CURRICULUM_SUBJECT_URL(areaId, subject.id)}
-      sx={{ display: "block" }}
+      sx={{ display: "block", maxWidth: "inherit" }}
     >
       <DraggableListItem
         order={subject.order}
         moveItem={moveItem}
         height={54}
-        sx={{
+        containerSx={{
           ...borderBottom,
           ...borderRight,
           borderRightColor: "textPrimary",

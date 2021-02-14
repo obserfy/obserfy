@@ -11,10 +11,10 @@ export interface BreadcrumbData {
 }
 export interface TopBarProps {
   breadcrumbs: BreadcrumbData[]
-  sx?: ThemeUIStyleObject
+  containerSx?: ThemeUIStyleObject
 }
-export const TopBar: FC<TopBarProps> = ({ breadcrumbs, sx }) => (
-  <Flex sx={{ height: 48, alignItems: "center", ...sx }}>
+export const TopBar: FC<TopBarProps> = ({ breadcrumbs, containerSx }) => (
+  <Flex sx={{ height: 48, alignItems: "center", ...containerSx }}>
     <BackButton
       to={breadcrumbs[Math.max(breadcrumbs.length - 2, 0)].to ?? "/"}
       state={{ preserveScroll: true }}

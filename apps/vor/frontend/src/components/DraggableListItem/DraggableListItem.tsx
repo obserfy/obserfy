@@ -12,22 +12,18 @@ function useTransientState<T>(defaultState: T, subscribe: (state: T) => void) {
   }
 }
 
-const getDomScrollPosition = () => {
-  return window.pageYOffset || document.documentElement.scrollTop
-}
-
 interface Props {
   order: number
   moveItem: (order: number, newOrder: number) => void
   height: number
-  sx?: ThemeUIStyleObject
+  containerSx?: ThemeUIStyleObject
 }
 export const DraggableListItem: FC<Props> = ({
   children,
   moveItem,
   order,
   height,
-  sx,
+  containerSx,
 }) => {
   const container = useRef<HTMLDivElement>(null)
   const setTranslateY = useTransientState(0, (state) => {
@@ -45,8 +41,7 @@ export const DraggableListItem: FC<Props> = ({
   const itemMidPoint = height / 2
 
   const recalculateYTranslate = (mouseYPosition: number) => {
-    const domScrollPosition = getDomScrollPosition()
-    setTranslateY(mouseYPosition + domScrollPosition - itemMidPoint)
+    setTranslateY(mouseYPosition - itemMidPoint)
   }
 
   const handleDrag = (e: MouseEvent | TouchEvent, mouseYPosition: number) => {
@@ -92,7 +87,7 @@ export const DraggableListItem: FC<Props> = ({
 
   return (
     <Box
-      sx={{ height, ...sx }}
+      sx={{ width: "100%", maxWidth: "inherit", height, ...containerSx }}
       onMouseMove={(e) => handleDrag(e, e.clientY)}
       onTouchMove={(e) => handleDrag(e, e.targetTouches[0].clientY)}
     >
@@ -103,11 +98,13 @@ export const DraggableListItem: FC<Props> = ({
           height,
           alignItems: "center",
           userSelect: "none",
-          width: "100%",
+          width: "inherit",
+          maxWidth: "inherit",
           boxShadow: isGrabbed ? "low" : undefined,
           transition: "background-color .1s ease-in, box-shadow .1s ease-in",
-          position: isGrabbed ? "absolute" : "relative",
+          position: isGrabbed ? "fixed" : "relative",
           zIndex: isGrabbed ? 10 : 1,
+          borderRadius: isGrabbed ? "default" : 0,
           top: 0,
         }}
       >
