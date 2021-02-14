@@ -2,10 +2,19 @@ import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock"
 import React, { FC, MouseEvent, TouchEvent, useRef, useState } from "react"
 import { Box, Flex, ThemeUIStyleObject } from "theme-ui"
 import { ReactComponent as GridIcon } from "../../icons/grid_round.svg"
-import Icon from "../Icon/Icon"
 
-const getDomScrollPosition = () =>
-  window.pageYOffset || document.documentElement.scrollTop
+function useTransientState<T>(defaultState: T, subscribe: (state: T) => void) {
+  const currentState = useRef<T>(defaultState)
+
+  return (state: T) => {
+    currentState.current = state
+    subscribe(state)
+  }
+}
+
+const getDomScrollPosition = () => {
+  return window.pageYOffset || document.documentElement.scrollTop
+}
 
 interface Props {
   order: number
@@ -20,8 +29,14 @@ export const DraggableListItem: FC<Props> = ({
   height,
   sx,
 }) => {
+  const container = useRef<HTMLDivElement>(null)
+  const setTranslateY = useTransientState(0, (state) => {
+    if (container.current) {
+      container.current.style.transform = `translateY(${state}px)`
+    }
+  })
+
   const [isGrabbed, setIsGrabbed] = useState(false)
-  const [translateYCSS, setTranslateYCSS] = useState(0)
   const mouseStartingYPosition = useRef(0)
   const originalOrder = useRef(0)
   const dragHandle = useRef<HTMLDivElement>(null)
@@ -31,7 +46,7 @@ export const DraggableListItem: FC<Props> = ({
 
   const recalculateYTranslate = (mouseYPosition: number) => {
     const domScrollPosition = getDomScrollPosition()
-    setTranslateYCSS(mouseYPosition + domScrollPosition - itemMidPoint)
+    setTranslateY(mouseYPosition + domScrollPosition - itemMidPoint)
   }
 
   const handleDrag = (e: MouseEvent | TouchEvent, mouseYPosition: number) => {
@@ -71,7 +86,7 @@ export const DraggableListItem: FC<Props> = ({
     e.stopPropagation()
     if (!dragHandle.current) return
     enableBodyScroll(dragHandle.current)
-    setTranslateYCSS(0)
+    setTranslateY(0)
     setIsGrabbed(false)
   }
 
@@ -82,6 +97,7 @@ export const DraggableListItem: FC<Props> = ({
       onTouchMove={(e) => handleDrag(e, e.targetTouches[0].clientY)}
     >
       <Flex
+        ref={container}
         backgroundColor={isGrabbed ? "surface" : "transparent"}
         sx={{
           height,
@@ -91,7 +107,6 @@ export const DraggableListItem: FC<Props> = ({
           boxShadow: isGrabbed ? "low" : undefined,
           transition: "background-color .1s ease-in, box-shadow .1s ease-in",
           position: isGrabbed ? "absolute" : "relative",
-          transform: `translateY(${translateYCSS}px)`,
           zIndex: isGrabbed ? 10 : 1,
           top: 0,
         }}
@@ -111,7 +126,7 @@ export const DraggableListItem: FC<Props> = ({
           }}
           ref={dragHandle}
         >
-          <Icon as={GridIcon} />
+          <GridIcon width={20} />
         </Box>
         {children}
       </Flex>
