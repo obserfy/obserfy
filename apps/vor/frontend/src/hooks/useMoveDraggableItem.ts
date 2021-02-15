@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
-import { Draft } from "immer/compat/pre-3.7/dist/immer"
 import { useCallback } from "react"
+import { useImmer } from "use-immer"
 
 enum DragYDirection {
   DOWN = -1,
@@ -16,15 +16,17 @@ const checkDragDirection = (newOrder: number, currOrder: number) => {
   return newOrder > currOrder ? DragYDirection.DOWN : DragYDirection.UP
 }
 
-function capOrder(newOrder: number, direction: DragYDirection, max: number) {
+const capOrder = (newOrder: number, direction: DragYDirection, max: number) => {
   return direction === DragYDirection.DOWN
     ? Math.min(newOrder, max)
     : Math.max(newOrder, 0)
 }
 
-const useMoveDraggableItem = (
-  setItems: (f: (draft: Draft<OrderedItem[]>) => void) => void
-) => {
+export const useMoveDraggableItem = <T extends OrderedItem[]>(
+  items: T
+): [T, (currItem: OrderedItem, newOrder: number) => void] => {
+  const [cachedItems, setItems] = useImmer(items)
+
   const moveItem = (currItem: OrderedItem, newOrder: number) => {
     if (currItem.order === newOrder) return
     // Reorder list to reflect position after dragging
@@ -49,7 +51,6 @@ const useMoveDraggableItem = (
     })
   }
 
-  return useCallback(moveItem, [setItems])
+  const memoizedMoveItem = useCallback(moveItem, [setItems])
+  return [cachedItems, memoizedMoveItem]
 }
-
-export default useMoveDraggableItem

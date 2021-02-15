@@ -1,6 +1,8 @@
 import React from "react"
 import { Meta, Story } from "@storybook/react"
-import PageCurriculumSubject, { PageCurriculumSubjectProps } from "./PageCurriculumSubject"
+import PageCurriculumSubject, {
+  PageCurriculumSubjectProps,
+} from "./PageCurriculumSubject"
 
 export default {
   title: "Core/PageCurriculumSubject",
@@ -10,7 +12,9 @@ export default {
   },
 } as Meta
 
-const Template: Story<PageCurriculumSubjectProps> = (args) => <PageCurriculumSubject {...args} />
+const Template: Story<PageCurriculumSubjectProps> = (args) => (
+  <PageCurriculumSubject {...args} />
+)
 
 export const Default = Template.bind({})
 Default.args = {}

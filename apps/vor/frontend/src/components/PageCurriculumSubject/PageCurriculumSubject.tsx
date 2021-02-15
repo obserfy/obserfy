@@ -2,7 +2,6 @@
 import { Trans } from "@lingui/macro"
 import { Fragment, FC, memo } from "react"
 import { jsx, Box, Button, Flex, ThemeUIStyleObject } from "theme-ui"
-import { useImmer } from "use-immer"
 import { borderBottom, borderRight } from "../../border"
 import { useGetArea } from "../../hooks/api/useGetArea"
 import { useGetSubject } from "../../hooks/api/useGetSubject"
@@ -10,7 +9,7 @@ import {
   Material,
   useGetSubjectMaterials,
 } from "../../hooks/api/useGetSubjectMaterials"
-import useMoveDraggableItem from "../../hooks/useMoveDraggableItem"
+import { useMoveDraggableItem } from "../../hooks/useMoveDraggableItem"
 import { useQueryString } from "../../hooks/useQueryString"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
@@ -114,8 +113,7 @@ const MaterialList: FC<{
   areaId: string
   currMaterialId: string
 }> = ({ materials, subjectId, areaId, currMaterialId }) => {
-  const [cachedMaterials, setMaterials] = useImmer(materials)
-  const moveItem = useMoveDraggableItem(setMaterials)
+  const [cachedMaterials, moveItem] = useMoveDraggableItem(materials)
 
   return (
     <Fragment>
@@ -124,7 +122,6 @@ const MaterialList: FC<{
           key={material.id}
           material={material}
           currMaterialId={currMaterialId}
-          setMaterials={setMaterials}
           areaId={areaId}
           subjectId={subjectId}
           moveItem={moveItem}
@@ -138,7 +135,6 @@ const DraggableMaterialItem: FC<{
   areaId: string
   subjectId: string
   material: Material
-  setMaterials: (f: (draft: Material[]) => void) => void
   currMaterialId: string
   moveItem: (currItem: Material, newOrder: number) => void
 }> = memo(({ moveItem, currMaterialId, areaId, subjectId, material }) => {

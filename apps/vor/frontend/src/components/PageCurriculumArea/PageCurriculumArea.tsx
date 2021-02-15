@@ -2,11 +2,10 @@
 import { Trans } from "@lingui/macro"
 import { FC, Fragment, useState } from "react"
 import { jsx, Box, Button, Flex, ThemeUIStyleObject } from "theme-ui"
-import { useImmer } from "use-immer"
 import { borderBottom, borderRight } from "../../border"
 import { useGetArea } from "../../hooks/api/useGetArea"
 import { Subject, useGetAreaSubjects } from "../../hooks/api/useGetAreaSubjects"
-import useMoveDraggableItem from "../../hooks/useMoveDraggableItem"
+import { useMoveDraggableItem } from "../../hooks/useMoveDraggableItem"
 import { useQueryString } from "../../hooks/useQueryString"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
@@ -147,8 +146,7 @@ const SubjectList: FC<{
   areaId: string
   currSubjectId: string
 }> = ({ currSubjectId, subjects, areaId }) => {
-  const [cachedSubjects, setSubject] = useImmer(subjects)
-  const moveItem = useMoveDraggableItem(setSubject)
+  const [cachedSubjects, moveItem] = useMoveDraggableItem(subjects)
 
   return (
     <Fragment>
