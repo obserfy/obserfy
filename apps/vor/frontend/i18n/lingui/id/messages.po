@@ -70,9 +70,21 @@ msgstr "Tambah materi"
 msgid "Add more email"
 msgstr "Tambah email"
 
+#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:89
+msgid "Add new area"
+msgstr ""
+
+#: src/components/PageCurriculumSubject/PageCurriculumSubject.tsx:62
+msgid "Add new material"
+msgstr ""
+
 #: src/components/PageStudentPlans/PageStudentPlans.tsx:76
 msgid "Add new plan"
 msgstr "Tambah rencana baru"
+
+#: src/components/PageCurriculumArea/PageCurriculumArea.tsx:72
+msgid "Add new subject"
+msgstr ""
 
 #: src/components/PageStudentPlanDetails/LessonPlanDescriptionCard.tsx:40
 msgid "Add some description here"
@@ -152,7 +164,7 @@ msgstr "Bidang"
 msgid "Area name"
 msgstr "Nama bidang"
 
-#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:65
+#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:69
 #: src/pages/dashboard/admin/curriculum/area.tsx:18
 msgid "Areas"
 msgstr "Bidang"
@@ -613,11 +625,15 @@ msgstr "Kelola data murid anda"
 msgid "Mastered"
 msgstr "Dikuasai"
 
+#: src/pages/dashboard/admin/curriculum/material/index.tsx:24
+msgid "Material"
+msgstr ""
+
 #: src/components/DraggableMaterialListItem/DraggableMaterialListItem.tsx:85
 msgid "Material name"
 msgstr "Nama materi"
 
-#: src/components/PageCurriculumSubject/PageCurriculumSubject.tsx:48
+#: src/components/PageCurriculumSubject/PageCurriculumSubject.tsx:53
 #: src/components/PageEditSubject/PageEditSubject.tsx:111
 #: src/components/PageNewSubject/PageNewSubject.tsx:87
 msgid "Materials"
@@ -1096,7 +1112,7 @@ msgstr ""
 msgid "Subject name"
 msgstr "Nama mata pelajaran"
 
-#: src/components/PageCurriculumArea/PageCurriculumArea.tsx:63
+#: src/components/PageCurriculumArea/PageCurriculumArea.tsx:64
 msgid "Subjects"
 msgstr "Mata pelajaran"
 

@@ -4,9 +4,7 @@ import React, { FC } from "react"
 import { Box, Flex } from "theme-ui"
 import { borderRight } from "../../../../../border"
 import CurriculumTopBar from "../../../../../components/CurriculumTopBar/CurriculumTopBar"
-import PageCurriculumArea from "../../../../../components/PageCurriculumArea/PageCurriculumArea"
 import PageCurriculumMaterial from "../../../../../components/PageCurriculumMaterial/PageCurriculumMaterial"
-import PageCurriculumSettings from "../../../../../components/PageCurriculumSettings/PageCurriculumSettings"
 import PageCurriculumSubject from "../../../../../components/PageCurriculumSubject/PageCurriculumSubject"
 import SEO from "../../../../../components/seo"
 import { breadCrumb } from "../../../../../components/TopBar/TopBar"
@@ -61,44 +59,20 @@ const SideBar: FC<{ areaId: string; subjectId: string }> = ({
   if (breakpoint < 2) return <></>
 
   return (
-    <>
-      <PageCurriculumSettings sx={{ display: ["none", "none", "block"] }} />
-      {/* <CurriculumSideBar /> */}
-      <PageCurriculumArea
-        id={areaId}
-        sx={{ display: ["none", "none", "block"] }}
-      />
-      <PageCurriculumSubject
-        subjectId={subjectId}
-        areaId={areaId}
-        sx={{
-          display: ["none", "none", "block"],
-          ...borderRight,
-        }}
-      />
-    </>
+    <PageCurriculumSubject
+      subjectId={subjectId}
+      areaId={areaId}
+      sx={{
+        position: "sticky",
+        top: 0,
+        maxWidth: ["100%", "100%", 300],
+        height: ["auto", "auto", "100vh"],
+        display: ["none", "none", "block"],
+        overflow: "auto",
+        pb: 5,
+        ...borderRight,
+      }}
+    />
   )
 }
-
-// const CurriculumSideBar = () => {
-//   const curriculum = useGetCurriculum()
-//
-//   return (
-//     <TranslucentBar
-//       boxSx={{
-//         ...borderRight,
-//         p: 3,
-//         position: "sticky",
-//         top: 0,
-//         height: ["auto", "auto", "100vh"],
-//         display: ["none", "none", "block"],
-//       }}
-//     >
-//       <Typography.H6 sx={{ writingMode: "vertical-rl" }}>
-//         {curriculum.data?.name}
-//       </Typography.H6>
-//     </TranslucentBar>
-//   )
-// }
-
 export default Material
