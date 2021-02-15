@@ -40,8 +40,8 @@ const useMoveDraggableItem = (
       // between currItem.order and the newOrder
       const currentItem = draft[currItemIdx]
       for (let i = currItemIdx; i !== targetIdx; i -= direction) {
-        const nextItem = draft[i - direction]
-        nextItem.order += direction
+        const nextItem = { ...draft[i - direction] }
+        nextItem.order = draft[i].order
         draft[i] = nextItem
       }
       draft[targetIdx] = currentItem
