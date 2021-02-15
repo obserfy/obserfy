@@ -10,7 +10,9 @@ export default {
   },
 } as Meta
 
-const Template: Story<CurriculumTopBarProps> = (args) => <CurriculumTopBar {...args} />
+const Template: Story<CurriculumTopBarProps> = (args) => (
+  <CurriculumTopBar {...args} />
+)
 
 export const Default = Template.bind({})
 Default.args = {}
