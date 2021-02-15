@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { Trans } from "@lingui/macro"
 import { Fragment, FC, memo } from "react"
-
 import { jsx, Box, Button, Flex, ThemeUIStyleObject } from "theme-ui"
 import { useImmer } from "use-immer"
 import { borderBottom, borderRight } from "../../border"
@@ -44,6 +43,7 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
   const area = useGetArea(areaId)
   const subject = useGetSubject(subjectId)
   const materials = useGetSubjectMaterials(subjectId)
+  const materialId = useQueryString("materialId")
 
   return (
     <Box sx={{ width: "100%", pb: 5, ...sx }}>
@@ -92,6 +92,7 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
         subjectId={subjectId}
         areaId={areaId}
         materials={materials.data ?? []}
+        currMaterialId={materialId}
       />
 
       <Flex
@@ -111,8 +112,10 @@ const MaterialList: FC<{
   materials: Material[]
   subjectId: string
   areaId: string
-}> = ({ materials, subjectId, areaId }) => {
+  currMaterialId: string
+}> = ({ materials, subjectId, areaId, currMaterialId }) => {
   const [cachedMaterials, setMaterials] = useImmer(materials)
+  const moveItem = useMoveDraggableItem(setMaterials)
 
   return (
     <Fragment>
@@ -120,9 +123,11 @@ const MaterialList: FC<{
         <DraggableMaterialItem
           key={material.id}
           material={material}
+          currMaterialId={currMaterialId}
           setMaterials={setMaterials}
           areaId={areaId}
           subjectId={subjectId}
+          moveItem={moveItem}
         />
       ))}
     </Fragment>
@@ -134,10 +139,10 @@ const DraggableMaterialItem: FC<{
   subjectId: string
   material: Material
   setMaterials: (f: (draft: Material[]) => void) => void
-}> = memo(({ setMaterials, areaId, subjectId, material }) => {
-  const moveItem = useMoveDraggableItem(material, setMaterials)
-  const materialId = useQueryString("materialId")
-  const selected = material.id === materialId
+  currMaterialId: string
+  moveItem: (currItem: Material, newOrder: number) => void
+}> = memo(({ moveItem, currMaterialId, areaId, subjectId, material }) => {
+  const selected = material.id === currMaterialId
 
   return (
     <Link
@@ -145,7 +150,7 @@ const DraggableMaterialItem: FC<{
       sx={{ display: "block", maxWidth: "inherit" }}
     >
       <DraggableListItem
-        order={material.order}
+        item={material}
         moveItem={moveItem}
         height={54}
         containerSx={{

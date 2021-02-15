@@ -6,7 +6,6 @@ import { useImmer } from "use-immer"
 import { borderBottom, borderRight } from "../../border"
 import { useGetArea } from "../../hooks/api/useGetArea"
 import { Subject, useGetAreaSubjects } from "../../hooks/api/useGetAreaSubjects"
-import { Material } from "../../hooks/api/useGetSubjectMaterials"
 import useMoveDraggableItem from "../../hooks/useMoveDraggableItem"
 import { useQueryString } from "../../hooks/useQueryString"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
@@ -32,6 +31,7 @@ interface Props {
   sx?: ThemeUIStyleObject
 }
 const PageCurriculumArea: FC<Props> = ({ id, sx }) => {
+  const subjectId = useQueryString("subjectId")
   const area = useGetArea(id)
   const subjects = useGetAreaSubjects(id)
   const [showDeleteAreaDialog, setShowDeleteAreaDialog] = useState(false)
@@ -105,6 +105,7 @@ const PageCurriculumArea: FC<Props> = ({ id, sx }) => {
         key={subjects.data?.map((subject) => subject.id).join(",") ?? ""}
         areaId={id}
         subjects={subjects.data ?? []}
+        currSubjectId={subjectId}
       />
 
       <Flex
@@ -144,45 +145,41 @@ const PageCurriculumArea: FC<Props> = ({ id, sx }) => {
 const SubjectList: FC<{
   subjects: Subject[]
   areaId: string
-}> = ({ subjects, areaId }) => {
+  currSubjectId: string
+}> = ({ currSubjectId, subjects, areaId }) => {
   const [cachedSubjects, setSubject] = useImmer(subjects)
+  const moveItem = useMoveDraggableItem(setSubject)
 
   return (
     <Fragment>
       {cachedSubjects.map((subject) => (
         <SubjectListItem
           key={subject.id}
+          currentSubjectId={currSubjectId}
           subject={subject}
           areaId={areaId}
-          setSubject={setSubject}
+          moveItem={moveItem}
         />
       ))}
     </Fragment>
   )
 }
 
-interface SubjectListItemProps {
+const SubjectListItem: FC<{
   subject: Subject
   areaId: string
-  setSubject: (f: (draft: Material[]) => void) => void
-}
-const SubjectListItem: FC<SubjectListItemProps> = ({
-  areaId,
-  subject,
-  setSubject,
-}) => {
-  const moveItem = useMoveDraggableItem(subject, setSubject)
-  const subjectId = useQueryString("subjectId")
-  const selected = subjectId === subject.id
+  currentSubjectId: string
+  moveItem: (currItem: Subject, newOrder: number) => void
+}> = ({ areaId, subject, moveItem, currentSubjectId }) => {
+  const selected = currentSubjectId === subject.id
 
   return (
     <Link
-      key={subject.id}
       to={CURRICULUM_SUBJECT_URL(areaId, subject.id)}
       sx={{ display: "block", maxWidth: "inherit" }}
     >
       <DraggableListItem
-        order={subject.order}
+        item={subject}
         moveItem={moveItem}
         height={54}
         containerSx={{

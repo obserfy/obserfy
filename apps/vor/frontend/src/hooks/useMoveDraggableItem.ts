@@ -8,7 +8,7 @@ enum DragYDirection {
   UP = 1,
 }
 
-interface Item {
+export interface OrderedItem {
   id: string
   order: number
 }
@@ -24,31 +24,30 @@ function capOrder(newOrder: number, direction: DragYDirection, max: number) {
 }
 
 const swapOrder = (
-  currItem: Item,
+  currItem: OrderedItem,
   newOrder: number,
   direction: DragYDirection
-) => (m: Item) => {
+) => (m: OrderedItem) => {
   if (m.id === currItem.id) m.order = newOrder
   else if (m.order === newOrder) m.order += direction
 }
 
 const useMoveDraggableItem = (
-  currItem: Item,
-  setItems: (f: (draft: Draft<Item[]>) => void) => void
+  setItems: (f: (draft: Draft<OrderedItem[]>) => void) => void
 ) => {
-  const moveItem = (currOrder: number, newOrder: number) => {
+  const moveItem = (currItem: OrderedItem, newOrder: number) => {
     if (currItem.order === newOrder) return
 
     // Reorder list to reflect position after dragging
     setItems((draft) => {
-      const direction = checkDragDirection(newOrder, currOrder)
+      const direction = checkDragDirection(newOrder, currItem.order)
       const cappedOrder = capOrder(newOrder, direction, draft.length - 1)
       draft.forEach(swapOrder(currItem, cappedOrder, direction))
       draft.sort(compareOrder)
     })
   }
 
-  return useCallback(moveItem, [currItem.id, currItem.order, setItems])
+  return useCallback(moveItem, [setItems])
 }
 
 export default useMoveDraggableItem
