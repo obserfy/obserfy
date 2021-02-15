@@ -1,6 +1,7 @@
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock"
 import React, { FC, MouseEvent, TouchEvent, useRef, useState } from "react"
 import { Box, Flex, ThemeUIStyleObject } from "theme-ui"
+import { OrderedItem } from "../../hooks/useMoveDraggableItem"
 import { ReactComponent as GridIcon } from "../../icons/grid_round.svg"
 
 function useTransientState<T>(defaultState: T, subscribe: (state: T) => void) {
@@ -13,17 +14,17 @@ function useTransientState<T>(defaultState: T, subscribe: (state: T) => void) {
 }
 
 interface Props {
-  order: number
-  moveItem: (order: number, newOrder: number) => void
+  item: OrderedItem
+  moveItem: (item: OrderedItem, newOrder: number) => void
   height: number
   containerSx?: ThemeUIStyleObject
 }
 export const DraggableListItem: FC<Props> = ({
   children,
   moveItem,
-  order,
   height,
   containerSx,
+  item,
 }) => {
   const container = useRef<HTMLDivElement>(null)
   const setTranslateY = useTransientState(0, (state) => {
@@ -56,7 +57,7 @@ export const DraggableListItem: FC<Props> = ({
         ? Math.ceil((dragYOffset - itemMidPoint) / height)
         : Math.floor((dragYOffset + itemMidPoint) / height)
 
-    moveItem(order, originalOrder.current + orderOffset)
+    moveItem(item, originalOrder.current + orderOffset)
   }
 
   const handleGrabbed = (
@@ -72,7 +73,7 @@ export const DraggableListItem: FC<Props> = ({
 
     recalculateYTranslate(mouseYPosition)
     mouseStartingYPosition.current = mouseYPosition
-    originalOrder.current = order
+    originalOrder.current = item.order
     setIsGrabbed(true)
   }
 
