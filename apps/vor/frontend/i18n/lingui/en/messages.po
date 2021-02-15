@@ -65,9 +65,21 @@ msgstr "Add material"
 msgid "Add more email"
 msgstr "Add more email"
 
+#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:89
+msgid "Add new area"
+msgstr "Add new area"
+
+#: src/components/PageCurriculumSubject/PageCurriculumSubject.tsx:62
+msgid "Add new material"
+msgstr "Add new material"
+
 #: src/components/PageStudentPlans/PageStudentPlans.tsx:76
 msgid "Add new plan"
 msgstr "Add new plan"
+
+#: src/components/PageCurriculumArea/PageCurriculumArea.tsx:72
+msgid "Add new subject"
+msgstr "Add new subject"
 
 #: src/components/PageStudentPlanDetails/LessonPlanDescriptionCard.tsx:40
 msgid "Add some description here"
@@ -147,7 +159,7 @@ msgstr "Area"
 msgid "Area name"
 msgstr "Area name"
 
-#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:65
+#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:69
 #: src/pages/dashboard/admin/curriculum/area.tsx:18
 msgid "Areas"
 msgstr "Areas"
@@ -612,11 +624,15 @@ msgstr "Manage your student data"
 msgid "Mastered"
 msgstr "Mastered"
 
+#: src/pages/dashboard/admin/curriculum/material/index.tsx:24
+msgid "Material"
+msgstr "Material"
+
 #: src/components/DraggableMaterialListItem/DraggableMaterialListItem.tsx:85
 msgid "Material name"
 msgstr "Material name"
 
-#: src/components/PageCurriculumSubject/PageCurriculumSubject.tsx:48
+#: src/components/PageCurriculumSubject/PageCurriculumSubject.tsx:53
 #: src/components/PageEditSubject/PageEditSubject.tsx:111
 #: src/components/PageNewSubject/PageNewSubject.tsx:87
 msgid "Materials"
@@ -1095,7 +1111,7 @@ msgstr "Subject"
 msgid "Subject name"
 msgstr "Subject name"
 
-#: src/components/PageCurriculumArea/PageCurriculumArea.tsx:63
+#: src/components/PageCurriculumArea/PageCurriculumArea.tsx:64
 msgid "Subjects"
 msgstr "Subjects"
 
