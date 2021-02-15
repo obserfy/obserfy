@@ -1,7 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { Draft } from "immer/compat/pre-3.7/dist/immer"
 import { useCallback } from "react"
-import { compareOrder } from "../domain/array"
 
 enum DragYDirection {
   DOWN = -1,
@@ -23,27 +22,30 @@ function capOrder(newOrder: number, direction: DragYDirection, max: number) {
     : Math.max(newOrder, 0)
 }
 
-const swapOrder = (
-  currItem: OrderedItem,
-  newOrder: number,
-  direction: DragYDirection
-) => (m: OrderedItem) => {
-  if (m.id === currItem.id) m.order = newOrder
-  else if (m.order === newOrder) m.order += direction
-}
-
 const useMoveDraggableItem = (
   setItems: (f: (draft: Draft<OrderedItem[]>) => void) => void
 ) => {
   const moveItem = (currItem: OrderedItem, newOrder: number) => {
     if (currItem.order === newOrder) return
-
     // Reorder list to reflect position after dragging
     setItems((draft) => {
       const direction = checkDragDirection(newOrder, currItem.order)
-      const cappedOrder = capOrder(newOrder, direction, draft.length - 1)
-      draft.forEach(swapOrder(currItem, cappedOrder, direction))
-      draft.sort(compareOrder)
+      const targetOrder = capOrder(newOrder, direction, draft.length - 1)
+
+      const currItemIdx = draft.findIndex((i) => i.id === currItem.id)
+      const targetIdx = draft.findIndex((i) => i.order === targetOrder)
+
+      // Distance between currItem.order and newOrder can be big when user moves
+      // the cursor too fast. So we need to update all items with order number
+      // between currItem.order and the newOrder
+      const currentItem = draft[currItemIdx]
+      for (let i = currItemIdx; i !== targetIdx; i -= direction) {
+        const nextItem = draft[i - direction]
+        nextItem.order += direction
+        draft[i] = nextItem
+      }
+      draft[targetIdx] = currentItem
+      draft[targetIdx].order = targetOrder
     })
   }
 
