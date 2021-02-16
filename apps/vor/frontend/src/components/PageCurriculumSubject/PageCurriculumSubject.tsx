@@ -3,7 +3,7 @@ import { t, Trans } from "@lingui/macro"
 import { Fragment, FC, memo, useState } from "react"
 import { jsx, Box, Button, Flex, ThemeUIStyleObject } from "theme-ui"
 import { borderBottom, borderRight } from "../../border"
-import usePostNewSubject from "../../hooks/api/curriculum/usePostNewSubject"
+import usePostNewMaterial from "../../hooks/api/curriculum/usePostNewMaterial"
 import { useGetArea } from "../../hooks/api/useGetArea"
 import { useGetSubject } from "../../hooks/api/useGetSubject"
 import {
@@ -45,10 +45,12 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
   subjectId,
   sx,
 }) => {
+  const materialId = useQueryString("materialId")
+
   const area = useGetArea(areaId)
   const subject = useGetSubject(subjectId)
   const materials = useGetSubjectMaterials(subjectId)
-  const materialId = useQueryString("materialId")
+
   const deleteSubject = useVisibilityState()
   const newMaterial = useVisibilityState()
 
@@ -202,11 +204,11 @@ const NewMaterialDialog: FC<{ subjectId: string; onDismiss: () => void }> = ({
   onDismiss,
 }) => {
   const [name, setName] = useState("")
-  const newSubject = usePostNewSubject(subjectId)
+  const newMaterial = usePostNewMaterial(subjectId)
 
   const handleSave = async () => {
     try {
-      await newSubject.mutateAsync({ name })
+      await newMaterial.mutateAsync({ name })
       onDismiss()
     } catch (e) {
       Sentry.captureException(e)
@@ -217,8 +219,8 @@ const NewMaterialDialog: FC<{ subjectId: string; onDismiss: () => void }> = ({
     <Dialog>
       <DialogHeader
         title={t`New Material`}
-        disableAccept={newSubject.isLoading}
-        loading={newSubject.isLoading}
+        disableAccept={newMaterial.isLoading}
+        loading={newMaterial.isLoading}
         onCancel={onDismiss}
         onAccept={handleSave}
       />

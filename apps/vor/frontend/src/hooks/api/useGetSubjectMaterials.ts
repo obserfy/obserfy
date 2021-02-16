@@ -1,5 +1,6 @@
 import { useQuery } from "react-query"
 import { compareOrder } from "../../domain/array"
+import { useQueryCache } from "../useQueryCache"
 import { getApi } from "./fetchApi"
 
 export interface Material {
@@ -14,4 +15,8 @@ export function useGetSubjectMaterials(subjectId: string) {
   return useQuery(["materials", subjectId], fetchSubjectMaterials, {
     onSuccess: (data) => data.sort(compareOrder),
   })
+}
+
+export const useGetSubjectMaterialsCache = (subjectId: string) => {
+  return useQueryCache<Material[]>(["materials", subjectId])
 }
