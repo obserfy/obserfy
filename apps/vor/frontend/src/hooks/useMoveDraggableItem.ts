@@ -16,12 +16,6 @@ const checkDragDirection = (newOrder: number, currOrder: number) => {
   return newOrder > currOrder ? DragYDirection.DOWN : DragYDirection.UP
 }
 
-const capOrder = (newOrder: number, direction: DragYDirection, max: number) => {
-  return direction === DragYDirection.DOWN
-    ? Math.min(newOrder, max)
-    : Math.max(newOrder, 0)
-}
-
 export const useMoveDraggableItem = <T extends OrderedItem[]>(
   items: T
 ): [T, (currItem: OrderedItem, newOrder: number) => void] => {
@@ -32,23 +26,23 @@ export const useMoveDraggableItem = <T extends OrderedItem[]>(
     // Reorder list to reflect position after dragging
     setItems((draft) => {
       const direction = checkDragDirection(newOrder, currItem.order)
-      const targetOrder = capOrder(newOrder, direction, draft.length - 1)
 
       const currItemIdx = draft.findIndex((i) => i.id === currItem.id)
-      const targetIdx = draft.findIndex((i) => i.order === targetOrder)
+      const targetIdx = draft.findIndex((i) => i.order === newOrder)
+      if (targetIdx === -1 || currItemIdx === -1) return
 
       // Distance between currItem.order and newOrder can be big when user moves
       // the cursor too fast. So we need to update all items with order number
       // between currItem.order and the newOrder
-      const currentItem = draft[currItemIdx]
+      const currentItem = { ...draft[currItemIdx] }
       // assume that the list is always sorted
       for (let i = currItemIdx; i !== targetIdx; i -= direction) {
         const nextItem = { ...draft[i - direction] }
         nextItem.order = draft[i].order
         draft[i] = nextItem
       }
+      currentItem.order = draft[targetIdx].order
       draft[targetIdx] = currentItem
-      draft[targetIdx].order = targetOrder
     })
   }
 
