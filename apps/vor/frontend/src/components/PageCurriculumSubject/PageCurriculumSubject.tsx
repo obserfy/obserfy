@@ -1,8 +1,9 @@
 /** @jsx jsx */
-import { Trans } from "@lingui/macro"
-import { Fragment, FC, memo } from "react"
+import { t, Trans } from "@lingui/macro"
+import { Fragment, FC, memo, useState } from "react"
 import { jsx, Box, Button, Flex, ThemeUIStyleObject } from "theme-ui"
 import { borderBottom, borderRight } from "../../border"
+import usePostNewSubject from "../../hooks/api/curriculum/usePostNewSubject"
 import { useGetArea } from "../../hooks/api/useGetArea"
 import { useGetSubject } from "../../hooks/api/useGetSubject"
 import {
@@ -11,6 +12,7 @@ import {
 } from "../../hooks/api/useGetSubjectMaterials"
 import { useMoveDraggableItem } from "../../hooks/useMoveDraggableItem"
 import { useQueryString } from "../../hooks/useQueryString"
+import useVisibilityState from "../../hooks/useVisibilityState"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
@@ -21,9 +23,13 @@ import {
   CURRICULUM_AREA_URL,
   CURRICULUM_MATERIAL_URL,
 } from "../../routes"
+import DeleteSubjectDialog from "../DeleteSubjectDialog/DeleteSubjectDialog"
+import Dialog from "../Dialog/Dialog"
+import DialogHeader from "../DialogHeader/DialogHeader"
 import DraggableListItem from "../DraggableListItem/DraggableListItem"
 import Icon from "../Icon/Icon"
-import { Link } from "../Link/Link"
+import Input from "../Input/Input"
+import { Link, navigate } from "../Link/Link"
 import Spacer from "../Spacer/Spacer"
 import TopBar, { breadCrumb } from "../TopBar/TopBar"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
@@ -43,6 +49,8 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
   const subject = useGetSubject(subjectId)
   const materials = useGetSubjectMaterials(subjectId)
   const materialId = useQueryString("materialId")
+  const deleteSubject = useVisibilityState()
+  const newMaterial = useVisibilityState()
 
   return (
     <Box sx={{ width: "100%", pb: 5, ...sx }}>
@@ -68,6 +76,7 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
             sx={{ flexShrink: 0 }}
             px={2}
             ml="auto"
+            onClick={deleteSubject.show}
           >
             <Icon size={16} as={DeleteIcon} fill="danger" />
           </Button>
@@ -95,14 +104,30 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
       />
 
       <Flex
+        role="button"
         p={3}
         sx={{ alignItems: "center", ...borderBottom, cursor: "pointer" }}
+        onClick={() => newMaterial.show()}
       >
         <Icon as={PlusIcon} fill="textPrimary" />
         <Typography.Body ml={3} sx={{ color: "textMediumEmphasis" }}>
           <Trans>Add new material</Trans>
         </Typography.Body>
       </Flex>
+
+      {newMaterial.visible && (
+        <NewMaterialDialog onDismiss={newMaterial.hide} subjectId={subjectId} />
+      )}
+
+      {deleteSubject.visible && (
+        <DeleteSubjectDialog
+          areaId={areaId}
+          onDismiss={deleteSubject.hide}
+          subjectId={subjectId}
+          name={subject.data?.name}
+          onDeleted={() => navigate(CURRICULUM_AREA_URL(areaId))}
+        />
+      )}
     </Box>
   )
 }
@@ -171,5 +196,42 @@ const DraggableMaterialItem: FC<{
     </Link>
   )
 })
+
+const NewMaterialDialog: FC<{ subjectId: string; onDismiss: () => void }> = ({
+  subjectId,
+  onDismiss,
+}) => {
+  const [name, setName] = useState("")
+  const newSubject = usePostNewSubject(subjectId)
+
+  const handleSave = async () => {
+    try {
+      await newSubject.mutateAsync({ name })
+      onDismiss()
+    } catch (e) {
+      Sentry.captureException(e)
+    }
+  }
+
+  return (
+    <Dialog>
+      <DialogHeader
+        title={t`New Material`}
+        disableAccept={newSubject.isLoading}
+        loading={newSubject.isLoading}
+        onCancel={onDismiss}
+        onAccept={handleSave}
+      />
+      <Box p={3} sx={{ backgroundColor: "background" }}>
+        <Input
+          sx={{ width: "100%" }}
+          label="Material name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+      </Box>
+    </Dialog>
+  )
+}
 
 export default PageCurriculumSubject
