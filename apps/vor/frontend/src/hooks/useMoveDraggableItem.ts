@@ -41,6 +41,7 @@ export const useMoveDraggableItem = <T extends OrderedItem[]>(
       // the cursor too fast. So we need to update all items with order number
       // between currItem.order and the newOrder
       const currentItem = draft[currItemIdx]
+      // assume that the list is always sorted
       for (let i = currItemIdx; i !== targetIdx; i -= direction) {
         const nextItem = { ...draft[i - direction] }
         nextItem.order = draft[i].order
