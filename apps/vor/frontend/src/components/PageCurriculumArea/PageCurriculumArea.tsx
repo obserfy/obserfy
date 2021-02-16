@@ -1,12 +1,14 @@
 /** @jsx jsx */
-import { Trans } from "@lingui/macro"
+import { t, Trans } from "@lingui/macro"
 import { FC, Fragment, useState } from "react"
 import { jsx, Box, Button, Flex, ThemeUIStyleObject } from "theme-ui"
 import { borderBottom, borderRight } from "../../border"
+import usePostNewSubject from "../../hooks/api/curriculum/usePostNewSubject"
 import { useGetArea } from "../../hooks/api/useGetArea"
 import { Subject, useGetAreaSubjects } from "../../hooks/api/useGetAreaSubjects"
 import { useMoveDraggableItem } from "../../hooks/useMoveDraggableItem"
 import { useQueryString } from "../../hooks/useQueryString"
+import useVisibilityState from "../../hooks/useVisibilityState"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
 import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
@@ -17,9 +19,12 @@ import {
   CURRICULUM_SUBJECT_URL,
 } from "../../routes"
 import DeleteAreaDialog from "../DeleteAreaDialog/DeleteAreaDialog"
+import Dialog from "../Dialog/Dialog"
+import DialogHeader from "../DialogHeader/DialogHeader"
 import DraggableListItem from "../DraggableListItem/DraggableListItem"
 import EditAreaDialog from "../EditAreaDialog/EditAreaDialog"
 import Icon from "../Icon/Icon"
+import Input from "../Input/Input"
 import { Link, navigate } from "../Link/Link"
 import TopBar, { breadCrumb } from "../TopBar/TopBar"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
@@ -33,8 +38,9 @@ const PageCurriculumArea: FC<Props> = ({ id, sx }) => {
   const subjectId = useQueryString("subjectId")
   const area = useGetArea(id)
   const subjects = useGetAreaSubjects(id)
-  const [showDeleteAreaDialog, setShowDeleteAreaDialog] = useState(false)
-  const [showEditAreaDialog, setShowEditAreaDialog] = useState(false)
+  const newSubject = useVisibilityState()
+  const deleteArea = useVisibilityState()
+  const editArea = useVisibilityState()
 
   return (
     <Box
@@ -72,7 +78,7 @@ const PageCurriculumArea: FC<Props> = ({ id, sx }) => {
           </Typography.H6>
           <Button
             variant="outline"
-            onClick={() => setShowDeleteAreaDialog(true)}
+            onClick={deleteArea.show}
             color="danger"
             sx={{ flexShrink: 0 }}
             px={2}
@@ -82,7 +88,7 @@ const PageCurriculumArea: FC<Props> = ({ id, sx }) => {
           </Button>
           <Button
             variant="outline"
-            onClick={() => setShowEditAreaDialog(true)}
+            onClick={editArea.show}
             sx={{ flexShrink: 0 }}
             px={2}
             ml={2}
@@ -108,8 +114,14 @@ const PageCurriculumArea: FC<Props> = ({ id, sx }) => {
       />
 
       <Flex
+        role="button"
         p={3}
-        sx={{ alignItems: "center", cursor: "pointer", ...borderBottom }}
+        onClick={newSubject.show}
+        sx={{
+          alignItems: "center",
+          cursor: "pointer",
+          ...borderBottom,
+        }}
       >
         <Icon as={PlusIcon} fill="textPrimary" />
         <Typography.Body ml={3} sx={{ color: "textMediumEmphasis" }}>
@@ -117,25 +129,29 @@ const PageCurriculumArea: FC<Props> = ({ id, sx }) => {
         </Typography.Body>
       </Flex>
 
-      {showDeleteAreaDialog && (
+      {deleteArea.visible && (
         <DeleteAreaDialog
           name={area.data?.name ?? ""}
-          onDismiss={() => setShowDeleteAreaDialog(false)}
+          onDismiss={deleteArea.hide}
           onDeleted={() => navigate(ADMIN_CURRICULUM_URL)}
           areaId={id}
         />
       )}
 
-      {showEditAreaDialog && area.data && (
+      {editArea.visible && area.data && (
         <EditAreaDialog
           areaId={id}
           originalName={area.data.name}
-          onDismiss={() => setShowEditAreaDialog(false)}
+          onDismiss={editArea.hide}
           onSaved={async () => {
             await area.refetch()
-            setShowEditAreaDialog(false)
+            editArea.hide()
           }}
         />
+      )}
+
+      {newSubject.visible && (
+        <NewSubjectDialog areaId={id} onDismiss={newSubject.hide} />
       )}
     </Box>
   )
@@ -200,6 +216,43 @@ const SubjectListItem: FC<{
         <Icon as={NextIcon} mr={3} ml="auto" fill="currentColor" />
       </DraggableListItem>
     </Link>
+  )
+}
+
+const NewSubjectDialog: FC<{ areaId: string; onDismiss: () => void }> = ({
+  areaId,
+  onDismiss,
+}) => {
+  const [name, setName] = useState("")
+  const newSubject = usePostNewSubject(areaId)
+
+  const handleSave = async () => {
+    try {
+      await newSubject.mutateAsync({ name })
+      onDismiss()
+    } catch (e) {
+      Sentry.captureException(e)
+    }
+  }
+
+  return (
+    <Dialog>
+      <DialogHeader
+        title={t`New Subject`}
+        disableAccept={newSubject.isLoading}
+        loading={newSubject.isLoading}
+        onCancel={onDismiss}
+        onAccept={handleSave}
+      />
+      <Box p={3} sx={{ backgroundColor: "background" }}>
+        <Input
+          sx={{ width: "100%" }}
+          label="Subject name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+      </Box>
+    </Dialog>
   )
 }
 
