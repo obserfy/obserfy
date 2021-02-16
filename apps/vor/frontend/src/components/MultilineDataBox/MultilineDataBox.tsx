@@ -25,9 +25,9 @@ export const MultilineDataBox: FC<MultilineDataBoxProps> = ({
   return (
     <Box sx={{ alignItems: "flex-start" }}>
       <Flex sx={{ ...borderBottom, alignItems: "center" }}>
-        <Typography.H6 m={3}>
+        <Typography.Body m={3} sx={{ fontWeight: "bold" }}>
           <Trans id={label} />
-        </Typography.H6>
+        </Typography.Body>
         <Button
           variant="outline"
           ml="auto"

@@ -21,6 +21,7 @@ import {
 const Material = () => {
   const areaId = useQueryString("areaId")
   const subjectId = useQueryString("subjectId")
+  const materialId = useQueryString("materialId")
 
   const area = useGetArea(areaId)
   const subject = useGetSubject(subjectId)
@@ -44,7 +45,11 @@ const Material = () => {
 
       <Flex>
         <SideBar areaId={areaId} subjectId={subjectId} />
-        <PageCurriculumMaterial />
+        <PageCurriculumMaterial
+          areaId={areaId}
+          subjectId={subjectId}
+          materialId={materialId}
+        />
       </Flex>
     </Box>
   )
@@ -65,7 +70,7 @@ const SideBar: FC<{ areaId: string; subjectId: string }> = ({
       sx={{
         position: "sticky",
         top: 0,
-        maxWidth: ["100%", "100%", 340],
+        maxWidth: ["100%", "100%", 300, 400, 500],
         height: ["auto", "auto", "100vh"],
         display: ["none", "none", "block"],
         overflow: "auto",
