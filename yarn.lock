@@ -8716,10 +8716,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:14.14.25":
-  version: 14.14.25
-  resolution: "@types/node@npm:14.14.25"
-  checksum: 64c42730f4169e49ec378870622ef06c5d820b31340e224cc1b45bf06c8b0cfa28daa587b4ae2b8ea1f712ef049bae4d9c92925b157ba9ba7cde3b22ff552513
+"@types/node@npm:14.14.28":
+  version: 14.14.28
+  resolution: "@types/node@npm:14.14.28"
+  checksum: e750df4d5e93c639d04100e7d54d9e416ecc649d4d7951ac1d5b82d092c556f6e7775a191995e06d6def65ae7bc25533d188fe122dc660724d119ce3ddae2cea
   languageName: node
   linkType: hard
 
@@ -16306,7 +16306,7 @@ __metadata:
     "@hapi/iron": 6.0.0
     "@types/auth0-js": 9.14.2
     "@types/faker": 5.1.6
-    "@types/node": 14.14.25
+    "@types/node": 14.14.28
     "@types/pg": 7.14.9
     "@typescript-eslint/eslint-plugin": 4.11.1
     "@typescript-eslint/parser": 4.11.1
@@ -19313,7 +19313,7 @@ fsevents@~2.3.1:
     "@types/minio": 7.0.7
     "@types/mixpanel-browser": 2.35.4
     "@types/nanoid": 2.1.0
-    "@types/node": 14.14.25
+    "@types/node": 14.14.28
     "@types/pg": 7.14.9
     "@types/pino": 6.3.5
     "@types/react": 17.0.2
