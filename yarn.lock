@@ -8772,13 +8772,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/pg@npm:7.14.9":
-  version: 7.14.9
-  resolution: "@types/pg@npm:7.14.9"
+"@types/pg@npm:7.14.10":
+  version: 7.14.10
+  resolution: "@types/pg@npm:7.14.10"
   dependencies:
     "@types/node": "*"
+    pg-protocol: ^1.2.0
     pg-types: ^2.2.0
-  checksum: 5c06146b9872f409b90c25d395cff8db6bb3311e620a8b9c15d8c0cc6ca77a130c6350c9fb4bd1737c0120e0fc1c3d19385bfe9c848cd0b1ad1fed40bb0b549b
+  checksum: 80aed025dd2fc63941032c932728cd3af50e11039f16d06cf20c5db3a97c8a438d7793e25b822de2f202b0746b2404792611f0beb9753612ec01123b7acbb0eb
   languageName: node
   linkType: hard
 
@@ -16307,7 +16308,7 @@ __metadata:
     "@types/auth0-js": 9.14.2
     "@types/faker": 5.1.6
     "@types/node": 14.14.28
-    "@types/pg": 7.14.9
+    "@types/pg": 7.14.10
     "@typescript-eslint/eslint-plugin": 4.11.1
     "@typescript-eslint/parser": 4.11.1
     auth0-js: 9.14.3
@@ -19314,7 +19315,7 @@ fsevents@~2.3.1:
     "@types/mixpanel-browser": 2.35.4
     "@types/nanoid": 2.1.0
     "@types/node": 14.14.28
-    "@types/pg": 7.14.9
+    "@types/pg": 7.14.10
     "@types/pino": 6.3.5
     "@types/react": 17.0.2
     "@types/react-query": 1.1.2
@@ -28855,7 +28856,7 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"pg-protocol@npm:^1.4.0":
+"pg-protocol@npm:^1.2.0, pg-protocol@npm:^1.4.0":
   version: 1.4.0
   resolution: "pg-protocol@npm:1.4.0"
   checksum: 2b5ebfccd014a4a9127a04e34a423a9e7fe6f6b96c32698929e0860e32c453e64438c935068405ee923ab99788345b9591a6dbaa30bba70e724d7fc4d5f5d21e

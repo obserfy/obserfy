@@ -1869,7 +1869,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@types/pg",
-        "npm:7.14.9"
+        "npm:7.14.10"
       ],
       [
         "@types/pino",
@@ -27628,11 +27628,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@types/pg", [
-        ["npm:7.14.9", {
-          "packageLocation": "./.yarn/cache/@types-pg-npm-7.14.9-9bc08268cb-5c06146b98.zip/node_modules/@types/pg/",
+        ["npm:7.14.10", {
+          "packageLocation": "./.yarn/cache/@types-pg-npm-7.14.10-5cf84d76b2-80aed025dd.zip/node_modules/@types/pg/",
           "packageDependencies": [
-            ["@types/pg", "npm:7.14.9"],
+            ["@types/pg", "npm:7.14.10"],
             ["@types/node", "npm:14.0.14"],
+            ["pg-protocol", "npm:1.4.0"],
             ["pg-types", "npm:2.2.0"]
           ],
           "linkType": "HARD",
@@ -36700,7 +36701,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/auth0-js", "npm:9.14.2"],
             ["@types/faker", "npm:5.1.6"],
             ["@types/node", "npm:14.14.28"],
-            ["@types/pg", "npm:7.14.9"],
+            ["@types/pg", "npm:7.14.10"],
             ["@typescript-eslint/eslint-plugin", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:4.11.1"],
             ["@typescript-eslint/parser", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:4.11.1"],
             ["auth0-js", "npm:9.14.3"],
@@ -40325,7 +40326,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/mixpanel-browser", "npm:2.35.4"],
             ["@types/nanoid", "npm:2.1.0"],
             ["@types/node", "npm:14.14.28"],
-            ["@types/pg", "npm:7.14.9"],
+            ["@types/pg", "npm:7.14.10"],
             ["@types/pino", "npm:6.3.5"],
             ["@types/react", "npm:17.0.2"],
             ["@types/react-query", "npm:1.1.2"],
