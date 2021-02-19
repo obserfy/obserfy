@@ -8650,6 +8650,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node@npm:12.12.50":
+  version: 12.12.50
+  resolution: "@types/node@npm:12.12.50"
+  checksum: 02e4e057a353e61eb8b4146633cc766f932951bc11cff9707af03aca8eaf9813133bfca3f2d4b4329cb41a0b892698bf04a1fce1e134813bd8a00dd5b7d36288
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:14.14.28":
   version: 14.14.28
   resolution: "@types/node@npm:14.14.28"
@@ -14948,13 +14955,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress@npm:6.4.0":
-  version: 6.4.0
-  resolution: "cypress@npm:6.4.0"
+"cypress@npm:6.5.0":
+  version: 6.5.0
+  resolution: "cypress@npm:6.5.0"
   dependencies:
     "@cypress/listr-verbose-renderer": ^0.4.1
     "@cypress/request": ^2.88.5
     "@cypress/xvfb": ^1.2.4
+    "@types/node": 12.12.50
     "@types/sinonjs__fake-timers": ^6.0.1
     "@types/sizzle": ^2.3.2
     arch: ^2.1.2
@@ -14967,7 +14975,7 @@ __metadata:
     commander: ^5.1.0
     common-tags: ^1.8.0
     dayjs: ^1.9.3
-    debug: ^4.1.1
+    debug: 4.3.2
     eventemitter2: ^6.4.2
     execa: ^4.0.2
     executable: ^4.1.1
@@ -14993,7 +15001,7 @@ __metadata:
     yauzl: ^2.10.0
   bin:
     cypress: bin/cypress
-  checksum: 90919d83dab9f291b5c1178dbd68c1fc084039991273e69f7be30cfaf788d2e8e9989671ef22322d906e7c753125f10fad06a7f87b57d353514bdba1a0b5279d
+  checksum: 36847bc1ebe7d7ac2f7b1ca3c63cdaf7dd730e6467f43e54f6eba0fec5ff9ab35ffb84468037a5f389a0e1002f8da6513340062ab48d4a8f1c3d4218437c0772
   languageName: node
   linkType: hard
 
@@ -15150,6 +15158,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"debug@npm:4.3.2, debug@npm:^4.3.1, debug@npm:~4.3.1":
+  version: 4.3.2
+  resolution: "debug@npm:4.3.2"
+  dependencies:
+    ms: 2.1.2
+  peerDependenciesMeta:
+    supports-color:
+      optional: true
+  checksum: 5543570879e2274f6725d4285a034d6e0822d35faefc6f55965933fb440e8c21eb3a0bef934e66f4b6b491f898ee2de37cab980e9d4fd61372136c19d3ce4527
+  languageName: node
+  linkType: hard
+
 "debug@npm:^3.2.7":
   version: 3.2.7
   resolution: "debug@npm:3.2.7"
@@ -15168,18 +15188,6 @@ __metadata:
     supports-color:
       optional: true
   checksum: 847d2760d1493cfaef53fb67d8943c6afaba30472d7527450c19919d230dde04f2275dd8dd5c2874c7103787c190d3b5d3dbc2ee7596a12d853a2ce35c4b8b1b
-  languageName: node
-  linkType: hard
-
-"debug@npm:^4.3.1, debug@npm:~4.3.1":
-  version: 4.3.2
-  resolution: "debug@npm:4.3.2"
-  dependencies:
-    ms: 2.1.2
-  peerDependenciesMeta:
-    supports-color:
-      optional: true
-  checksum: 5543570879e2274f6725d4285a034d6e0822d35faefc6f55965933fb440e8c21eb3a0bef934e66f4b6b491f898ee2de37cab980e9d4fd61372136c19d3ce4527
   languageName: node
   linkType: hard
 
@@ -16170,7 +16178,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": 4.11.1
     "@typescript-eslint/parser": 4.11.1
     auth0-js: 9.14.3
-    cypress: 6.4.0
+    cypress: 6.5.0
     cypress-file-upload: 5.0.2
     cypress-intellij-reporter: 0.0.6
     dayjs: 1.10.4
