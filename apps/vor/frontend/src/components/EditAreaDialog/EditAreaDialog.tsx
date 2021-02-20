@@ -1,13 +1,11 @@
+import { t } from "@lingui/macro"
 import React, { FC, useState } from "react"
-import { Flex, Button, Box } from "theme-ui"
-import Dialog from "../Dialog/Dialog"
-import Typography from "../Typography/Typography"
-
-import Spacer from "../Spacer/Spacer"
-import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
-
-import Input from "../Input/Input"
+import { Box } from "theme-ui"
 import { updateAreaApi } from "../../hooks/api/updateAreaApi"
+import Dialog from "../Dialog/Dialog"
+import DialogHeader from "../DialogHeader/DialogHeader"
+import Input from "../Input/Input"
+import Typography from "../Typography/Typography"
 
 interface Props {
   onDismiss: () => void
@@ -27,7 +25,7 @@ export const EditAreaDialog: FC<Props> = ({
 
   const isValid = name !== originalName && name !== ""
 
-  async function createArea(): Promise<void> {
+  async function handleCreateArea(): Promise<void> {
     setLoading(true)
     setError(false)
     try {
@@ -44,49 +42,26 @@ export const EditAreaDialog: FC<Props> = ({
 
   return (
     <Dialog sx={{ backgroundColor: "background" }}>
-      <Flex sx={{ flexDirection: "column" }}>
-        <Flex
-          backgroundColor="surface"
-          sx={{
-            alignItems: "center",
-            position: "relative",
-            borderBottomColor: "border",
-            borderBottomWidth: 1,
-            borderBottomStyle: "solid",
-          }}
-        >
-          <Typography.H6
-            sx={{
-              width: "100%",
-              position: "absolute",
-              pointerEvents: "none",
-              textAlign: "center",
-              alignContent: "center",
-            }}
-          >
-            Update Area
-          </Typography.H6>
-          <Button variant="outline" color="danger" m={2} onClick={onDismiss}>
-            Cancel
-          </Button>
-          <Spacer />
-          <Button m={2} disabled={!isValid || loading} onClick={createArea}>
-            {loading && <LoadingIndicator />}
-            Save
-          </Button>
-        </Flex>
-        <Box px={3} pb={4} pt={3}>
-          <Input
-            disabled={loading}
-            autoFocus
-            label="Area name"
-            sx={{ width: "100%" }}
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          {error && <ErrorMessage />}
-        </Box>
-      </Flex>
+      <DialogHeader
+        title={t`Edit Area`}
+        onCancel={onDismiss}
+        onAccept={handleCreateArea}
+        disableAccept={!isValid || loading}
+        loading={loading}
+      />
+
+      <Box px={3} pb={3} pt={2}>
+        <Input
+          disabled={loading}
+          autoFocus
+          label="Area name"
+          sx={{ width: "100%" }}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+
+        {error && <ErrorMessage />}
+      </Box>
     </Dialog>
   )
 }
