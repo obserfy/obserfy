@@ -1,8 +1,4 @@
 module.exports = {
-  flags: {
-    FAST_DEV: true,
-    FAST_REFRESH: true,
-  },
   siteMetadata: {
     title: `Obserfy`,
     description: `Obserfy is an open-source record keeping and parent communication tool, built for Montessori schools.`,

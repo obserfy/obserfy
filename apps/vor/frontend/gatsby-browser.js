@@ -157,6 +157,14 @@ const loadChatwoot = () => {
   })
 
   setTimeout(() => {
+    let websiteToken
+    if (process.env.NODE_ENV === "development") {
+      websiteToken = "M3Q1fEiitx7xPHEh12xdvGQR"
+      return
+    } else {
+      websiteToken = "Hs61XyryoFYVv39MienCG2Ei"
+    }
+
     const t = "script"
     const BASE_URL = "https://app.chatwoot.com"
     const g = document.createElement(t)
@@ -165,12 +173,7 @@ const loadChatwoot = () => {
     g.async = true
     s.parentNode.insertBefore(g, s)
     g.onload = function () {
-      let websiteToken
-      if (process.env.NODE_ENV === "development") {
-        websiteToken = "M3Q1fEiitx7xPHEh12xdvGQR"
-      } else {
-        websiteToken = "Hs61XyryoFYVv39MienCG2Ei"
-      }
+
       window.chatwootSDK.run({
         websiteToken,
         baseUrl: BASE_URL,
