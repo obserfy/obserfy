@@ -19,7 +19,7 @@ interface Props {
   height: number
   containerSx?: ThemeUIStyleObject
 }
-export const DraggableListItem: FC<Props> = ({
+const DraggableListItem: FC<Props> = ({
   children,
   moveItem,
   height,

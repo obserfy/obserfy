@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PageCurriculumArea should render correctly 1`] = `
+exports[`PageCurriculumSubject should render correctly 1`] = `
 .emotion-0 {
   box-sizing: border-box;
   margin: 0;
@@ -18,31 +18,8 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  -webkit-position: sticky;
-  position: sticky;
-  top: 0;
   width: 100%;
-  overflow: auto;
-  height: auto;
-  max-width: 100%;
   padding-bottom: 64px;
-  border-right-width: 1px;
-  border-right-style: solid;
-  border-right-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-}
-
-@media screen and (min-width: 40em) {
-  .emotion-1 {
-    height: auto;
-    max-width: 100%;
-  }
-}
-
-@media screen and (min-width: 52em) {
-  .emotion-1 {
-    height: 100vh;
-    max-width: 280px;
-  }
 }
 
 .emotion-2 {
@@ -242,7 +219,7 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   margin-right: 4px;
 }
 
-.emotion-14 {
+.emotion-17 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -252,15 +229,15 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   white-space: nowrap;
 }
 
-.emotion-14:last-child {
+.emotion-17:last-child {
   color: var(--theme-ui-colors-textPrimary, #027c5b);
 }
 
-.emotion-14:last-child>.splitter {
+.emotion-17:last-child>.splitter {
   display: none;
 }
 
-.emotion-15 {
+.emotion-18 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -278,7 +255,7 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   align-items: center;
 }
 
-.emotion-16 {
+.emotion-19 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -294,18 +271,18 @@ exports[`PageCurriculumArea should render correctly 1`] = `
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-16 {
+  .emotion-19 {
     font-size: 20px;
   }
 }
 
 @media screen and (min-width: 52em) {
-  .emotion-16 {
+  .emotion-19 {
     font-size: 14px;
   }
 }
 
-.emotion-17 {
+.emotion-20 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -375,25 +352,25 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   flex-shrink: 0;
 }
 
-.emotion-17:disabled {
+.emotion-20:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-17:hover,
-.emotion-17:focus {
+.emotion-20:hover,
+.emotion-20:focus {
   background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
   border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-17:hover:disabled,
-.emotion-17:focus:disabled {
+.emotion-20:hover:disabled,
+.emotion-20:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
 }
 
-.emotion-18 {
+.emotion-21 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -407,7 +384,7 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   height: 16px;
 }
 
-.emotion-19 {
+.emotion-22 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -476,25 +453,25 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   flex-shrink: 0;
 }
 
-.emotion-19:disabled {
+.emotion-22:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-19:hover,
-.emotion-19:focus {
+.emotion-22:hover,
+.emotion-22:focus {
   background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
   border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-19:hover:disabled,
-.emotion-19:focus:disabled {
+.emotion-22:hover:disabled,
+.emotion-22:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
 }
 
-.emotion-20 {
+.emotion-23 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -508,7 +485,7 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   height: 16px;
 }
 
-.emotion-21 {
+.emotion-24 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -516,17 +493,27 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
-  padding-top: 8px;
-  padding-bottom: 8px;
   padding-left: 16px;
   padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   font-weight: bold;
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-bottom-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
 }
 
-.emotion-22 {
+.emotion-25 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  pointer-events: none;
+}
+
+.emotion-26 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -539,13 +526,13 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  cursor: pointer;
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-bottom-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  cursor: pointer;
 }
 
-.emotion-23 {
+.emotion-27 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -559,7 +546,7 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-24 {
+.emotion-28 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -587,7 +574,7 @@ exports[`PageCurriculumArea should render correctly 1`] = `
           <a
             class="emotion-4"
             data-cy="back-button"
-            href="/dashboard/admin/curriculum"
+            href="/dashboard/admin/curriculum/area?areaId="
           >
             <button
               class="emotion-5"
@@ -630,10 +617,22 @@ exports[`PageCurriculumArea should render correctly 1`] = `
                 /
               </span>
             </a>
-            <div
-              class="emotion-14"
+            <a
+              class="emotion-8"
+              href="/dashboard/admin/curriculum/area?areaId="
             >
-              undefined
+              <span
+                class="emotion-9"
+              />
+              <span
+                class="splitter emotion-10"
+              >
+                /
+              </span>
+            </a>
+            <div
+              class="emotion-17"
+            >
               <span
                 class="splitter"
               >
@@ -643,43 +642,46 @@ exports[`PageCurriculumArea should render correctly 1`] = `
           </div>
         </div>
         <div
-          class="emotion-15"
+          class="emotion-18"
         >
           <h6
-            class="emotion-16"
+            class="emotion-19"
           />
           <button
-            class="emotion-17"
+            class="emotion-20"
           >
             <div
-              class="emotion-18"
+              class="emotion-21"
             />
           </button>
           <button
-            class="emotion-19"
+            class="emotion-22"
           >
             <div
-              class="emotion-20"
+              class="emotion-23"
             />
           </button>
         </div>
       </div>
       <p
-        class="emotion-21"
+        class="emotion-24"
       >
-        Subjects
+        Materials
       </p>
       <div
-        class="emotion-22"
+        class="emotion-25"
+      />
+      <div
+        class="emotion-26"
         role="button"
       >
         <div
-          class="emotion-23"
+          class="emotion-27"
         />
         <p
-          class="emotion-24"
+          class="emotion-28"
         >
-          Add new subject
+          Add new material
         </p>
       </div>
     </div>

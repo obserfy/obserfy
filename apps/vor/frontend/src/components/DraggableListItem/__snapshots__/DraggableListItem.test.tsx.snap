@@ -18,16 +18,31 @@ exports[`DraggableListItem should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  width: 100%;
+  max-width: inherit;
+  height: 54px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-right-width: 2px;
+  border-right-style: solid;
+  border-right-color: var(--theme-ui-colors-textPrimary, #027c5b);
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.emotion-1:hover {
   background-color: var(--theme-ui-colors-primaryLightest, rgba(0,227,153,0.05));
-  height: 48px;
 }
 
 .emotion-2 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  background-color: var(--theme-ui-colors-background, #f2f3f5);
-  height: 48px;
+  background-color: transparent;
+  height: 54px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -36,19 +51,13 @@ exports[`DraggableListItem should render correctly 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  width: 100%;
-  max-width: 640px;
-  border-bottom-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
+  width: inherit;
+  max-width: inherit;
   -webkit-transition: background-color .1s ease-in,box-shadow .1s ease-in;
   transition: background-color .1s ease-in,box-shadow .1s ease-in;
   position: relative;
-  -webkit-transform: translateY(0px);
-  -moz-transform: translateY(0px);
-  -ms-transform: translateY(0px);
-  transform: translateY(0px);
   z-index: 1;
+  border-radius: 0;
   top: 0;
   display: -webkit-box;
   display: -webkit-flex;
@@ -67,20 +76,6 @@ exports[`DraggableListItem should render correctly 1`] = `
   cursor: move;
 }
 
-.emotion-4 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  max-width: 100%;
-  height: auto;
-  width: 20px;
-  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  height: 20px;
-}
-
 <div>
   <div
     class="emotion-0"
@@ -95,9 +90,42 @@ exports[`DraggableListItem should render correctly 1`] = `
           class="emotion-3"
         >
           <div
-            class="emotion-4"
+            width="20"
           />
         </div>
+        asdf
+      </div>
+    </div>
+    <div
+      class="emotion-1"
+    >
+      <div
+        class="emotion-2"
+      >
+        <div
+          class="emotion-3"
+        >
+          <div
+            width="20"
+          />
+        </div>
+        asjfda
+      </div>
+    </div>
+    <div
+      class="emotion-1"
+    >
+      <div
+        class="emotion-2"
+      >
+        <div
+          class="emotion-3"
+        >
+          <div
+            width="20"
+          />
+        </div>
+        ajrhgflkjenbrgk
       </div>
     </div>
   </div>

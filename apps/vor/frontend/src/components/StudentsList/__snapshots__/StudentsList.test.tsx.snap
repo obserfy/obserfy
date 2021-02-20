@@ -121,6 +121,23 @@ exports[`StudentsList should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  max-width: 100%;
+  height: auto;
+  margin-right: -28px;
+  margin-left: 8px;
+  width: 20px;
+  height: 20px;
+  z-index: 2;
+  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.emotion-6 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
   display: block;
   width: 100%;
   padding: 8px;
@@ -147,39 +164,40 @@ exports[`StudentsList should render correctly 1`] = `
   margin-right: 8px;
   background-color: var(--theme-ui-colors-surface, #fff);
   width: 100%;
+  padding-left: 34px;
   font-size: 14px;
   width: 100%;
 }
 
-.emotion-5:hover,
-.emotion-5:focus {
+.emotion-6:hover,
+.emotion-6:focus {
   border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-5::-webkit-input-placeholder {
+.emotion-6::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-5::-moz-placeholder {
+.emotion-6::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-5:-ms-input-placeholder {
+.emotion-6:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-5::placeholder {
+.emotion-6::placeholder {
   font-style: italic;
 }
 
-.emotion-5:disabled {
+.emotion-6:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
 }
 
-.emotion-6 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -245,25 +263,25 @@ exports[`StudentsList should render correctly 1`] = `
   height: 100%;
 }
 
-.emotion-6:disabled {
+.emotion-7:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-6:hover,
-.emotion-6:focus {
+.emotion-7:hover,
+.emotion-7:focus {
   background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
   border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-6:hover:disabled,
-.emotion-6:focus:disabled {
+.emotion-7:hover:disabled,
+.emotion-7:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
 }
 
-.emotion-7 {
+.emotion-8 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -277,7 +295,7 @@ exports[`StudentsList should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-8 {
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -293,7 +311,7 @@ exports[`StudentsList should render correctly 1`] = `
   flex-wrap: wrap;
 }
 
-.emotion-9 {
+.emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -317,11 +335,11 @@ exports[`StudentsList should render correctly 1`] = `
   white-space: nowrap;
 }
 
-.emotion-9:hover {
+.emotion-10:hover {
   background-color: var(--theme-ui-colors-primary, #00e399);
 }
 
-.emotion-10 {
+.emotion-11 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -333,7 +351,7 @@ exports[`StudentsList should render correctly 1`] = `
   font-size: 14px;
 }
 
-.emotion-11 {
+.emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -341,7 +359,7 @@ exports[`StudentsList should render correctly 1`] = `
   padding-right: 16px;
 }
 
-.emotion-12 {
+.emotion-13 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -357,7 +375,7 @@ exports[`StudentsList should render correctly 1`] = `
   align-items: center;
 }
 
-.emotion-13 {
+.emotion-14 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -369,7 +387,7 @@ exports[`StudentsList should render correctly 1`] = `
   border-radius: 99999px;
 }
 
-.emotion-14 {
+.emotion-15 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -382,7 +400,7 @@ exports[`StudentsList should render correctly 1`] = `
   height: 22px;
 }
 
-.emotion-15 {
+.emotion-16 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -409,8 +427,11 @@ exports[`StudentsList should render correctly 1`] = `
           <div
             class="emotion-4"
           >
-            <input
+            <div
               class="emotion-5"
+            />
+            <input
+              class="emotion-6"
               name="name"
               placeholder="Search students"
               value=""
@@ -422,146 +443,146 @@ exports[`StudentsList should render correctly 1`] = `
           style="flex-shrink: 0;"
         >
           <button
-            class="emotion-6"
+            class="emotion-7"
             data-cy="addStudent"
           >
             <div
-              class="emotion-7"
+              class="emotion-8"
             />
           </button>
         </a>
       </div>
       <div
-        class="emotion-8"
+        class="emotion-9"
       >
         <div
-          class="emotion-9"
+          class="emotion-10"
         >
           <p
-            class="emotion-10"
+            class="emotion-11"
           >
             All
           </p>
         </div>
       </div>
       <div
-        class="emotion-11"
+        class="emotion-12"
       >
         <div
-          class="emotion-12"
+          class="emotion-13"
         >
-          <div
-            class="emotion-13"
-          />
           <div
             class="emotion-14"
           />
           <div
             class="emotion-15"
+          />
+          <div
+            class="emotion-16"
           />
         </div>
         <div
-          class="emotion-12"
+          class="emotion-13"
         >
-          <div
-            class="emotion-13"
-          />
           <div
             class="emotion-14"
           />
           <div
             class="emotion-15"
+          />
+          <div
+            class="emotion-16"
           />
         </div>
         <div
-          class="emotion-12"
+          class="emotion-13"
         >
-          <div
-            class="emotion-13"
-          />
           <div
             class="emotion-14"
           />
           <div
             class="emotion-15"
+          />
+          <div
+            class="emotion-16"
           />
         </div>
         <div
-          class="emotion-12"
+          class="emotion-13"
         >
-          <div
-            class="emotion-13"
-          />
           <div
             class="emotion-14"
           />
           <div
             class="emotion-15"
+          />
+          <div
+            class="emotion-16"
           />
         </div>
         <div
-          class="emotion-12"
+          class="emotion-13"
         >
-          <div
-            class="emotion-13"
-          />
           <div
             class="emotion-14"
           />
           <div
             class="emotion-15"
+          />
+          <div
+            class="emotion-16"
           />
         </div>
         <div
-          class="emotion-12"
+          class="emotion-13"
         >
-          <div
-            class="emotion-13"
-          />
           <div
             class="emotion-14"
           />
           <div
             class="emotion-15"
+          />
+          <div
+            class="emotion-16"
           />
         </div>
         <div
-          class="emotion-12"
+          class="emotion-13"
         >
-          <div
-            class="emotion-13"
-          />
           <div
             class="emotion-14"
           />
           <div
             class="emotion-15"
+          />
+          <div
+            class="emotion-16"
           />
         </div>
         <div
-          class="emotion-12"
+          class="emotion-13"
         >
-          <div
-            class="emotion-13"
-          />
           <div
             class="emotion-14"
           />
           <div
             class="emotion-15"
+          />
+          <div
+            class="emotion-16"
           />
         </div>
         <div
-          class="emotion-12"
+          class="emotion-13"
         >
-          <div
-            class="emotion-13"
-          />
           <div
             class="emotion-14"
           />
           <div
             class="emotion-15"
+          />
+          <div
+            class="emotion-16"
           />
         </div>
       </div>
