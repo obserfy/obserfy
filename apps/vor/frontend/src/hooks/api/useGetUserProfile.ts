@@ -1,4 +1,5 @@
 import { useQuery } from "react-query"
+import { identify } from "../../analytics"
 import { getApi } from "./fetchApi"
 import { getSchoolId } from "../schoolIdState"
 import { GetSchoolResponse } from "./schools/useGetSchool"
@@ -9,14 +10,14 @@ interface GetUserResponse {
   name: string
 }
 export const useGetUserProfile = () => {
-  const identify = async () => {
+  const getUserProfile = async () => {
     const user = await getApi<GetUserResponse>("/users")()
     const school = await getApi<GetSchoolResponse>(
       `/schools/${getSchoolId()}`
     )()
 
     if (user && school) {
-      analytics.identify(user.id, {
+      identify(user.id, {
         name: user.name,
         email: user.email,
         school: school.name,
@@ -34,7 +35,7 @@ export const useGetUserProfile = () => {
     }
   }
 
-  return useQuery("identify", identify, {
+  return useQuery("identify", getUserProfile, {
     refetchOnWindowFocus: false,
   })
 }
