@@ -45,13 +45,12 @@ exports[`MultilineDataBox should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: bold;
-  line-height: heading;
   color: var(--theme-ui-colors-text, #37383c);
+  font-size: 14px;
   text-rendering: optimizeLegibility;
-  font-size: 20px;
+  line-height: 1.5;
   margin: 16px;
+  font-weight: bold;
 }
 
 .emotion-4 {
@@ -170,7 +169,7 @@ exports[`MultilineDataBox should render correctly 1`] = `
       <div
         class="emotion-2"
       >
-        <h6
+        <p
           class="emotion-3"
         />
         <button
