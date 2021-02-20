@@ -100,10 +100,11 @@ type Session struct {
 }
 
 type Curriculum struct {
-	Id      string `pg:"type:uuid"`
-	Name    string
-	Areas   []Area   `pg:"rel:has-many,fk:curriculum_id"`
-	Schools []School `pg:"rel:has-many"`
+	Id           string `pg:"type:uuid"`
+	Name         string
+	Areas        []Area   `pg:"rel:has-many,fk:curriculum_id"`
+	Schools      []School `pg:"rel:has-many"`
+	Descriptions string
 }
 
 type Area struct {
@@ -112,23 +113,26 @@ type Area struct {
 	Curriculum   Curriculum `pg:"rel:has-one"`
 	Name         string
 	Subjects     []Subject `pg:"rel:has-many,fk:area_id"`
+	Description  string
 }
 
 type Subject struct {
-	Id        string `pg:"type:uuid"`
-	AreaId    string `pg:"type:uuid,on_delete:CASCADE"`
-	Area      Area   `pg:"rel:has-one"`
-	Name      string
-	Materials []Material `pg:"rel:has-many,fk:subject_id"`
-	Order     int        `pg:",use_zero"`
+	Id          string `pg:"type:uuid"`
+	AreaId      string `pg:"type:uuid,on_delete:CASCADE"`
+	Area        Area   `pg:"rel:has-one"`
+	Name        string
+	Materials   []Material `pg:"rel:has-many,fk:subject_id"`
+	Order       int        `pg:",use_zero"`
+	Description string
 }
 
 type Material struct {
-	Id        string  `pg:"type:uuid"`
-	SubjectId string  `pg:"type:uuid,on_delete:CASCADE"`
-	Subject   Subject `pg:"rel:has-one"`
-	Name      string
-	Order     int `pg:",use_zero"`
+	Id          string  `pg:"type:uuid"`
+	SubjectId   string  `pg:"type:uuid,on_delete:CASCADE"`
+	Subject     Subject `pg:"rel:has-one"`
+	Name        string
+	Order       int `pg:",use_zero"`
+	Description string
 }
 
 type StudentMaterialProgress struct {

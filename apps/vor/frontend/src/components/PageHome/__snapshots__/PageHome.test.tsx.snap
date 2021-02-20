@@ -140,6 +140,23 @@ exports[`PageHome should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  max-width: 100%;
+  height: auto;
+  margin-right: -28px;
+  margin-left: 8px;
+  width: 20px;
+  height: 20px;
+  z-index: 2;
+  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.emotion-7 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
   display: block;
   width: 100%;
   padding: 8px;
@@ -166,39 +183,40 @@ exports[`PageHome should render correctly 1`] = `
   margin-right: 8px;
   background-color: var(--theme-ui-colors-surface, #fff);
   width: 100%;
+  padding-left: 34px;
   font-size: 14px;
   width: 100%;
 }
 
-.emotion-6:hover,
-.emotion-6:focus {
+.emotion-7:hover,
+.emotion-7:focus {
   border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-6::-webkit-input-placeholder {
+.emotion-7::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-6::-moz-placeholder {
+.emotion-7::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-6:-ms-input-placeholder {
+.emotion-7:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-6::placeholder {
+.emotion-7::placeholder {
   font-style: italic;
 }
 
-.emotion-6:disabled {
+.emotion-7:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
 }
 
-.emotion-7 {
+.emotion-8 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -264,25 +282,25 @@ exports[`PageHome should render correctly 1`] = `
   height: 100%;
 }
 
-.emotion-7:disabled {
+.emotion-8:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-7:hover,
-.emotion-7:focus {
+.emotion-8:hover,
+.emotion-8:focus {
   background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
   border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-7:hover:disabled,
-.emotion-7:focus:disabled {
+.emotion-8:hover:disabled,
+.emotion-8:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
 }
 
-.emotion-8 {
+.emotion-9 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -296,7 +314,7 @@ exports[`PageHome should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-9 {
+.emotion-10 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -312,7 +330,7 @@ exports[`PageHome should render correctly 1`] = `
   flex-wrap: wrap;
 }
 
-.emotion-10 {
+.emotion-11 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -336,11 +354,11 @@ exports[`PageHome should render correctly 1`] = `
   white-space: nowrap;
 }
 
-.emotion-10:hover {
+.emotion-11:hover {
   background-color: var(--theme-ui-colors-primary, #00e399);
 }
 
-.emotion-11 {
+.emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -352,7 +370,7 @@ exports[`PageHome should render correctly 1`] = `
   font-size: 14px;
 }
 
-.emotion-12 {
+.emotion-13 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -360,7 +378,7 @@ exports[`PageHome should render correctly 1`] = `
   padding-right: 16px;
 }
 
-.emotion-13 {
+.emotion-14 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -376,7 +394,7 @@ exports[`PageHome should render correctly 1`] = `
   align-items: center;
 }
 
-.emotion-14 {
+.emotion-15 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -388,7 +406,7 @@ exports[`PageHome should render correctly 1`] = `
   border-radius: 99999px;
 }
 
-.emotion-15 {
+.emotion-16 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -401,7 +419,7 @@ exports[`PageHome should render correctly 1`] = `
   height: 22px;
 }
 
-.emotion-16 {
+.emotion-17 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -432,8 +450,11 @@ exports[`PageHome should render correctly 1`] = `
             <div
               class="emotion-5"
             >
-              <input
+              <div
                 class="emotion-6"
+              />
+              <input
+                class="emotion-7"
                 name="name"
                 placeholder="Search students"
                 value=""
@@ -445,146 +466,146 @@ exports[`PageHome should render correctly 1`] = `
             style="flex-shrink: 0;"
           >
             <button
-              class="emotion-7"
+              class="emotion-8"
               data-cy="addStudent"
             >
               <div
-                class="emotion-8"
+                class="emotion-9"
               />
             </button>
           </a>
         </div>
         <div
-          class="emotion-9"
+          class="emotion-10"
         >
           <div
-            class="emotion-10"
+            class="emotion-11"
           >
             <p
-              class="emotion-11"
+              class="emotion-12"
             >
               All
             </p>
           </div>
         </div>
         <div
-          class="emotion-12"
+          class="emotion-13"
         >
           <div
-            class="emotion-13"
+            class="emotion-14"
           >
-            <div
-              class="emotion-14"
-            />
             <div
               class="emotion-15"
             />
             <div
               class="emotion-16"
+            />
+            <div
+              class="emotion-17"
             />
           </div>
           <div
-            class="emotion-13"
+            class="emotion-14"
           >
-            <div
-              class="emotion-14"
-            />
             <div
               class="emotion-15"
             />
             <div
               class="emotion-16"
+            />
+            <div
+              class="emotion-17"
             />
           </div>
           <div
-            class="emotion-13"
+            class="emotion-14"
           >
-            <div
-              class="emotion-14"
-            />
             <div
               class="emotion-15"
             />
             <div
               class="emotion-16"
+            />
+            <div
+              class="emotion-17"
             />
           </div>
           <div
-            class="emotion-13"
+            class="emotion-14"
           >
-            <div
-              class="emotion-14"
-            />
             <div
               class="emotion-15"
             />
             <div
               class="emotion-16"
+            />
+            <div
+              class="emotion-17"
             />
           </div>
           <div
-            class="emotion-13"
+            class="emotion-14"
           >
-            <div
-              class="emotion-14"
-            />
             <div
               class="emotion-15"
             />
             <div
               class="emotion-16"
+            />
+            <div
+              class="emotion-17"
             />
           </div>
           <div
-            class="emotion-13"
+            class="emotion-14"
           >
-            <div
-              class="emotion-14"
-            />
             <div
               class="emotion-15"
             />
             <div
               class="emotion-16"
+            />
+            <div
+              class="emotion-17"
             />
           </div>
           <div
-            class="emotion-13"
+            class="emotion-14"
           >
-            <div
-              class="emotion-14"
-            />
             <div
               class="emotion-15"
             />
             <div
               class="emotion-16"
+            />
+            <div
+              class="emotion-17"
             />
           </div>
           <div
-            class="emotion-13"
+            class="emotion-14"
           >
-            <div
-              class="emotion-14"
-            />
             <div
               class="emotion-15"
             />
             <div
               class="emotion-16"
+            />
+            <div
+              class="emotion-17"
             />
           </div>
           <div
-            class="emotion-13"
+            class="emotion-14"
           >
-            <div
-              class="emotion-14"
-            />
             <div
               class="emotion-15"
             />
             <div
               class="emotion-16"
+            />
+            <div
+              class="emotion-17"
             />
           </div>
         </div>

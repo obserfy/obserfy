@@ -19,11 +19,11 @@ exports[`Layout should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   background-color: var(--theme-ui-colors-surfaceBlurNonTransparent, rgba(255,255,255));
+  z-index: 500;
   height: auto;
   width: 100%;
   border-radius: 0;
   display: block;
-  z-index: 100;
   top: auto;
   bottom: 0;
   left: 0;
@@ -36,18 +36,6 @@ exports[`Layout should render correctly 1`] = `
   border-color: var(--theme-ui-colors-borderBold, #e5e5e5);
 }
 
-@media screen and (min-width: 40em) {
-  .emotion-1 {
-    height: 100%;
-    width: auto;
-    display: block;
-    top: 0;
-    bottom: auto;
-    border-top-style: none;
-    border-right-style: solid;
-  }
-}
-
 @supports (backdrop-filter: blur(20px)) {
   .emotion-1 {
     background-color: var(--theme-ui-colors-surfaceBlurTransparent, rgba(255,255,255,0.9));
@@ -58,6 +46,18 @@ exports[`Layout should render correctly 1`] = `
     -ms-transform: translateZ(0);
     transform: translateZ(0);
     will-change: backdrop-filter;
+  }
+}
+
+@media screen and (min-width: 40em) {
+  .emotion-1 {
+    height: 100%;
+    width: auto;
+    display: block;
+    top: 0;
+    bottom: auto;
+    border-top-style: none;
+    border-right-style: solid;
   }
 }
 
@@ -228,6 +228,7 @@ exports[`Layout should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   padding-left: 0;
+  padding-bottom: 32px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -237,6 +238,13 @@ exports[`Layout should render correctly 1`] = `
 @media screen and (min-width: 40em) {
   .emotion-14 {
     padding-left: 56px;
+    padding-bottom: 32px;
+  }
+}
+
+@media screen and (min-width: 52em) {
+  .emotion-14 {
+    padding-bottom: 0;
   }
 }
 
@@ -263,7 +271,6 @@ exports[`Layout should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  padding-bottom: 84px;
 }
 
 <div>

@@ -19,7 +19,10 @@ export interface MarkdownProps {
 
 const Markdown: FC<MarkdownProps> = ({ markdown, className, ...props }) => {
   const html = snarkdownEnhanced(markdown)
-  const sanitizedHtml = DOMPurify.sanitize(html)
+  let sanitizedHtml = ""
+  if (typeof window !== "undefined") {
+    sanitizedHtml = DOMPurify.sanitize(html)
+  }
 
   return (
     <div

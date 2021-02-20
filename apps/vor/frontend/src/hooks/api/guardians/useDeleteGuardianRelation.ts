@@ -1,4 +1,5 @@
 import { useMutation, useQueryClient } from "react-query"
+import { track } from "../../../analytics"
 import { ApiError, BASE_URL } from "../useApi"
 import { navigate } from "../../../components/Link/Link"
 
@@ -30,7 +31,7 @@ export const useDeleteGuardianRelation = (
 
   return useMutation(postGuardianRelation, {
     onSuccess: () => {
-      analytics.track("Guardian Relation Deleted")
+      track("Guardian Relation Deleted")
       return queryCache.invalidateQueries(["student", studentId])
     },
   })

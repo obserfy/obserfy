@@ -1,4 +1,5 @@
 import { useMutation, useQueryClient } from "react-query"
+import { track } from "../../../analytics"
 import { postApi } from "../fetchApi"
 
 interface Link {
@@ -12,7 +13,7 @@ const usePostNewLessonPlanLink = (lessonPlanId: string) => {
   const postNewLessonPlanLink = postApi<Link>(`/plans/${lessonPlanId}/links`)
   return useMutation(postNewLessonPlanLink, {
     onSuccess: async () => {
-      analytics.track("Plan Link Created")
+      track("Plan Link Created")
       await queryCache.invalidateQueries(["plan", lessonPlanId])
     },
   })

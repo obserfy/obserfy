@@ -1,4 +1,5 @@
 import { useMutation } from "react-query"
+import { track } from "../../analytics"
 import { getSchoolId } from "../schoolIdState"
 import { postApi } from "./fetchApi"
 
@@ -9,7 +10,7 @@ export const usePostUserInvite = () => {
   const sendInvite = postApi<Payload>(`/schools/${getSchoolId()}/invite-user`)
   return useMutation(sendInvite, {
     onSuccess: (data, variables) => {
-      analytics.track("Users Invited", {
+      track("Users Invited", {
         count: variables.email.length,
       })
     },

@@ -2,7 +2,7 @@ describe("test class related features", function () {
   const faker = require("faker")
 
   beforeEach(function () {
-    cy.clearSW()
+    // cy.clearSW()
     cy.registerVor()
   })
 

@@ -261,6 +261,23 @@ exports[`PageEditStudentClass should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  max-width: 100%;
+  height: auto;
+  margin-right: -28px;
+  margin-left: 8px;
+  width: 20px;
+  height: 20px;
+  z-index: 2;
+  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.emotion-19 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
   display: block;
   width: 100%;
   padding: 8px;
@@ -286,32 +303,33 @@ exports[`PageEditStudentClass should render correctly 1`] = `
   padding-bottom: 8px;
   background-color: var(--theme-ui-colors-surface, #fff);
   width: 100%;
+  padding-left: 34px;
   font-size: 14px;
 }
 
-.emotion-18:hover,
-.emotion-18:focus {
+.emotion-19:hover,
+.emotion-19:focus {
   border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-18::-webkit-input-placeholder {
+.emotion-19::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-18::-moz-placeholder {
+.emotion-19::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-18:-ms-input-placeholder {
+.emotion-19:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-18::placeholder {
+.emotion-19::placeholder {
   font-style: italic;
 }
 
-.emotion-18:disabled {
+.emotion-19:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
@@ -399,8 +417,11 @@ exports[`PageEditStudentClass should render correctly 1`] = `
           <div
             class="emotion-17"
           >
-            <input
+            <div
               class="emotion-18"
+            />
+            <input
+              class="emotion-19"
               name="name"
               placeholder="Search"
               value=""

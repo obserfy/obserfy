@@ -1,5 +1,5 @@
 import React, { FC } from "react"
-import { Flex } from "theme-ui"
+import { Flex, ThemeUIStyleObject } from "theme-ui"
 import { Trans } from "@lingui/macro"
 import BackButton from "../BackButton/BackButton"
 import Breadcrumb from "../Breadcrumb/Breadcrumb"
@@ -11,9 +11,10 @@ export interface BreadcrumbData {
 }
 export interface TopBarProps {
   breadcrumbs: BreadcrumbData[]
+  containerSx?: ThemeUIStyleObject
 }
-export const TopBar: FC<TopBarProps> = ({ breadcrumbs }) => (
-  <Flex sx={{ height: 48, alignItems: "center" }}>
+export const TopBar: FC<TopBarProps> = ({ breadcrumbs, containerSx }) => (
+  <Flex sx={{ height: 48, alignItems: "center", ...containerSx }}>
     <BackButton
       to={breadcrumbs[Math.max(breadcrumbs.length - 2, 0)].to ?? "/"}
       state={{ preserveScroll: true }}

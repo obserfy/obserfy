@@ -1,4 +1,5 @@
 import { useMutation } from "react-query"
+import { track } from "../../../analytics"
 import { BASE_URL } from "../useApi"
 import { useGetStudentImagesCache } from "./useGetStudentImages"
 
@@ -21,7 +22,7 @@ const usePostNewStudentImage = (studentId: string) => {
 
   return useMutation(postNewImage, {
     onSuccess: async (response) => {
-      analytics.track("Student Image Uploaded")
+      track("Student Image Uploaded")
 
       const images = cache.getData() ?? []
       images.push(response)

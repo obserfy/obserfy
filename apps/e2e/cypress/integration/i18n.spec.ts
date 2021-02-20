@@ -1,6 +1,6 @@
 describe("test i18n", function () {
   beforeEach(function () {
-    cy.clearSW()
+    // cy.clearSW()
     cy.registerVor()
   })
 

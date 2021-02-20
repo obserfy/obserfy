@@ -1,4 +1,5 @@
 import { useMutation, useQueryClient } from "react-query"
+import { track } from "../../../analytics"
 import { getSchoolId } from "../../schoolIdState"
 import { deleteApi } from "../fetchApi"
 
@@ -8,7 +9,7 @@ const useDeletePlan = (planId: string) => {
 
   return useMutation(deleteClass, {
     onSuccess: async () => {
-      analytics.track("Plan Deleted")
+      track("Plan Deleted")
       await queryCache.invalidateQueries(["plans", getSchoolId()])
     },
   })
