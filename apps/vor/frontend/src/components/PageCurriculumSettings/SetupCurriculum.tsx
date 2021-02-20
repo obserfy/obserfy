@@ -1,5 +1,5 @@
 import { t, Trans } from "@lingui/macro"
-import React, { FC, useState } from "react"
+import React, { ChangeEventHandler, FC, useRef } from "react"
 import { Box, Button, Card, Flex } from "theme-ui"
 import useImportCurriculum from "../../hooks/api/curriculum/useImportCurriculum"
 import usePostNewCurriculum from "../../hooks/api/curriculum/usePostNewCurriculum"
@@ -33,8 +33,6 @@ const SetupCurriculum: FC = () => {
         <Trans>Setup curriculum</Trans>
       </Typography.H6>
 
-      <ImportButton />
-
       <Flex p={3} sx={{ flexFlow: ["column", "row"] }}>
         <Card p={3} mr={[0, 3]} mb={[3, 0]} sx={{ width: [undefined, "50%"] }}>
           <Typography.H6 mb={2}>Montessori</Typography.H6>
@@ -48,6 +46,7 @@ const SetupCurriculum: FC = () => {
             <Trans>Use Montessori</Trans>
           </Button>
         </Card>
+
         <Card p={3} sx={{ width: [undefined, "50%"] }}>
           <Typography.H6 mb={2}>
             <Trans>Custom</Trans>
@@ -63,6 +62,8 @@ const SetupCurriculum: FC = () => {
         </Card>
       </Flex>
 
+      <ImportCard />
+
       {newDialog.visible && (
         <NewCustomCurriculumDialog onDismiss={newDialog.hide} />
       )}
@@ -70,47 +71,64 @@ const SetupCurriculum: FC = () => {
   )
 }
 
-const ImportButton: FC = () => {
+const ImportCard: FC = () => {
   const importCurriculum = useImportCurriculum()
   const importDialog = useVisibilityState()
-  const [file, setFile] = useState<File>()
+  const fileInput = useRef<HTMLInputElement>(null)
 
-  const handleImport = async () => {
+  const handleImport: ChangeEventHandler<HTMLInputElement> = async (e) => {
+    const file = e.target.files?.[0]
     if (file) {
       try {
         const result = await importCurriculum.mutateAsync(file)
         if (result?.ok) {
           console.log("success")
         }
-      } catch (e) {
-        Sentry.captureException(e)
+      } catch (err) {
+        Sentry.captureException(err)
       }
     }
     importDialog.hide()
   }
 
+  const handleOpenFilePicker = () => {
+    fileInput.current?.click()
+  }
+
   return (
     <>
-      <Box p={3}>
-        <Flex>
-          <Input
-            type="file"
-            accept=".csv"
-            onChange={async (e) => setFile(e.target.files?.[0])}
+      <Card mx={3} p={3} sx={{ flexBasis: [undefined, "50%"] }}>
+        <Typography.H6 mb={2}>
+          <Trans>Import</Trans>
+        </Typography.H6>
+        <Typography.Body mb={3}>
+          <Trans>Import curriculum data from csv file that you have.</Trans>
+        </Typography.Body>
+        <Button onClick={importDialog.show}>
+          <Trans>Import</Trans>
+        </Button>
+      </Card>
+
+      {importDialog.visible && (
+        <>
+          <AlertDialog
+            title={t`Import Curriculum`}
+            body={t`This will import all data in csv file to a new curriculum, continue?`}
+            onNegativeClick={importDialog.hide}
+            onPositiveClick={handleOpenFilePicker}
+            positiveText={t`Import`}
           />
-          <Button onClick={importDialog.show}>
-            <Trans>Import</Trans>
-          </Button>
-          {importDialog.visible && (
-            <AlertDialog
-              title={t`Import Curriculum`}
-              body={t`This will import all data in csv file to a new curriculum, continue?`}
-              onNegativeClick={importDialog.hide}
-              onPositiveClick={handleImport}
+
+          <Box sx={{ display: "none" }}>
+            <Input
+              ref={fileInput}
+              type="file"
+              accept=".csv"
+              onChange={handleImport}
             />
-          )}
-        </Flex>
-      </Box>
+          </Box>
+        </>
+      )}
     </>
   )
 }
