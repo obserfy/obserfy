@@ -1,6 +1,7 @@
 import { t, Trans } from "@lingui/macro"
-import React, { FC } from "react"
+import React, { FC, useState } from "react"
 import { Box, Button, Card, Flex } from "theme-ui"
+import useImportCurriculum from "../../hooks/api/curriculum/useImportCurriculum"
 import usePostNewCurriculum from "../../hooks/api/curriculum/usePostNewCurriculum"
 import useVisibilityState from "../../hooks/useVisibilityState"
 import { ADMIN_URL } from "../../routes"
@@ -70,9 +71,21 @@ const SetupCurriculum: FC = () => {
 }
 
 const ImportButton: FC = () => {
+  const importCurriculum = useImportCurriculum()
   const importDialog = useVisibilityState()
+  const [file, setFile] = useState<File>()
 
   const handleImport = async () => {
+    if (file) {
+      try {
+        const result = await importCurriculum.mutateAsync(file)
+        if (result?.ok) {
+          console.log("success")
+        }
+      } catch (e) {
+        Sentry.captureException(e)
+      }
+    }
     importDialog.hide()
   }
 
@@ -80,14 +93,18 @@ const ImportButton: FC = () => {
     <>
       <Box p={3}>
         <Flex>
-          <Input type="file" />
+          <Input
+            type="file"
+            accept=".csv"
+            onChange={async (e) => setFile(e.target.files?.[0])}
+          />
           <Button onClick={importDialog.show}>
             <Trans>Import</Trans>
           </Button>
           {importDialog.visible && (
             <AlertDialog
               title={t`Import Curriculum`}
-              body={t`This will export all currently visible observations as a csv file, continue?`}
+              body={t`This will import all data in csv file to a new curriculum, continue?`}
               onNegativeClick={importDialog.hide}
               onPositiveClick={handleImport}
             />
