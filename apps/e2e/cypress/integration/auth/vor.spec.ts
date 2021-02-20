@@ -2,7 +2,7 @@ describe("test vor authentication", function () {
   const faker = require("faker")
 
   beforeEach(function () {
-    cy.clearSW()
+    // cy.clearSW()
   })
 
   it("should be redirected to login", function () {

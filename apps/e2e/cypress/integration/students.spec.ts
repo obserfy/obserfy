@@ -2,7 +2,7 @@ import * as faker from "faker"
 
 describe("test student features", function () {
   beforeEach(function () {
-    cy.clearSW()
+    // cy.clearSW()
     cy.fixedClearCookies()
     cy.registerVor()
     cy.gaiaLogin()
