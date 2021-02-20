@@ -2,7 +2,7 @@ describe("test curriculum features", function () {
   const faker = require("faker")
 
   beforeEach(function () {
-    cy.clearSW()
+    // cy.clearSW()
     cy.registerVor()
   })
 
@@ -19,22 +19,24 @@ describe("test curriculum features", function () {
 
     cy.wait(100)
     cy.contains("Use Montessori", { matchCase: false }).click()
-    cy.contains("New Area").click()
+    cy.contains("Add new area").click()
     cy.contains("Area Name", { matchCase: false }).type(newAreaName)
     cy.contains("Save").click()
 
     cy.contains("p", newAreaName).click()
     cy.wait(500)
-    cy.contains("New").click()
+    cy.contains("Add new subject").click()
 
     cy.contains("Subject name").type(newSubjectName)
+    cy.contains("Save").click()
+    cy.contains(newSubjectName).click()
 
     newMaterialNames.forEach((name) => {
-      cy.contains("Add material").click()
-      cy.get("[data-cy=materialNameInputEmpty]").type(name)
+      cy.contains("Add new material").click()
+      cy.contains("Material name").type(name)
+      cy.contains("Save").click()
     })
 
-    cy.contains("Save").click()
     newMaterialNames.forEach((name) => {
       cy.contains(name).should("be.visible")
     })

@@ -1,4 +1,5 @@
 import { useMutation, useQueryClient } from "react-query"
+import { track } from "../../../analytics"
 import { navigate } from "../../../components/Link/Link"
 import { getSchoolId } from "../../schoolIdState"
 import { ApiError, BASE_URL } from "../useApi"
@@ -39,7 +40,7 @@ export const usePostNewGuardian = (studentId?: string) => {
 
   return useMutation(postNewGuardian, {
     onSuccess: async () => {
-      analytics.track("Guardian Created")
+      track("Guardian Created")
       await queryCache.invalidateQueries(["student", studentId])
     },
   })

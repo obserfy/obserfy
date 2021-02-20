@@ -2,37 +2,26 @@
 const sentryPlugin =
   process.env.NODE_ENV === "production"
     ? [
-        {
-          resolve: "@sentry/gatsby",
-          options: {
-            dsn: "https://05a5ecaa1d8c4c01b96d2a7993fa9337@sentry.io/1852524",
-            release: require("fs").readFileSync("../../../VERSION", "utf8"),
-            tracesSampleRate: 0.1,
-          },
-        },
-      ]
-    : []
-
-const graphqlCodeGen =
-  process.env.NODE_ENV === "development"
-    ? [
-        {
-          resolve: `gatsby-plugin-graphql-codegen`,
-          options: {
-            codegen: process.env.NODE_ENV === "development",
-            fileName: `./graphql-types.ts`,
-            documentPaths: ["./src/**/*.{ts,tsx}"],
-          },
-        },
-      ]
-    : []
+      {
+        resolve: "@sentry/gatsby",
+        options: {
+          dsn: "https://05a5ecaa1d8c4c01b96d2a7993fa9337@sentry.io/1852524",
+          release: require("fs").readFileSync("../../../VERSION", "utf8"),
+          tracesSampleRate: 0.1
+        }
+      }
+    ]
+    : [];
 
 module.exports = {
+  flags: {
+    PRESERVE_WEBPACK_CACHE: true
+  },
   siteMetadata: {
     title: `Obserfy for Teachers`,
     description: `Record keeping tool for montessori schools.`,
     author: `@chrsep`,
-    siteUrl: `https://app.obserfy.com`,
+    siteUrl: `https://app.obserfy.com`
   },
   plugins: [
     `gatsby-plugin-preact`,
@@ -44,8 +33,8 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
-      },
+        path: `${__dirname}/src/images`
+      }
     },
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
@@ -63,9 +52,9 @@ module.exports = {
         icon: `src/images/logo-transparent.png`, // This path is relative to the root of the site.
         icon_options: {
           // For all the options available, please see the additional resources below.
-          purpose: `any maskable`,
-        },
-      },
+          purpose: `any maskable`
+        }
+      }
     },
     // `gatsby-plugin-offline`,
     `gatsby-plugin-remove-serviceworker`,
@@ -74,11 +63,10 @@ module.exports = {
       resolve: `gatsby-plugin-segment-js`,
       options: {
         prodKey: `a2pLn3x1wfkoSpgCxAb1sHiMRPraq6hW`,
-        devKey: `mmWAsCJqhsbHOArCtFhRCUvtAkr8WkzR`,
         trackPage: true,
         delayLoad: true,
-        delayLoadTime: 1000,
-      },
+        delayLoadTime: 1000
+      }
     },
     {
       resolve: "gatsby-plugin-svgr",
@@ -87,15 +75,15 @@ module.exports = {
         svgo: true, // use svgo to optimize SVGs (default)
         svgoConfig: {
           removeViewBox: true, // remove viewBox when possible (default)
-          cleanupIDs: true, // remove unused IDs and minify remaining IDs (default)
-        },
-      },
+          cleanupIDs: true // remove unused IDs and minify remaining IDs (default)
+        }
+      }
     },
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
-        siteUrl: `https://app.obserfy.com`,
-      },
+        siteUrl: `https://app.obserfy.com`
+      }
     },
     {
       resolve: `gatsby-plugin-nprogress`,
@@ -103,29 +91,36 @@ module.exports = {
         // Setting a color is optional.
         color: `#00a06d`,
         // Disable the loading spinner.
-        showSpinner: false,
-      },
+        showSpinner: false
+      }
     },
     ...sentryPlugin,
-    ...graphqlCodeGen,
     {
       resolve: `gatsby-theme-i18n`,
       options: {
         defaultLang: `en`,
-        configPath: require.resolve(`./i18n/config.json`),
-      },
+        configPath: require.resolve(`./i18n/config.json`)
+      }
     },
     {
       resolve: `gatsby-theme-i18n-lingui`,
       options: {
-        localeDir: `./i18n/lingui`,
-      },
+        localeDir: `./i18n/lingui`
+      }
     },
     // DEVTOOLS ================================================================
     {
       resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
       options: {
-        analyzerPort: 3300,
+        analyzerPort: 3300
+      }
+    },
+    {
+      resolve: `gatsby-plugin-typegen`,
+      options: {
+        emitSchema: {
+          "src/__generated__/gatsby-schema.graphql": true,
+        },
       },
     },
   ],
@@ -134,15 +129,15 @@ module.exports = {
       "/api",
       require("http-proxy-middleware").createProxyMiddleware({
         secure: false,
-        target: "https://localhost:8000",
+        target: "https://localhost:8000"
       })
-    )
+    );
     app.use(
       "/auth",
       require("http-proxy-middleware").createProxyMiddleware({
         secure: false,
-        target: "https://localhost:8000",
+        target: "https://localhost:8000"
       })
-    )
-  },
-}
+    );
+  }
+};

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PageNewSubject should render correctly 1`] = `
+exports[`PageCurriculumMaterial should render correctly 1`] = `
 .emotion-0 {
   box-sizing: border-box;
   margin: 0;
@@ -18,15 +18,10 @@ exports[`PageNewSubject should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  margin: auto;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  max-width: 640px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 900px;
+  width: 100%;
 }
 
 .emotion-2 {
@@ -42,6 +37,25 @@ exports[`PageNewSubject should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media screen and (min-width: 40em) {
+  .emotion-2 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 52em) {
+  .emotion-2 {
+    display: none;
+  }
 }
 
 .emotion-3 {
@@ -183,7 +197,7 @@ exports[`PageNewSubject should render correctly 1`] = `
   margin-right: 4px;
 }
 
-.emotion-16 {
+.emotion-19 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -193,38 +207,12 @@ exports[`PageNewSubject should render correctly 1`] = `
   white-space: nowrap;
 }
 
-.emotion-16:last-child {
+.emotion-19:last-child {
   color: var(--theme-ui-colors-textPrimary, #027c5b);
 }
 
-.emotion-16:last-child>.splitter {
+.emotion-19:last-child>.splitter {
   display: none;
-}
-
-.emotion-17 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: bold;
-  line-height: heading;
-  color: var(--theme-ui-colors-text, #37383c);
-  text-rendering: optimizeLegibility;
-  font-size: 20px;
-  margin: 16px;
-}
-
-.emotion-18 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  background-color: var(--theme-ui-colors-background, #f2f3f5);
-}
-
-.emotion-19 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
 }
 
 .emotion-20 {
@@ -238,103 +226,48 @@ exports[`PageNewSubject should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  background-color: var(--theme-ui-colors-surface, #fff);
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px,rgba(0, 0, 0, 0.27) 0px 2px 4px -2px;
   width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-size: 14px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
 }
 
 .emotion-22 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  padding-bottom: 4px;
-}
-
-.emotion-23 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
+.emotion-23 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+}
+
 .emotion-24 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  display: block;
-  width: 100%;
-  padding: 8px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-appearance: none;
-  appearance: none;
-  font-size: inherit;
-  line-height: inherit;
-  border: 1px solid;
-  border-radius: 4px;
-  color: inherit;
-  background-color: transparent;
-  border-radius: 6px;
-  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  width: auto;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface, #fff);
-  font-size: 16px;
-  padding: 12px;
   color: var(--theme-ui-colors-text, #37383c);
-  width: 100%;
-}
-
-.emotion-24:hover,
-.emotion-24:focus {
-  border-color: var(--theme-ui-colors-primary, #00e399);
-  outline: none;
-}
-
-.emotion-24::-webkit-input-placeholder {
-  font-style: italic;
-}
-
-.emotion-24::-moz-placeholder {
-  font-style: italic;
-}
-
-.emotion-24:-ms-input-placeholder {
-  font-style: italic;
-}
-
-.emotion-24::placeholder {
-  font-style: italic;
-}
-
-.emotion-24:disabled {
-  opacity: 0.68;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
+  font-size: 14px;
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+  margin-bottom: 4px;
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  line-height: 1;
+  font-size: 12px;
 }
 
 .emotion-25 {
@@ -345,90 +278,9 @@ exports[`PageNewSubject should render correctly 1`] = `
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
-  padding-left: 16px;
-  padding-right: 16px;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
-  font-size: 16px;
-  font-weight: bold;
 }
 
 .emotion-26 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  width: 100%;
-  overflow: hidden;
-}
-
-.emotion-27 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  cursor: pointer;
-  position: relative;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  background-color: var(--theme-ui-colors-background, #f2f3f5);
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.emotion-28 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  max-width: 100%;
-  height: auto;
-  margin-right: 8px;
-  fill: var(--theme-ui-colors-primary, #00e399);
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  width: 20px;
-  height: 20px;
-}
-
-.emotion-29 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
-  font-size: 14px;
-  text-rendering: optimizeLegibility;
-  line-height: 1.5;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
-  font-size: 14px;
-}
-
-.emotion-30 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  padding: 16px;
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  -webkit-justify-content: flex-end;
-  justify-content: flex-end;
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.emotion-31 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -457,8 +309,8 @@ exports[`PageNewSubject should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-onPrimary, #000);
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  background-color: var(--theme-ui-colors-surface, #fff);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
@@ -484,27 +336,290 @@ exports[`PageNewSubject should render correctly 1`] = `
   -webkit-justify-content: center;
   justify-content: center;
   touch-action: manipulation;
-  box-shadow: rgba(27, 31, 35, 0.1) 0px 1px 0px 0px,rgba(255, 255, 255, 0.03) 0px 1px 0px 0px inset;
+  box-shadow: none;
   border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   border-style: solid;
   border-width: 1px;
   line-height: 1;
+  margin-left: auto;
+  padding-left: 8px;
+  padding-right: 8px;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
 
-.emotion-31:disabled {
+.emotion-26:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-31:hover,
-.emotion-31:focus {
-  background-color: var(--theme-ui-colors-primaryDark, #00a06d);
+.emotion-26:hover,
+.emotion-26:focus {
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
+  border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-31:hover:disabled,
-.emotion-31:focus:disabled {
+.emotion-26:hover:disabled,
+.emotion-26:focus:disabled {
+  background-color: transparent;
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+}
+
+.emotion-27 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.emotion-28 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  background-color: var(--theme-ui-colors-surface, #fff);
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px,rgba(0, 0, 0, 0.27) 0px 2px 4px -2px;
+  margin-top: 16px;
+  padding-bottom: 8px;
+}
+
+.emotion-29 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+}
+
+.emotion-30 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-31 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: var(--theme-ui-colors-text, #37383c);
+  font-size: 14px;
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+  margin: 16px;
+  font-weight: bold;
+}
+
+.emotion-32 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  display: inline-block;
+  text-align: center;
+  line-height: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: inherit;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: white;
   background-color: var(--theme-ui-colors-primary, #00e399);
+  border: 0;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  background-color: var(--theme-ui-colors-surface, #fff);
+  border-radius: 6px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  white-space: nowrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  touch-action: manipulation;
+  box-shadow: none;
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-style: solid;
+  border-width: 1px;
+  line-height: 1;
+  margin-left: auto;
+  margin-right: 16px;
+  padding: 8px;
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+}
+
+.emotion-32:disabled {
+  opacity: 0.38;
+  cursor: auto;
+}
+
+.emotion-32:hover,
+.emotion-32:focus {
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
+  border-color: var(--theme-ui-colors-primary, #00e399);
+  outline: none;
+}
+
+.emotion-32:hover:disabled,
+.emotion-32:focus:disabled {
+  background-color: transparent;
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+}
+
+.emotion-34 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin: 16px;
+}
+
+.emotion-35 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  display: inline-block;
+  text-align: center;
+  line-height: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: inherit;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: white;
+  background-color: var(--theme-ui-colors-primary, #00e399);
+  border: 0;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  background-color: var(--theme-ui-colors-surface, #fff);
+  border-radius: 6px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  white-space: nowrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  touch-action: manipulation;
+  box-shadow: none;
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-style: solid;
+  border-width: 1px;
+  line-height: 1;
+  margin-left: auto;
+  margin-top: 16px;
+  color: var(--theme-ui-colors-danger, #d50000);
+}
+
+.emotion-35:disabled {
+  opacity: 0.38;
+  cursor: auto;
+}
+
+.emotion-35:hover,
+.emotion-35:focus {
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
+  border-color: var(--theme-ui-colors-primary, #00e399);
+  outline: none;
+}
+
+.emotion-35:hover:disabled,
+.emotion-35:focus:disabled {
+  background-color: transparent;
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+}
+
+.emotion-36 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  margin-right: 8px;
+  fill: var(--theme-ui-colors-danger, #d50000);
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
 }
 
 <div>
@@ -520,7 +635,7 @@ exports[`PageNewSubject should render correctly 1`] = `
         <a
           class="emotion-3"
           data-cy="back-button"
-          href="/dashboard/admin/curriculum/area?id=sadf"
+          href="/dashboard/admin/curriculum/subjects?areaId=&subjectId="
         >
           <button
             class="emotion-4"
@@ -565,13 +680,24 @@ exports[`PageNewSubject should render correctly 1`] = `
           </a>
           <a
             class="emotion-7"
-            href="/dashboard/admin/curriculum/area?id=sadf"
+            href="/dashboard/admin/curriculum/area?areaId="
           >
             <span
               class="emotion-8"
+            />
+            <span
+              class="splitter emotion-9"
             >
-              undefined Area
+              /
             </span>
+          </a>
+          <a
+            class="emotion-7"
+            href="/dashboard/admin/curriculum/subjects?areaId=&subjectId="
+          >
+            <span
+              class="emotion-8"
+            />
             <span
               class="splitter emotion-9"
             >
@@ -579,9 +705,9 @@ exports[`PageNewSubject should render correctly 1`] = `
             </span>
           </a>
           <div
-            class="emotion-16"
+            class="emotion-19"
           >
-            New Subject
+            Material
             <span
               class="splitter"
             >
@@ -590,69 +716,79 @@ exports[`PageNewSubject should render correctly 1`] = `
           </div>
         </div>
       </div>
-      <h6
-        class="emotion-17"
-      >
-        New Subject
-      </h6>
       <div
-        class="emotion-18"
+        class="emotion-20"
       >
         <div
-          class="emotion-19"
+          class="emotion-21"
         >
           <div
-            class="emotion-20"
-          >
-            <label
-              class="emotion-21"
-            >
-              <div
-                class="emotion-22"
-              >
-                Subject name
-              </div>
-              <div
-                class="emotion-23"
-              >
-                <input
-                  class="emotion-24"
-                  value=""
-                />
-              </div>
-            </label>
-          </div>
-          <p
-            class="emotion-25"
-          >
-            Materials
-          </p>
-          <div
-            class="emotion-26"
-          />
-          <div
-            class="emotion-27"
+            class="emotion-22"
           >
             <div
-              class="emotion-28"
-              width="24"
-            />
-            <p
-              class="emotion-29"
+              class="emotion-23"
             >
-              Add material
-            </p>
+              <p
+                class="emotion-24"
+              >
+                Material Name
+              </p>
+              <p
+                class="emotion-25"
+              >
+                ...
+              </p>
+            </div>
+            <button
+              aria-label="edit-material-name"
+              class="emotion-26"
+            >
+              <div
+                class="emotion-27"
+              />
+            </button>
           </div>
         </div>
-      </div>
-      <div
-        class="emotion-30"
-      >
-        <button
-          class="emotion-31"
-          disabled=""
+        <div
+          class="emotion-28"
         >
-          Save
+          <div
+            class="emotion-29"
+          >
+            <div
+              class="emotion-30"
+            >
+              <p
+                class="emotion-31"
+              >
+                Description
+              </p>
+              <button
+                aria-label="edit-description"
+                class="emotion-32"
+                data-cy="edit-description"
+              >
+                <div
+                  class="emotion-27"
+                />
+              </button>
+            </div>
+            <div
+              class="prose prose-sm max-w-none undefined emotion-34"
+            >
+              <p>
+                ...
+              </p>
+            </div>
+          </div>
+        </div>
+        <button
+          class="emotion-35"
+        >
+          <div
+            class="emotion-36"
+          />
+          Delete
         </button>
       </div>
     </div>

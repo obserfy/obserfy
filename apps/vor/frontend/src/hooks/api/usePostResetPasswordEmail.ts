@@ -1,4 +1,5 @@
 import { useMutation } from "react-query"
+import { track } from "../../analytics"
 
 const usePostResetPasswordEmail = () => {
   const postMailReset = async (email: string) => {
@@ -17,7 +18,7 @@ const usePostResetPasswordEmail = () => {
   }
   return useMutation(postMailReset, {
     onSuccess: () => {
-      analytics.track("Password Reset")
+      track("Password Reset")
     },
   })
 }

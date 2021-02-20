@@ -2,7 +2,7 @@ import * as faker from "faker"
 
 describe("test student features", function () {
   beforeEach(function () {
-    cy.clearSW()
+    // cy.clearSW()
     cy.fixedClearCookies()
     cy.registerVor()
     cy.gaiaLogin()
@@ -160,16 +160,5 @@ describe("test student features", function () {
     cy.contains("Yes").click()
     cy.visitVor("/dashboard/students")
     cy.contains(newName).should("not.exist")
-  })
-
-  it("should be able to show student to parent", function () {
-    cy.exec(`yarn run db:reset ${Cypress.env("GAIA_USERNAME")}`)
-    cy.createStudent()
-      .then(() => cy.createGuardian(this.student.id))
-      .then(() => cy.gaiaLogin())
-      .then(() => {
-        cy.visitGaia("/")
-        cy.contains(this.student.name).should("be.visible")
-      })
   })
 })

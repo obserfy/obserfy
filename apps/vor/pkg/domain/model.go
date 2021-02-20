@@ -31,31 +31,35 @@ type (
 
 	// Curriculum data
 	Curriculum struct {
-		Id    string
-		Name  string
-		Areas []Area
+		Id          string
+		Name        string
+		Areas       []Area
+		Description string
 	}
 
 	Area struct {
-		Id       string
-		Name     string
-		Subjects []Subject
+		Id          string
+		Name        string
+		Subjects    []Subject
+		Description string
 	}
 
 	Subject struct {
-		Id        string
-		AreaId    string
-		Name      string
-		Order     int
-		Materials []Material
+		Id          string
+		AreaId      string
+		Name        string
+		Order       int
+		Materials   []Material
+		Description string
 	}
 
 	Material struct {
-		Id        string
-		SubjectId string
-		Subject   Subject
-		Name      string
-		Order     int
+		Id          string
+		SubjectId   string
+		Subject     Subject
+		Name        string
+		Order       int
+		Description string
 	}
 )
 

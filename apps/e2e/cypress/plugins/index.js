@@ -12,9 +12,13 @@ module.exports = (on) => {
             test: /\.ts$/,
             use: [
               {
-                loader: "ts-loader",
+                loader: "swc-loader",
                 options: {
-                  transpileOnly: true,
+                  jsc: {
+                    parser: {
+                      syntax: "typescript",
+                    },
+                  },
                 },
               },
             ],

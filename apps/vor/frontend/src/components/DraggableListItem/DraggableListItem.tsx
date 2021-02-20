@@ -1,79 +1,111 @@
-import React, { TouchEvent, MouseEvent, FC, useRef, useState } from "react"
-import { Flex, Box } from "theme-ui"
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock"
+import React, { FC, MouseEvent, TouchEvent, useRef, useState } from "react"
+import { Box, Flex, ThemeUIStyleObject } from "theme-ui"
+import { OrderedItem } from "../../hooks/useMoveDraggableItem"
+import { ReactComponent as GridIcon } from "../../icons/grid_round.svg"
 
-import Icon from "../Icon/Icon"
-import { ReactComponent as GridIcon } from "../../icons/grid.svg"
+function useTransientState<T>(defaultState: T, subscribe: (state: T) => void) {
+  const currentState = useRef<T>(defaultState)
+
+  return (state: T) => {
+    currentState.current = state
+    subscribe(state)
+  }
+}
 
 interface Props {
-  order: number
-  moveItem: (order: number, offset: number, originalOrder: number) => void
+  item: OrderedItem
+  moveItem: (item: OrderedItem, newOrder: number) => void
   height: number
+  containerSx?: ThemeUIStyleObject
 }
-export const DraggableListItem: FC<Props> = ({
+const DraggableListItem: FC<Props> = ({
   children,
   moveItem,
-  order,
   height,
+  containerSx,
+  item,
 }) => {
-  const originalOrder = useRef(0)
-  const [isDragging, setIsDragging] = useState(false)
-  const [dragOffset, setDragOffset] = useState(0)
-  const startingY = useRef(0)
-
-  const onDragStart = (
-    e: TouchEvent<HTMLDivElement> | MouseEvent<HTMLDivElement>,
-    clientY: number
-  ) => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop
-
-    setDragOffset(clientY + scrollTop - 24)
-    startingY.current = clientY
-    setIsDragging(true)
-    originalOrder.current = order
-  }
-  const onDragging = (
-    e: TouchEvent<HTMLDivElement> | MouseEvent<HTMLDivElement>,
-    clientY: number
-  ) => {
-    if (isDragging) {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop
-      const offset = clientY - startingY.current
-      setDragOffset(clientY + scrollTop - 24)
-      moveItem(order, offset, originalOrder.current)
-      e.preventDefault()
+  const container = useRef<HTMLDivElement>(null)
+  const setTranslateY = useTransientState(0, (state) => {
+    if (container.current) {
+      container.current.style.transform = `translateY(${state}px)`
     }
+  })
+
+  const [isGrabbed, setIsGrabbed] = useState(false)
+  const mouseStartingYPosition = useRef(0)
+  const originalOrder = useRef(0)
+  const dragHandle = useRef<HTMLDivElement>(null)
+
+  // used to make drag handle on the middle of the item
+  const itemMidPoint = height / 2
+
+  const recalculateYTranslate = (mouseYPosition: number) => {
+    setTranslateY(mouseYPosition - itemMidPoint)
   }
-  const onDragStop = () => {
-    setDragOffset(0)
-    setIsDragging(false)
+
+  const handleDrag = (e: MouseEvent | TouchEvent, mouseYPosition: number) => {
+    if (!isGrabbed) return
+    e.preventDefault()
+    e.stopPropagation()
+
+    recalculateYTranslate(mouseYPosition)
+    const dragYOffset = mouseYPosition - mouseStartingYPosition.current
+    const orderOffset =
+      dragYOffset < 0
+        ? Math.ceil((dragYOffset - itemMidPoint) / height)
+        : Math.floor((dragYOffset + itemMidPoint) / height)
+
+    moveItem(item, originalOrder.current + orderOffset)
+  }
+
+  const handleGrabbed = (
+    e: MouseEvent | TouchEvent,
+    mouseYPosition: number
+  ) => {
+    if (!dragHandle.current) return
+    e.preventDefault()
+    e.stopPropagation()
+    disableBodyScroll(dragHandle.current, {
+      reserveScrollBarGap: true,
+    })
+
+    recalculateYTranslate(mouseYPosition)
+    mouseStartingYPosition.current = mouseYPosition
+    originalOrder.current = item.order
+    setIsGrabbed(true)
+  }
+
+  const handleReleased = (e: MouseEvent | TouchEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    if (!dragHandle.current) return
+    enableBodyScroll(dragHandle.current)
+    setTranslateY(0)
+    setIsGrabbed(false)
   }
 
   return (
     <Box
-      sx={{ height: 48 }}
-      backgroundColor="primaryLightest"
-      onMouseMove={(e) => {
-        // @ts-ignore
-        onDragging(e, e.clientY)
-      }}
-      onTouchMove={(e) => onDragging(e, e.targetTouches[0].clientY)}
+      sx={{ width: "100%", maxWidth: "inherit", height, ...containerSx }}
+      onMouseMove={(e) => handleDrag(e, e.clientY)}
+      onTouchMove={(e) => handleDrag(e, e.targetTouches[0].clientY)}
     >
       <Flex
-        backgroundColor={isDragging ? "surface" : "background"}
+        ref={container}
+        backgroundColor={isGrabbed ? "surface" : "transparent"}
         sx={{
           height,
           alignItems: "center",
           userSelect: "none",
-          width: "100%",
-          maxWidth: 640,
-          borderBottomColor: "border",
-          borderBottomWidth: 1,
-          borderBottomStyle: "solid",
-          boxShadow: isDragging ? "low" : undefined,
+          width: "inherit",
+          maxWidth: "inherit",
+          boxShadow: isGrabbed ? "low" : undefined,
           transition: "background-color .1s ease-in, box-shadow .1s ease-in",
-          position: isDragging ? "absolute" : "relative",
-          transform: `translateY(${dragOffset}px)`,
-          zIndex: isDragging ? 10 : 1,
+          position: isGrabbed ? "fixed" : "relative",
+          zIndex: isGrabbed ? 10 : 1,
+          borderRadius: isGrabbed ? "default" : 0,
           top: 0,
         }}
       >
@@ -81,15 +113,18 @@ export const DraggableListItem: FC<Props> = ({
           px={3}
           py={2}
           sx={{ cursor: "move" }}
-          onMouseDown={(e) => {
-            // @ts-ignore
-            onDragStart(e, e.clientY)
+          onClick={(e) => e.preventDefault()}
+          onMouseDown={(e) => handleGrabbed(e, e.clientY)}
+          onTouchStart={(e) => handleGrabbed(e, e.targetTouches[0].clientY)}
+          onMouseUp={handleReleased}
+          onTouchEnd={handleReleased}
+          onContextMenu={(e) => {
+            e.preventDefault()
+            e.stopPropagation()
           }}
-          onMouseUp={onDragStop}
-          onTouchEnd={onDragStop}
-          onTouchStart={(e) => onDragStart(e, e.targetTouches[0].clientY)}
+          ref={dragHandle}
         >
-          <Icon as={GridIcon} sx={{ width: 24 }} />
+          <GridIcon width={20} />
         </Box>
         {children}
       </Flex>

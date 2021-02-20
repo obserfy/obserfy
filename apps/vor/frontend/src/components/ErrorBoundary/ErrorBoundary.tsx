@@ -1,4 +1,5 @@
 import React, { Component, ReactNode } from "react"
+import { track } from "../../analytics"
 
 import PageError from "../PageError/PageError"
 
@@ -27,7 +28,7 @@ export class ErrorBoundary extends Component<{}, State> {
       })
     })
     Sentry.captureException(error)
-    analytics.track("Javascript Error", {
+    track("Javascript Error", {
       error,
       errorInfo,
     })

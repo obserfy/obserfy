@@ -1,4 +1,5 @@
 import { useMutation } from "react-query"
+import { track } from "../../../analytics"
 import { patchApi } from "../fetchApi"
 import { useGetStudentMaterialProgressCache } from "../useGetStudentMaterialProgress"
 
@@ -16,7 +17,7 @@ const usePatchStudentMaterialProgress = (
 
   return useMutation(patchStudentMaterialProgress, {
     onSuccess: async (data) => {
-      analytics.track("Student Material Progress Updated")
+      track("Student Material Progress Updated")
       if (data === undefined) return
       const old = cache.getData()
       const materialIndex = old?.findIndex(

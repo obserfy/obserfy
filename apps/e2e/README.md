@@ -14,8 +14,8 @@
 
 1. Setup your `.env.local` files, this will be used by the e2e scripts to connect to postgres
 1. Start up docker-compose, `docker-compose up` in project root
-2. Start up gaia, `yarn workspace gaia run dev`
-3. Open Cypress `yarn workspace e2e cy:open`
+1. Start up gaia, `yarn workspace gaia run dev`
+1. Open Cypress `yarn workspace e2e cy:open`
 
 ### Noteable Directories
 

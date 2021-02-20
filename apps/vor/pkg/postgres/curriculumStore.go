@@ -11,18 +11,29 @@ type CurriculumStore struct {
 	*pg.DB
 }
 
-func (s CurriculumStore) UpdateCurriculum(curriculumId string, name *string) (*domain.Curriculum, error) {
-	curriculum := make(PartialUpdateModel)
-	curriculum.AddStringColumn("name", name)
-	if _, err := s.Model(curriculum.GetModel()).
+func (s CurriculumStore) UpdateCurriculum(curriculumId string, name *string, description *string) (*domain.Curriculum, error) {
+	updateQuery := make(PartialUpdateModel)
+	updateQuery.AddStringColumn("name", name)
+	updateQuery.AddStringColumn("description", description)
+
+	if _, err := s.Model(updateQuery.GetModel()).
 		TableExpr("curriculums").
 		Where("id = ?", curriculumId).
 		Update(); err != nil {
 		return nil, err
 	}
+
+	curriculum := Curriculum{Id: curriculumId}
+	if err := s.Model(&curriculum).
+		WherePK().
+		Select(); err != nil {
+		return nil, err
+	}
+
 	return &domain.Curriculum{
-		Id:   curriculumId,
-		Name: *name,
+		Id:          curriculum.Id,
+		Name:        curriculum.Name,
+		Description: curriculum.Name,
 	}, nil
 }
 
@@ -235,32 +246,37 @@ func (s CurriculumStore) UpdateMaterial(material *domain.Material, order *int) e
 	return nil
 }
 
-func (s CurriculumStore) NewMaterial(name string, subjectId string) (*domain.Material, error) {
+func (s CurriculumStore) NewMaterial(subjectId string, name string, description string) (*domain.Material, error) {
 	var biggestOrder int
 	if _, err := s.DB.Model((*Material)(nil)).
 		Where("subject_id=?", subjectId).
-		QueryOne(pg.Scan(&biggestOrder), `
-		SELECT MAX("order") FROM ?TableName
-		WHERE subject_id=?
-	`, subjectId); err != nil {
+		QueryOne(
+			pg.Scan(&biggestOrder), `
+				SELECT MAX("order") FROM ?TableName
+				WHERE subject_id=?
+			`,
+			subjectId,
+		); err != nil {
 		return nil, err
 	}
 
 	material := Material{
-		Id:        uuid.New().String(),
-		SubjectId: subjectId,
-		Name:      name,
-		Order:     biggestOrder + 1,
+		Id:          uuid.New().String(),
+		SubjectId:   subjectId,
+		Name:        name,
+		Order:       biggestOrder + 1,
+		Description: description,
 	}
 	if _, err := s.DB.Model(&material).Insert(); err != nil {
 		return nil, err
 	}
 
 	return &domain.Material{
-		Id:        material.Id,
-		SubjectId: material.SubjectId,
-		Name:      material.Name,
-		Order:     material.Order,
+		Id:          material.Id,
+		SubjectId:   material.SubjectId,
+		Name:        material.Name,
+		Order:       material.Order,
+		Description: material.Description,
 	}, nil
 }
 
@@ -280,7 +296,7 @@ func (s CurriculumStore) GetSubject(id string) (*domain.Subject, error) {
 	}, nil
 }
 
-func (s CurriculumStore) NewSubject(name string, areaId string, materials []domain.Material) (*domain.Subject, error) {
+func (s CurriculumStore) NewSubject(name string, areaId string, materials []domain.Material, description string) (*domain.Subject, error) {
 	var biggestOrder int
 	if _, err := s.DB.Model((*Subject)(nil)).
 		Where("area_id=?", areaId).
@@ -292,10 +308,11 @@ func (s CurriculumStore) NewSubject(name string, areaId string, materials []doma
 	}
 
 	subject := Subject{
-		Id:     uuid.New().String(),
-		AreaId: areaId,
-		Name:   name,
-		Order:  biggestOrder + 1,
+		Id:          uuid.New().String(),
+		AreaId:      areaId,
+		Name:        name,
+		Order:       biggestOrder + 1,
+		Description: description,
 	}
 	for i := range materials {
 		materials[i].SubjectId = subject.Id
@@ -315,26 +332,29 @@ func (s CurriculumStore) NewSubject(name string, areaId string, materials []doma
 	}
 
 	return &domain.Subject{
-		Id:     subject.Id,
-		AreaId: subject.AreaId,
-		Name:   subject.Name,
-		Order:  subject.Order,
+		Id:          subject.Id,
+		AreaId:      subject.AreaId,
+		Name:        subject.Name,
+		Order:       subject.Order,
+		Description: subject.Description,
 	}, nil
 }
 
-func (s CurriculumStore) NewArea(name string, curriculumId string) (*domain.Area, error) {
+func (s CurriculumStore) NewArea(curriculumId string, name string, description string) (*domain.Area, error) {
 	id := uuid.New().String()
 	area := Area{
 		Id:           id,
 		CurriculumId: curriculumId,
 		Name:         name,
+		Description:  description,
 	}
 	if _, err := s.Model(&area).Insert(); err != nil {
 		return nil, err
 	}
 	return &domain.Area{
-		Id:   area.Id,
-		Name: area.Name,
+		Id:          area.Id,
+		Name:        area.Name,
+		Description: area.Description,
 	}, nil
 }
 
@@ -347,8 +367,9 @@ func (s CurriculumStore) GetArea(areaId string) (*domain.Area, error) {
 	}
 
 	return &domain.Area{
-		Id:   area.Id,
-		Name: area.Name,
+		Id:          area.Id,
+		Name:        area.Name,
+		Description: area.Description,
 	}, nil
 }
 
@@ -364,9 +385,10 @@ func (s CurriculumStore) GetAreaSubjects(areaId string) ([]domain.Subject, error
 
 	for _, v := range subjects {
 		res = append(res, domain.Subject{
-			Id:    v.Id,
-			Name:  v.Name,
-			Order: v.Order,
+			Id:          v.Id,
+			Name:        v.Name,
+			Order:       v.Order,
+			Description: v.Description,
 		})
 	}
 
@@ -375,23 +397,22 @@ func (s CurriculumStore) GetAreaSubjects(areaId string) ([]domain.Subject, error
 
 func (s CurriculumStore) GetSubjectMaterials(subjectId string) ([]domain.Material, error) {
 	var materials []Material
-	res := make([]domain.Material, 0)
-
 	if err := s.Model(&materials).
 		Where("subject_id=?", subjectId).
 		Select(); err != nil {
 		return nil, err
 	}
 
-	for _, v := range materials {
-		res = append(res, domain.Material{
-			Id:    v.Id,
-			Name:  v.Name,
-			Order: v.Order,
+	result := make([]domain.Material, 0)
+	for _, m := range materials {
+		result = append(result, domain.Material{
+			Id:          m.Id,
+			Name:        m.Name,
+			Order:       m.Order,
+			Description: m.Description,
 		})
 	}
-
-	return res, nil
+	return result, nil
 }
 
 func (s CurriculumStore) DeleteArea(id string) error {

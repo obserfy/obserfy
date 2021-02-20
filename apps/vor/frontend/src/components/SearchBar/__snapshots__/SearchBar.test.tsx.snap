@@ -59,6 +59,23 @@ exports[`SearchBar should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  max-width: 100%;
+  height: auto;
+  margin-right: -28px;
+  margin-left: 8px;
+  width: 20px;
+  height: 20px;
+  z-index: 2;
+  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.emotion-4 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
   display: block;
   width: 100%;
   padding: 8px;
@@ -84,32 +101,33 @@ exports[`SearchBar should render correctly 1`] = `
   padding-bottom: 8px;
   background-color: var(--theme-ui-colors-surface, #fff);
   width: 100%;
+  padding-left: 34px;
   font-size: 14px;
 }
 
-.emotion-3:hover,
-.emotion-3:focus {
+.emotion-4:hover,
+.emotion-4:focus {
   border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-3::-webkit-input-placeholder {
+.emotion-4::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-3::-moz-placeholder {
+.emotion-4::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-3:-ms-input-placeholder {
+.emotion-4:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-3::placeholder {
+.emotion-4::placeholder {
   font-style: italic;
 }
 
-.emotion-3:disabled {
+.emotion-4:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
@@ -125,8 +143,11 @@ exports[`SearchBar should render correctly 1`] = `
       <div
         class="emotion-2"
       >
-        <input
+        <div
           class="emotion-3"
+        />
+        <input
+          class="emotion-4"
           name="name"
           placeholder="Search"
           value=""

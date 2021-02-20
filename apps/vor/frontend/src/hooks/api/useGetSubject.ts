@@ -4,7 +4,7 @@ import { Subject } from "./useGetAreaSubjects"
 
 export function useGetSubject(
   subjectId: string,
-  option: UseQueryOptions<Subject>
+  option?: UseQueryOptions<Subject>
 ) {
   const fetchSubjectMaterials = getApi<Subject>(
     `/curriculums/subjects/${subjectId}`
