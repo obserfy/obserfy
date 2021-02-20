@@ -8,7 +8,7 @@ msgstr ""
 "Language: id\n"
 "Project-Id-Version: a9762ad8ff131d2a39fce5fce9d2fb91\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2021-02-04 09:38\n"
+"PO-Revision-Date: 2021-02-20 13:22\n"
 "Last-Translator: \n"
 "Language-Team: Indonesian\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -27,7 +27,7 @@ msgstr "\"{0}\" akan dihapus secara permanen. Apa anda yakin?"
 #~ msgstr "(Starting on Jan 1st 2021)"
 
 #: src/components/DeleteClassDialog/DeleteClassDialog.tsx:63
-#: src/components/DeleteSubjectDialog/DeleteSubjectDialog.tsx:30
+#: src/components/DeleteSubjectDialog/DeleteSubjectDialog.tsx:33
 msgid "<0>\"{name}\"</0> and student data related to it will be permanently deleted. Are you sure?"
 msgstr ""
 
@@ -70,9 +70,21 @@ msgstr ""
 msgid "Add more email"
 msgstr "Tambah email"
 
+#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:89
+msgid "Add new area"
+msgstr ""
+
+#: src/components/PageCurriculumSubject/PageCurriculumSubject.tsx:79
+msgid "Add new material"
+msgstr ""
+
 #: src/components/PageStudentPlans/PageStudentPlans.tsx:76
 msgid "Add new plan"
 msgstr "Tambah rencana baru"
+
+#: src/components/PageCurriculumArea/PageCurriculumArea.tsx:78
+msgid "Add new subject"
+msgstr ""
 
 #: src/components/PageStudentPlanDetails/LessonPlanDescriptionCard.tsx:40
 msgid "Add some description here"
@@ -152,8 +164,8 @@ msgstr "Bidang"
 msgid "Area name"
 msgstr ""
 
-#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:117
-#: src/pages/dashboard/admin/curriculum/area.tsx:17
+#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:69
+#: src/pages/dashboard/admin/curriculum/area.tsx:18
 msgid "Areas"
 msgstr "Bidang"
 
@@ -252,7 +264,7 @@ msgid "Current classes"
 msgstr ""
 
 #: src/components/PageAdmin/PageAdmin.tsx:54
-#: src/pages/dashboard/admin/curriculum/index.tsx:7
+#: src/pages/dashboard/admin/curriculum/index.tsx:10
 msgid "Curriculum"
 msgstr "Kurikulum"
 
@@ -269,7 +281,7 @@ msgstr "Perkembangan Kurikulum"
 msgid "Curriculum name"
 msgstr ""
 
-#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:95
+#: src/components/PageCurriculumSettings/SetupCurriculum.tsx:51
 msgid "Custom"
 msgstr "Kustom"
 
@@ -299,7 +311,7 @@ msgid "Date of Entry"
 msgstr "Tanggal Masuk"
 
 #: src/components/DeleteCurriculumDialog/DeleteCurriculumDialog.tsx:28
-#: src/components/DeleteSubjectDialog/DeleteSubjectDialog.tsx:19
+#: src/components/DeleteSubjectDialog/DeleteSubjectDialog.tsx:31
 #: src/components/PageEditClass/PageEditClass.tsx:93
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:48
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:53
@@ -323,7 +335,7 @@ msgstr ""
 msgid "Delete Observation?"
 msgstr "Hapus Observasi?"
 
-#: src/components/DeleteSubjectDialog/DeleteSubjectDialog.tsx:19
+#: src/components/DeleteSubjectDialog/DeleteSubjectDialog.tsx:31
 msgid "Delete Subject?"
 msgstr ""
 
@@ -366,6 +378,7 @@ msgstr ""
 msgid "Edit"
 msgstr "Ubah"
 
+#: src/components/EditAreaDialog/EditAreaDialog.tsx:41
 #: src/components/PageObservationDetails/ObservationMetaCard.tsx:63
 msgid "Edit Area"
 msgstr "Ubah Bidang"
@@ -617,10 +630,15 @@ msgstr ""
 msgid "Mastered"
 msgstr "Dikuasai"
 
+#: src/pages/dashboard/admin/curriculum/material/index.tsx:23
+msgid "Material"
+msgstr ""
+
 #: src/components/DraggableMaterialListItem/DraggableMaterialListItem.tsx:85
 msgid "Material name"
 msgstr ""
 
+#: src/components/PageCurriculumSubject/PageCurriculumSubject.tsx:70
 #: src/components/PageEditSubject/PageEditSubject.tsx:111
 #: src/components/PageNewSubject/PageNewSubject.tsx:87
 msgid "Materials"
@@ -647,13 +665,11 @@ msgid "Name (Required)"
 msgstr "Nama (Wajib)"
 
 #: src/components/PageClassSettings/PageClassSettings.tsx:30
-#: src/components/PageCurriculumArea/PageCurriculumArea.tsx:73
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:93
 msgid "New"
 msgstr "Baru"
 
 #: src/components/NewAreaDialog/NewAreaDialog.tsx:24
-#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:121
 msgid "New Area"
 msgstr "Bidang Baru"
 
@@ -667,6 +683,10 @@ msgstr "Kelas Baru"
 msgid "New Guardian"
 msgstr "Wali Baru"
 
+#: src/components/PageCurriculumSubject/PageCurriculumSubject.tsx:120
+msgid "New Material"
+msgstr ""
+
 #: src/components/PageNewObservation/PageNewObservation.tsx:82
 msgid "New Observation"
 msgstr "Observasi Baru"
@@ -674,10 +694,11 @@ msgstr "Observasi Baru"
 #: src/components/PageNewStudent/NewStudentForm.tsx:34
 #: src/components/PageNewStudent/PageNewStudent.tsx:28
 #: src/components/PageNewStudentAddGuardian/PageNewStudentAddGuardian.tsx:66
-#: src/components/StudentsList/StudentsList.tsx:80
+#: src/components/StudentsList/StudentsList.tsx:81
 msgid "New Student"
 msgstr "Murid Baru"
 
+#: src/components/PageCurriculumArea/PageCurriculumArea.tsx:124
 #: src/components/PageNewSubject/PageNewSubject.tsx:74
 msgid "New Subject"
 msgstr ""
@@ -781,7 +802,7 @@ msgstr "Observasi"
 msgid "Observations Details"
 msgstr "Detil Observasi"
 
-#: src/components/StudentsList/StudentsList.tsx:49
+#: src/components/StudentsList/StudentsList.tsx:50
 msgid "Oops, we fail to fetch new student data. Please try again in a minute."
 msgstr "Ups, kami gagal mengambil data murid baru. Silahkan coba beberapa saat lagi."
 
@@ -1021,7 +1042,7 @@ msgstr "Pasang sebagai profil?"
 msgid "Settings"
 msgstr "Pengaturan"
 
-#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:71
+#: src/components/PageCurriculumSettings/SetupCurriculum.tsx:34
 msgid "Setup curriculum"
 msgstr "Atur kurikulum"
 
@@ -1059,11 +1080,11 @@ msgstr "Paket Standar"
 msgid "Start Time"
 msgstr "Waktu Mulai"
 
-#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:77
+#: src/components/PageCurriculumSettings/SetupCurriculum.tsx:40
 msgid "Start with a basic Montessori Curriculum that you can modify to your needs."
 msgstr "Mulai dengan Kurikulum Montessori dasar yang dapat Anda modifikasi sesuai kebutuhan."
 
-#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:98
+#: src/components/PageCurriculumSettings/SetupCurriculum.tsx:54
 msgid "Start with a blank curriculum that you can customize from scratch."
 msgstr "Mulai dengan kurikulum kosong yang dapat Anda kustom dari awal."
 
@@ -1093,11 +1114,15 @@ msgstr "ID Murid"
 msgid "Students"
 msgstr "Murid"
 
+#: src/pages/dashboard/admin/curriculum/subjects/index.tsx:22
+msgid "Subject"
+msgstr ""
+
 #: src/components/PageNewSubject/PageNewSubject.tsx:81
 msgid "Subject name"
 msgstr ""
 
-#: src/components/PageCurriculumArea/PageCurriculumArea.tsx:67
+#: src/components/PageCurriculumArea/PageCurriculumArea.tsx:70
 msgid "Subjects"
 msgstr ""
 
@@ -1145,7 +1170,7 @@ msgstr "Beri tahu kami apa yang sudah anda amati"
 msgid "Thanks for Subscribing!"
 msgstr ""
 
-#: src/components/StudentsList/StudentsList.tsx:62
+#: src/components/StudentsList/StudentsList.tsx:63
 msgid "The term <0>\"{term}\"</0> does not match any student"
 msgstr "Tidak ada murid dengan nama <0>\"{term}\"</0>"
 
@@ -1186,7 +1211,7 @@ msgstr "Lacak perkembangan kurikulum"
 msgid "Trial period has ended."
 msgstr ""
 
-#: src/components/StudentsList/StudentsList.tsx:55
+#: src/components/StudentsList/StudentsList.tsx:56
 msgid "Try again"
 msgstr "Coba lagi"
 
@@ -1210,11 +1235,11 @@ msgstr ""
 msgid "Uploading"
 msgstr ""
 
-#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:103
+#: src/components/PageCurriculumSettings/SetupCurriculum.tsx:59
 msgid "Use Custom"
 msgstr "Gunakan Kustom"
 
-#: src/components/PageCurriculumSettings/PageCurriculumSettings.tsx:90
+#: src/components/PageCurriculumSettings/SetupCurriculum.tsx:46
 msgid "Use Montessori"
 msgstr "Gunakan Montessori"
 
@@ -1277,7 +1302,7 @@ msgstr "Anda"
 msgid "You can enable the curriculum feature to track student progress in your curriculum."
 msgstr "Anda dapat mengaktifkan fitur kurikulum untuk melacak perkembangan murid di kurikulum Anda."
 
-#: src/components/StudentsList/StudentsList.tsx:75
+#: src/components/StudentsList/StudentsList.tsx:76
 msgid "You have no student enrolled"
 msgstr "Tidak ada siswa yang terdaftar"
 
