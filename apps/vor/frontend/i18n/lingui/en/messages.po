@@ -22,7 +22,7 @@ msgstr "\"{0}\" will be permanently deleted. Are you sure?"
 #~ msgstr "(Starting on Jan 1st 2021)"
 
 #: src/components/DeleteClassDialog/DeleteClassDialog.tsx:63
-#: src/components/DeleteSubjectDialog/DeleteSubjectDialog.tsx:30
+#: src/components/DeleteSubjectDialog/DeleteSubjectDialog.tsx:33
 msgid "<0>\"{name}\"</0> and student data related to it will be permanently deleted. Are you sure?"
 msgstr "<0>\"{name}\"</0> and student data related to it will be permanently deleted. Are you sure?"
 
@@ -69,7 +69,7 @@ msgstr "Add more email"
 msgid "Add new area"
 msgstr "Add new area"
 
-#: src/components/PageCurriculumSubject/PageCurriculumSubject.tsx:62
+#: src/components/PageCurriculumSubject/PageCurriculumSubject.tsx:79
 msgid "Add new material"
 msgstr "Add new material"
 
@@ -77,7 +77,7 @@ msgstr "Add new material"
 msgid "Add new plan"
 msgstr "Add new plan"
 
-#: src/components/PageCurriculumArea/PageCurriculumArea.tsx:72
+#: src/components/PageCurriculumArea/PageCurriculumArea.tsx:78
 msgid "Add new subject"
 msgstr "Add new subject"
 
@@ -306,7 +306,7 @@ msgid "Date of Entry"
 msgstr "Date of Entry"
 
 #: src/components/DeleteCurriculumDialog/DeleteCurriculumDialog.tsx:28
-#: src/components/DeleteSubjectDialog/DeleteSubjectDialog.tsx:19
+#: src/components/DeleteSubjectDialog/DeleteSubjectDialog.tsx:31
 #: src/components/PageEditClass/PageEditClass.tsx:93
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:48
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:53
@@ -330,7 +330,7 @@ msgstr "Delete Curriculum?"
 msgid "Delete Observation?"
 msgstr "Delete Observation?"
 
-#: src/components/DeleteSubjectDialog/DeleteSubjectDialog.tsx:19
+#: src/components/DeleteSubjectDialog/DeleteSubjectDialog.tsx:31
 msgid "Delete Subject?"
 msgstr "Delete Subject?"
 
@@ -373,6 +373,7 @@ msgstr "Do you want to remove {name} from  {studentName}'s list of guardians?"
 msgid "Edit"
 msgstr "Edit"
 
+#: src/components/EditAreaDialog/EditAreaDialog.tsx:41
 #: src/components/PageObservationDetails/ObservationMetaCard.tsx:63
 msgid "Edit Area"
 msgstr "Edit Area"
@@ -624,7 +625,7 @@ msgstr "Manage your student data"
 msgid "Mastered"
 msgstr "Mastered"
 
-#: src/pages/dashboard/admin/curriculum/material/index.tsx:24
+#: src/pages/dashboard/admin/curriculum/material/index.tsx:23
 msgid "Material"
 msgstr "Material"
 
@@ -632,7 +633,7 @@ msgstr "Material"
 msgid "Material name"
 msgstr "Material name"
 
-#: src/components/PageCurriculumSubject/PageCurriculumSubject.tsx:53
+#: src/components/PageCurriculumSubject/PageCurriculumSubject.tsx:70
 #: src/components/PageEditSubject/PageEditSubject.tsx:111
 #: src/components/PageNewSubject/PageNewSubject.tsx:87
 msgid "Materials"
@@ -677,6 +678,10 @@ msgstr "New Class"
 msgid "New Guardian"
 msgstr "New Guardian"
 
+#: src/components/PageCurriculumSubject/PageCurriculumSubject.tsx:120
+msgid "New Material"
+msgstr "New Material"
+
 #: src/components/PageNewObservation/PageNewObservation.tsx:82
 msgid "New Observation"
 msgstr "New Observation"
@@ -684,10 +689,11 @@ msgstr "New Observation"
 #: src/components/PageNewStudent/NewStudentForm.tsx:34
 #: src/components/PageNewStudent/PageNewStudent.tsx:28
 #: src/components/PageNewStudentAddGuardian/PageNewStudentAddGuardian.tsx:66
-#: src/components/StudentsList/StudentsList.tsx:80
+#: src/components/StudentsList/StudentsList.tsx:81
 msgid "New Student"
 msgstr "New Student"
 
+#: src/components/PageCurriculumArea/PageCurriculumArea.tsx:124
 #: src/components/PageNewSubject/PageNewSubject.tsx:74
 msgid "New Subject"
 msgstr "New Subject"
@@ -791,7 +797,7 @@ msgstr "Observations"
 msgid "Observations Details"
 msgstr "Observations Details"
 
-#: src/components/StudentsList/StudentsList.tsx:49
+#: src/components/StudentsList/StudentsList.tsx:50
 msgid "Oops, we fail to fetch new student data. Please try again in a minute."
 msgstr "Oops, we fail to fetch new student data. Please try again in a minute."
 
@@ -1111,7 +1117,7 @@ msgstr "Subject"
 msgid "Subject name"
 msgstr "Subject name"
 
-#: src/components/PageCurriculumArea/PageCurriculumArea.tsx:64
+#: src/components/PageCurriculumArea/PageCurriculumArea.tsx:70
 msgid "Subjects"
 msgstr "Subjects"
 
@@ -1159,7 +1165,7 @@ msgstr "Tell us what you observed"
 msgid "Thanks for Subscribing!"
 msgstr "Thanks for Subscribing!"
 
-#: src/components/StudentsList/StudentsList.tsx:62
+#: src/components/StudentsList/StudentsList.tsx:63
 msgid "The term <0>\"{term}\"</0> does not match any student"
 msgstr "The term <0>\"{term}\"</0> does not match any student"
 
@@ -1200,7 +1206,7 @@ msgstr "Track curriculum progress"
 msgid "Trial period has ended."
 msgstr "Trial period has ended."
 
-#: src/components/StudentsList/StudentsList.tsx:55
+#: src/components/StudentsList/StudentsList.tsx:56
 msgid "Try again"
 msgstr "Try again"
 
@@ -1291,7 +1297,7 @@ msgstr "You"
 msgid "You can enable the curriculum feature to track student progress in your curriculum."
 msgstr "You can enable the curriculum feature to track student progress in your curriculum."
 
-#: src/components/StudentsList/StudentsList.tsx:75
+#: src/components/StudentsList/StudentsList.tsx:76
 msgid "You have no student enrolled"
 msgstr "You have no student enrolled"
 

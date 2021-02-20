@@ -57,6 +57,7 @@ export const StudentsList: FC = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
           sx={{ width: "100%" }}
         />
+
         <Link to={NEW_STUDENT_URL} style={{ flexShrink: 0 }}>
           <Button
             variant="outline"
