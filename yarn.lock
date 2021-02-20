@@ -4202,23 +4202,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graphql-codegen/visitor-plugin-common@npm:1.17.22":
-  version: 1.17.22
-  resolution: "@graphql-codegen/visitor-plugin-common@npm:1.17.22"
+"@graphql-codegen/visitor-plugin-common@npm:1.18.3":
+  version: 1.18.3
+  resolution: "@graphql-codegen/visitor-plugin-common@npm:1.18.3"
   dependencies:
     "@graphql-codegen/plugin-helpers": ^1.18.2
     "@graphql-tools/optimize": ^1.0.1
     "@graphql-tools/relay-operation-optimizer": ^6
     array.prototype.flatmap: ^1.2.4
     auto-bind: ~4.0.0
-    dependency-graph: ^0.9.0
+    dependency-graph: ^0.10.0
     graphql-tag: ^2.11.0
     parse-filepath: ^1.0.2
     pascal-case: ^3.1.1
-    tslib: ~2.0.1
+    tslib: ~2.1.0
   peerDependencies:
     graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
-  checksum: c9826ac51be48cb63879fdff523087fe37b22b04dcf4a5a4c9606e6a70a41459fac379d197fec986fd87f3408d592a734cfb795694470e155b78f69e04847238
+  checksum: 397473180a59b1afd9162dd2a33f37e0d5b51e5eff2a7df85f3cc085f19eb657000519616556923bed2b7857087393f5f1a303dfb4a278ec9f3a10b23f3a5546
   languageName: node
   linkType: hard
 
@@ -15223,10 +15223,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dependency-graph@npm:^0.9.0":
-  version: 0.9.0
-  resolution: "dependency-graph@npm:0.9.0"
-  checksum: bd4be777ce16fd5412db9cf7df3c7a5e76bd2029a79b624db716e130ed7efaf606f3086234fc26fa9f317db4a2760006cb6397d165b14a314f1bb50a1c632e2c
+"dependency-graph@npm:^0.10.0":
+  version: 0.10.0
+  resolution: "dependency-graph@npm:0.10.0"
+  checksum: 5f3c9cb1bc7b98b369c6e20ed029d6aaa7e590be9baeccd07d3f798506bf6c58d44bb292437e549514f6077fe3bf5ddb72d0c1a113e09de52f08e62a5a30228d
   languageName: node
   linkType: hard
 
