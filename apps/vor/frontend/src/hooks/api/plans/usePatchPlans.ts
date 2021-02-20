@@ -1,4 +1,5 @@
 import { useMutation } from "react-query"
+import { track } from "../../../analytics"
 import { patchApi } from "../fetchApi"
 import { Dayjs } from "../../../dayjs"
 import { useGetPlanCache } from "./useGetPlan"
@@ -16,7 +17,7 @@ const usePatchPlan = (planId: string) => {
 
   return useMutation(patchPlan, {
     onSuccess: async () => {
-      analytics.track("Plan Updated")
+      track("Plan Updated")
       await cache.invalidate()
     },
   })

@@ -1,4 +1,5 @@
 import { useMutation } from "react-query"
+import { track } from "../../../analytics"
 import { deleteApi } from "../fetchApi"
 import { useGetAreaSubjectsCache } from "../useGetAreaSubjects"
 
@@ -9,7 +10,7 @@ const useDeleteSubject = (areaId: string, subjectId: string) => {
   return useMutation(deleteSubject, {
     onSuccess: async () => {
       await subjectsCache.refetchQueries()
-      analytics.track("Subject Deleted")
+      track("Subject Deleted")
     },
   })
 }

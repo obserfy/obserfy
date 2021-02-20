@@ -1,4 +1,5 @@
 import { useMutation } from "react-query"
+import { track } from "../../../analytics"
 import { patchApi } from "../fetchApi"
 import { useGetCurriculumCache } from "../useGetCurriculum"
 
@@ -12,7 +13,7 @@ const usePatchCurriculum = (curriculumId: string) => {
   )
   return useMutation(patchCurriculum, {
     onSuccess: async (data) => {
-      analytics.track("Curriculum Updated")
+      track("Curriculum Updated")
       if (data) {
         const updatedCurriculum = await data.json()
         curriculumCache.setData(updatedCurriculum)

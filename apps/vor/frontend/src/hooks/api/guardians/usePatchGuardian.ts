@@ -1,4 +1,5 @@
 import { useMutation } from "react-query"
+import { track } from "../../../analytics"
 import { patchApi } from "../fetchApi"
 import { useGetGuardianCache } from "./useGetGuardian"
 
@@ -16,7 +17,7 @@ export function usePatchGuardian(id: string) {
 
   return useMutation(patchGuardian, {
     onSuccess: async (response) => {
-      analytics.track("Guardian Updated")
+      track("Guardian Updated")
       if (response === undefined) return
       const body = await response.json()
       cache.setData(body)

@@ -1,4 +1,5 @@
 import { useMutation } from "react-query"
+import { track } from "../../../analytics"
 import { getSchoolId } from "../../schoolIdState"
 import { postApi } from "../fetchApi"
 import { Dayjs } from "../../../dayjs"
@@ -36,7 +37,7 @@ export const usePostNewStudent = () => {
   )
   return useMutation(postNewStudent, {
     onSuccess: () => {
-      analytics.track("Student Created")
+      track("Student Created")
     },
   })
 }

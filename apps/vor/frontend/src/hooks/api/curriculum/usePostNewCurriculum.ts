@@ -1,4 +1,5 @@
 import { useMutation } from "react-query"
+import { track } from "../../../analytics"
 import { postApi } from "../fetchApi"
 import { getSchoolId } from "../../schoolIdState"
 import { useGetCurriculumCache } from "../useGetCurriculum"
@@ -18,7 +19,7 @@ const usePostNewCurriculum = () => {
   )
   return useMutation(postCreateDefaultCurriculum, {
     onSuccess: async (data, variables) => {
-      analytics.track("Curriculum Created", {
+      track("Curriculum Created", {
         name: variables.name,
         template: variables.template,
       })
