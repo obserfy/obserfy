@@ -1,6 +1,6 @@
 {
   "name": "Vor Gatsby Graphql Schema",
-  "schemaPath": "schema.graphql",
+  "schemaPath": "src/__generated__/gatsby-schema.graphql",
   "includes": ["./**/*.ts","./**/*.tsx", "./**/*.js", "./.cache/**/*.js"],
   "extensions": {
     "endpoints": {

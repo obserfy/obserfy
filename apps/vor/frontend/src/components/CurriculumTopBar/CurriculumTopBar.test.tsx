@@ -4,7 +4,7 @@ import CurriculumTopBar from "./CurriculumTopBar"
 
 describe("CurriculumTopBar", () => {
   it("should render correctly", () => {
-    const { container } = render(<CurriculumTopBar />)
+    const { container } = render(<CurriculumTopBar breadcrumbs={[]} />)
     expect(container).toMatchSnapshot()
   })
 })

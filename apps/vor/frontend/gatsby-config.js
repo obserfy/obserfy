@@ -13,20 +13,6 @@ const sentryPlugin =
     ]
     : [];
 
-const graphqlCodeGen =
-  process.env.NODE_ENV === "development"
-    ? [
-      {
-        resolve: `gatsby-plugin-graphql-codegen`,
-        options: {
-          codegen: process.env.NODE_ENV === "development",
-          fileName: `./graphql-types.ts`,
-          documentPaths: ["./src/**/*.{ts,tsx}"]
-        }
-      }
-    ]
-    : [];
-
 module.exports = {
   flags: {
     PRESERVE_WEBPACK_CACHE: true
@@ -109,7 +95,6 @@ module.exports = {
       }
     },
     ...sentryPlugin,
-    ...graphqlCodeGen,
     {
       resolve: `gatsby-theme-i18n`,
       options: {
@@ -129,7 +114,15 @@ module.exports = {
       options: {
         analyzerPort: 3300
       }
-    }
+    },
+    {
+      resolve: `gatsby-plugin-typegen`,
+      options: {
+        emitSchema: {
+          "src/__generated__/gatsby-schema.graphql": true,
+        },
+      },
+    },
   ],
   developMiddleware: (app) => {
     app.use(

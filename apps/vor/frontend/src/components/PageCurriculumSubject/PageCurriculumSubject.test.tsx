@@ -4,7 +4,9 @@ import PageCurriculumSubject from "./PageCurriculumSubject"
 
 describe("PageCurriculumSubject", () => {
   it("should render correctly", () => {
-    const { container } = render(<PageCurriculumSubject />)
+    const { container } = render(
+      <PageCurriculumSubject areaId="" subjectId="" />
+    )
     expect(container).toMatchSnapshot()
   })
 })
