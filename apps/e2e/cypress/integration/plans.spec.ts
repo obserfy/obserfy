@@ -2,7 +2,7 @@ import dayjs from "dayjs"
 
 describe("Test lesson plan features", function () {
   beforeEach(function () {
-    cy.clearSW()
+    // cy.clearSW()
     cy.registerVor()
     cy.createSchool()
     cy.createClass()

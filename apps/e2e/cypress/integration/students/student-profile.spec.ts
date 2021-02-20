@@ -3,7 +3,7 @@
 describe("test student profile page", function () {
   const faker = require("faker")
   beforeEach(function () {
-    cy.clearSW()
+    // cy.clearSW()
     cy.registerVor()
   })
 
