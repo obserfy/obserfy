@@ -38,6 +38,7 @@ func NewRouter(
 		r.Method("DELETE", "/curriculums", deleteCurriculum(server, store))
 		r.Method("GET", "/curriculums", getCurriculum(server, store))
 		r.Method("GET", "/curriculums/areas", getCurriculumAreas(server, store))
+		r.Method("POST", "/curriculums/import", importBulkCurriculum(server, store))
 
 		r.Method("POST", "/classes", postNewClass(server, store))
 		r.Method("GET", "/classes", getClasses(server, store))
@@ -1179,6 +1180,32 @@ func postNewImage(server rest.Server, store Store) http.Handler {
 	})
 }
 
+func importBulkCurriculum(s rest.Server, store Store) rest.Handler {
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		if err := r.ParseMultipartForm(10 << 20); err != nil {
+			return &rest.Error{
+				Code:    http.StatusBadRequest,
+				Message: "failed to parse payload",
+				Error:   richErrors.Wrap(err, "failed to parse response body"),
+			}
+		}
+
+		_, _, err := r.FormFile("csvFile")
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusBadRequest,
+				Message: "invalid payload",
+				Error:   richErrors.Wrap(err, "invalid payload"),
+			}
+		}
+
+		w.WriteHeader(http.StatusCreated)
+		if err := rest.WriteJson(w, "test"); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
+		return nil
+	})
+}
 func postCreateVideoUploadLink(server rest.Server, store Store, videos domain.VideoService) http.Handler {
 	type requestBody struct {
 		StudentId string `json:"studentId"`

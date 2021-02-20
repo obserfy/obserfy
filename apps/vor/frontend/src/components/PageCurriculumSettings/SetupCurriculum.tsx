@@ -1,9 +1,11 @@
-import { Trans } from "@lingui/macro"
+import { t, Trans } from "@lingui/macro"
 import React, { FC } from "react"
 import { Box, Button, Card, Flex } from "theme-ui"
 import usePostNewCurriculum from "../../hooks/api/curriculum/usePostNewCurriculum"
 import useVisibilityState from "../../hooks/useVisibilityState"
 import { ADMIN_URL } from "../../routes"
+import AlertDialog from "../AlertDialog/AlertDialog"
+import Input from "../Input/Input"
 import NewCustomCurriculumDialog from "../NewCustomCurriculumDialog/NewCustomCurriculumDialog"
 import TopBar, { breadCrumb } from "../TopBar/TopBar"
 import Typography from "../Typography/Typography"
@@ -29,6 +31,9 @@ const SetupCurriculum: FC = () => {
       <Typography.H6 my={2} sx={{ textAlign: "center" }}>
         <Trans>Setup curriculum</Trans>
       </Typography.H6>
+
+      <ImportButton />
+
       <Flex p={3} sx={{ flexFlow: ["column", "row"] }}>
         <Card p={3} mr={[0, 3]} mb={[3, 0]} sx={{ width: [undefined, "50%"] }}>
           <Typography.H6 mb={2}>Montessori</Typography.H6>
@@ -61,6 +66,35 @@ const SetupCurriculum: FC = () => {
         <NewCustomCurriculumDialog onDismiss={newDialog.hide} />
       )}
     </Box>
+  )
+}
+
+const ImportButton: FC = () => {
+  const importDialog = useVisibilityState()
+
+  const handleImport = async () => {
+    importDialog.hide()
+  }
+
+  return (
+    <>
+      <Box p={3}>
+        <Flex>
+          <Input type="file" />
+          <Button onClick={importDialog.show}>
+            <Trans>Import</Trans>
+          </Button>
+          {importDialog.visible && (
+            <AlertDialog
+              title={t`Import Curriculum`}
+              body={t`This will export all currently visible observations as a csv file, continue?`}
+              onNegativeClick={importDialog.hide}
+              onPositiveClick={handleImport}
+            />
+          )}
+        </Flex>
+      </Box>
+    </>
   )
 }
 
