@@ -54,7 +54,7 @@
     "hls.js": "beta",
     "idb-keyval": "5.0.2",
     "immer": "8.0.1",
-    "make-plural": "6.2.2",
+    "make-plural": "^6.2.2",
     "mux-embed": "3.5.0",
     "nanoid": "3.1.20",
     "postcss": "8.2.6",

@@ -27,7 +27,7 @@ msgstr "\"{0}\" akan dihapus secara permanen. Apa anda yakin?"
 #~ msgstr "(Mulai dari 1 Jan 2021)"
 
 #: src/components/DeleteClassDialog/DeleteClassDialog.tsx:63
-#: src/components/DeleteSubjectDialog/DeleteSubjectDialog.tsx:30
+#: src/components/DeleteSubjectDialog/DeleteSubjectDialog.tsx:33
 msgid "<0>\"{name}\"</0> and student data related to it will be permanently deleted. Are you sure?"
 msgstr "<0>\"{name}\"</0> dan data murid yang terkait akan dihapus secara permanen. Apa anda yakin?"
 
@@ -74,7 +74,7 @@ msgstr "Tambah email"
 msgid "Add new area"
 msgstr ""
 
-#: src/components/PageCurriculumSubject/PageCurriculumSubject.tsx:62
+#: src/components/PageCurriculumSubject/PageCurriculumSubject.tsx:79
 msgid "Add new material"
 msgstr ""
 
@@ -82,7 +82,7 @@ msgstr ""
 msgid "Add new plan"
 msgstr "Tambah rencana baru"
 
-#: src/components/PageCurriculumArea/PageCurriculumArea.tsx:72
+#: src/components/PageCurriculumArea/PageCurriculumArea.tsx:78
 msgid "Add new subject"
 msgstr ""
 
@@ -311,7 +311,7 @@ msgid "Date of Entry"
 msgstr "Tanggal Masuk"
 
 #: src/components/DeleteCurriculumDialog/DeleteCurriculumDialog.tsx:28
-#: src/components/DeleteSubjectDialog/DeleteSubjectDialog.tsx:19
+#: src/components/DeleteSubjectDialog/DeleteSubjectDialog.tsx:31
 #: src/components/PageEditClass/PageEditClass.tsx:93
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:48
 #: src/components/PageStudentImageDetails/PageStudentImageDetails.tsx:53
@@ -335,7 +335,7 @@ msgstr "Hapus Kurikulum?"
 msgid "Delete Observation?"
 msgstr "Hapus Observasi?"
 
-#: src/components/DeleteSubjectDialog/DeleteSubjectDialog.tsx:19
+#: src/components/DeleteSubjectDialog/DeleteSubjectDialog.tsx:31
 msgid "Delete Subject?"
 msgstr "Hapus Mata Pelajaran?"
 
@@ -378,6 +378,7 @@ msgstr "Apa anda ingin menghapis {name} dari daftar wali murid {studentName}?"
 msgid "Edit"
 msgstr "Ubah"
 
+#: src/components/EditAreaDialog/EditAreaDialog.tsx:41
 #: src/components/PageObservationDetails/ObservationMetaCard.tsx:63
 msgid "Edit Area"
 msgstr "Ubah Bidang"
@@ -625,7 +626,7 @@ msgstr "Kelola data murid anda"
 msgid "Mastered"
 msgstr "Dikuasai"
 
-#: src/pages/dashboard/admin/curriculum/material/index.tsx:24
+#: src/pages/dashboard/admin/curriculum/material/index.tsx:23
 msgid "Material"
 msgstr ""
 
@@ -633,7 +634,7 @@ msgstr ""
 msgid "Material name"
 msgstr "Nama materi"
 
-#: src/components/PageCurriculumSubject/PageCurriculumSubject.tsx:53
+#: src/components/PageCurriculumSubject/PageCurriculumSubject.tsx:70
 #: src/components/PageEditSubject/PageEditSubject.tsx:111
 #: src/components/PageNewSubject/PageNewSubject.tsx:87
 msgid "Materials"
@@ -678,6 +679,10 @@ msgstr "Kelas Baru"
 msgid "New Guardian"
 msgstr "Wali Baru"
 
+#: src/components/PageCurriculumSubject/PageCurriculumSubject.tsx:120
+msgid "New Material"
+msgstr ""
+
 #: src/components/PageNewObservation/PageNewObservation.tsx:82
 msgid "New Observation"
 msgstr "Observasi Baru"
@@ -685,10 +690,11 @@ msgstr "Observasi Baru"
 #: src/components/PageNewStudent/NewStudentForm.tsx:34
 #: src/components/PageNewStudent/PageNewStudent.tsx:28
 #: src/components/PageNewStudentAddGuardian/PageNewStudentAddGuardian.tsx:66
-#: src/components/StudentsList/StudentsList.tsx:80
+#: src/components/StudentsList/StudentsList.tsx:81
 msgid "New Student"
 msgstr "Murid Baru"
 
+#: src/components/PageCurriculumArea/PageCurriculumArea.tsx:124
 #: src/components/PageNewSubject/PageNewSubject.tsx:74
 msgid "New Subject"
 msgstr "Mata Pelajaran Baru"
@@ -792,7 +798,7 @@ msgstr "Observasi"
 msgid "Observations Details"
 msgstr "Detil Observasi"
 
-#: src/components/StudentsList/StudentsList.tsx:49
+#: src/components/StudentsList/StudentsList.tsx:50
 msgid "Oops, we fail to fetch new student data. Please try again in a minute."
 msgstr "Ups, kami gagal mengambil data murid baru. Silahkan coba beberapa saat lagi."
 
@@ -1112,7 +1118,7 @@ msgstr ""
 msgid "Subject name"
 msgstr "Nama mata pelajaran"
 
-#: src/components/PageCurriculumArea/PageCurriculumArea.tsx:64
+#: src/components/PageCurriculumArea/PageCurriculumArea.tsx:70
 msgid "Subjects"
 msgstr "Mata pelajaran"
 
@@ -1156,7 +1162,7 @@ msgstr "Beri tahu kami apa yang sudah anda amati"
 msgid "Thanks for Subscribing!"
 msgstr "Terimakasih telah berlangganan dengan kami!"
 
-#: src/components/StudentsList/StudentsList.tsx:62
+#: src/components/StudentsList/StudentsList.tsx:63
 msgid "The term <0>\"{term}\"</0> does not match any student"
 msgstr "Tidak ada murid dengan nama <0>\"{term}\"</0>"
 
@@ -1197,7 +1203,7 @@ msgstr "Lacak perkembangan kurikulum"
 msgid "Trial period has ended."
 msgstr "Masa coba telah selesai."
 
-#: src/components/StudentsList/StudentsList.tsx:55
+#: src/components/StudentsList/StudentsList.tsx:56
 msgid "Try again"
 msgstr "Coba lagi"
 
@@ -1288,7 +1294,7 @@ msgstr "Anda"
 msgid "You can enable the curriculum feature to track student progress in your curriculum."
 msgstr "Anda dapat mengaktifkan fitur kurikulum untuk melacak perkembangan murid di kurikulum Anda."
 
-#: src/components/StudentsList/StudentsList.tsx:75
+#: src/components/StudentsList/StudentsList.tsx:76
 msgid "You have no student enrolled"
 msgstr "Tidak ada siswa yang terdaftar"
 
