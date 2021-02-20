@@ -11,5 +11,12 @@ export default {
 }
 
 export const Basic: FC = () => (
-  <DraggableListItem height={48} moveItem={action("move item")} order={1} />
+  <DraggableListItem
+    height={48}
+    moveItem={action("move item")}
+    item={{
+      order: 1,
+      id: "",
+    }}
+  />
 )

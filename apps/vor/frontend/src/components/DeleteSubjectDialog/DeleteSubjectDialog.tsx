@@ -1,6 +1,7 @@
 import React, { FC } from "react"
 
 import { t, Trans } from "@lingui/macro"
+import { track } from "../../analytics"
 import Typography from "../Typography/Typography"
 import Dialog from "../Dialog/Dialog"
 import useDeleteSubject from "../../hooks/api/curriculum/useDeleteSubject"
