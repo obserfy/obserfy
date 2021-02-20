@@ -1,4 +1,5 @@
 import { useMutation } from "react-query"
+import { track } from "../../../analytics"
 import { postApi } from "../fetchApi"
 import { useGetCurriculumAreasCache } from "../useGetCurriculumAreas"
 
@@ -13,7 +14,7 @@ const usePostNewArea = (curriculumId: string) => {
 
   return useMutation(postNewArea, {
     onSuccess: async (data) => {
-      analytics.track("Area Created")
+      track("Area Created")
       if (data) {
         const newArea = await data.json()
         const old = cache.getData() ?? []

@@ -25,7 +25,7 @@ export const DeleteSubjectDialog: FC<Props> = ({
   const handleDelete = async () => {
     try {
       await deleteSubject.mutateAsync()
-      analytics.track("Deleted Subject")
+      track("Deleted Subject")
       onDismiss()
       if (onDeleted) onDeleted()
     } catch (e) {

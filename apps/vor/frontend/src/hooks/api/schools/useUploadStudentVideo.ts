@@ -1,5 +1,6 @@
 import { createUpload } from "@mux/upchunk"
 import { useMutation } from "react-query"
+import { track } from "../../../analytics"
 import { navigate } from "../../../components/Link/Link"
 import { getSchoolId } from "../../schoolIdState"
 import { useGetStudentVideosCache } from "../students/useGetVideos"
@@ -44,7 +45,7 @@ export const useUploadStudentVideo = (studentId: string) => {
 
     const body = await result.json()
     if (!result.ok) {
-      analytics.track("Request Failed", {
+      track("Request Failed", {
         method: "POST",
         status: result.status,
         message: body?.error?.message,

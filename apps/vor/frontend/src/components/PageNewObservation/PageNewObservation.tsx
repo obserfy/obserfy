@@ -3,6 +3,7 @@ import { Box, Button, Card, Flex, Image } from "theme-ui"
 import { useImmer } from "use-immer"
 import { t, Trans } from "@lingui/macro"
 import { useLingui } from "@lingui/react"
+import { track } from "../../analytics"
 import Input from "../Input/Input"
 import TextArea from "../TextArea/TextArea"
 import Typography from "../Typography/Typography"
@@ -54,9 +55,9 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
         visibleToGuardians,
       })
       await navigate(STUDENT_OVERVIEW_URL(studentId))
-      analytics.track("Observation Created")
+      track("Observation Created")
     } catch (e) {
-      analytics.track("Create Observation Failed")
+      track("Create Observation Failed")
       Sentry.captureException(e)
     }
   }

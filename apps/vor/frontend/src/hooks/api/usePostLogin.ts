@@ -1,4 +1,5 @@
 import { useMutation } from "react-query"
+import { track } from "../../analytics"
 import { navigate } from "../../components/Link/Link"
 import { ApiError } from "./useApi"
 
@@ -15,11 +16,11 @@ const usePostLogin = () => {
     })
 
     if (result.ok) {
-      analytics.track("User Login Success")
+      track("User Login Success")
       await navigate("/choose-school")
     } else {
       const body: ApiError = await result.json()
-      analytics.track("User Login Failed", {
+      track("User Login Failed", {
         email: payload.email,
         status: result.status,
       })

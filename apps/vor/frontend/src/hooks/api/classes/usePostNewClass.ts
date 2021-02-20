@@ -1,4 +1,5 @@
 import { useMutation, useQueryClient } from "react-query"
+import { track } from "../../../analytics"
 import { ApiError, BASE_URL } from "../useApi"
 import { getSchoolId } from "../../schoolIdState"
 import { navigate } from "../../../components/Link/Link"
@@ -34,7 +35,7 @@ const usePostNewClass = () => {
 
   return useMutation(fetchApi, {
     onSuccess: async () => {
-      analytics.track("Class Created")
+      track("Class Created")
       await queryCache.invalidateQueries(["classes", schoolId])
     },
   })

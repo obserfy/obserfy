@@ -1,4 +1,5 @@
 import { useMutation } from "react-query"
+import { track } from "../../analytics"
 import { postApi } from "./fetchApi"
 import { Dayjs } from "../../dayjs"
 import { useGetStudentObservationsCache } from "./useGetStudentObservations"
@@ -19,7 +20,7 @@ const usePostNewObservation = (studentId: string) => {
   )
   return useMutation(postNewObservation, {
     onSuccess: async (data) => {
-      analytics.track("Observation Created")
+      track("Observation Created")
       if (data === undefined) return
       const newObservation = await data.json()
 

@@ -4,6 +4,7 @@ import { nanoid } from "nanoid"
 import { Box, Button, Flex } from "theme-ui"
 import { t, Trans } from "@lingui/macro"
 import { useLingui } from "@lingui/react"
+import { track } from "../../analytics"
 import { navigate } from "../Link/Link"
 import {
   Material,
@@ -72,7 +73,7 @@ export const PageEditSubject: FC<Props> = ({ areaId, subjectId }) => {
     })
 
     if (response.status === 200) {
-      analytics.track("Subject Created", {
+      track("Subject Created", {
         responseStatus: response.status,
         studentName: subjectName,
       })
