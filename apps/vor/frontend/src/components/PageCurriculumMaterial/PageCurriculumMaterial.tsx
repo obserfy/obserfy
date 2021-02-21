@@ -43,11 +43,11 @@ const PageCurriculumMaterial: FC<PageCurriculumMaterialProps> = ({
             subject.data?.name ?? "",
             CURRICULUM_SUBJECT_URL(areaId, subjectId)
           ),
-          breadCrumb("Material"),
+          breadCrumb(material.data?.name ?? ""),
         ]}
       />
 
-      <Box p={3}>
+      <Box px={3} pt={[0, 0, 3]}>
         <Card sx={{ width: "100%" }}>
           <DataBox label="Material Name" value={material.data?.name ?? "..."} />
         </Card>
