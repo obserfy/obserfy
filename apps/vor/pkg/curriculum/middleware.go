@@ -21,18 +21,18 @@ func curriculumAuthMiddleware(server rest.Server, store Store) func(next http.Ha
 			curriculumId := chi.URLParam(r, "curriculumId")
 			if _, err := uuid.Parse(curriculumId); err != nil {
 				return &rest.Error{
-					http.StatusNotFound,
-					"Can't find the specified curriculum",
-					err,
+					Code:    http.StatusNotFound,
+					Message: "Can't find the specified curriculum",
+					Error:   err,
 				}
 			}
 
 			userHasAccess, err := store.CheckCurriculumPermission(curriculumId, session.UserId)
 			if err != nil {
-				return &rest.Error{http.StatusInternalServerError, "Internal Server Error", err}
+				return &rest.Error{Code: http.StatusInternalServerError, Message: "Internal Server Error", Error: err}
 			}
 			if !userHasAccess {
-				return &rest.Error{http.StatusNotFound, "Subject not found", err}
+				return &rest.Error{Code: http.StatusNotFound, Message: "Subject not found", Error: err}
 			}
 			next.ServeHTTP(w, r)
 			return nil
@@ -50,10 +50,10 @@ func subjectAuthMiddleware(server rest.Server, store Store) func(next http.Handl
 			subjectId := chi.URLParam(r, "subjectId")
 			userHasAccess, err := store.CheckSubjectPermissions(subjectId, session.UserId)
 			if err != nil {
-				return &rest.Error{http.StatusInternalServerError, "Internal Server Error", err}
+				return &rest.Error{Code: http.StatusInternalServerError, Message: "Internal Server Error", Error: err}
 			}
 			if !userHasAccess {
-				return &rest.Error{http.StatusNotFound, "Subject not found", err}
+				return &rest.Error{Code: http.StatusNotFound, Message: "Subject not found", Error: err}
 			}
 			next.ServeHTTP(w, r)
 			return nil
@@ -72,10 +72,10 @@ func areaAuthMiddleware(server rest.Server, store Store) func(next http.Handler)
 
 			userHasAccess, err := store.CheckAreaPermissions(areaId, session.UserId)
 			if err != nil {
-				return &rest.Error{http.StatusInternalServerError, "Internal Server Error", err}
+				return &rest.Error{Code: http.StatusInternalServerError, Message: "Internal Server Error", Error: err}
 			}
 			if !userHasAccess {
-				return &rest.Error{http.StatusNotFound, "Area not found", err}
+				return &rest.Error{Code: http.StatusNotFound, Message: "Area not found", Error: err}
 			}
 
 			next.ServeHTTP(w, r)
@@ -84,9 +84,9 @@ func areaAuthMiddleware(server rest.Server, store Store) func(next http.Handler)
 	}
 }
 
-func materialAuthMiddleware(server rest.Server, store Store) func(http.Handler) http.Handler {
+func materialAuthMiddleware(s rest.Server, store Store) func(http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
-		return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 			materialId := chi.URLParam(r, "materialId")
 			session, ok := auth.GetSessionFromCtx(r.Context())
 			if !ok {
@@ -96,16 +96,16 @@ func materialAuthMiddleware(server rest.Server, store Store) func(http.Handler) 
 			userHasAccess, err := store.CheckMaterialPermission(materialId, session.UserId)
 			if err != nil {
 				return &rest.Error{
-					http.StatusInternalServerError,
-					"Internal Server Error",
-					err,
+					Code:    http.StatusInternalServerError,
+					Message: "Internal Server Error",
+					Error:   err,
 				}
 			}
 			if !userHasAccess {
 				return &rest.Error{
-					http.StatusNotFound,
-					"Area not found",
-					err,
+					Code:    http.StatusNotFound,
+					Message: "material not found",
+					Error:   err,
 				}
 			}
 

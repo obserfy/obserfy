@@ -29,7 +29,7 @@ export const MultilineDataBox: FC<MultilineDataBoxProps> = ({
           <Trans id={label} />
         </Typography.Body>
         <Button
-          variant="outline"
+          variant="secondary"
           ml="auto"
           mr={3}
           p={2}
@@ -41,7 +41,7 @@ export const MultilineDataBox: FC<MultilineDataBoxProps> = ({
           <Icon as={EditIcon} />
         </Button>
       </Flex>
-      <Markdown markdown={value || i18n._(placeholder)} m={3} />
+      <Markdown markdown={value || i18n._(placeholder)} mx={3} mt={3} mb={2} />
     </Box>
   )
 }

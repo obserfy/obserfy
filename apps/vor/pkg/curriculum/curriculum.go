@@ -43,9 +43,41 @@ func NewRouter(server rest.Server, store Store) *chi.Mux {
 	r.Route("/materials/{materialId}", func(r chi.Router) {
 		r.Use(materialAuthMiddleware(server, store))
 		r.Method("PATCH", "/", updateMaterial(server, store))
+		r.Method("GET", "/", getMaterial(server, store))
 	})
 
 	return r
+}
+
+func getMaterial(s rest.Server, store Store) http.Handler {
+	type responseBody struct {
+		Id          string `json:"id"`
+		Name        string `json:"name"`
+		Description string `json:"description"`
+	}
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		materialId := chi.URLParam(r, "materialId")
+
+		material, err := store.GetMaterial(materialId)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "failed to query material data",
+				Error:   err,
+			}
+		}
+
+		response := responseBody{
+			Id:          material.Id,
+			Name:        material.Name,
+			Description: material.Description,
+		}
+		if err := rest.WriteJson(w, response); err != nil {
+			return rest.NewParseJsonError(err)
+		}
+
+		return nil
+	})
 }
 
 func patchCurriculum(s rest.Server, store Store) rest.Handler {

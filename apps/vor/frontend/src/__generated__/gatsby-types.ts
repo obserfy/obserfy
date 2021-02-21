@@ -186,7 +186,7 @@ type DirectoryEdge = {
   readonly previous: Maybe<Directory>;
 };
 
-type DirectoryFieldsEnum = 
+type DirectoryFieldsEnum =
   | 'sourceInstanceName'
   | 'absolutePath'
   | 'relativePath'
@@ -498,7 +498,7 @@ type FileEdge = {
   readonly previous: Maybe<File>;
 };
 
-type FileFieldsEnum = 
+type FileFieldsEnum =
   | 'sourceInstanceName'
   | 'absolutePath'
   | 'relativePath'
@@ -873,7 +873,7 @@ type FloatQueryOperatorInput = {
   readonly nin: Maybe<ReadonlyArray<Maybe<Scalars['Float']>>>;
 };
 
-type ImageCropFocus = 
+type ImageCropFocus =
   | 'CENTER'
   | 1
   | 5
@@ -886,14 +886,14 @@ type ImageCropFocus =
   | 16
   | 17;
 
-type ImageFit = 
+type ImageFit =
   | 'cover'
   | 'contain'
   | 'fill'
   | 'inside'
   | 'outside';
 
-type ImageFormat = 
+type ImageFormat =
   | 'NO_CHANGE'
   | 'AUTO'
   | 'jpg'
@@ -901,12 +901,12 @@ type ImageFormat =
   | 'webp'
   | 'avif';
 
-type ImageLayout = 
+type ImageLayout =
   | 'fixed'
   | 'fullWidth'
   | 'constrained';
 
-type ImagePlaceholder = 
+type ImagePlaceholder =
   | 'dominantColor'
   | 'tracedSVG'
   | 'blurred'
@@ -1096,7 +1096,7 @@ type ImageSharpEdge = {
   readonly previous: Maybe<ImageSharp>;
 };
 
-type ImageSharpFieldsEnum = 
+type ImageSharpFieldsEnum =
   | 'fixed.base64'
   | 'fixed.tracedSVG'
   | 'fixed.aspectRatio'
@@ -1528,7 +1528,7 @@ type Potrace = {
   readonly background: Maybe<Scalars['String']>;
 };
 
-type PotraceTurnPolicy = 
+type PotraceTurnPolicy =
   | 'black'
   | 'white'
   | 'left'
@@ -1874,7 +1874,7 @@ type SiteBuildMetadataEdge = {
   readonly previous: Maybe<SiteBuildMetadata>;
 };
 
-type SiteBuildMetadataFieldsEnum = 
+type SiteBuildMetadataFieldsEnum =
   | 'id'
   | 'parent.id'
   | 'parent.parent.id'
@@ -2012,7 +2012,7 @@ type SiteEdge = {
   readonly previous: Maybe<Site>;
 };
 
-type SiteFieldsEnum = 
+type SiteFieldsEnum =
   | 'buildTime'
   | 'siteMetadata.title'
   | 'siteMetadata.description'
@@ -2021,6 +2021,8 @@ type SiteFieldsEnum =
   | 'port'
   | 'host'
   | 'flags.PRESERVE_WEBPACK_CACHE'
+  | 'flags.DEV_SSR'
+  | 'flags.FAST_DEV'
   | 'polyfill'
   | 'pathPrefix'
   | 'id'
@@ -2126,10 +2128,14 @@ type SiteFilterInput = {
 
 type SiteFlags = {
   readonly PRESERVE_WEBPACK_CACHE: Maybe<Scalars['Boolean']>;
+  readonly DEV_SSR: Maybe<Scalars['Boolean']>;
+  readonly FAST_DEV: Maybe<Scalars['Boolean']>;
 };
 
 type SiteFlagsFilterInput = {
   readonly PRESERVE_WEBPACK_CACHE: Maybe<BooleanQueryOperatorInput>;
+  readonly DEV_SSR: Maybe<BooleanQueryOperatorInput>;
+  readonly FAST_DEV: Maybe<BooleanQueryOperatorInput>;
 };
 
 type SiteGroupConnection = {
@@ -2201,7 +2207,7 @@ type SitePageEdge = {
   readonly previous: Maybe<SitePage>;
 };
 
-type SitePageFieldsEnum = 
+type SitePageFieldsEnum =
   | 'path'
   | 'component'
   | 'internalComponentName'
@@ -2475,7 +2481,7 @@ type SitePluginEdge = {
   readonly previous: Maybe<SitePlugin>;
 };
 
-type SitePluginFieldsEnum = 
+type SitePluginFieldsEnum =
   | 'id'
   | 'parent.id'
   | 'parent.parent.id'
@@ -2847,7 +2853,7 @@ type SiteSortInput = {
   readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
 };
 
-type SortOrderEnum = 
+type SortOrderEnum =
   | 'ASC'
   | 'DESC';
 
@@ -2897,7 +2903,7 @@ type ThemeI18nEdge = {
   readonly previous: Maybe<ThemeI18n>;
 };
 
-type ThemeI18nFieldsEnum = 
+type ThemeI18nFieldsEnum =
   | 'defaultLang'
   | 'configPath'
   | 'config'
@@ -3054,7 +3060,7 @@ type ThemeUiConfigEdge = {
   readonly previous: Maybe<ThemeUiConfig>;
 };
 
-type ThemeUiConfigFieldsEnum = 
+type ThemeUiConfigFieldsEnum =
   | 'preset'
   | 'prismPreset'
   | 'id'
@@ -3180,10 +3186,10 @@ type WebPOptions = {
   readonly quality: Maybe<Scalars['Int']>;
 };
 
-type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
+type homechrisintSrcobserfyYarndollardollarvirtualgatsbyPluginThemeUiVirtualEc3359956E0CachegatsbyPluginThemeUiNpm060Alpha68164F2De0D9207950299ZipnodeModulesgatsbyPluginThemeUisrchooksconfigOptionsJs2744905544QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type Unnamed_1_Query = { readonly themeUiConfig: Maybe<Pick<ThemeUiConfig, 'preset' | 'prismPreset'>> };
+type homechrisintSrcobserfyYarndollardollarvirtualgatsbyPluginThemeUiVirtualEc3359956E0CachegatsbyPluginThemeUiNpm060Alpha68164F2De0D9207950299ZipnodeModulesgatsbyPluginThemeUisrchooksconfigOptionsJs2744905544Query = { readonly themeUiConfig: Maybe<Pick<ThemeUiConfig, 'preset' | 'prismPreset'>> };
 
 type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
@@ -3235,15 +3241,10 @@ type GatsbyImageSharpSizes_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio
 
 type GatsbyImageSharpSizes_withWebp_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
 
-type Unnamed_2_QueryVariables = Exact<{ [key: string]: never; }>;
+type homechrisintSrcobserfyappsvorfrontendsrccomponentsseoTsx63159454QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type Unnamed_2_Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
-
-type LocalizationSEOQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type LocalizationSEOQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'siteUrl'>> }> };
+type homechrisintSrcobserfyappsvorfrontendsrccomponentsseoTsx63159454Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
 
 type LocalizationConfigQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -3252,6 +3253,11 @@ type LocalizationConfigQueryQuery = { readonly themeI18N: Maybe<(
     Pick<ThemeI18n, 'defaultLang'>
     & { readonly config: Maybe<ReadonlyArray<Maybe<Pick<Locale, 'code' | 'hrefLang' | 'dateFormat' | 'langDir' | 'localName' | 'name'>>>> }
   )> };
+
+type LocalizationSEOQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type LocalizationSEOQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'siteUrl'>> }> };
 
 type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
