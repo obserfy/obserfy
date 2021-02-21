@@ -5,7 +5,7 @@ go 1.15
 require (
 	github.com/benbjohnson/clock v1.1.0
 	github.com/brianvoe/gofakeit/v4 v4.3.0
-	github.com/getsentry/sentry-go v0.9.0
+	github.com/getsentry/sentry-go v0.10.0
 	github.com/go-chi/chi v4.1.2+incompatible
 	github.com/go-pg/pg/v10 v10.7.7
 	github.com/go-playground/validator/v10 v10.4.1
