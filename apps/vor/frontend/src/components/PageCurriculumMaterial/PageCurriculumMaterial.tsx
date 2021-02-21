@@ -1,5 +1,7 @@
+import { t } from "@lingui/macro"
 import React, { FC } from "react"
 import { Box, Button, Card, ThemeUIStyleObject } from "theme-ui"
+import useGetMaterial from "../../hooks/api/curriculum/useGetMaterial"
 import { useGetArea } from "../../hooks/api/useGetArea"
 import { useGetSubject } from "../../hooks/api/useGetSubject"
 import { ReactComponent as DeleteIcon } from "../../icons/trash.svg"
@@ -23,9 +25,11 @@ export interface PageCurriculumMaterialProps {
 const PageCurriculumMaterial: FC<PageCurriculumMaterialProps> = ({
   subjectId,
   areaId,
+  materialId,
 }) => {
   const area = useGetArea(areaId)
   const subject = useGetSubject(subjectId)
+  const material = useGetMaterial(materialId)
 
   return (
     <Box mx="auto" sx={{ maxWidth: "maxWidth.lg", width: "100%" }}>
@@ -45,11 +49,15 @@ const PageCurriculumMaterial: FC<PageCurriculumMaterialProps> = ({
 
       <Box p={3}>
         <Card sx={{ width: "100%" }}>
-          <DataBox label="Material Name" value="..." />
+          <DataBox label="Material Name" value={material.data?.name ?? "..."} />
         </Card>
 
         <Card mt={3} pb={2}>
-          <MultilineDataBox label="Description" value="" placeholder="..." />
+          <MultilineDataBox
+            label="Description"
+            value={material.data?.description ?? ""}
+            placeholder={t`Not set`}
+          />
         </Card>
 
         <Button variant="outline" sx={{ color: "danger" }} ml="auto" mt={3}>
