@@ -210,7 +210,7 @@ const SubjectListItem: FC<{
           },
         }}
       >
-        <Typography.Body sx={{ color: "inherit" }}>
+        <Typography.Body className="truncate" sx={{ color: "inherit" }}>
           {subject.name}
         </Typography.Body>
         <Icon as={NextIcon} mr={3} ml="auto" fill="currentColor" />
