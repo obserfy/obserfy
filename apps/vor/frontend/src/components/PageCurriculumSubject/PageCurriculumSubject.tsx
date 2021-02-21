@@ -190,7 +190,7 @@ const DraggableMaterialItem: FC<{
           },
         }}
       >
-        <Typography.Body sx={{ color: "inherit" }}>
+        <Typography.Body className="truncate" sx={{ color: "inherit" }}>
           {material.name}
         </Typography.Body>
         <Icon as={NextIcon} ml="auto" mr={3} fill="currentColor" />
