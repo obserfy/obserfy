@@ -5,7 +5,14 @@ import { Box } from "theme-ui"
 import Layout from "../components/Layout/Layout"
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary"
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      // refetchOnMount causes prefresh to fail and reload every once in a while.
+      refetchOnMount: process.env.NODE_ENV !== "development",
+    },
+  },
+})
 
 // Used by gatsby-plugin-layout
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
