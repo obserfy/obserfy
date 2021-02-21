@@ -1,6 +1,4 @@
-import { Theme } from "theme-ui"
-
-const theme: Theme = {
+const theme = {
   breakpoints: ["40em", "52em", "64em", "72em"],
   useColorSchemeMediaQuery: true,
   colors: {
@@ -369,5 +367,7 @@ const theme: Theme = {
     },
   },
 }
+
+export type ObserfyTheme = typeof theme
 
 export default theme

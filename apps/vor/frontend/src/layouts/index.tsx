@@ -1,15 +1,16 @@
-import React, { FC } from "react"
 import { Global } from "@emotion/react"
+import React, { FC } from "react"
 import { QueryClient, QueryClientProvider } from "react-query"
-import { Box } from "theme-ui"
-import Layout from "../components/Layout/Layout"
+import { Box, useColorMode } from "theme-ui"
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary"
+import Layout from "../components/Layout/Layout"
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      // refetchOnMount causes prefresh to fail and reload every once in a while.
+      // refetchOnMount and refetchOnWindowFocus causes prefresh to fail and reload every once in a while.
       refetchOnMount: process.env.NODE_ENV !== "development",
+      refetchOnWindowFocus: process.env.NODE_ENV !== "development",
     },
   },
 })
@@ -29,16 +30,29 @@ const LayoutManager: FC<any> = ({ children, pageContext }) => (
   </QueryClientProvider>
 )
 
-const GlobalStyle: FC = () => (
-  <Global
-    styles={(theme) => ({
-      body: {
-        backgroundColor: theme.colors?.background ?? "",
-        minHeight: "100vh",
-        top: 0,
-      },
-    })}
-  />
-)
+const GlobalStyle: FC = () => {
+  const [mode] = useColorMode()
+
+  return (
+    <Global
+      styles={({ colors }) => ({
+        body: {
+          backgroundColor: colors.background,
+          minHeight: "100vh",
+          top: 0,
+          scrollbarColor: "dark",
+        },
+        "::-webkit-scrollbar":
+          mode !== "dark"
+            ? {}
+            : { width: 8, backgroundColor: colors.background },
+        "::-webkit-scrollbar-thumb":
+          mode !== "dark"
+            ? {}
+            : { backgroundColor: colors.surface, borderRadius: 9999 },
+      })}
+    />
+  )
+}
 
 export default LayoutManager
