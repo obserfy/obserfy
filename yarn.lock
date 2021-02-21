@@ -18555,7 +18555,7 @@ __metadata:
     eslint-plugin-prettier: 3.3.0
     eslint-plugin-react: 7.22.0
     eslint-plugin-react-hooks: 4.2.0
-    gatsby: 2.32.3
+    gatsby: 2.32.4
     gatsby-image: 2.11.0
     gatsby-plugin-canonical-urls: 2.10.0
     gatsby-plugin-image: 0.7.1
@@ -18563,7 +18563,7 @@ __metadata:
     gatsby-plugin-mdx: 1.10.0
     gatsby-plugin-netlify: 2.11.0
     gatsby-plugin-netlify-cache: 1.2.0
-    gatsby-plugin-offline: 3.10.0
+    gatsby-plugin-offline: 3.10.1
     gatsby-plugin-plausible: 0.0.7
     gatsby-plugin-postcss: 3.7.0
     gatsby-plugin-preact: 4.7.0
@@ -19256,9 +19256,9 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-offline@npm:3.10.0":
-  version: 3.10.0
-  resolution: "gatsby-plugin-offline@npm:3.10.0"
+"gatsby-plugin-offline@npm:3.10.1":
+  version: 3.10.1
+  resolution: "gatsby-plugin-offline@npm:3.10.1"
   dependencies:
     "@babel/runtime": ^7.12.5
     cheerio: ^1.0.0-rc.3
@@ -19269,7 +19269,7 @@ fsevents@~2.3.1:
     workbox-build: ^4.3.1
   peerDependencies:
     gatsby: ^2.4.0
-  checksum: 6ed0406517fc5a467cda72daa5080db410b5e3278b06bd8789650328a81b6b96dda5e4d751999c6bf4c6b8b1e64f5af519a95e6afa7a551512584d12629351a0
+  checksum: 0a85b6f088b9aafd5735558e1ba14dd0e68ae0e8295984d04bf70ca878bfd1b8935f8ea0efc875db87bd63a2bd3082e3e62e0986bec9b089c1264c2800a6cad5
   languageName: node
   linkType: hard
 
@@ -19719,9 +19719,9 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"gatsby@npm:2.32.3":
-  version: 2.32.3
-  resolution: "gatsby@npm:2.32.3"
+"gatsby@npm:2.32.4":
+  version: 2.32.4
+  resolution: "gatsby@npm:2.32.4"
   dependencies:
     "@babel/code-frame": ^7.10.4
     "@babel/core": ^7.12.3
@@ -19860,7 +19860,6 @@ fsevents@~2.3.1:
     string-similarity: ^1.2.2
     strip-ansi: ^5.2.0
     style-loader: ^0.23.1
-    terminal-link: ^2.1.1
     terser-webpack-plugin: ^2.3.8
     tmp: ^0.2.1
     true-case-path: ^2.2.1
@@ -19883,7 +19882,7 @@ fsevents@~2.3.1:
     react-dom: ^16.4.2 || ^17.0.0
   bin:
     gatsby: ./cli.js
-  checksum: b4d57d3449a5e5ed7e638539fff429d2c9f42317cfc5aa9f1c5f377980204e0dccbc554a8480fe1b9501975e12246bf736d8605ec9c17b68545af84383fc9c48
+  checksum: f43a5035568704c9b290a2e260e50a10eed553d683c464fea8d9ef189e5bb393d917bd106ffff47158971ea7ffd7cd73e01f21fdaad8c60ae7357f4603b2f0e0
   languageName: node
   linkType: hard
 
@@ -35097,7 +35096,7 @@ resolve@^1.19.0:
   languageName: node
   linkType: hard
 
-"terminal-link@npm:^2.0.0, terminal-link@npm:^2.1.1":
+"terminal-link@npm:^2.0.0":
   version: 2.1.1
   resolution: "terminal-link@npm:2.1.1"
   dependencies:
@@ -37041,14 +37040,14 @@ typescript@^4.0.0:
     eslint-plugin-react-hooks: 4.2.0
     fake-indexeddb: 3.1.2
     faker: 5.4.0
-    gatsby: 2.32.3
+    gatsby: 2.32.4
     gatsby-image: 2.11.0
     gatsby-plugin-canonical-urls: 2.10.0
     gatsby-plugin-image: next
     gatsby-plugin-layout: 1.10.0
     gatsby-plugin-manifest: 2.12.0
     gatsby-plugin-nprogress: 2.10.0
-    gatsby-plugin-offline: 3.10.0
+    gatsby-plugin-offline: 3.10.1
     gatsby-plugin-portal: 1.0.65
     gatsby-plugin-postcss: 3.7.0
     gatsby-plugin-preact: 4.7.0
