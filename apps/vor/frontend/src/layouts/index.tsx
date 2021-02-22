@@ -32,6 +32,7 @@ const LayoutManager: FC<any> = ({ children, pageContext }) => (
 
 const GlobalStyle: FC = () => {
   const [mode] = useColorMode()
+  const customScroll = mode === "dark"
 
   return (
     <Global
@@ -42,12 +43,12 @@ const GlobalStyle: FC = () => {
           top: 0,
           scrollbarColor: "dark",
         },
-        "::-webkit-scrollbar":
-          mode !== "dark" ? {} : { width: 8, backgroundColor: "#1c1c1c" },
-        "::-webkit-scrollbar-thumb":
-          mode !== "dark"
-            ? {}
-            : { backgroundColor: "#3e3e3e", borderRadius: 9999 },
+        "::-webkit-scrollbar": customScroll
+          ? {}
+          : { width: 8, backgroundColor: "#1c1c1c" },
+        "::-webkit-scrollbar-thumb": customScroll
+          ? {}
+          : { backgroundColor: "#3e3e3e", borderRadius: 9999 },
       })}
     />
   )
