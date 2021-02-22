@@ -98,6 +98,9 @@ const theme = {
         background: "#101010",
         onBackground: "rgba(255,255,255, 0.87)",
 
+        backgroundDarker: "#070707",
+        onBackgroundDarker: "rgba(255,255,255, 0.87)",
+
         surface: "#242424",
         onSurface: "rgba(255,255,255, 0.87)",
 

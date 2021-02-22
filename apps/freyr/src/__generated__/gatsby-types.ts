@@ -3450,10 +3450,15 @@ type GatsbyImageSharpSizes_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio
 
 type GatsbyImageSharpSizes_withWebp_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
 
-type homechrisintSrcobserfyappsfreyrsrccomponentsseoTsx63159454QueryVariables = Exact<{ [key: string]: never; }>;
+type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type homechrisintSrcobserfyappsfreyrsrccomponentsseoTsx63159454Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
+type Unnamed_1_Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
+
+type LocalizationSEOQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type LocalizationSEOQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'siteUrl'>> }> };
 
 type LocalizationConfigQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -3462,11 +3467,6 @@ type LocalizationConfigQueryQuery = { readonly themeI18N: Maybe<(
     Pick<ThemeI18n, 'defaultLang'>
     & { readonly config: Maybe<ReadonlyArray<Maybe<Pick<Locale, 'code' | 'hrefLang' | 'dateFormat' | 'langDir' | 'localName' | 'name'>>>> }
   )> };
-
-type LocalizationSEOQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type LocalizationSEOQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'siteUrl'>> }> };
 
 type homechrisintSrcobserfyappsfreyrsrctemplatesdocsJs2568242176QueryVariables = Exact<{
   locale: Scalars['String'];
