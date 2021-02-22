@@ -43,13 +43,11 @@ const GlobalStyle: FC = () => {
           scrollbarColor: "dark",
         },
         "::-webkit-scrollbar":
-          mode !== "dark"
-            ? {}
-            : { width: 8, backgroundColor: colors.background },
+          mode !== "dark" ? {} : { width: 8, backgroundColor: "#1c1c1c" },
         "::-webkit-scrollbar-thumb":
           mode !== "dark"
             ? {}
-            : { backgroundColor: colors.surface, borderRadius: 9999 },
+            : { backgroundColor: "#3e3e3e", borderRadius: 9999 },
       })}
     />
   )
