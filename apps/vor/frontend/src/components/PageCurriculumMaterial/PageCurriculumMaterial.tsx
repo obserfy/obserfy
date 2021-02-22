@@ -54,6 +54,7 @@ const PageCurriculumMaterial: FC<PageCurriculumMaterialProps> = ({
 
         <Card mt={3} pb={2}>
           <MultilineDataBox
+            key={material.data?.description}
             label="Description"
             value={material.data?.description ?? ""}
             placeholder={t`Not set`}

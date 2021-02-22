@@ -72,7 +72,7 @@ const SideBar: FC<{ areaId: string; subjectId: string }> = ({
       sx={{
         position: "sticky",
         top: 0,
-        maxWidth: ["100%", "100%", 300, 400, 500],
+        maxWidth: ["100%", "100%", 300, 400],
         height: ["auto", "auto", "100vh"],
         display: ["none", "none", "block"],
         overflow: "auto",

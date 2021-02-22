@@ -41,6 +41,7 @@ export const MultilineDataBox: FC<MultilineDataBoxProps> = ({
           <Icon as={EditIcon} />
         </Button>
       </Flex>
+
       <Markdown markdown={value || i18n._(placeholder)} mx={3} mt={3} mb={2} />
     </Box>
   )
