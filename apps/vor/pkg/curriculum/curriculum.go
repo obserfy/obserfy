@@ -42,7 +42,7 @@ func NewRouter(server rest.Server, store Store) *chi.Mux {
 
 	r.Route("/materials/{materialId}", func(r chi.Router) {
 		r.Use(materialAuthMiddleware(server, store))
-		r.Method("PATCH", "/", updateMaterial(server, store))
+		r.Method("PATCH", "/", patchMaterial(server, store))
 		r.Method("GET", "/", getMaterial(server, store))
 	})
 
@@ -395,33 +395,19 @@ func createNewMaterial(server rest.Server, store Store) http.Handler {
 	})
 }
 
-func updateMaterial(server rest.Server, store Store) http.Handler {
+func patchMaterial(server rest.Server, store Store) http.Handler {
 	type requestBody struct {
-		Name      *string `json:"name"`
-		Order     *int    `json:"order"`
-		SubjectId *string `json:"subjectId"`
+		Name        *string    `json:"name"`
+		Order       *int       `json:"order"`
+		SubjectId   *uuid.UUID `json:"subjectId"`
+		Description *string    `json:"description"`
 	}
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		materialId := chi.URLParam(r, "materialId")
+
 		var body requestBody
 		if err := rest.ParseJson(r.Body, &body); err != nil {
 			return rest.NewParseJsonError(err)
-		}
-
-		// Validate targeted material
-		materialId := chi.URLParam(r, "materialId")
-		material, err := store.GetMaterial(materialId)
-		if err == pg.ErrNoRows {
-			return &rest.Error{
-				Code:    http.StatusNotFound,
-				Message: "Can' find material with the specified ID",
-				Error:   err,
-			}
-		} else if err != nil {
-			return &rest.Error{
-				Code:    http.StatusInternalServerError,
-				Message: "Can' retrieve material",
-				Error:   err,
-			}
 		}
 
 		// Validate material name
@@ -433,19 +419,11 @@ func updateMaterial(server rest.Server, store Store) http.Handler {
 					Error:   errors.New("empty name field"),
 				}
 			}
-			material.Name = *body.Name
 		}
 
 		// Validate subject ID
 		if body.SubjectId != nil {
-			if _, err := uuid.Parse(*body.SubjectId); err != nil {
-				return &rest.Error{
-					Code:    http.StatusUnprocessableEntity,
-					Message: "Can't find the specified subject",
-					Error:   errors.New("empty name field"),
-				}
-			}
-			subject, err := store.GetSubject(*body.SubjectId)
+			_, err := store.GetSubject(body.SubjectId.String())
 			if err == pg.ErrNoRows {
 				return &rest.Error{
 					Code:    http.StatusUnprocessableEntity,
@@ -458,17 +436,10 @@ func updateMaterial(server rest.Server, store Store) http.Handler {
 					Message: "Can' retrieve subject",
 					Error:   err,
 				}
-			} else {
-				material.SubjectId = subject.Id
 			}
 		}
 
-		var newOrder *int
-		if body.Order != nil {
-			newOrder = body.Order
-		}
-
-		if err := store.UpdateMaterial(material, newOrder); err != nil {
+		if err := store.UpdateMaterial(materialId, body.Name, body.Order, body.Description, body.SubjectId); err != nil {
 			return &rest.Error{
 				Code:    http.StatusInternalServerError,
 				Message: "Failed updating material",
