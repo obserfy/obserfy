@@ -213,8 +213,15 @@ func (s CurriculumStore) GetMaterial(materialId string) (*domain.Material, error
 	}, nil
 }
 
-func (s CurriculumStore) UpdateMaterial(material *domain.Material, order *int) error {
-	if err := s.RunInTransaction(s.DB.Context(), func(tx *pg.Tx) error {
+func (s CurriculumStore) UpdateMaterial(id string, name *string, order *int, description *string, subjectId *uuid.UUID) error {
+	material := Material{Id: id}
+	if err := s.Model(&material).
+		WherePK().
+		Select(); err != nil {
+		return richErrors.Wrap(err, "failed to find material")
+	}
+
+	if err := s.RunInTransaction(s.Context(), func(tx *pg.Tx) error {
 		// Reorder the order of materials
 		if order != nil {
 			var err error
@@ -235,8 +242,16 @@ func (s CurriculumStore) UpdateMaterial(material *domain.Material, order *int) e
 			material.Order = *order
 		}
 
+		updateQuery := PartialUpdateModel{}
+		updateQuery.AddStringColumn("name", name)
+		updateQuery.AddUUIDColumn("subject_id", subjectId)
+		updateQuery.AddStringColumn("description", description)
+
 		// Update the targeted materials with the targeted changes
-		if _, err := tx.Model(material).WherePK().Update(); err != nil {
+		if _, err := tx.Model(updateQuery.GetModel()).
+			TableExpr("materials").
+			Where("id = ?", id).
+			Update(); err != nil {
 			return err
 		}
 		return nil
