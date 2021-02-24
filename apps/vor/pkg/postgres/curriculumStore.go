@@ -11,6 +11,55 @@ type CurriculumStore struct {
 	*pg.DB
 }
 
+func (s CurriculumStore) UpdateSubject(id string, name *string, order *int, description *string, areaId *uuid.UUID) (*domain.Subject, error) {
+
+	subject := Subject{Id: id}
+	if err := s.Model(&subject).
+		WherePK().
+		Select(); err != nil {
+		return nil, richErrors.Wrap(err, "failed to find subject")
+	}
+
+	if err := s.RunInTransaction(s.Context(), func(tx *pg.Tx) error {
+		// Reorder the order of materials
+		if order != nil {
+			var err error
+			if *order <= subject.Order {
+				_, err = tx.Model((*Subject)(nil)).
+					Set(`"order" = "order" + 1`).
+					Where(`area_id=? AND "order" >= ? AND "order" < ? AND id != ?`, subject.AreaId, order, subject.Order, subject.Id).
+					Update()
+			} else {
+				_, err = tx.Model((*Subject)(nil)).
+					Set(`"order" = "order" - 1`).
+					Where(`area_id=? AND "order" <= ? AND "order" > ? AND id != ?`, subject.AreaId, order, subject.Order, subject.Id).
+					Update()
+			}
+			if err != nil {
+				return err
+			}
+			subject.Order = *order
+		}
+
+		updateQuery := make(PartialUpdateModel)
+		updateQuery.AddStringColumn("name", name)
+		updateQuery.AddStringColumn("description", description)
+		updateQuery.AddUUIDColumn("area_id", areaId)
+
+		// Update the targeted materials with the targeted changes
+		if _, err := tx.Model(updateQuery.GetModel()).
+			TableExpr("subjects").
+			Where("id = ?", id).
+			Update(); err != nil {
+			return err
+		}
+		return nil
+	}); err != nil {
+		return nil, err
+	}
+	return nil, nil
+}
+
 func (s CurriculumStore) UpdateCurriculum(curriculumId string, name *string, description *string) (*domain.Curriculum, error) {
 	updateQuery := make(PartialUpdateModel)
 	updateQuery.AddStringColumn("name", name)

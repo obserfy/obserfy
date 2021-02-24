@@ -36,6 +36,7 @@ func NewRouter(server rest.Server, store Store) *chi.Mux {
 		r.Method("GET", "/", getSubject(server, store))
 		r.Method("PUT", "/", replaceSubject(server, store))
 		r.Method("DELETE", "/", deleteSubject(server, store))
+		r.Method("PATCH", "/", patchSubject(server, store))
 		r.Method("GET", "/materials", getSubjectMaterials(server, store))
 		r.Method("POST", "/materials", createNewMaterial(server, store))
 	})
@@ -47,6 +48,76 @@ func NewRouter(server rest.Server, store Store) *chi.Mux {
 	})
 
 	return r
+}
+
+func patchSubject(server rest.Server, store Store) http.Handler {
+	type requestBody struct {
+		Name        *string    `json:"name"`
+		Order       *int       `json:"order"`
+		AreaId      *uuid.UUID `json:"areaId"`
+		Description *string    `json:"description"`
+	}
+	type responseBody struct {
+		Id          string `json:"id"`
+		Order       int    `json:"order"`
+		Description string `json:"description"`
+	}
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		subjectId := chi.URLParam(r, "subjectId")
+
+		var body requestBody
+		if err := rest.ParseJson(r.Body, &body); err != nil {
+			return rest.NewParseJsonError(err)
+		}
+
+		// Validate material name
+		if body.Name != nil {
+			if *body.Name == "" {
+				return &rest.Error{
+					Code:    http.StatusUnprocessableEntity,
+					Message: "Name can't be empty",
+					Error:   errors.New("empty name field"),
+				}
+			}
+		}
+
+		// Validate subject ID
+		if body.AreaId != nil {
+			_, err := store.GetSubject(body.AreaId.String())
+			if err == pg.ErrNoRows {
+				return &rest.Error{
+					Code:    http.StatusUnprocessableEntity,
+					Message: "Can't find the specified subject",
+					Error:   errors.New("empty name field"),
+				}
+			} else if err != nil {
+				return &rest.Error{
+					Code:    http.StatusInternalServerError,
+					Message: "Can' retrieve subject",
+					Error:   err,
+				}
+			}
+		}
+
+		subject, err := store.UpdateSubject(subjectId, body.Name, body.Order, body.Description, body.AreaId)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "Failed updating material",
+				Error:   err,
+			}
+		}
+
+		response := responseBody{
+			Id:          subject.Id,
+			Order:       subject.Order,
+			Description: subject.Description,
+		}
+		if err := rest.WriteJson(w, response); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
+		return nil
+	})
 }
 
 func getMaterial(s rest.Server, store Store) http.Handler {
