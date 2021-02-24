@@ -34,6 +34,7 @@ import Spacer from "../Spacer/Spacer"
 import TopBar, { breadCrumb } from "../TopBar/TopBar"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
 import Typography from "../Typography/Typography"
+import EditSubjectDialog from "./EditSubjectDialog"
 
 export interface PageCurriculumSubjectProps {
   subjectId: string
@@ -53,6 +54,7 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
 
   const deleteSubject = useVisibilityState()
   const newMaterial = useVisibilityState()
+  const editSubject = useVisibilityState()
 
   return (
     <Box sx={{ width: "100%", pb: 5, ...sx }}>
@@ -82,7 +84,13 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
           >
             <Icon size={16} as={DeleteIcon} fill="danger" />
           </Button>
-          <Button variant="outline" sx={{ flexShrink: 0 }} px={2} ml={2}>
+          <Button
+            variant="outline"
+            sx={{ flexShrink: 0 }}
+            px={2}
+            ml={2}
+            onClick={editSubject.show}
+          >
             <Icon size={16} as={EditIcon} />
           </Button>
         </Flex>
@@ -128,6 +136,13 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
           subjectId={subjectId}
           name={subject.data?.name}
           onDeleted={() => navigate(CURRICULUM_AREA_URL(areaId))}
+        />
+      )}
+
+      {editSubject.visible && (
+        <EditSubjectDialog
+          onDismiss={editSubject.hide}
+          onSave={editSubject.hide}
         />
       )}
     </Box>
