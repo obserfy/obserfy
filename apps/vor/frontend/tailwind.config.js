@@ -74,6 +74,9 @@ module.exports = {
             a: {
               color: "inherit",
             },
+            blockquote: {
+              color: "inherit",
+            }
           },
         },
       },

@@ -206,10 +206,11 @@ func (s CurriculumStore) GetMaterial(materialId string) (*domain.Material, error
 	}
 
 	return &domain.Material{
-		Id:        material.Id,
-		SubjectId: material.SubjectId,
-		Name:      material.Name,
-		Order:     material.Order,
+		Id:          material.Id,
+		SubjectId:   material.SubjectId,
+		Name:        material.Name,
+		Order:       material.Order,
+		Description: material.Description,
 	}, nil
 }
 
