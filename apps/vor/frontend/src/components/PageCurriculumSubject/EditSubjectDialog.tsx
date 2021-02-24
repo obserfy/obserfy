@@ -7,11 +7,11 @@ import DialogHeader from "../DialogHeader/DialogHeader"
 import Input from "../Input/Input"
 
 const EditSubjectDialog: FC<{
-  initialValue: string
+  initialValue?: string
   subjectId: string
   onDismiss: () => void
   onSave: () => void
-}> = ({ initialValue, subjectId, onDismiss, onSave }) => {
+}> = ({ initialValue = "", subjectId, onDismiss, onSave }) => {
   const [value, setValue] = useState(initialValue)
   const patchSubject = usePatchSubject(subjectId)
 
