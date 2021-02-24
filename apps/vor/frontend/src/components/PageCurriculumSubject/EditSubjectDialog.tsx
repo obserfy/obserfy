@@ -1,22 +1,35 @@
 import { t } from "@lingui/macro"
 import React, { FC, useState } from "react"
 import { Box } from "theme-ui"
+import usePatchSubject from "../../hooks/api/curriculum/usePatchSubject"
 import Dialog from "../Dialog/Dialog"
 import DialogHeader from "../DialogHeader/DialogHeader"
 import Input from "../Input/Input"
 
 const EditSubjectDialog: FC<{
+  initialValue: string
+  subjectId: string
   onDismiss: () => void
   onSave: () => void
-}> = ({ onDismiss, onSave }) => {
-  const [value, setValue] = useState("")
+}> = ({ initialValue, subjectId, onDismiss, onSave }) => {
+  const [value, setValue] = useState(initialValue)
+  const patchSubject = usePatchSubject(subjectId)
+
+  const handleSave = async () => {
+    try {
+      const result = await patchSubject.mutateAsync({ name: value })
+      if (result?.ok) onSave()
+    } catch (e) {
+      Sentry.captureException(e)
+    }
+  }
 
   return (
     <Dialog>
       <DialogHeader
         title="Edit dialog name"
         onCancel={onDismiss}
-        onAccept={onSave}
+        onAccept={handleSave}
       />
 
       <Box p={3} sx={{ backgroundColor: "background" }}>

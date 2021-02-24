@@ -141,8 +141,10 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
 
       {editSubject.visible && (
         <EditSubjectDialog
+          initialValue={subject.data?.name}
           onDismiss={editSubject.hide}
           onSave={editSubject.hide}
+          subjectId={subjectId}
         />
       )}
     </Box>
