@@ -57,7 +57,20 @@ func (s CurriculumStore) UpdateSubject(id string, name *string, order *int, desc
 	}); err != nil {
 		return nil, err
 	}
-	return nil, nil
+
+	subject = Subject{Id: id}
+	if err := s.Model(&subject).
+		WherePK().
+		Select(); err != nil {
+		return nil, richErrors.Wrap(err, "failed to find subject")
+	}
+	return &domain.Subject{
+		Id:          subject.Id,
+		AreaId:      subject.AreaId,
+		Name:        subject.Name,
+		Order:       subject.Order,
+		Description: subject.Description,
+	}, nil
 }
 
 func (s CurriculumStore) UpdateCurriculum(curriculumId string, name *string, description *string) (*domain.Curriculum, error) {
