@@ -2,6 +2,7 @@ import { Trans } from "@lingui/macro"
 import React, { FC, useState } from "react"
 import { Box, Button, Card, Flex } from "theme-ui"
 import { borderBottom } from "../../border"
+import usePatchMaterial from "../../hooks/api/curriculum/usePatchMaterial"
 import { ReactComponent as CloseIcon } from "../../icons/close.svg"
 import { ReactComponent as MarkdownIcon } from "../../icons/markdown.svg"
 import Icon from "../Icon/Icon"
@@ -10,11 +11,24 @@ import { TextArea } from "../TextArea/TextArea"
 import { Typography } from "../Typography/Typography"
 
 const DescriptionEditor: FC<{
+  initialValue?: string
+  materialId: string
   onDismiss: () => void
   onSave: () => void
-}> = ({ onDismiss, onSave }) => {
-  const [value, setValue] = useState("")
+}> = ({ materialId, onDismiss, onSave, initialValue = "" }) => {
+  const [value, setValue] = useState(initialValue)
   const [showPreview, setShowPreview] = useState(false)
+  const patchMaterial = usePatchMaterial(materialId)
+
+  const handleSave = async () => {
+    try {
+      const result = await patchMaterial.mutateAsync({ description: value })
+      if (result?.ok) onSave()
+      onSave()
+    } catch (e) {
+      Sentry.captureException(e)
+    }
+  }
 
   return (
     <Card variant="responsive">
@@ -30,7 +44,7 @@ const DescriptionEditor: FC<{
         <Button
           mr={3}
           sx={{ fontWeight: "bold", fontSize: 0 }}
-          onClick={onSave}
+          onClick={handleSave}
         >
           <Trans>Save</Trans>
         </Button>

@@ -64,6 +64,8 @@ const PageCurriculumMaterial: FC<PageCurriculumMaterialProps> = ({
 
         {descriptionEditor.visible ? (
           <DescriptionEditor
+            initialValue={material.data?.description}
+            materialId={materialId}
             onDismiss={descriptionEditor.hide}
             onSave={descriptionEditor.hide}
           />
