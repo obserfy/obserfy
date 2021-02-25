@@ -28,7 +28,6 @@ export interface PageCurriculumMaterialProps {
   subjectId: string
   materialId: string
 }
-
 const PageCurriculumMaterial: FC<PageCurriculumMaterialProps> = ({
   subjectId,
   areaId,
@@ -60,14 +59,16 @@ const PageCurriculumMaterial: FC<PageCurriculumMaterialProps> = ({
         <NameDataBox
           name={material.data?.name ?? "..."}
           materialId={materialId}
+          subjectId={subjectId}
         />
 
         {descriptionEditor.visible ? (
           <DescriptionEditor
             initialValue={material.data?.description}
-            materialId={materialId}
             onDismiss={descriptionEditor.hide}
             onSave={descriptionEditor.hide}
+            materialId={materialId}
+            subjectId={subjectId}
           />
         ) : (
           <Card variant="responsive" pb={2}>
@@ -96,10 +97,11 @@ const PageCurriculumMaterial: FC<PageCurriculumMaterialProps> = ({
   )
 }
 
-const NameDataBox: FC<{ name: string; materialId: string }> = ({
-  name,
-  materialId,
-}) => {
+const NameDataBox: FC<{
+  name: string
+  materialId: string
+  subjectId: string
+}> = ({ name, materialId, subjectId }) => {
   const editDialog = useVisibilityState()
 
   return (
@@ -124,6 +126,7 @@ const NameDataBox: FC<{ name: string; materialId: string }> = ({
           onDismiss={editDialog.hide}
           onSave={editDialog.hide}
           materialId={materialId}
+          subjectId={subjectId}
         />
       )}
     </Box>
@@ -135,25 +138,26 @@ const EditMaterialNameDialog: FC<{
   onSave: () => void
   onDismiss: () => void
   materialId: string
-}> = ({ onSave, onDismiss, initialValue, materialId }) => {
-  const patchMaterial = usePatchMaterial(materialId)
+  subjectId: string
+}> = ({ onSave, onDismiss, initialValue, materialId, subjectId }) => {
+  const patchMaterial = usePatchMaterial(materialId, subjectId)
   const [value, setValue] = useState(initialValue)
+
+  const handleSave = async () => {
+    try {
+      await patchMaterial.mutateAsync({ name: value })
+      onSave()
+    } catch (e) {
+      Sentry.captureException(e)
+    }
+  }
 
   return (
     <Dialog>
       <DialogHeader
         title={t`Edit Material Name`}
         onCancel={onDismiss}
-        onAccept={async () => {
-          try {
-            await patchMaterial.mutateAsync({
-              name: value,
-            })
-            onSave()
-          } catch (e) {
-            Sentry.captureException(e)
-          }
-        }}
+        onAccept={handleSave}
       />
 
       <Box p={3} sx={{ backgroundColor: "background" }}>
