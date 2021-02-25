@@ -1,13 +1,19 @@
 import { useMutation } from "react-query"
 import { patchApi } from "../fetchApi"
+import { useGetSubjectMaterialsCache } from "../useGetSubjectMaterials"
 import { useGetMaterialCache } from "./useGetMaterial"
 
-const usePatchMaterial = (id: string) => {
-  const cache = useGetMaterialCache(id)
-  const patchMaterial = patchApi(`/curriculums/materials/${id}`)
+const usePatchMaterial = (materialId: string, subjectId: string) => {
+  const materialCache = useGetMaterialCache(materialId)
+  const subjectMaterialsCache = useGetSubjectMaterialsCache(subjectId)
+  const patchMaterial = patchApi(`/curriculums/materials/${materialId}`)
+
   return useMutation(patchMaterial, {
     onSuccess: async () => {
-      await cache.invalidate()
+      await Promise.all([
+        materialCache.invalidate(),
+        subjectMaterialsCache.invalidate(),
+      ])
     },
   })
 }

@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { t, Trans } from "@lingui/macro"
-import { Fragment, FC, memo, useState } from "react"
+import { Fragment, FC, memo, useState, useEffect } from "react"
 import { jsx, Box, Button, Flex, ThemeUIStyleObject } from "theme-ui"
 import { borderBottom, borderRight } from "../../border"
 import usePostNewMaterial from "../../hooks/api/curriculum/usePostNewMaterial"
@@ -106,7 +106,6 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
       <Spacer />
 
       <MaterialList
-        key={materials.data?.map(({ id }) => id).join(",") ?? ""}
         subjectId={subjectId}
         areaId={areaId}
         materials={materials.data ?? []}
@@ -157,7 +156,14 @@ const MaterialList: FC<{
   areaId: string
   currMaterialId: string
 }> = ({ materials, subjectId, areaId, currMaterialId }) => {
-  const [cachedMaterials, moveItem] = useMoveDraggableItem(materials)
+  const [cachedMaterials, moveItem, setMaterials] = useMoveDraggableItem(
+    materials
+  )
+
+  useEffect(() => {
+    console.log(materials)
+    setMaterials(() => materials)
+  }, [materials])
 
   return (
     <Fragment>

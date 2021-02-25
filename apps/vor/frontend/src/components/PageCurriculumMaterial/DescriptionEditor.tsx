@@ -12,13 +12,14 @@ import { Typography } from "../Typography/Typography"
 
 const DescriptionEditor: FC<{
   initialValue?: string
-  materialId: string
   onDismiss: () => void
   onSave: () => void
-}> = ({ materialId, onDismiss, onSave, initialValue = "" }) => {
+  materialId: string
+  subjectId: string
+}> = ({ materialId, subjectId, onDismiss, onSave, initialValue = "" }) => {
   const [value, setValue] = useState(initialValue)
   const [showPreview, setShowPreview] = useState(false)
-  const patchMaterial = usePatchMaterial(materialId)
+  const patchMaterial = usePatchMaterial(materialId, subjectId)
 
   const handleSave = async () => {
     try {
