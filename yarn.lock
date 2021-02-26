@@ -8636,14 +8636,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/pino@npm:6.3.5":
-  version: 6.3.5
-  resolution: "@types/pino@npm:6.3.5"
+"@types/pino@npm:6.3.6":
+  version: 6.3.6
+  resolution: "@types/pino@npm:6.3.6"
   dependencies:
     "@types/node": "*"
     "@types/pino-std-serializers": "*"
     "@types/sonic-boom": "*"
-  checksum: 0f61079e5ad2f209977015c8b0c58301dee533e80944ed394ef3c87e6db6f53d0687feddeb94ea454073edb87c6bc55c8d276120c640bac9083f5725c065e430
+  checksum: ad25dc65e2364189f8f5ea8e2a8872a446b675e906206d8b30338acfb41be0df8f4d7866b970086716c5452c37ace7e4d8a44650388b95b93e3a1fe7d56ae0d6
   languageName: node
   linkType: hard
 
@@ -18964,7 +18964,7 @@ fsevents@~2.3.1:
     "@types/nanoid": 2.1.0
     "@types/node": 14.14.28
     "@types/pg": 7.14.10
-    "@types/pino": 6.3.5
+    "@types/pino": 6.3.6
     "@types/react": 17.0.2
     "@types/react-query": 1.1.2
     "@types/uuid": 8.3.0
