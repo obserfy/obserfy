@@ -1,4 +1,5 @@
 // TODO: rename file to apiHelpers
+import { track } from "../../analytics"
 import { navigate } from "../../components/Link/Link"
 
 const BASE_URL = "/api/v1"
@@ -21,7 +22,7 @@ export const getApi = <T>(url: string) => async (): Promise<T> => {
 
   const json = await result.json()
   if (json.error) {
-    analytics.track("Request Failed", {
+    track("Request Failed", {
       method: "GET",
       status: result.status,
       message: json.error.message,
@@ -48,7 +49,7 @@ export const deleteApi = (url: string) => async (): Promise<
   }
   if (!result.ok) {
     const body: ApiError = await result.json()
-    analytics.track("Request Failed", {
+    track("Request Failed", {
       method: "DELETE",
       status: result.status,
       message: body?.error?.message,
@@ -75,7 +76,7 @@ export const patchApi = <T>(url: string) => async (
   }
   if (!result.ok) {
     const body: ApiError = await result.json()
-    analytics.track("Request Failed", {
+    track("Request Failed", {
       method: "PATCH",
       status: result.status,
       message: body?.error?.message,
@@ -102,7 +103,7 @@ export const postApi = <T>(url: string) => async (
   }
   if (!result.ok) {
     const body: ApiError = await result.json()
-    analytics.track("Request Failed", {
+    track("Request Failed", {
       method: "POST",
       status: result.status,
       message: body?.error?.message,

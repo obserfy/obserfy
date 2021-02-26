@@ -1,198 +1,314 @@
-import React, { FC, useState } from "react"
-import { Box, Button, Card, Flex } from "theme-ui"
-import { Trans } from "@lingui/macro"
-import { Link, navigate } from "../Link/Link"
-import Typography from "../Typography/Typography"
-import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
+/** @jsx jsx */
+import { t, Trans } from "@lingui/macro"
+import { FC, Fragment, useEffect, useState } from "react"
+import { jsx, Box, Button, Flex, ThemeUIStyleObject } from "theme-ui"
+import { borderBottom, borderRight } from "../../border"
+import usePatchSubject from "../../hooks/api/curriculum/usePatchSubject"
+import usePostNewSubject from "../../hooks/api/curriculum/usePostNewSubject"
 import { useGetArea } from "../../hooks/api/useGetArea"
 import { Subject, useGetAreaSubjects } from "../../hooks/api/useGetAreaSubjects"
-import { useGetSubjectMaterials } from "../../hooks/api/useGetSubjectMaterials"
-import Spacer from "../Spacer/Spacer"
+import useDebounce from "../../hooks/useDebounce"
+import { useMoveDraggableItem } from "../../hooks/useMoveDraggableItem"
+import { useQueryString } from "../../hooks/useQueryString"
+import useVisibilityState from "../../hooks/useVisibilityState"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
+import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import { ReactComponent as DeleteIcon } from "../../icons/trash.svg"
-import Icon from "../Icon/Icon"
-import DeleteAreaDialog from "../DeleteAreaDialog/DeleteAreaDialog"
-import DeleteSubjectDialog from "../DeleteSubjectDialog/DeleteSubjectDialog"
-import EditAreaDialog from "../EditAreaDialog/EditAreaDialog"
 import {
   ADMIN_CURRICULUM_URL,
   ADMIN_URL,
-  EDIT_SUBJECT_URL,
-  NEW_SUBJECT_URL,
+  CURRICULUM_SUBJECT_URL,
 } from "../../routes"
-import TopBar from "../TopBar/TopBar"
-import { borderTop } from "../../border"
+import DeleteAreaDialog from "../DeleteAreaDialog/DeleteAreaDialog"
+import Dialog from "../Dialog/Dialog"
+import DialogHeader from "../DialogHeader/DialogHeader"
+import DraggableListItem from "../DraggableListItem/DraggableListItem"
+import EditAreaDialog from "../EditAreaDialog/EditAreaDialog"
+import Icon from "../Icon/Icon"
+import Input from "../Input/Input"
+import { Link, navigate } from "../Link/Link"
+import TopBar, { breadCrumb } from "../TopBar/TopBar"
+import TranslucentBar from "../TranslucentBar/TranslucentBar"
+import Typography from "../Typography/Typography"
 
 interface Props {
   id: string
+  sx?: ThemeUIStyleObject
 }
-const PageCurriculumArea: FC<Props> = ({ id }) => {
+const PageCurriculumArea: FC<Props> = ({ id, sx }) => {
+  const subjectId = useQueryString("subjectId")
   const area = useGetArea(id)
   const subjects = useGetAreaSubjects(id)
-  const [showDeleteAreaDialog, setShowDeleteAreaDialog] = useState(false)
-  const [showDeleteSubjectDialog, setShowDeleteSubjectDialog] = useState(false)
-  const [showEditAreaDialog, setShowEditAreaDialog] = useState(false)
-  const [subjectToDelete, setSubjectToDelete] = useState<Subject>()
-  const loading = area.isLoading || subjects.isLoading
+  const newSubject = useVisibilityState()
+  const deleteArea = useVisibilityState()
+  const editArea = useVisibilityState()
 
   return (
-    <>
-      <Box sx={{ maxWidth: "maxWidth.sm", margin: "auto" }}>
+    <Box
+      sx={{
+        position: "sticky",
+        top: 0,
+        width: "100%",
+        overflow: "auto",
+        height: ["auto", "auto", "100vh"],
+        maxWidth: ["100%", "100%", 280],
+        pb: 5,
+        ...borderRight,
+        ...sx,
+      }}
+    >
+      <TranslucentBar boxSx={{ ...borderBottom }}>
         <TopBar
+          containerSx={{ display: ["flex", "flex", "none"] }}
           breadcrumbs={[
-            {
-              text: "Admin",
-              to: ADMIN_URL,
-            },
-            {
-              text: "Curriculum",
-              to: ADMIN_CURRICULUM_URL,
-            },
-            { text: `${area.data?.name} Area` },
+            breadCrumb("Admin", ADMIN_URL),
+            breadCrumb("Curriculum", ADMIN_CURRICULUM_URL),
+            breadCrumb(`${area.data?.name}`),
           ]}
         />
 
-        <Flex mx={3} sx={{ alignItems: "baseline" }} mt={3}>
-          {loading && !area.data?.name ? (
-            <LoadingPlaceholder sx={{ width: "10rem", height: 43 }} />
-          ) : (
-            <Typography.H4 sx={{ lineHeight: 1.2 }}>
-              {area.data?.name}
-            </Typography.H4>
-          )}
+        <Flex mx={3} py={3} sx={{ alignItems: "center" }}>
+          <Typography.H6
+            mr={3}
+            sx={{
+              lineHeight: 1.2,
+              fontSize: [3, 3, 1],
+            }}
+          >
+            {area.data?.name}
+          </Typography.H6>
           <Button
-            variant="secondary"
-            onClick={() => setShowDeleteAreaDialog(true)}
+            variant="outline"
+            onClick={deleteArea.show}
             color="danger"
+            sx={{ flexShrink: 0 }}
+            px={2}
+            ml="auto"
+          >
+            <Icon size={16} as={DeleteIcon} fill="danger" />
+          </Button>
+          <Button
+            variant="outline"
+            onClick={editArea.show}
             sx={{ flexShrink: 0 }}
             px={2}
             ml={2}
           >
-            <Icon as={DeleteIcon} fill="danger" />
-          </Button>
-          <Button
-            variant="secondary"
-            onClick={() => setShowEditAreaDialog(true)}
-            sx={{ flexShrink: 0 }}
-            px={2}
-          >
-            <Icon as={EditIcon} />
+            <Icon size={16} as={EditIcon} />
           </Button>
         </Flex>
+      </TranslucentBar>
 
-        <Flex sx={{ alignItems: "center" }} mx={3} mt={3}>
-          <Typography.H6>
-            <Trans>Subjects</Trans>
-          </Typography.H6>
-          <Spacer />
-          <Link to={NEW_SUBJECT_URL(id)}>
-            <Button variant="outline">
-              <Icon as={PlusIcon} mr={2} />
-              <Trans>New</Trans>
-            </Button>
-          </Link>
-        </Flex>
-        {subjects.data?.map((subject) => (
-          <SubjectListItem
-            key={subject.id}
-            subject={subject}
-            areaId={id}
-            onDeleteClick={() => {
-              setSubjectToDelete(subject)
-              setShowDeleteSubjectDialog(true)
-            }}
-          />
-        ))}
-      </Box>
-      {showDeleteAreaDialog && (
+      <Typography.Body
+        py={2}
+        px={3}
+        sx={{ fontWeight: "bold", ...borderBottom }}
+      >
+        <Trans>Subjects</Trans>
+      </Typography.Body>
+
+      <SubjectList
+        areaId={id}
+        subjects={subjects.data ?? []}
+        currSubjectId={subjectId}
+      />
+
+      <Flex
+        role="button"
+        p={3}
+        onClick={newSubject.show}
+        sx={{
+          alignItems: "center",
+          cursor: "pointer",
+          ...borderBottom,
+        }}
+      >
+        <Icon as={PlusIcon} fill="textPrimary" />
+        <Typography.Body ml={3} sx={{ color: "textMediumEmphasis" }}>
+          <Trans>Add new subject</Trans>
+        </Typography.Body>
+      </Flex>
+
+      {deleteArea.visible && (
         <DeleteAreaDialog
           name={area.data?.name ?? ""}
-          onDismiss={() => setShowDeleteAreaDialog(false)}
+          onDismiss={deleteArea.hide}
           onDeleted={() => navigate(ADMIN_CURRICULUM_URL)}
           areaId={id}
         />
       )}
-      {showDeleteSubjectDialog && subjectToDelete && (
-        <DeleteSubjectDialog
-          subjectId={subjectToDelete.id}
-          name={subjectToDelete.name}
-          onDismiss={() => setShowDeleteSubjectDialog(false)}
-          onDeleted={async () => {
-            await subjects.refetch()
-            setShowDeleteSubjectDialog(false)
-          }}
-        />
-      )}
-      {showEditAreaDialog && area.data && (
+
+      {editArea.visible && area.data && (
         <EditAreaDialog
           areaId={id}
           originalName={area.data.name}
-          onDismiss={() => setShowEditAreaDialog(false)}
+          onDismiss={editArea.hide}
           onSaved={async () => {
             await area.refetch()
-            setShowEditAreaDialog(false)
+            editArea.hide()
           }}
         />
       )}
-    </>
+
+      {newSubject.visible && (
+        <NewSubjectDialog areaId={id} onDismiss={newSubject.hide} />
+      )}
+    </Box>
   )
 }
 
-interface SubjectListItemProps {
-  subject: Subject
+const SubjectList: FC<{
+  subjects: Subject[]
   areaId: string
-  onDeleteClick: () => void
-}
-const SubjectListItem: FC<SubjectListItemProps> = ({
-  subject,
-  onDeleteClick,
-  areaId,
-}) => {
-  const materials = useGetSubjectMaterials(subject.id)
+  currSubjectId: string
+}> = ({ currSubjectId, subjects, areaId }) => {
+  const [isLoading, setIsLoading] = useState(false)
+  const [cachedSubjects, moveItem, setSubjects] = useMoveDraggableItem(subjects)
+  const debouncedIsLoading = useDebounce(isLoading)
 
-  const materialList = materials.data?.map((material) => (
-    <Box p={3} py={2} key={material.id} sx={borderTop}>
-      <Typography.Body sx={{ fontSize: 1 }}>{material.name}</Typography.Body>
-    </Box>
-  ))
-
-  const loadingPlaceholder = materials.isLoading && !materials.data && (
-    <Box m={3}>
-      <LoadingPlaceholder sx={{ width: "100%", height: "4rem" }} mb={3} />
-      <LoadingPlaceholder sx={{ width: "100%", height: "4rem" }} mb={3} />
-      <LoadingPlaceholder sx={{ width: "100%", height: "4rem" }} mb={3} />
-      <LoadingPlaceholder sx={{ width: "100%", height: "4rem" }} mb={3} />
-      <LoadingPlaceholder sx={{ width: "100%", height: "4rem" }} mb={3} />
-    </Box>
-  )
+  useEffect(() => {
+    setSubjects(() => subjects)
+  }, [subjects])
 
   return (
-    <Box py={2} px={[0, 3]}>
-      <Card sx={{ borderRadius: [0, "default"] }}>
-        <Flex sx={{ alignItems: "center" }} m={3} mr={2} pt={3}>
-          <Typography.Body mr={3} sx={{ fontSize: 3, fontWeight: "bold" }}>
-            {subject.name}
-          </Typography.Body>
-          <Flex ml="auto" sx={{ alignItems: "center", flexShrink: 0 }}>
-            <Button
-              sx={{ flexShrink: 0 }}
-              variant="secondary"
-              onClick={onDeleteClick}
-            >
-              <Icon as={DeleteIcon} fill="danger" />
-            </Button>
-            <Link to={EDIT_SUBJECT_URL(areaId, subject.id)}>
-              <Button sx={{ flexShrink: 0 }} variant="secondary">
-                <Icon as={EditIcon} fill="textPrimary" />
-              </Button>
-            </Link>
-          </Flex>
-        </Flex>
-        {materialList}
-      </Card>
-      {loadingPlaceholder}
-    </Box>
+    <Fragment>
+      {cachedSubjects.map((subject) => (
+        <SubjectListItem
+          key={subject.id}
+          currentSubjectId={currSubjectId}
+          subject={subject}
+          areaId={areaId}
+          moveItem={moveItem}
+          isLoading={debouncedIsLoading}
+          onLoadingStateChange={(state) => {
+            setIsLoading(state)
+          }}
+        />
+      ))}
+      {debouncedIsLoading && (
+        <Typography.Body
+          pt={7}
+          sx={{
+            fontWeight: "bold",
+            position: "absolute",
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            textAlign: "center",
+            pointerEvents: "none",
+          }}
+        >
+          Saving
+        </Typography.Body>
+      )}
+    </Fragment>
+  )
+}
+
+const SubjectListItem: FC<{
+  subject: Subject
+  areaId: string
+  currentSubjectId: string
+  moveItem: (currItem: Subject, newOrder: number) => void
+  onLoadingStateChange: (isLoading: boolean) => void
+  isLoading: boolean
+}> = ({
+  areaId,
+  subject,
+  moveItem,
+  currentSubjectId,
+  onLoadingStateChange,
+  isLoading,
+}) => {
+  const patchSubject = usePatchSubject(subject.id, areaId)
+  const selected = currentSubjectId === subject.id
+
+  const handleReorder = async () => {
+    try {
+      onLoadingStateChange(true)
+      await patchSubject.mutateAsync({ order: subject.order })
+    } catch (e) {
+      Sentry.captureException(e)
+    } finally {
+      onLoadingStateChange(false)
+    }
+  }
+
+  return (
+    <Link
+      to={CURRICULUM_SUBJECT_URL(areaId, subject.id)}
+      sx={{
+        display: "block",
+        maxWidth: "inherit",
+        opacity: isLoading ? 0.2 : 1,
+        transition: "opacity 0.1s ease-in",
+        pointerEvents: isLoading ? "none" : undefined,
+      }}
+    >
+      <DraggableListItem
+        item={subject}
+        moveItem={moveItem}
+        onDrop={handleReorder}
+        height={54}
+        containerSx={{
+          ...borderBottom,
+          ...borderRight,
+          borderRightColor: "textPrimary",
+          borderRightWidth: 2,
+          borderRightStyle: selected ? "solid" : "none",
+          backgroundColor: selected ? "primaryLightest" : "background",
+          color: selected ? "textPrimary" : "textMediumEmphasis",
+          alignItems: "center",
+          "&:hover": {
+            backgroundColor: "primaryLightest",
+          },
+        }}
+      >
+        <Typography.Body className="truncate" sx={{ color: "inherit" }}>
+          {subject.name}
+        </Typography.Body>
+        <Icon as={NextIcon} mr={3} ml="auto" fill="currentColor" />
+      </DraggableListItem>
+    </Link>
+  )
+}
+
+const NewSubjectDialog: FC<{ areaId: string; onDismiss: () => void }> = ({
+  areaId,
+  onDismiss,
+}) => {
+  const [name, setName] = useState("")
+  const newSubject = usePostNewSubject(areaId)
+
+  const handleSave = async () => {
+    try {
+      await newSubject.mutateAsync({ name })
+      onDismiss()
+    } catch (e) {
+      Sentry.captureException(e)
+    }
+  }
+
+  return (
+    <Dialog>
+      <DialogHeader
+        title={t`New Subject`}
+        disableAccept={newSubject.isLoading}
+        loading={newSubject.isLoading}
+        onCancel={onDismiss}
+        onAccept={handleSave}
+      />
+      <Box p={3} sx={{ backgroundColor: "background" }}>
+        <Input
+          sx={{ width: "100%" }}
+          label="Subject name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+      </Box>
+    </Dialog>
   )
 }
 

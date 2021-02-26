@@ -1,4 +1,5 @@
 import { useMutation } from "react-query"
+import { track } from "../../../analytics"
 import { patchApi } from "../fetchApi"
 import { Dayjs } from "../../../dayjs"
 import { useGetObservationCache } from "./useGetObservation"
@@ -18,7 +19,7 @@ const usePatchObservation = (observationId: string, onError?: () => void) => {
   )
   return useMutation(patchObservation, {
     onSuccess: async (response) => {
-      analytics.track("Observation Updated")
+      track("Observation Updated")
       if (response === undefined) return
       const body = await response.json()
       cache.setData(body)

@@ -25,11 +25,11 @@ export const MultilineDataBox: FC<MultilineDataBoxProps> = ({
   return (
     <Box sx={{ alignItems: "flex-start" }}>
       <Flex sx={{ ...borderBottom, alignItems: "center" }}>
-        <Typography.H6 m={3}>
+        <Typography.Body m={3} sx={{ fontWeight: "bold" }}>
           <Trans id={label} />
-        </Typography.H6>
+        </Typography.Body>
         <Button
-          variant="outline"
+          variant="secondary"
           ml="auto"
           mr={3}
           p={2}
@@ -41,7 +41,8 @@ export const MultilineDataBox: FC<MultilineDataBoxProps> = ({
           <Icon as={EditIcon} />
         </Button>
       </Flex>
-      <Markdown markdown={value || i18n._(placeholder)} m={3} />
+
+      <Markdown markdown={value || i18n._(placeholder)} mx={3} mt={3} mb={2} />
     </Box>
   )
 }

@@ -3,16 +3,8 @@
     "strict": true,
     "target": "es5",
     "esModuleInterop": true,
-    "lib": [
-      "es5",
-      "dom"
-    ],
-    "types": [
-      "cypress",
-      "node"
-    ]
+    "lib": ["es5", "dom"],
+    "types": ["cypress", "node"]
   },
-  "include": [
-    "**/*.ts"
-  ]
+  "include": ["**/*.ts"]
 }

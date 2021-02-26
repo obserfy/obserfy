@@ -1,4 +1,5 @@
 import { useMutation } from "react-query"
+import { track } from "../../../analytics"
 import { deleteApi } from "../fetchApi"
 import { useGetStudentObservationsCache } from "../useGetStudentObservations"
 
@@ -7,7 +8,7 @@ const useDeleteObservation = (observationId: string, studentId: string) => {
   const deleteObservation = deleteApi(`/observations/${observationId}`)
   return useMutation(deleteObservation, {
     onSuccess: async () => {
-      analytics.track("Observation Deleted")
+      track("Observation Deleted")
       const observations = cache.getData()
 
       cache.setData(

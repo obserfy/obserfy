@@ -138,6 +138,23 @@ exports[`PageListOfStudents should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  max-width: 100%;
+  height: auto;
+  margin-right: -28px;
+  margin-left: 8px;
+  width: 20px;
+  height: 20px;
+  z-index: 2;
+  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.emotion-10 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
   display: block;
   width: 100%;
   padding: 8px;
@@ -163,33 +180,34 @@ exports[`PageListOfStudents should render correctly 1`] = `
   padding-bottom: 8px;
   background-color: var(--theme-ui-colors-surface, #fff);
   width: 100%;
+  padding-left: 34px;
   font-size: 14px;
   width: 100%;
 }
 
-.emotion-9:hover,
-.emotion-9:focus {
+.emotion-10:hover,
+.emotion-10:focus {
   border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-9::-webkit-input-placeholder {
+.emotion-10::-webkit-input-placeholder {
   font-style: italic;
 }
 
-.emotion-9::-moz-placeholder {
+.emotion-10::-moz-placeholder {
   font-style: italic;
 }
 
-.emotion-9:-ms-input-placeholder {
+.emotion-10:-ms-input-placeholder {
   font-style: italic;
 }
 
-.emotion-9::placeholder {
+.emotion-10::placeholder {
   font-style: italic;
 }
 
-.emotion-9:disabled {
+.emotion-10:disabled {
   opacity: 0.68;
   border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
@@ -233,8 +251,11 @@ exports[`PageListOfStudents should render correctly 1`] = `
           <div
             class="emotion-8"
           >
-            <input
+            <div
               class="emotion-9"
+            />
+            <input
+              class="emotion-10"
               name="name"
               placeholder="Search"
               value=""

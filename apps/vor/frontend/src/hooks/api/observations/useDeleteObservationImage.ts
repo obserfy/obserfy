@@ -1,4 +1,5 @@
 import { useMutation } from "react-query"
+import { track } from "../../../analytics"
 import { deleteApi } from "../fetchApi"
 import { useGetObservationCache } from "./useGetObservation"
 
@@ -8,7 +9,7 @@ const useDeleteObservationImage = (observationId: string, imageId?: string) => {
 
   return useMutation(deleteObservationImage, {
     onSuccess: async () => {
-      analytics.track("Observation Image Deleted")
+      track("Observation Image Deleted")
       const cached = await cache.getData()
       if (cached && cached.images.length > 0) {
         cached.images =

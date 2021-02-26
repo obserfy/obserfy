@@ -1,4 +1,5 @@
 import { useMutation } from "react-query"
+import { track } from "../../../analytics"
 import { deleteApi } from "../fetchApi"
 import { getSchoolId } from "../../schoolIdState"
 import { useGetCurriculumCache } from "../useGetCurriculum"
@@ -11,7 +12,7 @@ const useDeleteCurriculum = () => {
   const deleteCurriculum = deleteApi(`/schools/${getSchoolId()}/curriculums`)
   return useMutation(deleteCurriculum, {
     onSuccess: async () => {
-      analytics.track("Curriculum Deleted")
+      track("Curriculum Deleted")
       await curriculumCache.invalidate()
       areasCache.setData([])
     },

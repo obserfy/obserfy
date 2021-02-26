@@ -1,4 +1,5 @@
 import { useMutation, useQueryClient } from "react-query"
+import { track } from "../../../analytics"
 import { ApiError, BASE_URL } from "../useApi"
 import { Dayjs } from "../../../dayjs"
 import { getSchoolId } from "../../schoolIdState"
@@ -58,7 +59,7 @@ const usePostNewPlan = () => {
 
   return useMutation(postPlan, {
     onSuccess: async () => {
-      analytics.track("Plan Created")
+      track("Plan Created")
       await queryCache.invalidateQueries(["plans", getSchoolId(), date])
     },
   })

@@ -1,12 +1,16 @@
 import { useMutation } from "react-query"
+import { track } from "../../../analytics"
 import { deleteApi } from "../fetchApi"
+import { useGetAreaSubjectsCache } from "../useGetAreaSubjects"
 
-const useDeleteSubject = (subjectId: string) => {
+const useDeleteSubject = (areaId: string, subjectId: string) => {
+  const subjectsCache = useGetAreaSubjectsCache(areaId)
   const deleteSubject = deleteApi(`/curriculums/subjects/${subjectId}`)
 
   return useMutation(deleteSubject, {
-    onSuccess: () => {
-      analytics.track("Subject Deleted")
+    onSuccess: async () => {
+      await subjectsCache.refetchQueries()
+      track("Subject Deleted")
     },
   })
 }

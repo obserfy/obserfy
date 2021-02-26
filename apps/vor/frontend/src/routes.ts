@@ -19,7 +19,7 @@ export const ADMIN_GUARDIAN_URL = "/dashboard/admin/guardians"
 export const NEW_GUARDIAN_ADMIN_URL = "/dashboard/admin/guardians/new"
 
 export const CURRICULUM_AREA_URL = (areaId: string): string =>
-  `/dashboard/admin/curriculum/area?id=${areaId}`
+  `/dashboard/admin/curriculum/area?areaId=${areaId}`
 
 export const NEW_SUBJECT_URL = (areaId: string): string =>
   `/dashboard/admin/curriculum/subjects/new?areaId=${areaId}`
@@ -108,3 +108,13 @@ export const STUDENT_PROFILE_GUARDIAN_PROFILE_URL = (
   guardianId: string
 ) =>
   `/dashboard/students/profile/guardians/profile?studentId=${studentId}&&guardianId=${guardianId}`
+
+export const CURRICULUM_SUBJECT_URL = (areaId: string, subjectId: string) =>
+  `/dashboard/admin/curriculum/subjects?areaId=${areaId}&subjectId=${subjectId}`
+
+export const CURRICULUM_MATERIAL_URL = (
+  areaId: string,
+  subjectId: string,
+  materialId: string
+) =>
+  `/dashboard/admin/curriculum/material?areaId=${areaId}&subjectId=${subjectId}&materialId=${materialId}`

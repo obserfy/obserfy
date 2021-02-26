@@ -2,7 +2,7 @@ import dayjs from "dayjs"
 
 describe("Test lesson plan features", function () {
   beforeEach(function () {
-    cy.clearSW()
+    // cy.clearSW()
     cy.registerVor()
     cy.createSchool()
     cy.createClass()
@@ -59,7 +59,7 @@ describe("Test lesson plan features", function () {
     cy.contains(lessonPlan1.title).should("be.visible")
     cy.contains(lessonPlan1.description).should("be.visible")
     cy.contains(lessonPlan1.link).should("be.visible")
-    cy.contains(this.student.name).should("be.visible")
+    cy.contains(this.student.name.split(" ")[0]).should("be.visible")
 
     cy.get('[aria-label="edit-title"]').click()
     cy.contains("label", "Title").find("input").clear().type(lessonPlan2.title)
@@ -109,7 +109,8 @@ describe("Test lesson plan features", function () {
     cy.contains("Title").type(repeatingPlan.title)
     cy.contains("Description").type(repeatingPlan.description)
     cy.contains("Daily").click()
-    cy.contains("Repeat Until").click()
+    cy.get(`[data-cy="Repeat Until"]`).click()
+    cy.get(`[data-cy="next-month"]`).click()
     cy.contains(dayjs().add(3, "day").daysInMonth()).click()
     cy.contains("Set").click()
 

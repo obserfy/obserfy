@@ -34,7 +34,7 @@ export const Layout: FC = ({ children }) => {
   return (
     <>
       <Navbar />
-      <Flex pl={[0, 56]}>
+      <Flex pl={[0, 56]} pb={[4, 4, 0]}>
         <StudentsSubrouteSidebar />
         <Box
           as="main"
@@ -46,7 +46,7 @@ export const Layout: FC = ({ children }) => {
           <UpdateNotification />
           <TrialOverdueNotification />
           <NewStudentFormProvider>
-            <Box pb={84}>{children}</Box>
+            <Box>{children}</Box>
           </NewStudentFormProvider>
         </Box>
       </Flex>

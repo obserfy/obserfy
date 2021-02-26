@@ -19,13 +19,13 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   background-color: var(--theme-ui-colors-surfaceBlurNonTransparent, rgba(255,255,255));
+  z-index: 100;
   -webkit-position: sticky;
   position: sticky;
   top: 0;
   border-bottom-width: 1px;
   border-bottom-color: var(--theme-ui-colors-borderSolid, #e5e5e5);
   border-bottom-style: solid;
-  z-index: 100;
 }
 
 @supports (backdrop-filter: blur(20px)) {

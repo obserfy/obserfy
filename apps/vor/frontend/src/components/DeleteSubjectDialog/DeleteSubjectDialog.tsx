@@ -1,24 +1,38 @@
 import React, { FC } from "react"
 
 import { t, Trans } from "@lingui/macro"
+import { track } from "../../analytics"
 import Typography from "../Typography/Typography"
 import Dialog from "../Dialog/Dialog"
 import useDeleteSubject from "../../hooks/api/curriculum/useDeleteSubject"
 import DialogHeader from "../DialogHeader/DialogHeader"
 
 interface Props {
+  areaId: string
   subjectId: string
-  name: string
+  name?: string
   onDismiss: () => void
-  onDeleted: () => void
+  onDeleted?: () => void
 }
 export const DeleteSubjectDialog: FC<Props> = ({
-  onDeleted,
+  areaId,
   onDismiss,
   subjectId,
-  name,
+  onDeleted,
+  name = "",
 }) => {
-  const deleteSubject = useDeleteSubject(subjectId)
+  const deleteSubject = useDeleteSubject(areaId, subjectId)
+
+  const handleDelete = async () => {
+    try {
+      await deleteSubject.mutateAsync()
+      track("Deleted Subject")
+      onDismiss()
+      if (onDeleted) onDeleted()
+    } catch (e) {
+      Sentry.captureException(e)
+    }
+  }
 
   return (
     <Dialog sx={{ maxWidth: ["", "maxWidth.xsm"] }}>
@@ -27,15 +41,7 @@ export const DeleteSubjectDialog: FC<Props> = ({
         onCancel={onDismiss}
         onAcceptText={t`Delete`}
         loading={deleteSubject.isLoading}
-        onAccept={async () => {
-          try {
-            await deleteSubject.mutateAsync()
-            onDeleted()
-            analytics.track("Deleted Subject")
-          } catch (e) {
-            Sentry.captureException(e)
-          }
-        }}
+        onAccept={handleDelete}
       />
       <Typography.Body p={3}>
         <Trans>

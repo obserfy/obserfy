@@ -1,4 +1,5 @@
 import { useMutation, useQueryClient } from "react-query"
+import { track } from "../../../analytics"
 import { navigate } from "../../../components/Link/Link"
 import { ApiError, BASE_URL } from "../useApi"
 
@@ -36,7 +37,7 @@ export const usePostGuardianRelation = (
 
   return useMutation(postGuardianRelation, {
     onSuccess: async () => {
-      analytics.track("Guardian Relation Created")
+      track("Guardian Relation Created")
       await queryCache.invalidateQueries(["student", studentId])
     },
   })

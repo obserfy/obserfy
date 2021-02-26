@@ -1,4 +1,5 @@
 import { useMutation } from "react-query"
+import { track } from "../../../analytics"
 import { BASE_URL } from "../useApi"
 import { useGetObservationCache } from "./useGetObservation"
 
@@ -17,7 +18,7 @@ const usePostNewObservationImage = (observationId: string) => {
 
   return useMutation(postNewImage, {
     onSuccess: async (data) => {
-      analytics.track("Observation Image Uploaded")
+      track("Observation Image Uploaded")
       const result = await data.json()
       const cached = await cache.getData()
       if (cached) {

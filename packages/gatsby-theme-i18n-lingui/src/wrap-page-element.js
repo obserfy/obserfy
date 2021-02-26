@@ -1,15 +1,20 @@
 /* global GATSBY_THEME_I18N_LINGUI */
 import * as React from "react";
 import { I18nProvider } from "@lingui/react";
-import { setupI18n } from "@lingui/core";
+import { i18n } from "@lingui/core";
+import { en, id } from "make-plural";
 
 const wrapPageElement = ({ element, props }) => {
   let locale = props.pageContext.locale;
   if (locale === undefined) {
     locale = "en";
   }
+  if (locale === "id") {
+    i18n.loadLocaleData("id", { plurals: id });
+  } else {
+    i18n.loadLocaleData("en", { plurals: en });
+  }
 
-  const i18n = setupI18n();
   const catalog = require(`${GATSBY_THEME_I18N_LINGUI}/${locale}/messages.js`);
   i18n.load(locale, catalog.messages);
   i18n.activate(locale);

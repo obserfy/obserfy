@@ -1,4 +1,5 @@
 import { useMutation } from "react-query"
+import { track } from "../../../analytics"
 import { deleteApi } from "../fetchApi"
 import { useGetPlanCache } from "./useGetPlan"
 
@@ -8,7 +9,7 @@ const useDeleteLessonPlanLink = (linkId: string, lessonPlanId: string) => {
 
   return useMutation(deleteLessonPlanLink, {
     onSuccess: async () => {
-      analytics.track("Plan Link Deleted")
+      track("Plan Link Deleted")
       await cache.invalidate()
     },
   })

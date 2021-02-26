@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.7.0
+        uses: styfle/cancel-workflow-action@0.8.0
         with:
           access_token: ${{ github.token }}
 
@@ -254,6 +254,7 @@ jobs:
           parallel: true
           group: 'E2E'
           wait-on: 'https://localhost:8000/login, http://localhost:3000'
+          wait-on-timeout: 120
           install: false
           working-directory: ./apps/e2e
         env:
@@ -340,6 +341,7 @@ jobs:
           parallel: true
           group: 'E2E'
           wait-on: 'https://localhost:8000/login, http://localhost:3000'
+          wait-on-timeout: 120
           install: false
           working-directory: ./apps/e2e
         env:
