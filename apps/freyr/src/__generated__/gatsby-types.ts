@@ -186,7 +186,7 @@ type DirectoryEdge = {
   readonly previous: Maybe<Directory>;
 };
 
-type DirectoryFieldsEnum = 
+type DirectoryFieldsEnum =
   | 'sourceInstanceName'
   | 'absolutePath'
   | 'relativePath'
@@ -502,7 +502,7 @@ type FileEdge = {
   readonly previous: Maybe<File>;
 };
 
-type FileFieldsEnum = 
+type FileFieldsEnum =
   | 'sourceInstanceName'
   | 'absolutePath'
   | 'relativePath'
@@ -996,7 +996,7 @@ type FloatQueryOperatorInput = {
   readonly nin: Maybe<ReadonlyArray<Maybe<Scalars['Float']>>>;
 };
 
-type HeadingsMdx = 
+type HeadingsMdx =
   | 'h1'
   | 'h2'
   | 'h3'
@@ -1004,7 +1004,7 @@ type HeadingsMdx =
   | 'h5'
   | 'h6';
 
-type ImageCropFocus = 
+type ImageCropFocus =
   | 'CENTER'
   | 1
   | 5
@@ -1017,14 +1017,14 @@ type ImageCropFocus =
   | 16
   | 17;
 
-type ImageFit = 
+type ImageFit =
   | 'cover'
   | 'contain'
   | 'fill'
   | 'inside'
   | 'outside';
 
-type ImageFormat = 
+type ImageFormat =
   | 'NO_CHANGE'
   | 'AUTO'
   | 'jpg'
@@ -1032,12 +1032,12 @@ type ImageFormat =
   | 'webp'
   | 'avif';
 
-type ImageLayout = 
+type ImageLayout =
   | 'fixed'
   | 'fullWidth'
   | 'constrained';
 
-type ImagePlaceholder = 
+type ImagePlaceholder =
   | 'dominantColor'
   | 'tracedSVG'
   | 'blurred'
@@ -1227,7 +1227,7 @@ type ImageSharpEdge = {
   readonly previous: Maybe<ImageSharp>;
 };
 
-type ImageSharpFieldsEnum = 
+type ImageSharpFieldsEnum =
   | 'fixed.base64'
   | 'fixed.tracedSVG'
   | 'fixed.aspectRatio'
@@ -1681,7 +1681,7 @@ type MdxFields = {
   readonly isDefault: Maybe<Scalars['Boolean']>;
 };
 
-type MdxFieldsEnum = 
+type MdxFieldsEnum =
   | 'rawBody'
   | 'fileAbsolutePath'
   | 'frontmatter.title'
@@ -1916,7 +1916,7 @@ type Potrace = {
   readonly background: Maybe<Scalars['String']>;
 };
 
-type PotraceTurnPolicy = 
+type PotraceTurnPolicy =
   | 'black'
   | 'white'
   | 'left'
@@ -2273,7 +2273,7 @@ type SiteBuildMetadataEdge = {
   readonly previous: Maybe<SiteBuildMetadata>;
 };
 
-type SiteBuildMetadataFieldsEnum = 
+type SiteBuildMetadataFieldsEnum =
   | 'id'
   | 'parent.id'
   | 'parent.parent.id'
@@ -2411,7 +2411,7 @@ type SiteEdge = {
   readonly previous: Maybe<Site>;
 };
 
-type SiteFieldsEnum = 
+type SiteFieldsEnum =
   | 'buildTime'
   | 'siteMetadata.title'
   | 'siteMetadata.description'
@@ -2590,7 +2590,7 @@ type SitePageEdge = {
   readonly previous: Maybe<SitePage>;
 };
 
-type SitePageFieldsEnum = 
+type SitePageFieldsEnum =
   | 'path'
   | 'component'
   | 'internalComponentName'
@@ -2861,7 +2861,7 @@ type SitePluginEdge = {
   readonly previous: Maybe<SitePlugin>;
 };
 
-type SitePluginFieldsEnum = 
+type SitePluginFieldsEnum =
   | 'id'
   | 'parent.id'
   | 'parent.parent.id'
@@ -3216,7 +3216,7 @@ type SiteSortInput = {
   readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
 };
 
-type SortOrderEnum = 
+type SortOrderEnum =
   | 'ASC'
   | 'DESC';
 
@@ -3266,7 +3266,7 @@ type ThemeI18nEdge = {
   readonly previous: Maybe<ThemeI18n>;
 };
 
-type ThemeI18nFieldsEnum = 
+type ThemeI18nFieldsEnum =
   | 'defaultLang'
   | 'configPath'
   | 'config'
@@ -3461,20 +3461,10 @@ type homechrisintSrcobserfyappsfreyrsrctemplatesdocsJs2568242176Query = { readon
     & { readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'slug' | 'title' | 'description'>> }
   )> };
 
-type homechrisintSrcobserfyappsfreyrsrccomponentsseoTsx63159454QueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type homechrisintSrcobserfyappsfreyrsrccomponentsseoTsx63159454Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
-
 type LocalizationSEOQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type LocalizationSEOQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'siteUrl'>> }> };
-
-type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type PagesQueryQuery = { readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
 
 type LocalizationConfigQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -3483,5 +3473,15 @@ type LocalizationConfigQueryQuery = { readonly themeI18N: Maybe<(
     Pick<ThemeI18n, 'defaultLang'>
     & { readonly config: Maybe<ReadonlyArray<Maybe<Pick<Locale, 'code' | 'hrefLang' | 'dateFormat' | 'langDir' | 'localName' | 'name'>>>> }
   )> };
+
+type homechrisintSrcobserfyappsfreyrsrccomponentsseoTsx63159454QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type homechrisintSrcobserfyappsfreyrsrccomponentsseoTsx63159454Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
+
+type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type PagesQueryQuery = { readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
 
 }

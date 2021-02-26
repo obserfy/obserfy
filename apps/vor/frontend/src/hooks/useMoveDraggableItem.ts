@@ -16,9 +16,7 @@ const checkDragDirection = (newOrder: number, currOrder: number) => {
   return newOrder > currOrder ? DragYDirection.DOWN : DragYDirection.UP
 }
 
-export const useMoveDraggableItem = <T extends OrderedItem[]>(
-  items: T
-): [T, (currItem: OrderedItem, newOrder: number) => void] => {
+export const useMoveDraggableItem = <T extends OrderedItem[]>(items: T) => {
   const [cachedItems, setItems] = useImmer(items)
 
   const moveItem = (currItem: OrderedItem, newOrder: number) => {
@@ -47,5 +45,5 @@ export const useMoveDraggableItem = <T extends OrderedItem[]>(
   }
 
   const memoizedMoveItem = useCallback(moveItem, [setItems])
-  return [cachedItems, memoizedMoveItem]
+  return [cachedItems, memoizedMoveItem, setItems] as const
 }

@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { t, Trans } from "@lingui/macro"
-import { Fragment, FC, memo, useState } from "react"
+import { Fragment, FC, memo, useState, useEffect } from "react"
 import { jsx, Box, Button, Flex, ThemeUIStyleObject } from "theme-ui"
 import { borderBottom, borderRight } from "../../border"
 import usePostNewMaterial from "../../hooks/api/curriculum/usePostNewMaterial"
@@ -34,6 +34,7 @@ import Spacer from "../Spacer/Spacer"
 import TopBar, { breadCrumb } from "../TopBar/TopBar"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
 import Typography from "../Typography/Typography"
+import EditSubjectDialog from "./EditSubjectDialog"
 
 export interface PageCurriculumSubjectProps {
   subjectId: string
@@ -53,6 +54,7 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
 
   const deleteSubject = useVisibilityState()
   const newMaterial = useVisibilityState()
+  const editSubject = useVisibilityState()
 
   return (
     <Box sx={{ width: "100%", pb: 5, ...sx }}>
@@ -82,7 +84,13 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
           >
             <Icon size={16} as={DeleteIcon} fill="danger" />
           </Button>
-          <Button variant="outline" sx={{ flexShrink: 0 }} px={2} ml={2}>
+          <Button
+            variant="outline"
+            sx={{ flexShrink: 0 }}
+            px={2}
+            ml={2}
+            onClick={editSubject.show}
+          >
             <Icon size={16} as={EditIcon} />
           </Button>
         </Flex>
@@ -98,7 +106,6 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
       <Spacer />
 
       <MaterialList
-        key={materials.data?.map(({ id }) => id).join(",") ?? ""}
         subjectId={subjectId}
         areaId={areaId}
         materials={materials.data ?? []}
@@ -130,6 +137,16 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
           onDeleted={() => navigate(CURRICULUM_AREA_URL(areaId))}
         />
       )}
+
+      {editSubject.visible && (
+        <EditSubjectDialog
+          initialValue={subject.data?.name}
+          onDismiss={editSubject.hide}
+          onSave={editSubject.hide}
+          subjectId={subjectId}
+          areaId={areaId}
+        />
+      )}
     </Box>
   )
 }
@@ -140,7 +157,14 @@ const MaterialList: FC<{
   areaId: string
   currMaterialId: string
 }> = ({ materials, subjectId, areaId, currMaterialId }) => {
-  const [cachedMaterials, moveItem] = useMoveDraggableItem(materials)
+  const [cachedMaterials, moveItem, setMaterials] = useMoveDraggableItem(
+    materials
+  )
+
+  useEffect(() => {
+    console.log(materials)
+    setMaterials(() => materials)
+  }, [materials])
 
   return (
     <Fragment>
@@ -190,7 +214,7 @@ const DraggableMaterialItem: FC<{
           },
         }}
       >
-        <Typography.Body sx={{ color: "inherit" }}>
+        <Typography.Body className="truncate" sx={{ color: "inherit" }}>
           {material.name}
         </Typography.Body>
         <Icon as={NextIcon} ml="auto" mr={3} fill="currentColor" />
