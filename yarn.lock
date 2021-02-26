@@ -8160,10 +8160,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/faker@npm:5.1.6":
-  version: 5.1.6
-  resolution: "@types/faker@npm:5.1.6"
-  checksum: 4fb5005a7292270ada198cb731ce7dde94a91a671b0e6bd0a4fa04e995ed93f83f357ef60dca8ec79ce42401c285e28eed4907226293a4154f83b830fb7adf60
+"@types/faker@npm:5.1.7":
+  version: 5.1.7
+  resolution: "@types/faker@npm:5.1.7"
+  checksum: 75379a5c4cb1e6d87b3aa33ce0397150cf973567f283fb40513841148e2cc83abef17872a1f537f05acc39df7817bbe47033959084cf6647500f05b8e6c6adc8
   languageName: node
   linkType: hard
 
@@ -15906,7 +15906,7 @@ __metadata:
     "@hapi/iron": 6.0.0
     "@swc/core": 1.2.47
     "@types/auth0-js": 9.14.2
-    "@types/faker": 5.1.6
+    "@types/faker": 5.1.7
     "@types/node": 14.14.28
     "@types/pg": 7.14.10
     "@typescript-eslint/eslint-plugin": 4.11.1
@@ -18575,7 +18575,7 @@ __metadata:
     gatsby-plugin-typegen: 2.2.4
     gatsby-plugin-webpack-bundle-analyser-v2: 1.1.20
     gatsby-source-filesystem: 2.11.0
-    gatsby-theme-i18n: 1.0.5
+    gatsby-theme-i18n: 1.0.4
     gatsby-theme-i18n-lingui: 1.0.4
     gatsby-transformer-sharp: 2.12.0
     make-plural: 6.2.2
@@ -19682,21 +19682,7 @@ fsevents@~2.3.1:
   languageName: unknown
   linkType: soft
 
-"gatsby-theme-i18n@npm:1.0.5":
-  version: 1.0.5
-  resolution: "gatsby-theme-i18n@npm:1.0.5"
-  dependencies:
-    gatsby-plugin-react-helmet: ^3.3.10
-    react-helmet: ^6.1.0
-  peerDependencies:
-    gatsby: ">=2.21.26"
-    react: ">=16.13.1"
-    react-dom: ">=16.13.1"
-  checksum: 53ff4db1b3dcd175c24df9f6267ee8386c6bdafa037c6ae812534149a33672cdcd0dcbb37b0dfba234d58680ebf5e7b4826c408e6da2827e6b28a96b4f0ad9b2
-  languageName: node
-  linkType: hard
-
-"gatsby-theme-i18n@workspace:packages/gatsby-theme-i18n":
+"gatsby-theme-i18n@1.0.4, gatsby-theme-i18n@workspace:packages/gatsby-theme-i18n":
   version: 0.0.0-use.local
   resolution: "gatsby-theme-i18n@workspace:packages/gatsby-theme-i18n"
   dependencies:
@@ -19714,6 +19700,20 @@ fsevents@~2.3.1:
     react-dom: ">=16.13.1"
   languageName: unknown
   linkType: soft
+
+"gatsby-theme-i18n@npm:1.0.5":
+  version: 1.0.5
+  resolution: "gatsby-theme-i18n@npm:1.0.5"
+  dependencies:
+    gatsby-plugin-react-helmet: ^3.3.10
+    react-helmet: ^6.1.0
+  peerDependencies:
+    gatsby: ">=2.21.26"
+    react: ">=16.13.1"
+    react-dom: ">=16.13.1"
+  checksum: 53ff4db1b3dcd175c24df9f6267ee8386c6bdafa037c6ae812534149a33672cdcd0dcbb37b0dfba234d58680ebf5e7b4826c408e6da2827e6b28a96b4f0ad9b2
+  languageName: node
+  linkType: hard
 
 "gatsby-transformer-sharp@npm:2.12.0":
   version: 2.12.0
@@ -37015,7 +37015,7 @@ typescript@^4.0.0:
     "@types/body-scroll-lock": 2.6.1
     "@types/date-fns": 2.6.0
     "@types/dompurify": 2.2.1
-    "@types/faker": 5.1.6
+    "@types/faker": 5.1.7
     "@types/hls.js": 0.13.3
     "@types/jest": 26.0.20
     "@types/query-string": 6.3.0
