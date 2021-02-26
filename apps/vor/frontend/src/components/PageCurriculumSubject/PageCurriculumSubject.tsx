@@ -3,6 +3,7 @@ import { t, Trans } from "@lingui/macro"
 import { Fragment, FC, memo, useState, useEffect } from "react"
 import { jsx, Box, Button, Flex, ThemeUIStyleObject } from "theme-ui"
 import { borderBottom, borderRight } from "../../border"
+import usePatchMaterial from "../../hooks/api/curriculum/usePatchMaterial"
 import usePostNewMaterial from "../../hooks/api/curriculum/usePostNewMaterial"
 import { useGetArea } from "../../hooks/api/useGetArea"
 import { useGetSubject } from "../../hooks/api/useGetSubject"
@@ -162,7 +163,6 @@ const MaterialList: FC<{
   )
 
   useEffect(() => {
-    console.log(materials)
     setMaterials(() => materials)
   }, [materials])
 
@@ -190,6 +190,15 @@ const DraggableMaterialItem: FC<{
   moveItem: (currItem: Material, newOrder: number) => void
 }> = memo(({ moveItem, currMaterialId, areaId, subjectId, material }) => {
   const selected = material.id === currMaterialId
+  const patchMaterial = usePatchMaterial(material.id, subjectId)
+
+  const handleReorder = async () => {
+    try {
+      await patchMaterial.mutateAsync({ order: material.order })
+    } catch (e) {
+      Sentry.captureException(e)
+    }
+  }
 
   return (
     <Link
@@ -200,6 +209,7 @@ const DraggableMaterialItem: FC<{
         item={material}
         moveItem={moveItem}
         height={54}
+        onDrop={handleReorder}
         containerSx={{
           ...borderBottom,
           ...borderRight,
