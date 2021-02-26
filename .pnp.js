@@ -1061,7 +1061,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@mux/upchunk",
-        "npm:2.2.0"
+        "npm:2.2.2"
       ],
       [
         "@napi-rs/triples",
@@ -23223,10 +23223,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@mux/upchunk", [
-        ["npm:2.2.0", {
-          "packageLocation": "./.yarn/cache/@mux-upchunk-npm-2.2.0-83101b26e4-2e407ea610.zip/node_modules/@mux/upchunk/",
+        ["npm:2.2.2", {
+          "packageLocation": "./.yarn/cache/@mux-upchunk-npm-2.2.2-aff2471899-b5b5a47b4b.zip/node_modules/@mux/upchunk/",
           "packageDependencies": [
-            ["@mux/upchunk", "npm:2.2.0"],
+            ["@mux/upchunk", "npm:2.2.2"],
             ["event-target-shim", "npm:4.0.3"],
             ["xhr", "npm:2.6.0"]
           ],
@@ -61509,7 +61509,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@lingui/core", "npm:3.5.1"],
             ["@lingui/macro", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:3.5.1"],
             ["@lingui/react", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:3.5.1"],
-            ["@mux/upchunk", "npm:2.2.0"],
+            ["@mux/upchunk", "npm:2.2.2"],
             ["@reach/router", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:1.3.4"],
             ["@sentry/gatsby", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:6.1.0"],
             ["@sentry/tracing", "npm:6.1.0"],
