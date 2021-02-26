@@ -1,4 +1,5 @@
 import { useMutation } from "react-query"
+import { track } from "../../analytics"
 import { navigate } from "../../components/Link/Link"
 
 interface PostSignUpRequestBody {
@@ -9,7 +10,7 @@ interface PostSignUpRequestBody {
 }
 const usePostRegister = () => {
   const postSignUp = async (payload: PostSignUpRequestBody) => {
-    analytics.track("User Register")
+    track("User Register")
     const body = new FormData()
     body.append("email", payload.email)
     body.append("password", payload.password)
@@ -22,10 +23,10 @@ const usePostRegister = () => {
     })
 
     if (response.ok) {
-      analytics.track("User Register Success")
+      track("User Register Success")
       await navigate("/choose-school")
     } else if (response.status === 409) {
-      analytics.track("User Register Failed", {
+      track("User Register Failed", {
         email: payload.email,
         status: response.status,
       })

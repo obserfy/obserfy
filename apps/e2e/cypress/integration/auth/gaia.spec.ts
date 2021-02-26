@@ -1,6 +1,6 @@
 describe("test gaia authentication", function () {
   beforeEach(function () {
-    cy.clearSW()
+    // cy.clearSW()
     cy.fixedClearCookies()
     cy.exec(`yarn run db:reset ${Cypress.env("GAIA_USERNAME")}`)
   })

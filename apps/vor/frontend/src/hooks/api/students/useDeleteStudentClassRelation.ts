@@ -1,4 +1,5 @@
 import { useMutation, useQueryClient } from "react-query"
+import { track } from "../../../analytics"
 import { navigate } from "../../../components/Link/Link"
 import { ApiError, BASE_URL } from "../useApi"
 
@@ -26,7 +27,7 @@ export const useDeleteStudentClassRelation = (studentId: string) => {
 
   return useMutation(deleteStudentClassRelation, {
     onSuccess: async () => {
-      analytics.track("Student Class Relation Deleted")
+      track("Student Class Relation Deleted")
       await queryCache.invalidateQueries(["student", studentId])
     },
   })

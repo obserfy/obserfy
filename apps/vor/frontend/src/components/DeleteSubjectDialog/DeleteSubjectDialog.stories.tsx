@@ -16,5 +16,6 @@ export const Basic: FC = () => (
     onDismiss={action("dismiss")}
     onDeleted={action("delete")}
     subjectId="afdsafsadf"
+    areaId=""
   />
 )

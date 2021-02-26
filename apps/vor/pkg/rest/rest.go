@@ -11,7 +11,7 @@ import (
 )
 
 func (s *Server) NewHandler(handler HandlerFunc) Handler {
-	return Handler{s.logger, handler}
+	return Handler{s.Log, handler}
 }
 
 func NewServer(logger *zap.Logger) Server {
@@ -20,7 +20,7 @@ func NewServer(logger *zap.Logger) Server {
 
 // Server object that encapsulates global data
 type Server struct {
-	logger *zap.Logger
+	Log *zap.Logger
 }
 
 // Handler that wraps around every api handler, providing common functionality such writing error and logging logging.

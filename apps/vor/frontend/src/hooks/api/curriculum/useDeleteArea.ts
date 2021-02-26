@@ -1,4 +1,5 @@
 import { useMutation } from "react-query"
+import { track } from "../../../analytics"
 import { deleteApi } from "../fetchApi"
 import { useGetCurriculumAreasCache } from "../useGetCurriculumAreas"
 
@@ -7,7 +8,7 @@ const useDeleteArea = (areaId: string) => {
   const deleteArea = deleteApi(`/curriculums/areas/${areaId}`)
   return useMutation(deleteArea, {
     onSuccess: () => {
-      analytics.track("Area Deleted")
+      track("Area Deleted")
       const old = cache.getData()
       if (old) {
         cache.setData(old.filter(({ id }) => id !== areaId))

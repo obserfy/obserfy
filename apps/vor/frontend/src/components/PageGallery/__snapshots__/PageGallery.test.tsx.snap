@@ -25,10 +25,10 @@ exports[`PageGallery should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   background-color: var(--theme-ui-colors-surfaceBlurNonTransparent, rgba(255,255,255));
+  z-index: 10;
   -webkit-position: sticky;
   position: sticky;
   top: -48px;
-  z-index: 100;
 }
 
 @supports (backdrop-filter: blur(20px)) {

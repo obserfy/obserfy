@@ -1,5 +1,6 @@
 import React, { FC, FormEvent, useState } from "react"
 import { Flex, Box, Button } from "theme-ui"
+import { track } from "../../analytics"
 import { Link } from "../Link/Link"
 
 import { Typography } from "../Typography/Typography"
@@ -52,11 +53,11 @@ export const PageResetPassword: FC<Props> = ({ token }) => {
     const response = await doPasswordResetApi(token, password)
     if (response.status === 200) {
       setSuccess(true)
-      analytics.track("Password reset success")
+      track("Password reset success")
     } else {
       const body = await response.json()
       setError(body?.error?.message ?? "Something went wrong, please try again")
-      analytics.track("Password reset failed")
+      track("Password reset failed")
     }
 
     setLoading(false)

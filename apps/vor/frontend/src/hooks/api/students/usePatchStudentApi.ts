@@ -1,4 +1,5 @@
 import { useMutation, useQueryClient } from "react-query"
+import { track } from "../../../analytics"
 import { patchApi } from "../fetchApi"
 import { Dayjs } from "../../../dayjs"
 
@@ -18,7 +19,7 @@ export function usePatchStudentApi(id: string) {
 
   return useMutation(patchStudent, {
     onSuccess: async () => {
-      analytics.track("Student Updated", { id })
+      track("Student Updated", { id })
       await Promise.all([
         queryCache.invalidateQueries(["student", id]),
         queryCache.invalidateQueries("students"),

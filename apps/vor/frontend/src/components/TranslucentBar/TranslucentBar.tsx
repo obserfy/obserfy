@@ -20,7 +20,6 @@ export const TranslucentBar: FC<TranslucentBarProps> = ({
       as={as}
       backgroundColor="surfaceBlurNonTransparent"
       sx={{
-        ...boxSx,
         zIndex: 100,
         "@supports (backdrop-filter: blur(20px))":
           // Only enable on mid to hi end devices, blur is an expensive effect, turned on by default by devices that doesn't
@@ -43,6 +42,7 @@ export const TranslucentBar: FC<TranslucentBarProps> = ({
                 willChange: "backdrop-filter",
               }
             : {},
+        ...boxSx,
       }}
     >
       {children}

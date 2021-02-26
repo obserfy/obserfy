@@ -1,15 +1,22 @@
 import { t } from "@lingui/macro"
 import React, { FC } from "react"
-import SEO from "../../../../components/seo"
+import { Box } from "theme-ui"
+import CurriculumTopBar from "../../../../components/CurriculumTopBar/CurriculumTopBar"
 import PageCurriculumSettings from "../../../../components/PageCurriculumSettings/PageCurriculumSettings"
+import SEO from "../../../../components/seo"
+import { breadCrumb } from "../../../../components/TopBar/TopBar"
+import { ADMIN_URL } from "../../../../routes"
 
-const Settings: FC = () => {
-  return (
-    <>
-      <SEO title={t`Curriculum`} />
+const Curriculum: FC = () => (
+  <>
+    <SEO title={t`Curriculum`} />
+    <Box>
+      <CurriculumTopBar
+        breadcrumbs={[breadCrumb("Admin", ADMIN_URL), breadCrumb("Curriculum")]}
+      />
       <PageCurriculumSettings />
-    </>
-  )
-}
+    </Box>
+  </>
+)
 
-export default Settings
+export default Curriculum

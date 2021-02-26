@@ -2,9 +2,9 @@
 
 declare module "*.svg" {
   // eslint-disable-next-line import/no-duplicates
-  import { FC } from "react"
+  import { FC, SVGProps } from "react"
 
-  export const ReactComponent: FC
+  export const ReactComponent: FC<SVGProps<SVGElement>>
 }
 
 declare module "*.png" {
@@ -47,3 +47,4 @@ declare module "gatsby-theme-i18n" {
   const useLocalization: () => { locale: string }
   export { LocalizedLink, useLocalization, navigate }
 }
+
