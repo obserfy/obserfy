@@ -197,6 +197,7 @@ const MaterialList: FC<{
             right: 0,
             bottom: 0,
             textAlign: "center",
+            pointerEvents: "none",
           }}
         >
           Saving
@@ -246,6 +247,7 @@ const DraggableMaterialItem: FC<{
           maxWidth: "inherit",
           opacity: isLoading ? 0.2 : 1,
           transition: "opacity 0.1s ease-in",
+          pointerEvents: isLoading ? "none" : undefined,
         }}
       >
         <DraggableListItem
