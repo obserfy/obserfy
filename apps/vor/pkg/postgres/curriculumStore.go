@@ -45,6 +45,7 @@ func (s CurriculumStore) UpdateSubject(id string, name *string, order *int, desc
 		updateQuery.AddStringColumn("name", name)
 		updateQuery.AddStringColumn("description", description)
 		updateQuery.AddUUIDColumn("area_id", areaId)
+		updateQuery.AddIntColumn("order", order)
 
 		// Update the targeted materials with the targeted changes
 		if _, err := tx.Model(updateQuery.GetModel()).
@@ -309,6 +310,7 @@ func (s CurriculumStore) UpdateMaterial(id string, name *string, order *int, des
 		updateQuery.AddStringColumn("name", name)
 		updateQuery.AddUUIDColumn("subject_id", subjectId)
 		updateQuery.AddStringColumn("description", description)
+		updateQuery.AddIntColumn("order", order)
 
 		// Update the targeted materials with the targeted changes
 		if _, err := tx.Model(updateQuery.GetModel()).
