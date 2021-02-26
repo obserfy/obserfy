@@ -5734,13 +5734,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mux/upchunk@npm:2.2.2":
-  version: 2.2.2
-  resolution: "@mux/upchunk@npm:2.2.2"
+"@mux/upchunk@npm:2.2.0":
+  version: 2.2.0
+  resolution: "@mux/upchunk@npm:2.2.0"
   dependencies:
     event-target-shim: ^4.0.3
     xhr: ^2.6.0
-  checksum: b5b5a47b4be77c21e017c6752faebebae21a22a9333dbbe7a48b1f36319e4f5064b37d016ae5fd2941d608c54ffb690f24dd15c7217748d8bfc172a081c9932a
+  checksum: 2e407ea6100eea7817ef22791ce01b8e705be7852ec48d1cb84cd6267ba8cd97ad131a878a271ff14d744db324955184220323b6a676bea457bb46d3ad3813df
   languageName: node
   linkType: hard
 
@@ -8559,14 +8559,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/pino@npm:6.3.5":
-  version: 6.3.5
-  resolution: "@types/pino@npm:6.3.5"
+"@types/pino@npm:6.3.6":
+  version: 6.3.6
+  resolution: "@types/pino@npm:6.3.6"
   dependencies:
     "@types/node": "*"
     "@types/pino-std-serializers": "*"
     "@types/sonic-boom": "*"
-  checksum: 0f61079e5ad2f209977015c8b0c58301dee533e80944ed394ef3c87e6db6f53d0687feddeb94ea454073edb87c6bc55c8d276120c640bac9083f5725c065e430
+  checksum: ad25dc65e2364189f8f5ea8e2a8872a446b675e906206d8b30338acfb41be0df8f4d7866b970086716c5452c37ace7e4d8a44650388b95b93e3a1fe7d56ae0d6
   languageName: node
   linkType: hard
 
@@ -18575,7 +18575,7 @@ __metadata:
     gatsby-plugin-typegen: 2.2.4
     gatsby-plugin-webpack-bundle-analyser-v2: 1.1.20
     gatsby-source-filesystem: 2.11.0
-    gatsby-theme-i18n: 1.0.5
+    gatsby-theme-i18n: 1.0.4
     gatsby-theme-i18n-lingui: 1.0.4
     gatsby-transformer-sharp: 2.12.0
     make-plural: 6.2.2
@@ -18887,7 +18887,7 @@ fsevents@~2.3.1:
     "@types/nanoid": 2.1.0
     "@types/node": 14.14.28
     "@types/pg": 7.14.10
-    "@types/pino": 6.3.5
+    "@types/pino": 6.3.6
     "@types/react": 17.0.2
     "@types/react-query": 1.1.2
     "@types/uuid": 8.3.0
@@ -19682,21 +19682,7 @@ fsevents@~2.3.1:
   languageName: unknown
   linkType: soft
 
-"gatsby-theme-i18n@npm:1.0.5":
-  version: 1.0.5
-  resolution: "gatsby-theme-i18n@npm:1.0.5"
-  dependencies:
-    gatsby-plugin-react-helmet: ^3.3.10
-    react-helmet: ^6.1.0
-  peerDependencies:
-    gatsby: ">=2.21.26"
-    react: ">=16.13.1"
-    react-dom: ">=16.13.1"
-  checksum: 53ff4db1b3dcd175c24df9f6267ee8386c6bdafa037c6ae812534149a33672cdcd0dcbb37b0dfba234d58680ebf5e7b4826c408e6da2827e6b28a96b4f0ad9b2
-  languageName: node
-  linkType: hard
-
-"gatsby-theme-i18n@workspace:packages/gatsby-theme-i18n":
+"gatsby-theme-i18n@1.0.4, gatsby-theme-i18n@workspace:packages/gatsby-theme-i18n":
   version: 0.0.0-use.local
   resolution: "gatsby-theme-i18n@workspace:packages/gatsby-theme-i18n"
   dependencies:
@@ -36999,7 +36985,7 @@ typescript@^4.0.0:
     "@lingui/core": 3.5.1
     "@lingui/macro": 3.5.1
     "@lingui/react": 3.5.1
-    "@mux/upchunk": 2.2.2
+    "@mux/upchunk": 2.2.0
     "@reach/router": 1.3.4
     "@sentry/gatsby": 6.1.0
     "@sentry/tracing": 6.1.0
@@ -37075,7 +37061,7 @@ typescript@^4.0.0:
     gatsby-plugin-typegen: 2.2.4
     gatsby-plugin-webpack-bundle-analyser-v2: 1.1.20
     gatsby-source-filesystem: 2.11.0
-    gatsby-theme-i18n: 1.0.5
+    gatsby-theme-i18n: 1.0.4
     gatsby-theme-i18n-lingui: 1.0.4
     gatsby-transformer-sharp: 2.12.0
     hls.js: beta
