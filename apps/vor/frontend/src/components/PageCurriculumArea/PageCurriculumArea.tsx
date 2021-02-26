@@ -197,6 +197,7 @@ const SubjectList: FC<{
             left: 0,
             right: 0,
             textAlign: "center",
+            pointerEvents: "none",
           }}
         >
           Saving
@@ -243,6 +244,7 @@ const SubjectListItem: FC<{
         maxWidth: "inherit",
         opacity: isLoading ? 0.2 : 1,
         transition: "opacity 0.1s ease-in",
+        pointerEvents: isLoading ? "none" : undefined,
       }}
     >
       <DraggableListItem
