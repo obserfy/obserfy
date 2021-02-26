@@ -144,6 +144,7 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
           onDismiss={editSubject.hide}
           onSave={editSubject.hide}
           subjectId={subjectId}
+          areaId={areaId}
         />
       )}
     </Box>

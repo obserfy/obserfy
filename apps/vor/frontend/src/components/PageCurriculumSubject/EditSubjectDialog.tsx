@@ -8,12 +8,13 @@ import Input from "../Input/Input"
 
 const EditSubjectDialog: FC<{
   initialValue?: string
-  subjectId: string
   onDismiss: () => void
   onSave: () => void
-}> = ({ initialValue = "", subjectId, onDismiss, onSave }) => {
+  subjectId: string
+  areaId: string
+}> = ({ initialValue = "", subjectId, onDismiss, onSave, areaId }) => {
   const [value, setValue] = useState(initialValue)
-  const patchSubject = usePatchSubject(subjectId)
+  const patchSubject = usePatchSubject(subjectId, areaId)
 
   const handleSave = async () => {
     try {
