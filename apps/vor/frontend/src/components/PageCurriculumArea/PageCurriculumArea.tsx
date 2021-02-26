@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { t, Trans } from "@lingui/macro"
-import { FC, Fragment, useState } from "react"
+import { FC, Fragment, useEffect, useState } from "react"
 import { jsx, Box, Button, Flex, ThemeUIStyleObject } from "theme-ui"
 import { borderBottom, borderRight } from "../../border"
 import usePostNewSubject from "../../hooks/api/curriculum/usePostNewSubject"
@@ -107,7 +107,6 @@ const PageCurriculumArea: FC<Props> = ({ id, sx }) => {
       </Typography.Body>
 
       <SubjectList
-        key={subjects.data?.map((subject) => subject.id).join(",") ?? ""}
         areaId={id}
         subjects={subjects.data ?? []}
         currSubjectId={subjectId}
@@ -162,7 +161,11 @@ const SubjectList: FC<{
   areaId: string
   currSubjectId: string
 }> = ({ currSubjectId, subjects, areaId }) => {
-  const [cachedSubjects, moveItem] = useMoveDraggableItem(subjects)
+  const [cachedSubjects, moveItem, setSubjects] = useMoveDraggableItem(subjects)
+
+  useEffect(() => {
+    setSubjects(() => subjects)
+  }, [subjects])
 
   return (
     <Fragment>
