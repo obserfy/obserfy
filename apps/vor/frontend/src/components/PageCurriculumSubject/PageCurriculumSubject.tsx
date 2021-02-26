@@ -3,6 +3,7 @@ import { t, Trans } from "@lingui/macro"
 import { Fragment, FC, memo, useState, useEffect } from "react"
 import { jsx, Box, Button, Flex, ThemeUIStyleObject } from "theme-ui"
 import { borderBottom, borderRight } from "../../border"
+import usePatchMaterial from "../../hooks/api/curriculum/usePatchMaterial"
 import usePostNewMaterial from "../../hooks/api/curriculum/usePostNewMaterial"
 import { useGetArea } from "../../hooks/api/useGetArea"
 import { useGetSubject } from "../../hooks/api/useGetSubject"
@@ -10,6 +11,7 @@ import {
   Material,
   useGetSubjectMaterials,
 } from "../../hooks/api/useGetSubjectMaterials"
+import useDebounce from "../../hooks/useDebounce"
 import { useMoveDraggableItem } from "../../hooks/useMoveDraggableItem"
 import { useQueryString } from "../../hooks/useQueryString"
 import useVisibilityState from "../../hooks/useVisibilityState"
@@ -57,7 +59,7 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
   const editSubject = useVisibilityState()
 
   return (
-    <Box sx={{ width: "100%", pb: 5, ...sx }}>
+    <Box sx={{ position: "relative", width: "100%", pb: 5, ...sx }}>
       <TranslucentBar boxSx={{ ...borderBottom }}>
         <TopBar
           containerSx={{ display: ["flex", "flex", "none"] }}
@@ -157,12 +159,14 @@ const MaterialList: FC<{
   areaId: string
   currMaterialId: string
 }> = ({ materials, subjectId, areaId, currMaterialId }) => {
+  const [isLoading, setIsLoading] = useState(false)
   const [cachedMaterials, moveItem, setMaterials] = useMoveDraggableItem(
     materials
   )
 
+  const debouncedIsLoading = useDebounce(isLoading)
+
   useEffect(() => {
-    console.log(materials)
     setMaterials(() => materials)
   }, [materials])
 
@@ -176,8 +180,29 @@ const MaterialList: FC<{
           areaId={areaId}
           subjectId={subjectId}
           moveItem={moveItem}
+          isLoading={debouncedIsLoading}
+          onLoadingStateChange={(state) => {
+            setIsLoading(state)
+          }}
         />
       ))}
+      {debouncedIsLoading && (
+        <Typography.Body
+          pt={7}
+          sx={{
+            fontWeight: "bold",
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            textAlign: "center",
+            pointerEvents: "none",
+          }}
+        >
+          Saving
+        </Typography.Body>
+      )}
     </Fragment>
   )
 }
@@ -188,40 +213,72 @@ const DraggableMaterialItem: FC<{
   material: Material
   currMaterialId: string
   moveItem: (currItem: Material, newOrder: number) => void
-}> = memo(({ moveItem, currMaterialId, areaId, subjectId, material }) => {
-  const selected = material.id === currMaterialId
+  onLoadingStateChange: (isLoading: boolean) => void
+  isLoading: boolean
+}> = memo(
+  ({
+    moveItem,
+    currMaterialId,
+    areaId,
+    subjectId,
+    material,
+    onLoadingStateChange,
+    isLoading,
+  }) => {
+    const selected = material.id === currMaterialId
+    const patchMaterial = usePatchMaterial(material.id, subjectId)
 
-  return (
-    <Link
-      to={CURRICULUM_MATERIAL_URL(areaId, subjectId, material.id)}
-      sx={{ display: "block", maxWidth: "inherit" }}
-    >
-      <DraggableListItem
-        item={material}
-        moveItem={moveItem}
-        height={54}
-        containerSx={{
-          ...borderBottom,
-          ...borderRight,
-          borderRightColor: "textPrimary",
-          borderRightWidth: 2,
-          borderRightStyle: selected ? "solid" : "none",
-          backgroundColor: selected ? "primaryLightest" : "background",
-          color: selected ? "textPrimary" : "textMediumEmphasis",
-          alignItems: "center",
-          "&:hover": {
-            backgroundColor: "primaryLightest",
-          },
+    const handleReorder = async () => {
+      try {
+        onLoadingStateChange(true)
+        await patchMaterial.mutateAsync({ order: material.order })
+      } catch (e) {
+        Sentry.captureException(e)
+      } finally {
+        onLoadingStateChange(false)
+      }
+    }
+
+    return (
+      <Link
+        to={CURRICULUM_MATERIAL_URL(areaId, subjectId, material.id)}
+        sx={{
+          display: "block",
+          maxWidth: "inherit",
+          opacity: isLoading ? 0.2 : 1,
+          transition: "opacity 0.1s ease-in",
+          pointerEvents: isLoading ? "none" : undefined,
         }}
       >
-        <Typography.Body className="truncate" sx={{ color: "inherit" }}>
-          {material.name}
-        </Typography.Body>
-        <Icon as={NextIcon} ml="auto" mr={3} fill="currentColor" />
-      </DraggableListItem>
-    </Link>
-  )
-})
+        <DraggableListItem
+          item={material}
+          moveItem={moveItem}
+          height={54}
+          onDrop={handleReorder}
+          disableDrag={isLoading}
+          containerSx={{
+            ...borderBottom,
+            ...borderRight,
+            borderRightColor: "textPrimary",
+            borderRightWidth: 2,
+            borderRightStyle: selected ? "solid" : "none",
+            backgroundColor: selected ? "primaryLightest" : "background",
+            color: selected ? "textPrimary" : "textMediumEmphasis",
+            alignItems: "center",
+            "&:hover": {
+              backgroundColor: "primaryLightest",
+            },
+          }}
+        >
+          <Typography.Body className="truncate" sx={{ color: "inherit" }}>
+            {material.name}
+          </Typography.Body>
+          <Icon as={NextIcon} ml="auto" mr={3} fill="currentColor" />
+        </DraggableListItem>
+      </Link>
+    )
+  }
+)
 
 const NewMaterialDialog: FC<{ subjectId: string; onDismiss: () => void }> = ({
   subjectId,
