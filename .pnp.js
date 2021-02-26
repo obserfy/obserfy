@@ -809,7 +809,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@hapi/hoek",
-        "npm:8.5.1"
+        "npm:9.0.4"
       ],
       [
         "@hapi/iron",
@@ -1545,7 +1545,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@szmarczak/http-timer",
-        "npm:1.1.2"
+        "npm:4.0.5"
       ],
       [
         "@tailwindcss/typography",
@@ -1718,10 +1718,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       [
         "@types/glob-base",
         "npm:0.3.0"
-      ],
-      [
-        "@types/got",
-        "npm:9.6.11"
       ],
       [
         "@types/graceful-fs",
@@ -1986,10 +1982,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       [
         "@types/tmp",
         "npm:0.0.33"
-      ],
-      [
-        "@types/tough-cookie",
-        "npm:4.0.0"
       ],
       [
         "@types/trusted-types",
@@ -3057,7 +3049,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "cacheable-request",
-        "npm:6.1.0"
+        "npm:7.0.1"
       ],
       [
         "cached-path-relative",
@@ -4800,6 +4792,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:3.6.1"
       ],
       [
+        "futoin-hkdf",
+        "npm:1.3.3"
+      ],
+      [
         "fuzzaldrin",
         "npm:2.1.0"
       ],
@@ -5402,6 +5398,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       [
         "http-signature",
         "npm:1.2.0"
+      ],
+      [
+        "http2-wrapper",
+        "npm:1.0.3"
       ],
       [
         "https-browserify",
@@ -6105,7 +6105,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "jose",
-        "npm:1.27.1"
+        "npm:2.0.4"
       ],
       [
         "joycon",
@@ -7205,7 +7205,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "oidc-token-hash",
-        "npm:5.0.0"
+        "npm:5.0.1"
       ],
       [
         "omggif",
@@ -7237,7 +7237,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "openid-client",
-        "npm:3.15.10"
+        "npm:4.4.0"
       ],
       [
         "opentracing",
@@ -8675,6 +8675,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "patch:resolve@npm%3A1.17.0#builtin<compat/resolve>::version=1.17.0&hash=3388aa"
       ],
       [
+        "resolve-alpn",
+        "npm:1.0.0"
+      ],
+      [
         "resolve-cwd",
         "npm:3.0.0"
       ],
@@ -8692,7 +8696,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "responselike",
-        "npm:1.0.2"
+        "npm:2.0.0"
       ],
       [
         "restore-cursor",
@@ -10492,24 +10496,30 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@auth0/nextjs-auth0", [
-        ["npm:0.16.1", {
-          "packageLocation": "./.yarn/cache/@auth0-nextjs-auth0-npm-0.16.1-9a23e30328-f36f9e322c.zip/node_modules/@auth0/nextjs-auth0/",
+        ["npm:1.1.0", {
+          "packageLocation": "./.yarn/cache/@auth0-nextjs-auth0-npm-1.1.0-971670f315-e537ba389a.zip/node_modules/@auth0/nextjs-auth0/",
           "packageDependencies": [
-            ["@auth0/nextjs-auth0", "npm:0.16.1"]
+            ["@auth0/nextjs-auth0", "npm:1.1.0"]
           ],
           "linkType": "SOFT",
         }],
-        ["virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.16.1", {
-          "packageLocation": "./.yarn/$$virtual/@auth0-nextjs-auth0-virtual-a3fc12c42a/0/cache/@auth0-nextjs-auth0-npm-0.16.1-9a23e30328-f36f9e322c.zip/node_modules/@auth0/nextjs-auth0/",
+        ["virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:1.1.0", {
+          "packageLocation": "./.yarn/$$virtual/@auth0-nextjs-auth0-virtual-5743753a76/0/cache/@auth0-nextjs-auth0-npm-1.1.0-971670f315-e537ba389a.zip/node_modules/@auth0/nextjs-auth0/",
           "packageDependencies": [
-            ["@auth0/nextjs-auth0", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.16.1"],
-            ["@hapi/iron", "npm:5.1.4"],
+            ["@auth0/nextjs-auth0", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:1.1.0"],
+            ["@hapi/joi", "npm:17.1.1"],
             ["@types/next", null],
             ["base64url", "npm:3.0.1"],
             ["cookie", "npm:0.4.1"],
+            ["debug", "virtual:82623965430faf782786642753f92d0b7f79c7fb087a47bd0a6605aa847dfe3ef58a8973604ba623a267d6da9edaf7fd1aaa710ef9ef2f748e72c5dbf6a2e66b#npm:4.3.2"],
+            ["futoin-hkdf", "npm:1.3.3"],
+            ["http-errors", "npm:1.8.0"],
+            ["jose", "npm:2.0.4"],
             ["next", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:10.0.7"],
-            ["openid-client", "npm:3.15.10"],
-            ["tslib", "npm:2.0.3"]
+            ["on-headers", "npm:1.0.2"],
+            ["openid-client", "npm:4.4.0"],
+            ["tslib", "npm:2.1.0"],
+            ["url-join", "npm:4.0.1"]
           ],
           "packagePeers": [
             "@types/next",
@@ -21495,14 +21505,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@hapi/b64", [
-        ["npm:4.2.1", {
-          "packageLocation": "./.yarn/cache/@hapi-b64-npm-4.2.1-6816e7f242-dd2b89b38a.zip/node_modules/@hapi/b64/",
-          "packageDependencies": [
-            ["@hapi/b64", "npm:4.2.1"],
-            ["@hapi/hoek", "npm:8.5.1"]
-          ],
-          "linkType": "HARD",
-        }],
         ["npm:5.0.0", {
           "packageLocation": "./.yarn/cache/@hapi-b64-npm-5.0.0-eef9cf5e2f-45bed36a8a.zip/node_modules/@hapi/b64/",
           "packageDependencies": [
@@ -21513,14 +21515,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@hapi/boom", [
-        ["npm:7.4.11", {
-          "packageLocation": "./.yarn/cache/@hapi-boom-npm-7.4.11-c111d7ffa5-071313eb76.zip/node_modules/@hapi/boom/",
-          "packageDependencies": [
-            ["@hapi/boom", "npm:7.4.11"],
-            ["@hapi/hoek", "npm:8.5.1"]
-          ],
-          "linkType": "HARD",
-        }],
         ["npm:9.1.0", {
           "packageLocation": "./.yarn/cache/@hapi-boom-npm-9.1.0-cc4b23e6fb-77b566e295.zip/node_modules/@hapi/boom/",
           "packageDependencies": [
@@ -21547,14 +21541,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@hapi/cryptiles", [
-        ["npm:4.2.1", {
-          "packageLocation": "./.yarn/cache/@hapi-cryptiles-npm-4.2.1-bb55887af9-d7b7c9adab.zip/node_modules/@hapi/cryptiles/",
-          "packageDependencies": [
-            ["@hapi/cryptiles", "npm:4.2.1"],
-            ["@hapi/boom", "npm:7.4.11"]
-          ],
-          "linkType": "HARD",
-        }],
         ["npm:5.1.0", {
           "packageLocation": "./.yarn/cache/@hapi-cryptiles-npm-5.1.0-828c4c614b-36bfea3cc7.zip/node_modules/@hapi/cryptiles/",
           "packageDependencies": [
@@ -21604,18 +21590,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@hapi/iron", [
-        ["npm:5.1.4", {
-          "packageLocation": "./.yarn/cache/@hapi-iron-npm-5.1.4-97aefbf00d-31150d577b.zip/node_modules/@hapi/iron/",
-          "packageDependencies": [
-            ["@hapi/iron", "npm:5.1.4"],
-            ["@hapi/b64", "npm:4.2.1"],
-            ["@hapi/boom", "npm:7.4.11"],
-            ["@hapi/bourne", "npm:1.3.2"],
-            ["@hapi/cryptiles", "npm:4.2.1"],
-            ["@hapi/hoek", "npm:8.5.1"]
-          ],
-          "linkType": "HARD",
-        }],
         ["npm:6.0.0", {
           "packageLocation": "./.yarn/cache/@hapi-iron-npm-6.0.0-0249710989-427104bcc2.zip/node_modules/@hapi/iron/",
           "packageDependencies": [
@@ -21650,6 +21624,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@hapi/hoek", "npm:8.5.1"],
             ["@hapi/pinpoint", "npm:1.0.2"],
             ["@hapi/topo", "npm:3.1.6"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:17.1.1", {
+          "packageLocation": "./.yarn/cache/@hapi-joi-npm-17.1.1-b9347a858d-7547ccf2a8.zip/node_modules/@hapi/joi/",
+          "packageDependencies": [
+            ["@hapi/joi", "npm:17.1.1"],
+            ["@hapi/address", "npm:4.1.0"],
+            ["@hapi/formula", "npm:2.0.0"],
+            ["@hapi/hoek", "npm:9.0.4"],
+            ["@hapi/pinpoint", "npm:2.0.0"],
+            ["@hapi/topo", "npm:5.0.0"]
           ],
           "linkType": "HARD",
         }]
@@ -24351,6 +24337,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@sindresorhus/is", "npm:2.1.1"]
           ],
           "linkType": "HARD",
+        }],
+        ["npm:4.0.0", {
+          "packageLocation": "./.yarn/cache/@sindresorhus-is-npm-4.0.0-5aa71e5397-7022d5037f.zip/node_modules/@sindresorhus/is/",
+          "packageDependencies": [
+            ["@sindresorhus/is", "npm:4.0.0"]
+          ],
+          "linkType": "HARD",
         }]
       ]],
       ["@sindresorhus/slugify", [
@@ -26699,18 +26692,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["@types/got", [
-        ["npm:9.6.11", {
-          "packageLocation": "./.yarn/cache/@types-got-npm-9.6.11-52363b432f-f0c0becccd.zip/node_modules/@types/got/",
-          "packageDependencies": [
-            ["@types/got", "npm:9.6.11"],
-            ["@types/node", "npm:14.0.14"],
-            ["@types/tough-cookie", "npm:4.0.0"],
-            ["form-data", "npm:2.5.1"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["@types/graceful-fs", [
         ["npm:4.1.3", {
           "packageLocation": "./.yarn/cache/@types-graceful-fs-npm-4.1.3-fa91c32dd0-5e2ec610a9.zip/node_modules/@types/graceful-fs/",
@@ -26999,6 +26980,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-node-npm-14.0.14-d5bf7f2809-0a2072aa7d.zip/node_modules/@types/node/",
           "packageDependencies": [
             ["@types/node", "npm:14.0.14"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:14.14.28", {
+          "packageLocation": "./.yarn/cache/@types-node-npm-14.14.28-f643c75c74-e750df4d5e.zip/node_modules/@types/node/",
+          "packageDependencies": [
+            ["@types/node", "npm:14.14.28"]
           ],
           "linkType": "HARD",
         }],
@@ -27410,15 +27398,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-tmp-npm-0.0.33-070918943f-93442cc384.zip/node_modules/@types/tmp/",
           "packageDependencies": [
             ["@types/tmp", "npm:0.0.33"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["@types/tough-cookie", [
-        ["npm:4.0.0", {
-          "packageLocation": "./.yarn/cache/@types-tough-cookie-npm-4.0.0-c29cd799b9-5a0cccc6d0.zip/node_modules/@types/tough-cookie/",
-          "packageDependencies": [
-            ["@types/tough-cookie", "npm:4.0.0"]
           ],
           "linkType": "HARD",
         }]
@@ -30740,7 +30719,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["babel-plugin-dynamic-import-node", "npm:2.3.3"],
             ["babel-plugin-macros", "npm:2.8.0"],
             ["babel-plugin-transform-react-remove-prop-types", "npm:0.4.24"],
-            ["core-js", "npm:3.9.0"],
+            ["core-js", "npm:3.8.3"],
             ["gatsby-core-utils", "npm:1.10.0"],
             ["gatsby-legacy-polyfills", "npm:0.7.0"]
           ],
@@ -31992,6 +31971,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["cacheable-lookup", "npm:2.0.1"],
             ["@types/keyv", "npm:3.1.1"],
             ["keyv", "npm:4.0.1"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:5.0.4", {
+          "packageLocation": "./.yarn/cache/cacheable-lookup-npm-5.0.4-8f13e8b44b-cb5849f584.zip/node_modules/cacheable-lookup/",
+          "packageDependencies": [
+            ["cacheable-lookup", "npm:5.0.4"]
           ],
           "linkType": "HARD",
         }]
@@ -33696,10 +33682,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
-        ["npm:3.9.0", {
-          "packageLocation": "./.yarn/cache/core-js-npm-3.9.0-2cc70166ec-c1711d5f60.zip/node_modules/core-js/",
+        ["npm:3.8.3", {
+          "packageLocation": "./.yarn/cache/core-js-npm-3.8.3-f6bf459c9f-3c67d1732d.zip/node_modules/core-js/",
           "packageDependencies": [
-            ["core-js", "npm:3.9.0"]
+            ["core-js", "npm:3.8.3"]
           ],
           "linkType": "HARD",
         }]
@@ -35937,7 +35923,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@swc/core", "npm:1.2.47"],
             ["@types/auth0-js", "npm:9.14.2"],
             ["@types/faker", "npm:5.1.7"],
-            ["@types/node", "npm:14.14.31"],
+            ["@types/node", "npm:14.14.28"],
             ["@types/pg", "npm:7.14.10"],
             ["@typescript-eslint/eslint-plugin", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:4.11.1"],
             ["@typescript-eslint/parser", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:4.11.1"],
@@ -39083,16 +39069,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
-        ["npm:2.5.1", {
-          "packageLocation": "./.yarn/cache/form-data-npm-2.5.1-47256351b5-c46ee9a14a.zip/node_modules/form-data/",
-          "packageDependencies": [
-            ["form-data", "npm:2.5.1"],
-            ["asynckit", "npm:0.4.0"],
-            ["combined-stream", "npm:1.0.8"],
-            ["mime-types", "npm:2.1.27"]
-          ],
-          "linkType": "HARD",
-        }],
         ["npm:3.0.0", {
           "packageLocation": "./.yarn/cache/form-data-npm-3.0.0-b01f488350-1af88217b4.zip/node_modules/form-data/",
           "packageDependencies": [
@@ -39502,6 +39478,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["futoin-hkdf", [
+        ["npm:1.3.3", {
+          "packageLocation": "./.yarn/cache/futoin-hkdf-npm-1.3.3-a48988dee0-039ce28345.zip/node_modules/futoin-hkdf/",
+          "packageDependencies": [
+            ["futoin-hkdf", "npm:1.3.3"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["fuzzaldrin", [
         ["npm:2.1.0", {
           "packageLocation": "./.yarn/cache/fuzzaldrin-npm-2.1.0-e611a2708a-863d6f9358.zip/node_modules/fuzzaldrin/",
@@ -39516,7 +39501,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./apps/gaia/",
           "packageDependencies": [
             ["gaia", "workspace:apps/gaia"],
-            ["@auth0/nextjs-auth0", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.16.1"],
+            ["@auth0/nextjs-auth0", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:1.1.0"],
             ["@segment/snippet", "npm:4.13.1"],
             ["@sentry/browser", "npm:6.2.0"],
             ["@sentry/integrations", "npm:6.2.0"],
@@ -41495,7 +41480,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/gatsby-theme-i18n/",
           "packageDependencies": [
             ["gatsby-theme-i18n", "workspace:packages/gatsby-theme-i18n"],
-            ["core-js", "npm:3.9.0"],
+            ["core-js", "npm:3.8.3"],
             ["gatsby-plugin-react-helmet", "virtual:5d8264c6e98327951583e4d2c066e27d88acddc677e423875660123948b366e74806529867aa7bdc831a18ba1b4720def38d7b6da55229d6134ecb9d8376217e#npm:3.3.10"],
             ["mkdirp", "npm:1.0.4"],
             ["react-helmet", "virtual:5d8264c6e98327951583e4d2c066e27d88acddc677e423875660123948b366e74806529867aa7bdc831a18ba1b4720def38d7b6da55229d6134ecb9d8376217e#npm:6.1.0"],
@@ -41518,7 +41503,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/preact", null],
             ["@types/react", "npm:17.0.2"],
             ["@types/react-dom", "npm:17.0.1"],
-            ["core-js", "npm:3.9.0"],
+            ["core-js", "npm:3.8.3"],
             ["gatsby", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:2.32.4"],
             ["make-plural", "npm:6.2.2"],
             ["preact", "npm:10.5.12"],
@@ -41557,7 +41542,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/preact", null],
             ["@types/react", "npm:17.0.2"],
             ["@types/react-dom", null],
-            ["core-js", "npm:3.9.0"],
+            ["core-js", "npm:3.8.3"],
             ["gatsby", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:2.32.4"],
             ["make-plural", "npm:6.2.2"],
             ["preact", "npm:10.5.12"],
@@ -41589,7 +41574,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["gatsby-theme-i18n-lingui", "workspace:packages/gatsby-theme-i18n-lingui"],
             ["@lingui/core", "npm:3.5.1"],
             ["@lingui/react", "virtual:2d5bba4bdfd753969bb21488489a14ac51d8dabb34268ef6a90f72fe83ed452c2dc693459013cd643d7d1a1ba488262b1d31108ebe2ae16abbcc6b4223de896c#npm:3.5.1"],
-            ["core-js", "npm:3.9.0"],
+            ["core-js", "npm:3.8.3"],
             ["react-refresh", "npm:0.9.0"]
           ],
           "linkType": "SOFT",
@@ -42223,6 +42208,24 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["responselike", "npm:2.0.0"],
             ["to-readable-stream", "npm:2.1.0"],
             ["type-fest", "npm:0.10.0"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:11.8.2", {
+          "packageLocation": "./.yarn/cache/got-npm-11.8.2-c1eb105458-6415f98ec2.zip/node_modules/got/",
+          "packageDependencies": [
+            ["got", "npm:11.8.2"],
+            ["@sindresorhus/is", "npm:4.0.0"],
+            ["@szmarczak/http-timer", "npm:4.0.5"],
+            ["@types/cacheable-request", "npm:6.0.1"],
+            ["@types/responselike", "npm:1.0.0"],
+            ["cacheable-lookup", "npm:5.0.4"],
+            ["cacheable-request", "npm:7.0.1"],
+            ["decompress-response", "npm:6.0.0"],
+            ["http2-wrapper", "npm:1.0.3"],
+            ["lowercase-keys", "npm:2.0.0"],
+            ["p-cancelable", "npm:2.0.0"],
+            ["responselike", "npm:2.0.0"]
           ],
           "linkType": "HARD",
         }],
@@ -43259,6 +43262,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["toidentifier", "npm:1.0.0"]
           ],
           "linkType": "HARD",
+        }],
+        ["npm:1.8.0", {
+          "packageLocation": "./.yarn/cache/http-errors-npm-1.8.0-4399ea3b8d-95ad78508b.zip/node_modules/http-errors/",
+          "packageDependencies": [
+            ["http-errors", "npm:1.8.0"],
+            ["depd", "npm:1.1.2"],
+            ["inherits", "npm:2.0.4"],
+            ["setprototypeof", "npm:1.2.0"],
+            ["statuses", "npm:1.5.0"],
+            ["toidentifier", "npm:1.0.0"]
+          ],
+          "linkType": "HARD",
         }]
       ]],
       ["http-parser-js", [
@@ -43315,6 +43330,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["assert-plus", "npm:1.0.0"],
             ["jsprim", "npm:1.4.1"],
             ["sshpk", "npm:1.16.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["http2-wrapper", [
+        ["npm:1.0.3", {
+          "packageLocation": "./.yarn/cache/http2-wrapper-npm-1.0.3-5b58ade1df-2fc0140a69.zip/node_modules/http2-wrapper/",
+          "packageDependencies": [
+            ["http2-wrapper", "npm:1.0.3"],
+            ["quick-lru", "npm:5.1.1"],
+            ["resolve-alpn", "npm:1.0.0"]
           ],
           "linkType": "HARD",
         }]
@@ -45908,10 +45934,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["jose", [
-        ["npm:1.27.1", {
-          "packageLocation": "./.yarn/cache/jose-npm-1.27.1-03e0e7eb95-503328cd0e.zip/node_modules/jose/",
+        ["npm:2.0.4", {
+          "packageLocation": "./.yarn/cache/jose-npm-2.0.4-8e257b3aaa-402054b230.zip/node_modules/jose/",
           "packageDependencies": [
-            ["jose", "npm:1.27.1"],
+            ["jose", "npm:2.0.4"],
             ["@panva/asn1.js", "npm:1.0.0"]
           ],
           "linkType": "HARD",
@@ -49873,10 +49899,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["oidc-token-hash", [
-        ["npm:5.0.0", {
-          "packageLocation": "./.yarn/cache/oidc-token-hash-npm-5.0.0-f5f8934309-eda2fab9e0.zip/node_modules/oidc-token-hash/",
+        ["npm:5.0.1", {
+          "packageLocation": "./.yarn/cache/oidc-token-hash-npm-5.0.1-9b98415c82-9090d9a850.zip/node_modules/oidc-token-hash/",
           "packageDependencies": [
-            ["oidc-token-hash", "npm:5.0.0"]
+            ["oidc-token-hash", "npm:5.0.1"]
           ],
           "linkType": "HARD",
         }]
@@ -49973,18 +49999,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["openid-client", [
-        ["npm:3.15.10", {
-          "packageLocation": "./.yarn/cache/openid-client-npm-3.15.10-29ac641f8d-31740dd4e8.zip/node_modules/openid-client/",
+        ["npm:4.4.0", {
+          "packageLocation": "./.yarn/cache/openid-client-npm-4.4.0-dfa7c02564-f5f3e94a4c.zip/node_modules/openid-client/",
           "packageDependencies": [
-            ["openid-client", "npm:3.15.10"],
-            ["@types/got", "npm:9.6.11"],
-            ["base64url", "npm:3.0.1"],
-            ["got", "npm:9.6.0"],
-            ["jose", "npm:1.27.1"],
+            ["openid-client", "npm:4.4.0"],
+            ["got", "npm:11.8.2"],
+            ["jose", "npm:2.0.4"],
             ["lru-cache", "npm:6.0.0"],
             ["make-error", "npm:1.3.6"],
             ["object-hash", "npm:2.0.3"],
-            ["oidc-token-hash", "npm:5.0.0"],
+            ["oidc-token-hash", "npm:5.0.1"],
             ["p-any", "npm:3.0.0"]
           ],
           "linkType": "HARD",
@@ -53518,6 +53542,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["quick-lru", "npm:4.0.1"]
           ],
           "linkType": "HARD",
+        }],
+        ["npm:5.1.1", {
+          "packageLocation": "./.yarn/cache/quick-lru-npm-5.1.1-e38e0edce3-fafb2b2fa1.zip/node_modules/quick-lru/",
+          "packageDependencies": [
+            ["quick-lru", "npm:5.1.1"]
+          ],
+          "linkType": "HARD",
         }]
       ]],
       ["raf", [
@@ -56012,6 +56043,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["resolve-alpn", [
+        ["npm:1.0.0", {
+          "packageLocation": "./.yarn/cache/resolve-alpn-npm-1.0.0-f655c150b7-17baee01c0.zip/node_modules/resolve-alpn/",
+          "packageDependencies": [
+            ["resolve-alpn", "npm:1.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["resolve-cwd", [
         ["npm:2.0.0", {
           "packageLocation": "./.yarn/cache/resolve-cwd-npm-2.0.0-cce7da6fd4-f5d5526526.zip/node_modules/resolve-cwd/",
@@ -56750,6 +56790,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/setprototypeof-npm-1.1.1-706b6318ec-0efed4da5a.zip/node_modules/setprototypeof/",
           "packageDependencies": [
             ["setprototypeof", "npm:1.1.1"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:1.2.0", {
+          "packageLocation": "./.yarn/cache/setprototypeof-npm-1.2.0-0fedbdcd3a-7269143985.zip/node_modules/setprototypeof/",
+          "packageDependencies": [
+            ["setprototypeof", "npm:1.2.0"]
           ],
           "linkType": "HARD",
         }]
@@ -61543,7 +61590,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["body-scroll-lock", "npm:3.1.5"],
             ["browser-lang", "npm:0.1.0"],
             ["chromatic", "npm:5.6.3"],
-            ["core-js", "npm:3.9.0"],
+            ["core-js", "npm:3.8.3"],
             ["cross-env", "npm:7.0.3"],
             ["dayjs", "npm:1.10.4"],
             ["dompurify", "npm:2.2.6"],
