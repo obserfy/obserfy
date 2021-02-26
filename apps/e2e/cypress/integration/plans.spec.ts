@@ -59,7 +59,7 @@ describe("Test lesson plan features", function () {
     cy.contains(lessonPlan1.title).should("be.visible")
     cy.contains(lessonPlan1.description).should("be.visible")
     cy.contains(lessonPlan1.link).should("be.visible")
-    cy.contains(this.student.name).should("be.visible")
+    cy.contains(this.student.name.split(" ")[0]).should("be.visible")
 
     cy.get('[aria-label="edit-title"]').click()
     cy.contains("label", "Title").find("input").clear().type(lessonPlan2.title)
