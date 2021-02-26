@@ -9,8 +9,8 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       // refetchOnMount and refetchOnWindowFocus causes prefresh to fail and reload every once in a while.
-      refetchOnMount: process.env.NODE_ENV !== "development",
-      refetchOnWindowFocus: process.env.NODE_ENV !== "development",
+      // refetchOnMount: process.env.NODE_ENV !== "development",
+      // refetchOnWindowFocus: process.env.NODE_ENV !== "development",
     },
   },
 })
