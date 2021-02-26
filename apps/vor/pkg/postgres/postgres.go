@@ -451,6 +451,12 @@ func (u *PartialUpdateModel) AddStringColumn(name string, value *string) {
 	}
 }
 
+func (u *PartialUpdateModel) AddIntColumn(name string, value *int) {
+	if value != nil {
+		(*u)[name] = value
+	}
+}
+
 func (u *PartialUpdateModel) AddBooleanColumn(name string, value *bool) {
 	if value != nil {
 		(*u)[name] = value
