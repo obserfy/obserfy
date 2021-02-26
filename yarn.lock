@@ -7639,10 +7639,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@swc/core-android-arm64@npm:^1.2.49":
+  version: 1.2.49
+  resolution: "@swc/core-android-arm64@npm:1.2.49"
+  checksum: 23577a52621cda721579d59b2230f4b10fb91cd661d827caa245e3bc2a4f289ee82488a6a99d9548743bde16d318107b952860cee0cb64549efd97bdef8662e1
+  languageName: node
+  linkType: hard
+
 "@swc/core-darwin-arm64@npm:^1.2.47":
   version: 1.2.47
   resolution: "@swc/core-darwin-arm64@npm:1.2.47"
   checksum: 98c0e1006b35509a1b16885692a46aeaba20ce2de48fa8a35a1fafe93b38d557e2e4c0aac4b79b737e4df67a996ba98217ec828333afdebed637d18cf5fffbd1
+  languageName: node
+  linkType: hard
+
+"@swc/core-darwin-arm64@npm:^1.2.49":
+  version: 1.2.49
+  resolution: "@swc/core-darwin-arm64@npm:1.2.49"
+  checksum: f73ec61050e7f70c55fd2a9e9e0c4e66e74cfb9228328147ec3e9bb0d895f2410204689d8f94faec4d2619573aa92a6231d6eed97daa6a0803285375e49d4764
   languageName: node
   linkType: hard
 
@@ -7653,10 +7667,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@swc/core-darwin-x64@npm:^1.2.49":
+  version: 1.2.49
+  resolution: "@swc/core-darwin-x64@npm:1.2.49"
+  checksum: 566138b5333dbbbe88fb807e03027dc44615b76f0f3e66081bb010f6fb819e143267a069062642ee7778213736d195e737711d1e467f6ab26fcb1fb2a64601ba
+  languageName: node
+  linkType: hard
+
 "@swc/core-linux-arm-gnueabihf@npm:^1.2.47":
   version: 1.2.47
   resolution: "@swc/core-linux-arm-gnueabihf@npm:1.2.47"
   checksum: 1c6c1ce0cda69fedf7f9741e1c995d4b6fa6105046b2fcc7cc83557832b669b6e6ebeb94411fe1c0af708098b314888066c4ce36817babfbdd825f974a835099
+  languageName: node
+  linkType: hard
+
+"@swc/core-linux-arm-gnueabihf@npm:^1.2.49":
+  version: 1.2.49
+  resolution: "@swc/core-linux-arm-gnueabihf@npm:1.2.49"
+  checksum: 1e92dbcc28f18429dfbc48cd8a3b4b1dafc584d9dcce1dcfc24e7cc88f1cb03aea0c381c2b3d5220f60cf8ebbbe0c15a41e0c46282d29bac6e8ee26708096d74
   languageName: node
   linkType: hard
 
@@ -7667,10 +7695,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@swc/core-linux-arm64-gnu@npm:^1.2.49":
+  version: 1.2.49
+  resolution: "@swc/core-linux-arm64-gnu@npm:1.2.49"
+  checksum: 9001bbf29fbb7bb69958df5ff36d685270f7f2858d1bfd419196a0929d8f3b17ebb0996d0dae8de2020435c9f95d9f701671c156cda5830a9b9f02a21588aa8c
+  languageName: node
+  linkType: hard
+
 "@swc/core-linux-x64-gnu@npm:^1.2.47":
   version: 1.2.47
   resolution: "@swc/core-linux-x64-gnu@npm:1.2.47"
   checksum: 7ffdacf5517c4603cbe467912a371a3d3606efed386e924b07b7ac9a6fed876c6d8847a736d7d11d9080dab12c968c7b8a4449a40f4c4b35fff20f257c35d7af
+  languageName: node
+  linkType: hard
+
+"@swc/core-linux-x64-gnu@npm:^1.2.49":
+  version: 1.2.49
+  resolution: "@swc/core-linux-x64-gnu@npm:1.2.49"
+  checksum: 6ec5db1a9ffe43b562a6daba7f1175168d936f687ba6ba0f2cd3df6ca5f1687e48e5f18b0c29fec60eac157ae49ae870f967308961094004c1703340b9bbb286
   languageName: node
   linkType: hard
 
@@ -7681,10 +7723,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@swc/core-linux-x64-musl@npm:^1.2.49":
+  version: 1.2.49
+  resolution: "@swc/core-linux-x64-musl@npm:1.2.49"
+  checksum: 74099ae29ae6a2ffb0ad001c0f91478aa51d156392b71d7c77f9a876ae2ed6c297f57b94f8d65d3cb49f031a3d1462c5ae8555b8e5b030dc8c33cd22d5dade33
+  languageName: node
+  linkType: hard
+
 "@swc/core-win32-ia32-msvc@npm:^1.2.47":
   version: 1.2.47
   resolution: "@swc/core-win32-ia32-msvc@npm:1.2.47"
   checksum: 101a89df9a7dc131ee41cb5e2f95985b52b7e70f8f220bff21cc8f04acc6bfed17d5e886043214c6f1c9c0f27c7a490cdd77301d8880fc9bfa0c02ad0513300e
+  languageName: node
+  linkType: hard
+
+"@swc/core-win32-ia32-msvc@npm:^1.2.49":
+  version: 1.2.49
+  resolution: "@swc/core-win32-ia32-msvc@npm:1.2.49"
+  checksum: b530ba74887f415c4108b02f708cf440e3f7e2ed61cebafd242063f8998fa196625d55c5a8b58d1776938aa700c48ecac6936b958f071081d89f901a5a675d0c
   languageName: node
   linkType: hard
 
@@ -7695,7 +7751,51 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@swc/core@npm:1.2.47, @swc/core@npm:^1.1.48":
+"@swc/core-win32-x64-msvc@npm:^1.2.49":
+  version: 1.2.49
+  resolution: "@swc/core-win32-x64-msvc@npm:1.2.49"
+  checksum: 0bc162eb23b98d02a7a88ab8f1b2912d50a1094f0ad2ef25189b05c75b3c5a3468d6e9a37a25b214f6c8e664e165f37ae5760ae8a5ade228fd1e72b8404c3437
+  languageName: node
+  linkType: hard
+
+"@swc/core@npm:1.2.49":
+  version: 1.2.49
+  resolution: "@swc/core@npm:1.2.49"
+  dependencies:
+    "@node-rs/helper": ^1.0.0
+    "@swc/core-android-arm64": ^1.2.49
+    "@swc/core-darwin-arm64": ^1.2.49
+    "@swc/core-darwin-x64": ^1.2.49
+    "@swc/core-linux-arm-gnueabihf": ^1.2.49
+    "@swc/core-linux-arm64-gnu": ^1.2.49
+    "@swc/core-linux-x64-gnu": ^1.2.49
+    "@swc/core-linux-x64-musl": ^1.2.49
+    "@swc/core-win32-ia32-msvc": ^1.2.49
+    "@swc/core-win32-x64-msvc": ^1.2.49
+  dependenciesMeta:
+    "@swc/core-android-arm64":
+      optional: true
+    "@swc/core-darwin-arm64":
+      optional: true
+    "@swc/core-darwin-x64":
+      optional: true
+    "@swc/core-linux-arm-gnueabihf":
+      optional: true
+    "@swc/core-linux-arm64-gnu":
+      optional: true
+    "@swc/core-linux-x64-gnu":
+      optional: true
+    "@swc/core-linux-x64-musl":
+      optional: true
+    "@swc/core-win32-ia32-msvc":
+      optional: true
+    "@swc/core-win32-x64-msvc":
+      optional: true
+  checksum: 74f7c3ea846c1ec9ba9a9e1388f880b82bfc9997bf8ca60df13852684bcd6889b1d5c8b8aa20f7cf6a0b8e89de1bcf61a7f0d14e05283f277c03aa8cd8d28ff5
+  languageName: node
+  linkType: hard
+
+"@swc/core@npm:^1.1.48":
   version: 1.2.47
   resolution: "@swc/core@npm:1.2.47"
   dependencies:
@@ -15934,7 +16034,7 @@ __metadata:
     "@cypress/code-coverage": 3.9.2
     "@cypress/webpack-preprocessor": 5.6.0
     "@hapi/iron": 6.0.0
-    "@swc/core": 1.2.47
+    "@swc/core": 1.2.49
     "@types/auth0-js": 9.14.2
     "@types/faker": 5.1.7
     "@types/node": 14.14.31
