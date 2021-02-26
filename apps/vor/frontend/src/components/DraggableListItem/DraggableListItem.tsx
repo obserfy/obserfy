@@ -19,6 +19,7 @@ interface Props {
   containerSx?: ThemeUIStyleObject
   moveItem: (item: OrderedItem, newOrder: number) => void
   onDrop?: () => void
+  disableDrag?: boolean
 }
 
 const DraggableListItem: FC<Props> = ({
@@ -28,6 +29,7 @@ const DraggableListItem: FC<Props> = ({
   containerSx,
   item,
   onDrop,
+  disableDrag,
 }) => {
   const container = useRef<HTMLDivElement>(null)
   const setTranslateY = useTransientState(0, (state) => {
@@ -67,7 +69,7 @@ const DraggableListItem: FC<Props> = ({
     e: MouseEvent | TouchEvent,
     mouseYPosition: number
   ) => {
-    if (!dragHandle.current) return
+    if (!dragHandle.current || disableDrag) return
     e.preventDefault()
     e.stopPropagation()
     disableBodyScroll(dragHandle.current, {
