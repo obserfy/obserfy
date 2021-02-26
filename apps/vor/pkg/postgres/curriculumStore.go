@@ -459,6 +459,7 @@ func (s CurriculumStore) GetAreaSubjects(areaId string) ([]domain.Subject, error
 
 	if err := s.Model(&subjects).
 		Where("area_id=?", areaId).
+		Order("order").
 		Select(); err != nil {
 		return nil, err
 	}
@@ -479,6 +480,7 @@ func (s CurriculumStore) GetSubjectMaterials(subjectId string) ([]domain.Materia
 	var materials []Material
 	if err := s.Model(&materials).
 		Where("subject_id=?", subjectId).
+		Order("order").
 		Select(); err != nil {
 		return nil, err
 	}

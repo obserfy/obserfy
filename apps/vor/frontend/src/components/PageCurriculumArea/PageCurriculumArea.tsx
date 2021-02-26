@@ -3,6 +3,7 @@ import { t, Trans } from "@lingui/macro"
 import { FC, Fragment, useEffect, useState } from "react"
 import { jsx, Box, Button, Flex, ThemeUIStyleObject } from "theme-ui"
 import { borderBottom, borderRight } from "../../border"
+import usePatchSubject from "../../hooks/api/curriculum/usePatchSubject"
 import usePostNewSubject from "../../hooks/api/curriculum/usePostNewSubject"
 import { useGetArea } from "../../hooks/api/useGetArea"
 import { Subject, useGetAreaSubjects } from "../../hooks/api/useGetAreaSubjects"
@@ -188,7 +189,16 @@ const SubjectListItem: FC<{
   currentSubjectId: string
   moveItem: (currItem: Subject, newOrder: number) => void
 }> = ({ areaId, subject, moveItem, currentSubjectId }) => {
+  const patchSubject = usePatchSubject(subject.id, areaId)
   const selected = currentSubjectId === subject.id
+
+  const handleReorder = async () => {
+    try {
+      await patchSubject.mutateAsync({ order: subject.order })
+    } catch (e) {
+      Sentry.captureException(e)
+    }
+  }
 
   return (
     <Link
@@ -198,6 +208,7 @@ const SubjectListItem: FC<{
       <DraggableListItem
         item={subject}
         moveItem={moveItem}
+        onDrop={handleReorder}
         height={54}
         containerSx={{
           ...borderBottom,
