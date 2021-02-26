@@ -1865,7 +1865,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@types/pino",
-        "npm:6.3.5"
+        "npm:6.3.6"
       ],
       [
         "@types/pino-std-serializers",
@@ -27168,10 +27168,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@types/pino", [
-        ["npm:6.3.5", {
-          "packageLocation": "./.yarn/cache/@types-pino-npm-6.3.5-250e05a8c4-0f61079e5a.zip/node_modules/@types/pino/",
+        ["npm:6.3.6", {
+          "packageLocation": "./.yarn/cache/@types-pino-npm-6.3.6-4c4af2ecc8-ad25dc65e2.zip/node_modules/@types/pino/",
           "packageDependencies": [
-            ["@types/pino", "npm:6.3.5"],
+            ["@types/pino", "npm:6.3.6"],
             ["@types/node", "npm:14.0.14"],
             ["@types/pino-std-serializers", "npm:2.4.1"],
             ["@types/sonic-boom", "npm:0.7.0"]
@@ -39609,7 +39609,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/nanoid", "npm:2.1.0"],
             ["@types/node", "npm:14.14.28"],
             ["@types/pg", "npm:7.14.10"],
-            ["@types/pino", "npm:6.3.5"],
+            ["@types/pino", "npm:6.3.6"],
             ["@types/react", "npm:17.0.2"],
             ["@types/react-query", "npm:1.1.2"],
             ["@types/uuid", "npm:8.3.0"],
