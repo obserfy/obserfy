@@ -59,7 +59,7 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
   const editSubject = useVisibilityState()
 
   return (
-    <Box sx={{ width: "100%", pb: 5, ...sx }}>
+    <Box sx={{ position: "relative", width: "100%", pb: 5, ...sx }}>
       <TranslucentBar boxSx={{ ...borderBottom }}>
         <TopBar
           containerSx={{ display: ["flex", "flex", "none"] }}
@@ -230,9 +230,10 @@ const DraggableMaterialItem: FC<{
       try {
         onLoadingStateChange(true)
         await patchMaterial.mutateAsync({ order: material.order })
-        onLoadingStateChange(false)
       } catch (e) {
         Sentry.captureException(e)
+      } finally {
+        onLoadingStateChange(false)
       }
     }
 
