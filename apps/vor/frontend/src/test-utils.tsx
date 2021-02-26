@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { FC, ReactElement } from "react"
 import { QueryClient, QueryClientProvider } from "react-query"
-import { ThemeProvider, Box } from "theme-ui"
+import { ThemeProvider, Box, Theme } from "theme-ui"
 import { render, RenderOptions, RenderResult } from "@testing-library/react"
 import {
   createHistory,
@@ -11,7 +11,7 @@ import {
 import { I18nProvider } from "@lingui/react"
 import { setupI18n } from "@lingui/core"
 import { en } from "make-plural/plurals"
-import Theme from "./gatsby-plugin-theme-ui"
+import theme from "./gatsby-plugin-theme-ui"
 import enCatalog from "../i18n/lingui/en/messages.js"
 
 const i18n = setupI18n()
@@ -30,7 +30,7 @@ const AllProviders: FC = ({ children }) => {
     <I18nProvider i18n={i18n}>
       <QueryClientProvider client={queryClient}>
         <LocationProvider history={history}>
-          <ThemeProvider theme={Theme}>
+          <ThemeProvider theme={theme as Theme}>
             <Box sx={{ fontSize: [16, 20] }}>{children}</Box>
           </ThemeProvider>
         </LocationProvider>

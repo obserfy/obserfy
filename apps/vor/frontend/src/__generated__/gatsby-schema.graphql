@@ -1865,6 +1865,8 @@ enum SiteFieldsEnum {
   port
   host
   flags___PRESERVE_WEBPACK_CACHE
+  flags___DEV_SSR
+  flags___FAST_DEV
   polyfill
   pathPrefix
   id
@@ -1971,10 +1973,14 @@ input SiteFilterInput {
 
 type SiteFlags {
   PRESERVE_WEBPACK_CACHE: Boolean
+  DEV_SSR: Boolean
+  FAST_DEV: Boolean
 }
 
 input SiteFlagsFilterInput {
   PRESERVE_WEBPACK_CACHE: BooleanQueryOperatorInput
+  DEV_SSR: BooleanQueryOperatorInput
+  FAST_DEV: BooleanQueryOperatorInput
 }
 
 type SiteGroupConnection {
