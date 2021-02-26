@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.16.0](https://github.com/obserfy/obserfy/compare/v1.15.13...v1.16.0) (2021-02-26)
+
+
+### Features
+
+* add description field to curriculum. ([e9f6c16](https://github.com/obserfy/obserfy/commit/e9f6c16c73b28af8ad1d588331890d1205a1eb12))
+
+
+### Bug Fixes
+
+* unstable drag and drop reordering result. ([a568b3f](https://github.com/obserfy/obserfy/commit/a568b3f5b522f0d6a7629d0e0beb56ea416a026d))
+
 ### [1.15.13](https://github.com/obserfy/obserfy/compare/v1.15.12...v1.15.13) (2021-02-03)
 
 
