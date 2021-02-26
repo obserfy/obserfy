@@ -5734,13 +5734,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mux/upchunk@npm:2.2.0":
-  version: 2.2.0
-  resolution: "@mux/upchunk@npm:2.2.0"
+"@mux/upchunk@npm:2.2.2":
+  version: 2.2.2
+  resolution: "@mux/upchunk@npm:2.2.2"
   dependencies:
     event-target-shim: ^4.0.3
     xhr: ^2.6.0
-  checksum: 2e407ea6100eea7817ef22791ce01b8e705be7852ec48d1cb84cd6267ba8cd97ad131a878a271ff14d744db324955184220323b6a676bea457bb46d3ad3813df
+  checksum: b5b5a47b4be77c21e017c6752faebebae21a22a9333dbbe7a48b1f36319e4f5064b37d016ae5fd2941d608c54ffb690f24dd15c7217748d8bfc172a081c9932a
   languageName: node
   linkType: hard
 
@@ -6247,18 +6247,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/browser@npm:6.1.0":
-  version: 6.1.0
-  resolution: "@sentry/browser@npm:6.1.0"
-  dependencies:
-    "@sentry/core": 6.1.0
-    "@sentry/types": 6.1.0
-    "@sentry/utils": 6.1.0
-    tslib: ^1.9.3
-  checksum: eee87e75c8c464ad870b6401273c1798d689e272c32b03b37d53edcb29164db65bba2d13ae382317d3658f330eaa5c138e7a0f1beede4564a6c86f7268db529c
-  languageName: node
-  linkType: hard
-
 "@sentry/browser@npm:6.2.0":
   version: 6.2.0
   resolution: "@sentry/browser@npm:6.2.0"
@@ -6286,19 +6274,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/core@npm:6.1.0":
-  version: 6.1.0
-  resolution: "@sentry/core@npm:6.1.0"
-  dependencies:
-    "@sentry/hub": 6.1.0
-    "@sentry/minimal": 6.1.0
-    "@sentry/types": 6.1.0
-    "@sentry/utils": 6.1.0
-    tslib: ^1.9.3
-  checksum: 613719b525ee8d37f132040ac789d081794570aed35bca70ae827585ddf38e94d5a0bb0100240045b3825e4e66771305812d7978393cfa24aaeafb3868fe843e
-  languageName: node
-  linkType: hard
-
 "@sentry/core@npm:6.2.0":
   version: 6.2.0
   resolution: "@sentry/core@npm:6.2.0"
@@ -6312,26 +6287,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/gatsby@npm:6.1.0":
-  version: 6.1.0
-  resolution: "@sentry/gatsby@npm:6.1.0"
+"@sentry/gatsby@npm:6.2.0":
+  version: 6.2.0
+  resolution: "@sentry/gatsby@npm:6.2.0"
   dependencies:
-    "@sentry/react": 6.1.0
-    "@sentry/tracing": 6.1.0
+    "@sentry/react": 6.2.0
+    "@sentry/tracing": 6.2.0
   peerDependencies:
     gatsby: "*"
-  checksum: d9553822bbad59791b0cbaecd4c7e26712e943847606567236885bd593dda7777e51f01c483c5ce3b841b931cfa6823dddb937086fa1101492ad44bb7f2257d9
-  languageName: node
-  linkType: hard
-
-"@sentry/hub@npm:6.1.0":
-  version: 6.1.0
-  resolution: "@sentry/hub@npm:6.1.0"
-  dependencies:
-    "@sentry/types": 6.1.0
-    "@sentry/utils": 6.1.0
-    tslib: ^1.9.3
-  checksum: e13653ce1142c1f0525a0c809b4df9dd8e5778a577ce41543d9a05c208dafff9c17e8c352b5a7dfdf1f9a41632ccedb0435f0d878ffa951162464f381224c788
+  checksum: fbd6ea1f901d4eb23fa2ab0119dc22b2a573a9e08577c207ef5ee4735b69e154b426b6e0f36d35f5da300d99d3cf974a301e8b7f8890316a4623eb1b9ddcaa77
   languageName: node
   linkType: hard
 
@@ -6355,17 +6319,6 @@ __metadata:
     localforage: ^1.8.1
     tslib: ^1.9.3
   checksum: 40c59a5729f6920281cfd4690edb718cc41ae64184993adb6eaf866fa6f62aac54598ddac93c9a8829f7a0b5ac57424bb54a9d846267996069d7f8252d7bdae4
-  languageName: node
-  linkType: hard
-
-"@sentry/minimal@npm:6.1.0":
-  version: 6.1.0
-  resolution: "@sentry/minimal@npm:6.1.0"
-  dependencies:
-    "@sentry/hub": 6.1.0
-    "@sentry/types": 6.1.0
-    tslib: ^1.9.3
-  checksum: 7ed66526e60ebad7ce9f871d7b2716e8a627bdf25458230a2d84e3e623394ade09026f7fb4c04e40a49eb22b4fc6b1f4a899e1287d4ffc2f6d891944b49be464
   languageName: node
   linkType: hard
 
@@ -6397,33 +6350,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/react@npm:6.1.0":
-  version: 6.1.0
-  resolution: "@sentry/react@npm:6.1.0"
+"@sentry/react@npm:6.2.0":
+  version: 6.2.0
+  resolution: "@sentry/react@npm:6.2.0"
   dependencies:
-    "@sentry/browser": 6.1.0
-    "@sentry/minimal": 6.1.0
-    "@sentry/types": 6.1.0
-    "@sentry/utils": 6.1.0
+    "@sentry/browser": 6.2.0
+    "@sentry/minimal": 6.2.0
+    "@sentry/types": 6.2.0
+    "@sentry/utils": 6.2.0
     hoist-non-react-statics: ^3.3.2
     tslib: ^1.9.3
   peerDependencies:
     react: 15.x || 16.x || 17.x
-    react-dom: 15.x || 16.x || 17.x
-  checksum: fbd8dc716bc09f09897cbe5b19044f695b9694c71ffd579e811e26ab79be9597e6c280d6bc5148a8770d7e7e834114b2d8bf1d61f1081a44da0b3e625e4fbd15
-  languageName: node
-  linkType: hard
-
-"@sentry/tracing@npm:6.1.0":
-  version: 6.1.0
-  resolution: "@sentry/tracing@npm:6.1.0"
-  dependencies:
-    "@sentry/hub": 6.1.0
-    "@sentry/minimal": 6.1.0
-    "@sentry/types": 6.1.0
-    "@sentry/utils": 6.1.0
-    tslib: ^1.9.3
-  checksum: be59f16e50f051d512c16764a259cd1be79d0bcd1a7974e07b9565fa049051314ac12aee4ab31295778061be9f485f86296a881cf890ea15e4edf6e17b24b608
+  checksum: 79a3b1668695286175c6c11a689f16bffd69ebfe7273dc69519e4092e64c4849d73573a8c265225e72355b04c32c4c9acb336e48af02ce697115d6099f3aba7d
   languageName: node
   linkType: hard
 
@@ -6440,27 +6379,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/types@npm:6.1.0":
-  version: 6.1.0
-  resolution: "@sentry/types@npm:6.1.0"
-  checksum: 94ca9ac94f6cec5db23c4526daad0aa29ef166f00de0f7ccfbcf5005e882c95c4e1e75f8ecb06c2fd4dfc8912f9f56ce2c7c2ea0fed8ff06b8ac5f4bc5db6d0b
-  languageName: node
-  linkType: hard
-
 "@sentry/types@npm:6.2.0":
   version: 6.2.0
   resolution: "@sentry/types@npm:6.2.0"
   checksum: 004dd83757e82c37f7d493eefcb410e46233f2eeb1c4ac9fabb4de91817fbb6953e7839ba11ec0b6f4eb7ee95a3709277261a0b5853c01695dcb08a92ccbcc18
-  languageName: node
-  linkType: hard
-
-"@sentry/utils@npm:6.1.0":
-  version: 6.1.0
-  resolution: "@sentry/utils@npm:6.1.0"
-  dependencies:
-    "@sentry/types": 6.1.0
-    tslib: ^1.9.3
-  checksum: 12f96fe22671342f2cb516cc8c4f245c68c1d78d73a9249661a724e3211d7a64e905247224cc9d84ecfec666143aef0badeda9276b8dcb6d5a9231ae6c6fd121
   languageName: node
   linkType: hard
 
@@ -14061,10 +13983,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:3.8.3":
-  version: 3.8.3
-  resolution: "core-js@npm:3.8.3"
-  checksum: 3c67d1732d505f6afaf836f18038dae8267e8c0e8e84e1c679bac67589e66d0807c24750c7d8b1118cc386c3d66a1d96f20d9cb0f6a879b19cfc04e9f073fe78
+"core-js@npm:3.9.0":
+  version: 3.9.0
+  resolution: "core-js@npm:3.9.0"
+  checksum: c1711d5f60db480a561bba6a8ce02a0e8f4400c14b3c0eb728133be2ae30d74eb0bd20cd8154c3b0910ecc01bd07efa1efb04596f2c9432109dcbef268ef332d
   languageName: node
   linkType: hard
 
@@ -18652,7 +18574,7 @@ __metadata:
     gatsby-plugin-typegen: 2.2.4
     gatsby-plugin-webpack-bundle-analyser-v2: 1.1.20
     gatsby-source-filesystem: 2.11.0
-    gatsby-theme-i18n: 1.0.4
+    gatsby-theme-i18n: 1.0.5
     gatsby-theme-i18n-lingui: 1.0.4
     gatsby-transformer-sharp: 2.12.0
     make-plural: 6.2.2
@@ -19746,7 +19668,7 @@ fsevents@~2.3.1:
   dependencies:
     "@lingui/core": 3.5.1
     "@lingui/react": 3.5.1
-    core-js: 3.8.3
+    core-js: 3.9.0
     react-refresh: 0.9.0
   peerDependencies:
     "@lingui/core": ^3.0.0-18
@@ -19759,11 +19681,25 @@ fsevents@~2.3.1:
   languageName: unknown
   linkType: soft
 
-"gatsby-theme-i18n@1.0.4, gatsby-theme-i18n@workspace:packages/gatsby-theme-i18n":
+"gatsby-theme-i18n@npm:1.0.5":
+  version: 1.0.5
+  resolution: "gatsby-theme-i18n@npm:1.0.5"
+  dependencies:
+    gatsby-plugin-react-helmet: ^3.3.10
+    react-helmet: ^6.1.0
+  peerDependencies:
+    gatsby: ">=2.21.26"
+    react: ">=16.13.1"
+    react-dom: ">=16.13.1"
+  checksum: 53ff4db1b3dcd175c24df9f6267ee8386c6bdafa037c6ae812534149a33672cdcd0dcbb37b0dfba234d58680ebf5e7b4826c408e6da2827e6b28a96b4f0ad9b2
+  languageName: node
+  linkType: hard
+
+"gatsby-theme-i18n@workspace:packages/gatsby-theme-i18n":
   version: 0.0.0-use.local
   resolution: "gatsby-theme-i18n@workspace:packages/gatsby-theme-i18n"
   dependencies:
-    core-js: 3.8.3
+    core-js: 3.9.0
     gatsby-plugin-react-helmet: ^3.3.10
     mkdirp: ^1.0.4
     react-helmet: ^6.1.0
@@ -37062,10 +36998,10 @@ typescript@^4.0.0:
     "@lingui/core": 3.5.1
     "@lingui/macro": 3.5.1
     "@lingui/react": 3.5.1
-    "@mux/upchunk": 2.2.0
+    "@mux/upchunk": 2.2.2
     "@reach/router": 1.3.4
-    "@sentry/gatsby": 6.1.0
-    "@sentry/tracing": 6.1.0
+    "@sentry/gatsby": 6.2.0
+    "@sentry/tracing": 6.2.0
     "@storybook/addon-actions": 6.1.11
     "@storybook/addon-essentials": 6.1.11
     "@storybook/addons": 6.1.11
@@ -37100,7 +37036,7 @@ typescript@^4.0.0:
     body-scroll-lock: 3.1.5
     browser-lang: 0.1.0
     chromatic: 5.6.3
-    core-js: 3.8.3
+    core-js: 3.9.0
     cross-env: 7.0.3
     dayjs: 1.10.4
     dompurify: 2.2.6
@@ -37138,7 +37074,7 @@ typescript@^4.0.0:
     gatsby-plugin-typegen: 2.2.4
     gatsby-plugin-webpack-bundle-analyser-v2: 1.1.20
     gatsby-source-filesystem: 2.11.0
-    gatsby-theme-i18n: 1.0.4
+    gatsby-theme-i18n: 1.0.5
     gatsby-theme-i18n-lingui: 1.0.4
     gatsby-transformer-sharp: 2.12.0
     hls.js: beta
