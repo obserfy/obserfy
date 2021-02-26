@@ -25,6 +25,9 @@ declare namespace Cypress {
     createGuardian: CustomCommand<typeof createGuardian>
     createObservation: CustomCommand<typeof createObservation>
     createLessonPlan: CustomCommand<typeof createLessonPlan>
+
+    login(): Chainable<Element>
+    logout(): Chainable<Element>
   }
 }
 
@@ -71,31 +74,7 @@ const registerVor = () => {
 
 // gaia **************************
 const gaiaLogin = () => {
-  cy.setCookie("a0:state", "some-random-state", {
-    domain: Cypress.env("GAIA_DOMAIN"),
-  })
-
-  cy.wrap(null)
-    .then(() => loginTestUser())
-    .then((response) => {
-      const { accessToken, expiresIn, idToken, scope } = response
-      return getUserInfo(accessToken).then((user: any) => {
-        const persistedSession = {
-          user,
-          idToken,
-          accessToken,
-          accessTokenScope: scope,
-          accessTokenExpiresAt: Date.now() + expiresIn,
-          createdAt: Date.now(),
-        }
-
-        return seal(persistedSession).then((encryptedSession: any) => {
-          cy.setCookie("a0:session", encryptedSession, {
-            domain: Cypress.env("GAIA_DOMAIN"),
-          })
-        })
-      })
-    })
+  return cy.login()
 }
 
 // Data Input Commands ===============================================================

@@ -10,8 +10,9 @@ describe("test gaia authentication", function () {
     cy.wait(500)
     cy.url().should("include", "auth0.com")
 
-    cy.gaiaLogin()
-    cy.visitGaia("/")
-    cy.contains("We can't seem to find your data yet").should("be.visible")
+    cy.gaiaLogin().then(() => {
+      cy.visitGaia("/")
+      cy.contains("We can't seem to find your data yet").should("be.visible")
+    })
   })
 })

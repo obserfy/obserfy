@@ -3712,6 +3712,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:0.0.6"
       ],
       [
+        "cypress-nextjs-auth0",
+        "npm:1.0.1"
+      ],
+      [
         "d",
         "npm:1.0.1"
       ],
@@ -34579,6 +34583,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["cypress-nextjs-auth0", [
+        ["npm:1.0.1", {
+          "packageLocation": "./.yarn/cache/cypress-nextjs-auth0-npm-1.0.1-aa6c8a7603-333d383f01.zip/node_modules/cypress-nextjs-auth0/",
+          "packageDependencies": [
+            ["cypress-nextjs-auth0", "npm:1.0.1"],
+            ["@hapi/iron", "npm:6.0.0"],
+            ["auth0-js", "npm:9.14.3"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["d", [
         ["npm:1.0.1", {
           "packageLocation": "./.yarn/cache/d-npm-1.0.1-64afbbc689-cf9b770965.zip/node_modules/d/",
@@ -35924,6 +35939,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["cypress", "npm:6.5.0"],
             ["cypress-file-upload", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:5.0.2"],
             ["cypress-intellij-reporter", "npm:0.0.6"],
+            ["cypress-nextjs-auth0", "npm:1.0.1"],
             ["dayjs", "npm:1.10.4"],
             ["dotenv", "npm:8.2.0"],
             ["eslint", "npm:7.16.0"],

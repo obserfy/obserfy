@@ -4670,7 +4670,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hapi/iron@npm:6.0.0":
+"@hapi/iron@npm:6.0.0, @hapi/iron@npm:^6.0.0":
   version: 6.0.0
   resolution: "@hapi/iron@npm:6.0.0"
   dependencies:
@@ -10566,7 +10566,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"auth0-js@npm:9.14.3":
+"auth0-js@npm:9.14.3, auth0-js@npm:^9.14.3":
   version: 9.14.3
   resolution: "auth0-js@npm:9.14.3"
   dependencies:
@@ -14684,6 +14684,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cypress-nextjs-auth0@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "cypress-nextjs-auth0@npm:1.0.1"
+  dependencies:
+    "@hapi/iron": ^6.0.0
+    auth0-js: ^9.14.3
+  checksum: 333d383f01cf534e3952a348ebb221bf657d7fa805e2c9191e2a46b5b1d6f41f73b70f6de930a90ecdb39aa61d6925cdc0ba7e4d414bd9ffc8c407e9bcea7857
+  languageName: node
+  linkType: hard
+
 "cypress@npm:6.5.0":
   version: 6.5.0
   resolution: "cypress@npm:6.5.0"
@@ -15890,6 +15900,7 @@ __metadata:
     cypress: 6.5.0
     cypress-file-upload: 5.0.2
     cypress-intellij-reporter: 0.0.6
+    cypress-nextjs-auth0: ^1.0.1
     dayjs: 1.10.4
     dotenv: 8.2.0
     eslint: 7.16.0

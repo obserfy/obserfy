@@ -17,6 +17,7 @@
 // Import commands.js using ES2015 syntax:
 require("./commands")
 require("cypress-file-upload")
+require("cypress-nextjs-auth0")
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
