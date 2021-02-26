@@ -4,6 +4,7 @@
   "dependencyDashboard": true,
   "stabilityDays": 3,
   "prCreation": "not-pending",
+  "prConcurrentLimit": 5,
   "packageRules": [
     {
       "packagePatterns": ["eslint"],
