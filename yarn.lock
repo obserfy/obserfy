@@ -18587,7 +18587,7 @@ __metadata:
     react-dom: 17.0.1
     react-helmet: 6.1.0
     socket.io-client: 3.1.1
-    stylelint: 13.10.0
+    stylelint: 13.11.0
     stylelint-config-prettier: 8.0.2
     stylelint-config-standard: 20.0.0
     tailwindcss: 2.0.3
@@ -18911,7 +18911,7 @@ fsevents@~2.3.1:
     formidable-serverless: 1.1.1
     fp-ts: 2.9.5
     hls.js: beta
-    io-ts: 2.2.14
+    io-ts: 2.2.15
     io-ts-types: 0.5.14
     jest: 26.6.3
     minio: 7.0.18
@@ -18937,7 +18937,7 @@ fsevents@~2.3.1:
     react-query: 3.9.8
     react-ssr-prepass: "npm:preact-ssr-prepass@1.1.3"
     snarkdown: 2.0.0
-    stylelint: 13.10.0
+    stylelint: 13.11.0
     stylelint-config-prettier: 8.0.2
     stylelint-config-standard: 20.0.0
     tailwindcss: 2.0.3
@@ -19663,7 +19663,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"gatsby-theme-i18n-lingui@1.0.4, gatsby-theme-i18n-lingui@^1.0.4, gatsby-theme-i18n-lingui@workspace:packages/gatsby-theme-i18n-lingui":
+"gatsby-theme-i18n-lingui@1.0.4, gatsby-theme-i18n-lingui@workspace:packages/gatsby-theme-i18n-lingui":
   version: 0.0.0-use.local
   resolution: "gatsby-theme-i18n-lingui@workspace:packages/gatsby-theme-i18n-lingui"
   dependencies:
@@ -21965,12 +21965,12 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"io-ts@npm:2.2.14":
-  version: 2.2.14
-  resolution: "io-ts@npm:2.2.14"
+"io-ts@npm:2.2.15":
+  version: 2.2.15
+  resolution: "io-ts@npm:2.2.15"
   peerDependencies:
     fp-ts: ^2.0.0
-  checksum: 9a874b38b11d88654bf374e7f34fdc47243f681b2ac1c0c7c21deb364afb8dba001f3b2eb2ee1dd596477137724614a6a55670b0200f0a7beeed15c774f728de
+  checksum: 6fd400fb60103e9d6a42e09b47ca61f384d1efff96dc8afc79a8e65375d7bebd4cf2b1e505821c481e7e22cff8e133ecaa37cae682a40a83222575b1d1c89fc9
   languageName: node
   linkType: hard
 
@@ -34541,9 +34541,9 @@ resolve@^1.19.0:
   languageName: node
   linkType: hard
 
-"stylelint@npm:13.10.0":
-  version: 13.10.0
-  resolution: "stylelint@npm:13.10.0"
+"stylelint@npm:13.11.0":
+  version: 13.11.0
+  resolution: "stylelint@npm:13.11.0"
   dependencies:
     "@stylelint/postcss-css-in-js": ^0.37.2
     "@stylelint/postcss-markdown": ^0.36.2
@@ -34595,7 +34595,7 @@ resolve@^1.19.0:
     write-file-atomic: ^3.0.3
   bin:
     stylelint: bin/stylelint.js
-  checksum: 311de30f0f0b0161abfe9ef3298c7601c53943a5cba198f401bc575986f99c336d15dfc81c2f34bc68f275dd01389d4763c5f887760346d4c385e3e478def287
+  checksum: ea646e0cc8940b14b984fa0b6286a0653d4af46af394a457dbe4afe376ceeda44a4f869c2addff1b73758d58d5547922a63d63ae23d55edd130ed9e3b7012d05
   languageName: node
   linkType: hard
 
@@ -37062,7 +37062,7 @@ typescript@^4.0.0:
     gatsby-plugin-webpack-bundle-analyser-v2: 1.1.20
     gatsby-source-filesystem: 2.11.0
     gatsby-theme-i18n: 1.0.4
-    gatsby-theme-i18n-lingui: ^1.0.4
+    gatsby-theme-i18n-lingui: 1.0.4
     gatsby-transformer-sharp: 2.12.0
     hls.js: beta
     http-proxy-middleware: 1.0.6
