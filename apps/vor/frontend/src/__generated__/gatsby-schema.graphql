@@ -1652,7 +1652,7 @@ type Query {
   allThemeUiConfig(filter: ThemeUiConfigFilterInput, sort: ThemeUiConfigSortInput, skip: Int, limit: Int): ThemeUiConfigConnection!
   imageSharp(fixed: ImageSharpFixedFilterInput, resolutions: ImageSharpResolutionsFilterInput, fluid: ImageSharpFluidFilterInput, sizes: ImageSharpSizesFilterInput, gatsbyImageData: JSONQueryOperatorInput, original: ImageSharpOriginalFilterInput, resize: ImageSharpResizeFilterInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): ImageSharp
   allImageSharp(filter: ImageSharpFilterInput, sort: ImageSharpSortInput, skip: Int, limit: Int): ImageSharpConnection!
-  themeI18N(defaultLang: StringQueryOperatorInput, configPath: StringQueryOperatorInput, config: LocaleFilterListInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): ThemeI18n
+  themeI18N(defaultLang: StringQueryOperatorInput, prefixDefault: BooleanQueryOperatorInput, configPath: StringQueryOperatorInput, config: LocaleFilterListInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): ThemeI18n
   allThemeI18N(filter: ThemeI18nFilterInput, sort: ThemeI18nSortInput, skip: Int, limit: Int): ThemeI18nConnection!
   siteBuildMetadata(id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, buildTime: DateQueryOperatorInput): SiteBuildMetadata
   allSiteBuildMetadata(filter: SiteBuildMetadataFilterInput, sort: SiteBuildMetadataSortInput, skip: Int, limit: Int): SiteBuildMetadataConnection!
@@ -2692,6 +2692,7 @@ input StringQueryOperatorInput {
 
 type ThemeI18n implements Node {
   defaultLang: String
+  prefixDefault: Boolean
   configPath: String
   config: [Locale]
   id: ID!
@@ -2717,6 +2718,7 @@ type ThemeI18nEdge {
 
 enum ThemeI18nFieldsEnum {
   defaultLang
+  prefixDefault
   configPath
   config
   config___code
@@ -2815,6 +2817,7 @@ enum ThemeI18nFieldsEnum {
 
 input ThemeI18nFilterInput {
   defaultLang: StringQueryOperatorInput
+  prefixDefault: BooleanQueryOperatorInput
   configPath: StringQueryOperatorInput
   config: LocaleFilterListInput
   id: StringQueryOperatorInput

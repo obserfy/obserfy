@@ -1,10 +1,7 @@
 import { NextApiHandler, NextApiRequest, NextApiResponse } from "next"
 import * as Sentry from "@sentry/node"
+import { withApiAuthRequired } from "@auth0/nextjs-auth0"
 import logger from "../logger"
-import auth0 from "./auth0"
-import { initSentry } from "./sentry"
-
-initSentry()
 
 export const getFirstQueryValue = (
   req: NextApiRequest,
@@ -36,7 +33,7 @@ export function apiRoute(handler: NextApiHandler) {
 }
 
 export function protectedApiRoute(handler: NextApiHandler) {
-  return auth0.requireAuthentication(
+  return withApiAuthRequired(
     async (req: NextApiRequest, res: NextApiResponse) => {
       try {
         await handler(req, res)

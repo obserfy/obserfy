@@ -8458,13 +8458,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:14.14.28":
-  version: 14.14.28
-  resolution: "@types/node@npm:14.14.28"
-  checksum: e750df4d5e93c639d04100e7d54d9e416ecc649d4d7951ac1d5b82d092c556f6e7775a191995e06d6def65ae7bc25533d188fe122dc660724d119ce3ddae2cea
-  languageName: node
-  linkType: hard
-
 "@types/node@npm:14.14.31":
   version: 14.14.31
   resolution: "@types/node@npm:14.14.31"
@@ -13966,10 +13959,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:3.8.3":
-  version: 3.8.3
-  resolution: "core-js@npm:3.8.3"
-  checksum: 3c67d1732d505f6afaf836f18038dae8267e8c0e8e84e1c679bac67589e66d0807c24750c7d8b1118cc386c3d66a1d96f20d9cb0f6a879b19cfc04e9f073fe78
+"core-js@npm:3.9.0":
+  version: 3.9.0
+  resolution: "core-js@npm:3.9.0"
+  checksum: c1711d5f60db480a561bba6a8ce02a0e8f4400c14b3c0eb728133be2ae30d74eb0bd20cd8154c3b0910ecc01bd07efa1efb04596f2c9432109dcbef268ef332d
   languageName: node
   linkType: hard
 
@@ -15889,7 +15882,7 @@ __metadata:
     "@swc/core": 1.2.47
     "@types/auth0-js": 9.14.2
     "@types/faker": 5.1.7
-    "@types/node": 14.14.28
+    "@types/node": 14.14.31
     "@types/pg": 7.14.10
     "@typescript-eslint/eslint-plugin": 4.11.1
     "@typescript-eslint/parser": 4.11.1
@@ -19647,7 +19640,7 @@ fsevents@~2.3.1:
   dependencies:
     "@lingui/core": 3.5.1
     "@lingui/react": 3.5.1
-    core-js: 3.8.3
+    core-js: 3.9.0
     react-refresh: 0.9.0
   peerDependencies:
     "@lingui/core": ^3.0.0-18
@@ -19678,7 +19671,7 @@ fsevents@~2.3.1:
   version: 0.0.0-use.local
   resolution: "gatsby-theme-i18n@workspace:packages/gatsby-theme-i18n"
   dependencies:
-    core-js: 3.8.3
+    core-js: 3.9.0
     gatsby-plugin-react-helmet: ^3.3.10
     mkdirp: ^1.0.4
     react-helmet: ^6.1.0
@@ -37076,7 +37069,7 @@ typescript@^4.0.0:
     body-scroll-lock: 3.1.5
     browser-lang: 0.1.0
     chromatic: 5.6.3
-    core-js: 3.8.3
+    core-js: 3.9.0
     cross-env: 7.0.3
     dayjs: 1.10.4
     dompurify: 2.2.6

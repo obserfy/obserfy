@@ -1751,6 +1751,7 @@ type Query_allImageSharpArgs = {
 
 type Query_themeI18NArgs = {
   defaultLang: Maybe<StringQueryOperatorInput>;
+  prefixDefault: Maybe<BooleanQueryOperatorInput>;
   configPath: Maybe<StringQueryOperatorInput>;
   config: Maybe<LocaleFilterListInput>;
   id: Maybe<StringQueryOperatorInput>;
@@ -2868,6 +2869,7 @@ type StringQueryOperatorInput = {
 
 type ThemeI18n = Node & {
   readonly defaultLang: Maybe<Scalars['String']>;
+  readonly prefixDefault: Maybe<Scalars['Boolean']>;
   readonly configPath: Maybe<Scalars['String']>;
   readonly config: Maybe<ReadonlyArray<Maybe<Locale>>>;
   readonly id: Scalars['ID'];
@@ -2905,6 +2907,7 @@ type ThemeI18nEdge = {
 
 type ThemeI18nFieldsEnum =
   | 'defaultLang'
+  | 'prefixDefault'
   | 'configPath'
   | 'config'
   | 'config.code'
@@ -3002,6 +3005,7 @@ type ThemeI18nFieldsEnum =
 
 type ThemeI18nFilterInput = {
   readonly defaultLang: Maybe<StringQueryOperatorInput>;
+  readonly prefixDefault: Maybe<BooleanQueryOperatorInput>;
   readonly configPath: Maybe<StringQueryOperatorInput>;
   readonly config: Maybe<LocaleFilterListInput>;
   readonly id: Maybe<StringQueryOperatorInput>;
@@ -3186,10 +3190,10 @@ type WebPOptions = {
   readonly quality: Maybe<Scalars['Int']>;
 };
 
-type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
+type homechrisintSrcobserfyYarndollardollarvirtualgatsbyPluginThemeUiVirtualEc3359956E0CachegatsbyPluginThemeUiNpm060Alpha68164F2De0D9207950299ZipnodeModulesgatsbyPluginThemeUisrchooksconfigOptionsJs2744905544QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type Unnamed_1_Query = { readonly themeUiConfig: Maybe<Pick<ThemeUiConfig, 'preset' | 'prismPreset'>> };
+type homechrisintSrcobserfyYarndollardollarvirtualgatsbyPluginThemeUiVirtualEc3359956E0CachegatsbyPluginThemeUiNpm060Alpha68164F2De0D9207950299ZipnodeModulesgatsbyPluginThemeUisrchooksconfigOptionsJs2744905544Query = { readonly themeUiConfig: Maybe<Pick<ThemeUiConfig, 'preset' | 'prismPreset'>> };
 
 type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
@@ -3241,23 +3245,23 @@ type GatsbyImageSharpSizes_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio
 
 type GatsbyImageSharpSizes_withWebp_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
 
-type Unnamed_2_QueryVariables = Exact<{ [key: string]: never; }>;
+type LocalizationConfigQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type Unnamed_2_Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
+type LocalizationConfigQueryQuery = { readonly themeI18N: Maybe<(
+    Pick<ThemeI18n, 'defaultLang' | 'prefixDefault'>
+    & { readonly config: Maybe<ReadonlyArray<Maybe<Pick<Locale, 'code' | 'hrefLang' | 'dateFormat' | 'langDir' | 'localName' | 'name'>>>> }
+  )> };
 
 type LocalizationSEOQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type LocalizationSEOQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'siteUrl'>> }> };
 
-type LocalizationConfigQueryQueryVariables = Exact<{ [key: string]: never; }>;
+type homechrisintSrcobserfyappsvorfrontendsrccomponentsseoTsx63159454QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type LocalizationConfigQueryQuery = { readonly themeI18N: Maybe<(
-    Pick<ThemeI18n, 'defaultLang'>
-    & { readonly config: Maybe<ReadonlyArray<Maybe<Pick<Locale, 'code' | 'hrefLang' | 'dateFormat' | 'langDir' | 'localName' | 'name'>>>> }
-  )> };
+type homechrisintSrcobserfyappsvorfrontendsrccomponentsseoTsx63159454Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
 
 type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 

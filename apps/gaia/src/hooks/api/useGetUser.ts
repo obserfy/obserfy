@@ -13,7 +13,7 @@ const useGetUser = () => {
       !((error as any).message === "not_authenticated"),
     onError: async (error) => {
       if ((error as any)?.message === "not_authenticated") {
-        await router.push("/api/login")
+        await router.push("/api/auth/login")
       }
     },
     onSuccess: (data) => {

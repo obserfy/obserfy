@@ -51,7 +51,7 @@ const Header: FC = () => {
               <Button outline onClick={() => setShowLogout(false)}>
                 Cancel
               </Button>
-              <a href="/api/logout" className="block ml-3 w-full">
+              <a href="/api/auth/logout" className="block ml-3 w-full">
                 <Button
                   className="w-full bg-red-700 text-white"
                   onClick={() => mixpanel.reset()}
