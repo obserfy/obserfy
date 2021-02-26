@@ -130,7 +130,7 @@
     "typescript": "4.1.5",
     "url-loader": "4.1.1",
     "wait-on": "5.2.1",
-    "webpack": "5.19.0"
+    "webpack": "5.24.2"
   },
   "license": "GNU GPL v3",
   "scripts": {
