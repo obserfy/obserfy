@@ -21,4 +21,5 @@ require (
 	go.uber.org/zap v1.16.0
 	golang.org/x/crypto v0.0.0-20210220033148-5ea612d1eb83
 	golang.org/x/tools v0.0.0-20210115202250-e0d201561e39 // indirect
+	google.golang.org/appengine v1.4.0
 )
