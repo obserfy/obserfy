@@ -4,6 +4,7 @@ import (
 	"github.com/chrsep/vor/pkg/imgproxy"
 	"github.com/getsentry/sentry-go"
 	"github.com/google/uuid"
+	"github.com/signintech/gopdf"
 	"net/http"
 	"time"
 
@@ -885,9 +886,14 @@ func exportMaterialProgress(s rest.Server, store Store) rest.Handler {
 			})
 		}
 
-		if err := rest.WriteJson(w, response); err != nil {
+		pdf := gopdf.GoPdf{}
+		pdf.Start(gopdf.Config{PageSize: *gopdf.PageSizeA4})
+		pdf.AddPage()
+		err = pdf.Write(w)
+		if err != nil {
 			return rest.NewWriteJsonError(err)
 		}
+
 		return nil
 	})
 }
