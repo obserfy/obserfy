@@ -7,8 +7,8 @@
   "private": true,
   "devDependencies": {
     "@cypress/code-coverage": "3.9.2",
-    "@types/faker": "5.1.6",
-    "@types/node": "14.14.28",
+    "@types/faker": "5.1.7",
+    "@types/node": "14.14.31",
     "@typescript-eslint/eslint-plugin": "4.11.1",
     "@typescript-eslint/parser": "4.11.1",
     "cypress": "6.5.0",
@@ -37,7 +37,7 @@
   "dependencies": {
     "@cypress/webpack-preprocessor": "5.6.0",
     "@hapi/iron": "6.0.0",
-    "@swc/core": "1.2.47",
+    "@swc/core": "1.2.49",
     "@types/auth0-js": "9.14.2",
     "@types/pg": "7.14.10",
     "auth0-js": "9.14.3",
