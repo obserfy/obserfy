@@ -4,7 +4,6 @@ import (
 	"github.com/chrsep/vor/pkg/imgproxy"
 	"github.com/getsentry/sentry-go"
 	"github.com/google/uuid"
-	"github.com/signintech/gopdf"
 	"net/http"
 	"time"
 
@@ -845,16 +844,8 @@ func getStudentVideos(s rest.Server, store Store) http.Handler {
 }
 
 func exportMaterialProgress(s rest.Server, store Store) rest.Handler {
-	type responseBody struct {
-		AreaId       string    `json:"areaId"`
-		MaterialName string    `json:"materialName"`
-		MaterialId   string    `json:"materialId"`
-		Stage        int       `json:"stage"`
-		UpdatedAt    time.Time `json:"updatedAt"`
-	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		studentId := chi.URLParam(r, "studentId")
-		//areaId := r.URL.Query().Get("areaId")
 
 		progress, err := store.GetProgress(studentId)
 		if err != nil {
@@ -865,7 +856,7 @@ func exportMaterialProgress(s rest.Server, store Store) rest.Handler {
 			}
 		}
 
-		_, err = store.FindCurriculum(studentId)
+		curriculum, err := store.FindCurriculum(studentId)
 		if err != nil {
 			return &rest.Error{
 				Code:    http.StatusInternalServerError,
@@ -874,27 +865,16 @@ func exportMaterialProgress(s rest.Server, store Store) rest.Handler {
 			}
 		}
 
-		// return empty array when there is no data
-		response := make([]responseBody, 0)
-		for _, progress := range progress {
-			response = append(response, responseBody{
-				AreaId:       progress.Material.Subject.Area.Id,
-				MaterialName: progress.Material.Name,
-				MaterialId:   progress.MaterialId,
-				Stage:        progress.Stage,
-				UpdatedAt:    progress.UpdatedAt,
-			})
-		}
-
-		pdf := gopdf.GoPdf{}
-		pdf.Start(gopdf.Config{PageSize: *gopdf.PageSizeA4})
-		pdf.AddPage()
+		pdf, _ := ExportCurriculumPdf(curriculum, progress)
 
 		w.Header().Set("content-type", "application/pdf")
 		if err := pdf.Write(w); err != nil {
-			return rest.NewWriteJsonError(err)
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "failed to write pdf response",
+				Error:   err,
+			}
 		}
-
 		return nil
 	})
 }

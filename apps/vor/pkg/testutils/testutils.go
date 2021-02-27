@@ -162,7 +162,7 @@ func (s *BaseTestSuite) GenerateMaterial(school *postgres.School) (postgres.Mate
 	// save subject
 	material := postgres.Material{
 		Id:        uuid.New().String(),
-		Name:      uuid.New().String(),
+		Name:      gofakeit.Dog(),
 		SubjectId: subject.Id,
 		Subject:   subject,
 	}
@@ -181,7 +181,7 @@ func (s *BaseTestSuite) GenerateSubject(school *postgres.School) (postgres.Subje
 	// save subject
 	originalSubject := postgres.Subject{
 		Id:     uuid.New().String(),
-		Name:   uuid.New().String(),
+		Name:   gofakeit.Dog(),
 		AreaId: area.Id,
 		Area:   area,
 	}
@@ -199,11 +199,11 @@ func (s *BaseTestSuite) GenerateArea(school *postgres.School) (postgres.Area, st
 		Id:           uuid.New().String(),
 		CurriculumId: school.CurriculumId,
 		Curriculum:   school.Curriculum,
-		Name:         "",
-		Subjects:     nil,
+		Name:         gofakeit.Dog(),
 	}
 	_, err := s.DB.Model(&area).Insert()
 	assert.NoError(s.T(), err)
+
 	return area, school.Users[0].Id
 }
 
