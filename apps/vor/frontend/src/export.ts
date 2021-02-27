@@ -28,3 +28,26 @@ export async function exportStudentObservations(
   a.click()
   document.body.removeChild(a)
 }
+
+export async function exportMaterialProgress(
+  studentId: string,
+  studentName: string
+) {
+  const res = await fetch(
+    `${BASE_URL}/students/${studentId}/materialsProgress/export/pdf`
+  )
+
+  const blob = new Blob([await res.blob()], { type: "text/csv" })
+  const url = URL.createObjectURL(blob)
+  const a = document.createElement("a")
+
+  a.setAttribute("hidden", "")
+  a.setAttribute("href", url)
+  a.setAttribute(
+    "download",
+    `${studentName}_${dayjs().format("DD-MMM-YY")}.pdf`
+  )
+  document.body.appendChild(a)
+  a.click()
+  document.body.removeChild(a)
+}

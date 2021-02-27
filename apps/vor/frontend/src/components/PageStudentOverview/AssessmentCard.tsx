@@ -4,6 +4,7 @@ import { FC, Fragment, useState } from "react"
 import { jsx, Box, Button, Card, Flex } from "theme-ui"
 import { borderBottom } from "../../border"
 import { isEmpty } from "../../domain/array"
+import { exportMaterialProgress } from "../../export"
 import { useGetCurriculumAreas } from "../../hooks/api/useGetCurriculumAreas"
 import {
   MaterialProgress,
@@ -24,9 +25,10 @@ import MaterialProgressItem from "./MaterialProgressItem"
 
 interface Props {
   studentId: string
+  studentName?: string
 }
 
-export const AssessmentCard: FC<Props> = ({ studentId }) => {
+export const AssessmentCard: FC<Props> = ({ studentId, studentName = "" }) => {
   const [tab, setTab] = useState(0)
   const [isEditing, setIsEditing] = useState(false)
   const [selected, setSelected] = useState<MaterialProgress>()
@@ -121,7 +123,12 @@ export const AssessmentCard: FC<Props> = ({ studentId }) => {
       )}
 
       {exportDialog.visible && (
-        <ExportProgressDialog onDismiss={exportDialog.hide} />
+        <ExportProgressDialog
+          onDismiss={exportDialog.hide}
+          onExported={exportDialog.hide}
+          studentId={studentId}
+          studentName={studentName}
+        />
       )}
     </Fragment>
   )
@@ -200,12 +207,22 @@ const Heading: FC<{ text: string }> = ({ text }) => (
   </Typography.Body>
 )
 
-const ExportProgressDialog: FC<{ onDismiss: () => void }> = ({ onDismiss }) => {
+const ExportProgressDialog: FC<{
+  onDismiss: () => void
+  onExported: () => void
+  studentId: string
+  studentName: string
+}> = ({ onDismiss, onExported, studentName, studentId }) => {
+  const handleExport = async () => {
+    await exportMaterialProgress(studentId, studentName)
+    onExported()
+  }
+
   return (
     <Dialog>
       <DialogHeader
         title={t`Export Progress`}
-        onAccept={onDismiss}
+        onAccept={handleExport}
         onCancel={onDismiss}
       />
     </Dialog>
