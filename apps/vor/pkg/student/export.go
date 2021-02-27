@@ -9,9 +9,12 @@ import (
 
 func ExportCurriculumPdf(curriculum domain.Curriculum, progress []postgres.StudentMaterialProgress) (*gopdf.GoPdf, error) {
 	pdf := &gopdf.GoPdf{}
-	pdf.Start(gopdf.Config{PageSize: *gopdf.PageSizeA4}) //595.28, 841.89 = A4
+	pdf.Start(gopdf.Config{
+		PageSize: *gopdf.PageSizeA4,
+	}) //595.28, 841.89 = A4
 	pdf.AddPage()
-	pdf.SetTopMargin(20)
+
+	currentPageHeight := 0
 
 	err := loadFonts(pdf)
 	if err != nil {
@@ -20,22 +23,40 @@ func ExportCurriculumPdf(curriculum domain.Curriculum, progress []postgres.Stude
 
 	for _, area := range curriculum.Areas {
 		err := printTitle(pdf, area.Name)
+		currentPageHeight += 80
 		if err != nil {
 			return nil, err
 		}
 
 		for _, subject := range area.Subjects {
 			err := printSubject(pdf, subject.Name)
+			currentPageHeight += 70
 			if err != nil {
 				return nil, err
 			}
 
 			for _, material := range subject.Materials {
 				err := printMaterial(pdf, material.Name)
+				currentPageHeight += 26
 				if err != nil {
 					return nil, err
 				}
+
+				if currentPageHeight > 700 {
+					pdf.AddPage()
+					currentPageHeight = 0
+				}
 			}
+
+			if currentPageHeight > 700 {
+				pdf.AddPage()
+				currentPageHeight = 0
+			}
+		}
+
+		if currentPageHeight > 700 {
+			pdf.AddPage()
+			currentPageHeight = 0
 		}
 	}
 
@@ -43,7 +64,7 @@ func ExportCurriculumPdf(curriculum domain.Curriculum, progress []postgres.Stude
 }
 
 func printTitle(pdf *gopdf.GoPdf, title string) error {
-	pdf.Br(32)
+	pdf.Br(24)
 	err := pdf.SetFont("inter-bold", "", 24)
 	if err != nil {
 		return richErrors.Wrap(err, "set fonts")
@@ -53,13 +74,13 @@ func printTitle(pdf *gopdf.GoPdf, title string) error {
 	if err != nil {
 		return err
 	}
-	pdf.Br(24)
+	pdf.Br(14)
 	return nil
 }
 
 func printSubject(pdf *gopdf.GoPdf, subject string) error {
 	pdf.Br(32)
-	err := pdf.SetFont("inter-regular", "", 20)
+	err := pdf.SetFont("inter-regular", "", 14)
 	if err != nil {
 		return richErrors.Wrap(err, "set fonts")
 	}
@@ -74,7 +95,7 @@ func printSubject(pdf *gopdf.GoPdf, subject string) error {
 
 func printMaterial(pdf *gopdf.GoPdf, material string) error {
 	pdf.Br(14)
-	err := pdf.SetFont("inter-regular", "", 14)
+	err := pdf.SetFont("inter-regular", "", 12)
 	if err != nil {
 		return richErrors.Wrap(err, "set fonts")
 	}
@@ -88,12 +109,12 @@ func printMaterial(pdf *gopdf.GoPdf, material string) error {
 }
 
 func loadFonts(pdf *gopdf.GoPdf) error {
-	err := pdf.AddTTFFont("inter-regular", "../Inter-Regular.ttf")
+	err := pdf.AddTTFFont("inter-regular", "./Inter-Regular.ttf")
 	if err != nil {
 		return richErrors.Wrap(err, "failed to add regular font")
 	}
 
-	err = pdf.AddTTFFont("inter-bold", "../Inter-Bold.ttf")
+	err = pdf.AddTTFFont("inter-bold", "./Inter-Bold.ttf")
 	if err != nil {
 		return richErrors.Wrap(err, "failed to add bold font")
 	}
