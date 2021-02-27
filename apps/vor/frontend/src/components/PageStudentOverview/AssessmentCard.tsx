@@ -1,6 +1,7 @@
+/** @jsx jsx */
 import { t, Trans } from "@lingui/macro"
-import React, { FC, useState } from "react"
-import { Box, Button, Card, Flex } from "theme-ui"
+import { FC, Fragment, useState } from "react"
+import { jsx, Box, Button, Card, Flex } from "theme-ui"
 import { borderBottom } from "../../border"
 import { isEmpty } from "../../domain/array"
 import { useGetCurriculumAreas } from "../../hooks/api/useGetCurriculumAreas"
@@ -9,14 +10,14 @@ import {
   Assessment,
   useGetStudentMaterialProgress,
 } from "../../hooks/api/useGetStudentMaterialProgress"
+import useVisibilityState from "../../hooks/useVisibilityState"
 import { ADMIN_CURRICULUM_URL, STUDENT_PROGRESS_URL } from "../../routes"
-
+import Dialog from "../Dialog/Dialog"
+import DialogHeader from "../DialogHeader/DialogHeader"
 import InformationalCard from "../InformationalCard/InformationalCard"
 import { Link } from "../Link/Link"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
-import Spacer from "../Spacer/Spacer"
 import StudentMaterialProgressDialog from "../StudentMaterialProgressDialog/StudentMaterialProgressDialog"
-
 import Tab from "../Tab/Tab"
 import Typography from "../Typography/Typography"
 import MaterialProgressItem from "./MaterialProgressItem"
@@ -32,6 +33,7 @@ export const AssessmentCard: FC<Props> = ({ studentId }) => {
   const areas = useGetCurriculumAreas()
   const progress = useGetStudentMaterialProgress(studentId)
   const isLoading = areas.isLoading || progress.isLoading
+  const exportDialog = useVisibilityState()
 
   const handleItemClick = (item: MaterialProgress) => {
     setSelected(item)
@@ -49,21 +51,30 @@ export const AssessmentCard: FC<Props> = ({ studentId }) => {
     ?.slice(0, 3)
     ?.sort((a, b) => Date.parse(b.updatedAt) - Date.parse(a.updatedAt))
 
-  // View
   if (isLoading) return <LoadingState />
+
   if (!isLoading && isEmpty(areas.data)) return <DisabledState />
+
   return (
-    <>
+    <Fragment>
       <Card variant="responsive" sx={{ overflow: "inherit" }} mt={3}>
-        <Typography.H6 p={3} pb={2}>
-          <Trans>Curriculum Progress</Trans>
-        </Typography.H6>
+        <Flex sx={{ alignItems: "center" }} p={3} pb={2}>
+          <Typography.H6>
+            <Trans>Curriculum Progress</Trans>
+          </Typography.H6>
+
+          <Button variant="secondary" ml="auto" onClick={exportDialog.show}>
+            Export
+          </Button>
+        </Flex>
+
         <Tab
           small
           items={areas.data?.map(({ name }) => name) ?? []}
           onTabClick={setTab}
           selectedItemIdx={tab}
         />
+
         <Box my={2}>
           {isEmpty(inProgress) && <EmptyState />}
 
@@ -87,8 +98,10 @@ export const AssessmentCard: FC<Props> = ({ studentId }) => {
         </Box>
 
         <Flex p={2}>
-          <Spacer />
-          <Link to={STUDENT_PROGRESS_URL(studentId, areaId ?? "")}>
+          <Link
+            to={STUDENT_PROGRESS_URL(studentId, areaId ?? "")}
+            sx={{ ml: "auto" }}
+          >
             <Button variant="secondary">
               <Trans>See All {areas.data?.[tab]?.name} Progress</Trans>
             </Button>
@@ -106,7 +119,17 @@ export const AssessmentCard: FC<Props> = ({ studentId }) => {
           onDismiss={() => setIsEditing(false)}
         />
       )}
-    </>
+
+      {exportDialog.visible && (
+        <Dialog>
+          <DialogHeader
+            title={t`Export Progress`}
+            onAccept={exportDialog.hide}
+            onCancel={exportDialog.hide}
+          />
+        </Dialog>
+      )}
+    </Fragment>
   )
 }
 
