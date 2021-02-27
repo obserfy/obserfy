@@ -121,13 +121,7 @@ export const AssessmentCard: FC<Props> = ({ studentId }) => {
       )}
 
       {exportDialog.visible && (
-        <Dialog>
-          <DialogHeader
-            title={t`Export Progress`}
-            onAccept={exportDialog.hide}
-            onCancel={exportDialog.hide}
-          />
-        </Dialog>
+        <ExportProgressDialog onDismiss={exportDialog.hide} />
       )}
     </Fragment>
   )
@@ -205,5 +199,17 @@ const Heading: FC<{ text: string }> = ({ text }) => (
     <Trans id={text} />
   </Typography.Body>
 )
+
+const ExportProgressDialog: FC<{ onDismiss: () => void }> = ({ onDismiss }) => {
+  return (
+    <Dialog>
+      <DialogHeader
+        title={t`Export Progress`}
+        onAccept={onDismiss}
+        onCancel={onDismiss}
+      />
+    </Dialog>
+  )
+}
 
 export default AssessmentCard
