@@ -865,7 +865,14 @@ func exportMaterialProgress(s rest.Server, store Store) rest.Handler {
 			}
 		}
 
-		pdf, _ := ExportCurriculumPdf(curriculum, progress)
+		pdf, err := ExportCurriculumPdf(curriculum, progress)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "failed to write pdf response",
+				Error:   err,
+			}
+		}
 
 		w.Header().Set("content-type", "application/pdf")
 		if err := pdf.Write(w); err != nil {

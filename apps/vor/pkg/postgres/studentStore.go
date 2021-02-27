@@ -372,7 +372,7 @@ func (s StudentStore) FindCurriculum(studentId string) (domain.Curriculum, error
 		Relation("School.Curriculum.Areas").
 		Relation("School.Curriculum.Areas.Subjects").
 		Relation("School.Curriculum.Areas.Subjects.Materials").
-		Select(); err == nil {
+		Select(); err != nil {
 		return domain.Curriculum{}, richErrors.Wrap(err, "failed to query school")
 	}
 

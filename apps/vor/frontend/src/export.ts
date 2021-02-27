@@ -37,7 +37,7 @@ export async function exportMaterialProgress(
     `${BASE_URL}/students/${studentId}/materialsProgress/export/pdf`
   )
 
-  const blob = new Blob([await res.blob()], { type: "text/csv" })
+  const blob = new Blob([await res.blob()], { type: "appplication/pdf" })
   const url = URL.createObjectURL(blob)
   const a = document.createElement("a")
 
@@ -45,7 +45,9 @@ export async function exportMaterialProgress(
   a.setAttribute("href", url)
   a.setAttribute(
     "download",
-    `${studentName}_${dayjs().format("DD-MMM-YY")}.pdf`
+    `${studentName.toLowerCase().replace(" ", "-")}-${dayjs().format(
+      "DD-MMM-YY"
+    )}.pdf`
   )
   document.body.appendChild(a)
   a.click()
