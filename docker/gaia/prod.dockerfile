@@ -7,9 +7,8 @@ ENV NODE_ENV=production
 
 # Copy deps metadata
 COPY package.json package.json
-COPY yarn.lock yarn.lock
+COPY pnpm-lock.yaml pnpm-lock.yaml
 COPY .yarn .yarn
-COPY .pnp.js .pnp.js
 COPY .yarnrc.yml .yarnrc.yml
 COPY apps/gaia/package.json apps/gaia/package.json
 
