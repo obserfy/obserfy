@@ -28,9 +28,6 @@ func NewRouter(s rest.Server, store Store) *chi.Mux {
 		r.Method("POST", "/attendances", postAttendance(s, store))
 		r.Method("GET", "/attendances", getAttendance(s, store))
 
-		r.Method("GET", "/materialsProgress", getMaterialProgress(s, store))
-		r.Method("PATCH", "/materialsProgress/{materialId}", upsertMaterialProgress(s, store))
-
 		r.Method("POST", "/guardianRelations", postNewGuardianRelation(s, store))
 		r.Method("DELETE", "/guardianRelations/{guardianId}", deleteGuardianRelation(s, store))
 
@@ -43,6 +40,13 @@ func NewRouter(s rest.Server, store Store) *chi.Mux {
 		r.Method("GET", "/images", getStudentImages(s, store))
 
 		r.Method("GET", "/videos", getStudentVideos(s, store))
+
+		r.Route("/materialsProgress", func(r chi.Router) {
+			r.Method("GET", "/", getMaterialProgress(s, store))
+			r.Method("PATCH", "/{materialId}", upsertMaterialProgress(s, store))
+			r.Method("GET", "/export/pdf", exportMaterialProgress(s, store))
+		})
+
 	})
 	return r
 }
@@ -833,6 +837,55 @@ func getStudentVideos(s rest.Server, store Store) http.Handler {
 		}
 
 		if err := rest.WriteJson(w, &response); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
+		return nil
+	})
+}
+
+func exportMaterialProgress(s rest.Server, store Store) rest.Handler {
+	type responseBody struct {
+		AreaId       string    `json:"areaId"`
+		MaterialName string    `json:"materialName"`
+		MaterialId   string    `json:"materialId"`
+		Stage        int       `json:"stage"`
+		UpdatedAt    time.Time `json:"updatedAt"`
+	}
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		studentId := chi.URLParam(r, "studentId")
+		//areaId := r.URL.Query().Get("areaId")
+
+		progress, err := store.GetProgress(studentId)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "failed querying material",
+				Error:   err,
+			}
+		}
+
+		_, err = store.FindCurriculum(studentId)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "failed querying material",
+				Error:   err,
+			}
+		}
+
+		// return empty array when there is no data
+		response := make([]responseBody, 0)
+		for _, progress := range progress {
+			response = append(response, responseBody{
+				AreaId:       progress.Material.Subject.Area.Id,
+				MaterialName: progress.Material.Name,
+				MaterialId:   progress.MaterialId,
+				Stage:        progress.Stage,
+				UpdatedAt:    progress.UpdatedAt,
+			})
+		}
+
+		if err := rest.WriteJson(w, response); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
 		return nil
