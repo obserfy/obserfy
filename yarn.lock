@@ -19813,21 +19813,7 @@ fsevents@~2.3.1:
   languageName: unknown
   linkType: soft
 
-"gatsby-theme-i18n@npm:1.0.5":
-  version: 1.0.5
-  resolution: "gatsby-theme-i18n@npm:1.0.5"
-  dependencies:
-    gatsby-plugin-react-helmet: ^3.3.10
-    react-helmet: ^6.1.0
-  peerDependencies:
-    gatsby: ">=2.21.26"
-    react: ">=16.13.1"
-    react-dom: ">=16.13.1"
-  checksum: 53ff4db1b3dcd175c24df9f6267ee8386c6bdafa037c6ae812534149a33672cdcd0dcbb37b0dfba234d58680ebf5e7b4826c408e6da2827e6b28a96b4f0ad9b2
-  languageName: node
-  linkType: hard
-
-"gatsby-theme-i18n@workspace:packages/gatsby-theme-i18n":
+"gatsby-theme-i18n@1.0.5, gatsby-theme-i18n@workspace:packages/gatsby-theme-i18n":
   version: 0.0.0-use.local
   resolution: "gatsby-theme-i18n@workspace:packages/gatsby-theme-i18n"
   dependencies:
