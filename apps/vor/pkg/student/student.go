@@ -889,8 +889,9 @@ func exportMaterialProgress(s rest.Server, store Store) rest.Handler {
 		pdf := gopdf.GoPdf{}
 		pdf.Start(gopdf.Config{PageSize: *gopdf.PageSizeA4})
 		pdf.AddPage()
-		err = pdf.Write(w)
-		if err != nil {
+
+		w.Header().Set("content-type", "application/pdf")
+		if err := pdf.Write(w); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
 
