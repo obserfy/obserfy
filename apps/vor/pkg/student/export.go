@@ -14,8 +14,6 @@ func ExportCurriculumPdf(curriculum domain.Curriculum, progress []postgres.Stude
 	}) //595.28, 841.89 = A4
 	pdf.AddPage()
 
-	currentPageHeight := 0
-
 	err := loadFonts(pdf)
 	if err != nil {
 		return nil, err
@@ -23,40 +21,22 @@ func ExportCurriculumPdf(curriculum domain.Curriculum, progress []postgres.Stude
 
 	for _, area := range curriculum.Areas {
 		err := printTitle(pdf, area.Name)
-		currentPageHeight += 80
 		if err != nil {
 			return nil, err
 		}
 
 		for _, subject := range area.Subjects {
 			err := printSubject(pdf, subject.Name)
-			currentPageHeight += 70
 			if err != nil {
 				return nil, err
 			}
 
 			for _, material := range subject.Materials {
 				err := printMaterial(pdf, material.Name)
-				currentPageHeight += 26
 				if err != nil {
 					return nil, err
 				}
-
-				if currentPageHeight > 700 {
-					pdf.AddPage()
-					currentPageHeight = 0
-				}
 			}
-
-			if currentPageHeight > 700 {
-				pdf.AddPage()
-				currentPageHeight = 0
-			}
-		}
-
-		if currentPageHeight > 700 {
-			pdf.AddPage()
-			currentPageHeight = 0
 		}
 	}
 
@@ -70,6 +50,7 @@ func printTitle(pdf *gopdf.GoPdf, title string) error {
 		return richErrors.Wrap(err, "set fonts")
 	}
 
+	preventPageYOverflow(pdf)
 	err = pdf.Cell(nil, title)
 	if err != nil {
 		return err
@@ -85,6 +66,7 @@ func printSubject(pdf *gopdf.GoPdf, subject string) error {
 		return richErrors.Wrap(err, "set fonts")
 	}
 
+	preventPageYOverflow(pdf)
 	err = pdf.Cell(nil, subject)
 	if err != nil {
 		return err
@@ -100,6 +82,7 @@ func printMaterial(pdf *gopdf.GoPdf, material string) error {
 		return richErrors.Wrap(err, "set fonts")
 	}
 
+	preventPageYOverflow(pdf)
 	err = pdf.Cell(nil, material)
 	if err != nil {
 		return err
@@ -119,4 +102,12 @@ func loadFonts(pdf *gopdf.GoPdf) error {
 		return richErrors.Wrap(err, "failed to add bold font")
 	}
 	return nil
+}
+
+func preventPageYOverflow(pdf *gopdf.GoPdf) {
+	y := pdf.GetY()
+	maxHeight := gopdf.PageSizeA4.H - 25
+	if y > maxHeight {
+		pdf.AddPage()
+	}
 }
