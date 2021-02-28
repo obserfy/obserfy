@@ -370,8 +370,12 @@ func (s StudentStore) FindCurriculum(studentId string) (domain.Curriculum, error
 		Relation("School").
 		Relation("School.Curriculum").
 		Relation("School.Curriculum.Areas").
-		Relation("School.Curriculum.Areas.Subjects").
-		Relation("School.Curriculum.Areas.Subjects.Materials").
+		Relation("School.Curriculum.Areas.Subjects", func(q *orm.Query) (*orm.Query, error) {
+			return q.Order("order"), nil
+		}).
+		Relation("School.Curriculum.Areas.Subjects.Materials", func(q *orm.Query) (*orm.Query, error) {
+			return q.Order("order"), nil
+		}).
 		Select(); err != nil {
 		return domain.Curriculum{}, richErrors.Wrap(err, "failed to query school")
 	}

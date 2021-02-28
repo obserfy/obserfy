@@ -1,6 +1,7 @@
 package student
 
 import (
+	"github.com/chrsep/vor/pkg/domain"
 	"github.com/chrsep/vor/pkg/imgproxy"
 	"github.com/getsentry/sentry-go"
 	"github.com/google/uuid"
@@ -44,7 +45,8 @@ func NewRouter(s rest.Server, store Store) *chi.Mux {
 		r.Route("/materialsProgress", func(r chi.Router) {
 			r.Method("GET", "/", getMaterialProgress(s, store))
 			r.Method("PATCH", "/{materialId}", upsertMaterialProgress(s, store))
-			r.Method("GET", "/export/pdf", exportMaterialProgress(s, store))
+			r.Method("GET", "/export/pdf", exportMaterialProgressPdf(s, store))
+			r.Method("GET", "/export/csv", exportMaterialProgressCsv(s, store))
 		})
 
 	})
@@ -843,7 +845,7 @@ func getStudentVideos(s rest.Server, store Store) http.Handler {
 	})
 }
 
-func exportMaterialProgress(s rest.Server, store Store) rest.Handler {
+func exportMaterialProgressPdf(s rest.Server, store Store) rest.Handler {
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		studentId := chi.URLParam(r, "studentId")
 
@@ -874,13 +876,68 @@ func exportMaterialProgress(s rest.Server, store Store) rest.Handler {
 			}
 		}
 
-		w.Header().Set("content-type", "application/pdf")
+		w.Header().Set("Content-Type", "application/pdf")
 		if err := pdf.Write(w); err != nil {
 			return &rest.Error{
 				Code:    http.StatusInternalServerError,
 				Message: "failed to write pdf response",
 				Error:   err,
 			}
+		}
+		return nil
+	})
+}
+
+func exportMaterialProgressCsv(s rest.Server, store Store) rest.Handler {
+	type responseBody struct {
+		Area       string `csv:"Area"`
+		Subject    string `csv:"Subject"`
+		Material   string `csv:"Material"`
+		Assessment string `csv:"Assessment"`
+	}
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		studentId := chi.URLParam(r, "studentId")
+
+		progress, err := store.GetProgress(studentId)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "failed querying material",
+				Error:   err,
+			}
+		}
+
+		curriculum, err := store.FindCurriculum(studentId)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "failed querying material",
+				Error:   err,
+			}
+		}
+
+		body := make([]responseBody, 0)
+		for _, area := range curriculum.Areas {
+			for _, subject := range area.Subjects {
+				for _, material := range subject.Materials {
+					line := responseBody{
+						Area:     area.Name,
+						Subject:  subject.Name,
+						Material: material.Name,
+					}
+					for _, materialProgress := range progress {
+						if materialProgress.MaterialId == material.Id {
+							line.Assessment = domain.GetAssessmentName(materialProgress.Stage)
+							break
+						}
+					}
+					body = append(body, line)
+				}
+			}
+		}
+
+		if err := rest.WriteCsv(w, body); err != nil {
+			return rest.NewWriteCsvError(err)
 		}
 		return nil
 	})
