@@ -797,13 +797,13 @@ exports[`PageStudentOverview should render correctly 1`] = `
   padding-left: 16px;
   padding-right: 16px;
   padding-bottom: 16px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-bottom-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
 }
 
 .emotion-40 {
