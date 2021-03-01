@@ -63,9 +63,13 @@ func (s *AreaTestSuite) TestCreateValidArea() {
 // Area without curriculum should fail
 func (s *AreaTestSuite) TestCreateAreaWithNoCurriculum() {
 	t := s.T()
-	area, userId := s.GenerateArea(nil)
+	school := s.GenerateSchool()
+	area := struct {
+		Name        string `json:"name"`
+		Description string `json:"description"`
+	}{}
 
-	result := s.CreateRequest("POST", "//areas", area, &userId)
+	result := s.CreateRequest("POST", "//areas", area, &school.Users[0].Id)
 
 	var savedArea postgres.Area
 	err := s.DB.Model(&savedArea).
@@ -79,11 +83,15 @@ func (s *AreaTestSuite) TestCreateAreaWithNoCurriculum() {
 func (s *AreaTestSuite) TestCreateAreaWithNoName() {
 	t := s.T()
 	// Setup data
+	school := s.GenerateSchool()
 
-	area, userId := s.GenerateArea(nil)
+	area := struct {
+		Name        string `json:"name"`
+		Description string `json:"description"`
+	}{}
 
 	// Send request
-	result := s.CreateRequest("POST", "/"+area.CurriculumId+"/areas", area, &userId)
+	result := s.CreateRequest("POST", "/"+school.CurriculumId+"/areas", area, &school.Users[0].Id)
 	assert.EqualValues(t, http.StatusBadRequest, result.Code)
 
 	// Assert that area is saved

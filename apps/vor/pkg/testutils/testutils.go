@@ -154,6 +154,7 @@ func (s *BaseTestSuite) GenerateStudent(school *postgres.School) *postgres.Stude
 }
 
 func (s *BaseTestSuite) GenerateMaterial(school *postgres.School) (postgres.Material, string) {
+	gofakeit.Seed(time.Now().UnixNano())
 	if school == nil {
 		school = s.GenerateSchool()
 	}
@@ -172,6 +173,7 @@ func (s *BaseTestSuite) GenerateMaterial(school *postgres.School) (postgres.Mate
 }
 
 func (s *BaseTestSuite) GenerateSubject(school *postgres.School) (postgres.Subject, string) {
+	gofakeit.Seed(time.Now().UnixNano())
 	if school == nil {
 		school = s.GenerateSchool()
 	}
@@ -191,6 +193,7 @@ func (s *BaseTestSuite) GenerateSubject(school *postgres.School) (postgres.Subje
 }
 
 func (s *BaseTestSuite) GenerateArea(school *postgres.School) (postgres.Area, string) {
+	gofakeit.Seed(time.Now().UnixNano())
 	if school == nil {
 		school = s.GenerateSchool()
 	}
