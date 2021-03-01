@@ -890,10 +890,10 @@ func exportMaterialProgressPdf(s rest.Server, store Store) rest.Handler {
 
 func exportMaterialProgressCsv(s rest.Server, store Store) rest.Handler {
 	type responseBody struct {
-		Area       string `csv:"Area"`
-		Subject    string `csv:"Subject"`
-		Material   string `csv:"Material"`
-		Assessment string `csv:"Assessment"`
+		Areas       string `csv:"Areas"`
+		Subjects    string `csv:"Subjects"`
+		Materials   string `csv:"Materials"`
+		Assessments string `csv:"Assessments"`
 	}
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		studentId := chi.URLParam(r, "studentId")
@@ -921,13 +921,13 @@ func exportMaterialProgressCsv(s rest.Server, store Store) rest.Handler {
 			for _, subject := range area.Subjects {
 				for _, material := range subject.Materials {
 					line := responseBody{
-						Area:     area.Name,
-						Subject:  subject.Name,
-						Material: material.Name,
+						Areas:     area.Name,
+						Subjects:  subject.Name,
+						Materials: material.Name,
 					}
 					for _, materialProgress := range progress {
 						if materialProgress.MaterialId == material.Id {
-							line.Assessment = domain.GetAssessmentName(materialProgress.Stage)
+							line.Assessments = domain.GetAssessmentName(materialProgress.Stage)
 							break
 						}
 					}
