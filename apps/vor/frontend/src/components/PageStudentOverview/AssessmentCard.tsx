@@ -4,17 +4,14 @@ import { FC, Fragment, useState } from "react"
 import { jsx, Box, Button, Card, Flex } from "theme-ui"
 import { borderBottom } from "../../border"
 import { isEmpty } from "../../domain/array"
-import { exportMaterialProgress } from "../../export"
+import { exportMaaterialProgressCsv } from "../../export"
 import { useGetCurriculumAreas } from "../../hooks/api/useGetCurriculumAreas"
 import {
-  MaterialProgress,
   Assessment,
+  MaterialProgress,
   useGetStudentMaterialProgress,
 } from "../../hooks/api/useGetStudentMaterialProgress"
-import useVisibilityState from "../../hooks/useVisibilityState"
 import { ADMIN_CURRICULUM_URL, STUDENT_PROGRESS_URL } from "../../routes"
-import Dialog from "../Dialog/Dialog"
-import DialogHeader from "../DialogHeader/DialogHeader"
 import InformationalCard from "../InformationalCard/InformationalCard"
 import { Link } from "../Link/Link"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
@@ -35,11 +32,15 @@ export const AssessmentCard: FC<Props> = ({ studentId, studentName = "" }) => {
   const areas = useGetCurriculumAreas()
   const progress = useGetStudentMaterialProgress(studentId)
   const isLoading = areas.isLoading || progress.isLoading
-  const exportDialog = useVisibilityState()
+  // const exportDialog = useVisibilityState()
 
   const handleItemClick = (item: MaterialProgress) => {
     setSelected(item)
     setIsEditing(true)
+  }
+
+  const handleExport = async () => {
+    await exportMaaterialProgressCsv(studentId, studentName)
   }
 
   // Derived state
@@ -65,7 +66,7 @@ export const AssessmentCard: FC<Props> = ({ studentId, studentName = "" }) => {
             <Trans>Curriculum Progress</Trans>
           </Typography.H6>
 
-          <Button variant="secondary" ml="auto" onClick={exportDialog.show}>
+          <Button variant="secondary" ml="auto" onClick={handleExport}>
             Export
           </Button>
         </Flex>
@@ -122,14 +123,14 @@ export const AssessmentCard: FC<Props> = ({ studentId, studentName = "" }) => {
         />
       )}
 
-      {exportDialog.visible && (
-        <ExportProgressDialog
-          onDismiss={exportDialog.hide}
-          onExported={exportDialog.hide}
-          studentId={studentId}
-          studentName={studentName}
-        />
-      )}
+      {/* {exportDialog.visible && ( */}
+      {/*  <ExportProgressDialog */}
+      {/*    onDismiss={exportDialog.hide} */}
+      {/*    onExported={exportDialog.hide} */}
+      {/*    studentId={studentId} */}
+      {/*    studentName={studentName} */}
+      {/*  /> */}
+      {/* )} */}
     </Fragment>
   )
 }
@@ -207,26 +208,26 @@ const Heading: FC<{ text: string }> = ({ text }) => (
   </Typography.Body>
 )
 
-const ExportProgressDialog: FC<{
-  onDismiss: () => void
-  onExported: () => void
-  studentId: string
-  studentName: string
-}> = ({ onDismiss, onExported, studentName, studentId }) => {
-  const handleExport = async () => {
-    await exportMaterialProgress(studentId, studentName)
-    onExported()
-  }
-
-  return (
-    <Dialog>
-      <DialogHeader
-        title={t`Export Progress`}
-        onAccept={handleExport}
-        onCancel={onDismiss}
-      />
-    </Dialog>
-  )
-}
+// const ExportProgressDialog: FC<{
+//   onDismiss: () => void
+//   onExported: () => void
+//   studentId: string
+//   studentName: string
+// }> = ({ onDismiss, onExported, studentName, studentId }) => {
+//   const handleExport = async () => {
+//     await exportMaterialProgress(studentId, studentName)
+//     onExported()
+//   }
+//
+//   return (
+//     <Dialog>
+//       <DialogHeader
+//         title={t`Export Progress`}
+//         onAccept={handleExport}
+//         onCancel={onDismiss}
+//       />
+//     </Dialog>
+//   )
+// }
 
 export default AssessmentCard
