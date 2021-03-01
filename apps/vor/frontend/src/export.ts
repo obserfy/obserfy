@@ -21,7 +21,7 @@ export async function exportStudentObservations(
   a.setAttribute(
     "download",
     `${studentName}_${startDate.format("DD-MMM-YY")}_${endDate.format(
-      "DD-MMM-YY"
+      "YYYY-MM-DD"
     )}.csv`
   )
   document.body.appendChild(a)
@@ -29,15 +29,15 @@ export async function exportStudentObservations(
   document.body.removeChild(a)
 }
 
-export async function exportMaterialProgress(
+export async function exportMaaterialProgressCsv(
   studentId: string,
   studentName: string
 ) {
   const res = await fetch(
-    `${BASE_URL}/students/${studentId}/materialsProgress/export/pdf`
+    `${BASE_URL}/students/${studentId}/materialsProgress/export/csv`
   )
 
-  const blob = new Blob([await res.blob()], { type: "appplication/pdf" })
+  const blob = new Blob([await res.blob()], { type: "text/csv" })
   const url = URL.createObjectURL(blob)
   const a = document.createElement("a")
 
@@ -46,8 +46,8 @@ export async function exportMaterialProgress(
   a.setAttribute(
     "download",
     `${studentName.toLowerCase().replace(" ", "-")}-${dayjs().format(
-      "DD-MMM-YY"
-    )}.pdf`
+      "YYYY-MM-DD"
+    )}.csv`
   )
   document.body.appendChild(a)
   a.click()
