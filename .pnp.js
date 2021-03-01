@@ -9000,7 +9000,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "socket.io-client",
-        "npm:3.1.1"
+        "npm:3.1.2"
       ],
       [
         "socket.io-parser",
@@ -39165,7 +39165,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react", "npm:17.0.1"],
             ["react-dom", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:17.0.1"],
             ["react-helmet", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:6.1.0"],
-            ["socket.io-client", "npm:3.1.1"],
+            ["socket.io-client", "npm:3.1.2"],
             ["stylelint", "npm:13.11.0"],
             ["stylelint-config-prettier", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:8.0.2"],
             ["stylelint-config-standard", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:20.0.0"],
@@ -57169,6 +57169,20 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/socket.io-client-npm-3.1.1-c73401c519-a4461301ef.zip/node_modules/socket.io-client/",
           "packageDependencies": [
             ["socket.io-client", "npm:3.1.1"],
+            ["@types/component-emitter", "npm:1.2.10"],
+            ["backo2", "npm:1.0.2"],
+            ["component-emitter", "npm:1.3.0"],
+            ["debug", "virtual:82623965430faf782786642753f92d0b7f79c7fb087a47bd0a6605aa847dfe3ef58a8973604ba623a267d6da9edaf7fd1aaa710ef9ef2f748e72c5dbf6a2e66b#npm:4.3.2"],
+            ["engine.io-client", "npm:4.1.0"],
+            ["parseuri", "npm:0.0.6"],
+            ["socket.io-parser", "npm:4.0.4"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:3.1.2", {
+          "packageLocation": "./.yarn/cache/socket.io-client-npm-3.1.2-13958b267c-5b498bca84.zip/node_modules/socket.io-client/",
+          "packageDependencies": [
+            ["socket.io-client", "npm:3.1.2"],
             ["@types/component-emitter", "npm:1.2.10"],
             ["backo2", "npm:1.0.2"],
             ["component-emitter", "npm:1.3.0"],
