@@ -6248,12 +6248,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@segment/snippet@npm:4.13.1":
-  version: 4.13.1
-  resolution: "@segment/snippet@npm:4.13.1"
+"@segment/snippet@npm:4.13.2":
+  version: 4.13.2
+  resolution: "@segment/snippet@npm:4.13.2"
   dependencies:
     "@ndhoule/map": ^2.0.1
-  checksum: 7c4a46f0417ea31dda4d7ad02b72bc7bdd1e6b69fd97eba3c095a4f9be15e110064566caf477aea52902ccbcdec6a53d05e5d151d152806d67ce3d51e1a84bd1
+  checksum: a1393d511194353283493d5f97b3cae0a8b4f5c8671d4063d59b84f6bbc6fc004a647efa1d0494da30e59f80c2997690654faf050150c182b75cb7d987fdb356
   languageName: node
   linkType: hard
 
@@ -18921,7 +18921,7 @@ fsevents@~2.3.1:
   resolution: "gaia@workspace:apps/gaia"
   dependencies:
     "@auth0/nextjs-auth0": 0.16.1
-    "@segment/snippet": 4.13.1
+    "@segment/snippet": 4.13.2
     "@sentry/browser": 6.2.0
     "@sentry/integrations": 6.2.0
     "@sentry/node": 6.2.0
