@@ -1209,7 +1209,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@segment/snippet",
-        "npm:4.13.1"
+        "npm:4.13.2"
       ],
       [
         "@sentry/browser",
@@ -24099,10 +24099,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@segment/snippet", [
-        ["npm:4.13.1", {
-          "packageLocation": "./.yarn/cache/@segment-snippet-npm-4.13.1-e6dca3e937-7c4a46f041.zip/node_modules/@segment/snippet/",
+        ["npm:4.13.2", {
+          "packageLocation": "./.yarn/cache/@segment-snippet-npm-4.13.2-0a8949668f-a1393d5111.zip/node_modules/@segment/snippet/",
           "packageDependencies": [
-            ["@segment/snippet", "npm:4.13.1"],
+            ["@segment/snippet", "npm:4.13.2"],
             ["@ndhoule/map", "npm:2.0.1"]
           ],
           "linkType": "HARD",
@@ -39452,7 +39452,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["gaia", "workspace:apps/gaia"],
             ["@auth0/nextjs-auth0", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.16.1"],
-            ["@segment/snippet", "npm:4.13.1"],
+            ["@segment/snippet", "npm:4.13.2"],
             ["@sentry/browser", "npm:6.2.0"],
             ["@sentry/integrations", "npm:6.2.0"],
             ["@sentry/node", "npm:6.2.0"],
