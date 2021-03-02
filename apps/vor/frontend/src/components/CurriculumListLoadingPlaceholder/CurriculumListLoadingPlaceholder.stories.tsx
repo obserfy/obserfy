@@ -1,6 +1,6 @@
 import React from "react"
 import { Meta, Story } from "@storybook/react"
-import CurriculumListLoadingPlaceholder, { CurriculumListLoadingPlaceholderProps } from "./CurriculumListLoadingPlaceholder"
+import CurriculumListLoadingPlaceholder from "./CurriculumListLoadingPlaceholder"
 
 export default {
   title: "Core/CurriculumListLoadingPlaceholder",
@@ -10,7 +10,7 @@ export default {
   },
 } as Meta
 
-const Template: Story<CurriculumListLoadingPlaceholderProps> = (args) => <CurriculumListLoadingPlaceholder {...args} />
+const Template: Story = (args) => <CurriculumListLoadingPlaceholder {...args} />
 
 export const Default = Template.bind({})
 Default.args = {}

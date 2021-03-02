@@ -47,4 +47,3 @@ declare module "gatsby-theme-i18n" {
   const useLocalization: () => { locale: string }
   export { LocalizedLink, useLocalization, navigate }
 }
-
