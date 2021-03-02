@@ -2212,7 +2212,6 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___defaultLang
   pluginCreator___pluginOptions___configPath
   pluginCreator___pluginOptions___localeDir
-  pluginCreator___pluginOptions___analyzerPort
   pluginCreator___pluginOptions___emitSchema___src___generated___gatsby_schema_graphql
   pluginCreator___pluginOptions___pathCheck
   pluginCreator___pluginOptions___allExtensions
@@ -2426,7 +2425,6 @@ enum SitePluginFieldsEnum {
   pluginOptions___defaultLang
   pluginOptions___configPath
   pluginOptions___localeDir
-  pluginOptions___analyzerPort
   pluginOptions___emitSchema___src___generated___gatsby_schema_graphql
   pluginOptions___pathCheck
   pluginOptions___allExtensions
@@ -2577,7 +2575,6 @@ type SitePluginPluginOptions {
   defaultLang: String
   configPath: String
   localeDir: String
-  analyzerPort: Int
   emitSchema: SitePluginPluginOptionsEmitSchema
   pathCheck: Boolean
   allExtensions: Boolean
@@ -2626,7 +2623,6 @@ input SitePluginPluginOptionsFilterInput {
   defaultLang: StringQueryOperatorInput
   configPath: StringQueryOperatorInput
   localeDir: StringQueryOperatorInput
-  analyzerPort: IntQueryOperatorInput
   emitSchema: SitePluginPluginOptionsEmitSchemaFilterInput
   pathCheck: BooleanQueryOperatorInput
   allExtensions: BooleanQueryOperatorInput

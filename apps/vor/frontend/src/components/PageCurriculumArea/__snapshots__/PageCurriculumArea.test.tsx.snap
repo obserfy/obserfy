@@ -1,6 +1,62 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageCurriculumArea should render correctly 1`] = `
+@keyframes animation-0 {
+  0% {
+    background-color: rgba(165, 165, 165, 0.05);
+  }
+
+  50% {
+    background-color: rgba(165, 165, 165, 0.2);
+  }
+
+  100% {
+    background-color: rgba(165, 165, 165, 0.05);
+  }
+}
+
+@keyframes animation-0 {
+  0% {
+    background-color: rgba(165, 165, 165, 0.05);
+  }
+
+  50% {
+    background-color: rgba(165, 165, 165, 0.2);
+  }
+
+  100% {
+    background-color: rgba(165, 165, 165, 0.05);
+  }
+}
+
+@keyframes animation-0 {
+  0% {
+    background-color: rgba(165, 165, 165, 0.05);
+  }
+
+  50% {
+    background-color: rgba(165, 165, 165, 0.2);
+  }
+
+  100% {
+    background-color: rgba(165, 165, 165, 0.05);
+  }
+}
+
+@keyframes animation-0 {
+  0% {
+    background-color: rgba(165, 165, 165, 0.05);
+  }
+
+  50% {
+    background-color: rgba(165, 165, 165, 0.2);
+  }
+
+  100% {
+    background-color: rgba(165, 165, 165, 0.05);
+  }
+}
+
 .emotion-0 {
   box-sizing: border-box;
   margin: 0;
@@ -309,6 +365,17 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  border-radius: 6px;
+  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
+  animation: 1s ease-in-out 0s infinite animation-0;
+  height: 24px;
+  width: 112px;
+}
+
+.emotion-18 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
   -ms-appearance: none;
@@ -375,25 +442,25 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   flex-shrink: 0;
 }
 
-.emotion-17:disabled {
+.emotion-18:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-17:hover,
-.emotion-17:focus {
+.emotion-18:hover,
+.emotion-18:focus {
   background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
   border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-17:hover:disabled,
-.emotion-17:focus:disabled {
+.emotion-18:hover:disabled,
+.emotion-18:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
 }
 
-.emotion-18 {
+.emotion-19 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -407,7 +474,7 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   height: 16px;
 }
 
-.emotion-19 {
+.emotion-20 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -476,25 +543,25 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   flex-shrink: 0;
 }
 
-.emotion-19:disabled {
+.emotion-20:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-19:hover,
-.emotion-19:focus {
+.emotion-20:hover,
+.emotion-20:focus {
   background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
   border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-19:hover:disabled,
-.emotion-19:focus:disabled {
+.emotion-20:hover:disabled,
+.emotion-20:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
 }
 
-.emotion-20 {
+.emotion-21 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -508,7 +575,7 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   height: 16px;
 }
 
-.emotion-21 {
+.emotion-22 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -526,7 +593,52 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   border-bottom-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
 }
 
-.emotion-22 {
+.emotion-23 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+}
+
+.emotion-24 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin: 16px;
+  border-radius: 6px;
+  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
+  animation: 1s ease-in-out 0s infinite animation-0;
+  height: 21px;
+  width: 100px;
+}
+
+.emotion-26 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin: 16px;
+  border-radius: 6px;
+  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
+  animation: 1s ease-in-out 0s infinite animation-0;
+  height: 21px;
+  width: 200px;
+}
+
+.emotion-28 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin: 16px;
+  border-radius: 6px;
+  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
+  animation: 1s ease-in-out 0s infinite animation-0;
+  height: 21px;
+  width: 150px;
+}
+
+.emotion-29 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -545,7 +657,7 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   border-bottom-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
 }
 
-.emotion-23 {
+.emotion-30 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -559,7 +671,7 @@ exports[`PageCurriculumArea should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-24 {
+.emotion-31 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -647,37 +759,62 @@ exports[`PageCurriculumArea should render correctly 1`] = `
         >
           <h6
             class="emotion-16"
-          />
-          <button
-            class="emotion-17"
           >
             <div
-              class="emotion-18"
+              class="emotion-17"
+            />
+          </h6>
+          <button
+            class="emotion-18"
+          >
+            <div
+              class="emotion-19"
             />
           </button>
           <button
-            class="emotion-19"
+            class="emotion-20"
           >
             <div
-              class="emotion-20"
+              class="emotion-21"
             />
           </button>
         </div>
       </div>
       <p
-        class="emotion-21"
+        class="emotion-22"
       >
         Subjects
       </p>
       <div
-        class="emotion-22"
+        class="emotion-23"
+      >
+        <div
+          class="emotion-24"
+        />
+      </div>
+      <div
+        class="emotion-23"
+      >
+        <div
+          class="emotion-26"
+        />
+      </div>
+      <div
+        class="emotion-23"
+      >
+        <div
+          class="emotion-28"
+        />
+      </div>
+      <div
+        class="emotion-29"
         role="button"
       >
         <div
-          class="emotion-23"
+          class="emotion-30"
         />
         <p
-          class="emotion-24"
+          class="emotion-31"
         >
           Add new subject
         </p>
