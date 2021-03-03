@@ -106,9 +106,9 @@ msgstr "Create lesson plans"
 #~ msgid "Creating Lesson plan"
 #~ msgstr "Creating Lesson plan"
 
-#: src/templates/docs.js:29
-#~ msgid "Curriculum"
-#~ msgstr "Curriculum"
+#: src/components/DocsSidebar.tsx:15
+msgid "Curriculum"
+msgstr "Curriculum"
 
 #: src/pages/index.tsx:135
 msgid "Dashboard for parents to see their child's progress in realtime"
@@ -372,9 +372,9 @@ msgstr "Roadmap"
 msgid "Run your Montessori School efficiently"
 msgstr "Run your Montessori School efficiently"
 
-#: src/templates/docs.js:26
-#~ msgid "School"
-#~ msgstr "School"
+#: src/components/DocsSidebar.tsx:14
+msgid "School"
+msgstr "School"
 
 #: src/templates/docs.js:56
 #~ msgid "Self-hosting Obserfy"
@@ -487,6 +487,10 @@ msgstr "Try it now"
 #: src/pages/pricing.tsx:26
 msgid "Unlimited students"
 msgstr "Unlimited students"
+
+#: src/components/DocsSidebar.tsx:12
+msgid "Using Markdown"
+msgstr "Using Markdown"
 
 #: src/pages/pricing.tsx:73
 msgid "We don't charge or limit the number of students or parents that you work with."

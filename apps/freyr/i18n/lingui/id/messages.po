@@ -107,6 +107,10 @@ msgstr "Hubungi Kami"
 msgid "Create lesson plans"
 msgstr "Rencanakan pembelajaran"
 
+#: src/components/DocsSidebar.tsx:15
+msgid "Curriculum"
+msgstr ""
+
 #: src/pages/index.tsx:135
 msgid "Dashboard for parents to see their child's progress in realtime"
 msgstr "Dashboard khusus wali murid untuk mengikuti progres anak mereka secara realtime"
@@ -321,6 +325,10 @@ msgstr "Roadmap"
 msgid "Run your Montessori School efficiently"
 msgstr "Jalankan sekolah Montessori anda dengan efisien"
 
+#: src/components/DocsSidebar.tsx:14
+msgid "School"
+msgstr ""
+
 #: src/pages/contact.tsx:32
 msgid "Send"
 msgstr "Kirim"
@@ -408,6 +416,10 @@ msgstr "Coba sekarang"
 #: src/pages/pricing.tsx:26
 msgid "Unlimited students"
 msgstr "Jumlah murid tak terbatas"
+
+#: src/components/DocsSidebar.tsx:12
+msgid "Using Markdown"
+msgstr ""
 
 #: src/pages/pricing.tsx:73
 msgid "We don't charge or limit the number of students or parents that you work with."
