@@ -4,7 +4,6 @@ import { Box, Button, Flex, ThemeUIStyleObject } from "theme-ui"
 import { borderBottom, borderRight } from "../../border"
 import { useGetCurriculum } from "../../hooks/api/useGetCurriculum"
 import { useGetCurriculumAreas } from "../../hooks/api/useGetCurriculumAreas"
-import { getSchoolId } from "../../hooks/schoolIdState"
 import { useQueryString } from "../../hooks/useQueryString"
 import useVisibilityState from "../../hooks/useVisibilityState"
 import { ReactComponent as EditIcon } from "../../icons/edit.svg"
@@ -79,7 +78,7 @@ export const PageCurriculumSettings: FC<{ sx?: ThemeUIStyleObject }> = ({
         </Flex>
       </TranslucentBar>
 
-      <CurriculumAreas curriculumId={getSchoolId()} />
+      <CurriculumAreas />
 
       {data && deleteDialog.visible && (
         <DeleteCurriculumDialog
@@ -99,9 +98,8 @@ export const PageCurriculumSettings: FC<{ sx?: ThemeUIStyleObject }> = ({
   )
 }
 
-const CurriculumAreas: FC<{
-  curriculumId: string
-}> = ({ curriculumId }) => {
+const CurriculumAreas: FC = () => {
+  const curriculum = useGetCurriculum()
   const newAreaDialog = useVisibilityState()
   const areas = useGetCurriculumAreas()
 
@@ -159,9 +157,9 @@ const CurriculumAreas: FC<{
         </Typography.Body>
       </Flex>
 
-      {newAreaDialog.visible && (
+      {newAreaDialog.visible && curriculum.data && (
         <NewAreaDialog
-          curriculumId={curriculumId}
+          curriculumId={curriculum.data.id}
           onDismiss={newAreaDialog.hide}
         />
       )}
