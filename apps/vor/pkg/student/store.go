@@ -28,4 +28,5 @@ type Store interface {
 	CreateImage(studentId string, file multipart.File, header *multipart.FileHeader) (domain.Image, error)
 	FindStudentImages(id string) ([]postgres.Image, error)
 	FindStudentVideos(studentId string) ([]domain.Video, error)
+	FindCurriculum(studentId string) (domain.Curriculum, error)
 }

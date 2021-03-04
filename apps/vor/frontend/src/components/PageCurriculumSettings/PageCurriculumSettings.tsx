@@ -11,6 +11,7 @@ import { ReactComponent as NextIcon } from "../../icons/next-arrow.svg"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import { ReactComponent as DeleteIcon } from "../../icons/trash.svg"
 import { ADMIN_URL, CURRICULUM_AREA_URL } from "../../routes"
+import CurriculumListLoadingPlaceholder from "../CurriculumListLoadingPlaceholder/CurriculumListLoadingPlaceholder"
 import DeleteCurriculumDialog from "../DeleteCurriculumDialog/DeleteCurriculumDialog"
 import EditCurriculumDialog from "../EditCurriculumDialog/EditCurriculumDialog"
 import Icon from "../Icon/Icon"
@@ -25,7 +26,7 @@ import SetupCurriculum from "./SetupCurriculum"
 export const PageCurriculumSettings: FC<{ sx?: ThemeUIStyleObject }> = ({
   sx,
 }) => {
-  const { data, isLoading, isError, isSuccess } = useGetCurriculum()
+  const { data, isLoading, isError } = useGetCurriculum()
   const editDialog = useVisibilityState()
   const deleteDialog = useVisibilityState()
 
@@ -54,38 +55,30 @@ export const PageCurriculumSettings: FC<{ sx?: ThemeUIStyleObject }> = ({
           ]}
         />
 
-        {isSuccess && data && (
-          <Flex px={3} py={3} sx={{ alignItems: "center" }}>
-            <Typography.H6
-              mr={3}
-              sx={{
-                lineHeight: 1.2,
-                fontSize: [3, 3, 1],
-              }}
-            >
-              {data.name}
-            </Typography.H6>
-            <Button
-              variant="outline"
-              onClick={deleteDialog.show}
-              color="danger"
-              px={2}
-              ml="auto"
-            >
-              <Icon size={16} as={DeleteIcon} fill="danger" />
-            </Button>
-            <Button variant="outline" px={2} ml={2} onClick={editDialog.show}>
-              <Icon size={16} as={EditIcon} />
-            </Button>
-          </Flex>
-        )}
+        <Flex px={3} py={3} sx={{ alignItems: "center" }}>
+          <Typography.H6 mr={3} sx={{ lineHeight: 1.2, fontSize: [3, 3, 1] }}>
+            {isLoading ? (
+              <LoadingPlaceholder sx={{ height: 24, width: 112 }} />
+            ) : (
+              data?.name
+            )}
+          </Typography.H6>
+          <Button
+            variant="outline"
+            onClick={deleteDialog.show}
+            color="danger"
+            px={2}
+            ml="auto"
+          >
+            <Icon size={16} as={DeleteIcon} fill="danger" />
+          </Button>
+          <Button variant="outline" px={2} ml={2} onClick={editDialog.show}>
+            <Icon size={16} as={EditIcon} />
+          </Button>
+        </Flex>
       </TranslucentBar>
 
-      {isLoading && <LoadingState />}
-
-      {isSuccess && data && (
-        <CurriculumAreas curriculumName={data.name} curriculumId={data.id} />
-      )}
+      <CurriculumAreas />
 
       {data && deleteDialog.visible && (
         <DeleteCurriculumDialog
@@ -105,10 +98,8 @@ export const PageCurriculumSettings: FC<{ sx?: ThemeUIStyleObject }> = ({
   )
 }
 
-const CurriculumAreas: FC<{
-  curriculumId: string
-  curriculumName: string
-}> = ({ curriculumId }) => {
+const CurriculumAreas: FC = () => {
+  const curriculum = useGetCurriculum()
   const newAreaDialog = useVisibilityState()
   const areas = useGetCurriculumAreas()
 
@@ -123,6 +114,8 @@ const CurriculumAreas: FC<{
       >
         <Trans>Areas</Trans>
       </Typography.Body>
+
+      {areas.isLoading && <CurriculumListLoadingPlaceholder />}
 
       {areas.data?.map((area) => {
         const selected = areaId === area.id
@@ -164,23 +157,14 @@ const CurriculumAreas: FC<{
         </Typography.Body>
       </Flex>
 
-      {newAreaDialog.visible && (
+      {newAreaDialog.visible && curriculum.data && (
         <NewAreaDialog
-          curriculumId={curriculumId}
+          curriculumId={curriculum.data.id}
           onDismiss={newAreaDialog.hide}
         />
       )}
     </Box>
   )
 }
-
-const LoadingState: FC = () => (
-  <Box p={3}>
-    <LoadingPlaceholder sx={{ width: "100%", height: "5rem" }} />
-    <LoadingPlaceholder sx={{ width: "100%", height: "6rem" }} mt={3} />
-    <LoadingPlaceholder sx={{ width: "100%", height: "6rem" }} mt={3} />
-    <LoadingPlaceholder sx={{ width: "100%", height: "6rem" }} mt={3} />
-  </Box>
-)
 
 export default PageCurriculumSettings
