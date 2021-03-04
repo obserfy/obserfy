@@ -14,6 +14,10 @@ const DocsSidebar = () => (
       to="/docs/giving-access-to-parents"
     />
     <SidebarEntry text={t`Getting support`} to="/docs/getting-support" />
+    <SidebarEntry text={t`Using Markdown`} to="/docs/using-markdown" />
+
+    <SidebarHeader text={t`School`} />
+    <SidebarEntry text={t`Curriculum`} to="/docs/curriculum" />
     {/* <SidebarEntry text={t`Text formatting`} /> */}
 
     {/* <SidebarHeader text={t`School`} /> */}
