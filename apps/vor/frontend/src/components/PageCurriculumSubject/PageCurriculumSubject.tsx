@@ -25,6 +25,7 @@ import {
   CURRICULUM_AREA_URL,
   CURRICULUM_MATERIAL_URL,
 } from "../../routes"
+import CurriculumListLoadingPlaceholder from "../CurriculumListLoadingPlaceholder/CurriculumListLoadingPlaceholder"
 import DeleteSubjectDialog from "../DeleteSubjectDialog/DeleteSubjectDialog"
 import Dialog from "../Dialog/Dialog"
 import DialogHeader from "../DialogHeader/DialogHeader"
@@ -32,6 +33,7 @@ import DraggableListItem from "../DraggableListItem/DraggableListItem"
 import Icon from "../Icon/Icon"
 import Input from "../Input/Input"
 import { Link, navigate } from "../Link/Link"
+import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import Spacer from "../Spacer/Spacer"
 import TopBar, { breadCrumb } from "../TopBar/TopBar"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
@@ -73,7 +75,11 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
 
         <Flex mx={3} py={3} sx={{ alignItems: "center" }}>
           <Typography.H6 mr={3} sx={{ lineHeight: 1.2, fontSize: [3, 3, 1] }}>
-            {subject.data?.name}
+            {subject.isLoading ? (
+              <LoadingPlaceholder sx={{ height: 24, width: 112 }} />
+            ) : (
+              subject.data?.name
+            )}
           </Typography.H6>
 
           <Button
@@ -107,12 +113,16 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
       </Typography.Body>
       <Spacer />
 
-      <MaterialList
-        subjectId={subjectId}
-        areaId={areaId}
-        materials={materials.data ?? []}
-        currMaterialId={materialId}
-      />
+      {materials.isLoading ? (
+        <CurriculumListLoadingPlaceholder length={3} />
+      ) : (
+        <MaterialList
+          subjectId={subjectId}
+          areaId={areaId}
+          materials={materials.data ?? []}
+          currMaterialId={materialId}
+        />
+      )}
 
       <Flex
         role="button"

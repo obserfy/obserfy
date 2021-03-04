@@ -20,6 +20,7 @@ import {
   ADMIN_URL,
   CURRICULUM_SUBJECT_URL,
 } from "../../routes"
+import CurriculumListLoadingPlaceholder from "../CurriculumListLoadingPlaceholder/CurriculumListLoadingPlaceholder"
 import DeleteAreaDialog from "../DeleteAreaDialog/DeleteAreaDialog"
 import Dialog from "../Dialog/Dialog"
 import DialogHeader from "../DialogHeader/DialogHeader"
@@ -28,6 +29,7 @@ import EditAreaDialog from "../EditAreaDialog/EditAreaDialog"
 import Icon from "../Icon/Icon"
 import Input from "../Input/Input"
 import { Link, navigate } from "../Link/Link"
+import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import TopBar, { breadCrumb } from "../TopBar/TopBar"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
 import Typography from "../Typography/Typography"
@@ -69,14 +71,12 @@ const PageCurriculumArea: FC<Props> = ({ id, sx }) => {
         />
 
         <Flex mx={3} py={3} sx={{ alignItems: "center" }}>
-          <Typography.H6
-            mr={3}
-            sx={{
-              lineHeight: 1.2,
-              fontSize: [3, 3, 1],
-            }}
-          >
-            {area.data?.name}
+          <Typography.H6 mr={3} sx={{ lineHeight: 1.2, fontSize: [3, 3, 1] }}>
+            {area.isLoading ? (
+              <LoadingPlaceholder sx={{ height: 24, width: 112 }} />
+            ) : (
+              area.data?.name
+            )}
           </Typography.H6>
           <Button
             variant="outline"
@@ -108,11 +108,15 @@ const PageCurriculumArea: FC<Props> = ({ id, sx }) => {
         <Trans>Subjects</Trans>
       </Typography.Body>
 
-      <SubjectList
-        areaId={id}
-        subjects={subjects.data ?? []}
-        currSubjectId={subjectId}
-      />
+      {subjects.isLoading ? (
+        <CurriculumListLoadingPlaceholder length={1} />
+      ) : (
+        <SubjectList
+          areaId={id}
+          subjects={subjects.data ?? []}
+          currSubjectId={subjectId}
+        />
+      )}
 
       <Flex
         role="button"

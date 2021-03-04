@@ -362,3 +362,60 @@ func (s StudentStore) FindStudentVideos(studentId string) ([]domain.Video, error
 	}
 	return videos, nil
 }
+
+func (s StudentStore) FindCurriculum(studentId string) (domain.Curriculum, error) {
+	student := Student{Id: studentId}
+	if err := s.Model(&student).
+		WherePK().
+		Relation("School").
+		Relation("School.Curriculum").
+		Relation("School.Curriculum.Areas").
+		Relation("School.Curriculum.Areas.Subjects", func(q *orm.Query) (*orm.Query, error) {
+			return q.Order("order"), nil
+		}).
+		Relation("School.Curriculum.Areas.Subjects.Materials", func(q *orm.Query) (*orm.Query, error) {
+			return q.Order("order"), nil
+		}).
+		Select(); err != nil {
+		return domain.Curriculum{}, richErrors.Wrap(err, "failed to query school")
+	}
+
+	curriculum := student.School.Curriculum
+	var areas []domain.Area
+	for _, a := range curriculum.Areas {
+		var subjects []domain.Subject
+		for _, s := range a.Subjects {
+			var materials []domain.Material
+			for _, m := range s.Materials {
+				materials = append(materials, domain.Material{
+					Id:          m.Id,
+					SubjectId:   m.SubjectId,
+					Name:        m.Name,
+					Order:       m.Order,
+					Description: m.Description,
+				})
+			}
+			subjects = append(subjects, domain.Subject{
+				Id:          s.Id,
+				AreaId:      s.AreaId,
+				Name:        s.Name,
+				Order:       s.Order,
+				Description: s.Description,
+				Materials:   materials,
+			})
+		}
+		areas = append(areas, domain.Area{
+			Id:          a.Id,
+			Name:        a.Name,
+			Subjects:    subjects,
+			Description: a.Description,
+		})
+	}
+
+	return domain.Curriculum{
+		Id:          curriculum.Id,
+		Name:        curriculum.Name,
+		Areas:       areas,
+		Description: curriculum.Descriptions,
+	}, nil
+}

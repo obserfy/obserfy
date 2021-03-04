@@ -21,7 +21,32 @@ export async function exportStudentObservations(
   a.setAttribute(
     "download",
     `${studentName}_${startDate.format("DD-MMM-YY")}_${endDate.format(
-      "DD-MMM-YY"
+      "YYYY-MM-DD"
+    )}.csv`
+  )
+  document.body.appendChild(a)
+  a.click()
+  document.body.removeChild(a)
+}
+
+export async function exportMaaterialProgressCsv(
+  studentId: string,
+  studentName: string
+) {
+  const res = await fetch(
+    `${BASE_URL}/students/${studentId}/materialsProgress/export/csv`
+  )
+
+  const blob = new Blob([await res.blob()], { type: "text/csv" })
+  const url = URL.createObjectURL(blob)
+  const a = document.createElement("a")
+
+  a.setAttribute("hidden", "")
+  a.setAttribute("href", url)
+  a.setAttribute(
+    "download",
+    `${studentName.toLowerCase().replace(" ", "-")}-${dayjs().format(
+      "YYYY-MM-DD"
     )}.csv`
   )
   document.body.appendChild(a)
