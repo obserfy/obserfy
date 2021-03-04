@@ -32,6 +32,6 @@
   },
   "homepage": "https://github.com/gatsbyjs/themes/tree/master/packages/gatsby-theme-i18n#readme",
   "devDependencies": {
-    "core-js": "3.9.0"
+    "core-js": "3.9.1"
   }
 }
