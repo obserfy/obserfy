@@ -73,6 +73,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
+              quality: 80,
               withWebp: true,
               withAvif: true
             },
@@ -104,12 +105,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-postcss`,
-    {
-      resolve: `gatsby-plugin-plausible`,
-      options: {
-        domain: `obserfy.com`,
-      },
-    },
     `gatsby-plugin-netlify`,
     // {
     //   resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
