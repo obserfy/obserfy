@@ -18682,9 +18682,9 @@ __metadata:
     eslint-plugin-react-hooks: 4.2.0
     gatsby: 2.32.8
     gatsby-plugin-canonical-urls: 2.10.0
-    gatsby-plugin-image: ^1.0.0
+    gatsby-plugin-image: 1.0.0
     gatsby-plugin-manifest: 2.12.1
-    gatsby-plugin-mdx: ^2.0.0
+    gatsby-plugin-mdx: 2.0.0
     gatsby-plugin-netlify: 2.11.0
     gatsby-plugin-netlify-cache: 1.2.0
     gatsby-plugin-offline: 3.10.2
@@ -18697,20 +18697,20 @@ __metadata:
     gatsby-plugin-sitemap: 2.12.0
     gatsby-plugin-typegen: 2.2.4
     gatsby-plugin-webpack-bundle-analyser-v2: 1.1.20
-    gatsby-remark-images: ^4.0.0
-    gatsby-remark-prismjs: ^4.0.0
+    gatsby-remark-images: 4.0.0
+    gatsby-remark-prismjs: 4.0.0
     gatsby-source-filesystem: 2.11.1
     gatsby-theme-i18n: 1.0.5
     gatsby-theme-i18n-lingui: 1.0.4
-    gatsby-transformer-remark: ^3.0.0
+    gatsby-transformer-remark: 3.0.0
     gatsby-transformer-sharp: 2.12.0
     make-plural: 6.2.2
     postcss: 8.2.6
     postcss-preset-env: 6.7.0
     preact: 10.5.12
     prettier: 2.2.1
-    prism-themes: ^1.5.0
-    prismjs: ^1.23.0
+    prism-themes: 1.5.0
+    prismjs: 1.23.0
     react: 17.0.1
     react-dom: 17.0.1
     react-helmet: 6.1.0
@@ -19215,7 +19215,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-image@npm:^1.0.0":
+"gatsby-plugin-image@npm:1.0.0":
   version: 1.0.0
   resolution: "gatsby-plugin-image@npm:1.0.0"
   dependencies:
@@ -19264,7 +19264,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-mdx@npm:^2.0.0":
+"gatsby-plugin-mdx@npm:2.0.0":
   version: 2.0.0
   resolution: "gatsby-plugin-mdx@npm:2.0.0"
   dependencies:
@@ -19699,7 +19699,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"gatsby-remark-images@npm:^4.0.0":
+"gatsby-remark-images@npm:4.0.0":
   version: 4.0.0
   resolution: "gatsby-remark-images@npm:4.0.0"
   dependencies:
@@ -19721,7 +19721,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"gatsby-remark-prismjs@npm:^4.0.0":
+"gatsby-remark-prismjs@npm:4.0.0":
   version: 4.0.0
   resolution: "gatsby-remark-prismjs@npm:4.0.0"
   dependencies:
@@ -19818,7 +19818,7 @@ fsevents@~2.3.1:
   languageName: unknown
   linkType: soft
 
-"gatsby-transformer-remark@npm:^3.0.0":
+"gatsby-transformer-remark@npm:3.0.0":
   version: 3.0.0
   resolution: "gatsby-transformer-remark@npm:3.0.0"
   dependencies:
@@ -30255,10 +30255,22 @@ mocha@latest:
   languageName: node
   linkType: hard
 
-"prism-themes@npm:^1.5.0":
+"prism-themes@npm:1.5.0":
   version: 1.5.0
   resolution: "prism-themes@npm:1.5.0"
   checksum: e3f8629e6c56bfd72edf3617ec55632273a66626f06e3b4a0db965bb259cb9c8af5a6effe833120633ff2c62e147628f6fd2908daa130b84608465583e1e457b
+  languageName: node
+  linkType: hard
+
+"prismjs@npm:1.23.0":
+  version: 1.23.0
+  resolution: "prismjs@npm:1.23.0"
+  dependencies:
+    clipboard: ^2.0.0
+  dependenciesMeta:
+    clipboard:
+      optional: true
+  checksum: 9d55785f1ea68e2a2e6b0a5ea1241811ed986182af76053ecf50245521414597d70b17dc5804a7ad961dfd459e6883a89ad3f86bb064ac3484e3ef24b7891f4f
   languageName: node
   linkType: hard
 
@@ -30271,18 +30283,6 @@ mocha@latest:
     clipboard:
       optional: true
   checksum: c9370f1f6a8c419cf7d712527dede91de33080ecdd9265cf6a7f0938cfe75e954dae4a02915ac8b9df4485f0c9fbab94a7babfedb7076a83ed57b9b132255e34
-  languageName: node
-  linkType: hard
-
-"prismjs@npm:^1.23.0":
-  version: 1.23.0
-  resolution: "prismjs@npm:1.23.0"
-  dependencies:
-    clipboard: ^2.0.0
-  dependenciesMeta:
-    clipboard:
-      optional: true
-  checksum: 9d55785f1ea68e2a2e6b0a5ea1241811ed986182af76053ecf50245521414597d70b17dc5804a7ad961dfd459e6883a89ad3f86bb064ac3484e3ef24b7891f4f
   languageName: node
   linkType: hard
 
@@ -37410,7 +37410,7 @@ typescript@^4.0.0:
     faker: 5.4.0
     gatsby: 2.32.8
     gatsby-plugin-canonical-urls: 2.10.0
-    gatsby-plugin-image: ^1.0.0
+    gatsby-plugin-image: 1.0.0
     gatsby-plugin-layout: 1.10.0
     gatsby-plugin-manifest: 2.12.1
     gatsby-plugin-nprogress: 2.10.0
