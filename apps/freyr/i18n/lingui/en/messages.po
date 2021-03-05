@@ -107,8 +107,8 @@ msgstr "Create lesson plans"
 #~ msgstr "Creating Lesson plan"
 
 #: src/components/DocsSidebar.tsx:15
-msgid "Curriculum"
-msgstr "Curriculum"
+#~ msgid "Curriculum"
+#~ msgstr "Curriculum"
 
 #: src/pages/index.tsx:135
 msgid "Dashboard for parents to see their child's progress in realtime"
@@ -156,6 +156,10 @@ msgstr "For Parents"
 #: src/components/Header.tsx:65
 msgid "For Teachers"
 msgstr "For Teachers"
+
+#: src/components/DocsSidebar.tsx:12
+msgid "Formatting using Markdown"
+msgstr "Formatting using Markdown"
 
 #: src/pages/pricing.tsx:49
 msgid "Free 30-day trial"
@@ -272,8 +276,8 @@ msgstr "Managing student records using paper and spreadsheets can be messy. Data
 #~ msgstr "Managing student records using paper and spreadsheets can be messy. Data can sometimes slip through the cracks."
 
 #: src/components/DocsSidebar.tsx:12
-msgid "Markdown support"
-msgstr "Markdown support"
+#~ msgid "Markdown support"
+#~ msgstr "Markdown support"
 
 #: src/pages/contact.tsx:28
 msgid "Message"
@@ -381,8 +385,8 @@ msgid "Run your Montessori School efficiently"
 msgstr "Run your Montessori School efficiently"
 
 #: src/components/DocsSidebar.tsx:14
-msgid "School"
-msgstr "School"
+#~ msgid "School"
+#~ msgstr "School"
 
 #: src/templates/docs.js:56
 #~ msgid "Self-hosting Obserfy"
