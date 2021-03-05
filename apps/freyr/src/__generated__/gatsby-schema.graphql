@@ -2008,9 +2008,9 @@ type Query {
   allFile(filter: FileFilterInput, sort: FileSortInput, skip: Int, limit: Int): FileConnection!
   directory(sourceInstanceName: StringQueryOperatorInput, absolutePath: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, extension: StringQueryOperatorInput, size: IntQueryOperatorInput, prettySize: StringQueryOperatorInput, modifiedTime: DateQueryOperatorInput, accessTime: DateQueryOperatorInput, changeTime: DateQueryOperatorInput, birthTime: DateQueryOperatorInput, root: StringQueryOperatorInput, dir: StringQueryOperatorInput, base: StringQueryOperatorInput, ext: StringQueryOperatorInput, name: StringQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, dev: IntQueryOperatorInput, mode: IntQueryOperatorInput, nlink: IntQueryOperatorInput, uid: IntQueryOperatorInput, gid: IntQueryOperatorInput, rdev: IntQueryOperatorInput, ino: FloatQueryOperatorInput, atimeMs: FloatQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, atime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, ctime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, blksize: IntQueryOperatorInput, blocks: IntQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): Directory
   allDirectory(filter: DirectoryFilterInput, sort: DirectorySortInput, skip: Int, limit: Int): DirectoryConnection!
-  site(buildTime: DateQueryOperatorInput, siteMetadata: SiteSiteMetadataFilterInput, flags: SiteFlagsFilterInput, polyfill: BooleanQueryOperatorInput, pathPrefix: StringQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): Site
+  site(buildTime: DateQueryOperatorInput, siteMetadata: SiteSiteMetadataFilterInput, port: IntQueryOperatorInput, host: StringQueryOperatorInput, flags: SiteFlagsFilterInput, polyfill: BooleanQueryOperatorInput, pathPrefix: StringQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): Site
   allSite(filter: SiteFilterInput, sort: SiteSortInput, skip: Int, limit: Int): SiteConnection!
-  sitePage(path: StringQueryOperatorInput, component: StringQueryOperatorInput, internalComponentName: StringQueryOperatorInput, componentChunkName: StringQueryOperatorInput, matchPath: StringQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, isCreatedByStatefulCreatePages: BooleanQueryOperatorInput, context: SitePageContextFilterInput, pluginCreator: SitePluginFilterInput, pluginCreatorId: StringQueryOperatorInput, componentPath: StringQueryOperatorInput): SitePage
+  sitePage(path: StringQueryOperatorInput, component: StringQueryOperatorInput, internalComponentName: StringQueryOperatorInput, componentChunkName: StringQueryOperatorInput, matchPath: StringQueryOperatorInput, isCreatedByStatefulCreatePages: BooleanQueryOperatorInput, context: SitePageContextFilterInput, pluginCreator: SitePluginFilterInput, pluginCreatorId: StringQueryOperatorInput, componentPath: StringQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): SitePage
   allSitePage(filter: SitePageFilterInput, sort: SitePageSortInput, skip: Int, limit: Int): SitePageConnection!
   themeI18N(defaultLang: StringQueryOperatorInput, configPath: StringQueryOperatorInput, config: LocaleFilterListInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): ThemeI18n
   allThemeI18N(filter: ThemeI18nFilterInput, sort: ThemeI18nSortInput, skip: Int, limit: Int): ThemeI18nConnection!
@@ -2022,6 +2022,8 @@ type Query {
   allSiteBuildMetadata(filter: SiteBuildMetadataFilterInput, sort: SiteBuildMetadataSortInput, skip: Int, limit: Int): SiteBuildMetadataConnection!
   sitePlugin(id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, resolve: StringQueryOperatorInput, name: StringQueryOperatorInput, version: StringQueryOperatorInput, pluginOptions: SitePluginPluginOptionsFilterInput, nodeAPIs: StringQueryOperatorInput, browserAPIs: StringQueryOperatorInput, ssrAPIs: StringQueryOperatorInput, pluginFilepath: StringQueryOperatorInput, packageJson: SitePluginPackageJsonFilterInput): SitePlugin
   allSitePlugin(filter: SitePluginFilterInput, sort: SitePluginSortInput, skip: Int, limit: Int): SitePluginConnection!
+  staticImage(id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, sourceInstanceName: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, extension: StringQueryOperatorInput, prettySize: StringQueryOperatorInput, modifiedTime: DateQueryOperatorInput, accessTime: DateQueryOperatorInput, changeTime: DateQueryOperatorInput, birthTime: DateQueryOperatorInput, root: StringQueryOperatorInput, dir: StringQueryOperatorInput, base: StringQueryOperatorInput, ext: StringQueryOperatorInput, name: StringQueryOperatorInput, absolutePath: StringQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, dev: IntQueryOperatorInput, mode: IntQueryOperatorInput, nlink: IntQueryOperatorInput, uid: IntQueryOperatorInput, rdev: IntQueryOperatorInput, blksize: IntQueryOperatorInput, ino: IntQueryOperatorInput, size: IntQueryOperatorInput, blocks: IntQueryOperatorInput, atimeMs: FloatQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, atime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, ctime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput): StaticImage
+  allStaticImage(filter: StaticImageFilterInput, sort: StaticImageSortInput, skip: Int, limit: Int): StaticImageConnection!
 }
 
 type Site implements Node {
@@ -2043,6 +2045,8 @@ type Site implements Node {
     locale: String
   ): Date
   siteMetadata: SiteSiteMetadata
+  port: Int
+  host: String
   flags: SiteFlags
   polyfill: Boolean
   pathPrefix: String
@@ -2224,6 +2228,8 @@ enum SiteFieldsEnum {
   siteMetadata___description
   siteMetadata___author
   siteMetadata___siteUrl
+  port
+  host
   flags___DEV_SSR
   flags___FAST_DEV
   polyfill
@@ -2319,6 +2325,8 @@ enum SiteFieldsEnum {
 input SiteFilterInput {
   buildTime: DateQueryOperatorInput
   siteMetadata: SiteSiteMetadataFilterInput
+  port: IntQueryOperatorInput
+  host: StringQueryOperatorInput
   flags: SiteFlagsFilterInput
   polyfill: BooleanQueryOperatorInput
   pathPrefix: StringQueryOperatorInput
@@ -2353,15 +2361,15 @@ type SitePage implements Node {
   internalComponentName: String!
   componentChunkName: String!
   matchPath: String
-  id: ID!
-  parent: Node
-  children: [Node!]!
-  internal: Internal!
   isCreatedByStatefulCreatePages: Boolean
   context: SitePageContext
   pluginCreator: SitePlugin
   pluginCreatorId: String
   componentPath: String
+  id: ID!
+  parent: Node
+  children: [Node!]!
+  internal: Internal!
 }
 
 type SitePageConnection {
@@ -2401,92 +2409,6 @@ enum SitePageFieldsEnum {
   internalComponentName
   componentChunkName
   matchPath
-  id
-  parent___id
-  parent___parent___id
-  parent___parent___parent___id
-  parent___parent___parent___children
-  parent___parent___children
-  parent___parent___children___id
-  parent___parent___children___children
-  parent___parent___internal___content
-  parent___parent___internal___contentDigest
-  parent___parent___internal___description
-  parent___parent___internal___fieldOwners
-  parent___parent___internal___ignoreType
-  parent___parent___internal___mediaType
-  parent___parent___internal___owner
-  parent___parent___internal___type
-  parent___children
-  parent___children___id
-  parent___children___parent___id
-  parent___children___parent___children
-  parent___children___children
-  parent___children___children___id
-  parent___children___children___children
-  parent___children___internal___content
-  parent___children___internal___contentDigest
-  parent___children___internal___description
-  parent___children___internal___fieldOwners
-  parent___children___internal___ignoreType
-  parent___children___internal___mediaType
-  parent___children___internal___owner
-  parent___children___internal___type
-  parent___internal___content
-  parent___internal___contentDigest
-  parent___internal___description
-  parent___internal___fieldOwners
-  parent___internal___ignoreType
-  parent___internal___mediaType
-  parent___internal___owner
-  parent___internal___type
-  children
-  children___id
-  children___parent___id
-  children___parent___parent___id
-  children___parent___parent___children
-  children___parent___children
-  children___parent___children___id
-  children___parent___children___children
-  children___parent___internal___content
-  children___parent___internal___contentDigest
-  children___parent___internal___description
-  children___parent___internal___fieldOwners
-  children___parent___internal___ignoreType
-  children___parent___internal___mediaType
-  children___parent___internal___owner
-  children___parent___internal___type
-  children___children
-  children___children___id
-  children___children___parent___id
-  children___children___parent___children
-  children___children___children
-  children___children___children___id
-  children___children___children___children
-  children___children___internal___content
-  children___children___internal___contentDigest
-  children___children___internal___description
-  children___children___internal___fieldOwners
-  children___children___internal___ignoreType
-  children___children___internal___mediaType
-  children___children___internal___owner
-  children___children___internal___type
-  children___internal___content
-  children___internal___contentDigest
-  children___internal___description
-  children___internal___fieldOwners
-  children___internal___ignoreType
-  children___internal___mediaType
-  children___internal___owner
-  children___internal___type
-  internal___content
-  internal___contentDigest
-  internal___description
-  internal___fieldOwners
-  internal___ignoreType
-  internal___mediaType
-  internal___owner
-  internal___type
   isCreatedByStatefulCreatePages
   context___slug
   context___locale
@@ -2602,6 +2524,92 @@ enum SitePageFieldsEnum {
   pluginCreator___packageJson___keywords
   pluginCreatorId
   componentPath
+  id
+  parent___id
+  parent___parent___id
+  parent___parent___parent___id
+  parent___parent___parent___children
+  parent___parent___children
+  parent___parent___children___id
+  parent___parent___children___children
+  parent___parent___internal___content
+  parent___parent___internal___contentDigest
+  parent___parent___internal___description
+  parent___parent___internal___fieldOwners
+  parent___parent___internal___ignoreType
+  parent___parent___internal___mediaType
+  parent___parent___internal___owner
+  parent___parent___internal___type
+  parent___children
+  parent___children___id
+  parent___children___parent___id
+  parent___children___parent___children
+  parent___children___children
+  parent___children___children___id
+  parent___children___children___children
+  parent___children___internal___content
+  parent___children___internal___contentDigest
+  parent___children___internal___description
+  parent___children___internal___fieldOwners
+  parent___children___internal___ignoreType
+  parent___children___internal___mediaType
+  parent___children___internal___owner
+  parent___children___internal___type
+  parent___internal___content
+  parent___internal___contentDigest
+  parent___internal___description
+  parent___internal___fieldOwners
+  parent___internal___ignoreType
+  parent___internal___mediaType
+  parent___internal___owner
+  parent___internal___type
+  children
+  children___id
+  children___parent___id
+  children___parent___parent___id
+  children___parent___parent___children
+  children___parent___children
+  children___parent___children___id
+  children___parent___children___children
+  children___parent___internal___content
+  children___parent___internal___contentDigest
+  children___parent___internal___description
+  children___parent___internal___fieldOwners
+  children___parent___internal___ignoreType
+  children___parent___internal___mediaType
+  children___parent___internal___owner
+  children___parent___internal___type
+  children___children
+  children___children___id
+  children___children___parent___id
+  children___children___parent___children
+  children___children___children
+  children___children___children___id
+  children___children___children___children
+  children___children___internal___content
+  children___children___internal___contentDigest
+  children___children___internal___description
+  children___children___internal___fieldOwners
+  children___children___internal___ignoreType
+  children___children___internal___mediaType
+  children___children___internal___owner
+  children___children___internal___type
+  children___internal___content
+  children___internal___contentDigest
+  children___internal___description
+  children___internal___fieldOwners
+  children___internal___ignoreType
+  children___internal___mediaType
+  children___internal___owner
+  children___internal___type
+  internal___content
+  internal___contentDigest
+  internal___description
+  internal___fieldOwners
+  internal___ignoreType
+  internal___mediaType
+  internal___owner
+  internal___type
 }
 
 input SitePageFilterInput {
@@ -2610,15 +2618,15 @@ input SitePageFilterInput {
   internalComponentName: StringQueryOperatorInput
   componentChunkName: StringQueryOperatorInput
   matchPath: StringQueryOperatorInput
-  id: StringQueryOperatorInput
-  parent: NodeFilterInput
-  children: NodeFilterListInput
-  internal: InternalFilterInput
   isCreatedByStatefulCreatePages: BooleanQueryOperatorInput
   context: SitePageContextFilterInput
   pluginCreator: SitePluginFilterInput
   pluginCreatorId: StringQueryOperatorInput
   componentPath: StringQueryOperatorInput
+  id: StringQueryOperatorInput
+  parent: NodeFilterInput
+  children: NodeFilterListInput
+  internal: InternalFilterInput
 }
 
 type SitePageGroupConnection {
@@ -3058,6 +3066,362 @@ input SiteSortInput {
 enum SortOrderEnum {
   ASC
   DESC
+}
+
+type StaticImage implements Node {
+  id: ID!
+  parent: Node
+  children: [Node!]!
+  internal: Internal!
+  sourceInstanceName: String
+  relativePath: String
+  extension: String
+  prettySize: String
+  modifiedTime(
+    # Format the date using Moment.js' date tokens, e.g. `date(formatString: "YYYY
+    # MMMM DD")`. See https://momentjs.com/docs/#/displaying/format/ for
+    # documentation for different tokens.
+    formatString: String
+
+    # Returns a string generated with Moment.js' `fromNow` function
+    fromNow: Boolean
+
+    # Returns the difference between this date and the current time. Defaults to
+    # "milliseconds" but you can also pass in as the measurement "years",
+    # "months", "weeks", "days", "hours", "minutes", and "seconds".
+    difference: String
+
+    # Configures the locale Moment.js will use to format the date.
+    locale: String
+  ): Date
+  accessTime(
+    # Format the date using Moment.js' date tokens, e.g. `date(formatString: "YYYY
+    # MMMM DD")`. See https://momentjs.com/docs/#/displaying/format/ for
+    # documentation for different tokens.
+    formatString: String
+
+    # Returns a string generated with Moment.js' `fromNow` function
+    fromNow: Boolean
+
+    # Returns the difference between this date and the current time. Defaults to
+    # "milliseconds" but you can also pass in as the measurement "years",
+    # "months", "weeks", "days", "hours", "minutes", and "seconds".
+    difference: String
+
+    # Configures the locale Moment.js will use to format the date.
+    locale: String
+  ): Date
+  changeTime(
+    # Format the date using Moment.js' date tokens, e.g. `date(formatString: "YYYY
+    # MMMM DD")`. See https://momentjs.com/docs/#/displaying/format/ for
+    # documentation for different tokens.
+    formatString: String
+
+    # Returns a string generated with Moment.js' `fromNow` function
+    fromNow: Boolean
+
+    # Returns the difference between this date and the current time. Defaults to
+    # "milliseconds" but you can also pass in as the measurement "years",
+    # "months", "weeks", "days", "hours", "minutes", and "seconds".
+    difference: String
+
+    # Configures the locale Moment.js will use to format the date.
+    locale: String
+  ): Date
+  birthTime(
+    # Format the date using Moment.js' date tokens, e.g. `date(formatString: "YYYY
+    # MMMM DD")`. See https://momentjs.com/docs/#/displaying/format/ for
+    # documentation for different tokens.
+    formatString: String
+
+    # Returns a string generated with Moment.js' `fromNow` function
+    fromNow: Boolean
+
+    # Returns the difference between this date and the current time. Defaults to
+    # "milliseconds" but you can also pass in as the measurement "years",
+    # "months", "weeks", "days", "hours", "minutes", and "seconds".
+    difference: String
+
+    # Configures the locale Moment.js will use to format the date.
+    locale: String
+  ): Date
+  root: String
+  dir: String
+  base: String
+  ext: String
+  name: String
+  absolutePath: String
+  relativeDirectory: String
+  dev: Int
+  mode: Int
+  nlink: Int
+  uid: Int
+  rdev: Int
+  blksize: Int
+  ino: Int
+  size: Int
+  blocks: Int
+  atimeMs: Float
+  mtimeMs: Float
+  ctimeMs: Float
+  birthtimeMs: Float
+  atime(
+    # Format the date using Moment.js' date tokens, e.g. `date(formatString: "YYYY
+    # MMMM DD")`. See https://momentjs.com/docs/#/displaying/format/ for
+    # documentation for different tokens.
+    formatString: String
+
+    # Returns a string generated with Moment.js' `fromNow` function
+    fromNow: Boolean
+
+    # Returns the difference between this date and the current time. Defaults to
+    # "milliseconds" but you can also pass in as the measurement "years",
+    # "months", "weeks", "days", "hours", "minutes", and "seconds".
+    difference: String
+
+    # Configures the locale Moment.js will use to format the date.
+    locale: String
+  ): Date
+  mtime(
+    # Format the date using Moment.js' date tokens, e.g. `date(formatString: "YYYY
+    # MMMM DD")`. See https://momentjs.com/docs/#/displaying/format/ for
+    # documentation for different tokens.
+    formatString: String
+
+    # Returns a string generated with Moment.js' `fromNow` function
+    fromNow: Boolean
+
+    # Returns the difference between this date and the current time. Defaults to
+    # "milliseconds" but you can also pass in as the measurement "years",
+    # "months", "weeks", "days", "hours", "minutes", and "seconds".
+    difference: String
+
+    # Configures the locale Moment.js will use to format the date.
+    locale: String
+  ): Date
+  ctime(
+    # Format the date using Moment.js' date tokens, e.g. `date(formatString: "YYYY
+    # MMMM DD")`. See https://momentjs.com/docs/#/displaying/format/ for
+    # documentation for different tokens.
+    formatString: String
+
+    # Returns a string generated with Moment.js' `fromNow` function
+    fromNow: Boolean
+
+    # Returns the difference between this date and the current time. Defaults to
+    # "milliseconds" but you can also pass in as the measurement "years",
+    # "months", "weeks", "days", "hours", "minutes", and "seconds".
+    difference: String
+
+    # Configures the locale Moment.js will use to format the date.
+    locale: String
+  ): Date
+  birthtime(
+    # Format the date using Moment.js' date tokens, e.g. `date(formatString: "YYYY
+    # MMMM DD")`. See https://momentjs.com/docs/#/displaying/format/ for
+    # documentation for different tokens.
+    formatString: String
+
+    # Returns a string generated with Moment.js' `fromNow` function
+    fromNow: Boolean
+
+    # Returns the difference between this date and the current time. Defaults to
+    # "milliseconds" but you can also pass in as the measurement "years",
+    # "months", "weeks", "days", "hours", "minutes", and "seconds".
+    difference: String
+
+    # Configures the locale Moment.js will use to format the date.
+    locale: String
+  ): Date
+}
+
+type StaticImageConnection {
+  totalCount: Int!
+  edges: [StaticImageEdge!]!
+  nodes: [StaticImage!]!
+  pageInfo: PageInfo!
+  distinct(field: StaticImageFieldsEnum!): [String!]!
+  group(skip: Int, limit: Int, field: StaticImageFieldsEnum!): [StaticImageGroupConnection!]!
+}
+
+type StaticImageEdge {
+  next: StaticImage
+  node: StaticImage!
+  previous: StaticImage
+}
+
+enum StaticImageFieldsEnum {
+  id
+  parent___id
+  parent___parent___id
+  parent___parent___parent___id
+  parent___parent___parent___children
+  parent___parent___children
+  parent___parent___children___id
+  parent___parent___children___children
+  parent___parent___internal___content
+  parent___parent___internal___contentDigest
+  parent___parent___internal___description
+  parent___parent___internal___fieldOwners
+  parent___parent___internal___ignoreType
+  parent___parent___internal___mediaType
+  parent___parent___internal___owner
+  parent___parent___internal___type
+  parent___children
+  parent___children___id
+  parent___children___parent___id
+  parent___children___parent___children
+  parent___children___children
+  parent___children___children___id
+  parent___children___children___children
+  parent___children___internal___content
+  parent___children___internal___contentDigest
+  parent___children___internal___description
+  parent___children___internal___fieldOwners
+  parent___children___internal___ignoreType
+  parent___children___internal___mediaType
+  parent___children___internal___owner
+  parent___children___internal___type
+  parent___internal___content
+  parent___internal___contentDigest
+  parent___internal___description
+  parent___internal___fieldOwners
+  parent___internal___ignoreType
+  parent___internal___mediaType
+  parent___internal___owner
+  parent___internal___type
+  children
+  children___id
+  children___parent___id
+  children___parent___parent___id
+  children___parent___parent___children
+  children___parent___children
+  children___parent___children___id
+  children___parent___children___children
+  children___parent___internal___content
+  children___parent___internal___contentDigest
+  children___parent___internal___description
+  children___parent___internal___fieldOwners
+  children___parent___internal___ignoreType
+  children___parent___internal___mediaType
+  children___parent___internal___owner
+  children___parent___internal___type
+  children___children
+  children___children___id
+  children___children___parent___id
+  children___children___parent___children
+  children___children___children
+  children___children___children___id
+  children___children___children___children
+  children___children___internal___content
+  children___children___internal___contentDigest
+  children___children___internal___description
+  children___children___internal___fieldOwners
+  children___children___internal___ignoreType
+  children___children___internal___mediaType
+  children___children___internal___owner
+  children___children___internal___type
+  children___internal___content
+  children___internal___contentDigest
+  children___internal___description
+  children___internal___fieldOwners
+  children___internal___ignoreType
+  children___internal___mediaType
+  children___internal___owner
+  children___internal___type
+  internal___content
+  internal___contentDigest
+  internal___description
+  internal___fieldOwners
+  internal___ignoreType
+  internal___mediaType
+  internal___owner
+  internal___type
+  sourceInstanceName
+  relativePath
+  extension
+  prettySize
+  modifiedTime
+  accessTime
+  changeTime
+  birthTime
+  root
+  dir
+  base
+  ext
+  name
+  absolutePath
+  relativeDirectory
+  dev
+  mode
+  nlink
+  uid
+  rdev
+  blksize
+  ino
+  size
+  blocks
+  atimeMs
+  mtimeMs
+  ctimeMs
+  birthtimeMs
+  atime
+  mtime
+  ctime
+  birthtime
+}
+
+input StaticImageFilterInput {
+  id: StringQueryOperatorInput
+  parent: NodeFilterInput
+  children: NodeFilterListInput
+  internal: InternalFilterInput
+  sourceInstanceName: StringQueryOperatorInput
+  relativePath: StringQueryOperatorInput
+  extension: StringQueryOperatorInput
+  prettySize: StringQueryOperatorInput
+  modifiedTime: DateQueryOperatorInput
+  accessTime: DateQueryOperatorInput
+  changeTime: DateQueryOperatorInput
+  birthTime: DateQueryOperatorInput
+  root: StringQueryOperatorInput
+  dir: StringQueryOperatorInput
+  base: StringQueryOperatorInput
+  ext: StringQueryOperatorInput
+  name: StringQueryOperatorInput
+  absolutePath: StringQueryOperatorInput
+  relativeDirectory: StringQueryOperatorInput
+  dev: IntQueryOperatorInput
+  mode: IntQueryOperatorInput
+  nlink: IntQueryOperatorInput
+  uid: IntQueryOperatorInput
+  rdev: IntQueryOperatorInput
+  blksize: IntQueryOperatorInput
+  ino: IntQueryOperatorInput
+  size: IntQueryOperatorInput
+  blocks: IntQueryOperatorInput
+  atimeMs: FloatQueryOperatorInput
+  mtimeMs: FloatQueryOperatorInput
+  ctimeMs: FloatQueryOperatorInput
+  birthtimeMs: FloatQueryOperatorInput
+  atime: DateQueryOperatorInput
+  mtime: DateQueryOperatorInput
+  ctime: DateQueryOperatorInput
+  birthtime: DateQueryOperatorInput
+}
+
+type StaticImageGroupConnection {
+  totalCount: Int!
+  edges: [StaticImageEdge!]!
+  nodes: [StaticImage!]!
+  pageInfo: PageInfo!
+  field: String!
+  fieldValue: String
+}
+
+input StaticImageSortInput {
+  fields: [StaticImageFieldsEnum]
+  order: [SortOrderEnum] = [ASC]
 }
 
 input StringQueryOperatorInput {
