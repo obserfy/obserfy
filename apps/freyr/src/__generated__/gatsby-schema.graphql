@@ -2489,8 +2489,6 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___loading
   pluginCreator___pluginOptions___disableBgImageOnAlpha
   pluginCreator___pluginOptions___disableBgImage
-  pluginCreator___pluginOptions___gatsbyRemarkPlugins
-  pluginCreator___pluginOptions___gatsbyRemarkPlugins___resolve
   pluginCreator___pluginOptions___extensions
   pluginCreator___pluginOptions___lessBabel
   pluginCreator___pluginOptions___mediaTypes
@@ -2799,11 +2797,6 @@ enum SitePluginFieldsEnum {
   pluginOptions___loading
   pluginOptions___disableBgImageOnAlpha
   pluginOptions___disableBgImage
-  pluginOptions___gatsbyRemarkPlugins
-  pluginOptions___gatsbyRemarkPlugins___resolve
-  pluginOptions___gatsbyRemarkPlugins___options___quality
-  pluginOptions___gatsbyRemarkPlugins___options___withWebp
-  pluginOptions___gatsbyRemarkPlugins___options___withAvif
   pluginOptions___extensions
   pluginOptions___lessBabel
   pluginOptions___mediaTypes
@@ -2964,7 +2957,6 @@ type SitePluginPluginOptions {
   loading: String
   disableBgImageOnAlpha: Boolean
   disableBgImage: Boolean
-  gatsbyRemarkPlugins: [SitePluginPluginOptionsGatsbyRemarkPlugins]
   extensions: [String]
   lessBabel: Boolean
   mediaTypes: [String]
@@ -3023,7 +3015,6 @@ input SitePluginPluginOptionsFilterInput {
   loading: StringQueryOperatorInput
   disableBgImageOnAlpha: BooleanQueryOperatorInput
   disableBgImage: BooleanQueryOperatorInput
-  gatsbyRemarkPlugins: SitePluginPluginOptionsGatsbyRemarkPluginsFilterListInput
   extensions: StringQueryOperatorInput
   lessBabel: BooleanQueryOperatorInput
   mediaTypes: StringQueryOperatorInput
@@ -3038,32 +3029,6 @@ input SitePluginPluginOptionsFilterInput {
   allExtensions: BooleanQueryOperatorInput
   isTSX: BooleanQueryOperatorInput
   jsxPragma: StringQueryOperatorInput
-}
-
-type SitePluginPluginOptionsGatsbyRemarkPlugins {
-  resolve: String
-  options: SitePluginPluginOptionsGatsbyRemarkPluginsOptions
-}
-
-input SitePluginPluginOptionsGatsbyRemarkPluginsFilterInput {
-  resolve: StringQueryOperatorInput
-  options: SitePluginPluginOptionsGatsbyRemarkPluginsOptionsFilterInput
-}
-
-input SitePluginPluginOptionsGatsbyRemarkPluginsFilterListInput {
-  elemMatch: SitePluginPluginOptionsGatsbyRemarkPluginsFilterInput
-}
-
-type SitePluginPluginOptionsGatsbyRemarkPluginsOptions {
-  quality: Int
-  withWebp: Boolean
-  withAvif: Boolean
-}
-
-input SitePluginPluginOptionsGatsbyRemarkPluginsOptionsFilterInput {
-  quality: IntQueryOperatorInput
-  withWebp: BooleanQueryOperatorInput
-  withAvif: BooleanQueryOperatorInput
 }
 
 type SitePluginPluginOptionsIcon_options {

@@ -75,9 +75,10 @@ module.exports = {
             options: {
               quality: 80,
               withWebp: true,
-              withAvif: true
+              withAvif: true,
             },
           },
+          `gatsby-remark-prismjs`,
         ],
       },
     },
