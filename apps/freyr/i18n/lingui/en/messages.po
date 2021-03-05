@@ -106,7 +106,7 @@ msgstr "Create lesson plans"
 #~ msgid "Creating Lesson plan"
 #~ msgstr "Creating Lesson plan"
 
-#: src/templates/docs.js:29
+#: src/components/DocsSidebar.tsx:15
 #~ msgid "Curriculum"
 #~ msgstr "Curriculum"
 
@@ -157,6 +157,10 @@ msgstr "For Parents"
 msgid "For Teachers"
 msgstr "For Teachers"
 
+#: src/components/DocsSidebar.tsx:12
+msgid "Formatting using Markdown"
+msgstr "Formatting using Markdown"
+
 #: src/pages/pricing.tsx:49
 msgid "Free 30-day trial"
 msgstr "Free 30-day trial"
@@ -170,8 +174,12 @@ msgstr "Free 30-day trial"
 #~ msgstr "Get started now"
 
 #: src/components/DocsSidebar.tsx:11
-msgid "Getting support"
-msgstr "Getting support"
+msgid "Getting help"
+msgstr "Getting help"
+
+#: src/components/DocsSidebar.tsx:11
+#~ msgid "Getting support"
+#~ msgstr "Getting support"
 
 #: src/components/DocsFooter.tsx:30
 #: src/components/Footer.tsx:30
@@ -266,6 +274,10 @@ msgstr "Managing student records using paper and spreadsheets can be messy. Data
 #: src/pages/index.tsx:69
 #~ msgid "Managing student records using paper and spreadsheets can be messy. Data can sometimes slip through the cracks."
 #~ msgstr "Managing student records using paper and spreadsheets can be messy. Data can sometimes slip through the cracks."
+
+#: src/components/DocsSidebar.tsx:12
+#~ msgid "Markdown support"
+#~ msgstr "Markdown support"
 
 #: src/pages/contact.tsx:28
 msgid "Message"
@@ -372,7 +384,7 @@ msgstr "Roadmap"
 msgid "Run your Montessori School efficiently"
 msgstr "Run your Montessori School efficiently"
 
-#: src/templates/docs.js:26
+#: src/components/DocsSidebar.tsx:14
 #~ msgid "School"
 #~ msgstr "School"
 
@@ -487,6 +499,10 @@ msgstr "Try it now"
 #: src/pages/pricing.tsx:26
 msgid "Unlimited students"
 msgstr "Unlimited students"
+
+#: src/components/DocsSidebar.tsx:12
+#~ msgid "Using Markdown"
+#~ msgstr "Using Markdown"
 
 #: src/pages/pricing.tsx:73
 msgid "We don't charge or limit the number of students or parents that you work with."

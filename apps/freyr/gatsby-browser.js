@@ -3,6 +3,8 @@
  *
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
+require("prism-themes/themes/prism-vsc-dark-plus.css")
+
 exports.onInitialClientRender = () => {
   setTimeout(() => {
     const t = "script"

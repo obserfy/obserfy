@@ -107,6 +107,10 @@ msgstr "Hubungi Kami"
 msgid "Create lesson plans"
 msgstr "Rencanakan pembelajaran"
 
+#: src/components/DocsSidebar.tsx:15
+#~ msgid "Curriculum"
+#~ msgstr ""
+
 #: src/pages/index.tsx:135
 msgid "Dashboard for parents to see their child's progress in realtime"
 msgstr "Dashboard khusus wali murid untuk mengikuti progres anak mereka secara realtime"
@@ -150,6 +154,10 @@ msgstr "Untuk Wali Murid"
 msgid "For Teachers"
 msgstr "Untuk Guru"
 
+#: src/components/DocsSidebar.tsx:12
+msgid "Formatting using Markdown"
+msgstr "Format teks menggunakan Markdown"
+
 #: src/pages/pricing.tsx:49
 msgid "Free 30-day trial"
 msgstr "Gratis uji coba 30-hari"
@@ -163,8 +171,12 @@ msgstr "Gratis uji coba 30-hari"
 #~ msgstr "Get started now"
 
 #: src/components/DocsSidebar.tsx:11
-msgid "Getting support"
-msgstr "Dapatkan bantuan"
+msgid "Getting help"
+msgstr "Mencari bantuan"
+
+#: src/components/DocsSidebar.tsx:11
+#~ msgid "Getting support"
+#~ msgstr "Dapatkan bantuan"
 
 #: src/components/DocsFooter.tsx:30
 #: src/components/Footer.tsx:30
@@ -230,7 +242,7 @@ msgstr "Berikan orang tua kemampuan untuk mengikuti perkemabangan anak mereka me
 
 #: src/components/Header.tsx:85
 msgid "Links"
-msgstr ""
+msgstr "Links"
 
 #: src/pages/index.tsx:62
 msgid "Managing student records using paper and spreadsheets can be messy. Data can easily slip through the cracks."
@@ -239,6 +251,10 @@ msgstr "Mengurus data murid menggunakan kertas dan spreadsheets tidaklah mudah. 
 #: src/pages/index.tsx:69
 #~ msgid "Managing student records using paper and spreadsheets can be messy. Data can sometimes slip through the cracks."
 #~ msgstr "Managing student records using paper and spreadsheets can be messy. Data can sometimes slip through the cracks."
+
+#: src/components/DocsSidebar.tsx:12
+#~ msgid "Markdown support"
+#~ msgstr "Format teks menggunakan Markdown"
 
 #: src/pages/contact.tsx:28
 msgid "Message"
@@ -320,6 +336,10 @@ msgstr "Roadmap"
 #: src/pages/index.tsx:21
 msgid "Run your Montessori School efficiently"
 msgstr "Jalankan sekolah Montessori anda dengan efisien"
+
+#: src/components/DocsSidebar.tsx:14
+#~ msgid "School"
+#~ msgstr ""
 
 #: src/pages/contact.tsx:32
 msgid "Send"
@@ -408,6 +428,10 @@ msgstr "Coba sekarang"
 #: src/pages/pricing.tsx:26
 msgid "Unlimited students"
 msgstr "Jumlah murid tak terbatas"
+
+#: src/components/DocsSidebar.tsx:12
+#~ msgid "Using Markdown"
+#~ msgstr ""
 
 #: src/pages/pricing.tsx:73
 msgid "We don't charge or limit the number of students or parents that you work with."
