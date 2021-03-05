@@ -167,8 +167,12 @@ msgstr "Gratis uji coba 30-hari"
 #~ msgstr "Get started now"
 
 #: src/components/DocsSidebar.tsx:11
-msgid "Getting support"
-msgstr "Dapatkan bantuan"
+msgid "Getting help"
+msgstr ""
+
+#: src/components/DocsSidebar.tsx:11
+#~ msgid "Getting support"
+#~ msgstr "Dapatkan bantuan"
 
 #: src/components/DocsFooter.tsx:30
 #: src/components/Footer.tsx:30
@@ -243,6 +247,10 @@ msgstr "Mengurus data murid menggunakan kertas dan spreadsheets tidaklah mudah. 
 #: src/pages/index.tsx:69
 #~ msgid "Managing student records using paper and spreadsheets can be messy. Data can sometimes slip through the cracks."
 #~ msgstr "Managing student records using paper and spreadsheets can be messy. Data can sometimes slip through the cracks."
+
+#: src/components/DocsSidebar.tsx:12
+msgid "Markdown support"
+msgstr ""
 
 #: src/pages/contact.tsx:28
 msgid "Message"
@@ -418,8 +426,8 @@ msgid "Unlimited students"
 msgstr "Jumlah murid tak terbatas"
 
 #: src/components/DocsSidebar.tsx:12
-msgid "Using Markdown"
-msgstr ""
+#~ msgid "Using Markdown"
+#~ msgstr ""
 
 #: src/pages/pricing.tsx:73
 msgid "We don't charge or limit the number of students or parents that you work with."
