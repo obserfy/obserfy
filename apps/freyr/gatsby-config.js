@@ -93,7 +93,12 @@ module.exports = {
     `gatsby-plugin-preact`,
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaultQuality: 80,
+      },
+    },
     `gatsby-plugin-preload-fonts`,
 
     // Devtools and other stuffs ===============================================
