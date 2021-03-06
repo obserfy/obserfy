@@ -7909,111 +7909,112 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@theme-ui/color-modes@npm:0.6.0-alpha.6":
-  version: 0.6.0-alpha.6
-  resolution: "@theme-ui/color-modes@npm:0.6.0-alpha.6"
+"@theme-ui/color-modes@npm:0.6.0-canary.c5a716a.0":
+  version: 0.6.0-canary.c5a716a.0
+  resolution: "@theme-ui/color-modes@npm:0.6.0-canary.c5a716a.0"
   dependencies:
     "@emotion/react": ^11.1.1
-    "@theme-ui/core": 0.6.0-alpha.6
-    "@theme-ui/css": 0.6.0-alpha.6
+    "@theme-ui/core": 0.6.0-canary.c5a716a.0
+    "@theme-ui/css": 0.6.0-canary.c5a716a.0
     deepmerge: ^4.2.2
   peerDependencies:
     react: ^16.14.0 || ^17.0.0
-  checksum: 729e6c94c6525faf034486a39cc2b5d1c64a38c4c125b614390f4a9a2f476bb334b653f09fb50efc80e65e28a1d0ac9bc895c490ab1a838f94b3f527d482c542
+  checksum: 0dacb67cbcbc51678ffd61eae83a1b2274e39987049324614e20e28a42e56119ba1946900a996a003c55ffbc4d0afbb8910bc5c42cd0183bab6b42120252ba54
   languageName: node
   linkType: hard
 
-"@theme-ui/components@npm:0.6.0-alpha.6":
-  version: 0.6.0-alpha.6
-  resolution: "@theme-ui/components@npm:0.6.0-alpha.6"
+"@theme-ui/components@npm:0.6.0-canary.c5a716a.0":
+  version: 0.6.0-canary.c5a716a.0
+  resolution: "@theme-ui/components@npm:0.6.0-canary.c5a716a.0"
   dependencies:
     "@emotion/react": ^11.1.1
     "@emotion/styled": ^11.0.0
     "@styled-system/color": ^5.1.2
     "@styled-system/should-forward-prop": ^5.1.2
     "@styled-system/space": ^5.1.2
-    "@theme-ui/css": 0.6.0-alpha.6
+    "@theme-ui/css": 0.6.0-canary.c5a716a.0
     "@types/styled-system": ^5.1.10
   peerDependencies:
     react: ^16.14.0 || ^17.0.0
-  checksum: 9f660cd293e365889195f290dde936b06c69f0dfeb85bf6ed99e307ab705f3c9d42d0a41debd056b83c68ea7660578568c431f306aec0b925afc382ed3e0fffc
+  checksum: 0a26c984859b9b1375ee893430efbc2bc0cc86296df478994344270960344d6b095b099f451005358a5fc20ebed075937b0d3a01db4511ee372d3856a3a2ca1a
   languageName: node
   linkType: hard
 
-"@theme-ui/core@npm:0.6.0-alpha.6":
-  version: 0.6.0-alpha.6
-  resolution: "@theme-ui/core@npm:0.6.0-alpha.6"
+"@theme-ui/core@npm:0.6.0-canary.c5a716a.0":
+  version: 0.6.0-canary.c5a716a.0
+  resolution: "@theme-ui/core@npm:0.6.0-canary.c5a716a.0"
   dependencies:
     "@emotion/react": ^11.1.1
-    "@theme-ui/css": 0.6.0-alpha.6
-    "@theme-ui/parse-props": 0.6.0-alpha.6
+    "@theme-ui/css": 0.6.0-canary.c5a716a.0
+    "@theme-ui/parse-props": 0.6.0-canary.c5a716a.0
     deepmerge: ^4.2.2
   peerDependencies:
     react: ^16.14.0 || ^17.0.0
-  checksum: fd78f8076c4c80a6ed0bdac0ecca56dc8912231a5a3196421e0912b1d315726ab5d400019a0c951ba55028ae64859dd8fb6007a4bc44d73800011e8c61652544
+  checksum: c88b49dcfa38ca1f9d31bcf888a3c423d7bfb07b3780e45507e6e43eea02c010f08ac251835d4d3adbc351b503c46a47c09f6503be74c2e8d5ee2720837a8145
   languageName: node
   linkType: hard
 
-"@theme-ui/css@npm:0.6.0-alpha.6":
-  version: 0.6.0-alpha.6
-  resolution: "@theme-ui/css@npm:0.6.0-alpha.6"
+"@theme-ui/css@npm:0.6.0-canary.c5a716a.0":
+  version: 0.6.0-canary.c5a716a.0
+  resolution: "@theme-ui/css@npm:0.6.0-canary.c5a716a.0"
   dependencies:
     "@emotion/react": ^11.1.1
     csstype: ^3.0.5
-  checksum: a471c8a615fda57911f1b78d6430178e2243c53fa3fa9d5cea15ed7a43e7a0b2f60e1cca7671987362ffba8620ed3d1819df8e4ae7447d594b06a8913b8db5c3
+    ts-toolbelt: ^8.0.7
+  checksum: 530c41032c22e17b40bf65ead0a4304ab19cd23c322b3fa587432becb60c066c8f260d348f04ab6f13461ee036bacae38014c60a9f2dcf943a4d9c296d6db035
   languageName: node
   linkType: hard
 
-"@theme-ui/match-media@npm:0.6.0-alpha.6":
-  version: 0.6.0-alpha.6
-  resolution: "@theme-ui/match-media@npm:0.6.0-alpha.6"
+"@theme-ui/match-media@npm:0.6.0-canary.c5a716a.0":
+  version: 0.6.0-canary.c5a716a.0
+  resolution: "@theme-ui/match-media@npm:0.6.0-canary.c5a716a.0"
   peerDependencies:
     "@theme-ui/core": ^0.5.0-alpha.0
     "@theme-ui/css": ^0.5.0-alpha.0
     react: ^16.14.0 || ^17.0.0
-  checksum: d330228cc684d452cd102e7ecde0bcf94563bf0e2a53be74897ab5a113dd495d8e8453bdb210c8f08d877056f2185d5ce8df8e4cd93b9f4c4f383d2105ee32d4
+  checksum: 495d5c259143d9dc51e3fd93c03467856552a39f9bde5b6d413040cb3ddb5d369017ad94540470be98984b2bcc3588588b7041841a5da765c649b37c3d45aace
   languageName: node
   linkType: hard
 
-"@theme-ui/mdx@npm:0.6.0-alpha.6":
-  version: 0.6.0-alpha.6
-  resolution: "@theme-ui/mdx@npm:0.6.0-alpha.6"
+"@theme-ui/mdx@npm:0.6.0-canary.c5a716a.0":
+  version: 0.6.0-canary.c5a716a.0
+  resolution: "@theme-ui/mdx@npm:0.6.0-canary.c5a716a.0"
   dependencies:
     "@emotion/react": ^11.1.1
     "@emotion/styled": ^11.0.0
     "@mdx-js/react": ^1.6.22
-    "@theme-ui/core": 0.6.0-alpha.6
-    "@theme-ui/css": 0.6.0-alpha.6
+    "@theme-ui/core": 0.6.0-canary.c5a716a.0
+    "@theme-ui/css": 0.6.0-canary.c5a716a.0
   peerDependencies:
     react: ^16.14.0 || ^17.0.0
-  checksum: 483e8afaaf3877430229a4086fdf45a5ec38f8cdc39e1c38edfd90cf040bc04af35227e82254dd794a37e5ffcd220c67f7594546e83ba814cc06b9989229acca
+  checksum: b63b91925093503aad7f45b17aa2c3448915ff052ce3698e7c2d4d73573cee901e34f8c850361988c0d077cca6ca85b9bbea15ed21488336de1d9bfa071d6b72
   languageName: node
   linkType: hard
 
-"@theme-ui/parse-props@npm:0.6.0-alpha.6":
-  version: 0.6.0-alpha.6
-  resolution: "@theme-ui/parse-props@npm:0.6.0-alpha.6"
+"@theme-ui/parse-props@npm:0.6.0-canary.c5a716a.0":
+  version: 0.6.0-canary.c5a716a.0
+  resolution: "@theme-ui/parse-props@npm:0.6.0-canary.c5a716a.0"
   dependencies:
     "@emotion/react": ^11.1.1
-    "@theme-ui/css": 0.6.0-alpha.6
+    "@theme-ui/css": 0.6.0-canary.c5a716a.0
   peerDependencies:
     react: ^16.14.0 || ^17.0.0
-  checksum: 97668b3f8183ee3e1507a9807b006d06f5e0ce8fde0ecd05ed43fc73da54e3e569520949f55684021ecc8ff158c49ee0a6594f1189bd6dfe32edc9c7ee158091
+  checksum: 1c6a5da88680729a68bd38d9fa7f45201de4db50584f4ef55580c7b0af7ee57c4bf1edc0581bd28a61ab333ef4a4eb7e35109b5e42d77507ec8e26b91a784206
   languageName: node
   linkType: hard
 
-"@theme-ui/theme-provider@npm:0.6.0-alpha.6":
-  version: 0.6.0-alpha.6
-  resolution: "@theme-ui/theme-provider@npm:0.6.0-alpha.6"
+"@theme-ui/theme-provider@npm:0.6.0-canary.c5a716a.0":
+  version: 0.6.0-canary.c5a716a.0
+  resolution: "@theme-ui/theme-provider@npm:0.6.0-canary.c5a716a.0"
   dependencies:
     "@emotion/react": ^11.1.1
-    "@theme-ui/color-modes": 0.6.0-alpha.6
-    "@theme-ui/core": 0.6.0-alpha.6
-    "@theme-ui/mdx": 0.6.0-alpha.6
+    "@theme-ui/color-modes": 0.6.0-canary.c5a716a.0
+    "@theme-ui/core": 0.6.0-canary.c5a716a.0
+    "@theme-ui/mdx": 0.6.0-canary.c5a716a.0
   peerDependencies:
     "@theme-ui/css": "*"
     react: ^16.14.0 || ^17.0.0
-  checksum: 02e66fdb5f837af31f1019e58e4de28795aca563514b964b972a23148e9e07d12a077f915ee5c3924ecd4072c2dad76d9d68c7d01192e6017a8bf47acb35a0b0
+  checksum: b02ed80f97524088a54e3499afc3c3e4855f575be8fd234686fadc542ff1e6536d035ab5537356d1c679493d896b2e159450167ec18677fb1b9b10e041fdbd03
   languageName: node
   linkType: hard
 
@@ -19540,13 +19541,13 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-theme-ui@npm:0.6.0-alpha.6":
-  version: 0.6.0-alpha.6
-  resolution: "gatsby-plugin-theme-ui@npm:0.6.0-alpha.6"
+"gatsby-plugin-theme-ui@npm:0.6.0-canary.c5a716a.0":
+  version: 0.6.0-canary.c5a716a.0
+  resolution: "gatsby-plugin-theme-ui@npm:0.6.0-canary.c5a716a.0"
   peerDependencies:
     gatsby: ^2.13.1
     theme-ui: ^0.5.0-alpha.0
-  checksum: 92079502997e7eef5a8b0be7b2bb6806379e5500416df4425d1abe26195b9da33ce69310ee039de0b66ab43e0c8574e9e8c1744e4ba8993cd71a714f361ed68f
+  checksum: 87530f77435922f59027f6af613a20ad973259a464f3e5ff01f3273076f7c8984c4eeec3bb0d7a87769300bd7881aef5e3298b88708ea2307adf8d3294cd1482
   languageName: node
   linkType: hard
 
@@ -35540,19 +35541,19 @@ resolve@^1.19.0:
   languageName: node
   linkType: hard
 
-"theme-ui@npm:0.6.0-alpha.6":
-  version: 0.6.0-alpha.6
-  resolution: "theme-ui@npm:0.6.0-alpha.6"
+"theme-ui@npm:0.6.0-canary.c5a716a.0":
+  version: 0.6.0-canary.c5a716a.0
+  resolution: "theme-ui@npm:0.6.0-canary.c5a716a.0"
   dependencies:
-    "@theme-ui/color-modes": 0.6.0-alpha.6
-    "@theme-ui/components": 0.6.0-alpha.6
-    "@theme-ui/core": 0.6.0-alpha.6
-    "@theme-ui/css": 0.6.0-alpha.6
-    "@theme-ui/mdx": 0.6.0-alpha.6
-    "@theme-ui/theme-provider": 0.6.0-alpha.6
+    "@theme-ui/color-modes": 0.6.0-canary.c5a716a.0
+    "@theme-ui/components": 0.6.0-canary.c5a716a.0
+    "@theme-ui/core": 0.6.0-canary.c5a716a.0
+    "@theme-ui/css": 0.6.0-canary.c5a716a.0
+    "@theme-ui/mdx": 0.6.0-canary.c5a716a.0
+    "@theme-ui/theme-provider": 0.6.0-canary.c5a716a.0
   peerDependencies:
     react: ^16.14.0 || ^17.0.0
-  checksum: 221645e74f3676f1bb419516ce31bf3b7a97ef145cc64d6098a5a392438861075086dd49b24de1d9630de7959234ae1c2038f7e73fab608187776f2d2cd818cf
+  checksum: ac00edcd9242c6c5186fea9e171b259be1691412fc3d5c39cee115342a09a9e958b884c751db75049dcde238906bd8049bf1bf76555e317b67c2fb863a88a49f
   languageName: node
   linkType: hard
 
@@ -35995,6 +35996,13 @@ resolve@^1.19.0:
   version: 6.9.9
   resolution: "ts-toolbelt@npm:6.9.9"
   checksum: f10cbc6fac6b7b13dcfe3522d67526d1eecfee3b96ad974ea54a7d29b25f324136c142ff8aaf03d8375d34c8017b0ba6b233ece9a09d3af037677f02a3f51d18
+  languageName: node
+  linkType: hard
+
+"ts-toolbelt@npm:^8.0.7":
+  version: 8.4.0
+  resolution: "ts-toolbelt@npm:8.4.0"
+  checksum: dbc3ad2626b3ec3d0d23f800b6097deeb1895b6f07a1bc6b8c8933054255c93182d208f1b4b5a9a0a7dbb97516c5b828f4e0f1849b4b42145ba26864f49b57f9
   languageName: node
   linkType: hard
 
@@ -37364,7 +37372,7 @@ typescript@^4.0.0:
     "@tailwindcss/typography": 0.4.0
     "@testing-library/react": 11.2.5
     "@testing-library/react-hooks": 5.1.0
-    "@theme-ui/match-media": 0.6.0-alpha.6
+    "@theme-ui/match-media": 0.6.0-canary.c5a716a.0
     "@types/body-scroll-lock": 2.6.1
     "@types/date-fns": 2.6.0
     "@types/dompurify": 2.2.1
@@ -37423,7 +37431,7 @@ typescript@^4.0.0:
     gatsby-plugin-segment-js: 3.6.0
     gatsby-plugin-sharp: 2.14.3
     gatsby-plugin-svgr: 2.1.0
-    gatsby-plugin-theme-ui: 0.6.0-alpha.6
+    gatsby-plugin-theme-ui: 0.6.0-canary.c5a716a.0
     gatsby-plugin-typegen: 2.2.4
     gatsby-plugin-webpack-bundle-analyser-v2: 1.1.20
     gatsby-source-filesystem: 2.11.1
@@ -37460,7 +37468,7 @@ typescript@^4.0.0:
     storybook-addon-deps: 2.1.3
     storybook-addon-i18n: 5.1.13
     tailwindcss: 2.0.3
-    theme-ui: 0.6.0-alpha.6
+    theme-ui: 0.6.0-canary.c5a716a.0
     typescript: 4.1.5
     url-loader: 4.1.1
     use-immer: 0.4.2
