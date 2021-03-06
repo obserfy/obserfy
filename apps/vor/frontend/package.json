@@ -27,7 +27,7 @@
     "dayjs": "1.10.4",
     "dompurify": "2.2.6",
     "dotenv": "8.2.0",
-    "gatsby": "2.32.8",
+    "gatsby": "2.32.9",
     "gatsby-plugin-canonical-urls": "2.10.0",
     "gatsby-plugin-image": "1.0.0",
     "gatsby-plugin-layout": "1.10.0",
