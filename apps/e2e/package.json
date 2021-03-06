@@ -37,7 +37,7 @@
   "dependencies": {
     "@cypress/webpack-preprocessor": "5.6.0",
     "@hapi/iron": "6.0.0",
-    "@swc/core": "1.2.49",
+    "@swc/core": "1.2.50",
     "@types/auth0-js": "9.14.2",
     "@types/pg": "7.14.10",
     "auth0-js": "9.14.3",
