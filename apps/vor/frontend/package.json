@@ -18,7 +18,7 @@
     "@sentry/tracing": "6.2.1",
     "@svgr/webpack": "5.5.0",
     "@tailwindcss/typography": "0.4.0",
-    "@theme-ui/match-media": "0.6.0-alpha.6",
+    "@theme-ui/match-media": "0.6.0-canary.c5a716a.0",
     "@types/dompurify": "2.2.1",
     "@types/hls.js": "0.13.3",
     "babel-plugin-remove-graphql-queries": "2.16.1",
@@ -43,7 +43,7 @@
     "gatsby-plugin-segment-js": "3.6.0",
     "gatsby-plugin-sharp": "2.14.3",
     "gatsby-plugin-svgr": "2.1.0",
-    "gatsby-plugin-theme-ui": "0.6.0-alpha.6",
+    "gatsby-plugin-theme-ui": "0.6.0-canary.c5a716a.0",
     "gatsby-plugin-typegen": "2.2.4",
     "gatsby-plugin-webpack-bundle-analyser-v2": "1.1.20",
     "gatsby-source-filesystem": "2.11.1",
@@ -68,7 +68,7 @@
     "regenerator-runtime": "0.13.7",
     "snarkdown": "2.0.0",
     "tailwindcss": "2.0.3",
-    "theme-ui": "0.6.0-alpha.6",
+    "theme-ui": "0.6.0-canary.c5a716a.0",
     "use-immer": "0.4.2"
   },
   "devDependencies": {
