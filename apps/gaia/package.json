@@ -13,9 +13,9 @@
   "dependencies": {
     "@auth0/nextjs-auth0": "0.16.1",
     "@segment/snippet": "4.13.2",
-    "@sentry/browser": "6.2.0",
-    "@sentry/integrations": "6.2.0",
-    "@sentry/node": "6.2.0",
+    "@sentry/browser": "6.2.1",
+    "@sentry/integrations": "6.2.1",
+    "@sentry/node": "6.2.1",
     "@sentry/webpack-plugin": "1.14.1",
     "@svgr/webpack": "5.5.0",
     "@tailwindcss/typography": "0.4.0",
