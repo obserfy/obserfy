@@ -8,14 +8,10 @@ import { STUDENTS_URL } from "../routes"
 const IndexPage: FC<PageRendererProps> = () => {
   // TODO: replace with gatsby-link <Redirect /> when it lands, gatsby #26046
   useEffect(() => {
-    navigate(STUDENTS_URL)
+    navigate(STUDENTS_URL, { replace: true })
   }, [])
 
-  return (
-    <div>
-      <SEO title={t`Home`} />
-    </div>
-  )
+  return <SEO title={t`Home`} />
 }
 
 export default IndexPage

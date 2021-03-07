@@ -111,7 +111,7 @@ export const wrapPageElement = (params) => {
     window.location.pathname.replace(/\/$/, "") + queryParams !== newUrl &&
     !newUrl.endsWith("/404")
   ) {
-    navigate(newUrl)
+    navigate(newUrl, {replace: true})
   }
 
   return params.element
