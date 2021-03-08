@@ -6,7 +6,6 @@ import { borderBottom } from "../../border"
 import { ReactComponent as MarkdownIcon } from "../../icons/markdown.svg"
 import Icon from "../Icon/Icon"
 import Markdown from "../Markdown/Markdown"
-import { TextArea } from "../TextArea/TextArea"
 import { Typography } from "../Typography/Typography"
 
 export interface MarkdownEditorProps {
@@ -17,7 +16,7 @@ const MarkdownEditor: FC<MarkdownEditorProps> = ({ onChange, value = "" }) => {
   const [showPreview, setShowPreview] = useState(false)
 
   return (
-    <div>
+    <Box>
       <Flex px={2} sx={{ alignItems: "center", ...borderBottom }}>
         <Typography.Body
           as="button"
@@ -59,12 +58,15 @@ const MarkdownEditor: FC<MarkdownEditorProps> = ({ onChange, value = "" }) => {
 
         <a
           href="https://obserfy.com/docs/markdown-support"
+          target="_blank"
+          rel="noreferrer"
           sx={{
             display: "flex",
             alignItems: "center",
             ml: "auto",
             transition: "color ease-in 0.1s",
             color: "textMediumEmphasis",
+            whiteSpace: "nowrap",
             "&:hover": {
               color: "textPrimary",
             },
@@ -104,18 +106,22 @@ const MarkdownEditor: FC<MarkdownEditorProps> = ({ onChange, value = "" }) => {
       ) : (
         <Box
           px={2}
-          pb={2}
           sx={{
             backgroundColor: "darkSurface",
             borderBottomLeftRadius: "default",
             borderBottomRightRadius: "default",
           }}
         >
-          <TextArea
+          <textarea
             value={value}
             onChange={(e) => onChange(e.target.value)}
             placeholder="Write something"
             sx={{
+              fontSize: [2, 1],
+              outline: "none",
+              width: "100%",
+              px: 2,
+              py: 3,
               border: "none",
               backgroundColor: "darkSurface",
               minHeight: 400,
@@ -123,7 +129,7 @@ const MarkdownEditor: FC<MarkdownEditorProps> = ({ onChange, value = "" }) => {
           />
         </Box>
       )}
-    </div>
+    </Box>
   )
 }
 

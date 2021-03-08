@@ -47,7 +47,7 @@ const DescriptionEditor: FC<{
         </Button>
       </Flex>
 
-      <MarkdownEditor value={initialValue} onChange={setValue} />
+      <MarkdownEditor value={value} onChange={setValue} />
     </Card>
   )
 }

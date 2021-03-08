@@ -10,7 +10,9 @@ export default {
   },
 } as Meta
 
-const Template: Story<MarkdownEditorProps> = (args) => <MarkdownEditor {...args} />
+const Template: Story<MarkdownEditorProps> = (args) => (
+  <MarkdownEditor {...args} />
+)
 
 export const Default = Template.bind({})
 Default.args = {}
