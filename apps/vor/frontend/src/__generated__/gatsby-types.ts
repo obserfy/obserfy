@@ -3186,10 +3186,10 @@ type WebPOptions = {
   readonly quality: Maybe<Scalars['Int']>;
 };
 
-type homechrisintSrcobserfyYarndollardollarvirtualgatsbyPluginThemeUiVirtualB1851Fec1C0CachegatsbyPluginThemeUiNpm060CanaryC5A716A0Cc09Cb8Ef987530F7743ZipnodeModulesgatsbyPluginThemeUisrchooksconfigOptionsJs2744905544QueryVariables = Exact<{ [key: string]: never; }>;
+type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type homechrisintSrcobserfyYarndollardollarvirtualgatsbyPluginThemeUiVirtualB1851Fec1C0CachegatsbyPluginThemeUiNpm060CanaryC5A716A0Cc09Cb8Ef987530F7743ZipnodeModulesgatsbyPluginThemeUisrchooksconfigOptionsJs2744905544Query = { readonly themeUiConfig: Maybe<Pick<ThemeUiConfig, 'preset' | 'prismPreset'>> };
+type Unnamed_1_Query = { readonly themeUiConfig: Maybe<Pick<ThemeUiConfig, 'preset' | 'prismPreset'>> };
 
 type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
@@ -3241,10 +3241,10 @@ type GatsbyImageSharpSizes_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio
 
 type GatsbyImageSharpSizes_withWebp_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
 
-type homechrisintSrcobserfyappsvorfrontendsrccomponentsseoTsx63159454QueryVariables = Exact<{ [key: string]: never; }>;
+type Unnamed_2_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type homechrisintSrcobserfyappsvorfrontendsrccomponentsseoTsx63159454Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
+type Unnamed_2_Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
 
 type LocalizationSEOQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
