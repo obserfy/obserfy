@@ -74,7 +74,13 @@ const SEO: FC<Props> = ({ title, meta = [], description = `` }) => {
         },
         ...meta,
       ]}
-    />
+    >
+      <script
+        defer
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon='{"token": "bc7b99cc5d094563a52239225ea86900", "spa": true}'
+      />
+    </Helmet>
   )
 }
 
