@@ -1346,6 +1346,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
             >
               <textarea
                 class="emotion-41"
+                data-cy="markdown-editor"
                 placeholder="Write something"
               />
             </div>
