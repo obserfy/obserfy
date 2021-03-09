@@ -115,7 +115,7 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
         />
 
         <Card sx={{ ...borderFull }} mb={3}>
-          <Typography.Body p={3} sx={{ fontWeight: "bold" }}>
+          <Typography.Body pl={3} pt={3} pb={2} sx={{ fontWeight: "bold" }}>
             <Trans>Observation Details</Trans>
           </Typography.Body>
           <MarkdownEditor onChange={setLongDesc} value={longDesc} />

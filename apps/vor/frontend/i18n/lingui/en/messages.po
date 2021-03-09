@@ -164,7 +164,7 @@ msgstr "Area name"
 msgid "Areas"
 msgstr "Areas"
 
-#: src/components/PageNewObservation/PageNewObservation.tsx:113
+#: src/components/PageNewObservation/PageNewObservation.tsx:122
 msgid "Attach Images"
 msgstr "Attach Images"
 
@@ -351,16 +351,15 @@ msgstr "Delete material"
 msgid "Delete plan?"
 msgstr "Delete plan?"
 
-#: src/components/PageCurriculumMaterial/DescriptionEditor.tsx:39
+#: src/components/PageCurriculumMaterial/DescriptionEditor.tsx:35
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:105
 #: src/components/PageStudentPlanDetails/LessonPlanDescriptionCard.tsx:28
 #: src/components/PageStudentPlanDetails/LessonPlanDescriptionCard.tsx:40
 msgid "Description"
 msgstr "Description"
 
-#: src/components/PageNewObservation/PageNewObservation.tsx:94
 #: src/components/PageObservationDetails/DetailsCard.tsx:27
-#: src/components/PageObservationDetails/DetailsCard.tsx:38
+#: src/components/PageObservationDetails/DetailsCard.tsx:45
 #: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:47
 #: src/pages/dashboard/students/observations/details.tsx:27
 msgid "Details"
@@ -400,8 +399,8 @@ msgid "Edit Description"
 msgstr "Edit Description"
 
 #: src/components/PageObservationDetails/DetailsCard.tsx:29
-msgid "Edit Details"
-msgstr "Edit Details"
+#~ msgid "Edit Details"
+#~ msgstr "Edit Details"
 
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:205
 msgid "Edit Gender"
@@ -455,7 +454,7 @@ msgstr "Emails sent!"
 msgid "End Time"
 msgstr "End Time"
 
-#: src/components/PageNewObservation/PageNewObservation.tsx:111
+#: src/components/PageNewObservation/PageNewObservation.tsx:120
 #: src/components/PageObservationDetails/ObservationMetaCard.tsx:86
 msgid "Event Time"
 msgstr "Event Time"
@@ -634,7 +633,7 @@ msgstr "Manage your student data"
 #~ msgid "Mario"
 #~ msgstr "Mario"
 
-#: src/components/PageCurriculumMaterial/DescriptionEditor.tsx:61
+#: src/components/MarkdownEditor/MarkdownEditor.tsx:35
 msgid "Markdown Supported"
 msgstr "Markdown Supported"
 
@@ -804,6 +803,10 @@ msgstr "Notes"
 msgid "Observation"
 msgstr "Observation"
 
+#: src/components/PageNewObservation/PageNewObservation.tsx:99
+msgid "Observation Details"
+msgstr "Observation Details"
+
 #: src/components/PageAllObservations/ObservationsTable.tsx:51
 #: src/components/PageAllObservations/PageAllObservations.tsx:15
 #: src/components/PageStudentOverview/DailyObservationCard.tsx:40
@@ -897,7 +900,7 @@ msgstr "Practiced"
 msgid "Presented"
 msgstr "Presented"
 
-#: src/components/PageCurriculumMaterial/DescriptionEditor.tsx:55
+#: src/components/MarkdownEditor/MarkdownEditor.tsx:18
 msgid "Preview"
 msgstr "Preview"
 
@@ -924,7 +927,7 @@ msgstr "Record observations"
 msgid "Register for Free"
 msgstr "Register for Free"
 
-#: src/components/PageNewObservation/PageNewObservation.tsx:96
+#: src/components/PageNewObservation/PageNewObservation.tsx:105
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:129
 #: src/components/PageStudentPlanDetails/LessonPlanMetaCard.tsx:63
 msgid "Related Area"
@@ -971,7 +974,7 @@ msgid "Saturday"
 msgstr "Saturday"
 
 #: src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx:52
-#: src/components/PageCurriculumMaterial/DescriptionEditor.tsx:47
+#: src/components/PageCurriculumMaterial/DescriptionEditor.tsx:43
 #: src/components/PageEditClass/PageEditClass.tsx:97
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:140
 #: src/components/PageNewClass/PageNewClass.tsx:80
@@ -979,7 +982,7 @@ msgstr "Saturday"
 #: src/components/PageNewSchool/PageNewSchool.tsx:50
 #: src/components/PageNewStudent/PageNewStudent.tsx:38
 #: src/components/PageNewStudentClass/PageNewStudentClass.tsx:83
-#: src/components/PageObservationDetails/DetailsCard.tsx:29
+#: src/components/PageObservationDetails/DetailsCard.tsx:53
 #: src/components/PageObservationDetails/ObservationMetaCard.tsx:40
 #: src/components/PageObservationDetails/ObservationMetaCard.tsx:63
 #: src/components/PagePickGuardian/PagePickGuardian.tsx:78
@@ -1071,7 +1074,7 @@ msgstr "Shoot us an e-mail"
 msgid "Short Description"
 msgstr "Short Description"
 
-#: src/components/PageNewObservation/PageNewObservation.tsx:92
+#: src/components/PageNewObservation/PageNewObservation.tsx:93
 msgid "Short Description*"
 msgstr "Short Description*"
 
@@ -1179,8 +1182,8 @@ msgid "Tell us about your classes, We'll help you track your students attendance
 msgstr "Tell us about your classes, We'll help you track your students attendance."
 
 #: src/components/PageNewObservation/PageNewObservation.tsx:94
-msgid "Tell us what you observed"
-msgstr "Tell us what you observed"
+#~ msgid "Tell us what you observed"
+#~ msgstr "Tell us what you observed"
 
 #: src/components/PagePaymentSuccess/PagePaymentSuccess.tsx:23
 msgid "Thanks for Subscribing!"
@@ -1275,7 +1278,7 @@ msgstr "Users"
 msgid "Video gallery"
 msgstr "Video gallery"
 
-#: src/components/PageNewObservation/PageNewObservation.tsx:93
+#: src/components/PageNewObservation/PageNewObservation.tsx:95
 #: src/components/PageObservationDetails/PageObservationDetails.tsx:77
 msgid "Visible to guardians"
 msgstr "Visible to guardians"
@@ -1292,17 +1295,17 @@ msgstr "Weekly"
 msgid "Welcome!! Create your first school or use an invitation link to join an existing school."
 msgstr "Welcome!! Create your first school or use an invitation link to join an existing school."
 
-#: src/components/PageNewObservation/PageNewObservation.tsx:92
+#: src/components/PageNewObservation/PageNewObservation.tsx:93
 msgid "What have you found?"
 msgstr "What have you found?"
 
-#: src/components/PageCurriculumMaterial/DescriptionEditor.tsx:52
+#: src/components/MarkdownEditor/MarkdownEditor.tsx:15
 msgid "Write"
 msgstr "Write"
 
 #: src/components/PageObservationDetails/DetailsCard.tsx:38
-msgid "Write something"
-msgstr "Write something"
+#~ msgid "Write something"
+#~ msgstr "Write something"
 
 #: src/components/DeleteClassDialog/DeleteClassDialog.tsx:53
 #: src/components/PageEditStudentClass/PageEditStudentClass.tsx:102

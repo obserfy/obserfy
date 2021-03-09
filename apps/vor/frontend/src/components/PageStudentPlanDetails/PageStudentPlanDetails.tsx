@@ -51,7 +51,7 @@ export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
 
   if (isLoadingPlan) {
     return (
-      <Box sx={{ maxWidth: "maxWidth.sm" }} pb={3} mx="auto">
+      <Box sx={{ maxWidth: "maxWidth.sm" }} px={3} pb={3} mx="auto">
         <TopBar breadcrumbs={breadcrumbs} />
         <LoadingPlaceholder sx={{ width: "100%", height: 213 }} mb={3} />
         <LoadingPlaceholder sx={{ width: "100%", height: 129 }} mb={3} />
@@ -61,9 +61,9 @@ export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
   }
 
   return (
-    <>
-      <Box sx={{ maxWidth: "maxWidth.sm" }} pb={3} mx="auto">
-        <TopBar breadcrumbs={breadcrumbs} />
+    <Box sx={{ maxWidth: "maxWidth.sm" }} pb={3} mx="auto">
+      <TopBar breadcrumbs={breadcrumbs} />
+      <Box px={[0, 3]}>
         <LessonPlanMetaCard
           planId={planId}
           date={plan?.date}
@@ -86,7 +86,7 @@ export const PageStudentPlanDetails: FC<Props> = ({ studentId, planId }) => {
           onDeleted={navigateBack}
         />
       </Box>
-    </>
+    </Box>
   )
 }
 
