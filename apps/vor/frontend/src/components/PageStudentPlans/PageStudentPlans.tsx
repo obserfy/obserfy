@@ -2,6 +2,7 @@
 import { FC, useState } from "react"
 import { Box, Button, Card, Flex, jsx } from "theme-ui"
 import { t, Trans } from "@lingui/macro"
+import { getFirstName } from "../../domain/person"
 import {
   NEW_STUDENT_PLANS_URL,
   STUDENT_OVERVIEW_URL,
@@ -18,7 +19,7 @@ import { Link } from "../Link/Link"
 import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
 import { useGetStudent } from "../../hooks/api/useGetStudent"
 import useGetStudentPlans from "../../hooks/api/students/useGetStudentPlans"
-import TopBar from "../TopBar/TopBar"
+import TopBar, { breadCrumb } from "../TopBar/TopBar"
 
 interface Props {
   studentId: string
@@ -29,39 +30,44 @@ export const PageStudentPlans: FC<Props> = ({ studentId, date }) => {
   const student = useGetStudent(studentId)
   const { data } = useGetStudentPlans(studentId, selectedDate)
 
+  const handleMoveDate = (range: number) => () => {
+    const newDate = selectedDate.add(range, "day")
+    setSelectedDate(newDate)
+    // Update the url without re-rendering the whole component tree
+    window.history.replaceState({}, "", STUDENT_PLANS_URL(studentId, newDate))
+  }
+
+  const handleResetDate = () => {
+    const newDate = dayjs()
+    setSelectedDate(newDate)
+    // Update the url without re-rendering the whole component tree
+    window.history.replaceState({}, "", STUDENT_PLANS_URL(studentId, newDate))
+  }
+
   return (
     <Box mx="auto" sx={{ maxWidth: "maxWidth.sm" }}>
       <TopBar
         breadcrumbs={[
-          { to: STUDENTS_URL, text: t`Students` },
-          {
-            to: STUDENT_OVERVIEW_URL(studentId),
-            text: student.data?.name.split(" ")[0] ?? "",
-          },
-          { text: t`Plans` },
+          breadCrumb(t`Students`, STUDENTS_URL),
+          breadCrumb(
+            getFirstName(student.data),
+            STUDENT_OVERVIEW_URL(studentId)
+          ),
+          breadCrumb(t`Plans`),
         ]}
       />
-      <Flex px={3} pb={2} sx={{ alignItems: "flex-end" }}>
-        <Typography.Body color="textMediumEmphasis" sx={{ fontSize: 1 }}>
-          {selectedDate.format("ddd, DD MMM 'YY")}
+
+      <Flex px={3} pb={3} sx={{ alignItems: "center" }}>
+        <Typography.Body color="textMediumEmphasis">
+          {selectedDate.format("dddd, DD MMM YYYY")}
         </Typography.Body>
         <Button
           variant="outline"
-          py={1}
-          px={1}
+          p={1}
           mr={1}
           ml="auto"
           aria-label="previous-date"
-          onClick={() => {
-            const newDate = selectedDate.add(-1, "day")
-            setSelectedDate(newDate)
-            // Update the url without re-rendering the whole component tree
-            window.history.replaceState(
-              {},
-              "",
-              STUDENT_PLANS_URL(studentId, newDate)
-            )
-          }}
+          onClick={handleMoveDate(-1)}
         >
           <Icon as={PrevIcon} />
         </Button>
@@ -71,16 +77,7 @@ export const PageStudentPlans: FC<Props> = ({ studentId, date }) => {
           py={1}
           px={1}
           aria-label="next-date"
-          onClick={() => {
-            const newDate = selectedDate.add(1, "day")
-            setSelectedDate(newDate)
-            // Update the url without re-rendering the whole component tree
-            window.history.replaceState(
-              {},
-              "",
-              STUDENT_PLANS_URL(studentId, newDate)
-            )
-          }}
+          onClick={handleMoveDate(1)}
         >
           <Icon as={NextIcon} />
         </Button>
@@ -88,29 +85,22 @@ export const PageStudentPlans: FC<Props> = ({ studentId, date }) => {
           variant="outline"
           py={2}
           px={3}
-          onClick={() => {
-            const newDate = dayjs()
-            setSelectedDate(newDate)
-            // Update the url without re-rendering the whole component tree
-            window.history.replaceState(
-              {},
-              "",
-              STUDENT_PLANS_URL(studentId, newDate)
-            )
-          }}
+          onClick={handleResetDate}
           disabled={selectedDate.isSame(dayjs(), "day")}
         >
           <Trans>Today</Trans>
         </Button>
       </Flex>
+
       {data?.map((plan) => (
         <Link
+          key={plan.id}
           to={STUDENT_PLANS_DETAILS_URL(studentId, plan.id)}
-          sx={{ display: "block", mb: [0, 2] }}
+          sx={{ display: "block", mb: [0, 2], mx: 3 }}
         >
-          <Card px={3} py={2} sx={{ borderRadius: [0, "default"] }}>
+          <Card p={3}>
             <Typography.Body>{plan.title}</Typography.Body>
-            <Typography.Body sx={{ fontSize: 1, color: "textMediumEmphasis" }}>
+            <Typography.Body sx={{ color: "textMediumEmphasis" }}>
               {plan.area ? plan.area.name : "Other"}
             </Typography.Body>
             {plan.user?.name && (
@@ -118,15 +108,16 @@ export const PageStudentPlans: FC<Props> = ({ studentId, date }) => {
                 sx={{ fontSize: 0, color: "textMediumEmphasis" }}
                 mt={2}
               >
-                <Trans>Created by</Trans> {plan.user.name.split(" ")[0]}
+                <Trans>Created by</Trans> {plan.user.name}
               </Typography.Body>
             )}
           </Card>
         </Link>
       ))}
+
       <Link
         to={NEW_STUDENT_PLANS_URL(studentId, selectedDate)}
-        sx={{ display: "block", my: 3, mr: [3, 0] }}
+        sx={{ display: "block", m: 3 }}
       >
         <Button variant="outline" sx={{ ml: "auto" }}>
           <Icon as={PlusIcon} mr={2} fill="onBackground" />

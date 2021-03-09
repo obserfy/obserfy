@@ -22,10 +22,9 @@ i18n.load("en", enCatalog.messages as any)
 i18n.activate("en")
 
 const queryClient = new QueryClient()
+const history = createHistory(createMemorySource("/"))
 
 const AllProviders: FC = ({ children }) => {
-  // TODO: Maybe this better be outside
-  const history = createHistory(createMemorySource("/"))
   return (
     <I18nProvider i18n={i18n}>
       <QueryClientProvider client={queryClient}>

@@ -34,7 +34,7 @@ export const TranslucentBar: FC<TranslucentBarProps> = ({
           // 4. This will always be turned off before js is loaded, since gatsby's build step will use the default value.
           //    which means the initial html will always include the blur effect. But it doesn't matter, because at load,
           //    the html content is pretty simple.
-          deviceMemory > 2
+          deviceMemory > 3
             ? {
                 backgroundColor: "surfaceBlurTransparent",
                 backdropFilter: "saturate(180%) blur(20px)",
