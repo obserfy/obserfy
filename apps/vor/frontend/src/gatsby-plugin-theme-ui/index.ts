@@ -33,7 +33,7 @@ const theme = {
     surface: "#fff",
     onSurface: "rgba(0,0,0,0.87)",
 
-    darkSurface: "#f8f8f8",
+    darkSurface: "#fafafa",
     onDarkSurface: "rgba(0,0,0,0.87)",
 
     surfaceBlurNonTransparent: "rgba(255,255,255)",

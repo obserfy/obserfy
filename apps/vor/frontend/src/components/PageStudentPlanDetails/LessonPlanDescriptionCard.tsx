@@ -1,66 +1,84 @@
+import { t, Trans } from "@lingui/macro"
 import React, { FC, useState } from "react"
-import { Box, Card } from "theme-ui"
-import { useLingui } from "@lingui/react"
-import { t } from "@lingui/macro"
+import { Button, Card, Flex } from "theme-ui"
 import usePatchPlan from "../../hooks/api/plans/usePatchPlans"
+import useVisibilityState from "../../hooks/useVisibilityState"
+import { ReactComponent as CloseIcon } from "../../icons/close.svg"
+import Icon from "../Icon/Icon"
+import MarkdownEditor from "../MarkdownEditor/MarkdownEditor"
 import MultilineDataBox from "../MultilineDataBox/MultilineDataBox"
-import Dialog from "../Dialog/Dialog"
-import DialogHeader from "../DialogHeader/DialogHeader"
-import TextArea from "../TextArea/TextArea"
+import { Typography } from "../Typography/Typography"
 
 const LessonPlanDescriptionCard: FC<{
   planId: string
   description?: string
-}> = ({ planId, description }) => (
-  <Card mb={3} pb={3} sx={{ borderRadius: [0, "default"] }}>
-    <DescriptionDataBox value={description} lessonPlanId={planId} />
-  </Card>
-)
+}> = ({ description, planId }) => {
+  const editor = useVisibilityState()
 
-const DescriptionDataBox: FC<{ value?: string; lessonPlanId: string }> = ({
-  value,
-  lessonPlanId,
-}) => {
-  const [showEditDialog, setShowEditDialog] = useState(false)
-  const [description, setDescription] = useState(value)
-  const { mutateAsync } = usePatchPlan(lessonPlanId)
-  const { i18n } = useLingui()
+  if (editor.visible) {
+    return (
+      <DescriptionEditor
+        lessonPlanId={planId}
+        onDismiss={editor.hide}
+        onSave={editor.hide}
+        initialValue={description}
+      />
+    )
+  }
 
   return (
-    <>
+    <Card mb={3} pb={2} sx={{ borderRadius: [0, "default"] }}>
       <MultilineDataBox
         label={t`Description`}
-        value={value || ""}
-        onEditClick={() => setShowEditDialog(true)}
+        value={description || ""}
+        onEditClick={editor.show}
         placeholder="-"
       />
-      {showEditDialog && (
-        <Dialog>
-          <DialogHeader
-            title={t`Edit Description`}
-            onAcceptText={t`Save`}
-            onCancel={() => setShowEditDialog(false)}
-            onAccept={async () => {
-              try {
-                await mutateAsync({ description })
-                setShowEditDialog(false)
-              } catch (e) {
-                Sentry.captureException(e)
-              }
-            }}
-          />
-          <Box sx={{ backgroundColor: "background" }} p={3}>
-            <TextArea
-              label={i18n._(t`Description`)}
-              sx={{ width: "100%", lineHeight: 1.8, minHeight: 400 }}
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              placeholder={i18n._(t`Add some description here`)}
-            />
-          </Box>
-        </Dialog>
-      )}
-    </>
+    </Card>
+  )
+}
+
+const DescriptionEditor: FC<{
+  initialValue?: string
+  onDismiss: () => void
+  onSave: () => void
+  lessonPlanId: string
+}> = ({ lessonPlanId, onDismiss, onSave, initialValue = "" }) => {
+  const [value, setValue] = useState(initialValue)
+  const { mutateAsync } = usePatchPlan(lessonPlanId)
+
+  const handleSave = async () => {
+    try {
+      const result = await mutateAsync({ description: value })
+      if (result?.ok) onSave()
+      onSave()
+    } catch (e) {
+      Sentry.captureException(e)
+    }
+  }
+
+  return (
+    <Card mb={3} sx={{ borderRadius: [0, "default"] }}>
+      <Flex pt={3} pb={2}>
+        <Typography.Body px={3} sx={{ fontWeight: "bold" }}>
+          <Trans>Description</Trans>
+        </Typography.Body>
+
+        <Button variant="outline" ml="auto" p={1} mr={2} onClick={onDismiss}>
+          <Icon as={CloseIcon} fill="danger" />
+        </Button>
+
+        <Button
+          mr={3}
+          sx={{ fontWeight: "bold", fontSize: 0 }}
+          onClick={handleSave}
+        >
+          <Trans>Save</Trans>
+        </Button>
+      </Flex>
+
+      <MarkdownEditor value={value} onChange={setValue} />
+    </Card>
   )
 }
 
