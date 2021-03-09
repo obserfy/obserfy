@@ -113,6 +113,7 @@ const MarkdownEditor: FC<MarkdownEditorProps> = ({ onChange, value = "" }) => {
           }}
         >
           <textarea
+            data-cy="markdown-editor"
             value={value}
             onChange={(e) => onChange(e.target.value)}
             placeholder="Write something"
