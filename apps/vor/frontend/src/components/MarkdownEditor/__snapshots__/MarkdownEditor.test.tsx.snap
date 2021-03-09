@@ -150,13 +150,13 @@ exports[`MarkdownEditor should render correctly 1`] = `
   min-width: 0;
   padding-left: 8px;
   padding-right: 8px;
-  background-color: var(--theme-ui-colors-darkSurface, #f8f8f8);
+  background-color: var(--theme-ui-colors-darkSurface, #fafafa);
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
 }
 
 .emotion-9 {
-  font-size: 16px;
+  line-height: 1.7142857;
   outline: none;
   width: 100%;
   padding-left: 8px;
@@ -164,14 +164,8 @@ exports[`MarkdownEditor should render correctly 1`] = `
   padding-top: 16px;
   padding-bottom: 16px;
   border: none;
-  background-color: var(--theme-ui-colors-darkSurface, #f8f8f8);
+  background-color: var(--theme-ui-colors-darkSurface, #fafafa);
   min-height: 400px;
-}
-
-@media screen and (min-width: 40em) {
-  .emotion-9 {
-    font-size: 14px;
-  }
 }
 
 <div>
