@@ -1,5 +1,4 @@
 import { useQuery } from "react-query"
-import { t } from "@lingui/macro"
 import { navigate } from "../../components/Link/Link"
 import { useQueryCache } from "../useQueryCache"
 import { BASE_URL } from "./useApi"
@@ -45,13 +44,13 @@ export function materialStageToString(stage?: Assessment) {
   let status
   switch (stage) {
     case Assessment.MASTERED:
-      status = t`Mastered`
+      status = `Mastered`
       break
     case Assessment.PRACTICED:
-      status = t`Practiced`
+      status = `Practiced`
       break
     case Assessment.PRESENTED:
-      status = t`Presented`
+      status = `Presented`
       break
     default:
       return ""
