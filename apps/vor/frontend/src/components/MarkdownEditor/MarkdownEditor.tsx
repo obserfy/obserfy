@@ -117,6 +117,7 @@ const MarkdownEditor: FC<MarkdownEditorProps> = ({ onChange, value = "" }) => {
             onChange={(e) => onChange(e.target.value)}
             placeholder="Write something"
             sx={{
+              lineHeight: "1.7142857",
               fontSize: [2, 1],
               outline: "none",
               width: "100%",

@@ -1,33 +1,33 @@
+import { t, Trans } from "@lingui/macro"
+import { useLingui } from "@lingui/react"
 import React, { FC, useState } from "react"
 import { Box, Button, Card, Flex, Image } from "theme-ui"
 import { useImmer } from "use-immer"
-import { t, Trans } from "@lingui/macro"
-import { useLingui } from "@lingui/react"
 import { track } from "../../analytics"
-import Input from "../Input/Input"
-import TextArea from "../TextArea/TextArea"
-import Typography from "../Typography/Typography"
-import { useGetStudent } from "../../hooks/api/useGetStudent"
-import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
-import usePostNewObservation from "../../hooks/api/usePostNewObservation"
-import { navigate } from "../Link/Link"
-import { STUDENT_OVERVIEW_URL, STUDENTS_URL } from "../../routes"
-import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
-import Icon from "../Icon/Icon"
+import { borderBottom, borderFull } from "../../border"
+import dayjs from "../../dayjs"
+import { getFirstName } from "../../domain/person"
 import usePostNewStudentImage from "../../hooks/api/students/usePostNewStudentImage"
+import { useGetCurriculumAreas } from "../../hooks/api/useGetCurriculumAreas"
+import { useGetStudent } from "../../hooks/api/useGetStudent"
+import usePostNewObservation from "../../hooks/api/usePostNewObservation"
+import useVisibilityState from "../../hooks/useVisibilityState"
+import { ReactComponent as PlusIcon } from "../../icons/plus.svg"
+import { STUDENT_OVERVIEW_URL, STUDENTS_URL } from "../../routes"
+import BackButton from "../BackButton/BackButton"
 import Breadcrumb from "../Breadcrumb/Breadcrumb"
 import BreadcrumbItem from "../Breadcrumb/BreadcrumbItem"
-import TranslucentBar from "../TranslucentBar/TranslucentBar"
-import DateInput from "../DateInput/DateInput"
-import dayjs from "../../dayjs"
-import { useGetCurriculumAreas } from "../../hooks/api/useGetCurriculumAreas"
-import Chip from "../Chip/Chip"
-import BackButton from "../BackButton/BackButton"
-import { borderBottom, borderFull } from "../../border"
-import ImagePreviewOverlay from "../ImagePreviewOverlay/ImagePreviewOverlay"
-import { getFirstName } from "../../domain/person"
-import useVisibilityState from "../../hooks/useVisibilityState"
 import Checkbox from "../Checkbox/Checkbox"
+import Chip from "../Chip/Chip"
+import DateInput from "../DateInput/DateInput"
+import Icon from "../Icon/Icon"
+import ImagePreviewOverlay from "../ImagePreviewOverlay/ImagePreviewOverlay"
+import Input from "../Input/Input"
+import { navigate } from "../Link/Link"
+import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
+import MarkdownEditor from "../MarkdownEditor/MarkdownEditor"
+import TranslucentBar from "../TranslucentBar/TranslucentBar"
+import Typography from "../Typography/Typography"
 
 interface Props {
   studentId: string
@@ -38,7 +38,7 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
   const { data: areas } = useGetCurriculumAreas()
 
   const [shortDesc, setShortDesc] = useState("")
-  const [longDesc, setDetails] = useState("")
+  const [longDesc, setLongDesc] = useState("")
   const [images, setImages] = useImmer<Array<{ id: string; file: File }>>([])
   const [eventTime, setEventTime] = useState(dayjs())
   const [areaId, setAreaId] = useState<string>()
@@ -96,6 +96,7 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
           </Button>
         </Flex>
       </TranslucentBar>
+
       <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={4} px={3} mt={3}>
         <Input
           label={t`Short Description*`}
@@ -105,19 +106,21 @@ export const PageNewObservation: FC<Props> = ({ studentId }) => {
           value={shortDesc}
           mb={2}
         />
+
         <Checkbox
           containerSx={{ mb: 3 }}
           label={t` Visible to guardians `}
           checked={visibleToGuardians}
           onChange={setVisibleToGuardians}
         />
-        <TextArea
-          label={t`Details`}
-          placeholder={i18n._(t`Tell us what you observed`)}
-          onChange={(e) => setDetails(e.target.value)}
-          value={longDesc}
-          mb={3}
-        />
+
+        <Card sx={{ ...borderFull }} mb={3}>
+          <Typography.Body p={3} sx={{ fontWeight: "bold" }}>
+            <Trans>Observation Details</Trans>
+          </Typography.Body>
+          <MarkdownEditor onChange={setLongDesc} value={longDesc} />
+        </Card>
+
         <Typography.Body sx={{ color: "textMediumEmphasis" }} mb={2}>
           <Trans>Related Area</Trans>
         </Typography.Body>
