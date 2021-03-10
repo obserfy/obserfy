@@ -48,7 +48,7 @@
     "mux-embed": "3.5.0",
     "nanoid": "3.1.20",
     "newtype-ts": "0.3.4",
-    "next": "10.0.7",
+    "next": "10.0.8",
     "next-compose-plugins": "2.2.1",
     "next-plugin-preact": "3.0.3",
     "next-pwa": "5.0.5",
@@ -67,8 +67,7 @@
     "tailwindcss": "2.0.3",
     "ts-is-present": "1.2.1",
     "typescript": "4.1.5",
-    "uuid": "8.3.2",
-    "webpack": "4.46.0"
+    "uuid": "8.3.2"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "4.11.1",
