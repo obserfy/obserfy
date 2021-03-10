@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/PageObservationDetails/PageObservationDetails.tsx:57
+#: src/components/PageObservationDetails/PageObservationDetails.tsx:58
 msgid "\"{0}\" will be permanently deleted. Are you sure?"
 msgstr "\"{0}\" will be permanently deleted. Are you sure?"
 
@@ -34,7 +34,7 @@ msgstr "<0>\"{name}\"</0> curriculum and student data related to it will be perm
 #: src/components/PageAddGuardian/PageAddGuardian.tsx:73
 #: src/components/PageNewStudent/NewStudentForm.tsx:99
 #: src/components/PageNewStudentAddGuardian/PageNewStudentAddGuardian.tsx:70
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:156
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:163
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:92
 #: src/components/StudentPickerDialog/StudentPickerDialog.tsx:30
 #: src/components/TopBarWithAction/TopBarWithAction.tsx:11
@@ -73,7 +73,7 @@ msgstr "Add new area"
 msgid "Add new material"
 msgstr "Add new material"
 
-#: src/components/PageStudentPlans/PageStudentPlans.tsx:76
+#: src/components/PageStudentPlans/PageStudentPlans.tsx:73
 msgid "Add new plan"
 msgstr "Add new plan"
 
@@ -82,8 +82,8 @@ msgid "Add new subject"
 msgstr "Add new subject"
 
 #: src/components/PageStudentPlanDetails/LessonPlanDescriptionCard.tsx:40
-msgid "Add some description here"
-msgstr "Add some description here"
+#~ msgid "Add some description here"
+#~ msgstr "Add some description here"
 
 #: src/components/NewGuardianForm/NewGuardianForm.tsx:15
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:69
@@ -245,7 +245,7 @@ msgstr "Create observation"
 msgid "Create your first class to track your student's class enrollment."
 msgstr "Create your first class to track your student's class enrollment."
 
-#: src/components/PageStudentPlans/PageStudentPlans.tsx:68
+#: src/components/PageStudentPlans/PageStudentPlans.tsx:64
 msgid "Created by"
 msgstr "Created by"
 
@@ -284,7 +284,7 @@ msgstr "Custom"
 msgid "Custom Curriculum"
 msgstr "Custom Curriculum"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:142
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:149
 msgid "Daily"
 msgstr "Daily"
 
@@ -326,7 +326,7 @@ msgstr "Delete Class?"
 msgid "Delete Curriculum?"
 msgstr "Delete Curriculum?"
 
-#: src/components/PageObservationDetails/PageObservationDetails.tsx:57
+#: src/components/PageObservationDetails/PageObservationDetails.tsx:58
 msgid "Delete Observation?"
 msgstr "Delete Observation?"
 
@@ -352,9 +352,9 @@ msgid "Delete plan?"
 msgstr "Delete plan?"
 
 #: src/components/PageCurriculumMaterial/DescriptionEditor.tsx:35
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:105
-#: src/components/PageStudentPlanDetails/LessonPlanDescriptionCard.tsx:28
-#: src/components/PageStudentPlanDetails/LessonPlanDescriptionCard.tsx:40
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:109
+#: src/components/PageStudentPlanDetails/LessonPlanDescriptionCard.tsx:26
+#: src/components/PageStudentPlanDetails/LessonPlanDescriptionCard.tsx:46
 msgid "Description"
 msgstr "Description"
 
@@ -395,8 +395,8 @@ msgid "Edit Curriculum"
 msgstr "Edit Curriculum"
 
 #: src/components/PageStudentPlanDetails/LessonPlanDescriptionCard.tsx:30
-msgid "Edit Description"
-msgstr "Edit Description"
+#~ msgid "Edit Description"
+#~ msgstr "Edit Description"
 
 #: src/components/PageObservationDetails/DetailsCard.tsx:29
 #~ msgid "Edit Details"
@@ -521,7 +521,7 @@ msgstr "Give Feedback"
 msgid "Go to Class Settings"
 msgstr "Go to Class Settings"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:126
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:133
 #: src/components/PageStudentOverview/AssessmentCard.tsx:129
 msgid "Go to Curriculum"
 msgstr "Go to Curriculum"
@@ -597,7 +597,7 @@ msgstr "Learn more."
 msgid "Light"
 msgstr "Light"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:111
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:117
 #: src/components/PageStudentPlanDetails/LessonPlanLinksCard.tsx:23
 msgid "Links"
 msgstr "Links"
@@ -638,8 +638,8 @@ msgid "Markdown Supported"
 msgstr "Markdown Supported"
 
 #: src/hooks/api/useGetStudentMaterialProgress.ts:40
-msgid "Mastered"
-msgstr "Mastered"
+#~ msgid "Mastered"
+#~ msgstr "Mastered"
 
 #: src/pages/dashboard/admin/curriculum/material/index.tsx:25
 msgid "Material"
@@ -674,7 +674,7 @@ msgid "Name (Required)"
 msgstr "Name (Required)"
 
 #: src/components/PageClassSettings/PageClassSettings.tsx:30
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:93
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:94
 msgid "New"
 msgstr "New"
 
@@ -761,7 +761,7 @@ msgstr "No observation have been added yet"
 msgid "No observations found"
 msgstr "No observations found"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:177
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:184
 #: src/components/PageStudentPlanDetails/RelatedStudentsCard.tsx:47
 msgid "No other students added yet."
 msgstr "No other students added yet."
@@ -770,7 +770,7 @@ msgstr "No other students added yet."
 msgid "No phone set"
 msgstr "No phone set"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:141
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:148
 msgid "None"
 msgstr "None"
 
@@ -831,7 +831,7 @@ msgstr "Or"
 msgid "Other"
 msgstr "Other"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:153
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:160
 #: src/components/PageStudentPlanDetails/RelatedStudentsCard.tsx:39
 msgid "Other Related Students"
 msgstr "Other Related Students"
@@ -870,10 +870,10 @@ msgstr "Pick end date"
 msgid "Pick start date"
 msgstr "Pick start date"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:90
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:91
 #: src/components/PageStudentOverview/PageStudentOverview.tsx:48
 #: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:44
-#: src/components/PageStudentPlans/PageStudentPlans.tsx:28
+#: src/components/PageStudentPlans/PageStudentPlans.tsx:37
 msgid "Plans"
 msgstr "Plans"
 
@@ -893,12 +893,12 @@ msgid "Posted on"
 msgstr "Posted on"
 
 #: src/hooks/api/useGetStudentMaterialProgress.ts:43
-msgid "Practiced"
-msgstr "Practiced"
+#~ msgid "Practiced"
+#~ msgstr "Practiced"
 
 #: src/hooks/api/useGetStudentMaterialProgress.ts:46
-msgid "Presented"
-msgstr "Presented"
+#~ msgid "Presented"
+#~ msgstr "Presented"
 
 #: src/components/MarkdownEditor/MarkdownEditor.tsx:18
 msgid "Preview"
@@ -928,7 +928,7 @@ msgid "Register for Free"
 msgstr "Register for Free"
 
 #: src/components/PageNewObservation/PageNewObservation.tsx:105
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:129
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:136
 #: src/components/PageStudentPlanDetails/LessonPlanMetaCard.tsx:63
 msgid "Related Area"
 msgstr "Related Area"
@@ -949,11 +949,11 @@ msgstr "Remove Guardian?"
 msgid "Remove guardian?"
 msgstr "Remove guardian?"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:146
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:153
 msgid "Repeat Until"
 msgstr "Repeat Until"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:138
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:145
 msgid "Repetition"
 msgstr "Repetition"
 
@@ -986,7 +986,7 @@ msgstr "Saturday"
 #: src/components/PageObservationDetails/ObservationMetaCard.tsx:40
 #: src/components/PageObservationDetails/ObservationMetaCard.tsx:63
 #: src/components/PagePickGuardian/PagePickGuardian.tsx:78
-#: src/components/PageStudentPlanDetails/LessonPlanDescriptionCard.tsx:30
+#: src/components/PageStudentPlanDetails/LessonPlanDescriptionCard.tsx:54
 #: src/components/PageStudentPlanDetails/LessonPlanMetaCard.tsx:65
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:170
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:205
@@ -1125,7 +1125,7 @@ msgstr "Student ID"
 #: src/components/PageNewStudentAddGuardian/PageNewStudentAddGuardian.tsx:65
 #: src/components/PageStudentOverview/PageStudentOverview.tsx:24
 #: src/components/PageStudentPlanDetails/PageStudentPlanDetails.tsx:36
-#: src/components/PageStudentPlans/PageStudentPlans.tsx:23
+#: src/components/PageStudentPlans/PageStudentPlans.tsx:35
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:50
 #: src/pages/dashboard/students/observation-details.tsx:23
 #: src/pages/dashboard/students/observations/details.tsx:18
@@ -1213,12 +1213,12 @@ msgstr "This will export all currently visible observations as a csv file, conti
 msgid "Thursday"
 msgstr "Thursday"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:104
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:105
 #: src/components/PageStudentPlanDetails/LessonPlanMetaCard.tsx:91
 msgid "Title"
 msgstr "Title"
 
-#: src/components/PageStudentPlans/PageStudentPlans.tsx:56
+#: src/components/PageStudentPlans/PageStudentPlans.tsx:51
 msgid "Today"
 msgstr "Today"
 
@@ -1279,7 +1279,7 @@ msgid "Video gallery"
 msgstr "Video gallery"
 
 #: src/components/PageNewObservation/PageNewObservation.tsx:95
-#: src/components/PageObservationDetails/PageObservationDetails.tsx:77
+#: src/components/PageObservationDetails/PageObservationDetails.tsx:78
 msgid "Visible to guardians"
 msgstr "Visible to guardians"
 
@@ -1287,7 +1287,7 @@ msgstr "Visible to guardians"
 msgid "Wednesday"
 msgstr "Wednesday"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:143
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:150
 msgid "Weekly"
 msgstr "Weekly"
 
@@ -1320,7 +1320,7 @@ msgstr "Yes"
 msgid "You"
 msgstr "You"
 
-#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:124
+#: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:131
 #: src/components/PageStudentOverview/AssessmentCard.tsx:129
 msgid "You can enable the curriculum feature to track student progress in your curriculum."
 msgstr "You can enable the curriculum feature to track student progress in your curriculum."
