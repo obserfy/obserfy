@@ -29,8 +29,8 @@ module.exports = {
     `gatsby-plugin-preact`,
     `gatsby-plugin-layout`,
     "gatsby-plugin-theme-ui",
-    `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-postcss`,
+    // `gatsby-plugin-react-helmet`,
+    // `gatsby-plugin-postcss`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
