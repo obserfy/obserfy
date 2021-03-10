@@ -1771,7 +1771,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.10.0, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.13, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.3.1, @babel/runtime@npm:^7.3.4, @babel/runtime@npm:^7.5.0, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.6.2, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.7.6, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.8.7, @babel/runtime@npm:^7.9.2":
+"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.10.0, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.13, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.13.10, @babel/runtime@npm:^7.3.1, @babel/runtime@npm:^7.3.4, @babel/runtime@npm:^7.5.0, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.6.2, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.7.6, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.8.7, @babel/runtime@npm:^7.9.2":
   version: 7.13.10
   resolution: "@babel/runtime@npm:7.13.10"
   dependencies:
@@ -2139,9 +2139,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/jest@npm:11.2.0":
-  version: 11.2.0
-  resolution: "@emotion/jest@npm:11.2.0"
+"@emotion/jest@npm:11.2.1":
+  version: 11.2.1
+  resolution: "@emotion/jest@npm:11.2.1"
   dependencies:
     "@babel/runtime": ^7.7.2
     "@emotion/css-prettifier": ^1.0.0
@@ -2156,7 +2156,7 @@ __metadata:
       optional: true
     enzyme-to-json:
       optional: true
-  checksum: 564677406a430ad780fae1addc4212d5af580fd0513d40a787af3af42d2b567f91cd4901bf16e29dc778606abe749dc410970517649dcb2f878849e2ec953655
+  checksum: 240a9e5c6545e9b35abf1cf0331712d46a54038360cfefd8b02226dd3a0e1450ae120374e07588ebed1bb7f0b76b098587e2e7e9f306b029d9ccc7384ada300e
   languageName: node
   linkType: hard
 
@@ -3639,7 +3639,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lingui/babel-plugin-extract-messages@npm:^3.6.0":
+"@lingui/babel-plugin-extract-messages@npm:^3.7.1":
   version: 3.7.1
   resolution: "@lingui/babel-plugin-extract-messages@npm:3.7.1"
   dependencies:
@@ -3651,17 +3651,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lingui/cli@npm:3.6.0":
-  version: 3.6.0
-  resolution: "@lingui/cli@npm:3.6.0"
+"@lingui/cli@npm:3.7.1":
+  version: 3.7.1
+  resolution: "@lingui/cli@npm:3.7.1"
   dependencies:
     "@babel/generator": ^7.11.6
     "@babel/parser": ^7.11.5
     "@babel/plugin-syntax-jsx": ^7.10.4
     "@babel/runtime": ^7.11.2
     "@babel/types": ^7.11.5
-    "@lingui/babel-plugin-extract-messages": ^3.6.0
-    "@lingui/conf": ^3.6.0
+    "@lingui/babel-plugin-extract-messages": ^3.7.1
+    "@lingui/conf": ^3.7.1
     babel-plugin-macros: ^2.8.0
     bcp-47: ^1.0.7
     chalk: ^4.1.0
@@ -3681,6 +3681,7 @@ __metadata:
     normalize-path: ^3.0.0
     ora: ^5.1.0
     papaparse: ^5.3.0
+    pkg-up: ^3.1.0
     plurals-cldr: ^1.0.4
     pofile: ^1.1.0
     pseudolocale: ^1.1.0
@@ -3691,11 +3692,11 @@ __metadata:
     typescript: 2 || 3 || 4
   bin:
     lingui: lingui.js
-  checksum: 7b52310cb9f1c016a63a68aa695b4c0abf205de3f7b79b68881727bc0bacb88ae58e9761d5d91fe74c6956d77b62397b7e7f4e4f87ef7912dd2ad9d2fb25cafd
+  checksum: e7e5fc03945ee7a7098c786fbd5072f678faec842faa4d9e68ad5bafe18d90ec1fd5192e4d62542d349f9a8978f4ee71fa6c27a638ee124b4f293956a9886be7
   languageName: node
   linkType: hard
 
-"@lingui/conf@npm:^3.6.0, @lingui/conf@npm:^3.7.1":
+"@lingui/conf@npm:^3.7.1":
   version: 3.7.1
   resolution: "@lingui/conf@npm:3.7.1"
   dependencies:
@@ -3709,18 +3710,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lingui/core@npm:3.6.0":
-  version: 3.6.0
-  resolution: "@lingui/core@npm:3.6.0"
-  dependencies:
-    "@babel/runtime": ^7.11.2
-    make-plural: ^6.2.2
-    messageformat-parser: ^4.1.3
-  checksum: 2d681538963f72347037e5f57aa69abcf78861a62b83a6f51f2dd5bb2c712eb2cd79c41cde9212e38ea4fe0e16daa66049f435c0ff6c38ce134eb698840c26bf
-  languageName: node
-  linkType: hard
-
-"@lingui/core@npm:^3.6.0":
+"@lingui/core@npm:3.7.1, @lingui/core@npm:^3.7.1":
   version: 3.7.1
   resolution: "@lingui/core@npm:3.7.1"
   dependencies:
@@ -3731,28 +3721,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lingui/macro@npm:3.6.0":
-  version: 3.6.0
-  resolution: "@lingui/macro@npm:3.6.0"
+"@lingui/macro@npm:3.7.1":
+  version: 3.7.1
+  resolution: "@lingui/macro@npm:3.7.1"
   dependencies:
     "@babel/runtime": ^7.11.2
-    "@lingui/conf": ^3.6.0
+    "@lingui/conf": ^3.7.1
     ramda: ^0.27.1
   peerDependencies:
     babel-plugin-macros: ^2.5.1
-  checksum: 71e67066d1cfce577bddb25a35320c436a1d06398b73ebab9a34f0318ba7165875da2bac1e0f65d1cae46e999960c509ce441f52357bbdaa5d473966dd96c531
+  checksum: 039c54c8328de8e306a61f39ef764f80163ad2731ef3553e2ecda9dc42ed4c10d167b60e831fb25195915225ee4cfc021244f9d733da1579e99a2b06fea03016
   languageName: node
   linkType: hard
 
-"@lingui/react@npm:3.6.0":
-  version: 3.6.0
-  resolution: "@lingui/react@npm:3.6.0"
+"@lingui/react@npm:3.7.1":
+  version: 3.7.1
+  resolution: "@lingui/react@npm:3.7.1"
   dependencies:
     "@babel/runtime": ^7.11.2
-    "@lingui/core": ^3.6.0
+    "@lingui/core": ^3.7.1
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
-  checksum: 8ae06fbdedbb2820ed86fa2a1d1cf4a32697aa2bcf1999b4861911f98680bba3b497a90a2dab172a85d1757d4d4be448f1e9491c586379a0498d875882532b48
+  checksum: ba32376127a00555fcddde715aef46faf0cc5306aa8bdb7acc560ca273ad5fac63a71d96c713f1c74191f0d927dfab3539b8baba2b1b1ce52e4c0db6c7537c27
   languageName: node
   linkType: hard
 
@@ -15895,10 +15885,10 @@ __metadata:
   resolution: "freyr@workspace:apps/freyr"
   dependencies:
     "@babel/core": 7.13.8
-    "@lingui/cli": 3.6.0
-    "@lingui/core": 3.6.0
-    "@lingui/macro": 3.6.0
-    "@lingui/react": 3.6.0
+    "@lingui/cli": 3.7.1
+    "@lingui/core": 3.7.1
+    "@lingui/macro": 3.7.1
+    "@lingui/react": 3.7.1
     "@mdx-js/mdx": 1.6.22
     "@mdx-js/react": 1.6.22
     "@tailwindcss/typography": 0.4.0
@@ -15935,7 +15925,7 @@ __metadata:
     gatsby-plugin-sharp: 3.0.0
     gatsby-plugin-sitemap: 3.0.0
     gatsby-plugin-typegen: 2.2.4
-    gatsby-plugin-webpack-bundle-analyser-v2: 1.1.20
+    gatsby-plugin-webpack-bundle-analyser-v2: 1.1.21
     gatsby-remark-images: 4.0.0
     gatsby-remark-prismjs: 4.0.0
     gatsby-source-filesystem: 3.0.0
@@ -16262,7 +16252,7 @@ fsevents@^1.2.7:
     eslint-plugin-react-hooks: 4.2.0
     formidable-serverless: 1.1.1
     fp-ts: 2.9.5
-    hls.js: beta
+    hls.js: ^1.0.0-beta.6
     io-ts: 2.2.15
     io-ts-types: 0.5.15
     jest: 26.6.3
@@ -16600,14 +16590,14 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-portal@npm:1.0.65":
-  version: 1.0.65
-  resolution: "gatsby-plugin-portal@npm:1.0.65"
+"gatsby-plugin-portal@npm:1.0.7":
+  version: 1.0.7
+  resolution: "gatsby-plugin-portal@npm:1.0.7"
   dependencies:
     "@babel/runtime": ^7.3.1
   peerDependencies:
     gatsby: ^2.0.0
-  checksum: 272af8629a0ff7f53e79d9e9a5e39b705863f892fdc7e0b26fb1cc07660ea25eb07d4eeb757dad1b07201f7d7e9668047f399dfc9c708cf92754e8c281562fd0
+  checksum: 01f2099b1d047b1292c3f11fa1c3dec402141600d86570b145387d3b06b2a0c2fe1274e1d6bd55e9a17ee1bab8540cb50b0ab980bcbed8bdb35715339c90b3df
   languageName: node
   linkType: hard
 
@@ -16813,15 +16803,15 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-webpack-bundle-analyser-v2@npm:1.1.20":
-  version: 1.1.20
-  resolution: "gatsby-plugin-webpack-bundle-analyser-v2@npm:1.1.20"
+"gatsby-plugin-webpack-bundle-analyser-v2@npm:1.1.21":
+  version: 1.1.21
+  resolution: "gatsby-plugin-webpack-bundle-analyser-v2@npm:1.1.21"
   dependencies:
-    "@babel/runtime": ^7.12.5
+    "@babel/runtime": ^7.13.10
     webpack-bundle-analyzer: ^4.4.0
   peerDependencies:
-    gatsby: ^2.0.0
-  checksum: 2b13023990d01386b2fc1c41706df103ab34be1cb4b54c72c74376d466baa6b768cc023970e1597aac0e0262eb46eb799f5abdb88124530d1cc207f7e766ad57
+    gatsby: ^2.0.0 || ^3.0.0
+  checksum: 422cfa92017a2170a307369365b12f0714d083201f4ce9374e4b94e606ed07392d9f781e11681c4559cc68f0ba06e4975069e22bfd97bdff840f6647314ac7cb
   languageName: node
   linkType: hard
 
@@ -16989,8 +16979,8 @@ fsevents@^1.2.7:
   version: 0.0.0-use.local
   resolution: "gatsby-theme-i18n-lingui@workspace:packages/gatsby-theme-i18n-lingui"
   dependencies:
-    "@lingui/core": 3.6.0
-    "@lingui/react": 3.6.0
+    "@lingui/core": 3.7.1
+    "@lingui/react": 3.7.1
     core-js: 3.9.1
     react-refresh: 0.9.0
   peerDependencies:
@@ -18417,13 +18407,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"hls.js@npm:beta":
-  version: 1.0.0-beta.6
-  resolution: "hls.js@npm:1.0.0-beta.6"
+"hls.js@npm:^1.0.0-beta.6":
+  version: 1.0.0-rc.4
+  resolution: "hls.js@npm:1.0.0-rc.4"
   dependencies:
     eventemitter3: ^4.0.7
     url-toolkit: ^2.2.1
-  checksum: 98fc866c3c41e9100f9d0ca25338ec6bd9e5896e0a76a1bb36f7689d528df804e23f3d91727432d398c0ace97f57c6a40f08c14f1fb05b8fcac12946a417ef44
+  checksum: e7669012cfa955f13f20c793535b512299aa4e7fa80b86acf857fe0c0ffae81df61e210205f808b48051fdb02d023d0bd0aec61a6e945e8f7f48096799ebd1ab
   languageName: node
   linkType: hard
 
@@ -33620,13 +33610,13 @@ resolve@1.1.7:
   dependencies:
     "@babel/preset-typescript": 7.13.0
     "@babel/runtime": 7.13.9
-    "@emotion/jest": 11.2.0
+    "@emotion/jest": 11.2.1
     "@emotion/react": 11.1.5
     "@istanbuljs/nyc-config-typescript": 1.0.1
-    "@lingui/cli": 3.6.0
-    "@lingui/core": 3.6.0
-    "@lingui/macro": 3.6.0
-    "@lingui/react": 3.6.0
+    "@lingui/cli": 3.7.1
+    "@lingui/core": 3.7.1
+    "@lingui/macro": 3.7.1
+    "@lingui/react": 3.7.1
     "@mux/upchunk": 2.2.2
     "@reach/router": 1.3.4
     "@sentry/gatsby": 6.2.1
@@ -33689,7 +33679,7 @@ resolve@1.1.7:
     gatsby-plugin-manifest: 3.0.0
     gatsby-plugin-nprogress: 3.0.0
     gatsby-plugin-offline: 4.0.0
-    gatsby-plugin-portal: 1.0.65
+    gatsby-plugin-portal: 1.0.7
     gatsby-plugin-postcss: 4.0.0
     gatsby-plugin-preact: 5.0.0
     gatsby-plugin-react-helmet: 4.0.0
@@ -33700,12 +33690,12 @@ resolve@1.1.7:
     gatsby-plugin-svgr: v3.0.0-beta.0
     gatsby-plugin-theme-ui: 0.6.0-canary.c5a716a.0
     gatsby-plugin-typegen: 2.2.4
-    gatsby-plugin-webpack-bundle-analyser-v2: 1.1.20
+    gatsby-plugin-webpack-bundle-analyser-v2: 1.1.21
     gatsby-source-filesystem: 3.0.0
     gatsby-theme-i18n: 1.0.5
     gatsby-theme-i18n-lingui: 1.0.4
     gatsby-transformer-sharp: 3.0.0
-    hls.js: beta
+    hls.js: ^1.0.0-beta.6
     http-proxy-middleware: 1.0.6
     hygen: 6.0.4
     idb-keyval: 5.0.4
