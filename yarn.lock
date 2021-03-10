@@ -13585,7 +13585,7 @@ __metadata:
     swc-loader: 0.1.12
     typescript: 4.1.5
     wait-on: 5.2.1
-    webpack: 4
+    webpack: 4.46.0
   languageName: unknown
   linkType: soft
 
@@ -16253,7 +16253,7 @@ fsevents@^1.2.7:
     eslint-plugin-react-hooks: 4.2.0
     formidable-serverless: 1.1.1
     fp-ts: 2.9.5
-    hls.js: ^1.0.0-beta.6
+    hls.js: 1.0.0-rc.4
     io-ts: 2.2.15
     io-ts-types: 0.5.15
     jest: 26.6.3
@@ -18416,7 +18416,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"hls.js@npm:^1.0.0-beta.6":
+"hls.js@npm:1.0.0-rc.4":
   version: 1.0.0-rc.4
   resolution: "hls.js@npm:1.0.0-rc.4"
   dependencies:
@@ -33682,7 +33682,7 @@ resolve@1.1.7:
     gatsby-theme-i18n: 1.0.5
     gatsby-theme-i18n-lingui: 1.0.4
     gatsby-transformer-sharp: 3.0.0
-    hls.js: ^1.0.0-beta.6
+    hls.js: 1.0.0-rc.4
     http-proxy-middleware: 1.0.6
     hygen: 6.0.4
     idb-keyval: 5.0.4
@@ -34094,7 +34094,7 @@ resolve@1.1.7:
   languageName: node
   linkType: hard
 
-"webpack@npm:4, webpack@npm:^4.44.2":
+"webpack@npm:4.46.0, webpack@npm:^4.44.2":
   version: 4.46.0
   resolution: "webpack@npm:4.46.0"
   dependencies:
