@@ -16304,7 +16304,7 @@ fsevents@^1.2.7:
     formidable-serverless: 1.1.1
     fp-ts: 2.9.5
     hls.js: 1.0.0-rc.4
-    io-ts: 2.2.15
+    io-ts: 2.2.16
     io-ts-types: 0.5.15
     jest: 26.6.3
     minio: 7.0.18
@@ -19423,12 +19423,12 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"io-ts@npm:2.2.15":
-  version: 2.2.15
-  resolution: "io-ts@npm:2.2.15"
+"io-ts@npm:2.2.16":
+  version: 2.2.16
+  resolution: "io-ts@npm:2.2.16"
   peerDependencies:
-    fp-ts: ^2.0.0
-  checksum: 6fd400fb60103e9d6a42e09b47ca61f384d1efff96dc8afc79a8e65375d7bebd4cf2b1e505821c481e7e22cff8e133ecaa37cae682a40a83222575b1d1c89fc9
+    fp-ts: ^2.5.0
+  checksum: bb664d7ff1fbbe616df084be249328eb3cf5ce2c99efb796f25cc0b3f2f0c3d2bfa1aa041899c5e6db36057cc2043150f5818054d3afbacb1929b5f3d9d10d02
   languageName: node
   linkType: hard
 
