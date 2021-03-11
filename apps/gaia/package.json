@@ -41,7 +41,7 @@
     "formidable-serverless": "1.1.1",
     "fp-ts": "2.9.5",
     "hls.js": "1.0.0-rc.4",
-    "io-ts": "2.2.15",
+    "io-ts": "2.2.16",
     "io-ts-types": "0.5.15",
     "minio": "7.0.18",
     "monocle-ts": "2.3.5",
