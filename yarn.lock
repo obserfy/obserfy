@@ -16315,7 +16315,7 @@ fsevents@^1.2.7:
     next: 10.0.8
     next-compose-plugins: 2.2.1
     next-plugin-preact: 3.0.3
-    next-pwa: 5.0.5
+    next-pwa: 5.0.6
     node-mocks-http: 1.10.1
     pg: 8.5.1
     pino: 6.11.1
@@ -23656,19 +23656,19 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"next-pwa@npm:5.0.5":
-  version: 5.0.5
-  resolution: "next-pwa@npm:5.0.5"
+"next-pwa@npm:5.0.6":
+  version: 5.0.6
+  resolution: "next-pwa@npm:5.0.6"
   dependencies:
     babel-loader: ^8.2.2
     clean-webpack-plugin: ^3.0.0
     globby: ^11.0.2
-    workbox-webpack-plugin: ^6.1.0
-    workbox-window: ^6.1.0
+    workbox-webpack-plugin: ^6.1.1
+    workbox-window: ^6.1.1
   peerDependencies:
     next: ">=7.0.0"
     webpack: ">=4.0.0 <5.0.0"
-  checksum: aa889437d1ca64f0e196f051795eb28f10e158bbb8856a5f2604b0039dda978f23a32ecdb6b0057b47e30c8dba8c5c0beb9c4dbce4be0805e49b0ca04307ebdb
+  checksum: 1cf0d261de91460e00d94493598e0b4b77f502446aa9f134bdb66cd862a6ebf3c5e041ceaa446a7f4323ff6860d7e0ae66fc4f85c600fed6cd182b95d5af42ff
   languageName: node
   linkType: hard
 
@@ -34851,7 +34851,7 @@ resolve@1.1.7:
   languageName: node
   linkType: hard
 
-"workbox-webpack-plugin@npm:^6.1.0":
+"workbox-webpack-plugin@npm:^6.1.1":
   version: 6.1.1
   resolution: "workbox-webpack-plugin@npm:6.1.1"
   dependencies:
@@ -34876,7 +34876,7 @@ resolve@1.1.7:
   languageName: node
   linkType: hard
 
-"workbox-window@npm:^6.1.0, workbox-window@npm:^6.1.1":
+"workbox-window@npm:^6.1.1":
   version: 6.1.1
   resolution: "workbox-window@npm:6.1.1"
   dependencies:
