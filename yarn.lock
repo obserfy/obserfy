@@ -15995,7 +15995,7 @@ __metadata:
     react-dom: 17.0.1
     react-helmet: 6.1.0
     socket.io-client: 3.1.2
-    stylelint: 13.11.0
+    stylelint: 13.12.0
     stylelint-config-prettier: 8.0.2
     stylelint-config-standard: 20.0.0
     tailwindcss: 2.0.3
@@ -16330,7 +16330,7 @@ fsevents@^1.2.7:
     react-query: 3.12.0
     react-ssr-prepass: "npm:preact-ssr-prepass@1.1.3"
     snarkdown: 2.0.0
-    stylelint: 13.11.0
+    stylelint: 13.12.0
     stylelint-config-prettier: 8.0.2
     stylelint-config-standard: 20.0.0
     tailwindcss: 2.0.3
@@ -30984,7 +30984,7 @@ resolve@1.1.7:
   languageName: node
   linkType: hard
 
-"string-width@npm:^4.0.0, string-width@npm:^4.1.0, string-width@npm:^4.2.0":
+"string-width@npm:^4.0.0, string-width@npm:^4.1.0, string-width@npm:^4.2.0, string-width@npm:^4.2.2":
   version: 4.2.2
   resolution: "string-width@npm:4.2.2"
   dependencies:
@@ -31402,9 +31402,9 @@ resolve@1.1.7:
   languageName: node
   linkType: hard
 
-"stylelint@npm:13.11.0":
-  version: 13.11.0
-  resolution: "stylelint@npm:13.11.0"
+"stylelint@npm:13.12.0":
+  version: 13.12.0
+  resolution: "stylelint@npm:13.12.0"
   dependencies:
     "@stylelint/postcss-css-in-js": ^0.37.2
     "@stylelint/postcss-markdown": ^0.36.2
@@ -31416,7 +31416,7 @@ resolve@1.1.7:
     execall: ^2.0.0
     fast-glob: ^3.2.5
     fastest-levenshtein: ^1.0.12
-    file-entry-cache: ^6.0.0
+    file-entry-cache: ^6.0.1
     get-stdin: ^8.0.0
     global-modules: ^2.0.0
     globby: ^11.0.2
@@ -31426,7 +31426,7 @@ resolve@1.1.7:
     import-lazy: ^4.0.0
     imurmurhash: ^0.1.4
     known-css-properties: ^0.21.0
-    lodash: ^4.17.20
+    lodash: ^4.17.21
     log-symbols: ^4.0.0
     mathml-tag-names: ^2.1.3
     meow: ^9.0.0
@@ -31446,7 +31446,7 @@ resolve@1.1.7:
     resolve-from: ^5.0.0
     slash: ^3.0.0
     specificity: ^0.4.1
-    string-width: ^4.2.0
+    string-width: ^4.2.2
     strip-ansi: ^6.0.0
     style-search: ^0.1.0
     sugarss: ^2.0.0
@@ -31456,7 +31456,7 @@ resolve@1.1.7:
     write-file-atomic: ^3.0.3
   bin:
     stylelint: bin/stylelint.js
-  checksum: ea646e0cc8940b14b984fa0b6286a0653d4af46af394a457dbe4afe376ceeda44a4f869c2addff1b73758d58d5547922a63d63ae23d55edd130ed9e3b7012d05
+  checksum: bd841f8a4c0d4f921bafb917230cf4495b88de878591d3b0e283d933de05accbafd8ca9b93049dde40e07a1de6f0d337d1efff36cec946d2c4ed710d7325809c
   languageName: node
   linkType: hard
 
