@@ -3757,7 +3757,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "dateformat",
-        "npm:3.0.3"
+        "npm:4.5.1"
       ],
       [
         "dayjs",
@@ -7673,7 +7673,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "pino-pretty",
-        "npm:4.5.0"
+        "npm:4.7.1"
       ],
       [
         "pino-std-serializers",
@@ -31265,10 +31265,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["dateformat", [
-        ["npm:3.0.3", {
-          "packageLocation": "./.yarn/cache/dateformat-npm-3.0.3-ed02e5ddbd-8e6b36c4d3.zip/node_modules/dateformat/",
+        ["npm:4.5.1", {
+          "packageLocation": "./.yarn/cache/dateformat-npm-4.5.1-ee0ca75464-d5d08fd36f.zip/node_modules/dateformat/",
           "packageDependencies": [
-            ["dateformat", "npm:3.0.3"]
+            ["dateformat", "npm:4.5.1"]
           ],
           "linkType": "HARD",
         }]
@@ -35962,7 +35962,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["node-mocks-http", "npm:1.10.1"],
             ["pg", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:8.5.1"],
             ["pino", "npm:6.11.1"],
-            ["pino-pretty", "npm:4.5.0"],
+            ["pino-pretty", "npm:4.7.1"],
             ["postcss", "npm:8.2.7"],
             ["postcss-preset-env", "npm:6.7.0"],
             ["preact", "npm:10.5.12"],
@@ -47716,14 +47716,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["pino-pretty", [
-        ["npm:4.5.0", {
-          "packageLocation": "./.yarn/cache/pino-pretty-npm-4.5.0-034b3935d5-72d23a4bf1.zip/node_modules/pino-pretty/",
+        ["npm:4.7.1", {
+          "packageLocation": "./.yarn/cache/pino-pretty-npm-4.7.1-0885be86f1-7af3913844.zip/node_modules/pino-pretty/",
           "packageDependencies": [
-            ["pino-pretty", "npm:4.5.0"],
+            ["pino-pretty", "npm:4.7.1"],
             ["@hapi/bourne", "npm:2.0.0"],
             ["args", "npm:5.0.1"],
             ["chalk", "npm:4.1.0"],
-            ["dateformat", "npm:3.0.3"],
+            ["dateformat", "npm:4.5.1"],
             ["fast-safe-stringify", "npm:2.0.7"],
             ["jmespath", "npm:0.15.0"],
             ["joycon", "npm:2.2.5"],

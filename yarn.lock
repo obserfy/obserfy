@@ -12547,10 +12547,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dateformat@npm:^3.0.3":
-  version: 3.0.3
-  resolution: "dateformat@npm:3.0.3"
-  checksum: 8e6b36c4d3d057b6b43a2d9eceb1373aae6a63050153449e26c71b84ecefb1bafc54ff3f7f1e2b8bee3851a2425c1052aaa7c1ed3307b8ff062f38a816d40933
+"dateformat@npm:^4.5.1":
+  version: 4.5.1
+  resolution: "dateformat@npm:4.5.1"
+  checksum: d5d08fd36f0987570cacada467145c722b4051285fae32969d62ef4bfc3c392f310bf6982a3ecbe62f0b42a944846d94a2bff53b8051ad1540bcaf118732fbf4
   languageName: node
   linkType: hard
 
@@ -16319,7 +16319,7 @@ fsevents@^1.2.7:
     node-mocks-http: 1.10.1
     pg: 8.5.1
     pino: 6.11.1
-    pino-pretty: 4.5.0
+    pino-pretty: 4.7.1
     postcss: 8.2.7
     postcss-preset-env: 6.7.0
     preact: 10.5.12
@@ -25662,14 +25662,14 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"pino-pretty@npm:4.5.0":
-  version: 4.5.0
-  resolution: "pino-pretty@npm:4.5.0"
+"pino-pretty@npm:4.7.1":
+  version: 4.7.1
+  resolution: "pino-pretty@npm:4.7.1"
   dependencies:
     "@hapi/bourne": ^2.0.0
     args: ^5.0.1
     chalk: ^4.0.0
-    dateformat: ^3.0.3
+    dateformat: ^4.5.1
     fast-safe-stringify: ^2.0.7
     jmespath: ^0.15.0
     joycon: ^2.2.5
@@ -25679,7 +25679,7 @@ fsevents@^1.2.7:
     strip-json-comments: ^3.1.1
   bin:
     pino-pretty: bin.js
-  checksum: 72d23a4bf133f0cafad89b3d0d605b1a942dde541dc89a260a6b62cf704b6933e6544707fd24cb86cc178fd96a6180a8cc23428e8ca7daf48dea90c9f0ff008e
+  checksum: 7af3913844d07543b4ab1fa52dd335b8f93aaf87d918b5f01e37b0ad2e4c43cffaa7994e476d95def76c98edabe2d5b7e1d65af9b32288ea32bd2bf1584d6cee
   languageName: node
   linkType: hard
 
