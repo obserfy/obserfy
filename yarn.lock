@@ -6640,16 +6640,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:17.0.1":
-  version: 17.0.1
-  resolution: "@types/react-dom@npm:17.0.1"
-  dependencies:
-    "@types/react": "*"
-  checksum: 695dd4bbef4fabdc726359e4031b2887b913d65fb2ff59e5a9e81f9ae20ca4dd8f2b6fe1f39fa5c1197babdb86f6b81b385f5d4438536f2ceeb5ff136102f45b
-  languageName: node
-  linkType: hard
-
-"@types/react-dom@npm:>=16.9.0":
+"@types/react-dom@npm:17.0.2, @types/react-dom@npm:>=16.9.0":
   version: 17.0.2
   resolution: "@types/react-dom@npm:17.0.2"
   dependencies:
@@ -33757,7 +33748,7 @@ resolve@1.1.7:
     "@types/reach__router": 1.3.7
     "@types/react": 17.0.3
     "@types/react-adaptive-hooks": 0.0.0
-    "@types/react-dom": 17.0.1
+    "@types/react-dom": 17.0.2
     "@types/react-helmet": 6.1.0
     "@types/segment-analytics": 0.0.33
     "@typescript-eslint/eslint-plugin": 4.11.1
