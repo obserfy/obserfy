@@ -16,9 +16,9 @@ module.exports = {
       body: ["Open Sans"],
     },
   },
-  variants: {
-    boxShadow: ["responsive", "responsive", "hover", "focus", "focus-within"],
-  },
+  // variants: {
+  //   boxShadow: ["responsive", "responsive", "hover", "focus", "focus-within"],
+  // },
   plugins: [
     require("@tailwindcss/typography"),
   ],

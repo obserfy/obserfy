@@ -5785,6 +5785,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tailwindcss/jit@npm:^0.1.1":
+  version: 0.1.1
+  resolution: "@tailwindcss/jit@npm:0.1.1"
+  dependencies:
+    chokidar: ^3.5.1
+    dlv: ^1.1.3
+    fast-glob: ^3.2.5
+    lodash.topath: ^4.5.2
+    object-hash: ^2.1.1
+    postcss-selector-parser: ^6.0.4
+    quick-lru: ^5.1.1
+  peerDependencies:
+    postcss: ^8.2.6
+    tailwindcss: ^2.0.3
+  checksum: 0a70e4b311c8e34c6c24a319c5eee5670b93f309b03d73d87dbb6df2c6c8897fc913d649d57d9ae02df4ab3d4b2ed4e826e7a3c3d205da2a63cdaa5806f46ee1
+  languageName: node
+  linkType: hard
+
 "@tailwindcss/typography@npm:0.4.0":
   version: 0.4.0
   resolution: "@tailwindcss/typography@npm:0.4.0"
@@ -8429,7 +8447,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"autoprefixer@npm:^10.2.4":
+"autoprefixer@npm:^10.2.4, autoprefixer@npm:^10.2.5":
   version: 10.2.5
   resolution: "autoprefixer@npm:10.2.5"
   dependencies:
@@ -13151,6 +13169,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dlv@npm:^1.1.3":
+  version: 1.1.3
+  resolution: "dlv@npm:1.1.3"
+  checksum: 3ed2cd5054ed51e3778b5939ec58b16a970ee7447c3fc02b9b75ccd0788cf596b705d0f3060f2f1593432c10809d4289a17166a5723282ab2ead5c37d7c45cf0
+  languageName: node
+  linkType: hard
+
 "dnd-core@npm:^11.1.3":
   version: 11.1.3
   resolution: "dnd-core@npm:11.1.3"
@@ -16227,6 +16252,7 @@ fsevents@^1.2.7:
     "@sentry/node": 6.2.1
     "@sentry/webpack-plugin": 1.14.1
     "@svgr/webpack": 5.5.0
+    "@tailwindcss/jit": ^0.1.1
     "@tailwindcss/typography": 0.4.0
     "@types/body-scroll-lock": 2.6.1
     "@types/dompurify": 2.2.1
@@ -16245,6 +16271,7 @@ fsevents@^1.2.7:
     "@typescript-eslint/eslint-plugin": 4.11.1
     "@typescript-eslint/parser": 4.11.1
     "@zeit/next-source-maps": 0.0.4-canary.1
+    autoprefixer: ^10.2.5
     body-scroll-lock: 3.1.5
     dayjs: 1.10.4
     dompurify: 2.2.6
@@ -16279,7 +16306,6 @@ fsevents@^1.2.7:
     pino: 6.11.1
     pino-pretty: 4.7.1
     postcss: 8.2.7
-    postcss-preset-env: 6.7.0
     preact: 10.5.12
     preact-render-to-string: 5.1.12
     prettier: 2.2.1
@@ -22091,6 +22117,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"lodash.topath@npm:^4.5.2":
+  version: 4.5.2
+  resolution: "lodash.topath@npm:4.5.2"
+  checksum: c635ffd3586817e6beeff174d0e39015a1df88b885d9ba742587a2bd047af13cd9662870e0cce90ef706f6468127105488a96a8778d5d7c4af0358d025782c6b
+  languageName: node
+  linkType: hard
+
 "lodash.uniq@npm:4.5.0, lodash.uniq@npm:^4.5.0":
   version: 4.5.0
   resolution: "lodash.uniq@npm:4.5.0"
@@ -27505,6 +27538,13 @@ fsevents@^1.2.7:
   version: 4.0.1
   resolution: "quick-lru@npm:4.0.1"
   checksum: 91847e4b07453655f73513b96a3b49e3bb8bf37de1ce2075d44e5dddb2f08050c5dc858d97884d61618bb44487945880b4b481fe93e94a3622b43036f8b94e11
+  languageName: node
+  linkType: hard
+
+"quick-lru@npm:^5.1.1":
+  version: 5.1.1
+  resolution: "quick-lru@npm:5.1.1"
+  checksum: fafb2b2fa1a948d6f2e88d4a60571be70b316d9b0be857d24fba0ac28fc31acebf535b643fe968473d689f8c655bcb2a0e4da67912f571059a4e4eb15740b021
   languageName: node
   linkType: hard
 
