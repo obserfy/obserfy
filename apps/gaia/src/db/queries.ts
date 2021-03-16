@@ -262,15 +262,15 @@ export const insertImage = async (
     await query(`BEGIN TRANSACTION`, [])
     await query(
       `
-                insert into images (id, school_id, object_key)
-                values ($1, $2, $3)
+          insert into images (id, school_id, object_key)
+          values ($1, $2, $3)
       `,
       [imageId, schoolId, objectKey]
     )
     await query(
       `
-                insert into image_to_students (student_id, image_id)
-                values ($1, $2)
+          insert into image_to_students (student_id, image_id)
+          values ($1, $2)
       `,
       [studentId, imageId]
     )
@@ -334,6 +334,7 @@ const ChildCurriculumProgress = array(
       type({
         id: string,
         name: string,
+        order: number,
         materials: array(
           type({
             id: string,
@@ -352,23 +353,32 @@ export const findChildCurriculumProgress = async (childId: string) => {
     ChildCurriculumProgress,
     [childId],
     `
-        select a.id, a.name, json_agg(s2) as subjects
+        select a.id,
+               a.name,
+               coalesce(json_agg(subjects order by subjects."order") filter (where subjects.id is not null),
+                        '[]') as subjects
         from students
-                 join schools s on students.school_id = s.id
-                 join curriculums c on s.curriculum_id = c.id
+                 join schools sch on students.school_id = sch.id
+                 join curriculums c on sch.curriculum_id = c.id
                  join areas a on c.id = a.curriculum_id
-                 join (
-            select s3.id, s3.name, s3.area_id, json_agg(m) as materials
-            from subjects as s3
-                     join (select id, name, coalesce("order", 0) as "order", subject_id, coalesce(smp.stage, 0) as stage
-                           from materials
-                                    left outer join student_material_progresses smp
-                                                    on materials.id = smp.material_id and smp.student_id = $1
-                           order by "order" desc
-            ) m
-                          on m.subject_id = s3.id
-            group by s3.id
-        ) s2 on s2.area_id = a.id
+                 left join lateral (select s.id,
+                                           s.name,
+                                           s.order,
+                                           coalesce(json_agg(materials order by materials."order")
+                                                    filter (where materials.id is not null), '[]') as materials
+                                    from subjects as s
+                                             left join lateral (select m.id,
+                                                                       m.name,
+                                                                       m.order,
+                                                                       coalesce(smp.stage, -1) as stage
+                                                                from materials m
+                                                                         left join student_material_progresses smp
+                                                                                   on m.id = smp.material_id and student_id = $1
+                                                                where m.subject_id = s.id) materials on true
+                                    where s.area_id = a.id
+                                    group by s.id
+
+            ) subjects on true
         where students.id = $1
         group by a.id
     `
