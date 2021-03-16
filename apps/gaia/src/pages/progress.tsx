@@ -75,7 +75,7 @@ const Progress = () => {
 const Stage: FC<{ stage: number }> = ({ stage }) => {
   let bgColor = "bg-black"
   let textColor = "text-white"
-  if (stage === -1) {
+  if (stage === 0) {
     bgColor = "bg-assessments-presented"
     textColor = "text-assessments-onPresented"
   }
