@@ -58,17 +58,12 @@ const Progress = () => {
           >
             <div className="px-3 my-3 font-bold">{subject.name}</div>
             <div>
-              {subject.materials
-                .sort((a, b) => a.order - b.order)
-                .map((material) => (
-                  <div
-                    key={material.id}
-                    className="flex px-3 my-3 items-center"
-                  >
-                    <div className="pr-3">{material.name}</div>
-                    <Stage stage={material.stage} />
-                  </div>
-                ))}
+              {subject.materials.map((material) => (
+                <div key={material.id} className="flex px-3 my-3 items-center">
+                  <div className="pr-3">{material.name}</div>
+                  <Stage stage={material.stage} />
+                </div>
+              ))}
             </div>
           </div>
         ))}
@@ -78,19 +73,23 @@ const Progress = () => {
 }
 
 const Stage: FC<{ stage: number }> = ({ stage }) => {
-  let color = "text-black"
+  let bgColor = "bg-black"
+  let textColor = "text-white"
   if (stage === -1) {
-    color = "text-red-600"
+    bgColor = "bg-assessments-presented"
+    textColor = "text-assessments-onPresented"
   }
   if (stage === 1) {
-    color = "text-yellow-600"
+    bgColor = "bg-assessments-practiced"
+    textColor = "text-assessments-onPracticed"
   }
   if (stage === 2) {
-    color = "text-green-600"
+    bgColor = "bg-assessments-mastered"
+    textColor = "text-assessments-onMastered"
   }
 
   return (
-    <div className={`ml-auto font-bold ${color}`}>
+    <div className={`ml-auto rounded-full px-2 ${bgColor} ${textColor}`}>
       {materialStageToString(stage)}
     </div>
   )
