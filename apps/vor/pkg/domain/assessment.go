@@ -7,7 +7,7 @@ package domain
 //)
 
 func GetAssessmentName(stage int) string {
-	if stage == -1 {
+	if stage == 0 {
 		return "Presented"
 	}
 	if stage == 1 {
