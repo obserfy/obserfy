@@ -7,6 +7,7 @@ import { useQueryString } from "../hooks/useQueryString"
 import usePostImage from "../hooks/api/usePostImage"
 import useGetChild from "../hooks/api/useGetChild"
 import Icon from "../components/Icon/Icon"
+import UploadIcon from "../icons/upload.svg"
 import ImagePreview from "../components/ImagePreview/ImagePreview"
 
 const GalleryPage = () => {
@@ -37,10 +38,10 @@ const GalleryPage = () => {
             <div className="flex flex-col mx-auto items-center pb-8">
               <EmptyGalleryIllustration loading={childImages.isLoading} />
               <label
-                className="flex py-2 px-6 rounded text-onPrimary bg-primary text-sm border shadow-xs"
+                className="flex py-2 px-6 rounded text-onPrimary bg-primary text-sm border shadow-xs items-center"
                 htmlFor="upload-image-small"
               >
-                <Icon src="/icons/upload.svg" className="mr-3" size={20} />
+                <UploadIcon className="mr-3" />
                 Upload Image
                 <input
                   id="upload-image-small"

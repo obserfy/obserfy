@@ -17,7 +17,7 @@ const AllLessonPlans: FC = () => {
   )
 
   return (
-    <div className="max-w-3xl mx-auto border w-full mx-3 mb-5 md:rounded bg-surface">
+    <div className="max-w-3xl mx-auto border w-full mb-5 md:rounded bg-surface">
       <div className="flex items-center border rounded focus-within:border-primary bg-gray-100 m-3">
         <SearchIcon className="w-4 h-4 m-2 opacity-70" />
         <input
