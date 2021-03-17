@@ -257,8 +257,6 @@ type Directory_ctimeArgs = {
 type Site = Node & {
   readonly buildTime: Maybe<Scalars['Date']>;
   readonly siteMetadata: Maybe<SiteSiteMetadata>;
-  readonly port: Maybe<Scalars['Int']>;
-  readonly host: Maybe<Scalars['String']>;
   readonly flags: Maybe<SiteFlags>;
   readonly polyfill: Maybe<Scalars['Boolean']>;
   readonly pathPrefix: Maybe<Scalars['String']>;
@@ -654,6 +652,9 @@ type SitePluginPluginOptions = {
   readonly siteUrl: Maybe<Scalars['String']>;
   readonly color: Maybe<Scalars['String']>;
   readonly showSpinner: Maybe<Scalars['Boolean']>;
+  readonly dsn: Maybe<Scalars['String']>;
+  readonly release: Maybe<Scalars['String']>;
+  readonly tracesSampleRate: Maybe<Scalars['Float']>;
   readonly defaultLang: Maybe<Scalars['String']>;
   readonly configPath: Maybe<Scalars['String']>;
   readonly localeDir: Maybe<Scalars['String']>;
@@ -831,8 +832,6 @@ type Query_allDirectoryArgs = {
 type Query_siteArgs = {
   buildTime: Maybe<DateQueryOperatorInput>;
   siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
-  port: Maybe<IntQueryOperatorInput>;
-  host: Maybe<StringQueryOperatorInput>;
   flags: Maybe<SiteFlagsFilterInput>;
   polyfill: Maybe<BooleanQueryOperatorInput>;
   pathPrefix: Maybe<StringQueryOperatorInput>;
@@ -1724,8 +1723,6 @@ type SiteFieldsEnum =
   | 'siteMetadata.description'
   | 'siteMetadata.author'
   | 'siteMetadata.siteUrl'
-  | 'port'
-  | 'host'
   | 'flags.PRESERVE_WEBPACK_CACHE'
   | 'flags.DEV_SSR'
   | 'flags.FAST_DEV'
@@ -1830,8 +1827,6 @@ type SiteGroupConnection = {
 type SiteFilterInput = {
   readonly buildTime: Maybe<DateQueryOperatorInput>;
   readonly siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
-  readonly port: Maybe<IntQueryOperatorInput>;
-  readonly host: Maybe<StringQueryOperatorInput>;
   readonly flags: Maybe<SiteFlagsFilterInput>;
   readonly polyfill: Maybe<BooleanQueryOperatorInput>;
   readonly pathPrefix: Maybe<StringQueryOperatorInput>;
@@ -1900,6 +1895,9 @@ type SitePluginPluginOptionsFilterInput = {
   readonly siteUrl: Maybe<StringQueryOperatorInput>;
   readonly color: Maybe<StringQueryOperatorInput>;
   readonly showSpinner: Maybe<BooleanQueryOperatorInput>;
+  readonly dsn: Maybe<StringQueryOperatorInput>;
+  readonly release: Maybe<StringQueryOperatorInput>;
+  readonly tracesSampleRate: Maybe<FloatQueryOperatorInput>;
   readonly defaultLang: Maybe<StringQueryOperatorInput>;
   readonly configPath: Maybe<StringQueryOperatorInput>;
   readonly localeDir: Maybe<StringQueryOperatorInput>;
@@ -2159,6 +2157,9 @@ type SitePageFieldsEnum =
   | 'pluginCreator.pluginOptions.siteUrl'
   | 'pluginCreator.pluginOptions.color'
   | 'pluginCreator.pluginOptions.showSpinner'
+  | 'pluginCreator.pluginOptions.dsn'
+  | 'pluginCreator.pluginOptions.release'
+  | 'pluginCreator.pluginOptions.tracesSampleRate'
   | 'pluginCreator.pluginOptions.defaultLang'
   | 'pluginCreator.pluginOptions.configPath'
   | 'pluginCreator.pluginOptions.localeDir'
@@ -2968,6 +2969,9 @@ type SitePluginFieldsEnum =
   | 'pluginOptions.siteUrl'
   | 'pluginOptions.color'
   | 'pluginOptions.showSpinner'
+  | 'pluginOptions.dsn'
+  | 'pluginOptions.release'
+  | 'pluginOptions.tracesSampleRate'
   | 'pluginOptions.defaultLang'
   | 'pluginOptions.configPath'
   | 'pluginOptions.localeDir'
@@ -3059,10 +3063,5 @@ type LocalizationConfigQueryQuery = { readonly themeI18N: Maybe<(
     Pick<ThemeI18n, 'defaultLang'>
     & { readonly config: Maybe<ReadonlyArray<Maybe<Pick<Locale, 'code' | 'hrefLang' | 'dateFormat' | 'langDir' | 'localName' | 'name'>>>> }
   )> };
-
-type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type PagesQueryQuery = { readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
 
 }

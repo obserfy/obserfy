@@ -15917,11 +15917,13 @@ __metadata:
     "@lingui/react": 3.7.1
     "@mdx-js/mdx": 1.6.22
     "@mdx-js/react": 1.6.22
+    "@tailwindcss/jit": ^0.1.1
     "@tailwindcss/typography": 0.4.0
     "@types/react": 17.0.2
     "@types/react-helmet": 6.1.0
     "@typescript-eslint/eslint-plugin": 4.11.1
     "@typescript-eslint/parser": 4.11.1
+    autoprefixer: ^10.2.5
     babel-core: 7.0.0-bridge.0
     babel-plugin-macros: 3.0.1
     babel-preset-gatsby: 1.0.0
@@ -33653,6 +33655,7 @@ resolve@1.1.7:
     "@storybook/addons": 6.1.11
     "@storybook/react": 6.1.11
     "@svgr/webpack": 5.5.0
+    "@tailwindcss/jit": ^0.1.1
     "@tailwindcss/typography": 0.4.0
     "@testing-library/react": 11.2.5
     "@testing-library/react-hooks": 5.1.0
