@@ -135,25 +135,23 @@ const ErrorIllustration: FC<{
   </div>
 )
 
-const LoadingState: FC = () => {
-  return (
-    <div className="mx-auto max-w-3xl">
-      <div className="bg-gray-300 rounded p-3 my-3 w-48 mx-3" />
-      <div className="flex mx-3 flex-wrap">
-        <div className="bg-gray-300 rounded p-3 my-3 w-24 mr-3" />
-        <div className="bg-gray-300 rounded p-3 my-3 w-24 mr-3" />
-        <div className="bg-gray-300 rounded p-3 my-3 w-24 mr-3" />
-        <div className="bg-gray-300 rounded p-3 my-3 w-24 mr-3" />
-        <div className="bg-gray-300 rounded p-3 my-3 w-24 mr-3" />
-      </div>
-
-      <div className="bg-gray-300 rounded p-3 mb-3 mt-6 w-48 mx-3" />
-      <div className="bg-gray-300 rounded p-3 my-3 h-64" />
-      <div className="bg-gray-300 rounded p-3 my-3 h-64" />
-      <div className="bg-gray-300 rounded p-3 my-3 h-64" />
-      <div className="bg-gray-300 rounded p-3 my-3 h-64" />
+const LoadingState: FC = () => (
+  <div className="mx-auto max-w-3xl">
+    <div className="bg-gray-300 rounded p-3 my-3 w-48 mx-3" />
+    <div className="flex mx-3 flex-wrap">
+      <div className="bg-gray-300 rounded p-3 my-3 w-24 mr-3" />
+      <div className="bg-gray-300 rounded p-3 my-3 w-24 mr-3" />
+      <div className="bg-gray-300 rounded p-3 my-3 w-24 mr-3" />
+      <div className="bg-gray-300 rounded p-3 my-3 w-24 mr-3" />
+      <div className="bg-gray-300 rounded p-3 my-3 w-24 mr-3" />
     </div>
-  )
-}
+
+    <div className="bg-gray-300 rounded p-3 mb-3 mt-6 w-48 mx-3" />
+    <div className="bg-gray-300 rounded p-3 my-3 h-64" />
+    <div className="bg-gray-300 rounded p-3 my-3 h-64" />
+    <div className="bg-gray-300 rounded p-3 my-3 h-64" />
+    <div className="bg-gray-300 rounded p-3 my-3 h-64" />
+  </div>
+)
 
 export default Progress
