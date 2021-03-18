@@ -5,6 +5,7 @@ import useGetCurriculumProgress from "../hooks/api/useGetCurriculumProgress"
 import { useQueryString } from "../hooks/useQueryString"
 import Button from "../components/Button/Button"
 import Chip from "../components/Chip/Chip"
+import ChevronRightIcon from "../icons/chevron-right.svg"
 import { materialStageToString } from "../domain"
 
 const Progress = () => {
@@ -62,6 +63,7 @@ const Progress = () => {
                 <div key={material.id} className="flex px-3 my-3 items-center">
                   <div className="pr-3">{material.name}</div>
                   <Stage stage={material.stage} />
+                  <ChevronRightIcon className="opacity-60 ml-3" />
                 </div>
               ))}
             </div>
