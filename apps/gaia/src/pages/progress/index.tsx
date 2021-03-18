@@ -61,7 +61,7 @@ const Index = () => {
             <div className="px-3 my-3 font-bold">{subject.name}</div>
 
             {subject.materials.map((material) => (
-              <Link href="/progress/details">
+              <Link href={`/progress/details?childId=${childId}`}>
                 <a
                   key={material.id}
                   className="flex px-3 py-2 items-center display-block hover:bg-primaryLightest"
