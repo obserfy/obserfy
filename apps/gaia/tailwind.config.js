@@ -10,6 +10,9 @@ module.exports = {
         onPrimary: "#000",
         overlay: "rgba(0, 0, 0, 0.8)",
 
+        primaryLightest: "rgba(0,227,153,0.05)",
+        onPrimaryLightest: "text",
+
         assessments: {
           presented: "#dd2c00",
           onPresented: "white",

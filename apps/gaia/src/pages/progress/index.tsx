@@ -1,14 +1,15 @@
 import React, { FC, useState } from "react"
 import Image from "next/image"
 import Head from "next/head"
-import useGetCurriculumProgress from "../hooks/api/useGetCurriculumProgress"
-import { useQueryString } from "../hooks/useQueryString"
-import Button from "../components/Button/Button"
-import Chip from "../components/Chip/Chip"
-import ChevronRightIcon from "../icons/chevron-right.svg"
-import { materialStageToString } from "../domain"
+import Link from "next/link"
+import useGetCurriculumProgress from "../../hooks/api/useGetCurriculumProgress"
+import { useQueryString } from "../../hooks/useQueryString"
+import Button from "../../components/Button/Button"
+import Chip from "../../components/Chip/Chip"
+import ChevronRightIcon from "../../icons/chevron-right.svg"
+import { materialStageToString } from "../../domain"
 
-const Progress = () => {
+const Index = () => {
   const [areaId, setAreaId] = useState(0)
   const childId = useQueryString("childId")
   const {
@@ -58,15 +59,19 @@ const Progress = () => {
             className="bg-white mb-6 border md:rounded md:mx-3"
           >
             <div className="px-3 my-3 font-bold">{subject.name}</div>
-            <div>
-              {subject.materials.map((material) => (
-                <div key={material.id} className="flex px-3 my-3 items-center">
+
+            {subject.materials.map((material) => (
+              <Link href="/progress/details">
+                <a
+                  key={material.id}
+                  className="flex px-3 py-2 items-center display-block hover:bg-primaryLightest"
+                >
                   <div className="pr-3">{material.name}</div>
                   <Stage stage={material.stage} />
                   <ChevronRightIcon className="opacity-60 ml-3" />
-                </div>
-              ))}
-            </div>
+                </a>
+              </Link>
+            ))}
           </div>
         ))}
       </div>
@@ -156,4 +161,4 @@ const LoadingState: FC = () => (
   </div>
 )
 
-export default Progress
+export default Index
