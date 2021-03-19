@@ -17,29 +17,35 @@ const VideosPage = () => {
   const videos = useGetChildVideos(childId)
 
   if (videos.isLoading || (videos.isSuccess && videos.data.length === 0)) {
-    return <EmptyState loading={videos.isLoading} />
+    return (
+      <>
+        <Head>
+          <title>Videos | Obserfy for Parents</title>
+        </Head>
+
+        <EmptyState loading={videos.isLoading} />
+      </>
+    )
   }
 
   return (
-    <>
+    <div className="max-w-3xl mx-auto">
       <Head>
         <title>Videos | Obserfy for Parents</title>
       </Head>
 
-      <div className="max-w-3xl mx-auto">
-        <div className="flex flex-wrap pr-1">
-          {videos.data?.map((v) => (
-            <Video
-              key={`${v.id}1`}
-              thumbnailSrc={v.thumbnailUrl}
-              playbackUrl={v.playbackUrl}
-              childName={child.data?.name}
-              createdAt={v.createdAt}
-            />
-          ))}
-        </div>
+      <div className="flex flex-wrap pr-1">
+        {videos.data?.map((v) => (
+          <Video
+            key={`${v.id}1`}
+            thumbnailSrc={v.thumbnailUrl}
+            playbackUrl={v.playbackUrl}
+            childName={child.data?.name}
+            createdAt={v.createdAt}
+          />
+        ))}
       </div>
-    </>
+    </div>
   )
 }
 

@@ -1,15 +1,15 @@
-import React, { FC, useState } from "react"
-import Image from "next/image"
 import Head from "next/head"
+import Image from "next/image"
 import Link from "next/link"
-import useGetCurriculumProgress from "../../hooks/api/useGetCurriculumProgress"
-import { useQueryString } from "../../hooks/useQueryString"
+import React, { FC, useState } from "react"
 import Button from "../../components/Button/Button"
 import Chip from "../../components/Chip/Chip"
+import MaterialStagePill from "../../components/MaterialStagePill"
+import useGetCurriculumProgress from "../../hooks/api/useGetCurriculumProgress"
+import { useQueryString } from "../../hooks/useQueryString"
 import ChevronRightIcon from "../../icons/chevron-right.svg"
-import { materialStageToString } from "../../domain"
 
-const Index = () => {
+const ProgressPage = () => {
   const [areaIdx, setAreaIdx] = useState(0)
   const childId = useQueryString("childId")
   const {
@@ -35,7 +35,7 @@ const Index = () => {
   return (
     <div className="mx-auto max-w-3xl">
       <Head>
-        <title>Videos | Obserfy for Parents</title>
+        <title>Curriculum Progress | Obserfy for Parents</title>
       </Head>
 
       <div className="font-bold px-3 pt-3">CURRICULUM AREAS</div>
@@ -69,36 +69,13 @@ const Index = () => {
                 className="flex px-3 py-2 items-center display-block hover:bg-primaryLightest"
               >
                 <div className="pr-3">{material.name}</div>
-                <Stage stage={material.stage} />
+                <MaterialStagePill stage={material.stage} className="ml-auto" />
                 <ChevronRightIcon className="opacity-60 ml-3" />
               </a>
             </Link>
           ))}
         </div>
       ))}
-    </div>
-  )
-}
-
-const Stage: FC<{ stage: number }> = ({ stage }) => {
-  let bgColor = "bg-black"
-  let textColor = "text-white"
-  if (stage === 0) {
-    bgColor = "bg-assessments-presented"
-    textColor = "text-assessments-onPresented"
-  }
-  if (stage === 1) {
-    bgColor = "bg-assessments-practiced"
-    textColor = "text-assessments-onPracticed"
-  }
-  if (stage === 2) {
-    bgColor = "bg-assessments-mastered"
-    textColor = "text-assessments-onMastered"
-  }
-
-  return (
-    <div className={`ml-auto rounded-full px-2 ${bgColor} ${textColor}`}>
-      {materialStageToString(stage)}
     </div>
   )
 }
@@ -162,4 +139,4 @@ const LoadingState: FC = () => (
   </div>
 )
 
-export default Index
+export default ProgressPage
