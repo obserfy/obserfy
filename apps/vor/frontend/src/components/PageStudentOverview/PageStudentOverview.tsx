@@ -95,7 +95,7 @@ export const PageStudentOverview: FC<Props> = ({ id }) => {
 
       <DailyObservationCard studentId={id} />
 
-      <AssessmentCard studentId={id} />
+      <AssessmentCard studentId={id} studentName={student.data?.name} />
     </Box>
   )
 }

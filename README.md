@@ -18,22 +18,28 @@
   <a href="https://codecov.io/gh/obserfy/obserfy">
     <img src="https://codecov.io/gh/obserfy/obserfy/branch/develop/graph/badge.svg" alt="Code Coverage" />
   </a>
+
+  <a href="https://github.com/obserfy/obserfy/actions/workflows/build-and-test.yml">
+    <img src="https://github.com/obserfy/obserfy/actions/workflows/build-and-test.yml/badge.svg" />
+  </a>
 </p>
 
 This is the monorepo of [Obserfy](https://obserfy.com). This repo contains every code that you need to run Obserfy on
 your own. Obserfy is currently still on its early days. If you were to give it a try, we would love to hear any of your
-feedback through github issue, or email at support@obserfy.com.
+feedback through GitHub issue, email at [support@obserfy.com](mailto:support@obserfy.com), or [canny](https://feedback.obserfy.com). 
 
 ## Codebase
 
 ### Folder structure
 
 ```sh
+packages/*        # Contains various patched or custom libraries that we use
+docker/*          # Contains dockerfile  for every projects. 
 apps/
-|--e2e            # Our e2e tests
 |--freyr          # Our landing page powered by gatsby
-|--gaia           # Contains all api for our parent portal, powered by nextjs
-|--vor            # codebase for our Web interface and APIs used by teachers, powered by gatsby and go
+|--gaia           # Contains all api and frontend for our parent dashboard, powered by nextjs
+|--vor            # Contains all code for parents dashboard, powered by gatsby and go
+|--e2e            # Our e2e tests
 ```
 
-See each folders README.md files for more info about them.
+See each folder's README.md files for more info about them.

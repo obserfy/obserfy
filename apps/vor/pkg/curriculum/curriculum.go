@@ -36,16 +36,119 @@ func NewRouter(server rest.Server, store Store) *chi.Mux {
 		r.Method("GET", "/", getSubject(server, store))
 		r.Method("PUT", "/", replaceSubject(server, store))
 		r.Method("DELETE", "/", deleteSubject(server, store))
+		r.Method("PATCH", "/", patchSubject(server, store))
 		r.Method("GET", "/materials", getSubjectMaterials(server, store))
 		r.Method("POST", "/materials", createNewMaterial(server, store))
 	})
 
 	r.Route("/materials/{materialId}", func(r chi.Router) {
 		r.Use(materialAuthMiddleware(server, store))
-		r.Method("PATCH", "/", updateMaterial(server, store))
+		r.Method("PATCH", "/", patchMaterial(server, store))
+		r.Method("GET", "/", getMaterial(server, store))
 	})
 
 	return r
+}
+
+func patchSubject(server rest.Server, store Store) http.Handler {
+	type requestBody struct {
+		Name        *string    `json:"name"`
+		Order       *int       `json:"order"`
+		AreaId      *uuid.UUID `json:"areaId"`
+		Description *string    `json:"description"`
+	}
+	type responseBody struct {
+		Id          string `json:"id"`
+		Order       int    `json:"order"`
+		Description string `json:"description"`
+	}
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		subjectId := chi.URLParam(r, "subjectId")
+
+		var body requestBody
+		if err := rest.ParseJson(r.Body, &body); err != nil {
+			return rest.NewParseJsonError(err)
+		}
+
+		// Validate material name
+		if body.Name != nil {
+			if *body.Name == "" {
+				return &rest.Error{
+					Code:    http.StatusUnprocessableEntity,
+					Message: "Name can't be empty",
+					Error:   errors.New("empty name field"),
+				}
+			}
+		}
+
+		// Validate subject ID
+		if body.AreaId != nil {
+			_, err := store.GetSubject(body.AreaId.String())
+			if err == pg.ErrNoRows {
+				return &rest.Error{
+					Code:    http.StatusUnprocessableEntity,
+					Message: "Can't find the specified subject",
+					Error:   errors.New("empty name field"),
+				}
+			} else if err != nil {
+				return &rest.Error{
+					Code:    http.StatusInternalServerError,
+					Message: "Can' retrieve subject",
+					Error:   err,
+				}
+			}
+		}
+
+		subject, err := store.UpdateSubject(subjectId, body.Name, body.Order, body.Description, body.AreaId)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "Failed updating material",
+				Error:   err,
+			}
+		}
+
+		response := responseBody{
+			Id:          subject.Id,
+			Order:       subject.Order,
+			Description: subject.Description,
+		}
+		if err := rest.WriteJson(w, response); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
+		return nil
+	})
+}
+
+func getMaterial(s rest.Server, store Store) http.Handler {
+	type responseBody struct {
+		Id          string `json:"id"`
+		Name        string `json:"name"`
+		Description string `json:"description"`
+	}
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		materialId := chi.URLParam(r, "materialId")
+
+		material, err := store.GetMaterial(materialId)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "failed to query material data",
+				Error:   err,
+			}
+		}
+
+		response := responseBody{
+			Id:          material.Id,
+			Name:        material.Name,
+			Description: material.Description,
+		}
+		if err := rest.WriteJson(w, response); err != nil {
+			return rest.NewParseJsonError(err)
+		}
+
+		return nil
+	})
 }
 
 func patchCurriculum(s rest.Server, store Store) rest.Handler {
@@ -363,33 +466,19 @@ func createNewMaterial(server rest.Server, store Store) http.Handler {
 	})
 }
 
-func updateMaterial(server rest.Server, store Store) http.Handler {
+func patchMaterial(server rest.Server, store Store) http.Handler {
 	type requestBody struct {
-		Name      *string `json:"name"`
-		Order     *int    `json:"order"`
-		SubjectId *string `json:"subjectId"`
+		Name        *string    `json:"name"`
+		Order       *int       `json:"order"`
+		SubjectId   *uuid.UUID `json:"subjectId"`
+		Description *string    `json:"description"`
 	}
 	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		materialId := chi.URLParam(r, "materialId")
+
 		var body requestBody
 		if err := rest.ParseJson(r.Body, &body); err != nil {
 			return rest.NewParseJsonError(err)
-		}
-
-		// Validate targeted material
-		materialId := chi.URLParam(r, "materialId")
-		material, err := store.GetMaterial(materialId)
-		if err == pg.ErrNoRows {
-			return &rest.Error{
-				Code:    http.StatusNotFound,
-				Message: "Can' find material with the specified ID",
-				Error:   err,
-			}
-		} else if err != nil {
-			return &rest.Error{
-				Code:    http.StatusInternalServerError,
-				Message: "Can' retrieve material",
-				Error:   err,
-			}
 		}
 
 		// Validate material name
@@ -401,19 +490,11 @@ func updateMaterial(server rest.Server, store Store) http.Handler {
 					Error:   errors.New("empty name field"),
 				}
 			}
-			material.Name = *body.Name
 		}
 
 		// Validate subject ID
 		if body.SubjectId != nil {
-			if _, err := uuid.Parse(*body.SubjectId); err != nil {
-				return &rest.Error{
-					Code:    http.StatusUnprocessableEntity,
-					Message: "Can't find the specified subject",
-					Error:   errors.New("empty name field"),
-				}
-			}
-			subject, err := store.GetSubject(*body.SubjectId)
+			_, err := store.GetSubject(body.SubjectId.String())
 			if err == pg.ErrNoRows {
 				return &rest.Error{
 					Code:    http.StatusUnprocessableEntity,
@@ -426,17 +507,10 @@ func updateMaterial(server rest.Server, store Store) http.Handler {
 					Message: "Can' retrieve subject",
 					Error:   err,
 				}
-			} else {
-				material.SubjectId = subject.Id
 			}
 		}
 
-		var newOrder *int
-		if body.Order != nil {
-			newOrder = body.Order
-		}
-
-		if err := store.UpdateMaterial(material, newOrder); err != nil {
+		if err := store.UpdateMaterial(materialId, body.Name, body.Order, body.Description, body.SubjectId); err != nil {
 			return &rest.Error{
 				Code:    http.StatusInternalServerError,
 				Message: "Failed updating material",

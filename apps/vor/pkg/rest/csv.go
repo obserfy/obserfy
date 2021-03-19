@@ -11,7 +11,7 @@ type ErrorCsv struct {
 }
 
 func WriteCsv(w http.ResponseWriter, object interface{}) error {
-	w.Header().Add("Content-Type", "application/csv")
+	w.Header().Add("Content-Type", "text/csv")
 	res, err := gocsv.MarshalBytes(object)
 	if err != nil {
 		return err
@@ -22,7 +22,7 @@ func WriteCsv(w http.ResponseWriter, object interface{}) error {
 	return nil
 }
 
-// CSV related errors
+// NewWriteCsvError returns errors related to writing CSVs
 func NewWriteCsvError(err error) *Error {
 	return &Error{
 		http.StatusInternalServerError,

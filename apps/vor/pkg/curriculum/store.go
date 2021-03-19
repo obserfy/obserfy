@@ -1,6 +1,9 @@
 package curriculum
 
-import "github.com/chrsep/vor/pkg/domain"
+import (
+	"github.com/chrsep/vor/pkg/domain"
+	"github.com/google/uuid"
+)
 
 type Store interface {
 	GetArea(areaId string) (*domain.Area, error)
@@ -11,7 +14,7 @@ type Store interface {
 	NewSubject(name string, areaId string, materials []domain.Material, description string) (*domain.Subject, error)
 	NewMaterial(subjectId string, name string, description string) (*domain.Material, error)
 	GetSubject(id string) (*domain.Subject, error)
-	UpdateMaterial(material *domain.Material, order *int) error
+	UpdateMaterial(id string, name *string, order *int, description *string, subjectId *uuid.UUID) error
 	DeleteArea(id string) error
 	DeleteSubject(id string) error
 	ReplaceSubject(subject domain.Subject) error
@@ -21,4 +24,5 @@ type Store interface {
 	CheckCurriculumPermission(curriculumId string, userId string) (bool, error)
 	CheckMaterialPermission(materialId string, userId string) (bool, error)
 	UpdateCurriculum(curriculumId string, name *string, description *string) (*domain.Curriculum, error)
+	UpdateSubject(id string, name *string, order *int, description *string, areaId *uuid.UUID) (*domain.Subject, error)
 }

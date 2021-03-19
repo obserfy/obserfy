@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.16.1](https://github.com/obserfy/obserfy/compare/v1.16.0...v1.16.1) (2021-02-27)
+
+## [1.16.0](https://github.com/obserfy/obserfy/compare/v1.15.13...v1.16.0) (2021-02-26)
+
+
+### Features
+
+* add description field to curriculum. ([e9f6c16](https://github.com/obserfy/obserfy/commit/e9f6c16c73b28af8ad1d588331890d1205a1eb12))
+
+
+### Bug Fixes
+
+* unstable drag and drop reordering result. ([a568b3f](https://github.com/obserfy/obserfy/commit/a568b3f5b522f0d6a7629d0e0beb56ea416a026d))
+
+### [1.15.13](https://github.com/obserfy/obserfy/compare/v1.15.12...v1.15.13) (2021-02-03)
+
+
+### Bug Fixes
+
+* **deps:** pin dependencies ([a866a93](https://github.com/obserfy/obserfy/commit/a866a93ec31dc8ebebec268f624a3bfc1c83afbe))
+* **deps:** pin dependency cypress-file-upload to 5.0.2 ([9ff909c](https://github.com/obserfy/obserfy/commit/9ff909cc2346c667bb73c082de237bf80190cb86))
+* **deps:** update dependency gatsby-plugin-webpack-bundle-analyser-v2 to v1.1.20 ([#1734](https://github.com/obserfy/obserfy/issues/1734)) ([0fe568b](https://github.com/obserfy/obserfy/commit/0fe568b34e7b9f6c079af8f8655fbfd102274a84))
+* **deps:** update dependency next-pwa to v5.0.4 ([#1689](https://github.com/obserfy/obserfy/issues/1689)) ([563c61f](https://github.com/obserfy/obserfy/commit/563c61f08d021644b7416698c50658b55f80432b))
+* **deps:** update dependency preact to v10.5.12 ([05329f6](https://github.com/obserfy/obserfy/commit/05329f601a9d066cc74f9a946692308251411fef))
+* **deps:** update gatsby monorepo ([eadfc86](https://github.com/obserfy/obserfy/commit/eadfc8686997b03bbd11f22de9e99f540557ba36))
+* **deps:** update sentry monorepo to v6.0.2 ([ecfc8a4](https://github.com/obserfy/obserfy/commit/ecfc8a423710ff483d28d003aa11612e97595fc1))
+* **deps:** update sentry monorepo to v6.0.3 ([3bd1149](https://github.com/obserfy/obserfy/commit/3bd1149b4501c40e67cbcefa87b14cdbcc377eac))
+* **freyr:** fix placeholder image. ([3a2e5ce](https://github.com/obserfy/obserfy/commit/3a2e5ce8868ffe30f650e0c3b2c13c33c1650bc9))
+* **vor:** fix image placeholders to use blur. ([0d2310e](https://github.com/obserfy/obserfy/commit/0d2310ea0124e60373067c5cc4d50486907e9a8b))
+* duplicated emotion instance loaded. ([54ec4aa](https://github.com/obserfy/obserfy/commit/54ec4aad4504154d483888c6c6ff49c16c8df774))
+
 ### [1.15.12](https://github.com/obserfy/obserfy/compare/v1.15.11...v1.15.12) (2021-01-23)
 
 

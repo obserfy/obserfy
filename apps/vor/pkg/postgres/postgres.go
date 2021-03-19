@@ -140,7 +140,7 @@ type StudentMaterialProgress struct {
 	Material   Material `pg:"rel:has-one"`
 	StudentId  string   `pg:",pk,type:uuid,on_delete:CASCADE"`
 	Student    Student  `pg:"rel:has-one"`
-	Stage      int
+	Stage      int      // TODO: should be renamed to assessment
 	UpdatedAt  time.Time
 }
 
@@ -446,6 +446,12 @@ type (
 type PartialUpdateModel map[string]interface{}
 
 func (u *PartialUpdateModel) AddStringColumn(name string, value *string) {
+	if value != nil {
+		(*u)[name] = value
+	}
+}
+
+func (u *PartialUpdateModel) AddIntColumn(name string, value *int) {
 	if value != nil {
 		(*u)[name] = value
 	}

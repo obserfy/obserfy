@@ -201,15 +201,15 @@ exports[`PageStudentPlans should render correctly 1`] = `
   min-width: 0;
   padding-left: 16px;
   padding-right: 16px;
-  padding-bottom: 8px;
+  padding-bottom: 16px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .emotion-15 {
@@ -221,7 +221,6 @@ exports[`PageStudentPlans should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
-  font-size: 14px;
 }
 
 .emotion-16 {
@@ -285,10 +284,7 @@ exports[`PageStudentPlans should render correctly 1`] = `
   border-style: solid;
   border-width: 1px;
   line-height: 1;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 4px;
-  padding-right: 4px;
+  padding: 4px;
   margin-right: 4px;
   margin-left: auto;
 }
@@ -498,15 +494,7 @@ exports[`PageStudentPlans should render correctly 1`] = `
 
 .emotion-21 {
   display: block;
-  margin-top: 16px;
-  margin-bottom: 16px;
-  margin-right: 16px;
-}
-
-@media screen and (min-width: 40em) {
-  .emotion-21 {
-    margin-right: 0;
-  }
+  margin: 16px;
 }
 
 .emotion-22 {
@@ -678,7 +666,7 @@ exports[`PageStudentPlans should render correctly 1`] = `
         <p
           class="emotion-15"
         >
-          Sun, 26 May '96
+          Sunday, 26 May 1996
         </p>
         <button
           aria-label="previous-date"

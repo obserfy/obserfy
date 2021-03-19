@@ -77,6 +77,7 @@ export const PageObservationDetails: FC<PageObservationDetailsProps> = ({
           <Icon as={TrashIcon} fill="danger" />
         </Button>
       </Flex>
+
       {deleteDialog.visible && (
         <AlertDialog
           title={t`Delete Observation?`}

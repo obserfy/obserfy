@@ -8,6 +8,7 @@ import PageCurriculumMaterial from "../../../../../components/PageCurriculumMate
 import PageCurriculumSubject from "../../../../../components/PageCurriculumSubject/PageCurriculumSubject"
 import SEO from "../../../../../components/seo"
 import { breadCrumb } from "../../../../../components/TopBar/TopBar"
+import useGetMaterial from "../../../../../hooks/api/curriculum/useGetMaterial"
 import { useGetArea } from "../../../../../hooks/api/useGetArea"
 import { useGetSubject } from "../../../../../hooks/api/useGetSubject"
 import { useQueryString } from "../../../../../hooks/useQueryString"
@@ -25,6 +26,7 @@ const Material = () => {
 
   const area = useGetArea(areaId)
   const subject = useGetSubject(subjectId)
+  const material = useGetMaterial(materialId)
 
   return (
     <Box>
@@ -39,7 +41,7 @@ const Material = () => {
             subject.data?.name ?? "",
             CURRICULUM_SUBJECT_URL(areaId, subjectId)
           ),
-          breadCrumb("Material"),
+          breadCrumb(material.data?.name ?? ""),
         ]}
       />
 
@@ -70,7 +72,7 @@ const SideBar: FC<{ areaId: string; subjectId: string }> = ({
       sx={{
         position: "sticky",
         top: 0,
-        maxWidth: ["100%", "100%", 300, 400, 500],
+        maxWidth: ["100%", "100%", 300, 400],
         height: ["auto", "auto", "100vh"],
         display: ["none", "none", "block"],
         overflow: "auto",
@@ -80,4 +82,5 @@ const SideBar: FC<{ areaId: string; subjectId: string }> = ({
     />
   )
 }
+
 export default Material

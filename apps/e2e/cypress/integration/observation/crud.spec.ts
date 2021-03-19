@@ -12,7 +12,7 @@ describe("observation crud", function () {
 
     cy.contains("Short Description").type("A new description")
     cy.contains("Visible to guardians").click()
-    cy.contains("Details").type("A detail")
+    cy.get("[data-cy=markdown-editor]").type("A detail")
     // cy.contains("Go to curriculum").click() // should show empty curriculum info when curriculum is empty
     cy.contains("Event Time").click()
     cy.contains("25").click()
@@ -45,7 +45,7 @@ describe("observation crud", function () {
 
     // edit area (should show how to create curriculum)
     cy.get("[aria-label=edit-details]").click()
-    cy.contains("label:visible", "Details").type(" better details here")
+    cy.get("[data-cy=markdown-editor]").type(" better details here")
     cy.contains("Save").click()
     cy.contains("A detail better details here").should("be.visible")
 
