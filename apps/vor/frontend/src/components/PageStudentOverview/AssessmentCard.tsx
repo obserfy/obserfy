@@ -1,41 +1,46 @@
+/** @jsx jsx */
 import { t, Trans } from "@lingui/macro"
-import React, { FC, useState } from "react"
-import { Box, Button, Card, Flex } from "theme-ui"
+import { FC, Fragment, useState } from "react"
+import { jsx, Box, Button, Card, Flex } from "theme-ui"
 import { borderBottom } from "../../border"
 import { isEmpty } from "../../domain/array"
+import { exportMaaterialProgressCsv } from "../../export"
 import { useGetCurriculumAreas } from "../../hooks/api/useGetCurriculumAreas"
 import {
-  MaterialProgress,
   Assessment,
+  MaterialProgress,
   useGetStudentMaterialProgress,
 } from "../../hooks/api/useGetStudentMaterialProgress"
 import { ADMIN_CURRICULUM_URL, STUDENT_PROGRESS_URL } from "../../routes"
-
 import InformationalCard from "../InformationalCard/InformationalCard"
 import { Link } from "../Link/Link"
 import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
-import Spacer from "../Spacer/Spacer"
 import StudentMaterialProgressDialog from "../StudentMaterialProgressDialog/StudentMaterialProgressDialog"
-
 import Tab from "../Tab/Tab"
 import Typography from "../Typography/Typography"
 import MaterialProgressItem from "./MaterialProgressItem"
 
 interface Props {
   studentId: string
+  studentName?: string
 }
 
-export const AssessmentCard: FC<Props> = ({ studentId }) => {
+export const AssessmentCard: FC<Props> = ({ studentId, studentName = "" }) => {
   const [tab, setTab] = useState(0)
   const [isEditing, setIsEditing] = useState(false)
   const [selected, setSelected] = useState<MaterialProgress>()
   const areas = useGetCurriculumAreas()
   const progress = useGetStudentMaterialProgress(studentId)
   const isLoading = areas.isLoading || progress.isLoading
+  // const exportDialog = useVisibilityState()
 
   const handleItemClick = (item: MaterialProgress) => {
     setSelected(item)
     setIsEditing(true)
+  }
+
+  const handleExport = async () => {
+    await exportMaaterialProgressCsv(studentId, studentName)
   }
 
   // Derived state
@@ -49,21 +54,30 @@ export const AssessmentCard: FC<Props> = ({ studentId }) => {
     ?.slice(0, 3)
     ?.sort((a, b) => Date.parse(b.updatedAt) - Date.parse(a.updatedAt))
 
-  // View
   if (isLoading) return <LoadingState />
+
   if (!isLoading && isEmpty(areas.data)) return <DisabledState />
+
   return (
-    <>
+    <Fragment>
       <Card variant="responsive" sx={{ overflow: "inherit" }} mt={3}>
-        <Typography.H6 p={3} pb={2}>
-          <Trans>Curriculum Progress</Trans>
-        </Typography.H6>
+        <Flex sx={{ alignItems: "center" }} p={3} pb={2}>
+          <Typography.H6>
+            <Trans>Curriculum Progress</Trans>
+          </Typography.H6>
+
+          <Button variant="secondary" ml="auto" onClick={handleExport}>
+            Export
+          </Button>
+        </Flex>
+
         <Tab
           small
           items={areas.data?.map(({ name }) => name) ?? []}
           onTabClick={setTab}
           selectedItemIdx={tab}
         />
+
         <Box my={2}>
           {isEmpty(inProgress) && <EmptyState />}
 
@@ -87,8 +101,10 @@ export const AssessmentCard: FC<Props> = ({ studentId }) => {
         </Box>
 
         <Flex p={2}>
-          <Spacer />
-          <Link to={STUDENT_PROGRESS_URL(studentId, areaId ?? "")}>
+          <Link
+            to={STUDENT_PROGRESS_URL(studentId, areaId ?? "")}
+            sx={{ ml: "auto" }}
+          >
             <Button variant="secondary">
               <Trans>See All {areas.data?.[tab]?.name} Progress</Trans>
             </Button>
@@ -106,7 +122,16 @@ export const AssessmentCard: FC<Props> = ({ studentId }) => {
           onDismiss={() => setIsEditing(false)}
         />
       )}
-    </>
+
+      {/* {exportDialog.visible && ( */}
+      {/*  <ExportProgressDialog */}
+      {/*    onDismiss={exportDialog.hide} */}
+      {/*    onExported={exportDialog.hide} */}
+      {/*    studentId={studentId} */}
+      {/*    studentName={studentName} */}
+      {/*  /> */}
+      {/* )} */}
+    </Fragment>
   )
 }
 
@@ -182,5 +207,27 @@ const Heading: FC<{ text: string }> = ({ text }) => (
     <Trans id={text} />
   </Typography.Body>
 )
+
+// const ExportProgressDialog: FC<{
+//   onDismiss: () => void
+//   onExported: () => void
+//   studentId: string
+//   studentName: string
+// }> = ({ onDismiss, onExported, studentName, studentId }) => {
+//   const handleExport = async () => {
+//     await exportMaterialProgress(studentId, studentName)
+//     onExported()
+//   }
+//
+//   return (
+//     <Dialog>
+//       <DialogHeader
+//         title={t`Export Progress`}
+//         onAccept={handleExport}
+//         onCancel={onDismiss}
+//       />
+//     </Dialog>
+//   )
+// }
 
 export default AssessmentCard

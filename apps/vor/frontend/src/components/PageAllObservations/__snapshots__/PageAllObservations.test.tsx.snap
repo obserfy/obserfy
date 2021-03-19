@@ -479,7 +479,7 @@ exports[`PageAllObservations should render correctly 1`] = `
   padding-bottom: 8px;
   margin-right: 16px;
   background-color: var(--theme-ui-colors-surface, #fff);
-  background-color: var(--theme-ui-colors-darkSurface, #f8f8f8);
+  background-color: var(--theme-ui-colors-darkSurface, #fafafa);
   height: 40px;
   width: 100%;
   padding-left: 34px;

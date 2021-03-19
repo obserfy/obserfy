@@ -1,8 +1,9 @@
 /** @jsx jsx */
 import { t, Trans } from "@lingui/macro"
-import { Fragment, FC, memo, useState } from "react"
+import { Fragment, FC, memo, useState, useEffect } from "react"
 import { jsx, Box, Button, Flex, ThemeUIStyleObject } from "theme-ui"
 import { borderBottom, borderRight } from "../../border"
+import usePatchMaterial from "../../hooks/api/curriculum/usePatchMaterial"
 import usePostNewMaterial from "../../hooks/api/curriculum/usePostNewMaterial"
 import { useGetArea } from "../../hooks/api/useGetArea"
 import { useGetSubject } from "../../hooks/api/useGetSubject"
@@ -10,6 +11,7 @@ import {
   Material,
   useGetSubjectMaterials,
 } from "../../hooks/api/useGetSubjectMaterials"
+import useDebounce from "../../hooks/useDebounce"
 import { useMoveDraggableItem } from "../../hooks/useMoveDraggableItem"
 import { useQueryString } from "../../hooks/useQueryString"
 import useVisibilityState from "../../hooks/useVisibilityState"
@@ -23,6 +25,7 @@ import {
   CURRICULUM_AREA_URL,
   CURRICULUM_MATERIAL_URL,
 } from "../../routes"
+import CurriculumListLoadingPlaceholder from "../CurriculumListLoadingPlaceholder/CurriculumListLoadingPlaceholder"
 import DeleteSubjectDialog from "../DeleteSubjectDialog/DeleteSubjectDialog"
 import Dialog from "../Dialog/Dialog"
 import DialogHeader from "../DialogHeader/DialogHeader"
@@ -30,10 +33,12 @@ import DraggableListItem from "../DraggableListItem/DraggableListItem"
 import Icon from "../Icon/Icon"
 import Input from "../Input/Input"
 import { Link, navigate } from "../Link/Link"
+import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import Spacer from "../Spacer/Spacer"
 import TopBar, { breadCrumb } from "../TopBar/TopBar"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
 import Typography from "../Typography/Typography"
+import EditSubjectDialog from "./EditSubjectDialog"
 
 export interface PageCurriculumSubjectProps {
   subjectId: string
@@ -53,9 +58,10 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
 
   const deleteSubject = useVisibilityState()
   const newMaterial = useVisibilityState()
+  const editSubject = useVisibilityState()
 
   return (
-    <Box sx={{ width: "100%", pb: 5, ...sx }}>
+    <Box sx={{ position: "relative", width: "100%", pb: 5, ...sx }}>
       <TranslucentBar boxSx={{ ...borderBottom }}>
         <TopBar
           containerSx={{ display: ["flex", "flex", "none"] }}
@@ -69,7 +75,11 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
 
         <Flex mx={3} py={3} sx={{ alignItems: "center" }}>
           <Typography.H6 mr={3} sx={{ lineHeight: 1.2, fontSize: [3, 3, 1] }}>
-            {subject.data?.name}
+            {subject.isLoading ? (
+              <LoadingPlaceholder sx={{ height: 24, width: 112 }} />
+            ) : (
+              subject.data?.name
+            )}
           </Typography.H6>
 
           <Button
@@ -82,7 +92,13 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
           >
             <Icon size={16} as={DeleteIcon} fill="danger" />
           </Button>
-          <Button variant="outline" sx={{ flexShrink: 0 }} px={2} ml={2}>
+          <Button
+            variant="outline"
+            sx={{ flexShrink: 0 }}
+            px={2}
+            ml={2}
+            onClick={editSubject.show}
+          >
             <Icon size={16} as={EditIcon} />
           </Button>
         </Flex>
@@ -97,13 +113,16 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
       </Typography.Body>
       <Spacer />
 
-      <MaterialList
-        key={materials.data?.map(({ id }) => id).join(",") ?? ""}
-        subjectId={subjectId}
-        areaId={areaId}
-        materials={materials.data ?? []}
-        currMaterialId={materialId}
-      />
+      {materials.isLoading ? (
+        <CurriculumListLoadingPlaceholder length={3} />
+      ) : (
+        <MaterialList
+          subjectId={subjectId}
+          areaId={areaId}
+          materials={materials.data ?? []}
+          currMaterialId={materialId}
+        />
+      )}
 
       <Flex
         role="button"
@@ -130,6 +149,16 @@ const PageCurriculumSubject: FC<PageCurriculumSubjectProps> = ({
           onDeleted={() => navigate(CURRICULUM_AREA_URL(areaId))}
         />
       )}
+
+      {editSubject.visible && (
+        <EditSubjectDialog
+          initialValue={subject.data?.name}
+          onDismiss={editSubject.hide}
+          onSave={editSubject.hide}
+          subjectId={subjectId}
+          areaId={areaId}
+        />
+      )}
     </Box>
   )
 }
@@ -140,7 +169,16 @@ const MaterialList: FC<{
   areaId: string
   currMaterialId: string
 }> = ({ materials, subjectId, areaId, currMaterialId }) => {
-  const [cachedMaterials, moveItem] = useMoveDraggableItem(materials)
+  const [isLoading, setIsLoading] = useState(false)
+  const [cachedMaterials, moveItem, setMaterials] = useMoveDraggableItem(
+    materials
+  )
+
+  const debouncedIsLoading = useDebounce(isLoading)
+
+  useEffect(() => {
+    setMaterials(() => materials)
+  }, [materials])
 
   return (
     <Fragment>
@@ -152,8 +190,29 @@ const MaterialList: FC<{
           areaId={areaId}
           subjectId={subjectId}
           moveItem={moveItem}
+          isLoading={debouncedIsLoading}
+          onLoadingStateChange={(state) => {
+            setIsLoading(state)
+          }}
         />
       ))}
+      {debouncedIsLoading && (
+        <Typography.Body
+          pt={7}
+          sx={{
+            fontWeight: "bold",
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            textAlign: "center",
+            pointerEvents: "none",
+          }}
+        >
+          Saving
+        </Typography.Body>
+      )}
     </Fragment>
   )
 }
@@ -164,40 +223,72 @@ const DraggableMaterialItem: FC<{
   material: Material
   currMaterialId: string
   moveItem: (currItem: Material, newOrder: number) => void
-}> = memo(({ moveItem, currMaterialId, areaId, subjectId, material }) => {
-  const selected = material.id === currMaterialId
+  onLoadingStateChange: (isLoading: boolean) => void
+  isLoading: boolean
+}> = memo(
+  ({
+    moveItem,
+    currMaterialId,
+    areaId,
+    subjectId,
+    material,
+    onLoadingStateChange,
+    isLoading,
+  }) => {
+    const selected = material.id === currMaterialId
+    const patchMaterial = usePatchMaterial(material.id, subjectId)
 
-  return (
-    <Link
-      to={CURRICULUM_MATERIAL_URL(areaId, subjectId, material.id)}
-      sx={{ display: "block", maxWidth: "inherit" }}
-    >
-      <DraggableListItem
-        item={material}
-        moveItem={moveItem}
-        height={54}
-        containerSx={{
-          ...borderBottom,
-          ...borderRight,
-          borderRightColor: "textPrimary",
-          borderRightWidth: 2,
-          borderRightStyle: selected ? "solid" : "none",
-          backgroundColor: selected ? "primaryLightest" : "background",
-          color: selected ? "textPrimary" : "textMediumEmphasis",
-          alignItems: "center",
-          "&:hover": {
-            backgroundColor: "primaryLightest",
-          },
+    const handleReorder = async () => {
+      try {
+        onLoadingStateChange(true)
+        await patchMaterial.mutateAsync({ order: material.order })
+      } catch (e) {
+        Sentry.captureException(e)
+      } finally {
+        onLoadingStateChange(false)
+      }
+    }
+
+    return (
+      <Link
+        to={CURRICULUM_MATERIAL_URL(areaId, subjectId, material.id)}
+        sx={{
+          display: "block",
+          maxWidth: "inherit",
+          opacity: isLoading ? 0.2 : 1,
+          transition: "opacity 0.1s ease-in",
+          pointerEvents: isLoading ? "none" : undefined,
         }}
       >
-        <Typography.Body sx={{ color: "inherit" }}>
-          {material.name}
-        </Typography.Body>
-        <Icon as={NextIcon} ml="auto" mr={3} fill="currentColor" />
-      </DraggableListItem>
-    </Link>
-  )
-})
+        <DraggableListItem
+          item={material}
+          moveItem={moveItem}
+          height={54}
+          onDrop={handleReorder}
+          disableDrag={isLoading}
+          containerSx={{
+            ...borderBottom,
+            ...borderRight,
+            borderRightColor: "textPrimary",
+            borderRightWidth: 2,
+            borderRightStyle: selected ? "solid" : "none",
+            backgroundColor: selected ? "primaryLightest" : "background",
+            color: selected ? "textPrimary" : "textMediumEmphasis",
+            alignItems: "center",
+            "&:hover": {
+              backgroundColor: "primaryLightest",
+            },
+          }}
+        >
+          <Typography.Body className="truncate" sx={{ color: "inherit" }}>
+            {material.name}
+          </Typography.Body>
+          <Icon as={NextIcon} ml="auto" mr={3} fill="currentColor" />
+        </DraggableListItem>
+      </Link>
+    )
+  }
+)
 
 const NewMaterialDialog: FC<{ subjectId: string; onDismiss: () => void }> = ({
   subjectId,

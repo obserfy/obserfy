@@ -1,10 +1,14 @@
-import { Box, ThemeProvider } from "theme-ui";
-import Theme from "../src/gatsby-plugin-theme-ui";
-import { addDecorator } from "@storybook/react";
-import { action } from "@storybook/addon-actions";
-import React from "react";
-import { createHistory, createMemorySource, LocationProvider } from "@reach/router";
-import "../src/global.css";
+import { Box, ThemeProvider } from "theme-ui"
+import Theme from "../src/gatsby-plugin-theme-ui"
+import { addDecorator } from "@storybook/react"
+import { action } from "@storybook/addon-actions"
+import React from "react"
+import {
+  createHistory,
+  createMemorySource,
+  LocationProvider,
+} from "@reach/router"
+import "../src/global.css"
 
 const history = createHistory(createMemorySource("/"))
 const ComponentWrapper = (story) => (

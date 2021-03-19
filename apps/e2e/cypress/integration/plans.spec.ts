@@ -30,7 +30,7 @@ describe("Test lesson plan features", function () {
     cy.contains("Add").click()
     cy.contains("Save").should("be.disabled")
     cy.contains("Title").type(lessonPlan1.title)
-    cy.contains("Description").type(lessonPlan1.description)
+    cy.get("[data-cy=markdown-editor]").type(lessonPlan1.description)
     cy.get('[aria-label="URL"]').type(lessonPlan1.link)
     cy.get("[data-cy=add-link]").click()
     cy.contains(lessonPlan1.link).should("be.visible")
@@ -59,7 +59,7 @@ describe("Test lesson plan features", function () {
     cy.contains(lessonPlan1.title).should("be.visible")
     cy.contains(lessonPlan1.description).should("be.visible")
     cy.contains(lessonPlan1.link).should("be.visible")
-    cy.contains(this.student.name).should("be.visible")
+    cy.contains(this.student.name.split(" ")[0]).should("be.visible")
 
     cy.get('[aria-label="edit-title"]').click()
     cy.contains("label", "Title").find("input").clear().type(lessonPlan2.title)
@@ -71,9 +71,7 @@ describe("Test lesson plan features", function () {
     cy.contains(lessonPlan2.link).should("be.visible")
 
     cy.get('[aria-label="edit-description"]').click()
-    cy.contains("label", "Description")
-      .find("textarea")
-      .type(lessonPlan2.description)
+    cy.get("[data-cy=markdown-editor]").type(lessonPlan2.description)
     cy.contains("Save").click()
     cy.contains(lessonPlan2.description).should("be.visible")
 
@@ -109,7 +107,8 @@ describe("Test lesson plan features", function () {
     cy.contains("Title").type(repeatingPlan.title)
     cy.contains("Description").type(repeatingPlan.description)
     cy.contains("Daily").click()
-    cy.contains("Repeat Until").click()
+    cy.get(`[data-cy="Repeat Until"]`).click()
+    cy.get(`[data-cy="next-month"]`).click()
     cy.contains(dayjs().add(3, "day").daysInMonth()).click()
     cy.contains("Set").click()
 

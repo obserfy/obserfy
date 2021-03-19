@@ -15,16 +15,21 @@ function useTransientState<T>(defaultState: T, subscribe: (state: T) => void) {
 
 interface Props {
   item: OrderedItem
-  moveItem: (item: OrderedItem, newOrder: number) => void
   height: number
   containerSx?: ThemeUIStyleObject
+  moveItem: (item: OrderedItem, newOrder: number) => void
+  onDrop?: () => void
+  disableDrag?: boolean
 }
+
 const DraggableListItem: FC<Props> = ({
   children,
   moveItem,
   height,
   containerSx,
   item,
+  onDrop,
+  disableDrag,
 }) => {
   const container = useRef<HTMLDivElement>(null)
   const setTranslateY = useTransientState(0, (state) => {
@@ -64,7 +69,7 @@ const DraggableListItem: FC<Props> = ({
     e: MouseEvent | TouchEvent,
     mouseYPosition: number
   ) => {
-    if (!dragHandle.current) return
+    if (!dragHandle.current || disableDrag) return
     e.preventDefault()
     e.stopPropagation()
     disableBodyScroll(dragHandle.current, {
@@ -82,6 +87,9 @@ const DraggableListItem: FC<Props> = ({
     e.stopPropagation()
     if (!dragHandle.current) return
     enableBodyScroll(dragHandle.current)
+    if (onDrop) {
+      onDrop()
+    }
     setTranslateY(0)
     setIsGrabbed(false)
   }

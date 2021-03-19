@@ -1,6 +1,4 @@
-import { Theme } from "theme-ui"
-
-const theme: Theme = {
+const theme = {
   breakpoints: ["40em", "52em", "64em", "72em"],
   useColorSchemeMediaQuery: true,
   colors: {
@@ -35,7 +33,7 @@ const theme: Theme = {
     surface: "#fff",
     onSurface: "rgba(0,0,0,0.87)",
 
-    darkSurface: "#f8f8f8",
+    darkSurface: "#fafafa",
     onDarkSurface: "rgba(0,0,0,0.87)",
 
     surfaceBlurNonTransparent: "rgba(255,255,255)",
@@ -99,6 +97,9 @@ const theme: Theme = {
 
         background: "#101010",
         onBackground: "rgba(255,255,255, 0.87)",
+
+        backgroundDarker: "#070707",
+        onBackgroundDarker: "rgba(255,255,255, 0.87)",
 
         surface: "#242424",
         onSurface: "rgba(255,255,255, 0.87)",
@@ -369,5 +370,7 @@ const theme: Theme = {
     },
   },
 }
+
+export type ObserfyTheme = typeof theme
 
 export default theme

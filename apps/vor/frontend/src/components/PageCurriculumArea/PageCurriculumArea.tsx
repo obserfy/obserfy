@@ -1,11 +1,13 @@
 /** @jsx jsx */
 import { t, Trans } from "@lingui/macro"
-import { FC, Fragment, useState } from "react"
+import { FC, Fragment, useEffect, useState } from "react"
 import { jsx, Box, Button, Flex, ThemeUIStyleObject } from "theme-ui"
 import { borderBottom, borderRight } from "../../border"
+import usePatchSubject from "../../hooks/api/curriculum/usePatchSubject"
 import usePostNewSubject from "../../hooks/api/curriculum/usePostNewSubject"
 import { useGetArea } from "../../hooks/api/useGetArea"
 import { Subject, useGetAreaSubjects } from "../../hooks/api/useGetAreaSubjects"
+import useDebounce from "../../hooks/useDebounce"
 import { useMoveDraggableItem } from "../../hooks/useMoveDraggableItem"
 import { useQueryString } from "../../hooks/useQueryString"
 import useVisibilityState from "../../hooks/useVisibilityState"
@@ -18,6 +20,7 @@ import {
   ADMIN_URL,
   CURRICULUM_SUBJECT_URL,
 } from "../../routes"
+import CurriculumListLoadingPlaceholder from "../CurriculumListLoadingPlaceholder/CurriculumListLoadingPlaceholder"
 import DeleteAreaDialog from "../DeleteAreaDialog/DeleteAreaDialog"
 import Dialog from "../Dialog/Dialog"
 import DialogHeader from "../DialogHeader/DialogHeader"
@@ -26,6 +29,7 @@ import EditAreaDialog from "../EditAreaDialog/EditAreaDialog"
 import Icon from "../Icon/Icon"
 import Input from "../Input/Input"
 import { Link, navigate } from "../Link/Link"
+import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import TopBar, { breadCrumb } from "../TopBar/TopBar"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
 import Typography from "../Typography/Typography"
@@ -67,14 +71,12 @@ const PageCurriculumArea: FC<Props> = ({ id, sx }) => {
         />
 
         <Flex mx={3} py={3} sx={{ alignItems: "center" }}>
-          <Typography.H6
-            mr={3}
-            sx={{
-              lineHeight: 1.2,
-              fontSize: [3, 3, 1],
-            }}
-          >
-            {area.data?.name}
+          <Typography.H6 mr={3} sx={{ lineHeight: 1.2, fontSize: [3, 3, 1] }}>
+            {area.isLoading ? (
+              <LoadingPlaceholder sx={{ height: 24, width: 112 }} />
+            ) : (
+              area.data?.name
+            )}
           </Typography.H6>
           <Button
             variant="outline"
@@ -106,12 +108,15 @@ const PageCurriculumArea: FC<Props> = ({ id, sx }) => {
         <Trans>Subjects</Trans>
       </Typography.Body>
 
-      <SubjectList
-        key={subjects.data?.map((subject) => subject.id).join(",") ?? ""}
-        areaId={id}
-        subjects={subjects.data ?? []}
-        currSubjectId={subjectId}
-      />
+      {subjects.isLoading ? (
+        <CurriculumListLoadingPlaceholder length={1} />
+      ) : (
+        <SubjectList
+          areaId={id}
+          subjects={subjects.data ?? []}
+          currSubjectId={subjectId}
+        />
+      )}
 
       <Flex
         role="button"
@@ -162,7 +167,13 @@ const SubjectList: FC<{
   areaId: string
   currSubjectId: string
 }> = ({ currSubjectId, subjects, areaId }) => {
-  const [cachedSubjects, moveItem] = useMoveDraggableItem(subjects)
+  const [isLoading, setIsLoading] = useState(false)
+  const [cachedSubjects, moveItem, setSubjects] = useMoveDraggableItem(subjects)
+  const debouncedIsLoading = useDebounce(isLoading)
+
+  useEffect(() => {
+    setSubjects(() => subjects)
+  }, [subjects])
 
   return (
     <Fragment>
@@ -173,8 +184,29 @@ const SubjectList: FC<{
           subject={subject}
           areaId={areaId}
           moveItem={moveItem}
+          isLoading={debouncedIsLoading}
+          onLoadingStateChange={(state) => {
+            setIsLoading(state)
+          }}
         />
       ))}
+      {debouncedIsLoading && (
+        <Typography.Body
+          pt={7}
+          sx={{
+            fontWeight: "bold",
+            position: "absolute",
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            textAlign: "center",
+            pointerEvents: "none",
+          }}
+        >
+          Saving
+        </Typography.Body>
+      )}
     </Fragment>
   )
 }
@@ -184,17 +216,45 @@ const SubjectListItem: FC<{
   areaId: string
   currentSubjectId: string
   moveItem: (currItem: Subject, newOrder: number) => void
-}> = ({ areaId, subject, moveItem, currentSubjectId }) => {
+  onLoadingStateChange: (isLoading: boolean) => void
+  isLoading: boolean
+}> = ({
+  areaId,
+  subject,
+  moveItem,
+  currentSubjectId,
+  onLoadingStateChange,
+  isLoading,
+}) => {
+  const patchSubject = usePatchSubject(subject.id, areaId)
   const selected = currentSubjectId === subject.id
+
+  const handleReorder = async () => {
+    try {
+      onLoadingStateChange(true)
+      await patchSubject.mutateAsync({ order: subject.order })
+    } catch (e) {
+      Sentry.captureException(e)
+    } finally {
+      onLoadingStateChange(false)
+    }
+  }
 
   return (
     <Link
       to={CURRICULUM_SUBJECT_URL(areaId, subject.id)}
-      sx={{ display: "block", maxWidth: "inherit" }}
+      sx={{
+        display: "block",
+        maxWidth: "inherit",
+        opacity: isLoading ? 0.2 : 1,
+        transition: "opacity 0.1s ease-in",
+        pointerEvents: isLoading ? "none" : undefined,
+      }}
     >
       <DraggableListItem
         item={subject}
         moveItem={moveItem}
+        onDrop={handleReorder}
         height={54}
         containerSx={{
           ...borderBottom,
@@ -210,7 +270,7 @@ const SubjectListItem: FC<{
           },
         }}
       >
-        <Typography.Body sx={{ color: "inherit" }}>
+        <Typography.Body className="truncate" sx={{ color: "inherit" }}>
           {subject.name}
         </Typography.Body>
         <Icon as={NextIcon} mr={3} ml="auto" fill="currentColor" />

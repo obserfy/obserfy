@@ -1,6 +1,7 @@
 package student
 
 import (
+	"github.com/chrsep/vor/pkg/domain"
 	"github.com/chrsep/vor/pkg/imgproxy"
 	"github.com/getsentry/sentry-go"
 	"github.com/google/uuid"
@@ -28,9 +29,6 @@ func NewRouter(s rest.Server, store Store) *chi.Mux {
 		r.Method("POST", "/attendances", postAttendance(s, store))
 		r.Method("GET", "/attendances", getAttendance(s, store))
 
-		r.Method("GET", "/materialsProgress", getMaterialProgress(s, store))
-		r.Method("PATCH", "/materialsProgress/{materialId}", upsertMaterialProgress(s, store))
-
 		r.Method("POST", "/guardianRelations", postNewGuardianRelation(s, store))
 		r.Method("DELETE", "/guardianRelations/{guardianId}", deleteGuardianRelation(s, store))
 
@@ -43,6 +41,14 @@ func NewRouter(s rest.Server, store Store) *chi.Mux {
 		r.Method("GET", "/images", getStudentImages(s, store))
 
 		r.Method("GET", "/videos", getStudentVideos(s, store))
+
+		r.Route("/materialsProgress", func(r chi.Router) {
+			r.Method("GET", "/", getMaterialProgress(s, store))
+			r.Method("PATCH", "/{materialId}", upsertMaterialProgress(s, store))
+			r.Method("GET", "/export/pdf", exportMaterialProgressPdf(s, store))
+			r.Method("GET", "/export/csv", exportMaterialProgressCsv(s, store))
+		})
+
 	})
 	return r
 }
@@ -834,6 +840,104 @@ func getStudentVideos(s rest.Server, store Store) http.Handler {
 
 		if err := rest.WriteJson(w, &response); err != nil {
 			return rest.NewWriteJsonError(err)
+		}
+		return nil
+	})
+}
+
+func exportMaterialProgressPdf(s rest.Server, store Store) rest.Handler {
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		studentId := chi.URLParam(r, "studentId")
+
+		progress, err := store.GetProgress(studentId)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "failed querying material",
+				Error:   err,
+			}
+		}
+
+		curriculum, err := store.FindCurriculum(studentId)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "failed querying material",
+				Error:   err,
+			}
+		}
+
+		pdf, err := ExportCurriculumPdf(curriculum, progress)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "failed to write pdf response",
+				Error:   err,
+			}
+		}
+
+		w.Header().Set("Content-Type", "application/pdf")
+		if err := pdf.Write(w); err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "failed to write pdf response",
+				Error:   err,
+			}
+		}
+		return nil
+	})
+}
+
+func exportMaterialProgressCsv(s rest.Server, store Store) rest.Handler {
+	type responseBody struct {
+		Areas       string `csv:"Areas"`
+		Subjects    string `csv:"Subjects"`
+		Materials   string `csv:"Materials"`
+		Assessments string `csv:"Assessments"`
+	}
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		studentId := chi.URLParam(r, "studentId")
+
+		progress, err := store.GetProgress(studentId)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "failed querying material",
+				Error:   err,
+			}
+		}
+
+		curriculum, err := store.FindCurriculum(studentId)
+		if err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "failed querying material",
+				Error:   err,
+			}
+		}
+
+		body := make([]responseBody, 0)
+		for _, area := range curriculum.Areas {
+			for _, subject := range area.Subjects {
+				for _, material := range subject.Materials {
+					line := responseBody{
+						Areas:     area.Name,
+						Subjects:  subject.Name,
+						Materials: material.Name,
+					}
+					for _, materialProgress := range progress {
+						if materialProgress.MaterialId == material.Id {
+							line.Assessments = domain.GetAssessmentName(materialProgress.Stage)
+							break
+						}
+					}
+					body = append(body, line)
+				}
+			}
+		}
+
+		if err := rest.WriteCsv(w, body); err != nil {
+			return rest.NewWriteCsvError(err)
 		}
 		return nil
 	})

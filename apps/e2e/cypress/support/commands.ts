@@ -110,7 +110,7 @@ const createSchool = () => {
 }
 
 const createStudent = () => {
-  const studentName = faker.name.firstName()
+  const studentName = `${faker.name.firstName()} ${faker.name.lastName()}`
   const schoolId = localStorage.getItem("SCHOOL_ID")
   cy.request("POST", vorApi(`/schools/${schoolId}/students`), {
     name: studentName,

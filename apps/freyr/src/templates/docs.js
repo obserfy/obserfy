@@ -1,11 +1,13 @@
 import React from "react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import { MDXProvider } from "@mdx-js/react"
 import SEO from "../components/seo"
 import DocsHeader from "../components/DocsHeader"
 import DocsFooter from "../components/DocsFooter"
 import DocsSidebar from "../components/DocsSidebar"
 import DocsLogo from "../components/DocsLogo"
 import TopDecoration from "../images/top-bg.svg"
+import { graphql } from "gatsby"
 
 const Docs = ({ data }) => (
   <div className="min-h-screen bg-white">
@@ -27,7 +29,9 @@ const Docs = ({ data }) => (
 
         <div className={"p-6 pb-16 max-w-7xl mx-auto"}>
           <main className="prose">
-            <MDXRenderer>{data.mdx.body}</MDXRenderer>
+            <MDXProvider>
+              <MDXRenderer>{data.mdx.body}</MDXRenderer>
+            </MDXProvider>
           </main>
         </div>
       </div>

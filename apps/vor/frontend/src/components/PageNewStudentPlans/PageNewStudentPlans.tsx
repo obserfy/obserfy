@@ -5,6 +5,7 @@ import { useImmer } from "use-immer"
 import { nanoid } from "nanoid"
 
 import { t, Trans } from "@lingui/macro"
+import { borderFull } from "../../border"
 import { useGetCurriculumAreas } from "../../hooks/api/useGetCurriculumAreas"
 import usePostNewPlan, {
   PostNewLessonPlanBody,
@@ -16,10 +17,10 @@ import {
   STUDENT_PLANS_URL,
   STUDENTS_URL,
 } from "../../routes"
+import MarkdownEditor from "../MarkdownEditor/MarkdownEditor"
 import { Typography } from "../Typography/Typography"
 import DateInput from "../DateInput/DateInput"
 import Input from "../Input/Input"
-import TextArea from "../TextArea/TextArea"
 import Chip from "../Chip/Chip"
 import { navigate } from "../Link/Link"
 import { useGetStudent } from "../../hooks/api/useGetStudent"
@@ -121,20 +122,19 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
           <Input
             label={t`Title`}
             sx={{ width: "100%" }}
-            mb={2}
+            mb={3}
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-          <TextArea
-            label={t`Description`}
-            mb={4}
-            value={description}
-            sx={{ width: "100%" }}
-            onChange={(e) => {
-              setDescription(e.target.value)
-            }}
-          />
+
+          <Card sx={{ ...borderFull }} mb={3}>
+            <Typography.Body pl={3} pt={3} pb={2} sx={{ fontWeight: "bold" }}>
+              <Trans>Description</Trans>
+            </Typography.Body>
+            <MarkdownEditor onChange={setDescription} value={description} />
+          </Card>
         </Box>
+
         <Box mx={3} mb={4}>
           <Typography.H6 mb={2}>
             <Trans>Links</Trans>
@@ -157,6 +157,7 @@ export const PageNewStudentPlans: FC<Props> = ({ studentId, chosenDate }) => {
             }}
           />
         </Box>
+
         {areas.status === "success" && (areas.data?.length ?? 0) === 0 ? (
           <Box mx={[0, 3]}>
             <InformationalCard

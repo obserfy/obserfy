@@ -11,6 +11,69 @@ type CurriculumStore struct {
 	*pg.DB
 }
 
+func (s CurriculumStore) UpdateSubject(id string, name *string, order *int, description *string, areaId *uuid.UUID) (*domain.Subject, error) {
+
+	subject := Subject{Id: id}
+	if err := s.Model(&subject).
+		WherePK().
+		Select(); err != nil {
+		return nil, richErrors.Wrap(err, "failed to find subject")
+	}
+
+	if err := s.RunInTransaction(s.Context(), func(tx *pg.Tx) error {
+		// Reorder the order of materials
+		if order != nil {
+			var err error
+			if *order <= subject.Order {
+				_, err = tx.Model((*Subject)(nil)).
+					Set(`"order" = "order" + 1`).
+					Where(`area_id=? AND "order" >= ? AND "order" < ? AND id != ?`, subject.AreaId, order, subject.Order, subject.Id).
+					Update()
+			} else {
+				_, err = tx.Model((*Subject)(nil)).
+					Set(`"order" = "order" - 1`).
+					Where(`area_id=? AND "order" <= ? AND "order" > ? AND id != ?`, subject.AreaId, order, subject.Order, subject.Id).
+					Update()
+			}
+			if err != nil {
+				return err
+			}
+			subject.Order = *order
+		}
+
+		updateQuery := make(PartialUpdateModel)
+		updateQuery.AddStringColumn("name", name)
+		updateQuery.AddStringColumn("description", description)
+		updateQuery.AddUUIDColumn("area_id", areaId)
+		updateQuery.AddIntColumn("order", order)
+
+		// Update the targeted materials with the targeted changes
+		if _, err := tx.Model(updateQuery.GetModel()).
+			TableExpr("subjects").
+			Where("id = ?", id).
+			Update(); err != nil {
+			return err
+		}
+		return nil
+	}); err != nil {
+		return nil, err
+	}
+
+	subject = Subject{Id: id}
+	if err := s.Model(&subject).
+		WherePK().
+		Select(); err != nil {
+		return nil, richErrors.Wrap(err, "failed to find subject")
+	}
+	return &domain.Subject{
+		Id:          subject.Id,
+		AreaId:      subject.AreaId,
+		Name:        subject.Name,
+		Order:       subject.Order,
+		Description: subject.Description,
+	}, nil
+}
+
 func (s CurriculumStore) UpdateCurriculum(curriculumId string, name *string, description *string) (*domain.Curriculum, error) {
 	updateQuery := make(PartialUpdateModel)
 	updateQuery.AddStringColumn("name", name)
@@ -206,15 +269,23 @@ func (s CurriculumStore) GetMaterial(materialId string) (*domain.Material, error
 	}
 
 	return &domain.Material{
-		Id:        material.Id,
-		SubjectId: material.SubjectId,
-		Name:      material.Name,
-		Order:     material.Order,
+		Id:          material.Id,
+		SubjectId:   material.SubjectId,
+		Name:        material.Name,
+		Order:       material.Order,
+		Description: material.Description,
 	}, nil
 }
 
-func (s CurriculumStore) UpdateMaterial(material *domain.Material, order *int) error {
-	if err := s.RunInTransaction(s.DB.Context(), func(tx *pg.Tx) error {
+func (s CurriculumStore) UpdateMaterial(id string, name *string, order *int, description *string, subjectId *uuid.UUID) error {
+	material := Material{Id: id}
+	if err := s.Model(&material).
+		WherePK().
+		Select(); err != nil {
+		return richErrors.Wrap(err, "failed to find material")
+	}
+
+	if err := s.RunInTransaction(s.Context(), func(tx *pg.Tx) error {
 		// Reorder the order of materials
 		if order != nil {
 			var err error
@@ -235,8 +306,17 @@ func (s CurriculumStore) UpdateMaterial(material *domain.Material, order *int) e
 			material.Order = *order
 		}
 
+		updateQuery := PartialUpdateModel{}
+		updateQuery.AddStringColumn("name", name)
+		updateQuery.AddUUIDColumn("subject_id", subjectId)
+		updateQuery.AddStringColumn("description", description)
+		updateQuery.AddIntColumn("order", order)
+
 		// Update the targeted materials with the targeted changes
-		if _, err := tx.Model(material).WherePK().Update(); err != nil {
+		if _, err := tx.Model(updateQuery.GetModel()).
+			TableExpr("materials").
+			Where("id = ?", id).
+			Update(); err != nil {
 			return err
 		}
 		return nil
@@ -379,6 +459,7 @@ func (s CurriculumStore) GetAreaSubjects(areaId string) ([]domain.Subject, error
 
 	if err := s.Model(&subjects).
 		Where("area_id=?", areaId).
+		Order("order").
 		Select(); err != nil {
 		return nil, err
 	}
@@ -399,6 +480,7 @@ func (s CurriculumStore) GetSubjectMaterials(subjectId string) ([]domain.Materia
 	var materials []Material
 	if err := s.Model(&materials).
 		Where("subject_id=?", subjectId).
+		Order("order").
 		Select(); err != nil {
 		return nil, err
 	}

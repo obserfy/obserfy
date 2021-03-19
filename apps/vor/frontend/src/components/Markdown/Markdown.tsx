@@ -19,15 +19,17 @@ export interface MarkdownProps extends Omit<BoxProps, "css"> {
 
 const Markdown: FC<MarkdownProps> = ({ markdown, className, ...props }) => {
   const html = snarkdownEnhanced(markdown)
-  let sanitizedHtml = ""
+  let innerHtml: { __html: string } | undefined
+
   if (typeof window !== "undefined") {
-    sanitizedHtml = DOMPurify.sanitize(html)
+    const sanitizedHtml = DOMPurify.sanitize(html)
+    innerHtml = { __html: sanitizedHtml }
   }
 
   return (
     <Box
       className={`prose prose-sm max-w-none ${className}`}
-      dangerouslySetInnerHTML={{ __html: sanitizedHtml }}
+      dangerouslySetInnerHTML={innerHtml}
       {...props}
     />
   )
