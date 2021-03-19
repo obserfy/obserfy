@@ -6,7 +6,9 @@
       <script value="dev" />
     </scripts>
     <node-interpreter value="project" />
-    <envs />
+    <envs>
+      <env name="NEXT_OPTIMIZED_IMG_DOMAIN" value="athena" />
+    </envs>
     <method v="2" />
   </configuration>
 </component>
