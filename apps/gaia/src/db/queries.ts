@@ -365,7 +365,8 @@ export const findChildCurriculumProgress = async (childId: string) => {
                                            s.name,
                                            s.order,
                                            coalesce(json_agg(materials order by materials."order")
-                                                    filter (where materials.id is not null), '[]') as materials
+                                                    filter (where materials.id is not null), '[]'
+                                               ) as materials
                                     from subjects as s
                                              left join lateral (select m.id,
                                                                        m.name,
@@ -465,4 +466,27 @@ export const findLessonPlanById = async (planId: string) => {
     ...lessonPlan[0],
     links,
   }
+}
+
+const Material = type({
+  id: string,
+  name: string,
+  description: string,
+  stage: number,
+})
+export const findMaterialDetailsByChildId = async (
+  childId: string,
+  materialId: string
+) => {
+  // language=PostgreSQL
+  return typedQuery(
+    Material,
+    [childId, materialId],
+    `
+        select m.id, m.name, m.description, coalesce(smp.stage, -1) as stage
+        from materials m
+                 left join student_material_progresses smp on m.id = smp.material_id and smp.student_id = $1
+        where m.id = $2
+    `
+  )
 }

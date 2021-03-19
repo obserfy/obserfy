@@ -10,7 +10,7 @@ import ChevronRightIcon from "../../icons/chevron-right.svg"
 import { materialStageToString } from "../../domain"
 
 const Index = () => {
-  const [areaId, setAreaId] = useState(0)
+  const [areaIdx, setAreaIdx] = useState(0)
   const childId = useQueryString("childId")
   const {
     data: progress,
@@ -33,49 +33,50 @@ const Index = () => {
   }
 
   return (
-    <>
+    <div className="mx-auto max-w-3xl">
       <Head>
         <title>Videos | Obserfy for Parents</title>
       </Head>
 
-      <div className="mx-auto max-w-3xl">
-        <div className="font-bold px-3 pt-3">CURRICULUM AREAS</div>
-        <div className="flex flex-wrap pt-2 md-rounded pl-1">
-          {progress.map((area, idx) => (
-            <Chip
-              key={area.id}
-              containerStyle="ml-2 mb-2"
-              isActive={idx === areaId}
-              onClick={() => setAreaId(idx)}
-            >
-              {area.name}
-            </Chip>
-          ))}
-        </div>
-        <div className="font-bold px-3 pb-3 pt-6">MATERIALS</div>
-        {progress[areaId].subjects.map((subject) => (
-          <div
-            key={subject.id}
-            className="bg-white mb-6 border md:rounded md:mx-3"
+      <div className="font-bold px-3 pt-3">CURRICULUM AREAS</div>
+      <div className="flex flex-wrap pt-2 md-rounded pl-1">
+        {progress.map((area, idx) => (
+          <Chip
+            key={area.id}
+            containerStyle="ml-2 mb-2"
+            isActive={idx === areaIdx}
+            onClick={() => setAreaIdx(idx)}
           >
-            <div className="px-3 my-3 font-bold">{subject.name}</div>
-
-            {subject.materials.map((material) => (
-              <Link href={`/progress/details?childId=${childId}`}>
-                <a
-                  key={material.id}
-                  className="flex px-3 py-2 items-center display-block hover:bg-primaryLightest"
-                >
-                  <div className="pr-3">{material.name}</div>
-                  <Stage stage={material.stage} />
-                  <ChevronRightIcon className="opacity-60 ml-3" />
-                </a>
-              </Link>
-            ))}
-          </div>
+            {area.name}
+          </Chip>
         ))}
       </div>
-    </>
+      <div className="font-bold px-3 pb-3 pt-6">MATERIALS</div>
+
+      {progress[areaIdx].subjects.map((subject) => (
+        <div
+          key={subject.id}
+          className="bg-white mb-6 border md:rounded md:mx-3"
+        >
+          <div className="px-3 my-3 font-bold">{subject.name}</div>
+
+          {subject.materials.map((material) => (
+            <Link
+              href={`/progress/details?childId=${childId}&materialId=${material.id}`}
+            >
+              <a
+                key={material.id}
+                className="flex px-3 py-2 items-center display-block hover:bg-primaryLightest"
+              >
+                <div className="pr-3">{material.name}</div>
+                <Stage stage={material.stage} />
+                <ChevronRightIcon className="opacity-60 ml-3" />
+              </a>
+            </Link>
+          ))}
+        </div>
+      ))}
+    </div>
   )
 }
 
