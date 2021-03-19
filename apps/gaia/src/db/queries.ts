@@ -468,12 +468,14 @@ export const findLessonPlanById = async (planId: string) => {
   }
 }
 
-const Material = type({
-  id: string,
-  name: string,
-  description: string,
-  stage: number,
-})
+const Material = array(
+  type({
+    id: string,
+    name: string,
+    description: nullable(string),
+    stage: string,
+  })
+)
 export const findMaterialDetailsByChildId = async (
   childId: string,
   materialId: string

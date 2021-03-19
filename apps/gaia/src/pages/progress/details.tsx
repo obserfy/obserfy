@@ -1,11 +1,14 @@
 import Link from "next/link"
 import React, { FC } from "react"
+import useGetMaterialDetails from "../../hooks/api/useGetMaterialDetails"
 import { useQueryString } from "../../hooks/useQueryString"
 import BackIcon from "../../icons/arrow-back.svg"
 
 const Details: FC = () => {
   const childId = useQueryString("childId")
   const materialId = useQueryString("materialId")
+
+  const details = useGetMaterialDetails(childId, materialId)
 
   return (
     <div>
