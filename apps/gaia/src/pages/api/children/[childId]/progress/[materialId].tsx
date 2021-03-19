@@ -4,7 +4,7 @@ import {
   protectedApiRoute,
 } from "../../../../../utils/rest"
 
-interface GetMaterialProgressDetailResponse {
+export interface GetMaterialProgressDetailResponse {
   id: string
   name: string
   description: string | null
