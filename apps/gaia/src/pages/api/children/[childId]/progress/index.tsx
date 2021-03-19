@@ -1,5 +1,8 @@
-import { findChildCurriculumProgress } from "../../../../db/queries"
-import { getFirstQueryValue, protectedApiRoute } from "../../../../utils/rest"
+import { findChildCurriculumProgress } from "../../../../../db/queries"
+import {
+  getFirstQueryValue,
+  protectedApiRoute,
+} from "../../../../../utils/rest"
 
 interface Area {
   id: string
