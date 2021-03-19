@@ -7,6 +7,7 @@ import { useQueryString } from "../hooks/useQueryString"
 import usePostImage from "../hooks/api/usePostImage"
 import useGetChild from "../hooks/api/useGetChild"
 import Icon from "../components/Icon/Icon"
+import UploadIcon from "../icons/upload.svg"
 import ImagePreview from "../components/ImagePreview/ImagePreview"
 
 const GalleryPage = () => {
@@ -34,47 +35,14 @@ const GalleryPage = () => {
       <div className="max-w-3xl mx-auto">
         <div className="flex flex-wrap w-full pr-1">
           {childImages.isSuccess && childImages.data?.length === 0 ? (
-            <div className="flex flex-col mx-auto items-center pb-8">
-              <EmptyGalleryIllustration loading={childImages.isLoading} />
-              <label
-                className="flex py-2 px-6 rounded text-onPrimary bg-primary text-sm border shadow-xs"
-                htmlFor="upload-image-small"
-              >
-                <Icon src="/icons/upload.svg" className="mr-3" size={20} />
-                Upload Image
-                <input
-                  id="upload-image-small"
-                  type="file"
-                  accept="image/*"
-                  className="hidden"
-                  onChange={handleImageUpload}
-                />
-              </label>
-            </div>
+            <EmptyState
+              isLoading={childImages.isLoading}
+              onChange={handleImageUpload}
+            />
           ) : (
-            <div className="w-1/3 md:w-1/5 ">
-              <div className="m-3 relative">
-                <div style={{ width: "100%", paddingBottom: "100%" }}>
-                  <label
-                    htmlFor="upload-image"
-                    className="absolute top-0 left-0 flex flex-col items-center justify-center font-bold text-sm border rounded w-full h-full bg-white"
-                  >
-                    <Icon src="/icons/upload.svg" size={20} />
-                    <span>
-                      Upload <span className="hidden md:inline">Image</span>
-                    </span>
-                    <input
-                      id="upload-image"
-                      type="file"
-                      accept="image/*"
-                      className="hidden"
-                      onChange={handleImageUpload}
-                    />
-                  </label>
-                </div>
-              </div>
-            </div>
+            <UploadImageButton onChange={handleImageUpload} />
           )}
+
           {childImages.data?.map((img) => (
             <ImageItems key={img.id} img={img} childId={childId} />
           ))}
@@ -131,6 +99,56 @@ const ImageItems: FC<{ childId: string; img: ChildImage }> = ({
     </>
   )
 }
+
+const UploadImageButton: FC<{
+  onChange: ChangeEventHandler<HTMLInputElement>
+}> = ({ onChange }) => (
+  <div className="w-1/3 md:w-1/5 ">
+    <div className="m-3 relative">
+      <div style={{ width: "100%", paddingBottom: "100%" }}>
+        <label
+          htmlFor="upload-image"
+          className="absolute top-0 left-0 flex flex-col items-center justify-center font-bold text-sm border rounded w-full h-full bg-white"
+        >
+          <Icon src="/icons/upload.svg" size={20} />
+          <span>
+            Upload <span className="hidden md:inline">Image</span>
+          </span>
+          <input
+            id="upload-image"
+            type="file"
+            accept="image/*"
+            className="hidden"
+            onChange={onChange}
+          />
+        </label>
+      </div>
+    </div>
+  </div>
+)
+
+const EmptyState: FC<{
+  isLoading: boolean
+  onChange: ChangeEventHandler<HTMLInputElement>
+}> = ({ isLoading, onChange }) => (
+  <div className="flex flex-col mx-auto items-center pb-8">
+    <EmptyGalleryIllustration loading={isLoading} />
+    <label
+      className="flex py-2 px-6 rounded text-onPrimary bg-primary text-sm border shadow-xs items-center"
+      htmlFor="upload-image-small"
+    >
+      <UploadIcon className="mr-3" />
+      Upload Image
+      <input
+        id="upload-image-small"
+        type="file"
+        accept="image/*"
+        className="hidden"
+        onChange={onChange}
+      />
+    </label>
+  </div>
+)
 
 const EmptyGalleryIllustration: FC<{ loading: boolean }> = ({ loading }) => (
   <div

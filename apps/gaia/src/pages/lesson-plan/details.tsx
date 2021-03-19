@@ -1,20 +1,15 @@
 import Head from "next/head"
 import Link from "next/link"
-import React, { useState } from "react"
+import React from "react"
 import Icon from "../../components/Icon/Icon"
 import Markdown from "../../components/Markdown/Markdown"
 import useGetLessonPlan from "../../hooks/api/useGetlessonPlan"
 import { useQueryString } from "../../hooks/useQueryString"
 import BackIcon from "../../icons/arrow-back.svg"
 
-enum ViewMode {
-  Daily,
-  All,
-}
 const LessonPlanDetails = () => {
   const childId = useQueryString("childId")
   const planId = useQueryString("planId")
-  const [viewMode, setViewMode] = useState(ViewMode.All)
   const lessonPlan = useGetLessonPlan(planId)
 
   return (
@@ -26,16 +21,8 @@ const LessonPlanDetails = () => {
       <div className="w-full border-b flex ">
         <div className="w-full max-w-3xl mx-auto flex px-1 items-center">
           <Link href={`/lesson-plan?childId=${childId}`}>
-            <button
-              onClick={() => setViewMode(ViewMode.Daily)}
-              className="m-1 hover:text-green-700"
-            >
-              <BackIcon
-                className={`
-              w-4 h-4 m-2
-              ${viewMode === ViewMode.Daily ? "text-green-700" : "opacity-80"}
-            `}
-              />
+            <button className="m-1 hover:text-green-700">
+              <BackIcon className="w-4 h-4 m-2" />
             </button>
           </Link>
           <Link href={`/lesson-plan?childId=${childId}`}>
