@@ -10168,7 +10168,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "wait-on",
-        "npm:5.2.1"
+        "npm:5.3.0"
       ],
       [
         "walker",
@@ -31477,7 +31477,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["prettier", "npm:2.2.1"],
             ["swc-loader", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:0.1.12"],
             ["typescript", "patch:typescript@npm%3A4.1.5#builtin<compat/typescript>::version=4.1.5&hash=cc6730"],
-            ["wait-on", "npm:5.2.1"],
+            ["wait-on", "npm:5.3.0"],
             ["webpack", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:4.46.0"]
           ],
           "linkType": "SOFT",
@@ -56716,7 +56716,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["typescript", "patch:typescript@npm%3A4.1.5#builtin<compat/typescript>::version=4.1.5&hash=cc6730"],
             ["url-loader", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:4.1.1"],
             ["use-immer", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.4.2"],
-            ["wait-on", "npm:5.2.1"],
+            ["wait-on", "npm:5.3.0"],
             ["webpack", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:5.19.0"]
           ],
           "linkType": "SOFT",
@@ -56743,10 +56743,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["wait-on", [
-        ["npm:5.2.1", {
-          "packageLocation": "./.yarn/cache/wait-on-npm-5.2.1-6ce237fa41-8ba4902423.zip/node_modules/wait-on/",
+        ["npm:5.3.0", {
+          "packageLocation": "./.yarn/cache/wait-on-npm-5.3.0-06bdbea452-405cad859a.zip/node_modules/wait-on/",
           "packageDependencies": [
-            ["wait-on", "npm:5.2.1"],
+            ["wait-on", "npm:5.3.0"],
             ["axios", "npm:0.21.1"],
             ["joi", "npm:17.4.0"],
             ["lodash", "npm:4.17.21"],

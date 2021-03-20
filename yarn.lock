@@ -13632,7 +13632,7 @@ __metadata:
     prettier: 2.2.1
     swc-loader: 0.1.12
     typescript: 4.2.3
-    wait-on: 5.2.1
+    wait-on: 5.3.0
     webpack: 4.46.0
   languageName: unknown
   linkType: soft
@@ -33895,7 +33895,7 @@ resolve@1.1.7:
     typescript: 4.2.3
     url-loader: 4.1.1
     use-immer: 0.4.2
-    wait-on: 5.2.1
+    wait-on: 5.3.0
     webpack: 5.19.0
   languageName: unknown
   linkType: soft
@@ -33918,18 +33918,18 @@ resolve@1.1.7:
   languageName: node
   linkType: hard
 
-"wait-on@npm:5.2.1":
-  version: 5.2.1
-  resolution: "wait-on@npm:5.2.1"
+"wait-on@npm:5.3.0":
+  version: 5.3.0
+  resolution: "wait-on@npm:5.3.0"
   dependencies:
     axios: ^0.21.1
     joi: ^17.3.0
-    lodash: ^4.17.20
+    lodash: ^4.17.21
     minimist: ^1.2.5
     rxjs: ^6.6.3
   bin:
     wait-on: bin/wait-on
-  checksum: 8ba490242333da5bf88d6836d1b5d85e6f784af6cb876546c6c0a0e1672aa2a6d3d263e6a2a64106b25d912f574f1a608933769543da1e38e656f5abfbd22712
+  checksum: 405cad859a3ede2b48ebe7a3e39e543adff21333ac3e309b1469bffa71952db0c0920bebabf5d7282e8709bd43c2bab312ed6e764cdae149986b57dc0b263ff9
   languageName: node
   linkType: hard
 
