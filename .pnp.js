@@ -1273,7 +1273,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@sentry/webpack-plugin",
-        "npm:1.14.1"
+        "npm:1.14.2"
       ],
       [
         "@sideway/address",
@@ -20069,10 +20069,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@sentry/webpack-plugin", [
-        ["npm:1.14.1", {
-          "packageLocation": "./.yarn/cache/@sentry-webpack-plugin-npm-1.14.1-4f718ae374-b9654125ee.zip/node_modules/@sentry/webpack-plugin/",
+        ["npm:1.14.2", {
+          "packageLocation": "./.yarn/cache/@sentry-webpack-plugin-npm-1.14.2-9af5e901a9-3517da8d40.zip/node_modules/@sentry/webpack-plugin/",
           "packageDependencies": [
-            ["@sentry/webpack-plugin", "npm:1.14.1"],
+            ["@sentry/webpack-plugin", "npm:1.14.2"],
             ["@sentry/cli", "npm:1.63.1"]
           ],
           "linkType": "HARD",
@@ -34873,7 +34873,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@sentry/browser", "npm:6.2.1"],
             ["@sentry/integrations", "npm:6.2.1"],
             ["@sentry/node", "npm:6.2.1"],
-            ["@sentry/webpack-plugin", "npm:1.14.1"],
+            ["@sentry/webpack-plugin", "npm:1.14.2"],
             ["@svgr/webpack", "npm:5.5.0"],
             ["@tailwindcss/jit", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:0.1.1"],
             ["@tailwindcss/typography", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:0.4.0"],
