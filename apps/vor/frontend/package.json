@@ -100,7 +100,7 @@
     "babel-plugin-macros": "3.0.1",
     "babel-plugin-transform-default-import": "1.0.0",
     "babel-preset-gatsby": "1.0.0",
-    "chromatic": "5.6.3",
+    "chromatic": "5.7.0",
     "core-js": "3.9.1",
     "cross-env": "7.0.3",
     "eslint": "7.16.0",
