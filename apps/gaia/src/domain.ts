@@ -40,7 +40,7 @@ export interface Observation {
 }
 
 export const materialStageToString = (stage: number) => {
-  if (stage === -1) {
+  if (stage === 0) {
     return "Presented"
   }
   if (stage === 1) {

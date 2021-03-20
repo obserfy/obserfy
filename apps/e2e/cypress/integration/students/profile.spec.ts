@@ -26,7 +26,7 @@ describe("test student profile page", function () {
     cy.contains(studentName).click()
     cy.contains("Observation").click()
     cy.contains("Short Description").type(shortDesc)
-    cy.get("[aria-label=Details]").type(details)
+    cy.get("[data-cy=markdown-editor]").type(details)
     cy.contains("Save").click()
     cy.get("[data-cy=observation-short-desc]")
       .contains(shortDesc)
@@ -88,7 +88,7 @@ describe("test student profile page", function () {
     cy.url().should("contains", "students")
     cy.contains(shortDesc).click()
     cy.get("[data-cy=edit-details]").click()
-    cy.contains("label", "Details").type("Some additional text")
+    cy.get("[data-cy=markdown-editor]").type("Some additional text")
     cy.contains("Save").click()
     cy.contains("Some additional text").should("be.visible")
 

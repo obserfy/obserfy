@@ -11,6 +11,8 @@ declare module "*.svg" {
   export default string
 }
 
-declare module "*.css" {
-  export default string
+
+declare module '*.css' {
+  const content: {[className: string]: string};
+  export = content;
 }

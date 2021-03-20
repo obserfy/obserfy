@@ -9,6 +9,20 @@ module.exports = {
         primary: "#00e399",
         onPrimary: "#000",
         overlay: "rgba(0, 0, 0, 0.8)",
+
+        primaryLightest: "rgba(0,227,153,0.05)",
+        onPrimaryLightest: "text",
+
+        assessments: {
+          presented: "#dd2c00",
+          onPresented: "white",
+
+          practiced: "#ffab00",
+          onPracticed: "black",
+
+          mastered: "#00c853",
+          onMastered: "black",
+        },
       },
     },
     fontFamily: {
@@ -16,10 +30,8 @@ module.exports = {
       body: ["Open Sans"],
     },
   },
-  variants: {
-    boxShadow: ["responsive", "responsive", "hover", "focus", "focus-within"],
-  },
-  plugins: [
-    require("@tailwindcss/typography"),
-  ],
+  // variants: {
+  //   boxShadow: ["responsive", "responsive", "hover", "focus", "focus-within"],
+  // },
+  plugins: [require("@tailwindcss/typography")],
 }

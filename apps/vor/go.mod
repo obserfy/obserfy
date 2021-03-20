@@ -6,8 +6,9 @@ require (
 	github.com/benbjohnson/clock v1.1.0
 	github.com/brianvoe/gofakeit/v4 v4.3.0
 	github.com/getsentry/sentry-go v0.10.0
-	github.com/go-chi/chi v4.1.2+incompatible
-	github.com/go-pg/pg/v10 v10.7.7
+	github.com/go-chi/chi v1.5.4
+	github.com/go-chi/chi/v5 v5.0.0
+	github.com/go-pg/pg/v10 v10.8.0
 	github.com/go-playground/validator/v10 v10.4.1
 	github.com/gocarina/gocsv v0.0.0-20201208093247-67c824bc04d4
 	github.com/google/uuid v1.2.0
@@ -16,7 +17,7 @@ require (
 	github.com/minio/minio-go/v6 v6.0.57
 	github.com/muxinc/mux-go v0.11.0
 	github.com/pkg/errors v0.9.1
-	github.com/signintech/gopdf v0.9.13
+	github.com/signintech/gopdf v0.9.14
 	github.com/stretchr/testify v1.7.0
 	go.uber.org/zap v1.16.0
 	golang.org/x/crypto v0.0.0-20210220033148-5ea612d1eb83
