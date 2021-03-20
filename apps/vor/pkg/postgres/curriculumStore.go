@@ -11,6 +11,14 @@ type CurriculumStore struct {
 	*pg.DB
 }
 
+func (s CurriculumStore) DeleteMaterial(id string) error {
+	material := Material{Id: id}
+	if _, err := s.Model(&material).WherePK().Delete(); err != nil {
+		return richErrors.Wrap(err, "failed to delete material")
+	}
+	return nil
+}
+
 func (s CurriculumStore) UpdateSubject(id string, name *string, order *int, description *string, areaId *uuid.UUID) (*domain.Subject, error) {
 
 	subject := Subject{Id: id}
