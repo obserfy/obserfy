@@ -25,4 +25,5 @@ type Store interface {
 	CheckMaterialPermission(materialId string, userId string) (bool, error)
 	UpdateCurriculum(curriculumId string, name *string, description *string) (*domain.Curriculum, error)
 	UpdateSubject(id string, name *string, order *int, description *string, areaId *uuid.UUID) (*domain.Subject, error)
+	DeleteMaterial(id string) error
 }

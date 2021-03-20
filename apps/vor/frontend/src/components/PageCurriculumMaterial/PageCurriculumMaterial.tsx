@@ -1,6 +1,7 @@
 import { t, Trans } from "@lingui/macro"
 import React, { FC, useState } from "react"
 import { Box, Button, Card, ThemeUIStyleObject } from "theme-ui"
+import useDeleteMaterial from "../../hooks/api/curriculum/useDeleteMaterial"
 import useGetMaterial from "../../hooks/api/curriculum/useGetMaterial"
 import usePatchMaterial from "../../hooks/api/curriculum/usePatchMaterial"
 import { useGetArea } from "../../hooks/api/useGetArea"
@@ -18,8 +19,10 @@ import { Dialog } from "../Dialog/Dialog"
 import DialogHeader from "../DialogHeader/DialogHeader"
 import Icon from "../Icon/Icon"
 import Input from "../Input/Input"
+import { navigate } from "../Link/Link"
 import MultilineDataBox from "../MultilineDataBox/MultilineDataBox"
 import TopBar, { breadCrumb } from "../TopBar/TopBar"
+import Typography from "../Typography/Typography"
 import DescriptionEditor from "./DescriptionEditor"
 
 export interface PageCurriculumMaterialProps {
@@ -38,6 +41,7 @@ const PageCurriculumMaterial: FC<PageCurriculumMaterialProps> = ({
   const material = useGetMaterial(materialId)
 
   const descriptionEditor = useVisibilityState()
+  const deleteDialog = useVisibilityState()
 
   return (
     <Box mx="auto" sx={{ maxWidth: "maxWidth.lg", width: "100%" }}>
@@ -88,12 +92,61 @@ const PageCurriculumMaterial: FC<PageCurriculumMaterialProps> = ({
           ml="auto"
           mt={3}
           mr={3}
+          onClick={deleteDialog.show}
         >
           <Icon as={DeleteIcon} mr={2} fill="danger" />
           <Trans>Delete material</Trans>
         </Button>
       </Box>
+
+      {deleteDialog.visible && (
+        <DeleteMaterialDialog
+          materialId={materialId}
+          name={material.data?.name}
+          onDismiss={deleteDialog.hide}
+          onDeleted={() => {
+            navigate(CURRICULUM_SUBJECT_URL(areaId, subjectId))
+          }}
+        />
+      )}
     </Box>
+  )
+}
+
+const DeleteMaterialDialog: FC<{
+  materialId: string
+  name?: string
+  onDismiss: () => void
+  onDeleted: () => void
+}> = ({ materialId, onDismiss, name = "" }) => {
+  const deleteMaterial = useDeleteMaterial(materialId)
+
+  const handleDelete = () => {
+    try {
+      deleteMaterial.mutate()
+      onDismiss()
+    } catch (e) {
+      Sentry.captureException(e)
+    }
+  }
+
+  return (
+    <Dialog>
+      <DialogHeader
+        title={t`Delete Material`}
+        onCancel={onDismiss}
+        onAccept={handleDelete}
+        onAcceptText={t`Delete`}
+      />
+      <Box p={3} sx={{ backgroundColor: "background" }}>
+        <Typography.Body>
+          <Trans>
+            This will permanently delete ${name} and data related to it. Are you
+            sure?
+          </Trans>
+        </Typography.Body>
+      </Box>
+    </Dialog>
   )
 }
 
