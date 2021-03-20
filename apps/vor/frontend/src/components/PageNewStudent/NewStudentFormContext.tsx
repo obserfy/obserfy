@@ -19,9 +19,11 @@ export const newStudentFormDefaultState = {
   name: "",
 }
 
+const defaultSetState: Updater<typeof newStudentFormDefaultState> = () => {}
+
 const NewStudentFormContext = createContext({
   state: newStudentFormDefaultState,
-  setState: (() => {}) as Updater<typeof newStudentFormDefaultState>,
+  setState: defaultSetState,
 })
 
 export const NewStudentFormProvider: FC = ({ children }) => {
