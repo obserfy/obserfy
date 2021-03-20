@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.16.3](https://github.com/obserfy/obserfy/compare/v1.16.2...v1.16.3) (2021-03-20)
+
+
+### Bug Fixes
+
+* back button breaks on empty redirects [#1861](https://github.com/obserfy/obserfy/issues/1861) ([bdea838](https://github.com/obserfy/obserfy/commit/bdea838088befb757fcb21e87c92725052701fdd))
+* broken yarn install due to incompatibility with ts ^4.2.0 ([fd4d324](https://github.com/obserfy/obserfy/commit/fd4d32498de7618a12891ac51d95644e7c03b47b))
+* gaia student progress doesn't follow proper ordering and doesn't show presented states. ([87645b2](https://github.com/obserfy/obserfy/commit/87645b26aa4a1ec1ff2b1c60d664a60c441b0a80))
+
 ### [1.16.2](https://github.com/obserfy/obserfy/compare/v1.16.1...v1.16.2) (2021-03-04)
 
 ### [1.16.1](https://github.com/obserfy/obserfy/compare/v1.16.0...v1.16.1) (2021-02-27)
