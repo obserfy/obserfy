@@ -1,5 +1,5 @@
 import React, { ButtonHTMLAttributes, DetailedHTMLProps, FC } from "react"
-import styles from "./Button.module.css"
+import * as styles from "./Button.module.css"
 
 interface Props
   extends DetailedHTMLProps<

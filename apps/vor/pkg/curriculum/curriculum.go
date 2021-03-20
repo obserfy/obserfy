@@ -43,11 +43,28 @@ func NewRouter(server rest.Server, store Store) *chi.Mux {
 
 	r.Route("/materials/{materialId}", func(r chi.Router) {
 		r.Use(materialAuthMiddleware(server, store))
+		r.Method("DELETE", "/", deleteMaterial(server, store))
 		r.Method("PATCH", "/", patchMaterial(server, store))
 		r.Method("GET", "/", getMaterial(server, store))
 	})
 
 	return r
+}
+
+func deleteMaterial(server rest.Server, store Store) http.Handler {
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		materialId := chi.URLParam(r, "materialId")
+
+		if err := store.DeleteMaterial(materialId); err != nil {
+			return &rest.Error{
+				Code:    http.StatusNotFound,
+				Message: "can't find the given material",
+				Error:   err,
+			}
+		}
+
+		return nil
+	})
 }
 
 func patchSubject(server rest.Server, store Store) http.Handler {

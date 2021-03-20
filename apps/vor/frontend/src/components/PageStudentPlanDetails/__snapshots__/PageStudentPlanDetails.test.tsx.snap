@@ -60,6 +60,8 @@ exports[`PageStudentPlanDetails should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
+  padding-left: 16px;
+  padding-right: 16px;
   padding-bottom: 16px;
   margin-left: auto;
   margin-right: auto;
