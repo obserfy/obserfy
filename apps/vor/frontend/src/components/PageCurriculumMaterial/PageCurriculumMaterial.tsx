@@ -104,6 +104,7 @@ const PageCurriculumMaterial: FC<PageCurriculumMaterialProps> = ({
           materialId={materialId}
           name={material.data?.name}
           onDismiss={deleteDialog.hide}
+          subjectId={subjectId}
           onDeleted={() => {
             navigate(CURRICULUM_SUBJECT_URL(areaId, subjectId))
           }}
@@ -115,16 +116,17 @@ const PageCurriculumMaterial: FC<PageCurriculumMaterialProps> = ({
 
 const DeleteMaterialDialog: FC<{
   materialId: string
+  subjectId: string
   name?: string
   onDismiss: () => void
   onDeleted: () => void
-}> = ({ materialId, onDismiss, name = "" }) => {
-  const deleteMaterial = useDeleteMaterial(materialId)
+}> = ({ onDeleted, materialId, onDismiss, subjectId, name = "" }) => {
+  const deleteMaterial = useDeleteMaterial(materialId, subjectId)
 
   const handleDelete = () => {
     try {
       deleteMaterial.mutate()
-      onDismiss()
+      onDeleted()
     } catch (e) {
       Sentry.captureException(e)
     }
