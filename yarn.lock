@@ -4318,7 +4318,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/cli@npm:^1.58.0":
+"@sentry/cli@npm:^1.63.1":
   version: 1.63.1
   resolution: "@sentry/cli@npm:1.63.1"
   dependencies:
@@ -4455,12 +4455,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/webpack-plugin@npm:1.14.1":
-  version: 1.14.1
-  resolution: "@sentry/webpack-plugin@npm:1.14.1"
+"@sentry/webpack-plugin@npm:1.14.2":
+  version: 1.14.2
+  resolution: "@sentry/webpack-plugin@npm:1.14.2"
   dependencies:
-    "@sentry/cli": ^1.58.0
-  checksum: b9654125ee58ea7fea29b557394af1157fa27a7e05e7032b704c12e1a4ebc147d86b3baa47fe4860155c7d87d72c442723cebb4e98caf1e5e34c77ff9d897bee
+    "@sentry/cli": ^1.63.1
+  checksum: 3517da8d40d0c0eba1e7ae1bf5f1500cf5944b29ed3bbd76833dd648c44a6789a0fd0d642943b8d00d1a06f5f5d3bb0334dcf7b912fc0f3f70f2aeb855684ca7
   languageName: node
   linkType: hard
 
@@ -16267,7 +16267,7 @@ fsevents@^1.2.7:
     "@sentry/browser": 6.2.1
     "@sentry/integrations": 6.2.1
     "@sentry/node": 6.2.1
-    "@sentry/webpack-plugin": 1.14.1
+    "@sentry/webpack-plugin": 1.14.2
     "@svgr/webpack": 5.5.0
     "@tailwindcss/jit": 0.1.1
     "@tailwindcss/typography": 0.4.0
