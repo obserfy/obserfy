@@ -13616,7 +13616,7 @@ __metadata:
     pnp-webpack-plugin: 1.6.4
     prettier: 2.2.1
     swc-loader: 0.1.12
-    typescript: 4.1.5
+    typescript: 4.2.3
     wait-on: 5.2.1
     webpack: 4.46.0
   languageName: unknown
@@ -15984,7 +15984,7 @@ __metadata:
     stylelint-config-prettier: 8.0.2
     stylelint-config-standard: 20.0.0
     tailwindcss: 2.0.3
-    typescript: 4.1.5
+    typescript: 4.2.3
     typescript-plugin-css-modules: 3.2.0
   languageName: unknown
   linkType: soft
@@ -16321,7 +16321,7 @@ fsevents@^1.2.7:
     stylelint-config-standard: 20.0.0
     tailwindcss: 2.0.3
     ts-is-present: 1.2.1
-    typescript: 4.1.5
+    typescript: 4.2.3
     uuid: 8.3.2
   languageName: unknown
   linkType: soft
@@ -33877,7 +33877,7 @@ resolve@1.1.7:
     storybook-addon-i18n: 5.1.13
     tailwindcss: 2.0.3
     theme-ui: 0.6.0-canary.c5a716a.0
-    typescript: 4.1.5
+    typescript: 4.2.3
     url-loader: 4.1.1
     use-immer: 0.4.2
     wait-on: 5.2.1
