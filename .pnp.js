@@ -34918,7 +34918,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["minio", "npm:7.0.18"],
             ["monocle-ts", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.3.9"],
             ["mux-embed", "npm:3.5.0"],
-            ["nanoid", "npm:3.1.20"],
+            ["nanoid", "npm:3.1.22"],
             ["newtype-ts", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.3.4"],
             ["next", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:10.0.8"],
             ["next-compose-plugins", "npm:2.2.1"],
@@ -44210,6 +44210,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/nanoid-npm-3.1.20-3b284e9eb5-4788d36edc.zip/node_modules/nanoid/",
           "packageDependencies": [
             ["nanoid", "npm:3.1.20"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:3.1.22", {
+          "packageLocation": "./.yarn/cache/nanoid-npm-3.1.22-e0ab44a9c0-6a38c79981.zip/node_modules/nanoid/",
+          "packageDependencies": [
+            ["nanoid", "npm:3.1.22"]
           ],
           "linkType": "HARD",
         }]
@@ -56688,7 +56695,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["make-plural", "npm:6.2.2"],
             ["mitt", "npm:2.1.0"],
             ["mux-embed", "npm:3.5.0"],
-            ["nanoid", "npm:3.1.20"],
+            ["nanoid", "npm:3.1.22"],
             ["npm-run-all", "npm:4.1.5"],
             ["platform", "npm:1.3.6"],
             ["postcss", "npm:8.2.7"],
