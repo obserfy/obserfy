@@ -3011,10 +3011,10 @@ type SitePluginSortInput = {
   readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
 };
 
-type homechrisintSrcobserfyYarndollardollarvirtualgatsbyPluginThemeUiVirtualB1851Fec1C0CachegatsbyPluginThemeUiNpm060CanaryC5A716A0Cc09Cb8Ef987530F7743ZipnodeModulesgatsbyPluginThemeUisrchooksconfigOptionsJs2744905544QueryVariables = Exact<{ [key: string]: never; }>;
+type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type homechrisintSrcobserfyYarndollardollarvirtualgatsbyPluginThemeUiVirtualB1851Fec1C0CachegatsbyPluginThemeUiNpm060CanaryC5A716A0Cc09Cb8Ef987530F7743ZipnodeModulesgatsbyPluginThemeUisrchooksconfigOptionsJs2744905544Query = { readonly themeUiConfig: Maybe<Pick<ThemeUiConfig, 'preset' | 'prismPreset'>> };
+type Unnamed_1_Query = { readonly themeUiConfig: Maybe<Pick<ThemeUiConfig, 'preset' | 'prismPreset'>> };
 
 type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
@@ -3042,15 +3042,10 @@ type GatsbyImageSharpFluid_noBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio
 
 type GatsbyImageSharpFluid_withWebp_noBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
 
-type homechrisintSrcobserfyappsvorfrontendsrccomponentsseoTsx63159454QueryVariables = Exact<{ [key: string]: never; }>;
+type Unnamed_2_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type homechrisintSrcobserfyappsvorfrontendsrccomponentsseoTsx63159454Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
-
-type LocalizationSEOQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type LocalizationSEOQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'siteUrl'>> }> };
+type Unnamed_2_Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
 
 type LocalizationConfigQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -3059,6 +3054,11 @@ type LocalizationConfigQueryQuery = { readonly themeI18N: Maybe<(
     Pick<ThemeI18n, 'defaultLang'>
     & { readonly config: Maybe<ReadonlyArray<Maybe<Pick<Locale, 'code' | 'hrefLang' | 'dateFormat' | 'langDir' | 'localName' | 'name'>>>> }
   )> };
+
+type LocalizationSEOQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type LocalizationSEOQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'siteUrl'>> }> };
 
 type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
