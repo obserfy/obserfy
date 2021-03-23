@@ -1,4 +1,5 @@
 import { useQuery } from "react-query"
+import { useQueryCache } from "../../useQueryCache"
 import { getApi } from "../fetchApi"
 import { getSchoolId } from "../../schoolIdState"
 
@@ -21,6 +22,12 @@ export interface GetSchoolResponse {
   }
 }
 export const useGetSchool = () => {
-  const fetchSchool = getApi<GetSchoolResponse>(`/schools/${getSchoolId()}`)
-  return useQuery("school", fetchSchool)
+  const schoolId = getSchoolId()
+  const fetchSchool = getApi<GetSchoolResponse>(`/schools/${schoolId}`)
+
+  return useQuery(["school", schoolId], fetchSchool)
+}
+
+export const useGetSchoolCache = (schoolId: string) => {
+  return useQueryCache<GetSchoolResponse>(["school", schoolId])
 }
