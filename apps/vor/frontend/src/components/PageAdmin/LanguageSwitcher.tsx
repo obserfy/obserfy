@@ -17,7 +17,11 @@ const LanguageSwitcher = () => {
 
   return (
     <Flex
-      sx={{ alignItems: "center", cursor: "pointer" }}
+      sx={{
+        alignItems: "center",
+        cursor: "pointer",
+        "&:hover": { backgroundColor: "primaryLightest" },
+      }}
       p={3}
       onClick={switchLanguage}
       data-cy={locale === "en" ? "switch-indonesian" : "switch-english"}
