@@ -16,6 +16,8 @@ import {
   ADMIN_SUBSCRIPTION_URL,
   ADMIN_USERS_URL,
   CLASS_SETTINGS_URL,
+  SCHOOL_PROFILE_URL,
+  USER_PROFILE_URL,
 } from "../../routes"
 import Icon from "../Icon/Icon"
 import { Link } from "../Link/Link"
@@ -23,6 +25,8 @@ import LoadingPlaceholder from "../LoadingPlaceholder/LoadingPlaceholder"
 import Typography from "../Typography/Typography"
 import LanguageSwitcher from "./LanguageSwitcher"
 import ThemeSwitcher from "./ThemeSwitcher"
+import { ReactComponent as BookIcon } from "../../icons/book-open.svg"
+import { ReactComponent as FaceIcon } from "../../icons/face.svg"
 
 export const PageAdmin: FC = () => (
   <Box sx={{ maxWidth: "maxWidth.sm" }} m="auto" pb={5}>
@@ -33,6 +37,20 @@ export const PageAdmin: FC = () => (
       <AdminLink to={CLASS_SETTINGS_URL} text={t`Class`} />
       <AdminLink to={ADMIN_STUDENTS_URL} text={t`All Students`} />
       <AdminLink to={ADMIN_GUARDIAN_URL} text={t`All Guardians`} />
+    </Card>
+
+    <Card variant="responsive" mb={3}>
+      <AdminLink
+        icon={BookIcon}
+        to={SCHOOL_PROFILE_URL}
+        text={t`School Profile`}
+      />
+      <AdminLink
+        icon={FaceIcon}
+        to={USER_PROFILE_URL}
+        text={t`User Profile`}
+        iconFill="text"
+      />
     </Card>
 
     <Card variant="responsive" mb={3}>
