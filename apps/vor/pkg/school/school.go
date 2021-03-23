@@ -28,6 +28,8 @@ func NewRouter(
 	r.Route("/{schoolId}", func(r chi.Router) {
 		r.Use(authorizationMiddleware(server, store))
 		r.Method("GET", "/", getSchool(server, store))
+		r.Method("PATCH", "/", patchSchool(server, store))
+
 		r.Method("GET", "/students", getStudents(server, store))
 		r.Method("POST", "/students", postNewStudent(server, store))
 		r.Method("POST", "/invite-code", refreshInviteCode(server, store))
@@ -63,6 +65,30 @@ func NewRouter(
 		r.Method("POST", "/videos/upload", postCreateVideoUploadLink(server, store, videos))
 	})
 	return r
+}
+
+func patchSchool(server rest.Server, store Store) http.Handler {
+	type requestBody struct {
+		Name *string `json:"name"`
+	}
+	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		schoolId := chi.URLParam(r, "schoolId")
+
+		var body requestBody
+		if err := rest.ParseJson(r.Body, &body); err != nil {
+			return rest.NewParseJsonError(err)
+		}
+
+		if err := store.UpdateSchool(schoolId, body.Name); err != nil {
+			return &rest.Error{
+				Code:    http.StatusInternalServerError,
+				Message: "failed to update school",
+				Error:   err,
+			}
+		}
+
+		return nil
+	})
 }
 
 func inviteUser(server rest.Server, store Store, mail MailService) http.Handler {
