@@ -18,7 +18,11 @@ const ThemeSwitcher: FC = () => {
       p={3}
       onClick={handleThemeChange}
       data-cy={isDark ? "light-switch" : "dark-switch"}
-      sx={{ alignItems: "center", cursor: "pointer" }}
+      sx={{
+        alignItems: "center",
+        cursor: "pointer",
+        "&:hover": { backgroundColor: "primaryLightest" },
+      }}
     >
       <Icon as={isDark ? DarkModeIcon : LightModeIcon} />
 

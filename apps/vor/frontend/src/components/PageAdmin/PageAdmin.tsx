@@ -151,7 +151,10 @@ const AdminLink: FC<{
   text: string
   iconFill?: string
 }> = ({ icon, text, to, iconFill = "transparent" }) => (
-  <Link to={to}>
+  <Link
+    to={to}
+    sx={{ display: "block", "&:hover": { backgroundColor: "primaryLightest" } }}
+  >
     <Flex p={3} sx={{ alignItems: "center" }}>
       {icon && <Icon as={icon} mr={3} fill={iconFill} color="text" size={20} />}
       <Typography.Body>
