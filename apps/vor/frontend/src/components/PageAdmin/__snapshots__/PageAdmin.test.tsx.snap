@@ -57,28 +57,30 @@ exports[`PageAdmin should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   background-color: var(--theme-ui-colors-surface, #fff);
-  border-radius: 6px;
+  border-radius: 0;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px,rgba(0, 0, 0, 0.27) 0px 2px 4px -2px;
-  margin-bottom: 16px;
   margin-left: 0;
   margin-right: 0;
-  border-radius: 0;
-}
-
-@media screen and (min-width: 40em) {
-  .emotion-3 {
-    margin-left: 16px;
-    margin-right: 16px;
-  }
+  margin-bottom: 16px;
 }
 
 @media screen and (min-width: 40em) {
   .emotion-3 {
     border-radius: 6px;
+    margin-left: 16px;
+    margin-right: 16px;
   }
 }
 
 .emotion-4 {
+  display: block;
+}
+
+.emotion-4:hover {
+  background-color: var(--theme-ui-colors-primaryLightest, rgba(0,227,153,0.05));
+}
+
+.emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -87,9 +89,13 @@ exports[`PageAdmin should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
-.emotion-5 {
+.emotion-6 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -99,7 +105,7 @@ exports[`PageAdmin should render correctly 1`] = `
   line-height: 1.5;
 }
 
-.emotion-6 {
+.emotion-7 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -114,37 +120,7 @@ exports[`PageAdmin should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-17 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  padding: 16px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.emotion-18 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  max-width: 100%;
-  height: auto;
-  margin-right: 16px;
-  fill: var(--theme-ui-colors-text, #37383c);
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  width: 20px;
-  height: 20px;
-}
-
-.emotion-22 {
+.emotion-23 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -160,7 +136,23 @@ exports[`PageAdmin should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-31 {
+.emotion-28 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  margin-right: 16px;
+  color: var(--theme-ui-colors-text, #37383c);
+  fill: var(--theme-ui-colors-text, #37383c);
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.emotion-49 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -176,7 +168,11 @@ exports[`PageAdmin should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-32 {
+.emotion-49:hover {
+  background-color: var(--theme-ui-colors-primaryLightest, rgba(0,227,153,0.05));
+}
+
+.emotion-50 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -190,14 +186,14 @@ exports[`PageAdmin should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-33 {
+.emotion-51 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   margin-left: 16px;
 }
 
-.emotion-34 {
+.emotion-52 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -209,7 +205,7 @@ exports[`PageAdmin should render correctly 1`] = `
   font-size: 12px;
 }
 
-.emotion-38 {
+.emotion-56 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -223,42 +219,45 @@ exports[`PageAdmin should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-43 {
+.emotion-61 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  margin-top: 8px;
-  padding-left: 16px;
-  padding-right: 16px;
-  margin-left: 0;
-  margin-right: 0;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  margin-left: 16px;
+  margin-right: 16px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-43 {
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: 16px;
-    margin-right: 16px;
-  }
-}
-
-@media screen and (min-width: 40em) {
-  .emotion-43 {
+  .emotion-61 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
   }
 }
 
-.emotion-44 {
+.emotion-62 {
+  margin-left: auto;
+  display: block;
+  width: 100%;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+@media screen and (min-width: 40em) {
+  .emotion-62 {
+    width: auto;
+  }
+}
+
+.emotion-63 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -319,40 +318,36 @@ exports[`PageAdmin should render correctly 1`] = `
   border-style: solid;
   border-width: 1px;
   line-height: 1;
-  margin-left: auto;
   margin-bottom: 16px;
   color: var(--theme-ui-colors-warning, #ff6d00);
   width: 100%;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
 }
 
-.emotion-44:disabled {
+.emotion-63:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-44:hover,
-.emotion-44:focus {
+.emotion-63:hover,
+.emotion-63:focus {
   background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
   border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-44:hover:disabled,
-.emotion-44:focus:disabled {
+.emotion-63:hover:disabled,
+.emotion-63:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-44 {
+  .emotion-63 {
     width: auto;
   }
 }
 
-.emotion-45 {
+.emotion-64 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -418,26 +413,26 @@ exports[`PageAdmin should render correctly 1`] = `
   color: var(--theme-ui-colors-danger, #d50000);
 }
 
-.emotion-45:disabled {
+.emotion-64:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-45:hover,
-.emotion-45:focus {
+.emotion-64:hover,
+.emotion-64:focus {
   background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
   border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-45:hover:disabled,
-.emotion-45:focus:disabled {
+.emotion-64:hover:disabled,
+.emotion-64:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-45 {
+  .emotion-64 {
     margin-left: 8px;
   }
 }
@@ -456,66 +451,70 @@ exports[`PageAdmin should render correctly 1`] = `
         class="emotion-3"
       >
         <a
+          class="emotion-4"
           href="/dashboard/admin/curriculum"
         >
           <div
-            class="emotion-4"
+            class="emotion-5"
           >
             <p
-              class="emotion-5"
+              class="emotion-6"
             >
               Curriculum
             </p>
             <div
-              class="emotion-6"
+              class="emotion-7"
             />
           </div>
         </a>
         <a
+          class="emotion-4"
           href="/dashboard/admin/class"
         >
           <div
-            class="emotion-4"
+            class="emotion-5"
           >
             <p
-              class="emotion-5"
+              class="emotion-6"
             >
               Class
             </p>
             <div
-              class="emotion-6"
+              class="emotion-7"
             />
           </div>
         </a>
         <a
+          class="emotion-4"
           href="/dashboard/admin/students"
         >
           <div
-            class="emotion-4"
+            class="emotion-5"
           >
             <p
-              class="emotion-5"
+              class="emotion-6"
             >
               All Students
             </p>
             <div
-              class="emotion-6"
+              class="emotion-7"
             />
           </div>
         </a>
         <a
+          class="emotion-4"
           href="/dashboard/admin/guardians"
         >
           <div
-            class="emotion-4"
+            class="emotion-5"
           >
             <p
-              class="emotion-5"
+              class="emotion-6"
             >
               All Guardians
             </p>
             <div
-              class="emotion-6"
+              class="emotion-7"
             />
           </div>
         </a>
@@ -524,40 +523,86 @@ exports[`PageAdmin should render correctly 1`] = `
         class="emotion-3"
       >
         <a
+          class="emotion-4"
+          href="/dashboard/admin/school-profile"
+        >
+          <div
+            class="emotion-5"
+          >
+            <div
+              class="emotion-23"
+            />
+            <p
+              class="emotion-6"
+            >
+              School Profile
+            </p>
+            <div
+              class="emotion-7"
+            />
+          </div>
+        </a>
+        <a
+          class="emotion-4"
+          href="/dashboard/admin/user-profile"
+        >
+          <div
+            class="emotion-5"
+          >
+            <div
+              class="emotion-28"
+            />
+            <p
+              class="emotion-6"
+            >
+              User Profile
+            </p>
+            <div
+              class="emotion-7"
+            />
+          </div>
+        </a>
+      </div>
+      <div
+        class="emotion-3"
+      >
+        <a
+          class="emotion-4"
           href="/dashboard/admin/users"
         >
           <div
-            class="emotion-17"
+            class="emotion-5"
           >
             <div
-              class="emotion-18"
+              class="emotion-28"
             />
             <p
-              class="emotion-5"
+              class="emotion-6"
             >
               Users
             </p>
             <div
-              class="emotion-6"
+              class="emotion-7"
             />
           </div>
         </a>
         <a
+          class="emotion-4"
           href="/dashboard/admin/inviteUser"
         >
           <div
-            class="emotion-17"
+            class="emotion-5"
           >
             <div
-              class="emotion-22"
+              class="emotion-23"
             />
             <p
-              class="emotion-5"
+              class="emotion-6"
             >
               Invite Your Team
             </p>
             <div
-              class="emotion-6"
+              class="emotion-7"
             />
           </div>
         </a>
@@ -566,21 +611,22 @@ exports[`PageAdmin should render correctly 1`] = `
         class="emotion-3"
       >
         <a
+          class="emotion-4"
           href="/dashboard/admin/subscription"
         >
           <div
-            class="emotion-17"
+            class="emotion-5"
           >
             <div
-              class="emotion-22"
+              class="emotion-23"
             />
             <p
-              class="emotion-5"
+              class="emotion-6"
             >
               Plans & Billing
             </p>
             <div
-              class="emotion-6"
+              class="emotion-7"
             />
           </div>
         </a>
@@ -589,66 +635,71 @@ exports[`PageAdmin should render correctly 1`] = `
         class="emotion-3"
       >
         <div
-          class="emotion-31"
+          class="emotion-49"
           data-cy="switch-indonesian"
         >
           <div
-            class="emotion-32"
+            class="emotion-50"
           />
           <div
-            class="emotion-33"
+            class="emotion-51"
           >
             <p
-              class="emotion-34"
+              class="emotion-52"
             >
               Language
             </p>
             <p
-              class="emotion-5"
+              class="emotion-6"
             >
               English
             </p>
           </div>
           <div
-            class="emotion-6"
+            class="emotion-7"
           />
         </div>
         <div
-          class="emotion-31"
+          class="emotion-49"
           data-cy="dark-switch"
         >
           <div
-            class="emotion-38"
+            class="emotion-56"
           />
           <div
-            class="emotion-33"
+            class="emotion-51"
           >
             <p
-              class="emotion-34"
+              class="emotion-52"
             >
               Theme
             </p>
             <p
-              class="emotion-5"
+              class="emotion-6"
             >
               Light
             </p>
           </div>
           <div
-            class="emotion-6"
+            class="emotion-7"
           />
         </div>
       </div>
       <div
-        class="emotion-43"
+        class="emotion-61"
       >
-        <button
-          class="emotion-44"
+        <a
+          class="emotion-62"
+          href="/choose-school"
         >
-          Switch school
-        </button>
+          <button
+            class="emotion-63"
+          >
+            Switch school
+          </button>
+        </a>
         <button
-          class="emotion-45"
+          class="emotion-64"
         >
           Log Out
         </button>
