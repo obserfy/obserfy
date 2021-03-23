@@ -4,6 +4,8 @@ export function setSchoolIdState(id: string): void {
 }
 
 export const SCHOOL_ID_UNDEFINED_PLACEHOLDER = "emptyschoolid"
+
+// TODO: see if this localstorage access causes bottlenecks, its called many times
 export function getSchoolId(): string {
   // required to prevent special things that happens when school
   // id is empty from happening on test and gatsby build.

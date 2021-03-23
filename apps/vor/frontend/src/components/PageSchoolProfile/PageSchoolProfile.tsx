@@ -2,6 +2,8 @@ import { t } from "@lingui/macro"
 import React, { FC, useState } from "react"
 import { Box, Card } from "theme-ui"
 import { useGetSchool } from "../../hooks/api/schools/useGetSchool"
+import usePatchSchool from "../../hooks/api/schools/usePatchSchool"
+import { getSchoolId } from "../../hooks/schoolIdState"
 import useVisibilityState from "../../hooks/useVisibilityState"
 import { ADMIN_URL } from "../../routes"
 import DataBox from "../DataBox/DataBox"
@@ -63,10 +65,15 @@ const EditNameDialog: FC<{ originalValue: string; onDismiss: () => void }> = ({
   onDismiss,
 }) => {
   const [value, setValue] = useState(originalValue)
+  const patchSchool = usePatchSchool(getSchoolId())
 
   const handleSave = () => {
-    // TODO: patch school name when saved
-    onDismiss()
+    try {
+      patchSchool.mutate({ name: value })
+      onDismiss()
+    } catch (e) {
+      Sentry.captureException(e)
+    }
   }
 
   return (
