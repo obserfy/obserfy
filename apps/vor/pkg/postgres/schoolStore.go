@@ -16,6 +16,19 @@ type SchoolStore struct {
 	ImageStorage ImageStorage
 }
 
+func (s SchoolStore) UpdateSchool(schoolId string, name *string) error {
+	updateQuery := PartialUpdateModel{}
+	updateQuery.AddStringColumn("name", name)
+
+	if _, err := s.Model(updateQuery.GetModel()).
+		TableExpr("schools").
+		Where("id = ?", schoolId).
+		Update(); err != nil {
+		return richErrors.Wrap(err, "failed to update name")
+	}
+	return nil
+}
+
 func (s SchoolStore) NewSchool(schoolName, userId string) (*cSchool.School, error) {
 	id := uuid.New()
 	inviteCode := uuid.New()
