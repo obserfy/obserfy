@@ -136,7 +136,7 @@ exports[`PageAdmin should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-28 {
+.emotion-29 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -152,7 +152,7 @@ exports[`PageAdmin should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-49 {
+.emotion-44 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -168,11 +168,11 @@ exports[`PageAdmin should render correctly 1`] = `
   display: flex;
 }
 
-.emotion-49:hover {
+.emotion-44:hover {
   background-color: var(--theme-ui-colors-primaryLightest, rgba(0,227,153,0.05));
 }
 
-.emotion-50 {
+.emotion-45 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -186,14 +186,14 @@ exports[`PageAdmin should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-51 {
+.emotion-46 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   margin-left: 16px;
 }
 
-.emotion-52 {
+.emotion-47 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -205,7 +205,7 @@ exports[`PageAdmin should render correctly 1`] = `
   font-size: 12px;
 }
 
-.emotion-56 {
+.emotion-51 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -219,7 +219,7 @@ exports[`PageAdmin should render correctly 1`] = `
   height: 20px;
 }
 
-.emotion-61 {
+.emotion-56 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -235,14 +235,14 @@ exports[`PageAdmin should render correctly 1`] = `
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-61 {
+  .emotion-56 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
   }
 }
 
-.emotion-62 {
+.emotion-57 {
   margin-left: auto;
   display: block;
   width: 100%;
@@ -252,12 +252,12 @@ exports[`PageAdmin should render correctly 1`] = `
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-62 {
+  .emotion-57 {
     width: auto;
   }
 }
 
-.emotion-63 {
+.emotion-58 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -323,31 +323,31 @@ exports[`PageAdmin should render correctly 1`] = `
   width: 100%;
 }
 
-.emotion-63:disabled {
+.emotion-58:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-63:hover,
-.emotion-63:focus {
+.emotion-58:hover,
+.emotion-58:focus {
   background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
   border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-63:hover:disabled,
-.emotion-63:focus:disabled {
+.emotion-58:hover:disabled,
+.emotion-58:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-63 {
+  .emotion-58 {
     width: auto;
   }
 }
 
-.emotion-64 {
+.emotion-59 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -413,26 +413,26 @@ exports[`PageAdmin should render correctly 1`] = `
   color: var(--theme-ui-colors-danger, #d50000);
 }
 
-.emotion-64:disabled {
+.emotion-59:disabled {
   opacity: 0.38;
   cursor: auto;
 }
 
-.emotion-64:hover,
-.emotion-64:focus {
+.emotion-59:hover,
+.emotion-59:focus {
   background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
   border-color: var(--theme-ui-colors-primary, #00e399);
   outline: none;
 }
 
-.emotion-64:hover:disabled,
-.emotion-64:focus:disabled {
+.emotion-59:hover:disabled,
+.emotion-59:focus:disabled {
   background-color: transparent;
   border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-64 {
+  .emotion-59 {
     margin-left: 8px;
   }
 }
@@ -542,26 +542,6 @@ exports[`PageAdmin should render correctly 1`] = `
             />
           </div>
         </a>
-        <a
-          class="emotion-4"
-          href="/dashboard/admin/user-profile"
-        >
-          <div
-            class="emotion-5"
-          >
-            <div
-              class="emotion-28"
-            />
-            <p
-              class="emotion-6"
-            >
-              User Profile
-            </p>
-            <div
-              class="emotion-7"
-            />
-          </div>
-        </a>
       </div>
       <div
         class="emotion-3"
@@ -574,7 +554,7 @@ exports[`PageAdmin should render correctly 1`] = `
             class="emotion-5"
           >
             <div
-              class="emotion-28"
+              class="emotion-29"
             />
             <p
               class="emotion-6"
@@ -635,17 +615,17 @@ exports[`PageAdmin should render correctly 1`] = `
         class="emotion-3"
       >
         <div
-          class="emotion-49"
+          class="emotion-44"
           data-cy="switch-indonesian"
         >
           <div
-            class="emotion-50"
+            class="emotion-45"
           />
           <div
-            class="emotion-51"
+            class="emotion-46"
           >
             <p
-              class="emotion-52"
+              class="emotion-47"
             >
               Language
             </p>
@@ -660,17 +640,17 @@ exports[`PageAdmin should render correctly 1`] = `
           />
         </div>
         <div
-          class="emotion-49"
+          class="emotion-44"
           data-cy="dark-switch"
         >
           <div
-            class="emotion-56"
+            class="emotion-51"
           />
           <div
-            class="emotion-51"
+            class="emotion-46"
           >
             <p
-              class="emotion-52"
+              class="emotion-47"
             >
               Theme
             </p>
@@ -686,20 +666,20 @@ exports[`PageAdmin should render correctly 1`] = `
         </div>
       </div>
       <div
-        class="emotion-61"
+        class="emotion-56"
       >
         <a
-          class="emotion-62"
+          class="emotion-57"
           href="/choose-school"
         >
           <button
-            class="emotion-63"
+            class="emotion-58"
           >
             Switch school
           </button>
         </a>
         <button
-          class="emotion-64"
+          class="emotion-59"
         >
           Log Out
         </button>
