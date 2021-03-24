@@ -10,7 +10,9 @@ export default {
   },
 } as Meta
 
-const Template: Story<PageSchoolProfileProps> = (args) => <PageSchoolProfile {...args} />
+const Template: Story<PageSchoolProfileProps> = (args) => (
+  <PageSchoolProfile {...args} />
+)
 
 export const Default = Template.bind({})
 Default.args = {}
