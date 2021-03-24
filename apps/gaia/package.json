@@ -55,7 +55,7 @@
     "next-plugin-preact": "3.0.3",
     "next-pwa": "5.0.6",
     "pg": "8.5.1",
-    "pino": "6.11.1",
+    "pino": "6.11.2",
     "pino-pretty": "4.7.1",
     "postcss": "8.2.7",
     "preact": "10.5.12",
