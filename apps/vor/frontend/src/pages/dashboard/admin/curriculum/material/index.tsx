@@ -48,6 +48,7 @@ const Material = () => {
       <Flex>
         <SideBar areaId={areaId} subjectId={subjectId} />
         <PageCurriculumMaterial
+          key={materialId}
           areaId={areaId}
           subjectId={subjectId}
           materialId={materialId}
