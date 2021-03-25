@@ -127,6 +127,7 @@ const NavBarItem: FC<{
       state={{ preserveScroll: true }}
       style={{ outline: "none", WebkitTapHighlightColor: "transparent" }}
       onHover={() => {}}
+      data-cy={`navbar-${title.toLowerCase()}`}
     >
       <Flex
         sx={{

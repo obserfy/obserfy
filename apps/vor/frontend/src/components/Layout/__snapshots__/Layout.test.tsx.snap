@@ -361,6 +361,7 @@ exports[`Layout should render correctly 1`] = `
           class="emotion-3"
         />
         <a
+          data-cy="navbar-students"
           href="/dashboard/students"
           style="outline: none;"
         >
@@ -377,6 +378,7 @@ exports[`Layout should render correctly 1`] = `
           class="emotion-6"
         />
         <a
+          data-cy="navbar-admin"
           href="/dashboard/admin"
           style="outline: none;"
         >
@@ -390,6 +392,7 @@ exports[`Layout should render correctly 1`] = `
           </div>
         </a>
         <a
+          data-cy="navbar-support"
           href="/dashboard/support"
           style="outline: none;"
         >
