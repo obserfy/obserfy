@@ -90,19 +90,6 @@ exports[`PageCurriculumSubject should render correctly 1`] = `
   border-bottom-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
 }
 
-@supports (backdrop-filter: blur(20px)) {
-  .emotion-2 {
-    background-color: var(--theme-ui-colors-surfaceBlurTransparent, rgba(255,255,255,0.9));
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    backdrop-filter: saturate(180%) blur(20px);
-    -webkit-transform: translateZ(0);
-    -moz-transform: translateZ(0);
-    -ms-transform: translateZ(0);
-    transform: translateZ(0);
-    will-change: backdrop-filter;
-  }
-}
-
 .emotion-3 {
   box-sizing: border-box;
   margin: 0;
