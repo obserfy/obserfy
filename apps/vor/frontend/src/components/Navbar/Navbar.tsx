@@ -70,7 +70,7 @@ const Navbar: FC = () => {
         pb={["env(safe-area-inset-bottom)", 0]}
         pl="env(safe-area-inset-left)"
       >
-        <Box mx="auto" my={2} sx={{ display: ["none", "block"] }} mb={3}>
+        <Box mx="auto" my={3} sx={{ display: ["none", "block"] }}>
           <StaticImage
             src="../../images/logo-transparent.png"
             alt="obserfy logo"

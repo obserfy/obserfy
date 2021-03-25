@@ -89,7 +89,7 @@ exports[`Navbar should render correctly 1`] = `
   min-width: 0;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 8px;
+  margin-top: 16px;
   margin-bottom: 16px;
   display: none;
 }
@@ -206,9 +206,66 @@ exports[`Navbar should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  padding-top: 16px;
-  padding-bottom: 16px;
-  width: 100$;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  display: inline-block;
+  text-align: center;
+  line-height: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: inherit;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: white;
+  background-color: var(--theme-ui-colors-primary, #00e399);
+  border: 0;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  background-color: transparent;
+  border-radius: 6px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  white-space: nowrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  touch-action: manipulation;
+  box-shadow: none;
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-style: solid;
+  border-width: 1px;
+  line-height: 1;
+  border: none;
+  padding: 0;
+  border-bottom: 0;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -216,10 +273,28 @@ exports[`Navbar should render correctly 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  width: 56px;
+  height: 56px;
+  border-radius: 99999px;
+}
+
+.emotion-11:disabled {
+  opacity: 0.38;
+  cursor: auto;
+}
+
+.emotion-11:hover,
+.emotion-11:focus {
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
+  border-color: var(--theme-ui-colors-primary, #00e399);
+  outline: none;
+}
+
+@media screen and (min-width: 40em) {
+  .emotion-11 {
+    width: 48px;
+    height: 48px;
+  }
 }
 
 <div>
@@ -277,13 +352,13 @@ exports[`Navbar should render correctly 1`] = `
             />
           </div>
         </a>
-        <div
+        <button
           class="emotion-11"
         >
           <div
             class="emotion-8"
           />
-        </div>
+        </button>
       </div>
     </nav>
   </div>

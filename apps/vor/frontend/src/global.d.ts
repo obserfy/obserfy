@@ -59,6 +59,10 @@ interface Window {
       set: (properties?: Object) => {}
     }
   }
+
+  chatwootSDK: any
+  $chatwoot: any
+  chatwootSettings: any
 }
 
 // TODO: stub gatsby-theme-i18n until proper typing is released.
