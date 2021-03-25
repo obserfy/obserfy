@@ -10,6 +10,6 @@ export const onRenderBody = ({setHeadComponents}) => {
   if (process.env.NODE_ENV === "development") return
 
   setHeadComponents([
-    <script async src="/mixpanel-lite.min.js"/>
+    <script src="/mixpanel-lite.min.js"/>
   ])
 }
