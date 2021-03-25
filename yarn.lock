@@ -19071,6 +19071,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"immer@npm:8.0.4":
+  version: 8.0.4
+  resolution: "immer@npm:8.0.4"
+  checksum: 047d4af1c6d9dbba3ecbcf39aed9fa2f5323f80205c0618085d25a981d061353f4417b53fad95c71bd834eb9aa9ffdc2db53c7aa7726736b80bf1ae5f206eca7
+  languageName: node
+  linkType: hard
+
 "immutable@npm:~3.7.6":
   version: 3.7.6
   resolution: "immutable@npm:3.7.6"
@@ -33866,7 +33873,7 @@ resolve@1.1.7:
     http-proxy-middleware: 1.0.6
     hygen: 6.0.4
     idb-keyval: 5.0.4
-    immer: 8.0.1
+    immer: 8.0.4
     jest: 26.6.3
     jest-date-mock: 1.0.8
     jest-fetch-mock: 3.0.3
