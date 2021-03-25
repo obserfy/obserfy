@@ -330,8 +330,6 @@ type Site implements Node {
     locale: String
   ): Date
   siteMetadata: SiteSiteMetadata
-  port: Int
-  host: String
   flags: SiteFlags
   polyfill: Boolean
   pathPrefix: String
@@ -728,10 +726,6 @@ type SitePluginPluginOptions {
   crossOrigin: String
   include_favicon: Boolean
   cacheDigest: String
-  prodKey: String
-  trackPage: Boolean
-  delayLoad: Boolean
-  delayLoadTime: Int
   prettier: Boolean
   svgo: Boolean
   svgoConfig: SitePluginPluginOptionsSvgoConfig
@@ -743,6 +737,9 @@ type SitePluginPluginOptions {
   localeDir: String
   analyzerPort: Int
   emitSchema: SitePluginPluginOptionsEmitSchema
+  dsn: String
+  release: String
+  tracesSampleRate: Float
   pathCheck: Boolean
   allExtensions: Boolean
   isTSX: Boolean
@@ -794,7 +791,7 @@ type Query {
   allFile(filter: FileFilterInput, sort: FileSortInput, skip: Int, limit: Int): FileConnection!
   directory(sourceInstanceName: StringQueryOperatorInput, absolutePath: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, extension: StringQueryOperatorInput, size: IntQueryOperatorInput, prettySize: StringQueryOperatorInput, modifiedTime: DateQueryOperatorInput, accessTime: DateQueryOperatorInput, changeTime: DateQueryOperatorInput, birthTime: DateQueryOperatorInput, root: StringQueryOperatorInput, dir: StringQueryOperatorInput, base: StringQueryOperatorInput, ext: StringQueryOperatorInput, name: StringQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, dev: IntQueryOperatorInput, mode: IntQueryOperatorInput, nlink: IntQueryOperatorInput, uid: IntQueryOperatorInput, gid: IntQueryOperatorInput, rdev: IntQueryOperatorInput, ino: FloatQueryOperatorInput, atimeMs: FloatQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, atime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, ctime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, blksize: IntQueryOperatorInput, blocks: IntQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): Directory
   allDirectory(filter: DirectoryFilterInput, sort: DirectorySortInput, skip: Int, limit: Int): DirectoryConnection!
-  site(buildTime: DateQueryOperatorInput, siteMetadata: SiteSiteMetadataFilterInput, port: IntQueryOperatorInput, host: StringQueryOperatorInput, flags: SiteFlagsFilterInput, polyfill: BooleanQueryOperatorInput, pathPrefix: StringQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): Site
+  site(buildTime: DateQueryOperatorInput, siteMetadata: SiteSiteMetadataFilterInput, flags: SiteFlagsFilterInput, polyfill: BooleanQueryOperatorInput, pathPrefix: StringQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): Site
   allSite(filter: SiteFilterInput, sort: SiteSortInput, skip: Int, limit: Int): SiteConnection!
   sitePage(path: StringQueryOperatorInput, component: StringQueryOperatorInput, internalComponentName: StringQueryOperatorInput, componentChunkName: StringQueryOperatorInput, matchPath: StringQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, isCreatedByStatefulCreatePages: BooleanQueryOperatorInput, context: SitePageContextFilterInput, pluginCreator: SitePluginFilterInput, pluginCreatorId: StringQueryOperatorInput, componentPath: StringQueryOperatorInput): SitePage
   allSitePage(filter: SitePageFilterInput, sort: SitePageSortInput, skip: Int, limit: Int): SitePageConnection!
@@ -1525,8 +1522,6 @@ enum SiteFieldsEnum {
   siteMetadata___description
   siteMetadata___author
   siteMetadata___siteUrl
-  port
-  host
   flags___PRESERVE_WEBPACK_CACHE
   flags___DEV_SSR
   flags___FAST_DEV
@@ -1632,8 +1627,6 @@ type SiteGroupConnection {
 input SiteFilterInput {
   buildTime: DateQueryOperatorInput
   siteMetadata: SiteSiteMetadataFilterInput
-  port: IntQueryOperatorInput
-  host: StringQueryOperatorInput
   flags: SiteFlagsFilterInput
   polyfill: BooleanQueryOperatorInput
   pathPrefix: StringQueryOperatorInput
@@ -1692,10 +1685,6 @@ input SitePluginPluginOptionsFilterInput {
   crossOrigin: StringQueryOperatorInput
   include_favicon: BooleanQueryOperatorInput
   cacheDigest: StringQueryOperatorInput
-  prodKey: StringQueryOperatorInput
-  trackPage: BooleanQueryOperatorInput
-  delayLoad: BooleanQueryOperatorInput
-  delayLoadTime: IntQueryOperatorInput
   prettier: BooleanQueryOperatorInput
   svgo: BooleanQueryOperatorInput
   svgoConfig: SitePluginPluginOptionsSvgoConfigFilterInput
@@ -1707,6 +1696,9 @@ input SitePluginPluginOptionsFilterInput {
   localeDir: StringQueryOperatorInput
   analyzerPort: IntQueryOperatorInput
   emitSchema: SitePluginPluginOptionsEmitSchemaFilterInput
+  dsn: StringQueryOperatorInput
+  release: StringQueryOperatorInput
+  tracesSampleRate: FloatQueryOperatorInput
   pathCheck: BooleanQueryOperatorInput
   allExtensions: BooleanQueryOperatorInput
   isTSX: BooleanQueryOperatorInput
@@ -1938,10 +1930,6 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___crossOrigin
   pluginCreator___pluginOptions___include_favicon
   pluginCreator___pluginOptions___cacheDigest
-  pluginCreator___pluginOptions___prodKey
-  pluginCreator___pluginOptions___trackPage
-  pluginCreator___pluginOptions___delayLoad
-  pluginCreator___pluginOptions___delayLoadTime
   pluginCreator___pluginOptions___prettier
   pluginCreator___pluginOptions___svgo
   pluginCreator___pluginOptions___svgoConfig___removeViewBox
@@ -1954,6 +1942,9 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___localeDir
   pluginCreator___pluginOptions___analyzerPort
   pluginCreator___pluginOptions___emitSchema___src___generated___gatsby_schema_graphql
+  pluginCreator___pluginOptions___dsn
+  pluginCreator___pluginOptions___release
+  pluginCreator___pluginOptions___tracesSampleRate
   pluginCreator___pluginOptions___pathCheck
   pluginCreator___pluginOptions___allExtensions
   pluginCreator___pluginOptions___isTSX
@@ -2692,10 +2683,6 @@ enum SitePluginFieldsEnum {
   pluginOptions___crossOrigin
   pluginOptions___include_favicon
   pluginOptions___cacheDigest
-  pluginOptions___prodKey
-  pluginOptions___trackPage
-  pluginOptions___delayLoad
-  pluginOptions___delayLoadTime
   pluginOptions___prettier
   pluginOptions___svgo
   pluginOptions___svgoConfig___removeViewBox
@@ -2708,6 +2695,9 @@ enum SitePluginFieldsEnum {
   pluginOptions___localeDir
   pluginOptions___analyzerPort
   pluginOptions___emitSchema___src___generated___gatsby_schema_graphql
+  pluginOptions___dsn
+  pluginOptions___release
+  pluginOptions___tracesSampleRate
   pluginOptions___pathCheck
   pluginOptions___allExtensions
   pluginOptions___isTSX
