@@ -41,7 +41,6 @@
     "gatsby-plugin-react-helmet": "4.0.0",
     "gatsby-plugin-remove-serviceworker": "1.0.0",
     "gatsby-plugin-remove-trailing-slashes": "3.0.0",
-    "gatsby-plugin-segment-js": "3.6.0",
     "gatsby-plugin-sharp": "3.0.0",
     "gatsby-plugin-svgr": "v3.0.0-beta.0",
     "gatsby-plugin-theme-ui": "0.6.0-canary.c5a716a.0",
