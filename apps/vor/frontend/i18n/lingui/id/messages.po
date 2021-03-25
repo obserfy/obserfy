@@ -95,7 +95,7 @@ msgstr ""
 msgid "Address"
 msgstr "Alamat"
 
-#: src/components/Navbar/Navbar.tsx:69
+#: src/components/Navbar/Navbar.tsx:66
 #: src/components/PageListOfGuardians/PageListOfGuardians.tsx:21
 #: src/components/PagePaymentSuccess/PagePaymentSuccess.tsx:14
 #: src/components/PageSubscription/PageSubscription.tsx:29
@@ -1184,7 +1184,7 @@ msgstr "Mulai Langganan"
 msgid "Sunday"
 msgstr "Minggu"
 
-#: src/components/Navbar/Navbar.tsx:70
+#: src/components/Navbar/Navbar.tsx:67
 msgid "Support"
 msgstr "Bantuan"
 

@@ -90,7 +90,7 @@ msgstr "Add new subject"
 msgid "Address"
 msgstr "Address"
 
-#: src/components/Navbar/Navbar.tsx:69
+#: src/components/Navbar/Navbar.tsx:66
 #: src/components/PageListOfGuardians/PageListOfGuardians.tsx:21
 #: src/components/PagePaymentSuccess/PagePaymentSuccess.tsx:14
 #: src/components/PageSubscription/PageSubscription.tsx:29
@@ -1187,7 +1187,7 @@ msgstr "Subscribed"
 msgid "Sunday"
 msgstr "Sunday"
 
-#: src/components/Navbar/Navbar.tsx:70
+#: src/components/Navbar/Navbar.tsx:67
 msgid "Support"
 msgstr "Support"
 
