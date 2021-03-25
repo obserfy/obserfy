@@ -118,3 +118,6 @@ export const CURRICULUM_MATERIAL_URL = (
   materialId: string
 ) =>
   `/dashboard/admin/curriculum/material?areaId=${areaId}&subjectId=${subjectId}&materialId=${materialId}`
+
+export const SCHOOL_PROFILE_URL = `/dashboard/admin/school-profile`
+export const USER_PROFILE_URL = `/dashboard/admin/user-profile`

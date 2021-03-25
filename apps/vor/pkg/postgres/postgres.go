@@ -140,7 +140,7 @@ type StudentMaterialProgress struct {
 	Material   Material `pg:"rel:has-one"`
 	StudentId  string   `pg:",pk,type:uuid,on_delete:CASCADE"`
 	Student    Student  `pg:"rel:has-one"`
-	Stage      int      // TODO: should be renamed to assessment
+	Stage      int      `pg:",notnull,use_zero"` // TODO: should be renamed to assessment
 	UpdatedAt  time.Time
 }
 
