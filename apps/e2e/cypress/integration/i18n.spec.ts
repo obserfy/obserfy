@@ -15,7 +15,7 @@ describe("test i18n", function () {
       "equals",
       `${Cypress.env("VOR_HOST")}/id/dashboard/students`
     )
-    cy.contains("Admin").click()
+    cy.get("[data-cy=navbar-admin]").click()
 
     cy.contains("Indonesian").should("be.visible")
     cy.get("[data-cy=switch-english]").click()
