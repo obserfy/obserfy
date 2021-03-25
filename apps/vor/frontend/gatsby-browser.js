@@ -1,6 +1,5 @@
 // import mixpanel from "mixpanel-lite"
 import { redirectToPreferredLang } from "./src/i18n"
-import { detectMobile, loadChatwoot } from "./src/chatwoot"
 import { track } from "./src/analytics"
 
 export const onServiceWorkerUpdateReady = () => {
