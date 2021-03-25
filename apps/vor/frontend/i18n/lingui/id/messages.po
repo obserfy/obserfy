@@ -95,7 +95,7 @@ msgstr ""
 msgid "Address"
 msgstr "Alamat"
 
-#: src/components/Navbar/Navbar.tsx:69
+#: src/components/Navbar/Navbar.tsx:66
 #: src/components/PageListOfGuardians/PageListOfGuardians.tsx:21
 #: src/components/PagePaymentSuccess/PagePaymentSuccess.tsx:14
 #: src/components/PageSubscription/PageSubscription.tsx:29
@@ -103,14 +103,14 @@ msgstr "Alamat"
 msgid "Admin"
 msgstr "Admin"
 
-#: src/components/PageAdmin/PageAdmin.tsx:24
+#: src/components/PageAdmin/PageAdmin.tsx:25
 #: src/components/PageListOfGuardians/PageListOfGuardians.tsx:22
 #: src/components/PageListOfGuardians/PageListOfGuardians.tsx:28
 #: src/pages/dashboard/admin/guardians/profile.tsx:31
 msgid "All Guardians"
 msgstr "Semua Wali Murid"
 
-#: src/components/PageAdmin/PageAdmin.tsx:23
+#: src/components/PageAdmin/PageAdmin.tsx:24
 #: src/components/PageListOfStudents/PageListOfStudents.tsx:34
 msgid "All Students"
 msgstr "Semua Murid"
@@ -211,7 +211,7 @@ msgstr "Ubah Bidang"
 msgid "Choose a Name"
 msgstr "Pilih Nama"
 
-#: src/components/PageAdmin/PageAdmin.tsx:22
+#: src/components/PageAdmin/PageAdmin.tsx:23
 msgid "Class"
 msgstr "Kelas"
 
@@ -263,7 +263,7 @@ msgstr "Paket saat ini"
 msgid "Current classes"
 msgstr "Kelas saat ini"
 
-#: src/components/PageAdmin/PageAdmin.tsx:21
+#: src/components/PageAdmin/PageAdmin.tsx:22
 #: src/pages/dashboard/admin/curriculum/index.tsx:10
 msgid "Curriculum"
 msgstr "Kurikulum"
@@ -293,7 +293,7 @@ msgstr "Kustom Kurikulum"
 msgid "Daily"
 msgstr "Harian"
 
-#: src/components/PageAdmin/ThemeSwitcher.tsx:21
+#: src/components/PageAdmin/ThemeSwitcher.tsx:25
 msgid "Dark"
 msgstr "Gelap"
 
@@ -361,7 +361,7 @@ msgstr ""
 msgid "Delete plan?"
 msgstr "Hapus rencana?"
 
-#: src/components/PageCurriculumMaterial/DescriptionEditor.tsx:35
+#: src/components/PageCurriculumMaterial/DescriptionEditor.tsx:53
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:109
 #: src/components/PageStudentPlanDetails/LessonPlanDescriptionCard.tsx:26
 #: src/components/PageStudentPlanDetails/LessonPlanDescriptionCard.tsx:46
@@ -432,6 +432,10 @@ msgstr "Ubah Catatan"
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:261
 msgid "Edit Notes"
 msgstr "Ubah Catatan"
+
+#: src/components/PageSchoolProfile/PageSchoolProfile.tsx:54
+msgid "Edit School Name"
+msgstr ""
 
 #: src/components/PageObservationDetails/ObservationMetaCard.tsx:40
 msgid "Edit Short Description"
@@ -583,7 +587,7 @@ msgstr "Dalam Proses"
 msgid "Info"
 msgstr "Info"
 
-#: src/components/PageAdmin/PageAdmin.tsx:29
+#: src/components/PageAdmin/PageAdmin.tsx:40
 msgid "Invite Your Team"
 msgstr "Undang Tim Anda"
 
@@ -595,7 +599,7 @@ msgstr "Undang dengan email"
 msgid "Invite using link"
 msgstr "Undang dengan link"
 
-#: src/components/PageAdmin/LanguageSwitcher.tsx:19
+#: src/components/PageAdmin/LanguageSwitcher.tsx:23
 msgid "Language"
 msgstr "Bahasa"
 
@@ -603,7 +607,7 @@ msgstr "Bahasa"
 msgid "Learn more."
 msgstr "Info lebih lanjut."
 
-#: src/components/PageAdmin/ThemeSwitcher.tsx:21
+#: src/components/PageAdmin/ThemeSwitcher.tsx:25
 msgid "Light"
 msgstr "Terang"
 
@@ -612,7 +616,7 @@ msgstr "Terang"
 msgid "Links"
 msgstr "Tautan"
 
-#: src/components/PageAdmin/PageAdmin.tsx:59
+#: src/components/PageAdmin/PageAdmin.tsx:70
 msgid "Log Out"
 msgstr "Keluar"
 
@@ -670,6 +674,7 @@ msgstr "Ibu"
 
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:41
 #: src/components/PageNewClass/PageNewClass.tsx:60
+#: src/components/PageSchoolProfile/PageSchoolProfile.tsx:57
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:168
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:172
 msgid "Name"
@@ -883,7 +888,7 @@ msgstr "Pilih tanggal awal"
 msgid "Plans"
 msgstr "Rencana"
 
-#: src/components/PageAdmin/PageAdmin.tsx:33
+#: src/components/PageAdmin/PageAdmin.tsx:44
 #: src/components/PagePaymentSuccess/PagePaymentSuccess.tsx:15
 #: src/components/PageSubscription/PageSubscription.tsx:30
 #: src/pages/dashboard/admin/subscription/index.tsx:13
@@ -980,7 +985,7 @@ msgid "Saturday"
 msgstr "Sabtu"
 
 #: src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx:52
-#: src/components/PageCurriculumMaterial/DescriptionEditor.tsx:43
+#: src/components/PageCurriculumMaterial/DescriptionEditor.tsx:61
 #: src/components/PageEditClass/PageEditClass.tsx:97
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:140
 #: src/components/PageNewClass/PageNewClass.tsx:80
@@ -1000,6 +1005,14 @@ msgstr "Sabtu"
 #: src/components/PageStudentProfile/PageStudentProfile.tsx:261
 msgid "Save"
 msgstr "Simpan"
+
+#: src/components/PageAdmin/PageAdmin.tsx:29
+msgid "School Profile"
+msgstr ""
+
+#: src/components/PageSchoolProfile/PageSchoolProfile.tsx:36
+msgid "School name"
+msgstr ""
 
 #: src/components/SearchBar/SearchBar.tsx:20
 msgid "Search"
@@ -1171,11 +1184,11 @@ msgstr "Mulai Langganan"
 msgid "Sunday"
 msgstr "Minggu"
 
-#: src/components/Navbar/Navbar.tsx:70
+#: src/components/Navbar/Navbar.tsx:67
 msgid "Support"
 msgstr "Bantuan"
 
-#: src/components/PageAdmin/PageAdmin.tsx:53
+#: src/components/PageAdmin/PageAdmin.tsx:64
 msgid "Switch school"
 msgstr "Pindah sekolah"
 
@@ -1195,7 +1208,7 @@ msgstr "Terimakasih telah berlangganan dengan kami!"
 msgid "The term <0>\"{term}\"</0> does not match any student"
 msgstr "Tidak ada murid dengan nama <0>\"{term}\"</0>"
 
-#: src/components/PageAdmin/ThemeSwitcher.tsx:18
+#: src/components/PageAdmin/ThemeSwitcher.tsx:22
 msgid "Theme"
 msgstr "Tema"
 
@@ -1276,7 +1289,7 @@ msgstr ""
 #~ msgid "User/month"
 #~ msgstr "Pengguna/bulan"
 
-#: src/components/PageAdmin/PageAdmin.tsx:28
+#: src/components/PageAdmin/PageAdmin.tsx:39
 msgid "Users"
 msgstr "Pengguna"
 

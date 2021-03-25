@@ -34,15 +34,6 @@ const plugins = [
   `gatsby-plugin-remove-serviceworker`,
   `gatsby-plugin-portal`,
   {
-    resolve: `gatsby-plugin-segment-js`,
-    options: {
-      prodKey: `a2pLn3x1wfkoSpgCxAb1sHiMRPraq6hW`,
-      trackPage: true,
-      delayLoad: true,
-      delayLoadTime: 1000,
-    },
-  },
-  {
     resolve: "gatsby-plugin-svgr",
     options: {
       prettier: true, // use prettier to format JS code output (default)

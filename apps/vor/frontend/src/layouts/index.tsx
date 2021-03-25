@@ -4,16 +4,9 @@ import { QueryClient, QueryClientProvider } from "react-query"
 import { Box, useColorMode } from "theme-ui"
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary"
 import Layout from "../components/Layout/Layout"
+import "../global.css"
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      // refetchOnMount and refetchOnWindowFocus causes prefresh to fail and reload every once in a while.
-      // refetchOnMount: process.env.NODE_ENV !== "development",
-      // refetchOnWindowFocus: process.env.NODE_ENV !== "development",
-    },
-  },
-})
+const queryClient = new QueryClient()
 
 // Used by gatsby-plugin-layout
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -46,11 +39,11 @@ const GlobalStyle: FC = () => {
         "@media (min-width: 52em)": {
           // scrollbarColor: isDarkMode ? "dark" : "light",
 
-          "::-webkit-scrollbar": isDarkMode
+          "::WebkitScrollbar": isDarkMode
             ? { width: 8, backgroundColor: "#1c1c1c" }
             : "inherit",
 
-          "::-webkit-scrollbar-thumb": isDarkMode
+          "::WebkitScrollbarThumb": isDarkMode
             ? { backgroundColor: "#3e3e3e", borderRadius: 9999 }
             : "inherit",
         },
