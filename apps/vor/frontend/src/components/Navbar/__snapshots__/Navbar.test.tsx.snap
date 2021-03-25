@@ -90,7 +90,7 @@ exports[`Navbar should render correctly 1`] = `
   margin-left: auto;
   margin-right: auto;
   margin-top: 8px;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
   display: none;
 }
 
@@ -104,11 +104,8 @@ exports[`Navbar should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  margin-bottom: 0;
-  padding-top: 4px;
-  padding-bottom: 4px;
   width: 56px;
-  height: 48px;
+  height: 56px;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -129,13 +126,8 @@ exports[`Navbar should render correctly 1`] = `
 
 @media screen and (min-width: 40em) {
   .emotion-4 {
-    margin-bottom: 8px;
-  }
-}
-
-@media screen and (min-width: 40em) {
-  .emotion-4 {
-    height: 56px;
+    width: 48px;
+    height: 48px;
   }
 }
 
@@ -162,14 +154,18 @@ exports[`Navbar should render correctly 1`] = `
   }
 }
 
+.emotion-4:hover {
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
+}
+
 .emotion-5 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
   max-width: 100%;
   height: auto;
-  color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
-  fill: transparent;
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  fill: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -181,33 +177,49 @@ exports[`Navbar should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
-  font-size: 14px;
-  text-rendering: optimizeLegibility;
-  line-height: 1.5;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
-  line-height: 1;
-  font-size: 10px;
-}
-
-@media screen and (min-width: 40em) {
-  .emotion-6 {
-    font-size: 11px;
-  }
-}
-
-.emotion-7 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  height: 100%;
+  margin-top: auto;
   display: none;
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-7 {
+  .emotion-6 {
     display: block;
   }
+}
+
+.emotion-8 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  fill: transparent;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.emotion-11 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  width: 100$;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 <div>
@@ -231,17 +243,13 @@ exports[`Navbar should render correctly 1`] = `
             class="emotion-4"
           >
             <div
+              alt="Students"
               class="emotion-5"
             />
-            <p
-              class="emotion-6"
-            >
-              Students
-            </p>
           </div>
         </a>
         <div
-          class="emotion-7"
+          class="emotion-6"
         />
         <a
           href="/dashboard/admin"
@@ -251,13 +259,9 @@ exports[`Navbar should render correctly 1`] = `
             class="emotion-4"
           >
             <div
-              class="emotion-5"
+              alt="Admin"
+              class="emotion-8"
             />
-            <p
-              class="emotion-6"
-            >
-              Admin
-            </p>
           </div>
         </a>
         <a
@@ -268,15 +272,18 @@ exports[`Navbar should render correctly 1`] = `
             class="emotion-4"
           >
             <div
-              class="emotion-5"
+              alt="Support"
+              class="emotion-8"
             />
-            <p
-              class="emotion-6"
-            >
-              Support
-            </p>
           </div>
         </a>
+        <div
+          class="emotion-11"
+        >
+          <div
+            class="emotion-8"
+          />
+        </div>
       </div>
     </nav>
   </div>

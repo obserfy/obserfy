@@ -43,11 +43,3 @@ export const onClientEntry = () => {
     mixpanel.init("470951a0c3bd38f4c305063090790dcb")
   }
 }
-
-// Add chatwoot
-export const onInitialClientRender = () => {
-  const hasTouchScreen = detectMobile()
-  if (!hasTouchScreen) {
-    loadChatwoot()
-  }
-}
