@@ -28,3 +28,9 @@ export const identify = (userId: string, traits?: Object) => {
     Sentry.setUser(user)
   }
 }
+
+export const captureException = (e: Error) => {
+  if (typeof window !== "undefined" && window.mixpanel !== undefined) {
+    captureException(e)
+  }
+}
