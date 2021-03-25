@@ -39,7 +39,7 @@ describe("test vor authentication", function () {
 
     // Logout
     cy.url().should("contains", "dashboard")
-    cy.contains("Admin").click()
+    cy.get("[data-cy=navbar-admin]").click()
     cy.contains("Log Out").click()
 
     // Login
@@ -53,7 +53,7 @@ describe("test vor authentication", function () {
     cy.contains(schoolName).click()
 
     // Change theme
-    cy.contains("Admin").click()
+    cy.get("[data-cy=navbar-admin]").click()
     cy.get("[data-cy=dark-switch]").click()
     cy.get("[data-cy=light-switch]").click()
 
@@ -61,7 +61,7 @@ describe("test vor authentication", function () {
     cy.url().should("contains", "admin")
     cy.contains("Students").click()
     cy.url().should("contains", "students")
-    cy.contains("Admin").click()
+    cy.get("[data-cy=navbar-admin]").click()
     cy.contains("Invite Your Team").click()
 
     // Test invite code

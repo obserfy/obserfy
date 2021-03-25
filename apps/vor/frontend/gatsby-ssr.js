@@ -1,3 +1,4 @@
+import React from "react"
 /**
  * Implement Gatsby's SSR (Server Side Rendering) APIs in this file.
  *
@@ -5,4 +6,10 @@
  */
 
 // You can delete this file if you're not using it
-import "./src/global.css"
+export const onRenderBody = ({setHeadComponents}) => {
+  if (process.env.NODE_ENV === "development") return
+
+  setHeadComponents([
+    <script async src="/mixpanel-lite.min.js"/>
+  ])
+}

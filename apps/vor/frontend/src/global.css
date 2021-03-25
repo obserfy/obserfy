@@ -50,3 +50,19 @@ button::-moz-focus-inner {
     bottom: 68px !important;
   }
 }
+
+
+.has-unread-view {
+  padding-left: 16px;
+  padding-bottom: 68px;
+}
+
+@media only screen and (min-width: 640px) {
+  .has-unread-view {
+    padding-bottom: 0;
+  }
+
+  .woot-widget-holder {
+    margin-left: 48px;
+  }
+}

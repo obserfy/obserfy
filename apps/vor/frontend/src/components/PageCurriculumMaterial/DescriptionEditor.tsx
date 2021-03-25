@@ -7,6 +7,25 @@ import Icon from "../Icon/Icon"
 import MarkdownEditor from "../MarkdownEditor/MarkdownEditor"
 import { Typography } from "../Typography/Typography"
 
+const useCachedValue = (key: string, initialValue: string) => {
+  let cachedValue: string | null = null
+  if (typeof window !== "undefined") {
+    cachedValue = localStorage.getItem(key)
+  }
+  const [value, setValue] = useState(cachedValue ?? initialValue)
+
+  const handleValueChange = (newValue: string) => {
+    localStorage.setItem(key, newValue)
+    setValue(newValue)
+  }
+
+  const clearCache = () => {
+    localStorage.removeItem(key)
+  }
+
+  return { value, setValue: handleValueChange, clearCache }
+}
+
 const DescriptionEditor: FC<{
   initialValue?: string
   onDismiss: () => void
@@ -14,17 +33,25 @@ const DescriptionEditor: FC<{
   materialId: string
   subjectId: string
 }> = ({ materialId, subjectId, onDismiss, onSave, initialValue = "" }) => {
-  const [value, setValue] = useState(initialValue)
+  const { value, setValue, clearCache } = useCachedValue(
+    materialId,
+    initialValue
+  )
   const patchMaterial = usePatchMaterial(materialId, subjectId)
 
   const handleSave = async () => {
     try {
-      const result = await patchMaterial.mutateAsync({ description: value })
-      if (result?.ok) onSave()
+      await patchMaterial.mutateAsync({ description: value })
+      clearCache()
       onSave()
     } catch (e) {
       Sentry.captureException(e)
     }
+  }
+
+  const handleCancel = () => {
+    clearCache()
+    onDismiss()
   }
 
   return (
@@ -34,7 +61,7 @@ const DescriptionEditor: FC<{
           <Trans>Description</Trans>
         </Typography.Body>
 
-        <Button variant="outline" ml="auto" p={1} mr={2} onClick={onDismiss}>
+        <Button variant="outline" ml="auto" p={1} mr={2} onClick={handleCancel}>
           <Icon as={CloseIcon} fill="danger" />
         </Button>
 
