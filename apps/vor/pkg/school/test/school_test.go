@@ -106,3 +106,21 @@ func (s *SchoolTestSuite) ReadTestFile(name string) (*bytes.Buffer, *multipart.W
 
 	return payload, writer
 }
+
+func (s *SchoolTestSuite) TestPatchSchool() {
+	t := s.T()
+	gofakeit.Seed(time.Now().UnixNano())
+	newSchool := s.GenerateSchool()
+
+	requestBody := struct {
+		Name string `json:"name"`
+	}{Name: gofakeit.Name()}
+
+	result := s.CreateRequest("PATCH", "/"+newSchool.Id, &requestBody, &newSchool.Users[0].Id)
+	assert.Equal(t, 200, result.Code)
+
+	savedSchool := postgres.School{Id: newSchool.Id}
+	err := s.DB.Model(&savedSchool).WherePK().Select()
+	assert.NoError(t, err)
+	assert.Equal(t, requestBody.Name, savedSchool.Name)
+}
