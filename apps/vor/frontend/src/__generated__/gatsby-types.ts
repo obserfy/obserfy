@@ -257,6 +257,8 @@ type Directory_ctimeArgs = {
 type Site = Node & {
   readonly buildTime: Maybe<Scalars['Date']>;
   readonly siteMetadata: Maybe<SiteSiteMetadata>;
+  readonly port: Maybe<Scalars['Int']>;
+  readonly host: Maybe<Scalars['String']>;
   readonly flags: Maybe<SiteFlags>;
   readonly polyfill: Maybe<Scalars['Boolean']>;
   readonly pathPrefix: Maybe<Scalars['String']>;
@@ -653,9 +655,6 @@ type SitePluginPluginOptions = {
   readonly localeDir: Maybe<Scalars['String']>;
   readonly analyzerPort: Maybe<Scalars['Int']>;
   readonly emitSchema: Maybe<SitePluginPluginOptionsEmitSchema>;
-  readonly dsn: Maybe<Scalars['String']>;
-  readonly release: Maybe<Scalars['String']>;
-  readonly tracesSampleRate: Maybe<Scalars['Float']>;
   readonly pathCheck: Maybe<Scalars['Boolean']>;
   readonly allExtensions: Maybe<Scalars['Boolean']>;
   readonly isTSX: Maybe<Scalars['Boolean']>;
@@ -828,6 +827,8 @@ type Query_allDirectoryArgs = {
 type Query_siteArgs = {
   buildTime: Maybe<DateQueryOperatorInput>;
   siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
+  port: Maybe<IntQueryOperatorInput>;
+  host: Maybe<StringQueryOperatorInput>;
   flags: Maybe<SiteFlagsFilterInput>;
   polyfill: Maybe<BooleanQueryOperatorInput>;
   pathPrefix: Maybe<StringQueryOperatorInput>;
@@ -1719,6 +1720,8 @@ type SiteFieldsEnum =
   | 'siteMetadata.description'
   | 'siteMetadata.author'
   | 'siteMetadata.siteUrl'
+  | 'port'
+  | 'host'
   | 'flags.PRESERVE_WEBPACK_CACHE'
   | 'flags.DEV_SSR'
   | 'flags.FAST_DEV'
@@ -1823,6 +1826,8 @@ type SiteGroupConnection = {
 type SiteFilterInput = {
   readonly buildTime: Maybe<DateQueryOperatorInput>;
   readonly siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
+  readonly port: Maybe<IntQueryOperatorInput>;
+  readonly host: Maybe<StringQueryOperatorInput>;
   readonly flags: Maybe<SiteFlagsFilterInput>;
   readonly polyfill: Maybe<BooleanQueryOperatorInput>;
   readonly pathPrefix: Maybe<StringQueryOperatorInput>;
@@ -1892,9 +1897,6 @@ type SitePluginPluginOptionsFilterInput = {
   readonly localeDir: Maybe<StringQueryOperatorInput>;
   readonly analyzerPort: Maybe<IntQueryOperatorInput>;
   readonly emitSchema: Maybe<SitePluginPluginOptionsEmitSchemaFilterInput>;
-  readonly dsn: Maybe<StringQueryOperatorInput>;
-  readonly release: Maybe<StringQueryOperatorInput>;
-  readonly tracesSampleRate: Maybe<FloatQueryOperatorInput>;
   readonly pathCheck: Maybe<BooleanQueryOperatorInput>;
   readonly allExtensions: Maybe<BooleanQueryOperatorInput>;
   readonly isTSX: Maybe<BooleanQueryOperatorInput>;
@@ -2150,9 +2152,6 @@ type SitePageFieldsEnum =
   | 'pluginCreator.pluginOptions.localeDir'
   | 'pluginCreator.pluginOptions.analyzerPort'
   | 'pluginCreator.pluginOptions.emitSchema.src___generated___gatsby_schema_graphql'
-  | 'pluginCreator.pluginOptions.dsn'
-  | 'pluginCreator.pluginOptions.release'
-  | 'pluginCreator.pluginOptions.tracesSampleRate'
   | 'pluginCreator.pluginOptions.pathCheck'
   | 'pluginCreator.pluginOptions.allExtensions'
   | 'pluginCreator.pluginOptions.isTSX'
@@ -2958,9 +2957,6 @@ type SitePluginFieldsEnum =
   | 'pluginOptions.localeDir'
   | 'pluginOptions.analyzerPort'
   | 'pluginOptions.emitSchema.src___generated___gatsby_schema_graphql'
-  | 'pluginOptions.dsn'
-  | 'pluginOptions.release'
-  | 'pluginOptions.tracesSampleRate'
   | 'pluginOptions.pathCheck'
   | 'pluginOptions.allExtensions'
   | 'pluginOptions.isTSX'
@@ -2999,10 +2995,10 @@ type SitePluginSortInput = {
   readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
 };
 
-type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
+type homechrisintSrcobserfyYarndollardollarvirtualgatsbyPluginThemeUiVirtualB1851Fec1C0CachegatsbyPluginThemeUiNpm060CanaryC5A716A0Cc09Cb8Ef987530F7743ZipnodeModulesgatsbyPluginThemeUisrchooksconfigOptionsJs2744905544QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type Unnamed_1_Query = { readonly themeUiConfig: Maybe<Pick<ThemeUiConfig, 'preset' | 'prismPreset'>> };
+type homechrisintSrcobserfyYarndollardollarvirtualgatsbyPluginThemeUiVirtualB1851Fec1C0CachegatsbyPluginThemeUiNpm060CanaryC5A716A0Cc09Cb8Ef987530F7743ZipnodeModulesgatsbyPluginThemeUisrchooksconfigOptionsJs2744905544Query = { readonly themeUiConfig: Maybe<Pick<ThemeUiConfig, 'preset' | 'prismPreset'>> };
 
 type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
@@ -3030,15 +3026,15 @@ type GatsbyImageSharpFluid_noBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio
 
 type GatsbyImageSharpFluid_withWebp_noBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
 
+type homechrisintSrcobserfyappsvorfrontendsrccomponentsseoTsx63159454QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type homechrisintSrcobserfyappsvorfrontendsrccomponentsseoTsx63159454Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
+
 type LocalizationSEOQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type LocalizationSEOQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'siteUrl'>> }> };
-
-type Unnamed_2_QueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type Unnamed_2_Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
 
 type LocalizationConfigQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -3047,5 +3043,10 @@ type LocalizationConfigQueryQuery = { readonly themeI18N: Maybe<(
     Pick<ThemeI18n, 'defaultLang'>
     & { readonly config: Maybe<ReadonlyArray<Maybe<Pick<Locale, 'code' | 'hrefLang' | 'dateFormat' | 'langDir' | 'localName' | 'name'>>>> }
   )> };
+
+type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type PagesQueryQuery = { readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
 
 }

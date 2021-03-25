@@ -85,7 +85,7 @@ describe("test student profile page", function () {
     cy.get("[data-cy=back-button]").click()
 
     // Edit observation
-    cy.url().should("contains", "students")
+    // cy.url().should("contains", "students")
     cy.contains(shortDesc).click()
     cy.get("[data-cy=edit-details]").click()
     cy.get("[data-cy=markdown-editor]").type("Some additional text")
@@ -107,7 +107,7 @@ describe("test student profile page", function () {
     cy.contains("Math").should("exist")
 
     // Go to a student
-    cy.contains(/Students/i).click()
+    cy.get("[data-cy=navbar-students]").click()
     // .waitForRouteChange()
     cy.url().should("contains", "students")
     cy.contains(studentName).click()
