@@ -36,19 +36,6 @@ exports[`Layout should render correctly 1`] = `
   border-color: var(--theme-ui-colors-borderBold, #e5e5e5);
 }
 
-@supports (backdrop-filter: blur(20px)) {
-  .emotion-1 {
-    background-color: var(--theme-ui-colors-surfaceBlurTransparent, rgba(255,255,255,0.9));
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    backdrop-filter: saturate(180%) blur(20px);
-    -webkit-transform: translateZ(0);
-    -moz-transform: translateZ(0);
-    -ms-transform: translateZ(0);
-    transform: translateZ(0);
-    will-change: backdrop-filter;
-  }
-}
-
 @media screen and (min-width: 40em) {
   .emotion-1 {
     height: 100%;
