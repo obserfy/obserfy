@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { FC, useState } from "react"
 import { Box, Button, Flex, jsx } from "theme-ui"
+import { captureException } from "../../analytics"
 import Input from "../Input/Input"
 import { Link } from "../Link/Link"
 import { Typography } from "../Typography/Typography"
@@ -29,7 +30,7 @@ export const PageLogin: FC = () => {
               event.preventDefault()
               await mutateAsync({ email, password })
             } catch (e) {
-              Sentry.captureException(e)
+              captureException(e)
             }
           }}
         >
