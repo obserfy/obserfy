@@ -1,4 +1,3 @@
-// import mixpanel from "mixpanel-lite"
 import { redirectToPreferredLang } from "./src/i18n"
 import { track } from "./src/analytics"
 
@@ -8,10 +7,10 @@ export const onServiceWorkerUpdateReady = () => {
   }
 }
 
-export const onRouteUpdate = ({location}) => {
+export const onRouteUpdate = ({ location }) => {
   track("Loaded a page", {
     title: document.title,
-    location: location.pathname
+    location: location.pathname,
   })
 
   if (typeof Sentry !== "undefined") {
@@ -20,7 +19,7 @@ export const onRouteUpdate = ({location}) => {
       level: "info",
       data: {
         title: document.title,
-        location: location.pathname
+        location: location.pathname,
       },
     }
     Sentry.addBreadcrumb(breadcrumb)
