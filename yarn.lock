@@ -16316,7 +16316,7 @@ fsevents@^1.2.7:
     fp-ts: 2.9.5
     hls.js: 1.0.0-rc.4
     io-ts: 2.2.16
-    io-ts-types: 0.5.15
+    io-ts-types: 0.5.16
     jest: 26.6.3
     minio: 7.0.18
     monocle-ts: 2.3.9
@@ -19421,15 +19421,15 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"io-ts-types@npm:0.5.15":
-  version: 0.5.15
-  resolution: "io-ts-types@npm:0.5.15"
+"io-ts-types@npm:0.5.16":
+  version: 0.5.16
+  resolution: "io-ts-types@npm:0.5.16"
   peerDependencies:
     fp-ts: ^2.0.0
     io-ts: ^2.0.0
     monocle-ts: ^2.0.0
     newtype-ts: ^0.3.2
-  checksum: d5c903bf385e35595beb16f6bc001f2de15b2d5113294c12d28b40c9611ff8c46dcea56b93f76b8e9abd46aea2bd5869d3036e6630dea74a585bd1d1537e9d3f
+  checksum: 6fe826435a85566d1f18f7fc88cb2e5042df4c15802b2749c550cb844cda0bb3de18ee5c2d9b882c270a94a32b8c97e24c15876771238aa4550b1abc40e62eae
   languageName: node
   linkType: hard
 
