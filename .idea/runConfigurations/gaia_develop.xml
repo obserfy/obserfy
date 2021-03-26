@@ -8,6 +8,7 @@
     <node-interpreter value="project" />
     <envs>
       <env name="NEXT_OPTIMIZED_IMG_DOMAIN" value="athena" />
+      <env name="NODE_OPTIONS" value="--no-warnings" />
     </envs>
     <method v="2" />
   </configuration>
