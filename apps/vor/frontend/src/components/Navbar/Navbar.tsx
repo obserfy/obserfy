@@ -5,10 +5,16 @@ import React, { FC, FunctionComponent, useEffect, useState } from "react"
 import { Box, Flex } from "theme-ui"
 import useDetectVirtualKeyboard from "../../hooks/useDetectVirtualKeyboard"
 import useLocalizedMatch from "../../hooks/useLocalizedMatch"
+import { ReactComponent as FileIcon } from "../../icons/file-text.svg"
 import { ReactComponent as StudentsIcon } from "../../icons/home.svg"
 import { ReactComponent as QuestionMarkIcon } from "../../icons/question-mark.svg"
 import { ReactComponent as SettingsIcon } from "../../icons/settings.svg"
-import { ADMIN_URL, STUDENTS_URL, SUPPORT_URL } from "../../routes"
+import {
+  ADMIN_URL,
+  ALL_REPORT_URL,
+  STUDENTS_URL,
+  SUPPORT_URL,
+} from "../../routes"
 import Chatwoot from "../Chatwoot/Chatwoot"
 import Icon from "../Icon/Icon"
 import { Link } from "../Link/Link"
@@ -60,6 +66,11 @@ const Navbar: FC = () => {
           to={STUDENTS_URL}
           iconFill="textMediumEmphasis"
         />
+        <NavBarItem
+          title={t`Progress Report`}
+          icon={FileIcon}
+          to={ALL_REPORT_URL}
+        />
 
         <Box mt="auto" sx={{ display: ["none", "block"] }} />
         <NavBarItem title={t`Admin`} icon={SettingsIcon} to={ADMIN_URL} />
@@ -84,7 +95,7 @@ const NavBarItem: FC<{
   const { search } = useLocation()
   const match = useLocalizedMatch(`${to}/*`)
 
-  // persist navigation state from each top-level sections
+  // imitate bottom nav backstack navigation behaviour specified in material.io
   useEffect(() => {
     if (match?.uri) {
       const url = `${match.uri}/${match["*"]}${search}`
