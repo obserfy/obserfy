@@ -6673,7 +6673,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:17.0.2, @types/react-dom@npm:>=16.9.0":
+"@types/react-dom@npm:17.0.3":
+  version: 17.0.3
+  resolution: "@types/react-dom@npm:17.0.3"
+  dependencies:
+    "@types/react": "*"
+  checksum: 9314c91a985f153591e1e74aef3d63d8b22e098069773f32745bf0733740a49802731761a46da8788a7d3dd2c21346036f12c2c24627630e5a6210b120a650e6
+  languageName: node
+  linkType: hard
+
+"@types/react-dom@npm:>=16.9.0":
   version: 17.0.2
   resolution: "@types/react-dom@npm:17.0.2"
   dependencies:
@@ -15985,7 +15994,7 @@ __metadata:
     gatsby-transformer-remark: 3.0.0
     gatsby-transformer-sharp: 3.0.0
     make-plural: 6.2.2
-    postcss: 8.2.7
+    postcss: 8.2.8
     postcss-preset-env: 6.7.0
     preact: 10.5.12
     prettier: 2.2.1
@@ -16307,7 +16316,7 @@ fsevents@^1.2.7:
     fp-ts: 2.9.5
     hls.js: 1.0.0-rc.4
     io-ts: 2.2.16
-    io-ts-types: 0.5.15
+    io-ts-types: 0.5.16
     jest: 26.6.3
     minio: 7.0.18
     monocle-ts: 2.3.9
@@ -16322,7 +16331,7 @@ fsevents@^1.2.7:
     pg: 8.5.1
     pino: 6.11.2
     pino-pretty: 4.7.1
-    postcss: 8.2.7
+    postcss: 8.2.8
     preact: 10.5.12
     preact-render-to-string: 5.1.12
     prettier: 2.2.1
@@ -19071,6 +19080,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"immer@npm:8.0.4":
+  version: 8.0.4
+  resolution: "immer@npm:8.0.4"
+  checksum: 047d4af1c6d9dbba3ecbcf39aed9fa2f5323f80205c0618085d25a981d061353f4417b53fad95c71bd834eb9aa9ffdc2db53c7aa7726736b80bf1ae5f206eca7
+  languageName: node
+  linkType: hard
+
 "immutable@npm:~3.7.6":
   version: 3.7.6
   resolution: "immutable@npm:3.7.6"
@@ -19405,15 +19421,15 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"io-ts-types@npm:0.5.15":
-  version: 0.5.15
-  resolution: "io-ts-types@npm:0.5.15"
+"io-ts-types@npm:0.5.16":
+  version: 0.5.16
+  resolution: "io-ts-types@npm:0.5.16"
   peerDependencies:
     fp-ts: ^2.0.0
     io-ts: ^2.0.0
     monocle-ts: ^2.0.0
     newtype-ts: ^0.3.2
-  checksum: d5c903bf385e35595beb16f6bc001f2de15b2d5113294c12d28b40c9611ff8c46dcea56b93f76b8e9abd46aea2bd5869d3036e6630dea74a585bd1d1537e9d3f
+  checksum: 6fe826435a85566d1f18f7fc88cb2e5042df4c15802b2749c550cb844cda0bb3de18ee5c2d9b882c270a94a32b8c97e24c15876771238aa4550b1abc40e62eae
   languageName: node
   linkType: hard
 
@@ -26876,14 +26892,14 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"postcss@npm:8.2.7":
-  version: 8.2.7
-  resolution: "postcss@npm:8.2.7"
+"postcss@npm:8.2.8, postcss@npm:^8.1.6, postcss@npm:^8.2.1, postcss@npm:^8.2.6":
+  version: 8.2.8
+  resolution: "postcss@npm:8.2.8"
   dependencies:
     colorette: ^1.2.2
     nanoid: ^3.1.20
     source-map: ^0.6.1
-  checksum: cd2a7a8b9c1950783afd05e906d65a6433b13bcce5a52f3c2802c524479e7ba6893f516338ed1bc755b3a8545eb5a181daf0fcf25af694ad2e33e9d9fe7d4254
+  checksum: 6e17d28833cf918a5ab306bfc7ec66b236dc51ed0f3de959491d40f6a171f5bd5f26de12f74e6bfeebaad44b0ac92b9f477a669d5f1fc07a27d67d8147a4bf6f
   languageName: node
   linkType: hard
 
@@ -26906,17 +26922,6 @@ fsevents@^1.2.7:
     source-map: ^0.6.1
     supports-color: ^6.1.0
   checksum: 8a979ea9799dd48399337708a395ddb8cf0e328515201ed35c99f5ba5eaa7688eae65764c570bf49b5be0b106226e2f222abc210de068b3d3da9a9a3bbb70567
-  languageName: node
-  linkType: hard
-
-"postcss@npm:^8.1.6, postcss@npm:^8.2.1, postcss@npm:^8.2.6":
-  version: 8.2.8
-  resolution: "postcss@npm:8.2.8"
-  dependencies:
-    colorette: ^1.2.2
-    nanoid: ^3.1.20
-    source-map: ^0.6.1
-  checksum: 6e17d28833cf918a5ab306bfc7ec66b236dc51ed0f3de959491d40f6a171f5bd5f26de12f74e6bfeebaad44b0ac92b9f477a669d5f1fc07a27d67d8147a4bf6f
   languageName: node
   linkType: hard
 
@@ -33808,7 +33813,7 @@ resolve@1.1.7:
     "@types/reach__router": 1.3.7
     "@types/react": 17.0.3
     "@types/react-adaptive-hooks": 0.0.0
-    "@types/react-dom": 17.0.2
+    "@types/react-dom": 17.0.3
     "@types/react-helmet": 6.1.0
     "@types/segment-analytics": 0.0.33
     "@typescript-eslint/eslint-plugin": 4.11.1
@@ -33866,7 +33871,7 @@ resolve@1.1.7:
     http-proxy-middleware: 1.0.6
     hygen: 6.0.4
     idb-keyval: 5.0.4
-    immer: 8.0.1
+    immer: 8.0.4
     jest: 26.6.3
     jest-date-mock: 1.0.8
     jest-fetch-mock: 3.0.3
@@ -33874,7 +33879,7 @@ resolve@1.1.7:
     mux-embed: 3.5.0
     nanoid: 3.1.22
     npm-run-all: 4.1.5
-    postcss: 8.2.7
+    postcss: 8.2.8
     preact: 10.5.12
     preact-render-to-string: 5.1.12
     prettier: 2.2.1

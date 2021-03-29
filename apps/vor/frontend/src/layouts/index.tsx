@@ -39,11 +39,11 @@ const GlobalStyle: FC = () => {
         "@media (min-width: 52em)": {
           // scrollbarColor: isDarkMode ? "dark" : "light",
 
-          "::WebkitScrollbar": isDarkMode
+          "::-webkit-scrollbar": isDarkMode
             ? { width: 8, backgroundColor: "#1c1c1c" }
             : "inherit",
 
-          "::WebkitScrollbarThumb": isDarkMode
+          "::-webkit-scrollbar-thumb": isDarkMode
             ? { backgroundColor: "#3e3e3e", borderRadius: 9999 }
             : "inherit",
         },
