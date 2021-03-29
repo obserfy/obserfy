@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": ".",
     "module": "esnext",
     "target": "es5",
     "lib": ["es6", "dom"],
@@ -19,7 +19,10 @@
     "downlevelIteration": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "allowJs": true
+    "allowJs": true,
+    "paths": {
+      "@components/*": ["components/*"]
+    }
   },
   "include": [
     "src",
@@ -27,5 +30,5 @@
     "graphql-types.ts",
     "loadershim.ts",
     "tailwind.config.js"
-  ]
+  ],
 }

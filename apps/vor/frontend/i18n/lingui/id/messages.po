@@ -95,7 +95,7 @@ msgstr ""
 msgid "Address"
 msgstr "Alamat"
 
-#: src/components/Navbar/Navbar.tsx:66
+#: src/components/Navbar/Navbar.tsx:48
 #: src/components/PageListOfGuardians/PageListOfGuardians.tsx:21
 #: src/components/PagePaymentSuccess/PagePaymentSuccess.tsx:14
 #: src/components/PageSubscription/PageSubscription.tsx:29
@@ -926,6 +926,10 @@ msgstr "Harga"
 msgid "Profile"
 msgstr "Profil"
 
+#: src/components/Navbar/Navbar.tsx:45
+msgid "Progress Report"
+msgstr ""
+
 #: src/components/PageStudentOverview/AssessmentCard.tsx:72
 msgid "Recently Mastered"
 msgstr "Baru saja Dikuasai"
@@ -1136,7 +1140,7 @@ msgstr "Status"
 msgid "Student ID"
 msgstr "ID Murid"
 
-#: src/components/Navbar/Navbar.tsx:63
+#: src/components/Navbar/Navbar.tsx:44
 #: src/components/PageAddGuardian/PageAddGuardian.tsx:67
 #: src/components/PageAllObservations/PageAllObservations.tsx:13
 #: src/components/PageNewObservation/PageNewObservation.tsx:77
@@ -1184,7 +1188,7 @@ msgstr "Mulai Langganan"
 msgid "Sunday"
 msgstr "Minggu"
 
-#: src/components/Navbar/Navbar.tsx:67
+#: src/components/Navbar/Navbar.tsx:49
 msgid "Support"
 msgstr "Bantuan"
 
