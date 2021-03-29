@@ -183,7 +183,11 @@ func createCookie(token string) *http.Cookie {
 		SameSite: http.SameSiteLaxMode,
 	}
 	if os.Getenv("env") != "production" {
+		// disable secure in dev/test since we won't use https here.
 		cookie.Secure = false
+		// disable SameSite and domain in dev to make auth works across lan on custom domain.
+		cookie.SameSite = 0
+		cookie.Domain = ""
 	}
 	return &cookie
 }
