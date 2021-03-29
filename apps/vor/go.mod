@@ -7,7 +7,6 @@ require (
 	github.com/brianvoe/gofakeit/v4 v4.3.0
 	github.com/getsentry/sentry-go v0.10.0
 	github.com/go-chi/chi v1.5.4
-	github.com/go-chi/chi/v5 v5.0.0
 	github.com/go-pg/pg/v10 v10.8.0
 	github.com/go-playground/validator/v10 v10.4.1
 	github.com/gocarina/gocsv v0.0.0-20210408192840-02d7211d929d
@@ -22,5 +21,4 @@ require (
 	go.uber.org/zap v1.16.0
 	golang.org/x/crypto v0.0.0-20210322153248-0c34fe9e7dc2
 	golang.org/x/tools v0.0.0-20210115202250-e0d201561e39 // indirect
-	google.golang.org/appengine v1.6.7
 )
