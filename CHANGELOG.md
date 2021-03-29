@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.16.6](https://github.com/obserfy/obserfy/compare/v1.16.5...v1.16.6) (2021-03-29)
+
+
+### Bug Fixes
+
+* **deps:** update dependency io-ts-types to v0.5.16 ([9e47cda](https://github.com/obserfy/obserfy/commit/9e47cda576456168f80d0eab9feaba37d1a8123b))
+* **deps:** update github.com/gocarina/gocsv commit hash to 0340a02 ([9076c83](https://github.com/obserfy/obserfy/commit/9076c83cfa5c3d5fb3f79d3c67165e5a1d654cdb))
+* dark mode scrollbar still being bright white. ([ac8a225](https://github.com/obserfy/obserfy/commit/ac8a2259d2306b1cc6bf379076824ce24411361e))
+* **deps:** update dependency immer to v8.0.4 ([841d14d](https://github.com/obserfy/obserfy/commit/841d14d2ebdccc99c0381f08877ed3ab30a5328c))
+* **deps:** update dependency postcss to v8.2.8 ([bee71ce](https://github.com/obserfy/obserfy/commit/bee71ce35d8351828e753489971dac9d7a0cb8af))
+
 ### [1.16.5](https://github.com/obserfy/obserfy/compare/v1.16.4...v1.16.5) (2021-03-25)
 
 ### [1.16.4](https://github.com/obserfy/obserfy/compare/v1.16.3...v1.16.4) (2021-03-25)
