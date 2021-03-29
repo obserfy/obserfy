@@ -24,7 +24,7 @@
     "@types/dompurify": "2.2.1",
     "@types/formidable": "1.0.31",
     "@types/hls.js": "0.13.3",
-    "@types/jest": "26.0.21",
+    "@types/jest": "26.0.22",
     "@types/minio": "7.0.7",
     "@types/mixpanel-browser": "2.35.6",
     "@types/nanoid": "2.1.0",
