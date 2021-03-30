@@ -1,4 +1,3 @@
-const fs = require("fs")
 const SentryWebpackPlugin = require("@sentry/webpack-plugin")
 const version = require("./version")
 
