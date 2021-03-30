@@ -4250,19 +4250,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@prefresh/next@npm:^1.3.0":
-  version: 1.4.5
-  resolution: "@prefresh/next@npm:1.4.5"
+"@prefresh/next@npm:^1.4.0":
+  version: 1.4.6
+  resolution: "@prefresh/next@npm:1.4.6"
   dependencies:
-    "@prefresh/babel-plugin": 0.4.0
-    "@prefresh/core": ^1.3.0
+    "@prefresh/babel-plugin": 0.4.1
+    "@prefresh/core": ^1.3.1
     "@prefresh/utils": ^1.0.0
-    "@prefresh/webpack": ^3.1.0
+    "@prefresh/webpack": ^3.2.0
   peerDependencies:
     next: ^9.4.0 || ^10.0.0
     preact: ^10.4.0
     webpack: ^4.0.0 || ^5.0.0
-  checksum: 33ecbec9cb2f4e99606fea942fe9b55c1de35f31c7b026337219c674a43b5d064d031de87c791d49ea9278c78c97811f3133ef70229a52ab7c9b4d6d72e1e091
+  checksum: 60ebd1d876a1bda987f2ee8edae5027429faf8e72d39b821e1a5f3d03928667a1bb457e1afc74a8c031b712e95d373bd8e997214a6f2aec7fb56cf95b0d748ec
   languageName: node
   linkType: hard
 
@@ -4273,9 +4273,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@prefresh/webpack@npm:3.2.0":
-  version: 3.2.0
-  resolution: "@prefresh/webpack@npm:3.2.0"
+"@prefresh/webpack@npm:3.2.1":
+  version: 3.2.1
+  resolution: "@prefresh/webpack@npm:3.2.1"
   dependencies:
     "@prefresh/core": ^1.3.1
     "@prefresh/utils": ^1.1.0
@@ -4283,7 +4283,7 @@ __metadata:
     "@prefresh/babel-plugin": ^0.4.0
     preact: ^10.4.0
     webpack: ^4.0.0 || ^5.0.0
-  checksum: 72c82831d5e80547c5d17fecf0e647d4e8699d26f6d3d393d6cadaafc9abdbeb1d88cdaadfcfa9e4af8916c309b1464f9e2938d736e8b71492edba5605819d49
+  checksum: 9df5cff3b3c4c78555aff34ea46fe7c7093837ecfb7f69a3bc15c80e0b462abcfcd951a6dd1cfde98002c1cc33840d85628c0673227129644d4ba796e5d25fd6
   languageName: node
   linkType: hard
 
@@ -7727,13 +7727,6 @@ __metadata:
   version: 4.2.2
   resolution: "@xtuc/long@npm:4.2.2"
   checksum: ec09a359f98e9f8c47bf6c965e73b520a1a65e93f1febf6472babc8b6b0b425a2084452be103da5be11aec8c502ecfa29400713d55ef774579d04f691db44a2d
-  languageName: node
-  linkType: hard
-
-"@zeit/next-source-maps@npm:0.0.4-canary.1":
-  version: 0.0.4-canary.1
-  resolution: "@zeit/next-source-maps@npm:0.0.4-canary.1"
-  checksum: 29a42ff0d81d508c2b03eefeeb32948ab085faa6ab93aa760a1c705a6eb70858352f705a78e8c4f1f9e1ff68f4f6f5b694fe665836b78a845ad43dd030920ced
   languageName: node
   linkType: hard
 
@@ -16526,7 +16519,6 @@ fsevents@^1.2.7:
     "@types/uuid": 8.3.0
     "@typescript-eslint/eslint-plugin": 4.11.1
     "@typescript-eslint/parser": 4.11.1
-    "@zeit/next-source-maps": 0.0.4-canary.1
     autoprefixer: 10.2.5
     body-scroll-lock: 3.1.5
     dayjs: 1.10.4
@@ -16555,7 +16547,7 @@ fsevents@^1.2.7:
     newtype-ts: 0.3.4
     next: 10.1.1
     next-compose-plugins: 2.2.1
-    next-plugin-preact: 3.0.3
+    next-plugin-preact: 3.0.4
     next-pwa: 5.0.6
     node-mocks-http: 1.10.1
     pg: 8.5.1
@@ -16563,7 +16555,7 @@ fsevents@^1.2.7:
     pino-pretty: 4.7.1
     postcss: 8.2.8
     preact: 10.5.13
-    preact-render-to-string: 5.1.12
+    preact-render-to-string: 5.1.16
     prettier: 2.2.1
     react: "npm:@preact/compat@0.0.4"
     react-dom: "npm:@preact/compat@0.0.4"
@@ -23946,17 +23938,17 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"next-plugin-preact@npm:3.0.3":
-  version: 3.0.3
-  resolution: "next-plugin-preact@npm:3.0.3"
+"next-plugin-preact@npm:3.0.4":
+  version: 3.0.4
+  resolution: "next-plugin-preact@npm:3.0.4"
   dependencies:
-    "@prefresh/next": ^1.3.0
+    "@prefresh/next": ^1.4.0
     module-alias: ^2.0.0
   peerDependencies:
     preact: ">=10"
     preact-render-to-string: ">=5"
     preact-ssr-prepass: ">=1"
-  checksum: 82469034d67419e4d10cf9409866cdff2d48fd4267a6101016464d69bb22ae9f3ebabc25d6f7b274798a143499014ba9584b2212dd6f87789227c13a45446ca7
+  checksum: 25fe5f0959082d8079b60d99a0b2a758dd9bcb7cd694796f596381ac2879bddaab1907d79829696ce46f8b3884fa086bde415030fd16cd4b40c6429c5e0fb378
   languageName: node
   linkType: hard
 
