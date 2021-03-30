@@ -8181,7 +8181,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "prism-themes",
-        "npm:1.5.0"
+        "npm:1.6.0"
       ],
       [
         "prismjs",
@@ -34847,7 +34847,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["postcss-preset-env", "npm:6.7.0"],
             ["preact", "npm:10.5.13"],
             ["prettier", "npm:2.2.1"],
-            ["prism-themes", "npm:1.5.0"],
+            ["prism-themes", "npm:1.6.0"],
             ["prismjs", "npm:1.23.0"],
             ["prop-types", "npm:15.7.2"],
             ["query-string", "npm:6.14.1"],
@@ -48735,10 +48735,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["prism-themes", [
-        ["npm:1.5.0", {
-          "packageLocation": "./.yarn/cache/prism-themes-npm-1.5.0-242ef96553-e3f8629e6c.zip/node_modules/prism-themes/",
+        ["npm:1.6.0", {
+          "packageLocation": "./.yarn/cache/prism-themes-npm-1.6.0-6a6f11cd3a-ee1745b5de.zip/node_modules/prism-themes/",
           "packageDependencies": [
-            ["prism-themes", "npm:1.5.0"]
+            ["prism-themes", "npm:1.6.0"]
           ],
           "linkType": "HARD",
         }]

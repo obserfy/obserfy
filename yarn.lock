@@ -16221,7 +16221,7 @@ __metadata:
     postcss-preset-env: 6.7.0
     preact: 10.5.13
     prettier: 2.2.1
-    prism-themes: 1.5.0
+    prism-themes: 1.6.0
     prismjs: 1.23.0
     react: 17.0.1
     react-dom: 17.0.1
@@ -27416,10 +27416,10 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"prism-themes@npm:1.5.0":
-  version: 1.5.0
-  resolution: "prism-themes@npm:1.5.0"
-  checksum: e3f8629e6c56bfd72edf3617ec55632273a66626f06e3b4a0db965bb259cb9c8af5a6effe833120633ff2c62e147628f6fd2908daa130b84608465583e1e457b
+"prism-themes@npm:1.6.0":
+  version: 1.6.0
+  resolution: "prism-themes@npm:1.6.0"
+  checksum: ee1745b5def3e3de86012bdd8b105a0c8e1deef510b1a1babdad5c29d37390a00666910052acdf03f27b4029d04983a9b51e7a0fa7fa2f495185e3383d06eb0b
   languageName: node
   linkType: hard
 
