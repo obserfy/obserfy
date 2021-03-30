@@ -1721,7 +1721,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@types/faker",
-        "npm:5.1.7"
+        "npm:5.5.0"
       ],
       [
         "@types/formidable",
@@ -4525,7 +4525,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "faker",
-        "npm:5.4.0"
+        "npm:5.5.2"
       ],
       [
         "fast-copy",
@@ -22629,10 +22629,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@types/faker", [
-        ["npm:5.1.7", {
-          "packageLocation": "./.yarn/cache/@types-faker-npm-5.1.7-2d4627cfe8-75379a5c4c.zip/node_modules/@types/faker/",
+        ["npm:5.5.0", {
+          "packageLocation": "./.yarn/cache/@types-faker-npm-5.5.0-213a596d9a-13cbb2f64e.zip/node_modules/@types/faker/",
           "packageDependencies": [
-            ["@types/faker", "npm:5.1.7"]
+            ["@types/faker", "npm:5.5.0"]
           ],
           "linkType": "HARD",
         }]
@@ -31635,7 +31635,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@hapi/iron", "npm:6.0.0"],
             ["@swc/core", "npm:1.2.50"],
             ["@types/auth0-js", "npm:9.14.2"],
-            ["@types/faker", "npm:5.1.7"],
+            ["@types/faker", "npm:5.5.0"],
             ["@types/node", "npm:14.14.37"],
             ["@types/pg", "npm:7.14.11"],
             ["@typescript-eslint/eslint-plugin", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:4.11.1"],
@@ -31658,7 +31658,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-prettier", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:3.3.0"],
             ["eslint-plugin-react", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:7.22.0"],
             ["eslint-plugin-react-hooks", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:4.2.0"],
-            ["faker", "npm:5.4.0"],
+            ["faker", "npm:5.5.2"],
             ["pg", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:8.5.1"],
             ["pnp-webpack-plugin", "npm:1.6.4"],
             ["prettier", "npm:2.2.1"],
@@ -33792,10 +33792,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["faker", [
-        ["npm:5.4.0", {
-          "packageLocation": "./.yarn/cache/faker-npm-5.4.0-5688d351b9-f29deef14c.zip/node_modules/faker/",
+        ["npm:5.5.2", {
+          "packageLocation": "./.yarn/cache/faker-npm-5.5.2-7ad87830f0-de923c65ee.zip/node_modules/faker/",
           "packageDependencies": [
-            ["faker", "npm:5.4.0"]
+            ["faker", "npm:5.5.2"]
           ],
           "linkType": "HARD",
         }]
@@ -57001,7 +57001,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/body-scroll-lock", "npm:2.6.1"],
             ["@types/date-fns", "npm:2.6.0"],
             ["@types/dompurify", "npm:2.2.1"],
-            ["@types/faker", "npm:5.1.7"],
+            ["@types/faker", "npm:5.5.0"],
             ["@types/hls.js", "npm:0.13.3"],
             ["@types/jest", "npm:26.0.22"],
             ["@types/query-string", "npm:6.3.0"],
@@ -57042,7 +57042,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-react-hooks", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:4.2.0"],
             ["event-source-polyfill", "npm:1.0.22"],
             ["fake-indexeddb", "npm:3.1.2"],
-            ["faker", "npm:5.4.0"],
+            ["faker", "npm:5.5.2"],
             ["gatsby", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:3.0.4"],
             ["gatsby-legacy-polyfills", "npm:1.0.0"],
             ["gatsby-link", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:3.0.1"],
