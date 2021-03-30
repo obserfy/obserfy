@@ -2184,10 +2184,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:4.2.2"
       ],
       [
-        "@zeit/next-source-maps",
-        "npm:0.0.4-canary.1"
-      ],
-      [
         "JSONStream",
         "npm:1.3.5"
       ],
@@ -24335,15 +24331,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["@zeit/next-source-maps", [
-        ["npm:0.0.4-canary.1", {
-          "packageLocation": "./.yarn/cache/@zeit-next-source-maps-npm-0.0.4-canary.1-3d5dc8c9ab-29a42ff0d8.zip/node_modules/@zeit/next-source-maps/",
-          "packageDependencies": [
-            ["@zeit/next-source-maps", "npm:0.0.4-canary.1"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["JSONStream", [
         ["npm:1.3.5", {
           "packageLocation": "./.yarn/cache/JSONStream-npm-1.3.5-1987f2e6dd-e9849f8a52.zip/node_modules/JSONStream/",
@@ -35180,7 +35167,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/uuid", "npm:8.3.0"],
             ["@typescript-eslint/eslint-plugin", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:4.11.1"],
             ["@typescript-eslint/parser", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:4.11.1"],
-            ["@zeit/next-source-maps", "npm:0.0.4-canary.1"],
             ["autoprefixer", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:10.2.5"],
             ["body-scroll-lock", "npm:3.1.5"],
             ["dayjs", "npm:1.10.4"],
