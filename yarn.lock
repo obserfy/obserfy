@@ -6321,10 +6321,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/faker@npm:5.1.7":
-  version: 5.1.7
-  resolution: "@types/faker@npm:5.1.7"
-  checksum: 75379a5c4cb1e6d87b3aa33ce0397150cf973567f283fb40513841148e2cc83abef17872a1f537f05acc39df7817bbe47033959084cf6647500f05b8e6c6adc8
+"@types/faker@npm:5.5.0":
+  version: 5.5.0
+  resolution: "@types/faker@npm:5.5.0"
+  checksum: 13cbb2f64e07811519b3f95ef2016fa45e7f0a8f9ad46943dafb672a1a8f04aa70b36b3a2b5bcc1b62439529242acda7e194deba036fc713d09631a2399d1faf
   languageName: node
   linkType: hard
 
@@ -13747,7 +13747,7 @@ __metadata:
     "@hapi/iron": 6.0.0
     "@swc/core": 1.2.50
     "@types/auth0-js": 9.14.2
-    "@types/faker": 5.1.7
+    "@types/faker": 5.5.0
     "@types/node": 14.14.37
     "@types/pg": 7.14.11
     "@typescript-eslint/eslint-plugin": 4.11.1
@@ -13770,7 +13770,7 @@ __metadata:
     eslint-plugin-prettier: 3.3.0
     eslint-plugin-react: 7.22.0
     eslint-plugin-react-hooks: 4.2.0
-    faker: 5.4.0
+    faker: 5.5.2
     pg: 8.5.1
     pnp-webpack-plugin: 1.6.4
     prettier: 2.2.1
@@ -15359,10 +15359,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"faker@npm:5.4.0":
-  version: 5.4.0
-  resolution: "faker@npm:5.4.0"
-  checksum: f29deef14c3e91ac4f67b8dd02d0d5147d42ef44e9a6051f8aa5a0b63083d42302af9679a3de7d92bb7c36ef8e2b1b31e3b36813e678fc0483026e3c30d6cbe5
+"faker@npm:5.5.2":
+  version: 5.5.2
+  resolution: "faker@npm:5.5.2"
+  checksum: de923c65eee33656c59fc5865c2486d04d6bae5a7e6cd70153bf81bf64b6461e00c34e7322e3559094455a41aa050c85c56a1da5ce445e0d805df7e215c69374
   languageName: node
   linkType: hard
 
@@ -34153,7 +34153,7 @@ resolve@1.1.7:
     "@types/body-scroll-lock": 2.6.1
     "@types/date-fns": 2.6.0
     "@types/dompurify": 2.2.1
-    "@types/faker": 5.1.7
+    "@types/faker": 5.5.0
     "@types/hls.js": 0.13.3
     "@types/jest": 26.0.22
     "@types/query-string": 6.3.0
@@ -34191,7 +34191,7 @@ resolve@1.1.7:
     eslint-plugin-react: 7.22.0
     eslint-plugin-react-hooks: 4.2.0
     fake-indexeddb: 3.1.2
-    faker: 5.4.0
+    faker: 5.5.2
     gatsby: 3.0.4
     gatsby-plugin-canonical-urls: 3.0.0
     gatsby-plugin-image: 1.0.0
