@@ -34,7 +34,6 @@
     "@types/react": "17.0.3",
     "@types/react-query": "1.1.2",
     "@types/uuid": "8.3.0",
-    "@zeit/next-source-maps": "0.0.4-canary.1",
     "autoprefixer": "10.2.5",
     "body-scroll-lock": "3.1.5",
     "dayjs": "1.10.4",
