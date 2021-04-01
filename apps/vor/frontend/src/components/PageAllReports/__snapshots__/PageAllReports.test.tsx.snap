@@ -1,0 +1,295 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageAllReports should render correctly 1`] = `
+.emotion-0 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 16px;
+}
+
+@media screen and (min-width: 40em) {
+  .emotion-0 {
+    font-size: 20px;
+  }
+}
+
+.emotion-1 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+}
+
+.emotion-2 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding-top: 32px;
+  -webkit-flex-direction: column-reverse;
+  -ms-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media screen and (min-width: 40em) {
+  .emotion-2 {
+    padding-top: 0;
+  }
+}
+
+@media screen and (min-width: 40em) {
+  .emotion-2 {
+    -webkit-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 52em) {
+  .emotion-2 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+.emotion-3 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin: 16px;
+  margin-right: 16px;
+  max-width: 400px;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media screen and (min-width: 40em) {
+  .emotion-3 {
+    margin-right: 16px;
+  }
+}
+
+@media screen and (min-width: 52em) {
+  .emotion-3 {
+    margin-right: 64px;
+  }
+}
+
+@media screen and (min-width: 40em) {
+  .emotion-3 {
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: 52em) {
+  .emotion-3 {
+    -webkit-align-items: flex-start;
+    -webkit-box-align: flex-start;
+    -ms-flex-align: flex-start;
+    align-items: flex-start;
+  }
+}
+
+.emotion-4 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: bold;
+  line-height: heading;
+  color: var(--theme-ui-colors-text, #37383c);
+  text-rendering: optimizeLegibility;
+  font-size: 32px;
+  margin-bottom: 16px;
+  text-align: center;
+  line-height: 1.2;
+}
+
+@media screen and (min-width: 40em) {
+  .emotion-4 {
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 52em) {
+  .emotion-4 {
+    text-align: inherit;
+  }
+}
+
+.emotion-5 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  color: var(--theme-ui-colors-text, #37383c);
+  font-size: 14px;
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  text-align: center;
+  font-size: 16px;
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+}
+
+@media screen and (min-width: 40em) {
+  .emotion-5 {
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 52em) {
+  .emotion-5 {
+    text-align: inherit;
+  }
+}
+
+.emotion-6 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  display: inline-block;
+  text-align: center;
+  line-height: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: inherit;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: white;
+  background-color: var(--theme-ui-colors-primary, #00e399);
+  border: 0;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: var(--theme-ui-colors-onPrimary, #000);
+  background-color: var(--theme-ui-colors-primary, #00e399);
+  border-radius: 6px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  white-space: nowrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  touch-action: manipulation;
+  box-shadow: rgba(27, 31, 35, 0.1) 0px 1px 0px 0px,rgba(255, 255, 255, 0.03) 0px 1px 0px 0px inset;
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-style: solid;
+  border-width: 1px;
+  line-height: 1;
+}
+
+.emotion-6:disabled {
+  opacity: 0.38;
+  cursor: auto;
+}
+
+.emotion-6:hover,
+.emotion-6:focus {
+  background-color: var(--theme-ui-colors-primaryDark, #00a06d);
+  outline: none;
+}
+
+.emotion-6:hover:disabled,
+.emotion-6:focus:disabled {
+  background-color: var(--theme-ui-colors-primary, #00e399);
+}
+
+<div>
+  <div
+    class="emotion-0"
+  >
+    <div
+      class="emotion-1"
+    >
+      <div
+        class="emotion-2"
+      >
+        <div
+          class="emotion-3"
+        >
+          <h4
+            class="emotion-4"
+          >
+            Write reports
+          </h4>
+          <p
+            class="emotion-5"
+          >
+            Easily write reports for parents with all the data that you need in one place.
+          </p>
+          <a
+            href="/dashboard/reports/new"
+          >
+            <button
+              class="emotion-6"
+            >
+              Start your first reports
+            </button>
+          </a>
+        </div>
+        <div
+          width="320px"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
