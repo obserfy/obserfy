@@ -1,6 +1,8 @@
 import React, { FC } from "react"
 import { Box, Button, Flex } from "theme-ui"
 import { ReactComponent as EmptyIllustration } from "../../images/report-illustration.svg"
+import { NEW_REPORT_URL } from "../../routes"
+import { Link } from "../Link/Link"
 import Typography from "../Typography/Typography"
 
 export interface PageAllReportsProps {}
@@ -51,7 +53,9 @@ const EmptyPlaceholder = () => {
           one place.
         </Typography.Body>
 
-        <Button>Start your first reports</Button>
+        <Link to={NEW_REPORT_URL}>
+          <Button>Start your first reports</Button>
+        </Link>
       </Flex>
 
       <EmptyIllustration width="320px" />

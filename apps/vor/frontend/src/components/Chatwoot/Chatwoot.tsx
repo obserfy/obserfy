@@ -96,7 +96,7 @@ const Chatwoot: FC<ChatwootProps> = () => {
       ) : (
         <Icon
           as={ChatIcon}
-          size={24}
+          size={26}
           fill="transparent"
           color="textMediumEmphasis"
         />
