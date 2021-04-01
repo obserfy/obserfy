@@ -38,7 +38,7 @@ const EmptyPlaceholder = () => {
           mb={3}
           sx={{ textAlign: ["center", "center", "inherit"], lineHeight: 1.2 }}
         >
-          <Trans>Write reports</Trans>
+          <Trans>Write progress reports</Trans>
         </Typography.H4>
         <Typography.Body
           mb={3}
@@ -56,7 +56,7 @@ const EmptyPlaceholder = () => {
 
         <Link to={NEW_REPORT_URL}>
           <Button>
-            <Trans>Start your first reports</Trans>
+            <Trans>Start your first report</Trans>
           </Button>
         </Link>
       </Flex>

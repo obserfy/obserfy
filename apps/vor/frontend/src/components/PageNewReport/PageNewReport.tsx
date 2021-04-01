@@ -1,4 +1,4 @@
-import { t } from "@lingui/macro"
+import { t, Trans } from "@lingui/macro"
 import React, { FC, useState } from "react"
 import { Box, Flex } from "theme-ui"
 import dayjs from "../../dayjs"
@@ -19,21 +19,24 @@ const PageNewReport: FC<PageNewReportProps> = () => {
     <Flex sx={{ flexDirection: "column" }}>
       <TopBarWithAction
         breadcrumbs={[
-          breadCrumb("Reports", ALL_REPORT_URL),
-          breadCrumb("New Report"),
+          breadCrumb(t`Reports`, ALL_REPORT_URL),
+          breadCrumb(t`New Progress Report`),
         ]}
         onActionClick={() => {}}
         buttonContent={t`Create`}
+        disableAction={title === ""}
       >
         <Flex sx={{ alignItems: "center", maxWidth: "maxWidth.sm" }} mx="auto">
-          <Typography.H5 m={3}>New Report</Typography.H5>
+          <Typography.H5 m={3}>
+            <Trans>New Progress Report</Trans>
+          </Typography.H5>
         </Flex>
       </TopBarWithAction>
 
       <Box mx="auto" sx={{ maxWidth: "maxWidth.sm", width: "100%" }}>
         <Input
           containerSx={{ px: 3, pt: 3 }}
-          label={t`Title`}
+          label={t`Title*`}
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />

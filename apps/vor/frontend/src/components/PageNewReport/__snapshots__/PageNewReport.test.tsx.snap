@@ -707,7 +707,7 @@ exports[`PageNewReport should render correctly 1`] = `
               <div
                 class="emotion-12"
               >
-                New Report
+                New Progress Report
                 <span
                   class="splitter"
                 >
@@ -719,6 +719,7 @@ exports[`PageNewReport should render correctly 1`] = `
           <button
             class="emotion-13"
             data-cy="finish-cta"
+            disabled=""
           >
             Create
           </button>
@@ -729,7 +730,7 @@ exports[`PageNewReport should render correctly 1`] = `
           <h5
             class="emotion-15"
           >
-            New Report
+            New Progress Report
           </h5>
         </div>
       </div>
@@ -742,7 +743,7 @@ exports[`PageNewReport should render correctly 1`] = `
           <div
             class="emotion-18"
           >
-            Title
+            Title*
           </div>
           <div
             class="emotion-19"

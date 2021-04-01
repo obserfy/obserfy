@@ -268,7 +268,7 @@ exports[`PageAllReports should render correctly 1`] = `
           <h4
             class="emotion-4"
           >
-            Write reports
+            Write progress reports
           </h4>
           <p
             class="emotion-5"
@@ -281,7 +281,7 @@ exports[`PageAllReports should render correctly 1`] = `
             <button
               class="emotion-6"
             >
-              Start your first reports
+              Start your first report
             </button>
           </a>
         </div>
