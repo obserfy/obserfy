@@ -41,10 +41,10 @@ const PageNewReport: FC<PageNewReportProps> = () => {
           onChange={(e) => setTitle(e.target.value)}
         />
 
-        <Flex p={3}>
+        <Flex p={3} sx={{ flexDirection: ["column", "row"] }}>
           <DateInput
             label={t`Period Start`}
-            containerSx={{ mr: 3 }}
+            containerSx={{ mr: [0, 3], flexGrow: 1 }}
             value={periodStart}
             onChange={setPeriodStart}
           />
@@ -52,6 +52,7 @@ const PageNewReport: FC<PageNewReportProps> = () => {
             label={t`Period End`}
             onChange={setPeriodEnd}
             value={periodEnd}
+            containerSx={{ mt: [3, 0], flexGrow: 1 }}
           />
         </Flex>
       </Box>
