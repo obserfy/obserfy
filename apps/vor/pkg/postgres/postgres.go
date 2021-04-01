@@ -421,6 +421,15 @@ type (
 		VideoId   uuid.UUID `pg:"type:uuid,on_delete:CASCADE"`
 		Video     Video     `pg:"rel:has-one"`
 	}
+
+	ProgressReport struct {
+		Id          uuid.UUID `pg:"type:uuid"`
+		SchoolId    string    `pg:"type:uuid,on_delete:CASCADE"`
+		School      School    `pg:"rel:has-one"`
+		Title       string
+		PeriodStart time.Time
+		PeriodEnd   time.Time
+	}
 )
 
 // PartialUpdateModel makes it easy to partially update a table using go-pg by enforcing some
