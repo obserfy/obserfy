@@ -7,14 +7,8 @@ import useDetectVirtualKeyboard from "../../hooks/useDetectVirtualKeyboard"
 import useLocalizedMatch from "../../hooks/useLocalizedMatch"
 import { ReactComponent as FileIcon } from "../../icons/file-text.svg"
 import { ReactComponent as StudentsIcon } from "../../icons/home.svg"
-import { ReactComponent as QuestionMarkIcon } from "../../icons/question-mark.svg"
 import { ReactComponent as SettingsIcon } from "../../icons/settings.svg"
-import {
-  ADMIN_URL,
-  ALL_REPORT_URL,
-  STUDENTS_URL,
-  SUPPORT_URL,
-} from "../../routes"
+import { ADMIN_URL, ALL_REPORT_URL, STUDENTS_URL } from "../../routes"
 import Chatwoot from "../Chatwoot/Chatwoot"
 import Icon from "../Icon/Icon"
 import { Link } from "../Link/Link"
@@ -60,12 +54,7 @@ const Navbar: FC = () => {
           />
         </Box>
 
-        <NavBarItem
-          title={t`Students`}
-          icon={StudentsIcon}
-          to={STUDENTS_URL}
-          iconFill="textMediumEmphasis"
-        />
+        <NavBarItem title={t`Students`} icon={StudentsIcon} to={STUDENTS_URL} />
         <NavBarItem
           title={t`Progress Report`}
           icon={FileIcon}
@@ -74,11 +63,11 @@ const Navbar: FC = () => {
 
         <Box mt="auto" sx={{ display: ["none", "block"] }} />
         <NavBarItem title={t`Admin`} icon={SettingsIcon} to={ADMIN_URL} />
-        <NavBarItem
-          title={t`Support`}
-          icon={QuestionMarkIcon}
-          to={SUPPORT_URL}
-        />
+        {/* <NavBarItem */}
+        {/*  title={t`Support`} */}
+        {/*  icon={QuestionMarkIcon} */}
+        {/*  to={SUPPORT_URL} */}
+        {/* /> */}
         <Chatwoot />
       </Flex>
     </TranslucentBar>
@@ -114,7 +103,7 @@ const NavBarItem: FC<{
           justifyContent: "space-around",
           position: "relative",
           "&:after": {
-            top: [0, "inherit"],
+            top: [-0.5, "inherit"],
             right: ["inherit", 0],
             position: "absolute",
             backgroundColor: "textPrimary",
@@ -124,16 +113,13 @@ const NavBarItem: FC<{
             content: "''",
             transition: "width 100ms cubic-bezier(0.0, 0.0, 0.2, 1)",
           },
-          "&:hover": {
-            backgroundColor: "primaryLighter",
-          },
         }}
       >
         <Icon
           alt={title}
           as={icon}
           fill={match && iconFill ? "textPrimary" : iconFill || "transparent"}
-          size={24}
+          size={26}
           sx={{ color: match ? "textPrimary" : "textMediumEmphasis" }}
         />
       </Flex>

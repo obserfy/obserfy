@@ -1,4 +1,4 @@
-/* eslint-disable no-underscore-dangle */
+  /* eslint-disable no-underscore-dangle */
 import { navigate as gatsbyNavigate } from "gatsby"
 import { LocalizedLink as Link } from "gatsby-theme-i18n"
 import { NavigateOptions } from "@reach/router"
