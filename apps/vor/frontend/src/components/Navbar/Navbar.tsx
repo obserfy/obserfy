@@ -45,11 +45,11 @@ const Navbar: FC = () => {
           height: ["auto", "100%"],
         }}
       >
-        <Box mx="auto" my={3} sx={{ display: ["none", "block"] }}>
+        <Box mx="auto" my={2} mb={3} sx={{ display: ["none", "block"] }}>
           <StaticImage
             src="../../images/logo-transparent.png"
             alt="obserfy logo"
-            width={40}
+            width={34}
             placeholder="blurred"
           />
         </Box>

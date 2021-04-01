@@ -1,8 +1,13 @@
+import { t } from "@lingui/macro"
 import React from "react"
-import { Box } from "theme-ui"
+import PageNewReport from "../../../components/PageNewReport/PageNewReport"
+import SEO from "../../../components/seo"
 
-const NewReport = () => {
-  return <Box>asdfasfd</Box>
-}
+const NewReport = () => (
+  <>
+    <SEO title={t`New Report`} />
+    <PageNewReport />
+  </>
+)
 
 export default NewReport
