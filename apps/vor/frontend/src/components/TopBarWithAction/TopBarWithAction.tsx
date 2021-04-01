@@ -1,6 +1,6 @@
+import { Trans } from "@lingui/macro"
 import React, { FC, ReactNode } from "react"
 import { Button, Flex } from "theme-ui"
-import { Trans } from "@lingui/macro"
 import { borderBottom } from "../../border"
 import TopBar, { BreadcrumbData } from "../TopBar/TopBar"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
@@ -16,6 +16,7 @@ const TopBarWithAction: FC<TopBarWithActionProps> = ({
   breadcrumbs,
   onActionClick,
   buttonContent,
+  children,
 }) => (
   <TranslucentBar boxSx={{ position: "sticky", top: 0, ...borderBottom }}>
     <Flex sx={{ alignItems: "center", maxWidth: "maxWidth.sm" }} mx="auto">
@@ -31,6 +32,8 @@ const TopBarWithAction: FC<TopBarWithActionProps> = ({
         {buttonContent || <Trans>Add</Trans>}
       </Button>
     </Flex>
+
+    {children}
   </TranslucentBar>
 )
 
