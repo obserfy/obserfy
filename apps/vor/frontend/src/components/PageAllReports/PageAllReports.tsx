@@ -1,3 +1,4 @@
+import { Trans } from "@lingui/macro"
 import React, { FC } from "react"
 import { Box, Button, Flex } from "theme-ui"
 import { ReactComponent as EmptyIllustration } from "../../images/report-illustration.svg"
@@ -8,8 +9,6 @@ import Typography from "../Typography/Typography"
 export interface PageAllReportsProps {}
 const PageAllReports: FC<PageAllReportsProps> = () => (
   <Box>
-    {/* <Typography.H4 p={4}>Reports</Typography.H4> */}
-
     <EmptyPlaceholder />
   </Box>
 )
@@ -39,7 +38,7 @@ const EmptyPlaceholder = () => {
           mb={3}
           sx={{ textAlign: ["center", "center", "inherit"], lineHeight: 1.2 }}
         >
-          Write reports
+          <Trans>Write reports</Trans>
         </Typography.H4>
         <Typography.Body
           mb={3}
@@ -49,12 +48,16 @@ const EmptyPlaceholder = () => {
             color: "textMediumEmphasis",
           }}
         >
-          Easily write reports for parents with all the data that you need in
-          one place.
+          <Trans>
+            Easily write reports for parents with all the data that you need in
+            one place.
+          </Trans>
         </Typography.Body>
 
         <Link to={NEW_REPORT_URL}>
-          <Button>Start your first reports</Button>
+          <Button>
+            <Trans>Start your first reports</Trans>
+          </Button>
         </Link>
       </Flex>
 
