@@ -1577,7 +1577,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@testing-library/react",
-        "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:11.2.5"
+        "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:11.2.6"
       ],
       [
         "@testing-library/react-hooks",
@@ -23308,17 +23308,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@testing-library/react", [
-        ["npm:11.2.5", {
-          "packageLocation": "./.yarn/cache/@testing-library-react-npm-11.2.5-dc83329a0e-1389b4eb11.zip/node_modules/@testing-library/react/",
+        ["npm:11.2.6", {
+          "packageLocation": "./.yarn/cache/@testing-library-react-npm-11.2.6-92e094c052-3ad25d7b88.zip/node_modules/@testing-library/react/",
           "packageDependencies": [
-            ["@testing-library/react", "npm:11.2.5"]
+            ["@testing-library/react", "npm:11.2.6"]
           ],
           "linkType": "SOFT",
         }],
-        ["virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:11.2.5", {
-          "packageLocation": "./.yarn/$$virtual/@testing-library-react-virtual-55dad40c91/0/cache/@testing-library-react-npm-11.2.5-dc83329a0e-1389b4eb11.zip/node_modules/@testing-library/react/",
+        ["virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:11.2.6", {
+          "packageLocation": "./.yarn/$$virtual/@testing-library-react-virtual-4f2c19454e/0/cache/@testing-library-react-npm-11.2.6-92e094c052-3ad25d7b88.zip/node_modules/@testing-library/react/",
           "packageDependencies": [
-            ["@testing-library/react", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:11.2.5"],
+            ["@testing-library/react", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:11.2.6"],
             ["@babel/runtime", "npm:7.13.10"],
             ["@testing-library/dom", "npm:7.30.0"],
             ["@types/react", "npm:17.0.3"],
@@ -58275,7 +58275,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@svgr/webpack", "npm:5.5.0"],
             ["@tailwindcss/jit", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.1.17"],
             ["@tailwindcss/typography", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.4.0"],
-            ["@testing-library/react", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:11.2.5"],
+            ["@testing-library/react", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:11.2.6"],
             ["@testing-library/react-hooks", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:5.1.0"],
             ["@theme-ui/match-media", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.6.0-canary.c5a716a.0"],
             ["@types/body-scroll-lock", "npm:2.6.1"],
