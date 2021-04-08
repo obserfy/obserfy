@@ -8137,7 +8137,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "preact-render-to-string",
-        "virtual:0d6b0cab914f91fdced9fa443a750979faeca919d29728f248939093113567b0cd8a59c15afe5f8469d828893fe3f206ccb064b148d39c8d7b710604425d659c#npm:5.1.16"
+        "virtual:0d6b0cab914f91fdced9fa443a750979faeca919d29728f248939093113567b0cd8a59c15afe5f8469d828893fe3f206ccb064b148d39c8d7b710604425d659c#npm:5.1.19"
       ],
       [
         "prebuild-install",
@@ -36470,7 +36470,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["pino-pretty", "npm:4.7.1"],
             ["postcss", "npm:8.2.8"],
             ["preact", "npm:10.5.13"],
-            ["preact-render-to-string", "virtual:0d6b0cab914f91fdced9fa443a750979faeca919d29728f248939093113567b0cd8a59c15afe5f8469d828893fe3f206ccb064b148d39c8d7b710604425d659c#npm:5.1.16"],
+            ["preact-render-to-string", "virtual:0d6b0cab914f91fdced9fa443a750979faeca919d29728f248939093113567b0cd8a59c15afe5f8469d828893fe3f206ccb064b148d39c8d7b710604425d659c#npm:5.1.19"],
             ["prettier", "npm:2.2.1"],
             ["react", [
               "@preact/compat",
@@ -37546,7 +37546,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/preact-render-to-string", null],
             ["gatsby", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:3.0.4"],
             ["preact", "npm:10.5.13"],
-            ["preact-render-to-string", "virtual:0d6b0cab914f91fdced9fa443a750979faeca919d29728f248939093113567b0cd8a59c15afe5f8469d828893fe3f206ccb064b148d39c8d7b710604425d659c#npm:5.1.16"]
+            ["preact-render-to-string", "virtual:0d6b0cab914f91fdced9fa443a750979faeca919d29728f248939093113567b0cd8a59c15afe5f8469d828893fe3f206ccb064b148d39c8d7b710604425d659c#npm:5.1.19"]
           ],
           "packagePeers": [
             "@types/gatsby",
@@ -46094,7 +46094,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["module-alias", "npm:2.2.2"],
             ["next", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:10.1.1"],
             ["preact", "npm:10.5.13"],
-            ["preact-render-to-string", "virtual:0d6b0cab914f91fdced9fa443a750979faeca919d29728f248939093113567b0cd8a59c15afe5f8469d828893fe3f206ccb064b148d39c8d7b710604425d659c#npm:5.1.16"],
+            ["preact-render-to-string", "virtual:0d6b0cab914f91fdced9fa443a750979faeca919d29728f248939093113567b0cd8a59c15afe5f8469d828893fe3f206ccb064b148d39c8d7b710604425d659c#npm:5.1.19"],
             ["preact-ssr-prepass", null]
           ],
           "packagePeers": [
@@ -49830,23 +49830,23 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/preact-npm-10.5.13-0d6b0cab91-9433cd19eb.zip/node_modules/preact/",
           "packageDependencies": [
             ["preact", "npm:10.5.13"],
-            ["preact-render-to-string", "virtual:0d6b0cab914f91fdced9fa443a750979faeca919d29728f248939093113567b0cd8a59c15afe5f8469d828893fe3f206ccb064b148d39c8d7b710604425d659c#npm:5.1.16"]
+            ["preact-render-to-string", "virtual:0d6b0cab914f91fdced9fa443a750979faeca919d29728f248939093113567b0cd8a59c15afe5f8469d828893fe3f206ccb064b148d39c8d7b710604425d659c#npm:5.1.19"]
           ],
           "linkType": "HARD",
         }]
       ]],
       ["preact-render-to-string", [
-        ["npm:5.1.16", {
-          "packageLocation": "./.yarn/cache/preact-render-to-string-npm-5.1.16-574ea310ea-a8438feaeb.zip/node_modules/preact-render-to-string/",
+        ["npm:5.1.19", {
+          "packageLocation": "./.yarn/cache/preact-render-to-string-npm-5.1.19-12c6fd3420-d90427f67e.zip/node_modules/preact-render-to-string/",
           "packageDependencies": [
-            ["preact-render-to-string", "npm:5.1.16"]
+            ["preact-render-to-string", "npm:5.1.19"]
           ],
           "linkType": "SOFT",
         }],
-        ["virtual:0d6b0cab914f91fdced9fa443a750979faeca919d29728f248939093113567b0cd8a59c15afe5f8469d828893fe3f206ccb064b148d39c8d7b710604425d659c#npm:5.1.16", {
-          "packageLocation": "./.yarn/$$virtual/preact-render-to-string-virtual-71303ac927/0/cache/preact-render-to-string-npm-5.1.16-574ea310ea-a8438feaeb.zip/node_modules/preact-render-to-string/",
+        ["virtual:0d6b0cab914f91fdced9fa443a750979faeca919d29728f248939093113567b0cd8a59c15afe5f8469d828893fe3f206ccb064b148d39c8d7b710604425d659c#npm:5.1.19", {
+          "packageLocation": "./.yarn/$$virtual/preact-render-to-string-virtual-8b2b143af6/0/cache/preact-render-to-string-npm-5.1.19-12c6fd3420-d90427f67e.zip/node_modules/preact-render-to-string/",
           "packageDependencies": [
-            ["preact-render-to-string", "virtual:0d6b0cab914f91fdced9fa443a750979faeca919d29728f248939093113567b0cd8a59c15afe5f8469d828893fe3f206ccb064b148d39c8d7b710604425d659c#npm:5.1.16"],
+            ["preact-render-to-string", "virtual:0d6b0cab914f91fdced9fa443a750979faeca919d29728f248939093113567b0cd8a59c15afe5f8469d828893fe3f206ccb064b148d39c8d7b710604425d659c#npm:5.1.19"],
             ["@types/preact", null],
             ["preact", "npm:10.5.13"],
             ["pretty-format", "npm:3.8.0"]
@@ -58373,7 +58373,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["platform", "npm:1.3.6"],
             ["postcss", "npm:8.2.8"],
             ["preact", "npm:10.5.13"],
-            ["preact-render-to-string", "virtual:0d6b0cab914f91fdced9fa443a750979faeca919d29728f248939093113567b0cd8a59c15afe5f8469d828893fe3f206ccb064b148d39c8d7b710604425d659c#npm:5.1.16"],
+            ["preact-render-to-string", "virtual:0d6b0cab914f91fdced9fa443a750979faeca919d29728f248939093113567b0cd8a59c15afe5f8469d828893fe3f206ccb064b148d39c8d7b710604425d659c#npm:5.1.19"],
             ["prettier", "npm:2.2.1"],
             ["prop-types", "npm:15.7.2"],
             ["query-string", "npm:6.14.1"],
