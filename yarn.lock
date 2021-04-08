@@ -16655,7 +16655,7 @@ fsevents@^1.2.7:
     pino-pretty: 4.7.1
     postcss: 8.2.8
     preact: 10.5.13
-    preact-render-to-string: 5.1.16
+    preact-render-to-string: 5.1.19
     prettier: 2.2.1
     react: "npm:@preact/compat@0.0.4"
     react-dom: "npm:@preact/compat@0.0.4"
@@ -27385,14 +27385,14 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"preact-render-to-string@npm:5.1.16":
-  version: 5.1.16
-  resolution: "preact-render-to-string@npm:5.1.16"
+"preact-render-to-string@npm:5.1.19":
+  version: 5.1.19
+  resolution: "preact-render-to-string@npm:5.1.19"
   dependencies:
     pretty-format: ^3.8.0
   peerDependencies:
     preact: ">=10"
-  checksum: a8438feaeb90a50243acca91d3af7aa450b452e85dd80fb944bbc2dc50141ff5c278953667494e9906b5c7f7b8d83523e8dc5b6be6f1b1cd76208260764d64c9
+  checksum: d90427f67ec6319f31b6dc7caf63bb9b57d8dc74d49093dfe2687e94a705a6c79f52e2be5cb66078cc0f0135862aecd181090c8e926129bd8d56df399cd77124
   languageName: node
   linkType: hard
 
@@ -34350,7 +34350,7 @@ resolve@1.1.7:
     npm-run-all: 4.1.5
     postcss: 8.2.8
     preact: 10.5.13
-    preact-render-to-string: 5.1.12
+    preact-render-to-string: 5.1.19
     prettier: 2.2.1
     query-string: 6.14.1
     react: 17.0.1
