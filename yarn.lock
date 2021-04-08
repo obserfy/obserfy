@@ -6533,7 +6533,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/http-proxy@npm:^1.17.4":
+"@types/http-proxy@npm:^1.17.4, @types/http-proxy@npm:^1.17.5":
   version: 1.17.5
   resolution: "@types/http-proxy@npm:1.17.5"
   dependencies:
@@ -19126,16 +19126,17 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"http-proxy-middleware@npm:1.0.6":
-  version: 1.0.6
-  resolution: "http-proxy-middleware@npm:1.0.6"
+"http-proxy-middleware@npm:1.1.0":
+  version: 1.1.0
+  resolution: "http-proxy-middleware@npm:1.1.0"
   dependencies:
-    "@types/http-proxy": ^1.17.4
+    "@types/http-proxy": ^1.17.5
+    camelcase: ^6.2.0
     http-proxy: ^1.18.1
     is-glob: ^4.0.1
-    lodash: ^4.17.20
+    is-plain-obj: ^3.0.0
     micromatch: ^4.0.2
-  checksum: 46385b03f1a2c5895e6ed054ebb966ac6e8929405bbe8690db78dce460ec19f4cd892fcb12f99f869a047ef888409d0fe7db703d936d853c2c22ea17dddba27b
+  checksum: 231bf80920f775c6df376816aac0842a50af183d7743ed2f46884c307435f030a1b3a83b2931bb07120a4e69f05ed74ec1f4bf90f465fcdbf74645069edd4066
   languageName: node
   linkType: hard
 
@@ -20381,6 +20382,13 @@ fsevents@^1.2.7:
   version: 2.1.0
   resolution: "is-plain-obj@npm:2.1.0"
   checksum: 2314302f9140d1e9607731d523f207d8000281aebbabe0083210342c0758976f75f0f5db405e55910bd4dc9a04baddbeab9d476290642b5a0d31431cc9bda4b3
+  languageName: node
+  linkType: hard
+
+"is-plain-obj@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "is-plain-obj@npm:3.0.0"
+  checksum: 70a50b220133b82adf1302aa7efde74d6a2b734a6687b199c733491a4f724b69d1196a6c440238adcc767cc419e7dc02309af159ab21412f685893d36154eb2e
   languageName: node
   linkType: hard
 
@@ -34329,7 +34337,7 @@ resolve@1.1.7:
     gatsby-theme-i18n-lingui: 1.0.4
     gatsby-transformer-sharp: 3.0.0
     hls.js: 1.0.0-rc.4
-    http-proxy-middleware: 1.0.6
+    http-proxy-middleware: 1.1.0
     hygen: 6.0.4
     idb-keyval: 5.0.4
     immer: 8.0.4
