@@ -5453,7 +5453,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "http-proxy-middleware",
-        "npm:1.0.6"
+        "npm:1.1.0"
       ],
       [
         "http-signature",
@@ -40436,14 +40436,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
-        ["npm:1.0.6", {
-          "packageLocation": "./.yarn/cache/http-proxy-middleware-npm-1.0.6-b532e3ab45-46385b03f1.zip/node_modules/http-proxy-middleware/",
+        ["npm:1.1.0", {
+          "packageLocation": "./.yarn/cache/http-proxy-middleware-npm-1.1.0-b43b25d6b8-231bf80920.zip/node_modules/http-proxy-middleware/",
           "packageDependencies": [
-            ["http-proxy-middleware", "npm:1.0.6"],
+            ["http-proxy-middleware", "npm:1.1.0"],
             ["@types/http-proxy", "npm:1.17.5"],
+            ["camelcase", "npm:6.2.0"],
             ["http-proxy", "npm:1.18.1"],
             ["is-glob", "npm:4.0.1"],
-            ["lodash", "npm:4.17.21"],
+            ["is-plain-obj", "npm:3.0.0"],
             ["micromatch", "npm:4.0.2"]
           ],
           "linkType": "HARD",
@@ -41848,6 +41849,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/is-plain-obj-npm-2.1.0-8dffd7ae9c-2314302f91.zip/node_modules/is-plain-obj/",
           "packageDependencies": [
             ["is-plain-obj", "npm:2.1.0"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:3.0.0", {
+          "packageLocation": "./.yarn/cache/is-plain-obj-npm-3.0.0-a5ae411d5a-70a50b2201.zip/node_modules/is-plain-obj/",
+          "packageDependencies": [
+            ["is-plain-obj", "npm:3.0.0"]
           ],
           "linkType": "HARD",
         }]
@@ -58349,7 +58357,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["gatsby-theme-i18n-lingui", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#workspace:packages/gatsby-theme-i18n-lingui"],
             ["gatsby-transformer-sharp", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:3.0.0"],
             ["hls.js", "npm:1.0.0-rc.4"],
-            ["http-proxy-middleware", "npm:1.0.6"],
+            ["http-proxy-middleware", "npm:1.1.0"],
             ["hygen", "npm:6.0.4"],
             ["idb-keyval", "npm:5.0.4"],
             ["immer", "npm:8.0.4"],
