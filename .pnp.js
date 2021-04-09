@@ -5365,7 +5365,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "hls.js",
-        "npm:1.0.0-rc.4"
+        "npm:1.0.0"
       ],
       [
         "hmac-drbg",
@@ -10085,10 +10085,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       [
         "url-to-options",
         "npm:1.0.1"
-      ],
-      [
-        "url-toolkit",
-        "npm:2.2.1"
       ],
       [
         "use",
@@ -36451,7 +36447,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-react-hooks", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:4.2.0"],
             ["formidable-serverless", "npm:1.1.1"],
             ["fp-ts", "npm:2.9.5"],
-            ["hls.js", "npm:1.0.0-rc.4"],
+            ["hls.js", "npm:1.0.0"],
             ["io-ts", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:2.2.16"],
             ["io-ts-types", "virtual:b33afc356c11d8c8ade3a9ec373f6651f450837f643accd26568f158ba61c6c133e5b1392aaa7ece814405845e8b8970e88db53cc9c2db5351050125c5f6ca93#npm:0.5.16"],
             ["jest", "npm:26.6.3"],
@@ -40081,12 +40077,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["hls.js", [
-        ["npm:1.0.0-rc.4", {
-          "packageLocation": "./.yarn/cache/hls.js-npm-1.0.0-rc.4-b72467f5d8-e7669012cf.zip/node_modules/hls.js/",
+        ["npm:1.0.0", {
+          "packageLocation": "./.yarn/cache/hls.js-npm-1.0.0-70810b7b14-868a6077a9.zip/node_modules/hls.js/",
           "packageDependencies": [
-            ["hls.js", "npm:1.0.0-rc.4"],
-            ["eventemitter3", "npm:4.0.7"],
-            ["url-toolkit", "npm:2.2.1"]
+            ["hls.js", "npm:1.0.0"]
           ],
           "linkType": "HARD",
         }]
@@ -57842,15 +57836,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["url-toolkit", [
-        ["npm:2.2.1", {
-          "packageLocation": "./.yarn/cache/url-toolkit-npm-2.2.1-66ec140114-2558ba9b44.zip/node_modules/url-toolkit/",
-          "packageDependencies": [
-            ["url-toolkit", "npm:2.2.1"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["use", [
         ["npm:3.1.1", {
           "packageLocation": "./.yarn/cache/use-npm-3.1.1-7ba643714c-8dd3bdeeda.zip/node_modules/use/",
@@ -58356,7 +58341,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["gatsby-theme-i18n", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#workspace:packages/gatsby-theme-i18n"],
             ["gatsby-theme-i18n-lingui", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#workspace:packages/gatsby-theme-i18n-lingui"],
             ["gatsby-transformer-sharp", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:3.0.0"],
-            ["hls.js", "npm:1.0.0-rc.4"],
+            ["hls.js", "npm:1.0.0"],
             ["http-proxy-middleware", "npm:1.1.0"],
             ["hygen", "npm:6.0.4"],
             ["idb-keyval", "npm:5.0.4"],
