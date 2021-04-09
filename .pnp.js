@@ -1641,7 +1641,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@types/auth0-js",
-        "npm:9.14.2"
+        "npm:9.14.3"
       ],
       [
         "@types/babel__core",
@@ -23638,10 +23638,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@types/auth0-js", [
-        ["npm:9.14.2", {
-          "packageLocation": "./.yarn/cache/@types-auth0-js-npm-9.14.2-01fceba81a-e11c33e2ac.zip/node_modules/@types/auth0-js/",
+        ["npm:9.14.3", {
+          "packageLocation": "./.yarn/cache/@types-auth0-js-npm-9.14.3-9cc0530b08-63afc0dd1a.zip/node_modules/@types/auth0-js/",
           "packageDependencies": [
-            ["@types/auth0-js", "npm:9.14.2"]
+            ["@types/auth0-js", "npm:9.14.3"]
           ],
           "linkType": "HARD",
         }]
@@ -32901,7 +32901,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@cypress/webpack-preprocessor", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:5.7.0"],
             ["@hapi/iron", "npm:6.0.0"],
             ["@swc/core", "npm:1.2.51"],
-            ["@types/auth0-js", "npm:9.14.2"],
+            ["@types/auth0-js", "npm:9.14.3"],
             ["@types/faker", "npm:5.5.0"],
             ["@types/node", "npm:14.14.37"],
             ["@types/pg", "npm:7.14.11"],
