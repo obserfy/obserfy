@@ -1565,7 +1565,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@tailwindcss/jit",
-        "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.1.17"
+        "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.1.18"
       ],
       [
         "@tailwindcss/typography",
@@ -23187,17 +23187,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@tailwindcss/jit", [
-        ["npm:0.1.17", {
-          "packageLocation": "./.yarn/cache/@tailwindcss-jit-npm-0.1.17-60c40d46ad-a2c7684995.zip/node_modules/@tailwindcss/jit/",
+        ["npm:0.1.18", {
+          "packageLocation": "./.yarn/cache/@tailwindcss-jit-npm-0.1.18-9effbccb1a-c9305b27f3.zip/node_modules/@tailwindcss/jit/",
           "packageDependencies": [
-            ["@tailwindcss/jit", "npm:0.1.17"]
+            ["@tailwindcss/jit", "npm:0.1.18"]
           ],
           "linkType": "SOFT",
         }],
-        ["virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.1.17", {
-          "packageLocation": "./.yarn/$$virtual/@tailwindcss-jit-virtual-88ecb2950f/0/cache/@tailwindcss-jit-npm-0.1.17-60c40d46ad-a2c7684995.zip/node_modules/@tailwindcss/jit/",
+        ["virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.1.18", {
+          "packageLocation": "./.yarn/$$virtual/@tailwindcss-jit-virtual-e7cedc97e6/0/cache/@tailwindcss-jit-npm-0.1.18-9effbccb1a-c9305b27f3.zip/node_modules/@tailwindcss/jit/",
           "packageDependencies": [
-            ["@tailwindcss/jit", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.1.17"],
+            ["@tailwindcss/jit", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.1.18"],
             ["@types/postcss", null],
             ["@types/tailwindcss", null],
             ["chokidar", "npm:3.5.1"],
@@ -23220,10 +23220,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
-        ["virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:0.1.17", {
-          "packageLocation": "./.yarn/$$virtual/@tailwindcss-jit-virtual-28cca333c3/0/cache/@tailwindcss-jit-npm-0.1.17-60c40d46ad-a2c7684995.zip/node_modules/@tailwindcss/jit/",
+        ["virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:0.1.18", {
+          "packageLocation": "./.yarn/$$virtual/@tailwindcss-jit-virtual-c859041413/0/cache/@tailwindcss-jit-npm-0.1.18-9effbccb1a-c9305b27f3.zip/node_modules/@tailwindcss/jit/",
           "packageDependencies": [
-            ["@tailwindcss/jit", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:0.1.17"],
+            ["@tailwindcss/jit", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:0.1.18"],
             ["@types/postcss", null],
             ["@types/tailwindcss", null],
             ["chokidar", "npm:3.5.1"],
@@ -36056,7 +36056,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@mdx-js/mdx", "npm:1.6.22"],
             ["@mdx-js/react", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:1.6.22"],
             ["@mikaelkristiansson/domready", "npm:1.0.11"],
-            ["@tailwindcss/jit", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:0.1.17"],
+            ["@tailwindcss/jit", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:0.1.18"],
             ["@tailwindcss/typography", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:0.4.0"],
             ["@types/react", "npm:17.0.3"],
             ["@types/react-helmet", "npm:6.1.0"],
@@ -36416,7 +36416,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@sentry/node", "npm:6.2.1"],
             ["@sentry/webpack-plugin", "npm:1.14.2"],
             ["@svgr/webpack", "npm:5.5.0"],
-            ["@tailwindcss/jit", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:0.1.17"],
+            ["@tailwindcss/jit", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:0.1.18"],
             ["@tailwindcss/typography", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:0.4.0"],
             ["@types/body-scroll-lock", "npm:2.6.1"],
             ["@types/dompurify", "npm:2.2.1"],
@@ -58281,7 +58281,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@storybook/addons", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:6.1.11"],
             ["@storybook/react", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:6.1.11"],
             ["@svgr/webpack", "npm:5.5.0"],
-            ["@tailwindcss/jit", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.1.17"],
+            ["@tailwindcss/jit", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.1.18"],
             ["@tailwindcss/typography", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:0.4.0"],
             ["@testing-library/react", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:11.2.6"],
             ["@testing-library/react-hooks", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:5.1.1"],
