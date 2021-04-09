@@ -581,7 +581,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@cypress/webpack-preprocessor",
-        "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:5.6.0"
+        "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:5.7.0"
       ],
       [
         "@cypress/xvfb",
@@ -17291,17 +17291,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@cypress/webpack-preprocessor", [
-        ["npm:5.6.0", {
-          "packageLocation": "./.yarn/cache/@cypress-webpack-preprocessor-npm-5.6.0-593364c05d-7246e6118a.zip/node_modules/@cypress/webpack-preprocessor/",
+        ["npm:5.7.0", {
+          "packageLocation": "./.yarn/cache/@cypress-webpack-preprocessor-npm-5.7.0-f8ca8f5ece-59d3484ed4.zip/node_modules/@cypress/webpack-preprocessor/",
           "packageDependencies": [
-            ["@cypress/webpack-preprocessor", "npm:5.6.0"]
+            ["@cypress/webpack-preprocessor", "npm:5.7.0"]
           ],
           "linkType": "SOFT",
         }],
-        ["virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:5.6.0", {
-          "packageLocation": "./.yarn/$$virtual/@cypress-webpack-preprocessor-virtual-8262396543/0/cache/@cypress-webpack-preprocessor-npm-5.6.0-593364c05d-7246e6118a.zip/node_modules/@cypress/webpack-preprocessor/",
+        ["virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:5.7.0", {
+          "packageLocation": "./.yarn/$$virtual/@cypress-webpack-preprocessor-virtual-7f830da942/0/cache/@cypress-webpack-preprocessor-npm-5.7.0-f8ca8f5ece-59d3484ed4.zip/node_modules/@cypress/webpack-preprocessor/",
           "packageDependencies": [
-            ["@cypress/webpack-preprocessor", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:5.6.0"],
+            ["@cypress/webpack-preprocessor", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:5.7.0"],
             ["@babel/core", null],
             ["@babel/preset-env", null],
             ["@types/babel-loader", null],
@@ -32898,7 +32898,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["e2e", "workspace:apps/e2e"],
             ["@cypress/code-coverage", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:3.9.4"],
-            ["@cypress/webpack-preprocessor", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:5.6.0"],
+            ["@cypress/webpack-preprocessor", "virtual:bd0615ff260070d536fca5beccdec3205e40bc839285afc4db8dc20f3a709e50f7aaf2705b8ad5959a5a09fa6f9d753f23d15197638c71649ab87855283ed77c#npm:5.7.0"],
             ["@hapi/iron", "npm:6.0.0"],
             ["@swc/core", "npm:1.2.51"],
             ["@types/auth0-js", "npm:9.14.2"],
