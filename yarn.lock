@@ -2144,9 +2144,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cypress/webpack-preprocessor@npm:5.6.0":
-  version: 5.6.0
-  resolution: "@cypress/webpack-preprocessor@npm:5.6.0"
+"@cypress/webpack-preprocessor@npm:5.7.0":
+  version: 5.7.0
+  resolution: "@cypress/webpack-preprocessor@npm:5.7.0"
   dependencies:
     bluebird: ^3.7.1
     debug: 4.3.2
@@ -2156,7 +2156,7 @@ __metadata:
     "@babel/preset-env": ^7.0.0
     babel-loader: ^8.0.2
     webpack: ^4.18.1
-  checksum: 7246e6118a436a13c1d622923d7956d38b857fa8f11bc5baed74377f71b0c7a7103b887f8dc7f6c81bfd347876c9c49db6e2b0d982507cbfca82c773cec28fbe
+  checksum: 59d3484ed428b6935d12b282fd52ff7d8633bd1b789234a31cc788e80d1aa3ceb8d650c47720e17c606dd764fdcb2554de659b449418daf9ab40a840b01b761c
   languageName: node
   linkType: hard
 
@@ -13943,7 +13943,7 @@ __metadata:
   resolution: "e2e@workspace:apps/e2e"
   dependencies:
     "@cypress/code-coverage": 3.9.4
-    "@cypress/webpack-preprocessor": 5.6.0
+    "@cypress/webpack-preprocessor": 5.7.0
     "@hapi/iron": 6.0.0
     "@swc/core": 1.2.51
     "@types/auth0-js": 9.14.2
