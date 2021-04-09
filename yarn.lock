@@ -15152,7 +15152,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eventemitter3@npm:^4.0.0, eventemitter3@npm:^4.0.4, eventemitter3@npm:^4.0.7":
+"eventemitter3@npm:^4.0.0, eventemitter3@npm:^4.0.4":
   version: 4.0.7
   resolution: "eventemitter3@npm:4.0.7"
   checksum: 1fc12c7bc3b4194c50975827e72d56ff57c32b75a4c7dbf4d5eebf3c8371f6f1aad6799150b609de1b867c0d8a9885c08b6ca5e7e0dc437d6152f3063b2607dd
@@ -16736,7 +16736,7 @@ fsevents@^1.2.7:
     eslint-plugin-react-hooks: 4.2.0
     formidable-serverless: 1.1.1
     fp-ts: 2.9.5
-    hls.js: 1.0.0-rc.4
+    hls.js: 1.0.0
     io-ts: 2.2.16
     io-ts-types: 0.5.16
     jest: 26.6.3
@@ -18915,13 +18915,10 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"hls.js@npm:1.0.0-rc.4":
-  version: 1.0.0-rc.4
-  resolution: "hls.js@npm:1.0.0-rc.4"
-  dependencies:
-    eventemitter3: ^4.0.7
-    url-toolkit: ^2.2.1
-  checksum: e7669012cfa955f13f20c793535b512299aa4e7fa80b86acf857fe0c0ffae81df61e210205f808b48051fdb02d023d0bd0aec61a6e945e8f7f48096799ebd1ab
+"hls.js@npm:1.0.0":
+  version: 1.0.0
+  resolution: "hls.js@npm:1.0.0"
+  checksum: 868a6077a9d7908efaac481adf668f27cb673079368111d3744bb51a761eac00ceaf891b2886c26c4a21b319a7e6d2b69733ad4e177ffd078cf3264ca69c57de
   languageName: node
   linkType: hard
 
@@ -34003,13 +34000,6 @@ resolve@1.1.7:
   languageName: node
   linkType: hard
 
-"url-toolkit@npm:^2.2.1":
-  version: 2.2.1
-  resolution: "url-toolkit@npm:2.2.1"
-  checksum: 2558ba9b44cf68294444b89063464f7cd84c5f9c5c871a2906ff8e2074b93383029605fc33a2de1455b6ef6307c28ed41408bcc719158a91f7037745f8abc673
-  languageName: node
-  linkType: hard
-
 "url@npm:^0.11.0, url@npm:~0.11.0":
   version: 0.11.0
   resolution: "url@npm:0.11.0"
@@ -34436,7 +34426,7 @@ resolve@1.1.7:
     gatsby-theme-i18n: 1.0.5
     gatsby-theme-i18n-lingui: 1.0.4
     gatsby-transformer-sharp: 3.0.0
-    hls.js: 1.0.0-rc.4
+    hls.js: 1.0.0
     http-proxy-middleware: 1.1.0
     hygen: 6.0.4
     idb-keyval: 5.0.4
