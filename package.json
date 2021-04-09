@@ -11,7 +11,7 @@
     "@emotion/react": "^11.1.4",
     "preact": "10.5.13",
     "preact-render-to-string": "5.1.19",
-    "@prefresh/webpack": "3.2.1",
+    "@prefresh/webpack": "3.2.2",
     "@graphql-codegen/visitor-plugin-common": "1.19.1",
     "@prefresh/utils": "1.1.1",
     "@prefresh/babel-plugin": "0.4.1",
