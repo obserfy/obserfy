@@ -38,7 +38,7 @@
     "@cypress/webpack-preprocessor": "5.7.0",
     "@hapi/iron": "6.0.0",
     "@swc/core": "1.2.51",
-    "@types/auth0-js": "9.14.2",
+    "@types/auth0-js": "9.14.3",
     "@types/pg": "7.14.11",
     "auth0-js": "9.15.0",
     "cypress-file-upload": "5.0.3",
