@@ -1721,7 +1721,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@types/formidable",
-        "npm:1.0.31"
+        "npm:1.2.1"
       ],
       [
         "@types/get-port",
@@ -23773,11 +23773,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@types/formidable", [
-        ["npm:1.0.31", {
-          "packageLocation": "./.yarn/cache/@types-formidable-npm-1.0.31-b2373c2952-77c614bbff.zip/node_modules/@types/formidable/",
+        ["npm:1.2.1", {
+          "packageLocation": "./.yarn/cache/@types-formidable-npm-1.2.1-b6ca192b5c-6c202be8b9.zip/node_modules/@types/formidable/",
           "packageDependencies": [
-            ["@types/formidable", "npm:1.0.31"],
-            ["@types/events", "npm:3.0.0"],
+            ["@types/formidable", "npm:1.2.1"],
             ["@types/node", "npm:14.14.33"]
           ],
           "linkType": "HARD",
@@ -36257,7 +36256,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@tailwindcss/typography", "virtual:b5568c9f5910e995693897f02fc73fc28efb824e3bcb17c664abf9ac82aeb1f811cd7089ba1c3fa5f3c2ab254f8e8697ae6aafaeaf8813f0a30986489505e875#npm:0.4.0"],
             ["@types/body-scroll-lock", "npm:2.6.1"],
             ["@types/dompurify", "npm:2.2.1"],
-            ["@types/formidable", "npm:1.0.31"],
+            ["@types/formidable", "npm:1.2.1"],
             ["@types/hls.js", "npm:0.13.3"],
             ["@types/jest", "npm:26.0.22"],
             ["@types/minio", "npm:7.0.7"],
