@@ -16274,7 +16274,7 @@ __metadata:
     gatsby-transformer-remark: 3.0.0
     gatsby-transformer-sharp: 3.0.0
     make-plural: 6.2.2
-    postcss: 8.2.8
+    postcss: 8.2.12
     postcss-preset-env: 6.7.0
     preact: 10.5.13
     prettier: 2.2.1
@@ -16610,7 +16610,7 @@ fsevents@^1.2.7:
     pg: 8.5.1
     pino: 6.11.2
     pino-pretty: 4.7.1
-    postcss: 8.2.8
+    postcss: 8.2.12
     preact: 10.5.13
     preact-render-to-string: 5.1.19
     prettier: 2.2.1
@@ -23896,7 +23896,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"nanoid@npm:3.1.22":
+"nanoid@npm:3.1.22, nanoid@npm:^3.1.22":
   version: 3.1.22
   resolution: "nanoid@npm:3.1.22"
   bin:
@@ -27252,6 +27252,17 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"postcss@npm:8.2.12":
+  version: 8.2.12
+  resolution: "postcss@npm:8.2.12"
+  dependencies:
+    colorette: ^1.2.2
+    nanoid: ^3.1.22
+    source-map: ^0.6.1
+  checksum: f16956a6cc20ae78390338362e0640fa25a88895ddc55bd5850536a3140897a538fe91b5d6dc9c84147a20ff100f6389b7445deb539159bea4df7e584f5a63ac
+  languageName: node
+  linkType: hard
+
 "postcss@npm:8.2.6":
   version: 8.2.6
   resolution: "postcss@npm:8.2.6"
@@ -27260,17 +27271,6 @@ fsevents@^1.2.7:
     nanoid: ^3.1.20
     source-map: ^0.6.1
   checksum: 31dcc6632589e5b0d06ae3854122073a38952f3a25280511fa4bd8c2bc254c05d1d1db0913848ed3171c84d41b233ec3fe5d7349de4700f624a16fa93553ccac
-  languageName: node
-  linkType: hard
-
-"postcss@npm:8.2.8, postcss@npm:^8.1.6, postcss@npm:^8.2.1, postcss@npm:^8.2.6":
-  version: 8.2.8
-  resolution: "postcss@npm:8.2.8"
-  dependencies:
-    colorette: ^1.2.2
-    nanoid: ^3.1.20
-    source-map: ^0.6.1
-  checksum: 6e17d28833cf918a5ab306bfc7ec66b236dc51ed0f3de959491d40f6a171f5bd5f26de12f74e6bfeebaad44b0ac92b9f477a669d5f1fc07a27d67d8147a4bf6f
   languageName: node
   linkType: hard
 
@@ -27293,6 +27293,17 @@ fsevents@^1.2.7:
     source-map: ^0.6.1
     supports-color: ^6.1.0
   checksum: 8a979ea9799dd48399337708a395ddb8cf0e328515201ed35c99f5ba5eaa7688eae65764c570bf49b5be0b106226e2f222abc210de068b3d3da9a9a3bbb70567
+  languageName: node
+  linkType: hard
+
+"postcss@npm:^8.1.6, postcss@npm:^8.2.1, postcss@npm:^8.2.6":
+  version: 8.2.8
+  resolution: "postcss@npm:8.2.8"
+  dependencies:
+    colorette: ^1.2.2
+    nanoid: ^3.1.20
+    source-map: ^0.6.1
+  checksum: 6e17d28833cf918a5ab306bfc7ec66b236dc51ed0f3de959491d40f6a171f5bd5f26de12f74e6bfeebaad44b0ac92b9f477a669d5f1fc07a27d67d8147a4bf6f
   languageName: node
   linkType: hard
 
@@ -34257,7 +34268,7 @@ resolve@1.1.7:
     mux-embed: 3.5.0
     nanoid: 3.1.22
     npm-run-all: 4.1.5
-    postcss: 8.2.8
+    postcss: 8.2.12
     preact: 10.5.13
     preact-render-to-string: 5.1.19
     prettier: 2.2.1
