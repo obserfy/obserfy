@@ -2242,11 +2242,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/jest@npm:11.2.1":
-  version: 11.2.1
-  resolution: "@emotion/jest@npm:11.2.1"
+"@emotion/jest@npm:11.3.0":
+  version: 11.3.0
+  resolution: "@emotion/jest@npm:11.3.0"
   dependencies:
-    "@babel/runtime": ^7.7.2
+    "@babel/runtime": ^7.13.10
     "@emotion/css-prettifier": ^1.0.0
     chalk: ^4.1.0
     specificity: ^0.4.1
@@ -2259,7 +2259,7 @@ __metadata:
       optional: true
     enzyme-to-json:
       optional: true
-  checksum: 240a9e5c6545e9b35abf1cf0331712d46a54038360cfefd8b02226dd3a0e1450ae120374e07588ebed1bb7f0b76b098587e2e7e9f306b029d9ccc7384ada300e
+  checksum: 9ea69361eba6dda7242fed1c7816fd9387411d5b8cfd67cb79df8cb0308664fc4daca418bbe1f7e7ec51232ff5b5781305519ec97fb0f51b9737f37e140792b0
   languageName: node
   linkType: hard
 
@@ -34196,7 +34196,7 @@ resolve@1.1.7:
   dependencies:
     "@babel/preset-typescript": 7.13.0
     "@babel/runtime": 7.13.10
-    "@emotion/jest": 11.2.1
+    "@emotion/jest": 11.3.0
     "@emotion/react": 11.1.5
     "@istanbuljs/nyc-config-typescript": 1.0.1
     "@lingui/cli": 3.7.1

@@ -617,7 +617,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@emotion/jest",
-        "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:11.2.1"
+        "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:11.3.0"
       ],
       [
         "@emotion/memoize",
@@ -17435,17 +17435,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@emotion/jest", [
-        ["npm:11.2.1", {
-          "packageLocation": "./.yarn/cache/@emotion-jest-npm-11.2.1-443097a2ef-240a9e5c65.zip/node_modules/@emotion/jest/",
+        ["npm:11.3.0", {
+          "packageLocation": "./.yarn/cache/@emotion-jest-npm-11.3.0-bae11b89b1-9ea69361eb.zip/node_modules/@emotion/jest/",
           "packageDependencies": [
-            ["@emotion/jest", "npm:11.2.1"]
+            ["@emotion/jest", "npm:11.3.0"]
           ],
           "linkType": "SOFT",
         }],
-        ["virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:11.2.1", {
-          "packageLocation": "./.yarn/$$virtual/@emotion-jest-virtual-6bcc7a19c9/0/cache/@emotion-jest-npm-11.2.1-443097a2ef-240a9e5c65.zip/node_modules/@emotion/jest/",
+        ["virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:11.3.0", {
+          "packageLocation": "./.yarn/$$virtual/@emotion-jest-virtual-40d5e3c683/0/cache/@emotion-jest-npm-11.3.0-bae11b89b1-9ea69361eb.zip/node_modules/@emotion/jest/",
           "packageDependencies": [
-            ["@emotion/jest", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:11.2.1"],
+            ["@emotion/jest", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:11.3.0"],
             ["@babel/runtime", "npm:7.13.10"],
             ["@emotion/css-prettifier", "npm:1.0.0"],
             ["@types/enzyme-to-json", null],
@@ -58013,7 +58013,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["vor", "workspace:apps/vor/frontend"],
             ["@babel/preset-typescript", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:7.13.0"],
             ["@babel/runtime", "npm:7.13.10"],
-            ["@emotion/jest", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:11.2.1"],
+            ["@emotion/jest", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:11.3.0"],
             ["@emotion/react", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:11.1.5"],
             ["@gatsbyjs/reach-router", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:1.3.6"],
             ["@istanbuljs/nyc-config-typescript", "virtual:5dc8ab07f53f0b34398a9e030bf5e08a5f076bb4927d9180c639227a6da1bb3b669109b03108c6685259bbb44e43f7fd03a5af03243e85a56638037d6d1b4370#npm:1.0.1"],
