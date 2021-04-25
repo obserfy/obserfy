@@ -63,6 +63,9 @@ func NewRouter(
 		r.Method("POST", "/images", postNewImage(server, store))
 
 		r.Method("POST", "/videos/upload", postCreateVideoUploadLink(server, store, videos))
+
+		r.Method("POST", "/reports", postNewReport(server, store))
+		r.Method("GET", "/reports", getReports(server, store))
 	})
 	return r
 }
@@ -1243,6 +1246,35 @@ func postCreateVideoUploadLink(server rest.Server, store Store, videos domain.Vi
 		if err := rest.WriteJson(w, &responseBody{video.UploadUrl}); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
+		return nil
+	})
+}
+
+func postNewReport(s rest.Server, store Store) http.Handler {
+	type requestBody struct {
+		Title       string    `json:"title"`
+		PeriodStart time.Time `json:"periodStart"`
+		PeriodEnd   time.Time `json:"periodEnd"`
+	}
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		schoolId := chi.URLParam(r, "schoolId")
+
+		var report requestBody
+		if err := rest.ParseJson(r.Body, report); err != nil {
+			return rest.NewParseJsonError(err)
+		}
+
+		if err := store.NewProgressReport(schoolId, report.Title, report.PeriodStart, report.PeriodEnd); err != nil {
+			return rest.NewInternalServerError(err, "Failed to save report")
+		}
+
+		w.WriteHeader(http.StatusCreated)
+		return nil
+	})
+}
+
+func getReports(s rest.Server, store Store) http.Handler {
+	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
 		return nil
 	})
 }

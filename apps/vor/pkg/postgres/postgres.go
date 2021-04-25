@@ -85,6 +85,7 @@ func InitTables(db *pg.Tx) error {
 		(*LessonPlanToStudents)(nil),
 		(*Video)(nil),
 		(*VideoToStudents)(nil),
+		(*ProgressReport)(nil),
 	} {
 		err := db.Model(model).CreateTable(&orm.CreateTableOptions{IfNotExists: true, FKConstraints: true})
 		if err != nil {
