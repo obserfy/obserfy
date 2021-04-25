@@ -8750,7 +8750,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"autoprefixer@npm:10.2.5, autoprefixer@npm:^10.2.4, autoprefixer@npm:^10.2.5":
+"autoprefixer@npm:10.2.5, autoprefixer@npm:^10.2.4":
   version: 10.2.5
   resolution: "autoprefixer@npm:10.2.5"
   dependencies:
@@ -34232,7 +34232,7 @@ resolve@1.1.7:
     "@types/segment-analytics": 0.0.33
     "@typescript-eslint/eslint-plugin": 4.11.1
     "@typescript-eslint/parser": 4.11.1
-    autoprefixer: ^10.2.5
+    autoprefixer: 10.2.5
     babel-jest: 26.6.3
     babel-loader: 8.2.2
     babel-plugin-istanbul: 6.0.0
