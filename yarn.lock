@@ -1862,7 +1862,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/template@npm:*, @babel/template@npm:^7.10.4, @babel/template@npm:^7.12.13, @babel/template@npm:^7.12.7, @babel/template@npm:^7.3.3, @babel/template@npm:^7.4.4":
+"@babel/template@npm:^7.10.4, @babel/template@npm:^7.12.13, @babel/template@npm:^7.12.7, @babel/template@npm:^7.3.3, @babel/template@npm:^7.4.4":
   version: 7.12.13
   resolution: "@babel/template@npm:7.12.13"
   dependencies:
@@ -3925,7 +3925,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mikaelkristiansson/domready@npm:^1.0.10, @mikaelkristiansson/domready@npm:^1.0.11":
+"@mikaelkristiansson/domready@npm:^1.0.10":
   version: 1.0.11
   resolution: "@mikaelkristiansson/domready@npm:1.0.11"
   checksum: 82e6825262556cb5411988b71a5c69772c86cbae722a39d58c63ff145ab13690b63bf036915b922cd63ed0b9220c35dff073c55fa9bc79e09c37e5a5a016b6f0
@@ -15026,7 +15026,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"event-source-polyfill@npm:^1.0.15, event-source-polyfill@npm:^1.0.22":
+"event-source-polyfill@npm:^1.0.15":
   version: 1.0.22
   resolution: "event-source-polyfill@npm:1.0.22"
   checksum: 65e99a6925b9618be59cce97e1bc75bb7bb37ff71379ba59df4320e32dac6c5ebfe340daacf98d77ddc3225a43c29f435f8c02ca6dbef8ce1f545d133fcebef2
@@ -23650,13 +23650,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"mitt@npm:^2.1.0":
-  version: 2.1.0
-  resolution: "mitt@npm:2.1.0"
-  checksum: 5b0f698cbff2e47cc3b81b991f1230fadd429bdf4a2d9051d936059ad8090e36932694f299dd52434365463e6c52075026fb2161adcfd52b234b6f5392a514d2
-  languageName: node
-  linkType: hard
-
 "mixin-deep@npm:^1.2.0":
   version: 1.3.2
   resolution: "mixin-deep@npm:1.3.2"
@@ -27882,7 +27875,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"query-string@npm:*, query-string@npm:6.14.1, query-string@npm:^6.13.1, query-string@npm:^6.13.3, query-string@npm:^6.13.8, query-string@npm:^6.14.1":
+"query-string@npm:*, query-string@npm:6.14.1, query-string@npm:^6.13.1, query-string@npm:^6.13.3, query-string@npm:^6.13.8":
   version: 6.14.1
   resolution: "query-string@npm:6.14.1"
   dependencies:
@@ -33137,23 +33130,23 @@ resolve@1.1.7:
   languageName: node
   linkType: hard
 
-"typescript@npm:4.1.5":
-  version: 4.1.5
-  resolution: "typescript@npm:4.1.5"
+typescript@4.2.3:
+  version: 4.2.3
+  resolution: "typescript@npm:4.2.3"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: af660e69aa5184520dfa57362dcf7fd1b26d08b869d76b3bd58dcc04058a757983f470cd61ded824ab01fa08a81d58c7f607d8e360f4e550664b9439d04f8e41
+  checksum: b4a2020c021211184ac15caf59936b2089c13e79685f340a31aaa839c9de2f73b44a5e3757292de6cdad2ed967aef80d4592161b814cc29c0570f261850c4bca
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A4.1.5#~builtin<compat/typescript>":
-  version: 4.1.5
-  resolution: "typescript@patch:typescript@npm%3A4.1.5#~builtin<compat/typescript>::version=4.1.5&hash=34ad7d"
+"typescript@patch:typescript@4.2.3#~builtin<compat/typescript>":
+  version: 4.2.3
+  resolution: "typescript@patch:typescript@npm%3A4.2.3#~builtin<compat/typescript>::version=4.2.3&hash=34ad7d"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 15f7630d7aa22b770f8e448c9f1b6f14a1d7b969008ef09475b9c377f908e2144ace8dac99ffe0c4830dc42a9970ca333533c9affd75035a17011da7fd03c423
+  checksum: c1dd9e722d11f93a66aa365459bc155aa48ee366f4194b743f9de0b62c1c5242e82a482c49fa8d2bcb3a90ecf4c1a35e1ac534df7408d17d17eb15718a6ad0fc
   languageName: node
   linkType: hard
 
