@@ -4272,19 +4272,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@prefresh/babel-plugin@npm:0.4.1":
+"@prefresh/babel-plugin@npm:0.4.1, @prefresh/babel-plugin@npm:^0.4.0":
   version: 0.4.1
   resolution: "@prefresh/babel-plugin@npm:0.4.1"
   checksum: 0d0871d899fab1a958ea60a5a8d15cdc26a3bf966e7534bd1c95103d99939c40061c0e629cbf5e3916aa4f2d0a1c043f8baf6e65b97e2d4b73e70aec2ac5c653
   languageName: node
   linkType: hard
 
-"@prefresh/core@npm:1.3.1":
-  version: 1.3.1
-  resolution: "@prefresh/core@npm:1.3.1"
+"@prefresh/core@npm:^0.8.1":
+  version: 0.8.1
+  resolution: "@prefresh/core@npm:0.8.1"
   peerDependencies:
     preact: ^10.0.0
-  checksum: bceaa98b3990186b0f718bacd45d3068a66d7a005eb2a5c5eaca3177d7acdcc0303c00c9fbfb6895d4a21ab075e35a8356144d98e8eef361f492d17ae1c9f737
+  checksum: 32e142ba1d3ff38e50e822d63c4c6e4caaa6f399727b5eaf3239f83861f1883a562392c55bdae52bd8130f5d2a3dcf0b3f431d595a6514fd9227384a588dd6bf
+  languageName: node
+  linkType: hard
+
+"@prefresh/core@npm:^1.3.1":
+  version: 1.3.2
+  resolution: "@prefresh/core@npm:1.3.2"
+  peerDependencies:
+    preact: ^10.0.0
+  checksum: c979b29a2951e4c34f8ab234cbf0ba15d149aa30ed949b5df96959c125795f03350f29a2165cfc91fbd98936fc06e5ee037404fa53caed7b90dabf43b5800952
   languageName: node
   linkType: hard
 
@@ -4304,14 +4313,34 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@prefresh/utils@npm:1.1.1":
+"@prefresh/utils@npm:^0.3.1":
+  version: 0.3.1
+  resolution: "@prefresh/utils@npm:0.3.1"
+  checksum: d85dd866a821aaaee54e1d4ad4edbb4ec0939ee30e9147de0e92e8b6485db6580eb0ffad770b3e8b9cb3c61a1381867c684bec0556363baec6db58b833fdfd8b
+  languageName: node
+  linkType: hard
+
+"@prefresh/utils@npm:^1.0.0, @prefresh/utils@npm:^1.1.0":
   version: 1.1.1
   resolution: "@prefresh/utils@npm:1.1.1"
   checksum: cf906ad24d578b5a446059f4834e4a65cb3cc2ee9a62fcc97f565c2c01567abc0c8f6f9991532ed595e33c0e5c7eb459cfb912d7d4de20f79a9ab48c18ce6000
   languageName: node
   linkType: hard
 
-"@prefresh/webpack@npm:3.2.2":
+"@prefresh/webpack@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "@prefresh/webpack@npm:1.1.0"
+  dependencies:
+    "@prefresh/core": ^0.8.1
+    "@prefresh/utils": ^0.3.1
+  peerDependencies:
+    preact: ^10.4.0
+    webpack: ^4.0.0 || ^5.0.0
+  checksum: 13f794999426cd7c82a49eb85dd6625204e9b1a3c2e056753c8160f5bed3b12101cfa94e260e1f072b3585751115c2f4377ec9e706e27186b7d67f40311de41c
+  languageName: node
+  linkType: hard
+
+"@prefresh/webpack@npm:^3.2.0":
   version: 3.2.2
   resolution: "@prefresh/webpack@npm:3.2.2"
   dependencies:
@@ -27335,7 +27364,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"preact-render-to-string@npm:5.1.19":
+"preact-render-to-string@npm:5.1.19, preact-render-to-string@npm:^5.1.10":
   version: 5.1.19
   resolution: "preact-render-to-string@npm:5.1.19"
   dependencies:
@@ -27346,7 +27375,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"preact@npm:10.5.13":
+"preact@npm:*, preact@npm:10.5.13, preact@npm:^10.5.5":
   version: 10.5.13
   resolution: "preact@npm:10.5.13"
   checksum: 9433cd19eb7497b60920301fea52e17a815fbf501f2c52f46b2a51609d456a95978ee4457b717c2e3dc19b9fc177c1bf73ef29be7cedc2b6632a08165c5d1af3
