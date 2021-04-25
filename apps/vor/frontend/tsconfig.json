@@ -30,5 +30,5 @@
     "graphql-types.ts",
     "loadershim.ts",
     "tailwind.config.js"
-  ],
+  ]
 }

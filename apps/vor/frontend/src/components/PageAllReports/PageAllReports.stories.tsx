@@ -10,7 +10,9 @@ export default {
   },
 } as Meta
 
-const Template: Story<PageAllReportsProps> = (args) => <PageAllReports {...args} />
+const Template: Story<PageAllReportsProps> = (args) => (
+  <PageAllReports {...args} />
+)
 
 export const Default = Template.bind({})
 Default.args = {}
