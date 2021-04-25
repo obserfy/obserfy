@@ -8,6 +8,7 @@ exclude_patterns:
   - "**/*.test.tsx"
   - "**/_test.go"
   - "**/*.spec.ts"
+  - "**/*.min.js"
 
 checks:
   method-lines:
