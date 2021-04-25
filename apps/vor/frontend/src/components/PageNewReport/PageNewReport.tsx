@@ -11,10 +11,7 @@ import { breadCrumb } from "../TopBar/TopBar"
 import TopBarWithAction from "../TopBarWithAction/TopBarWithAction"
 import Typography from "../Typography/Typography"
 
-export interface PageNewReportProps {
-}
-
-const PageNewReport: FC<PageNewReportProps> = () => {
+const PageNewReport: FC = () => {
   const [title, setTitle] = useState("")
   const [periodStart, setPeriodStart] = useState(dayjs())
   const [periodEnd, setPeriodEnd] = useState(dayjs())
