@@ -14,7 +14,7 @@ COPY .yarnrc.yml .yarnrc.yml
 COPY apps/gaia/package.json apps/gaia/package.json
 
 # Install deps
-RUN yarn workspaces focus gaia
+RUN yarn install
 
 # Build gaia
 COPY apps/gaia/ apps/gaia
