@@ -1,3 +1,5 @@
+import { Severity } from "@sentry/gatsby"
+
 export const track = (event: string, properties?: Object) => {
   if (process.env.NODE_ENV === "development") return
 
@@ -8,7 +10,7 @@ export const track = (event: string, properties?: Object) => {
   if (typeof Sentry !== "undefined") {
     const breadcrumb = {
       category: "track",
-      level: "info",
+      level: Severity.Info,
       data: properties,
     }
     Sentry.addBreadcrumb(breadcrumb)
