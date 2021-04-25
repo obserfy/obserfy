@@ -2583,18 +2583,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graphql-codegen/plugin-helpers@npm:^1.18.4":
-  version: 1.18.4
-  resolution: "@graphql-codegen/plugin-helpers@npm:1.18.4"
+"@graphql-codegen/plugin-helpers@npm:^1.18.5":
+  version: 1.18.5
+  resolution: "@graphql-codegen/plugin-helpers@npm:1.18.5"
   dependencies:
     "@graphql-tools/utils": ^7.0.0
     common-tags: 1.8.0
     import-from: 3.0.0
     lodash: ~4.17.20
-    tslib: ~2.1.0
+    tslib: ~2.2.0
   peerDependencies:
     graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
-  checksum: 53878a29eb62d559bf6987e43fa7501971d3baf4ab830453df5edd4e86e3e4e3c8d435663c4c452d70ed68bc2ecd9239bdb46293b206ec71154c53a0e4dc438e
+  checksum: 8830b4c5b6254ed4766eea31e7f2dbc3cec72a7ff8b0a5443e940c06bd64530e7c8db670d1c796f9a42cc6ea339247ab68788526b47d82cbf8c4fbbe6ed5ae00
   languageName: node
   linkType: hard
 
@@ -2643,23 +2643,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graphql-codegen/visitor-plugin-common@npm:1.19.1":
-  version: 1.19.1
-  resolution: "@graphql-codegen/visitor-plugin-common@npm:1.19.1"
+"@graphql-codegen/visitor-plugin-common@npm:^1.17.22, @graphql-codegen/visitor-plugin-common@npm:^1.19.0":
+  version: 1.20.0
+  resolution: "@graphql-codegen/visitor-plugin-common@npm:1.20.0"
   dependencies:
-    "@graphql-codegen/plugin-helpers": ^1.18.4
+    "@graphql-codegen/plugin-helpers": ^1.18.5
     "@graphql-tools/optimize": ^1.0.1
     "@graphql-tools/relay-operation-optimizer": ^6
     array.prototype.flatmap: ^1.2.4
     auto-bind: ~4.0.0
-    change-case-all: 1.0.12
+    change-case-all: 1.0.14
     dependency-graph: ^0.11.0
     graphql-tag: ^2.11.0
     parse-filepath: ^1.0.2
-    tslib: ~2.1.0
+    tslib: ~2.2.0
   peerDependencies:
     graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
-  checksum: eb7351155d97dbc1c070733f3b5427fe77e97efc619c91cd015d2f6e719c5eb9b9bc31f50f4d784740f3ca7a21e451bc85570d6912c685e9b6efade7442fac4b
+  checksum: 38c36f7487308e3105171347d90e9e5a0816dd92714c78fb30f82356b5da28b8c0b7a4f84ed4a2e2fed6e311874bded91da6a10ad7820458beb14dfaf52ce150
   languageName: node
   linkType: hard
 
@@ -10859,21 +10859,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"change-case-all@npm:1.0.12":
-  version: 1.0.12
-  resolution: "change-case-all@npm:1.0.12"
+"change-case-all@npm:1.0.14":
+  version: 1.0.14
+  resolution: "change-case-all@npm:1.0.14"
   dependencies:
-    change-case: ^4.1.1
-    is-lower-case: ^2.0.1
-    is-upper-case: ^2.0.1
-    lower-case: ^2.0.1
-    lower-case-first: ^2.0.1
-    sponge-case: ^1.0.0
-    swap-case: ^2.0.1
-    title-case: ^3.0.2
-    upper-case: ^2.0.1
-    upper-case-first: ^2.0.1
-  checksum: 750375031a1252467bc528e039fdda0ab21d95a92d52a58b6ea0c2ac18b9c7585fc7b029793e621bd32dd0b941d0a8fd5aa642d377bc9fb46390be920b8201cc
+    change-case: ^4.1.2
+    is-lower-case: ^2.0.2
+    is-upper-case: ^2.0.2
+    lower-case: ^2.0.2
+    lower-case-first: ^2.0.2
+    sponge-case: ^1.0.1
+    swap-case: ^2.0.2
+    title-case: ^3.0.3
+    upper-case: ^2.0.2
+    upper-case-first: ^2.0.2
+  checksum: 174acfe2385fa16ba6009e1989580858e260f96dd1ae3544f74fd56b1713b2c03c91296a2cc329a4eec0ad8d492e01b86b3981c42c920f3805133a5b16efcd02
   languageName: node
   linkType: hard
 
@@ -10903,7 +10903,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"change-case@npm:^4.1.1":
+"change-case@npm:^4.1.2":
   version: 4.1.2
   resolution: "change-case@npm:4.1.2"
   dependencies:
@@ -20215,7 +20215,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"is-lower-case@npm:^2.0.1":
+"is-lower-case@npm:^2.0.2":
   version: 2.0.2
   resolution: "is-lower-case@npm:2.0.2"
   dependencies:
@@ -20582,7 +20582,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"is-upper-case@npm:^2.0.1":
+"is-upper-case@npm:^2.0.2":
   version: 2.0.2
   resolution: "is-upper-case@npm:2.0.2"
   dependencies:
@@ -22655,7 +22655,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"lower-case-first@npm:^2.0.1":
+"lower-case-first@npm:^2.0.2":
   version: 2.0.2
   resolution: "lower-case-first@npm:2.0.2"
   dependencies:
@@ -22671,7 +22671,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"lower-case@npm:^2.0.1, lower-case@npm:^2.0.2":
+"lower-case@npm:^2.0.2":
   version: 2.0.2
   resolution: "lower-case@npm:2.0.2"
   dependencies:
@@ -30984,7 +30984,7 @@ resolve@1.1.7:
   languageName: node
   linkType: hard
 
-"sponge-case@npm:^1.0.0":
+"sponge-case@npm:^1.0.1":
   version: 1.0.1
   resolution: "sponge-case@npm:1.0.1"
   dependencies:
@@ -32067,7 +32067,7 @@ resolve@1.1.7:
   languageName: node
   linkType: hard
 
-"swap-case@npm:^2.0.1":
+"swap-case@npm:^2.0.2":
   version: 2.0.2
   resolution: "swap-case@npm:2.0.2"
   dependencies:
@@ -32574,7 +32574,7 @@ resolve@1.1.7:
   languageName: node
   linkType: hard
 
-"title-case@npm:^3.0.2":
+"title-case@npm:^3.0.3":
   version: 3.0.3
   resolution: "title-case@npm:3.0.3"
   dependencies:
@@ -32932,6 +32932,13 @@ resolve@1.1.7:
   version: 2.0.3
   resolution: "tslib@npm:2.0.3"
   checksum: 447bfca5deaa157806c3f77eaba74d05dd0b38b014e47ce79d98b5c77ce7d91b00a687ba13ca1b5a74d35ca1098ac7a072c0a97fad06f0266612f2a03a6c8e8f
+  languageName: node
+  linkType: hard
+
+"tslib@npm:~2.2.0":
+  version: 2.2.0
+  resolution: "tslib@npm:2.2.0"
+  checksum: 2d35468c470410871c5246e43f12dcb6d0fc363b617c176f26443b9530e5c5ee8448966892a42956168d8f495da7865bda33dfe82c26c91991e28999974a618f
   languageName: node
   linkType: hard
 
@@ -33741,7 +33748,7 @@ resolve@1.1.7:
   languageName: node
   linkType: hard
 
-"upper-case-first@npm:^2.0.1, upper-case-first@npm:^2.0.2":
+"upper-case-first@npm:^2.0.2":
   version: 2.0.2
   resolution: "upper-case-first@npm:2.0.2"
   dependencies:
@@ -33757,7 +33764,7 @@ resolve@1.1.7:
   languageName: node
   linkType: hard
 
-"upper-case@npm:^2.0.1, upper-case@npm:^2.0.2":
+"upper-case@npm:^2.0.2":
   version: 2.0.2
   resolution: "upper-case@npm:2.0.2"
   dependencies:
