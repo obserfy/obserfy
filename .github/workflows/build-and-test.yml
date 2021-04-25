@@ -50,7 +50,7 @@ jobs:
           node-version: 15
       - name: Install Dependencies
         if: steps.cache-deps-and-gatsby.outputs.cache-hit != 'true'
-        run: yarn workspaces focus vor --production
+        run: yarn install
       - name: Compile translations
         if: steps.cache-translations.outputs.cache-hit != 'true'
         run: yarn workspace vor run i18n:compile
@@ -85,7 +85,7 @@ jobs:
           node-version: 15
       - name: Install Dependencies
         if: steps.cache-deps.outputs.cache-hit != 'true'
-        run: yarn workspaces focus gaia --production
+        run: yarn install
       - run: yarn workspace gaia run build
       - uses: actions/upload-artifact@v2
         with:
@@ -179,7 +179,7 @@ jobs:
           node-version: 15
       - name: Install Dependencies
         if: steps.cache-deps.outputs.cache-hit != 'true'
-        run: yarn workspaces focus vor
+        run: yarn install
       - uses: actions/download-artifact@v2
         with:
           name: vor
@@ -240,7 +240,7 @@ jobs:
           node-version: 15
       - name: Install Dependencies
         if: steps.cache-deps.outputs.cache-hit != 'true'
-        run: yarn workspaces focus e2e gaia
+        run: yarn install
       - run: yarn workspace gaia run start &
         env:
           AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
@@ -327,7 +327,7 @@ jobs:
           node-version: 15
       - name: Install Dependencies
         if: steps.cache-deps.outputs.cache-hit != 'true'
-        run: yarn workspaces focus e2e gaia
+        run: yarn install
       - run: yarn workspace gaia run start &
         env:
           AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
