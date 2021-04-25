@@ -1,7 +1,8 @@
-import { Trans } from "@lingui/macro"
-import React, { FC, ReactNode } from "react"
+import { t, Trans } from "@lingui/macro"
+import React, { FC } from "react"
 import { Button, Flex } from "theme-ui"
 import { borderBottom } from "../../border"
+import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import TopBar, { BreadcrumbData } from "../TopBar/TopBar"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
 
@@ -9,14 +10,17 @@ export interface TopBarWithActionProps {
   breadcrumbs: BreadcrumbData[]
   disableAction?: boolean
   onActionClick: () => void
-  buttonContent?: ReactNode
+  actionText?: string
+  isLoading?: boolean
 }
+
 const TopBarWithAction: FC<TopBarWithActionProps> = ({
   disableAction,
   breadcrumbs,
   onActionClick,
-  buttonContent,
+  actionText = t`Add`,
   children,
+  isLoading,
 }) => (
   <TranslucentBar boxSx={{ position: "sticky", top: 0, ...borderBottom }}>
     <Flex sx={{ alignItems: "center", maxWidth: "maxWidth.sm" }} mx="auto">
@@ -29,7 +33,11 @@ const TopBarWithAction: FC<TopBarWithActionProps> = ({
         onClick={onActionClick}
         disabled={disableAction}
       >
-        {buttonContent || <Trans>Add</Trans>}
+        {isLoading ? (
+          <LoadingIndicator color="onPrimary" />
+        ) : (
+          <Trans id={actionText} />
+        )}
       </Button>
     </Flex>
 

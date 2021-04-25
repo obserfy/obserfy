@@ -42,6 +42,7 @@ const EmptyPlaceholder = () => {
         </Typography.H4>
         <Typography.Body
           mb={3}
+          my={3}
           sx={{
             textAlign: ["center", "center", "inherit"],
             fontSize: 2,
