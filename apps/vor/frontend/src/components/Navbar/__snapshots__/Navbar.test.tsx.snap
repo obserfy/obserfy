@@ -22,7 +22,6 @@ exports[`Navbar should render correctly 1`] = `
   z-index: 500;
   height: auto;
   width: 100%;
-  border-radius: 0;
   display: block;
   top: auto;
   bottom: 0;
@@ -34,19 +33,6 @@ exports[`Navbar should render correctly 1`] = `
   border-left-style: none;
   border-width: 1px;
   border-color: var(--theme-ui-colors-borderBold, #e5e5e5);
-}
-
-@supports (backdrop-filter: blur(20px)) {
-  .emotion-1 {
-    background-color: var(--theme-ui-colors-surfaceBlurTransparent, rgba(255,255,255,0.9));
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    backdrop-filter: saturate(180%) blur(20px);
-    -webkit-transform: translateZ(0);
-    -moz-transform: translateZ(0);
-    -ms-transform: translateZ(0);
-    transform: translateZ(0);
-    will-change: backdrop-filter;
-  }
 }
 
 @media screen and (min-width: 40em) {
@@ -65,8 +51,6 @@ exports[`Navbar should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  padding-bottom: env(safe-area-inset-bottom);
-  padding-left: env(safe-area-inset-left);
   -webkit-box-pack: space-evenly;
   -ms-flex-pack: space-evenly;
   -webkit-justify-content: space-evenly;
@@ -79,12 +63,6 @@ exports[`Navbar should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-@media screen and (min-width: 40em) {
-  .emotion-2 {
-    padding-bottom: 0;
-  }
 }
 
 @media screen and (min-width: 40em) {
@@ -103,7 +81,7 @@ exports[`Navbar should render correctly 1`] = `
   margin-left: auto;
   margin-right: auto;
   margin-top: 8px;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
   display: none;
 }
 
@@ -117,11 +95,8 @@ exports[`Navbar should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  margin-bottom: 0;
-  padding-top: 4px;
-  padding-bottom: 4px;
   width: 56px;
-  height: 48px;
+  height: 56px;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -142,18 +117,13 @@ exports[`Navbar should render correctly 1`] = `
 
 @media screen and (min-width: 40em) {
   .emotion-4 {
-    margin-bottom: 8px;
-  }
-}
-
-@media screen and (min-width: 40em) {
-  .emotion-4 {
-    height: 56px;
+    width: 48px;
+    height: 48px;
   }
 }
 
 .emotion-4:after {
-  top: 0;
+  top: -0.5px;
   right: inherit;
   position: absolute;
   background-color: var(--theme-ui-colors-textPrimary, #027c5b);
@@ -181,45 +151,121 @@ exports[`Navbar should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
-  color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
+  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
   fill: transparent;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
 }
 
-.emotion-6 {
+.emotion-8 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
-  font-size: 14px;
-  text-rendering: optimizeLegibility;
-  line-height: 1.5;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
-  line-height: 1;
-  font-size: 10px;
-}
-
-@media screen and (min-width: 40em) {
-  .emotion-6 {
-    font-size: 11px;
-  }
-}
-
-.emotion-7 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  height: 100%;
+  margin-top: auto;
   display: none;
 }
 
 @media screen and (min-width: 40em) {
-  .emotion-7 {
+  .emotion-8 {
     display: block;
+  }
+}
+
+.emotion-11 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  display: inline-block;
+  text-align: center;
+  line-height: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: inherit;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: white;
+  background-color: var(--theme-ui-colors-primary, #00e399);
+  border: 0;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  background-color: transparent;
+  border-radius: 6px;
+  font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  white-space: nowrap;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  touch-action: manipulation;
+  box-shadow: none;
+  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-style: solid;
+  border-width: 1px;
+  line-height: 1;
+  border: none;
+  padding: 0;
+  border-bottom: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 56px;
+  height: 56px;
+  border-radius: 99999px;
+}
+
+.emotion-11:disabled {
+  opacity: 0.38;
+  cursor: auto;
+}
+
+.emotion-11:hover,
+.emotion-11:focus {
+  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
+  border-color: var(--theme-ui-colors-primary, #00e399);
+  outline: none;
+}
+
+@media screen and (min-width: 40em) {
+  .emotion-11 {
+    width: 48px;
+    height: 48px;
   }
 }
 
@@ -237,59 +283,54 @@ exports[`Navbar should render correctly 1`] = `
           class="emotion-3"
         />
         <a
+          data-cy="navbar-students"
           href="/dashboard/students"
-          style="outline: none;"
         >
           <div
             class="emotion-4"
           >
             <div
+              alt="Students"
               class="emotion-5"
             />
-            <p
-              class="emotion-6"
-            >
-              Students
-            </p>
+          </div>
+        </a>
+        <a
+          data-cy="navbar-progress report"
+          href="/dashboard/reports"
+        >
+          <div
+            class="emotion-4"
+          >
+            <div
+              alt="Progress Report"
+              class="emotion-5"
+            />
           </div>
         </a>
         <div
-          class="emotion-7"
+          class="emotion-8"
         />
         <a
+          data-cy="navbar-admin"
           href="/dashboard/admin"
-          style="outline: none;"
         >
           <div
             class="emotion-4"
           >
             <div
+              alt="Admin"
               class="emotion-5"
             />
-            <p
-              class="emotion-6"
-            >
-              Admin
-            </p>
           </div>
         </a>
-        <a
-          href="/dashboard/support"
-          style="outline: none;"
+        <button
+          class="emotion-11"
         >
           <div
-            class="emotion-4"
-          >
-            <div
-              class="emotion-5"
-            />
-            <p
-              class="emotion-6"
-            >
-              Support
-            </p>
-          </div>
-        </a>
+            class="emotion-5"
+          />
+        </button>
       </div>
     </nav>
   </div>

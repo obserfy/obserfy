@@ -726,10 +726,6 @@ type SitePluginPluginOptions {
   crossOrigin: String
   include_favicon: Boolean
   cacheDigest: String
-  prodKey: String
-  trackPage: Boolean
-  delayLoad: Boolean
-  delayLoadTime: Int
   prettier: Boolean
   svgo: Boolean
   svgoConfig: SitePluginPluginOptionsSvgoConfig
@@ -1823,10 +1819,6 @@ input SitePluginPluginOptionsFilterInput {
   crossOrigin: StringQueryOperatorInput
   include_favicon: BooleanQueryOperatorInput
   cacheDigest: StringQueryOperatorInput
-  prodKey: StringQueryOperatorInput
-  trackPage: BooleanQueryOperatorInput
-  delayLoad: BooleanQueryOperatorInput
-  delayLoadTime: IntQueryOperatorInput
   prettier: BooleanQueryOperatorInput
   svgo: BooleanQueryOperatorInput
   svgoConfig: SitePluginPluginOptionsSvgoConfigFilterInput
@@ -1983,10 +1975,6 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___crossOrigin
   pluginCreator___pluginOptions___include_favicon
   pluginCreator___pluginOptions___cacheDigest
-  pluginCreator___pluginOptions___prodKey
-  pluginCreator___pluginOptions___trackPage
-  pluginCreator___pluginOptions___delayLoad
-  pluginCreator___pluginOptions___delayLoadTime
   pluginCreator___pluginOptions___prettier
   pluginCreator___pluginOptions___svgo
   pluginCreator___pluginOptions___svgoConfig___removeViewBox
@@ -2823,10 +2811,6 @@ enum SitePluginFieldsEnum {
   pluginOptions___crossOrigin
   pluginOptions___include_favicon
   pluginOptions___cacheDigest
-  pluginOptions___prodKey
-  pluginOptions___trackPage
-  pluginOptions___delayLoad
-  pluginOptions___delayLoadTime
   pluginOptions___prettier
   pluginOptions___svgo
   pluginOptions___svgoConfig___removeViewBox

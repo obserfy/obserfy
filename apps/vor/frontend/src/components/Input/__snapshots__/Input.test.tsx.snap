@@ -79,6 +79,7 @@ exports[`Input should render correctly 1`] = `
   font-size: 16px;
   padding: 12px;
   color: var(--theme-ui-colors-text, #37383c);
+  width: 100%;
 }
 
 .emotion-3:hover,

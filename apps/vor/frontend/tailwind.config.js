@@ -1,5 +1,3 @@
-const em = (px, base) => `${Math.round(px / base)}em`
-
 module.exports = {
   purge: ["./src/**/*.js", "./src/**/*.jsx", "./src/**/*.ts", "./src/**/*.tsx"],
   darkMode: false, // or 'media' or 'class'
@@ -79,11 +77,33 @@ module.exports = {
             },
           },
         },
+        sm: {
+          css: {
+            h1: {
+              fontSize: "1.4285714em",
+              marginBottom: "0.8em",
+              marginTop: "1.6em",
+            },
+            h2: {
+              fontSize: "1.2857143em",
+              marginBottom: "0.4444444em",
+              marginTop: "0",
+            },
+            h3: {
+              fontSize: "inherit",
+              marginBottom: "0.5714286em",
+              marginTop: "0",
+            },
+            h4: {
+              fontSize: "inherit",
+              fontWeight: "normal",
+              marginBottom: 0,
+            },
+          },
+        },
       },
     },
   },
-  variants: {
-    extend: {},
-  },
+
   plugins: [require("@tailwindcss/typography")],
 }

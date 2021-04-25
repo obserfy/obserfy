@@ -4,7 +4,6 @@ import { Box, Button } from "theme-ui"
 import { usePostNewStudent } from "../../hooks/api/students/usePostNewStudent"
 import { NEW_STUDENT_URL, STUDENTS_URL } from "../../routes"
 import { navigate } from "../Link/Link"
-import LoadingIndicator from "../LoadingIndicator/LoadingIndicator"
 import { breadCrumb } from "../TopBar/TopBar"
 import TopBarWithAction from "../TopBarWithAction/TopBarWithAction"
 import { NewStudentForm } from "./NewStudentForm"
@@ -35,9 +34,8 @@ export const PageNewStudent: FC = () => {
             Sentry.captureException(e)
           }
         }}
-        buttonContent={
-          isLoading ? <LoadingIndicator size={22} /> : <Trans>Save</Trans>
-        }
+        isLoading={isLoading}
+        actionText={t`Save`}
       />
 
       <Box sx={{ maxWidth: "maxWidth.sm" }} margin="auto" pb={4} pt={3}>
