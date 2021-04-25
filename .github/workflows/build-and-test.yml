@@ -29,13 +29,10 @@ jobs:
           cache-name: cache-build-vor
         with:
           path: |
-            .yarn/unplugged
-            .yarn/install-state.gz
-            .yarn/build-state.yml
-            .pnp.js
+            .yarn
             apps/vor/frontend/public
             apps/vor/frontend/.cache
-          key: v6-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/.pnp.js') }}-${{ hashFiles('**/yarn.lock') }}
+          key: v6-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
       - name: Cache translations
         uses: actions/cache@v2
         id: cache-translations
@@ -49,8 +46,7 @@ jobs:
         with:
           node-version: 15
       - name: Install Dependencies
-        if: steps.cache-deps-and-gatsby.outputs.cache-hit != 'true'
-        run: yarn workspaces focus vor --production
+        run: yarn install
       - name: Compile translations
         if: steps.cache-translations.outputs.cache-hit != 'true'
         run: yarn workspace vor run i18n:compile
@@ -73,19 +69,15 @@ jobs:
           cache-name: cache-build-gaia
         with:
           path: |
-            .yarn/unplugged
-            .yarn/install-state.gz
-            .yarn/build-state.yml
-            .pnp.js
+            .yarn
             apps/gaia/.next
-          key: v6-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/.pnp.js') }}-${{ hashFiles('**/yarn.lock') }}
+          key: v6-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
       - name: Use Node.js 15
         uses: actions/setup-node@v2
         with:
           node-version: 15
       - name: Install Dependencies
-        if: steps.cache-deps.outputs.cache-hit != 'true'
-        run: yarn workspaces focus gaia --production
+        run: yarn install
       - run: yarn workspace gaia run build
       - uses: actions/upload-artifact@v2
         with:
@@ -168,18 +160,14 @@ jobs:
           cache-name: cache-vor-snapshot-test
         with:
           path: |
-            .yarn/unplugged
-            .yarn/install-state.gz
-            .yarn/build-state.yml
-            .pnp.js
-          key: v6-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/.pnp.js') }}-${{ hashFiles('**/yarn.lock') }}
+            .yarn
+          key: v6-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
       - name: Use Node.js 15
         uses: actions/setup-node@v2
         with:
           node-version: 15
       - name: Install Dependencies
-        if: steps.cache-deps.outputs.cache-hit != 'true'
-        run: yarn workspaces focus vor
+        run: yarn install
       - uses: actions/download-artifact@v2
         with:
           name: vor
@@ -228,19 +216,15 @@ jobs:
           cache-name: cache-build-e2e
         with:
           path: |
-            .yarn/unplugged
-            .yarn/install-state.gz
-            .yarn/build-state.yml
-            .pnp.js
+            .yarn
             ~/.cache/Cypress
-          key: v6-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/.pnp.js') }}-${{ hashFiles('**/yarn.lock') }}
+          key: v6-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
       - name: Use Node.js 15
         uses: actions/setup-node@v2
         with:
           node-version: 15
       - name: Install Dependencies
-        if: steps.cache-deps.outputs.cache-hit != 'true'
-        run: yarn workspaces focus e2e gaia
+        run: yarn install
       - run: yarn workspace gaia run start &
         env:
           AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
@@ -315,19 +299,15 @@ jobs:
           cache-name: cache-build-e2e
         with:
           path: |
-            .yarn/unplugged
-            .yarn/install-state.gz
-            .yarn/build-state.yml
-            .pnp.js
+            .yarn
             ~/.cache/Cypress
-          key: v6-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/.pnp.js') }}-${{ hashFiles('**/yarn.lock') }}
+          key: v6-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
       - name: Use Node.js 15
         uses: actions/setup-node@v2
         with:
           node-version: 15
       - name: Install Dependencies
-        if: steps.cache-deps.outputs.cache-hit != 'true'
-        run: yarn workspaces focus e2e gaia
+        run: yarn install
       - run: yarn workspace gaia run start &
         env:
           AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}

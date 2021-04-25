@@ -475,11 +475,11 @@ msgstr "Event Time"
 msgid "Ex. Mathematics"
 msgstr "Ex. Mathematics"
 
-#: src/components/PageAllObservations/ObservationsTable.tsx:83
+#: src/components/PageAllObservations/ObservationsTable.tsx:84
 msgid "Export"
 msgstr "Export"
 
-#: src/components/PageAllObservations/ObservationsTable.tsx:85
+#: src/components/PageAllObservations/ObservationsTable.tsx:86
 msgid "Export Observations"
 msgstr "Export Observations"
 
@@ -739,7 +739,7 @@ msgstr "New Report"
 #: src/components/PageNewStudent/NewStudentForm.tsx:34
 #: src/components/PageNewStudent/PageNewStudent.tsx:27
 #: src/components/PageNewStudentAddGuardian/PageNewStudentAddGuardian.tsx:65
-#: src/components/StudentsList/StudentsList.tsx:81
+#: src/components/StudentsList/StudentsList.tsx:83
 msgid "New Student"
 msgstr "New Student"
 
@@ -793,7 +793,7 @@ msgstr "No more students to add"
 msgid "No observation have been added yet"
 msgstr "No observation have been added yet"
 
-#: src/components/PageAllObservations/ObservationsTable.tsx:125
+#: src/components/PageAllObservations/ObservationsTable.tsx:126
 msgid "No observations found"
 msgstr "No observations found"
 
@@ -854,7 +854,7 @@ msgstr "Observations"
 msgid "Observations Details"
 msgstr "Observations Details"
 
-#: src/components/StudentsList/StudentsList.tsx:50
+#: src/components/StudentsList/StudentsList.tsx:52
 msgid "Oops, we fail to fetch new student data. Please try again in a minute."
 msgstr "Oops, we fail to fetch new student data. Please try again in a minute."
 
@@ -906,11 +906,11 @@ msgstr "Phone"
 msgid "Pick a Date"
 msgstr "Pick a Date"
 
-#: src/components/PageAllObservations/ObservationsTable.tsx:108
+#: src/components/PageAllObservations/ObservationsTable.tsx:109
 msgid "Pick end date"
 msgstr "Pick end date"
 
-#: src/components/PageAllObservations/ObservationsTable.tsx:103
+#: src/components/PageAllObservations/ObservationsTable.tsx:104
 msgid "Pick start date"
 msgstr "Pick start date"
 
@@ -1059,7 +1059,7 @@ msgstr "School name"
 msgid "Search"
 msgstr "Search"
 
-#: src/components/StudentsList/StudentsList.tsx:32
+#: src/components/StudentsList/StudentsList.tsx:34
 msgid "Search students"
 msgstr "Search students"
 
@@ -1253,7 +1253,7 @@ msgstr "Tell us about your classes, We'll help you track your students attendanc
 msgid "Thanks for Subscribing!"
 msgstr "Thanks for Subscribing!"
 
-#: src/components/StudentsList/StudentsList.tsx:63
+#: src/components/StudentsList/StudentsList.tsx:65
 msgid "The term <0>\"{term}\"</0> does not match any student"
 msgstr "The term <0>\"{term}\"</0> does not match any student"
 
@@ -1269,7 +1269,7 @@ msgstr "This guardian doesn't have any children registered yet."
 msgid "This student doesn't have a guardian yet."
 msgstr "This student doesn't have a guardian yet."
 
-#: src/components/PageAllObservations/ObservationsTable.tsx:85
+#: src/components/PageAllObservations/ObservationsTable.tsx:86
 msgid "This will export all currently visible observations as a csv file, continue?"
 msgstr "This will export all currently visible observations as a csv file, continue?"
 
@@ -1306,7 +1306,7 @@ msgstr "Track curriculum progress"
 msgid "Trial period has ended."
 msgstr "Trial period has ended."
 
-#: src/components/StudentsList/StudentsList.tsx:56
+#: src/components/StudentsList/StudentsList.tsx:58
 msgid "Try again"
 msgstr "Try again"
 
@@ -1405,7 +1405,7 @@ msgstr "You"
 msgid "You can enable the curriculum feature to track student progress in your curriculum."
 msgstr "You can enable the curriculum feature to track student progress in your curriculum."
 
-#: src/components/StudentsList/StudentsList.tsx:76
+#: src/components/StudentsList/StudentsList.tsx:78
 msgid "You have no student enrolled"
 msgstr "You have no student enrolled"
 

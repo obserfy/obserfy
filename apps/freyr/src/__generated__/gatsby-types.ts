@@ -3321,15 +3321,15 @@ type homechrisintSrcobserfyappsfreyrsrctemplatesdocsJs2568242176Query = { readon
     & { readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'slug' | 'title' | 'description'>> }
   )> };
 
-type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type Unnamed_1_Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
-
 type LocalizationSEOQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type LocalizationSEOQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'siteUrl'>> }> };
+
+type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type Unnamed_1_Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
 
 type LocalizationConfigQueryQueryVariables = Exact<{ [key: string]: never; }>;
 

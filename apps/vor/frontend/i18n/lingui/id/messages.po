@@ -480,11 +480,11 @@ msgstr "Waktu Observasi"
 msgid "Ex. Mathematics"
 msgstr "Cth. Matematika"
 
-#: src/components/PageAllObservations/ObservationsTable.tsx:83
+#: src/components/PageAllObservations/ObservationsTable.tsx:84
 msgid "Export"
 msgstr "Ekspor"
 
-#: src/components/PageAllObservations/ObservationsTable.tsx:85
+#: src/components/PageAllObservations/ObservationsTable.tsx:86
 msgid "Export Observations"
 msgstr "Ekspor Observasi"
 
@@ -740,7 +740,7 @@ msgstr ""
 #: src/components/PageNewStudent/NewStudentForm.tsx:34
 #: src/components/PageNewStudent/PageNewStudent.tsx:27
 #: src/components/PageNewStudentAddGuardian/PageNewStudentAddGuardian.tsx:65
-#: src/components/StudentsList/StudentsList.tsx:81
+#: src/components/StudentsList/StudentsList.tsx:83
 msgid "New Student"
 msgstr "Murid Baru"
 
@@ -794,7 +794,7 @@ msgstr "Tidak ada lagi murid untuk ditambahkan"
 msgid "No observation have been added yet"
 msgstr "Belum ada observasi ditambahkan"
 
-#: src/components/PageAllObservations/ObservationsTable.tsx:125
+#: src/components/PageAllObservations/ObservationsTable.tsx:126
 msgid "No observations found"
 msgstr "Tidak ada observasi yang ditemukan"
 
@@ -855,7 +855,7 @@ msgstr "Observasi"
 msgid "Observations Details"
 msgstr "Detil Observasi"
 
-#: src/components/StudentsList/StudentsList.tsx:50
+#: src/components/StudentsList/StudentsList.tsx:52
 msgid "Oops, we fail to fetch new student data. Please try again in a minute."
 msgstr "Ups, kami gagal mengambil data murid baru. Silahkan coba beberapa saat lagi."
 
@@ -907,11 +907,11 @@ msgstr "Telepon"
 msgid "Pick a Date"
 msgstr "Pilih Tanggal"
 
-#: src/components/PageAllObservations/ObservationsTable.tsx:108
+#: src/components/PageAllObservations/ObservationsTable.tsx:109
 msgid "Pick end date"
 msgstr "Pilih tanggal akhir"
 
-#: src/components/PageAllObservations/ObservationsTable.tsx:103
+#: src/components/PageAllObservations/ObservationsTable.tsx:104
 msgid "Pick start date"
 msgstr "Pilih tanggal awal"
 
@@ -1060,7 +1060,7 @@ msgstr ""
 msgid "Search"
 msgstr "Cari"
 
-#: src/components/StudentsList/StudentsList.tsx:32
+#: src/components/StudentsList/StudentsList.tsx:34
 msgid "Search students"
 msgstr "Cari murid"
 
@@ -1250,7 +1250,7 @@ msgstr "Beri tahu kami tentang kelas Anda, Kami akan membantu Anda melacak kehad
 msgid "Thanks for Subscribing!"
 msgstr "Terimakasih telah berlangganan dengan kami!"
 
-#: src/components/StudentsList/StudentsList.tsx:63
+#: src/components/StudentsList/StudentsList.tsx:65
 msgid "The term <0>\"{term}\"</0> does not match any student"
 msgstr "Tidak ada murid dengan nama <0>\"{term}\"</0>"
 
@@ -1266,7 +1266,7 @@ msgstr "Wali murid ini belum memiliki data murid."
 msgid "This student doesn't have a guardian yet."
 msgstr "Murid ini belum mempunyai wali."
 
-#: src/components/PageAllObservations/ObservationsTable.tsx:85
+#: src/components/PageAllObservations/ObservationsTable.tsx:86
 msgid "This will export all currently visible observations as a csv file, continue?"
 msgstr "Ini akan mengekspor semua observasi yang terlihat saat ini sebagai file csv, lanjut?"
 
@@ -1303,7 +1303,7 @@ msgstr "Lacak perkembangan kurikulum"
 msgid "Trial period has ended."
 msgstr "Masa coba telah selesai."
 
-#: src/components/StudentsList/StudentsList.tsx:56
+#: src/components/StudentsList/StudentsList.tsx:58
 msgid "Try again"
 msgstr "Coba lagi"
 
@@ -1402,7 +1402,7 @@ msgstr "Anda"
 msgid "You can enable the curriculum feature to track student progress in your curriculum."
 msgstr "Anda dapat mengaktifkan fitur kurikulum untuk melacak perkembangan murid di kurikulum Anda."
 
-#: src/components/StudentsList/StudentsList.tsx:76
+#: src/components/StudentsList/StudentsList.tsx:78
 msgid "You have no student enrolled"
 msgstr "Tidak ada siswa yang terdaftar"
 
