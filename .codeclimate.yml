@@ -4,8 +4,16 @@ exclude_patterns:
   - "**/*.snap"
   - "**/*graphql-types*"
   - "**/__generated__"
+  - "**/*.stories.tsx"
+  - "**/*.test.tsx"
+  - "**/_test.go"
+  - "**/*.spec.ts"
 
 checks:
+  method-lines:
+    enabled: true
+    config:
+      threshold: 120
   identical-code:
     config:
       threshold: 25
