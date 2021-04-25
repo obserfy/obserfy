@@ -1,6 +1,6 @@
 import React from "react"
 import { Meta, Story } from "@storybook/react"
-import PageNewReport, { PageNewReportProps } from "./PageNewReport"
+import PageNewReport from "./PageNewReport"
 
 export default {
   title: "Core/PageNewReport",
@@ -10,7 +10,7 @@ export default {
   },
 } as Meta
 
-const Template: Story<PageNewReportProps> = (args) => <PageNewReport {...args} />
+const Template: Story<{}> = (args) => <PageNewReport {...args} />
 
 export const Default = Template.bind({})
 Default.args = {}
