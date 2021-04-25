@@ -167,6 +167,7 @@ type (
 		NewCurriculum(schoolId string, name string) error
 		CreateStudentVideo(schoolId string, studentId string, video domain.Video) error
 		UpdateSchool(schoolId string, name *string) error
+		NewProgressReport(schoolId string, title string, start time.Time, end time.Time) error
 	}
 	MailService interface {
 		SendInviteEmail(email string, inviteCode string, schoolName string) error

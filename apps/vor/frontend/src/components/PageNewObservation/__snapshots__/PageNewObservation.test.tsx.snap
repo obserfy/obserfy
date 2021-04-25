@@ -963,6 +963,7 @@ input:focus~.emotion-24 {
   padding: 12px;
   color: var(--theme-ui-colors-text, #37383c);
   display: none;
+  width: 100%;
 }
 
 .emotion-51:hover,

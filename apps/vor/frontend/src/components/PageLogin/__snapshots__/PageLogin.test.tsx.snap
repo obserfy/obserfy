@@ -181,6 +181,7 @@ exports[`PageLogin should render correctly 1`] = `
   color: var(--theme-ui-colors-text, #37383c);
   margin-bottom: 8px;
   width: 100%;
+  width: 100%;
 }
 
 .emotion-13:hover,
@@ -236,6 +237,7 @@ exports[`PageLogin should render correctly 1`] = `
   font-size: 16px;
   padding: 12px;
   color: var(--theme-ui-colors-text, #37383c);
+  width: 100%;
   width: 100%;
 }
 
