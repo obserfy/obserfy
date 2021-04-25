@@ -22,7 +22,7 @@
     "@theme-ui/match-media": "0.6.0-canary.c5a716a.0",
     "@types/dompurify": "2.2.1",
     "@types/hls.js": "0.13.3",
-    "autoprefixer": "^10.2.5",
+    "autoprefixer": "10.2.5",
     "babel-plugin-remove-graphql-queries": "3.0.0",
     "body-scroll-lock": "3.1.5",
     "browser-lang": "0.1.0",
