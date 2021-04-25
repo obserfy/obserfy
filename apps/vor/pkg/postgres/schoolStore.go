@@ -18,13 +18,14 @@ type SchoolStore struct {
 
 func (s SchoolStore) NewProgressReport(schoolId string, title string, start time.Time, end time.Time) error {
 	report := ProgressReport{
+		Id:          uuid.New(),
 		SchoolId:    schoolId,
 		Title:       title,
 		PeriodStart: start,
 		PeriodEnd:   end,
 	}
 
-	_, err := s.Model(report).Insert()
+	_, err := s.Model(&report).Insert()
 	if err != nil {
 		return richErrors.Wrap(err, "failed to save new progress report")
 	}

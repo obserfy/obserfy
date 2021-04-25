@@ -2,18 +2,24 @@ import { t, Trans } from "@lingui/macro"
 import React, { FC, useState } from "react"
 import { Box, Flex } from "theme-ui"
 import dayjs from "../../dayjs"
+import usePostNewReport from "../../hooks/api/schools/usePostNewReport"
 import { ALL_REPORT_URL } from "../../routes"
 import DateInput from "../DateInput/DateInput"
 import Input from "../Input/Input"
+import { navigate } from "../Link/Link"
 import { breadCrumb } from "../TopBar/TopBar"
 import TopBarWithAction from "../TopBarWithAction/TopBarWithAction"
 import Typography from "../Typography/Typography"
 
-export interface PageNewReportProps {}
+export interface PageNewReportProps {
+}
+
 const PageNewReport: FC<PageNewReportProps> = () => {
   const [title, setTitle] = useState("")
   const [periodStart, setPeriodStart] = useState(dayjs())
   const [periodEnd, setPeriodEnd] = useState(dayjs())
+
+  const postReport = usePostNewReport()
 
   return (
     <Flex sx={{ flexDirection: "column" }}>
@@ -22,9 +28,19 @@ const PageNewReport: FC<PageNewReportProps> = () => {
           breadCrumb(t`Reports`, ALL_REPORT_URL),
           breadCrumb(t`New Progress Report`),
         ]}
-        onActionClick={() => {}}
-        buttonContent={t`Create`}
+        actionText={t`Create`}
         disableAction={title === ""}
+        isLoading={postReport.isLoading}
+        onActionClick={async () => {
+          const result = await postReport.mutateAsync({
+            title,
+            periodEnd: periodEnd.toISOString(),
+            periodStart: periodEnd.toISOString(),
+          })
+          if (result?.ok) {
+            navigate(ALL_REPORT_URL)
+          }
+        }}
       >
         <Flex sx={{ alignItems: "center", maxWidth: "maxWidth.sm" }} mx="auto">
           <Typography.H5 m={3}>

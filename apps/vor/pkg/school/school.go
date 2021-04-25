@@ -1260,7 +1260,7 @@ func postNewReport(s rest.Server, store Store) http.Handler {
 		schoolId := chi.URLParam(r, "schoolId")
 
 		var report requestBody
-		if err := rest.ParseJson(r.Body, report); err != nil {
+		if err := rest.ParseJson(r.Body, &report); err != nil {
 			return rest.NewParseJsonError(err)
 		}
 
