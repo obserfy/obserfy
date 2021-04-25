@@ -4,7 +4,6 @@ import { getSchoolId } from "../../schoolIdState"
 
 const useImportCurriculum = () => {
   const importCurriculum = async (csv: File) => {
-    console.log("import curriculum hooks")
     const payload = new FormData()
     payload.append("csvFile", csv)
 
