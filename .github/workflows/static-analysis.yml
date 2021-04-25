@@ -29,10 +29,7 @@ jobs:
           cache-name: cache-typecheck
         with:
           path: |
-            .yarn/unplugged
-            .yarn/install-state.gz
-            .yarn/build-state.yml
-            .yarn/cache
+            .yarn
           key: v2-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
       - name: Use Node.js 14
         uses: actions/setup-node@v2
@@ -54,10 +51,7 @@ jobs:
           cache-name: cache-lint
         with:
           path: |
-            .yarn/unplugged
-            .yarn/install-state.gz
-            .yarn/build-state.yml
-            .yarn/cache
+            .yarn
           key: v2-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
       - name: Use Node.js 14
         uses: actions/setup-node@v2

@@ -29,10 +29,7 @@ jobs:
           cache-name: cache-build-vor
         with:
           path: |
-            .yarn/unplugged
-            .yarn/install-state.gz
-            .yarn/build-state.yml
-            .yarn/cache
+            .yarn
             apps/vor/frontend/public
             apps/vor/frontend/.cache
           key: v6-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
@@ -72,10 +69,7 @@ jobs:
           cache-name: cache-build-gaia
         with:
           path: |
-            .yarn/unplugged
-            .yarn/install-state.gz
-            .yarn/build-state.yml
-            .yarn/cache
+            .yarn
             apps/gaia/.next
           key: v6-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
       - name: Use Node.js 15
@@ -166,10 +160,7 @@ jobs:
           cache-name: cache-vor-snapshot-test
         with:
           path: |
-            .yarn/unplugged
-            .yarn/install-state.gz
-            .yarn/build-state.yml
-            .yarn/cache
+            .yarn
           key: v6-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
       - name: Use Node.js 15
         uses: actions/setup-node@v2
@@ -225,10 +216,7 @@ jobs:
           cache-name: cache-build-e2e
         with:
           path: |
-            .yarn/unplugged
-            .yarn/install-state.gz
-            .yarn/build-state.yml
-            .yarn/cache
+            .yarn
             ~/.cache/Cypress
           key: v6-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
       - name: Use Node.js 15
@@ -311,10 +299,7 @@ jobs:
           cache-name: cache-build-e2e
         with:
           path: |
-            .yarn/unplugged
-            .yarn/install-state.gz
-            .yarn/build-state.yml
-            .yarn/cache
+            .yarn
             ~/.cache/Cypress
           key: v6-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
       - name: Use Node.js 15

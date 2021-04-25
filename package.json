@@ -6,8 +6,5 @@
       "packages/*",
       "apps/vor/*"
     ]
-  },
-  "resolutions": {
-    "typescript": "4.1.5"
   }
 }

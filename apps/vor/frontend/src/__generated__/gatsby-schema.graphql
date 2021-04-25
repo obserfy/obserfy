@@ -740,10 +740,10 @@ type SitePluginPluginOptions {
   dsn: String
   release: String
   tracesSampleRate: Float
-  pathCheck: Boolean
   allExtensions: Boolean
   isTSX: Boolean
   jsxPragma: String
+  pathCheck: Boolean
 }
 
 type SitePluginPluginOptionsIcon_options {
@@ -1699,10 +1699,10 @@ input SitePluginPluginOptionsFilterInput {
   dsn: StringQueryOperatorInput
   release: StringQueryOperatorInput
   tracesSampleRate: FloatQueryOperatorInput
-  pathCheck: BooleanQueryOperatorInput
   allExtensions: BooleanQueryOperatorInput
   isTSX: BooleanQueryOperatorInput
   jsxPragma: StringQueryOperatorInput
+  pathCheck: BooleanQueryOperatorInput
 }
 
 input SitePluginPluginOptionsIcon_optionsFilterInput {
@@ -1945,10 +1945,10 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___dsn
   pluginCreator___pluginOptions___release
   pluginCreator___pluginOptions___tracesSampleRate
-  pluginCreator___pluginOptions___pathCheck
   pluginCreator___pluginOptions___allExtensions
   pluginCreator___pluginOptions___isTSX
   pluginCreator___pluginOptions___jsxPragma
+  pluginCreator___pluginOptions___pathCheck
   pluginCreator___nodeAPIs
   pluginCreator___browserAPIs
   pluginCreator___ssrAPIs
@@ -2698,10 +2698,10 @@ enum SitePluginFieldsEnum {
   pluginOptions___dsn
   pluginOptions___release
   pluginOptions___tracesSampleRate
-  pluginOptions___pathCheck
   pluginOptions___allExtensions
   pluginOptions___isTSX
   pluginOptions___jsxPragma
+  pluginOptions___pathCheck
   nodeAPIs
   browserAPIs
   ssrAPIs
