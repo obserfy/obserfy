@@ -156,6 +156,7 @@ exports[`PageAllReports should render correctly 1`] = `
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-bottom: 16px;
+  margin-top: 16px;
   text-align: center;
   font-size: 16px;
   color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
