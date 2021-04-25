@@ -95,7 +95,7 @@ msgstr ""
 msgid "Address"
 msgstr "Alamat"
 
-#: src/components/Navbar/Navbar.tsx:69
+#: src/components/Navbar/Navbar.tsx:48
 #: src/components/PageListOfGuardians/PageListOfGuardians.tsx:21
 #: src/components/PagePaymentSuccess/PagePaymentSuccess.tsx:14
 #: src/components/PageSubscription/PageSubscription.tsx:29
@@ -361,7 +361,7 @@ msgstr ""
 msgid "Delete plan?"
 msgstr "Hapus rencana?"
 
-#: src/components/PageCurriculumMaterial/DescriptionEditor.tsx:35
+#: src/components/PageCurriculumMaterial/DescriptionEditor.tsx:53
 #: src/components/PageNewStudentPlans/PageNewStudentPlans.tsx:109
 #: src/components/PageStudentPlanDetails/LessonPlanDescriptionCard.tsx:26
 #: src/components/PageStudentPlanDetails/LessonPlanDescriptionCard.tsx:46
@@ -940,6 +940,10 @@ msgstr "Harga"
 msgid "Profile"
 msgstr "Profil"
 
+#: src/components/Navbar/Navbar.tsx:45
+msgid "Progress Report"
+msgstr ""
+
 #: src/components/PageStudentOverview/AssessmentCard.tsx:72
 msgid "Recently Mastered"
 msgstr "Baru saja Dikuasai"
@@ -999,7 +1003,7 @@ msgid "Saturday"
 msgstr "Sabtu"
 
 #: src/components/PageAdminNewGuardian/PageAdminNewGuardian.tsx:52
-#: src/components/PageCurriculumMaterial/DescriptionEditor.tsx:43
+#: src/components/PageCurriculumMaterial/DescriptionEditor.tsx:61
 #: src/components/PageEditClass/PageEditClass.tsx:97
 #: src/components/PageGuardianProfile/PageGuardianProfile.tsx:140
 #: src/components/PageNewClass/PageNewClass.tsx:80
@@ -1150,7 +1154,7 @@ msgstr "Status"
 msgid "Student ID"
 msgstr "ID Murid"
 
-#: src/components/Navbar/Navbar.tsx:63
+#: src/components/Navbar/Navbar.tsx:44
 #: src/components/PageAddGuardian/PageAddGuardian.tsx:67
 #: src/components/PageAllObservations/PageAllObservations.tsx:13
 #: src/components/PageNewObservation/PageNewObservation.tsx:77
@@ -1198,7 +1202,7 @@ msgstr "Mulai Langganan"
 msgid "Sunday"
 msgstr "Minggu"
 
-#: src/components/Navbar/Navbar.tsx:70
+#: src/components/Navbar/Navbar.tsx:49
 msgid "Support"
 msgstr "Bantuan"
 

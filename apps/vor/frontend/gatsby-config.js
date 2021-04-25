@@ -34,15 +34,6 @@ const plugins = [
   `gatsby-plugin-remove-serviceworker`,
   `gatsby-plugin-portal`,
   {
-    resolve: `gatsby-plugin-segment-js`,
-    options: {
-      prodKey: `a2pLn3x1wfkoSpgCxAb1sHiMRPraq6hW`,
-      trackPage: true,
-      delayLoad: true,
-      delayLoadTime: 1000,
-    },
-  },
-  {
     resolve: "gatsby-plugin-svgr",
     options: {
       prettier: true, // use prettier to format JS code output (default)
@@ -101,7 +92,7 @@ const plugins = [
 // this disables plugins for dev.
 if (process.env.NODE_ENV === "production") {
   // TODO: run preact on dev too when prefresh stabilizes. Preact's HMR stops
-  //  working on gatsby v3, so we disable first don dev. Bug might arise on
+  //  working on gatsby v3, so we disable preact in dev. Bug might arise on
   //  dev related to portals due to the difference between preact's and react's
   //  event propagation.
   plugins.push(`gatsby-plugin-preact`, {

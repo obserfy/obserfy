@@ -92,6 +92,7 @@ const Input: ForwardRefRenderFunction<HTMLInputElement, Props> = (
           sx={{
             ...modifiedSx,
             fontSize: small ? 1 : undefined,
+            width: "100%",
           }}
           {...props}
         />

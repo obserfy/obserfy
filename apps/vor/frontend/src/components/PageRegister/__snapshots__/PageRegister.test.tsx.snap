@@ -169,6 +169,7 @@ exports[`PageRegister should render correctly 1`] = `
   color: var(--theme-ui-colors-text, #37383c);
   margin-bottom: 8px;
   width: 100%;
+  width: 100%;
 }
 
 .emotion-12:hover,
@@ -225,6 +226,7 @@ exports[`PageRegister should render correctly 1`] = `
   padding: 12px;
   color: var(--theme-ui-colors-text, #37383c);
   margin-bottom: 16px;
+  width: 100%;
   width: 100%;
 }
 

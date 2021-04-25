@@ -1,0 +1,15 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="run e2e" type="js.build_tools.npm">
+    <package-json value="$PROJECT_DIR$/apps/e2e/package.json" />
+    <command value="run" />
+    <scripts>
+      <script value="cy:open" />
+    </scripts>
+    <arguments value="--config baseUrl=http://athena:8001" />
+    <node-interpreter value="project" />
+    <envs>
+      <env name="NODE_OPTIONS" value="--no-warnings" />
+    </envs>
+    <method v="2" />
+  </configuration>
+</component>

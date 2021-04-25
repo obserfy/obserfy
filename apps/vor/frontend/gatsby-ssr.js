@@ -1,8 +1,8 @@
-/**
- * Implement Gatsby's SSR (Server Side Rendering) APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/ssr-apis/
- */
+import React from "react"
 
-// You can delete this file if you're not using it
-import "./src/global.css"
+/** * Gatsby SSR config: https://www.gatsbyjs.org/docs/ssr-apis/ */
+export const onRenderBody = ({ setHeadComponents }) => {
+  if (process.env.NODE_ENV === "development") return
+
+  setHeadComponents([<script src="/mixpanel-lite.min.js" />])
+}

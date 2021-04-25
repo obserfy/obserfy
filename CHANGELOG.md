@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.16.5](https://github.com/obserfy/obserfy/compare/v1.16.4...v1.16.5) (2021-03-25)
+
+### [1.16.4](https://github.com/obserfy/obserfy/compare/v1.16.3...v1.16.4) (2021-03-25)
+
+
+### Bug Fixes
+
+* **deps:** pin dependencies ([f8c3e8f](https://github.com/obserfy/obserfy/commit/f8c3e8fdc79318421545f14eb1db915fb7b09cef))
+* **deps:** update dependency @sentry/webpack-plugin to v1.14.2 ([03b392f](https://github.com/obserfy/obserfy/commit/03b392f366f3231fc73b685f841ffae0bbeb5e4d))
+* **deps:** update dependency @types/node to v14.14.35 ([791b655](https://github.com/obserfy/obserfy/commit/791b655f228b82de918dd9844ad0c8a65c1cf975))
+* **deps:** update dependency auth0-js to v9.15.0 ([ae1281c](https://github.com/obserfy/obserfy/commit/ae1281c1600335cffbb06766bf31fd8f65fb14fd))
+* **deps:** update dependency cypress-file-upload to v5.0.3 ([ecd56e5](https://github.com/obserfy/obserfy/commit/ecd56e57bb0f140e1efde91407ef2bcd58fc806d))
+* **deps:** update dependency dompurify to v2.2.7 ([b8e9607](https://github.com/obserfy/obserfy/commit/b8e9607d5f97acaf2c18a9a199d2b4b986f4457b))
+* **deps:** update dependency monocle-ts to v2.3.9 ([6fb02e9](https://github.com/obserfy/obserfy/commit/6fb02e93c73f5d4e85a82d069f2a71b8184c2d68))
+* **deps:** update dependency nanoid to v3.1.22 ([090f803](https://github.com/obserfy/obserfy/commit/090f80326017b8903482e4194bb9c005ba292b8b))
+* **deps:** update dependency next to v10.0.9 ([a88ac42](https://github.com/obserfy/obserfy/commit/a88ac42445ca4199a25a240fe5e560915fdd8a92))
+* **deps:** update dependency pino to v6.11.2 ([b12b165](https://github.com/obserfy/obserfy/commit/b12b1659d844af9fdf5f62c63b63d0645af1b24b))
+* **deps:** update golang.org/x/crypto commit hash to 0c34fe9 ([4fe521c](https://github.com/obserfy/obserfy/commit/4fe521c673a40947d945bba23cc14cad0666af53))
+* **deps:** update golang.org/x/crypto commit hash to 513c2a4 ([8dde1e8](https://github.com/obserfy/obserfy/commit/8dde1e8033bfca9b590ecab7b85de7f46bcdc87b))
+* **deps:** update module github.com/signintech/gopdf to v0.9.15 ([3c8d931](https://github.com/obserfy/obserfy/commit/3c8d931e8e88dd7f5222d9fad66e19a59d0c26c3))
+* **vor:** hmr stops working ([0653bc8](https://github.com/obserfy/obserfy/commit/0653bc896ee40280968dcc95a5a99e890eba9080))
+
+### [1.16.3](https://github.com/obserfy/obserfy/compare/v1.16.2...v1.16.3) (2021-03-20)
+
+
+### Bug Fixes
+
+* back button breaks on empty redirects [#1861](https://github.com/obserfy/obserfy/issues/1861) ([bdea838](https://github.com/obserfy/obserfy/commit/bdea838088befb757fcb21e87c92725052701fdd))
+* broken yarn install due to incompatibility with ts ^4.2.0 ([fd4d324](https://github.com/obserfy/obserfy/commit/fd4d32498de7618a12891ac51d95644e7c03b47b))
+* gaia student progress doesn't follow proper ordering and doesn't show presented states. ([87645b2](https://github.com/obserfy/obserfy/commit/87645b26aa4a1ec1ff2b1c60d664a60c441b0a80))
+
 ### [1.16.2](https://github.com/obserfy/obserfy/compare/v1.16.1...v1.16.2) (2021-03-04)
 
 ### [1.16.1](https://github.com/obserfy/obserfy/compare/v1.16.0...v1.16.1) (2021-02-27)

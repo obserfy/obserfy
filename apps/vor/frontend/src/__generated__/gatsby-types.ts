@@ -642,10 +642,6 @@ type SitePluginPluginOptions = {
   readonly crossOrigin: Maybe<Scalars['String']>;
   readonly include_favicon: Maybe<Scalars['Boolean']>;
   readonly cacheDigest: Maybe<Scalars['String']>;
-  readonly prodKey: Maybe<Scalars['String']>;
-  readonly trackPage: Maybe<Scalars['Boolean']>;
-  readonly delayLoad: Maybe<Scalars['Boolean']>;
-  readonly delayLoadTime: Maybe<Scalars['Int']>;
   readonly prettier: Maybe<Scalars['Boolean']>;
   readonly svgo: Maybe<Scalars['Boolean']>;
   readonly svgoConfig: Maybe<SitePluginPluginOptionsSvgoConfig>;
@@ -2035,10 +2031,6 @@ type SitePluginPluginOptionsFilterInput = {
   readonly crossOrigin: Maybe<StringQueryOperatorInput>;
   readonly include_favicon: Maybe<BooleanQueryOperatorInput>;
   readonly cacheDigest: Maybe<StringQueryOperatorInput>;
-  readonly prodKey: Maybe<StringQueryOperatorInput>;
-  readonly trackPage: Maybe<BooleanQueryOperatorInput>;
-  readonly delayLoad: Maybe<BooleanQueryOperatorInput>;
-  readonly delayLoadTime: Maybe<IntQueryOperatorInput>;
   readonly prettier: Maybe<BooleanQueryOperatorInput>;
   readonly svgo: Maybe<BooleanQueryOperatorInput>;
   readonly svgoConfig: Maybe<SitePluginPluginOptionsSvgoConfigFilterInput>;
@@ -2207,10 +2199,6 @@ type SitePageFieldsEnum =
   | 'pluginCreator.pluginOptions.crossOrigin'
   | 'pluginCreator.pluginOptions.include_favicon'
   | 'pluginCreator.pluginOptions.cacheDigest'
-  | 'pluginCreator.pluginOptions.prodKey'
-  | 'pluginCreator.pluginOptions.trackPage'
-  | 'pluginCreator.pluginOptions.delayLoad'
-  | 'pluginCreator.pluginOptions.delayLoadTime'
   | 'pluginCreator.pluginOptions.prettier'
   | 'pluginCreator.pluginOptions.svgo'
   | 'pluginCreator.pluginOptions.svgoConfig.removeViewBox'
@@ -3102,10 +3090,6 @@ type SitePluginFieldsEnum =
   | 'pluginOptions.crossOrigin'
   | 'pluginOptions.include_favicon'
   | 'pluginOptions.cacheDigest'
-  | 'pluginOptions.prodKey'
-  | 'pluginOptions.trackPage'
-  | 'pluginOptions.delayLoad'
-  | 'pluginOptions.delayLoadTime'
   | 'pluginOptions.prettier'
   | 'pluginOptions.svgo'
   | 'pluginOptions.svgoConfig.removeViewBox'
