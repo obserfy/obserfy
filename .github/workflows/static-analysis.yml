@@ -29,17 +29,13 @@ jobs:
           cache-name: cache-typecheck
         with:
           path: |
-            .yarn/unplugged
-            .yarn/install-state.gz
-            .yarn/build-state.yml
-            .pnp.js
-          key: v2-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/.pnp.js') }}-${{ hashFiles('**/yarn.lock') }}
+            .yarn
+          key: v2-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
       - name: Use Node.js 14
         uses: actions/setup-node@v2
         with:
           node-version: 14
       - name: Install Dependencies
-        if: steps.cache-deps.outputs.cache-hit != 'true'
         run: yarn
       - run: yarn workspaces foreach -p run typecheck
 
@@ -55,16 +51,12 @@ jobs:
           cache-name: cache-lint
         with:
           path: |
-            .yarn/unplugged
-            .yarn/install-state.gz
-            .yarn/build-state.yml
-            .pnp.js
-          key: v2-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/.pnp.js') }}-${{ hashFiles('**/yarn.lock') }}
+            .yarn
+          key: v2-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
       - name: Use Node.js 14
         uses: actions/setup-node@v2
         with:
           node-version: 14
       - name: Install Dependencies
-        if: steps.cache-deps.outputs.cache-hit != 'true'
         run: yarn
       - run: yarn workspaces foreach -p run lint
