@@ -85,6 +85,7 @@ func InitTables(db *pg.Tx) error {
 		(*LessonPlanToStudents)(nil),
 		(*Video)(nil),
 		(*VideoToStudents)(nil),
+		(*ProgressReport)(nil),
 	} {
 		err := db.Model(model).CreateTable(&orm.CreateTableOptions{IfNotExists: true, FKConstraints: true})
 		if err != nil {
@@ -420,6 +421,15 @@ type (
 		Student   Student   `pg:"rel:has-one"`
 		VideoId   uuid.UUID `pg:"type:uuid,on_delete:CASCADE"`
 		Video     Video     `pg:"rel:has-one"`
+	}
+
+	ProgressReport struct {
+		Id          uuid.UUID `pg:"type:uuid"`
+		SchoolId    string    `pg:"type:uuid,on_delete:CASCADE"`
+		School      School    `pg:"rel:has-one"`
+		Title       string
+		PeriodStart time.Time
+		PeriodEnd   time.Time
 	}
 )
 

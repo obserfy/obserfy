@@ -545,6 +545,7 @@ exports[`PageNewStudentPlans should render correctly 1`] = `
   color: var(--theme-ui-colors-text, #37383c);
   margin-bottom: 16px;
   width: 100%;
+  width: 100%;
 }
 
 .emotion-30:hover,

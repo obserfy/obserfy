@@ -22,7 +22,6 @@ exports[`Layout should render correctly 1`] = `
   z-index: 500;
   height: auto;
   width: 100%;
-  border-radius: 0;
   display: block;
   top: auto;
   bottom: 0;
@@ -52,8 +51,6 @@ exports[`Layout should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  padding-bottom: env(safe-area-inset-bottom);
-  padding-left: env(safe-area-inset-left);
   -webkit-box-pack: space-evenly;
   -ms-flex-pack: space-evenly;
   -webkit-justify-content: space-evenly;
@@ -66,12 +63,6 @@ exports[`Layout should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-@media screen and (min-width: 40em) {
-  .emotion-2 {
-    padding-bottom: 0;
-  }
 }
 
 @media screen and (min-width: 40em) {
@@ -89,7 +80,7 @@ exports[`Layout should render correctly 1`] = `
   min-width: 0;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 16px;
+  margin-top: 8px;
   margin-bottom: 16px;
   display: none;
 }
@@ -132,7 +123,7 @@ exports[`Layout should render correctly 1`] = `
 }
 
 .emotion-4:after {
-  top: 0;
+  top: -0.5px;
   right: inherit;
   position: absolute;
   background-color: var(--theme-ui-colors-textPrimary, #027c5b);
@@ -154,40 +145,7 @@ exports[`Layout should render correctly 1`] = `
   }
 }
 
-.emotion-4:hover {
-  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
-}
-
 .emotion-5 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  max-width: 100%;
-  height: auto;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
-  fill: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  width: 24px;
-  height: 24px;
-}
-
-.emotion-6 {
-  box-sizing: border-box;
-  margin: 0;
-  min-width: 0;
-  margin-top: auto;
-  display: none;
-}
-
-@media screen and (min-width: 40em) {
-  .emotion-6 {
-    display: block;
-  }
-}
-
-.emotion-8 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
@@ -198,8 +156,22 @@ exports[`Layout should render correctly 1`] = `
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
+}
+
+.emotion-8 {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  margin-top: auto;
+  display: none;
+}
+
+@media screen and (min-width: 40em) {
+  .emotion-8 {
+    display: block;
+  }
 }
 
 .emotion-11 {
@@ -363,7 +335,6 @@ exports[`Layout should render correctly 1`] = `
         <a
           data-cy="navbar-students"
           href="/dashboard/students"
-          style="outline: none;"
         >
           <div
             class="emotion-4"
@@ -374,34 +345,32 @@ exports[`Layout should render correctly 1`] = `
             />
           </div>
         </a>
+        <a
+          data-cy="navbar-progress report"
+          href="/dashboard/reports"
+        >
+          <div
+            class="emotion-4"
+          >
+            <div
+              alt="Progress Report"
+              class="emotion-5"
+            />
+          </div>
+        </a>
         <div
-          class="emotion-6"
+          class="emotion-8"
         />
         <a
           data-cy="navbar-admin"
           href="/dashboard/admin"
-          style="outline: none;"
         >
           <div
             class="emotion-4"
           >
             <div
               alt="Admin"
-              class="emotion-8"
-            />
-          </div>
-        </a>
-        <a
-          data-cy="navbar-support"
-          href="/dashboard/support"
-          style="outline: none;"
-        >
-          <div
-            class="emotion-4"
-          >
-            <div
-              alt="Support"
-              class="emotion-8"
+              class="emotion-5"
             />
           </div>
         </a>
@@ -409,7 +378,7 @@ exports[`Layout should render correctly 1`] = `
           class="emotion-11"
         >
           <div
-            class="emotion-8"
+            class="emotion-5"
           />
         </button>
       </div>

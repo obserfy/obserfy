@@ -1,43 +1,21 @@
 import { t } from "@lingui/macro"
-import { useLocation, useMatch } from "@reach/router"
+import { useLocation } from "@reach/router"
 import { StaticImage } from "gatsby-plugin-image"
-import { useLocalization } from "gatsby-theme-i18n"
 import React, { FC, FunctionComponent, useEffect, useState } from "react"
 import { Box, Flex } from "theme-ui"
-import { ReactComponent as QuestionMarkIcon } from "../../icons/question-mark.svg"
-import { ReactComponent as SettingsIcon } from "../../icons/settings.svg"
+import useDetectVirtualKeyboard from "../../hooks/useDetectVirtualKeyboard"
+import useLocalizedMatch from "../../hooks/useLocalizedMatch"
+import { ReactComponent as FileIcon } from "../../icons/file-text.svg"
 import { ReactComponent as StudentsIcon } from "../../icons/home.svg"
-import { ADMIN_URL, STUDENTS_URL, SUPPORT_URL } from "../../routes"
+import { ReactComponent as SettingsIcon } from "../../icons/settings.svg"
+import { ADMIN_URL, ALL_REPORT_URL, STUDENTS_URL } from "../../routes"
 import Chatwoot from "../Chatwoot/Chatwoot"
 import Icon from "../Icon/Icon"
 import { Link } from "../Link/Link"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
 
 const Navbar: FC = () => {
-  const [keyboardShown, setKeyboardShown] = useState(false)
-  const [lastVh, setLastVh] = useState(0)
-
-  // Hide navbar when keyboard is shown.
-  useEffect(() => {
-    const listener: EventListener = () => {
-      const vh = Math.max(
-        document.documentElement.clientHeight,
-        window.innerHeight || 0
-      )
-      if (vh === lastVh) return
-      if (vh < 400) {
-        setKeyboardShown(true)
-        setLastVh(vh)
-      } else {
-        setKeyboardShown(false)
-        setLastVh(vh)
-      }
-    }
-    window.addEventListener("resize", listener)
-    return () => {
-      window.removeEventListener("resize", listener)
-    }
-  }, [lastVh])
+  const keyboardShown = useDetectVirtualKeyboard()
 
   return (
     <TranslucentBar
@@ -45,7 +23,6 @@ const Navbar: FC = () => {
       boxSx={{
         height: ["auto", "100%"],
         width: ["100%", "auto"],
-        borderRadius: 0,
         display: [keyboardShown ? "none" : "block", "block"],
         zIndex: 500,
         top: ["auto", 0],
@@ -63,35 +40,34 @@ const Navbar: FC = () => {
     >
       <Flex
         sx={{
-          justifyContent: ["space-evenly"],
+          justifyContent: "space-evenly",
           flexDirection: ["row", "column"],
           height: ["auto", "100%"],
         }}
-        pb={["env(safe-area-inset-bottom)", 0]}
-        pl="env(safe-area-inset-left)"
       >
-        <Box mx="auto" my={3} sx={{ display: ["none", "block"] }}>
+        <Box mx="auto" my={2} mb={3} sx={{ display: ["none", "block"] }}>
           <StaticImage
             src="../../images/logo-transparent.png"
             alt="obserfy logo"
-            width={40}
+            width={34}
             placeholder="blurred"
           />
         </Box>
+
+        <NavBarItem title={t`Students`} icon={StudentsIcon} to={STUDENTS_URL} />
         <NavBarItem
-          title={t`Students`}
-          icon={StudentsIcon}
-          to={STUDENTS_URL}
-          iconFill="textMediumEmphasis"
+          title={t`Progress Report`}
+          icon={FileIcon}
+          to={ALL_REPORT_URL}
         />
-        {/* <NavBarItem title="Plan" icon={CalendarIcon} to="/dashboard/plans" /> */}
+
         <Box mt="auto" sx={{ display: ["none", "block"] }} />
         <NavBarItem title={t`Admin`} icon={SettingsIcon} to={ADMIN_URL} />
-        <NavBarItem
-          title={t`Support`}
-          icon={QuestionMarkIcon}
-          to={SUPPORT_URL}
-        />
+        {/* <NavBarItem */}
+        {/*  title={t`Support`} */}
+        {/*  icon={QuestionMarkIcon} */}
+        {/*  to={SUPPORT_URL} */}
+        {/* /> */}
         <Chatwoot />
       </Flex>
     </TranslucentBar>
@@ -105,30 +81,19 @@ const NavBarItem: FC<{
   iconFill?: string
 }> = ({ title, icon, to, iconFill }) => {
   const [target, setTarget] = useState(to)
-  const { locale } = useLocalization()
+  const { search } = useLocation()
+  const match = useLocalizedMatch(`${to}/*`)
 
-  const match = useMatch(`${locale !== "en" ? `/${locale}` : ""}${to}/*`)
-  const location = useLocation()
-  const url =
-    `${match?.uri}${match?.["*"] ? `/${match?.["*"]}` : ""}${
-      location.search
-    }` ?? ""
-
-  // persist navigation state from each top-level sections
+  // imitate bottom nav backstack navigation behaviour specified in material.io
   useEffect(() => {
     if (match?.uri) {
+      const url = `${match.uri}/${match["*"]}${search}`
       setTarget(url)
     }
-  }, [url, match])
+  }, [match])
 
   return (
-    <Link
-      to={url === target ? to : target}
-      state={{ preserveScroll: true }}
-      style={{ outline: "none", WebkitTapHighlightColor: "transparent" }}
-      onHover={() => {}}
-      data-cy={`navbar-${title.toLowerCase()}`}
-    >
+    <Link to={match ? to : target} data-cy={`navbar-${title.toLowerCase()}`}>
       <Flex
         sx={{
           width: [56, 48],
@@ -138,7 +103,7 @@ const NavBarItem: FC<{
           justifyContent: "space-around",
           position: "relative",
           "&:after": {
-            top: [0, "inherit"],
+            top: [-0.5, "inherit"],
             right: ["inherit", 0],
             position: "absolute",
             backgroundColor: "textPrimary",
@@ -148,24 +113,15 @@ const NavBarItem: FC<{
             content: "''",
             transition: "width 100ms cubic-bezier(0.0, 0.0, 0.2, 1)",
           },
-          "&:hover": {
-            backgroundColor: "primaryLighter",
-          },
         }}
       >
         <Icon
           alt={title}
           as={icon}
           fill={match && iconFill ? "textPrimary" : iconFill || "transparent"}
-          size={24}
+          size={26}
           sx={{ color: match ? "textPrimary" : "textMediumEmphasis" }}
         />
-        {/* <Typography.Body */}
-        {/*  sx={{ lineHeight: 1, fontSize: ["10px", "11px"] }} */}
-        {/*  color={match ? "textPrimary" : "text"} */}
-        {/* > */}
-        {/*  <Trans id={title} /> */}
-        {/* </Typography.Body> */}
       </Flex>
     </Link>
   )

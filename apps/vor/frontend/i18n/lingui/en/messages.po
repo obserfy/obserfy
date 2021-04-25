@@ -90,7 +90,7 @@ msgstr "Add new subject"
 msgid "Address"
 msgstr "Address"
 
-#: src/components/Navbar/Navbar.tsx:66
+#: src/components/Navbar/Navbar.tsx:48
 #: src/components/PageListOfGuardians/PageListOfGuardians.tsx:21
 #: src/components/PagePaymentSuccess/PagePaymentSuccess.tsx:14
 #: src/components/PageSubscription/PageSubscription.tsx:29
@@ -925,6 +925,10 @@ msgstr "Price"
 msgid "Profile"
 msgstr "Profile"
 
+#: src/components/Navbar/Navbar.tsx:45
+msgid "Progress Report"
+msgstr "Progress Report"
+
 #: src/components/PageStudentOverview/AssessmentCard.tsx:72
 msgid "Recently Mastered"
 msgstr "Recently Mastered"
@@ -1135,7 +1139,7 @@ msgstr "Status"
 msgid "Student ID"
 msgstr "Student ID"
 
-#: src/components/Navbar/Navbar.tsx:63
+#: src/components/Navbar/Navbar.tsx:44
 #: src/components/PageAddGuardian/PageAddGuardian.tsx:67
 #: src/components/PageAllObservations/PageAllObservations.tsx:13
 #: src/components/PageNewObservation/PageNewObservation.tsx:77
@@ -1187,7 +1191,7 @@ msgstr "Subscribed"
 msgid "Sunday"
 msgstr "Sunday"
 
-#: src/components/Navbar/Navbar.tsx:67
+#: src/components/Navbar/Navbar.tsx:49
 msgid "Support"
 msgstr "Support"
 
