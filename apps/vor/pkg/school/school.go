@@ -42,7 +42,8 @@ func NewRouter(
 		r.Method("DELETE", "/curriculums", deleteCurriculum(server, store))
 		r.Method("GET", "/curriculums", getCurriculum(server, store))
 		r.Method("GET", "/curriculums/areas", getCurriculumAreas(server, store))
-		r.Method("POST", "/curriculums/import", importBulkCurriculum(server, store))
+		// TODO: bulk import curriculum is unfinished
+		//r.Method("POST", "/curriculums/import", importBulkCurriculum(server, store))
 
 		r.Method("POST", "/classes", postNewClass(server, store))
 		r.Method("GET", "/classes", getClasses(server, store))
@@ -1229,10 +1230,10 @@ func importBulkCurriculum(s rest.Server, store Store) rest.Handler {
 				Error:   richErrors.Wrap(err, "invalid payload"),
 			}
 		}
-		log.Println("FILE:",file)
-		log.Println("FILE HEADER:",fileHeader)
+		log.Println("FILE:", file)
+		log.Println("FILE HEADER:", fileHeader)
 		fileBytes, _ := ioutil.ReadAll(file)
-		log.Println("BYTES:",fileBytes)
+		log.Println("BYTES:", fileBytes)
 		w.WriteHeader(http.StatusCreated)
 		if err := rest.WriteJson(w, "test"); err != nil {
 			return rest.NewWriteJsonError(err)
