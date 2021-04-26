@@ -17,7 +17,6 @@
     "@sentry/gatsby": "6.3.1",
     "@sentry/tracing": "6.3.1",
     "@svgr/webpack": "5.5.0",
-    "@tailwindcss/jit": "0.1.18",
     "@tailwindcss/typography": "0.4.0",
     "@theme-ui/match-media": "0.7.3",
     "@types/dompurify": "2.2.1",
