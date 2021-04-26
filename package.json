@@ -6,5 +6,20 @@
       "packages/*",
       "apps/vor/*"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^7.25.0",
+    "husky": ">=6",
+    "lint-staged": ">=10"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": "prettier --write",
+    "*.go": "gofmt -w -s"
+  },
+  "scripts": {
+    "postinstall": "husky install"
+  },
+  "dependencies": {
+    "prettier": "^2.2.1"
   }
 }

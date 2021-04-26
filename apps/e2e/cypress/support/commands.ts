@@ -75,9 +75,8 @@ const gaiaLogin = () => {
     domain: Cypress.env("GAIA_DOMAIN"),
   })
 
-  cy.wrap(null)
-    .then(() => loginTestUser())
-    .then((response) => {
+  cy.wrap(null).then(() =>
+    loginTestUser().then((response: any) => {
       const { accessToken, expiresIn, idToken, scope } = response
       return getUserInfo(accessToken).then((user: any) => {
         const persistedSession = {
@@ -96,6 +95,7 @@ const gaiaLogin = () => {
         })
       })
     })
+  )
 }
 
 // Data Input Commands ===============================================================
