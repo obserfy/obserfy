@@ -45,7 +45,7 @@
     "dayjs": "1.10.4",
     "dotenv": "8.2.0",
     "faker": "5.5.2",
-    "pg": "8.5.1",
+    "pg": "8.6.0",
     "pnp-webpack-plugin": "1.6.4",
     "prettier": "2.2.1",
     "swc-loader": "0.1.12",
