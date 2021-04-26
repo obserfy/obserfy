@@ -13,10 +13,13 @@
     "lint-staged": ">=10"
   },
   "lint-staged": {
-    "*.{js,ts,tsx}": "eslint --cache --fix",
+    "*.{js,ts,tsx}": "prettier --write",
     "*.go": "gofmt -w -s"
   },
   "scripts": {
     "postinstall": "husky install"
+  },
+  "dependencies": {
+    "prettier": "^2.2.1"
   }
 }

@@ -27697,7 +27697,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"prettier@npm:2.2.1, prettier@npm:^2.0.5, prettier@npm:~2.2.1":
+"prettier@npm:2.2.1, prettier@npm:^2.0.5, prettier@npm:^2.2.1, prettier@npm:~2.2.1":
   version: 2.2.1
   resolution: "prettier@npm:2.2.1"
   bin:
@@ -30075,6 +30075,7 @@ resolve@^2.0.0-next.3:
     eslint: ^7.25.0
     husky: ">=6"
     lint-staged: ">=10"
+    prettier: ^2.2.1
   languageName: unknown
   linkType: soft
 
