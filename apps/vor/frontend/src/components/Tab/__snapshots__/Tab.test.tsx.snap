@@ -18,7 +18,7 @@ exports[`Tab should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  background-color: var(--theme-ui-colors-background, #f2f3f5);
+  background-color: var(--theme-ui-colors-background);
 }
 
 .emotion-2 {
@@ -54,14 +54,14 @@ exports[`Tab should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   padding-left: 4px;
   padding-right: 4px;
   margin-bottom: 0;
-  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  color: var(--theme-ui-colors-textPrimary);
   font-size: 14px;
   margin-left: 16px;
   margin-right: 16px;
@@ -96,7 +96,7 @@ exports[`Tab should render correctly 1`] = `
 }
 
 .emotion-4:after {
-  background-color: var(--theme-ui-colors-textPrimary, #027c5b);
+  background-color: var(--theme-ui-colors-textPrimary);
   border-radius: 2px 2px 0 0;
   width: 125%;
   height: 3px;
@@ -110,14 +110,14 @@ exports[`Tab should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   padding-left: 4px;
   padding-right: 4px;
   margin-bottom: 0;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
   font-size: 14px;
   margin-left: 16px;
   margin-right: 16px;
@@ -152,7 +152,7 @@ exports[`Tab should render correctly 1`] = `
 }
 
 .emotion-5:after {
-  background-color: var(--theme-ui-colors-textPrimary, #027c5b);
+  background-color: var(--theme-ui-colors-textPrimary);
   border-radius: 2px 2px 0 0;
   width: 0%;
   height: 3px;
@@ -168,7 +168,7 @@ exports[`Tab should render correctly 1`] = `
   min-width: 0;
   height: 1px;
   width: 100%;
-  background-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  background-color: var(--theme-ui-colors-border);
   position: absolute;
   bottom: 0;
 }

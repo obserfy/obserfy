@@ -45,7 +45,7 @@ exports[`PageNewClass should render correctly 1`] = `
   height: auto;
   margin: 16px;
   margin-right: 4px;
-  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
+  fill: var(--theme-ui-colors-icon);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -57,12 +57,12 @@ exports[`PageNewClass should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-bottom: 0;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
 }
 
 .emotion-5 {
@@ -72,7 +72,7 @@ exports[`PageNewClass should render correctly 1`] = `
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: bold;
   line-height: heading;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   text-rendering: optimizeLegibility;
   font-size: 24px;
   margin: 16px;
@@ -94,14 +94,14 @@ exports[`PageNewClass should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-size: 14px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -152,18 +152,18 @@ exports[`PageNewClass should render correctly 1`] = `
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface, #fff);
+  border-color: var(--theme-ui-colors-border);
+  background-color: var(--theme-ui-colors-surface);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   margin-bottom: 16px;
   width: 100%;
 }
 
 .emotion-10:hover,
 .emotion-10:focus {
-  border-color: var(--theme-ui-colors-primary, #00e399);
+  border-color: var(--theme-ui-colors-primary);
   outline: none;
 }
 
@@ -185,8 +185,8 @@ exports[`PageNewClass should render correctly 1`] = `
 
 .emotion-10:disabled {
   opacity: 0.68;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
+  border-color: var(--theme-ui-colors-border);
+  color: var(--theme-ui-colors-textDisabled);
 }
 
 .emotion-11 {
@@ -219,11 +219,11 @@ exports[`PageNewClass should render correctly 1`] = `
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface, #fff);
+  border-color: var(--theme-ui-colors-border);
+  background-color: var(--theme-ui-colors-surface);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   margin-bottom: 16px;
   margin-right: 16px;
   width: 100%;
@@ -231,7 +231,7 @@ exports[`PageNewClass should render correctly 1`] = `
 
 .emotion-15:hover,
 .emotion-15:focus {
-  border-color: var(--theme-ui-colors-primary, #00e399);
+  border-color: var(--theme-ui-colors-primary);
   outline: none;
 }
 
@@ -253,20 +253,20 @@ exports[`PageNewClass should render correctly 1`] = `
 
 .emotion-15:disabled {
   opacity: 0.68;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
+  border-color: var(--theme-ui-colors-border);
+  color: var(--theme-ui-colors-textDisabled);
 }
 
 .emotion-20 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-bottom: 8px;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
 }
 
 .emotion-21 {
@@ -294,7 +294,7 @@ exports[`PageNewClass should render correctly 1`] = `
   padding-right: 8px;
   padding-top: 4px;
   padding-bottom: 4px;
-  background-color: var(--theme-ui-colors-surface, #fff);
+  background-color: var(--theme-ui-colors-surface);
   display: inline-block;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -302,25 +302,25 @@ exports[`PageNewClass should render correctly 1`] = `
   user-select: none;
   cursor: pointer;
   border-radius: 6px;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
   border-width: 1px;
   border-style: solid;
   white-space: nowrap;
 }
 
 .emotion-22:hover {
-  background-color: var(--theme-ui-colors-primaryLightest, rgba(0,227,153,0.05));
+  background-color: var(--theme-ui-colors-primaryLightest);
 }
 
 .emotion-23 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   font-size: 14px;
 }
 
@@ -343,7 +343,7 @@ exports[`PageNewClass should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primary);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -353,8 +353,8 @@ exports[`PageNewClass should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-onPrimary, #000);
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  color: var(--theme-ui-colors-onPrimary);
+  background-color: var(--theme-ui-colors-primary);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
@@ -381,7 +381,7 @@ exports[`PageNewClass should render correctly 1`] = `
   justify-content: center;
   touch-action: manipulation;
   box-shadow: rgba(27, 31, 35, 0.1) 0px 1px 0px 0px,rgba(255, 255, 255, 0.03) 0px 1px 0px 0px inset;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
   border-style: solid;
   border-width: 1px;
   line-height: 1;
@@ -395,25 +395,25 @@ exports[`PageNewClass should render correctly 1`] = `
 
 .emotion-36:hover,
 .emotion-36:focus {
-  background-color: var(--theme-ui-colors-primaryDark, #00a06d);
+  background-color: var(--theme-ui-colors-primaryDark);
   outline: none;
 }
 
 .emotion-36:hover:disabled,
 .emotion-36:focus:disabled {
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primary);
 }
 
 .emotion-37 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin: 16px;
-  color: var(--theme-ui-colors-error, #d50000);
+  color: var(--theme-ui-colors-error);
   text-align: center;
 }
 

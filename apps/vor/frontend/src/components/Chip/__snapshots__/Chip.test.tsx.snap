@@ -22,7 +22,7 @@ exports[`Chip should render correctly 1`] = `
   padding-right: 8px;
   padding-top: 4px;
   padding-bottom: 4px;
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primary);
   display: inline-block;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -30,25 +30,25 @@ exports[`Chip should render correctly 1`] = `
   user-select: none;
   cursor: pointer;
   border-radius: 6px;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
   border-width: 1px;
   border-style: solid;
   white-space: nowrap;
 }
 
 .emotion-1:hover {
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primary);
 }
 
 .emotion-2 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
-  color: var(--theme-ui-colors-onPrimary, #000);
+  color: var(--theme-ui-colors-onPrimary);
   font-size: 14px;
 }
 

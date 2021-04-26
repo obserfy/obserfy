@@ -96,7 +96,7 @@ exports[`LoadingIndicator should render correctly 1`] = `
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background-color: var(--theme-ui-colors-text, #37383c);
+  background-color: var(--theme-ui-colors-text);
   -webkit-animation-timing-function: cubic-bezier(0, 1, 1, 0);
   animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
