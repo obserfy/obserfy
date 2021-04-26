@@ -176,29 +176,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:7.13.14":
-  version: 7.13.14
-  resolution: "@babel/core@npm:7.13.14"
-  dependencies:
-    "@babel/code-frame": ^7.12.13
-    "@babel/generator": ^7.13.9
-    "@babel/helper-compilation-targets": ^7.13.13
-    "@babel/helper-module-transforms": ^7.13.14
-    "@babel/helpers": ^7.13.10
-    "@babel/parser": ^7.13.13
-    "@babel/template": ^7.12.13
-    "@babel/traverse": ^7.13.13
-    "@babel/types": ^7.13.14
-    convert-source-map: ^1.7.0
-    debug: ^4.1.0
-    gensync: ^1.0.0-beta.2
-    json5: ^2.1.2
-    semver: ^6.3.0
-    source-map: ^0.5.0
-  checksum: 3c08166ab8497da44644f1a35ce0e75d0cfe1307ff8bb3b75be4d83a204eb2e565b4c305f47225b187374ec4e8972b109a7c70eb5b07471afe074bf33451c21e
-  languageName: node
-  linkType: hard
-
 "@babel/core@npm:7.13.16, @babel/core@npm:^7.12.10":
   version: 7.13.16
   resolution: "@babel/core@npm:7.13.16"
@@ -2107,12 +2084,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:7.13.10, @babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.10.0, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.13, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.13.10, @babel/runtime@npm:^7.3.1, @babel/runtime@npm:^7.3.4, @babel/runtime@npm:^7.5.0, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.6.2, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.7.6, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.8.7, @babel/runtime@npm:^7.9.2":
-  version: 7.13.10
-  resolution: "@babel/runtime@npm:7.13.10"
+"@babel/runtime@npm:7.13.17":
+  version: 7.13.17
+  resolution: "@babel/runtime@npm:7.13.17"
   dependencies:
     regenerator-runtime: ^0.13.4
-  checksum: 9229c12ad2b0ba28f64fb920ef132a04742ad860939cc2a163dd2472831e40b4a72aba2b9eb3bcf02e3f03c773a06a6a8d829440d3888c1493f81198133f2152
+  checksum: d15a6a690e814617e448805be95f676d1e1ac02172123cf0902db129a498f76a75e2802070597267f796420e3411a359ca0f622677011b02e6017eaa34471973
   languageName: node
   linkType: hard
 
@@ -2122,6 +2099,15 @@ __metadata:
   dependencies:
     regenerator-runtime: ^0.12.0
   checksum: 599a9b5f471a27c84084628fb05752f59909831e9b72af188107bfff45057bec7a4801b8ad1e19c572f19859073296ee2d730c15a9eeb3b1072e5f18642a5d11
+  languageName: node
+  linkType: hard
+
+"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.10.0, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.13, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.13.10, @babel/runtime@npm:^7.3.1, @babel/runtime@npm:^7.3.4, @babel/runtime@npm:^7.5.0, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.6.2, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.7.6, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.8.7, @babel/runtime@npm:^7.9.2":
+  version: 7.13.10
+  resolution: "@babel/runtime@npm:7.13.10"
+  dependencies:
+    regenerator-runtime: ^0.13.4
+  checksum: 9229c12ad2b0ba28f64fb920ef132a04742ad860939cc2a163dd2472831e40b4a72aba2b9eb3bcf02e3f03c773a06a6a8d829440d3888c1493f81198133f2152
   languageName: node
   linkType: hard
 
@@ -16510,7 +16496,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "freyr@workspace:apps/freyr"
   dependencies:
-    "@babel/core": 7.13.14
+    "@babel/core": 7.13.16
     "@lingui/cli": 3.8.10
     "@lingui/core": 3.8.10
     "@lingui/macro": 3.8.10
@@ -34374,7 +34360,7 @@ typescript@4.2.3:
   resolution: "vor@workspace:apps/vor/frontend"
   dependencies:
     "@babel/preset-typescript": 7.13.0
-    "@babel/runtime": 7.13.10
+    "@babel/runtime": 7.13.17
     "@emotion/jest": 11.2.1
     "@emotion/react": 11.1.5
     "@istanbuljs/nyc-config-typescript": 1.0.1
