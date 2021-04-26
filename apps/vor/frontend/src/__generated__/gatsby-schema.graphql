@@ -653,6 +653,7 @@ type ImageSharpResize {
 
 type ThemeI18n implements Node {
   defaultLang: String
+  prefixDefault: Boolean
   configPath: String
   config: [Locale]
   id: ID!
@@ -740,10 +741,10 @@ type SitePluginPluginOptions {
   dsn: String
   release: String
   tracesSampleRate: Float
+  pathCheck: Boolean
   allExtensions: Boolean
   isTSX: Boolean
   jsxPragma: String
-  pathCheck: Boolean
 }
 
 type SitePluginPluginOptionsIcon_options {
@@ -799,7 +800,7 @@ type Query {
   allThemeUiConfig(filter: ThemeUiConfigFilterInput, sort: ThemeUiConfigSortInput, skip: Int, limit: Int): ThemeUiConfigConnection!
   imageSharp(fixed: ImageSharpFixedFilterInput, fluid: ImageSharpFluidFilterInput, gatsbyImageData: JSONQueryOperatorInput, original: ImageSharpOriginalFilterInput, resize: ImageSharpResizeFilterInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): ImageSharp
   allImageSharp(filter: ImageSharpFilterInput, sort: ImageSharpSortInput, skip: Int, limit: Int): ImageSharpConnection!
-  themeI18N(defaultLang: StringQueryOperatorInput, configPath: StringQueryOperatorInput, config: LocaleFilterListInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): ThemeI18n
+  themeI18N(defaultLang: StringQueryOperatorInput, prefixDefault: BooleanQueryOperatorInput, configPath: StringQueryOperatorInput, config: LocaleFilterListInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): ThemeI18n
   allThemeI18N(filter: ThemeI18nFilterInput, sort: ThemeI18nSortInput, skip: Int, limit: Int): ThemeI18nConnection!
   siteBuildMetadata(id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, buildTime: DateQueryOperatorInput): SiteBuildMetadata
   allSiteBuildMetadata(filter: SiteBuildMetadataFilterInput, sort: SiteBuildMetadataSortInput, skip: Int, limit: Int): SiteBuildMetadataConnection!
@@ -1699,10 +1700,10 @@ input SitePluginPluginOptionsFilterInput {
   dsn: StringQueryOperatorInput
   release: StringQueryOperatorInput
   tracesSampleRate: FloatQueryOperatorInput
+  pathCheck: BooleanQueryOperatorInput
   allExtensions: BooleanQueryOperatorInput
   isTSX: BooleanQueryOperatorInput
   jsxPragma: StringQueryOperatorInput
-  pathCheck: BooleanQueryOperatorInput
 }
 
 input SitePluginPluginOptionsIcon_optionsFilterInput {
@@ -1945,10 +1946,10 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___dsn
   pluginCreator___pluginOptions___release
   pluginCreator___pluginOptions___tracesSampleRate
+  pluginCreator___pluginOptions___pathCheck
   pluginCreator___pluginOptions___allExtensions
   pluginCreator___pluginOptions___isTSX
   pluginCreator___pluginOptions___jsxPragma
-  pluginCreator___pluginOptions___pathCheck
   pluginCreator___nodeAPIs
   pluginCreator___browserAPIs
   pluginCreator___ssrAPIs
@@ -2312,6 +2313,7 @@ type ThemeI18nEdge {
 
 enum ThemeI18nFieldsEnum {
   defaultLang
+  prefixDefault
   configPath
   config
   config___code
@@ -2419,6 +2421,7 @@ type ThemeI18nGroupConnection {
 
 input ThemeI18nFilterInput {
   defaultLang: StringQueryOperatorInput
+  prefixDefault: BooleanQueryOperatorInput
   configPath: StringQueryOperatorInput
   config: LocaleFilterListInput
   id: StringQueryOperatorInput
@@ -2698,10 +2701,10 @@ enum SitePluginFieldsEnum {
   pluginOptions___dsn
   pluginOptions___release
   pluginOptions___tracesSampleRate
+  pluginOptions___pathCheck
   pluginOptions___allExtensions
   pluginOptions___isTSX
   pluginOptions___jsxPragma
-  pluginOptions___pathCheck
   nodeAPIs
   browserAPIs
   ssrAPIs

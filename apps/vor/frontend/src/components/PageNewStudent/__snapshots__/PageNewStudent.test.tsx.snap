@@ -32,14 +32,14 @@ exports[`PageNewStudent should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  background-color: var(--theme-ui-colors-surfaceBlurNonTransparent, rgba(255,255,255));
+  background-color: var(--theme-ui-colors-surfaceBlurNonTransparent);
   z-index: 100;
   -webkit-position: sticky;
   position: sticky;
   top: 0;
   border-bottom-width: 1px;
   border-bottom-style: solid;
-  border-bottom-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-bottom-color: var(--theme-ui-colors-border);
 }
 
 .emotion-2 {
@@ -100,7 +100,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primary);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -110,7 +110,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  color: var(--theme-ui-colors-textPrimary);
   background-color: transparent;
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -138,7 +138,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   justify-content: center;
   touch-action: manipulation;
   box-shadow: none;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
   border-style: solid;
   border-width: 1px;
   line-height: 1;
@@ -153,8 +153,8 @@ exports[`PageNewStudent should render correctly 1`] = `
 
 .emotion-5:hover,
 .emotion-5:focus {
-  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
-  border-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primaryLighter);
+  border-color: var(--theme-ui-colors-primary);
   outline: none;
 }
 
@@ -164,13 +164,13 @@ exports[`PageNewStudent should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
-  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
+  fill: var(--theme-ui-colors-icon);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   width: 20px;
   height: 20px;
-  fill: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  fill: var(--theme-ui-colors-textMediumEmphasis);
 }
 
 .emotion-7 {
@@ -191,12 +191,12 @@ exports[`PageNewStudent should render correctly 1`] = `
 .emotion-8 {
   display: inline-block;
   font-size: 12px;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
   white-space: nowrap;
 }
 
 .emotion-8:last-child {
-  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  color: var(--theme-ui-colors-textPrimary);
 }
 
 .emotion-8:last-child>.splitter {
@@ -232,7 +232,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primary);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -242,8 +242,8 @@ exports[`PageNewStudent should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-onPrimary, #000);
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  color: var(--theme-ui-colors-onPrimary);
+  background-color: var(--theme-ui-colors-primary);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
@@ -270,7 +270,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   justify-content: center;
   touch-action: manipulation;
   box-shadow: rgba(27, 31, 35, 0.1) 0px 1px 0px 0px,rgba(255, 255, 255, 0.03) 0px 1px 0px 0px inset;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
   border-style: solid;
   border-width: 1px;
   line-height: 1;
@@ -287,13 +287,13 @@ exports[`PageNewStudent should render correctly 1`] = `
 
 .emotion-14:hover,
 .emotion-14:focus {
-  background-color: var(--theme-ui-colors-primaryDark, #00a06d);
+  background-color: var(--theme-ui-colors-primaryDark);
   outline: none;
 }
 
 .emotion-14:hover:disabled,
 .emotion-14:focus:disabled {
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primary);
 }
 
 .emotion-15 {
@@ -335,7 +335,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: bold;
   line-height: heading;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   text-rendering: optimizeLegibility;
   font-size: 24px;
   margin-bottom: 16px;
@@ -361,7 +361,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-size: 14px;
   -webkit-user-select: none;
@@ -374,7 +374,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  background-color: var(--theme-ui-colors-surface, #fff);
+  background-color: var(--theme-ui-colors-surface);
   border-radius: 6px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px,rgba(0, 0, 0, 0.27) 0px 2px 4px -2px;
   height: 100px;
@@ -412,7 +412,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   max-width: 100%;
   height: auto;
   margin-bottom: 4px;
-  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
+  fill: var(--theme-ui-colors-icon);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -424,11 +424,11 @@ exports[`PageNewStudent should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
   font-size: 12px;
 }
 
@@ -452,17 +452,17 @@ exports[`PageNewStudent should render correctly 1`] = `
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface, #fff);
+  border-color: var(--theme-ui-colors-border);
+  background-color: var(--theme-ui-colors-surface);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   display: none;
 }
 
 .emotion-25:hover,
 .emotion-25:focus {
-  border-color: var(--theme-ui-colors-primary, #00e399);
+  border-color: var(--theme-ui-colors-primary);
   outline: none;
 }
 
@@ -484,8 +484,8 @@ exports[`PageNewStudent should render correctly 1`] = `
 
 .emotion-25:disabled {
   opacity: 0.68;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
+  border-color: var(--theme-ui-colors-border);
+  color: var(--theme-ui-colors-textDisabled);
 }
 
 .emotion-26 {
@@ -497,14 +497,14 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-size: 14px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -555,18 +555,18 @@ exports[`PageNewStudent should render correctly 1`] = `
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface, #fff);
+  border-color: var(--theme-ui-colors-border);
+  background-color: var(--theme-ui-colors-surface);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   margin-bottom: 16px;
   width: 100%;
 }
 
 .emotion-29:hover,
 .emotion-29:focus {
-  border-color: var(--theme-ui-colors-primary, #00e399);
+  border-color: var(--theme-ui-colors-primary);
   outline: none;
 }
 
@@ -588,8 +588,8 @@ exports[`PageNewStudent should render correctly 1`] = `
 
 .emotion-29:disabled {
   opacity: 0.68;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
+  border-color: var(--theme-ui-colors-border);
+  color: var(--theme-ui-colors-textDisabled);
 }
 
 .emotion-30 {
@@ -623,18 +623,18 @@ exports[`PageNewStudent should render correctly 1`] = `
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface, #fff);
+  border-color: var(--theme-ui-colors-border);
+  background-color: var(--theme-ui-colors-surface);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   opacity: 1!important;
   width: 100%;
 }
 
 .emotion-34:hover,
 .emotion-34:focus {
-  border-color: var(--theme-ui-colors-primary, #00e399);
+  border-color: var(--theme-ui-colors-primary);
   outline: none;
 }
 
@@ -656,8 +656,8 @@ exports[`PageNewStudent should render correctly 1`] = `
 
 .emotion-34:disabled {
   opacity: 0.68;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
+  border-color: var(--theme-ui-colors-border);
+  color: var(--theme-ui-colors-textDisabled);
 }
 
 .emotion-35 {
@@ -679,7 +679,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primary);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -689,8 +689,8 @@ exports[`PageNewStudent should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary, #027c5b);
-  background-color: var(--theme-ui-colors-surface, #fff);
+  color: var(--theme-ui-colors-textPrimary);
+  background-color: var(--theme-ui-colors-surface);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
@@ -717,7 +717,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   justify-content: center;
   touch-action: manipulation;
   box-shadow: none;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
   border-style: solid;
   border-width: 1px;
   line-height: 1;
@@ -735,15 +735,15 @@ exports[`PageNewStudent should render correctly 1`] = `
 
 .emotion-35:hover,
 .emotion-35:focus {
-  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
-  border-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primaryLighter);
+  border-color: var(--theme-ui-colors-primary);
   outline: none;
 }
 
 .emotion-35:hover:disabled,
 .emotion-35:focus:disabled {
   background-color: transparent;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
 }
 
 .emotion-36 {
@@ -752,7 +752,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
-  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
+  fill: var(--theme-ui-colors-icon);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -769,7 +769,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-size: 14px;
   -webkit-user-select: none;
@@ -803,17 +803,17 @@ exports[`PageNewStudent should render correctly 1`] = `
   color: inherit;
   background-color: transparent;
   border-radius: 6px;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface, #fff);
+  border-color: var(--theme-ui-colors-border);
+  background-color: var(--theme-ui-colors-surface);
   font-size: 16px;
   padding: 12px;
 }
 
 .emotion-47:hover,
 .emotion-47:focus {
-  border-color: var(--theme-ui-colors-primary, #00e399);
+  border-color: var(--theme-ui-colors-primary);
   outline: none;
 }
 
@@ -847,19 +847,19 @@ exports[`PageNewStudent should render correctly 1`] = `
   background-color: transparent;
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface, #fff);
+  border-color: var(--theme-ui-colors-border);
+  background-color: var(--theme-ui-colors-surface);
   font-size: 16px;
   padding: 16px;
   height: 180px;
   resize: vertical;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   height: 100px;
 }
 
 .emotion-55:hover,
 .emotion-55:focus {
-  border-color: var(--theme-ui-colors-primary, #00e399);
+  border-color: var(--theme-ui-colors-primary);
   outline: none;
 }
 
@@ -887,7 +887,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  background-color: var(--theme-ui-colors-surface, #fff);
+  background-color: var(--theme-ui-colors-surface);
   border-radius: 6px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px,rgba(0, 0, 0, 0.27) 0px 2px 4px -2px;
   margin-top: 32px;
@@ -916,7 +916,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: bold;
   line-height: heading;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   text-rendering: optimizeLegibility;
   font-size: 20px;
   padding: 16px;
@@ -949,7 +949,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  background-color: var(--theme-ui-colors-surface, #fff);
+  background-color: var(--theme-ui-colors-surface);
   border-radius: 6px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px,rgba(0, 0, 0, 0.27) 0px 2px 4px -2px;
   margin-left: 0;
@@ -993,7 +993,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: bold;
   line-height: heading;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   text-rendering: optimizeLegibility;
   font-size: 20px;
   margin-right: auto;
@@ -1018,7 +1018,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primary);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -1028,7 +1028,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  color: var(--theme-ui-colors-textPrimary);
   background-color: transparent;
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -1056,7 +1056,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   justify-content: center;
   touch-action: manipulation;
   box-shadow: none;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
   border-style: solid;
   border-width: 1px;
   line-height: 1;
@@ -1070,8 +1070,8 @@ exports[`PageNewStudent should render correctly 1`] = `
 
 .emotion-63:hover,
 .emotion-63:focus {
-  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
-  border-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primaryLighter);
+  border-color: var(--theme-ui-colors-primary);
   outline: none;
 }
 
@@ -1079,12 +1079,12 @@ exports[`PageNewStudent should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   padding: 16px;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
 }
 
 .emotion-65 {
@@ -1106,7 +1106,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primary);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -1116,8 +1116,8 @@ exports[`PageNewStudent should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary, #027c5b);
-  background-color: var(--theme-ui-colors-surface, #fff);
+  color: var(--theme-ui-colors-textPrimary);
+  background-color: var(--theme-ui-colors-surface);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
@@ -1144,7 +1144,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   justify-content: center;
   touch-action: manipulation;
   box-shadow: none;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
   border-style: solid;
   border-width: 1px;
   line-height: 1;
@@ -1152,7 +1152,7 @@ exports[`PageNewStudent should render correctly 1`] = `
   margin-top: 32px;
   margin-bottom: 32px;
   margin-left: auto;
-  color: var(--theme-ui-colors-danger, #d50000);
+  color: var(--theme-ui-colors-danger);
 }
 
 .emotion-65:disabled {
@@ -1162,15 +1162,15 @@ exports[`PageNewStudent should render correctly 1`] = `
 
 .emotion-65:hover,
 .emotion-65:focus {
-  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
-  border-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primaryLighter);
+  border-color: var(--theme-ui-colors-primary);
   outline: none;
 }
 
 .emotion-65:hover:disabled,
 .emotion-65:focus:disabled {
   background-color: transparent;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
 }
 
 <div>

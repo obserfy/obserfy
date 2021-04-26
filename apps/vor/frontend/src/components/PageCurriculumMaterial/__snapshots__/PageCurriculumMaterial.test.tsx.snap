@@ -84,7 +84,7 @@ exports[`PageCurriculumMaterial should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primary);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -94,7 +94,7 @@ exports[`PageCurriculumMaterial should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  color: var(--theme-ui-colors-textPrimary);
   background-color: transparent;
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -122,7 +122,7 @@ exports[`PageCurriculumMaterial should render correctly 1`] = `
   justify-content: center;
   touch-action: manipulation;
   box-shadow: none;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
   border-style: solid;
   border-width: 1px;
   line-height: 1;
@@ -137,8 +137,8 @@ exports[`PageCurriculumMaterial should render correctly 1`] = `
 
 .emotion-4:hover,
 .emotion-4:focus {
-  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
-  border-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primaryLighter);
+  border-color: var(--theme-ui-colors-primary);
   outline: none;
 }
 
@@ -148,13 +148,13 @@ exports[`PageCurriculumMaterial should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
-  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
+  fill: var(--theme-ui-colors-icon);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   width: 20px;
   height: 20px;
-  fill: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  fill: var(--theme-ui-colors-textMediumEmphasis);
 }
 
 .emotion-6 {
@@ -175,12 +175,12 @@ exports[`PageCurriculumMaterial should render correctly 1`] = `
 .emotion-7 {
   display: inline-block;
   font-size: 12px;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
   white-space: nowrap;
 }
 
 .emotion-7:last-child {
-  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  color: var(--theme-ui-colors-textPrimary);
 }
 
 .emotion-7:last-child>.splitter {
@@ -203,12 +203,12 @@ exports[`PageCurriculumMaterial should render correctly 1`] = `
   min-width: 0;
   display: inline-block;
   font-size: 12px;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
   white-space: nowrap;
 }
 
 .emotion-19:last-child {
-  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  color: var(--theme-ui-colors-textPrimary);
 }
 
 .emotion-19:last-child>.splitter {
@@ -253,7 +253,7 @@ exports[`PageCurriculumMaterial should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  background-color: var(--theme-ui-colors-surface, #fff);
+  background-color: var(--theme-ui-colors-surface);
   border-radius: 6px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px,rgba(0, 0, 0, 0.27) 0px 2px 4px -2px;
   margin-bottom: 16px;
@@ -296,12 +296,12 @@ exports[`PageCurriculumMaterial should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-bottom: 4px;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
   line-height: 1;
   font-size: 12px;
 }
@@ -310,7 +310,7 @@ exports[`PageCurriculumMaterial should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
@@ -335,7 +335,7 @@ exports[`PageCurriculumMaterial should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primary);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -345,8 +345,8 @@ exports[`PageCurriculumMaterial should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary, #027c5b);
-  background-color: var(--theme-ui-colors-surface, #fff);
+  color: var(--theme-ui-colors-textPrimary);
+  background-color: var(--theme-ui-colors-surface);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
@@ -373,7 +373,7 @@ exports[`PageCurriculumMaterial should render correctly 1`] = `
   justify-content: center;
   touch-action: manipulation;
   box-shadow: none;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
   border-style: solid;
   border-width: 1px;
   line-height: 1;
@@ -392,15 +392,15 @@ exports[`PageCurriculumMaterial should render correctly 1`] = `
 
 .emotion-27:hover,
 .emotion-27:focus {
-  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
-  border-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primaryLighter);
+  border-color: var(--theme-ui-colors-primary);
   outline: none;
 }
 
 .emotion-27:hover:disabled,
 .emotion-27:focus:disabled {
   background-color: transparent;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
 }
 
 .emotion-28 {
@@ -409,7 +409,7 @@ exports[`PageCurriculumMaterial should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
-  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
+  fill: var(--theme-ui-colors-icon);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -421,7 +421,7 @@ exports[`PageCurriculumMaterial should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  background-color: var(--theme-ui-colors-surface, #fff);
+  background-color: var(--theme-ui-colors-surface);
   border-radius: 0;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px,rgba(0, 0, 0, 0.27) 0px 2px 4px -2px;
   margin-left: 0;
@@ -453,7 +453,7 @@ exports[`PageCurriculumMaterial should render correctly 1`] = `
   min-width: 0;
   border-bottom-width: 1px;
   border-bottom-style: solid;
-  border-bottom-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-bottom-color: var(--theme-ui-colors-border);
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -468,7 +468,7 @@ exports[`PageCurriculumMaterial should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
@@ -495,7 +495,7 @@ exports[`PageCurriculumMaterial should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primary);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -505,7 +505,7 @@ exports[`PageCurriculumMaterial should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  color: var(--theme-ui-colors-textPrimary);
   background-color: transparent;
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -533,7 +533,7 @@ exports[`PageCurriculumMaterial should render correctly 1`] = `
   justify-content: center;
   touch-action: manipulation;
   box-shadow: none;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
   border-style: solid;
   border-width: 1px;
   line-height: 1;
@@ -541,7 +541,7 @@ exports[`PageCurriculumMaterial should render correctly 1`] = `
   margin-left: auto;
   margin-right: 16px;
   padding: 8px;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
 }
 
 .emotion-33:disabled {
@@ -551,8 +551,8 @@ exports[`PageCurriculumMaterial should render correctly 1`] = `
 
 .emotion-33:hover,
 .emotion-33:focus {
-  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
-  border-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primaryLighter);
+  border-color: var(--theme-ui-colors-primary);
   outline: none;
 }
 
@@ -585,7 +585,7 @@ exports[`PageCurriculumMaterial should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primary);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -595,8 +595,8 @@ exports[`PageCurriculumMaterial should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary, #027c5b);
-  background-color: var(--theme-ui-colors-surface, #fff);
+  color: var(--theme-ui-colors-textPrimary);
+  background-color: var(--theme-ui-colors-surface);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
@@ -623,14 +623,14 @@ exports[`PageCurriculumMaterial should render correctly 1`] = `
   justify-content: center;
   touch-action: manipulation;
   box-shadow: none;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
   border-style: solid;
   border-width: 1px;
   line-height: 1;
   margin-left: auto;
   margin-top: 16px;
   margin-right: 16px;
-  color: var(--theme-ui-colors-danger, #d50000);
+  color: var(--theme-ui-colors-danger);
 }
 
 .emotion-36:disabled {
@@ -640,15 +640,15 @@ exports[`PageCurriculumMaterial should render correctly 1`] = `
 
 .emotion-36:hover,
 .emotion-36:focus {
-  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
-  border-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primaryLighter);
+  border-color: var(--theme-ui-colors-primary);
   outline: none;
 }
 
 .emotion-36:hover:disabled,
 .emotion-36:focus:disabled {
   background-color: transparent;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
 }
 
 .emotion-37 {
@@ -658,7 +658,7 @@ exports[`PageCurriculumMaterial should render correctly 1`] = `
   max-width: 100%;
   height: auto;
   margin-right: 8px;
-  fill: var(--theme-ui-colors-danger, #d50000);
+  fill: var(--theme-ui-colors-danger);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;

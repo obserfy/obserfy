@@ -18,14 +18,14 @@ exports[`PageNewObservation should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  background-color: var(--theme-ui-colors-surfaceBlurNonTransparent, rgba(255,255,255));
+  background-color: var(--theme-ui-colors-surfaceBlurNonTransparent);
   z-index: 100;
   -webkit-position: sticky;
   position: sticky;
   top: 0;
   border-bottom-width: 1px;
   border-bottom-style: solid;
-  border-bottom-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-bottom-color: var(--theme-ui-colors-border);
 }
 
 .emotion-2 {
@@ -70,7 +70,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primary);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -80,7 +80,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  color: var(--theme-ui-colors-textPrimary);
   background-color: transparent;
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -108,7 +108,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   justify-content: center;
   touch-action: manipulation;
   box-shadow: none;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
   border-style: solid;
   border-width: 1px;
   line-height: 1;
@@ -123,8 +123,8 @@ exports[`PageNewObservation should render correctly 1`] = `
 
 .emotion-4:hover,
 .emotion-4:focus {
-  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
-  border-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primaryLighter);
+  border-color: var(--theme-ui-colors-primary);
   outline: none;
 }
 
@@ -134,13 +134,13 @@ exports[`PageNewObservation should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
-  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
+  fill: var(--theme-ui-colors-icon);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   width: 20px;
   height: 20px;
-  fill: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  fill: var(--theme-ui-colors-textMediumEmphasis);
 }
 
 .emotion-6 {
@@ -161,12 +161,12 @@ exports[`PageNewObservation should render correctly 1`] = `
 .emotion-7 {
   display: inline-block;
   font-size: 12px;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
   white-space: nowrap;
 }
 
 .emotion-7:last-child {
-  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  color: var(--theme-ui-colors-textPrimary);
 }
 
 .emotion-7:last-child>.splitter {
@@ -189,12 +189,12 @@ exports[`PageNewObservation should render correctly 1`] = `
   min-width: 0;
   display: inline-block;
   font-size: 12px;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
   white-space: nowrap;
 }
 
 .emotion-13:last-child {
-  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  color: var(--theme-ui-colors-textPrimary);
 }
 
 .emotion-13:last-child>.splitter {
@@ -220,7 +220,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primary);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -230,8 +230,8 @@ exports[`PageNewObservation should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-onPrimary, #000);
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  color: var(--theme-ui-colors-onPrimary);
+  background-color: var(--theme-ui-colors-primary);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
@@ -258,7 +258,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   justify-content: center;
   touch-action: manipulation;
   box-shadow: rgba(27, 31, 35, 0.1) 0px 1px 0px 0px,rgba(255, 255, 255, 0.03) 0px 1px 0px 0px inset;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
   border-style: solid;
   border-width: 1px;
   line-height: 1;
@@ -276,13 +276,13 @@ exports[`PageNewObservation should render correctly 1`] = `
 
 .emotion-14:hover,
 .emotion-14:focus {
-  background-color: var(--theme-ui-colors-primaryDark, #00a06d);
+  background-color: var(--theme-ui-colors-primaryDark);
   outline: none;
 }
 
 .emotion-14:hover:disabled,
 .emotion-14:focus:disabled {
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primary);
 }
 
 .emotion-15 {
@@ -306,14 +306,14 @@ exports[`PageNewObservation should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-size: 14px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -364,18 +364,18 @@ exports[`PageNewObservation should render correctly 1`] = `
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface, #fff);
+  border-color: var(--theme-ui-colors-border);
+  background-color: var(--theme-ui-colors-surface);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   margin-bottom: 8px;
   width: 100%;
 }
 
 .emotion-19:hover,
 .emotion-19:focus {
-  border-color: var(--theme-ui-colors-primary, #00e399);
+  border-color: var(--theme-ui-colors-primary);
   outline: none;
 }
 
@@ -397,8 +397,8 @@ exports[`PageNewObservation should render correctly 1`] = `
 
 .emotion-19:disabled {
   opacity: 0.68;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
+  border-color: var(--theme-ui-colors-border);
+  color: var(--theme-ui-colors-textDisabled);
 }
 
 .emotion-20 {
@@ -410,7 +410,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-size: 14px;
   -webkit-user-select: none;
@@ -459,7 +459,7 @@ exports[`PageNewObservation should render correctly 1`] = `
   min-width: 0;
   margin-right: 8px;
   border-radius: 4px;
-  color: var(--theme-ui-colors-gray, #dddddf);
+  color: var(--theme-ui-colors-gray);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -470,12 +470,12 @@ input:checked~.emotion-23 {
 }
 
 input:checked~.emotion-23 {
-  color: var(--theme-ui-colors-primary, #00e399);
+  color: var(--theme-ui-colors-primary);
 }
 
 input:focus~.emotion-23 {
-  color: var(--theme-ui-colors-primary, #00e399);
-  background-color: var(--theme-ui-colors-highlight, hsla(205, 100%, 40%, 0.125));
+  color: var(--theme-ui-colors-primary);
+  background-color: var(--theme-ui-colors-highlight);
 }
 
 .emotion-24 {
@@ -488,7 +488,7 @@ input:focus~.emotion-23 {
   min-width: 0;
   margin-right: 8px;
   border-radius: 4px;
-  color: var(--theme-ui-colors-gray, #dddddf);
+  color: var(--theme-ui-colors-gray);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -499,32 +499,32 @@ input:checked~.emotion-24 {
 }
 
 input:checked~.emotion-24 {
-  color: var(--theme-ui-colors-primary, #00e399);
+  color: var(--theme-ui-colors-primary);
 }
 
 input:focus~.emotion-24 {
-  color: var(--theme-ui-colors-primary, #00e399);
-  background-color: var(--theme-ui-colors-highlight, hsla(205, 100%, 40%, 0.125));
+  color: var(--theme-ui-colors-primary);
+  background-color: var(--theme-ui-colors-highlight);
 }
 
 .emotion-25 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  background-color: var(--theme-ui-colors-surface, #fff);
+  background-color: var(--theme-ui-colors-surface);
   border-radius: 6px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px,rgba(0, 0, 0, 0.27) 0px 2px 4px -2px;
   margin-bottom: 16px;
   border-width: 1px;
   border-style: solid;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
 }
 
 .emotion-26 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
@@ -556,14 +556,14 @@ input:focus~.emotion-24 {
   align-items: center;
   border-bottom-width: 1px;
   border-bottom-style: solid;
-  border-bottom-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-bottom-color: var(--theme-ui-colors-border);
 }
 
 .emotion-29 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
@@ -573,23 +573,23 @@ input:focus~.emotion-24 {
   padding-bottom: 8px;
   border-bottom-width: 2px;
   border-bottom-style: solid;
-  border-bottom-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  border-color: var(--theme-ui-colors-primary, #00e399);
+  border-bottom-color: var(--theme-ui-colors-border);
+  border-color: var(--theme-ui-colors-primary);
   border-style: solid;
-  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  color: var(--theme-ui-colors-textPrimary);
   font-weight: bold;
   outline: none;
 }
 
 .emotion-29:hover {
-  background-color: var(--theme-ui-colors-primaryLightest, rgba(0,227,153,0.05));
+  background-color: var(--theme-ui-colors-primaryLightest);
 }
 
 .emotion-30 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
@@ -599,15 +599,15 @@ input:focus~.emotion-24 {
   padding-bottom: 8px;
   border-bottom-width: 2px;
   border-bottom-style: solid;
-  border-bottom-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  border-color: var(--theme-ui-colors-primary, #00e399);
+  border-bottom-color: var(--theme-ui-colors-border);
+  border-color: var(--theme-ui-colors-primary);
   border-style: none;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
   outline: none;
 }
 
 .emotion-30:hover {
-  background-color: var(--theme-ui-colors-primaryLightest, rgba(0,227,153,0.05));
+  background-color: var(--theme-ui-colors-primaryLightest);
 }
 
 .emotion-31 {
@@ -622,12 +622,12 @@ input:focus~.emotion-24 {
   margin-left: auto;
   -webkit-transition: color ease-in 0.1s;
   transition: color ease-in 0.1s;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
   white-space: nowrap;
 }
 
 .emotion-31:hover {
-  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  color: var(--theme-ui-colors-textPrimary);
 }
 
 .emotion-32 {
@@ -639,7 +639,7 @@ input:focus~.emotion-24 {
   margin-right: 8px;
   margin-top: 8px;
   margin-bottom: 8px;
-  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
+  fill: var(--theme-ui-colors-icon);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -652,7 +652,7 @@ input:focus~.emotion-24 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
@@ -670,7 +670,7 @@ input:focus~.emotion-24 {
   min-width: 0;
   padding-left: 8px;
   padding-right: 8px;
-  background-color: var(--theme-ui-colors-darkSurface, #fafafa);
+  background-color: var(--theme-ui-colors-darkSurface);
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
 }
@@ -684,7 +684,7 @@ input:focus~.emotion-24 {
   padding-top: 16px;
   padding-bottom: 16px;
   border: none;
-  background-color: var(--theme-ui-colors-darkSurface, #fafafa);
+  background-color: var(--theme-ui-colors-darkSurface);
   min-height: 400px;
 }
 
@@ -692,12 +692,12 @@ input:focus~.emotion-24 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-bottom: 8px;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
 }
 
 .emotion-37 {
@@ -746,18 +746,18 @@ input:focus~.emotion-24 {
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface, #fff);
+  border-color: var(--theme-ui-colors-border);
+  background-color: var(--theme-ui-colors-surface);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   opacity: 1!important;
   width: 100%;
 }
 
 .emotion-42:hover,
 .emotion-42:focus {
-  border-color: var(--theme-ui-colors-primary, #00e399);
+  border-color: var(--theme-ui-colors-primary);
   outline: none;
 }
 
@@ -779,8 +779,8 @@ input:focus~.emotion-24 {
 
 .emotion-42:disabled {
   opacity: 0.68;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
+  border-color: var(--theme-ui-colors-border);
+  color: var(--theme-ui-colors-textDisabled);
 }
 
 .emotion-43 {
@@ -802,7 +802,7 @@ input:focus~.emotion-24 {
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primary);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -812,8 +812,8 @@ input:focus~.emotion-24 {
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary, #027c5b);
-  background-color: var(--theme-ui-colors-surface, #fff);
+  color: var(--theme-ui-colors-textPrimary);
+  background-color: var(--theme-ui-colors-surface);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
@@ -840,7 +840,7 @@ input:focus~.emotion-24 {
   justify-content: center;
   touch-action: manipulation;
   box-shadow: none;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
   border-style: solid;
   border-width: 1px;
   line-height: 1;
@@ -858,15 +858,15 @@ input:focus~.emotion-24 {
 
 .emotion-43:hover,
 .emotion-43:focus {
-  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
-  border-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primaryLighter);
+  border-color: var(--theme-ui-colors-primary);
   outline: none;
 }
 
 .emotion-43:hover:disabled,
 .emotion-43:focus:disabled {
   background-color: transparent;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
 }
 
 .emotion-44 {
@@ -875,7 +875,7 @@ input:focus~.emotion-24 {
   min-width: 0;
   max-width: 100%;
   height: auto;
-  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
+  fill: var(--theme-ui-colors-icon);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -905,7 +905,7 @@ input:focus~.emotion-24 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  background-color: var(--theme-ui-colors-surface, #fff);
+  background-color: var(--theme-ui-colors-surface);
   border-radius: 6px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px,rgba(0, 0, 0, 0.27) 0px 2px 4px -2px;
   margin-right: 8px;
@@ -930,11 +930,11 @@ input:focus~.emotion-24 {
   cursor: pointer;
   border-width: 1px;
   border-style: solid;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
 }
 
 .emotion-47:hover {
-  border-color: var(--theme-ui-colors-primary, #00e399);
+  border-color: var(--theme-ui-colors-primary);
 }
 
 .emotion-51 {
@@ -957,18 +957,18 @@ input:focus~.emotion-24 {
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface, #fff);
+  border-color: var(--theme-ui-colors-border);
+  background-color: var(--theme-ui-colors-surface);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   display: none;
   width: 100%;
 }
 
 .emotion-51:hover,
 .emotion-51:focus {
-  border-color: var(--theme-ui-colors-primary, #00e399);
+  border-color: var(--theme-ui-colors-primary);
   outline: none;
 }
 
@@ -990,8 +990,8 @@ input:focus~.emotion-24 {
 
 .emotion-51:disabled {
   opacity: 0.68;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
+  border-color: var(--theme-ui-colors-border);
+  color: var(--theme-ui-colors-textDisabled);
 }
 
 <div>

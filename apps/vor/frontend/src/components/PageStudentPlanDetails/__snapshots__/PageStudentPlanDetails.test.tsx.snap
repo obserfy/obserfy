@@ -109,7 +109,7 @@ exports[`PageStudentPlanDetails should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primary);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -119,7 +119,7 @@ exports[`PageStudentPlanDetails should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  color: var(--theme-ui-colors-textPrimary);
   background-color: transparent;
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -147,7 +147,7 @@ exports[`PageStudentPlanDetails should render correctly 1`] = `
   justify-content: center;
   touch-action: manipulation;
   box-shadow: none;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
   border-style: solid;
   border-width: 1px;
   line-height: 1;
@@ -162,8 +162,8 @@ exports[`PageStudentPlanDetails should render correctly 1`] = `
 
 .emotion-4:hover,
 .emotion-4:focus {
-  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
-  border-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primaryLighter);
+  border-color: var(--theme-ui-colors-primary);
   outline: none;
 }
 
@@ -173,13 +173,13 @@ exports[`PageStudentPlanDetails should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
-  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
+  fill: var(--theme-ui-colors-icon);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   width: 20px;
   height: 20px;
-  fill: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  fill: var(--theme-ui-colors-textMediumEmphasis);
 }
 
 .emotion-6 {
@@ -200,12 +200,12 @@ exports[`PageStudentPlanDetails should render correctly 1`] = `
 .emotion-7 {
   display: inline-block;
   font-size: 12px;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
   white-space: nowrap;
 }
 
 .emotion-7:last-child {
-  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  color: var(--theme-ui-colors-textPrimary);
 }
 
 .emotion-7:last-child>.splitter {
@@ -228,12 +228,12 @@ exports[`PageStudentPlanDetails should render correctly 1`] = `
   min-width: 0;
   display: inline-block;
   font-size: 12px;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
   white-space: nowrap;
 }
 
 .emotion-16:last-child {
-  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  color: var(--theme-ui-colors-textPrimary);
 }
 
 .emotion-16:last-child>.splitter {

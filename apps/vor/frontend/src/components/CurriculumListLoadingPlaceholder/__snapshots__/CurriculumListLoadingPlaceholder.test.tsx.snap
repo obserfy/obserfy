@@ -62,7 +62,7 @@ exports[`CurriculumListLoadingPlaceholder should render correctly 1`] = `
   min-width: 0;
   border-bottom-width: 1px;
   border-bottom-style: solid;
-  border-bottom-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-bottom-color: var(--theme-ui-colors-border);
 }
 
 .emotion-2 {

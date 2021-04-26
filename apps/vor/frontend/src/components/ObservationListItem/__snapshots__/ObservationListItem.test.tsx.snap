@@ -21,11 +21,11 @@ exports[`ObservationListItem should render correctly 1`] = `
   padding-top: 16px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
-  border-bottom-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-bottom-color: var(--theme-ui-colors-border);
 }
 
 .emotion-1:hover {
-  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
+  background-color: var(--theme-ui-colors-primaryLighter);
 }
 
 .emotion-2 {
@@ -45,7 +45,7 @@ exports[`ObservationListItem should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;

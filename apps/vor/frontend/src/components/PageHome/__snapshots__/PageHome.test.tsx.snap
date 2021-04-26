@@ -104,14 +104,14 @@ exports[`PageHome should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-size: 14px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -147,7 +147,7 @@ exports[`PageHome should render correctly 1`] = `
   width: 20px;
   height: 20px;
   z-index: 2;
-  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
+  fill: var(--theme-ui-colors-icon);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -173,15 +173,15 @@ exports[`PageHome should render correctly 1`] = `
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface, #fff);
+  border-color: var(--theme-ui-colors-border);
+  background-color: var(--theme-ui-colors-surface);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   padding-top: 8px;
   padding-bottom: 8px;
   margin-right: 8px;
-  background-color: var(--theme-ui-colors-surface, #fff);
+  background-color: var(--theme-ui-colors-surface);
   width: 100%;
   padding-left: 34px;
   font-size: 14px;
@@ -190,7 +190,7 @@ exports[`PageHome should render correctly 1`] = `
 
 .emotion-7:hover,
 .emotion-7:focus {
-  border-color: var(--theme-ui-colors-primary, #00e399);
+  border-color: var(--theme-ui-colors-primary);
   outline: none;
 }
 
@@ -212,8 +212,8 @@ exports[`PageHome should render correctly 1`] = `
 
 .emotion-7:disabled {
   opacity: 0.68;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
+  border-color: var(--theme-ui-colors-border);
+  color: var(--theme-ui-colors-textDisabled);
 }
 
 .emotion-8 {
@@ -235,7 +235,7 @@ exports[`PageHome should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primary);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -245,8 +245,8 @@ exports[`PageHome should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary, #027c5b);
-  background-color: var(--theme-ui-colors-surface, #fff);
+  color: var(--theme-ui-colors-textPrimary);
+  background-color: var(--theme-ui-colors-surface);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
@@ -273,7 +273,7 @@ exports[`PageHome should render correctly 1`] = `
   justify-content: center;
   touch-action: manipulation;
   box-shadow: none;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
   border-style: solid;
   border-width: 1px;
   line-height: 1;
@@ -289,15 +289,15 @@ exports[`PageHome should render correctly 1`] = `
 
 .emotion-8:hover,
 .emotion-8:focus {
-  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
-  border-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primaryLighter);
+  border-color: var(--theme-ui-colors-primary);
   outline: none;
 }
 
 .emotion-8:hover:disabled,
 .emotion-8:focus:disabled {
   background-color: transparent;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
 }
 
 .emotion-9 {
@@ -306,7 +306,7 @@ exports[`PageHome should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
-  fill: var(--theme-ui-colors-icon, rgba(0,0,0,0.6));
+  fill: var(--theme-ui-colors-icon);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -340,7 +340,7 @@ exports[`PageHome should render correctly 1`] = `
   padding-right: 8px;
   padding-top: 4px;
   padding-bottom: 4px;
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primary);
   display: inline-block;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -348,25 +348,25 @@ exports[`PageHome should render correctly 1`] = `
   user-select: none;
   cursor: pointer;
   border-radius: 6px;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
   border-width: 1px;
   border-style: solid;
   white-space: nowrap;
 }
 
 .emotion-11:hover {
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primary);
 }
 
 .emotion-12 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
-  color: var(--theme-ui-colors-onPrimary, #000);
+  color: var(--theme-ui-colors-onPrimary);
   font-size: 14px;
 }
 

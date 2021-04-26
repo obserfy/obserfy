@@ -24,7 +24,7 @@ exports[`Pill should render correctly 1`] = `
   padding-right: 8px;
   border-width: 1px;
   border-style: solid;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
   border-radius: 99999px;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
@@ -36,7 +36,7 @@ exports[`Pill should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;

@@ -53,7 +53,7 @@ exports[`PageRegister should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
@@ -87,7 +87,7 @@ exports[`PageRegister should render correctly 1`] = `
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: bold;
   line-height: heading;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   text-rendering: optimizeLegibility;
   font-size: 24px;
   margin-top: 16px;
@@ -104,14 +104,14 @@ exports[`PageRegister should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-size: 14px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -162,11 +162,11 @@ exports[`PageRegister should render correctly 1`] = `
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface, #fff);
+  border-color: var(--theme-ui-colors-border);
+  background-color: var(--theme-ui-colors-surface);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   margin-bottom: 8px;
   width: 100%;
   width: 100%;
@@ -174,7 +174,7 @@ exports[`PageRegister should render correctly 1`] = `
 
 .emotion-12:hover,
 .emotion-12:focus {
-  border-color: var(--theme-ui-colors-primary, #00e399);
+  border-color: var(--theme-ui-colors-primary);
   outline: none;
 }
 
@@ -196,8 +196,8 @@ exports[`PageRegister should render correctly 1`] = `
 
 .emotion-12:disabled {
   opacity: 0.68;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
+  border-color: var(--theme-ui-colors-border);
+  color: var(--theme-ui-colors-textDisabled);
 }
 
 .emotion-20 {
@@ -220,11 +220,11 @@ exports[`PageRegister should render correctly 1`] = `
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   width: auto;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface, #fff);
+  border-color: var(--theme-ui-colors-border);
+  background-color: var(--theme-ui-colors-surface);
   font-size: 16px;
   padding: 12px;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   margin-bottom: 16px;
   width: 100%;
   width: 100%;
@@ -232,7 +232,7 @@ exports[`PageRegister should render correctly 1`] = `
 
 .emotion-20:hover,
 .emotion-20:focus {
-  border-color: var(--theme-ui-colors-primary, #00e399);
+  border-color: var(--theme-ui-colors-primary);
   outline: none;
 }
 
@@ -254,8 +254,8 @@ exports[`PageRegister should render correctly 1`] = `
 
 .emotion-20:disabled {
   opacity: 0.68;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  color: var(--theme-ui-colors-textDisabled, rgba(0,0,0, 0.38));
+  border-color: var(--theme-ui-colors-border);
+  color: var(--theme-ui-colors-textDisabled);
 }
 
 .emotion-21 {
@@ -277,7 +277,7 @@ exports[`PageRegister should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primary);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -287,8 +287,8 @@ exports[`PageRegister should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-onPrimary, #000);
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  color: var(--theme-ui-colors-onPrimary);
+  background-color: var(--theme-ui-colors-primary);
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   -webkit-transition: background-color 125ms cubic-bezier(0.0, 0.0, 0.2, 1);
@@ -315,7 +315,7 @@ exports[`PageRegister should render correctly 1`] = `
   justify-content: center;
   touch-action: manipulation;
   box-shadow: rgba(27, 31, 35, 0.1) 0px 1px 0px 0px,rgba(255, 255, 255, 0.03) 0px 1px 0px 0px inset;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
   border-style: solid;
   border-width: 1px;
   line-height: 1;
@@ -329,26 +329,26 @@ exports[`PageRegister should render correctly 1`] = `
 
 .emotion-21:hover,
 .emotion-21:focus {
-  background-color: var(--theme-ui-colors-primaryDark, #00a06d);
+  background-color: var(--theme-ui-colors-primaryDark);
   outline: none;
 }
 
 .emotion-21:hover:disabled,
 .emotion-21:focus:disabled {
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primary);
 }
 
 .emotion-22 {
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-top: 16px;
   margin-bottom: 16px;
-  color: var(--theme-ui-colors-danger, #d50000);
+  color: var(--theme-ui-colors-danger);
   text-align: center;
   width: 100%;
 }
@@ -357,17 +357,17 @@ exports[`PageRegister should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;
   margin-top: 64px;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
   text-align: center;
 }
 
 .emotion-24 {
-  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  color: var(--theme-ui-colors-textPrimary);
 }
 
 .emotion-25 {
@@ -376,7 +376,7 @@ exports[`PageRegister should render correctly 1`] = `
   min-width: 0;
   margin-top: 16px;
   padding: 16px;
-  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
+  background-color: var(--theme-ui-colors-primaryLighter);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -394,7 +394,7 @@ exports[`PageRegister should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
-  fill: var(--theme-ui-colors-primaryDark, #00a06d);
+  fill: var(--theme-ui-colors-primaryDark);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -406,7 +406,7 @@ exports[`PageRegister should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   font-size: 14px;
   text-rendering: optimizeLegibility;
   line-height: 1.5;

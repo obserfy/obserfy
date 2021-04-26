@@ -18,7 +18,7 @@ exports[`Layout should render correctly 1`] = `
   box-sizing: border-box;
   margin: 0;
   min-width: 0;
-  background-color: var(--theme-ui-colors-surfaceBlurNonTransparent, rgba(255,255,255));
+  background-color: var(--theme-ui-colors-surfaceBlurNonTransparent);
   z-index: 500;
   height: auto;
   width: 100%;
@@ -32,7 +32,7 @@ exports[`Layout should render correctly 1`] = `
   border-bottom-style: none;
   border-left-style: none;
   border-width: 1px;
-  border-color: var(--theme-ui-colors-borderBold, #e5e5e5);
+  border-color: var(--theme-ui-colors-borderBold);
 }
 
 @media screen and (min-width: 40em) {
@@ -126,7 +126,7 @@ exports[`Layout should render correctly 1`] = `
   top: -0.5px;
   right: inherit;
   position: absolute;
-  background-color: var(--theme-ui-colors-textPrimary, #027c5b);
+  background-color: var(--theme-ui-colors-textPrimary);
   border-radius: 0 0 10px 10px;
   width: 0%;
   height: 2px;
@@ -151,7 +151,7 @@ exports[`Layout should render correctly 1`] = `
   min-width: 0;
   max-width: 100%;
   height: auto;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
   fill: transparent;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
@@ -193,7 +193,7 @@ exports[`Layout should render correctly 1`] = `
   padding-top: 8px;
   padding-bottom: 8px;
   color: white;
-  background-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primary);
   border: 0;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -203,7 +203,7 @@ exports[`Layout should render correctly 1`] = `
   cursor: pointer;
   box-sizing: border-box;
   font-size: 14px;
-  color: var(--theme-ui-colors-textPrimary, #027c5b);
+  color: var(--theme-ui-colors-textPrimary);
   background-color: transparent;
   border-radius: 6px;
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -231,7 +231,7 @@ exports[`Layout should render correctly 1`] = `
   justify-content: center;
   touch-action: manipulation;
   box-shadow: none;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
+  border-color: var(--theme-ui-colors-border);
   border-style: solid;
   border-width: 1px;
   line-height: 1;
@@ -257,8 +257,8 @@ exports[`Layout should render correctly 1`] = `
 
 .emotion-11:hover,
 .emotion-11:focus {
-  background-color: var(--theme-ui-colors-primaryLighter, rgba(0,227,153,0.12));
-  border-color: var(--theme-ui-colors-primary, #00e399);
+  background-color: var(--theme-ui-colors-primaryLighter);
+  border-color: var(--theme-ui-colors-primary);
   outline: none;
 }
 
@@ -300,7 +300,7 @@ exports[`Layout should render correctly 1`] = `
   min-width: 0;
   margin-bottom: env(safe-area-inset-bottom);
   padding-bottom: 80px;
-  background-color: var(--theme-ui-colors-background, #f2f3f5);
+  background-color: var(--theme-ui-colors-background);
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;

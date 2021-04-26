@@ -573,6 +573,7 @@ type ImageSharpResize = {
 
 type ThemeI18n = Node & {
   readonly defaultLang: Maybe<Scalars['String']>;
+  readonly prefixDefault: Maybe<Scalars['Boolean']>;
   readonly configPath: Maybe<Scalars['String']>;
   readonly config: Maybe<ReadonlyArray<Maybe<Locale>>>;
   readonly id: Scalars['ID'];
@@ -656,10 +657,10 @@ type SitePluginPluginOptions = {
   readonly dsn: Maybe<Scalars['String']>;
   readonly release: Maybe<Scalars['String']>;
   readonly tracesSampleRate: Maybe<Scalars['Float']>;
+  readonly pathCheck: Maybe<Scalars['Boolean']>;
   readonly allExtensions: Maybe<Scalars['Boolean']>;
   readonly isTSX: Maybe<Scalars['Boolean']>;
   readonly jsxPragma: Maybe<Scalars['String']>;
-  readonly pathCheck: Maybe<Scalars['Boolean']>;
 };
 
 type SitePluginPluginOptionsIcon_options = {
@@ -913,6 +914,7 @@ type Query_allImageSharpArgs = {
 
 type Query_themeI18NArgs = {
   defaultLang: Maybe<StringQueryOperatorInput>;
+  prefixDefault: Maybe<BooleanQueryOperatorInput>;
   configPath: Maybe<StringQueryOperatorInput>;
   config: Maybe<LocaleFilterListInput>;
   id: Maybe<StringQueryOperatorInput>;
@@ -1895,10 +1897,10 @@ type SitePluginPluginOptionsFilterInput = {
   readonly dsn: Maybe<StringQueryOperatorInput>;
   readonly release: Maybe<StringQueryOperatorInput>;
   readonly tracesSampleRate: Maybe<FloatQueryOperatorInput>;
+  readonly pathCheck: Maybe<BooleanQueryOperatorInput>;
   readonly allExtensions: Maybe<BooleanQueryOperatorInput>;
   readonly isTSX: Maybe<BooleanQueryOperatorInput>;
   readonly jsxPragma: Maybe<StringQueryOperatorInput>;
-  readonly pathCheck: Maybe<BooleanQueryOperatorInput>;
 };
 
 type SitePluginPluginOptionsIcon_optionsFilterInput = {
@@ -2153,10 +2155,10 @@ type SitePageFieldsEnum =
   | 'pluginCreator.pluginOptions.dsn'
   | 'pluginCreator.pluginOptions.release'
   | 'pluginCreator.pluginOptions.tracesSampleRate'
+  | 'pluginCreator.pluginOptions.pathCheck'
   | 'pluginCreator.pluginOptions.allExtensions'
   | 'pluginCreator.pluginOptions.isTSX'
   | 'pluginCreator.pluginOptions.jsxPragma'
-  | 'pluginCreator.pluginOptions.pathCheck'
   | 'pluginCreator.nodeAPIs'
   | 'pluginCreator.browserAPIs'
   | 'pluginCreator.ssrAPIs'
@@ -2553,6 +2555,7 @@ type ThemeI18nEdge = {
 
 type ThemeI18nFieldsEnum =
   | 'defaultLang'
+  | 'prefixDefault'
   | 'configPath'
   | 'config'
   | 'config.code'
@@ -2659,6 +2662,7 @@ type ThemeI18nGroupConnection = {
 
 type ThemeI18nFilterInput = {
   readonly defaultLang: Maybe<StringQueryOperatorInput>;
+  readonly prefixDefault: Maybe<BooleanQueryOperatorInput>;
   readonly configPath: Maybe<StringQueryOperatorInput>;
   readonly config: Maybe<LocaleFilterListInput>;
   readonly id: Maybe<StringQueryOperatorInput>;
@@ -2961,10 +2965,10 @@ type SitePluginFieldsEnum =
   | 'pluginOptions.dsn'
   | 'pluginOptions.release'
   | 'pluginOptions.tracesSampleRate'
+  | 'pluginOptions.pathCheck'
   | 'pluginOptions.allExtensions'
   | 'pluginOptions.isTSX'
   | 'pluginOptions.jsxPragma'
-  | 'pluginOptions.pathCheck'
   | 'nodeAPIs'
   | 'browserAPIs'
   | 'ssrAPIs'
@@ -3044,7 +3048,7 @@ type LocalizationConfigQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type LocalizationConfigQueryQuery = { readonly themeI18N: Maybe<(
-    Pick<ThemeI18n, 'defaultLang'>
+    Pick<ThemeI18n, 'defaultLang' | 'prefixDefault'>
     & { readonly config: Maybe<ReadonlyArray<Maybe<Pick<Locale, 'code' | 'hrefLang' | 'dateFormat' | 'langDir' | 'localName' | 'name'>>>> }
   )> };
 

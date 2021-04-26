@@ -32,7 +32,7 @@ exports[`GuardianRelationshipSelector should render correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  color: var(--theme-ui-colors-textMediumEmphasis, rgba(0,0,0, 0.60));
+  color: var(--theme-ui-colors-textMediumEmphasis);
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-size: 14px;
   -webkit-user-select: none;
@@ -83,17 +83,17 @@ exports[`GuardianRelationshipSelector should render correctly 1`] = `
   color: inherit;
   background-color: transparent;
   border-radius: 6px;
-  color: var(--theme-ui-colors-text, #37383c);
+  color: var(--theme-ui-colors-text);
   font-family: Open Sans,-apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  border-color: var(--theme-ui-colors-border, rgba(0,0,0,.1));
-  background-color: var(--theme-ui-colors-surface, #fff);
+  border-color: var(--theme-ui-colors-border);
+  background-color: var(--theme-ui-colors-surface);
   font-size: 16px;
   padding: 12px;
 }
 
 .emotion-5:hover,
 .emotion-5:focus {
-  border-color: var(--theme-ui-colors-primary, #00e399);
+  border-color: var(--theme-ui-colors-primary);
   outline: none;
 }
 
