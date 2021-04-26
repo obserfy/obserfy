@@ -6,5 +6,16 @@
       "packages/*",
       "apps/vor/*"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^7.25.0",
+    "husky": ">=6",
+    "lint-staged": ">=10"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix"
+  },
+  "scripts": {
+    "postinstall": "husky install"
   }
 }
