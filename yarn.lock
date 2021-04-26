@@ -14129,7 +14129,7 @@ __metadata:
     eslint-plugin-react: 7.23.2
     eslint-plugin-react-hooks: 4.2.0
     faker: 5.5.2
-    pg: 8.5.1
+    pg: 8.6.0
     pnp-webpack-plugin: 1.6.4
     prettier: 2.2.1
     swc-loader: 0.1.12
@@ -16815,7 +16815,7 @@ fsevents@^1.2.7:
     next-plugin-preact: 3.0.4
     next-pwa: 5.0.6
     node-mocks-http: 1.10.1
-    pg: 8.5.1
+    pg: 8.6.0
     pino: 6.11.2
     pino-pretty: 4.7.1
     postcss: 8.2.8
@@ -26122,10 +26122,10 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"pg-connection-string@npm:^2.4.0":
-  version: 2.4.0
-  resolution: "pg-connection-string@npm:2.4.0"
-  checksum: 2743cb7f45beb9bc47438cd584c0194937fb2f7278a434e26e3d57305731a4b1b689f64d9bbe85b83cb5f8d093818e72bada6c9d5b954dbfcf2f9b795d5b0054
+"pg-connection-string@npm:^2.5.0":
+  version: 2.5.0
+  resolution: "pg-connection-string@npm:2.5.0"
+  checksum: a6f3a068f7c9416a5b33a326811caf0dfaaee045c225b7c628b4c9b4e9a2b25bdd12a21e4c48940e1000ea223a4e608ca122d2ff3dd08c8b1db0fc9f5705133a
   languageName: node
   linkType: hard
 
@@ -26136,19 +26136,26 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"pg-pool@npm:^3.2.2":
-  version: 3.2.2
-  resolution: "pg-pool@npm:3.2.2"
+"pg-pool@npm:^3.3.0":
+  version: 3.3.0
+  resolution: "pg-pool@npm:3.3.0"
   peerDependencies:
     pg: ">=8.0"
-  checksum: 06b0faa68f247ebbb8c6810b15916a8c53abf06d3e2a28282d3ed10f684d41318241c2daecdcb4c5761e70d792f4309cff85a8a134dec40a39fabed0e489688e
+  checksum: f85cef5b3f40005c4ab06be0d985447c1518fd90b2f0436e5855a6c95b1c0033f3f9d40cd2b27b10a690fb2a09255828ecc9f6ec44644d01a7388a1efa42f6ed
   languageName: node
   linkType: hard
 
-"pg-protocol@npm:^1.2.0, pg-protocol@npm:^1.4.0":
+"pg-protocol@npm:^1.2.0":
   version: 1.4.0
   resolution: "pg-protocol@npm:1.4.0"
   checksum: 96d39f7a7358e9dfbbc3641da4d04f96744b307f182bc6d495153c70ea9f635ba4684ba9e94233746608bf02706060aed8f6688540659cde790c58e31c45ac65
+  languageName: node
+  linkType: hard
+
+"pg-protocol@npm:^1.5.0":
+  version: 1.5.0
+  resolution: "pg-protocol@npm:1.5.0"
+  checksum: b839d12cafe942ef9cbc5b13c174eb2356804fb4fe8ead8279f46a36be90722d19a91409955beb8a3d5301639c44854e49749de4aef02dc361fee3e2a61fb1e4
   languageName: node
   linkType: hard
 
@@ -26165,15 +26172,15 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"pg@npm:8.5.1":
-  version: 8.5.1
-  resolution: "pg@npm:8.5.1"
+"pg@npm:8.6.0":
+  version: 8.6.0
+  resolution: "pg@npm:8.6.0"
   dependencies:
     buffer-writer: 2.0.0
     packet-reader: 1.0.0
-    pg-connection-string: ^2.4.0
-    pg-pool: ^3.2.2
-    pg-protocol: ^1.4.0
+    pg-connection-string: ^2.5.0
+    pg-pool: ^3.3.0
+    pg-protocol: ^1.5.0
     pg-types: ^2.1.0
     pgpass: 1.x
   peerDependencies:
@@ -26181,7 +26188,7 @@ fsevents@^1.2.7:
   peerDependenciesMeta:
     pg-native:
       optional: true
-  checksum: b6c21b0ff845d2e736f4956b7acad47813f6847aafb0464e31515f74bfec32f06d0bdaf97a31e14d4e5f6a5c896c090bdade4626265f051c511b6dc04d6eeea2
+  checksum: 37d5d656bf827409c33b3f44cbefc2a435238252f69dfae38112dc35c191090194ab2d5b221ae7b8dc9beed24c71f7f8a97f891130272c6db831d2f9f689d07c
   languageName: node
   linkType: hard
 
