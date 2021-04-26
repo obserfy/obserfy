@@ -12878,14 +12878,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress-file-upload@npm:5.0.3":
-  version: 5.0.3
-  resolution: "cypress-file-upload@npm:5.0.3"
-  dependencies:
-    mime: ^2.5.0
+"cypress-file-upload@npm:5.0.6":
+  version: 5.0.6
+  resolution: "cypress-file-upload@npm:5.0.6"
   peerDependencies:
     cypress: ">3.0.0"
-  checksum: 2af8ccc95fdc92403e7fa518ff50d6d443b4c060d00f5d15ed451e1e63ae0de0a20a063caac7fc77de533fba2900eaf9a3d6d3c9f60da4b2fe3db421c6acab58
+  checksum: 0cc88a21743156c665da60f17cc9c996f53a2ab7dce4122376f3f09bccce4bfcec137c87161614b45d68a9bd07d619ac248c79375dde5cfab4067e87425859e2
   languageName: node
   linkType: hard
 
@@ -14103,7 +14101,7 @@ __metadata:
     "@typescript-eslint/parser": 4.22.0
     auth0-js: 9.15.0
     cypress: 6.9.1
-    cypress-file-upload: 5.0.3
+    cypress-file-upload: 5.0.6
     cypress-intellij-reporter: 0.0.6
     dayjs: 1.10.4
     dotenv: 8.2.0
@@ -23637,7 +23635,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"mime@npm:^2.0.3, mime@npm:^2.3.1, mime@npm:^2.4.4, mime@npm:^2.4.6, mime@npm:^2.5.0":
+"mime@npm:^2.0.3, mime@npm:^2.3.1, mime@npm:^2.4.4, mime@npm:^2.4.6":
   version: 2.5.2
   resolution: "mime@npm:2.5.2"
   bin:
