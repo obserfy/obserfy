@@ -508,13 +508,14 @@ func (s *BaseTestSuite) NewSession(userId string) auth.Session {
 }
 
 type ApiMetadata struct {
-	Method string
-	Path   string
-	UserId string
-	Body   interface{}
+	Method   string
+	Path     string
+	UserId   string
+	Body     interface{}
+	Response interface{}
 }
 
-func (s *BaseTestSuite) ApiTest(m ApiMetadata, res interface{}) *httptest.ResponseRecorder {
+func (s *BaseTestSuite) ApiTest(m ApiMetadata) *httptest.ResponseRecorder {
 	body, err := json.Marshal(m.Body)
 	s.NoError(err)
 
@@ -528,8 +529,8 @@ func (s *BaseTestSuite) ApiTest(m ApiMetadata, res interface{}) *httptest.Respon
 	}
 	s.Handler(w, r)
 
-	if res != nil {
-		s.NoError(rest.ParseJson(w.Result().Body, res))
+	if m.Response != nil {
+		s.NoError(rest.ParseJson(w.Result().Body, m.Response))
 	}
 
 	return w

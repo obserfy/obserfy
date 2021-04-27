@@ -1,115 +1,105 @@
 package school_test
 
 import (
-	"net/http"
-	"testing"
-	"time"
-
 	"github.com/brianvoe/gofakeit/v4"
-	"github.com/stretchr/testify/assert"
+	"github.com/chrsep/vor/pkg/testutils"
+	"net/http"
 
 	"github.com/chrsep/vor/pkg/postgres"
-	"github.com/chrsep/vor/pkg/rest"
 )
 
+type guardian struct {
+	Name    string `json:"name"`
+	Email   string `json:"email"`
+	Phone   string `json:"phone"`
+	Note    string `json:"note"`
+	Address string `json:"address"`
+}
+
 func (s *SchoolTestSuite) TestCreateNewGuardian() {
-	t := s.T()
-	gofakeit.Seed(time.Now().UnixNano())
 	school, userId := s.GenerateSchool()
-	type requestBody struct {
-		Name    string `json:"name"`
-		Email   string `json:"email"`
-		Phone   string `json:"phone"`
-		Note    string `json:"note"`
-		Address string `json:"address"`
-	}
 	tests := []struct {
 		name       string
 		school     postgres.School
-		body       requestBody
+		body       guardian
 		resultCode int
 	}{
-		{"complete", *school, requestBody{
+		{"complete", *school, guardian{
 			Name:    gofakeit.Name(),
 			Email:   gofakeit.Email(),
 			Phone:   gofakeit.Phone(),
 			Note:    gofakeit.Sentence(10),
 			Address: gofakeit.Address().Address,
 		}, http.StatusCreated},
-		{"only name", *school, requestBody{
+		{"only name", *school, guardian{
 			Name: gofakeit.Name(),
 		}, http.StatusCreated},
-		{"without name", *school, requestBody{
+		{"without name", *school, guardian{
 			Email: gofakeit.Email(),
 			Phone: gofakeit.Phone(),
 			Note:  gofakeit.Sentence(10),
 		}, http.StatusBadRequest},
 	}
 	for _, test := range tests {
-		t.Run(test.name, func(t *testing.T) {
-			result := s.CreateRequest("POST", "/"+test.school.Id+"/guardians", test.body, &userId)
-			assert.Equal(t, test.resultCode, result.Code)
+		s.Run(test.name, func() {
+			result := s.ApiTest(testutils.ApiMetadata{
+				Method: "POST",
+				Path:   "/" + test.school.Id + "/guardians",
+				UserId: userId,
+				Body:   test.body,
+			})
+			s.Equal(test.resultCode, result.Code)
 
 			var savedGuardian postgres.Guardian
 			err := s.DB.Model(&savedGuardian).
 				Where("name=?", test.body.Name).
 				Select()
 			if test.resultCode == http.StatusCreated {
-				assert.NoError(t, err)
-				assert.Equal(t, test.body.Name, savedGuardian.Name)
-				assert.Equal(t, test.body.Phone, savedGuardian.Phone)
-				assert.Equal(t, test.body.Email, savedGuardian.Email)
-				assert.Equal(t, test.body.Note, savedGuardian.Note)
-				assert.Equal(t, test.body.Address, savedGuardian.Address)
-				assert.Equal(t, test.school.Id, savedGuardian.SchoolId)
+				s.NoError(err)
+				s.Equal(test.body.Name, savedGuardian.Name)
+				s.Equal(test.body.Phone, savedGuardian.Phone)
+				s.Equal(test.body.Email, savedGuardian.Email)
+				s.Equal(test.body.Note, savedGuardian.Note)
+				s.Equal(test.body.Address, savedGuardian.Address)
+				s.Equal(test.school.Id, savedGuardian.SchoolId)
 			} else {
-				assert.Error(t, err)
+				s.Error(err)
 			}
 		})
 	}
 }
 
 func (s *SchoolTestSuite) TestGetSchoolGuardians() {
-	t := s.T()
-	newSchool, _ := s.GenerateSchool()
-	guardian, userId := s.GenerateGuardian(newSchool)
+	newSchool, userId := s.GenerateSchool()
+	newGuardian, _ := s.GenerateGuardian(newSchool)
 
-	result := s.CreateRequest("GET", "/"+guardian.SchoolId+"/guardians", nil, &userId)
-	assert.Equal(t, http.StatusOK, result.Code)
+	var response []guardian
+	result := s.ApiTest(testutils.ApiMetadata{
+		Method:   "GET",
+		Path:     "/" + newSchool.Id + "/guardians",
+		UserId:   userId,
+		Response: &response,
+	})
 
-	type responseBody struct {
-		Name  string `json:"name"`
-		Email string `json:"email"`
-		Phone string `json:"phone"`
-		Note  string `json:"note"`
-	}
-	var body []responseBody
-	err := rest.ParseJson(result.Result().Body, &body)
-	assert.NoError(t, err)
-
-	assert.Len(t, body, 1)
-	assert.Equal(t, guardian.Name, body[0].Name)
-	assert.Equal(t, guardian.Note, body[0].Note)
-	assert.Equal(t, guardian.Phone, body[0].Phone)
-	assert.Equal(t, guardian.Email, body[0].Email)
+	s.Equal(http.StatusOK, result.Code)
+	s.Len(response, 1)
+	s.Equal(newGuardian.Name, response[0].Name)
+	s.Equal(newGuardian.Note, response[0].Note)
+	s.Equal(newGuardian.Phone, response[0].Phone)
+	s.Equal(newGuardian.Email, response[0].Email)
 }
 
 func (s *SchoolTestSuite) TestGetSchoolGuardians_WithNoGuardian() {
-	t := s.T()
-	newSchool, _ := s.GenerateSchool()
+	newSchool, userId := s.GenerateSchool()
 
-	result := s.CreateRequest("GET", "/"+newSchool.Id+"/guardians", nil, &newSchool.Users[0].Id)
-	assert.Equal(t, http.StatusOK, result.Code)
+	var response []guardian
+	result := s.ApiTest(testutils.ApiMetadata{
+		Method:   "GET",
+		Path:     "/" + newSchool.Id + "/guardians",
+		UserId:   userId,
+		Response: &response,
+	})
 
-	type responseBody struct {
-		Name  string `json:"name"`
-		Email string `json:"email"`
-		Phone string `json:"phone"`
-		Note  string `json:"note"`
-	}
-	var body []responseBody
-	err := rest.ParseJson(result.Result().Body, &body)
-	assert.NoError(t, err)
-
-	assert.Len(t, body, 0)
+	s.Equal(http.StatusOK, result.Code)
+	s.Len(response, 0)
 }

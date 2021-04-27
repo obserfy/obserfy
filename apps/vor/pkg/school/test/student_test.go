@@ -31,11 +31,13 @@ func (s *SchoolTestSuite) TestSaveNewStudentWithPic() {
 		Path:   "/" + newSchool.Id + "/students",
 		UserId: userId,
 		Body:   body,
-	}, nil)
+	})
 
 	s.Equal(result.Code, http.StatusCreated)
 
-	err := s.DB.Model(&postgres.Student{}).Where("name = ?", body.Name).Select()
+	err := s.DB.Model(&postgres.Student{}).
+		Where("name = ?", body.Name).
+		Select()
 	s.NoError(err)
 }
 
@@ -52,10 +54,11 @@ func (s *SchoolTestSuite) TestGetStudents() {
 
 	var response []student
 	result := s.ApiTest(testutils.ApiMetadata{
-		Method: "GET",
-		Path:   "/" + school.Id + "/students",
-		UserId: userId,
-	}, &response)
+		Method:   "GET",
+		Path:     "/" + school.Id + "/students",
+		UserId:   userId,
+		Response: &response,
+	})
 
 	s.Equal(result.Code, http.StatusOK)
 	s.Len(response, len(students))
@@ -69,10 +72,11 @@ func (s *SchoolTestSuite) TestGetStudentsByClassId() {
 	var response []student
 
 	result := s.ApiTest(testutils.ApiMetadata{
-		Method: "GET",
-		Path:   "/" + school.Id + "/students?classId=" + uuid.NewString(),
-		UserId: userId,
-	}, &response)
+		Method:   "GET",
+		Path:     "/" + school.Id + "/students?classId=" + uuid.NewString(),
+		UserId:   userId,
+		Response: &response,
+	})
 
 	s.Equal(result.Code, http.StatusOK)
 	s.Len(response, 0)
@@ -96,10 +100,11 @@ func (s *SchoolTestSuite) TestGetStudentsByStatus() {
 			var response []student
 
 			result := s.ApiTest(testutils.ApiMetadata{
-				Method: "GET",
-				Path:   "/" + school.Id + "/students?active=" + strconv.FormatBool(test.active),
-				UserId: userId,
-			}, &response)
+				Method:   "GET",
+				Path:     "/" + school.Id + "/students?active=" + strconv.FormatBool(test.active),
+				UserId:   userId,
+				Response: &response,
+			})
 
 			s.Equal(result.Code, http.StatusOK)
 			s.Len(response, test.length)
