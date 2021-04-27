@@ -23,7 +23,7 @@ type Server struct {
 	Log *zap.Logger
 }
 
-// Handler that wraps around every api handler, providing common functionality such writing error and logging logging.
+// HandlerFunc is a handler that wraps around every api handler, providing common functionality such writing error and logging logging.
 type HandlerFunc func(http.ResponseWriter, *http.Request) *Error
 type Handler struct {
 	Logger  *zap.Logger

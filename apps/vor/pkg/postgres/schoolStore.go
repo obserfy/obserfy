@@ -855,3 +855,22 @@ func (s SchoolStore) CreateStudentVideo(schoolId string, studentId string, video
 
 	return nil
 }
+
+func (s SchoolStore) GetReports(schoolId string) ([]domain.ProgressReport, error) {
+	var reports []ProgressReport
+	err := s.DB.Model(&reports).
+		Where("school_id=?", schoolId).
+		Select()
+
+	result := make([]domain.ProgressReport, 0)
+	for _, report := range reports {
+		result = append(result, domain.ProgressReport{
+			Id:          report.Id,
+			Title:       report.Title,
+			PeriodStart: report.PeriodStart,
+			PeriodEnd:   report.PeriodEnd,
+		})
+	}
+
+	return result, err
+}

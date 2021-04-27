@@ -1308,6 +1308,16 @@ func postNewReport(s rest.Server, store Store) http.Handler {
 
 func getReports(s rest.Server, store Store) http.Handler {
 	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
+		schoolId := chi.URLParam(r, "schoolId")
+
+		reports, err := store.GetReports(schoolId)
+		if err != nil {
+			return rest.NewInternalServerError(err, "Failed to save report")
+		}
+
+		if err := rest.WriteJson(w, &reports); err != nil {
+			return rest.NewWriteJsonError(err)
+		}
 		return nil
 	})
 }

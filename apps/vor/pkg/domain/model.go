@@ -171,6 +171,14 @@ type School struct {
 	Users []User
 }
 
+type ProgressReport struct {
+	Id          uuid.UUID `json:"id"`
+	School      School    `json:"school"`
+	Title       string    `json:"title"`
+	PeriodStart time.Time `json:"periodStart"`
+	PeriodEnd   time.Time `json:"periodEnd"`
+}
+
 type VideoStore interface {
 	UpdateVideo(video Video) error
 	DeleteVideo(id uuid.UUID) error

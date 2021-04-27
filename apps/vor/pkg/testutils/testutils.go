@@ -399,6 +399,7 @@ func (s *BaseTestSuite) GeneratePasswordResetToken() (*auth.PasswordResetToken, 
 	}, nil
 }
 
+// Deprecated: CreateRequest is no2 being replaced with ApiTest
 func (s *BaseTestSuite) CreateRequest(method string, path string, bodyJson interface{}, userId *string) *httptest.ResponseRecorder {
 	w := httptest.NewRecorder()
 
@@ -468,6 +469,21 @@ func (s *BaseTestSuite) GenerateImage(school *postgres.School) postgres.Image {
 	_, err := s.DB.Model(&image).Insert()
 	assert.NoError(t, err)
 	return image
+}
+
+func (s *BaseTestSuite) GenerateReport(school *postgres.School) postgres.ProgressReport {
+	t := s.T()
+	reports := postgres.ProgressReport{
+		Id:          uuid.New(),
+		SchoolId:    school.Id,
+		School:      *school,
+		Title:       gofakeit.JobTitle(),
+		PeriodStart: gofakeit.Date(),
+		PeriodEnd:   gofakeit.Date(),
+	}
+	_, err := s.DB.Model(&reports).Insert()
+	assert.NoError(t, err)
+	return reports
 }
 
 func (s *BaseTestSuite) GenerateVideo(school *postgres.School, status *string) postgres.Video {
