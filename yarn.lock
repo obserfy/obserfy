@@ -6746,10 +6746,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/auth0-js@npm:9.14.3":
-  version: 9.14.3
-  resolution: "@types/auth0-js@npm:9.14.3"
-  checksum: a6ee9a1502975ccde961e4fed0274c176373a1a7ee61b11b96a52ad82f1c9ca950569115cdfabbc493a338a7eb6e7b2a91f6e50672c5dc81c92ea4e7a51ec3e7
+"@types/auth0-js@npm:9.14.4":
+  version: 9.14.4
+  resolution: "@types/auth0-js@npm:9.14.4"
+  checksum: a98b730c9c10674f76cf5df4aa38d32aa7d1c84cb68a68f57a372995116be7531d1b7b89b64be4c77b388f5b7fded987f2ebfaf684bfe0d488d0aafc4cb14569
   languageName: node
   linkType: hard
 
@@ -9149,9 +9149,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"auth0-js@npm:9.15.0":
-  version: 9.15.0
-  resolution: "auth0-js@npm:9.15.0"
+"auth0-js@npm:9.16.0":
+  version: 9.16.0
+  resolution: "auth0-js@npm:9.16.0"
   dependencies:
     base64-js: ^1.3.0
     idtoken-verifier: ^2.0.3
@@ -9160,7 +9160,7 @@ __metadata:
     superagent: ^5.3.1
     url-join: ^4.0.1
     winchan: ^0.2.2
-  checksum: d8764e6ef752425dfb8247fb147059e1aaf1b9c349c3a01e863eeee9cbac3569b5981fe198a6ce2787b8ef1a415df8d2d20429a61caf87b384d8ca3ce7a22919
+  checksum: 2889da94bc4cea917c3206f3ee2cf857c1496e42468766d3b6f35b3b0724230329b76fca6c4d2e80255ef5cd784dcede114c01b672296920606b89757cd3e1ca
   languageName: node
   linkType: hard
 
@@ -14122,13 +14122,13 @@ __metadata:
     "@cypress/webpack-preprocessor": 5.7.0
     "@hapi/iron": 6.0.0
     "@swc/core": 1.2.51
-    "@types/auth0-js": 9.14.3
+    "@types/auth0-js": 9.14.4
     "@types/faker": 5.5.0
     "@types/node": 14.14.37
     "@types/pg": 7.14.11
     "@typescript-eslint/eslint-plugin": 4.22.0
     "@typescript-eslint/parser": 4.22.0
-    auth0-js: 9.15.0
+    auth0-js: 9.16.0
     cypress: 7.1.0
     cypress-file-upload: 5.0.6
     cypress-intellij-reporter: 0.0.6
