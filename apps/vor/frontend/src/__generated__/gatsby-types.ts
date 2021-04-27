@@ -235,6 +235,8 @@ declare namespace GatsbyTypes {
   type Site = Node & {
     readonly buildTime: Maybe<Scalars["Date"]>
     readonly siteMetadata: Maybe<SiteSiteMetadata>
+    readonly port: Maybe<Scalars["Int"]>
+    readonly host: Maybe<Scalars["String"]>
     readonly flags: Maybe<SiteFlags>
     readonly polyfill: Maybe<Scalars["Boolean"]>
     readonly pathPrefix: Maybe<Scalars["String"]>
@@ -596,9 +598,6 @@ declare namespace GatsbyTypes {
     readonly localeDir: Maybe<Scalars["String"]>
     readonly analyzerPort: Maybe<Scalars["Int"]>
     readonly emitSchema: Maybe<SitePluginPluginOptionsEmitSchema>
-    readonly dsn: Maybe<Scalars["String"]>
-    readonly release: Maybe<Scalars["String"]>
-    readonly tracesSampleRate: Maybe<Scalars["Float"]>
     readonly pathCheck: Maybe<Scalars["Boolean"]>
     readonly allExtensions: Maybe<Scalars["Boolean"]>
     readonly isTSX: Maybe<Scalars["Boolean"]>
@@ -772,6 +771,8 @@ declare namespace GatsbyTypes {
   type Query_siteArgs = {
     buildTime: Maybe<DateQueryOperatorInput>
     siteMetadata: Maybe<SiteSiteMetadataFilterInput>
+    port: Maybe<IntQueryOperatorInput>
+    host: Maybe<StringQueryOperatorInput>
     flags: Maybe<SiteFlagsFilterInput>
     polyfill: Maybe<BooleanQueryOperatorInput>
     pathPrefix: Maybe<StringQueryOperatorInput>
@@ -1643,6 +1644,8 @@ declare namespace GatsbyTypes {
     | "siteMetadata.description"
     | "siteMetadata.author"
     | "siteMetadata.siteUrl"
+    | "port"
+    | "host"
     | "flags.PRESERVE_WEBPACK_CACHE"
     | "flags.DEV_SSR"
     | "flags.FAST_DEV"
@@ -1747,6 +1750,8 @@ declare namespace GatsbyTypes {
   type SiteFilterInput = {
     readonly buildTime: Maybe<DateQueryOperatorInput>
     readonly siteMetadata: Maybe<SiteSiteMetadataFilterInput>
+    readonly port: Maybe<IntQueryOperatorInput>
+    readonly host: Maybe<StringQueryOperatorInput>
     readonly flags: Maybe<SiteFlagsFilterInput>
     readonly polyfill: Maybe<BooleanQueryOperatorInput>
     readonly pathPrefix: Maybe<StringQueryOperatorInput>
@@ -1816,9 +1821,6 @@ declare namespace GatsbyTypes {
     readonly localeDir: Maybe<StringQueryOperatorInput>
     readonly analyzerPort: Maybe<IntQueryOperatorInput>
     readonly emitSchema: Maybe<SitePluginPluginOptionsEmitSchemaFilterInput>
-    readonly dsn: Maybe<StringQueryOperatorInput>
-    readonly release: Maybe<StringQueryOperatorInput>
-    readonly tracesSampleRate: Maybe<FloatQueryOperatorInput>
     readonly pathCheck: Maybe<BooleanQueryOperatorInput>
     readonly allExtensions: Maybe<BooleanQueryOperatorInput>
     readonly isTSX: Maybe<BooleanQueryOperatorInput>
@@ -2072,9 +2074,6 @@ declare namespace GatsbyTypes {
     | "pluginCreator.pluginOptions.localeDir"
     | "pluginCreator.pluginOptions.analyzerPort"
     | "pluginCreator.pluginOptions.emitSchema.src___generated___gatsby_schema_graphql"
-    | "pluginCreator.pluginOptions.dsn"
-    | "pluginCreator.pluginOptions.release"
-    | "pluginCreator.pluginOptions.tracesSampleRate"
     | "pluginCreator.pluginOptions.pathCheck"
     | "pluginCreator.pluginOptions.allExtensions"
     | "pluginCreator.pluginOptions.isTSX"
@@ -2872,9 +2871,6 @@ declare namespace GatsbyTypes {
     | "pluginOptions.localeDir"
     | "pluginOptions.analyzerPort"
     | "pluginOptions.emitSchema.src___generated___gatsby_schema_graphql"
-    | "pluginOptions.dsn"
-    | "pluginOptions.release"
-    | "pluginOptions.tracesSampleRate"
     | "pluginOptions.pathCheck"
     | "pluginOptions.allExtensions"
     | "pluginOptions.isTSX"
@@ -2927,6 +2923,14 @@ declare namespace GatsbyTypes {
 
   type Unnamed_2_Query = {
     readonly themeUiConfig: Maybe<Pick<ThemeUiConfig, "preset" | "prismPreset">>
+  }
+
+  type LocalizationSEOQueryQueryVariables = Exact<{ [key: string]: never }>
+
+  type LocalizationSEOQueryQuery = {
+    readonly site: Maybe<{
+      readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, "siteUrl">>
+    }>
   }
 
   type GatsbyImageSharpFixedFragment = Pick<
@@ -3012,6 +3016,14 @@ declare namespace GatsbyTypes {
     "aspectRatio" | "src" | "srcSet" | "srcWebp" | "srcSetWebp" | "sizes"
   >
 
+  type PagesQueryQueryVariables = Exact<{ [key: string]: never }>
+
+  type PagesQueryQuery = {
+    readonly allSitePage: {
+      readonly nodes: ReadonlyArray<Pick<SitePage, "path">>
+    }
+  }
+
   type LocalizationConfigQueryQueryVariables = Exact<{ [key: string]: never }>
 
   type LocalizationConfigQueryQuery = {
@@ -3034,13 +3046,5 @@ declare namespace GatsbyTypes {
         >
       }
     >
-  }
-
-  type LocalizationSEOQueryQueryVariables = Exact<{ [key: string]: never }>
-
-  type LocalizationSEOQueryQuery = {
-    readonly site: Maybe<{
-      readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, "siteUrl">>
-    }>
   }
 }
