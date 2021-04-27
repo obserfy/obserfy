@@ -42,7 +42,7 @@ func TestStudentApi(t *testing.T) {
 
 func (s *StudentTestSuite) TestPatchStudent() {
 	t := s.T()
-	newSchool := s.GenerateSchool()
+	newSchool, _ := s.GenerateSchool()
 	newStudent := s.GenerateStudent(newSchool)
 	payload := struct {
 		Name     string `json:"name"`
@@ -65,7 +65,7 @@ func (s *StudentTestSuite) TestPatchStudent() {
 
 func (s *StudentTestSuite) TestAddNewGuardian() {
 	t := s.T()
-	newSchool := s.GenerateSchool()
+	newSchool, _ := s.GenerateSchool()
 	newStudent := s.GenerateStudent(newSchool)
 	guardian, _ := s.GenerateGuardian(newSchool)
 
@@ -89,7 +89,7 @@ func (s *StudentTestSuite) TestAddNewGuardian() {
 
 func (s *StudentTestSuite) TestDeleteGuardian() {
 	t := s.T()
-	newSchool := s.GenerateSchool()
+	newSchool, _ := s.GenerateSchool()
 	newStudent := s.GenerateStudent(newSchool)
 	guardian, _ := s.GenerateGuardian(newSchool)
 

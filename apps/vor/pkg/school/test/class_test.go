@@ -15,7 +15,7 @@ func (s *SchoolTestSuite) TestValidCreateClass() {
 	t := s.T()
 
 	gofakeit.Seed(time.Now().UnixNano())
-	newSchool := s.GenerateSchool()
+	newSchool, _ := s.GenerateSchool()
 	payload := struct {
 		Name      string         `json:"name"`
 		StartTime time.Time      `json:"startTime"`
@@ -51,7 +51,7 @@ func (s *SchoolTestSuite) TestGetClass() {
 	t := s.T()
 
 	gofakeit.Seed(time.Now().UnixNano())
-	newSchool := s.GenerateSchool()
+	newSchool, _ := s.GenerateSchool()
 	classes := []*postgres.Class{
 		s.GenerateClass(newSchool),
 		s.GenerateClass(newSchool),
@@ -78,7 +78,7 @@ func (s *SchoolTestSuite) TestGetEmptyClass() {
 	t := s.T()
 
 	gofakeit.Seed(time.Now().UnixNano())
-	newSchool := s.GenerateSchool()
+	newSchool, _ := s.GenerateSchool()
 
 	result := s.CreateRequest("GET", "/"+newSchool.Id+"/classes", nil, &newSchool.Users[0].Id)
 	var response []struct {

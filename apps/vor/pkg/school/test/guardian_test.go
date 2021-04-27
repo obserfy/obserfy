@@ -15,6 +15,7 @@ import (
 func (s *SchoolTestSuite) TestCreateNewGuardian() {
 	t := s.T()
 	gofakeit.Seed(time.Now().UnixNano())
+	school, userId := s.GenerateSchool()
 	type requestBody struct {
 		Name    string `json:"name"`
 		Email   string `json:"email"`
@@ -28,17 +29,17 @@ func (s *SchoolTestSuite) TestCreateNewGuardian() {
 		body       requestBody
 		resultCode int
 	}{
-		{"complete", *s.GenerateSchool(), requestBody{
+		{"complete", *school, requestBody{
 			Name:    gofakeit.Name(),
 			Email:   gofakeit.Email(),
 			Phone:   gofakeit.Phone(),
 			Note:    gofakeit.Sentence(10),
 			Address: gofakeit.Address().Address,
 		}, http.StatusCreated},
-		{"only name", *s.GenerateSchool(), requestBody{
+		{"only name", *school, requestBody{
 			Name: gofakeit.Name(),
 		}, http.StatusCreated},
-		{"without name", *s.GenerateSchool(), requestBody{
+		{"without name", *school, requestBody{
 			Email: gofakeit.Email(),
 			Phone: gofakeit.Phone(),
 			Note:  gofakeit.Sentence(10),
@@ -46,7 +47,7 @@ func (s *SchoolTestSuite) TestCreateNewGuardian() {
 	}
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			result := s.CreateRequest("POST", "/"+test.school.Id+"/guardians", test.body, &test.school.Users[0].Id)
+			result := s.CreateRequest("POST", "/"+test.school.Id+"/guardians", test.body, &userId)
 			assert.Equal(t, test.resultCode, result.Code)
 
 			var savedGuardian postgres.Guardian
@@ -70,7 +71,7 @@ func (s *SchoolTestSuite) TestCreateNewGuardian() {
 
 func (s *SchoolTestSuite) TestGetSchoolGuardians() {
 	t := s.T()
-	newSchool := s.GenerateSchool()
+	newSchool, _ := s.GenerateSchool()
 	guardian, userId := s.GenerateGuardian(newSchool)
 
 	result := s.CreateRequest("GET", "/"+guardian.SchoolId+"/guardians", nil, &userId)
@@ -95,7 +96,7 @@ func (s *SchoolTestSuite) TestGetSchoolGuardians() {
 
 func (s *SchoolTestSuite) TestGetSchoolGuardians_WithNoGuardian() {
 	t := s.T()
-	newSchool := s.GenerateSchool()
+	newSchool, _ := s.GenerateSchool()
 
 	result := s.CreateRequest("GET", "/"+newSchool.Id+"/guardians", nil, &newSchool.Users[0].Id)
 	assert.Equal(t, http.StatusOK, result.Code)

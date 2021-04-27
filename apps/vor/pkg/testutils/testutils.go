@@ -93,7 +93,7 @@ func connectTestDB() (db *pg.DB, err error) {
 	return db, nil
 }
 
-func (s *BaseTestSuite) GenerateSchool() *postgres.School {
+func (s *BaseTestSuite) GenerateSchool() (*postgres.School, string) {
 	t := s.T()
 	gofakeit.Seed(time.Now().UnixNano())
 	curriculum := postgres.Curriculum{Id: uuid.New().String()}
@@ -125,13 +125,13 @@ func (s *BaseTestSuite) GenerateSchool() *postgres.School {
 	assert.NoError(t, err)
 	_, err = s.DB.Model(&schoolUserRelation).Insert()
 	assert.NoError(t, err)
-	return &newSchool
+	return &newSchool, newUser.Id
 }
 
 func (s *BaseTestSuite) GenerateStudent(school *postgres.School) *postgres.Student {
 	t := s.T()
 	if school == nil {
-		school = s.GenerateSchool()
+		school, _ = s.GenerateSchool()
 	}
 	dob := gofakeit.Date()
 	dateOfEntry := gofakeit.Date()
@@ -156,7 +156,7 @@ func (s *BaseTestSuite) GenerateStudent(school *postgres.School) *postgres.Stude
 func (s *BaseTestSuite) GenerateMaterial(school *postgres.School) (postgres.Material, string) {
 	gofakeit.Seed(time.Now().UnixNano())
 	if school == nil {
-		school = s.GenerateSchool()
+		school, _ = s.GenerateSchool()
 	}
 	subject, userId := s.GenerateSubject(school)
 
@@ -175,7 +175,7 @@ func (s *BaseTestSuite) GenerateMaterial(school *postgres.School) (postgres.Mate
 func (s *BaseTestSuite) GenerateSubject(school *postgres.School) (postgres.Subject, string) {
 	gofakeit.Seed(time.Now().UnixNano())
 	if school == nil {
-		school = s.GenerateSchool()
+		school, _ = s.GenerateSchool()
 	}
 	// Save area
 	area, userId := s.GenerateArea(school)
@@ -195,7 +195,7 @@ func (s *BaseTestSuite) GenerateSubject(school *postgres.School) (postgres.Subje
 func (s *BaseTestSuite) GenerateArea(school *postgres.School) (postgres.Area, string) {
 	gofakeit.Seed(time.Now().UnixNano())
 	if school == nil {
-		school = s.GenerateSchool()
+		school, _ = s.GenerateSchool()
 	}
 
 	area := postgres.Area{
@@ -213,7 +213,7 @@ func (s *BaseTestSuite) GenerateArea(school *postgres.School) (postgres.Area, st
 func (s *BaseTestSuite) GenerateClass(school *postgres.School) *postgres.Class {
 	t := s.T()
 	if school == nil {
-		school = s.GenerateSchool()
+		school, _ = s.GenerateSchool()
 	}
 
 	newClass := postgres.Class{
@@ -239,7 +239,7 @@ func (s *BaseTestSuite) GenerateClass(school *postgres.School) *postgres.Class {
 func (s *BaseTestSuite) GenerateLessonPlan(school *postgres.School) (postgres.LessonPlan, string) {
 	t := s.T()
 	if school == nil {
-		school = s.GenerateSchool()
+		school, _ = s.GenerateSchool()
 	}
 	material, userid := s.GenerateMaterial(school)
 	class := s.GenerateClass(school)
@@ -334,7 +334,7 @@ func (s *BaseTestSuite) GenerateGuardian(school *postgres.School) (*postgres.Gua
 func (s *BaseTestSuite) GenerateObservation() postgres.Observation {
 	currentTime := time.Now().Local()
 	gofakeit.Seed(time.Now().UnixNano())
-	newSchool := s.GenerateSchool()
+	newSchool, _ := s.GenerateSchool()
 	newStudent := s.GenerateStudent(newSchool)
 
 	o := postgres.Observation{
@@ -493,4 +493,44 @@ func (s *BaseTestSuite) GenerateVideo(school *postgres.School, status *string) p
 	_, err := s.DB.Model(&video).Insert()
 	assert.NoError(t, err)
 	return video
+}
+
+func (s *BaseTestSuite) NewSession(userId string) auth.Session {
+	session := postgres.Session{
+		Token:  uuid.NewString(),
+		UserId: userId,
+	}
+	_, _ = s.DB.Model(&session).Insert()
+	return auth.Session{
+		Token:  session.Token,
+		UserId: session.UserId,
+	}
+}
+
+type ApiMetadata struct {
+	Method string
+	Path   string
+	UserId string
+	Body   interface{}
+}
+
+func (s *BaseTestSuite) ApiTest(m ApiMetadata, res interface{}) *httptest.ResponseRecorder {
+	body, err := json.Marshal(m.Body)
+	s.NoError(err)
+
+	w := httptest.NewRecorder()
+	r := httptest.NewRequest(m.Method, m.Path, bytes.NewBuffer(body))
+
+	if m.UserId != "" {
+		session := s.NewSession(m.UserId)
+		ctx := context.WithValue(r.Context(), auth.SessionCtxKey, &session)
+		r = r.WithContext(ctx)
+	}
+	s.Handler(w, r)
+
+	if res != nil {
+		s.NoError(rest.ParseJson(w.Result().Body, res))
+	}
+
+	return w
 }

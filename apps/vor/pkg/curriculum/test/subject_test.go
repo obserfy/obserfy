@@ -163,7 +163,7 @@ func (s *SubjectTestSuite) TestDeleteSubject() {
 
 func (s *SubjectTestSuite) TestDeleteUnknownSubject() {
 	t := s.T()
-	school := s.GenerateSchool()
+	school, _ := s.GenerateSchool()
 	subjectId := uuid.New().String()
 	result := s.CreateRequest("DELETE", "/subjects/"+subjectId, nil, &school.Users[0].Id)
 	assert.Equal(t, http.StatusNotFound, result.Code)

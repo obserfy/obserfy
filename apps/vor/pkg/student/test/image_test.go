@@ -20,7 +20,7 @@ import (
 func (s *StudentTestSuite) TestUploadImage() {
 	t := s.T()
 	gofakeit.Seed(time.Now().UnixNano())
-	school := s.GenerateSchool()
+	school, _ := s.GenerateSchool()
 	student := s.GenerateStudent(school)
 
 	fileName := gofakeit.Name()
