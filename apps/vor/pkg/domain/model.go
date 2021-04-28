@@ -160,15 +160,15 @@ type Subscription struct {
 }
 
 type User struct {
-	Id    string
-	Name  string
-	Email string
+	Id    string `json:"id"`
+	Name  string `json:"name"`
+	Email string `json:"email"`
 }
 
 type School struct {
-	Id    uuid.UUID
-	Name  string
-	Users []User
+	Id    uuid.UUID `json:"id"`
+	Name  string    `json:"name"`
+	Users []User    `json:"users"`
 }
 
 type ProgressReport struct {

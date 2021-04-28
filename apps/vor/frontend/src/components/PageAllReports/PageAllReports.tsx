@@ -1,17 +1,27 @@
 import { Trans } from "@lingui/macro"
 import React, { FC } from "react"
 import { Box, Button, Flex } from "theme-ui"
+import useGetReports from "../../hooks/api/useGetReports"
 import { ReactComponent as EmptyIllustration } from "../../images/report-illustration.svg"
 import { NEW_REPORT_URL } from "../../routes"
 import { Link } from "../Link/Link"
 import Typography from "../Typography/Typography"
 
 export interface PageAllReportsProps {}
-const PageAllReports: FC<PageAllReportsProps> = () => (
-  <Box>
-    <EmptyPlaceholder />
-  </Box>
-)
+
+const PageAllReports: FC<PageAllReportsProps> = () => {
+  const reports = useGetReports()
+
+  if (reports.isLoading) {
+    return <div>Loading</div>
+  }
+
+  if (reports.isSuccess) {
+    return <Box>{reports.data.length < 0 && <EmptyPlaceholder />}</Box>
+  }
+
+  return <div>Error</div>
+}
 
 const EmptyPlaceholder = () => {
   return (
