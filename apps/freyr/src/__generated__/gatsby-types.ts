@@ -3189,24 +3189,29 @@ declare namespace GatsbyTypes {
     readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>
   }
 
-  type LocalizationSEOQueryQueryVariables = Exact<{ [key: string]: never }>
+  type Unnamed_1_QueryVariables = Exact<{ [key: string]: never }>
 
-  type LocalizationSEOQueryQuery = {
-    readonly site: Maybe<{
-      readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, "siteUrl">>
-    }>
-  }
-
-  type homechrisintSrcobserfyappsfreyrsrccomponentsseoTsx63159454QueryVariables = Exact<{
-    [key: string]: never
-  }>
-
-  type homechrisintSrcobserfyappsfreyrsrccomponentsseoTsx63159454Query = {
+  type Unnamed_1_Query = {
     readonly site: Maybe<{
       readonly siteMetadata: Maybe<
         Pick<SiteSiteMetadata, "title" | "description" | "author">
       >
     }>
+  }
+
+  type homechrisintSrcobserfyappsfreyrsrctemplatesdocsJs2568242176QueryVariables = Exact<{
+    locale: Scalars["String"]
+    slug: Scalars["String"]
+  }>
+
+  type homechrisintSrcobserfyappsfreyrsrctemplatesdocsJs2568242176Query = {
+    readonly mdx: Maybe<
+      Pick<Mdx, "body"> & {
+        readonly frontmatter: Maybe<
+          Pick<MdxFrontmatter, "slug" | "title" | "description">
+        >
+      }
+    >
   }
 
   type LocalizationConfigQueryQueryVariables = Exact<{ [key: string]: never }>
@@ -3233,19 +3238,12 @@ declare namespace GatsbyTypes {
     >
   }
 
-  type homechrisintSrcobserfyappsfreyrsrctemplatesdocsJs2568242176QueryVariables = Exact<{
-    locale: Scalars["String"]
-    slug: Scalars["String"]
-  }>
+  type LocalizationSEOQueryQueryVariables = Exact<{ [key: string]: never }>
 
-  type homechrisintSrcobserfyappsfreyrsrctemplatesdocsJs2568242176Query = {
-    readonly mdx: Maybe<
-      Pick<Mdx, "body"> & {
-        readonly frontmatter: Maybe<
-          Pick<MdxFrontmatter, "slug" | "title" | "description">
-        >
-      }
-    >
+  type LocalizationSEOQueryQuery = {
+    readonly site: Maybe<{
+      readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, "siteUrl">>
+    }>
   }
 
   type GatsbyImageSharpFixedFragment = Pick<

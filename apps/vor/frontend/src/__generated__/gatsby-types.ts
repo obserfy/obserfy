@@ -2925,14 +2925,6 @@ declare namespace GatsbyTypes {
     readonly themeUiConfig: Maybe<Pick<ThemeUiConfig, "preset" | "prismPreset">>
   }
 
-  type LocalizationSEOQueryQueryVariables = Exact<{ [key: string]: never }>
-
-  type LocalizationSEOQueryQuery = {
-    readonly site: Maybe<{
-      readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, "siteUrl">>
-    }>
-  }
-
   type GatsbyImageSharpFixedFragment = Pick<
     ImageSharpFixed,
     "base64" | "width" | "height" | "src" | "srcSet"
@@ -3016,12 +3008,12 @@ declare namespace GatsbyTypes {
     "aspectRatio" | "src" | "srcSet" | "srcWebp" | "srcSetWebp" | "sizes"
   >
 
-  type PagesQueryQueryVariables = Exact<{ [key: string]: never }>
+  type LocalizationSEOQueryQueryVariables = Exact<{ [key: string]: never }>
 
-  type PagesQueryQuery = {
-    readonly allSitePage: {
-      readonly nodes: ReadonlyArray<Pick<SitePage, "path">>
-    }
+  type LocalizationSEOQueryQuery = {
+    readonly site: Maybe<{
+      readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, "siteUrl">>
+    }>
   }
 
   type LocalizationConfigQueryQueryVariables = Exact<{ [key: string]: never }>
@@ -3046,5 +3038,13 @@ declare namespace GatsbyTypes {
         >
       }
     >
+  }
+
+  type PagesQueryQueryVariables = Exact<{ [key: string]: never }>
+
+  type PagesQueryQuery = {
+    readonly allSitePage: {
+      readonly nodes: ReadonlyArray<Pick<SitePage, "path">>
+    }
   }
 }

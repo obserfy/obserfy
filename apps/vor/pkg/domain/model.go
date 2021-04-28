@@ -173,10 +173,10 @@ type School struct {
 
 type ProgressReport struct {
 	Id          uuid.UUID `json:"id"`
-	School      School    `json:"school"`
 	Title       string    `json:"title"`
 	PeriodStart time.Time `json:"periodStart"`
 	PeriodEnd   time.Time `json:"periodEnd"`
+	School      *School   `json:"school,omitempty"`
 }
 
 type VideoStore interface {
