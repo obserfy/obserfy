@@ -3,7 +3,7 @@ import { FC } from "react"
 import { jsx, Box, Button, Card, Flex } from "theme-ui"
 import { ProgressReport } from "../../__generated__/models"
 import { borderBottom, borderFull } from "../../border"
-import { MANAGE_REPORT_URL } from "../../routes"
+import { MANAGE_REPORT_URL, NEW_REPORT_URL } from "../../routes"
 import { Link } from "../Link/Link"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
 import { Typography } from "../Typography/Typography"
@@ -17,7 +17,9 @@ const ReportList: FC<{ reports: ProgressReport[] }> = ({ reports }) => {
           <Typography.H2 sx={{ fontSize: [4, 5] }}>
             Progress Reports
           </Typography.H2>
-          <Button ml="auto">New</Button>
+          <Link to={NEW_REPORT_URL} sx={{ ml: "auto" }}>
+            <Button>New</Button>
+          </Link>
         </Flex>
       </TranslucentBar>
 
