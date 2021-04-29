@@ -13,7 +13,7 @@ export interface School {
 export interface ProgressReport {
   id: string
   title: string
-  periodStart: Date
-  periodEnd: Date
+  periodStart: string
+  periodEnd: string
   school?: School
 }

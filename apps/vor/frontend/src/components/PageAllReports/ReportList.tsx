@@ -3,9 +3,11 @@ import { FC } from "react"
 import { jsx, Box, Button, Card, Flex } from "theme-ui"
 import { ProgressReport } from "../../__generated__/models"
 import { borderBottom, borderFull } from "../../border"
+import { MANAGE_REPORT_URL } from "../../routes"
 import { Link } from "../Link/Link"
 import TranslucentBar from "../TranslucentBar/TranslucentBar"
 import { Typography } from "../Typography/Typography"
+import dayjs from "../../dayjs"
 
 const ReportList: FC<{ reports: ProgressReport[] }> = ({ reports }) => {
   return (
@@ -22,7 +24,7 @@ const ReportList: FC<{ reports: ProgressReport[] }> = ({ reports }) => {
       <Flex sx={{ flexWrap: "wrap" }} mt={3} mx={[0, 3]}>
         {reports.map((report) => (
           <Link
-            to="/"
+            to={MANAGE_REPORT_URL(report.id)}
             key={report.id}
             sx={{
               p: 3,
@@ -31,6 +33,7 @@ const ReportList: FC<{ reports: ProgressReport[] }> = ({ reports }) => {
             }}
           >
             <Card
+              as="article"
               p={3}
               sx={{
                 ...borderFull,
@@ -39,7 +42,12 @@ const ReportList: FC<{ reports: ProgressReport[] }> = ({ reports }) => {
                 },
               }}
             >
-              {report.title}
+              <Typography.H2 mb={1} sx={{ fontSize: 2 }}>
+                {report.title}
+              </Typography.H2>
+              <Typography.Body>
+                {dayjs(report.periodStart).format("MMMM YYYY")}
+              </Typography.Body>
             </Card>
           </Link>
         ))}

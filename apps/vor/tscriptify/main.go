@@ -16,7 +16,7 @@ func main() {
 	converter := typescriptify.New().Add(domain.ProgressReport{})
 	converter.WithIndent("  ")
 	converter.ManageType(uuid.UUID{}, typescriptify.TypeOptions{TSType: "string"})
-	converter.ManageType(time.Time{}, typescriptify.TypeOptions{TSType: "Date"})
+	converter.ManageType(time.Time{}, typescriptify.TypeOptions{TSType: "string"})
 	converter.CreateInterface = true
 
 	err := converter.ConvertToFile("src/__generated__/models.ts")
