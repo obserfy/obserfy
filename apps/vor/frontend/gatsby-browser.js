@@ -1,5 +1,8 @@
 import { redirectToPreferredLang } from "./src/i18n"
 import { track } from "./src/analytics"
+import { i18n } from "@lingui/core"
+import { en, id } from "make-plural/plurals"
+import { Severity } from "@sentry/gatsby"
 
 export const onServiceWorkerUpdateReady = () => {
   if (window.updateAvailable) {
@@ -16,7 +19,7 @@ export const onRouteUpdate = ({ location }) => {
   if (typeof Sentry !== "undefined") {
     const breadcrumb = {
       category: "page",
-      level: "info",
+      level: Severity.Info,
       data: {
         title: document.title,
         location: location.pathname,
@@ -28,6 +31,9 @@ export const onRouteUpdate = ({ location }) => {
 
 // For redirecting user to preferred language
 export const wrapPageElement = (params) => {
+  i18n.loadLocaleData("en", { plurals: en })
+  i18n.loadLocaleData("en", { plurals: id })
+
   redirectToPreferredLang(
     params.props.location,
     params.props.pageContext.originalPath

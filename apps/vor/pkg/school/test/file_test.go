@@ -19,7 +19,7 @@ import (
 func (s *SchoolTestSuite) TestUploadFile() {
 	t := s.T()
 	gofakeit.Seed(time.Now().UnixNano())
-	school := s.GenerateSchool()
+	school, _ := s.GenerateSchool()
 
 	fileName := gofakeit.Name()
 	filePath := "testfile.txt"

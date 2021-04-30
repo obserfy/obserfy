@@ -33,7 +33,7 @@ func TestClass(t *testing.T) {
 
 func (s *GuardianTestSuite) TestAuthorization() {
 	t := s.T()
-	newSchool := s.GenerateSchool()
+	newSchool, _ := s.GenerateSchool()
 	newGuardian, userId := s.GenerateGuardian(newSchool)
 	tests := []struct {
 		name       string
@@ -62,7 +62,7 @@ func (s *GuardianTestSuite) TestAuthorization() {
 
 func (s *GuardianTestSuite) TestGetGuardian() {
 	t := s.T()
-	newSchool := s.GenerateSchool()
+	newSchool, _ := s.GenerateSchool()
 	newGuardian, userId := s.GenerateGuardian(newSchool)
 	tests := []struct {
 		name       string
@@ -92,7 +92,7 @@ func (s *GuardianTestSuite) TestGetGuardian() {
 
 func (s *GuardianTestSuite) TestDeleteGuardian() {
 	t := s.T()
-	newSchool := s.GenerateSchool()
+	newSchool, _ := s.GenerateSchool()
 	newGuardian, userId := s.GenerateGuardian(newSchool)
 	tests := []struct {
 		name       string
@@ -175,7 +175,7 @@ func (s *GuardianTestSuite) TestUpdateGuardian() {
 	}
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			newSchool := s.GenerateSchool()
+			newSchool, _ := s.GenerateSchool()
 			newGuardian, userId := s.GenerateGuardian(newSchool)
 			result := s.CreateRequest("PATCH", "/"+newGuardian.Id, test.body, &userId)
 			assert.Equal(t, test.resultCode, result.Code)

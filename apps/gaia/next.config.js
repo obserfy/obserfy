@@ -16,13 +16,6 @@ const config = {
       "image.mux.com",
     ],
   },
-  experimental: {
-    modern: true,
-    polyfillsOptimization: true,
-  },
-  future: {
-    webpack5: true,
-  },
 }
 
 module.exports = withPlugins(plugins, config)

@@ -29,7 +29,7 @@ export async function exportStudentObservations(
   document.body.removeChild(a)
 }
 
-export async function exportMaaterialProgressCsv(
+export async function exportMaterialProgressCsv(
   studentId: string,
   studentName: string
 ) {

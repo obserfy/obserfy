@@ -124,3 +124,6 @@ export const USER_PROFILE_URL = `/dashboard/admin/user-profile`
 
 export const ALL_REPORT_URL = `/dashboard/reports`
 export const NEW_REPORT_URL = `/dashboard/reports/new`
+
+export const MANAGE_REPORT_URL = (reportId: string) =>
+  `/dashboard/reports/manage?reportId=${reportId}`

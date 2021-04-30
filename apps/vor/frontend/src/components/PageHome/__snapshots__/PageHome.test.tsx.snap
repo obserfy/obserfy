@@ -3,43 +3,43 @@
 exports[`PageHome should render correctly 1`] = `
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 
   50% {
-    background-color: rgba(165, 165, 165, 0.2);
+    opacity: 0.2;
   }
 
   100% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 }
 
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 
   50% {
-    background-color: rgba(165, 165, 165, 0.2);
+    opacity: 0.2;
   }
 
   100% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 }
 
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 
   50% {
-    background-color: rgba(165, 165, 165, 0.2);
+    opacity: 0.2;
   }
 
   100% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 }
 
@@ -399,8 +399,9 @@ exports[`PageHome should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   border-radius: 6px;
-  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
-  animation: 1s ease-in-out 0s infinite animation-0;
+  -webkit-animation: 4s infinite animation-0;
+  animation: 4s infinite animation-0;
+  background-color: #a5a5a5;
   width: 32px;
   height: 32px;
   border-radius: 99999px;
@@ -413,8 +414,9 @@ exports[`PageHome should render correctly 1`] = `
   margin-left: 16px;
   margin-right: auto;
   border-radius: 6px;
-  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
-  animation: 1s ease-in-out 0s infinite animation-0;
+  -webkit-animation: 4s infinite animation-0;
+  animation: 4s infinite animation-0;
+  background-color: #a5a5a5;
   width: 10rem;
   height: 22px;
 }
@@ -424,8 +426,9 @@ exports[`PageHome should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   border-radius: 6px;
-  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
-  animation: 1s ease-in-out 0s infinite animation-0;
+  -webkit-animation: 4s infinite animation-0;
+  animation: 4s infinite animation-0;
+  background-color: #a5a5a5;
   width: 4rem;
   height: 22px;
 }

@@ -30,7 +30,7 @@ func (s *AreaTestSuite) TestGetExistingArea() {
 }
 
 func (s *AreaTestSuite) TestGetNonExistentArea() {
-	school := s.GenerateSchool()
+	school, _ := s.GenerateSchool()
 	result := s.CreateRequest("GET", "/areas/"+uuid.New().String(), nil, &school.Users[0].Id)
 	assert.Equal(s.T(), http.StatusNotFound, result.Code)
 }
@@ -39,7 +39,7 @@ func (s *AreaTestSuite) TestGetNonExistentArea() {
 func (s *AreaTestSuite) TestCreateValidArea() {
 	t := s.T()
 	// Save curriculum and use its id for request
-	school := s.GenerateSchool()
+	school, _ := s.GenerateSchool()
 
 	// setup the area for test
 	area := struct {
@@ -63,7 +63,7 @@ func (s *AreaTestSuite) TestCreateValidArea() {
 // Area without curriculum should fail
 func (s *AreaTestSuite) TestCreateAreaWithNoCurriculum() {
 	t := s.T()
-	school := s.GenerateSchool()
+	school, _ := s.GenerateSchool()
 	area := struct {
 		Name        string `json:"name"`
 		Description string `json:"description"`
@@ -83,7 +83,7 @@ func (s *AreaTestSuite) TestCreateAreaWithNoCurriculum() {
 func (s *AreaTestSuite) TestCreateAreaWithNoName() {
 	t := s.T()
 	// Setup data
-	school := s.GenerateSchool()
+	school, _ := s.GenerateSchool()
 
 	area := struct {
 		Name        string `json:"name"`
@@ -117,7 +117,7 @@ func (s *AreaTestSuite) TestDeleteArea() {
 
 func (s *AreaTestSuite) TestDeleteUnknownArea() {
 	t := s.T()
-	school := s.GenerateSchool()
+	school, _ := s.GenerateSchool()
 	response := s.CreateRequest("DELETE", "/areas/"+uuid.New().String(), nil, &school.Users[0].Id)
 	assert.Equal(t, http.StatusNotFound, response.Code)
 }

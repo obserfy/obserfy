@@ -3,15 +3,15 @@
 exports[`PageNewStudent should render correctly 1`] = `
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 
   50% {
-    background-color: rgba(165, 165, 165, 0.2);
+    opacity: 0.2;
   }
 
   100% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 }
 
@@ -40,6 +40,14 @@ exports[`PageNewStudent should render correctly 1`] = `
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-bottom-color: var(--theme-ui-colors-border);
+}
+
+@supports (backdrop-filter: blur(20px)) {
+  .emotion-1 {
+    background-color: var(--theme-ui-colors-surfaceBlurTransparent);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+  }
 }
 
 .emotion-2 {
@@ -939,8 +947,9 @@ exports[`PageNewStudent should render correctly 1`] = `
   min-width: 0;
   margin-right: 16px;
   border-radius: 6px;
-  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
-  animation: 1s ease-in-out 0s infinite animation-0;
+  -webkit-animation: 4s infinite animation-0;
+  animation: 4s infinite animation-0;
+  background-color: #a5a5a5;
   width: 42px;
   height: 2rem;
 }

@@ -35,7 +35,7 @@ func TestClass(t *testing.T) {
 
 func (s *ClassTestSuite) TestDeleteClass() {
 	t := s.T()
-	newSchool := s.GenerateSchool()
+	newSchool, _ := s.GenerateSchool()
 	newClass := s.GenerateClass(newSchool)
 	result := s.CreateRequest("DELETE", "/"+newClass.Id, nil, nil)
 	assert.Equal(t, http.StatusOK, result.Code)
@@ -53,7 +53,7 @@ func (s *ClassTestSuite) TestDeleteNonExistentClass() {
 
 func (s *ClassTestSuite) TestGetClass() {
 	t := s.T()
-	newSchool := s.GenerateSchool()
+	newSchool, _ := s.GenerateSchool()
 	original := s.GenerateClass(newSchool)
 	result := s.CreateRequest("GET", "/"+original.Id, nil, nil)
 	assert.Equal(t, http.StatusOK, result.Code)
@@ -82,7 +82,7 @@ func (s *ClassTestSuite) TestGetNonExistentClass() {
 
 func (s *ClassTestSuite) TestPatchClassName() {
 	t := s.T()
-	newSchool := s.GenerateSchool()
+	newSchool, _ := s.GenerateSchool()
 	original := s.GenerateClass(newSchool)
 	gofakeit.Seed(time.Now().UnixNano())
 
@@ -108,7 +108,7 @@ func (s *ClassTestSuite) TestPatchClassName() {
 
 func (s *ClassTestSuite) TestPatchClassAll() {
 	t := s.T()
-	newSchool := s.GenerateSchool()
+	newSchool, _ := s.GenerateSchool()
 	original := s.GenerateClass(newSchool)
 	gofakeit.Seed(time.Now().UnixNano())
 

@@ -68,8 +68,8 @@ func NewRouter(
 
 		r.Method("POST", "/videos/upload", postCreateVideoUploadLink(server, store, videos))
 
-		r.Method("POST", "/reports", postNewReport(server, store))
-		r.Method("GET", "/reports", getReports(server, store))
+		r.Method("POST", "/progress-reports", postNewProgressReport(server, store))
+		r.Method("GET", "/progress-reports", getProgressReports(server, store))
 	})
 	return r
 }
@@ -1241,6 +1241,7 @@ func importBulkCurriculum(s rest.Server, store Store) rest.Handler {
 		return nil
 	})
 }
+
 func postCreateVideoUploadLink(server rest.Server, store Store, videos domain.VideoService) http.Handler {
 	type requestBody struct {
 		StudentId string `json:"studentId"`
@@ -1248,66 +1249,68 @@ func postCreateVideoUploadLink(server rest.Server, store Store, videos domain.Vi
 	type responseBody struct {
 		Url string `json:"url"`
 	}
-	return server.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
-		schoolId := chi.URLParam(r, "schoolId")
-		session, ok := auth.GetSessionFromCtx(r.Context())
-		if !ok {
-			return &rest.Error{
-				Code:    http.StatusUnauthorized,
-				Message: "invalid session",
-				Error:   richErrors.New("invalid session"),
-			}
-		}
+	return server.NewHandler2(func(r *rest.Request) rest.ServerResponse {
+		schoolId := r.GetParam("schoolId")
+		session, _ := auth.GetSessionFromCtx(r.Context())
 
 		var body requestBody
-		if err := rest.ParseJson(r.Body, &body); err != nil {
-			return rest.NewParseJsonError(err)
+		if err := r.ParseBody(&body); err != nil {
+			return server.BadRequest(err)
 		}
 
 		video, err := videos.CreateUploadLink()
 		if err != nil {
-			return rest.NewInternalServerError(err, "failed to create upload link")
+			return server.InternalServerError(err)
 		}
+
 		video.SchoolId = schoolId
 		video.UserId = session.UserId
-
 		if err := store.CreateStudentVideo(schoolId, body.StudentId, video); err != nil {
-			return rest.NewInternalServerError(err, "failed to save video to db")
+			return server.InternalServerError(err)
 		}
 
-		w.WriteHeader(http.StatusCreated)
-		if err := rest.WriteJson(w, &responseBody{video.UploadUrl}); err != nil {
-			return rest.NewWriteJsonError(err)
+		return rest.ServerResponse{
+			Status: http.StatusCreated,
+			Body:   responseBody{video.UploadUrl},
 		}
-		return nil
 	})
 }
 
-func postNewReport(s rest.Server, store Store) http.Handler {
+func postNewProgressReport(s rest.Server, store Store) http.Handler {
 	type requestBody struct {
 		Title       string    `json:"title"`
 		PeriodStart time.Time `json:"periodStart"`
 		PeriodEnd   time.Time `json:"periodEnd"`
 	}
-	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
-		schoolId := chi.URLParam(r, "schoolId")
+	return s.NewHandler2(func(r *rest.Request) rest.ServerResponse {
+		schoolId := r.GetParam("schoolId")
 
 		var report requestBody
-		if err := rest.ParseJson(r.Body, &report); err != nil {
-			return rest.NewParseJsonError(err)
+		if err := r.ParseBody(&report); err != nil {
+			return s.BadRequest(err)
 		}
 
 		if err := store.NewProgressReport(schoolId, report.Title, report.PeriodStart, report.PeriodEnd); err != nil {
-			return rest.NewInternalServerError(err, "Failed to save report")
+			return s.InternalServerError(err)
 		}
 
-		w.WriteHeader(http.StatusCreated)
-		return nil
+		return rest.ServerResponse{
+			Status: http.StatusCreated,
+		}
 	})
 }
 
-func getReports(s rest.Server, store Store) http.Handler {
-	return s.NewHandler(func(w http.ResponseWriter, r *http.Request) *rest.Error {
-		return nil
+func getProgressReports(s rest.Server, store Store) http.Handler {
+	return s.NewHandler2(func(r *rest.Request) rest.ServerResponse {
+		schoolId := r.GetParam("schoolId")
+
+		reports, err := store.GetReports(schoolId)
+		if err != nil {
+			return s.InternalServerError(err)
+		}
+
+		return rest.ServerResponse{
+			Body: reports,
+		}
 	})
 }
