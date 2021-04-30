@@ -4,7 +4,7 @@ import { FC, Fragment, useState } from "react"
 import { jsx, Box, Button, Card, Flex } from "theme-ui"
 import { borderBottom } from "../../border"
 import { isEmpty } from "../../domain/array"
-import { exportMaaterialProgressCsv } from "../../export"
+import { exportMaterialProgressCsv } from "../../export"
 import { useGetCurriculumAreas } from "../../hooks/api/useGetCurriculumAreas"
 import {
   Assessment,
@@ -40,7 +40,7 @@ export const AssessmentCard: FC<Props> = ({ studentId, studentName = "" }) => {
   }
 
   const handleExport = async () => {
-    await exportMaaterialProgressCsv(studentId, studentName)
+    await exportMaterialProgressCsv(studentId, studentName)
   }
 
   // Derived state

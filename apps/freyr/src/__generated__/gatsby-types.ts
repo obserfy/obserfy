@@ -3199,12 +3199,51 @@ declare namespace GatsbyTypes {
     }>
   }
 
+  type homechrisintSrcobserfyappsfreyrsrctemplatesdocsJs2568242176QueryVariables = Exact<{
+    locale: Scalars["String"]
+    slug: Scalars["String"]
+  }>
+
+  type homechrisintSrcobserfyappsfreyrsrctemplatesdocsJs2568242176Query = {
+    readonly mdx: Maybe<
+      Pick<Mdx, "body"> & {
+        readonly frontmatter: Maybe<
+          Pick<MdxFrontmatter, "slug" | "title" | "description">
+        >
+      }
+    >
+  }
+
   type LocalizationSEOQueryQueryVariables = Exact<{ [key: string]: never }>
 
   type LocalizationSEOQueryQuery = {
     readonly site: Maybe<{
       readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, "siteUrl">>
     }>
+  }
+
+  type LocalizationConfigQueryQueryVariables = Exact<{ [key: string]: never }>
+
+  type LocalizationConfigQueryQuery = {
+    readonly themeI18N: Maybe<
+      Pick<ThemeI18n, "defaultLang" | "prefixDefault"> & {
+        readonly config: Maybe<
+          ReadonlyArray<
+            Maybe<
+              Pick<
+                Locale,
+                | "code"
+                | "hrefLang"
+                | "dateFormat"
+                | "langDir"
+                | "localName"
+                | "name"
+              >
+            >
+          >
+        >
+      }
+    >
   }
 
   type GatsbyImageSharpFixedFragment = Pick<
@@ -3289,45 +3328,6 @@ declare namespace GatsbyTypes {
     ImageSharpFluid,
     "aspectRatio" | "src" | "srcSet" | "srcWebp" | "srcSetWebp" | "sizes"
   >
-
-  type LocalizationConfigQueryQueryVariables = Exact<{ [key: string]: never }>
-
-  type LocalizationConfigQueryQuery = {
-    readonly themeI18N: Maybe<
-      Pick<ThemeI18n, "defaultLang" | "prefixDefault"> & {
-        readonly config: Maybe<
-          ReadonlyArray<
-            Maybe<
-              Pick<
-                Locale,
-                | "code"
-                | "hrefLang"
-                | "dateFormat"
-                | "langDir"
-                | "localName"
-                | "name"
-              >
-            >
-          >
-        >
-      }
-    >
-  }
-
-  type homechrisintSrcobserfyappsfreyrsrctemplatesdocsJs2568242176QueryVariables = Exact<{
-    locale: Scalars["String"]
-    slug: Scalars["String"]
-  }>
-
-  type homechrisintSrcobserfyappsfreyrsrctemplatesdocsJs2568242176Query = {
-    readonly mdx: Maybe<
-      Pick<Mdx, "body"> & {
-        readonly frontmatter: Maybe<
-          Pick<MdxFrontmatter, "slug" | "title" | "description">
-        >
-      }
-    >
-  }
 
   type PagesQueryQueryVariables = Exact<{ [key: string]: never }>
 
