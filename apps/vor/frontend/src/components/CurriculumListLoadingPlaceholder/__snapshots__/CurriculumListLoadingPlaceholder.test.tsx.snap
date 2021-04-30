@@ -3,43 +3,43 @@
 exports[`CurriculumListLoadingPlaceholder should render correctly 1`] = `
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 
   50% {
-    background-color: rgba(165, 165, 165, 0.2);
+    opacity: 0.2;
   }
 
   100% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 }
 
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 
   50% {
-    background-color: rgba(165, 165, 165, 0.2);
+    opacity: 0.2;
   }
 
   100% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 }
 
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 
   50% {
-    background-color: rgba(165, 165, 165, 0.2);
+    opacity: 0.2;
   }
 
   100% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 }
 
@@ -71,8 +71,9 @@ exports[`CurriculumListLoadingPlaceholder should render correctly 1`] = `
   min-width: 0;
   margin: 16px;
   border-radius: 6px;
-  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
-  animation: 1s ease-in-out 0s infinite animation-0;
+  -webkit-animation: 4s infinite animation-0;
+  animation: 4s infinite animation-0;
+  background-color: #a5a5a5;
   height: 21px;
   width: 100px;
 }
@@ -83,8 +84,9 @@ exports[`CurriculumListLoadingPlaceholder should render correctly 1`] = `
   min-width: 0;
   margin: 16px;
   border-radius: 6px;
-  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
-  animation: 1s ease-in-out 0s infinite animation-0;
+  -webkit-animation: 4s infinite animation-0;
+  animation: 4s infinite animation-0;
+  background-color: #a5a5a5;
   height: 21px;
   width: 200px;
 }
@@ -95,8 +97,9 @@ exports[`CurriculumListLoadingPlaceholder should render correctly 1`] = `
   min-width: 0;
   margin: 16px;
   border-radius: 6px;
-  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
-  animation: 1s ease-in-out 0s infinite animation-0;
+  -webkit-animation: 4s infinite animation-0;
+  animation: 4s infinite animation-0;
+  background-color: #a5a5a5;
   height: 21px;
   width: 150px;
 }

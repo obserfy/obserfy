@@ -41,6 +41,14 @@ exports[`PageNewReport should render correctly 1`] = `
   border-bottom-color: var(--theme-ui-colors-border);
 }
 
+@supports (backdrop-filter: blur(20px)) {
+  .emotion-2 {
+    background-color: var(--theme-ui-colors-surfaceBlurTransparent);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+  }
+}
+
 .emotion-3 {
   box-sizing: border-box;
   margin: 0;

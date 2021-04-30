@@ -3,169 +3,169 @@
 exports[`PageStudentOverview should render correctly 1`] = `
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 
   50% {
-    background-color: rgba(165, 165, 165, 0.2);
+    opacity: 0.2;
   }
 
   100% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 }
 
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 
   50% {
-    background-color: rgba(165, 165, 165, 0.2);
+    opacity: 0.2;
   }
 
   100% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 }
 
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 
   50% {
-    background-color: rgba(165, 165, 165, 0.2);
+    opacity: 0.2;
   }
 
   100% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 }
 
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 
   50% {
-    background-color: rgba(165, 165, 165, 0.2);
+    opacity: 0.2;
   }
 
   100% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 }
 
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 
   50% {
-    background-color: rgba(165, 165, 165, 0.2);
+    opacity: 0.2;
   }
 
   100% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 }
 
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 
   50% {
-    background-color: rgba(165, 165, 165, 0.2);
+    opacity: 0.2;
   }
 
   100% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 }
 
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 
   50% {
-    background-color: rgba(165, 165, 165, 0.2);
+    opacity: 0.2;
   }
 
   100% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 }
 
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 
   50% {
-    background-color: rgba(165, 165, 165, 0.2);
+    opacity: 0.2;
   }
 
   100% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 }
 
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 
   50% {
-    background-color: rgba(165, 165, 165, 0.2);
+    opacity: 0.2;
   }
 
   100% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 }
 
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 
   50% {
-    background-color: rgba(165, 165, 165, 0.2);
+    opacity: 0.2;
   }
 
   100% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 }
 
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 
   50% {
-    background-color: rgba(165, 165, 165, 0.2);
+    opacity: 0.2;
   }
 
   100% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 }
 
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 
   50% {
-    background-color: rgba(165, 165, 165, 0.2);
+    opacity: 0.2;
   }
 
   100% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 }
 
@@ -410,8 +410,9 @@ exports[`PageStudentOverview should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   border-radius: 6px;
-  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
-  animation: 1s ease-in-out 0s infinite animation-0;
+  -webkit-animation: 4s infinite animation-0;
+  animation: 4s infinite animation-0;
+  background-color: #a5a5a5;
   width: 12rem;
   height: 28px;
 }
@@ -715,8 +716,9 @@ exports[`PageStudentOverview should render correctly 1`] = `
   min-width: 0;
   margin-bottom: 16px;
   border-radius: 6px;
-  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
-  animation: 1s ease-in-out 0s infinite animation-0;
+  -webkit-animation: 4s infinite animation-0;
+  animation: 4s infinite animation-0;
+  background-color: #a5a5a5;
   height: 40px;
   width: 100%;
 }
@@ -727,8 +729,9 @@ exports[`PageStudentOverview should render correctly 1`] = `
   min-width: 0;
   margin-bottom: 16px;
   border-radius: 6px;
-  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
-  animation: 1s ease-in-out 0s infinite animation-0;
+  -webkit-animation: 4s infinite animation-0;
+  animation: 4s infinite animation-0;
+  background-color: #a5a5a5;
   height: 21px;
   width: 15%;
 }
@@ -739,8 +742,9 @@ exports[`PageStudentOverview should render correctly 1`] = `
   min-width: 0;
   margin-bottom: 16px;
   border-radius: 6px;
-  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
-  animation: 1s ease-in-out 0s infinite animation-0;
+  -webkit-animation: 4s infinite animation-0;
+  animation: 4s infinite animation-0;
+  background-color: #a5a5a5;
   height: 21px;
   width: 25%;
 }
@@ -751,8 +755,9 @@ exports[`PageStudentOverview should render correctly 1`] = `
   min-width: 0;
   margin-bottom: 8px;
   border-radius: 6px;
-  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
-  animation: 1s ease-in-out 0s infinite animation-0;
+  -webkit-animation: 4s infinite animation-0;
+  animation: 4s infinite animation-0;
+  background-color: #a5a5a5;
   height: 21px;
   width: 10%;
 }
@@ -812,8 +817,9 @@ exports[`PageStudentOverview should render correctly 1`] = `
   min-width: 0;
   margin-right: 8px;
   border-radius: 6px;
-  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
-  animation: 1s ease-in-out 0s infinite animation-0;
+  -webkit-animation: 4s infinite animation-0;
+  animation: 4s infinite animation-0;
+  background-color: #a5a5a5;
   height: 1.5rem;
   width: 4rem;
 }
@@ -842,8 +848,9 @@ exports[`PageStudentOverview should render correctly 1`] = `
   min-width: 0;
   margin-right: 8px;
   border-radius: 6px;
-  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
-  animation: 1s ease-in-out 0s infinite animation-0;
+  -webkit-animation: 4s infinite animation-0;
+  animation: 4s infinite animation-0;
+  background-color: #a5a5a5;
   height: 1.5rem;
   width: 10rem;
 }
@@ -855,8 +862,9 @@ exports[`PageStudentOverview should render correctly 1`] = `
   margin-left: auto;
   margin-right: 8px;
   border-radius: 6px;
-  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
-  animation: 1s ease-in-out 0s infinite animation-0;
+  -webkit-animation: 4s infinite animation-0;
+  animation: 4s infinite animation-0;
+  background-color: #a5a5a5;
   height: 1.5rem;
   width: 8rem;
 }
@@ -867,8 +875,9 @@ exports[`PageStudentOverview should render correctly 1`] = `
   min-width: 0;
   margin-right: 8px;
   border-radius: 6px;
-  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
-  animation: 1s ease-in-out 0s infinite animation-0;
+  -webkit-animation: 4s infinite animation-0;
+  animation: 4s infinite animation-0;
+  background-color: #a5a5a5;
   height: 1.5rem;
   width: 8rem;
 }
@@ -880,8 +889,9 @@ exports[`PageStudentOverview should render correctly 1`] = `
   margin-left: auto;
   margin-right: 8px;
   border-radius: 6px;
-  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
-  animation: 1s ease-in-out 0s infinite animation-0;
+  -webkit-animation: 4s infinite animation-0;
+  animation: 4s infinite animation-0;
+  background-color: #a5a5a5;
   height: 1.5rem;
   width: 6rem;
 }
@@ -902,8 +912,9 @@ exports[`PageStudentOverview should render correctly 1`] = `
   min-width: 0;
   margin-right: 8px;
   border-radius: 6px;
-  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
-  animation: 1s ease-in-out 0s infinite animation-0;
+  -webkit-animation: 4s infinite animation-0;
+  animation: 4s infinite animation-0;
+  background-color: #a5a5a5;
   height: 1.5rem;
   width: 14rem;
 }
@@ -915,8 +926,9 @@ exports[`PageStudentOverview should render correctly 1`] = `
   margin-left: auto;
   margin-right: 8px;
   border-radius: 6px;
-  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
-  animation: 1s ease-in-out 0s infinite animation-0;
+  -webkit-animation: 4s infinite animation-0;
+  animation: 4s infinite animation-0;
+  background-color: #a5a5a5;
   height: 1.5rem;
   width: 5rem;
 }

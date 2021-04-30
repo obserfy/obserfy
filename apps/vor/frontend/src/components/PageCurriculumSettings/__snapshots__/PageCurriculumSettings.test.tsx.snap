@@ -3,57 +3,57 @@
 exports[`PageCurriculumSettings should render correctly 1`] = `
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 
   50% {
-    background-color: rgba(165, 165, 165, 0.2);
+    opacity: 0.2;
   }
 
   100% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 }
 
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 
   50% {
-    background-color: rgba(165, 165, 165, 0.2);
+    opacity: 0.2;
   }
 
   100% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 }
 
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 
   50% {
-    background-color: rgba(165, 165, 165, 0.2);
+    opacity: 0.2;
   }
 
   100% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 }
 
 @keyframes animation-0 {
   0% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 
   50% {
-    background-color: rgba(165, 165, 165, 0.2);
+    opacity: 0.2;
   }
 
   100% {
-    background-color: rgba(165, 165, 165, 0.05);
+    opacity: 0.05;
   }
 }
 
@@ -110,6 +110,14 @@ exports[`PageCurriculumSettings should render correctly 1`] = `
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-bottom-color: var(--theme-ui-colors-border);
+}
+
+@supports (backdrop-filter: blur(20px)) {
+  .emotion-2 {
+    background-color: var(--theme-ui-colors-surfaceBlurTransparent);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+  }
 }
 
 .emotion-3 {
@@ -353,8 +361,9 @@ exports[`PageCurriculumSettings should render correctly 1`] = `
   margin: 0;
   min-width: 0;
   border-radius: 6px;
-  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
-  animation: 1s ease-in-out 0s infinite animation-0;
+  -webkit-animation: 4s infinite animation-0;
+  animation: 4s infinite animation-0;
+  background-color: #a5a5a5;
   height: 24px;
   width: 112px;
 }
@@ -595,8 +604,9 @@ exports[`PageCurriculumSettings should render correctly 1`] = `
   min-width: 0;
   margin: 16px;
   border-radius: 6px;
-  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
-  animation: 1s ease-in-out 0s infinite animation-0;
+  -webkit-animation: 4s infinite animation-0;
+  animation: 4s infinite animation-0;
+  background-color: #a5a5a5;
   height: 21px;
   width: 100px;
 }
@@ -607,8 +617,9 @@ exports[`PageCurriculumSettings should render correctly 1`] = `
   min-width: 0;
   margin: 16px;
   border-radius: 6px;
-  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
-  animation: 1s ease-in-out 0s infinite animation-0;
+  -webkit-animation: 4s infinite animation-0;
+  animation: 4s infinite animation-0;
+  background-color: #a5a5a5;
   height: 21px;
   width: 200px;
 }
@@ -619,8 +630,9 @@ exports[`PageCurriculumSettings should render correctly 1`] = `
   min-width: 0;
   margin: 16px;
   border-radius: 6px;
-  -webkit-animation: 1s ease-in-out 0s infinite animation-0;
-  animation: 1s ease-in-out 0s infinite animation-0;
+  -webkit-animation: 4s infinite animation-0;
+  animation: 4s infinite animation-0;
+  background-color: #a5a5a5;
   height: 21px;
   width: 150px;
 }
