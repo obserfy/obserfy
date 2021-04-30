@@ -54,5 +54,6 @@ func invalidateOldSessionCookie() *http.Cookie {
 	if os.Getenv("env") != "production" {
 		cookie.Secure = false
 	}
+
 	return &cookie
 }

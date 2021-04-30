@@ -6,6 +6,7 @@ import (
 	"github.com/chrsep/vor/pkg/links"
 	"github.com/chrsep/vor/pkg/mux"
 	"github.com/chrsep/vor/pkg/paddle"
+	"github.com/chrsep/vor/pkg/reports"
 	"github.com/chrsep/vor/pkg/videos"
 	"log"
 	"net/http"
@@ -93,6 +94,7 @@ func runServer() error {
 	observationStore := postgres.ObservationStore{DB: db, ImageStorage: minioImageStorage}
 	exportsStore := postgres.ExportsStore{DB: db}
 	videoStore := postgres.VideoStore{DB: db}
+	progressReportStore := postgres.ProgressReportsStore{DB: db}
 	// attendanceStore:=postgres.AttendanceStore{db}
 
 	// Setup routing
@@ -123,6 +125,7 @@ func runServer() error {
 		r.Mount("/links", links.NewRouter(server, linksStore))
 		r.Mount("/exports", exports.NewRouter(server, exportsStore))
 		r.Mount("/videos", videos.NewRouter(server, videoStore, videoService))
+		r.Mount("/progress-reports", reports.NewRouter(server, progressReportStore))
 	})
 
 	// Serve gatsby static frontend assets
