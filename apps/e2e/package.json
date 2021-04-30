@@ -11,7 +11,7 @@
     "@types/node": "14.14.37",
     "@typescript-eslint/eslint-plugin": "4.22.0",
     "@typescript-eslint/parser": "4.22.0",
-    "cypress": "7.1.0",
+    "cypress": "^7.2.0",
     "cypress-intellij-reporter": "0.0.6",
     "eslint": "7.25.0",
     "eslint-config-airbnb-typescript": "12.3.1",
@@ -35,9 +35,7 @@
     "db:reset": "node ./scripts/resetDB.js"
   },
   "dependencies": {
-    "@cypress/webpack-preprocessor": "5.7.0",
     "@hapi/iron": "6.0.0",
-    "@swc/core": "1.2.51",
     "@types/auth0-js": "9.14.3",
     "@types/pg": "7.14.11",
     "auth0-js": "9.15.0",
@@ -46,9 +44,7 @@
     "dotenv": "8.2.0",
     "faker": "5.5.2",
     "pg": "8.6.0",
-    "pnp-webpack-plugin": "1.6.4",
     "prettier": "2.2.1",
-    "swc-loader": "0.1.12",
     "typescript": "4.2.4",
     "webpack": "4.46.0"
   }
