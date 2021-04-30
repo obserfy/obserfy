@@ -20,5 +20,6 @@ module.exports = {
     "func-names": "off",
     "mocha/no-mocha-arrows": 1,
     "no-console": 0,
+    "no-param-reassign": 0,
   },
 }

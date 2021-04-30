@@ -1,4 +1,5 @@
-describe("test gaia authentication", function () {
+// skip testing gaia auth0 implementation for now
+describe.skip("test gaia authentication", function () {
   beforeEach(function () {
     // cy.clearSW()
     cy.fixedClearCookies()

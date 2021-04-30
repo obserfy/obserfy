@@ -12664,15 +12664,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress-file-upload@npm:5.0.6":
-  version: 5.0.6
-  resolution: "cypress-file-upload@npm:5.0.6"
-  peerDependencies:
-    cypress: ">3.0.0"
-  checksum: 0cc88a21743156c665da60f17cc9c996f53a2ab7dce4122376f3f09bccce4bfcec137c87161614b45d68a9bd07d619ac248c79375dde5cfab4067e87425859e2
-  languageName: node
-  linkType: hard
-
 "cypress-intellij-reporter@npm:0.0.6":
   version: 0.0.6
   resolution: "cypress-intellij-reporter@npm:0.0.6"
@@ -13875,7 +13866,6 @@ __metadata:
     "@typescript-eslint/parser": 4.22.0
     auth0-js: 9.15.0
     cypress: ^7.2.0
-    cypress-file-upload: 5.0.6
     cypress-intellij-reporter: 0.0.6
     dayjs: 1.10.4
     dotenv: 8.2.0
