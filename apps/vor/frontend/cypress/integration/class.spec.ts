@@ -1,6 +1,6 @@
-describe("test class related features", function () {
-  const faker = require("faker")
+import faker from "faker"
 
+describe("test class related features", function () {
   beforeEach(function () {
     // cy.clearSW()
     cy.registerVor()
@@ -9,7 +9,7 @@ describe("test class related features", function () {
   it("should be able to add, view, and delete class", function () {
     const className = faker.name.firstName()
     const startTime = "12:00"
-    cy.visitVor("/dashboard/admin/class")
+    cy.visit("/dashboard/admin/class")
 
     cy.contains("New Class").click()
     cy.contains("Name").type(className)

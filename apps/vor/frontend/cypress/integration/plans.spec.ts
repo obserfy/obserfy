@@ -10,7 +10,7 @@ describe("Test lesson plan features", function () {
   })
 
   it("should be able to edit, create, and delete plans.", function () {
-    cy.visitVor(`/dashboard/students/plans?studentId=${this.student.id}`)
+    cy.visit(`/dashboard/students/plans?studentId=${this.student.id}`)
 
     const lessonPlan1 = {
       title: "A Bold New Plan",
@@ -122,7 +122,7 @@ describe("Test lesson plan features", function () {
     cy.contains(repeatingPlan.title).should("be.visible")
 
     // Regression test, should be able to delete class
-    cy.visitVor("/dashboard/admin/class")
+    cy.visit("/dashboard/admin/class")
     cy.contains(this.class.name).click()
     cy.contains("Delete").click()
     cy.contains("Yes").click()

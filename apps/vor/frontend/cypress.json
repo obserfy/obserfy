@@ -1,0 +1,18 @@
+{
+  "baseUrl": "http://localhost:8001",
+  "blockHosts": [
+    "*segment.com",
+    "*segment.io",
+    "*sentry.io",
+    "*sentry.com",
+    "api.mixpanel.com"
+  ],
+  "projectId": "bs4um5",
+  "viewportHeight": 667,
+  "viewportWidth": 375,
+  "retries": {
+    "runMode": 1,
+    "openMode": 0
+  },
+  "experimentalStudio": true
+}

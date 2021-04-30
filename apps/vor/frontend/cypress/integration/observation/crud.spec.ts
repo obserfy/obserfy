@@ -8,7 +8,7 @@ describe("observation crud", function () {
 
   it("should be able to create, edit, and delete observation", function () {
     // =========================== Create Observation ==========================
-    cy.visitVor("/dashboard/students")
+    cy.visit("/dashboard/students")
     cy.contains(this.student.name).click()
     cy.contains("Create observation").click()
 

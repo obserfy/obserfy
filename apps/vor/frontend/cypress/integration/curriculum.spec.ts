@@ -1,6 +1,6 @@
-describe("test curriculum features", function () {
-  const faker = require("faker")
+import faker from "faker"
 
+describe("test curriculum features", function () {
   beforeEach(function () {
     // cy.clearSW()
     cy.registerVor()
@@ -15,7 +15,7 @@ describe("test curriculum features", function () {
       faker.name.firstName(),
       faker.name.firstName(),
     ]
-    cy.visitVor("/dashboard/admin/curriculum")
+    cy.visit("/dashboard/admin/curriculum")
 
     cy.wait(100)
     cy.contains("Use Montessori", { matchCase: false }).click()

@@ -1,10 +1,6 @@
+import faker from "faker"
+
 describe("test vor authentication", function () {
-  const faker = require("faker")
-
-  beforeEach(function () {
-    // cy.clearSW()
-  })
-
   it("should be redirected to login", function () {
     // define new user dynamically
     const name = faker.name.firstName()
@@ -13,7 +9,7 @@ describe("test vor authentication", function () {
 
     const schoolName = faker.company.companyName()
 
-    cy.visitVor("/")
+    cy.visit("/")
     // cy.waitForRouteChange()
 
     // Try logging in and fail
@@ -70,7 +66,7 @@ describe("test vor authentication", function () {
       .then((text) => {
         const inviteCode = text.split("=")[1]
         const inviteUrl = `/register?inviteCode=${inviteCode}`
-        cy.visitVor(inviteUrl)
+        cy.visit(inviteUrl)
 
         cy.contains("Join as").click()
         cy.contains(schoolName).should("be.visible")
@@ -83,7 +79,7 @@ describe("test vor authentication", function () {
         const name2 = faker.name.firstName()
         const email2 = faker.internet.email()
         const password2 = faker.internet.password()
-        cy.visitVor(inviteUrl)
+        cy.visit(inviteUrl)
         cy.get("[data-cy=register-email]").type(email2)
         cy.contains("Password").type(password2)
         cy.contains("Name").type(name2)
@@ -95,7 +91,7 @@ describe("test vor authentication", function () {
         const email3 = faker.internet.email()
         const password3 = faker.internet.password()
         cy.clearCookies()
-        cy.visitVor("/register")
+        cy.visit("/register")
         cy.get("[data-cy=register-email]").type(email3)
         cy.contains("Password").type(password3)
         cy.contains("Name").type(name3)
@@ -103,7 +99,7 @@ describe("test vor authentication", function () {
         cy.wait(300)
         cy.contains(schoolName).should("not.exist")
 
-        cy.visitVor(inviteUrl)
+        cy.visit(inviteUrl)
         cy.contains(`Join as ${name3}`).click()
         cy.contains("Your Schools").should("be.visible")
         cy.contains(schoolName).should("be.visible")

@@ -6,15 +6,14 @@ describe("test student features", function () {
     // cy.clearSW()
     cy.fixedClearCookies()
     cy.registerVor()
-    cy.gaiaLogin()
   })
 
   it("should be able to create, edit, and delete students", function () {
-    cy.visitVor("/dashboard/students/new")
+    cy.visit("/dashboard/students/new")
 
     // ========= add first student
     const student1 = {
-      id: faker.random.uuid(),
+      id: faker.datatype.uuid(),
       name: faker.name.firstName(),
       notes: faker.lorem.lines(1),
     }
@@ -78,7 +77,7 @@ describe("test student features", function () {
       .should("have.lengthOf", 1)
 
     // test edit student
-    cy.visitVor("/dashboard/students")
+    cy.visit("/dashboard/students")
     cy.contains(student2.name).click()
     cy.contains("Profile").click()
 
@@ -163,7 +162,7 @@ describe("test student features", function () {
     cy.contains(newName).should("be.visible")
     cy.contains("Set as Inactive").click()
     cy.contains("Yes").click()
-    cy.visitVor("/dashboard/students")
+    cy.visit("/dashboard/students")
     cy.contains(newName).should("not.exist")
   })
 })
