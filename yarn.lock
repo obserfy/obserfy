@@ -6076,9 +6076,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/react-hooks@npm:5.1.1":
-  version: 5.1.1
-  resolution: "@testing-library/react-hooks@npm:5.1.1"
+"@testing-library/react-hooks@npm:5.1.2":
+  version: 5.1.2
+  resolution: "@testing-library/react-hooks@npm:5.1.2"
   dependencies:
     "@babel/runtime": ^7.12.5
     "@types/react": ">=16.9.0"
@@ -6095,7 +6095,7 @@ __metadata:
       optional: true
     react-test-renderer:
       optional: true
-  checksum: cc30fa9cc51e485fda1e21f3b63933c09110e0e9c53a7c4d77266c2572d136c9aa0162e83c65f6f470c01a9289f4d85d2ce4ed2ae1d358fdba28061aa7756896
+  checksum: 7d8f033190010c6043a6c0640b9d37e8e41930e2329cd01cf619038b7b3600ec637bfb35ddfdcf954c35cbbfcda5b505fa28ff28fd103c3931191665a7ad92cb
   languageName: node
   linkType: hard
 
@@ -32934,7 +32934,7 @@ typescript@4.2.4:
     "@svgr/webpack": 5.5.0
     "@tailwindcss/typography": 0.4.0
     "@testing-library/react": 11.2.6
-    "@testing-library/react-hooks": 5.1.1
+    "@testing-library/react-hooks": 5.1.2
     "@theme-ui/match-media": 0.7.3
     "@types/body-scroll-lock": 2.6.1
     "@types/date-fns": 2.6.0
