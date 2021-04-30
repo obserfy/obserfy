@@ -2,7 +2,7 @@ import { t, Trans } from "@lingui/macro"
 import React, { FC, useState } from "react"
 import { Box, Flex } from "theme-ui"
 import dayjs from "../../dayjs"
-import usePostNewReport from "../../hooks/api/schools/usePostNewReport"
+import usePostNewProgressReport from "../../hooks/api/schools/usePostNewProgressReport"
 import { ALL_REPORT_URL } from "../../routes"
 import DateInput from "../DateInput/DateInput"
 import Input from "../Input/Input"
@@ -16,7 +16,7 @@ const PageNewReport: FC = () => {
   const [periodStart, setPeriodStart] = useState(dayjs())
   const [periodEnd, setPeriodEnd] = useState(dayjs())
 
-  const postReport = usePostNewReport()
+  const postReport = usePostNewProgressReport()
 
   return (
     <Flex sx={{ flexDirection: "column" }}>

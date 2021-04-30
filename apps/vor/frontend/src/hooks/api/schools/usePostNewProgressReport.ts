@@ -8,13 +8,13 @@ interface PostNewReportBody {
   periodEnd: string
 }
 
-const usePostNewReport = () => {
+const usePostNewProgressReport = () => {
   const schoolId = getSchoolId()
   const postNewImage = postApi<PostNewReportBody>(
-    `/schools/${schoolId}/reports`
+    `/schools/${schoolId}/progress-reports`
   )
 
   return useMutation(postNewImage)
 }
 
-export default usePostNewReport
+export default usePostNewProgressReport

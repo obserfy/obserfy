@@ -59,6 +59,7 @@ func getUser(server rest.Server, store Store) rest.Handler {
 		if err := rest.WriteJson(w, user); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
+
 		return nil
 	})
 }
@@ -83,6 +84,7 @@ func getSchools(server rest.Server, store Store) rest.Handler {
 		if err := rest.WriteJson(w, &schools); err != nil {
 			return rest.NewWriteJsonError(err)
 		}
+
 		return nil
 	})
 }

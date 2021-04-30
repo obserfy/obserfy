@@ -3,11 +3,13 @@ import { ProgressReport } from "../../__generated__/models"
 import { getSchoolId } from "../schoolIdState"
 import { getApi } from "./fetchApi"
 
-const useGetReports = () => {
+const useGetProgressReports = () => {
   const schoolId = getSchoolId()
-  const getReports = getApi<ProgressReport[]>(`/schools/${schoolId}/reports`)
+  const getReports = getApi<ProgressReport[]>(
+    `/schools/${schoolId}/progress-reports`
+  )
 
   return useQuery([schoolId, "reports"], getReports)
 }
 
-export default useGetReports
+export default useGetProgressReports

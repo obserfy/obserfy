@@ -68,8 +68,8 @@ func NewRouter(
 
 		r.Method("POST", "/videos/upload", postCreateVideoUploadLink(server, store, videos))
 
-		r.Method("POST", "/reports", postNewProgressReport(server, store))
-		r.Method("GET", "/reports", getProgressReports(server, store))
+		r.Method("POST", "/progress-reports", postNewProgressReport(server, store))
+		r.Method("GET", "/progress-reports", getProgressReports(server, store))
 	})
 	return r
 }

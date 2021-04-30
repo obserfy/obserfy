@@ -1,14 +1,14 @@
 import React, { FC } from "react"
 import { Box } from "theme-ui"
 import { ProgressReport } from "../../__generated__/models"
-import useGetReports from "../../hooks/api/useGetReports"
+import useGetProgressReports from "../../hooks/api/useGetProgressReports"
 import EmptyPlaceholder from "./EmptyPlaceholder"
 import ReportLists from "./ReportList"
 
 export interface PageAllReportsProps {}
 
 const PageAllReports: FC<PageAllReportsProps> = () => {
-  const reports = useGetReports()
+  const reports = useGetProgressReports()
 
   if (reports.isLoading) return <div>Loading</div>
 
