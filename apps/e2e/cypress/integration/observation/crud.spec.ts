@@ -1,3 +1,5 @@
+import { uploadFile } from "../../utils"
+
 describe("observation crud", function () {
   beforeEach(function () {
     cy.registerVor()
@@ -18,9 +20,20 @@ describe("observation crud", function () {
     cy.contains("25").click()
     cy.contains("Set").click()
     cy.get("[data-cy=image]").should("have.lengthOf", 0) // ensure no images uploaded
-    cy.get("[data-cy=upload-image]").attachFile("icon.png").wait(10_000)
+
+    cy.fixture("icon.png").as("logo")
+    cy.get<HTMLInputElement>("[data-cy=upload-image]")
+      .then((el) => {
+        uploadFile(el, this.logo)
+      })
+      .wait(10_000)
+
     cy.get("[data-cy=image]").should("have.lengthOf", 1)
-    cy.get("[data-cy=upload-image]").attachFile("icon.png").wait(10_000)
+    cy.get<HTMLInputElement>("[data-cy=upload-image]")
+      .then((el) => {
+        uploadFile(el, this.logo)
+      })
+      .wait(10_000)
     cy.get("[data-cy=image]").should("have.lengthOf", 2)
 
     cy.contains("Save").click()
@@ -50,7 +63,9 @@ describe("observation crud", function () {
     cy.contains("A detail better details here").should("be.visible")
 
     // add image
-    cy.get("[data-cy=upload-image]").attachFile("icon.png")
+    cy.get<HTMLInputElement>("[data-cy=upload-image]").then((el) => {
+      uploadFile(el, this.logo)
+    })
     cy.get("[data-cy=image]").should("have.lengthOf", 3)
     cy.get("[data-cy=image]").first().click()
     cy.get("[data-cy=delete-image]").click()

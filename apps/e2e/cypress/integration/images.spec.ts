@@ -45,9 +45,13 @@ describe("test image features", function () {
         cy.visitGaia("/")
         cy.contains(this.student.name).should("be.visible")
         cy.contains("Images").click()
-        cy.get("#upload-image-small").attachFile("icon.png")
+        cy.get<HTMLInputElement>("#upload-image-small").then((el) => {
+          uploadFile(el, this.logo)
+        })
         cy.get("[data-cy=image]").should("have.lengthOf", 1)
-        cy.get("#upload-image").attachFile("icon.png")
+        cy.get<HTMLInputElement>("#upload-image").then((el) => {
+          uploadFile(el, this.logo)
+        })
         cy.wait(200)
         cy.get("[data-cy=image]").should("have.lengthOf", 2)
         cy.get("[data-cy=image]").first().click()

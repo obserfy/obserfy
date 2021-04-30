@@ -1,4 +1,5 @@
 import * as faker from "faker"
+import { uploadFile } from "../../utils"
 
 describe("test student features", function () {
   beforeEach(function () {
@@ -37,7 +38,11 @@ describe("test student features", function () {
       guardianName: faker.name.firstName(),
     }
     cy.get("[data-cy=addStudent]").first().click({ force: true })
-    cy.get("[data-cy=upload-profile-pic]").attachFile("icon.png")
+
+    cy.fixture("icon.png").as("logo")
+    cy.get<HTMLInputElement>("[data-cy=upload-profile-pic]").then((el) => {
+      uploadFile(el, this.logo)
+    })
     cy.contains("Name").type(student2.name)
     cy.get(`[data-cy="Date of Birth"]`).click()
     cy.get(`[data-cy="confirm"]`).click()
