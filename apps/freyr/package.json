@@ -28,7 +28,7 @@
     "gatsby-plugin-react-helmet": "4.4.0",
     "gatsby-plugin-remove-trailing-slashes": "3.4.0",
     "gatsby-plugin-sharp": "3.4.0",
-    "gatsby-plugin-sitemap": "3.3.0",
+    "gatsby-plugin-sitemap": "4.0.0",
     "gatsby-plugin-typegen": "2.2.4",
     "gatsby-plugin-webpack-bundle-analyser-v2": "1.1.21",
     "gatsby-remark-images": "5.1.0",
