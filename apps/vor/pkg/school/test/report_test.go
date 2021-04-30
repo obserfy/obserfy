@@ -27,7 +27,7 @@ func (s *SchoolTestSuite) TestGetReport() {
 	var response []report
 	result := s.ApiTest(testutils.ApiMetadata{
 		Method:   "GET",
-		Path:     "/" + school.Id + "/reports",
+		Path:     "/" + school.Id + "/progress-reports",
 		UserId:   userId,
 		Response: &response,
 	})
