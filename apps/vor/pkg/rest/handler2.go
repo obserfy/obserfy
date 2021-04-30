@@ -84,6 +84,13 @@ func (s *Server) BadRequest(err error) ServerResponse {
 	}
 }
 
+func (s *Server) NotFound() ServerResponse {
+	return ServerResponse{
+		Status: http.StatusNotFound,
+		Body:   newErrorResponse("given resource does not exists."),
+	}
+}
+
 type Request struct {
 	*http.Request
 }

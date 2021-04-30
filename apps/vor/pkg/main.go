@@ -7,7 +7,6 @@ import (
 	"github.com/chrsep/vor/pkg/mux"
 	"github.com/chrsep/vor/pkg/paddle"
 	"github.com/chrsep/vor/pkg/videos"
-	"github.com/go-pg/pg/v10"
 	"log"
 	"net/http"
 	"os"
@@ -54,12 +53,7 @@ func runServer() error {
 	}()
 
 	// Initialize tables
-	if err := db.RunInTransaction(db.Context(), func(tx *pg.Tx) error {
-		if err := postgres.InitTables(tx); err != nil {
-			return err
-		}
-		return nil
-	}); err != nil {
+	if err := db.RunInTransaction(db.Context(), postgres.InitTables); err != nil {
 		return err
 	}
 
@@ -73,6 +67,7 @@ func runServer() error {
 	minioClient, err := minio.NewClient()
 	if err != nil {
 		l.Error("failed connecting to minio", zap.Error(err))
+
 		return err
 	}
 
@@ -98,7 +93,7 @@ func runServer() error {
 	observationStore := postgres.ObservationStore{DB: db, ImageStorage: minioImageStorage}
 	exportsStore := postgres.ExportsStore{DB: db}
 	videoStore := postgres.VideoStore{DB: db}
-	//attendanceStore:=postgres.AttendanceStore{db}
+	// attendanceStore:=postgres.AttendanceStore{db}
 
 	// Setup routing
 	r := chi.NewRouter()
@@ -138,8 +133,5 @@ func runServer() error {
 	})
 
 	// Run the server
-	if err := http.ListenAndServe(":8080", r); err != nil {
-		return err
-	}
-	return nil
+	return http.ListenAndServe(":8080", r)
 }
