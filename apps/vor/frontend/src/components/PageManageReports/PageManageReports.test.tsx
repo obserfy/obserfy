@@ -4,7 +4,7 @@ import PageManageReports from "./PageManageReports"
 
 describe("PageManageReports", () => {
   it("should render correctly", () => {
-    const { container } = render(<PageManageReports />)
+    const { container } = render(<PageManageReports reportId="" />)
     expect(container).toMatchSnapshot()
   })
 })
