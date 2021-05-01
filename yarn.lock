@@ -18556,10 +18556,10 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"immer@npm:8.0.4":
-  version: 8.0.4
-  resolution: "immer@npm:8.0.4"
-  checksum: 9d3b28df1ac5bf6918c611e71c15bdb136588c21a3431100448f21325fef9b055cc9a44fe8b023f0c5ecbc66a2ba38f403c9a67d581f613b49d0e4ff15564f79
+"immer@npm:9.0.2":
+  version: 9.0.2
+  resolution: "immer@npm:9.0.2"
+  checksum: ce74a183085451ec31b8726ef1345baf7a315df7ffe7683b231bd491fdd2bb73bf093085a36a5270a27200fbdd052e8572adb38058f0264ee0ec04b3b5d4ba02
   languageName: node
   linkType: hard
 
@@ -33130,7 +33130,7 @@ typescript@4.2.4:
     http-proxy-middleware: 1.1.0
     hygen: 6.0.4
     idb-keyval: 5.0.4
-    immer: 8.0.4
+    immer: 9.0.2
     jest: 26.6.3
     jest-date-mock: 1.0.8
     jest-fetch-mock: 3.0.3
