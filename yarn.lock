@@ -11446,10 +11446,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:3.9.1, core-js@npm:^3.0.1, core-js@npm:^3.0.4, core-js@npm:^3.6.5":
-  version: 3.9.1
-  resolution: "core-js@npm:3.9.1"
-  checksum: fb21fb37deaac0964ebf3f51eebe990eaf39fd239c35d36f5c4c7510ffca85fd96d3a89f0ee8059b4f1c0e773e434b6148e0565a760f0c20b3c5cda7329c2ba5
+"core-js@npm:3.11.1":
+  version: 3.11.1
+  resolution: "core-js@npm:3.11.1"
+  checksum: 55418ccae95cdfa2ea13f7a848216ce92264302e4b2c06b90aba82b529b5a5f0791c1c03bc886ea70ef1c0312c6e29925b45d0a9b07491f7614b179c3c3fed89
   languageName: node
   linkType: hard
 
@@ -11464,6 +11464,13 @@ __metadata:
   version: 2.6.12
   resolution: "core-js@npm:2.6.12"
   checksum: 44fa9934a85f8c78d61e0c8b7b22436330471ffe59ec5076fe7f324d6e8cf7f824b14b1c81ca73608b13bdb0fef035bd820989bf059767ad6fa13123bb8bd016
+  languageName: node
+  linkType: hard
+
+"core-js@npm:^3.0.1, core-js@npm:^3.0.4, core-js@npm:^3.6.5":
+  version: 3.9.1
+  resolution: "core-js@npm:3.9.1"
+  checksum: fb21fb37deaac0964ebf3f51eebe990eaf39fd239c35d36f5c4c7510ffca85fd96d3a89f0ee8059b4f1c0e773e434b6148e0565a760f0c20b3c5cda7329c2ba5
   languageName: node
   linkType: hard
 
@@ -33096,7 +33103,7 @@ typescript@4.2.4:
     body-scroll-lock: 3.1.5
     browser-lang: 0.1.0
     chromatic: 5.7.1
-    core-js: 3.9.1
+    core-js: 3.11.1
     cross-env: 7.0.3
     cypress: 7.2.0
     dayjs: 1.10.4
