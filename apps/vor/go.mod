@@ -16,7 +16,7 @@ require (
 	github.com/minio/minio-go/v6 v6.0.57
 	github.com/muxinc/mux-go v0.11.0
 	github.com/pkg/errors v0.9.1
-	github.com/signintech/gopdf v0.9.15
+	github.com/signintech/gopdf v0.9.16
 	github.com/stretchr/testify v1.7.0
 	github.com/tkrajina/go-reflector v0.5.4 // indirect
 	github.com/tkrajina/typescriptify-golang-structs v0.1.5 // indirect
