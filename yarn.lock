@@ -6948,12 +6948,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-helmet@npm:6.1.0":
-  version: 6.1.0
-  resolution: "@types/react-helmet@npm:6.1.0"
+"@types/react-helmet@npm:6.1.1":
+  version: 6.1.1
+  resolution: "@types/react-helmet@npm:6.1.1"
   dependencies:
     "@types/react": "*"
-  checksum: 90a24a99e1a5f090575445139dd902b8915d4405f097818fdd31847e986a1e0dc8e0361a08366d285f9bbe9e0c013a4f06fc6b4da2d577a22b76086eefde4087
+  checksum: bc962f7e37e6cdd748d2da2eca5c5726041736ce9e8d04217528191edde454fc93e9be2f93985de5afc96e8a9ebf6f60c1ed6485f9f0226a6c664a04faddb928
   languageName: node
   linkType: hard
 
@@ -15553,7 +15553,7 @@ __metadata:
     "@mdx-js/react": 1.6.22
     "@tailwindcss/typography": 0.4.0
     "@types/react": 17.0.4
-    "@types/react-helmet": 6.1.0
+    "@types/react-helmet": 6.1.1
     "@typescript-eslint/eslint-plugin": 4.22.0
     "@typescript-eslint/parser": 4.22.0
     autoprefixer: 10.2.5
@@ -33081,7 +33081,7 @@ typescript@4.2.4:
     "@types/react": 17.0.4
     "@types/react-adaptive-hooks": 0.0.0
     "@types/react-dom": 17.0.3
-    "@types/react-helmet": 6.1.0
+    "@types/react-helmet": 6.1.1
     "@types/segment-analytics": 0.0.33
     "@typescript-eslint/eslint-plugin": 4.22.0
     "@typescript-eslint/parser": 4.22.0
