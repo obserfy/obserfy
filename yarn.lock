@@ -15593,7 +15593,7 @@ __metadata:
     gatsby-plugin-sharp: 3.4.0
     gatsby-plugin-sitemap: 4.0.0
     gatsby-plugin-typegen: 2.2.4
-    gatsby-plugin-webpack-bundle-analyser-v2: 1.1.21
+    gatsby-plugin-webpack-bundle-analyser-v2: 1.1.22
     gatsby-remark-images: 5.1.0
     gatsby-remark-prismjs: 5.1.0
     gatsby-source-filesystem: 3.4.0
@@ -16451,15 +16451,15 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-webpack-bundle-analyser-v2@npm:1.1.21":
-  version: 1.1.21
-  resolution: "gatsby-plugin-webpack-bundle-analyser-v2@npm:1.1.21"
+"gatsby-plugin-webpack-bundle-analyser-v2@npm:1.1.22":
+  version: 1.1.22
+  resolution: "gatsby-plugin-webpack-bundle-analyser-v2@npm:1.1.22"
   dependencies:
     "@babel/runtime": ^7.13.10
-    webpack-bundle-analyzer: ^4.4.0
+    webpack-bundle-analyzer: ^4.4.1
   peerDependencies:
     gatsby: ^2.0.0 || ^3.0.0
-  checksum: 8698d3a3c188a088ae27700687199126e21f467c66af4528806dd6a9601093b60b4ec7530a59e357e09e08629e04e8fd1fe2d1bf25812eb6af22b8fb2ed3669e
+  checksum: 08795395490118c5973381b6c9a882dc70aa8b174ce103ab48b5a126febd9d1d0dc033092cfa0543d7a4bb595aab505d0d30796590e2f2e33104e63bb56ccef2
   languageName: node
   linkType: hard
 
@@ -33138,7 +33138,7 @@ typescript@4.2.4:
     gatsby-plugin-svgr: v3.0.0-beta.0
     gatsby-plugin-theme-ui: 0.7.5
     gatsby-plugin-typegen: 2.2.4
-    gatsby-plugin-webpack-bundle-analyser-v2: 1.1.21
+    gatsby-plugin-webpack-bundle-analyser-v2: 1.1.22
     gatsby-source-filesystem: 3.4.0
     gatsby-theme-i18n: 2.0.0
     gatsby-theme-i18n-lingui: 2.0.0
@@ -33332,9 +33332,9 @@ typescript@4.2.4:
   languageName: node
   linkType: hard
 
-"webpack-bundle-analyzer@npm:^4.4.0":
-  version: 4.4.0
-  resolution: "webpack-bundle-analyzer@npm:4.4.0"
+"webpack-bundle-analyzer@npm:^4.4.1":
+  version: 4.4.1
+  resolution: "webpack-bundle-analyzer@npm:4.4.1"
   dependencies:
     acorn: ^8.0.4
     acorn-walk: ^8.0.0
@@ -33347,7 +33347,7 @@ typescript@4.2.4:
     ws: ^7.3.1
   bin:
     webpack-bundle-analyzer: lib/bin/analyzer.js
-  checksum: ffe2615756f94274512c60c2a6f98d444a4f502841a423bfb20b0aa00f14e6ef350600d1e906e55b6e22ca0247f72fc0d190123a954601088f90078bec136149
+  checksum: 6803a706ebcc2fadc85f490046b875ca1fe99d2dfd7dbf072920f47ac7549216900ab70d13156c6ca846b245fd9e484e5fbcdf85a015753099f3f687fb1fc27e
   languageName: node
   linkType: hard
 
