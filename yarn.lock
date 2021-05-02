@@ -18302,17 +18302,16 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"http-proxy-middleware@npm:1.1.0":
-  version: 1.1.0
-  resolution: "http-proxy-middleware@npm:1.1.0"
+"http-proxy-middleware@npm:1.3.1":
+  version: 1.3.1
+  resolution: "http-proxy-middleware@npm:1.3.1"
   dependencies:
     "@types/http-proxy": ^1.17.5
-    camelcase: ^6.2.0
     http-proxy: ^1.18.1
     is-glob: ^4.0.1
     is-plain-obj: ^3.0.0
     micromatch: ^4.0.2
-  checksum: eafcb4b6412fb16e483c01e2051f213a87d259127a618388c9b2b7fbacdead7a7c896e53f65106aa94ef9fc72c6752079e6713fe1a6f9ae4f8ca98b323f8c808
+  checksum: c6f0fe6d5aa58f3757084f1fad8109e7384fdea1b0a5c62f58ac767c42f367a18d3819bed8cbf8b5183f17e3e14fad04322f179c569629004da5fbec9b81a88a
   languageName: node
   linkType: hard
 
@@ -33145,7 +33144,7 @@ typescript@4.2.4:
     gatsby-theme-i18n-lingui: 2.0.0
     gatsby-transformer-sharp: 3.4.0
     hls.js: 1.0.0
-    http-proxy-middleware: 1.1.0
+    http-proxy-middleware: 1.3.1
     hygen: 6.0.4
     idb-keyval: 5.0.4
     immer: 9.0.2
