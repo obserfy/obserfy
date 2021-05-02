@@ -101,7 +101,7 @@
     "babel-plugin-macros": "3.0.1",
     "babel-plugin-transform-default-import": "1.0.0",
     "babel-preset-gatsby": "1.4.0",
-    "chromatic": "5.7.1",
+    "chromatic": "5.8.0",
     "core-js": "3.11.1",
     "cross-env": "7.0.3",
     "cypress": "7.2.0",

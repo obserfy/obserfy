@@ -10601,9 +10601,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chromatic@npm:5.7.1":
-  version: 5.7.1
-  resolution: "chromatic@npm:5.7.1"
+"chromatic@npm:5.8.0":
+  version: 5.8.0
+  resolution: "chromatic@npm:5.8.0"
   dependencies:
     "@actions/core": ^1.2.4
     "@actions/github": ^4.0.0
@@ -10633,6 +10633,7 @@ __metadata:
     progress-stream: ^2.0.0
     semver: ^7.3.4
     slash: ^3.0.0
+    string-argv: ^0.3.1
     strip-ansi: 6.0.0
     tmp-promise: 3.0.2
     tree-kill: ^1.2.2
@@ -10644,7 +10645,7 @@ __metadata:
     chroma: bin/register.js
     chromatic: bin/register.js
     chromatic-cli: bin/register.js
-  checksum: 16ec82f53dbb2fac21789e108d7db28a398b2e6f9cce0ea826ad5d6d8f5f3629f70e41fc18162c925819e5038bb7af2243366c2c8adf89977ab00c13019b2f9b
+  checksum: e95fdd48cfe41cda48105d4c0e8cab7603b25f60a92d5cf44fd7ee70c6a6ba36824fb1be8f0ea6a62641c35f4ae8387297ec2a4b7f3415eed490a473dd9ca85b
   languageName: node
   linkType: hard
 
@@ -30327,7 +30328,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"string-argv@npm:0.3.1":
+"string-argv@npm:0.3.1, string-argv@npm:^0.3.1":
   version: 0.3.1
   resolution: "string-argv@npm:0.3.1"
   checksum: efbd0289b599bee808ce80820dfe49c9635610715429c6b7cc50750f0437e3c2f697c81e5c390208c13b5d5d12d904a1546172a88579f6ee5cbaaaa4dc9ec5cf
@@ -33101,7 +33102,7 @@ typescript@4.2.4:
     babel-preset-gatsby: 1.4.0
     body-scroll-lock: 3.1.5
     browser-lang: 0.1.0
-    chromatic: 5.7.1
+    chromatic: 5.8.0
     core-js: 3.11.1
     cross-env: 7.0.3
     cypress: 7.2.0
