@@ -32862,13 +32862,13 @@ typescript@4.2.4:
   languageName: node
   linkType: hard
 
-"use-immer@npm:0.4.2":
-  version: 0.4.2
-  resolution: "use-immer@npm:0.4.2"
+"use-immer@npm:0.5.1":
+  version: 0.5.1
+  resolution: "use-immer@npm:0.5.1"
   peerDependencies:
     immer: ">=2.0.0"
     react: ^16.8.0 || ^17.0.1
-  checksum: 4ba1fa1a27a1a89c887031b995a4282e3dd77ae59e9d76c301cfd3134270ae12b4d4341ec5692faf41b33c751171772a698494252e236652e74677d02606e236
+  checksum: 8a0af5182dc279345aa72706606a6d589a2d95379e3ec26399eaafbe91e031ab5e31f844836f00b66f1165ea28895696cf441c43a11d713526aad806e07a32e8
   languageName: node
   linkType: hard
 
@@ -33290,7 +33290,7 @@ typescript@4.2.4:
     theme-ui: 0.7.5
     typescript: 4.2.4
     url-loader: 4.1.1
-    use-immer: 0.4.2
+    use-immer: 0.5.1
     wait-on: 5.3.0
     webpack: 5.19.0
   languageName: unknown
