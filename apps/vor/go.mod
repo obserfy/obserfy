@@ -7,7 +7,7 @@ require (
 	github.com/brianvoe/gofakeit/v4 v4.3.0
 	github.com/brianvoe/gofakeit/v6 v6.4.1
 	github.com/getsentry/sentry-go v0.10.0
-	github.com/go-chi/chi v1.5.4
+	github.com/go-chi/chi/v5 v5.0.3
 	github.com/go-pg/pg/v10 v10.9.1
 	github.com/go-playground/validator/v10 v10.5.0
 	github.com/gocarina/gocsv v0.0.0-20210408192840-02d7211d929d
