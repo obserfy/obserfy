@@ -16011,7 +16011,7 @@ fsevents@^1.2.7:
     jest: 26.6.3
     minio: 7.0.18
     monocle-ts: 2.3.9
-    mux-embed: 3.5.0
+    mux-embed: 4.0.1
     nanoid: 3.1.22
     newtype-ts: 0.3.4
     next: 10.2.0
@@ -23118,10 +23118,10 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"mux-embed@npm:3.5.0":
-  version: 3.5.0
-  resolution: "mux-embed@npm:3.5.0"
-  checksum: 78d670ae2769b3fa6079f706a6b4499c24a9d93c0cc7e61a9771c09fe0d1427313eb61ec1ced8f1b20b785c2896fc2784556750337ad816640d529d85335730b
+"mux-embed@npm:4.0.1":
+  version: 4.0.1
+  resolution: "mux-embed@npm:4.0.1"
+  checksum: a1b8fd4e164675dab9e009ed4c8f03018aed2f78513dee3f752cc0f652b74043ba8b483199c8599781016f392fe140f5a27b87093c55f0c0ce0bf3086dfdc09f
   languageName: node
   linkType: hard
 
@@ -33249,7 +33249,7 @@ typescript@4.2.4:
     jest-date-mock: 1.0.8
     jest-fetch-mock: 3.0.3
     make-plural: 6.2.2
-    mux-embed: 3.5.0
+    mux-embed: 4.0.1
     nanoid: 3.1.22
     npm-run-all: 4.1.5
     postcss: 8.2.13
