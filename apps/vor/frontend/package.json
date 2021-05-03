@@ -54,7 +54,7 @@
     "idb-keyval": "5.0.5",
     "immer": "9.0.2",
     "make-plural": "6.2.2",
-    "mux-embed": "3.5.0",
+    "mux-embed": "4.0.1",
     "nanoid": "3.1.22",
     "postcss": "8.2.13",
     "preact": "10.5.13",
